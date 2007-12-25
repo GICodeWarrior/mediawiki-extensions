@@ -14,5 +14,8 @@
  * @author Pyt
  */
 $messages = array(
-	'pageby-anon' => '<i>anonym</i>',
+	'pageby-first'        => 'Siede anlaid fon $1, $2',
+	'pageby-last'         => 'Toulääst <a href="$3">annerd</a> fon $1, $2',
+	'pageby-contributors' => 'Biedraage:',
+	'pageby-anon'         => '<i>anonym</i>',
 );
