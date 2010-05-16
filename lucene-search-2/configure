@@ -1,4 +1,0 @@
-#!/bin/bash
-dir=`cd $1; pwd`
-
-java -cp LuceneSearch.jar org.wikimedia.lsearch.util.Configure $dir
