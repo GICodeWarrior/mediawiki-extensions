@@ -1,3 +1,0 @@
-HTCP:
-	MON
-	correct error reply (e.g. for wrong auth)
