@@ -6,4 +6,7 @@ This repo is useful as a remote for hacking on Mediawiki extensions.
 If the repo looks out of date by more than a couple days, feel free to ping me
 to update it or fix my update script. :-)
 
+This repo made possible by git-subtree.
+http://github.com/apenwarr/git-subtree
+
 All content under respective licenses.
