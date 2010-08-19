@@ -1,0 +1,9 @@
+This project contains a separate branch for each Mediawiki extension hosted in
+the official subversion repository.  Full history (from trunk) is included.
+
+This repo is useful as a remote for hacking on Mediawiki extensions.
+
+If the repo looks out of date by more than a couple days, feel free to ping me
+to update it or fix my update script. :-)
+
+All content under respective licenses.
