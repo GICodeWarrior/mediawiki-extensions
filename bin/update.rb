@@ -25,7 +25,10 @@ FileUtils.cd(mediawiki_git_repo) do
 
     current_commit = `#{commit_command} mediawiki-extensions/#{filename}`
     latest_commit = `#{commit_command} -- extensions/#{filename}`
-    next if current_commit == latest_commit
+    if current_commit == latest_commit
+      puts "Skipping #{filename} (up-to-date)"
+      next
+    end
 
     system(push_command % [filename, filename])
     exit unless $?.success?
