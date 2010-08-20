@@ -32,9 +32,9 @@ FileUtils.cd(mediawiki_git_repo) do
 
     system(push_command % [filename, filename])
     exit unless $?.success?
-    system("rm -rf .git/subtree-cache/#{$?.pid}")
   end
 
+  system('rm -rf .git/subtree-cache')
   system('git gc --aggressive')
 end
 
