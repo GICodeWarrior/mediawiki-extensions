@@ -3,7 +3,7 @@
 require 'fileutils'
 
 ENV['PATH'] = "#{File.dirname(File.expand_path(__FILE__))}:#{ENV['PATH']}"
-mediawiki_git_repo = ARGV[0]
+mediawiki_git_repo = ARGV[0] || ''
 
 if !File.directory?(mediawiki_git_repo)
   raise ArgumentError.new('First argument must be a path to the mediawiki repo')
