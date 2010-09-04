@@ -35,7 +35,7 @@ FileUtils.cd(mediawiki_git_repo) do
   end
 
   system('rm -rf .git/subtree-cache')
-  system('git gc --aggressive')
+  #system('git gc --aggressive')
 end
 
 FileUtils.cd("#{File.dirname(__FILE__)}/..") do
@@ -44,8 +44,8 @@ FileUtils.cd("#{File.dirname(__FILE__)}/..") do
   end
 
   system('git commit -m "Extensions updated" LAST_UPDATED_AT')
-  system('git push origin master')
+  system('git push --all')
   system('git fetch')
-  system('git gc --aggressive')
+  #system('git gc --aggressive')
 end
 
