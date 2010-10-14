@@ -1,8 +1,0 @@
-#
-# /etc/default/squid	Configuration settings for the Squid proxy server.
-#
-
-# Max. number of filedescriptors to use. You can increase this on a busy
-# cache to a maximum of (currently) 65536 filedescriptors. Default is 32768.
-SQUID_MAXFD=32768
-

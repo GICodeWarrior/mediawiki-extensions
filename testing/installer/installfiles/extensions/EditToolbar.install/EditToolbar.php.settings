@@ -1,5 +1,0 @@
-<?PHP
-
-require_once("$IP/extensions/UsabilityInitiative/EditToolbar/EditToolbar.php");
-
-?>
