@@ -35,7 +35,7 @@
 					$( '#wpSummary' ).data( 'origtext' ) != $( '#wpSummary' ).val()
 				) {
 					// Return our message
-					retval = mediaWiki.msg.get( 'vector-editwarning-warning' );
+					retval = mediaWiki.message( 'vector-editwarning-warning' );
 				}
 			}
 			

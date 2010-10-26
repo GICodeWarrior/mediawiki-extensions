@@ -35,7 +35,7 @@ $( document ).ready( function() {
 	}
 	
 	// Placeholder text for SimpleSearch box
-	$( 'div#simpleSearch > input#searchInput' ).placeholder( mediaWiki.msg.get( 'vector-simplesearch-search' ) );
+	$( 'div#simpleSearch > input#searchInput' ).placeholder( mediaWiki.message( 'vector-simplesearch-search' ) );
 	
 	// General suggestions functionality for all search boxes
 	$( '#searchInput, #searchInput2, #powerSearchText, #searchText' )
@@ -92,7 +92,7 @@ $( document ).ready( function() {
 					$(this).show()
 					$label = $( '<div />' )
 						.addClass( 'special-label' )
-						.text( mediaWiki.msg.get( 'vector-simplesearch-containing' ) )
+						.text( mediaWiki.message( 'vector-simplesearch-containing' ).toString() )
 						.appendTo( $(this) );
 					$query = $( '<div />' )
 						.addClass( 'special-query' )
