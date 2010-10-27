@@ -89,11 +89,12 @@ class ArticleEmblemsHooks {
 	 * ResourceLoaderRegisterModules hook
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
+		global $wgExtensionAssetsPath;
 		$resourceLoader->register(
 			'ext.articleEmblems',
 			new ResourceLoaderFileModule( array(
-				'styles' => 'extensions/ArticleEmblems/modules/ext.articleEmblems.css',
-			) )
+				'styles' => 'ext.articleEmblems.css',
+			), dirname( __FILE__ ) . '/modules', "$wgExtensionAssetsPath/ArticleEmblems/modules" )
 		);
 		return true;
 	}
