@@ -12864,6 +12864,9 @@ $messages['ml'] = array(
 	'configure-setting-wgAllowUserSkin' => 'ഉപയോക്താക്കളെ അവരുടെ ദൃശ്യരൂപം മാറ്റാൻ അനുവദിക്കുക',
 	'configure-setting-wgLocalInterwiki' => 'പ്രാദേശിക അന്തർവിക്കി പൂർവ്വപദം',
 	'configure-setting-wgSecretKey' => 'രഹസ്യ ചാവി',
+	'configure-setting-wgMimeType' => 'വിക്കി താളുകളുടെ മൈം തരം',
+	'configure-setting-wgLocaltimezone' => 'പ്രാദേശിക സമയമേഖല',
+	'configure-setting-wgLivePreview' => 'തത്സമയം എങ്ങനെയുണ്ടെന്ന് കാണൽ സജ്ജമാക്കുക',
 );
 
 /** Mongolian (Монгол)
