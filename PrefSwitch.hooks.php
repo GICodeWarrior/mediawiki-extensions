@@ -12,8 +12,8 @@ class PrefSwitchHooks {
 	
 	protected static $modules = array(
 		'ext.prefSwitch' => array(
-			'scripts' => 'extensions/PrefSwitch/modules/ext.prefSwitch.js',
-			'styles' => 'extensions/PrefSwitch/modules/ext.prefSwitch.css',
+			'scripts' => 'ext.prefSwitch.js',
+			'styles' => 'ext.prefSwitch.css',
 			'dependencies' => 'jquery.client',
 		),
 	);
@@ -84,8 +84,11 @@ class PrefSwitchHooks {
 	 * ResourceLoaderRegisterModules hook
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
+		global $wgExtensionAssetsPath;
+		$localpath = dirname( __FILE__ ) . '/modules';
+		$remotepath = "$wgExtensionAssetsPath/PrefSwitch/moduless";
 		foreach ( self::$modules as $name => $resources ) {
-			$resourceLoader->register( $name, new ResourceLoaderFileModule( $resources ) );
+			$resourceLoader->register( $name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath ) );
 		}
 		return true;
 	}
