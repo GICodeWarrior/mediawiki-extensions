@@ -385,6 +385,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'categorymultisort-defaultsortkey-name' => 'സ്വതേ',
 	'categorymultisort-go' => 'പോകൂ',
 	'categorymultisort-default-sortkey' => 'സ്വതേയുള്ള ക്രമപ്പെടുത്തൽ ചാവി:',
 	'prefs-category' => 'വർഗ്ഗം',

@@ -50,6 +50,13 @@ $messages['az'] = array(
 	'contributorsaddon-desc' => '"Əsas müəlliflər" keçidi üçün üzə çıxan JavaScript-sahəni əlavə edir',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'contributorsaddon-desc' => '"Төп өлөш индереүселәр" һылтанмаһы өсөн JavaScript юлы өҫтәй.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

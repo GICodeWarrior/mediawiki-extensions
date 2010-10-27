@@ -20,3 +20,53 @@ $messages['en'] = array(
 	'wikiBhashaLink' => 'WikiBhasha (Beta)',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'wikibhasha' => '{{Optional}}',
+	'wikiBhashaLink' => '{{Optional}}',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikibhasha-desc' => 'Program koji pravi višejezični sadržaj tako da bi se bolje iskoristio sadržaj Wikipedije na engleskom jeziku',
+);
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'wikibhasha-desc' => 'Stellt eine Anwendung bereit, mit der fremdsprachige Inhalte erstellt und so die der englischsprachigen Wikipedia besser genutzt werden können',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'wikibhasha-desc' => 'Aplicación para crear contidos multilingües a partir dos presentes na Wikipedia en inglés',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikibhasha-desc' => 'Application pro crear contento multilingue a base del contento de Wikipedia in anglese',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'wikibhasha-desc' => 'Toepassing om inhoud te maken in meerdere talen om zo de inhoud van de Engelstalige Wikipedia beter te gebruiken',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wikibhasha-desc' => 'Program for å opprette mangespråklig innhold som har innflytelse over innholdet på den engelske Wikipedia',
+);
+

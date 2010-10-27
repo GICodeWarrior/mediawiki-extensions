@@ -6907,6 +6907,7 @@ $messages['ml'] = array(
 	'configure-section-search' => 'തിരയൂ',
 	'configure-section-copyright' => 'പകർപ്പവകാശം',
 	'configure-section-misc' => 'മറ്റുള്ളവ',
+	'configure-section-filter' => 'അരിച്ചെടുക്കൽ',
 	'configure-section-mw-extensions' => 'മീഡിയവിക്കി അനുബന്ധങ്ങൾ',
 	'configure-section-external-tools' => 'ബാഹ്യ ഉപകരണങ്ങൾ',
 	'configure-section-filesystem' => 'ഫയൽസിസ്റ്റവും ഷെല്ലുവുമായുള്ള ആശയവിനിമയം',

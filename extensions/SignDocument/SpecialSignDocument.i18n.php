@@ -2978,6 +2978,7 @@ $1',
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -3004,6 +3005,7 @@ $messages['ml'] = array(
 	'sign-submit' => 'പ്രമാണത്തിൽ ഒപ്പിടുക',
 	'sig-success' => 'താങ്കൾ പ്രമാണത്തിൽ വിജയകരമായി ഒപ്പിട്ടിരിക്കുന്നു.',
 	'sign-view-selectfields' => "'''പ്രദർശിപ്പിക്കേണ്ട ഫീൽഡുകൾ:'''",
+	'sign-viewfield-timestamp' => 'സമയമുദ്ര',
 	'sign-viewfield-realname' => 'പേര്‌',
 	'sign-viewfield-address' => 'വിലാസം',
 	'sign-viewfield-city' => 'പട്ടണം',
@@ -3014,6 +3016,7 @@ $messages['ml'] = array(
 	'sign-viewfield-phone' => 'ഫോൺ',
 	'sign-viewfield-email' => 'ഇമെയിൽ',
 	'sign-viewfield-age' => 'വയസ്സ്',
+	'sign-viewfield-options' => 'ഐച്ഛികങ്ങൾ',
 	'sign-sigadmin-close' => 'ഒപ്പിടൽ നിരോധിക്കുക',
 	'sign-sigadmin-currentlyclosed' => 'ഈ പ്രമാണത്തിൽ നിലവിൽ ഒപ്പിടൽ നിരോധിച്ചിരിക്കുന്നു.',
 	'sign-sigadmin-open' => 'ഒപ്പിടൽ അനുവദിക്കുക',

@@ -93,6 +93,19 @@ $messages['arz'] = array(
 	'contrib-tracking-button' => 'استمر',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'contributiontracking-desc' => 'Викимедиа файҙаһына иғәнә йыйыуҙы күҙәтеү',
+	'contributiontracking' => 'Иғәнә йыйыуҙы күҙәтеү',
+	'contrib-tracking-error' => 'Хата',
+	'contrib-tracking-error-text' => 'Форманы ебәреү хатаһы',
+	'contrib-tracking-submitting' => 'Түләүҙәрҙе эшкәртеү ҡоралына ебәреү...',
+	'contrib-tracking-continue' => 'Әгәр һеҙ автоматик рәүештә йүнәлтелгән булмаһағыҙ, PayPal сайтында иғәнә биреүҙе тамамлау өсөн, төймәгә баҫығыҙ.',
+	'contrib-tracking-button' => 'Дауам итергә',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

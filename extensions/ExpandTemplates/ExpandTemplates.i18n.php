@@ -181,6 +181,26 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_preview' => 'Previsualizar',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'expandtemplates' => 'Ҡалыптарҙы йәйелдереү',
+	'expandtemplates-desc' => 'Йәйелдерелгән вики-текстты күрһәтеү һәм булдырылған битте ҡарап сығыу өсөн [[Special:ExpandTemplates|ҡалыптарҙы, укыу ҡоралдарын һәм үҙгәреүсән дәүмәлдәрҙе йәйелдерә]]',
+	'expand_templates_intro' => 'Был махсус бит бирелгән тексттың бөтә ҡалыптарын ҡабатланмалы рәүештә йәйелдерә.
+Шулай уҡ <nowiki>{{</nowiki>#if:…}} һымаҡ уҡыу ҡоралдары һәм <nowiki>{{</nowiki>CURRENTDAY}} һымаҡ үҙгәреүсән дәүмәлдәр,— ғөмүмән, икәүле йәйәләр эсендә барыһы ла йәйелдерелә.
+Был MediaWiki-ның кәрәкле эшкәртеүсе ҡоралын саҡырыу ярҙамында эшләнә.',
+	'expand_templates_title' => '{{PAGENAME}} һ.б. өсөн бит исеме:',
+	'expand_templates_input' => 'Сығанаҡ текст:',
+	'expand_templates_output' => 'Һөҙөмтә',
+	'expand_templates_xml_output' => 'XML һөҙөмтә',
+	'expand_templates_ok' => 'Тамам',
+	'expand_templates_remove_comments' => 'Аңлатмаларҙы юйырға',
+	'expand_templates_remove_nowiki' => 'Һөҙөмтәлә <nowiki> билдәләрен йәшерергә',
+	'expand_templates_generate_xml' => 'XML уҡыу ағасын күрһәтергә',
+	'expand_templates_preview' => 'Ҡарап сығыу',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

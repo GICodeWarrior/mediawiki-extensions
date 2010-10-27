@@ -91,6 +91,16 @@ $messages['ast'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|enllaz|enllaces}} a $3',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'crossnamespacelinks' => 'Исемдәр арауығы араһындағы һылтанмалар',
+	'crossnamespacelinks-desc' => '{{SITENAME}} проектында булырға тейеш булмаған [[Special:CrossNamespaceLinks|исемдәр арауығы араһындағы һылтанмалар исемлеген]] күрһәтә',
+	'crossnamespacelinks-summary' => 'Был бит төп исемдәр арауығындағы биттәрҙән икенсе исемдәр арауығындағы биттәргә һылтанмалар исемлеген ({{ns:special}}, {{ns:talk}}, {{ns:project}} һәм {{ns:template}} исем арауыҡтарынан башҡа) күрһәтә, бындай һылтанмаларҙы ҡулланыу кәңәш ителмәй.',
+	'crossnamespacelinkstext' => '$1: $3 исемдәр арауығына $2 {{PLURAL:$2|һылтанма}}',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

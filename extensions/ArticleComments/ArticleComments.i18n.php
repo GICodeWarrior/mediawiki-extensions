@@ -422,6 +422,7 @@ Saatavilla ovat "plain", "normal" ja "wiki".',
 
 /** French (Français)
  * @author Peter17
+ * @author Sherbrooke
  * @author Verdy p
  * @author 青子守歌
  */
@@ -439,7 +440,7 @@ $messages['fr'] = array(
 	'article-comments-invalid-field' => 'Le $1 fourni <nowiki>[$2]</nowiki> est invalide.',
 	'article-comments-required-field' => 'Le champ $1 est obligatoire.',
 	'article-comments-submission-failed' => 'L’envoi du commentaire a échoué',
-	'article-comments-failure-reasons' => 'Désolé, l’envoi de votre commentaire a échoué pour la (les) raison(s) suivante(s) :',
+	'article-comments-failure-reasons' => 'Désolé, l’envoi de votre commentaire a échoué pour {{PLURAL:$1|la raison suivante|les raisons suivantes}} :',
 	'article-comments-no-comments' => 'Désolé, l’article « [[$1]] » n’accepte pas les commentaires pour le moment.',
 	'article-comments-talk-page-starter' => '<noinclude>Commentaires sur [[$1]]
 <comments />
@@ -475,7 +476,7 @@ $messages['gl'] = array(
 	'article-comments-invalid-field' => 'O $1 proporcionado <nowiki>[$2]</nowiki> é inválido.',
 	'article-comments-required-field' => 'O campo "$1" é obrigatorio.',
 	'article-comments-submission-failed' => 'Fallou o envío do comentario',
-	'article-comments-failure-reasons' => 'Sentímolo, o seu comentario non puido enviarse por algún dos seguintes motivos:',
+	'article-comments-failure-reasons' => 'Sentímolo, o seu comentario non puido enviarse {{PLURAL:$1|polo seguinte motivo|polos seguintes motivos}}:',
 	'article-comments-no-comments' => 'Sentímolo, nestes intres a páxina "[[$1]]" non acepta comentarios.',
 	'article-comments-talk-page-starter' => '<noinclude>Comentarios sobre "[[$1]]"
 <comments />
@@ -595,7 +596,7 @@ $messages['ia'] = array(
 	'article-comments-invalid-field' => 'Le $1 fornite <nowiki>[$2]</nowiki> es invalide.',
 	'article-comments-required-field' => 'Le campo $1 es obligatori.',
 	'article-comments-submission-failed' => 'Submission de commento fallite',
-	'article-comments-failure-reasons' => 'Regrettabilemente, le submission de tu commento ha fallite pro le sequente ration(es):',
+	'article-comments-failure-reasons' => 'Regrettabilemente, le submission de tu commento ha fallite pro le sequente {{PLURAL:$1|motivo|motivos}}:',
 	'article-comments-no-comments' => 'Regrettabilemente, le articulo "[[$1]]" non accepta commentos pro le momento.',
 	'article-comments-talk-page-starter' => '<noinclude>Commentos super [[$1]]
 <comments />
@@ -800,7 +801,7 @@ $messages['ml'] = array(
 	'article-comments-invalid-field' => '$1 നൽകിയ <nowiki>[$2]</nowiki> അസാധുവാണ്.',
 	'article-comments-required-field' => '$1 എന്ന ഫീൽഡ് ആവശ്യമാണ്.',
 	'article-comments-submission-failed' => 'അഭിപ്രായം സമർപ്പിക്കാൻ സാധിച്ചില്ല',
-	'article-comments-failure-reasons' => 'ക്ഷമിക്കുക, താങ്കളുടെ അഭിപ്രായം സമർപ്പിക്കാൻ താഴെ പറയുന്ന കാരണത്താൽ (കാരണങ്ങളാൽ) സാധിച്ചില്ല:',
+	'article-comments-failure-reasons' => 'ക്ഷമിക്കുക, താങ്കളുടെ അഭിപ്രായം സമർപ്പിക്കാൻ താഴെ പറയുന്ന {{PLURAL:$1|കാരണത്താൽ|കാരണങ്ങളാൽ}} സാധിച്ചില്ല:',
 	'article-comments-no-comments' => 'ക്ഷമിക്കുക, ഇപ്പോൾ "[[$1]]" താളിൽ അഭിപ്രായങ്ങൾ സ്വീകരിക്കുന്നില്ല.',
 	'article-comments-talk-page-starter' => '<noinclude>[[$1]] താളിലെ അഭിപ്രായങ്ങൾ
 <comments />
@@ -843,7 +844,7 @@ $messages['nl'] = array(
 	'article-comments-invalid-field' => 'De opgegeven $1 <nowiki>[$2]</nowiki> is ongeldig.',
 	'article-comments-required-field' => 'Het veld $1 is verplicht.',
 	'article-comments-submission-failed' => 'Het opslaan van de opmerking is mislukt.',
-	'article-comments-failure-reasons' => 'Het opslaan van uw opmerking is mislukt om de volgende reden(en):',
+	'article-comments-failure-reasons' => 'Het opslaan van uw opmerking is mislukt om de volgende {{PLURAL:$1|reden|redenen}}:',
 	'article-comments-no-comments' => 'Bij de pagina "[[$1]]" kunnen op het moment geen opmerkingen geplaatst worden.',
 	'article-comments-talk-page-starter' => '<noinclude>Opmerkingen bij [[$1]]
 <comments />
@@ -896,7 +897,7 @@ $messages['no'] = array(
 	'article-comments-invalid-field' => '$1 forutsatt at <nowiki>[$2]</nowiki> er ugyldig.',
 	'article-comments-required-field' => '$1-feltet er påkrevd.',
 	'article-comments-submission-failed' => 'Kommentering mislyktes',
-	'article-comments-failure-reasons' => 'Beklager, kommentaren din mislyktes på grunn av:',
+	'article-comments-failure-reasons' => 'Beklager, kommentaren din mislyktes på grunn av følgende {{PLURAL:$1|årsak|årsaker}}:',
 	'article-comments-no-comments' => 'Beklager, siden «[[$1]]» er ikke åpen for kommentarer nå',
 	'article-comments-talk-page-starter' => '<noinclude>Kommentarer på [[$1]]
 <comments />
@@ -1093,18 +1094,39 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author MaxSem
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'article-comments-desc' => 'Добавляет на основные страницы разделы комментариев',
+	'article-comments-title-string' => 'заголовок',
 	'article-comments-name-string' => 'Имя',
+	'article-comments-name-field' => 'Имя (обязательно):',
 	'article-comments-url-field' => 'Сайт:',
 	'article-comments-url-string' => 'URL',
 	'article-comments-comment-string' => 'Комментарий',
 	'article-comments-comment-field' => 'Комментарий:',
-	'article-comments-leave-comment-link' => 'Написать комментарий...',
+	'article-comments-submit-button' => 'Отправить',
+	'article-comments-leave-comment-link' => 'Оставьте комментарий…',
+	'article-comments-invalid-field' => 'Указанный ошибочный $1 <nowiki>[$2]</nowiki>.',
+	'article-comments-required-field' => 'Поле $1 является обязательным.',
+	'article-comments-submission-failed' => 'отправка комментария не удалась.',
+	'article-comments-failure-reasons' => 'К сожалению, не удалось отправить ваш комментарий по {{PLURAL:$1|следующей причине|следующим причинам}}:',
+	'article-comments-no-comments' => 'Извините, на странице «[[$1]]» в настоящий момент нельзя оставлять комментарии.',
+	'article-comments-talk-page-starter' => '<noinclude>Коммантарии — [[$1]]
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 сказал…',
+	'article-comments-summary' => 'Комментарий $1 — через расширение ArticleComments',
 	'article-comments-submission-succeeded' => 'Комментарий успешно отправлен',
 	'article-comments-submission-success' => 'Комментарий к «[[$1]]» успешно отправлен',
+	'article-comments-submission-view-all' => 'Вы можете просмотреть [[$1|все комментарии на этой странице]]',
+	'article-comments-user-is-blocked' => 'Вашей учётной записи в данный момент запрещено редактировать «[[$1]]».',
+	'article-comments-comment-bad-mode' => 'Недопустимый режим комментария.
+Допустимы режимы «plain», «normal» и «wiki».',
 	'article-comments-comment-missing-name-parameter' => 'Отсутствует имя',
 	'article-comments-comment-missing-date-parameter' => 'Отсутствует дата написания комментария',
+	'article-comments-no-spam' => 'По крайней мере одно из представленных полей было помечено как спам.',
+	'processcomment' => 'Обработка комментария',
 );
 
 /** Rusyn (Русиньскый)
