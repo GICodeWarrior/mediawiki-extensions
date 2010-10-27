@@ -391,9 +391,29 @@ $messages['arz'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Assele
  * @author Haqmar
  */
 $messages['ba'] = array(
+	'contributionreporting-desc' => 'Викимедиа файҙаһына иғәнә йыйыу тураһында ағымдағы мәғлүмәт',
+	'contributiontotal' => 'Иғәнәләр һаны',
+	'contributionhistory' => 'Иғәнәләр тарихы',
+	'contrib-hist-header' => 'Бөтә донъянан иғәнә биреүселәрҙең аңлатмалары',
+	'contrib-hist-name' => 'Исем',
+	'contrib-hist-date' => 'Көнө һәм ваҡыты',
+	'contrib-hist-amount' => 'Күләм',
+	'contrib-hist-next' => 'Элеккерәк бирелгән иғәнәләр',
+	'contrib-hist-previous' => 'Һуңыраҡ бирелгән иғәнәләр',
+	'contrib-hist-anonymous' => 'Танытмаған',
+	'contributionstatistics' => 'Иғәнәләр статистикаһы',
+	'contribstats-desc' => 'Викимедиа Фонды файҙаһына иғәнәләр статистикаһын күрһәтә',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Бөгөнгө көндә барыһы|Һуңғы $1 көндә барыһы}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Был айҙа барыһы|Һуңғы $1 айҙа барыһы}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|$1 айҙа барыһы|$1 айҙа һәр ай өсөн барыһы}}',
+	'contribstats-currency-range-totals' => '$1 алып $2 тиклем барыһы',
+	'contribstats-contribution-range-breakdown' => 'Иғәнә күләмен бүлеү ($1 алып $2 тиклем)',
+	'contribstats-currency-totals' => '$1 иҡтисади йыл өсөн барыһы',
+	'contribstats-contribution-breakdown' => '$1 иҡтисади йыл өсөн иғәнә күләмен бүлеү',
 	'contribstats-day' => 'Көн',
 	'contribstats-month' => 'Ай',
 	'contribstats-currency' => 'Валюта',
@@ -414,13 +434,33 @@ $messages['ba'] = array(
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Был аҙнала барыһы|Һуңғы $1 аҙна менән бергә аҙналыҡ һөҙөмтәләр}}',
 	'contribstats-payment-type' => 'Түләү төрө',
 	'contribstats-banner' => 'Баннер',
+	'contribstats-payment-type-hits' => 'Түләү төрҙәрен ҡулланыу',
 	'contribstats-clicks' => 'Күсеүҙәр',
 	'contribstats-donations' => 'Ярҙамдар',
 	'contribstats-conversion' => 'Конверсия нисбәте (%)',
 	'contribstats-template' => 'Ҡалып',
 	'contribstats-nodata' => 'Мәғлүмәттәр юҡ',
+	'contribstats-landingpage' => 'Сығарыу бите',
 	'contribstats-donatepage' => 'Ярҙам бите',
 	'contribstats-average' => 'Уртаса',
+	'contribstats-imperfect-data' => 'Был мәғлүмәт теүәл түгел, сөнки сессияны күҙәтеүһеҙ иғәнә биреүселәрҙе күҙәтеүҙең сикләүҙәре бар.',
+	'contribstats-paypal-donations' => 'PayPal иғәнәләре',
+	'contribstats-credit-card' => 'Кредит карталары',
+	'contribstats-fraud-note' => 'Ҡайһы бер иғәнәләр мутлыҡ менән эшләнгән.',
+	'contribstats-unaudited' => 'Был мәғлүмәт тикшереү үтмәгән.',
+	'fundraiserstatistics' => 'Иғәнә йыйыу статистикаһы',
+	'fundraiserstats-date' => 'Көнө',
+	'fundraiserstats-day' => '$2 иғәнә йыйыуҙың $1 көнө',
+	'fundraiserstats-contributions' => 'Иғәнәләр',
+	'fundraiserstats-total' => 'Барыһы (USD)',
+	'fundraiserstats-avg' => 'Уртаса (USD)',
+	'fundraiserstats-ytd' => 'Барыһы, йыйылма (USD)',
+	'fundraiserstats-max' => 'Иң күбе (USD)',
+	'fundraiserstats-tab-totals' => 'Барыһы (USD)',
+	'fundraiserstats-tab-contributions' => 'Иғәнәләр һаны',
+	'fundraiserstats-tab-averages' => 'Уртаса (USD)',
+	'fundraiserstats-tab-maximums' => 'Иң күптәре (USD)',
+	'fundraiserstats-tab-ytd' => 'Йыл башынан (USD)',
 );
 
 /** Belarusian (Беларуская)
@@ -3303,6 +3343,13 @@ $messages['ml'] = array(
 	'fundraiserstats-tab-contributions' => 'സംഭാവനകളുടെ എണ്ണം',
 	'fundraiserstats-tab-averages' => 'ശരാശരികൾ (USD)',
 	'fundraiserstats-tab-maximums' => 'പരമാവധികൾ (USD)',
+);
+
+/** Hill Mari (Кырык мары)
+ * @author Amdf
+ */
+$messages['mrj'] = array(
+	'contribstats-donations' => 'Окса палшык',
 );
 
 /** Malay (Bahasa Melayu)
