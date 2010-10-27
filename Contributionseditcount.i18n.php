@@ -41,6 +41,14 @@ $messages['arz'] = array(
 	'contributionseditcount-desc' => 'يعرض عدد المساهمات فى [[Special:Contributions|صفحة مساهمات المستخدم]]',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'contributionseditcount' => 'Был ҡатнашыусы {{PLURAL:$1|үҙгәртеү}} яһаған.',
+	'contributionseditcount-desc' => '[[Special:Contributions|Ҡатнашыусы өлөшө]] битендә яһалған үҙгәртеүҙәр һанын күрһәтә',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
