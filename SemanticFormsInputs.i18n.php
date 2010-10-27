@@ -258,6 +258,16 @@ $messages['mk'] = array(
 	'semanticformsinputs-today' => 'Денес',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'semanticformsinputs-close' => 'അടയ്ക്കുക',
+	'semanticformsinputs-prev' => 'മുൻപത്തേത്',
+	'semanticformsinputs-next' => 'അടുത്തത്',
+	'semanticformsinputs-today' => 'ഇന്ന്',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
