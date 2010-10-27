@@ -6,7 +6,6 @@
  * freely. This software is provided 'as-is', without any express or implied
  * warranty.
  */
-/* $Id$ */
 
 $messages = array();
 
