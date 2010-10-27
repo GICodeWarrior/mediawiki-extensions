@@ -83,21 +83,24 @@ class ClickTrackingHooks {
 	 * @return Boolean: always true
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
+		global $wgExtensionAssetsPath;
+		$localpath = dirname( __FILE__ ) . '/modules';
+		$remotepath = "$wgExtensionAssetsPath/extensions/ClickTracking/modules";
 		$resourceLoader->register( array(
 			'jquery.clickTracking' => new ResourceLoaderFileModule( array(
-				'scripts' => 'extensions/ClickTracking/modules/jquery.clickTracking.js',
+				'scripts' => 'jquery.clickTracking.js',
 				'dependencies' => 'jquery.cookie',
 			) ),
 			'ext.clickTracking' => new ResourceLoaderFileModule( array(
-				'scripts' => 'extensions/ClickTracking/modules/ext.clickTracking.js',
+				'scripts' => 'ext.clickTracking.js',
 				'dependencies' => 'jquery.clickTracking',
 			) ),
 			'ext.clickTracking.special' => new ResourceLoaderFileModule( array(
-				'scripts' => 'extensions/ClickTracking/modules/ext.clickTracking.special.js',
-				'styles' => 'extensions/ClickTracking/modules/ext.clickTracking.special.css',
+				'scripts' => 'ext.clickTracking.special.js',
+				'styles' => 'ext.clickTracking.special.css',
 				'dependencies' => array( 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
 			) ),
-		) );
+		), $localpath, $remotepath );
 		return true;
 	}
 

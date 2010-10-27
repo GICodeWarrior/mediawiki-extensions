@@ -215,9 +215,12 @@ class VectorHooks {
 	 * Adds modules to ResourceLoader
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
+		global $wgExtensionAssetsPath;
+		$localpath = dirname( __FILE__ ) . '/modules';
+		$remotepath = "$wgExtensionAssetsPath/Vector/modules";
 		foreach ( self::$modules as $name => $resources ) {
 			$resourceLoader->register(
-				$name, new ResourceLoaderFileModule( $resources, 'extensions/Vector/modules/' )
+				$name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
 			);
 		}
 		return true;
