@@ -16,15 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'wikibhasha' => 'WikiBhasha',
-	'wikibhasha-desc' => "Extension's description",
-	'wikiBhashaLink' => 'WikiBhasha(Beta)'
+	'wikibhasha-desc' => 'Application to create multilingual content leveraging the English Wikipedia content',
+	'wikiBhashaLink' => 'WikiBhasha (Beta)',
 );
 
-/**
- * German (Deutsch)
- */
-$messages['de'] = array(
-	'wikibhasha' => 'WikiBhasha',
-	'wikibhasha-desc' => 'Beschreibung der Erweiterung',
-	'wikiBhashaLink' => 'WikiBhasha(Beta)'
-);
