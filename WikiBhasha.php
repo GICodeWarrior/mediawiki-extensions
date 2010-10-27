@@ -12,10 +12,10 @@
 // 3. Looks for "wbAutoLaunch=true" in the URL and launch WikiBhasha.
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'WikiBhasha',
 	'author' => 'Microsoft Research',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiBhasha',
-	'description' => 'Default description message',
 	'descriptionmsg' => 'wikibhasha-desc',
 	'version' => '1.0',
 );
