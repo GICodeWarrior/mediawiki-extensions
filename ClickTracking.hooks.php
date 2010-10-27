@@ -86,7 +86,7 @@ class ClickTrackingHooks {
 		global $wgExtensionAssetsPath;
 		$localpath = dirname( __FILE__ ) . '/modules';
 		$remotepath = "$wgExtensionAssetsPath/extensions/ClickTracking/modules";
-		$resourceLoader->register( array(
+		$resourceLoader->register( new ResourceLoaderFileModule( array(
 			'jquery.clickTracking' => new ResourceLoaderFileModule( array(
 				'scripts' => 'jquery.clickTracking.js',
 				'dependencies' => 'jquery.cookie',
@@ -100,7 +100,7 @@ class ClickTrackingHooks {
 				'styles' => 'ext.clickTracking.special.css',
 				'dependencies' => array( 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
 			) ),
-		), $localpath, $remotepath );
+		), $localpath, $remotepath ) );
 		return true;
 	}
 
