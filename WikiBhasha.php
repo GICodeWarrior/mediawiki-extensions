@@ -24,18 +24,18 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $jsPath = "extensions/WikiBhasha/src/";
 
-// add a special page
-$wgSpecialPages['wikiBhasha'] = 'WikiBhasha';
-$wgSpecialPageGroups['wikiBhasha'] = 'wiki';
-
 // Autoloadable classes
 $wgAutoloadClasses['wikiBhashaExt'] = $dir . 'WikiBhashaExtClass.php';
-$wgAutoloadClasses['wikiBhasha'] = $dir . 'WikiBhashaSpecial.php';
+$wgAutoloadClasses['WikiBhasha'] = $dir . 'WikiBhashaSpecial.php';
 
 // initilize wikiBhasha launch class
 $wbExtClass = new wikiBhashaExt();
 
-$wgAutoloadClasses['wikibhasha'] = $dir . 'WikiBhasha_body.php'; # Location of the wikibhasha class (Tell MediaWiki to load this file)
+// add a special page
+$wgSpecialPages['WikiBhasha'] = 'WikiBhasha';
+$wgSpecialPageGroups['WikiBhasha'] = 'wiki';
+
+$wgAutoloadClasses['WikiBhasha'] = $dir . 'WikiBhasha_body.php'; # Location of the wikibhasha class (Tell MediaWiki to load this file)
 $wgExtensionMessagesFiles['WikiBhasha'] = $dir . 'WikiBhasha.i18n.php'; # Location of a messages file (Tell MediaWiki to load this file)
 $wgExtensionAliasesFiles['WikiBhasha'] = $dir . 'WikiBhasha.alias.php'; # Location of a messages file (Tell MediaWiki to load this file)
 

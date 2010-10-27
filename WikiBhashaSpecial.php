@@ -7,7 +7,7 @@
 * 
 */
 
-class wikiBhasha extends SpecialPage {
+class WikiBhasha extends SpecialPage {
 
 	/**
 	 * Constructor
