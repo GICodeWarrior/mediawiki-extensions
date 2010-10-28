@@ -55,6 +55,13 @@ $messages['ast'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'mwsearch-desc' => "Hintergrundprózess fyr d'Lucene-Suachmaschijn",
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
