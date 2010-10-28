@@ -370,12 +370,14 @@ $messages['eu'] = array(
 	'tog-riched_toggle_remember_state' => 'Gogoratu erabilitako azken editore hautua',
 );
 
-/** Persian (فارسی) */
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
 $messages['fa'] = array(
-	'textrichditor' => 'ويرايشگر پيشرفته',
-	'tog-riched_disable' => 'غيرفعال کردن ويرايشگر پيشرفته',
-	'tog-riched_disable_ns_main' => 'غيرفعال کردن ويرايشگر پيشرفته در فضاي نام اصلي',
-	'tog-riched_disable_ns_talk' => 'غيرفعال کردن ويرايشگر پيشرفته در فضاي نام "{{ns:talk}}"',
+	'textrichditor' => 'ویرایشگر پیشرفته',
+	'tog-riched_disable' => 'غیرفعال کردن ویرایشگر پیشرفته',
+	'tog-riched_disable_ns_main' => 'غیرفعال کردن ویرایشگر پیشرفته در فضای نام اصلی',
+	'tog-riched_disable_ns_talk' => 'غیرفعال کردن ویرایشگر پیشرفته در فضای نام "{{ns:talk}}"',
 	'tog-riched_disable_ns_user' => 'غيرفعال کردن ويرايشگر پيشرفته در فضاي نام "{{ns:user}}"',
 	'tog-riched_disable_ns_user_talk' => 'غيرفعال کردن ويرايشگر پيشرفته در فضاي نام "{{ns:user_talk}}"',
 	'tog-riched_disable_ns_project' => 'غيرفعال کردن ويرايشگر پيشرفته در فضاي نام "{{ns:project}}"',

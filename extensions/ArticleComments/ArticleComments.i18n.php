@@ -1042,7 +1042,7 @@ $messages['pt-br'] = array(
 	'article-comments-invalid-field' => 'O valor que forneceu como $1, <nowiki>[$2]</nowiki>, é inválido',
 	'article-comments-required-field' => 'O campo $1 é obrigatório.',
 	'article-comments-submission-failed' => 'O envio do comentário falhou',
-	'article-comments-failure-reasons' => 'O envio do seu comentário falhou pelos seguintes motivos:',
+	'article-comments-failure-reasons' => 'O envio do seu comentário falhou {{PLURAL:$1|pela seguinte motivo|pelas seguintes motivos}}:',
 	'article-comments-no-comments' => 'Neste momento, a página "[[$1]]" não aceita comentários.',
 	'article-comments-talk-page-starter' => '<noinclude>Comentários em [[$1]]
 <comments />

@@ -852,6 +852,13 @@ $messages['sc'] = array(
 	'abcdownload' => 'Scàrriga:',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'abc-desc' => 'Dodaje <code>&lt;abc&gt;</code> oznaku za formatiranje ABC muzike',
+);
+
 /** Tachelhit (Tašlḥiyt)
  * @author Dalinanir
  */

@@ -1069,6 +1069,7 @@ $messages['uk'] = array(
 	'commentbox-desc' => 'Додає поле коментаря до певних сторінок',
 	'commentbox-savebutton' => 'Зберегти коментар',
 	'commentbox-name' => 'Назва:',
+	'commentbox-name-explanation' => "<small>(Порада: Якщо ви [[Special:UserLogin|увійдете в систему]], вам не потрібно буде заповнювати своє ім'я вручну)</small>",
 	'commentbox-log' => 'Нові коментарі',
 	'commentbox-first-comment-heading' => '== Коментарі ==',
 	'commentbox-regex' => '/\\n==\\s*Коментарі\\s*==\\s*\\n/i',

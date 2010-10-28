@@ -360,6 +360,13 @@ $messages['ml'] = array(
 	'addmediawizard-desc' => 'വിക്കിമീഡിയ ഫൗണ്ടേഷനും കൾടറയും പരസ്പരപങ്കാളിത്തത്തോടെ വികസിപ്പിച്ചെടുത്ത മീഡിയാ ചേർക്കൽ സഹായി',
 );
 
+/** Mongolian (Монгол)
+ * @author Namchin
+ */
+$messages['mn'] = array(
+	'addmediawizard-desc' => 'Медиа нэмэх хялбат цонх, Kaltura болон Wikimedia сантай хамтран хөгжүүлэв',
+);
+
 /** Malay (Bahasa Melayu)
  * @author CoolCityCat
  */

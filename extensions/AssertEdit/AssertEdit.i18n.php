@@ -694,6 +694,15 @@ $messages['scn'] = array(
 	'assert_edit_message' => "L'affirmazzioni nnicata ($1) non ariniscìu.",
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'assert_edit_title' => 'Potvrđivanje nije uspjelo',
+	'assertedit-desc' => 'Dodaje potvrđivanje uređivanja za botove.',
+	'assert_edit_message' => 'Specificirano potvrđivanje ($1) nije uspjelo.',
+);
+
 /** Tachelhit (Tašlḥiyt)
  * @author Dalinanir
  */

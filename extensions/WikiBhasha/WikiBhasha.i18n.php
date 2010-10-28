@@ -28,6 +28,13 @@ $messages['qqq'] = array(
 	'wikiBhashaLink' => '{{Optional}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'wikibhasha-desc' => 'Дастасаваньне для стварэньня шматмоўнага зьместу, які выкарыстоўвае зьмест ангельскай Вікіпэдыі',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -36,10 +43,11 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Kghbln
  */
 $messages['de'] = array(
-	'wikibhasha-desc' => 'Stellt eine Anwendung bereit, mit der fremdsprachige Inhalte erstellt und so die der englischsprachigen Wikipedia besser genutzt werden können',
+	'wikibhasha-desc' => 'Stellt eine Anwendung bereit, mit der vielsprachige Inhalte erstellt und so die der englischsprachigen Wikipedia besser genutzt werden können',
 );
 
 /** Galician (Galego)
@@ -49,11 +57,32 @@ $messages['gl'] = array(
 	'wikibhasha-desc' => 'Aplicación para crear contidos multilingües a partir dos presentes na Wikipedia en inglés',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'wikibhasha-desc' => 'Aawändig, wu mer Inhalt in vile Sproche cha aalege un eso d Inhalt vu dr änglische Wikipedia besser cha nutze',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'wikibhasha-desc' => 'Application pro crear contento multilingue a base del contento de Wikipedia in anglese',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'wikibhasha-desc' => 'ウィキペディア英語版の記事を利用して、多言語記事を作成するアプリケーション',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'wikibhasha-desc' => 'Програм за создавање на повеќејазични содржини користејќи ги содржините на англиската Википедија',
 );
 
 /** Dutch (Nederlands)
@@ -68,5 +97,26 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'wikibhasha-desc' => 'Program for å opprette mangespråklig innhold som har innflytelse over innholdet på den engelske Wikipedia',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wikibhasha-desc' => 'Aplikacja do tworzenia wielojęzycznych treści wykorzystująca zawartość angielskiej Wikipedii',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'wikibhasha-desc' => 'Aplicação para criar conteúdos multilingues a partir do conteúdo da Wikipédia em inglês',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'wikibhasha-desc' => 'Додаток для створення багатомовного змісту використовуючи зміст англійської Вікіпедії',
 );
 
