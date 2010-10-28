@@ -15,17 +15,19 @@ if ( !defined( 'SF_VERSION' ) ) {
 	die( 'This is a Semantic Forms extension. You need to install Semantic Forms first.' );
 }
 
+define( 'SFI_VERSION', '0.7.3 alpha' );
+
 // create and initialize settings
 $sfigSettings = new SFISettings();
 
 // register extension
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Semantic Forms Inputs',
 	'author' => array( '[http://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]', 'Sanyam Goyal', 'Yaron Koren' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs',
 	'descriptionmsg' => 'semanticformsinputs-desc',
-	'version' => '0.3.1',
+	'version' => SFI_VERSION,
 );
 
 // load user settings
