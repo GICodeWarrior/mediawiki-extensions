@@ -16,7 +16,7 @@
  */
 if( !defined( 'MEDIAWIKI' ) ) die( "Not an entry point." );
 
-define( 'PDFBOOK_VERSION', "1.0.5, 2010-09-19" );
+define( 'PDFBOOK_VERSION', "1.0.6, 2010-10-28" );
 
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
@@ -45,7 +45,7 @@ class PdfBook {
 		$wgHooks['UnknownAction'][] = $this;
 
 		# Hooks for pre-Vector and Vector addtabs.
-		if ( $wgPdfBookTab ) {
+		if( $wgPdfBookTab ) {
 			$wgHooks['SkinTemplateTabs'][] = $this ;
 			$wgHooks['SkinTemplateNavigation'][] = $this;
 		}
@@ -98,7 +98,7 @@ class PdfBook {
 			if( $format == 'single' ) $articles = array( $title );
 			else {
 				$articles = array();
-				if ( $title->getNamespace() == NS_CATEGORY ) {
+				if( $title->getNamespace() == NS_CATEGORY ) {
 					$db     = wfGetDB( DB_SLAVE );
 					$cat    = $db->addQuotes( $title->getDBkey() );
 					$result = $db->select(
@@ -108,7 +108,7 @@ class PdfBook {
 						'PdfBook',
 						array( 'ORDER BY' => 'cl_sortkey' )
 					);
-					if ( $result instanceof ResultWrapper ) $result = $result->result;
+					if( $result instanceof ResultWrapper ) $result = $result->result;
 					while ( $row = $db->fetchRow( $result ) ) $articles[] = Title::newFromID( $row[0] );
 				}
 				else {
@@ -126,22 +126,20 @@ class PdfBook {
 			$wgScriptPath  = $wgServer.$wgScriptPath;
 			$wgUploadPath  = $wgServer.$wgUploadPath;
 			$wgScript      = $wgServer.$wgScript;
-			foreach ( $articles as $title ) {
+			foreach( $articles as $title ) {
 				$ttext = $title->getPrefixedText();
-				if ( !in_array( $ttext, $exclude ) ) {
+				if( !in_array( $ttext, $exclude ) ) {
 					$article = new Article( $title );
 					$text    = $article->fetchContent();
 					$text    = preg_replace( "/<!--([^@]+?)-->/s", "@@" . "@@$1@@" . "@@", $text ); # preserve HTML comments
-					if ( $format != 'single' ) $text .= "__NOTOC__";
+					if( $format != 'single' ) $text .= "__NOTOC__";
 					$opt->setEditSection( false );    # remove section-edit links
-					$wgOut->setHTMLTitle( $ttext );   # use this so DISPLAYTITLE magic works
 					$out     = $wgParser->parse( $text, $title, $opt, true, true );
-					$ttext   = $wgOut->getHTMLTitle();
 					$text    = $out->getText();
 					$text    = preg_replace( "|(<img[^>]+?src=\")(/.+?>)|", "$1$wgServer$2", $text );      # make image urls absolute
 					$text    = preg_replace( "|<div\s*class=['\"]?noprint[\"']?>.+?</div>|s", "", $text ); # non-printable areas
 					$text    = preg_replace( "|@{4}([^@]+?)@{4}|s", "<!--$1-->", $text );                  # HTML comments hack
-					$ttext   = basename($ttext);
+					$ttext   = basename( $ttext );
 					$h1      = $notitle ? "" : "<center><h1>$ttext</h1></center>";
 					$html   .= utf8_decode( "$h1$text\n" );
 				}
