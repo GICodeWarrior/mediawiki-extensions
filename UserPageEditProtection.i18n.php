@@ -50,6 +50,14 @@ $messages['ar'] = array(
 	'right-editalluserpages' => 'تحرير صفحات المستخدم',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'userpageeditprotection-desc' => "Begrenzt as Beorweiten vo Benutzerseiten auf'n Bsitzer und berechtigte Benutzer",
+	'right-editalluserpages' => 'Benutzerseiten beorweiten',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
