@@ -19,9 +19,7 @@ class SpecialUserOptionStats extends SpecialPage {
 	public $blacklist = array( 'nickname' );
 
 	public function execute( $par ) {
-		global $wgRequest, $wgUser, $wgOut, $wgLang, $wgAutoloadClasses;
-
-		wfLoadExtensionMessages( 'UserOptionStats' );
+		global $wgRequest, $wgOut, $wgLang, $wgAutoloadClasses;
 
 		$this->setHeaders();
 		$this->outputHeader();
