@@ -223,6 +223,13 @@ $messages['mk'] = array(
 	'wikimediamobile-desc' => 'Функции на МедијаВики за поддршка на проектот на Википедија-мобилен, вдомен на http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Mongolian (Монгол)
+ * @author Namchin
+ */
+$messages['mn'] = array(
+	'wikimediamobile-desc' => 'MediaWiki-аас Wikimedia-mobile төсөлд үзүүлдэг дэмжлэгийн үүрэг функцууд нь http://github.com/hcatlin/wikimedia-mobile хаяг дээр байгаа.',
+);
+
 /** Malay (Bahasa Melayu)
  * @author CoolCityCat
  */
