@@ -10,7 +10,6 @@ class OggHandler extends MediaHandler {
 	}
 
 	function getParamMap() {
-		wfLoadExtensionMessages( 'OggHandler' );
 		return array(
 			'img_width' => 'width',
 			'ogg_noplayer' => 'noplayer',
