@@ -3,11 +3,10 @@
 class SpecialCommunityHiring extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'CommunityHiring' );
-		wfLoadExtensionMessages( 'CommunityHiring' );
 	}
 	
 	function execute( $par ) {
-		global $wgRequest, $wgOut;
+		global $wgOut;
 		
 		$wgOut->setPageTitle( wfMsg( 'communityhiring-header' ) );
 		

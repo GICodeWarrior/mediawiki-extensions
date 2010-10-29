@@ -41,7 +41,7 @@ $wgHooks['BeforePageDisplay'][] = 'efUniversalEditLink';
 $wgExtensionMessagesFiles['UniversalEditButton'] = dirname(__FILE__) . '/UniversalEditButton.i18n.php';
 
 function efUniversalEditLink( $output ) {
-	global $wgArticle, $wgTitle, $wgUser;
+	global $wgArticle, $wgTitle;
 	if( isset( $wgArticle ) &&
 		isset( $wgTitle ) &&
 		($wgTitle->quickUserCan( 'edit' )

@@ -166,7 +166,6 @@ class SpecialContributionStatistics extends SpecialPage {
 	public function showCurrencyTotals() {
 		global $wgOut, $wgLang;
 		
-		$msg = '';
 		if ( $this->mMode == 'range' ) {
 			$msg = wfMsg( 'contribstats-currency-range-totals',
 				$wgLang->date( wfTimestamp( TS_MW, $this->mStartDate ) ),

@@ -31,7 +31,6 @@ class ReaderFeedbackHooks {
 	}
 	
 	public static function injectJSVars( &$globalVars ) {
-		global $wgUser;
 		$globalVars['wgFeedbackParams'] = ReaderFeedback::getJSFeedbackParams();
 		$globalVars['wgAjaxFeedback'] = (object) array( 
 			'sendingMsg' => wfMsgHtml('readerfeedback-submitting'), 
@@ -44,12 +43,12 @@ class ReaderFeedbackHooks {
 	* Add ReaderFeedback css for relevant special pages.
 	*/
 	public static function InjectStyleForSpecial() {
-		global $wgTitle, $wgOut, $wgUser;
+		global $wgTitle, $wgOut;
 		if( empty($wgTitle) || $wgTitle->getNamespace() !== NS_SPECIAL ) {
 			return true;
 		}
 		$spPages = array( 'RatingHistory' );
-		foreach( $spPages as $n => $key ) {
+		foreach( $spPages as $key ) {
 			if( $wgTitle->isSpecial( $key ) ) {
 				global $wgScriptPath, $wgFeedbackStylePath, $wgFeedbacktyleVersion;
 				$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFeedbackStylePath );
@@ -107,7 +106,7 @@ class ReaderFeedbackHooks {
 	  * @param Title $title
 	 */
 	protected static function addQuickFeedback( &$data, $top = false, $title ) {
-		global $wgOut, $wgUser, $wgRequest, $wgFeedbackTags;
+		global $wgOut, $wgUser, $wgFeedbackTags;
 		# Are there any reader input tags?
 		if( empty($wgFeedbackTags) ) {
 			return false;
@@ -128,7 +127,6 @@ class ReaderFeedbackHooks {
 		$form .= Xml::openElement( 'span', array('id' => 'mw-feedbackselects') );
 		# Loop through all different flag types
 		foreach( ReaderFeedback::getFeedbackTags() as $quality => $levels ) {
-			$label = array();
 			$selected = ( isset($flags[$quality]) && $flags[$quality] > 0 ) ? $flags[$quality] : -1;
 			$form .= "<b>" . Xml::label( wfMsgHtml("readerfeedback-$quality"), "wp$quality" ) . ":</b>";
 			$attribs = array( 'name' => "wp$quality", 'id' => "wp$quality",

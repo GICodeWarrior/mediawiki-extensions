@@ -127,7 +127,7 @@ abstract class CommunityVoiceRatings {
 	/* Static Functions */
 
 	public static function register() {
-		global $wgParser, $wgAjaxExportList, $wgHooks;
+		global $wgParser, $wgAjaxExportList;
 		// Register the hook with the parser
 		$wgParser->setHook( 'ratings:scale', array( __CLASS__, 'renderScale' ) );
 		// Register ajax response hook
@@ -336,7 +336,6 @@ abstract class CommunityVoiceRatings {
 		$rating,
 		$article
 	) {
-		global $wgUser;
 		// Adds vote and checks for success
 		if ( self::addVote( $category, $title, $rating ) ) {
 			// Gets new rating data

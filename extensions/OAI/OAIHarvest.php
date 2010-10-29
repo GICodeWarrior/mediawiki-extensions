@@ -375,8 +375,6 @@ class OAIUpdateRecord {
 	 * @param array $data
 	 */
 	function applyRevision( $data ) {
-		$fname = 'OAIUpdateRecord::applyRevision';
-		
 		$title = $this->getTitle();
 		$pageId = $this->getArticleId();
 		$timestamp = $this->getTimestamp( $data['timestamp'] );

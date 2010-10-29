@@ -240,7 +240,7 @@ class ReaderFeedback {
 				'<sup>('.wfMsgHtml('ratinghistory-ave',$wgLang->formatNum($ave)).')</sup></td>';
 		}
 		$html .= '</tr><tr>';
-		foreach( $votes as $tag => $dist ) {
+		foreach( $votes as $dist ) {
 			$html .= '<td><table>';
 			$html .= '<tr><th align="left">'.wfMsgHtml('ratinghistory-table-rating').'</th>';
 			for( $i = 1; $i <= 5; $i++ ) {

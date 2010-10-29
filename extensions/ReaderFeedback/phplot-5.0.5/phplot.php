@@ -2102,7 +2102,7 @@ class PHPlot {
         $this->num_data_rows = count($which_dv);
         $this->total_records = 0;               // Perform some useful calculations.
         $this->records_per_group = 1;
-        for ($i = 0, $recs = 0; $i < $this->num_data_rows; $i++) {
+        for ($i = 0; $i < $this->num_data_rows; $i++) {
             // Copy
             $this->data[$i] = array_values($which_dv[$i]);   // convert to numerical indices.
 
@@ -3911,7 +3911,6 @@ class PHPlot {
         $xpos = $this->plot_area[0] + $this->plot_area_width/2;
         $ypos = $this->plot_area[1] + $this->plot_area_height/2;
         $diameter = min($this->plot_area_width, $this->plot_area_height);
-        $radius = $diameter/2;
 
         // Get sum of each column? One pie slice per column
         if ($this->data_type === 'text-data') {
@@ -3954,7 +3953,6 @@ class PHPlot {
 
         for ($h = $this->shading; $h >= 0; $h--) {
             $color_index = 0;
-            $start_angle = 0;
             $end_angle = 0;
             foreach ($sumarr as $val) {
                 // For shaded pies: the last one (at the top of the "stack") has a brighter color:
@@ -4029,7 +4027,7 @@ class PHPlot {
         // Suppress duplicate X data labels in linepoints mode; let DrawLinesError() do them.
         $do_labels = ($this->plot_type != 'linepoints');
 
-        for($row = 0, $cnt = 0; $row < $this->num_data_rows; $row++) {
+        for($row = 0; $row < $this->num_data_rows; $row++) {
             $record = 1;                                // Skip record #0 (title)
 
             $x_now = $this->data[$row][$record++];  // Read it, advance record index
@@ -4389,7 +4387,7 @@ class PHPlot {
 
         $start_lines = array_fill(0, $this->records_per_group, FALSE);
 
-        for ($row = 0, $cnt = 0; $row < $this->num_data_rows; $row++) {
+        for ($row = 0; $row < $this->num_data_rows; $row++) {
             $record = 1;                                    // Skip record #0 (data label)
 
             $x_now = $this->data[$row][$record++];          // Read X value, advance record index

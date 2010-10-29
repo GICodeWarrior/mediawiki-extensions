@@ -15,7 +15,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	}
 	
 	public function execute( $sub ) {
-		global $wgRequest, $wgOut, $wgUser, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
+		global $wgOut, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
 		
 		/* Configuration (this isn't totally static data, some of it gets built on the fly) */
 		
