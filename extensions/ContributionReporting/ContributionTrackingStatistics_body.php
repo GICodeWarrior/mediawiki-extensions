@@ -15,9 +15,6 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	public function __construct() {
 		// Initialize special page
 		parent::__construct( 'ContributionTrackingStatistics' );
-
-		// Internationalization
-		wfLoadExtensionMessages( 'ContributionReporting' );
 	}
 
 	public function execute( $sub ) {
@@ -75,10 +72,6 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	// Generic Table Display for Totals
 	// FORMAT: 1 daily, 2 weekly, 3 Monthly, 4 Combined
 	public function showTotalsForRange( $range, $format ) {
-		global $wgOut;
-		global $wgAllowedTempaltes, $wgAllowedSupport, 
-			$wgAllowedPaymentMethod, $wgContributionReportingBaseURL;
-
 		list( $start, $end ) = $range;
 		$current = $end;
 		
@@ -121,7 +114,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 	public function createTable( $totals ) {
 		// Table headers
-		global $wgOut, $wgAllowedTemplates, $wgAllowedSupport;
+		global $wgAllowedTemplates, $wgAllowedSupport;
 		global $wgAllowedPaymentMethod, $wgContributionReportingBaseURL;
 
 		$htmlOut = Xml::openElement( 'table',
@@ -145,11 +138,16 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 		foreach( $totals as $template ) {
 			//grab info from utm_src, 'unpack' template, landing page, donation page thus far
 			$expanded_template = explode(".", $template[0]);
-			if(!isset($expanded_template[1])){ $expanded_template[1] = "";}
-			if(!isset($expanded_template[2])){ $expanded_template[2] = "";}
+			if(!isset($expanded_template[1])) {
+				$expanded_template[1] = "";
+			}
+			if(!isset($expanded_template[2])) {
+				$expanded_template[2] = "";
+			}
 
-			if ( ! in_array($expanded_template[0], $wgAllowedTemplates ) )
+			if ( ! in_array($expanded_template[0], $wgAllowedTemplates ) ) {
 				continue;
+			}
 			if( ($expanded_template[1] != "") && (! in_array($expanded_template[1], $wgAllowedSupport)) ){
 				continue;
 			}
@@ -250,7 +248,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 		);
 
-		while ( $row = $dbr->fetchRow( $res ) ) {
+		foreach ( $res as $row ) {
 			$result[] = array(
 					$row[0],
 					$row[1],

@@ -16,9 +16,6 @@ class ContributionHistory extends SpecialPage {
 		$offset = $wgRequest->getIntOrNull( 'offset' );
 		$show = 100;
 		
-		wfLoadExtensionMessages( 'ContributionReporting' );
-		wfLoadExtensionMessages( 'ContributionReporting', $language );
-		
 		$this->setHeaders();
 		
 		$db = efContributionReportingConnection();
@@ -109,8 +106,8 @@ class ContributionHistory extends SpecialPage {
 				'LIMIT' => $show
 			)
 		);
-		$alt = TRUE;
-		while ( $row = $res->fetchRow() ) {
+		$alt = true;
+		foreach ( $res as $row ) {
             if ( $this->isTiny( $row ) ) {
                 continue; // Skip over micro payments generally < $1
             }
