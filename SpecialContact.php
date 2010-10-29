@@ -27,7 +27,6 @@ class SpecialContact extends SpecialPage {
 	 * Constructor
 	 */
 	function __construct() {
-		global $wgOut;
 		parent::__construct( 'Contact', '', true );
 	}
 
@@ -38,7 +37,6 @@ class SpecialContact extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest, $wgEnableEmail, $wgContactUser;
 
-		wfLoadExtensionMessages( 'ContactPageFundraiser' );
 		$fname = "SpecialContact::execute";
 
 	 	if ( $wgRequest->wasPosted() ) {
@@ -56,7 +54,7 @@ class SpecialContact extends SpecialPage {
 			$form['url']	   = $wgRequest->getVal('url');
 			$form['country']   = $wgRequest->getVal('country');
 			$form['citytown']  = $wgRequest->getVal('city-town');
-		        $form['provstat']  = $wgRequest->getVal('prov-state');	
+			$form['provstat']  = $wgRequest->getVal('prov-state');	
 			$form['story']	   = $wgRequest->getVal('story');
 			$form['followup']  = $wgRequest->getVal('follow-up');
 
@@ -67,57 +65,53 @@ class SpecialContact extends SpecialPage {
 			$f->setText( $text );
 			$f->doSubmit();
 		}
-
-		else {
-				
-			}		
-			if( !$wgEnableEmail || !$wgContactUser ) {
-				$wgOut->showErrorPage( "nosuchspecialpage", "nospecialpagetext" );
-				return;
-			}
-
-			$action = $wgRequest->getVal( 'action' );
-
-			$nu = User::newFromName( $wgContactUser );
-			if( is_null( $nu ) || !$nu->canReceiveEmail() ) {
-				wfDebug( "Target is invalid user or can't receive.\n" );
-				$wgOut->showErrorPage( "noemailtitle", "noemailtext" );
-				return;
-			}
-
-			$f = new EmailContactForm( $nu );
-
-			if ( "success" == $action ) {
-				wfDebug( "$fname: success.\n" );
-				$f->showSuccess( );
-			} else if ( "submit" == $action && $wgRequest->wasPosted() && $f->hasAllInfo() ) {
-				$token = $wgRequest->getVal( 'wpEditToken' );
-
-				if( $wgUser->isAnon() ) {
-					# Anonymous users may not have a session
-					# open. Check for suffix anyway.
-					$tokenOk = ( EDIT_TOKEN_SUFFIX == $token );
-				} else {
-					$tokenOk = $wgUser->matchEditToken( $token );
-				}
-
-				if ( !$tokenOk ) {
-					wfDebug( "$fname: bad token (".($wgUser->isAnon()?'anon':'user')."): $token\n" );
-					$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
-					$f->showForm();
-				} else if ( !$f->passCaptcha() ) {
-					wfDebug( "$fname: captcha failed" );
-					$wgOut->addWikiText( wfMsg( 'contactpage-captcha-failed' ) ); //TODO: provide a message for this!
-					$f->showForm();
-				} else {
-					wfDebug( "$fname: submit\n" );
-					$f->doSubmit();
-				}
-			} else {
-				wfDebug( "$fname: form\n" );
-				$f->showForm();
-			}
+		if( !$wgEnableEmail || !$wgContactUser ) {
+			$wgOut->showErrorPage( "nosuchspecialpage", "nospecialpagetext" );
+			return;
 		}
+
+		$action = $wgRequest->getVal( 'action' );
+
+		$nu = User::newFromName( $wgContactUser );
+		if( is_null( $nu ) || !$nu->canReceiveEmail() ) {
+			wfDebug( "Target is invalid user or can't receive.\n" );
+			$wgOut->showErrorPage( "noemailtitle", "noemailtext" );
+			return;
+		}
+
+		$f = new EmailContactForm( $nu );
+
+		if ( "success" == $action ) {
+			wfDebug( "$fname: success.\n" );
+			$f->showSuccess( );
+		} else if ( "submit" == $action && $wgRequest->wasPosted() && $f->hasAllInfo() ) {
+			$token = $wgRequest->getVal( 'wpEditToken' );
+
+			if( $wgUser->isAnon() ) {
+				# Anonymous users may not have a session
+				# open. Check for suffix anyway.
+				$tokenOk = ( EDIT_TOKEN_SUFFIX == $token );
+			} else {
+				$tokenOk = $wgUser->matchEditToken( $token );
+			}
+
+			if ( !$tokenOk ) {
+				wfDebug( "$fname: bad token (".($wgUser->isAnon()?'anon':'user')."): $token\n" );
+				$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
+				$f->showForm();
+			} else if ( !$f->passCaptcha() ) {
+				wfDebug( "$fname: captcha failed" );
+				$wgOut->addWikiText( wfMsg( 'contactpage-captcha-failed' ) ); //TODO: provide a message for this!
+				$f->showForm();
+			} else {
+				wfDebug( "$fname: submit\n" );
+				$f->doSubmit();
+			}
+		} else {
+			wfDebug( "$fname: form\n" );
+			$f->showForm();
+		}
+	}
 }
 
 /**
@@ -135,7 +129,6 @@ class EmailContactForm {
 	 */
 	function __construct( $target ) {
 		global $wgRequest, $wgUser;
-		global $wgCaptchaClass;
 
 		$this->target = $target;
 		$this->text = $wgRequest->getText( 'wpText' );
@@ -284,8 +277,8 @@ class EmailContactForm {
 
 	function doSubmit( ) {
 		global $wgOut, $wgRequest;
-		global $wgEnableEmail, $wgUserEmailUseReplyTo, $wgEmergencyContact;
-		global $wgContactUser, $wgContactSender, $wgContactSenderName;
+		global $wgUserEmailUseReplyTo, $wgEmergencyContact;
+		global $wgContactSender, $wgContactSenderName;
 
 		$csender = $wgContactSender ? $wgContactSender : $wgEmergencyContact;
 		$cname = $wgContactSenderName;
