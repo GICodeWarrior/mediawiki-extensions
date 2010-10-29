@@ -12,7 +12,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'FundraiserStatistics' );
-		wfLoadExtensionMessages( 'ContributionReporting' );
 	}
 	
 	public function execute( $sub ) {
@@ -88,7 +87,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		}
 		// Scale factors
 		foreach ( $charts as $name => $chart ) {			
-			$charts[$name]['factor'] = $factor = 300 / $chart['max'];
+			$charts[$name]['factor'] = 300 / $chart['max'];
 		}
 		// HTML-time!
 		$view = 0;
