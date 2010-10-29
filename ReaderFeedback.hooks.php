@@ -115,7 +115,6 @@ class ReaderFeedbackHooks {
 		# Revision being displayed
 		$id = $wgOut->getRevisionId();
 		# Load required messages
-		wfLoadExtensionMessages( 'ReaderFeedback' );
 		$reviewTitle = SpecialPage::getTitleFor( 'ReaderFeedback' );
 		$action = $reviewTitle->getLocalUrl( 'action=submit' );
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action,
@@ -149,12 +148,12 @@ class ReaderFeedbackHooks {
 			'title' => wfMsg('readerfeedback-tt-review').' ['.wfMsg('readerfeedback-ak-review').']' )
 		);
 		# Hidden params
-		$form .= Xml::hidden( 'title', $reviewTitle->getPrefixedText() ) . "\n";
-		$form .= Xml::hidden( 'target', $title->getPrefixedDBKey() ) . "\n";
-		$form .= Xml::hidden( 'oldid', $id ) . "\n";
-		$form .= Xml::hidden( 'validatedParams', ReaderFeedbackPage::validationKey( $id, $wgUser->getId() ) );
-		$form .= Xml::hidden( 'action', 'submit') . "\n";
-		$form .= Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n";
+		$form .= Html::hidden( 'title', $reviewTitle->getPrefixedText() ) . "\n";
+		$form .= Html::hidden( 'target', $title->getPrefixedDBKey() ) . "\n";
+		$form .= Html::hidden( 'oldid', $id ) . "\n";
+		$form .= Html::hidden( 'validatedParams', ReaderFeedbackPage::validationKey( $id, $wgUser->getId() ) );
+		$form .= Html::hidden( 'action', 'submit') . "\n";
+		$form .= Html::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n";
 		# Honeypot input
 		$form .= Xml::input( 'commentary', 12, '', array('style' => 'display:none;') ) . "\n";
 		$form .= Xml::closeElement( 'fieldset' );
@@ -171,7 +170,6 @@ class ReaderFeedbackHooks {
 		global $wgTitle;
 		# Add rating tab
 		if( isset($wgTitle) && ReaderFeedback::isPageRateable($wgTitle) ) {
-			wfLoadExtensionMessages( 'RatingHistory' );
 			$nav_urls['ratinghist'] = array( 
 				'text' => wfMsg( 'ratinghistory-link' ),
 				'href' => $skintemplate->makeSpecialUrl( 'RatingHistory', 
