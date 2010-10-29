@@ -169,8 +169,7 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		$rhist = SpecialPage::getTitleFor( 'RatingHistory' );
 		$graphLink = $rhist->getFullUrl( 'target='.$form->page->getPrefixedUrl() );
 		$talk = $form->page->getTalkPage();
-		
-		wfLoadExtensionMessages( 'RatingHistory' );
+
 		$tallyTable = ReaderFeedback::getVoteAggregates( $form->page, 31, $form->dims );
 		
 		$dbw = wfGetDB( DB_MASTER );
