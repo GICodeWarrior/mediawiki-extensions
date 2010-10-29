@@ -167,7 +167,7 @@ function efContributionReportingTotal( $start, $fudgeFactor ) {
 
 function efContributionReportingTotal_Render() {
 	$args = func_get_args();
-	$parser = array_shift( $args );
+	array_shift( $args );
 	
 	$fudgeFactor = false;
 	$start = false;
