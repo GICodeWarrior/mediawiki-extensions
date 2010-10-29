@@ -111,7 +111,6 @@ class CrossNamespaceLinksPage extends QueryPage {
 
 		$plink = $skin->makeKnownLink( $nt->getPrefixedText(), htmlspecialchars( $text ) );
 
-		wfLoadExtensionMessages( 'CrossNamespaceLinks' );
 		return wfMsgExt( 'crossnamespacelinkstext', array( 'parsemag' ), $plink, $wgLang->formatNum( $result->namespace ), htmlspecialchars( $wgLang->getNsText( $result->value ) ) );
 	}
 }
