@@ -326,7 +326,7 @@ class LuceneBuilder {
 	 * the index updater daemon was broken or disabled since last build.
 	 */
 	function rebuildRecent( $since = null ) {
-		global $wgDBname, $options;
+		global $wgDBname;
 		$fname   = 'LuceneBuilder::rebuildDeleted';
 		
 		if( is_null( $since ) ) {

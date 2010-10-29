@@ -64,15 +64,9 @@ class LuceneSearch extends SearchEngine {
 		global $wgContLang, $wgLuceneUseRelated;
 		$fname = 'LuceneSearch::replacePrefixes';
 		wfProfileIn($fname);
-		$start = 0; $len = 0; // token start pos and length
-		$rewritten = ''; // rewritten query
-		$rindex = 0; // point to last rewritten character
-		$inquotes = false;
-		
+
 		// "search everything" keyword
 		$allkeyword = wfMsgForContent('searchall');			
-		
-		$qlen = strlen($query);
 		
 		// quick check, most of the time we don't need any rewriting
 		if(strpos($query,':')===false){ 
@@ -164,10 +158,7 @@ class LuceneResult extends SearchResult {
 	function __construct( $lines, $method ) {
 		global $wgContLang;
 		
-		$score = null;
 		$interwiki = null;
-		$namespace = null;
-		$title = null;
 		
 		$line = $lines['result'];
 		wfDebug( "Lucene line: '$line'\n" );
@@ -500,7 +491,6 @@ class LuceneSearchSet extends SearchResultSet {
 		}
 
 		$suggestion = null;
-		$totalHits = null;
 		$info = null;
 		$interwiki = null;
 		
