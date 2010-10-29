@@ -12,16 +12,15 @@
  */
 if( !defined( 'MEDIAWIKI' ) ) die( "Not an entry point." );
 
-define( 'EMAILPAGE_VERSION', "1.3.6, 2010-09-21" );
+define( 'EMAILPAGE_VERSION', "1.4.0, 2010-10-29" );
 
 $wgEmailPageGroup           = "sysop";              # Users must belong to this group to send emails (empty string means anyone can send)
-$wgEmailPageContactsCat     = "";                   # This specifies the name of a category containing categories of contact pages
 $wgEmailPageCss             = "EmailPage.css";      # A minimal CSS page to embed in the email (eg. monobook/main.css without portlets, actions etc)
 $wgEmailPageAllowRemoteAddr = array( "127.0.0.1" ); # Allow anonymous sending from these addresses
 $wgEmailPageAllowAllUsers   = false;                # Whether to allow sending to all users (the "user" group)
 $wgEmailPageToolboxLink     = true;                 # Add a link to the sidebar toolbox?
 $wgEmailPageActionLink      = true;                 # Add a link to the actions links?
-$wgPhpMailerClass           = dirname( __FILE__ ) . "/phpMailer_v2.1.0beta2/class.phpmailer.php"; # From http://phpmailer.sourceforge.net/
+$wgPhpMailerClass           = dirname( __FILE__ ) . "/PHPMailer_v5.1/class.phpmailer.php"; # From http://phpmailer.sourceforge.net/
 
 if( $wgEmailPageGroup ) $wgGroupPermissions['sysop'][$wgEmailPageGroup] = true;
 
@@ -43,11 +42,11 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # If form has been posted, include the phpmailer class
-if ( isset( $_REQUEST['ea-send'] ) ) require_once( $wgPhpMailerClass );
+if( isset( $_REQUEST['ea-send'] ) ) require_once( $wgPhpMailerClass );
 
 # Add toolbox and action links
-if ( $wgEmailPageToolboxLink ) $wgHooks['SkinTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
-if ( $wgEmailPageActionLink )  {
+if( $wgEmailPageToolboxLink ) $wgHooks['SkinTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
+if( $wgEmailPageActionLink )  {
 	$wgHooks['SkinTemplateTabs'][] = 'wfEmailPageActionLink';
 	$wgHooks['SkinTemplateNavigation'][] = 'wfEmailPageActionLinkVector';
 }
@@ -63,7 +62,7 @@ function wfEmailPageToolboxLink() {
 
 function wfEmailPageActionLink( $skin, &$actions ) {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
-	if ( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
+	if( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
 		$url = SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) );
 		$actions['email'] = array( 'text' => wfMsg( 'email' ), 'class' => false, 'href' => $url );
 	}
@@ -72,7 +71,7 @@ function wfEmailPageActionLink( $skin, &$actions ) {
 
 function wfEmailPageActionLinkVector( $skin, &$actions ) {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
-	if ( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
+	if( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
 		$url = SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) );
 		$actions['views']['email'] = array( 'text' => wfMsg( 'email' ), 'class' => false, 'href' => $url );
 	}
