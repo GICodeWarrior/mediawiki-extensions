@@ -3,7 +3,6 @@
 class SpecialCommunityApplications extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'CommunityApplications', 'view-community-applications' );
-		wfLoadExtensionMessages( 'CommunityApplications' );
 	}
 	
 	function execute($par) {
