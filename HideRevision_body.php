@@ -4,7 +4,6 @@
  */
 class HideRevisionForm extends SpecialPage {
 	function __construct() {
-		wfLoadExtensionMessages( 'HideRevision' );
 		parent::__construct( 'HideRevision', 'hiderevision' );
 	}
 
