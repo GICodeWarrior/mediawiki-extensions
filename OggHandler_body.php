@@ -131,7 +131,7 @@ class OggHandler extends MediaHandler {
 		try {
 			$f = new File_Ogg( $path );
 			$streams = array();
-			foreach ( $f->listStreams() as $streamType => $streamIDs ) {
+			foreach ( $f->listStreams() as $streamIDs ) {
 				foreach ( $streamIDs as $streamID ) {
 					$stream = $f->getStream( $streamID );
 					$streams[$streamID] = array(
@@ -527,7 +527,6 @@ class OggTransformOutput extends MediaTransformOutput {
 
 		$alt = empty( $options['alt'] ) ? $this->file->getTitle()->getText() : $options['alt'];
 		$scriptPath = OggHandler::getMyScriptPath();
-		$thumbDivAttribs = array();
 		$showDescIcon = false;
 
 		if ( $this->isVideo ) {
