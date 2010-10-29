@@ -8,8 +8,6 @@ class RatedPages extends SpecialPage
 {
     public function __construct() {
         parent::__construct( 'RatedPages' );
-		wfLoadExtensionMessages( 'RatedPages' );
-		wfLoadExtensionMessages( 'ReaderFeedback' );
     }
 
     public function execute( $par ) {
@@ -47,7 +45,7 @@ class RatedPages extends SpecialPage
 		$form = Xml::openElement( 'form',
 			array( 'name' => 'reviewedpages', 'action' => $wgScript, 'method' => 'get' ) );
 		$form .= Xml::fieldset( wfMsg( 'ratedpages-leg' ) );
-		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBKey() );
+		$form .= Html::hidden( 'title', $this->getTitle()->getPrefixedDBKey() );
 		$form .= ReaderFeedbackXML::getRatingTierMenu($this->tier) . '&#160;';
 		if( count($wgFeedbackNamespaces) > 1 ) {
 			$form .= ReaderFeedbackXML::getNamespaceMenu( $this->namespace ) . '&#160;';
