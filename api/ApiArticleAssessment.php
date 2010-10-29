@@ -7,7 +7,6 @@ class ApiArticleAssessment extends ApiBase {
 	public function execute() {
 		global $wgUser, $wgArticleAssessmentRatings;
 		$params = $this->extractRequestParams();
-
 		$token = array();
 		if ( $wgUser->isAnon() ) {
 			if ( !isset( $params['anontoken'] ) ) {
@@ -182,11 +181,11 @@ class ApiArticleAssessment extends ApiBase {
 
 		foreach( $wgArticleAssessmentRatings as $rating ) {
 			$ret["r{$rating}"] = array(
-				ApiBase::PARAM_TYPE => 'limit',
+				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_MIN => 0,
 				ApiBase::PARAM_MAX => 5,
-				ApiBase::PARAM_MAX2 => 5,
+				ApiBase::PARAM_RANGE_ENFORCE => false,
 			);
 		}
 		return $ret;
@@ -212,7 +211,7 @@ class ApiArticleAssessment extends ApiBase {
 	}
 
 	public function mustBePosted() {
-		return true;
+		return false;
 	}
 
 	public function isWriteMode() {
