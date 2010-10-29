@@ -24,7 +24,7 @@ abstract class CommunityVoiceRatings {
 			'DISTINCT vot_category'
 		);
 		$categories = array();
-		while ( $row = $result->fetchRow() ) {
+		foreach( $result as $row ) {
 			$categories[] = (string)$row['vot_category'];
 		}
 		return $categories;
