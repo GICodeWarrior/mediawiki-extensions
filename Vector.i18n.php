@@ -300,6 +300,22 @@ $messages['ckb'] = array(
 	'vector-simplesearch-containing' => 'بە لەبەرگرتنەوەی ...',
 );
 
+/** Crimean Turkish (Latin) (Qırımtatarca (Latin))
+ * @author Don Alessandro
+ */
+$messages['crh-latn'] = array(
+	'vector-simplesearch-search' => 'Qıdır',
+	'vector-simplesearch-containing' => 'içinde bu olğan...',
+);
+
+/** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
+ * @author Don Alessandro
+ */
+$messages['crh-cyrl'] = array(
+	'vector-simplesearch-search' => 'Къыдыр',
+	'vector-simplesearch-containing' => 'ичинде бу олгъан...',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
