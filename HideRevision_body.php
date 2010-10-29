@@ -101,7 +101,7 @@ class HideRevisionForm extends SpecialPage {
 
 			// Hidden fields
 			$this->revisionFields() .
-			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
+			Html::hidden( 'wpEditToken', $wgUser->editToken() ) .
 
 			Xml::closeElement( 'form' ) );
 	}
