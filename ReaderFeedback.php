@@ -141,7 +141,7 @@ $wgAjaxExportList[] = 'ReaderFeedbackPage::AjaxReview';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efReaderFeedbackSchemaUpdates';
 
 function efReaderFeedbackSchemaUpdates() {
-	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
+	global $wgDBtype, $wgExtNewTables;
 	$base = dirname(__FILE__);
 	if( $wgDBtype == 'mysql' ) {
 		$wgExtNewTables[] = array( 'reader_feedback', "$base/ReaderFeedback.sql" ); // Initial install tables
