@@ -1473,6 +1473,7 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'importfreeimages' => '汇入自由版权图片',
@@ -1483,7 +1484,7 @@ $messages['zh-hans'] = array(
 	'importfreeimages_importthis' => '汇入这个',
 	'importfreeimages_next' => '下一个 $1',
 	'importfreeimages_size_square' => '方点',
-	'importfreeimages_size_thumbnail' => '缩图',
+	'importfreeimages_size_thumbnail' => '缩略图',
 	'importfreeimages_size_small' => '小',
 	'importfreeimages_size_medium' => '中',
 	'importfreeimages_size_large' => '大',
