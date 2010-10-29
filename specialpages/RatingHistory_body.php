@@ -547,7 +547,7 @@ class RatingHistory extends UnlistedSpecialPage
 	*/
 	public function getFilePath( $tag, $ext='' ) {
 		global $wgUploadDirectory;
-		$rel = self::getRelPath( $tag, $ext );
+		$rel = $this->getRelPath( $tag, $ext );
 		return "{$wgUploadDirectory}/graphs/{$rel}";
 	}
 	
@@ -559,7 +559,7 @@ class RatingHistory extends UnlistedSpecialPage
 	*/
 	public function getUrlPath( $tag, $ext='' ) {
 		global $wgUploadPath;
-		$rel = self::getRelPath( $tag, $ext );
+		$rel = $this->getRelPath( $tag, $ext );
 		return "{$wgUploadPath}/graphs/{$rel}";
 	}
 	
