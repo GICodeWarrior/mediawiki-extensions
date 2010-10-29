@@ -16,8 +16,6 @@ class ReaderFeedbackHooks {
 			return true;
 		}
 		global $wgScriptPath, $wgJsMimeType, $wgFeedbackStylePath, $wgFeedbackStyleVersion;
-		# Load required messages
-		wfLoadExtensionMessages( 'ReaderFeedback' );
 		
 		$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFeedbackStylePath );
 

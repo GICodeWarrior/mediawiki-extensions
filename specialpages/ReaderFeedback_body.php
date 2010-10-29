@@ -19,7 +19,6 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 	
     public function __construct() {
         parent::__construct( 'ReaderFeedback', 'feedback' );
-		wfLoadExtensionMessages( 'ReaderFeedback' );
     }
 
     public function execute( $par ) {
