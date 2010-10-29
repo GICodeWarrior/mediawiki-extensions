@@ -131,7 +131,7 @@ class HideRevisionForm extends SpecialPage {
 		$changes = ChangesList::newFromUser( $wgUser );
 
 		$out = $changes->beginRecentChangesList();
-		while( $row = $resultSet->fetchObject() ) {
+		foreach ( $resultSet as $row ) {
 			$rc = RecentChange::newFromCurRow( $row );
 			$rc->counter = 0; // ???
 			$out .= $changes->recentChangesLine( $rc );
@@ -488,7 +488,7 @@ class SpecialOversight extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $this->getRevisions( $dbr, array( 'hidden_rev_id' => $revision ) );
 
-		while( $row = $dbr->fetchObject( $result ) ) {
+		foreach ( $result as $row ) {
 			$info = $this->listRow( $row );
 			$list = $this->revisionInfo( $row );
 			$rev = new Revision( $row );
@@ -534,7 +534,7 @@ class SpecialOversight extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $this->getRevisions( $dbr, array( 'hidden_rev_id' => $revision ) );
 
-		while( $row = $dbr->fetchObject( $result ) ) {
+		foreach ( $result as $row ) {
 			$info = $this->listRow( $row );
 			$list = $this->revisionInfo( $row );
 			$rev = new Revision( $row );
@@ -643,7 +643,7 @@ class HiddenRevisionsPager extends ReverseChronologicalPager {
 		wfProfileIn( __METHOD__ );
 		# Do a link batch query
 		$lb = new LinkBatch();
-		while( $row = $this->mResult->fetchObject() ) {
+		foreach ( $this->mResult as $row ) {
 			$lb->add( $row->page_namespace, $row->page_title );
 		}
 		$lb->execute();

@@ -40,7 +40,7 @@ abstract class CommunityVoiceRatings {
 			array( 'vot_category' => $category )
 		);
 		$titles = array();
-		while ( $row = $result->fetchRow() ) {
+		foreach ( $result as $row ) {
 			$titles[] = (string)$row['vot_title'];
 		}
 		return $titles;

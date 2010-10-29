@@ -240,7 +240,7 @@ class LuceneBuilder {
 			$limit );
 		
 		$errorCount = 0;
-		while( $row = $this->dbstream->fetchObject( $result ) ) {
+		foreach ( $result as $row ) {
 			$this->progress();
 			
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
@@ -304,7 +304,7 @@ class LuceneBuilder {
 		$this->init( $max );
 		$lastError = true;
 		
-		while( $row = $this->dbstream->fetchObject( $result ) ) {
+		foreach ( $result as $row ) {
 			$this->progress();
 			$title = Title::makeTitle( $row->log_namespace, $row->log_title );
 			$hit = MWSearchUpdater::deletePage( $wgDBname, $title );
@@ -358,7 +358,7 @@ class LuceneBuilder {
 		$this->init( $max );
 		$lastError = true;
 		
-		while( $row = $this->dbstream->fetchObject( $result ) ) {
+		foreach ( $result as $row ) {
 			$this->progress();
 			$rev = new Revision( $row );
 			if( is_object( $rev ) ) {

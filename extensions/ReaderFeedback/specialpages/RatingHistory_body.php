@@ -216,7 +216,7 @@ class RatingHistory extends UnlistedSpecialPage
 		// Label spacing
 		$int = intval( ceil($days/10) ); // 10 labels at most
 		$dates = $drating = $arating = $dcount = "";
-		while( $row = $res->fetchObject() ) {
+		foreach ( $res as $row ) {
 			$totalVal += (int)$row->rfh_total;
 			$totalCount += (int)$row->rfh_count;
 			$dayAve = sprintf( '%4.2f', (real)$row->rfh_total/(real)$row->rfh_count );
@@ -386,7 +386,7 @@ class RatingHistory extends UnlistedSpecialPage
 		if( !$maxC ) return false;
 		// Label spacing
 		$int = intval( ceil($days/10) ); // 10 labels at most
-		while( $row = $res->fetchObject() ) {
+		foreach ( $res as $row ) {
 			$totalVal += (int)$row->rfh_total;
 			$totalCount += (int)$row->rfh_count;
 			$dayCount = (real)$row->rfh_count;
@@ -521,7 +521,7 @@ class RatingHistory extends UnlistedSpecialPage
 		# Get max count and average rating
 		$total = $count = $ave = $maxC = $days = 0;
 		if( $dbr->numRows($res) > 0 ) {
-			while( $row = $dbr->fetchObject($res) ) {
+			foreach ( $res as $row ) {
 				if( !isset($lower) ) {
 					$lower = wfTimestamp( TS_UNIX, $row->rfh_date ); // first day
 				}
@@ -648,7 +648,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$columns = 4;
 		$count = 0;
 		$html = "<table class='rfb-reader_feedback_users'><tr>";
-		while( $row = $res->fetchObject() ) {
+		foreach ( $res as $row ) {
 			$title = Title::makeTitleSafe( NS_USER, $row->name );
 			if( is_null($title) ) continue; // bad IP?
 			$html .= '<td>'.$this->skin->makeLinkObj( $title, $title->getText() )." [{$row->n}]</td>";

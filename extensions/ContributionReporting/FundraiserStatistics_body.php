@@ -244,7 +244,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				);
 				$result = array();
 				$ytd = 0;
-				while ( $row = $dbr->fetchRow( $select ) ) {
+				foreach ( $select as $row ) {
 					$row[] = $ytd += $row[1]; // YTD
 					$result[] = $row;
 				}
