@@ -35,7 +35,6 @@ class ArticleAssessmentPilotHooks {
 	);
 
 	private static $messages = array();
-	private static $scripts = array();
 
 	/* Static Functions */
 	public static function schema( $updater = null ) {
