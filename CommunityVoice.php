@@ -73,7 +73,6 @@ abstract class CommunityVoice {
 		// Checks if extension messages have been loaded already
 		if ( !self::$messagesLoaded ) {
 			// Loads extension messages
-			wfLoadExtensionMessages( 'CommunityVoice' );
 			self::$messagesLoaded = true;
 		}
 	}
