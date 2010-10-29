@@ -3296,7 +3296,7 @@ class PHPlot {
         } else if ($mode == 'centeredtile') {
             $x0 = - floor($tile_width/2);   // Make the tile look better
             $y0 = - floor($tile_height/2);
-        } else if ($mode = 'tile') {
+        } else if ($mode == 'tile') {
             $x0 = 0;
             $y0 = 0;
         }
