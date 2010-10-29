@@ -26,7 +26,6 @@ $wgSpecialPages['ContributionTracking'] = 'ContributionTracking';
 //this only works if contribution tracking is inside a mediawiki DB, which typically it isn't.
 //$wgHooks['LoadExtensionSchemaUpdates'][] = 'efContributionTrackingLoadUpdates'; 
 
-
 $wgContributionTrackingDBserver = $wgDBserver;
 $wgContributionTrackingDBname = $wgDBname;
 $wgContributionTrackingDBuser = $wgDBuser;
