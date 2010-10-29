@@ -74,6 +74,14 @@ $messages['br'] = array(
 	'right-editalluserpages' => 'Kemmañ ar pajennoù implijer',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'userpageeditprotection-desc' => 'Ograničava uređivanje korisničkih stranica na vlasnika i ovlaštene korisnike',
+	'right-editalluserpages' => 'Uređivanje korisničkih stranica',
+);
+
 /** German (Deutsch)
  * @author The Evil IP address
  */
