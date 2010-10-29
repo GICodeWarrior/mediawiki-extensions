@@ -113,6 +113,20 @@ $messages['pt'] = array(
 	'wikibhasha-desc' => 'Aplicação para criar conteúdos multilingues a partir do conteúdo da Wikipédia em inglês',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'wikibhasha-desc' => 'Aplicação para criar conteúdos multilingues a partir do conteúdo da Wikipédia em inglês',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'wikibhasha-desc' => 'Приложение для создания многоязычных произведений на основе материалов английской Википедии',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

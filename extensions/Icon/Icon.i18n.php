@@ -225,7 +225,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'icon-badimage' => 'Imaxe mala',
-	'icon-badwidth' => 'Anchura mala',
+	'icon-badwidth' => 'Largo incorrecto',
 	'icon-desc' => 'Permítelle usar as imaxes como iconas e ligazóns a iconas',
 );
 
