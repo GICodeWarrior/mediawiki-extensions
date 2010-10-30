@@ -124,6 +124,13 @@ $messages['cs'] = array(
 	'poem-desc' => 'Přidává značku <code>&lt;poem&gt;</code> pro formátování básní',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'poem-desc' => 'Tilføjer tagget <code>&lt;poem&gt;</code> til formatering af digte',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Raimond Spekking
