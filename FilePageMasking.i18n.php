@@ -140,6 +140,13 @@ $messages['hsb'] = array(
 	'filepagemasking-desc' => 'Přepisuje ".xxx" do "_xxx" we wotkazach stronow datajoweho wopisanja',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Jagwar
+ */
+$messages['ht'] = array(
+	'filepagemasking-desc' => 'Reekri ".xxx" nan "_xxx" nan paj lyen File description',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */
