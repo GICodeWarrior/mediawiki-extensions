@@ -1,3 +1,15 @@
+wikimedia-raid-utils (1.9-2) karmic; urgency=low
+
+  * Adapted check-raid to new MegaCli64 output
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 09 Aug 2010 18:35:53 +0000
+
+wikimedia-raid-utils (1.9-1) hardy; urgency=low
+
+  * Add MegaCli64 and make check-raid.py use it instead of the old MegaCli
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 09 Aug 2010 18:13:03 +0000
+
 wikimedia-raid-utils (1.8-2) hardy; urgency=low
 
   * Removed sudoers modification as it's broken; let's do this with Puppet

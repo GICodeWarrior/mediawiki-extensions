@@ -201,15 +201,15 @@ def check3ware():
 
 def checkMegaSas():
 	try:
-		proc = subprocess.Popen(['/usr/bin/MegaCli', '-LDInfo', '-LALL', '-aALL'], 
+		proc = subprocess.Popen(['/usr/bin/MegaCli64', '-LDInfo', '-LALL', '-aALL'], 
 				stdout=subprocess.PIPE)
 	except:
 		error = sys.exc_info()[1]
-		print 'WARNING: error executing MegaCli: %s' % str(error)
+		print 'WARNING: error executing MegaCli64: %s' % str(error)
 		return 1
 	
 	stateRegex = re.compile('^State:\s*([^\n]*)')
-	drivesRegex = re.compile('^Number Of Drives:\s*([^\n]*)')
+	drivesRegex = re.compile('^Number Of Drives( per span)?:\s*([^\n]*)')
 	state = None
 	numDrives = None
 	for line in proc.stdout:
@@ -220,16 +220,16 @@ def checkMegaSas():
 		
 		m = drivesRegex.match(line)
 		if m != None:
-			numDrives = int(m.group(1))
+			numDrives = int(m.group(2))
 			continue
 	
 	ret = proc.wait()
 	if ret != 0:
-		print 'WARNING: MegaCli returned exit status %d' % (ret)
+		print 'WARNING: MegaCli64 returned exit status %d' % (ret)
 		return 1
 
 	if numDrives == None:
-		print 'WARNING: Parse error processing MegaCli output'
+		print 'WARNING: Parse error processing MegaCli64 output'
 		return 1
 
 	if state != 'Optimal':

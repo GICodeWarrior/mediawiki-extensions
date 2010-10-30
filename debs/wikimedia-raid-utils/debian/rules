@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 DESTDIR = $(CURDIR)/debian/wikimedia-raid-utils
-FILES = arcconf megamgr megamgr.bin megarc megarc.bin MegaCli tw_cli check-raid.py
+FILES = arcconf megamgr megamgr.bin megarc megarc.bin MegaCli MegaCli64 tw_cli check-raid.py
 
 configure:
 	# no action
