@@ -270,6 +270,13 @@ $messages['lv'] = array(
 	'formatsearch-desc' => 'Sakārto meklēšanas rezultātu lapu',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'formatsearch-desc' => 'Manadio ny pejim-balim-pikarohana',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
