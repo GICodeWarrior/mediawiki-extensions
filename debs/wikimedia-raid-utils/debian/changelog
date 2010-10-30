@@ -1,8 +1,14 @@
+wikimedia-raid-utils (1.10-2) hardy; urgency=low
+
+  * Run arcconf through sudo if a sudoers file for it exists
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 30 Oct 2010 21:44:50 +0000
+
 wikimedia-raid-utils (1.10) hardy; urgency=low
 
   * Update arcconf
 
- -- Mark Bergsma <mark@ragweed.knams.wikimedia.org>  Sat, 30 Oct 2010 20:41:05 +0000
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 30 Oct 2010 20:41:05 +0000
 
 wikimedia-raid-utils (1.9-2) karmic; urgency=low
 
