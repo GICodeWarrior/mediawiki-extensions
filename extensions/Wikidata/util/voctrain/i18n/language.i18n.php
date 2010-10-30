@@ -3856,6 +3856,7 @@ $messages['uk'] = array(
 	'voctrain_User_name' => "Ім'я користувача",
 	'voctrain_Password' => 'Пароль',
 	'voctrain_Language' => 'Мова',
+	'voctrain_Log_in' => 'Вхід',
 	'voctrain_other' => 'інша',
 );
 

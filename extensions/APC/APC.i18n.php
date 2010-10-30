@@ -1293,11 +1293,12 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
  * @author Purodha
  * @author Raimond Spekking
  * @author Revolus
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'apc' => 'APC-Informationen',
-	'apc-desc' => 'Ergänzt eine [[Special:APC|Spezialseite]] zum einsehen und bearbeiten des APC-Cache',
+	'apc-desc' => 'Ergänzt eine [[Special:APC|Spezialseite]] zum Einsehen und Bearbeiten des APC-Cache',
 	'right-apc' => 'Alle Funktionen von [[Special:APC|APC]] verwenden',
 	'viewapc-apc-not-available' => 'Keine Cache-Informationen verfügbar.
 APC wird scheinbar nicht ausgeführt.',

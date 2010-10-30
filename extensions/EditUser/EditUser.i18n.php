@@ -107,10 +107,11 @@ $messages['ar'] = array(
 
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
+ * @author Michaelovic
  */
 $messages['arc'] = array(
-	'edituser' => 'ܫܚܠܦܬܐ ܕܡܬܚܫܚܢܐ',
-	'edituser-username' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ',
+	'edituser' => 'ܫܚܠܦܬܐ ܕܡܦܠܚܢܐ',
+	'edituser-username' => 'ܫܡܐ ܕܡܦܠܚܢܐ:',
 	'edituser-dosearch' => 'ܒܨܝ',
 );
 
