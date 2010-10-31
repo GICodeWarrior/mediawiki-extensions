@@ -454,7 +454,7 @@ $messages['ru'] = array(
 	'userdailycontribs-desc' => 'Ежедневный вклад участников для расширения отслеживания нажатий',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
