@@ -65,6 +65,25 @@ $messages['br'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Gwrizienn : Hengounel',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'categorymultisortchinese-desc' => 'Omogućava da se kategorije pregledaju sa različitim ključem sortiranja prilagođenim kineskom pismu',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'mandarinski: Pinjin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'mandarinski: bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'mandarinski: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'mandarinski: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'mandarinski: Tongjong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'kantonski: Jitping',
+	'categorymultisort-sortkey-name-stroke' => 'Crtanje',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Crtanje: Pojednostavljeno',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Crtanje: Tradicionalno',
+	'categorymultisort-sortkey-name-radical' => 'Radikal',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikal: Pojednostavljeno',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Tradicionalno',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
