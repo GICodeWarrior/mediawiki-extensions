@@ -25,9 +25,7 @@ $messages['en'] = array(
 	'ea-sent'             => "Page [[$1]] sent successfully to '''$2''' {{PLURAL:$2|recipient|recipients}} by [[User:$3|$3]].",
 	'ea-selectrecipients' => 'Select recipients',
 	'ea-compose'          => 'Compose content',
-	'ea-selectlist'       => "Additional recipients as page titles or e-mail addresses
-*''separate items with , ; * \\n
-*''list can contain templates and parser-functions''",
+	'ea-selectlist'       => "Email addresses can be separated with one or more semicolon, comma, asterisk or newline characters",
 	'ea-show'             => 'Show recipients',
 	'ea-send'             => 'Send!',
 	'ea-subject'          => 'Enter a subject line for the e-mail',
