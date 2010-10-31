@@ -93,11 +93,12 @@ $messages['ar'] = array(
 );
 
 /** Aramaic (ܐܪܡܝܐ)
+ * @author 334a
  * @author Basharh
  */
 $messages['arc'] = array(
-	'onlinestatus-subtitle-offline' => 'ܡܬܚܫܚܢܐ ܗܢܐ ܠܐ ܨܡܝܕܐ ܗܘ ܗܫܐ',
-	'onlinestatus-subtitle-online' => 'ܡܬܚܫܚܢܐ ܗܢܐ ܨܡܝܕܐ ܗܘ ܗܫܐ',
+	'onlinestatus-subtitle-offline' => 'ܡܦܠܚܢܐ ܗܢܐ ܠܐ ܨܡܝܕܐ ܗܘ ܗܫܐ',
+	'onlinestatus-subtitle-online' => 'ܡܦܠܚܢܐ ܗܢܐ ܨܡܝܕܐ ܗܘ ܗܫܐ',
 	'onlinestatus-tab' => 'ܐܝܟܢܝܘܬܐ',
 	'onlinestatus-toggles-desc' => 'ܐܝܟܢܝܘܬܐ ܕܝܠܟ:',
 	'onlinestatus-toggle-offline' => 'ܠܐ ܨܡܝܕܐ',
