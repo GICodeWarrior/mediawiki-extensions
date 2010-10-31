@@ -709,7 +709,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'communityvoice' => 'Votz de la comunautat',
-	'communityvoice-desc' => 'Espleches per la participacion de la comunautat',
+	'communityvoice-desc' => 'Aisinas per la participacion de la comunautat',
 	'communityvoice-ratings' => 'Nòtas',
 	'communityvoice-ratings-scale-status-sending' => 'Mandadís en cors ...',
 	'communityvoice-ratings-scale-status-error' => 'Error al moment del mandadís !',
