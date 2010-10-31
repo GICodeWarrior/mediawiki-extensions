@@ -33,6 +33,11 @@ $specialPageAliases['fa'] = array(
 	'LastUserLogin' => array( 'آخرین_ورود_کاربر' ),
 );
 
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'LastUserLogin' => array( 'Viimeinen_sisäänkirjautuminen' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'LastUserLogin' => array( 'Ultime_session_de_usator' ),
