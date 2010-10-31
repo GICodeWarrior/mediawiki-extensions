@@ -39,8 +39,8 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'SignDocument' => array( 'Dokument signieren' ),
-	'CreateSignDocument' => array( 'Signiertes Dokument erstellen' ),
+	'SignDocument' => array( 'Dokument_signieren' ),
+	'CreateSignDocument' => array( 'Signiertes_Dokument_erstellen' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -63,8 +63,8 @@ $specialPageAliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'SignDocument' => array( 'Signar documento' ),
-	'CreateSignDocument' => array( 'Activar signatura de documentos' ),
+	'SignDocument' => array( 'Signar_documento' ),
+	'CreateSignDocument' => array( 'Activar_signatura_de_documentos' ),
 );
 
 /** Italian (Italiano) */
@@ -98,7 +98,7 @@ $specialPageAliases['lmo'] = array(
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'SignDocument' => array( 'പ്രമാണത്തിലൊപ്പിടുക' ),
-	'CreateSignDocument' => array( 'പ്രമാണത്തിലൊപ്പിടൽ സൃഷ്ടിക്കുക' ),
+	'CreateSignDocument' => array( 'പ്രമാണത്തിലൊപ്പിടൽ_സൃഷ്ടിക്കുക' ),
 );
 
 /** Marathi (मराठी) */
