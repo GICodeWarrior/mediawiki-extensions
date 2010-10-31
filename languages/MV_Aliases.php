@@ -98,8 +98,8 @@ $specialPageAliases['ja'] = array(
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'MVAdmin' => array( 'MV관리자' ),
-	'MV_SpecialSearch' => array( 'MV 특별 문서 검색' ),
-	'MvVideoFeed' => array( 'MV 비디오 업로드' ),
+	'MV_SpecialSearch' => array( 'MV_특별_문서_검색' ),
+	'MvVideoFeed' => array( 'MV_비디오_업로드' ),
 );
 
 /** Ladino (Ladino) */
