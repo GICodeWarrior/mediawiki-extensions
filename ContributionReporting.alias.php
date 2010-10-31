@@ -50,6 +50,12 @@ $specialPageAliases['fa'] = array(
 	'ContributionTotal' => array( 'مجموع_مشارکت' ),
 );
 
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'ContributionHistory' => array( 'Muokkaushistoria' ),
+	'ContributionStatistics' => array( 'Muokkaustilastot' ),
+);
+
 /** French (Français) */
 $specialPageAliases['fr'] = array(
 	'ContributionHistory' => array( 'HistoriqueDesContributions', 'Historique_des_contribution' ),
