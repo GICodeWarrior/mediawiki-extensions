@@ -50,6 +50,11 @@ $specialPageAliases['eo'] = array(
 	'ImportUsers' => array( 'Importi_uzantojn' ),
 );
 
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'ImportUsers' => array( 'ImportarUsuarios', 'Importar_usuarios' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'ImportUsers' => array( 'درون‌ریزی_کاربران' ),
@@ -132,7 +137,7 @@ $specialPageAliases['km'] = array(
 
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
-	'ImportUsers' => array( '사용자 추가' ),
+	'ImportUsers' => array( '사용자_추가' ),
 );
 
 /** Colognian (Ripoarisch) */
