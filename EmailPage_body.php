@@ -69,7 +69,7 @@ class SpecialEmailPage extends SpecialPage {
 		}
 		if( $wgEmailPageAllowAllUsers ) {
 			$selected = 'user' == $this->group ? ' selected' : '';
-			$groups .= "<option$selected value='user'>ALL USERS</option>";
+			$groups .= "<option$selected value=\"user\">" . wfMsg( 'ea-allusers' ) . "</option>";
 		}
 		$wgOut->addHTML( "<tr><td>" . wfMsg( 'ea-fromgroup' ) . "</td><td><select name=\"ea-group\">$groups</select></td></tr>\n" );
 		$wgOut->addHTML( "</table>" );

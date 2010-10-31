@@ -13,7 +13,7 @@
  */
 if( !defined( 'MEDIAWIKI' ) ) die( "Not an entry point." );
 
-define( 'EMAILPAGE_VERSION', "2.0.0, 2010-11-01" );
+define( 'EMAILPAGE_VERSION', "2.0.1, 2010-11-01" );
 
 $wgEmailPageGroup           = "sysop";              # Users must belong to this group to send emails (empty string means anyone can send)
 $wgEmailPageCss             = "EmailPage.css";      # A minimal CSS page to embed in the email (eg. monobook/main.css without portlets, actions etc)

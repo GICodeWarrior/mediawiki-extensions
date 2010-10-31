@@ -12,26 +12,27 @@ $messages = array();
  * @author Nad
  */
 $messages['en'] = array(
-	'emailpage'           => 'E-mail page',
-	'ea-desc'             => 'Send rendered HTML page to an e-mail address or list of addresses using [http://phpmailer.sourceforge.net phpmailer]',
+	'emailpage'           => "E-mail page",
+	'ea-desc'             => "Send rendered HTML page to an e-mail address or list of addresses using [http://phpmailer.sourceforge.net phpmailer]",
 	'ea-heading'          => "=== E-mailing the page [[$1]] ===",
-	'ea-fromgroup'        => 'From group:',
-	'ea-pagesend'         => 'Page "$1" sent from $2',
+	'ea-fromgroup'        => "From group:",
+	'ea-pagesend'         => "Page \"$1\" sent from $2",
 	'ea-nopage'           => "Please specify a page to send, for example \"[[Special:EmailPage/{{MediaWiki:Mainpage-url}}]]\".",
 	'ea-norecipients'     => "No valid e-mail addresses found!",
 	'ea-listrecipients'   => "=== {{PLURAL:$1|Recipient|$1 recipients}} ===",
 	'ea-error'            => "'''Error sending [[$1]]:''' ''$2''",
-	'ea-denied'           => 'Permission denied',
+	'ea-denied'           => "Permission denied",
 	'ea-sent'             => "Page [[$1]] sent successfully to '''$2''' {{PLURAL:$2|recipient|recipients}} by [[User:$3|$3]].",
-	'ea-selectrecipients' => 'Select recipients',
-	'ea-compose'          => 'Compose content',
+	'ea-selectrecipients' => "Select recipients",
+	'ea-compose'          => "Compose content",
 	'ea-selectlist'       => "Email addresses can be separated with one or more semicolon, comma, asterisk or newline characters",
-	'ea-show'             => 'Show recipients',
-	'ea-send'             => 'Send!',
-	'ea-subject'          => 'Enter a subject line for the e-mail',
-	'ea-header'           => 'Prepend content with optional message (wikitext)',
-	'ea-selectcss'        => 'Select a CSS stylesheet',
-	'ea-selectrecord'     => 'Select a record type'
+	'ea-show'             => "Show recipients",
+	'ea-send'             => "Send!",
+	'ea-subject'          => "Enter a subject line for the e-mail",
+	'ea-header'           => "Prepend content with optional message (wikitext)",
+	'ea-selectcss'        => "Select a CSS stylesheet",
+	'ea-selectrecord'     => "Select a record type",
+	'ea-allusers'         => "ALL USERS"
 );
 
 /** Message documentation (Message documentation)
