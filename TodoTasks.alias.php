@@ -38,7 +38,7 @@ $specialPageAliases['br'] = array(
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'TaskList' => array( 'Aufgabenliste' ),
-	'TaskListByProject' => array( 'Aufgabenliste pro Projekt' ),
+	'TaskListByProject' => array( 'Aufgabenliste_pro_Projekt' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -50,7 +50,7 @@ $specialPageAliases['dsb'] = array(
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'TaskList' => array( 'Tehtävälista' ),
-	'TaskListByProject' => array( 'Projektin tehtävälista' ),
+	'TaskListByProject' => array( 'Projektin_tehtävälista' ),
 );
 
 /** French (Français) */
@@ -79,8 +79,8 @@ $specialPageAliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'TaskList' => array( 'Lista de cargas' ),
-	'TaskListByProject' => array( 'Lista de cargas per projecto' ),
+	'TaskList' => array( 'Lista_de_cargas' ),
+	'TaskListByProject' => array( 'Lista_de_cargas_per_projecto' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -108,7 +108,7 @@ $specialPageAliases['km'] = array(
 
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
-	'TaskList' => array( '작업 목록' ),
+	'TaskList' => array( '작업목록' ),
 );
 
 /** Colognian (Ripoarisch) */
