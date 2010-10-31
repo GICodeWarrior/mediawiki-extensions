@@ -40,7 +40,7 @@ $specialPageAliases['he'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'PrefStats' => array( 'Statisticas de preferentias' ),
+	'PrefStats' => array( 'Statisticas_de_preferentias' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
