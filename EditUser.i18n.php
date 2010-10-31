@@ -442,6 +442,13 @@ $messages['fy'] = array(
 	'edituser-dosearch' => 'Sykje',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'edituser-dosearch' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño
