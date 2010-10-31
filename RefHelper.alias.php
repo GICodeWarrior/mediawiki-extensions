@@ -15,6 +15,11 @@ $specialPageAliases['ar'] = array(
 	'RefHelper' => array( 'مساعد_المراجع' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'RefHelper' => array( 'Assistente_pro_referentias' ),
+);
+
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'RefHelper' => array( '注釈ヘルパー' ),

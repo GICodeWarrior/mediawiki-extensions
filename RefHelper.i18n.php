@@ -504,6 +504,13 @@ $messages['frp'] = array(
 	'refhelper-newarticle_nocitation' => 'Ora, ègziste gins de citacion avouéc ceti nom.',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'refhelper-search' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
