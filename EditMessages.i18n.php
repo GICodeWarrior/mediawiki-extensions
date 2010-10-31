@@ -478,6 +478,13 @@ $messages['fy'] = array(
 	'editmsg-search' => 'Sykje',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'editmsg-search' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
