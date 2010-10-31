@@ -28,7 +28,7 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'WhoIsWatching' => array( 'Wer beobachtet' ),
+	'WhoIsWatching' => array( 'Wer_beobachtet' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -48,7 +48,7 @@ $specialPageAliases['fa'] = array(
 
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
-	'WhoIsWatching' => array( 'Ketkä tarkkailevat' ),
+	'WhoIsWatching' => array( 'Ketkä_tarkkailevat' ),
 );
 
 /** French (Français) */
@@ -88,7 +88,7 @@ $specialPageAliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'WhoIsWatching' => array( 'Qui observa' ),
+	'WhoIsWatching' => array( 'Qui_observa' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -118,7 +118,7 @@ $specialPageAliases['ksh'] = array(
 
 /** Cornish (Kernewek) */
 $specialPageAliases['kw'] = array(
-	'WhoIsWatching' => array( 'PiwUjyOwColya' ),
+	'WhoIsWatching' => array( 'PiwUsyOwColya' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
