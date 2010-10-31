@@ -25,7 +25,7 @@ $specialPageAliases['arz'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'PurgeCache' => array( 'Cache leeren' ),
+	'PurgeCache' => array( 'Cache_leeren' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -75,7 +75,7 @@ $specialPageAliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'PurgeCache' => array( 'Vacuar cache' ),
+	'PurgeCache' => array( 'Vacuar_cache' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
