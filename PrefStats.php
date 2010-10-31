@@ -4,7 +4,7 @@
  *
  * @file
  * @ingroup Extensions
- * 
+ *
  * @author Roan Kattouw <roan.kattouw@gmail.com>
  * @author Trevor Parscal <tparscal.kattouw@gmail.com>
  * @license GPL v2 or later
@@ -59,14 +59,15 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'PrefStats',
 	'author' => array( 'Roan Kattouw', 'Trevor Parscal' ),
 	'version' => '0.2.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:PrefStats',
 	'descriptionmsg' => 'prefstats-desc',
 );
-$wgAutoloadClasses['PrefStatsHooks'] = dirname( __FILE__ ) . '/PrefStats.hooks.php';
-$wgAutoloadClasses['SpecialPrefStats'] = dirname( __FILE__ ) . '/SpecialPrefStats.php';
+$dir = dirname( __FILE__ ) . '/';
+$wgAutoloadClasses['PrefStatsHooks'] = $dir . 'PrefStats.hooks.php';
+$wgAutoloadClasses['SpecialPrefStats'] = $dir . 'SpecialPrefStats.php';
 $wgSpecialPages['PrefStats'] = 'SpecialPrefStats';
 $wgSpecialPageGroups['PrefStats'] = 'wiki';
-$wgExtensionMessagesFiles['PrefStats'] = dirname( __FILE__ ) . '/PrefStats.i18n.php';
-$wgExtensionAliasesFiles['PrefStats'] = dirname( __FILE__ ) . '/PrefStats.alias.php';
+$wgExtensionMessagesFiles['PrefStats'] = $dir . 'PrefStats.i18n.php';
+$wgExtensionAliasesFiles['PrefStats'] = $dir . 'PrefStats.alias.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefStatsHooks::loadExtensionSchemaUpdates';
 $wgHooks['UserSaveOptions'][] = 'PrefStatsHooks::userSaveOptions';

@@ -29,7 +29,7 @@ class PrefStatsHooks {
 			return;
 		}
 
-		$dbw = wfGetDb( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		foreach ( $wgPrefStatsTrackPrefs as $pref => $value ) {
 			$start = $dbw->selectField(
 				'prefstats',
@@ -55,7 +55,7 @@ class PrefStatsHooks {
 					__METHOD__,
 					array( 'IGNORE' )
 				);
-			} else if ( ( !isset( $options[$pref] ) || $options[$pref] != $value ) && $start ) {
+			} elseif ( ( !isset( $options[$pref] ) || $options[$pref] != $value ) && $start ) {
 				if ( $start ) {
 					$duration = wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $start );
 					$dbw->update(
