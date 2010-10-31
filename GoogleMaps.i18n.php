@@ -2027,6 +2027,13 @@ $wgGoogleMapsMessages['ga'] = array(
 	'gm-zoom-control' => 'Nascleanúint',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$wgGoogleMapsMessages['gan-hant'] = array(
+	'gm-search' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño
