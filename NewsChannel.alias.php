@@ -110,7 +110,7 @@ $specialPageAliases['ja'] = array(
 
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
-	'NewsChannel' => array( '작성 취소' ),
+	'NewsChannel' => array( '작성_취소' ),
 );
 
 /** Ladino (Ladino) */
