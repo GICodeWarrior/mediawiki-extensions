@@ -389,7 +389,20 @@ $messages['bs'] = array(
 	'wah-menu-stats' => 'Statistike',
 	'wah-menu-pref' => 'Postavke',
 	'wah-lookingforjob' => 'Tražim posao ...',
+	'wah-start-on-visit' => 'Započni Wiki@Home svaki put kada posjetim ovu stranicu.',
+	'wah-jobs-while-away' => 'Pokreni poslove samo kada sam odsutan van svog preglednika više od 20 minuta.',
+	'wah-nojobfound' => 'Nije pronađen posao. Pokušaću opet za $1.',
+	'wah-notoken-login' => 'Jeste li prijavljeni? Ako niste, prvo se prijavite.',
+	'wah-apioff' => 'Izgleda da je Wiki@Home API ugašen. Molimo kontaktirajte administratora wikija.',
+	'wah-doing-job' => 'Posao: <i>$1</i> na: <i>$2</i>',
+	'wah-downloading' => 'Preuzimanje datoteke <i>$1</i> završeno',
+	'wah-encoding' => 'Kodiranje datoteke <i>$1</i> završeno',
+	'wah-encoding-fail' => 'Kodiranje nije uspjelo. Molimo ponovo učitajte ovu stranicu ili pokušajte kasnije.',
 	'wah-uploading' => 'Postavljanje datoteke <i>$1</i> završeno',
+	'wah-uploadfail' => 'Postavljanje nije uspjelo',
+	'wah-doneuploading' => 'Postavljanje završeno. Hvala vam na vašim doprinosima.',
+	'wah-needs-firefogg' => 'Da biste učestvovali na Wiki@Home trebate instalirati <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Nastala je greška sa API. Molimo pokušajte kasnije.',
 );
 
 /** Catalan (Català)
