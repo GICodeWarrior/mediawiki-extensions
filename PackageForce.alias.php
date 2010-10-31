@@ -14,6 +14,17 @@ $specialPageAliases['en'] = array(
 	'PackageForceAdmin' => array( 'PackageForceAdmin' ),
 );
 
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'PackageForce' => array( 'パッケージ強化' ),
+	'PackageForceAdmin' => array( 'パッケージ強化の管理' ),
+);
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'PackageForceAdmin' => array( 'PackageForceBeheer' ),
+);
+
 /**
  * For backwards compatibility with MediaWiki 1.15 and earlier.
  */
