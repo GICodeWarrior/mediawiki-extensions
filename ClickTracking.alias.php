@@ -35,7 +35,7 @@ $specialPageAliases['fa'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'ClickTracking' => array( 'Traciamento de clic' ),
+	'ClickTracking' => array( 'Traciamento_de_clic' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

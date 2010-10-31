@@ -1996,7 +1996,7 @@ $messages['ru'] = array(
 	'ct-update-table' => 'Обновить таблицу',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
