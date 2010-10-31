@@ -781,6 +781,13 @@ $messages['frp'] = array(
 	'recordadmin-notset' => 'Nion « $1 »',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'recordadmin-buttonsearch' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
