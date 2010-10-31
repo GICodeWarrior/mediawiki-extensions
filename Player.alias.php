@@ -48,6 +48,11 @@ $specialPageAliases['fa'] = array(
 	'Player' => array( 'پخش‌کننده' ),
 );
 
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'Player' => array( 'Soitin' ),
+);
+
 /** French (Français) */
 $specialPageAliases['fr'] = array(
 	'Player' => array( 'Lecteur' ),
