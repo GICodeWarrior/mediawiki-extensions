@@ -38,6 +38,11 @@ $specialPageAliases['dsb'] = array(
 	'DeleteQueue' => array( 'Lisćina_wulašowanjow' ),
 );
 
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'DeleteQueue' => array( 'ColaDeBorrado', 'Cola_de_borrado' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'DeleteQueue' => array( 'پاک‌کردن_صف' ),
