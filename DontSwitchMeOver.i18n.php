@@ -235,9 +235,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'dontswitchmeover-desc' => 'Beállítási lehetőség a felhasználóknak: szeretnék-e megtartani a felületbeállítást, ha a wiki alapértelmezett felület változik.',
+	'dontswitchmeover-desc' => 'Beállítási lehetőség a felhasználóknak: szeretnék-e megtartani a felületbeállítást, ha a wiki alapértelmezett felülete változik.',
 	'dontswitchmeover-pref' => 'Ne módosuljon az általam beállított felület, ha változik az alapértelmezett.',
 );
 
@@ -411,7 +412,7 @@ $messages['ru'] = array(
 	'dontswitchmeover-pref' => 'Не менять мою тему оформления при смене темы по умолчанию',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
