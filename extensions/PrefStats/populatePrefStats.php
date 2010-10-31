@@ -8,7 +8,7 @@
 
 require_once( '../../../maintenance/commandLine.inc' );
 
-$dbw = wfGetDb( DB_MASTER );
+$dbw = wfGetDB( DB_MASTER );
 foreach ( $wgPrefStatsTrackPrefs as $pref => $value ) {
 	echo "Populating $pref=$value ... ";
 	$dbw->insertSelect( 'prefstats', 'user_properties', array(

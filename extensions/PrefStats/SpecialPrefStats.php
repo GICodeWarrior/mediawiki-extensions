@@ -7,12 +7,20 @@
  */
 
 class SpecialPrefStats extends SpecialPage {
-	function __construct() {
+
+	/**
+	 * Constructor -- set up the special page
+	 */
+	public function __construct() {
 		parent::__construct( 'PrefStats' );
-		wfLoadExtensionMessages( 'PrefStats' );
 	}
 
-	function execute( $par ) {
+	/**
+	 * Show the special page
+	 *
+	 * @param $par Mixed: parameter passed to the special page or null
+	 */
+	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgPrefStatsTrackPrefs;
 		$this->setHeaders();
 
@@ -64,27 +72,28 @@ class SpecialPrefStats extends SpecialPage {
 		$wgOut->addHTML( Xml::element( 'img', array( 'src' =>
 			$this->getGoogleChartParams( $stats ) ) ) );
 	}
-	
+
 	function incLinks( $pref ) {
 		global $wgPrefStatsTimeFactors, $wgLang;
 		$factors = array();
 		foreach ( $wgPrefStatsTimeFactors as $message => $factor ) {
 			$attrs = array();
-			if ( !is_null( $factor ) )
+			if ( !is_null( $factor ) ) {
 				$attrs['inc'] = $factor;
+			}
 			$factors[] = Xml::element( 'a', array( 'href' =>
 				$this->getTitle( $pref )->getFullURL( $attrs )
 				), wfMsg( $message ) );
 		}
 		return wfMsg( 'prefstats-factors',
-			      $wgLang->pipeList( $factors ) );
+					$wgLang->pipeList( $factors ) );
 	}
 
 	function getGoogleChartParams( $stats ) {
 		global $wgPrefStatsChartDimensions;
 		$max = max( $stats[0] ) + max( $stats[1] );
 		$min = min( min( $stats[0] ), min( $stats[1] ) );
-		return "http://chart.apis.google.com/chart?" . wfArrayToCGI(
+		return 'http://chart.apis.google.com/chart?' . wfArrayToCGI(
 		array(
 			'chs' => implode( 'x', $wgPrefStatsChartDimensions ),
 			'cht' => 'bvs',
@@ -102,26 +111,28 @@ class SpecialPrefStats extends SpecialPage {
 				wfMsg( 'prefstats-legend-in' )
 		) );
 	}
-	
+
 	function getCounters( $pref ) {
 		global $wgMemc, $wgPrefStatsCacheTime;
-		if ( $wgPrefStatsCacheTime === false )
+		if ( $wgPrefStatsCacheTime === false ) {
 			return $this->reallyGetCounters( $pref );
-		
+		}
+
 		$key = wfMemcKey( 'prefstats', 'counters', $pref );
 		$cached = $wgMemc->get( $key );
-		if ( $cached )
+		if ( $cached ) {
 			return $cached;
+		}
 		$retval = $this->reallyGetCounters( $pref );
 		$wgMemc->set( $key, $retval, $wgPrefStatsCacheTime );
 		return $retval;
 	}
-	
+
 	function reallyGetCounters( $pref ) {
 		global $wgPrefStatsExpensiveCounts, $wgPrefStatsTrackPrefs;
 		$val = $wgPrefStatsTrackPrefs[$pref];
-		
-		$dbr = wfGetDb( DB_SLAVE );
+
+		$dbr = wfGetDB( DB_SLAVE );
 		$c2 = $dbr->selectField( 'prefstats', 'COUNT(*)', array(
 				'ps_pref' => $pref,
 				'ps_duration IS NULL'
@@ -131,25 +142,28 @@ class SpecialPrefStats extends SpecialPage {
 				'ps_duration IS NOT NULL'
 			), __METHOD__ );
 		$c1 = $c2 + $c3;
-		if ( $wgPrefStatsExpensiveCounts )
+		if ( $wgPrefStatsExpensiveCounts ) {
 			$c4 = $dbr->selectField( 'user_properties', 'COUNT(*)',
 				array(	'up_property' => $pref,
 					'up_value' => $val
 				), __METHOD__ );
-		else
+		} else {
 			$c4 = 0;
+		}
 		return array( $c1, $c2, $c3, $c4 );
 	}
-	
+
 	function getPrefStats( $pref, $inc = null ) {
 		global $wgMemc, $wgPrefStatsCacheTime;
-		if ( $wgPrefStatsCacheTime === false )
+		if ( $wgPrefStatsCacheTime === false ) {
 			return $this->reallyGetPrefStats( $pref, $inc );
-		
+		}
+
 		$key = wfMemcKey( 'prefstats', 'stats', $pref, $inc );
 		$cached = $wgMemc->get( $key );
-		if ( $cached )
+		if ( $cached ) {
 			return $cached;
+		}
 		$retval = $this->reallyGetPrefStats( $pref, $inc );
 		$wgMemc->set( $key, $retval, $wgPrefStatsCacheTime );
 		return $retval;
@@ -177,11 +191,11 @@ class SpecialPrefStats extends SpecialPage {
 	 * Get the highest duration in the database
 	 */
 	function getMaxDuration( $pref ) {
-		$dbr = wfGetDb( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$max1 = $dbr->selectField( 'prefstats', 'MAX(ps_duration)',
 			array( 'ps_pref' => $pref ), __METHOD__ );
 		$minTS = $dbr->selectField( 'prefstats', 'MIN(ps_start)',
-			array(	'ps_pref' => $pref,
+			array( 'ps_pref' => $pref,
 				'ps_duration IS NULL' ), __METHOD__ );
 		$max2 = wfTimestamp( TS_UNIX ) - wfTimestamp( TS_UNIX, $minTS );
 		return max( $max1, $max2 );
@@ -193,7 +207,7 @@ class SpecialPrefStats extends SpecialPage {
 	 * @return array( opted out, still opted in )
 	 */
 	function countBetween( $pref, $min, $max ) {
-		$dbr = wfGetDb( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$count1 = $dbr->selectField( 'prefstats', 'COUNT(*)', array(
 				'ps_pref' => $pref,
 				'ps_duration < ' . intval( $max ),
