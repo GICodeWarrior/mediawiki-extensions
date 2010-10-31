@@ -75,11 +75,12 @@ $messages['ar'] = array(
 );
 
 /** Aramaic (ܐܪܡܝܐ)
+ * @author 334a
  * @author Basharh
  */
 $messages['arc'] = array(
 	'showprocesslist-id' => 'ܗܝܝܘܬܐ',
-	'showprocesslist-user' => 'ܡܬܚܫܚܢܐ',
+	'showprocesslist-user' => 'ܡܦܠܚܢܐ',
 	'showprocesslist-host' => 'ܡܐܪܚܢܐ',
 	'showprocesslist-time' => 'ܙܒܢܐ',
 	'showprocesslist-info' => 'ܝܕ̈ܥܬܐ',

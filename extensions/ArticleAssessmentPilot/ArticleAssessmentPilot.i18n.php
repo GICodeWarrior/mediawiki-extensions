@@ -451,8 +451,8 @@ Vielleicht möchtest du ihn erneut einschätzen.",
  * @author Kghbln
  */
 $messages['de-formal'] = array(
-	'articleassessment-yourfeedback' => 'Ihre Rückmeldung',
-	'articleassessment-pleaserate' => 'Bitte nehmen Sie sich kurz Zeit diesen Artikel unten auf dieser Seite einzuschätzen.',
+	'articleassessment-yourfeedback' => 'Ihre Einschätzung',
+	'articleassessment-pleaserate' => 'Bitte nehmen Sie sich kurz Zeit, diesen Artikel einzuschätzen.',
 	'articleassessment-rating-wellsourced-tooltip' => 'Haben Sie den Eindruck, dass dieser Artikel über genügend Quellenangaben verfügt und diese zudem aus vertrauenswürdigen Quellen stammen?',
 	'articleassessment-rating-neutrality-tooltip' => 'Haben Sie den Eindruck, dass dieser Artikel eine ausgewogene Darstellung aller mit dessen Inhalt verbundenen Aspekte enthält?',
 	'articleassessment-rating-completeness-tooltip' => 'Haben Sie den Eindruck, dass dieser Artikel alle wichtigen Aspekte enthält, die mit dessen Inhalt zusammenhängen?',
@@ -460,7 +460,7 @@ $messages['de-formal'] = array(
 	'articleassessment-error' => 'Ein Fehler ist aufgetreten.
 Bitte versuchen Sie es später erneut.',
 	'articleassessment-thanks' => 'Vielen Dank! Ihre Einschätzung wurde gespeichert.',
-	'articleassessment-featurefeedback' => 'Geben Sie uns bitte eine <span class="feedbacklink">Rückmeldung</span> zu dieser Funktion zur Einschätzung eines Artikels.',
+	'articleassessment-featurefeedback' => 'Geben Sie uns bitte eine <span class="feedbacklink">Rückmeldung</span> zu dieser Möglichkeit der Einschätzung eines Artikels.',
 	'articleassessment-stalemessage-norevisioncount' => "Dieser Artikel wurde seit Ihrer letzten Einschätzung ''bearbeitet''.
 Vielleicht möchten Sie ihn erneut einschätzen.",
 	'articleassessment-survey-question-whyrated' => 'Bitte lassen Sie uns wissen, warum Sie diesen Artikel heute eingeschätzt haben (Zutreffendes bitte ankreuzen):',
@@ -2187,10 +2187,14 @@ Maaari mo itong antasang muli.",
 
 /** Turkish (Türkçe)
  * @author CnkALTDS
+ * @author Karduelis
  */
 $messages['tr'] = array(
+	'articleassessment' => 'Madde değerlendirmesi',
+	'articleassessment-articlerating' => 'Sayfa derecelendirmesi',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Fikirlerimi paylaşmayı seviyorum',
 	'articleassessment-survey-question-useful-iffalse' => 'Neden?',
+	'articleassessment-survey-thanks' => 'Anketi doldurduğunuz için teşekkür ederiz.',
 );
 
 /** Ukrainian (Українська)

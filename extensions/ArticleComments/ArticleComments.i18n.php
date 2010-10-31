@@ -307,6 +307,15 @@ Möglich sind die Modi „plain“, „normal“ und „wiki“.',
 	'processcomment' => 'Kommentieren von Inhaltsseiten verarbeiten',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'article-comments-submission-success' => 'Sie haben erfolgreich einen Kommentar für Seite „[[$1]]“ abgegeben.',
+	'article-comments-submission-view-all' => 'Sie können alle Kommentare zu dieser Seite [[$1|hier]] einsehen.',
+	'article-comments-user-is-blocked' => 'Sie dürfen die Seite „[[$1]]“ derzeit nicht bearbeiten.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1230,6 +1239,18 @@ $messages['te'] = array(
 	'article-comments-submit-button' => 'దాఖలుచెయ్యి',
 	'article-comments-leave-comment-link' => 'వ్యాఖ్యానించండి ...',
 	'article-comments-required-field' => '$1 అనే ఖాళీ తప్పనిసరి .',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'article-comments-title-string' => 'başlık',
+	'article-comments-name-string' => 'Adı',
+	'article-comments-name-field' => 'Adı (gerekli)',
+	'article-comments-url-field' => 'Web sitesi:',
+	'article-comments-comment-string' => 'Açıklama',
+	'article-comments-submit-button' => 'Gönder',
 );
 
 /** Ukrainian (Українська)

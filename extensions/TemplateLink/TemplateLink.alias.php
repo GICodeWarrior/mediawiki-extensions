@@ -60,7 +60,7 @@ $specialPageAliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'TemplateLink' => array( 'Ligamine verso patrono' ),
+	'TemplateLink' => array( 'Ligamine_verso_patrono' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -151,6 +151,11 @@ $specialPageAliases['tl'] = array(
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'TemplateLink' => array( 'ŞablonBağlantısı' ),
+);
+
+/** Татарча (Татарча) */
+$specialPageAliases['tt-cyrl'] = array(
+	'TemplateLink' => array( 'Сылтама_үрнәкләре' ),
 );
 
 /**

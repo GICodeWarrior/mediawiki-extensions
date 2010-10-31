@@ -99,7 +99,7 @@ $specialPageAliases['km'] = array(
 
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
-	'AccountManager' => array( '계정 관리자' ),
+	'AccountManager' => array( '계정_관리자' ),
 );
 
 /** Colognian (Ripoarisch) */

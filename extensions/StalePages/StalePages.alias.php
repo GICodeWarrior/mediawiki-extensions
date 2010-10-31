@@ -38,7 +38,7 @@ $specialPageAliases['gsw'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'StalePages' => array( 'Paginas stagnate' ),
+	'StalePages' => array( 'Paginas_stagnate' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

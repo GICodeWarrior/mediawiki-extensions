@@ -300,6 +300,13 @@ $messages['frp'] = array(
 	'searchbox-namespaces' => 'Èspâços de noms :',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'searchbox-search' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

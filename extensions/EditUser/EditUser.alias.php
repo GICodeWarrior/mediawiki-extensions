@@ -50,6 +50,11 @@ $specialPageAliases['fa'] = array(
 	'EditUser' => array( 'ویرایش_کاربر' ),
 );
 
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'EditUser' => array( 'Muokkaa_käyttäjää' ),
+);
+
 /** French (Français) */
 $specialPageAliases['fr'] = array(
 	'EditUser' => array( 'Modifier_l’utilisateur', 'ModifierUtilisateur', 'EditerUtilisateur', 'ÉditerUtilisateur', 'Éditer_l’utilisateur' ),
@@ -127,7 +132,7 @@ $specialPageAliases['km'] = array(
 
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
-	'EditUser' => array( '사용자 편집' ),
+	'EditUser' => array( '사용자_편집' ),
 );
 
 /** Colognian (Ripoarisch) */

@@ -40,7 +40,7 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'WhatIsMyIP' => array( 'Meine IP-Adresse' ),
+	'WhatIsMyIP' => array( 'Meine_IP-Adresse' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -65,7 +65,7 @@ $specialPageAliases['fa'] = array(
 
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
-	'WhatIsMyIP' => array( 'Oma IP-osoite' ),
+	'WhatIsMyIP' => array( 'Oma_IP-osoite' ),
 );
 
 /** French (Français) */
@@ -105,7 +105,7 @@ $specialPageAliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'WhatIsMyIP' => array( 'Que es mi IP' ),
+	'WhatIsMyIP' => array( 'Que_es_mi_IP' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

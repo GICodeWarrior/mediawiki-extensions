@@ -29,7 +29,7 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'SharedUserRights' => array( 'Geteilte Benutzerrechte' ),
+	'SharedUserRights' => array( 'Geteilte_Benutzerrechte' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -59,7 +59,7 @@ $specialPageAliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'SharedUserRights' => array( 'Derectos commun de usatores' ),
+	'SharedUserRights' => array( 'Derectos_commun_de_usatores' ),
 );
 
 /** Japanese (日本語) */

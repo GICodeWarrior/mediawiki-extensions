@@ -25,6 +25,11 @@ $specialPageAliases['fa'] = array(
 	'MassBlank' => array( 'توده_خالی' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'MassBlank' => array( 'Vacuar_in_massa' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $specialPageAliases['id'] = array(
 	'MassBlank' => array( 'Pengosongan_massal', 'PengosonganMassal' ),

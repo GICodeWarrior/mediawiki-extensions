@@ -450,21 +450,22 @@ Por favor, cambia o actualiza el navegador, de ser posible.',
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Nike
  */
 $messages['fi'] = array(
 	'categorybrowser' => 'Luokkaselain',
-	'categorybrowser-desc' => 'Tarjoaa [[Special: CategoryBrowser |erikoissivun]] suodattamaan pois kansoitetuimmat luokat ja navigoimaan niillä AJAX-rajapintaa käyttäen',
+	'categorybrowser-desc' => 'Tarjoaa [[Special:CategoryBrowser|erikoissivun]] suodattamaan pois kansoitetuimmat luokat ja navigoimaan niillä AJAX-rajapintaa käyttäen',
 	'cb_requires_javascript' => 'Luokkaselainlaajennus edellyttää, että JavaScript on käytössä selaimessa.',
 	'cb_ie6_warning' => 'Ehtomuokkain ei toimi Internet Explorer 6.0 -selaimessa tai sitä varhaisemmissa selaimissa. 
 Esimääriteltyjen ehtojen selailun pitäisi kuitenkin toimia normaalisti.
 Vaihda tai päivitä selaintasi, jos mahdollista.',
 	'cb_show_no_parents_only' => 'Näytä vain luokkia, joilla ei ole pääluokkia',
 	'cb_cat_name_filter' => 'Etsi luokkaa nimen avulla:',
-	'cb_cat_name_filter_clear' => 'Paina luokkanimisuodattimen nollaamiseksi',
+	'cb_cat_name_filter_clear' => 'Nollaa luokkanimisuodattimen napsauttamalla',
 	'cb_cat_name_filter_ci' => 'Kirjainkoosta riippuva',
 	'cb_copy_line_hint' => 'Käytä [+] ja [>+]-painikkeita kopioimaan ja liittämään operaattoreita valittuun lausekkeseen',
-	'cb_has_subcategories' => '$1 {{PLURAL:$1|aliluokka|aliluokat}}',
-	'cb_has_pages' => '$1 {{PLURAL:$1|sivu|sivut}}',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|alaluokka|alaluokkaa}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|sivu|sivua}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|tiedosto|tiedostot}}',
 	'cb_has_parentcategories' => 'ylemmän tason luokat (tarvittaessa)',
 	'cb_previous_items_link' => 'Edellinen',

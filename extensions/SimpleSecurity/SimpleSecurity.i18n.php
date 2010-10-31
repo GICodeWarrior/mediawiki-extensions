@@ -255,7 +255,7 @@ $messages['de'] = array(
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'badaccess-read' => 'Warnung: „$1“ verweist hierher, aber Sie haben keine ausreichende Berechtigung um die Seite zu sehen.',
+	'badaccess-read' => "'''Warnung:''' „$1“ verweist hierher. Sie haben aber keine ausreichende Berechtigung um die Seite zu sehen.",
 	'security-infosysops' => 'Für Sie sind keine Einschränkungen aktiv, weil Sie der Gruppe „Administratoren“ angehören.',
 );
 

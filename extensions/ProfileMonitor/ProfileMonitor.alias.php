@@ -35,7 +35,7 @@ $specialPageAliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'ProfileMonitor' => array( 'Analyse de rendimento' ),
+	'ProfileMonitor' => array( 'Analyse_de_rendimento' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

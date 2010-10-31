@@ -42,7 +42,7 @@ $specialPageAliases['el'] = array(
 
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
-	'ExternalPages' => array( 'Enlaces_externos' ),
+	'ExternalPages' => array( 'PáginasExternas', 'Enlaces_externos' ),
 );
 
 /** Persian (فارسی) */

@@ -43,8 +43,10 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'mwe-loading_txt' => 'laai ...',
 	'mwe-error_load_lib' => 'Fout: JavaScript $1 kon nie gevind word of definieer nie $2 nie',
+	'mwe-apiproxy-setup' => "Besig met die opstel van 'n API-proxy",
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Kanselleer',
+	'mwe-test-plural' => 'Ek het {{PLURAL:$1|$1 toets|$1 toetse}} uitgevoer',
 );
 
 /** Gheg Albanian (Gegë)
@@ -74,6 +76,14 @@ $messages['an'] = array(
 $messages['ar'] = array(
 	'mwe-loading_txt' => 'يحمل...',
 	'mwe-cancel' => 'ألغِ',
+);
+
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'mwe-ok' => 'ܛܒ',
+	'mwe-cancel' => 'ܒܛܘܠ',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -116,9 +126,31 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'mwe-loading_txt' => 'učitavam ...',
+	'mwe-error_load_lib' => 'Greška: JavaScript $1 se ne može učitati ili nije definiran $2',
 	'mwe-apiproxy-setup' => 'Postavljanje API proksija',
+	'mwe-load-drag-item' => 'Učitavam povučenu stavku',
 	'mwe-ok' => 'U redu',
 	'mwe-cancel' => 'Odustani',
+	'mwe-enable-gadget' => 'Omogući beta verziju multimedije (mwEmbed) za sve stranice',
+	'mwe-enable-gadget-done' => 'Beta verzija multimedija dodatka je omogućena',
+	'mwe-must-login-gadget' => 'Da omogućite dodatak morate biti <a target="_new" href="$1">prijavljeni</a>',
+	'mwe-test-plural' => 'Pokrenuo sam {{PLURAL:$1|$1 provjeru|$1 provjere|$1 provjera}}',
+);
+
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'mwe-loading_txt' => "S'està carregant...",
+	'mwe-error_load_lib' => "Error: no s'ha pogut recuperar el JavaScript $1 o no defineix $2",
+	'mwe-apiproxy-setup' => "S'està configurant l'intermediari de l'API",
+	'mwe-load-drag-item' => "S'està carregant l'element arrossegat",
+	'mwe-ok' => "D'acord",
+	'mwe-cancel' => 'Cancel·la',
+	'mwe-enable-gadget' => 'Habilita la beta multimèdia (mwEmbed) per a totes les pàgines',
+	'mwe-enable-gadget-done' => "S'ha habilitat el giny multimèdia beta",
+	'mwe-must-login-gadget' => 'Per habilitar el giny heu d\'<a target="_new" href="$1">iniciar una sessió</a>',
+	'mwe-test-plural' => 'He executat {{PLURAL:$1|$1 test|$1 tests}}',
 );
 
 /** Czech (Česky)
@@ -291,10 +323,14 @@ $messages['ha'] = array(
 
 /** Hebrew (עברית)
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'mwe-loading_txt' => 'בטעינה ...',
 	'mwe-error_load_lib' => 'שגיאה: לא ניתן היה לטעון את ספריית ה־JavaScript בשם $1 או שהיא אינה מגדירה את $2',
+	'mwe-ok' => 'אישור',
+	'mwe-cancel' => 'ביטול',
+	'mwe-test-plural' => 'הופעל{{PLURAL:$1|ה בדיקה אחת|ו $1 בדיקות}}',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -398,6 +434,13 @@ $messages['ja'] = array(
 	'mwe-test-plural' => '{{PLURAL:$1|$1のテスト}}を実行する',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'mwe-cancel' => 'ರದ್ದು ಮಾಡು',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -456,11 +499,18 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'mwe-loading_txt' => 'ശേഖരിക്കുന്നു ...',
-	'mwe-error_load_lib' => 'പിശക്: ജാവാസ്ക്രിപ്റ്റ് $1 ശേഖരിക്കാൻ കഴിഞ്ഞില്ല അല്ലെങ്കിൽ $2 നിർവ്വചിച്ചിട്ടില്ല',
+	'mwe-error_load_lib' => 'പിഴവ്: ജാവാസ്ക്രിപ്റ്റ് $1 ശേഖരിക്കാൻ കഴിഞ്ഞില്ല അല്ലെങ്കിൽ $2 നിർവചിച്ചിട്ടില്ല',
 	'mwe-apiproxy-setup' => 'എ.പി.ഐ. പ്രോക്സി സജ്ജീകരിക്കുക',
 	'mwe-load-drag-item' => 'വലിച്ചിട്ടത് ശേഖരിക്കുന്നു',
 	'mwe-ok' => 'ശരി',
 	'mwe-cancel' => 'റദ്ദാക്കുക',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'mwe-cancel' => 'Цуцлах',
 );
 
 /** Erzya (Эрзянь)
@@ -484,6 +534,15 @@ $messages['nl'] = array(
 	'mwe-enable-gadget-done' => 'Multimedia beta is ingeschakeld',
 	'mwe-must-login-gadget' => 'Om de uitbreiding in te schakelen, moet u <a target="_new" href="$1">aanmelden</a>',
 	'mwe-test-plural' => '{{PLURAL:$1|$1 test|$1 tests}} uitgevoerd',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'mwe-loading_txt' => 'Lastar …',
+	'mwe-ok' => 'OK',
+	'mwe-cancel' => 'Avbryt',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -564,6 +623,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author Heldergeovane
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -573,14 +633,15 @@ $messages['pt'] = array(
 	'mwe-load-drag-item' => 'A carregar o objecto arrastado',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancelar',
-	'mwe-enable-gadget' => 'Activar multimédia beta (mwEmbed) para todas as páginas',
-	'mwe-enable-gadget-done' => 'Gadget de multimédia beta foi activado',
+	'mwe-enable-gadget' => 'Activar beta de multimédia (mwEmbed) para todas as páginas',
+	'mwe-enable-gadget-done' => 'Gadget beta de multimédia foi activado',
 	'mwe-must-login-gadget' => 'Para activar o gadget tem de estar <a target="_new" href="$1">autenticado</a>',
 	'mwe-test-plural' => 'Fiz $1 {{PLURAL:$1|teste|testes}}',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
+ * @author Heldergeovane
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -590,10 +651,19 @@ $messages['pt-br'] = array(
 	'mwe-load-drag-item' => 'Carregando o objeto arrastado',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancelar',
-	'mwe-enable-gadget' => 'Ativar multimídia beta beta (mwEmbed) para todas as páginas',
-	'mwe-enable-gadget-done' => 'Gadget de multimídia beta foi ativado',
+	'mwe-enable-gadget' => 'Ativar beta de multimídia (mwEmbed) para todas as páginas',
+	'mwe-enable-gadget-done' => 'O Gadget beta de multimídia foi ativado',
 	'mwe-must-login-gadget' => 'Para ativar o gadget você deve estar <a target="_new" href="$1">autenticado</a>',
 	'mwe-test-plural' => 'Eu fiz $1 {{PLURAL:$1|teste|testes}}',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'mwe-loading_txt' => 'Se încarcă ...',
+	'mwe-ok' => 'OK',
+	'mwe-cancel' => 'Renunţă',
 );
 
 /** Russian (Русский)
@@ -647,6 +717,7 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Dafer45
  * @author GameOn
  */
@@ -654,12 +725,17 @@ $messages['sv'] = array(
 	'mwe-loading_txt' => 'Laddar…',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Avbryt',
+	'mwe-enable-gadget' => 'Aktivera multimedia beta (mwEmbed) på alla sidor',
+	'mwe-enable-gadget-done' => 'Multimedia beta finessen har aktiverats',
+	'mwe-must-login-gadget' => 'För att aktivera finessen måste du <a target="_new" href="$1">logga in</a>',
+	'mwe-test-plural' => 'Jag gjorde {{PLURAL:$1|$1 test|$1 test}}',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
+	'mwe-loading_txt' => 'లోడవుతోంది...',
 	'mwe-ok' => 'సరే',
 	'mwe-cancel' => 'రద్దుచేయి',
 );
@@ -690,6 +766,14 @@ $messages['tr'] = array(
 	'mwe-load-drag-item' => 'Sürüklenen öğe yükleniyor',
 	'mwe-ok' => 'Tamam',
 	'mwe-cancel' => 'İptal',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'mwe-loading_txt' => 'Завантаження ...',
+	'mwe-cancel' => 'Скасувати',
 );
 
 /** Urdu (اردو) */

@@ -407,10 +407,11 @@ $messages['ar'] = array(
 );
 
 /** Aramaic (ܐܪܡܝܐ)
+ * @author 334a
  * @author Basharh
  */
 $messages['arc'] = array(
-	'openidusernameprefix' => 'ܡܬܚܫܚܢܐ ܕܗܝܝܘܬܐ ܦܬܝܚܬܐ',
+	'openidusernameprefix' => 'ܡܦܠܚܢܐ ܕܗܝܝܘܬܐ ܦܬܝܚܬܐ',
 	'openidoptional' => 'ܓܒܝܝܐ',
 	'openidfullname' => 'ܫܡܐ ܓܡܝܪܐ',
 	'openidemail' => 'ܦܪܫܓܢܐ ܕܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
@@ -1152,6 +1153,7 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
  * @author ChrisiPK
  * @author Imre
  * @author LWChris
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -1162,7 +1164,7 @@ Bitte benachrichtigen Sie einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 Sie können einen aus der untenstehenden Liste auswählen.',
 	'openidchoosenick' => 'Ihr Spitzname ($1)',
-	'openidchoosefull' => 'Ihr vollständiger Name ($1)',
+	'openidchoosefull' => 'Ihr bürgerlicher Name ($1)',
 	'openidchooseurl' => 'Ein Name aus Ihrer OpenID ($1)',
 	'openidchoosemanual' => 'Ein Name Ihrer Wahl:',
 	'openidconvertinstructions' => 'Mit diesem Formular können Sie Ihr Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',

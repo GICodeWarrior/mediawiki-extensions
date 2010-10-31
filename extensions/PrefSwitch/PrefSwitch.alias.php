@@ -18,6 +18,11 @@ $specialPageAliases['ar'] = array(
 	'PrefSwitch' => array( 'تغيير_تفضيلات_مبادرة_الاستخدام' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'PrefSwitch' => array( 'Activation_e_disactivation_del_Initiativa_de_Usabilitate' ),
+);
+
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'PrefSwitch' => array( 'ユーザビリティイニシアティブ設定スイッチ' ),
@@ -36,6 +41,11 @@ $specialPageAliases['ml'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'PrefSwitch' => array( 'BruikbaarheidsinitiatiefVoorkeurenwissel' ),
+);
+
+/** Татарча (Татарча) */
+$specialPageAliases['tt-cyrl'] = array(
+	'PrefSwitch' => array( 'Юзабилити_проектын_сынап_карау' ),
 );
 
 /**

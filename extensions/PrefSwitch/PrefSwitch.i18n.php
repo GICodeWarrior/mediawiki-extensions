@@ -525,6 +525,7 @@ $messages['ar'] = array(
 
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
+ * @author Michaelovic
  */
 $messages['arc'] = array(
 	'prefswitch-link-anon' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
@@ -536,6 +537,7 @@ $messages['arc'] = array(
 	'prefswitch-survey-answer-whyoff-other' => 'ܥܠܬܐ ܐܚܪܬܐ:',
 	'prefswitch-survey-answer-browser-other' => 'ܡܦܐܬܢܐ ܐܚܪܢܐ:',
 	'prefswitch-title-on' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
+	'prefswitch-title-switched-on' => 'ܚܕܘ!',
 	'prefswitch-title-switched-off' => 'ܬܘܕܝ',
 	'prefswitch-title-feedback' => 'ܡܥܝܪ̈ܢܘܬܐ',
 );
@@ -5945,9 +5947,9 @@ Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional aba
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Giro720
  * @author Raylton P. Sousa
- * @author 555
  */
 $messages['pt-br'] = array(
 	'prefswitch' => 'Preferências da Iniciativa de Usabilidade',

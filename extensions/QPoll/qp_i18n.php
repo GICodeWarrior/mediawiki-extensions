@@ -344,6 +344,7 @@ $messages['ar'] = array(
 );
 
 /** Aramaic (ܐܪܡܝܐ)
+ * @author 334a
  * @author Basharh
  */
 $messages['arc'] = array(
@@ -355,7 +356,7 @@ $messages['arc'] = array(
 	'qp_source_link' => 'ܥܩܪܐ',
 	'qp_users_link' => 'ܡܬܚܫܚܢ̈ܐ',
 	'qp_voice_link' => 'ܩܠܐ ܕܡܬܚܫܚܢܐ',
-	'qp_voice_link_inv' => 'ܡܬܚܫܚܢܐ ܝܗܒ ܩܠܐ؟',
+	'qp_voice_link_inv' => 'ܡܦܠܚܢܐ ܝܗܒ ܩܠܐ؟',
 	'qp_error_category_name_empty' => 'ܫܡܐ ܕܣܕܪܐ ܣܦܝܩܐ ܗܘ',
 );
 

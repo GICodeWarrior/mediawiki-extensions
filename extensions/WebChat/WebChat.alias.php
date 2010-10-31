@@ -30,7 +30,7 @@ $specialPageAliases['de'] = array(
 
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
-	'WebChat' => array( 'Chat web' ),
+	'WebChat' => array( 'Chat_web' ),
 );
 
 /** Estonian (Eesti) */
@@ -40,7 +40,7 @@ $specialPageAliases['et'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'WebChat' => array( 'Chat web' ),
+	'WebChat' => array( 'Chat_web' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -55,7 +55,7 @@ $specialPageAliases['ja'] = array(
 
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
-	'WebChat' => array( '웹 채팅' ),
+	'WebChat' => array( '웹채팅' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -65,7 +65,7 @@ $specialPageAliases['lb'] = array(
 
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
-	'WebChat' => array( 'വെബ് ചാറ്റ്' ),
+	'WebChat' => array( 'വെബ്_ചാറ്റ്' ),
 );
 
 /** Marathi (मराठी) */

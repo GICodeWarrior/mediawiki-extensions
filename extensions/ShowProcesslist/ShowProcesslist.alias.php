@@ -33,7 +33,7 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'ShowProcesslist' => array( 'Prozessliste anzeigen' ),
+	'ShowProcesslist' => array( 'Prozessliste_anzeigen' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -68,7 +68,7 @@ $specialPageAliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'ShowProcesslist' => array( 'Lista de processos' ),
+	'ShowProcesslist' => array( 'Lista_de_processos' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

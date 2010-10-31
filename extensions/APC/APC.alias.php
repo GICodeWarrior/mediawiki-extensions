@@ -23,6 +23,11 @@ $specialPageAliases['arz'] = array(
 	'APC' => array( 'عرض_إيه_بى_سى' ),
 );
 
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'APC' => array( 'APC' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $specialPageAliases['sa'] = array(
 	'APC' => array( 'एपीसिपश्यति' ),

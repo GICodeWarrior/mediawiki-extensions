@@ -36,6 +36,11 @@ $specialPageAliases['fa'] = array(
 	'CooperationStatistics' => array( 'آمار_همکاری' ),
 );
 
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'CooperationStatistics' => array( 'Yhteistyötilastot' ),
+);
+
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
 	'CooperationStatistics' => array( 'Statisticas_de_cooperation' ),

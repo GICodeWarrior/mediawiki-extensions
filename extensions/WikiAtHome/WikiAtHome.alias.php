@@ -35,7 +35,7 @@ $specialPageAliases['bs'] = array(
 
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
-	'SpecialWikiAtHome' => array( '위키 홈' ),
+	'SpecialWikiAtHome' => array( '위키홈' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -45,7 +45,7 @@ $specialPageAliases['lb'] = array(
 
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
-	'SpecialWikiAtHome' => array( 'വീട്ടിലെ വിക്കി' ),
+	'SpecialWikiAtHome' => array( 'വീട്ടിലെ_വിക്കി' ),
 );
 
 /** Marathi (मराठी) */

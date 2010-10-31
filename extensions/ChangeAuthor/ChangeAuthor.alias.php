@@ -53,6 +53,11 @@ $specialPageAliases['eo'] = array(
 	'ChangeAuthor' => array( 'Ŝanĝi_aŭtoron' ),
 );
 
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'ChangeAuthor' => array( 'CambiarAutor' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'ChangeAuthor' => array( 'تغییر_مولف' ),

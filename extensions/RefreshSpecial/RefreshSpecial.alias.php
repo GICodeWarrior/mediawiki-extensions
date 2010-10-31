@@ -30,7 +30,7 @@ $specialPageAliases['bs'] = array(
 
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
-	'RefreshSpecial' => array( 'Toimintosivujen päivitys' ),
+	'RefreshSpecial' => array( 'Toimintosivujen_päivitys' ),
 );
 
 /** Galician (Galego) */
@@ -45,7 +45,7 @@ $specialPageAliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'RefreshSpecial' => array( 'Refrescar special' ),
+	'RefreshSpecial' => array( 'Refrescar_special' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

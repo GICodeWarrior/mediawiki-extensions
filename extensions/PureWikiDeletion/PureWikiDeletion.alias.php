@@ -19,6 +19,13 @@ $specialPageAliases['ar'] = array(
 	'PopulateBlankedPagesTable' => array( 'ملء_جدول_الصفحات_المفرغة' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'PureWikiDeletion' => array( 'Pur_deletion_wiki' ),
+	'RandomExcludeBlank' => array( 'Pagina_aleatori_non_vacue' ),
+	'PopulateBlankedPagesTable' => array( 'Plenar_tabella_de_paginas_vacuate' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'PureWikiDeletion' => array( 'PureWikiverwijdering' ),

@@ -585,6 +585,13 @@ Se vos éte branchiê, vos pouede enlevar ceti avèrtissement dens la sèccion �
 	'vector-simplesearch-containing' => 'que contint...',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'vector-simplesearch-search' => '尋吖',
+);
+
 /** Scottish Gaelic (Gàidhlig)
  * @author Akerbeltz
  */

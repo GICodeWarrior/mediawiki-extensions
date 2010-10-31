@@ -37,8 +37,8 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'WhiteList' => array( 'Weiße Liste' ),
-	'WhiteListEdit' => array( 'Weiße Liste bearbeiten' ),
+	'WhiteList' => array( 'Weiße_Liste' ),
+	'WhiteListEdit' => array( 'Weiße_Liste_bearbeiten' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -96,8 +96,8 @@ $specialPageAliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'WhiteList' => array( 'Lista blanc' ),
-	'WhiteListEdit' => array( 'Modificar lista blanc' ),
+	'WhiteList' => array( 'Lista_blanc' ),
+	'WhiteListEdit' => array( 'Modificar_lista_blanc' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

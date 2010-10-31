@@ -33,7 +33,7 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'RandomInCategory' => array( 'Zufällige Seite in Kategorie' ),
+	'RandomInCategory' => array( 'Zufällige_Seite_in_Kategorie' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -43,12 +43,12 @@ $specialPageAliases['dsb'] = array(
 
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
-	'RandomInCategory' => array( 'Aleatorio en categoría' ),
+	'RandomInCategory' => array( 'Aleatorio_en_categoría' ),
 );
 
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
-	'RandomInCategory' => array( 'Satunnainen sivu luokasta' ),
+	'RandomInCategory' => array( 'Satunnainen_sivu_luokasta' ),
 );
 
 /** French (Français) */
@@ -73,7 +73,7 @@ $specialPageAliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'RandomInCategory' => array( 'Aleatori in categoria' ),
+	'RandomInCategory' => array( 'Aleatori_in_categoria' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

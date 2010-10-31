@@ -95,6 +95,7 @@ $specialPageAliases['eo'] = array(
 $specialPageAliases['es'] = array(
 	'Configure' => array( 'Configurar' ),
 	'Extensions' => array( 'Extensiones' ),
+	'ViewConfig' => array( 'VerConfiguración._Ver_configuración' ),
 );
 
 /** Persian (فارسی) */
@@ -242,9 +243,9 @@ $specialPageAliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
-	'Configure' => array( 'സജ്ജീകരണങ്ങൾ' ),
+	'Configure' => array( 'ക്രമീകരണം' ),
 	'Extensions' => array( 'അനുബന്ധങ്ങൾ' ),
-	'ViewConfig' => array( 'സജ്ജീകരണങ്ങൾ_കാണുക' ),
+	'ViewConfig' => array( 'ക്രമീകരണങ്ങൾ_കാണുക' ),
 );
 
 /** Marathi (मराठी) */

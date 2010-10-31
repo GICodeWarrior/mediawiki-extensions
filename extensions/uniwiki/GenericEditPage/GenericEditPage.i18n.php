@@ -1138,7 +1138,7 @@ $messages['oc'] = array(
 	'gep-classicmode' => 'Mòde classic',
 	'gep-genericmode' => 'Mòde generic',
 	'gep-nosectioninstructions' => 'I a pas cap de seccion dins aquesta pagina.
-Apondètz-ne en utilizant los espleches dins la barra de menut.',
+Apondètz-ne en utilizant las aisinas dins la barra de menut.',
 	'gep-nocategories' => 'Causir al mens una categoria abans de salvar la pagina',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );

@@ -39,7 +39,7 @@ $specialPageAliases['gsw'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'RecordAdmin' => array( 'Gestion de datos' ),
+	'RecordAdmin' => array( 'Gestion_de_datos' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

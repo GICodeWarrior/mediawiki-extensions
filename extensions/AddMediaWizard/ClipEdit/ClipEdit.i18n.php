@@ -1095,7 +1095,9 @@ $messages['no'] = array(
 	'mwe-clipedit-layout_left' => 'Bildeoppsett venstre side',
 );
 
-/** Occitan (Occitan) */
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
 	'mwe-clipedit-crop' => "Retalhar l'imatge",
 	'mwe-clipedit-apply_crop' => "Aplicar lo retalh a l'imatge",
@@ -1117,9 +1119,9 @@ $messages['oc'] = array(
 	'mwe-clipedit-start_time' => 'Ora de començament',
 	'mwe-clipedit-end_time' => 'Ora de fin',
 	'mwe-clipedit-preview_inout' => "Previsualizar los punts d'entrada-sortida",
-	'mwe-clipedit-edit-tools' => 'Espleches de modificacion',
+	'mwe-clipedit-edit-tools' => 'Aisinas de modificacion',
 	'mwe-clipedit-inline-description' => "Descripcion ''inline''",
-	'mwe-clipedit-edit-video-tools' => 'Espleches de modificacion de las vidèos :',
+	'mwe-clipedit-edit-video-tools' => 'Aisinas de modificacion de las vidèos :',
 	'mwe-clipedit-duration' => 'Durada :',
 );
 

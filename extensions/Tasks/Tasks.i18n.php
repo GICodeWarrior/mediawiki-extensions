@@ -1396,6 +1396,13 @@ $messages['frp'] = array(
 	'tasks-pref-showtaskcomments' => 'Vêre la pâge de comentèros a propôs des travâlys.',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'tasks_search_form_title' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

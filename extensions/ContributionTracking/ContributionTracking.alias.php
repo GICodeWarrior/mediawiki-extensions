@@ -38,6 +38,11 @@ $specialPageAliases['fa'] = array(
 	'ContributionTracking' => array( 'ردگیری_مشارکت' ),
 );
 
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'ContributionTracking' => array( 'Muokkausten_seuranta' ),
+);
+
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
 	'ContributionTracking' => array( 'Seguimento das contribucións' ),

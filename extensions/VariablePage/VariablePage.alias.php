@@ -13,3 +13,13 @@ $specialPageAliases = array();
 $specialPageAliases['en'] = array(
 	'VariablePage' => array( 'VariablePage' ),
 );
+
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'VariablePage' => array( 'ചരതാൾ' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;
