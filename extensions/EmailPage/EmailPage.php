@@ -1,6 +1,7 @@
 <?php
 /**
- * EmailPage extension - Send rendered HTML page to an email address or list of addresses using phpmailer
+ * EmailPage extension - Send rendered HTML page to an email address or list of addresses using
+ *                       the phpmailer class from http://phpmailer.sourceforge.net/
  *
  * See http://www.mediawiki.org/wiki/Extension:EmailPage for installation and usage details
  *
@@ -12,7 +13,7 @@
  */
 if( !defined( 'MEDIAWIKI' ) ) die( "Not an entry point." );
 
-define( 'EMAILPAGE_VERSION', "1.4.0, 2010-10-29" );
+define( 'EMAILPAGE_VERSION', "2.0.0, 2010-11-01" );
 
 $wgEmailPageGroup           = "sysop";              # Users must belong to this group to send emails (empty string means anyone can send)
 $wgEmailPageCss             = "EmailPage.css";      # A minimal CSS page to embed in the email (eg. monobook/main.css without portlets, actions etc)
@@ -20,16 +21,15 @@ $wgEmailPageAllowRemoteAddr = array( "127.0.0.1" ); # Allow anonymous sending fr
 $wgEmailPageAllowAllUsers   = false;                # Whether to allow sending to all users (the "user" group)
 $wgEmailPageToolboxLink     = true;                 # Add a link to the sidebar toolbox?
 $wgEmailPageActionLink      = true;                 # Add a link to the actions links?
-$wgPhpMailerClass           = dirname( __FILE__ ) . "/PHPMailer_v5.1/class.phpmailer.php"; # From http://phpmailer.sourceforge.net/
 
 if( $wgEmailPageGroup ) $wgGroupPermissions['sysop'][$wgEmailPageGroup] = true;
 
 if( isset( $_SERVER['SERVER_ADDR'] ) ) $wgEmailPageAllowRemoteAddr[] = $_SERVER['SERVER_ADDR'];
 
-$dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['SpecialEmailPage'] = $dir . "EmailPage_body.php";
-$wgExtensionMessagesFiles['EmailPage'] = $dir . "EmailPage.i18n.php";
-$wgExtensionAliasesFiles['EmailPage']  = $dir . "EmailPage.alias.php";
+$dir = dirname( __FILE__ );
+$wgAutoloadClasses['SpecialEmailPage'] = "$dir/EmailPage_body.php";
+$wgExtensionMessagesFiles['EmailPage'] = "$dir/EmailPage.i18n.php";
+$wgExtensionAliasesFiles['EmailPage']  = "$dir/EmailPage.alias.php";
 $wgSpecialPages['EmailPage']           = "SpecialEmailPage";
 
 $wgExtensionCredits['specialpage'][] = array(
@@ -42,7 +42,10 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # If form has been posted, include the phpmailer class
-if( isset( $_REQUEST['ea-send'] ) ) require_once( $wgPhpMailerClass );
+if( isset( $_REQUEST['ea-send'] ) ) {
+	if( $files = glob( "$dir/*/class.phpmailer.php" ) ) require_once( $files[0] );
+	else die( "PHPMailer class not found!" );
+}
 
 # Add toolbox and action links
 if( $wgEmailPageToolboxLink ) $wgHooks['SkinTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
