@@ -175,9 +175,13 @@ $messages['ar'] = array(
 
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
+ * @author Michaelovic
  */
 $messages['arc'] = array(
 	'readerfeedback-finished' => 'ܬܘܕܝ!',
+	'readerfeedback-tier-high' => 'ܛܒܐ',
+	'readerfeedback-tier-medium' => 'ܡܨܥܝܐ',
+	'readerfeedback-tier-poor' => 'ܡܚܝܠܐ',
 	'readerfeedback-tt-review' => 'ܫܕܪ ܬܢܝܬܐ',
 );
 

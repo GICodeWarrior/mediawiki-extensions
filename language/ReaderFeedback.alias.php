@@ -56,8 +56,8 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'LikedPages' => array( 'Hoch bewertete Seiten' ),
-	'ProblemPages' => array( 'Niedrig bewertete Seiten' ),
+	'LikedPages' => array( 'Hoch_bewertete_Seiten' ),
+	'ProblemPages' => array( 'Niedrig_bewertete_Seiten' ),
 	'RatingHistory' => array( 'Bewertungsgeschichte' ),
 	'ReaderFeedback' => array( 'Bewertung' ),
 );
@@ -153,10 +153,10 @@ $specialPageAliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'LikedPages' => array( 'Paginas ligate' ),
-	'ProblemPages' => array( 'Paginas problematic' ),
-	'RatingHistory' => array( 'Historia de evalutationes' ),
-	'ReaderFeedback' => array( 'Reactiones de lectores' ),
+	'LikedPages' => array( 'Paginas_ligate' ),
+	'ProblemPages' => array( 'Paginas_problematic' ),
+	'RatingHistory' => array( 'Historia_de_evalutationes' ),
+	'ReaderFeedback' => array( 'Reactiones_de_lectores' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
