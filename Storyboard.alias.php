@@ -31,6 +31,19 @@ $specialPageAliases['br'] = array(
 	'Story' => array( 'Istor' ),
 );
 
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'Story' => array( 'Tarina' ),
+	'StorySubmission' => array( 'Tarinan_lisäys' ),
+);
+
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'StoryReview' => array( 'Revision_de_historia' ),
+	'Story' => array( 'Historia' ),
+	'StorySubmission' => array( 'Submission_de_historia' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'StoryReview' => array( 'Annekdot_nokucken' ),
