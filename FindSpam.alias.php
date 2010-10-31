@@ -55,12 +55,17 @@ $specialPageAliases['eo'] = array(
 
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
-	'FindSpam' => array( 'Buscar_spam' ),
+	'FindSpam' => array( 'BuscarSpam', 'Buscar_spam' ),
 );
 
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'FindSpam' => array( 'هرزیاب' ),
+);
+
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'FindSpam' => array( 'Etsi_roskapostia' ),
 );
 
 /** Galician (Galego) */
@@ -135,7 +140,7 @@ $specialPageAliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
-	'FindSpam' => array( 'പാഴ്‌‌എഴുത്തുകൾകണ്ടെത്തുക' ),
+	'FindSpam' => array( 'പാഴെഴുത്തുകൾകണ്ടെത്തുക' ),
 );
 
 /** Marathi (मराठी) */
