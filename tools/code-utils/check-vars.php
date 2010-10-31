@@ -6,9 +6,11 @@
  * Run as:
  *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name importUseModWiki.php -o -name diffLanguage.php -o -name LocalSettings.php -o -name Parser?????.php \) -exec php tools/code-utils/check-vars.php \{\} +
  */
-
-require_once( dirname( __FILE__ ) . "/../../phase3/includes/Defines.php" ); # Faster than parsing
-require_once( dirname( __FILE__ ) . "/../../phase3/includes/AutoLoader.php" );
+if( ! $IP = getenv( 'MW_INSTALL_PATH' ) ) {
+	$IP = dirname( __FILE__ ) . "/../../phase3/";
+}
+require_once( "$IP/includes/Defines.php" ); # Faster than parsing
+require_once( "$IP/includes/AutoLoader.php" );
 
 $mwDeprecatedFunctions = false;
 @include( dirname( __FILE__ ) . "/deprecated.functions" );
@@ -69,8 +71,8 @@ class CheckVars {
 
 	function __construct() {
 		if ( self::$mDefaultSettingsGlobals == null ) {
-			$this->load( dirname( dirname( dirname( __FILE__ ) ) ) . "/phase3/includes/DefaultSettings.php", false );
-
+			global $IP;
+			$this->load( "$IP/includes/DefaultSettings.php", false );
 			if ( count( $this->mTokens ) > 0 ) {
 				$globals = array (
 					'$wgArticle', # Setup.php
@@ -178,9 +180,17 @@ class CheckVars {
 		$this->mFunctionQualifiers = array();
 
 
+		// Predefine constant that might not be defined by this file source code
 		$this->mConstants = array( 'PARSEKIT_SIMPLE', 'UNORM_NFC', # Extensions
 			/* Defined in Title.php and GlobalFunctions.php */
-			'GAID_FOR_UPDATE', 'TC_MYSQL', 'TS_UNIX', 'TS_MW', 'TS_DB', 'TS_RFC2822', 'TS_ISO_8601', 'TS_EXIF', 'TS_ORACLE', 'TS_POSTGRES', 'TS_DB2' ) ;
+			'GAID_FOR_UPDATE', 'TC_MYSQL', 'TS_UNIX', 'TS_MW', 'TS_DB', 'TS_RFC2822',
+			'TS_ISO_8601', 'TS_EXIF', 'TS_ORACLE', 'TS_POSTGRES', 'TS_DB2',
+			'TS_ISO_8601_BASIC',
+			/* PHP extensions */
+			'FILEINFO_MIME', 'FILEINFO_MIME_TYPE', 'MHASH_ADLER32',
+			'SIGTERM', 'SIG_DFL',
+			'SVN_REVISION_HEAD', 'SVN_REVISION_INITIAL',
+		) ;
 	}
 
 	static $functionQualifiers = array( T_ABSTRACT, T_PRIVATE, T_PUBLIC, T_PROTECTED, T_STATIC );
@@ -520,12 +530,16 @@ class CheckVars {
 						$requirePath .= trim( $token[1], '\'"' );
 					} else if ( $token[0] == T_VARIABLE ) {
 						if ( $token[1] == '$IP' || $token[1] == '$mwPath' ) {
-							$requirePath .= dirname( __FILE__ ) . '/../../phase3';
+							#$requirePath .= dirname( __FILE__ ) . '/../../phase3';
+							global $IP;
+							$requirePath .= $IP ;
 						} elseif ( $token[1] == '$dir' ) {
 							//  Scripts at phase3/maintenance/language/
 							$requirePath .= dirname( $this->mFilename );
 						} elseif ( $token[1] == '$wgStyleDirectory' ) {
-							$requirePath .= dirname( __FILE__ ) . '/../../phase3/skins';
+							#$requirePath .= dirname( __FILE__ ) . '/../../phase3/skins';
+							global $IP;
+							$requirePath .= "$IP/skins/";
 						} elseif ( in_array( $token[1], array( '$classFile', '$file', '$_fileName', '$fileName', '$filename' ) ) ) {
 							/* Maintenance.php lines 374 and 894 */
 							/* LocalisationCache.php, MessageCache.php, AutoLoader.php */
@@ -534,7 +548,9 @@ class CheckVars {
 							$requirePath .= $token[1];
 						}
 					} elseif ( $token[0] == T_STRING && $token[1] == 'DO_MAINTENANCE' ) {
-						$requirePath .= dirname( __FILE__ ) . '/../../phase3/maintenance/doMaintenance.php';
+						#$requirePath .= dirname( __FILE__ ) . '/../../phase3/maintenance/doMaintenance.php';
+						global $IP;
+						$requirePath .= "$IP/maintenance/doMaintenance.php";
 					} else {
 						$requirePath .= $token[1];
 					}
@@ -758,7 +774,9 @@ class CheckVars {
 
 $cv = new CheckVars();
 // $cv->mDebug = true;
-
+if( $argc < 2 ) {
+	die ("Usage: $argv[0] <PHP_source_file> [--generate-deprecated-list]\n");
+}
 array_shift( $argv );
 if ( $argv[0] == '--generate-deprecated-list' ) {
 	$cv->setGenerateDeprecatedList( true );
