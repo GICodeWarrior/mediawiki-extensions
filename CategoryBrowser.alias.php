@@ -13,6 +13,21 @@ $specialPageAliases['en'] = array(
 	'CategoryBrowser' => array( 'CategoryBrowser' ),
 );
 
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'CategoryBrowser' => array( 'Luokkaselain' ),
+);
+
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'CategoryBrowser' => array( 'Navigator_de_categorias' ),
+);
+
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'CategoryBrowser' => array( 'カテゴリブラウザー' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'CategoryBrowser' => array( 'CategorieenDoorbladeren' ),
