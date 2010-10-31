@@ -9,6 +9,7 @@
 if( ! $IP = getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = dirname( __FILE__ ) . "/../../phase3/";
 }
+
 require_once( "$IP/includes/Defines.php" ); # Faster than parsing
 require_once( "$IP/includes/AutoLoader.php" );
 
@@ -122,7 +123,7 @@ class CheckVars {
 			'$wgHtmlEntityAliases' => array( 'Sanitizer.php' ),
 			'$wgFullyInitialised' => array( /* Set */ 'Setup.php', /* read */ 'Exception.php' ),
 			'$wgContLanguageCode' => array( 'Setup.php' ),
-			'$wgUseLatin1' => array( 'FiveUpgrade.inc' ), # If you upgrade from MW < 1.5 it will be there
+			'$wgUseLatin1' => array( 'upgrade1_5.php' ), # If you upgrade from MW < 1.5 it will be there
 			'$wgDatabase' => array( 'DatabaseUpdater.php' ),
 			'$wgExtPGNewFields' => array( 'DatabaseUpdater.php', 'PostgresUpdater.php' ),
 			'$wgExtPGAlteredFields' => array( 'DatabaseUpdater.php', 'PostgresUpdater.php' ),
@@ -130,7 +131,7 @@ class CheckVars {
 			'$mainListOpened' => array( 'Installer.php' ),
 			'$optionsWithArgs' => array( 'commandLine.inc' ),
 			'$args' => array( 'commandLine.inc' ),
-			'$options' => array( 'commandLine.inc', 'FiveUpgrade.inc' ),
+			'$options' => array( 'commandLine.inc', 'upgrade1_5.php' ),
 			'$canonicalDecomp' => array( 'UtfNormalGenerate.php' ),
 			'$compatibilityDecomp' => array( 'UtfNormalGenerate.php' ),
 			'$mmfl' => array( 'mergeMessageFileList.php' ),
@@ -196,6 +197,7 @@ class CheckVars {
 	static $functionQualifiers = array( T_ABSTRACT, T_PRIVATE, T_PUBLIC, T_PROTECTED, T_STATIC );
 
 	function execute() {
+		global $IP;
 		$currentToken = null;
 
 		foreach ( $this->mTokens as $token ) {
@@ -474,6 +476,10 @@ class CheckVars {
 							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
 							continue;
 						}
+						if ( substr( $requirePath, -18 ) == "/LocalSettings.php" ) {
+							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
+							continue;
+						}
 						
 						if ( ( $requirePath == '' ) || ( !file_exists( $requirePath ) && $requirePath[0] != '/' ) ) {
 							/* Try prepending the script folder, for maintenance scripts (but see Maintenance.php:758) */
@@ -519,6 +525,8 @@ class CheckVars {
 							$requirePath = dirname( $this->mFilename );
 						} elseif ( $requirePath == 'dirname(dirname(__FILE__))' ) {
 							$requirePath = dirname( dirname( $this->mFilename ) );
+						} elseif ( $requirePath == 'dirname(dirname(dirname(__FILE__)))' ) {
+							$requirePath = dirname( dirname( dirname( $this->mFilename ) ) );
 						}
 					} else if ( $token[0] == T_CURLY_OPEN || $token == '}' ) {
 						continue;
@@ -530,16 +538,12 @@ class CheckVars {
 						$requirePath .= trim( $token[1], '\'"' );
 					} else if ( $token[0] == T_VARIABLE ) {
 						if ( $token[1] == '$IP' || $token[1] == '$mwPath' ) {
-							#$requirePath .= dirname( __FILE__ ) . '/../../phase3';
-							global $IP;
-							$requirePath .= $IP ;
+							$requirePath .= $IP;
 						} elseif ( $token[1] == '$dir' ) {
 							//  Scripts at phase3/maintenance/language/
 							$requirePath .= dirname( $this->mFilename );
 						} elseif ( $token[1] == '$wgStyleDirectory' ) {
-							#$requirePath .= dirname( __FILE__ ) . '/../../phase3/skins';
-							global $IP;
-							$requirePath .= "$IP/skins/";
+							$requirePath .= "$IP/skins";
 						} elseif ( in_array( $token[1], array( '$classFile', '$file', '$_fileName', '$fileName', '$filename' ) ) ) {
 							/* Maintenance.php lines 374 and 894 */
 							/* LocalisationCache.php, MessageCache.php, AutoLoader.php */
@@ -548,8 +552,6 @@ class CheckVars {
 							$requirePath .= $token[1];
 						}
 					} elseif ( $token[0] == T_STRING && $token[1] == 'DO_MAINTENANCE' ) {
-						#$requirePath .= dirname( __FILE__ ) . '/../../phase3/maintenance/doMaintenance.php';
-						global $IP;
 						$requirePath .= "$IP/maintenance/doMaintenance.php";
 					} else {
 						$requirePath .= $token[1];
@@ -733,6 +735,7 @@ class CheckVars {
 		if ( $token[1] == "Testing_Selenium" || $token[1] == "Testing_Selenium_Exception" ) return $token[1];
 		if ( substr( $token[1], 0, 12 ) == "Net_Gearman_" ) return $token[1]; # phase3/maintenance/gearman/gearman.inc
 		if ( $token[1] == "PEAR_Error" ) return $token[1]; # Services_JSON.php
+		if ( $token[1] == "PHP_Timer" ) return $token[1]; # From PEAR, used in ParserHelpers.php
 
 		if ( !isset( $wgAutoloadLocalClasses[$token[1]] ) && !in_array( $token[1], $this->mKnownFileClasses ) ) {
 			if ( $warn == 'now' ) {
@@ -772,11 +775,12 @@ class CheckVars {
 	
 }
 
+if( $argc < 2 ) {
+	die ("Usage: php $argv[0] [--generate-deprecated-list] <PHP_source_file1> <PHP_source_file2> ...\n");
+}
+
 $cv = new CheckVars();
 // $cv->mDebug = true;
-if( $argc < 2 ) {
-	die ("Usage: $argv[0] <PHP_source_file> [--generate-deprecated-list]\n");
-}
 array_shift( $argv );
 if ( $argv[0] == '--generate-deprecated-list' ) {
 	$cv->setGenerateDeprecatedList( true );
