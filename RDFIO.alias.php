@@ -8,11 +8,11 @@
 
 $specialPageAliases = array();
 
-/** English */
+/** English (English) */
 $specialPageAliases['en'] = array(
-	'SPARQLEndpoint'   => array( 'SPARQLEndpoint' ),
+	'SPARQLEndpoint' => array( 'SPARQLEndpoint' ),
 	'SpecialARC2Admin' => array( 'ARC2Admin' ),
-	'RDFImport'        => array( 'RDFImport' ),
+	'RDFImport' => array( 'RDFImport' ),
 );
 
 /**
