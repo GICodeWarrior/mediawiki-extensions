@@ -435,3 +435,10 @@ $messages['vi'] = array(
 	'variablepage-desc' => 'Trang đổi hướng biến nhẹ nhàng',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'variablepage-navlink_text' => '资助',
+);
+
