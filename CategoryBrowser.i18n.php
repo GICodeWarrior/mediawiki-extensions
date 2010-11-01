@@ -454,7 +454,7 @@ Por favor, cambia o actualiza el navegador, de ser posible.',
  */
 $messages['fi'] = array(
 	'categorybrowser' => 'Luokkaselain',
-	'categorybrowser-desc' => 'Tarjoaa [[Special:CategoryBrowser|erikoissivun]] suodattamaan pois kansoitetuimmat luokat ja navigoimaan niillä AJAX-rajapintaa käyttäen',
+	'categorybrowser-desc' => 'Tarjoaa [[Special:CategoryBrowser |erikoissivun]] suodattamaan pois kansoitetuimmat luokat ja navigoimaan niillä AJAX-rajapintaa käyttäen',
 	'cb_requires_javascript' => 'Luokkaselainlaajennus edellyttää, että JavaScript on käytössä selaimessa.',
 	'cb_ie6_warning' => 'Ehtomuokkain ei toimi Internet Explorer 6.0 -selaimessa tai sitä varhaisemmissa selaimissa. 
 Esimääriteltyjen ehtojen selailun pitäisi kuitenkin toimia normaalisti.
