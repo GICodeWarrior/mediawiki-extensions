@@ -6,7 +6,7 @@ class SpecialEmailPage extends SpecialPage {
 	var $recipients = array();
 	var $title;
 	var $subject;
-	var $header;
+	var $message;
 	var $group;
 	var $list;
 	var $textonly;
@@ -26,7 +26,7 @@ class SpecialEmailPage extends SpecialPage {
 	 */
 	function execute( $param ) {
 		global $wgOut, $wgUser, $wgRequest, $wgParser, $wgEmailPageContactsCat, $wgGroupPermissions, $wgSitename,
-			$wgRecordAdminCategory, $wgEmailPageCss, $wgEmailPageAllowAllUsers;
+			$wgRecordAdminCategory, $wgEmailPageCss, $wgEmailPageAllowAllUsers, $wgEmergencyContact;
 
 		$db = wfGetDB( DB_SLAVE );
 		$param = str_replace( '_', ' ', $param );
@@ -35,10 +35,12 @@ class SpecialEmailPage extends SpecialPage {
 
 		# Get info from request or set to defaults
 		$this->title    = $wgRequest->getText( 'ea-title', $param );
+		$this->from     = $wgRequest->getText( 'ea-from' );
 		$this->subject  = $wgRequest->getText( 'ea-subject', wfMsg( 'ea-pagesend', $this->title, $wgSitename ) );
-		$this->header   = $wgRequest->getText( 'ea-header' );
+		$this->message  = $wgRequest->getText( 'ea-message' );
+		$this->message  = $wgRequest->getText( 'ea-message' );
 		$this->group    = $wgRequest->getText( 'ea-group' );
-		$this->list     = $wgRequest->getText( 'ea-list' );
+		$this->to       = $wgRequest->getText( 'ea-to' ) . ";" . $wgRequest->getText( 'ea-cc' );
 		$this->textonly = $wgRequest->getText( 'ea-textonly', false );
 		$this->css      = $wgRequest->getText( 'ea-css', $wgEmailPageCss );
 		$this->record   = $wgRequest->getText( 'ea-record', false );
@@ -49,7 +51,7 @@ class SpecialEmailPage extends SpecialPage {
 		else return $wgOut->addWikiText( wfMsg( 'ea-nopage' ) );
 
 		# If the send button was clicked, attempt to send and exit
-		if( isset( $_REQUEST['ea-send'] ) ) return $this->send();
+		if( $wgRequest->getText( 'ea-send', false ) ) return $this->send();
 
 		# Render form
 		$special = SpecialPage::getTitleFor( 'EmailPage' );
@@ -58,10 +60,21 @@ class SpecialEmailPage extends SpecialPage {
 			'action' => $special->getLocalURL( 'action=submit' ),
 			'method' => 'POST'
 		), null ) );
-		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'ea-selectrecipients' ) . '</legend>' );
-		$wgOut->addHTML( '<table style="padding:0;margin:0;border:none;">' );
+		$wgOut->addHTML( "<table style=\"padding:0;margin:0;border:none;\">" );
 
-		# Allow selection of a group
+		# From (dropdown list of self and wiki addresses)
+		$from = "<option>$wgEmergencyContact</option>";
+		$ue = $wgUser->getEmail();
+		if( $wgUser->isValidEmailAddr( $ue ) ) $from = "<option>$ue</option>$from"; else $ue = "";
+		$wgOut->addHTML( "<tr id=\"ea-from\"><th align=\"right\">" . wfMsg( 'ea-from' ) . ":</th>" );
+		$wgOut->addHTML( "<td><select name=\"ea-from\">$from</select></td></tr>\n" );
+
+		# To
+		$wgOut->addHTML( "<tr id=\"ea-to\"><th align=\"right\" valign=\"top\">" . wfMsg( 'ea-to' ) . ":</th>" );
+		$wgOut->addHTML( "<td><textarea name=\"ea-to\" rows=\"2\" style=\"width:100%\"></textarea>" );
+		$wgOut->addHTML( "<br /><small><i>(" . wfMsg( 'ea-to-info' ) . ")</i></small>" );
+
+		# To group
 		$groups = "<option />";
 		foreach( array_keys( $wgGroupPermissions ) as $group ) if( $group != '*' && $group != 'user' ) {
 			$selected = $group == $this->group ? ' selected' : '';
@@ -71,28 +84,40 @@ class SpecialEmailPage extends SpecialPage {
 			$selected = 'user' == $this->group ? ' selected' : '';
 			$groups .= "<option$selected value=\"user\">" . wfMsg( 'ea-allusers' ) . "</option>";
 		}
-		$wgOut->addHTML( "<tr><td>" . wfMsg( 'ea-fromgroup' ) . "</td><td><select name=\"ea-group\">$groups</select></td></tr>\n" );
-		$wgOut->addHTML( "</table>" );
+		$wgOut->addHTML( "<div id=\"ea-group\"><select name=\"ea-group\">$groups</select>" );
+		$wgOut->addHTML( " <i><small>(" . wfMsg( 'ea-group-info' ) . "</small></i></div>" );
 
-		# Addition of named list
-		$wgOut->addWikiText( wfMsg( 'ea-selectlist' ) );
-		$wgOut->addHTML( "<textarea name=\"ea-list\" rows=\"5\">{$this->list}</textarea><br />\n" );
-		$wgOut->addHTML( "</fieldset>" );
+		$wgOut->addHTML( "</td></tr>" );
 
-		$wgOut->addHTML( "<fieldset><legend>" . wfMsg( 'ea-compose' ) . "</legend>" );
+		# Cc
+		$wgOut->addHTML( "<tr id=\"ea-cc\"><th align=\"right\">" . wfMsg( 'ea-cc' ) . ":</th>" );
+		$wgOut->addHTML( "<td>" . 
+			Xml::element( 'input', array(
+				'type'  => 'text',
+				'name'  => 'ea-cc',
+				'value' => $ue,
+				'style' => "width:100%"
+			) )
+		. "</td></tr>" );
 
 		# Subject
-		$wgOut->addWikiText( wfMsg( 'ea-subject' ) );
-		$wgOut->addHTML(
-			Xml::element( 'input', array( 'type' => 'text', 'name' => 'ea-subject', 'value' => $this->subject, 'style' => "width:100%" ) )
-		);
+		$wgOut->addHTML( "<tr id=\"ea-subject\"><th align=\"right\">" . wfMsg( 'ea-subject' ) . ":</th>" );
+		$wgOut->addHTML( "<td>" . 
+			Xml::element( 'input', array(
+				'type'  => 'text',
+				'name'  => 'ea-subject',
+				'value' => $this->subject,
+				'style' => "width:100%"
+			) )
+		. "</td></tr>" );
 
-		# Header
-		$wgOut->addWikiText( wfMsg( 'ea-header' ) );
-		$wgOut->addHTML( "<textarea name=\"ea-header\" rows=\"5\">{$this->header}</textarea><br />\n" );
+		# Message
+		$wgOut->addHTML( "<tr id=\"ea-message\"><th align=\"right\" valign=\"top\">" . wfMsg( 'ea-message' ) . ":</th>" );
+		$wgOut->addHTML( "<td><textarea name=\"ea-header\" rows=\"3\" style=\"width:100%\">{$this->message}</textarea>" );
+		$wgOut->addHTML( "<br /><i><small>(" . wfMsg( 'ea-message-info' ) . ")</small></i></td></tr>" );
 
 		# CSS
-		$options = "<option value=''>$wgEmailPageCss</option>";
+		$options = '';
 		$res = $db->select(
 			'page',
 			'page_id',
@@ -106,28 +131,40 @@ class SpecialEmailPage extends SpecialPage {
 			$options .= "<option$selected>$t</option>";
 		}
 		$db->freeResult( $res );
-		if( $options ) $wgOut->addHTML( wfMsg( 'ea-selectcss' ) . " <select name=\"ea-css\">$options</select><br />\n" );
-
-		# Get titles in Category:Records and build option list
-		$options = "<option />";
-		$cl   = $db->tableName( 'categorylinks' );
-		$cat  = $db->addQuotes( $wgRecordAdminCategory ? $wgRecordAdminCategory : 'Records' );
-		$res  = $db->select( $cl, 'cl_from', "cl_to = $cat", __METHOD__, array( 'ORDER BY' => 'cl_sortkey' ) );
-		while( $row = $db->fetchRow( $res ) ) {
-			$t = Title::newFromID( $row[0] )->getText();
-			$selected = $t == $this->record ? ' selected' : '';
-			$options .= "<option$selected>$t</option>";
+		if( $options ) {
+			if( $wgEmailPageCss ) $options = "<option value=''>$wgEmailPageCss</option>$options";
+			$wgOut->addHTML( "<tr id=\"ea-css\"><th align=\"right\">" . wfMsg( 'ea-style' ) . ":</th><td>" );
+			$wgOut->addHTML( "<select name=\"ea-css\"><option />$options</select>" );
+			$wgOut->addHTML( " <small><i>(" . wfMsg( 'ea-selectcss' ) . ")</i></small></td></tr>" );
 		}
-		$db->freeResult( $res );
-		$wgOut->addHTML( wfMsg( 'ea-selectrecord' ) . " <select name=\"ea-record\">$options</select>" );
-		$wgOut->addHTML( "</fieldset>" );
+
+		# Data
+		if( defined( 'NS_FORM' ) ) {
+			$options = "";
+			$tbl = $db->tableName( 'page' );
+			$res = $db->select( $tbl, 'page_id', "page_namespace = " . NS_FORM );
+			while( $row = $db->fetchRow( $res ) ) {
+				$t = Title::newFromID( $row[0] )->getText();
+				$selected = $t == $this->record ? ' selected' : '';
+				$options .= "<option$selected>$t</option>";
+			}
+			$db->freeResult( $res );
+			if( $options ) {
+				$wgOut->addHTML( "<tr id=\"ea-data\"><th align=\"right\">" . wfMsg( 'ea-data' ) . ":</th><td>" );
+				$wgOut->addHTML( "<select name=\"ea-record\"><option />$options</select>" );
+				$wgOut->addHTML( " <small><i>(" . wfMsg( 'ea-selectrecord' ) . ")</i></small></td></tr>" );
+			}
+		}
 
 		# Submit buttons & hidden values
-		$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-send', 'value' => wfMsg( 'ea-send' ) ) ) . '&#160;' );
-		$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-show', 'value' => wfMsg( 'ea-show' ) ) ) );
+		$wgOut->addHTML( "<tr><td colspan=\"2\" align=\"right\">" );
 		$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'ea-title', 'value' => $this->title ) ) );
+		$wgOut->addHTML( Xml::element( 'input', array( 'id' => 'ea-show', 'type' => 'submit', 'name' => 'ea-show', 'value' => wfMsg( 'ea-show' ) ) ) );
+		$wgOut->addHTML( "&nbsp;&nbsp;" );
+		$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-send', 'value' => wfMsg( 'ea-send' ) ) ) . '&#160;' );
+		$wgOut->addHTML( "</td></tr>" );
 
-		$wgOut->addHTML( "</form>" );
+		$wgOut->addHTML( "</table></form>" );
 
 		# If the show button was clicked, render the list
 		if( isset( $_REQUEST['ea-show'] ) ) return $this->send( false );
@@ -159,15 +196,15 @@ class SpecialEmailPage extends SpecialPage {
 			$db->freeResult( $res );
 		}
 
-		# Recipients from list (expand templates in wikitext)
-		foreach( preg_split( "/[\\x00-\\x1f,;*]+/", $this->list ) as $item ) $this->addRecipient( $item );
+		# Recipients from the "to" field
+		foreach( preg_split( "|[\\x00-\\x1f,;*]+|", $this->to ) as $item ) $this->addRecipient( $item );
 
 		# Compose the wikitext content of the page to send
 		$title = Title::newFromText( $this->title );
 		$opt   = new ParserOptions;
 		$page  = new Article( $title );
 		$message = $page->getContent();
-		if( $this->header ) $message = "{$this->header}\n\n$message";
+		if( $this->message ) $message = "{$this->message}\n\n$message";
 
 		# Convert the message text to html unless textonly
 		if( $this->textonly == '' ) {
@@ -199,7 +236,7 @@ class SpecialEmailPage extends SpecialPage {
 			# Set up new mailer instance if sending
 			if( $send ) {
 				$mail           = new PHPMailer();
-				$mail->From     = $wgUser->isValidEmailAddr( $wgUser->getEmail() ) ? $wgUser->getEmail() : $wgEmergencyContact;
+				$mail->From     = $this->from;
 				$mail->FromName = User::whoIsReal( $wgUser->getId() );
 				$mail->Subject  = $this->subject;
 				$mail->Body     = $message;
@@ -227,10 +264,12 @@ class SpecialEmailPage extends SpecialPage {
 	}
 
 	/**
-	 * Add a recipient the list
+	 * Add a recipient the list if not already present
 	 */
 	function addRecipient( $recipient ) {
-		if( $valid = User::isValidEmailAddr( $recipient ) ) $this->recipients[] = $recipient;
+		if( $valid = User::isValidEmailAddr( $recipient ) && !in_array( $recipient, $this->recipients ) ) {
+			$this->recipients[] = $recipient;
+		}
 		return $valid;
 	}
 
