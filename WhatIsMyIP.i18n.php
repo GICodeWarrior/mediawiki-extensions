@@ -149,10 +149,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Martorell
  * @author Paucabot
  */
 $messages['ca'] = array(
-	'whatismyip' => 'Quina és la meva IP',
+	'whatismyip' => 'Quina adreça IP estic utilitzant?',
 	'whatismyip-desc' => "Mostra l'[[Special:WhatIsMyIP|adreça IP]] actual de l'usuari",
 	'whatismyip-out' => 'La vostra adreça IP:',
 	'right-whatismyip' => 'Mostra [[Special:WhatIsMyIP|la pròpia adreça IP]]',
