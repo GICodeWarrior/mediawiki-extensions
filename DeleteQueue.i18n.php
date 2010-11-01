@@ -2286,6 +2286,13 @@ $messages['ga'] = array(
 	'deletequeue-vote-reason' => 'Nótaí tráchta:',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'deletequeue-list-search' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
