@@ -38,16 +38,16 @@ class SpecialEmailPage extends SpecialPage {
 		$this->from     = $wgRequest->getText( 'ea-from' );
 		$this->subject  = $wgRequest->getText( 'ea-subject', wfMsg( 'ea-pagesend', $this->title, $wgSitename ) );
 		$this->message  = $wgRequest->getText( 'ea-message' );
-		$this->message  = $wgRequest->getText( 'ea-message' );
 		$this->group    = $wgRequest->getText( 'ea-group' );
-		$this->to       = $wgRequest->getText( 'ea-to' ) . ";" . $wgRequest->getText( 'ea-cc' );
+		$this->to       = $wgRequest->getText( 'ea-to' );
+		$this->cc       = $wgRequest->getText( 'ea-cc' );
 		$this->textonly = $wgRequest->getText( 'ea-textonly', false );
 		$this->css      = $wgRequest->getText( 'ea-css', $wgEmailPageCss );
 		$this->record   = $wgRequest->getText( 'ea-record', false );
 		$this->db       = $db;
 
 		# Bail if no page title to send has been specified
-		if( $this->title ) $wgOut->addWikiText( wfMsg( 'ea-heading', $this->title ) );
+		if( $this->title ) $wgOut->addWikiText( "===" . wfMsg( 'ea-heading', $this->title ) . "===" );
 		else return $wgOut->addWikiText( wfMsg( 'ea-nopage' ) );
 
 		# If the send button was clicked, attempt to send and exit
@@ -71,7 +71,7 @@ class SpecialEmailPage extends SpecialPage {
 
 		# To
 		$wgOut->addHTML( "<tr id=\"ea-to\"><th align=\"right\" valign=\"top\">" . wfMsg( 'ea-to' ) . ":</th>" );
-		$wgOut->addHTML( "<td><textarea name=\"ea-to\" rows=\"2\" style=\"width:100%\"></textarea>" );
+		$wgOut->addHTML( "<td><textarea name=\"ea-to\" rows=\"2\" style=\"width:100%\">{$this->to}</textarea>" );
 		$wgOut->addHTML( "<br /><small><i>(" . wfMsg( 'ea-to-info' ) . ")</i></small>" );
 
 		# To group
@@ -95,7 +95,7 @@ class SpecialEmailPage extends SpecialPage {
 			Xml::element( 'input', array(
 				'type'  => 'text',
 				'name'  => 'ea-cc',
-				'value' => $ue,
+				'value' => $this->cc ? $this->cc : $ue,
 				'style' => "width:100%"
 			) )
 		. "</td></tr>" );
@@ -113,7 +113,7 @@ class SpecialEmailPage extends SpecialPage {
 
 		# Message
 		$wgOut->addHTML( "<tr id=\"ea-message\"><th align=\"right\" valign=\"top\">" . wfMsg( 'ea-message' ) . ":</th>" );
-		$wgOut->addHTML( "<td><textarea name=\"ea-header\" rows=\"3\" style=\"width:100%\">{$this->message}</textarea>" );
+		$wgOut->addHTML( "<td><textarea name=\"ea-message\" rows=\"3\" style=\"width:100%\">{$this->message}</textarea>" );
 		$wgOut->addHTML( "<br /><i><small>(" . wfMsg( 'ea-message-info' ) . ")</small></i></td></tr>" );
 
 		# CSS
@@ -175,7 +175,7 @@ class SpecialEmailPage extends SpecialPage {
 	 */
 	function send( $send = true ) {
 		global $wgOut, $wgUser, $wgParser, $wgServer, $wgScript, $wgArticlePath, $wgScriptPath, $wgEmergencyContact,
-			$wgEmailPageCss, $wgEmailPageGroup, $wgEmailPageAllowRemoteAddr, $wgEmailPageAllowAllUsers;
+			$wgEmailPageCss, $wgEmailPageGroup, $wgEmailPageAllowRemoteAddr, $wgEmailPageAllowAllUsers, $wgEmailPageSepPattern;
 
 		# Set error and bail if user not in postmaster group, and request not from trusted address
 		if( $wgEmailPageGroup && !in_array( $wgEmailPageGroup, $wgUser->getGroups() )
@@ -196,8 +196,9 @@ class SpecialEmailPage extends SpecialPage {
 			$db->freeResult( $res );
 		}
 
-		# Recipients from the "to" field
-		foreach( preg_split( "|[\\x00-\\x1f,;*]+|", $this->to ) as $item ) $this->addRecipient( $item );
+		# Recipients from the "to" and "cc" fields
+		foreach( preg_split( $wgEmailPageSepPattern, $this->to ) as $item ) $this->addRecipient( $item );
+		foreach( preg_split( $wgEmailPageSepPattern, $this->cc ) as $item ) $this->addRecipient( $item );
 
 		# Compose the wikitext content of the page to send
 		$title = Title::newFromText( $this->title );
@@ -242,7 +243,7 @@ class SpecialEmailPage extends SpecialPage {
 				$mail->Body     = $message;
 				$mail->IsHTML( !$this->textonly );
 			}
-			else $msg = wfMsg( 'ea-listrecipients', $count );
+			else $msg = "===" . wfMsg( 'ea-listrecipients', $count ) . "===";
 
 			# Loop through recipients sending or adding to list
 			foreach( $this->recipients as $recipient ) {
