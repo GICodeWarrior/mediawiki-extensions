@@ -1892,6 +1892,9 @@ $messages['frp'] = array(
  * @author Klenje
  */
 $messages['fur'] = array(
+	'contrib-hist-name' => 'Non',
+	'contrib-hist-anonymous' => 'Anonim',
+	'contribstats-donations' => 'Donazions',
 	'fundraiserstatistics' => 'Statistichis su la racuelte di fonts',
 	'fundraiserstats-date' => 'Date',
 	'fundraiserstats-day' => 'Zornade $1 di $2',
@@ -4222,6 +4225,7 @@ $messages['roa-tara'] = array(
 	'contribstats-credit-card' => 'Carte de credite',
 	'contribstats-fraud-note' => 'Stone quacche donazione fraudolente.',
 	'contribstats-unaudited' => 'Quiste sonde le oggette totale de revisiue condabbile',
+	'fundraiserstatistics' => "Statisteche d'a raccolte fonde",
 	'fundraiserstats-date' => 'Date',
 	'fundraiserstats-day' => 'Sciurne $1 de $2',
 	'fundraiserstats-contributions' => 'Condrebbute',
