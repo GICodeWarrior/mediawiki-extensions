@@ -616,6 +616,7 @@ $messages['ar'] = array(
 
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
+ * @author Michaelovic
  */
 $messages['arc'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 ܡܢ $2',
@@ -625,7 +626,7 @@ $messages['arc'] = array(
 	'mwe-unknown-error' => 'ܦܘܕܐ ܠܐ ܝܕܝܥܐ:',
 	'mwe-upload-misc-error' => 'ܦܘܕܐ ܠܐ ܝܕܝܥܐ ܒܐܣܩܬܐ ܕܠܦܦܐ',
 	'mwe-thumbnail-more' => 'ܐܘܪܒ',
-	'mwe-filesource' => 'ܥܩܪܐ:',
+	'mwe-filesource' => 'ܡܒܘܥܐ:',
 	'mwe-filestatus' => 'ܐܝܟܢܝܘܬܐ ܕܙܕ̈ܩܐ ܕܛܒܥܐ',
 	'fogg-starttime-title' => 'ܪܦܦܐ ܕܫܘܪܝܐ',
 	'fogg-endtime-title' => 'ܪܦܦܐ ܕܫܘܠܡܐ',
@@ -1409,6 +1410,7 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Martorell
  * @author Solde
  * @author Toniher
  */
@@ -1521,7 +1523,7 @@ Vegeu la [$4 pàgina de recursos] original per a més informació.",
 	'mwe-watch-this-file' => 'Vigila el fitxer',
 	'mwe-ignore-any-warnings' => 'Ignora tots els avisos',
 	'mwe-i-would-like-to' => "M'agradaria",
-	'mwe-upload-own-file' => 'Carrega la meva pròpia obra a $1',
+	'mwe-upload-own-file' => 'Carrega el meu treball propi a $1',
 	'mwe-upload-not-my-file' => 'Carrega els fitxers multimèdia que no són obra pròpia a $1',
 	'mwe-upload-once-done' => "$1.
 Una vegada s'hagi acabat la pujada, $2",

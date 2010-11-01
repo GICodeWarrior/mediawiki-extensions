@@ -517,3 +517,10 @@ $messages['uk'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Створити',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'articletocategory2-create-article-under-category-button' => '建立',
+);
+

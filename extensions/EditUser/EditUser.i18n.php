@@ -265,9 +265,10 @@ $messages['ckb'] = array(
 
 /** Czech (Česky)
  * @author Jkjk
+ * @author Mormegil
  */
 $messages['cs'] = array(
-	'edituser-desc' => 'Umožňuje privilegovaným uživatelům měnit nastavení jiných uživatelů',
+	'edituser-desc' => 'Umožňuje oprávněným uživatelům měnit nastavení jiných uživatelů',
 	'edituser' => 'Upravit uživatele',
 	'edituser-username' => 'Uživatelské jméno:',
 	'edituser-dosearch' => 'Hledat',

@@ -979,7 +979,7 @@ $messages['pms'] = array(
 	'article-comments-invalid-field' => "Ël $1 dàit <nowiki>[$2]</nowiki> a l'é pa bon.",
 	'article-comments-required-field' => "Ël camp $1 a l'é obligatòri.",
 	'article-comments-submission-failed' => "La spedission dël coment a l'é falìa",
-	'article-comments-failure-reasons' => "An dëspias,, la spedission ëd sò coment a l'é falìa për le rason si-dapress:",
+	'article-comments-failure-reasons' => "An dëspias, la spedission ëd sò coment a l'é falìa për {{PLURAL:$1|la rason|le rason}} si-dapress:",
 	'article-comments-no-comments' => 'An dëspias, la pàgina «[[$1]]» a aceta pa ëd coment al moment.',
 	'article-comments-talk-page-starter' => '<noinclude>Coment su [[$1]]
 <comments />
@@ -1288,5 +1288,18 @@ $messages['uk'] = array(
 	'article-comments-comment-missing-date-parameter' => 'Відсутня дата коментарію',
 	'article-comments-no-spam' => 'Принаймні один з представлених полів було відмічено як такий, що містить спам.',
 	'processcomment' => 'Переглянути коментарі до матеріалу',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'article-comments-name-string' => '名字',
+	'article-comments-name-field' => '名字（必须写一个）：',
+	'article-comments-url-field' => '网址：',
+	'article-comments-url-string' => '互联网地止',
+	'article-comments-submit-button' => '输入',
+	'article-comments-required-field' => '$1必须写一个东西。',
+	'article-comments-commenter-said' => '$1说。。。',
 );
 

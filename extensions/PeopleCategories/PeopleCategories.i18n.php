@@ -171,7 +171,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'peoplecategories-desc' => 'Ännert den ugewisenen Numm vu Säite vu "Virnumm Faniljennumm" op "Familjennumm, Virnumm" op de spezifizéierte Säitekategorien',
+	'peoplecategories-desc' => 'Ännert den ugewisenen Numm vu Säite vu "Virnumm Familljennumm" op "Familljennumm, Virnumm" op de spezifizéierte Säitekategorien',
 );
 
 /** Latvian (Latviešu)

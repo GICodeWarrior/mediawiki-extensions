@@ -3661,6 +3661,13 @@ $messages['ga'] = array(
 	'configure-section-recentchanges' => 'Athruithe is déanaí',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'configure-section-search' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

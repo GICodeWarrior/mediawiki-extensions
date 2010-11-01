@@ -369,6 +369,13 @@ $messages['frp'] = array(
 	'communityvoice-ratings-error-no-title' => 'L’atribut de titro est absent dens la balisa de notacion.',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'communityvoice-ratings-scale-status-thanks' => 'Graciis par vê votât!',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

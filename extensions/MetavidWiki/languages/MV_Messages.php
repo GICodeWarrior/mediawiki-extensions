@@ -3342,6 +3342,13 @@ $messages['ga'] = array(
 	'mv_category' => 'catagóir',
 );
 
+/** Traditional Gan script (贛語(繁體))
+ * @author Symane
+ */
+$messages['gan-hant'] = array(
+	'mv_tool_search' => '尋吖',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Prevert
