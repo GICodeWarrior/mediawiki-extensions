@@ -42,6 +42,13 @@ $messages['bs'] = array(
 	'wikibhasha-desc' => 'Program koji pravi višejezični sadržaj tako da bi se bolje iskoristio sadržaj Wikipedije na engleskom jeziku',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'wikibhasha-desc' => 'Aplikace pro tvorbu mnohojazyčného obsahu s využitím anglické Wikipedie',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Kghbln
@@ -106,6 +113,13 @@ $messages['pl'] = array(
 	'wikibhasha-desc' => 'Aplikacja do tworzenia wielojęzycznych treści wykorzystująca zawartość angielskiej Wikipedii',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'wikibhasha-desc' => 'Aplicassion për creé contnù multilenga an fasend leva an sël contnù dla Wikipedia anglèisa',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -118,6 +132,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'wikibhasha-desc' => 'Aplicação para criar conteúdos multilingues a partir do conteúdo da Wikipédia em inglês',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikibhasha-desc' => "Applicazione pe ccrejà condenute multi-lènghe partenne da le condenute d'a Uicchipedìe Inglese",
 );
 
 /** Russian (Русский)
