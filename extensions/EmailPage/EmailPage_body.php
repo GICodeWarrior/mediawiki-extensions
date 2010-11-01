@@ -127,7 +127,8 @@ class SpecialEmailPage extends SpecialPage {
 		);
 		while( $row = $db->fetchRow( $res ) ) {
 			$t = Title::newFromID( $row[0] )->getPrefixedText();
-			$selected = $t == $this->css ? ' selected' : '';
+			if( $this->css ) $selected = $t == $this->css ? ' selected' : '';
+			else $selected = $t == $wgEmailPageCss ? ' selected' : '';
 			$options .= "<option$selected>$t</option>";
 		}
 		$db->freeResult( $res );
