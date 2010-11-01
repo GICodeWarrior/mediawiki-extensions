@@ -211,14 +211,14 @@ $( document ).ready( function() {
 		$(this).attr( 'tabindex', tabIndex++ );
 	} );
 	// Toggle the selected menu's class and expand or collapse the menu
-	$headings
-		// Make the space and enter keys act as a click
-		.keydown( function( event ) {
+	$( '#mw-panel' )
+		.delegate( 'div.portal:not(.persistent) > h5', 'keydown', function( event ) {
+			// Make the space and enter keys act as a click
 			if ( event.which == 13 /* Enter */ || event.which == 32 /* Space */ ) {
 				toggle( $(this) );
 			}
 		} )
-		.mousedown( function() {
+		.delegate( 'div.portal:not(.persistent) > h5', 'mousedown', function() {
 			toggle( $(this) );
 			$(this).blur();
 			return false;
