@@ -133,7 +133,6 @@ class SpecialEmailPage extends SpecialPage {
 		}
 		$db->freeResult( $res );
 		if( $options ) {
-			if( $wgEmailPageCss ) $options = "<option value=''>$wgEmailPageCss</option>$options";
 			$wgOut->addHTML( "<tr id=\"ea-css\"><th align=\"right\">" . wfMsg( 'ea-style' ) . ":</th><td>" );
 			$wgOut->addHTML( "<select name=\"ea-css\"><option />$options</select>" );
 			$wgOut->addHTML( " <small><i>(" . wfMsg( 'ea-selectcss' ) . ")</i></small></td></tr>" );
