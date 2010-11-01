@@ -11,12 +11,4 @@ $wgExtensionMessagesFiles['FBPush_OnAddImage'] = $pushDir . 'FBPush_OnAddImage.i
 
 class FBPush_OnAddImage extends FBConnectPushEvent {
 	protected $isAllowedUserPreferenceName = 'fbconnect-push-allow-OnAddImage'; // must correspond to an i18n message that is 'tog-[the value of the string on this line]'.
-
-	public function init() {
-		wfProfileIn( __METHOD__ );
-
-		wfLoadExtensionMessages( 'FBPush_OnAddImage' );
-
-		wfProfileOut( __METHOD__ );
-	}
 }

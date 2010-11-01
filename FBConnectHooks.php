@@ -30,7 +30,6 @@ class FBConnectHooks {
 	 * out the Facebook ID of the user that the userpage belongs to.
 	 */
 	public static function ArticleViewHeader( &$article, &$outputDone, &$pcache ) {
-		global $wgOut;
 		// Get the article title
 		$nt = $article->getTitle();
 		// If the page being viewed is a user page
@@ -85,7 +84,7 @@ class FBConnectHooks {
 	 */
 	public static function BeforePageDisplay( &$out, &$sk ) {
 		global $wgVersion, $wgFbLogo, $wgFbScript, $wgFbExtensionScript, $wgFbIncludeJquery,
-		       $wgScriptPath, $wgJsMimeType, $wgStyleVersion;
+		       $wgJsMimeType, $wgStyleVersion;
 
 		// Asynchronously load the Facebook Connect JavaScript SDK before the page's content
 		if( !empty( $wgFbScript ) ) {
@@ -236,9 +235,8 @@ STYLE;
 	 * TODO: Better 'returnto' code
 	 */
 	public static function PersonalUrls( &$personal_urls, &$wgTitle ) {
-		global $facebook, $wgUser, $wgLang, $wgShowIPinHeader;
+		global $facebook, $wgUser;
 		global $wgFbPersonalUrls, $wgFbConnectOnly;
-		wfLoadExtensionMessages( 'FBConnect' );
 
 		/*
 		 * Personal URLs option: remove_user_talk_link
@@ -345,12 +343,11 @@ STYLE;
 	 * TODO!
 	 */
 	public static function RenderPreferencesForm( $form, $output ) {
-		global $facebook, $wgUser;
+		//global $facebook, $wgUser;
 
 		// This hook no longer seems to work...
-		return true;
 
-		if( $facebook->getSession() ) {
+		/*if( $facebook->getSession() ) {
 			$html = $output->getHTML();
 			$name = $wgUser->getName();
 			$i = strpos( $html, $name );
@@ -371,7 +368,9 @@ STYLE;
 				}
 			}
 		}
-		return true;
+		*/
+
+		 return true;
 	}
 
 	/**
@@ -406,7 +405,7 @@ STYLE;
 	 * Special:ListUsers.
 	 */
 	static function SpecialListusersHeaderForm( &$pager, &$out ) {
-		global $wgFbUserRightsFromGroup, $facebook, $wgFbLogo;
+		global $wgFbUserRightsFromGroup, $facebook;
 		if ( empty( $wgFbUserRightsFromGroup ) ) {
 			return true;
 		}

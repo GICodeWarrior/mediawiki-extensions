@@ -17,7 +17,6 @@ class FBPush_OnWatchArticle extends FBConnectPushEvent {
 		wfProfileIn( __METHOD__ );
 
 		$wgHooks['ArticleSaveComplete'][] = 'FBPush_OnWatchArticle::articleCountPagesAddedInLastHour';
-		wfLoadExtensionMessages( 'FBPush_OnWatchArticle' );
 
 		wfProfileOut( __METHOD__ );
 	}
@@ -26,7 +25,7 @@ class FBPush_OnWatchArticle extends FBConnectPushEvent {
 		global $wgContentNamespaces;
 		wfProfileIn( __METHOD__ );
 		if( in_array( $article->getTitle()->getNamespace(), $wgContentNamespaces ) ) {
-			self::pushEvent( $article->getTitle()->getText(), $article->getTitle()->getFullURL(), 'Read more' );
+			$this->pushEvent( $article->getTitle()->getText(), $article->getTitle()->getFullURL(), 'Read more' );
 		}
 		wfProfileOut( __METHOD__ );
 		return true;
