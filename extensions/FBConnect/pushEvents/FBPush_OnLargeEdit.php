@@ -16,12 +16,4 @@ class FBPush_OnLargeEdit extends FBConnectPushEvent {
 	static public function getMinCharsToPush() {
 		return self::$MIN_CHARS_TO_PUSH;
 	}
-
-	public function init() {
-		wfProfileIn( __METHOD__ );
-
-		wfLoadExtensionMessages( 'FBPush_OnLargeEdit' );
-
-		wfProfileOut( __METHOD__ );
-	}
 }

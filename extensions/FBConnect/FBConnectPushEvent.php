@@ -75,7 +75,6 @@ class FBConnectPushEvent {
 		if( !empty( $fbPushEventClasses ) ) {
 			foreach( $fbPushEventClasses as $pushEventClassName ) {
 				$pushObj = new $pushEventClassName;
-				$className = get_class();
 				$prefName = $pushObj->getUserPreferenceName();
 
 				$preferences[$prefName] = array(
@@ -113,7 +112,6 @@ class FBConnectPushEvent {
 		if( !empty( $fbPushEventClasses ) ) {
 			foreach( $fbPushEventClasses as $pushEventClassName ) {
 				$pushObj = new $pushEventClassName;
-				$className = get_class();
 				$prefName = $pushObj->getUserPreferenceName();
 
 				$prefText = $wgLang->getUserToggle( $prefName );

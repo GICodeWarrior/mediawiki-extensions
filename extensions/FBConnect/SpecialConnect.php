@@ -39,7 +39,6 @@ class SpecialConnect extends SpecialPage {
 		// Add this special page to the "login" group of special pages
 		$wgSpecialPageGroups['Connect'] = 'login';
 
-		wfLoadExtensionMessages( 'FBConnect' );
 		$this->userNamePrefix = wfMsg( 'fbconnect-usernameprefix' );
 	}
 
@@ -73,7 +72,7 @@ class SpecialConnect extends SpecialPage {
 		global $wgUser, $facebook, $wgRequest;
 
 		if ( $wgRequest->getVal( 'action', '' ) == 'disconnect' ) {
-			self::disconnectAction();
+			$this->disconnectAction();
 		}
 
 		// Check to see if the user is already logged in
@@ -357,7 +356,6 @@ class SpecialConnect extends SpecialPage {
 			if( !empty( $fbPushEventClasses ) ) {
 				foreach( $fbPushEventClasses as $pushEventClassName ) {
 					$pushObj = new $pushEventClassName;
-					$className = get_class();
 					$prefName = $pushObj->getUserPreferenceName();
 
 					$user->setOption( $prefName, ( $wgRequest->getCheck( $prefName ) ? '1' : '0' ) );
@@ -518,8 +516,6 @@ class SpecialConnect extends SpecialPage {
 
 	public function sendPage( $function, $arg = null ) {
 		global $wgOut;
-		// Setup the page for rendering
-		wfLoadExtensionMessages( 'FBConnect' );
 		$this->setHeaders();
 		$wgOut->disallowUserJs();  # just in case...
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
@@ -546,7 +542,7 @@ class SpecialConnect extends SpecialPage {
 	}
 
 	private function displaySuccessLogin() {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgUser;
 		$wgOut->setPageTitle(wfMsg('fbconnect-success'));
 		$wgOut->addWikiMsg('fbconnect-successtext');
 		// Run any hooks for UserLoginComplete
@@ -678,7 +674,7 @@ class SpecialConnect extends SpecialPage {
 	 * Displays the main connect form.
 	 */
 	private function connectForm() {
-		global $facebook, $wgOut, $wgUser, $wgSitename;
+		global $wgOut, $wgSitename;
 		//$fbid = $facebook->getUser();
 
 		// Outputs the canonical name of the special page at the top of the page
