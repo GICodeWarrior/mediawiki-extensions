@@ -129,10 +129,11 @@ $messages['ar'] = array(
 
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
+ * @author Michaelovic
  */
 $messages['arc'] = array(
 	'duplicator-options' => 'ܓܒܝܬ̈ܐ',
-	'duplicator-source' => 'ܥܩܪܐ:',
+	'duplicator-source' => 'ܡܒܘܥܐ:',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
