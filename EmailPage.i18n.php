@@ -71,7 +71,7 @@ $messages['ar'] = array(
 	'ea-show' => 'عرض المتلقين',
 	'ea-send' => 'إرسال!',
 	'ea-subject' => 'أدخل سطر عنوان للبريد الإلكتروني',
-	'ea-header' => 'إرسال المحتوى برسالة اختيارية (نص ويكي)',
+	'ea-message' => 'إرسال المحتوى برسالة اختيارية (نص ويكي)',
 	'ea-selectcss' => 'اختر شريحة CSS',
 );
 
@@ -98,7 +98,7 @@ $messages['arz'] = array(
 	'ea-show' => 'عرض المتلقين',
 	'ea-send' => 'إرسال!',
 	'ea-subject' => 'أدخل سطر عنوان للبريد الإلكتروني',
-	'ea-header' => 'إرسال المحتوى برسالة اختيارية (نص ويكى)',
+	'ea-message' => 'إرسال المحتوى برسالة اختيارية (نص ويكى)',
 	'ea-selectcss' => 'اختر شريحة CSS',
 );
 
@@ -140,7 +140,7 @@ $messages['de'] = array(
 	'ea-show' => 'Empfänger anzeigen',
 	'ea-send' => 'Senden',
 	'ea-subject' => 'Betreff:',
-	'ea-header' => 'Der zu versendenden Seite folgende Nachricht voranstellen (optional, Eingabe in Wikitext erforderlich):',
+	'ea-message' => 'Der zu versendenden Seite folgende Nachricht voranstellen (optional, Eingabe in Wikitext erforderlich):',
 	'ea-selectcss' => 'Wähle ein CSS-Stylesheet aus',
 	'ea-selectrecord' => 'Datengruppe auswählen (falls vorhanden):'
 );
@@ -168,7 +168,7 @@ $messages['de-formal'] = array(
 	'ea-show' => 'Empfänger anzeigen',
 	'ea-send' => 'Senden',
 	'ea-subject' => 'Betreff:',
-	'ea-header' => 'Der zu versendenden Seite folgende Nachricht voranstellen (optional, Eingabe in Wikitext erforderlich):',
+	'ea-message' => 'Der zu versendenden Seite folgende Nachricht voranstellen (optional, Eingabe in Wikitext erforderlich):',
 	'ea-selectcss' => 'CSS-Stylesheet auswählen:',
 	'ea-selectrecord' => 'Datengruppe auswählen (falls vorhanden):'
 );
@@ -216,7 +216,7 @@ $messages['fr'] = array(
 	'ea-show' => 'Visionner les destinataires',
 	'ea-send' => 'Envoyer !',
 	'ea-subject' => 'Entrer une ligne « objet » pour le courriel',
-	'ea-header' => 'Ajouter le contenu au début avec un message facultatif (texte wiki)',
+	'ea-message' => 'Ajouter le contenu au début avec un message facultatif (texte wiki)',
 	'ea-selectcss' => 'Sélectionner une feuille de style CSS',
 );
 
@@ -243,7 +243,7 @@ $messages['gl'] = array(
 	'ea-show' => 'Amosar os destinatarios',
 	'ea-send' => 'Enviar!',
 	'ea-subject' => 'Introducir un asunto ao correo electrónico',
-	'ea-header' => 'Engadir o contido cunha mensaxe opcional (texto wiki)',
+	'ea-message' => 'Engadir o contido cunha mensaxe opcional (texto wiki)',
 	'ea-selectcss' => 'Seleccionar unha folla de estilo CSS',
 );
 
@@ -270,7 +270,7 @@ $messages['ia'] = array(
 	'ea-show' => 'Monstrar destinatarios',
 	'ea-send' => 'Inviar!',
 	'ea-subject' => 'Entra un linea de subjecto pro le message de e-mail',
-	'ea-header' => 'Adjunger le contento al initio con un message facultative (texto wiki)',
+	'ea-message' => 'Adjunger le contento al initio con un message facultative (texto wiki)',
 	'ea-selectcss' => 'Selige un folio de stilos CSS',
 );
 
@@ -345,7 +345,7 @@ $messages['mr'] = array(
 	'ea-show' => 'निवडलेले सदस्य दाखवा',
 	'ea-send' => 'पाठवा!',
 	'ea-subject' => 'इ-मेल चा विषय लिहा',
-	'ea-header' => 'मजकूरा आधी वैकल्पिक संदेश लिहा (विकिसंज्ञा)',
+	'ea-message' => 'मजकूरा आधी वैकल्पिक संदेश लिहा (विकिसंज्ञा)',
 	'ea-selectcss' => 'सीएसएस स्टाइलशीट पाठवा',
 );
 
@@ -387,7 +387,7 @@ $messages['nl'] = array(
 	'ea-show' => 'Ontvangers weergeven',
 	'ea-send' => 'Versturen',
 	'ea-subject' => 'Voer een onderwerp in voor de e-mail',
-	'ea-header' => 'Laat de pagina-inhoud vooraf gaan door een bericht (in wikitekst)',
+	'ea-message' => 'Laat de pagina-inhoud vooraf gaan door een bericht (in wikitekst)',
 	'ea-selectcss' => 'Selecteer een CSS',
 );
 
@@ -414,7 +414,7 @@ $messages['no'] = array(
 	'ea-show' => 'Vis mottakere',
 	'ea-send' => 'Send',
 	'ea-subject' => 'Skriv inn et emne for e-posten',
-	'ea-header' => 'Fyll innholdet med en valgfri beskjed (wikitekst)',
+	'ea-message' => 'Fyll innholdet med en valgfri beskjed (wikitekst)',
 	'ea-selectcss' => 'Angi en CSS-stilmal',
 );
 
@@ -441,7 +441,7 @@ $messages['oc'] = array(
 	'ea-show' => 'Visionar los destinataris',
 	'ea-send' => 'Mandar !',
 	'ea-subject' => 'Entrar una linha « objècte » pel corrièr electronic',
-	'ea-header' => 'Apondre lo contengut al començament amb un messatge facultatiu (tèxt wiki)',
+	'ea-message' => 'Apondre lo contengut al començament amb un messatge facultatiu (tèxt wiki)',
 	'ea-selectcss' => "Seleccionar un fuèlh d'estil CSS",
 );
 
@@ -468,7 +468,7 @@ $messages['pl'] = array(
 	'ea-show' => 'Pokaż odbiorców',
 	'ea-send' => 'Wyślij',
 	'ea-subject' => 'Wprowadź temat wiadomości e-mail',
-	'ea-header' => 'Dołączanie zawartości z dodatkową informacją.',
+	'ea-message' => 'Dołączanie zawartości z dodatkową informacją.',
 	'ea-selectcss' => 'Wybierz styl CSS',
 );
 
@@ -503,7 +503,7 @@ $messages['sk'] = array(
 	'ea-show' => 'Zobraziť príjemcov',
 	'ea-send' => 'Poslať!',
 	'ea-subject' => 'Zadajte predmet emailu',
-	'ea-header' => 'Pred obsah pridať (nepovinne) správu (wikitext)',
+	'ea-message' => 'Pred obsah pridať (nepovinne) správu (wikitext)',
 	'ea-selectcss' => 'Vyberte CSS štýl',
 );
 
@@ -538,7 +538,7 @@ $messages['sv'] = array(
 	'ea-show' => 'Visa mottagare',
 	'ea-send' => 'Skicka!',
 	'ea-subject' => 'Ange ett ämne för e-brevet',
-	'ea-header' => 'Fyll innehållet med ett valfritt meddelande (wikitext)',
+	'ea-message' => 'Fyll innehållet med ett valfritt meddelande (wikitext)',
 	'ea-selectcss' => 'Ange en CSS-stilmall',
 );
 
@@ -572,7 +572,7 @@ $messages['vi'] = array(
 	'ea-show' => 'Hiển thị người nhận',
 	'ea-send' => 'Gửi!',
 	'ea-subject' => 'Nhập vào dòng tiêu đề cho thư điện tử',
-	'ea-header' => 'Gắn nội dung với thông điệp tùy chọn (văn bản wiki)',
+	'ea-message' => 'Gắn nội dung với thông điệp tùy chọn (văn bản wiki)',
 	'ea-selectcss' => 'Lựa chọn một kiểu trình bày CSS',
 );
 
