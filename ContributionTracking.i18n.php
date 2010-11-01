@@ -367,6 +367,13 @@ $messages['frp'] = array(
 	'contrib-tracking-button' => 'Continuar',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'contrib-tracking-button' => 'Va indevant',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
