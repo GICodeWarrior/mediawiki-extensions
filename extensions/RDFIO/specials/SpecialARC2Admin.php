@@ -20,6 +20,6 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['SpecialARC2Admin'] = $dir . 'SpecialARC2Admin_body.php'; # Tell MediaWiki to load the extension body.
-$wgExtensionMessagesFiles['SpecialARC2Admin'] = $dir . 'SpecialARC2Admin.i18n.php';
+$wgExtensionMessagesFiles['SpecialARC2Admin'] = $dir . '../RDFIO.i18n.php';
 $wgExtensionAliasesFiles['SpecialARC2Admin'] = $dir . 'SpecialARC2Admin.alias.php';
 $wgSpecialPages['SpecialARC2Admin'] = 'SpecialARC2Admin'; # Let MediaWiki know about your new special page.

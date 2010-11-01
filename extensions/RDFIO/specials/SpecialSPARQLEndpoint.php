@@ -20,6 +20,6 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['SPARQLEndpoint'] = $dir . 'SpecialSPARQLEndpoint_body.php'; # Tell MediaWiki to load the extension body.
-$wgExtensionMessagesFiles['SPARQLEndpoint'] = $dir . 'SpecialSPARQLEndpoint.i18n.php';
+$wgExtensionMessagesFiles['SPARQLEndpoint'] = $dir . '../RDFIO.i18n.php';
 $wgExtensionAliasesFiles['SPARQLEndpoint'] = $dir . 'SpecialSPARQLEndpoint.alias.php';
 $wgSpecialPages['SPARQLEndpoint'] = 'SPARQLEndpoint'; # Let MediaWiki know about your new special page.

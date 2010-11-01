@@ -20,6 +20,6 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['RDFImport'] = $dir . 'SpecialRDFImport_body.php'; # Tell MediaWiki to load the extension body.
-$wgExtensionMessagesFiles['RDFImport'] = $dir . 'SpecialRDFImport.i18n.php';
+$wgExtensionMessagesFiles['RDFImport'] = $dir . '../RDFIO.i18n.php';
 $wgExtensionAliasesFiles['RDFImport'] = $dir . 'SpecialRDFImport.alias.php';
 $wgSpecialPages['RDFImport'] = 'RDFImport'; # Let MediaWiki know about your new special page.
