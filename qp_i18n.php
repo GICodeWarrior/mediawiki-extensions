@@ -346,6 +346,7 @@ $messages['ar'] = array(
 /** Aramaic (ܐܪܡܝܐ)
  * @author 334a
  * @author Basharh
+ * @author Michaelovic
  */
 $messages['arc'] = array(
 	'qp_vote_button' => 'ܝܗܒ ܩܠܐ',
@@ -353,7 +354,7 @@ $messages['arc'] = array(
 	'qp_browse_to_poll' => 'ܙܠ ܠ $1',
 	'qp_browse_to_user' => 'ܙܠ ܠ $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|ܩܠܐ|ܩܠ̈ܐ}}',
-	'qp_source_link' => 'ܥܩܪܐ',
+	'qp_source_link' => 'ܡܒܘܥܐ',
 	'qp_users_link' => 'ܡܬܚܫܚܢ̈ܐ',
 	'qp_voice_link' => 'ܩܠܐ ܕܡܬܚܫܚܢܐ',
 	'qp_voice_link_inv' => 'ܡܦܠܚܢܐ ܝܗܒ ܩܠܐ؟',
