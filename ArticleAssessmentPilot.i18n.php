@@ -763,6 +763,14 @@ $messages['frp'] = array(
 	'articleassessment-survey-submit' => 'Sometre',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'articleassessment-articlerating' => 'Judizi de pagjine',
+	'articleassessment-survey-submit' => 'Invie',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
