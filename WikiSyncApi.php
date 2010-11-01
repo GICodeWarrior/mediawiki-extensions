@@ -136,7 +136,7 @@ class ApiFindSimilarRev extends ApiWikiSync {
 
 		# return list of similar revisions
 		$count = 0;
-		while ( $row = $db->fetchObject( $dbres ) ) {
+		foreach ( $dbres as $row ) {
 			if ( ++$count > $limit ) {
 				$this->setContinueEnumParameter( 'startid', intval( $row->rev_id ) );
 				break;
@@ -150,7 +150,6 @@ class ApiFindSimilarRev extends ApiWikiSync {
 		}
 		# place result list items into attributes of <similarrev> xml tag
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'similarrev' );
-		$db->freeResult( $dbres );
 	}
 
 	private function extractRowInfo( $row ) {
@@ -226,7 +225,7 @@ class ApiFindSimilarRev extends ApiWikiSync {
 	}
 
 	public function getVersion() {
-		return __CLASS__;
+		return __CLASS__  . ': $Id$';
 	}
 } /* end of ApiFindSimilarRev class */
 
@@ -322,7 +321,7 @@ class ApiRevisionHistory extends ApiWikiSync {
 		} else {
 			# revisions edit history mode
 			$count = 0;
-			while ( $row = $db->fetchObject( $dbres ) ) {
+			foreach ( $dbres as $row ) {
 				if ( ++$count > $limit ) {
 					$this->setContinueEnumParameter( 'startid', intval( $row->rev_id ) );
 					break;
@@ -338,7 +337,6 @@ class ApiRevisionHistory extends ApiWikiSync {
 			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'revision' );
 //			$this->getResult()->setIndexedTagName( $resultData, 'page' );
 //			$this->getResult()->addValue( null, $this->getModuleName(), $resultData );
-			$db->freeResult( $dbres );
 		}
 	}
 
@@ -436,7 +434,7 @@ class ApiRevisionHistory extends ApiWikiSync {
 	}
 
 	public function getVersion() {
-		return __CLASS__;
+		return __CLASS__  . ': $Id$';
 	}
 } /* end of ApiRevisionHistory class */
 
@@ -599,7 +597,7 @@ class ApiGetFile extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__;
+		return __CLASS__  . ': $Id$';
 	}
 
 } /* end of ApiGetFile class */
