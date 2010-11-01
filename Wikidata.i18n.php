@@ -1006,6 +1006,7 @@ $messages['ar'] = array(
 
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
+ * @author Michaelovic
  */
 $messages['arc'] = array(
 	'langman_title' => 'ܡܕܒܪܢܐ ܕܠܫܢܐ',
@@ -1028,7 +1029,7 @@ $messages['arc'] = array(
 	'ow_ClassAttributeLevel' => 'ܫܘܝܐ',
 	'ow_ClassAttributeType' => 'ܐܕܫܐ',
 	'ow_DefinedMeaningAttributes' => 'ܣܦܐ',
-	'ow_GotoSource' => 'ܙܠ ܠܥܩܪܐ',
+	'ow_GotoSource' => 'ܙܠ ܠܡܒܘܥܐ',
 	'ow_Language' => 'ܠܫܢܐ',
 	'ow_LevelAnnotation' => 'ܣܦܐ',
 	'ow_OptionAttributeOption' => 'ܓܒܝܬܐ',
@@ -1036,7 +1037,7 @@ $messages['arc'] = array(
 	'ow_OptionAttributeValues' => 'ܛܝܡ̈ܐ ܕܓܒܝܬ̈ܐ',
 	'ow_PopupAnnotation' => 'ܣܦܐ',
 	'ow_Remove' => 'ܠܚܝ',
-	'ow_Source' => 'ܥܩܪܐ',
+	'ow_Source' => 'ܡܒܘܥܐ',
 	'ow_Text' => 'ܟܬܒܬܐ',
 	'ow_TextAttributeValues' => 'ܟܬܒܬܐ ܦܫܝܛܬܐ',
 	'ow_Time' => 'ܙܒܢܐ',
