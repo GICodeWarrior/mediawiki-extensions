@@ -233,6 +233,18 @@ $messages['nl'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirrortool-gebruikers',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'mirrortools' => 'Speilverktøy',
+	'mirrortools-desc' => 'Lar redigeringer via API gjøres under ethvert brukernavn',
+	'right-mirroredit' => 'Rediger via API under ethvert brukernavn',
+	'group-MirrorTools' => 'Speilverktøybrukere',
+	'group-MirrorTools-member' => 'speilverktøybruker',
+	'grouppage-MirrorTools' => '{{ns:project}}:Speilverktøybrukere',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
