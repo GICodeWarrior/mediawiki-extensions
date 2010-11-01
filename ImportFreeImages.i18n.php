@@ -38,6 +38,7 @@ $messages['qqq'] = array(
 	'importfreeimages-desc' => '{{desc}}',
 	'importfreeimages_owner' => '{{Identical|Author}}',
 	'importfreeimages_next' => '{{Identical|Next $1}}',
+	'importfreeimages_size_thumbnail' => '{{Identical|Thumbnail}}',
 	'importfreeimages_size_small' => '{{Identical|Small}}',
 	'importfreeimages_size_medium' => '{{Identical|Medium}}',
 	'importfreeimages_size_large' => '{{Identical|Large}}',
