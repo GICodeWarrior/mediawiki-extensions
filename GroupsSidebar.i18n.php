@@ -54,10 +54,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Church of emacs
  * @author Imre
  */
 $messages['de'] = array(
-	'groupssidebar-desc' => 'Diese Erweiterung ermöglicht es Seitenadministratoren, für bestimmte Benutzer Elemente zur Seitenleiste hinzuzufügen',
+	'groupssidebar-desc' => 'Diese Erweiterung ermöglicht es Seitenadministratoren, für einzelne Benutzergruppen Elemente zur Seitenleiste hinzuzufügen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
