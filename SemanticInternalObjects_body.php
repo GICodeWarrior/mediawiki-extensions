@@ -111,7 +111,12 @@ class SIOSQLStore extends SMWSQLStore2 {
 
 		$iw = '';
 		$db = wfGetDB( DB_SLAVE );
-		$res = $db->select( 'smw_ids', array( 'smw_id' ), 'smw_title LIKE ' . $db->addQuotes( $pageName . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ), 'SIO::getSMWPageObjectIDs', array() );
+		$res = $db->select(
+			'smw_ids',
+			array( 'smw_id' ),
+			'smw_title LIKE ' . $db->addQuotes( $pageName . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ),
+			'SIO::getSMWPageObjectIDs'
+		);
 		while ( $row = $db->fetchObject( $res ) ) {
 			$ids[] = $row->smw_id;
 		}
@@ -195,7 +200,12 @@ class SIOSQLStore extends SMWSQLStore2 {
 		// each one, and add it to the general array
 		$iw = '';
 		$db = wfGetDB( DB_SLAVE );
-		$res = $db->select( 'smw_ids', array( 'smw_id', 'smw_namespace', 'smw_title' ), 'smw_title LIKE ' . $db->addQuotes( $pageName . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ), 'SIO::getSMWPageObjectIDs', array() );
+		$res = $db->select(
+			'smw_ids',
+			array( 'smw_id', 'smw_namespace', 'smw_title' ),
+			'smw_title LIKE ' . $db->addQuotes( $pageName . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ),
+			'SIO::getSMWPageObjectIDs'
+		);
 		while ( $row = $db->fetchObject( $res ) ) {
 			$value = new SIOInternalObjectValue( $row->smw_title, $row->smw_namespace );
 			$semdata = new SMWSemanticData( $value, false );
@@ -364,6 +374,45 @@ class SIOHandler {
 		// end transaction
 		$db->commit( 'SIO::updatePageData' );
 		self::$mInternalObjects = array();
+		return true;
+	}
+
+	/**
+	 * Called after a page is moved - renames all the internal objects
+	 * named "Old page#x" to "New page#x".
+	 */
+	static public function handlePageMove( &$old_title, &$new_title, &$user, $page_id, $redir_id ) {
+		$oldPageName = $old_title->getDBkey();
+		$oldNamespace = $old_title->getNamespace();
+		$newPageName = $new_title->getDBkey();
+		$newNamespace = $new_title->getNamespace();
+		$iw = '';
+		$sioNames = array();
+		$db = wfGetDB( DB_SLAVE );
+		// Unfortunately, there's no foolproof way to do the replacement
+		// with a single SQL call, using regexps and wildcards -
+		// instead, we first get the set of all matching entries in
+		// the 'smw_ids' table, then call an explicit update on each
+		// one.
+		$res = $db->select(
+			'smw_ids',
+			array( 'smw_title' ),
+			'smw_title LIKE ' . $db->addQuotes( $oldPageName . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $oldNamespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ),
+			'SIO::getTitlesForPageMove'
+		);
+		while ( $row = $db->fetchObject( $res ) ) {
+			$sioNames[] = $row->smw_title;
+		}
+		foreach ( $sioNames as $sioName ) {
+			// update the name, and possibly the namespace as well
+			$newSIOName = str_replace( $oldPageName, $newPageName, $sioName );
+			$db->update(
+				'smw_ids',
+				array( 'smw_title' => $newSIOName, 'smw_namespace' => $newNamespace ),
+				array( 'smw_title' => $sioName, 'smw_namespace' => $oldNamespace ),
+				'SIO::updateTitlesForPageMove'
+			);
+		}
 		return true;
 	}
 
