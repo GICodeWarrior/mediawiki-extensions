@@ -76,6 +76,40 @@ $messages['de'] = array(
 	'ts-kml-on-ol-wikipedia' => 'Wikipedia',
 );
 
+/** French (Français)
+ * @author Zetud
+ */
+$messages['fr'] = array(
+	'ts-kml-on-ol-options' => 'Options',
+	'ts-kml-on-ol-languages' => 'Langues',
+	'ts-kml-on-ol-thumbnails' => 'Miniatures',
+	'ts-kml-on-ol-help' => 'Aide',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'ts-kml-on-ol-options' => 'Opcións',
+	'ts-kml-on-ol-languages' => 'Linguas',
+	'ts-kml-on-ol-thumbnails' => 'Miniaturas',
+	'ts-kml-on-ol-help' => 'Axuda',
+	'ts-kml-on-ol-all' => 'Todas',
+	'ts-kml-on-ol-map-by' => 'Mapa de',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'ts-kml-on-ol-options' => 'Optione',
+	'ts-kml-on-ol-languages' => 'Sproche',
+	'ts-kml-on-ol-thumbnails' => 'Vorschaubilder',
+	'ts-kml-on-ol-help' => 'Hilf',
+	'ts-kml-on-ol-all' => 'Alli',
+	'ts-kml-on-ol-map-by' => 'Charte vu',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
