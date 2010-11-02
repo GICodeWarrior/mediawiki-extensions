@@ -46,7 +46,7 @@ def determine_remote_filesize(url, filename):
         return - 1
 
 
-def download_wp_dump(domain, path, filename, location, filemode, pbar):
+def download_wiki_file(domain, path, filename, location, filemode, pbar):
     '''
     This is a very simple replacement for wget and curl because Windows does
     support these tools. 
@@ -57,10 +57,13 @@ def download_wp_dump(domain, path, filename, location, filemode, pbar):
     @pbar is an instance of progressbar.ProgressBar()
     '''
     chunk = 4096
+    result = utils.check_file_exists(location, '')
+    if result == False:
+        utils.create_directory(os.path.join(location))
     if filemode == 'w':
-        fh = utils.open_txt_file(location, filename, filemode, settings.ENCODING)
+        fh = utils.create_txt_filehandle(location, filename, filemode, settings.ENCODING)
     else:
-        fh = utils.open_binary_file(location, filename, filemode)
+        fh = utils.create_binary_filehandle(location, filename, 'wb')
 
     filesize = determine_remote_filesize(domain, path + filename)
 
@@ -73,9 +76,12 @@ def download_wp_dump(domain, path, filename, location, filemode, pbar):
         pbar = progressbar.ProgressBar(widgets=widgets,maxval=filesize).start()
     else:
         pbar = False
-
-    req = urllib2.Request(domain + path + filename)
+    
     try:
+        if filename.endswith('json'):
+            req = urllib2.Request(domain + path)
+        else:
+            req = urllib2.Request(domain + path + filename)
         response = urllib2.urlopen(req)
         while True:
             data = response.read(chunk)
