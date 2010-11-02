@@ -25,6 +25,7 @@ $wgHooks['LanguageGetMagic'][] = 'siofLanguageGetMagic';
 $wgHooks['ParserClearState'][] = 'SIOHandler::clearState';
 $wgHooks['SMWSQLStore2::updateDataAfter'][] = 'SIOHandler::updateData';
 $wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalObjects';
+$wgHooks['TitleMoveComplete'][] = 'SIOHandler::handlePageMove';
 $wgHooks['smwRefreshDataJobs'][] = 'SIOHandler::handleRefreshingOfInternalObjects';
 $wgHooks['smwAddToRDFExport'][] = 'SIOSQLStore::createRDF';
 
