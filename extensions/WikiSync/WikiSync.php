@@ -142,7 +142,7 @@ class WikiSyncSetup {
 	}
 
 	static function checkUserMembership( $groups ) {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$ug = $wgUser->getEffectiveGroups();
 		if ( !$wgUser->isAnon() && !in_array( 'user', $ug ) ) {
 			$ug[] = 'user';
@@ -150,7 +150,7 @@ class WikiSyncSetup {
 		if ( array_intersect( $groups, $ug ) ) {
 			return true;
 		}
-		return wfMsg( 'wikisync_api_result_noaccess', implode( $groups, ',' ) );
+		return wfMsg( 'wikisync_api_result_noaccess', $wgLang->commaList( $groups ) );
 	}
 
 	/*
