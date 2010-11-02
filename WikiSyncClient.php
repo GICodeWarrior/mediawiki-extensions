@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -275,9 +275,9 @@ class WikiSyncClient {
 		 */
 		$args = func_get_args();
 		$json_result = new WikiSyncJSONresult();
-		if ( !WikiSyncSetup::initUser() ) {
+		if ( is_string( $iu = WikiSyncSetup::initUser() ) ) {
 			# not enough priviledges to run this method
-			return $json_result->getResult( 'noaccess' );
+			return $json_result->getResult( 'noaccess', $iu );
 		}
 		$snoopy = new WikiSnoopy();
 		list( $remote_wiki_root, $remote_wiki_user, $remote_wiki_password ) = $args;
@@ -369,9 +369,9 @@ class WikiSyncClient {
 			throw new MWException( 'Unsupported type of result (' . htmlspecialchars( $resultEncoding, ENT_COMPAT, 'UTF-8' ) . ' ) in ' . __METHOD__ );
 		}
 		$json_result = new WikiSyncJSONresult( $resultEncoding == self::RESULT_JSON_STRING );
-		if ( !WikiSyncSetup::initUser() ) {
+		if ( is_string( $iu = WikiSyncSetup::initUser() ) ) {
 			# not enough priviledges to run this method
-			return $json_result->getResult( 'noaccess' );
+			return $json_result->getResult( 'noaccess', $iu );
 		}
 		$api_params = is_array( $args[0] ) ? $args[0] : json_decode( $args[0], true );
 		try {
@@ -417,9 +417,9 @@ class WikiSyncClient {
 		# when there are files posted, use only 'multipart/form-data'
 		$useMultipart = is_array( $api_files );
 		$json_result = new WikiSyncJSONresult( $resultEncoding == self::RESULT_JSON_STRING );
-		if ( !WikiSyncSetup::initUser() ) {
+		if ( is_string( $iu = WikiSyncSetup::initUser() ) ) {
 			# not enough priviledges to run this method
-			return $json_result->getResult( 'noaccess' );
+			return $json_result->getResult( 'noaccess', $iu );
 		}
 		# snoopy api_params are associative array
 		$api_params = is_array( $args[1] ) ? $args[1] : json_decode( $args[1], true );
@@ -496,11 +496,6 @@ class WikiSyncClient {
 		# use default IIS / Apache execution time limit which is much larger than default PHP limit
 		set_time_limit( 300 );
 		self::$json_result = new WikiSyncJSONresult();
-		if ( !WikiSyncSetup::initUser() ) {
-			# not enough priviledges to run this method
-			self::$json_result->setCode( 'noaccess' );
-			return false;
-		}
 		if ( count( $args ) < $min_args ) {
 			self::$json_result->setCode( 'init_client', 'Not enough number of parameters in ' . __METHOD__ );
 			return false;
@@ -512,9 +507,16 @@ class WikiSyncClient {
 			self::$json_result->setCode( 'init_client', $check_result );
 			return false;
 		}
-		if ( !is_bool( self::$directionToLocal = self::$client_params['direction_to_local'] ) ) {
-			self::$json_result->setCode( 'init_client', 'Parameter "direction_to_local" is not boolean in ' . $client_name );
-		};
+		if ( !isset( self::$client_params['direction_to_local'] ) ) {
+			self::$json_result->setCode( 'init_client', 'direction_to_local was not passed for ' . $client_name );
+			return false;
+		}
+		self::$directionToLocal = self::$client_params['direction_to_local'];
+		if ( is_string( $iu = WikiSyncSetup::initUser( self::$directionToLocal ) ) ) {
+			# not enough priviledges to run this method
+			self::$json_result->setCode( 'noaccess', $iu );
+			return false;
+		}
 		return true;
 	}
 

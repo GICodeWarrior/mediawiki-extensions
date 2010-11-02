@@ -28,12 +28,12 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
- */ 
- 
+ */
+
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is a part of MediaWiki extension.\n" );
 }
@@ -75,8 +75,12 @@ if ( !function_exists( 'json_encode' ) ) {
 class WikiSyncSetup {
 	# {{{ changable in LocalSettings.php :
 	static $remote_wiki_root = 'http://www.mediawiki.org/w';
-	static $remote_wiki_user = 'Username';
+	static $remote_wiki_user = '';
 	static $proxy_address = ''; # 'http://10.0.0.78:3128';
+	# which user groups can synchronize from remote to local
+	static $rtl_access_groups = array( 'user' );
+	# which user groups can synchronize from local to remote
+	static $ltr_access_groups = array( 'sysop', 'bureaucrat' );
 	# }}}
 
 	# {{{ decoded local proxy settings
@@ -86,7 +90,7 @@ class WikiSyncSetup {
 	static $proxy_pass = '';
 	# }}}
 
-	static $version = '0.2.0'; // version of extension
+	static $version = '0.2.1'; // version of extension
 	static $ExtDir; // filesys path with windows path fix
 	static $ScriptPath; // apache virtual path
 
@@ -137,16 +141,39 @@ class WikiSyncSetup {
 		}
 	}
 
+	static function checkUserMembership( $groups ) {
+		global $wgUser;
+		$ug = $wgUser->getEffectiveGroups();
+		if ( !$wgUser->isAnon() && !in_array( 'user', $ug ) ) {
+			$ug[] = 'user';
+		}
+		if ( array_intersect( $groups, $ug ) ) {
+			return true;
+		}
+		return wfMsg( 'wikisync_api_result_noaccess', implode( $groups, ',' ) );
+	}
+
 	/*
 	 * should not be called from LocalSettings.php
 	 * should be called only when the wiki is fully initialized
-	 * @return true, when the current user has admin rights, false otherwise
+	 * @param $direction defines the direction of synchronization
+	 *     true - from remote to local wiki
+	 *     false - from local to remote wiki
+	 *     null - direction is undefined yet (any direction)
+	 * @return true, when the current user has access to synchronization;
+	 *     string error message, when the current user has no access
 	 */
-	static function initUser() {
-		global $wgUser;
+	static function initUser( $direction = null) {
 		wfLoadExtensionMessages( 'WikiSync' );
-		$ug = $wgUser->getEffectiveGroups();
-		return array_intersect( array( 'sysop', 'bureaucrat' ), $ug );
+		if ( $direction === true ) {
+			return self::checkUserMembership( self::$rtl_access_groups );
+		} elseif ( $direction === false ) {
+			return self::checkUserMembership( self::$ltr_access_groups );
+		} elseif ( $direction === null ) {
+			$groups = array_merge( self::$rtl_access_groups, self::$ltr_access_groups );
+			return self::checkUserMembership( $groups );
+		}
+		return 'Bug: direction should be boolean or null, value (' . $direction . ') given in ' . __METHOD__;
 	}
 
 } /* end of WikiSyncSetup class */

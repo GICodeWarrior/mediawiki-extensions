@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -44,6 +44,8 @@ class WikiSyncPage extends SpecialPage {
 	var $remote_login_form_tpl;
 	var $remote_log_tpl;
 	var $page_tpl;
+
+	var $initUser;
 
 	function initRemoteLoginFormTpl() {
 		$remote_wiki_root = _QXML::specialchars( WikiSyncSetup::$remote_wiki_root );
@@ -176,6 +178,7 @@ class WikiSyncPage extends SpecialPage {
 		$outputPage->addScript(
 			'<script type="' . $wgJsMimeType . '" src="' . WikiSyncSetup::$ScriptPath . '/WikiSync.js?' . WikiSyncSetup::$version . '"></script>
 			<script type="' . $wgJsMimeType . '" src="' . WikiSyncSetup::$ScriptPath . '/WikiSync_Utils.js?' . WikiSyncSetup::$version . '"></script>
+			<script type="' . $wgJsMimeType . '">WikiSyncUtils.addEvent(window,"load",WikiSync.onloadHandler);</script>
 			<script type="' . $wgJsMimeType . '">
 			WikiSync.setLocalNames( ' .
 				self::getJsObject( 'wsLocalMessages', 'last_op_error', 'synchronization_confirmation', 'synchronization_success', 'already_synchronized', 'sync_to_itself', 'diff_search', 'revision', 'file_size_mismatch' ) .
@@ -212,18 +215,27 @@ class WikiSyncPage extends SpecialPage {
 	}
 
 	function __construct() {
-		parent::__construct( 'WikiSync', 'delete' );
-		WikiSyncSetup::initUser();
+		parent::__construct( 'WikiSync', 'edit' );
+		$this->initUser = WikiSyncSetup::initUser();
 	}
 
 	function execute( $param ) {
 		global $wgOut, $wgContLang;
 		global $wgUser;
-		if ( !$wgUser->isAllowed( 'delete' ) ) {
-			$wgOut->permissionRequired('delete');
+		# commented out, ignored by FF 3+ anyway
+#		$wgOut->enableClientCache( false );
+		if ( !$wgUser->isAllowed( 'edit' ) ) {
+			$wgOut->permissionRequired('edit');
 			return;
 		}
-
+		if ( is_string( $this->initUser ) ) {
+			# not enough priviledges to run this method
+			$wgOut->addHTML( $this->initUser );
+			return;
+		}
+		if ( !$wgUser->isAnon() ) {
+			WikiSyncSetup::$remote_wiki_user = $wgUser->getName();
+		}
 		self::headScripts( $wgOut, $wgContLang->isRTL() );
 		$wgOut->setPagetitle( wfMsgHtml( 'wikisync' ) );
 		$this->initSyncDirectionTpl();
