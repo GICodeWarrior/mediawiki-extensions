@@ -1,4 +1,41 @@
+var WikiSyncUtils = {
+	// browser-independent addevent function
+	addEvent : function ( obj, type, fn ) {
+		if ( document.getElementById && document.createTextNode ) {
+			if (obj.addEventListener) {
+				obj.addEventListener( type, fn, false );
+			}
+			else if (obj.attachEvent) {
+				obj["e"+type+fn] = fn;
+				obj[type+fn] = function() { obj["e"+type+fn]( window.event ); }
+				obj.attachEvent( "on"+type, obj[type+fn] );
+			}
+			else {
+				obj["on"+type] = obj["e"+type+fn];
+			}
+		}
+	},
+
+	getEventObj : function ( event, stopPropagation ) {
+		var obj;
+		if ( typeof event.target !== 'undefined' ) {
+			obj = event.target;
+			if ( stopPropagation ) {
+				event.stopPropagation();
+			}
+		} else {
+			obj = event.srcElement;
+			if ( stopPropagation ) {
+				event.cancelBubble = true;
+			}
+		}
+		return obj;
+	}
+
+};
+
 /**
+ * percents indicator class
  * @param id - id of table container for percents indicator
  */
 function WikiSyncPercentsIndicator( id ) {
@@ -13,7 +50,7 @@ function WikiSyncPercentsIndicator( id ) {
 	this.reset();
 }
 WikiSyncPercentsIndicator.prototype.setVisibility = function( visible ) {
-	this.topElement.style.display = visible ? 'block' : 'none';
+	this.topElement.style.display = visible ? 'table' : 'none';
 }
 /**
  * @access private

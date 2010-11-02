@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -360,6 +360,12 @@ var WikiSync = {
 		}
 	},
 
+	/**
+	 * parses and validates AJAX result
+	 * always, even in case of error should return _parsed_ JSON
+	 * @param request AJAX result
+	 * @return parsed JSON result (JS nested object)
+	 */
 	getAJAXresult : function( request ) {
 		var AJAXres = { 'ws_status' : '0', 'ws_code' : 'uninitialized', 'ws_msg' : 'uninitialized' };
 		if ( request.status != 200 ) {
@@ -378,6 +384,12 @@ var WikiSync = {
 		return AJAXres;
 	},
 
+	/**
+	 * scans this.AJAXresult whether AJAX events with
+	 * assigned operation.opcode names got an response from server
+	 * allows to check for multiple events at once, in case of concurrent AJAX calls
+	 * @param arguments list of operation.opcode names
+	 */
 	isAJAXresult : function() {
 		var found = 0;
 		for ( var i = 0; i < arguments.length; i++ ) {
@@ -390,12 +402,17 @@ var WikiSync = {
 
 	errorDefaultAction : function() {
 		this.syncPercents.reset();
+		this.filesPercents.setVisibility( false );
 		this.filesPercents.reset();
 		this.showIframe( '' );
 		// enable all but synchronization buttons
 		this.setButtons( true, 'wikisync_synchronization_button' );
 	},
 
+	/**
+	 * scans this.AJAXresult for unsuccessful events which have returned errors
+	 * @return true, when there are errors; false otherwise
+	 */
 	assertAJAXerrors : function() {
 		var result = false;
 		for ( var key in this.AJAXresult ) {
@@ -411,9 +428,19 @@ var WikiSync = {
 		return result;
 	},
 
+	/**
+	 * "pops" AJAX event result in parsed JSON format (JS nested object)
+	 * with selected operation.opcode from this.AJAXresult
+	 * should be called only on successful results
+	 * after the checking with assertAJAXerrors()
+	 * @param key operation.opcode
+	 * @param nested_props - an JS object "path" of nested properties to return
+	 * @return JS nested object (in parsed JSON format)
+	 */
 	popAJAXresult : function( key, nested_props ) {
 		var r = this.AJAXresult[key];
-		delete this.AJAXresult[key]; // clear events list
+		// remote event from the list
+		delete this.AJAXresult[key];
 		if ( typeof nested_props === 'undefined' ) {
 			return r;
 		}
@@ -427,6 +454,10 @@ var WikiSync = {
 	},
 
 	getImportToken : function( operation ) {
+		if ( typeof operation === 'undefined' || typeof operation.opcode === 'undefined' ) {
+			this.error( 'Bug: No operation.opcode in WikiSync.getImportToken' );
+			return;
+		}
 		switch ( operation.opcode ) {
 		case 'start' :
 			// get sample page title for token importing
@@ -519,6 +550,10 @@ var WikiSync = {
 	 * transfer one file in blocks of specified length
 	 */
 	transferFile : function( operation ) {
+		if ( typeof operation === 'undefined' || typeof operation.opcode === 'undefined' ) {
+			this.error( 'Bug: No operation.opcode in WikiSync.transferFile' );
+			return;
+		}
 		switch ( operation.opcode ) {
 		case 'start_upload' :
 			this.currFileOffset = 0;
@@ -606,6 +641,10 @@ var WikiSync = {
 	 * update new files currently available in chunk (if any)
 	 */
 	updateNewFiles : function( operation ) {
+		if ( typeof operation === 'undefined' || typeof operation.opcode === 'undefined' ) {
+			this.error( 'Bug: No operation.opcode in WikiSync.updateNewFiles' );
+			return;
+		}
 		switch ( operation.opcode ) {
 		case 'new_files_result' :
 			this.log( this.AJAXresult[operation.opcode] );
@@ -648,6 +687,10 @@ var WikiSync = {
 	 * synchronize xml chunks in blocks (optionally with passing through file update)
 	 */
 	synchronize : function( operation ) {
+		if ( typeof operation === 'undefined' || typeof operation.opcode === 'undefined' ) {
+			this.error( 'Bug: No operation.opcode in WikiSync.synchronize' );
+			return;
+		}
 		switch ( operation.opcode ) {
 		case 'start' :
 			this.srcSyncId = operation.revid;
@@ -655,7 +698,6 @@ var WikiSync = {
 			if ( !confirm( this.formatMessage( 'synchronization_confirmation', this.srcWikiRoot, this.dstWikiRoot, operation.revid ) ) ) {
 				this.log( 'Operation was cancelled' );
 				this.syncPercents.reset();
-				this.filesPercents.reset();
 				// enable all buttons
 				this.setButtons( true );
 				return;
@@ -674,6 +716,7 @@ var WikiSync = {
 				'fname' : 'synchronize',
 				'opcode' : 'xml_chunk_result'
 			};
+			this.syncPercents.display( { 'desc' : this.formatMessage( 'revision', operation.startid ), 'curr' : operation.startid } );
 			this.wsAPI( 'syncXMLchunk', clientParams, nextOp );
 			return;
 		case 'xml_chunk_result' :
@@ -684,8 +727,6 @@ var WikiSync = {
 			this.xmlContinueStartId = (typeof result.ws_continue_startid) === 'undefined' ? null : result.ws_continue_startid;
 			if ( this.xmlContinueStartId === null ) {
 				this.syncPercents.display( { 'desc' : '', 'curr' : 'max' } );
-			} else {
-				this.syncPercents.display( { 'desc' : this.formatMessage( 'revision', this.xmlContinueStartId ), 'curr' : this.xmlContinueStartId } );
 			}
 			if ( this.syncFiles && typeof result.files !== 'undefined' ) {
 				var clientParams = {
@@ -727,7 +768,7 @@ var WikiSync = {
 	 */
 	findCommonRev : function( operation ) {
 		if ( typeof operation === 'undefined' || typeof operation.opcode === 'undefined' ) {
-			this.error( 'Bug: No operation.opcode in WikiSync.getLastSrcRev' );
+			this.error( 'Bug: No operation.opcode in WikiSync.findCommonRev' );
 			return;
 		}
 		switch ( operation.opcode ) {
@@ -811,7 +852,7 @@ var WikiSync = {
 	 */
 	getSrcRev : function( operation ) {
 		if ( typeof operation === 'undefined' || typeof operation.opcode === 'undefined' ) {
-			this.error( 'Bug: No operation.opcode in WikiSync.getLastSrcRev' );
+			this.error( 'Bug: No operation.opcode in WikiSync.getSrcRev' );
 			return;
 		}
 		switch ( operation.opcode ) {
@@ -876,10 +917,6 @@ var WikiSync = {
 	 * "Synchronize" button click handler
 	 */
 	process : function() {
-		this.syncPercents = new WikiSyncPercentsIndicator( 'wikisync_xml_percents' );
-		this.filesPercents = new WikiSyncPercentsIndicator( 'wikisync_files_percents' );
-		this.syncPercents.setVisibility( true );
-		this.showIframe( '' );
 		if ( wgServer.indexOf( this.remoteContext.wikiroot ) !== -1 ||
 				this.remoteContext.wikiroot.indexOf( wgServer ) !== -1 ) {
 			alert( this.formatMessage( 'sync_to_itself' ) );
@@ -895,10 +932,25 @@ var WikiSync = {
 		}
 		// disable all buttons
 		this.setButtons( false );
+		this.syncPercents.setVisibility( true );
 		/* get first and last source revision in parallel */
 		this.getSrcRev( { 'opcode' : 'start' } );
 		this.getSrcRev( { 'opcode' : 'start', 'dir' : 'newer' } );
 		return false;
+	},
+
+	onloadHandler : function() {
+		// {{{ switch the context
+		if ( typeof this._WikiSync === 'undefined' ) {
+			return WikiSync.onloadHandler.call( WikiSync );
+		}
+		// }}}
+		this.syncPercents = new WikiSyncPercentsIndicator( 'wikisync_xml_percents' );
+		this.filesPercents = new WikiSyncPercentsIndicator( 'wikisync_files_percents' );
+		this.syncPercents.setVisibility( false );
+		this.filesPercents.setVisibility( false );
+		this.showIframe( '' );
+		this.errorDefaultAction();
 	}
 
 }

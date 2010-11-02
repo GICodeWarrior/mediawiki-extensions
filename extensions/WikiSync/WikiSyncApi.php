@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -150,6 +150,7 @@ class ApiFindSimilarRev extends ApiWikiSync {
 		}
 		# place result list items into attributes of <similarrev> xml tag
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'similarrev' );
+		unset( $dbres );
 	}
 
 	private function extractRowInfo( $row ) {
@@ -337,6 +338,7 @@ class ApiRevisionHistory extends ApiWikiSync {
 			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'revision' );
 //			$this->getResult()->setIndexedTagName( $resultData, 'page' );
 //			$this->getResult()->addValue( null, $this->getModuleName(), $resultData );
+			unset( $dbres );
 		}
 	}
 
@@ -507,7 +509,8 @@ class ApiGetFile extends ApiQueryBase {
 			$this->dieUsageMsg( array( 'missingparam', 'timestamp' ) );
 		}
 		if ( !$this->getMain()->canApiHighLimits() ) {
-			$this->dieUsageMsg( array( 'actionthrottledtext' ) );
+			// throttle a non-priviledged user
+			sleep( 1 );
 		}
 		$title = Title::newFromText( $params['title'], NS_FILE );
 		if ( $title instanceof Title ) {
