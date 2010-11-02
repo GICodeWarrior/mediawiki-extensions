@@ -17,7 +17,7 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
-from multiprocessing import Process, Queue
+from multiprocessing import Process, Queue, JoinableQueue
 from Queue import Empty
 
 import settings
@@ -53,29 +53,32 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
     @kwargs is a dictionary with optional variables. Used to supply to main
     '''
 
-    input_queue = Queue()
+    nr_input_processors = kwargs.pop('nr_input_processors')
+    nr_output_processors = kwargs.pop('nr_output_processors')
+    
     if result_queue:
-        result_queue = Queue()
+        result_queue = JoinableQueue()
 
-    load_input_queue(input_queue, obj, poison_pill=True)
+    input_queue = load_input_queue(obj, poison_pill=True)
 
     if settings.PROGRESS_BAR:
         pbar = progressbar.ProgressBar(maxval=input_queue.qsize()).start()
+        kwargs['pbar'] = pbar
     else:
         pbar = False
 
 
     input_processes = [models.ProcessInputQueue(main, input_queue, result_queue,
-                        **kwargs) for i in xrange(settings.NUMBER_OF_PROCESSES -1)]
+                        **kwargs) for i in xrange(nr_input_processors)]
 
     for input_process in input_processes:
         input_process.start()
     pids = [p.pid for p in input_processes]
     kwargs['pids'] = pids
-    
+
     if result_queue:
         result_processes = [models.ProcessResultQueue(result_processor,
-                result_queue, **kwargs) for i in xrange(24)]
+                result_queue, **kwargs) for i in xrange(nr_output_processors)]
         for result_process in result_processes:
             result_process.start()
 
@@ -95,7 +98,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
         print 'Total elapsed time: %s.' % (utils.humanize_time_difference(pbar.seconds_elapsed))
 
 
-def load_queue(input_queue, obj, poison_pill=False):
+def load_queue(obj, poison_pill=False):
     '''
     @input_queue should be an instance of multiprocessing.Queue
 
@@ -103,7 +106,7 @@ def load_queue(input_queue, obj, poison_pill=False):
 
     @returns: queue with tasks
     '''
-
+    input_queue = Queue()
     if isinstance(obj, type(list)):
         data = utils.load_object(obj)
     else:

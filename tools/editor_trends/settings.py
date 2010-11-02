@@ -30,21 +30,29 @@ import platform
 
 #Setting up the environment
 ops = {platform.win32_ver: 'Windows',
-      platform.linux_distribution: 'Linux',
-      platform.mac_ver: 'OSX'}
+       platform.linux_distribution: 'Linux',
+       platform.mac_ver: 'OSX'}
+
 for op in ops:
     if op() != ('', '', '') and op() != ('', ('', '', ''), ''):
         OS = ops[op]
 
-WORKING_DIRECTORY = os.getcwd()#[:-9]
+WORKING_DIRECTORY = os.getcwd()
 IGNORE_DIRS = ['wikistats', 'zips']
+ROOT = '/' if OS != 'Windows' else 'c:\\'
 
-dirs = [name for name in os.listdir(WORKING_DIRECTORY) if os.path.isdir(os.path.join(WORKING_DIRECTORY, name))]
+
+dirs = [name for name in os.listdir(WORKING_DIRECTORY) if
+        os.path.isdir(os.path.join(WORKING_DIRECTORY, name))]
 for subdirname in dirs:
     if not subdirname.startswith('.') and subdirname not in IGNORE_DIRS:
         sys.path.append(os.path.join(WORKING_DIRECTORY, subdirname))
 
+WINDOWS_ZIP = ['7z.exe']
 
+OSX_ZIP = []
+
+LINUX_ZIP = []
 #General settings
 
 # Valid values are 'stand-alone' and 'hadoop'
@@ -65,22 +73,23 @@ DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 #This section contains configuration variables for the different file locations.
 
 # Location where to write xml chunks
-XML_FILE_LOCATION = 'C:/wikimedia/'
+XML_FILE_LOCATION = os.path.join(ROOT, 'wikimedia')
 
 # Input file
-XML_FILE = 'C:/Source_Files/enwiki-20100916-stub-meta-history.xml'
+XML_FILE = os.path.join(ROOT, 'Source_Files', 'enwiki-20100916-stub-meta-history.xml')
 
 # This is the place where error messages are stored for debugging purposes
-ERROR_MESSAGE_FILE_LOCATION = WORKING_DIRECTORY + '/errors/'
+ERROR_MESSAGE_FILE_LOCATION = os.path.join(WORKING_DIRECTORY, 'errors')
 
-DATABASE_FILE_LOCATION = WORKING_DIRECTORY + '/data/database/'
+DATABASE_FILE_LOCATION = os.path.join(WORKING_DIRECTORY, 'data', 'database')
 
-BINARY_OBJECT_FILE_LOCATION = WORKING_DIRECTORY + '/data/objects/'
+BINARY_OBJECT_FILE_LOCATION = os.path.join(WORKING_DIRECTORY, 'data', 'objects')
 
-DATASETS_FILE_LOCATION = WORKING_DIRECTORY + '/datasets/'
+DATASETS_FILE_LOCATION = os.path.join(WORKING_DIRECTORY, 'datasets')
 
-TXT_FILE_LOCATION = WORKING_DIRECTORY + '/csv/'
+TXT_FILE_LOCATION = os.path.join(WORKING_DIRECTORY, 'data', 'csv')
 
+NAMESPACE_LOCATION = os.path.join(WORKING_DIRECTORY, 'namespaces')
 #This section contains configuration variables for parsing / encoding and
 #working with the XML files.
 
@@ -92,12 +101,32 @@ ENCODING = 'utf-8'
 # Name space, do not change as this works for Mediawiki wikis
 NAME_SPACE = 'http://www.mediawiki.org/xml/export-0.4/'
 
+
+WIKIMEDIA_PROJECTS = {'commons': 'commonswiki',
+                      'wikibooks': 'wikibooks',
+                      'wikinews': 'wikinews',
+                      'wikiquote': 'wikiquote',
+                      'wikisource': 'wikisource',
+                      'wikiversity': 'wikiversity',
+                      'wiktionary': 'wiktionary',
+                      'metawiki': 'metawiki',
+                      'wikispecies': 'specieswiki',
+                      'incubator': 'incubatorwiki',
+                      'foundation': 'foundationwiki',
+                      'mediawiki': 'mediawikiwiki',
+                      'outreach': 'outreachwiki',
+                      'strategic planning': 'strategywiki',
+                      'usability initiative': 'usabilitywiki',
+                      'multilingual wikisource': None
+                      }
+
 #Multiprocess settings used to parallelize workload
 #Change this to match your computers configuration (RAM / CPU)
 NUMBER_OF_PROCESSES = cpu_count() * 1
 
-#Extensions of ascii files, this is used to determine the filemode to use 
+#Extensions of ascii files, this is used to determine the filemode to use
 ASCII = ['txt', 'csv', 'xml', 'sql']
 
 WP_DUMP_LOCATION = 'http://download.wikimedia.org'
 
+MAX_CACHE_SIZE = 1024 * 1024

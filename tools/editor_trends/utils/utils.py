@@ -65,7 +65,7 @@ def check_if_process_is_running(pid):
                 return False
         else:
             os.kill(pid, 0)
-            return Tru
+            return True
     except Exception, error:
         print error
         return False
@@ -132,7 +132,7 @@ def extract_offending_string(text, error):
 # read / write data related functions
 def read_data_from_csv(filename, encoding):
     if hasattr(filename, '__call__'):
-        filename = construct_filename_from_function(filename)
+        filename = construct_filename(filename)
 
     fh = open_txt_file(filename, 'r', encoding=encoding)
     for line in fh:
@@ -140,12 +140,14 @@ def read_data_from_csv(filename, encoding):
 
     fh.close()
 
-def create_directory(language):
+
+def create_directory(path):
     try:
-        os.mkdir(settings.WORKING_DIRECTORY + '/' + language)
+        os.mkdir(path)
         return True
-    except IOERROR:
+    except IOError:
         return False
+
 
 def determine_file_extension(filename):
     pos = filename.rfind('.') + 1
@@ -158,10 +160,18 @@ def determine_file_mode(extension):
     else:
         return 'wb'
 
-
-def write_data_to_csv(data, location, function, encoding):
-    filename = construct_filename_from_function(function, '.csv')
-    fh = open_txt_file(location, filename, 'a', encoding=encoding)
+def write_list_to_csv(data, fh, recursive=False):
+    if recursive:
+        recursive = False
+    for d in data:
+        if type(d) == type([]):
+            recursive = write_list_to_csv(d, fh, True)
+        else:
+            fh.write('%s\t' % d)
+    if recursive:
+        return True
+    
+def write_dict_to_csv(data, fh):
     keys = data.keys()
     for key in keys:
         fh.write('%s' % key)
@@ -172,45 +182,68 @@ def write_data_to_csv(data, location, function, encoding):
             else:
                 fh.write('\t%s' % (obs))
         fh.write('\n')
-    fh.close()
 
 
-def open_txt_file(location, filename, mode, encoding):
-    return codecs.open(location + filename, mode, encoding=encoding)
+def create_txt_filehandle(location, name, mode, encoding):
+    filename = construct_filename(name, '.csv')
+    path = os.path.join(location, filename)
+    return codecs.open(path, mode, encoding=encoding)
 
 
-def open_binary_file(location, filename, mode):
-    return open(location + filename, mode)
+def create_binary_filehandle(location, filename, mode):
+    path = os.path.join(location, filename)
+    return open(path, mode)
 
-def construct_filename_from_function(function, extension):
-    return function.func_name + extension
+
+def construct_filename(name, extension):
+    if hasattr(name, '__call__'):
+        return name.func_name + extension
+    else:
+        return name
 
 
 def check_file_exists(location, filename):
     if hasattr(filename, '__call__'):
-        filename = construct_filename_from_function(filename, '.bin')
-    if os.path.exists(location + filename):
+        filename = construct_filename(filename, '.bin')
+    if os.path.exists(os.path.join(location, filename)):
         return True
     else:
         return False
 
 
+def which(program):
+    def is_exe(fpath):
+        return os.path.exists(fpath) and os.access(fpath, os.X_OK)
+
+    fpath, fname = os.path.split(program)
+    if fpath:
+        if is_exe(program):
+            return program
+    else:
+        for path in os.environ["PATH"].split(os.pathsep):
+            exe_file = os.path.join(path, program)
+            if is_exe(exe_file):
+                return exe_file
+
+    return None
+
+
 def store_object(object, location, filename):
     if hasattr(filename, '__call__'):
-        filename = construct_filename_from_function(filename, '.bin')
+        filename = construct_filename(filename, '.bin')
     if not filename.endswith('.bin'):
         filename = filename + '.bin'
-    fh = open(location + filename, 'wb')
+    fh = create_binary_filehandle(location, filename, 'wb')
     cPickle.dump(object, fh)
     fh.close()
 
 
 def load_object(location, filename):
     if hasattr(filename, '__call__'):
-        filename = construct_filename_from_function(filename, '.bin')
+        filename = construct_filename(filename, '.bin')
     if not filename.endswith('.bin'):
         filename = filename + '.bin'
-    fh = open(location + filename, 'rb')
+    fh = create_binary_filehandle(location, filename, 'rb')
     obj = cPickle.load(fh)
     fh.close()
     return obj
@@ -293,8 +326,8 @@ def humanize_time_difference(seconds_elapsed):
 
 
 def debug():
-    dt = humanize_time_difference(64)
-    print dt
-
+    #dt = humanize_time_difference(64)
+    #print dt
+    check_if_process_is_running(3012)
 if __name__ == '__main__':
     debug()
