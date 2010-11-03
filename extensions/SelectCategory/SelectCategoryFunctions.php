@@ -18,7 +18,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 ## Entry point for the hook and main worker function for editing the page:
-function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
+function fnSelectCategoryShowHook( $m_isUpload = false, $m_pageObj ) {
 
   # check if we should do anything or sleep
   if ( fnSelectCategoryCheckConditions( $m_isUpload, $m_pageObj ) ) {
@@ -116,7 +116,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 }
 
 ## Entry point for the hook and main worker function for saving the page:
-function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj ) {
+function fnSelectCategorySaveHook( $m_isUpload, $m_pageObj ) {
   global $wgContLang;
   global $wgTitle;
 
@@ -128,7 +128,7 @@ function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj ) {
 
     # default sort key is page name with stripped namespace name,
     # otherwise sorting is ugly.
-    if ($wgTitle->getNamespace() == NS_MAIN) {
+    if( $wgTitle->getNamespace() == NS_MAIN ) {
       $default_sortkey = "";
     } else {
       $default_sortkey = "|{{PAGENAME}}";
@@ -175,7 +175,7 @@ function fnSelectCategoryGetAllCategories() {
     $m_allCats = array();
 
     # Get a database object:
-    $m_dbObj =& wfGetDB( DB_SLAVE );
+    $m_dbObj = wfGetDB( DB_SLAVE );
     # Get table names to access them in SQL query:
     $m_tblCatLink = $m_dbObj->tableName( 'categorylinks' );
     $m_tblPage = $m_dbObj->tableName( 'page' );
@@ -206,7 +206,7 @@ function fnSelectCategoryGetChildren( $m_root, $m_depth = 1 ) {
   $m_allCats = array();
 
   # Get a database object:
-  $m_dbObj =& wfGetDB( DB_SLAVE );
+  $m_dbObj = wfGetDB( DB_SLAVE );
   # Get table names to access them in SQL query:
   $m_tblCatLink = $m_dbObj->tableName( 'categorylinks' );
   $m_tblPage = $m_dbObj->tableName( 'page' );
@@ -284,7 +284,7 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 }
 
 # Function that checks if we meet the run conditions of the extension
-function fnSelectCategoryCheckConditions ($m_isUpload, &$m_pageObj ) {
+function fnSelectCategoryCheckConditions ($m_isUpload, $m_pageObj ) {
   global $wgSelectCategoryNamespaces;
   global $wgSelectCategoryEnableSubpages;
   global $wgTitle;
@@ -299,7 +299,7 @@ function fnSelectCategoryCheckConditions ($m_isUpload, &$m_pageObj ) {
   }
 
   $ns = $wgTitle->getNamespace();
-  if (array_key_exists ($ns, $wgSelectCategoryNamespaces)) {
+  if( array_key_exists( $ns, $wgSelectCategoryNamespaces ) ) {
     $enabledForNamespace = $wgSelectCategoryNamespaces[$ns];
   } else {
     $enabledForNamespace = false;
