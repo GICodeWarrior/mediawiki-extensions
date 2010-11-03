@@ -16,7 +16,7 @@
  */
 if( !defined( 'MEDIAWIKI' ) ) die( "Not an entry point." );
 
-define( 'PDFBOOK_VERSION', "1.0.7, 2010-10-28" );
+define( 'PDFBOOK_VERSION', "1.0.8, 2010-11-03" );
 
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
@@ -32,7 +32,7 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 # Whether or not an action tab is wanted for printing to PDF
-$wgPdfBookTab = false;
+if( !isset( $wgPdfBookTab ) ) $wgPdfBookTab = false;
 
 class PdfBook {
 
