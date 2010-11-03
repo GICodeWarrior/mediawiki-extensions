@@ -14,7 +14,8 @@ $messages = array();
  * @author Aran Dunkley
  */
 $messages['en'] = array(
-	'pdfbook-action' => "Print as PDF",
-	'pdfbook-log' => "$1 exported as a PDF book",
-	'pdfbook-desc' => "Composes a book from articles in a category and exports as a PDF book",
+	'pdfbook-action' => 'Print as PDF',
+	'pdfbook-log' => '$1 exported as a PDF book',
+	'pdfbook-desc' => 'Composes a book from pages in a category and exports as a PDF book',
 );
+
