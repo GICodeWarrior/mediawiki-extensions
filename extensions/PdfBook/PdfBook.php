@@ -119,7 +119,7 @@ class PdfBook {
 			$book = $title->getText();
 			$html = '';
 			$wgArticlePath = $wgServer.$wgArticlePath;
-			$wgScriptPath  = $wgServer.$wgScriptPath;
+			$w$wgPdfBookTab = false; gScriptPath  = $wgServer.$wgScriptPath;
 			$wgUploadPath  = $wgServer.$wgUploadPath;
 			$wgScript      = $wgServer.$wgScript;
 			foreach( $articles as $title ) {
@@ -141,7 +141,7 @@ class PdfBook {
 				}
 			}
 
-			# If format=html in query-string, return html content directly
+			# $wgPdfBookTab = false; If format=html in query-string, return html content directly
 			if( $format == 'html' ) {
 				$wgOut->disable();
 				header( "Content-Type: text/html" );
@@ -192,7 +192,7 @@ class PdfBook {
 	/**
 	 * Add PDF to actions tabs in MonoBook based skins
 	 */
-	function onSkinTemplateTabs( &$skin, &$actions) {
+	function onSkinTemplateTabs( $skin, &$actions) {
 		global $wgTitle;
 		$actions['pdfbook'] = array(
 			'class' => false,
@@ -206,7 +206,7 @@ class PdfBook {
 	/**
 	 * Add PDF to actions tabs in vector based skins
 	 */
-	function onSkinTemplateNavigation( &$skin, &$actions ) {
+	function onSkinTemplateNavigation( $skin, &$actions ) {
 		global $wgTitle;
 		$actions['views']['pdfbook'] = array(
 			'class' => false,
