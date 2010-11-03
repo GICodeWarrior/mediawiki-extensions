@@ -24,6 +24,7 @@ $wgHooks['ParserFirstCallInit'][] = 'siofRegisterParserFunctions';
 $wgHooks['LanguageGetMagic'][] = 'siofLanguageGetMagic';
 $wgHooks['ParserClearState'][] = 'SIOHandler::clearState';
 $wgHooks['SMWSQLStore2::updateDataAfter'][] = 'SIOHandler::updateData';
+$wgHooks['SMWSQLStore2::deleteSubjectAfter'][] = 'SIOHandler::deleteData';
 $wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalObjects';
 $wgHooks['TitleMoveComplete'][] = 'SIOHandler::handlePageMove';
 $wgHooks['smwRefreshDataJobs'][] = 'SIOHandler::handleRefreshingOfInternalObjects';
