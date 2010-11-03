@@ -20,7 +20,7 @@ define( 'PDFBOOK_VERSION', "1.0.7, 2010-10-28" );
 
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
-$wgExtensionMessagesFiles['SimpleSecurity'] = dirname( __FILE__ ) . '/PdfBook.i18n.php';
+$wgExtensionMessagesFiles['PdfBook'] = dirname( __FILE__ ) . '/PdfBook.i18n.php';
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
