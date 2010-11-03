@@ -893,7 +893,7 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'whatismyip' => 'Ladeti-IP kinik labob-li?',
-	'whatismyip-desc' => 'Jonon ladeti-IP gebana su [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Jonon [[Special:WhatIsMyIP|ladeti-IP]] gebana anuik',
 	'whatismyip-out' => 'Ladet-IP olik:',
 );
 
