@@ -460,7 +460,8 @@ class OAIRepo {
 				$rows[] = $row;
 				$this->_lastSequence = $row->up_sequence;
 			}
-			if( $row = $resultSet->fetchObject() ) {
+			$row = $resultSet->fetchObject();
+			if( $row ) {
 				$limit = wfTimestamp( TS_MW, $until );
 				if( $until )
 					$nextToken = "$metadataPrefix:$row->up_sequence:$limit";

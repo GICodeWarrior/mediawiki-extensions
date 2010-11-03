@@ -94,9 +94,10 @@ class OAIHarvester {
 	
 			$xp = new DOMXPath( $doc );
 			$xp->registerNamespace( 'oai', 'http://www.openarchives.org/OAI/2.0/' );
-			
-			if( $errors = $this->checkResponseErrors( $xp ) )
+			$errors = $this->checkResponseErrors( $xp );
+			if( $errors ) {
 				return $errors;
+			}
 			
 			$resultSet = $xp->query( '/oai:OAI-PMH/oai:ListRecords/oai:record' );
 			foreach( $resultSet as $node ) {
