@@ -25,8 +25,8 @@ $messages['en'] = array(
 	'wikisync_remote_login_button' => 'Log in',
 	'wikisync_sync_files' => 'Synchronize files',
 	'wikisync_synchronization_button' => 'Synchronize',
-	'wikisync_log_imported_by' => 'Imported by [[Special:WikiSync]]',
-	'wikisync_log_uploaded_by' => 'Uploaded by [[Special:WikiSync]]',
+	'wikisync_log_imported_by' => 'Imported by [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Uploaded by [[Special:WikiSync|WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Unknown API action',
 	'wikisync_api_result_exception' => 'Exception occured in local API call',
 	'wikisync_api_result_noaccess' => 'Only members of the following groups can perform this action: $1',
@@ -65,7 +65,7 @@ starting from revision $3?',
 	'wikisync_js_sync_to_itself' => 'You cannot synchronize the wiki to itself',
 	'wikisync_js_diff_search' => 'Looking for difference in destination revisions',
 	'wikisync_js_revision' => 'Revision $1',
-	'wikisync_js_file_size_mismatch' => 'Temporary file $1 size ($2 bytes) does not match required size ($3 bytes). Make sure the file $4 was not manually overwritten in repository of source wiki.'
+	'wikisync_js_file_size_mismatch' => 'Temporary file "$1" size ($2 bytes) does not match required size ($3 bytes). Make sure the file $4 was not manually overwritten in repository of source wiki.', // FIXME: needs plural support.
 );
 
 /** Message documentation (Message documentation)
