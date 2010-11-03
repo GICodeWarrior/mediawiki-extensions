@@ -16,26 +16,22 @@
  */
 if( !defined( 'MEDIAWIKI' ) ) die( "Not an entry point." );
 
-define( 'PDFBOOK_VERSION', "1.0.6, 2010-10-28" );
+define( 'PDFBOOK_VERSION', "1.0.7, 2010-10-28" );
 
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
 
 $wgExtensionCredits['parserhook'][] = array(
-	'path'        => __FILE__,
-	'name'	      => "PdfBook",
-	'author'      => "[http://www.organicdesign.co.nz/nad User:Nad]",
-	'description' => "Composes a book from articles in a category and exports as a PDF book",
-	'url'	      => "http://www.mediawiki.org/wiki/Extension:PdfBook",
-	'version'     => PDFBOOK_VERSION
+	'path'           => __FILE__,
+	'name'           => "PdfBook",
+	'author'         => "[http://www.organicdesign.co.nz/nad User:Nad]",
+	'url'            => "http://www.mediawiki.org/wiki/Extension:PdfBook",
+	'version'        => PDFBOOK_VERSION,
+	'descriptionmsg' => 'pdfbook-desc',
 );
 
-# Set this to true in LocalSettings to add PdfBook to the action tabs
+# Whether or not an action tab is wanted for printing to PDF
 $wgPdfBookTab = false;
-
-# The text displayed in the pdf tab, can be set to another value in Localsettings.
-$wgTabText = 'PDF';
-
 
 class PdfBook {
 
@@ -72,7 +68,7 @@ class PdfBook {
 			$opt = ParserOptions::newFromUser( $wgUser );
 
 			# Log the export
-			$msg = $wgUser->getUserPage()->getPrefixedText() . " exported as a PDF book";
+			$msg = wfMsg( 'pdfbook-log', $wgUser->getUserPage()->getPrefixedText() );
 			$log = new LogPage( 'pdf', false );
 			$log->addEntry( 'book', $wgTitle, $msg );
 
@@ -197,10 +193,10 @@ class PdfBook {
 	 * Add PDF to actions tabs in MonoBook based skins
 	 */
 	function onSkinTemplateTabs( &$skin, &$actions) {
-		global $wgTitle, $wgTabText;
+		global $wgTitle;
 		$actions['pdfbook'] = array(
 			'class' => false,
-			'text' => $wgTabText,
+			'text' => wfMsg( 'pdfbook-action' ),
 			'href' => $wgTitle->getLocalURL( "action=pdfbook&format=single" ),
 		);
 		return true;
@@ -211,10 +207,10 @@ class PdfBook {
 	 * Add PDF to actions tabs in vector based skins
 	 */
 	function onSkinTemplateNavigation( &$skin, &$actions ) {
-		global $wgTitle, $wgTabText;
+		global $wgTitle;
 		$actions['views']['pdfbook'] = array(
 			'class' => false,
-			'text' => $wgTabText,
+			'text' => wfMsg( 'pdfbook-action' ),
 			'href' => $wgTitle->getLocalURL( "action=pdfbook&format=single" ),
 		);
 		return true;
