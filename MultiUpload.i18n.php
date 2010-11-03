@@ -1507,6 +1507,14 @@ $messages['sl'] = array(
 	'multipleupload-saveallfiles' => 'Shrani vse datoteke',
 	'multipleupload-addresswarnings' => 'Prosimo, uredite vsa opozorila pred ponovnim nalaganjem datotek.',
 	'multipleupload-page' => '{{ns:project}}:Pravila brisanja datotek',
+	'multipleupload-text' => "Tukaj naložite več datotek.
+
+Kliknite »Prebrskaj« in izberite vsako datoteko, ki jo želite naložiti.
+Naenkrat lahko naložite od 1 do $1 {{PLURAL:$1|datoteko|datoteki|datoteke|datotek}}.
+
+Vnesete lahko izbirno '''Ciljno ime datoteke''' in navedete '''Povzetek''', ki opisuje vašo datoteko.
+
+Neprimerne datoteke bodo nemudoma izbrisane; oglejte si [[{{MediaWiki:Multipleupload-page}}|pravilnik o izbrisu datotek]].",
 	'multiupload-fileuploaded' => 'Datoteka naložena.',
 	'multiupload-toolbox' => 'Naložite več datotek',
 	'multiupload-no-files' => 'Prosimo, izberite vsaj eno datoteko za nalaganje.',
@@ -1836,10 +1844,11 @@ Những tập tin không phù hợp sẽ bị xóa lập tức, mời xem [[{{Me
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
-	'multipleupload' => 'Löpükön ragivis',
+	'multipleupload' => 'Löpükön ragivis mödik',
 	'multiupload-desc' => 'Dälön gebanis ad [[Special:MultipleUpload|löpükön ragivis ömik otüpo]]',
 	'multipleupload-ignoreallwarnings' => "Nedemön '''nunedis valik''' e dakipön ragivis.",
 	'multipleupload-saveallfiles' => 'Dakipön ragivis valik',
