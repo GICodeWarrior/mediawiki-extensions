@@ -38,7 +38,7 @@ $messages['en'] = array(
 	'wikisync_api_result_NotExists' => 'The username you provided does not exist',
 	'wikisync_api_result_EmptyPass' => 'You did not set the lgpassword parameter or you left it empty',
 	'wikisync_api_result_WrongPass' => 'The password you provided is incorrect',
-	'wikisync_api_result_WrongPluginPass' => 'Same as WrongPass, returned when an authentication plugin rather than MediaWiki itself rejected the password',
+	'wikisync_api_result_WrongPluginPass' => 'The password you provided is incorrect',
 	'wikisync_api_result_CreateBlocked' => 'The wiki tried to automatically create a new account for you, but your IP address has been blocked from account creation',
 	'wikisync_api_result_Throttled' => 'You have logged in too many times in a short time.',
 	'wikisync_api_result_Blocked' => 'User is blocked',
@@ -73,6 +73,7 @@ starting from revision $3?',
  */
 $messages['qqq'] = array(
 	'wikisync_remote_login_button' => '{{Identical|Log in}}',
+	'wikisync_api_result_WrongPluginPass' => 'Same as WrongPass, returned when an authentication plugin rather than MediaWiki itself rejected the password',
 );
 
 /** Interlingua (Interlingua)
