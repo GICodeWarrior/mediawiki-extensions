@@ -68,6 +68,22 @@ starting from revision $3?',
 	'wikisync_js_file_size_mismatch' => 'Temporary file $1 size ($2 bytes) does not match required size ($3 bytes). Make sure the file $4 was not manually overwritten in repository of source wiki.'
 );
 
+/** Message documentation (Message documentation)
+ * @author Тест
+ */
+$messages['qqq'] = array(
+	'wikisync_remote_login_button' => '{{Identical|Log in}}',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'wikisync' => 'Synchronisation inter wikis',
+	'wikisync-desc' => 'Forni un [[Special:WikiSync|pagina special]] pro synchronisar le modificationes recente de duo wikis - un local e un remote',
+	'wikisync_direction' => 'Selige le direction del synchronisation',
+);
+
 /** Russian (Русский)
  * @author QuestPC
  */
@@ -99,12 +115,43 @@ $messages['ru'] = array(
 	'wikisync_api_result_Blocked' => 'Пользователь заблокирован',
 	'wikisync_api_result_no_import_rights' => 'У пользователя нет прав на импортирование xml дампов',
 	'wikisync_api_result_Success' => 'Успешный заход на удалённый вики сайт',
-	'wikisync_js_last_op_error' => "Последнее действие вызвало ошибку\nКод ошибки: $1\nСообщение: $2\nНажмите [OK], чтобы попытаться повторить последнее действие",
-	'wikisync_js_synchronization_confirmation' => "Вы уверены в том что хотите синхронизировать последние изменения\nс $1\nна $2\nначиная с ревизии $3?",
+	'wikisync_js_last_op_error' => 'Последнее действие вызвало ошибку
+Код ошибки: $1
+Сообщение: $2
+Нажмите [OK], чтобы попытаться повторить последнее действие',
+	'wikisync_js_synchronization_confirmation' => 'Вы уверены в том что хотите синхронизировать последние изменения
+с $1
+на $2
+начиная с ревизии $3?',
 	'wikisync_js_synchronization_success' => 'Синхронизация успешно завершена',
 	'wikisync_js_already_synchronized' => 'Исходный и назначенный вики-сайты выглядят уже синхронизированными',
 	'wikisync_js_sync_to_itself' => 'Невозможно синхронизировать вики сайт сам в себя',
 	'wikisync_js_diff_search' => 'Поиск отличий в ревизиях вики-сайта назначения',
 	'wikisync_js_revision' => 'Ревизия $1',
-	'wikisync_js_file_size_mismatch' => 'Размер временного файла $1 ($2 байт) не соответствует требуемому размеру файла ($3 байт). Пожалуйста убедитесь, что файл $4 не был переписан вручную в репозиторий исходного вики-сайта.'
+	'wikisync_js_file_size_mismatch' => 'Размер временного файла $1 ($2 байт) не соответствует требуемому размеру файла ($3 байт). Пожалуйста убедитесь, что файл $4 не был переписан вручную в репозиторий исходного вики-сайта.',
 );
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'wikisync_remote_login_button' => 'ప్రవేశించండి',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'wikisync' => 'Синхронізація вікі',
+	'wikisync_direction' => 'Будь ласка, оберіть напрямок синхронізації',
+	'wikisync_clear_log' => 'Очистити журнал',
+	'wikisync_remote_login_button' => 'Увійти',
+	'wikisync_sync_files' => 'Синхронізувати файли',
+	'wikisync_synchronization_button' => 'Синхронізувати',
+	'wikisync_api_result_invalid_parameter' => 'Неприпустиме значення параметра',
+	'wikisync_api_result_WrongPass' => 'Пароль, що ви вказали — невірний',
+	'wikisync_js_synchronization_success' => 'Синхронізацію успішно завершено',
+	'wikisync_js_sync_to_itself' => 'Ви не можете синхронізувати вікі саму до себе',
+	'wikisync_js_revision' => 'Версія $1',
+);
+
