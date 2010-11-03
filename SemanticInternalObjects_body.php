@@ -106,9 +106,12 @@ class SIOExporter extends SMWExporter {
  * protected, and thus can't be accessed externally.
  */
 class SIOSQLStore extends SMWSQLStore2 {
-	static function getIDsForDeletion( $pageName, $namespace ) {
-		$ids = array();
+	static function deleteDataForPage( $subject ) {
+		$pageName = $subject->getDBKey();
+		$namespace = $subject->getNamespace();
+		$idsForDeletion = array();
 
+		// Get the set of IDs for internal objects to be deleted.
 		$iw = '';
 		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select(
@@ -118,11 +121,30 @@ class SIOSQLStore extends SMWSQLStore2 {
 			'SIO::getSMWPageObjectIDs'
 		);
 		while ( $row = $db->fetchObject( $res ) ) {
-			$ids[] = $row->smw_id;
+			$idsForDeletion[] = $row->smw_id;
 		}
-		return $ids;
+
+		if ( count( $idsForDeletion ) == 0 ) {
+			return;
+		}
+
+		// Now, do the deletion.
+		$db = wfGetDB( DB_MASTER );
+		$idsString = '(' . implode ( ', ', $idsForDeletion ) . ')';
+		$db->delete( 'smw_rels2', array( "(s_id IN $idsString) OR (o_id IN $idsString)" ), 'SIO::deleteRels2Data' );
+		$db->delete( 'smw_atts2', array( "s_id IN $idsString" ), 'SIO::deleteAtts2Data' );
+		$db->delete( 'smw_text2', array( "s_id IN $idsString" ), 'SIO::deleteText2Data' );
+		// Handle the sm_coords table only if the Semantic Maps
+		// extension is installed and uses sm_coords.
+		if ( defined( 'SM_VERSION' ) && version_compare( SM_VERSION, '0.6' ) >= 0 ) {
+			$db->delete( 'sm_coords', array( "s_id IN $idsString" ), 'SIO::deleteCoordsData' );
+		}
 	}
 
+	/**
+	 * Returns the set of SQL values needed to insert the data for this
+	 * internal object into the database.
+	 */
 	function getStorageSQL( $internalObject ) {
 		$ioID = $this->makeSMWPageID( $internalObject->getName(), $internalObject->getNamespace(), '' );
 		$upRels2 = array();
@@ -232,6 +254,10 @@ class SIOHandler {
 	static $mInternalObjects = array();
 	static $mHandledPages = array();
 
+	/**
+	 * Called with the 'ParserClearState' hook, when more than one page
+	 * is parsed in a single action.
+	 */
 	public static function clearState( &$parser ) {
 		// For some reason, the #set_internal calls on a page are
 		// sometimes called twice (or more?). Ideally, there would
@@ -248,6 +274,9 @@ class SIOHandler {
 		return true;
 	}
 
+	/**
+	 * Handle the #set_internal parser function.
+	 */
 	public static function doSetInternal( &$parser ) {
 		$title = $parser->getTitle();
 		$mainPageFullName = $title->getText();
@@ -294,6 +323,9 @@ class SIOHandler {
 		self::$mInternalObjects[] = $internalObject;
 	}
 
+	/**
+	 * Handle the #set_internal_recurring_event parser function.
+	 */
 	public static function doSetInternalRecurringEvent( &$parser ) {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
@@ -320,6 +352,19 @@ class SIOHandler {
 		}
 	}
 
+	/**
+	 * Called when a page is deleted.
+	 */
+	public static function deleteData( $sqlStore, $subject ) {
+		SIOSQLStore::deleteDataForPage( $subject );
+		return true;
+	}
+
+	/**
+	 * Called when a page's semantic data is updated - either it's been
+	 * modified, or one of its templates has been modified, or an SMW
+	 * "refresh data" action has been called.
+	 */
 	public static function updateData( $sqlStore, $data ) {
 		$sioSQLStore = new SIOSQLStore();
 		// Find all "pages" in the SMW IDs table that are internal
@@ -328,9 +373,7 @@ class SIOHandler {
 		// Then save the current contents of the $mInternalObjects
 		// array.
 		$subject = $data->getSubject();
-		$pageName = $subject->getDBKey();
-		$namespace = $subject->getNamespace();
-		$idsForDeletion = SIOSQLStore::getIDsForDeletion( $pageName, $namespace );
+		SIOSQLStore::deleteDataForPage( $subject );
 
 		$allRels2Inserts = array();
 		$allAtts2Inserts = array();
@@ -347,17 +390,6 @@ class SIOHandler {
 		// now save everything to the database, in a single transaction
 		$db = wfGetDB( DB_MASTER );
 		$db->begin( 'SIO::updatePageData' );
-		if ( count( $idsForDeletion ) > 0 ) {
-			$idsString = '(' . implode ( ', ', $idsForDeletion ) . ')';
-			$db->delete( 'smw_rels2', array( "(s_id IN $idsString) OR (o_id IN $idsString)" ), 'SIO::deleteRels2Data' );
-			$db->delete( 'smw_atts2', array( "s_id IN $idsString" ), 'SIO::deleteAtts2Data' );
-			$db->delete( 'smw_text2', array( "s_id IN $idsString" ), 'SIO::deleteText2Data' );
-			// handle the sm_coords table only if the Semantic
-			// Maps extension is installed and uses sm_coords
-			if ( defined( 'SM_VERSION' ) && version_compare( SM_VERSION, '0.6' ) >= 0 ) {
-				$db->delete( 'sm_coords', array( "s_id IN $idsString" ), 'SIO::deleteCoordsData' );
-			}
-		}
 
 		if ( count( $allRels2Inserts ) > 0 ) {
 			$db->insert( 'smw_rels2', $allRels2Inserts, 'SIO::updateRels2Data' );
