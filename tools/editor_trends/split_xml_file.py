@@ -78,8 +78,8 @@ def load_namespace(language):
 def build_namespaces_locale(namespaces):
     ns = []
     for namespace in namespaces:
-        value = namespaces[namespace].get(u'canonical', None)
-        if value != None and not value.endswith('talk'):
+        value = namespaces[namespace].get(u'*', None)
+        if value != None and value != '' and not value.endswith('talk'):
             ns.append(value)
     return ns
 
@@ -163,8 +163,8 @@ def split_xml(language):
                 elem = parse_comments(elem, remove_numeric_character_references)
 
                 if is_article_main_namespace(elem, ns):
-                    fh, counter = write_xml_file(elem, fh, counter, language)
-
+                    #fh, counter = write_xml_file(elem, fh, counter, language)
+                    pass
                 root.clear()  # when done parsing a section clear the tree to safe memory
                 
                 #elem = parse_comments(elem, convert_html_entities)
