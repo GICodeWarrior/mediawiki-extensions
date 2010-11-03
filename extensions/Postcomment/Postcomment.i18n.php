@@ -955,6 +955,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'postcomment_discussionprotected' => 'Pogovorna stran je bila zaščitena pred nadaljnimi objavami.',
 	'postcomment_notloggedin' => 'Niste prijavljeni.',
 	'postcomment_youareloggedinas' => 'Prijavljeni ste kot $1',
 	'postcomment_addcommentdiscussionpage' => 'Dodajte svojo pripombo na to pogovorno stran',
@@ -964,6 +965,7 @@ $messages['sl'] = array(
 	'postcomment_said' => 'pravi',
 	'postcomment_invalidrequest' => 'Neveljavna zahteva.',
 	'postcomment_replyto' => 'Odgovori $1',
+	'postcomment_nopostingtoadd' => 'Nobene objave ni za dodati.',
 );
 
 /** Lower Silesian (Schläsch)

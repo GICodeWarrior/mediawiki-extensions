@@ -94,6 +94,13 @@ $messages['id'] = array(
 	'slimboxthumbs-desc' => 'Menampilkan gambar ukuran penuh dengan [http://www.digitalia.be/software/slimbox2 Slimbox 2] ketika mengklik gambar versi kecil.',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'slimboxthumbs-desc' => 'Visualizza le immagini intere con [http://www.digitalia.be/software/slimbox2 Slimbox 2] quando si clicca sulle miniature',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

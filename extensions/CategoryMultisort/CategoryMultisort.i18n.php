@@ -548,6 +548,7 @@ $messages['scn'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'categorymultisort-desc' => 'Omogoča ogled kategorij z različnimi ključi razvrščanja',
 	'categorymultisort-defaultsortkey-name' => 'Privzeto',
 	'categorymultisort-sortkey' => 'Ključ razvrščanja:',
 	'categorymultisort-go' => 'Pojdi',

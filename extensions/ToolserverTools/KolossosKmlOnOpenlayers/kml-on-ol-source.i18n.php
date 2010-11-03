@@ -77,6 +77,7 @@ $messages['de'] = array(
 );
 
 /** French (Français)
+ * @author Gribeco
  * @author Zetud
  */
 $messages['fr'] = array(
@@ -84,6 +85,8 @@ $messages['fr'] = array(
 	'ts-kml-on-ol-languages' => 'Langues',
 	'ts-kml-on-ol-thumbnails' => 'Miniatures',
 	'ts-kml-on-ol-help' => 'Aide',
+	'ts-kml-on-ol-all' => 'Tout',
+	'ts-kml-on-ol-map-by' => 'Carte créée par',
 );
 
 /** Galician (Galego)
@@ -122,6 +125,13 @@ $messages['ia'] = array(
 	'ts-kml-on-ol-map-by' => 'Carta per',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'ts-kml-on-ol-thumbnails' => 'Miniature',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
@@ -155,6 +165,18 @@ $messages['mk'] = array(
 	'ts-kml-on-ol-help' => 'Помош',
 	'ts-kml-on-ol-all' => 'Сите',
 	'ts-kml-on-ol-map-by' => 'Карта:',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'ts-kml-on-ol-options' => 'Instellen',
+	'ts-kml-on-ol-languages' => 'Spraken',
+	'ts-kml-on-ol-thumbnails' => 'Duumnagelbiller',
+	'ts-kml-on-ol-help' => 'Hülp',
+	'ts-kml-on-ol-all' => 'All',
+	'ts-kml-on-ol-map-by' => 'Koort von',
 );
 
 /** Dutch (Nederlands)
@@ -203,6 +225,18 @@ $messages['pt'] = array(
 	'ts-kml-on-ol-help' => 'Ajuda',
 	'ts-kml-on-ol-all' => 'Todas',
 	'ts-kml-on-ol-map-by' => 'Mapa de',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'ts-kml-on-ol-options' => 'Opções',
+	'ts-kml-on-ol-languages' => 'Línguas',
+	'ts-kml-on-ol-thumbnails' => 'Miniaturas',
+	'ts-kml-on-ol-help' => 'Ajuda',
+	'ts-kml-on-ol-all' => 'Todas',
+	'ts-kml-on-ol-map-by' => 'Mapa criado por',
 );
 
 /** Telugu (తెలుగు)

@@ -158,6 +158,14 @@ $messages['id'] = array(
 	'rped-wikipedia-url' => 'http://id.wikipedia.org/wiki/$1',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'rped-desc' => 'Aggiunge un collegamento a Wikipedia se la pagina non esiste sulla wiki locale ma esiste su Wikipedia',
+	'rped-wikipedia-url' => 'http://it.wikipedia.org/wiki/$1',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author 青子守歌

@@ -56,10 +56,12 @@ $messages['ar'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Comp1089
  * @author Haqmar
  */
 $messages['ba'] = array(
 	'externalpages' => 'Тышҡы биттәр',
+	'externalpages-desc' => 'Викимедиа Фондының башҡа сайттарҙан биттәрҙе сыға һәм күрһәтә',
 	'externalpages-bad-page' => 'Яңылыш бит күрһәтелгән',
 	'externalpages-no-page' => 'Бер бит тә күрһәтелмәгән',
 );
