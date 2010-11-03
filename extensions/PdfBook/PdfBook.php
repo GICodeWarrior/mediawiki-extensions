@@ -119,7 +119,8 @@ class PdfBook {
 			$book = $title->getText();
 			$html = '';
 			$wgArticlePath = $wgServer.$wgArticlePath;
-			$w$wgPdfBookTab = false; gScriptPath  = $wgServer.$wgScriptPath;
+			$wgPdfBookTab  = false;
+			$wgScriptPath  = $wgServer.$wgScriptPath;
 			$wgUploadPath  = $wgServer.$wgUploadPath;
 			$wgScript      = $wgServer.$wgScript;
 			foreach( $articles as $title ) {
