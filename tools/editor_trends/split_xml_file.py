@@ -36,7 +36,6 @@ except ImportError:
     pass
 
 
-
 RE_NUMERIC_CHARACTER = re.compile('&#(\d+);')
 
 
@@ -49,7 +48,7 @@ def lenient_deccharref(m):
         return unichr(int(m.group(1)))
     except ValueError:
         '''
-        There are a few articles that raise a Value Error here, the reason is 
+        There are a few articles that raise a Value Error here, the reason is
         that I am using a narrow Python build (UCS2) instead of a wide build
         (UCS4). The quick fix is to return an empty string...
         Real solution is to rebuild Python with UCS4 support.....
@@ -58,13 +57,14 @@ def lenient_deccharref(m):
 
 
 def remove_namespace(element, namespace):
-    '''Remove namespace from the document.'''
+    '''Remove namespace from the XML document.'''
     ns = u'{%s}' % namespace
     nsl = len(ns)
     for elem in element.getiterator():
         if elem.tag.startswith(ns):
             elem.tag = elem.tag[nsl:]
     return element
+
 
 def load_namespace(language):
     file = '%s_ns.json' % language
@@ -76,6 +76,9 @@ def load_namespace(language):
 
 
 def build_namespaces_locale(namespaces):
+    '''
+    Construct a list of all the non-main namespaces
+    '''
     ns = []
     for namespace in namespaces:
         value = namespaces[namespace].get(u'*', None)
@@ -89,21 +92,20 @@ def parse_comments(xml, function):
     for revision in revisions:
         comment = revision.find('comment')
         timestamp = revision.find('timestamp').text
-#            text1 = remove_ascii_control_characters(text)
-#            text2 = remove_numeric_character_references(text)
-#            text3 = convert_html_entities(text)
         if comment != None and comment.text != None:
             comment.text = function(comment.text)
     return xml
 
 
 def is_article_main_namespace(elem, namespace):
+    '''
+    checks whether the article belongs to the main namespace
+    '''
     title = elem.find('title').text
     for ns in namespace:
         if title.startswith(ns):
             return False
     return True
-
 
 
 def write_xml_file(element, fh, counter, language):
@@ -120,7 +122,7 @@ def write_xml_file(element, fh, counter, language):
 
 def create_xml_file_handle(fh, counter, size, language):
     '''Create file handle if none is supplied or if file size > max file size.'''
-    path = os.path.join(settings.XML_FILE_LOCATION , language, '%s.xml' % counter)
+    path = os.path.join(settings.XML_FILE_LOCATION, language, '%s.xml' % counter)
     if not fh:
         counter = 0
         fh = codecs.open(path, 'w', encoding=settings.ENCODING)
@@ -147,14 +149,13 @@ def split_xml(language):
     ns = load_namespace(language)
     ns = build_namespaces_locale(ns)
 
-
     fh = None
     counter = None
     tag = '{%s}page' % settings.NAME_SPACE
-    
+
     context = cElementTree.iterparse(settings.XML_FILE, events=('start', 'end'))
     context = iter(context)
-    event, root = context.next() # get the root element of the XML doc
+    event, root = context.next()  #get the root element of the XML doc
 
     for event, elem in context:
         if event == 'end':
@@ -163,10 +164,8 @@ def split_xml(language):
                 elem = parse_comments(elem, remove_numeric_character_references)
 
                 if is_article_main_namespace(elem, ns):
-                    #fh, counter = write_xml_file(elem, fh, counter, language)
-                    pass
+                    fh, counter = write_xml_file(elem, fh, counter, language)
                 root.clear()  # when done parsing a section clear the tree to safe memory
-                
                 #elem = parse_comments(elem, convert_html_entities)
                 #elem = parse_comments(elem, remove_ascii_control_characters)
                 #print cElementTree.tostring(elem)
