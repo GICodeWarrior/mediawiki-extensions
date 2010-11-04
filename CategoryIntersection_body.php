@@ -9,7 +9,6 @@ class CategoryIntersection extends SpecialPage {
 	# Constructor
 	function __construct() {
 		parent::__construct( "CategoryIntersection" );
-		wfLoadExtensionMessages( 'CategoryIntersection' );
 
 		# Limits
 		$this->max_categories = 5;
