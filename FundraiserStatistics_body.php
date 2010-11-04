@@ -78,7 +78,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		
 		// Chart maximums
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
-			foreach ( $charts as $name => $chart ) {
+			foreach ( $charts as $name ) {
 				$chartMax = $this->query( $charts[$name]['query'], $fundraiser['start'], $fundraiser['end'] );
 				if ( $chartMax > $charts[$name]['max'] ) {
 					$charts[$name]['max'] = $chartMax;
@@ -161,7 +161,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		// Tabs
 		$first = true;
 		$htmlCharts = Xml::openElement( 'div', array( 'class' => 'fundraiserstats-chart-tabs' ) );
-		foreach ( $charts as $chart => $columns ) {
+		foreach ( $charts as $chart ) {
 			$htmlCharts .= Xml::tags(
 				'div',
 				array(
