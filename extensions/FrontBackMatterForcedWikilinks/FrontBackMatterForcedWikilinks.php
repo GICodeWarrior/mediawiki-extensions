@@ -40,7 +40,6 @@ $wgHooks['ArticleSaveComplete'][] = 'FrontBackForcedArticleSaveCompleteHook';
 
 function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state ) {
 	global $wgLang;
-	wfLoadExtensionMessages('FrontBackMatterForcedWikilinks');
 	$frontMsg=wfMsgForContent( 'frontbackforced-front' );
 	$backMsg=wfMsgForContent( 'frontbackforced-back' );
 	$forcedMsg=wfMsgForContent( 'frontbackforced-forced' );
@@ -121,7 +120,6 @@ function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state )
 function FrontBackForcedArticleSaveCompleteHook (&$article, &$user, $text, $summary,
 		$minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ){
 	global $wgLang;
-	wfLoadExtensionMessages('FrontBackMatterForcedWikilinks');
 	$frontMsg=wfMsgForContent( 'frontbackforced-front' );
 	$backMsg=wfMsgForContent( 'frontbackforced-back' );
 	$forcedMsg=wfMsgForContent( 'frontbackforced-forced' );

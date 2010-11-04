@@ -77,8 +77,6 @@ $wgExtensionMessagesFiles['ArticleToCategory2'] = $dir . 'ArticleToCategory2.i18
  ******************************/
 function wfAddCategory( &$text ) {
 	global $wgContLang;
- 
-	wfLoadExtensionMessages( 'ArticleToCategory2' );
 	if ( array_key_exists( 'category', $_GET ) && array_key_exists( 'new', $_GET )) {
 		$cname =  $_GET['category'];
 		if ( $_GET['new'] == 1 ) {
@@ -134,12 +132,10 @@ function wfCategoryChange( $catpage ) {
 	global $wgarticletocategory2ConfigBlacklist, $wgarticletocategory2ConfigAddcat,
 		$wgOut, $wgScript, $wgContLang;
 
-	wfLoadExtensionMessages( 'ArticleToCategory2' );
-
 	$boxtext  = wfMsg( 'articletocategory2-create-article-under-category-text' );
-        $btext =    wfMsg( 'articletocategory2-create-article-under-category-button' );
-        $boxtext2 = wfMsg( 'articletocategory2-create-category-under-category-text' );
-        $btext2 =   wfMsg( 'articletocategory2-create-category-under-category-button' );
+    $btext =    wfMsg( 'articletocategory2-create-article-under-category-button' );
+    $boxtext2 = wfMsg( 'articletocategory2-create-category-under-category-text' );
+    $btext2 =   wfMsg( 'articletocategory2-create-category-under-category-button' );
  
 	$action = htmlspecialchars( $wgScript );
 	if ( !$catpage->mTitle->quickUserCan( 'edit' )

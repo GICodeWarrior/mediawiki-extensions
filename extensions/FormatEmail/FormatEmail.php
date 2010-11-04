@@ -31,7 +31,6 @@ $wgHooks['EmailUser'][] = 'wfFormatEmail';
 
 function wfFormatEmail( &$to, &$from, &$subject, &$text ) {
 	global $wgUser;
-	wfLoadExtensionMessages( 'EmailUser' );
 	$ul = $wgUser->getUserPage();
 	$text = wfMsg( 'email_header' ) . $text .
 			wfMsg( 'email_footer', $wgUser->getName(), $ul->getFullURL() );

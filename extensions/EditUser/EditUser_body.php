@@ -21,8 +21,6 @@ class EditUser extends SpecialPage {
 			return false;
 		}
 
-		wfLoadExtensionMessages( 'EditUser' );
-
 		$this->setHeaders();
 		$this->target = ( isset( $par ) ) ? $par : $wgRequest->getText( 'username', '' );
 		if( $this->target === '' ) {

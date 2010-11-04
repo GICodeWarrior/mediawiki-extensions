@@ -225,7 +225,6 @@ class CategoryBrowser {
 	 * @param $args[5] : limit (optional)
 	 */
 	static function getRootOffsetHtml() {
-		wfLoadExtensionMessages( 'CategoryBrowser' );
 		$args = func_get_args();
 		$limit = ( count( $args ) > 5 ) ? abs( intval( $args[5] ) ) : CB_PAGING_ROWS;
 		$offset = ( count( $args ) > 4 ) ? abs( intval( $args[4] ) ) : 0;
@@ -301,7 +300,7 @@ class CategoryBrowser {
 				'default_limit' => CB_Setup::$parentsLimit
 			)
 		);
-		wfLoadExtensionMessages( 'CategoryBrowser' );
+
 		$args = func_get_args();
 		if ( count( $args ) < 2 ) {
 			return 'Too few parameters in ' . __METHOD__;
@@ -356,7 +355,6 @@ class CategoryBrowser {
 	 * @param $args[0] currently selected expression in encoded infix format
 	 */
 	static function generateSelectedOption() {
-		wfLoadExtensionMessages( 'CategoryBrowser' );
 		CB_Setup::initUser();
 		$args = func_get_args();
 		if ( count( $args ) < 1 ) {

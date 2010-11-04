@@ -70,7 +70,6 @@ abstract class EmbedVideo {
 		if ( !EmbedVideo::$initialized ) {
 			EmbedVideo::VerifyWidthMinAndMax();
 			# Add system messages
-			wfLoadExtensionMessages( 'embedvideo' );
 			$parser->disableCache();
 			EmbedVideo::$initialized = true;
 		}

@@ -20,7 +20,6 @@ class SpecialAddComment extends UnlistedSpecialPage {
 			return;
 		}
 		$this->setHeaders();
-		wfLoadExtensionMessages( 'Commentbox' );
 
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();

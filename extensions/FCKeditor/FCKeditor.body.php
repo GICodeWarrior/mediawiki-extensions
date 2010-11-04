@@ -233,7 +233,6 @@ class FCKeditor_MediaWiki {
 	 */
 	public static function onGetPreferences( $user, &$preferences ){
 		global $wgDefaultUserOptions;
-		wfLoadExtensionMessages( 'FCKeditor' );
 
 		$preferences['riched_disable'] = array(
 			'type' => 'toggle',
@@ -392,7 +391,6 @@ HEREDOC;
 			$showSource = true;
 		}
 
-		wfLoadExtensionMessages( 'FCKeditor' );
 		$script .= '
 var showFCKEditor = ' . $this->showFCKEditor . ';
 var popup = false; // pointer to popup document
