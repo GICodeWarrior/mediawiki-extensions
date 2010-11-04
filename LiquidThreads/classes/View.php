@@ -936,7 +936,6 @@ class LqtView {
 		$error = $ot->moveTo( $nt, true, "Changed thread subject: $reason" );
 		if ( $error !== true ) {
 			throw new MWException( "Got error $error trying to move pages." );
-			return false;
 		}
 
 		# Move the talk page if relevant, if it exists, and if we've been told to
