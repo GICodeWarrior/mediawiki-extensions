@@ -4,10 +4,7 @@ class SpecialCodeBrowse extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'CodeBrowse', 'codebrowse' );
 	}
-	function execute( $par ) {
-		wfLoadExtensionMessages( 'CodeReview' );
-		wfLoadExtensionMessages( 'CodeBrowse' );
-		
+	function execute( $par ) {	
 		$this->setHeaders();
 		
 		global $wgRequest;
