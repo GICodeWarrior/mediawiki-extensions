@@ -619,7 +619,11 @@ $messages['vi'] = array(
 	'massblank' => 'Tẩy trống hàng loạt',
 	'massblank-desc' => 'Cho phép quản lý viên [[Special:MassBlank|tẩy trống trang hàng loạt]]',
 	'massblank-nopages' => 'Không có trang mới do [[Special:Contributions/$1|$1]] tạo ra trong thay đổi gần đây.',
-	'massblank-submit-user' => 'Tẩy trống',
+	'massblank-list' => 'Các trang sau do [[Special:Contributions/$1|$1]] tạo ra gần đây; hãy ghi lý do và nhấn nút để tẩy trống tất cả những trang này.',
+	'massblank-defaultreason' => 'Tẩy trống hàng loại các trang do $1 tạo ra',
+	'massblank-tools' => 'Công cụ này cho phép tẩy trống hàng loạt các trang do một người dùng hoặc IP nào đó tạo ra gần đây.
+Hãy nhập tên người dùng hoặc địa chỉ IP để lấy danh sách các trang sẽ tẩy trống.',
+	'massblank-submit-user' => 'Tìm kiếm',
 	'massblank-submit-blank' => 'Tẩy trống lựa chọn',
 	'massblank-blankcomment' => 'Lý do:',
 	'right-massblank' => 'Tẩy trống trang hàng loạt',
