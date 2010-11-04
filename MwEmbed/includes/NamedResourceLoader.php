@@ -57,7 +57,6 @@ class NamedResourceLoader {
 		if ( !is_file( $mwEmbedAbsolutePath . '/loader.js' ) ) {
 			// throw error no mwEmbed found
 			throw new MWException( "mwEmbed loader.js missing check \$wgMwEmbedDirectory path\n" );
-			return false;
 		}
 
 		// Process the mwEmbed loader file:
@@ -126,7 +125,6 @@ class NamedResourceLoader {
 		// Check for the loader.js
 		if( !is_file(  $modulePath . '/loader.js' ) ){
 			throw new MWException( "Javascript Module $moduleName missing loader.js file\n" );
-			return false;
 		}
 
 		$fileContent = file_get_contents( $modulePath . '/loader.js');
