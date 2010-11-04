@@ -51,9 +51,6 @@ function wfChemFormExtension() {
 }
 
 function RenderChemForm( $input, $argv ) {
-	# add messages
-	wfLoadExtensionMessages( 'ChemFunctions' );
-
 	$link = false;
 	$wikilink = false;
 	$showthis = $input;
