@@ -302,7 +302,7 @@ class DeleteQueueViewReview extends DeleteQueueView {
 			default:
 				// Invalid action
 				$dbw->commit();
-				return wfMsg( 'deletequeue-review-badaction' ); ;
+				return wfMsg( 'deletequeue-review-badaction' );
 		}
 
 		if ( $processed ) {
