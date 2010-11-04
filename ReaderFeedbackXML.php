@@ -47,7 +47,7 @@ class ReaderFeedbackXML {
 	public static function getTagMenu( $selected = '' ) {
 		$s  = "<label for='wpRatingTag'>" . wfMsgHtml('readerfeedback-tagfilter') . "</label>&#160;";
 		$s .= Xml::openElement( 'select', array('name' => 'ratingtag', 'id' => 'wpRatingTag') );
-		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
+		foreach( ReaderFeedback::getFeedbackTags() as $tag ) {
 			$s .= Xml::option( wfMsg( "readerfeedback-$tag" ), $tag, $selected===$tag );
 		}
 		$s .= Xml::closeElement('select')."\n";
