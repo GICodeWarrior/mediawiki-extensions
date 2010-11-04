@@ -955,6 +955,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'postcomment-desc' => 'Omogoča uporabnikom objavljanje pripomb neposredno na pogovorne strani.',
 	'postcomment_discussionprotected' => 'Pogovorna stran je bila zaščitena pred nadaljnimi objavami.',
 	'postcomment_notloggedin' => 'Niste prijavljeni.',
 	'postcomment_youareloggedinas' => 'Prijavljeni ste kot $1',
