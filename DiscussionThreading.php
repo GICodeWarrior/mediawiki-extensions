@@ -14,7 +14,6 @@ if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
 # Internationalisation file
 $wgExtensionMessagesFiles['DiscussionThreading'] =  dirname( __FILE__ ) . '/DiscussionThreading.i18n.php';
-$wgExtensionFunctions[] = 'efDiscussionThreadSetup';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'DiscussionThreading',
@@ -43,17 +42,6 @@ $wgHooks['DoEditSectionLink'][] =  'efDoDiscussionLink';
 #
 if (version_compare( $wgVersion , '1.14.0' ) < 0 ) {
 	$wgHooks['EditSectionLink'][] =  'efDiscussionLink';
-}
-/**
- * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
-*/
-function efDiscussionThreadSetup() {
-	global $wgVersion;
-	if (version_compare( $wgVersion , '1.11.0' ) < 0 ) {
-		global $wgMessageCache, $messages;
-		foreach( $messages as $lang => $LangMsg )
-			$wgMessageCache->addMessages( $LangMsg, $lang );
-	} else wfLoadExtensionMessages( 'DiscussionThreading' );
 }
 
 /**
