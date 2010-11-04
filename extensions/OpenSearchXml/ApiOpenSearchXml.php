@@ -159,8 +159,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 				(?:\|$pipeContents)*
 			\]\]
 			#six", array( $this, '_stripLink' ), $text );
-		
-		$protocols = wfUrlProtocols();
+
 		$text = preg_replace( '#\\[(?:$protocols).*? (.*?)\\]#s', '$1', $text ); // URL links
 		$text = preg_replace( '#</?[a-z0-9]+.*?>#s', '', $text ); // HTML-style tags
 		$text = preg_replace( '#\\{\\|.*?\\|\\}#s', '', $text ); // tables

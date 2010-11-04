@@ -117,7 +117,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$data = false;
 		$html = '';
 		// Do each graphs for said time period
-		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
+		foreach( ReaderFeedback::getFeedbackTags() as $tag ) {
 			// Check if cached version is available.
 			// If not, then generate a new one.
 			$filePath = $this->getFilePath( $tag );

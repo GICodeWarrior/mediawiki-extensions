@@ -100,7 +100,6 @@ class SpecialAPC extends SpecialPage {
 			}
 		}
 
-		$dir = dirname( __FILE__ );
 		$wgOut->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css',
 			'href' => "$wgScriptPath/extensions/APC/apc.css?$wgStyleVersion", )
 		);
@@ -181,7 +180,7 @@ class SpecialAPC extends SpecialPage {
 	}
 
 	protected function doObHostStats() {
-		global $wgOut, $wgLang;
+		global $wgOut;
 
 		$mem = apc_sma_info();
 

@@ -133,7 +133,7 @@ class ReaderFeedbackHooks {
 				'onchange' => "updateFeedbackForm()" );
 			$form .= '&#160;' . Xml::openElement( 'select', $attribs );
 			$levels = array_reverse($levels,true);
-			foreach( $levels as $i => $name ) {
+			foreach( $levels as $i ) {
 				$optionClass = array( 'class' => "rfb-rating-option-$i" );
 				$form .= Xml::option( wfMsg("readerfeedback-level-$i"), $i, ($i == $selected), $optionClass ) ."\n";
 			}

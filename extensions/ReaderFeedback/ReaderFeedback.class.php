@@ -204,7 +204,7 @@ class ReaderFeedback {
 				array( 'USE INDEX' => array('revision' => 'page_timestamp') )
 			);
 			$votes = array();
-			foreach( ReaderFeedback::getFeedbackTags() as $tag => $w ) {
+			foreach( ReaderFeedback::getFeedbackTags() as $tag ) {
 				$votes[$tag] = array( 0 => 0, 1 => 0, 2 => 0, 3 => 0, 4 => 0 );
 			}
 			// Read votes and tally the numbers
@@ -226,7 +226,7 @@ class ReaderFeedback {
 		}
 		// Output multi-column list
 		$html = "<table class='rfb-reader_feedback_table' cellspacing='0'><tr>";
-		foreach( ReaderFeedback::getFeedbackTags() as $tag => $w ) {
+		foreach( ReaderFeedback::getFeedbackTags() as $tag ) {
 			// Get tag average...
 			$dist = isset($votes[$tag]) ? $votes[$tag] : array();
 			$count = array_sum($dist);
