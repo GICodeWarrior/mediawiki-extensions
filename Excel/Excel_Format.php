@@ -1008,8 +1008,8 @@ class Spreadsheet_Excel_Writer_Format extends PEAR
                 return $this->raiseError("Invalid value for angle.".
                                   " Possible values are: 0, 90, 270 and -1 ".
                                   "for stacking top-to-bottom.");
-                $this->_rotation = 0;
-                break;
+                //$this->_rotation = 0;
+                //break;
         }
     }
 
