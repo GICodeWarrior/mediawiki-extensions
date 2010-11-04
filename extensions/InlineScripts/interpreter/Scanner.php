@@ -144,7 +144,7 @@ class ISScanner implements Iterator {
 					$this->mPos++;
 				}
 			}
-			throw new ISUserVisibleException( 'unclosedstring', $this->mPos, array() );;
+			throw new ISUserVisibleException( 'unclosedstring', $this->mPos, array() );
 		}
 
 		// Find operators

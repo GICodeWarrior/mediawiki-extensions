@@ -173,11 +173,6 @@ class FBConnect {
 			// If PHP's version doesn't support the Reflection API, then exit
 			die( 'PHP version (' . phpversion() . ') must be great enough to support the Reflection API' );
 			// Or list the extensions here manually...
-			$hooks = array(
-				'AuthPluginSetup', 'UserLoadFromSession',
-				'RenderPreferencesForm', 'PersonalUrls',
-				'ParserAfterTidy', 'BeforePageDisplay', /*...*/
-			);
 		}
 		return $hooks;
 	}

@@ -256,7 +256,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$vars,
 			$conds,
 			__METHOD__,
-			$options );	;
+			$options );
 	}
 	function remove_by_stream_id( $stream_id ) {
 		$dbw = wfGetDB( DB_WRITE );

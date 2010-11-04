@@ -18,8 +18,6 @@ define('RTE_POPUP', 4);
 class FCKeditor_MediaWiki {
 	public $showFCKEditor;
 	private $count = array();
-	private $wgFCKBypassText = '';
-	private $debug = 0;
 	private $excludedNamespaces;
 	private $oldTextBox1;
 	static $nsToggles = array(

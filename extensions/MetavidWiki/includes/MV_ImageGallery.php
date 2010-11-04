@@ -12,7 +12,6 @@
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  class MV_ImageGallery extends ImageGallery {
  	private $mAttribs = array();
- 	private $contextTitle = false;
 
 	private $mPerRow = 4; // How many images wide should the gallery be?
 	private $mWidths = 160, $mHeights = 120; // How wide/tall each thumbnail should be
