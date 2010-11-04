@@ -162,9 +162,6 @@ class SpecialTradeTrack extends SpecialPage {
         array( 'src' => 'js/jquery.NobleCount.js', 'version' => 1 ),
     );
 
-    private static $messages = array();
-    private static $scripts = array();
-
     /**
      * This is our errors array.
      */
@@ -172,7 +169,6 @@ class SpecialTradeTrack extends SpecialPage {
 
     function __construct() {
         parent::__construct( 'TradeTrack' );
-        wfLoadExtensionMessages( 'TradeTrack' );
     }
 
     /**
