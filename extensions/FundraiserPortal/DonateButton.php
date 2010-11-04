@@ -16,7 +16,7 @@ class DonateButton extends UnlistedSpecialPage {
 
 	function execute () {
 		global $wgOut;
-		$wgOUt->disable();
+		$wgOut->disable();
 		$this->sendHeaders();
 		$js = $this->getJsOutput();
 	}
