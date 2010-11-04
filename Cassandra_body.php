@@ -76,8 +76,6 @@ class ExternalStoreCassandra {
 		} catch ( TException $e ) {
 			throw new MWCassandraException( $e );
 		}
-
-		return false;
 	}
 
 	private function connect( $cluster ) {
