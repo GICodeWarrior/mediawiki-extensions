@@ -14,7 +14,6 @@ if ( ! defined( 'MEDIAWIKI' ) ) {
 	die( 'This is only valid as a MediaWiki extension' );
 }
 
-$wgExtensionFunctions[] = 'efCommentSpammer';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CommentSpammer',
@@ -25,10 +24,6 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['CommentSpammer'] = $dir . 'CommentSpammer.i18n.php';
-
-function efCommentSpammer() {
-	wfLoadExtensionMessages( 'CommentSpammer' );
-}
 
 /**
  * Add the hook on which we trigger.
