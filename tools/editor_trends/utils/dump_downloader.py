@@ -97,9 +97,9 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
                 pbar.update(pbar.currval + chunk)
 
     except urllib2.URLError, error:
-        print 'Reason: %s' % error.reason
+        print 'Reason: %s' % error
     except urllib2.HTTPError, error:
-        print 'Error: %s' % error.code
+        print 'Error: %s' % error
     finally:
         fh.close()
 

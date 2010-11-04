@@ -101,6 +101,11 @@ ENCODING = 'utf-8'
 # Name space, do not change as this works for Mediawiki wikis
 NAME_SPACE = 'http://www.mediawiki.org/xml/export-0.4/'
 
+WINDOWS_REGISTER = {'7zip': 'Software\\7-Zip',
+                    }
+
+COMPRESSION_EXTENSIONS = ['gz', 'bz2', '7z']
+
 
 WIKIMEDIA_PROJECTS = {'commons': 'commonswiki',
                       'wikibooks': 'wikibooks',

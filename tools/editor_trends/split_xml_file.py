@@ -82,7 +82,7 @@ def build_namespaces_locale(namespaces):
     ns = []
     for namespace in namespaces:
         value = namespaces[namespace].get(u'*', None)
-        if value != None and value != '' and not value.endswith('talk'):
+        if value != None and value != '':
             ns.append(value)
     return ns
 
@@ -122,9 +122,10 @@ def write_xml_file(element, fh, counter, language):
 
 def create_xml_file_handle(fh, counter, size, language):
     '''Create file handle if none is supplied or if file size > max file size.'''
+    if not counter:
+        counter = 0
     path = os.path.join(settings.XML_FILE_LOCATION, language, '%s.xml' % counter)
     if not fh:
-        counter = 0
         fh = codecs.open(path, 'w', encoding=settings.ENCODING)
         return fh, counter
     elif (fh.tell() + size) > settings.MAX_XML_FILE_SIZE:
@@ -137,39 +138,49 @@ def create_xml_file_handle(fh, counter, size, language):
         return fh, counter
 
 
-def split_xml(language):
+def split_xml(location, filename, project, language_code):
     '''Reads xml file and splits it in N chunks'''
-    location = os.path.join(settings.XML_FILE_LOCATION, language)
+    #location = os.path.join(settings.XML_FILE_LOCATION, language)
     result = utils.check_file_exists(location, '')
     if result == False:
         result = utils.create_directory(location)
     if not result:
         return
 
-    ns = load_namespace(language)
+    ns = load_namespace(language_code)
     ns = build_namespaces_locale(ns)
 
     fh = None
     counter = None
+    source = os.path.join(location, filename)
     tag = '{%s}page' % settings.NAME_SPACE
 
-    context = cElementTree.iterparse(settings.XML_FILE, events=('start', 'end'))
+    context = cElementTree.iterparse(source, events=('start', 'end'))
     context = iter(context)
     event, root = context.next()  #get the root element of the XML doc
 
-    for event, elem in context:
-        if event == 'end':
-            if elem.tag == tag:
-                elem = remove_namespace(elem, settings.NAME_SPACE)
-                elem = parse_comments(elem, remove_numeric_character_references)
-
-                if is_article_main_namespace(elem, ns):
-                    fh, counter = write_xml_file(elem, fh, counter, language)
-                root.clear()  # when done parsing a section clear the tree to safe memory
-                #elem = parse_comments(elem, convert_html_entities)
-                #elem = parse_comments(elem, remove_ascii_control_characters)
-                #print cElementTree.tostring(elem)
+    try:
+        for event, elem in context:
+            if event == 'end':
+                if elem.tag == tag:
+                    elem = remove_namespace(elem, settings.NAME_SPACE)
+                    if is_article_main_namespace(elem, ns):
+                        elem = parse_comments(elem, remove_numeric_character_references)
+                        fh, counter = write_xml_file(elem, fh, counter, language_code)
+                    root.clear()  # when done parsing a section clear the tree to safe memory
+                    #elem = parse_comments(elem, convert_html_entities)
+                    #elem = parse_comments(elem, remove_ascii_control_characters)
+                    #print cElementTree.tostring(elem)
+    except SyntaxError:
+        fh = utils.create_txt_filehandle(ERROR_MESSAGE_FILE_LOCATION, 'split_xml', 'w', settings.ENCODING)
+        fh.write(cElementTree.tostring(elem))
+        fh.close()
 
 
 if __name__ == "__main__":
-    split_xml('en')
+    kwargs = {'location': 'c:\\Source_files\\',
+              'filename': settings.XML_FILE,
+              'project':'wiki',
+              'language_code':'en'
+              }
+    split_xml(**kwargs)

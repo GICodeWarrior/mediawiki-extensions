@@ -20,109 +20,113 @@ __version__ = '0.1'
 
 '''
 This module provides a simple caching mechanism to speed-up the process of
-inserting records to MongoDB. The caching bject works as follows:
-1) Each edit from an author is added to a dictionary 
-2) Every 50000 edits, the object returns %x with the most edits, and these are 
-then stored in MongoDB. By packaging multiple edits in a single commit, 
-processing time is significantly reduced. 
+inserting records to MongoDB. The caching object works as follows:
+1) Each edit from an author is added to a dictionary
+2) Every x seconds, the object returns %x with the least number of edits,
+and these are then stored in MongoDB. By packaging multiple edits in a single
+commit, processing time is significantly reduced.
 
 This caching mechanism does not create any benefits for authors with single or
-very few edits.  
-
+very few edits.
 '''
 
 
 import sys
 import datetime
+import random
 
 import settings
 import db
+from utils import utils
 
 
 class EditorCache(object):
     def __init__(self, collection):
         self.collection = collection
         self.editors = {}
-        self.size = self.__sizeof__()
         self.cumulative_n = 0
+        self.init_time = datetime.datetime.now()
         self.time_started = datetime.datetime.now()
-        self.n = self.current_cache_size()
+        self.n = 0
         self.emptied = 1
-
+        self.number_editors = 0
+        self.treshold_editors = set()
+        self.treshold = 10
 
     def __repr__(self):
-        pass
-
+        return '%s_%s' % ('editor_cache', random.randint(0, 99999))
 
     def _store_editor(self, key, value):
         editor = self.collection.insert({'editor': key, 'edits': {}})
         self.editors[key]['id'] = str(editor)
 
-
     def current_cache_size(self):
         return sum([self.editors[k].get('obs', 0) for k in self.editors])
 
-
     def add(self, key, value):
-        self.cumulative_n += 1
-        if key not in self.editors:
-            self.editors[key] = {}
-            self.editors[key]['obs'] = 0
-            self.editors[key]['edits'] = []
-
+        if key == 'NEXT':
+            for editor in self.treshold_editors:
+                self.update(editor, self.editors[editor]['edits'])
+                self.n -= self.editors[editor]['obs']
+                self.number_editors -= 1
+                del self.editors[editor]
+            self.treshold_editors = set()
         else:
+            self.cumulative_n += 1
+            self.n += 1
+            if key not in self.editors:
+                self.editors[key] = {}
+                self.editors[key]['obs'] = 0
+                self.editors[key]['edits'] = []
+                self.number_editors += 1
+    
             id = str(self.editors[key]['obs'])
             self.editors[key]['edits'].append(value)
             self.editors[key]['obs'] += 1
 
-
-        if self.cumulative_n % 25000 == 0:
-            self.empty_all(5.0)
-
-
-    def retrieve_top_k_editors(self, percentage):
-        keys = self.editors.keys()
-        obs = []
-        for k in keys:
-            weight = float(self.editors[k].get('obs', 0)) / self.n
-            obs.append((weight, k))
-        obs.sort()
-        obs.reverse()
-        l = int((len(obs) / 100.0) * percentage)
-        if l == 0:
-            l = 1
-        obs = obs[:l]
-        obs = [o[1] for o in obs]
-        return obs
-
+            if self.editors[key]['obs'] == self.treshold:
+                self.treshold_editors.add(key)
+#            self.update(key, self.editors[key]['edits'])
+#            del self.editors[key]
+#            self.n -= 10
+#            self.number_editors -= 1
 
     def update(self, editor, values):
+        #t = datetime.datetime.now()
         self.collection.update({'editor': editor}, {'$pushAll': {'edits': values}}, upsert=True)
+        #print 'It took %s to store editor %s;and the cache contains %s editors and %s items' % (datetime.datetime.now() - t, editor, self.number_editors, self.n)
 
-
-    def empty_all(self, percentage):
-        self.n = self.current_cache_size()
-        if percentage < 100.0:
-            keys = self.retrieve_top_k_editors(percentage)
+    def quick_sort(self, obs):
+        if obs == []:
+            return []
         else:
-            keys = self.editors.keys()
-        print 'Emptying cache %s time' % self.emptied
-        self.emptied += 1
-        for key in keys:
-            if self.editors[key]['edits'] != {}:
-                self.update(key, self.editors[key]['edits'])
-                self.editors[key]['edits'] = []
-                self.editors[key]['obs'] = 0.0
+            pivot = obs[0]
+            lesser = self.quick_sort([x for x in obs[1:] if x < pivot])
+            greater = self.quick_sort([x for x in obs[1:] if x >= pivot])
+            return lesser + [pivot] + greater
+
+    def store(self):
+        utils.store_object(self, settings.BINARY_OBJECT_FILE_LOCATION, self.__repr__())
+
+    def drop_n_observations(self, n=1):
+        editors_to_remove = set()
+        for editor in self.editors:
+            if editor['obs'] <= n:
+                editors_to_remove.add(editor)
+
+        for editor in editors_to_remove:
+            del self.editors[editor]
 
 
 def debug():
     mongo = db.init_mongo_db('test')
     collection = mongo['test']
-    cache = EditorCache(collection)
+    cache = EditorCache(collection, wait=2)
     import random
     for i in xrange(100000):
         cache.add(str(random.randrange(0, 5)), {'date': 'woensaag', 'article': '3252'})
-    cache.empty_all(100)
+    cache.empty_all(-1)
+    print 'Time elapsed: %s and processed %s items.' % (datetime.datetime.now() - cache.init_time, cache.cumulative_n)
 
 
 if __name__ == '__main__':

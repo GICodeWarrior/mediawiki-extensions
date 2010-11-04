@@ -55,20 +55,25 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
 
     nr_input_processors = kwargs.pop('nr_input_processors')
     nr_output_processors = kwargs.pop('nr_output_processors')
-    
+    input_queues = {}
+    result_queues = {}
+    assert len(obj) == nr_input_processors
     if result_queue:
-        result_queue = JoinableQueue()
+        assert len(obj)== nr_output_processors
 
-    input_queue = load_input_queue(obj, poison_pill=True)
+    for i, o in enumerate(obj):
+        input_queues[i] = load_input_queue(obj[o], poison_pill=True)
+        if result_queue:
+            result_queues[i] = JoinableQueue()
 
     if settings.PROGRESS_BAR:
-        pbar = progressbar.ProgressBar(maxval=input_queue.qsize()).start()
+        size = sum([input_queues[q].qsize() for q in input_queues])
+        pbar = progressbar.ProgressBar(maxval=size).start()
         kwargs['pbar'] = pbar
     else:
         pbar = False
-
-
-    input_processes = [models.ProcessInputQueue(main, input_queue, result_queue,
+        
+    input_processes = [models.ProcessInputQueue(main, input_queues[i], result_queues[i],
                         **kwargs) for i in xrange(nr_input_processors)]
 
     for input_process in input_processes:
@@ -78,7 +83,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
 
     if result_queue:
         result_processes = [models.ProcessResultQueue(result_processor,
-                result_queue, **kwargs) for i in xrange(nr_output_processors)]
+                result_queues[i], **kwargs) for i in xrange(nr_output_processors)]
         for result_process in result_processes:
             result_process.start()
 
@@ -115,6 +120,5 @@ def load_queue(obj, poison_pill=False):
         input_queue.put(d)
 
     if poison_pill:
-        for p in xrange(settings.NUMBER_OF_PROCESSES):
-            input_queue.put(None)
+        input_queue.put(None)
     return input_queue

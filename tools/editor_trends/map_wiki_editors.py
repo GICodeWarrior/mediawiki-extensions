@@ -257,18 +257,18 @@ def load_bot_ids():
     return ids
 
 
-def run_parse_editors(dbname, language):
+def run_parse_editors(dbname, language, location):
     ids = load_bot_ids()
     kwargs = {'bots': ids,
               'dbname': dbname,
               'pbar': True,
-              'nr_input_processors': 1,
-              'nr_output_processors': 1,
+              'nr_input_processors': 2,
+              'nr_output_processors': 2,
               'language': language,
               }
     chunks = {}
-    file_location = os.path.join(settings.XML_FILE_LOCATION, language)
-    files = utils.retrieve_file_list(file_location, 'xml')
+    #file_location = os.path.join(settings.XML_FILE_LOCATION, language)
+    files = utils.retrieve_file_list(location, 'xml')
     parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
     a = 0
     for x in xrange(settings.NUMBER_OF_PROCESSES):
@@ -276,14 +276,11 @@ def run_parse_editors(dbname, language):
         chunks[x] = files[a:b]
         a = (x + 1) * parts
 
-
-    for x in xrange(settings.NUMBER_OF_PROCESSES):
-        pc.build_scaffolding(pc.load_queue, parse_editors, chunks[x], store_editors, True, **kwargs)
+    pc.build_scaffolding(pc.load_queue, parse_editors, chunks, store_editors, True, **kwargs)
 
 
 def debug_parse_editors(dbname):
     q = JoinableQueue()
-    #edits = db.init_mongo_db('editors')
     parse_editors('en\\522.xml', q, None, None, True)
     store_editors(q, [], dbname)
 

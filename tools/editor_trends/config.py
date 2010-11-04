@@ -20,9 +20,28 @@ __version__ = '0.1'
 
 import os
 import ConfigParser
+from _winreg import *
 
 import settings
 from utils import utils
+
+
+def detect_windows_program(program):
+    entry = settings.WINDOWS_REGISTER[program]
+    try:
+        key = OpenKey(HKEY_CURRENT_USER, entry, 0, KEY_READ)
+        return QueryValueEx(key, 'Path')[0]
+    except WindowsError:
+        return None
+
+
+def detect_installed_program(program):
+    platform = settings.OS
+    if platform == 'Windows':
+        path = detect_windows_program(program)
+        return path
+    else:
+        raise NotImplementedError
 
 
 def load_configuration(args):
@@ -31,18 +50,18 @@ def load_configuration(args):
         working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.' % os.getcwd())
         if working_directory == '':
             working_directory = os.getcwd()
-        
+
         xml_file_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.' % settings.XML_FILE_LOCATION)
         if xml_file_location == '':
             xml_file_location = settings.XML_FILE_LOCATION
-            
+
         create_configuration(WORKING_DIRECTORY=working_directory, XML_FILE_LOCATION=xml_file_location)
 
     config.read('wiki.cfg')
     settings.WORKING_DIRECTORY = config.get('file_locations', 'WORKING_DIRECTORY')
     settings.XML_FILE_LOCATION = config.get('file_locations', 'XML_FILE_LOCATION')
-    
-    
+
+
 def create_configuration(**kwargs):
     working_directory = kwargs.get('WORKING_DIRECTORY', settings.WORKING_DIRECTORY)
     config = ConfigParser.RawConfigParser()
@@ -56,6 +75,8 @@ def create_configuration(**kwargs):
 
 
 if __name__ == '__main__':
-    load_configuration([])
+    p =detect_windows_program('7zip')
+    print p
+    #load_configuration([])
 
 
