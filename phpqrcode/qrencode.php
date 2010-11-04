@@ -77,7 +77,6 @@
             $ret = $this->init($spec);
             if($ret < 0) {
                 throw new Exception('block alloc error');
-                return null;
             }
 
             $this->count = 0;
@@ -245,7 +244,6 @@
         {
             if(string == NULL) {
                 throw new Exception('empty string!');
-                return NULL;
             }
 
             $input = new QRinput($version, $level);
@@ -265,7 +263,6 @@
 
             if($hint != QR_MODE_8 && $hint != QR_MODE_KANJI) {
                 throw new Exception('bad hint');
-                return NULL;
             }
 
             $input = new QRinput($version, $level);

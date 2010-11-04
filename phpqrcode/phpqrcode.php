@@ -1058,7 +1058,6 @@
         
             if(!QRinput::check($mode, $size, $setData)) {
                 throw new Exception('Error m:'.$mode.',s:'.$size.',d:'.join(',',$setData));
-                return null;
             }
             
             $this->mode = $mode;
@@ -1296,7 +1295,6 @@
         {
             if ($version < 0 || $version > QRSPEC_VERSION_MAX || $level > QR_ECLEVEL_H) {
                 throw new Exception('Invalid version no');
-                return NULL;
             }
             
             $this->version = $version;
@@ -1314,7 +1312,6 @@
         {
             if($version < 0 || $version > QRSPEC_VERSION_MAX) {
                 throw new Exception('Invalid version no');
-                return -1;
             }
 
             $this->version = $version;
@@ -1333,7 +1330,6 @@
         {
             if($level > QR_ECLEVEL_H) {
                 throw new Exception('Invalid ECLEVEL');
-                return -1;
             }
 
             $this->level = $level;
@@ -1633,7 +1629,6 @@
                 $ver = QRspec::getMinimumVersion((int)(($bits + 7) / 8), $this->level);
                 if($ver < 0) {
                     throw new Exception('WRONG VERSION');
-                    return -1;
                 } else if($ver > $this->getVersion()) {
                     $this->setVersion($ver);
                 } else {
@@ -2123,7 +2118,7 @@
             if($ret < 0)
                 return -1;
 
-            return $run;
+            return $ret;
         }
 
         //----------------------------------------------------------------------
@@ -2885,7 +2880,6 @@
             $ret = $this->init($spec);
             if($ret < 0) {
                 throw new Exception('block alloc error');
-                return null;
             }
 
             $this->count = 0;
@@ -2937,8 +2931,6 @@
         //----------------------------------------------------------------------
         public function getCode()
         {
-            $ret;
-
             if($this->count < $this->dataLength) {
                 $row = $this->count % $this->blocks;
                 $col = $this->count / $this->blocks;
@@ -3051,9 +3043,8 @@
         //----------------------------------------------------------------------
         public function encodeString8bit($string, $version, $level)
         {
-            if(string == NULL) {
+            if($string == NULL) {
                 throw new Exception('empty string!');
-                return NULL;
             }
 
             $input = new QRinput($version, $level);
@@ -3073,7 +3064,6 @@
 
             if($hint != QR_MODE_8 && $hint != QR_MODE_KANJI) {
                 throw new Exception('bad hint');
-                return NULL;
             }
 
             $input = new QRinput($version, $level);
