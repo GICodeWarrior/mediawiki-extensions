@@ -162,7 +162,6 @@ class WikiSyncSetup {
 		global $wgExtensionAssetsPath;
 		$localpath = dirname( __FILE__ );
 		$remotepath = "$wgExtensionAssetsPath/WikiSync";
-		sdv_debug(__METHOD__,array($localpath,$remotepath),true);
 		$resourceLoader->register(
 			array(
 				'ext.wikisync' => new ResourceLoaderFileModule(
@@ -231,7 +230,6 @@ class WikiSyncSetup {
 		if ( !$wgUser->isAnon() && !in_array( 'user', $ug ) ) {
 			$ug[] = 'user';
 		}
-		sdv_debug("ug",$ug,true);
 		if ( array_intersect( $groups, $ug ) ) {
 			return true;
 		}
@@ -256,7 +254,6 @@ class WikiSyncSetup {
 			return self::checkUserMembership( self::$ltr_access_groups );
 		} elseif ( $direction === null ) {
 			$groups = array_merge( self::$rtl_access_groups, self::$ltr_access_groups );
-			sdv_debug("initUser groups",$groups,true);
 			return self::checkUserMembership( $groups );
 		}
 		return 'Bug: direction should be boolean or null, value (' . $direction . ') given in ' . __METHOD__;
