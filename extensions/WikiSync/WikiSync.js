@@ -97,6 +97,8 @@ var WikiSync = {
 	},
 
 	// localized UI messages
+	// warning: do not access directly anymore, because
+	// these are not initialized in 1.17+ codepath
 	localMessages : null,
 
 	setLocalNames : function( localMessages ) {
@@ -104,16 +106,28 @@ var WikiSync = {
 	},
 
 	formatMessage : function() {
-		var formatted = this.localMessages[ arguments[0] ];
+		// in case of future ResourceLoader adoption in Extension:CategoryBrowser there
+		// should be few methods with different prefixes instead of just one
+		var prefix = 'wikisync_';
+		if ( typeof mediaWiki === 'object' &&
+				typeof mediaWiki.msg === 'function' ) {
+			// MW 1.17+
+			var args = arguments;
+			args[0] = prefix + args[0];
+			return mediaWiki.msg.apply( mediaWiki.msg, args );
+		}
+		var formatted = this.localMessages[ prefix + arguments[0] ];
 		var indexes = [];
 		var pos;
 		var j;
-		// going in reverse order is very important for the next for loop to be correct
+		// gettting $n parameter indexes
+		// going in reverse order is very important for the second for loop to be correct
 		for ( var i = arguments.length - 1; i > 0; i-- ) {
 			if ( ( pos = formatted.indexOf( '$' + i ) ) !== -1 ) {
 				indexes.push( pos );
 			}
 		}
+		// substituting the parameters
 		for ( i = 0; i < indexes.length; i++ ) {
 			pos = indexes[i];
 			j = formatted.charAt( pos + 1 );
@@ -907,7 +921,7 @@ var WikiSync = {
 			this.srcLastId = this.srcHiId = parseInt( this.popAJAXresult( 'src_rev_last', ['query', 'revisionhistory', 0, 'revid'] ) );
 			// uncomment next line for "live" debugging
 			// this.srcLastId = this.srcHiId = 75054;
-			this.syncPercents.display( { 'desc' : this.localMessages['diff_search'], 'curr' : 0, 'min' : 0, 'max' : Math.ceil( this.mathLogBase( this.srcLastId - this.srcFirstId, 2 ) ) } );
+			this.syncPercents.display( { 'desc' : this.formatMessage( 'diff_search' ), 'curr' : 0, 'min' : 0, 'max' : Math.ceil( this.mathLogBase( this.srcLastId - this.srcFirstId, 2 ) ) } );
 			this.findCommonRev( { 'opcode' : 'start' } );
 			return;
 		}

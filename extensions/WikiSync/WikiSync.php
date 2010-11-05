@@ -94,11 +94,23 @@ class WikiSyncSetup {
 	static $ExtDir; // filesys path with windows path fix
 	static $ScriptPath; // apache virtual path
 
+	static $jsMessages = array(
+		'wikisync_last_op_error',
+		'wikisync_synchronization_confirmation',
+		'wikisync_synchronization_success',
+		'wikisync_already_synchronized',
+		'wikisync_sync_to_itself',
+		'wikisync_diff_search',
+		'wikisync_revision',
+		'wikisync_file_size_mismatch'
+	);
+
 	static function init() {
 		global $wgScriptPath;
 		global $wgAutoloadClasses;
 		global $wgAjaxExportList;
 		global $wgAPIModules;
+		global $wgHooks;
 
 		self::$ExtDir = str_replace( "\\", "/", dirname( __FILE__ ) );
 		$top_dir = explode( '/', self::$ExtDir );
@@ -133,6 +145,8 @@ class WikiSyncSetup {
 		$wgAjaxExportList[] = 'WikiSyncClient::transferFileBlock';
 		$wgAjaxExportList[] = 'WikiSyncClient::uploadLocalFile';
 
+		$wgHooks['ResourceLoaderRegisterModules'][] = 'WikiSyncSetup::registerModules';
+
 		if ( ($parsed_url = parse_url( self::$proxy_address )) !== false ) {
 			if ( isset( $parsed_url['host'] ) ) { self::$proxy_host = $parsed_url['host']; }
 			if ( isset( $parsed_url['port'] ) ) { self::$proxy_port = $parsed_url['port']; }
@@ -141,16 +155,87 @@ class WikiSyncSetup {
 		}
 	}
 
+	/**
+	 * MW 1.17+ ResourceLoader module hook (JS,CSS)
+	 */
+	static function registerModules( $resourceLoader ) {
+		global $wgExtensionAssetsPath;
+		$localpath = dirname( __FILE__ );
+		$remotepath = "$wgExtensionAssetsPath/WikiSync";
+		sdv_debug(__METHOD__,array($localpath,$remotepath),true);
+		$resourceLoader->register(
+			array(
+				'ext.wikisync' => new ResourceLoaderFileModule(
+					array(
+						'scripts' => array( 'WikiSync.js', 'WikiSync_utils.js'),
+						'styles' => 'WikiSync.css',
+						'messages' => self::$jsMessages
+					),
+					$localpath,
+					$remotepath
+				)
+			)
+		);
+		return true;
+	} 
+
+	/*
+	 * include stylesheets and scripts; set javascript variables
+	 * @param $outputPage - an instance of OutputPage
+	 * @param $isRTL - whether the current language is RTL
+	 */
+	static function headScripts( &$outputPage, $isRTL ) {
+		global $wgJsMimeType;
+		if ( class_exists( 'ResourceLoader' ) ) {
+#			$outputPage->addModules( 'jquery' );
+			$outputPage->addModules( 'ext.wikisync' );
+			return;
+		}
+		$outputPage->addLink(
+			array( 'rel' => 'stylesheet', 'type' => 'text/css', 'href' => self::$ScriptPath . '/WikiSync.css?' . self::$version )
+		);
+		if ( $isRTL ) {
+			$outputPage->addLink(
+				array( 'rel' => 'stylesheet', 'type' => 'text/css', 'href' => self::$ScriptPath . '/WikiSync_rtl.css?' . self::$version )
+			);
+		}
+		$outputPage->addScript(
+			'<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync.js?' . self::$version . '"></script>
+			<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync_Utils.js?' . self::$version . '"></script>
+			<script type="' . $wgJsMimeType . '">WikiSyncUtils.addEvent(window,"load",WikiSync.onloadHandler);</script>
+			<script type="' . $wgJsMimeType . '">
+			WikiSync.setLocalMessages( ' .
+				self::getJsObject( 'wsLocalMessages', self::$jsMessages ) .
+			');</script>' . "\n"
+		);
+	}
+
+	static function getJsObject( $method_name, $jsMessages ) {
+		$result = '{ ';
+		$firstElem = true;
+		foreach ( $jsMessages as &$arg ) {
+			if ( $firstElem ) {
+				$firstElem = false;
+			} else {
+				$result .= ', ';
+			}
+			$result .= $arg . ': "' . Xml::escapeJsString( wfMsg( $arg ) ) . '"';
+		}
+		$result .= ' }';
+		return $result;
+	}
+
 	static function checkUserMembership( $groups ) {
-		global $wgUser, $wgLang;
+		global $wgUser;
 		$ug = $wgUser->getEffectiveGroups();
 		if ( !$wgUser->isAnon() && !in_array( 'user', $ug ) ) {
 			$ug[] = 'user';
 		}
+		sdv_debug("ug",$ug,true);
 		if ( array_intersect( $groups, $ug ) ) {
 			return true;
 		}
-		return wfMsg( 'wikisync_api_result_noaccess', $wgLang->commaList( $groups ) );
+		return wfMsg( 'wikisync_api_result_noaccess', implode( $groups, ',' ) );
 	}
 
 	/*
@@ -171,6 +256,7 @@ class WikiSyncSetup {
 			return self::checkUserMembership( self::$ltr_access_groups );
 		} elseif ( $direction === null ) {
 			$groups = array_merge( self::$rtl_access_groups, self::$ltr_access_groups );
+			sdv_debug("initUser groups",$groups,true);
 			return self::checkUserMembership( $groups );
 		}
 		return 'Bug: direction should be boolean or null, value (' . $direction . ') given in ' . __METHOD__;
