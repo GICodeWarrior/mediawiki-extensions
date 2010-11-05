@@ -35,8 +35,6 @@ case "$1" in
 			uname -snrvm > /var/run/motd
 			cat /etc/motd.tail >> /var/run/motd
 		fi
-
-		[ -x /etc/init.d/apache2 ] && /etc/init.d/apache2 stop
 		;;
 
 	upgrade)
