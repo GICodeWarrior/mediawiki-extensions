@@ -30,8 +30,6 @@ class SpecialPlayer extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
 
-		wfLoadExtensionMessages( 'Player' );
-
 		$file = $wgRequest->getVal( 'playfile', $par );
 
 		$options = $wgRequest->getVal( 'options', '' );
