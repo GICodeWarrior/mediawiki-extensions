@@ -60,7 +60,7 @@ class HtmlUiTemplate {
 			}
 			return $data;
 		}
-		return htmlspecialchars( $data );
+		return htmlspecialchars( (string) $data );
 	}
 	
 	/**
@@ -76,7 +76,7 @@ class HtmlUiTemplate {
 			}
 			return $data;
 		}
-		return htmlspecialchars_decode( $data );
+		return htmlspecialchars_decode( (string) $data );
 	}
 	
 	/**
@@ -97,18 +97,18 @@ class HtmlUiTemplate {
 			foreach ( $data as $key => $value ) {
 				if ( is_array( $value ) ) {
 					// Named list of attributes
-					$result[] = htmlspecialchars( $key ) . '="' . implode( ' ', $value ) . '"';
+					$result[] = self::escpae( $key ) . '="' . implode( ' ', (string) $value ) . '"';
 				} else if ( is_string( $key ) ) {
 					// Named attribute
-					$result[] = htmlspecialchars( $key ) . '="' . $value . '"';
+					$result[] = self::escpae( $key ) . '="' . $value . '"';
 				} else {
 					// Value-less attribute such as "checked"
-					$result[] = $value;
+					$result[] = (string) $value;
 				}
 			}
 		} else {
 			// Value-less attribute such as "checked"
-			$result[] = $value;
+			$result[] = (string) $value;
 		}
 		return count( $result ) ? ( ' ' . implode( ' ', $result ) ) : '';
 	}
