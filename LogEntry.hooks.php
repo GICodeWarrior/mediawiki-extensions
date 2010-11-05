@@ -27,7 +27,10 @@ class LogEntryHooks {
 		
 		// Don't cache since we are passing the token in the form
 		$parser->disableCache();
-
+		
+		// Internationalization
+		wfLoadExtensionMessages( 'LogEntry' );
+		
 		// Build HTML
 		$htmlResult = Xml::openElement( 'form',
 			array(
