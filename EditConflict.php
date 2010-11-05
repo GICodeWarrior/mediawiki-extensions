@@ -274,7 +274,11 @@ class EditConflict {
 			# insert ajax check into the edit button anchor, second parameter indicates whether the article is already edited by privileged user
 			self::addOnLoadScript( 'EditConflict.findEditKey(' . $article_id . ',' . $disallow_edit . ');' );
 		}
-		# called as the 'MakeGlobalVariablesScript' hook to make required mediawiki variables be available in JS code
+	}
+
+	# called as the 'MakeGlobalVariablesScript' hook to make required mediawiki variables be available in JS code
+	static function jsWikiMessages( &$vars ) {
+		wfLoadExtensionMessages( 'EditConflict' );
 		$vars['ec_already_editing'] = wfMsg( 'ec_already_editing' );
 		return true;
 	}
@@ -331,6 +335,7 @@ class EditConflict {
 		}
 		$res = $db->select( 'ec_edit_conflict', array( 'ns_user_rev_id', 'page_namespace', 'page_title', 'page_touched' ), 'ns_user_rev_id IN (' . $entries_set . ') AND user_name=' . $db->addQuotes( $user_name ), __METHOD__, array( 'ORDER'=>'page,page_touched' ) );
 		if ( $db->numRows( $res ) > 0 ) {
+			wfLoadExtensionMessages( 'EditConflict' );
 			$result .= '<span style="color:red;">' . wfMsg( 'ec_copied_revisions' ) . '</span> ';
 			$prev_title_str = '';
 			$first_elem = true;
