@@ -1237,6 +1237,7 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Reedy
  * @author SPQRobin
  * @author Siebrand
  */
@@ -1273,7 +1274,7 @@ Probeer het later nog eens.',
 	'wah-uploading' => 'Het uploaden van het bestand is <i>$1%</i> compleet',
 	'wah-uploadfail' => 'Het uploaden is mislukt',
 	'wah-doneuploading' => 'Het uploaden is afgerond. Dank u voor uw bijdrage.',
-	'wah-needs-firefogg' => 'Om deel te nemen aan Wiki@Home moet u <a href="http://firefogg.org">Firefogg</a installeren.',
+	'wah-needs-firefogg' => 'Om deel te nemen aan Wiki@Home moet u <a href="http://firefogg.org">Firefogg</a> installeren.',
 	'wah-api-error' => 'Er is een fout opgetreden in de API. Probeer het later nog eens.',
 );
 
