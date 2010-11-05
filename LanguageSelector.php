@@ -95,6 +95,7 @@ function wfLanguageSelectorSetHook() {
 }
 
 function wfLanguageSelectorExtension() {
+	wfLoadExtensionMessages( 'LanguageSelector' );
 	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage,
 		$wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation,
 		$wgLanguageSelectorShowAll, $wgCommandLineMode;
