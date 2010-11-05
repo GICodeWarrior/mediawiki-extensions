@@ -44,6 +44,7 @@ function efBlahtex() {
 	$wgHooks['MathAfterTexvc'][] = 'efBlahtexMathAfterTexvc';
 	$wgHooks['ParserBeforeTidy'][] = 'efBlahtexParserBeforeTidy';
 	$wgHooks['ParserAfterTidy'][] = 'efBlahtexParserAfterTidy';
+	wfLoadExtensionMessages( 'Blahtex' );
 }
 
 /**
