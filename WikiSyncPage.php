@@ -160,67 +160,13 @@ class WikiSyncPage extends SpecialPage {
 			);
 	}
 
-	/*
-	 * include stylesheets and scripts; set javascript variables
-	 * @param $outputPage - an instance of OutputPage
-	 * @param $isRTL - whether the current language is RTL
-	 */
-	static function headScripts( &$outputPage, $isRTL ) {
-		global $wgJsMimeType;
-		$outputPage->addLink(
-			array( 'rel' => 'stylesheet', 'type' => 'text/css', 'href' => WikiSyncSetup::$ScriptPath . '/WikiSync.css?' . WikiSyncSetup::$version )
-		);
-		if ( $isRTL ) {
-			$outputPage->addLink(
-				array( 'rel' => 'stylesheet', 'type' => 'text/css', 'href' => WikiSyncSetup::$ScriptPath . '/WikiSync_rtl.css?' . WikiSyncSetup::$version )
-			);
-		}
-		$outputPage->addScript(
-			'<script type="' . $wgJsMimeType . '" src="' . WikiSyncSetup::$ScriptPath . '/WikiSync.js?' . WikiSyncSetup::$version . '"></script>
-			<script type="' . $wgJsMimeType . '" src="' . WikiSyncSetup::$ScriptPath . '/WikiSync_Utils.js?' . WikiSyncSetup::$version . '"></script>
-			<script type="' . $wgJsMimeType . '">WikiSyncUtils.addEvent(window,"load",WikiSync.onloadHandler);</script>
-			<script type="' . $wgJsMimeType . '">
-			WikiSync.setLocalNames( ' .
-				self::getJsObject( 'wsLocalMessages', 'last_op_error', 'synchronization_confirmation', 'synchronization_success', 'already_synchronized', 'sync_to_itself', 'diff_search', 'revision', 'file_size_mismatch' ) .
-			');</script>' . "\n"
-		);
-	}
-
-	static function getJsObject( $method_name ) {
-		$args = func_get_args();
-		array_shift( $args ); // remove $method_name from $args
-		$result = '{ ';
-		$firstElem = true;
-		foreach ( $args as &$arg ) {
-			if ( $firstElem ) {
-				$firstElem = false;
-			} else {
-				$result .= ', ';
-			}
-			$result .= $arg . ': "' . Xml::escapeJsString( call_user_func( array( 'self', $method_name ), $arg ) ) . '"';
-		}
-		$result .= ' }';
-		return $result;
-	}
-
-	/*
-	 * currently passed to Javascript:
-	 * localMessages
-	 */
-	/*
-	 * getJsObject callback
-	 */
-	static private function wsLocalMessages( $arg ) {
-		return wfMsg( "wikisync_js_${arg}" );
-	}
-
 	function __construct() {
 		parent::__construct( 'WikiSync', 'edit' );
 		$this->initUser = WikiSyncSetup::initUser();
 	}
 
 	function execute( $param ) {
-		global $wgOut, $wgContLang;
+		global $wgOut;
 		global $wgUser;
 		# commented out, ignored by FF 3+ anyway
 #		$wgOut->enableClientCache( false );
@@ -236,7 +182,6 @@ class WikiSyncPage extends SpecialPage {
 		if ( !$wgUser->isAnon() ) {
 			WikiSyncSetup::$remote_wiki_user = $wgUser->getName();
 		}
-		self::headScripts( $wgOut, $wgContLang->isRTL() );
 		$wgOut->setPagetitle( wfMsgHtml( 'wikisync' ) );
 		$this->initSyncDirectionTpl();
 		$this->initRemoteLoginFormTpl();
