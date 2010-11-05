@@ -46,6 +46,15 @@ $messages['gsw'] = array(
 	'pdfbook-desc' => 'Stellt e Buech vu Syte us ere Kategori zämme un exportiert s as PDF-Buech',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'pdfbook-action' => 'Jako PDF ćišćeć',
+	'pdfbook-log' => '$1 bu jako PDF-kniha eksportowany',
+	'pdfbook-desc' => 'Zestaja knihu ze stronow w kategoriji a eksportuje jako PDF-knihu',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
