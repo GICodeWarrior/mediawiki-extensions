@@ -142,13 +142,6 @@ $messages['el'] = array(
 	'addmediawizard-desc' => 'Προσθήκη του media wizard, ανεπτυγμένο σε συνεργασία των Kaltura και Wikimedia Foundation',
 );
 
-/** British English (British English)
- * @author Ytsukeng Fyvaprol
- */
-$messages['en-gb'] = array(
-	'addmediawizard-desc' => 'Add-media wizard developed in partnership by Kaltura and Wikimedia Foundation',
-);
-
 /** Esperanto (Esperanto)
  * @author Airon90
  */
