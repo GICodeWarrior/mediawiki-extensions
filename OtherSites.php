@@ -69,6 +69,7 @@ function wfOtherSitesMonoBook( &$skin ) {
 			}
 		}
 		if ( count( $others ) > 0 ) {
+			wfLoadExtensionMessages( 'OtherSites' );
 
 			echo '<div id="p-others" class="portlet">';
 			echo '<h5>';
