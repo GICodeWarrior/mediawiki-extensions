@@ -190,6 +190,18 @@ $messages['he'] = array(
 	'semanticformsinputs-today' => 'היום',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'semanticformsinputs-desc' => 'Přidatne zapodawanske typy za [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
+	'semanticformsinputs-wrongformat' => 'Wopačny format',
+	'semanticformsinputs-close' => 'Začinić',
+	'semanticformsinputs-prev' => 'Předchadny',
+	'semanticformsinputs-next' => 'Přichodny',
+	'semanticformsinputs-today' => 'Dźensa',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */
