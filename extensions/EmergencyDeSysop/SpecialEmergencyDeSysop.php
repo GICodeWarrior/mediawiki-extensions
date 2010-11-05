@@ -6,6 +6,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 class SpecialEmergencyDeSysop extends SpecialPage {
 
 	function __construct() {
+		wfLoadExtensionMessages( 'EmergencyDeSysop' );
+		parent::__construct( 'EmergencyDeSysop' );
 		parent::__construct( "EmergencyDeSysop", "emergencydesysop" );
 	}
 	

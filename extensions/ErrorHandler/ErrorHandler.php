@@ -212,6 +212,7 @@ function efErrorHandlerGetMessage(){
 		global $wgMessageCache;
 		if( function_exists( 'wfMsgExt' ) && is_object( $wgMessageCache ) ){
 			$loaded = true;
+			wfLoadExtensionMessages( 'ErrorHandler' );
 		}
 	}
 	if( $loaded ){

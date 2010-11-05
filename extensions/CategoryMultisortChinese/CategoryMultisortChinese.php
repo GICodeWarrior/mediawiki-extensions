@@ -22,7 +22,9 @@ $wgExtensionFunctions[] = 'efCategoryMultisortChineseInit';
 
 function efCategoryMultisortChineseInit() {
 	global $wgContLang, $wgCategoryMultisortSortkeySettings;
-
+	
+	wfLoadExtensionMessages( 'CategoryMultisortChinese' );
+	
 	if ( in_array( 'zh-hans', $wgContLang->getVariants() ) ) {
 		if ( array_key_exists( 'stroke', $wgCategoryMultisortSortkeySettings ) ) {
 			$wgCategoryMultisortSortkeySettings['stroke-simplified'] = $wgCategoryMultisortSortkeySettings['stroke'];
