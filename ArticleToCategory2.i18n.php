@@ -222,6 +222,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'articletocategory2-desc' => 'Staja zapodawanske polo do kóždeje kategorijoweje strony a zmóžnja wutworjenje noweje strony direktnje do teje kategorije',
 	'articletocategory2-create-article-under-category-text' => 'Stronu k tutej kategoriji přidać',
 	'articletocategory2-create-article-under-category-button' => 'Wutworić',
 	'articletocategory2-create-category-under-category-text' => 'Kategoriju k tutej kategoriji přidać',
