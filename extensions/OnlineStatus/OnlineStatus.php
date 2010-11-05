@@ -100,6 +100,7 @@ class OnlineStatus {
 	 */
 	static function Ajax( $action, $stat = false ){
 		global $wgUser;
+		wfLoadExtensionMessages( 'OnlineStatus' );
 
 		if( $wgUser->isAnon() )
 			return wfMsgHtml( 'onlinestatus-js-anon' );
@@ -159,6 +160,7 @@ class OnlineStatus {
 		if( $status === null )
 			return array( 'found' => false );
 		if( empty( $raw ) ){
+			wfLoadExtensionMessages( 'OnlineStatus' );
 			return wfMsgNoTrans( 'onlinestatus-toggle-' . $status );
 		} else {
 			return $status;
@@ -182,6 +184,7 @@ class OnlineStatus {
 			$status = self::GetUserStatus( $parser->getTitle() );
 			if( $status === null )
 				return true;
+			wfLoadExtensionMessages( 'OnlineStatus' );
 			$ret = wfMsgNoTrans( 'onlinestatus-toggle-' . $status );
 			$varCache['onlinestatus'] = $ret;
 		} else if( $index == 'onlinestatus_word_raw' ){
@@ -198,6 +201,7 @@ class OnlineStatus {
 	 * Hook for user preferences
 	 */
 	public static function GetPreferences( $user, &$preferences ) {
+		wfLoadExtensionMessages( 'OnlineStatus' );
 
 		$msg = wfMsgForContentNoTrans( 'onlinestatus-levels' );
 		$lines = explode( "\n", $msg );
@@ -289,6 +293,7 @@ class OnlineStatus {
 		$status = self::GetUserStatus( $wgTitle, true );
 		if( $status === null )
 			return true;
+		wfLoadExtensionMessages( 'OnlineStatus' );
 		$out->setSubtitle( wfMsgExt( 'onlinestatus-subtitle-' . $status, array( 'parse' ) ) );
 
 		return true;
@@ -305,6 +310,7 @@ class OnlineStatus {
 		$arr = array();
 		foreach( $urls as $key => $val ){
 			if( $key == 'logout' ){
+				wfLoadExtensionMessages( 'OnlineStatus' );
 				$arr['status'] = array(
 					'text' => wfMsgHtml( 'onlinestatus-tab' ),
 					'href' => 'javascript:;',

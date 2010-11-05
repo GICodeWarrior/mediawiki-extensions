@@ -145,6 +145,7 @@ class SpecialIndexPager extends AlphabeticPager {
 
 class SpecialIndex extends SpecialPage {
 	function __construct() {
+		wfLoadExtensionMessages('IndexFunction');
 		parent::__construct( 'Index' );
 	}
  
@@ -157,6 +158,7 @@ class SpecialIndex extends SpecialPage {
 		} else { 	
 			$this->showSearchForm();	
 		}
+
 	}
 	
 	function showSearchForm() {

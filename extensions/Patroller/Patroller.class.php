@@ -25,6 +25,8 @@ class Patroller extends SpecialPage {
 	public function execute( $par ) {
 		global $wgUser, $wgRequest, $wgOut;
 
+		wfLoadExtensionMessages( 'Patroller' );
+
 		$this->setHeaders();
 
 		# Check permissions

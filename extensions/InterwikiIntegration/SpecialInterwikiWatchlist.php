@@ -10,6 +10,7 @@ class InterwikiWatchlist extends SpecialPage {
 	 */
 	function __construct() {
 		parent::__construct( 'InterwikiWatchlist' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
 	}
 
 	/**
