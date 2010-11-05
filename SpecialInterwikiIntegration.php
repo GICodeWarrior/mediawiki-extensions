@@ -6,6 +6,7 @@
 class PopulateInterwikiIntegrationTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateInterwikiIntegrationTable', 'integration' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
 	}
  
 	function execute( $par ) {
@@ -106,6 +107,7 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 class PopulateInterwikiWatchlistTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateInterwikiWatchlistTable', 'integration' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
 	}
 	
 	function execute( $par ) {
@@ -143,6 +145,7 @@ class PopulateInterwikiWatchlistTable extends SpecialPage {
 class PopulateInterwikiRecentChangesTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateInterwikiRecentChangesTable', 'integration' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
 	}
 	
 	function execute( $par ) {
@@ -180,6 +183,7 @@ class PopulateInterwikiRecentChangesTable extends SpecialPage {
 class PopulateInterwikiPageTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateInterwikiPageTable', 'integration' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
 	}
 	
 	function execute( $par ) {
