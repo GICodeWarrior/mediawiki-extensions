@@ -166,7 +166,7 @@ class WikiSyncPage extends SpecialPage {
 	}
 
 	function execute( $param ) {
-		global $wgOut;
+		global $wgOut, $wgContLang;
 		global $wgUser;
 		# commented out, ignored by FF 3+ anyway
 #		$wgOut->enableClientCache( false );
@@ -182,6 +182,7 @@ class WikiSyncPage extends SpecialPage {
 		if ( !$wgUser->isAnon() ) {
 			WikiSyncSetup::$remote_wiki_user = $wgUser->getName();
 		}
+		WikiSyncSetup::headScripts( $wgOut, $wgContLang->isRTL() );
 		$wgOut->setPagetitle( wfMsgHtml( 'wikisync' ) );
 		$this->initSyncDirectionTpl();
 		$this->initRemoteLoginFormTpl();
