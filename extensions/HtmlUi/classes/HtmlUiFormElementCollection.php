@@ -4,7 +4,7 @@ class HtmlUiFormElementCollection {
 	
 	/* Abstract Protected Methods */
 	
-	abstract protected function getDefaultOptions() {
+	protected function getDefaultOptions() {
 		return array();
 	}
 	
