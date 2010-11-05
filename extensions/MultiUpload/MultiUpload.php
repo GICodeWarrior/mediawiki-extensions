@@ -1,7 +1,4 @@
 <?php
-if ( ! defined( 'MEDIAWIKI' ) )
-    die();
-
 /**
  * An extension that allows users to upload multiple files at once.
  *
@@ -12,6 +9,10 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @link http://www.mediawiki.org/wiki/Extension:MultiUpload Documentation
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die();
+}
+
 // change this parameter to limit the # of files one can upload
 $wgMaxUploadFiles = isset( $wgMaxUploadFiles ) ? intval( $wgMaxUploadFiles ) : 5;
 
@@ -20,13 +21,13 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'MultipleUpload',
 	'author' => 'Travis Derouin',
-	'version' => '1.01',
+	'version' => '2.0',
 	'descriptionmsg' => 'multipleupload-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
 );
 
 // Set up the new special page
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['MultipleUpload'] = $dir . 'MultiUpload.body.php';
 $wgAutoloadClasses['MultipleUploadForm'] = $dir . 'MultiUpload.body.php';
 $wgExtensionMessagesFiles['MultiUpload'] = $dir . 'MultiUpload.i18n.php';
