@@ -164,6 +164,7 @@ class MediaFunctions {
 	 * @return string
 	 */
 	private static function error( $error, $name ) {
+		wfLoadExtensionMessages( 'MediaFunctions' );
 		return htmlspecialchars( wfMsgForContent( $error, $name ) );
 	}
 }
