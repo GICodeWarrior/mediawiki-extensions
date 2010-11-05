@@ -145,6 +145,8 @@ function efConfigureMakeGlobalVariablesScript( &$vars ) {
  */
 function efConfigureFarmerAdminPermissions( $farmer ) {
 	global $wgOut;
+
+	wfLoadExtensionMessages( 'Configure' );
 	$wgOut->wrapWikiMsg( '== $1 ==', 'farmer-basic-permission' );
 	$wgOut->addWikiMsg( 'configure-farmer-settings' );
 
