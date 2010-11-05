@@ -1474,10 +1474,11 @@ Dien früntelk %s-Bescheed-täl-System',
  * @author Lejonel
  * @author M.M.S.
  * @author Per
+ * @author Reedy
  */
 $messages['sv'] = array(
 	'tasklist' => 'Uppgiftslista',
-	'tasklist-parser-desc' => 'lägger till parser funktionen <nowiki>{{#todo:}}</nowiki för tilldelning av uppgifter',
+	'tasklist-parser-desc' => 'lägger till parser funktionen <nowiki>{{#todo:}}</nowiki> för tilldelning av uppgifter',
 	'tasklist-special-desc' => 'Lägger till en specialsida för granskning av [[Special:TaskList|uppgifter]]',
 	'tasklistbyproject' => 'Uppgiftslista efter projekt',
 	'tasklistunknownproject' => 'Okänt projekt',
