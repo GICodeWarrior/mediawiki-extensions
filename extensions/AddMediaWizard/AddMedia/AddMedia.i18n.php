@@ -1102,6 +1102,7 @@ $messages['bg'] = array(
  * @author Fohanno
  * @author Fulup
  * @author Gwendal
+ * @author Reedy
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -1240,7 +1241,7 @@ $messages['br'] = array(
 	'mwe-cc_sa_title' => 'Eskemmañ rik-ha-rik',
 	'mwe-cc_pd_title' => 'Domani foran',
 	'mwe-unknown_license' => 'Aotre-implijout dizanv',
-	'mwe-no-import-by-url' => '<b>Ne c\'hell ket</> an implijer-mañ pe ar wiki-mañ enporzhiañ danvez diwar URLoù a-bell. <p>Hag ezhomm ho peus kevreañ ?</p><p>Hag ar gwir "upload_by_url permission" ho peus ?</p><br />Hag aotreet eo bet $1 gant ar wiki ?</p>',
+	'mwe-no-import-by-url' => '<b>Ne c\'hell ket<b/> an implijer-mañ pe ar wiki-mañ enporzhiañ danvez diwar URLoù a-bell. <p>Hag ezhomm ho peus kevreañ ?</p><p>Hag ar gwir "upload_by_url permission" ho peus ?</p><br />Hag aotreet eo bet $1 gant ar wiki ?</p>',
 	'mwe-results_from' => "Disoc'hoù eus $1",
 	'mwe-missing_desc_see_source' => 'Mankout a ra un diskrivadenn evit an asset-mañ. Kit da welet ar [$1 vammenn] hag sikourit da ziskrivañ anezhi.',
 	'rsd_config_error' => 'Fazi kefluniadur eus ar skoazeller evit ouzhpennañ mediaoù : $1',

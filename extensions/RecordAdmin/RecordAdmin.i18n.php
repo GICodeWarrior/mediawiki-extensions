@@ -954,7 +954,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'recordadmin' => 'Administracija zregistrowanjow',
-	'recordadmin-desc' => '[[Special:RecordAdmin|Specialna strona]] za namakanje a wobdźěłowanje stronow zregistrowanjow z pomocu formulara',
+	'recordadmin-desc' => 'Pytanja, naprašowanja, formulary a rozprawy wo wikidatach z pžedłohowych parametrow',
 	'recordadmin-select' => 'Wubjer typ registracijow, kotrež so maja zrjadować',
 	'recordadmin-createtype' => 'Zapodaj mjeno typa registracije, kotryž ma so wutworić',
 	'recordadmin-recordtype' => 'typ registracije',
@@ -989,6 +989,7 @@ $messages['hsb'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Žadyn "$1"',
+	'recordadmin-properties' => 'Kajkosće',
 );
 
 /** Hungarian (Magyar)

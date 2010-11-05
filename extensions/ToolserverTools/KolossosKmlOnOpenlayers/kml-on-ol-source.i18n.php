@@ -76,6 +76,17 @@ $messages['de'] = array(
 	'ts-kml-on-ol-wikipedia' => 'Wikipedia',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'ts-kml-on-ol-options' => 'Opcije',
+	'ts-kml-on-ol-languages' => 'Rěcy',
+	'ts-kml-on-ol-thumbnails' => 'Wobrazki',
+	'ts-kml-on-ol-all' => 'Wšykne',
+	'ts-kml-on-ol-map-by' => 'Kórta wót',
+);
+
 /** French (Français)
  * @author Gribeco
  * @author Zetud
@@ -111,6 +122,18 @@ $messages['gsw'] = array(
 	'ts-kml-on-ol-help' => 'Hilf',
 	'ts-kml-on-ol-all' => 'Alli',
 	'ts-kml-on-ol-map-by' => 'Charte vu',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'ts-kml-on-ol-options' => 'Opcije',
+	'ts-kml-on-ol-languages' => 'Rěče',
+	'ts-kml-on-ol-thumbnails' => 'Wobrazki',
+	'ts-kml-on-ol-help' => 'Pomoc',
+	'ts-kml-on-ol-all' => 'Wšě',
+	'ts-kml-on-ol-map-by' => 'Karta wot',
 );
 
 /** Interlingua (Interlingua)
