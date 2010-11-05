@@ -15,7 +15,6 @@ class MultipleUpload extends SpecialPage {
 	 */
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
-		wfLoadExtensionMessages( 'MultiUpload' );
 		$this->setHeaders();
 
 		# Check permissions
