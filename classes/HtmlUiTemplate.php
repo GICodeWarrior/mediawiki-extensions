@@ -86,7 +86,9 @@ class HtmlUiTemplate {
 	 * should have never had any escapable characters in them anyways) and values are assumed to be
 	 * escaped already (since data given to the template is escaped by default).
 	 * 
-	 * @param $data Mixed: Data to unescape, either a string or array of strings
+	 * @param $data Mixed: Data to make into attributes, string or array of strings or an array of
+	 *     attribute/value pairs where a value can either be a string or an array and will be
+	 *     imploded with a space delimiter.
 	 * @return String: XML-style attributes
 	 */
 	public static function attributes( $data ) {
