@@ -59,6 +59,8 @@ function mvSetupExtension() {
 	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers, $wgJSAutoloadClasses,
 	$wgAPIModules;
 
+
+	mvfInitMessages();
 	//add the ALL page header
 	mvfAutoAllPageHeader();
 
@@ -422,6 +424,15 @@ function mvfInitUserLanguage( $langcode ) {
 	} else {
 		$mvgLang = new $mvLangClass();
 	}
+}
+/**
+ * Initialize messages - these settings must be applied later on, since
+ * the MessageCache does not exist yet when the settings are loaded in
+ * LocalSettings.php.
+ * Function based on version in ContributionScores extension
+ */
+function mvfInitMessages() {
+	wfLoadExtensionMessages( 'MetavidWiki' );
 }
 
 /*
