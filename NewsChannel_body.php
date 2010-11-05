@@ -39,8 +39,6 @@ class NewsChannel extends SpecialPage
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgNewsChannelCategory, $wgNewsChannelDefaultItems;
 
-		wfLoadExtensionMessages( 'NewsChannel' );
-
 		if( $wgNewsChannelCategory == '' || $wgNewsChannelCategory == null ) {
 			$wgOut->showErrorPage( "Error: Misconfiguration", "Main category containing news articles " .
 				"was not defined for News Channel extension. Please, define it." );
