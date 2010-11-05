@@ -361,13 +361,14 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author Reedy
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'slippymap_error' => '$1 σφάλμα: $2',
 	'slippymap_errors' => '$1 λάθη:',
 	'slippymap_error_missing_attribute_lat' => 'Λείπει το χαρακτηριστικό <tt>lat</tt> (για το πλάτος).',
-	'slippymap_error_missing_attribute_lon' => 'Λείπει το χαρακτηριστικό <tt>lon</tt (για το μήκος).',
+	'slippymap_error_missing_attribute_lon' => 'Λείπει το χαρακτηριστικό <tt>lon</tt> (για το μήκος).',
 	'slippymap_error_missing_attribute_zoom' => 'Λείπει το χαρακτηριστικό <tt>zoom</tt> (για το επίπεδο εστίασης).',
 	'slippymap_error_unknown_attribute' => 'Το χαρακτηριστικό <tt>$1</tt> είναι άγνωστο.',
 	'slippymap_code' => 'Wikicode για αυτή την προβολή χάρτη:',
@@ -1312,12 +1313,13 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Reedy
  */
 $messages['vi'] = array(
 	'slippymap_desc' => 'Thêm thẻ <tt><nowiki><slippymap></nowiki></tt> để nhúng bản đồ OpenLayers tĩnh và động. Hỗ trợ một số dịch vụ bản đồ, bao gồm [http://www.openstreetmap.org/ OpenStreetMap] và NASA World Wind.',
 	'slippymap_error' => 'Lỗi $1: $2',
 	'slippymap_errors' => '$1 lỗi:',
-	'slippymap_error_tag_content_given' => 'Thẻ <tt><nowiki>$1</nowiki></tt> chỉ nhận được các tham số thuộc tính (<nowiki><$1 […]/></nowiki>), chứ không phải nội dung (<nowiki><$1> … </$1></nowiki>)',
+	'slippymap_error_tag_content_given' => 'Thẻ <tt>&lt;$1&gt;</tt> chỉ nhận được các tham số thuộc tính (<nowiki>&lt;$1 […]/&gt;</nowiki>), chứ không phải nội dung (<nowiki>&lt;$1&gt; … &lt;/$1&gt;</nowiki>)',
 	'slippymap_error_missing_arguments' => 'Bạn chưa cung cấp tham số cho thẻ <nowiki><$1></nowiki>. Hãy xem [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax hướng dẫn] để biết cách sử dụng nó.',
 	'slippymap_error_missing_attribute_lat' => 'Thiếu thuộc tính <tt>lat</tt> (tức là vĩ độ).',
 	'slippymap_error_missing_attribute_lon' => 'Thiếu thuộc tính <tt>lon</tt> (tức là kinh độ).',
