@@ -28,6 +28,13 @@ $messages['qqq'] = array(
 	'wikiBhashaLink' => '{{Optional}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikibhasha-desc' => 'Toepassing om inhoud in verskeie tale te skep en sodoende die inhoud van die Engelse Wikipedia beter te gebruik',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -55,6 +62,13 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'wikibhasha-desc' => 'Stellt eine Anwendung bereit, mit der vielsprachige Inhalte erstellt und so die der englischsprachigen Wikipedia besser genutzt werden können',
+);
+
+/** French (Français)
+ * @author Jean-Frédéric
+ */
+$messages['fr'] = array(
+	'wikibhasha-desc' => 'Application pour créer du contenu multilingue, en se basant sur le contenu de la Wikipédia en langue anglaise',
 );
 
 /** Galician (Galego)
