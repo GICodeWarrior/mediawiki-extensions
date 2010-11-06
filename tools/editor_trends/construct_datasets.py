@@ -134,33 +134,41 @@ def debug_retrieve_edits_by_contributor_launcher():
     input_queue = pc.load_queue(ids)
     q = Queue()
     generate_editor_dataset(input_queue, q, False, kwargs)
-    #generate_editor_dataset_launcher()
-    #retrieve_list_contributors()
-    #retrieve_edits_by_contributor()
 
-def generate_editor_dataset_launcher():
+
+def generate_editor_dataset_launcher(dbname):
     kwargs = {'nr_input_processors': 1,
               'nr_output_processors': 1,
               'debug': False,
-              'dbname': 'enwiki',
+              'dbname': dbname,
               }
-    ids = retrieve_editor_ids_mongo('enwiki', 'editors')
-    pc.build_scaffolding(pc.load_queue, generate_editor_dataset, ids, False, False, **kwargs)
+    ids = retrieve_editor_ids_mongo(dbname, 'editors')
+    chunks = {}
+    parts = int(round(float(len(ids)) / 1, 0))
+    a = 0
+    for x in xrange(settings.NUMBER_OF_PROCESSES):
+        b = a + parts
+        chunks[x] = ids[a:b]
+        a = (x + 1) * parts
+        if a >= len(ids):
+            break
+        
+    pc.build_scaffolding(pc.load_queue, generate_editor_dataset, chunks, False, False, **kwargs)
 
 
-def generate_editor_dataset_debug():
-    ids = retrieve_editor_ids_mongo('enwiki', 'editors')
+def generate_editor_dataset_debug(dbname):
+    ids = retrieve_editor_ids_mongo(dbname, 'editors')
     input_queue = pc.load_queue(ids)
     #write_dataset(input_queue, [], 'enwiki')
     kwargs = {'nr_input_processors': 1,
               'nr_output_processors': 1,
               'debug': True,
-              'dbname': 'enwiki',
+              'dbname': dbname,
               }
     generate_editor_dataset(input_queue, False, False, kwargs)
 
 
 if __name__ == '__main__':
-    #generate_editor_dataset_debug()
-    generate_editor_dataset_launcher()
+    #generate_editor_dataset_debug('test')
+    generate_editor_dataset_launcher('test')
     #debug_retrieve_edits_by_contributor_launcher()

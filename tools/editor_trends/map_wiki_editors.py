@@ -135,7 +135,7 @@ def parse_editors(xml_queue, data_queue, pbar, bots, **kwargs):
     if settings.DEBUG:
         messages = {}
         vars = {}
-    
+
     while True:
         try:
             if debug:
@@ -261,7 +261,9 @@ def search_cache_for_missed_editors(dbname):
         for editor in cache[c]:
             editor_cache.add(editor, cache[c][editor])
         cache[c] = {}
-    editor_cache.add('NEXT', '')
+        editor_cache.add('NEXT', '')
+    cache = {}
+    
 
 
 def load_bot_ids():

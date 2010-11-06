@@ -82,7 +82,7 @@ def optimize_editors(input_queue, result_queue, pbar, kwargs):
             edits = editor['edits']
             edits = sorted(edits, key=itemgetter('date'))
             edit_count = len(edits)
-            new_wikipedian = edits[9]['date'].year
+            new_wikipedian = edits[9]['date']
             first_edit = edits[0]['date']
             final_edit = edits[-1]['date']
             edits_by_year = determine_edits_by_year(edits)
@@ -91,7 +91,7 @@ def optimize_editors(input_queue, result_queue, pbar, kwargs):
 
             output.insert({'editor': id, 'edits': edits,
                            'edits_by_year': edits_by_year,
-                           'year_joined': new_wikipedian,
+                           'new_wikipedian': new_wikipedian,
                            'edit_count': edit_count,
                            'final_edit': final_edit,
                            'first_edit': first_edit,

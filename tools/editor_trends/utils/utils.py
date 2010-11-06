@@ -276,15 +276,22 @@ def create_dict_from_csv_file(filename, encoding):
     return d
 
 
-def retrieve_file_list(location, extension):
+def retrieve_file_list(location, extension, mask=''):
+    '''
+    Retrieve a list of files from a specified location.
+    @location: either an absolute or relative path
+    @extension: only include files with extension (optional)
+    @mask: only include files that start with mask (optional)
+    
+    @return: a list of files matching the criteria
+    '''
     all_files = os.listdir(location)
     if not extension.startswith('.'):
         extension = '.' + extension
     files = []
     for file in all_files:
-        if file.endswith(extension):
+        if file.startswith(mask) and file.endswith(extension):
             files.append(file)
-
     return files
 
 

@@ -32,6 +32,8 @@ from utils import utils
 from utils import dump_downloader
 import split_xml_file
 import map_wiki_editors
+import optimize_editors
+import construct_datasets
 import config
 
 
@@ -96,7 +98,7 @@ def show_settings(args, location, filename, project, language_code):
     project = project.title()
     language_map = utils.invert_dict(languages.MAPPING)
     print 'Project: %s' % (project)
-    print 'Language: %s' % language_map[language_code]
+    print 'Language: %s' % language_map[language_code].decode('utf-8')
     print 'Input directory: %s' % location
     print 'Output directory: TODO'
   
@@ -130,16 +132,29 @@ def split_xml_file_launcher(args, location, filename, project, language_code):
 
 def extract_xml_file(args, location, file):
     path = config.detect_installed_program('7zip')
-
     source = os.path.join(location, file)
-    p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)])
+    p = None
+    
+    if settings.OS == 'Windows':
+        p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)], shell=True).wait()
+    elif settings.OS == 'Linux':
+        raise NotImplementedError
+    elif settings.OS == 'OSX':
+        raise NotImplementedError
+    else:
+        raise exceptions.PlatformNotSupportedError
     return p
 
 
 def mongodb_script_launcher(args, location, filename, project, language_code):
     print 'mongodb_script_launcher'
     map_wiki_editors.run_parse_editors(project, language_code, location)
-    #print args
+
+
+def dataset_launcher(args, project):
+    print 'dataset launcher'
+    optimize_editors.run_optimize_editors(project)
+    construct_datasets.generate_editor_dataset_launcher(project)
 
 
 def all_launcher(args, location, filename, project, language_code):
@@ -147,6 +162,7 @@ def all_launcher(args, location, filename, project, language_code):
     dump_downloader_launcher(args, location, filename, project, language_code)
     split_xml_file_launcher(args, location, filename, project, language_code)
     mongodb_script_launcher(args, location, filename, project, language_code)
+    dataset_launcher(args, location, filename, project, language_code)
 
 
 def supported_languages():
@@ -165,23 +181,30 @@ def show_languages(args, location, filename, project, language_code):
         languages.append(choice)
     languages.sort()
     for language in languages:
-        if first == None:
-            print '%s' % language
-        elif first != None and language.startswith(first):
+        try:
+            if first != None and language.startswith(first):
+                print '%s' % language.decode('utf-8')
+            elif first == None:
+                print '%s' % language.decode('utf-8')
+        except UnicodeEncodeError:
             print '%s' % language
 
+def about():
+    print 'Editor Trends Software is (c) 2010 by the Wikimedia Foundation.'
+    print 'Written by Diederik van Liere (dvanliere@gmail.com).'
+    print 'This software comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to distribute it under certain conditions.'
+    print 'See the README.1ST file for more information.'
+    print '' 
+    
 
 def main():
     default_language = determine_default_language()
     file_choices = ('stub-meta-history.xml.gz',
-                  'stub-meta-current.xml.gz',
-                  'pages-meta-history.xml.7z',
-                  'pages-meta-current.xml.bz2')
+                    'stub-meta-current.xml.gz',
+                    'pages-meta-history.xml.7z',
+                    'pages-meta-current.xml.bz2')
 
     parser = ArgumentParser(prog='manage', formatter_class=RawTextHelpFormatter)
-    #group = parser.add_mutually_exclusive_group()
-    #group.add_argument('show_languages', action='store')
-    #group.add_argument('language', action='store')
     subparsers = parser.add_subparsers(help='sub-command help')
 
     parser_languages = subparsers.add_parser('show_languages', help='Overview of all valid languages.')
@@ -202,6 +225,9 @@ def main():
     parser_create = subparsers.add_parser('store', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
     parser_create.set_defaults(func=mongodb_script_launcher)
 
+    parser_dataset = subparsers.add_parser('dataset', help='Create a dataset from the MongoDB and write it to a csv file.')
+    parser_dataset.set_defaults(func=dataset_launcher)
+    
     parser_all = subparsers.add_parser('all', help='The all sub command runs the download, split, store and dataset commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
 
@@ -230,6 +256,7 @@ def main():
     args = parser.parse_args()
     config.load_configuration(args)
     locations = determine_file_locations(args)
+    about()
     show_settings(args, **locations)
     args.func(args, **locations)
 
