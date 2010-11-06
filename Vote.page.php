@@ -137,7 +137,7 @@ class SpecialVote extends SpecialPage {
 		global $wgUser;
 		$self = $this->getTitle();
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-		$form .= Xml::hidden( 'token', $wgUser->editToken( 'vote' ) );
+		$form .= Html::hidden( 'token', $wgUser->editToken( 'vote' ) );
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'vote-legend' ) . '</legend>';
 		$form .= '<p>' . Xml::label( wfMsg( 'vote-caption' ), 'vote' ) . '&#160;';
 		$form .= Xml::openElement( 'select', array( 'name' => 'vote', 'id' => 'vote' ) );
