@@ -218,7 +218,7 @@ class Ssh2Filesystem extends Filesystem {
 	/**
 	 * @see Filesystem::doMove
 	 */
-	protected function doMove( $source, $destination ) {
+	protected function doMove( $source, $destination, $overwrite ) {
 		wfSuppressWarnings();
 		$ssh2_sftp_rename = ssh2_sftp_rename( $this->connection, $source, $destination );
 		wfRestoreWarnings();
