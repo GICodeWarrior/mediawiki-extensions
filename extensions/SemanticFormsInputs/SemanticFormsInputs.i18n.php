@@ -37,6 +37,10 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'semanticformsinputs-desc' => 'Ekstra invoertipes vir [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Verkeerde formaat.',
+	'semanticformsinputs-close' => 'Sluit',
+	'semanticformsinputs-prev' => 'Vorige',
+	'semanticformsinputs-next' => 'Volgende',
+	'semanticformsinputs-today' => 'Vandag',
 );
 
 /** Aramaic (ܐܪܡܝܐ)

@@ -493,7 +493,7 @@ $messages['gsw'] = array(
  */
 $messages['gv'] = array(
 	'edituser' => 'Ymmydeyr y reaghey',
-	'edituser-username' => 'Ennym',
+	'edituser-username' => 'Ennym ymmydeyr:',
 	'edituser-dosearch' => 'Ronsaghey',
 );
 

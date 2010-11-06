@@ -1090,10 +1090,19 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 от $2',
+	'mwe-upload-unknown-size' => 'Неизвестен размер',
+	'mwe-successfulupload' => 'Качването беше успешно',
+	'mwe-uploaderror' => 'Грешка при качване',
+	'mwe-unknown-error' => 'Неизвестна грешка:',
+	'mwe-return-to-form' => 'Връщане към формуляра',
+	'mwe-fileexists-thumb' => 'Съществуващ файл',
+	'mwe-file-thumbnail-no' => 'Името на файла започва с <b><code>$1</code></b>',
+	'mwe-upload-misc-error' => 'Неизвестна грешка при качване',
 	'mwe-filesource' => 'Източник:',
 	'fogg-date-title' => 'Дата',
 	'fogg-license-title' => 'Лиценз',
 	'mwe-summary' => 'Резюме',
+	'mwe-cc_pd_title' => 'Обществено достояние',
 	'fogg-select_file' => 'Избиране на файл',
 	'fogg-select_new_file' => 'Избиране на нов файл',
 );

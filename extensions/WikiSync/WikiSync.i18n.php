@@ -76,6 +76,18 @@ $messages['qqq'] = array(
 	'wikisync_api_result_WrongPluginPass' => 'Same as WrongPass, returned when an authentication plugin rather than MediaWiki itself rejected the password',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikisync' => 'Wiki-sinchronisasie',
+	'wikisync_clear_log' => 'Maak logoek skoon',
+	'wikisync_sync_files' => 'Sinchroniseer lêers',
+	'wikisync_synchronization_button' => 'Sinchroniseer',
+	'wikisync_api_result_Blocked' => 'Die gebruiker is geblokkeer',
+	'wikisync_js_revision' => 'Weergawe $1',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -136,6 +148,18 @@ ab Version $3 durchgeführt werden?',
 	'wikisync_js_diff_search' => 'Suche nach Unterschieden bei den Zielversionen',
 	'wikisync_js_revision' => 'Version $1',
 	'wikisync_js_file_size_mismatch' => 'Die Größe der temporären Datei „$1“ ($2 Bytes) entspricht nicht der erforderlichen Größe ($3 Bytes). Es muss sichergestellt sein, dass Datei „$4“ im Repositorium des Quellwikis nicht manuell überschrieben wurde.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'wikisync_remote_login_button' => 'Rexistro',
+	'wikisync_api_result_unknown_action' => 'Non se coñece esa acción API',
+	'wikisync_api_result_WrongPass' => 'O contrasinal dado é incorrecto',
+	'wikisync_api_result_WrongPluginPass' => 'A clave dada é incorrecta',
+	'wikisync_api_result_Blocked' => 'O usuario está bloqueado',
+	'wikisync_js_revision' => 'Revisión $1',
 );
 
 /** Swiss German (Alemannisch)
@@ -262,13 +286,23 @@ a partir del version $3?',
 	'wikisync_js_file_size_mismatch' => 'Le dimension del file temporari "$1" ($2 bytes) non corresponde al dimension requirite ($3 bytes). Assecura te que le file $4 non ha essite superscribite manualmente in le deposito del wiki de origine.',
 );
 
+/** Japanese (日本語)
+ * @author Iwai.masaharu
+ */
+$messages['ja'] = array(
+	'wikisync_remote_login_button' => 'ログイン',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'wikisync' => 'Wiki-Synchronisatioun',
 	'wikisync_direction' => "Sicht w.e.g. d'Richtung vun der Synchronisatioun eraus",
+	'wikisync_remote_login_button' => 'Umellen',
 	'wikisync_sync_files' => 'Fichiere synchroniséieren',
+	'wikisync_synchronization_button' => 'Synchroniséieren',
+	'wikisync_api_result_invalid_parameter' => 'Net valabele Wäert vum Parameter',
 	'wikisync_api_result_WrongPass' => "D'Passwuert dat Dir ginn hutt ass net richteg",
 	'wikisync_api_result_Blocked' => 'Benotzer ass gespaart',
 	'wikisync_js_revision' => 'Versioun $1',
