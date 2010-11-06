@@ -73,6 +73,9 @@ $messages['af'] = array(
 	'patrol-revert' => 'Rol terug',
 	'patrol-revert-reason' => 'Rede:',
 	'patrol-skip' => 'Slaan oor',
+	'patrol-reverting' => '$1 aan die terugrol',
+	'patrol-reverted-ok' => 'Die wysiging is teruggerol.',
+	'patrol-reverted-failed' => 'Die wysiging kon nie teruggerol word nie.',
 	'group-patroller' => 'Kontroleurs',
 	'group-patroller-member' => 'Kontroleur',
 );
