@@ -445,7 +445,6 @@ class TodoItem {
 	 * @return mixed true on success, WikiError on failure
 	 */
 	function sendConfirmationMail( $closeComment ) {
-		require_once 'includes/UserMailer.php';
 		global $wgContLang;
 
 		$owner = User::newFromId( $this->owner );
@@ -455,7 +454,7 @@ class TodoItem {
 
 		$sender = new MailAddress( $owner );
 		$recipient = new MailAddress( $this->email );
-		return userMailer( $recipient, $sender,
+		return UserMailer::send( $recipient, $sender,
 			wfMsgForContent( 'todo-mail-subject', $owner->getName() ),
 			wordwrap( wfMsgForContent( 'todo-mail-body',
 				$owner->getName(),
