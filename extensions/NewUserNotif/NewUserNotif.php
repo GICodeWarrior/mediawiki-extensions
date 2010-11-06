@@ -43,7 +43,7 @@ $wgNewUserNotifEmailTargets = array();
 /**
  *	These are the parameters that will be passed into MediaWiki:newusernotifbody
  *	Can use anthing available as part of $this, $user (created user object), $recipient (target),
- *		or from globals $wfContLang, $wgSitename
+ *		or from globals $wgContLang, $wgSitename
  */
 $wgNewUserNotifSenderParam = array(
 	'$recipient',                                   // $1 Recipient (of notification message)
