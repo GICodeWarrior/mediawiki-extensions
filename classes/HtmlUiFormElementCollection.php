@@ -44,12 +44,4 @@ class HtmlUiFormElementCollection {
 	public function setOption( $option, $value ) {
 		return isset( $this->options[$option] ) ? $this->options[$option] = $value : null;
 	}
-	
-	public function renderElements() {
-		$elements = array();
-		foreach ( $this->elements as $element ) {
-			$elements[] = $element->render();
-		}
-		return $elements;
-	}
 }
