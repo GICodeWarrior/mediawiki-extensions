@@ -38,6 +38,18 @@ $messages['qqq'] = array(
 	'ts-kml-on-ol-all' => '{{Identical|All}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'ts-kml-on-ol-options' => 'Voorkeure',
+	'ts-kml-on-ol-languages' => 'Tale',
+	'ts-kml-on-ol-thumbnails' => 'Duimnaels',
+	'ts-kml-on-ol-help' => 'Help',
+	'ts-kml-on-ol-all' => 'Alle',
+	'ts-kml-on-ol-map-by' => 'Kaart deur',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -272,5 +284,17 @@ $messages['te'] = array(
 	'ts-kml-on-ol-help' => 'సహాయం',
 	'ts-kml-on-ol-all' => 'అన్నీ',
 	'ts-kml-on-ol-map-by' => 'పటపు సౌజన్యం',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'ts-kml-on-ol-options' => 'Tùy chọn',
+	'ts-kml-on-ol-languages' => 'Ngôn ngữ',
+	'ts-kml-on-ol-thumbnails' => 'Hình nhỏ',
+	'ts-kml-on-ol-help' => 'Trợ giúp',
+	'ts-kml-on-ol-all' => 'Tất cả',
+	'ts-kml-on-ol-map-by' => 'Bản đồ',
 );
 
