@@ -121,7 +121,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		$text .= $pager->getNavigationBar();
 		if ( $showDiff ) {
 			$text .= Xml::openElement( 'form', array( 'action' => $wgScript ) ) . "\n" .
-			Xml::hidden( 'title', $self->getPrefixedDBKey() ) . "\n" .
+			Html::hidden( 'title', $self->getPrefixedDBKey() ) . "\n" .
 			$this->getButton() . "<br />\n";
 		}
 		$text .= $pager->getBody();
@@ -251,7 +251,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		$form = '<fieldset><legend>' . wfMsgHtml( 'configure-select-wiki' ) . '</legend>';
 		$form .= wfMsgExt( 'configure-select-wiki-view-desc', array( 'parse' ) );
 		$form .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
-		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
+		$form .= Html::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
 		$all = ( $wgRequest->getVal( 'view', 'all' ) == 'all' );
 		$form .= Xml::radioLabel( wfMsg( 'configure-select-wiki-view-all' ), 'view', 'all', 'wiki-all', $all );
 		$form .= "<br />\n";
