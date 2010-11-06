@@ -38,7 +38,7 @@ class DeleteQueueViewList extends DeleteQueueView {
 		$searchBox['deletequeue-list-status'] = Xml::checkLabel( wfMsg( 'deletequeue-list-expired' ), 'expired', 'mw-dq-expired', $this->mExpired );
 
 		$searchBox = Xml::buildForm( $searchBox, 'deletequeue-list-search' );
-		$searchBox .= Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
+		$searchBox .= Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
 		$searchBox = Xml::tags( 'form', array( 'action' => $this->getTitle()->getFullURL(), 'method' => 'get' ), $searchBox );
 		$searchBox = Xml::fieldset( wfMsg( 'deletequeue-list-search-legend' ), $searchBox );
 
