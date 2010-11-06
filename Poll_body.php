@@ -183,7 +183,7 @@ class Poll extends SpecialPage {
 			$wgOut->addHtml( Xml::closeElement( 'table' ) );
 			$wgOut->addHtml( Xml::check('allow_more').' '.wfMsg( 'poll-create-allow-more' ).'<br />' );
 			$wgOut->addHtml( Xml::check('allow_ip', $ip_checked).' '.wfMsg( 'poll-create-allow-ip' ).'<br />' );
-			$wgOut->addHtml( Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'create') );
+			$wgOut->addHtml( Xml::submitButton(wfMsg( 'poll-submit' )).''.Html::hidden('type', 'create') );
 			$wgOut->addHtml( Xml::closeElement( 'form' ) );
 		}
 	}
@@ -241,7 +241,7 @@ class Poll extends SpecialPage {
 				if($alternative_6 != "") { $wgOut->addHtml( '<tr><td>'.Xml::check('vote_6').' '.$alternative_6.'</td></tr>' ); }
 				$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-vote-other' ).' '.Xml::input('vote_other').'</td></tr>' );				
 			}
-			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'vote').''.Xml::hidden('multi', $multi).' <a href="'.$this->getTitle()->getFullURL( 'action=score&id='.$vid ).'">'.wfMsg( 'poll-title-score' ).'</a></td></tr>' );
+			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Html::hidden('type', 'vote').''.Html::hidden('multi', $multi).' <a href="'.$this->getTitle()->getFullURL( 'action=score&id='.$vid ).'">'.wfMsg( 'poll-title-score' ).'</a></td></tr>' );
 			$wgOut->addHtml( '<tr><td>' );
 			$wgOut->addWikiText( '<small>'.wfMsg( 'poll-score-created', $creater ).'</small>' );
 			$wgOut->addHtml( '</td></tr>' );
@@ -370,7 +370,7 @@ class Poll extends SpecialPage {
 		if( isset($question) && $question != "" ) {
 			$wgOut->addHtml( Xml::openElement( 'form', array('method'=> 'post', 'action' => $this->getTitle()->getFullURL('action=submit&id='.$did) ) ) );
 			$wgOut->addHtml( Xml::check( 'controll_delete' ).' '.wfMsg('poll-delete-question', $question).'<br />' );
-			$wgOut->addHtml( Xml::submitButton(wfMsg( 'poll-submit' )).' <a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>'.Xml::hidden('type', 'delete') );
+			$wgOut->addHtml( Xml::submitButton(wfMsg( 'poll-submit' )).' <a href="'.$this->getTitle()->getFullURL('action=list').'">'.wfMsg('poll-back').'</a>'.Html::hidden('type', 'delete') );
 			$wgOut->addHtml( Xml::closeElement( 'form' ) );
 		} else {
 			$wgOut->addWikiMsg( 'poll-invalid-id' );
@@ -420,7 +420,7 @@ class Poll extends SpecialPage {
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 5:</td><td>'.Xml::input('poll_alternative_5', false, $alternative_5).'</td></tr>' );
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-alternative' ).' 6:</td><td>'.Xml::input('poll_alternative_6', false, $alternative_6).'</td></tr>' );
 			$wgOut->addHtml( '<tr><td>'.wfMsg( 'poll-dis' ).':</td><td>'.Xml::textarea('dis', $dis).'</td></tr>' );
-			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Xml::hidden('type', 'change').'</td></tr>' );
+			$wgOut->addHtml( '<tr><td>'.Xml::submitButton(wfMsg( 'poll-submit' )).''.Html::hidden('type', 'change').'</td></tr>' );
 			$wgOut->addHtml( Xml::closeElement( 'table' ) );
 			$wgOut->addHtml( Xml::closeElement( 'form' ) );
 		}
