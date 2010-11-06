@@ -47,9 +47,17 @@ class CheckVars {
 	var $mDebug = false;
 	static $mDefaultSettingsGlobals = null;
 	static $mRequireKnownClasses = array();
+	static $mRequireKnownFunctions = array();
 	static $mRequireKnownConstants = array();
 
+	static $mKnownFileClassesDefault = array();
+	static $mKnownFunctionsDefault = array();
+	static $mConstantsDefault = array();
+		
 	static $constantIgnorePrefixes = array( "PGSQL_", "OCI_", "SQLT_BLOB", "DB2_", "XMLREADER_", "SQLSRV_" ); # Ignore constants with these prefixes
+	static $functionIgnorePrefixes = array( "pg_", "oci_", "db2_", "gmp_", "sqlsrv_", "exif_", "fss_", "tidy_",
+			"apc_", "eaccelerator_", "xcache_", "wincache_", "apache_", "xdiff_", "wikidiff2_", "parsekit_", 
+			"wddx_", "setproctitle", "utf8_", "normalizer_" ); # Ignore functions with these prefixes
 	protected $generateDeprecatedList = false;
 
 	/* Values for status */
@@ -154,29 +162,16 @@ class CheckVars {
 		file_put_contents( $filename, $data );
 	}
 
-
-	function load( $file, $shortcircuit = true ) {
+	private function initVars() {
 		$this->mProblemCount = 0;
-		$this->mFilename = $file;
-		
-		/* These are used even if it's shortcircuited */
-		$this->mKnownFileClasses = array();
-		$this->mUnknownClasses = array();
-		$this->mConstants = array();
 
-		$source = file_get_contents( $file );
-		if ( substr( $source, 0, 3 ) == "\xEF\xBB\xBF" ) {
-			$this->warning( "$file has an UTF-8 BOM" );
-		}
-		$source = rtrim( $source );
-		if ( substr( $source, -2 ) == '?>' ) {
-			$this->warning( "?> at end of file is deprecated in MediaWiki code" );
-		}
-		if ( $shortcircuit && !preg_match( "/^[^'\"#*]*function [^\"']*\$/m", $source ) ) {
-			$this->mTokens = array();
-			return;
-		}
-		$this->mTokens = token_get_all( $source );
+		/* These are used even if it's shortcircuited */
+		$this->mKnownFileClasses = self::$mKnownFileClassesDefault;
+		$this->mUnknownClasses = array();
+		$this->mUnknownFunctions = array();
+		$this->mKnownFunctions = self::$mKnownFunctionsDefault;
+		$this->mConstants = self::$mConstantsDefault;
+
 		$this->mStatus = self::WAITING_FUNCTION;
 		$this->mFunctionQualifiers = array();
 
@@ -191,7 +186,26 @@ class CheckVars {
 			'FILEINFO_MIME', 'FILEINFO_MIME_TYPE', 'MHASH_ADLER32',
 			'SIGTERM', 'SIG_DFL',
 			'SVN_REVISION_HEAD', 'SVN_REVISION_INITIAL',
-		) ;
+		) ;				
+	}
+	
+	function load( $file, $shortcircuit = true ) {
+		$this->initVars();
+		$this->mFilename = $file;		
+
+		$source = file_get_contents( $file );
+		if ( substr( $source, 0, 3 ) == "\xEF\xBB\xBF" ) {
+			$this->warning( "$file has an UTF-8 BOM" );
+		}
+		$source = rtrim( $source );
+		if ( substr( $source, -2 ) == '?>' ) {
+			$this->warning( "?> at end of file is deprecated in MediaWiki code" );
+		}
+		if ( $shortcircuit && !preg_match( "/^[^'\"#*]*function [^\"']*\$/m", $source ) ) {
+			$this->mTokens = array();
+			return;
+		}
+		$this->mTokens = token_get_all( $source );
 	}
 
 	static $functionQualifiers = array( T_ABSTRACT, T_PRIVATE, T_PUBLIC, T_PROTECTED, T_STATIC );
@@ -288,6 +302,7 @@ class CheckVars {
 						$this->mInSwitch = 0;
 						$this->mFunctionGlobals = array();
 						$currentToken[0] = self::FUNCTION_DEFINITION;
+						$this->mKnownFunctions[] = $this->mFunction;
 
 						if ( $this->generateDeprecatedList && in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) ) {
 							if ( ( substr( $this->mFunction, 0, 2 ) != "__" ) ) {
@@ -398,6 +413,7 @@ class CheckVars {
 						if ( $lastMeaningfulToken[0] == T_STRING ) {
 							$lastMeaningfulToken[0] = self::FUNCTION_NAME;
 							$this->checkDeprecation( $lastMeaningfulToken );
+							$this->checkFunctionName( $lastMeaningfulToken );
 						} else if ( $lastMeaningfulToken[0] == self::CLASS_MEMBER ) {
 							$this->checkDeprecation( $lastMeaningfulToken );
 						}
@@ -411,7 +427,7 @@ class CheckVars {
 							$this->checkClassName( $lastMeaningfulToken );
 						} else {
 
-							if ( !defined( $lastMeaningfulToken[1] ) && !in_array( $lastMeaningfulToken[1], $this->mConstants ) && !self::isIgnoreConstant( $lastMeaningfulToken[1] ) ) {
+							if ( !defined( $lastMeaningfulToken[1] ) && !in_array( $lastMeaningfulToken[1], $this->mConstants ) && !self::inIgnoreList( $lastMeaningfulToken[1], self::$constantIgnorePrefixes ) ) {
 								$this->warning( "Use of undefined constant $lastMeaningfulToken[1] in line $lastMeaningfulToken[2]" );
 							}
 						}
@@ -480,6 +496,10 @@ class CheckVars {
 							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
 							continue;
 						}
+						if ( $requirePath == "Mail.php" ) { # PEAR mail
+							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
+							continue;
+						}
 						
 						if ( ( $requirePath == '' ) || ( !file_exists( $requirePath ) && $requirePath[0] != '/' ) ) {
 							/* Try prepending the script folder, for maintenance scripts (but see Maintenance.php:758) */
@@ -491,6 +511,7 @@ class CheckVars {
 							}
 						} else if ( isset( self::$mRequireKnownClasses[$requirePath] ) ) {
 							$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, self::$mRequireKnownClasses[$requirePath] );
+							$this->mKnownFunctions = array_merge( $this->mKnownFunctions, self::$mRequireKnownFunctions[$requirePath] );
 							$this->mConstants = array_merge( $this->mConstants, self::$mRequireKnownConstants[$requirePath] );
 						} else {
 							$newCheck = new CheckVars;
@@ -498,8 +519,10 @@ class CheckVars {
 							$newCheck->execute();
 							/* Get the classes defined there */
 							$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, $newCheck->mKnownFileClasses );
+							$this->mKnownFunctions = array_merge( $this->mKnownFunctions, $newCheck->mKnownFunctions );
 							$this->mConstants = array_merge( $this->mConstants, $newCheck->mConstants );
 							self::$mRequireKnownClasses[$requirePath] = $newCheck->mKnownFileClasses;
+							self::$mRequireKnownFunctions[$requirePath] = $newCheck->mKnownFunctions;
 							self::$mRequireKnownConstants[$requirePath] = $newCheck->mConstants;
 						}
 						$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
@@ -562,6 +585,7 @@ class CheckVars {
 		}
 
 		$this->checkPendingClasses();
+		$this->checkPendingFunctions();
 	}
 
 	function checkDeprecation( $token ) {
@@ -580,7 +604,48 @@ class CheckVars {
 			}
 		}
 	}
+	
+	function checkFunctionName( $token, $warn = 'defer' ) {
+		if ( !isset( $token['base'] ) ) {
+			// Local function
+			
+			if ( substr( $token[1], 0, 2 ) == 'wf' ) {
+				// MediaWiki function
+				// TODO: List them.
+				return;
+			}
+			if ( $token[1] == 'dieout' && in_array( $this->mFunction, array( 'setup_database', 'initial_setup', 'setup_plpgsql' ) ) ) {
+				return;
+			}
+			
+			if ( function_exists( $token[1] ) ) {
+				return;
+			}
+			if ( in_array( $token[1], $this->mKnownFunctions ) ) {
+				return;
+			}
+			
+			if ( self::inIgnoreList( $token[1], self::$functionIgnorePrefixes ) ) {
+				return;
+			}
+			
+			if ( $warn == 'now' ) {
+				$this->warning( "Unavailable function {$token[1]} in line {$token[2]}" );
+			} else if ( $warn == 'defer' ) {
+				// Defer to the end of the file
+				$this->mUnknownFunctions[] = $token;
+			}
+			
+		}
+	}
 
+	function checkPendingFunctions() {
+		foreach ( $this->mUnknownFunctions as $functionToken ) {
+			$this->checkFunctionName( $functionToken, 'now' );
+		}
+		$this->mUnknownFunctions = array();
+	}
+	
 	/* Returns a class name, or null if it couldn't guess */
 	function guessClassName( $token ) {
 		static $wellKnownVars = array(
@@ -736,6 +801,7 @@ class CheckVars {
 		if ( substr( $token[1], 0, 12 ) == "Net_Gearman_" ) return $token[1]; # phase3/maintenance/gearman/gearman.inc
 		if ( $token[1] == "PEAR_Error" ) return $token[1]; # Services_JSON.php
 		if ( $token[1] == "PHP_Timer" ) return $token[1]; # From PEAR, used in ParserHelpers.php
+		if ( substr( $token[1], 0, 7 ) == "Imagick" ) return $token[1]; # Imagick extension, can be used by phpunit/includes/api/RandomImageGenerator.php
 
 		if ( !isset( $wgAutoloadLocalClasses[$token[1]] ) && !in_array( $token[1], $this->mKnownFileClasses ) ) {
 			if ( $warn == 'now' ) {
@@ -757,8 +823,8 @@ class CheckVars {
 		$this->mUnknownClasses = array();
 	}
 
-	static function isIgnoreConstant( $name ) {
-		foreach ( self::$constantIgnorePrefixes as $prefix ) {
+	static function inIgnoreList( $name, $list ) {
+		foreach ( $list as $prefix ) {
 			if ( substr( $name, 0, strlen( $prefix ) ) == $prefix )
 				return true;
 		}
@@ -773,6 +839,26 @@ class CheckVars {
 		return "-";
 	}
 	
+	/**
+	 * Sets a number of files which are considered as having always been 
+	 * loaded before any loaded one. Any functions/classes defined there 
+	 * will be assumed to be available.
+	 */
+	function preloadFiles( $files ) {
+		$this->initVars();
+		$this->mFilename = '__preload';
+		$this->mTokens = array( T_OPEN_TAG, '<?php', 0 );
+		
+		for ( $i = 1; $i <= count( $files ); $i++ ) {
+			$this->mTokens[] = array( T_REQUIRE, 'require', $i );
+			$this->mTokens[] = array( T_CONSTANT_ENCAPSED_STRING, "'" . $files[$i - 1] . "'", $i );
+			$this->mTokens[] = ';';
+		}
+		$this->execute();
+		self::$mKnownFileClassesDefault = $this->mKnownFileClasses;
+		self::$mKnownFunctionsDefault = $this->mKnownFunctions;
+		self::$mConstantsDefault = $this->mConstants;
+	}
 }
 
 if( $argc < 2 ) {
@@ -786,6 +872,8 @@ if ( $argv[0] == '--generate-deprecated-list' ) {
 	$cv->setGenerateDeprecatedList( true );
 	array_shift( $argv );
 }
+$cv->preloadFiles( array( $IP . '/includes/GlobalFunctions.php' ) );
+
 foreach ( $argv as $arg ) {
 	$cv->load( $arg );
 	$cv->execute();
