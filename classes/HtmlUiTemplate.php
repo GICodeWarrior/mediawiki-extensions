@@ -8,12 +8,18 @@
  * By convention only display logic should be written into templates files and use of the global
  * statement should not be allowed.
  * 
+ * While some support functions are provided for rendering portions of XML syntax such as attributes
+ * or escaping/unescaping, this class intentionally does not contain functions for generating tags
+ * themseleves. In cases where generating tags seems like it's needed, consider creating a new
+ * template and passing the rendered contents of that template into another.
+ * 
  * @author Trevor Parscal <tparscal@wikimedia.org>
  */
 class HtmlUiTemplate {
 	
 	/* Protected Members */
 	
+	/** String: Path to template file */
 	protected $filePath;
 	
 	/* Methods */
@@ -80,11 +86,13 @@ class HtmlUiTemplate {
 	}
 	
 	/**
-	 * Renders XML attributes from an array of key and value pairs. If a value is an array, it's
-	 * imploded using a space as a delimiter. If any attributes are rendered, the result is preceded
-	 * with a single space, otherwise the result is an empty string. Keys will be escaped (but
-	 * should have never had any escapable characters in them anyways) and values are assumed to be
-	 * escaped already (since data given to the template is escaped by default).
+	 * Renders XML attributes from an array of key and value pairs.
+	 * 
+	 * If a value is an array, it's imploded using a space as a delimiter. If any attributes are
+	 * rendered, the result is preceded with a single space, otherwise the result is an empty
+	 * string. Keys will be escaped (but should have never had any escapable characters in them
+	 * anyways) and values are assumed to be escaped already (since data given to the template is
+	 * escaped by default).
 	 * 
 	 * @param $data Mixed: Data to make into attributes, string or array of strings or an array of
 	 *     attribute/value pairs where a value can either be a string or an array and will be
