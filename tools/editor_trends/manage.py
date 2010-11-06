@@ -22,7 +22,7 @@ import sys
 import subprocess
 from argparse import ArgumentParser
 from argparse import RawTextHelpFormatter
-
+import locale
 
 import progressbar
 
@@ -43,6 +43,11 @@ def config_launcher(args, location, filename, project, language_code):
     config.load_configuration(args)
 
 
+def determine_default_language():
+    language_code = locale.getdefaultlocale()[0]
+    return language_code.split('_')[0]
+    
+    
 def retrieve_projectname(args):
     language_code = retrieve_language(args)
     if language_code == None:
@@ -53,13 +58,16 @@ def retrieve_projectname(args):
     if project == None:
         print 'Entered project: %s is not valid Wikipedia project.' % get_value(args, 'project')
         sys.exit(-1)
+    if project == 'commonswiki':
+        return project
+    else:
+        return '%s%s' % (language_code, project)
 
-    return '%s%s' % (language_code, project)
 
 def retrieve_language(args):
     language = get_value(args, 'language')
     language = language.title()
-    return languages.MAPPING.get(language, None)
+    return languages.MAPPING.get(language, 'en')
 
 
 def retrieve_project(args):
@@ -75,12 +83,23 @@ def generate_wikidump_filename(args):
 
 def determine_file_locations(args):
     locations = {}
+    location = get_value(args, 'location') if get_value(args, 'location') != None else settings.XML_FILE_LOCATION
     locations['language_code'] = retrieve_language(args)
-    locations['location'] = os.path.join(get_value(args, 'location'), retrieve_language(args))
+    locations['location'] = os.path.join(location, retrieve_language(args))
     locations['project'] = retrieve_projectname(args)
     locations['filename'] = generate_wikidump_filename(args)
     return locations
 
+
+def show_settings(args, location, filename, project, language_code):
+    project = settings.WIKIMEDIA_PROJECTS.get(project, 'wiki')
+    project = project.title()
+    language_map = utils.invert_dict(languages.MAPPING)
+    print 'Project: %s' % (project)
+    print 'Language: %s' % language_map[language_code]
+    print 'Input directory: %s' % location
+    print 'Output directory: TODO'
+  
 
 def dump_downloader_launcher(args, location, filename, project, language_code):
     print 'dump downloader'
@@ -113,8 +132,8 @@ def extract_xml_file(args, location, file):
     path = config.detect_installed_program('7zip')
 
     source = os.path.join(location, file)
-    retcode = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)])
-    return retcode
+    p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)])
+    return p
 
 
 def mongodb_script_launcher(args, location, filename, project, language_code):
@@ -153,6 +172,7 @@ def show_languages(args, location, filename, project, language_code):
 
 
 def main():
+    default_language = determine_default_language()
     file_choices = ('stub-meta-history.xml.gz',
                   'stub-meta-current.xml.gz',
                   'pages-meta-history.xml.7z',
@@ -188,7 +208,7 @@ def main():
     parser.add_argument('-l', '--language', action='store',
                         help='Example of valid languages.',
                         choices=supported_languages(),
-                        default='Russian')
+                        default=default_language)
 
     parser.add_argument('-p', '--project', action='store',
                         help='Specify the Wikimedia project that you would like to download',
@@ -210,6 +230,7 @@ def main():
     args = parser.parse_args()
     config.load_configuration(args)
     locations = determine_file_locations(args)
+    show_settings(args, **locations)
     args.func(args, **locations)
 
 

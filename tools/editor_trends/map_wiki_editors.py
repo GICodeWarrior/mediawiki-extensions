@@ -244,6 +244,26 @@ def store_editors(data_queue, pids, dbname):
     print 'Time elapsed: %s and processed %s items.' % (datetime.datetime.now() - editor_cache.init_time, editor_cache.cumulative_n)
 
 
+def load_cache_objects():
+    cache = {}
+    files = utils.retrieve_file_list(settings.BINARY_OBJECT_FILE_LOCATION, '.bin')
+    for x, file in enumerate(files):
+        cache[x] = utils.load_object(settings.BINARY_OBJECT_FILE_LOCATION, file)
+    return cache
+
+
+def search_cache_for_missed_editors(dbname):
+    mongo = db.init_mongo_db(dbname)
+    collection = mongo['editors']
+    editor_cache = cache.EditorCache(collection)
+    cache = load_cache_objects()
+    for c in cache:
+        for editor in cache[c]:
+            editor_cache.add(editor, cache[c][editor])
+        cache[c] = {}
+    editor_cache.add('NEXT', '')
+
+
 def load_bot_ids():
     '''
     Loader function to retrieve list of id's of known Wikipedia bots. 
@@ -267,7 +287,6 @@ def run_parse_editors(dbname, language, location):
               'language': language,
               }
     chunks = {}
-    #file_location = os.path.join(settings.XML_FILE_LOCATION, language)
     files = utils.retrieve_file_list(location, 'xml')
     parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
     a = 0
@@ -277,12 +296,14 @@ def run_parse_editors(dbname, language, location):
         a = (x + 1) * parts
 
     pc.build_scaffolding(pc.load_queue, parse_editors, chunks, store_editors, True, **kwargs)
+    search_cache_for_missed_editors(dbname)
 
 
 def debug_parse_editors(dbname):
     q = JoinableQueue()
     parse_editors('en\\522.xml', q, None, None, True)
     store_editors(q, [], dbname)
+    search_cache_for_missed_editors(dbname)
 
 
 if __name__ == "__main__":

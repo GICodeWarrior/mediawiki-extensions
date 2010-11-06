@@ -20,13 +20,14 @@ __version__ = '0.1'
 
 import os
 import ConfigParser
-from _winreg import *
+
 
 import settings
 from utils import utils
 
 
 def detect_windows_program(program):
+    from _winreg import *
     entry = settings.WINDOWS_REGISTER[program]
     try:
         key = OpenKey(HKEY_CURRENT_USER, entry, 0, KEY_READ)

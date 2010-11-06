@@ -57,14 +57,16 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
     nr_output_processors = kwargs.pop('nr_output_processors')
     input_queues = {}
     result_queues = {}
-    assert len(obj) == nr_input_processors
-    if result_queue:
-        assert len(obj)== nr_output_processors
+    #assert len(obj) == nr_input_processors
+    #if result_queue:
+    #    assert len(obj)== nr_output_processors
 
     for i, o in enumerate(obj):
         input_queues[i] = load_input_queue(obj[o], poison_pill=True)
         if result_queue:
             result_queues[i] = JoinableQueue()
+        else:
+            result_queues[i] = False
 
     if settings.PROGRESS_BAR:
         size = sum([input_queues[q].qsize() for q in input_queues])

@@ -32,6 +32,7 @@ import os
 import ctypes
 
 import settings
+import exceptions
 
 
 try:
@@ -160,6 +161,7 @@ def determine_file_mode(extension):
     else:
         return 'wb'
 
+
 def write_list_to_csv(data, fh, recursive=False):
     if recursive:
         recursive = False
@@ -170,6 +172,7 @@ def write_list_to_csv(data, fh, recursive=False):
             fh.write('%s\t' % d)
     if recursive:
         return True
+
     
 def write_dict_to_csv(data, fh):
     keys = data.keys()
@@ -225,7 +228,7 @@ def which(program):
             if is_exe(exe_file):
                 return exe_file
 
-    return None
+    raise exceptions.FileNotFoundException(program)
 
 
 def store_object(object, location, filename):
@@ -252,6 +255,15 @@ def load_object(location, filename):
 def clean_string(string):
     string = string.replace('\n', '')
     return string
+
+
+def invert_dict(dictionary):
+    '''
+    @dictionary is a simple dictionary containing simple values, ie. no lists,
+    or other dictionaries
+    output: dictionary where key and value are swapped. 
+    '''
+    return dict([[v,k] for k,v in dictionary.items()])
 
 
 def create_dict_from_csv_file(filename, encoding):

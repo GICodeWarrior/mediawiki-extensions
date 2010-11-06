@@ -17,11 +17,15 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-11-02'
 __version__ = '0.1'
 
-
+from multiprocessing import Queue
+from Queue import Empty
+from operator import itemgetter
+import datetime
 
 import settings
 from database import db
 from utils import process_constructor as pc
+import construct_datasets
 
 
 def create_datacontainer(init_value=0):
@@ -37,7 +41,7 @@ def create_datacontainer(init_value=0):
         data[str(x)] = init_value
     return data
 
-    
+
 def determine_edits_by_year(dates):
     '''
     This function counts the number of edits by year made by a particular editor. 
@@ -87,7 +91,7 @@ def optimize_editors(input_queue, result_queue, pbar, kwargs):
 
             output.insert({'editor': id, 'edits': edits,
                            'edits_by_year': edits_by_year,
-                           'year_joined': year,
+                           'year_joined': new_wikipedian,
                            'edit_count': edit_count,
                            'final_edit': final_edit,
                            'first_edit': first_edit,
@@ -101,20 +105,31 @@ def run_optimize_editors(dbname):
     kwargs = {'definition': 'traditional',
               'pbar': True,
               'dbname': 'enwiki',
-              'nr_input_processors': 2,
+              'nr_input_processors': 1,
               'nr_output_processors': 0,
               }
-    pc.build_scaffolding(pc.load_queue, optimize_editors, ids, False, False, **kwargs)
+    chunks = {}
+    parts = int(round(float(len(ids)) / 1, 0))
+    a = 0
+    for x in xrange(settings.NUMBER_OF_PROCESSES):
+        b = a + parts
+        chunks[x] = ids[a:b]
+        a = (x + 1) * parts
+        if a >= len(ids):
+            break
+
+    pc.build_scaffolding(pc.load_queue, optimize_editors, chunks, False, False, **kwargs)
 
 
 def debug_optimize_editors(dbname):
     ids = construct_datasets.retrieve_editor_ids_mongo(dbname, 'editors')
     q = pc.load_queue(ids)
     kwargs = {'definition': 'traditional',
-              'dbname': 'enwiki'
+              'dbname': dbname
     }
     optimize_editors(q, False, True, kwargs)
 
 
 if __name__ == '__main__':
-    run_optimize_editors('enwiki')
+    debug_optimize_editors('test')
+    #run_optimize_editors('test')

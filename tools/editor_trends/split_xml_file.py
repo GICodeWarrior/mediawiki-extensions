@@ -172,7 +172,7 @@ def split_xml(location, filename, project, language_code):
                     #elem = parse_comments(elem, remove_ascii_control_characters)
                     #print cElementTree.tostring(elem)
     except SyntaxError:
-        fh = utils.create_txt_filehandle(ERROR_MESSAGE_FILE_LOCATION, 'split_xml', 'w', settings.ENCODING)
+        fh = utils.create_txt_filehandle(settings.ERROR_MESSAGE_FILE_LOCATION, 'split_xml', 'w', settings.ENCODING)
         fh.write(cElementTree.tostring(elem))
         fh.close()
 
