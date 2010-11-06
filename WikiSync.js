@@ -101,14 +101,14 @@ var WikiSync = {
 	// these are not initialized in 1.17+ codepath
 	localMessages : null,
 
-	setLocalNames : function( localMessages ) {
+	setLocalMessages : function( localMessages ) {
 		this.localMessages = localMessages;
 	},
 
 	formatMessage : function() {
 		// in case of future ResourceLoader adoption in Extension:CategoryBrowser there
 		// should be few methods with different prefixes instead of just one
-		var prefix = 'wikisync_';
+		var prefix = 'wikisync_js_';
 		if ( typeof mediaWiki === 'object' &&
 				typeof mediaWiki.msg === 'function' ) {
 			// MW 1.17+
@@ -968,3 +968,5 @@ var WikiSync = {
 	}
 
 }
+
+WikiSyncUtils.addEvent(window,"load",WikiSync.onloadHandler);
