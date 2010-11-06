@@ -94,15 +94,16 @@ class WikiSyncSetup {
 	static $ExtDir; // filesys path with windows path fix
 	static $ScriptPath; // apache virtual path
 
+	const JS_MSG_PREFIX = 'wikisync_js_';
 	static $jsMessages = array(
-		'wikisync_last_op_error',
-		'wikisync_synchronization_confirmation',
-		'wikisync_synchronization_success',
-		'wikisync_already_synchronized',
-		'wikisync_sync_to_itself',
-		'wikisync_diff_search',
-		'wikisync_revision',
-		'wikisync_file_size_mismatch'
+		'last_op_error',
+		'synchronization_confirmation',
+		'synchronization_success',
+		'already_synchronized',
+		'sync_to_itself',
+		'diff_search',
+		'revision',
+		'file_size_mismatch'
 	);
 
 	static function init() {
@@ -122,6 +123,7 @@ class WikiSyncSetup {
 		}
 		$wgAutoloadClasses['Snoopy'] = self::$ExtDir . '/Snoopy/Snoopy.class.php';
 		$wgAutoloadClasses['Services_JSON'] = self::$ExtDir . '/pear/JSON.php';
+		$wgAutoloadClasses['WikiSyncSetup'] = self::$ExtDir . '/WikiSync.php';
 		$wgAutoloadClasses['WikiSnoopy'] =
 		$wgAutoloadClasses['WikiSyncJSONresult'] =
 		$wgAutoloadClasses['WikiSyncClient'] = self::$ExtDir . '/WikiSyncClient.php';
@@ -155,6 +157,10 @@ class WikiSyncSetup {
 		}
 	}
 
+	static function setJSprefix( $val ) {
+		return self::JS_MSG_PREFIX . $val;
+	}
+
 	/**
 	 * MW 1.17+ ResourceLoader module hook (JS,CSS)
 	 */
@@ -166,9 +172,9 @@ class WikiSyncSetup {
 			array(
 				'ext.wikisync' => new ResourceLoaderFileModule(
 					array(
-						'scripts' => array( 'WikiSync.js', 'WikiSync_utils.js'),
+						'scripts' => array( 'WikiSync_utils.js', 'WikiSync.js' ),
 						'styles' => 'WikiSync.css',
-						'messages' => self::$jsMessages
+						'messages' => array_map( 'self::setJSprefix', self::$jsMessages )
 					),
 					$localpath,
 					$remotepath
@@ -199,9 +205,8 @@ class WikiSyncSetup {
 			);
 		}
 		$outputPage->addScript(
-			'<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync.js?' . self::$version . '"></script>
-			<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync_Utils.js?' . self::$version . '"></script>
-			<script type="' . $wgJsMimeType . '">WikiSyncUtils.addEvent(window,"load",WikiSync.onloadHandler);</script>
+			'<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync_Utils.js?' . self::$version . '"></script>
+			<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync.js?' . self::$version . '"></script>
 			<script type="' . $wgJsMimeType . '">
 			WikiSync.setLocalMessages( ' .
 				self::getJsObject( 'wsLocalMessages', self::$jsMessages ) .
@@ -210,22 +215,16 @@ class WikiSyncSetup {
 	}
 
 	static function getJsObject( $method_name, $jsMessages ) {
-		$result = '{ ';
-		$firstElem = true;
-		foreach ( $jsMessages as &$arg ) {
-			if ( $firstElem ) {
-				$firstElem = false;
-			} else {
-				$result .= ', ';
-			}
-			$result .= $arg . ': "' . Xml::escapeJsString( wfMsg( $arg ) ) . '"';
+		$result = array();
+		foreach ( $jsMessages as $arg ) {
+			$arg = self::JS_MSG_PREFIX . $arg;
+			$result[$arg] = wfMsg( $arg );
 		}
-		$result .= ' }';
-		return $result;
+		return json_encode( $result );
 	}
 
 	static function checkUserMembership( $groups ) {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$ug = $wgUser->getEffectiveGroups();
 		if ( !$wgUser->isAnon() && !in_array( 'user', $ug ) ) {
 			$ug[] = 'user';
@@ -233,7 +232,7 @@ class WikiSyncSetup {
 		if ( array_intersect( $groups, $ug ) ) {
 			return true;
 		}
-		return wfMsg( 'wikisync_api_result_noaccess', implode( $groups, ',' ) );
+		return wfMsg( 'wikisync_api_result_noaccess', $wgLang->commaList( $groups ) );
 	}
 
 	/*
