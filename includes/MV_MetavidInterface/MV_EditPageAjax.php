@@ -679,7 +679,7 @@
 		$buttonshtml = implode( $buttons, "\n" );
 
 		$safemodehtml = $this->checkUnicodeCompliantBrowser()
-			? '' : Xml::hidden( 'safemode', '1' );
+			? '' : Html::hidden( 'safemode', '1' );
 
 		$wgOut->addHTML( <<<END
 {$toolbar}
@@ -773,7 +773,7 @@ END
 		# For a bit more sophisticated detection of blank summaries, hash the
 		# automatic one and pass that in a hidden field.
 		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
-		$wgOut->addHTML( Xml::hidden( 'wpAutoSummary', $autosumm ) );
+		$wgOut->addHTML( Html::hidden( 'wpAutoSummary', $autosumm ) );
 
 		if ( $this->isConflict ) {
 			$wgOut->addWikiText( '==' . wfMsg( "yourdiff" ) . '==' );
