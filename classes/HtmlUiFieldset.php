@@ -26,7 +26,7 @@ class HtmlUiFieldset extends HtmlUiFormElementCollection implements HtmlUiFormEl
 		$template = new HtmlUiTemplate( 'extensions/HtmlUi/templates/HtmlUiFieldset.php' );
 		return $template->render( array(
 			'id' => $this->id,
-			'elements' => $this->renderElements()
+			'elements' => $this->elements
 		) );
 	}
 }

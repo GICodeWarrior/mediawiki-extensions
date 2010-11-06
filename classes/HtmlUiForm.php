@@ -20,7 +20,7 @@ class HtmlUiForm extends HtmlUiFormElementCollection {
 				'action' => $this->options['action'],
 				'method' => $this->options['method'],
 			),
-			'elements' => $this->renderElements()
+			'elements' => $this->elements
 		) );
 	}
 	
