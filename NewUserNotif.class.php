@@ -8,8 +8,6 @@
  * @author Rob Church <robchur@gmail.com>
  */
 
-require_once( 'UserMailer.php' );
-
 class NewUserNotifier {
 
 	private $sender;
@@ -41,7 +39,7 @@ class NewUserNotifier {
 	private function sendExternalMails() {
 		global $wgNewUserNotifEmailTargets, $wgNewUserNotifSenderParam, $wgNewUserNotifSenderSubjParam;
 		foreach( $wgNewUserNotifEmailTargets as $target ) {
-			userMailer(
+			UserMailer::send(
 				new MailAddress( $target ),
 				new MailAddress( $this->sender ),
 				$this->makeMessage( $target, $this->user, 'newusernotifsubj', $wgNewUserNotifSenderSubjParam),
