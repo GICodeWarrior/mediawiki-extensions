@@ -46,6 +46,11 @@ class HtmlUiTemplate {
 	public function render( array $data = array() ) {
 		// Expand bindings to vars, just for this scope - escaped by default!
 		extract( self::escape( $data ) );
+		// If $data had an element keyed as "data", then it's been shadowed, otherwise we need to
+		// unset it so the template doesn't start using the unescaped $data variable
+		if ( !isset( $data['data'] ) ) {
+			unset( $data );
+		}
 		ob_start();
 		require( $this->filePath );
 		return ob_get_clean();
