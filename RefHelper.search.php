@@ -19,8 +19,8 @@ class RefSearch extends SpecialPage {
 		$wgOut->addHTML(
 			Xml::fieldset( wfMsg( RefHelper::MSG . 'refsearch_legend' ) ) .
 			Xml::openElement( 'form', array( 'action' => $wgScript, 'id' => 'mw_search-ref-form' ) ) .
-			Xml::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
-			Xml::hidden( 'action', 'submit' ) .
+			Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
+			Html::hidden( 'action', 'submit' ) .
 			Xml::openElement( 'table', array( 'id' => 'mw_search-ref-table' ) ) .
 			Xml::openElement( 'tbody' ) );
 
@@ -104,8 +104,8 @@ class RefSearch extends SpecialPage {
 				Xml::element( 'td', null, "$author $etal ($year) \"$title\"" ) .
 				Xml::openElement( 'td' ) .
 				Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => "mw-create-ref-form$i" ) ) .
-				Xml::hidden( 'title', 'Special:RefHelper' ) .
-				Xml::hidden( 'pmid', $pmid ) .
+				Html::hidden( 'title', 'Special:RefHelper' ) .
+				Html::hidden( 'pmid', $pmid ) .
 				Xml::element( 'input', array( 'value' => wfMsg( RefHelper::MSG . 'create' ), 'type' => 'submit' ) ) .
 				Xml::closeElement( 'form' ) .
 				Xml::closeElement( 'td' ) .
