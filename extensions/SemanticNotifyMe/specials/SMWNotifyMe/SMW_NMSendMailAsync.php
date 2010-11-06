@@ -56,7 +56,7 @@ foreach ( $msgs as $msg ) {
 		$name = ( ( $user_info->user_real_name == '' ) ? $user_info->user_name:$user_info->user_real_name );
 
 		global $wgOutputEncoding;
-		UserMailer::send( // userMailer(
+		UserMailer::send(
 			new MailAddress( $user_info->user_email, $name ),
 			new MailAddress( $wgEmergencyContact, 'Admin' ),
 			wfMsg( 'smw_nm_hint_mail_title', $msg['title'], $wgSitename ),

@@ -53,7 +53,6 @@ function UW_GenericEditPage_addJS( $out ) {
 
 function UW_GenericEditPage_emailSuggestion ( $category ) {
 	global $wgSuggestCategoryRecipient, $wgEmergencyContact, $wgSitename, $wgUser;
-	require_once ( "UserMailer.php" );
 
 	wfLoadExtensionMessages( 'GenericEditPage' );
 
@@ -63,7 +62,7 @@ function UW_GenericEditPage_emailSuggestion ( $category ) {
 	$body = wfMsg ( "gep-emailbody", $wgUser->getName(), $category, $wgSitename );
 
 	// attempt to send the notification
-	$result = userMailer ( $to, $from, $subj, $body );
+	$result = UserMailer::send( $to, $from, $subj, $body );
 
 	/* send a message back to the client, to let them
 	 * know if the suggestion was successfully sent (or not) */
