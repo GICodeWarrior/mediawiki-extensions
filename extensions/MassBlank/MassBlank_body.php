@@ -81,7 +81,7 @@ class SpecialMassBlank extends SpecialPage {
 				'action' => $massblank->getLocalURL( 'action=blank' ),
 				'method' => 'post' )
 			) .
-			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
+			Html::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			Xml::inputLabel(
 				wfMsg( 'massblank-blankcomment' ), 'wpReason', 'wpReason', 60, $reason
 			) . '<br /><br />' .

@@ -151,8 +151,8 @@ class SpecialInvitations extends SpecialPage {
 
 		$form = '<h2>'.wfMsgExt('invitations-inviteform-title', 'parseinline', $friendlyname).'</h2>';
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript, 'name' => 'uluser' ) );
-		$form .= Xml::hidden( 'title',  SpecialPage::getTitleFor('Invitations', $feature)->getPrefixedText() ); 
-		$form .= Xml::hidden( 'invite_submit', 1 ); 
+		$form .= Html::hidden( 'title',  SpecialPage::getTitleFor('Invitations', $feature)->getPrefixedText() );
+		$form .= Html::hidden( 'invite_submit', 1 );
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'invitations-inviteform-title', $friendlyname ) . '</legend>';
 		$form .= '<p>' . Xml::inputLabel( wfMsg( 'invitations-inviteform-username' ), 'user', 'username', 30, $this->mTarget ) . '</p>';
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'invitations-inviteform-submit' ) ) . '</p>';

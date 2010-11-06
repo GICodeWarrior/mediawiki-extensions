@@ -65,7 +65,7 @@ class SpecialConfigure extends SpecialPage {
 		$wgOut->addHTML( '<strong id="cfgwmf-attention" style="color: red; font-size: 12pt">' . wfMsgHTML( 'configurewmf-attentionnotice' ) . '</strong>' );
 		$wgOut->addWikiMsg( 'configurewmf-selectsite-help' );
 		$wgOut->addHTML( "<form action='{$wgScript}' method='get'>" );
-		$wgOut->addHTML( '<p>' . Xml::hidden( 'title', $wgTitle->getFullText() ) . '</p><table><tr>' );
+		$wgOut->addHTML( '<p>' . Html::hidden( 'title', $wgTitle->getFullText() ) . '</p><table><tr>' );
 		$wgOut->addHTML( '<td class="mw-label">' . Xml::label( wfMsg( 'configurewmf-site' ), 'cfg-site' ) . '</td>' );
 		$wgOut->addHTML( '<td class="mw-input">' . Xml::input( 'wiki', false, false, array( 'id' => 'cfg-site' ) ) . '</td>' );
 		$wgOut->addHTML( '</tr><tr><td></td><td class="mw-input">' . Xml::submitButton( wfMsg( 'configurewmf-select' ) ) . '</td>' );
@@ -116,7 +116,7 @@ class SpecialConfigure extends SpecialPage {
 
 		$newLegend = wfMsgHtml( 'configurewmf-createnewgroup' );
 		$wgOut->addHTML( "<fieldset><legend>{$newLegend}</legend><form method='get' action='{$wgScript}'>" );
-		foreach( $_GET as $var => $val ) $wgOut->addHTML( Xml::hidden( $var, $val ) );
+		foreach( $_GET as $var => $val ) $wgOut->addHTML( Html::hidden( $var, $val ) );
 		$wgOut->addHTML( Xml::buildForm( array( 'configurewmf-groupname' => Xml::input( 'group' ) ), 'configurewmf-creategroup' ) );
 		$wgOut->addHTML( "</form></fieldset>\n" );
 	}
@@ -144,10 +144,10 @@ class SpecialConfigure extends SpecialPage {
 		$wgOut->addHTML( wfMsgWikiHtml( 'configurewmf-seealso', $vars ) );
 		$wgOut->addHTML( "<hr/>" );
 		$wgOut->addHTML( "<form action='{$wgScript}' method='post'><p>" );
-		$wgOut->addHTML( Xml::hidden( 'title', $wgTitle->getFullText() ) );
-		$wgOut->addHTML( Xml::hidden( 'wiki', $wiki ) );
-		$wgOut->addHTML( Xml::hidden( 'config', $config ) );
-		$wgOut->addHTML( Xml::hidden( 'edittoken', $wgUser->editToken() ) );
+		$wgOut->addHTML( Html::hidden( 'title', $wgTitle->getFullText() ) );
+		$wgOut->addHTML( Html::hidden( 'wiki', $wiki ) );
+		$wgOut->addHTML( Html::hidden( 'config', $config ) );
+		$wgOut->addHTML( Html::hidden( 'edittoken', $wgUser->editToken() ) );
 		$wgOut->addHTML( "</p><table><tbody>" );
 		foreach( ConfigureWMF::$settings[$config] as $key => $value ) {
 			if( substr( $key, 0, 2 ) == '__' )
@@ -213,7 +213,7 @@ class SpecialConfigure extends SpecialPage {
 				$r .= '<table><tbody><tr><td><ul><li>' . implode( '</li><li>', $checkboxes1 ) .
 					'</li></ul></td><td><ul><li>' . implode( '</li><li>', $checkboxes2 ) .
 					'</li></ul></td></tr></tbody></table>';
-				$r .= Xml::hidden( 'group', $group );
+				$r .= Html::hidden( 'group', $group );
 				break;
 			case 'grouplist':
 				$targetgroup = $wgRequest->getVal( 'group' );

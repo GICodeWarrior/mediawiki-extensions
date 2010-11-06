@@ -910,7 +910,7 @@ class SPARQLEndpoint extends SpecialPage {
             </table>
 			</div>
 
-            <input type="submit" value="Submit">' . Xml::hidden( 'token', $wgUser->editToken() ) . '
+            <input type="submit" value="Submit">' . Html::hidden( 'token', $wgUser->editToken() ) . '
             </form>';
         return $htmlForm;
     }

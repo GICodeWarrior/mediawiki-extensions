@@ -133,8 +133,8 @@ class ChangeAuthor extends SpecialPage {
 	private function buildInitialForm( $errMsg = '' ) {
 		global $wgScript;
 		$retval = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript ) );
-		$retval .= Xml::hidden( 'title', $this->selfTitle->getPrefixedDBkey() );
-		$retval .= Xml::hidden( 'action', 'list' );
+		$retval .= Html::hidden( 'title', $this->selfTitle->getPrefixedDBkey() );
+		$retval .= Html::hidden( 'action', 'list' );
 		$retval .= Xml::openElement( 'fieldset' );
 		$retval .= Xml::element( 'legend', array(), wfMsg( 'changeauthor-search-box' ) );
 		$retval .= Xml::inputLabel( wfMsg( 'changeauthor-pagename-or-revid' ),
@@ -190,7 +190,7 @@ class ChangeAuthor extends SpecialPage {
 		// Build user textbox
 		global $wgRequest;
 		$userBox = Xml::input( "user-new-{$rev->getId()}", 50, $wgRequest->getVal( "user-{$rev->getId()}", $rev->getUserText() ) );
-		$userText = Xml::hidden( "user-old-{$rev->getId()}", $rev->getUserText() ) . $rev->getUserText();
+		$userText = Html::hidden( "user-old-{$rev->getId()}", $rev->getUserText() ) . $rev->getUserText();
 
 		if ( !is_null( $size = $rev->getSize() ) ) {
 			if ( $size == 0 ) {
@@ -233,9 +233,9 @@ class ChangeAuthor extends SpecialPage {
 		}
 
 		$retval = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript ) );
-		$retval .= Xml::hidden( 'title', $this->selfTitle->getPrefixedDBkey() );
-		$retval .= Xml::hidden( 'action', 'change' );
-		$retval .= Xml::hidden( 'targetpage', $title->getPrefixedDBkey() );
+		$retval .= Html::hidden( 'title', $this->selfTitle->getPrefixedDBkey() );
+		$retval .= Html::hidden( 'action', 'change' );
+		$retval .= Html::hidden( 'targetpage', $title->getPrefixedDBkey() );
 		$retval .= Xml::openElement( 'fieldset' );
 		$retval .= Xml::element( 'p', array(), wfMsg( 'changeauthor-explanation-multi' ) );
 		$retval .= Xml::inputLabel( wfMsg( 'changeauthor-comment' ), 'comment', 'comment', 50 );
@@ -271,9 +271,9 @@ class ChangeAuthor extends SpecialPage {
 	private function buildOneRevForm( $rev, $errMsg = '' ) {
 		global $wgScript;
 		$retval = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript ) );
-		$retval .= Xml::hidden( 'title', $this->selfTitle->getPrefixedDBkey() );
-		$retval .= Xml::hidden( 'action', 'change' );
-		$retval .= Xml::hidden( 'targetrev', $rev->getId() );
+		$retval .= Html::hidden( 'title', $this->selfTitle->getPrefixedDBkey() );
+		$retval .= Html::hidden( 'action', 'change' );
+		$retval .= Html::hidden( 'targetrev', $rev->getId() );
 		$retval .= Xml::openElement( 'fieldset' );
 		$retval .= Xml::element( 'p', array(), wfMsg( 'changeauthor-explanation-single' ) );
 		$retval .= Xml::inputLabel( wfMsg( 'changeauthor-comment' ), 'comment', 'comment' );

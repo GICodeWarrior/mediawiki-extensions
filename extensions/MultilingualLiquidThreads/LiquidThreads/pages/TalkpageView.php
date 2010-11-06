@@ -213,7 +213,7 @@ class TalkpageView extends LqtView {
 			$html .= $sortOrderSelect->getHTML();
 
 			$html .= Xml::submitButton( wfMsg( 'go' ), array( 'class' => 'lqt_go_sort' ) );
-			$html .= Xml::hidden( 'title', $this->title->getPrefixedText() );
+			$html .= Html::hidden( 'title', $this->title->getPrefixedText() );
 
 
 			$html = Xml::tags(
@@ -353,7 +353,7 @@ class TalkpageView extends LqtView {
 		);
 
 		$html .= ' ' . Xml::submitButton( wfMsg( 'lqt-search-button' ) );
-		$html .= Xml::hidden( 'title', $this->title->getPrefixedText() );
+		$html .= Html::hidden( 'title', $this->title->getPrefixedText() );
 		$html = Xml::tags(
 			'form',
 			array(

@@ -236,8 +236,8 @@ class SpecialPrefSwitch extends SpecialPage {
 					'id' => "prefswitch-survey-{$mode}"
 				)
 			);
-			$html .= Xml::hidden( 'mode', $mode );
-			$html .= Xml::hidden( 'token', $wgUser->editToken() );
+			$html .= Html::hidden( 'mode', $mode );
+			$html .= Html::hidden( 'token', $wgUser->editToken() );
 			// Render a survey
 			$html .= PrefSwitchSurvey::render(
 				$mode, $wgPrefSwitchSurveys[$mode]['questions'], $wgPrefSwitchSurveys[$mode]['updatable']

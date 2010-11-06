@@ -450,7 +450,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		$form = '<fieldset><legend>' . wfMsgHtml( 'configure-select-wiki' ) . '</legend>';
 		$form .= wfMsgExt( 'configure-select-wiki-desc', array( 'parse' ) );
 		$form .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
-		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
+		$form .= Html::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
 		if ( is_array( $wgConfigureWikis ) ) {
 			$selector = new XmlSelect( 'wiki', 'wiki', $this->mWiki );
 			foreach( $wgConfigureWikis as $wiki ) {
@@ -864,7 +864,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				Xml::buildForm( array( 'configure-form-reason' => Xml::input( 'wpReason', 45, $reason ) ) ) . "\n" .
 				Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 				Xml::openElement( 'div', array() ) . "\n" .
-				Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n" .
+				Html::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n" .
 				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave',
 					'class' => 'btnSavePrefs', 'value' => wfMsgHtml( 'configure-btn-save' ) ) ) . "\n" .
 				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpPreview',
@@ -1129,7 +1129,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					} else {
 						$right_col = ($count && $period) ? wfMsg( 'configure-throttle-summary', $count, $period ) : wfMsg( 'configure-throttle-none' );
 						## Laziness: Make summaries work by putting the data in hidden fields, rather than a special case in JS.
-						$right_col .= "\n" . Xml::hidden( "$id-count", $count, array( 'id' => "$id-count" ) ) . Xml::hidden( "$id-period", $period, array( 'id' => "$id-period" ) );
+						$right_col .= "\n" . Html::hidden( "$id-count", $count, array( 'id' => "$id-count" ) ) . Html::hidden( "$id-period", $period, array( 'id' => "$id-period" ) );
 					}
 					$right_col = Xml::tags( 'td', null, $right_col );
 

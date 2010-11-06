@@ -22,7 +22,7 @@ class SpecialPreview extends SpecialPage {
 		$f = Xml::textarea( 'wikitext', $wikitext );
 		$f .= Xml::submitButton( 'Preview wikitext' );
 
-		$f .= Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
+		$f .= Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
 		$f = Xml::tags( 'form', array( 'method' => 'POST', 'action' => $this->getTitle()->getLocalURL() ), $f );
 
 		$wgOut->addHTML( Xml::fieldset( 'Preview wikitext', $f ) );

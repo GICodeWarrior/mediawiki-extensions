@@ -272,7 +272,7 @@ class RDFImport extends SpecialPage {
 			</td>
 			</tr>
 			</tbody></table>
-			<input type="submit" value="Submit">' . Xml::hidden( 'token', $wgUser->editToken() ) . '
+			<input type="submit" value="Submit">' . Html::hidden( 'token', $wgUser->editToken() ) . '
 			</form>';
 		return $htmlFormContent;
 	}

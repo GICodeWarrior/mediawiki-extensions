@@ -180,8 +180,8 @@ class MostRevisors extends IncludableSpecialPage {
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$form .= Xml::label( wfMsg( 'mostrevisors-namespace' ), 'namespace' ) . '&#160;';
 		$form .= Xml::namespaceSelector( $this->namespace, 'all' );
-		$form .= Xml::hidden( 'limit', $this->limit );
-		$form .= Xml::hidden( 'redirects', $this->redirects );
+		$form .= Html::hidden( 'limit', $this->limit );
+		$form .= Html::hidden( 'redirects', $this->redirects );
 		$form .= Xml::submitButton( wfMsg( 'mostrevisors-submit' ) ) . '</form>';
 		return $form;
 	}

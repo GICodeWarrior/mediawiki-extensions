@@ -246,7 +246,7 @@ class APCCacheMode {
 			Xml::element( 'legend', null, wfMsg( 'viewapc-ls-options-legend' ) ) .
 			Xml::openElement( 'form', array( 'action' => $wgScript ) );
 
-		$s .= Xml::hidden( 'title', $this->title->getPrefixedText() );
+		$s .= Html::hidden( 'title', $this->title->getPrefixedText() );
 
 		$options = array();
 		$scope = $this->opts->consumeValue( 'scope' );
@@ -287,7 +287,7 @@ class APCCacheMode {
 		$submit = Xml::submitButton( wfMsg( 'viewapc-ls-submit' ) );
 
 		foreach ( $this->opts->getUnconsumedValues() as $key => $value ) {
-			$s .= Xml::hidden( $key, $value );
+			$s .= Html::hidden( $key, $value );
 		}
 
 		$s .= wfMsgHtml( 'viewapc-ls-options', $scopeSelector, $sortSelector,

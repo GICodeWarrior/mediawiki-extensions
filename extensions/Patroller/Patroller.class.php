@@ -141,8 +141,8 @@ class Patroller extends SpecialPage {
 		$form .= $this->revertReasonsDropdown() . ' / ' . Xml::input( 'wpPatrolRevertReason' ) . '</td></tr>';
 		$form .= '<tr><td align="right">' . Xml::submitButton( wfMsg( 'patrol-skip' ), array( 'name' => 'wpPatrolSkip' ) ) . '</td></tr></table>';
 		$form .= '<tr><td>' . Xml::check( 'wpAnother', true ) . '</td><td>' . wfMsgHtml( 'patrol-another' ) . '</td></tr>';
-		$form .= Xml::hidden( 'wpRcId', $edit->mAttribs['rc_id'] );
-		$form .= Xml::hidden( 'wpToken', $wgUser->editToken() );
+		$form .= Html::hidden( 'wpRcId', $edit->mAttribs['rc_id'] );
+		$form .= Html::hidden( 'wpToken', $wgUser->editToken() );
 		$form .= '</form>';
 		$wgOut->addHTML( $form );
 	}

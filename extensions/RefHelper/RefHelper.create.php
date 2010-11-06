@@ -112,8 +112,8 @@ class RefHelper extends SpecialPage {
 			$wgOut->addHTML(
 				Xml::fieldset( wfMsg( self::MSG . 'refcreate_legend' ) ) .
 				Xml::openElement( 'form', array( 'action' => $wgScript, 'id' => 'mw_create-ref-form' ) ) .
-				Xml::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
-				Xml::hidden( 'action', 'submit' ) .
+				Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
+				Html::hidden( 'action', 'submit' ) .
 				Xml::openElement( 'table', array( 'id' => 'mw_create-ref-table' ) ) .
 				Xml::openElement( 'tbody' ) );
 
