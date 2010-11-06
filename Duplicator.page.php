@@ -186,7 +186,7 @@ class SpecialDuplicator extends SpecialPage {
 		$form .= '<td>' . Xml::submitButton( wfMsg( 'duplicator-submit' ) ) . '</td>';
 		$form .= '</tr>';
 		$form .= '</table>';
-		$form .= Xml::hidden( 'token', $wgUser->editToken( 'duplicator' ) );
+		$form .= Html::hidden( 'token', $wgUser->editToken( 'duplicator' ) );
 		$form .= '</fieldset></form>';
 		return $form;
 	}
