@@ -1,3 +1,5 @@
 <fieldset class="htmlUiFieldset" rel="<?php echo $id ?>">
-	<?php echo implode( self::unescape( $elements ) ) ?>
+	<?php foreach( $elements as $element ) ?>
+	<?php echo $element->render(); ?>
+	<?php endforeach; ?>
 </fieldset>
