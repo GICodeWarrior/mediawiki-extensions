@@ -81,7 +81,7 @@ class SpecialAccountManager extends SpecialPage {
 
 		$wgOut->addHTML( "</table>\n" );
 		$wgOut->addHTML( "<div id=\"userprops-submit\">\n".
-			Xml::hidden( 'action', 'submit' ).
+			Html::hidden( 'action', 'submit' ).
 			Xml::element( 'input', array(
 				'type' => 'submit',
 				'value' => wfMsg( 'nss-save-changes' )
@@ -124,7 +124,7 @@ class SpecialAccountManager extends SpecialPage {
 
 		$wgOut->addHTML( "</table>\n" );
 		$wgOut->addHTML( "<div id=\"newaccount-submit\">\n".
-			Xml::hidden( 'action', 'create' ).
+			Html::hidden( 'action', 'create' ).
 			Xml::checkLabel( wfMsg( 'nss-no-mail' ), 'nss-no-mail', 'nss-no-mail' ).
 			"<br />\n".
 			Xml::element( 'input', array(
@@ -140,7 +140,7 @@ class SpecialAccountManager extends SpecialPage {
 		) );
 		$wgOut->addHTML( "<div id=\"newaccount-raw\">\n".
 			Xml::textarea( 'nss-create-account-raw', '' )."\n".
-			Xml::hidden( 'action', 'create-raw' ).
+			Html::hidden( 'action', 'create-raw' ).
 			Xml::checkLabel( wfMsg( 'nss-no-mail' ), 'nss-no-mail', 'nss-no-mail' ).
 			"<br />\n".
 			Xml::element( 'input', array(
