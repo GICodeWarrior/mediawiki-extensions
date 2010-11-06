@@ -19,6 +19,15 @@ $messages['en'] = array(
 	'pdfbook-desc' => 'Composes a book from pages in a category and exports as a PDF book',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'pdfbook-action' => 'Druk as PDF',
+	'pdfbook-log' => "$1 is as 'n PDF-boek geëksporteer",
+	'pdfbook-desc' => "Maak 'n boek van bladsye in 'n kategorie en eksporteer as 'n PDF-boek",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -26,6 +35,24 @@ $messages['de'] = array(
 	'pdfbook-action' => 'Als PDF-Datei ausgeben',
 	'pdfbook-log' => '$1 wurde als Zusammenstellung in einer PDF-Datei erstellt',
 	'pdfbook-desc' => 'Ermöglicht die Erstellung von PDF-Dateien einzelner Seiten oder eine Zusammenstellung aller in einer Kategorie vorhandenen Seiten in einer PDF-Datei',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'pdfbook-action' => 'PDF gisa inprimatu',
+	'pdfbook-log' => '$1 PDF liburu bezala esportatu da',
+	'pdfbook-desc' => 'Kategoria bateko orriak hartu eta PDF liburu gisa esportatzen ditu',
+);
+
+/** French (Français)
+ * @author Jean-Frédéric
+ */
+$messages['fr'] = array(
+	'pdfbook-action' => 'Imprimer au format PDF',
+	'pdfbook-log' => '$1 exporté sous forme de livre PDF',
+	'pdfbook-desc' => 'Compose un livre à partir des pages d’une catégorie et exporte comme un livre au format PDF',
 );
 
 /** Galician (Galego)
@@ -62,6 +89,15 @@ $messages['ia'] = array(
 	'pdfbook-action' => 'Imprimer como PDF',
 	'pdfbook-log' => '$1 exportate como libro in PDF',
 	'pdfbook-desc' => 'Compone un libro ex paginas in un categoria e exporta lo como libro in PDF',
+);
+
+/** Japanese (日本語)
+ * @author Iwai.masaharu
+ */
+$messages['ja'] = array(
+	'pdfbook-action' => 'PDF として印刷する',
+	'pdfbook-log' => '$1 を PDF ブックとしてエクスポート',
+	'pdfbook-desc' => 'カテゴリ内のページから本を構築し、PDF ブックとしてエクスポートする',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
