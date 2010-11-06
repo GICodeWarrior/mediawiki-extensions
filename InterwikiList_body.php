@@ -48,7 +48,7 @@ class InterwikiList extends SpecialPage {
 		$results = $dbr->select( 'interwiki', array( 'iw_prefix', 'iw_url' ), $conds );
 
 		$form = Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get', 'id' => 'interwikilist-search' ) ) .
-				Xml::hidden( 'title', $this->mTitle->getPrefixedText() ) .
+				Html::hidden( 'title', $this->mTitle->getPrefixedText() ) .
 				Xml::inputLabel( wfMsg('interwikilist-prefix'), 'iwsearch', 'interwikilist-prefix', false, $prefix  ) .
 				Xml::submitButton( wfMsg('search') ) .
 				Xml::closeElement( 'form' );
