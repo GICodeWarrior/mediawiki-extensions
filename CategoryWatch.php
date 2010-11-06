@@ -215,11 +215,7 @@ class CategoryWatch {
 				# Replace keys, wrap text and send
 				$body = strtr( $body, $keys );
 				$body = wordwrap( $body, 72 );
-				if ( function_exists( 'userMailer' ) ) {
-					userMailer( $to, $from, $subject, $body, $replyto );
-				} else {
-					UserMailer::send( $to, $from, $subject, $body, $replyto );
-				}
+				UserMailer::send( $to, $from, $subject, $body, $replyto );
 			}
 		}
 
