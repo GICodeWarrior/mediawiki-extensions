@@ -88,6 +88,19 @@ $messages['af'] = array(
 	'wikisync_js_revision' => 'Weergawe $1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'wikisync_remote_login_button' => 'Kevreañ',
+	'wikisync_sync_files' => 'Sinkronelañ restroù',
+	'wikisync_synchronization_button' => 'Sinkronaat',
+	'wikisync_log_imported_by' => 'Enporzhiet gant [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Karget gant [[Special:WikiSync|WikiSync]]',
+	'wikisync_api_result_Blocked' => 'Implijer stanket',
+	'wikisync_js_revision' => 'Adweladenn $1',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -431,6 +444,46 @@ vanaf versie $3?',
 	'wikisync_js_diff_search' => 'Op zoek naar verschillen in doelversies',
 	'wikisync_js_revision' => 'versie $1',
 	'wikisync_js_file_size_mismatch' => 'De grootte van het tijdelijke bestand "$1" ($2 bytes) komt niet overeen met de vereiste grootte ($3 bytes). Controleer dat het bestand "$4" niet handmatig overschreven is in de bronwiki.',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wikisync' => 'Synchronizacja wiki',
+	'wikisync-desc' => 'Dodaje [[Special:WikiSync|stronę specjalną]] służącą do synchronizacji ostatnich zmian pomiędzy dwoma wiki – lokalną i zdalną',
+	'wikisync_direction' => 'Wybierz kierunek synchronizacji',
+	'wikisync_local_root' => 'Katalog główny witryny lokalnej wiki',
+	'wikisync_remote_root' => 'Katalog główny witryny zdalnej wiki',
+	'wikisync_remote_log' => 'Rejestr operacji zdalnych',
+	'wikisync_clear_log' => 'Wyczyść rejestr',
+	'wikisync_login_to_remote_wiki' => 'Zaloguj się do zdalnej wiki',
+	'wikisync_remote_wiki_root' => 'Katalog główny zdalnej wiki',
+	'wikisync_remote_wiki_example' => 'Ścieżka do „api.php”, na przykład „http://www.mediawiki.org/w”',
+	'wikisync_remote_wiki_user' => 'Nazwa użytkownika zdalnej wiki',
+	'wikisync_remote_wiki_pass' => 'Hasło do zdalnej wiki',
+	'wikisync_remote_login_button' => 'Zaloguj się',
+	'wikisync_sync_files' => 'Synchronizuj pliki',
+	'wikisync_synchronization_button' => 'Synchronizuj',
+	'wikisync_log_imported_by' => 'Zaimportowane przez [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Przesłane przez [[Special:WikiSync|WikiSync]]',
+	'wikisync_api_result_unknown_action' => 'Nieznane działanie API',
+	'wikisync_api_result_exception' => 'Wystąpił wyjątek w lokalnym wywołaniu API',
+	'wikisync_api_result_noaccess' => 'Tylko członkowie następujących grup mogą wykonać tę akcję: $1',
+	'wikisync_api_result_invalid_parameter' => 'Nieprawidłowa wartość parametru',
+	'wikisync_api_result_http' => 'Wystąpił błąd HTTP podczas zapytania o dane ze zdalnego API',
+	'wikisync_api_result_Unsupported' => 'Ta wersja MediaWiki nie jest wspierana (niższa od 1.15)',
+	'wikisync_api_result_NoName' => 'Nie ustawiłeś parametru „lgname”',
+	'wikisync_api_result_Illegal' => 'Podałeś niedopuszczalną nazwę użytkownika',
+	'wikisync_api_result_NotExists' => 'Nie istnieje użytkownik o nazwie, którą podałeś',
+	'wikisync_api_result_EmptyPass' => 'Nie ustawiłeś wartości parametru „lgpassword” lub pozostawiłeś ją pustą',
+	'wikisync_api_result_WrongPass' => 'Podane hasło jest nieprawidłowe',
+	'wikisync_api_result_WrongPluginPass' => 'Podane hasło jest nieprawidłowe',
+	'wikisync_api_result_CreateBlocked' => 'Wiki próbowała utworzyć dla Ciebie nowe konto, ale dla Twojego adresu IP zablokowano możliwość tworzenia kont',
+	'wikisync_api_result_Throttled' => 'Zalogowałeś się zbyt wiele razy w zbyt krótkim przedziale czasu.',
+	'wikisync_api_result_Blocked' => 'Użytkownik jest zablokowany',
+	'wikisync_api_result_mustbeposted' => 'Moduł logowania wymaga użycia metody POST',
+	'wikisync_api_result_NeedToken' => 'Brak żetonu logowania lub ciasteczka z identyfikatorem sesji. Ponów zapytanie z żetonem oraz ciasteczkiem podanych w tej odpowiedzi',
 );
 
 /** Russian (Русский)
