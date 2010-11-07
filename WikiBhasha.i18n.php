@@ -42,6 +42,13 @@ $messages['be-tarask'] = array(
 	'wikibhasha-desc' => 'Дастасаваньне для стварэньня шматмоўнага зьместу, які выкарыстоўвае зьмест ангельскай Вікіпэдыі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'wikibhasha-desc' => 'Ur poellad evit krouiñ danvez liesyezhek, diazezet war danvez ar Wikipedia saoznek',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
