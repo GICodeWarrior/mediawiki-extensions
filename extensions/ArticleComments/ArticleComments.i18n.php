@@ -20,11 +20,11 @@ $messages['en'] = array(
 	'article-comments-submit-button' => 'Submit',
 	'article-comments-leave-comment-link' => 'Leave a comment ...',
 	'article-comments-invalid-field' => 'The $1 provided <nowiki>[$2]</nowiki> is invalid.',
-	'article-comments-required-field' => '$1 field is required.',
+	'article-comments-required-field' => '"$1" field is required.',
 	'article-comments-submission-failed' => 'Comment submission failed',
 	'article-comments-failure-reasons' => 'Sorry, your comment submission failed for the following {{PLURAL:$1|reason|reasons}}:',
 	'article-comments-no-comments' => 'Sorry, the page "[[$1]]" is not accepting comments at this time.',
-	'article-comments-talk-page-starter' => "<noinclude>Comments on [[$1]]\n<comments />\n----- __NOEDITSECTION__</noinclude>\n",
+	'article-comments-talk-page-starter' => "<noinclude>Comments on \"[[$1]]\"\n<comments />\n----- __NOEDITSECTION__</noinclude>\n",
 	'article-comments-commenter-said' => '$1 said ...',
 	'article-comments-summary' => 'Comment provided by $1 - via ArticleComments extension',
 	'article-comments-submission-succeeded' => 'Comment submission succeeded',
@@ -53,8 +53,11 @@ $messages['qqq'] = array(
 	'article-comments-comment-string' => '{{Identical|Comment}}',
 	'article-comments-comment-field' => '{{Identical|Comment}}',
 	'article-comments-submit-button' => '{{Identical|Submit}}',
-	'article-comments-invalid-field' => 'Shown as a list below {{msg-mw|article-comments-failure-reasons}}. With $1 being {{msg-mw|article-comments-title-string}} or {{msg-mw|article-comments-url-string}} messages, and $2 the wrong value.',
-	'article-comments-required-field' => 'Shown as a list below article-comments-failure-reasons. With $1 being one of article-comments-*-string messages.',
+	'article-comments-invalid-field' => 'Shown as a list below {{msg-mw|article-comments-failure-reasons}}. Parameters:
+* $1 is {{msg-mw|article-comments-title-string}} or {{msg-mw|article-comments-url-string}}
+* $2 is the incorrect value.',
+	'article-comments-required-field' => 'Shown as a list below article-comments-failure-reasons. Parameters:
+* $1 being is one of {{msg-mw|article-comments-title-string}}, {{msg-mw|article-comments-name-string}}, {{msg-mw|article-comments-url-string}}, {{msg-mw|article-comments-comment-string}}.',
 	'article-comments-submission-failed' => 'Page title when there are errors in the comment submission',
 	'article-comments-talk-page-starter' => 'Keep the wikisyntax as is.',
 	'article-comments-comment-bad-mode' => '{{doc-important|Do not translate the words "plain", "normal" and "wiki".}}',
