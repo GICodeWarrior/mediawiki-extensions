@@ -153,7 +153,10 @@ class CategoryWatch {
 
 		# Wrap message with common body and send to each watcher
 		$page           = $title->getPrefixedText();
-		$adminAddress   = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
+		# $wgPasswordSenderName was introduced only in MW 1.17
+		global $wgPasswordSenderName;
+		$adminAddress   = new MailAddress( $wgPasswordSender,
+			isset( $wgPasswordSenderName ) ? $wgPasswordSenderName : 'WikiAdmin' );
 		$editorAddress  = new MailAddress( $editor );
 		$summary        = $summary ? $summary : ' - ';
 		$medit          = $medit ? wfMsg( 'minoredit' ) : '';
