@@ -76,10 +76,11 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'geolite-desc' => 'Ailgyfeiriad GeoIP Pwysau Ysgafn',
+	'geolite-desc' => 'Ailgyfeirio GeoIP Ysgafn',
 );
 
 /** German (Deutsch)
