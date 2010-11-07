@@ -48,10 +48,11 @@ $messages['ca'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'firefoggcu-desc' => 'Protocol Chunked Uwchlwytho Firefogg',
+	'firefoggcu-desc' => "Protocol Firefogg i Uwchlwytho'n Dalpiau",
 );
 
 /** German (Deutsch)

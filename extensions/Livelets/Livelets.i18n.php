@@ -86,6 +86,13 @@ $messages['gsw'] = array(
 	'livelets-desc' => 'Macht s megli, Syte in andri Syte yyzfiege, wu noch em eigetlige Syteinhalt glade wäre un wu dynamisch mit Hilf vu Ajax aktualisiert chenne wäre',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'livelets-desc' => 'Zmóžnja transkludowanje stronow, kotrež so po hłownym wobsahu začituja a móže dynamisce přez Ajax aktualizować',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

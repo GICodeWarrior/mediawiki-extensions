@@ -428,6 +428,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Persianizer
  */
 $messages['fa'] = array(
 	'importfreeimages' => 'وارد کردن تصاویر آزاد',
@@ -437,6 +438,12 @@ $messages['fa'] = array(
 	'importfreeimages_owner' => 'خالق',
 	'importfreeimages_importthis' => 'این را وارد کن',
 	'importfreeimages_next' => '$1 بعدی',
+	'importfreeimages_size_square' => 'مربع',
+	'importfreeimages_size_thumbnail' => 'بندانگشتی',
+	'importfreeimages_size_small' => 'کوچک',
+	'importfreeimages_size_medium' => 'متوسط',
+	'importfreeimages_size_large' => 'بزرگ',
+	'importfreeimages_size_original' => 'اصلی',
 );
 
 /** Finnish (Suomi)

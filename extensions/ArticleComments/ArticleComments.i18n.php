@@ -197,7 +197,7 @@ $messages['br'] = array(
 	'article-comments-invalid-field' => 'An $1 roet <nowiki>[$2]</nowiki> zo direizh.',
 	'article-comments-required-field' => 'Rekis eo leuniañ ar vaezienn $1.',
 	'article-comments-submission-failed' => "C'hwitet eo bet kasadenn ar vurutelladenn",
-	'article-comments-failure-reasons' => "Ho tigarez, setu perak n'eus ket bet gallet kas ho purutelladenn :",
+	'article-comments-failure-reasons' => "Ho tigarez, n'eus ket bet gallet kas hoc'h evezhiadenn evit an {{PLURAL:$1|abeg|abegoù}} da-heul :",
 	'article-comments-no-comments' => 'Ho tigarez, n\'haller ket kas burutelladennoù diwar-benn ar pennad "[[$1]]" evit c\'hoazh.',
 	'article-comments-talk-page-starter' => '<noinclude>Evezhiadennoù war [[$1]]
 <comments />
@@ -559,6 +559,7 @@ $messages['he'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'article-comments-desc' => 'Megjegyzések szakasz a tartalommal rendelkező lapokra',
@@ -579,7 +580,7 @@ $messages['hu'] = array(
 	'article-comments-talk-page-starter' => '<noinclude>Hozzászólások a(z) [[$1]] laphoz
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
-	'article-comments-commenter-said' => '$1 írta ...',
+	'article-comments-commenter-said' => '$1 írta …',
 	'article-comments-submission-succeeded' => 'A hozzászólás elküldése sikerült',
 	'article-comments-submission-success' => 'Sikeresen hozzászóltál a(z) „[[$1]]” című laphoz',
 	'article-comments-submission-view-all' => '[[$1|A lap összes hozzászólásának]] megtekintése',

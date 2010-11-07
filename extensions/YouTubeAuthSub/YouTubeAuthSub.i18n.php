@@ -3478,7 +3478,7 @@ $messages['te'] = array(
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'ఒక వీడియోని ఎగుమతి చేయడానికి, మీరు ముందు యూట్యూబు లోనికి ప్రవేశించాల్సివుంటుంది.',
 	'youtubeauthsub_uploadhere' => 'మీ వీడియోని ఇక్కడ నుండి ఎగుమతి చేయండి:',
-	'youtubeauthsub_uploadbutton' => 'ఎగుమతిచెయ్యండి',
+	'youtubeauthsub_uploadbutton' => 'ఎక్కించు',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 ఈ వీడియోని [http://www.youtube.com/watch?v=$1 ఇక్కడ] చూడవచ్చు',
