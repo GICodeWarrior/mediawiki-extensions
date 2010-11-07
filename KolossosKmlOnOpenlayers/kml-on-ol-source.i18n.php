@@ -62,6 +62,18 @@ $messages['be-tarask'] = array(
 	'ts-kml-on-ol-map-by' => 'Мапа',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'ts-kml-on-ol-options' => 'Dibarzhioù',
+	'ts-kml-on-ol-languages' => 'Yezhoù',
+	'ts-kml-on-ol-thumbnails' => 'Munudoù',
+	'ts-kml-on-ol-help' => 'Skoazell',
+	'ts-kml-on-ol-all' => 'Pep tra',
+	'ts-kml-on-ol-map-by' => 'Kartenn savet gant',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
