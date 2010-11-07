@@ -43,6 +43,7 @@ $wgHooks['LanguageGetSpecialPageAliases'][] = 'AdvancedSearchLocalizedPageName';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'AdvancedSearchSchemaUpdate';
 $wgHooks['LinksUpdate'][] = 'AdvancedSearchCategoryIntersector::LinksUpdate';
 $wgHooks['ArticleDeleteComplete'][] = 'AdvancedSearchCategoryIntersector::ArticleDeleteComplete';
+$wgHooks['ParserTestTables'][] = 'AdvancedSearchAddTable';
 
 function AdvancedSearchLocalizedPageName( &$specialPageArray, $code ) {
 	wfLoadExtensionMessages( 'AdvancedSearch' );
@@ -61,5 +62,10 @@ function AdvancedSearchSchemaUpdate( $updater = null ) {
 	} else {
 		$updater->addExtensionUpdate( array( 'addTable', 'categorysearch', $dir . 'categorysearch.sql', true ) );
 	}
+	return true;
+}
+
+function AdvancedSearchAddTable( &$tables ) {
+	$tables[] = 'categorysearch';
 	return true;
 }
