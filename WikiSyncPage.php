@@ -154,7 +154,9 @@ class WikiSyncPage extends SpecialPage {
 				),
 				array( '__tag'=>'tr',
 					array( '__tag'=>'td', 'colspan'=>'2',
-						array( '__tag'=> 'iframe', 'id'=>'wikisync_iframe', 'style' => 'width:100%; height:200px; display:none; ' )
+						// Have to explicitly set empty contents for the iframe, or we'll produce
+						// <iframe /> which browsers consider an unclosed tag
+						array( '__tag'=> 'iframe', 'id'=>'wikisync_iframe', 'style' => 'width:100%; height:200px; display:none; ', '' )
 					)
 				)
 			);
