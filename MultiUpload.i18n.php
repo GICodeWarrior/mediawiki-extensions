@@ -516,6 +516,7 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author BlueDevil
  * @author Huji
+ * @author Persianizer
  */
 $messages['fa'] = array(
 	'multipleupload' => 'بارگذاری چندین پرونده',
@@ -534,6 +535,8 @@ $messages['fa'] = array(
 پرونده‌های نامناسب فوراً حذف خواهند شد، [[{{MediaWiki:Multipleupload-page}}|سیاست حذف تصاویر]] را ببینید.",
 	'multiupload-fileuploaded' => 'پرونده بارگذاری شد.',
 	'multiupload-toolbox' => 'بارگذاری چندین پرونده',
+	'multiupload-no-files' => 'لطفا حداقل یک پرونده را برای بارگذاری انتخاب کنید',
+	'multiupload-blank' => 'پرونده‌ای گزینش نشده',
 );
 
 /** Finnish (Suomi)
