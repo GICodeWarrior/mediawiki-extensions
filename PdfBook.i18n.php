@@ -28,6 +28,15 @@ $messages['af'] = array(
 	'pdfbook-desc' => "Maak 'n boek van bladsye in 'n kategorie en eksporteer as 'n PDF-boek",
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'pdfbook-action' => 'Moullañ er furmad PDF',
+	'pdfbook-log' => '$1 enporzhiet dindan stumm ul levr PDF',
+	'pdfbook-desc' => "A sav ul levr adalek pajennoù ur rummad hag ec'h enporzh anezhañ evel ul levr er furmad PDF",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
