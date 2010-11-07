@@ -948,11 +948,12 @@ Prosím, poraďte se se [[Special:ListUsers/sysop|správcem]].',
 	'openidrequired' => 'Požadované',
 	'openidnickname' => 'Přezdívka',
 	'openidfullname' => 'Celé jméno',
-	'openidemail' => 'E-mailová adresa:',
+	'openidemail' => 'E-mailová adresa',
 	'openidlanguage' => 'Jazyk',
 	'openidtimezone' => 'Časové pásmo',
 	'openidchooselegend' => 'Volba uživatelského jména',
 	'openidchooseinstructions' => 'Kyždý uživatel musí mít přezdívku; můžete si vybrat z níže uvedených možností.',
+	'openidchoosenick' => 'Vaše přezdívka ($1)',
 	'openidchoosefull' => 'Vaše celé jméno ($1)',
 	'openidchooseurl' => 'Jméno na základě vašeho OpenID ($1)',
 	'openidchooseauto' => 'Automaticky vytvořené jméno ($1)',
@@ -966,9 +967,9 @@ Prosím, poraďte se se [[Special:ListUsers/sysop|správcem]].',
 	'openidconvertsuccesstext' => 'Úspěšně jste převedli váš OpenID na $1.',
 	'openidconvertyourstext' => 'To už je váš OpenID.',
 	'openidconvertothertext' => 'To je OpenID někoho jiného.',
-	'openidalreadyloggedin' => "'''Už jste přihlášený, $1!'''
+	'openidalreadyloggedin' => "'''Už jste {{GENDER:$1|přihlášen, uživateli|přihlášena, uživatelko|přihlášen, uživateli}} $1!'''
 
-Pokud chcete pro přihlašování v budoucnu používat OpenID, můžete [[Special:OpenIDConvert|převést váš účet na OpenID]].",
+Pokud chcete pro přihlašování v budoucnu používat OpenID, můžete [[Special:OpenIDConvert|svůj účet převést na OpenID]].",
 	'openidnousername' => 'Nebylo zadáno uživatelské jméno.',
 	'openidbadusername' => 'Bylo zadáno chybné uživatelské jméno.',
 	'openidautosubmit' => 'Tato stránka obsahuje formulář, který by měl být automaticky odeslán pokud máte zapnutý JavaScript.
@@ -988,10 +989,14 @@ Existuje množství [http://openid.net/get/ poskytovatelů OpenID], možná už 
 	'openiddelete-text' => 'Kliknutím na tlačítko „{{int:openiddelete-button}}“ odstraníte OpenID $1 z vašeho účtu.
 Nebudete se již moci tímto OpenID přihlasít.',
 	'openiddelete-button' => 'Potvrdit',
+	'openiddeleteerrornopassword' => 'Nemůžete smazat všechna svá OpenID, protože váš účet nemá heslo.
+Bez OpenID byste se {{GENDER:|nebyl schopen|nebyla schopna|nebyli schopni}} přihlásit.',
+	'openiddeleteerroropenidonly' => 'Nemůžete smazat všechna svá OpenID, protože přihlášení je dovoleno pouze pomocí OpenID.
+Bez OpenID byste se {{GENDER:|nebyl schopen|nebyla schopna|nebyli schopni}} přihlásit.',
 	'openiddelete-sucess' => 'OpenID bylo úspěšně odstraněno z vašeho účtu.',
 	'openiddelete-error' => 'Během odstraňování OpenID z vašeho účtu se vyskytla chyba.',
 	'openid-prefstext' => 'Nastavení [http://openid.net/ OpenID]',
-	'openid-pref-hide' => 'Nezobrazovat váš OpenID na vaší uživatelské stránce pokud se přihlašujete pomocí OpenID.',
+	'openid-pref-hide' => 'Nezobrazovat OpenID na vaší uživatelské stránce, pokud se přihlašujete pomocí OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Aktualizovat následující informace z OpenID identity vždy, když se přihlásím:',
 	'openid-urls-desc' => 'OpenID asociovaná s vaším účtem:',
 	'openid-urls-action' => 'Operace',
