@@ -999,6 +999,7 @@ $messages['he'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'fbconnect' => 'Facebook Connect',
@@ -1048,7 +1049,7 @@ $1",
 	'fbconnect-choosefull' => 'A teljes neved ($1)',
 	'fbconnect-chooseauto' => 'Automatikusan generált név ($1)',
 	'fbconnect-choosemanual' => 'A választott név:',
-	'fbconnect-chooseexisting' => 'Már létező fiók',
+	'fbconnect-chooseexisting' => 'Már létező fiók ezen a wikin',
 	'fbconnect-chooseusername' => 'Felhasználónév:',
 	'fbconnect-choosepassword' => 'Jelszó:',
 	'fbconnect-updateuserinfo' => 'A következő személyes adatok frissítése:',
