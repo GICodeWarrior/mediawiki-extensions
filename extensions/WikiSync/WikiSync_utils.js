@@ -1,4 +1,4 @@
-var WikiSyncUtils = {
+window.WikiSyncUtils = {
 	// browser-independent addevent function
 	addEvent : function ( obj, type, fn ) {
 		if ( document.getElementById && document.createTextNode ) {
@@ -38,7 +38,7 @@ var WikiSyncUtils = {
  * percents indicator class
  * @param id - id of table container for percents indicator
  */
-function WikiSyncPercentsIndicator( id ) {
+window.WikiSyncPercentsIndicator = function( id ) {
 	this.topElement = document.getElementById( id );
 	var tr1 = this.topElement.firstChild.firstChild;
 	// description line will be stored there

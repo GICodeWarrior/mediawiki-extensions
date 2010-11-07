@@ -33,7 +33,7 @@
  * @addtogroup Extensions
  */
 
-var WikiSync = {
+window.WikiSync = {
 
 	_WikiSync : '', // WikiSync context
 
@@ -969,4 +969,4 @@ var WikiSync = {
 
 }
 
-WikiSyncUtils.addEvent(window,"load",WikiSync.onloadHandler);
+WikiSyncUtils.addEvent(window,"load", WikiSync.onloadHandler);
