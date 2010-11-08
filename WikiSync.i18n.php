@@ -484,6 +484,28 @@ $messages['pl'] = array(
 	'wikisync_api_result_Blocked' => 'Użytkownik jest zablokowany',
 	'wikisync_api_result_mustbeposted' => 'Moduł logowania wymaga użycia metody POST',
 	'wikisync_api_result_NeedToken' => 'Brak żetonu logowania lub ciasteczka z identyfikatorem sesji. Ponów zapytanie z żetonem oraz ciasteczkiem podanych w tej odpowiedzi',
+	'wikisync_api_result_no_import_rights' => 'Ten użytkownik nie ma możliwości importu plików zrzutu w formacie XML',
+	'wikisync_api_result_Success' => 'Zalogowano do zdalnej wiki',
+	'wikisync_js_last_op_error' => 'Ostatnia operacja zwróciła błąd.
+
+Kod – $1.
+
+Komunikat – $2
+
+Wciśnij „OK” aby ponowić ostatnią operację',
+	'wikisync_js_synchronization_confirmation' => 'Czy na pewno chcesz zsynchronizować
+
+$2
+
+z $1
+
+rozpoczynając od wersji $3?',
+	'wikisync_js_synchronization_success' => 'Synchronizacja została zakończona',
+	'wikisync_js_already_synchronized' => 'Źródłowa i docelowa wiki wyglądają na zsynchronizowane',
+	'wikisync_js_sync_to_itself' => 'Nie możesz zsynchronizować wiki z nią samą',
+	'wikisync_js_diff_search' => 'Wyszukiwanie różnic w docelowych wersjach',
+	'wikisync_js_revision' => 'Wersja $1',
+	'wikisync_js_file_size_mismatch' => 'Rozmiar pliku tymczasowego „$1” ($2 {{PLURAL:$2|bajt|bajty|bajtów}}) jest różny od wymaganego ($3 {{PLURAL:$3|bajt|bajty|bajtów}}). Upewnij się, czy plik „$4” znajdujący się w repozytorium źródłowej wiki, nie został ręcznie nadpisany.',
 );
 
 /** Russian (Русский)
