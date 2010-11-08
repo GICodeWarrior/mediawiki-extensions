@@ -57,6 +57,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
     nr_output_processors = kwargs.pop('nr_output_processors')
     input_queues = {}
     result_queues = {}
+    
     #assert len(obj) == nr_input_processors
     #if result_queue:
     #    assert len(obj)== nr_output_processors

@@ -79,17 +79,19 @@ def retrieve_project(args):
     return project
 
 
-def generate_wikidump_filename(args):
-    return '%s-%s-%s' % (retrieve_projectname(args), 'latest', get_value(args, 'file'))
+def generate_wikidump_filename(project, args):
+    return '%s-%s-%s' % (project, 'latest', get_value(args, 'file'))
 
 
 def determine_file_locations(args):
     locations = {}
     location = get_value(args, 'location') if get_value(args, 'location') != None else settings.XML_FILE_LOCATION
-    locations['language_code'] = retrieve_language(args)
-    locations['location'] = os.path.join(location, retrieve_language(args))
+    project = retrieve_project(args)
+    language_code = retrieve_language(args)
+    locations['language_code'] = language_code
+    locations['location'] = os.path.join(location, language_code, project)
     locations['project'] = retrieve_projectname(args)
-    locations['filename'] = generate_wikidump_filename(args)
+    locations['filename'] = generate_wikidump_filename(project, args)
     return locations
 
 
@@ -189,6 +191,12 @@ def show_languages(args, location, filename, project, language_code):
         except UnicodeEncodeError:
             print '%s' % language
 
+
+def detect_python_version():
+    version = ''.join(sys.version_info[0:2])
+    if version < settings.MINIMUM_PYTHON_VERSION:
+        raise 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'  
+
 def about():
     print 'Editor Trends Software is (c) 2010 by the Wikimedia Foundation.'
     print 'Written by Diederik van Liere (dvanliere@gmail.com).'
@@ -253,6 +261,7 @@ def main():
     parser.add_argument('-prog', '--progress', action='store_true', default=True,
                       help='Indicate whether you want to have a progressbar.')
 
+    detect_python_version()
     args = parser.parse_args()
     config.load_configuration(args)
     locations = determine_file_locations(args)

@@ -41,6 +41,7 @@ WORKING_DIRECTORY = os.getcwd()
 IGNORE_DIRS = ['wikistats', 'zips']
 ROOT = '/' if OS != 'Windows' else 'c:\\'
 
+MINIMUM_PYTHON_VERSION = 2.6
 
 dirs = [name for name in os.listdir(WORKING_DIRECTORY) if
         os.path.isdir(os.path.join(WORKING_DIRECTORY, name))]

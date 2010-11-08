@@ -86,24 +86,9 @@ class EditorCache(object):
 
             if self.editors[key]['obs'] == self.treshold:
                 self.treshold_editors.add(key)
-#            self.update(key, self.editors[key]['edits'])
-#            del self.editors[key]
-#            self.n -= 10
-#            self.number_editors -= 1
 
     def update(self, editor, values):
-        #t = datetime.datetime.now()
         self.collection.update({'editor': editor}, {'$pushAll': {'edits': values}}, upsert=True)
-        #print 'It took %s to store editor %s;and the cache contains %s editors and %s items' % (datetime.datetime.now() - t, editor, self.number_editors, self.n)
-
-    def quick_sort(self, obs):
-        if obs == []:
-            return []
-        else:
-            pivot = obs[0]
-            lesser = self.quick_sort([x for x in obs[1:] if x < pivot])
-            greater = self.quick_sort([x for x in obs[1:] if x >= pivot])
-            return lesser + [pivot] + greater
 
     def store(self):
         utils.store_object(self, settings.BINARY_OBJECT_FILE_LOCATION, self.__repr__())

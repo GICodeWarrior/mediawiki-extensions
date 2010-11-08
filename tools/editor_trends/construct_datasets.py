@@ -126,11 +126,11 @@ def retrieve_edits_by_contributor_launcher():
     pc.build_scaffolding(pc.load_queue, retrieve_edits_by_contributor, 'contributors')
 
 
-def debug_retrieve_edits_by_contributor_launcher():
+def debug_retrieve_edits_by_contributor_launcher(dbname):
     kwargs = {'debug': False,
-              'dbname': 'enwiki',
+              'dbname': dbname,
               }
-    ids = retrieve_editor_ids_mongo('enwiki', 'editors')
+    ids = retrieve_editor_ids_mongo(dbname, 'editors')
     input_queue = pc.load_queue(ids)
     q = Queue()
     generate_editor_dataset(input_queue, q, False, kwargs)
@@ -159,7 +159,6 @@ def generate_editor_dataset_launcher(dbname):
 def generate_editor_dataset_debug(dbname):
     ids = retrieve_editor_ids_mongo(dbname, 'editors')
     input_queue = pc.load_queue(ids)
-    #write_dataset(input_queue, [], 'enwiki')
     kwargs = {'nr_input_processors': 1,
               'nr_output_processors': 1,
               'debug': True,

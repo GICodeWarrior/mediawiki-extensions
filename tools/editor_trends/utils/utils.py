@@ -132,6 +132,11 @@ def extract_offending_string(text, error):
 
 # read / write data related functions
 def read_data_from_csv(filename, encoding):
+    '''
+    @filename is the path (either absolute or relative) including the name of
+    of the file
+    @encoding is usually utf-8 
+    '''
     if hasattr(filename, '__call__'):
         filename = construct_filename(filename)
 
@@ -156,6 +161,10 @@ def determine_file_extension(filename):
 
 
 def determine_file_mode(extension):
+    '''
+    Checks if a given extension is an ASCII extension or not. The settings file
+    provides known ASCII extensions. 
+    '''
     if extension in settings.ASCII:
         return 'w'
     else:
@@ -163,15 +172,30 @@ def determine_file_mode(extension):
 
 
 def write_list_to_csv(data, fh, recursive=False):
+    '''
+    @data is a list which can contain other lists that will be written as a
+    single line to a textfile
+    @fh is a handle to an open text
+    
+    The calling function is responsible for:
+        1) writing a newline
+        2) closing the filehandle
+    '''
+    tab = False
     if recursive:
         recursive = False
-    for d in data:
+    for x, d in enumerate(data):
+        if tab:
+            fh.write('\t')
         if type(d) == type([]):
             recursive = write_list_to_csv(d, fh, True)
         else:
-            fh.write('%s\t' % d)
+            fh.write('%s' % d)
+            tab = True
     if recursive:
+        tab = False
         return True
+    fh.write('\n')
 
     
 def write_dict_to_csv(data, fh):
@@ -267,31 +291,37 @@ def invert_dict(dictionary):
 
 
 def create_dict_from_csv_file(filename, encoding):
+    '''
+    Constructs a dictionary from a txtfile
+    '''
     d = {}
     for line in read_data_from_csv(filename, encoding):
         line = clean_string(line)
         value, key = line.split('\t')
         d[key] = value
-
     return d
 
 
-def retrieve_file_list(location, extension, mask=''):
+def retrieve_file_list(location, extension, mask=None):
     '''
     Retrieve a list of files from a specified location.
     @location: either an absolute or relative path
     @extension: only include files with extension (optional)
-    @mask: only include files that start with mask (optional)
+    @mask: only include files that start with mask (optional), this is
+    interpreted as a regular expression. 
     
     @return: a list of files matching the criteria
     '''
+    if mask:
+        mask = re.compile(mask)
+    else:
+        mask = re.compile('[\w\d*]')
     all_files = os.listdir(location)
-    if not extension.startswith('.'):
-        extension = '.' + extension
     files = []
     for file in all_files:
-        if file.startswith(mask) and file.endswith(extension):
-            files.append(file)
+        file = file.split('.')
+        if re.match(mask, file[0]) and file[1].endswith(extension):
+            files.append('.'.join(file))
     return files
 
 

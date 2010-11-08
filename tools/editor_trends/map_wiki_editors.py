@@ -88,20 +88,22 @@ def extract_contributor_id(contributor, kwargs):
                 return - 1
 
 
-def output_editor_information(elem, data_queue, **kwargs):
+def output_editor_information(elem, output, **kwargs):
     '''
     @elem is an XML element containing 1 revision from a page
-    @data_queue is where to store the data
+    @output is where to store the data, either a queue or a filehandle
     @**kwargs contains extra information 
     
     the variable tags determines which attributes are being parsed, the values in
     this dictionary are the functions used to extract the data. 
     '''
-    tags = {'contributor': {'editor': extract_contributor_id, 'bot': determine_username_is_bot},
+    tags = {'contributor': {'editor': extract_contributor_id,
+                            'bot': determine_username_is_bot},
             'timestamp': {'date': xml.extract_text},
             }
     vars = {}
-
+    headers = ['editor', 'date', 'article']
+    destination = kwargs.pop('destination')
     revisions = elem.findall('revision')
     for revision in revisions:
         vars['article'] = elem.find('id').text.decode(settings.ENCODING)
@@ -114,12 +116,19 @@ def output_editor_information(elem, data_queue, **kwargs):
         #print '%s\t%s\t%s\t%s\t' % (vars['article'], vars['contributor'], vars['timestamp'], vars['bot'])
         if vars['bot'] == 0 and vars['editor'] != -1 and vars['editor'] != None:
             vars.pop('bot')
-            vars['date'] = utils.convert_timestamp_to_date(vars['date'])
-            data_queue.put(vars)
+            if destination == 'queue':
+                output.put(vars)
+                vars['date'] = utils.convert_timestamp_to_date(vars['date'])
+            elif destination == 'file':
+                data =[]
+                for head in headers:
+                    data.append(vars[head])
+                utils.write_list_to_csv(data, output)
+                output.write('\n')
         vars = {}
 
 
-def parse_editors(xml_queue, data_queue, pbar, bots, **kwargs):
+def parse_editors(xml_queue, output, pbar, bots, **kwargs):
     '''
     @xml_queue contains the filenames of the files to be parsed
     @data_queue is an instance of Queue where the extracted data is stored for 
@@ -130,8 +139,10 @@ def parse_editors(xml_queue, data_queue, pbar, bots, **kwargs):
     
     Output is the data_queue that will be used by store_editors() 
     '''
-    file_location = os.path.join(settings.XML_FILE_LOCATION, kwargs.get('language', 'en'))
-    debug = kwargs.get('debug', None)
+    file_location = os.path.join(settings.XML_FILE_LOCATION, kwargs.get('language', 'en'), kwargs.get('project', 'wiki'))
+    debug = kwargs.get('debug', False)
+    destination = kwargs.get('destination', 'file')
+    
     if settings.DEBUG:
         messages = {}
         vars = {}
@@ -145,9 +156,13 @@ def parse_editors(xml_queue, data_queue, pbar, bots, **kwargs):
             if file == None:
                 print 'Swallowed a poison pill'
                 break
+
             data = xml.read_input(utils.create_txt_filehandle(file_location,
                                                       file, 'r',
                                                       encoding=settings.ENCODING))
+            if destination == 'file':
+                name = file[:-4] + '.txt'
+                output = utils.create_txt_filehandle(file_location, name, 'w', settings.ENCODING)
             for raw_data in data:
                 xml_buffer = cStringIO.StringIO()
                 raw_data.insert(0, '<?xml version="1.0" encoding="UTF-8" ?>\n')
@@ -156,7 +171,7 @@ def parse_editors(xml_queue, data_queue, pbar, bots, **kwargs):
                     raw_data = ''.join(raw_data)
                     xml_buffer.write(raw_data)
                     elem = cElementTree.XML(xml_buffer.getvalue())
-                    output_editor_information(elem, data_queue, bots=bots)
+                    output_editor_information(elem, output, bots=bots, destination=destination)
                 except SyntaxError, error:
                     print error
                     '''
@@ -176,26 +191,30 @@ def parse_editors(xml_queue, data_queue, pbar, bots, **kwargs):
                     print file, error
                     print raw_data[:12]
                     print 'String was supposed to be %s characters long' % sum([len(raw) for raw in raw_data])
+            if destination == 'queue':
+                output.put('NEXT')
+                while True:
+                    if output.qsize() < 100000:
+                        break
+                    else:
+                        time.sleep(10)
+                        print 'Still sleeping, queue is %s items long' % output.qsize()
 
-            data_queue.put('NEXT')
+            else:
+                output.close()
+
             if pbar:
-                print file, xml_queue.qsize(), data_queue.qsize()
+                print file, xml_queue.qsize()
                 #utils.update_progressbar(pbar, xml_queue)
+                
             if debug:
                 break
-
-            while True:
-                if data_queue.qsize() < 100000:
-                    break
-                else:
-                    time.sleep(10)
-                    print 'Still sleeping, queue is %s items long' % data_queue.qsize()
-
+            
         except Empty:
             break
 
-    #for x in xrange(4):
-    data_queue.put(None)
+    if destination == 'queue':
+        data_queue.put(None)
 
     if settings.DEBUG:
         utils.report_error_messages(messages, parse_editors)
@@ -263,7 +282,7 @@ def search_cache_for_missed_editors(dbname):
         cache[c] = {}
         editor_cache.add('NEXT', '')
     cache = {}
-    
+
 
 
 def load_bot_ids():
@@ -279,17 +298,20 @@ def load_bot_ids():
     return ids
 
 
-def run_parse_editors(dbname, language, location):
+def run_parse_editors(location, language, project):
     ids = load_bot_ids()
     kwargs = {'bots': ids,
-              'dbname': dbname,
-              'pbar': True,
-              'nr_input_processors': 2,
-              'nr_output_processors': 2,
+              'dbname': language + project,
               'language': language,
+              'project': project,
+              'pbar': True,
+              'destination': 'file',
+              'nr_input_processors': settings.NUMBER_OF_PROCESSES,
+              'nr_output_processors': settings.NUMBER_OF_PROCESSES,
               }
     chunks = {}
-    files = utils.retrieve_file_list(location, 'xml')
+    source = os.path.join(location, language, project)
+    files = utils.retrieve_file_list(source, 'xml')
     parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
     a = 0
     for x in xrange(settings.NUMBER_OF_PROCESSES):
@@ -297,18 +319,18 @@ def run_parse_editors(dbname, language, location):
         chunks[x] = files[a:b]
         a = (x + 1) * parts
 
-    pc.build_scaffolding(pc.load_queue, parse_editors, chunks, store_editors, True, **kwargs)
-    search_cache_for_missed_editors(dbname)
+    pc.build_scaffolding(pc.load_queue, parse_editors, chunks, False, False, **kwargs)
+    #search_cache_for_missed_editors(dbname)
 
 
 def debug_parse_editors(dbname):
     q = JoinableQueue()
-    parse_editors('en\\522.xml', q, None, None, True)
+    parse_editors('522.xml', q, None, None, debug=True, destination='file')
     store_editors(q, [], dbname)
-    search_cache_for_missed_editors(dbname)
+    #search_cache_for_missed_editors(dbname)
 
 
 if __name__ == "__main__":
-    #debug_parse_editors('test')
-    run_parse_editors('test', 'en')
+    #debug_parse_editors('test2')
+    run_parse_editors(settings.XML_FILE_LOCATION, 'en', 'wiki')
     pass
