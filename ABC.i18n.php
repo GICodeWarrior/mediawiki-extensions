@@ -552,6 +552,14 @@ $messages['kw'] = array(
 	'abcdownload' => 'Iscarga:',
 );
 
+/** Kirghiz (Кыргызча)
+ * @author AidaBishkek
+ */
+$messages['ky'] = array(
+	'abc-desc' => 'ABC музыканы форматтоо үчүн <code>&lt;abc&gt;</code> тегин кошот',
+	'abcdownload' => 'Жүктө:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
