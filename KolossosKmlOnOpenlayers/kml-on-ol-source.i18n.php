@@ -74,6 +74,18 @@ $messages['br'] = array(
 	'ts-kml-on-ol-map-by' => 'Kartenn savet gant',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'ts-kml-on-ol-options' => 'Opcije',
+	'ts-kml-on-ol-languages' => 'Jezici',
+	'ts-kml-on-ol-thumbnails' => 'Smanjeni pregledi',
+	'ts-kml-on-ol-help' => 'Pomoć',
+	'ts-kml-on-ol-all' => 'Sve',
+	'ts-kml-on-ol-map-by' => 'Karta od',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
