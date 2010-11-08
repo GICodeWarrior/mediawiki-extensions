@@ -112,6 +112,13 @@ $messages['gsw'] = array(
 	'wikibhasha-desc' => 'Aawändig, wu mer Inhalt in vile Sproche cha aalege un eso d Inhalt vu dr änglische Wikipedia besser cha nutze',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'wikibhasha-desc' => 'Aplikacija za wutworjenje wjelerěčneho wobsaha za lěpše zwužitkowanje jendźelskeje Wikipedije',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
