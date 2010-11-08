@@ -202,7 +202,7 @@ def parse_editors(xml_queue, data_queue, **kwargs):
                         print 'Still sleeping, queue is %s items long' % output.qsize()
 
             else:
-                output.close()
+                fh.close()
 
             if pbar:
                 print file, xml_queue.qsize()
