@@ -37,6 +37,15 @@ $messages['br'] = array(
 	'pdfbook-desc' => "A sav ul levr adalek pajennoù ur rummad hag ec'h enporzh anezhañ evel ul levr er furmad PDF",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'pdfbook-action' => 'Štampaj kao PDF',
+	'pdfbook-log' => '$1 izvezena kao PDF knjiga',
+	'pdfbook-desc' => 'Sastavlja knjigu od stranica u kategoriji i izvozi ih kao PDF knjigu',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -152,6 +161,15 @@ $messages['pl'] = array(
 	'pdfbook-action' => 'Drukuj do PDF',
 	'pdfbook-log' => 'wyeksportowano $1 jako książkę w formacie PDF',
 	'pdfbook-desc' => 'Tworzenie książki ze stron kategorii i eksportowanie w formacie PDF',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'pdfbook-action' => 'Imprimir como PDF',
+	'pdfbook-log' => '$1 exportado como um livro PDF',
+	'pdfbook-desc' => 'Compõe um livro com as páginas de uma categoria e exporta-o como um livro PDF',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
