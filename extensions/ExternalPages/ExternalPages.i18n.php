@@ -56,12 +56,13 @@ $messages['ar'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Assele
  * @author Comp1089
  * @author Haqmar
  */
 $messages['ba'] = array(
 	'externalpages' => 'Тышҡы биттәр',
-	'externalpages-desc' => 'Викимедиа Фондының башҡа сайттарҙан биттәрҙе сыға һәм күрһәтә',
+	'externalpages-desc' => 'Викимедиа Фондының башҡа сайттарынан биттәрҙе сығара һәм күрһәтә',
 	'externalpages-bad-page' => 'Яңылыш бит күрһәтелгән',
 	'externalpages-no-page' => 'Бер бит тә күрһәтелмәгән',
 );
@@ -569,6 +570,13 @@ $messages['rue'] = array(
 	'externalpages-desc' => 'Обтримує і указує сторінкы із сторінок WMF',
 	'externalpages-bad-page' => 'Неправилно уведена сторінка',
 	'externalpages-no-page' => 'Не была уведжена сторінка',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'externalpages' => 'Тас сирэйдэр',
 );
 
 /** Slovak (Slovenčina)

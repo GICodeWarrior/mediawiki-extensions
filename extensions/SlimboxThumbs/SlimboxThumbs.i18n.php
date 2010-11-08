@@ -80,6 +80,13 @@ $messages['gsw'] = array(
 	'slimboxthumbs-desc' => 'Zeigt noch eme Klick uf e Vorschaubild d Aazeig in dr volle Greßi mit [http://www.digitalia.be/software/slimbox2 Slimbox 2]',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'slimboxthumbs-desc' => 'Zwobraznja wobrazy w połnej wulkosći z [http://www.digitalia.be/software/slimbox2 Slimbox 2], hdyž kliknješ na wobrazki',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

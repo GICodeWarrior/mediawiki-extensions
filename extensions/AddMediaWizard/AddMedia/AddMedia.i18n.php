@@ -674,7 +674,7 @@ $messages['ba'] = array(
 	'mwe-file-thumbnail-no' => 'Файлдың исеме <b><tt>$1</tt></b> тип башлана',
 	'mwe-go-to-resource' => 'Ресурстар битенә күсергә',
 	'mwe-upload-misc-error' => 'Билдәһеҙ тейәү хатаһы',
-	'mwe-wgfogg_warning_bad_extension' => 'Һеҙ ҡулланылмаған киңәйтеүле файл һайлағанһығыҙ (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">өҫтәмә мәғлүмәт</a>)',
+	'mwe-wgfogg_warning_bad_extension' => 'Һеҙ ҡулланылмаған киңәйеүле файл һайлағанһығыҙ (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">өҫтәмә мәғлүмәт</a>)',
 	'mwe-thumbnail-more' => 'Ҙурайтырға',
 	'mwe-filesource' => 'Сығанаҡ:',
 	'mwe-filestatus' => 'Авторлыҡ хоҡуғы торошо:',
@@ -795,7 +795,7 @@ $messages['ba'] = array(
 	'mwe-cc_sa_title' => 'Шул уҡ шарттар менән',
 	'mwe-cc_pd_title' => 'Дөйөк милек',
 	'mwe-unknown_license' => 'Билдәһеҙ рөхсәтнамә',
-	'mwe-no-import-by-url' => 'Был ҡатнашыусы йәки вики проект ситтәге URL адрестарҙан бер нимә лә индерә алмай.
+	'mwe-no-import-by-url' => 'Был ҡатнашыусы йәки вики проект алыҫтағы URL адрестарҙан бер нимә лә индерә алмай.
 <p>Бәлки, һеҙгә танылырға кәрәктер?</p>
 <p> upload_by_url рөхсәте һеҙгә бирелгәнме?
 Вики проектта $1 рөхсәт ителгәнме?</p>',

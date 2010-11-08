@@ -80,6 +80,17 @@ $messages['avk'] = array(
 $2 warzafa favesikpata su zo redur koe $3 ko $4.',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'newusernotifsubj' => 'Яңы $1 ҡатнашыусыһы тураһында белдереү',
+	'newusernotif-desc' => 'Яңы иҫәп яҙмалары булдырылған ваҡытта электрон почта аша белдереү ебәрә',
+	'newusernotifbody' => 'Сәләм, $1.
+
+$3 проектында $4 яңы иҫәп яҙмаһы, $2, булдырылды.',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

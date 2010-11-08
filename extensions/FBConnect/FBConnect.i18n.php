@@ -2053,6 +2053,52 @@ $messages['rue'] = array(
 	'fbconnect-language' => 'Язык',
 );
 
+/** Swedish (Svenska)
+ * @author Intima
+ */
+$messages['sv'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => 'Möjliggör för användare att [[Special:Connect|ansluta]] med sitt [http://www.facebook.com Facebook] konto. 
+ Erbjudanden autentisering baserad på Facebook grupper och användningen av FBML i wiki text',
+	'group-fb-user' => 'Facebook Connect-användare',
+	'group-fb-user-member' => 'Facebook Connect-användare',
+	'grouppage-fb-user' => '{{ns:project}}: Facebook Connect användare',
+	'group-fb-groupie' => 'Gruppmedlemmar',
+	'group-fb-groupie-member' => 'Gruppmedlemmar',
+	'grouppage-fb-groupie' => '{{Ns Project}}:Gruppmedlemmar',
+	'group-fb-officer' => 'Grupp officerare',
+	'group-fb-officer-member' => 'Grupp officerare',
+	'grouppage-fb-officer' => '{{Ns:Project}}:Grupp officerare',
+	'group-fb-admin' => 'Grupp Administratörer',
+	'group-fb-admin-member' => 'Grupp administratör',
+	'grouppage-fb-admin' => '{{Ns:Project}}:Grupp administratörer',
+	'fbconnect-connect' => 'Logga in med Facebook Connect',
+	'fbconnect-convert' => 'Anslut detta konto med Facebook',
+	'fbconnect-logout' => 'Logga ut från Facebook',
+	'fbconnect-link' => 'Tillbaka till facebook.com',
+	'fbconnect-title' => 'Anslut kontot med Facebook',
+	'fbconnect-intro' => 'Denna wiki är aktiverad med Facebook Connect, nästa evolution av Facebook-plattformen. 
+ Detta innebär att när du är ansluten, förutom de vanliga [[Wikipedia:Help:Logging in#Why log in?| fördelarna]?] Du ser när du loggar in, kommer du att kunna dra nytta av några extra funktioner ...',
+	'fbconnect-click-to-login' => 'Klicka för att logga in till denna webbplats via Facebook',
+	'fbconnect-click-to-connect-existing' => 'Klicka för att ansluta ditt Facebook-konto till $ 1',
+	'fbconnect-conv' => 'Bekvämlighet',
+	'fbconnect-convdesc' => 'Anslutna användare är automatiskt inloggade
+ Om tillåtelse ges, då denna wiki kan även använda Facebook som ett e-postmeddelande proxy så att du kan fortsätta att få viktiga meddelanden utan att avslöja din e-postadress.',
+	'fbconnect-fbml' => 'Facebook-markeringsspråk',
+	'fbconnect-fbmldesc' => 'Facebook har lämnat ett gäng inbyggda taggar som kommer att återge dynamiska data.
+Många av dessa taggar kan inkluderas i wiki text och återges på olika sätt beroende på vilken ansluten användare de betraktas av.',
+	'fbconnect-comm' => 'Kommunikation',
+	'fbconnect-commdesc' => 'Facebook Connect inleder en helt ny nivå av nätverk. 
+ Se vilka av dina vänner använder wiki, och eventuellt dela dina handlingar med dina vänner genom att komma nyhetsflödet.',
+	'fbconnect-welcome' => 'Välkomna, Facebook Connect användare!',
+	'fbconnect-loginbox' => "Eller '''login''' med Facebook:",
+	'fbconnect-merge' => 'Koppla din wiki konto med ditt Facebook-ID',
+	'fbconnect-language' => 'Språk',
+	'fbconnect-timecorrection' => 'Tidszon korrigering (timmar)',
+	'fbconnect-chooselegend' => 'Välj användarnamn',
+	'fbconnect-chooseinstructions' => 'Alla användare behöver ett smeknamn, du kan välja ett av alternativen nedan.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -362,6 +362,13 @@ $messages['kw'] = array(
 	'ajaxquerypages-desc' => 'Keworra nebes AJAX dhe folennow govyn kepar ha [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Kirghiz (Кыргызча)
+ * @author AidaBishkek
+ */
+$messages['ky'] = array(
+	'ajaxquerypages-desc' => '[[Special:Shortpages|{{int:shortpages}}]] сыяктуу суроо барактарга бир аз AJAX кошот',
+);
+
 /** Ladino (Ladino)
  * @author Universal Life
  */
