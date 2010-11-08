@@ -35,7 +35,7 @@ class ProcessInputQueue(multiprocessing.Process):
             if kw not in IGNORE and not kw.startswith('_'):
                 kwargs[kw] = getattr(self, kw)
 
-        self.target(self.input_queue, self.result_queue, self.pbar, kwargs)
+        self.target(self.input_queue, self.result_queue, **kwargs)
 
 
 class ProcessResultQueue(multiprocessing.Process):
@@ -56,4 +56,4 @@ class ProcessResultQueue(multiprocessing.Process):
             if kw not in IGNORE and not kw.startswith('_'):
                 kwargs[kw] = getattr(self, kw)
         
-        self.target(self.result_queue, self.pids, self.dbname)
+        self.target(self.result_queue, **kwargs)

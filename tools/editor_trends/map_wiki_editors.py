@@ -127,7 +127,7 @@ def output_editor_information(elem, output, **kwargs):
         vars = {}
 
 
-def parse_editors(xml_queue, output, pbar, bots, **kwargs):
+def parse_editors(xml_queue, data_queue, **kwargs):
     '''
     @xml_queue contains the filenames of the files to be parsed
     @data_queue is an instance of Queue where the extracted data is stored for 
@@ -142,7 +142,8 @@ def parse_editors(xml_queue, output, pbar, bots, **kwargs):
     output = kwargs.get('output', None)
     debug = kwargs.get('debug', False)
     destination = kwargs.get('destination', 'file')
-    
+    bots = kwargs.get('bots', None)
+    pbar = kwargs.get('pbar', None)
     if settings.DEBUG:
         messages = {}
         vars = {}
@@ -220,7 +221,7 @@ def parse_editors(xml_queue, output, pbar, bots, **kwargs):
         utils.report_error_messages(messages, parse_editors)
 
 
-def store_editors(data_queue, pids, dbname):
+def store_editors(data_queue, **kwargs):
     '''
     @data_queue is an instance of Queue containing information extracted by
     parse_editors()
@@ -228,10 +229,12 @@ def store_editors(data_queue, pids, dbname):
     running
     @dbname is the name of the MongoDB collection where to store the information.
     '''
+    dbname = kwargs.get('dbname', None)
     mongo = db.init_mongo_db(dbname)
     collection = mongo['editors']
     mongo.collection.ensure_index('editor')
     editor_cache = cache.EditorCache(collection)
+    
     while True:
         try:
             edit = data_queue.get(block=False)
