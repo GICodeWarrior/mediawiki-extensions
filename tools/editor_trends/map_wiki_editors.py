@@ -138,9 +138,8 @@ def parse_editors(xml_queue, output, pbar, bots, **kwargs):
     
     Output is the data_queue that will be used by store_editors() 
     '''
-    input = os.path.join(settings.XML_FILE_LOCATION, kwargs.get('language', 'en'), kwargs.get('project', 'wiki'))
-    output = os.path.join(input, 'txt')
-    utils.create_directory(output)
+    input = kwargs.get('input', None)
+    output = kwargs.get('output', None)
     debug = kwargs.get('debug', False)
     destination = kwargs.get('destination', 'file')
     
@@ -301,6 +300,9 @@ def load_bot_ids():
 
 def run_parse_editors(location, language, project):
     ids = load_bot_ids()
+    input = os.path.join(location, language, project)
+    output = os.path.join(input, 'txt')
+ 
     kwargs = {'bots': ids,
               'dbname': language + project,
               'language': language,
@@ -309,26 +311,32 @@ def run_parse_editors(location, language, project):
               'destination': 'file',
               'nr_input_processors': settings.NUMBER_OF_PROCESSES,
               'nr_output_processors': settings.NUMBER_OF_PROCESSES,
+              'input': input,
+              'output': output,
               }
     chunks = {}
     source = os.path.join(location, language, project)
     files = utils.retrieve_file_list(source, 'xml')
     parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
     a = 0
+    
+    if not os.path.exists(input):
+        utils.create_directory(input)
+    if not os.path.exists(output):
+        utils.create_directory(output)
+        
     for x in xrange(settings.NUMBER_OF_PROCESSES):
         b = a + parts
         chunks[x] = files[a:b]
         a = (x + 1) * parts
 
     pc.build_scaffolding(pc.load_queue, parse_editors, chunks, False, False, **kwargs)
-    #search_cache_for_missed_editors(dbname)
 
 
 def debug_parse_editors(dbname):
     q = JoinableQueue()
     parse_editors('522.xml', q, None, None, debug=True, destination='file')
     store_editors(q, [], dbname)
-    #search_cache_for_missed_editors(dbname)
 
 
 if __name__ == "__main__":

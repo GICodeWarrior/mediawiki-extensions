@@ -28,6 +28,7 @@ import heapq
 
 import settings
 import utils
+from database import cache
 
 def quick_sort(obs):
     if obs == []:
@@ -89,6 +90,23 @@ def write_sorted_file(sorted_data, file, output):
     file = '.'.join(file)
     fh = utils.create_txt_filehandle(output, file, 'w', settings.ENCODING)
     utils.write_list_to_csv(sorted_data, fh)
+    fh.close()
+
+
+def store_editors(input, dbname):
+    fh = utils.create_txt_filehandle(input, 'merged.txt', 'r', settings.ENCODING)
+    mongo = db.init_mongo_db(dbname)
+    collection = mongo['editors']
+    mongo.collection.ensure_index('editor')
+    editor_cache = cache.EditorCache(collection)
+    prev_contributor = ''
+    for line in readline(file):
+        contributor = line[0]
+        if prev_contributor != contributor:
+             editor_cache.add('NEXT', '')
+        value = {'date': line[1], 'article': line[2]}
+        editor_cache.add(contributor, value)
+        prev_contributor = contributor
     fh.close()
 
 
