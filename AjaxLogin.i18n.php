@@ -544,7 +544,7 @@ Tu essera transferite ab iste pagina e potera perder tu modification currente.',
 Tu pote perder tu modificationes a iste pagina si tu quita iste pagina ora.',
 	'ajaxlogin-create' => 'Crear un conto',
 	'al-nosuchuser' => 'Il non ha un usator con le nomine "$1".
-Le nomines de usator es sensibile al differentia inter majusculas e minusculas.
+Le nomines de usator distingue inter majusculas e minusculas.
 Verifica le orthographia.',
 );
 
