@@ -124,7 +124,6 @@ def output_editor_information(elem, output, **kwargs):
                 for head in headers:
                     data.append(vars[head])
                 utils.write_list_to_csv(data, output)
-                output.write('\n')
         vars = {}
 
 
@@ -139,7 +138,9 @@ def parse_editors(xml_queue, output, pbar, bots, **kwargs):
     
     Output is the data_queue that will be used by store_editors() 
     '''
-    file_location = os.path.join(settings.XML_FILE_LOCATION, kwargs.get('language', 'en'), kwargs.get('project', 'wiki'))
+    input = os.path.join(settings.XML_FILE_LOCATION, kwargs.get('language', 'en'), kwargs.get('project', 'wiki'))
+    output = os.path.join(input, 'txt')
+    utils.create_directory(output)
     debug = kwargs.get('debug', False)
     destination = kwargs.get('destination', 'file')
     
@@ -157,12 +158,12 @@ def parse_editors(xml_queue, output, pbar, bots, **kwargs):
                 print 'Swallowed a poison pill'
                 break
 
-            data = xml.read_input(utils.create_txt_filehandle(file_location,
+            data = xml.read_input(utils.create_txt_filehandle(input,
                                                       file, 'r',
                                                       encoding=settings.ENCODING))
             if destination == 'file':
                 name = file[:-4] + '.txt'
-                output = utils.create_txt_filehandle(file_location, name, 'w', settings.ENCODING)
+                fh = utils.create_txt_filehandle(output, name, 'w', settings.ENCODING)
             for raw_data in data:
                 xml_buffer = cStringIO.StringIO()
                 raw_data.insert(0, '<?xml version="1.0" encoding="UTF-8" ?>\n')
@@ -171,7 +172,7 @@ def parse_editors(xml_queue, output, pbar, bots, **kwargs):
                     raw_data = ''.join(raw_data)
                     xml_buffer.write(raw_data)
                     elem = cElementTree.XML(xml_buffer.getvalue())
-                    output_editor_information(elem, output, bots=bots, destination=destination)
+                    output_editor_information(elem, fh, bots=bots, destination=destination)
                 except SyntaxError, error:
                     print error
                     '''
