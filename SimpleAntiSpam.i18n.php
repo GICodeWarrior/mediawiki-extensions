@@ -85,6 +85,16 @@ $messages['ast'] = array(
 	'simpleantispam-desc' => 'Amiesta al formulariu la comprobación de spam con un bot',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'simpleantispam' => 'Һеҙҙең үҙгәртеүегеҙ спамға ҡаршы ҡоролманы тоҡандырҙы',
+	'simpleantispam-label' => "Спамға ҡаршы тикшереү.
+Быны '''ТУЛТЫРМАҒЫҘ'''!",
+	'simpleantispam-desc' => 'Формаларға ябай спамға/ботҡа ҡаршы тикшереү өҫтәй.',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
