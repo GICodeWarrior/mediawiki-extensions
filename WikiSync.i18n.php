@@ -115,6 +115,23 @@ $messages['br'] = array(
 	'wikisync_js_revision' => 'Adweladenn $1',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikisync' => 'Wiki sinhronizacija',
+	'wikisync-desc' => 'Omogućava [[Special:WikiSync|posebnu stranicu]] za sinhronizaciju nedavnih izmjena na dvije wiki - lokalnoj i udaljenoj',
+	'wikisync_direction' => 'Molimo odaberite smjer sinhronizacije',
+	'wikisync_local_root' => 'Osnovna adresa lokalne wiki',
+	'wikisync_remote_root' => 'Osnovna adresa udaljene wiki',
+	'wikisync_remote_log' => 'Zapisnik udaljenih operacija',
+	'wikisync_clear_log' => 'Očisti zapisnik',
+	'wikisync_login_to_remote_wiki' => 'Prijava na udaljenu wiki',
+	'wikisync_remote_wiki_root' => 'Osnovna adresa udaljene wiki',
+	'wikisync_remote_wiki_example' => 'Putanja do api.php, Na primjer: http://www.mediawiki.org/w',
+	'wikisync_remote_login_button' => 'Prijava',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -133,7 +150,14 @@ $messages['de'] = array(
 	'wikisync_remote_wiki_pass' => 'Passwort beim fernen Wiki',
 	'wikisync_remote_login_button' => 'Anmelden',
 	'wikisync_sync_files' => 'Dateien synchronisieren',
+	'wikisync_store_password' => 'Passwort des fernen Wikis speichern',
 	'wikisync_synchronization_button' => 'Synchronisieren',
+	'wikisync_scheduler_log' => 'Ausführungs-Logbuch',
+	'wikisync_scheduler_setup' => 'Einrichtung der Ausführungen',
+	'wikisync_scheduler_turn_on' => 'Ausführungen aktivieren',
+	'wikisync_scheduler_switch_direction' => 'Automatisch die Richtung der Synchronisierung ändern',
+	'wikisync_scheduler_time_interval' => 'Zeit in Minuten zwischen automatischen Synchronisierungen',
+	'wikisync_apply_button' => 'Anwenden',
 	'wikisync_log_imported_by' => 'Importiert von [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Hochgeladen von [[Special:WikiSync|WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Unbekannte API-Aktion',
@@ -174,7 +198,13 @@ ab Version $3 durchgeführt werden?',
 	'wikisync_js_sync_to_itself' => 'Das Wiki kann nicht mit sich selbst synchronisiert werden',
 	'wikisync_js_diff_search' => 'Suche nach Unterschieden bei den Zielversionen',
 	'wikisync_js_revision' => 'Version $1',
-	'wikisync_js_file_size_mismatch' => 'Die Größe der temporären Datei „$1“ ($2 Bytes) entspricht nicht der erforderlichen Größe ($3 Bytes). Es muss sichergestellt sein, dass Datei „$4“ im Repositorium des Quellwikis nicht manuell überschrieben wurde.',
+	'wikisync_js_file_size_mismatch' => 'Die Größe der temporären Datei „$1“ ($2 {{PLURAL:$2|Byte|Bytes}}) entspricht nicht der erforderlichen Größe ($3 {{PLURAL:$3|Byte|Bytes}}). Es muss sichergestellt sein, dass Datei „$4“ im Repositorium des Quellwikis nicht manuell überschrieben wurde.',
+	'wikisync_js_invalid_scheduler_time' => 'Der Ausführungszeitpunkt muss eine positive ganze Zahl sein',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|Minute|Minuten}} verbleiben',
+	'wikisync_js_sync_start_ltr' => 'Synchronisierung des fernen Wikis mit dem lokalen Wiki startet um $1',
+	'wikisync_js_sync_start_rtl' => 'Synchronisierung des lokalen Wikis mit dem fernen Wiki startet um $1',
+	'wikisync_js_sync_end_ltr' => 'Synchronisierung des fernen Wikis mit dem lokalen Wiki war um $1 fertig',
+	'wikisync_js_sync_end_rtl' => 'Synchronisierung des lokalen Wikis mit dem fernen Wiki war um $1 fertig',
 );
 
 /** Galician (Galego)
@@ -522,6 +552,68 @@ rozpoczynając od wersji $3?',
 	'wikisync_js_file_size_mismatch' => 'Rozmiar pliku tymczasowego „$1” ($2 {{PLURAL:$2|bajt|bajty|bajtów}}) jest różny od wymaganego ($3 {{PLURAL:$3|bajt|bajty|bajtów}}). Upewnij się, czy plik „$4” znajdujący się w repozytorium źródłowej wiki, nie został ręcznie nadpisany.',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'wikisync' => 'Sincronização de wikis',
+	'wikisync-desc' => 'Fornece uma [[Special:WikiSync|página especial]] para sincronizar as mudanças recentes de duas wikis - uma local e outra remota',
+	'wikisync_direction' => 'Escolha a direcção da sincronização',
+	'wikisync_local_root' => 'Raiz do site da wiki local',
+	'wikisync_remote_root' => 'Raiz do site da wiki remota',
+	'wikisync_remote_log' => 'Registo de operações remotas',
+	'wikisync_clear_log' => 'Limpar o registo',
+	'wikisync_login_to_remote_wiki' => 'Entrar na wiki remota',
+	'wikisync_remote_wiki_root' => 'Raiz da wiki remota',
+	'wikisync_remote_wiki_example' => 'Caminho para o ficheiro api.php, por exemplo: http:/www.mediawiki.org/w',
+	'wikisync_remote_wiki_user' => 'Nome de utilizador na wiki remota',
+	'wikisync_remote_wiki_pass' => 'Palavra-chave na wiki remota',
+	'wikisync_remote_login_button' => 'Autenticação',
+	'wikisync_sync_files' => 'Sincronizar ficheiros',
+	'wikisync_synchronization_button' => 'Sincronizar',
+	'wikisync_log_imported_by' => 'Importação de [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Upload de [[Special:WikiSync|WikiSync]]',
+	'wikisync_api_result_unknown_action' => 'Operação desconhecida da API',
+	'wikisync_api_result_exception' => 'Ocorreu uma excepção na chamada local da API',
+	'wikisync_api_result_noaccess' => 'Só os membros dos seguintes grupos podem executar esta operação: $1',
+	'wikisync_api_result_invalid_parameter' => 'O valor do parâmetro é inválido',
+	'wikisync_api_result_http' => 'Ocorreu um erro de HTTP ao fazer uma consulta de dados pela API remota',
+	'wikisync_api_result_Unsupported' => 'A sua versão do MediaWiki não é suportada (anterior à 1.15)',
+	'wikisync_api_result_NoName' => 'Não definiu o parâmetro lgname',
+	'wikisync_api_result_Illegal' => 'O nome de utilizador fornecido não é adequado',
+	'wikisync_api_result_NotExists' => 'O nome de utilizador fornecido não existe',
+	'wikisync_api_result_EmptyPass' => 'Não definiu o parâmetro lgpassword, ou deixou-o vazio',
+	'wikisync_api_result_WrongPass' => 'A palavra-chave fornecida está incorrecta',
+	'wikisync_api_result_WrongPluginPass' => 'A palavra-chave fornecida está incorrecta',
+	'wikisync_api_result_CreateBlocked' => 'A wiki tentou criar automaticamente uma conta nova para si, mas a criação de contas foi bloqueada para o seu endereço IP',
+	'wikisync_api_result_Throttled' => 'Autenticou-se demasiadas vezes num curto espaço de tempo.',
+	'wikisync_api_result_Blocked' => 'O utilizador está bloqueado',
+	'wikisync_api_result_mustbeposted' => 'O módulo de autenticação requer um pedido POST',
+	'wikisync_api_result_NeedToken' => 'Não forneceu uma chave de autenticação ou um cookie de identificação da sessão. Faça o pedido novamente com a chave e o cookie desta resposta',
+	'wikisync_api_result_no_import_rights' => 'Este utilizador não pode importar ficheiros de arquivo XML',
+	'wikisync_api_result_Success' => 'Foi autenticado no site da wiki remota',
+	'wikisync_js_last_op_error' => 'A última operação retornou um erro. 
+
+ Código: $1 
+
+ Mensagem: $2 
+
+ Pressione [OK] para repetir a última operação',
+	'wikisync_js_synchronization_confirmation' => 'Tem a certeza de que quer sincronizar 
+
+ de $1 
+
+ para $2 
+
+ a partir da revisão $3?',
+	'wikisync_js_synchronization_success' => 'A sincronização terminou com êxito',
+	'wikisync_js_already_synchronized' => 'As wikis de origem e destino parecem já estar sincronizadas',
+	'wikisync_js_sync_to_itself' => 'Não pode sincronizar a wiki consigo própria',
+	'wikisync_js_diff_search' => 'A procurar a diferença nas revisões de destino',
+	'wikisync_js_revision' => 'Revisão $1',
+	'wikisync_js_file_size_mismatch' => 'O tamanho ($2 bytes) do ficheiro temporário "$1" não corresponde ao tamanho requerido ($3 bytes). Certifique-se de que o ficheiro $4 não foi alterado manualmente no repositório da wiki de origem.',
+);
+
 /** Russian (Русский)
  * @author QuestPC
  */
@@ -532,12 +624,6 @@ $messages['ru'] = array(
 	'wikisync_local_root' => 'Корневой адрес локального сайта',
 	'wikisync_remote_root' => 'Корневой адрес удалённого сайта',
 	'wikisync_remote_log' => 'Журнал удалённых действий',
-	'wikisync_scheduler_log' => 'Журнал планировщика',
-	'wikisync_scheduler_setup' => 'Настройки планировщика',
-	'wikisync_scheduler_turn_on' => 'Включить планировщик',
-	'wikisync_scheduler_switch_direction' => 'Автоматически изменять направление синхронизации',
-	'wikisync_scheduler_time_interval' => 'Количество минут между автоматическими синхронизациями',
-	'wikisync_apply_button' => 'Применить',
 	'wikisync_clear_log' => 'Очистить журнал',
 	'wikisync_login_to_remote_wiki' => 'Зайти на удалённый сайт',
 	'wikisync_remote_wiki_root' => 'Корневой адрес удалённого сайта',
@@ -548,6 +634,12 @@ $messages['ru'] = array(
 	'wikisync_sync_files' => 'Синхронизировать файлы',
 	'wikisync_store_password' => 'Сохранить пароль удалённого сайта',
 	'wikisync_synchronization_button' => 'Синхронизировать',
+	'wikisync_scheduler_log' => 'Журнал планировщика',
+	'wikisync_scheduler_setup' => 'Настройки планировщика',
+	'wikisync_scheduler_turn_on' => 'Включить планировщик',
+	'wikisync_scheduler_switch_direction' => 'Автоматически изменять направление синхронизации',
+	'wikisync_scheduler_time_interval' => 'Количество минут между автоматическими синхронизациями',
+	'wikisync_apply_button' => 'Применить',
 	'wikisync_log_imported_by' => 'Импортировано с помощью [[Special:WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Загружено с помощью [[Special:WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Неизвестное действие (action) API',
@@ -606,3 +698,4 @@ $messages['uk'] = array(
 	'wikisync_js_sync_to_itself' => 'Ви не можете синхронізувати вікі саму до себе',
 	'wikisync_js_revision' => 'Версія $1',
 );
+
