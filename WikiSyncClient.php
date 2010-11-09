@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -265,6 +265,8 @@ class WikiSyncClient {
 	 * @param $args[0] : remote wiki root
 	 * @param $args[1] : remote wiki user
 	 * @param $args[2] : remote wiki password
+	 * @param $args[3] : string "boolean", whether the login / password should be stored
+	 *     in cookies; "true" - yes, "false" - not
 	 * @return JSON result of second phase login (token confirmed, used logged in) from the remote API
 	 */
 	static function remoteLogin() {
@@ -278,6 +280,12 @@ class WikiSyncClient {
 		if ( is_string( $iu = WikiSyncSetup::initUser() ) ) {
 			# not enough priviledges to run this method
 			return $json_result->getResult( 'noaccess', $iu );
+		}
+		$store_rlogin = count( $args ) > 3 && $args[3] === 'true';
+		if ( !$store_rlogin ) {
+			// unset cookies, if there were any
+			WikiSyncSetup::setCookie( 'ruser', '', 0 );
+			WikiSyncSetup::setCookie( 'rpass', '', 0 );
 		}
 		$snoopy = new WikiSnoopy();
 		list( $remote_wiki_root, $remote_wiki_user, $remote_wiki_password ) = $args;
@@ -324,6 +332,10 @@ class WikiSyncClient {
 		}
 		if ( $response->login->result === 'Success' ) {
 			$json_result->setStatus( '1' ); // success
+			if ( $store_rlogin ) {
+				WikiSyncSetup::setCookie( 'ruser', $remote_wiki_user, time() + WikiSyncSetup::COOKIE_EXPIRE_TIME );
+				WikiSyncSetup::setCookie( 'rpass', $remote_wiki_password, time() + WikiSyncSetup::COOKIE_EXPIRE_TIME );
+			}
 			$r = array(
 				'userid' => $response->login->lguserid,
 				'username' => $response->login->lgusername, // may return a different one ?

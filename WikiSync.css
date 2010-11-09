@@ -2,12 +2,12 @@ table.wikisync_remote_login input[type="text"], table.wikisync_remote_login inpu
 	width: 15em;
 }
 
-div#wikisync_remote_log {
+div.wikisync_log {
 	color: darkblue;
 	background-color: lightgray;
 	border: 1px solid gray;
 	width: 30em;
-	height: 12em;
+	height: 9em;
 	overflow: auto;
 	padding: 5px;
 }

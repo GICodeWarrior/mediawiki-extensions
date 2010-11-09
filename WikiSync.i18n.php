@@ -19,12 +19,19 @@ $messages['en'] = array(
 	'wikisync_clear_log' => 'Clear log',
 	'wikisync_login_to_remote_wiki' => 'Login to remote wiki',
 	'wikisync_remote_wiki_root' => 'Remote wiki root',
-	'wikisync_remote_wiki_example' => 'Path to api.php, for example: http://www.mediawiki.org/w',
+	'wikisync_remote_wiki_example' => 'path to api.php, for example: http://www.mediawiki.org/w',
 	'wikisync_remote_wiki_user' => 'Remote wiki user name',
 	'wikisync_remote_wiki_pass' => 'Remote wiki password',
 	'wikisync_remote_login_button' => 'Log in',
 	'wikisync_sync_files' => 'Synchronize files',
+	'wikisync_store_password' => 'Store remote wiki password',
 	'wikisync_synchronization_button' => 'Synchronize',
+	'wikisync_scheduler_log' => 'Scheduler log',
+	'wikisync_scheduler_setup' => 'Scheduler setup',
+	'wikisync_scheduler_turn_on' => 'Turn on the scheduler',
+	'wikisync_scheduler_switch_direction' => 'Automatically switch the direction of synchronization',
+	'wikisync_scheduler_time_interval' => 'Time in minutes between automatical synchronizations',
+	'wikisync_apply_button' => 'Apply',
 	'wikisync_log_imported_by' => 'Imported by [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Uploaded by [[Special:WikiSync|WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Unknown API action',
@@ -36,7 +43,7 @@ $messages['en'] = array(
 	'wikisync_api_result_NoName' => 'You did not set the lgname parameter',
 	'wikisync_api_result_Illegal' => 'You provided an illegal username',
 	'wikisync_api_result_NotExists' => 'The username you provided does not exist',
-	'wikisync_api_result_EmptyPass' => 'You did not set the lgpassword parameter or you left it empty',
+	'wikisync_api_result_EmptyPass' => 'You didn\'t set the lgpassword parameter or you left it empty',
 	'wikisync_api_result_WrongPass' => 'The password you provided is incorrect',
 	'wikisync_api_result_WrongPluginPass' => 'The password you provided is incorrect',
 	'wikisync_api_result_CreateBlocked' => 'The wiki tried to automatically create a new account for you, but your IP address has been blocked from account creation',
@@ -44,7 +51,7 @@ $messages['en'] = array(
 	'wikisync_api_result_Blocked' => 'User is blocked',
 	'wikisync_api_result_mustbeposted' => 'The login module requires a POST request',
 	'wikisync_api_result_NeedToken' => 'Either you did not provide the login token or the sessionid cookie. Request again with the token and cookie given in this response',
-	'wikisync_api_result_no_import_rights' => 'This user is not allowed to import XML dump files',
+	'wikisync_api_result_no_import_rights' => 'This user is not allowed to import xml dump files',
 	'wikisync_api_result_Success' => 'Successfully logged into remote wiki site',
 	'wikisync_js_last_op_error' => 'Last operation returned an error.
 
@@ -65,8 +72,15 @@ starting from revision $3?',
 	'wikisync_js_sync_to_itself' => 'You cannot synchronize the wiki to itself',
 	'wikisync_js_diff_search' => 'Looking for difference in destination revisions',
 	'wikisync_js_revision' => 'Revision $1',
-	'wikisync_js_file_size_mismatch' => 'Temporary file "$1" size ($2 bytes) does not match required size ($3 bytes). Make sure the file $4 was not manually overwritten in repository of source wiki.', // FIXME: needs plural support.
+	'wikisync_js_file_size_mismatch' => 'Temporary file "$1" size ($2 {{PLURAL:$2|byte|bytes}}) does not match required size ($3 {{PLURAL:$3|byte|bytes}}). Make sure the file "$4" was not manually overwritten in repository of source wiki.',
+	'wikisync_js_invalid_scheduler_time' => 'Scheduler time must be a positive integer number',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|minute|minutes}} left',
+	'wikisync_js_sync_start_ltr' => 'Starting the synchronization from local wiki to remote wiki at $1',
+	'wikisync_js_sync_start_rtl' => 'Starting the synchronization from remote wiki to local wiki at $1',
+	'wikisync_js_sync_end_ltr' => 'Finished the synchronization from local wiki to remote wiki at $1',
+	'wikisync_js_sync_end_rtl' => 'Finished the synchronization from remote wiki to local wiki at $1',
 );
+
 
 /** Message documentation (Message documentation)
  * @author Тест
@@ -518,6 +532,12 @@ $messages['ru'] = array(
 	'wikisync_local_root' => 'Корневой адрес локального сайта',
 	'wikisync_remote_root' => 'Корневой адрес удалённого сайта',
 	'wikisync_remote_log' => 'Журнал удалённых действий',
+	'wikisync_scheduler_log' => 'Журнал планировщика',
+	'wikisync_scheduler_setup' => 'Настройки планировщика',
+	'wikisync_scheduler_turn_on' => 'Включить планировщик',
+	'wikisync_scheduler_switch_direction' => 'Автоматически изменять направление синхронизации',
+	'wikisync_scheduler_time_interval' => 'Количество минут между автоматическими синхронизациями',
+	'wikisync_apply_button' => 'Применить',
 	'wikisync_clear_log' => 'Очистить журнал',
 	'wikisync_login_to_remote_wiki' => 'Зайти на удалённый сайт',
 	'wikisync_remote_wiki_root' => 'Корневой адрес удалённого сайта',
@@ -526,6 +546,7 @@ $messages['ru'] = array(
 	'wikisync_remote_wiki_pass' => 'Пароль на удалённом сайте',
 	'wikisync_remote_login_button' => 'Зайти',
 	'wikisync_sync_files' => 'Синхронизировать файлы',
+	'wikisync_store_password' => 'Сохранить пароль удалённого сайта',
 	'wikisync_synchronization_button' => 'Синхронизировать',
 	'wikisync_log_imported_by' => 'Импортировано с помощью [[Special:WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Загружено с помощью [[Special:WikiSync]]',
@@ -552,7 +573,13 @@ $messages['ru'] = array(
 	'wikisync_js_sync_to_itself' => 'Невозможно синхронизировать вики сайт сам в себя',
 	'wikisync_js_diff_search' => 'Поиск отличий в ревизиях вики-сайта назначения',
 	'wikisync_js_revision' => 'Ревизия $1',
-	'wikisync_js_file_size_mismatch' => 'Размер временного файла $1 ($2 байт) не соответствует требуемому размеру файла ($3 байт). Пожалуйста убедитесь, что файл $4 не был переписан вручную в репозиторий исходного вики-сайта.',
+	'wikisync_js_file_size_mismatch' => 'Размер временного файла "$1" ($2 {{PLURAL:$2|байт|байта|байтов}}) не соответствует требуемому размеру файла ($3 {{PLURAL:$3|байт|байта|байтов}}). Пожалуйста убедитесь, что файл "$4" не был переписан вручную в репозиторий исходного вики-сайта.',
+	'wikisync_js_invalid_scheduler_time' => 'Время планировщика должно быть положительным целым числом',
+	'wikisync_js_scheduler_countdown' => 'Осталось $1 {{PLURAL:$1|минута|минуты|минут}}',
+	'wikisync_js_sync_start_ltr' => 'Запуск синхронизации с локального вики-сайта на удалённый $1',
+	'wikisync_js_sync_start_rtl' => 'Запуск синхронизации с удалённого вики-сайта на локальный $1',
+	'wikisync_js_sync_end_ltr' => 'Окончание синхронизации с локального вики-сайта на удалённый $1',
+	'wikisync_js_sync_end_rtl' => 'Окончание синхронизации с удалённого вики-сайта на локальный $1',
 );
 
 /** Telugu (తెలుగు)
@@ -579,4 +606,3 @@ $messages['uk'] = array(
 	'wikisync_js_sync_to_itself' => 'Ви не можете синхронізувати вікі саму до себе',
 	'wikisync_js_revision' => 'Версія $1',
 );
-
