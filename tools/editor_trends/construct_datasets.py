@@ -82,7 +82,7 @@ def expand_headers(headers, vars_to_expand, obs):
     return headers
             
         
-def generate_editor_dataset(input_queue, data_queue, pbar, kwargs):
+def generate_editor_dataset(input_queue, data_queue, pbar, **kwargs):
     debug = kwargs.pop('debug')
     dbname = kwargs.pop('dbname')
     mongo = db.init_mongo_db(dbname)
@@ -143,16 +143,17 @@ def generate_editor_dataset_launcher(dbname):
               'dbname': dbname,
               }
     ids = retrieve_editor_ids_mongo(dbname, 'editors')
-    chunks = {}
-    parts = int(round(float(len(ids)) / 1, 0))
-    a = 0
-    for x in xrange(settings.NUMBER_OF_PROCESSES):
-        b = a + parts
-        chunks[x] = ids[a:b]
-        a = (x + 1) * parts
-        if a >= len(ids):
-            break
-        
+    chunks = utils.split_list(ids, settings.NUMBER_OF_PROCESSES)
+#    chunks = {}
+#    parts = int(round(float(len(ids)) / 1, 0))
+#    a = 0
+#    for x in xrange(settings.NUMBER_OF_PROCESSES):
+#        b = a + parts
+#        chunks[x] = ids[a:b]
+#        a = (x + 1) * parts
+#        if a >= len(ids):
+#            break
+#        
     pc.build_scaffolding(pc.load_queue, generate_editor_dataset, chunks, False, False, **kwargs)
 
 
@@ -169,5 +170,5 @@ def generate_editor_dataset_debug(dbname):
 
 if __name__ == '__main__':
     #generate_editor_dataset_debug('test')
-    generate_editor_dataset_launcher('test')
+    generate_editor_dataset_launcher('enwiki')
     #debug_retrieve_edits_by_contributor_launcher()

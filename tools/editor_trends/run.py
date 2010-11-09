@@ -33,5 +33,5 @@ input = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'txt')
 output = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'sorted')
 dbname = 'enwiki'
 #sort.debug_mergesort_feeder(input, output)
-sort.mergesort_launcher(input, output)
-#sort.mergesort_external_launcher(dbname, output, output)
+#sort.mergesort_launcher(input, output)
+sort.mergesort_external_launcher(dbname, output, output)

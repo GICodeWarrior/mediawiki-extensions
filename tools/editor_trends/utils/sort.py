@@ -32,7 +32,7 @@ import settings
 import utils
 import process_constructor as pc
 from database import cache
-
+from database import db
 
 def quick_sort(obs):
     if obs == []:
@@ -106,14 +106,28 @@ def store_editors(input, filename, dbname):
     mongo.collection.ensure_index('editor')
     editor_cache = cache.EditorCache(collection)
     prev_contributor = ''
-    for line in readline(file):
+    x = 0
+    edits = 0
+    editors = set()
+    for line in readline(fh):
         contributor = line[0]
+        
         if prev_contributor != contributor:
-             editor_cache.add('NEXT', '')
-        value = {'date': line[1], 'article': line[2]}
+            result = editor_cache.add(prev_contributor, 'NEXT')
+            print 'Stored %s editors' % x
+            edits = 0
+            x += 1
+        else:
+            edits += 1
+            if edits == 10:
+                editors.add(contributor)
+        date = utils.convert_timestamp_to_date(line[1])
+        article_id = int(line[2])
+        value = {'date': date, 'article': article_id}
         editor_cache.add(contributor, value)
         prev_contributor = contributor
     fh.close()
+    utils.store_object(editors, settings.BINARY_OBJECT_FILE_LOCATION, 'editors')
 
 
 def mergesort_external_launcher(dbname, input, output):
@@ -126,15 +140,17 @@ def mergesort_external_launcher(dbname, input, output):
     chunks = utils.split_list(files, int(x))
     '''1st iteration external mergesort'''
     for chunk in chunks:
-        filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.ENCODING) for file in chunks[chunk]]
-        filename = merge_sorted_files(output, filehandles, chunk)
-        filehandles = [fh.close() for fh in filehandles]
+#        filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.ENCODING) for file in chunks[chunk]]
+#        filename = merge_sorted_files(output, filehandles, chunk)
+#        filehandles = [fh.close() for fh in filehandles]
+        pass
     '''2nd iteration external mergesort, if necessary'''
     if len(chunks) > 1:
-        files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
-        filehandles = [utils.create_txt_filehandle(output, file, 'r', settings.ENCODING) for file in files]
-        filename = merge_sorted_files(output, filehandles, 'final')
-        filehandles = [fh.close() for fh in filehandles]
+#        files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
+#        filehandles = [utils.create_txt_filehandle(output, file, 'r', settings.ENCODING) for file in files]
+#        filename = merge_sorted_files(output, filehandles, 'final')
+#        filehandles = [fh.close() for fh in filehandles]
+        filename = 'merged_final.txt'
     store_editors(output, filename, dbname)
 
 

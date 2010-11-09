@@ -64,12 +64,14 @@ class EditorCache(object):
         return sum([self.editors[k].get('obs', 0) for k in self.editors])
 
     def add(self, key, value):
-        if key == 'NEXT':
+        if value == 'NEXT':
             for editor in self.treshold_editors:
-                self.update(editor, self.editors[editor]['edits'])
+                self.insert (editor, self.editors[editor]['edits'])
                 self.n -= self.editors[editor]['obs']
                 self.number_editors -= 1
                 del self.editors[editor]
+            if key in self.editors:
+                del self.editors[key]
             self.treshold_editors = set()
         else:
             self.cumulative_n += 1
@@ -77,18 +79,32 @@ class EditorCache(object):
             if key not in self.editors:
                 self.editors[key] = {}
                 self.editors[key]['obs'] = 0
-                self.editors[key]['edits'] = []
+                self.editors[key]['edits'] = {}
+                self.add_years(key)
                 self.number_editors += 1
-    
+
             id = str(self.editors[key]['obs'])
-            self.editors[key]['edits'].append(value)
+            year = str(value['date'].year)
+            self.editors[key]['edits'][year].append(value)
             self.editors[key]['obs'] += 1
 
             if self.editors[key]['obs'] == self.treshold:
                 self.treshold_editors.add(key)
 
+    def add_years(self, key):
+        now = datetime.datetime.now().year + 1
+        for year in xrange(2001, now):
+            self.editors[key]['edits'][str(year)] = []
+
+
     def update(self, editor, values):
         self.collection.update({'editor': editor}, {'$pushAll': {'edits': values}}, upsert=True)
+
+    def insert(self, editor, values):
+        try:
+            self.collection.insert({'editor': editor, 'edits': values})
+        except:
+            pass
 
     def store(self):
         utils.store_object(self, settings.BINARY_OBJECT_FILE_LOCATION, self.__repr__())

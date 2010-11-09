@@ -25,6 +25,7 @@ import datetime
 import settings
 from database import db
 from utils import process_constructor as pc
+from utils import utils
 import construct_datasets
 
 
@@ -67,20 +68,25 @@ def determine_articles_by_year(dates):
     return articles
 
 
-def optimize_editors(input_queue, result_queue, pbar, kwargs):
+def sort_edits(edits):
+    edits = utils.merge_list(edits)
+    return sorted(edits, key=itemgetter('date'))
+    
+
+def optimize_editors(input_queue, result_queue, pbar, **kwargs):
     dbname = kwargs.pop('dbname')
     mongo = db.init_mongo_db(dbname)
     input = mongo['editors']
     output = mongo['dataset']
-    mongo.output.ensure_index('editor')
-    mongo.output.ensure_index('year_joined')
+    output.ensure_index('editor')
+    output.ensure_index('year_joined')
     definition = kwargs.pop('definition')
     while True:
         try:
             id = input_queue.get(block=False)
             editor = input.find_one({'editor': id})
             edits = editor['edits']
-            edits = sorted(edits, key=itemgetter('date'))
+            edits = sort_edits(edits)
             edit_count = len(edits)
             new_wikipedian = edits[9]['date']
             first_edit = edits[0]['date']
@@ -100,6 +106,7 @@ def optimize_editors(input_queue, result_queue, pbar, kwargs):
         except Empty:
             break
 
+
 def run_optimize_editors(dbname):
     ids = construct_datasets.retrieve_editor_ids_mongo(dbname, 'editors')
     kwargs = {'definition': 'traditional',
@@ -108,15 +115,16 @@ def run_optimize_editors(dbname):
               'nr_input_processors': 1,
               'nr_output_processors': 0,
               }
-    chunks = {}
-    parts = int(round(float(len(ids)) / 1, 0))
-    a = 0
-    for x in xrange(settings.NUMBER_OF_PROCESSES):
-        b = a + parts
-        chunks[x] = ids[a:b]
-        a = (x + 1) * parts
-        if a >= len(ids):
-            break
+    chunks = utils.split_list(ids, settings.NUMBER_OF_PROCESSES)
+#    chunks = {}
+#    parts = int(round(float(len(ids)) / 1, 0))
+#    a = 0
+#    for x in xrange(settings.NUMBER_OF_PROCESSES):
+#        b = a + parts
+#        chunks[x] = ids[a:b]
+#        a = (x + 1) * parts
+#        if a >= len(ids):
+#            break
 
     pc.build_scaffolding(pc.load_queue, optimize_editors, chunks, False, False, **kwargs)
 
@@ -131,5 +139,5 @@ def debug_optimize_editors(dbname):
 
 
 if __name__ == '__main__':
-    debug_optimize_editors('test')
-    #run_optimize_editors('test')
+    #debug_optimize_editors('test')
+    run_optimize_editors('enwiki')

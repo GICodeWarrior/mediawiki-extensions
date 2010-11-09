@@ -22,17 +22,17 @@ This file contains settings that are used for constructing and analyzing
 the datasets as part of the Editor Dynamics and Anti-Vandalism projects.
 '''
 
-
 from multiprocessing import cpu_count
 import os
 import sys
 import platform
-#try:
-#    from pywin import win32file
-#    '''increase the maximum number of open files on Windows to 1024'''
-#    win32file._setmaxstdio(1024)
-#except ImportError:
-#    pass
+
+try:
+    from pywin import win32file
+    '''increase the maximum number of open files on Windows to 1024'''
+    win32file._setmaxstdio(1024)
+except ImportError:
+    pass
 
 try:
     import resource
@@ -151,7 +151,7 @@ WIKIMEDIA_PROJECTS = {'commons': 'commonswiki',
 NUMBER_OF_PROCESSES = cpu_count() * 1
 
 #Extensions of ascii files, this is used to determine the filemode to use
-ASCII = ['txt', 'csv', 'xml', 'sql']
+ASCII = ['txt', 'csv', 'xml', 'sql', 'json']
 
 WP_DUMP_LOCATION = 'http://download.wikimedia.org'
 

@@ -326,6 +326,13 @@ def retrieve_file_list(location, extension, mask=None):
             files.append('.'.join(file))
     return files
 
+def merge_list(datalist):
+    merged = []
+    for d in datalist:
+        for x in datalist[d]:
+            merged.append(x)
+    return merged
+
 def split_list(datalist, maxval):
     chunks = {}
     a = 0
