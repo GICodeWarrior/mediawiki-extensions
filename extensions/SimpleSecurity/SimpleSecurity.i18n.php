@@ -120,6 +120,28 @@ $messages['arc'] = array(
 	'security-type-namespace' => 'ܚܩܠܐ',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'security' => 'Хәүефһеҙлек яҙмалары журналы',
+	'security-desc' => 'MediaWiki биттәрен һаҡлауҙы, биттең эстәлеген ҡарауҙы сикләргә мөмкинлек биреп, киңәйтә',
+	'security-logpage' => 'Хәүефһеҙлек яҙмалары журналы',
+	'security-logpagetext' => 'Был — [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity] тарафынан бикләнгән ғәмәлдәр яҙмалары журналы.',
+	'badaccess-read' => "'''Киҫәтеү:''' \"\$1\" бында һылтана, әммә һеҙҙең етәрлек хоҡуҡтарығыҙ юҡ.",
+	'security-info' => 'Был бит өсөн $1 бар',
+	'security-info-toggle' => 'хәүефһеҙлек сикләүҙәре',
+	'security-inforestrict' => '$1 $2 өсөн сикләнгән',
+	'security-desc-LS' => '(ҡулланылған, сөнки был бит "$2 $1" эсендә)',
+	'security-desc-PR' => '("һаҡларға" бүлеге аша ҡуйылған)',
+	'security-infosysops' => 'Сикләүҙәр ҡулланылмай, сөнки һеҙ — "sysop" төркөмө ағзаһы',
+	'security-manygroups' => '$1 һәм $2 төркөмө',
+	'security-unchain' => 'Ғәмәлдәрҙе шәхси рәүештә үҙгәртергә',
+	'security-type-category' => 'категориялар',
+	'security-type-namespace' => 'исемдәр арауығы',
+	'security-restricttogroup' => 'Эстәлекте ҡарау "$1" ағазалары менән сикләнгән',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */

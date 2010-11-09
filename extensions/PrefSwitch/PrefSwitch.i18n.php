@@ -4665,6 +4665,7 @@ Grįžti į <span class="plainlinks">[$1 $2]</span>.',
 );
 
 /** Latvian (Latviešu)
+ * @author Geimeris
  * @author Papuass
  */
 $messages['lv'] = array(
@@ -4676,8 +4677,13 @@ $messages['lv'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Izmēģini jaunās iespējas',
 	'prefswitch-survey-true' => 'Jā',
 	'prefswitch-survey-false' => 'Nē',
+	'prefswitch-survey-cancel-off' => 'Ja Jūs vēlaties turpināt izmantot jaunās iespējas, Jūs varat atgriezties $1.',
 	'prefswitch-survey-submit-feedback' => 'Nosūtīt atsauksmi',
-	'prefswitch-survey-question-like' => 'Kas tev patika jaunajās iespējās?',
+	'prefswitch-survey-cancel-feedback' => 'Ja Jūs nevēlaties sniegt atsauksmes, Jūs varat atgriezties $1.',
+	'prefswitch-survey-question-like' => 'Kas Jums patika jaunajās iespējās?',
+	'prefswitch-survey-question-dislike' => 'Kas Jums nepatika jaunajās iespējās?',
+	'prefswitch-survey-question-globaloff' => 'Vai Jūs vēlaties, lai jaunās iespējas tiktu izslēgtas visiem Jūsu kontiem?',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Man nepatika jaunās cilnes un izvietojums.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Man nepatika jaunā rīkjosla.',
 	'prefswitch-survey-answer-whyoff-other' => 'Cits iemesls:',
 	'prefswitch-survey-question-browser' => 'Kādu pārlūkprogrammu tu izmanto?',
@@ -4693,6 +4699,10 @@ $messages['lv'] = array(
 	'prefswitch-success-feedback' => 'Tavas atsauksmes ir nosūtītas.',
 	'prefswitch-return' => '<hr style="clear:both">
 Atgriezties uz <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-feedback' => '===Atsauksmes?===
+Mēs gribētu tās no jums dzirdēt. Lūdzu dodieties uz [[$1|atsauksmju lapu]] vai arī, ja Jūs esat ieinteresēts par mūsu nebeidzamajām pūlēm programmatūras uzlabošanā, dodaties uz mūsu "[http://usability.wikimedia.org usability wiki]" papildus informācijai.',
+	'prefswitch-main-anon' => '===Atgriezties atpakaļ===
+[$1 Klikšķiniet šeit, lai izslēgtu jaunās iespējas]. Jums tiks lūgts ieiet vai vispirms izveidot savu kontu.',
 );
 
 /** Minangkabau (Baso Minangkabau)

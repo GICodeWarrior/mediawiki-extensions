@@ -577,6 +577,8 @@ $messages['rue'] = array(
  */
 $messages['sah'] = array(
 	'externalpages' => 'Тас сирэйдэр',
+	'externalpages-bad-page' => 'Алҕас сирэй ыйыллыбыт',
+	'externalpages-no-page' => 'Сирэй ыйыллыбатах',
 );
 
 /** Slovak (Slovenčina)

@@ -163,6 +163,15 @@ $messages['pl'] = array(
 	'pdfbook-desc' => 'Tworzenie książki ze stron kategorii i eksportowanie w formacie PDF',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'pdfbook-action' => 'Stampa com PDF',
+	'pdfbook-log' => '$1 esportà con un lìber PDF',
+	'pdfbook-desc' => 'A compon un lìber da pàgine ant un-a categorìa e a lo espòrta com un lìber PDF',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -179,5 +188,14 @@ $messages['pt-br'] = array(
 	'pdfbook-action' => 'Imprima como PDF',
 	'pdfbook-log' => '$1 exportado como um livro PDF',
 	'pdfbook-desc' => 'Componha um livro com paginas de uma categoria e o exporte como um livro PDF',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'pdfbook-action' => 'Печать в PDF',
+	'pdfbook-log' => '$1 экспортирована как PDF-книга',
+	'pdfbook-desc' => 'Создаёт книгу из страниц категории, преобразует её в PDF',
 );
 

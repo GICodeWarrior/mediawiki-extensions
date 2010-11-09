@@ -1622,11 +1622,18 @@ $messages['lmo'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author Geimeris
  * @author Papuass
  */
 $messages['lv'] = array(
+	'readerfeedback' => 'Ko Jūs domājat par šo lapu?',
+	'readerfeedback-reliability' => 'Uzticamība',
+	'readerfeedback-completeness' => 'Pilnīgums',
 	'readerfeedback-npov' => 'Neitralitāte',
 	'readerfeedback-level-none' => '(nezinu)',
+	'readerfeedback-level-1' => 'Zema',
+	'readerfeedback-level-2' => 'Pietiekama',
+	'readerfeedback-level-3' => 'Augsta',
 	'readerfeedback-submit' => 'Iesniegt',
 	'readerfeedback-main' => 'Vērtēt var tikai satura lapas.',
 	'readerfeedback-finished' => 'Paldies!',
@@ -1634,6 +1641,7 @@ $messages['lv'] = array(
 	'readerfeedback-tier-high' => 'Augsts',
 	'readerfeedback-tier-medium' => 'Vidējs',
 	'readerfeedback-tier-poor' => 'Zems',
+	'readerfeedback-tt-review' => 'Iesniegt atsauksmi',
 );
 
 /** Macedonian (Македонски)
