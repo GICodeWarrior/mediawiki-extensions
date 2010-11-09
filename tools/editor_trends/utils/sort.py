@@ -33,6 +33,7 @@ import utils
 import process_constructor as pc
 from database import cache
 
+
 def quick_sort(obs):
     if obs == []:
         return []
@@ -41,6 +42,7 @@ def quick_sort(obs):
         lesser = quick_sort([x for x in obs[1:] if x < pivot])
         greater = quick_sort([x for x in obs[1:] if x >= pivot])
         return lesser + [pivot] + greater
+
 
 def mergesort(n):
         """Recursively merge sort a list. Returns the sorted list."""
@@ -77,14 +79,15 @@ def readline(file):
             yield line
 
 
-def merge_sorted_files(output, files):
-    output = utils.create_txt_filehandle(output, 'merged.txt', 'w', settings.ENCODING)
+def merge_sorted_files(output, files, iteration):
+    fh = utils.create_txt_filehandle(output, 'merged_%s.txt' % iteration, 'w', settings.ENCODING)
     lines = 0
     for line in heapq.merge(*[readline(file) for file in files]):
-        output.write(line)
+        utils.write_list_to_csv(line, fh)
         lines += 1
-    output.close()
-    return lines
+    fh.close()
+    print lines
+    return fh.name
 
 
 def write_sorted_file(sorted_data, file, output):
@@ -97,7 +100,7 @@ def write_sorted_file(sorted_data, file, output):
 
 
 def store_editors(input, dbname):
-    fh = utils.create_txt_filehandle(input, 'merged.txt', 'r', settings.ENCODING)
+    fh = utils.create_txt_filehandle(input, filename, 'r', settings.ENCODING)
     mongo = db.init_mongo_db(dbname)
     collection = mongo['editors']
     mongo.collection.ensure_index('editor')
@@ -113,19 +116,33 @@ def store_editors(input, dbname):
     fh.close()
 
 
-def merge_sorted_files(input, output):
+def merge_sorted_files_launcher(dbname, input, output):
     files = utils.retrieve_file_list(input, 'txt', mask='')
-    filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.ENCODING) for file in files]
-    lines = merge_sorted_files(output, filehandles)
-    filehandles = [fh.close() for fh in filehandles]
-    print lines
+    x = 0
+    while maxval >= settings.MAX_FILES_OPEN:
+        x += 1.0
+        maxval = round(len(files) / x)
+    chunks = utils.split_list(files, int(x))
+    '''1st iteration external mergesort'''
+    for chunk in chunks:
+        #filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.ENCODING) for file in chunks[chunk]]
+        #filename = merge_sorted_files(output, filehandles, chunk)
+        #filehandles = [fh.close() for fh in filehandles]
+        pass
+    '''2nd iteration external mergesort, if necessary'''
+    if len(chunks) > 1:
+        files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
+        filehandles = [utils.create_txt_filehandle(output, file, 'r', settings.ENCODING) for file in files]
+        filename = merge_sorted_files(output, filehandles, chunk)
+        filehandles = [fh.close() for fh in filehandles]
+    store_editors(output, filename, dbname)
 
 
 def debug_mergesort(input, output):
     files = utils.retrieve_file_list(input, 'txt', mask='((?!_sorted)\d)')
     for file in files:
         pass
-        
+
 def mergesort_feeder(input_queue, **kwargs):
     input = kwargs.get('input', None)
     output = kwargs.get('output', None)
@@ -141,7 +158,7 @@ def mergesort_feeder(input_queue, **kwargs):
             write_sorted_file(sorted_data, file, output)
         except Empty:
             break
-        
+
 
 
 def mergesort_launcher(input, output):
@@ -152,11 +169,11 @@ def mergesort_launcher(input, output):
               'output': output,
               }
     chunks = {}
-    
+
     files = utils.retrieve_file_list(input, 'txt')
     parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
     a = 0
-    
+
     for x in xrange(settings.NUMBER_OF_PROCESSES):
         b = a + parts
         chunks[x] = files[a:b]

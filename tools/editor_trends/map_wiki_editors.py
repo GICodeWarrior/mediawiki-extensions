@@ -317,22 +317,22 @@ def run_parse_editors(location, language, project):
               'input': input,
               'output': output,
               }
-    chunks = {}
+#    chunks = {}
     source = os.path.join(location, language, project)
     files = utils.retrieve_file_list(source, 'xml')
-    parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
-    a = 0
+#    parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
+#    a = 0
     
     if not os.path.exists(input):
         utils.create_directory(input)
     if not os.path.exists(output):
         utils.create_directory(output)
         
-    for x in xrange(settings.NUMBER_OF_PROCESSES):
-        b = a + parts
-        chunks[x] = files[a:b]
-        a = (x + 1) * parts
-
+#    for x in xrange(settings.NUMBER_OF_PROCESSES):
+#        b = a + parts
+#        chunks[x] = files[a:b]
+#        a = (x + 1) * parts
+    chunks = utils.split_list(files ,settings.NUMBER_OF_PROCESSES)
     pc.build_scaffolding(pc.load_queue, parse_editors, chunks, False, False, **kwargs)
 
 

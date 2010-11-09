@@ -197,7 +197,7 @@ def write_list_to_csv(data, fh, recursive=False):
         return True
     fh.write('\n')
 
-    
+
 def write_dict_to_csv(data, fh):
     keys = data.keys()
     for key in keys:
@@ -287,7 +287,7 @@ def invert_dict(dictionary):
     or other dictionaries
     output: dictionary where key and value are swapped. 
     '''
-    return dict([[v,k] for k,v in dictionary.items()])
+    return dict([[v, k] for k, v in dictionary.items()])
 
 
 def create_dict_from_csv_file(filename, encoding):
@@ -325,6 +325,16 @@ def retrieve_file_list(location, extension, mask=None):
         if re.match(mask, file[0]) and file[1].endswith(extension):
             files.append('.'.join(file))
     return files
+
+def split_list(datalist, maxval):
+    chunks = {}
+    a = 0
+    parts = int(round(float(len(datalist)) / maxval, 0))
+    for x in xrange(maxval):
+        b = a + parts
+        chunks[x] = datalist[a:b]
+        a = (x + 1) * parts
+    return chunks
 
 
 # Progress bar related functions
