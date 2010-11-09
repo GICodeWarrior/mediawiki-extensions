@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -73,6 +73,9 @@ if ( !function_exists( 'json_encode' ) ) {
 }
 
 class WikiSyncSetup {
+
+	const COOKIE_EXPIRE_TIME = 2592000; // 60 * 60 * 24 * 30; see also WikiSync.js, WikiSync.cookieExpireTime
+
 	# {{{ changable in LocalSettings.php :
 	static $remote_wiki_root = 'http://www.mediawiki.org/w';
 	static $remote_wiki_user = '';
@@ -90,9 +93,13 @@ class WikiSyncSetup {
 	static $proxy_pass = '';
 	# }}}
 
-	static $version = '0.2.1'; // version of extension
+	static $version = '0.3.1'; // version of extension
 	static $ExtDir; // filesys path with windows path fix
 	static $ScriptPath; // apache virtual path
+
+	static $user; // current User
+	static $cookie_prefix; // an extension's cookie prefix for current User
+	static $response; // an extension's WebResponse
 
 	const JS_MSG_PREFIX = 'wikisync_js_';
 	static $jsMessages = array(
@@ -103,7 +110,13 @@ class WikiSyncSetup {
 		'sync_to_itself',
 		'diff_search',
 		'revision',
-		'file_size_mismatch'
+		'file_size_mismatch',
+		'invalid_scheduler_time',
+		'scheduler_countdown',
+		'sync_start_ltr',
+		'sync_start_rtl',
+		'sync_end_ltr',
+		'sync_end_rtl'
 	);
 
 	static function init() {
@@ -172,7 +185,7 @@ class WikiSyncSetup {
 			array(
 				'ext.wikisync' => new ResourceLoaderFileModule(
 					array(
-						'scripts' => array( 'WikiSync_utils.js', 'WikiSync.js' ),
+						'scripts' => array( 'md5.js', 'WikiSync_utils.js', 'WikiSync.js' ),
 						'styles' => 'WikiSync.css',
 						'messages' => array_map( 'self::setJSprefix', self::$jsMessages )
 					),
@@ -182,9 +195,9 @@ class WikiSyncSetup {
 			)
 		);
 		return true;
-	} 
+	}
 
-	/*
+	/**
 	 * include stylesheets and scripts; set javascript variables
 	 * @param $outputPage - an instance of OutputPage
 	 * @param $isRTL - whether the current language is RTL
@@ -205,12 +218,13 @@ class WikiSyncSetup {
 			);
 		}
 		$outputPage->addScript(
-			'<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync_Utils.js?' . self::$version . '"></script>
+			'<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/md5.js?' . self::$version . '"></script>
+			<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync_Utils.js?' . self::$version . '"></script>
 			<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/WikiSync.js?' . self::$version . '"></script>
 			<script type="' . $wgJsMimeType . '">
-			WikiSync.setLocalMessages( ' .
-				self::getJsObject( 'wsLocalMessages', self::$jsMessages ) .
-			');</script>' . "\n"
+				WikiSync.setLocalMessages(' . self::getJsObject( 'wsLocalMessages', self::$jsMessages ) . ');
+			</script>
+'
 		);
 	}
 
@@ -235,7 +249,7 @@ class WikiSyncSetup {
 		return wfMsg( 'wikisync_api_result_noaccess', $wgLang->commaList( $groups ) );
 	}
 
-	/*
+	/**
 	 * should not be called from LocalSettings.php
 	 * should be called only when the wiki is fully initialized
 	 * @param $direction defines the direction of synchronization
@@ -246,7 +260,11 @@ class WikiSyncSetup {
 	 *     string error message, when the current user has no access
 	 */
 	static function initUser( $direction = null) {
+		global $wgUser, $wgRequest;
+		self::$user = is_object( $wgUser ) ? $wgUser : new User();
+		self::$response = $wgRequest->response();
 		wfLoadExtensionMessages( 'WikiSync' );
+		self::$cookie_prefix = 'WikiSync_' . md5( self::$user->getName() ) . '_';
 		if ( $direction === true ) {
 			return self::checkUserMembership( self::$rtl_access_groups );
 		} elseif ( $direction === false ) {
@@ -257,5 +275,43 @@ class WikiSyncSetup {
 		}
 		return 'Bug: direction should be boolean or null, value (' . $direction . ') given in ' . __METHOD__;
 	}
+
+	static function getFullCookieName( $cookievar ) {
+		global $wgCookiePrefix;
+		if ( !is_string( self::$cookie_prefix ) ) {
+			throw new MWException( 'You have to call CB_Setup::initUser before to use ' . __METHOD__ );
+		}
+		return $wgCookiePrefix . self::$cookie_prefix . $cookievar;
+	}
+
+	static function getJsCookiePrefix() {
+		global $wgCookiePrefix;
+		if ( !is_string( self::$cookie_prefix ) ) {
+			throw new MWException( 'You have to call CB_Setup::initUser before to use ' . __METHOD__ );
+		}
+		return Xml::escapeJsString( $wgCookiePrefix . self::$cookie_prefix );
+	}
+
+	/**
+	 * set a cookie which is accessible in javascript
+	 */
+	static function setCookie( $cookievar, $val, $time ) {
+		global $wgCookieHttpOnly;
+		// User::setCookies() is not suitable for our needs because it's called only for non-anonymous users
+		// our cookie has to be accessible in javascript
+		// todo: cookie is not set / read in JS anymore, don't modify $wgCookieHttpOnly
+		$wgCookieHttpOnly_save = $wgCookieHttpOnly;
+		$wgCookieHttpOnly = false;
+		if ( !is_string( self::$cookie_prefix ) || !is_object( self::$response ) ) {
+			throw new MWException( 'You have to call CB_Setup::initUser before to use ' . __METHOD__ );
+		}
+		self::$response->setcookie( self::$cookie_prefix . $cookievar, $val, $time );
+		$wgCookieHttpOnly = $wgCookieHttpOnly_save;
+	}
+
+	static function getCookie( $cookievar ) {
+		$idx = self::getFullCookieName( $cookievar );
+		return isset( $_COOKIE[ $idx ] ) ? $_COOKIE[ $idx ] : null;
+	} 
 
 } /* end of WikiSyncSetup class */

@@ -27,15 +27,98 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
  */
 
+window.WikiSyncScheduler = {
+
+	// {{{ automatical synchronization settings
+	isOn: false,
+	switchDirection : false,
+	timeout : 300, // default timeout: amount of 1/10 of minutes (30 minutes)
+	currTimeout : 300, // current timeout: amount of 1/10 of minutes (30 minutes)
+	pollTimeout : 6000, // polling once per 1/10 of minute (setTimeout value in milliseconds)
+	// }}}
+
+	counterNode : null, // DOM object which inner text node will contain countdown number
+	syncButton : null, // DOM object input which 'disabled' property indicates that
+						// synchronization is already going (scheduling is impossible)
+
+	setup : function( form ) {
+		this.counterNode = document.getElementById( 'ws_scheduler_countdown' );
+		this.syncButton = document.getElementById( 'wikisync_synchronization_button' );
+		var timeInterval = form.ws_auto_sync_time_interval;
+		if ( timeInterval.value == '' ) {
+			timeInterval.value = this.timeout;
+		}
+		var time = parseInt( timeInterval.value );
+		if ( isNaN( time ) || time <= 0 ) {
+			alert( WikiSync.formatMessage( 'invalid_scheduler_time' ) );
+			return false;
+		}
+		time *= 10; // form has value in minutes; poll will use value in 1/10 of minutes
+		this.isOn = form.ws_auto_sync.checked;
+		WikiSyncUtils.setCookie( 'auto_sync', this.isOn, WikiSync.cookieExpireTime, '/' );
+		this.switchDirection = form.ws_auto_switch_direction.checked;
+		WikiSyncUtils.setCookie( 'auto_switch_direction', this.switchDirection, WikiSync.cookieExpireTime, '/' );
+		this.timeout = time;
+		WikiSyncUtils.setCookie( 'auto_sync_time_interval', timeInterval.value, WikiSync.cookieExpireTime, '/' );
+		this.reset();
+		return false;
+	},
+
+	reset : function() {
+		this.currTimeout = this.timeout;
+		this.displayCounter();
+	},
+
+	displayCounter : function() {
+		if ( this.isOn && !this.syncButton.disabled ) {
+			// display current timeout
+			var textNode = document.createTextNode( WikiSync.formatMessage( 'scheduler_countdown', Math.ceil( this.currTimeout / 10 ) ) );
+			if ( this.counterNode.firstChild === null ) {
+				this.counterNode.appendChild( textNode );
+			} else {
+				this.counterNode.replaceChild( textNode, this.counterNode.firstChild );
+			}
+		} else {
+			this.counterNode.innerHTML = '';
+		}
+	},
+
+	poll : function() {
+		if ( !this.isOn ) {
+			this.reset();
+		} else {
+			// scheduler is active
+			if ( this.syncButton.disabled ) {
+				// not logged in or synchronization is already in progress
+				this.reset();
+			} else {
+				// scheduling is possible (logged in and no sync is already going)
+				if ( this.currTimeout > 0 ) {
+					// some time is left
+					this.displayCounter();
+					this.currTimeout--;
+				} else {
+					// time is out, let's go
+					WikiSync.process();
+				}
+			}
+		}
+		window.setTimeout( function() { WikiSyncScheduler.poll(); }, this.pollTimeout ); 
+	}
+
+};
+
 window.WikiSync = {
 
 	_WikiSync : '', // WikiSync context
+
+	cookieExpireTime : 30 * 24 * 60 * 60, // see also WikiSync.php, WikiSync::COOKIE_EXPIRE_TIME
 
 	// by default, synchronize from remote to local
 	directionToLocal : true,
@@ -101,6 +184,7 @@ window.WikiSync = {
 	// these are not initialized in 1.17+ codepath
 	localMessages : null,
 
+	// used only when ResourceLoader is not available ( MediaWiki < 1.17)
 	setLocalMessages : function( localMessages ) {
 		this.localMessages = localMessages;
 	},
@@ -109,35 +193,40 @@ window.WikiSync = {
 		// in case of future ResourceLoader adoption in Extension:CategoryBrowser there
 		// should be few methods with different prefixes instead of just one
 		var prefix = 'wikisync_js_';
+		var formatted;
 		if ( typeof mediaWiki === 'object' &&
 				typeof mediaWiki.msg === 'function' ) {
 			// MW 1.17+
 			var args = arguments;
 			args[0] = prefix + args[0];
-			return mediaWiki.msg.apply( mediaWiki.msg, args );
-		}
-		var formatted = this.localMessages[ prefix + arguments[0] ];
-		var indexes = [];
-		var pos;
-		var j;
-		// gettting $n parameter indexes
-		// going in reverse order is very important for the second for loop to be correct
-		for ( var i = arguments.length - 1; i > 0; i-- ) {
-			if ( ( pos = formatted.indexOf( '$' + i ) ) !== -1 ) {
-				indexes.push( pos );
+			formatted = mediaWiki.msg.apply( mediaWiki.msg, args );
+			// probably will not be required when mediaWiki.msg will support plurals
+			// todo: figure out how to call replace before msg.apply
+			formatted = formatted.replace( /{{PLURAL:.+?\|(.+?)\|.+?}}/g, '$1' );
+		} else {
+			// MW < 1.17
+			formatted = this.localMessages[ prefix + arguments[0] ];
+			// replace plurals to their singular values
+			// implementing something better is not so easy task, because plurals vary between languages
+			formatted = formatted.replace( /{{PLURAL:.+?\|(.+?)\|.+?}}/g, '$1' );
+			var indexes = [];
+			var pos;
+			var j;
+			// getting $n parameter indexes
+			// going in reverse order is very important for the second for loop to be correct
+			for ( var i = arguments.length - 1; i > 0; i-- ) {
+				if ( ( pos = formatted.indexOf( '$' + i ) ) !== -1 ) {
+					indexes.push( pos );
+				}
+			}
+			// substituting the parameters
+			for ( i = 0; i < indexes.length; i++ ) {
+				pos = indexes[i];
+				j = formatted.charAt( pos + 1 );
+				formatted = formatted.slice( 0, pos ) + arguments[j] + formatted.slice( pos + 2 );
 			}
 		}
-		// substituting the parameters
-		for ( i = 0; i < indexes.length; i++ ) {
-			pos = indexes[i];
-			j = formatted.charAt( pos + 1 );
-			formatted = formatted.slice( 0, pos ) + arguments[j] + formatted.slice( pos + 2 );
-		}
 		return formatted;
-	},
-
-	mathLogBase : function( x, base ) {
-		return Math.log( x ) / Math.log( base );
 	},
 
 	showIframe : function( url ) {
@@ -153,24 +242,12 @@ window.WikiSync = {
 		iframe.src = url;
 	},
 
-	log : function( s, color, type ) {
-		var logContainer = document.getElementById( 'wikisync_remote_log' );
-		var span = document.createElement( 'SPAN' );
-		if ( typeof s === 'object' ) {
-			s = JSON.stringify( s );
+	log : function() {
+		// sometimes, when user clicks the "Log in" button too fast,
+		// operationLogger might be still uninitialized in onloadHandler
+		if ( typeof this.operationLogger !== 'undefined' ) {
+			this.operationLogger.log.apply( this.operationLogger, arguments );
 		}
-		if ( typeof type !== 'undefined' ) {
-			var b = document.createElement( 'B' );
-			b.appendChild( document.createTextNode( type + ': ' ) );
-			span.appendChild( b );
-		}
-		span.appendChild( document.createTextNode( s ) );
-		if ( typeof color !== 'undefined' ) {
-			span.style.color = color;
-		}
-		logContainer.appendChild( span );
-		logContainer.appendChild( document.createElement( 'HR' ) );
-		logContainer.scrollTop = logContainer.scrollHeight;
 	},
 
 	sourceLog : function( s, type ) {
@@ -189,11 +266,6 @@ window.WikiSync = {
 		this.log( s, 'maroon', t );
 	},
 
-	clearLog : function() {
-		document.getElementById( 'wikisync_remote_log' ).innerHTML = '';
-		return false;
-	},
-
 	error : function( s, type ) {
 		if ( typeof type !== 'undefined' ) {
 			this.log( s, 'red', type );
@@ -202,7 +274,12 @@ window.WikiSync = {
 		}
 	},
 
-	setDirection : function( eventObj ) {
+	clearLog : function( id ) {
+		document.getElementById( id ).innerHTML = '';
+		return false;
+	},
+
+	switchDirection : function( eventObj ) {
 		eventObj.blur();
 		if ( this.directionToLocal = !this.directionToLocal ) {
 			eventObj.value = '<=';
@@ -212,41 +289,34 @@ window.WikiSync = {
 		return false;
 	},
 
-	setSyncFiles : function( eventObj ) {
+	blurElement : function( eventObj ) {
 		eventObj.blur();
-		this.syncFiles = eventObj.checked;
 		return false;
 	},
 
-	remoteRootChange : function( eventObj ) {
-		var textNode = document.createTextNode( eventObj.value );
-		var wrr = document.getElementById( 'wikisync_remote_root' );
-		wrr.replaceChild( textNode , wrr.firstChild );
-		return false;
-	},
-
-	submitRemoteLogin : function( form ) {
-		this.remoteContext.wikiroot = form.remote_wiki_root.value;
-		this.setSyncFiles( form.ws_sync_files );
-		sajax_do_call( 'WikiSyncClient::remoteLogin',
-			[this.remoteContext.wikiroot, form.remote_wiki_user.value, form.remote_wiki_pass.value],
-			WikiSync.remoteLogin );
-		return false;
-	},
-
-	/*
-	 * initializes everything in remoteContext except of wikiroot
+	/**
+	 * called when synchronization was done succesfully
 	 */
-	setRemoteContext : function( login ) {
-		this.remoteContext.userid = login.userid;
-		this.remoteContext.username = login.username;
-		this.remoteContext.logintoken = login.token;
-		this.remoteContext.cookieprefix = login.cookieprefix;
-		this.remoteContext.sessionid = login.sessionid;
-	},
-
-	getResponseError : function( request ) {
-		return 'status=' + request.status + ', text=' + request.responseText;
+	successHandler : function( msg ) {
+		// enable all buttons
+		this.schedulerLogger.log(
+			this.formatMessage(
+				this.directionToLocal ? 'sync_end_rtl' : 'sync_end_ltr',
+				WikiSyncUtils.getLocalDate()
+			)
+		);
+		this.setButtons( true );
+		// check, whether new scheduling is needed
+		if ( WikiSyncScheduler.isOn ) {
+			// do not make operation log grew too long
+			// with automatical sycnronizations
+			this.operationLogger.clear();
+			if ( WikiSyncScheduler.switchDirection ) {
+				this.switchDirection( document.getElementById( 'wikisync_direction_button' ) );
+			}
+		} else {
+			alert( msg );
+		}
 	},
 
 	/**
@@ -270,6 +340,37 @@ window.WikiSync = {
 			button = document.getElementById( ids[i] );
 			button.disabled = current;
 		}
+	},
+
+	remoteRootChange : function( eventObj ) {
+		var textNode = document.createTextNode( eventObj.value );
+		var wrr = document.getElementById( 'wikisync_remote_root' );
+		wrr.replaceChild( textNode , wrr.firstChild );
+		return false;
+	},
+
+	/*
+	 * initializes everything in remoteContext except of wikiroot
+	 */
+	setRemoteContext : function( login ) {
+		this.remoteContext.userid = login.userid;
+		this.remoteContext.username = login.username;
+		this.remoteContext.logintoken = login.token;
+		this.remoteContext.cookieprefix = login.cookieprefix;
+		this.remoteContext.sessionid = login.sessionid;
+	},
+
+	getResponseError : function( request ) {
+		return 'status=' + request.status + ', text=' + request.responseText;
+	},
+
+	submitRemoteLogin : function( form ) {
+		this.remoteContext.wikiroot = form.remote_wiki_root.value;
+		this.syncFiles = form.ws_sync_files.checked;
+		sajax_do_call( 'WikiSyncClient::remoteLogin',
+			[this.remoteContext.wikiroot, form.remote_wiki_user.value, form.remote_wiki_pass.value, form.ws_store_password.checked],
+			WikiSync.remoteLogin );
+		return false;
 	},
 
 	/*
@@ -709,7 +810,8 @@ window.WikiSync = {
 		case 'start' :
 			this.srcSyncId = operation.revid;
 			this.showIframe( this.srcWikiRoot + '/index.php?oldid=' + operation.revid );
-			if ( !confirm( this.formatMessage( 'synchronization_confirmation', this.srcWikiRoot, this.dstWikiRoot, operation.revid ) ) ) {
+			if ( !WikiSyncScheduler.isOn &&
+					!confirm( this.formatMessage( 'synchronization_confirmation', this.srcWikiRoot, this.dstWikiRoot, operation.revid ) ) ) {
 				this.log( 'Operation was cancelled' );
 				this.syncPercents.reset();
 				// enable all buttons
@@ -770,9 +872,8 @@ window.WikiSync = {
 		case 'success' :
 			this.filesPercents.setVisibility( false );
 			this.syncPercents.display( { 'desc' : '', 'curr' : 'max' } );
-			alert( this.formatMessage( 'synchronization_success' ) );
+			this.successHandler( this.formatMessage( 'synchronization_success' ) );
 			// enable all buttons
-			this.setButtons( true );
 			return;
 		}
 	},
@@ -843,9 +944,7 @@ window.WikiSync = {
 				// binary search is complete
 				this.syncPercents.display( { 'desc' : '', 'curr' : 'max' } );
 				if ( this.srcHiId === this.srcLastId && matches > 0 ) {
-					alert( this.formatMessage( 'already_synchronized' ) );
-					// enable all buttons
-					this.setButtons( true );
+					this.successHandler( this.formatMessage( 'already_synchronized' ) );
 					return;
 				}
 				this.log( 'Synchronizing from ' + this.srcHiId );
@@ -921,7 +1020,7 @@ window.WikiSync = {
 			this.srcLastId = this.srcHiId = parseInt( this.popAJAXresult( 'src_rev_last', ['query', 'revisionhistory', 0, 'revid'] ) );
 			// uncomment next line for "live" debugging
 			// this.srcLastId = this.srcHiId = 75054;
-			this.syncPercents.display( { 'desc' : this.formatMessage( 'diff_search' ), 'curr' : 0, 'min' : 0, 'max' : Math.ceil( this.mathLogBase( this.srcLastId - this.srcFirstId, 2 ) ) } );
+			this.syncPercents.display( { 'desc' : this.formatMessage( 'diff_search' ), 'curr' : 0, 'min' : 0, 'max' : Math.ceil( WikiSyncUtils.mathLogBase( this.srcLastId - this.srcFirstId, 2 ) ) } );
 			this.findCommonRev( { 'opcode' : 'start' } );
 			return;
 		}
@@ -946,6 +1045,13 @@ window.WikiSync = {
 		}
 		// disable all buttons
 		this.setButtons( false );
+		WikiSyncScheduler.reset();
+		this.schedulerLogger.log(
+			this.formatMessage(
+				this.directionToLocal ? 'sync_start_rtl' : 'sync_start_ltr',
+				WikiSyncUtils.getLocalDate()
+			)
+		);
 		this.syncPercents.setVisibility( true );
 		/* get first and last source revision in parallel */
 		this.getSrcRev( { 'opcode' : 'start' } );
@@ -959,14 +1065,35 @@ window.WikiSync = {
 			return WikiSync.onloadHandler.call( WikiSync );
 		}
 		// }}}
+		this.operationLogger = new WikiSyncLog( 'wikisync_remote_log' );
+		this.schedulerLogger = new WikiSyncLog( 'wikisync_scheduler_log' );
 		this.syncPercents = new WikiSyncPercentsIndicator( 'wikisync_xml_percents' );
 		this.filesPercents = new WikiSyncPercentsIndicator( 'wikisync_files_percents' );
 		this.syncPercents.setVisibility( false );
 		this.filesPercents.setVisibility( false );
 		this.showIframe( '' );
 		this.errorDefaultAction();
+		var loginForm = document.getElementById( 'remote_login_form' );
+		// {{{ restore remote login / password cookies to login form, if any
+		WikiSyncUtils.cookieToInput( 'ruser', loginForm.remote_wiki_user );
+		var rpass = WikiSyncUtils.cookieToInput( 'rpass', loginForm.remote_wiki_pass );
+		// }}}
+		// {{{ restore scheduler cookies to scheduler form, if any
+		var schedulerForm = document.getElementById( 'scheduler_form' );
+		WikiSyncUtils.cookieToCheckbox( 'auto_sync', schedulerForm.ws_auto_sync );
+		WikiSyncUtils.cookieToCheckbox( 'auto_switch_direction', schedulerForm.ws_auto_switch_direction );
+		WikiSyncUtils.cookieToInput( 'auto_sync_time_interval', schedulerForm.ws_auto_sync_time_interval );
+		// }}}
+		if ( rpass !== null ) {
+			loginForm.ws_store_password.checked = true;
+			// try to autologin
+			this.submitRemoteLogin( loginForm );
+		}
+		WikiSyncScheduler.setup( schedulerForm );
+		window.setTimeout( function() { WikiSyncScheduler.poll(); }, this.pollTimeout );
 	}
 
 }
 
-WikiSyncUtils.addEvent(window,"load", WikiSync.onloadHandler);
+WikiSyncUtils.setCookiePrefix( wgDBname + '_wiki_WikiSync_' + WikiSync_md5.hex( wgUserName ) + '_' );
+WikiSyncUtils.addEvent( window, "load", WikiSync.onloadHandler );

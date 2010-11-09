@@ -1,4 +1,4 @@
-MediaWiki extension WikiSync, version 0.2.1
+MediaWiki extension WikiSync, version 0.3.1
 
 WikiSync allows an AJAX-based synchronization of revisions and files between
 global wiki site and it's local mirror. Files download can optionally be disabled,

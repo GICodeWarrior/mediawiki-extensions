@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -40,9 +40,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class WikiSyncPage extends SpecialPage {
 
-	var $sync_direction_tpl;
-	var $remote_login_form_tpl;
-	var $remote_log_tpl;
 	var $page_tpl;
 
 	var $initUser;
@@ -51,9 +48,9 @@ class WikiSyncPage extends SpecialPage {
 		$remote_wiki_root = _QXML::specialchars( WikiSyncSetup::$remote_wiki_root );
 		$remote_wiki_user = _QXML::specialchars( WikiSyncSetup::$remote_wiki_user );
 		$js_remote_change = 'return WikiSync.remoteRootChange(this)';
-		$js_sync_files = 'return WikiSync.setSyncFiles(this);';
-		$this->remote_login_form_tpl =
-			array( '__tag'=>'table', 'class'=>'wikisync_remote_login',
+		$js_blur = 'return WikiSync.blurElement(this);';
+		return
+			array( '__tag'=>'table', 'style'=>'width:100%; ',
 				array( '__tag'=>'form', 'id'=>'remote_login_form', 'onsubmit'=>'return WikiSync.submitRemoteLogin(this);',
 					array( '__tag'=>'tr',
 						array( '__tag'=>'th', 'colspan'=>'2', 'style'=>'text-align:center; ', wfMsgHtml( 'wikisync_login_to_remote_wiki' ) )
@@ -71,7 +68,13 @@ class WikiSyncPage extends SpecialPage {
 						array( '__tag'=>'td', array( '__tag'=>'input', 'type'=>'password', 'name'=>'remote_wiki_pass' ) )
 					),
 					array( '__tag'=>'tr',
-						array( '__tag'=>'td', 'colspan'=>'2', wfMsgHtml( 'wikisync_sync_files' ), array( '__tag'=>'input', 'type'=>'checkbox', 'id'=>'ws_sync_files', 'name'=>'ws_sync_files', 'onchange'=>$js_sync_files, 'onmouseup'=>$js_sync_files, 'checked'=>'' ) )
+						array( '__tag'=>'td', 'colspan'=>'2',
+							wfMsgHtml( 'wikisync_sync_files' ),
+							array( '__tag'=>'input', 'type'=>'checkbox', 'id'=>'ws_sync_files', 'name'=>'ws_sync_files', 'onchange'=>$js_blur, 'onmouseup'=>$js_blur, 'checked'=>'' ),
+							array( '__tag'=>'br', 'clear'=>'all', '' ),
+							wfMsgHtml( 'wikisync_store_password' ),
+							array( '__tag'=>'input', 'type'=>'checkbox', 'id'=>'ws_store_password', 'name'=>'ws_store_password', 'onchange'=>$js_blur, 'onmouseup'=>$js_blur )
+						)
 					),
 					array( '__tag'=>'tr',
 						array( '__tag'=>'td', array( '__tag'=>'input', 'id'=>'wikisync_synchronization_button', 'type'=>'button', 'value'=>wfMsgHtml( 'wikisync_synchronization_button' ), 'disabled'=>'', 'onclick'=>'return WikiSync.process(\'init\')' ) ),
@@ -81,20 +84,48 @@ class WikiSyncPage extends SpecialPage {
 			);
 	}
 
-	function initRemoteLogTpl() {
-		$this->remote_log_tpl =
-			array( '__tag'=>'table', 'class'=>'wikisync_remote_log',
+	function initSchedulerTpl() {
+		$js_blur = 'return WikiSync.blurElement(this);';
+		return
+			array( '__tag'=>'table', 'style'=>'width:100%; ',
+				array( '__tag'=>'form', 'id'=>'scheduler_form', 'onsubmit'=>'return WikiSyncScheduler.setup(this);',
+					array( '__tag'=>'tr',
+						array( '__tag'=>'th', 'colspan'=>'2', 'style'=>'text-align:center; ', wfMsgHtml( 'wikisync_scheduler_setup' ) )
+					),
+					array( '__tag'=>'tr',
+						array( '__tag'=>'td', 'colspan'=>'2',
+							wfMsgHtml( 'wikisync_scheduler_turn_on' ),
+							array( '__tag'=>'input', 'type'=>'checkbox', 'name'=>'ws_auto_sync', 'onchange'=>$js_blur, 'onmouseup'=>$js_blur ),
+							array( '__tag'=>'br', 'clear'=>'all', '' ),
+							wfMsgHtml( 'wikisync_scheduler_switch_direction' ),
+							array( '__tag'=>'input', 'type'=>'checkbox', 'name'=>'ws_auto_switch_direction', 'onchange'=>$js_blur, 'onmouseup'=>$js_blur ),
+							array( '__tag'=>'br', 'clear'=>'all', '' ),
+							wfMsgHtml( 'wikisync_scheduler_time_interval' ),
+							array( '__tag'=>'input', 'type'=>'text', 'style'=>'margin-left:3px; width:3em; ', 'name'=>'ws_auto_sync_time_interval' )
+						)
+					),
+					array( '__tag'=>'tr',
+						array( '__tag'=>'td', 'id'=>'ws_scheduler_countdown', '' ), // a placeholder for scheduled time countdown in javascript
+						array( '__tag'=>'td', 'style'=>'text-align:right; ', array( '__tag'=>'input', 'id'=>'wikisync_scheduler_apply_button', 'type'=>'submit', 'value'=>wfMsgHtml( 'wikisync_apply_button' ) ) )
+					)
+				)
+			);
+	}
+
+	function initLogTpl( $log_id ) {
+		return
+			array( '__tag'=>'table', 'style'=>'width:100%; ',
 				array( '__tag'=>'tr',
-					array( '__tag'=>'th', 'style'=>'text-align:center; ', wfMsgHtml( 'wikisync_remote_log' ) )
+					array( '__tag'=>'th', 'style'=>'text-align:center; ', wfMsgHtml( $log_id ) )
 				),
 				array( '__tag'=>'tr',
 					array( '__tag'=>'td',
-						array( '__tag'=>'div', 'id'=>'wikisync_remote_log' )
+						array( '__tag'=>'div', 'class'=>'wikisync_log', 'id'=>$log_id )
 					)
 				),
 				array( '__tag'=>'tr',
 					array( '__tag'=>'td',
-						array( '__tag'=>'input', 'type'=>'button', 'value'=>wfMsgHtml( 'wikisync_clear_log' ), 'onclick'=>'return WikiSync.clearLog()' )
+						array( '__tag'=>'input', 'type'=>'button', 'value'=>wfMsgHtml( 'wikisync_clear_log' ), 'onclick'=>'return WikiSync.clearLog(\'' . $log_id . '\')' )
 					)
 				)
 			);
@@ -102,13 +133,13 @@ class WikiSyncPage extends SpecialPage {
 
 	function initSyncDirectionTpl() {
 		global $wgServer, $wgScriptPath;
-		$this->sync_direction_tpl =
+		return
 			array(
 				array( '__tag'=>'div', 'style'=>'width:100%; font-weight:bold; text-align:center; ', wfMsgHTML( 'wikisync_direction' ) ),
 				array(	'__tag'=>'table', 'style'=>'margin:0 auto 0 auto; ',
 					array( '__tag'=>'tr',
 						array( '__tag'=>'td', 'style'=>'text-align:right; ', wfMsgHTML( 'wikisync_local_root' ) ),
-						array( '__tag'=>'td', 'rowspan'=>'2', 'style'=>'vertical-align:middle; ', array( '__tag'=>'input', 'id'=>'wikisync_direction_button', 'type'=>'button', 'value'=>'&lt;=', 'onclick'=>'return WikiSync.setDirection(this)' ) ),
+						array( '__tag'=>'td', 'rowspan'=>'2', 'style'=>'vertical-align:middle; ', array( '__tag'=>'input', 'id'=>'wikisync_direction_button', 'type'=>'button', 'value'=>'&lt;=', 'onclick'=>'return WikiSync.switchDirection(this)' ) ),
 						array( '__tag'=>'td', wfMsgHTML( 'wikisync_remote_root' ) )
 					),
 					array( '__tag'=>'tr',
@@ -134,14 +165,27 @@ class WikiSyncPage extends SpecialPage {
 	}
 
 	function initPageTpl() {
+		$tr_style = 'border:2px dashed lightgray; ';
 		$this->page_tpl =
 			array( '__tag'=>'table',
-				array( '__tag'=>'tr',
-					array( '__tag'=>'td', 'colspan'=>'2', &$this->sync_direction_tpl )
+				array( '__tag'=>'tr', 'style'=>$tr_style,
+					array( '__tag'=>'td', 'colspan'=>'2', $this->initSyncDirectionTpl() )
 				),
-				array( '__tag'=>'tr',
-					array( '__tag'=>'td', 'style'=>'width:50%; ', &$this->remote_log_tpl ),
-					array( '__tag'=>'td', 'style'=>'width:50%; ', &$this->remote_login_form_tpl )
+				array( '__tag'=>'tr', 'style'=>$tr_style,
+					array( '__tag'=>'td', 'style'=>'width:50%; ',
+						$this->initLogTpl( 'wikisync_remote_log' ),
+					),
+					array( '__tag'=>'td', 'style'=>'width:50%; ',
+						$this->initRemoteLoginFormTpl(),
+					)
+				),
+				array( '__tag'=>'tr', 'style'=>$tr_style,
+					array( '__tag'=>'td', 'style'=>'width:50%; ',
+						$this->initLogTpl( 'wikisync_scheduler_log' ),
+					),
+					array( '__tag'=>'td', 'style'=>'width:50%; ',
+						$this->initSchedulerTpl()
+					)
 				),
 				array( '__tag'=>'tr',
 					array( '__tag'=>'td', 'colspan'=>'2',
@@ -156,6 +200,7 @@ class WikiSyncPage extends SpecialPage {
 					array( '__tag'=>'td', 'colspan'=>'2',
 						// Have to explicitly set empty contents for the iframe, or we'll produce
 						// <iframe /> which browsers consider an unclosed tag
+						// todo: fix in _QXML class
 						array( '__tag'=> 'iframe', 'id'=>'wikisync_iframe', 'style' => 'width:100%; height:200px; display:none; ', '' )
 					)
 				)
@@ -186,9 +231,6 @@ class WikiSyncPage extends SpecialPage {
 		}
 		WikiSyncSetup::headScripts( $wgOut, $wgContLang->isRTL() );
 		$wgOut->setPagetitle( wfMsgHtml( 'wikisync' ) );
-		$this->initSyncDirectionTpl();
-		$this->initRemoteLoginFormTpl();
-		$this->initRemoteLogTpl();
 		$this->initPageTpl();
 		$wgOut->addHTML( _QXML::toText( $this->page_tpl ) );
 	}
