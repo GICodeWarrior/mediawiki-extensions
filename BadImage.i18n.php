@@ -1597,11 +1597,13 @@ $messages['lt'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author Geimeris
  * @author Papuass
  */
 $messages['lv'] = array(
 	'badimages-add-btn' => 'Pievienot',
 	'badimages-name' => 'Nosaukums:',
+	'badimages-not-added' => 'Neizdevās pievienot attēlu.',
 	'badimages-reason' => 'Iemesls:',
 );
 
