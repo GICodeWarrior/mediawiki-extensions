@@ -120,7 +120,7 @@ def output_editor_information(elem, output, **kwargs):
                 output.put(vars)
                 vars['date'] = utils.convert_timestamp_to_date(vars['date'])
             elif destination == 'file':
-                data =[]
+                data = []
                 for head in headers:
                     data.append(vars[head])
                 utils.write_list_to_csv(data, output)
@@ -207,10 +207,10 @@ def parse_editors(xml_queue, data_queue, **kwargs):
             if pbar:
                 print file, xml_queue.qsize()
                 #utils.update_progressbar(pbar, xml_queue)
-                
+
             if debug:
                 break
-            
+
         except Empty:
             break
 
@@ -234,7 +234,7 @@ def store_editors(data_queue, **kwargs):
     collection = mongo['editors']
     mongo.collection.ensure_index('editor')
     editor_cache = cache.EditorCache(collection)
-    
+
     while True:
         try:
             edit = data_queue.get(block=False)
@@ -305,7 +305,7 @@ def run_parse_editors(location, language, project):
     ids = load_bot_ids()
     input = os.path.join(location, language, project)
     output = os.path.join(input, 'txt')
- 
+
     kwargs = {'bots': ids,
               'dbname': language + project,
               'language': language,
@@ -317,22 +317,15 @@ def run_parse_editors(location, language, project):
               'input': input,
               'output': output,
               }
-#    chunks = {}
     source = os.path.join(location, language, project)
     files = utils.retrieve_file_list(source, 'xml')
-#    parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
-#    a = 0
-    
+
     if not os.path.exists(input):
         utils.create_directory(input)
     if not os.path.exists(output):
         utils.create_directory(output)
-        
-#    for x in xrange(settings.NUMBER_OF_PROCESSES):
-#        b = a + parts
-#        chunks[x] = files[a:b]
-#        a = (x + 1) * parts
-    chunks = utils.split_list(files ,settings.NUMBER_OF_PROCESSES)
+
+    chunks = utils.split_list(files , settings.NUMBER_OF_PROCESSES)
     pc.build_scaffolding(pc.load_queue, parse_editors, chunks, False, False, **kwargs)
 
 

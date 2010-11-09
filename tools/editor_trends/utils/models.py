@@ -13,6 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-11-09'
+__version__ = '0.1'
 
 import multiprocessing
 
@@ -30,11 +33,10 @@ class ProcessInputQueue(multiprocessing.Process):
     def run(self):
         proc_name = self.name
         kwargs = {}
-        IGNORE = [self.input_queue, self.result_queue, self.target]
+        IGNORE = ['input_queue', 'result_queue', 'target']
         for kw in self.__dict__:
             if kw not in IGNORE and not kw.startswith('_'):
                 kwargs[kw] = getattr(self, kw)
-
         self.target(self.input_queue, self.result_queue, **kwargs)
 
 
@@ -50,10 +52,9 @@ class ProcessResultQueue(multiprocessing.Process):
 
     def run(self):
         proc_name = self.name
-        kwargs= {}
-        IGNORE = [self.result_queue, self.target]
+        kwargs = {}
+        IGNORE = ['result_queue', 'target']
         for kw in self.__dict__:
             if kw not in IGNORE and not kw.startswith('_'):
                 kwargs[kw] = getattr(self, kw)
-        
         self.target(self.result_queue, **kwargs)

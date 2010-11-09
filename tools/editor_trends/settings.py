@@ -27,12 +27,13 @@ from multiprocessing import cpu_count
 import os
 import sys
 import platform
-try:
-    from pywin import win32file
-    '''increase the maximum number of open files on Windows to 1024'''
-    win32file._setmaxstdio(1024)
-except ImportError:
-    pass
+#try:
+#    from pywin import win32file
+#    '''increase the maximum number of open files on Windows to 1024'''
+#    win32file._setmaxstdio(1024)
+#except ImportError:
+#    pass
+
 try:
     import resource
 except ImportError:
@@ -46,6 +47,8 @@ ops = {platform.win32_ver: 'Windows',
 for op in ops:
     if op() != ('', '', '') and op() != ('', ('', '', ''), ''):
         OS = ops[op]
+
+ARCH = platform.machine()
 
 WORKING_DIRECTORY = os.getcwd()
 IGNORE_DIRS = ['wikistats', 'zips']
@@ -107,7 +110,12 @@ NAMESPACE_LOCATION = os.path.join(WORKING_DIRECTORY, 'namespaces')
 # ==64Mb, see http://hadoop.apache.org/common/docs/r0.20.0/hdfs_design.html#Large+Data+Sets for reason
 MAX_XML_FILE_SIZE = 67108864
 
-MAX_FILES_OPEN = win32file._getmaxstdio() if OS == 'Windows' else resource.getrlimit('RLIMIT_NOFILE')
+if OS == 'Windows' and ARCH == 'i386':
+    MAX_FILES_OPEN = win32file._getmaxstdio() 
+elif OS != 'Windows':
+    MAX_FILES_OPEN = resource.getrlimit(resource.RLIMIT_NOFILE)
+else:
+    MAX_FILES_OPEN = 500
 
 ENCODING = 'utf-8'
 

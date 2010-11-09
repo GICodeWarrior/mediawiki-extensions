@@ -99,7 +99,7 @@ def write_sorted_file(sorted_data, file, output):
     fh.close()
 
 
-def store_editors(input, dbname):
+def store_editors(input, filename, dbname):
     fh = utils.create_txt_filehandle(input, filename, 'r', settings.ENCODING)
     mongo = db.init_mongo_db(dbname)
     collection = mongo['editors']
@@ -116,34 +116,29 @@ def store_editors(input, dbname):
     fh.close()
 
 
-def merge_sorted_files_launcher(dbname, input, output):
+def mergesort_external_launcher(dbname, input, output):
     files = utils.retrieve_file_list(input, 'txt', mask='')
     x = 0
+    maxval = 99999
     while maxval >= settings.MAX_FILES_OPEN:
         x += 1.0
         maxval = round(len(files) / x)
     chunks = utils.split_list(files, int(x))
     '''1st iteration external mergesort'''
     for chunk in chunks:
-        #filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.ENCODING) for file in chunks[chunk]]
-        #filename = merge_sorted_files(output, filehandles, chunk)
-        #filehandles = [fh.close() for fh in filehandles]
-        pass
+        filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.ENCODING) for file in chunks[chunk]]
+        filename = merge_sorted_files(output, filehandles, chunk)
+        filehandles = [fh.close() for fh in filehandles]
     '''2nd iteration external mergesort, if necessary'''
     if len(chunks) > 1:
         files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
         filehandles = [utils.create_txt_filehandle(output, file, 'r', settings.ENCODING) for file in files]
-        filename = merge_sorted_files(output, filehandles, chunk)
+        filename = merge_sorted_files(output, filehandles, 'final')
         filehandles = [fh.close() for fh in filehandles]
     store_editors(output, filename, dbname)
 
 
-def debug_mergesort(input, output):
-    files = utils.retrieve_file_list(input, 'txt', mask='((?!_sorted)\d)')
-    for file in files:
-        pass
-
-def mergesort_feeder(input_queue, **kwargs):
+def mergesort_feeder(input_queue, result_queue, **kwargs):
     input = kwargs.get('input', None)
     output = kwargs.get('output', None)
     while True:
@@ -160,7 +155,6 @@ def mergesort_feeder(input_queue, **kwargs):
             break
 
 
-
 def mergesort_launcher(input, output):
     kwargs = {'pbar': True,
               'nr_input_processors': settings.NUMBER_OF_PROCESSES,
@@ -168,23 +162,23 @@ def mergesort_launcher(input, output):
               'input': input,
               'output': output,
               }
-    chunks = {}
-
     files = utils.retrieve_file_list(input, 'txt')
-    parts = int(round(float(len(files)) / settings.NUMBER_OF_PROCESSES, 0))
-    a = 0
-
-    for x in xrange(settings.NUMBER_OF_PROCESSES):
-        b = a + parts
-        chunks[x] = files[a:b]
-        a = (x + 1) * parts
-
+    chunks = utils.split_list(files, settings.NUMBER_OF_PROCESSES)
     pc.build_scaffolding(pc.load_queue, mergesort_feeder, chunks, False, False, **kwargs)
-    merge_sorted_files(input, output)
+
+def debug_mergesort_feeder(input, output):
+    kwargs = {
+              'input': input,
+              'output': output,
+              }
+    files = utils.retrieve_file_list(input, 'txt')
+    chunks = utils.split_list(files, settings.NUMBER_OF_PROCESSES)
+    q = pc.load_queue(chunks[0])
+    mergesort_feeder(q, False, **kwargs)
 
 if __name__ == '__main__':
     input = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'txt')
     output = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'sorted')
+    dbname = 'enwiki'
     mergesort_launcher(input, output)
-    #debug_mergesort(input, output)
-    #debug_merge_sorted_files(input, output)
+    mergesort_external_launcher(dbname, output, output)

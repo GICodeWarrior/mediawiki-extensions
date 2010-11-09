@@ -31,7 +31,7 @@ import settings
 from utils import sort
 input = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'txt')
 output = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'sorted')
-#sort.mergesort_launcher(input, output)
-
-#sort.debug_mergesort(input,output)
-sort.merge_sorted_files_launcher(output, output)
+dbname = 'enwiki'
+#sort.debug_mergesort_feeder(input, output)
+sort.mergesort_launcher(input, output)
+#sort.mergesort_external_launcher(dbname, output, output)
