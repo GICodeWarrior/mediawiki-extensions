@@ -746,6 +746,15 @@ Pročitajte cijeli dokument i ako želite da izrazite vašu podršku, popunite n
 	'sign-list-hidebday' => 'Ne prikazuj godine',
 	'sign-list-hideemail' => 'Ne prikazuj e-mail',
 	'sign-submit' => 'Potpiši dokument',
+	'sign-information' => "<div class=\"noarticletext\">Hvala vam što ste uzeli vremena da pročitate ovaj dokument.
+Ako se slažete s njim, molimo pokažite vašu podršku tako što ćete popuniti neophodna polja ispod i kliknuti ''Potpiši dokument''.
+
+Molimo provjerite da su vaši lični podaci tačni i da ćemo vas kontaktirati na neki način da provjerimo vaš identitet.
+Zapamtite da će vaša IP adresa i drugi identifikujući podaci biti spremljeni u ovom obrazcu i da će ih koristiti moderatori da uklone dvostruke potpise i potvrde tačnost vaših ličnih podataka.
+Pošto korištenje otvorenih i anonimnih proksija onemogućuje vašu mogućnost da uradite ovaj zadatak, potpisi iz takvih proksija se sigurno neće brojati.
+Ako ste trenutno konektovani preko proksi servera, molimo diskonektujte se i koristite standardnu konekciju dok se potpisujete.</div>
+
+\$1",
 	'sig-success' => 'Uspješno ste potpisali dokument.',
 	'sign-view-selectfields' => "'''Polja za prikaz:'''",
 	'sign-viewfield-entryid' => 'ID stavke',
@@ -762,6 +771,7 @@ Pročitajte cijeli dokument i ako želite da izrazite vašu podršku, popunite n
 	'sign-viewfield-email' => 'E-mail',
 	'sign-viewfield-age' => 'Starost',
 	'sign-viewfield-options' => 'Opcije',
+	'sign-viewsigs-intro' => 'Ispod su prikazani potpisi spremljeni za <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen' => 'Potpisivanje ovog dokumenta je trenutno omogućeno.',
 	'sign-sigadmin-close' => 'Onemogući potpisivanje',
 	'sign-sigadmin-currentlyclosed' => 'Potpisivanje ovog dokumenta trenutno je onemogućeno.',
@@ -798,6 +808,7 @@ Pročitajte cijeli dokument i ako želite da izrazite vašu podršku, popunite n
 	'sign-uniquequery-similaraddress' => 'Slične adrese',
 	'sign-uniquequery-similarphone' => 'Slični telefoni',
 	'sign-uniquequery-similaremail' => 'Sličan e-mail',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] je potpisao [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Catalan (Català)
