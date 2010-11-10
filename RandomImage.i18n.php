@@ -240,6 +240,13 @@ $messages['mk'] = array(
 	'randomimage-desc' => 'Дава случаен избирач на податотеки користејќи <code>&lt;randomimage /&gt;</code>',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'randomimage-desc' => 'ക്രമരഹിതമായി ഒരു മീഡിയ എടുക്കാനുള്ള <code>&lt;randomimage /&gt;</code> റ്റാഗ് നൽകുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
