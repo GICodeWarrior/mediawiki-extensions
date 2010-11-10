@@ -514,6 +514,8 @@ $messages['ml'] = array(
 	'securepasswords-valid' => 'താങ്കളുടെ രഹസ്യവാക്ക് അസാധുവാണ് അല്ലെങ്കിൽ തീരെ ചെറുതാണ്.
 അത്:',
 	'securepasswords-minlength' => 'കുറഞ്ഞത് {PLURAL:$1|ഒരക്ഷരം|$1 അക്ഷരങ്ങൾ}} നീളമുള്ളതാവണം',
+	'securepasswords-lowercase' => 'കുറഞ്ഞത് ഒരു ലോവർകേസ് അക്ഷരം ഉൾക്കൊള്ളുന്നു',
+	'securepasswords-uppercase' => 'കുറഞ്ഞത് ഒരു അപ്പർകേസ് അക്ഷരം ഉൾക്കൊള്ളുന്നു',
 	'securepasswords-digit' => 'ഒരു അക്കമെങ്കിലും ഉൾക്കൊള്ളണം',
 	'securepasswords-special' => 'ഒരു പ്രത്യേകാക്ഷരമെങ്കിലും ഉൾക്കൊള്ളണം (പ്രത്യേകാക്ഷരങ്ങൾ: $1)',
 	'securepasswords-username' => 'താങ്കളുടെ ഉപയോക്തൃനാമത്തിൽ നിന്നും വ്യത്യസ്തമായിരിക്കണം',
