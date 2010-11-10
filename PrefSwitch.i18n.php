@@ -8065,7 +8065,7 @@ Nhóm Trải nghiệm Người dùng của Wikimedia Foundation đã làm việc
 * '''Hướng dẫn tạo liên kết:''' Một công cụ rất dễ sử dụng giúp bạn thêm liên kết đến các trang wiki khác cũng như liên kết ra các trang bên ngoài.
 * '''Cải tiến tìm kiếm:''' Chúng tôi đã cải tiến những gợi ý tìm kiếm để giúp bạn tìm được trang mình muốn nhanh chóng hơn.
 * '''Các tính năng mới khác:''' Chúng tôi cũng đã giới thiệu hướng dẫn tạo bảng để giúp tạo bảng dễ dàng hơn, rồi tính năng tìm kiếm và thay thế để đơn giản hóa việc sửa trang.
-* '''Biểu trưng Wikipedia:''' Chúng tôi đã cập nhật biểu trưng của chúng ta. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog của Wikimedia Foundation].",
+* '''Biểu trưng Wikipedia:''' Chúng tôi đã cập nhật biểu trưng của chúng ta. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog của Quỹ Wikimedia].",
 	'prefswitch-main-logged-changes' => "* '''Thẻ {{int:watch}}''' trở thành hình sao.
 * '''Thẻ {{int:move}}''' nằm trong trình đơn bên cạnh hộp tìm kiếm.",
 	'prefswitch-main-feedback' => '===Phản hồi?===
