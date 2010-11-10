@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="phpundercontrol.org" default="build" basedir=".">
-  <target name="build" depends="uptodate,init,apidoc,phpunit" />
+  <target name="build" depends="uptodate,init,phpunit" />
   <property file="build.properties"/>
 
   <!--
@@ -23,6 +23,13 @@
     </exec>
   </target>
 
+  <available file="${extensionsdir}" property="extensions.exists"/>
+  <target name="checkout-ext" unless="extensions.exists">
+    <exec executable="svn">
+      <arg line="checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions ${extensionsdir}" />
+    </exec>
+  </target>
+
   <available file="${builddir}/data/phpuc.zip" property="phpuc.exists"/>
   <target name="fetchphpuc" unless="phpuc.exists">
     <mkdir dir="${builddir}/data" />
@@ -30,7 +37,6 @@
          dest="${builddir}/data/phpuc.zip"
          verbose="on"/>
   </target>
-
   <available file="${builddir}/data/phpdoc" property="phpdoc.exists"/>
   <target name="phpdoctemplates" unless="phpdoc.exists" depends="fetchphpuc">
     <unzip src="${builddir}/data/phpuc.zip"
@@ -42,7 +48,7 @@
     </unzip>
   </target>
 
-  <target name="init" depends="clean,checkout">
+  <target name="init" depends="clean,checkout,checkout-ext">
     <mkdir dir="${builddir}" />
     <mkdir dir="${builddir}/api" />
     <mkdir dir="${builddir}/data" />
@@ -53,6 +59,9 @@
     <mkdir dir="${builddir}/php-code-browser" />
     <exec executable="php" dir="${sourcedir}/" failonerror="true">
       <arg line="maintenance/install.php --dbtype=sqlite --dbpath=${builddir}/data --pass=testpass test test"/>
+    </exec>
+    <exec executable="sh" dir="${sourcedir}/" failonerror="true">
+      <arg line="-c &quot;echo require_once\( dirname\( dirname\( __FILE__ \) \) \) . \'/ExtraSettings.php\'\;>>LocalSettings.php&quot;"/>
     </exec>
   </target>
 
@@ -75,8 +84,11 @@
     </apply>
   </target>
 
-  <target name="uptodate" depends="checkout">
+  <target name="uptodate" depends="checkout,checkout-ext">
     <exec executable="svn" dir="${sourcedir}">
+      <arg line="up" />
+    </exec>
+    <exec executable="svn" dir="${extensionsdir}">
       <arg line="up" />
     </exec>
   </target>
@@ -92,7 +104,6 @@
                  --ignore 'Messages*.php'"/>
     </exec>
   </target>
-
   <target name="checkstyle">
     <exec executable="phpcs" dir="${sourcedir}" output="${builddir}/logs/checkstyle.xml">
       <arg line="--report=checkstyle --standard=PEAR --ignore='Messages*.php,*.css,*.js' ${sourcepart}"/>
