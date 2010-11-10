@@ -63,7 +63,7 @@ class WikiSnoopy extends Snoopy {
 	 */
 	function setContext( $rc ) {
 		if ( is_string( $rc ) ) {
-			$rc = json_decode( $rc, true );
+			$rc = FormatJson::decode( $rc, true );
 		}
 		if ( !isset( $rc['wikiroot'] ) ) {
 			throw new MWException( 'wikiroot is undefined in ' . __METHOD__ );
@@ -173,7 +173,7 @@ class WikiSyncJSONresult {
 	function getResult( $code = null, $msg = null ) {
 		$this->setCode( $code, $msg );
 		if ( $this->encodeResult ) {
-			return json_encode( $this->jr );
+			return FormatJson::encode( $this->jr );
 		} else {
 			return $this->jr;
 		}
@@ -297,7 +297,7 @@ class WikiSyncClient {
 		if ( $snoopy->error != '' ) {
 			return $json_result->getResult( 'http', $snoopy->error );
 		}
-		$response = json_decode( $snoopy->results );
+		$response = FormatJson::decode( $snoopy->results );
 		# proxy returned html instead of json ?
 		if ( $response === null ) {
 			return $json_result->getResult( 'http' );
@@ -325,7 +325,7 @@ class WikiSyncClient {
 		if ( $snoopy->error != '' ) {
 			return $json_result->getResult( 'http', $snoopy->error );
 		}
-		$response = json_decode( $snoopy->results );
+		$response = FormatJson::decode( $snoopy->results );
 		# proxy returned html instead of json ?
 		if ( $response === null ) {
 			return $json_result->getResult( 'http' );
@@ -354,7 +354,7 @@ class WikiSyncClient {
 	 */
 	static function localAPIwrap( $api_params ) {
 		if ( is_string( $api_params ) ) {
-			$api_params = json_decode( $api_params, true );
+			$api_params = FormatJson::decode( $api_params, true );
 		}
 		$req = new FauxRequest( $api_params );
 		$api = new ApiMain( $req );
@@ -385,7 +385,7 @@ class WikiSyncClient {
 			# not enough priviledges to run this method
 			return $json_result->getResult( 'noaccess', $iu );
 		}
-		$api_params = is_array( $args[0] ) ? $args[0] : json_decode( $args[0], true );
+		$api_params = is_array( $args[0] ) ? $args[0] : FormatJson::decode( $args[0], true );
 		try {
 			$response = self::localAPIwrap( $api_params );
 		} catch ( Exception $e ) {
@@ -434,7 +434,7 @@ class WikiSyncClient {
 			return $json_result->getResult( 'noaccess', $iu );
 		}
 		# snoopy api_params are associative array
-		$api_params = is_array( $args[1] ) ? $args[1] : json_decode( $args[1], true );
+		$api_params = is_array( $args[1] ) ? $args[1] : FormatJson::decode( $args[1], true );
 		$snoopy = new WikiSnoopy();
 		$snoopy->setContext( $args[0] );
 		# we always use POST method because it's less often cached by proxies
@@ -453,7 +453,7 @@ class WikiSyncClient {
 		if ( $resultEncoding == self::RESULT_SNOOPY ) {
 			return $snoopy;
 		}
-		$response = json_decode( $snoopy->results, true );
+		$response = FormatJson::decode( $snoopy->results, true );
 		# proxy returned html instead of json ?
 		if ( $response === null ) {
 			return $json_result->getResult( 'http' );
@@ -514,7 +514,7 @@ class WikiSyncClient {
 		}
 		# remote context; used for remote API calls
 		self::$remoteContextJSON = $args[0];
-		self::$client_params = json_decode( $args[1], true );
+		self::$client_params = FormatJson::decode( $args[1], true );
 		if ( ($check_result = self::checkClientParameters( $client_name )) !== true ) {
 			self::$json_result->setCode( 'init_client', $check_result );
 			return false;
@@ -631,7 +631,7 @@ class WikiSyncClient {
 		$result = self::sourceAPIget( $APIparams );
 		if ( $result['ws_status'] === '0' ) {
 			$result['ws_msg'] = 'source: ' . $result['ws_msg'] . ' (' . __METHOD__ . ')';
-			return json_encode( $result );
+			return FormatJson::encode( $result );
 		}
 		# collect the file titles existed in current chunk's revisions
 		$files = array();
@@ -649,7 +649,7 @@ class WikiSyncClient {
 		$result = self::importXML( $client_params['dst_import_token'], $result['query']['exportxml'] );
 		if ( $result['ws_status'] === '0' ) {
 			$result['ws_msg'] = 'destination: ' . $result['ws_msg'] . ' (' . __METHOD__ . ')';
-			return json_encode( $result );
+			return FormatJson::encode( $result );
 		}
 		$json_result->setStatus( '1' ); // API success
 		return $json_result->getResult();
@@ -700,7 +700,7 @@ class WikiSyncClient {
 				!isset( $src_result['query'] ) ||
 				!isset( $src_result['query']['pages'] ) ) {
 			$src_result['ws_msg'] = 'source: ' . $src_result['ws_msg'] . ' (' . __METHOD__ . ')';
-			return json_encode( $src_result );
+			return FormatJson::encode( $src_result );
 		}
 		$src_result = self::transformImageInfoResult( $src_result );
 		$dst_result = self::destinationAPIget( $APIparams );
@@ -708,7 +708,7 @@ class WikiSyncClient {
 				!isset( $dst_result['query'] ) ||
 				!isset( $dst_result['query']['pages'] ) ) {
 			$dst_result['ws_msg'] = 'destination: ' . $dst_result['ws_msg'] . ' (' . __METHOD__ . ')';
-			return json_encode( $dst_result );
+			return FormatJson::encode( $dst_result );
 		}
 		$dst_result = self::transformImageInfoResult( $dst_result );
 		$new_files = array();

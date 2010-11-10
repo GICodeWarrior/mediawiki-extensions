@@ -54,24 +54,6 @@ $wgSpecialPageGroups['WikiSync'] = 'pagetools';
 
 WikiSyncSetup::init();
 
-if ( !function_exists( 'json_decode' ) ) {
-	function json_decode( $content, $assoc = false ) {
-		if ( $assoc ) {
-			$json = new Services_JSON( SERVICES_JSON_LOOSE_TYPE );
-		} else {
-			$json = new Services_JSON;
-		}
-		return $json->decode( $content );
-	}
-}
-
-if ( !function_exists( 'json_encode' ) ) {
-	function json_encode( $content ) {
-		$json = new Services_JSON;
-		return $json->encode($content);
-	}
-}
-
 class WikiSyncSetup {
 
 	const COOKIE_EXPIRE_TIME = 2592000; // 60 * 60 * 24 * 30; see also WikiSync.js, WikiSync.cookieExpireTime
@@ -135,7 +117,6 @@ class WikiSyncSetup {
 			$wgAutoloadClasses['_QXML'] = self::$ExtDir . '/WikiSyncBasic.php';
 		}
 		$wgAutoloadClasses['Snoopy'] = self::$ExtDir . '/Snoopy/Snoopy.class.php';
-		$wgAutoloadClasses['Services_JSON'] = self::$ExtDir . '/pear/JSON.php';
 		$wgAutoloadClasses['WikiSyncSetup'] = self::$ExtDir . '/WikiSync.php';
 		$wgAutoloadClasses['WikiSnoopy'] =
 		$wgAutoloadClasses['WikiSyncJSONresult'] =
@@ -234,7 +215,7 @@ class WikiSyncSetup {
 			$arg = self::JS_MSG_PREFIX . $arg;
 			$result[$arg] = wfMsg( $arg );
 		}
-		return json_encode( $result );
+		return FormatJson::encode( $result );
 	}
 
 	static function checkUserMembership( $groups ) {
