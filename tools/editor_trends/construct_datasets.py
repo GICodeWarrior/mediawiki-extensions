@@ -36,9 +36,9 @@ except ImportError:
 
 def retrieve_editor_ids_mongo(dbname, collection):
     if utils.check_file_exists(settings.BINARY_OBJECT_FILE_LOCATION,
-                               retrieve_editor_ids_mongo):
+                               'editors.bin'):
         ids = utils.load_object(settings.BINARY_OBJECT_FILE_LOCATION,
-                                retrieve_editor_ids_mongo)
+                               'editors.bin')
     else:
         mongo = db.init_mongo_db(dbname)
         editors = mongo[collection]

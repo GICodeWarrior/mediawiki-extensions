@@ -27,6 +27,7 @@ efficiency gains can be realized when inserting the data in MongoDB.
 import heapq
 from multiprocessing import Queue
 from Queue import Empty
+import datetime
 
 import settings
 import utils
@@ -71,10 +72,10 @@ def merge(front, back):
 
 def readline(file):
     for line in file:
+        line = line.replace('\n', '')
         if line == '':
             continue
         else:
-            line = line.replace('\n', '')
             line = line.split('\t')
             yield line
 
@@ -102,26 +103,29 @@ def write_sorted_file(sorted_data, file, output):
 def store_editors(input, filename, dbname):
     fh = utils.create_txt_filehandle(input, filename, 'r', settings.ENCODING)
     mongo = db.init_mongo_db(dbname)
-    collection = mongo['editors']
+    collection = mongo['test']
     mongo.collection.ensure_index('editor')
     editor_cache = cache.EditorCache(collection)
-    prev_contributor = ''
+    prev_contributor = -1
     x = 0
     edits = 0
     editors = set()
     for line in readline(fh):
-        contributor = line[0]
-        
+        if len(line) == 0:
+            continue
+        contributor = int(line[0])  
         if prev_contributor != contributor:
-            result = editor_cache.add(prev_contributor, 'NEXT')
-            print 'Stored %s editors' % x
+            if edits >= 10:
+                result = editor_cache.add(prev_contributor, 'NEXT')
+                if result:
+                    editors.add(contributor)
+                x += 1
+                print 'Stored %s editors' % x
+            else:
+                editor_cache.clear(prev_contributor)
             edits = 0
-            x += 1
-        else:
-            edits += 1
-            if edits == 10:
-                editors.add(contributor)
-        date = utils.convert_timestamp_to_date(line[1])
+        edits += 1
+        date = utils.convert_timestamp_to_date(line[1]) #+ datetime.timedelta(days=1)
         article_id = int(line[2])
         value = {'date': date, 'article': article_id}
         editor_cache.add(contributor, value)
@@ -177,10 +181,12 @@ def mergesort_launcher(input, output):
               'nr_output_processors': settings.NUMBER_OF_PROCESSES,
               'input': input,
               'output': output,
+              'poison_pill': False
               }
     files = utils.retrieve_file_list(input, 'txt')
     chunks = utils.split_list(files, settings.NUMBER_OF_PROCESSES)
     pc.build_scaffolding(pc.load_queue, mergesort_feeder, chunks, False, False, **kwargs)
+
 
 def debug_mergesort_feeder(input, output):
     kwargs = {
@@ -191,6 +197,7 @@ def debug_mergesort_feeder(input, output):
     chunks = utils.split_list(files, settings.NUMBER_OF_PROCESSES)
     q = pc.load_queue(chunks[0])
     mergesort_feeder(q, False, **kwargs)
+
 
 if __name__ == '__main__':
     input = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'txt')

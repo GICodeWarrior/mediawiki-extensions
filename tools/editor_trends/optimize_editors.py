@@ -115,6 +115,8 @@ def run_optimize_editors(dbname):
               'nr_input_processors': 1,
               'nr_output_processors': 0,
               }
+    print len(ids)
+    ids = list(ids)
     chunks = utils.split_list(ids, settings.NUMBER_OF_PROCESSES)
 #    chunks = {}
 #    parts = int(round(float(len(ids)) / 1, 0))
