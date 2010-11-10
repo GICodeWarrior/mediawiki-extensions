@@ -126,7 +126,16 @@ Drugi ili "izvorni" argument je neophodan.',
 "$1" nije poznat.',
 	'datatransclusion-missing-key' => 'Nije određen ključ.
 $2 su valjani ključevi u izvoru podataka $1.',
+	'datatransclusion-bad-argument-by' => 'Naznačeno loše ključno polje.
+"$2" nije ključno polje u izvoru podataka "$1".
+{{PLURAL:$4|Valjani ključ je|Valjani ključevi su}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Nije navedena ključna vrijednost.
+Drugi ili "ključni" argument je neophodan.',
+	'datatransclusion-missing-argument-template' => "Nije naveden šablon.
+Prvi ili ''šablonski'' argument je obavezan.",
+	'datatransclusion-record-not-found' => 'Odgovarajuća slaganja $2 = $3 nisu nađena u izvoru podataka $1.',
 	'datatransclusion-bad-template-name' => 'Loše ime šablona: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> ne postoji.',
 );
 
 /** Czech (Česky)

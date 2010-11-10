@@ -109,6 +109,7 @@ Merkañ ar c'homlec'h IP pe anv an implijer a-benn kaout roll ar pajennoù da we
  * @author CERminator
  */
 $messages['bs'] = array(
+	'massblank' => 'Masovno pražnjenje',
 	'massblank-submit-user' => 'Idi',
 	'massblank-blankcomment' => 'Razlog:',
 );

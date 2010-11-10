@@ -111,11 +111,12 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Iwai.masaharu
+ * @author 青子守歌
  */
 $messages['ja'] = array(
-	'pdfbook-action' => 'PDF として印刷する',
-	'pdfbook-log' => '$1 を PDF ブックとしてエクスポート',
-	'pdfbook-desc' => 'カテゴリ内のページから本を構築し、PDF ブックとしてエクスポートする',
+	'pdfbook-action' => 'PDFとして印刷する',
+	'pdfbook-log' => '$1をPDFブックとしてエクスポート',
+	'pdfbook-desc' => 'カテゴリ内のページから本を構築し、PDFブックとしてエクスポートする',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -86,6 +86,18 @@ $messages['bs'] = array(
 	'ts-kml-on-ol-map-by' => 'Karta od',
 );
 
+/** Catalan (Català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'ts-kml-on-ol-options' => 'Opcions',
+	'ts-kml-on-ol-languages' => 'Llengües',
+	'ts-kml-on-ol-thumbnails' => 'Miniatures',
+	'ts-kml-on-ol-help' => 'Ajuda',
+	'ts-kml-on-ol-all' => 'Totes',
+	'ts-kml-on-ol-map-by' => 'Mapa fet per',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -274,6 +286,18 @@ $messages['pl'] = array(
 	'ts-kml-on-ol-map-by' => 'Mapa',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'ts-kml-on-ol-options' => 'Opsion',
+	'ts-kml-on-ol-languages' => 'Lenghe',
+	'ts-kml-on-ol-thumbnails' => 'Miniadure',
+	'ts-kml-on-ol-help' => 'Agiut',
+	'ts-kml-on-ol-all' => 'Tùit',
+	'ts-kml-on-ol-map-by' => 'Mapa da',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -308,6 +332,13 @@ $messages['te'] = array(
 	'ts-kml-on-ol-help' => 'సహాయం',
 	'ts-kml-on-ol-all' => 'అన్నీ',
 	'ts-kml-on-ol-map-by' => 'పటపు సౌజన్యం',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'ts-kml-on-ol-languages' => 'Мови',
 );
 
 /** Vietnamese (Tiếng Việt)

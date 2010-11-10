@@ -472,6 +472,29 @@ Vielleicht möchten Sie ihn erneut einschätzen.",
 	'articleassessment-survey-thanks' => 'Vielen Dank für Ihre Rückmeldung.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'articleassessment' => 'Αξιολόγηση Άρθρου',
+	'articleassessment-desc' => 'Αξιολόγηση Άρθρου (πιλοτική έκδοση)',
+	'articleassessment-yourfeedback' => 'Η ανατροφοδότησή σας',
+	'articleassessment-submit' => 'Υποβολή',
+	'articleassessment-rating-wellsourced' => 'Καλά Τεκμηριωμένο',
+	'articleassessment-rating-neutrality' => 'Ουδέτερο:',
+	'articleassessment-rating-completeness' => 'Ολοκλήρωση:',
+	'articleassessment-rating-readability' => 'Αναγνώσιμο:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Αισθάνεστε ότι αυτή η σελίδα έχει επαρκείς παραπομπές και ότι αυτές οι παραπομπές προέρχονται από αξιόπιστες πηγές;',
+	'articleassessment-rating-neutrality-tooltip' => 'Πιστεύετε ότι αυτή η σελίδα εμφανίζει μια δίκαιη εκπροσώπηση όλων των απόψεων σχετικά με το θέμα;',
+	'articleassessment-rating-completeness-tooltip' => 'Πιστεύετε ότι αυτή η σελίδα καλύπτει  στις βασικές θεματικές περιοχές που θα έπρεπε;',
+	'articleassessment-rating-readability-tooltip' => 'Πιστεύετε ότι αυτή η σελίδα είναι καλά οργανωμένη και καλογραμμένη;',
+	'articleassessment-articlerating' => 'βαθμολόγηση Σελίδας',
+	'articleassessment-error' => 'Παρουσιάστηκε ένα σφάλμα.
+Παρακαλώ δοκιμάστε ξανά αργότερα.',
+	'articleassessment-thanks' => 'Ευχαριστώ! Οι βαθμολογήσεις  σας έχουν αποθηκευτεί.',
+	'articleassessment-featurefeedback' => 'Δώστε μας<span class="feedbacklink">ανατροφοδότηση</span> σχετικά με αυτό το χαρακτηριστικό.',
+);
+
 /** Esperanto (Esperanto)
  * @author Eliovir
  * @author Yekrats

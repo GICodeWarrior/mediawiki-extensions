@@ -4921,6 +4921,24 @@ $wgGoogleMapsMessages['scn'] = array(
 	'gm-mars' => 'Marti',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$wgGoogleMapsMessages['shi'] = array(
+	'gm-small' => '↓ Amzyan',
+	'gm-no-zoom-control' => '↓ Uhu',
+	'gm-yes' => '↓ Iyyih',
+	'gm-no' => '↓ Uhu',
+	'gm-search-preface' => '↓ Klikki f lkarṭa bac ad tzaydt tanqqiṭ niɣ ad tmmattit s yan iɣrm yaḍn, tamurt, tansa , niɣd agmmaḍ',
+	'gm-geocode-preface' => '↓ Klikki f lkarṭa bac an tzaydt tanqqiṭ niɣ ad tmmattit s yan iɣrm yaḍn, tamurt, tansa , niɣd agmmaḍ',
+	'gm-no-search-preface' => '↓ Klikki f  lkarṭa bac an tzaydt tanqqiṭ.',
+	'gm-search' => '↓ Cabba (Sigl)',
+	'gm-clear-search' => '↓ Sɣus ma dak fan icnubcn',
+	'gm-meters' => '↓ Mitruwat',
+	'gm-editing-path' => '↓ Klikki f lkarṭa bac an tzaydt tinqqaḍ u ɣaras ad',
+	'gm-save-path' => '↓ Ḥbu',
+);
+
 /** Sinhala (සිංහල)
  * @author Asiri wiki
  * @author තඹරු විජේසේකර
