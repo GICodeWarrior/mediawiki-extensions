@@ -2,7 +2,7 @@
 class ProxyConnect extends SpecialPage {
 
     function __construct() {
-        SpecialPage::SpecialPage( 'ProxyConnect' );
+		parent::__construct( 'ProxyConnect' )
     }
 
     function execute ($par) {
