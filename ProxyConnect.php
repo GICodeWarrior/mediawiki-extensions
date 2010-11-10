@@ -3,12 +3,12 @@ if ( ! defined( 'MEDIAWIKI' ) )
 	die();
     
 /**#@+
- * An extension that allows users to rate articles. 
+ * Implements the server side functionality of Proxy Connect
  * 
  * @package MediaWiki
  * @subpackage Extensions
  *
- * @link http://www.wikihow.com/WikiHow:ProxyConnect-Extension Documentation
+ * @link http://www.mediawiki.org/wiki/Extension:ProxyConnect Documentation
  *
  *
  * @author Travis Derouin <travis@wikihow.com>
@@ -19,7 +19,7 @@ $wgExtensionCredits['special'][] = array(
 	'name' => 'ProxyConnect',
 	'author' => 'Travis Derouin',
 	'description' => 'Implements the server side functionality of Proxy Connect',
-	'url' => 'http://www.wikihow.com/WikiHow:ProxyConnect-Extension',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ProxyConnect',
 );
 
 
