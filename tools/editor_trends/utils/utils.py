@@ -341,6 +341,8 @@ def split_list(datalist, maxval):
         b = a + parts
         chunks[x] = datalist[a:b]
         a = (x + 1) * parts
+        if a >= len(datalist):
+           break
     return chunks
 
 
