@@ -483,6 +483,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'articletocategory2-create-article-under-category-text' => 'ఈ వర్గంలో ఒక పుటని చేర్చండి',
 	'articletocategory2-create-article-under-category-button' => 'సృష్టించు',
 	'articletocategory2-create-category-under-category-button' => 'సృష్టించు',
 );
