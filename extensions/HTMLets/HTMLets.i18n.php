@@ -11,7 +11,7 @@ $messages = array();
 $messages['en'] = array(
 	'htmlets-desc' => 'Lets you inline HTML snippets from files using the <code>&lt;htmlet&gt;</code> tag',
 	'htmlets-filenotfound' => 'Cannot find HTML file $1',
-	'htmlets-loadfailed' => 'Failed to load html file $1',
+	'htmlets-loadfailed' => 'Failed to load HTML file $1',
 );
 
 /** Message documentation (Message documentation)
