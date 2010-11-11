@@ -793,7 +793,7 @@ $messages['ba'] = array(
 	'mwe-cc_nc_title' => 'Сауҙа менән бәйле түгел',
 	'mwe-cc_nd_title' => 'Сығарылма эштәрһеҙ',
 	'mwe-cc_sa_title' => 'Шул уҡ шарттар менән',
-	'mwe-cc_pd_title' => 'Дөйөк милек',
+	'mwe-cc_pd_title' => 'Дөйөм милек',
 	'mwe-unknown_license' => 'Билдәһеҙ рөхсәтнамә',
 	'mwe-no-import-by-url' => 'Был ҡатнашыусы йәки вики проект алыҫтағы URL адрестарҙан бер нимә лә индерә алмай.
 <p>Бәлки, һеҙгә танылырға кәрәктер?</p>
@@ -2400,7 +2400,7 @@ $messages['dsb'] = array(
 	'mwe-ftype-unk' => 'Njeznaty datajowy format',
 	'rsd-wiki_commons-title' => 'Wikimedija Commons',
 	'rsd-wiki_commons' => 'Wikimedija Commons, archiw licho licencěrowanego wopśimjeśa wucbnych medijow (wobraze, awdiomaterial a wideoklipy)',
-	'rsd-kaltura-title' => 'Wšykne žrědła',
+	'rsd-kaltura-title' => 'Pytanje z Kalturu (wšykne žrědła)',
 	'rsd-kaltura' => 'Zebrane pytanje Kaltury za licho licencowane medije pśi někotarych pytańskich póbitowarjach',
 	'rsd-this_wiki-title' => 'Toś ten wiki',
 	'rsd-this_wiki-desc' => 'Lokalny wiki',

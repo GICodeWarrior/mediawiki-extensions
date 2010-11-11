@@ -160,8 +160,10 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Gianfranco
  */
 $messages['it'] = array(
+	'rped' => 'Verifica esistenza di pagina remota',
 	'rped-desc' => 'Aggiunge un collegamento a Wikipedia se la pagina non esiste sulla wiki locale ma esiste su Wikipedia',
 	'rped-wikipedia-url' => 'http://it.wikipedia.org/wiki/$1',
 );

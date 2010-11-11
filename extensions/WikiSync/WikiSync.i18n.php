@@ -212,11 +212,16 @@ ab Version $3 durchgeführt werden?',
  */
 $messages['gl'] = array(
 	'wikisync_remote_login_button' => 'Rexistro',
+	'wikisync_synchronization_button' => 'Sincronizar',
+	'wikisync_apply_button' => 'Aplicar',
+	'wikisync_log_imported_by' => 'Importado por [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Cargado por [[Special:WikiSync|WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Non se coñece esa acción API',
 	'wikisync_api_result_WrongPass' => 'O contrasinal dado é incorrecto',
 	'wikisync_api_result_WrongPluginPass' => 'A clave dada é incorrecta',
 	'wikisync_api_result_Blocked' => 'O usuario está bloqueado',
 	'wikisync_js_revision' => 'Revisión $1',
+	'wikisync_js_scheduler_countdown' => '{{PLURAL:$1|queda un minuto|quedan $1 minutos}}',
 );
 
 /** Swiss German (Alemannisch)

@@ -55,6 +55,15 @@ $messages['de'] = array(
 	'pdfbook-desc' => 'Ermöglicht die Erstellung von PDF-Dateien einzelner Seiten oder eine Zusammenstellung aller in einer Kategorie vorhandenen Seiten in einer PDF-Datei',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'pdfbook-action' => 'Ako PDF śišćaś',
+	'pdfbook-log' => '$1 jo se ako PDF-knigły eksportěrował',
+	'pdfbook-desc' => 'Staja knigły z bokow w kategoriji gromadu a eksportěrujo je ako PDF-knigły',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

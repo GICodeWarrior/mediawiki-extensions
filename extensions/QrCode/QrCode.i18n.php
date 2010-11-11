@@ -57,6 +57,13 @@ $messages['de'] = array(
 	'qrcode-desc' => 'Erzeugt QR Code-Grafiken und fügt diese der Seite hinzu',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'qrcode-desc' => 'Napórajo a pśidawa wobraze QR Code wikibokoju',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */
