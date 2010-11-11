@@ -3,7 +3,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /**
  * Special page to allow users to configure the wiki via a web based interface
- * Require MediaWiki version 1.14.0 or greater
+ * Require MediaWiki version 1.16.0 or greater
  *
  * @file
  * @ingroup Extensions
