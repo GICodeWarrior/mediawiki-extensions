@@ -58,9 +58,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Martorell
  * @author Solde
  */
 $messages['ca'] = array(
+	'frontbackforced-desc' => 'Afegeix els codis de secció inicial i final a les pàgines i implementa els viquienllaços forçats',
 	'frontbackforced-front' => '_(front_matter)',
 	'frontbackforced-back' => '_(back_matter)',
 	'frontbackforced-forced' => '_(forced_wikilinks)',
