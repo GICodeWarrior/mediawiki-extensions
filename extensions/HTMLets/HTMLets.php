@@ -89,11 +89,11 @@ function wfRenderHTMLet( $name, $argv, $parser ) {
 	$f = "$dir/$name";
 
 	if ( !preg_match('!^\w+://!', $dir ) && !file_exists( $f ) ) {
-		$output = '<div class="error">Can\'t find html file ' . htmlspecialchars( $name ) . '</div>';
+		$output = Html::rawElement( 'div', array( 'class' => 'error' ), wfMsgForContent( 'htmlets-filenotfound', htmlspecialchars( $name ) ) );
 	} else {
 		$output = file_get_contents( $f );
 		if ( $output === false ) {
-			$output = '<div class="error">Failed to load html file ' . htmlspecialchars( $name ) . '</div>';
+			$output = Html::rawElement( 'div', array( 'class' => 'error' ), wfMsgForContent( 'htmlets-loadfailed', htmlspecialchars( $name ) ) );
 		}
 	}
 
