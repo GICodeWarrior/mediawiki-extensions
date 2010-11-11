@@ -49,6 +49,13 @@ $messages['de'] = array(
 	'specialtalk-desc' => 'Zeigt einen „{{int:talk}}“-Link oder -Reiter auf [[Special:SpecialPages|Sonderseiten]]',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'specialtalk-desc' => 'Pśidawa rejtark Diskusija  k [[Special:SpecialPages|specialn\\m bokam]]',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */
