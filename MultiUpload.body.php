@@ -26,7 +26,7 @@ class MultipleUpload extends SpecialUpload {
 	public function __construct( $request = null ) {
 		global $wgRequest;
 
-		parent::SpecialPage( 'MultipleUpload', 'upload' );
+		SpecialPage::__construct( 'MultipleUpload', 'upload' );
 
 		$this->loadRequest( is_null( $request ) ? $wgRequest : $request );
 		$this->mUploadHasBeenShown = false;
@@ -45,7 +45,9 @@ class MultipleUpload extends SpecialUpload {
 		global $wgUser, $wgMaxUploadFiles;
 
 		// let's make the parent happy
+		wfSuppressWarnings();
 		$_FILES['wpUploadFile'] = $_FILES['wpUploadFile0'];
+		wfRestoreWarnings();
 		// Guess the desired name from the filename if not provided
 		$this->mDesiredDestNames = array();
 		$this->mUploads			 = array();
@@ -77,10 +79,14 @@ class MultipleUpload extends SpecialUpload {
 				if( !$this->mDesiredDestNames[$i] && $request->getFileName( 'wpUploadFile' . $i ) !== null ) {
 					$this->mDesiredDestNames[$i] = $request->getFileName( 'wpUploadFile' . $i );
 				}
+				wfSuppressWarnings();
 				$request->setVal( 'wpUploadFile', $_FILES['wpUploadFile' . $i] );
+				wfRestoreWarnings();
 				$request->setVal( 'wpDestFile', $request->getVal( 'wpDestFile' . $i ) );
 				move_uploaded_file( 'wpUploadFile' . $i, 'wpUploadFile' );
+				wfSuppressWarnings();
 				$_FILES['wpUploadFile'] = $_FILES['wpUploadFile' . $i];
+				wfRestoreWarnings();
 				$up = UploadBase::createFromRequest( $request );
 				$this->mUploads[$i] = $up;
 			}
