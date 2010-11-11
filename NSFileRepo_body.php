@@ -166,10 +166,8 @@ class NSLocalFile extends LocalFile {
 	 * This function overrides the LocalFile because the archive name should not contain the namespace in the
 	 * filename.  Otherwise the function would have worked.  This only affects reuploads
 	 *
-	 * Move or copy a file to its public location. If a file exists at the
-	 * destination, move it to an archive. Returns the archive name on success
-	 * or an empty string if it was a new file, and a wikitext-formatted
-	 * WikiError object on failure.
+	 * Move or copy a file to its public location. Returns a FileRepoStatus object.
+	 * On success, the value contains "new" or "archived", to indicate whether the file was new with that name.
 	 *
 	 * The archive name should be passed through to recordUpload for database
 	 * registration.
