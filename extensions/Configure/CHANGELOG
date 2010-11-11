@@ -1,6 +1,19 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.37 - 11 November 2010
+  * Added $wgAllUnicodeFixes, $wgUpgradeKey, $wgResourceLoaderDebug,
+    $wgResourceLoaderInlinePrivateModules, $wgResourceLoaderMaxage,
+    $wgResourceLoaderUseESI, $wgDeletedDirectory, $wgLoadScript,
+    $wgUploadMissingFileUrl, $wgPasswordSenderName, $wgAdditionalMailParams,
+    $wgBetterDirectionality, $wgCanonicalLanguageLinks, $wgActiveUserDays,
+    $wgCategoryCollation, $wgAdaptiveMessageCache, $wgAllowAsyncCopyUploads,
+    $wgSecureLogin, $wgSecureLoginStickHTTPS, $wgWeakPasswords,
+    $wgExternalAuthConf and $wgLicenseTerms.
+  * Removed $wgJQueryVersion, $wgJQueryMinified, $wgJQueryOnEveryPage,
+    $wgDisableSearchContext, $wgUseZhdaemon, $wgZhdaemonHost, $wgZhdaemonPort,
+    $wgColorErrors and $wgUseMemCached.
+
 0.15.36 - 2 September 2010
   Updated CategoryTree, FancyCaptcha, FlaggedRevs, SemanticForms and
   SemanticMediaWiki extensions.
