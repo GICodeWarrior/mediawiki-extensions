@@ -22,7 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'MultipleUpload',
 	'author' => 'Travis Derouin',
 	'version' => '2.0',
-	'descriptionmsg' => 'multipleupload-desc',
+	'descriptionmsg' => 'multiupload-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
 );
 
