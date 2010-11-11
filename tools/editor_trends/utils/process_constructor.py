@@ -81,7 +81,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
                         **kwargs) for i in xrange(nr_input_processors)]
 
     for input_process in input_processes:
-        input_process.run()
+        input_process.start()
     pids = [p.pid for p in input_processes]
     kwargs['pids'] = pids
 

@@ -29,6 +29,13 @@ from utils import utils
 import construct_datasets
 
 
+try:
+    import psyco
+    psyco.full()
+except ImportError:
+    pass
+
+
 def create_datacontainer(init_value=0):
     '''
     This function initializes an empty dictionary with as key the year (starting
@@ -42,6 +49,29 @@ def create_datacontainer(init_value=0):
         data[str(x)] = init_value
     return data
 
+
+def add_months_to_datacontainer(datacontainer):
+    for dc in datacontainer:
+        datacontainer[dc] = {}
+        for x in xrange(1, 13):
+             datacontainer[dc][str(x)] = 0
+    return datacontainer
+
+
+def determine_edits_by_month(edits):
+    datacontainer = create_datacontainer(init_value=0)
+    datacontainer = add_months_to_datacontainer(datacontainer)
+    for year in edits:
+        months = set()
+        for edit in edits[year]:
+            m = str(edit['date'].month)
+            if m not in months:
+                datacontainer[year][m] = 1
+                months.add(m)
+            if len(months) == 12:
+                break
+    return datacontainer
+    
 
 def determine_edits_by_year(dates):
     '''
@@ -64,19 +94,19 @@ def determine_articles_by_year(dates):
         year = str(date['date'].year)
         articles[year].add(date['article'])
     for article in articles:
-        articles[article] = len(article)
+        articles[article] = len(articles[article])
     return articles
 
 
 def sort_edits(edits):
     edits = utils.merge_list(edits)
     return sorted(edits, key=itemgetter('date'))
-    
+
 
 def optimize_editors(input_queue, result_queue, pbar, **kwargs):
     dbname = kwargs.pop('dbname')
     mongo = db.init_mongo_db(dbname)
-    input = mongo['editors']
+    input = mongo['test']
     output = mongo['dataset']
     output.ensure_index('editor')
     output.ensure_index('year_joined')
@@ -85,7 +115,10 @@ def optimize_editors(input_queue, result_queue, pbar, **kwargs):
         try:
             id = input_queue.get(block=False)
             editor = input.find_one({'editor': id})
+            if editor == None:
+                continue
             edits = editor['edits']
+            monthly_edits = determine_edits_by_month(edits)
             edits = sort_edits(edits)
             edit_count = len(edits)
             new_wikipedian = edits[9]['date']
@@ -93,6 +126,7 @@ def optimize_editors(input_queue, result_queue, pbar, **kwargs):
             final_edit = edits[-1]['date']
             edits_by_year = determine_edits_by_year(edits)
             articles_by_year = determine_articles_by_year(edits)
+            
             edits = edits[:10]
 
             output.insert({'editor': id, 'edits': edits,
@@ -101,7 +135,8 @@ def optimize_editors(input_queue, result_queue, pbar, **kwargs):
                            'edit_count': edit_count,
                            'final_edit': final_edit,
                            'first_edit': first_edit,
-                           'articles_by_year': articles_by_year})
+                           'articles_by_year': articles_by_year,
+                           'monthly_edits': monthly_edits})
             print 'Items left: %s' % input_queue.qsize()
         except Empty:
             break
@@ -114,20 +149,11 @@ def run_optimize_editors(dbname):
               'dbname': 'enwiki',
               'nr_input_processors': 1,
               'nr_output_processors': 0,
+              'poison_pill': False
               }
     print len(ids)
     ids = list(ids)
-    chunks = utils.split_list(ids, settings.NUMBER_OF_PROCESSES)
-#    chunks = {}
-#    parts = int(round(float(len(ids)) / 1, 0))
-#    a = 0
-#    for x in xrange(settings.NUMBER_OF_PROCESSES):
-#        b = a + parts
-#        chunks[x] = ids[a:b]
-#        a = (x + 1) * parts
-#        if a >= len(ids):
-#            break
-
+    chunks = dict(0, ids)
     pc.build_scaffolding(pc.load_queue, optimize_editors, chunks, False, False, **kwargs)
 
 

@@ -171,7 +171,7 @@ def determine_file_mode(extension):
         return 'wb'
 
 
-def write_list_to_csv(data, fh, recursive=False):
+def write_list_to_csv(data, fh, recursive=False, newline=True):
     '''
     @data is a list which can contain other lists that will be written as a
     single line to a textfile
@@ -188,27 +188,32 @@ def write_list_to_csv(data, fh, recursive=False):
         if tab:
             fh.write('\t')
         if type(d) == type([]):
-            recursive = write_list_to_csv(d, fh, True)
+            recursive = write_list_to_csv(d, fh, recursive=True, newline=False)
+        elif type(d) == type({}):
+            tab = write_dict_to_csv(d, fh, write_key=False, newline=newline)
         else:
             fh.write('%s' % d)
             tab = True
     if recursive:
         tab = False
         return True
-    fh.write('\n')
+    if newline:
+        fh.write('\n')
 
 
-def write_dict_to_csv(data, fh):
+def write_dict_to_csv(data, fh, write_key=True, newline=True):
     keys = data.keys()
     for key in keys:
-        fh.write('%s' % key)
-        for obs in data[key]:
-            if getattr(obs, '__iter__', False):
-                for o in obs:
-                    fh.write('\t%s' % o)
-            else:
-                fh.write('\t%s' % (obs))
+        if write_key:
+            fh.write('%s' % key)
+        if getattr(data[key], '__iter__', False):
+            for d in data[key]:
+                fh.write('\t%s' % d)
+        else:
+            fh.write('%s\t' % (data[key]))
+    if newline:
         fh.write('\n')
+    return False    #this prevents the calling function from writing \t
 
 
 def create_txt_filehandle(location, name, mode, encoding):
@@ -326,12 +331,14 @@ def retrieve_file_list(location, extension, mask=None):
             files.append('.'.join(file))
     return files
 
+
 def merge_list(datalist):
     merged = []
     for d in datalist:
         for x in datalist[d]:
             merged.append(x)
     return merged
+
 
 def split_list(datalist, maxval):
     chunks = {}

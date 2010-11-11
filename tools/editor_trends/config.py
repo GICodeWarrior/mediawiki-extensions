@@ -24,10 +24,13 @@ import ConfigParser
 
 import settings
 from utils import utils
-
+try:
+    from _winreg import *
+except ImportError:
+    pass
 
 def detect_windows_program(program):
-    from _winreg import *
+    
     entry = settings.WINDOWS_REGISTER[program]
     try:
         key = OpenKey(HKEY_CURRENT_USER, entry, 0, KEY_READ)

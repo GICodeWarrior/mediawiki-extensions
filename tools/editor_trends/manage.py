@@ -41,15 +41,15 @@ def get_value(args, key):
     return getattr(args, key, None)
 
 
-def config_launcher(args, location, filename, project, language_code):
+def config_launcher(args, location, filename, project, full_project, language_code):
     config.load_configuration(args)
 
 
 def determine_default_language():
     language_code = locale.getdefaultlocale()[0]
     return language_code.split('_')[0]
-    
-    
+
+
 def retrieve_projectname(args):
     language_code = retrieve_language(args)
     if language_code == None:
@@ -90,33 +90,39 @@ def determine_file_locations(args):
     language_code = retrieve_language(args)
     locations['language_code'] = language_code
     locations['location'] = os.path.join(location, language_code, project)
-    locations['project'] = retrieve_projectname(args)
+    locations['project'] = project
+    locations['full_project'] = retrieve_projectname(args)
     locations['filename'] = generate_wikidump_filename(project, args)
     return locations
 
 
-def show_settings(args, location, filename, project, language_code):
+def prepare_file_locations(location):
+    result = utils.check_file_exists(location, '')
+    if result == False:
+        utils.create_directory(os.path.join(location))
+  
+
+def show_settings(args, location, filename, project, full_project, language_code):
     project = settings.WIKIMEDIA_PROJECTS.get(project, 'wiki')
     project = project.title()
     language_map = utils.invert_dict(languages.MAPPING)
     print 'Project: %s' % (project)
     print 'Language: %s' % language_map[language_code].decode('utf-8')
     print 'Input directory: %s' % location
-    print 'Output directory: TODO'
-  
+    print 'Output directory: %s and subdirectories' % location
 
-def dump_downloader_launcher(args, location, filename, project, language_code):
+
+def dump_downloader_launcher(args, location, filename, project, full_project, language_code):
     print 'dump downloader'
     pbar = get_value(args, 'progress')
     domain = settings.WP_DUMP_LOCATION
     path = '/%s/latest/' % project
     extension = utils.determine_file_extension(filename)
     filemode = utils.determine_file_mode(extension)
-
     dump_downloader.download_wiki_file(domain, path, filename, location, filemode, pbar)
 
 
-def split_xml_file_launcher(args, location, filename, project, language_code):
+def split_xml_file_launcher(args, location, filename, project, full_project, language_code):
     print 'split_xml_file_launcher'
     ext = utils.determine_file_extension(filename)
     if ext in settings.COMPRESSION_EXTENSIONS:
@@ -136,7 +142,7 @@ def extract_xml_file(args, location, file):
     path = config.detect_installed_program('7zip')
     source = os.path.join(location, file)
     p = None
-    
+
     if settings.OS == 'Windows':
         p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)], shell=True).wait()
     elif settings.OS == 'Linux':
@@ -148,18 +154,22 @@ def extract_xml_file(args, location, file):
     return p
 
 
-def mongodb_script_launcher(args, location, filename, project, language_code):
+def mongodb_script_launcher(args, location, filename, project, full_project, language_code):
     print 'mongodb_script_launcher'
     map_wiki_editors.run_parse_editors(project, language_code, location)
 
 
-def dataset_launcher(args, project):
+def sort_launcher(args, location, filename, project, full_project, language_code):
+    raise NotImplementedError
+
+
+def dataset_launcher(args, full_project):
     print 'dataset launcher'
     optimize_editors.run_optimize_editors(project)
     construct_datasets.generate_editor_dataset_launcher(project)
 
 
-def all_launcher(args, location, filename, project, language_code):
+def all_launcher(args, location, filename, project, full_project, language_code):
     print 'all_launcher'
     dump_downloader_launcher(args, location, filename, project, language_code)
     split_xml_file_launcher(args, location, filename, project, language_code)
@@ -173,7 +183,7 @@ def supported_languages():
     return tuple(choices)
 
 
-def show_languages(args, location, filename, project, language_code):
+def show_languages(args, location, filename, project, full_project, language_code):
     first = get_value(args, 'startswith')
     if first != None:
         first = first.title()
@@ -193,17 +203,17 @@ def show_languages(args, location, filename, project, language_code):
 
 
 def detect_python_version():
-    version = ''.join(sys.version_info[0:2])
+    version = sys.version_info[0:2]
     if version < settings.MINIMUM_PYTHON_VERSION:
-        raise 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'  
+        raise 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'
 
 def about():
     print 'Editor Trends Software is (c) 2010 by the Wikimedia Foundation.'
     print 'Written by Diederik van Liere (dvanliere@gmail.com).'
     print 'This software comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to distribute it under certain conditions.'
     print 'See the README.1ST file for more information.'
-    print '' 
-    
+    print '\n'
+
 
 def main():
     default_language = determine_default_language()
@@ -216,8 +226,8 @@ def main():
     subparsers = parser.add_subparsers(help='sub-command help')
 
     parser_languages = subparsers.add_parser('show_languages', help='Overview of all valid languages.')
-    parser_languages.add_argument('-s', '--startswith', 
-                                  action='store', 
+    parser_languages.add_argument('-s', '--startswith',
+                                  action='store',
                                   help='Enter the first letter of a language to see which languages are available.')
     parser_languages.set_defaults(func=show_languages)
 
@@ -230,12 +240,15 @@ def main():
     parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
     parser_split.set_defaults(func=split_xml_file_launcher)
 
+    parser_sort = subparsers.add_parser('sort', help='By presorting the data, significant processing time reducations are achieved.')
+    parser_sort.set_defaults(func=sort_launcher)
+
     parser_create = subparsers.add_parser('store', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
     parser_create.set_defaults(func=mongodb_script_launcher)
 
     parser_dataset = subparsers.add_parser('dataset', help='Create a dataset from the MongoDB and write it to a csv file.')
     parser_dataset.set_defaults(func=dataset_launcher)
-    
+
     parser_all = subparsers.add_parser('all', help='The all sub command runs the download, split, store and dataset commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
 
@@ -265,6 +278,7 @@ def main():
     args = parser.parse_args()
     config.load_configuration(args)
     locations = determine_file_locations(args)
+    prepare_file_locations(locations['location'])
     about()
     show_settings(args, **locations)
     args.func(args, **locations)

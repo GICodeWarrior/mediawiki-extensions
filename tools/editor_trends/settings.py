@@ -54,7 +54,7 @@ WORKING_DIRECTORY = os.getcwd()
 IGNORE_DIRS = ['wikistats', 'zips']
 ROOT = '/' if OS != 'Windows' else 'c:\\'
 
-MINIMUM_PYTHON_VERSION = 2.6
+MINIMUM_PYTHON_VERSION = (2, 6)
 
 dirs = [name for name in os.listdir(WORKING_DIRECTORY) if
         os.path.isdir(os.path.join(WORKING_DIRECTORY, name))]
@@ -111,7 +111,7 @@ NAMESPACE_LOCATION = os.path.join(WORKING_DIRECTORY, 'namespaces')
 MAX_XML_FILE_SIZE = 67108864
 
 if OS == 'Windows' and ARCH == 'i386':
-    MAX_FILES_OPEN = win32file._getmaxstdio() 
+    MAX_FILES_OPEN = win32file._getmaxstdio()
 elif OS != 'Windows':
     MAX_FILES_OPEN = resource.getrlimit(resource.RLIMIT_NOFILE)
 else:

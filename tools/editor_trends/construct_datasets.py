@@ -19,6 +19,8 @@ __version__ = '0.1'
 
 from multiprocessing import Queue
 from Queue import Empty
+import datetime
+from dateutil.relativedelta import *
 
 import progressbar
 
@@ -67,6 +69,17 @@ def expand_observations(obs, vars_to_expand):
             obs[var] = edits
     return obs
 
+def write_longitudinal_data(id, edits, fh):
+    years = edits.keys()
+    years.sort()
+    for year in years:
+        months = edits[year].keys()
+        months = [int(m) for m in months]
+        months.sort()
+        for m in months:
+            date = datetime.date(int(year), int(m), 1)
+            fh.write('%s\t%s\t%s\n' % (id, date, edits[year][str(m)]))
+
 
 def expand_headers(headers, vars_to_expand, obs):
     for var in vars_to_expand:
@@ -77,29 +90,105 @@ def expand_headers(headers, vars_to_expand, obs):
                 suffix = 2001 + i
             elif var.endswith('edits'):
                 suffix = 1 + i
-            headers.insert(pos+i, '%s_%s' % (var, suffix))
+            headers.insert(pos + i, '%s_%s' % (var, suffix))
         headers.remove(var)
     return headers
-            
-        
-def generate_editor_dataset(input_queue, data_queue, pbar, **kwargs):
+
+
+def generate_long_editor_dataset(input_queue, data_queue, pbar, **kwargs):
     debug = kwargs.pop('debug')
     dbname = kwargs.pop('dbname')
     mongo = db.init_mongo_db(dbname)
     editors = mongo['dataset']
-    name = dbname + '_editors.csv'
+    name = dbname + '_long_editors.csv'
     fh = utils.create_txt_filehandle(settings.DATASETS_FILE_LOCATION, name, 'a', settings.ENCODING)
     x = 0
-    vars_to_expand = ['edits', 'edits_by_year']
+    vars_to_expand = []
+    while True:
+        try:
+            id = input_queue.get(block=False)
+            obs = editors.find_one({'editor': id}, {'monthly_edits': 1})
+            if x == 0:
+                headers = obs.keys()
+                headers.sort()
+                headers = expand_headers(headers, vars_to_expand, obs)
+                utils.write_list_to_csv(headers, fh)
+            write_longitudinal_data(id, obs['monthly_edits'], fh)
+            #utils.write_list_to_csv(data, fh)
+            x += 1
+        except Empty:
+            break
+
+
+def generate_cohort_analysis(input_queue, data_queue, pbar, **kwargs):
+    dbname = kwargs.get('dbname')
+    pbar = kwargs.get('pbar')
+    mongo = db.init_mongo_db(dbname)
+    editors = mongo['dataset']
+    year = datetime.datetime.now().year + 1
+    begin = year - 2001
+    p = [3, 6, 9]
+    periods = [y * 12 for y in xrange(1, begin)]
+    periods = p + periods
+    data = {}
+    while True:
+        try:
+            id = input_queue.get(block=False)
+            obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
+            first_edit = obs['first_edit']
+            last_edit = obs['final_edit']
+            for y in xrange(2001, year):
+                if y == 2010 and first_edit > datetime.datetime(2010, 1, 1):
+                    print 'debug'
+                if y not in data:
+                    data[y] = {}
+                    data[y]['n'] = 0
+                window_end = datetime.datetime(y, 12, 31)
+                if window_end > datetime.datetime.now():
+                    now = datetime.datetime.now()
+                    m = now.month - 1   #Dump files are always lagging at least one month....
+                    d = now.day
+                    window_end = datetime.datetime(y, m, d)
+                edits = []
+                for period in periods:
+                    if period not in data[y]:
+                        data[y][period] = 0
+                    window_start = datetime.datetime(y, 12, 31) - relativedelta(months=period)
+                    if window_start < datetime.datetime(2001, 1, 1):
+                        window_start = datetime.datetime(2001, 1, 1)
+                    if date_falls_in_window(window_start, window_end, first_edit, last_edit):
+                        edits.append(period)
+                if edits != []:
+                    p = min(edits)
+                    data[y]['n'] += 1
+                    data[y][p] += 1
+            #pbar.update(+1)
+        except Empty:
+            break
+    utils.store_object(data, settings.BINARY_OBJECT_FILE_LOCATION, 'cohort_data')
+
+def date_falls_in_window(window_start, window_end, first_edit, last_edit):
+    if first_edit >= window_start and first_edit <= window_end:
+        return True
+    else:
+        return False
+
+
+def generate_wide_editor_dataset(input_queue, data_queue, pbar, **kwargs):
+    dbname = kwargs.pop('dbname')
+    mongo = db.init_mongo_db(dbname)
+    editors = mongo['dataset']
+    name = dbname + '_wide_editors.csv'
+    fh = utils.create_txt_filehandle(settings.DATASETS_FILE_LOCATION, name, 'a', settings.ENCODING)
+    x = 0
+    vars_to_expand = ['edits', 'edits_by_year', 'articles_by_year']
     while True:
         try:
             if debug:
                 id = u'99797'
             else:
                 id = input_queue.get(block=False)
-
             print input_queue.qsize()
-
             obs = editors.find_one({'editor': id})
             obs = expand_observations(obs, vars_to_expand)
             if x == 0:
@@ -107,14 +196,12 @@ def generate_editor_dataset(input_queue, data_queue, pbar, **kwargs):
                 headers.sort()
                 headers = expand_headers(headers, vars_to_expand, obs)
                 utils.write_list_to_csv(headers, fh)
-                fh.write('\n')
             data = []
             keys = obs.keys()
             keys.sort()
             for key in keys:
                 data.append(obs[key])
             utils.write_list_to_csv(data, fh)
-            fh.write('\n')
 
             x += 1
         except Empty:
@@ -141,20 +228,13 @@ def generate_editor_dataset_launcher(dbname):
               'nr_output_processors': 1,
               'debug': False,
               'dbname': dbname,
+              'poison_pill':False,
+              'pbar': True
               }
     ids = retrieve_editor_ids_mongo(dbname, 'editors')
-    chunks = utils.split_list(ids, settings.NUMBER_OF_PROCESSES)
-#    chunks = {}
-#    parts = int(round(float(len(ids)) / 1, 0))
-#    a = 0
-#    for x in xrange(settings.NUMBER_OF_PROCESSES):
-#        b = a + parts
-#        chunks[x] = ids[a:b]
-#        a = (x + 1) * parts
-#        if a >= len(ids):
-#            break
-#        
-    pc.build_scaffolding(pc.load_queue, generate_editor_dataset, chunks, False, False, **kwargs)
+    ids = list(ids)
+    chunks = dict({0: ids})
+    pc.build_scaffolding(pc.load_queue, generate_cohort_analysis, chunks, False, False, **kwargs)
 
 
 def generate_editor_dataset_debug(dbname):

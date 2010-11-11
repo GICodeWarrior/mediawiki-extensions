@@ -105,6 +105,7 @@ def store_editors(input, filename, dbname):
     mongo = db.init_mongo_db(dbname)
     collection = mongo['test']
     mongo.collection.ensure_index('editor')
+    mongo.collection.create_index('editor')
     editor_cache = cache.EditorCache(collection)
     prev_contributor = -1
     x = 0
@@ -113,12 +114,15 @@ def store_editors(input, filename, dbname):
     for line in readline(fh):
         if len(line) == 0:
             continue
-        contributor = int(line[0])  
+        contributor = int(line[0]) 
+        if contributor == 5767932:
+            print 'debug'
         if prev_contributor != contributor:
             if edits >= 10:
                 result = editor_cache.add(prev_contributor, 'NEXT')
                 if result:
-                    editors.add(contributor)
+                    editors.add(prev_contributor)
+                    result = None
                 x += 1
                 print 'Stored %s editors' % x
             else:

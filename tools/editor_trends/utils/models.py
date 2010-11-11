@@ -30,13 +30,14 @@ class ProcessInputQueue(multiprocessing.Process):
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
 
-    def run(self):
+    def start(self):
         proc_name = self.name
         kwargs = {}
         IGNORE = ['input_queue', 'result_queue', 'target']
         for kw in self.__dict__:
             if kw not in IGNORE and not kw.startswith('_'):
                 kwargs[kw] = getattr(self, kw)
+        self._popen = True
         self.target(self.input_queue, self.result_queue, **kwargs)
 
 
@@ -50,11 +51,12 @@ class ProcessResultQueue(multiprocessing.Process):
             setattr(self, kw, kwargs[kw])
 
 
-    def run(self):
+    def start(self):
         proc_name = self.name
         kwargs = {}
         IGNORE = ['result_queue', 'target']
         for kw in self.__dict__:
             if kw not in IGNORE and not kw.startswith('_'):
                 kwargs[kw] = getattr(self, kw)
+        self._popen = True
         self.target(self.result_queue, **kwargs)

@@ -63,16 +63,17 @@ class EditorCache(object):
     def current_cache_size(self):
         return sum([self.editors[k].get('obs', 0) for k in self.editors])
 
+    def clear(self, key):
+        if key in self.editors:
+            del self.editors[key]
+
     def add(self, key, value):
         if value == 'NEXT':
-            for editor in self.treshold_editors:
-                self.insert (editor, self.editors[editor]['edits'])
-                self.n -= self.editors[editor]['obs']
-                self.number_editors -= 1
-                del self.editors[editor]
-            if key in self.editors:
-                del self.editors[key]
-            self.treshold_editors = set()
+            result = self.insert(key, self.editors[key]['edits'])
+            self.n -= self.editors[key]['obs']
+            self.number_editors -= 1
+            del self.editors[key]
+            return result
         else:
             self.cumulative_n += 1
             self.n += 1
@@ -88,8 +89,8 @@ class EditorCache(object):
             self.editors[key]['edits'][year].append(value)
             self.editors[key]['obs'] += 1
 
-            if self.editors[key]['obs'] == self.treshold:
-                self.treshold_editors.add(key)
+            #if self.editors[key]['obs'] == self.treshold:
+            #    self.treshold_editors.add(key)
 
     def add_years(self, key):
         now = datetime.datetime.now().year + 1
@@ -103,8 +104,9 @@ class EditorCache(object):
     def insert(self, editor, values):
         try:
             self.collection.insert({'editor': editor, 'edits': values})
+            return True
         except:
-            pass
+            return False
 
     def store(self):
         utils.store_object(self, settings.BINARY_OBJECT_FILE_LOCATION, self.__repr__())

@@ -29,21 +29,25 @@ import utils
 
 
 
-def determine_remote_filesize(url, filename):
+def determine_remote_filesize(domain, filename):
     '''
-    @url is the full path of the file to be downloaded
+    @domain is the full path of the file to be downloaded
     @filename is the name of the file to be downloaded
     '''
-    if url.startswith('http://'):
-        url = url[7:]
-    conn = httplib.HTTPConnection(url, 80)
-    conn.request('HEAD', filename)
-    res = conn.getresponse()
-    conn.close()
-    if res.status == 200:
-        return int(res.getheader('content-length', -1))
-    else:
-        return - 1
+    try:
+        if domain.startswith('http://'):
+            domain = domain[7:]
+        conn = httplib.HTTPConnection(domain)
+        conn.request('HEAD', filename)
+        res = conn.getresponse()
+        conn.close()
+        if res.status == 200:
+            return int(res.getheader('content-length', -1))
+        else:
+            return - 1
+    except httplib.socket.error:
+        #print 'It seemst that %s is temporarily unavailable, please try again later.' % url
+        raise httplib.NotConnected('It seems that %s is temporarily unavailable, please try again later.' % url)
 
 
 def download_wiki_file(domain, path, filename, location, filemode, pbar):
@@ -57,16 +61,11 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
     @pbar is an instance of progressbar.ProgressBar()
     '''
     chunk = 4096
-    result = utils.check_file_exists(location, '')
-    if result == False:
-        utils.create_directory(os.path.join(location))
+    filesize = determine_remote_filesize(domain, path + filename)
     if filemode == 'w':
         fh = utils.create_txt_filehandle(location, filename, filemode, settings.ENCODING)
     else:
         fh = utils.create_binary_filehandle(location, filename, 'wb')
-
-    filesize = determine_remote_filesize(domain, path + filename)
-
 
     if filesize != -1 and pbar:
         widgets = ['%s: ' % filename, progressbar.Percentage(), ' ',
