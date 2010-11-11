@@ -84,6 +84,12 @@ $egFundraiserStatisticsFundraisers = array(
 		'start' => 'Nov 10 2009',
 		'end' => 'Jan 15 2010'
 	),
+	array(
+		'id' => '2010',
+		'title' => '2010 Fundraiser',
+		'start' => 'Nov 12 2010',
+		'end' => 'Jan 15 2010',
+	),
 );
 
 // Thesholds for fundraiser statistics
