@@ -15,7 +15,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	}
 	
 	public function execute( $sub ) {
-		global $wgOut, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
+		global $wgRequest, $wgOut, $wgUser, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
 		
 		/* Configuration (this isn't totally static data, some of it gets built on the fly) */
 		
@@ -78,7 +78,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		
 		// Chart maximums
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
-			foreach ( $charts as $name ) {
+			foreach ( $charts as $name => $chart ) {
 				$chartMax = $this->query( $charts[$name]['query'], $fundraiser['start'], $fundraiser['end'] );
 				if ( $chartMax > $charts[$name]['max'] ) {
 					$charts[$name]['max'] = $chartMax;
@@ -161,7 +161,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		// Tabs
 		$first = true;
 		$htmlCharts = Xml::openElement( 'div', array( 'class' => 'fundraiserstats-chart-tabs' ) );
-		foreach ( $charts as $chart ) {
+		foreach ( $charts as $chart => $columns ) {
 			$htmlCharts .= Xml::tags(
 				'div',
 				array(
@@ -244,7 +244,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				);
 				$result = array();
 				$ytd = 0;
-				foreach ( $select as $row ) {
+				while ( $row = $dbr->fetchRow( $select ) ) {
 					$row[] = $ytd += $row[1]; // YTD
 					$result[] = $row;
 				}
