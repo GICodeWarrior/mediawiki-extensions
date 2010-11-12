@@ -103,9 +103,11 @@ $messages['af'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'wikisync' => 'Sinkroneladur ar wiki',
 	'wikisync_remote_login_button' => 'Kevreañ',
 	'wikisync_sync_files' => 'Sinkronelañ restroù',
 	'wikisync_synchronization_button' => 'Sinkronaat',
@@ -113,6 +115,11 @@ $messages['br'] = array(
 	'wikisync_log_uploaded_by' => 'Karget gant [[Special:WikiSync|WikiSync]]',
 	'wikisync_api_result_Blocked' => 'Implijer stanket',
 	'wikisync_js_revision' => 'Adweladenn $1',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|munut|munut}} a chom',
+	'wikisync_js_sync_start_ltr' => "Kregiñ gant ar sinkroneladur adalek ar wiki lec'hel betek ar wiki a-bell da $1",
+	'wikisync_js_sync_start_rtl' => "Kregiñ gant ar sinkroneladur adalek ar wiki a-bell betek ar wiki lec'hel da $1",
+	'wikisync_js_sync_end_ltr' => "Echuet ar sinkroneladur adalek ar wiki lec'hel betek ar wiki a-bell da $1",
+	'wikisync_js_sync_end_rtl' => "Echuet ar sinkroneladur adalek ar wiki a-bell betek ar wiki lec'hel da $1",
 );
 
 /** Bosnian (Bosanski)
