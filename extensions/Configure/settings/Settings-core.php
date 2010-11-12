@@ -59,7 +59,7 @@ $settings = array(
 			'wgHandheldStyle' => 'text',
 			'wgHandheldForIPhone' => 'bool',
 		),
-		'ressourceloader' => array(
+		'resourceloader' => array(
 			'wgResourceLoaderDebug' => 'bool',
 			'wgResourceLoaderInlinePrivateModules' => 'bool',
 			'wgResourceLoaderMaxage' => 'array',
