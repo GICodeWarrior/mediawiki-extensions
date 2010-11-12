@@ -450,7 +450,7 @@ echo $ns?>meta> </<?php echo $ns?>head>
 		global $wgSitename, $wgTitle, $wgRequest;
 		// check for semantic wiki:
 		if ( !defined( 'SMW_VERSION' ) ) {
-			return new WikiError( "Export Ask is dependent on semantic media wiki" );
+			return false;
 		}
 		// bootstrap off of SMWAskPage:
 		$SMWAskPage = new SMWAskPage();
