@@ -20,3 +20,5 @@ $wgExtensionMessagesFiles['FlagPage'] = $dir . 'FlagPage.i18n.php';
 $wgExtensionAliasesFiles['FlagPage'] = $dir . 'FlagPage.alias.php';
 $wgSpecialPages['FlagPage'] = 'FlagPage'; # Let MediaWiki know about your new special page.
 $wgHooks['SkinTemplateTabs'][] = array( new FlagPageTabInstaller(), 'insertTab' ); # Hook displays the "flag" tab on pages
+$wgHooks['SkinTemplateNavigation'][] = array( new FlagPageTabInstaller(), 'insertTabVector' ); # The same, but with the new hook for vector
+
