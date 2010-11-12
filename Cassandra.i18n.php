@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'cassandra-desc' => "Stoor teks van wysigings in 'n [http://cassandra.apache.org/ Apache Cassandra] databasis",
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'cassandra-desc' => 'Səhifənin versiyasının mətninin [http://cassandra.apache.org/ Apache Cassandra] verilənlər bazasında saxlanılması',
+);
+
 /** Bashkir (Башҡорт)
  * @author Assele
  */
