@@ -29,6 +29,11 @@
 	border: outset 1px #FFAAAA;
 	width: 2px;
 }
+.fundraiserstats-bar-2010 {
+	background-color: #FF0000;
+	border: outset 1px #FF0000;
+	width: 2px;
+}
 .fundraiserstats-bar-space {
 	width: 2px;
 }
