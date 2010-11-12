@@ -540,6 +540,7 @@ $messages['da'] = array(
  * @author ChrisiPK
  * @author Gnu1742
  * @author Katharina Wolkwitz
+ * @author Kghbln
  * @author Melancholie
  * @author Pill
  * @author Purodha
@@ -558,12 +559,12 @@ $messages['de'] = array(
 	'usagestatistics-namespace' => 'Dies sind Statistiken aus dem [[Special:Allpages/$1|$2]]-Namensraum.',
 	'usagestatistics-noredirects' => '[[Special:ListRedirects|Weiterleitungsseiten]] werden nicht berücksichtigt.',
 	'usagestatisticstype' => 'Berechnungsart',
-	'usagestatisticsstart' => 'Start-Datum:',
-	'usagestatisticsend' => 'End-Datum:',
+	'usagestatisticsstart' => 'Startdatum:',
+	'usagestatisticsend' => 'Enddatum:',
 	'usagestatisticssubmit' => 'Statistik generieren',
-	'usagestatisticsnostart' => 'Start-Datum eingeben',
-	'usagestatisticsnoend' => 'End-Datum eingeben',
-	'usagestatisticsbadstartend' => '<b>Unpassendes/fehlerhaftes <i>Start-Datum</i> oder <i>End-Datum</i> !</b>',
+	'usagestatisticsnostart' => 'Startdatum eingeben',
+	'usagestatisticsnoend' => 'Enddatum eingeben',
+	'usagestatisticsbadstartend' => '<b>Unpassendes <i>Start-</i> oder <i>Enddatum</i> !</b>',
 	'usagestatisticsintervalday' => 'Tag',
 	'usagestatisticsintervalweek' => 'Woche',
 	'usagestatisticsintervalmonth' => 'Monat',
