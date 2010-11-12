@@ -25,11 +25,11 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'todo-desc',
 );
 
-$wgExtensionFunctions[] = 'todoSetup';
 $wgHooks['SkinTemplateTabs'][] = 'todoAddTab';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['todoAddTab'] = $dir . 'Todo.i18n.php';
+$wgExtensionMessagesFiles['todoAddTabSp'] = $dir . 'Todo.alias.php';
 
 // Creates a group of users who can have todo lists
 $wgGroupPermissions['todo']['todo'] = true;
@@ -41,11 +41,7 @@ $wgGroupPermissions['sysop']['todosubmit'] = true;
 $wgAvailableRights[] = 'todo';
 $wgAvailableRights[] = 'todosubmit';
 
-// FIXME: use $wgSpecialPages and delay message loading
-function todoSetup() {
-	wfLoadExtensionMessages( 'todoAddTab' );
-	SpecialPage::addPage( new SpecialPage( 'Todo' ) );
-}
+$wgSpecialPages['Todo'] = 'SpecialTodo';
 
 // FIXME: use class file(s) to delay loading
 /**
@@ -55,9 +51,8 @@ function todoSetup() {
  * @return bool true to continue running hooks, false to abort operation
  */
 function todoAddTab( $skin, &$actions ) {
-	global $wgTitle;
-	if ( $wgTitle->getNamespace() == NS_USER || $wgTitle->getNamespace() == NS_USER_TALK ) {
-		$title = SpecialPage::getTitleFor( 'Todo', $wgTitle->getText() );
+	if ( $skin->getTitle()->getNamespace() == NS_USER || $skin->getTitle()->getNamespace() == NS_USER_TALK ) {
+		$title = SpecialPage::getTitleFor( 'Todo', $skin->getTitle()->getText() );
 		$actions['todo'] = array(
 			'text' => wfMsg( 'todo-tab' ),
 			'href' => $title->getLocalUrl() );
@@ -65,66 +60,63 @@ function todoAddTab( $skin, &$actions ) {
 	return true;
 }
 
-/**
- * Entry-point function for Special:Todo
- * @param mixed $par Will contain username to view on
- */
-function wfSpecialTodo( $par = null ) {
-	if ( is_null( $par ) || $par == '' ) {
-		global $wgUser;
-		$user = $wgUser;
-	} else {
-		$user = User::newFromName( $par );
+class SpecialTodo extends SpecialPage {
+	function __construct() {
+		parent::__construct( 'Todo' );
 	}
-	if ( is_null( $user ) || !$user->isAllowed( 'todo' ) ) {
-		global $wgOut;
-		$wgOut->fatalError( wfMsgHtml( 'todo-user-invalide' ) );
-	} else {
-		global $wgRequest;
-		$todo = new TodoForm( $user );
-		if ( $wgRequest->wasPosted() ) {
-			$todo->submit( $wgRequest );
-		} else {
-			$todo->show();
-		}
-	}
-}
 
-class TodoForm {
-	function __construct( $user ) {
+	public function execute( $par ) {
+		global $wgOut, $wgUser, $wgRequest;
+		if ( is_null( $par ) || $par === '' ) {
+			$user = $wgUser;
+		} else {
+			$user = User::newFromName( $par );
+		}
+
+		$this->setHeaders();
+		$this->outputHeader();
+
+		if ( is_null( $user ) || !$user->isAllowed( 'todo' ) ) {
+			return $wgOut->addWikiMsg( 'todo-user-invalide' );
+		}
+
 		$this->target = $user;
-		$this->self = SpecialPage::getTitleFor( 'Todo', $user->getName() );
+		$this->self = $this->getTitle( $user->getName() );
+		if ( $wgRequest->wasPosted() ) {
+			$this->submit( $wgRequest );
+		} else {
+			$this->show();
+		}
 	}
 
 	function submit( $request ) {
 		if ( $request->getVal( 'wpNewItem' ) ) {
-			$this->submitNew( $request );
+			$result = $this->submitNew( $request );
 		} elseif ( $request->getVal( 'wpUpdateField' ) ) {
-			$this->submitUpdate( $request );
+			$result = $this->submitUpdate( $request );
 		}
 		$this->showError( $result );
 		$this->show();
 	}
 
 	function submitNew( $request ) {
-		$result = TodoItem::add(
+		return TodoItem::add(
 			$this->target,
 			$request->getText( 'wpSummary' ),
 			$request->getText( 'wpComment' ),
 			$request->getVal( 'wpEmail' ) );
-		return $result;
 	}
 
 	function submitUpdate( $request ) {
 		$id = $request->getInt( 'wpItem' );
 		$item = TodoItem::loadFromId( $id );
 		if ( is_null( $item ) ) {
-			return new WikiError( wfMsgHtml( 'todo-invalid-item' ) );
+			return Status::newFatal( 'todo-invalid-item' );
 		}
 
 		global $wgUser;
 		if ( $item->owner != $wgUser->getId() ) {
-			return new WikiError( wfMsgHtml( 'todo-update-else-item' ) );
+			return Status::newFatal( 'todo-update-else-item' );
 		}
 
 		switch( $request->getVal( 'wpUpdateField' ) ) {
@@ -138,7 +130,7 @@ class TodoForm {
 			return $item->setTitle( $request->getText( 'wpTitle' ) );
 			break;
 		default:
-			return new WikiError( wfMsgHtml( 'todo-unrecognize-type' ) );
+			return Status::newFatal( 'todo-unrecognize-type' );
 		}
 	}
 
@@ -149,7 +141,7 @@ class TodoForm {
 
 		$wgOut->addWikiText( "== " . wfMsg( 'todo-new-item' ) . " ==\n" );
 
-		require_once ( 'TodoForm.php' );
+		require_once( 'TodoForm.php' );
 		$form = new TodoTemplate();
 		$form->set( 'action', $this->self->getLocalUrl( 'action=submit' ) );
 		$form->set( 'script', "$wgScriptPath/extensions/Todo/todo.js" );
@@ -164,10 +156,9 @@ class TodoForm {
 
 	function showError( $result ) {
 		global $wgOut;
-		if ( WikiError::isError( $result ) ) {
-			$wgOut->addHTML( '<p class="error">' .
-				htmlspecialcahrs( $result->getMessage() ) .
-				"</p>\n" );
+		if ( !$result->isOK() ) {
+			$wgOut->addWikiText( "<p class=\"error\">\n" .
+				$result->getWikiText() . "\n</p>\n" );
 		}
 	}
 
@@ -186,7 +177,7 @@ class TodoList {
 		$result = $dbr->select( 'todolist', '*', array(
 			'todo_owner' => $this->owner,
 			'todo_status' => 'open' ),
-			'TodoList::TodoList',
+			__METHOD__,
 			array( 'ORDER BY' => 'todo_owner,todo_status,todo_queue,todo_timestamp DESC' ) );
 
 		$this->items = array();
@@ -274,7 +265,7 @@ class TodoItem {
 		$row = $dbr->selectRow( 'todolist',
 			'*',
 			array( 'todo_id' => intval( $id ) ),
-			'TodoForm::loadFromId' );
+			__METHOD__ );
 		if ( $row ) {
 			return new TodoItem( $row );
 		} else {
@@ -289,7 +280,7 @@ class TodoItem {
 	 * @param string $email
 	 * @static
 	 */
-	function add( $owner, $summary, $comment, $email ) {
+	static function add( $owner, $summary, $comment, $email ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert( 'todolist',
 			array(
@@ -300,8 +291,8 @@ class TodoItem {
 				'todo_title' => $summary,
 				'todo_comment' => $comment,
 				'todo_email' => $email ),
-			'TodoItem::add' );
-		return true;
+			__METHOD__ );
+		return Status::newGood();
 	}
 
 
@@ -429,8 +420,8 @@ class TodoItem {
 	}
 
 	/**
-	 * @param string $comment
-	 * @param bool $sendMail false to supppress sending of email to submitter
+	 * @param $comment String
+	 * @param $sendMail Boolean: false to supppress sending of email to submitter
 	 */
 	function close( $comment, $sendMail ) {
 		$this->status = 'closed';
@@ -441,20 +432,19 @@ class TodoItem {
 	}
 
 	/**
-	 * @param string $closeComment
-	 * @return mixed true on success, WikiError on failure
+	 * @param $closeComment String
 	 */
 	function sendConfirmationMail( $closeComment ) {
 		global $wgContLang;
 
 		$owner = User::newFromId( $this->owner );
 		if ( is_null( $owner ) ) {
-			return new WikiError( wfMsgHtml( 'todo-invalid-owner' ) );
+			return;
 		}
 
 		$sender = new MailAddress( $owner );
 		$recipient = new MailAddress( $this->email );
-		return UserMailer::send( $recipient, $sender,
+		UserMailer::send( $recipient, $sender,
 			wfMsgForContent( 'todo-mail-subject', $owner->getName() ),
 			wordwrap( wfMsgForContent( 'todo-mail-body',
 				$owner->getName(),
@@ -469,9 +459,14 @@ class TodoItem {
 	 */
 	function updateRecord( $changes ) {
 		$dbw = wfGetDB( DB_MASTER );
-		return $dbw->update( 'todolist',
+		$ret = $dbw->update( 'todolist',
 			$changes,
 			array( 'todo_id' => $this->id ),
-			'TodoItem::updateRecord' );
+			__METHOD__ );
+		if ( $ret ) {
+			return Status::newGood();
+		} else {
+			return Status::newFatal( 'todo-not-updated' );
+		}
 	}
 }
