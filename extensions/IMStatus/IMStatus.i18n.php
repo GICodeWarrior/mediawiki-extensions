@@ -55,6 +55,7 @@ $messages['qqq'] = array(
 	'imstatus-desc' => 'Kort beskrivelse av IMStatus-utvidelsen, vist i [[Special:Version]].',
 	'imstatus_default' => '{{Identical|Default}}',
 	'imstatus_example' => '{{Identical|Example}}',
+	'imstatus_or' => '{{Identical|Or}}',
 	'imstatus_live_get_code' => 'The parameters are pieces of static text to help a user find what he needs.
 * $1 is "http://settings.messenger.live.com/applications/CreateHtml.aspx"
 * $2 is "invitee="

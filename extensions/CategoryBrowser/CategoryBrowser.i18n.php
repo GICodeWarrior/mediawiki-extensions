@@ -102,6 +102,7 @@ $messages['qqq'] = array(
 	'cb_cat_files' => '{{Identical|File}}',
 	'cb_all_op' => 'Operator to select all categories available.
 {{Identical|All}}',
+	'cb_or_op' => '{{Identical|Or}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -138,6 +139,16 @@ $messages['arc'] = array(
 	'cb_all_op' => 'ܟܠ',
 	'cb_or_op' => 'ܐܘ',
 	'cb_and_op' => 'ܘ',
+);
+
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'cb_previous_items_link' => 'Əvvəlki',
+	'cb_next_items_link' => 'Sonrakı',
+	'cb_or_op' => 'və ya',
+	'cb_and_op' => 'və',
 );
 
 /** Bashkir (Башҡорт)

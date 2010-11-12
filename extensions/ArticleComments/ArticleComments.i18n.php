@@ -1243,6 +1243,13 @@ $messages['te'] = array(
 	'article-comments-submit-button' => 'దాఖలుచెయ్యి',
 	'article-comments-leave-comment-link' => 'వ్యాఖ్యానించండి ...',
 	'article-comments-required-field' => '$1 అనే ఖాళీ తప్పనిసరి .',
+	'article-comments-failure-reasons' => 'ఈ క్రింది {{PLURAL:$1|కారణం|కారణాల}} వల్ల మీ వ్యాఖ్య దాఖలు విఫలమైంది:',
+	'article-comments-no-comments' => 'క్షమించండి, "[[$1]]" పుటలో ప్రస్తుతం వ్యాఖ్యలని అనుమతించుటలేదు.',
+	'article-comments-talk-page-starter' => '<noinclude>"[[$1]]"పై వ్యాఖ్యలు
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 అన్నారు ...',
+	'article-comments-submission-view-all' => '[[$1|ఆ పుటపై అన్ని వ్యాఖ్యలని]] మీరు చూడవచ్చు',
 );
 
 /** Turkish (Türkçe)

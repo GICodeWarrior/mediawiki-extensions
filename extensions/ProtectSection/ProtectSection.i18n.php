@@ -609,6 +609,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'protectsection_modify' => 'సంరక్షిత పాఠ్యాన్ని మార్చడానికి మీరు ప్రయత్నించారు',
+	'right-protectsection' => 'పుటల లోని విభాగాలను సంరక్షించడం',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
