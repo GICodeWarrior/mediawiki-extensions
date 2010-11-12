@@ -91,6 +91,13 @@ $messages['ast'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|enllaz|enllaces}} a $3',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'crossnamespacelinks' => 'Adlar fəzası arasındakı keçidlər',
+);
+
 /** Bashkir (Башҡорт)
  * @author Assele
  */
