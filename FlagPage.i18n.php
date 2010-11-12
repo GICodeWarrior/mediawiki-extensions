@@ -3,8 +3,8 @@ $messages = array();
  
 /* *** English *** */
 $messages['en'] = array( 
-	'flagpage' => 'Flag an article',
-	'flagpage-desc' => "Flag article with predefined templates",
+	'flagpage' => 'Flag a page',
+	'flagpage-desc' => "Flag page with predefined templates",
 	'flagpage-templatelist' => "<!--
 Edit this page to configure templates to use.
 Examples:
@@ -20,9 +20,9 @@ Examples:
 	'flagpage-preview' => 'Preview of the selected template:',
 	'flagpage-confirmsave' => 'Please confirm your changes. ',
 	'flagpage-submitbutton' => 'Save page with this template',
-	'flagpage-nonexistent'=> '<span class="plainlinks">The article “$1” does not exist. Perhaps it has been [{{fullurl:Special:Log|page=$1}} moved or deleted].</span>',
-	'flagpage-summary' => 'Added template [[$1]] using FlagArticle',
+	'flagpage-nonexistent'=> '<span class="plainlinks">The page “$1” does not exist. Perhaps it has been [{{fullurl:Special:Log|page=$1}} moved or deleted].</span>',
+	'flagpage-summary' => 'Added template [[$1]] using FlagPage',
 	'flagpage-success' => '[[$1]] has been added to the page [[$2]].',
-	'flagpage-tab' => 'flag'
+	'flagpage-tab' => 'Flag'
 );
 

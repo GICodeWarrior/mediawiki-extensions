@@ -17,4 +17,12 @@ class FlagPageTabInstaller {
 			'href' => $special->getLocalUrl( $linkParam ) );
 		return true;
 	}
+
+	function insertTabVector( &$sktemplate, &$links ) { 
+		// the old '$content_actions' array is thankfully just a
+		// sub-array of this one
+		// copied from Extension:ApprovedRevs (r74381). Author: yaron
+		self::insertTab( $skin, $links['views'] );
+		return true;
+	}
 }
