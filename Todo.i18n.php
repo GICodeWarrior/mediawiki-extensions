@@ -416,12 +416,13 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Kghbln
  * @author Revolus
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'todo' => 'Aufgabenliste',
-	'todo-desc' => 'Experimentelle persönliche [[Special:Todo|Aufgabenliste]]',
+	'todo-desc' => 'Ermöglicht eine persönliche [[Special:Todo|Aufgabenliste]] (experimentell)',
 	'todo-tab' => 'Aufgaben',
 	'todo-new-queue' => 'Neu',
 	'todo-mail-subject' => 'Eintrag auf $1s Aufgabenliste abgeschlossen',
@@ -445,6 +446,7 @@ $4',
 	'todo-list-change' => 'Ändern',
 	'todo-list-cancel' => 'Abbrechen',
 	'todo-new-item' => 'Neuer Eintrag',
+	'todo-not-updated' => 'Der Datensatz konnte nicht in der Datenbank aktualisiert werden',
 	'todo-issue-summary' => 'Zusammenfassung des Auftrags:',
 	'todo-form-details' => 'Details:',
 	'todo-form-email' => 'Gib deine E-Mail-Adresse ein, um eine Benachrichtigung zu erhalten, wenn der Eintrag geschlossen wurde:',
@@ -993,6 +995,7 @@ $4',
 	'todo-list-change' => 'Cambiar',
 	'todo-list-cancel' => 'Cancellar',
 	'todo-new-item' => 'Nove carga',
+	'todo-not-updated' => 'Non poteva actualisar le registro de base de datos',
 	'todo-issue-summary' => 'Summario:',
 	'todo-form-details' => 'Detalios:',
 	'todo-form-email' => 'Pro reciper notification per e-mail quando le carga es claudite, entra tu adresse hic:',
@@ -1259,6 +1262,7 @@ $4',
 	'todo-list-change' => 'Смени',
 	'todo-list-cancel' => 'Откажи',
 	'todo-new-item' => 'Нова задача',
+	'todo-not-updated' => 'Не можев да ја подновам евиденцијата во базата',
 	'todo-issue-summary' => 'Преглед на проблемот:',
 	'todo-form-details' => 'Детали:',
 	'todo-form-email' => 'За да добивате известување по е-пошта кога некоја задача е затворена, внесете ја вашата адреса:',
