@@ -7,8 +7,19 @@ $(document).ready( function() {
 	// Overloading the moveToCollapsed function to animate the transition 
 	$.collapsibleTabs.moveToCollapsed = function( ele ) {
 		var $moving = $( ele );
-		$.collapsibleTabs.getSettings( $( $.collapsibleTabs.getSettings( $moving ).expandedContainer ) ).shifting = true;
+		
+		//$.collapsibleTabs.getSettings( $( $.collapsibleTabs.getSettings( $moving ).expandedContainer ) ).shifting = true;
+		// Do the above, except with guards for JS errors
 		var data = $.collapsibleTabs.getSettings( $moving );
+		if ( !data ) {
+			return;
+		}
+		var expContainerSettings = $.collapsibleTabs.getSettings( $( data.expandedContainer ) );
+		if ( !expContainerSettings ) {
+			return;
+		}
+		expContainerSettings.shifting = true;
+
 		// Remove the element from where it's at and put it in the dropdown menu
 		var target = data.collapsedContainer;
 		$moving.css( "position", "relative" )
@@ -19,8 +30,18 @@ $(document).ready( function() {
 				$( '<span class="placeholder" style="display:none;"></span>' ).insertAfter( this );
 				$( this ).remove().prependTo( target ).data( 'collapsibleTabsSettings', data );
 				$( this ).attr( 'style', 'display:list-item;' );
-				$.collapsibleTabs.getSettings( $( $.collapsibleTabs.getSettings( $( ele ) ).expandedContainer ) )
-					.shifting = false;
+				//$.collapsibleTabs.getSettings( $( $.collapsibleTabs.getSettings( $( ele ) ).expandedContainer ) )
+				//	.shifting = false;
+				// Do the above, except with guards for JS errors
+				var data = $.collapsibleTabs.getSettings( $( ele ) );
+				if ( !data ) {
+					return;
+				}
+				var expContainerSettings = $.collapsibleTabs.getSettings( $( data.expandedContainer ) );
+				if ( !expContainerSettings ) {
+					return;
+				}
+				expContainerSettings.shifting = false;
 				$.collapsibleTabs.handleResize();
 			} );
 	};
@@ -28,8 +49,18 @@ $(document).ready( function() {
 	// Overloading the moveToExpanded function to animate the transition
 	$.collapsibleTabs.moveToExpanded = function( ele ) {
 		var $moving = $( ele );
-		$.collapsibleTabs.getSettings( $( $.collapsibleTabs.getSettings( $moving ).expandedContainer ) ).shifting = true;
+		//$.collapsibleTabs.getSettings( $( $.collapsibleTabs.getSettings( $moving ).expandedContainer ) ).shifting = true;
+		// Do the above, except with guards for JS errors
 		var data = $.collapsibleTabs.getSettings( $moving );
+		if ( !data ) {
+			return;
+		}
+		var expContainerSettings = $.collapsibleTabs.getSettings( $( data.expandedContainer ) );
+		if ( !expContainerSettings ) {
+			return;
+		}
+		expContainerSettings.shifting = true;
+
 		// grab the next appearing placeholder so we can use it for replacing
 		var $target = $( data.expandedContainer ).find( 'span.placeholder:first' );
 		var expandedWidth = data.expandedWidth;
@@ -37,8 +68,18 @@ $(document).ready( function() {
 		$target.replaceWith( $moving.remove().css( 'width', '1px' ).data( 'collapsibleTabsSettings', data )
 			.animate( { width: expandedWidth+"px" }, "normal", function() {
 				$( this ).attr( 'style', 'display:block;' );
-				$.collapsibleTabs.getSettings( $( $.collapsibleTabs.getSettings( $moving ).expandedContainer ) )
-					.shifting = false;
+				//$.collapsibleTabs.getSettings( $( $.collapsibleTabs.getSettings( $( ele ) ).expandedContainer ) )
+				//	.shifting = false;
+				// Do the above, except with guards for JS errors
+				var data = $.collapsibleTabs.getSettings( $( ele ) );
+				if ( !data ) {
+					return;
+				}
+				var expContainerSettings = $.collapsibleTabs.getSettings( $( data.expandedContainer ) );
+				if ( !expContainerSettings ) {
+					return;
+				}
+				expContainerSettings.shifting = false;
 				$.collapsibleTabs.handleResize();
 			} ) );
 	};
