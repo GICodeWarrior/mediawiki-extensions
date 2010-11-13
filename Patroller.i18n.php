@@ -197,6 +197,14 @@ $messages['arz'] = array(
 	'right-patroller' => 'مراجعة الصفحات',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'group-patroller' => 'Тикшереүселәр',
+	'group-patroller-member' => 'тикшереүсе',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -670,6 +678,14 @@ $messages['frp'] = array(
 	'patrol-revert-reason' => 'Rêson :',
 	'group-patroller' => 'Patrolyors',
 	'group-patroller-member' => 'Patrolyor',
+);
+
+/** Northern Frisian (Nordfriisk)
+ * @author Murma174
+ */
+$messages['frr'] = array(
+	'group-patroller' => 'Kontrolöören',
+	'group-patroller-member' => 'Kontrolöör',
 );
 
 /** Western Frisian (Frysk)
