@@ -285,6 +285,8 @@ $1",
  */
 $messages['br'] = array(
 	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => "Talvezout a ra d'an implijerien da [[Special:Connect|gevreañ]] dre o c'hontoù [http://www.facebook.com Facebook].
+Kinnig a ra ur gwiriekadur diazezet war strolladoù Facebook hag implij FBML en destenn wiki",
 	'group-fb-user' => 'Implijerien Facebook Connect',
 	'group-fb-user-member' => 'Implijer Facebook Connect',
 	'grouppage-fb-user' => '{{ns:project}}: Implijerien Facebook Connect',
@@ -307,17 +309,38 @@ Talvezout a ra kement-se e c'hallit ober ho mad eus arc'hwelioù ouzhpenn pa vez
 	'fbconnect-click-to-login' => "Klikit evit kevreañ el lec'hienn-mañ dre Facebook",
 	'fbconnect-click-to-connect-existing' => 'Klikit evit kevreañ ho kont Facebook da $1',
 	'fbconnect-conv' => 'Aezamant',
+	'fbconnect-convdesc' => "Enskrivet e vez an implijerien kevreet ent emgefre.
+Mar bez roet an aotre e c'hall ar wiki-mañ implijout Facebook evel ur proksi posteloù zoken. Evel-se e c'hallit kenderc'hel da zegemer ar c'hemennoù pouezus hep bezañ rediet da ziskouez ho chomlec'h postel.",
+	'fbconnect-fbml' => 'Yezh balizenniñ Facebook',
+	'fbconnect-fbmldesc' => "Pourchaset en deus Facebook un toullad balizennoù enframmet a ziskwelo roadennoù dinamek.
+Un niver bras eus ar balizennoù-se  a c'hall bezañ lakaet en destenn wiki. Dont a raint war wel e modoù disheñvel hervez an implijerien kevreet a vez o sellet outo.",
 	'fbconnect-comm' => 'Daremprederezh',
+	'fbconnect-commdesc' => "Digeriñ a ra Facebook Connect ul live rouedadiñ nevez.
+Sellit 'ta, e-touez ho mignoned, piv a ra gant ar wiki ha, mar fell deoc'h, e c'hallit kenrannañ hoc'h oberiadennoù dre neudennad keleier Facebook.",
+	'fbconnect-welcome' => "Degemer mat deoc'h-c'hwi implijer Facebook Connect !",
 	'fbconnect-loginbox' => "Pe '''kevreañ''' gant Facebook :
 
 $1",
+	'fbconnect-merge' => 'Kendeuziñ ho kont wiki gant ho ker-anaout Facebook.',
+	'fbconnect-logoutbox' => "$1
+	
+An dra-se a zigevreo ac'hanoc'h eus Facebook hag eus an holl lec'hiennoù kevreet, ar wiki-mañ en o zouez.",
+	'fbconnect-listusers-header' => "Treuzkaset ent emgefre eo ar gwirioù $1 ha $2 adalek an titloù merour ha tud karget eus ar strollad Facebook $3
+
+Evit gouzout hiroc'h, kit e darempred gant saver ar strollad $4",
 	'fbconnect-error' => 'Fazi gwiriañ',
+	'fbconnect-errortext' => "C'hoarvezet ez eus ur fazi e-ser gwiriañ gant Facebook connect",
 	'fbconnect-cancel' => 'Ober nullet',
+	'fbconnect-canceltext' => 'Nullet eo bet an oberiadenn gent gant an implijer.',
 	'fbconnect-invalid' => "N'haller ket dibab an dra-se",
+	'fbconnect-invalidtext' => 'Direizh e oa an dibab graet war ar bajenn gent.',
+	'fbconnect-success' => 'Gwiriekadur gant Facebook aet da benn vat',
+	'fbconnect-successtext' => "Kevreet oc'h ervat gant Facebook Connect.",
 	'fbconnect-nickname' => 'Lesanv',
 	'fbconnect-fullname' => 'Anv klok',
 	'fbconnect-email' => "Chomlec'h postel",
 	'fbconnect-language' => 'Yezh',
+	'fbconnect-timecorrection' => 'Reizhañ ar werzhid eur (en eurioù)',
 	'fbconnect-chooselegend' => 'Dibab an anv implijer',
 	'fbconnect-chooseinstructions' => "An holl implijerien o deus ezhomm ul lesanv; gallout a rit dibab unan eus ar c'hinnigoù a-is.",
 	'fbconnect-invalidname' => 'Al lezanv ho peus dibabet a zo direizh pe implijet dija.
@@ -330,11 +353,16 @@ Trugarez da zibab unan all.',
 	'fbconnect-chooseexisting' => 'Ur gont zo anezhi war ar wiki-mañ',
 	'fbconnect-chooseusername' => 'Anv implijer :',
 	'fbconnect-choosepassword' => 'Ger-tremen :',
+	'fbconnect-updateuserinfo' => 'Hizivaat an titouroù personel da-heul :',
 	'fbconnect-alreadyloggedin' => "'''Kevreet oc'h dija, $1!'''
 
 Ma fell deoc'h implijout Facebook Connect da gevreañ diwezhatoc'h, e c'hallit [[Special:Connect/Convert|amdreiñ ho kont evit implijout Facebook Connect]].",
+	'fbconnect-error-creating-user' => "C'hoarvezet ez eus ur fazi e-ser krouiñ an implijer en diaz roadennoù lec'hel.",
+	'fbconnect-error-user-creation-hook-aborted' => "Ur c'hroc'hed (astenn) en deus distaolet ar c'hrouiñ kontoù gant ar c'hemenn : $1",
 	'fbconnect-prefstext' => 'Facebook Connect',
 	'fbconnect-link-to-profile' => 'Profil Facebook',
+	'fbconnect-prefsheader' => "Evit chom mestr war an darvoudoù a gaso un elfenn en ho lanvad keleier Facebook, <a id='fbConnectPushEventBar_show' href='#'>diskouez ar penndibaboù</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>kuzhat ar penndibaboù</a>",
+	'fbconnect-prefs-can-be-updated' => 'Gallout a rit hizivaat an elfennoù-se pa fell deoc\'h en ur implijout an ivinell "$1" en ho pajenn penndibaboù.',
 );
 
 /** Bosnian (Bosanski)

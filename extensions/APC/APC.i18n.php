@@ -7006,9 +7006,12 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author Pbdragonwang
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'apc' => 'APC資訊',
+	'viewapc-clear-confirm' => '你要清除快取？',
 	'viewapc-mode-version-check' => '檢查版本',
 	'viewapc-apc-version' => 'APC版本',
 	'viewapc-php-version' => 'PHP版本',
