@@ -63,6 +63,9 @@
     <exec executable="sh" dir="${sourcedir}/" failonerror="true">
       <arg line="-c &quot;echo require_once\( dirname\( dirname\( __FILE__ \) \) \) . \'/ExtraSettings.php\'\;>>LocalSettings.php&quot;"/>
     </exec>
+    <exec executable="php" dir="${sourcedir}/" failonerror="true">
+      <arg line="maintenance/update.php --quick" />
+    </exec>
   </target>
 
   <target name="test-static" depends="prepare">
