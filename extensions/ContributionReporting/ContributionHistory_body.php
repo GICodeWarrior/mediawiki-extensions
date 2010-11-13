@@ -7,6 +7,11 @@ class ContributionHistory extends SpecialPage {
 	function execute( $language = null ) {
 		global $wgRequest, $wgOut, $wgTitle, $wgLang;
 
+		# Emergecny short cut until post donation comments are enabled
+		$wgOut->redirect( SpecialPage::getTitleFor( 'FundraiserStatistics' )->getFullURL() );
+		return;
+		
+
 		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {
 			$language = 'en';
 		}
