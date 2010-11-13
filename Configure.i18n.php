@@ -1358,11 +1358,11 @@ Krouit anezhañ pe kemmit-eñ evit gallout implijout an astenn-mañ.",
 	'configure-section-enotif' => 'Kemenn dre bostel',
 	'configure-section-localization' => "Lec'hiadur",
 	'configure-section-timezone' => 'Takad eur',
-	'configure-section-zh-conversion' => 'Amdroadur ar sinaeg',
 	'configure-section-debug' => 'Dizreinañ',
 	'configure-section-profiling' => 'Profilañ',
 	'configure-section-site' => "Personeladur al lec'hienn",
 	'configure-section-css-js' => 'CSS ha JavaScript',
+	'configure-section-resourceloader' => 'Karger mammennoù',
 	'configure-section-namespaces' => 'Esaouennoù anv',
 	'configure-section-stats' => "Stadegoù al lec'hienn",
 	'configure-section-skin' => 'Gwiskadurioù',
@@ -2178,11 +2178,11 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-section-enotif' => 'E-Mail-Benachrichtigung',
 	'configure-section-localization' => 'Lokalisierung',
 	'configure-section-timezone' => 'Zeitzone',
-	'configure-section-zh-conversion' => 'Chinesisch-Konvertierung',
 	'configure-section-debug' => 'Debugging',
 	'configure-section-profiling' => 'Profiling',
 	'configure-section-site' => 'Site-Anpassung',
 	'configure-section-css-js' => 'CSS und JavaScript',
+	'configure-section-resourceloader' => 'ResourceLoader',
 	'configure-section-namespaces' => 'Namensräume',
 	'configure-section-stats' => 'Website-Statistiken',
 	'configure-section-skin' => 'Skins',
@@ -4950,11 +4950,11 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
 	'configure-section-enotif' => 'Notification per e-mail',
 	'configure-section-localization' => 'Localisation',
 	'configure-section-timezone' => 'Fuso horari',
-	'configure-section-zh-conversion' => 'Conversion de chinese',
 	'configure-section-debug' => 'Debugging',
 	'configure-section-profiling' => 'Profilamento',
 	'configure-section-site' => 'Personalisation del sito',
 	'configure-section-css-js' => 'CSS e JavaScript',
+	'configure-section-resourceloader' => 'Cargator de ressources',
 	'configure-section-namespaces' => 'Spatios de nomines',
 	'configure-section-stats' => 'Statisticas del sito',
 	'configure-section-skin' => 'Stilos',
@@ -5495,6 +5495,7 @@ Assegnare a PHP il diritto di scrittura su di essa per utilizzare questa estensi
  * @author Broad-Sky
  * @author Fievarsty
  * @author Fryed-peach
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'configure' => 'ウィキの構成を設定する',
@@ -5566,11 +5567,11 @@ $messages['ja'] = array(
 	'configure-section-enotif' => 'Eメールを通知',
 	'configure-section-localization' => '地域化',
 	'configure-section-timezone' => '時間帯',
-	'configure-section-zh-conversion' => '中国語変換',
 	'configure-section-debug' => 'デバッグ',
 	'configure-section-profiling' => 'プロファイリング',
 	'configure-section-site' => 'サイトのカスタマイズ',
 	'configure-section-css-js' => 'CSS と JavaScript',
+	'configure-section-resourceloader' => 'リソース読み込み機能',
 	'configure-section-namespaces' => '名前空間',
 	'configure-section-stats' => 'サイトの統計',
 	'configure-section-skin' => 'スキン',
@@ -6715,11 +6716,11 @@ $messages['mk'] = array(
 	'configure-section-enotif' => 'Известување по е-пошта',
 	'configure-section-localization' => 'Локализација',
 	'configure-section-timezone' => 'Часовна зона',
-	'configure-section-zh-conversion' => 'Кинеско претворање',
 	'configure-section-debug' => 'Отстранување бубачки',
 	'configure-section-profiling' => 'Профилирање',
 	'configure-section-site' => 'Прилагодување на мреж. место',
 	'configure-section-css-js' => 'CSS и JavaScript',
+	'configure-section-resourceloader' => 'Вчитувач на ресурси',
 	'configure-section-namespaces' => 'Именски простори',
 	'configure-section-stats' => 'Статистики за мреж. место',
 	'configure-section-skin' => 'Маски',
@@ -9051,6 +9052,7 @@ $messages['roa-tara'] = array(
  * @author Kaganer
  * @author Kv75
  * @author Lockal
+ * @author MaxSem
  * @author Putnik
  * @author Александр Сигачёв
  */
@@ -9127,11 +9129,11 @@ $messages['ru'] = array(
 	'configure-section-enotif' => 'Уведомления по эл. почте',
 	'configure-section-localization' => 'Локализация',
 	'configure-section-timezone' => 'Часовой пояс',
-	'configure-section-zh-conversion' => 'Преобразования для китайского',
 	'configure-section-debug' => 'Отладка',
 	'configure-section-profiling' => 'Профилирование',
 	'configure-section-site' => 'Донастройка сайта',
 	'configure-section-css-js' => 'CSS и JavaScript',
+	'configure-section-resourceloader' => 'Загрузчик ресурсов',
 	'configure-section-namespaces' => 'Пространства имён',
 	'configure-section-stats' => 'Статистика сайта',
 	'configure-section-skin' => 'Оформление',
