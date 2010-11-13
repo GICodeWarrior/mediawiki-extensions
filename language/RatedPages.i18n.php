@@ -63,10 +63,15 @@ $messages['arz'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Assele
  * @author Haqmar
  */
 $messages['ba'] = array(
 	'ratedpages' => 'Уҡыусылар баһалаған биттәр',
+	'ratedpages-leg' => 'Байтаҡ баһалау һаны булған  биттәрҙе табырға',
+	'ratedpages-list' => 'Түбәндә — уҡыусылар тарафынан баһалауҙар һаны буйынса тәртипкә килтерелгән биттәр исемлеге.',
+	'ratedpages-none' => 'Исемлектә бер бит тә юҡ.',
+	'ratedpages-graphs' => 'баһа тураһында мәғлүмәт',
 	'ratedpages-count' => '$1 {{PLURAL:$1|баһа|баһа}}',
 );
 

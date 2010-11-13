@@ -187,23 +187,38 @@ $messages['arz'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Assele
  * @author Haqmar
  */
 $messages['ba'] = array(
 	'ratinghistory' => 'Битте баһалау тарихы',
+	'ratinghistory-leg' => '[[:$1|$1]] битен баһалау тарихы мәғлүмәте',
 	'ratinghistory-tab' => 'баһа',
 	'ratinghistory-link' => 'Бит баһаһы',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Был битте баһалауға ваҡыт табыуығыҙ өсөн рәхмәт!</font>''",
 	'ratinghistory-period' => 'Ваҡыт:',
 	'ratinghistory-month' => 'һуңғы ай',
 	'ratinghistory-3months' => 'һуңғы 3 ай',
 	'ratinghistory-year' => 'һуңғы йыл',
 	'ratinghistory-3years' => 'һуңғы 3 йыл',
 	'ratinghistory-ave' => 'Уртаса: $1',
+	'ratinghistory-chart' => 'Бөтә ваҡыт эсендә уҡыусылар баһаһы',
 	'ratinghistory-purge' => 'кэшты таҙартырға',
+	'ratinghistory-table' => 'Уҡыусылар баһаһын байҡау',
+	'ratinghistory-users' => 'Баһа биргән ҡатнашыусылар',
+	'ratinghistory-graph' => '"$3" бите өсөн $2 ($1 {{PLURAL:$1|баһа}})',
 	'ratinghistory-svg' => 'SVG итеп күрһәтелһен',
 	'ratinghistory-table-rating' => 'Баһа',
 	'ratinghistory-table-votes' => 'Тауыштар',
+	'ratinghistory-none' => 'Әлеге ваҡытта рәсем төҙөү өсөн етәрлек уҡыусы баһалары йыйылмаған.',
 	'ratinghistory-ratings' => "'''Баһалау:''' '''(1)''' — насар; '''(2)''' — түбән; '''(3)''' — уртаса; '''(4)''' — яҡшы; '''(5)''' — бик шәп;",
+	'ratinghistory-legend' => "Түбәндә '''көнөнә баһалауҙар һаны''' <font color=\"red\">''(ҡыҙыл)''</font>, '''уртаса көнөнә баһалауҙар һаны''' <font color=\"blue\">''(күк)''</font> һәм
+'''хәҙерге уртаса баһа''' <font color=\"green\">''(йәшел)''</font> күрһәтелгән.
+'''Хәҙерге уртаса баһа''' — ул бирелгән ваҡыт арауығында һәр көн өсөн бөтә баһалауҙарҙың уртаса һаны. Баһалау:
+
+'''(1)''' — Насар; '''(2)''' — Түбән; '''(3)''' — Уртаса; '''(4)''' — Яҡшы; '''(5)''' — Бик шәп;",
+	'ratinghistory-graph-scale' => "'''Көнөнә тикшереүҙәр һаны''' <font color=\"red\">''(ҡыҙыл)''</font> ''1:\$1'' масштабында күрһәтелгән.",
+	'right-feedback' => 'Биттәрҙе баһалау өсөн баһалама формаһын ҡулланыу',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
