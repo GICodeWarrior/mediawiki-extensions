@@ -134,6 +134,8 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'htmlets-desc' => 'Déixalle introducir liñas de conversa HTML dende ficheiros usando a etiqueta <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Non se pode atopar o ficheiro HTML $1',
+	'htmlets-loadfailed' => 'Erro ao cargar o ficheiro HTML $1',
 );
 
 /** Swiss German (Alemannisch)
@@ -183,6 +185,8 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'htmlets-desc' => 'Permitte incorporar fragmentos HTML ab files per medio del etiquetta <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Non pote trovar le file HTML $1',
+	'htmlets-loadfailed' => 'Falleva de cargar le file HTML $1',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -226,6 +230,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'htmlets-desc' => 'Дозволува вметнување на HTML снипети (парчиња код) во самиот текст од податоци кои ја користат ознаката <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Не можам да ја пронајдам HTML-податотеката $1',
+	'htmlets-loadfailed' => 'Не успеав да ја вчитам HTML-податотеката $1',
 );
 
 /** Marathi (मराठी)
