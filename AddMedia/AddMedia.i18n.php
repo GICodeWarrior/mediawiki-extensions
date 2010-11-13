@@ -5511,6 +5511,7 @@ $messages['lb'] = array(
 	'mwe-ignore-any-warnings' => 'All Warnungen ignoréieren',
 	'mwe-i-would-like-to' => 'Ech wëll',
 	'mwe-upload-own-file' => 'Mäin eegent Wierk op $1 eroplueden',
+	'mwe-upload-not-my-file' => 'E Fichier op $1 eroplueden deen net mäin eegent Wierk ass',
 	'mwe-upload-in-new-win-link' => 'an enger neier Fënster oder engem neien Tab eroplueden',
 	'mwe-upload-refresh' => 'aktualiséiert Är Lëscht vum Eroplueden',
 	'mwe-upload-in-progress' => 'Eroplueden amgaang (maacht dës Fënster net zou)',
@@ -5528,6 +5529,7 @@ $messages['lb'] = array(
 	'rsd_no_results' => 'Kee Resultat bäi der Sich no <b>$1</b>',
 	'mwe-upload_tab' => 'Fichier eroplueden',
 	'rsd_layout' => 'Layout:',
+	'rsd_resource_edit' => 'Quell änneren: $1',
 	'mwe-resource_description_page' => 'Beschreiwungssäit vun der Quell',
 	'mwe-link' => 'Link',
 	'rsd_do_insert' => 'Drasetzen',
@@ -10097,7 +10099,9 @@ $1 登录并且$2',
 	'mwe-review-upload' => '审阅文件$1个上传',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Pbdragonwang
+ */
 $messages['zh-hant'] = array(
 	'mwe-upload-stats-fileprogress' => '$2中的$1',
 	'mwe-upload-unknown-size' => '未知大小',
@@ -10119,6 +10123,7 @@ $messages['zh-hant'] = array(
 	'mwe-filesource' => '來源：',
 	'mwe-filestatus' => '版權狀態：',
 	'mwe-loading-add-media-wiz' => '正在加載添加媒體嚮導',
+	'fogg-wont-upload-to-server' => '注意：你的影像檔案需要重新編碼，無法上傳到任何伺服器。',
 	'fogg-save_local_file' => '保存Ogg',
 	'fogg-help-sticky' => '幫助（點擊粘貼）',
 	'fogg-cg-preset' => '預設：<strong>$1</strong>',
@@ -10131,5 +10136,15 @@ $messages['zh-hant'] = array(
 	'fogg-webvideo-desc' => '網絡視頻Theora或Vorbis編碼400 kbit/s，最寬400相素',
 	'fogg-savebandwidth-desc' => '低帶寬Theora或Vorbis編碼164 kbit/s，最寬200相素',
 	'fogg-highquality-desc' => '高質量Theora或Vorbis編輯，最寬1080相素',
+	'fogg-webvideo-webm-desc' => 'WebM網頁影片 VP8 (600 kbit/s以及最大寬度480px)',
+	'fogg-highquality-webm-desc' => 'WebM高品質的VP8（最大寬度1080px）',
+	'fogg-videoQuality-title' => '影片品質',
+	'fogg-videoQuality-help' => '用來設置已編碼影像的<i>視覺品質</i> （如果你没有在下面的高級控制中設置bitrate的話）',
+	'fogg-starttime-title' => '開始時間',
+	'fogg-copyright-title' => '版權',
+	'fogg-license-title' => '授權',
+	'fogg-gui-title' => '製作網頁影片',
+	'mwe-upload' => '上傳檔案',
+	'mwe-summary' => '摘要',
 );
 
