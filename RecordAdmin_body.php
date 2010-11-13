@@ -115,7 +115,7 @@ class RecordAdmin {
 								hidden = document.createElement( 'input' );
 								hidden.setAttribute( 'name', key );
 								hidden.setAttribute( 'type', 'hidden' );
-								hidden.value = escape( input.value );
+								hidden.value = input.value;
 								document.getElementById( 'editform' ).appendChild( hidden );
 							}
 						}
