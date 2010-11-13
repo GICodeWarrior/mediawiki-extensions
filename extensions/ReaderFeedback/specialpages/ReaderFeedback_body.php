@@ -54,7 +54,7 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		# Get our rating dimensions
 		$this->dims = array();
 		$unsureCount = 0;
-		foreach( ReaderFeedback::getFeedbackTags() as $tag ) {
+		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
 			$this->dims[$tag] = $wgRequest->getIntOrNull( "wp$tag" );
 			if( $this->dims[$tag] === null ) { // nothing sent at all :(
 				$wgOut->redirect( $this->page->getLocalUrl() );

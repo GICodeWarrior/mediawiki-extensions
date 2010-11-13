@@ -47,7 +47,7 @@ $wgHooks['ParserFirstCallInit'][] = 'fixedImageSetup';
 
 function fixedImageSetup( &$parser ) {
 	global $wgFixedImageHooks;
-	foreach( $wgFixedImageHooks as $key ) {
+	foreach( $wgFixedImageHooks as $key => $data ) {
 		$wrapper = create_function( '$text, $params=null',
 			"return fixedImageHandler('$key', \$text, \$params);" );
 		$parser->setHook( $key, $wrapper );
