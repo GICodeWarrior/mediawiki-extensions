@@ -149,7 +149,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 									Xml::tags(
 										'h3',
 										array( 'style' => 'float:left;color:black;' ),
-										wfMsgExt( 'fundraiserstats-day', array( 'parseinline' ), $i + 1, $fundraiser['title'] )
+										wfMsgExt( 'fundraiserstats-day', array( 'parseinline' ), $wgLang->formatNum( $i + 1 ), $fundraiser['title'] )
 									) .
 									Xml::element( 'div', array( 'style' => 'clear:both;' ), '', false )
 								)
