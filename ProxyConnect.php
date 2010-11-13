@@ -16,13 +16,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['special'][] = array(
+	'path' => __FILE__,
 	'name' => 'ProxyConnect',
-	'version' => '1.0',
+	'version' => '1.0.1',
 	'author' => 'Travis Derouin',
-	'description' => 'Implements the server side functionality of Proxy Connect',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ProxyConnect',
+	'descriptionmsg' => 'proxyconnect-desc',
 );
 
 // Set up the new special page
 $wgSpecialPages['ProxyConnect'] = 'ProxyConnect';
-$wgAutoloadClasses['ProxyConnect'] = dirname( __FILE__ ) . '/ProxyConnect.body.php';
+
+$dir = dirname( __FILE__ );
+$wgAutoloadClasses['ProxyConnect'] =  $dir. '/ProxyConnect.body.php';
+$wgExtensionMessagesFiles['ProxyConnect'] = $dir . '/ProxyConnect.i18n.php';
+
