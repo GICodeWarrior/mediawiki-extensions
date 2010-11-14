@@ -1767,7 +1767,12 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'patrol-revert' => 'Vrni',
 	'patrol-revert-reason' => 'Razlog:',
+	'patrol-skip' => 'Preskoči',
+	'patrol-reverting' => 'Vračanje: $1',
+	'patrol-reverted-ok' => 'Urejanje je bilo vrnjeno.',
+	'patrol-reverted-failed' => 'Urejanja ni bilo mogoče vrniti.',
 	'group-patroller' => 'Nadzorniki',
 	'group-patroller-member' => 'nadzornik',
 );
