@@ -1826,6 +1826,7 @@ Prosím vypněte <b>Firebug</b> pro tutu stránku.',
  * @author Pill
  * @author Tbleher
  * @author The Evil IP address
+ * @author ✓
  */
 $messages['de'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 von $2',
@@ -2010,7 +2011,7 @@ $messages['de'] = array(
 	'fogg-select_file' => 'Datei auswählen',
 	'fogg-select_new_file' => 'Neue Datei auswählen',
 	'fogg-select_url' => 'URL auswählen',
-	'fogg-check_for_firefogg' => 'Suche nach Firefogg …',
+	'fogg-check_for_firefogg' => 'Suche nach Firefogg…',
 	'fogg-installed' => 'Firefogg ist installiert.',
 	'fogg-not-installed' => 'Firefogg ist nicht installiert oder nicht aktiviert.',
 	'fogg-for_improved_uploads' => 'Für verbessertes Hochladen:',
@@ -9732,6 +9733,8 @@ $messages['vi'] = array(
 	'fogg-starttime-title' => 'Giây bắt đầu',
 	'fogg-endtime-title' => 'Giây kết thúc',
 	'fogg-audioQuality-title' => 'Chất lượng âm thanh',
+	'fogg-width-title' => 'Chiều rộng video',
+	'fogg-height-title' => 'Chiều cao video',
 	'fogg-novideo-title' => 'Không có video',
 	'fogg-noaudio-title' => 'Không có âm thanh',
 	'fogg-title-title' => 'Tên',
@@ -9747,9 +9750,12 @@ $messages['vi'] = array(
 	'mwe-license_cc-by-sa' => 'Creative Commons Chia sẻ tương tự (3.0)',
 	'mwe-upload' => 'Tải tập tin lên',
 	'mwe-summary' => 'Tóm lược',
+	'mwe-date-of-work' => 'Ngày tạo tác phẩm',
 	'mwe-link-login' => 'đăng nhập',
 	'mwe-watch-this-file' => 'Theo dõi tập tin này',
 	'mwe-ignore-any-warnings' => 'Bỏ qua cảnh báo',
+	'mwe-i-would-like-to' => 'Tôi muốn',
+	'mwe-upload-in-new-win-link' => 'tải lên trong cửa sổ hay thẻ mới',
 	'mwe-upload-in-progress' => 'Đang tải lên (đừng đóng cửa sổ này)',
 	'mwe-uploaded-status' => 'Tải lên xong',
 	'mwe-transcoded-status' => 'Chuyển mã',
@@ -9791,7 +9797,7 @@ $messages['vi'] = array(
 	'mwe-ftype-ogg' => 'Tập tin video Ogg',
 	'mwe-ftype-unk' => 'Định dạng tập tin không hiểu',
 	'rsd-wiki_commons' => 'Wikimedia Commons, kho tư liệu (hình ảnh, âm thanh, và video) có giấy phép mở',
-	'rsd-kaltura-title' => 'Tất cả các nguồn',
+	'rsd-kaltura-title' => 'Tìm kiếm Kaltura (tất cả các nguồn)',
 	'rsd-this_wiki-title' => 'Wiki này',
 	'rsd-this_wiki-desc' => 'Wiki địa phương',
 	'rsd-archive_org-desc' => 'Internet Archive, thư viện số chứa tạo tác văn hóa',

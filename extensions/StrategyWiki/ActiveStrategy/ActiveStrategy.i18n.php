@@ -205,6 +205,8 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'activestrategy' => 'האסטרטגיה הפעילה',
+	'active-strategy-desc' => 'הצגת מספר העריכות לדפי תכנון אסטרטגי',
+	'active-strategy-intro' => 'מספר העריכות לדפי כוח משימה ב{{PLURAL:$1|יום האחרון|־$1 הימים האחרונים}}.',
 	'nedits' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}}',
 );
 

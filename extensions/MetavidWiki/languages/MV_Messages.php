@@ -9327,6 +9327,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'mv_upload_file' => 'Naloži datoteko',
 	'mv_history' => 'Zgodovina',
 );
 

@@ -133,6 +133,13 @@ $messages['ja'] = array(
 	'wikibhasha-desc' => 'ウィキペディア英語版の記事を利用して、多言語記事を作成するアプリケーション',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wikibhasha-desc' => 'Applicatioun fir méisproocheg Inhalter op Basis vun der englescher Wikipedia ze schafen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -1769,6 +1769,7 @@ $messages['sah'] = array(
 	'expand_templates_xml_output' => 'XML тахсыыта',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Ырытыылары сот',
+	'expand_templates_remove_nowiki' => 'Түмүккэ <nowiki> бэлиэни аахсыма',
 	'expand_templates_generate_xml' => 'XML-ы мас курдук көрдөр',
 	'expand_templates_preview' => 'Инники көрүү',
 );

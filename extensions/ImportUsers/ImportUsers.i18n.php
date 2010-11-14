@@ -1722,9 +1722,25 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'importusers' => 'Uvoz uporabnikov',
+	'importusers-uploadfile' => 'Naloži datoteko',
+	'importusers-form-caption' => 'Pošiljanje datoteke CSV (UTF-8)',
+	'importusers-form-replace-present' => 'Zamenjaj obstoječe uporabnike',
 	'importusers-form-button' => 'Uvozi',
+	'importusers-user-added' => "Uporabnik '''$1''' je bil dodan.",
+	'importusers-user-present-update' => "Uporabnik '''$1''' že obstaja.
+Posodobljen.",
+	'importusers-user-present-not-update' => "Uporabnik '''$1''' že obstaja.
+Ni bil posodobljen.",
+	'importusers-log' => 'Dnevnik uvoza uporabnikov',
 	'importusers-log-summary' => 'Povzetek',
+	'importusers-log-summary-all' => 'Vsi',
+	'importusers-log-summary-added' => 'Dodani',
+	'importusers-log-summary-updated' => 'Posodobljeni',
+	'importusers-login-name' => 'Prijavno ime',
 	'importusers-password' => 'geslo',
+	'importusers-email' => 'e-pošta',
+	'importusers-realname' => 'pravo ime',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

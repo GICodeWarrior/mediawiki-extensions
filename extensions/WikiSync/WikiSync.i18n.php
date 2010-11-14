@@ -414,9 +414,41 @@ a partir del version $3?',
 
 /** Japanese (日本語)
  * @author Iwai.masaharu
+ * @author 青子守歌
  */
 $messages['ja'] = array(
+	'wikisync' => 'ウィキの同期',
+	'wikisync-desc' => 'ローカルとリモートの2つのウィキ間の最近の更新を同期する[[Special:WikiSync|特別ページ]]を提供する',
+	'wikisync_direction' => '同期の方向を選択してください。',
+	'wikisync_local_root' => 'ローカルのウィキサイトのルート',
+	'wikisync_remote_root' => 'リモートのウィキサイトのルート',
+	'wikisync_remote_log' => 'リモートの操作記録',
+	'wikisync_clear_log' => '記録の消去',
+	'wikisync_login_to_remote_wiki' => 'リモートのウィキにログイン',
+	'wikisync_remote_wiki_root' => 'リモートのウィキのルート',
+	'wikisync_remote_wiki_example' => 'api.phpへのパス（例：http://www.mediawiki.org/w）',
+	'wikisync_remote_wiki_user' => 'リモートのウィキの利用者名',
+	'wikisync_remote_wiki_pass' => 'リモートのウィキのパスワード',
 	'wikisync_remote_login_button' => 'ログイン',
+	'wikisync_sync_files' => 'ファイルの同期',
+	'wikisync_store_password' => 'リモートのウィキのパスワードを保存',
+	'wikisync_synchronization_button' => '同期',
+	'wikisync_scheduler_log' => 'スケジューラーの記録',
+	'wikisync_scheduler_setup' => 'スケジューラーの設定',
+	'wikisync_scheduler_turn_on' => 'スケジューラーを有効にする',
+	'wikisync_scheduler_switch_direction' => '自動的に同期の方向を切り替え',
+	'wikisync_scheduler_time_interval' => '自動的な同期をする時間間隔（分単位）',
+	'wikisync_apply_button' => '適用',
+	'wikisync_log_imported_by' => '[[Special:WikiSync|ウィキ同期]]によりインポート',
+	'wikisync_log_uploaded_by' => '[[Special:WikiSync|ウィキ同期]]によりアップロード',
+	'wikisync_api_result_unknown_action' => '不明なAPI動作',
+	'wikisync_api_result_exception' => 'ローカルのAPI呼び出しで例外が発生しました',
+	'wikisync_api_result_noaccess' => '次のグループの利用者のみが、この操作を実行できます：$1',
+	'wikisync_api_result_invalid_parameter' => '不正な引数値',
+	'wikisync_api_result_http' => 'リモートのAPIからデータをクエリー中のHTTPエラー',
+	'wikisync_api_result_Unsupported' => '使用中のMediaWikiのバージョンはサポートされていません（1.15未満）',
+	'wikisync_api_result_NoName' => 'lgname引数は指定できません',
+	'wikisync_api_result_Illegal' => '不正な利用者名を指定しました',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
