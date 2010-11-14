@@ -157,7 +157,7 @@ class WikiSyncPage extends SpecialPage {
 					// progress explanation hint
 					array( '__tag'=>'td', 'style'=>'font-size:9pt; ', 'colspan'=>'2', '' )
 				),
-				array( '__tag'=>'tr', 'style'=>'border:1px solid gray; ',
+				array( '__tag'=>'tr', 'style'=>'border:1px solid gray; height:12px; ',
 					array( '__tag'=>'td', 'style'=>'width:0%; background-color:Gold; display: none; ', '' ),
 					array( '__tag'=>'td', 'style'=>'width:100%;', '' )
 				)
@@ -200,7 +200,6 @@ class WikiSyncPage extends SpecialPage {
 					array( '__tag'=>'td', 'colspan'=>'2',
 						// Have to explicitly set empty contents for the iframe, or we'll produce
 						// <iframe /> which browsers consider an unclosed tag
-						// todo: fix in _QXML class
 						array( '__tag'=> 'iframe', 'id'=>'wikisync_iframe', 'style' => 'width:100%; height:200px; display:none; ', '' )
 					)
 				)
@@ -232,7 +231,8 @@ class WikiSyncPage extends SpecialPage {
 		WikiSyncSetup::headScripts( $wgOut, $wgContLang->isRTL() );
 		$wgOut->setPagetitle( wfMsgHtml( 'wikisync' ) );
 		$this->initPageTpl();
-		$wgOut->addHTML( _QXML::toText( $this->page_tpl ) );
+		$wgOut->addHTML( "\n" );
+		$wgOut->addHTML( _QXML::toText( $this->page_tpl, 4 ) );
 	}
 
 } /* end of WikiSyncPage class */

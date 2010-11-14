@@ -73,7 +73,7 @@ class WikiSyncExporter extends WikiExporter {
 class WikiSyncImportReporter extends ImportReporter {
 	private $mResultArr = array();
 
-	function reportPage( $title, $origTitle, $revisionCount, $successCount ) {
+	function reportPage( $title, $origTitle, $revisionCount, $successCount, $pageInfo = '' ) {
 		// Add a result entry
 		$r = array();
 		ApiQueryBase::addTitleInfo($r, $title);
@@ -84,7 +84,7 @@ class WikiSyncImportReporter extends ImportReporter {
 		# avoid bug in 1.15.4 Special:Import (new file page text without the file uploaded)
 		# PHP Fatal error:  Call to a member function insertOn() on a non-object in E:\www\psychologos\includes\specials\SpecialImport.php on line 334
 		if ( $title->getArticleId() !== 0 ) {
-			parent::reportPage( $title, $origTitle, $revisionCount, $successCount );
+			parent::reportPage( $title, $origTitle, $revisionCount, $successCount, $pageInfo );
 		}
 	}
 
