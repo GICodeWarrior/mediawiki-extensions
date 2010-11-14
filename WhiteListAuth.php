@@ -340,11 +340,5 @@ class WhiteListHooks {
 	    }
 	    return true;
 	}
-	
-	// TODO - this is missing from Siebrand's changes
-	function CheckSchema()
-	{
-		return true;
-	}
 } /* End class */
 

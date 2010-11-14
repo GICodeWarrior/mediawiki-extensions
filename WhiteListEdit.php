@@ -108,11 +108,5 @@ function WL_doAddRestrictedPagesTab(&$personal_urls, $title ) {
 	return WhiteListHooks::AddRestrictedPagesTab($personal_urls, $title );
 }
 
-// TODO - this is missing from Siebrand's changes
-function WL_doCheckSchema() {
-	return WhiteListHooks::CheckSchema();
-}
-
 $wgHooks['PersonalUrls'][] = 'WL_doAddRestrictedPagesTab';
 $wgHooks['userCan'][] = 'WL_doCheckWhiteList';
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'WL_doCheckSchema';
