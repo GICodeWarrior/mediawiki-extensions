@@ -77,6 +77,8 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'htmlets-desc' => 'Ergänzt das <code>&lt;htmlet&gt;</code>-Tag zum Einfügen von HTML-Schnipseln',
+	'htmlets-filenotfound' => 'Die Datei $1 mit dem HTML-Code konnte nicht gefunden werden',
+	'htmlets-loadfailed' => 'Die Datei $1 mit dem HTML-Code konnte nicht geladen werden',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -123,10 +125,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Peter17
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'htmlets-desc' => 'Vous permet d’insérer en ligne des extraits de code HTML depuis les fichiers utilisant la balise <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Impossible de trouver le fichier HTML $1',
+	'htmlets-loadfailed' => 'Impossible de charger le fichier HTML $1',
 );
 
 /** Galician (Galego)
@@ -223,6 +228,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'htmlets-desc' => 'Léisst Iech HTML-Schnëppele vu Fichiere mat Hellëf vun der <code>&lt;htmlet&gt;</code> Markéierung asetzen',
+	'htmlets-filenotfound' => 'Den HTML-Fichier $1 gouf net fonnt',
+	'htmlets-loadfailed' => 'Den HTML-Fichier $1 konnt net geluede ginn',
 );
 
 /** Macedonian (Македонски)
