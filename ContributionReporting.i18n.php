@@ -2125,6 +2125,7 @@ $messages['he'] = array(
 	'contribstats-paypal-donations' => 'תרומות ב־PayPal',
 	'contribstats-credit-card' => 'כרטיס אשראי',
 	'contribstats-fraud-note' => 'קיימות כמה תרומות מזויפות.',
+	'contribstats-unaudited' => 'סך הכול לפני ביקורת.',
 	'fundraiserstatistics' => 'סטטיסטיקות ההתרמה',
 	'fundraiserstats-date' => 'תאריך',
 	'fundraiserstats-day' => 'יום $1 מתוך $2',
@@ -2137,6 +2138,7 @@ $messages['he'] = array(
 	'fundraiserstats-tab-contributions' => 'מספר התורמים',
 	'fundraiserstats-tab-averages' => 'ממוצע (USD)',
 	'fundraiserstats-tab-maximums' => 'מקסימום (USD)',
+	'fundraiserstats-tab-ytd' => 'השנה (USD)',
 );
 
 /** Croatian (Hrvatski)
