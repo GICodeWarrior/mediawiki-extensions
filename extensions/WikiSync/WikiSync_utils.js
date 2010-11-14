@@ -132,13 +132,15 @@ window.WikiSyncUtils = {
  */
 window.WikiSyncPercentsIndicator = function( id ) {
 	this.topElement = document.getElementById( id );
-	var tr1 = this.topElement.firstChild.firstChild;
+	// cannot use .firstChild here, because in FF indentation text nodes are inserted
+	// between TABLE / TR / TD
+	// (in IE8 the indentation is ignored and .firstChild worked)
+	var elements = this.topElement.getElementsByTagName( 'TD' );
 	// description line will be stored there
-	this.descriptionContainer = tr1.firstChild;
-	var tr2 = tr1.nextSibling;
+	this.descriptionContainer = elements[0];
 	// td1 and td2 are used together as percent indicators
-	this.td1 = tr2.firstChild;
-	this.td2 = this.td1.nextSibling;
+	this.td1 = elements[1];
+	this.td2 = elements[2];
 	this.reset();
 }
 
