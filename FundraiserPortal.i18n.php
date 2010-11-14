@@ -1081,6 +1081,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'fundraiserportal' => 'నిధులసేకరణ నెలవు',
+	'fundraiserportal-desc' => '"దయచేసి విరాళమివ్వండి" నెలవుని ప్రక్కపట్టీలో పైన చేరుస్తుంది.',
 	'fundraiserportal-plain-button' => 'వికీపీడియాకి తోడ్పడండి!',
 	'fundraiserportal-ruby-button' => 'విరాళమివ్వండి',
 	'fundraiserportal-rubytext-button' => 'ఇప్పుడే విరాళమివ్వండి',
