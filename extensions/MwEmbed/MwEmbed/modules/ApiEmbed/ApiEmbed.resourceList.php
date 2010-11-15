@@ -7,4 +7,4 @@ return array(
 	'ApiEmbed' => array(
 		'loader' => array() // @@FIXME add in apiSupport
 	)
-)
+);

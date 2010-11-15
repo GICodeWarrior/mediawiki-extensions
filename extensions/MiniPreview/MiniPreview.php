@@ -113,7 +113,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 		if ( $p->entry[1]->id != 0 ) $image_titles[$p->entry[1]->title] = $p->entry[1]->title ;
 	}
 	$image_data = array();
-	wfMiniPreviewGetImageData ( $image_titles , &$image_data ) ;
+	wfMiniPreviewGetImageData ( $image_titles , $image_data ) ;
 
 	# Output
 	$mainwidth = ( $wgMiniPreviewThumbnailSize + 2 ) * 3 ;
