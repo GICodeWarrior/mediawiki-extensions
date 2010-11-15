@@ -51,10 +51,6 @@ class Article {
 		}
 	}
 
-	public function Article( $title ) {
-		$this->__construct( $title );
-	}
-
 	public function getContent() {
 		return $this->content;
 	}
