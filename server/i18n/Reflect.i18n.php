@@ -277,6 +277,32 @@ Ruef <$4> uf, wänn Du d Antwort im däm Zämmehang witt läse.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 het uf Dyy Zämmefassig vun ere Uussag reagiert.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'reflect-desc' => 'Rozšěrja móžnosće za komentarowe nitki',
+	'reflect-bulleted' => 'Witaj $1,
+
+$2 je wuprajenje wot tebje z nitki "$3" zjał.
+
+Zjeće je: "$5".
+
+Móžeš kontrolować, hač $2 je twoje wuprajenje prawje zrozumił, wopytujo <$4>.
+
+Změješ móžnosć swoje wuprajenje wujasnić, jeli je njedorozumjenje.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Twoje wuprajenje bu wot $2 zjate',
+	'reflect-responded' => 'Witaj $1,
+
+$2 je na twoje zjeće swojeho wuprajenja wotmołwił.
+
+Zjeće, kotrež sy zawostajił: "$6".
+Twoja powěsć: "$5".
+
+Jeli chceš wotmołwu w konteksće čitać, wopytaj <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 je na twoje zjeće wotmołwił',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
