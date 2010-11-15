@@ -883,6 +883,9 @@ Aceasta înseamnă că vei părăsi pagina de editare și vei pierde editările 
 	'ajaxLogin2' => 'Ești sigur?
 Vei pierde editările efectuate dacă părăsești această pagină acum.',
 	'ajaxlogin-create' => 'Creează un cont',
+	'al-nosuchuser' => 'Nu există nici un utilizator cu numele "$1". 
+Pentru numele de utilizator se face distincție între majuscule și minuscule. 
+Verificați ortografia.',
 );
 
 /** Tarandíne (Tarandíne)
