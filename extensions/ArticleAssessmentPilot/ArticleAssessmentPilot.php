@@ -7,9 +7,9 @@ $wgArticleAssessmentStaleCount = 5;
 // Array of the "ratings" id's to store. Allows it to be a bit more dynamic
 $wgArticleAssessmentRatings = array( 1, 2, 3, 4 );
 
-// Which category the pages must belong to have the rating widget added (with _ in text)
-// Extension is "disabled" if this field is an empty string (as per default configuration)
-$wgArticleAssessmentCategory = '';
+// Which categories the pages must belong to have the rating widget added (with _ in text)
+// Extension is "disabled" if this field is an empty array (as per default configuration)
+$wgArticleAssessmentCategory = array( );
 
 // Set to 'combined' or 'raw' if you need to debug this extension's JS
 $wgArticleAssessmentResourceMode = 'minified';
