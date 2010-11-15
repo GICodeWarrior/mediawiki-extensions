@@ -488,7 +488,7 @@ STYLE;
 	/**
 	 * Removes the 'createaccount' right from users if $wgFbConnectOnly is true.
 	 */
-	static function UserGetRights( &$user, &$aRights ) {
+	static function UserGetRights( $user, &$aRights ) {
 		global $wgFbConnectOnly;
 		if ( !empty( $wgFbConnectOnly ) ) {
 			foreach ( $aRights as $i => $right ) {
