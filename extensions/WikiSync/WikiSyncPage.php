@@ -72,8 +72,10 @@ class WikiSyncPage extends SpecialPage {
 							wfMsgHtml( 'wikisync_sync_files' ),
 							array( '__tag'=>'input', 'type'=>'checkbox', 'id'=>'ws_sync_files', 'name'=>'ws_sync_files', 'onchange'=>$js_blur, 'onmouseup'=>$js_blur, 'checked'=>'' ),
 							array( '__tag'=>'br', 'clear'=>'all', '' ),
-							wfMsgHtml( 'wikisync_store_password' ),
-							array( '__tag'=>'input', 'type'=>'checkbox', 'id'=>'ws_store_password', 'name'=>'ws_store_password', 'onchange'=>$js_blur, 'onmouseup'=>$js_blur )
+							array( '__tag'=>'span', 'title'=>wfMsgHtml( 'wikisync_storing_password_warning' ),
+								wfMsgHtml( 'wikisync_store_password' ),
+								array( '__tag'=>'input', 'type'=>'checkbox', 'id'=>'ws_store_password', 'name'=>'ws_store_password', 'onchange'=>$js_blur, 'onmouseup'=>$js_blur )
+							)
 						)
 					),
 					array( '__tag'=>'tr',
