@@ -74,8 +74,8 @@ if ($from =~ /^bugzilla-daemon/)
 		
 		## Set the URL to the URL found in the message body if available, else construct our own URL
 		my $url =
-			$body =~ /^http.*show_bug\.cgi.*$/m
-			? $&
+			$body =~ /^(http.*\/)show_bug\.cgi\?id=(.*)$/m
+			? "$1$2"   # short URL!
 			: "http://bugzilla.wikimedia.org/show_bug.cgi?id=$bug";
 
 		$summary =~ s/\s+/ /g; 
