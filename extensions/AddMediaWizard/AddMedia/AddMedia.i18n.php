@@ -2011,7 +2011,7 @@ $messages['de'] = array(
 	'fogg-select_file' => 'Datei auswählen',
 	'fogg-select_new_file' => 'Neue Datei auswählen',
 	'fogg-select_url' => 'URL auswählen',
-	'fogg-check_for_firefogg' => 'Suche nach Firefogg…',
+	'fogg-check_for_firefogg' => 'Suche nach Firefogg …',
 	'fogg-installed' => 'Firefogg ist installiert.',
 	'fogg-not-installed' => 'Firefogg ist nicht installiert oder nicht aktiviert.',
 	'fogg-for_improved_uploads' => 'Für verbessertes Hochladen:',
@@ -2513,6 +2513,7 @@ $messages['el'] = array(
  * @author Eliovir
  * @author Lucas
  * @author Michawiki
+ * @author Petrus Adamus
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -2587,8 +2588,8 @@ Pli pri <a target="_new" href="http://en.wikipedio.org/wiki/Frame_rate">filmer-r
 	'fogg-organization-help' => 'Nomo de organizo (studio)',
 	'fogg-copyright-title' => 'Kopirajto',
 	'fogg-copyright-help' => 'La kopirajt-statuso de la mediaĵo',
-	'fogg-license-title' => 'Permisilo',
-	'fogg-license-help' => 'La licenco de la dosiero (prefere URL de Krea Komunejo).',
+	'fogg-license-title' => 'Permesilo',
+	'fogg-license-help' => 'Permesilo de la dosiero (prefere retadreso de la Krea Komunaĵo).',
 	'fogg-contact-title' => 'Kontakto',
 	'fogg-contact-help' => 'Ligilo de kontakto',
 	'fogg-missing-webm-support' => 'Bonvolu uzi [$1 WebM-kongrua] retumilo por antaŭvidi rezultojn de WebM-videoj',
@@ -2624,7 +2625,7 @@ Post vi estas finita vian alŝutado, $2',
 	'mwe-resource_description_page' => 'Priskribo-paĝo de rimedo',
 	'mwe-link' => 'ligilo',
 	'rsd_do_insert' => 'Enmeti',
-	'mwe-cc_by_title' => 'Atribuo',
+	'mwe-cc_by_title' => 'Atribuite',
 	'mwe-cc_nc_title' => 'Ne komerca',
 	'mwe-cc_nd_title' => 'Sen derivaĵoj',
 	'mwe-cc_sa_title' => 'Samkondiĉe',

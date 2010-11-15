@@ -28,6 +28,15 @@ $messages['af'] = array(
 	'pdfbook-desc' => "Maak 'n boek van bladsye in 'n kategorie en eksporteer as 'n PDF-boek",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'pdfbook-action' => 'Друкаваць у PDF',
+	'pdfbook-log' => '$1 экспартаваная як PDF-кніга',
+	'pdfbook-desc' => 'Стварае кнігу са старонак у катэгорыі і экспартуе яе ў PDF',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

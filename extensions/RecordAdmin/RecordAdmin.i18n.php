@@ -955,6 +955,8 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'recordadmin' => 'Administracija zregistrowanjow',
 	'recordadmin-desc' => 'Pytanja, naprašowanja, formulary a rozprawy wo wikidatach z pžedłohowych parametrow',
+	'recordadmin-specialdesc' => '[[Special:RecordAdmin|Specialna strona]] za pytanje a wutworjenje stronow z pomocu zwjazanych formularow',
+	'recordadmin-noforms' => 'Tuchwilu žane formulary za pytanje a wutworjenje njejsu',
 	'recordadmin-select' => 'Wubjer typ registracijow, kotrež so maja zrjadować',
 	'recordadmin-createtype' => 'Zapodaj mjeno typa registracije, kotryž ma so wutworić',
 	'recordadmin-recordtype' => 'typ registracije',
@@ -989,6 +991,7 @@ $messages['hsb'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Žadyn "$1"',
+	'recordadmin-edit-info' => 'Tuta strona wobsahuje předłohi, kotrež maja swójske formulary, kotrež móžeš z tuteje sadźby rajtarkow wupjelnić',
 	'recordadmin-properties' => 'Kajkosće',
 );
 

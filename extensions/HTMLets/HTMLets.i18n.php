@@ -38,9 +38,12 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'htmlets-desc' => 'Дазваляе Вам выводзіць з файлаў фрагмэнты HTML з дапамогай тэга <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Немагчыма знайсьці HTML-файл $1',
+	'htmlets-loadfailed' => 'Не атрымалася загрузіць HTML-файл $1',
 );
 
 /** Breton (Brezhoneg)
@@ -176,6 +179,8 @@ $messages['hil'] = array(
  */
 $messages['hsb'] = array(
 	'htmlets-desc' => 'Zmóžnja zasunjenje HTML-kuskow z datajow z pomocu taflički <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'HTML-dataja $1 njeda so namakać',
+	'htmlets-loadfailed' => 'HTML-dataja $1 njeda so začitać',
 );
 
 /** Hungarian (Magyar)
@@ -210,9 +215,12 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'htmlets-desc' => '<code>&lt;htmlet&gt;</code> タグを使うことでファイルからHTMLの断片をインラインに埋め込むことができる',
+	'htmlets-filenotfound' => 'HTMLファイル$1が見つかりません',
+	'htmlets-loadfailed' => 'HTMLファイル$1の読み込みに失敗しました',
 );
 
 /** Colognian (Ripoarisch)
@@ -264,9 +272,12 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'htmlets-desc' => 'Lar deg bruke HTML-fragmenter fra filer ved bruk av taggen <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Finner ikke HTML-filen $1',
+	'htmlets-loadfailed' => 'Kunne ikke laste HTML-filen $1',
 );
 
 /** Occitan (Occitan)
@@ -288,6 +299,8 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'htmlets-desc' => 'At përmëtt d\'anserì djë "snippet" HTML da file an dovrand ël tag <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'As peul pa trovess ël file HTML $1',
+	'htmlets-loadfailed' => 'Falì a carié ël file HTML $1',
 );
 
 /** Portuguese (Português)
@@ -296,6 +309,8 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'htmlets-desc' => 'Permite-lhe incluir fragmentos de HTML em linha a partir de ficheiros, usando o elemento <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Não foi possível localizar o ficheiro HTML $1',
+	'htmlets-loadfailed' => 'Erro ao carregar o ficheiro HTML $1',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
