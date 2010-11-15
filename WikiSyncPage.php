@@ -169,7 +169,7 @@ class WikiSyncPage extends SpecialPage {
 	function initPageTpl() {
 		$tr_style = 'border:2px dashed lightgray; ';
 		$this->page_tpl =
-			array( '__tag'=>'table',
+			array( '__tag'=>'table', 'class'=>'wikisync_main',
 				array( '__tag'=>'tr', 'style'=>$tr_style,
 					array( '__tag'=>'td', 'colspan'=>'2', $this->initSyncDirectionTpl() )
 				),

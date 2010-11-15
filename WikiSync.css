@@ -1,3 +1,7 @@
+table.wikisync_main, table.wikisync_main > td {
+	border-collapse: collapse;
+}
+
 table.wikisync_remote_login input[type="text"], table.wikisync_remote_login input[type="password"] {
 	width: 15em;
 }
