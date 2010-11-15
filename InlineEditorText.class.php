@@ -296,7 +296,7 @@ class InlineEditorText implements Serializable {
 	 */
 	protected function buildTree( array $markingsSorted ) {
 		// create the root
-		$root = new InlineEditorRoot( &$this->wikiOriginal );
+		$root = new InlineEditorRoot( $this->wikiOriginal );
 		
 		// $workingNode is the node we're trying to add children to
 		// init it to the root node
@@ -304,7 +304,7 @@ class InlineEditorText implements Serializable {
 		
 		foreach( $markingsSorted as $marking ) {
 			// create a new node for this marking
-			$node = new InlineEditorNode( &$this->wikiOriginal, $marking );
+			$node = new InlineEditorNode( $this->wikiOriginal, $marking );
 			
 			// keep trying to add $node to $workingNode, move a level up if it fails
 			while( true )
