@@ -154,13 +154,23 @@ STYLE;
 	 * is set, then the table 'user_fbconnect' will be prefixed accordingly. Make
 	 * sure that fbconnect_table.sql is updated with the database prefix beforehand.
 	 */
-	static function LoadExtensionSchemaUpdates() {
-		global $wgDBtype, $wgDBprefix, $wgExtNewTables;
+	static function LoadExtensionSchemaUpdates( $updater = null ) {
 		$base = dirname( __FILE__ );
-		if ( $wgDBtype == 'mysql' ) {
-			$wgExtNewTables[] = array( "{$wgDBprefix}user_fbconnect", "$base/fbconnect_table.sql" );
-		} elseif ( $wgDBtype == 'postgres' ) {
-			$wgExtNewTables[] = array( "{$wgDBprefix}user_fbconnect", "$base/fbconnect_table.pg.sql" );
+		if ( $updater === null ) {
+			global $wgDBtype, $wgDBprefix, $wgExtNewTables;
+			if ( $wgDBtype == 'mysql' ) {
+				$wgExtNewTables[] = array( "{$wgDBprefix}user_fbconnect", "$base/fbconnect_table.sql" );
+			} elseif ( $wgDBtype == 'postgres' ) {
+				$wgExtNewTables[] = array( "{$wgDBprefix}user_fbconnect", "$base/fbconnect_table.pg.sql" );
+			}
+		} else {
+			if ( $updater->getDB()->getType() == 'mysql' ) {
+				$updater->addExtensionUpdate( array( 'addTable', 'user_fbconnect',
+					"$base/fbconnect_table.sql", true ) );
+			} elseif ( $updater->getDB()->getType() == 'postgres' ) {
+				$updater->addExtensionUpdate( array( 'addTable', 'user_fbconnect',
+					"$base/fbconnect_table.pg.sql", true ) );
+			}
 		}
 		return true;
 	}
