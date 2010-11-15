@@ -125,7 +125,7 @@ class CustomToolbarUploadForm extends UploadForm {
 		$this->mType = $request->getVal('type');
 		$this->mCaption = $request->getText('wpCaption');
 		$this->mSection = $request->getVal('section');
-		UploadForm::UploadForm(&$request);
+		UploadForm::UploadForm($request);
 	}
 
 	function execute() {
