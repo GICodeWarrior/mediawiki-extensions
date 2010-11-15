@@ -327,6 +327,7 @@ class CB_RootPager extends CB_AbstractPager {
 		$rp = null;
 		foreach ( $ranges as &$range ) {
 			$rp = CB_RootPager::newFromInfixTokens( $range->infix_tokens );
+			$rp->getCurrentRows();
 			if ( is_object( $rp ) && $rp->offset != -1 ) {
 				break;
 			}
