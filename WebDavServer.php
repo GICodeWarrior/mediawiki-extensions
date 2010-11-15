@@ -18,7 +18,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 	}
 
 	function options( &$serverOptions ) {
-		parent::options( &$serverOptions );
+		parent::options( $serverOptions );
 
 		if ( $serverOptions['xpath']->evaluate( 'boolean(/D:options/D:activity-collection-set)' ) ) {
 			$this->setResponseHeader( 'Content-Type: text/xml; charset="utf-8"' );
