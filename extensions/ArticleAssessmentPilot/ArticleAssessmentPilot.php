@@ -9,7 +9,7 @@ $wgArticleAssessmentRatings = array( 1, 2, 3, 4 );
 
 // Which categories the pages must belong to have the rating widget added (with _ in text)
 // Extension is "disabled" if this field is an empty array (as per default configuration)
-$wgArticleAssessmentCategory = array( );
+$wgArticleAssessmentCategories = array( );
 
 // Set to 'combined' or 'raw' if you need to debug this extension's JS
 $wgArticleAssessmentResourceMode = 'minified';

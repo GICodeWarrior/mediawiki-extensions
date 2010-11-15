@@ -88,11 +88,11 @@ class ArticleAssessmentPilotHooks {
 			return true;
 		}
 
-		global $wgArticleAssessmentCategory;
+		global $wgArticleAssessmentCategories;
 
 		// check if this page should have the form
-		if ( !count( $wgArticleAssessmentCategory )
-				|| !self::isInCategory( $title->getArticleId(), $wgArticleAssessmentCategory ) ) {
+		if ( !count( $wgArticleAssessmentCategories )
+				|| !self::isInCategories( $title->getArticleId(), $wgArticleAssessmentCategories ) ) {
 			return true;
 		}
 
@@ -162,14 +162,14 @@ class ArticleAssessmentPilotHooks {
 	}
 
 	/**
-	 * Returns whether an article is in the specified category
+	 * Returns whether an article is in the specified categories
 	 *
 	 * @param $articleId Integer: Article ID
 	 * @param $categories Array: Array of category names (without Category: prefix, with underscores)
 	 *
 	 * @return bool
 	 */
-	private static function isInCategory( $articleId, $categories ) {
+	private static function isInCategories( $articleId, $categories ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		return (bool)$dbr->selectRow( 'categorylinks', '1',
 			array(
