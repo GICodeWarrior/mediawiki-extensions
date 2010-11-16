@@ -43,7 +43,7 @@ $messages['arz'] = array(
 $messages['be-tarask'] = array(
 	'htmlets-desc' => 'Дазваляе Вам выводзіць з файлаў фрагмэнты HTML з дапамогай тэга <code>&lt;htmlet&gt;</code>',
 	'htmlets-filenotfound' => 'Немагчыма знайсьці HTML-файл $1',
-	'htmlets-loadfailed' => 'Не атрымалася загрузіць HTML-файл $1',
+	'htmlets-loadfailed' => 'Немагчыма загрузіць HTML-файл $1',
 );
 
 /** Breton (Brezhoneg)
@@ -151,6 +151,8 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'htmlets-desc' => 'Ergänzt s <code>&lt;htmlet&gt;</code>-Tag zum Yyfiege vu HTML-Schnipfel',
+	'htmlets-filenotfound' => 'D Datei $1 mit em HTML-Code isch nit gfunde wore',
+	'htmlets-loadfailed' => 'D Datei $1 mit em HTML-Code het nit chenne glade wäre',
 );
 
 /** Hebrew (עברית)
@@ -261,6 +263,8 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'htmlets-desc' => 'Voegt de tag <code>&lt;htmlet&gt;</code> toe om HTML snippets uit bestanden te kunnen gebruiken',
+	'htmlets-filenotfound' => 'Het HTML-bestand $1 is niet gevonden',
+	'htmlets-loadfailed' => 'Fout bij het laden van HTML-bestand $1',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -292,6 +296,8 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'htmlets-desc' => 'Umożliwia włączanie kodu HTML z plików przy użyciu znacznika <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Nie można odnaleźć pliku HTML $1',
+	'htmlets-loadfailed' => 'Nie można załadować pliku HTML $1',
 );
 
 /** Piedmontese (Piemontèis)
@@ -315,9 +321,12 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'htmlets-desc' => 'Permite-lhe inserir blocos de HTML a partir de arquivos usando a marca <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Não foi possível localizar o arquivo HTML $1',
+	'htmlets-loadfailed' => 'Erro ao carregar o arquivo HTML $1',
 );
 
 /** Tarandíne (Tarandíne)
@@ -332,6 +341,8 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'htmlets-desc' => 'Позволяет вам включать из файлов фрагменты HTML с помощью тега <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Не удается найти HTML-файл $1',
+	'htmlets-loadfailed' => 'Не удалось загрузить HTML-файл $1',
 );
 
 /** Slovak (Slovenčina)
