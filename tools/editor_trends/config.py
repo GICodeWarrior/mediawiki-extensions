@@ -22,56 +22,36 @@ import os
 import ConfigParser
 
 
-import settings
+import configuration
+settings = configuration.Settings()
 from utils import utils
-try:
-    from _winreg import *
-except ImportError:
-    pass
 
-def detect_windows_program(program):
-    
-    entry = settings.WINDOWS_REGISTER[program]
-    try:
-        key = OpenKey(HKEY_CURRENT_USER, entry, 0, KEY_READ)
-        return QueryValueEx(key, 'Path')[0]
-    except WindowsError:
-        return None
-
-
-def detect_installed_program(program):
-    platform = settings.OS
-    if platform == 'Windows':
-        path = detect_windows_program(program)
-        return path
-    else:
-        raise NotImplementedError
 
 
 def load_configuration(args):
     config = ConfigParser.RawConfigParser()
-    if not utils.check_file_exists(settings.WORKING_DIRECTORY, 'wiki.cfg'):
+    if not utils.check_file_exists(settings.working_directory, 'wiki.cfg'):
         working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.' % os.getcwd())
         if working_directory == '':
             working_directory = os.getcwd()
 
-        xml_file_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.' % settings.XML_FILE_LOCATION)
-        if xml_file_location == '':
-            xml_file_location = settings.XML_FILE_LOCATION
+        settings.input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.' % settings.input_location)
+        if settings.input_location == '':
+            settings.input_location = settings.input_location
 
-        create_configuration(WORKING_DIRECTORY=working_directory, XML_FILE_LOCATION=xml_file_location)
+        create_configuration(working_directory=working_directory, input_location=settings.input_location)
 
     config.read('wiki.cfg')
-    settings.WORKING_DIRECTORY = config.get('file_locations', 'WORKING_DIRECTORY')
-    settings.XML_FILE_LOCATION = config.get('file_locations', 'XML_FILE_LOCATION')
+    settings.working_directory = config.get('file_locations', 'working_directory')
+    settings.input_location = config.get('file_locations', 'xml_file_location')
 
 
 def create_configuration(**kwargs):
-    working_directory = kwargs.get('WORKING_DIRECTORY', settings.WORKING_DIRECTORY)
+    working_directory = kwargs.get('working_directory', settings.working_directory)
     config = ConfigParser.RawConfigParser()
     config.add_section('file_locations')
-    config.set('file_locations', 'WORKING_DIRECTORY', working_directory)
-    config.set('file_locations', 'XML_FILE_LOCATION', kwargs.get('XML_FILE_LOCATION', settings.XML_FILE_LOCATION))
+    config.set('file_locations', 'working_directory', working_directory)
+    config.set('file_locations', 'settings.input_location', kwargs.get('settings.input_location', settings.input_location))
 
     fh = utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
     config.write(fh)
