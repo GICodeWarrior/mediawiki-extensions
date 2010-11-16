@@ -18,7 +18,8 @@ __date__ = '2010-10-21'
 __version__ = '0.1'
 
 from utils import utils
-import settings
+import configuration
+settings = configuration.Settings()
 
 
 def convert_html_entities(text):
@@ -27,7 +28,7 @@ def convert_html_entities(text):
 
 def extract_text(elem, kwargs):
     if elem != None and elem.text != None:
-        return elem.text.decode(settings.ENCODING)
+        return elem.text.decode(settings.encoding)
     return None
 
 

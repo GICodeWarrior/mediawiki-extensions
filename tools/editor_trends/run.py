@@ -1,5 +1,6 @@
 import os
-import settings
+import configuration
+settings = configuration.Settings()
 #from utils import namespace_downloader as nd
 #nd.launch_downloader()
 
@@ -28,8 +29,8 @@ import settings
 #from database import launcher
 #launcher.launcher()
 from utils import sort
-input = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'txt')
-output = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'sorted')
+input = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
+output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
 dbname = 'enwiki'
 #sort.debug_mergesort_feeder(input, output)
 #sort.mergesort_launcher(input, output)
@@ -43,7 +44,8 @@ from analyses import cohort_charts
 cohort_charts.prepare_cohort_dataset()
 import os
 
-import settings
+import configuration
+settings = configuration.Settings()
 #from utils import namespace_downloader as nd
 #nd.launch_downloader()
 
@@ -71,10 +73,10 @@ import settings
 
 #from database import launcher
 #launcher.launcher()
-from utils import sort
-input = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'txt')
-output = os.path.join(settings.XML_FILE_LOCATION, 'en', 'wiki', 'sorted')
+from etl import loader
+input = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
+output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
 dbname = 'enwiki'
 #sort.debug_mergesort_feeder(input, output)
 #sort.mergesort_launcher(input, output)
-sort.mergesort_external_launcher(dbname, output, output)
+loader.mergesort_external_launcher(dbname, output, output)

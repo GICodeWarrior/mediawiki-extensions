@@ -1,5 +1,6 @@
 import re
-import settings
+import configuration
+settings = configuration.Settings()
 
 try:
     import psyco
@@ -28,7 +29,7 @@ def open_file_handles():
                'name.txt': fh3
                }
     for handle, var in handles.iteritems():
-        var = codecs.open(handle, 'w', encoding=settings.ENCODING)
+        var = codecs.open(handle, 'w', encoding=settings.encoding)
     
     return handles
 
