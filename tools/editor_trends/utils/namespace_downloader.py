@@ -19,19 +19,20 @@ __version__ = '0.1'
 
 import languages
 import dump_downloader as dd
-import settings
+import configuration
+settings = configuration.Settings()
 
-PATH = '/w/api.php?action=query&meta=siteinfo&siprop=namespaces|namespacealiases&format=json'
-LOCATION = settings.NAMESPACE_LOCATION
+
 
 def retrieve_json_namespace():
+    path = '/w/api.php?action=query&meta=siteinfo&siprop=namespaces|namespacealiases&format=json'
     visited = set()
     for language in languages.MAPPING:
         language = languages.MAPPING[language]
         filename = '%s_ns.json' % language
         if language not in visited:
             domain = 'http://%s.wikipedia.org' % language   
-            dd.download_wiki_file(domain, PATH, filename, LOCATION, 'w', True)
+            dd.download_wiki_file(domain, path, filename, settings.namespace_location, 'w', True)
         visited.add(language)
 
     

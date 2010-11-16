@@ -31,9 +31,11 @@ import codecs
 import os
 import ctypes
 
-import settings
+import configuration
+settings = configuration.Settings()
 import exceptions
 
+settings = configuration.Settings()
 
 try:
     import psyco
@@ -100,7 +102,7 @@ def track_errors(xml_buffer, error, file, messages):
 
 
 def report_error_messages(messages, function):
-    store_object(messages, settings.ERROR_MESSAGE_FILE_LOCATION, function.func_name)
+    store_object(messages, settings.log_location, function.func_name)
     errors = messages.keys()
     for error in errors:
         for key, value in messages[error].iteritems():
@@ -165,7 +167,7 @@ def determine_file_mode(extension):
     Checks if a given extension is an ASCII extension or not. The settings file
     provides known ASCII extensions. 
     '''
-    if extension in settings.ASCII:
+    if extension in settings.ascii_extensions:
         return 'w'
     else:
         return 'wb'
@@ -178,10 +180,10 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
     @fh is a handle to an open text
     
     The calling function is responsible for:
-        1) writing a newline
-        2) closing the filehandle
+        1) closing the filehandle
     '''
     tab = False
+    wrote_newline = None
     if recursive:
         recursive = False
     for x, d in enumerate(data):
@@ -189,11 +191,16 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
             fh.write('\t')
         if type(d) == type([]):
             recursive = write_list_to_csv(d, fh, recursive=True, newline=False)
+            #when there is a list of lists but no other elements in the first list
+            #then write a newline. 
+            if len(d) == len(data[x]):
+                fh.write('\n')
         elif type(d) == type({}):
             tab = write_dict_to_csv(d, fh, write_key=False, newline=newline)
         else:
             fh.write('%s' % d)
             tab = True
+
     if recursive:
         tab = False
         return True
@@ -402,9 +409,5 @@ def humanize_time_difference(seconds_elapsed):
                     return '%s %s and %s %s' % (obs[0][1], obs[0][0], obs[1][1], obs[1][0])
 
 
-def debug():
-    #dt = humanize_time_difference(64)
-    #print dt
-    check_if_process_is_running(3012)
 if __name__ == '__main__':
     debug()

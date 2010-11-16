@@ -24,7 +24,8 @@ import httplib
 
 import progressbar
 
-import settings
+import configuration
+settings = configuration.Settings()
 import utils
 
 
@@ -63,7 +64,7 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
     chunk = 4096
     filesize = determine_remote_filesize(domain, path + filename)
     if filemode == 'w':
-        fh = utils.create_txt_filehandle(location, filename, filemode, settings.ENCODING)
+        fh = utils.create_txt_filehandle(location, filename, filemode, settings.encoding)
     else:
         fh = utils.create_binary_filehandle(location, filename, 'wb')
 
@@ -105,4 +106,4 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
 
 if __name__ == '__main__':
     pbar = progressbar.ProgressBar()
-    download_wp_dump('http://download.wikimedia.org/enwiki/latest', 'bla.xml', settings.XML_FILE_LOCATION, pbar)
+    download_wp_dump('http://download.wikimedia.org/enwiki/latest', 'bla.xml', settings.input_location, pbar)

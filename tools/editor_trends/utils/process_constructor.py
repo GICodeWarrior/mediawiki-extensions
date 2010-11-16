@@ -19,8 +19,12 @@ __version__ = '0.1'
 
 from multiprocessing import Process, Queue, JoinableQueue
 from Queue import Empty
+import sys
 
-import settings
+
+sys.path.append('..')
+import configuration
+settings = configuration.Settings()
 import utils
 import models
 
@@ -70,7 +74,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
         else:
             result_queues[i] = False
 
-    if settings.PROGRESS_BAR:
+    if settings.progress_bar:
         size = sum([input_queues[q].qsize() for q in input_queues])
         pbar = progressbar.ProgressBar(maxval=size).start()
         kwargs['pbar'] = pbar
