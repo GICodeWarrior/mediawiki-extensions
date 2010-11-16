@@ -1,4 +1,5 @@
-local first_ten "edits_1 edits_2 edits_3 edits_4 edits_5 edits_6 edits_7 edits_8 edits_9 edits_10 final_edit"
+insheet using "C:\Users\diederik.vanliere\workspace\editor_trends\datasets\enwiki_long_editors.csv"
+local first_ten "edits_1 edits_2 edits_3 edits_4 edits_5 edits_6 edits_7 edits_8 edits_9 edits_10 final_edit first_edit"
 
 foreach edit of local first_ten { 
 	gen date2 = date(`edit', "YMDhms")
@@ -8,6 +9,7 @@ foreach edit of local first_ten {
 }
 
 generate year_left = year(final_edit)
+generate year_joined = year(first_edit)
 sort year_joined
 by year_joined: gen community_size_t = _N
 
@@ -22,12 +24,6 @@ forvalues t = 1(1)10{
 	local t1 = `t'+1
 	gen retention200`t' = community_size_200`t1' / community_size_200`t'
 }
-
-
-
-
-
-
 
 generate time_to_new_wp = edits_10 - edits_1
 generate active_time_wp = final_edit - edits_10
