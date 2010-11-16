@@ -226,6 +226,7 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'patrol' => 'Патруляваныя рэдагаваньні',
@@ -234,7 +235,7 @@ $messages['be-tarask'] = array(
 	'patrol-revert' => 'Адмяніць',
 	'patrol-revert-reason' => 'Прычына:',
 	'patrol-skip' => 'Прапусьціць',
-	'patrol-reverting' => 'Адмена: $1',
+	'patrol-reverting' => 'Адкат: $1',
 	'patrol-nonefound' => 'Немагчыма знайсьці адпаведныя рэдагаваньні для патруляваньня.',
 	'patrol-endorsed-ok' => 'Рэдагаваньне было пазначанае як патруляванае.',
 	'patrol-endorsed-failed' => 'Рэдагаваньне ня можа быць пазначанае як патруляванае.',
@@ -1260,8 +1261,11 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'patrol' => 'തിരുത്തലുകളിൽ റോന്തു ചുറ്റുക',
+	'patrol-desc' => 'ജോലിഭാര പങ്ക് വെയ്ക്കൽ ഉള്ള മെച്ചപ്പെട്ട റോന്ത് ചുറ്റൽ സമ്പർക്കമുഖം',
+	'patrol-endorse' => 'അംഗീകാരം നൽകുക',
 	'patrol-revert' => 'പൂർവ്വസ്ഥിതിയിലാക്കുക',
 	'patrol-revert-reason' => 'കാരണം:',
+	'patrol-skip' => 'മറികടക്കുക',
 	'patrol-reverting' => 'പൂർവ്വസ്ഥിതിയിലാക്കുന്നു: $1',
 	'patrol-nonefound' => 'റോന്തു ചുറ്റുന്നതിനു അനുയോജ്യമായ തിരുത്തലുകൾ കണ്ടില്ല.',
 	'patrol-endorsed-ok' => 'ഈ തിരുത്തൽ റോന്തു ചുറ്റപ്പെട്ടതായി രേഖപ്പെടുത്തി.',
@@ -1269,7 +1273,7 @@ $messages['ml'] = array(
 	'patrol-reverted-ok' => 'ഈ തിരുത്തൽ തിരസ്ക്കരിച്ചിരിക്കുന്നു.',
 	'patrol-reverted-failed' => 'ഈ തിരുത്തൽ തിരസ്ക്കരിക്കുവാൻ സാദ്ധ്യമല്ല.',
 	'patrol-skipped-ok' => 'തിരുത്തൽ അവഗണിക്കുന്നു.',
-	'patrol-reasons' => '* ലഘുവായ വാൻഡലിസം
+	'patrol-reasons' => '* ലഘുവായ നശീകരണപ്രവർത്തനം
 * പുതുമുഖത്തിന്റെ പരീക്ഷണം
 * സം‌വാദം താൾ കാണുക',
 	'patrol-another' => '* ലഭ്യമാണെങ്കിൽ മറ്റൊരു തിരുത്തൽ കാണിക്കുക.',

@@ -2734,6 +2734,14 @@ $messages['pdc'] = array(
 	'whitelistnever' => 'nie net',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'mywhitelistpages' => 'Mai Saire',
+	'whitelisttableedit' => 'Bearwaide',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad

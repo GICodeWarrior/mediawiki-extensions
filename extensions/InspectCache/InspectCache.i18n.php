@@ -792,6 +792,13 @@ $messages['pdc'] = array(
 	'inspectcache-list' => 'Lischt',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'inspectcache-delete' => 'Lesche',
+);
+
 /** Polish (Polski)
  * @author Masti
  * @author McMonster

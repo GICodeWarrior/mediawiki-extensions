@@ -5175,6 +5175,13 @@ $messages['pdc'] = array(
 	'wikilog-page-lc' => 'Blatt',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'wikilog-edit-lc' => 'bearwaide',
+);
+
 /** Polish (Polski)
  * @author Odder
  * @author Sp5uhe

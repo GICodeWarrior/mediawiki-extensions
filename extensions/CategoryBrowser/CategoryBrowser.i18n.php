@@ -674,6 +674,45 @@ $messages['he'] = array(
 	'cb_edit_remove_hint' => 'מחיקה, אם ניתן',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'categorybrowser' => 'Wobhladowak kategorijow',
+	'categorybrowser-desc' => 'Steji [[Special:CategoryBrowser|specialnu stronu]] k dispoziciji, zo bychu so najbóle woblubowane kategorije wufiltrowali a zo by z pomocu AJAX-powjercha nawigowało',
+	'cb_requires_javascript' => 'Kategorijowy wobhladowak trjeba JavaScript, zo by we wobhladowaku fungował.',
+	'cb_ie6_warning' => 'Editor za wuměnjenja w Internet Explorer 6.0 abo staršich wersijach njefunguje.
+Ale, přehladowanje z předdefinowanymi wuměnjenjemi měło normalnje fungować.
+Prošu změń abo zaktualizuj swój wobhladowak, jeli móžno.',
+	'cb_show_no_parents_only' => 'Jenož kategorije pokazać, kotrež nadrjadowane kategorije nimaja.',
+	'cb_cat_name_filter' => 'Kategoriju po mjenje pytać',
+	'cb_cat_name_filter_clear' => 'Kliknyć, zo by so filter po kategorijowym mjenje wotstronił',
+	'cb_cat_name_filter_ci' => 'Njedźiwajo na wulkopisanje',
+	'cb_copy_line_hint' => 'Za kopěrowanje a zasunjenje operatorow do wubraneho wuraza tłóčatce [+] a [>+] wužiwać',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|kategorija|kategoriji|kategorije|kategorijow}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|strona|stronje|strony|stronow}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|dataja|dataji|dataje|datajow}}',
+	'cb_has_parentcategories' => 'nadrjadowane kategorije (jeli tajke su)',
+	'cb_previous_items_link' => 'Předchadna',
+	'cb_next_items_link' => 'Přichodna',
+	'cb_next_items_stats' => '(z $1)',
+	'cb_cat_subcats' => 'podkategorije',
+	'cb_cat_pages' => 'strony',
+	'cb_cat_files' => 'dataje',
+	'cb_apply_button' => 'Nałožić',
+	'cb_all_op' => 'Wšě',
+	'cb_or_op' => 'abo',
+	'cb_and_op' => 'a',
+	'cb_edit_left_hint' => 'Dolěwa přesunyć, jeli móžno',
+	'cb_edit_right_hint' => 'Doprawa přesunyć, jeli móžno',
+	'cb_edit_remove_hint' => 'Wušmórnyć, jeli móžno',
+	'cb_edit_copy_hint' => 'Operator do mjezyskłada kopěrować',
+	'cb_edit_append_hint' => 'Operator na poslednjej poziciji zasunyć',
+	'cb_edit_clear_hint' => 'Aktualny wuraz wotstronić (wšě wubrać)',
+	'cb_edit_paste_hint' => 'Operator na aktualnej poziciji zasunyć, jeli móžno',
+	'cb_edit_paste_right_hint' => 'Operator na přichodnej poziciji zasunyć, jeli móžno',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

@@ -238,6 +238,13 @@ Begira {{PLURAL:$2|ezazu lotutako orrialde hau|itzazu lotutako orrialde hauek}}:
 	'editsimilar-link-disable' => 'hobespenak ezarri',
 );
 
+/** Persian (فارسی)
+ * @author ZxxZxxZ
+ */
+$messages['fa'] = array(
+	'editsimilar-link-disable' => 'تنظیم ترجیحات',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix <jack@countervandalism.net>
  * @author Mobe

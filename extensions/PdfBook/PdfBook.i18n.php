@@ -29,12 +29,13 @@ $messages['af'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'pdfbook-action' => 'Друкаваць у PDF',
-	'pdfbook-log' => '$1 экспартаваная як PDF-кніга',
-	'pdfbook-desc' => 'Стварае кнігу са старонак у катэгорыі і экспартуе яе ў PDF',
+	'pdfbook-action' => 'Друкаваць у фармаце PDF',
+	'pdfbook-log' => '$1 экспартаваная як кніга ў фармаце PDF',
+	'pdfbook-desc' => 'Стварае кнігу са старонак у катэгорыі і экспартуе яе ў фармат PDF',
 );
 
 /** Breton (Brezhoneg)

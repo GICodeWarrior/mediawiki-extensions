@@ -238,6 +238,18 @@ $messages['mk'] = array(
 	'ts-kml-on-ol-map-by' => 'Карта:',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'ts-kml-on-ol-options' => 'ഐച്ഛികങ്ങൾ',
+	'ts-kml-on-ol-languages' => 'ഭാഷകൾ',
+	'ts-kml-on-ol-thumbnails' => 'ലഘുചിത്രങ്ങൾ',
+	'ts-kml-on-ol-help' => 'സഹായം',
+	'ts-kml-on-ol-all' => 'എല്ലാം',
+	'ts-kml-on-ol-map-by' => 'ഭൂപട ഉടമ',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

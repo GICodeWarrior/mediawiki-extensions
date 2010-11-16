@@ -200,6 +200,7 @@ $4',
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'todo' => 'Сьпіс заданьняў',
@@ -227,6 +228,7 @@ $4',
 	'todo-list-change' => 'Зьмяніць',
 	'todo-list-cancel' => 'Адмяніць',
 	'todo-new-item' => 'Новае заданьне',
+	'todo-not-updated' => 'Немагчыма абнавіць запіс базы зьвестак',
 	'todo-issue-summary' => 'Агульная колькасьць:',
 	'todo-form-details' => 'Падрабязнасьці:',
 	'todo-form-email' => 'Каб атрымліваць паведамленьні пра выкананьні заданьняў па электроннай пошце, упішыце сюды свой адрас электроннай пошты:',
@@ -829,6 +831,7 @@ $4',
 	'todo-list-change' => 'Ändere',
 	'todo-list-cancel' => 'Abbräche',
 	'todo-new-item' => 'Neije Yytrag',
+	'todo-not-updated' => 'Dr Datensatz het nit chenne aktualisiert wäre in dr Datebank',
 	'todo-issue-summary' => 'Zämmefassig vum Uftrag:',
 	'todo-form-details' => 'Detail:',
 	'todo-form-email' => 'Gib Dyy E-Mail-Adräss yy go ne Benochrichtigung iberchu, wänn dr Yytrag zuegmacht woren isch:',
@@ -1068,6 +1071,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'todo' => 'ToDo一覧',
@@ -1095,6 +1099,7 @@ $4',
 	'todo-list-change' => '変更',
 	'todo-list-cancel' => '中止',
 	'todo-new-item' => '新規項目',
+	'todo-not-updated' => 'データベースレコードを更新できませんでした',
 	'todo-issue-summary' => '課題要約:',
 	'todo-form-details' => '詳細:',
 	'todo-form-email' => '項目が完了した際に電子メールで通知を希望するなら、あなたのアドレスをここに入力してください:',
@@ -1401,6 +1406,7 @@ $4',
 	'todo-list-change' => 'Wijzigen',
 	'todo-list-cancel' => 'Annuleren',
 	'todo-new-item' => 'Nieuw item',
+	'todo-not-updated' => 'Het databaserecord kon niet bijgewerkt worden',
 	'todo-issue-summary' => 'Samenvatting onderwerp:',
 	'todo-form-details' => 'Details:',
 	'todo-form-email' => 'Voer hier uw e-mailadres in om een melding te krijgen als dit onderwerp wordt gesloten:',
@@ -1668,6 +1674,7 @@ $4",
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'todo' => 'Lista de tarefas',
@@ -1695,6 +1702,7 @@ $4',
 	'todo-list-change' => 'Alterar',
 	'todo-list-cancel' => 'Cancelar',
 	'todo-new-item' => 'Novo item',
+	'todo-not-updated' => 'Não foi possível atualizar o registro na base de dados',
 	'todo-issue-summary' => 'Sumário do problema:',
 	'todo-form-details' => 'Detalhes:',
 	'todo-form-email' => 'Para receber uma notificação por e-mail quando este item for fechado, escreva o seu endereço aqui:',

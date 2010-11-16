@@ -4901,19 +4901,36 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author F. Cosoleto
  * @author Gianfranco
  */
 $messages['it'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 di $2',
 	'mwe-upload-unknown-size' => 'Dimensione sconosciuta',
+	'mwe-cancel-confim' => 'Sei sicuro di voler annullare?',
+	'mwe-uploaderror' => 'Errore nel caricamento',
+	'mwe-uploadwarning' => 'Avviso di caricamento',
+	'mwe-unknown-error' => 'Errore sconosciuto:',
+	'mwe-return-to-form' => 'Torna al modulo',
 	'mwe-file-exists-duplicate' => 'Questo file è un duplicato del seguente file:',
+	'mwe-fileexists' => 'Un file con questo nome esiste già. 
+Controlla <b><code>$1</code></b> e verifica scrupolosamente che davvero si debba sostituirlo.',
+	'mwe-ignorewarning' => "Ignora l'avviso e salva comunque il file",
+	'mwe-upload-misc-error' => 'Errore di caricamento sconosciuto',
+	'mwe-thumbnail-more' => 'Ingrandisci',
+	'mwe-filesource' => 'Fonte:',
+	'mwe-filestatus' => 'Informazioni sul copyright:',
 	'fogg-preset-custom' => 'Impostazioni personalizzate',
+	'fogg-videoQuality-title' => 'Qualità video',
 	'fogg-audioQuality-title' => 'Qualità audio',
 	'fogg-width-title' => 'Larghezza video',
 	'fogg-width-help' => 'Ridimensiona alla larghezza indicata.',
 	'fogg-height-title' => 'Altezza video',
 	'fogg-height-help' => "Ridimensiona all'altezza indicata.",
 	'fogg-title-title' => 'Titolo',
+	'fogg-date-title' => 'Data',
+	'fogg-location-title' => 'Località',
 	'fogg-license-title' => 'Licenza',
 	'mwe-upload-in-progress' => 'Caricamento in corso (non chiudere la finestra)',
 	'mwe-uploaded-status' => 'Caricato',
@@ -4931,7 +4948,7 @@ $messages['it'] = array(
 	'mwe-ftype-oga' => 'file audio Ogg',
 	'mwe-ftype-ogg' => 'file video Ogg',
 	'mwe-ftype-unk' => 'Formato del file sconosciuto',
-	'fogg-installed' => 'Firefogg è installato',
+	'fogg-installed' => 'Firefogg è installato.',
 	'fogg-preview' => 'Anteprima video',
 	'fogg-hidepreview' => 'Nascondi anteprima',
 );
