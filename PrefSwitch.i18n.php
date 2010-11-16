@@ -4903,6 +4903,7 @@ $messages['mk'] = array(
  * @author Junaidpv
  * @author Praveenp
  * @author Shijualex
+ * @author Vssun
  */
 $messages['ml'] = array(
 	'prefswitch' => 'യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് ക്രമീകരണങ്ങൾ മാറുക',
@@ -4939,7 +4940,7 @@ $messages['ml'] = array(
 	'prefswitch-survey-answer-os-other' => 'മറ്റ് ഓപറേറ്റിങ് സിസ്റ്റം:',
 	'prefswitch-survey-answer-globaloff-yes' => 'വേണം, സവിശേഷതകൾ എല്ലാ വിക്കികളിലും പ്രവർത്തനരഹിതമാക്കുക',
 	'prefswitch-survey-question-res' => 'താങ്കളുടെ സ്ക്രീന്‍ റെസ‌ല്യൂഷന്‍ എന്താണ്?',
-	'prefswitch-title-on' => 'പുതിയ സവിശേഷതകൾ',
+	'prefswitch-title-on' => 'പുതിയത് എന്തൊക്കെ?',
 	'prefswitch-title-switched-on' => 'ആസ്വദിക്കൂ!',
 	'prefswitch-title-off' => 'പുതിയ സവിശേഷതകൾ പ്രവർത്തനരഹിതമാക്കുക',
 	'prefswitch-title-switched-off' => 'നന്ദി',
