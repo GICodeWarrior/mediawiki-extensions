@@ -384,9 +384,9 @@ $messages['gl'] = array(
 	'contributiontracking-desc' => 'Seguimento das contribucións da recadación de fondos da Wikimedia',
 	'contributiontracking' => 'Seguimento das contribucións',
 	'contrib-tracking-error' => 'Erro',
-	'contrib-tracking-error-text' => 'Formulario de proposta inválido',
+	'contrib-tracking-error-text' => 'Envío do formulario inválido',
 	'contrib-tracking-submitting' => 'Enviando ao procesador de pagamentos...',
-	'contrib-tracking-continue' => 'Se non é redirixido automaticamente, faga clic no botón para completar a súa doazón por PayPal.',
+	'contrib-tracking-continue' => 'Se non es redirixido automaticamente, fai clic no botón para completar a túa doazón por PayPal.',
 	'contrib-tracking-button' => 'Continuar',
 );
 
