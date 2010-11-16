@@ -23,14 +23,16 @@ import subprocess
 from argparse import ArgumentParser
 from argparse import RawTextHelpFormatter
 import locale
-
 import progressbar
 
-import settings
+sys.path.append('..')
+import configuration
+settings = configuration.Settings()
+
 import languages
 from utils import utils
 from utils import dump_downloader
-import split_xml_file
+from etl import chunker
 import map_wiki_editors
 import optimize_editors
 import construct_datasets
@@ -85,10 +87,11 @@ def generate_wikidump_filename(project, args):
 
 def determine_file_locations(args):
     locations = {}
-    location = get_value(args, 'location') if get_value(args, 'location') != None else settings.XML_FILE_LOCATION
+    location = get_value(args, 'location') if get_value(args, 'location') != None else settings.input_location
     project = retrieve_project(args)
     language_code = retrieve_language(args)
     locations['language_code'] = language_code
+    locations['language'] = get_value(args, 'language')
     locations['location'] = os.path.join(location, language_code, project)
     locations['project'] = project
     locations['full_project'] = retrieve_projectname(args)
@@ -96,65 +99,61 @@ def determine_file_locations(args):
     return locations
 
 
-def prepare_file_locations(location):
-    result = utils.check_file_exists(location, '')
-    if result == False:
-        utils.create_directory(os.path.join(location))
   
 
-def show_settings(args, location, filename, project, full_project, language_code):
-    project = settings.WIKIMEDIA_PROJECTS.get(project, 'wiki')
+def show_settings(args, location, filename, project, full_project, language_code, language):
+    project = settings.projects.get(project, 'wiki')
     project = project.title()
     language_map = utils.invert_dict(languages.MAPPING)
     print 'Project: %s' % (project)
-    print 'Language: %s' % language_map[language_code].decode('utf-8')
+    print 'Language: %s / %s' % (language_map[language_code].decode(settings.encoding), language.decode(settings.encoding))
     print 'Input directory: %s' % location
     print 'Output directory: %s and subdirectories' % location
 
 
-def dump_downloader_launcher(args, location, filename, project, full_project, language_code):
+def dump_downloader_launcher(args, location, filename, project, full_project, language_code, language):
     print 'dump downloader'
     pbar = get_value(args, 'progress')
-    domain = settings.WP_DUMP_LOCATION
+    domain = settings.wp_dump_location
     path = '/%s/latest/' % project
     extension = utils.determine_file_extension(filename)
     filemode = utils.determine_file_mode(extension)
     dump_downloader.download_wiki_file(domain, path, filename, location, filemode, pbar)
 
 
-def split_xml_file_launcher(args, location, filename, project, full_project, language_code):
-    print 'split_xml_file_launcher'
+def cruncher_launcher(args, location, filename, project, full_project, language_code, language):
+    print 'split_settings.input_filename_launcher'
     ext = utils.determine_file_extension(filename)
-    if ext in settings.COMPRESSION_EXTENSIONS:
+    if ext in settings.compression_extensions:
         ext = '.%s' % ext
         file = filename.replace(ext, '')
     result = utils.check_file_exists(location, file)
     if not result:
-        retcode = extract_xml_file(args, location, filename)
+        retcode = launch_zip_extractor(args, location, filename)
     else:
         retcode = 0
     if retcode != 0:
         sys.exit(retcode)
-    split_xml_file.split_xml(location, file, project, language_code)
+    chunker.split_file(location, file, project, language_code, language)
 
 
-def extract_xml_file(args, location, file):
-    path = config.detect_installed_program('7zip')
+def launch_zip_extractor(args, location, file):
+    path = settings.detect_installed_program('7zip')
     source = os.path.join(location, file)
     p = None
 
-    if settings.OS == 'Windows':
+    if settings.platform == 'Windows':
         p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)], shell=True).wait()
-    elif settings.OS == 'Linux':
+    elif settings.platform == 'Linux':
         raise NotImplementedError
-    elif settings.OS == 'OSX':
+    elif settings.platform == 'OSX':
         raise NotImplementedError
     else:
         raise exceptions.PlatformNotSupportedError
     return p
 
 
-def mongodb_script_launcher(args, location, filename, project, full_project, language_code):
+def mongodb_script_launcher(args, location, filename, project, full_project, language_code, language):
     print 'mongodb_script_launcher'
     map_wiki_editors.run_parse_editors(project, language_code, location)
 
@@ -169,21 +168,21 @@ def dataset_launcher(args, full_project):
     construct_datasets.generate_editor_dataset_launcher(project)
 
 
-def all_launcher(args, location, filename, project, full_project, language_code):
+def all_launcher(args, location, filename, project, full_project, language_code, language):
     print 'all_launcher'
     dump_downloader_launcher(args, location, filename, project, language_code)
-    split_xml_file_launcher(args, location, filename, project, language_code)
+    split_settings.input_filename_launcher(args, location, filename, project, language_code)
     mongodb_script_launcher(args, location, filename, project, language_code)
     dataset_launcher(args, location, filename, project, language_code)
 
 
 def supported_languages():
     choices = languages.MAPPING.keys()
-    choices = [c.encode(settings.ENCODING) for c in choices]
+    choices = [c.encode(settings.encoding) for c in choices]
     return tuple(choices)
 
 
-def show_languages(args, location, filename, project, full_project, language_code):
+def show_languages(args, location, filename, project, full_project, language_code, language):
     first = get_value(args, 'startswith')
     if first != None:
         first = first.title()
@@ -195,16 +194,16 @@ def show_languages(args, location, filename, project, full_project, language_cod
     for language in languages:
         try:
             if first != None and language.startswith(first):
-                print '%s' % language.decode('utf-8')
+                print '%s' % language.decode(settings.encoding)
             elif first == None:
-                print '%s' % language.decode('utf-8')
+                print '%s' % language.decode(settings.encoding)
         except UnicodeEncodeError:
             print '%s' % language
 
 
 def detect_python_version():
     version = sys.version_info[0:2]
-    if version < settings.MINIMUM_PYTHON_VERSION:
+    if version < settings.minimum_python_version:
         raise 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'
 
 def about():
@@ -238,7 +237,7 @@ def main():
     parser_download.set_defaults(func=dump_downloader_launcher)
 
     parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
-    parser_split.set_defaults(func=split_xml_file_launcher)
+    parser_split.set_defaults(func=cruncher_launcher)
 
     parser_sort = subparsers.add_parser('sort', help='By presorting the data, significant processing time reducations are achieved.')
     parser_sort.set_defaults(func=sort_launcher)
@@ -259,12 +258,12 @@ def main():
 
     parser.add_argument('-p', '--project', action='store',
                         help='Specify the Wikimedia project that you would like to download',
-                        choices=settings.WIKIMEDIA_PROJECTS.keys(),
+                        choices=settings.projects.keys(),
                         default='wiki')
 
     parser.add_argument('-o', '--location', action='store',
                         help='Indicate where you want to store the downloaded file.',
-                        default=settings.XML_FILE_LOCATION)
+                        default=settings.input_location)
 
     parser.add_argument('-f', '--file', action='store',
                         choices=file_choices,
@@ -275,11 +274,12 @@ def main():
                       help='Indicate whether you want to have a progressbar.')
 
     detect_python_version()
+    about()
     args = parser.parse_args()
     config.load_configuration(args)
     locations = determine_file_locations(args)
-    prepare_file_locations(locations['location'])
-    about()
+    #prepare_file_locations(locations['location'])
+    settings.verify_environment([locations['location']])
     show_settings(args, **locations)
     args.func(args, **locations)
 
