@@ -52,7 +52,10 @@ class RecordAdmin {
 	 * Add record forms to page edit view
 	 */
 	function onEditPage( $editPage ) {
-		global $wgOut, $wgJsMimeType, $wgStylePath;
+		global $wgOut, $wgJsMimeType, $wgStylePath, $wgRequest;
+
+		# Allow normal edit operation if 'nora' in request
+		if( $wgRequest->getText( 'nora' ) ) return true;
 
 		# Extract each of the top-level template calls in the content that have associated forms
 		# - note multiple records are now allowed in an article, but only one of each type
@@ -78,7 +81,7 @@ class RecordAdmin {
 			# Add the prefs JS for the tabset
 			#$wgOut->addScript( "<script src=\"$wgStylePath/common/prefs.js\"></script>" );
 
-			$editPage->textbox1 = str_replace( "\x07", "", $content );
+			$editPage->textbox1 = preg_replace( "|(<noinclude>)?\s*\x07+\s*(</noinclude>)?|", "", $content );
 
 			$jsFormsList = array();
 			$tabset = "<div class=\"tabset\">";
@@ -149,6 +152,9 @@ class RecordAdmin {
 			}
 		}
 
+		# Bail if no record data was posted
+		if( count( $data ) == 0 ) return true;
+
 		# Build the template syntax for the posted record data
 		$templates = '';
 		foreach( $data as $type => $values ) {
@@ -158,7 +164,8 @@ class RecordAdmin {
 		}
 
 		# Prepend the template syntax to the posted wikitext (which had them removed by onEditPage)
-		$text = $templates . $text;
+		# - wrap them in noincludes as these should never show in enbeded articles
+		$text = "<noinclude>$templates</noinclude>$text";
 		return true;
 	}
 
