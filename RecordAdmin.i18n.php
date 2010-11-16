@@ -1619,6 +1619,13 @@ $messages['pdc'] = array(
 	'recordadmin-notset' => 'Keen „$1“',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'recordadmin-editlink' => 'bearwaide',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
