@@ -3,12 +3,10 @@
  * Created on 24.6.2009
  *
  * Author: ning
- * 
- * FIXME: extension fails miserably for custom extension paths
  */
 if ( !defined( 'MEDIAWIKI' ) ) die;
 
-define( 'SMW_NM_VERSION', '0.5.2' );
+define( 'SMW_NM_VERSION', '0.5.3' );
 
 $smwgNMIP = $IP . '/extensions/SemanticNotifyMe';
 $smwgNMScriptPath = $wgScriptPath . '/extensions/SemanticNotifyMe';
@@ -131,8 +129,12 @@ function smwgNMSetupExtension() {
 	require_once( $smwgNMIP . '/includes/jobs/SMW_NMSendMailJob.php' );
 	$wgJobClasses['SMWNMRefreshJob'] = 'SMWNMRefreshJob';
 	require_once( $smwgNMIP . '/includes/jobs/SMW_NMRefreshJob.php' );
-
-	$wgAutoloadClasses['SMWNotifyProcessor'] = $smwgNMIP . '/includes/SMW_NotifyProcessor.php';
+	
+	if ( defined( 'SMW_VERSION' ) && strpos( SMW_VERSION, '1.5' ) == 0 ) {
+		$wgAutoloadClasses['SMWNotifyProcessor'] = $smwgNMIP . '/includes/SMW_NotifyProcessor.smw15.php';
+	} else {
+		$wgAutoloadClasses['SMWNotifyProcessor'] = $smwgNMIP . '/includes/SMW_NotifyProcessor.php';
+	}
 
 	$action = $wgRequest->getVal( 'action' );
 	// add some AJAX calls
@@ -152,18 +154,11 @@ function smwgNMSetupExtension() {
 	}
 
 	// Register Credits
-	$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserhook'][] = array(
-		'name' => 'Semantic&#160;NotifyMe&#160;Extension',
-		'version' => SMW_NM_VERSION,
-		'author' => array(
-			'Ning Hu',
-			'Justin Zhang',
-			'[http://smwforum.ontoprise.com/smwforum/index.php/Jesse_Wang Jesse Wang].' .
-			'Sponsored by [http://projecthalo.com Project Halo] and [http://www.vulcan.com Vulcan Inc.]'
-		),
-		'url' => 'http://wiking.vulcan.com/dev',
-		'description' => 'Notify wiki user with specified queries.'
-	);
+	$wgExtensionCredits['parserhook'][] = array(
+	'name' => 'Semantic&#160;NotifyMe&#160;Extension', 'version' => SMW_NM_VERSION,
+			'author' => "Ning Hu, Justin Zhang, [http://smwforum.ontoprise.com/smwforum/index.php/Jesse_Wang Jesse Wang], sponsored by [http://projecthalo.com Project Halo], [http://www.vulcan.com Vulcan Inc.]",
+			'url' => 'http://wiking.vulcan.com/dev',
+			'description' => 'Notify wiki user with specified queries.' );
 
 	return true;
 }
@@ -282,7 +277,7 @@ function smwfNMPreDeleteHook( &$article, &$user, &$reason ) {
 
 	return true;
 }
-function smwfNMSaveHook( &$article, &$user, &$text ) {
+function smwfNMSaveHook( &$article, &$user ) {
 	SMWNotifyProcessor::articleSavedComplete( $article->getTitle() );
 
 	return true; // always return true, in order not to stop MW's hook processing!

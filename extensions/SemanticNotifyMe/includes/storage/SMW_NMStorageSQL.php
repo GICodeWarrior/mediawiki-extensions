@@ -235,6 +235,14 @@ class NMStorageSQL {
 		wfProfileOut( $fname );
 		return $result;
 	}
+	public function cleanUp() {
+		$fname = 'NotifyMe::cleanUp';
+		wfProfileIn( $fname );
+		$db = wfGetDB( DB_MASTER );
+		$db->delete( $db->tableName( 'smw_nm_monitor' ), '*', $fname );
+		$db->delete( $db->tableName( 'smw_nm_relations' ), '*', $fname );
+		wfProfileOut( $fname );
+	}
 	public function disableNotifyState( $notify_id ) {
 		$fname = 'NotifyMe::disableState';
 		wfProfileIn( $fname );
@@ -689,7 +697,11 @@ class NMStorageSQL {
 	function getNMQueryResult( SMWQuery $query ) {
 		wfProfileIn( 'SMWSQLStore2::getNMQueryResult (SMW)' );
 		global $smwgNMIP;
-		include_once( "$smwgNMIP/includes/storage/SMW_SQLStore2_QueriesNM.php" );
+		if ( defined( 'SMW_VERSION' ) && strpos( SMW_VERSION, '1.5' ) == 0 ) {
+			include_once( "$smwgNMIP/includes/storage/SMW_SQLStore2_QueriesNM.smw15.php" );
+		} else {
+			include_once( "$smwgNMIP/includes/storage/SMW_SQLStore2_QueriesNM.php" );
+		}
 		$qe = new SMWSQLStore2QueryEngineNM( smwfGetStore(), wfGetDB( DB_SLAVE ) );
 		$result = $qe->getQueryResult( $query );
 		wfProfileOut( 'SMWSQLStore2::getNMQueryResult (SMW)' );

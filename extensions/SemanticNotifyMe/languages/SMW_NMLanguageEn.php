@@ -62,6 +62,8 @@ class SMW_NMLanguageEn extends SMW_NMLanguage {
 		'smw_nm_hint_notification_html' => '<p><b>Semantic changes from last revision:</b><br/><span style="font-size: 8pt;">$1</span></P>',
 		'smw_nm_hint_nmtable_html' => "<P><table class=\"smwtable\"><tr><th>Semantic type</th><th>Name</th><th>Action</th><th>Deleted</th><th>Added</th></tr>$1</table></P>",
 		'smw_nm_hint_item_html' => "<br/>All current items for \"<b>$1</b>\":<br/>$2<br/>",
+		'smw_nm_hint_modifier' => "\r\nThis change is from $1.",
+		'smw_nm_hint_modifier_html' => "<br/>This change is from $1.",
 
 		'smw_nm_hint_mail_title' => '[SMW Notification] Page "$1" changed, from $2',
 		'smw_nm_hint_mail_body' => "Dear Mr./Mrs. $1,\r\n$2\r\n\r\nSincerely yours,\r\nSMW NotifyMe Bot",
