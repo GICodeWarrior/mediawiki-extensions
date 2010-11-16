@@ -35,7 +35,8 @@ import sys
 import datetime
 import random
 
-import settings
+import configuration
+settings = configuration.Settings()
 import db
 from utils import utils
 
@@ -109,7 +110,7 @@ class EditorCache(object):
             return False
 
     def store(self):
-        utils.store_object(self, settings.BINARY_OBJECT_FILE_LOCATION, self.__repr__())
+        utils.store_object(self, settings.binary_location, self.__repr__())
 
     def drop_n_observations(self, n=1):
         editors_to_remove = set()

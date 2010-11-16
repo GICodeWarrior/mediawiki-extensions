@@ -21,7 +21,8 @@ import sqlite3 as sqlite
 from pymongo import Connection
 
 
-import settings
+import configuration
+settings = configuration.Settings()
 from database import db_settings
 
 
