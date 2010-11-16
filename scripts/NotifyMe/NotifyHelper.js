@@ -563,7 +563,7 @@ OBPendingIndicator.prototype = {
 		this.container = container;
 		this.pendingIndicator = document.createElement("img");
 		Element.addClassName(this.pendingIndicator, "obpendingElement");
-		this.pendingIndicator.setAttribute("src", wgServer + wgScriptPath + "/extensions/SMWHalo/skins/OntologyBrowser/images/ajax-loader.gif");
+		this.pendingIndicator.setAttribute("src", wgServer + wgScriptPath + "/extensions/SemanticNotifyMe/skins/ajax-loader.gif");
 		//this.pendingIndicator.setAttribute("id", "pendingAjaxIndicator_OB");
 		//this.pendingIndicator.style.left = (Position.cumulativeOffset(this.container)[0]-Position.realOffset(this.container)[0])+"px";
 		//this.pendingIndicator.style.top = (Position.cumulativeOffset(this.container)[1]-Position.realOffset(this.container)[1])+"px";

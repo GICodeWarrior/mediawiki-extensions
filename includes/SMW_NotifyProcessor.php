@@ -223,6 +223,7 @@ class SMWNotifyProcessor {
 
 	static public function refreshNotifyMe() {
 		wfProfileIn( 'SMWNotifyProcessor::refreshNotifyMe (SMW)' );
+		NMStorage::getDatabase()->cleanUp();
 		$notifications = NMStorage::getDatabase()->getAllNotifications();
 		foreach ( $notifications as $row ) {
 			if ( $row['enable'] ) {
@@ -1609,6 +1610,19 @@ class SMWNotifyUpdate {
 			$html_msg .= wfMsg( 'smw_nm_hint_notification_html', $this->m_userHtmlNMMsgs[$user_id] );
 			if ( isset( $this->m_userHtmlPropMsgs[$user_id] ) ) {
 				$html_msg .= wfMsg( 'smw_nm_hint_nmtable_html', $this->m_userHtmlPropMsgs[$user_id] );
+			}
+			
+			global $wgNMReportModifier, $wgUser;
+			if ( $wgNMReportModifier ) {
+				$userText = $wgUser->getName();
+				if ( $wgUser->getId() == 0 ) {
+					$page = SpecialPage::getTitleFor( 'Contributions', $userText );
+				} else {
+					$page = Title::makeTitle( NS_USER, $userText );
+				}
+				$l = '<a href="' . $page->getFullUrl() . '">' . htmlspecialchars( $userText ) . '</a>';
+				$html_msg .= wfMsg( 'smw_nm_hint_modifier_html', $l );
+				$msg .= wfMsg( 'smw_nm_hint_modifier', $wgUser->getName() );
 			}
 
 			$id = $sStore->addNotifyRSS( 'uid', $user_id, $this->m_title->getText(), $this->applyStyle( $html_msg ) );
