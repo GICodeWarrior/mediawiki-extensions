@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'proxyconnect-desc' => 'Implements the server side functionality of Proxy Connect',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'proxyconnect-desc' => 'Рэалізуе функцыянальнасьць сэрвэрнай часткі Proxy Connect',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -38,6 +45,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'proxyconnect-desc' => 'Introduce a funcionalidade de Proxy Connect do servidor',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'proxyconnect-desc' => 'Macht di serversytig Funktion Proxy Connect negli',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -68,6 +82,13 @@ $messages['mk'] = array(
 	'proxyconnect-desc' => 'Ја спроведува функцијата за опслужувачката страна на Поврзување преку застапник',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'proxyconnect-desc' => 'Implementeert de server-side functionaliteit van Proxy Connect',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -86,6 +107,13 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'proxyconnect-desc' => 'Implementa a funcionalidade de servidor do Proxy Connect',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
 	'proxyconnect-desc' => 'Implementa a funcionalidade de servidor do Proxy Connect',
 );
 
