@@ -1493,6 +1493,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1512,7 +1513,7 @@ $messages['ml'] = array(
 	'povwatch_unsubscribe' => 'അൺ‌സബ്‌സ്ക്രൈബ്',
 	'povwatch_subscribe_intro' => 'താങ്കൾ PovWatchൽ അംഗത്വം എടുത്തിട്ടില്ല.
 അംഗത്വം എടുക്കാൻ താഴെയുള്ള ബട്ടൺ ഞെക്കുക.',
-	'povwatch_subscribe' => 'സബ്‌സ്ക്രൈബ്',
+	'povwatch_subscribe' => 'വരിക്കാരാകുക',
 	'povwatch_added' => 'ചേർത്തു',
 	'right-povwatch_admin' => "മറ്റു ഉപയോക്താക്കളുടെ '''ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടിക'''യിലേക്കു താളുകൾ ചേർക്കാനുള്ള ഉപയോക്തൃ അവകാശം പരിപാലിക്കുക",
 	'right-povwatch_user' => "മറ്റു ഉപയോക്താക്കളുടെ '''ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടിക'''യിലേക്കു താളുകൾ ചേർക്കുക",
