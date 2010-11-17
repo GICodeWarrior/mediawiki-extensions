@@ -374,6 +374,13 @@ $messages['ms'] = array(
 	'addmediawizard-desc' => 'Penambah media ajaib, dibangunkan dengan kerjasama Kaltura dan Yayasan Wikimedia',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'addmediawizard-desc' => 'Поладомс медиа мастерэнть, теизь Kaltura ды "Викимедиа" Фондась вейтьсэ',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
