@@ -202,10 +202,8 @@ function export_wikipedia($searchTerm)
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_USERAGENT, 'HawPedia (mobile.wikipedia.org)');
 	curl_setopt($ch, CURLOPT_TIMEOUT, HAWPEDIA_TIMEOUT);
-	
-	// WP otherwise says: "Please provide a User-Agent header"
-	curl_setopt($ch, CURLOPT_USERAGENT, "hawpedia");
 	
 	$curlResultString = curl_exec($ch);
 	if (!is_string($curlResultString))
@@ -246,6 +244,7 @@ function uri_exists($uri)
 	curl_setopt($ch, CURLOPT_NOBODY, TRUE);
 	curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_USERAGENT, 'HawPedia (mobile.wikipedia.org)');
 	curl_setopt($ch, CURLOPT_TIMEOUT, HAWPEDIA_TIMEOUT );
 	curl_exec($ch);
 	$status = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
@@ -275,6 +274,7 @@ function search_articles($searchTerm)
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_USERAGENT, 'HawPedia (mobile.wikipedia.org)');
 	curl_setopt($ch, CURLOPT_TIMEOUT, HAWPEDIA_TIMEOUT);
 	$curlResultString = curl_exec($ch);
 	if (!is_string($curlResultString))
