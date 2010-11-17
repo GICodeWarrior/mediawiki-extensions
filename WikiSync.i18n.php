@@ -82,12 +82,13 @@ starting from revision $3?',
 	'wikisync_js_sync_end_rtl' => 'Finished the synchronization from remote wiki to local wiki at $1',
 );
 
-
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Тест
  */
 $messages['qqq'] = array(
 	'wikisync_remote_login_button' => '{{Identical|Log in}}',
+	'wikisync_apply_button' => '{{Identical|Apply}}',
 	'wikisync_api_result_WrongPluginPass' => 'Same as WrongPass, returned when an authentication plugin rather than MediaWiki itself rejected the password',
 );
 
@@ -99,14 +100,17 @@ $messages['af'] = array(
 	'wikisync_clear_log' => 'Maak logoek skoon',
 	'wikisync_sync_files' => 'Sinchroniseer lêers',
 	'wikisync_synchronization_button' => 'Sinchroniseer',
+	'wikisync_apply_button' => 'Pas toe',
 	'wikisync_api_result_Blocked' => 'Die gebruiker is geblokkeer',
 	'wikisync_js_revision' => 'Weergawe $1',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
+	'wikisync' => 'Сынхранізацыя вікі',
 	'wikisync_clear_log' => 'Ачысьціць журнал',
 	'wikisync_login_to_remote_wiki' => 'Увайсьці на аддалены вікі-сайт',
 	'wikisync_remote_wiki_root' => 'Каранёвы адрас аддаленай вікі',
@@ -126,15 +130,15 @@ $messages['be-tarask'] = array(
 	'wikisync_apply_button' => 'Ужыць',
 	'wikisync_log_imported_by' => 'Імпартаванае [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Загружанае [[Special:WikiSync|WikiSync]]',
-	'wikisync_api_result_unknown_action' => 'Невядомае дзеяньне (action) API',
-	'wikisync_api_result_exception' => 'Схопленае выключэньне падчас лякальнага выкліку API',
-	'wikisync_api_result_noaccess' => 'Удзельнікі толькі наступных групаў могуць выконваць гэтае дзеяньне: $1',
+	'wikisync_api_result_unknown_action' => 'Невядомае дзеяньне API',
+	'wikisync_api_result_exception' => 'Адбылося выключэньне падчас лякальнага выкліку API',
+	'wikisync_api_result_noaccess' => 'Гэтае дзеяньне могуць выконваць толькі ўдзельнікі наступных групаў: $1',
 	'wikisync_api_result_invalid_parameter' => 'Няслушнае значэньне парамэтра',
-	'wikisync_api_result_http' => 'Адбылася памылка HTTP падчас запыту зьвестак у аддаленага API',
+	'wikisync_api_result_http' => 'Адбылася памылка HTTP падчас запыту зьвестак праз аддаленае API',
 	'wikisync_api_result_Unsupported' => 'Вашая вэрсія MediaWiki не падтрымліваецца (меней 1.15)',
 	'wikisync_api_result_NoName' => 'Вы не пазначылі парамэтар <code>lgname</code>',
 	'wikisync_api_result_Illegal' => 'Няслушнае імя карыстальніка',
-	'wikisync_api_result_NotExists' => 'Карыстальнік з пададзеным імем не існуе',
+	'wikisync_api_result_NotExists' => 'Карыстальнік з пададзеным іменем не існуе',
 );
 
 /** Breton (Brezhoneg)
