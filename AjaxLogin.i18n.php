@@ -712,7 +712,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'ajaxlogin-desc' => 'ലോഗിൻ ചെയ്യാനും പാസ്‌വേഡ് ഓർമ്മിക്കാനും തത്സമയ പെട്ടി ഉപയോക്താക്കളെ സഹായിക്കുന്നു',
+	'ajaxlogin-desc' => 'ലോഗിൻ ചെയ്യാനും പാസ്‌വേഡ് ഓർമ്മിക്കാനും ഉപയോക്താക്കളെ സഹായിക്കുന്നു',
 	'ajaxLogin1' => 'പ്രവേശിക്കൽ പൂർണ്ണമാകാൻ, താങ്കൾ രഹസ്യവാക്ക് നൽകേണ്ടതാണ്.
 ഇത് താങ്കളെ തിരുത്തുന്ന താളിന് പുറത്തേയ്ക്ക് കൊണ്ടുപോകാനും, താങ്കളുടെ തിരുത്തൽ നഷ്ടമാകാനും കാരണമാകും.',
 	'ajaxLogin2' => 'തീർച്ചയാണോ?
@@ -874,6 +874,7 @@ Cheque se você soletrou corretamente.',
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Pixi
  */
 $messages['ro'] = array(
@@ -883,7 +884,7 @@ Aceasta înseamnă că vei părăsi pagina de editare și vei pierde editările 
 	'ajaxLogin2' => 'Ești sigur?
 Vei pierde editările efectuate dacă părăsești această pagină acum.',
 	'ajaxlogin-create' => 'Creează un cont',
-	'al-nosuchuser' => 'Nu există nici un utilizator cu numele "$1". 
+	'al-nosuchuser' => 'Nu există niciun utilizator cu numele „$1”. 
 Pentru numele de utilizator se face distincție între majuscule și minuscule. 
 Verificați ortografia.',
 );
