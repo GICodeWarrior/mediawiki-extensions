@@ -431,6 +431,7 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'commentpages-desc' => 'Прякс лемпотмонть мелень-арсемань лопанзо',
 	'nstab-comments' => 'Мельть-арьсемат',
 );
 
