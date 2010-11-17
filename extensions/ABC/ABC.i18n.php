@@ -692,10 +692,11 @@ $messages['nds-nl'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam Rhk
  * @author सरोज कुमार ढकाल
  */
 $messages['ne'] = array(
-	'abc-desc' => ' ABC संगित <code>&lt;abc&gt;</code> ढाँचावद्ध गर्नलाई ट्याग थप्छ।',
+	'abc-desc' => ' ABC संगितको प्रारुपमा <code>&lt;abc&gt;</code> ट्याग जोड़छ।',
 	'abcdownload' => 'डाउनलोड गर्ने:',
 );
 

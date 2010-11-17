@@ -865,7 +865,7 @@ $messages['ml'] = array(
 "plain", "normal", "wiki" എന്നിവയാണ് ലഭ്യമായിട്ടുള്ളത്.',
 	'article-comments-comment-missing-name-parameter' => 'പേര് ഇല്ല',
 	'article-comments-comment-missing-date-parameter' => 'അഭിപ്രായത്തിന്റെ തീയതി ഇല്ല',
-	'article-comments-no-spam' => 'ഏതോ ഒരു ഫീൽഡ് എങ്കിലും പാഴ് എഴുത്ത് ആയി കുറിച്ചിരിക്കുന്നു.',
+	'article-comments-no-spam' => 'കുറഞ്ഞത് ഒരു ഫീൽഡ് എങ്കിലും പാഴ് എഴുത്ത് ആയി അടയാളപ്പെടുത്തിയിരിക്കുന്നു.',
 	'processcomment' => 'ലേഖനത്തെക്കുറിച്ചുള്ള അഭിപ്രായം പാകപ്പെടുത്തുന്നു',
 );
 

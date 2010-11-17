@@ -1545,7 +1545,7 @@ Podeu $1, i llavors $2.",
 	'mwe-uploaded-status' => 'Carregat',
 	'mwe-transcoded-status' => 'Transcodificat',
 	'mwe-uploaded-time-remaining' => 'Temps restant: $1',
-	'mwe-upload-done' => 'La vostra càrrega <i>caldria que fos</i> accessible.',
+	'mwe-upload-done' => 'La vostra càrrega ja <i>hauria de ser</i> accessible.',
 	'mwe-add_media_wizard' => 'Afegeix un auxiliar de mitjans',
 	'mwe-media_search' => 'Cerca de mitjans',
 	'rsd_box_layout' => 'Format de la caixa',
@@ -2995,6 +2995,25 @@ $messages['eu'] = array(
 	'fogg-select_url' => 'URLa aukeratu',
 	'fogg-preview' => 'Bideoa aurreikusi',
 	'fogg-hidepreview' => 'Aurreikuspena ezkutatu',
+);
+
+/** Persian (فارسی)
+ * @author ZxxZxxZ
+ */
+$messages['fa'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 از $2',
+	'mwe-upload-unknown-size' => 'اندازهٔ نامعلوم',
+	'mwe-cancel-confim' => 'برای لغو اطمینان دارید؟',
+	'mwe-uploaderror' => 'خطای بارگذاری',
+	'mwe-uploadwarning' => 'هشدار بارگذاری',
+	'mwe-unknown-error' => 'خطای ناشناخته:',
+	'mwe-file-exists-duplicate' => 'این پرونده نسخه‌ای تکراری از ان پرونده‌است:',
+	'mwe-ignorewarning' => 'نادیده‌گرفتن هشدارها و ذخیرهٔ پرونده',
+	'mwe-upload-misc-error' => 'خطای ناشناخته در بارگذاری',
+	'mwe-thumbnail-more' => 'بزرگ کن',
+	'mwe-filesource' => 'مبدأ:',
+	'mwe-filestatus' => 'وضعیت حق تکثیر:',
+	'mwe-upload' => 'بارگذاری پرونده',
 );
 
 /** Finnish (Suomi)
@@ -6012,8 +6031,8 @@ $messages['ml'] = array(
  */
 $messages['myv'] = array(
 	'mwe-upload-unknown-size' => 'Апак содань покшолмазо',
-	'mwe-uploaderror' => '↓ Йовкстамсто ильведькс',
-	'mwe-unknown-error' => '↓ Апак содань ильведькс:',
+	'mwe-uploaderror' => 'Йовкстамсто ильведькс',
+	'mwe-unknown-error' => 'Апак содань ильведькс:',
 	'fogg-title-title' => 'Коняксозо',
 	'fogg-artist-title' => 'Теицянзо лемезэ',
 	'fogg-date-title' => 'Ковчизэ',

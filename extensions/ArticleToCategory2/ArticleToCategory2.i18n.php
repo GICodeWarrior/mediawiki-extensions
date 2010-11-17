@@ -131,6 +131,17 @@ $messages['de'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Erstellen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'articletocategory2-desc' => 'Pśidawa kuždemu bokoju zapódawańske pólo, kótarež zmóžnja napóranje nowego boka direktnje w tej kategoriji',
+	'articletocategory2-create-article-under-category-text' => 'Bok k toś tej kategoriji pśidaś',
+	'articletocategory2-create-article-under-category-button' => 'Napóraś',
+	'articletocategory2-create-category-under-category-text' => 'Kategoriju toś tej kategoriji pśidaś',
+	'articletocategory2-create-category-under-category-button' => 'Napóraś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -333,6 +344,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
+	'articletocategory2-desc' => 'ഓരോ വർഗ്ഗത്തിലും, ഒരു ഇൻപുട്ട് ബോക്സ് സ്ഥാപിച്ച് പുതിയ താൾ അതേ വർഗ്ഗത്തിൽ ഉണ്ടാക്കാൻ സഹായിക്കുന്നു',
 	'articletocategory2-create-article-under-category-text' => 'ഈ വർഗ്ഗത്തിലേയ്ക്ക് ഒരു താൾ ചേർക്കുക',
 	'articletocategory2-create-article-under-category-button' => 'സൃഷ്ടിക്കുക',
 	'articletocategory2-create-category-under-category-text' => 'ഈ വർഗ്ഗത്തിലേയ്ക്ക് ഒരു വർഗ്ഗം ചേർക്കുക',

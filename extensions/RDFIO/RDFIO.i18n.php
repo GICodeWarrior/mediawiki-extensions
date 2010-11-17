@@ -137,6 +137,19 @@ $messages['he'] = array(
 	'rdfimport' => 'יבוא RDF',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'rdfio-desc' => 'Rozšěrjena funkcionalnosć za importowanje a eksportowanje RDF, inkluziwnje kónčny dypk SPARQL, za Seamantic MediaWiki',
+	'rdfimport' => 'RDF-import',
+	'rdfio-arc2admin-desc' => 'Administraciska strona za składowak ARC2 RDF za Semantic MediaWiki',
+	'rdfio-rdfimport-desc' => 'Specialna strona za importowanje semantiskich datow w formaće RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Kónčny dypk SPARQL wot SMWRDFConnector k dispoziciji stajeny',
+	'sparqlendpoint' => 'Kónčny dypk SPARQL',
+	'specialarc2admin' => 'ARC2 RDF składowanska administraciska strona',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

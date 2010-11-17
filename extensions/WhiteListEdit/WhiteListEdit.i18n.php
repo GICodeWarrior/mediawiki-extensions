@@ -2738,7 +2738,7 @@ $messages['pdc'] = array(
  * @author Xqt
  */
 $messages['pfl'] = array(
-	'mywhitelistpages' => 'Mai Saire',
+	'mywhitelistpages' => 'Mai Saide',
 	'whitelisttableedit' => 'Bearwaide',
 );
 

@@ -52,6 +52,13 @@ $messages['de'] = array(
 	'slimboxthumbs-desc' => 'Ermöglicht nach einem Klick auf ein Vorschaubild dessen Anzeige in voller Größe mit Hilfe von [http://www.digitalia.be/software/slimbox2 Slimbox 2]',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'slimboxthumbs-desc' => 'Zwobraznja wobraze w połnej wjelikosći z [http://www.digitalia.be/software/slimbox2 Slimbox 2], gaž kliknjo se na pśeglědowe wobraze',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

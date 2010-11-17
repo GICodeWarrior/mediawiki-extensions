@@ -84,6 +84,15 @@ $messages['de'] = array(
 	'variablepage-desc' => 'Ermöglicht ressourcenschonende variable Weiterleitungen von Wikiseiten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Pósćiś',
+	'variablepage-desc' => 'Zmóžnja wariabelne dalejpósrědnjenja, kótarež šonuju resurse',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

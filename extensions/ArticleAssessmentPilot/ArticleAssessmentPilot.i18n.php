@@ -632,6 +632,7 @@ Võib-olla soovid seda uuesti hinnata.",
 
 /** Persian (فارسی)
  * @author Huji
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'articleassessment' => 'ارزیابی مقاله‌ها',
@@ -646,18 +647,18 @@ $messages['fa'] = array(
 	'articleassessment-rating-wellsourced-tooltip' => 'به نظر شما این صفحه دارای ارجاعات کافی به منابع قابل اعتماد هست؟',
 	'articleassessment-rating-neutrality-tooltip' => 'به نظر شما این صفحه دیدگاه‌های مختلف در مورد موضوعش را به طور متناسبی ارائه می‌دهد؟',
 	'articleassessment-rating-completeness-tooltip' => 'به نظر شما عنوان‌های اساسی که باید پوشش دهد را شامل می‌شود؟',
-	'articleassessment-rating-readability-tooltip' => 'به نظر شما این صفحه به خوبی ساختاربندی شده و به خوبی نوشته شده‌است؟',
+	'articleassessment-rating-readability-tooltip' => 'به نظر شما این صفحه به‌خوبی ساختاربندی شده و به‌خوبی نوشته شده‌است؟',
 	'articleassessment-articlerating' => 'نمرهٔ مقاله',
-	'articleassessment-error' => 'خطا رخ داده است.
-لطفا بعدا دوباره تلاش کنید.',
+	'articleassessment-error' => 'خطایی رخ داده‌است.
+لطفاً بعداً دوباره تلاش کنید.',
 	'articleassessment-thanks' => 'متشکریم! نمرهٔ شما ذخیره شد.',
 	'articleassessment-featurefeedback' => 'در مورد این قابلیت به ما <span class="feedbacklink">نظر بدهید</span>.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|نمره|نمره}})',
-	'articleassessment-stalemessage-norevisioncount' => "این صفحه از آخرین باری که شما آن را بازبینی کردید ''تغییر کرده است''.
-شما می‌توانید دوباره به آن نمره دهید.",
+	'articleassessment-stalemessage-norevisioncount' => "این صفحه از آخرین باری که آن را بازبینی کردید ''تغییر کرده‌است''.
+می‌توانید دوباره به آن نمره دهید.",
 	'articleassessment-results-show' => '(نتایج مخفی است. <span class="showlink">نمایش نتایج</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">نهفتن نتایج</span>)',
-	'articleassessment-survey-question-whyrated' => 'لطفا به ما اطلاع دهید که چرا شما امروز به این صفحه نمره دادید (تمام موارد مرتبط را انتخاب کنید):',
+	'articleassessment-survey-question-whyrated' => 'لطفاً به ما اطلاع دهید که چرا شما امروز به این صفحه نمره دادید (تمام موارد مرتبط را انتخاب کنید):',
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'می‌خواستم در نمره کلی صفحه مشارکت کنم',
 	'articleassessment-survey-answer-whyrated-development' => 'امیدوارم که نمره‌ای که دادم اثر مثبتی روی پیشرفت صفحه داشته باشد',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'می‌خواستم به {{SITENAME}} کمک کنم',
@@ -969,6 +970,39 @@ Možda ju želite ocijeniti ponovo.",
 	'articleassessment-survey-submit' => 'Pošalji',
 	'articleassessment-survey-title' => 'Molimo odgovorite na nekoliko pitanja',
 	'articleassessment-survey-thanks' => 'Hvala vam na popunjavanju ankete.',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'articleassessment' => 'Pohódnoćenje nastawkow',
+	'articleassessment-desc' => 'Pohódnoćenje nastawkow (pilotowa wersija)',
+	'articleassessment-yourfeedback' => 'Twój posudk',
+	'articleassessment-pleaserate' => 'Prošu bjer sej trochu časa, zo by slědowacu stronu pohódnoćił.',
+	'articleassessment-submit' => 'Wotpósłać',
+	'articleassessment-rating-wellsourced' => 'Derje dokładźeny:',
+	'articleassessment-rating-neutrality' => 'Neutralny:',
+	'articleassessment-rating-completeness' => 'Dospołny:',
+	'articleassessment-rating-readability' => 'Čitajomny:',
+	'articleassessment-rating-readability-tooltip' => 'Měniš, zo tuta strona je derje zorganizowana a derje napisana?',
+	'articleassessment-articlerating' => 'Pohódnoćenje strony',
+	'articleassessment-error' => 'Zmylk je wustupił.
+Prošu spytaj pozdźišo hišće raz.',
+	'articleassessment-thanks' => 'Wulki dźak! Twoje pohódnoćenja su so składowali.',
+	'articleassessment-featurefeedback' => 'Prošu pósćel nam <span class="feedbacklink">pohódnoćenje</span> wo tutej funkciji.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|pohódnoćenje|pohódnoćeni|pohódnoćenja|pohódnoćenjow}})',
+	'articleassessment-results-show' => '(Wuslědki schowane. <span class="showlink">Pokazać</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Wuslědki schować</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Chcych k {{SITENAME}} přinošować',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Bych rady moje měnjenje dźělił',
+	'articleassessment-survey-answer-whyrated-other' => 'Druhe',
+	'articleassessment-survey-question-useful-iffalse' => 'Čehodla?',
+	'articleassessment-survey-question-expert-iftrue' => 'Móžeš swój wěcywustojnosć wopisać?',
+	'articleassessment-survey-question-comments' => 'Maš hišće dalše komentary?',
+	'articleassessment-survey-submit' => 'Wotpósłać',
+	'articleassessment-survey-title' => 'Prošu wotmołw na někotre prašenja',
+	'articleassessment-survey-thanks' => 'Dźakujemy so za twój posudk.',
 );
 
 /** Hungarian (Magyar)

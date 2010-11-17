@@ -419,6 +419,13 @@ $messages['mk'] = array(
 	'ajaxquerypages-desc' => 'Додава AJAX при повикување на страници како што се [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'ajaxquerypages-desc' => '[[Special:Shortpages|{{int:shortpages}}]] പോലുള്ള താളുകൾ എടുക്കാൻ സഹായിക്കുന്ന ചില അജാക്സ് കൂട്ടിച്ചേർക്കുന്നു',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

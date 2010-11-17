@@ -474,7 +474,7 @@ $messages['de-formal'] = array(
  */
 $messages['dsb'] = array(
 	'recordadmin' => 'Administracija zapisow',
-	'recordadmin-desc' => '[[Special:RecordAdmin|Specialny bok]] za pytanje a wobźěłowanje zapisowych bokow z pomocu formulara',
+	'recordadmin-desc' => 'Zmóžnja pytanje, napšašowanja, formulara a rozpšawy wó wikidatach wótwóźonych z parametrow pśedłogow',
 	'recordadmin-select' => 'Wubjeŕ typ registracije, kótaryž ma se zastojaś',
 	'recordadmin-createtype' => 'Zapódaj mě nowego typa registracije, kótaryž ma se napóraś',
 	'recordadmin-recordtype' => 'typ registracije',

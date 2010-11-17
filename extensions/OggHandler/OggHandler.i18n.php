@@ -2269,6 +2269,8 @@ $messages['myv'] = array(
 	'ogg-stop' => 'Лоткавтык',
 	'ogg-play-video' => 'Нолдык видеонть',
 	'ogg-play-sound' => 'Нолдык вайгеленть',
+	'ogg-player-selected' => '(кочказь)',
+	'ogg-dismiss' => 'Пекстамс',
 	'ogg-desc-link' => 'Те файладонть',
 );
 

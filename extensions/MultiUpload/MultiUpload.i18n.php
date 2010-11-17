@@ -515,6 +515,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author BlueDevil
+ * @author Ebraminio
  * @author Huji
  * @author Persianizer
  */
@@ -525,7 +526,7 @@ $messages['fa'] = array(
 	'multipleupload-saveallfiles' => 'ذخیره کردن تمامی پرونده‌ها',
 	'multipleupload-addresswarnings' => 'لطفاً به تمامی هشدارها قبل از بارگذاری دوبارهٔ پرونده‌ها رسیدگی کنید',
 	'multipleupload-page' => '{{ns:project}}:سیاست حذف تصاویر',
-	'multipleupload-text' => "در این‌جا چندین پرونده بارگذاری کنید.
+	'multipleupload-text' => "در اینجا چندین پرونده بارگذاری کنید.
 
 دکمهٔ 'Browse' را بزنید و پرونده‌هایی که می‌خواهید بارگذاری کنید را انتخاب کنید.
 شما می‌توانید هر بار از ۱ تا $1 پرونده را بارگذاری کنید.
