@@ -23,6 +23,9 @@ define("SEGLENGTH_HDML", 600);
 define("SEGLENGTH_HTML", 2000);
 define("SEGLENGTH_VXML", 10000000);
 
+// Timeout for HTTP fetches, in seconds
+define("HAWPEDIA_TIMEOUT", 5 );
+
 // comment out next line to disable vxml dispatcher 
 //define("HAWPEDIA_VXML_TMP_FILE", "/tmp/hawpedia_vxml_dispatcher.tmp"); 
 

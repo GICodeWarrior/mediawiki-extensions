@@ -3,6 +3,8 @@
 # echo($_SERVER['QUERY_STRING']);
 # echo($_SERVER['HTTP_ACCEPT']);
 
+require( dirname( __FILE__ ) . "/config.php" );
+
 function fatalError($msg) {
 	header("HTTP/1.0 500 Internal Server Error");
 	echo "$msg\n";
@@ -41,6 +43,7 @@ function fatalError($msg) {
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_TIMEOUT, HAWPEDIA_TIMEOUT);
 	
 	// WP otherwise says: "Please provide a User-Agent header"
 	curl_setopt($ch, CURLOPT_USERAGENT, "hawpedia");
