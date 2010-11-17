@@ -100,6 +100,7 @@ $messages['qqq'] = array(
 	'cb_next_items_link' => '{{Identical|Next}}',
 	'cb_cat_pages' => '{{Identical|Pages}}',
 	'cb_cat_files' => '{{Identical|File}}',
+	'cb_apply_button' => '{{Identical|Apply}}',
 	'cb_all_op' => 'Operator to select all categories available.
 {{Identical|All}}',
 	'cb_or_op' => '{{Identical|Or}}',
