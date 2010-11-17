@@ -1304,6 +1304,20 @@ Per ajudar-nos a millorar-les, si us plau ompliu el formulari opcional d'aquí s
 	'prefswitch-feedbackpage' => "Project:Comentaris sobre l'experiència d'usuari",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'prefswitch-link-anon' => 'Керла таронаш',
+	'prefswitch-link-on' => 'Хьалхсанна дlахlоттор',
+	'tooltip-pt-prefswitch-link-on' => 'Дlайаха керла таронаш',
+	'prefswitch-link-off' => 'Керла таронаш',
+	'tooltip-pt-prefswitch-link-off' => 'Муха йу хьажа керла таронаш',
+	'prefswitch-survey-submit-off' => 'Дlайаха керла таронаш',
+	'prefswitch-title-on' => 'Керла таронаш',
+	'prefswitch-title-off' => 'Дlайаха керла таронаш',
+);
+
 /** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
@@ -5270,6 +5284,16 @@ Jekk jogħġbok imla l-kwestjonarju opzjonali segwenti qabel ma tagħfas "[[#pre
 	'prefswitch-survey-intro-off' => 'Grazzi talli għamilt użu mill-funzjonijiet il-ġodda.
 Biex tgħinna ntejbuhom, jekk jogħġbok imla l-kwestjonarju opzjonali segwenti qabel ma tagħfas "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:Rispons tal-esperjenza tal-utent',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'prefswitch-link-off' => 'Од ёнкст',
+	'prefswitch-survey-submit-off' => 'Пекстамс од ёнкстнэнь',
+	'prefswitch-survey-submit-feedback' => 'Кучомс тевень коряс мельть-арсемат',
+	'prefswitch-title-switched-off' => 'Сюкпирине',
 );
 
 /** Nahuatl (Nāhuatl)
