@@ -30,14 +30,20 @@ class CategoryMultisortHooks {
 		$this->integrate = $integrate;
 	}
 
-	function onLoadExtensionSchemaUpdates() {
-		global $wgExtNewTables, $wgDBtype;
-		
-		$sql = dirname( __FILE__ ) . "/tables.$wgDBtype.sql";
-		if ( file_exists( $sql ) ) {
-			$wgExtNewTables[] = array( 'categorylinks_multisort', $sql );
+	function onLoadExtensionSchemaUpdates( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables, $wgDBtype;
+			$sql = dirname( __FILE__ ) . "/tables.$wgDBtype.sql";
+			if ( file_exists( $sql ) ) {
+				$wgExtNewTables[] = array( 'categorylinks_multisort', $sql );
+			}
+		} else {
+			$sql = dirname( __FILE__ ) . '/tables.' . $updater->getDB()->getType() . '.sql';
+			if ( file_exists( $sql ) ) {
+				$updater->addExtensionUpdate( array( 'addTable', 'categorylinks_multisort', $sql, true ) );
+			}
 		}
-		
+
 		return true;
 	}
 	
