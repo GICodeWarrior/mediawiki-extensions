@@ -47,13 +47,14 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Article Assessment Pilot',
 	'author' => array( 'Nimish Gautam', 'Sam Reed', 'Adam Miller' ),
-	'version' => '0.1.0',
+	'version' => '1.0.0',
 	'descriptionmsg' => 'articleassessment-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleAssessmentPilot'
 );
 
 // Survey setup
 // This is totally a hack, but it's easy and had to be done fast
+// Should be used with SimpleSurvey 0.1
 require_once( $dir . '../SimpleSurvey/SimpleSurvey.php' );
 
 // Would ordinarily call this articleassessment but survey names are 16 chars max
