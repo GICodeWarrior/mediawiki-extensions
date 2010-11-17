@@ -131,6 +131,7 @@ $messages['dsb'] = array(
 	'ts-kml-on-ol-options' => 'Opcije',
 	'ts-kml-on-ol-languages' => 'Rěcy',
 	'ts-kml-on-ol-thumbnails' => 'Wobrazki',
+	'ts-kml-on-ol-help' => 'Pomoc',
 	'ts-kml-on-ol-all' => 'Wšykne',
 	'ts-kml-on-ol-map-by' => 'Kórta wót',
 );
