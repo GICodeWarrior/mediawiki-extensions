@@ -17,8 +17,14 @@ define( 'Deployment_VERSION', '0.1 alpha' );
 
 include_once 'Deployment_Settings.php';
 
-// Register the initialization function.
-$wgExtensionFunctions[] = 'efDeploymentSetup';
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'Deployment',
+	'version' => Deployment_VERSION,
+	'author' => '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Deployment',
+	'descriptionmsg' => 'deployment-desc',
+);
 
 // Register the internationalization and aliasing files.
 $wgExtensionMessagesFiles['Deployment'] = dirname( __FILE__ ) . '/Deployment.i18n.php';
@@ -52,19 +58,3 @@ $wgSpecialPageGroups['Update'] = 'administration';
  * By default only sysops have this permission.
  */
 $wgGroupPermissions['sysop']['siteadmin'] = true;
-
-/**
- * Initialization function for the Deployment extension.
- */
-function efDeploymentSetup() {
-	global $wgExtensionCredits;
-	
-	$wgExtensionCredits['other'][] = array(
-		'path' => __FILE__,
-		'name' => 'Deployment',
-		'version' => Deployment_VERSION,
-		'author' => '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Deployment',
-		'descriptionmsg' => 'deployment-desc',
-	);	
-}
