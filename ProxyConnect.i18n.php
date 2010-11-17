@@ -33,6 +33,13 @@ $messages['de'] = array(
 	'proxyconnect-desc' => 'Ermöglicht die serverseitige Funktion Proxy Connect',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'proxyconnect-desc' => 'Implementěrujo serwerowu funkcionalnosć Proxy Connect',
+);
+
 /** French (Français)
  * @author Peter17
  */
