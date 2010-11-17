@@ -89,6 +89,8 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'htmlets-desc' => 'Zasuwa HTML-kuski z datajow z pomocu toflicki <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'HTML-dataja $1 njedajo se namakaś',
+	'htmlets-loadfailed' => 'HTML-dataja $1 njedajo se zacytaś',
 );
 
 /** Greek (Ελληνικά)
