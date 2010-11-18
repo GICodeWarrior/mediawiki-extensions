@@ -2,50 +2,50 @@
  * Styles for Article Feedback
  */
 
-.article-feedback-wrapper #article-feedback-rate,
-.article-feedback-wrapper #article-feedback-ratings {
+.articleFeedback-wrapper #article-feedback-rate,
+.articleFeedback-wrapper #article-feedback-ratings {
 	background: #f7f7f7;
 	float: left;
 }
 
-.article-feedback-wrapper #article-feedback-rate {
+.articleFeedback-wrapper #article-feedback-rate {
 	width: 650px;
 	margin-right: 10px;
 }
-.article-feedback-wrapper legend {
+.articleFeedback-wrapper legend {
 	font-weight: bold;
 }
-.article-feedback-wrapper .field-wrapper {
+.articleFeedback-wrapper .field-wrapper {
 	float: left;
 	width: 270px;
 	padding-right: 28px;
 }
-.article-feedback-wrapper .rating-field {
+.articleFeedback-wrapper .rating-field {
 	float: right;
 	width: 125px;
 	line-height: 24px;
 	padding-right: 5px;
 }
-.article-feedback-wrapper .rating-field-label{
+.articleFeedback-wrapper .rating-field-label{
 	float: left;
 	font-weight: bold;
 	line-height: 24px;
 }
-.article-feedback-wrapper .rating-field-label {
+.articleFeedback-wrapper .rating-field-label {
 	margin-right: 10px;
 }
-.article-feedback-wrapper .rating-field-hint {
+.articleFeedback-wrapper .rating-field-hint {
 	width: 11px;
 	height: 24px;
 	display: block;
 	float: right;
 	background: url(images/question.png) 0 50% no-repeat;
 }
-.article-feedback-wrapper .rating-field-hint:hover {
+.articleFeedback-wrapper .rating-field-hint:hover {
 	background: url(images/question-hover.png) 0 50% no-repeat;
 }
 
-.article-feedback-wrapper .article-feedback-flash {
+.articleFeedback-wrapper .article-feedback-flash {
 	float: left;
 	font-size: 11px;
 	padding: 1px 5px;
@@ -53,25 +53,25 @@
 	text-align: left;
 	display: block;
 }
-.article-feedback-wrapper .article-feedback-stale-msg {
+.articleFeedback-wrapper .article-feedback-stale-msg {
 	background: #d6f3ff;
 	border: 2px solid #5dc9f4;
 }
-.article-feedback-wrapper .article-feedback-success-msg {
+.articleFeedback-wrapper .article-feedback-success-msg {
 	background: #e8e8e8;
 	border: 2px solid #006505;
 }
-.article-feedback-wrapper .article-feedback-error-msg {
+.articleFeedback-wrapper .article-feedback-error-msg {
 	background: #e8e8e8;
 	border: 2px solid #a91100;
 }
-.article-feedback-wrapper .article-feedback-rating-field-name {
+.articleFeedback-wrapper .article-feedback-rating-field-name {
 	float: left;
 	width: 110px;
 	font-weight: bold;
 	font-size: 11px;
 }
-.article-feedback-wrapper .article-feedback-rating-field-value-wrapper {
+.articleFeedback-wrapper .article-feedback-rating-field-value-wrapper {
 	background: url(images/rating-base.png) 0 0 no-repeat;
 	width: 120px;
 	height: 13px;
@@ -81,29 +81,29 @@
 	text-indent: -9999px;
 	margin-top: 4px;
 }
-.article-feedback-wrapper .article-feedback-rate-instructions, 
-.article-feedback-wrapper .article-feedback-rate-feedback,
-.article-feedback-wrapper .article-feedback-show-ratings,
-.article-feedback-wrapper .article-feedback-hide-ratings {
+.articleFeedback-wrapper .article-feedback-rate-instructions, 
+.articleFeedback-wrapper .article-feedback-rate-feedback,
+.articleFeedback-wrapper .article-feedback-show-ratings,
+.articleFeedback-wrapper .article-feedback-hide-ratings {
 	font-size: 11px;
 	font-style: italic;
 }
-.article-feedback-wrapper .article-feedback-rate-instructions {
+.articleFeedback-wrapper .article-feedback-rate-instructions {
 	float: left;
 }
-.article-feedback-wrapper .article-feedback-rate-feedback {
+.articleFeedback-wrapper .article-feedback-rate-feedback {
 	float: right;
 }
-.article-feedback-wrapper .article-feedback-rating-field-value-wrapper .article-feedback-rating-field-value {
+.articleFeedback-wrapper .article-feedback-rating-field-value-wrapper .article-feedback-rating-field-value {
 	background: url(images/rating-bar.png) 0 0 no-repeat;
 	height: 9px;
 	float: right;
 	display: block;
 }
-.article-feedback-wrapper .article-feedback-rating-fields {
+.articleFeedback-wrapper .article-feedback-rating-fields {
 	margin: 8px 0;
 }
-.article-feedback-wrapper .article-feedback-rating-fields .field-wrapper {
+.articleFeedback-wrapper .article-feedback-rating-fields .field-wrapper {
 	margin-bottom: 5px;
 }
 .article-feedback-rating-count {
@@ -115,17 +115,17 @@
 	margin: 2px 0;
 	float: right;
 }
-.article-feedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-value-wrapper {
+.articleFeedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-value-wrapper {
 	background: urlimages/rating-base-disabled.png) 0 0 no-repeat;
 }
-.article-feedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-value {
+.articleFeedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-value {
 	display: none;
 }
-.article-feedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-count {
+.articleFeedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-count {
 	visibility: hidden;
 	
 }
-.article-feedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-name {
+.articleFeedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-name {
 	color: #9f9f9f;
 }
 
@@ -148,39 +148,39 @@
 
 
 /* Self Clearing Floats */
-.article-feedback-wrapper .article-feedback-information:after,
-.article-feedback-wrapper .field-wrapper:after,
-.article-feedback-wrapper .article-feedback-rating-fields:after,
+.articleFeedback-wrapper .article-feedback-information:after,
+.articleFeedback-wrapper .field-wrapper:after,
+.articleFeedback-wrapper .article-feedback-rating-fields:after,
 .article-feedback-rating:after,
-.article-feedback-wrapper .article-feedback-submit:after,
-.article-feedback-wrapper .rating-fields:after {
+.articleFeedback-wrapper .article-feedback-submit:after,
+.articleFeedback-wrapper .rating-fields:after {
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
 }
-.article-feedback-wrapper .field-wrapper,
-.article-feedback-wrapper .article-feedback-information,
-.article-feedback-wrapper .article-feedback-rating-fields,
+.articleFeedback-wrapper .field-wrapper,
+.articleFeedback-wrapper .article-feedback-information,
+.articleFeedback-wrapper .article-feedback-rating-fields,
 .article-feedback-rating,
-.article-feedback-wrapper .article-feedback-submit,
-.article-feedback-wrapper .rating-fields {
+.articleFeedback-wrapper .article-feedback-submit,
+.articleFeedback-wrapper .rating-fields {
 	display: inline-block;
 }
-* html .article-feedback-wrapper .field-wrapper,
-* html .article-feedback-wrapper .article-feedback-information,
-* html .article-feedback-wrapper .article-feedback-rating-fields,
+* html .articleFeedback-wrapper .field-wrapper,
+* html .articleFeedback-wrapper .article-feedback-information,
+* html .articleFeedback-wrapper .article-feedback-rating-fields,
 * html .article-feedback-rating,
-* html .article-feedback-wrapper .article-feedback-submit,
-* html .article-feedback-wrapper .rating-fields {
+* html .articleFeedback-wrapper .article-feedback-submit,
+* html .articleFeedback-wrapper .rating-fields {
 	height: 1%;
 }
-.article-feedback-wrapper .field-wrapper,
-.article-feedback-wrapper .article-feedback-information,
-.article-feedback-wrapper .article-feedback-rating-fields,
+.articleFeedback-wrapper .field-wrapper,
+.articleFeedback-wrapper .article-feedback-information,
+.articleFeedback-wrapper .article-feedback-rating-fields,
 .article-feedback-rating,
-.article-feedback-wrapper .article-feedback-submit,
-.article-feedback-wrapper .rating-fields {
+.articleFeedback-wrapper .article-feedback-submit,
+.articleFeedback-wrapper .rating-fields {
 	display: block;
 }
