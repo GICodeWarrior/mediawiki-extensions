@@ -1,63 +1,7 @@
-/*!
- * jQuery UI Stars v3.0.1
- * http://plugins.jquery.com/project/Star_Rating_widget
- *
- * Copyright (c) 2010 Marek "Orkan" Zajac (orkans@gmail.com)
- * Dual licensed under the MIT and GPL licenses.
- * http://docs.jquery.com/License
- *
- * $Rev: 164 $
- * $Date:: 2010-05-01 #$
- * $Build: 35 (2010-05-01)
- *
+/*
+ * Styles for Article Assessment
  */
-.article-assessment-wrapper .ui-stars-star {
-	float: left;
-	display: block;
-	overflow: hidden;
-	text-indent: -999em;
-	cursor: pointer;
-	padding-right: 4px;
-}
-.article-assessment-wrapper .ui-stars-star a {
-	width: 21px;
-	height: 21px;
-	line-height: 0;
-	display: block;
-	background: url(../images/stars.gif) no-repeat 0 0;
-}
-.article-assessment-wrapper .ui-stars-star a {
-	background-position: 0 0px;
-}
 
-.article-assessment-wrapper .ui-stars-star-on a  {
-	background-position: 0 -21px;
-}
-.article-assessment-wrapper .ui-stars-star-rated a {
-	background-position: 0 -42px;
-}
-.article-assessment-wrapper .ui-stars-star-stale a {
-	background-position: 0 -63px;
-}
-.article-assessment-wrapper .ui-stars-star-hover a {
-	background-position: 0 -21px;
-}
-.article-assessment-wrapper .ui-stars-star-disabled,
-.article-assessment-wrapper .ui-stars-star-disabled a {
-	cursor: default !important;
-}
-.article-assessment-wrapper .ui-stars-cancel {
-	display: none;
-}
-/* End ui-stars styles */
-
-/* Tipsy Styles */
-.tipsy { padding: 5px 5px 10px; font-size: 12px; position: absolute; z-index: 100000; overflow: visible; }
-.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #d6f3ff; color: black; border: 1px solid #5dc9f4; max-width: 300px; text-align: left; }
-.tipsy-arrow { position: absolute; background: url( '../images/arrow.gif' ) no-repeat top left; width: 13px; height: 13px; }
-.tipsy-se .tipsy-arrow { bottom: -2px; right: 10px; background-position: 0% 100%; }
-
-/* End Tipsy styles */
 .article-assessment-wrapper #article-assessment-rate,
 .article-assessment-wrapper #article-assessment-ratings {
 	background: #f7f7f7;
@@ -95,10 +39,10 @@
 	height: 24px;
 	display: block;
 	float: right;
-	background: url(../images/question.gif) 0 50% no-repeat;
+	background: url(images/question.gif) 0 50% no-repeat;
 }
 .article-assessment-wrapper .rating-field-hint:hover {
-	background: url(../images/question-hover.gif) 0 50% no-repeat;
+	background: url(images/question-hover.gif) 0 50% no-repeat;
 }
 
 .article-assessment-wrapper .article-assessment-flash {
@@ -128,7 +72,7 @@
 	font-size: 11px;
 }
 .article-assessment-wrapper .article-assessment-rating-field-value-wrapper {
-	background: url( ../images/rating_bg.gif ) 0 0 no-repeat;
+	background: url(images/rating_bg.gif) 0 0 no-repeat;
 	width: 120px;
 	height: 13px;
 	display: block;
@@ -151,7 +95,7 @@
 	float: right;
 }
 .article-assessment-wrapper .article-assessment-rating-field-value-wrapper .article-assessment-rating-field-value {
-	background: url( ../images/rating_bar.gif ) 0 0 no-repeat;
+	background: url(images/rating_bar.gif) 0 0 no-repeat;
 	height: 9px;
 	float: right;
 	display: block;
@@ -172,7 +116,7 @@
 	float: right;
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value-wrapper {
-	background: url( ../images/rating_disabled_bg.gif ) 0 0 no-repeat;
+	background: urlimages/rating_disabled_bg.gif) 0 0 no-repeat;
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value {
 	display: none;
@@ -190,7 +134,7 @@
 	display: block;
 	height: 24px;
 	width: 24px;
-	background: url( ../images/loading.gif ) center no-repeat;
+	background: url(images/loading.gif) center no-repeat;
 	text-indent: -9999px;
 	margin: 0 auto;
 }

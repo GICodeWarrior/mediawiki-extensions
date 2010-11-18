@@ -1,43 +1,57 @@
 <?php
-
 /**
  * Hooks for ArticleAssessmentPilot
  *
  * @file
  * @ingroup Extensions
  */
+
 class ArticleAssessmentPilotHooks {
-	private static $styleFiles = array(
-		'raw' => array(
-			array( 'src' => 'css/ArticleAssessment.css', 'version' => 1 ),
+	
+	protected static $modules = array(
+		'ext.articleAssessment' => array(
+			'scripts' => 'ext.articleAssessment/ext.articleAssessment.js',
+			'styles' => 'ext.articleAssessment/ext.articleAssessment.css',
+			'messages' => array(
+				'articleassessment',
+				'articleassessment-desc',
+				'articleassessment-yourfeedback',
+				'articleassessment-pleaserate',
+				'articleassessment-submit',
+				'articleassessment-rating-wellsourced',
+				'articleassessment-rating-neutrality',
+				'articleassessment-rating-completeness',
+				'articleassessment-rating-readability',
+				'articleassessment-rating-wellsourced-tooltip',
+				'articleassessment-rating-neutrality-tooltip',
+				'articleassessment-rating-completeness-tooltip',
+				'articleassessment-rating-readability-tooltip',
+				'articleassessment-error',
+				'articleassessment-thanks',
+				'articleassessment-articlerating',
+				'articleassessment-featurefeedback',
+				'articleassessment-noratings',
+				'articleassessment-stalemessage-revisioncount',
+				'articleassessment-stalemessage-norevisioncount',
+				'articleassessment-results-show',
+				'articleassessment-results-hide',
+				'articleassessment-survey-title',
+				'articleassessment-survey-thanks',
+			),
+			'dependencies' => array( 'jquery.ui.dialog', 'jquery.tipsy', 'jquery.stars' ),
 		),
-		'combined' => array(
-			array( 'src' => 'css/ArticleAssessment.css', 'version' => 1 ),
-		),
-		'minified' => array(
-			array( 'src' => 'css/ArticleAssessment.css', 'version' => 1 ),
+		'jquery.stars' => array(
+			'scripts' => 'jquery.stars/jquery.stars.js',
+			'styles' => 'jquery.stars/jquery.stars.css',
 		),
 	);
-
-	private static $scriptFiles = array(
-		'raw' => array(
-			array( 'src' => 'js/ArticleAssessment.js', 'version' => 5 ),
-			array( 'src' => 'js/jquery.cookie.js', 'version' => 1 ),
-			array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
-			array( 'src' => 'js/jquery.stars.js', 'version' => 2 ),
-		),
-		'combined' => array(
-			array( 'src' => 'js/ArticleAssessment.combined.js', 'version' => 5 )
-		),
-		'minified' => array(
-			array( 'src' => 'js/ArticleAssessment.combined.min.js', 'version' => 5 )
-		),
-	);
-
-	private static $messages = array();
-
-	/* Static Functions */
-	public static function schema( $updater = null ) {
+	
+	/* Static Methods */
+	
+	/**
+	 * LoadExtensionSchemaUpdates hook
+	 */
+	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		if ( $updater === null ) {
 			global $wgExtNewTables;
 			$wgExtNewTables[] = array(
@@ -48,21 +62,11 @@ class ArticleAssessmentPilotHooks {
 			$updater->addExtensionUpdate( array( 'addTable', 'article_assessment',
 				dirname( __FILE__ ) . '/ArticleAssessmentPilot.sql', true ) );
 		}
-
 		return true;
 	}
 	
-	public static function addVariables( &$vars ) {
-		global $wgArticleAssessmentJUIJSPath, $wgExtensionAssetsPath;
-		$vars['wgArticleAssessmentJUIPath'] = $wgArticleAssessmentJUIJSPath ? $wgArticleAssessmentJUIJSPath :
-			"$wgExtensionAssetsPath/ArticleAssessmentPilot/js/jui.combined.min.js";
-		return true;
-	}
-
 	/**
-	 * Make sure the tables exist for parser tests
-	 * @param $tables
-	 * @return bool
+	 * ParserTestTables hook
 	 */
 	public static function parserTestTables( &$tables ) {
 		$tables[] = 'article_assessment';
@@ -70,106 +74,59 @@ class ArticleAssessmentPilotHooks {
 		$tables[] = 'article_assessment_ratings';
 		return true;
 	}
-
-	public static function addResources( $out ) {
+	
+	/**
+	 * BeforePageDisplay hook
+	 */
+	public static function beforePageDisplay( $out ) {
+		global $wgRequest, $wgArticleAssessmentCategories;
 		
 		$title = $out->getTitle();
-
-		// Chances are we only want to be rating Mainspace, right?
-		if ( $title->getNamespace() !== NS_MAIN ) {
-			return true;
+		
+		// Restrict ratings to... 
+		if (
+			// Main namespace articles
+			$title->getNamespace() == NS_MAIN
+			// View pages
+			&& $wgRequest->getVal( 'action', 'view' ) == 'view'
+			// Current revision
+			&& !$wgRequest->getCheck( 'diff' )
+			&& !$wgRequest->getCheck( 'oldid' )
+			// Articles in valid categories
+			&& count( $wgArticleAssessmentCategories )
+			&& self::isInCategories( $title->getArticleId(), $wgArticleAssessmentCategories )
+		) {
+			$out->addModules( 'ext.articleAssessment' );
 		}
-
-		global $wgRequest;
-
-		// Only show for view actions.
-		if ( $wgRequest->getVal( 'action', 'view' ) !== 'view' || $wgRequest->getCheck( 'diff' ) ||
-				$wgRequest->getCheck( 'oldid' ) ) {
-			return true;
-		}
-
-		global $wgArticleAssessmentCategories;
-
-		// check if this page should have the form
-		if ( !count( $wgArticleAssessmentCategories )
-				|| !self::isInCategories( $title->getArticleId(), $wgArticleAssessmentCategories ) ) {
-			return true;
-		}
-
-		global $wgExtensionAssetsPath, $wgArticleAssessmentResourceMode;
-		$mode = isset( self::$scriptFiles[$wgArticleAssessmentResourceMode] ) ? $wgArticleAssessmentResourceMode : 'minified';
-		foreach ( self::$scriptFiles[$mode] as $script ) {
-			$out->addScriptFile( $wgExtensionAssetsPath .
-				"/ArticleAssessmentPilot/{$script['src']}", $script['version']
-			);
-		}
-
-		global $wgArticleAssessmentJUICSSPath;
-		$out->addExtensionStyle( ( $wgArticleAssessmentJUICSSPath ? $wgArticleAssessmentJUICSSPath :
-			"$wgExtensionAssetsPath/ArticleAssessmentPilot/css/jquery-ui-1.7.2.css" ) . '?1.7.2y'
-		);
-		foreach ( self::$styleFiles[$mode] as $style ) {
-			$out->addExtensionStyle( $wgExtensionAssetsPath .
-				"/ArticleAssessmentPilot/{$style['src']}?{$style['version']}"
-			);
-		}
-
-		// Transforms messages into javascript object members
-		self::$messages = array(
-			'articleassessment',
-			'articleassessment-desc',
-			'articleassessment-yourfeedback',
-			'articleassessment-pleaserate',
-			'articleassessment-submit',
-			'articleassessment-rating-wellsourced',
-			'articleassessment-rating-neutrality',
-			'articleassessment-rating-completeness',
-			'articleassessment-rating-readability',
-			'articleassessment-rating-wellsourced-tooltip',
-			'articleassessment-rating-neutrality-tooltip',
-			'articleassessment-rating-completeness-tooltip',
-			'articleassessment-rating-readability-tooltip',
-			'articleassessment-error',
-			'articleassessment-thanks',
-			'articleassessment-articlerating',
-			'articleassessment-featurefeedback',
-			'articleassessment-noratings',
-			'articleassessment-stalemessage-revisioncount',
-			'articleassessment-stalemessage-norevisioncount',
-			'articleassessment-results-show',
-			'articleassessment-results-hide',
-			'articleassessment-survey-title',
-			'articleassessment-survey-thanks',
-		);
-
-		foreach ( self::$messages as $i => $message ) {
-			// TODO: Not parsing or even preprocessing the messages would be more efficient,
-			// but we can't do that until we have such nice things as JS-side {{PLURAL}}
-			// Should be OK for now in a limited deployment scenario
-			$escapedMessageValue = Xml::escapeJsString( wfMsgExt( $message, array( 'parseinline' ) ) );
-			$escapedMessageKey = Xml::escapeJsString( $message );
-			self::$messages[$i] =
-				"'{$escapedMessageKey}':'{$escapedMessageValue}'";
-		}
-		// Add javascript to document
-		if ( count( self::$messages ) > 0 ) {
-			$out->addScript( Html::inlineScript(
-				'$j.ArticleAssessment.fn.addMessages({' . implode( ',', self::$messages ) . '});'
-			) );
-		}
-
 		return true;
 	}
-
+	
+	/*
+	 * ResourceLoaderRegisterModules hook
+	 */
+	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
+		global $wgExtensionAssetsPath;
+		$localpath = dirname( __FILE__ ) . '/modules';
+		$remotepath = "$wgExtensionAssetsPath/ArticleAssessmentPilot/modules";
+		foreach ( self::$modules as $name => $resources ) {
+			$resourceLoader->register(
+				$name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
+			);
+		}
+		return true;
+	}
+	
+	/* Protected Static Methods */
+	
 	/**
 	 * Returns whether an article is in the specified categories
-	 *
+	 * 
 	 * @param $articleId Integer: Article ID
-	 * @param $categories Array: Array of category names (without Category: prefix, with underscores)
-	 *
-	 * @return bool
+	 * @param $categories Array: List of category names (without Category: prefix, with underscores)
+	 * 
+	 * @return Boolean: True if article is in one of the values of $categories 
 	 */
-	private static function isInCategories( $articleId, $categories ) {
+	protected static function isInCategories( $articleId, $categories ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		return (bool)$dbr->selectRow( 'categorylinks', '1',
 			array(
