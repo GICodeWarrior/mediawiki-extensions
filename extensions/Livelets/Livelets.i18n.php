@@ -56,6 +56,13 @@ $messages['de'] = array(
 	'livelets-desc' => 'Ermöglicht es, nach dem Laden einer Seite, Inhalte anderer Seiten in deren Inhalte zu transkludieren und diese dynamisch mit Hilfe von Ajax zu aktualisieren',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'livelets-desc' => 'Zmóžnja pó zacytowanju boka wopśimjeśe drugich bojo transkluděrowaś a toś to z pomocu Ajax dynamiski aktualizěrowaś',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

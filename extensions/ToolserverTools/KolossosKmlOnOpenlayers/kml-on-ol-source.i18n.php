@@ -136,6 +136,18 @@ $messages['dsb'] = array(
 	'ts-kml-on-ol-map-by' => 'Kórta wót',
 );
 
+/** Spanish (Español)
+ * @author Dferg
+ */
+$messages['es'] = array(
+	'ts-kml-on-ol-options' => 'Opciones',
+	'ts-kml-on-ol-languages' => 'Idiomas',
+	'ts-kml-on-ol-thumbnails' => 'Miniaturas',
+	'ts-kml-on-ol-help' => 'Ayuda',
+	'ts-kml-on-ol-all' => 'Todo',
+	'ts-kml-on-ol-map-by' => 'Mapa por',
+);
+
 /** French (Français)
  * @author Gribeco
  * @author Zetud

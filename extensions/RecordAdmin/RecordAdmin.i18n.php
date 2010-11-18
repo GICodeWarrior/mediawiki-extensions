@@ -475,6 +475,8 @@ $messages['de-formal'] = array(
 $messages['dsb'] = array(
 	'recordadmin' => 'Administracija zapisow',
 	'recordadmin-desc' => 'Zmóžnja pytanje, napšašowanja, formulara a rozpšawy wó wikidatach wótwóźonych z parametrow pśedłogow',
+	'recordadmin-specialdesc' => '[[Special:RecordAdmin|Specialny bok]] za pytanje a napóranje bokow z pomocu pśisłušnych formularow',
+	'recordadmin-noforms' => 'Tuchylu njejsu formulary, kótarež  su za pytanje a napóranje',
 	'recordadmin-select' => 'Wubjeŕ typ registracije, kótaryž ma se zastojaś',
 	'recordadmin-createtype' => 'Zapódaj mě nowego typa registracije, kótaryž ma se napóraś',
 	'recordadmin-recordtype' => 'typ registracije',
@@ -509,6 +511,8 @@ $messages['dsb'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Žeden "$1"',
+	'recordadmin-edit-info' => 'Toś ten bok wopśimujo pśedłogi, kótarež maju swójske formulary, kótarež móžoš z toś teje sajźby rejtarkow wupołniś',
+	'recordadmin-properties' => 'Kakosći',
 );
 
 /** Ewe (Eʋegbe) */

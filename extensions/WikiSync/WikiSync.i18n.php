@@ -107,10 +107,16 @@ $messages['af'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'wikisync' => 'Сынхранізацыя вікі',
+	'wikisync-desc' => 'Дадае [[Special:WikiSync|спэцыяльную старонку]] для сынхранізацыі апошніх зьменаў двух вікі — аддаленай і лякальнай',
+	'wikisync_direction' => 'Калі ласка, выберыце напрамак сынхранізацыі',
+	'wikisync_local_root' => 'Каранёвы каталёг сайта лякальнай вікі',
+	'wikisync_remote_root' => 'Каранёвы каталёг сайта аддаленай вікі',
+	'wikisync_remote_log' => 'Журнал аддаленых дзеяньняў',
 	'wikisync_clear_log' => 'Ачысьціць журнал',
 	'wikisync_login_to_remote_wiki' => 'Увайсьці на аддалены вікі-сайт',
 	'wikisync_remote_wiki_root' => 'Каранёвы адрас аддаленай вікі',
@@ -139,6 +145,9 @@ $messages['be-tarask'] = array(
 	'wikisync_api_result_NoName' => 'Вы не пазначылі парамэтар <code>lgname</code>',
 	'wikisync_api_result_Illegal' => 'Няслушнае імя карыстальніка',
 	'wikisync_api_result_NotExists' => 'Карыстальнік з пададзеным іменем не існуе',
+	'wikisync_api_result_EmptyPass' => 'Вы не ўстанавілі парамэтар lgpassword ці пакінулі яго пустым',
+	'wikisync_api_result_WrongPass' => 'Пададзены Вамі пароль зьяўляецца няслушным',
+	'wikisync_api_result_WrongPluginPass' => 'Пададзены Вамі пароль зьяўляецца няслушным',
 );
 
 /** Breton (Brezhoneg)

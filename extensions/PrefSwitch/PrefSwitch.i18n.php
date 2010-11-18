@@ -6751,6 +6751,37 @@ Vyberte prosím všetky možnosti, ktoré považujete za pravdivé.',
 	'prefswitch-success-feedback' => 'Vaše komentáre boli odoslané.',
 	'prefswitch-return' => '<hr style="clear:both">
 Späť na <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Snímka obrazovky nového navigačného rozhrania Wikipédie <small>[[Media:VectorNavigation-en.png|(zväčšiť)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Snímka obrazovky základného rozhrania na úpravu stránky <small>[[Media:VectorEditorBasic-en.png|(zväčšiť)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Snímka obrazovky nového dialógového okna na zadávanie odkazov
+|}
+|}
+User Experience tím Wikimedia Foundation spolupracoval dobrovoľníkmi z komunity, aby vám uľahčili prácu. Sme radi, že sa s vami môžeme podeliť o niektoré zlepšenia vrátane nového vzhľadu a správania a zjednodušených funkcií pri upravovaní. Cieľom týchto zmien je uľahčiť novým prispievateľom začať. Sú založené na našej [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study minuloročnej štúdii testovania použiteľnosti]. Zlepšovanie použiteľnosti našich projektov je prioritou Wikimedia Foundation a v budúcnosti sa s vami podelíme o ďalšie novinky. Ďalšie podrobnosti získate po navštívení [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blogového príspevku].
+
+=== Toto sme zmenili ===
+* '''Navigácia:''' Zlepšili sme navigáciu pri čítaní a upravovaní stránok. Teraz záložky na vrchu každej stránky jasnejšie definujú, či sa pozeráte na stránku alebo diskusnú stránku a či ju čítate alebo upravujete.
+* '''Vylepšenia panela nástrojov úprav:''' Reorganizovali sme panel nástrojov úprav, aby sa ľahšie používal. Formátovanie je teraz jednoduchšie a intuitívnejšie.
+* '''Sprievodca tvorbou odkazov:''' Ľahko použiteľný nástroj na pridávanie odkazov na ostatné stránky wiki a tiež na externé stránky.
+* '''Vylepšenia hľadania:''' Vylepšili sme návrhy pri hľadaní, aby ste sa rýchlejšie dostali na stránku, ktorú hľadáte.
+* '''Ostatné nové vlastnosti:''' Tiež sme predstavili sprievodcu uľahčenie tvorby tabuliek a možnost Hľadať a nahradiť na zjednodušenie úprav stránok.
+* '''Logo Wikipédie:''' Aktualizovali sme naše logo. Viac sa dočítate v [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogu Wikimedia].",
 	'prefswitch-main-logged-changes' => "* '''Karta {{int:watch}}''' je teraz hviezdičkou.
 * '''Karta {{int:move}}''' je teraz v roletovom menu vedľa vyhľadávacieho poľa.",
 	'prefswitch-main-feedback' => '===Komentáre?===

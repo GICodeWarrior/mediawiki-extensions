@@ -9366,7 +9366,7 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ikkje oppgjeve',
 	'ow_dm_not_found' => 'ikkje funne i databasen eller feillaga',
-	'ow_mapping_successful' => 'La alle felta som var merka med [OK] til kart<br />',
+	'ow_mapping_successful' => 'La alle felta som var merkte med [OK] til kartet<br />',
 	'ow_mapping_unsuccessful' => 'Ein må oppgje minst to definerte tydingar dersom dei skal lenkast.',
 	'ow_will_insert' => 'Legg til dette:',
 	'ow_contents_of_mapping' => 'Innhaldet i kartet',
