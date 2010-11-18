@@ -56,6 +56,14 @@ $messages['bs'] = array(
 	'pdfbook-desc' => 'Sastavlja knjigu od stranica u kategoriji i izvozi ih kao PDF knjigu',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'pdfbook-action' => 'Argraffu ar ffurf PDF',
+	'pdfbook-desc' => 'Yn defnyddio tudalennau o rhyw gategori i lunio llyfr, ac allforio hwnnw ar ffurf llyfr PDF',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -217,5 +225,13 @@ $messages['ru'] = array(
 	'pdfbook-action' => 'Печать в PDF',
 	'pdfbook-log' => '$1 экспортирована как PDF-книга',
 	'pdfbook-desc' => 'Создаёт книгу из страниц категории, преобразует её в PDF',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'pdfbook-action' => 'Chapa kwa mtindo wa PDF',
+	'pdfbook-desc' => 'Inaunda kurasa za jamii fulani katika kitabu, na kukipeleka nje kwa mtindo wa PDF',
 );
 
