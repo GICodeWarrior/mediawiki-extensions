@@ -43,7 +43,7 @@ def load_configuration(args):
 
     config.read('wiki.cfg')
     settings.working_directory = config.get('file_locations', 'working_directory')
-    settings.input_location = config.get('file_locations', 'xml_file_location')
+    settings.input_location = config.get('file_locations', 'settings.input_location')
 
 
 def create_configuration(**kwargs):
