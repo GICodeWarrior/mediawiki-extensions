@@ -28,33 +28,33 @@
 				</select> \
 			</div>',
 			'structureHTML': '<div class="articleFeedback-wrapper nonopopups"> \
-				<form action="rate" method="post" id="article-feedback"> \
-					<fieldset id="article-feedback-rate"> \
+				<form action="rate" method="post" id="articleFeedback"> \
+					<fieldset id="articleFeedback-rate"> \
 						<legend></legend> \
-						<div class="article-feedback-information"> \
-							<span class="article-feedback-rate-instructions"></span> \
-							<span class="article-feedback-rate-feedback"></span> \
+						<div class="articleFeedback-information"> \
+							<span class="articleFeedback-rate-instructions"></span> \
+							<span class="articleFeedback-rate-feedback"></span> \
 						</div> \
-						<div class="article-feedback-rating-fields"></div> \
-						<div class="article-feedback-submit"> \
+						<div class="articleFeedback-rating-fields"></div> \
+						<div class="articleFeedback-submit"> \
 							<input type="submit" value="Submit" /> \
 						</div> \
 					</fieldset> \
-					<fieldset id="article-feedback-ratings"> \
+					<fieldset id="articleFeedback-ratings"> \
 						<legend></legend> \
-						<div class="article-feedback-information"> \
-							<span class="article-feedback-show-ratings"></span> \
-							<span class="article-feedback-hide-ratings"></span> \
+						<div class="articleFeedback-information"> \
+							<span class="articleFeedback-show-ratings"></span> \
+							<span class="articleFeedback-hide-ratings"></span> \
 						</div> \
 					</fieldset> \
 				</form> \
 			</div>',
-			'ratingHTML': '<div class="article-feedback-rating"> \
-					<span class="article-feedback-rating-field-name"></span> \
-					<span class="article-feedback-rating-field-value-wrapper"> \
-						<span class="article-feedback-rating-field-value">0%</span> \
+			'ratingHTML': '<div class="articleFeedback-rating"> \
+					<span class="articleFeedback-rating-field-name"></span> \
+					<span class="articleFeedback-rating-field-value-wrapper"> \
+						<span class="articleFeedback-rating-field-value">0%</span> \
 					</span> \
-					<span class="article-feedback-rating-count"></span> \
+					<span class="articleFeedback-rating-count"></span> \
 				</div>'
 		},
 		
@@ -96,13 +96,13 @@
 					resultsshow = mediaWiki.msg( 'articlefeedback-results-show' );
 					submitbutton = mediaWiki.msg( 'articlefeedback-submit' );
 				$structure
-					.find( '#article-feedback-rate legend' )
+					.find( '#articleFeedback-rate legend' )
 						.html( yourfeedback )
 						.end()
-					.find( '.article-feedback-rate-instructions' )
+					.find( '.articleFeedback-rate-instructions' )
 						.html( instructions )
 						.end()
-					.find( '.article-feedback-rate-feedback' )
+					.find( '.articleFeedback-rate-feedback' )
 						.html( feedback )
 							.find( '.feedbacklink' )
 							.wrap( '<a href="#"></a>' )
@@ -111,10 +111,10 @@
 								.end()
 							.end()
 						.end()
-					.find( '#article-feedback-ratings legend' )
+					.find( '#articleFeedback-ratings legend' )
 						.html( articlerating )
 						.end()
-					.find( '.article-feedback-show-ratings' )
+					.find( '.articleFeedback-show-ratings' )
 						.html( resultsshow )
 							.find( '.showlink' )
 							.wrap( '<a href="#"></a>' )
@@ -123,7 +123,7 @@
 								.end()
 							.end()
 						.end()
-					.find( '.article-feedback-hide-ratings' )
+					.find( '.articleFeedback-hide-ratings' )
 						.html( resultshide )
 							.find ( '.hidelink' )
 							.wrap( '<a href="#"></a>' )
@@ -132,13 +132,13 @@
 								.end()
 							.end()
 						.end()
-					.find( '.article-feedback-submit input' )
+					.find( '.articleFeedback-submit input' )
 						.val( submitbutton )
 					.end();
 				// hide the feedback link if we need to
 				if( $.cookie( 'mwArticleFeedbackHideFeedbackLink' ) ) {
 					$structure
-						.find( '.article-feedback-rate-feedback' )
+						.find( '.articleFeedback-rate-feedback' )
 						.hide();
 				}
 				for ( var i = 0; i < settings.fieldMessages.length; i++ ) { 
@@ -165,21 +165,21 @@
 					// initialize the rating html
 					$rating
 						.attr( 'id',  'articlefeedback-rating-' + field )
-						.find( '.article-feedback-rating-field-name' )
+						.find( '.articleFeedback-rating-field-name' )
 							.html( label )
 							.end()
-						.find( '.article-feedback-rating-count' )
+						.find( '.articleFeedback-rating-count' )
 							.html( count );
 					// append the field and rating html
 					$structure
-						.find( '.article-feedback-rating-fields' )
+						.find( '.articleFeedback-rating-fields' )
 							.append( $field )
 							.end()
-						.find( '#article-feedback-ratings' )
+						.find( '#articleFeedback-ratings' )
 							.append( $rating );
 				}
 				// store our settings and configuration for later
-				$structure.find( '#article-feedback' )
+				$structure.find( '#articleFeedback' )
 					.data(
 						'articleFeedback-context',
 						{ 'settings': settings, 'config': config }
@@ -191,13 +191,13 @@
 				
 				// set the height of our smaller fieldset to match the taller
 				if (
-					$( '#article-feedback-rate' ).height() >
-						$( '#article-feedback-ratings' ).height() ) {
-					$( '#article-feedback-ratings' )
-						.css( 'minHeight', $( '#article-feedback-rate' ).height() );
+					$( '#articleFeedback-rate' ).height() >
+						$( '#articleFeedback-ratings' ).height() ) {
+					$( '#articleFeedback-ratings' )
+						.css( 'minHeight', $( '#articleFeedback-rate' ).height() );
 				} else {
-					$( '#article-feedback-rate' )
-						.css( 'minHeight', $( '#article-feedback-ratings' ).height() );
+					$( '#articleFeedback-rate' )
+						.css( 'minHeight', $( '#articleFeedback-ratings' ).height() );
 				}
 				// attempt to fetch the ratings 
 				$.ArticleFeedback.fn.getRatingData();
@@ -216,7 +216,7 @@
 										.removeClass( 'ui-stars-star-stale' )
 										.removeClass( 'ui-stars-star-rated' );
 									// enable our submit button if it's still disabled
-									$( '#article-feedback input:disabled' )
+									$( '#articleFeedback input:disabled' )
 										.removeAttr( 'disabled' ); 
 								} );
 							}
@@ -230,29 +230,29 @@
 							.tipsy( { gravity : 'se', opacity: '0.9' } ) );
 				} );
 				// bind submit event to the form
-				$( '#article-feedback' )
+				$( '#articleFeedback' )
 					.submit( function() { $.ArticleFeedback.fn.submitRating(); return false; } );
 				// prevent the submit button for being active until all ratings are filled out
-				$( '#article-feedback input[type=submit]' )
+				$( '#articleFeedback input[type=submit]' )
 					.attr( 'disabled', 'disabled' );
 			},
 			'showRatings': function() {
-				$( '#article-feedback-ratings' )
-					.removeClass( 'article-feedback-ratings-disabled' )
-					.find( '.article-feedback-show-ratings' )
+				$( '#articleFeedback-ratings' )
+					.removeClass( 'articleFeedback-ratings-disabled' )
+					.find( '.articleFeedback-show-ratings' )
 					.hide()
 					.end()
-					.find( '.article-feedback-hide-ratings' )
+					.find( '.articleFeedback-hide-ratings' )
 					.show();
 				return false;
 			},
 			'hideRatings': function() {
-				$( '#article-feedback-ratings' )
-					.addClass( 'article-feedback-ratings-disabled' )
-					.find( '.article-feedback-hide-ratings' )
+				$( '#articleFeedback-ratings' )
+					.addClass( 'articleFeedback-ratings-disabled' )
+					.find( '.articleFeedback-hide-ratings' )
 					.hide()
 					.end()
-					.find( '.article-feedback-show-ratings' )
+					.find( '.articleFeedback-show-ratings' )
 					.show();
 				return false;
 
@@ -260,7 +260,7 @@
 			
 			// Request the ratings data for the current article
 			'getRatingData': function() {
-				var config = $( '#article-feedback' ).data( 'articleFeedback-context' ).config;
+				var config = $( '#articleFeedback' ).data( 'articleFeedback-context' ).config;
 				var requestData = {
 					'action': 'query',
 					'list': 'articlefeedback',
@@ -279,12 +279,12 @@
 					success: $.ArticleFeedback.fn.afterGetRatingData,
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
 						$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-error' ),
-							{ 'class': 'article-feedback-error-msg' } );
+							{ 'class': 'articleFeedback-error-msg' } );
 					}
 				} );
 			},
 			'afterGetRatingData' : function( data ) {
-				var settings = $( '#article-feedback' ).data( 'articleFeedback-context' ).settings,
+				var settings = $( '#articleFeedback' ).data( 'articleFeedback-context' ).settings,
 					userHasRated = false;
 				// add the correct data to the markup
 				if ( typeof data.query != 'undefined' && typeof data.query.articlefeedback != 'undefined' &&
@@ -296,10 +296,10 @@
 							total = ( rating.total / count ).toFixed( 1 ),
 							label = mediaWiki.msg( 'articlefeedback-noratings', total, count );
 						$rating
-							.find( '.article-feedback-rating-field-value' )
+							.find( '.articleFeedback-rating-field-value' )
 							.text( total )
 							.end()
-							.find( '.article-feedback-rating-count' )
+							.find( '.articleFeedback-rating-count' )
 							.html( label );
 						if( rating.userrating ) {
 							userHasRated = true;
@@ -319,14 +319,14 @@
 							.addClass( 'ui-stars-star-stale' );
 						// add the stale message
 						var msg = mediaWiki.msg( 'articlefeedback-stalemessage-norevisioncount' );
-						$.ArticleFeedback.fn.flashNotice( msg, { 'class': 'article-feedback-stale-msg' } );
+						$.ArticleFeedback.fn.flashNotice( msg, { 'class': 'articleFeedback-stale-msg' } );
 					} else {
 						// if it's not a stale rating, we want to make the stars blue
 						$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
 					}
 				} 
 				// initialize the ratings 
-				$( '.article-feedback-rating-field-value' ).each( function() {
+				$( '.articleFeedback-rating-field-value' ).each( function() {
 					$(this)
 						.css( {
 							'width': 120 - ( 120 * ( parseFloat( $(this).text() ) / 5 ) ) + 'px'
@@ -334,13 +334,13 @@
 				} );
 			},
 			'submitRating': function() {
-				var config = $( '#article-feedback' ).data( 'articleFeedback-context' ).config;
+				var config = $( '#articleFeedback' ).data( 'articleFeedback-context' ).config;
 				// clear out the stale message
 				$.ArticleFeedback.fn.flashNotice( );
 				
 				// lock the star inputs & submit
 				$( '.rating-field' ).stars( 'disable' );
-				$( '#article-feedback input' ).attr( 'disabled', 'disabled' ); 
+				$( '#articleFeedback input' ).attr( 'disabled', 'disabled' ); 
 				// get our results for submitting
 				var results = {};
 				$( '.rating-field input' ).each( function() {
@@ -367,7 +367,7 @@
 					success: $.ArticleFeedback.fn.afterSubmitRating,
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
 						$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-error' ),
-							{ 'class': 'article-feedback-error-msg' } );
+							{ 'class': 'articleFeedback-error-msg' } );
 					}
 				} );
 			},
@@ -378,41 +378,41 @@
 				$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
 				// unlock the stars & submit
 				$( '.rating-field' ).stars( 'enable' );
-				$( '#article-feedback input:disabled' ).removeAttr( 'disabled' ); 
+				$( '#articleFeedback input:disabled' ).removeAttr( 'disabled' ); 
 				// update the results
 				
 				// show the results
 				$.ArticleFeedback.fn.showRatings();
 				// say thank you
 				$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-thanks' ),
-					{ 'class': 'article-feedback-success-msg' } );
+					{ 'class': 'articleFeedback-success-msg' } );
 			},
 			// places a message on the interface
 			'flashNotice': function( text, options ) {
 				if ( arguments.length == 0 ) {
 					// clear existing messages, but don't add a new one
-					$( '#article-feedback .article-feedback-flash' ).remove();
+					$( '#articleFeedback .articleFeedback-flash' ).remove();
 				} else {
 					// clear and add a new message
-					$( '#article-feedback .article-feedback-flash' ).remove();
+					$( '#articleFeedback .articleFeedback-flash' ).remove();
 					var className = options['class'];
 					// create our new message
 					$msg = $( '<div />' )
-						.addClass( 'article-feedback-flash' )
+						.addClass( 'articleFeedback-flash' )
 						.html( text );
 					// if the class option was passed, add it
 					if( options['class'] ) {
 						$msg.addClass( options['class'] );
 					}
 					// place our new message on the page
-					$( '#article-feedback .article-feedback-submit' )
+					$( '#articleFeedback .articleFeedback-submit' )
 						.append( $msg );
 				}
 			},
 			'showFeedback': function() {
-				var $dialogDiv = $( '#article-feedback-dialog' );
+				var $dialogDiv = $( '#articleFeedback-dialog' );
 				if ( $dialogDiv.size() == 0 ) {
-					$dialogDiv = $( '<div id="article-feedback-dialog" class="loading" />' )
+					$dialogDiv = $( '<div id="articleFeedback-dialog" class="loading" />' )
 						.dialog( {
 							width: 600,
 							height: 400,
@@ -423,7 +423,7 @@
 							close: function() {
 								$(this)
 									.dialog( 'option', 'height', 400 )
-									.find( '.article-feedback-success-msg, .article-feedback-error-msg' )
+									.find( '.articleFeedback-success-msg, .articleFeedback-error-msg' )
 									.remove()
 									.end()
 									.find( 'form' )
@@ -442,7 +442,7 @@
 				return false;
 			},
 			'submitFeedback': function() {
-				var $dialogDiv = $( '#article-feedback-dialog' );
+				var $dialogDiv = $( '#articleFeedback-dialog' );
 				$dialogDiv
 					.find( 'form' )
 					.hide()
@@ -479,7 +479,7 @@
 						var success = $( data ).find( '.simplesurvey-success' ).size() > 0;
 						// TODO: Style success-msg, error-msg
 						var $msgDiv = $( '<div />' )
-							.addClass( success ? 'article-feedback-success-msg' : 'article-feedback-error-msg' )
+							.addClass( success ? 'articleFeedback-success-msg' : 'articleFeedback-error-msg' )
 							.html( mediaWiki.msg( success? 'articlefeedback-survey-thanks' : 'articlefeedback-error' ) )
 							.appendTo( $dialogDiv );
 						$dialogDiv.removeClass( 'loading' );
@@ -490,7 +490,7 @@
 						
 						if ( success ) {
 							// Hide the dialog link
-							$( '#article-feedback .article-feedback-rate-feedback' ).hide();
+							$( '#articleFeedback .articleFeedback-rate-feedback' ).hide();
 							// set a cookie to keep the dialog link hidden
 							$.cookie( 'mwArticleFeedbackHideFeedbackLink', true, { 'expires': 30, 'path': '/' } );
 							
@@ -499,7 +499,7 @@
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
 						// TODO: Duplicates code, factor out, maybe
 						var $msgDiv = $( '<div />' )
-							.addClass( 'article-feedback-error-msg' )
+							.addClass( 'articleFeedback-error-msg' )
 							.html( mediaWiki.msg( 'articlefeedback-error' ) )
 							.appendTo( $dialogDiv );
 						$dialogDiv.removeClass( 'loading' );
