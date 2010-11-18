@@ -56,7 +56,7 @@ class ArticleFeedbackHooks {
 			global $wgExtNewTables;
 			$wgExtNewTables[] = array(
 				'article_feedback',
-				dirname( __FILE__ ) . '/ArticleFeedback.sql'
+				dirname( __FILE__ ) . '/sql/ArticleFeedback.sql'
 			);
 		} else {
 			$dir = dirname( __FILE__ );
@@ -65,10 +65,10 @@ class ArticleFeedbackHooks {
 		    if ( !$db->tableExists( 'article_feedback' ) ) {
 				if ( $db->tableExists( 'article_assessment' ) ) {
 					$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
-						$dir . '/RenameTables.sql', true ) ); // Rename tables
+						$dir . '/sql/RenameTables.sql', true ) ); // Rename tables
 				} else {
 					$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
-						$dir . '/ArticleFeedback.sql', true ) ); // Initial install tables
+						$dir . '/sql/ArticleFeedback.sql', true ) ); // Initial install tables
 				}
 			}
 		}
