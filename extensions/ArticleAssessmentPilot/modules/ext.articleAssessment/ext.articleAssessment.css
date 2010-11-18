@@ -39,10 +39,10 @@
 	height: 24px;
 	display: block;
 	float: right;
-	background: url(images/question.gif) 0 50% no-repeat;
+	background: url(images/question.png) 0 50% no-repeat;
 }
 .article-assessment-wrapper .rating-field-hint:hover {
-	background: url(images/question-hover.gif) 0 50% no-repeat;
+	background: url(images/question-hover.png) 0 50% no-repeat;
 }
 
 .article-assessment-wrapper .article-assessment-flash {
@@ -72,7 +72,7 @@
 	font-size: 11px;
 }
 .article-assessment-wrapper .article-assessment-rating-field-value-wrapper {
-	background: url(images/rating_bg.gif) 0 0 no-repeat;
+	background: url(images/rating-base.png) 0 0 no-repeat;
 	width: 120px;
 	height: 13px;
 	display: block;
@@ -95,7 +95,7 @@
 	float: right;
 }
 .article-assessment-wrapper .article-assessment-rating-field-value-wrapper .article-assessment-rating-field-value {
-	background: url(images/rating_bar.gif) 0 0 no-repeat;
+	background: url(images/rating-bar.png) 0 0 no-repeat;
 	height: 9px;
 	float: right;
 	display: block;
@@ -116,7 +116,7 @@
 	float: right;
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value-wrapper {
-	background: urlimages/rating_disabled_bg.gif) 0 0 no-repeat;
+	background: urlimages/rating-base-disabled.png) 0 0 no-repeat;
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value {
 	display: none;
