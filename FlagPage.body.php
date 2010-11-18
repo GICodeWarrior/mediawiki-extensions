@@ -125,7 +125,7 @@ class FlagPage extends SpecialPage {
 		}
 		$id = Title::newFromText( $page )->getArticleId();
 		if ($id==0) { # Page does not exist. Show preview page
-			$wgOut->addWikiMsg( 'flagpage-nonexistent', $page );
+			$wgOut->wrapWikiMsg( "<div class='error plainlinks'>\n$1</div>\n", array( 'flagpage-nonexistent', $page ) );
 			$this->preview( $page, $template );
 			return;
 		}

@@ -9,7 +9,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Church of emacs',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FlagPage',
 	'descriptionmsg' => 'flagarticle-desc',
-	'version' => '0.1.1beta',
+	'version' => '0.1.2beta',
 );
  
 $dir = dirname(__FILE__) . '/';
