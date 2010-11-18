@@ -1465,7 +1465,7 @@ $messages['nn'] = array(
 	'imagetagging-images' => 'bilete',
 	'imagetagging-inthisimage' => 'På dette biletet: $1',
 	'imagetagging-logentry' => 'Fjerna merke til sida [[$1]] av $2',
-	'imagetagging-log-tagged' => 'Biletet [[$1|$2]] blei merka til sida [[$3]] av $4',
+	'imagetagging-log-tagged' => 'Biletet [[$1|$2]] blei merkt til sida [[$3]] av $4',
 	'imagetagging-new' => '<sup><span style="color:red">Ny!</span></sup>',
 	'imagetagging-removetag' => 'fjern merke',
 	'imagetagging-done-button' => 'Ferdig med å merkja',
