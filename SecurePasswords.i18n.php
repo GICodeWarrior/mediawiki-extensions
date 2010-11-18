@@ -134,19 +134,20 @@ Ha de:',
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'securepasswords-desc' => 'Erzeugt sicherere Passwort-Hashes und fügt eine Passwortstärkenprüfung hinzu',
-	'securepasswords-valid' => 'Dein Passwort ist ungültig oder zu kurz.
+	'securepasswords-valid' => 'Das Passwort ist ungültig oder zu kurz.
 Es muss:',
 	'securepasswords-minlength' => 'mindestens $1 {{PLURAL:$1|Zeichen|Zeichen}} lang sein',
 	'securepasswords-lowercase' => 'mindestens einen Kleinbuchstaben enthalten',
 	'securepasswords-uppercase' => 'mindestens einen Großbuchstaben enthalten',
 	'securepasswords-digit' => 'mindestens eine Ziffer enthalten',
 	'securepasswords-special' => 'mindestens ein Sonderzeichen enthalten (Sonderzeichen sind: $1)',
-	'securepasswords-username' => 'sich von deinem Benutzernamen unterscheiden',
+	'securepasswords-username' => 'sich vom Benutzernamen unterscheiden',
 	'securepasswords-word' => 'etwas anderes sein als ein Wort',
 );
 
