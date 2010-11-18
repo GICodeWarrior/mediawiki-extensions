@@ -1,42 +1,42 @@
 <?php
 /**
- * Hooks for ArticleAssessmentPilot
+ * Hooks for ArticleFeedback
  *
  * @file
  * @ingroup Extensions
  */
 
-class ArticleAssessmentPilotHooks {
+class ArticleFeedbackHooks {
 	
 	protected static $modules = array(
-		'ext.articleAssessment' => array(
-			'scripts' => 'ext.articleAssessment/ext.articleAssessment.js',
-			'styles' => 'ext.articleAssessment/ext.articleAssessment.css',
+		'ext.articleFeedback' => array(
+			'scripts' => 'ext.articleFeedback/ext.articleFeedback.js',
+			'styles' => 'ext.articleFeedback/ext.articleFeedback.css',
 			'messages' => array(
-				'articleassessment',
-				'articleassessment-desc',
-				'articleassessment-yourfeedback',
-				'articleassessment-pleaserate',
-				'articleassessment-submit',
-				'articleassessment-rating-wellsourced',
-				'articleassessment-rating-neutrality',
-				'articleassessment-rating-completeness',
-				'articleassessment-rating-readability',
-				'articleassessment-rating-wellsourced-tooltip',
-				'articleassessment-rating-neutrality-tooltip',
-				'articleassessment-rating-completeness-tooltip',
-				'articleassessment-rating-readability-tooltip',
-				'articleassessment-error',
-				'articleassessment-thanks',
-				'articleassessment-articlerating',
-				'articleassessment-featurefeedback',
-				'articleassessment-noratings',
-				'articleassessment-stalemessage-revisioncount',
-				'articleassessment-stalemessage-norevisioncount',
-				'articleassessment-results-show',
-				'articleassessment-results-hide',
-				'articleassessment-survey-title',
-				'articleassessment-survey-thanks',
+				'articlefeedback',
+				'articlefeedback-desc',
+				'articlefeedback-yourfeedback',
+				'articlefeedback-pleaserate',
+				'articlefeedback-submit',
+				'articlefeedback-rating-wellsourced',
+				'articlefeedback-rating-neutrality',
+				'articlefeedback-rating-completeness',
+				'articlefeedback-rating-readability',
+				'articlefeedback-rating-wellsourced-tooltip',
+				'articlefeedback-rating-neutrality-tooltip',
+				'articlefeedback-rating-completeness-tooltip',
+				'articlefeedback-rating-readability-tooltip',
+				'articlefeedback-error',
+				'articlefeedback-thanks',
+				'articlefeedback-articlerating',
+				'articlefeedback-featurefeedback',
+				'articlefeedback-noratings',
+				'articlefeedback-stalemessage-revisioncount',
+				'articlefeedback-stalemessage-norevisioncount',
+				'articlefeedback-results-show',
+				'articlefeedback-results-hide',
+				'articlefeedback-survey-title',
+				'articlefeedback-survey-thanks',
 			),
 			'dependencies' => array( 'jquery.ui.dialog', 'jquery.tipsy', 'jquery.stars' ),
 		),
@@ -55,12 +55,12 @@ class ArticleAssessmentPilotHooks {
 		if ( $updater === null ) {
 			global $wgExtNewTables;
 			$wgExtNewTables[] = array(
-				'article_assessment',
-				dirname( __FILE__ ) . '/ArticleAssessmentPilot.sql'
+				'article_feedback',
+				dirname( __FILE__ ) . '/ArticleFeedback.sql'
 			);
 		} else {
-			$updater->addExtensionUpdate( array( 'addTable', 'article_assessment',
-				dirname( __FILE__ ) . '/ArticleAssessmentPilot.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
+				dirname( __FILE__ ) . '/ArticleFeedback.sql', true ) );
 		}
 		return true;
 	}
@@ -69,9 +69,9 @@ class ArticleAssessmentPilotHooks {
 	 * ParserTestTables hook
 	 */
 	public static function parserTestTables( &$tables ) {
-		$tables[] = 'article_assessment';
-		$tables[] = 'article_assessment_pages';
-		$tables[] = 'article_assessment_ratings';
+		$tables[] = 'article_feedback';
+		$tables[] = 'article_feedback_pages';
+		$tables[] = 'article_feedback_ratings';
 		return true;
 	}
 	
@@ -79,7 +79,7 @@ class ArticleAssessmentPilotHooks {
 	 * BeforePageDisplay hook
 	 */
 	public static function beforePageDisplay( $out ) {
-		global $wgRequest, $wgArticleAssessmentCategories;
+		global $wgRequest, $wgArticleFeedbackCategories;
 		
 		$title = $out->getTitle();
 		
@@ -93,10 +93,10 @@ class ArticleAssessmentPilotHooks {
 			&& !$wgRequest->getCheck( 'diff' )
 			&& !$wgRequest->getCheck( 'oldid' )
 			// Articles in valid categories
-			&& count( $wgArticleAssessmentCategories )
-			&& self::isInCategories( $title->getArticleId(), $wgArticleAssessmentCategories )
+			&& count( $wgArticleFeedbackCategories )
+			&& self::isInCategories( $title->getArticleId(), $wgArticleFeedbackCategories )
 		) {
-			$out->addModules( 'ext.articleAssessment' );
+			$out->addModules( 'ext.articleFeedback' );
 		}
 		return true;
 	}
@@ -107,7 +107,7 @@ class ArticleAssessmentPilotHooks {
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
 		global $wgExtensionAssetsPath;
 		$localpath = dirname( __FILE__ ) . '/modules';
-		$remotepath = "$wgExtensionAssetsPath/ArticleAssessmentPilot/modules";
+		$remotepath = "$wgExtensionAssetsPath/ArticleFeedback/modules";
 		foreach ( self::$modules as $name => $resources ) {
 			$resourceLoader->register(
 				$name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath )

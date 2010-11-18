@@ -1,6 +1,6 @@
 <?php
 /**
- * Article Assessment Pilot extension
+ * Article Feedback extension
  * 
  * @file
  * @ingroup Extensions
@@ -14,44 +14,44 @@
 
 // If the number of page revisions (since users last rating) is greater than this then consider the
 // last rating "stale"
-$wgArticleAssessmentStaleCount = 5;
+$wgArticleFeedbackStaleCount = 5;
 
 // Array of the "ratings" id's to store. Allows it to be a bit more dynamic
-$wgArticleAssessmentRatings = array( 1, 2, 3, 4 );
+$wgArticleFeedbackRatings = array( 1, 2, 3, 4 );
 
 // Which categories the pages must belong to have the rating widget added (with _ in text)
 // Extension is "disabled" if this field is an empty array (as per default configuration)
-$wgArticleAssessmentCategories = array();
+$wgArticleFeedbackCategories = array();
 
-// Would ordinarily call this articleassessment but survey names are 16 chars max
+// Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,
-	'submit-msg' => 'articleassessment-survey-submit',
+	'submit-msg' => 'articlefeedback-survey-submit',
 	'questions' => array(
 		'whyrated' => array(
-			'question' => 'articleassessment-survey-question-whyrated',
+			'question' => 'articlefeedback-survey-question-whyrated',
 			'type' => 'checks',
 			'answers' => array(
-				'contribute-rating' => 'articleassessment-survey-answer-whyrated-contribute-rating',
-				'development' => 'articleassessment-survey-answer-whyrated-development',
-				'contribute-wiki' => 'articleassessment-survey-answer-whyrated-contribute-wiki',
-				'sharing-opinion' => 'articleassessment-survey-answer-whyrated-sharing-opinion',
-				'didntrate' => 'articleassessment-survey-answer-whyrated-didntrate',
+				'contribute-rating' => 'articlefeedback-survey-answer-whyrated-contribute-rating',
+				'development' => 'articlefeedback-survey-answer-whyrated-development',
+				'contribute-wiki' => 'articlefeedback-survey-answer-whyrated-contribute-wiki',
+				'sharing-opinion' => 'articlefeedback-survey-answer-whyrated-sharing-opinion',
+				'didntrate' => 'articlefeedback-survey-answer-whyrated-didntrate',
 			),
-			'other' => 'articleassessment-survey-answer-whyrated-other',
+			'other' => 'articlefeedback-survey-answer-whyrated-other',
 		),
 		'useful' => array(
-			'question' => 'articleassessment-survey-question-useful',
+			'question' => 'articlefeedback-survey-question-useful',
 			'type' => 'boolean',
-			'iffalse' => 'articleassessment-survey-question-useful-iffalse',
+			'iffalse' => 'articlefeedback-survey-question-useful-iffalse',
 		),
 		'expert' => array(
-			'question' => 'articleassessment-survey-question-expert',
+			'question' => 'articlefeedback-survey-question-expert',
 			'type' => 'boolean',
-			'iftrue' => 'articleassessment-survey-question-expert-iftrue',
+			'iftrue' => 'articlefeedback-survey-question-expert-iftrue',
 		),
 		'comments' => array(
-			'question' => 'articleassessment-survey-question-comments',
+			'question' => 'articlefeedback-survey-question-comments',
 			'type' => 'text',
 		),
 	),
@@ -62,7 +62,7 @@ $wgValidSurveys[] = 'articlerating';
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'Article Assessment Pilot',
+	'name' => 'Article Feedback',
 	'author' => array(
 		'Sam Reed',
 		'Roan Kattouw',
@@ -72,23 +72,23 @@ $wgExtensionCredits['other'][] = array(
 		'Nimish Gautam',
 	),
 	'version' => '0.2.0',
-	'descriptionmsg' => 'articleassessment-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleAssessmentPilot'
+	'descriptionmsg' => 'articlefeedback-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleFeedback'
 );
 $dir = dirname( __FILE__ ) . '/';
 // Autoloading
-$wgAutoloadClasses['ApiQueryArticleAssessment'] = $dir . 'api/ApiQueryArticleAssessment.php';
-$wgAutoloadClasses['ApiArticleAssessment'] = $dir . 'api/ApiArticleAssessment.php';
-$wgAutoloadClasses['ArticleAssessmentPilotHooks'] = $dir . 'ArticleAssessmentPilot.hooks.php';
-$wgExtensionMessagesFiles['ArticleAssessmentPilot'] = $dir . 'ArticleAssessmentPilot.i18n.php';
+$wgAutoloadClasses['ApiQueryArticleFeedback'] = $dir . 'api/ApiQueryArticleFeedback.php';
+$wgAutoloadClasses['ApiArticleFeedback'] = $dir . 'api/ApiArticleFeedback.php';
+$wgAutoloadClasses['ArticleFeedbackHooks'] = $dir . 'ArticleFeedback.hooks.php';
+$wgExtensionMessagesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.i18n.php';
 // Hooks
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleAssessmentPilotHooks::loadExtensionSchemaUpdates';
-$wgHooks['ParserTestTables'][] = 'ArticleAssessmentPilotHooks::parserTestTables';
-$wgHooks['BeforePageDisplay'][] = 'ArticleAssessmentPilotHooks::beforePageDisplay';
-$wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleAssessmentPilotHooks::resourceLoaderRegisterModules';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackHooks::loadExtensionSchemaUpdates';
+$wgHooks['ParserTestTables'][] = 'ArticleFeedbackHooks::parserTestTables';
+$wgHooks['BeforePageDisplay'][] = 'ArticleFeedbackHooks::beforePageDisplay';
+$wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleFeedbackHooks::resourceLoaderRegisterModules';
 // API Registration
-$wgAPIListModules['articleassessment'] = 'ApiQueryArticleAssessment';
-$wgAPIModules['articleassessment'] = 'ApiArticleAssessment';
+$wgAPIListModules['articlefeedback'] = 'ApiQueryArticleFeedback';
+$wgAPIModules['articlefeedback'] = 'ApiArticleFeedback';
 
 /* XXX: Survey setup */
 
