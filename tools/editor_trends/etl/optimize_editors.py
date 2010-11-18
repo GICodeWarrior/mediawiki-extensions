@@ -21,7 +21,9 @@ from multiprocessing import Queue
 from Queue import Empty
 from operator import itemgetter
 import datetime
+import sys
 
+sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 from database import db
@@ -154,7 +156,7 @@ def run_optimize_editors(dbname):
               }
     print len(ids)
     ids = list(ids)
-    chunks = dict(0, ids)
+    chunks = {0: ids}
     pc.build_scaffolding(pc.load_queue, optimize_editors, chunks, False, False, **kwargs)
 
 

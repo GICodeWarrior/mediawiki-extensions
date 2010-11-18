@@ -28,6 +28,14 @@ import heapq
 from multiprocessing import Queue
 from Queue import Empty
 import datetime
+import sys
+
+sys.path.append('..')
+import configuration
+settings = configuration.Settings()
+
+
+import utils
 
 
 
@@ -68,6 +76,7 @@ def merge(front, back):
 
 def readline(file):
     for line in file:
+        print file.stream.name
         line = line.replace('\n', '')
         if line == '':
             continue

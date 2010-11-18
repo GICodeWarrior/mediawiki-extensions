@@ -17,8 +17,9 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-11-16'
 __version__ = '0.1'
 
-
+import os
 import sys
+from Queue import Empty
 
 sys.path.append('..')
 import configuration 
@@ -26,7 +27,9 @@ settings = configuration.Settings()
 from database import db
 from database import cache
 from utils import utils
+from utils import sort
 import process_constructor as pc
+
 
 
 def store_editors(input, filename, dbname):
@@ -77,17 +80,17 @@ def mergesort_external_launcher(dbname, input, output):
     chunks = utils.split_list(files, int(x))
     '''1st iteration external mergesort'''
     for chunk in chunks:
-        filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.encoding) for file in chunks[chunk]]
-        filename = merge_sorted_files(output, filehandles, chunk)
-        filehandles = [fh.close() for fh in filehandles]
+        #filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.encoding) for file in chunks[chunk]]
+        #filename = sort.merge_sorted_files(output, filehandles, chunk)
+        #filehandles = [fh.close() for fh in filehandles]
         pass
     '''2nd iteration external mergesort, if necessary'''
     if len(chunks) > 1:
         files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
         filehandles = [utils.create_txt_filehandle(output, file, 'r', settings.encoding) for file in files]
-        filename = merge_sorted_files(output, filehandles, 'final')
+        filename = sort.merge_sorted_files(output, filehandles, 'final')
         filehandles = [fh.close() for fh in filehandles]
-        filename = 'merged_final.txt'
+    filename = 'merged_final.txt'
     store_editors(output, filename, dbname)
 
 
@@ -102,8 +105,8 @@ def mergesort_feeder(input_queue, result_queue, **kwargs):
             fh.close()
             data = [d.replace('\n', '') for d in data]
             data = [d.split('\t') for d in data]
-            sorted_data = mergesort(data)
-            write_sorted_file(sorted_data, file, output)
+            sorted_data = sort.mergesort(data)
+            sort.write_sorted_file(sorted_data, file, output)
         except Empty:
             break
 
@@ -136,5 +139,5 @@ if __name__ == '__main__':
     input = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
     output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
     dbname = 'enwiki'
-    mergesort_launcher(input, output)
+    #mergesort_launcher(input, output)
     mergesort_external_launcher(dbname, output, output)

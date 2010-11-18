@@ -33,9 +33,9 @@ import languages
 from utils import utils
 from utils import dump_downloader
 from etl import chunker
-import map_wiki_editors
-import optimize_editors
-import construct_datasets
+from etl import extract
+from etl import optimize_editors
+from etl import construct_datasets
 import config
 
 
@@ -155,7 +155,7 @@ def launch_zip_extractor(args, location, file):
 
 def mongodb_script_launcher(args, location, filename, project, full_project, language_code, language):
     print 'mongodb_script_launcher'
-    map_wiki_editors.run_parse_editors(project, language_code, location)
+    extract.run_parse_editors(project, language_code, location)
 
 
 def sort_launcher(args, location, filename, project, full_project, language_code):

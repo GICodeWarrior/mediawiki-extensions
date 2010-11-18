@@ -21,9 +21,10 @@ from multiprocessing import Queue
 from Queue import Empty
 import datetime
 from dateutil.relativedelta import *
-
+import sys
 import progressbar
 
+sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 from utils import models, utils

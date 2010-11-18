@@ -74,7 +74,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
         else:
             result_queues[i] = False
 
-    if settings.progress_bar:
+    if settings.progressbar:
         size = sum([input_queues[q].qsize() for q in input_queues])
         pbar = progressbar.ProgressBar(maxval=size).start()
         kwargs['pbar'] = pbar
