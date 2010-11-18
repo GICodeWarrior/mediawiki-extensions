@@ -336,6 +336,7 @@ $4',
 	'todo-list-change' => 'Izmjena',
 	'todo-list-cancel' => 'Odustani',
 	'todo-new-item' => 'Nova stavka',
+	'todo-not-updated' => 'Ne mogu ažurirati bazu podataka',
 	'todo-issue-summary' => 'Sažetak zadatka:',
 	'todo-form-details' => 'Detalji:',
 	'todo-form-email' => 'Da bi ste dobili obavještenje putem e-maila kada je stavka zatvorena, unesite Vašu adresu ovdje:',
@@ -1418,6 +1419,7 @@ $4',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
@@ -1431,7 +1433,7 @@ $messages['nn'] = array(
 Oppgåve: $2
 Fullført: $3
 
-Oppgåva er merka som fullført, med denne kommentaren:
+Oppgåva er merkt som fullført, med denne kommentaren:
 $4',
 	'todo-invalid-item' => 'Manglande eller ugyldig oppgåve',
 	'todo-update-else-item' => 'Prøver å oppdatere ein annan person sine oppgåver',
