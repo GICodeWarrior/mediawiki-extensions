@@ -43,7 +43,7 @@ def get_value(args, key):
     return getattr(args, key, None)
 
 
-def config_launcher(args, location, filename, project, full_project, language_code):
+def config_launcher(args, location, filename, project, full_project, language_code, language):
     config.load_configuration(args)
 
 
@@ -263,7 +263,8 @@ def main():
 
     parser.add_argument('-o', '--location', action='store',
                         help='Indicate where you want to store the downloaded file.',
-                        default=settings.input_location)
+                        )
+                        #default=settings.input_location)
 
     parser.add_argument('-f', '--file', action='store',
                         choices=file_choices,
