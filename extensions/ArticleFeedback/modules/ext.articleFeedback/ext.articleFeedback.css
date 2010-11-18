@@ -1,51 +1,51 @@
 /*
- * Styles for Article Assessment
+ * Styles for Article Feedback
  */
 
-.article-assessment-wrapper #article-assessment-rate,
-.article-assessment-wrapper #article-assessment-ratings {
+.article-feedback-wrapper #article-feedback-rate,
+.article-feedback-wrapper #article-feedback-ratings {
 	background: #f7f7f7;
 	float: left;
 }
 
-.article-assessment-wrapper #article-assessment-rate {
+.article-feedback-wrapper #article-feedback-rate {
 	width: 650px;
 	margin-right: 10px;
 }
-.article-assessment-wrapper legend {
+.article-feedback-wrapper legend {
 	font-weight: bold;
 }
-.article-assessment-wrapper .field-wrapper {
+.article-feedback-wrapper .field-wrapper {
 	float: left;
 	width: 270px;
 	padding-right: 28px;
 }
-.article-assessment-wrapper .rating-field {
+.article-feedback-wrapper .rating-field {
 	float: right;
 	width: 125px;
 	line-height: 24px;
 	padding-right: 5px;
 }
-.article-assessment-wrapper .rating-field-label{
+.article-feedback-wrapper .rating-field-label{
 	float: left;
 	font-weight: bold;
 	line-height: 24px;
 }
-.article-assessment-wrapper .rating-field-label {
+.article-feedback-wrapper .rating-field-label {
 	margin-right: 10px;
 }
-.article-assessment-wrapper .rating-field-hint {
+.article-feedback-wrapper .rating-field-hint {
 	width: 11px;
 	height: 24px;
 	display: block;
 	float: right;
 	background: url(images/question.png) 0 50% no-repeat;
 }
-.article-assessment-wrapper .rating-field-hint:hover {
+.article-feedback-wrapper .rating-field-hint:hover {
 	background: url(images/question-hover.png) 0 50% no-repeat;
 }
 
-.article-assessment-wrapper .article-assessment-flash {
+.article-feedback-wrapper .article-feedback-flash {
 	float: left;
 	font-size: 11px;
 	padding: 1px 5px;
@@ -53,25 +53,25 @@
 	text-align: left;
 	display: block;
 }
-.article-assessment-wrapper .article-assessment-stale-msg {
+.article-feedback-wrapper .article-feedback-stale-msg {
 	background: #d6f3ff;
 	border: 2px solid #5dc9f4;
 }
-.article-assessment-wrapper .article-assessment-success-msg {
+.article-feedback-wrapper .article-feedback-success-msg {
 	background: #e8e8e8;
 	border: 2px solid #006505;
 }
-.article-assessment-wrapper .article-assessment-error-msg {
+.article-feedback-wrapper .article-feedback-error-msg {
 	background: #e8e8e8;
 	border: 2px solid #a91100;
 }
-.article-assessment-wrapper .article-assessment-rating-field-name {
+.article-feedback-wrapper .article-feedback-rating-field-name {
 	float: left;
 	width: 110px;
 	font-weight: bold;
 	font-size: 11px;
 }
-.article-assessment-wrapper .article-assessment-rating-field-value-wrapper {
+.article-feedback-wrapper .article-feedback-rating-field-value-wrapper {
 	background: url(images/rating-base.png) 0 0 no-repeat;
 	width: 120px;
 	height: 13px;
@@ -81,56 +81,56 @@
 	text-indent: -9999px;
 	margin-top: 4px;
 }
-.article-assessment-wrapper .article-assessment-rate-instructions, 
-.article-assessment-wrapper .article-assessment-rate-feedback,
-.article-assessment-wrapper .article-assessment-show-ratings,
-.article-assessment-wrapper .article-assessment-hide-ratings {
+.article-feedback-wrapper .article-feedback-rate-instructions, 
+.article-feedback-wrapper .article-feedback-rate-feedback,
+.article-feedback-wrapper .article-feedback-show-ratings,
+.article-feedback-wrapper .article-feedback-hide-ratings {
 	font-size: 11px;
 	font-style: italic;
 }
-.article-assessment-wrapper .article-assessment-rate-instructions {
+.article-feedback-wrapper .article-feedback-rate-instructions {
 	float: left;
 }
-.article-assessment-wrapper .article-assessment-rate-feedback {
+.article-feedback-wrapper .article-feedback-rate-feedback {
 	float: right;
 }
-.article-assessment-wrapper .article-assessment-rating-field-value-wrapper .article-assessment-rating-field-value {
+.article-feedback-wrapper .article-feedback-rating-field-value-wrapper .article-feedback-rating-field-value {
 	background: url(images/rating-bar.png) 0 0 no-repeat;
 	height: 9px;
 	float: right;
 	display: block;
 }
-.article-assessment-wrapper .article-assessment-rating-fields {
+.article-feedback-wrapper .article-feedback-rating-fields {
 	margin: 8px 0;
 }
-.article-assessment-wrapper .article-assessment-rating-fields .field-wrapper {
+.article-feedback-wrapper .article-feedback-rating-fields .field-wrapper {
 	margin-bottom: 5px;
 }
-.article-assessment-rating-count {
+.article-feedback-rating-count {
 	font-size: 11px;
 	margin-left: 5px;
 	float: left;
 }
-.article-assessment-submit input {
+.article-feedback-submit input {
 	margin: 2px 0;
 	float: right;
 }
-.article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value-wrapper {
+.article-feedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-value-wrapper {
 	background: urlimages/rating-base-disabled.png) 0 0 no-repeat;
 }
-.article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value {
+.article-feedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-value {
 	display: none;
 }
-.article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-count {
+.article-feedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-count {
 	visibility: hidden;
 	
 }
-.article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-name {
+.article-feedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-name {
 	color: #9f9f9f;
 }
 
 /* Simple Survey Dialog Styling */
-#article-assessment-dialog.loading {
+#article-feedback-dialog.loading {
 	display: block;
 	height: 24px;
 	width: 24px;
@@ -138,49 +138,49 @@
 	text-indent: -9999px;
 	margin: 0 auto;
 }
-#article-assessment-dialog textarea {
+#article-feedback-dialog textarea {
 	margin-left: -2em;
 	padding-right: 2em;
 }
-.article-assessment-error-msg {
+.article-feedback-error-msg {
 	padding: 20px 0;
 }
 
 
 /* Self Clearing Floats */
-.article-assessment-wrapper .article-assessment-information:after,
-.article-assessment-wrapper .field-wrapper:after,
-.article-assessment-wrapper .article-assessment-rating-fields:after,
-.article-assessment-rating:after,
-.article-assessment-wrapper .article-assessment-submit:after,
-.article-assessment-wrapper .rating-fields:after {
+.article-feedback-wrapper .article-feedback-information:after,
+.article-feedback-wrapper .field-wrapper:after,
+.article-feedback-wrapper .article-feedback-rating-fields:after,
+.article-feedback-rating:after,
+.article-feedback-wrapper .article-feedback-submit:after,
+.article-feedback-wrapper .rating-fields:after {
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
 }
-.article-assessment-wrapper .field-wrapper,
-.article-assessment-wrapper .article-assessment-information,
-.article-assessment-wrapper .article-assessment-rating-fields,
-.article-assessment-rating,
-.article-assessment-wrapper .article-assessment-submit,
-.article-assessment-wrapper .rating-fields {
+.article-feedback-wrapper .field-wrapper,
+.article-feedback-wrapper .article-feedback-information,
+.article-feedback-wrapper .article-feedback-rating-fields,
+.article-feedback-rating,
+.article-feedback-wrapper .article-feedback-submit,
+.article-feedback-wrapper .rating-fields {
 	display: inline-block;
 }
-* html .article-assessment-wrapper .field-wrapper,
-* html .article-assessment-wrapper .article-assessment-information,
-* html .article-assessment-wrapper .article-assessment-rating-fields,
-* html .article-assessment-rating,
-* html .article-assessment-wrapper .article-assessment-submit,
-* html .article-assessment-wrapper .rating-fields {
+* html .article-feedback-wrapper .field-wrapper,
+* html .article-feedback-wrapper .article-feedback-information,
+* html .article-feedback-wrapper .article-feedback-rating-fields,
+* html .article-feedback-rating,
+* html .article-feedback-wrapper .article-feedback-submit,
+* html .article-feedback-wrapper .rating-fields {
 	height: 1%;
 }
-.article-assessment-wrapper .field-wrapper,
-.article-assessment-wrapper .article-assessment-information,
-.article-assessment-wrapper .article-assessment-rating-fields,
-.article-assessment-rating,
-.article-assessment-wrapper .article-assessment-submit,
-.article-assessment-wrapper .rating-fields {
+.article-feedback-wrapper .field-wrapper,
+.article-feedback-wrapper .article-feedback-information,
+.article-feedback-wrapper .article-feedback-rating-fields,
+.article-feedback-rating,
+.article-feedback-wrapper .article-feedback-submit,
+.article-feedback-wrapper .rating-fields {
 	display: block;
 }
