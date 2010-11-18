@@ -10,9 +10,9 @@ $messages['en'] = array(
 	'flagpage-templatelist' => '<!--
 Edit this page to configure templates to use.
 Examples:
-* [[Template:Unsourced|The article does not cite any references]]
-* [[Template:NPOV|The article is written in a biased way]]
-* [[Template:Delete|The article should be deleted]]
+* [[Template:Unsourced|The page does not cite any references]]
+* [[Template:NPOV|The page is written in a biased way]]
+* [[Template:Delete|The page should be deleted]]
 -->',
 	'flagpage-nopageselectedtitle' => 'No page selected',
 	'flagpage-nopageselected' => 'You did not specify a page',
