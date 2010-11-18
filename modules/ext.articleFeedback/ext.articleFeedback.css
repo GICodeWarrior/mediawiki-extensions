@@ -2,13 +2,13 @@
  * Styles for Article Feedback
  */
 
-.articleFeedback-wrapper #article-feedback-rate,
-.articleFeedback-wrapper #article-feedback-ratings {
+.articleFeedback-wrapper #articleFeedback-rate,
+.articleFeedback-wrapper #articleFeedback-ratings {
 	background: #f7f7f7;
 	float: left;
 }
 
-.articleFeedback-wrapper #article-feedback-rate {
+.articleFeedback-wrapper #articleFeedback-rate {
 	width: 650px;
 	margin-right: 10px;
 }
@@ -45,7 +45,7 @@
 	background: url(images/question-hover.png) 0 50% no-repeat;
 }
 
-.articleFeedback-wrapper .article-feedback-flash {
+.articleFeedback-wrapper .articleFeedback-flash {
 	float: left;
 	font-size: 11px;
 	padding: 1px 5px;
@@ -53,25 +53,25 @@
 	text-align: left;
 	display: block;
 }
-.articleFeedback-wrapper .article-feedback-stale-msg {
+.articleFeedback-wrapper .articleFeedback-stale-msg {
 	background: #d6f3ff;
 	border: 2px solid #5dc9f4;
 }
-.articleFeedback-wrapper .article-feedback-success-msg {
+.articleFeedback-wrapper .articleFeedback-success-msg {
 	background: #e8e8e8;
 	border: 2px solid #006505;
 }
-.articleFeedback-wrapper .article-feedback-error-msg {
+.articleFeedback-wrapper .articleFeedback-error-msg {
 	background: #e8e8e8;
 	border: 2px solid #a91100;
 }
-.articleFeedback-wrapper .article-feedback-rating-field-name {
+.articleFeedback-wrapper .articleFeedback-rating-field-name {
 	float: left;
 	width: 110px;
 	font-weight: bold;
 	font-size: 11px;
 }
-.articleFeedback-wrapper .article-feedback-rating-field-value-wrapper {
+.articleFeedback-wrapper .articleFeedback-rating-field-value-wrapper {
 	background: url(images/rating-base.png) 0 0 no-repeat;
 	width: 120px;
 	height: 13px;
@@ -81,56 +81,56 @@
 	text-indent: -9999px;
 	margin-top: 4px;
 }
-.articleFeedback-wrapper .article-feedback-rate-instructions, 
-.articleFeedback-wrapper .article-feedback-rate-feedback,
-.articleFeedback-wrapper .article-feedback-show-ratings,
-.articleFeedback-wrapper .article-feedback-hide-ratings {
+.articleFeedback-wrapper .articleFeedback-rate-instructions, 
+.articleFeedback-wrapper .articleFeedback-rate-feedback,
+.articleFeedback-wrapper .articleFeedback-show-ratings,
+.articleFeedback-wrapper .articleFeedback-hide-ratings {
 	font-size: 11px;
 	font-style: italic;
 }
-.articleFeedback-wrapper .article-feedback-rate-instructions {
+.articleFeedback-wrapper .articleFeedback-rate-instructions {
 	float: left;
 }
-.articleFeedback-wrapper .article-feedback-rate-feedback {
+.articleFeedback-wrapper .articleFeedback-rate-feedback {
 	float: right;
 }
-.articleFeedback-wrapper .article-feedback-rating-field-value-wrapper .article-feedback-rating-field-value {
+.articleFeedback-wrapper .articleFeedback-rating-field-value-wrapper .articleFeedback-rating-field-value {
 	background: url(images/rating-bar.png) 0 0 no-repeat;
 	height: 9px;
 	float: right;
 	display: block;
 }
-.articleFeedback-wrapper .article-feedback-rating-fields {
+.articleFeedback-wrapper .articleFeedback-rating-fields {
 	margin: 8px 0;
 }
-.articleFeedback-wrapper .article-feedback-rating-fields .field-wrapper {
+.articleFeedback-wrapper .articleFeedback-rating-fields .field-wrapper {
 	margin-bottom: 5px;
 }
-.article-feedback-rating-count {
+.articleFeedback-rating-count {
 	font-size: 11px;
 	margin-left: 5px;
 	float: left;
 }
-.article-feedback-submit input {
+.articleFeedback-submit input {
 	margin: 2px 0;
 	float: right;
 }
-.articleFeedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-value-wrapper {
+.articleFeedback-wrapper .articleFeedback-ratings-disabled .articleFeedback-rating-field-value-wrapper {
 	background: urlimages/rating-base-disabled.png) 0 0 no-repeat;
 }
-.articleFeedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-value {
+.articleFeedback-wrapper .articleFeedback-ratings-disabled .articleFeedback-rating-field-value {
 	display: none;
 }
-.articleFeedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-count {
+.articleFeedback-wrapper .articleFeedback-ratings-disabled .articleFeedback-rating-count {
 	visibility: hidden;
 	
 }
-.articleFeedback-wrapper .article-feedback-ratings-disabled .article-feedback-rating-field-name {
+.articleFeedback-wrapper .articleFeedback-ratings-disabled .articleFeedback-rating-field-name {
 	color: #9f9f9f;
 }
 
 /* Simple Survey Dialog Styling */
-#article-feedback-dialog.loading {
+#articleFeedback-dialog.loading {
 	display: block;
 	height: 24px;
 	width: 24px;
@@ -138,21 +138,21 @@
 	text-indent: -9999px;
 	margin: 0 auto;
 }
-#article-feedback-dialog textarea {
+#articleFeedback-dialog textarea {
 	margin-left: -2em;
 	padding-right: 2em;
 }
-.article-feedback-error-msg {
+.articleFeedback-error-msg {
 	padding: 20px 0;
 }
 
 
 /* Self Clearing Floats */
-.articleFeedback-wrapper .article-feedback-information:after,
+.articleFeedback-wrapper .articleFeedback-information:after,
 .articleFeedback-wrapper .field-wrapper:after,
-.articleFeedback-wrapper .article-feedback-rating-fields:after,
-.article-feedback-rating:after,
-.articleFeedback-wrapper .article-feedback-submit:after,
+.articleFeedback-wrapper .articleFeedback-rating-fields:after,
+.articleFeedback-rating:after,
+.articleFeedback-wrapper .articleFeedback-submit:after,
 .articleFeedback-wrapper .rating-fields:after {
 	content: ".";
 	display: block;
@@ -161,26 +161,26 @@
 	visibility: hidden;
 }
 .articleFeedback-wrapper .field-wrapper,
-.articleFeedback-wrapper .article-feedback-information,
-.articleFeedback-wrapper .article-feedback-rating-fields,
-.article-feedback-rating,
-.articleFeedback-wrapper .article-feedback-submit,
+.articleFeedback-wrapper .articleFeedback-information,
+.articleFeedback-wrapper .articleFeedback-rating-fields,
+.articleFeedback-rating,
+.articleFeedback-wrapper .articleFeedback-submit,
 .articleFeedback-wrapper .rating-fields {
 	display: inline-block;
 }
 * html .articleFeedback-wrapper .field-wrapper,
-* html .articleFeedback-wrapper .article-feedback-information,
-* html .articleFeedback-wrapper .article-feedback-rating-fields,
-* html .article-feedback-rating,
-* html .articleFeedback-wrapper .article-feedback-submit,
+* html .articleFeedback-wrapper .articleFeedback-information,
+* html .articleFeedback-wrapper .articleFeedback-rating-fields,
+* html .articleFeedback-rating,
+* html .articleFeedback-wrapper .articleFeedback-submit,
 * html .articleFeedback-wrapper .rating-fields {
 	height: 1%;
 }
 .articleFeedback-wrapper .field-wrapper,
-.articleFeedback-wrapper .article-feedback-information,
-.articleFeedback-wrapper .article-feedback-rating-fields,
-.article-feedback-rating,
-.articleFeedback-wrapper .article-feedback-submit,
+.articleFeedback-wrapper .articleFeedback-information,
+.articleFeedback-wrapper .articleFeedback-rating-fields,
+.articleFeedback-rating,
+.articleFeedback-wrapper .articleFeedback-submit,
 .articleFeedback-wrapper .rating-fields {
 	display: block;
 }
