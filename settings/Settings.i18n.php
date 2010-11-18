@@ -5071,6 +5071,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Imre
  * @author Kobazulo
  * @author Locos epraix
@@ -5233,6 +5234,7 @@ $messages['es'] = array(
 	'configure-setting-wgLogTypes' => 'Registrat tipos',
 	'configure-setting-wgMaxRedirectLinksRetrieved' => 'Número máximo de vínculos a una página de redirección listado en [[Special:Whatlinkshere/RedirectDestination]].',
 	'configure-setting-wgRedirectOnLogin' => 'Redireccionar usuarios a esta página al iniciar sesión',
+	'configure-setting-wgSecureLoginStickHTTPS' => 'Usar por defecto la conexión segura',
 	'configure-setting-wgSortSpecialPages' => 'Ordenar páginas especiales en [[Special:SpecialPages]]',
 	'configure-setting-wgSpecialPageGroups' => 'Grupos de páginas especiales',
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupo',
@@ -5270,7 +5272,6 @@ $messages['es'] = array(
 	'configure-setting-wgSMTP' => 'servidor SMTP',
 	'configure-setting-wgUserEmailUseReplyTo' => 'Usar Responder a en lugar de De',
 	'configure-setting-wgAPIRequestLog' => 'Archivo de registro para las solicitudes de API',
-	'configure-setting-wgColorErrors' => 'Color de los mensajes de la línea de comandos',
 	'configure-setting-wgDebugComments' => 'Incluir porciones de la salida del registro en el comentario de la página HTML',
 	'configure-setting-wgDebugDumpSql' => 'Volcado de las consultas SQL para depurar la salida',
 	'configure-setting-wgDebugLogFile' => 'Depurar registro',
@@ -5299,7 +5300,6 @@ $messages['es'] = array(
 	'configure-setting-wgAPIMaxUncachedDiffs' => 'Número máximo de diferencias sin almacenar en memoria intermedia que pueden ser recuperadas en una solicitud de API',
 	'configure-setting-wgDisableQueryPages' => 'Deshabilitar todas la páginas de consulta si el modo ávaro está activo, no solo algunas',
 	'configure-setting-wgDisableQueryPageUpdate' => 'Deshabilitar páginas especiales',
-	'configure-setting-wgDisableSearchContext' => 'Deshabilitar información extra en fechas específicas y revisiones de página en resultados de búsqueda',
 	'configure-setting-wgDisableSearchUpdate' => 'Deshabilitar actualizaciones en búsqueda',
 	'configure-setting-wgDisableTextSearch' => 'Deshabilitar búsqueda en texto completo',
 	'configure-setting-wgEdititis' => 'Mostrar conteos de ediciones de usuario en varios lugares destacados',
@@ -5388,6 +5388,7 @@ $messages['es'] = array(
 	'configure-setting-wgCountTotalSearchHits' => 'Permitir que el totalizador de resultados de búsqueda del motor de búsqueda se ajuste a lo presentado en Especial:Buscar',
 	'configure-setting-wgUseTwoButtonsSearchForm' => 'Comportamiento del formulario de búsqueda de la barra lateral',
 	'configure-setting-wgCountCategorizedImagesAsUsed' => 'En [[Special:UnusedImages]],considerar archivos usados si son colocados en una categoría',
+	'configure-setting-wgActiveUserDays' => 'Tiempo tras el cual el usuario está inactivo',
 	'configure-setting-wgDisableCounters' => 'Deshabilitar conteos de vistas de página',
 	'configure-setting-wgHitcounterUpdateFreq' => 'Frecuencia de actualización del contador de páginas',
 	'configure-setting-wgUseCommaCount' => 'En el conteo de páginas válidas: contar si existe al menos una coma (true) o si existe al menos un enlace interno (false)',
@@ -5457,6 +5458,7 @@ $messages['es'] = array(
 	'configure-setting-wgMaxNameChars' => 'Número máximo de bytes en nombre de usuario',
 	'configure-setting-wgMaxSigChars' => 'Largo máximo de firma personalizada',
 	'configure-setting-wgMinimalPasswordLength' => 'Tamaño mínimo de contraseña',
+	'configure-setting-wgWeakPasswords' => 'Lista de contraseñas deshabilitadas',
 	'configure-setting-wgNewUserLog' => 'antener un registro de nuevo usuario',
 	'configure-setting-wgLogAutocreatedAccounts' => 'Registra automaticamente la creacion de cuentas de nuevos usuarios',
 	'configure-setting-wgReservedUsernames' => 'Nombres de cuenta reservados para el software',
@@ -5535,7 +5537,6 @@ $messages['es'] = array(
 	'configure-setting-wgMemCachedServers' => 'Servidores Memcached',
 	'configure-setting-wgMemCachedTimeout' => 'Tiempo de caducidad para la conexión al servidor Memcached',
 	'configure-setting-wgSessionsInMemcached' => 'Grabar sesión en memcached',
-	'configure-setting-wgUseMemCached' => 'Utilizar memcached',
 	'configure-setting-wgCacheDirectory' => 'Directorio para datos de cacheo en el sistema de archivos local',
 	'configure-setting-wgMessageCacheType' => 'Tipo de cache de mensaje',
 	'configure-setting-wgLocalisationCacheConf' => 'Configuración de cache de localización',
@@ -5576,9 +5577,6 @@ $messages['es'] = array(
 	'configure-setting-wgXhtmlNamespaces-key' => 'Espacio de nombre',
 	'configure-setting-wgAllowMicrodataAttributes' => 'Permitir los atributos de microdatos HTML5 para su utilización en wikitexto',
 	'configure-setting-wgAllowRdfaAttributes' => 'Permitir atributos RDFa para su utilización en wikitexto',
-	'configure-setting-wgUseZhdaemon' => 'Usar ZhDaemon para ejecutar procesamiento de texto chino',
-	'configure-setting-wgZhdaemonHost' => 'Host de ZhDaemon',
-	'configure-setting-wgZhdaemonPort' => 'Puerto de ZhDaemon',
 	'configure-setting-wgLocaltimezone' => 'Huso horario local',
 	'configure-setting-wgLocalTZoffset' => 'Diferencia horaria',
 	'configure-setting-wgAllowUserCss' => 'Permitir páginas hoja estilo cascada (CSS) de usuario',
@@ -5587,9 +5585,6 @@ $messages['es'] = array(
 	'configure-setting-wgUseSiteJs' => 'Usar la página JavaScript del sitio',
 	'configure-setting-wgHandheldStyle' => 'Estilo para media="handheld"',
 	'configure-setting-wgHandheldForIPhone' => "Aplicar los tipos de multimedia 'screen' y 'handheld' al iPhone",
-	'configure-setting-wgJQueryVersion' => 'Versión de jQuery a usar',
-	'configure-setting-wgJQueryMinified' => 'Utilizar una versión mínima de jQuery',
-	'configure-setting-wgJQueryOnEveryPage' => 'Incluir jQuery en todas las páginas servidas por MediaWiki',
 	'configure-setting-wgUseAjax' => 'Habilitar AJAX',
 	'configure-setting-wgAjaxExportList' => 'Funciones AJAX que pueden ser llamadas',
 	'configure-setting-wgAjaxSearch' => 'Permitir la utilización de las autosugerencias AJAX en la barra de búsqueda',
@@ -15561,6 +15556,10 @@ $messages['pl'] = array(
 	'configure-setting-wgShowSQLErrors' => 'Pokazuj strony z błędami bazy danych',
 	'configure-setting-wgJobRunRate' => 'Liczba zadań do uruchomienia przypadająca na jedno wyświetlenie strony',
 	'configure-setting-wgUpdateRowsPerJob' => 'Liczba aktualizowanych wierszy na jedno zadanie',
+	'configure-setting-wgDisableQueryPageUpdate' => 'Wyłączone strony specjalne',
+	'configure-setting-wgDisableSearchUpdate' => 'Wyłącz aktualizację danych wewnętrznej wyszukiwarki',
+	'configure-setting-wgDisableTextSearch' => 'Wyłącz wyszukiwanie pełnotekstowe',
+	'configure-setting-wgEdititis' => 'Wyświetlaj licznik edycji użytkownika w różnych widocznych miejscach',
 	'configure-setting-wgSessionName' => 'Nazwa sesji',
 	'configure-setting-wgSquidMaxage' => 'Maksymalny dozwolony czas przechowywania dla serwera buforującego (Squid)',
 	'configure-setting-wgUseSquid' => 'Włącz serwer buforujący (squid)',
