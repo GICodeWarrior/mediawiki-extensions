@@ -7346,6 +7346,7 @@ $messages['pt'] = array(
  * @author 555
  * @author Giro720
  * @author Hamilton Abreu
+ * @author Helder.wiki
  * @author Heldergeovane
  * @author Luckas Blade
  * @author Raylton P. Sousa
@@ -7407,10 +7408,10 @@ $messages['pt-br'] = array(
 	'fogg-twopass-title' => "Codificação em passagem dupla ''(two pass)''",
 	'fogg-twopass-help' => 'A codificação em passagem dupla mantém um nível de qualidade mais constante ao fazer duas passagens sobre o ficheiro vídeo',
 	'fogg-framerate-title' => "Taxa de fotogramas ''(frame rate)''",
-	'fogg-framerate-help' => 'A taxa de fotogramas do vídeo. Mais informações acerca da <a target="_new" href="http://pt.wikipedia.org/wiki/Fotograma">taxa de fotogramas</a>.',
+	'fogg-framerate-help' => 'A taxa de fotogramas\'\'(frame rate)\'\' do vídeo. Mais informações acerca da <a target="_new" href="http://pt.wikipedia.org/wiki/Fotograma">taxa de fotogramas</a>.',
 	'fogg-aspect-title' => 'Proporção de tela',
-	'fogg-aspect-help' => 'A proporção de tela do vídeo pode ser $:3 ou 16:9. Mais informações sobrede <a target="_new" href="http://pt.wikipedia.org/wiki/Proporção de tela">Proporção de tela</a>.',
-	'fogg-keyframeInterval-title' => ' Intervalo de frame-chave',
+	'fogg-aspect-help' => 'A proporção de tela do vídeo pode ser $:3 ou 16:9. Mais informações sobre <a target="_new" href="http://pt.wikipedia.org/wiki/Proporção de tela">Proporção de tela</a>.',
+	'fogg-keyframeInterval-title' => 'Intervalo de frame-chave',
 	'fogg-keyframeInterval-help' => "O intervalo dos fotogramas chave, em fotogramas. 
 Nota: A maioria dos ''codecs'' forçam fotogramas chave se a diferença entre fotogramas é maior do que o tamanho do fotograma chave codificado. 
 Mais informações sobre <a href=\"http://en.wikipedia.org/wiki/I-frame\">fotogramas chave</a>.",
