@@ -59,8 +59,18 @@ class ArticleFeedbackHooks {
 				dirname( __FILE__ ) . '/ArticleFeedback.sql'
 			);
 		} else {
-			$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
-				dirname( __FILE__ ) . '/ArticleFeedback.sql', true ) );
+			$dir = dirname( __FILE__ );
+			$db = $updater->getDB();
+
+		    if ( !$db->tableExists( 'article_feedback' ) ) {
+				if ( $db->tableExists( 'article_assessment' ) ) {
+					$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
+						$dir . '/RenameTables.sql', true ) ); // Rename tables
+				} else {
+					$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
+						$dir . '/ArticleFeedback.sql', true ) ); // Initial install tables
+				}
+			}
 		}
 		return true;
 	}
