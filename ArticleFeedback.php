@@ -10,6 +10,10 @@
  * @version 0.1.0
  */
 
+/* XXX: Survey setup */
+
+require_once( $dir . '../SimpleSurvey/SimpleSurvey.php' );
+
 /* Configuration */
 
 // If the number of page revisions (since users last rating) is greater than this then consider the
@@ -89,7 +93,3 @@ $wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleFeedbackHooks::resourceLoa
 // API Registration
 $wgAPIListModules['articlefeedback'] = 'ApiQueryArticleFeedback';
 $wgAPIModules['articlefeedback'] = 'ApiArticleFeedback';
-
-/* XXX: Survey setup */
-
-require_once( $dir . '../SimpleSurvey/SimpleSurvey.php' );
