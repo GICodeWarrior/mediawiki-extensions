@@ -1769,6 +1769,7 @@ $messages['ml'] = array(
 	'crosswikiblock-nouser' => '"$3" എന്ന ഉപയോക്താവിനെ കണ്ടില്ല.',
 	'crosswikiblock-noexpiry' => 'അസാധുവായ കാലാവധി: $1.',
 	'crosswikiblock-noreason' => 'കാരണമൊന്നും സൂചിപ്പിച്ചിട്ടില്ല.',
+	'crosswikiblock-notoken' => 'അസാധുവായ തിരുത്തൽ ചീട്ട്.',
 	'crosswikiblock-alreadyblocked' => '$3 എന്ന ഉപയോക്താവ് ഇതിനകം തന്നെ തടയപ്പെട്ടിരിക്കുന്നു.',
 	'crosswikiblock-noblock' => 'ഈ ഉപയോക്താവിനെ തടഞ്ഞിട്ടില്ല.',
 	'crosswikiblock-success' => "'''$3''' എന്ന ഉപയോക്താവിനെ വിജയകരമായി തടഞ്ഞിരിക്കുന്നു
@@ -1776,6 +1777,8 @@ $messages['ml'] = array(
 താഴെ കൊടുത്തിരിക്കുന്ന താളുകളിലൊന്നിലേക്കു തിരിച്ചു പോവുക:
 * [[Special:CrosswikiBlock|തടയൽ ഫോം]]
 * [[$4]]",
+	'crosswikiunblock-local' => 'ഈ സമ്പർക്കമുഖം വഴി പ്രാദേശികമായ തടയൽ നീക്കാൻ സാധിക്കില്ല. [[Special:BlockIP|{{int:blockip}}]] ഉപയോഗിക്കുക',
+	'right-crosswikiblock' => 'മറ്റ് വിക്കികളെ തടയുകയും തടയൽ മാറ്റുകയും ചെയ്യുക',
 );
 
 /** Mongolian (Монгол)
