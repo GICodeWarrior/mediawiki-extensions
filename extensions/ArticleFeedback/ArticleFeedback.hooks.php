@@ -62,7 +62,7 @@ class ArticleFeedbackHooks {
 			$dir = dirname( __FILE__ );
 			$db = $updater->getDB();
 
-		    if ( !$db->tableExists( 'article_feedback' ) ) {
+			if ( !$db->tableExists( 'article_feedback' ) ) {
 				if ( $db->tableExists( 'article_assessment' ) ) {
 					$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
 						$dir . '/sql/RenameTables.sql', true ) ); // Rename tables
