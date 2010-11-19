@@ -84,18 +84,4 @@ class ArticleEmblemsHooks {
 		$wgOut->addHtml( '<ul id="articleEmblems">' . implode( $emblems ) . '</ul>' );
 		return true;
 	}
-	
-	/*
-	 * ResourceLoaderRegisterModules hook
-	 */
-	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgExtensionAssetsPath;
-		$resourceLoader->register(
-			'ext.articleEmblems',
-			new ResourceLoaderFileModule( array(
-				'styles' => 'ext.articleEmblems.css',
-			), dirname( __FILE__ ) . '/modules', "$wgExtensionAssetsPath/ArticleEmblems/modules" )
-		);
-		return true;
-	}
 }

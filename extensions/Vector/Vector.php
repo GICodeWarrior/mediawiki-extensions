@@ -48,4 +48,63 @@ $wgExtensionMessagesFiles['Vector'] = dirname( __FILE__ ) . '/Vector.i18n.php';
 $wgHooks['BeforePageDisplay'][] = 'VectorHooks::beforePageDisplay';
 $wgHooks['GetPreferences'][] = 'VectorHooks::getPreferences';
 $wgHooks['MakeGlobalVariablesScript'][] = 'VectorHooks::makeGlobalVariablesScript';
-$wgHooks['ResourceLoaderRegisterModules'][] = 'VectorHooks::resourceLoaderRegisterModules';
+
+$vectorResourceTemplate = array(
+	'localBasePath' => dirname( __FILE__ ) . '/modules',
+	'remoteExtPath' => 'Vector/modules',
+	'group' => 'ext.vector',
+);
+$wgResourceModules += array(
+	'ext.vector.collapsibleNav' => $vectorResourceTemplate + array(
+		'scripts' => 'ext.vector.collapsibleNav.js',
+		'styles' => 'ext.vector.collapsibleNav.css',
+		'messages' => array(
+			'vector-collapsiblenav-more',
+		),
+		'dependencies' => array(
+			'jquery.client',
+			'jquery.cookie',
+			'jquery.tabIndex',
+		),
+	),
+	'ext.vector.collapsibleTabs' => $vectorResourceTemplate + array(
+		'scripts' => 'ext.vector.collapsibleTabs.js',
+		'dependencies' => array(
+			'jquery.collapsibleTabs',
+			'jquery.delayedBind',
+		),
+	),
+	'ext.vector.editWarning' => $vectorResourceTemplate + array(
+		'scripts' => 'ext.vector.editWarning.js',
+		'messages' => array(
+			'vector-editwarning-warning',
+		),
+	),
+	'ext.vector.expandableSearch' => $vectorResourceTemplate + array(
+		'scripts' => 'ext.vector.expandableSearch.js',
+		'styles' => 'ext.vector.expandableSearch.css',
+		'dependencies' => array(
+			'jquery.client',
+			'jquery.expandableField',
+			'jquery.delayedBind',
+		),
+	),
+	'ext.vector.footerCleanup' => $vectorResourceTemplate + array(
+		'scripts' => 'ext.vector.footerCleanup.js',
+		'styles' => 'ext.vector.footerCleanup.css',
+	),
+	'ext.vector.simpleSearch' => $vectorResourceTemplate + array(
+		'scripts' => 'ext.vector.simpleSearch.js',
+		'messages' => array(
+			'vector-simplesearch-search',
+			'vector-simplesearch-containing',
+		),
+		'dependencies' => array(
+			'jquery.client',
+			'jquery.suggestions',
+			'jquery.autoEllipsis',
+			'jquery.placeholder',
+		),
+	),
+);
+

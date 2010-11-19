@@ -8,24 +8,6 @@
 
 class ClickTrackingHooks {
 
-	/* Protected Static Members */
-	
-	protected static $modules = array(
-		'jquery.clickTracking' => array(
-			'scripts' => 'jquery.clickTracking.js',
-			'dependencies' => 'jquery.cookie',
-		),
-		'ext.clickTracking' => array(
-			'scripts' => 'ext.clickTracking.js',
-			'dependencies' => 'jquery.clickTracking',
-		),
-		'ext.clickTracking.special' => array(
-			'scripts' => 'ext.clickTracking.special.js',
-			'styles' => 'ext.clickTracking.special.css',
-			'dependencies' => array( 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
-		),
-	);
-	
 	/* Static Methods */
 
 	/**
@@ -90,25 +72,6 @@ class ClickTrackingHooks {
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser;
 		$vars['wgTrackingToken'] = wfGenerateToken( array( $wgUser->getName(), time() ) );
-		return true;
-	}
-
-	/**
-	 * ResourceLoaderRegisterModules hook
-	 * Adds modules to ResourceLoader
-	 *
-	 * @param $resourceLoader Object: ResourceLoader object
-	 * @return Boolean: always true
-	 */
-	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgExtensionAssetsPath;
-		$localpath = dirname( __FILE__ ) . '/modules';
-		$remotepath = "$wgExtensionAssetsPath/extensions/ClickTracking/modules";
-		foreach ( self::$modules as $name => $module ) {
-			$resourceLoader->register(
-				$name, new ResourceLoaderFileModule( $module, $localpath, $remotepath )
-			);
-		}
 		return true;
 	}
 

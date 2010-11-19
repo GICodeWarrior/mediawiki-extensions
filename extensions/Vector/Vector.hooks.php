@@ -10,66 +10,6 @@ class VectorHooks {
 	
 	/* Protected Static Members */
 	
-	protected static $modules = array(
-		'ext.vector.collapsibleNav' => array(
-			'scripts' => 'ext.vector.collapsibleNav.js',
-			'styles' => 'ext.vector.collapsibleNav.css',
-			'messages' => array(
-				'vector-collapsiblenav-more',
-			),
-			'dependencies' => array(
-				'jquery.client',
-				'jquery.cookie',
-				'jquery.tabIndex',
-			),
-			'group' => 'ext.vector',
-		),
-		'ext.vector.collapsibleTabs' => array(
-			'scripts' => 'ext.vector.collapsibleTabs.js',
-			'dependencies' => array(
-				'jquery.collapsibleTabs',
-				'jquery.delayedBind',
-			),
-			'group' => 'ext.vector',
-		),
-		'ext.vector.editWarning' => array(
-			'scripts' => 'ext.vector.editWarning.js',
-			'messages' => array(
-				'vector-editwarning-warning',
-			),
-			'group' => 'ext.vector',
-		),
-		'ext.vector.expandableSearch' => array(
-			'scripts' => 'ext.vector.expandableSearch.js',
-			'styles' => 'ext.vector.expandableSearch.css',
-			'dependencies' => array(
-				'jquery.client',
-				'jquery.expandableField',
-				'jquery.delayedBind',
-			),
-			'group' => 'ext.vector',
-		),
-		'ext.vector.footerCleanup' => array(
-			'scripts' => 'ext.vector.footerCleanup.js',
-			'styles' => 'ext.vector.footerCleanup.css',
-			'group' => 'ext.vector',
-		),
-		'ext.vector.simpleSearch' => array(
-			'scripts' => 'ext.vector.simpleSearch.js',
-			'messages' => array(
-				'vector-simplesearch-search',
-				'vector-simplesearch-containing',
-			),
-			'dependencies' => array(
-				'jquery.client',
-				'jquery.suggestions',
-				'jquery.autoEllipsis',
-				'jquery.placeholder',
-			),
-			'group' => 'ext.vector',
-		),
-	);
-	
 	protected static $features = array(
 		'collapsiblenav' => array(
 			'preferences' => array(
@@ -205,23 +145,6 @@ class VectorHooks {
 		}
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
-		}
-		return true;
-	}
-	
-	/*
-	 * ResourceLoaderRegisterModules hook
-	 * 
-	 * Adds modules to ResourceLoader
-	 */
-	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgExtensionAssetsPath;
-		$localpath = dirname( __FILE__ ) . '/modules';
-		$remotepath = "$wgExtensionAssetsPath/Vector/modules";
-		foreach ( self::$modules as $name => $resources ) {
-			$resourceLoader->register(
-				$name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath )
-			);
 		}
 		return true;
 	}

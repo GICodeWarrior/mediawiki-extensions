@@ -48,7 +48,6 @@ $wgAutoloadClasses['ApiSpecialClickTracking'] = $dir . 'ApiSpecialClickTracking.
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::loadExtensionSchemaUpdates';
 $wgHooks['BeforePageDisplay'][] = 'ClickTrackingHooks::beforePageDisplay';
 $wgHooks['MakeGlobalVariablesScript'][] = 'ClickTrackingHooks::makeGlobalVariablesScript';
-$wgHooks['ResourceLoaderRegisterModules'][] = 'ClickTrackingHooks::resourceLoaderRegisterModules';
 $wgHooks['ParserTestTables'][] = 'ClickTrackingHooks::parserTestTables';
 
 // API modules
@@ -65,3 +64,23 @@ $wgGroupPermissions['sysop']['clicktrack'] = true;
 // i18n
 $wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';
 $wgExtensionAliasesFiles['ClickTracking'] = $dir . 'ClickTracking.alias.php';
+
+// Resource modules
+$ctResourceTemplate = array(
+	'localBasePath' => $dir . 'modules',
+	'remoteExtPath' => 'ClickTracking/modules',
+);
+$wgResourceModules['jquery.clickTracking'] = array(
+	'scripts' => 'jquery.clickTracking.js',
+	'dependencies' => 'jquery.cookie',
+) + $ctResourceTemplate;
+$wgResourceModules['ext.clickTracking'] = array(
+	'scripts' => 'ext.clickTracking.js',
+	'dependencies' => 'jquery.clickTracking',
+) + $ctResourceTemplate;
+$wgResourceModules['ext.clickTracking.special'] = array(
+	'scripts' => 'ext.clickTracking.special.js',
+	'styles' => 'ext.clickTracking.special.css',
+	'dependencies' => array( 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
+) + $ctResourceTemplate;
+

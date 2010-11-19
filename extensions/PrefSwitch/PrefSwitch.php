@@ -162,4 +162,12 @@ $wgSpecialPages['PrefSwitch'] = 'SpecialPrefSwitch';
 $wgSpecialPageGroups['PrefSwitch'] = 'wiki';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefSwitchHooks::loadExtensionSchemaUpdates';
 $wgHooks['PersonalUrls'][] = 'PrefSwitchHooks::personalUrls';
-$wgHooks['ResourceLoaderRegisterModules'][] = 'PrefSwitchHooks::resourceLoaderRegisterModules';
+
+$wgResourceModules['ext.prefSwitch'] = array(
+	'scripts' => 'ext.prefSwitch.js',
+	'styles' => 'ext.prefSwitch.css',
+	'dependencies' => 'jquery.client',
+	'localBasePath' => dirname( __FILE__ ) . '/modules',
+	'remoteExtPath' => 'PrefSwitch/modules',
+);
+

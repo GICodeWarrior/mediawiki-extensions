@@ -79,17 +79,4 @@ class PrefSwitchHooks {
 		);
 		return true;
 	}
-	
-	/*
-	 * ResourceLoaderRegisterModules hook
-	 */
-	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgExtensionAssetsPath;
-		$localpath = dirname( __FILE__ ) . '/modules';
-		$remotepath = "$wgExtensionAssetsPath/PrefSwitch/moduless";
-		foreach ( self::$modules as $name => $resources ) {
-			$resourceLoader->register( $name, new ResourceLoaderFileModule( $resources, $localpath, $remotepath ) );
-		}
-		return true;
-	}
 }

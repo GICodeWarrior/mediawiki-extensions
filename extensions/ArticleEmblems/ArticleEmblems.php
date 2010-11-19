@@ -27,4 +27,8 @@ $wgHooks['ParserFirstCallInit'][] = 'ArticleEmblemsHooks::parserInit';
 $wgHooks['ParserTestTables'][] = 'ArticleEmblemsHooks::parserTestTables';
 $wgHooks['ArticleViewHeader'][] = 'ArticleEmblemsHooks::articleViewHeader';
 $wgHooks['ArticleSaveComplete'][] = 'ArticleEmblemsHooks::articleSaveComplete';
-$wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleEmblemsHooks::resourceLoaderRegisterModules';
+$wgResourceModules['ext.articleEmblems'] = array(
+	'styles' => 'ext.articleEmblems.css',
+	'localBasePath' => dirname( __FILE__ ) . '/modules',
+	'remoteExtPath' => 'ArticleEmblems/modules',
+);
