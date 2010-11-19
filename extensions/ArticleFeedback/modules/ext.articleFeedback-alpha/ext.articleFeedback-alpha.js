@@ -1,3 +1,7 @@
+/*
+ * Script for Article Feedback (alpha)
+ */
+
 ( function( $ ) {
 	$.ArticleFeedback = {
 		'config': { 
