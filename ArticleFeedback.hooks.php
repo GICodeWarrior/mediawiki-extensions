@@ -9,34 +9,32 @@
 class ArticleFeedbackHooks {
 	
 	protected static $modules = array(
-		'ext.articleFeedback' => array(
-			'scripts' => 'ext.articleFeedback/ext.articleFeedback.js',
-			'styles' => 'ext.articleFeedback/ext.articleFeedback.css',
+		'ext.articleFeedback-alpha' => array(
+			'scripts' => 'ext.articleFeedback-alpha/ext.articleFeedback-alpha.js',
+			'styles' => 'ext.articleFeedback-alpha/ext.articleFeedback-alpha.css',
 			'messages' => array(
-				'articlefeedback',
-				'articlefeedback-desc',
-				'articlefeedback-yourfeedback',
-				'articlefeedback-pleaserate',
-				'articlefeedback-submit',
-				'articlefeedback-rating-wellsourced',
-				'articlefeedback-rating-neutrality',
-				'articlefeedback-rating-completeness',
-				'articlefeedback-rating-readability',
-				'articlefeedback-rating-wellsourced-tooltip',
-				'articlefeedback-rating-neutrality-tooltip',
-				'articlefeedback-rating-completeness-tooltip',
-				'articlefeedback-rating-readability-tooltip',
-				'articlefeedback-error',
-				'articlefeedback-thanks',
-				'articlefeedback-articlerating',
-				'articlefeedback-featurefeedback',
-				'articlefeedback-noratings',
-				'articlefeedback-stalemessage-revisioncount',
-				'articlefeedback-stalemessage-norevisioncount',
-				'articlefeedback-results-show',
-				'articlefeedback-results-hide',
-				'articlefeedback-survey-title',
-				'articlefeedback-survey-thanks',
+				'articlefeedback-alpha-yourfeedback',
+				'articlefeedback-alpha-pleaserate',
+				'articlefeedback-alpha-submit',
+				'articlefeedback-alpha-rating-wellsourced',
+				'articlefeedback-alpha-rating-neutrality',
+				'articlefeedback-alpha-rating-completeness',
+				'articlefeedback-alpha-rating-readability',
+				'articlefeedback-alpha-rating-wellsourced-tooltip',
+				'articlefeedback-alpha-rating-neutrality-tooltip',
+				'articlefeedback-alpha-rating-completeness-tooltip',
+				'articlefeedback-alpha-rating-readability-tooltip',
+				'articlefeedback-alpha-error',
+				'articlefeedback-alpha-thanks',
+				'articlefeedback-alpha-articlerating',
+				'articlefeedback-alpha-featurefeedback',
+				'articlefeedback-alpha-noratings',
+				'articlefeedback-alpha-stalemessage-revisioncount',
+				'articlefeedback-alpha-stalemessage-norevisioncount',
+				'articlefeedback-alpha-results-show',
+				'articlefeedback-alpha-results-hide',
+				'articlefeedback-alpha-survey-title',
+				'articlefeedback-alpha-survey-thanks',
 			),
 			'dependencies' => array( 'jquery.ui.dialog', 'jquery.tipsy', 'jquery.stars' ),
 		),
@@ -106,7 +104,7 @@ class ArticleFeedbackHooks {
 			&& count( $wgArticleFeedbackCategories )
 			&& self::isInCategories( $title->getArticleId(), $wgArticleFeedbackCategories )
 		) {
-			$out->addModules( 'ext.articleFeedback' );
+			$out->addModules( 'ext.articleFeedback-alpha' );
 		}
 		return true;
 	}

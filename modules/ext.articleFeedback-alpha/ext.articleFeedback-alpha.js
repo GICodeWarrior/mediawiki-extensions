@@ -16,7 +16,7 @@
 				'readability'
 			],
 			'fieldHintSuffix': '-tooltip',
-			'fieldPrefix': 'articlefeedback-rating-',
+			'fieldPrefix': 'articlefeedback-alpha-rating-',
 			'fieldHTML': '<div class="field-wrapper"> \
 				<label class="rating-field-label"></label> \
 				<select class="rating-field"> \
@@ -88,13 +88,13 @@
 				}
 				// setup our markup using the template variables in settings 
 				var $structure = $( settings.structureHTML ),
-					instructions = mediaWiki.msg( 'articlefeedback-pleaserate' ),
-					feedback = mediaWiki.msg( 'articlefeedback-featurefeedback' ),
-					yourfeedback = mediaWiki.msg( 'articlefeedback-yourfeedback'),
-					articlerating = mediaWiki.msg( 'articlefeedback-articlerating' ),
-					resultshide = mediaWiki.msg( 'articlefeedback-results-hide' ),
-					resultsshow = mediaWiki.msg( 'articlefeedback-results-show' );
-					submitbutton = mediaWiki.msg( 'articlefeedback-submit' );
+					instructions = mediaWiki.msg( 'articlefeedback-alpha-pleaserate' ),
+					feedback = mediaWiki.msg( 'articlefeedback-alpha-featurefeedback' ),
+					yourfeedback = mediaWiki.msg( 'articlefeedback-alpha-yourfeedback'),
+					articlerating = mediaWiki.msg( 'articlefeedback-alpha-articlerating' ),
+					resultshide = mediaWiki.msg( 'articlefeedback-alpha-results-hide' ),
+					resultsshow = mediaWiki.msg( 'articlefeedback-alpha-results-show' );
+					submitbutton = mediaWiki.msg( 'articlefeedback-alpha-submit' );
 				$structure
 					.find( '#articleFeedback-rate legend' )
 						.html( yourfeedback )
@@ -150,10 +150,10 @@
 							settings.fieldPrefix + settings.fieldMessages[i] +
 								settings.fieldHintSuffix
 						),
-						count = mediaWiki.msg( 'articlefeedback-noratings', 0, 0 );
+						count = mediaWiki.msg( 'articlefeedback-alpha-noratings', 0, 0 );
 					// initialize the field html
 					$field
-						.attr( 'id', 'articlefeedback-rate-' + field )
+						.attr( 'id', 'articlefeedback-alpha-rate-' + field )
 						.find( 'label' )
 							.attr( 'for', 'rating_' + field )
 							.attr( 'original-title', hint )
@@ -164,7 +164,7 @@
 							.attr( 'name', 'rating[' + field + ']' );
 					// initialize the rating html
 					$rating
-						.attr( 'id',  'articlefeedback-rating-' + field )
+						.attr( 'id',  'articlefeedback-alpha-rating-' + field )
 						.find( '.articleFeedback-rating-field-name' )
 							.html( label )
 							.end()
@@ -278,7 +278,7 @@
 					dataType: 'json',
 					success: $.ArticleFeedback.fn.afterGetRatingData,
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
-						$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-error' ),
+						$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-alpha-error' ),
 							{ 'class': 'articleFeedback-error-msg' } );
 					}
 				} );
@@ -294,7 +294,7 @@
 							$rating = $( '#' + rating.ratingdesc ),
 							count = rating.count,
 							total = ( rating.total / count ).toFixed( 1 ),
-							label = mediaWiki.msg( 'articlefeedback-noratings', total, count );
+							label = mediaWiki.msg( 'articlefeedback-alpha-noratings', total, count );
 						$rating
 							.find( '.articleFeedback-rating-field-value' )
 							.text( total )
@@ -318,7 +318,7 @@
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
 						// add the stale message
-						var msg = mediaWiki.msg( 'articlefeedback-stalemessage-norevisioncount' );
+						var msg = mediaWiki.msg( 'articlefeedback-alpha-stalemessage-norevisioncount' );
 						$.ArticleFeedback.fn.flashNotice( msg, { 'class': 'articleFeedback-stale-msg' } );
 					} else {
 						// if it's not a stale rating, we want to make the stars blue
@@ -366,7 +366,7 @@
 					dataType: 'json',
 					success: $.ArticleFeedback.fn.afterSubmitRating,
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
-						$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-error' ),
+						$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-alpha-error' ),
 							{ 'class': 'articleFeedback-error-msg' } );
 					}
 				} );
@@ -384,7 +384,7 @@
 				// show the results
 				$.ArticleFeedback.fn.showRatings();
 				// say thank you
-				$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-thanks' ),
+				$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-alpha-thanks' ),
 					{ 'class': 'articleFeedback-success-msg' } );
 			},
 			// places a message on the interface
@@ -419,7 +419,7 @@
 							bgiframe: true,
 							autoOpen: true,
 							modal: true,
-							title: mediaWiki.msg( 'articlefeedback-survey-title' ),
+							title: mediaWiki.msg( 'articlefeedback-alpha-survey-title' ),
 							close: function() {
 								$(this)
 									.dialog( 'option', 'height', 400 )
@@ -480,7 +480,7 @@
 						// TODO: Style success-msg, error-msg
 						var $msgDiv = $( '<div />' )
 							.addClass( success ? 'articleFeedback-success-msg' : 'articleFeedback-error-msg' )
-							.html( mediaWiki.msg( success? 'articlefeedback-survey-thanks' : 'articlefeedback-error' ) )
+							.html( mediaWiki.msg( success? 'articlefeedback-alpha-survey-thanks' : 'articlefeedback-alpha-error' ) )
 							.appendTo( $dialogDiv );
 						$dialogDiv.removeClass( 'loading' );
 						
@@ -500,7 +500,7 @@
 						// TODO: Duplicates code, factor out, maybe
 						var $msgDiv = $( '<div />' )
 							.addClass( 'articleFeedback-error-msg' )
-							.html( mediaWiki.msg( 'articlefeedback-error' ) )
+							.html( mediaWiki.msg( 'articlefeedback-alpha-error' ) )
 							.appendTo( $dialogDiv );
 						$dialogDiv.removeClass( 'loading' );
 						$dialogDiv.dialog( 'option', 'height', $msgDiv.height() + 100 );
