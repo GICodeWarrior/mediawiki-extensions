@@ -329,6 +329,32 @@ Si tu vole leger le responsa in contexto, visita <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 ha respondite a tu curte summario',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'reflect-desc' => 'Memperluas komentar berutas',
+	'reflect-bulleted' => 'Halo $1, 
+
+$2 telah meringkas gagasan yang Anda pada utas "$3". 
+
+Ringkasan mereka: "$5". 
+
+Anda dapat memverifikasi apakah $2 memahami maksud Anda dengan mengunjungi <$4>. 
+
+Anda akan dapat memperjelas maksud Anda jika ada kesalahpahaman.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Gagasan Anda telah diringkas oleh $2',
+	'reflect-responded' => 'Halo $1, 
+
+$2 telah membalas ringkasan Anda terhadap gagasannya. 
+
+Ringkasan Anda: "$6". 
+Pesan $2: "$5". 
+
+Jika Anda ingin membaca langsung tanggapannya, kunjungi <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 telah menanggapi ringkasan Anda',
+);
+
 /** Japanese (日本語)
  * @author Aphaia
  * @author Yanajin66

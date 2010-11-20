@@ -1281,6 +1281,7 @@ Retornar a:
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  * @author Kandar
  * @author Rex
  */
@@ -1313,7 +1314,7 @@ Kembali ke:
 	'crosswikiblock-dbnotfound' => 'Basis data $1 tidak ada',
 	'crosswikiblock-noname' => 'Nama pengguna "$1" tidak sah.',
 	'crosswikiblock-nouser' => 'Pengguna "$3" tidak ditemukan.',
-	'crosswikiblock-noexpiry' => 'Kadaluarsa tidak sah: $1.',
+	'crosswikiblock-noexpiry' => 'Kedaluwarsa tidak sah: $1.',
 	'crosswikiblock-noreason' => 'Tak ada penjelasan.',
 	'crosswikiblock-notoken' => 'Token penyuntingan tidak sah.',
 	'crosswikiblock-alreadyblocked' => 'Pengguna $3 telah diblokir.',

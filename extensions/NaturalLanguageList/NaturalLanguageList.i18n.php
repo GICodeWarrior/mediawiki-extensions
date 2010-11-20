@@ -89,6 +89,14 @@ $messages['dsb'] = array(
 	'nll-lastseparator' => '&#32;a&#32;',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'nll-desc' => 'Εύκολη μορφοποίηση των καταλόγων στις φυσικές γλώσσες',
+	'nll-lastseparator' => '&#32;καί&#32;',
+);
+
 /** Spanish (Español)
  * @author Pertile
  * @author Peter17

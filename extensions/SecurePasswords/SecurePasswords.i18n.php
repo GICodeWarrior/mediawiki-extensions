@@ -151,15 +151,6 @@ Es muss:',
 	'securepasswords-word' => 'etwas anderes sein als ein Wort',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
- * @author Imre
- */
-$messages['de-formal'] = array(
-	'securepasswords-valid' => 'Ihr Passwort ist ungültig oder zu kurz.
-Es muss:',
-	'securepasswords-username' => 'sich von Ihrem Benutzernamen unterscheiden',
-);
-
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

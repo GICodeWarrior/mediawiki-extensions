@@ -231,10 +231,15 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Farras
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'semanticformsinputs-desc' => 'Jenis masukan tambahan untuk [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Format salah.',
+	'semanticformsinputs-close' => 'Penutup',
+	'semanticformsinputs-prev' => 'Sebelumnya',
+	'semanticformsinputs-next' => 'Selanjutnya',
+	'semanticformsinputs-today' => 'Hari ini',
 );
 
 /** Japanese (日本語)

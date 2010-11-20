@@ -171,6 +171,19 @@ $messages['ia'] = array(
 	'specialarc2admin' => 'Pagina de administration pro le immagazinage ARC2 RDF',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'rdfio-desc' => 'Mengembangkan fungsi impor/ekspor RDF, termasuk ujung SPARQL, untuk Semantic MediaWiki',
+	'rdfimport' => 'Impor RDF',
+	'rdfio-arc2admin-desc' => 'Halaman administrasi untuk RDF ARC2 Store untuk Semantic MediaWiki',
+	'rdfio-rdfimport-desc' => 'Halaman istimewa untuk mengimpor data semantik berformat RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Ujung SPARQL yang disediakan oleh SMWRDFConnector',
+	'sparqlendpoint' => 'Ujung SPARQL',
+	'specialarc2admin' => 'Halaman admin ARC2 RDF Store',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

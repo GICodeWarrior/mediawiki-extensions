@@ -1093,11 +1093,14 @@ $messages['ia'] = array(
  * @author Bennylin
  * @author Farras
  * @author Irwangatot
+ * @author IvanLanin
  * @author Kandar
  */
 $messages['id'] = array(
 	'recordadmin' => 'Catatan Administrasi',
-	'recordadmin-desc' => 'Sebuah [[Special:RecordAdmin|halaman istimewa]] untuk menemukan dan menyunting catatan halaman menggunakan formulir',
+	'recordadmin-desc' => 'Pencarian, kueri, formulir, dan pelaporan data wiki diturunkan dari parameter templat',
+	'recordadmin-specialdesc' => '[[Special:RecordAdmin|Halaman istimewa]] untuk menemukan dan membuat halaman dengan menggunakan formulir',
+	'recordadmin-noforms' => 'Saat ini tidak ada formulir yang didefinisikan untuk pencarian dan pembuatan',
 	'recordadmin-select' => 'Pilih',
 	'recordadmin-createtype' => 'Masukkan nama tipe rekaman baru yang akan dibuat',
 	'recordadmin-recordtype' => 'tipe rekaman',
@@ -1132,6 +1135,8 @@ $messages['id'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Tidak ada "$1"',
+	'recordadmin-edit-info' => 'Halaman ini berisi templat yang memiliki formulir sendiri yang dapat Anda isi dari himpunan tab ini',
+	'recordadmin-properties' => 'Properti',
 );
 
 /** Igbo (Igbo)

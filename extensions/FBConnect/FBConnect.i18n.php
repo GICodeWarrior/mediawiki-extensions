@@ -1172,6 +1172,91 @@ Si tu vole usar Facebook Connect pro aperir un session in le futuro, tu pote [[S
 	'fbconnect-prefs-can-be-updated' => 'Tu pote sempre actualisar istes per visitar le scheda "$1" de tu pagina de preferentias.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => 'Memungkinkan pengguna untuk [[Special:Connect|tersambung]] dengan akun [http://www.facebook.com Facebook].
+Memberikan autentikasi berdasarkan grup Facebook dan penggunaan FBML dalam teks wiki.',
+	'group-fb-user' => 'Pengguna Facebook Connect',
+	'group-fb-user-member' => 'Pengguna Facebook Connect',
+	'grouppage-fb-user' => '{{ns:project}}:Pengguna Facebook Connect',
+	'group-fb-groupie' => 'Anggota grup',
+	'group-fb-groupie-member' => 'Anggota grup',
+	'grouppage-fb-groupie' => '{{ns:project}}:Anggota grup',
+	'group-fb-officer' => 'Pejabat grup',
+	'group-fb-officer-member' => 'Pejabat grup',
+	'grouppage-fb-officer' => '{{ns:project}}:Pejabat grup',
+	'group-fb-admin' => 'Admin grup',
+	'group-fb-admin-member' => 'Administrator grup',
+	'grouppage-fb-admin' => '{{ns:project}}:Admin grup',
+	'fbconnect-connect' => 'Masuk dengan Facebook Connect',
+	'fbconnect-convert' => 'Hubungkan akun ini dengan Facebook',
+	'fbconnect-logout' => 'Keluar dari Facebook',
+	'fbconnect-link' => 'Kembali ke facebook.com',
+	'fbconnect-title' => 'Hubungkan akun dengan Facebook',
+	'fbconnect-intro' => 'Wiki ini diaktifkan dengan Facebook Connect, evolusi berikutnya dari platform Facebook. 
+Ini berarti bahwa ketika Anda terhubung, di samping [[Wikipedia:Help:Logging in#Why log in?|manfaat]] yang didapat saat masuk, Anda akan dapat mengambil manfaat dari beberapa fitur tambahan ...',
+	'fbconnect-click-to-login' => 'Klik untuk masuk ke situs ini melalui Facebook',
+	'fbconnect-click-to-connect-existing' => 'Klik untuk menghubungkan akun Facebook ke $1',
+	'fbconnect-conv' => 'Kenyamanan',
+	'fbconnect-convdesc' => 'Pengguna yang terhubung secara otomatis masuk.
+Jika izin diberikan, wiki ini bahkan dapat menggunakan Facebook sebagai proksi surel agar Anda dapat terus menerima pemberitahuan penting tanpa mengungkapkan alamat surel.',
+	'fbconnect-fbml' => 'Bahasa markah Facebook',
+	'fbconnect-fbmldesc' => 'Facebook memberikan banyak tag terpasang yang akan menampilkan data dinamis.
+Banyak di antara tag ini dapat dimasukkan dalam teks wiki dan akan ditampilkan berbeda tergantung di mana mereka sedang dilihat oleh pengguna yang terhubung.',
+	'fbconnect-comm' => 'Komunikasi',
+	'fbconnect-commdesc' => 'Facebook Connect mengantarkan ke tingkat jejaring baru.
+Lihat mana teman Anda yang telah menggunakan wiki, dan bagikan tindakan Anda dengan teman Anda melalui kabar berita Facebook.',
+	'fbconnect-welcome' => 'Selamat datang, pengguna Facebook Connect!',
+	'fbconnect-loginbox' => "Atau '''masuk''' dengan Facebook:
+
+$1",
+	'fbconnect-merge' => 'Gabungkan akun wiki dengan ID Facebook Anda',
+	'fbconnect-logoutbox' => '$1
+
+Ini juga akan mengeluarkan Anda dari Facebook dan semua situs terhubung, termasuk wiki ini.',
+	'fbconnect-listusers-header' => 'Hak $1 dan $2 otomatis dipindahkan dari pejabat dan admin grup Facebook $3.
+
+Untuk info lebih lanjut, hubungi pembuat grup $4.',
+	'fbconnect-error' => 'Kesalahan verifikasi',
+	'fbconnect-errortext' => 'Kesalahan terjadi sewaktu verifikasi dengan Facebook Connect.',
+	'fbconnect-cancel' => 'Tindakan dibatalkan',
+	'fbconnect-canceltext' => 'Tindakan sebelumnya dibatalkan oleh pengguna.',
+	'fbconnect-invalid' => 'Pilihan tidak sah',
+	'fbconnect-invalidtext' => 'Pilihan yang dibuat pada halaman sebelumnya tidak sah.',
+	'fbconnect-success' => 'Verifikasi Facebook berhasil',
+	'fbconnect-successtext' => 'Anda berhasil masuk dengan Facebook Connect.',
+	'fbconnect-nickname' => 'Nama panggilan',
+	'fbconnect-fullname' => 'Nama lengkap',
+	'fbconnect-email' => 'Alamat surel',
+	'fbconnect-language' => 'Bahasa',
+	'fbconnect-timecorrection' => 'Koreksi zona waktu (jam)',
+	'fbconnect-chooselegend' => 'Pilihan nama pengguna',
+	'fbconnect-chooseinstructions' => 'Semua pengguna memerlukan nama panggilan; Anda dapat memilih dari salah satu opsi berikut.',
+	'fbconnect-invalidname' => 'Nama panggilan yang Anda pilih sudah diambil atau tidak sah.
+Silakan memilih yang berbeda.',
+	'fbconnect-choosenick' => 'Nama profil Facebook Anda ($1)',
+	'fbconnect-choosefirst' => 'Nama depan Anda ($1)',
+	'fbconnect-choosefull' => 'Nama lengkap Anda ($1)',
+	'fbconnect-chooseauto' => 'Nama yang dibuat secara otomatis ($1)',
+	'fbconnect-choosemanual' => 'Nama pilihan Anda:',
+	'fbconnect-chooseexisting' => 'Akun yang telah ada di wiki ini',
+	'fbconnect-chooseusername' => 'Nama pengguna:',
+	'fbconnect-choosepassword' => 'Sandi:',
+	'fbconnect-updateuserinfo' => 'Perbarui informasi pribadi berikut:',
+	'fbconnect-alreadyloggedin' => "'''Anda telah masuk, $1!'''
+
+Jika Anda ingin menggunakan Facebook Connect untuk masuk log di masa datang, Anda dapat [[Special:Connect/Convert|mengubah akun Anda untuk menggunakan Facebook Connect]].",
+	'fbconnect-error-creating-user' => 'Kesalahan saat membuat pengguna dalam basis data lokal.',
+	'fbconnect-error-user-creation-hook-aborted' => 'Suatu pengait (ekstensi) menggagalkan pembuatan akun dengan pesan: $1',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Profil Facebook',
+	'fbconnect-prefsheader' => 'Untuk mengendalikan peristiwa yang akan mendorong butir ke kabar berita Facebook, <a id="fbConnectPushEventBar_show" href="#">tampilkan preferensi</a> untuk <a id="fbConnectPushEventBar_hide" href="#" style="display:none">sembunyikan preferensi</a>',
+	'fbconnect-prefs-can-be-updated' => 'Anda dapat memperbaruinya kapan saja dengan mengunjungi tab "$1" pada halaman preferensi Anda.',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  * @author Ric

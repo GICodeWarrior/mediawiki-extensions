@@ -319,6 +319,32 @@ $messages['de-formal'] = array(
 	'article-comments-user-is-blocked' => 'Sie dürfen die Seite „[[$1]]“ derzeit nicht bearbeiten.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'article-comments-title-string' => 'Τίτλος',
+	'article-comments-name-string' => 'Όνομα',
+	'article-comments-name-field' => 'Όνομα (απαιτείται):',
+	'article-comments-url-field' => 'Ιστότοπος:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Σχόλιο',
+	'article-comments-comment-field' => 'Σχόλιο:',
+	'article-comments-submit-button' => 'Υποβολή',
+	'article-comments-leave-comment-link' => 'Αφήστε ένα σχόλιο ...',
+	'article-comments-invalid-field' => 'Η $ 1 υπό τον όρο <nowiki> [$ 2] </nowiki> είναι άκυρη.',
+	'article-comments-required-field' => 'το πεδίο "$ 1" είναι απαραίτητo.',
+	'article-comments-submission-failed' => 'H υποβολή Σχόλιου  απέτυχε',
+	'article-comments-no-comments' => 'Δυστυχώς η σελίδα "[[$1]]" δεν δέχεται σχόλια αυτή την ώρα',
+	'article-comments-commenter-said' => '$1 είπε...',
+	'article-comments-submission-succeeded' => 'Υποβολή σχολίου ολοκληρώθηκε',
+	'article-comments-submission-success' => 'Έχετε υποβάλει με επιτυχία ένα σχόλιο για "[[$1]]"',
+	'article-comments-user-is-blocked' => 'Στον λογαριασμό χρήστη σας αυτή τη στιγμή έχει  μπλοκαριστεί η λειτουργία  επεξεργασίας "[[$1]]".',
+	'article-comments-comment-missing-name-parameter' => 'Λείπει το όνομα',
+	'article-comments-comment-missing-date-parameter' => 'Λείπει η ημερομηνία του σχολίου',
+	'article-comments-no-spam' => 'Τουλάχιστον ένα από τα πεδία υποβλήθηκε έχουν επισημανθεί ως ανεπιθύμητη αλληλογραφία.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -662,6 +688,42 @@ Disponibile es "plain", "normal" e "wiki".',
 	'article-comments-comment-missing-date-parameter' => 'Data de commento mancante',
 	'article-comments-no-spam' => 'Al minus un del campos submittite esseva marcate como spam.',
 	'processcomment' => 'Tractar commento de articulo',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'article-comments-desc' => 'Mengaktifkan bagian komentar pada halaman konten',
+	'article-comments-title-string' => 'judul',
+	'article-comments-name-string' => 'Nama',
+	'article-comments-name-field' => 'Nama (wajib):',
+	'article-comments-url-field' => 'Situs web:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Komentar',
+	'article-comments-comment-field' => 'Komentar:',
+	'article-comments-submit-button' => 'Kirim',
+	'article-comments-leave-comment-link' => 'Berikan komentar ...',
+	'article-comments-invalid-field' => '$1 <nowiki>[$2]</nowiki> yang diberikan tidak sah.',
+	'article-comments-required-field' => '"$1" harus diisi.',
+	'article-comments-submission-failed' => 'Pengiriman komentar gagal',
+	'article-comments-failure-reasons' => 'Maaf, kiriman komentar Anda gagal karena {{PLURAL:$1|alasan|alasan}} berikut:',
+	'article-comments-no-comments' => 'Maaf, halaman "[[$1]]" tidak menerima komentar saat ini.',
+	'article-comments-talk-page-starter' => '<noinclude>Komentar pada "[[$1]]"
+<comments />
+-----__NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 berkata ...',
+	'article-comments-summary' => 'Komentar diberikan oleh $1 - melalui ekstensi ArticleComments',
+	'article-comments-submission-succeeded' => 'Pengiriman komentar berhasil',
+	'article-comments-submission-success' => 'Anda telah berhasil mengirimkan komentar untuk "[[$1]]"',
+	'article-comments-submission-view-all' => 'Anda dapat melihat [[$1|semua komentar pada halaman tersebut]]',
+	'article-comments-user-is-blocked' => 'Akun pengguna Anda saat ini diblokir dari mengedit "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'Modus tidak sah telah diberikan untuk komentar.
+Pilihan yang tersedia adalah "plain", "normal", dan "wiki".',
+	'article-comments-comment-missing-name-parameter' => 'Nama tidak ada',
+	'article-comments-comment-missing-date-parameter' => 'Tanggal komentar tidak ada',
+	'article-comments-no-spam' => 'Setidaknya salah satu isian yang dimasukkan ditandai sebagai spam.',
+	'processcomment' => 'Proses komentar artikel',
 );
 
 /** Italian (Italiano)

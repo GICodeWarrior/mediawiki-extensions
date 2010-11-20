@@ -91,6 +91,13 @@ $messages['de'] = array(
 	'wikibhasha-desc' => 'Stellt eine Anwendung bereit, mit der vielsprachige Inhalte erstellt und so die der englischsprachigen Wikipedia besser genutzt werden können',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'wikibhasha-desc' => 'Aplikacija za zgótowanje wěcejrěcnego wopśimjeśa, ab se wopśimjeśe engelskeje Wikipedije lěpjej zwužytkowało',
+);
+
 /** French (Français)
  * @author Jean-Frédéric
  */
@@ -124,6 +131,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'wikibhasha-desc' => 'Application pro crear contento multilingue a base del contento de Wikipedia in anglese',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'wikibhasha-desc' => 'Aplikasi untuk membuat konten multibahasa dengan memanfaatkan isi Wikipedia bahasa Inggris',
 );
 
 /** Japanese (日本語)

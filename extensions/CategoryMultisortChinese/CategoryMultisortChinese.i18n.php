@@ -157,6 +157,18 @@ $messages['es'] = array(
  */
 $messages['fi'] = array(
 	'categorymultisortchinese-desc' => 'Mahdollistaen luokkien katselemisen erilaisilla kiiinankielisille merkeille luonteenomaisilla lajitteluavaimilla',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandariinikiinaa: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandariinikiinaa: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandariinikiina: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandariinikiina: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandariinikiina: Tongyoung',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantoninkiina: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Piirto',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Piirto: Yksinkertaistettu',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Piirto: Perinteinen',
+	'categorymultisort-sortkey-name-radical' => 'Radikaali',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikaali: Yksinkertaistettu',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikaali: Perinteinen',
 );
 
 /** French (Français)

@@ -347,6 +347,20 @@ $messages['ee'] = array(
 	'refhelper-search' => 'Dii',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'refhelper' => 'Βοηθός αναφορών',
+	'refsearch' => 'Αναζήτηση αναφορών',
+	'refhelper-desc' => 'Βοηθά να δημιουγήσετε σελίδες για αναφορές',
+	'refhelper-refcreate_legend' => 'Δημιουργία νέας αναφοράς',
+	'refhelper-refcreate_another' => 'Δημιουργία ακόμα μιας αναφοράς',
+	'refhelper-refcreate_success' => 'Η σελίδα  [[$1]] δεν υπήρχε και δημιουργήθηκε.',
+	'refhelper-refcreate_failure' => 'Η σελίδα [[$1]] υπάρχει ήδη.',
+	'refhelper-label_workspace' => 'Χώρος επεξεργασίας (περιοχή αντιγραφής και επικόλλησης):',
+);
+
 /** Spanish (Español)
  * @author Pertile
  * @author Peter17

@@ -784,10 +784,42 @@ Per favor cambia o actualisa le navigator del web, si possibile.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Farras
+ * @author IvanLanin
  */
 $messages['id'] = array(
+	'categorybrowser' => 'Penelusur kategori',
+	'categorybrowser-desc' => 'Menyediakan [[Special:CategoryBrowser|halaman istimewa]] untuk menyaring kategori terpadat dan menelusurinya dengan menggunakan antarmuka AJAX',
+	'cb_requires_javascript' => 'Ekstensi penelusur kategori memerlukan pengaktifan JavaScript peramban.',
+	'cb_ie6_warning' => 'Editor kondisi tidak bekerja di Internet Explorer 6.0 atau versi sebelumnya. 
+Namun, penelusuran kondisi yang telah ditentukan seharusnya bekerja normal. 
+Jika memungkinkan, silakan ganti atau mutakhirkan peramban Anda.',
+	'cb_show_no_parents_only' => 'Tampilkan hanya kategori yang tidak memiliki induk',
+	'cb_cat_name_filter' => 'Cari kategori dengan nama:',
+	'cb_cat_name_filter_clear' => 'Tekan untuk menghapus filter nama kategori',
+	'cb_cat_name_filter_ci' => 'Tidak peka kapitalisasi',
+	'cb_copy_line_hint' => 'Gunakan tombol [+] dan [>+] untuk menyalin dan merekatkan operator ke ekspresi yang dipilih',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|subkategori|subkategori}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|halaman|halaman}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|berkas|berkas}}',
+	'cb_has_parentcategories' => 'kategori induk (jika ada)',
 	'cb_previous_items_link' => 'Sebelumnya',
 	'cb_next_items_link' => 'Selanjutnya',
+	'cb_next_items_stats' => '(dari $1)',
+	'cb_cat_subcats' => 'subkategori',
+	'cb_cat_pages' => 'halaman',
+	'cb_cat_files' => 'berkas',
+	'cb_apply_button' => 'Terapkan',
+	'cb_all_op' => 'Semua',
+	'cb_or_op' => 'atau',
+	'cb_and_op' => 'dan',
+	'cb_edit_left_hint' => 'Pindah ke kiri, jika mungkin',
+	'cb_edit_right_hint' => 'Pindah ke kanan, jika mungkin',
+	'cb_edit_remove_hint' => 'Hapus, jika mungkin',
+	'cb_edit_copy_hint' => 'Salin operator ke papan tempel',
+	'cb_edit_append_hint' => 'Sisipkan operator ke posisi terakhir',
+	'cb_edit_clear_hint' => 'Kosongkan ekspresi yang ada (pilih semua)',
+	'cb_edit_paste_hint' => 'Rekatkan operator ke posisi saat ini, jika mungkin',
+	'cb_edit_paste_right_hint' => 'Rekatkan operator ke posisi selanjutnya, jika mungkin',
 );
 
 /** Italian (Italiano)

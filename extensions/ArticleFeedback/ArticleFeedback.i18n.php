@@ -50,6 +50,7 @@ You may wish to rate it again.",
 /** Message documentation (Message documentation)
  * @author Brandon Harris
  * @author EugeneZelenko
+ * @author Raymond
  * @author Sam Reed
  */
 $messages['qqq'] = array(
@@ -1107,19 +1108,30 @@ $messages['id'] = array(
 	'articlefeedback-alpha-rating-neutrality' => 'Netral:',
 	'articlefeedback-alpha-rating-completeness' => 'Selesai:',
 	'articlefeedback-alpha-rating-readability' => 'Dapat dibaca:',
+	'articlefeedback-alpha-rating-wellsourced-tooltip' => 'Apakah Anda merasa bahwa halaman ini memiliki cukup kutipan dan bahwa kutipan tersebut berasal dari sumber tepercaya?',
+	'articlefeedback-alpha-rating-neutrality-tooltip' => 'Apakah Anda merasa bahwa halaman ini menunjukkan representasi yang adil dari semua perspektif tentang masalah ini?',
+	'articlefeedback-alpha-rating-completeness-tooltip' => 'Apakah Anda merasa bahwa halaman ini mencakup wilayah topik penting yang seharusnya?',
+	'articlefeedback-alpha-rating-readability-tooltip' => 'Apakah Anda merasa bahwa halaman ini teratur dan ditulis dengan baik?',
 	'articlefeedback-alpha-articlerating' => 'Peringkat halaman',
 	'articlefeedback-alpha-error' => 'Kesalahan terjadi.
 Silakan coba lagi.',
 	'articlefeedback-alpha-thanks' => 'Terima kasih! Penilaian Anda telah disimpan.',
 	'articlefeedback-alpha-featurefeedback' => 'Beri kami <span class="feedbacklink">umpan balik</span> tentang fitur ini.',
 	'articlefeedback-alpha-noratings' => '$1 ($2 {{PLURAL:$2|penilaian|penilaian}})',
+	'articlefeedback-alpha-stalemessage-norevisioncount' => "Halaman ini telah ''direvisi'' sejak terakhir ditinjau Anda.
+Anda mungkin ingin menilainya lagi.",
 	'articlefeedback-alpha-results-show' => '(Hasil disembunyikan. <span class="showlink">Tampilkan</span>.)',
 	'articlefeedback-alpha-results-hide' => '(<span class="hidelink">Sembunyikan hasil</span>)',
+	'articlefeedback-alpha-survey-question-whyrated' => 'Harap beritahu kami mengapa Anda menilai halaman ini hari ini (centang semua yang benar):',
+	'articlefeedback-alpha-survey-answer-whyrated-contribute-rating' => 'Saya ingin berkontribusi untuk peringkat keseluruhan halaman',
 	'articlefeedback-alpha-survey-answer-whyrated-development' => 'Saya harap penilaian saya akan memberi dampak positif terhadap pengembangan halaman ini',
 	'articlefeedback-alpha-survey-answer-whyrated-contribute-wiki' => 'Saya ingin berkontribusi ke {{SITENAME}}',
 	'articlefeedback-alpha-survey-answer-whyrated-sharing-opinion' => 'Saya ingin berbagi pendapat',
+	'articlefeedback-alpha-survey-answer-whyrated-didntrate' => 'Saya tidak memberikan penilaian hari ini, tetapi ingin memberikan umpan balik pada fitur tersebut',
 	'articlefeedback-alpha-survey-answer-whyrated-other' => 'Lainnya',
+	'articlefeedback-alpha-survey-question-useful' => 'Apakah Anda yakin bahwa peringkat yang diberikan berguna dan jelas?',
 	'articlefeedback-alpha-survey-question-useful-iffalse' => 'Mengapa?',
+	'articlefeedback-alpha-survey-question-expert' => 'Apakah Anda menganggap diri ahli di bidang yang dicakup halaman ini?',
 	'articlefeedback-alpha-survey-question-expert-iftrue' => 'Dapatkah Anda menjelaskan keahlian Anda?',
 	'articlefeedback-alpha-survey-question-comments' => 'Apakah Anda memiliki komentar tambahan?',
 	'articlefeedback-alpha-survey-submit' => 'Kirim',
@@ -2252,11 +2264,31 @@ Maaari mo itong antasang muli.",
 
 /** Turkish (Türkçe)
  * @author CnkALTDS
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'articlefeedback' => 'Madde değerlendirmesi',
+	'articlefeedback-desc' => 'Madde Geridönütleri',
+	'articlefeedback-alpha-yourfeedback' => 'Geribildiriminiz',
+	'articlefeedback-alpha-pleaserate' => 'Bu sayfayı aşağıda değerlendirmek için lütfen biraz vaktinizi ayırınız.',
+	'articlefeedback-alpha-submit' => 'Gönder',
+	'articlefeedback-alpha-rating-wellsourced' => 'İyi-Kaynaklı:',
+	'articlefeedback-alpha-rating-neutrality' => 'Tarafsız:',
+	'articlefeedback-alpha-rating-completeness' => 'Tam:',
+	'articlefeedback-alpha-rating-readability' => 'Okunabilir:',
+	'articlefeedback-alpha-rating-wellsourced-tooltip' => 'Bu sayfanın yeterli atıf içerdiğini ve bu atıfların güvenilir kaynaklardan geldiğini düşünüyor musunuz?',
+	'articlefeedback-alpha-rating-neutrality-tooltip' => 'Bu sayfanın konu hakkında tüm açılardan adil bir sunum gösterdiğini düşünüyor musunuz?',
+	'articlefeedback-alpha-rating-completeness-tooltip' => 'Bu sayfanın kapsaması gereken asıl konu alanlarını kapsadığını düşünüyor musunuz?',
+	'articlefeedback-alpha-rating-readability-tooltip' => 'Bu sayfanın iyi-organize edilmiş ve iyi yazılmış olduğunu  düşünüyor musunuz?',
 	'articlefeedback-alpha-articlerating' => 'Sayfa derecelendirmesi',
+	'articlefeedback-alpha-error' => 'Bir hata oluştu.
+Lütfen daha sonra yeniden deneyin.',
+	'articlefeedback-alpha-thanks' => 'Teşekkürler! Deeğerlendirmeniz kaydedildi.',
+	'articlefeedback-alpha-featurefeedback' => 'Bu özellik hakkında <span class="feedbacklink">geridönüt</span> verin.',
+	'articlefeedback-alpha-noratings' => '$1 ($2 {{PLURAL:$2|değerlendirme|değerlendirme}})',
+	'articlefeedback-alpha-results-show' => '(Sonuçlar gizlendi. Sonuçları <span class="showlink">göster</span>.)',
+	'articlefeedback-alpha-results-hide' => '(<span class="hidelink">Sonuçları gizle</span>)',
 	'articlefeedback-alpha-survey-answer-whyrated-sharing-opinion' => 'Fikirlerimi paylaşmayı seviyorum',
 	'articlefeedback-alpha-survey-question-useful-iffalse' => 'Neden?',
 	'articlefeedback-alpha-survey-thanks' => 'Anketi doldurduğunuz için teşekkür ederiz.',

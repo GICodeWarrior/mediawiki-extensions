@@ -148,6 +148,8 @@ $messages['be-tarask'] = array(
 	'wikisync_api_result_EmptyPass' => 'Вы не ўстанавілі парамэтар lgpassword ці пакінулі яго пустым',
 	'wikisync_api_result_WrongPass' => 'Пададзены Вамі пароль зьяўляецца няслушным',
 	'wikisync_api_result_WrongPluginPass' => 'Пададзены Вамі пароль зьяўляецца няслушным',
+	'wikisync_api_result_Blocked' => 'Удзельнік заблякаваны',
+	'wikisync_api_result_mustbeposted' => 'Модуль аўтарызацыі патрабуе выкарыстаньня POST-запытаў',
 );
 
 /** Breton (Brezhoneg)
@@ -261,6 +263,54 @@ ab Version $3 durchgeführt werden?',
 	'wikisync_js_sync_start_rtl' => 'Synchronisierung des lokalen Wikis mit dem fernen Wiki startet um $1',
 	'wikisync_js_sync_end_ltr' => 'Synchronisierung des fernen Wikis mit dem lokalen Wiki war um $1 fertig',
 	'wikisync_js_sync_end_rtl' => 'Synchronisierung des lokalen Wikis mit dem fernen Wiki war um $1 fertig',
+);
+
+/** French (Français)
+ * @author Verdy p
+ */
+$messages['fr'] = array(
+	'wikisync' => 'Synchronisation de wikis',
+	'wikisync-desc' => 'Fournit une [[Special:WikiSync|page spéciale]] permettant de synchroniser les modifications récentes sur deux wikis — un local et un distant',
+	'wikisync_direction' => 'Veuillez choisir la direction de la synchronisation',
+	'wikisync_local_root' => 'Racine du site wiki local',
+	'wikisync_remote_root' => 'Racine du site wiki distant',
+	'wikisync_remote_log' => 'Journal des opérations à distance',
+	'wikisync_clear_log' => 'Effacer le journal',
+	'wikisync_login_to_remote_wiki' => 'Connexion au wiki distant',
+	'wikisync_remote_wiki_root' => 'Racine du wiki distant',
+	'wikisync_remote_wiki_example' => "Chemin d'accès au api.php, par exemple : http://www.mediawiki.org/w",
+	'wikisync_remote_wiki_user' => 'Nom d’utilisateur sur le wiki distant',
+	'wikisync_remote_wiki_pass' => 'Mot de passe sur le wiki distant',
+	'wikisync_remote_login_button' => 'Connexion',
+	'wikisync_sync_files' => 'Synchroniser des fichiers',
+	'wikisync_store_password' => 'Stocker le mot de passe du wiki distant',
+	'wikisync_storing_password_warning' => 'Le stockage d’un mot de passe distant n’est pas sécurisé et n’est pas recommandé',
+	'wikisync_synchronization_button' => 'Synchroniser',
+	'wikisync_scheduler_log' => 'Journal du planificateur',
+	'wikisync_scheduler_setup' => 'Configuration du planificateur',
+	'wikisync_scheduler_turn_on' => 'Activer le planificateur',
+	'wikisync_scheduler_switch_direction' => 'Basculer automatiquement la direction de synchronisation',
+	'wikisync_scheduler_time_interval' => 'Durée en minutes entre les synchronisations automatiques',
+	'wikisync_apply_button' => 'Appliquer',
+	'wikisync_log_imported_by' => 'Importé par [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Téléversé par [[Special:WikiSync|WikiSync]]',
+	'wikisync_api_result_unknown_action' => 'Action inconnue de l’API',
+	'wikisync_api_result_exception' => 'Une exception s’est produite durant l’appel de l’API locale',
+	'wikisync_api_result_noaccess' => 'Seuls les membres des groupes suivants peuvent effectuer cette action : $1',
+	'wikisync_api_result_invalid_parameter' => 'Valeur invalide du paramètre',
+	'wikisync_api_result_http' => 'Une erreur HTTP est survenue lors de la requête de données de l’API distante',
+	'wikisync_api_result_Unsupported' => 'Votre version de MediaWiki n’est pas pris en charge (inférieure à 1.15)',
+	'wikisync_api_result_NoName' => 'Vous n’avez pas défini le paramètre <code>lgname</code>',
+	'wikisync_api_result_Illegal' => 'Vous avez fourni un mauvais nom d’utilisateur',
+	'wikisync_api_result_NotExists' => 'Le nom d’utilisateur que vous avez fourni n’existe pas',
+	'wikisync_api_result_EmptyPass' => 'Vous n’avez pas défini le paramètre <code>lgpassword</code> ou vous l’avez laissé vide',
+	'wikisync_api_result_WrongPass' => 'Le mot de passe que vous avez fourni est incorrect',
+	'wikisync_api_result_WrongPluginPass' => 'Le mot de passe que vous avez fourni est incorrect',
+	'wikisync_api_result_CreateBlocked' => 'Le wiki a essayé de créer automatiquement un nouveau compte pour vous, mais votre adresse IP a été bloquée contre la création de compte',
+	'wikisync_api_result_Throttled' => 'Vous avez tenté de vous connecter de trop nombreuses fois en peu de temps.',
+	'wikisync_api_result_Blocked' => 'Utilisateur est bloqué',
+	'wikisync_api_result_mustbeposted' => 'Le module de connexion nécessite une requête POST',
+	'wikisync_api_result_NeedToken' => 'Vous n’avez fourni aucun jeton de connexion ou cookie d’identification de session. Demander à nouveau avec le jeton et le cookie donnés dans cette réponse',
 );
 
 /** Galician (Galego)
@@ -464,6 +514,82 @@ a partir del version $3?',
 	'wikisync_js_sync_start_rtl' => 'Initio del synchronisation del wiki remote al wiki local a $1',
 	'wikisync_js_sync_end_ltr' => 'Fin del synchronisation del wiki local al wiki remote a $1',
 	'wikisync_js_sync_end_rtl' => 'Fin del synchronisation del wiki remote al wiki local a $1',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'wikisync' => 'Sinkronisasi wiki',
+	'wikisync-desc' => 'Menyediakan [[Special:WikiSync|halaman istimewa]] untuk sinkronisasi perubahan terbaru dari dua wiki - satu lokal dan satu luar',
+	'wikisync_direction' => 'Silakan pilih arah sinkronisasi',
+	'wikisync_local_root' => 'Akar situs wiki lokal',
+	'wikisync_remote_root' => 'Akar situs wiki luar',
+	'wikisync_remote_log' => 'Log operasi luar',
+	'wikisync_clear_log' => 'Hapus log',
+	'wikisync_login_to_remote_wiki' => 'Masuk ke wiki luar',
+	'wikisync_remote_wiki_root' => 'Akar wiki luar',
+	'wikisync_remote_wiki_example' => 'Jalur api.php, misalnya: http://www.mediawiki.org/w',
+	'wikisync_remote_wiki_user' => 'Nama pengguna wiki luar',
+	'wikisync_remote_wiki_pass' => 'Sandi wiki luar',
+	'wikisync_remote_login_button' => 'Masuk',
+	'wikisync_sync_files' => 'Sinkronisasi berkas',
+	'wikisync_store_password' => 'Simpan sandi wiki luar',
+	'wikisync_storing_password_warning' => 'Menyimpan sandi luar tidak aman dan tidak dianjurkan',
+	'wikisync_synchronization_button' => 'Sinkronisasi',
+	'wikisync_scheduler_log' => 'Log penjadwal',
+	'wikisync_scheduler_setup' => 'Penyiapan penjadwal',
+	'wikisync_scheduler_turn_on' => 'Aktifkan penjadwal',
+	'wikisync_scheduler_switch_direction' => 'Alihkan arah sinkronisasi secara otomatis',
+	'wikisync_scheduler_time_interval' => 'Waktu sinkronisasi otomatis (dalam menit)',
+	'wikisync_apply_button' => 'Terapkan',
+	'wikisync_log_imported_by' => 'Diimpor oleh [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Diunggah oleh [[Special:WikiSync|WikiSync]]',
+	'wikisync_api_result_unknown_action' => 'Tindakan API tidak dikenal',
+	'wikisync_api_result_exception' => 'Terjadi kesalahan dalam pemanggilan API lokal',
+	'wikisync_api_result_noaccess' => 'Hanya anggota kelompok berikut dapat melakukan tindakan ini: $1',
+	'wikisync_api_result_invalid_parameter' => 'Nilai parameter tidak sah',
+	'wikisync_api_result_http' => 'Kesalahan HTTP sewaktu mengambil data dari API luar',
+	'wikisync_api_result_Unsupported' => 'Versi MediaWiki tidak didukung (lebih lama dari 1.15)',
+	'wikisync_api_result_NoName' => 'Anda tidak menetapkan parameter lgname',
+	'wikisync_api_result_Illegal' => 'Anda memberikan nama pengguna yang tidak sah',
+	'wikisync_api_result_NotExists' => 'Nama pengguna yang Anda berikan tidak ada',
+	'wikisync_api_result_EmptyPass' => 'Anda tidak menetapkan parameter lgpassword atau Anda membiarkannya kosong',
+	'wikisync_api_result_WrongPass' => 'Sandi yang Anda berikan tidak benar',
+	'wikisync_api_result_WrongPluginPass' => 'Sandi yang Anda berikan tidak benar',
+	'wikisync_api_result_CreateBlocked' => 'Wiki mencoba untuk secara otomatis membuat akun baru untuk Anda, namun alamat IP Anda telah diblokir dari pembuatan akun',
+	'wikisync_api_result_Throttled' => 'Anda telah terlalu sering masuk dalam waktu singkat.',
+	'wikisync_api_result_Blocked' => 'Pengguna diblokir',
+	'wikisync_api_result_mustbeposted' => 'Modul masuk memerlukan permintaan POST',
+	'wikisync_api_result_NeedToken' => 'Anda tidak menyediakan token masuk atau kuki sessionid. Minta lagi dengan token dan kuki yang diberikan di sini',
+	'wikisync_api_result_no_import_rights' => 'Pengguna tidak diizinkan untuk mengimpor berkas cadangan XML',
+	'wikisync_api_result_Success' => 'Berhasil masuk ke situs wiki luar',
+	'wikisync_js_last_op_error' => 'Operasi terakhir memberikan kesalahan.
+
+Kode: $1
+
+Pesan: $2
+
+Tekan [OK] untuk mengulangi operasi terakhir',
+	'wikisync_js_synchronization_confirmation' => 'Apakah Anda yakin untuk melakukan sinkronisasi
+
+dari $1
+
+ke $2
+
+mulai dari revisi $3?',
+	'wikisync_js_synchronization_success' => 'Sinkronisasi berhasil diselesaikan',
+	'wikisync_js_already_synchronized' => 'Wiki sumber dan tujuan tampaknya sudah disinkronkan',
+	'wikisync_js_sync_to_itself' => 'Anda tidak dapat menyinkronkan wiki dengan dirinya sendiri',
+	'wikisync_js_diff_search' => 'Mencari perbedaan pada revisi tujuan',
+	'wikisync_js_revision' => 'Revisi $1',
+	'wikisync_js_file_size_mismatch' => 'Ukuran berkas sementara "$1" ($2 {{PLURAL:$2|bita|bita}}) tidak cocok dengan ukuran yang diperlukan ($3 {{PLURAL:$3|bita|bita}}). Pastikan berkas "$4" tidak secara manual ditimpa dalam repositori wiki sumber.',
+	'wikisync_js_invalid_scheduler_time' => 'Waktu penjadwal harus berupa bilangan bulat positif',
+	'wikisync_js_scheduler_countdown' => 'Tinggal $1 {{PLURAL:$1|menit|menit}}',
+	'wikisync_js_sync_start_ltr' => 'Sinkronisasi dari wiki lokal ke wiki luar dimulai pada $1',
+	'wikisync_js_sync_start_rtl' => 'Sinkronisasi dari wiki luar ke wiki lokal dimulai pada $1',
+	'wikisync_js_sync_end_ltr' => 'Sinkronisasi dari wiki lokal ke wiki luar selesai pada $1',
+	'wikisync_js_sync_end_rtl' => 'Sinkronisasi dari wiki luar ke wiki lokal selesai pada $1',
 );
 
 /** Japanese (日本語)

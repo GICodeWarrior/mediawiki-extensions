@@ -889,15 +889,35 @@ $messages['ka'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Wtspout
  */
 $messages['ko'] = array(
 	'mwe-clipedit-crop' => '그림을 잘라내기',
 	'mwe-clipedit-apply_crop' => '자른 그림을 적용',
 	'mwe-clipedit-reset_crop' => '자르기 취소',
 	'mwe-clipedit-insert_image_page' => '문서에 삽입하기',
+	'mwe-clipedit-insert_into_sequence' => '시퀀스에 삽입',
+	'mwe-clipedit-preview_insert' => '미리보기 삽입',
+	'mwe-clipedit-cancel_image_insert' => '삽입 취소',
+	'mwe-clipedit-sc_attributes' => '클립 정보 편집',
+	'mwe-clipedit-sc_inoutpoints' => '인-아웃 포인트 설정',
+	'mwe-clipedit-sc_overlays' => '배치',
+	'mwe-clipedit-sc_audio' => '오디오 제어',
+	'mwe-clipedit-template_properties' => '틀 속성',
+	'mwe-clipedit-custom_title' => '사용자 지정 제목',
+	'mwe-clipedit-edit_properties' => '속성 편집',
+	'mwe-clipedit-other_properties' => '기타 속성',
+	'mwe-clipedit-resource_page' => '자원 페이지:',
+	'mwe-clipedit-set_in_out_points' => '인-아웃 포인트 설정',
 	'mwe-clipedit-start_time' => '시작 시간',
 	'mwe-clipedit-end_time' => '종료 시간',
+	'mwe-clipedit-preview_inout' => '인-아웃 포인트 미리 보기',
+	'mwe-clipedit-edit-tools' => '도구 편집',
+	'mwe-clipedit-edit-video-tools' => '동영상 도구 편집:',
 	'mwe-clipedit-duration' => '시간:',
+	'mwe-clipedit-layout' => '배치',
+	'mwe-clipedit-layout_right' => '오른쪽에 이미지 배치',
+	'mwe-clipedit-layout_left' => '왼쪽에 이미지 배치',
 );
 
 /** Colognian (Ripoarisch)

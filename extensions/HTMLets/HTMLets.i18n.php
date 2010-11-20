@@ -205,9 +205,12 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'htmlets-desc' => 'Mengijinkan cukilan HTML inline dari berkas dengan menggunakan tag <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Tidak dapat menemukan berkas HTML $1',
+	'htmlets-loadfailed' => 'Gagal memuat file HTML $1',
 );
 
 /** Italian (Italiano)

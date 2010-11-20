@@ -136,6 +136,15 @@ $messages['ia'] = array(
 	'pdfbook-desc' => 'Compone un libro ex paginas in un categoria e exporta lo como libro in PDF',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'pdfbook-action' => 'Cetak sebagai PDF',
+	'pdfbook-log' => '$1 diekspor sebagai buku PDF',
+	'pdfbook-desc' => 'Menyusun suatu buku dari halaman dalam kategori dan mengekspornya sebagai buku PDF',
+);
+
 /** Japanese (日本語)
  * @author Iwai.masaharu
  * @author 青子守歌

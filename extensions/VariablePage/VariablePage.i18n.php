@@ -227,6 +227,15 @@ $messages['ia'] = array(
 	'variablepage-desc' => 'Redirection variabile de paginas sin consumption excessive de ressources',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Menyumbang',
+	'variablepage-desc' => 'Pengalihan halaman variabel ringan',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  */
