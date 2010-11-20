@@ -27,6 +27,34 @@ Examples:
 	'flagpage-tab' => 'Flag'
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'flagpage' => 'Пазначыць старонку',
+	'flagpage-desc' => 'Пазначыць старонку ўжо вызначаным шаблёнам',
+	'flagpage-templatelist' => "<!--
+Рэдагаваць гэтую старонку для ўстаноўкі шаблёнаў для выкарыстаньня.
+Прыклады:
+* [[Template:Няма крыніц|Старонка не спасылаецца ні на якія крыніцы]]
+* [[Template:Неаб'ектыўна|Старонка напісаная неаб’ектыўна]]
+* [[Template:Выдаліць|Старонка павінна быць выдаленая]]
+-->",
+	'flagpage-nopageselectedtitle' => 'Старонка не выбраная',
+	'flagpage-nopageselected' => 'Вы не пазначылі старонку',
+	'flagpage-emptylisttitle' => 'Шаблёны не сканфігураваныя',
+	'flagpage-emptylist' => 'Вам трэба сканфігураваць сьпісы шаблёнаў. Адрэдагуйце [[{{ns:8}}:flagpage-templatelist]] адпаведным чынам.',
+	'flagpage-preview' => 'Прагляд абранага шаблёну:',
+	'flagpage-confirmsave' => 'Пацьвердзіце Вашыя зьмены.',
+	'flagpage-submitbutton' => 'Захаваць старонку з гэтым шаблёнам',
+	'flagpage-nonexistent' => 'Старонка «$1» не існуе. Магчыма, яна была [{{fullurl:Special:Log|page=$1}} перанесеная ці выдаленая].',
+	'flagpage-summary' => 'дададзены шаблён [[$1]] праз FlagPage',
+	'flagpage-success' => '[[$1]] быў дададзены на старонку [[$2]].',
+	'flagpage-tab' => 'Пазначыць',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -105,6 +133,72 @@ Exemplos:
 	'flagpage-tab' => 'Marcar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'flagpage' => 'Tandai halaman',
+	'flagpage-desc' => 'Menandai halaman dengan templat standar',
+	'flagpage-templatelist' => '<!--
+Sunting halaman ini untuk mengatur templat yang digunakan.
+Contoh:
+* [[Template:Unsourced|Halaman ini tidak mencantumkan rujukan apa pun]]
+* [[Template:NPOV|Halaman ini ditulis dengan gaya tidak netral]]
+* [[Template:Delete|Halaman ini harus dihapus]]
+-->',
+	'flagpage-nopageselectedtitle' => 'Tidak ada halaman yang dipilih',
+	'flagpage-nopageselected' => 'Anda tidak menentukan halaman',
+	'flagpage-emptylisttitle' => 'Belum ada templat yang ditentukan',
+	'flagpage-emptylist' => 'Anda perlu mengonfigurasi daftar templat Anda. Sunting [[{{ns:8}}:flagpage-templatelist]] untuk melakukannya sekarang.',
+	'flagpage-preview' => 'Pratayang dari templat yang dipilih:',
+	'flagpage-confirmsave' => 'Silakan konfirmasikan perubahan.',
+	'flagpage-submitbutton' => 'Simpan halaman dengan templat ini',
+	'flagpage-nonexistent' => 'Halaman "$1" tidak ada. Mungkin sudah [{{fullurl:Special:Log|page=$1}} dipindahkan atau dihapus].',
+	'flagpage-summary' => 'Menambahkan templat [[$1]] dengan menggunakan FlagPage',
+	'flagpage-success' => '[[$1]] telah ditambahkan ke halaman [[$2]].',
+	'flagpage-tab' => 'Tanda',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'flagpage' => 'ページにフラグを設定',
+	'flagpage-desc' => '定義済みテンプレートでページにフラグを設定',
+	'flagpage-templatelist' => '<!--
+使用するテンプレートをこのページで設定してください。
+* [[テンプレート:情報源がない|ページに参考文献が1つもない]]
+* [[テンプレート:中立的な観点|ページが偏った観点から書かれている]]
+* [[テンプレート:削除|ページは削除されるべき]]
+-->',
+	'flagpage-nopageselectedtitle' => 'ページが選択されていません',
+	'flagpage-nopageselected' => 'ページを指定していません',
+	'flagpage-emptylisttitle' => 'テンプレートが設定されていません',
+	'flagpage-emptylist' => 'テンプレートの一覧を設定する必要があります。[[{{ns:8}}:flagpage-templatelist]]を編集してください。',
+	'flagpage-preview' => '選択されたテンプレートのプレビュー：',
+	'flagpage-confirmsave' => '変更内容を確認してください。',
+	'flagpage-submitbutton' => 'このテンプレートを使用してページを保存',
+	'flagpage-nonexistent' => 'ページ「$1」は存在しません。[{{fullurl:Special:Log|page=$1}} 移動または削除]されたかもしれません。',
+	'flagpage-summary' => 'テンプレート[[$1]]を追加（FlagPageによる）',
+	'flagpage-success' => '[[$1]]はページ[[$2]]に追加されました。',
+	'flagpage-tab' => 'フラグ',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'flagpage' => 'Eng Säit markéieren',
+	'flagpage-desc' => 'Eng Säit mat enger virdefinéierter Schabloun markéieren',
+	'flagpage-nopageselectedtitle' => 'Keng Säit erausgesicht',
+	'flagpage-nopageselected' => 'Dir hutt keng Säit uginn',
+	'flagpage-emptylisttitle' => 'Keng Schabloun festgeluecht',
+	'flagpage-emptylist' => 'Dir musst Är Lëscht vu Schabloune festleeën. Ännert [[{{ns:8}}:flagpage-templatelist]] fir dat elo ze maachen.',
+	'flagpage-preview' => 'Déi erausgesichte Schabloune gesinn esou aus:',
+	'flagpage-confirmsave' => 'Confirméiert Är Ännerunge w.e.g..',
+	'flagpage-submitbutton' => 'Säit mat dëser Schabloun späicheren',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -147,13 +241,75 @@ Voorbeelden:
 	'flagpage-nopageselectedtitle' => 'Geen pagina geselecteerd',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'flagpage' => 'Oznacz szablonem stronę',
+	'flagpage-desc' => 'Oznacz stronę wcześniej zdefiniowanymi szablonami',
+	'flagpage-templatelist' => '<!--
+Zmień treść tej strony, aby skonfigurować wykorzystywane szablony.
+Przykłady:
+* [[Szablon:Źródła|Strona nie zawiera żadnych źródeł]]
+* [[Szablon:NPOV|Tekst napisany w sposób tendencyjny]]
+* [[Szablon:EK|Strona powinna zostać usunięta]]
+-->',
+	'flagpage-nopageselectedtitle' => 'Nie wybrano żadnej strony',
+	'flagpage-nopageselected' => 'Nie określiłeś żadnej strony',
+	'flagpage-emptylisttitle' => 'Nie skonfigurowano szablonów',
+	'flagpage-emptylist' => 'Należy skonfigurować listę szablonów. Edytuj [[{{ns:8}}:flagpage-templatelist]] jeśli chcesz to zrobić.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'flagpage' => 'Marca na pàgina',
 	'flagpage-desc' => 'Marca na pàgina con stamp predefinì',
+	'flagpage-templatelist' => "<!--
+Modìfica sta pàgina për configuré jë stamp da dovré.
+Esempi:
+* [[Template:Sensa sorziss|La pàgina a sita pa gnun-e referense]]
+* [[Template:NPOV|La pàgina a l'é scrivùa an manera ëd part]]
+* [[Template:Delete|La pàgina a dovrìa esse scanselà]]
+-->",
+	'flagpage-nopageselectedtitle' => 'Pa gnun-e pàgine selessionà',
+	'flagpage-nopageselected' => "It l'has pa specificà gnun-e pàgine",
+	'flagpage-emptylisttitle' => 'Pa gnun stamp configurà',
+	'flagpage-emptylist' => 'It deuve configuré toa lista dë stamp. Modìfica [[{{ns:8}}:flagpage-templatelist]] për fé parèj adess.',
+	'flagpage-preview' => 'Preuva dlë stamp selessionà:',
+	'flagpage-confirmsave' => 'Për piasì conferma ij tò cambi.',
+	'flagpage-submitbutton' => 'Salva pàgina con sto stamp',
+	'flagpage-nonexistent' => 'La pàgina "$1" a esist pa. Miraco a l\'é stàita [{{fullurl:Special:Log|page=$1}} tramudà o scanselà].',
+	'flagpage-summary' => 'Gionta stamp [[$1]] an dovrand FlagPage',
+	'flagpage-success' => "[[$1]] a l'é stàit giontà a la pàgina [[$2]].",
 	'flagpage-tab' => 'Marca',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'flagpage' => 'Assinalar uma página',
+	'flagpage-desc' => 'Assinalar uma página usando predefinições configuradas',
+	'flagpage-templatelist' => '<!--
+Editar esta página para configurar as predefinições que podem ser usadas.
+Exemplos:
+* [[Predefinição:Sem referências|A página não cita nenhuma referência]]
+* [[Predefinição:Princípio da imparcialidade|A página não está escrita de uma perspectiva neutra]]
+* [[Predefinição:Eliminar|A página deve ser eliminada]]
+-->',
+	'flagpage-nopageselectedtitle' => 'Nenhuma página seleccionada',
+	'flagpage-nopageselected' => 'Não especificou uma página',
+	'flagpage-emptylisttitle' => 'Não foi configurada nenhuma predefinição',
+	'flagpage-emptylist' => 'Precisa de configurar uma lista de predefinições. Edite [[{{ns:8}}:flagpage-templatelist]] para configurá-la agora.',
+	'flagpage-preview' => 'Antevisão da predefinição escolhida:',
+	'flagpage-confirmsave' => 'Confirme as alterações, por favor.',
+	'flagpage-submitbutton' => 'Gravar a página com esta predefinição',
+	'flagpage-nonexistent' => 'A página “$1” não existe. Pode ter sido [{{fullurl:Special:Log|page=$1}} movida ou eliminada].',
+	'flagpage-summary' => 'Foi adicionada a predefinição [[$1]] usando Assinalar Página',
+	'flagpage-success' => '[[$1]] foi acrescentada à página [[$2]].',
+	'flagpage-tab' => 'Assinalar',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
