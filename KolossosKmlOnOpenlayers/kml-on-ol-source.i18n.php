@@ -209,6 +209,18 @@ $messages['ia'] = array(
 	'ts-kml-on-ol-map-by' => 'Carta per',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'ts-kml-on-ol-options' => 'Pilihan',
+	'ts-kml-on-ol-languages' => 'Bahasa',
+	'ts-kml-on-ol-thumbnails' => 'Gambar mini',
+	'ts-kml-on-ol-help' => 'Bantuan',
+	'ts-kml-on-ol-all' => 'Semua',
+	'ts-kml-on-ol-map-by' => 'Peta dari',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */
