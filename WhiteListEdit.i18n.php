@@ -1816,13 +1816,13 @@ $messages['id'] = array(
 	'whitelisttableedit' => 'Sunting',
 	'whitelisttableview' => 'Lihat',
 	'whitelisttablenewdate' => 'Tanggal baru:',
-	'whitelisttablechangedate' => 'Ubah tanggal kadaluarsa',
+	'whitelisttablechangedate' => 'Ubah tanggal kedaluwarsa',
 	'whitelisttablesetedit' => 'Set ke sunting',
 	'whitelisttablesetview' => 'Set ke lihat',
 	'whitelisttableremove' => 'Hapus',
 	'whitelistnewpagesfor' => 'Tambahkan halaman baru untuk daftar putih <b>$1</b><br />
 Gunakan karakter kartu liar * atau %',
-	'whitelistnewtabledate' => 'Tanggal kadaluarsa:',
+	'whitelistnewtabledate' => 'Tanggal kedaluwarsa:',
 	'whitelistnewtableedit' => 'Set ke sunting',
 	'whitelistnewtableview' => 'Set ke lihat',
 	'whitelistnowhitelistedusers' => 'Tidak ada pengguna dalam kelompok "{{MediaWiki:Group-restricted}}".
