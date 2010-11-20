@@ -332,6 +332,43 @@ Gellout a rit [$2 lenn an istorioù embannet].',
 	'storyboard-storydeletionconfirm' => "Ha sur oc'h hoc'h eus c'hoant dilemel an istor-mañ da vat ?",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'storyboard-name' => 'Ploča za priče',
+	'storyboard-desc' => 'Omogućava [[Special:Story|stranicu za donatore]], stranicu gdje se priče mogu [[Special:StorySubmission|poslati]] i [[Special:StoryReview|interfejs za uređivanje priča]]',
+	'right-storyreview' => 'Pregledanje, uređivanje, objavljivanje i sakrivanje priča',
+	'storyboard-anerroroccured' => 'Desila se greška: $1',
+	'storyboard-unpublished' => 'Neobjavljeno',
+	'storyboard-published' => 'Objavljeno',
+	'storyboard-hidden' => 'Sakriveno',
+	'storyboard-unpublish' => 'Poništi objavljivanje',
+	'storyboard-publish' => 'Objavi',
+	'storyboard-hide' => 'Sakrij',
+	'storyboard-option-unpublished' => 'neobjavljeno',
+	'storyboard-option-published' => 'objavljeno',
+	'storyboard-option-hidden' => 'sakriveno',
+	'story' => 'Priča',
+	'storyboard-submittedbyon' => 'Poslano od strane $1 dana $2, $3.',
+	'storyboard-viewstories' => 'Pogledaj priče',
+	'storyboard-nosuchstory' => 'Priča koju ste zahtijevali ne postoji.
+Možda je uklonjena.',
+	'storyboard-storyunpublished' => 'Priča koju ste zahtijevali još nije objavljena.',
+	'storyboard-nostorytitle' => 'Morate odrediti naslov ili iD priče koju želite da pogledate.',
+	'storyboard-cantedit' => 'Nije Vam dopušteno da uređujete priče.',
+	'storyboard-canedit' => 'Možete [$1 urediti] i objaviti ovu priču.',
+	'storyboard-createdandmodified' => 'Napravljeno dana $1, $2, a posljednji put izmijenjeno $3, $4',
+	'storyboard-authorname' => 'Ime autora',
+	'storyboard-authorlocation' => 'Mjesto autora',
+	'storyboard-authoroccupation' => 'Autorovo zanimanje',
+	'storyboard-authoremail' => 'Adresa e-pošte autora',
+	'storyboard-thestory' => 'Priča',
+	'storyboard-storystate' => 'Status',
+	'storyboard-language' => 'Jezik',
+	'storyboard-story' => 'Vaša priča',
+);
+
 /** Czech (Česky) */
 $messages['cs'] = array(
 	'storyboard-hide' => 'Skrýt',
