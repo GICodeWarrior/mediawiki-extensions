@@ -116,6 +116,15 @@ $messages['dsb'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|składowanje kontrolnego dypka]])',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'checkpoint' => 'Αποθήκευση και συνέχεια επεξεργασίας',
+	'checkpoint-desc' => 'Επιτρέπει σε κάποιον να αποθηκεύσει  μια επεξεργασία και συνεχίσει να επεξεργάζεται',
+	'checkpoint-tooltip' => 'Αποθηκεύστε την πρόοδό σας και συνεχίστε την επεξεργασία της σελίδας',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
