@@ -2387,7 +2387,7 @@ $1',
 	'sign-uniquequery-similaraddress' => 'Alamat serupa',
 	'sign-uniquequery-similarphone' => 'Telepon serupa',
 	'sign-uniquequery-similaremail' => 'Surel serupa',
-	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] tandatangan [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] tanda tangan [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Igbo (Igbo)
