@@ -474,6 +474,14 @@ $messages['tl'] = array(
 	'dontswitchmeover-pref' => 'Huwag payagang baguhin ang aking pabalat kapag binago ang likas na nakatakdang pabalat',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'dontswitchmeover-desc' => 'Kullanıcıların varsayılan motif değiştiğinde kendi motif ayarlarını korumalarını isteyip istemeyeceklerinin tercihi.',
+	'dontswitchmeover-pref' => 'Varsayılan motif değiştiğinde benim motifimin de değişmesine izin verme',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ильнар
  */
