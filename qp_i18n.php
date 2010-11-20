@@ -1349,6 +1349,7 @@ Pro salveguardar un sondage, submitte lo sin responder a alcun question de propo
 
 /** Indonesian (Bahasa Indonesia)
  * @author Farras
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'pollresults' => 'Hasil pemilihan di situs ini',
@@ -1379,17 +1380,30 @@ $messages['id'] = array(
 	'qp_export_to_xls' => 'Ekspor statistik ke dalam format XLS',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|pengguna|pengguna}} telah menjawab pertanyaan',
 	'qp_func_no_such_poll' => 'Tidak ada pemilihan ($1)',
+	'qp_func_missing_question_id' => 'Silakan masukkan suatu nomor pertanyaan yang ada (mulai dari 1) untuk pemilihan $1',
 	'qp_func_invalid_question_id' => 'Pertanyaan salah id=$2 (bukan angka) untuk pemilihan $1',
+	'qp_func_missing_proposal_id' => 'Silakan masukkan suatu nomor proposal yang ada (mulai dari 0) untuk pemilihan $1, pertanyaan $2',
 	'qp_func_invalid_proposal_id' => 'Proposal salah id=$3 (bukan angka) untuk pemilihan $1, pertanyaan $2',
+	'qp_error_no_such_poll' => 'Pemilihan tidak ditemukan ($1).
+Pastikan bahwa pemilihan telah dibuat dan disimpan. Pastikan untuk menggunakan karakter penanda alamat #',
 	'qp_error_in_question_header' => 'Kepala pertanyaan tidak sah: $1',
 	'qp_error_id_in_stats_mode' => 'Tidak dapat menetapkan ID pemilihan dalam mode statistik',
+	'qp_error_dependance_in_stats_mode' => 'Tidak dapat menetapkan rantai dependensi pemilihan dalam modus statistik',
 	'qp_error_no_stats' => 'Tidak ada data statistik tersedia, karena belum ada yang memilih pada pemilihan ini (address=$1)',
+	'qp_error_address_in_decl_mode' => 'Tidak dapat memperoleh alamat pemilihan dalam modus deklarasi',
 	'qp_error_question_not_implemented' => 'Pertanyaan dengan jenis itu belum diberlakukan: $1',
 	'qp_error_invalid_question_type' => 'Jenis pertanyaan salah: $1',
 	'qp_error_type_in_stats_mode' => 'Jenis pertanyaan tak dapat ditetapkan dalam mode tampilan statistik: $1',
+	'qp_error_no_poll_id' => 'Tag pemilihan tidak memiliki atribut nomor.',
 	'qp_error_invalid_poll_id' => 'ID pemilihan salah (id=$1)
 ID pemilihan hanya boleh berisi huruf, angka dan spasi',
 	'qp_error_already_used_poll_id' => 'ID pemilihan telah digunakan di halaman ini (id=$1)',
+	'qp_error_invalid_dependance_value' => 'Rantai dependensi pemilihan (nomor=$1) memiliki nilai atribut dependensi tidak sah (dependensi="$2")',
+	'qp_error_missed_dependance_title' => 'Pemilihan (nomor=$1) tergantung kepada pemilihan lain (nomor=$3) dari halaman [[$2]], tetapi judul [[$2]] tidak ditemukan.
+Hapus atribut dependensi atau pulihkan [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Pemilihan (id=$1) tergantung kepada pemilihan lain (id=$3) pada halaman $2, tetapi pemilihan tersebut tidak ada atau belum disimpan.
+Hapus atribut dependensi atau buat dan simpan pemilihan dengan id=$3 pada halaman $2.
+Untuk menyimpan pemilihan, kirimkan tanpa menjawab pertanyaan proposal.',
 	'qp_error_vote_dependance_poll' => 'Mohon pilih pada pemilihan $1 dahulu.',
 	'qp_error_too_many_spans' => 'Terlalu banyak kelas kategori untuk subkategori yang ditetapkan',
 	'qp_error_unanswered_span' => 'Subkategori belum terjawab',
@@ -1399,6 +1413,7 @@ ID pemilihan hanya boleh berisi huruf, angka dan spasi',
 	'qp_error_too_few_categories' => 'Sedikitnya dua kategori harus ditetapkan',
 	'qp_error_too_few_spans' => 'Setiap kelas kategori membutuhkan sedikitnya dua jawaban',
 	'qp_error_no_answer' => 'Proposal belum terjawab',
+	'qp_error_unique' => 'Pertanyaan dari jenis unique() memiliki lebih banyak proposal daripada kemungkinan jawaban yang didefinisikan: mustahil untuk menyelesaikan',
 );
 
 /** Italian (Italiano) */
