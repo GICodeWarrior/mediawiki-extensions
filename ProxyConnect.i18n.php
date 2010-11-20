@@ -75,6 +75,13 @@ $messages['ia'] = array(
 	'proxyconnect-desc' => 'Implementa le functionalitate de servitor de Proxy Connect',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'proxyconnect-desc' => 'Mengimplementasikan fungsi sisi server Poxy Connect',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
