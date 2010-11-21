@@ -395,17 +395,18 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'fundraiserportal' => 'Portail de dons',
 	'fundraiserportal-desc' => 'Ajoute un portail pour « Faire un don » vers le haut de la barre latérale.',
 	'fundraiserportal-plain-button' => 'Soutenez Wikipédia !',
-	'fundraiserportal-ruby-button' => 'Faîtes un don dès maintenant',
-	'fundraiserportal-rubytext-button' => 'Faîtes un don dès maintenant',
+	'fundraiserportal-ruby-button' => 'Faites un don dès maintenant',
+	'fundraiserportal-rubytext-button' => 'Faites un don dès maintenant',
 	'fundraiserportal-rubytext-message' => 'Chaque don nous permet de garder Wikipédia libre pour tout le monde.',
 	'fundraiserportal-rubytext-close' => 'Masquer ceci maintenant',
-	'fundraiserportal-sapphire-button' => 'Faîtes un don dès maintenant',
-	'fundraiserportal-tourmaline-button' => 'Faîtes un don dès maintenant',
+	'fundraiserportal-sapphire-button' => 'Faites un don dès maintenant',
+	'fundraiserportal-tourmaline-button' => 'Faites un don dès maintenant',
 	'fundraiserportal-tourmaline-message' => 'Chaque don nous permet de garder Wikipédia libre pour tout le monde.',
 	'fundraiserportal-tourmaline-close' => 'Masquer ceci maintenant',
 );
