@@ -568,10 +568,12 @@ $messages['vo'] = array(
 	'nedits' => '{{PLURAL:$1|Redakam|Redakams}} $1',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Jding2010
+ */
 $messages['zh-hans'] = array(
-	'activestrategy' => '积极工作队',
-	'active-strategy-desc' => '以数字显示工作队的编辑页面',
+	'activestrategy' => '↓ 已启动的战略',
+	'active-strategy-desc' => '↓ 显示战略计划页面的编辑次数',
 	'active-strategy-intro' => '此页面编辑数 (在过去{{PLURAL:$1|$1日|$1日}})',
 	'nedits' => '$1次{{PLURAL:$1|编辑|编辑}}',
 );
