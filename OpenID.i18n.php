@@ -417,7 +417,7 @@ $messages['arc'] = array(
 	'openidemail' => 'ܦܪܫܓܢܐ ܕܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
 	'openidlanguage' => 'ܠܫܢܐ',
 	'openidtimezone' => 'ܙܘܢܐ ܙܒܢܝܐ:',
-	'openidchooselegend' => 'ܓܒܝܐ ܕܫܡܐ ܕܡܬܚܫܚܢܐ',
+	'openidchooselegend' => 'ܓܒܝܐ ܕܫܡܐ ܕܡܦܠܚܢܐ',
 	'openidchoosefull' => 'ܫܡܐ ܓܡܝܪܐ ܕܝܠܟ($1)',
 	'openidchoosepassword' => 'ܡܠܬܐ ܕܥܠܠܐ:',
 	'openidloginlabel' => 'URL ܕܗܝܝܘܬܐ ܦܬܝܚܬܐ',
@@ -426,7 +426,7 @@ $messages['arc'] = array(
 	'openid-urls-action' => 'ܥܒܕܐ',
 	'openid-urls-delete' => 'ܫܘܦ',
 	'openid-add-url' => 'ܐܘܣܦ ܗܝܝܘܬܐ ܦܬܝܚܬܐ ܚܕܬܐ',
-	'openid-provider-label-other-username' => 'ܐܥܠ ܫܡܐ ܕܡܬܚܫܚܢܐ ܕܝܠܟ ܒ $1',
+	'openid-provider-label-other-username' => 'ܐܥܠ ܫܡܐ ܕܡܦܠܚܢܐ ܕܝܠܟ ܒ $1',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
