@@ -109,8 +109,8 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'errorhandler-errors' => 'ܦܘܕ̈ܐ:',
-	'errorhandler-error-user-error' => 'ܦܘܕܐ ܕܡܬܚܫܚܢܐ',
-	'errorhandler-error-user-warning' => 'ܙܘܗܪܐ ܕܡܬܚܫܚܢܐ',
+	'errorhandler-error-user-error' => 'ܦܘܕܐ ܕܡܦܠܚܢܐ',
+	'errorhandler-error-user-warning' => 'ܙܘܗܪܐ ܕܡܦܠܚܢܐ',
 	'errorhandler-msg-text' => '$1 : $2 ܒ $3 (ܣܪܛܐ $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> ܒ <b>$3</b> (ܣܪܛܐ <b>$4</b>)',
 	'errorhandler-trace-line' => '$1 (ܣܪܛܐ $2): $3',
