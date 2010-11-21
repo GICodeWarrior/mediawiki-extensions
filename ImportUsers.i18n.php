@@ -150,7 +150,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'importusers' => 'ܡܥܠܢܘܬܐ ܕܡܬܚܫܚܢ̈ܐ',
+	'importusers' => 'ܡܥܠܢܘܬܐ ܕܡܦܠܚܢ̈ܐ',
 	'importusers-uploadfile' => 'ܐܣܩ ܠܦܦܐ',
 	'importusers-form-button' => 'ܐܥܠ',
 	'importusers-log-summary' => 'ܦܣܝܩܬ̈ܐ',
