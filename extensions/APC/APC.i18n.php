@@ -481,16 +481,16 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'apc' => 'ܝܕܥܬ̈ܐ ܕAPC',
-	'right-apc' => 'ܡܬܚܫܚܢܘܬܐ ܕܟܠ ܦܪ̈ܘܫܝܐ ܒ[[Special:APC|APC]]',
+	'right-apc' => 'ܡܦܠܚܢܘܬܐ ܕܟܠ ܦܪ̈ܘܫܝܐ ܒ[[Special:APC|APC]]',
 	'viewapc-info-general' => 'ܝܕ̈ܥܬܐ ܓܘܢܝܬ̈ܐ',
 	'viewapc-apc-version' => 'ܨܚܚܐ ܕAPC',
 	'viewapc-php-version' => 'ܨܚܚܐ ܕPHP',
 	'viewapc-shared-memory' => 'ܥܘܗܕܢܐ ܫܘܬܦܐ',
 	'viewapc-start-time' => 'ܙܒܢܐ ܕܫܘܪܝܐ',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ܠܦܦܐ|ܠܦܦ̈ܐ}} ($2)',
-	'viewapc-memory-usage' => 'ܡܬܚܫܚܢܘܬܐ ܕܥܘܗܕܢܐ',
+	'viewapc-memory-usage' => 'ܡܦܠܚܢܘܬܐ ܕܥܘܗܕܢܐ',
 	'viewapc-memory-free' => 'ܚܐܪܐ: $1 ($2)',
-	'viewapc-memory-used' => 'ܡܬܚܫܚܐ: $1 ($2)',
+	'viewapc-memory-used' => 'ܡܦܠܚܢܐ: $1 ($2)',
 	'viewapc-display-value' => 'ܛܝܡܐ',
 	'viewapc-display-filename' => 'ܫܡܐ ܕܠܦܦܐ',
 	'viewapc-display-info' => 'ܫܡܐ',
@@ -3160,17 +3160,17 @@ Un nove version $2 es disponibile a http://pecl.php.net/package/APC/$2',
  */
 $messages['id'] = array(
 	'apc' => 'Informasi APC',
-	'apc-desc' => '[[Special:APC|Menampilkan dan mengelola tembolok APC]] dengan MediaWiki',
+	'apc-desc' => '[[Special:APC|Menampilkan dan mengelola singgahan APC]] dengan MediaWiki',
 	'right-apc' => 'Menggunakan semua fitur di [[Special:APC|APC]]',
-	'viewapc-apc-not-available' => 'Informasi tembolok tidak tersedia.
+	'viewapc-apc-not-available' => 'Informasi singgahan tidak tersedia.
 APC kemungkinan tidak berjalan saat ini.',
-	'viewapc-clear-confirm' => 'Apakah Anda yakin untuk menghapus tembolok?',
-	'viewapc-clear-user-cache' => 'Hapus tembolok pengguna',
-	'viewapc-clear-code-cache' => 'Hapus tembolok opcode',
+	'viewapc-clear-confirm' => 'Apakah Anda yakin untuk menghapus singgahan?',
+	'viewapc-clear-user-cache' => 'Hapus singgahan pengguna',
+	'viewapc-clear-code-cache' => 'Hapus singgahan opcode',
 	'viewapc-mode-stats' => 'Tampilkan hos statistik',
-	'viewapc-mode-system-cache' => 'Entri tembolok sistem',
+	'viewapc-mode-system-cache' => 'Entri singgahan sistem',
 	'viewapc-mode-system-cache-dir' => 'Entri per-direktori',
-	'viewapc-mode-user-cache' => 'Entri tembolok pengguna',
+	'viewapc-mode-user-cache' => 'Entri singgahan pengguna',
 	'viewapc-mode-version-check' => 'Periksa versi',
 	'viewapc-info-general' => 'Informasi umum',
 	'viewapc-apc-version' => 'Versi APC',
@@ -3181,9 +3181,9 @@ APC kemungkinan tidak berjalan saat ini.',
 	'viewapc-start-time' => 'Waktu mulai',
 	'viewapc-uptime' => 'Waktu aktif',
 	'viewapc-upload-support' => 'Dukungan pemuatan berkas',
-	'viewapc-filecache-info' => 'Informasi tembolok berkas',
-	'viewapc-usercache-info' => 'Informasi tembolok pengguna',
-	'viewapc-cached-files' => 'Berkas-berkas dalam tembolok',
+	'viewapc-filecache-info' => 'Informasi singgahan berkas',
+	'viewapc-usercache-info' => 'Informasi singgahan pengguna',
+	'viewapc-cached-files' => 'Berkas singgahan',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|berkas|berkas}} ($2)',
 	'viewapc-hits' => 'Akses',
 	'viewapc-misses' => 'Kehilangan',
@@ -3191,7 +3191,7 @@ APC kemungkinan tidak berjalan saat ini.',
 	'viewapc-hitrate' => 'Tingkat akses',
 	'viewapc-missrate' => 'Tingkat kegagalan',
 	'viewapc-insertrate' => 'Tingkat penyisipan',
-	'viewapc-cachefull' => 'Jumlah total tembolok',
+	'viewapc-cachefull' => 'Jumlah singgahan penuh',
 	'viewapc-rps' => '$1 permintaan per detik',
 	'viewapc-info-runtime' => 'Informasi waktu aktif',
 	'viewapc-info-memory' => 'Diagram status hos',
@@ -6972,11 +6972,14 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Chenzw
  * @author Gzdavidwong
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'viewapc-clear-confirm' => '你想清除缓存吗？',
+	'viewapc-clear-user-cache' => '清除用户缓存',
 	'viewapc-mode-version-check' => '检查版本',
 	'viewapc-apc-version' => 'APC版本',
 	'viewapc-php-version' => 'PHP 版本',

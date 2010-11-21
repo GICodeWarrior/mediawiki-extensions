@@ -55,6 +55,58 @@ $messages['be-tarask'] = array(
 	'flagpage-tab' => 'Пазначыць',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'flagpage' => 'Merkañ ur bajenn',
+	'flagpage-desc' => 'Merkañ ar bajenn gant ar patromoù raktermenet',
+	'flagpage-templatelist' => "<!--
+Kemmañ ar bajenn-mañ evit kefluniañ ar patromoù da vezañ implijet.
+Da skouer :
+* [[Template:Unsourced|N'eus daveenn ebet er pennad]]
+* [[Template:NPOV|en un doare siek eo bet skrivet ar pennad]]
+* [[Template:Delete|Diverket a rankfe bezañ ar bajenn]]
+-->",
+	'flagpage-nopageselectedtitle' => "N'eus bet diuzet pajenn ebet",
+	'flagpage-nopageselected' => "N'hoc'h eus termenet pajenn ebet",
+	'flagpage-emptylisttitle' => "N'eus bet kefluniet patrom ebet",
+	'flagpage-emptylist' => "Ret eo deoc'h kefluniañ ho roll patromoù. Kemmit [[{{ns:8}}:flagpage-templatelist]] evit en ober bremañ.",
+	'flagpage-preview' => 'Un tamm rakweled eus ar patromoù diuzet :',
+	'flagpage-confirmsave' => "Kadarnait ar c'hemmoù degaset ganeoc'h.",
+	'flagpage-submitbutton' => 'Enrollañ ar bajenn gant ar patrom-mañ',
+	'flagpage-nonexistent' => "N'eus ket eus ar bajenn “$1”. Ker buan all eo bet [{{fullurl:Special:Log|page=$1}} adkaset pelloc'h pe eo bet diverket].",
+	'flagpage-summary' => 'Ouzhpennet ar patrom [[$1]] a-drugarez da FlagPage',
+	'flagpage-success' => "Ouzhpennet eo bet [[$1]] d'ar bajenn [[$2]].",
+	'flagpage-tab' => 'Merkañ',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'flagpage' => 'Označi stranicu',
+	'flagpage-desc' => 'Označavanje stranice sa spremljenim šablonima',
+	'flagpage-templatelist' => '<!--
+Uredite ovu stranicu da biste odredili koje ćete šablone koristiti.
+Primjeri:
+* [[Template:Unsourced|Ova stranica ne navodi nijedan izvor]]
+* [[Template:NPOV|Ova stranica nije napisana sa neutralnog stanovišta]]
+* [[Template:Delete|Ova stranica treba biti obrisana]]
+-->',
+	'flagpage-nopageselectedtitle' => 'Nije odabrana stranica',
+	'flagpage-nopageselected' => 'Niste odredili stranicu',
+	'flagpage-emptylisttitle' => 'Nije određen šablon',
+	'flagpage-emptylist' => 'Potrebno je da podesite vaš spisak šablona. Uredite ga pomoću [[{{ns:8}}:flagpage-templatelist]].',
+	'flagpage-preview' => 'Pregled odabranog šablona:',
+	'flagpage-confirmsave' => 'Molimo potvrdite svoje promjene.',
+	'flagpage-submitbutton' => 'Spremi stranicu sa ovim šablonom',
+	'flagpage-nonexistent' => 'Stranica “$1” ne postoji. Možda je [{{fullurl:Special:Log|page=$1}} premještena ili obrisana].',
+	'flagpage-summary' => 'Dodan šablon [[$1]] koristeći FlagPage',
+	'flagpage-success' => '[[$1]] je dodan na stranicu [[$2]].',
+	'flagpage-tab' => 'Oznaka',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -105,6 +157,32 @@ Exemples :
 	'flagpage-summary' => "Ajout du modèle [[$1]] à l'aide de FlagPage",
 	'flagpage-success' => '[[$1]] a été ajouté à la page [[$2]].',
 	'flagpage-tab' => 'Marquer',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'flagpage' => 'Stronu markěrować',
+	'flagpage-desc' => 'Stronu z pomocu předdefinowanych předłohow markěrować',
+	'flagpage-templatelist' => '<!--
+Wobdźěłaj tutu stronu, zo by předłohi konfigurował, kotrež so wužiwaja.
+Přikład:
+* [[Template:Unsourced|Tuta strona žane referency njepodawa]]
+* [[Template:NPOV|Neutralnosć tuteje strony je dwělomna]]
+* [[Template:Delete|Strona měła so wušmórnyć]]
+-->',
+	'flagpage-nopageselectedtitle' => 'Žana dataja wubrana',
+	'flagpage-nopageselected' => 'Njejsy žanu stronu podał',
+	'flagpage-emptylisttitle' => 'Žane předłohi skonfigurowane',
+	'flagpage-emptylist' => 'Dyrbiš swoje lisćiny předłohow konfigurować. Wobdźěłaj [[{{ns:8}}:flagpage-templatelist]] za to.',
+	'flagpage-preview' => 'Přehlad wubraneje předłohi:',
+	'flagpage-confirmsave' => 'Prošu wobkruć swoje změny.',
+	'flagpage-submitbutton' => 'Stronu z tutej předłohu składować',
+	'flagpage-nonexistent' => 'Strona "$1" njeeksistuje. Snano je so [{{fullurl:Special:Log|page=$1}} přesunyła abo wušmórnyła].',
+	'flagpage-summary' => 'Předłoha [[$1]] z pomocu FlagPage přidata',
+	'flagpage-success' => '[[$1]] je so stronje [[$2]] přidał.',
+	'flagpage-tab' => 'Chorhojčka',
 );
 
 /** Interlingua (Interlingua)
@@ -197,6 +275,10 @@ $messages['lb'] = array(
 	'flagpage-preview' => 'Déi erausgesichte Schabloune gesinn esou aus:',
 	'flagpage-confirmsave' => 'Confirméiert Är Ännerunge w.e.g..',
 	'flagpage-submitbutton' => 'Säit mat dëser Schabloun späicheren',
+	'flagpage-nonexistent' => 'D\'Säit "$1" gëtt et net. Vläicht gouf se [{{fullurl:Special:Log|page=$1}} geréckelt oder geläscht].',
+	'flagpage-summary' => "D'Schabloun [[$1]] gouf mat der Fonctioun FlagPage derbäigesat",
+	'flagpage-success' => "[[$1]] gouf op d'Säit [[$2]] derbäigesat.",
+	'flagpage-tab' => 'Markéierung',
 );
 
 /** Macedonian (Македонски)

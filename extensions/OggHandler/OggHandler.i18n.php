@@ -58,6 +58,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Meno25
  * @author Mormegil
  * @author Purodha
@@ -75,7 +76,9 @@ Parameters are:
 * $2 file duration, f.e. 1m34s
 * $3 file sampling rate, f.e. 97kbps',
 	'ogg-play' => '{{Identical|Play}}',
-	'ogg-player-videoElement' => 'Message used in JavaScript.',
+	'ogg-player-videoElement' => 'Message used in JavaScript. 
+
+For definition of "native support" see [http://en.wiktionary.org/wiki/native_support Wiktionary].',
 	'ogg-player-vlc-mozilla' => '{{optional}}',
 	'ogg-player-quicktime-mozilla' => '{{optional}}',
 	'ogg-player-totem' => '{{optional}}',
@@ -648,6 +651,14 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'ogg-desc' => 'Trinydd ffeiliau Ogg Theora a Vorbis, gyda chwaraewr JavaScript',
+	'ogg-short-audio' => 'Ffeil sain Ogg $1, $2',
+	'ogg-short-video' => 'Ffeil fideo Ogg $1, $2',
+	'ogg-short-general' => 'Ffeil gyfrwng Ogg $1, $2',
+	'ogg-long-audio' => '(Ffeil sain Ogg $1, o hyd $2, $3)',
+	'ogg-long-video' => '(Ffeil fideo Ogg $1, o hyd $2, $4×$5 picsel, $3)',
+	'ogg-long-multiplexed' => '(Ffeil sain/fideo amlbleth Ogg, $1, o hyd $2, $4×$5 picsel, $3 o ben i ben)',
+	'ogg-long-general' => '(Ffeil gyfrwng Ogg, o hyd $2, $3)',
 	'ogg-long-error' => '(Ffeil OGG annilys: $1)',
 	'ogg-play' => 'Chwarae',
 	'ogg-pause' => 'Oedi',
@@ -656,6 +667,11 @@ $messages['cy'] = array(
 	'ogg-play-sound' => 'Gwrando',
 	'ogg-no-player' => 'Mae\'n ddrwg gennym, mae\'n debyg nad oes unrhyw feddalwedd chwaraewr a gefnogir ar eich system. 
 Byddwch gystal à <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lawrlwytho chwaraewr</a>.',
+	'ogg-no-xiphqt' => 'Ymddengys nad yw\'r gydran XiphQT ar gyfer QuickTime gennych.
+Ni all QuickTime chwarae ffeiliau Ogg heb y gydran hon.
+Os gwelwch yn dda, a wnewch chi <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lawrlwytho XiphQT</a> neu ddewis chwaraewr arall.',
+	'ogg-player-videoElement' => 'Cynhaliad porwr ar gael yn barod',
+	'ogg-player-oggPlugin' => 'Ategyn porwr',
 	'ogg-player-thumbnail' => 'Llun llonydd yn unig',
 	'ogg-player-soundthumb' => 'Dim chwaraewr',
 	'ogg-player-selected' => '(dethol)',
@@ -664,6 +680,8 @@ Byddwch gystal à <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Cl
 	'ogg-dismiss' => 'Cau',
 	'ogg-download' => 'Islwytho ffeil',
 	'ogg-desc-link' => "Ynglŷn â'r ffeil hon",
+	'ogg-oggThumb-version' => 'Mae ar OggHandler angen fersiwn $1 o oggThumb (neu fersiwn diweddarach).',
+	'ogg-oggThumb-failed' => "Methodd oggThumb â chynhyrchu'r mân-lun.",
 );
 
 /** Danish (Dansk)

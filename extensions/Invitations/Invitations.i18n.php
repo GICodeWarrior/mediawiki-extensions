@@ -220,9 +220,9 @@ Evit merañ ar pedadennoù evit un elfenn hiniennel, klikit war hec'h anv.",
 	'invitations-inviteform-title' => 'Pediñ un implijer da implijout $1',
 	'invitations-inviteform-username' => 'Implijer da bediñ',
 	'invitations-inviteform-submit' => 'Pediñ',
-	'invitations-error-baduser' => "War a seblant n'ez eus ket eus an implijer ho peus meneget.",
-	'invitations-error-alreadyinvited' => "An implijer ho peus meneget en deus dija ar moned d'an arc'hweladur-mañ !",
-	'invitations-invite-success' => "Pedet ho peus $1 evit implijout an arc'hweladur-mañ !",
+	'invitations-error-baduser' => "Evit doare, an implijer merket ganeoc'h n'eus ket anezhañ.",
+	'invitations-error-alreadyinvited' => "Gallout a ra an implijer merket ganeoc'h ober gant an arc'hweladur-mañ dija !",
+	'invitations-invite-success' => "Pedet hoc'h eus ervat $1 evit ma c'hallfe implijout an arc'hweladur-mañ !",
 );
 
 /** Bosnian (Bosanski)

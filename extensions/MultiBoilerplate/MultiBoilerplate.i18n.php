@@ -422,8 +422,8 @@ $messages['mk'] = array(
 	'multiboilerplate-submit' => 'Вчитај',
 	'boilerplates' => 'Достапни подготвени текстови',
 	'multiboilerplate-special-pagetext' => 'Овие шаблони можат да се вчитаат како готови при создавањето на страници. (<span class=plainlinks>[{{fullurl:This page does not exist|action=edit}} пример]</span>)',
-	'multiboilerplate-special-define-in-localsettings' => 'Подготвените текстови се дефинирани во LocalSettings.',
-	'multiboilerplate-special-define-in-interface' => 'Подготвените текстови се дефинирани на [[MediaWiki:Multiboilerplate]].',
+	'multiboilerplate-special-define-in-localsettings' => 'Подготвените текстови се определени во LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Подготвените текстови се определени на [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Malayalam (മലയാളം)

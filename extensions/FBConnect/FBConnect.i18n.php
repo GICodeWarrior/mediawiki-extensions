@@ -187,7 +187,7 @@ $messages['arc'] = array(
 	'fbconnect-language' => 'ܠܫܢܐ',
 	'fbconnect-choosefirst' => 'ܫܡܐ ܩܕܡܝܐ ܕܝܠܟ($1)',
 	'fbconnect-choosefull' => 'ܫܡܐ ܓܡܝܪܐ ܕܝܠܟ($1)',
-	'fbconnect-chooseusername' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ:',
+	'fbconnect-chooseusername' => 'ܫܡܐ ܕܡܦܠܚܢܐ:',
 	'fbconnect-choosepassword' => 'ܡܠܬܐ ܕܥܠܠܐ:',
 );
 
@@ -1023,6 +1023,68 @@ $messages['he'] = array(
 	'fbconnect-error-creating-user' => 'שגיאה ביצירת המשתמש בבסיס הנתונים המקומי.',
 	'fbconnect-prefstext' => 'Facebook Connect',
 	'fbconnect-link-to-profile' => 'Facebook פרופיל',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'group-fb-user' => 'Wužiwarjo Facebook Connect',
+	'group-fb-user-member' => 'Wužiwar Facebook Connect',
+	'grouppage-fb-user' => '{{ns:project}}:Wužiwarjo Facebook Connect',
+	'group-fb-groupie' => 'Skupinscy čłonojo',
+	'group-fb-groupie-member' => 'Skupinski čłon',
+	'grouppage-fb-groupie' => '{{ns:project}}:Skupinscy čłonojo',
+	'group-fb-officer' => 'Skupinscy zarjadowarjo',
+	'group-fb-officer-member' => 'Skupinski zarjadowar',
+	'grouppage-fb-officer' => '{{ns:project}}:Skupinscy zarjadowarjo',
+	'group-fb-admin' => 'Skupinscy administratorojo',
+	'group-fb-admin-member' => 'Skupinski administrator',
+	'grouppage-fb-admin' => '{{ns:project}}:Skupinscy administratorojo',
+	'fbconnect-connect' => 'Přez Facebook Connect přizjewić',
+	'fbconnect-convert' => 'Tute konto z Facebookom zwjazać',
+	'fbconnect-logout' => 'Z Facebook wotzjewić',
+	'fbconnect-link' => 'Wróćo k facebook.com',
+	'fbconnect-title' => 'Konto z Facebookom zwjazać',
+	'fbconnect-click-to-login' => 'Klikń, zo by so přez Facebook pola tutoho sydła přizjewił',
+	'fbconnect-click-to-connect-existing' => 'Klikń, zo by swoje konto Facebook z $1 zwjazał',
+	'fbconnect-conv' => 'Komfortabelnosć',
+	'fbconnect-fbml' => 'Woznamjenjenska rěč Facebook',
+	'fbconnect-comm' => 'Komunikacija',
+	'fbconnect-welcome' => 'Witaj, wužiwarjo Facebook Connect!',
+	'fbconnect-loginbox' => "Abo '''přizjewjenje''' přez Facebook:
+
+$1",
+	'fbconnect-merge' => 'Twoje wikikonto z twojim Facebook-ID zwjazać',
+	'fbconnect-error' => 'Pruwowanski zmylk',
+	'fbconnect-errortext' => 'Při přepruwowanju přez Facebook Connect je zmylk wustupił.',
+	'fbconnect-cancel' => 'Akcija přetorhnjena',
+	'fbconnect-canceltext' => 'Předchadna akcija bu wot wužiwarja přetorhnjena.',
+	'fbconnect-invalid' => 'Njepłaćiwa opcija',
+	'fbconnect-success' => 'Přepruwowanje Facebook je so poradźiło',
+	'fbconnect-successtext' => 'Sy so wuspěšnje přez Facebook Connect přizjewił.',
+	'fbconnect-nickname' => 'Přimjeno',
+	'fbconnect-fullname' => 'Dospołne mjeno',
+	'fbconnect-email' => 'E-mejlowa adresa',
+	'fbconnect-language' => 'Rěč',
+	'fbconnect-timecorrection' => 'Korektura časoweho pasma (hodźiny)',
+	'fbconnect-chooselegend' => 'Wuběranje wužiwarskeho mjena',
+	'fbconnect-chooseinstructions' => 'Wšitcy wužiwarjo trjebaja přimjeno; móžěs jedne z opcijow deleka wubrać.',
+	'fbconnect-invalidname' => 'Wubrane přimjeno so hižo wužiqwa abo njeje płaćiwe.
+Prošu wubjer druhe přimjeno.',
+	'fbconnect-choosenick' => 'Mjeno profila na Facebooku ($1)',
+	'fbconnect-choosefirst' => 'Twoje předmjeno ($1)',
+	'fbconnect-choosefull' => 'Twoje dospołne mjeno ($1)',
+	'fbconnect-chooseauto' => 'Awtomatisce wutworjene mjeno ($1)',
+	'fbconnect-choosemanual' => 'Mjeno twojeje wólby:',
+	'fbconnect-chooseexisting' => 'Eksistowace konto na tutym wikiju',
+	'fbconnect-chooseusername' => 'Wužiwarske mjeno:',
+	'fbconnect-choosepassword' => 'Hesło:',
+	'fbconnect-updateuserinfo' => 'Zaktualizuj slědowace wosobinske informacije:',
+	'fbconnect-error-creating-user' => 'Zmylk při wutworjenju wužiwarja w lokalnej datowej bance.',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Profil Facebook',
 );
 
 /** Hungarian (Magyar)

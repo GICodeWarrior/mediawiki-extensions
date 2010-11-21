@@ -129,7 +129,7 @@ $3',
  */
 $messages['br'] = array(
 	'latexdoc_no_text' => "Pajenn hep testenn, n'haller ket krouiñ DVI",
-	'latexdoc_cant_create_dir' => "Diposup krouiñ ar c'havlec'h padennek $1",
+	'latexdoc_cant_create_dir' => "Diposupl krouiñ ar c'havlec'h padennek $1",
 	'latexdoc_cant_write' => 'Diposupl skrivañ er restr $1',
 	'latexdoc_error' => 'Fazi LaTeX
 

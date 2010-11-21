@@ -1356,10 +1356,11 @@ $messages['bs'] = array(
 	'wikilog-pager-last' => 'posljednji',
 	'wikilog-pager-empty' => '(nema stavki)',
 	'wikilog-no-comments' => 'nema komentara',
-	'wikilog-has-comments' => '{{PLURAL:$1|jedan komentar|$1 komentari}}',
+	'wikilog-has-comments' => '{{PLURAL:$1|jedan komentar|$1 komentara}}',
 	'wikilog-summary-footer' => 'Postavio $7 u [[$1|$2]] na $8 pod $9, $10.',
 	'wikilog-summary-footer-single' => 'Poslano od strane $7 dana $8 u $9, $10.',
 	'wikilog-summary-uncategorized' => 'Nekategorisano',
+	'wikilog-summary-categories' => 'Spremljeno pod $2',
 	'wikilog-summary-more' => '[[$3|→ nastavi s čitanjem...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|razgovor]])',
 	'wikilog-edit-hint' => 'Uredi članak wikizapisnika: $1',
@@ -2575,6 +2576,7 @@ Kommentti näkyy vasta kun moderaattori on tarkistanut sen.',
  * @author Peter17
  * @author PieRRoMaN
  * @author Urhixidur
+ * @author Verdy p
  * @author Yekrats
  */
 $messages['fr'] = array(
@@ -2620,7 +2622,7 @@ Il doit d’abord être créé afin de pouvoir publier des articles et utiliser 
 	'wikilog-pager-newest' => 'les plus récents',
 	'wikilog-pager-oldest' => 'les plus anciens',
 	'wikilog-pager-prev' => 'précédente',
-	'wikilog-pager-next' => 'suivante',
+	'wikilog-pager-next' => 'suivant',
 	'wikilog-pager-first' => 'première',
 	'wikilog-pager-last' => 'dernière',
 	'wikilog-pager-empty' => '(aucun item)',

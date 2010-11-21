@@ -280,6 +280,9 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'masseditregex' => 'Kemmoù a-vras gant sikour eztaoladennoù poellel',
 	'masseditregex-desc' => 'Implijout an eztaoladennoù poellel evit [[Special:MassEditRegex|kemmañ un toullad pajennoù en un taol]]',
+	'masseditregextext' => "Merkañ ur jedad poellek pe meur a hini (unan dre linenn) da glask hag ur jedad pe meur a hini da erlec'hiañ disoc'hoù pep hini gantañ.
+Erlec'hiet e vo ar jedad kavet da gentañ gant ar jedad erlec'hiañ kentañ ha kement-all da-heul.
+Gwelet [http://php.net/manual/en/function.preg-replace.php the PHP function preg_replace()] da c'houzout hiroc'h.",
 	'masseditregex-pagelisttxt' => 'Pajennoù da gemmañ (hep rakger an esaouenn anvioù) :',
 	'masseditregex-matchtxt' => 'Klask :',
 	'masseditregex-replacetxt' => "Erlec'hiañ gant :",
@@ -302,6 +305,7 @@ $messages['br'] = array(
 N'haller ket lezel er-maez an talvoudennoù erlec'hiañ.",
 	'masseditregex-listtype-intro' => 'Setu ur roll :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',
+	'masseditregex-listtype-pagename-prefixes' => 'Rakger anvioù pajennoù (aozañ ar pajennoù a grog o anv gant an destenn-se)',
 	'masseditregex-listtype-categories' => "Anv ar rummadoù (kemmañ pep pajenn a zo er rummadoù-se ; graet 'vez van eus diuzadenn an esaouenn anv)",
 	'masseditregex-listtype-backlinks' => 'Pajennoù liammet (kemmañ ar pajennoù enno ul liamm davet houmañ)',
 	'masseditregex-namespace-intro' => 'Emañ an holl bajennoù-mañ en esaouenn anv :',

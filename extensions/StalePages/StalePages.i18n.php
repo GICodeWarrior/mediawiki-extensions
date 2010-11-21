@@ -542,8 +542,11 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Jding2010
  */
 $messages['zh-hans'] = array(
+	'stalepages' => '↓ 已失效的页面',
+	'stalepages-desc' => '↓ 列出最近未被编辑的[[Special:Stalepages|list of pages]]',
 	'stalepages-summary' => '这是在最近$1天内未曾编辑的页面列表。',
 );
 

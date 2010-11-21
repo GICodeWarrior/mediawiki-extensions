@@ -26,6 +26,13 @@ $messages['br'] = array(
 	'proxyconnect-desc' => "Emplementiñ a ra an arc'hweladur tu servijer Proxi Connect",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'proxyconnect-desc' => 'Omogućuje funkcionalnost na strani servera za Proxy Connect',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

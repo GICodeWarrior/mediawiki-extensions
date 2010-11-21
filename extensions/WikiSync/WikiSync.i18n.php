@@ -306,11 +306,39 @@ $messages['fr'] = array(
 	'wikisync_api_result_EmptyPass' => 'Vous n’avez pas défini le paramètre <code>lgpassword</code> ou vous l’avez laissé vide',
 	'wikisync_api_result_WrongPass' => 'Le mot de passe que vous avez fourni est incorrect',
 	'wikisync_api_result_WrongPluginPass' => 'Le mot de passe que vous avez fourni est incorrect',
-	'wikisync_api_result_CreateBlocked' => 'Le wiki a essayé de créer automatiquement un nouveau compte pour vous, mais votre adresse IP a été bloquée contre la création de compte',
+	'wikisync_api_result_CreateBlocked' => 'Le wiki a essayé de créer automatiquement un nouveau compte pour vous, mais votre adresse IP a été bloquée contre toute création de compte',
 	'wikisync_api_result_Throttled' => 'Vous avez tenté de vous connecter de trop nombreuses fois en peu de temps.',
-	'wikisync_api_result_Blocked' => 'Utilisateur est bloqué',
+	'wikisync_api_result_Blocked' => 'L’utilisateur est bloqué',
 	'wikisync_api_result_mustbeposted' => 'Le module de connexion nécessite une requête POST',
 	'wikisync_api_result_NeedToken' => 'Vous n’avez fourni aucun jeton de connexion ou cookie d’identification de session. Demander à nouveau avec le jeton et le cookie donnés dans cette réponse',
+	'wikisync_api_result_no_import_rights' => 'Cet utilisateur n’est pas autorisé à importer des fichiers de vidage XML',
+	'wikisync_api_result_Success' => 'Connecté avec succès sur le site wiki distant',
+	'wikisync_js_last_op_error' => 'La dernière opération a retourné une erreur.
+
+Code : $1
+
+Message : $2
+
+Appuyez sur [OK] pour tenter à nouveau la dernière opération',
+	'wikisync_js_synchronization_confirmation' => 'Êtes-vous sûr de vouloir lancer la synchronisation
+
+depuis $1
+
+vers $2
+
+à compter de la révision $3 ?',
+	'wikisync_js_synchronization_success' => 'La synchronisation a été complétée avec succès',
+	'wikisync_js_already_synchronized' => 'Les wikis source et destination semblent être déjà synchronisés',
+	'wikisync_js_sync_to_itself' => 'Vous ne pouvez pas synchroniser le wiki avec lui-même',
+	'wikisync_js_diff_search' => 'À la recherche de différences dans les révisions de destination',
+	'wikisync_js_revision' => 'Révision $1',
+	'wikisync_js_file_size_mismatch' => 'La taille du fichier temporaire « $1 » ($2 octet{{PLURAL:$2||s}}) ne correspond pas à la taille requise ($3 octet{{PLURAL:$3||s}}). Assurez-vous que le fichier « $4 » n’a pas été écrasé manuellement dans le dépôt du wiki source.',
+	'wikisync_js_invalid_scheduler_time' => 'La durée du planificateur doit être un nombre entier positif',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|minute restante|minutes restantes}}',
+	'wikisync_js_sync_start_ltr' => 'Démarrage de la synchronisation depuis le wiki local vers le wiki distant à $1',
+	'wikisync_js_sync_start_rtl' => 'Démarrage de la synchronisation depuis le wiki distant vers le wiki local à $1',
+	'wikisync_js_sync_end_ltr' => 'Fin de la synchronisation depuis le wiki local vers le wiki distant à $1',
+	'wikisync_js_sync_end_rtl' => 'Fin de la synchronisation depuis le wiki distant vers le wiki local à $1',
 );
 
 /** Galician (Galego)

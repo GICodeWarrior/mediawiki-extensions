@@ -51,6 +51,8 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'htmlets-desc' => "Talvezout a ra da ensoc'hañ lodennoù HTML adalek restroù a ra gant ar valizenn <code>&lt;htmlet&gt;</code> tag",
+	'htmlets-filenotfound' => "N'eus ket bet gallet kavout ar restr HTML $1",
+	'htmlets-loadfailed' => "N'eus ket bet gallet kargañ ar restr HTML $1",
 );
 
 /** Bosnian (Bosanski)
@@ -58,6 +60,8 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'htmlets-desc' => 'Dopunjava oznaku <code>&lt;htmlet&gt;</code> za ubacivanje HTML snippeta',
+	'htmlets-filenotfound' => 'Ne mogu pronaći HTML datoteku $1',
+	'htmlets-loadfailed' => 'Nije uspjelo učitavanje HTML datoteke $1',
 );
 
 /** Catalan (Català)
