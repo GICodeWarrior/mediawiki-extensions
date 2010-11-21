@@ -152,7 +152,7 @@ $messages['ar'] = array(
 $messages['arc'] = array(
 	'ct-beginner' => 'ܫܪܘܝܐ',
 	'ct-intermediate' => 'ܡܨܥܝܐ',
-	'ct-anon-users' => '$1 ܡܬܚܫܚܢ̈ܐ ܠܐ ܝܕ̈ܝܥܐ',
+	'ct-anon-users' => '$1 ܡܦܠܚܢ̈ܐ ܠܐ ܝܕ̈ܝܥܐ',
 	'ct-and' => 'ܘ',
 );
 
