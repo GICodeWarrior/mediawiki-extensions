@@ -129,6 +129,21 @@ Probeer asseblief later weer.",
 	'articlefeedback-alpha-survey-thanks' => 'Dankie dat u die opname ingevul het.',
 );
 
+/** Arabic (العربية)
+ * @author Mido
+ */
+$messages['ar'] = array(
+	'articlefeedback' => 'ملاحظات على المقال',
+	'articlefeedback-desc' => 'ملاحظات على المقال',
+	'articlefeedback-alpha-yourfeedback' => 'ملاحظاتك',
+	'articlefeedback-alpha-pleaserate' => 'لطفا، تفضل بتقييم الصفحة أدناه.',
+	'articlefeedback-alpha-submit' => 'أرسل',
+	'articlefeedback-alpha-rating-wellsourced' => 'جودة المصادرة:',
+	'articlefeedback-alpha-rating-neutrality' => 'الحياد:',
+	'articlefeedback-alpha-rating-completeness' => 'الكمال:',
+	'articlefeedback-alpha-rating-readability' => 'المقروئية:',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
@@ -986,6 +1001,9 @@ $messages['hsb'] = array(
 	'articlefeedback-alpha-rating-neutrality' => 'Neutralny:',
 	'articlefeedback-alpha-rating-completeness' => 'Dospołny:',
 	'articlefeedback-alpha-rating-readability' => 'Čitajomny:',
+	'articlefeedback-alpha-rating-wellsourced-tooltip' => 'Měniš, zo tuta strona ma dosć citatow a zo te citaty sz z dowěryhódnych žórłow?',
+	'articlefeedback-alpha-rating-neutrality-tooltip' => 'Měniš, zo tuta strona pokazuje wurunane předstajenje wšěch perspektiwow tutoho problema?',
+	'articlefeedback-alpha-rating-completeness-tooltip' => 'Měniš, zo tuta strona wšě bytostne temowe pola wobsahuje, kotrež měła wobsahować?',
 	'articlefeedback-alpha-rating-readability-tooltip' => 'Měniš, zo tuta strona je derje zorganizowana a derje napisana?',
 	'articlefeedback-alpha-articlerating' => 'Pohódnoćenje strony',
 	'articlefeedback-alpha-error' => 'Zmylk je wustupił.
@@ -993,12 +1011,20 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedback-alpha-thanks' => 'Wulki dźak! Twoje pohódnoćenja su so składowali.',
 	'articlefeedback-alpha-featurefeedback' => 'Prošu pósćel nam <span class="feedbacklink">pohódnoćenje</span> wo tutej funkciji.',
 	'articlefeedback-alpha-noratings' => '$1 ($2 {{PLURAL:$2|pohódnoćenje|pohódnoćeni|pohódnoćenja|pohódnoćenjow}})',
+	'articlefeedback-alpha-stalemessage-norevisioncount' => "Tuta strona bu ''wobdźěłana'', wot toho zo sy ju posledni raz posudźił.
+Snano chceš ju znowa posudźić.",
 	'articlefeedback-alpha-results-show' => '(Wuslědki schowane. <span class="showlink">Pokazać</span>.)',
 	'articlefeedback-alpha-results-hide' => '(<span class="hidelink">Wuslědki schować</span>)',
+	'articlefeedback-alpha-survey-question-whyrated' => 'Prošu zdźěl nam, čehodla sy tutu stronu dźensa posudźił (trjechace prošu nakřižować):',
+	'articlefeedback-alpha-survey-answer-whyrated-contribute-rating' => 'Chcych so na cyłkownym pohódnoćenju strony wobdźělić',
+	'articlefeedback-alpha-survey-answer-whyrated-development' => 'Nadźijam so, zo moje pohódnoćene by wuwiće strony pozitiwnje wobwliwowało',
 	'articlefeedback-alpha-survey-answer-whyrated-contribute-wiki' => 'Chcych k {{SITENAME}} přinošować',
 	'articlefeedback-alpha-survey-answer-whyrated-sharing-opinion' => 'Bych rady moje měnjenje dźělił',
+	'articlefeedback-alpha-survey-answer-whyrated-didntrate' => 'Dźensa njejsym žane pohódnoćenja přewjedł, ale chcych swoje měnjenje wo tutej funkciji wuprajić.',
 	'articlefeedback-alpha-survey-answer-whyrated-other' => 'Druhe',
+	'articlefeedback-alpha-survey-question-useful' => 'Wěriš, zo podate pohódnoćenja su wužite a jasne?',
 	'articlefeedback-alpha-survey-question-useful-iffalse' => 'Čehodla?',
+	'articlefeedback-alpha-survey-question-expert' => 'Maš so za ekspertu na polu, kotrež tuta strona wobjednawa?',
 	'articlefeedback-alpha-survey-question-expert-iftrue' => 'Móžeš swój wěcywustojnosć wopisać?',
 	'articlefeedback-alpha-survey-question-comments' => 'Maš hišće dalše komentary?',
 	'articlefeedback-alpha-survey-submit' => 'Wotpósłać',
@@ -2291,6 +2317,8 @@ Lütfen daha sonra yeniden deneyin.',
 	'articlefeedback-alpha-results-hide' => '(<span class="hidelink">Sonuçları gizle</span>)',
 	'articlefeedback-alpha-survey-answer-whyrated-sharing-opinion' => 'Fikirlerimi paylaşmayı seviyorum',
 	'articlefeedback-alpha-survey-question-useful-iffalse' => 'Neden?',
+	'articlefeedback-alpha-survey-submit' => 'Gönder',
+	'articlefeedback-alpha-survey-title' => 'Lütfen birkaç soruya yanıt verin',
 	'articlefeedback-alpha-survey-thanks' => 'Anketi doldurduğunuz için teşekkür ederiz.',
 );
 
