@@ -144,8 +144,8 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'passwordreset-invalidusername' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ ܠܐ ܬܪܝܨܐ',
-	'passwordreset-emptyusername' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ ܣܦܝܩܐ',
+	'passwordreset-invalidusername' => 'ܫܡܐ ܕܡܦܠܚܢܐ ܠܐ ܬܪܝܨܐ',
+	'passwordreset-emptyusername' => 'ܫܡܐ ܕܡܦܠܚܢܐ ܣܦܝܩܐ',
 	'passwordreset-nopassmatch' => 'ܡܠܬܐ ܕܥܠܠܐ ܠܐ ܐܘܝܢܬܐ',
 	'passwordreset-username' => 'ܫܡܐ ܕܡܦܠܚܢܐ:',
 	'passwordreset-newpass' => 'ܡܠܬܐ ܕܥܠܠܐ ܚܕܬܐ:',
