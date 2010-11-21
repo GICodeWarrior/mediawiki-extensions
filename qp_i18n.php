@@ -350,13 +350,13 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'qp_vote_button' => 'ܝܗܒ ܩܠܐ',
-	'qp_users_list' => 'ܚܘܝ ܟܠ ܡܬܚܫܚܢ̈ܐ',
+	'qp_users_list' => 'ܚܘܝ ܟܠ ܡܦܠܚܢ̈ܐ',
 	'qp_browse_to_poll' => 'ܙܠ ܠ $1',
 	'qp_browse_to_user' => 'ܙܠ ܠ $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|ܩܠܐ|ܩܠ̈ܐ}}',
 	'qp_source_link' => 'ܡܒܘܥܐ',
-	'qp_users_link' => 'ܡܬܚܫܚܢ̈ܐ',
-	'qp_voice_link' => 'ܩܠܐ ܕܡܬܚܫܚܢܐ',
+	'qp_users_link' => 'ܡܦܠܚܢ̈ܐ',
+	'qp_voice_link' => 'ܩܠܐ ܕܡܦܠܚܢܐ',
 	'qp_voice_link_inv' => 'ܡܦܠܚܢܐ ܝܗܒ ܩܠܐ؟',
 	'qp_error_category_name_empty' => 'ܫܡܐ ܕܣܕܪܐ ܣܦܝܩܐ ܗܘ',
 );
@@ -537,12 +537,30 @@ $messages['br'] = array(
 	'qp_export_to_xls' => "Ezporzhiañ ar stadegoù d'ar furmad XLS",
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|implijer|implijer}} o deus respontet d'ar goulennoù",
 	'qp_func_no_such_poll' => "N'eus ket eus ar votadeg-mañ ($1)",
+	'qp_func_missing_question_id' => "Spisait un ID evit ur goulenn zo anezhañ c'hoazh (adalek 1) evit ar sontadeg $1",
 	'qp_func_invalid_question_id' => 'Id direizh evit ar goulenn=$2 direizh (ket un niver) evit ar sontadeg $1',
+	'qp_func_missing_proposal_id' => "Spisait un ID kinnig zo anezhañ c'hoazh (adalek 0) evit ar sontadeg $1, goulenn $2",
 	'qp_func_invalid_proposal_id' => 'Id kinnig=$3 direizh (ket un niver) evit ar sontadeg $1, goulenn $2',
+	'qp_error_no_such_poll' => "N'eus ket eus ar sontadeg ($1).
+Bezit sur eo bet disklêriet hag enrollet ar sontadeg ha na zisoñjit ket ober gant an arouezenn bevenniñ chomlec'hioù #",
 	'qp_error_in_question_header' => 'Talbenn goulenn direizh : $1',
 	'qp_error_id_in_stats_mode' => 'Dibosupl eo diskleriañ un ID eus ar sontadeg er mod stadegoù',
 	'qp_error_dependance_in_stats_mode' => "Dibosupl eo diskleriañ ar chadenn amzalc'h d'ar sontadeg er mod stadegoù",
+	'qp_error_no_stats' => "N'eus ket a roadennoù stadegel rak den ebet n'en deus respontet d'ar sontadeg evit c'hoazh (chomlec'h=$1)",
+	'qp_error_address_in_decl_mode' => "N'haller ket tapout ur chomlec'h eus ar sontadeg er mod disklêriañ",
+	'qp_error_question_not_implemented' => "N'eo ket emplementet ar goulennoù a-seurt gant $1",
 	'qp_error_invalid_question_type' => 'Seurt goulenn direizh : $1',
+	'qp_error_type_in_stats_mode' => "N'haller ket termeniñ doare ar goulennoù er mod diskwel stadegoù : $1",
+	'qp_error_no_poll_id' => "N'eus ket a niverenn-anout termenet gant balizenn ar sontadeg.",
+	'qp_error_invalid_poll_id' => "Direizh eo an niverenn-anaout (id=$1).
+N'hall bezañ en niverenn-anaout nemet lizherennoù, niverennoù hag an arouezenn esaouenn",
+	'qp_error_already_used_poll_id' => 'Implijet eo bet choazh an niverenn-anaout sontadeg war ar bajenn (id=$1).',
+	'qp_error_invalid_dependance_value' => 'Direizh eo talvoudenn chadennad amzalc\'h ar sontadeg (id=$1) evit an atribut amzalc\'h (amzalc\'h="$2")',
+	'qp_error_missed_dependance_title' => "E dalc'h ur sontadeg all (id=$3) eus ar bajenn [[$2]] emañ ar sontadeg (i=$1), met an titl [[$2]] n'eo ket bet kavet.
+Diverkit an atribut amzalc'h pe assavit [[$2]]",
+	'qp_error_missed_dependance_poll' => "Dindan dalc'h ur sontadeg all (id=$3) war pajenn $2 emañ ar sontadeg (id=$1), met n'eus ket eus ar sontadeg-se pe n'eo ket bet enrollet c'hoazh.
+Tennit an atribut amzalc'h pe krouit ar sontadeg $3 war ar bajenn $2 hag enrollit anezhi.
+Evit enrollañ ur sontadeg, kasit anezhi ha na respontit da goulenn kinnig ebet.",
 	'qp_error_vote_dependance_poll' => 'Mar plij, votit evit ar sontadeg $1 da gentañ.',
 	'qp_error_too_many_spans' => 'Re a strolladoù rummadoù evit an niver hollek a isrummadoù termenet',
 	'qp_error_unanswered_span' => 'Is-rummad hep respont',
@@ -552,6 +570,7 @@ $messages['br'] = array(
 	'qp_error_too_few_categories' => 'Daou rummad da nebeutañ a rank bezañ termenet',
 	'qp_error_too_few_spans' => 'Pep strollad rummad a rank bezañ ennañ daou isrummad da nebeutañ',
 	'qp_error_no_answer' => 'Kinnig direspont',
+	'qp_error_unique' => 'Re a ginnigoù zo evit ar goulenn seurt nemetañ () eget an niver a respontoù posupl termenet : dibosupl eo klokaat',
 );
 
 /** Bosnian (Bosanski)
