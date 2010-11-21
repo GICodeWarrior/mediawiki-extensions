@@ -84,7 +84,7 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'accountmanager' => 'ܕܒܘܪܐ ܕܚܘܫܒܢܐ',
-	'am-username' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ',
+	'am-username' => 'ܫܡܐ ܕܡܦܠܚܢܐ',
 	'am-email' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
 	'nss-rights' => 'ܙܕ̈ܩܐ',
 	'nss-save-changes' => 'ܠܒܘܟ ܫܘܚܠܦ̈ܐ',
