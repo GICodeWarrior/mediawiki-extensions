@@ -49,7 +49,13 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'embedvideo-desc' => 'Dodaje parsersku funkciju za uklopljene video snimke iz popularnih izvora',
 	'embedvideo-missing-params' => 'EmbedVideo nedostaje neophodni parametar.',
+	'embedvideo-bad-params' => 'EmbedVideo je primio loš parametar.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo je primio parametarski niz "<code>$1</code>" koji se ne može parsirati.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo nije prepoznao video uslugu "<code>$1</code>".',
+	'embedvideo-bad-id' => 'EmbedVideo je primio loš id "$1" za uslugu "$2".',
+	'embedvideo-illegal-width' => 'EmbedVideo je primio nevaljan parametar za širinu "$1".',
 );
 
 /** Czech (Česky)
