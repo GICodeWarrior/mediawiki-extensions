@@ -77,9 +77,9 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'lastuserlogin_userid' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ',
+	'lastuserlogin_userid' => 'ܫܡܐ ܕܡܦܠܚܢܐ',
 	'lastuserlogin_username' => 'ܫܡܐ ܫܪܝܪܐ',
-	'lastuserlogin_useremail' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ ܕܡܬܚܫܚܢܐ',
+	'lastuserlogin_useremail' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ ܕܡܦܠܚܢܐ',
 );
 
 /** Azerbaijani (Azərbaycanca)
