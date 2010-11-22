@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'pdfbook-desc' => 'Composes a book from pages in a category and exports as a PDF book',
 );
 
+/** Message documentation (Message documentation)
+ * @author Lloffiwr
+ */
+$messages['qqq'] = array(
+	'pdfbook-log' => '$1 is the username of the user who exports the PDF book',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -61,6 +68,7 @@ $messages['bs'] = array(
  */
 $messages['cy'] = array(
 	'pdfbook-action' => 'Argraffu ar ffurf PDF',
+	'pdfbook-log' => "Mae $1 wedi allforio'r llyfr ar ffurf PDF",
 	'pdfbook-desc' => 'Yn defnyddio tudalennau o rhyw gategori i lunio llyfr, ac allforio hwnnw ar ffurf llyfr PDF',
 );
 
@@ -241,6 +249,7 @@ $messages['ru'] = array(
  */
 $messages['sw'] = array(
 	'pdfbook-action' => 'Chapa kwa mtindo wa PDF',
+	'pdfbook-log' => '$1 amekipeleka kitabu nje kwa mtindo wa PDF',
 	'pdfbook-desc' => 'Inaunda kurasa za jamii fulani katika kitabu, na kukipeleka nje kwa mtindo wa PDF',
 );
 
