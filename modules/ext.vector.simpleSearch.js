@@ -35,7 +35,9 @@ $( document ).ready( function() {
 	}
 	
 	// Placeholder text for SimpleSearch box
-	$( 'div#simpleSearch > input#searchInput' ).placeholder( mediaWiki.msg( 'vector-simplesearch-search' ) );
+	$( 'div#simpleSearch > input#searchInput' )
+		.val( mediaWiki.msg( 'vector-simplesearch-search' ) )
+		.placeholder();
 	
 	// General suggestions functionality for all search boxes
 	$( '#searchInput, #searchInput2, #powerSearchText, #searchText' )
