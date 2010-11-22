@@ -321,6 +321,16 @@ Voorbeelden:
 * [[Sjabloon:Verwijderen|De pagina moet verwijderd worden]]
 -->',
 	'flagpage-nopageselectedtitle' => 'Geen pagina geselecteerd',
+	'flagpage-nopageselected' => 'U hebt geen pagina aangegeven',
+	'flagpage-emptylisttitle' => 'Er zijn geen sjablonen ingesteld',
+	'flagpage-emptylist' => 'U moet een lijst met sjablonen instellen. Maak aanpassingen aan [[{{ns:8}}:flagpage-templatelist]] om dat nu te doen.',
+	'flagpage-preview' => 'Voorvertoning van het geselecteerde sjabloon:',
+	'flagpage-confirmsave' => 'Bevestig uw wijzigingen.',
+	'flagpage-submitbutton' => 'Pagina opslaan met dit sjabloon',
+	'flagpage-nonexistent' => 'De pagina "$1" bestaat niet. Mogelijk is die [{{fullurl:Special:Log|page=$1}} hernoemd of verwijderd].',
+	'flagpage-summary' => 'Heeft het sjabloon [[$1]] toegevoegd via FlagPage',
+	'flagpage-success' => '[[$1]] is toegevoegd aan de pagina [[$2]].',
+	'flagpage-tab' => 'Markeren',
 );
 
 /** Polish (Polski)
