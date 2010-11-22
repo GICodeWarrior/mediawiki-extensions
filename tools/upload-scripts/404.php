@@ -13,6 +13,7 @@ if ( preg_match( '!^([a-z]*://)([a-z.]*)(/.*)$!', $_SERVER['REQUEST_URI'], $matc
 $encUrl = htmlspecialchars( $prot . $serv . $loc );
 
 header( 'HTTP/1.1 404 Not Found' );
+header( 'Content-Type: text/html;charset=utf8' );
 
 $standard_404=<<<ENDTEXT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
