@@ -112,10 +112,10 @@ def is_article_main_namespace(elem, namespace):
     return True
 
 
-def write_xml_file(element, fh, counter, language):
+def write_xml_file(element, fh, output, counter):
     '''Get file handle and write xml element to file'''
     size = len(cElementTree.tostring(element))
-    fh, counter = create_file_handle(fh, counter, size, language)
+    fh, counter = create_file_handle(fh, output, counter, size)
     try:
         fh.write(cElementTree.tostring(element))
     except MemoryError:
@@ -124,15 +124,15 @@ def write_xml_file(element, fh, counter, language):
     return fh, counter
 
 
-def create_file_handle(fh, counter, size, language):
+def create_file_handle(fh, output, counter, size):
     '''Create file handle if none is supplied or if file size > max file size.'''
     if not counter:
         counter = 0
-    path = os.path.join(settings.input_location, language, '%s.xml' % counter)
+    path = os.path.join(output, '%s.xml' % counter)
     if not fh:
         fh = codecs.open(path, 'w', encoding=settings.encoding)
         return fh, counter
-    elif (fh.tell() + size) > settings.binary_location:
+    elif (fh.tell() + size) > settings.max_settings_xmlfile_size:
         print 'Created chunk %s' % counter
         fh.close
         counter += 1
@@ -156,10 +156,11 @@ def flatten_xml_elements(data, page):
     return flat
         
 
-def split_file(output, input, project, language_code, language, format='xml'):
+def split_file(location, file, project, language_code, language, format='xml'):
     '''Reads xml file and splits it in N chunks'''
     #location = os.path.join(settings.input_location, language)
-    output = os.path.join(output, language_code, project)
+    input = os.path.join(location, file)
+    output = os.path.join(location, 'chunks')
     settings.verify_environment([output])
     if format == 'xml':
         fh = None
@@ -170,15 +171,12 @@ def split_file(output, input, project, language_code, language, format='xml'):
     ns = load_namespace(language_code)
     ns = build_namespaces_locale(ns)
 
-    
+    settings.xml_namespace = 'http://www.mediawiki.org/xml/export-0.3/'
     counter = None
     tag = '{%s}page' % settings.xml_namespace
-    
-
     context = cElementTree.iterparse(input, events=('start', 'end'))
     context = iter(context)
     event, root = context.next()  #get the root element of the XML doc
-
     try:
         for event, elem in context:
             if event == 'end':
@@ -188,7 +186,7 @@ def split_file(output, input, project, language_code, language, format='xml'):
                         page = elem.find('id').text
                         elem = parse_comments(elem, remove_numeric_character_references)
                         if format == 'xml':
-                            fh, counter = write_settings.input_filename(elem, fh, counter, language_code)
+                            fh, counter = write_xml_file(elem, fh, output, counter)
                         else:
                             data = [el.getchildren() for el in elem if el.tag == 'revision']
                             data = flatten_xml_elements(data, page)

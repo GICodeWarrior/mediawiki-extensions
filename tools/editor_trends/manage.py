@@ -20,6 +20,7 @@ __version__ = '0.1'
 import os
 import sys
 import subprocess
+import datetime
 from argparse import ArgumentParser
 from argparse import RawTextHelpFormatter
 import locale
@@ -34,17 +35,30 @@ from utils import utils
 from utils import dump_downloader
 from etl import chunker
 from etl import extract
-from etl import optimize_editors
-from etl import construct_datasets
+from etl import loader
+from etl import transformer
+from etl import exporter
 import config
 
+
+class Timer(object):
+    def __init__(self):
+        self.t0 = datetime.datetime.now()
+    
+    def stop(self):
+        self.t1 = datetime.datetime.now()
+        
+    def elapsed(self):
+        self.stop()
+        print 'Processing time: %s' % (self.t1 - self.t0)
+        
 
 def get_value(args, key):
     return getattr(args, key, None)
 
 
-def config_launcher(args, location, filename, project, full_project, language_code, language):
-    config.load_configuration(args)
+def config_launcher(args, **kwargs):
+    settings.load_configuration()
 
 
 def determine_default_language():
@@ -99,10 +113,11 @@ def determine_file_locations(args):
     return locations
 
 
-  
-
-def show_settings(args, location, filename, project, full_project, language_code, language):
-    project = settings.projects.get(project, 'wiki')
+def show_settings(args, **kwargs):
+    project = settings.projects.get(kwargs.pop('project'), 'wiki')
+    language_code = kwargs.pop('language_code')
+    language = kwargs.pop('language')
+    location = kwargs.pop('location')
     project = project.title()
     language_map = utils.invert_dict(languages.MAPPING)
     print 'Project: %s' % (project)
@@ -111,18 +126,30 @@ def show_settings(args, location, filename, project, full_project, language_code
     print 'Output directory: %s and subdirectories' % location
 
 
-def dump_downloader_launcher(args, location, filename, project, full_project, language_code, language):
+def dump_downloader_launcher(args, **kwargs):
     print 'dump downloader'
+    timer = Timer()
+    filename = kwargs.get('filename')
+    extension = kwargs.get('extension')
+    location = kwargs.get('location')
     pbar = get_value(args, 'progress')
     domain = settings.wp_dump_location
     path = '/%s/latest/' % project
     extension = utils.determine_file_extension(filename)
     filemode = utils.determine_file_mode(extension)
     dump_downloader.download_wiki_file(domain, path, filename, location, filemode, pbar)
+    timer.elapsed()
 
 
-def cruncher_launcher(args, location, filename, project, full_project, language_code, language):
+def chunker_launcher(args, **kwargs):
     print 'split_settings.input_filename_launcher'
+    timer = Timer()
+    filename = kwargs.pop('filename')
+    filename = 'en-latest-pages-meta-history.xml.bz2'
+    location = kwargs.pop('location')
+    project = kwargs.pop('project')
+    language = kwargs.pop('language')
+    language_code = kwargs.pop('language_code')
     ext = utils.determine_file_extension(filename)
     if ext in settings.compression_extensions:
         ext = '.%s' % ext
@@ -135,9 +162,12 @@ def cruncher_launcher(args, location, filename, project, full_project, language_
     if retcode != 0:
         sys.exit(retcode)
     chunker.split_file(location, file, project, language_code, language)
+    timer.elapsed()
+    #settings.set_custom_settings(xml_namespace='http://www.mediawiki.org/xml/export-0.3/')
 
 
 def launch_zip_extractor(args, location, file):
+    timer = Timer()
     path = settings.detect_installed_program('7zip')
     source = os.path.join(location, file)
     p = None
@@ -150,30 +180,57 @@ def launch_zip_extractor(args, location, file):
         raise NotImplementedError
     else:
         raise exceptions.PlatformNotSupportedError
+    timer.elapsed()
     return p
 
 
-def mongodb_script_launcher(args, location, filename, project, full_project, language_code, language):
+def extract_launcher(args, **kwargs):
     print 'mongodb_script_launcher'
-    extract.run_parse_editors(project, language_code, location)
+    timer = Timer()
+    location = kwargs.pop('location')
+    language_code = kwargs.pop('language_code')
+    project = kwargs.pop('project')
+    extract.run_parse_editors(location, **kwargs)
+    timer.elapsed()
 
 
-def sort_launcher(args, location, filename, project, full_project, language_code):
-    raise NotImplementedError
+def sort_launcher(args, **kwargs):
+    timer = Timer()
+    location = kwargs.pop('location')
+    input = os.path.join(location, 'txt')
+    output = os.path.join(location, 'sorted')
+    dbname = kwargs.pop('full_project')
+    loader.mergesort_launcher(input, output)
+    filename = loader.mergesort_external_launcher(dbname, output, output)
+    loader.store_editors(output, filename, dbname, 'editors')
+    timer.elapsed()
 
 
-def dataset_launcher(args, full_project):
+def transformer_launcher(args, **kwargs):
     print 'dataset launcher'
-    optimize_editors.run_optimize_editors(project)
-    construct_datasets.generate_editor_dataset_launcher(project)
+    timer = Timer()
+    project = kwargs.pop('full_project')
+    transformer.run_optimize_editors(project)
+    timer.elapsed()
 
 
-def all_launcher(args, location, filename, project, full_project, language_code, language):
+def exporter_launcher(args, **kwargs):
+    timer = Timer()
+    project = kwargs.pop('full_project')
+    exporter.generate_editor_dataset_launcher(project)
+    timer.elapsed()
+
+
+def all_launcher(args, **kwargs):
     print 'all_launcher'
-    dump_downloader_launcher(args, location, filename, project, language_code)
-    split_settings.input_filename_launcher(args, location, filename, project, language_code)
-    mongodb_script_launcher(args, location, filename, project, language_code)
-    dataset_launcher(args, location, filename, project, language_code)
+    timer = Timer()
+    dump_downloader_launcher(args, **kwargs)
+    chunker_launcher(args, **kwargs)
+    extract_launcher(args, **kwargs)
+    sort_launcher(args, **kwargs)
+    transformer_launcher(args, **kwargs)
+    exporter_launcher(args, **kwargs)
+    timer.elapsed()
 
 
 def supported_languages():
@@ -237,16 +294,19 @@ def main():
     parser_download.set_defaults(func=dump_downloader_launcher)
 
     parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
-    parser_split.set_defaults(func=cruncher_launcher)
+    parser_split.set_defaults(func=chunker_launcher)
 
     parser_sort = subparsers.add_parser('sort', help='By presorting the data, significant processing time reducations are achieved.')
     parser_sort.set_defaults(func=sort_launcher)
 
-    parser_create = subparsers.add_parser('store', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
-    parser_create.set_defaults(func=mongodb_script_launcher)
+    parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
+    parser_create.set_defaults(func=extract_launcher)
 
-    parser_dataset = subparsers.add_parser('dataset', help='Create a dataset from the MongoDB and write it to a csv file.')
-    parser_dataset.set_defaults(func=dataset_launcher)
+    parser_transform = subparsers.add_parser('transform', help='Transform the raw datatabe to an enriched dataset that can be exported.')
+    parser_transform.set_defaults(func=transformer_launcher)
+
+    parser_dataset = subparsers.add_parser('export', help='Create a dataset from the MongoDB and write it to a csv file.')
+    parser_dataset.set_defaults(func=exporter_launcher)
 
     parser_all = subparsers.add_parser('all', help='The all sub command runs the download, split, store and dataset commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
@@ -277,12 +337,14 @@ def main():
     detect_python_version()
     about()
     args = parser.parse_args()
-    config.load_configuration(args)
+    if not os.path.exists('wiki.cfg'):
+        config.create_configuration(settings, args)
     locations = determine_file_locations(args)
-    #prepare_file_locations(locations['location'])
     settings.verify_environment([locations['location']])
     show_settings(args, **locations)
+    #locations['settings'] = settings
     args.func(args, **locations)
+    t1 = datetime.datetime.now()
 
 
 if __name__ == '__main__':

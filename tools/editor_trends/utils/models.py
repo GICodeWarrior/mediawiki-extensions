@@ -20,25 +20,27 @@ __version__ = '0.1'
 import multiprocessing
 
 
-class ProcessInputQueue(multiprocessing.Process):
+class BaseConsumer(multiprocessing.Process):
 
-    def __init__(self, target, input_queue, result_queue, **kwargs):
+    def __init__(self, task_queue, result_queue):
         multiprocessing.Process.__init__(self)
-        self.input_queue = input_queue
+        self.task_queue = task_queue
         self.result_queue = result_queue
-        self.target = target
-        for kw in kwargs:
-            setattr(self, kw, kwargs[kw])
 
-    def start(self):
-        proc_name = self.name
-        kwargs = {}
-        IGNORE = ['input_queue', 'result_queue', 'target']
-        for kw in self.__dict__:
-            if kw not in IGNORE and not kw.startswith('_'):
-                kwargs[kw] = getattr(self, kw)
-        self._popen = True
-        self.target(self.input_queue, self.result_queue, **kwargs)
+
+        
+
+#        for kw in kwargs:
+#            setattr(self, kw, kwargs[kw])
+#
+#    def run(self):
+#        proc_name = self.name
+#        kwargs = {}
+#        IGNORE = ['input_queue', 'result_queue', 'target']
+#        for kw in self.__dict__:
+#            if kw not in IGNORE and not kw.startswith('_'):
+#                kwargs[kw] = getattr(self, kw)
+#        self.target(self.input_queue, self.result_queue, **kwargs)
 
 
 class ProcessResultQueue(multiprocessing.Process):
@@ -51,12 +53,11 @@ class ProcessResultQueue(multiprocessing.Process):
             setattr(self, kw, kwargs[kw])
 
 
-    def start(self):
+    def run(self):
         proc_name = self.name
         kwargs = {}
         IGNORE = ['result_queue', 'target']
         for kw in self.__dict__:
             if kw not in IGNORE and not kw.startswith('_'):
                 kwargs[kw] = getattr(self, kw)
-        self._popen = True
         self.target(self.result_queue, **kwargs)

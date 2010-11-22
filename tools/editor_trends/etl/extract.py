@@ -28,11 +28,12 @@ import cStringIO
 import re
 from operator import itemgetter
 import xml.etree.cElementTree as cElementTree
-from multiprocessing import Queue, JoinableQueue
+import multiprocessing
 from Queue import Empty
 import pymongo
 
 # Custom written files
+sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 from utils import utils, models
@@ -49,6 +50,88 @@ try:
     psyco.full()
 except ImportError:
     pass
+
+class XMLFileConsumer(models.BaseConsumer):
+
+    def run(self):
+        while True:
+            new_xmlfile = self.task_queue.get()
+            self.task_queue.task_done()
+            if new_xmlfile == None:
+                print 'Swallowed a poison pill'
+                break
+            new_xmlfile()
+
+class XMLFile(object):
+    def __init__(self, input, output, file, bots, **kwargs):
+        self.file = file
+        self.input = input
+        self.output = output
+        self.bots = bots
+        for kw in kwargs:
+            setattr(self, kw, kwargs[kw])
+
+    def create_file_handle(self):
+        if self.destination == 'file':
+            self.name = self.file[:-4] + '.txt'
+            self.fh = utils.create_txt_filehandle(self.output, self.name, 'w', settings.encoding)
+
+    def __str__(self):
+        return '%s' % (self.file)
+
+    def __call__(self):
+        if settings.debug:
+            messages = {}
+            vars = {}
+
+        data = xml.read_input(utils.create_txt_filehandle(self.input,
+                                                      self.file, 'r',
+                                                      encoding=settings.encoding))
+        self.create_file_handle()
+        for raw_data in data:
+            xml_buffer = cStringIO.StringIO()
+            raw_data.insert(0, '<?xml version="1.0" encoding="UTF-8" ?>\n')
+
+            try:
+                raw_data = ''.join(raw_data)
+                xml_buffer.write(raw_data)
+                elem = cElementTree.XML(xml_buffer.getvalue())
+                output_editor_information(elem, self.fh, bots=self.bots, destination=self.destination)
+            except SyntaxError, error:
+                print error
+                '''
+                There are few cases with invalid tokens, they are ignored
+                '''
+                if settings.debug:
+                    utils.track_errors(xml_buffer, error, self.file, messages)
+            except UnicodeEncodeError, error:
+                print error
+                if settings.debug:
+                    utils.track_errors(xml_buffer, error, self.file, messages)
+            except MemoryError, error:
+                print self.file, error
+                print raw_data[:12]
+                print 'String was supposed to be %s characters long' % sum([len(raw) for raw in raw_data])
+
+        if self.destination == 'queue':
+            self.output.put('NEXT')
+            while True:
+                if self.output.qsize() < 100000:
+                    break
+                else:
+                    time.sleep(10)
+                    print 'Still sleeping, queue is %s items long' % self.output.qsize()
+
+        else:
+            self.fh.close()
+
+
+        if self.destination == 'queue':
+            data_queue.put(None)
+
+        if settings.debug:
+            utils.report_error_messages(messages, output_editor_information)
+
 
 
 def determine_username_is_bot(username, kwargs):
@@ -70,6 +153,13 @@ def determine_username_is_bot(username, kwargs):
             return 0
 
 
+def extract_username(contributor, kwargs):
+    for elem in contributor:
+        if elem.tag == 'username':
+            return elem.text    #.encode(settings.encoding)
+    else:
+        return None
+
 def extract_contributor_id(contributor, kwargs):
     '''
     @contributor is the xml contributor node containing a number of attributes
@@ -84,7 +174,7 @@ def extract_contributor_id(contributor, kwargs):
     for elem in contributor:
         if elem.tag in tags:
             if elem.text != None:
-                return elem.text.decode('utf-8')
+                return elem.text.encode(settings.encoding)
             else:
                 return - 1
 
@@ -99,11 +189,13 @@ def output_editor_information(elem, output, **kwargs):
     this dictionary are the functions used to extract the data. 
     '''
     tags = {'contributor': {'editor': extract_contributor_id,
-                            'bot': determine_username_is_bot},
+                            'bot': determine_username_is_bot,
+                            'username': extract_username,
+                            },
             'timestamp': {'date': xml.extract_text},
             }
     vars = {}
-    headers = ['editor', 'date', 'article']
+    headers = ['editor', 'date', 'article', 'username']
     destination = kwargs.pop('destination')
     revisions = elem.findall('revision')
     for revision in revisions:
@@ -128,165 +220,98 @@ def output_editor_information(elem, output, **kwargs):
         vars = {}
 
 
-def parse_editors(xml_queue, data_queue, **kwargs):
-    '''
-    @xml_queue contains the filenames of the files to be parsed
-    @data_queue is an instance of Queue where the extracted data is stored for 
-    further processing
-    @pbar is an instance of progressbar to display the progress
-    @bots is a list of id's of known Wikipedia bots
-    @debug is a flag to indicate whether the function is called for debugging.
-    
-    Output is the data_queue that will be used by store_editors() 
-    '''
-    input = kwargs.get('input', None)
-    output = kwargs.get('output', None)
-    debug = kwargs.get('debug', False)
-    destination = kwargs.get('destination', 'file')
-    bots = kwargs.get('bots', None)
-    pbar = kwargs.get('pbar', None)
-    if settings.debug:
-        messages = {}
-        vars = {}
-
-    while True:
-        try:
-            if debug:
-                file = xml_queue
-            else:
-                file = xml_queue.get(block=False)
-            if file == None:
-                print 'Swallowed a poison pill'
-                break
-
-            data = xml.read_input(utils.create_txt_filehandle(input,
-                                                      file, 'r',
-                                                      encoding=settings.encoding))
-            if destination == 'file':
-                name = file[:-4] + '.txt'
-                fh = utils.create_txt_filehandle(output, name, 'w', settings.encoding)
-            for raw_data in data:
-                xml_buffer = cStringIO.StringIO()
-                raw_data.insert(0, '<?xml version="1.0" encoding="UTF-8" ?>\n')
-
-                try:
-                    raw_data = ''.join(raw_data)
-                    xml_buffer.write(raw_data)
-                    elem = cElementTree.XML(xml_buffer.getvalue())
-                    output_editor_information(elem, fh, bots=bots, destination=destination)
-                except SyntaxError, error:
-                    print error
-                    '''
-                    There are few cases with invalid tokens, they are fixed
-                    here and then reinserted into the XML DOM
-                    data = convert_html_entities(xml_buffer.getvalue())
-                    elem = cElementTree.XML(data)
-                    output_editor_information(elem)
-                    '''
-                    if settings.debug:
-                        utils.track_errors(xml_buffer, error, file, messages)
-                except UnicodeEncodeError, error:
-                    print error
-                    if settings.debug:
-                        utils.track_errors(xml_buffer, error, file, messages)
-                except MemoryError, error:
-                    print file, error
-                    print raw_data[:12]
-                    print 'String was supposed to be %s characters long' % sum([len(raw) for raw in raw_data])
-            if destination == 'queue':
-                output.put('NEXT')
-                while True:
-                    if output.qsize() < 100000:
-                        break
-                    else:
-                        time.sleep(10)
-                        print 'Still sleeping, queue is %s items long' % output.qsize()
-
-            else:
-                fh.close()
-
-            if pbar:
-                print file, xml_queue.qsize()
-                #utils.update_progressbar(pbar, xml_queue)
-
-            if debug:
-                break
-
-        except Empty:
-            break
-
-    if destination == 'queue':
-        data_queue.put(None)
-
-    if settings.debug:
-        utils.report_error_messages(messages, parse_editors)
-
-
-def store_editors(data_queue, **kwargs):
-    '''
-    @data_queue is an instance of Queue containing information extracted by
-    parse_editors()
-    @pids is a list of PIDs used to check if other processes are finished
-    running
-    @dbname is the name of the MongoDB collection where to store the information.
-    '''
-    dbname = kwargs.get('dbname', None)
-    mongo = db.init_mongo_db(dbname)
-    collection = mongo['editors']
-    mongo.collection.ensure_index('editor')
-    editor_cache = cache.EditorCache(collection)
-
-    while True:
-        try:
-            edit = data_queue.get(block=False)
-            data_queue.task_done()
-            if edit == None:
-                print 'Swallowing poison pill'
-                break
-            elif edit == 'NEXT':
-                editor_cache.add('NEXT', '')
-            else:
-                contributor = edit['editor']
-                value = {'date': edit['date'], 'article': edit['article']}
-                editor_cache.add(contributor, value)
-                #collection.update({'editor': contributor}, {'$push': {'edits': value}}, True)
-                #'$inc': {'edit_count': 1},
-
-        except Empty:
-            '''
-            This checks whether the Queue is empty because the preprocessors are
-            finished or because this function is faster in emptying the Queue
-            then the preprocessors are able to fill it. If the preprocessors
-            are finished and this Queue is empty than break, else wait for the
-            Queue to fill.
-            '''
-            pass
-
-    print 'Emptying entire cache.'
-    editor_cache.store()
-    print 'Time elapsed: %s and processed %s items.' % (datetime.datetime.now() - editor_cache.init_time, editor_cache.cumulative_n)
-
-
-def load_cache_objects():
-    cache = {}
-    files = utils.retrieve_file_list(settings.binary_location, '.bin')
-    for x, file in enumerate(files):
-        cache[x] = utils.load_object(settings.binary_location, file)
-    return cache
-
-
-def search_cache_for_missed_editors(dbname):
-    mongo = db.init_mongo_db(dbname)
-    collection = mongo['editors']
-    editor_cache = cache.EditorCache(collection)
-    cache = load_cache_objects()
-    for c in cache:
-        for editor in cache[c]:
-            editor_cache.add(editor, cache[c][editor])
-        cache[c] = {}
-        editor_cache.add('NEXT', '')
-    cache = {}
-
+#def parse_editors(xml_queue, data_queue, **kwargs):
+#    '''
+#    @xml_queue contains the filenames of the files to be parsed
+#    @data_queue is an instance of Queue where the extracted data is stored for 
+#    further processing
+#    @pbar is an instance of progressbar to display the progress
+#    @bots is a list of id's of known Wikipedia bots
+#    @debug is a flag to indicate whether the function is called for debugging.
+#    
+#    Output is the data_queue that will be used by store_editors() 
+#    '''
+#    input = kwargs.get('input', None)
+#    output = kwargs.get('output', None)
+#    debug = kwargs.get('debug', False)
+#    destination = kwargs.get('destination', 'file')
+#    bots = kwargs.get('bots', None)
+#    pbar = kwargs.get('pbar', None)
+#    if settings.debug:
+#        messages = {}
+#        vars = {}
+#
+#    while True:
+#        try:
+#            if debug:
+#                file = xml_queue
+#            else:
+#                file = xml_queue.get(block=False)
+#            if file == None:
+#                print 'Swallowed a poison pill'
+#                break
+#
+#            data = xml.read_input(utils.create_txt_filehandle(input,
+#                                                      file, 'r',
+#                                                      encoding=settings.encoding))
+#            if destination == 'file':
+#                name = file[:-4] + '.txt'
+#                fh = utils.create_txt_filehandle(output, name, 'w', settings.encoding)
+#            for raw_data in data:
+#                xml_buffer = cStringIO.StringIO()
+#                raw_data.insert(0, '<?xml version="1.0" encoding="UTF-8" ?>\n')
+#
+#                try:
+#                    raw_data = ''.join(raw_data)
+#                    xml_buffer.write(raw_data)
+#                    elem = cElementTree.XML(xml_buffer.getvalue())
+#                    output_editor_information(elem, fh, bots=bots, destination=destination)
+#                except SyntaxError, error:
+#                    print error
+#                    '''
+#                    There are few cases with invalid tokens, they are fixed
+#                    here and then reinserted into the XML DOM
+#                    data = convert_html_entities(xml_buffer.getvalue())
+#                    elem = cElementTree.XML(data)
+#                    output_editor_information(elem)
+#                    '''
+#                    if settings.debug:
+#                        utils.track_errors(xml_buffer, error, file, messages)
+#                except UnicodeEncodeError, error:
+#                    print error
+#                    if settings.debug:
+#                        utils.track_errors(xml_buffer, error, file, messages)
+#                except MemoryError, error:
+#                    print file, error
+#                    print raw_data[:12]
+#                    print 'String was supposed to be %s characters long' % sum([len(raw) for raw in raw_data])
+#            if destination == 'queue':
+#                output.put('NEXT')
+#                while True:
+#                    if output.qsize() < 100000:
+#                        break
+#                    else:
+#                        time.sleep(10)
+#                        print 'Still sleeping, queue is %s items long' % output.qsize()
+#
+#            else:
+#                fh.close()
+#
+#            if pbar:
+#                print file, xml_queue.qsize()
+#                #utils.update_progressbar(pbar, xml_queue)
+#
+#            if debug:
+#                break
+#
+#        except Empty:
+#            break
+#
+#    if destination == 'queue':
+#        data_queue.put(None)
+#
+#    if settings.debug:
+#        utils.report_error_messages(messages, parse_editors)
 
 
 def load_bot_ids():
@@ -302,28 +327,30 @@ def load_bot_ids():
     return ids
 
 
-def run_parse_editors(location, language, project):
-    ids = load_bot_ids()
-    base = os.path.join(location, language, project)
-    input = os.path.join(base, 'chunks')
-    output = os.path.join(base, 'txt')
+def run_parse_editors(location, **kwargs):
+    bots = load_bot_ids()
+    input = os.path.join(location, 'chunks')
+    output = os.path.join(location, 'txt')
     settings.verify_environment([input, output])
     files = utils.retrieve_file_list(input, 'xml')
-   
-    kwargs = {'bots': ids,
-              'dbname': language + project,
-              'language': language,
-              'project': project,
-              'pbar': True,
-              'destination': 'file',
-              'nr_input_processors': settings.number_of_processes,
-              'nr_output_processors': settings.number_of_processes,
-              'input': input,
-              'output': output,
-              }
+    kwargs['destination'] = 'file'
     
-    chunks = utils.split_list(files, settings.number_of_processes)
-    pc.build_scaffolding(pc.load_queue, parse_editors, chunks, False, False, **kwargs)
+    
+    tasks = multiprocessing.JoinableQueue()
+    consumers = [XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
+    for file in files:
+        tasks.put(XMLFile(input, output, file, bots, **kwargs))
+    for x in xrange(settings.number_of_processes):
+        tasks.put(None)
+
+    print tasks.qsize()
+    for w in consumers:
+        w.start()
+
+    tasks.join()
+
+    #chunks = utils.split_list(files, settings.number_of_processes)
+    #pc.build_scaffolding(pc.load_queue, parse_editors, chunks, False, False, **kwargs)
 
 
 def debug_parse_editors(dbname):
@@ -334,5 +361,4 @@ def debug_parse_editors(dbname):
 
 if __name__ == "__main__":
     #debug_parse_editors('test2')
-    run_parse_editors(settings.input_location, 'en', 'wiki')
-    pass
+    run_parse_editors(os.path.join(settings.input_location, 'en', 'wiki'))

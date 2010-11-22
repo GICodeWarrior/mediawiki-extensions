@@ -21,46 +21,30 @@ __version__ = '0.1'
 import os
 import ConfigParser
 
-
-import configuration
-settings = configuration.Settings()
 from utils import utils
 
 
-
-def load_configuration(args):
+def create_configuration(settings, args):
     config = ConfigParser.RawConfigParser()
-    if not utils.check_file_exists(settings.working_directory, 'wiki.cfg'):
-        working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.' % os.getcwd())
-        if working_directory == '':
-            working_directory = os.getcwd()
 
-        settings.input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.' % settings.input_location)
-        if settings.input_location == '':
-            settings.input_location = settings.input_location
-
-        create_configuration(working_directory=working_directory, input_location=settings.input_location)
-
-    config.read('wiki.cfg')
-    settings.working_directory = config.get('file_locations', 'working_directory')
-    settings.input_location = config.get('file_locations', 'settings.input_location')
-
-
-def create_configuration(**kwargs):
-    working_directory = kwargs.get('working_directory', settings.working_directory)
+    working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.' % os.getcwd())
+    input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.' % settings.input_location)
+    input_location = input_location if len(input_location) > 0 else settings.input_location
+    working_directory = working_directory if len(working_directory) > 0 else os.getcwd() 
+    
     config = ConfigParser.RawConfigParser()
     config.add_section('file_locations')
     config.set('file_locations', 'working_directory', working_directory)
-    config.set('file_locations', 'settings.input_location', kwargs.get('settings.input_location', settings.input_location))
+    config.set('file_locations', 'input_location', input_location)
 
     fh = utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
     config.write(fh)
-    fh.close()
+    fh.close()    
+    
+    settings.working_directory = config.get('file_locations', 'working_directory')
+    settings.input_location = config.get('file_locations', 'input_location')
+    return settings
 
 
 if __name__ == '__main__':
-    p =detect_windows_program('7zip')
-    print p
-    #load_configuration([])
-
-
+    pass

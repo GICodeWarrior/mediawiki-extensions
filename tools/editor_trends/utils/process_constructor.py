@@ -63,9 +63,9 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
     input_queues = {}
     result_queues = {}
     
-    #assert len(obj) == nr_input_processors
-    #if result_queue:
-    #    assert len(obj)== nr_output_processors
+    assert len(obj) == nr_input_processors
+    if result_queue:
+        assert len(obj)== nr_output_processors
 
     for i, o in enumerate(obj):
         input_queues[i] = load_input_queue(obj[o], poison_pill=poison_pill)
@@ -93,7 +93,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
         result_processes = [models.ProcessResultQueue(result_processor,
                 result_queues[i], **kwargs) for i in xrange(nr_output_processors)]
         for result_process in result_processes:
-            result_process.start()
+            result_process.start(result_process.input_queue)
 
     for input_process in input_processes:
         print 'Waiting for input process to finish'

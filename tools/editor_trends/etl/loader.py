@@ -32,23 +32,21 @@ import process_constructor as pc
 
 
 
-def store_editors(input, filename, dbname):
+def store_editors(input, filename, dbname, collection):
     fh = utils.create_txt_filehandle(input, filename, 'r', settings.encoding)
     mongo = db.init_mongo_db(dbname)
-    collection = mongo['test']
-    mongo.collection.ensure_index('editor')
-    mongo.collection.create_index('editor')
+    collection = mongo[collection]
+    collection.ensure_index('editor')
+    collection.create_index('editor')
     editor_cache = cache.EditorCache(collection)
     prev_contributor = -1
     x = 0
     edits = 0
     editors = set()
-    for line in readline(fh):
+    for line in sort.readline(fh):
         if len(line) == 0:
             continue
         contributor = int(line[0]) 
-        if contributor == 5767932:
-            print 'debug'
         if prev_contributor != contributor:
             if edits >= 10:
                 result = editor_cache.add(prev_contributor, 'NEXT')
@@ -61,9 +59,11 @@ def store_editors(input, filename, dbname):
                 editor_cache.clear(prev_contributor)
             edits = 0
         edits += 1
-        date = utils.convert_timestamp_to_date(line[1]) #+ datetime.timedelta(days=1)
+        date = utils.convert_timestamp_to_datetime_utc(line[1]) #+ datetime.timedelta(days=1)
         article_id = int(line[2])
-        value = {'date': date, 'article': article_id}
+        username = line[3].encode(settings.encoding)
+        #print line[3]
+        value = {'date': date, 'article': article_id, 'username': username}
         editor_cache.add(contributor, value)
         prev_contributor = contributor
     fh.close()
@@ -80,48 +80,42 @@ def mergesort_external_launcher(dbname, input, output):
     chunks = utils.split_list(files, int(x))
     '''1st iteration external mergesort'''
     for chunk in chunks:
-        #filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.encoding) for file in chunks[chunk]]
-        #filename = sort.merge_sorted_files(output, filehandles, chunk)
-        #filehandles = [fh.close() for fh in filehandles]
-        pass
+        filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.encoding) for file in chunks[chunk]]
+        filename = sort.merge_sorted_files(output, filehandles, chunk)
+        filehandles = [fh.close() for fh in filehandles]
+#        pass
     '''2nd iteration external mergesort, if necessary'''
     if len(chunks) > 1:
         files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
         filehandles = [utils.create_txt_filehandle(output, file, 'r', settings.encoding) for file in files]
         filename = sort.merge_sorted_files(output, filehandles, 'final')
         filehandles = [fh.close() for fh in filehandles]
-    filename = 'merged_final.txt'
-    store_editors(output, filename, dbname)
+        filename = 'merged_final.txt'
+    return filename
 
 
-def mergesort_feeder(input_queue, result_queue, **kwargs):
+def mergesort_feeder(task_queue, **kwargs):
     input = kwargs.get('input', None)
     output = kwargs.get('output', None)
-    while True:
-        try:
-            file = input_queue.get(block=False)
-            fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
-            data = fh.readlines()
-            fh.close()
-            data = [d.replace('\n', '') for d in data]
-            data = [d.split('\t') for d in data]
-            sorted_data = sort.mergesort(data)
-            sort.write_sorted_file(sorted_data, file, output)
-        except Empty:
-            break
+    #while True:
+    #    try:
+            #file = input_queue.get(block=False)
+    for file in task_queue:
+        fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
+        data = fh.readlines()
+        fh.close()
+        data = [d.replace('\n', '') for d in data]
+        data = [d.split('\t') for d in data]
+        sorted_data = sort.mergesort(data)
+        sort.write_sorted_file(sorted_data, file, output)
 
 
 def mergesort_launcher(input, output):
-    kwargs = {'pbar': True,
-              'nr_input_processors': settings.number_of_processes,
-              'nr_output_processors': settings.number_of_processes,
-              'input': input,
-              'output': output,
-              'poison_pill': False
-              }
+    settings.verify_environment([input, output])
     files = utils.retrieve_file_list(input, 'txt')
-    chunks = utils.split_list(files, settings.number_of_processes)
-    pc.build_scaffolding(pc.load_queue, mergesort_feeder, chunks, False, False, **kwargs)
+    mergesort_feeder(files, input=input, output=output)
+    #chunks = utils.split_list(files, settings.number_of_processes)
+    #pc.build_scaffolding(pc.load_queue, mergesort_feeder, chunks, False, False, **kwargs)
 
 
 def debug_mergesort_feeder(input, output):

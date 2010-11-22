@@ -17,7 +17,7 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-11-02'
 __version__ = '0.1'
 
-from multiprocessing import Queue
+import multiprocessing
 from Queue import Empty
 from operator import itemgetter
 import datetime
@@ -29,6 +29,7 @@ settings = configuration.Settings()
 from database import db
 from utils import process_constructor as pc
 from utils import utils
+from utils import models
 import construct_datasets
 
 
@@ -38,6 +39,66 @@ try:
 except ImportError:
     pass
 
+
+class EditorConsumer(models.BaseConsumer):
+
+    def run(self):
+        while True:
+            new_editor = self.task_queue.get()
+            self.task_queue.task_done()
+            if new_editor == None:
+                break
+            new_editor()
+
+
+class Editor(object):
+    def __init__(self, dbname, id, **kwargs):
+        self.dbname = dbname
+        self.id = id
+        for kw in kwargs:
+            setattr(self, kw, kwargs[kw])
+    
+    def __str__(self):
+        return '%s' % (self.id)
+        #    mongo = db.init_mongo_db(dbname)
+        #    input = mongo[dbname]
+        #    output = mongo['dataset']
+        #    output.ensure_index('editor')
+        #    output.ensure_index('year_joined')
+        
+    def __call__(self):
+        self.mongo = db.init_mongo_db(self.dbname)
+        input_db = self.mongo['editors']
+        output_db = self.mongo['dataset']
+        
+        output_db.ensure_index('editor')
+        output_db.create_index('editor')
+        
+        editor = input_db.find_one({'editor': self.id})
+        if editor == None:
+            return
+        edits = editor['edits']
+        username = editor['username']
+        monthly_edits = determine_edits_by_month(edits)
+        edits = sort_edits(edits)
+        edit_count = len(edits)
+        new_wikipedian = edits[9]['date']
+        first_edit = edits[0]['date']
+        final_edit = edits[-1]['date']
+        edits_by_year = determine_edits_by_year(edits)
+        articles_by_year = determine_articles_by_year(edits)
+        edits = edits[:10]
+        output_db.insert({'editor': self.id, 
+                          'edits': edits,
+                          'edits_by_year': edits_by_year,
+                          'new_wikipedian': new_wikipedian,
+                          'edit_count': edit_count,
+                          'final_edit': final_edit,
+                          'first_edit': first_edit,
+                          'articles_by_year': articles_by_year,
+                          'monthly_edits': monthly_edits,
+                          'username': username
+                          })
 
 def create_datacontainer(init_value=0):
     '''
@@ -49,7 +110,10 @@ def create_datacontainer(init_value=0):
     data = {}
     year = datetime.datetime.now().year + 1
     for x in xrange(2001, year):
-        data[str(x)] = init_value
+        if init_value == 'set':
+            data[str(x)] = set()
+        else:
+            data[str(x)] = init_value
     return data
 
 
@@ -74,7 +138,7 @@ def determine_edits_by_month(edits):
             if len(months) == 12:
                 break
     return datacontainer
-    
+
 
 def determine_edits_by_year(dates):
     '''
@@ -92,12 +156,12 @@ def determine_articles_by_year(dates):
     This function counts the number of unique articles by year edited by a
     particular editor.
     '''
-    articles = create_datacontainer(set())
+    articles = create_datacontainer('set')
     for date in dates:
         year = str(date['date'].year)
         articles[year].add(date['article'])
-    for article in articles:
-        articles[article] = len(articles[article])
+    for year in articles:
+        articles[year] = len(articles[year])
     return articles
 
 
@@ -105,59 +169,36 @@ def sort_edits(edits):
     edits = utils.merge_list(edits)
     return sorted(edits, key=itemgetter('date'))
 
-
-def optimize_editors(input_queue, result_queue, pbar, **kwargs):
-    dbname = kwargs.pop('dbname')
-    mongo = db.init_mongo_db(dbname)
-    input = mongo['test']
-    output = mongo['dataset']
-    output.ensure_index('editor')
-    output.ensure_index('year_joined')
-    definition = kwargs.pop('definition')
-    while True:
-        try:
-            id = input_queue.get(block=False)
-            editor = input.find_one({'editor': id})
-            if editor == None:
-                continue
-            edits = editor['edits']
-            monthly_edits = determine_edits_by_month(edits)
-            edits = sort_edits(edits)
-            edit_count = len(edits)
-            new_wikipedian = edits[9]['date']
-            first_edit = edits[0]['date']
-            final_edit = edits[-1]['date']
-            edits_by_year = determine_edits_by_year(edits)
-            articles_by_year = determine_articles_by_year(edits)
-            
-            edits = edits[:10]
-
-            output.insert({'editor': id, 'edits': edits,
-                           'edits_by_year': edits_by_year,
-                           'new_wikipedian': new_wikipedian,
-                           'edit_count': edit_count,
-                           'final_edit': final_edit,
-                           'first_edit': first_edit,
-                           'articles_by_year': articles_by_year,
-                           'monthly_edits': monthly_edits})
-            print 'Items left: %s' % input_queue.qsize()
-        except Empty:
-            break
+#def optimize_editors(input_queue, result_queue, pbar, **kwargs):
+#    dbname = kwargs.pop('dbname')
+#    mongo = db.init_mongo_db(dbname)
+#    input = mongo[dbname]
+#    output = mongo['dataset']
+#    output.ensure_index('editor')
+#    output.ensure_index('year_joined')
+#    definition = kwargs.pop('definition')
 
 
 def run_optimize_editors(dbname):
     ids = construct_datasets.retrieve_editor_ids_mongo(dbname, 'editors')
     kwargs = {'definition': 'traditional',
               'pbar': True,
-              'dbname': 'enwiki',
-              'nr_input_processors': 1,
-              'nr_output_processors': 0,
-              'poison_pill': False
               }
-    print len(ids)
-    ids = list(ids)
-    chunks = {0: ids}
-    pc.build_scaffolding(pc.load_queue, optimize_editors, chunks, False, False, **kwargs)
+    #input_db = db.init_mongo_db(dbname)
+    #output_db = db.init_mongo_db('dataset')
+    tasks = multiprocessing.JoinableQueue()
+    consumers = [EditorConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
+    
+    for id in ids:
+        tasks.put(Editor(dbname, id))
+    for x in xrange(settings.number_of_processes):
+        tasks.put(None)
+
+    print tasks.qsize()
+    for w in consumers:
+        w.start()
+
+    tasks.join()
 
 
 def debug_optimize_editors(dbname):

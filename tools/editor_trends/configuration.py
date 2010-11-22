@@ -23,6 +23,7 @@ the datasets as part of the Editor Dynamics and Anti-Vandalism projects.
 '''
 
 from multiprocessing import cpu_count
+import ConfigParser
 import os
 import sys
 import platform
@@ -42,7 +43,7 @@ except ImportError:
 
 class Settings(object):
 
-        def __init__(self, debug=True, process_multiplier=1):
+        def __init__(self, debug=True, process_multiplier=1, **kwargs):
             self.debug = debug
             self.progressbar = True
             self.encoding = 'utf-8'
@@ -69,7 +70,8 @@ class Settings(object):
             self.max_filehandles = self.determine_max_filehandles_open()
 
             self.windows_register = {'7zip': 'Software\\7-Zip', }
-
+            self.load_configuration()
+            self.set_custom_settings(**kwargs)
             self.projects = {'commons': 'commonswiki',
                             'wikibooks': 'wikibooks',
                             'wikinews': 'wikinews',
@@ -88,6 +90,16 @@ class Settings(object):
                             'multilingual wikisource': None
                             }
 
+        def set_custom_settings(self, **kwargs):
+            for kw in kwargs:
+                setattr(self, kw, kwargs[kw])
+
+        def load_configuration(self):
+            if os.path.exists(os.path.join(self.working_directory, 'wiki.cfg')):
+                config = ConfigParser.RawConfigParser()
+                config.read(os.path.join(self.working_directory, 'wiki.cfg'))
+                self.working_directory = config.get('file_locations', 'working_directory')
+                self.input_location = config.get('file_locations', 'input_location')
 
         def determine_working_directory(self):
             cwd = os.getcwd()
@@ -105,10 +117,9 @@ class Settings(object):
 
         def verify_environment(self, directories):
             for dir in directories:
-                result = os.path.exists(dir)
-                if not result:
+                if not os.path.exists(dir):
                     try:
-                        os.mkdir(dir)
+                        os.makedirs(dir)
                     except IOError:
                         raise 'Configuration Error, could not create directory.'
 

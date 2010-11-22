@@ -75,8 +75,10 @@ def merge(front, back):
 
 
 def readline(file):
+    '''
+    @file should be a file object
+    '''
     for line in file:
-        print file.stream.name
         line = line.replace('\n', '')
         if line == '':
             continue

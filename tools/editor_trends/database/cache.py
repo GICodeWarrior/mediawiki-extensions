@@ -70,7 +70,7 @@ class EditorCache(object):
 
     def add(self, key, value):
         if value == 'NEXT':
-            result = self.insert(key, self.editors[key]['edits'])
+            result = self.insert(key, self.editors[key]['edits'], self.editors[key]['username'])
             self.n -= self.editors[key]['obs']
             self.number_editors -= 1
             del self.editors[key]
@@ -84,11 +84,13 @@ class EditorCache(object):
                 self.editors[key]['edits'] = {}
                 self.add_years(key)
                 self.number_editors += 1
-
+                self.editors[key]['username'] = value['username']
+                
             id = str(self.editors[key]['obs'])
             year = str(value['date'].year)
             self.editors[key]['edits'][year].append(value)
             self.editors[key]['obs'] += 1
+            
 
             #if self.editors[key]['obs'] == self.treshold:
             #    self.treshold_editors.add(key)
@@ -102,9 +104,9 @@ class EditorCache(object):
     def update(self, editor, values):
         self.collection.update({'editor': editor}, {'$pushAll': {'edits': values}}, upsert=True)
 
-    def insert(self, editor, values):
+    def insert(self, editor, values, username):
         try:
-            self.collection.insert({'editor': editor, 'edits': values})
+            self.collection.insert({'editor': editor, 'edits': values, 'username': username})
             return True
         except:
             return False

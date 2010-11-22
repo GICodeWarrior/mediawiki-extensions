@@ -30,6 +30,7 @@ import datetime
 import codecs
 import os
 import ctypes
+import time
 
 import configuration
 settings = configuration.Settings()
@@ -49,11 +50,19 @@ RE_NUMERIC_CHARACTER = re.compile('&#?\w+;')
 
 
 def convert_timestamp_to_date(timestamp):
-    return datetime.datetime.strptime(timestamp[:10], settings.DATE_FORMAT)
+    return datetime.datetime.strptime(timestamp[:10], settings.date_format)
 
 
-def convert_timestamp_to_datetime(timestamp):
-    return datetime.datetime.strptime(timestamp, settings.DATETIME_FORMAT)
+def convert_timestamp_to_datetime_naive(timestamp):
+    return datetime.datetime.strptime(timestamp, settings.timestamp_format)
+
+
+def convert_timestamp_to_datetime_utc(timestamp):
+    tz = datetime.tzinfo('utc')
+    d = convert_timestamp_to_datetime_naive(timestamp)
+    #return d.replace(tzinfo=tz) #enabling this line crashes pymongo
+    return d
+
 
 
 def check_if_process_is_running(pid):
