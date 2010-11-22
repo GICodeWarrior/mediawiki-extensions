@@ -62,12 +62,15 @@ $wgHooks['AlternateEdit'][]            = 'todoPreviewAction';
 $wgHooks['EditPage::attemptSave'][]    = 'todoSavePreparser';
 $wgHooks['ParserFirstCallInit'][]      = 'wfTodoParserFunction_Setup';
 
-function efTodoTasksSchemaUpdates() {
-	global $wgExtNewTables;
-
+function efTodoTasksSchemaUpdates( $updater = null ) {
 	$base = dirname(__FILE__);
 
-	$wgExtNewTables[] = array( 'todo', "$base/todotasks.sql" ); // Initial install tables
+	if ( $updater === null ) {
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array( 'todo', "$base/todotasks.sql" ); // Initial install tables
+	} else {
+		$updater->addExtensionUpdate( array( 'addTable', 'todo', "$base/todotasks.sql", true ) );
+	}
 
 	return true;
 }
