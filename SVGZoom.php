@@ -8,7 +8,7 @@
  * This file contains the main include file for the SVGZoom extension of MediaWiki.
  *
  * Usage: Add the following line to your LocalSettings.php file:
- * require_once( "$IP/extensions/SVGZoom/SVGZoom" );
+ * require_once( "$IP/extensions/SVGZoom/SVGZoom.php" );
  *
  * @author Trevor Parscal <tparscal@wikimedia.org>, Brad Neuberg <bradneuberg@google.com>
  * @license ?
