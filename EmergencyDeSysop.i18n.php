@@ -742,6 +742,13 @@ $messages['pdc'] = array(
 	'emergencydesysop-nogroups' => 'Ken',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'emergencydesysop-nogroups' => 'Kään',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe
