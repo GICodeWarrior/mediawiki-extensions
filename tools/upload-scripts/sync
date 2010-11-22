@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for srv in ms1; do
+for srv in ms7; do
 	echo $srv
 	rsync --rsh=ssh -cr /home/wikipedia/upload-scripts/ root@$srv:/export/upload/sync-from-home
 done
