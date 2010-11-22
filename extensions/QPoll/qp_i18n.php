@@ -1856,6 +1856,13 @@ For å lagre en spørreundersøkelse, send den mens du ikke svarer på noen fors
 	'qp_error_unique' => 'Spørsmål av typen unique() har flere forslag enn mulige definerte svar: umulig å gjennomføre',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'qp_stats_link' => 'Schdadischdik',
+);
+
 /** Polish (Polski)
  * @author Odder
  * @author Sp5uhe

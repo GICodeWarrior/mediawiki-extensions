@@ -1030,6 +1030,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => 'Zmóžnja wužiwarjam so z jich kontami na [http://www,facebook.com Facebook] [[Special:Connect|zwjazać]].',
 	'group-fb-user' => 'Wužiwarjo Facebook Connect',
 	'group-fb-user-member' => 'Wužiwar Facebook Connect',
 	'grouppage-fb-user' => '{{ns:project}}:Wužiwarjo Facebook Connect',
@@ -1057,11 +1058,15 @@ $messages['hsb'] = array(
 
 $1",
 	'fbconnect-merge' => 'Twoje wikikonto z twojim Facebook-ID zwjazać',
+	'fbconnect-logoutbox' => '$1
+
+Přez to wotzjewiš so z Facebook a wšěch zwjazanych sydłow, inkluziwnje tutoho wikija.',
 	'fbconnect-error' => 'Pruwowanski zmylk',
 	'fbconnect-errortext' => 'Při přepruwowanju přez Facebook Connect je zmylk wustupił.',
 	'fbconnect-cancel' => 'Akcija přetorhnjena',
 	'fbconnect-canceltext' => 'Předchadna akcija bu wot wužiwarja přetorhnjena.',
 	'fbconnect-invalid' => 'Njepłaćiwa opcija',
+	'fbconnect-invalidtext' => 'Wuběr na předchadnej stronje bě njepłaćiwy.',
 	'fbconnect-success' => 'Přepruwowanje Facebook je so poradźiło',
 	'fbconnect-successtext' => 'Sy so wuspěšnje přez Facebook Connect přizjewił.',
 	'fbconnect-nickname' => 'Přimjeno',
@@ -1083,8 +1088,10 @@ Prošu wubjer druhe přimjeno.',
 	'fbconnect-choosepassword' => 'Hesło:',
 	'fbconnect-updateuserinfo' => 'Zaktualizuj slědowace wosobinske informacije:',
 	'fbconnect-error-creating-user' => 'Zmylk při wutworjenju wužiwarja w lokalnej datowej bance.',
+	'fbconnect-error-user-creation-hook-aborted' => 'Rozšěrjenje přetorhny załoženje konta ze slědowacej zdźělenku: $1',
 	'fbconnect-prefstext' => 'Facebook Connect',
 	'fbconnect-link-to-profile' => 'Profil Facebook',
+	'fbconnect-prefs-can-be-updated' => 'Móžeš je kóždy čas aktualizować, hdyž je na rajtarku "$1" na stronje twojich nastajenjow změniš.',
 );
 
 /** Hungarian (Magyar)

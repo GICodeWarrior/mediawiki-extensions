@@ -2843,6 +2843,13 @@ $messages['pdc'] = array(
 	'tasks_logentry' => 'fer „[[$1]]“',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'tasks_noone' => 'kään',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Maikking

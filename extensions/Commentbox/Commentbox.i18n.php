@@ -599,6 +599,14 @@ Dir hutt eng Bemierkung zu dëser Säit? Setzt ze hei derbäi oder <span class="
 	'commentbox-error-empty-comment' => 'Eidel Bemierkunge sinn net erlaabt!',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'commentbox-first-comment-heading' => '== Komentari ==',
+	'commentbox-regex' => '/\\n==\\s*Komentari\\s*==\\s*\\n/i',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
