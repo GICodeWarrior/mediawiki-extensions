@@ -1266,6 +1266,33 @@ $messages['scn'] = array(
 	'article-comments-comment-missing-name-parameter' => 'Nomu persu',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'article-comments-desc' => 'Ssrmd (ssrɣ) ayawn n tannayin ɣ tisniwin n imlan.',
+	'article-comments-title-string' => 'azwl',
+	'article-comments-name-string' => 'Assaɣ',
+	'article-comments-name-field' => 'Assaɣ (ism)',
+	'article-comments-url-field' => 'Asml web (Asit web)',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Awnnit (aɣfawal)',
+	'article-comments-comment-field' => 'Awnit (aɣfawal)',
+	'article-comments-submit-button' => 'Zzugs',
+	'article-comments-leave-comment-link' => 'Zayd awnit (aɣfawal)',
+	'article-comments-invalid-field' => ' $1 ar takka <nowiki>[$2]</nowiki> lli ur illan',
+	'article-comments-required-field' => 'Igr $1 ur iga bzzez',
+	'article-comments-submission-failed' => 'afuḍ n iwnit (aɣfawal) ur issufɣ',
+	'article-comments-failure-reasons' => 'Surf as, afuḍ n uwnit ur issufɣ f {{PLURAL:$1|uɣzan ad|iɣzan ad}} :',
+	'article-comments-no-comments' => 'Surf as amli yad « [[$1]] »  ur ira iwnitn ɣilad.',
+	'article-comments-talk-page-starter' => '<noinclude>Iɣfiwaliwn f "[[$1]]"
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 inna',
+	'article-comments-summary' => 'Aɣfawal (awnit) llid yiwi  $1 - z dar  usiɣzif iwnitn n imlan',
+	'article-comments-submission-succeeded' => 'Afuḍ n iwnit (aɣfawal)  issufɣ',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
