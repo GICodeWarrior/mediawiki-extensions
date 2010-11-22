@@ -38,9 +38,13 @@ class User {
 	private $realName;
 	private $hasPage;
 
-	public function __construct( $id, $name = null ) {
-		if ( $name ) $this->name = $name;
-		if ( $id ) $this->id = $id;
+	public function __construct( $id = null, $name = null ) {
+		if ( $name ) {
+			$this->name = $name;
+		}
+		if ( $id ) {
+			$this->id = $id;
+		}
 		foreach ( self::$Map as $key => $vals ) {
 			if ( $id && $id == $key ) {
 				$this->name = $vals[0];

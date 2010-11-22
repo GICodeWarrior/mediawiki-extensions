@@ -2,10 +2,11 @@
 
 class CodeBrowseView {
 	static function newFromPath( $path, $request ) {
-		if ( ltrim( $path, '/' ) == '' )
+		if ( ltrim( $path, '/' ) == '' ){
 			return new CodeBrowseRepoListView( $path, $request );
-		else
+		} else {
 			return new CodeBrowseItemView( $path, $request );
+		}
 	}
 	
 	function __construct( $path, $request ) {
@@ -25,6 +26,4 @@ class CodeBrowseView {
 	function getFooter() {
 		return '';
 	}
-	
-	
 }

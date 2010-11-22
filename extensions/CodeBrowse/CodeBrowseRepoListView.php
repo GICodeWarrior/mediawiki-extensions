@@ -4,12 +4,13 @@ class CodeBrowseRepoListView extends CodeBrowseView {
 	function getContent() {
 		global $wgOut;
 		return $wgOut->parse( self::reallyGetContent() );
-		
 	}
+
 	static function reallyGetContent() {
 		$repos = CodeRepository::getRepoList();
-		if ( !count( $repos ) )
+		if ( !count( $repos ) ) {
 			return wfMsg( 'code-no-repo' );
+		}
 		
 		$text = '';
 		foreach ( $repos as $repo ) {
