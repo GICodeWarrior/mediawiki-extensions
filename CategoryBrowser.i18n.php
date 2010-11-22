@@ -1386,6 +1386,15 @@ $messages['scn'] = array(
 	'cb_and_op' => 'e',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'categorybrowser' => 'Amuddu ɣ tilɣiwin',
+	'cb_next_items_link' => 'Amdfr (wali d idfarn)',
+	'cb_edit_paste_right_hint' => 'Zdi, iɣ as tufit, ɣ ugmmaḍ d ittfrn',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
