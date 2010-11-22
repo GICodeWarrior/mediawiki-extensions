@@ -1186,6 +1186,13 @@ $messages['pdc'] = array(
 	'amazonplus-more' => 'meh',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'amazonplus-cp-none' => 'Kään',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */
