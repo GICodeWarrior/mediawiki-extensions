@@ -109,8 +109,8 @@ class ArticleFeedbackHooks {
 			&& count( $wgArticleFeedbackCategories )
 			&& self::isInCategories( $title->getArticleId(), $wgArticleFeedbackCategories )
 		) {
-			//$out->addModules( 'ext.articleFeedback-alpha' );
-			$out->addModules( 'ext.articleFeedback-beta' );
+			$out->addModules( 'ext.articleFeedback-alpha' );
+			//$out->addModules( 'ext.articleFeedback-beta' );
 		}
 		return true;
 	}
