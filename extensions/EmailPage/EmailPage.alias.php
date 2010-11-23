@@ -1,6 +1,6 @@
 <?php
 /**
- * Aliases for Special:EmailPage
+ * Aliases for Special:E-mailPage
  *
  * @file
  * @ingroup Extensions
@@ -12,69 +12,69 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-	'EmailPage' => array( 'EmailPage' ),
+	'E-mailPage' => array( 'E-mailPage', 'EmailPage' ),
 );
 
 /** Arabic (العربية)
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'EmailPage' => array( 'مراسلة_الصفحة' ),
+	'E-mailPage' => array( 'مراسلة_الصفحة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'EmailPage' => array( 'مراسلة_الصفحة' ),
+	'E-mailPage' => array( 'مراسلة_الصفحة' ),
 );
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'EmailPage' => array( 'EnvoyerPage', 'Envoyer Page' ),
+	'E-mailPage' => array( 'EnvoyerPage', 'Envoyer Page' ),
 );
 
 /** Galician (Galego) */
 $aliases['gl'] = array(
-	'EmailPage' => array( 'Enviar páxinas por correo electrónico' ),
+	'E-mailPage' => array( 'Enviar páxinas por correo electrónico' ),
 );
 
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
 $aliases['he'] = array(
-	'EmailPage' => array( 'שליחת_דף_בדואר' ),
+	'E-mailPage' => array( 'שליחת_דף_בדואר' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
-	'EmailPage' => array( 'EmèlAtik' ),
+	'E-mailPage' => array( 'EmèlAtik' ),
 );
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'EmailPage' => array( 'Szócikk elküldése e-mailben' ),
+	'E-mailPage' => array( 'Szócikk elküldése e-mailben' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'EmailPage' => array( 'E-Mail-Säiten' ),
+	'E-mailPage' => array( 'E-Mail-Säiten' ),
 );
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'EmailPage' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
+	'E-mailPage' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $aliases['no'] = array(
-	'EmailPage' => array( 'Send side som e-post' ),
+	'E-mailPage' => array( 'Send side som e-post' ),
 );
 
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
-	'EmailPage' => array( 'د برېښليک مخونه' ),
+	'E-mailPage' => array( 'د برېښليک مخونه' ),
 );
 
