@@ -3663,10 +3663,14 @@ Subuking gamitin ang "$3{...}" na kautusan.',
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'math_CannotChangeDirectory' => 'Çalışma dizini değiştirilemiyor',
+	'math_CannotCreateTexFile' => 'Teks dosyası oluşturulamıyor',
+	'math_CannotRunDvipng' => 'Dvipng çalıştırılamıyor',
+	'math_CannotRunLatex' => 'Lateks çalıştırılamıyor',
 	'math_CannotWriteTexFile' => 'Tex dosyasına yazılamıyor',
 	'math_IllegalCharacter' => 'Girdide uygunsuz karakter',
 	'math_IllegalCommandInTextMode' => '"$1" komutu, metin modu için uygunsuz',

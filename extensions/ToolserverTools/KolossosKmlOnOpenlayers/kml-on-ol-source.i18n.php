@@ -359,6 +359,18 @@ $messages['pt-br'] = array(
 	'ts-kml-on-ol-map-by' => 'Mapa criado por',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'ts-kml-on-ol-options' => 'Настройки',
+	'ts-kml-on-ol-languages' => 'Языки',
+	'ts-kml-on-ol-thumbnails' => 'Миниатюры',
+	'ts-kml-on-ol-help' => 'Справка',
+	'ts-kml-on-ol-all' => 'Все',
+	'ts-kml-on-ol-map-by' => 'Карта от',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
