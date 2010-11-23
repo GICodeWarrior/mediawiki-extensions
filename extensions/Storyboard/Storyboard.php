@@ -91,13 +91,21 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'storyboard-desc',
 );
 
-function efStoryboardSchemaUpdate() {
-	global $wgExtNewTables, $egStoryboardDir;
+function efStoryboardSchemaUpdate( $updater = null ) {
+	global $egStoryboardDir;
 
-	$wgExtNewTables[] = array(
-		'storyboard',
-		$egStoryboardDir . 'storyboard.sql'
-	);
+	if ( $updater === null ) {
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array(
+			'storyboard',
+			$egStoryboardDir . 'storyboard.sql'
+		);
+	} else {
+		$updater->addExtensionUpdate( array(
+			'addTable', 'storyboard',
+			$egStoryboardDir . 'storyboard.sql', true
+		) );
+	}
 
 	return true;
 }
