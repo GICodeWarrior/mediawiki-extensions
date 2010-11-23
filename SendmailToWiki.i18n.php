@@ -99,11 +99,17 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'sendmailtowiki-desc' => 'Slanje wiki sadržaja putem određene dinamičke e-mail adrese',
 	'prefs-sendmailtowiki' => 'Slanje sadržaja putem e-maila',
 	'sendmailtowiki-inemail' => 'Namjenska e-mail adresa:',
 	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Prazno polje za PIN broj ne dozvoljava slanej sadržaja na wiki sa vašeg računa.',
 	'sendmailtowiki-err-pinlength' => 'PIN mora sadržavati tačno 5 cifara.',
+	'sendmailtowiki-err-wrongprefix' => 'Pogrešan prefiks wiki računa. Kontaktirajte vašeg administratora.',
+	'sendmailtowiki-err-invalidaccount' => 'Nevaljan račun. Provjerite e-mail adresu na koju šaljete.',
+	'sendmailtowiki-err-invalidsender' => 'Nevaljan pošiljalac. Provjerite e-mail adresu sa koje se šalje.',
 	'sendmailtowiki-err-invalidpin' => 'Nevaljan PIN. Pristup onemogućen.',
+	'sendmailtowiki-err-onlyplain' => 'Zbog potencijalnih pogrešnih interpretacuha mogu se prihvatiti samo čisto tekstualne poruke.',
 );
 
 /** Catalan (Català)
