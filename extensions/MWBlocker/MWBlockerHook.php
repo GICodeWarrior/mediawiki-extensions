@@ -13,7 +13,9 @@ function mwBlockerHookSetup() {
 function mwBlockerCheck() {
 	global $wgDBname;
 	$ip = wfGetIP();
-	MWBlocker::queueCheck( $ip, "creating account on $wgDBname" );
+	try {
+		MWBlocker::queueCheck( $ip, "creating account on $wgDBname" );
+	} catch( MWException $e ) {}
 	return true;
 }
 
