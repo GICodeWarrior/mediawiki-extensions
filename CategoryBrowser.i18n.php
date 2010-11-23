@@ -1527,11 +1527,13 @@ Paki bago o itaas ang antas ng iyong pantingin-tingin, kung maaari.',
 
 /** Turkish (Türkçe)
  * @author CnkALTDS
+ * @author Emperyan
  */
 $messages['tr'] = array(
 	'categorybrowser' => 'Kategori tarayıcısı',
 	'cb_previous_items_link' => 'Önceki',
 	'cb_next_items_link' => 'Sonraki',
+	'cb_next_items_stats' => '($1)',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
