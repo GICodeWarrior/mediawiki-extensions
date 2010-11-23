@@ -255,9 +255,14 @@ class MultipleUpload extends SpecialUpload {
 	 * @param $message String
 	 */
 	protected function showUploadError( $message ) {
-		$this->mErrors[] = '<ul><li>' .
-			$this->mLocalFile->getTitle()->getFullText() . ':' .
-			$message . "</li></ul>\n";
+		$err ='<ul><li>';
+		$file = $this->mLocalFile;
+		if ($file)
+			$t = $this->mLocalFile->getTitle();
+		if ($t)
+			$err .= $t->getFullText() . ":";
+		$err .= $message . "</li></ul>\n";
+		$this->mErrors[] = $err;
 	}
 
 	/**
