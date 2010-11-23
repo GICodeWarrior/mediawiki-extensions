@@ -38,6 +38,11 @@ class ArticleFeedbackHooks {
 			),
 			'dependencies' => array( 'jquery.ui.dialog', 'jquery.tipsy', 'jquery.stars' ),
 		),
+		'ext.articleFeedback-beta' => array(
+			'scripts' => 'ext.articleFeedback-beta/ext.articleFeedback-beta.js',
+			'styles' => 'ext.articleFeedback-beta/ext.articleFeedback-beta.css',
+			'dependencies' => array( 'jquery.tipsy' ),
+		),
 		'jquery.stars' => array(
 			'scripts' => 'jquery.stars/jquery.stars.js',
 			'styles' => 'jquery.stars/jquery.stars.css',
@@ -104,7 +109,8 @@ class ArticleFeedbackHooks {
 			&& count( $wgArticleFeedbackCategories )
 			&& self::isInCategories( $title->getArticleId(), $wgArticleFeedbackCategories )
 		) {
-			$out->addModules( 'ext.articleFeedback-alpha' );
+			//$out->addModules( 'ext.articleFeedback-alpha' );
+			$out->addModules( 'ext.articleFeedback-beta' );
 		}
 		return true;
 	}
