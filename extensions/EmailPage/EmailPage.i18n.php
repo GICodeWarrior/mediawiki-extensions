@@ -151,26 +151,7 @@ $messages['de'] = array(
  * @author kghbln
  */
 $messages['de-formal'] = array(
-	'e-mailpage' => 'Per E-Mail versenden',
-	'ea-desc' => 'Nutzt [http://phpmailer.worxware.com/ PHPMailer], um HTML-Seiten an E-Mail-Adressen oder E-Mail-Adresslisten zu versenden.',
-	'ea-heading' => "=== E-Mail-Versand von Seite [[$1]]. ===",
-	'ea-fromgroup' => 'An Gruppe:',
-	'ea-pagesend' => 'Seite "$1" (aus dem Wiki $2)',
 	'ea-nopage' => "Bitte geben Sie eine Seite zum Versenden an, bspw. \"[[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]]\".",
-	'ea-norecipients' => "Es sind keine E-Mail-Adressen zum Versenden vorhanden!",
-	'ea-listrecipients' => '=== {{PLURAL:$1|Empfänger|$1 Empfänger}} ===',
-	'ea-error' => "'''Fehler beim Versenden von Seite [[$1]]:''' ''$2''",
-	'ea-denied' => 'E-Mail-Versand wurde aufgrund fehlender Berechtigung unterbunden.',
-	'ea-sent' => "Seite [[$1]] wurde erfolgreich von [[User:$3|$3]] an '''$2''' {{PLURAL:$2|Empfänger|Empfänger}} versandt.",
-	'ea-selectrecipients' => 'Empfänger auswählen',
-	'ea-compose' => 'Nachricht erstellen',
-	'ea-selectlist' => "Zusätzliche Empfänger entweder mit Seitentitel oder E-Mail-Adresse angeben: (''Angaben mit , ; * oder \\n trennen. Die Liste kann Vorlagen und Parser-Funktionen enthalten.)''",
-	'ea-show' => 'Empfänger anzeigen',
-	'ea-send' => 'Senden',
-	'ea-subject' => 'Betreff:',
-	'ea-message' => 'Der zu versendenden Seite folgende Nachricht voranstellen (optional, Eingabe in Wikitext erforderlich):',
-	'ea-selectcss' => 'CSS-Stylesheet auswählen:',
-	'ea-selectrecord' => 'Datengruppe auswählen (falls vorhanden):'
 );
 
 /** Esperanto (Esperanto)
