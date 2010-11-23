@@ -86,7 +86,7 @@ function clean_Result( $snmpvalue ) {
 }
 
 /* doesn't work well for templates, eg <snmp host="{{{ip}}}" />  */
-function SNMP_Tag ( $text, $args, &$parser ) {
+function SNMP_Tag ( $text, $args, $parser ) {
 	$snmphost = '127.0.0.1';
 	$com = 'public';
 	$snmpoid = 'system.SysContact.0';
