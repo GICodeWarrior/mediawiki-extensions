@@ -1,3 +1,228 @@
 /*
  * Styles for Article Feedback (beta)
  */
+
+.af-ui {
+	border: 1px solid #aaaaaa;
+	display: inline-block;
+	height: 13.5em;
+	width: 44.099em;
+	overflow: hidden;
+}
+.af-ui hr {
+	color: #cccccc;
+	margin: 0.75em 0;
+	padding: 0;
+}
+.af-ui-drawer, .af-ui-switch {
+	float: left;
+}
+.af-ui-drawer {
+}
+	.af-ui-drawer-container {
+		padding: 0.75em 1em;
+		width: 34em;
+	}
+	.af-ui-drawer[rel=form] {
+	}
+	.af-ui-drawer[rel=chart] {
+		display: none;
+	}
+	.af-ui-drawer-title {
+		font-size: 1.4em;
+	}
+	.af-ui-drawer-form-instructions {
+		float: left;
+		font-weight: bold;
+	}
+	.af-ui-drawer-form-clear {
+		float: right;
+	}
+	.af-ui-drawer-form-reset {
+		float: right;
+		margin-right: 1em;
+	}
+.af-ui-switch {
+	height: 13.5em;
+	overflow: hidden;
+}
+.af-ui-handle {
+	display: block;
+	background-color: #f3f3f3;
+	background-position: 50% 35%;
+	background-repeat: no-repeat;
+	text-align: center;
+	height: 13.5em;
+	width: 8em;
+	cursor: pointer;
+}
+	.af-ui-handle[rel=form] {
+		display: none;
+		background-image: url(images/form-icon.png);
+		border-right: solid 1px #aaaaaa;
+	}
+	.af-ui-handle[rel=chart] {
+		background-image: url(images/chart-icon.png);
+		border-left: solid 1px #aaaaaa;
+	}
+	.af-ui-handle-container {
+		display: block;
+		padding-top: 10em;
+		padding-left: 1em;
+		padding-right: 1em;
+		font-size: 0.8em;
+		line-height: 1.25em;
+		color: #0645ad;
+	}
+	.af-ui-handle-container:hover {
+		text-decoration: underline;
+	}
+.af-ui-form-ratings {
+	margin-top: 0.5em;
+	width: 100%;
+	line-height: 1px;
+}
+.af-ui-form-rating-label {
+	padding-right: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.af-ui-form-rating-control {
+	width: 113px;
+	height: 21px;
+	padding: 0;
+	margin: 0;
+}
+.af-ui-form-rating-container {
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+}
+.af-ui-form-rating-control label {
+	float: left;
+	height: 21px;
+	width: 21px;
+	margin: 0;
+	padding: 0;
+	background-image: url(images/rating.png);
+	cursor: pointer;
+}
+.af-ui-form-rating-control label[rel='1'] {
+	width: 25px;
+	background-position: 0 0;
+}
+	.af-ui-form-rating-control[state=new] label[rel='1'].af-ui-form-rating-control-selected {
+		background-position: 0 -21px;
+	}
+	.af-ui-form-rating-control[state=current] label[rel='1'].af-ui-form-rating-control-selected {
+		background-position: 0 -42px;
+	}
+	.af-ui-form-rating-control[state=stale] label[rel='1'].af-ui-form-rating-control-selected {
+		background-position: 0 -63px;
+	}
+	.af-ui-form-rating-control[state=expired] label[rel='1'].af-ui-form-rating-control-selected {
+		background-position: 0 -84px;
+	}
+.af-ui-form-rating-control label[rel='2'] {
+	width: 21px;
+	background-position: -25px 0;
+}
+	.af-ui-form-rating-control[state=new] label[rel='2'].af-ui-form-rating-control-selected {
+		background-position: -25px -21px;
+	}
+	.af-ui-form-rating-control[state=current] label[rel='2'].af-ui-form-rating-control-selected {
+		background-position: -25px -42px;
+	}
+	.af-ui-form-rating-control[state=stale] label[rel='2'].af-ui-form-rating-control-selected {
+		background-position: -25px -63px;
+	}
+	.af-ui-form-rating-control[state=expired] label[rel='2'].af-ui-form-rating-control-selected {
+		background-position: -25px -84px;
+	}
+.af-ui-form-rating-control label[rel='3'] {
+	width: 21px;
+	background-position: -46px 0;
+}
+	.af-ui-form-rating-control[state=new] label[rel='3'].af-ui-form-rating-control-selected {
+		background-position: -46px -21px;
+	}
+	.af-ui-form-rating-control[state=current] label[rel='3'].af-ui-form-rating-control-selected {
+		background-position: -46px -42px;
+	}
+	.af-ui-form-rating-control[state=stale] label[rel='3'].af-ui-form-rating-control-selected {
+		background-position: -46px -63px;
+	}
+	.af-ui-form-rating-control[state=expired] label[rel='3'].af-ui-form-rating-control-selected {
+		background-position: -46px -84px;
+	}
+.af-ui-form-rating-control label[rel='4'] {
+	width: 21px;
+	background-position: -67px 0;
+}
+	.af-ui-form-rating-control[state=new] label[rel='4'].af-ui-form-rating-control-selected {
+		background-position: -67px -21px;
+	}
+	.af-ui-form-rating-control[state=current] label[rel='4'].af-ui-form-rating-control-selected {
+		background-position: -67px -42px;
+	}
+	.af-ui-form-rating-control[state=stale] label[rel='4'].af-ui-form-rating-control-selected {
+		background-position: -67px -63px;
+	}
+	.af-ui-form-rating-control[state=expired] label[rel='4'].af-ui-form-rating-control-selected {
+		background-position: -67px -84px;
+	}
+.af-ui-form-rating-control label[rel='5'] {
+	width: 25px;
+	background-position: -88px 0;
+}
+	.af-ui-form-rating-control[state=new] label[rel='5'].af-ui-form-rating-control-selected {
+		background-position: -88px -21px;
+	}
+	.af-ui-form-rating-control[state=current] label[rel='5'].af-ui-form-rating-control-selected {
+		background-position: -88px -42px;
+	}
+	.af-ui-form-rating-control[state=stale] label[rel='5'].af-ui-form-rating-control-selected {
+		background-position: -88px -63px;
+	}
+	.af-ui-form-rating-control[state=expired] label[rel='5'].af-ui-form-rating-control-selected {
+		background-position: -88px -84px;
+	}
+.af-ui-form-ratings-divider {
+	width: 2em;
+	height: 1em;
+}
+.af-ui-drawer-form-notice {
+	float: left;
+	font-size: 0.8em;
+}
+.af-ui-drawer-form-submit {
+	float: right;
+}
+.af-ui-drawer-chart-bars {
+	margin-top: 1em;
+}
+.af-ui-drawer-chart-bar-base {
+	width: 246px;
+	height: 21px;
+	background-image: url(images/chart-base.png);
+	border: solid 1px #cccccc;
+}
+.af-ui-drawer-chart-bar-fill {
+	width: 110px;
+	height: 21px;
+	background-image: url(images/chart-fill.png);
+	border-right: solid 1px #b5c8e0;
+}
+.af-ui-drawer-chart-bar-label {
+	text-align: right;
+	padding-right: 1em;
+}
+.af-ui-drawer-chart-bar-count {
+	font-size: 0.8em;
+	text-align: left;
+	color: #999999;
+	padding-left: 1em;
+}
+.af-ui-form-rating-label {
+	text-align: right;
+}
