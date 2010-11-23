@@ -860,6 +860,10 @@ $messages['br'] = array(
 	'deletequeue-action-queued' => 'Dilammadenn',
 	'deletequeue-action' => 'Kinnig un dilammadenn',
 	'deletequeue-action-title' => 'Kinnig diverkañ "$1"',
+	'deletequeue-action-text' => "Meur a bazenn zo war ar wiki-mañ evit gallout diverkañ pajennoù :
+*Mar kav deoc'h emañ danvez ar bajenn-mañ diouti e c'hallit [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} kinnig ma vo \"diverket raktal''].
+*Mar ne gav ket deoc'h emañ danvez ar bajenn diouzh dezverkoù un diverkadenn brim met emañ \"dellezek da vezañ diverket digudenn\", e c'hallit [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} kinnig ma vo diverket hep tabut].
+*Mar kav deoc'h e c'hall bezañ \"sach-blev\" a-zivout kinnig diverkañ ar bajenn e tlefec'h [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} digeriñ ur gaoz].",
 	'deletequeue-permissions-noedit' => "Ret eo deoc'h bezañ gouest da gemmañ ur bajenn a-benn reiñ d'ur bajenn he statud da zilemel.",
 	'deletequeue-generic-reasons' => "* Abegoù boutinañ
 ** Vandalerezh
