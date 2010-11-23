@@ -63,11 +63,12 @@ class XMLFileConsumer(models.BaseConsumer):
             new_xmlfile()
 
 class XMLFile(object):
-    def __init__(self, input, output, file, bots, **kwargs):
+    def __init__(self, input, output, file, bots, target, **kwargs):
         self.file = file
         self.input = input
         self.output = output
         self.bots = bots
+        self.target = target
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
 
@@ -96,7 +97,7 @@ class XMLFile(object):
                 raw_data = ''.join(raw_data)
                 xml_buffer.write(raw_data)
                 elem = cElementTree.XML(xml_buffer.getvalue())
-                output_editor_information(elem, self.fh, bots=self.bots, destination=self.destination)
+                self.target(elem, self.fh, bots=self.bots, destination=self.destination)
             except SyntaxError, error:
                 print error
                 '''
@@ -159,6 +160,7 @@ def extract_username(contributor, kwargs):
             return elem.text    #.encode(settings.encoding)
     else:
         return None
+
 
 def extract_contributor_id(contributor, kwargs):
     '''
@@ -339,18 +341,15 @@ def run_parse_editors(location, **kwargs):
     tasks = multiprocessing.JoinableQueue()
     consumers = [XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
     for file in files:
-        tasks.put(XMLFile(input, output, file, bots, **kwargs))
+        tasks.put(XMLFile(input, output, file, bots, output_editor_information, **kwargs))
+    print 'The queue contains %s files.' % tasks.qsize()
     for x in xrange(settings.number_of_processes):
         tasks.put(None)
 
-    print tasks.qsize()
     for w in consumers:
         w.start()
 
     tasks.join()
-
-    #chunks = utils.split_list(files, settings.number_of_processes)
-    #pc.build_scaffolding(pc.load_queue, parse_editors, chunks, False, False, **kwargs)
 
 
 def debug_parse_editors(dbname):

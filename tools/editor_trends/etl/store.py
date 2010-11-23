@@ -38,8 +38,9 @@ def store_editors(data_queue, **kwargs):
     @dbname is the name of the MongoDB collection where to store the information.
     '''
     dbname = kwargs.get('dbname', None)
+    colleciton = kwargs.pop('collection')
     mongo = db.init_mongo_db(dbname)
-    collection = mongo['editors']
+    collection = mongo[collection]
     mongo[collection].ensure_index('editor')
     editor_cache = cache.EditorCache(collection)
 
@@ -82,9 +83,9 @@ def load_cache_objects():
     return cache
 
 
-def search_cache_for_missed_editors(dbname):
+def search_cache_for_missed_editors(dbname, collection):
     mongo = db.init_mongo_db(dbname)
-    collection = mongo['editors']
+    collection = mongo[collection]
     editor_cache = cache.EditorCache(collection)
     cache = load_cache_objects()
     for c in cache:

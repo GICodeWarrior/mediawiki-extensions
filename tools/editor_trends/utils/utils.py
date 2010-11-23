@@ -31,12 +31,13 @@ import codecs
 import os
 import ctypes
 import time
+import subprocess
+import sys
+sys.path.append('..')
 
 import configuration
 settings = configuration.Settings()
 import exceptions
-
-settings = configuration.Settings()
 
 try:
     import psyco
@@ -250,6 +251,11 @@ def construct_filename(name, extension):
         return name
 
 
+def delete_file(location, filename):
+    if check_file_exists(location, filename):
+        os.remove(os.path.join(location, filename))
+
+
 def check_file_exists(location, filename):
     if hasattr(filename, '__call__'):
         filename = construct_filename(filename, '.bin')
@@ -350,6 +356,41 @@ def retrieve_file_list(location, extension, mask=None):
     return files
 
 
+def zip_archive(location, source, compression='7z'):
+    '''
+    @path is the absolute path to the zip program
+    @location is the directory where to store the compressed file
+    @source is the name of the zipfile
+    '''
+    output, ext = source.split('.')
+    output = output + '.7z'
+    path = settings.path_ziptool
+    if settings.platform == 'Windows':
+        p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'a', '-scsUTF-8', '-t%s' % compression, '%s\\%s' % (location,output), '%s\\%s' % (location,source)], shell=True).wait()
+    elif settings.platform == 'Linux':
+        raise NotImplementedError
+    elif settings.platform == 'OSX':
+        raise NotImplementedError
+    else:
+        raise exceptions.PlatformNotSupportedError
+
+
+def zip_extract(path, location, source):
+    '''
+    @path is the absolute path to the zip program
+    @location is the directory where to store the compressed file
+    @source is the name of the zipfile
+    '''
+    if settings.platform == 'Windows':
+        p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)], shell=True).wait()
+    elif settings.platform == 'Linux':
+        raise NotImplementedError
+    elif settings.platform == 'OSX':
+        raise NotImplementedError
+    else:
+        raise exceptions.PlatformNotSupportedError
+
+
 def merge_list(datalist):
     merged = []
     for d in datalist:
@@ -421,4 +462,8 @@ def humanize_time_difference(seconds_elapsed):
 
 
 if __name__ == '__main__':
-    debug()
+    tool = settings.determine_ziptool()
+    path = settings.detect_installed_program(tool)
+    location = os.path.join(settings.input_location, 'en', 'wiki')
+    source = 'enwiki-20100916-stub-meta-history.xml'
+    zip_archive(path, location, source)

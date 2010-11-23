@@ -22,28 +22,48 @@ import os
 import ConfigParser
 
 from utils import utils
-
+import languages
 
 def create_configuration(settings, args):
-    config = ConfigParser.RawConfigParser()
+    force = getattr(args, 'force', False)
+    if not os.path.exists('wiki.cfg') or force:
+        config = ConfigParser.RawConfigParser()
+        project = None
+        language = None
+        language_map = languages.language_map()
+        working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
+        input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.\n' % settings.input_location)
 
-    working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.' % os.getcwd())
-    input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.' % settings.input_location)
-    input_location = input_location if len(input_location) > 0 else settings.input_location
-    working_directory = working_directory if len(working_directory) > 0 else os.getcwd() 
-    
-    config = ConfigParser.RawConfigParser()
-    config.add_section('file_locations')
-    config.set('file_locations', 'working_directory', working_directory)
-    config.set('file_locations', 'input_location', input_location)
+        while project not in settings.projects.keys():
+            project = raw_input('Please indicate which project you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % settings.projects[args.project].capitalize())
+            project = project if len(project) > 0 else args.project
+            if project not in settings.projects.keys():
+                print 'Valid choices for a project are: %s' % ','.join(settings.projects.keys())
 
-    fh = utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
-    config.write(fh)
-    fh.close()    
-    
-    settings.working_directory = config.get('file_locations', 'working_directory')
-    settings.input_location = config.get('file_locations', 'input_location')
-    return settings
+        while language not in languages.MAPPING:
+            language = raw_input('Please indicate which language of project %s you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % (settings.projects[project].capitalize(), language_map[args.language]))
+            if len(language) == 0:
+                language = language_map[args.language]
+            language = language if language in languages.MAPPING else args.language
+
+        input_location = input_location if len(input_location) > 0 else settings.input_location
+        working_directory = working_directory if len(working_directory) > 0 else os.getcwd()
+
+        config = ConfigParser.RawConfigParser()
+        config.add_section('file_locations')
+        config.set('file_locations', 'working_directory', working_directory)
+        config.set('file_locations', 'input_location', input_location)
+        config.add_section('wiki')
+        config.set('wiki', 'project', project)
+        config.set('wiki', 'language', language)
+
+        fh = utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
+        config.write(fh)
+        fh.close()
+
+        settings.working_directory = config.get('file_locations', 'working_directory')
+        settings.input_location = config.get('file_locations', 'input_location')
+        return settings
 
 
 if __name__ == '__main__':

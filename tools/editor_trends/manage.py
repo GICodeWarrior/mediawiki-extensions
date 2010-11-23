@@ -19,7 +19,6 @@ __version__ = '0.1'
 
 import os
 import sys
-import subprocess
 import datetime
 from argparse import ArgumentParser
 from argparse import RawTextHelpFormatter
@@ -44,14 +43,14 @@ import config
 class Timer(object):
     def __init__(self):
         self.t0 = datetime.datetime.now()
-    
+
     def stop(self):
         self.t1 = datetime.datetime.now()
-        
+
     def elapsed(self):
         self.stop()
         print 'Processing time: %s' % (self.t1 - self.t0)
-        
+
 
 def get_value(args, key):
     return getattr(args, key, None)
@@ -69,12 +68,12 @@ def determine_default_language():
 def retrieve_projectname(args):
     language_code = retrieve_language(args)
     if language_code == None:
-        print 'Entered language: %s is not a valid Wikipedia language' % get_value(args, 'language')
+        print 'Entered language: %s is not a valid Wikimedia language' % get_value(args, 'language')
         sys.exit(-1)
     project = retrieve_project(args)
 
     if project == None:
-        print 'Entered project: %s is not valid Wikipedia project.' % get_value(args, 'project')
+        print 'Entered project: %s is not valid Wikimedia Foundation project.' % get_value(args, 'project')
         sys.exit(-1)
     if project == 'commonswiki':
         return project
@@ -91,7 +90,7 @@ def retrieve_language(args):
 def retrieve_project(args):
     project = get_value(args, 'project')
     if project != 'wiki':
-        project = settings.WIKIMEDIA_PROJECTS.get(project, None)
+        project = settings.projects.get(project, None)
     return project
 
 
@@ -107,9 +106,15 @@ def determine_file_locations(args):
     locations['language_code'] = language_code
     locations['language'] = get_value(args, 'language')
     locations['location'] = os.path.join(location, language_code, project)
+    locations['chunks'] = os.path.join(locations['location'], 'chunks')
+    locations['txt'] = os.path.join(locations['location'], 'txt')
+    locations['sorted'] = os.path.join(locations['location'], 'sorted')
+    locations['dbready'] = os.path.join(locations['location'], 'dbready')
     locations['project'] = project
     locations['full_project'] = retrieve_projectname(args)
     locations['filename'] = generate_wikidump_filename(project, args)
+    locations['collection'] = get_value(args, 'collection')
+    locations['directories'] = [locations['chunks'], locations['location'], locations['txt'], locations['sorted'], locations['dbready']]
     return locations
 
 
@@ -119,7 +124,7 @@ def show_settings(args, **kwargs):
     language = kwargs.pop('language')
     location = kwargs.pop('location')
     project = project.title()
-    language_map = utils.invert_dict(languages.MAPPING)
+    language_map = languages.language_map()
     print 'Project: %s' % (project)
     print 'Language: %s / %s' % (language_map[language_code].decode(settings.encoding), language.decode(settings.encoding))
     print 'Input directory: %s' % location
@@ -163,29 +168,15 @@ def chunker_launcher(args, **kwargs):
         sys.exit(retcode)
     chunker.split_file(location, file, project, language_code, language)
     timer.elapsed()
-    #settings.set_custom_settings(xml_namespace='http://www.mediawiki.org/xml/export-0.3/')
 
 
 def launch_zip_extractor(args, location, file):
     timer = Timer()
-    path = settings.detect_installed_program('7zip')
-    source = os.path.join(location, file)
-    p = None
-
-    if settings.platform == 'Windows':
-        p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)], shell=True).wait()
-    elif settings.platform == 'Linux':
-        raise NotImplementedError
-    elif settings.platform == 'OSX':
-        raise NotImplementedError
-    else:
-        raise exceptions.PlatformNotSupportedError
+    utils.zip_extract(location, file, compression='7z')
     timer.elapsed()
-    return p
 
 
 def extract_launcher(args, **kwargs):
-    print 'mongodb_script_launcher'
     timer = Timer()
     location = kwargs.pop('location')
     language_code = kwargs.pop('language_code')
@@ -199,10 +190,20 @@ def sort_launcher(args, **kwargs):
     location = kwargs.pop('location')
     input = os.path.join(location, 'txt')
     output = os.path.join(location, 'sorted')
+    final_output = os.path.join(location, 'dbready')
     dbname = kwargs.pop('full_project')
     loader.mergesort_launcher(input, output)
-    filename = loader.mergesort_external_launcher(dbname, output, output)
-    loader.store_editors(output, filename, dbname, 'editors')
+    loader.mergesort_external_launcher(dbname, output, final_output)
+    timer.elapsed()
+
+
+def store_launcher(args, **kwargs):
+    timer = Timer()
+    location = kwargs.pop('location')
+    input = os.path.join(location, 'dbready')
+    dbname = kwargs.pop('full_project')
+    collection = kwargs.pop('collection')
+    loader.store_editors(input, dbname, collection)
     timer.elapsed()
 
 
@@ -289,6 +290,8 @@ def main():
 
     parser_config = subparsers.add_parser('config', help='The config sub command allows you set the data location of where to store files.')
     parser_config.set_defaults(func=config_launcher)
+    parser_config.add_argument('-f', '--force', action='store_true',
+                               help='Reconfigure Editor Toolkit (this will replace wiki.cfg')
 
     parser_download = subparsers.add_parser('download', help='The download sub command allows you to download a Wikipedia dump file.')
     parser_download.set_defaults(func=dump_downloader_launcher)
@@ -296,11 +299,17 @@ def main():
     parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
     parser_split.set_defaults(func=chunker_launcher)
 
+    parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
+    parser_create.set_defaults(func=extract_launcher)
+
     parser_sort = subparsers.add_parser('sort', help='By presorting the data, significant processing time reducations are achieved.')
     parser_sort.set_defaults(func=sort_launcher)
 
-    parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
-    parser_create.set_defaults(func=extract_launcher)
+    parser_store = subparsers.add_parser('store', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
+    parser_store.set_defaults(func=store_launcher)
+    parser_store.add_argument('-c', '--collection', action='store',
+                              help='Name of MongoDB collection',
+                              default='editors')
 
     parser_transform = subparsers.add_parser('transform', help='Transform the raw datatabe to an enriched dataset that can be exported.')
     parser_transform.set_defaults(func=transformer_launcher)
@@ -337,10 +346,9 @@ def main():
     detect_python_version()
     about()
     args = parser.parse_args()
-    if not os.path.exists('wiki.cfg'):
-        config.create_configuration(settings, args)
+    config.create_configuration(settings, args)
     locations = determine_file_locations(args)
-    settings.verify_environment([locations['location']])
+    settings.verify_environment(locations['directories'])
     show_settings(args, **locations)
     #locations['settings'] = settings
     args.func(args, **locations)
@@ -348,5 +356,4 @@ def main():
 
 
 if __name__ == '__main__':
-    #args = ['download', '-l', 'Russian']
     main()

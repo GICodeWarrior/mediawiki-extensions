@@ -32,7 +32,8 @@ import process_constructor as pc
 
 
 
-def store_editors(input, filename, dbname, collection):
+def store_editors(input, dbname, collection):
+    filename = utils.retrieve_file_list(input, 'txt', mask=None)[0]
     fh = utils.create_txt_filehandle(input, filename, 'r', settings.encoding)
     mongo = db.init_mongo_db(dbname)
     collection = mongo[collection]
@@ -70,7 +71,7 @@ def store_editors(input, filename, dbname, collection):
     utils.store_object(editors, settings.binary_location, 'editors')
 
 
-def mergesort_external_launcher(dbname, input, output):
+def mergesort_external_launcher(dbname, input, intermediate_output, output):
     files = utils.retrieve_file_list(input, 'txt', mask='')
     x = 0
     maxval = 99999
@@ -79,11 +80,12 @@ def mergesort_external_launcher(dbname, input, output):
         maxval = round(len(files) / x)
     chunks = utils.split_list(files, int(x))
     '''1st iteration external mergesort'''
+    if len(chunks) < 2:
+        intermediate_output = output
     for chunk in chunks:
         filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.encoding) for file in chunks[chunk]]
-        filename = sort.merge_sorted_files(output, filehandles, chunk)
+        filename = sort.merge_sorted_files(intermediate_output, filehandles, chunk)
         filehandles = [fh.close() for fh in filehandles]
-#        pass
     '''2nd iteration external mergesort, if necessary'''
     if len(chunks) > 1:
         files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
@@ -91,7 +93,7 @@ def mergesort_external_launcher(dbname, input, output):
         filename = sort.merge_sorted_files(output, filehandles, 'final')
         filehandles = [fh.close() for fh in filehandles]
         filename = 'merged_final.txt'
-    return filename
+        
 
 
 def mergesort_feeder(task_queue, **kwargs):
@@ -134,4 +136,6 @@ if __name__ == '__main__':
     output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
     dbname = 'enwiki'
     #mergesort_launcher(input, output)
-    mergesort_external_launcher(dbname, output, output)
+    final_output = os.path.join(settings.input_location, 'en', 'wiki', 'dbready')
+    mergesort_external_launcher(dbname, output, final_output)
+    store_editors(input, dbname, collection)

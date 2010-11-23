@@ -28,8 +28,10 @@ def convert_html_entities(text):
 
 def extract_text(elem, kwargs):
     if elem != None and elem.text != None:
-        return elem.text.decode(settings.encoding)
-    return None
+        #try:
+        return elem.text    #.decode(settings.encoding)
+        #except UnicodeDecodeError:
+        #return None
 
 
 def retrieve_xml_node(xml_nodes, name):

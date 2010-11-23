@@ -24,6 +24,8 @@ Gothic and Birmese are not yet supported, see rows 450 and 554.
 '''
 
 from utils import ordered_dict as odict
+from utils import utils
+
 MAPPING = odict.OrderedDict([
 (u'English','en'),
 (u'German','de'),
@@ -605,3 +607,6 @@ MAPPING = odict.OrderedDict([
 (u'Kanuri','kr'),
 (u'Otsiherero','hz'),
 ])
+
+def language_map():
+    return utils.invert_dict(MAPPING)
