@@ -28,9 +28,9 @@ if( isset( $_SERVER['SERVER_ADDR'] ) ) $wgEmailPageAllowRemoteAddr[] = $_SERVER[
 
 $dir = dirname( __FILE__ );
 $wgAutoloadClasses['SpecialEmailPage'] = "$dir/EmailPage_body.php";
-$wgExtensionMessagesFiles['EmailPage'] = "$dir/EmailPage.i18n.php";
-$wgExtensionAliasesFiles['EmailPage']  = "$dir/EmailPage.alias.php";
-$wgSpecialPages['EmailPage']           = "SpecialEmailPage";
+$wgExtensionMessagesFiles['E-mailPage'] = "$dir/EmailPage.i18n.php";
+$wgExtensionAliasesFiles['E-mailPage']  = "$dir/EmailPage.alias.php";
+$wgSpecialPages['E-mailPage']           = "SpecialEmailPage";
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
@@ -57,8 +57,8 @@ if( $wgEmailPageActionLink )  {
 function wfEmailPageToolboxLink() {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if ( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
-		$url = htmlspecialchars( SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) ) );
-		echo( "<li><a href=\"$url\">" . wfMsg( 'emailpage' ) . "</a></li>" );
+		$url = htmlspecialchars( SpecialPage::getTitleFor( 'E-mailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) ) );
+		echo( "<li><a href=\"$url\">" . wfMsg( 'e-mailpage' ) . "</a></li>" );
 	}
 	return true;
 }
@@ -66,7 +66,7 @@ function wfEmailPageToolboxLink() {
 function wfEmailPageActionLink( $skin, &$actions ) {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
-		$url = SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) );
+		$url = SpecialPage::getTitleFor( 'E-mailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) );
 		$actions['email'] = array( 'text' => wfMsg( 'email' ), 'class' => false, 'href' => $url );
 	}
 	return true;
@@ -75,7 +75,7 @@ function wfEmailPageActionLink( $skin, &$actions ) {
 function wfEmailPageActionLinkVector( $skin, &$actions ) {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
-		$url = SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) );
+		$url = SpecialPage::getTitleFor( 'E-mailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) );
 		$actions['views']['email'] = array( 'text' => wfMsg( 'email' ), 'class' => false, 'href' => $url );
 	}
 	return true;

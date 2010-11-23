@@ -18,7 +18,7 @@ class SpecialEmailPage extends SpecialPage {
 
 	public function __construct() {
 		global $wgEmailPageGroup;
-		parent::__construct( 'EmailPage', $wgEmailPageGroup );
+		parent::__construct( 'E-mailPage', $wgEmailPageGroup );
 	}
 
 	/**
@@ -30,7 +30,7 @@ class SpecialEmailPage extends SpecialPage {
 
 		$db = wfGetDB( DB_SLAVE );
 		$param = str_replace( '_', ' ', $param );
-		wfLoadExtensionMessages( 'EmailPage' );
+		wfLoadExtensionMessages( 'E-mailPage' );
 		$this->setHeaders();
 
 		# Get info from request or set to defaults
@@ -54,7 +54,7 @@ class SpecialEmailPage extends SpecialPage {
 		if( $wgRequest->getText( 'ea-send', false ) ) return $this->send();
 
 		# Render form
-		$special = SpecialPage::getTitleFor( 'EmailPage' );
+		$special = SpecialPage::getTitleFor( 'E-mailPage' );
 		$wgOut->addHTML( Xml::element( 'form', array(
 			'class'  => 'EmailPage',
 			'action' => $special->getLocalURL( 'action=submit' ),
