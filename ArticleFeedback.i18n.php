@@ -2290,6 +2290,7 @@ Maaari mo itong antasang muli.",
 
 /** Turkish (Türkçe)
  * @author CnkALTDS
+ * @author Emperyan
  * @author Joseph
  * @author Karduelis
  */
@@ -2316,6 +2317,7 @@ Lütfen daha sonra yeniden deneyin.',
 	'articlefeedback-alpha-results-show' => '(Sonuçlar gizlendi. Sonuçları <span class="showlink">göster</span>.)',
 	'articlefeedback-alpha-results-hide' => '(<span class="hidelink">Sonuçları gizle</span>)',
 	'articlefeedback-alpha-survey-answer-whyrated-sharing-opinion' => 'Fikirlerimi paylaşmayı seviyorum',
+	'articlefeedback-alpha-survey-answer-whyrated-other' => 'Diğer',
 	'articlefeedback-alpha-survey-question-useful-iffalse' => 'Neden?',
 	'articlefeedback-alpha-survey-submit' => 'Gönder',
 	'articlefeedback-alpha-survey-title' => 'Lütfen birkaç soruya yanıt verin',
