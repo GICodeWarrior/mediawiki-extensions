@@ -17,93 +17,94 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-         die( 'This file is a MediaWiki extension, it is not a valid entry point' );
+	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 
-
 $wgExtensionCredits['parserhook'][] = array(
-    'name'        => 'SNMPquery',
-    'author'      => 'Rudy Rucker, Jr.',
-    'url'         => 'http://www.mediawiki.org/wiki/Extension:SNMPquery',
-    'description' => 'Add SNMP queries to your wiki!  Example: What is the uptime of your box?',
-    'version'     => '0.1',
-    );
+	'name'        => 'SNMPquery',
+	'author'      => 'Rudy Rucker, Jr.',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:SNMPquery',
+	'description' => 'Add SNMP queries to your wiki!  Example: What is the uptime of your box?',
+	'version'     => '0.1',
+	);
 
 # Define a setup function
 $wgHooks['ParserFirstCallInit'][] = 'SNMP_Setup';
 
 # Add a hook to initialise the magic word
-$wgHooks['LanguageGetMagic'][]       = 'SNMP_Magic';
+$wgHooks['LanguageGetMagic'][] = 'SNMP_Magic';
 
 function SNMP_Magic( &$magicWords, $langCode ) {
-    $magicWords['snmpget'] = array( 0, 'snmpget' );
-    $magicWords['snmpwalk'] = array( 0, 'snmpwalk' );
-    return true;
+	$magicWords['snmpget'] = array( 0, 'snmpget' );
+	$magicWords['snmpwalk'] = array( 0, 'snmpwalk' );
+	return true;
 }
 
 function SNMP_Setup() {
-    global $wgParser;
-    # Set a function hook associating the "example" magic word with our function
-    $wgParser->setFunctionHook( 'snmpget', 'SNMPget_Render' );
-    $wgParser->setFunctionHook( 'snmpwalk', 'SNMPwalk_Render' );
-    $wgParser->setHook( 'snmp', 'SNMP_Tag');
-    return true;
+	global $wgParser;
+	# Set a function hook associating the "example" magic word with our function
+	$wgParser->setFunctionHook( 'snmpget', 'SNMPget_Render' );
+	$wgParser->setFunctionHook( 'snmpwalk', 'SNMPwalk_Render' );
+	$wgParser->setHook( 'snmp', 'SNMP_Tag' );
+	return true;
 }
 
 function SNMPwalk_Render( &$parser, $snmphost = '127.0.0.1', $com = 'public',
-                          $snmpoid = 'SNMPv2-SMI::mib-2.1.6.0', $prefix, $suffix) {
-    $arr = snmpwalk($snmphost, $com, $snmpoid, 50000);
-    $result='';
-    foreach ($arr as $value) {
-        if (isset($prefix))
-            $result .= "$prefix ";
-        $result .= clean_Result($value) . " ";
-        if (isset($suffix))
-            $result .= $suffix;
-    }
-    return $result;
+							$snmpoid = 'SNMPv2-SMI::mib-2.1.6.0', $prefix, $suffix ) {
+	$arr = snmpwalk( $snmphost, $com, $snmpoid, 50000 );
+	$result = '';
+	foreach ( $arr as $value ) {
+		if ( isset( $prefix ) ) {
+			$result .= "$prefix ";
+		}
+		$result .= clean_Result( $value ) . " ";
+		if ( isset( $suffix ) ) {
+			$result .= $suffix;
+		}
+	}
+	return $result;
 }
 
 function SNMPget_Render( &$parser, $snmphost = '127.0.0.1', $com = 'public',
-                         $snmpoid = 'SNMPv2-SMI::mib-2.1.6.0', $prefix = '') {
-    $result = snmpget($snmphost, $com, $snmpoid, 50000);
-    if (! $result) {
-        return false;
-    }
-    return ("$prefix " . clean_Result($result));
+							$snmpoid = 'SNMPv2-SMI::mib-2.1.6.0', $prefix = '' ) {
+	$result = snmpget( $snmphost, $com, $snmpoid, 50000 );
+	if ( !$result ) {
+		return false;
+	}
+	return ( "$prefix " . clean_Result( $result ) );
 }
 
-function clean_Result($snmpvalue) {
-    if ($snmpvalue) {
-        $snmpvalue=preg_replace('/STRING: "(.*)"/', '${1}', $snmpvalue);
-        $snmpvalue=preg_replace('/Timeticks: \((\d+)\) (.*)/', '${2}', $snmpvalue);
-        $snmpvalue=preg_replace('/Gauge: (.*)$/', '${1}', $snmpvalue);
-        $snmpvalue=preg_replace('/INTEGER: (.*)$/', '${1}', $snmpvalue);
-        return $snmpvalue;
-    }
-    return false;
+function clean_Result( $snmpvalue ) {
+	if ( $snmpvalue ) {
+		$snmpvalue = preg_replace( '/STRING: "(.*)"/', '${1}', $snmpvalue );
+		$snmpvalue = preg_replace( '/Timeticks: \((\d+)\) (.*)/', '${2}', $snmpvalue );
+		$snmpvalue = preg_replace( '/Gauge: (.*)$/', '${1}', $snmpvalue );
+		$snmpvalue = preg_replace( '/INTEGER: (.*)$/', '${1}', $snmpvalue );
+		return $snmpvalue;
+	}
+	return false;
 }
 
 /* doesn't work well for templates, eg <snmp host="{{{ip}}}" />  */
 function SNMP_Tag ( $text, $args, &$parser ) {
-    #$parser->disableCache();
-    $attr = array();
-    $snmphost = '127.0.0.1';
-    $com = 'public';
-    $snmpoid = 'system.SysContact.0';
-    $mode = 'get';
-    foreach( $args as $name => $value ) {
-        if ( $name == 'host')
-                $snmphost=$value;
-            elseif ( $name == 'oid')
-                $snmpoid=$value;
-            elseif ( $name == 'community')
-                $com=$value;
-            elseif ( $name == 'mode')
-                $mode=$value;
-    }
-    if ($mode == 'walk')
-        return SNMPwalk_Render(&$parser, $snmphost, $com, $snmpoid, $text);
-    else
-        return SNMPget_Render(&$parser, $snmphost, $com, $snmpoid, $text);
+	$snmphost = '127.0.0.1';
+	$com = 'public';
+	$snmpoid = 'system.SysContact.0';
+	$mode = 'get';
+	foreach ( $args as $name => $value ) {
+		if ( $name == 'host' ) {
+			$snmphost = $value;
+		} elseif ( $name == 'oid' ) {
+			$snmpoid = $value;
+		} elseif ( $name == 'community' ) {
+			$com = $value;
+		} elseif ( $name == 'mode' ) {
+			$mode = $value;
+		}
+	}
+	if ( $mode == 'walk' ) {
+		return SNMPwalk_Render( &$parser, $snmphost, $com, $snmpoid, $text );
+	} else {
+		return SNMPget_Render( &$parser, $snmphost, $com, $snmpoid, $text );
+	}
 }
