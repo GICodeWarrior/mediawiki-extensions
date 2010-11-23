@@ -234,6 +234,7 @@ $messages['bs'] = array(
 	'invitations-desc' => 'Omogućava [[Special:Invitations|upravljanje novim mogućnostima]] putem pozivanja',
 	'invitations-invitedlist-none' => 'Niste pozvani da koristite neku od mogućnosti softvera za pozivanje.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Jedan poziv|$1 poziva}} dostupno)',
+	'invitations-pagetitle' => 'Mogućnosti softvera na bazi pozivnica',
 	'invitations-uninvitedlist-description' => 'Nemate pristup do ovih drugih osobina softvera samo za pozivanje.',
 	'invitations-feature-pagetitle' => 'Upravljanje pozivima - $1',
 	'invitations-feature-access' => 'Trenutno imate pristup za upotrebu <i>$1</i>.',
