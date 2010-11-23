@@ -513,10 +513,13 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author CnkALTDS
+ * @author Emperyan
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Bu kategoriye sayfa ekle',
 	'articletocategory2-create-article-under-category-button' => 'Oluştur',
+	'articletocategory2-create-category-under-category-text' => 'Bu kategoriye bir kategori ekle',
 	'articletocategory2-create-category-under-category-button' => 'Oluştur',
 );
 
