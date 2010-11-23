@@ -1378,6 +1378,7 @@ $messages['te'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Karduelis
  */
 $messages['tr'] = array(
@@ -1385,8 +1386,17 @@ $messages['tr'] = array(
 	'article-comments-name-string' => 'Adı',
 	'article-comments-name-field' => 'Adı (gerekli)',
 	'article-comments-url-field' => 'Web sitesi:',
+	'article-comments-url-string' => 'Bağlantı (URL)',
 	'article-comments-comment-string' => 'Açıklama',
+	'article-comments-comment-field' => 'Yorum:',
 	'article-comments-submit-button' => 'Gönder',
+	'article-comments-leave-comment-link' => 'Yorum bırak ...',
+	'article-comments-required-field' => '"$1" alanı gerekiyor.',
+	'article-comments-talk-page-starter' => '<noinclude>"[[$1]]" yazısına yapılan yorumlar 
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-comment-missing-name-parameter' => 'Eksik isim',
+	'article-comments-comment-missing-date-parameter' => 'Eksik yorum tarihi',
 );
 
 /** Ukrainian (Українська)
