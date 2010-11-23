@@ -66,11 +66,11 @@ class SpecialEmailPage extends SpecialPage {
 		$from = "<option>$wgEmergencyContact</option>";
 		$ue = $wgUser->getEmail();
 		if( $wgUser->isValidEmailAddr( $ue ) ) $from = "<option>$ue</option>$from"; else $ue = "";
-		$wgOut->addHTML( "<tr id=\"ea-from\"><th align=\"right\">" . wfMsg( 'ea-from' ) . ":</th>" );
+		$wgOut->addHTML( "<tr id=\"ea-from\"><th align=\"right\">" . wfMsg( 'ea-from' ) . "</th>" );
 		$wgOut->addHTML( "<td><select name=\"ea-from\">$from</select></td></tr>\n" );
 
 		# To
-		$wgOut->addHTML( "<tr id=\"ea-to\"><th align=\"right\" valign=\"top\">" . wfMsg( 'ea-to' ) . ":</th>" );
+		$wgOut->addHTML( "<tr id=\"ea-to\"><th align=\"right\" valign=\"top\">" . wfMsg( 'ea-to' ) . "</th>" );
 		$wgOut->addHTML( "<td><textarea name=\"ea-to\" rows=\"2\" style=\"width:100%\">{$this->to}</textarea>" );
 		$wgOut->addHTML( "<br /><small><i>(" . wfMsg( 'ea-to-info' ) . ")</i></small>" );
 
@@ -90,7 +90,7 @@ class SpecialEmailPage extends SpecialPage {
 		$wgOut->addHTML( "</td></tr>" );
 
 		# Cc
-		$wgOut->addHTML( "<tr id=\"ea-cc\"><th align=\"right\">" . wfMsg( 'ea-cc' ) . ":</th>" );
+		$wgOut->addHTML( "<tr id=\"ea-cc\"><th align=\"right\">" . wfMsg( 'ea-cc' ) . "</th>" );
 		$wgOut->addHTML( "<td>" . 
 			Xml::element( 'input', array(
 				'type'  => 'text',
@@ -101,7 +101,7 @@ class SpecialEmailPage extends SpecialPage {
 		. "</td></tr>" );
 
 		# Subject
-		$wgOut->addHTML( "<tr id=\"ea-subject\"><th align=\"right\">" . wfMsg( 'ea-subject' ) . ":</th>" );
+		$wgOut->addHTML( "<tr id=\"ea-subject\"><th align=\"right\">" . wfMsg( 'ea-subject' ) . "</th>" );
 		$wgOut->addHTML( "<td>" . 
 			Xml::element( 'input', array(
 				'type'  => 'text',
@@ -112,7 +112,7 @@ class SpecialEmailPage extends SpecialPage {
 		. "</td></tr>" );
 
 		# Message
-		$wgOut->addHTML( "<tr id=\"ea-message\"><th align=\"right\" valign=\"top\">" . wfMsg( 'ea-message' ) . ":</th>" );
+		$wgOut->addHTML( "<tr id=\"ea-message\"><th align=\"right\" valign=\"top\">" . wfMsg( 'ea-message' ) . "</th>" );
 		$wgOut->addHTML( "<td><textarea name=\"ea-message\" rows=\"3\" style=\"width:100%\">{$this->message}</textarea>" );
 		$wgOut->addHTML( "<br /><i><small>(" . wfMsg( 'ea-message-info' ) . ")</small></i></td></tr>" );
 
@@ -133,7 +133,7 @@ class SpecialEmailPage extends SpecialPage {
 		}
 		$db->freeResult( $res );
 		if( $options ) {
-			$wgOut->addHTML( "<tr id=\"ea-css\"><th align=\"right\">" . wfMsg( 'ea-style' ) . ":</th><td>" );
+			$wgOut->addHTML( "<tr id=\"ea-css\"><th align=\"right\">" . wfMsg( 'ea-style' ) . "</th><td>" );
 			$wgOut->addHTML( "<select name=\"ea-css\"><option />$options</select>" );
 			$wgOut->addHTML( " <small><i>(" . wfMsg( 'ea-selectcss' ) . ")</i></small></td></tr>" );
 		}
@@ -150,7 +150,7 @@ class SpecialEmailPage extends SpecialPage {
 			}
 			$db->freeResult( $res );
 			if( $options ) {
-				$wgOut->addHTML( "<tr id=\"ea-data\"><th align=\"right\">" . wfMsg( 'ea-data' ) . ":</th><td>" );
+				$wgOut->addHTML( "<tr id=\"ea-data\"><th align=\"right\">" . wfMsg( 'ea-data' ) . "</th><td>" );
 				$wgOut->addHTML( "<select name=\"ea-record\"><option />$options</select>" );
 				$wgOut->addHTML( " <small><i>(" . wfMsg( 'ea-selectrecord' ) . ")</i></small></td></tr>" );
 			}
