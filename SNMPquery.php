@@ -103,8 +103,8 @@ function SNMP_Tag ( $text, $args, &$parser ) {
 		}
 	}
 	if ( $mode == 'walk' ) {
-		return SNMPwalk_Render( &$parser, $snmphost, $com, $snmpoid, $text );
+		return SNMPwalk_Render( $parser, $snmphost, $com, $snmpoid, $text );
 	} else {
-		return SNMPget_Render( &$parser, $snmphost, $com, $snmpoid, $text );
+		return SNMPget_Render( $parser, $snmphost, $com, $snmpoid, $text );
 	}
 }
