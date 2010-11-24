@@ -163,7 +163,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			}
 		}
 		// Instructions
-		$wgOut->addHTML( Xml::tags( 'p', null, wfMsg( 'fundraiserstats-instructions' ) ) );
+		$wgOut->addWikiMsg( 'fundraiserstats-instructions' );
 
 		// Tabs
 		$first = true;
