@@ -41,10 +41,32 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jon Harald Søby
  */
 $messages['qqq'] = array(
+	'ea-from' => '{{Identical|From}}',
+	'ea-to' => '{{Identical|To}}',
 	'ea-send' => '{{Identical|Send}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'e-mailpage' => 'E-posbladsy',
+	'ea-compose' => 'Stel inhoud saam',
+	'ea-show' => 'Wys lys van ontvangers',
+	'ea-from' => 'Van:',
+	'ea-to' => 'Aan:',
+	'ea-cc' => 'CC:',
+	'ea-send' => 'Stuur',
+	'ea-subject' => 'Onderwerp:',
+	'ea-message' => 'Boodskap:',
+	'ea-style' => 'Styl:',
+	'ea-selectcss' => 'U kan \'n "stylesheet" kies',
+	'ea-data' => 'Data',
+	'ea-allusers' => 'Alle gebruikers',
 );
 
 /** Arabic (العربية)
@@ -93,9 +115,20 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
+	'e-mailpage' => 'Даслаць старонку па электроннай пошце',
+	'ea-desc' => 'Дасылае HTML-старонку на адрас электроннай пошты ці групу адрасоў, з выкарыстаньнем [http://phpmailer.sourceforge.net phpmailer]',
+	'ea-heading' => 'Адпраўка старонкі «[[$1]]» па электроннай пошце',
+	'ea-group-info' => 'Дадаткова Вы можаце даслаць старонку сябрам групы',
+	'ea-pagesend' => 'Старонка «$1» дасланая з $2',
+	'ea-nopage' => 'Ня выбраныя старонкі для адпраўкі. Калі ласка, выкарыстоўвайце спасылку на электронную пошту ў бакавой панэлі ці ў дзеяньнях старонкі.',
+	'ea-norecipients' => 'Ня знойдзеныя слушныя адрасы электроннай пошты!',
+	'ea-listrecipients' => '{{PLURAL:$1|Атрымальнік|Атрымальнікі}}',
+	'ea-error' => "'''Памылка адпраўкі [[$1]]:''' ''$2''",
 	'ea-from' => 'Ад:',
 	'ea-to' => 'Да:',
 	'ea-selectcss' => 'Вы можаце выбраць табліцу стыляў',
@@ -208,17 +241,8 @@ $messages['de'] = array(
 	'ea-style' => 'Stil:',
 	'ea-selectcss' => 'Stylesheet auswählen:',
 	'ea-data' => 'Daten',
-	'ea-selectrecord' => 'Datengruppe auswählen (falls vorhanden):',
+	'ea-selectrecord' => 'Diese Vorlagen können genutzt werden, um in der Nachricht vorhandene Felder zu vervollständigen:',
 	'ea-allusers' => 'Alle Benutzer',
-);
-
-/** German (Deutsch)
- * @author Church of emacs
- * @author Leithian
- * @author kghbln
- */
-$messages['de-formal'] = array(
-	'ea-nopage' => "Bitte geben Sie eine Seite zum Versenden an, bspw. \"[[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]]\".",
 );
 
 /** Esperanto (Esperanto)
@@ -241,11 +265,13 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'e-mailpage' => 'Envoyer l’article par courriel',
 	'ea-desc' => 'Envoie le rendu d’une page HTML à une adresse électronique où à une liste d’adresses en utilisant [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading' => '=== Envoi de la page [[$1]] par courrier électronique ===',
+	'ea-group-info' => 'De plus, vous pouvez envoyer la page aux membres d’un groupe',
 	'ea-pagesend' => 'Page « $1 » envoyée depuis $2',
 	'ea-nopage' => 'Veuillez spécifier une page à envoyer, par exemple [[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]]',
 	'ea-norecipients' => 'Aucune adresse courriel de trouvée !',
@@ -255,10 +281,19 @@ $messages['fr'] = array(
 	'ea-sent' => "L'article [[$1]] a été envoyé avec succès à '''$2''' {{PLURAL:$2|destinataire|destinataires}} par [[User:$3|$3]].",
 	'ea-compose' => 'Composer le contenu',
 	'ea-show' => 'Visionner les destinataires',
+	'ea-from' => 'De :',
+	'ea-to' => 'À :',
+	'ea-to-info' => 'Les adresses électroniques peuvent être séparées par un ou plusieurs point virgule, virgule, astérisque ou caractère de nouvelle ligne',
+	'ea-cc' => 'Copie :',
 	'ea-send' => 'Envoyer !',
-	'ea-subject' => 'Entrer une ligne « objet » pour le courriel',
-	'ea-message' => 'Ajouter le contenu au début avec un message facultatif (texte wiki)',
-	'ea-selectcss' => 'Sélectionner une feuille de style CSS',
+	'ea-subject' => 'Objet :',
+	'ea-message' => 'Message :',
+	'ea-message-info' => 'Faire précéder le contenu d’un message facultatif en wikitexte',
+	'ea-style' => 'Style :',
+	'ea-selectcss' => 'Vous pouvez sélectionner une feuille de style',
+	'ea-data' => 'Données',
+	'ea-selectrecord' => 'Ces modèles peuvent être utilisés pour remplir les champs dans le contenu du message',
+	'ea-allusers' => 'Tous les utilisateurs',
 );
 
 /** Galician (Galego)
@@ -288,9 +323,11 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'e-mailpage' => 'E-mejlowa strona',
+	'ea-desc' => 'Rysowanu HTML-stronu na e-mejlowu adresu abo lisćinu adresow z pomocu [http://phpmailer.sourceforge.net phpmailer] pósłać',
 	'ea-heading' => 'Strona "[[$1]]" so e-mejluje',
 	'ea-group-info' => 'Přidatnje móžeš stronu na čłonow skupiny pósłać',
 	'ea-pagesend' => 'Stronu "$1" wot $2 pósłana',
+	'ea-nopage' => 'Žana strona za słanje podata, prošu wužij e-mejlowy wotkaz z bóčnicy abo akcije strony.',
 	'ea-norecipients' => 'Žane płaćiwe e-mejlowe adresy namakane!',
 	'ea-listrecipients' => '{{PLURAL:$1|přijimowar so nalistuje|$1 přijimowarjej so nalistujetaj|$1 přijimowarjo so nalistuja|$1 přijimowarjow so nalistuje}}',
 	'ea-error' => "'''Zmylk při słanju [[$1]]:''' ''$2''",
@@ -305,9 +342,11 @@ $messages['hsb'] = array(
 	'ea-send' => 'Pósłać',
 	'ea-subject' => 'Tema:',
 	'ea-message' => 'Powěsć:',
+	'ea-message-info' => 'Wobsah z opcionalnej powěsću we wikiteksće započeć',
 	'ea-style' => 'Stil:',
 	'ea-selectcss' => 'Móžeš stilowu předłohu wubrać',
 	'ea-data' => 'Daty',
+	'ea-selectrecord' => 'Tute předłohi hodźa so wužiwać, zo bychu pola w powěsći wupjelnili',
 	'ea-allusers' => 'Wšitcy wužiwarjo',
 );
 
@@ -318,6 +357,7 @@ $messages['ia'] = array(
 	'e-mailpage' => 'Inviar pagina per e-mail',
 	'ea-desc' => 'Inviar le rendition HTML de un pagina a un adresse de e-mail o a un lista de adresses con [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Invio del pagina [[$1]] per e-mail ===',
+	'ea-group-info' => 'In addition, tu pote inviar le pagina al membros de un gruppo',
 	'ea-pagesend' => 'Pagina "$1" inviate ab $2',
 	'ea-nopage' => 'Per favor specifica un pagina a inviar, per exemplo "[[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]]".',
 	'ea-norecipients' => 'Nulle adresses de e-mail valide trovate!',
@@ -327,10 +367,51 @@ $messages['ia'] = array(
 	'ea-sent' => "Le pagina [[$1]] ha essite inviate con successo a '''$2''' {{PLURAL:$2|destinatario|destinatarios}} per [[User:$3|$3]].",
 	'ea-compose' => 'Componer contento',
 	'ea-show' => 'Monstrar destinatarios',
+	'ea-from' => 'Expeditor:',
+	'ea-to' => 'Destinatario:',
+	'ea-to-info' => 'Le adresses de e-mail pote esser separate per un o plus characteres de puncto e virgula, comma, asterisco o nove linea',
+	'ea-cc' => 'CC:',
 	'ea-send' => 'Inviar!',
-	'ea-subject' => 'Entra un linea de subjecto pro le message de e-mail',
-	'ea-message' => 'Adjunger le contento al initio con un message facultative (texto wiki)',
-	'ea-selectcss' => 'Selige un folio de stilos CSS',
+	'ea-subject' => 'Subjecto:',
+	'ea-message' => 'Message:',
+	'ea-message-info' => 'Anteponer al contento un message optional in wikitexto',
+	'ea-style' => 'Stilo:',
+	'ea-selectcss' => 'Tu pote seliger un folio de stilo',
+	'ea-data' => 'Datos',
+	'ea-selectrecord' => 'Iste patronos pote esser usate pro completar campos in le contento del message',
+	'ea-allusers' => 'Tote le usatores',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'e-mailpage' => 'Surel halaman',
+	'ea-desc' => 'Kirim halaman HTML ke suatu alamat surel atau daftar alamat menggunakan [http://phpmailer.sourceforge.net phpmailer]',
+	'ea-heading' => 'Kirimkan halaman "[[$1]]"',
+	'ea-group-info' => 'Selain itu Anda dapat mengirim halaman ke anggota kelompok',
+	'ea-pagesend' => 'Halaman "$1" dikirim dari $2',
+	'ea-nopage' => 'Halaman yang akan dikirim belum ditentukan. Silakan gunakan surel halaman dari bilah sisi atau tindakan halaman.',
+	'ea-norecipients' => 'Alamat surel yang sah tidak ditemukan!',
+	'ea-listrecipients' => 'Daftar {{PLURAL:$1|penerima|$1 penerima}}',
+	'ea-error' => "'''Kesalahan sewaktu mengirim [[$1]]:''' ''$2''",
+	'ea-denied' => 'Izin ditolak',
+	'ea-sent' => "Halaman [[$1]] berhasil dikirim ke '''$2''' {{PLURAL:$2|penerima|penerima}} oleh [[User:$3|$3]].",
+	'ea-compose' => 'Tulis isi',
+	'ea-show' => 'Lihat daftar penerima',
+	'ea-from' => 'Dari:',
+	'ea-to' => 'Untuk:',
+	'ea-to-info' => 'Alamat surel dapat dipisahkan dengan satu atau lebih titik koma, koma, bintang, atau baris baru',
+	'ea-cc' => 'Tembusan:',
+	'ea-send' => 'Kirim',
+	'ea-subject' => 'Perihal:',
+	'ea-message' => 'Pesan:',
+	'ea-message-info' => 'Tambahkan isi dengan pesan teks wiki opsional',
+	'ea-style' => 'Gaya:',
+	'ea-selectcss' => 'Anda dapat memilih lembar gaya',
+	'ea-data' => 'Data',
+	'ea-selectrecord' => 'Template ini dapat digunakan untuk mengisi kolom isi pesan',
+	'ea-allusers' => 'Semua pengguna',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -355,6 +436,38 @@ $messages['lb'] = array(
 	'ea-send' => 'Schécken!',
 	'ea-subject' => "Gitt w.e.g. e Sujet fir d'E-Mail an",
 	'ea-selectcss' => "Een ''CSS Stylesheet'' auswielen",
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'e-mailpage' => 'Страница за е-пошта',
+	'ea-desc' => 'Испраќање на снимена HTML-страница на е-поштенска адреса или список на адреси со [http://phpmailer.sourceforge.net phpmailer]',
+	'ea-heading' => 'Испраќање на страницата „[[$1]]“',
+	'ea-group-info' => 'Покрај ова, страницата можете да ја испратите и на членови на група',
+	'ea-pagesend' => 'Страницата „$1“ е испратена од $2',
+	'ea-nopage' => 'Не наведовте страница за испраќање. Послужете се со врската за е-пошта во страничната лента или функциите на страницата.',
+	'ea-norecipients' => 'Не пронајдов важечки е-поштенски адреси!',
+	'ea-listrecipients' => 'Наведувам {{PLURAL:$1|примач|$1 примачи}}',
+	'ea-error' => "'''Грешка при испраќањето на [[$1]]:''' ''$2''",
+	'ea-denied' => 'Дозволата е одбиена',
+	'ea-sent' => "Страницата [[$1]] е успешно испратена на '''$2''' {{PLURAL:$2|примач|примачи}} од [[User:$3|$3]].",
+	'ea-compose' => 'Состави содржина',
+	'ea-show' => 'Прикажи примачи',
+	'ea-from' => 'Од:',
+	'ea-to' => 'За:',
+	'ea-to-info' => 'Е-поштенските адреси се одделуваат со една (или повеќе) точка-запирка, запирки, ѕвездички или знаци за нов ред',
+	'ea-cc' => 'Примерок и за:',
+	'ea-send' => 'Испрати',
+	'ea-subject' => 'Наслов:',
+	'ea-message' => 'Порака:',
+	'ea-message-info' => 'Вметни дополнителна порака од викитекст на почетокот (незадолжително)',
+	'ea-style' => 'Стил:',
+	'ea-selectcss' => 'Можете да одберете стилска страница',
+	'ea-data' => 'Податоци',
+	'ea-selectrecord' => 'Овие шаблони служат за пополнување на полиња во содржината на пораката',
+	'ea-allusers' => 'Сите корисници',
 );
 
 /** Malayalam (മലയാളം)
@@ -491,8 +604,10 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'e-mailpage' => 'Strona e‐maila',
 	'ea-desc' => 'Wyślij stronę HTML na adres e-mail lub grupę adresów za pomocą [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Wysłanie na e-mail strony [[$1]] ===',
+	'ea-group-info' => 'Dodatkowo możesz wysłać stronę do członków grupy',
 	'ea-pagesend' => 'Strona "$1" wysłana z $2',
 	'ea-nopage' => 'Wybierz stronę do wysłania, przykładowo [[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]].',
 	'ea-norecipients' => 'Nie znaleziono prawidłowego adresu e-mail.',
@@ -502,10 +617,51 @@ $messages['pl'] = array(
 	'ea-sent' => "Strona [[$1]] została wysłana do '''$2''' {{PLURAL:$2|odbiorcy|odbiorców}} przez [[User:$3|$3]].",
 	'ea-compose' => 'Tworzenie zawartości',
 	'ea-show' => 'Pokaż odbiorców',
+	'ea-from' => 'Od',
+	'ea-to' => 'Do',
+	'ea-to-info' => 'Adresy e‐mail mogą być rozdzielane jednym lub więcej średnikiem, przecinkiem, gwiazdką lub znakiem rozpoczęcia nowej linii',
+	'ea-cc' => 'CC',
 	'ea-send' => 'Wyślij',
-	'ea-subject' => 'Wprowadź temat wiadomości e-mail',
-	'ea-message' => 'Dołączanie zawartości z dodatkową informacją.',
-	'ea-selectcss' => 'Wybierz styl CSS',
+	'ea-subject' => 'Temat',
+	'ea-message' => 'Wiadomość',
+	'ea-message-info' => 'Poprzedź zawartość opcjonalnym komunikatem zapisanym z użyciem formatowania wiki',
+	'ea-style' => 'Styl',
+	'ea-selectcss' => 'Możesz określić arkusz stylów',
+	'ea-data' => 'Dane',
+	'ea-selectrecord' => 'Szablony te mogą zostać wykorzystywane do wypełnienia pól w treści wiadomości',
+	'ea-allusers' => 'Wszyscy użytkownicy',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'e-mailpage' => 'Enviar páginas por correio electrónico',
+	'ea-desc' => 'Enviar uma página na sua composição final em HTML, para um endereço electrónico ou para uma lista de endereços, usando o [http://phpmailer.sourceforge.net phpmailer]',
+	'ea-heading' => 'A enviar a página "[[$1]]"',
+	'ea-group-info' => 'Adicionalmente, pode enviar a página para os membros de um grupo',
+	'ea-pagesend' => 'Página "$1" enviada da $2',
+	'ea-nopage' => 'Não foi especificada nenhuma página para envio; use o link de envio disponível na barra lateral or nas operações da página, por favor.',
+	'ea-norecipients' => 'Não foi encontrado nenhum endereço de correio electrónico válido!',
+	'ea-listrecipients' => 'A listar {{PLURAL:$1|o destinatário|$1 destinatários}}',
+	'ea-error' => "'''Erro no envio de [[$1]]:''' ''$2''",
+	'ea-denied' => 'Permissão negada',
+	'ea-sent' => "A página [[$1]] foi enviada para '''$2''' {{PLURAL:$2|destinatário|destinatários}} por [[User:$3|$3]].",
+	'ea-compose' => 'Compor a mensagem',
+	'ea-show' => 'Ver a lista de destinatários',
+	'ea-from' => 'De:',
+	'ea-to' => 'Para:',
+	'ea-to-info' => 'Os endereços podem ser separados com uma ou várias vírgulas, pontos e vírgula, asteriscos ou novas linhas',
+	'ea-cc' => 'CC:',
+	'ea-send' => 'Enviar',
+	'ea-subject' => 'Assunto:',
+	'ea-message' => 'Mensagem',
+	'ea-message-info' => 'Anteceda o conteúdo com uma mensagem opcional em texto wiki',
+	'ea-style' => 'Estilo:',
+	'ea-selectcss' => 'Pode seleccionar uma folha de estilos',
+	'ea-data' => 'Dados',
+	'ea-selectrecord' => 'Estes modelos podem ser usados para preencher os campos no conteúdo da mensagem',
+	'ea-allusers' => 'Todos os utilizadores',
 );
 
 /** Romanian (Română)
