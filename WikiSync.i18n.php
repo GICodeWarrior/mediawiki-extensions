@@ -468,6 +468,34 @@ ab dr Version $3 witt durfiere?',
 	'wikisync_js_sync_end_rtl' => 'Synchronisierig vum lokale Wiki mit em andre Wiki isch fertig gsi am $1',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'wikisync' => 'Wikisynchronizacija',
+	'wikisync-desc' => 'Steji [[Special:WikiSync|specialnu stronu]] za synchronizowanje najnowšich změnow dweju wikijow - lokalneho a zdaleneho - k dispoziciji',
+	'wikisync_direction' => 'Prošu wubjer směr synchronizacije',
+	'wikisync_clear_log' => 'Protokol wuprózdnić',
+	'wikisync_remote_wiki_user' => 'Wužiwarske mjeno zdaleneho wikija',
+	'wikisync_remote_wiki_pass' => 'Hesło zdaleneho wikija',
+	'wikisync_remote_login_button' => 'Přizjewić',
+	'wikisync_sync_files' => 'Dataje synchronizować',
+	'wikisync_synchronization_button' => 'Synchronizować',
+	'wikisync_apply_button' => 'Nałožić',
+	'wikisync_api_result_unknown_action' => 'Njeznata API-akcija',
+	'wikisync_api_result_invalid_parameter' => 'Njepłaćiwa parametrowa hódnota',
+	'wikisync_api_result_Illegal' => 'Sy njedowolene wužiwarske mjeno podał',
+	'wikisync_api_result_NotExists' => 'Wužiwarske mjeno, kotrež sy podak, njeeksistuje.',
+	'wikisync_api_result_WrongPass' => 'Hesło, kotrež sy podał, je wopak',
+	'wikisync_api_result_WrongPluginPass' => 'Hesło, kotrež sy podał, je wopak',
+	'wikisync_api_result_Blocked' => 'Wužiwar je zablokowany',
+	'wikisync_js_synchronization_success' => 'Synchronizacija je so wuspěšnje dokónčiła.',
+	'wikisync_js_sync_to_itself' => 'Njemóžeš wiki ze sobu synchronizować',
+	'wikisync_js_diff_search' => 'Rozdźěl w cilowych wersijach pytać',
+	'wikisync_js_revision' => 'Wersija $1',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|mjeńšina|mjeńšinje|mjeńšiny|mjeńšin}} wyše',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
