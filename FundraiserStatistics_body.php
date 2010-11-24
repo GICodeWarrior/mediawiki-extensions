@@ -162,6 +162,9 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				}
 			}
 		}
+		// Instructions
+		$wgOut->addHTML( Xml::tags( 'p', null, wfMsg( 'fundraiserstats-instructions' ) ) );
+
 		// Tabs
 		$first = true;
 		$htmlCharts = Xml::openElement( 'div', array( 'class' => 'fundraiserstats-chart-tabs' ) );
