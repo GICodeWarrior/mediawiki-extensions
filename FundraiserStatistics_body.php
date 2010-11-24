@@ -26,7 +26,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				'query' => 'dailyTotalMax',
 				'precision' => 2,
 				'label' => 'fundraiserstats-total',
-				'max' => 0,
+				'max' => 1,
 			),
 			'contributions' => array(
 				'data' => array(),
@@ -34,7 +34,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				'query' => 'contributionsMax',
 				'precision' => 0,
 				'label' => 'fundraiserstats-contributions',
-				'max' => 0,
+				'max' => 1,
 			),
 			'averages' => array(
 				'data' => array(),
@@ -42,7 +42,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				'query' => 'averagesMax',
 				'precision' => 2,
 				'label' => 'fundraiserstats-avg',
-				'max' => 0,
+				'max' => 1,
 			),
 			'maximums' => array(
 				'data' => array(),
@@ -50,7 +50,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				'query' => 'maximumsMax',
 				'precision' => 2,
 				'label' => 'fundraiserstats-max',
-				'max' => 0,
+				'max' => 1,
 			),
 			'ytd' => array(
 				'data' => array(),
@@ -58,7 +58,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				'query' => 'yearlyTotalMax',
 				'precision' => 2,
 				'label' => 'fundraiserstats-ytd',
-				'max' => 0,
+				'max' => 1,
 			),
 		);
 		
