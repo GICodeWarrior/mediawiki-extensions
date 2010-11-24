@@ -910,6 +910,7 @@ $messages['cs'] = array(
 	'fundraiserstats-tab-averages' => 'Průměry (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Od začátku roku (USD)',
+	'fundraiserstats-instructions' => 'Statistiky libovolného dne zobrazíte najetím myši nad příslušný sloupeček. Každý rok je na grafu vyznačen jinou barvou.',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -2439,6 +2440,7 @@ $messages['ia'] = array(
 	'fundraiserstats-tab-averages' => 'Medias (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Anno in curso (USD)',
+	'fundraiserstats-instructions' => 'Pro vider le statisticas de un die, positiona le cursor super le barra correspondente a ille die. Cata anno ha un altere color in le diagramma.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -3350,6 +3352,7 @@ $messages['ml'] = array(
 	'fundraiserstats-tab-averages' => 'ശരാശരികൾ (USD)',
 	'fundraiserstats-tab-maximums' => 'പരമാവധികൾ (USD)',
 	'fundraiserstats-tab-ytd' => 'ഈ ദിവസം വരെയുള്ള വർഷം (USD)',
+	'fundraiserstats-instructions' => 'ഒരു പ്രത്യേക ദിവസത്തെ സ്ഥിതിവിവരക്കണക്ക് അറിയാൻ, കഴ്സർ ആ ദിവസത്തെ കുറിക്കുന്ന പട്ടയുടെ മുകളിലേയ്ക്ക് നീക്കുക. ചാർട്ടിൽ ഓരോ വർഷവും ഓരോരോ വർണ്ണത്തിലാണ് നൽകിയിരിക്കുന്നത്.',
 );
 
 /** Hill Mari (Кырык мары)
@@ -4316,6 +4319,7 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-averages' => 'Средние (USD)',
 	'fundraiserstats-tab-maximums' => 'Максимумы (USD)',
 	'fundraiserstats-tab-ytd' => 'На данный год (USD)',
+	'fundraiserstats-instructions' => 'Для просмотра статистики за конкретный день, наведите курсор на столбец этого дня. Данные за разные годы представлены разными цветами.',
 );
 
 /** Rusyn (Русиньскый)
@@ -4605,6 +4609,7 @@ $messages['sl'] = array(
 	'fundraiserstats-tab-averages' => 'Povprečja (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumi (USD)',
 	'fundraiserstats-tab-ytd' => 'Preteklo obdobje leta (USD)',
+	'fundraiserstats-instructions' => 'Če si želite ogledati statistiko nekega dne, premaknite miškin kazalec na vrstico tega dneva. Vsako leto je na grafikonu drugače obarvano.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

@@ -383,6 +383,18 @@ $messages['te'] = array(
 	'ts-kml-on-ol-map-by' => 'పటపు సౌజన్యం',
 );
 
+/** Turkish (Türkçe)
+ * @author Katpatuka
+ */
+$messages['tr'] = array(
+	'ts-kml-on-ol-options' => 'Seçenekler',
+	'ts-kml-on-ol-languages' => 'Diller',
+	'ts-kml-on-ol-thumbnails' => 'Tırnak resimler',
+	'ts-kml-on-ol-help' => 'Yardım',
+	'ts-kml-on-ol-all' => 'Hepsi',
+	'ts-kml-on-ol-map-by' => 'Harita üretici',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */
