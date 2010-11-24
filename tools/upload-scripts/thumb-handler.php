@@ -49,7 +49,7 @@ if ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/ar
 	list( $all, $site, $lang, $arch, $filename, $lossy, $pagenum, $size, $fn2 ) = $matches;
 	$params = array(
 		'f' => $filename,
-		'lossy' => $lossy
+		'lossy' => $lossy,
 		'width' => $size,
 		'page' => $pagenum,
 	);
