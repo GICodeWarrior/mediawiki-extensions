@@ -92,6 +92,7 @@ $messages['en'] = array(
 	'fundraiserstats-tab-averages' => 'Averages (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
 	'fundraiserstats-tab-ytd' => 'Year-to-date (USD)',
+	'fundraiserstats-instructions' => 'To view statistics for any day, hover the cursor over the bar for that day. Each year is a different color on the chart.',
 );
 
 /** Message documentation (Message documentation)
