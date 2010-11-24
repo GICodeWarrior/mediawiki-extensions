@@ -58,16 +58,22 @@ $wgNamespaceProtection[NS_PACKAGEFORCE] =
 	$wgNamespaceProtection[NS_PACKAGEFORCE_TALK] = array( 'packageforce-edit' );
 
 # Database schema changes
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCheckUserSchemaUpdates';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efPackageForceSchemaUpdates';
 
-function efCheckUserSchemaUpdates() {
-	global $wgExtNewTables, $wgDBtype;
-
+function efPackageForceSchemaUpdates( $updater = null ) {
 	$dir = dirname( __FILE__ );
 
 	# DB updates
-	if ( $wgDBtype == 'mysql' ) {
-		$wgExtNewTables[] = array( 'packageforce_packages', "$dir/PackageForce.sql" );
+	if ( $updater === null ) {
+		global $wgExtNewTables, $wgDBtype;
+		if ( $wgDBtype == 'mysql' ) {
+			$wgExtNewTables[] = array( 'packageforce_packages', "$dir/PackageForce.sql" );
+		}
+	} else {
+		if ( $updater->getDB()->getType() == 'mysql' ) {
+			$updater->addExtensionUpdate( array( 'addTable', 'packageforce_packages',
+				"$dir/PackageForce.sql", true ) );
+		}
 	}
 	return true;
 }
