@@ -172,7 +172,7 @@ def chunker_launcher(args, **kwargs):
 
 def launch_zip_extractor(args, location, file):
     timer = Timer()
-    utils.zip_extract(location, file, compression='7z')
+    utils.zip_extract(location, file)
     timer.elapsed()
 
 
@@ -211,7 +211,8 @@ def transformer_launcher(args, **kwargs):
     print 'dataset launcher'
     timer = Timer()
     project = kwargs.pop('full_project')
-    transformer.run_optimize_editors(project)
+    collection = kwargs.pop('collection')
+    transformer.run_optimize_editors(project, collection)
     timer.elapsed()
 
 
@@ -313,6 +314,9 @@ def main():
 
     parser_transform = subparsers.add_parser('transform', help='Transform the raw datatabe to an enriched dataset that can be exported.')
     parser_transform.set_defaults(func=transformer_launcher)
+    parser_transform.add_argument('-c', '--collection', action='store',
+                                  help='Name of MongoDB collection',
+                                  default='editors')
 
     parser_dataset = subparsers.add_parser('export', help='Create a dataset from the MongoDB and write it to a csv file.')
     parser_dataset.set_defaults(func=exporter_launcher)

@@ -135,29 +135,25 @@ class XMLFile(object):
 
 
 
-def determine_username_is_bot(username, kwargs):
+def determine_username_is_bot(contributor, bots):
     '''
-    @username is the xml element containing the id of the user
-    @kwargs should have a list with all the bot ids
-
-    @Return False if username id is not in bot list id or True if username id
+    #contributor is an xml element containing the id of the contributor
+    @bots should have a dcit with all the bot ids and bot names
+    @Return False if username id is not in bot dict id or True if username id
     is a bot id.
     '''
-    ids = kwargs.get('bots', [])
-    if ids == None:
-        ids = []
-    if username != None and username.text != None:
-        id = username.text
-        if id in ids:
-            return 1
-        else:
-            return 0
+    for elem in contributor:
+        if elem.tag == 'id':
+            if elem.text in bots['bots']:
+                return 1
+            else:
+                return 0
 
 
 def extract_username(contributor, kwargs):
     for elem in contributor:
         if elem.tag == 'username':
-            return elem.text    #.encode(settings.encoding)
+            return elem.text
     else:
         return None
 
@@ -167,16 +163,14 @@ def extract_contributor_id(contributor, kwargs):
     @contributor is the xml contributor node containing a number of attributes
 
     Currently, we are only interested in registered contributors, hence we
-    ignore anonymous editors. If you are interested in collecting data on
-    anonymous editors then add the string 'ip' to the tags variable.
+    ignore anonymous editors. 
     '''
-    tags = ['id']
     if contributor.get('deleted'):
         return - 1  # ASK: Not sure if this is the best way to code deleted contributors.
     for elem in contributor:
-        if elem.tag in tags:
+        if elem.tag == 'id':
             if elem.text != None:
-                return elem.text.encode(settings.encoding)
+                return elem.text
             else:
                 return - 1
 
@@ -209,6 +203,8 @@ def output_editor_information(elem, output, **kwargs):
                 vars[var] = function(xml_node, kwargs)
 
         #print '%s\t%s\t%s\t%s\t' % (vars['article'], vars['contributor'], vars['timestamp'], vars['bot'])
+        if vars['username'] == 'ClueBot':
+            print 'debug'
         if vars['bot'] == 0 and vars['editor'] != -1 and vars['editor'] != None:
             vars.pop('bot')
             if destination == 'queue':
@@ -220,100 +216,6 @@ def output_editor_information(elem, output, **kwargs):
                     data.append(vars[head])
                 utils.write_list_to_csv(data, output)
         vars = {}
-
-
-#def parse_editors(xml_queue, data_queue, **kwargs):
-#    '''
-#    @xml_queue contains the filenames of the files to be parsed
-#    @data_queue is an instance of Queue where the extracted data is stored for 
-#    further processing
-#    @pbar is an instance of progressbar to display the progress
-#    @bots is a list of id's of known Wikipedia bots
-#    @debug is a flag to indicate whether the function is called for debugging.
-#    
-#    Output is the data_queue that will be used by store_editors() 
-#    '''
-#    input = kwargs.get('input', None)
-#    output = kwargs.get('output', None)
-#    debug = kwargs.get('debug', False)
-#    destination = kwargs.get('destination', 'file')
-#    bots = kwargs.get('bots', None)
-#    pbar = kwargs.get('pbar', None)
-#    if settings.debug:
-#        messages = {}
-#        vars = {}
-#
-#    while True:
-#        try:
-#            if debug:
-#                file = xml_queue
-#            else:
-#                file = xml_queue.get(block=False)
-#            if file == None:
-#                print 'Swallowed a poison pill'
-#                break
-#
-#            data = xml.read_input(utils.create_txt_filehandle(input,
-#                                                      file, 'r',
-#                                                      encoding=settings.encoding))
-#            if destination == 'file':
-#                name = file[:-4] + '.txt'
-#                fh = utils.create_txt_filehandle(output, name, 'w', settings.encoding)
-#            for raw_data in data:
-#                xml_buffer = cStringIO.StringIO()
-#                raw_data.insert(0, '<?xml version="1.0" encoding="UTF-8" ?>\n')
-#
-#                try:
-#                    raw_data = ''.join(raw_data)
-#                    xml_buffer.write(raw_data)
-#                    elem = cElementTree.XML(xml_buffer.getvalue())
-#                    output_editor_information(elem, fh, bots=bots, destination=destination)
-#                except SyntaxError, error:
-#                    print error
-#                    '''
-#                    There are few cases with invalid tokens, they are fixed
-#                    here and then reinserted into the XML DOM
-#                    data = convert_html_entities(xml_buffer.getvalue())
-#                    elem = cElementTree.XML(data)
-#                    output_editor_information(elem)
-#                    '''
-#                    if settings.debug:
-#                        utils.track_errors(xml_buffer, error, file, messages)
-#                except UnicodeEncodeError, error:
-#                    print error
-#                    if settings.debug:
-#                        utils.track_errors(xml_buffer, error, file, messages)
-#                except MemoryError, error:
-#                    print file, error
-#                    print raw_data[:12]
-#                    print 'String was supposed to be %s characters long' % sum([len(raw) for raw in raw_data])
-#            if destination == 'queue':
-#                output.put('NEXT')
-#                while True:
-#                    if output.qsize() < 100000:
-#                        break
-#                    else:
-#                        time.sleep(10)
-#                        print 'Still sleeping, queue is %s items long' % output.qsize()
-#
-#            else:
-#                fh.close()
-#
-#            if pbar:
-#                print file, xml_queue.qsize()
-#                #utils.update_progressbar(pbar, xml_queue)
-#
-#            if debug:
-#                break
-#
-#        except Empty:
-#            break
-#
-#    if destination == 'queue':
-#        data_queue.put(None)
-#
-#    if settings.debug:
-#        utils.report_error_messages(messages, parse_editors)
 
 
 def load_bot_ids():
@@ -352,12 +254,14 @@ def run_parse_editors(location, **kwargs):
     tasks.join()
 
 
-def debug_parse_editors(dbname):
-    q = JoinableQueue()
-    parse_editors('522.xml', q, None, None, debug=True, destination='file')
-    store_editors(q, [], dbname)
+def debug_parse_editors(location):
+    bots = load_bot_ids()
+    input = os.path.join(location, 'chunks')
+    output = os.path.join(location, 'txt')
+    xml_file = XMLFile(input, output, '1.xml', bots, output_editor_information, destination='file')
+    xml_file()
 
-
-if __name__ == "__main__":
-    #debug_parse_editors('test2')
-    run_parse_editors(os.path.join(settings.input_location, 'en', 'wiki'))
+if __name__ == '__main__':
+    location = os.path.join(settings.input_location, 'en', 'wiki')
+    debug_parse_editors(location)
+    #run_parse_editors(location)

@@ -31,7 +31,7 @@ from utils import process_constructor as pc
 from utils import utils
 from utils import models
 import construct_datasets
-
+import shaper
 
 try:
     import psyco
@@ -52,27 +52,25 @@ class EditorConsumer(models.BaseConsumer):
 
 
 class Editor(object):
-    def __init__(self, dbname, id, **kwargs):
+    def __init__(self, dbname, collection, id, **kwargs):
         self.dbname = dbname
         self.id = id
+        self.collection = collection
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
     
     def __str__(self):
         return '%s' % (self.id)
-        #    mongo = db.init_mongo_db(dbname)
-        #    input = mongo[dbname]
-        #    output = mongo['dataset']
-        #    output.ensure_index('editor')
-        #    output.ensure_index('year_joined')
-        
+
     def __call__(self):
         self.mongo = db.init_mongo_db(self.dbname)
-        input_db = self.mongo['editors']
-        output_db = self.mongo['dataset']
+        input_db = self.mongo[self.collection]
+        output_db = self.mongo[self.collection +'_dataset']
         
         output_db.ensure_index('editor')
         output_db.create_index('editor')
+        output_db.ensure_index('year_joined')
+        output_db.create_index('year_joined')
         
         editor = input_db.find_one({'editor': self.id})
         if editor == None:
@@ -100,43 +98,14 @@ class Editor(object):
                           'username': username
                           })
 
-def create_datacontainer(init_value=0):
-    '''
-    This function initializes an empty dictionary with as key the year (starting
-    2001 and running through) and as value @init_value, in most cases this will
-    be zero so the dictionary will act as a running tally for a variable but
-    @init_value can also a list, [], or a dictionary, {}, or a set, set().  
-    '''
-    data = {}
-    year = datetime.datetime.now().year + 1
-    for x in xrange(2001, year):
-        if init_value == 'set':
-            data[str(x)] = set()
-        else:
-            data[str(x)] = init_value
-    return data
-
-
-def add_months_to_datacontainer(datacontainer):
-    for dc in datacontainer:
-        datacontainer[dc] = {}
-        for x in xrange(1, 13):
-             datacontainer[dc][str(x)] = 0
-    return datacontainer
-
 
 def determine_edits_by_month(edits):
-    datacontainer = create_datacontainer(init_value=0)
-    datacontainer = add_months_to_datacontainer(datacontainer)
+    datacontainer = shaper.create_datacontainer(init_value=0)
+    datacontainer = shaper.add_months_to_datacontainer(datacontainer)
     for year in edits:
-        months = set()
         for edit in edits[year]:
             m = str(edit['date'].month)
-            if m not in months:
-                datacontainer[year][m] = 1
-                months.add(m)
-            if len(months) == 12:
-                break
+            datacontainer[year][m] += 1
     return datacontainer
 
 
@@ -144,7 +113,7 @@ def determine_edits_by_year(dates):
     '''
     This function counts the number of edits by year made by a particular editor. 
     '''
-    edits = create_datacontainer()
+    edits = shaper.create_datacontainer()
     for date in dates:
         year = str(date['date'].year)
         edits[year] += 1
@@ -156,7 +125,7 @@ def determine_articles_by_year(dates):
     This function counts the number of unique articles by year edited by a
     particular editor.
     '''
-    articles = create_datacontainer('set')
+    articles = shaper.create_datacontainer('set')
     for date in dates:
         year = str(date['date'].year)
         articles[year].add(date['article'])
@@ -179,8 +148,8 @@ def sort_edits(edits):
 #    definition = kwargs.pop('definition')
 
 
-def run_optimize_editors(dbname):
-    ids = construct_datasets.retrieve_editor_ids_mongo(dbname, 'editors')
+def run_optimize_editors(dbname, collection):
+    ids = construct_datasets.retrieve_editor_ids_mongo(dbname, collection)
     kwargs = {'definition': 'traditional',
               'pbar': True,
               }
@@ -190,7 +159,7 @@ def run_optimize_editors(dbname):
     consumers = [EditorConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
     
     for id in ids:
-        tasks.put(Editor(dbname, id))
+        tasks.put(Editor(dbname, collection, id))
     for x in xrange(settings.number_of_processes):
         tasks.put(None)
 
@@ -212,4 +181,4 @@ def debug_optimize_editors(dbname):
 
 if __name__ == '__main__':
     #debug_optimize_editors('test')
-    run_optimize_editors('enwiki')
+    run_optimize_editors('enwiki', 'test')

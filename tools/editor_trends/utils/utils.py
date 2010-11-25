@@ -143,16 +143,13 @@ def extract_offending_string(text, error):
 
 
 # read / write data related functions
-def read_data_from_csv(filename, encoding):
+def read_data_from_csv(location, filename, encoding):
     '''
     @filename is the path (either absolute or relative) including the name of
     of the file
     @encoding is usually utf-8 
     '''
-    if hasattr(filename, '__call__'):
-        filename = construct_filename(filename)
-
-    fh = open_txt_file(filename, 'r', encoding=encoding)
+    fh = create_txt_filehandle(location, filename, 'r', encoding)
     for line in fh:
         yield line
 
@@ -220,6 +217,7 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
 
 def write_dict_to_csv(data, fh, write_key=True, newline=True):
     keys = data.keys()
+    keys.sort()
     for key in keys:
         if write_key:
             fh.write('%s' % key)
@@ -317,12 +315,12 @@ def invert_dict(dictionary):
     return dict([[v, k] for k, v in dictionary.items()])
 
 
-def create_dict_from_csv_file(filename, encoding):
+def create_dict_from_csv_file(location, filename, encoding):
     '''
     Constructs a dictionary from a txtfile
     '''
     d = {}
-    for line in read_data_from_csv(filename, encoding):
+    for line in read_data_from_csv(location, filename, encoding):
         line = clean_string(line)
         value, key = line.split('\t')
         d[key] = value
@@ -375,12 +373,13 @@ def zip_archive(location, source, compression='7z'):
         raise exceptions.PlatformNotSupportedError
 
 
-def zip_extract(path, location, source):
+def zip_extract(location, source):
     '''
     @path is the absolute path to the zip program
     @location is the directory where to store the compressed file
     @source is the name of the zipfile
     '''
+    path = settings.path_ziptool
     if settings.platform == 'Windows':
         p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)], shell=True).wait()
     elif settings.platform == 'Linux':

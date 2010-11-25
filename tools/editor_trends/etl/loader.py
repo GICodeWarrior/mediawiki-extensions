@@ -71,7 +71,7 @@ def store_editors(input, dbname, collection):
     utils.store_object(editors, settings.binary_location, 'editors')
 
 
-def mergesort_external_launcher(dbname, input, intermediate_output, output):
+def mergesort_external_launcher(dbname, input, output):
     files = utils.retrieve_file_list(input, 'txt', mask='')
     x = 0
     maxval = 99999
@@ -80,11 +80,11 @@ def mergesort_external_launcher(dbname, input, intermediate_output, output):
         maxval = round(len(files) / x)
     chunks = utils.split_list(files, int(x))
     '''1st iteration external mergesort'''
-    if len(chunks) < 2:
-        intermediate_output = output
+    to_remove = []
     for chunk in chunks:
         filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.encoding) for file in chunks[chunk]]
-        filename = sort.merge_sorted_files(intermediate_output, filehandles, chunk)
+        filename = sort.merge_sorted_files(output, filehandles, chunk)
+        to_remove.append(filename)
         filehandles = [fh.close() for fh in filehandles]
     '''2nd iteration external mergesort, if necessary'''
     if len(chunks) > 1:
@@ -93,6 +93,9 @@ def mergesort_external_launcher(dbname, input, intermediate_output, output):
         filename = sort.merge_sorted_files(output, filehandles, 'final')
         filehandles = [fh.close() for fh in filehandles]
         filename = 'merged_final.txt'
+    for r in to_remove:
+        utils.delete_file(output ,r)
+    
         
 
 

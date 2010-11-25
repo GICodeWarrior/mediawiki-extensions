@@ -27,6 +27,7 @@ import ConfigParser
 import os
 import sys
 import platform
+import subprocess
 
 try:
     from _winreg import *
@@ -138,14 +139,17 @@ class Settings(object):
                 return QueryValueEx(key, 'Path')[0]
             except WindowsError:
                 return None
-
-
+        
+        def detect_linux_program(self, program):
+            path = subprocess.Popen(['which', '%s' % program],stdout=subprocess.PIPE).communicate()[0]
+            return path.replace('\n','')
+        
         def detect_installed_program(self, program):
             if self.platform == 'Windows':
                 path = self.detect_windows_program(program)
-                return path
-            else:
-                raise NotImplementedError
+            elif self.platform == 'Linux':
+                path = self.detect_linux_program(program)
+            return path
 
         def determine_max_filehandles_open(self):
             if self.platform == 'Windows' and self.architecture == 'i386':
@@ -167,7 +171,7 @@ class Settings(object):
         def determine_ziptool(self):
             tools = {'OSX': None,
                     'Windows': '7z.exe',
-                    'Linux': None}
+                    'Linux': 'unzip'}
             return tools[self.platform]
 
         def set_file_locations(self):
