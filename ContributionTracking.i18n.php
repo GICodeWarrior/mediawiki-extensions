@@ -20,7 +20,7 @@ $messages['en'] = array(
 
 	'contrib-tracking-submitting' => 'Submitting to payment processor...',
 	'contrib-tracking-continue' => 'If you are not automatically redirected, click the button to complete your donation at PayPal.',
-	'contrib-tracking-redirect' => 'You will be automatically redirected to complete your donation at PayPal.',
+	'contrib-tracking-redirect' => 'You will be automatically redirected to PayPal to complete your donation.',
 
 	'contrib-tracking-button' => 'Continue',
 
