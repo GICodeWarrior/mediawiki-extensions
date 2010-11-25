@@ -543,6 +543,7 @@ $messages['be-tarask'] = array(
 	'fundraiserstats-tab-averages' => 'Сярэдні (USD)',
 	'fundraiserstats-tab-maximums' => 'Максымальныя (USD)',
 	'fundraiserstats-tab-ytd' => 'На цяперашні год (USD)',
+	'fundraiserstats-instructions' => 'Каб паглядзець статыстыку за любы дзень, навядзіце курсор на слупок гэтага дня. У табліцы кожны год адрозьніваецца ўласным колерам.',
 );
 
 /** Bulgarian (Български)
@@ -2516,6 +2517,7 @@ $messages['id'] = array(
 	'fundraiserstats-tab-averages' => 'Rata-rata (USD)',
 	'fundraiserstats-tab-maximums' => 'Tertinggi (USD)',
 	'fundraiserstats-tab-ytd' => 'Tahun berjalan (USD)',
+	'fundraiserstats-instructions' => 'Untuk melihat statistik hari tertentu, arahkan kursor ke bilah untuk hari itu. Setiap tahun memiliki warna yang berbeda pada tabel.',
 );
 
 /** Igbo (Igbo)
@@ -3865,6 +3867,7 @@ $messages['pl'] = array(
 	'fundraiserstats-tab-averages' => 'Średnie (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksima (USD)',
 	'fundraiserstats-tab-ytd' => 'Rok do danej chwili (USD)',
+	'fundraiserstats-instructions' => 'Statystyki dla dnia zostaną wyświetlone jeśli umieścisz kursor nad paskiem tego dnia. Każdy rok oznaczono innym kolorem.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -4039,6 +4042,7 @@ $messages['pt'] = array(
 	'fundraiserstats-tab-averages' => 'Médias (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Desde o início do ano (USD)',
+	'fundraiserstats-instructions' => 'Para ver as estatísticas de qualquer dia, passe o cursor sobre a barra desse dia. Cada ano tem uma cor diferente no gráfico.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -5483,6 +5487,7 @@ $messages['vi'] = array(
 	'fundraiserstats-tab-averages' => 'Trung bình (USD)',
 	'fundraiserstats-tab-maximums' => 'Tối đa (USD)',
 	'fundraiserstats-tab-ytd' => 'Năm đến nay (USD)',
+	'fundraiserstats-instructions' => 'Để xem thống kê về bất cứ ngày nào, hãy giữ con trỏ trên thanh cho ngày đó. Các năm được tô đậm màu khác nhau trên biểu đồ.',
 );
 
 /** Volapük (Volapük)
