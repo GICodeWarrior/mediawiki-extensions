@@ -2140,8 +2140,8 @@ $messages['mk'] = array(
 	'ogg-stop' => 'Запри',
 	'ogg-play-video' => 'Пушти видеоснимка',
 	'ogg-play-sound' => 'Слушни аудио снимка',
-	'ogg-no-player' => 'Изгледа дека вашиот систем нема инсталирано никаква програмска опрема за преслушување/прегледување на аудио или видео записи.
- a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Тука преземете некој програм за оваа намена</a>.',
+	'ogg-no-player' => 'Изгледа дека вашиот систем нема инсталирано никаква програмска опрема за преслушување/прегледување на аудио или видео снимки.
+ a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Тука преземете изведувач за таа намена</a>.',
 	'ogg-no-xiphqt' => 'Изгледа го немате инсталирано делот XiphQT за QuickTime.
 QuickTime не може да преслушува/прегледува Ogg податотеки без оваа компонента.
 Можете да го <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">преземете XiphQT</a> или да изберете некоја друга програмска опрема за преслушување/прегледување.',

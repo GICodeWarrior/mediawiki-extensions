@@ -171,7 +171,8 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'voctrain_Hello_World' => 'Test message',
-	'voctrain_Permission_Denied' => 'login: access is denied',
+	'voctrain_Permission_Denied' => 'login: access is denied
+{{Identical|Permission denied}}',
 	'voctrain_try_again_' => 'An operation failed, link back to normal voctrainer (used in multiple locations)',
 	'voctrain_Action_unknown' => 'Action unknown: Page title',
 	'voctrain_I_don_t_know_what_to_do_with_action_' => "Action unknown: body text of page (don't translate %action).",

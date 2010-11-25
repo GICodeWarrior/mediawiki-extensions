@@ -45,9 +45,12 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  */
 $messages['qqq'] = array(
+	'ea-denied' => '{{Identical|Permission denied}}',
 	'ea-from' => '{{Identical|From}}',
 	'ea-to' => '{{Identical|To}}',
 	'ea-send' => '{{Identical|Send}}',
+	'ea-subject' => '{{Identical|Subject}}',
+	'ea-message' => '{{Identical|Message}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -55,6 +58,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'e-mailpage' => 'E-posbladsy',
+	'ea-denied' => 'Toestemming geweier',
 	'ea-compose' => 'Stel inhoud saam',
 	'ea-show' => 'Wys lys van ontvangers',
 	'ea-from' => 'Van:',
@@ -129,8 +133,18 @@ $messages['be-tarask'] = array(
 	'ea-norecipients' => 'Ня знойдзеныя слушныя адрасы электроннай пошты!',
 	'ea-listrecipients' => '{{PLURAL:$1|Атрымальнік|Атрымальнікі}}',
 	'ea-error' => "'''Памылка адпраўкі [[$1]]:''' ''$2''",
+	'ea-denied' => 'Доступ забаронены',
+	'ea-sent' => "Старонка [[$1]] дасланая пасьпяхова '''$2''' {{PLURAL:$2|атрымальніку|атрымальнікам|атрымальнікам}} ад [[User:$3|$3]].",
+	'ea-compose' => 'Стварэньне зьместу',
+	'ea-show' => 'Паказаць сьпіс атрымальнікаў',
 	'ea-from' => 'Ад:',
 	'ea-to' => 'Да:',
+	'ea-to-info' => 'Адрасы электроннай пошты могуць падзяляцца адной ці болей кропкай з коскай, коскай, зоркай ці сымбалем пачатку новага радку',
+	'ea-cc' => 'Копія:',
+	'ea-send' => 'Даслаць',
+	'ea-subject' => 'Тэма:',
+	'ea-message' => 'Паведамленьне:',
+	'ea-style' => 'Стыль:',
 	'ea-selectcss' => 'Вы можаце выбраць табліцу стыляў',
 );
 
@@ -670,6 +684,38 @@ $messages['pt'] = array(
 $messages['ro'] = array(
 	'ea-fromgroup' => 'Din grupul:',
 	'ea-send' => 'Trimite!',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'e-mailpage' => 'Отправить страницу',
+	'ea-desc' => 'Отправка HTML-страниц на адрес электронной почты (или список адресов) с помощью [http://phpmailer.sourceforge.net phpmailer]',
+	'ea-heading' => 'Оправка по электронной почте страницы «[[$1]]»',
+	'ea-group-info' => 'Вы также можете отправить страницу членам группы',
+	'ea-pagesend' => 'Страница «$1» отправлена из $2',
+	'ea-nopage' => 'Не указана страница для отправки. Пожалуйста, воспользуйтесь ссылкой отправки на боковой панели или странице действий.',
+	'ea-norecipients' => 'Не обнаружено корректного адреса электронной почты!',
+	'ea-listrecipients' => 'Перечень из {{PLURAL:$1|$1 получателя|$1 получателей|$1 получателей}}',
+	'ea-error' => "'''Ошибки отправки [[$1]].''' ''$2''",
+	'ea-denied' => 'Доступ запрещён',
+	'ea-sent' => "Страница [[$1]] успешно отправлена '''$2''' {{PLURAL:$2|получателю|получателям|получателям}} участником [[User:$3|$3]].",
+	'ea-compose' => 'Составление текста',
+	'ea-show' => 'Просмотр списка получателей',
+	'ea-from' => 'От:',
+	'ea-to' => 'Кому:',
+	'ea-to-info' => 'Адреса электронной почты могут быть разделены точкой с запятой, запятой, звёздочкой или символом новой строки',
+	'ea-cc' => 'Копия:',
+	'ea-send' => 'Отправить',
+	'ea-subject' => 'Тема:',
+	'ea-message' => 'Сообщение:',
+	'ea-message-info' => 'Присоединение содержания с возможным сообщением с викитекстом',
+	'ea-style' => 'Стиль:',
+	'ea-selectcss' => 'Вы можете выбрать стиль',
+	'ea-data' => 'Данные',
+	'ea-selectrecord' => 'Эти шаблоны могут использоваться для заполнения полей в содержимом письма',
+	'ea-allusers' => 'Все участники',
 );
 
 /** Slovak (Slovenčina)

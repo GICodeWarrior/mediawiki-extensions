@@ -6231,6 +6231,13 @@ $messages['mk'] = array(
 	'mv_flash_low_quality' => 'Мрежно емитување - Флеш-видео',
 	'mv_archive_org_mp4' => 'Archive.org MP4, содржејќи H.264 емитување',
 	'mv_archive_org_link' => 'Врски до Archive.org MPEG-2 оригинали',
+	'ao_file_64Kb_MPEG4' => 'Archive.org - MPEG-4 64 кбит/сек',
+	'ao_file_256Kb_MPEG4' => 'Archive.org - MPEG-4 256 кбит/сек',
+	'ao_file_512Kb_MPEG4' => 'Archive.org - MPEG-4 512 кбит/сек',
+	'ao_file_MPEG1' => 'Archive.org - MPEG-1',
+	'ao_file_MPEG2' => 'Archive.org - изворно MPEG-2',
+	'ao_file_flash_flv' => 'Archive.org - Flash-видео',
+	'ao_file_Ogg_Video' => 'Archive.org - Ogg-видео',
 	'mv_error_stream_missing' => '<span class="error">Грешка: Нема видео-податотека поврзана со ова емитување.</span><br />
 Пријавете го проблемов кај [[{{MediaWiki:Grouppage-sysop}}|администраторот]].',
 	'mv_stream_added' => 'Го додадовте емитувањето $1',
