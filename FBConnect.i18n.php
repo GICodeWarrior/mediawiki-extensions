@@ -525,6 +525,49 @@ $messages['de-formal'] = array(
 Sofern OpenID für künftige Anmeldevorgänge genutzt werden soll, kann das [[Special:Connect/Convert|Benutzerkonto für die Nutzung durch Facebook Connect eingerichtet werden]].",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'group-fb-user' => 'Wužywarje Facebook Connect',
+	'group-fb-user-member' => 'Wužywaŕ Facebook Connect',
+	'grouppage-fb-user' => '{{ns:project}}:Wužywarje Facebook Connect',
+	'group-fb-groupie' => 'Kupkowe cłonki',
+	'group-fb-groupie-member' => 'Kupkowy cłonk',
+	'grouppage-fb-groupie' => '{{ns:project}}:Kupkowe cłonki',
+	'group-fb-officer' => 'Kupkowe zastojniki',
+	'group-fb-officer-member' => 'Kupkowy zastojnik',
+	'grouppage-fb-officer' => '{{ns:project}}:Kupkowe zastojniki',
+	'group-fb-admin' => 'Kupkowe administratory',
+	'group-fb-admin-member' => 'Kupkowy administrator',
+	'grouppage-fb-admin' => '{{ns:project}}:Kupkowe administratory',
+	'fbconnect-link' => 'Slědk k facebook.com',
+	'fbconnect-conv' => 'Komfortabelnosć',
+	'fbconnect-fbml' => 'Wobznamjeńska rěc Facebook',
+	'fbconnect-comm' => 'Komunikacija',
+	'fbconnect-welcome' => 'Wita, wužywaŕ Facebook Connect!',
+	'fbconnect-loginbox' => "Abo '''pśizjawjenje''' pśez Facebook:
+
+$1",
+	'fbconnect-cancel' => 'akcija pśetergnjona',
+	'fbconnect-invalid' => 'Njepłaśiwa akcija',
+	'fbconnect-nickname' => 'Pśimě',
+	'fbconnect-fullname' => 'Dopołne mě',
+	'fbconnect-email' => 'E-mailowa adresa',
+	'fbconnect-language' => 'Rěc',
+	'fbconnect-timecorrection' => 'Korektura casoweje cony (góźiny)',
+	'fbconnect-choosenick' => 'Mě profila na Facebooku ($1)',
+	'fbconnect-choosefirst' => 'Twójo pśedmě ($1)',
+	'fbconnect-choosefull' => 'Twójo dopołne mě ($1)',
+	'fbconnect-choosemanual' => 'Mě twójogo žycenja:',
+	'fbconnect-chooseexisting' => 'Eksistěrujuce konto w toś tom wikiju',
+	'fbconnect-chooseusername' => 'Wužywarske mě:',
+	'fbconnect-choosepassword' => 'Gronidło:',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Profil Facebook',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1037,9 +1080,9 @@ $messages['hsb'] = array(
 	'group-fb-groupie' => 'Skupinscy čłonojo',
 	'group-fb-groupie-member' => 'Skupinski čłon',
 	'grouppage-fb-groupie' => '{{ns:project}}:Skupinscy čłonojo',
-	'group-fb-officer' => 'Skupinscy zarjadowarjo',
-	'group-fb-officer-member' => 'Skupinski zarjadowar',
-	'grouppage-fb-officer' => '{{ns:project}}:Skupinscy zarjadowarjo',
+	'group-fb-officer' => 'Skupinscy zarjadnicy',
+	'group-fb-officer-member' => 'Skupinski zarjadnik',
+	'grouppage-fb-officer' => '{{ns:project}}:Skupinscy zarjadnicy',
 	'group-fb-admin' => 'Skupinscy administratorojo',
 	'group-fb-admin-member' => 'Skupinski administrator',
 	'grouppage-fb-admin' => '{{ns:project}}:Skupinscy administratorojo',
@@ -1051,8 +1094,12 @@ $messages['hsb'] = array(
 	'fbconnect-click-to-login' => 'Klikń, zo by so přez Facebook pola tutoho sydła přizjewił',
 	'fbconnect-click-to-connect-existing' => 'Klikń, zo by swoje konto Facebook z $1 zwjazał',
 	'fbconnect-conv' => 'Komfortabelnosć',
+	'fbconnect-convdesc' => 'Zwjzani wužiwarjo su awtomatisce přizjewjeni.
+Jeli prawo je date, da móže tutón wiki Facebook samo jako e-mejlowy proksy wužiwać. Přez to móžeš dale wažne zdźělenki dóstać, bjez toho zo dyrbiš swoju e-mejlowu adresu wotkryć.',
 	'fbconnect-fbml' => 'Woznamjenjenska rěč Facebook',
 	'fbconnect-comm' => 'Komunikacija',
+	'fbconnect-commdesc' => 'Facebook Connect připowěduje cyle nowu runinu dźěłanja w syći.
+Hlej, kotři z twojich přećelow tutón wiki wužiwaja, a wužij swoje akcije zhromadnje ze swojimi přećelemi na kanalu nowinkow we Facebooku.',
 	'fbconnect-welcome' => 'Witaj, wužiwarjo Facebook Connect!',
 	'fbconnect-loginbox' => "Abo '''přizjewjenje''' přez Facebook:
 
@@ -1061,6 +1108,8 @@ $1",
 	'fbconnect-logoutbox' => '$1
 
 Přez to wotzjewiš so z Facebook a wšěch zwjazanych sydłow, inkluziwnje tutoho wikija.',
+	'fbconnect-listusers-header' => 'Prawa $1 a $2 přenošuja so awtomatisce wot titulow zarjadnika a administratora skupiny Facebook $3.
+Za dalše informacije staj so prošu z tworićel skupiny $4 do zwiska.',
 	'fbconnect-error' => 'Pruwowanski zmylk',
 	'fbconnect-errortext' => 'Při přepruwowanju přez Facebook Connect je zmylk wustupił.',
 	'fbconnect-cancel' => 'Akcija přetorhnjena',
@@ -1087,6 +1136,9 @@ Prošu wubjer druhe přimjeno.',
 	'fbconnect-chooseusername' => 'Wužiwarske mjeno:',
 	'fbconnect-choosepassword' => 'Hesło:',
 	'fbconnect-updateuserinfo' => 'Zaktualizuj slědowace wosobinske informacije:',
+	'fbconnect-alreadyloggedin' => "'''Sy hižo přizjewjeny, $1!'''
+
+Jeli chceš Facebook Connect wužiwać, hdyž so přichodnje přizjewiš, móžeš [[Special:Connect/Convert|swoje konto za wužiwanje Facebook Connect konwertować]].",
 	'fbconnect-error-creating-user' => 'Zmylk při wutworjenju wužiwarja w lokalnej datowej bance.',
 	'fbconnect-error-user-creation-hook-aborted' => 'Rozšěrjenje přetorhny załoženje konta ze slědowacej zdźělenku: $1',
 	'fbconnect-prefstext' => 'Facebook Connect',
