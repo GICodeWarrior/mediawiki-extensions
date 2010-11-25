@@ -3291,7 +3291,7 @@ Diskusi sedang berlangsung di [[$5]] dan akan disimpulkan di ''$2''.",
 	'deletequeue-review-submit' => 'Simpan Tinjauan',
 	'deletequeue-review-original' => 'Alasan pencalonan',
 	'deletequeue-actiondisabled-involved' => 'Tindakan berikut dinonaktifkan karena Anda telah mengambil bagian dalam kasus penghapusan ini sebagai $1:',
-	'deletequeue-actiondisabled-notexpired' => 'Langkah berikut dilarang karena pencalonan penghapusan belum kadaluwarsa:',
+	'deletequeue-actiondisabled-notexpired' => 'Langkah berikut dilarang karena pencalonan penghapusan belum kedaluwarsa:',
 	'deletequeue-review-badaction' => 'Anda melakukan tindakan yang tidak sah',
 	'deletequeue-review-actiondenied' => 'Anda melakukan tindakan yang dilarang untuk halaman ini',
 	'deletequeue-review-objections' => "'''Perhatian''': Penghapusan halaman ini memiliki [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} penolakan].
@@ -3361,7 +3361,7 @@ Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan at
 	'deletequeue-list-header-page' => 'Halaman',
 	'deletequeue-list-header-queue' => 'Antrean',
 	'deletequeue-list-header-votes' => 'Dukungan dan penolakan',
-	'deletequeue-list-header-expiry' => 'Kadaluwarsa',
+	'deletequeue-list-header-expiry' => 'Kedaluwarsa',
 	'deletequeue-list-header-discusspage' => 'Halaman pembicaraan',
 	'deletequeue-case-intro' => 'Halaman ini berisi informasi mengenai kasus penghapusan tertentu.',
 	'deletequeue-list-header-reason' => 'Alasan penghapusan',
@@ -3370,7 +3370,7 @@ Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan at
 	'deletequeue-case-details' => 'Rincian dasar',
 	'deletequeue-case-page' => 'Halaman:',
 	'deletequeue-case-reason' => 'Alasan:',
-	'deletequeue-case-expiry' => 'Kadaluwarsa:',
+	'deletequeue-case-expiry' => 'Kedaluwarsa:',
 	'deletequeue-case-needs-review' => 'Kasus ini membutuhkan [[$1|tinjauan]].',
 );
 
