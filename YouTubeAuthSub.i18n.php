@@ -2149,8 +2149,8 @@ Andraso.',
  */
 $messages['mk'] = array(
 	'youtubeauthsub' => 'Подигни YouTube видеоснимка',
-	'youtubeauthsub-desc' => 'Овозможува корисниците да [[Special:YouTubeAuthSub|подигаат видео записи]] директно на YouTube',
-	'youtubeauthsub_info' => 'За подигнување на видео запис на YouTube вгнезден во страница, пополнете ги следните информации:',
+	'youtubeauthsub-desc' => 'Овозможува корисниците да [[Special:YouTubeAuthSub|подигаат видеоснимки]] директно на YouTube',
+	'youtubeauthsub_info' => 'За да подигнете видеоснимка на YouTube за вметнување во страница, пополнете ги следните полиња:',
 	'youtubeauthsub_title' => 'Наслов',
 	'youtubeauthsub_description' => 'Опис',
 	'youtubeauthsub_password' => 'YouTube лозинка',
@@ -2161,19 +2161,19 @@ $messages['mk'] = array(
 	'youtubeauthsub_clickhere' => 'Кликнете тука за да се најавите на YouTube',
 	'youtubeauthsub_tokenerror' => 'Грешка при создавањето на потврдниот жетон. Обидете се повторно.',
 	'youtubeauthsub_success' => "Честитаме!
-Вашиот видео запис е подигнат.
-<a href='http://www.youtube.com/watch?v=$1'>Погледнете го вашиот видео запис</a>.
-Можеби ќе треба некое време YouTube да го подготви ведео записот, па нема да може да го погледнете токму сега.
+Вашата видеоснимка е подигната.
+<a href='http://www.youtube.com/watch?v=$1'>Поглдајте ја снимката</a>.
+На YouTube може да му треба извесно време за да обработи видеоснимката, па затоа може да не е достапна веднаш.
 
-За да го вгнездите вашиот видео запис на некоја вики страница, внесете го следниов код:
+За да ја вметнете снимката на некоја вики-страница, внесете го следниов код:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'За подигање на видеоснимка потребно е најпрвин да се најавите на YouTube.',
-	'youtubeauthsub_uploadhere' => 'Подигнување на видео записот од овде:',
-	'youtubeauthsub_uploadbutton' => 'Подигнување',
+	'youtubeauthsub_uploadhere' => 'Подигнете го видео-записот од овде:',
+	'youtubeauthsub_uploadbutton' => 'Подигни',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-[http://www.youtube.com/watch?v=$1 Погледни видео запис]',
-	'youtubeauthsub_summary' => 'Подигнување на YouTube видео запис',
+[http://www.youtube.com/watch?v=$1 Погледајте ја видеоснимката]',
+	'youtubeauthsub_summary' => 'Подигање на видеоснимка на YouTube',
 	'youtubeauthsub_uploading' => 'Видео записот се подигнува.
 Почекајте ...',
 	'youtubeauthsub_viewpage' => 'Или пак можете да го [[$1|погледнете видео записот]].',
