@@ -261,6 +261,7 @@ $messages['mk'] = array(
 	'ts-kml-on-ol-help' => 'Помош',
 	'ts-kml-on-ol-all' => 'Сите',
 	'ts-kml-on-ol-map-by' => 'Карта:',
+	'ts-kml-on-ol-wikipedia' => 'Википедија',
 );
 
 /** Malayalam (മലയാളം)
