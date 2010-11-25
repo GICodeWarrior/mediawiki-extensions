@@ -21,12 +21,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'SNMPquery',
 	'author'      => 'Rudy Rucker, Jr.',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:SNMPquery',
-	'description' => 'Add SNMP queries to your wiki!  Example: What is the uptime of your box?',
-	'version'     => '0.1',
-	);
+	'descriptionmsg' => 'snmpquery-desc',
+	'version'     => '0.1.1',
+);
+
+$dir = dirname( __FILE__ );
+$wgExtensionMessagesFiles['SNMPquery'] = $dir . '/SNMPquery.i18n.php';
 
 # Define a setup function
 $wgHooks['ParserFirstCallInit'][] = 'SNMP_Setup';
