@@ -148,9 +148,11 @@ class ContributionTracking extends UnlistedSpecialPage {
 			$output .= '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '" />';
 		}
 		
+		$output .= $this->msgWiki( 'contrib-tracking-redirect' );
+		
 		// Offer a button to post the form if the user has no Javascript support
-		$output .= $this->msgWiki( 'contrib-tracking-continue' );
-		$output .= '<input type="submit" value="' . $this->msg( 'contrib-tracking-button' ) . '" />';
+		//$output .= $this->msgWiki( 'contrib-tracking-continue' );
+		//$output .= '<input type="submit" value="' . $this->msg( 'contrib-tracking-button' ) . '" />';
 
 		$output .= '</form>';
 
