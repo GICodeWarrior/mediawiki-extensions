@@ -226,12 +226,18 @@ def exporter_launcher(args, **kwargs):
 def all_launcher(args, **kwargs):
     print 'all_launcher'
     timer = Timer()
-    dump_downloader_launcher(args, **kwargs)
-    chunker_launcher(args, **kwargs)
-    extract_launcher(args, **kwargs)
-    sort_launcher(args, **kwargs)
-    transformer_launcher(args, **kwargs)
-    exporter_launcher(args, **kwargs)
+    ignore = get_value(args, 'except')
+    functions = {dump_downloader_launcher: 'download',
+                 chunker_launcher: 'split',
+                 extract_launcher: 'extract',
+                 sort_launcher: 'sort',
+                 transformer_launcher: 'transform', 
+                 exporter_launcher: 'export'
+                }
+    for function, callname in functions.iteritems():
+        if callname not in ignore:
+            function(args, **kwargs)
+    
     timer.elapsed()
 
 
@@ -323,6 +329,10 @@ def main():
 
     parser_all = subparsers.add_parser('all', help='The all sub command runs the download, split, store and dataset commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
+    parser_all.add_argument('-e', '--except', action='store',
+                            help='Should be a list of functions that are to be ignored when executing \'all\'.',
+                            default=[])
+    
 
     parser.add_argument('-l', '--language', action='store',
                         help='Example of valid languages.',

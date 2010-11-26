@@ -138,23 +138,12 @@ def sort_edits(edits):
     edits = utils.merge_list(edits)
     return sorted(edits, key=itemgetter('date'))
 
-#def optimize_editors(input_queue, result_queue, pbar, **kwargs):
-#    dbname = kwargs.pop('dbname')
-#    mongo = db.init_mongo_db(dbname)
-#    input = mongo[dbname]
-#    output = mongo['dataset']
-#    output.ensure_index('editor')
-#    output.ensure_index('year_joined')
-#    definition = kwargs.pop('definition')
-
 
 def run_optimize_editors(dbname, collection):
-    ids = construct_datasets.retrieve_editor_ids_mongo(dbname, collection)
+    ids = exporter.retrieve_editor_ids_mongo(dbname, collection)
     kwargs = {'definition': 'traditional',
               'pbar': True,
               }
-    #input_db = db.init_mongo_db(dbname)
-    #output_db = db.init_mongo_db('dataset')
     tasks = multiprocessing.JoinableQueue()
     consumers = [EditorConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
     
@@ -171,7 +160,7 @@ def run_optimize_editors(dbname, collection):
 
 
 def debug_optimize_editors(dbname):
-    ids = construct_datasets.retrieve_editor_ids_mongo(dbname, 'editors')
+    ids = exporter.retrieve_editor_ids_mongo(dbname, 'editors')
     q = pc.load_queue(ids)
     kwargs = {'definition': 'traditional',
               'dbname': dbname

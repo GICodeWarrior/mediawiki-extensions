@@ -43,12 +43,15 @@ except ImportError:
 
 
 class Variable(object):
-
+    '''
+    This class constructs a time-based variable and has some associated simple 
+    statistical descriptives
+    '''
     def __init__(self, var):
-        setattr(self, 'name', var)
+        self.name = var
         self.stats = ['n', 'avg', 'sd', 'min', 'max']
-        setattr(self, 'time', shaper.create_datacontainer())
-        setattr(self, 'time', shaper.add_months_to_datacontainer(getattr(self, 'time'), datatype='dict'))
+        self.time = shaper.create_datacontainer()
+        self.time = shaper.add_months_to_datacontainer(getattr(self, 'time'), datatype='dict')
 
         for var in self.stats:
             setattr(self, var, shaper.create_datacontainer())
@@ -69,7 +72,10 @@ class Variable(object):
 
 
 class LongDataset(object):
-
+    '''
+    This class acts as a container for the Variable class and has some methods
+    to output the dataset to a csv file. 
+    '''
     def __init__(self, vars):
         self.name = 'long_dataset.tsv'
         self.vars = []
@@ -97,9 +103,8 @@ class LongDataset(object):
                 for m in months:
                     #d = calendar.monthrange(int(year), int(m))[1] #determines the number of days in a given month/year
                     #date = datetime.date(int(year), int(m), d)
-                    if id not in ds.time[year][m]:
-                        ds.time[year][m][id] = 0
-                    ds.time[year][m][id] = obs[var][year][str(m)]
+                    if id not in ds.time[year][m] and obs[var][year][str(m)] > 0:
+                        ds.time[year][m][id] = obs[var][year][str(m)]
 
     def write_longitudinal_data(self):
         fh = utils.create_txt_filehandle(settings.dataset_location, self.name, 'w', settings.encoding)
