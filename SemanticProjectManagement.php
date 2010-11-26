@@ -32,7 +32,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'SPM_VERSION', '0.3' );
+define( 'SPM_VERSION', '0.3.1' );
+
+$wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
+	'name' => 'Semantic Project Management',
+	'version' => SPM_VERSION,
+	'author' => array( 'Frank Dengler, Jonas Bissinger'),
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Project_Management',
+	'descriptionmsg' => 'semanticprojectmanagement-desc'
+);
 
 $spmgScriptPath = $wgScriptPath . '/extensions/SemanticProjectManagement';
 $spmgIP = $IP . '/extensions/SemanticProjectManagement';
@@ -59,22 +68,13 @@ $wgHooks['AdminLinks'][] = 'spmfAddToAdminLinks';
 $spmgFormats = array( 'ganttchart','wbs');
 
 function spmfSetup() {
-	global $spmgFormats, $wgExtensionCredits, $wgOut;
+	global $spmgFormats, $wgOut;
 
-	foreach ( $spmgFormats as $fn ) spmfInitFormat( $fn );
+	foreach ( $spmgFormats as $fn ) {
+		spmfInitFormat( $fn );
+	}
 	
 	$formats_list = implode( ', ', $spmgFormats );
-	$wgExtensionCredits['specialpage'][] = array(
-		'path' => __FILE__,
-		'name' => 'Semantic Project Management',
-		'version' => SPM_VERSION,
-		'author' => array( 'Frank Dengler, Jonas Bissinger'),
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Project_Management',
-		'descriptionmsg' => 'semanticprojectmanagement-desc'
-	);
-	
-	$dir = dirname(__FILE__);
-
 }
 
 function spmfInitFormat( $format ) {
