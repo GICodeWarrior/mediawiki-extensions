@@ -34,6 +34,8 @@ from utils import process_constructor as pc
 from etl import models
 import models as botmodels
 
+import cProfile
+
 try:
     import psyco
     psyco.full()
@@ -113,30 +115,28 @@ def lookup_bot_userid(xml_nodes, fh, **kwargs):
     '''
     lock = kwargs.get('lock')
     bots = kwargs.get('bots')
-    if settings.debug:
-        messages = {}
 
     revisions = xml_nodes.findall('revision')
     for revision in revisions:
         contributor = xml.retrieve_xml_node(revision, 'contributor')
         username = contributor.find('username')
-        if username == None:
+        if username == None or username.text == None:
             continue
-        username = xml.extract_text(username, None)
+        else:
+            username = username.text
         #print username.encode('utf-8')
         if username in bots and bots[username].verified == True:
-            id = contributor.find('id')
-            id = xml.extract_text(id, None)
+            id = contributor.find('id').text
             bot = bots[username]
-            bot_dict = convert_object_to_dict(bot, exclude=['time', 'name', 'written'])
-            bot_dict['_username'] = username
-            bot_dict['id'] = id
-            
+
             if not hasattr(bot, 'written'):
+                bot_dict = convert_object_to_dict(bot, exclude=['time', 'name', 'written'])
+                bot_dict['_username'] = username
+                bot_dict['id'] = id
                 lock.acquire()
                 utils.write_dict_to_csv(bot_dict, fh, write_key=False)
                 lock.release()
-            bot.written = True            
+                bot.written = True            
             #bots.pop(username)
             #if bots == {}:
             #    print 'Found id numbers for all bots.'
@@ -156,10 +156,6 @@ def lookup_bot_userid(xml_nodes, fh, **kwargs):
     #bot = bots.get('PseudoBot')
     #bot.hours_active()
     #bot.avg_lag_between_edits()
-    if settings.debug:
-        utils.report_error_messages(messages, lookup_bot_userid)
-
-
 
 
 def bot_launcher(language_code, project, single=False):
@@ -190,13 +186,17 @@ def bot_launcher(language_code, project, single=False):
     
     utils.store_object(bots, settings.binary_location, 'bots.bin')
     bot_training_dataset(bots)
+    store_bots()
     if bots != {}:
         print 'The script was unable to retrieve the user id\s for the following %s bots:\n' % len(bots)
         keys = bots.keys()
         for key in keys:
-            print '%s' % key
+            try:
+                print '%s' % key.encode(settings.encoding)
+            except:
+                pass
     
-    store_bots()
+    
 
 
 def bot_training_dataset(bots):
@@ -225,12 +225,8 @@ def bot_launcher_multi(tasks):
     tasks.join()
 
 
-def bot_detector_launcher():
-    bots = retrieve_bots()
-
-
-
 if __name__ == '__main__':
     language_code = 'en'
     project = 'wiki'
-    bot_launcher(language_code, project, single=False)
+    #bot_launcher(language_code, project, single=True)
+    cProfile.run(bot_launcher(language_code, project, single=False), 'profile')
