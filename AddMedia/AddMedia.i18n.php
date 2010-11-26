@@ -2992,6 +2992,7 @@ $messages['eu'] = array(
 	'fogg-videoCodec-title' => 'Bideo codec-a',
 	'fogg-width-title' => 'Bideoaren zabalera',
 	'fogg-height-title' => 'Bideoaren altuera',
+	'fogg-height-help' => 'Tamaina aldatu emandako altuerara.',
 	'fogg-novideo-title' => 'Bideorik ez',
 	'fogg-noaudio-title' => 'Audiorik ez',
 	'fogg-title-title' => 'Izenburua',
