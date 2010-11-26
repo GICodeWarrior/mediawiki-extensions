@@ -32,9 +32,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'SPM_VERSION', '0.3.1' );
+define( 'SPM_VERSION', '1.5' );
 
-$wgExtensionCredits['specialpage'][] = array(
+$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Semantic Project Management',
 	'version' => SPM_VERSION,
