@@ -54,7 +54,9 @@ $( document ).ready( function() {
 					},
 					dataType: 'json',
 					success: function( data ) {
-						$this.suggestions( 'suggestions', data[1] );
+						if ( data && 1 in data ) {
+							$this.suggestions( 'suggestions', data[1] );
+						}
 					}
 				});
 				$(this).data( 'request', request );
