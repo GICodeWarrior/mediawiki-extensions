@@ -13,11 +13,11 @@ $messages = array();
 /** English
  */
 $messages['en'] = array(
-	
-	'spm_wbs_link'     => 'MS Project XML export',
+	'spm_wbs_link' => 'MS Project XML export',
 	'spm_printername_wbs' => 'MS Project export',
 	'spm-name' => 'Semantic Project Management',
-	'spm-desc' => 'Project Management Formats for Semantic MediaWiki inline queries',
-    'semanticprojectmanagement-desc' => 'Project Management Formats for Semantic MediaWiki inline queries',
-    'semanticprojectmanagement' => 'Semantic Project Management'
+	'semanticprojectmanagement-desc' => 'Project Management Formats for Semantic MediaWiki inline queries',
+	'semanticprojectmanagement' => 'Semantic Project Management'
+	# 'right-SPMsetup' => '', FIXME: Add a description of this user right. It is shown at [[Special:ListGroupRights]]
 );
+
