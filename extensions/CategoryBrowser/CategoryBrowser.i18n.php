@@ -1531,9 +1531,19 @@ Paki bago o itaas ang antas ng iyong pantingin-tingin, kung maaari.',
  */
 $messages['tr'] = array(
 	'categorybrowser' => 'Kategori tarayıcısı',
+	'cb_cat_name_filter_ci' => 'Büyük küçük harf',
+	'cb_has_subcategories' => '{{PLURAL:$1|altkategori|altkategoriler}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|sayfa|sayfalar}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|dosya|dosya}}',
+	'cb_has_parentcategories' => 'Ana Kategoriler (varsa)',
 	'cb_previous_items_link' => 'Önceki',
 	'cb_next_items_link' => 'Sonraki',
 	'cb_next_items_stats' => '($1)',
+	'cb_cat_subcats' => 'Alt Kategoriler',
+	'cb_cat_pages' => 'Sayfalar',
+	'cb_cat_files' => 'Dosyalar',
+	'cb_apply_button' => 'Uygula',
+	'cb_all_op' => 'Hepsi',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

@@ -484,11 +484,29 @@ $messages['hsb'] = array(
 	'wikisync_apply_button' => 'Nałožić',
 	'wikisync_api_result_unknown_action' => 'Njeznata API-akcija',
 	'wikisync_api_result_invalid_parameter' => 'Njepłaćiwa parametrowa hódnota',
+	'wikisync_api_result_NoName' => 'Njejsy parameter lgname stajił',
 	'wikisync_api_result_Illegal' => 'Sy njedowolene wužiwarske mjeno podał',
 	'wikisync_api_result_NotExists' => 'Wužiwarske mjeno, kotrež sy podak, njeeksistuje.',
+	'wikisync_api_result_EmptyPass' => 'Njejsy parameter lgpassword stajił abo sy jón prózdny wostajił',
 	'wikisync_api_result_WrongPass' => 'Hesło, kotrež sy podał, je wopak',
 	'wikisync_api_result_WrongPluginPass' => 'Hesło, kotrež sy podał, je wopak',
+	'wikisync_api_result_Throttled' => 'Sy so w krótkim času přečasto přizjewił.',
 	'wikisync_api_result_Blocked' => 'Wužiwar je zablokowany',
+	'wikisync_api_result_Success' => 'Wuspěšnje do zdaleneho wikisydła přizjewjeny',
+	'wikisync_js_last_op_error' => 'Poslednja operacija je zmylk wróćiła.
+
+Kode: $1
+
+Zdźělenka: $2
+
+Klikń na [W porjadku], zo by posldenju operaciju wospjetował',
+	'wikisync_js_synchronization_confirmation' => 'Chceš woprawdźe 
+
+z $1
+
+do $2
+
+započinajo z wersiju $3 synchronizować?',
 	'wikisync_js_synchronization_success' => 'Synchronizacija je so wuspěšnje dokónčiła.',
 	'wikisync_js_sync_to_itself' => 'Njemóžeš wiki ze sobu synchronizować',
 	'wikisync_js_diff_search' => 'Rozdźěl w cilowych wersijach pytać',
@@ -1058,6 +1076,7 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author QuestPC
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'wikisync' => 'Синхронизация вики сайтов',
@@ -1086,13 +1105,22 @@ $messages['ru'] = array(
 	'wikisync_log_imported_by' => 'Импортировано с помощью [[Special:WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Загружено с помощью [[Special:WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Неизвестное действие (action) API',
+	'wikisync_api_result_exception' => 'Произошло исключение в местном API-вызове',
 	'wikisync_api_result_noaccess' => 'Только пользователи, входящие в нижеперечисленные группы, могут выполнять указанное действие: ($1)',
+	'wikisync_api_result_invalid_parameter' => 'Недопустимое значение параметра',
+	'wikisync_api_result_http' => 'Ошибка HTTP при запросе данных из отдаленного API',
+	'wikisync_api_result_Unsupported' => 'Ваша версия MediaWiki не поддерживается (менее 1.15)',
+	'wikisync_api_result_NoName' => 'Вы не установили параметр lgname',
 	'wikisync_api_result_Illegal' => 'Недопустимое имя пользователя',
 	'wikisync_api_result_NotExists' => 'Такого пользователя не существует',
+	'wikisync_api_result_EmptyPass' => 'Вы не установили параметр lgpassword, или оставили его пустым',
 	'wikisync_api_result_WrongPass' => 'Неверный пароль',
 	'wikisync_api_result_WrongPluginPass' => 'Неверный пароль для плагина авторизации',
+	'wikisync_api_result_CreateBlocked' => 'Вики попыталась автоматически создать для вас новую учетную запись, но для вашего IP-адреса установлен запрет на создание учётных записей',
 	'wikisync_api_result_Throttled' => 'Слишком много логинов в течение короткого времени.',
 	'wikisync_api_result_Blocked' => 'Пользователь заблокирован',
+	'wikisync_api_result_mustbeposted' => 'Модуль входа требует POST-запрос',
+	'wikisync_api_result_NeedToken' => 'Вы не указали либо токен входа, либо куку SessionID. Повторите запрос с токеном или кукой, указанными в данном ответе',
 	'wikisync_api_result_no_import_rights' => 'У пользователя нет прав на импортирование xml дампов',
 	'wikisync_api_result_Success' => 'Успешный заход на удалённый вики сайт',
 	'wikisync_js_last_op_error' => 'Последнее действие вызвало ошибку

@@ -159,6 +159,32 @@ Exemples :
 	'flagpage-tab' => 'Marquer',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'flagpage' => 'E Syte markiere',
+	'flagpage-desc' => 'Syte markiere mit vordefinierte Vorlage',
+	'flagpage-templatelist' => '<!--
+Die Syte bearbeite go d Vorlage fir s Markiere yystelle.
+Byschpel:
+* [[Vorlage:Belege fehlen|In däre Syte fähle Beleg.]]
+* [[Vorlage:Neutralität|D Neutralität vu däm Artikel isch umstritte.]]
+* [[Vorlage:Löschen|Die Syte isch zem sofortige Lesche vorgschlaa wore.]]
+-->',
+	'flagpage-nopageselectedtitle' => 'Kei Syte uusgwehlt',
+	'flagpage-nopageselected' => 'Du hesch kei Syte uusgwehlt',
+	'flagpage-emptylisttitle' => 'Kei Vorlage yygstellt.',
+	'flagpage-emptylist' => 'Du muesch Dyy Lischt vu dr Vorlage yystelle. Doderfir meusch d Syte [[{{ns:8}}:flagpage-templatelist]]  bearbeite.',
+	'flagpage-preview' => 'Vorschau vu dr uusgwehlte Vorlag:',
+	'flagpage-confirmsave' => 'Bitte Dyyni Änderige bstetige.',
+	'flagpage-submitbutton' => 'Syte mitsamt däre Vorlag spychere',
+	'flagpage-nonexistent' => 'D Syte „$1“ git s nit.. Villicht isch si [{{fullurl:Special:Log|page=$1}} verschobe oder glescht wore].',
+	'flagpage-summary' => 'Vorlag [[$1]] zuegfiegt mit FlagPage',
+	'flagpage-success' => '[[$1]] isch zue dr Syte [[$2]] zuegfiegt wore.',
+	'flagpage-tab' => 'Markiere',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -2067,6 +2067,7 @@ $messages['gsw'] = array(
 	'fundraiserstats-tab-averages' => 'Durchschnittswärt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Kaländerjohr (USD)',
+	'fundraiserstats-instructions' => 'Go Statischtike fir irged e Dag aaluege gang mit em Cursor iber dr Balke fir dää Dag. Jedes Johr het e anderi Farb in dr Grafik.',
 );
 
 /** Hebrew (עברית)
@@ -2692,6 +2693,7 @@ $messages['ja'] = array(
 	'fundraiserstats-tab-averages' => '平均 (米ドル)',
 	'fundraiserstats-tab-maximums' => '最大 (米ドル)',
 	'fundraiserstats-tab-ytd' => '年度累計 (米ドル)',
+	'fundraiserstats-instructions' => '特定の日の統計を表示するには、その日のバーにカーソルを合わせてください。毎年のグラフはグラフ上で別の色で表示されています。',
 );
 
 /** Javanese (Basa Jawa)
