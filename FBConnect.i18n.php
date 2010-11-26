@@ -1091,12 +1091,16 @@ $messages['hsb'] = array(
 	'fbconnect-logout' => 'Z Facebook wotzjewić',
 	'fbconnect-link' => 'Wróćo k facebook.com',
 	'fbconnect-title' => 'Konto z Facebookom zwjazać',
+	'fbconnect-intro' => 'Tutón wiki je z Facebook connect zmóžnjeny, přichodne wuwiće platformy Facebook.
+To woznamjenja, zo móžeš, hdyž sy zwjazany, někotre dalše funkcije wužiwać, přidatnje k normalnym [[Wikipedia:Help:Logging in#Why log in?|lěpšinam]], kotrež při přizjewjenju widźeš.',
 	'fbconnect-click-to-login' => 'Klikń, zo by so přez Facebook pola tutoho sydła přizjewił',
 	'fbconnect-click-to-connect-existing' => 'Klikń, zo by swoje konto Facebook z $1 zwjazał',
 	'fbconnect-conv' => 'Komfortabelnosć',
 	'fbconnect-convdesc' => 'Zwjzani wužiwarjo su awtomatisce přizjewjeni.
 Jeli prawo je date, da móže tutón wiki Facebook samo jako e-mejlowy proksy wužiwać. Přez to móžeš dale wažne zdźělenki dóstać, bjez toho zo dyrbiš swoju e-mejlowu adresu wotkryć.',
 	'fbconnect-fbml' => 'Woznamjenjenska rěč Facebook',
+	'fbconnect-fbmldesc' => 'Facebook je rjad zatwarjenych tafličkow k dispoziciji stajił, kotrež budu dynamiske daty rysować.
+Wjele z tutych tafličkow móže so do wikiteksta zasunyć a budźe so rozdźělnje rysować, wotwisujo wot toho, kotry wužiwar sej je wobhladuje.',
 	'fbconnect-comm' => 'Komunikacija',
 	'fbconnect-commdesc' => 'Facebook Connect připowěduje cyle nowu runinu dźěłanja w syći.
 Hlej, kotři z twojich přećelow tutón wiki wužiwaja, a wužij swoje akcije zhromadnje ze swojimi přećelemi na kanalu nowinkow we Facebooku.',
@@ -1143,6 +1147,7 @@ Jeli chceš Facebook Connect wužiwać, hdyž so přichodnje přizjewiš, móže
 	'fbconnect-error-user-creation-hook-aborted' => 'Rozšěrjenje přetorhny załoženje konta ze slědowacej zdźělenku: $1',
 	'fbconnect-prefstext' => 'Facebook Connect',
 	'fbconnect-link-to-profile' => 'Profil Facebook',
+	'fbconnect-prefsheader' => "Zo by wodźił, kotre podawki pósćelu element do kanala nowinkow Facebook, <a id='fbConnectPushEventBar_show' href='#'>nastajenja pokazać</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>nastajenja schować</a>",
 	'fbconnect-prefs-can-be-updated' => 'Móžeš je kóždy čas aktualizować, hdyž je na rajtarku "$1" na stronje twojich nastajenjow změniš.',
 );
 
