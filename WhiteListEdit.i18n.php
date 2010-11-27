@@ -2731,7 +2731,7 @@ $messages['pdc'] = array(
 	'whitelisttablemodifynone' => 'Nix tscheensche',
 	'whitelisttablepage' => 'Blatt',
 	'whitelisttableedit' => 'Ennere',
-	'whitelistnever' => 'nie net',
+	'whitelistnever' => 'nie naett',
 );
 
 /** Pfälzisch (Pfälzisch)
