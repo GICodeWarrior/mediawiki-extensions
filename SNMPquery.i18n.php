@@ -16,10 +16,11 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'snmpquery-desc' => 'Дадае функцыі SNMPget і SNMPwalk і вяртае зьместкі ў вікі',
+	'snmpquery-desc' => 'Дадае функцыі SNMPget і SNMPwalk і вяртае зьвесткі ў {{GRAMMAR:родны|{{SITENAME}}}}',
 );
 
 /** German (Deutsch)
@@ -69,6 +70,13 @@ $messages['id'] = array(
  */
 $messages['mk'] = array(
 	'snmpquery-desc' => 'Додај функции SNMPget и SNMPwalk и врати ги податоците во викито',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'snmpquery-desc' => 'Dodaje funkcje SNMPget i SNMPwalk zwracające pobrane dane do wiki',
 );
 
 /** Piedmontese (Piemontèis)
