@@ -156,12 +156,11 @@ def chunker_launcher(args, **kwargs):
     language = kwargs.pop('language')
     language_code = kwargs.pop('language_code')
     ext = utils.determine_file_extension(filename)
-    if ext in settings.compression_extensions:
-        ext = '.%s' % ext
-        file = filename.replace(ext, '')
+    if ext in settings.compression.keys():
+        file = filename.replace('.'+ ext, '')
     result = utils.check_file_exists(location, file)
     if not result:
-        retcode = launch_zip_extractor(args, location, filename)
+        retcode = launch_zip_extractor(args, location, filename, ext)
     else:
         retcode = 0
     if retcode != 0:
@@ -170,9 +169,9 @@ def chunker_launcher(args, **kwargs):
     timer.elapsed()
 
 
-def launch_zip_extractor(args, location, file):
+def launch_zip_extractor(args, location, file, ext):
     timer = Timer()
-    utils.zip_extract(location, file)
+    utils.zip_extract(location, file, ext)
     timer.elapsed()
 
 

@@ -35,3 +35,10 @@ class PlatformNotSupportedError(Error):
 
     def __str__(self):
         print 'Platform %s is not supported' % self.platform
+
+class CompressionNotSupportedError(Error):
+    def __init__(self, extension):
+        self.extension = extension
+        
+    def __str__(self):
+        print 'You have not installed a program to extract %s archives.' % self.extension

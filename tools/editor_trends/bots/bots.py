@@ -23,6 +23,7 @@ import cStringIO
 import multiprocessing
 import xml.etree.cElementTree as cElementTree
 import sys
+from Queue import Empty
 sys.path.append('..')
 
 import configuration
@@ -83,7 +84,7 @@ def store_bots():
     This file reads the results from the lookup_bot_userid function and stores
     it in a MongoDB collection. 
     '''
-    bots = read_bots_csv_file(settings.csv_location, 'bots_ids.csv', settings.encoding)
+    bots = utils.read_dict_from_csv(settings.csv_location, 'bots_ids.csv', settings.encoding)
     mongo = db.init_mongo_db('bots')
     collection = mongo['ids']
     db.remove_documents_from_mongo_db(collection, None)
@@ -179,8 +180,13 @@ def bot_launcher(language_code, project, single=False):
         tasks.put(models.XMLFile(input, settings.csv_location, file, bots, lookup_bot_userid, 'bots_ids.csv', lock=lock))
 
     if single:
-        task = tasks.get(block=False)
-        task()
+        while True:
+            try:
+                print '%s files left in the queue...' % tasks.qsize()
+                task = tasks.get(block=False)
+                task()
+            except Empty:
+                break
     else:
         bot_launcher_multi(tasks)
     
@@ -229,4 +235,4 @@ if __name__ == '__main__':
     language_code = 'en'
     project = 'wiki'
     #bot_launcher(language_code, project, single=True)
-    cProfile.run(bot_launcher(language_code, project, single=False), 'profile')
+    cProfile.run(bot_launcher(language_code, project, single=True), 'profile')

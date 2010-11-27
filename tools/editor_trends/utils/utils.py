@@ -354,40 +354,7 @@ def retrieve_file_list(location, extension, mask=None):
     return files
 
 
-def zip_archive(location, source, compression='7z'):
-    '''
-    @path is the absolute path to the zip program
-    @location is the directory where to store the compressed file
-    @source is the name of the zipfile
-    '''
-    output, ext = source.split('.')
-    output = output + '.7z'
-    path = settings.path_ziptool
-    if settings.platform == 'Windows':
-        p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'a', '-scsUTF-8', '-t%s' % compression, '%s\\%s' % (location,output), '%s\\%s' % (location,source)], shell=True).wait()
-    elif settings.platform == 'Linux':
-        raise NotImplementedError
-    elif settings.platform == 'OSX':
-        raise NotImplementedError
-    else:
-        raise exceptions.PlatformNotSupportedError
 
-
-def zip_extract(location, source):
-    '''
-    @path is the absolute path to the zip program
-    @location is the directory where to store the compressed file
-    @source is the name of the zipfile
-    '''
-    path = settings.path_ziptool
-    if settings.platform == 'Windows':
-        p = subprocess.Popen(['%s%s' % (path, '7z.exe'), 'e', '-o%s\\' % location, '%s' % (source,)], shell=True).wait()
-    elif settings.platform == 'Linux':
-        raise NotImplementedError
-    elif settings.platform == 'OSX':
-        raise NotImplementedError
-    else:
-        raise exceptions.PlatformNotSupportedError
 
 
 def merge_list(datalist):

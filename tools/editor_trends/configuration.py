@@ -42,6 +42,7 @@ try:
 except ImportError:
     pass
 
+
 class Settings(object):
 
         def __init__(self, debug=True, process_multiplier=1, **kwargs):
@@ -58,22 +59,22 @@ class Settings(object):
             self.wp_dump_location = 'http://download.wikimedia.org'
             self.xml_namespace = 'http://www.mediawiki.org/xml/export-0.4/'
             self.ascii_extensions = ['txt', 'csv', 'xml', 'sql', 'json']
+            self.windows_register = {'7z.exe': 'Software\\7-Zip', }
             #Extensions of ascii files, this is used to determine the filemode to use
-            self.compression_extensions = ['gz', 'bz2', '7z']
             self.platform = self.determine_platform()
+            #self.compression = self.init_compression_tools()
+
             self.architecture = platform.machine()
             self.working_directory = self.determine_working_directory()
             self.update_python_path()
 
             self.root = '/' if self.platform != 'Windows' else 'c:\\'
-            self.ziptool = self.determine_ziptool()
             self.file_locations = self.set_file_locations()
             self.max_filehandles = self.determine_max_filehandles_open()
 
-            self.windows_register = {'7z.exe': 'Software\\7-Zip', }
+
             self.load_configuration()
             self.set_custom_settings(**kwargs)
-            self.path_ziptool = self.determine_path_ziptool() 
             self.projects = {'wiki': 'wikipedia',
                              'commons': 'commonswiki',
                              'books': 'wikibooks',
@@ -92,6 +93,8 @@ class Settings(object):
                              'usability_initiative': 'usabilitywiki',
                              'multilingual_wikisource': None
                             }
+
+
 
         def set_custom_settings(self, **kwargs):
             for kw in kwargs:
@@ -120,9 +123,9 @@ class Settings(object):
            else:
                return os
 
-        def determine_path_ziptool(self):
-            return self.detect_installed_program(self.determine_ziptool())
-    
+        #def determine_path_ziptool(self):
+        #    return self.detect_installed_program(self.determine_ziptool())
+
 
         def verify_environment(self, directories):
             for dir in directories:
@@ -133,23 +136,28 @@ class Settings(object):
                         raise 'Configuration Error, could not create directory.'
 
         def detect_windows_program(self, program):
-            entry = self.windows_register[program]
+            entry = self.windows_register.get(program, None)
             try:
                 key = OpenKey(HKEY_CURRENT_USER, entry, 0, KEY_READ)
                 return QueryValueEx(key, 'Path')[0]
             except WindowsError:
                 return None
-        
+
         def detect_linux_program(self, program):
-            path = subprocess.Popen(['which', '%s' % program],stdout=subprocess.PIPE).communicate()[0]
-            return path.replace('\n','')
-        
+            path = subprocess.Popen(['which', '%s' % program], stdout=subprocess.PIPE).communicate()[0]
+            return path.replace('\n', '')
+
         def detect_installed_program(self, program):
             if self.platform == 'Windows':
+                if not program.endswith('.exe'):
+                    program = program + '.exe'
                 path = self.detect_windows_program(program)
             elif self.platform == 'Linux':
                 path = self.detect_linux_program(program)
-            return path
+            if path != None:
+                return path + program
+            else:
+                return path
 
         def determine_max_filehandles_open(self):
             if self.platform == 'Windows' and self.architecture == 'i386':
@@ -168,11 +176,7 @@ class Settings(object):
                    sys.path.append(os.path.join(self.working_directory,
                                                 subdirname))
 
-        def determine_ziptool(self):
-            tools = {'OSX': None,
-                    'Windows': '7z.exe',
-                    'Linux': 'unzip'}
-            return tools[self.platform]
+
 
         def set_file_locations(self):
             self.input_location = os.path.join(self.root, 'wikimedia')
