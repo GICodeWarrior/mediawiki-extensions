@@ -313,6 +313,13 @@ $messages['no'] = array(
 	'semanticformsinputs-today' => 'I dag',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'semanticformsinputs-next' => 'Neegschte',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

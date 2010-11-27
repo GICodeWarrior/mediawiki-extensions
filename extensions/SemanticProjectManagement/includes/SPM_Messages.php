@@ -63,6 +63,30 @@ $messages['id'] = array(
 	'semanticprojectmanagement' => 'Manajemen Proyek Semantik',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'spm_wbs_link' => 'XML-извоз на МС Проект',
+	'spm_printername_wbs' => 'Извоз на МС Проект',
+	'spm-name' => 'Раководење со семантички проект',
+	'semanticprojectmanagement-desc' => 'Формат за раководење на проект за барања во редови со Семантички МедијаВики',
+	'semanticprojectmanagement' => 'Раководење со семантички проект',
+	'right-SPMsetup' => 'Основни нагодувања за семантички проект',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'spm_wbs_link' => 'Eksport XML do MS Project',
+	'spm_printername_wbs' => 'Eksport do MS Project',
+	'spm-name' => 'Zarządzanie projektem semantycznym',
+	'semanticprojectmanagement-desc' => 'Formaty zarządzania projektami dla zapytań semantycznego MediaWiki',
+	'semanticprojectmanagement' => 'Zarządzanie projektem semantycznym',
+	'right-SPMsetup' => 'Edycja podstawowych ustawień zarządzania projektem semantycznym',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

@@ -558,7 +558,11 @@ $messages['rue'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'massblank' => 'Praznjenje strani',
+	'massblank-submit-user' => 'Pojdi',
+	'massblank-submit-blank' => 'Izprazni izbrane',
 	'massblank-blankcomment' => 'Razlog:',
+	'right-massblank' => 'Množično praznjenje strani',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

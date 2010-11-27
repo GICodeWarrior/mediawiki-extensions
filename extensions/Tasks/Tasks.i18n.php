@@ -2839,7 +2839,7 @@ $messages['pdc'] = array(
 	'tasks_table_header_page' => 'Blatt',
 	'tasks_search_form_title' => 'Uffgucke',
 	'tasks_previous' => 'Letscht',
-	'tasks_next' => 'Neegscht',
+	'tasks_next' => 'Neegschter',
 	'tasks_logentry' => 'fer „[[$1]]“',
 );
 

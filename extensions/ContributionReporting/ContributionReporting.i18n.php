@@ -1050,6 +1050,7 @@ $messages['de'] = array(
 	'fundraiserstats-tab-averages' => 'Durchschnittswerte (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Aufgelaufen im Jahr (USD)',
+	'fundraiserstats-instructions' => 'Um Statistiken für jeden Tag anzusehen, fahre mit der Maus über die Säule des betreffenden Tages. Jedes Jahr ist im Diagramm andersfarbig.',
 );
 
 /** Zazaki (Zazaki)

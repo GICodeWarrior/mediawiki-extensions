@@ -51,6 +51,7 @@ $messages['qqq'] = array(
 	'ea-send' => '{{Identical|Send}}',
 	'ea-subject' => '{{Identical|Subject}}',
 	'ea-message' => '{{Identical|Message}}',
+	'ea-data' => '{{Identical|Data}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -144,7 +145,7 @@ $messages['be-tarask'] = array(
 	'ea-send' => 'Даслаць',
 	'ea-subject' => 'Тэма:',
 	'ea-message' => 'Паведамленьне:',
-	'ea-message-info' => 'Далучыць зьмест з магчымым паведамленьнем фармату вікі',
+	'ea-message-info' => 'Далучыць зьмест з магчымым паведамленьнем у вікі-фармаце',
 	'ea-style' => 'Стыль:',
 	'ea-selectcss' => 'Вы можаце выбраць табліцу стыляў',
 	'ea-data' => 'Зьвесткі',
@@ -819,6 +820,13 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'ea-denied' => 'అనుమతిని నిరాకరించాం',
 	'ea-send' => 'పంపించు!',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'ea-data' => 'Дані',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -697,7 +697,7 @@ Birincisi ya da "şablon" ispatı gerekmektedir.',
  * @author Тест
  */
 $messages['uk'] = array(
-	'datatransclusion-bad-template-name' => 'Неправильна назва шаблону: $1.',
+	'datatransclusion-bad-template-name' => 'Неправильна назва шаблона: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> не існує.',
 );
 
