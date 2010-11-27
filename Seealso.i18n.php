@@ -510,7 +510,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'seealso' => 'Guck aach',
+	'seealso' => 'Guck aa',
 );
 
 /** Polish (Polski)
