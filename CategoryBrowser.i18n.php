@@ -1128,6 +1128,13 @@ Endre eller oppgrader nettleseren din, om mulig.',
 	'cb_edit_paste_right_hint' => 'Lim operator inn i neste posisjon, om mulig',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'cb_next_items_link' => 'Neegschte',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
