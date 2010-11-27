@@ -2531,9 +2531,11 @@ $messages['pa'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'ogg-short-general' => 'Ogg-$1-Mediafeil, $2',
 	'ogg-more' => 'Mehr…',
 	'ogg-dismiss' => 'Zumache',
 	'ogg-download' => 'Feil runnerlaade',
+	'ogg-desc-link' => 'Iwwer sell Feil',
 );
 
 /** Polish (Polski)
