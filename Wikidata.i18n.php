@@ -9988,7 +9988,7 @@ $messages['pdc'] = array(
 	'importlangnames_not_found' => '<strong>Ken Schprooch fer „$1“ gfunne!</strong>',
 	'datasearch_language' => 'Schprooch:',
 	'datasearch_found_word' => 'Watt gfunne',
-	'datasearch_meaning' => 'Meaning',
+	'datasearch_meaning' => 'Meening',
 	'datasearch_within_words' => 'In Wadde drin:',
 	'ow_importtsv_nothing_added' => 'Nix dezu geduh.',
 	'ow_exporttsv_languages' => 'Schprooche:',
@@ -10010,7 +10010,7 @@ $messages['pdc'] = array(
 	'ow_upload' => 'Ufflaade',
 	'ow_create' => 'Schtaerte',
 	'ow_suggest_previous' => 'Letscht',
-	'ow_suggest_next' => 'Neegscht',
+	'ow_suggest_next' => 'Neegschte',
 );
 
 /** Polish (Polski)
