@@ -1074,7 +1074,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'scanset_next' => 'Neegscht →',
+	'scanset_next' => 'Neegschter →',
 	'scanset_prev' => '← Letscht',
 );
 
