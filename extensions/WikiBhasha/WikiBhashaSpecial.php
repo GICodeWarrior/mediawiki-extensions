@@ -32,7 +32,7 @@ class WikiBhasha extends SpecialPage {
 	 * Constructor
 	 */
 	function __construct() {
-		parent::SpecialPage( 'WikiBhasha', '', true );
+		parent::__construct( 'WikiBhasha', '', true );
 	}
 
 	/**
