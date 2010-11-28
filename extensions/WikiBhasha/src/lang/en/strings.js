@@ -92,7 +92,7 @@
                                     " content in their respective language Wikipedias. WikiBhasha started as a research project in" +
                                     " Microsoft Research. It is now being made available as an open source project on MediaWiki." +
                                     " The tools is also available as a user gadget in Wikipedia as well as a bookmarklet from" +
-                                    " <a href=\"www.wikibhasha.org\">www.WikiBhasha.org</a>. Please comply with Wikipedia’s norms"+
+                                    " <a href=\"http://www.wikibhasha.org/\" class=\"external\">www.WikiBhasha.org</a>. Please comply with Wikipedia’s norms"+
                                     " for content contribution." +
                                     "<br><br>" +
                                     "Current WikiBhasha beta version: 1.0.0<br><br>" +
@@ -101,7 +101,7 @@
                                     "Firefox 3.5 or above on Linux Fedora 11/12.  " +
                                     "<b><P><P> Supported Languages: </b><P><P>\t" +
                                     "Currently WikiBhasha (Beta) supports all language pairs supported by"+
-                                    " <a href=' http://www.microsofttranslator.com' target='_BLANK'>Microsoft Translator</a> (where"+
+                                    " <a href=\"http://www.microsofttranslator.com/\" class=\"external\">Microsoft Translator</a> (where"+
                                     " the source language is English)<P><P>"
                                     ],
         nonWikiDomainMsg:           "Please select a valid article from wikipedia and invoke WikiBhasha.",
