@@ -190,6 +190,7 @@ $messages['br'] = array(
 	'ea-send' => 'Kas',
 	'ea-subject' => 'Danvez :',
 	'ea-message' => 'Postel :',
+	'ea-message-info' => 'Lakaat ur gemennadenn diret e wikistestenn a-raok danvez ar postel',
 	'ea-style' => 'Stil :',
 	'ea-selectcss' => 'Dibabit ur follenn stil CSS',
 	'ea-data' => 'Roadennoù',
@@ -491,8 +492,9 @@ $messages['lb'] = array(
 	'ea-denied' => 'Rechter refuséiert',
 	'ea-show' => 'Adressate weisen',
 	'ea-send' => 'Schécken!',
-	'ea-subject' => "Gitt w.e.g. e Sujet fir d'E-Mail an",
-	'ea-selectcss' => "Een ''CSS Stylesheet'' auswielen",
+	'ea-subject' => 'Sujet:',
+	'ea-selectcss' => "Dir kënnt een ''CSS Stylesheet'' eraussichen",
+	'ea-allusers' => 'All Benotzer',
 );
 
 /** Macedonian (Македонски)
@@ -600,10 +602,13 @@ $messages['nl'] = array(
 	'ea-sent' => "Pagina [[$1]] is verstuurd naar '''$2''' {{PLURAL:$2|ontvanger|ontvangers}} door [[User:$3|$3]].",
 	'ea-compose' => 'Inhoud samenstellen',
 	'ea-show' => 'Ontvangers weergeven',
+	'ea-from' => 'Van:',
 	'ea-send' => 'Versturen',
-	'ea-subject' => 'Voer een onderwerp in voor de e-mail',
-	'ea-message' => 'Laat de pagina-inhoud vooraf gaan door een bericht (in wikitekst)',
-	'ea-selectcss' => 'Selecteer een CSS',
+	'ea-subject' => 'Onderwerp:',
+	'ea-message' => 'Bericht:',
+	'ea-selectcss' => 'U kunt een stylesheet selecteren',
+	'ea-data' => 'Gegevens',
+	'ea-allusers' => 'Alle gebruikers',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -791,6 +796,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Fader
  * @author Jon Harald Søby
  * @author M.M.S.
  */
@@ -807,6 +813,8 @@ $messages['sv'] = array(
 	'ea-sent' => "Sidan [[$1]] har skickats till '''$2''' {{PLURAL:$2|mottagare|mottagare}} av [[User:$3|$3]].",
 	'ea-compose' => 'Komponera innehåll',
 	'ea-show' => 'Visa mottagare',
+	'ea-from' => 'Från:',
+	'ea-to' => 'Till:',
 	'ea-send' => 'Skicka!',
 	'ea-subject' => 'Ange ett ämne för e-brevet',
 	'ea-message' => 'Fyll innehållet med ett valfritt meddelande (wikitext)',
@@ -844,9 +852,15 @@ $messages['vi'] = array(
 	'ea-sent' => "Trang [[$1]] đã được [[User:$3|$3]] gửi thành công đến '''$2''' {{PLURAL:$2|người nhận|người nhận}}.",
 	'ea-compose' => 'Soạn nội dung',
 	'ea-show' => 'Hiển thị người nhận',
+	'ea-from' => 'Từ:',
+	'ea-to' => 'Đến:',
+	'ea-cc' => 'Đồng gửi:',
 	'ea-send' => 'Gửi!',
-	'ea-subject' => 'Nhập vào dòng tiêu đề cho thư điện tử',
-	'ea-message' => 'Gắn nội dung với thông điệp tùy chọn (văn bản wiki)',
-	'ea-selectcss' => 'Lựa chọn một kiểu trình bày CSS',
+	'ea-subject' => 'Tiêu đề:',
+	'ea-message' => 'Thông điệp',
+	'ea-message-info' => 'Gắn nội dung với thông điệp mã wiki tùy chọn',
+	'ea-style' => 'Kiểu:',
+	'ea-selectcss' => 'Có thể chọn tập tin định kiểu',
+	'ea-data' => 'Dữ liệu',
 );
 
