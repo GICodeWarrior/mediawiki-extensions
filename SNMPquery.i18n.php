@@ -23,6 +23,13 @@ $messages['be-tarask'] = array(
 	'snmpquery-desc' => 'Дадае функцыі SNMPget і SNMPwalk і вяртае зьвесткі ў {{GRAMMAR:родны|{{SITENAME}}}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'snmpquery-desc' => "Ouzhpennañ a ra an arc'hwelioù SNMPget ha SNMPwalk hag adkas ar ra ar roadennoù er wiki",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
