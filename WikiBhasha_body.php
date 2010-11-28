@@ -25,9 +25,9 @@
 *	this file contains the functions to populate the content to the special page
 *
 */
-class Wikibhasha extends SpecialPage {
+class WikiBhasha extends SpecialPage {
 	function __construct() {
-		parent::__construct( 'Wikibhasha' );
+		parent::__construct( 'WikiBhasha' );
 	}
 
 	function execute( $par ) {
