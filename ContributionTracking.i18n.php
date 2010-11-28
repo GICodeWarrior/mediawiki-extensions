@@ -160,6 +160,7 @@ $messages['br'] = array(
 	'contrib-tracking-error-text' => 'Furmskrid kaset direizh',
 	'contrib-tracking-submitting' => "O kas d'ar reizhiad tretiñ ar paeamantoù...",
 	'contrib-tracking-continue' => 'Ma ne vezit ket adkaset ent emgefre, klikit war ar bouton-mañ evit kas da benn ho paeamant gant Paypal.',
+	'contrib-tracking-redirect' => 'Adkaset e viot ent emgefre war-zu PayPal evit seveniñ an donezon.',
 	'contrib-tracking-button' => "Kenderc'hel",
 );
 
