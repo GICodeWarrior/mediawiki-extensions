@@ -25,9 +25,22 @@ $messages['en'] = array(
 $messages['de'] = array(
 	'spm_wbs_link' => '„MS Project“-XML-Export',
 	'spm_printername_wbs' => '„MS Project“-Export',
-	'spm-name' => 'Semantic Project Management',
+	'spm-name' => 'Semantisches Projektmanagement',
 	'semanticprojectmanagement-desc' => 'Stellt Semantic MediaWiki zusätzliche, beim Projektmanagement nützliche, Ausgabeformate für eingebettete Abfragen zur Verfügung',
 	'semanticprojectmanagement' => 'Semantisches Projektmanagement',
+	'right-SPMsetup' => 'Bearbeiten der grundlegenden Einstellungen von Semantisches Projektmanagement',
+);
+
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'spm_wbs_link' => 'Export XML de MS Project',
+	'spm_printername_wbs' => 'Export de MS Project',
+	'spm-name' => 'Gestion de projet sémantique',
+	'semanticprojectmanagement-desc' => 'Formats de gestion de projet pour les requêtes de Semantic MediaWiki',
+	'semanticprojectmanagement' => 'Gestion de projet sémantique',
+	'right-SPMsetup' => 'Modifier les paramètres basiques de gestion de projet sémantique',
 );
 
 /** Swiss German (Alemannisch)
@@ -39,6 +52,18 @@ $messages['gsw'] = array(
 	'spm-name' => 'Semantic Project Management',
 	'semanticprojectmanagement-desc' => 'Projäktmanagement-Format fir Semantic MediaWiki inline-Abfroge',
 	'semanticprojectmanagement' => 'Semantisch Projäktmanagement',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'spm_wbs_link' => 'XML-eksport do MS Project',
+	'spm_printername_wbs' => 'Eksport do MS Project',
+	'spm-name' => 'Zarjadowanje semantiskeho projekta',
+	'semanticprojectmanagement-desc' => 'Formaty projektoweho zarjadowanja za naprašowanja semantiskeho MediaWiki',
+	'semanticprojectmanagement' => 'Zarjadowanje semantiskeho projekta',
+	'right-SPMsetup' => 'Zakładne nastajenja zarjadowanja semantikseho projekta wobdźěłać',
 );
 
 /** Interlingua (Interlingua)
@@ -61,6 +86,7 @@ $messages['id'] = array(
 	'spm-name' => 'Manajemen Proyek Semantik',
 	'semanticprojectmanagement-desc' => 'Format manajemen proyek untuk pertanyaan sisip MediaWiki Semantik',
 	'semanticprojectmanagement' => 'Manajemen Proyek Semantik',
+	'right-SPMsetup' => 'Sunting pengaturan dasar manajemen proyek semantik',
 );
 
 /** Macedonian (Македонски)

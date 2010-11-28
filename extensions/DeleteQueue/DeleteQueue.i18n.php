@@ -864,6 +864,9 @@ $messages['br'] = array(
 *Mar kav deoc'h emañ danvez ar bajenn-mañ diouti e c'hallit [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} kinnig ma vo \"diverket raktal''].
 *Mar ne gav ket deoc'h emañ danvez ar bajenn diouzh dezverkoù un diverkadenn brim met emañ \"dellezek da vezañ diverket digudenn\", e c'hallit [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} kinnig ma vo diverket hep tabut].
 *Mar kav deoc'h e c'hall bezañ \"sach-blev\" a-zivout kinnig diverkañ ar bajenn e tlefec'h [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} digeriñ ur gaoz].",
+	'deletequeue-action-text-queued' => 'Gallout a rit sellet ouzh ar pajennoù da-heul evit ar pezh a sell ouzh an diverkadenn-mañ :
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Gwelet an aprouadennoù hag ar soñjoù enep].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Aprouiñ diverkadenn ar bajenn-mañ pe sevel a-enep].',
 	'deletequeue-permissions-noedit' => "Ret eo deoc'h bezañ gouest da gemmañ ur bajenn a-benn reiñ d'ur bajenn he statud da zilemel.",
 	'deletequeue-generic-reasons' => "* Abegoù boutinañ
 ** Vandalerezh

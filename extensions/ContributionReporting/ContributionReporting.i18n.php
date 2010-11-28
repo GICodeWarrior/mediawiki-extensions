@@ -209,7 +209,7 @@ $messages['an'] = array(
 	'contributionreporting-desc' => 'Informe en vivo sobre a replega de fondos de Wikimedia',
 	'contributiontotal' => 'Contrebución total',
 	'contributionhistory' => 'Historial de contrebucions',
-	'contrib-hist-header' => "Comentarios d'os donadors de tot o mundo en tiempo reyal",
+	'contrib-hist-header' => "Comentarios d'os donadors de tot o mundo",
 	'contrib-hist-name' => 'Nombre',
 	'contrib-hist-date' => 'Calendata y hora',
 	'contrib-hist-amount' => 'Cantidat:',
@@ -3563,6 +3563,7 @@ $messages['nl'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddelden (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar tot op heden (USD)',
+	'fundraiserstats-instructions' => 'Om de statistieken voor een dag te bekijken, kunt u met de muisaanwijzer over de balk voor die dag bewegen. Ieder jaar heeft een andere kleur in de grafiek.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

@@ -376,6 +376,13 @@ Przykłady:
 	'flagpage-nopageselected' => 'Nie określiłeś żadnej strony',
 	'flagpage-emptylisttitle' => 'Nie skonfigurowano szablonów',
 	'flagpage-emptylist' => 'Należy skonfigurować listę szablonów. Edytuj [[{{ns:8}}:flagpage-templatelist]] jeśli chcesz to zrobić.',
+	'flagpage-preview' => 'Podgląd wybranego szablonu',
+	'flagpage-confirmsave' => 'Potwierdź zmiany.',
+	'flagpage-submitbutton' => 'Zapisz stronę z tym szablonem',
+	'flagpage-nonexistent' => 'Strona „$1” nie istnieje. Być może została [{{fullurl:Special:Log|strona=$1}} przeniesiona lub usunięta].',
+	'flagpage-summary' => 'Dodano szablon [[$1]] za pomocą FlagPage',
+	'flagpage-success' => '[[$1]] został dodany do strony [[$2]].',
+	'flagpage-tab' => 'Flaga',
 );
 
 /** Piedmontese (Piemontèis)
@@ -454,5 +461,17 @@ Exemplos:
 	'flagpage-summary' => 'Adicionar a predefinição [[$1]] usando FlagPage',
 	'flagpage-success' => '[[$1]] foi adicionada a página [[$2]].',
 	'flagpage-tab' => 'Marcar',
+);
+
+/** Swedish (Svenska)
+ * @author Fader
+ */
+$messages['sv'] = array(
+	'flagpage' => 'Flagga en sida',
+	'flagpage-nopageselectedtitle' => 'Ingen sida vald',
+	'flagpage-confirmsave' => 'Vänligen bekräfta dina ändringar.',
+	'flagpage-nonexistent' => 'Sidan “$1” existerar inte. Kanske har den [{{fullurl:Special:Log|page=$1}} flyttats eller tagits bort].',
+	'flagpage-success' => '[[$1]] har lagts till på sidan [[$2]].',
+	'flagpage-tab' => 'Flagga',
 );
 

@@ -352,10 +352,13 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author El libre
  * @author Solde
  */
 $messages['ca'] = array(
 	'patrol-revert-reason' => 'Motiu:',
+	'group-patroller' => 'Patrullers/es',
+	'group-patroller-member' => 'Patruller/a',
 );
 
 /** Chechen (Нохчийн) */

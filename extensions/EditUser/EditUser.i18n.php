@@ -78,7 +78,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'edituser-username' => 'Nombre',
+	'edituser-username' => "Nombre d'usuario:",
 );
 
 /** Old English (Ænglisc)
