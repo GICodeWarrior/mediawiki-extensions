@@ -330,10 +330,15 @@ class SIOHandler {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 
-		// first param should be a standalone property name
+		// First param should be a standalone property name.
 		$objToPagePropName = array_shift( $params );
 
-		$results = SMWParserExtensions::getDatesForRecurringEvent( $params );
+		// The location of this function changed in SMW 1.5.3
+		if ( class_exists( 'SMWSetRecurringEvent' ) ) {
+			$results = SMWSetRecurringEvent::getDatesForRecurringEvent( $params );
+		} else {
+			$results = SMWParserExtensions::getDatesForRecurringEvent( $params );
+		}
 		if ( $results == null ) {
 			return null;
 		}
