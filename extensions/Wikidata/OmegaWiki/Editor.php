@@ -705,7 +705,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$headerRows = getStructureAsTableHeaderRows( $visibleStructure, $columnOffset, $idPath );
 
 		if ( $this->allowRemove )
-			$headerRows[0] = '<th class="remove" rowspan="' . count( $headerRows ) . '"><img src="' . $wgStylePath . '/amethyst/delete.png" title="' . wfMsgSc( "RemoveHint" ) . '" alt="' . wfMsgSc( "Remove" ) . '"/></th>' . $headerRows[0];
+			$headerRows[0] = '<th class="remove" rowspan="' . count( $headerRows ) . '"><img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Delete.png"  title="' . wfMsgSc( "RemoveHint" ) . '" alt="' . wfMsgSc( "Remove" ) . '"/></th>' . $headerRows[0];
 
 		if ( $this->repeatInput )
 			$headerRows[0] .= '<th class="add" rowspan="' . count( $headerRows ) . '">Input rows</th>';
