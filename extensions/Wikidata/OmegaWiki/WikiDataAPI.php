@@ -1001,19 +1001,35 @@ function createOptionAttributeOption( $attributeId, $optionMeaningId, $languageI
 function removeOptionAttributeOption( $optionId ) {
 	$dc = wdGetDataSetContext();
 	$dbr = wfGetDB( DB_MASTER );
-	$transactionId = getUpdateTransactionId() ;
-	$sql = "UPDATE {$dc}_option_attribute_options" .
+
+	// first check if the option attribute option is still in use
+	$sql = "SELECT * FROM {$dc}_option_attribute_values" .
+		' WHERE option_id = ' . $optionId .
+		' AND remove_transaction_id IS NULL' ;
+	$queryResult = $dbr->query( $sql );
+  
+	if ( $dbr->numRows( $queryResult ) > 0 ) {
+		echo "\nThe option $optionId cannot be deleted because it is still in use!\n" ;
+	} else {
+		// option not used, can proceed to delete
+		$transactionId = getUpdateTransactionId() ;
+		$sql = "UPDATE {$dc}_option_attribute_options" .
 			' SET remove_transaction_id = ' . $transactionId .
 			' WHERE option_id = ' . $optionId .
 			' AND ' . getLatestTransactionRestriction( "{$dc}_option_attribute_options" );
-	$dbr->query( $sql );
+		$dbr->query( $sql );
+	}
 
-	// and remove the attribute values in the syntrans using this option.
+	// alternatively to checking if the attribute option is in use
+	// we could remove all the attribute values in the syntrans using this option.
+  // this is however a bit dangerous (deletes too many information with just one click)
+/*
 	$sql = "UPDATE {$dc}_option_attribute_values" .
-			' SET remove_transaction_id = ' . $transactionId .
-			' WHERE option_id = ' . $optionId .
-			' AND remove_transaction_id IS NULL' ;
+		' SET remove_transaction_id = ' . $transactionId .
+		' WHERE option_id = ' . $optionId .
+		' AND remove_transaction_id IS NULL' ;
 	$dbr->query( $sql );
+*/
 }
 
 /**
@@ -1129,11 +1145,10 @@ function getSpellingForLanguage( $definedMeaningId, $languageCode, $fallbackLang
 }
 
 function isClass( $objectId ) {
-	global
-		$wgDefaultClassMids;
-	
+	global $wgDefaultClassMids;
+
 	$result = in_array( $objectId, $wgDefaultClassMids );
-	
+
 	if ( !$result ) {
 		$dc = wdGetDataSetContext();
 		$dbr = & wfGetDB( DB_SLAVE );
@@ -1576,8 +1591,7 @@ function definedMeaningExpressionForAnyLanguage( $definedMeaningId ) {
  * @param $definedMeaningId
  */
 function definedMeaningExpression( $definedMeaningId ) {
-	global
-		$wgUser;
+	global $wgUser;
 	
 	$userLanguage = getLanguageIdForCode( $wgUser->getOption( 'language' ) );
 	
