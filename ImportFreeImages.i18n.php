@@ -84,6 +84,7 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'importfreeimages_size_thumbnail' => 'Miniatura',
 	'importfreeimages_size_small' => 'Chicot',
 );
 
