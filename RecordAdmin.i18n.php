@@ -2259,7 +2259,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'recordadmin' => 'Quản lý bản ghi',
-	'recordadmin-desc' => 'Một [[Special:RecordAdmin|trang đặc biệt]] để tìm kiếm và sửa đổi các trang bản ghi bằng cách dùng một mẫu có sẵn',
+	'recordadmin-desc' => 'Tìm kiếm, truy vấn, biểu mẫu, và báo cáo dữ liệu wiki dẫn xuất từ tham số bản mẫu',
 	'recordadmin-select' => 'Chọn một loại bản ghi để quản lý',
 	'recordadmin-newsearch' => 'Tìm $1 mới',
 	'recordadmin-newrecord' => 'Chọn một loại bản ghi khác',
@@ -2275,6 +2275,9 @@ $messages['vi'] = array(
 	'recordadmin-editlink' => 'sửa đổi',
 	'recordadmin-actions' => 'Tác động',
 	'recordadmin-needscontent' => 'Thêm nội dung…',
+	'recordadmin-export-csv' => 'Phân cách bằng dấu phẩy',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-properties' => 'Thuộc tính',
 );
 
 /** Yiddish (ייִדיש)
