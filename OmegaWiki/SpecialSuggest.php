@@ -128,13 +128,14 @@ function getSuggestions() {
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "%$search%" );
 		else if ( $query == 'class' )
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "$search%" );
-		else if ( $query == 'language' or
-			$query == "$wgDefinedMeaningAttributes" or // should be 'relation-type' in html, there is a bug I cannot find
+		else if ( $query == "$wgDefinedMeaningAttributes" or // should be 'relation-type' in html, there is a bug I cannot find
 			$query == "$wgLinkAttribute" or
 			$query == "$wgOptionAttribute" or
 			$query == 'translated-text-attribute' or
 			$query == 'text-attribute' )
 			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "$search%" );
+		else if ( $query == 'language' )
+			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "%$search%" );
 		else if ( $query == 'relation-type' or // not sure in which case 'relation-type' happens...
 			$query == 'collection' )
 			$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes( "$search%" );
