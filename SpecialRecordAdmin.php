@@ -27,7 +27,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $template;
 
 	function __construct() {
-		parent::SpecialPage( 'RecordAdmin', 'recordadmin', true, false, 'default', true );
+		parent::__construct( 'RecordAdmin', 'recordadmin', true, false, 'default', true );
 	}
 
 	function execute( $param ) {
