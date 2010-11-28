@@ -50,6 +50,13 @@ $messages['af'] = array(
 	'ts-kml-on-ol-map-by' => 'Kaart deur',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'ts-kml-on-ol-thumbnails' => 'Miniatura',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
