@@ -427,6 +427,11 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
                     // Rehook events to links. Once element is removed and added back, link events disappear, so rehooking is needed.
                     wbDisplayPaneHelper.registerLinksForHistoryTracking(wbSourceOriginalPane.$currentChildElem);
+
+					//getting the language service provider object for CTF popup
+                    if(wbLanguageServices.fetchLanguageServiceProviderObject){
+                        wbLanguageServices.fetchLanguageServiceProviderObject(historyItem);
+                    }
                 }
                 else {
                     //if content not available in history item then load it from API calls
@@ -443,6 +448,8 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             else {
                 this.$contentElem.html("<div>" + wbLocal.sourceArticleNotApplicable + "</div>");
             }
+			//apply the CTF popup state
+            wbDisplayPaneManager.toggleCTFDisplay();
         },
 
         onShow: function() {
@@ -532,6 +539,11 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                         if (wbLanguageServices.exitButtonElementId && $("#" + wbMainWindow.windowId).length === 0) {
                             $("#" + wbLanguageServices.exitButtonElementId).get(0).onclick();
                         }
+						//create language service provider object in the history item 
+                        if(wbLanguageServices.setLanguageServiceProviderObject){
+                            wbLanguageServices.setLanguageServiceProviderObject(historyItem);
+                        }
+                        wbDisplayPaneManager.toggleCTFDisplay();
                         //as soon as translation is done, enable the default Cursor
                         wbUIHelper.changeCursorToDefault();
                     });
@@ -540,6 +552,10 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             //else updates the history item with the content
             else if (historyItem) {
                 historyItem.content = $childElem;
+				//create language service provider object in the history item
+                if(wbLanguageServices.setLanguageServiceProviderObject){
+                    wbLanguageServices.setLanguageServiceProviderObject(historyItem);
+                }
             }
         },
 
@@ -928,7 +944,16 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             // log the fact that user used this feature
             wbLoggerService.logFeatureUsage(wbGlobalSettings.sessionId, "WikiModeSwitch", isShowWikimarkupMode);
         },
+		//enable/disable CTF popup display
+        toggleCTFDisplay: function() {
+            var isShowCTFPopup = wbDisplayPaneHelper.isShowCTFPopupChecked();
+            if (wbLanguageServices.onCTFDisplayModeChanged) {
+                wbLanguageServices.onCTFDisplayModeChanged(isShowCTFPopup);
+            }
 
+            // log the fact that user used this feature
+            wbLoggerService.logFeatureUsage(wbGlobalSettings.sessionId, "CTFPopupDisplay", isShowCTFPopup);
+        },
         //removes content DIVs from application display.
         removeContentDiv: function(parentElement) {
             var previousArticleContent = parentElement.find(".articleContentDiv");
@@ -952,12 +977,19 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         initialize: function() {
             wbDisplayPaneHelper.$showWikimarkupCheckBox = $("#wbToggleWikiFormat");
+			wbDisplayPaneHelper.$showCTFPopup = $("#wbToggleCTF");
         },
 
         //checks the value of display mode check box.
         isShowWikimarkupChecked: function() {
             return wbDisplayPaneHelper.$showWikimarkupCheckBox.attr("checked");
         },
+
+		//checks the value of CTF popup display check box.
+        isShowCTFPopupChecked: function() {
+            return wbDisplayPaneHelper.$showCTFPopup.attr("checked");
+        },
+
         //loads the content to pane and highlights it using wiki or hybrid mode appropriately
         loadHighlightContent: function(childContent, displayPane, doNotParse, isSystemText) {
             wbUIHelper.changeCursorToHourGlass();

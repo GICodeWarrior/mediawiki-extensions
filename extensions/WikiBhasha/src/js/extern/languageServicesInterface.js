@@ -31,7 +31,34 @@ if (typeof (wikiBhasha.extern) === "undefined") {
         translationAPI: "http://www.microsofttranslator.com/ajax/v2/toolkit.ashx?siteData=Z6N2xQ1EGnakgC6d5-2bqyn8HanvRK5-lNxPYEMrEBgU1cuhJ1v6tOtshhuFOTekTtt6OcyEnzF14qob_7h35iX3x1h6x49fgbZ4gYuQvVzXufdqTVDIb_E2VYtdha3I",
         // Id of button in translation toolbar clicking on which will exit the toolbar.
         exitButtonElementId: "MSTTExitLink",
-        
+
+        languageServiceProvider: "",
+
+        //set the language service provider object in history item
+        setLanguageServiceProviderObject: function(historyItem){
+            if(wbLanguageServices.languageServiceProvider && wbLanguageServices.languageServiceProvider.setTooltips){
+                historyItem.languageServiceProvider=wbLanguageServices.languageServiceProvider;
+            }
+            return;
+        },
+
+        //retrive the language service provider object from history and use it for the current panes
+        fetchLanguageServiceProviderObject: function(historyItem){
+            wbLanguageServices.languageServiceProvider = historyItem.languageServiceProvider;
+        },
+
+        // Implement this method if CTF feature is implemented and CTF popup needed to be enabled and disabled
+        // The value of checkbox is passed as first parameter
+        onCTFDisplayModeChanged: function(isShowCTFPopupMode) {
+            if (isShowCTFPopupMode) {
+                wbLanguageServices.languageServiceProvider.setTooltips(false, false);
+            }
+            else {
+                wbLanguageServices.languageServiceProvider.setTooltips(false, true);
+            }
+            return;
+        },
+
         //translates given text using Microsoft translator API
         translate: function($sourceText, sourceLanguage, targetLanguage, callback) {
             var translationApi = wikiBhasha.extern.msLanguageServicesInterface.translationAPI;
@@ -62,20 +89,23 @@ if (typeof (wikiBhasha.extern) === "undefined") {
                 var srcElm = sourceElement.get(0),
                     trgElm = targetElement.get(0),
 
-                // construct BV control instance for Step #1
-                // Bilinugal Viewer (BV) is a UI control that provides many useful features like side-by-side 
+                // construct Bilinugal Viewer (BV) control instance for Step #1
+                // BV is a UI control that provides many useful features like side-by-side 
                 // display of source and translated content with synchronized scrolling and highlighting features.
-                // BE is used for Step#1 of WikiBhasha, to provide intuitive mechanism for presenting parallel material.
+                // BV is used for Step#1 of WikiBhasha, to provide intuitive mechanism for presenting parallel material.
                 // BV is a published external API from Microsoft.
-                bv = new Microsoft.Translator.BilingualViewer(srcElm, trgElm, wbGlobalSettings.sourceLanguageCode, wbGlobalSettings.mtTargetLanguageCode);
+                languageServiceProvider = new Microsoft.Translator.BilingualViewer(srcElm, trgElm, wbGlobalSettings.sourceLanguageCode, wbGlobalSettings.mtTargetLanguageCode);
+                
+                //set the language service provider object
+                wbLanguageServices.languageServiceProvider = languageServiceProvider;
 
-                //set whether to show tooltips (CTF) for left & right (source/target) content respectively
+                // set whether to show tooltips (CTF) for left & right (source/target) content respectively
                 // The Collaborative Translation Framework (CTF) is a collaborative feature that is available as a 
                 // tooltip in BV UI Control.  Enable this feature, to provide sharing of translation knowledge.
-                bv.setTooltips(false, true);
+                wbDisplayPaneManager.toggleCTFDisplay();
 
                 //initiate the translation
-                bv.translate(function() {
+                languageServiceProvider.translate(function() {
                     if (onTranslationCompleted) {
                         onTranslationCompleted();
                         }

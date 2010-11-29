@@ -225,6 +225,11 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 $("#wbToggleWikiFormat").click(function() {
                     wbDisplayPaneManager.toggleDisplayMode();
                 });
+
+				//bind click event to toggle between wiki and html formats
+                $("#wbToggleCTF").click(function() {
+                     wbDisplayPaneManager.toggleCTFDisplay();
+                });
             }
 
             wbWorkflow.stepsArray = stepsArray;
