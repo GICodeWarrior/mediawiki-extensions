@@ -626,3 +626,11 @@ div.wbEmptyContentMessage
     line-height:1em;
     margin-left:10px;
 }
+#wbToggleLabel
+{
+    width:150px
+}
+#wbToggleCTFLabel
+{
+    width:150px
+}

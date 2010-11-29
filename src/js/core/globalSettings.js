@@ -421,6 +421,7 @@ applicationWindowHTML:'<div id="wbTranslationDiv" >\
 <div id="wbRightWindow">\
 <div class="wbHeader" style="height:25px;">\
 <div class="wikiModeSwitcher">\
+<label id="wbToggleCTFLabel" for="wbToggleCTF"><input id="wbToggleCTF" type="checkbox" tabindex="0" />Disable Translation Popup</label>\
 <label id="wbToggleLabel" for="wbToggleWikiFormat"><input id="wbToggleWikiFormat" type="checkbox" tabindex="0" />Show Wikiformat</label>\
 </div>\
 </div>\
