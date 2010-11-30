@@ -3092,8 +3092,18 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Mjbmr
  */
 $messages['fa'] = array(
+	'configure-desc-group' => 'گروه',
+	'configure-edit-core' => 'مدیاویکی',
+	'configure-edit-ext' => 'افزونه‌ها',
+	'configure-ext-settings' => 'تنظیمات',
+	'configure-section-performance' => 'کارایی',
+	'configure-section-images' => 'پرونده‌ها',
+	'configure-section-specialpages' => 'صفحه‌های ویژه',
+	'configure-section-recentchanges' => 'تغییرات اخیر',
+	'configure-section-users' => 'کاربرها',
 	'viewconfig' => 'نمایش پیکربندی ویکی',
 );
 
@@ -4130,7 +4140,7 @@ $messages['he'] = array(
 	'configure-ext-ext-dependencies' => "'''אזהרה:''' הרחבה זו דורשת את הפעלת ה{{PLURAL:$2|הרחבה הבאה|הרחבות הבאות}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''שגיאה:''' ההרחבה $1 דורשת את הפעלת ההרחבה $2.",
 	'configure-ext-doc' => 'עיון בתיעוד מקוון',
-	'configure-ext-schemachange' => "'''אזהרה:''' הרחבה זו דורשת עדכון בבסיס הנתונים כדי לעבוד כראוי!",
+	'configure-ext-schemachange' => "'''אזהרה:''' הרחבה זו דורשת [http://www.mediawiki.org/wiki/Manual:Update.php עדכון בבסיס הנתונים] כדי לעבוד כראוי!",
 	'configure-ext-settings' => 'הגדרות',
 	'configure-ext-settings-dep-errors' => 'לא ניתן להפעיל הרחבה זו כיוון של{{PLURAL:$1|הגדרה הבאה|הגדרות הבאות}} יש ערך בלתי תקין:',
 	'configure-ext-settings-dep-error' => '$1: ערך נדרש: $2, ערך נוכחי: $3',
@@ -4190,13 +4200,13 @@ $messages['he'] = array(
 	'configure-section-enotif' => 'התראה בדוא"ל',
 	'configure-section-localization' => 'שפות',
 	'configure-section-timezone' => 'אזור זמן',
-	'configure-section-zh-conversion' => 'המרת סינית',
 	'configure-section-html' => 'HTML',
 	'configure-section-debug' => 'ניפוי שגיאות',
 	'configure-section-profiling' => 'בדיקות מהירות',
 	'configure-section-site' => 'התאמת האתר',
 	'configure-section-ajax' => 'Ajax',
 	'configure-section-css-js' => 'CSS ו־JavaScript',
+	'configure-section-resourceloader' => 'טוען המשאבים',
 	'configure-section-namespaces' => 'מרחבי שם',
 	'configure-section-stats' => 'סטטיסטיקות האתר',
 	'configure-section-skin' => 'עיצובים',
