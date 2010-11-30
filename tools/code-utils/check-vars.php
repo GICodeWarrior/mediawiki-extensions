@@ -153,6 +153,8 @@ class CheckVars {
 			'$mmfl' => array( 'mergeMessageFileList.php' ),
 			'$checkBlacklist' => array( 'checkLanguage.inc' ),
 			'$stderr' => array( 'serialize.php' ),
+			'$col' => array( 'UtfNormalTest2.php' ),
+			'$lineNo' => array( 'UtfNormalTest2.php' ),
 		);
 
 	function setGenerateDeprecatedList( $bool = true ) {
