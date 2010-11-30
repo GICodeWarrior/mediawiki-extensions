@@ -529,6 +529,20 @@ $messages['eu'] = array(
 	'amazonplus-less' => 'gutxiago',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'amazonplus-used' => 'استفاده شده',
+	'amazonplus-german' => 'آلمانی',
+	'amazonplus-french' => 'فرانسوی',
+	'amazonplus-japanese' => 'ژاپنی',
+	'amazonplus-new' => 'جدید',
+	'amazonplus-cp-none' => 'هیچ کدام',
+	'amazonplus-more' => 'بیشتر',
+	'amazonplus-less' => 'کمتر',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Mobe
