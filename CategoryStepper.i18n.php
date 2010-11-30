@@ -429,6 +429,14 @@ $messages['lo'] = array(
 	'categorystepper-start' => '(ເລິ່ມໝວດ)',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'categorystepper-end' => '(Kategorejis beigys)',
+	'categorystepper-start' => '(Kategorejis suokys)',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  */
