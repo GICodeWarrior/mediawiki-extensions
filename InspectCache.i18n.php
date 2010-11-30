@@ -422,6 +422,7 @@ $messages['he'] = array(
 	'inspectcache-delete' => 'מחיקה',
 	'inspectcache-deleted' => 'מטמון שנמחק',
 	'inspectcache-list' => 'הצגה',
+	'right-inspectcache' => 'צפייה ומחיקה של רשומות במטמון',
 );
 
 /** Hindi (हिन्दी)
