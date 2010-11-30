@@ -1078,6 +1078,13 @@ $messages['pdc'] = array(
 	'scanset_prev' => '← Letscht',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'scanset_next' => 'Negschter →',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
