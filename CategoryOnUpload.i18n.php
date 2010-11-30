@@ -219,6 +219,13 @@ $messages['eu'] = array(
 	'categoryonupload-label' => 'Kategoria:',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'categoryonupload-label' => 'رده:',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Mobe
