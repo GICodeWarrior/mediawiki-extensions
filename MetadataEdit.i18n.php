@@ -466,8 +466,11 @@ $messages['hak'] = array(
 	'metadata_help' => 'Ngièn sṳ-kí:',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
 $messages['he'] = array(
+	'metadataedit-desc' => 'הוספת קטגוריות, קישורי שפה ותבניות אפשריות בתיבת טקסט נפרדת בעת עריכת דפים',
 	'metadata_help' => 'מטא־דטה:',
 );
 
