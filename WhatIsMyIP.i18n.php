@@ -288,10 +288,13 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author BlueDevil
  * @author Huji
+ * @author Mjbmr
  */
 $messages['fa'] = array(
 	'whatismyip' => 'نشانی آی‌پی من چیست',
+	'whatismyip-desc' => 'نمایش [[Special:WhatIsMyIP|نشانی آی‌پی]] کاربران فعلی',
 	'whatismyip-out' => 'نشانی آی‌پی شما:',
+	'right-whatismyip' => 'مشاهده [[Special:WhatIsMyIP|نشانی آی‌پی خودم]]',
 );
 
 /** Finnish (Suomi)
