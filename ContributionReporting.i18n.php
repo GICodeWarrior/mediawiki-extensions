@@ -708,6 +708,7 @@ $messages['br'] = array(
 	'fundraiserstats-tab-averages' => 'Keidennoù (SUA)',
 	'fundraiserstats-tab-maximums' => 'Sammadoù brasañ (dollaroù SUA)',
 	'fundraiserstats-tab-ytd' => 'Er bloavezh (USD)',
+	'fundraiserstats-instructions' => 'Evit diskwel ar stadegoù evit un deiz resis, lakait ar reti war ar varrenn evit an deiz-se. Ul liv disheñvel zo bet lakaet da bep bloaz war ar grafik.',
 );
 
 /** Bosnian (Bosanski)
@@ -1196,6 +1197,7 @@ $messages['dsb'] = array(
 	'fundraiserstats-tab-averages' => 'Pśerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 	'fundraiserstats-tab-ytd' => 'Doněnta w lěśe (USD)',
+	'fundraiserstats-instructions' => 'Aby se woglědał statistiku za źeń, staj kursor nad grědu za ten źeń. Kužde lěto ma drugu barwu na diagramje.',
 );
 
 /** Greek (Ελληνικά)
@@ -1818,6 +1820,7 @@ $messages['fr'] = array(
 	'fundraiserstats-tab-averages' => 'Moyennes (dollars US)',
 	'fundraiserstats-tab-maximums' => 'Maximums (dollars US)',
 	'fundraiserstats-tab-ytd' => 'Année en cours (dollars US)',
+	'fundraiserstats-instructions' => 'Pour afficher les statistiques d’un jour donné, placer le curseur sur la barre pour ce jour. Chaque année est représentée d’une couleur différente sur le graphique.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -2144,6 +2147,7 @@ $messages['he'] = array(
 	'fundraiserstats-tab-averages' => 'ממוצע (USD)',
 	'fundraiserstats-tab-maximums' => 'מקסימום (USD)',
 	'fundraiserstats-tab-ytd' => 'השנה (USD)',
+	'fundraiserstats-instructions' => 'כדי לצפות בסטטיסטיקה ליום כלשהו, יש לעבור עם סמן העכבר על הפס של אותו היום. לכל שנה יש צבע משלה בתרשים.',
 );
 
 /** Croatian (Hrvatski)
@@ -2295,6 +2299,7 @@ $messages['hsb'] = array(
 	'fundraiserstats-tab-averages' => 'Přerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 	'fundraiserstats-tab-ytd' => 'Dotal w lěće (USD)',
+	'fundraiserstats-instructions' => 'Zo by sej statistiku na dźeń wobhladał, staj kursor nad hrjadu za tón dźeń. Kóžde lěto ma druhu barbu na diagramje.',
 );
 
 /** Hungarian (Magyar)
@@ -3285,6 +3290,7 @@ $messages['mk'] = array(
 	'fundraiserstats-tab-averages' => 'Просеци (USD)',
 	'fundraiserstats-tab-maximums' => 'Највисоки (USD)',
 	'fundraiserstats-tab-ytd' => 'Догодина на овој ден (USD)',
+	'fundraiserstats-instructions' => 'За да ги прегледате статитстиките за извесен ден, одете со слушецот врз столбот за тој ден. Секоја година е претставена со своја боја.',
 );
 
 /** Malayalam (മലയാളം)
