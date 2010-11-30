@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'snmpquery-desc' => 'Add SNMPget and SNMPwalk functions and return the data into the wiki',
 );
 
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
+$messages['qqq'] = array(
+	'snmpquery-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -77,6 +84,13 @@ $messages['id'] = array(
  */
 $messages['mk'] = array(
 	'snmpquery-desc' => 'Додај функции SNMPget и SNMPwalk и врати ги податоците во викито',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'snmpquery-desc' => 'Voegt de functies SNMPget en SNMPwalk toe en levert deze gegevens aan de wiki',
 );
 
 /** Polish (Polski)
