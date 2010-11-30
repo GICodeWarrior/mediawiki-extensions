@@ -2848,6 +2848,8 @@ $messages['pdc'] = array(
  */
 $messages['pfl'] = array(
 	'tasks_noone' => 'kään',
+	'tasks_previous' => 'Voriche',
+	'tasks_next' => 'Negschter',
 );
 
 /** Polish (Polski)
