@@ -498,10 +498,13 @@ $messages['he'] = array(
 	'watchers-desc' => 'הצגה [[Special:Watchers|אילו משתמשים עוקבים אחרי דף זה]]',
 	'watchers_link_title' => 'מי עוקב אחרי דף זה?',
 	'watchers_error_article' => "'''שגיאה:''' הדף אינו קיים.",
+	'watchers-error-invalid-page' => "'''שגיאה:''' \"\$1\" אינו שם תקני לדף.",
 	'watchers_header' => '{{PLURAL:$2|משתמש העוקב|משתמשים העוקבים}} אחרי "[[:$1]]"',
 	'watchers_noone_watches' => 'אף אחד לא עוקב אחר דף זה.',
-	'watchers_x_or_more' => '{{PLURAL:$1|משתמש אחד|$1 משתמשים}} או יותר עוקבים אחרי דף זה.',
+	'watchers_x_or_more' => '{{PLURAL:$1|משתמש אחד|$1 משתמשים}} או יותר כללו את הדף [[:$2]] ברשימת המעקב שלהם.',
 	'watchers_less_than_x' => 'פחות מ{{PLURAL:$1|משתמש אחד עוקב|־$1 משתמשים עוקבים}} אחרי דף זה.',
+	'watchers-num' => '{{PLURAL:$1|משתמש אחד|%1 משתמשים}} כללו את הדף [[:$2]] ברשימת המעקב {{PLURAL:$1|שלו|שלהם}}.',
+	'right-watchers-list' => '[[Special:Watchers|הצגת משתמשים העוקבים אחר דף מסוים]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
