@@ -1652,6 +1652,7 @@ $messages['tt-cyrl'] = array(
 /** Ukrainian (Українська)
  * @author Aleksandrit
  * @author Alex Khimich
+ * @author Тест
  */
 $messages['uk'] = array(
 	'form-desc' => '[[Special:Form|Інтерфейс]] (в вигляді форми) для створення нових сторінок',
@@ -1664,7 +1665,7 @@ $messages['uk'] = array(
 	'formtitlepattern' => 'Додати нову $1',
 	'formsave' => 'Зберегти',
 	'formindexmismatch-title' => 'Невідповідність зразку та шаблону',
-	'formindexmismatch' => 'Ця форма має невідповдність імені та шаблону в позиції $1.',
+	'formindexmismatch' => 'Ця форма має невідповідність імен моделей та шаблонів, починаючи з індексу $1.',
 	'formarticleexists' => 'Сторінка існує',
 	'formarticleexiststext' => 'Сторінка [[$1]] вже існує.',
 	'formbadpagename' => 'Невірна назва для сторінки',
