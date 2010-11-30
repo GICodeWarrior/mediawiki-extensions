@@ -110,6 +110,13 @@ $messages['gsw'] = array(
 	'groupssidebar-desc' => 'Die erwyterig macht s megli benutzergruppespezifischi Elemänt in d syteleischte yyzbinde',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'groupssidebar-desc' => 'הרחבה זו מאפשרת למנהלי אתרים להוסיף רכיבי לסרגל הצד של קבוצות משתמשים מסוימות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
