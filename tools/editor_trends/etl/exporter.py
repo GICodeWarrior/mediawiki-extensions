@@ -21,7 +21,7 @@ import sys
 import datetime
 from dateutil.relativedelta import *
 import calendar
-from multiprocessing import Queue
+import multiprocessing
 from Queue import Empty
 
 
@@ -32,8 +32,6 @@ settings = configuration.Settings()
 from utils import models, utils
 from database import db
 from etl import shaper
-from utils import process_constructor as pc
-import progressbar
 
 try:
     import psyco
@@ -181,10 +179,10 @@ def expand_headers(headers, vars_to_expand, obs):
     return headers
 
 
-def generate_long_editor_dataset(input_queue, vars, **kwargs):
-    dbname = kwargs.pop('dbname')
+def generate_long_editor_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
-    editors = mongo['dataset']
+    vars = ['monthly_edits']
+    editors = mongo[collection + 'dataset']
     name = dbname + '_long_editors.csv'
     #fh = utils.create_txt_filehandle(settings.dataset_location, name, 'w', settings.encoding)
     vars_to_expand = []
@@ -202,11 +200,9 @@ def generate_long_editor_dataset(input_queue, vars, **kwargs):
     ld.write_longitudinal_data()
 
 
-def generate_cohort_analysis(input_queue, **kwargs):
-    dbname = kwargs.get('dbname')
-    pbar = kwargs.get('pbar')
+def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
-    editors = mongo['dataset']
+    editors = mongo[collection + 'dataset']
     year = datetime.datetime.now().year + 1
     begin = year - 2001
     p = [3, 6, 9]
@@ -215,7 +211,7 @@ def generate_cohort_analysis(input_queue, **kwargs):
     data = {}
     while True:
         try:
-            id = input_queue.get(block=False)
+            id = tasks.get(block=False)
             obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
             first_edit = obs['first_edit']
             last_edit = obs['final_edit']
@@ -244,7 +240,6 @@ def generate_cohort_analysis(input_queue, **kwargs):
                     p = min(edits)
                     data[y]['n'] += 1
                     data[y][p] += 1
-            #pbar.update(+1)
         except Empty:
             break
     utils.store_object(data, settings.binary_location, 'cohort_data')
@@ -257,20 +252,16 @@ def date_falls_in_window(window_start, window_end, first_edit, last_edit):
         return False
 
 
-def generate_wide_editor_dataset(input_queue, **kwargs):
-    dbname = kwargs.pop('dbname')
+def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
-    editors = mongo['dataset']
+    editors = mongo[collection + 'dataset']
     name = dbname + '_wide_editors.csv'
     fh = utils.create_txt_filehandle(settings.dataset_location, name, 'a', settings.encoding)
     x = 0
     vars_to_expand = ['edits', 'edits_by_year', 'articles_by_year']
     while True:
         try:
-            if debug:
-                id = u'99797'
-            else:
-                id = input_queue.get(block=False)
+            id = input_queue.get(block=False)
             print input_queue.qsize()
             obs = editors.find_one({'editor': id})
             obs = expand_observations(obs, vars_to_expand)
@@ -292,49 +283,25 @@ def generate_wide_editor_dataset(input_queue, **kwargs):
     fh.close()
 
 
-def retrieve_edits_by_contributor_launcher():
-    pc.build_scaffolding(pc.load_queue, retrieve_edits_by_contributor, 'contributors')
+def dataset_launcher(dbname, collection, target):
+    editors = retrieve_editor_ids_mongo(dbname, collection)
+    tasks = multiprocessing.JoinableQueue()
+    consumers = [multiprocessing.Process(target=target, args=(tasks, dbname, collection)) for i in xrange(settings.number_of_processes)]
+    for editor in editors:
+        tasks.put(editor)
+    print 'The queue contains %s editors.' % tasks.qsize()
+    for x in xrange(settings.number_of_processes):
+        tasks.put(None)
 
+    for w in consumers:
+        w.start()
 
-def debug_retrieve_edits_by_contributor_launcher(dbname):
-    kwargs = {'debug': False,
-              'dbname': dbname,
-              }
-    ids = retrieve_editor_ids_mongo(dbname, 'editors')
-    input_queue = pc.load_queue(ids)
-    q = Queue()
-    generate_editor_dataset(input_queue, q, False, kwargs)
+    tasks.join()
 
-
-def generate_editor_dataset_launcher(dbname):
-    kwargs = {'nr_input_processors': 1,
-              'nr_output_processors': 1,
-              'debug': False,
-              'dbname': dbname,
-              'poison_pill':False,
-              'pbar': True
-              }
-    ids = retrieve_editor_ids_mongo(dbname, 'editors')
-    ids = list(ids)
-    chunks = dict({0: ids})
-    pc.build_scaffolding(pc.load_queue, generate_cohort_analysis, chunks, False, False, **kwargs)
-
-
-def generate_editor_dataset_debug(dbname):
-    ids = retrieve_editor_ids_mongo(dbname, 'editors')
-    #ids = list(ids)[:1000]
-    input_queue = pc.load_queue(ids)
-    kwargs = {'nr_input_processors': 1,
-              'nr_output_processors': 1,
-              'debug': True,
-              'dbname': dbname,
-              }
-    #generate_editor_dataset(input_queue, False, False, kwargs)
-    vars = ['monthly_edits']
-    generate_long_editor_dataset(input_queue, vars, **kwargs)
 
 if __name__ == '__main__':
-    #generate_editor_dataset_debug('test')
-    #generate_editor_dataset_launcher('enwiki')
-    generate_editor_dataset_debug('enwiki')
-    #debug_retrieve_edits_by_contributor_launcher()
+    dbname = 'enwiki'
+    collection = 'editors'
+    dataset_launcher(dbname, collection, generate_cohort_dataset)
+    dataset_launcher(dbname, collection, generate_long_editor_dataset)
+    dataset_launcher(dbname, collection, generate_wide_editor_dataset)

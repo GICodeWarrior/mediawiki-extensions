@@ -31,11 +31,16 @@ from utils import utils
 
 class Bot(object):
 
-    def __init__(self, name):
+    def __init__(self, name, **kwargs):
         self.name = name
         self.projects = []
         self.time = shaper.create_datacontainer(datatype='list')
         self.verified = True
+        for kw in kwargs:
+            setattr(self, kw, kwargs[kw])
+
+    def __repr__(self):
+        return self.name
 
     def hours_active(self):
         self.clock = shaper.create_clock()
@@ -49,8 +54,11 @@ class Bot(object):
         hours.sort()
         for hour in hours:
             self.data.append(self.clock[hour])
-    
-        
+
+
+    def active(self):
+        return float(sum(self.clock.values())) / 24.0
+
 
     def avg_lag_between_edits(self):
         years = self.time.keys()
@@ -58,28 +66,29 @@ class Bot(object):
         for year in years:
             for x in self.time[year]:
                 edits.append(x)
-        
+
         if edits != []:
             edits.sort()
             dt = datetime.timedelta()
             for i, edit in enumerate(edits):
-                if i == len(edits) -1:
+                if i == len(edits) - 1:
                     break
                 dt += edits[i + 1] - edits[i]
             dt = dt / len(edits)
             self.dt = dt
-            self.n = i 
+            self.n = i
         else:
             self.dt = None
-    
+
     def write_training_dataset(self, fh):
         self.data = []
         self.data.append(self.name)
         self.data.append(self.verified)
         self.add_clock_data()
+        self.active()
         self.data.append(self.dt)
         utils.write_list_to_csv(self.data, fh, recursive=False, newline=True)
-        
+
 
 
 if __name__ == '__main__':

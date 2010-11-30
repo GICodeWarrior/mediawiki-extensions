@@ -44,13 +44,16 @@ except ImportError:
     pass
 
 
-def read_bots_csv_file(manager, location, filename, encoding):
+def read_bots_csv_file(location, filename, encoding, manager=False):
     '''
     Constructs a dictionary from Bots.csv
     key is language
     value is a list of bot names
     '''
-    bot_dict = manager.dict()
+    if manager:
+        bot_dict = manager.dict()
+    else:
+        bot_dict = dict()
     for line in utils.read_data_from_csv(location, filename, encoding):
         line = utils.clean_string(line)
         language, bots = line.split(',')
@@ -84,7 +87,7 @@ def store_bots():
     This file reads the results from the lookup_bot_userid function and stores
     it in a MongoDB collection. 
     '''
-    bots = utils.read_dict_from_csv(settings.csv_location, 'bots_ids.csv', settings.encoding)
+    #bots = utils.read_dict_from_csv(settings.csv_location, 'bots_ids.csv', settings.encoding)
     mongo = db.init_mongo_db('bots')
     collection = mongo['ids']
     db.remove_documents_from_mongo_db(collection, None)
@@ -124,42 +127,47 @@ def lookup_bot_userid(xml_nodes, fh, **kwargs):
         if username == None or username.text == None:
             continue
         else:
-            username = username.text
+            username = username.text #encode(settings.encoding)
+        name = username.lower()
+
         #print username.encode('utf-8')
         if username in bots and bots[username].verified == True:
             id = contributor.find('id').text
             bot = bots[username]
 
             if not hasattr(bot, 'written'):
-                bot_dict = convert_object_to_dict(bot, exclude=['time', 'name', 'written'])
-                bot_dict['_username'] = username
-                bot_dict['id'] = id
+                if username == 'Robbot':
+                    print 'test'
+                bot.id = id
+                bot.name = username
+                bot_dict = convert_object_to_dict(bot, exclude=['time', 'written'])
+                #bot_dict['_username'] = username
+                #bot_dict['id'] = id
                 lock.acquire()
                 utils.write_dict_to_csv(bot_dict, fh, write_key=False)
                 lock.release()
-                bot.written = True            
+                bot.written = True
+                bots[username] = bot
             #bots.pop(username)
             #if bots == {}:
             #    print 'Found id numbers for all bots.'
             #    return 'break'
             #print username.encode('utf-8')
-        name = username.lower()
+
         if name.find('bot') > -1:
-            bot = bots.get(username, botmodels.Bot(username))
-            if bot not in bots:
-                bot.verified = False
+            bot = bots.get(username, botmodels.Bot(username, verified=False))
             timestamp = revision.find('timestamp').text
             if timestamp != None:
                 timestamp = utils.convert_timestamp_to_datetime_naive(timestamp)
                 bot.time[str(timestamp.year)].append(timestamp)
                 bots[username] = bot
-
+    return bots
     #bot = bots.get('PseudoBot')
     #bot.hours_active()
     #bot.avg_lag_between_edits()
 
 
-def bot_launcher(language_code, project, single=False):
+def bot_launcher(language_code, project, single=False, manager=False):
     '''
     This function sets the stage to launch bot id detection and collecting data
     to discover new bots. 
@@ -171,25 +179,28 @@ def bot_launcher(language_code, project, single=False):
     files = utils.retrieve_file_list(input, 'xml', mask=None)
     input_queue = pc.load_queue(files, poison_pill=True)
     tasks = multiprocessing.JoinableQueue()
-    manager = multiprocessing.Manager()
-    bots = manager.dict()
-    lock = manager.Lock()
-    bots = read_bots_csv_file(manager, settings.csv_location, 'Bots.csv', settings.encoding)
+    mgr = multiprocessing.Manager()
+    bots = mgr.dict()
+    lock = mgr.Lock()
+    if manager:
+        manager = mgr
+    bots = read_bots_csv_file(settings.csv_location, 'Bots.csv', settings.encoding, manager=manager)
 
     for file in files:
         tasks.put(models.XMLFile(input, settings.csv_location, file, bots, lookup_bot_userid, 'bots_ids.csv', lock=lock))
 
+    tracker = {}
     if single:
         while True:
             try:
                 print '%s files left in the queue...' % tasks.qsize()
                 task = tasks.get(block=False)
-                task()
+                bots = task(bots)
             except Empty:
                 break
     else:
         bot_launcher_multi(tasks)
-    
+
     utils.store_object(bots, settings.binary_location, 'bots.bin')
     bot_training_dataset(bots)
     store_bots()
@@ -201,8 +212,8 @@ def bot_launcher(language_code, project, single=False):
                 print '%s' % key.encode(settings.encoding)
             except:
                 pass
-    
-    
+
+
 
 
 def bot_training_dataset(bots):
@@ -213,10 +224,10 @@ def bot_training_dataset(bots):
         bot.hours_active()
         bot.avg_lag_between_edits()
         bot.write_training_dataset(fh)
-        
+
     fh.close()
-    
-    
+
+
 def bot_launcher_multi(tasks):
     '''
     This is the launcher that uses multiprocesses. 
@@ -230,9 +241,14 @@ def bot_launcher_multi(tasks):
 
     tasks.join()
 
+def debug_bots_dict():
+    bots = utils.load_object(settings.binary_location, 'bots.bin')
+    print 'done'
+
 
 if __name__ == '__main__':
     language_code = 'en'
     project = 'wiki'
-    #bot_launcher(language_code, project, single=True)
-    cProfile.run(bot_launcher(language_code, project, single=True), 'profile')
+    #debug_bots_dict()
+    bot_launcher(language_code, project, single=True)
+    #cProfile.run(bot_launcher(language_code, project, single=True), 'profile')

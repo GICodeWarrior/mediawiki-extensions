@@ -87,7 +87,7 @@ def build_namespaces_locale(namespaces, include=[0]):
     '''
     ns = []
     for namespace in namespaces:
-        if int(namespace) not in include:
+        if namespace not in include:
             value = namespaces[namespace].get(u'*', None)
             ns.append(value)
     return ns
@@ -165,8 +165,14 @@ def flatten_xml_elements(data, page):
     return flat
 
 
-def split_file(location, file, project, language_code, include, format='xml', zip=False):
-    '''Reads xml file and splits it in N chunks'''
+def split_file(location, file, project, language_code, namespaces=[0], format='xml', zip=False):
+    '''
+    Reads xml file and splits it in N chunks
+    
+    @namespaces is a list indicating which namespaces should be included, default
+    is to include namespace 0 (main namespace)
+    @zip indicates whether to compress the chunk or not
+    '''
     #location = os.path.join(settings.input_location, language)
     input = os.path.join(location, file)
     output = os.path.join(location, 'chunks')
@@ -178,7 +184,7 @@ def split_file(location, file, project, language_code, include, format='xml', zi
         fh = utils.create_txt_filehandle(output, '%s.tsv' % f, 'w', settings.encoding)
 
     ns = load_namespace(language_code)
-    ns = build_namespaces_locale(ns, include)
+    ns = build_namespaces_locale(ns, namespaces)
 
     counter = 0
     tag = '{%s}page' % settings.xml_namespace

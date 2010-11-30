@@ -52,19 +52,19 @@ class XMLFile(object):
         self.lock = None
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
-        
+
     def create_file_handle(self):
         self.mode = 'a'
         if self.output_file == None:
             self.mode = 'w'
             self.output_file = self.file[:-4] + '.txt'
-            
+
         self.fh = utils.create_txt_filehandle(self.output, self.output_file, self.mode, settings.encoding)
 
     def __str__(self):
         return '%s' % (self.file)
 
-    def __call__(self):
+    def __call__(self, bots=None):
         if settings.debug:
             messages = {}
             vars = {}
@@ -104,5 +104,5 @@ class XMLFile(object):
 
         if settings.debug:
             utils.report_error_messages(messages, self.target)
-        
+
         return self.bots

@@ -19,16 +19,18 @@ __version__ = '0.1'
 
 import os
 import sys
+import multiprocessing
 from Queue import Empty
 
 sys.path.append('..')
-import configuration 
+import configuration
 settings = configuration.Settings()
 from database import db
 from database import cache
 from utils import utils
 from utils import sort
-import process_constructor as pc
+
+#import process_constructor as pc
 
 
 
@@ -47,7 +49,7 @@ def store_editors(input, dbname, collection):
     for line in sort.readline(fh):
         if len(line) == 0:
             continue
-        contributor = int(line[0]) 
+        contributor = int(line[0])
         if prev_contributor != contributor:
             if edits >= 10:
                 result = editor_cache.add(prev_contributor, 'NEXT')
@@ -94,31 +96,47 @@ def mergesort_external_launcher(dbname, input, output):
         filehandles = [fh.close() for fh in filehandles]
         filename = 'merged_final.txt'
     for r in to_remove:
-        utils.delete_file(output ,r)
-    
-        
+        utils.delete_file(output , r)
 
 
-def mergesort_feeder(task_queue, **kwargs):
-    input = kwargs.get('input', None)
-    output = kwargs.get('output', None)
-    #while True:
-    #    try:
-            #file = input_queue.get(block=False)
-    for file in task_queue:
-        fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
-        data = fh.readlines()
-        fh.close()
-        data = [d.replace('\n', '') for d in data]
-        data = [d.split('\t') for d in data]
-        sorted_data = sort.mergesort(data)
-        sort.write_sorted_file(sorted_data, file, output)
+
+
+def mergesort_feeder(tasks, input, output):
+    while True:
+        try:
+            file = tasks.get(block=False)
+            print file
+            if file == None:
+                break
+            fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
+            data = fh.readlines()
+            fh.close()
+            data = [d.replace('\n', '') for d in data]
+            data = [d.split('\t') for d in data]
+            sorted_data = sort.mergesort(data)
+            sort.write_sorted_file(sorted_data, file, output)
+        except Empty:
+            break
 
 
 def mergesort_launcher(input, output):
     settings.verify_environment([input, output])
     files = utils.retrieve_file_list(input, 'txt')
-    mergesort_feeder(files, input=input, output=output)
+    tasks = multiprocessing.JoinableQueue()
+    consumers = [multiprocessing.Process(target=mergesort_feeder, args=(tasks, input, output)) for i in xrange(settings.number_of_processes)]
+    for file in files:
+        tasks.put(file)
+
+    for x in xrange(settings.number_of_processes):
+        tasks.put(None)
+
+    for w in consumers:
+        w.start()
+
+    tasks.join()
+    #mergesort_feeder(file, input=input, output=output)
+
+
     #chunks = utils.split_list(files, settings.number_of_processes)
     #pc.build_scaffolding(pc.load_queue, mergesort_feeder, chunks, False, False, **kwargs)
 
@@ -138,7 +156,7 @@ if __name__ == '__main__':
     input = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
     output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
     dbname = 'enwiki'
-    #mergesort_launcher(input, output)
+    mergesort_launcher(input, output)
     final_output = os.path.join(settings.input_location, 'en', 'wiki', 'dbready')
     mergesort_external_launcher(dbname, output, final_output)
     store_editors(input, dbname, collection)

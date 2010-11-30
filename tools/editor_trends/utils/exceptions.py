@@ -23,12 +23,13 @@ class Error(Exception):
     pass
 
 class FileNotFoundException(Error):
-    def __init__(self, file):
-        self.file = file 
+    def __init__(self, file, path):
+        self.file = file
+        self.path = path
 
     def __str__(self):
-        print 'The file %s was not found. Please make sure your path is up-to-date.' % self.file
-        
+        print 'The file %s was not found. Please make sure that the file exists and the path is correct.' % (os.path.join(self.path, self.file))
+
 class PlatformNotSupportedError(Error):
     def __init__(self, platform):
         self.platform = platform
@@ -39,6 +40,6 @@ class PlatformNotSupportedError(Error):
 class CompressionNotSupportedError(Error):
     def __init__(self, extension):
         self.extension = extension
-        
+
     def __str__(self):
         print 'You have not installed a program to extract %s archives.' % self.extension

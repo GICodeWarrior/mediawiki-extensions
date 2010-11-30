@@ -220,10 +220,10 @@ def write_dict_to_csv(data, fh, write_key=True, newline=True):
     keys.sort()
     for key in keys:
         if write_key:
-            fh.write('%s' % key)
+            fh.write('%s\t' % key)
         if getattr(data[key], '__iter__', False):
             for d in data[key]:
-                fh.write('\t%s' % d)
+                fh.write('%s\t' % d)
         else:
             fh.write('%s\t' % (data[key]))
     if newline:

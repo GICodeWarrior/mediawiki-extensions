@@ -18,6 +18,7 @@ __date__ = '2010-10-21'
 __version__ = '0.1'
 
 import os
+import logging
 import sys
 import datetime
 from argparse import ArgumentParser
@@ -32,6 +33,7 @@ settings = configuration.Settings()
 import languages
 from utils import utils
 from utils import dump_downloader
+from utils import compression
 from etl import chunker
 from etl import extract
 from etl import loader
@@ -65,12 +67,12 @@ def determine_default_language():
     return language_code.split('_')[0]
 
 
-def retrieve_projectname(args):
-    language_code = retrieve_language(args)
+def get_projectname(args):
+    language_code = get_language(args)
     if language_code == None:
         print 'Entered language: %s is not a valid Wikimedia language' % get_value(args, 'language')
         sys.exit(-1)
-    project = retrieve_project(args)
+    project = get_project(args)
 
     if project == None:
         print 'Entered project: %s is not valid Wikimedia Foundation project.' % get_value(args, 'project')
@@ -81,59 +83,87 @@ def retrieve_projectname(args):
         return '%s%s' % (language_code, project)
 
 
-def retrieve_language(args):
+def get_language(args):
     language = get_value(args, 'language')
     language = language.title()
     return languages.MAPPING.get(language, 'en')
 
 
-def retrieve_project(args):
+def get_namespaces(args):
+    namespaces = get_value(args, 'namespace')
+    if namespaces != None:
+        return namespaces.split(',')
+    else:
+        return namespaces
+
+def write_message_to_log(logger, args, message=None, verb=None, **kwargs):
+    function = get_value(args, 'func')
+    logger.debug('Starting %s task' % function.func_name)
+    if message:
+        logger.debug(message)
+    for kw in kwargs:
+        if verb:
+            logger.debug('Action: %s\tSetting: %s' % (verb, kwargs[kw]))
+        else:
+            logger.debug('Key: %s\tSetting: %s' % (kw, kwargs[kw]))
+
+
+
+def get_project(args):
     project = get_value(args, 'project')
     if project != 'wiki':
         project = settings.projects.get(project, None)
     return project
 
 
-def generate_wikidump_filename(project, args):
-    return '%s-%s-%s' % (project, 'latest', get_value(args, 'file'))
+def generate_wikidump_filename(language_code, project, args):
+    return '%s%s-%s-%s' % (language_code, project, 'latest', get_value(args, 'file'))
 
 
-def determine_file_locations(args):
-    locations = {}
+def determine_file_locations(args, logger):
+    config = {}
     location = get_value(args, 'location') if get_value(args, 'location') != None else settings.input_location
-    project = retrieve_project(args)
-    language_code = retrieve_language(args)
-    locations['language_code'] = language_code
-    locations['language'] = get_value(args, 'language')
-    locations['location'] = os.path.join(location, language_code, project)
-    locations['chunks'] = os.path.join(locations['location'], 'chunks')
-    locations['txt'] = os.path.join(locations['location'], 'txt')
-    locations['sorted'] = os.path.join(locations['location'], 'sorted')
-    locations['dbready'] = os.path.join(locations['location'], 'dbready')
-    locations['project'] = project
-    locations['full_project'] = retrieve_projectname(args)
-    locations['filename'] = generate_wikidump_filename(project, args)
-    locations['collection'] = get_value(args, 'collection')
-    locations['directories'] = [locations['chunks'], locations['location'], locations['txt'], locations['sorted'], locations['dbready']]
-    return locations
+    project = get_project(args)
+    language_code = get_language(args)
+    config['language_code'] = language_code
+    config['language'] = get_value(args, 'language')
+    config['location'] = os.path.join(location, language_code, project)
+    config['chunks'] = os.path.join(config['location'], 'chunks')
+    config['txt'] = os.path.join(config['location'], 'txt')
+    config['sorted'] = os.path.join(config['location'], 'sorted')
+    config['dbready'] = os.path.join(config['location'], 'dbready')
+    config['project'] = project
+    config['full_project'] = get_projectname(args)
+    config['filename'] = generate_wikidump_filename(language_code, project, args)
+    config['collection'] = get_value(args, 'collection')
+    config['namespaces'] = get_namespaces(args)
+    config['directories'] = [config['location'], config['chunks'], config['txt'], config['sorted'], config['dbready']]
+
+    message = 'Settings as generated from the configuration module.'
+    write_message_to_log(logger, args, message, None, **config)
+    #for c in config:
+    #    logger.debug('Key: %s - Setting: %s' % (c, config[c]))
+    return config
 
 
-def show_settings(args, **kwargs):
-    project = settings.projects.get(kwargs.pop('project'), 'wiki')
-    language_code = kwargs.pop('language_code')
-    language = kwargs.pop('language')
-    location = kwargs.pop('location')
-    project = project.title()
+def show_settings(args, logger, **kwargs):
     language_map = languages.language_map()
-    print 'Project: %s' % (project)
-    print 'Language: %s / %s' % (language_map[language_code].decode(settings.encoding), language.decode(settings.encoding))
-    print 'Input directory: %s' % location
-    print 'Output directory: %s and subdirectories' % location
+    language = kwargs.pop('language')
+    language_code = kwargs.pop('language_code')
+    config = {}
+    config['Project'] = settings.projects.get(kwargs.pop('project'), 'wiki').title()
+    config['Language'] = '%s / %s' % (language_map[language_code].decode(settings.encoding), language.decode(settings.encoding))
+    config['Input directory'] = kwargs.get('location')
+    config['Output directory'] = '%s and subdirectories' % kwargs.get('location')
+
+    message = 'Final settings after parsing command line arguments:'
+    write_message_to_log(logger, args, message, None, **config)
 
 
-def dump_downloader_launcher(args, **kwargs):
+def dump_downloader_launcher(args, logger, **kwargs):
     print 'dump downloader'
     timer = Timer()
+    write_message_to_log(logger, args, **kwargs)
     filename = kwargs.get('filename')
     extension = kwargs.get('extension')
     location = kwargs.get('location')
@@ -146,37 +176,42 @@ def dump_downloader_launcher(args, **kwargs):
     timer.elapsed()
 
 
-def chunker_launcher(args, **kwargs):
+def chunker_launcher(args, logger, **kwargs):
     print 'split_settings.input_filename_launcher'
     timer = Timer()
+    write_message_to_log(logger, args, **kwargs)
     filename = kwargs.pop('filename')
-    filename = 'en-latest-pages-meta-history.xml.bz2'
     location = kwargs.pop('location')
     project = kwargs.pop('project')
     language = kwargs.pop('language')
     language_code = kwargs.pop('language_code')
+    namespaces = kwargs.pop('namespaces')
+
     ext = utils.determine_file_extension(filename)
-    if ext in settings.compression.keys():
-        file = filename.replace('.'+ ext, '')
+    file = filename.replace('.' + ext, '')
     result = utils.check_file_exists(location, file)
     if not result:
-        retcode = launch_zip_extractor(args, location, filename, ext)
+        retcode = launch_zip_extractor(args, location, filename)
     else:
         retcode = 0
     if retcode != 0:
         sys.exit(retcode)
-    chunker.split_file(location, file, project, language_code, language)
+
+    chunker.split_file(location, file, project, language_code, namespaces, format='xml', zip=False)
     timer.elapsed()
 
 
-def launch_zip_extractor(args, location, file, ext):
+def launch_zip_extractor(args, location, file):
     timer = Timer()
-    utils.zip_extract(location, file, ext)
+    write_message_to_log(logger, args, location=location, file=file)
+    compressor = compression.Compressor(location, file)
+    compressor.extract()
     timer.elapsed()
 
 
-def extract_launcher(args, **kwargs):
+def extract_launcher(args, logger, **kwargs):
     timer = Timer()
+    write_message_to_log(logger, args, **kwargs)
     location = kwargs.pop('location')
     language_code = kwargs.pop('language_code')
     project = kwargs.pop('project')
@@ -184,8 +219,9 @@ def extract_launcher(args, **kwargs):
     timer.elapsed()
 
 
-def sort_launcher(args, **kwargs):
+def sort_launcher(args, logger, **kwargs):
     timer = Timer()
+    write_message_to_log(logger, args, **kwargs)
     location = kwargs.pop('location')
     input = os.path.join(location, 'txt')
     output = os.path.join(location, 'sorted')
@@ -196,8 +232,9 @@ def sort_launcher(args, **kwargs):
     timer.elapsed()
 
 
-def store_launcher(args, **kwargs):
+def store_launcher(args, logger, **kwargs):
     timer = Timer()
+    write_message_to_log(logger, args, **kwargs)
     location = kwargs.pop('location')
     input = os.path.join(location, 'dbready')
     dbname = kwargs.pop('full_project')
@@ -206,37 +243,47 @@ def store_launcher(args, **kwargs):
     timer.elapsed()
 
 
-def transformer_launcher(args, **kwargs):
+def transformer_launcher(args, logger, **kwargs):
     print 'dataset launcher'
     timer = Timer()
+    write_message_to_log(logger, args, **kwargs)
     project = kwargs.pop('full_project')
     collection = kwargs.pop('collection')
     transformer.run_optimize_editors(project, collection)
     timer.elapsed()
 
 
-def exporter_launcher(args, **kwargs):
+def exporter_launcher(args, logger, **kwargs):
     timer = Timer()
+    write_message_to_log(logger, args, **kwargs)
     project = kwargs.pop('full_project')
     exporter.generate_editor_dataset_launcher(project)
     timer.elapsed()
 
 
-def all_launcher(args, **kwargs):
+def all_launcher(args, logger, **kwargs):
     print 'all_launcher'
     timer = Timer()
+    message = 'Starting '
+    write_message_to_log(logger, args, message, **kwargs)
     ignore = get_value(args, 'except')
+    clean = get_value(args, 'clean')
+    if clean:
+        dirs = kwargs.get('directories')[1:]
+        for dir in dirs:
+            write_message_to_log(logger, args, verb='Deleting', **kwargs)
+            utils.delete_file(dir, '')
     functions = {dump_downloader_launcher: 'download',
                  chunker_launcher: 'split',
                  extract_launcher: 'extract',
                  sort_launcher: 'sort',
-                 transformer_launcher: 'transform', 
+                 transformer_launcher: 'transform',
                  exporter_launcher: 'export'
                 }
     for function, callname in functions.iteritems():
         if callname not in ignore:
             function(args, **kwargs)
-    
+
     timer.elapsed()
 
 
@@ -265,8 +312,9 @@ def show_languages(args, location, filename, project, full_project, language_cod
             print '%s' % language
 
 
-def detect_python_version():
+def detect_python_version(logger):
     version = sys.version_info[0:2]
+    logger.debug('Python version: %s' % '.'.join(str(version)))
     if version < settings.minimum_python_version:
         raise 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'
 
@@ -279,6 +327,9 @@ def about():
 
 
 def main():
+    logger = logging.getLogger('manager')
+    logger.setLevel(logging.DEBUG)
+
     default_language = determine_default_language()
     file_choices = ('stub-meta-history.xml.gz',
                     'stub-meta-current.xml.gz',
@@ -303,6 +354,7 @@ def main():
     parser_download.set_defaults(func=dump_downloader_launcher)
 
     parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
+
     parser_split.set_defaults(func=chunker_launcher)
 
     parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
@@ -317,7 +369,7 @@ def main():
                               help='Name of MongoDB collection',
                               default='editors')
 
-    parser_transform = subparsers.add_parser('transform', help='Transform the raw datatabe to an enriched dataset that can be exported.')
+    parser_transform = subparsers.add_parser('transform', help='Transform the raw datatable to an enriched dataset that can be exported.')
     parser_transform.set_defaults(func=transformer_launcher)
     parser_transform.add_argument('-c', '--collection', action='store',
                                   help='Name of MongoDB collection',
@@ -331,7 +383,10 @@ def main():
     parser_all.add_argument('-e', '--except', action='store',
                             help='Should be a list of functions that are to be ignored when executing \'all\'.',
                             default=[])
-    
+    parser_all.add_argument('-n', '--new', action='store_false',
+                            help='This will delete all previous output and starts from scratch. Mostly useful for debugging purposes.',
+                            default=False)
+
 
     parser.add_argument('-l', '--language', action='store',
                         help='Example of valid languages.',
@@ -346,25 +401,29 @@ def main():
     parser.add_argument('-o', '--location', action='store',
                         help='Indicate where you want to store the downloaded file.',
                         )
-                        #default=settings.input_location)
+
+    parser.add_argument('-n', '--namespace', action='store',
+                        help='A list of namespaces to include for analysis.',
+                        default='0')
+
 
     parser.add_argument('-f', '--file', action='store',
                         choices=file_choices,
                         help='Indicate which dump you want to download. Valid choices are:\n %s' % ''.join([f + ',\n' for f in file_choices]),
-                        default='stub-meta-current.xml.gz')
+                        default='stub-meta-history.xml.gz')
 
     parser.add_argument('-prog', '--progress', action='store_true', default=True,
                       help='Indicate whether you want to have a progressbar.')
 
-    detect_python_version()
+    detect_python_version(logger)
     about()
     args = parser.parse_args()
     config.create_configuration(settings, args)
-    locations = determine_file_locations(args)
+    locations = determine_file_locations(args, logger)
     settings.verify_environment(locations['directories'])
-    show_settings(args, **locations)
+    show_settings(args, logger, **locations)
     #locations['settings'] = settings
-    args.func(args, **locations)
+    args.func(args, logger, **locations)
     t1 = datetime.datetime.now()
 
 

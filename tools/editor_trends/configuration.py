@@ -152,12 +152,12 @@ class Settings(object):
                 if not program.endswith('.exe'):
                     program = program + '.exe'
                 path = self.detect_windows_program(program)
+                if path != None:
+                    path = path + program
             elif self.platform == 'Linux':
                 path = self.detect_linux_program(program)
-            if path != None:
-                return path + program
-            else:
-                return path
+
+            return path
 
         def determine_max_filehandles_open(self):
             if self.platform == 'Windows' and self.architecture == 'i386':

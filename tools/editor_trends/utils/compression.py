@@ -18,8 +18,9 @@ class Compressor(object):
 
     def __init__(self, location, file, output=None):
         self.extension = utils.determine_file_extension(file)
-        self.file = os.path.join(location, file)
+        self.file = file
         self.location = location
+        self.path = os.path.join(self.file, self.location)
         self.output = None
         self.name = None
         self.program = []
@@ -42,19 +43,19 @@ class Compressor(object):
         '''
         if self.program == []:
             self.init_compression_tool(self.extension, 'compress')
-            
+
         if self.program_installed == None:
             raise exceptions.CompressionNotSupportedError
-        
+
         args = {'7z': ['%s' % self.program_installed, 'a', '-scsUTF-8', '-t%s' % self.compression, '%s' % self.output, '%s' % self.input],
                 }
-        
+
         commands = args.get(self.name, None)
         if commands != None:
             p = subprocess.Popen(commands, shell=True).wait()
         else:
             raise exceptions.CompressionNotSupportedError
-        
+
 
     def extract(self):
         '''
@@ -68,18 +69,25 @@ class Compressor(object):
         if self.program_installed == None:
             raise exceptions.CompressionNotSupportedError
 
-        args = {'7z': ['%s' % self.program_installed,'e', '-o%s' % self.location, '%s' % self.file],
-                'bunzip2': ['%s' % self.program_installed, '-k', '%s' % self.file],
-                'zip': ['%s' % self.program_installed, '-o', '%s' % self.file],
-                'gz': ['%s' % self.program_installed, '-xzvf', '%s' % self.file],
-                'tar': ['%s' % self.program_installed, '-xvf', '%s' % self.file]
+        print self.location
+        print self.file
+        if not utils.check_file_exists(self.location, self.file):
+            raise exceptions.FileNotFoundException(self.location, self.file)
+
+
+
+        args = {'7z': ['%s' % self.program_installed, 'e', '-y', '-o%s' % self.location, '%s' % self.path],
+                'bunzip2': ['%s' % self.program_installed, '-k', '%s' % self.path],
+                'zip': ['%s' % self.program_installed, '-o', '%s' % self.path],
+                'gz': ['%s' % self.program_installed, '-xzvf', '%s' % self.path],
+                'tar': ['%s' % self.program_installed, '-xvf', '%s' % self.path]
                 }
         commands = args.get(self.name, None)
         if commands != None:
             p = subprocess.Popen(commands, shell=True).wait()
         else:
             raise exceptions.CompressionNotSupportedError
-        
+
 #        if self.name == '7z':
 #            p = subprocess.Popen(['%s' % tool.extract_installed, 'e', '-o%s' % location, '%s' % input], shell=True).wait()
 #        elif tool_extract_installed.endswith('bunzip2'):
@@ -112,7 +120,7 @@ class Compressor(object):
             path = settings.detect_installed_program(p)
             if path != None:
                 self.name = p
-                self.program_installed = path 
+                self.program_installed = path
 
 
 if __name__ == '__main__':
