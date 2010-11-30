@@ -293,7 +293,7 @@ $messages['fr'] = array(
 	'ea-heading' => '=== Envoi de la page [[$1]] par courrier électronique ===',
 	'ea-group-info' => 'De plus, vous pouvez envoyer la page aux membres d’un groupe',
 	'ea-pagesend' => 'Page « $1 » envoyée depuis $2',
-	'ea-nopage' => 'Veuillez spécifier une page à envoyer, par exemple [[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]]',
+	'ea-nopage' => 'Aucune page à envoyer n’a été spécifiée. Veuillez utiliser le lien d’envoi de la barre latérale ou les actions de la page.',
 	'ea-norecipients' => 'Aucune adresse courriel de trouvée !',
 	'ea-listrecipients' => '=== Liste de $1 {{PLURAL:$1|destinataire|destinataires}} ===',
 	'ea-error' => "'''Erreur de l’envoi de [[$1]] :''' ''$2''",
@@ -374,6 +374,38 @@ $messages['gsw'] = array(
 	'ea-data' => 'Date',
 	'ea-selectrecord' => 'Die Vorlage chenne brucht wäre go Fälder in dr Nochricht uusfille:',
 	'ea-allusers' => 'Alli Benutzer',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'e-mailpage' => 'דף דוא״ל',
+	'ea-desc' => 'שליחת עמוד HTML מעובד לכתובת דוא״ל או לרשימה של כתובות באמצעות [http://phpmailer.sourceforge.net phpmailer]',
+	'ea-heading' => 'הדף "[[$1]]" נשלח בדוא״ל',
+	'ea-group-info' => 'בנוסף באפשרות לשלוח דף לחברים בקבוצה מסוימת',
+	'ea-pagesend' => 'הדף "$1" נשלח מהמקור $2',
+	'ea-nopage' => 'לא צוין דף לשליחה, נא להשתמש בקישור הדוא״ל שבסרגל הצד או בפעולות הדף.',
+	'ea-norecipients' => 'לא נמצאו כתובות דוא״ל תקניות!',
+	'ea-listrecipients' => '{{PLURAL:$1|נמען אחד מופיע|$1 נמענים מופיעים}}',
+	'ea-error' => "'''שגיאה בשליחת [[$1]]:''' ''$2''",
+	'ea-denied' => 'ההרשאה נדחתה',
+	'ea-sent' => "הדף [[$1]] נשלח בהצלחה ל'''$2''' {{PLURAL:$2|נמען אחד|מספר נמענים}} על ידי [[User:$3|$3]].",
+	'ea-compose' => 'חיבור תוכן',
+	'ea-show' => 'צפייה ברשימת הנמענים',
+	'ea-from' => 'מאת:',
+	'ea-to' => 'מען:',
+	'ea-to-info' => 'ניתן להפריד את כתובות הדוא״ל באמצעות התווים: נקודה פסיק, פסיק, כוכבית או שורה חדשה',
+	'ea-cc' => 'עותק:',
+	'ea-send' => 'שליחה',
+	'ea-subject' => 'נושא:',
+	'ea-message' => 'הודעה:',
+	'ea-message-info' => 'צירוף תוכן עם הודעת ויקיטקסט (לא בהכרח)',
+	'ea-style' => 'סגנון:',
+	'ea-selectcss' => 'ניתן לבחור בגיליון סגנון (CSS)',
+	'ea-data' => 'נתונים',
+	'ea-selectrecord' => 'ניתן להשתמש בתבניות אלה כדי למלא את כל השדות בתוכן ההודעה',
+	'ea-allusers' => 'כל המשתמשים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -593,6 +625,7 @@ $messages['nl'] = array(
 	'e-mailpage' => 'Pagina e-mailen',
 	'ea-desc' => 'Stuur een gerenderde pagina naar een e-mailadres of een lijst van adressen met behulp van [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Pagina [[$1]] e-mailen ===',
+	'ea-group-info' => 'Daarnaast kun u de pagina naar leden van een groep sturen',
 	'ea-pagesend' => 'Pagina "$1" is vanuit $2 verstuurd',
 	'ea-nopage' => 'Geef een pagina op om te versturen, bijvoorbeeld [[Special:e-mailpage/Hoofdpagina]].',
 	'ea-norecipients' => 'Er is geen geldig e-mailadres opgegeven!',
@@ -603,11 +636,17 @@ $messages['nl'] = array(
 	'ea-compose' => 'Inhoud samenstellen',
 	'ea-show' => 'Ontvangers weergeven',
 	'ea-from' => 'Van:',
+	'ea-to' => 'Aan:',
+	'ea-to-info' => "E-mailadressen kunnen gescheiden worden door een of meer puntkomma's, komma's sterretjes of regeleinden",
+	'ea-cc' => 'CC:',
 	'ea-send' => 'Versturen',
 	'ea-subject' => 'Onderwerp:',
 	'ea-message' => 'Bericht:',
+	'ea-message-info' => 'Voor inhoud optionele wikitekst toevoegen',
+	'ea-style' => 'Stijl:',
 	'ea-selectcss' => 'U kunt een stylesheet selecteren',
 	'ea-data' => 'Gegevens',
+	'ea-selectrecord' => 'Deze sjablonen kunnen gebruikt worden om velden te vullen in de berichtinhoud',
 	'ea-allusers' => 'Alle gebruikers',
 );
 
@@ -845,7 +884,7 @@ $messages['vi'] = array(
 	'e-mailpage' => 'Trang thư điện tử',
 	'ea-desc' => 'Gửi trang HTML giản lược đến một địa chỉ hoặc danh sách các địa chỉ thư điện tử dùng [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Gửi trang [[$1]] ===',
-	'ea-nopage' => 'Xin hãy xác định trang muốn gửi, ví dụ [[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]].',
+	'ea-nopage' => 'Không định rõ trang để gửi. Xin hãy sử dụng liên kết thư điện tử trong thanh bên hoặc phần tác vụ trang.',
 	'ea-norecipients' => 'Không tìm thấy địa chỉ thư điện tử hợp lệ!',
 	'ea-listrecipients' => '=== Danh sách $1 {{PLURAL:$1|người nhận|người nhận}} ===',
 	'ea-error' => "'''Lỗi khi gửi [[$1]]:''' ''$2''",
