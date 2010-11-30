@@ -582,6 +582,14 @@ $messages['lt'] = array(
 	'backforth-prev' => 'Ankstesnis ($1)',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'backforth-next' => 'Cyts ($1)',
+	'backforth-prev' => 'Pyrmuokais ($1)',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -721,6 +729,13 @@ $messages['pap'] = array(
 $messages['pdc'] = array(
 	'backforth-next' => 'Neegscht ($1)',
 	'backforth-prev' => 'Letscht ($1)',
+);
+
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'backforth-prev' => 'Voriche ($1)',
 );
 
 /** Polish (Polski)
