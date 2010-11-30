@@ -911,6 +911,7 @@ $messages['ug-latn'] = array(
 $messages['uk'] = array(
 	'searchbox-desc' => 'Дозволити включення пошукових форм',
 	'searchbox-search' => 'Пошук',
+	'searchbox-go' => 'Старт',
 	'searchbox-namespaces' => 'Простори назв:',
 );
 
