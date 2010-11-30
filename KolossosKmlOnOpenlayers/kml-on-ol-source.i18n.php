@@ -155,6 +155,18 @@ $messages['es'] = array(
 	'ts-kml-on-ol-map-by' => 'Mapa por',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'ts-kml-on-ol-options' => 'گزینه‌ها',
+	'ts-kml-on-ol-languages' => 'زبان‌ها',
+	'ts-kml-on-ol-thumbnails' => 'تصاویر بندانگشتی',
+	'ts-kml-on-ol-help' => 'راهنما',
+	'ts-kml-on-ol-all' => 'همه',
+	'ts-kml-on-ol-map-by' => 'نقشه توسط',
+);
+
 /** French (Français)
  * @author Gribeco
  * @author Zetud
@@ -408,6 +420,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'ts-kml-on-ol-languages' => 'Мови',
+	'ts-kml-on-ol-help' => 'Довідка',
 );
 
 /** Vietnamese (Tiếng Việt)
