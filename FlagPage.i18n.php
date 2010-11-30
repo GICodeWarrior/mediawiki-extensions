@@ -133,6 +133,19 @@ Beispiele:
 	'flagpage-tab' => 'Kennzeichnen',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'flagpage' => 'پرچم زدن به یک صفحه',
+	'flagpage-nopageselectedtitle' => 'هیچ صفحه‌ای انتخاب نشده است',
+	'flagpage-nopageselected' => 'شما یک صفحه را مشخص نکرده‌اید',
+	'flagpage-confirmsave' => 'لطفاً تغییرات خود را تایید کنید',
+	'flagpage-submitbutton' => 'صفحه را با این الگو ذخیره کن',
+	'flagpage-nonexistent' => 'صفحهٔ “$1” وجود ندارد. ممکن است [{{fullurl:Special:Log|page=$1}} انتقال یافته و یا حذف شده باشد].',
+	'flagpage-tab' => 'پرچم',
+);
+
 /** French (Français)
  * @author Peter17
  */
