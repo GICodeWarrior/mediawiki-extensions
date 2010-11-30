@@ -60,6 +60,12 @@ class CheckVars {
 	static $functionIgnorePrefixes = array( "pg_", "oci_", "db2_", "gmp_", "sqlsrv_", "exif_", "fss_", "tidy_",
 			"apc_", "eaccelerator_", "xcache_", "wincache_", "apache_", "xdiff_", "wikidiff2_", "parsekit_", 
 			"wddx_", "setproctitle", "utf8_", "normalizer_", "dba_", "pcntl_", "finfo_" );
+	# Functions to be avoided. Insert in lowercase.
+	static $poisonedFunctions = array(
+		'addslashes' => 'Replace with Database::addQuotes/strencode',
+		'mysql_escape_string' => 'Replace with Database::addQuotes/strencode',
+		);
+	
 	protected $generateDeprecatedList = false;
 
 	/* Values for status */
@@ -617,6 +623,11 @@ class CheckVars {
 				return;
 			}
 			if ( $token[1] == 'dieout' && in_array( $this->mFunction, array( 'setup_database', 'initial_setup', 'setup_plpgsql' ) ) ) {
+				return;
+			}
+			
+			if ( isset( self::$poisonedFunctions[ strtolower($token[1]) ] ) ) {
+				$this->warning( "Poisoned function {$token[1]} called from {$this->mFunction} in line {$token[2]}: " . self::$poisonedFunctions[strtolower($token[1])] );
 				return;
 			}
 			
