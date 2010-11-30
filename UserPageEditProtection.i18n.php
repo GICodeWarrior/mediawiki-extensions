@@ -158,6 +158,7 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'userpageeditprotection-desc' => 'הגבלת עריכת דפי משתמשים למשתמשים המשויכים אליהם ולעורכים מורשים',
 	'right-editalluserpages' => 'עריכת דפי משתמש',
 );
 
