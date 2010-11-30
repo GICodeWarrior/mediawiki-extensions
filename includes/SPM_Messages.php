@@ -19,6 +19,31 @@ $messages['en'] = array(
 	'right-SPMsetup' => 'Edit basic semantic project management settings'
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'spm_wbs_link' => 'Экспарт у фармат XML MS Project',
+	'spm_printername_wbs' => 'Экспарт у MS Project',
+	'spm-name' => 'Кіраваньне сэмантычным праектам',
+	'semanticprojectmanagement-desc' => 'Фарматы кіраваньня праектамі для ўбудаваных запытаў сэмантычнай MediaWiki',
+	'semanticprojectmanagement' => 'Кіраваньне сэмантычнымі праектамі',
+	'right-SPMsetup' => 'Рэдагаваць базавыя устаноўкі кіраваньня сэмантычнымі праектамі',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'spm_wbs_link' => 'Ezporzhiadnen XML eus MS Project',
+	'spm_printername_wbs' => 'Ezporzhiadnen eus MS Project',
+	'spm-name' => 'Mererezh raktresoù ereadurel',
+	'semanticprojectmanagement-desc' => 'Furmadoù merañ raktresoù evit ar rekedoù Semantic MediaWiki',
+	'semanticprojectmanagement' => 'Mererezh raktresoù ereadurel',
+	'right-SPMsetup' => 'Kemmañ arventennoù merañ  diazez ar raktres ereadurel',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -101,6 +126,18 @@ $messages['mk'] = array(
 	'right-SPMsetup' => 'Основни нагодувања за семантички проект',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'spm_wbs_link' => 'Naar MS Project XML exporteren',
+	'spm_printername_wbs' => 'Naar MS Project exporteren',
+	'spm-name' => 'Semantisch projectmanagement',
+	'semanticprojectmanagement-desc' => 'Projectmanagementformaten voor inline zoekopdrachten van Semantic MediaWiki',
+	'semanticprojectmanagement' => 'Semantisch projectmanagement',
+	'right-SPMsetup' => 'Basisinstellingen voor semantisch projectmanagement bewerken',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -122,5 +159,6 @@ $messages['pt'] = array(
 	'spm-name' => 'Gestão de Projectos Semântica',
 	'semanticprojectmanagement-desc' => 'Formatos de Gestão de Projectos, para consultas em linha do MediaWiki Semântico',
 	'semanticprojectmanagement' => 'Gestão de Projectos Semântica',
+	'right-SPMsetup' => 'Editar configurações básicas da gestão de projectos semântica',
 );
 
