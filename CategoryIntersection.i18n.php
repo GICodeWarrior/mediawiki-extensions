@@ -324,6 +324,7 @@ $messages['he'] = array(
 	'categoryintersection-desc' => 'שמירת טבלה עם ערכי גיבוב עבור [[Special:CategoryIntersection|הצלבות בין קטגוריות]] בתוך דף',
 	'categoryintersection-doit' => 'הצגת הדפים בכל הקטגוריות האלו',
 	'categoryintersection-maxcategories' => 'מספר הקטגוריות המירבי המותר להצלבה הוא $1.',
+	'categoryintersection-mincategories' => 'עליך לכלול לפחות שתי קטגוריות.',
 	'categoryintersection-results' => 'החיפוש החזיר {{PLURAL:$1|תוצאה אחת|$1 תוצאות}}.',
 );
 
