@@ -597,6 +597,7 @@ $messages['ext'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Mjbmr
  */
 $messages['fa'] = array(
 	'vote' => 'رای‌گیری',
@@ -612,6 +613,8 @@ $messages['fa'] = array(
 	'vote-results-none' => 'در حال حاضر هیچ رایی ثبت نشده است.',
 	'vote-login' => 'برای رای دادن باید [$1 به سامانه وارد شوید].',
 	'vote-invalid-choice' => 'شما باید یکی از گزینه‌های موجود را انتخاب کنید.',
+	'right-vote' => 'ثبت رای',
+	'right-voteadmin' => 'مشاهده نتایج آراء',
 );
 
 /** Finnish (Suomi)

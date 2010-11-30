@@ -432,6 +432,7 @@ $messages['gu'] = array(
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'contributiontracking-desc' => 'מעקב תרומות להתרמה לקרן ויקימדיה',
@@ -440,6 +441,7 @@ $messages['he'] = array(
 	'contrib-tracking-error-text' => 'שליחת פורום בלתי תקינה',
 	'contrib-tracking-submitting' => 'נשלח למעבד התרומות...',
 	'contrib-tracking-continue' => 'אם ההפניה אינה מתבצעת אוטומטית, לחצו על הכפתור כדי להשלים את תרומתכם באתר PayPal.',
+	'contrib-tracking-redirect' => 'כעת תתבצע העברה אוטומטית ל־PayPal כדי להשלים את תרומתך.',
 	'contrib-tracking-button' => 'המשך',
 );
 
@@ -747,6 +749,7 @@ $messages['nl'] = array(
 	'contrib-tracking-error-text' => 'Ongeldige formulierinvoer',
 	'contrib-tracking-submitting' => 'Bezig met het uitvoeren van de betaling...',
 	'contrib-tracking-continue' => 'Als u niet automatisch wordt doorgestuurd, klik dan op de knop om uw donatie via PayPal te voltooien.',
+	'contrib-tracking-redirect' => 'U wordt automatisch doorgeleid naar PayPal om de transactie te voltooien.',
 	'contrib-tracking-button' => 'Doorgaan',
 );
 
@@ -1077,6 +1080,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Тест
  */
 $messages['uk'] = array(
 	'contributiontracking-desc' => 'Відстеження збору пожертвувань на користь Вікімедіі',
@@ -1085,6 +1089,7 @@ $messages['uk'] = array(
 	'contrib-tracking-error-text' => 'Неправильне підпорядкування форми',
 	'contrib-tracking-submitting' => 'Відправка оброблювачеві платежів...',
 	'contrib-tracking-continue' => 'Якщо ви не були автоматично перенаправлені, натисніть на кнопку, щоб завершити вашу пожертву на сайті PayPal.',
+	'contrib-tracking-redirect' => 'Ви будете автоматично перенаправлені на PayPal для завершення вашого пожертвування.',
 	'contrib-tracking-button' => 'Продовжити',
 );
 

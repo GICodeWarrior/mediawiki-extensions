@@ -411,9 +411,12 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'htmlets-desc' => 'Дозволяє вам включати фрагменти HTML з файлів за допомогою тегу <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Не вдалося знайти HTML-файл $1',
+	'htmlets-loadfailed' => 'Не вдалося завантажити HTML-файл $1',
 );
 
 /** Vietnamese (Tiếng Việt)

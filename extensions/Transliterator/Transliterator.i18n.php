@@ -255,6 +255,7 @@ $messages['he'] = array(
 	'transliterator-error-syntax' => 'תחביר שגוי <code>$1</code> בדף [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'יש יותר מ{{PLURAL:$1|כלל אחד|־$1 כללים}} בדף [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'בכלל <code>$1</code> יש יותר מ{{PLURAL:$3|תו אחד|־$3 תווים}} בשמאל בדף [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => 'על [[MediaWiki:$2]] להכיל {{PLURAL:$1|תו אחד|$1 תווים}} לפחות.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

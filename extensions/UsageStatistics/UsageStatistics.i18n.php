@@ -775,9 +775,17 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author BlueDevil
  * @author Huji
+ * @author Mjbmr
  */
 $messages['fa'] = array(
-	'usagestatisticsstart' => 'تاریخ آغاز',
+	'usagestatisticsinterval' => 'فاصله:',
+	'usagestatisticstype' => 'نوع:',
+	'usagestatisticsstart' => 'تاریخ آغاز:',
+	'usagestatisticsend' => 'تاریخ پایان:',
+	'usagestatisticsintervalday' => 'روز',
+	'usagestatisticsintervalweek' => 'هفته',
+	'usagestatisticsintervalmonth' => 'ماه',
+	'usagestatisticscalselect' => 'انتخاب',
 );
 
 /** Finnish (Suomi)

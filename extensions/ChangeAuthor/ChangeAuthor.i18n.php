@@ -733,6 +733,13 @@ $messages['eu'] = array(
 	'changeauthor-nosuchtitle' => 'Ez dago "$1" izenburua duen orrialderik.',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'changeauthor-pagenameform-go' => 'برو',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

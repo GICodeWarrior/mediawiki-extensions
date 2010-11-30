@@ -247,6 +247,25 @@ $messages['gsw'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Langzeiche',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'categorymultisortchinese-desc' => 'מתן האפשרות לצפייה בקטגוריות עם מפתחות מיון שונים המיועדים לצורות הכתב הסיניות',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'מנדרינית: פינ־יין',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'מנדרינית: בופומופו',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'מנדרינית: וייד-ג׳יילס',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'מנדרינית: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'מנדרינית: טונג־יונג',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'קנטונזית: ג׳וטפינג',
+	'categorymultisort-sortkey-name-stroke' => 'קו',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'קו: מפושט',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'קו: מסורתי',
+	'categorymultisort-sortkey-name-radical' => 'שורש',
+	'categorymultisort-sortkey-name-radical-simplified' => 'שורש: מפושט',
+	'categorymultisort-sortkey-name-radical-traditional' => 'שורש: מסורתי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

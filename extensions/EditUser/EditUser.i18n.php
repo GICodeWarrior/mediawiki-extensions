@@ -398,6 +398,13 @@ $messages['eu'] = array(
 	'right-edituser-exempt' => 'Besteek ezin dute erabiltzaile honen hobespenak editatu',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'edituser-username' => 'نام کاربری:',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix

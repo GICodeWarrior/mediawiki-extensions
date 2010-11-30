@@ -514,6 +514,16 @@ $messages['eu'] = array(
 	'mwe-clipedit-duration' => 'Iraupena:',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'mwe-clipedit-start_time' => 'زمان شروع',
+	'mwe-clipedit-end_time' => 'زمان پایان',
+	'mwe-clipedit-inline-description' => 'عنوان',
+	'mwe-clipedit-duration' => 'مدت زمان :',
+);
+
 /** Finnish (Suomi) */
 $messages['fi'] = array(
 	'mwe-clipedit-crop' => 'Rajaa kuva',
@@ -1624,6 +1634,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Alex Khimich
+ * @author Тест
  */
 $messages['uk'] = array(
 	'mwe-clipedit-crop' => 'Обрізати зображення',
@@ -1638,7 +1649,7 @@ $messages['uk'] = array(
 	'mwe-clipedit-sc_overlays' => 'Перекриття',
 	'mwe-clipedit-sc_audio' => 'Аудіо контроль',
 	'mwe-clipedit-sc_duration' => 'Тривалість',
-	'mwe-clipedit-template_properties' => 'Властивості шаблону',
+	'mwe-clipedit-template_properties' => 'Властивості шаблона',
 	'mwe-clipedit-custom_title' => 'Власний заголовок',
 	'mwe-clipedit-edit_properties' => 'Змінити властивості',
 	'mwe-clipedit-other_properties' => 'Інші властивості',

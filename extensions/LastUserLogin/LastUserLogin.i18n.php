@@ -318,11 +318,14 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'lastuserlogin' => 'כניסת המשתמש האחרונה',
 	'lastuserlogin-desc' => 'הצגת הפעם האחרונה בה המשתמש נכנס',
 	'lastuserlogin_userid' => 'שם משתמש',
 	'lastuserlogin_username' => 'שם אמתי',
 	'lastuserlogin_useremail' => 'דוא״ל המשתמש',
 	'lastuserlogin_lastlogin' => 'הכניסה האחרונה',
+	'lastuserlogin_daysago' => 'ימים מאז',
+	'right-lastlogin' => 'צפייה בפעם האחרונה שבה נכנס המשתמש',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

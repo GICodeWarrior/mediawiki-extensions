@@ -179,6 +179,15 @@ $messages['es'] = array(
 	'prefs-category' => 'Categoría',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'categorymultisort-defaultsortkey-name' => 'پیش‌فرض',
+	'categorymultisort-go' => 'برو',
+	'prefs-category' => 'رده',
+);
+
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Nike

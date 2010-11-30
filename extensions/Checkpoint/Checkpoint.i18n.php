@@ -196,6 +196,16 @@ $messages['gsw'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Zwischespycherig]])',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'checkpoint' => 'שמירה והמשך בעריכה',
+	'checkpoint-desc' => 'מתן האפשרות לשמור ולהמשיך בעריכה',
+	'checkpoint-tooltip' => 'שמירה עד הנקודה אליה התקדמת והמשך עריכת הדף',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|שמירת נקודת ביקורת]])',
+);
+
 /** Croatian (Hrvatski)
  * @author Herr Mlinka
  */

@@ -288,6 +288,29 @@ S brucht s erscht oder e „Vorlage“-Argumänt.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> git s nit',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'datatransclusion-desc' => 'יבוא ועיבוד רשומות נתונים ממקורות נתונים חיצוניים',
+	'datatransclusion-missing-source' => 'לא צוין מקור נתונים.
+נדרש ארגומנט שני או "source".',
+	'datatransclusion-unknown-source' => 'מקור הנתונים שצוין פגום.
+"$1" אינו ידוע.',
+	'datatransclusion-missing-key' => 'לא צוין מפתח.
+$2 הנם מפתחות תקניים במקור הנתונים $1.',
+	'datatransclusion-bad-argument-by' => 'שדה המפתח שצוין פגום.
+"$2" אינו שדה מפתח במקור הנתונים "$1".
+{{PLURAL:$4|המפתח התקני הוא|המפתחות התקניים הם}}: $3.',
+	'datatransclusion-missing-argument-key' => 'לא צוין ערך למפתח.
+דרוש ארגומנט שני או "key".',
+	'datatransclusion-missing-argument-template' => 'לא נבחרה תבנית.
+דרוש ארגומנט ראשון או "template".',
+	'datatransclusion-record-not-found' => 'לא נמצאה רשומה התואמת $2 = $3 במקור הנתונים $1.',
+	'datatransclusion-bad-template-name' => 'שם התבנית פגום: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> אינו קיים.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -871,8 +871,10 @@ $messages['he'] = array(
 	'wah-menu-pref' => 'העדפות',
 	'wah-lookingforjob' => 'מתבצע חיפוש אחר משימה ...',
 	'wah-start-on-visit' => 'יש להפעיל את Wiki@Home בכל פעם שאבקר באתר זה.',
+	'wah-jobs-while-away' => 'יש להריץ משימות רק כאשר אינני משתמש בדפדפן למשך 20 דקות.',
 	'wah-nojobfound' => 'לא נמצאה משימה. נסיון חוזר בעוד $1.',
 	'wah-notoken-login' => 'האם ביצעתם כניסה? אם לא, אנא הכנסו תחילה.',
+	'wah-apioff' => 'מסתבר כי ה־API של Wiki@Home כבוי. נא ליצור קשר עם מנהל הוויקי.',
 	'wah-doing-job' => 'משימה: <i>$1</i> על: <i>$2</i>',
 	'wah-downloading' => 'הורדת הקובץ <i>$1%</i> הושלמה',
 	'wah-encoding' => 'קידוד הקובץ <i>$1%</i> הושלם',
@@ -880,6 +882,7 @@ $messages['he'] = array(
 	'wah-uploading' => 'העלאת הקובץ <i>$1</i> הושלמה',
 	'wah-uploadfail' => 'ההעלאה נכשלה',
 	'wah-doneuploading' => 'ההעלאה הושלמה. תודה לכם על תרומכתם.',
+	'wah-needs-firefogg' => 'כדי לקחת חלק ב־Wiki@Home יהיה עליך להתקין את <a href="http://firefogg.org">Firefogg</a>.',
 	'wah-api-error' => 'ארעה שגיאה במנשק תפעול התוכנית. יש לנסות שוב מאוחר יותר.',
 );
 

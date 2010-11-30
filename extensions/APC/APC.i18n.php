@@ -1966,13 +1966,22 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author BlueDevil
+ * @author Mjbmr
  * @author Vahid
  */
 $messages['fa'] = array(
+	'viewapc-clear-confirm' => 'آیا می خواهید کاشه را خالی کنید؟',
+	'viewapc-display-filename' => 'نام پرونده',
+	'viewapc-display-ttl' => 'زمان انقضاء',
+	'viewapc-display-deletion_time' => 'حذف شده',
+	'viewapc-display-no-delete' => 'حذف نشده',
 	'viewapc-ls-submit' => 'برو!',
 	'viewapc-ls-header-name' => 'نام',
 	'viewapc-ls-header-size' => 'اندازه',
+	'viewapc-ls-header-created' => 'ایجاد شد',
+	'viewapc-ls-header-deleted' => 'حذف شد',
 	'viewapc-ls-sort-name' => 'نام',
+	'viewapc-ls-limit-none' => 'همه',
 );
 
 /** Finnish (Suomi)

@@ -153,6 +153,19 @@ $messages['gsw'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo het dr uugiltig Breiti-Parameter „$1“ empfange.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'embedvideo-desc' => 'הוספת פונקציית מפענח להטמעת וידאו ממקורות נפוצים',
+	'embedvideo-missing-params' => 'ל־EmbedVideo חסר פרמטר נחוץ.',
+	'embedvideo-bad-params' => 'ל־EmbedVideo התקבל פרמטר שגוי.',
+	'embedvideo-unparsable-param-string' => 'ל־EmbedVideo התקבלה מחרוזת בלתי ניתנת לפענוח כפרמטר "<code>$1</code>".',
+	'embedvideo-unrecognized-service' => 'ל־EmbedVideo שירות הווידאו "<code>$1</code>" אינו מוכר.',
+	'embedvideo-bad-id' => 'ל־EmbedVideo התקבל מזהה שגוי "$1" לשירות "$2".',
+	'embedvideo-illegal-width' => 'ל־EmbedVideo התקבל פרמטר רוחב בלתי תקני "$1".',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

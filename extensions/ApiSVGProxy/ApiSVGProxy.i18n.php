@@ -136,6 +136,13 @@ $messages['gsw'] = array(
 	'apisvgproxy-desc' => 'SVG-Dateie us ere (villicht extärne) Dateiesammlig in di lokal Domain yybinde',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'apisvgproxy-desc' => 'תיווך קובצי SVG ממאגר (ספק מרוחק) של קבצים למתחם המקומי',
+);
+
 /** Croatian (Hrvatski)
  * @author Tivek
  */

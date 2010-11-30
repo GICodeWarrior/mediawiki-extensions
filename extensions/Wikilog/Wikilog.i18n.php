@@ -5181,6 +5181,8 @@ $messages['pdc'] = array(
  * @author Xqt
  */
 $messages['pfl'] = array(
+	'wikilog-pager-prev' => 'voricher',
+	'wikilog-pager-next' => 'negschter',
 	'wikilog-edit-lc' => 'bearwaide',
 );
 

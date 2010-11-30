@@ -10013,6 +10013,14 @@ $messages['pdc'] = array(
 	'ow_suggest_next' => 'Neegschte',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'ow_suggest_previous' => 'Voriche',
+	'ow_suggest_next' => 'Negschte',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Masti

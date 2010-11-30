@@ -231,6 +231,18 @@ $messages['be-tarask'] = array(
 	'cb_edit_paste_right_hint' => 'Уставіць апэратар у наступную пазыцыю, калі магчыма',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'cb_cat_subcats' => 'подкатегории',
+	'cb_cat_pages' => 'страници',
+	'cb_cat_files' => 'файлове',
+	'cb_all_op' => 'Всички',
+	'cb_or_op' => 'или',
+	'cb_and_op' => 'и',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal
@@ -458,6 +470,19 @@ Por favor, cambia o actualiza el navegador, de ser posible.',
 	'cb_edit_clear_hint' => 'Limpiar la expresión actual (seleccionar todo)',
 	'cb_edit_paste_hint' => 'Pegar el operador en la posición actual, de ser posible',
 	'cb_edit_paste_right_hint' => 'Pegar el operador en la posición siguiente, de ser posible',
+);
+
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'cb_previous_items_link' => 'قبلی',
+	'cb_next_items_link' => 'بعدی',
+	'cb_cat_subcats' => 'زیررده‌ها',
+	'cb_cat_files' => 'پرونده‌ها',
+	'cb_all_op' => 'همه',
+	'cb_or_op' => 'یا',
+	'cb_and_op' => 'و',
 );
 
 /** Finnish (Suomi)
@@ -1133,6 +1158,14 @@ Endre eller oppgrader nettleseren din, om mulig.',
  */
 $messages['pdc'] = array(
 	'cb_next_items_link' => 'Neegschte',
+);
+
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'cb_previous_items_link' => 'Voriche',
+	'cb_next_items_link' => 'Negschte',
 );
 
 /** Polish (Polski)

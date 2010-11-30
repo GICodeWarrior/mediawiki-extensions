@@ -953,6 +953,7 @@ Bezit sur emañ ho tiviz diouzh ar c'henasant deuet war wel da-heul ar gaozeaden
 	'deletequeue-list-search-legend' => 'Klask pajennoù',
 	'deletequeue-list-queue' => 'Lostennad :',
 	'deletequeue-list-status' => 'Statud :',
+	'deletequeue-list-expired' => 'Diskouez hepken an anvadurioù zo da vezañ serret.',
 	'deletequeue-list-search' => 'Klask',
 	'deletequeue-list-anyqueue' => '(forzh pehini)',
 	'deletequeue-list-votes' => 'Roll votoù',

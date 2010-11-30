@@ -110,6 +110,13 @@ $messages['gsw'] = array(
 	'hidens-desc' => 'Versteckt d Bezeichnig vum Namensruum in Header un Titel vun ere Syte, wänn si in eme Namensruum isch, wu si nit soll aazeigt wäre, oder wänn d <code><nowiki>{{#hidens:}}</nowiki></code>-Parser-Funktion brucht wird',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'hidens-desc' => 'הסתרת שם המרחב בכותרת ובשם כאשר הדף נמצא בשם המרחב שצוין או כאשר מתבצעת קריאה לפונקציה <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

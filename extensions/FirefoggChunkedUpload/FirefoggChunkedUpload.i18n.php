@@ -119,6 +119,13 @@ $messages['gsw'] = array(
 	'firefoggcu-desc' => 'Stuckwys-Uffeladigs-Protokoll vu Firefogg',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'firefoggcu-desc' => 'פרוטוקול השליחה בחלקים של Firefogg',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

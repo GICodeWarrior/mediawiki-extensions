@@ -320,6 +320,14 @@ $messages['pdc'] = array(
 	'semanticformsinputs-next' => 'Neegschte',
 );
 
+/** Pfälzisch (Pfälzisch)
+ * @author Xqt
+ */
+$messages['pfl'] = array(
+	'semanticformsinputs-prev' => 'Voriche',
+	'semanticformsinputs-next' => 'Negschte',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
