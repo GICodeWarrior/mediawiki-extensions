@@ -877,12 +877,13 @@ $4',
 	'todo-list-change' => 'שינוי',
 	'todo-list-cancel' => 'ביטול',
 	'todo-new-item' => 'פריט חדש',
+	'todo-not-updated' => 'לא ניתן לעדכן את הרשומה במסד הנתונים',
 	'todo-issue-summary' => 'תקציר הנושא:',
 	'todo-form-details' => 'פרטים:',
 	'todo-form-email' => 'על מנת לקבל התראה בדוא"ל אודות סגירת פריט, הזינו את כתובת הדוא"ל שלכם כאן:',
 	'todo-form-submit' => 'שליחת השאילתה',
 	'right-todo' => 'החזקת רשימת מטלות',
-	'right-todosubmit' => 'הגבלת ההרשאות לרשימת המטלות של המשתמש',
+	'right-todosubmit' => 'הגבלת הרשאות המשתמש לרשימת המטלות',
 );
 
 /** Hindi (हिन्दी)
@@ -2090,6 +2091,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Alex Khimich
+ * @author Тест
  */
 $messages['uk'] = array(
 	'todo' => 'Список завдань',
@@ -2117,6 +2119,7 @@ $4',
 	'todo-list-change' => 'Змінити',
 	'todo-list-cancel' => 'Скасувати',
 	'todo-new-item' => 'Нове завдання',
+	'todo-not-updated' => 'Не вдалося оновити запис у базі даних',
 	'todo-issue-summary' => 'Підсумок роботи:',
 	'todo-form-details' => 'Деталі:',
 	'todo-form-email' => 'Щоб отримати сповіщення по електронній пошті, коли це завдання закрите, вкажіть свою адресу:',
