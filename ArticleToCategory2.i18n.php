@@ -165,6 +165,14 @@ $messages['es'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Crear',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'articletocategory2-create-article-under-category-button' => 'ایجاد',
+	'articletocategory2-create-category-under-category-button' => 'ایجاد',
+);
+
 /** Finnish (Suomi)
  * @author Olli
  */
@@ -223,6 +231,7 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'articletocategory2-desc' => 'הוספת תיבת קלט בכל דף קטגוריה המאפשר יצירת דף חדש בקטגוריה זאת ישירות',
 	'articletocategory2-create-article-under-category-text' => 'הוספת דף זה לקטגוריה',
 	'articletocategory2-create-article-under-category-button' => 'יצירה',
 	'articletocategory2-create-category-under-category-text' => 'הוספת קטגוריה לקטגוריה זו',
