@@ -1419,6 +1419,7 @@ $messages['uk'] = array(
 	'errorhandler-error-user-notice' => 'Повідомлення користувача',
 	'errorhandler-error-user-deprecated' => 'Користувач заборонений',
 	'errorhandler-error-strict' => 'Жорсткі стандарти',
+	'errorhandler-error-recoverable' => 'Виявлено фатальну помилку',
 	'errorhandler-msg-text' => '$1 : $2 в $3 (рядок $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> у <b>$3</b> (рядок <b>$4</b>)',
 	'errorhandler-trace' => 'відбиток:',
