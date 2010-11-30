@@ -481,9 +481,13 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Mardetanha
+ * @author Mjbmr
  */
 $messages['fa'] = array(
 	'imstatus_default' => 'پیش‌فرض',
+	'imstatus_max' => 'حداکثر',
+	'imstatus_min' => 'حداقل',
+	'imstatus_or' => 'یا',
 );
 
 /** Finnish (Suomi)
