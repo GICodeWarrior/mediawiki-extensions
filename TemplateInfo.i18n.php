@@ -337,10 +337,11 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'templateinfo-desc' => 'Підтримує визначення структури даних шаблонів за допомогою розмітки XML',
-	'templateinfo-header' => 'XML-визначення для цього шаблону:',
+	'templateinfo-header' => 'XML-визначення для цього шаблона:',
 );
 
 /** Vietnamese (Tiếng Việt)
