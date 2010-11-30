@@ -166,6 +166,13 @@ $messages['gsw'] = array(
 	'cassandra-desc' => 'Versionstext in dr [http://cassandra.apache.org/ Apache Cassandra]-Datebank spychere',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'cassandra-desc' => 'אחסון טקסט על הגרסה במסד נתונים מסוג [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
