@@ -653,6 +653,7 @@ $messages['he'] = array(
 	'tasklistchooseproj' => 'בחירת מיזם:',
 	'tasklistprojdisp' => 'תצוגה',
 	'tasklistbyname' => '== רשימת מטלות עבור %s ==',
+	'tasklistnowguseprojects' => 'הגדרת את $wgUseProjects ל־"false" ולא ניתן להשתמש בדף זה.',
 	'tasklistnoprojects' => "שגיאה: נראה שהפעלתם את '''\$wgUseProjects''', אבל לא יצרתם את [[MediaWiki:TodoTasksValidProjects]]. ראו את [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 הוראות ההתקנה] לפרטים נוספים.",
 	'tasklistemailbody' => ',
 
