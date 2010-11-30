@@ -286,6 +286,13 @@ Si teniu un compte d'usuari, podeu eliminar aquest avís a la secció «Caixa d'
 	'vector-simplesearch-containing' => 'que conté ...',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'vector-simplesearch-search' => 'Laha',
+);
+
 /** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
@@ -962,9 +969,11 @@ Es se bös aangemeld, kins se dees waorsjoewing oetzètten in 't bewerkingstabbl
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Matasg
  */
 $messages['lt'] = array(
+	'vector' => '„Vektorinės“ vartotojo sąsajos patobulinimai',
 	'vector-collapsiblenav-more' => 'Daugiau kalbų',
 	'vector-editwarning-warning' => 'Palikdamas šį puslapį jūs prarasite visus padarytus pakeitimus.',
 	'vector-editwarning-preference' => 'Perspėti mane, kai palieku redagavimo puslapį, o jame yra neišsaugotų pakeitimų',
