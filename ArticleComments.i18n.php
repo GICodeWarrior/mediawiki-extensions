@@ -421,6 +421,15 @@ $messages['eu'] = array(
 	'article-comments-leave-comment-link' => 'Iruzkina egin ...',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'article-comments-title-string' => 'عنوان',
+	'article-comments-url-field' => 'وب‌گاه :',
+	'article-comments-url-string' => 'نشانی اینترنتی',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Olli
