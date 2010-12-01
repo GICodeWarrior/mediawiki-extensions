@@ -83,6 +83,13 @@ $messages['gsw'] = array(
 	'pageobjectmodel-desc' => 'Fiegt e Reihe vu Klasse yy zur Abstraktion vu dr MediaWiki-Syntax go ne eifache Dateexport un d Bearbeitig vu Syte mit andere Programm megli mache',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'pageobjectmodel-desc' => 'הוספת קבוצה של מחלקות להפשטה של התחביר של מדיה־ויקי כדי לאפשר חילוץ ותמרון של דפים ביתר קלות בתכניות אחרות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
