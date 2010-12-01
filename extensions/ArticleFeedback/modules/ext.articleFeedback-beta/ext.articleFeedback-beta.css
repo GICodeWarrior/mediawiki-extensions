@@ -11,7 +11,7 @@
 	height: 13.5em;
 	background-color: #f3f3f3;
 	border: 1px solid #cccccc;
-	border-right: none;
+	border-left: none;
 	padding-bottom: 1px;
 }
 
@@ -23,7 +23,7 @@
 	width: 8em;
 	height: 13.5em;
 	background-image: url(images/tab-break.png);
-	background-position: left top;
+	background-position: right top;
 	background-repeat: repeat-y;
 	padding-bottom: 3px;
 }
@@ -36,7 +36,7 @@
 	cursor: pointer;
 	background-color: #ffffff;
 	background-image: url(images/tab-edge.png);
-	background-position: left top;
+	background-position: right top;
 	background-repeat: repeat-y;
 }
 
