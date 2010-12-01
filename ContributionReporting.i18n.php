@@ -1978,6 +1978,7 @@ $messages['gl'] = array(
 	'fundraiserstats-tab-averages' => 'Medias (dólar estadounidense)',
 	'fundraiserstats-tab-maximums' => 'Máximas (dólar estadounidense)',
 	'fundraiserstats-tab-ytd' => 'Total anual ata o de agora (USD)',
+	'fundraiserstats-instructions' => 'Para ver as estatísticas dun día, só hai que pasar o rato por riba da barra dese día. Cada ano ten unha cor diferente no cadro.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -3951,6 +3952,7 @@ $messages['pms'] = array(
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Màssim (USD)',
 	'fundraiserstats-tab-ytd' => 'Ann an cors (USD)',
+	'fundraiserstats-instructions' => "Për vëdde statìstiche për minca di, buta ël cursor an sla bara për col di. Minca agn a l'ha un color diferent an sël gràfich.",
 );
 
 /** Pashto (پښتو)
@@ -4129,6 +4131,7 @@ $messages['pt-br'] = array(
 	'fundraiserstats-tab-averages' => 'Médias (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Desde o início do ano (USD)',
+	'fundraiserstats-instructions' => 'Para ver as estatísticas de qualquer dia, passe o cursor sobre a barra desse dia. Cada ano tem uma cor diferente no gráfico.',
 );
 
 /** Romanian (Română)
