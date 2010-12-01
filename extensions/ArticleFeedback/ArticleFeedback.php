@@ -16,6 +16,9 @@ require_once( $dir . '../SimpleSurvey/SimpleSurvey.php' );
 
 /* Configuration */
 
+// Which version of the UI to render
+$wgArticleFeedbackVersion = 'alpha';
+
 // If the number of page revisions (since users last rating) is greater than this then consider the
 // last rating "stale"
 $wgArticleFeedbackStaleCount = 5;

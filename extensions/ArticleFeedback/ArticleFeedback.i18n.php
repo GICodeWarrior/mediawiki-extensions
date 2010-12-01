@@ -5,10 +5,12 @@ $messages = array();
  * @author Nimish Gautam
  * @author Sam Reed
  * @author Brandon Harris
+ * @author Trevor Parscal
  */
 $messages['en'] = array(
 	'articlefeedback' => 'Article Feedback',
 	'articlefeedback-desc' => 'Article Feedback',
+	/* Alpha Messages */
 	'articlefeedback-alpha-yourfeedback' => 'Your feedback',
 	'articlefeedback-alpha-pleaserate' => 'Please take a moment to rate this page below.',
 	'articlefeedback-alpha-submit' => 'Submit',
@@ -45,6 +47,22 @@ You may wish to rate it again.",
 	'articlefeedback-alpha-survey-submit' => 'Submit',
 	'articlefeedback-alpha-survey-title' => 'Please answer a few questions',
 	'articlefeedback-alpha-survey-thanks' => 'Thanks for filling out the survey.',
+	/* Beta Messages */
+	'articlefeedback-beta-form-tab-label' => 'Provide Feedback',
+	'articlefeedback-beta-form-panel-title' => 'Your Feedback',
+	'articlefeedback-beta-form-panel-instructions' => 'Please take a moment to rate this page.',
+	'articlefeedback-beta-form-panel-notice' => 'Your ratings will expire over time.',
+	'articlefeedback-beta-form-panel-submit' => 'Submit feedback',
+	'articlefeedback-beta-report-tab-label' => 'Show Results',
+	'articlefeedback-beta-report-panel-title' => 'Feedback Results',
+	'articlefeedback-beta-field-wellsourced-label' => 'Well-sourced',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Do you feel this page has sufficient citations and that those citations come from trustworthy sources?',
+	'articlefeedback-beta-field-complete-label' => 'Complete',
+	'articlefeedback-beta-field-complete-tip' => 'Do you feel that this page covers the essential topic areas that it should?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutral',
+	'articlefeedback-beta-field-neutral-tip' => 'Do you feel that this page shows a fair representation of all perspectives on the issue?',
+	'articlefeedback-beta-field-readable-label' => 'Readable',
+	'articlefeedback-beta-field-readable-tip' => 'Do you feel that this page is well-organized and well written?',
 );
 
 /** Message documentation (Message documentation)
