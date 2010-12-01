@@ -68,6 +68,13 @@ $messages['gsw'] = array(
 	'proxyconnect-desc' => 'Macht di serversytig Funktion Proxy Connect negli',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'proxyconnect-desc' => 'הטמעת תכונות צד השרת של Proxy Connect',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
