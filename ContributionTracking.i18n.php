@@ -856,6 +856,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'contributiontracking-desc' => 'Seguimento de doações para a coleta de fundos da Wikimedia',
@@ -864,6 +865,7 @@ $messages['pt-br'] = array(
 	'contrib-tracking-error-text' => 'Submissão de formulário inválida',
 	'contrib-tracking-submitting' => 'Submetendo ao processador de pagamentos...',
 	'contrib-tracking-continue' => 'Se você não for redirecionado automaticamente, clique no botão para completar a sua doação no PayPal.',
+	'contrib-tracking-redirect' => 'Será reencaminhado automaticamente para o Paypal para terminar a sua doação.',
 	'contrib-tracking-button' => 'Continuar',
 );
 
