@@ -41,6 +41,23 @@ class ArticleFeedbackHooks {
 		'ext.articleFeedback-beta' => array(
 			'scripts' => 'ext.articleFeedback-beta/ext.articleFeedback-beta.js',
 			'styles' => 'ext.articleFeedback-beta/ext.articleFeedback-beta.css',
+			'messages' => array(
+				'articlefeedback-beta-form-tab-label',
+				'articlefeedback-beta-form-panel-title',
+				'articlefeedback-beta-form-panel-instructions',
+				'articlefeedback-beta-form-panel-notice',
+				'articlefeedback-beta-form-panel-submit',
+				'articlefeedback-beta-report-tab-label',
+				'articlefeedback-beta-report-panel-title',
+				'articlefeedback-beta-field-wellsourced-label',
+				'articlefeedback-beta-field-wellsourced-tip',
+				'articlefeedback-beta-field-complete-label',
+				'articlefeedback-beta-field-complete-tip',
+				'articlefeedback-beta-field-neutral-label',
+				'articlefeedback-beta-field-neutral-tip',
+				'articlefeedback-beta-field-readable-label',
+				'articlefeedback-beta-field-readable-tip',
+			),
 			'dependencies' => array( 'jquery.tipsy' ),
 		),
 		'jquery.stars' => array(
@@ -92,7 +109,7 @@ class ArticleFeedbackHooks {
 	 * BeforePageDisplay hook
 	 */
 	public static function beforePageDisplay( $out ) {
-		global $wgRequest, $wgArticleFeedbackCategories;
+		global $wgRequest, $wgArticleFeedbackCategories, $wgArticleFeedbackVersion;
 		
 		$title = $out->getTitle();
 		
@@ -109,8 +126,11 @@ class ArticleFeedbackHooks {
 			&& count( $wgArticleFeedbackCategories )
 			&& self::isInCategories( $title->getArticleId(), $wgArticleFeedbackCategories )
 		) {
-			$out->addModules( 'ext.articleFeedback-alpha' );
-			//$out->addModules( 'ext.articleFeedback-beta' );
+			if ( $wgArticleFeedbackVersion == 'beta' ) {
+				$out->addModules( 'ext.articleFeedback-beta' );
+			} else {
+				$out->addModules( 'ext.articleFeedback-alpha' );
+			}
 		}
 		return true;
 	}
