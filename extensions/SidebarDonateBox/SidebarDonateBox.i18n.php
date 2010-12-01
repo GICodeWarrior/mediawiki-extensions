@@ -92,6 +92,13 @@ $messages['gsw'] = array(
 	'sidebardonatebox-desc' => 'Fiegt e Spändebchäschtli in d Syteleischte yy',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'sidebardonatebox-desc' => 'הוספת תיבת תרומה מותאמת אישית לסרגל הצד',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

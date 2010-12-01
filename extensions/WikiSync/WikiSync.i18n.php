@@ -148,8 +148,11 @@ $messages['be-tarask'] = array(
 	'wikisync_api_result_EmptyPass' => 'Вы не ўстанавілі парамэтар lgpassword ці пакінулі яго пустым',
 	'wikisync_api_result_WrongPass' => 'Пададзены Вамі пароль зьяўляецца няслушным',
 	'wikisync_api_result_WrongPluginPass' => 'Пададзены Вамі пароль зьяўляецца няслушным',
+	'wikisync_api_result_CreateBlocked' => 'Вікі спрабавала аўтаматычна стварыць новы рахунак для Вас, але Ваш IP-адрас заблякаваны ад стварэньня рахункаў',
+	'wikisync_api_result_Throttled' => 'Вы ўваходзілі ў сыстэму зашмат разоў за кароткі пэрыяд часу.',
 	'wikisync_api_result_Blocked' => 'Удзельнік заблякаваны',
 	'wikisync_api_result_mustbeposted' => 'Модуль аўтарызацыі патрабуе выкарыстаньня POST-запытаў',
+	'wikisync_api_result_NeedToken' => 'Вы не падалі ключ уваходу ў сыстэму ці закладку (cookie) сэсіі. Запытайце зноў з ключом і закладкай, якія пададзеныя у гэтым адказе',
 );
 
 /** Breton (Brezhoneg)
@@ -158,12 +161,65 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'wikisync' => 'Sinkroneladur ar wiki',
+	'wikisync-desc' => "Pourchas a ra ur [[Special:WikiSync|bajenn dibar]] da sinkronelaat kemmoù diwezhañ daou wiki - unan lec'hel hag unan a-bell",
+	'wikisync_direction' => 'Dibab tu ar sinkronelaat',
+	'wikisync_local_root' => "Gwrizienn al lec'hienn wiki lec'hel",
+	'wikisync_remote_root' => "Gwrizienn al lec'hienn wiki a-bell",
+	'wikisync_remote_log' => 'Marilh an oberiadennoù a-bell',
+	'wikisync_clear_log' => 'Riñsañ ar marilh',
+	'wikisync_login_to_remote_wiki' => "Kevreadenn d'ar wiki a-bell",
+	'wikisync_remote_wiki_root' => 'Gwrizienn ar wiki a-bell',
+	'wikisync_remote_wiki_example' => 'Hent betek an api.php, da skouer : http://www.mediawiki.org/w',
+	'wikisync_remote_wiki_user' => 'Anv implijer war ar wiki a-bell',
+	'wikisync_remote_wiki_pass' => 'Ger-tremen war ar wiki a-bell',
 	'wikisync_remote_login_button' => 'Kevreañ',
 	'wikisync_sync_files' => 'Sinkronelañ restroù',
+	'wikisync_store_password' => 'Memoriñ ger-tremen ar wiki a-bell',
+	'wikisync_storing_password_warning' => "N'eo ket suraet ar memoriñ gerioù-temen a-bell ha, dre se, n'eo ket erbedet",
 	'wikisync_synchronization_button' => 'Sinkronaat',
+	'wikisync_scheduler_log' => 'Marilh ar steuñvekaer',
+	'wikisync_scheduler_setup' => 'Kefluniadur ar steuñvekaer',
+	'wikisync_scheduler_turn_on' => 'Gweredekaat ar steuñvekaer',
+	'wikisync_scheduler_switch_direction' => 'Eilpennañ tu ar sinkronelaat ent emgefre',
+	'wikisync_scheduler_time_interval' => 'Amzer, e munutennoù, etre an sinkroneladurioù emgefre',
+	'wikisync_apply_button' => 'Arloañ',
 	'wikisync_log_imported_by' => 'Enporzhiet gant [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Karget gant [[Special:WikiSync|WikiSync]]',
+	'wikisync_api_result_unknown_action' => 'Oberiadenn API dianav',
+	'wikisync_api_result_exception' => "C'hoarvezet ez eus un nemedenn e-pad galvadenn an API lec'hel",
+	'wikisync_api_result_noaccess' => "N'eus nemet an izili zo er strolladoù da-heul a c'hall seveniñ an ober-mañ : $1",
+	'wikisync_api_result_invalid_parameter' => 'Direizh eo talvoud an arventenn',
+	'wikisync_api_result_http' => "C'hoarvezet ez eus ur fazi HTTP en ur c'houlenn roadennoù digant an API a-bell",
+	'wikisync_api_result_Unsupported' => "N'eo ket skoret ho stumm eus Media Wiki (koshoc'h eget 1.15)",
+	'wikisync_api_result_NoName' => "N'hoc'h eus ket termenet an arventenn <code>lgname</code>",
+	'wikisync_api_result_Illegal' => "Un anv implijer fall hoc'h eus lakaet",
+	'wikisync_api_result_EmptyPass' => "N'hoc'h eus ket termenet an arventenn <code>lgpassword</code> pe lezet eo bet goullo ganeoc'h",
+	'wikisync_api_result_WrongPass' => "Fall eo an ger-tremen merket ganeoc'h",
+	'wikisync_api_result_WrongPluginPass' => "Fall eo an ger-tremen merket ganeoc'h",
+	'wikisync_api_result_CreateBlocked' => "Klasket en deus ar wiki-mañ krouiñ ent emgefre ur gont nevez evitdoc'h met stanket eo bet ho chomlec'h IP evit mirout a grouiñ kontoù drezañ",
+	'wikisync_api_result_Throttled' => "Klasket hoc'h eus kevreañ re alies e re nebeut a amzer.",
 	'wikisync_api_result_Blocked' => 'Implijer stanket',
+	'wikisync_api_result_mustbeposted' => 'Ezhomm en deus ar vodulenn gevreañ eus ur reked POST',
+	'wikisync_api_result_NeedToken' => "N'hoc'h eus ket pourchaset ar jedouer kevreañ pe toupin anavezout an dalc'h. Goulenn en-dro gant ar jedouer hag an toupin roet er respont-mañ.",
+	'wikisync_api_result_no_import_rights' => "N'eo ket aotreet an implijer-mañ da enporzhiañ restroù skarzh XML",
+	'wikisync_api_result_Success' => "Kevreet oc'h ervat war lec'hienn ar wiki a-bell",
+	'wikisync_js_last_op_error' => "Ur c'hemenn fazi zo bet da-heul an oberiadenn ziwezhañ.
+
+Kod : $1
+
+Kemenn : $2
+
+Pouezañ war [Mat eo] evit klask en-dro.",
+	'wikisync_js_synchronization_confirmation' => "Ha sur oc'h e fell deoc'h sinkronelaat
+
+eus $1
+	
+war-zu $2
+	
+adalek an adweladenn $3?",
+	'wikisync_js_synchronization_success' => 'Kaset eo bet ar sinkronelaat da benn ervat',
+	'wikisync_js_already_synchronized' => 'Evit doare eo sinkronelaet dija ar wikioù tal ha kein',
+	'wikisync_js_sync_to_itself' => "N'haller ket sinkronelaat ar wiki gantañ e-unan",
 	'wikisync_js_revision' => 'Adweladenn $1',
 	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|munut|munut}} a chom',
 	'wikisync_js_sync_start_ltr' => "Kregiñ gant ar sinkroneladur adalek ar wiki lec'hel betek ar wiki a-bell da $1",
@@ -501,6 +557,8 @@ $messages['hsb'] = array(
 	'wikisync_api_result_WrongPluginPass' => 'Hesło, kotrež sy podał, je wopak',
 	'wikisync_api_result_Throttled' => 'Sy so w krótkim času přečasto přizjewił.',
 	'wikisync_api_result_Blocked' => 'Wužiwar je zablokowany',
+	'wikisync_api_result_mustbeposted' => 'Přizjewjenski modul wužaduje sej POST-naprašowanje',
+	'wikisync_api_result_no_import_rights' => 'Tutón wužiwar njesmě dataje wućahow ze składowaka we formaće XML importować',
 	'wikisync_api_result_Success' => 'Wuspěšnje do zdaleneho wikisydła přizjewjeny',
 	'wikisync_js_last_op_error' => 'Poslednja operacija je zmylk wróćiła.
 
@@ -522,6 +580,10 @@ započinajo z wersiju $3 synchronizować?',
 	'wikisync_js_diff_search' => 'Rozdźěl w cilowych wersijach pytać',
 	'wikisync_js_revision' => 'Wersija $1',
 	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|mjeńšina|mjeńšinje|mjeńšiny|mjeńšin}} wyše',
+	'wikisync_js_sync_start_ltr' => 'Synchronizacija z lokalneho wikija do zdaleneho wikija so $1 započina',
+	'wikisync_js_sync_start_rtl' => 'Synchronizacija ze zdaleneho wikija do lokalneho wikija so $1 započina',
+	'wikisync_js_sync_end_ltr' => 'Synchronizacija z lokalneho wikija do zdaleneho wikija so $1 započina',
+	'wikisync_js_sync_end_rtl' => 'Synchronizacija ze zdaleneho wikija do lokalneho wikija $1 dokónčena',
 );
 
 /** Interlingua (Interlingua)

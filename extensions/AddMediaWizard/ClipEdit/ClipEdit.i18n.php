@@ -687,6 +687,7 @@ $messages['he'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'הוספה לתוך הרצף',
 	'mwe-clipedit-preview_insert' => 'תצוגה מקדימה של התוספת',
 	'mwe-clipedit-cancel_image_insert' => 'ביטול ההוספה',
+	'mwe-clipedit-sc_attributes' => 'עריכת פרטי קטע הווידאו',
 	'mwe-clipedit-sc_inoutpoints' => 'הגדרת נקודות כניסה ויציאה',
 	'mwe-clipedit-sc_overlays' => 'שכבות',
 	'mwe-clipedit-sc_audio' => 'בקרת שמע',
@@ -701,8 +702,12 @@ $messages['he'] = array(
 	'mwe-clipedit-end_time' => 'זמן הסיום',
 	'mwe-clipedit-preview_inout' => 'תצוגה מקדימה של נקודות הכניסה-יציאה',
 	'mwe-clipedit-edit-tools' => 'כלי עריכה',
+	'mwe-clipedit-inline-description' => 'הסבר',
+	'mwe-clipedit-edit-video-tools' => 'כלים לעריכת וידאו:',
 	'mwe-clipedit-duration' => 'משך:',
 	'mwe-clipedit-layout' => 'פריסה',
+	'mwe-clipedit-layout_right' => 'פריסת תמונות ביישור לימין',
+	'mwe-clipedit-layout_left' => 'פריסת תמונות ביישור לשמאל',
 );
 
 /** Croatian (Hrvatski)

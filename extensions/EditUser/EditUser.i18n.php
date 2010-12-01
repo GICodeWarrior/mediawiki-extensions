@@ -535,8 +535,8 @@ $messages['he'] = array(
 	'edituser' => 'עריכת משתמש',
 	'edituser-username' => 'שם משתמש:',
 	'edituser-dosearch' => 'חיפוש',
-	'edituser-nouser' => 'המשתמש המבוקש אינו קיים',
-	'edituser-exempt' => 'לא ניתן לערוך את המשתמש המבוקש',
+	'edituser-nouser' => 'המשתמש "$1" אינו קיים.',
+	'edituser-exempt' => 'לא ניתן לערוך את המשתמש "$1".',
 	'right-edituser' => 'עריכת ההעדפות של משתמשים אחרים',
 	'right-edituser-exempt' => 'העדפותיהם לא ניתנות לשינוי על ידי אחרים',
 );

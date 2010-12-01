@@ -87,6 +87,13 @@ $messages['gsw'] = array(
 	'slimboxthumbs-desc' => 'Zeigt noch eme Klick uf e Vorschaubild d Aazeig in dr volle Greßi mit [http://www.digitalia.be/software/slimbox2 Slimbox 2]',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'slimboxthumbs-desc' => 'הצגת תמונות בגודל מלא באמצעות [http://www.digitalia.be/software/slimbox2 Slimbox 2] בעת לחיצה על תמונות ממוזערות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

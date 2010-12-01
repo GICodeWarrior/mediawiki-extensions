@@ -58,6 +58,13 @@ $messages['gsw'] = array(
 	'snmpquery-desc' => 'Fiegt d Funktione SNMPget un SNMPwalk zue un schickt d Date retur in s Wiki',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'snmpquery-desc' => 'הוספת פונקציות SNMPget ו־SNMPwalk והחזרת הנתונים לוויקי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

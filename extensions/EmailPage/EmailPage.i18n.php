@@ -449,7 +449,7 @@ $messages['ia'] = array(
 	'ea-heading' => '=== Invio del pagina [[$1]] per e-mail ===',
 	'ea-group-info' => 'In addition, tu pote inviar le pagina al membros de un gruppo',
 	'ea-pagesend' => 'Pagina "$1" inviate ab $2',
-	'ea-nopage' => 'Per favor specifica un pagina a inviar, per exemplo "[[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]]".',
+	'ea-nopage' => 'Nulle pagina a inviar esseva specificate, per favor usa le ligamine de e-mail ab le barra lateral o actiones de pagina.',
 	'ea-norecipients' => 'Nulle adresses de e-mail valide trovate!',
 	'ea-listrecipients' => '=== {{PLURAL:$1|Destinatario|$1 destinatarios}} ===',
 	'ea-error' => "'''Error durante le invio de [[$1]]:''' ''$2''",

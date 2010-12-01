@@ -100,6 +100,7 @@ $messages['ia'] = array(
 	'spm-name' => 'Gestion semantic de projectos',
 	'semanticprojectmanagement-desc' => 'Formatos de gestion de projectos pro incorporar consultas de Semantic MediaWiki',
 	'semanticprojectmanagement' => 'Gestion semantic de projectos',
+	'right-SPMsetup' => 'Modificar le configurationes basic del gestion semantic de projectos',
 );
 
 /** Indonesian (Bahasa Indonesia)

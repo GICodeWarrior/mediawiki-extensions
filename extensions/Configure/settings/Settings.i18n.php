@@ -3604,6 +3604,7 @@ $messages['br'] = array(
 	'configure-setting-wgDevelopmentWarnings' => "Diskwel kemennoù diwall PHP evit fazioù posupl zo hag evit an arc'hwelioù dispredet",
 	'configure-setting-wgShowExceptionDetails' => 'Moullañ roudoù klok pilenn ar galvadennoù evit an nemedennoù',
 	'configure-setting-wgShowDBErrorBacktrace' => 'Moullañ roudoù klok pilenn ar galvadennoù evit fazioù an diaz roadennoù',
+	'configure-setting-wgShowDebug' => 'Diskwel ar roadennoù dizreinañ e traoñ an takad danvez pennañ',
 	'configure-setting-wgShowSQLErrors' => 'Diskouez pajennoù fazioù an diaz roadennoù',
 	'configure-setting-wgStatsMethod' => "Lec'h kas evit ar roadennoù wfIncrStats()",
 	'configure-setting-wgJobRunRate' => 'Niver a drevelloù da seveniñ evit pep gweladenn',
@@ -3677,13 +3678,24 @@ $messages['br'] = array(
 	'configure-setting-wgGroupsRemoveFromSelf' => "Strolladoù ma c'hall an implijerien mont kuit o-unan",
 	'configure-setting-wgRateLimitLog' => 'Marilh bevennoù ar feurioù',
 	'configure-setting-wgRateLimits' => 'Bevennoù ar feurioù',
+	'configure-setting-wgRateLimitsExcludedGroups' => "Strolladoù n'int ket dalc'het gant bevennoù feurioù",
 	'configure-setting-wgFeed' => 'Gweredekaat ar sindikadur',
 	'configure-setting-wgFeedDiffCutoff' => "Bevenn troc'h e ment an diforc'hioù evit al lanvadoù",
 	'configure-setting-wgFeedLimit' => "Niver uhelañ a zisoc'hoù er gwazhioù",
+	'configure-setting-wgOverrideSiteFeed' => 'Kemmañ arventennoù al lanvadoù',
+	'configure-setting-wgAdvancedSearchHighlighting' => "Aotren an usskediñ en disoc'hoù klask",
+	'configure-setting-wgEnableMWSuggest' => "Aotren ar c'hinnigoù klask pa vez bizskrivet er voest enklask",
+	'configure-setting-wgEnableOpenSearchSuggest' => 'Aotren ar rekedoù kinnigoù OpenSearch',
+	'configure-setting-wgGoToEdit' => 'Ma n\'eo ket bet krouet ar bajenn e kas war-eeun ar bouton "Mont" war-zu ar skramm degas kemmoù',
 	'configure-setting-wgMWSuggestTemplate' => 'Patromoù evit keflusker alioù diabarzh MediaWiki',
 	'configure-setting-wgOpenSearchTemplate' => 'Patrom evit an alioù OpenSearch',
 	'configure-setting-wgSearchForwardUrl' => 'Treuzkas ar goulennoù klask',
+	'configure-setting-wgSearchEverythingOnlyLoggedIn' => 'Gweredekaat an dibab "searcheverything" hepken evit an implijerien enrollet',
+	'configure-setting-wgSearchHighlightBoundaries' => 'Jedad boutin da glotañ gant bevennoù ar ger',
+	'configure-setting-wgSearchSuggestCacheExpiry' => "Pad termen respontoù ar c'hinnigoù klask",
+	'configure-setting-wgCountTotalSearchHits' => 'Aotren al lusker enklask da gontañ an niver hollek a respontoù da vezañ kinniget e Special:Klask',
 	'configure-setting-wgUseTwoButtonsSearchForm' => "Emzalc'h furmskrid klask ar varrenn-gostez",
+	'configure-setting-wgActiveUserDays' => 'Amzer kent sellet ouzh un implijer evel dizoberiant',
 	'configure-setting-wgDisableCounters' => "Diweredekaat ar c'honterioù gweladennoù",
 	'configure-setting-wgHitcounterUpdateFreq' => "Esaouenn hizivaat ar c'honterioù a weladennoù",
 	'configure-setting-wgWantedPagesThreshold' => 'Niver izelañ a liammoù evit ur bajenn da vezañ war ar roll [[Special:WantedPages]]',
@@ -3700,11 +3712,15 @@ $messages['br'] = array(
 	'configure-setting-wgExtraNamespaces-key' => 'ID an esaouenn anvioù',
 	'configure-setting-wgExtraNamespaces-value' => 'Anv an esaouenn anvioù',
 	'configure-setting-wgMetaNamespace' => 'Anv esaouenn anv ar raktres',
+	'configure-setting-wgMetaNamespaceTalk' => 'Anv esaouenn anv pajenn gaozeal ar raktres',
 	'configure-setting-wgNamespaceAliases' => 'Adkasoù an esaouennoù anv',
 	'configure-setting-wgNamespaceAliases-key' => 'Anv an alias',
 	'configure-setting-wgNamespaceAliases-value' => "ID esaouenn anv al lec'h kas",
 	'configure-setting-wgNamespaceProtection' => 'Gwarez an esaouennoù anv',
+	'configure-setting-wgNamespaceProtection-value' => "Roll ar gwirioù a ro an aotre da zegas kemmoù ''(unan dre linenn)''",
+	'configure-setting-wgNamespaceRobotPolicies' => 'Politikerezhioù evit ar robotoù dre esaouenn anv',
 	'configure-setting-wgNamespaceRobotPolicies-value' => 'Politikerezh evit ar robotoù',
+	'configure-setting-wgNamespacesToBeSearchedDefault' => 'Esaouennoù anv klaskus dre ziouer',
 	'configure-setting-wgNamespacesWithSubpages' => 'Esaouennoù anv gant ispajennoù',
 	'configure-setting-wgCategoryMagicGallery' => 'Diskouez ur palier skeudennoùigoù war bajennoù ar rummadoù',
 	'configure-setting-wgUseCategoryBrowser' => 'Gweredekaat ar furcher rummadoù',
@@ -12316,6 +12332,14 @@ $messages['lb'] = array(
 	'configure-setting-wgEnotifMinorEdits' => 'E-Mail Noriichten och fir "kleng Ännerungen" (Benotzer-Astellung gëtt gewisen an de Benotzer muss d\'Optioun aktivéieren)',
 	'configure-setting-wgEnotifUseRealName' => 'De richtegen Numm aplaz vum Benotzernumm am E-Mail-Feld "Vun" bentzen',
 	'configure-setting-wgUsersNotifiedOnAllChanges' => 'Benotzernimm deenen eng Noriicht per Mail geschéckt gëtt bäi all Ännerung op engem Wiki',
+);
+
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'configure-setting-wgSpecialPageGroups-key' => 'Grupa',
+	'configure-setting-wgDebugLogGroups-value' => 'Fails',
 );
 
 /** Latvian (Latviešu)

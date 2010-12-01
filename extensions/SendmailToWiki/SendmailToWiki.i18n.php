@@ -286,6 +286,9 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'sendmailtowiki-desc' => 'פרסום תוכן ויקי דרך כתובת דוא"ל דינמית ייעודית',
+	'prefs-sendmailtowiki' => 'פרסום תוכן באמצעות דוא״ל',
+	'sendmailtowiki-inemail' => 'כתובת דוא״ל ייעודית:',
+	'sendmailtowiki-err-wrongprefix' => 'קידומת החשבון בוויקי שגויה. נא ליצור קשר עם המנהל שלך.',
 	'sendmailtowiki-err-invalidaccount' => 'החשבון שגוי. אנא בדקו שוב את כתובת הדוא"ל אליה אתם שולחים.',
 	'sendmailtowiki-err-invalidsender' => 'השולח שגוי. אנא בדקו את כתובת הדוא"ל ממנה אתם שולחים.',
 );

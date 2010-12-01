@@ -111,6 +111,13 @@ $messages['gsw'] = array(
 	'peoplecategories-desc' => 'Änderet di aazeigte Sytenäme vu „Vorname Zuename“ uf „Zuename, Vorname“ uf Kategoriesyte, wu aagee sin',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'peoplecategories-desc' => 'שינוי שמות הדפים המוצגים מ"שם פרטי שם משפחה" ל"שם משפחה, שם פרטי" בקטגוריות דפים מסוימות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

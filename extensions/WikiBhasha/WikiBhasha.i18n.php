@@ -119,6 +119,13 @@ $messages['gsw'] = array(
 	'wikibhasha-desc' => 'Aawändig, wu mer Inhalt in vile Sproche cha aalege un eso d Inhalt vu dr änglische Wikipedia besser cha nutze',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'wikibhasha-desc' => 'יישום ליצירת תוכן רב־לשוני על ידי שימוש בתוכן של הוויקיפדיה האנגלית',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -98,6 +98,13 @@ $messages['gsw'] = array(
 	'parserwiki-desc' => 'Erlaubt e Grammatik in eme Wiki z definiere un die Grammatik im glyyche Wiki z bruche go Informatione yyfiege',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'parserwiki-desc' => 'מתן האפשרות להגדרת דקדוק באתר ויקי ואז להשתמש בדקדוק זה כדי להזין מידע לאותו אתר הוויקי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

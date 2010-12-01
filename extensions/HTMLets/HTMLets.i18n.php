@@ -163,9 +163,12 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'htmlets-desc' => 'אפשרות להוספת קטעי קוד HTML מקבצים באמצעות שימוש בתגית <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'לא ניתן למצוא את קובץ ה־HTML &rlm;$1',
+	'htmlets-loadfailed' => 'אירע כשל בטעינת קובץ ה־HTML &rlm;$1',
 );
 
 /** Hindi (हिन्दी)
