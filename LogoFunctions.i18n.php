@@ -113,6 +113,14 @@ $messages['gsw'] = array(
 	'logofunctions-filenotexist' => 'Fähler: [[File:$1]] git s nit',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'logofunctions-desc' => 'הוספת פונקציית מפענח על הלוגו של הוויקי',
+	'logofunctions-filenotexist' => 'שגיאה: [[File:$1]] אינו קיים',
+);
+
 /** Croatian (Hrvatski)
  * @author Herr Mlinka
  */
