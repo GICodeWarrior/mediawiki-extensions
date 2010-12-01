@@ -84,6 +84,13 @@ $messages['gsw'] = array(
 	'specialtalk-desc' => 'Fiegt e Diskussionsryter yy bi dr [[Special:SpecialPages|Spezialsyte]]',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'specialtalk-desc' => 'הוספת לשונית שיחה ל[[Special:SpecialPages|דפים מיוחדים]]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
