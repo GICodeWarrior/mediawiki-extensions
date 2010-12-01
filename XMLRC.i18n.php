@@ -98,6 +98,13 @@ $messages['gsw'] = array(
 	'xmlrc-desc' => 'Verschickt Benochrichtigunge iber Änderige as XML, iber UDP, Jabber oder anderi Protokoll',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'xmlrc-desc' => 'שליחת התרעות בנוגע לשינויים כגון XML, דרך UDP, Jabber ובדרכים נוספות',
+);
+
 /** Croatian (Hrvatski)
  * @author Tivek
  */
