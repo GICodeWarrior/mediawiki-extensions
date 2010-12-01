@@ -184,7 +184,8 @@ class CheckVars {
 
 		$this->mStatus = self::WAITING_FUNCTION;
 		$this->mFunctionQualifiers = array();
-
+		$this->mClass = null;
+		$this->mParent = null;
 
 		// Predefine constant that might not be defined by this file source code
 		$this->mConstants = array( 'PARSEKIT_SIMPLE', 'UNORM_NFC', # Extensions
@@ -286,6 +287,12 @@ class CheckVars {
 						$this->mClass = $token[1];
 						$this->mParent = null;
 					}
+					
+					if ( $token[0] == '}' ) {
+						$this->mClass = null;
+						$this->mParent = null;
+					}
+					
 					if ( ( $lastMeaningfulToken[0] == T_EXTENDS ) && ( $token[0] == T_STRING ) ) {
 						$this->checkClassName( $token );
 						$this->mParent = $token[1];
@@ -312,7 +319,7 @@ class CheckVars {
 						$this->mInSwitch = 0;
 						$this->mFunctionGlobals = array();
 						$currentToken[0] = self::FUNCTION_DEFINITION;
-						$this->mKnownFunctions[] = $this->mFunction;
+						$this->mKnownFunctions[] = $this->mClass ? $this->mClass . "::" . $this->mFunction : $this->mFunction;
 
 						if ( $this->generateDeprecatedList && in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) ) {
 							if ( ( substr( $this->mFunction, 0, 2 ) != "__" ) ) {
@@ -674,7 +681,8 @@ class CheckVars {
 			'$wgMessageCache' => 'MessageCache',
 			'$wgLang' => 'Language', '$wgContLang' => 'Language',
 			'$dbw' => 'Database', '$dbr' => 'Database',
-			'$sk' => 'Skin'
+			'$sk' => 'Skin',
+			'$wgMemc' => 'MWMemcached',
 		);
 			
 		if ( $token[0] == T_VARIABLE ) {
