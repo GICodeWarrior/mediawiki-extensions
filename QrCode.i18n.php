@@ -100,6 +100,13 @@ $messages['gsw'] = array(
 	'qrcode-desc' => 'Leit QR Code-Grafike aa un zun ere Wikisyte zue',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'qrcode-desc' => 'יצירה והוספה של תמונות קוד QR לדפי ויקי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
