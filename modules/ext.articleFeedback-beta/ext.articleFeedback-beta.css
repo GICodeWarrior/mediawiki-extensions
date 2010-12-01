@@ -1,3 +1,91 @@
 /*
  * Styles for Article Feedback (beta)
  */
+
+.articleFeedback {
+	display: inline-block;
+	width: 44em;
+}
+
+.articleFeedback-panel {
+	height: 13.5em;
+	background-color: #f3f3f3;
+	border: 1px solid #cccccc;
+	border-right: none;
+	padding-bottom: 1px;
+}
+
+.articleFeedback-panel, .articleFeedback-tabs {
+	float: left;
+}
+
+.articleFeedback-tabs {
+	width: 8em;
+	height: 13.5em;
+	background-image: url(images/tab-break.png);
+	background-position: left top;
+	background-repeat: repeat-y;
+	padding-bottom: 3px;
+}
+
+.articleFeedback-tab {
+	display: block;
+	text-align: center;
+	width: 8em;
+	height: 6.75em;
+	cursor: pointer;
+	background-color: #ffffff;
+	background-image: url(images/tab-edge.png);
+	background-position: left top;
+	background-repeat: repeat-y;
+}
+
+.articleFeedback-tabs .articleFeedback-tab-current {
+	background-image: url(images/tab-fade.png);
+}
+
+.articleFeedback-tab[rel=form] {
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+.articleFeedback-tab[rel=report] {
+}
+
+.articleFeedback-tab .articleFeedback-buffer {
+	display: block;
+	background-position: 50% 35%;
+	background-repeat: no-repeat;
+	padding-top: 5em;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-size: 0.8em;
+	line-height: 1.25em;
+	color: #0645ad;
+}
+
+.articleFeedback-tab[rel=form] .articleFeedback-buffer {
+	background-image: url(images/form-icon.png);
+}
+
+.articleFeedback-tab[rel=report] .articleFeedback-buffer {
+	background-image: url(images/report-icon.png);
+}
+
+.articleFeedback-tab .articleFeedback-buffer:hover {
+	text-decoration: underline;
+}
+
+.articleFeedback-panel .articleFeedback-buffer {
+	padding: 0.75em 1em;
+	width: 34em;
+}
+
+.articleFeedback-title {
+	font-size: 1.4em;
+}
+
+.articleFeedback-instructions {
+	float: left;
+	font-weight: bold;
+}
