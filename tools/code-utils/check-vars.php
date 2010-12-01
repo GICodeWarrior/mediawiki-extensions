@@ -680,7 +680,7 @@ class CheckVars {
 			'$request' => 'WebRequest',
 			'$wgMessageCache' => 'MessageCache',
 			'$wgLang' => 'Language', '$wgContLang' => 'Language',
-			'$dbw' => 'Database', '$dbr' => 'Database',
+			'$dbw' => 'DatabaseBase', '$dbr' => 'DatabaseBase',
 			'$sk' => 'Skin',
 			'$wgMemc' => 'MWMemcached',
 		);
