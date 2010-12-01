@@ -633,6 +633,13 @@ $messages['lt'] = array(
 	'languageselector-setlang' => 'nustatyti',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'languageselector' => 'Volūda',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
