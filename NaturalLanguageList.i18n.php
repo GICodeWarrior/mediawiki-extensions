@@ -145,6 +145,14 @@ $messages['gsw'] = array(
 	'nll-lastseparator' => '&#32;un&#32;',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'nll-desc' => 'עיצוב בקלות של רשימות בשפות טבעיות',
+	'nll-lastseparator' => '&#32;ו',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -199,6 +207,13 @@ $messages['ja'] = array(
 $messages['lb'] = array(
 	'nll-desc' => 'Liicht formatéiere vu Lëschten an natierleche Sproochen',
 	'nll-lastseparator' => '&#32;a(n)&#32;',
+);
+
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'nll-lastseparator' => '&#32;i&#32;',
 );
 
 /** Macedonian (Македонски)
