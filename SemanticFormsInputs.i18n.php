@@ -188,6 +188,8 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'semanticformsinputs-desc' => 'סוגי קלט נוספים עבור [http://www.mediawiki.org/wiki/Extension:Semantic_Forms טפסים סמנטיים]',
+	'semanticformsinputs-wrongformat' => 'מבנה שגוי.',
 	'semanticformsinputs-close' => 'סגירה',
 	'semanticformsinputs-prev' => 'הקודם',
 	'semanticformsinputs-next' => 'הבא',
