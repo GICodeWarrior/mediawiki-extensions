@@ -50,13 +50,20 @@ function efMetisAddPixel( &$article ) {
 	return true;
 }
 
-function efMetisSchemaUpdate() {
-	global $wgDBtype, $wgExtNewTables;
-
-	if ( $wgDBtype == 'mysql' ) {
-		$wgExtNewTables[] = array( 'metis', dirname( __FILE__ ) . '/METIS.sql' );
-	} elseif( $wgDBtype == 'postgres' ) {
-		$wgExtNewTables[] = array( 'metis', dirname( __FILE__ ) . '/METIS.pg.sql' );
+function efMetisSchemaUpdate( $updater = null ) {
+	if ( $updater === null ) {
+		global $wgDBtype, $wgExtNewTables;
+		if ( $wgDBtype == 'mysql' ) {
+			$wgExtNewTables[] = array( 'metis', dirname( __FILE__ ) . '/METIS.sql' );
+		} elseif ( $wgDBtype == 'postgres' ) {
+			$wgExtNewTables[] = array( 'metis', dirname( __FILE__ ) . '/METIS.pg.sql' );
+		}
+	} else {
+		if ( $updater->getDB()->getType() == 'mysql' ) {
+			$updater->addExtensionUpdate( array( 'addTable', 'metis', dirname( __FILE__ ) . '/METIS.sql', true ) );
+		} elseif ( $updater->getDB()->getType() == 'postgres' ) {
+			$updater->addExtensionUpdate( array( 'addTable', 'metis', dirname( __FILE__ ) . '/METIS.pg.sql', true ) );
+		}
 	}
 	return true;
 }
