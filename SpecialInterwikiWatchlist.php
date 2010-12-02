@@ -232,7 +232,7 @@ class InterwikiWatchlist extends SpecialPage {
 						'id' => 'mw-watchlist-resetbutton' ) ) .
 					wfMsgExt( 'wlheader-showupdated', array( 'parseinline' ) ) . ' ' .
 					Xml::submitButton( wfMsg( 'enotif_reset' ), array( 'name' => 'dummy' ) ) .
-					Html::hidden( 'reset', 'all' ) .
+					Xml::hidden( 'reset', 'all' ) .
 					Xml::closeElement( 'form' );
 		}
 		$form .= '<hr />';
@@ -307,17 +307,17 @@ class InterwikiWatchlist extends SpecialPage {
 		$form .= Xml::namespaceSelector( $nameSpace, '' ) . '&#160;';
 		$form .= Xml::checkLabel( wfMsg('invert'), 'invert', 'nsinvert', $invert ) . '&#160;';
 		$form .= Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . '</p>';
-		$form .= Html::hidden( 'days', $days );
+		$form .= Xml::hidden( 'days', $days );
 		if( $hideMinor )
-			$form .= Html::hidden( 'hideMinor', 1 );
+			$form .= Xml::hidden( 'hideMinor', 1 );
 		if( $hideBots )
-			$form .= Html::hidden( 'hideBots', 1 );
+			$form .= Xml::hidden( 'hideBots', 1 );
 		if( $hideAnons )
-			$form .= Html::hidden( 'hideAnons', 1 );
+			$form .= Xml::hidden( 'hideAnons', 1 );
 		if( $hideLiu )
-			$form .= Html::hidden( 'hideLiu', 1 );
+			$form .= Xml::hidden( 'hideLiu', 1 );
 		if( $hideOwn )
-			$form .= Html::hidden( 'hideOwn', 1 );
+			$form .= Xml::hidden( 'hideOwn', 1 );
 		$form .= Xml::closeElement( 'form' );
 		$form .= Xml::closeElement( 'fieldset' );
 		$wgOut->addHTML( $form );
