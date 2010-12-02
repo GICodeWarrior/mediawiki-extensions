@@ -7004,6 +7004,7 @@ Non è stata eseguita l'operazione di copia.",
  * @author Hosiryuhosi
  * @author JtFuruhata
  * @author Whym
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'wikidata-desc' => '様々な種類のコンテンツに対するウィキ風のデータベースを追加する',
@@ -7081,7 +7082,7 @@ $messages['ja'] = array(
 	'transaction' => 'ウィキデータ: トランザクションログ',
 	'ow_transaction_from_transaction' => '元のトランザクション:',
 	'ow_transaction_count' => '件数:',
-	'ow_transaction_user' => '利用者名:',
+	'ow_transaction_user' => '利用者名：',
 	'ow_transaction_show_rollback' => '差し戻しボタンを表示:',
 	'ow_transaction_rollback_button' => 'ロールバック',
 	'ow_transaction_rollback_header' => 'ロールバック',
