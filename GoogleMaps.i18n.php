@@ -2847,6 +2847,7 @@ $wgGoogleMapsMessages['it'] = array(
  * @author Fryed-peach
  * @author Hosiryuhosi
  * @author Whym
+ * @author 青子守歌
  */
 $wgGoogleMapsMessages['ja'] = array(
 	'gm-desc' => 'ラベルにウィキリンクのついた地図を簡単に作成する',
@@ -2881,7 +2882,7 @@ $wgGoogleMapsMessages['ja'] = array(
 	'gm-scale-control' => '縮尺',
 	'gm-overview-control' => '概観',
 	'gm-selector-control' => '地図と衛星画像の切り替え',
-	'gm-zoom-control' => 'ナビゲーション',
+	'gm-zoom-control' => '案内',
 	'gm-large' => '大',
 	'gm-medium' => '中',
 	'gm-small' => '小',
