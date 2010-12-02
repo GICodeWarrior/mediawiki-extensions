@@ -256,6 +256,7 @@ $messages['ja'] = array(
 	'ts-kml-on-ol-thumbnails' => 'サムネイル',
 	'ts-kml-on-ol-help' => 'ヘルプ',
 	'ts-kml-on-ol-all' => 'すべて',
+	'ts-kml-on-ol-map-by' => '地図から',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
