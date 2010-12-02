@@ -116,7 +116,7 @@ class RandomPageInCategory extends SpecialPage {
 			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) .
 				Xml::openElement( 'fieldset' ) .
 					Xml::element( 'legend', array(), wfMsg( 'randomincategory' ) ) .
-					Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
+					Xml::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
 					Xml::openElement( 'p' ) .
 						Xml::label( wfMsg( 'randomincategory-label' ), 'category' ) . ' ' .
 						Xml::input( 'category', null, $category, array( 'id' => 'category' ) ) . ' ' .
