@@ -46,7 +46,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['CreateBox'] = $dir . 'CreateBox.i18n.php';
 
-function wfCreateBox( &$parser ) {
+function wfCreateBox( $parser ) {
 	$parser->setHook( 'createbox', 'acMakeBox' );
 	return true;
 }
@@ -81,7 +81,7 @@ function actionCreate( $action, $article ) {
 	return false;
 }
 
-function acGetOption( &$input, $name, $value = null ) {
+function acGetOption( $input, $name, $value = null ) {
 	if( preg_match( "/^\s*$name\s*=\s*(.*)/mi", $input, $matches ) ) {
 		if( is_int( $value ) )
 			return intval( $matches[1] );
@@ -91,7 +91,7 @@ function acGetOption( &$input, $name, $value = null ) {
 	return $value;
 }
 
-function acMakeBox( $input, $argv, &$parser ) {
+function acMakeBox( $input, $argv, $parser ) {
 	wfLoadExtensionMessages( 'CreateBox' );
 	global $wgRequest, $wgScript;
 	if( $wgRequest->getVal( 'action' ) == 'create' ) {
