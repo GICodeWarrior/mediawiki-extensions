@@ -371,9 +371,37 @@
                 });
             }
         },
+        //sets the given window position to the context of the mouse pointer hovered element.
+        setWindowOnContext: function (windowId, elem) {
+            var $windowElement = $("#" + windowId),
+                $browserWindowElement = $(window),
+                pos = $(elem).offset(),
+                left = pos.left,
+                top = pos.top,
+                wHeight = $windowElement.height(),
+                wWidth = $windowElement.width();
+
+            if ((top + wHeight + 30) > $(window).height()) {
+                top = top - wHeight;
+            }
+
+            if ((left + wWidth + 30) > $(window).width()) {
+                left = left - wWidth;
+            } else {
+                left = left + $(elem).width();
+            }
+
+            //set top and left to the window
+            $windowElement.css({
+                top: top + 'px',
+                left: left + 'px'
+            });
+        },
+        // changed the mouse pointer to hourglass pointer
         changeCursorToHourGlass: function () {
             $("body").css("cursor", "progress");
         },
+        // changed the mouse pointer to default pointer
         changeCursorToDefault: function () {
             $("body").css("cursor", "auto");
         }

@@ -237,6 +237,7 @@ wikiBhasha.loadApplicationRequiredFiles = function() {
                     "js/core/scratchpadWindow.js",
                     "js/core/feedbackWindow.js",
                     "js/core/searchWindow.js",
+                    "js/core/wikiMarkupEditWindow.js",
                     "js/core/templateAndLinkTranslator.js",
                     "js/core/themes.js",
                     "js/core/utils.js",

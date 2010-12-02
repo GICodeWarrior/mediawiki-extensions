@@ -226,7 +226,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                     wbDisplayPaneManager.toggleDisplayMode();
                 });
 
-				//bind click event to toggle between wiki and html formats
+                //bind click event to toggle between wiki and html formats
                 $("#wbToggleCTF").click(function() {
                      wbDisplayPaneManager.toggleCTFDisplay();
                 });
@@ -322,6 +322,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
             //Unload the context menu and search window for the application 
             wbContextMenuHandler.unload();
             wbSearch.unload();
+            wbWikiMarkupEdit.unload();
             wbSplash.close();
 
             wbTransliterationServices.disableTransliteration(wbGlobalSettings.mtTargetLanguageCode);
@@ -382,6 +383,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 "wbWikiSite",
                 "wbWorkflow",
                 "wbChineseLangSelection",
+                "wbWikiMarkupEditWindow",
                 "wb"];
 
             for (var i = 0; i < wbGloablVariables.length; i++) {
@@ -456,7 +458,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
 
         //removes cloned HTML elements(during Drag-Drop or Copy-Paste) from the element"#wbRightWindowContentDiv"
         removeNonContentElements: function() {
-            var $elementsToBeRemoved = $("#wbTranslationTable, .wbLeftWindowContent, .wbLogoContainer, .wbContentContainer, #wbTwoPaneOuterWrapper, #wbLeftWindow, .wbTableBackground, .wbTopButtonsDiv, #wbTopIcons, #wbHistoryInfo, .workflowNavigationBtns, #workFlowStepBtns, .wbTable, .wbHeader, #wbWorkingArticleLabel", $("#wbRightWindowContentDiv"));
+            var $elementsToBeRemoved = $("#wbTranslationTable, .wbExit, .wbLeftWindowContent, .wbLogoContainer, .wbContentContainer, #wbTwoPaneOuterWrapper, #wbLeftWindow, .wbTableBackground, .wbTopButtonsDiv, #wbTopIcons, #wbHistoryInfo, .workflowNavigationBtns, #workFlowStepBtns, .wbTable, .wbHeader, #wbWorkingArticleLabel, .tabs_li, .wbWikiMarkupEditBottomLinks, .tab_content", $("#wbRightWindowContentDiv"));
             var removeCloneNodes = function() {
                 //jQuery '.remove()' method actually removes the events on original elements
                 //to avoid this we need to use native DOM method to remove only the cloned elements
