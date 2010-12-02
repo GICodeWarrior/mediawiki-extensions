@@ -881,6 +881,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'passwordreset' => 'パスワードの再設定',
@@ -889,8 +890,8 @@ $messages['ja'] = array(
 	'passwordreset-emptyusername' => '利用者名が空',
 	'passwordreset-nopassmatch' => 'パスワードが一致しません',
 	'passwordreset-badtoken' => '編集トークンが不正',
-	'passwordreset-username' => '利用者名:',
-	'passwordreset-newpass' => '新しいパスワード:',
+	'passwordreset-username' => '利用者名：',
+	'passwordreset-newpass' => '新しいパスワード：',
 	'passwordreset-confirmpass' => '確認用パスワード:',
 	'passwordreset-submit' => 'パスワードを再設定',
 	'passwordreset-success' => '利用者ID $1 のパスワードを再設定しました。',
@@ -1093,7 +1094,7 @@ $messages['ml'] = array(
 	'passwordreset-confirmpass' => 'രഹസ്യവാക്ക് ഉറപ്പിക്കുക:',
 	'passwordreset-submit' => 'രഹസ്യവാക്ക് പുനഃക്രമീകരിക്കുക',
 	'passwordreset-success' => 'ഈ ഉപയോക്തൃഐ.ഡി.യുടെ രഹസ്യവാക്ക് പുനഃക്രമീകരിച്ചു: $1',
-	'passwordreset-disableuser' => 'ഉപയോക്തൃഅംഗത്വം ഡിസേബിൾ ചെയ്യണമോ?',
+	'passwordreset-disableuser' => 'ഉപയോക്തൃഅംഗത്വം പ്രവർത്തനരഹിതമാക്കണോ?',
 	'passwordreset-disablesuccess' => 'ഉപയോക്തൃ അംഗത്വം ഡിസേബിൾ ചെയ്തിരിക്കുന്നു. (ഉപയോക്തൃ ഐ.ഡി.: $1)',
 	'passwordreset-accountdisabled' => 'അംഗത്വം പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു',
 	'disabledusers' => 'ഡിസേബിൾ ചെയ്യപ്പെട്ട ഉപയോക്താക്കൾ',
