@@ -189,17 +189,13 @@ schema = true
 url = http://www.mediawiki.org/wiki/Extension:CentralAuth
 
 CentralNotice
-settings[] = wgNoticeCentralPath: text, wgNoticeUseLocalNotice: bool
-settings[] = wgNoticeLocalPath: text
 settings[] = wgNoticeLang: text, wgNoticeProject: text, wgNoticeProjects: array
-settings[] = wgNoticeCentralDirectory: text, wgNoticeLocalDirectory: text
-settings[] = wgNoticeInfrastructure: bool, wgCentralNoticeLoader: bool
+settings[] = wgNoticeInfrastructure: bool, wgCentralDBname: text,
+settings[] = wgCentralPagePath: text, wgCentralNoticeLoader: bool
 settings[] = wgNoticeTestMode: bool, wgNoticeEnabledSites: array
 settings[] = wgNoticeTimeout: int, wgNoticeServerTimeout: int
 settings[] = wgNoticeCounterSource: text
 array[] = wgNoticeProjects: simple
-empty[] = wgNoticeCentralPath: false, wgNoticeLocalPath: false
-empty[] = wgNoticeCentralDirectory: false, wgNoticeLocalDirectory: false
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CentralNotice
 
@@ -258,7 +254,8 @@ settings[] = wgSubversionUser: text, wgSubversionPassword: text
 settings[] = wgCodeReviewImportBatchSize: int, wgWikiSVN: text
 settings[] = wgSubversionOptions: text, wgCodeReviewCommentWatcher: text
 settings[] = wgCodeReviewMaxDiffSize: int, wgCodeReviewDeferredPaths: array
-settings[] = wgCRUDPAddress: text, wgCRUDPPort: int, wgCRUDPPrefix: text
+settings[] = wgCodeReviewUDPAddress: text, wgCodeReviewUDPPort: int
+settings[] = wgCodeReviewUDPPrefix: text, wgCodeReviewRepoStatsCacheTime: int
 array[] = wgCodeReviewDeferredPaths: simple
 empty[] = wgCodeReviewSharedSecret: false, wgCodeReviewCommentWatcher: false
 empty[] = wgCRUDPAddress: false, wgCRUDPPort: false
@@ -268,6 +265,7 @@ url = http://www.mediawiki.org/wiki/Extension:CodeReview
 Collection
 settings[] = wgCollectionMWServeURL: text, wgCollectionMWServeCredentials: text
 settings[] = wgCollectionMWServeCert: text, wgCollectionArticleNamespaces: array
+settings[] = wgCollectionHierarcyDelimiter: text
 settings[] = wgCommunityCollectionNamespace: int, wgCollectionMaxArticles: int
 settings[] = wgCollectionLicenseName: text, wgCollectionLicenseURL: text
 settings[] = wgCollectionPortletForLoggedInUsersOnly: bool, wgCollectionPortletFormats: array
@@ -278,7 +276,7 @@ array[] = wgCollectionArticleNamespaces: ns-simple, wgCollectionFormats: assoc
 array[] = wgCollectionContentTypeToFilename: assoc, wgCollectionFormatToServeURL: assoc
 array[] = wgCollectionPortletFormats: simple
 empty[] = wgCollectionMWServeCert: null, wgCollectionLicenseName: null
-empty[] = wgCollectionLicenseURL: null
+empty[] = wgCollectionLicenseURL: null, wgCollectionHierarcyDelimiter: null
 url = http://www.mediawiki.org/wiki/Extension:Collection
 
 Commentbox
@@ -461,7 +459,6 @@ settings[] = wgFlaggedRevsNamespaces: array
 settings[] = wgFlaggedRevsPatrolNamespaces: array
 settings[] = wgFlaggedRevsWhitelist: array
 settings[] = wgFlaggedRevsOverride: bool
-settings[] = wgFlaggedRevsPrecedence: bool
 settings[] = wgFlaggedRevsExceptions: array
 settings[] = wgFlaggedRevsComments: bool
 settings[] = wgFlaggedRevsAutoReview: bool
@@ -479,8 +476,6 @@ settings[] = wgFlaggedRevsLogInRC: bool
 settings[] = wgFlaggedRevsOversightAge: int
 settings[] = wgFlaggedRevsAutopromoteInRC: bool
 settings[] = wgFlaggedRevsStatsAge: int
-settings[] = wgPHPlotDir: text
-settings[] = wgSvgGraphDir: text
 array[] = wgFlaggedRevsNamespaces: ns-simple
 array[] = wgFlaggedRevsPatrolNamespaces: ns-simple
 array[] = wgFlaggedRevsWhitelist: simple
@@ -527,8 +522,6 @@ GroupPortal
 url = http://www.mediawiki.org/wiki/Extension:GroupPortal
 
 GroupsSidebar
-settings[] = wgGroupsSidebar: array
-array[] = wgGroupsSidebar: assoc
 url = http://www.mediawiki.org/wiki/Extension:GroupsSidebar
 
 ImageMap
@@ -681,6 +674,7 @@ url = http://www.mediawiki.org/wiki/Extension:Semantic_Drilldown
 SemanticForms
 file = includes/SF_Settings.php
 settings[] = sfgMaxAutocompleteValues: int
+settings[] = sfgAutocompleteOnAllChars: bool
 settings[] = sfgRenameEditTabs: bool
 settings[] = sfgRenameMainEditTab: bool
 settings[] = sfgListSeparator: text

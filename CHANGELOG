@@ -1,6 +1,10 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.38 - 2 December 2010
+  Updated CentralNotice, CodeReview, Collection, FlaggedRevs, GroupsSidebar and
+  SemanticForms extensions.
+
 0.15.37 - 11 November 2010
   * Added $wgAllUnicodeFixes, $wgUpgradeKey, $wgResourceLoaderDebug,
     $wgResourceLoaderInlinePrivateModules, $wgResourceLoaderMaxage,
