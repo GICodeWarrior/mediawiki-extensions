@@ -62,7 +62,7 @@ class SpecialARC2Admin extends SpecialPage {
 		$htmlOutput = '<form method="get" action="' . $wgServer . $wgScriptPath . '/index.php/Special:ARC2Admin"
 			name="createEditQuery">
 			<input type="submit" name="rdfio_action" value="setup">' .
-			Html::hidden( 'token', $wgUser->editToken() ) . '
+			Xml::hidden( 'token', $wgUser->editToken() ) . '
 			</form>';
 
 		$wgOut->addHTML( $htmlOutput );
