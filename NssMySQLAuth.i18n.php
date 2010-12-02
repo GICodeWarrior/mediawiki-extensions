@@ -570,6 +570,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  * @author Hosiryuhosi
  * @author Mizusumashi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'accountmanager' => 'アカウントマネージャー',
