@@ -78,7 +78,8 @@ def retrieve_bots():
     bots = mongo['ids']
     cursor = bots.find()
     for bot in cursor:
-        ids[bot['id']] = bot['name']
+        if bot['verified'] == 'True':
+            ids[bot['id']] = bot['name']
     return ids
 
 
@@ -87,12 +88,18 @@ def store_bots():
     This file reads the results from the lookup_bot_userid function and stores
     it in a MongoDB collection. 
     '''
-    #bots = utils.read_dict_from_csv(settings.csv_location, 'bots_ids.csv', settings.encoding)
+    keys = ['name', 'verified', 'projects']
+    bots = utils.create_dict_from_csv_file(settings.csv_location, 'bots_ids.csv', settings.encoding, keys)
     mongo = db.init_mongo_db('bots')
     collection = mongo['ids']
     db.remove_documents_from_mongo_db(collection, None)
-    for id, name in ids.iteritems():
-        collection.insert({'id': int(id), 'name': name, 'language': language})
+
+    for id in bots:
+        bot = bots[id]
+        data = dict([(k, bot[k]) for k in keys])
+        data['id'] = id
+        #{'id': int(id), 'name': name, 'verified': verified, 'projects': projects}
+        collection.insert(data)
 
     print 'Stored %s bots' % collection.count()
 
@@ -103,23 +110,32 @@ def convert_object_to_dict(obj, exclude=[]):
     keys and values to ease writing to a csv file. 
     '''
     d = {}
-    for kw in obj.__dict__.keys():
-        if kw not in exclude:
-            d[kw] = getattr(obj, kw)
+    for o in obj:
+        bot = obj[o]
+        d[o] = {}
+        for kw in bot.__dict__.keys():
+            if kw not in exclude:
+                d[o][kw] = getattr(bot, kw)
     return d
 
 
-def lookup_bot_userid(xml_nodes, fh, **kwargs):
+def write_bot_list_to_csv(bots):
+    fh = utils.create_txt_filehandle(settings.csv_location, 'bots_ids.csv', 'w', settings.encoding)
+    bot_dict = convert_object_to_dict(bots, exclude=['time', 'written'])
+    keys = ['id', 'name', 'verified', 'projects']
+    for bot in bot_dict:
+        bot = bot_dict[bot]
+        utils.write_dict_to_csv(bot, fh, keys, write_key=False, newline=True)
+    fh.close()
+
+
+def lookup_bot_userid(xml_nodes, bots):
     '''
     This function is used to find the id's belonging to the different bots that
     are patrolling the Wikipedia sites.
     @xml_nodes is a list of xml elements that need to be parsed
-    @fh is the file handle to write the results
     @bots is a dictionary containing the names of the bots to lookup
     '''
-    lock = kwargs.get('lock')
-    bots = kwargs.get('bots')
-
     revisions = xml_nodes.findall('revision')
     for revision in revisions:
         contributor = xml.retrieve_xml_node(revision, 'contributor')
@@ -131,37 +147,19 @@ def lookup_bot_userid(xml_nodes, fh, **kwargs):
         name = username.lower()
 
         #print username.encode('utf-8')
-        if username in bots and bots[username].verified == True:
-            id = contributor.find('id').text
-            bot = bots[username]
-
-            if not hasattr(bot, 'written'):
-                if username == 'Robbot':
-                    print 'test'
-                bot.id = id
-                bot.name = username
-                bot_dict = convert_object_to_dict(bot, exclude=['time', 'written'])
-                #bot_dict['_username'] = username
-                #bot_dict['id'] = id
-                lock.acquire()
-                utils.write_dict_to_csv(bot_dict, fh, write_key=False)
-                lock.release()
-                bot.written = True
-                bots[username] = bot
-            #bots.pop(username)
-            #if bots == {}:
-            #    print 'Found id numbers for all bots.'
-            #    return 'break'
-            #print username.encode('utf-8')
-
-        if name.find('bot') > -1:
+        if (username in bots and bots[username].verified == True) or name.find('bot') > -1:
             bot = bots.get(username, botmodels.Bot(username, verified=False))
+            id = contributor.find('id').text
+            bot.id = id
+            bot.name = username
             timestamp = revision.find('timestamp').text
             if timestamp != None:
                 timestamp = utils.convert_timestamp_to_datetime_naive(timestamp)
                 bot.time[str(timestamp.year)].append(timestamp)
-                bots[username] = bot
+
+            bots[username] = bot
     return bots
+
     #bot = bots.get('PseudoBot')
     #bot.hours_active()
     #bot.avg_lag_between_edits()
@@ -180,14 +178,13 @@ def bot_launcher(language_code, project, single=False, manager=False):
     input_queue = pc.load_queue(files, poison_pill=True)
     tasks = multiprocessing.JoinableQueue()
     mgr = multiprocessing.Manager()
-    bots = mgr.dict()
-    lock = mgr.Lock()
+    #lock = mgr.Lock()
     if manager:
         manager = mgr
     bots = read_bots_csv_file(settings.csv_location, 'Bots.csv', settings.encoding, manager=manager)
 
     for file in files:
-        tasks.put(models.XMLFile(input, settings.csv_location, file, bots, lookup_bot_userid, 'bots_ids.csv', lock=lock))
+        tasks.put(models.XMLFile(input, settings.csv_location, file, None, lookup_bot_userid))
 
     tracker = {}
     if single:
@@ -202,6 +199,7 @@ def bot_launcher(language_code, project, single=False, manager=False):
         bot_launcher_multi(tasks)
 
     utils.store_object(bots, settings.binary_location, 'bots.bin')
+    write_bot_list_to_csv(bots)
     bot_training_dataset(bots)
     store_bots()
     if bots != {}:
@@ -243,12 +241,18 @@ def bot_launcher_multi(tasks):
 
 def debug_bots_dict():
     bots = utils.load_object(settings.binary_location, 'bots.bin')
+    for bot in bots:
+        bot = bots[bot]
+        edits = sum([len(bot.time[t]) for t in bot.time])
+        print bot.name, bot.verified, edits
     print 'done'
-
+    return bots
 
 if __name__ == '__main__':
     language_code = 'en'
     project = 'wiki'
-    #debug_bots_dict()
-    bot_launcher(language_code, project, single=True)
+    store_bots()
+    #bots = debug_bots_dict()
+    #write_bot_list_to_csv(bots)
+    #bot_launcher(language_code, project, single=True)
     #cProfile.run(bot_launcher(language_code, project, single=True), 'profile')
