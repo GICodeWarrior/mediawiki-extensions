@@ -86,6 +86,13 @@ $messages['id'] = array(
 	'snmpquery-desc' => 'Tambahkan fungsi SNMPget dan SNMPwalk dan kembalikan data ke wiki',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'snmpquery-desc' => 'SNMPgetとSNMPwalk関数を追加し、ウィキへデータを返す',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -3538,6 +3538,7 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'deletequeue-desc' => '[[Special:DeleteQueue|キューを応用した削除管理システム]]を提供する',
@@ -3667,7 +3668,7 @@ $messages['ja'] = array(
 	'deletequeue-case-title' => '削除事例詳細',
 	'deletequeue-case-details' => '概要',
 	'deletequeue-case-page' => 'ページ:',
-	'deletequeue-case-reason' => '理由:',
+	'deletequeue-case-reason' => '理由：',
 	'deletequeue-case-expiry' => '期限:',
 	'deletequeue-case-needs-review' => 'この事例には[[$1|審査]]が必要です。',
 );

@@ -1406,6 +1406,7 @@ Torna a:
  * @author Fievarsty
  * @author Fryed-peach
  * @author JtFuruhata
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'crosswikiblock-desc' => '他ウィキの利用者の[[Special:Crosswikiblock|{{int:specialpage}}]]を使用したブロックを可能にする',
@@ -1414,7 +1415,7 @@ $messages['ja'] = array(
 あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',
 	'crosswikiblock-target' => 'IPアドレスか利用者名、および対象となるウィキ:',
 	'crosswikiblock-expiry' => '期間:',
-	'crosswikiblock-reason' => '理由:',
+	'crosswikiblock-reason' => '理由：',
 	'crosswikiblock-submit' => 'この利用者をブロック',
 	'crosswikiblock-anononly' => '匿名利用者のみブロック',
 	'crosswikiblock-nocreate' => 'アカウント作成を禁止',
@@ -1424,7 +1425,7 @@ $messages['ja'] = array(
 	'crosswikiunblock-header' => 'このページでは他ウィキの利用者をブロック解除することができます。
 あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',
 	'crosswikiunblock-user' => '利用者名かIPアドレスまたはブロックID、および対象となるウィキ:',
-	'crosswikiunblock-reason' => '理由:',
+	'crosswikiunblock-reason' => '理由：',
 	'crosswikiunblock-submit' => 'この利用者のブロックを解除',
 	'crosswikiunblock-success' => "利用者 '''$1''' のブロックを解除しました。
 

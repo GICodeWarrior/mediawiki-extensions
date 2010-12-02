@@ -96,6 +96,13 @@ $messages['id'] = array(
 	'proxyconnect-desc' => 'Mengimplementasikan fungsi sisi server Poxy Connect',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'proxyconnect-desc' => 'サーバー側のProxy Connect機能を実装',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

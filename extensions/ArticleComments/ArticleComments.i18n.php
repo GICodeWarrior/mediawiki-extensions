@@ -372,6 +372,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Danke7
  * @author Translationista
+ * @author VegaDark
  */
 $messages['es'] = array(
 	'article-comments-desc' => 'Habilita secciones de comentario en las páginas de contenido',
@@ -387,7 +388,7 @@ $messages['es'] = array(
 	'article-comments-invalid-field' => 'El <nowiki>[$2]</nowiki> de $1 proporcionado es inválido.',
 	'article-comments-required-field' => 'El campo $1 es obligatorio.',
 	'article-comments-submission-failed' => 'El envío del comentario ha fallado',
-	'article-comments-failure-reasons' => 'Lo sentimos. Tu comentario no pudo enviarse por la(s) siguiente(s) razón(es):',
+	'article-comments-failure-reasons' => 'Lo sentimos. Tu comentario no pudo enviarse por {{PLURAL:$1|la siguiente razón|las siguientes razones}}:',
 	'article-comments-no-comments' => 'Lo sentimos. La página de "[[$1]]" no acepta comentarios en este momento.',
 	'article-comments-talk-page-starter' => '<noinclude>comentarios sobre [[$1]]
 <comments />

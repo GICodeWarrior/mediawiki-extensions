@@ -1556,6 +1556,7 @@ $wgCustomToolbarMessages['it'] = array(
  * @author Fryed-peach
  * @author Hosiryuhosi
  * @author Whym
+ * @author 青子守歌
  */
 $wgCustomToolbarMessages['ja'] = array(
 	'ct-desc' => '拡張可能なツールバーを追加する',
@@ -1583,7 +1584,7 @@ $wgCustomToolbarMessages['ja'] = array(
 	'ct_math_tip_wrap' => 'このテキストを数式 (LaTeX) にする',
 	'ct_math_caption' => '数式',
 	'ct_nowiki_sample' => 'ここに書式なしテキストを挿入',
-	'ct_nowiki_tip_ins' => 'ウィキ書式設定を無視する',
+	'ct_nowiki_tip_ins' => 'ウィキ書式を無視',
 	'ct_nowiki_tip_wrap' => 'このテキストのウィキ書式設定を無視する',
 	'ct_nowiki_caption' => 'ノーウィキ',
 	'ct_horizontal_tip' => '水平線を挿入する (使用は控えめに)',

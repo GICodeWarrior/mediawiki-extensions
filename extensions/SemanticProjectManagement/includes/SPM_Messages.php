@@ -115,6 +115,18 @@ $messages['id'] = array(
 	'right-SPMsetup' => 'Sunting pengaturan dasar manajemen proyek semantik',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'spm_wbs_link' => 'MS Project XML書き出し',
+	'spm_printername_wbs' => 'MS Project書き出し',
+	'spm-name' => 'セマンティックなプロジェクト管理',
+	'semanticprojectmanagement-desc' => 'セマンティックMediaWikiの内部問い合わせのためのプロジェクト管理形式',
+	'semanticprojectmanagement' => 'セマンティックなプロジェクト管理',
+	'right-SPMsetup' => '基礎的なセマンティックなプロジェクト管理設定を編集',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -161,5 +173,17 @@ $messages['pt'] = array(
 	'semanticprojectmanagement-desc' => 'Formatos de Gestão de Projectos, para consultas em linha do MediaWiki Semântico',
 	'semanticprojectmanagement' => 'Gestão de Projectos Semântica',
 	'right-SPMsetup' => 'Editar configurações básicas da gestão de projectos semântica',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'spm_wbs_link' => 'Экспорт XML данных MS Project',
+	'spm_printername_wbs' => 'Экспорт из MS Project',
+	'spm-name' => 'Управление семантическими проектами',
+	'semanticprojectmanagement-desc' => 'Форматы управления проектами для встроенных запросов Semantic MediaWiki',
+	'semanticprojectmanagement' => 'Управление семантическими проектами',
+	'right-SPMsetup' => 'изменять основные настройки управления семантическими проектами',
 );
 
