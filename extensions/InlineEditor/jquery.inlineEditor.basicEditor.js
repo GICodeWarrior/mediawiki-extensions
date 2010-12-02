@@ -48,12 +48,12 @@ fieldWidth: function( $field, minWidth ) {
  */
 addEditBar: function( $newSpan, width, wiki ) {
 	// build the input field
-	var $input = $( '<textarea style="width: ' + (width-60-60-10) + 'px;"></textarea>' );
+	var $input = $( '<textarea style="width: ' + (width-65-65-10) + 'px;"></textarea>' );
 	$input.text( wiki );
 	
 	// build preview and cancel buttons and add click events
-	var $preview = $( '<input type="button" value="Preview" style="width: 60px; margin-left: ' + (3) + 'px;" class="preview"/>' );
-	var $cancel = $( '<input type="button" value="Cancel" style="width: 60px; margin-left: ' + (60+3+3) + 'px;" class="cancel"/>' );
+	var $preview = $( '<input type="button" value="Preview" style="width: 65px; margin-left: ' + (3) + 'px;" class="preview"/>' );
+	var $cancel = $( '<input type="button" value="Cancel" style="width: 65px; margin-left: ' + (65+3+3) + 'px;" class="cancel"/>' );
 	$preview.click( $.inlineEditor.basicEditor.preview );
 	$cancel.click( $.inlineEditor.basicEditor.cancel );
 	

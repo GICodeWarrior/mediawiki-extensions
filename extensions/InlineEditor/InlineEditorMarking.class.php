@@ -14,7 +14,16 @@ class InlineEditorMarking extends InlineEditorPiece {
 	protected $inline;    /// < whether or not the marking is inline or not
 	protected $id;        /// < id in the original text; this will be unique even when calculating new ids!
 	protected $matched;   /// < bool whether or not this marking has been matched with a previous marking (default: true)
-
+	protected $priority;
+	
+	public function setPriority( $value ) {
+		$this->priority = $value;
+	}
+	
+	public function getPriority() {
+		return $this->priority;
+	}
+	
 	/**
 	 * @param $start   int Start of the marking, offset in number of characters from the begin of the wikitext
 	 * @param $end     int End of the marking, offset in number of characters from the begin of the wikitext
@@ -30,6 +39,7 @@ class InlineEditorMarking extends InlineEditorPiece {
 		
 		$this->classes  = array();
 		$this->addClasses( $classes );
+		$this->priority = 0;
 	}
 	
 	/**

@@ -41,6 +41,10 @@ class InlineEditor {
 			$wgHooks['EditPage::showEditForm:fields'][] = 'InlineEditor::showEditFormFields';
 			return true;
 		}
+		
+		unset( $_GET['section'] );
+		unset( $_POST['section'] );
+		$request->setVal( 'section', null );
 
 		// terminate if the browser is not supported
 		if ( !self::isValidBrowser() ) {
@@ -58,7 +62,7 @@ class InlineEditor {
 		if ( session_id() == '' ) {
 			wfSetupSession();
 		}
-
+		
 		// try to spawn the editor and render the page
 		$editor = new InlineEditor( $article );
 		if ( $editor->render( $output ) ) {
@@ -199,6 +203,7 @@ class InlineEditor {
 		// if the page is being saved, retrieve the wikitext from the JSON
 		if ( $wgRequest->wasPosted() ) {
 			$request = FormatJson::decode( $wgRequest->getVal( 'json' ), true );
+			$request['object'] = $_SESSION['inline-editor-object-' . $request['object']];
 			$text = InlineEditorText::restoreObject( $request, $this->article );
 			$wgRequest->setVal( 'wpTextbox1', $text->getWikiOriginal() );
 		}
@@ -234,13 +239,22 @@ class InlineEditor {
 			// put the marked output into the page
 			$output->addParserOutput( $parserOutput );
 			$output->setPageTitle( $parserOutput->getTitleText() );
+			
+			$initial = InlineEditorText::initialState( $text );
+			
+			$objectID = (isset($_SESSION['inline-editor-id']) ? $_SESSION['inline-editor-id'] + 1 : 0);
+			$_SESSION['inline-editor-id'] = $objectID;
+			$_SESSION['inline-editor-object-' . $objectID] = $initial['object'];
+			$initial['object'] = $objectID;
 
+			$initialJSON = FormatJson::encode( $initial );
+			
 			// add the different edit modes and initial JSON state in Javascript, and finally init the editor
 			$output->addInlineScript(
 				'jQuery( document ).ready( function() {
 					jQuery.inlineEditor.editModes = ["' . implode( '","', array_keys( $this->editModes ) ) . '"];
 					jQuery.inlineEditor.currentMode = "' . reset( $this->editModes ) . '";
-					jQuery.inlineEditor.addInitialState( ' . FormatJson::encode( InlineEditorText::initialState( $text ) ) . ' );
+					jQuery.inlineEditor.addInitialState( ' . $initialJSON . ' );
 					jQuery.inlineEditor.init();
 				} );'
 			);
@@ -270,9 +284,19 @@ class InlineEditor {
 	 */
 	public function preview ( $json ) {
 		$request = FormatJson::decode( $json, true );
+		
+		$request['object'] = $_SESSION['inline-editor-object-' . $request['object']];
+		
 		$text = InlineEditorText::restoreObject( $request, $this->article );
 		$text->doEdit( $request['lastEdit']['id'], $request['lastEdit']['text'] );
-		return FormatJson::encode( InlineEditorText::subsequentState( $text ) );
+		
+		$subseq = InlineEditorText::subsequentState( $text );
+		$objectID = (isset($_SESSION['inline-editor-id']) ? $_SESSION['inline-editor-id'] + 1 : 0);
+		$_SESSION['inline-editor-id'] = $objectID;
+		$_SESSION['inline-editor-object-' . $objectID] = $subseq['object'];
+		$subseq['object'] = $objectID;
+		
+		return FormatJson::encode( $subseq );
 	}
 
 	/**
