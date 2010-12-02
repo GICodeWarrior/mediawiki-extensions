@@ -53,8 +53,9 @@ function wfCreateBox( $parser ) {
 
 function actionCreate( $action, $article ) {
 	wfLoadExtensionMessages( 'CreateBox' );
-	if( $action != 'create' )
+	if( $action != 'create' ) {
 		return true;
+	}
 
 	global $wgRequest;
 	$prefix = $wgRequest->getVal( 'prefix' );
@@ -65,10 +66,11 @@ function actionCreate( $action, $article ) {
 			global $wgTitle;
 			$wgTitle = SpecialPage::getTitleFor( 'Badtitle' );
 			throw new ErrorPageError( 'badtitle', 'badtitletext' );
-		} elseif( $title->getArticleID() == 0 )
+		} elseif( $title->getArticleID() == 0 ) {
 			acRedirect( $title, 'edit' );
-		else
+		} else {
 			acRedirect( $title, 'create' );
+		}
 	} elseif( $wgRequest->getVal( 'section' ) == 'new' || $article->getID() == 0 ) {
 		acRedirect( $article->getTitle(), 'edit' );
 	} else {
@@ -83,10 +85,11 @@ function actionCreate( $action, $article ) {
 
 function acGetOption( $input, $name, $value = null ) {
 	if( preg_match( "/^\s*$name\s*=\s*(.*)/mi", $input, $matches ) ) {
-		if( is_int( $value ) )
+		if( is_int( $value ) ) {
 			return intval( $matches[1] );
-		else
+		} else {
 			return htmlspecialchars( $matches[1] );
+		}
 	}
 	return $value;
 }
@@ -99,8 +102,9 @@ function acMakeBox( $input, $argv, $parser ) {
 		$preload = $wgRequest->getVal( 'preload' );
 		$editintro = $wgRequest->getVal( 'editintro' );
 		$text = $parser->getTitle()->getPrefixedText();
-		if( $prefix && strpos( $text, $prefix ) === 0 )
+		if( $prefix && strpos( $text, $prefix ) === 0 ) {
 			$text = substr( $text, strlen( $prefix ) );
+		}
 	} else {
 		$prefix = acGetOption( $input, 'prefix' );
 		$preload = acGetOption( $input, 'preload' );
