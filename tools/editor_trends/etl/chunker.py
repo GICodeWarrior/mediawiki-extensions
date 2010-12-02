@@ -23,7 +23,7 @@ import codecs
 import re
 import json
 import os
-
+import random
 
 import progressbar
 
@@ -116,13 +116,20 @@ def is_article_main_namespace(elem, namespace):
 
 def write_xml_file(element, fh, output, counter):
     '''Get file handle and write xml element to file'''
-    xml_string = cElementTree.tostring(element)
-    size = len(xml_string)
-    fh, counter, new_file = create_file_handle(fh, output, counter, size)
     try:
+        xml_string = cElementTree.tostring(element)
+        size = len(xml_string)
+        fh, counter, new_file = create_file_handle(fh, output, counter, size)
         fh.write(xml_string)
     except MemoryError:
         print 'Add error capturing logic'
+    except UnicodeEncodeError, error:
+        print error
+        n = random.randrange(0, 10000)
+        f = '%s%s.bin' % ('element', n)
+        new_file = False
+        #if element != None:
+        #    utils.store_object(element, settings.binary_location, f)
     fh.write('\n')
     return fh, counter, new_file
 

@@ -80,9 +80,7 @@ class XMLFile(object):
                 raw_data = ''.join(raw_data)
                 xml_buffer.write(raw_data)
                 elem = cElementTree.XML(xml_buffer.getvalue())
-                result = self.target(elem, self.fh, bots=self.bots, lock=self.lock)
-                if result == 'break':
-                    break
+                bots = self.target(elem, fh=self.fh, bots=self.bots)
             except SyntaxError, error:
                 print error
                 '''
@@ -105,4 +103,4 @@ class XMLFile(object):
         if settings.debug:
             utils.report_error_messages(messages, self.target)
 
-        return self.bots
+        return bots

@@ -46,33 +46,34 @@ class EditorConsumer(models.BaseConsumer):
         while True:
             new_editor = self.task_queue.get()
             self.task_queue.task_done()
+            print '%s editors to go...' % self.task_queue.qsize()
             if new_editor == None:
                 break
             new_editor()
 
 
 class Editor(object):
-    def __init__(self, dbname, collection, id, **kwargs):
-        self.dbname = dbname
+    def __init__(self, id, input_db, output_db, **kwargs):
         self.id = id
-        self.collection = collection
+        self.input_db = input_db
+        self.output_db = output_db
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
-    
+
     def __str__(self):
         return '%s' % (self.id)
 
     def __call__(self):
-        self.mongo = db.init_mongo_db(self.dbname)
-        input_db = self.mongo[self.collection]
-        output_db = self.mongo[self.collection +'_dataset']
-        
-        output_db.ensure_index('editor')
-        output_db.create_index('editor')
-        output_db.ensure_index('year_joined')
-        output_db.create_index('year_joined')
-        
-        editor = input_db.find_one({'editor': self.id})
+        #self.mongo = db.init_mongo_db(self.dbname)
+#        input_db = self.mongo[self.collection]
+#        output_db = self.mongo[self.collection + '_dataset']
+#
+#        output_db.ensure_index('editor')
+#        output_db.create_index('editor')
+#        output_db.ensure_index('year_joined')
+#        output_db.create_index('year_joined')
+
+        editor = self.input_db.find_one({'editor': self.id})
         if editor == None:
             return
         edits = editor['edits']
@@ -86,7 +87,7 @@ class Editor(object):
         edits_by_year = determine_edits_by_year(edits)
         articles_by_year = determine_articles_by_year(edits)
         edits = edits[:10]
-        output_db.insert({'editor': self.id, 
+        self.output_db.insert({'editor': self.id,
                           'edits': edits,
                           'edits_by_year': edits_by_year,
                           'new_wikipedian': new_wikipedian,
@@ -100,8 +101,8 @@ class Editor(object):
 
 
 def determine_edits_by_month(edits):
-    datacontainer = shaper.create_datacontainer(init_value=0)
-    datacontainer = shaper.add_months_to_datacontainer(datacontainer)
+    datacontainer = shaper.create_datacontainer(0.0)
+    datacontainer = shaper.add_months_to_datacontainer(datacontainer, 0.0)
     for year in edits:
         for edit in edits[year]:
             m = str(edit['date'].month)
@@ -113,7 +114,7 @@ def determine_edits_by_year(dates):
     '''
     This function counts the number of edits by year made by a particular editor. 
     '''
-    edits = shaper.create_datacontainer()
+    edits = shaper.create_datacontainer(0.0)
     for date in dates:
         year = str(date['date'].year)
         edits[year] += 1
@@ -139,14 +140,14 @@ def sort_edits(edits):
     return sorted(edits, key=itemgetter('date'))
 
 
-def run_optimize_editors(dbname, collection):
+def transfrom_editors_multi_launcher(dbname, collection):
     ids = exporter.retrieve_editor_ids_mongo(dbname, collection)
     kwargs = {'definition': 'traditional',
               'pbar': True,
               }
     tasks = multiprocessing.JoinableQueue()
     consumers = [EditorConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
-    
+
     for id in ids:
         tasks.put(Editor(dbname, collection, id))
     for x in xrange(settings.number_of_processes):
@@ -159,15 +160,27 @@ def run_optimize_editors(dbname, collection):
     tasks.join()
 
 
-def debug_optimize_editors(dbname):
-    ids = exporter.retrieve_editor_ids_mongo(dbname, 'editors')
-    q = pc.load_queue(ids)
-    kwargs = {'definition': 'traditional',
-              'dbname': dbname
-    }
-    optimize_editors(q, False, True, kwargs)
+def setup_database(dbname, collection):
+    mongo = db.init_mongo_db(dbname)
+    input_db = mongo[collection]
+    output_db = mongo[collection + '_dataset']
+
+    output_db.ensure_index('editor')
+    output_db.create_index('editor')
+    output_db.ensure_index('year_joined')
+    output_db.create_index('year_joined')
+    return input_db, output_db
+
+
+def transform_editors_single_launcher(dbname, collection):
+    ids = exporter.retrieve_editor_ids_mongo(dbname, collection)
+    input_db, output_db = setup_database(dbname, collection)
+    for x, id in enumerate(ids):
+        print '%s editors to go...' % (len(ids) - x)
+        editor = Editor(id, input_db, output_db)
+        editor()
 
 
 if __name__ == '__main__':
-    #debug_optimize_editors('test')
-    run_optimize_editors('enwiki', 'test')
+    transform_editors_single_launcher('enwiki', 'editors')
+    #transfrom_editors_multi_launcher('enwiki', 'editors')

@@ -17,6 +17,7 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
+import os
 import sys
 import datetime
 from dateutil.relativedelta import *
@@ -32,6 +33,7 @@ settings = configuration.Settings()
 from utils import models, utils
 from database import db
 from etl import shaper
+from analyses import cohort_charts
 
 try:
     import psyco
@@ -132,14 +134,14 @@ class LongDataset(object):
 
 def retrieve_editor_ids_mongo(dbname, collection):
     if utils.check_file_exists(settings.binary_location,
-                               'editors.bin'):
+                               dbname + 'editors.bin'):
         ids = utils.load_object(settings.binary_location,
-                               'editors.bin')
+                               dbname + 'editors.bin')
     else:
         mongo = db.init_mongo_db(dbname)
         editors = mongo[collection]
         ids = editors.distinct('editor')
-        utils.store_object(ids, settings.binary_location, retrieve_editor_ids_mongo)
+        utils.store_object(ids, settings.binary_location, dbname + 'editors.bin')
     return ids
 
 
@@ -181,8 +183,8 @@ def expand_headers(headers, vars_to_expand, obs):
 
 def generate_long_editor_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
+    editors = mongo[collection + '_dataset']
     vars = ['monthly_edits']
-    editors = mongo[collection + 'dataset']
     name = dbname + '_long_editors.csv'
     #fh = utils.create_txt_filehandle(settings.dataset_location, name, 'w', settings.encoding)
     vars_to_expand = []
@@ -191,6 +193,8 @@ def generate_long_editor_dataset(tasks, dbname, collection, **kwargs):
     while True:
         try:
             id = input_queue.get(block=False)
+            if id == None:
+                break
             print id
             obs = editors.find_one({'editor': id}, keys)
             ld.convert_to_longitudinal_data(id, obs, vars)
@@ -202,7 +206,7 @@ def generate_long_editor_dataset(tasks, dbname, collection, **kwargs):
 
 def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
-    editors = mongo[collection + 'dataset']
+    editors = mongo[collection + '_dataset']
     year = datetime.datetime.now().year + 1
     begin = year - 2001
     p = [3, 6, 9]
@@ -212,12 +216,15 @@ def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
     while True:
         try:
             id = tasks.get(block=False)
+            tasks.task_done()
+            if id == None:
+                break
             obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
             first_edit = obs['first_edit']
             last_edit = obs['final_edit']
             for y in xrange(2001, year):
-                if y == 2010 and first_edit > datetime.datetime(2010, 1, 1):
-                    print 'debug'
+#                if y == 2010 and first_edit > datetime.datetime(2010, 1, 1):
+#                    print 'debug'
                 if y not in data:
                     data[y] = {}
                     data[y]['n'] = 0
@@ -242,7 +249,9 @@ def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
                     data[y][p] += 1
         except Empty:
             break
-    utils.store_object(data, settings.binary_location, 'cohort_data')
+    print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
+    utils.store_object(data, settings.binary_location, dbname + '_cohort_data')
+    cohort_charts.prepare_cohort_dataset(dbname)
 
 
 def date_falls_in_window(window_start, window_end, first_edit, last_edit):
@@ -254,7 +263,7 @@ def date_falls_in_window(window_start, window_end, first_edit, last_edit):
 
 def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
-    editors = mongo[collection + 'dataset']
+    editors = mongo[collection + '_dataset']
     name = dbname + '_wide_editors.csv'
     fh = utils.create_txt_filehandle(settings.dataset_location, name, 'a', settings.encoding)
     x = 0
@@ -262,6 +271,8 @@ def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):
     while True:
         try:
             id = input_queue.get(block=False)
+            if id == None:
+                break
             print input_queue.qsize()
             obs = editors.find_one({'editor': id})
             obs = expand_observations(obs, vars_to_expand)
@@ -284,19 +295,23 @@ def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):
 
 
 def dataset_launcher(dbname, collection, target):
+    if type(target) == type('str'):
+        target = globals()[target]
     editors = retrieve_editor_ids_mongo(dbname, collection)
     tasks = multiprocessing.JoinableQueue()
-    consumers = [multiprocessing.Process(target=target, args=(tasks, dbname, collection)) for i in xrange(settings.number_of_processes)]
+    #consumers = [multiprocessing.Process(target=target, args=(tasks, dbname, collection)) for i in xrange(settings.number_of_processes)]
     for editor in editors:
         tasks.put(editor)
     print 'The queue contains %s editors.' % tasks.qsize()
-    for x in xrange(settings.number_of_processes):
-        tasks.put(None)
+    target(tasks, dbname, collection)
 
-    for w in consumers:
-        w.start()
+    #for x in xrange(settings.number_of_processes):
+    #    tasks.put(None)
 
-    tasks.join()
+    #for w in consumers:
+    #    w.start()
+
+    #tasks.join()
 
 
 if __name__ == '__main__':

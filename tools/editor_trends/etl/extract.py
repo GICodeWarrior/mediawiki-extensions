@@ -137,8 +137,8 @@ def run_parse_editors(location, **kwargs):
     output = os.path.join(location, 'txt')
     settings.verify_environment([input, output])
     files = utils.retrieve_file_list(input, 'xml')
-    
-    
+
+
     tasks = multiprocessing.JoinableQueue()
     consumers = [models.XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
     for file in files:

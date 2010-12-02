@@ -73,7 +73,7 @@ def store_editors(input, dbname, collection):
     utils.store_object(editors, settings.binary_location, 'editors')
 
 
-def mergesort_external_launcher(dbname, input, output):
+def mergesort_external_launcher(input, output):
     files = utils.retrieve_file_list(input, 'txt', mask='')
     x = 0
     maxval = 99999
@@ -81,22 +81,26 @@ def mergesort_external_launcher(dbname, input, output):
         x += 1.0
         maxval = round(len(files) / x)
     chunks = utils.split_list(files, int(x))
-    '''1st iteration external mergesort'''
+
     to_remove = []
     for chunk in chunks:
+        print '1st iteration external mergesort'
         filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.encoding) for file in chunks[chunk]]
         filename = sort.merge_sorted_files(output, filehandles, chunk)
-        to_remove.append(filename)
+        if len(chunks) > 1:
+            to_remove.append(filename)
         filehandles = [fh.close() for fh in filehandles]
-    '''2nd iteration external mergesort, if necessary'''
+
     if len(chunks) > 1:
+        print '2nd iteration external mergesort'
         files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
         filehandles = [utils.create_txt_filehandle(output, file, 'r', settings.encoding) for file in files]
         filename = sort.merge_sorted_files(output, filehandles, 'final')
         filehandles = [fh.close() for fh in filehandles]
         filename = 'merged_final.txt'
     for r in to_remove:
-        utils.delete_file(output , r)
+        print 'Going to delete: %s' % os.path.join(output, r)
+#        utils.delete_file(output , r)
 
 
 
@@ -105,8 +109,10 @@ def mergesort_feeder(tasks, input, output):
     while True:
         try:
             file = tasks.get(block=False)
-            print file
+            print file, tasks.qsize()
+            tasks.task_done()
             if file == None:
+                print 'breaking'
                 break
             fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
             data = fh.readlines()
@@ -115,6 +121,7 @@ def mergesort_feeder(tasks, input, output):
             data = [d.split('\t') for d in data]
             sorted_data = sort.mergesort(data)
             sort.write_sorted_file(sorted_data, file, output)
+
         except Empty:
             break
 
@@ -134,11 +141,6 @@ def mergesort_launcher(input, output):
         w.start()
 
     tasks.join()
-    #mergesort_feeder(file, input=input, output=output)
-
-
-    #chunks = utils.split_list(files, settings.number_of_processes)
-    #pc.build_scaffolding(pc.load_queue, mergesort_feeder, chunks, False, False, **kwargs)
 
 
 def debug_mergesort_feeder(input, output):
@@ -154,9 +156,10 @@ def debug_mergesort_feeder(input, output):
 
 if __name__ == '__main__':
     input = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
-    output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
+    intermediate_output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
     dbname = 'enwiki'
-    mergesort_launcher(input, output)
-    final_output = os.path.join(settings.input_location, 'en', 'wiki', 'dbready')
-    mergesort_external_launcher(dbname, output, final_output)
-    store_editors(input, dbname, collection)
+    collection = 'editors'
+    mergesort_launcher(input, intermediate_output)
+    output = os.path.join(settings.input_location, 'en', 'wiki', 'dbready')
+    mergesort_external_launcher(intermediate_output, output)
+    store_editors(output, dbname, collection)
