@@ -685,13 +685,14 @@ $messages['it'] = array(
  * @author Aotake
  * @author Hosiryuhosi
  * @author JtFuruhata
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'edituser-desc' => '権限を持つ利用者が、他利用者の個人設定を変更できるようにする',
 	'edituser' => '利用者情報の編集',
-	'edituser-username' => '利用者名:',
+	'edituser-username' => '利用者名：',
 	'edituser-dosearch' => '検索',
-	'edituser-nouser' => '利用者"$1"は存在しません',
+	'edituser-nouser' => '利用者「$1」は存在しません。',
 	'edituser-exempt' => '利用者"$1"は編集できません',
 	'right-edituser' => '他の利用者の個人設定を編集する',
 	'right-edituser-exempt' => '他人が利用者の個人設定を編集することはできません。',
