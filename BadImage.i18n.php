@@ -1310,6 +1310,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author JtFuruhata
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'badimages' => '好ましくない画像の一覧',
@@ -1320,7 +1321,7 @@ $messages['ja'] = array(
 	'badimages-name' => '名前:',
 	'badimages-not-added' => '一覧への追加に失敗しました。',
 	'badimages-not-removed' => '一覧からの削除に失敗しました。',
-	'badimages-reason' => '理由:',
+	'badimages-reason' => '理由：',
 	'badimages-remove' => '(削除)',
 	'badimages-remove-btn' => '削除',
 	'badimages-remove-confirm' => '一覧から $1 を削除してよろしいですか？:',
