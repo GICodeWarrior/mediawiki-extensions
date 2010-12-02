@@ -61,7 +61,7 @@ class SpecialMergeThread extends ThreadActionPage {
 			$threadid = $t->id();
 		}
 
-		$out = Html::hidden( $field, $threadid );
+		$out = Xml::hidden( $field, $threadid );
 		$out .= LqtView::permalink( $t );
 
 		return $out;

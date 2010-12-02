@@ -135,7 +135,7 @@ class PasswordReset extends SpecialPage {
 				"</td>
 			</tr>" .
 			Xml::closeElement( 'table' ) .
-			Html::hidden( 'token', $wgUser->editToken() ) .
+			Xml::hidden( 'token', $wgUser->editToken() ) .
 			Xml::closeElement( 'form' )
 		);
 

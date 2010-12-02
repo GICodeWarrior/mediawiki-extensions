@@ -316,8 +316,8 @@ ENDOFLINE;
 			$this->invertJS( 'caSpeedcats', $this->speedcatCheckboxes() ) );
 		$retval = wfMsgExt( 'advancedsearch-toptext', array( 'parse' ) );
 		$retval .= Xml::openElement( 'form', array( 'method' => 'GET', 'action' => $wgScript ) );
-		$retval .= Html::hidden( 'title', $this->getTitle()->getPrefixedDbKey() );
-		$retval .= Html::hidden( 'do', 'search' );
+		$retval .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDbKey() );
+		$retval .= Xml::hidden( 'do', 'search' );
 
 		// The big table everything is in
 		$retval .= Xml::openElement( 'table' );

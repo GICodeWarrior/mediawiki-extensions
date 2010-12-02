@@ -213,9 +213,9 @@ class DeleteQueueViewReview extends DeleteQueueView {
 		$output .= Xml::buildForm( $fields, 'deletequeue-review-submit' );
 
 		// Form stuff
-		$output .= Html::hidden( 'title',
+		$output .= Xml::hidden( 'title',
 						$this->getTitle( "case/" . $dqi->getCaseID() . "/review" ) );
-		$output .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
+		$output .= Xml::hidden( 'wpEditToken', $wgUser->editToken() );
 		$output = Xml::tags( 'form',
 			array( 'action' => $article->mTitle->getLocalURL(),
 				'method' => 'POST'
