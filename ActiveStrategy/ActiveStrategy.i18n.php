@@ -285,7 +285,7 @@ $messages['ja'] = array(
 	'activestrategy' => '活動中の戦略',
 	'active-strategy-desc' => '戦略計画ページの編集回数を表示',
 	'active-strategy-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
-	'nedits' => '$1{{PLURAL:$1|回の編集}}',
+	'nedits' => '$1回の編集',
 );
 
 /** Georgian (ქართული)
