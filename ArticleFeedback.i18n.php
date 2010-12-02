@@ -259,6 +259,16 @@ $messages['be-tarask'] = array(
 	'articlefeedback-alpha-survey-submit' => 'Даслаць',
 	'articlefeedback-alpha-survey-title' => 'Калі ласка, адкажыце на некалькі пытаньняў',
 	'articlefeedback-alpha-survey-thanks' => 'Дзякуй за адказы на пытаньні.',
+	'articlefeedback-beta-form-tab-label' => 'Даць водгук',
+	'articlefeedback-beta-form-panel-title' => 'Ваш водгук',
+	'articlefeedback-beta-form-panel-instructions' => 'Калі ласка, знайдзіце час, каб адзначыць гэтую старонку.',
+	'articlefeedback-beta-form-panel-notice' => 'Вашая адзнака скончыцца праз некаторы час.',
+	'articlefeedback-beta-form-panel-submit' => 'Даслаць водгук',
+	'articlefeedback-beta-report-tab-label' => 'Паказаць вынікі',
+	'articlefeedback-beta-report-panel-title' => 'Вынікі водгуку',
+	'articlefeedback-beta-field-wellsourced-label' => 'Са спасылкамі на крыніцы',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Вы лічыце, што гэтая старонка мае дастаткова цытатаў, і яны паходзяць з крыніц вартых даверу?',
+	'articlefeedback-beta-field-complete-label' => 'Скончанасьць',
 );
 
 /** Bulgarian (Български)
@@ -666,6 +676,7 @@ Võib-olla soovid seda uuesti hinnata.",
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Mjbmr
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
@@ -707,6 +718,9 @@ $messages['fa'] = array(
 	'articlefeedback-alpha-survey-submit' => 'ارسال',
 	'articlefeedback-alpha-survey-title' => 'لطفاً به چند پرسش پاسخ دهید',
 	'articlefeedback-alpha-survey-thanks' => 'از این که نظرسنجی را تکمیل کردید متشکریم.',
+	'articlefeedback-beta-report-tab-label' => 'نمایش نتایج',
+	'articlefeedback-beta-field-complete-label' => 'کامل کردن',
+	'articlefeedback-beta-field-neutral-label' => 'بی‌طرف',
 );
 
 /** Finnish (Suomi)
@@ -797,6 +811,21 @@ Vous pourriez vouloir l’évaluer à nouveau.',
 	'articlefeedback-alpha-survey-submit' => 'Soumettre',
 	'articlefeedback-alpha-survey-title' => 'Veuillez répondre à quelques questions',
 	'articlefeedback-alpha-survey-thanks' => 'Merci d’avoir rempli le questionnaire.',
+	'articlefeedback-beta-form-tab-label' => 'Fournir un retour',
+	'articlefeedback-beta-form-panel-title' => 'Votre retour',
+	'articlefeedback-beta-form-panel-instructions' => 'Veuillez prendre un moment pour évaluer cette page.',
+	'articlefeedback-beta-form-panel-notice' => 'Vos évaluations expireront au fil du temps.',
+	'articlefeedback-beta-form-panel-submit' => 'Envoyer le retour',
+	'articlefeedback-beta-report-tab-label' => 'Afficher les résultats',
+	'articlefeedback-beta-report-panel-title' => 'Résultats du retour',
+	'articlefeedback-beta-field-wellsourced-label' => 'Bien sourcé',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Pensez-vous que cette page a suffisamment de citations et que celles-ci proviennent de sources dignes de confiance.',
+	'articlefeedback-beta-field-complete-label' => 'Complet',
+	'articlefeedback-beta-field-complete-tip' => 'Pensez-vous que cette page couvre les thèmes essentiels du sujet ?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutre',
+	'articlefeedback-beta-field-neutral-tip' => 'Pensez-vous que cette page fournit une présentation équitable de toutes les perspectives du sujet traité ?',
+	'articlefeedback-beta-field-readable-label' => 'Lisible',
+	'articlefeedback-beta-field-readable-tip' => 'Pensez-vous que cette page soit bien organisée et bien écrite ?',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1234,7 +1263,7 @@ Probabilmente vuoi valutarla di nuovo.",
  */
 $messages['ja'] = array(
 	'articlefeedback' => '記事の評価',
-	'articlefeedback-desc' => '記事の評価（パイロット版）',
+	'articlefeedback-desc' => '記事の評価',
 	'articlefeedback-alpha-yourfeedback' => 'あなたの感想',
 	'articlefeedback-alpha-pleaserate' => 'このページの評価を算出していますので、少しお待ちください。',
 	'articlefeedback-alpha-submit' => '送信',
@@ -1250,7 +1279,7 @@ $messages['ja'] = array(
 	'articlefeedback-alpha-error' => 'エラーが発生しました。
 後でもう一度試みてください。',
 	'articlefeedback-alpha-thanks' => 'ありがとうございます！評価は保存されました。',
-	'articlefeedback-alpha-featurefeedback' => 'この機能について<span class="feedbacklink">フィードバック</span>をお願いします。',
+	'articlefeedback-alpha-featurefeedback' => 'この機能について<span class="feedbacklink">評価</span>をお願いします。',
 	'articlefeedback-alpha-noratings' => '$1（$2の{{PLURAL:$2|評価}}）',
 	'articlefeedback-alpha-stalemessage-norevisioncount' => "このページは、最後に評価してから、''修正''されました。
 もう一度、評価してはいかがでしょうか。",
@@ -1261,7 +1290,7 @@ $messages['ja'] = array(
 	'articlefeedback-alpha-survey-answer-whyrated-development' => '自分の評価が、このページの成長に良い影響を与えることを望んでいる',
 	'articlefeedback-alpha-survey-answer-whyrated-contribute-wiki' => '{{SITENAME}}に貢献したい',
 	'articlefeedback-alpha-survey-answer-whyrated-sharing-opinion' => '意見を共有したい',
-	'articlefeedback-alpha-survey-answer-whyrated-didntrate' => '評価は与えなかったが、この機能に関するフィードバックをしたかった。',
+	'articlefeedback-alpha-survey-answer-whyrated-didntrate' => '今日は評価しなかったが、この機能に関するフィードバックをしたかった。',
 	'articlefeedback-alpha-survey-answer-whyrated-other' => 'その他',
 	'articlefeedback-alpha-survey-question-useful' => 'これらの評価は、分かりやすく、役に立つものだと思いますか？',
 	'articlefeedback-alpha-survey-question-useful-iffalse' => 'なぜですか？',
@@ -1271,6 +1300,21 @@ $messages['ja'] = array(
 	'articlefeedback-alpha-survey-submit' => '送信',
 	'articlefeedback-alpha-survey-title' => '質問に少しお答えください',
 	'articlefeedback-alpha-survey-thanks' => '調査に記入していただき、ありがとうございます。',
+	'articlefeedback-beta-form-tab-label' => 'フィードバックを提供',
+	'articlefeedback-beta-form-panel-title' => 'フィードバック',
+	'articlefeedback-beta-form-panel-instructions' => 'このページの評価を算出していますので、少しお待ちください。',
+	'articlefeedback-beta-form-panel-notice' => '評価は、時間が経過すると反映されなくなります。',
+	'articlefeedback-beta-form-panel-submit' => 'フィードバックを送信',
+	'articlefeedback-beta-report-tab-label' => '結果を表示',
+	'articlefeedback-beta-report-panel-title' => 'フィードバック結果',
+	'articlefeedback-beta-field-wellsourced-label' => '出典がよく示されている',
+	'articlefeedback-beta-field-wellsourced-tip' => 'このページは、十分な出典があり、それらの出典は信頼できる情報源によるものですか？',
+	'articlefeedback-beta-field-complete-label' => '完成度',
+	'articlefeedback-beta-field-complete-tip' => 'この記事は、不可欠な話題を、説明していると思いますか？',
+	'articlefeedback-beta-field-neutral-label' => '中立性',
+	'articlefeedback-beta-field-neutral-tip' => 'このページは、ある問題に対する全ての観点を平等に説明していると思いますか？',
+	'articlefeedback-beta-field-readable-label' => '読みやすさ',
+	'articlefeedback-beta-field-readable-tip' => 'この記事は、良く整理され、良く書かれていると思いますか？',
 );
 
 /** Korean (한국어)
@@ -1360,6 +1404,10 @@ Et kéint sinn datt dir en nei bewäerte wëllt.",
 	'articlefeedback-alpha-survey-submit' => 'Späicheren',
 	'articlefeedback-alpha-survey-title' => 'Beäntwert w.e.g. e puer Froen',
 	'articlefeedback-alpha-survey-thanks' => 'Merci datt Dir eis Ëmfro ausgefëllt hutt.',
+	'articlefeedback-beta-form-panel-instructions' => 'Huelt Iech w.e.g. een Ament fir d¨s Säit ze bewäerten.',
+	'articlefeedback-beta-report-tab-label' => 'Resultater weisen',
+	'articlefeedback-beta-field-complete-label' => 'Komplett',
+	'articlefeedback-beta-field-neutral-label' => 'Neutral',
 );
 
 /** Limburgish (Limburgs)
@@ -1678,6 +1726,21 @@ Możesz ocenić ją ponownie.",
 	'articlefeedback-alpha-survey-submit' => 'Zapisz',
 	'articlefeedback-alpha-survey-title' => 'Proszę udzielić odpowiedzi na kilka pytań',
 	'articlefeedback-alpha-survey-thanks' => 'Dziękujemy za wypełnienie ankiety.',
+	'articlefeedback-beta-form-tab-label' => 'Przesyłanie opinii',
+	'articlefeedback-beta-form-panel-title' => 'Twoja opinia',
+	'articlefeedback-beta-form-panel-instructions' => 'Poświeć chwilę, aby ocenić tę stronę.',
+	'articlefeedback-beta-form-panel-notice' => 'Twoja ocena wygaśnie z upływem czasu.',
+	'articlefeedback-beta-form-panel-submit' => 'Prześlij opinię',
+	'articlefeedback-beta-report-tab-label' => 'Wyświetl wyniki',
+	'articlefeedback-beta-report-panel-title' => 'Zebrane opinie',
+	'articlefeedback-beta-field-wellsourced-label' => 'Dodane dobre źródła',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Czy uważasz, że strona ma wystarczającą liczbę odnośników i że odnoszą się one do wiarygodnych źródeł?',
+	'articlefeedback-beta-field-complete-label' => 'Wyczerpanie tematu',
+	'articlefeedback-beta-field-complete-tip' => 'Czy uważasz, że strona porusza wszystkie istotne aspekty, które powinna?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutralny punkt widzenia',
+	'articlefeedback-beta-field-neutral-tip' => 'Czy uważasz, że strona prezentuje wszystkie punkty widzenia na to zagadnienie?',
+	'articlefeedback-beta-field-readable-label' => 'Zrozumiałość',
+	'articlefeedback-beta-field-readable-tip' => 'Czy uważasz, że strona jest właściwie sformatowana oraz zrozumiale napisana?',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2472,6 +2535,21 @@ Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articlefeedback-alpha-survey-submit' => 'Gửi',
 	'articlefeedback-alpha-survey-title' => 'Xin vui lòng trả lời một số câu hỏi',
 	'articlefeedback-alpha-survey-thanks' => 'Cám ơn bạn đã điền khảo sát.',
+	'articlefeedback-beta-form-tab-label' => 'Phản hồi',
+	'articlefeedback-beta-form-panel-title' => 'Phản hồi của bạn',
+	'articlefeedback-beta-form-panel-instructions' => 'Xin hãy dành một chút thì giờ để đánh giá trang này.',
+	'articlefeedback-beta-form-panel-notice' => 'Các đánh giá của bạn sẽ hết hạn sau một thời gian.',
+	'articlefeedback-beta-form-panel-submit' => 'Gửi phản hồi',
+	'articlefeedback-beta-report-tab-label' => 'Xem kết quả',
+	'articlefeedback-beta-report-panel-title' => 'Kết quả phản hồi',
+	'articlefeedback-beta-field-wellsourced-label' => 'Đầy đủ nguồn',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Bạn có cảm thấy rằng bày này chú thích nguồn gốc đầy đủ và đáng tin các nguồn?',
+	'articlefeedback-beta-field-complete-label' => 'Đầy đủ',
+	'articlefeedback-beta-field-complete-tip' => 'Bạn có cảm thấy rằng bài này bao gồm các đề tài cần thiết?',
+	'articlefeedback-beta-field-neutral-label' => 'Trung lập',
+	'articlefeedback-beta-field-neutral-tip' => 'Bạn có cảm thấy rằng bài này đại diện công bằng cho tất cả các quan điểm về các vấn đề?',
+	'articlefeedback-beta-field-readable-label' => 'Dễ đọc',
+	'articlefeedback-beta-field-readable-tip' => 'Bạn có cảm thấy rằng bài này được sắp xếp đàng hoàng có văn bản hay?',
 );
 
 /** Yoruba (Yorùbá)
