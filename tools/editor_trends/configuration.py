@@ -57,12 +57,11 @@ class Settings(object):
             #Change this to match your computers configuration (RAM / CPU)
             self.minimum_python_version = (2, 6)
             self.wp_dump_location = 'http://download.wikimedia.org'
-            self.xml_namespace = 'http://www.mediawiki.org/xml/export-0.4/'
+            self.xml_namespace = 'http://www.mediawiki.org/xml/export-0.3/'
             self.ascii_extensions = ['txt', 'csv', 'xml', 'sql', 'json']
             self.windows_register = {'7z.exe': 'Software\\7-Zip', }
             #Extensions of ascii files, this is used to determine the filemode to use
             self.platform = self.determine_platform()
-            #self.compression = self.init_compression_tools()
 
             self.architecture = platform.machine()
             self.working_directory = self.determine_working_directory()
@@ -75,6 +74,9 @@ class Settings(object):
 
             self.load_configuration()
             self.set_custom_settings(**kwargs)
+            self.dumpversions = {'0': 'http://www.mediawiki.org/xml/export-0.4/',
+                                 '1': 'http://www.mediawiki.org/xml/export-0.3/',
+                                 }
             self.projects = {'wiki': 'wikipedia',
                              'commons': 'commonswiki',
                              'books': 'wikibooks',

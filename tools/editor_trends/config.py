@@ -24,12 +24,22 @@ import ConfigParser
 from utils import utils
 import languages
 
+def show_choices(settings, attr):
+    choices = getattr(settings, attr).items()
+    choices.sort()
+    choices = ['%s\t%s' % (choice[0], choice[1]) for choice in choices]
+    #print '\n'.join(choices)
+    return choices
+    #for choice in choices:
+    #    print '%s\t%s' % (choice[0], choice[1])
+
 def create_configuration(settings, args):
     force = getattr(args, 'force', False)
     if not os.path.exists('wiki.cfg') or force:
         config = ConfigParser.RawConfigParser()
         project = None
         language = None
+        dumpversion = None
         language_map = languages.language_map()
         working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
         input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.\n' % settings.input_location)
@@ -46,6 +56,16 @@ def create_configuration(settings, args):
                 language = language_map[args.language]
             language = language if language in languages.MAPPING else args.language
 
+        while dumpversion not in settings.dumpversions.keys():
+            choices = '\n'.join(show_choices(settings, 'dumpversions'))
+            dumpversion = raw_input('Please indicate the version of the Wikipedia project you are analyzing.\nValid choices are:\n%s\nDefault is: 0 (%s)\nPress Enter to accept default.\n' % (choices, settings.dumpversions['0']))
+            if len(dumpversion) == 0:
+                dumpversion = settings.dumpversions['0']
+
+
+            #dumpversion = dumpversion if dumpversion in settings.dumpversions.keys() else args.dumpversion
+
+        dumpversion = settings.dumpversions[dumpversion]
         input_location = input_location if len(input_location) > 0 else settings.input_location
         working_directory = working_directory if len(working_directory) > 0 else os.getcwd()
 
@@ -56,6 +76,7 @@ def create_configuration(settings, args):
         config.add_section('wiki')
         config.set('wiki', 'project', project)
         config.set('wiki', 'language', language)
+        config.set('wiki', 'dumpversion', dumpversion)
 
         fh = utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
         config.write(fh)
@@ -63,6 +84,7 @@ def create_configuration(settings, args):
 
         settings.working_directory = config.get('file_locations', 'working_directory')
         settings.input_location = config.get('file_locations', 'input_location')
+        settings.xml_namespace = config.get('wiki', 'dumpversion')
         return settings
 
 
