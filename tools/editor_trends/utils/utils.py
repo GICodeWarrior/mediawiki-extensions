@@ -215,20 +215,19 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
         fh.write('\n')
 
 
-def write_dict_to_csv(data, fh, write_key=True, newline=True):
-    keys = data.keys()
-    keys.sort()
+def write_dict_to_csv(data, fh, keys, write_key=True, newline=True):
     for key in keys:
         if write_key:
             fh.write('%s\t' % key)
-        if getattr(data[key], '__iter__', False):
+        if type(data[key]) == type(list):
+            write_list_to_csv(data[key], fh, recursive=False, newline=False)
+        elif getattr(data[key], '__iter__', False):
             for d in data[key]:
                 fh.write('%s\t' % d)
         else:
             fh.write('%s\t' % (data[key]))
     if newline:
         fh.write('\n')
-    return False    #this prevents the calling function from writing \t
 
 
 def create_txt_filehandle(location, name, mode, encoding):
@@ -315,15 +314,26 @@ def invert_dict(dictionary):
     return dict([[v, k] for k, v in dictionary.items()])
 
 
-def create_dict_from_csv_file(location, filename, encoding):
+def create_dict_from_csv_file(location, filename, encoding, keys=None):
     '''
     Constructs a dictionary from a txtfile
+    The first column of the csv file should contain the main key for the dictionary.
+    If there are more than one value in the values list, then a @keys variable should
+    be supplied and the key sequence should match the value sequence.
     '''
     d = {}
     for line in read_data_from_csv(location, filename, encoding):
         line = clean_string(line)
-        value, key = line.split('\t')
-        d[key] = value
+        line = line.split('\t')
+        key = line[0]
+        values = line[1:]
+        if len(values) == 1:
+            d[key] = values
+        else:
+            assert keys != None
+            d[key] = {}
+            for k, v in zip(keys, values):
+                d[key][k] = v
     return d
 
 
