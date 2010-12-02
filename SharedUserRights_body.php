@@ -304,7 +304,7 @@ class SharedUserRights extends SpecialPage {
 		global $wgOut, $wgScript;
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'name' => 'uluser', 'id' => 'mw-userrights-form1' ) ) .
-			Html::hidden( 'title',  $this->getTitle()->getPrefixedText() ) .
+			Xml::hidden( 'title',  $this->getTitle()->getPrefixedText() ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'userrights-lookup-user' ) ) .
 			Xml::inputLabel( wfMsg( 'userrights-user-editname' ), 'user', 'username', 30, $this->mTarget ) . ' ' .
@@ -337,8 +337,8 @@ class SharedUserRights extends SpecialPage {
 		}
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalURL(), 'name' => 'editGroup', 'id' => 'mw-userrights-form2' ) ) .
-			Html::hidden( 'user', $this->mTarget ) .
-			Html::hidden( 'wpEditToken', $wgUser->editToken( $this->mTarget ) ) .
+			Xml::hidden( 'user', $this->mTarget ) .
+			Xml::hidden( 'wpEditToken', $wgUser->editToken( $this->mTarget ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'userrights-editusergroup' ) ) .
 			wfMsgExt( 'editinguser', array( 'parse' ), wfEscapeWikiText( $user->getName() ) ) .
