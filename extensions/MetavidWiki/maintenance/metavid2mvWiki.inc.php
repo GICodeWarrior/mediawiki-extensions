@@ -1101,7 +1101,7 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		$image = wfLocalFile( $imgTitle );
 
 		$archive = $image->publish( $local_file );
-		if ( WikiError :: isError( $archive ) ) {
+		if ( !$archive->isGood() ) {
 			echo ( "failed.\n" );
 			continue;
 		}
