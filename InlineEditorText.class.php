@@ -380,7 +380,12 @@ class InlineEditorText implements Serializable {
 	private static function sortByStartAndLength( $a, $b ) {
 		if( $a->getStart() == $b->getStart() ) {
 			if( $a->getLength() == $b->getLength() ) {
-				return strcmp( $a->getClass(), $b->getClass() );
+				if( $a->getPriority() == $b->getPriority() ) {
+					return strcmp( $a->getClass(), $b->getClass() );
+				}
+				else {
+					return ( $a->getPriority() > $b->getPriority() ? -1 : 1 );
+				}
 			}
 			else {
 				return ( $a->getLength() > $b->getLength() ? -1 : 1);

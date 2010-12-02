@@ -10,7 +10,7 @@
 	margin: 0.5em 0;
 }
 
-.sectionEditor .edited {
+.sectionEditor .sectionEditorElement.edited {
 	/* have a yellow color to highlight edited elements, basically the orange color with the hue shifted */
 	background-color: #F9F2A7;
 }

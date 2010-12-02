@@ -23,7 +23,9 @@ class SectionEditor {
 			$end     = $match[1]-1;
 			$prevPos = $match[1];
 
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'sectionEditorElement', false ) );
+			$marking = new InlineEditorMarking( $start, $end, 'sectionEditorElement', false );
+			$marking->setPriority( 2 );
+			$inlineEditorText->addMarking( $marking );
 		}
 
 		return true;

@@ -80,6 +80,8 @@ class SentenceEditor {
 
 		// remove templates starting at the beginning of a line (or with whitespace)
 		$patterns[] = '/^\s*(\{\{.*?\}\})/ms';
+		$patterns[] = '/^\s*\|.*$/m';
+		$patterns[] = '/^\s*\}\}/ms';
 
 		// remove tables
 		$patterns[] = '/(\{\|.*?\|\})/';

@@ -13,18 +13,18 @@ class ParagraphEditor {
 		$text = $inlineEditorText->getWikiOriginal();
 
 		$matches = array();
-		preg_match_all( '/(==+.+==+\s*\n)?((.|\n)*?)\n\n/', $text, $matches, PREG_OFFSET_CAPTURE );
+		preg_match_all( '/(==+.+==+\s*\n)?((.|\n)*?)(\n\n|(\n==+.+==+\s*\n)|$)/', $text, $matches, PREG_OFFSET_CAPTURE );
 
 		foreach ( $matches[2] as $match ) {
-			//print_r($match);
-			//echo "\n\n\n";
 			$start = $match[1];
 			$end   = $start + strlen( $match[0] );
 
 			// do not include the trailing newline
 			if ( substr( $match[0], -1 ) == "\n" ) $end--;
 
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'paragraphEditorElement', false ) );
+			$marking = new InlineEditorMarking( $start, $end, 'paragraphEditorElement', false );
+			$marking->setPriority( 1 );
+			$inlineEditorText->addMarking( $marking );
 		}
 
 		return true;

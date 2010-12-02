@@ -11,7 +11,11 @@
 	padding: 1px;
 }
 
-.sentenceEditor .edited {
+.sentenceEditor .sentenceEditorElement.edited,
+.sentenceEditor .listEditorElement.edited,
+.sentenceEditor .referenceEditorElement.edited,
+.sentenceEditor .mediaEditorElement.edited,
+.sentenceEditor .templateEditorElement.edited {
 	/* have a yellow color to highlight edited elements, basically the orange color with the hue shifted */
 	background-color: #F9F2A7;
 }
