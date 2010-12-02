@@ -43,8 +43,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Jon Harald Søby
+ * @author Whym
  */
 $messages['qqq'] = array(
+	'e-mailpage' => 'The first heading text shown in a sending form of Special:EmailPage.',
 	'ea-denied' => '{{Identical|Permission denied}}',
 	'ea-from' => '{{Identical|From}}',
 	'ea-to' => '{{Identical|To}}',
@@ -502,6 +504,39 @@ $messages['id'] = array(
 	'ea-data' => 'Data',
 	'ea-selectrecord' => 'Template ini dapat digunakan untuk mengisi kolom isi pesan',
 	'ea-allusers' => 'Semua pengguna',
+);
+
+/** Japanese (日本語)
+ * @author Whym
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'e-mailpage' => '電子メールでページを送信',
+	'ea-desc' => '特定の電子メールアドレス、あるいは[http://phpmailer.sourceforge.net phpmailer]を使ってアドレスの一覧宛に、HTML描画されたページを送信',
+	'ea-heading' => 'ページ「[[$1]]」を電子メールで送信',
+	'ea-group-info' => 'さらに、グループのメンバーにページを送信できます',
+	'ea-pagesend' => '$2から送信されたページ「$1」',
+	'ea-nopage' => '送信するページが指定されませんでした。サイドバー内の電子メールのリンクを使用するか、ページ操作を行なってください。',
+	'ea-norecipients' => '有効な電子メールアドレスが見つかりません！',
+	'ea-listrecipients' => '{{PLURAL:$1|$1人の受信者}}の一覧',
+	'ea-error' => "'''[[$1]]の送信のエラー：'''$2",
+	'ea-denied' => '許可されていません',
+	'ea-sent' => "[[User:$3|$3]]によって、ページ[[$1]]が'''$2'''人の受信者へ正しく送信されました。",
+	'ea-compose' => '内容の作成',
+	'ea-show' => '受信者一覧を表示',
+	'ea-from' => '差出人：',
+	'ea-to' => '宛先：',
+	'ea-to-info' => '電子メールアドレスは1つ以上のセミコロン、カンマ、アスタリスクや改行文字で区切ることができます。',
+	'ea-cc' => 'CC：',
+	'ea-send' => '送信',
+	'ea-subject' => '件名：',
+	'ea-message' => '本文：',
+	'ea-message-info' => '追加のウィキテキストのメッセージを本文の先頭に追加',
+	'ea-style' => 'スタイル：',
+	'ea-selectcss' => 'スタイルシートを選択できます',
+	'ea-data' => '日付',
+	'ea-selectrecord' => 'これらのテンプレートをメッセージの内容を入力するために使用することができます',
+	'ea-allusers' => 'すべての利用者',
 );
 
 /** Khmer (ភាសាខ្មែរ)
