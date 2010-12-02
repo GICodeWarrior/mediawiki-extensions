@@ -45,6 +45,9 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
         // Typically, this element is created and initialized in this class's 'initialize()' call.
         $contentElem: null,
 
+        // language of the content the pane contains
+        contentLang: null,
+
         // Required Member. This is called only once per WikiBhasha session before this pane is used or displayed.
         initialize: function() {
             // Create necessary elements and initializations here and append item to 'this.$contentElem'. The '$contentElem'
@@ -68,7 +71,6 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
         // The value of checkbox is passed as first parameter
         onDisplayModeChanged: function(isShowWikimarkupMode) {
         },
-
 
         // Optional Member. This function gets called just before the pane is to be hidden, for example, when user
         // changes steps. Return false to cancel the hide operation and be in the current step.
@@ -110,7 +112,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             //get wikipedia article compose url
             var urlData = wbWikiSite.getEditPageUrl(wbGlobalSettings.targetLanguageCode, wbGlobalSettings.targetLanguageArticleTitle),
             //iframe object
-                composeFrameObject = document.getElementById("wbComposeIFrame");
+            composeFrameObject = document.getElementById("wbComposeIFrame");
 
             this.$contentElem = $("#" + this.contentDivId);
 
@@ -228,7 +230,6 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                     });
                 });
             }
-
         },
 
         onShow: function() {
@@ -322,6 +323,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         initialize: function() {
             wbUIHelper.changeCursorToHourGlass();
+            wbSourceOriginalPane.contentLang = wbGlobalSettings.sourceLanguageCode;
             this.$contentElem = $("<div>" + wbLocal.loadingElementContent + "</div>").attr("id", this.contentDivId);
             if (!wbGlobalSettings.sourceLanguageArticleTitle) {
 
@@ -418,6 +420,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         onHistoryChanged: function(historyItem) {
             var title = historyItem.title;
+             
             if (historyItem.langId === wbGlobalSettings.sourceLanguageCode) {
                 //If content available in history item
                 if (historyItem.content) {
@@ -427,8 +430,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
                     // Rehook events to links. Once element is removed and added back, link events disappear, so rehooking is needed.
                     wbDisplayPaneHelper.registerLinksForHistoryTracking(wbSourceOriginalPane.$currentChildElem);
-
-					//getting the language service provider object for CTF popup
+                    //getting the language service provider object for CTF popup
                     if(wbLanguageServices.fetchLanguageServiceProviderObject){
                         wbLanguageServices.fetchLanguageServiceProviderObject(historyItem);
                     }
@@ -448,7 +450,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             else {
                 this.$contentElem.html("<div>" + wbLocal.sourceArticleNotApplicable + "</div>");
             }
-			//apply the CTF popup state
+            //apply the CTF popup state
             wbDisplayPaneManager.toggleCTFDisplay();
         },
 
@@ -482,6 +484,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         initialize: function() {
             wbUIHelper.changeCursorToHourGlass();
+            wbSourceTranslatedPane.contentLang = wbGlobalSettings.targetLanguageCode;
             this.$contentElem = $("<div>" + wbLocal.loadingElementContent + "</div>").attr("id", this.contentDivId);
 
             // set the orientation of the content based on the language
@@ -529,7 +532,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                     wbDisplayPaneHelper.$showWikimarkupCheckBox.attr("disabled", "true").attr("title", wbLocal.waitUntilTranslationComplete);
 
                     wbUIHelper.changeCursorToHourGlass();
-
+                    
                     wbLanguageServices.translateParallelElements(sourceElem, $childElem, function() {
                         //as soon as translation is done, enable the toggle mode check box.
                         wbDisplayPaneHelper.$showWikimarkupCheckBox.removeAttr("disabled").removeAttr("title");
@@ -539,7 +542,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                         if (wbLanguageServices.exitButtonElementId && $("#" + wbMainWindow.windowId).length === 0) {
                             $("#" + wbLanguageServices.exitButtonElementId).get(0).onclick();
                         }
-						//create language service provider object in the history item 
+                        //create language service provider object in the history item 
                         if(wbLanguageServices.setLanguageServiceProviderObject){
                             wbLanguageServices.setLanguageServiceProviderObject(historyItem);
                         }
@@ -547,12 +550,13 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                         //as soon as translation is done, enable the default Cursor
                         wbUIHelper.changeCursorToDefault();
                     });
+                    
                 }
             }
             //else updates the history item with the content
             else if (historyItem) {
                 historyItem.content = $childElem;
-				//create language service provider object in the history item
+                //create language service provider object in the history item
                 if(wbLanguageServices.setLanguageServiceProviderObject){
                     wbLanguageServices.setLanguageServiceProviderObject(historyItem);
                 }
@@ -572,6 +576,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                     // Show "loading..." message till then
                     wbUIHelper.changeCursorToHourGlass();
                     wbDisplayPaneHelper.loadHighlightContent(wbLocal.loadingElementContent, wbSourceTranslatedPane);
+
                 }
             }
             else if (historyItem.langId === wbGlobalSettings.targetLanguageCode && historyItem.content !== null) {
@@ -590,6 +595,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                     function(data) {
                         wbSourceTranslatedPane.loadAndTranslateContent(data, null, historyItem);
                     });
+
             }
         },
 
@@ -628,6 +634,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         initialize: function() { 
             wbUIHelper.changeCursorToHourGlass();
+            wbTargetContentPane.contentLang = wbGlobalSettings.targetLanguageCode;
             wbTargetContentPane.$contentElem = $("<div>" + wbLocal.loadingElementContent + "</div>").attr("id", this.contentDivId);
            
             // set the orientation of the content based on the language
@@ -944,7 +951,8 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             // log the fact that user used this feature
             wbLoggerService.logFeatureUsage(wbGlobalSettings.sessionId, "WikiModeSwitch", isShowWikimarkupMode);
         },
-		//enable/disable CTF popup display
+
+        //enable/disable CTF popup display
         toggleCTFDisplay: function() {
             var isShowCTFPopup = wbDisplayPaneHelper.isShowCTFPopupChecked();
             if (wbLanguageServices.onCTFDisplayModeChanged) {
@@ -954,6 +962,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             // log the fact that user used this feature
             wbLoggerService.logFeatureUsage(wbGlobalSettings.sessionId, "CTFPopupDisplay", isShowCTFPopup);
         },
+
         //removes content DIVs from application display.
         removeContentDiv: function(parentElement) {
             var previousArticleContent = parentElement.find(".articleContentDiv");
@@ -977,7 +986,10 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         initialize: function() {
             wbDisplayPaneHelper.$showWikimarkupCheckBox = $("#wbToggleWikiFormat");
-			wbDisplayPaneHelper.$showCTFPopup = $("#wbToggleCTF");
+            wbDisplayPaneHelper.$showCTFPopup = $("#wbToggleCTF");
+            $('.wbHybridTemplate').live('mouseover', function () { wbWikiMarkupEdit.showMenu(this); });
+            //TODO: uncomment this to implement the template preview popup for wikimarkup preview
+            //$('.wbHybridTag').live('mouseover', function () { wbWikiMarkupEdit.showMenu(this); });
         },
 
         //checks the value of display mode check box.
@@ -985,7 +997,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             return wbDisplayPaneHelper.$showWikimarkupCheckBox.attr("checked");
         },
 
-		//checks the value of CTF popup display check box.
+        //checks the value of CTF popup display check box.
         isShowCTFPopupChecked: function() {
             return wbDisplayPaneHelper.$showCTFPopup.attr("checked");
         },
@@ -1182,6 +1194,11 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             if ($contentElem) {
                 $contentElem.find("a").click(wbDisplayPaneHelper.onArticleLinkClick);
             }
+        },
+
+        //get the pane id of the pane in which the element exists
+        getElementsPaneDivId: function (elem) {
+            return $(elem).closest('.articleContentDiv').parent().attr('id');
         },
 
         //sets pane title according to the format given in configuration.

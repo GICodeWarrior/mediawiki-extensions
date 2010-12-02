@@ -80,6 +80,8 @@
         warningSaveComposeChanges: "Any changes made in this step would be lost if you move to an earlier step.  Do you want to move anyway?",
         noTargetLanguageArticleFound: "Linked article not found in target language Wikipedia.",
         feedbackQuestionMessage: "Before leaving WikiBhasha, would you like to give us feedback?",
+		previewErrorMessage: "Unable to show the preview.",
+        loadingPreviewContent: "Loading Preview...",
 
         //tooptip strings
         searchInputTooltip: "Search",

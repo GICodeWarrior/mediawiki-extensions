@@ -31,7 +31,7 @@ if (typeof (wikiBhasha.extern) === "undefined") {
         translationAPI: "http://www.microsofttranslator.com/ajax/v2/toolkit.ashx?siteData=Z6N2xQ1EGnakgC6d5-2bqyn8HanvRK5-lNxPYEMrEBgU1cuhJ1v6tOtshhuFOTekTtt6OcyEnzF14qob_7h35iX3x1h6x49fgbZ4gYuQvVzXufdqTVDIb_E2VYtdha3I",
         // Id of button in translation toolbar clicking on which will exit the toolbar.
         exitButtonElementId: "MSTTExitLink",
-
+        
         languageServiceProvider: "",
 
         //set the language service provider object in history item
@@ -110,6 +110,7 @@ if (typeof (wikiBhasha.extern) === "undefined") {
                         onTranslationCompleted();
                         }
                 });
+
             });
         }
     }

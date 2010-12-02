@@ -847,6 +847,25 @@ tooltipWindowHTML:'<table border="0" cellspacing="0" cellpadding="0" style="over
 </tr>\
 </table>',
 
+wikiMarkupEditWindowHTML:'<div id="wbWikiMarkupEditDiv">\
+<div id="wbWikiMarkupEditDraggableHandle">\
+<div style="float:left;height:25px;"><ul class="tabs" id="wbWikiMarkupEditDivTab">\
+<li id="wbWikiMarkupEditLi"><a href="#" id="wbWikiMarkupEditLink" class="tabs_li">Edit Text</a></li>\
+<li id="wbWikiMarkupEditPreviewLi"><a href="#" id="wbWikiMarkupEditPreviewLink" class="tabs_li">Preview</a></li>\
+</ul></div>\
+<div style="float:right"><a id="wbWikiMarkupEditExit" class="wbExit" href="#" title="Close" oncontextmenu="return false;" style="margin:4px;padding:0;"></a></div>\
+</div>\
+<div id="wbWikiMarkupEditTabsContainer" class="tab_container">\
+<textarea id="wbWikiMarkupEditTab" class="tab_content">\
+</textarea>\
+<div id="wbWikiMarkupEditPreviewTab" class="tab_content">\
+Loading Preview</div>\
+<div id="wbWikiMarkupEditSubmitLinks" class="wbWikiMarkupEditBottomLinks">\
+<input type="button" id="wbWikiMarkupEditSaveLink" value="Save"/>&nbsp;&nbsp;&nbsp;&nbsp;\
+<input type="button" id="wbWikiMarkupEditCancelLink" value="Cancel"/>\
+</div>\
+</div>\
+</div>',
 
 tutorialWindowHTML:'<div id="wbTutorialDiv" class="wbTutorialBgContentArea" >\
 <div id="wbTutorialContent">\

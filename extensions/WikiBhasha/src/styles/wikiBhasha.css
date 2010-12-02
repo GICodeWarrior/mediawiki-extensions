@@ -66,6 +66,19 @@ TD
 	color:Black;
 	direction:ltr;
 }
+#wbWikiMarkupEditWindow 
+{
+	z-index: 10000;
+    position: absolute;	     
+	margin:0 auto;
+	text-align:left;
+	font-size:12px;
+	font-weight:normal;
+	color:Black;
+	direction:ltr;
+	width: 370px; 
+	height:30px;	
+}
 #wbChineseLangSelectionWindow 
 {
     z-index: 10000;
@@ -143,6 +156,10 @@ TD
 	width:539px;
 	margin:7px 7px 0px 7px;
 }
+#wbWikiMarkupEditSubmitLink
+{
+    text-align:center;
+}
 #wbSelectionDiv {
 	width:550px;
 	height: 555px;
@@ -162,7 +179,6 @@ TD
     float:left;
     width:100px;
 }
-
 .wbHeaderContainer {
 	float:left;
 	padding:0 10px 5px 15px;
@@ -175,10 +191,16 @@ TD
 }
 .wbSearch
 {
-	
 	font-size:12px;
 	color:Black;
 	background-color: #ffffff;
+}
+.wbWikiMarkupEdit
+{
+	font-size:12px;
+	color:Black;
+	background-color: #ffffff;
+    border:1px #000000 solid;
 }
 .wbTargetSearch 
 {
@@ -633,4 +655,68 @@ div.wbEmptyContentMessage
 #wbToggleCTFLabel
 {
     width:150px
+}
+#wbWikiMarkupEditDraggableHandle
+{
+	background: #E9F1F5;
+    cursor:move;
+    width:352px;
+    height:30px;
+    border: 1px solid #999;
+	padding-left:5px;
+    padding-right:5px;
+}
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	font-size:16px;
+	border-bottom: none;
+}
+ul.tabs li 	
+{
+    text-decoration: none;
+	float: left;
+	height: 28px; 
+	position: relative;
+	border-right: 1px solid #999;
+	background: #E9F1F5;
+    padding-left:5px;
+    padding-right:5px;
+}
+ul.tabs li a
+{
+    height:30px;
+	color:#000000;
+	font-weight:bold;
+	text-decoration: none;
+}
+ul.tabs li.active, ul.tabs li:hover  { 
+	background-color: #D0E1EA;
+}
+.tab_container 
+{
+    padding:0;
+	border-left: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-right: 1px solid #999;
+	clear: both;
+	float: left; 
+	background: #fff;
+}
+#wbWikiMarkupEditTab, #wbWikiMarkupEditPreviewTab {
+    height:300px;
+    width:352px;
+    overflow:auto;
+	padding-left:5px;
+    padding-right:5px;
+}
+.wbWikiMarkupEditBottomLinks
+{
+    width:360px;
+    background-color:#D0E1EA;
+    text-align:center;
+    border-top: 1px solid #999;
+    padding:2px;
 }

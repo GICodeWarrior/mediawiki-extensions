@@ -38,6 +38,9 @@ if (typeof (wikiBhasha.extern) === "undefined") {
         //API to search wikipedia article
         wikiSearchAPI: "http://{0}.wikipedia.org/w/api.php?action=query&list=search&srsearch={1}&format=json",
 
+        //API to search wikipedia article
+        wikiPreviewAPI: "http://{0}.wikipedia.org/w/api.php?action=parse&text={1}&format=json",
+
         //API to get wikipedia language links
         wikiLangLinksAPI: "http://{0}.wikipedia.org/w/api.php?action=query&prop=langlinks&format=json&redirects=1&titles={1}&lllimit=5000",
 
@@ -300,7 +303,17 @@ if (typeof (wikiBhasha.extern) === "undefined") {
         //checks whether current domain is wikipedia or not
         isWikiDomain: function(url) {
             return (url.match(this.wikiPageUrlRegex) === null) ? false : true;
+        },
+         //function to view the preview of the edited article
+        getPreviewContent: function(lang, composeText, callback) {
+            urlData = wbUtil.stringFormat(wbWikiSite.wikiPreviewAPI, lang, encodeURIComponent(composeText.replace(/<br>/gi, '').replace(/<br\/>/ig, '').replace('\'\'', '\'')).replace(/'/g, '%27'));
+            $.getJSON(urlData, 'callback=?', function(data) {
+                if (data && data.parse && data.parse.text) {
+                    callback(data.parse.text['*']);
+                }else{
+                    callback(false);
+                }
+            });
         }
-
     };
 })();
