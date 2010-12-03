@@ -26,7 +26,7 @@ def convert_html_entities(text):
     return utils.unescape(text)
 
 
-def extract_text(elem, kwargs):
+def extract_text(elem, **kwargs):
     if elem != None and elem.text != None:
         #try:
         return elem.text    #.decode(settings.encoding)

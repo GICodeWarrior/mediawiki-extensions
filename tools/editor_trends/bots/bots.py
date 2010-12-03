@@ -31,6 +31,7 @@ settings = configuration.Settings()
 from wikitree import xml
 from database import db
 from utils import utils
+#from etl import extract
 from utils import process_constructor as pc
 from etl import models
 import models as botmodels
@@ -110,54 +111,51 @@ def convert_object_to_dict(obj, exclude=[]):
     keys and values to ease writing to a csv file. 
     '''
     d = {}
-    for o in obj:
-        bot = obj[o]
-        d[o] = {}
-        for kw in bot.__dict__.keys():
-            if kw not in exclude:
-                d[o][kw] = getattr(bot, kw)
+    for kw in obj.__dict__.keys():
+        if kw not in exclude:
+            d[kw] = getattr(obj, kw)
     return d
 
 
-def write_bot_list_to_csv(bots):
+def write_bot_list_to_csv(bots, keys):
     fh = utils.create_txt_filehandle(settings.csv_location, 'bots_ids.csv', 'w', settings.encoding)
     bot_dict = convert_object_to_dict(bots, exclude=['time', 'written'])
-    keys = ['id', 'name', 'verified', 'projects']
     for bot in bot_dict:
         bot = bot_dict[bot]
         utils.write_dict_to_csv(bot, fh, keys, write_key=False, newline=True)
     fh.close()
 
 
-def lookup_bot_userid(xml_nodes, bots):
+def lookup_bot_userid(data, fh, bots, keys):
     '''
     This function is used to find the id's belonging to the different bots that
     are patrolling the Wikipedia sites.
     @xml_nodes is a list of xml elements that need to be parsed
     @bots is a dictionary containing the names of the bots to lookup
     '''
-    revisions = xml_nodes.findall('revision')
-    for revision in revisions:
-        contributor = xml.retrieve_xml_node(revision, 'contributor')
-        username = contributor.find('username')
-        if username == None or username.text == None:
-            continue
-        else:
-            username = username.text #encode(settings.encoding)
-        name = username.lower()
+    username = data[3]
+    if username in bots:
+        bot = bots.pop(username)
+        setattr(bot, 'id', data[0])
+        setattr(bot, 'verified', True)
+        bot = convert_object_to_dict(bot, exclude=['time'])
+        utils.write_dict_to_csv(bot, fh, keys, write_key=False, newline=True)
+    return bots
 
-        #print username.encode('utf-8')
-        if (username in bots and bots[username].verified == True) or name.find('bot') > -1:
-            bot = bots.get(username, botmodels.Bot(username, verified=False))
-            id = contributor.find('id').text
-            bot.id = id
-            bot.name = username
-            timestamp = revision.find('timestamp').text
-            if timestamp != None:
-                timestamp = utils.convert_timestamp_to_datetime_naive(timestamp)
-                bot.time[str(timestamp.year)].append(timestamp)
 
-            bots[username] = bot
+def create_bot_validation_dataset(data, fh, bots, keys):
+    username = data[3].lower()
+    #print username.encode('utf-8')
+    if username.find('bot') > -1 or username.find('script') > -1:
+        bot = bots.get(username, botmodels.Bot(username, verified=False))
+        setattr(bot, 'id', data[0])
+
+        timestamp = data[1]
+        if timestamp != None:
+            timestamp = utils.convert_timestamp_to_datetime_naive(timestamp)
+            bot.time[str(timestamp.year)].append(timestamp)
+        bots[username] = bot
+
     return bots
 
     #bot = bots.get('PseudoBot')
@@ -165,26 +163,36 @@ def lookup_bot_userid(xml_nodes, bots):
     #bot.avg_lag_between_edits()
 
 
-def bot_launcher(language_code, project, single=False, manager=False):
+def bot_launcher(language_code, project, target, action, single=False, manager=False):
     '''
     This function sets the stage to launch bot id detection and collecting data
     to discover new bots. 
     '''
     utils.delete_file(settings.csv_location, 'bots_ids.csv')
     location = os.path.join(settings.input_location, language_code, project)
-    input = os.path.join(location, 'chunks')
-
-    files = utils.retrieve_file_list(input, 'xml', mask=None)
+    input_xml = os.path.join(location, 'chunks')
+    input_txt = os.path.join(location, 'txt')
+    files = utils.retrieve_file_list(input_txt, 'txt', mask=None)
+    files = files[400:405]
     input_queue = pc.load_queue(files, poison_pill=True)
     tasks = multiprocessing.JoinableQueue()
     mgr = multiprocessing.Manager()
+    keys = ['id', 'name', 'verified', 'projects']
+
+    if action == 'lookup':
+        output_file = 'bots_ids.csv'
+        bots = read_bots_csv_file(settings.csv_location, 'Bots.csv', settings.encoding, manager=manager)
+    else:
+        output_file = 'bots_predictionset.csv'
+        bots = {}
+
     #lock = mgr.Lock()
     if manager:
         manager = mgr
-    bots = read_bots_csv_file(settings.csv_location, 'Bots.csv', settings.encoding, manager=manager)
+
 
     for file in files:
-        tasks.put(models.XMLFile(input, settings.csv_location, file, None, lookup_bot_userid))
+        tasks.put(models.TXTFile(file, input_txt, settings.csv_location, output_file, target, bots=bots, keys=keys))
 
     tracker = {}
     if single:
@@ -199,18 +207,19 @@ def bot_launcher(language_code, project, single=False, manager=False):
         bot_launcher_multi(tasks)
 
     utils.store_object(bots, settings.binary_location, 'bots.bin')
-    write_bot_list_to_csv(bots)
-    bot_training_dataset(bots)
-    store_bots()
-    if bots != {}:
-        print 'The script was unable to retrieve the user id\s for the following %s bots:\n' % len(bots)
-        keys = bots.keys()
-        for key in keys:
-            try:
-                print '%s' % key.encode(settings.encoding)
-            except:
-                pass
-
+    if action == 'lookup':
+        store_bots()
+        if bots != {}:
+            print 'The script was unable to retrieve the user id\s for the following %s bots:\n' % len(bots)
+            keys = bots.keys()
+            for key in keys:
+                try:
+                    print '%s' % key.encode(settings.encoding)
+                except:
+                    pass
+    else:
+        bot_training_dataset(bots)
+        #write_bot_list_to_csv(bots, keys)
 
 
 
@@ -251,8 +260,9 @@ def debug_bots_dict():
 if __name__ == '__main__':
     language_code = 'en'
     project = 'wiki'
-    store_bots()
+    #store_bots()
     #bots = debug_bots_dict()
     #write_bot_list_to_csv(bots)
-    #bot_launcher(language_code, project, single=True)
+    #language_code, project, lookup_bot_userid, single = False, manager = False
+    bot_launcher(language_code, project, create_bot_validation_dataset, action='training', single=True, manager=False)
     #cProfile.run(bot_launcher(language_code, project, single=True), 'profile')

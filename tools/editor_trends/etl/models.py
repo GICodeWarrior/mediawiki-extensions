@@ -29,17 +29,48 @@ from utils import models
 from utils import utils
 from wikitree import xml
 
+class TXTFile(object):
+
+    def __init__(self, file, location, output, output_file, target, **kwargs):
+        self.file = file
+        self.location = location
+        self.target = target
+        self.output = output
+        self.output_file = output_file
+        for kw in kwargs:
+            setattr(self, kw, kwargs[kw])
+
+    def __str__(self):
+        return '%s' % (self.file)
+
+    def __call__(self, bots):
+        self.bots = bots
+        self.fr = utils.create_txt_filehandle(self.location, self.file, 'r', settings.encoding)
+        self.fw = utils.create_txt_filehandle(self.output, self.output_file, 'w', settings.encoding)
+        for line in self.fr:
+            line = line.replace('\n', '')
+            if line == '':
+                continue
+            line = line.split('\t')
+            self.bots = self.target(line, self.fw, self.bots, self.keys)
+            if self.bots == {}:
+                break
+        self.fr.close()
+        self.fw.close()
+        return self.bots
+
 class XMLFileConsumer(models.BaseConsumer):
 
     def run(self):
         while True:
-            print 'Queue is %s files long...' % (self.task_queue.qsize() - settings.number_of_processes)
             new_xmlfile = self.task_queue.get()
             self.task_queue.task_done()
             if new_xmlfile == None:
                 print 'Swallowed a poison pill'
                 break
+            print 'Queue is %s files long...' % self.task_queue.qsize()
             new_xmlfile()
+
 
 class XMLFile(object):
     def __init__(self, input, output, xml_file, bots, target, output_file=None, **kwargs):

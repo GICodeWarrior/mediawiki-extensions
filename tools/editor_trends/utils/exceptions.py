@@ -43,3 +43,10 @@ class CompressionNotSupportedError(Error):
 
     def __str__(self):
         print 'You have not installed a program to extract %s archives.' % self.extension
+
+class OutDatedPythonVersionError(Error):
+    def __init__(self, version):
+        self.version = version
+
+    def __str__(self):
+        print 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'

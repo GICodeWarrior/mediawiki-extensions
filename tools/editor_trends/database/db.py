@@ -17,18 +17,18 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
-import sqlite3 as sqlite
+#import sqlite3 as sqlite
 from pymongo import Connection
 
 
-import configuration
-settings = configuration.Settings()
-from database import db_settings
+#import configuration
+#settings = configuration.Settings()
+#from database import db_settings
 
 
-def init_mongo_db(db):
+def init_mongo_db(dbname):
     connection = Connection()
-    db = connection[db]
+    db = connection[dbname]
     return db
 
 
@@ -42,11 +42,12 @@ def get_collections(dbname):
     return db.collection_names()
 
 
-def cleanup_database(dbname):
+def cleanup_database(dbname, logger):
     coll = get_collections(dbname)
     for c in coll:
         if not c.startswith('system'):
             drop_collection(dbname, c)
+            logger.debug('Deleting collection %s from database %s.' % (c, dbname))
 
 
 def remove_documents_from_mongo_db(collection, ids):

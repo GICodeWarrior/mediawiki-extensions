@@ -31,8 +31,9 @@ import codecs
 import os
 import ctypes
 import time
-import subprocess
+#import subprocess
 import sys
+import shutil
 sys.path.append('..')
 
 import configuration
@@ -248,9 +249,19 @@ def construct_filename(name, extension):
         return name
 
 
-def delete_file(location, filename):
+def delete_file(location, filename, directory=False):
     if check_file_exists(location, filename):
-        os.remove(os.path.join(location, filename))
+        if not directory:
+            try:
+                path = os.path.join(location, filename)
+                os.remove(path)
+            except WindowsError, error:
+                print error
+        else:
+            try:
+                shutil.rmtree(location)
+            except Exception, error:
+                print error
 
 
 def check_file_exists(location, filename):

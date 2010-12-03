@@ -30,9 +30,13 @@ import progressbar
 
 sys.path.append('..')
 import configuration
-from utils import utils
-from wikitree import xml
 settings = configuration.Settings()
+
+from utils import utils
+import extract
+from wikitree import xml
+from bots import bots
+
 
 try:
     import psyco
@@ -114,12 +118,12 @@ def is_article_main_namespace(elem, namespace):
     return True
 
 
-def write_xml_file(element, fh, output, counter):
+def write_xml_file(element, fh, output, counter, format):
     '''Get file handle and write xml element to file'''
     try:
         xml_string = cElementTree.tostring(element)
         size = len(xml_string)
-        fh, counter, new_file = create_file_handle(fh, output, counter, size)
+        fh, counter, new_file = create_file_handle(fh, output, counter, size, format)
         fh.write(xml_string)
     except MemoryError:
         print 'Add error capturing logic'
@@ -134,7 +138,7 @@ def write_xml_file(element, fh, output, counter):
     return fh, counter, new_file
 
 
-def create_file_handle(fh, output, counter, size):
+def create_file_handle(fh, output, counter, size, format):
     '''
     @fh is file handle, if none is supplied or if file size > max file size then
     create a new file handle
@@ -144,56 +148,79 @@ def create_file_handle(fh, output, counter, size):
     '''
     if not fh:
         counter = 0
-        path = os.path.join(output, '%s.xml' % counter)
+        path = os.path.join(output, '%s.%s' % (counter, format))
         fh = codecs.open(path, 'w', encoding=settings.encoding)
         return fh, counter, False
     elif (fh.tell() + size) > settings.max_xmlfile_size:
         print 'Created chunk %s' % (counter + 1)
         fh.close
         counter += 1
-        path = os.path.join(output, '%s.xml' % counter)
+        path = os.path.join(output, '%s.%s' % (counter, format))
         fh = codecs.open(path, 'w', encoding=settings.encoding)
         return fh, counter, True
     else:
         return fh, counter, False
 
 
-def flatten_xml_elements(data, page):
+def flatten_xml_elements(data, page, bots):
+    headers = ['id', 'date', 'article', 'username']
+    tags = {'contributor': {'id': extract.extract_contributor_id,
+                            'bot': extract.determine_username_is_bot,
+                            'username': extract.extract_username,
+                            },
+            'timestamp': {'date': xml.extract_text},
+            }
+    vars = {}
     flat = []
+
     for x, elems in enumerate(data):
-        flat.append([page])
-        for elem in elems:
-            if elem.tag != 'id':
-                if len(elem.getchildren()) > 0:
-                    for el in elem.getchildren():
-                        flat[x].append(xml.extract_text(elem, None))
+        vars[x] = {}
+        vars[x]['article'] = page
+        for tag in tags:
+            el = xml.retrieve_xml_node(elems, tag)
+            for function in tags[tag].keys():
+                f = tags[tag][function]
+                value = f(el, bots=bots)
+                if type(value) == type({}):
+                    for kw in value:
+                        vars[x][kw] = value[kw]
                 else:
-                    flat[x].append(xml.extract_text(elem, None))
+                    vars[x][function] = value
+
+    for x, var in enumerate(vars):
+        if vars[x]['bot'] == 1 or vars[x]['id'] == None or vars[x]['username'] == None:
+            continue
+        else:
+            f = []
+            for head in headers:
+                f.append(vars[x][head])
+            flat.append(f)
+
     return flat
 
 
 def split_file(location, file, project, language_code, namespaces=[0], format='xml', zip=False):
     '''
     Reads xml file and splits it in N chunks
-    
     @namespaces is a list indicating which namespaces should be included, default
     is to include namespace 0 (main namespace)
     @zip indicates whether to compress the chunk or not
     '''
-    #location = os.path.join(settings.input_location, language)
     input = os.path.join(location, file)
-    output = os.path.join(location, 'chunks')
-    settings.verify_environment([output])
     if format == 'xml':
-        fh = None
+        output = os.path.join(location, 'chunks')
     else:
-        f = input.replace('.xml', '')
-        fh = utils.create_txt_filehandle(output, '%s.tsv' % f, 'w', settings.encoding)
+        output = os.path.join(location, 'txt')
+        bot_ids = bots.retrieve_bots()
+    settings.verify_environment([output])
+
+    fh = None
+    counter = 0
 
     ns = load_namespace(language_code)
     ns = build_namespaces_locale(ns, namespaces)
+    #settings.xml_namespace = 'http://www.mediawiki.org/xml/export-0.4/'
 
-    counter = 0
     tag = '{%s}page' % settings.xml_namespace
     context = cElementTree.iterparse(input, events=('start', 'end'))
     context = iter(context)
@@ -206,16 +233,21 @@ def split_file(location, file, project, language_code, namespaces=[0], format='x
                     if is_article_main_namespace(elem, ns):
                         page = elem.find('id').text
                         elem = parse_comments(elem, remove_numeric_character_references)
+
                         if format == 'xml':
-                            fh, counter, new_file = write_xml_file(elem, fh, output, counter)
-                            if zip and new_file:
-                                file = str(counter - 1) + '.xml'
-                                utils.zip_archive(settings.path_ziptool, output, file)
-                                utils.delete_file(output, file)
+                            fh, counter, new_file = write_xml_file(elem, fh, output, counter, format)
                         else:
                             data = [el.getchildren() for el in elem if el.tag == 'revision']
-                            data = flatten_xml_elements(data, page)
-                            utils.write_list_to_csv(data, fh, recursive=False, newline=True)
+                            data = flatten_xml_elements(data, page, bot_ids)
+                            if data != None:
+                                size = 64 * len(data)
+                                fh, counter, new_file = create_file_handle(fh, output, counter, size, format)
+                                utils.write_list_to_csv(data, fh, recursive=False, newline=True)
+
+                        if zip and new_file:
+                            file = str(counter - 1) + format
+                            utils.zip_archive(settings.path_ziptool, output, file)
+                            utils.delete_file(output, file)
                     root.clear()  # when done parsing a section clear the tree to safe memory
     except SyntaxError:
         f = utils.create_txt_filehandle(settings.log_location, 'split_xml', 'w', settings.encoding)
@@ -225,8 +257,8 @@ def split_file(location, file, project, language_code, namespaces=[0], format='x
     fh.close()
 
 if __name__ == "__main__":
-    kwargs = {'output': settings.input_location,
-              'input': settings.input_filename,
+    kwargs = {'location': settings.input_location,
+              'file': settings.input_filename,
               'project':'wiki',
               'language_code':'en',
               'format': 'tsv'

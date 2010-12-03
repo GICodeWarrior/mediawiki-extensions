@@ -19,6 +19,7 @@ __version__ = '0.1'
 
 import os
 import logging
+import logging.handlers
 import sys
 import datetime
 from argparse import ArgumentParser
@@ -36,6 +37,7 @@ from utils import utils
 from utils import dump_downloader
 from utils import compression
 from utils import ordered_dict
+from utils import exceptions
 from database import db
 from etl import chunker
 from etl import extract
@@ -104,11 +106,18 @@ def write_message_to_log(logger, args, message=None, verb=None, **kwargs):
     logger.debug('Starting %s task' % function.func_name)
     if message:
         logger.debug(message)
+
+    max_length = max([len(kw) for kw in kwargs])
+    #max_tab = max_length / 4
     for kw in kwargs:
         if verb:
             logger.debug('Action: %s\tSetting: %s' % (verb, kwargs[kw]))
         else:
-            logger.debug('Key: %s\tSetting: %s' % (kw, kwargs[kw]))
+            tabs = (max_length - len(kw)) / 4
+            if tabs == 0:
+                tabs = 1
+            tabs = ''.join(['\t' for t in xrange(tabs)])
+            logger.debug('\tKey: %s%sSetting: %s' % (kw, tabs, kwargs[kw]))
 
 
 
@@ -128,6 +137,7 @@ def determine_file_locations(args, logger):
     location = get_value(args, 'location') if get_value(args, 'location') != None else settings.input_location
     project = get_project(args)
     language_code = get_language(args)
+    config['format'] = get_value(args, 'format')
     config['language_code'] = language_code
     config['language'] = get_value(args, 'language')
     config['location'] = os.path.join(location, language_code, project)
@@ -191,7 +201,7 @@ def chunker_launcher(args, logger, **kwargs):
     language = kwargs.pop('language')
     language_code = kwargs.pop('language_code')
     namespaces = kwargs.pop('namespaces')
-
+    format = kwargs.pop('format')
     ext = utils.determine_file_extension(filename)
     file = filename.replace('.' + ext, '')
     result = utils.check_file_exists(location, file)
@@ -202,11 +212,12 @@ def chunker_launcher(args, logger, **kwargs):
     if retcode != 0:
         sys.exit(retcode)
 
-    chunker.split_file(location, file, project, language_code, namespaces, format='xml', zip=False)
+    chunker.split_file(location, file, project, language_code, namespaces, format=format, zip=False)
     timer.elapsed()
 
 
 def launch_zip_extractor(args, logger, location, file):
+    print 'Unzipping zip file'
     timer = Timer()
     write_message_to_log(logger, args, location=location, file=file)
     compressor = compression.Compressor(location, file)
@@ -215,56 +226,60 @@ def launch_zip_extractor(args, logger, location, file):
 
 
 def extract_launcher(args, logger, **kwargs):
+    print 'Extracting data from XML'
     timer = Timer()
-    write_message_to_log(logger, args, **kwargs)
     location = kwargs.pop('location')
     language_code = kwargs.pop('language_code')
     project = kwargs.pop('project')
+    write_message_to_log(logger, args, location=location, language_code=language_code, project=project)
     extract.run_parse_editors(location, **kwargs)
     timer.elapsed()
 
 
 def sort_launcher(args, logger, **kwargs):
+    print 'Start sorting data'
     timer = Timer()
-    write_message_to_log(logger, args, **kwargs)
     location = kwargs.pop('location')
     input = os.path.join(location, 'txt')
     output = os.path.join(location, 'sorted')
     final_output = os.path.join(location, 'dbready')
+    write_message_to_log(logger, args, location=location, input=input, output=output, final_output=final_output)
     loader.mergesort_launcher(input, output)
     loader.mergesort_external_launcher(output, final_output)
     timer.elapsed()
 
 
 def store_launcher(args, logger, **kwargs):
+    print 'Start storing data in MongoDB'
     timer = Timer()
-    write_message_to_log(logger, args, **kwargs)
     location = kwargs.pop('location')
     input = os.path.join(location, 'dbready')
     dbname = kwargs.pop('full_project')
     collection = kwargs.pop('collection')
+    write_message_to_log(logger, args, verb='Storing', location=location, input=input, dbname=dbname, collection=collection)
     loader.store_editors(input, dbname, collection)
     timer.elapsed()
 
 
 def transformer_launcher(args, logger, **kwargs):
-    print 'dataset launcher'
+    print 'Start transforming dataset'
     timer = Timer()
-    write_message_to_log(logger, args, **kwargs)
     project = kwargs.pop('full_project')
     collection = kwargs.pop('collection')
+    write_message_to_log(logger, args, verb='Transforming', project=project, collection=collection)
     transformer.transform_editors_single_launcher(project, collection)
     timer.elapsed()
 
 
 def exporter_launcher(args, logger, **kwargs):
+    print 'Start exporting dataset'
     timer = Timer()
-    write_message_to_log(logger, args, **kwargs)
     collection = get_value(args, 'collection')
-    dbname = kwargs.pop('full_project')
+    dbname = kwargs.get('full_project')
     targets = get_value(args, 'datasets')
     targets = targets.split(',')
     for target in targets:
+        write_message_to_log(logger, args, verb='Exporting', target=target, dbname=dbname, collection=collection)
         exporter.dataset_launcher(dbname, collection, target)
     timer.elapsed()
 
@@ -274,16 +289,19 @@ def all_launcher(args, logger, **kwargs):
     timer = Timer()
     full_project = kwargs.get('full_project', None)
     message = 'Start of building %s dataset.' % full_project
-    db.cleanup_database(full_project)
-    write_message_to_log(logger, args, message, **kwargs)
+
+    db.cleanup_database(full_project, logger)
     ignore = get_value(args, 'except')
     clean = get_value(args, 'new')
+    format = get_value(args, 'format')
+    write_message_to_log(logger, args, message=message, full_project=full_project, ignore=ignore, clean=clean)
     if clean:
         dirs = kwargs.get('directories')[1:]
         for dir in dirs:
-            write_message_to_log(logger, args, verb='Deleting', **kwargs)
-            utils.delete_file(dir, '')
-
+            write_message_to_log(logger, args, verb='Deleting', dir=dir)
+            utils.delete_file(dir, '', directory=True)
+    if format != 'xml':
+        ignore = ignore + ',extract'
     functions = ordered_dict.OrderedDict(((dump_downloader_launcher, 'download'),
                                           (chunker_launcher, 'split'),
                                           (extract_launcher, 'extract'),
@@ -328,7 +346,8 @@ def detect_python_version(logger):
     version = sys.version_info[0:2]
     logger.debug('Python version: %s' % '.'.join(str(version)))
     if version < settings.minimum_python_version:
-        raise 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'
+        raise exceptions.OutDatedPythonVersionError
+
 
 def about():
     print 'Editor Trends Software is (c) 2010 by the Wikimedia Foundation.'
@@ -339,9 +358,6 @@ def about():
 
 
 def main():
-    logger = logging.getLogger('manager')
-    logger.setLevel(logging.DEBUG)
-
     default_language = determine_default_language()
 
     datasets = {'cohort': 'generate_cohort_dataset',
@@ -397,7 +413,7 @@ def main():
                             help='Should be a list of functions that are to be ignored when executing \'all\'.',
                             default=[])
 
-    parser_all.add_argument('-n', '--new', action='store_false',
+    parser_all.add_argument('-n', '--new', action='store_true',
                             help='This will delete all previous output and starts from scratch. Mostly useful for debugging purposes.',
                             default=False)
 
@@ -421,10 +437,13 @@ def main():
                         default=settings.input_location
                         )
 
-    parser.add_argument('-n', '--namespace', action='store',
+    parser.add_argument('-ns', '--namespace', action='store',
                         help='A list of namespaces to include for analysis.',
                         default='0')
 
+    parser.add_argument('-fo', '--format', action='store',
+                        help='Indicate which format the chunks should be stored. Valid options are xml and txt.',
+                        default='txt')
 
     parser.add_argument('-f', '--file', action='store',
                         choices=file_choices,
@@ -444,9 +463,22 @@ def main():
     parser.add_argument('-prog', '--progress', action='store_true', default=True,
                       help='Indicate whether you want to have a progressbar.')
 
+    args = parser.parse_args()
+    #initialize logger
+    logger = logging.getLogger('manager')
+    logger.setLevel(logging.DEBUG)
+
+    # Add the log message handler to the logger
+    today = datetime.datetime.today()
+    log_filename = os.path.join(settings.log_location, '%s%s_%s-%s-%s.log' % (args.language, args.project, today.day, today.month, today.year))
+    handler = logging.handlers.RotatingFileHandler(log_filename, maxBytes=1024 * 1024, backupCount=3)
+
+    logger.addHandler(handler)
+    logger.debug('Default language: \t%s' % default_language)
+
+    #start manager
     detect_python_version(logger)
     about()
-    args = parser.parse_args()
     config.create_configuration(settings, args)
     locations = determine_file_locations(args, logger)
     settings.verify_environment(locations['directories'])
