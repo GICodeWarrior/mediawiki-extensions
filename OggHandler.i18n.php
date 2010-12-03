@@ -329,6 +329,17 @@ $messages['avk'] = array(
 	'ogg-desc-link' => 'Icde bat iyeltak',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Рустам Нурыев
+ */
+$messages['ba'] = array(
+	'ogg-pause' => 'Туҡтатып тору',
+	'ogg-stop' => 'Туҡтатыу',
+	'ogg-play-video' => 'Видеояҙманы ҡарау',
+	'ogg-play-sound' => 'Көйҙе тыңлау',
+	'ogg-no-player' => 'Ғәфү итегеҙ, ләкин һеҙнең системағыҙ был файлдар төрен аса алмай, зинһар кәрәк булған программаларҙы  <ahref="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">үҙегеҙгә күсереп алыгыҙ</a>.',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
