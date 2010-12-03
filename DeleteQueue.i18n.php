@@ -3660,7 +3660,7 @@ $messages['ja'] = array(
 	'deletequeue-list-header-page' => 'ページ',
 	'deletequeue-list-header-queue' => 'キュー',
 	'deletequeue-list-header-votes' => '賛成と反対',
-	'deletequeue-list-header-expiry' => '期限',
+	'deletequeue-list-header-expiry' => '有効期限',
 	'deletequeue-list-header-discusspage' => '議論ページ',
 	'deletequeue-case-intro' => 'このページでは特定の削除事例の情報を一覧しています。',
 	'deletequeue-list-header-reason' => '削除理由',
@@ -3669,7 +3669,7 @@ $messages['ja'] = array(
 	'deletequeue-case-details' => '概要',
 	'deletequeue-case-page' => 'ページ:',
 	'deletequeue-case-reason' => '理由：',
-	'deletequeue-case-expiry' => '期限:',
+	'deletequeue-case-expiry' => '有効期限：',
 	'deletequeue-case-needs-review' => 'この事例には[[$1|審査]]が必要です。',
 );
 
