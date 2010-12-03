@@ -174,6 +174,7 @@ $messages['bs'] = array(
 	'contrib-tracking-error-text' => 'Slanje nevaljanog obrasca',
 	'contrib-tracking-submitting' => 'Šaljem za proces plaćanja...',
 	'contrib-tracking-continue' => 'Ako niste automatski preusmjereni, kliknite na dugme da završite Vašu donaciju putem PayPala.',
+	'contrib-tracking-redirect' => 'Bit ćete automatski preusmjereni na PayPal da dovršite vašu donaciju.',
 	'contrib-tracking-button' => 'nastavi',
 );
 
@@ -251,6 +252,7 @@ $messages['dsb'] = array(
 	'contrib-tracking-error-text' => 'Njepłaśiwe słanje formulara',
 	'contrib-tracking-submitting' => 'Płaśenje wótpósćeła se k wobźěłowanjeju...',
 	'contrib-tracking-continue' => 'Joli njepósrědnjaš se awtomatiski dalej, klikni na tłocašk, aby dokóńcył swój dar pśez PayPal.',
+	'contrib-tracking-redirect' => 'Buźošo so awtomatiski k PayPaloju dalej pósrědnjaś, aby wy swójo pósćiwanje skóńcył.',
 	'contrib-tracking-button' => 'Dalej',
 );
 
