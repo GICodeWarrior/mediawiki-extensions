@@ -47,15 +47,15 @@ function getIncludeFilename( $currentFilename, $tokens, $i ) {
 	}
 	
 	if ( ( $tokens[$i][0] == T_STRING ) && $tokens[$i][1] == 'dirname' ) {
-		do { $i++;	} while ( $tokens[$i][0] == T_WHITESPACE );
+		do { $i++; } while ( $tokens[$i][0] == T_WHITESPACE );
 		if ( $tokens[$i] != '(' ) return false;
-		do { $i++;	} while ( $tokens[$i][0] == T_WHITESPACE );
+		do { $i++; } while ( $tokens[$i][0] == T_WHITESPACE );
 		if ( $tokens[$i][0] != T_FILE ) return false;
-		do { $i++;	} while ( $tokens[$i][0] == T_WHITESPACE );
+		do { $i++; } while ( $tokens[$i][0] == T_WHITESPACE );
 		if ( $tokens[$i] != ')' ) return false;
-		do { $i++;	} while ( $tokens[$i][0] == T_WHITESPACE );
+		do { $i++; } while ( $tokens[$i][0] == T_WHITESPACE );
 		if ( $tokens[$i] != '.' ) return false;
-		do { $i++;	} while ( $tokens[$i][0] == T_WHITESPACE );
+		do { $i++; } while ( $tokens[$i][0] == T_WHITESPACE );
 	}
 	
 	$filetoken = $tokens[$i];
@@ -95,8 +95,9 @@ function isEntryPoint( $file ) {
 	$whitelistedFunctions = array( 'define', 'defined', 'dirname', 'function_exists', 'class_exists', 'php_sapi_name', 'version_compare' );
 	
 	$rpath = realpath( $file );
-	if ( isset( $evaluatedFiles[$rpath] ) )
+	if ( isset( $evaluatedFiles[$rpath] ) ) {
 		return $evaluatedFiles[$rpath];
+	}
 	$evaluatedFiles[$rpath] = true;
 	
 	$braces = 0;
@@ -170,7 +171,9 @@ function isEntryPoint( $file ) {
 			} elseif ( in_array( $tokens[$i][0], array( T_ECHO, T_PRINT ) ) ) {
 				if ( $inDefinedConditional ) {
 					/* Allow the echo if this file dies inside this if*/
-					if (! $mustDieOnThisSection ) $mustDieOnThisSection = "$file uses {$tokens[$i][1]} in line {$tokens[$i][2]}";
+					if ( !$mustDieOnThisSection ) {
+						$mustDieOnThisSection = "$file uses {$tokens[$i][1]} in line {$tokens[$i][2]}";
+					}
 				} else {
 					debug( "$file uses {$tokens[$i][1]} in line {$tokens[$i][2]}" );
 					return true;
@@ -194,7 +197,9 @@ function isEntryPoint( $file ) {
 			} elseif ( $tokens[$i][0] == T_INLINE_HTML ) {
 				if ( $inDefinedConditional ) {
 					/* Allow the echo if this file dies inside this if*/
-					if (! $mustDieOnThisSection ) $mustDieOnThisSection = "$file outputs html in line {$tokens[$i][2]}";
+					if ( !$mustDieOnThisSection ) {
+						$mustDieOnThisSection = "$file outputs html in line {$tokens[$i][2]}";
+					}
 				} else {
 					debug( "$file outputs html in line {$tokens[$i][2]}" );
 					return true;

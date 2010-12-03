@@ -65,7 +65,7 @@ function _analyze_tokens( $token_array ) {
 		switch( $token[0] ) {
 		case T_CURLY_OPEN:
 			$state['depth']++;
-		break;
+			break;
 		case T_CLASS:
 		case T_FUNCTION:
 			# find the token giving function or class name	
