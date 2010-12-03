@@ -1414,11 +1414,11 @@ $messages['ja'] = array(
 	'crosswikiblock-header' => 'このページでは他ウィキの利用者をブロックすることができます。
 あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',
 	'crosswikiblock-target' => 'IPアドレスか利用者名、および対象となるウィキ:',
-	'crosswikiblock-expiry' => '期間:',
+	'crosswikiblock-expiry' => '有効期限：',
 	'crosswikiblock-reason' => '理由：',
 	'crosswikiblock-submit' => 'この利用者をブロック',
 	'crosswikiblock-anononly' => '匿名利用者のみブロック',
-	'crosswikiblock-nocreate' => 'アカウント作成を禁止',
+	'crosswikiblock-nocreate' => 'アカウント作成を防止',
 	'crosswikiblock-autoblock' => 'この利用者が最後に使用したIPアドレスおよびブロック後に使用するIPアドレスを自動的にブロック',
 	'crosswikiblock-noemail' => 'メール送信をブロック',
 	'crosswikiunblock' => '他ウィキの利用者をブロック解除',
