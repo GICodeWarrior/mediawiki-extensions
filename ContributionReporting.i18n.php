@@ -781,6 +781,7 @@ $messages['bs'] = array(
 	'fundraiserstats-tab-averages' => 'Prosjek (USD)',
 	'fundraiserstats-tab-maximums' => 'Najviše (USD)',
 	'fundraiserstats-tab-ytd' => 'Od početka godine (USD)',
+	'fundraiserstats-instructions' => 'Da biste pogledali statistiku za neki dan, pređite kursorom preko prikaza za taj dan. Svaka godina je prikazana drugom bojom na prikazu.',
 );
 
 /** Catalan (Català)
@@ -1591,6 +1592,7 @@ $messages['ext'] = array(
  * @author Ebraminio
  * @author Huji
  * @author Komeil 4life
+ * @author Mjbmr
  * @author Sahim
  * @author Wayiran
  */
@@ -1598,7 +1600,7 @@ $messages['fa'] = array(
 	'contributionreporting-desc' => 'گزارش زنده از جذب سرمایهٔ ویکی‌مدیا',
 	'contributiontotal' => 'جمع کمک‌ها',
 	'contributionhistory' => 'تاریخچه مشارکت',
-	'contrib-hist-header' => 'نظرات کمک‌کنندگان سراسر جهان به طور زنده',
+	'contrib-hist-header' => 'نظرات کمک کنندگان از سراسر جهان',
 	'contrib-hist-name' => 'نام',
 	'contrib-hist-date' => 'تاریخ و زمان',
 	'contrib-hist-amount' => 'مبلغ',
