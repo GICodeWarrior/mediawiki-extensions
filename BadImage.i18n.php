@@ -1233,6 +1233,7 @@ $messages['ig'] = array(
 	'badimages-reason' => 'Mgbághapụtà:',
 	'badimages-remove' => '(wéfù)',
 	'badimages-remove-btn' => 'Wéfù',
+	'badimages-remove-confirm' => 'Biko kwé na Í chọrí wéfu $1 shí na ndétu:',
 	'badimages-removed' => '$1 a püwola ndetu.',
 	'badimages-subheading' => 'Ihe di',
 	'badimages-log-name' => 'Ndetu nhunuuche di njọ',
