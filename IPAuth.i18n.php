@@ -312,6 +312,13 @@ $messages['ru'] = array(
 	'ipauth-desc' => 'Автоматический вход с постоянных IP адресов',
 );
 
+/** Sinhala (සිංහල)
+ * @author තඹරු විජේසේකර
+ */
+$messages['si'] = array(
+	'ipauth-desc' => 'ස්ථිර IP ලිපිනයකින් ස්වයංක්‍රීය ඇතුළුවීම',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
