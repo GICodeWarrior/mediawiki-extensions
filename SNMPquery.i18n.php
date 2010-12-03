@@ -44,6 +44,13 @@ $messages['de'] = array(
 	'snmpquery-desc' => 'Erweitert den Parser um die Funktionen SNMPget und SNMPwalk',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'snmpquery-desc' => 'Funkcije SNMPGet a SNMPwalk pśidaś a daty do wikija wróśiś',
+);
+
 /** French (Français)
  * @author Peter17
  */
