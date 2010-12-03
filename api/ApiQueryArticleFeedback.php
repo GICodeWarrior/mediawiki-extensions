@@ -1,7 +1,7 @@
 <?php
 class ApiQueryArticleFeedback extends ApiQueryBase {
 	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'aa' );
+		parent::__construct( $query, $moduleName, 'af' );
 	}
 
 	public function execute() {
