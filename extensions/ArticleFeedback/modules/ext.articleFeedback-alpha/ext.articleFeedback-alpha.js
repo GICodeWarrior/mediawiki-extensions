@@ -1,5 +1,5 @@
 ( function( $ ) {
-	$.ArticleAssessment = {
+	$.ArticleFeedback = {
 		'config': { 
 			'authtoken': '',
 			'userID': '',
@@ -16,7 +16,7 @@
 				'readability'
 			],
 			'fieldHintSuffix': '-tooltip',
-			'fieldPrefix': 'articleassessment-rating-',
+			'fieldPrefix': 'articlefeedback-rating-',
 			'fieldHTML': '<div class="field-wrapper"> \
 				<label class="rating-field-label"></label> \
 				<select class="rating-field"> \
@@ -27,45 +27,45 @@
 					<option value="5">5</option> \
 				</select> \
 			</div>',
-			'structureHTML': '<div class="article-assessment-wrapper nonopopups"> \
-				<form action="rate" method="post" id="article-assessment"> \
-					<fieldset id="article-assessment-rate"> \
+			'structureHTML': '<div class="articleFeedback-wrapper nonopopups"> \
+				<form action="rate" method="post" id="articleFeedback"> \
+					<fieldset id="articleFeedback-rate"> \
 						<legend></legend> \
-						<div class="article-assessment-information"> \
-							<span class="article-assessment-rate-instructions"></span> \
-							<span class="article-assessment-rate-feedback"></span> \
+						<div class="articleFeedback-information"> \
+							<span class="articleFeedback-rate-instructions"></span> \
+							<span class="articleFeedback-rate-feedback"></span> \
 						</div> \
-						<div class="article-assessment-rating-fields"></div> \
-						<div class="article-assessment-submit"> \
+						<div class="articleFeedback-rating-fields"></div> \
+						<div class="articleFeedback-submit"> \
 							<input type="submit" value="Submit" /> \
 						</div> \
 					</fieldset> \
-					<fieldset id="article-assessment-ratings"> \
+					<fieldset id="articleFeedback-ratings"> \
 						<legend></legend> \
-						<div class="article-assessment-information"> \
-							<span class="article-assessment-show-ratings"></span> \
-							<span class="article-assessment-hide-ratings"></span> \
+						<div class="articleFeedback-information"> \
+							<span class="articleFeedback-show-ratings"></span> \
+							<span class="articleFeedback-hide-ratings"></span> \
 						</div> \
 					</fieldset> \
 				</form> \
 			</div>',
-			'ratingHTML': '<div class="article-assessment-rating"> \
-					<span class="article-assessment-rating-field-name"></span> \
-					<span class="article-assessment-rating-field-value-wrapper"> \
-						<span class="article-assessment-rating-field-value">0%</span> \
+			'ratingHTML': '<div class="articleFeedback-rating"> \
+					<span class="articleFeedback-rating-field-name"></span> \
+					<span class="articleFeedback-rating-field-value-wrapper"> \
+						<span class="articleFeedback-rating-field-value">0%</span> \
 					</span> \
-					<span class="article-assessment-rating-count"></span> \
+					<span class="articleFeedback-rating-count"></span> \
 				</div>'
 		},
 		
 		'fn' : {
 			'init': function( $$options ) {
 				// merge options with the config
-				var settings = $.extend( {}, $.ArticleAssessment.settings, $$options );
-				var config = $.ArticleAssessment.config;
+				var settings = $.extend( {}, $.ArticleFeedback.settings, $$options );
+				var config = $.ArticleFeedback.config;
 				// if this is an anon user, get a unique identifier for them
 				// load up the stored ratings and update the markup if the cookie exists
-				var userToken = $.cookie( 'mwArticleAssessmentUserToken' );
+				var userToken = $.cookie( 'mwArticleFeedbackUserToken' );
 				if ( typeof userToken == 'undefined' || userToken == null ) {
 					function randomString( string_length ) {
 						var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
@@ -78,7 +78,7 @@
 					}
 					userToken = randomString( 32 );
 					$.cookie(
-						'mwArticleAssessmentUserToken',
+						'mwArticleFeedbackUserToken',
 						userToken,
 						{ 'expires': 30, 'path': '/' }
 					);
@@ -88,57 +88,57 @@
 				}
 				// setup our markup using the template variables in settings 
 				var $structure = $( settings.structureHTML ),
-					instructions = mediaWiki.msg( 'articleassessment-pleaserate' ),
-					feedback = mediaWiki.msg( 'articleassessment-featurefeedback' ),
-					yourfeedback = mediaWiki.msg( 'articleassessment-yourfeedback'),
-					articlerating = mediaWiki.msg( 'articleassessment-articlerating' ),
-					resultshide = mediaWiki.msg( 'articleassessment-results-hide' ),
-					resultsshow = mediaWiki.msg( 'articleassessment-results-show' );
-					submitbutton = mediaWiki.msg( 'articleassessment-submit' );
+					instructions = mediaWiki.msg( 'articlefeedback-pleaserate' ),
+					feedback = mediaWiki.msg( 'articlefeedback-featurefeedback' ),
+					yourfeedback = mediaWiki.msg( 'articlefeedback-yourfeedback'),
+					articlerating = mediaWiki.msg( 'articlefeedback-articlerating' ),
+					resultshide = mediaWiki.msg( 'articlefeedback-results-hide' ),
+					resultsshow = mediaWiki.msg( 'articlefeedback-results-show' );
+					submitbutton = mediaWiki.msg( 'articlefeedback-submit' );
 				$structure
-					.find( '#article-assessment-rate legend' )
+					.find( '#articleFeedback-rate legend' )
 						.html( yourfeedback )
 						.end()
-					.find( '.article-assessment-rate-instructions' )
+					.find( '.articleFeedback-rate-instructions' )
 						.html( instructions )
 						.end()
-					.find( '.article-assessment-rate-feedback' )
+					.find( '.articleFeedback-rate-feedback' )
 						.html( feedback )
 							.find( '.feedbacklink' )
 							.wrap( '<a href="#"></a>' )
 								.parent()
-									.click( $.ArticleAssessment.fn.showFeedback )
+									.click( $.ArticleFeedback.fn.showFeedback )
 								.end()
 							.end()
 						.end()
-					.find( '#article-assessment-ratings legend' )
+					.find( '#articleFeedback-ratings legend' )
 						.html( articlerating )
 						.end()
-					.find( '.article-assessment-show-ratings' )
+					.find( '.articleFeedback-show-ratings' )
 						.html( resultsshow )
 							.find( '.showlink' )
 							.wrap( '<a href="#"></a>' )
 								.parent()
-									.click( $.ArticleAssessment.fn.showRatings )
+									.click( $.ArticleFeedback.fn.showRatings )
 								.end()
 							.end()
 						.end()
-					.find( '.article-assessment-hide-ratings' )
+					.find( '.articleFeedback-hide-ratings' )
 						.html( resultshide )
 							.find ( '.hidelink' )
 							.wrap( '<a href="#"></a>' )
 								.parent()
-									.click( $.ArticleAssessment.fn.hideRatings )
+									.click( $.ArticleFeedback.fn.hideRatings )
 								.end()
 							.end()
 						.end()
-					.find( '.article-assessment-submit input' )
+					.find( '.articleFeedback-submit input' )
 						.val( submitbutton )
 					.end();
 				// hide the feedback link if we need to
-				if( $.cookie( 'mwArticleAssessmentHideFeedbackLink' ) ) {
+				if( $.cookie( 'mwArticleFeedbackHideFeedbackLink' ) ) {
 					$structure
-						.find( '.article-assessment-rate-feedback' )
+						.find( '.articleFeedback-rate-feedback' )
 						.hide();
 				}
 				for ( var i = 0; i < settings.fieldMessages.length; i++ ) { 
@@ -150,10 +150,10 @@
 							settings.fieldPrefix + settings.fieldMessages[i] +
 								settings.fieldHintSuffix
 						),
-						count = mediaWiki.msg( 'articleassessment-noratings', 0, 0 );
+						count = mediaWiki.msg( 'articlefeedback-noratings', 0, 0 );
 					// initialize the field html
 					$field
-						.attr( 'id', 'articleassessment-rate-' + field )
+						.attr( 'id', 'articlefeedback-rate-' + field )
 						.find( 'label' )
 							.attr( 'for', 'rating_' + field )
 							.attr( 'original-title', hint )
@@ -164,43 +164,43 @@
 							.attr( 'name', 'rating[' + field + ']' );
 					// initialize the rating html
 					$rating
-						.attr( 'id',  'articleassessment-rating-' + field )
-						.find( '.article-assessment-rating-field-name' )
+						.attr( 'id',  'articlefeedback-rating-' + field )
+						.find( '.articleFeedback-rating-field-name' )
 							.html( label )
 							.end()
-						.find( '.article-assessment-rating-count' )
+						.find( '.articleFeedback-rating-count' )
 							.html( count );
 					// append the field and rating html
 					$structure
-						.find( '.article-assessment-rating-fields' )
+						.find( '.articleFeedback-rating-fields' )
 							.append( $field )
 							.end()
-						.find( '#article-assessment-ratings' )
+						.find( '#articleFeedback-ratings' )
 							.append( $rating );
 				}
 				// store our settings and configuration for later
-				$structure.find( '#article-assessment' )
+				$structure.find( '#articleFeedback' )
 					.data(
-						'articleAssessment-context',
+						'articleFeedback-context',
 						{ 'settings': settings, 'config': config }
 					);
 				$( '#catlinks' ).before( $structure );
 				// Hide the ratings initially
-				$.ArticleAssessment.fn.hideRatings();
+				$.ArticleFeedback.fn.hideRatings();
 
 				
 				// set the height of our smaller fieldset to match the taller
 				if (
-					$( '#article-assessment-rate' ).height() >
-						$( '#article-assessment-ratings' ).height() ) {
-					$( '#article-assessment-ratings' )
-						.css( 'minHeight', $( '#article-assessment-rate' ).height() );
+					$( '#articleFeedback-rate' ).height() >
+						$( '#articleFeedback-ratings' ).height() ) {
+					$( '#articleFeedback-ratings' )
+						.css( 'minHeight', $( '#articleFeedback-rate' ).height() );
 				} else {
-					$( '#article-assessment-rate' )
-						.css( 'minHeight', $( '#article-assessment-ratings' ).height() );
+					$( '#articleFeedback-rate' )
+						.css( 'minHeight', $( '#articleFeedback-ratings' ).height() );
 				}
 				// attempt to fetch the ratings 
-				$.ArticleAssessment.fn.getRatingData();
+				$.ArticleFeedback.fn.getRatingData();
 				
 				// initialize the star plugin 
 				$( '.rating-field' ).each( function() {
@@ -216,7 +216,7 @@
 										.removeClass( 'ui-stars-star-stale' )
 										.removeClass( 'ui-stars-star-rated' );
 									// enable our submit button if it's still disabled
-									$( '#article-assessment input:disabled' )
+									$( '#articleFeedback input:disabled' )
 										.removeAttr( 'disabled' ); 
 								} );
 							}
@@ -230,29 +230,29 @@
 							.tipsy( { gravity : 'se', opacity: '0.9' } ) );
 				} );
 				// bind submit event to the form
-				$( '#article-assessment' )
-					.submit( function() { $.ArticleAssessment.fn.submitRating(); return false; } );
+				$( '#articleFeedback' )
+					.submit( function() { $.ArticleFeedback.fn.submitRating(); return false; } );
 				// prevent the submit button for being active until all ratings are filled out
-				$( '#article-assessment input[type=submit]' )
+				$( '#articleFeedback input[type=submit]' )
 					.attr( 'disabled', 'disabled' );
 			},
 			'showRatings': function() {
-				$( '#article-assessment-ratings' )
-					.removeClass( 'article-assessment-ratings-disabled' )
-					.find( '.article-assessment-show-ratings' )
+				$( '#articleFeedback-ratings' )
+					.removeClass( 'articleFeedback-ratings-disabled' )
+					.find( '.articleFeedback-show-ratings' )
 					.hide()
 					.end()
-					.find( '.article-assessment-hide-ratings' )
+					.find( '.articleFeedback-hide-ratings' )
 					.show();
 				return false;
 			},
 			'hideRatings': function() {
-				$( '#article-assessment-ratings' )
-					.addClass( 'article-assessment-ratings-disabled' )
-					.find( '.article-assessment-hide-ratings' )
+				$( '#articleFeedback-ratings' )
+					.addClass( 'articleFeedback-ratings-disabled' )
+					.find( '.articleFeedback-hide-ratings' )
 					.hide()
 					.end()
-					.find( '.article-assessment-show-ratings' )
+					.find( '.articleFeedback-show-ratings' )
 					.show();
 				return false;
 
@@ -260,10 +260,10 @@
 			
 			// Request the ratings data for the current article
 			'getRatingData': function() {
-				var config = $( '#article-assessment' ).data( 'articleAssessment-context' ).config;
+				var config = $( '#articleFeedback' ).data( 'articleFeedback-context' ).config;
 				var requestData = {
 					'action': 'query',
-					'list': 'articleassessment',
+					'list': 'articlefeedback',
 					'aapageid': config.pageID,
 					'aauserrating': 1,
 					'format': 'json'
@@ -276,30 +276,30 @@
 					url: wgScriptPath + '/api.php',
 					data: requestData,
 					dataType: 'json',
-					success: $.ArticleAssessment.fn.afterGetRatingData,
+					success: $.ArticleFeedback.fn.afterGetRatingData,
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
-						$.ArticleAssessment.fn.flashNotice( mediaWiki.msg( 'articleassessment-error' ),
-							{ 'class': 'article-assessment-error-msg' } );
+						$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-error' ),
+							{ 'class': 'articleFeedback-error-msg' } );
 					}
 				} );
 			},
 			'afterGetRatingData' : function( data ) {
-				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings,
+				var settings = $( '#articleFeedback' ).data( 'articleFeedback-context' ).settings,
 					userHasRated = false;
 				// add the correct data to the markup
-				if ( typeof data.query != 'undefined' && typeof data.query.articleassessment != 'undefined' &&
-						typeof data.query.articleassessment[0] != 'undefined' ) {
-					for ( var r in data.query.articleassessment[0].ratings ) {
-						var rating = data.query.articleassessment[0].ratings[r],
+				if ( typeof data.query != 'undefined' && typeof data.query.articlefeedback != 'undefined' &&
+						typeof data.query.articlefeedback[0] != 'undefined' ) {
+					for ( var r in data.query.articlefeedback[0].ratings ) {
+						var rating = data.query.articlefeedback[0].ratings[r],
 							$rating = $( '#' + rating.ratingdesc ),
 							count = rating.count,
 							total = ( rating.total / count ).toFixed( 1 ),
-							label = mediaWiki.msg( 'articleassessment-noratings', total, count );
+							label = mediaWiki.msg( 'articlefeedback-noratings', total, count );
 						$rating
-							.find( '.article-assessment-rating-field-value' )
+							.find( '.articleFeedback-rating-field-value' )
 							.text( total )
 							.end()
-							.find( '.article-assessment-rating-count' )
+							.find( '.articleFeedback-rating-count' )
 							.html( label );
 						if( rating.userrating ) {
 							userHasRated = true;
@@ -310,23 +310,23 @@
 					}
 					// show the ratings if the user has rated
 					if( userHasRated ) {
-						$.ArticleAssessment.fn.showRatings();
+						$.ArticleFeedback.fn.showRatings();
 					}
 					// if the rating is more than 5 revisions old, mark it as stale
-					if ( typeof data.query.articleassessment[0].stale != 'undefined' ) {
+					if ( typeof data.query.articlefeedback[0].stale != 'undefined' ) {
 						// add the stale star class to each on star
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
 						// add the stale message
-						var msg = mediaWiki.msg( 'articleassessment-stalemessage-norevisioncount' );
-						$.ArticleAssessment.fn.flashNotice( msg, { 'class': 'article-assessment-stale-msg' } );
+						var msg = mediaWiki.msg( 'articlefeedback-stalemessage-norevisioncount' );
+						$.ArticleFeedback.fn.flashNotice( msg, { 'class': 'articleFeedback-stale-msg' } );
 					} else {
 						// if it's not a stale rating, we want to make the stars blue
 						$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
 					}
 				} 
 				// initialize the ratings 
-				$( '.article-assessment-rating-field-value' ).each( function() {
+				$( '.articleFeedback-rating-field-value' ).each( function() {
 					$(this)
 						.css( {
 							'width': 120 - ( 120 * ( parseFloat( $(this).text() ) / 5 ) ) + 'px'
@@ -334,13 +334,13 @@
 				} );
 			},
 			'submitRating': function() {
-				var config = $( '#article-assessment' ).data( 'articleAssessment-context' ).config;
+				var config = $( '#articleFeedback' ).data( 'articleFeedback-context' ).config;
 				// clear out the stale message
-				$.ArticleAssessment.fn.flashNotice( );
+				$.ArticleFeedback.fn.flashNotice( );
 				
 				// lock the star inputs & submit
 				$( '.rating-field' ).stars( 'disable' );
-				$( '#article-assessment input' ).attr( 'disabled', 'disabled' ); 
+				$( '#articleFeedback input' ).attr( 'disabled', 'disabled' ); 
 				// get our results for submitting
 				var results = {};
 				$( '.rating-field input' ).each( function() {
@@ -353,7 +353,7 @@
 					url: wgScriptPath + '/api.php',
 					type: 'POST',
 					data: {
-						'action': 'articleassessment',
+						'action': 'articlefeedback',
 						'revid': config.revID,
 						'pageid': config.pageID,
 						'r1' : results['wellsourced'],
@@ -364,66 +364,66 @@
 						'format': 'json'
 					},
 					dataType: 'json',
-					success: $.ArticleAssessment.fn.afterSubmitRating,
+					success: $.ArticleFeedback.fn.afterSubmitRating,
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
-						$.ArticleAssessment.fn.flashNotice( mediaWiki.msg( 'articleassessment-error' ),
-							{ 'class': 'article-assessment-error-msg' } );
+						$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-error' ),
+							{ 'class': 'articleFeedback-error-msg' } );
 					}
 				} );
 			},
 			'afterSubmitRating': function ( data ) {
 				// update the ratings 
-				$.ArticleAssessment.fn.getRatingData();
+				$.ArticleFeedback.fn.getRatingData();
 				// set the stars to rated status
 				$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
 				// unlock the stars & submit
 				$( '.rating-field' ).stars( 'enable' );
-				$( '#article-assessment input:disabled' ).removeAttr( 'disabled' ); 
+				$( '#articleFeedback input:disabled' ).removeAttr( 'disabled' ); 
 				// update the results
 				
 				// show the results
-				$.ArticleAssessment.fn.showRatings();
+				$.ArticleFeedback.fn.showRatings();
 				// say thank you
-				$.ArticleAssessment.fn.flashNotice( mediaWiki.msg( 'articleassessment-thanks' ),
-					{ 'class': 'article-assessment-success-msg' } );
+				$.ArticleFeedback.fn.flashNotice( mediaWiki.msg( 'articlefeedback-thanks' ),
+					{ 'class': 'articleFeedback-success-msg' } );
 			},
 			// places a message on the interface
 			'flashNotice': function( text, options ) {
 				if ( arguments.length == 0 ) {
 					// clear existing messages, but don't add a new one
-					$( '#article-assessment .article-assessment-flash' ).remove();
+					$( '#articleFeedback .articleFeedback-flash' ).remove();
 				} else {
 					// clear and add a new message
-					$( '#article-assessment .article-assessment-flash' ).remove();
+					$( '#articleFeedback .articleFeedback-flash' ).remove();
 					var className = options['class'];
 					// create our new message
 					$msg = $( '<div />' )
-						.addClass( 'article-assessment-flash' )
+						.addClass( 'articleFeedback-flash' )
 						.html( text );
 					// if the class option was passed, add it
 					if( options['class'] ) {
 						$msg.addClass( options['class'] );
 					}
 					// place our new message on the page
-					$( '#article-assessment .article-assessment-submit' )
+					$( '#articleFeedback .articleFeedback-submit' )
 						.append( $msg );
 				}
 			},
 			'showFeedback': function() {
-				var $dialogDiv = $( '#article-assessment-dialog' );
+				var $dialogDiv = $( '#articleFeedback-dialog' );
 				if ( $dialogDiv.size() == 0 ) {
-					$dialogDiv = $( '<div id="article-assessment-dialog" class="loading" />' )
+					$dialogDiv = $( '<div id="articleFeedback-dialog" class="loading" />' )
 						.dialog( {
 							width: 600,
 							height: 400,
 							bgiframe: true,
 							autoOpen: true,
 							modal: true,
-							title: mediaWiki.msg( 'articleassessment-survey-title' ),
+							title: mediaWiki.msg( 'articlefeedback-survey-title' ),
 							close: function() {
 								$(this)
 									.dialog( 'option', 'height', 400 )
-									.find( '.article-assessment-success-msg, .article-assessment-error-msg' )
+									.find( '.articleFeedback-success-msg, .articleFeedback-error-msg' )
 									.remove()
 									.end()
 									.find( 'form' )
@@ -433,7 +433,7 @@
 					$dialogDiv.load(
 						wgScript + '?title=Special:SimpleSurvey&survey=articlerating&raw=1',
 						function() {
-							$(this).find( 'form' ).bind( 'submit', $.ArticleAssessment.fn.submitFeedback );
+							$(this).find( 'form' ).bind( 'submit', $.ArticleFeedback.fn.submitFeedback );
 							$(this).removeClass( 'loading' );
 						}
 					);
@@ -442,7 +442,7 @@
 				return false;
 			},
 			'submitFeedback': function() {
-				var $dialogDiv = $( '#article-assessment-dialog' );
+				var $dialogDiv = $( '#articleFeedback-dialog' );
 				$dialogDiv
 					.find( 'form' )
 					.hide()
@@ -479,8 +479,8 @@
 						var success = $( data ).find( '.simplesurvey-success' ).size() > 0;
 						// TODO: Style success-msg, error-msg
 						var $msgDiv = $( '<div />' )
-							.addClass( success ? 'article-assessment-success-msg' : 'article-assessment-error-msg' )
-							.html( mediaWiki.msg( success? 'articleassessment-survey-thanks' : 'articleassessment-error' ) )
+							.addClass( success ? 'articleFeedback-success-msg' : 'articleFeedback-error-msg' )
+							.html( mediaWiki.msg( success? 'articlefeedback-survey-thanks' : 'articlefeedback-error' ) )
 							.appendTo( $dialogDiv );
 						$dialogDiv.removeClass( 'loading' );
 						
@@ -490,17 +490,17 @@
 						
 						if ( success ) {
 							// Hide the dialog link
-							$( '#article-assessment .article-assessment-rate-feedback' ).hide();
+							$( '#articleFeedback .articleFeedback-rate-feedback' ).hide();
 							// set a cookie to keep the dialog link hidden
-							$.cookie( 'mwArticleAssessmentHideFeedbackLink', true, { 'expires': 30, 'path': '/' } );
+							$.cookie( 'mwArticleFeedbackHideFeedbackLink', true, { 'expires': 30, 'path': '/' } );
 							
 						}
 					},
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
 						// TODO: Duplicates code, factor out, maybe
 						var $msgDiv = $( '<div />' )
-							.addClass( 'article-assessment-error-msg' )
-							.html( mediaWiki.msg( 'articleassessment-error' ) )
+							.addClass( 'articleFeedback-error-msg' )
+							.html( mediaWiki.msg( 'articlefeedback-error' ) )
 							.appendTo( $dialogDiv );
 						$dialogDiv.removeClass( 'loading' );
 						$dialogDiv.dialog( 'option', 'height', $msgDiv.height() + 100 );
@@ -511,6 +511,6 @@
 		}
 	};
 	$( document ).ready( function () {
-		$.ArticleAssessment.fn.init( );
+		$.ArticleFeedback.fn.init( );
 	} ); //document ready
 } )( jQuery );
