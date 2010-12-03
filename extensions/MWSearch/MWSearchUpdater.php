@@ -150,7 +150,7 @@ class MWSearchUpdater {
 			$translated = array_map( array( 'MWSearchUpdater', 'outParam' ), $param );
 			return new XML_RPC_Value( $translated, $type );
 		} else {
-			return new WikiError( 'MWSearchUpdater::sendRPC given bogus parameter' );
+			throw new MWException( 'MWSearchUpdater::sendRPC given bogus parameter' );
 		}
 	}
 	
@@ -182,9 +182,9 @@ class MWSearchUpdater {
 		}
 		
 		if( !is_object( $result ) ) {
-			return new WikiError( "Unknown XML-RPC error" );
+			throw new MWException( "Unknown XML-RPC error" );
 		} elseif( $result->faultCode() ) {
-			return new WikiError( $result->faultCode() . ': ' . $result->faultString() );
+			throw new MWException( $result->faultCode() . ': ' . $result->faultString() );
 		} else {
 			$value = $result->value();
 			return $value->getval();
