@@ -1,11 +1,11 @@
 <?php
-class ApiArticleAssessment extends ApiBase {
+class ApiArticleFeedback extends ApiBase {
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, '' );
 	}
 
 	public function execute() {
-		global $wgUser, $wgArticleAssessmentRatings;
+		global $wgUser, $wgArticleFeedbackRatings;
 		$params = $this->extractRequestParams();
 
 		$token = array();
@@ -24,21 +24,21 @@ class ApiArticleAssessment extends ApiBase {
 		// Query the latest ratings by this user for this page,
 		// possibly for an older revision
 		$res = $dbr->select(
-			'article_assessment',
+			'article_feedback',
 			array( 'aa_rating_id', 'aa_rating_value', 'aa_revision' ),
 			array_merge(
 				array(
 					'aa_user_id' => $wgUser->getId(),
 					'aa_user_text' => $wgUser->getName(),
 					'aa_page_id' => $params['pageid'],
-					'aa_rating_id' => $wgArticleAssessmentRatings,
+					'aa_rating_id' => $wgArticleFeedbackRatings,
 				),
 				$token
 			),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'aa_revision DESC',
-				'LIMIT' => count( $wgArticleAssessmentRatings ),
+				'LIMIT' => count( $wgArticleFeedbackRatings ),
 			)
 		);
 
@@ -51,7 +51,7 @@ class ApiArticleAssessment extends ApiBase {
 		$pageId = $params['pageid'];
 		$revisionId = $params['revid'];
 
-		foreach( $wgArticleAssessmentRatings as $rating ) {
+		foreach( $wgArticleFeedbackRatings as $rating ) {
 			$lastRating = false;
 			if ( isset( $lastRatings[$rating] ) ) {
 				$lastRating = $lastRatings[$rating];
@@ -85,7 +85,7 @@ class ApiArticleAssessment extends ApiBase {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->insert(
-			'article_assessment_pages',
+			'article_feedback_pages',
 			 array(
 				'aap_page_id' => $pageId,
 				'aap_total' => 0,
@@ -97,7 +97,7 @@ class ApiArticleAssessment extends ApiBase {
 		);
 
 		$dbw->update(
-			'article_assessment_pages',
+			'article_feedback_pages',
 			array(
 				'aap_total = aap_total + ' . $updateAddition,
 				'aap_count = aap_count + ' . ( $newRating ? 1 : 0 ),
@@ -126,7 +126,7 @@ class ApiArticleAssessment extends ApiBase {
 		$timestamp = $dbw->timestamp();
 
 		$dbw->insert(
-			'article_assessment',
+			'article_feedback',
 			array_merge(
 				array(
 					'aa_page_id' => $pageId,
@@ -145,7 +145,7 @@ class ApiArticleAssessment extends ApiBase {
 
 		if ( !$dbw->affectedRows() ) {
 			$dbw->update(
-				'article_assessment',
+				'article_feedback',
 				array(
 					'aa_timestamp' => $timestamp,
 					'aa_rating_value' => $ratingValue,
@@ -165,7 +165,7 @@ class ApiArticleAssessment extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		global $wgArticleAssessmentRatings;
+		global $wgArticleFeedbackRatings;
 		$ret = array(
 			'pageid' => array(
 				ApiBase::PARAM_TYPE => 'integer',
@@ -180,7 +180,7 @@ class ApiArticleAssessment extends ApiBase {
 			'anontoken' => null,
 		);
 
-		foreach( $wgArticleAssessmentRatings as $rating ) {
+		foreach( $wgArticleFeedbackRatings as $rating ) {
 			$ret["r{$rating}"] = array(
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_DFLT => 0,
@@ -193,13 +193,13 @@ class ApiArticleAssessment extends ApiBase {
 	}
 
 	public function getParamDescription() {
-		global $wgArticleAssessmentRatings;
+		global $wgArticleFeedbackRatings;
 		$ret = array(
-			'pageid' => 'Page ID to submit assessment for',
-			'revid' => 'Revision ID to submit assessment for',
+			'pageid' => 'Page ID to submit feedback for',
+			'revid' => 'Revision ID to submit feedback for',
 			'anontoken' => 'Token for anonymous users',
 		);
-		foreach( $wgArticleAssessmentRatings as $rating ) {
+		foreach( $wgArticleFeedbackRatings as $rating ) {
 		        $ret["r{$rating}"] = "Rating {$rating}";
 		}
 		return $ret;
@@ -207,7 +207,7 @@ class ApiArticleAssessment extends ApiBase {
 
 	public function getDescription() {
 		return array(
-			'Submit article assessments'
+			'Submit article feedbacks'
 		);
 	}
 
@@ -228,7 +228,7 @@ class ApiArticleAssessment extends ApiBase {
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=articleassessment'
+			'api.php?action=articlefeedback'
 		);
 	}
 

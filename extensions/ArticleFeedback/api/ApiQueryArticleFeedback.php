@@ -1,23 +1,23 @@
 <?php
-class ApiQueryArticleAssessment extends ApiQueryBase {
+class ApiQueryArticleFeedback extends ApiQueryBase {
 	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'aa' );
+		parent::__construct( $query, $moduleName, 'af' );
 	}
 
 	public function execute() {
-		global $wgArticleAssessmentRatings;
+		global $wgArticleFeedbackRatings;
 		$params = $this->extractRequestParams();
 
 		$result = $this->getResult();
 
-		$this->addTables( array( 'article_assessment_pages', 'article_assessment_ratings' ) );
+		$this->addTables( array( 'article_feedback_pages', 'article_feedback_ratings' ) );
 
 		$this->addFields( array( 'aap_page_id', 'aap_total', 'aap_count', 'aap_rating_id', 'aar_rating' ) );
 
 		$this->addJoinConds( array(
-				'article_assessment_ratings' => array( 'LEFT JOIN', array(
+				'article_feedback_ratings' => array( 'LEFT JOIN', array(
 					'aar_id=aap_rating_id',
-					'aap_rating_id' => $wgArticleAssessmentRatings,
+					'aap_rating_id' => $wgArticleFeedbackRatings,
 				)
 			),
 		) );
@@ -42,9 +42,9 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 				$leftJoinConds['aa_user_anon_token'] = $params['anontoken'];
 			}
 
-			$this->addTables( 'article_assessment' );
+			$this->addTables( 'article_feedback' );
 			$this->addJoinConds( array( 
-					'article_assessment' => array( 'LEFT JOIN', $leftJoinConds ), 
+					'article_feedback' => array( 'LEFT JOIN', $leftJoinConds ), 
 				)
 			);
 
@@ -53,7 +53,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 			$this->addOption( 'ORDER BY', 'aa_revision DESC' );
 		}
 
-		$this->addOption( 'LIMIT', count( $wgArticleAssessmentRatings ) );
+		$this->addOption( 'LIMIT', count( $wgArticleFeedbackRatings ) );
 
 		$res = $this->select( __METHOD__ );
 
@@ -96,7 +96,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 		if ( $params['userrating'] && $userRatedArticle ) {
 			$dbr = wfGetDb( DB_SLAVE );
 
-			global $wgArticleAssessmentStaleCount;
+			global $wgArticleFeedbackStaleCount;
 
 			$res = $dbr->select(
 				'revision',
@@ -106,10 +106,10 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 					'rev_id > ' . $ratings[$pageId]['revid']
 				),
 				__METHOD__,
-				array ( 'LIMIT', $wgArticleAssessmentStaleCount + 1 )
+				array ( 'LIMIT', $wgArticleFeedbackStaleCount + 1 )
 			);
 
-			if ( $res && $dbr->numRows( $res ) > $wgArticleAssessmentStaleCount ) {
+			if ( $res && $dbr->numRows( $res ) > $wgArticleFeedbackStaleCount ) {
 				//it's stale!
 				$ratings[$params['pageid']]['stale'] = '';
 			}
@@ -137,7 +137,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 	public function getParamDescription() {
 		return array(
-			'pageid' => 'Page ID to get assessments for',
+			'pageid' => 'Page ID to get feedbacks for',
 			'userrating' => "Whether to get the current user's ratings for the specific rev/article",
 			'anontoken' => 'Token for anonymous users',
 		);
@@ -145,7 +145,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 	public function getDescription() {
 		return array(
-			'List all article assessments'
+			'List all article feedbacks'
 		);
 	}
 
@@ -159,9 +159,9 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=query&list=articleassessment',
-			'api.php?action=query&list=articleassessment&aapageid=1',
-			'api.php?action=query&list=articleassessment&aapageid=1&aauserrating',
+			'api.php?action=query&list=articlefeedback',
+			'api.php?action=query&list=articlefeedback&aapageid=1',
+			'api.php?action=query&list=articlefeedback&aapageid=1&aauserrating',
 		);
 	}
 
