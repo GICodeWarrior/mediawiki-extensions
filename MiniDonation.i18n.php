@@ -174,6 +174,14 @@ $messages['ext'] = array(
 	'donationform-submit' => 'Donal meyanti PayPal',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'donationform-desc' => 'یک عبارت <code>&lt;donateform&gt;</code> برای حمایت از کمک‌های مالی بیفزایید',
+	'donationform-submit' => 'اهدا از طریق پی‌پال',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */
