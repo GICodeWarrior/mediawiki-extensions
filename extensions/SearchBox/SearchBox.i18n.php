@@ -451,12 +451,13 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'searchbox-desc' => '検索フォームの呼び出しをできるようにする',
 	'searchbox-search' => '検索',
 	'searchbox-go' => '表示',
-	'searchbox-namespaces' => '名前空間:',
+	'searchbox-namespaces' => '名前空間：',
 );
 
 /** Georgian (ქართული)

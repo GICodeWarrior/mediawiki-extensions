@@ -350,9 +350,12 @@ $messages['ext'] = array(
 	'metadata_help' => 'Metadatus:',
 );
 
-/** Persian (فارسی) */
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
 $messages['fa'] = array(
-	'metadata_help' => 'متاداده:',
+	'metadataedit-desc' => 'در زمان ویرایش، رده‌ها، پیوند‌های زبان و الگوهای مجاز را در جعبه متنی جداگانه قرار دهید',
+	'metadata_help' => 'فراداده:',
 );
 
 /** Finnish (Suomi)

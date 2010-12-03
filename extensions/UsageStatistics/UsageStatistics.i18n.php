@@ -1297,6 +1297,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'specialuserstats' => '利用統計',
@@ -1305,7 +1306,7 @@ $messages['ja'] = array(
 	'usagestatisticsfor' => '<h2>[[User:$1|$1]] の利用統計</h2>',
 	'usagestatisticsforallusers' => '<h2>全利用者の利用統計</h2>',
 	'usagestatisticsinterval' => '間隔:',
-	'usagestatisticsnamespace' => '名前空間:',
+	'usagestatisticsnamespace' => '名前空間：',
 	'usagestatisticsexcluderedirects' => 'リダイレクトを除く',
 	'usagestatistics-namespace' => 'これは[[Special:Allpages/$1|$2]]名前空間における統計です。',
 	'usagestatistics-noredirects' => '[[Special:ListRedirects|リダイレクト]]は数に入っていません。',

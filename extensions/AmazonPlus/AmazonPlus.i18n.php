@@ -533,6 +533,7 @@ $messages['eu'] = array(
  * @author Mjbmr
  */
 $messages['fa'] = array(
+	'amazonplus-nores' => 'خطا: هیچ نتیجه‌ای یافت نشد!',
 	'amazonplus-used' => 'استفاده شده',
 	'amazonplus-german' => 'آلمانی',
 	'amazonplus-french' => 'فرانسوی',

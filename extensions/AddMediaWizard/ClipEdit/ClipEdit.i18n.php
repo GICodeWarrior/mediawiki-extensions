@@ -520,7 +520,9 @@ $messages['eu'] = array(
 $messages['fa'] = array(
 	'mwe-clipedit-start_time' => 'زمان شروع',
 	'mwe-clipedit-end_time' => 'زمان پایان',
+	'mwe-clipedit-edit-tools' => 'ابزار‌های ویرایش',
 	'mwe-clipedit-inline-description' => 'عنوان',
+	'mwe-clipedit-edit-video-tools' => 'ابزار‌های ویرایش ویدیو:',
 	'mwe-clipedit-duration' => 'مدت زمان :',
 );
 

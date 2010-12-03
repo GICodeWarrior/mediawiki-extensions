@@ -993,11 +993,12 @@ Saltato.',
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'importusers' => '利用者のインポート',
 	'importusers-desc' => 'CSVファイル (文字コード: UTF-8) から一括して[[Special:ImportUsers|利用者をインポート]]',
-	'importusers-uploadfile' => 'アップロード',
+	'importusers-uploadfile' => 'ファイルをアップロード',
 	'importusers-form-caption' => 'CSVファイルを入力してください (UTF-8)',
 	'importusers-form-file' => '利用者ファイル形式 (CSV):',
 	'importusers-form-replace-present' => '既存利用者を置き換える',

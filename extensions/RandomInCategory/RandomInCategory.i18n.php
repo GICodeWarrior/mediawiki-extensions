@@ -534,11 +534,12 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'randomincategory' => 'カテゴリ中のランダムなページ',
 	'randomincategory-desc' => 'カテゴリ中からページを無作為抽出するための[[Special:Randomincategory|特別ページ]]',
-	'randomincategory-toolbox' => 'おまかせ表示',
+	'randomincategory-toolbox' => '無作為ページ',
 	'randomincategory-nocategory' => 'カテゴリ $1 は存在しないか、空です',
 	'randomincategory-label' => 'カテゴリ:',
 	'randomincategory-submit' => '表示',

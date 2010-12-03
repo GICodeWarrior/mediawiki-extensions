@@ -184,14 +184,15 @@ Ni ellwch ddechrau'r dudalen o'r newydd, ond gallwch [{{fullurl:{{FULLPAGENAME}}
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Kghbln
  * @author Revolus
  */
 $messages['de'] = array(
-	'createbox-desc' => 'Spezielles Eingabefeld zur Seitenerstellung',
+	'createbox-desc' => 'Ermöglicht ein spezielles Eingabefeld zur Seitenerstellung',
 	'createbox-create' => 'Erstellen',
-	'createbox-exists' => "„'''{{FULLPAGENAME}}'''“ existiert bereits.
+	'createbox-exists' => "„'''{{FULLPAGENAME}}'''“ ist bereits vorhanden.
 
-Du kannst diese Seite nicht anlegen, aber du kannst sie [{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeiten], [{{fullurl:{{FULLPAGENAME}}}} lesen] oder eine andere Seite mithilfe des untenstehenden Eingabefeldes anlegen.
+Du kannst diese Seite daher nicht anlegen, sie aber [{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeiten], [{{fullurl:{{FULLPAGENAME}}}} lesen] oder eine Seite anderen Namens mithilfe des untenstehenden Eingabefeldes anlegen.
 
 <createbox>break=no</createbox>",
 );

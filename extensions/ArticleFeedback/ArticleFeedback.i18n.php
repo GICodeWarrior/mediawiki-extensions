@@ -269,6 +269,7 @@ $messages['be-tarask'] = array(
 	'articlefeedback-beta-field-wellsourced-label' => 'Са спасылкамі на крыніцы',
 	'articlefeedback-beta-field-wellsourced-tip' => 'Вы лічыце, што гэтая старонка мае дастаткова цытатаў, і яны паходзяць з крыніц вартых даверу?',
 	'articlefeedback-beta-field-complete-label' => 'Скончанасьць',
+	'articlefeedback-beta-field-complete-tip' => 'Вы лічыце, што гэтая старонка раскрывае асноўныя пытаньні тэмы як сьлед?',
 );
 
 /** Bulgarian (Български)
@@ -296,6 +297,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Gwendal
  * @author Y-M D
  */
@@ -338,6 +340,21 @@ Priziañ anezhi en-dro ho pefe c'hoant marteze.",
 	'articlefeedback-alpha-survey-submit' => 'Kas',
 	'articlefeedback-alpha-survey-title' => "Trugarez da respont d'un nebeut goulennoù",
 	'articlefeedback-alpha-survey-thanks' => 'Trugarez da vezañ leuniet ar goulennaoueg.',
+	'articlefeedback-beta-form-tab-label' => 'Kas evezhiadennoù',
+	'articlefeedback-beta-form-panel-title' => 'Ho soñj',
+	'articlefeedback-beta-form-panel-instructions' => 'Trugarez da gemer un tamm amzer da briziañ ar bajenn-mañ.',
+	'articlefeedback-beta-form-panel-notice' => "Gant an amzer ez aio da get hoc'h evezhiadennoù.",
+	'articlefeedback-beta-form-panel-submit' => 'Kas an evezhiadenn',
+	'articlefeedback-beta-report-tab-label' => "Diskouez an disoc'hoù",
+	'articlefeedback-beta-report-panel-title' => "Disoc'hoù an evezhiadenn",
+	'articlefeedback-beta-field-wellsourced-label' => 'Titouret mat',
+	'articlefeedback-beta-field-wellsourced-tip' => "Ha soñjal a ra deoc'h ez eus arroudennoù a-walc'h er bajenn-mañ ? Ha diwar mammennoù sirius e teuont ?",
+	'articlefeedback-beta-field-complete-label' => 'Graet',
+	'articlefeedback-beta-field-complete-tip' => "Ha soñjal a ra deoc'h e vez graet mat tro temoù pennañ ar sujed ?",
+	'articlefeedback-beta-field-neutral-label' => 'Neptu',
+	'articlefeedback-beta-field-neutral-tip' => "Ha soñjal a ra deoc'h e vez kavet displeget er bajenn-mañ, en un doare reizh a-walc'h, holl tuioù ar sujed ?",
+	'articlefeedback-beta-field-readable-label' => 'Lennus',
+	'articlefeedback-beta-field-readable-tip' => "Ha soñjal a ra deoc'h eo skrivet brav ha frammet mat ar bajenn-mañ ?",
 );
 
 /** Bosnian (Bosanski)
@@ -448,6 +465,7 @@ Možná ji budete chtít ohodnotit znovu.",
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Metalhead64
  */
 $messages['de'] = array(
 	'articlefeedback' => 'Artikeleinschätzung',
@@ -488,6 +506,21 @@ Vielleicht möchtest du ihn erneut einschätzen.",
 	'articlefeedback-alpha-survey-submit' => 'Speichern',
 	'articlefeedback-alpha-survey-title' => 'Bitte beantworte uns ein paar Fragen',
 	'articlefeedback-alpha-survey-thanks' => 'Vielen Dank für deine Rückmeldung.',
+	'articlefeedback-beta-form-tab-label' => 'Einschätzung abgeben',
+	'articlefeedback-beta-form-panel-title' => 'Deine Einschätzung',
+	'articlefeedback-beta-form-panel-instructions' => 'Bitte nimm dir kurz Zeit, diesen Artikel einzuschätzen.',
+	'articlefeedback-beta-form-panel-notice' => 'Deine Einschätzungen werden nach einer Weile verfallen.',
+	'articlefeedback-beta-form-panel-submit' => 'Einschätzung übermitteln',
+	'articlefeedback-beta-report-tab-label' => 'Ergebnisse anzeigen',
+	'articlefeedback-beta-report-panel-title' => 'Ergebnisse der Einschätzungen',
+	'articlefeedback-beta-field-wellsourced-label' => 'Gut belegt',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Hast du den Eindruck, dass dieser Artikel über genügend Quellenangaben verfügt und diese zudem aus vertrauenswürdigen Quellen stammen?',
+	'articlefeedback-beta-field-complete-label' => 'Vollständig',
+	'articlefeedback-beta-field-complete-tip' => 'Hast du den Eindruck, dass dieser Artikel alle wichtigen Aspekte enthält, die mit dessen Inhalt zusammenhängen?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutral',
+	'articlefeedback-beta-field-neutral-tip' => 'Hast du den Eindruck, dass dieser Artikel eine ausgewogene Darstellung aller mit dessen Inhalt verbundenen Aspekte enthält?',
+	'articlefeedback-beta-field-readable-label' => 'Verständlich',
+	'articlefeedback-beta-field-readable-tip' => 'Hast du den Eindruck, dass dieser Artikel gut strukturiert sowie geschrieben wurde?',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -721,6 +754,7 @@ $messages['fa'] = array(
 	'articlefeedback-beta-report-tab-label' => 'نمایش نتایج',
 	'articlefeedback-beta-field-complete-label' => 'کامل کردن',
 	'articlefeedback-beta-field-neutral-label' => 'بی‌طرف',
+	'articlefeedback-beta-field-readable-label' => 'قابل خواندن',
 );
 
 /** Finnish (Suomi)
@@ -1166,10 +1200,26 @@ Es recommendate que tu lo re-evaluta.",
 	'articlefeedback-alpha-survey-submit' => 'Submitter',
 	'articlefeedback-alpha-survey-title' => 'Per favor responde a alcun questiones',
 	'articlefeedback-alpha-survey-thanks' => 'Gratias pro completar le questionario.',
+	'articlefeedback-beta-form-tab-label' => 'Retornar opiniones',
+	'articlefeedback-beta-form-panel-title' => 'Tu opinion',
+	'articlefeedback-beta-form-panel-instructions' => 'Per favor prende un momento pro evalutar iste pagina.',
+	'articlefeedback-beta-form-panel-notice' => 'Le evalutationes expirara in le curso del tempore.',
+	'articlefeedback-beta-form-panel-submit' => 'Submitter opinion',
+	'articlefeedback-beta-report-tab-label' => 'Monstrar resultatos',
+	'articlefeedback-beta-report-panel-title' => 'Opiniones retornate',
+	'articlefeedback-beta-field-wellsourced-label' => 'Ben referentiate',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Pensa tu que iste pagina ha sufficiente citationes e que iste citationes refere a fontes digne de fide?',
+	'articlefeedback-beta-field-complete-label' => 'Complete',
+	'articlefeedback-beta-field-complete-tip' => 'Pensa tu que iste pagina coperi le themas essential que illo deberea coperir?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutral',
+	'articlefeedback-beta-field-neutral-tip' => 'Pensa tu que iste pagina monstra un representation juste de tote le perspectivas super le question?',
+	'articlefeedback-beta-field-readable-label' => 'Legibile',
+	'articlefeedback-beta-field-readable-tip' => 'Pensa tu que iste pagina es ben organisate e ben scribite?',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Farras
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'articlefeedback' => 'Penilaian artikel',
@@ -1210,6 +1260,21 @@ Anda mungkin ingin menilainya lagi.",
 	'articlefeedback-alpha-survey-submit' => 'Kirim',
 	'articlefeedback-alpha-survey-title' => 'Silakan jawab beberapa pertanyaan',
 	'articlefeedback-alpha-survey-thanks' => 'Terima kasih telah mengisi survei ini.',
+	'articlefeedback-beta-form-tab-label' => 'Berikan umpan balik',
+	'articlefeedback-beta-form-panel-title' => 'Umpan balik Anda',
+	'articlefeedback-beta-form-panel-instructions' => 'Harap luangkan waktu untuk menilai halaman ini.',
+	'articlefeedback-beta-form-panel-notice' => 'Penilaian Anda akan kedaluwarsa seiring dengan waktu.',
+	'articlefeedback-beta-form-panel-submit' => 'Kirim umpan balik',
+	'articlefeedback-beta-report-tab-label' => 'Tampilkan hasil',
+	'articlefeedback-beta-report-panel-title' => 'Hasil umpan balik',
+	'articlefeedback-beta-field-wellsourced-label' => 'Data sumber bagus',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Apakah Anda merasa bahwa halaman ini memiliki cukup kutipan dan bahwa kutipan tersebut berasal dari sumber tepercaya?',
+	'articlefeedback-beta-field-complete-label' => 'Lengkap',
+	'articlefeedback-beta-field-complete-tip' => 'Apakah Anda merasa bahwa halaman ini mencakup wilayah topik penting yang seharusnya?',
+	'articlefeedback-beta-field-neutral-label' => 'Netral',
+	'articlefeedback-beta-field-neutral-tip' => 'Apakah Anda merasa bahwa halaman ini menunjukkan representasi yang adil dari semua perspektif tentang masalah ini?',
+	'articlefeedback-beta-field-readable-label' => 'Mudah dibaca',
+	'articlefeedback-beta-field-readable-tip' => 'Apakah Anda merasa bahwa halaman ini disusun dan ditulis dengan baik?',
 );
 
 /** Italian (Italiano)
@@ -1408,6 +1473,7 @@ Et kéint sinn datt dir en nei bewäerte wëllt.",
 	'articlefeedback-beta-report-tab-label' => 'Resultater weisen',
 	'articlefeedback-beta-field-complete-label' => 'Komplett',
 	'articlefeedback-beta-field-neutral-label' => 'Neutral',
+	'articlefeedback-beta-field-readable-label' => 'Liesbar',
 );
 
 /** Limburgish (Limburgs)
@@ -1545,6 +1611,21 @@ $messages['ml'] = array(
 	'articlefeedback-alpha-survey-submit' => 'സമർപ്പിക്കുക',
 	'articlefeedback-alpha-survey-title' => 'ദയവായി ഏതാനം ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകുക',
 	'articlefeedback-alpha-survey-thanks' => 'സർവേ പൂരിപ്പിച്ചതിനു നന്ദി',
+	'articlefeedback-beta-form-tab-label' => 'അഭിപ്രായങ്ങൾ അറിയിക്കുക',
+	'articlefeedback-beta-form-panel-title' => 'താങ്കളുടെ അഭിപ്രായം',
+	'articlefeedback-beta-form-panel-instructions' => 'താഴെ ഈ താളിന്റെ മൂല്യനിർണ്ണയം നടത്താൻ ഒരു നിമിഷം ചിലവാക്കുക.',
+	'articlefeedback-beta-form-panel-notice' => 'താങ്കളിട്ട നിലവാരം പിന്നീടൊരിക്കൽ ഇല്ലാതാകുന്നതാണ്.',
+	'articlefeedback-beta-form-panel-submit' => 'അഭിപ്രായം സമർപ്പിക്കുക',
+	'articlefeedback-beta-report-tab-label' => 'ഫലങ്ങൾ പ്രദർശിപ്പിക്കുക',
+	'articlefeedback-beta-report-panel-title' => 'അഭിപ്രായങ്ങൾ',
+	'articlefeedback-beta-field-wellsourced-label' => 'സ്രോതസ്സധിഷ്ഠിതം',
+	'articlefeedback-beta-field-wellsourced-tip' => 'ഈ താളിൽ വിശ്വസനീയങ്ങളായ സ്രോതസ്സുകളെ ആശ്രയിക്കുന്ന ആവശ്യമായത്ര അവലംബങ്ങൾ ഉണ്ടെന്ന് താങ്കൾ കരുതുന്നുണ്ടോ?',
+	'articlefeedback-beta-field-complete-label' => 'സമ്പൂർണ്ണം',
+	'articlefeedback-beta-field-complete-tip' => 'ഈ താൾ അത് ഉൾക്കൊള്ളേണ്ട എല്ലാ മേഖലകളും ഉൾക്കൊള്ളുന്നതായി താങ്കൾ കരുതുന്നുണ്ടോ?',
+	'articlefeedback-beta-field-neutral-label' => 'നിഷ്പക്ഷം',
+	'articlefeedback-beta-field-neutral-tip' => 'ഈ താളിൽ വിഷയത്തിന്റെ എല്ലാ വശത്തിനും അർഹമായ പ്രാതിനിധ്യം ലഭിച്ചതായി താങ്കൾ കരുതുന്നുണ്ടോ?',
+	'articlefeedback-beta-field-readable-label' => 'വായനായോഗ്യം',
+	'articlefeedback-beta-field-readable-tip' => 'ഈ താൾ നന്നായി ക്രമീകരിക്കപ്പെട്ടതും നന്നായി എഴുതപ്പെട്ടതുമാണെന്ന് താങ്കൾ കരുതുന്നുണ്ടോ?',
 );
 
 /** Mongolian (Монгол)
@@ -1630,6 +1711,21 @@ Wilt u de pagina opnieuw beoordelen?",
 	'articlefeedback-alpha-survey-submit' => 'Opslaan',
 	'articlefeedback-alpha-survey-title' => 'Beantwoord alstublieft een paar vragen',
 	'articlefeedback-alpha-survey-thanks' => 'Bedankt voor het beantwoorden van de vragen.',
+	'articlefeedback-beta-form-tab-label' => 'Terugkoppeling geven',
+	'articlefeedback-beta-form-panel-title' => 'Uw terugkoppeling',
+	'articlefeedback-beta-form-panel-instructions' => 'Geef alstublieft een beoordeling van deze pagina.',
+	'articlefeedback-beta-form-panel-notice' => 'Uw beoordeling vervalt na verloop van tijd.',
+	'articlefeedback-beta-form-panel-submit' => 'Terugkoppeling opslaan',
+	'articlefeedback-beta-report-tab-label' => 'Resultaten weergeven',
+	'articlefeedback-beta-report-panel-title' => 'Terugkoppelingsresultaten',
+	'articlefeedback-beta-field-wellsourced-label' => 'Goed van bronnen voorzien',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Vindt u dat deze pagina voldoende bronvermeldingen heeft en dat de bronvermeldingen betrouwbaar zijn?',
+	'articlefeedback-beta-field-complete-label' => 'Afgerond',
+	'articlefeedback-beta-field-complete-tip' => 'Vindt u dat deze pagina de essentie van dit onderwerp bestrijkt?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutraal',
+	'articlefeedback-beta-field-neutral-tip' => 'Vindt u dat deze pagina een eerlijke weergave is van alle invalshoeken voor dit onderwerp?',
+	'articlefeedback-beta-field-readable-label' => 'Leesbaar',
+	'articlefeedback-beta-field-readable-tip' => 'Vindt u dat deze pagina een correcte opbouw heeft een goed is geschreven?',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1832,6 +1928,21 @@ Talvez queira voltar a avaliá-la.",
 	'articlefeedback-alpha-survey-submit' => 'Enviar',
 	'articlefeedback-alpha-survey-title' => 'Por favor, responda a algumas perguntas',
 	'articlefeedback-alpha-survey-thanks' => 'Obrigado por preencher o inquérito.',
+	'articlefeedback-beta-form-tab-label' => 'Deixar comentário',
+	'articlefeedback-beta-form-panel-title' => 'Os seus comentários',
+	'articlefeedback-beta-form-panel-instructions' => 'Dedique um momento a avaliar esta página abaixo, por favor.',
+	'articlefeedback-beta-form-panel-notice' => 'As suas classificações irão expirar ao longo do tempo.',
+	'articlefeedback-beta-form-panel-submit' => 'Enviar comentários',
+	'articlefeedback-beta-report-tab-label' => 'Mostrar resultados',
+	'articlefeedback-beta-report-panel-title' => 'Resultados dos comentários',
+	'articlefeedback-beta-field-wellsourced-label' => 'Bem referenciada',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Considera que esta página tem citações suficientes e que essas citações provêm de fontes fiáveis?',
+	'articlefeedback-beta-field-complete-label' => 'Completa',
+	'articlefeedback-beta-field-complete-tip' => 'Considera que esta página aborda os temas essenciais que deviam ser cobertos?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutra',
+	'articlefeedback-beta-field-neutral-tip' => 'Acha que esta página representa, de forma equilibrada, todos os pontos de vista sobre o assunto?',
+	'articlefeedback-beta-field-readable-label' => 'Fácil de ler',
+	'articlefeedback-beta-field-readable-tip' => 'Acha que esta página está bem organizada e bem escrita?',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2000,6 +2111,7 @@ $messages['ru'] = array(
 	'articlefeedback-alpha-survey-submit' => 'Отправить',
 	'articlefeedback-alpha-survey-title' => 'Пожалуйста, ответьте на несколько вопросов',
 	'articlefeedback-alpha-survey-thanks' => 'Спасибо за участие в опросе.',
+	'articlefeedback-beta-form-tab-label' => 'Обратная связь',
 );
 
 /** Rusyn (Русиньскый)
@@ -2187,6 +2299,21 @@ Morda jo želite ponovno oceniti.",
 	'articlefeedback-alpha-survey-submit' => 'Pošlji',
 	'articlefeedback-alpha-survey-title' => 'Prosimo, odgovorite na nekaj vprašanj',
 	'articlefeedback-alpha-survey-thanks' => 'Zahvaljujemo se vam za izpolnitev vprašalnika.',
+	'articlefeedback-beta-form-tab-label' => 'Nudite povratno informacijo',
+	'articlefeedback-beta-form-panel-title' => 'Vaša povratna informacija',
+	'articlefeedback-beta-form-panel-instructions' => 'Prosimo, vzemite si trenutek in ocenite to stran.',
+	'articlefeedback-beta-form-panel-notice' => 'Vaše ocene bodo čez nekaj časa potekle.',
+	'articlefeedback-beta-form-panel-submit' => 'Pošlji povratno informacijo',
+	'articlefeedback-beta-report-tab-label' => 'Prikaži rezultate',
+	'articlefeedback-beta-report-panel-title' => 'Rezultati povratnih informacij',
+	'articlefeedback-beta-field-wellsourced-label' => 'Dobro dokumentirano',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Menite, da ima ta stran dovolj navedkov in da ta navajanja prihajajo iz zanesljivih virov?',
+	'articlefeedback-beta-field-complete-label' => 'Celovito',
+	'articlefeedback-beta-field-complete-tip' => 'Menite, da ta stran zajema temeljna tematska področja, ki bi jih naj?',
+	'articlefeedback-beta-field-neutral-label' => 'Nevtralno',
+	'articlefeedback-beta-field-neutral-tip' => 'Menite, da ta stran prikazuje pravično zastopanost vseh pogledov na obravnavano temo?',
+	'articlefeedback-beta-field-readable-label' => 'Berljivo',
+	'articlefeedback-beta-field-readable-tip' => 'Menite, da je ta stran dobro organizirana in dobro napisana?',
 );
 
 /** Swedish (Svenska)

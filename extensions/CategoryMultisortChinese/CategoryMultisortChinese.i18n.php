@@ -561,6 +561,7 @@ $messages['tl'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
+ * @author PhiLiP
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
@@ -571,6 +572,7 @@ $messages['zh-hans'] = array(
 	'categorymultisort-sortkey-name-mandarin-mps2' => '普通话：注音符号第二式',
 	'categorymultisort-sortkey-name-mandarin-tongyong' => '普通话：通用拼音',
 	'categorymultisort-sortkey-name-cantonese-jyutping' => '粤语：粤拼',
+	'categorymultisort-sortkey-name-stroke' => '笔划',
 	'categorymultisort-sortkey-name-stroke-simplified' => '中文（简体）',
 	'categorymultisort-sortkey-name-stroke-traditional' => '中文（繁体）',
 	'categorymultisort-sortkey-name-radical' => '部首',
