@@ -205,6 +205,13 @@ $messages['ext'] = array(
 	'contributionseditcount' => 'Esti usuáriu á hechu $1 eicionis.',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'contributionseditcount' => 'این کاربر {{PLURAL:$1|یک ویرایش|$1 ویرایش}} انجام داده است.',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  */
