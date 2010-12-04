@@ -116,7 +116,7 @@ class ApiQueryPatch extends ApiQueryBase {
     }
 
     public function getVersion() {
-        return __CLASS__ . ': $Id: ApiQueryPatch.php xxxxx 2009-07-01 09:00:00Z hantz $';
+        return __CLASS__ . ': $Id$';
     }
 }
 ?>
