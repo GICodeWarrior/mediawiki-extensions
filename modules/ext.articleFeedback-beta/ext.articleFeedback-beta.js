@@ -10,52 +10,70 @@ $.articleFeedback = {
 	},
 	'fn': {
 		'build': function( context ) {
-			// Base user interface
 			context.$ui
 				.addClass( 'articleFeedback articleFeedback-form' )
+				// Append HTML
 				.append( '\
-					<div class="articleFeedback-tabs">\
-						<div class="articleFeedback-tab articleFeedback-tab-current" rel="form">\
-							<div class="articleFeedback-buffer"></div>\
-						</div>\
-						<div class="articleFeedback-tab" rel="report">\
-							<div class="articleFeedback-buffer"></div>\
-						</div>\
-					</div>\
-					<div class="articleFeedback-panel" rel="form">\
-						<div class="articleFeedback-buffer"></div>\
-					</div>\
-					<div class="articleFeedback-panel" rel="report">\
-						<div class="articleFeedback-buffer"></div>\
-					</div>\
+<div class="articleFeedback-tabs">\
+	<div class="articleFeedback-tab articleFeedback-tab-current" rel="form">\
+		<div class="articleFeedback-buffer" msg-text="form-tab-label"></div>\
+	</div>\
+	<div class="articleFeedback-tab" rel="report">\
+		<div class="articleFeedback-buffer" msg-text="report-tab-label"></div>\
+	</div>\
+</div>\
+<div class="articleFeedback-panel" rel="form">\
+	<div class="articleFeedback-buffer">\
+		<div class="articleFeedback-title" msg-text="form-panel-title"></div>\
+		<div class="articleFeedback-instructions" msg-text="form-panel-instructions"></div>\
+		<div style="clear:both;"></div>\
+		<div class="articleFeedback-ratings">\
+			<div class="articleFeedback-rating" rel="wellsourced">\
+				<span class="articleFeedback-label" msg-text="field-wellsourced-label" msg-tip="field-wellsourced-tip"></span>\
+				<div class="articleFeedback-rating-fields"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+				<div class="articleFeedback-rating-labels"><label></label><label></label><label></label><label></label><label></label></div>\
+			</div>\
+			<div class="articleFeedback-rating" rel="neutral">\
+				<span class="articleFeedback-label" msg-text="field-neutral-label" msg-tip="field-neutral-tip"></span>\
+				<div class="articleFeedback-rating-fields"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+				<div class="articleFeedback-rating-labels"><label></label><label></label><label></label><label></label><label></label></div>\
+			</div>\
+			<div class="articleFeedback-rating" rel="complete">\
+				<span class="articleFeedback-label" msg-text="field-complete-label" msg-tip="field-complete-tip"></span>\
+				<div class="articleFeedback-rating-fields"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+				<div class="articleFeedback-rating-labels"><label></label><label></label><label></label><label></label><label></label></div>\
+			</div>\
+			<div class="articleFeedback-rating" rel="readable">\
+				<span class="articleFeedback-label" msg-text="field-readable-label" msg-tip="field-readable-tip"></span>\
+				<div class="articleFeedback-rating-fields"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+				<div class="articleFeedback-rating-labels"><label></label><label></label><label></label><label></label><label></label></div>\
+			</div>\
+			<div style="clear:both;"></div>\
+		</div>\
+	</div>\
+</div>\
+<div class="articleFeedback-panel" rel="report">\
+	<div class="articleFeedback-buffer">\
+		<div class="articleFeedback-title" msg-text="report-panel-title"></div>\
+	</div>\
+</div>\
 				' )
-				// Handles
-				.find( '.articleFeedback-tab' )
+				// Insert messages
+				.find( '[msg-text]' )
 					.each( function() {
-						$(this).find( '.articleFeedback-buffer' )
-							.text( $.articleFeedback.fn.msg(
-								$(this).attr( 'rel' ) + '-tab-label' ) );
+						$(this).text( $.articleFeedback.fn.msg( $(this).attr( 'msg-text' ) ) );
 					} )
 					.end()
-				// Form
-				.find( '.articleFeedback-panel[rel=form] .articleFeedback-buffer' )
-					.append( $( '<div class="articleFeedback-title"></div>' )
-						.text( $.articleFeedback.fn.msg( 'form-panel-title' ) ) )
-					.append( $( '<div class="articleFeedback-instructions"></div>' )
-						.text( $.articleFeedback.fn.msg( 'form-panel-instructions' ) ) )
+				.find( '[msg-tip]' )
+					.each( function() {
+						$(this)
+							.attr( 'title', $.articleFeedback.fn.msg( $(this).attr( 'msg-tip' ) ) )
+							.tipsy( { 'gravity': 'sw', 'fade': true } );
+					} )
 					.end()
-				// Report
-				.find( '.articleFeedback-panel[rel=report]' )
-					.hide()
-					.find( '.articleFeedback-buffer' )
-						.append( $( '<div class="articleFeedback-title"></div>' )
-							.text( $.articleFeedback.fn.msg( 'report-panel-title' ) ) )
-						.end()
-					.end()
-				// Add open/close tabrs
+				// Setup tab behavior
 				.find( '.articleFeedback-tab' )
 					.click( function( e ) {
-						// Hide artifacts of animation until animation is complete, then restore it
 						context.$ui
 							.find( '.articleFeedback-panel[rel!=' + $(this).attr( 'rel' ) +']' )
 								.hide()
