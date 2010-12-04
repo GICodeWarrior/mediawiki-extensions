@@ -110,4 +110,3 @@ if pageName parameter is given, api return the list of patch concerned by this p
         return __CLASS__ . ': $Id$';
     }
 }
-?>
