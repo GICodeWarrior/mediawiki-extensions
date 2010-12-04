@@ -107,7 +107,7 @@ if pageName parameter is given, api return the list of patch concerned by this p
     }
 
     public function getVersion() {
-        return __CLASS__ . ': $Id: ApiQueryPatch.php xxxxx 2009-07-24 09:00:00Z hantz $';
+        return __CLASS__ . ': $Id$';
     }
 }
 ?>
