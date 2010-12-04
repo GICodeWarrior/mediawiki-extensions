@@ -103,4 +103,3 @@ class ApiQueryChangeSet extends ApiQueryBase {
         return __CLASS__ . ': $Id$';
     }
 }
-?>
