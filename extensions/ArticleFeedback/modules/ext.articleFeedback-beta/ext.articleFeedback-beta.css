@@ -19,6 +19,10 @@
 	float: left;
 }
 
+.articleFeedback-panel[rel=report] {
+	display: none;
+}
+
 .articleFeedback-tabs {
 	width: 8em;
 	height: 13.5em;
@@ -47,9 +51,6 @@
 .articleFeedback-tab[rel=form] {
 	margin-top: 1px;
 	margin-bottom: 1px;
-}
-
-.articleFeedback-tab[rel=report] {
 }
 
 .articleFeedback-tab .articleFeedback-buffer {
@@ -88,4 +89,13 @@
 .articleFeedback-instructions {
 	float: left;
 	font-weight: bold;
+}
+
+.articleFeedback-rating {
+	float: left;
+	width: 16em;
+}
+
+.articleFeedback-label {
+	cursor: pointer;
 }
