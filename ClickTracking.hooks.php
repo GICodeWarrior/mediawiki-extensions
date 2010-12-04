@@ -14,22 +14,33 @@ class ClickTrackingHooks {
 	 * LoadExtensionSchemaUpdates hook
 	 * @return Boolean: always true
 	 */
-	public static function loadExtensionSchemaUpdates() {
-		global $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
-
+	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		$dir = dirname( __FILE__ ) . '/';
-		$wgExtNewTables[] = array( 'click_tracking', $dir . 'patches/ClickTracking.sql' );
-		$wgExtNewTables[] = array( 'click_tracking_events', $dir . 'patches/ClickTrackingEvents.sql' );
-		$wgExtNewIndexes[] = array(
-			'click_tracking',
-			'click_tracking_action_time',
-			$dir . 'patches/patch-action_time.sql',
-		);
-		$wgExtNewFields[] = array(
-			'click_tracking',
-			'additional_info',
-			$dir . 'patches/patch-additional_info.sql',
-		);
+
+		if ( $updater === null ) {
+			global $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
+			$wgExtNewTables[] = array( 'click_tracking', $dir . 'patches/ClickTracking.sql' );
+			$wgExtNewTables[] = array( 'click_tracking_events', $dir . 'patches/ClickTrackingEvents.sql' );
+			$wgExtNewIndexes[] = array(
+				'click_tracking',
+				'click_tracking_action_time',
+				$dir . 'patches/patch-action_time.sql',
+			);
+			$wgExtNewFields[] = array(
+				'click_tracking',
+				'additional_info',
+				$dir . 'patches/patch-additional_info.sql',
+			);
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'click_tracking',
+				$dir . 'patches/ClickTracking.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'click_tracking_events',
+				$dir . 'patches/ClickTrackingEvents.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addIndex', 'click_tracking', 'click_tracking_action_time',
+				$dir . 'patches/patch-action_time.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addField', 'click_tracking', 'additional_info',
+				$dir . 'patches/patch-additional_info.sql', true ) );
+		}
 		return true;
 	}
 
