@@ -63,9 +63,9 @@ class DSMWAdmin extends SpecialPage {
                 $title = Title::makeTitle( NS_SPECIAL, 'DSMWAdmin' );
                 $newjob = new DSMWUpdateJob( $title );
                 $newjob->insert();
-                $wgOut->addHTML( '<p><font color="red"><b>Articles update process started.</b></font></p>' );
+                $wgOut->addHTML( '<p><font color="red"><b>' . wfMsg( 'dsmw-special-admin-articleupstarted' ) . '</b></font></p>' );
             } else {
-                $wgOut->addHTML( '<p><font color="red"><b>Articles update process is already running.</b></font></p>' );
+                $wgOut->addHTML( '<p><font color="red"><b>' . wfMsg( 'dsmw-special-admin-articleuprunning' ) . '</b></font></p>' );
             }
 
         }
@@ -75,33 +75,13 @@ class DSMWAdmin extends SpecialPage {
                 $title1 = Title::makeTitle( NS_SPECIAL, 'DSMWAdmin' );
                 $newjob1 = new DSMWPropertyTypeJob( $title1 );
                 $newjob1->insert();
-                $wgOut->addHTML( '<p><font color="red"><b>Properties type update process started.</b></font></p>' );
+                $wgOut->addHTML( '<p><font color="red"><b>' . wfMsg( 'dsmw-special-admin-typeupstarted' ) . '</b></font></p>' );
             } else {
-                $wgOut->addHTML( '<p><font color="red"><b>Properties type update process is already running.</b></font></p>' );
+                $wgOut->addHTML( '<p><font color="red"><b>' . wfMsg( 'dsmw-special-admin-typeuprunning' ) . '</b></font></p>' );
             }
         }
-        elseif ( $action == 'updatetables' ) {
 
-				$wgOut->disable(); // raw output
-				ob_start();
-				print "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\" dir=\"ltr\">\n<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><title>Setting up Storage for Distributed Semantic MediaWiki</title></head><body><p><pre>";
-				header( "Content-type: text/html; charset=UTF-8" );
-                                $db =& wfGetDB( DB_MASTER );
-				$result = DSMWDBHelpers::setup( $db );
-				print '</pre></p>';
-				if ( $result === true ) {
-					print '<p><b>The database was set up successfully.</b></p>';
-				}
-				$returntitle = Title::makeTitle( NS_SPECIAL, 'DSMWAdmin' );
-				print '<p> <a href="' . htmlspecialchars( $returntitle->getFullURL() ) . '">Special:DSMWAdmin</a></p>';
-				print '</body></html>';
-				ob_flush();
-				flush();
-				return;
-
-		}
-
-        $wgOut->setPagetitle( "DSMW Settings" );
+        $wgOut->setPagetitle( 'DSMW Settings' );
 
         $wgOut->addHTML(
         	Html::element(
