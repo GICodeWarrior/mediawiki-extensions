@@ -126,13 +126,13 @@ if(isset($_SERVER['REMOTE_ADDR']))
 	}
 
 	//this stuff is independent of connect and so has to be executed only once
-	$irc = &new Net_SmartIRC(); //init new IRC connection
+	$irc = new Net_SmartIRC(); //init new IRC connection
 	$irc->setDebug(SMARTIRC_DEBUG_NONE);
 	$irc->setUseSockets(TRUE);
 	$irc->setChannelSyncing(FALSE); 
 	$irc->setCtcpVersion("alert.bot wikimedia edition by harddisk_wp");
 	
-	$alertbot_o=&new alertbot(); //initialize SmartIRC handlers
+	$alertbot_o = new alertbot(); //initialize SmartIRC handlers
 	$irc->registerTimehandler(1000, $alertbot_o, 'check_msgs');
 	$irc->registerTimehandler(1000, $alertbot_o, 'check_rep');
 	$irc->registerActionhandler(SMARTIRC_TYPE_CHANNEL,"^!kill",$alertbot_o,"killmsg");
