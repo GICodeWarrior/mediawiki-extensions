@@ -814,6 +814,13 @@ $messages['eu'] = array(
 	'right-crosswikiblock' => 'Erabiltzaileak beste wikietan blokeatu eta desblokeatu',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'crosswikiblock-reason' => 'دلیل:',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike
