@@ -16,7 +16,7 @@ class utils {
         // global $serverId;
         $serverId = DSMWSiteId::getInstance();
 
-        $pc = new persistentClock();
+        $pc = new DSMWPersistentClock();
         $pc->load();
         $pc->incrementClock();
         $id = /*$wgServerName.$wgScriptPath*/$serverId->getSiteId() . $pc->getValue();

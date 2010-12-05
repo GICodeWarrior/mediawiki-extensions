@@ -1,5 +1,20 @@
 <?php
-require_once 'Clock.php';
+
+/**
+ * @copyright INRIA-LORIA-ECOO project
+ * @author muller jean-philippe
+ */
+interface Clock {
+    public function load();
+
+    public function store();
+
+    public function getValue();
+
+    public function setValue( $i );
+
+    public function incrementClock();
+}
 
 /**
  * Persistent clock
@@ -7,7 +22,7 @@ require_once 'Clock.php';
  * @copyright INRIA-LORIA-ECOO project
  * @author muller jean-philippe
  */
-class persistentClock implements Clock {
+class DSMWPersistentClock implements Clock {
 
     public $mClock;
 
@@ -32,30 +47,6 @@ class persistentClock implements Clock {
     public function incrementClock() {
         $this->mClock = $this->mClock + 1;
     }
-
-//    public function load() {
-//        try {
-//            $fp = fopen(dirname( __FILE__ )."/store.txt", "r");
-//            $ck = fread($fp, filesize(dirname( __FILE__ )."/store.txt"));
-//            fclose($fp);
-//            $this->mClock = unserialize($ck);
-//        } catch (Exception $e) {
-//             throw new Exception ($e);
-//        }
-//
-//    }
-//
-//    public function store() {
-//        try {
-//            $ck = serialize($this->mClock);
-//            $fp = fopen(dirname( __FILE__ )."/store.txt", "w");
-//            fwrite($fp, $ck);
-//            fclose($fp);
-//        } catch (Exception $e) {
-//            throw new Exception ($e);
-//        }
-//
-//    }
 
     function load() {
     $db = wfGetDB( DB_SLAVE );

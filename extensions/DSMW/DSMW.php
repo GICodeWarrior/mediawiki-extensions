@@ -71,10 +71,12 @@ $wgAutoloadClasses['Diff1']
 
 $wgAutoloadClasses['LogootIns'] = "$wgDSMWIP/logootComponent/LogootIns.php";
 $wgAutoloadClasses['LogootDel'] = "$wgDSMWIP/logootComponent/LogootDel.php";
-$wgAutoloadClasses['DSMWRevisionManager'] = dirname( __FILE__ ) . '/includes/DSMW_RevisionManager.php';
+
+$wgAutoloadClasses['DSMWRevisionManager'] 		= dirname( __FILE__ ) . '/includes/DSMW_RevisionManager.php';
+$wgAutoloadClasses['DSMWPersistentClock']		= dirname( __FILE__ ) . '/includes/DSMW_PersistentClock.php';
 
 $wgAutoloadClasses['Patch'] = "$wgDSMWIP/patch/Patch.php";
-$wgAutoloadClasses['persistentClock'] = "$wgDSMWIP/clockEngine/persistentClock.php";
+
 $wgAutoloadClasses['ApiQueryPatch'] = "$wgDSMWIP/api/ApiQueryPatch.php";
 $wgAutoloadClasses['ApiQueryChangeSet'] = "$wgDSMWIP/api/ApiQueryChangeSet.php";
 $wgAutoloadClasses['ApiUpload'] = "$wgDSMWIP/api/upload/ApiUpload.php";
