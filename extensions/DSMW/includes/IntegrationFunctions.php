@@ -257,7 +257,7 @@ function logootIntegrate( $operations, $article ) {
     }
     $listOp = array();
     // $blobInfo = BlobInfo::loadBlobInfo($rev_id);
-    $model = manager::loadModel( $rev_id );
+    $model = DSMWRevisionManager::loadModel( $rev_id );
     if ( ( $model instanceof boModel ) == false )
         throw new MWException( __METHOD__ . ': model loading problem!' );
     $logoot = new logootEngine( $model );
@@ -282,7 +282,7 @@ function logootIntegrate( $operations, $article ) {
     // $revId = utils::getNewArticleRevId();
     $status = $article->doEdit( $modelAfterIntegrate->getText(), $summary = "" );
     $revId = $status->value['revision']->getId();
-    manager::storeModel( $revId, $sessionId = session_id(), $modelAfterIntegrate, $blobCB = 0 );
+    DSMWRevisionManager::storeModel( $revId, $sessionId = session_id(), $modelAfterIntegrate, $blobCB = 0 );
     return $revId;
     // sleep(4);
     if ( is_bool( $status ) ) return $status;
@@ -299,15 +299,18 @@ function logootIntegrateAtt( $article, $edit ) {
     $dbr->immediateBegin();
     $title = Title::newFromText( $article );
     $lastRevision = Revision::loadFromTitle( $dbr, $title );
+    
     if ( $lastRevision->getPrevious() == null ) {
         $rev_id = 0;
     }
     else {
         $rev_id = $lastRevision->getPrevious()->getId();
     }
+    
     $revID = $lastRevision->getId();
-    $model = manager::loadModel( $rev_id );
-    manager::storeModel( $revID, $sessionId = session_id(), $model, $blobCB = 0 );
+    $model = DSMWRevisionManager::loadModel( $rev_id );
+    DSMWRevisionManager::storeModel( $revID, $sessionId = session_id(), $model, $blobCB = 0 );
+    
     if ( $edit ) {
         $article = new Article( $title );
         $status = $article->doEdit( $model->getText(), $summary = "" );
@@ -326,11 +329,13 @@ function downloadFile( $url ) {
     $dom = new DOMDocument();
     $dom->loadXML( $edittoken );
     $edittoken = $dom->getElementsByTagName( 'page' );
+    
     foreach ( $edittoken as $p ) {
         if ( $p->hasAttribute( "edittoken" ) ) {
             $token = $p->getAttribute( 'edittoken' );
         }
     }
+    
     $token = str_replace( "+", "%2B", $token );
 
 //    $url = $patch->getUrl();
@@ -347,6 +352,7 @@ function downloadFile( $url ) {
 
 function newRev( $article ) {
     global $wgCanonicalNamespaceNames;
+    
     $indexNS = 0;
     $dbr = wfGetDB( DB_SLAVE );
 
@@ -354,13 +360,16 @@ function newRev( $article ) {
     preg_match( "/^(.+?)_*:_*(.*)$/S", $article, $tmp );
     $articleWithoutNS = $tmp[2];
     $NS = $tmp[1];
+    
     if ( in_array( $NS, $wgCanonicalNamespaceNames ) ) {
         foreach ( $wgCanonicalNamespaceNames as $key => $value ) {
             if ( $NS == $value )
                 $indexNS = $key;
         }
     }
+    
     $title = Title::newFromText( $article );
+    
     if ( !$title->exists() ) {
         $article = new Article( $title );
         $article->doEdit( '', '' );
@@ -368,7 +377,7 @@ function newRev( $article ) {
         $lastRevision = Revision::loadFromTitle( $dbr, $title );
         $rev_id = $lastRevision->getPrevious()->getId();
         $revID = $lastRevision->getId();
-        $model = manager::loadModel( $rev_id );
+        $model = DSMWRevisionManager::loadModel( $rev_id );
         $article = new Article( $title );
         $article->quickEdit( $model->getText(), '' );
     }
