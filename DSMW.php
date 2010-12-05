@@ -23,6 +23,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 require_once "$IP/includes/GlobalFunctions.php";
+require_once dirname( __FILE__ ) . '/includes/DSMW_GlobalFunctions.php';
 $wgDSMWIP = dirname( __FILE__ );
 
 require_once( "$wgDSMWIP/includes/DSMWButton.php" );
@@ -135,6 +136,28 @@ if ( compareMWVersion( $wgVersion, '1.16.0' ) == -1 ) {
     $wgAutoloadLocalClasses['UploadFromUrl'] = dirname( __FILE__ ) . '/api/upload/UploadFromUrl.php';
 }
 
+function dsmwgSetupFunction() {
+    global $smwgNamespacesWithSemanticLinks;
 
+	// This function has been deprecated in 1.16, but needed for earlier versions.
+	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
+	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
+		wfLoadExtensionMessages( 'DSMW' );
+	}    
+    
+    $smwgNamespacesWithSemanticLinks += array(
+        PATCH => true,
+        PUSHFEED => true,
+        PULLFEED => true,
+        CHANGESET => true
+	);
 
-require_once dirname( __FILE__ ) . 'DSMW_Settings.php';
+    if ( defined( 'SRF_VERSION' ) ) {
+        global $wgDSMWExhibits;
+        if ( !is_object( $wgDSMWExhibits ) ) {
+        	$wgDSMWExhibits = new DSMWExhibits();
+        }
+    }
+}
+
+require_once dirname( __FILE__ ) . '/DSMW_Settings.php';

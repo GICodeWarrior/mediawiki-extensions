@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DSMW Special page
  *
@@ -9,22 +10,22 @@
 require_once "$IP/includes/SpecialPage.php";
 
 /* Extension variables */
-$wgExtensionFunctions[] = "wfSetupDSMWAdmin";
+$wgExtensionFunctions[] = 'wfSetupDSMWAdmin';
 
 class DSMWAdmin extends SpecialPage {
-// Constructor
-    function DSMWAdmin() {
+
+    public function __construct() {
         global $wgHooks, $wgSpecialPages, $wgWatchingMessages;
+        
         # Add all our needed hooks
-        $wgHooks["SkinTemplateTabs"][] = $this;
-        SpecialPage::SpecialPage( 'DSMWAdmin'/*, "block"*/ );// avec block => pages speciales restreintes
-        wfLoadExtensionMessages( 'DSMW' );
+        $wgHooks['SkinTemplateTabs'][] = $this;
+        
+        parent::__construct( 'DSMWAdmin' );
     }
 
-    function getDescription() {
-        return "DSMW Settings";
+    public function getDescription() {
+        return wfMsg( 'dsmw-special-settings' );
     }
-
 
     /**
      * Executed when the user opens the DSMW administration special page
@@ -36,7 +37,7 @@ class DSMWAdmin extends SpecialPage {
      * @global <String> $wgScriptPath
      * @return <bool>
      */
-    function execute() {
+    public function execute() {
         global $wgOut, $wgRequest, $wgServerName, $wgScriptPath, $wgDSMWIP, $wgServerName, $wgScriptPath; /*, $wgSitename, $wgCachePages, $wgUser, $wgTitle, $wgDenyAccessMessage, $wgAllowAnonUsers, $wgRequest, $wgMessageCache, $wgWatchingMessages, $wgDBtype, $namespace_titles;*/
         $urlServer = 'http://' . $wgServerName . $wgScriptPath;
 
