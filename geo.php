@@ -576,7 +576,7 @@ class geo
 		$y = floor ( $y ) ;
 		
 		$a = array ( "text" => $text , "x" => $x , "y" => $y , "font-size" => "medium" ) ;
-		$a['style'] = $this->get_label_style ( &$params ) ;
+		$a['style'] = $this->get_label_style ( $params ) ;
 		if ( isset ( $a['style']['clickable'] ) )
 			{
 			$href = "http://" . $params->languages[0] . ".wikipedia.org/wiki/" . str_replace ( " " , "_" , $text ) ;
