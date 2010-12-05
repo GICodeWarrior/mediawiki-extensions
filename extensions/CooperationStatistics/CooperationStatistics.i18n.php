@@ -267,6 +267,13 @@ $messages['eu'] = array(
 	'cooperationstatistics-nbusers' => '{{PLURAL:$1|Editore bat|$1 editore}} {{PLURAL:$2|du|ditu}}',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'cooperationstatistics-tablevalue' => 'شمار ویرایشگر‌ها',
+);
+
 /** Finnish (Suomi)
  * @author Silvonen
  * @author Str4nd

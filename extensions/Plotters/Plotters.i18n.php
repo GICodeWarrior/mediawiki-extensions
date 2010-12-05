@@ -265,6 +265,13 @@ Por favor defina una clase de tabla que no supere los 255 caracteres.',
 	'plotters-errors' => '{{PLURAL:$1|Error|Errores}} de graficadores:',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'plotters-uses' => 'کاربردها',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

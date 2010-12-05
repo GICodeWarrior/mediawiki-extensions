@@ -285,6 +285,14 @@ $messages['eo'] = array(
 	'ea-selectcss' => 'Selekti CSS-tiparŝablono',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'ea-from' => 'از:',
+	'ea-to' => 'به:',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Peter17
@@ -556,10 +564,15 @@ $messages['lb'] = array(
 	'ea-heading' => '=== Säit [[$1]] peer E-Mail verschécken ===',
 	'ea-pagesend' => 'D\'Säit "$1" gouf verschéckt vum $2',
 	'ea-norecipients' => 'Keng gëlteg E-Mailadress fonnt',
+	'ea-error' => "'''Feeler beim Verschécke vun der Säit [[$1]]:''' ''$2''",
 	'ea-denied' => 'Rechter refuséiert',
 	'ea-show' => 'Adressate weisen',
+	'ea-from' => 'Vum:',
+	'ea-cc' => 'Kopie:',
 	'ea-send' => 'Schécken!',
 	'ea-subject' => 'Sujet:',
+	'ea-message' => 'Message:',
+	'ea-style' => 'Style:',
 	'ea-selectcss' => "Dir kënnt een ''CSS Stylesheet'' eraussichen",
 	'ea-allusers' => 'All Benotzer',
 );

@@ -201,6 +201,13 @@ Introduce el nombre de usuario o la dirección de IP para obtener un listado de 
 	'right-massblank' => 'Vaciar páginas en masa',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'massblank-submit-user' => 'برو',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Litlok

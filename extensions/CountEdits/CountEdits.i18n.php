@@ -405,6 +405,14 @@ $messages['ext'] = array(
 	'countedits-resulttext' => '$1 á hechu $2 eicionis',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'countedits-username' => 'نام کاربری:',
+	'countedits-ok' => 'تأیید',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike

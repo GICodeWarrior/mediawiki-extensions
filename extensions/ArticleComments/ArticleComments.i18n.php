@@ -427,8 +427,10 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'article-comments-title-string' => 'عنوان',
+	'article-comments-name-string' => 'نام',
 	'article-comments-url-field' => 'وب‌گاه :',
 	'article-comments-url-string' => 'نشانی اینترنتی',
+	'article-comments-submit-button' => 'ارسال',
 );
 
 /** Finnish (Suomi)

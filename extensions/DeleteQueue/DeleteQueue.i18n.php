@@ -876,6 +876,9 @@ $messages['br'] = array(
 	'deletequeue-nom-alreadyqueued' => 'Emañ ar bajenn-mañ en ul lostad dilemel dija.',
 	'deletequeue-speedy-title' => 'Merkañ "$1" evit un diverkadenn brim',
 	'deletequeue-prod-title' => 'Kinnig diverkañ "$1"',
+	'deletequeue-prod-text' => "Gallout a rit ober gant ar furmskrid-mañ evit kinnig ma vefe diverket \"'''\$1'''\".
+
+Ma ne gav den ebet abeg ebet er goulenn goude pemp devezh e vo diverket gant ur merour war-lerc'h un adsell diwezhañ graet gantañ.",
 	'deletequeue-delnom-reason' => "Abeg ar c'hinnig :",
 	'deletequeue-delnom-otherreason' => 'Abeg all',
 	'deletequeue-delnom-extra' => 'Titouroù ouzhpenn :',
@@ -937,7 +940,11 @@ Bezit sur emañ ho tiviz diouzh ar c'henasant deuet war wel da-heul ar gaozeaden
 	'deletequeue-vote-submit' => 'Kas',
 	'deletequeue-vote-success-endorse' => "Aprouet hoc'h eus dilammadenn ar bajenn-mañ.",
 	'deletequeue-vote-success-object' => "Enebet oc'h ouzh dilammadenn ar bajenn-mañ.",
+	'deletequeue-vote-requeued' => "Savet oc'h a-enep d'ar goulenn diverkañ ar bajenn-mañ, hag ar gwir zo bet roet deoc'h.
+Abalamour d'hoc'h abegadenn eo bet kaset ar bajenn d'al lostennad $1.",
 	'deletequeue-showvotes' => 'Asantoù hag eneboù d\'an dilamadenn eus "$1"',
+	'deletequeue-showvotes-text' => "Setu aze an aprouadennoù hag an abegadennoù renablet evit ar goulenn diverkañ ar bajenn \"'''\$1'''\".
+Gallout a rit [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} merkañ amañ] ho soñj deoc'h-c'hwi diwar-benn ar goulenn-mañ.",
 	'deletequeue-showvotes-restrict-endorse' => 'Diskouez an aprouadennoù hepken',
 	'deletequeue-showvotes-restrict-object' => 'Diskouez an enebadennoù hepken',
 	'deletequeue-showvotes-restrict-none' => 'Diskouez an holl aprouadennoù hag enebadennoù',
@@ -1961,6 +1968,17 @@ $messages['eu'] = array(
 	'deletequeue-list-header-queue' => 'Ilara',
 	'deletequeue-list-header-expiry' => 'Epemuga',
 	'deletequeue-list-header-discusspage' => 'Eztabaida orrialdea',
+);
+
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'deletequeue-list-status' => 'وضعیت:',
+	'deletequeue-list-search' => 'جستجو',
+	'deletequeue-case-details' => 'اطلاعات پایه',
+	'deletequeue-case-page' => 'صفحه:',
+	'deletequeue-case-reason' => 'دلیل:',
 );
 
 /** Finnish (Suomi)

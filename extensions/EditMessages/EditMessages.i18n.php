@@ -416,6 +416,13 @@ $messages['eu'] = array(
 	'editmsg-patch-success' => 'Adabakia ondo jarri da.',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'editmsg-search' => 'جستجو',
+);
+
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Crt

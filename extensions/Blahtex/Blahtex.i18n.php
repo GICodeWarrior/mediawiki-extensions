@@ -3828,14 +3828,56 @@ $messages['vo'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'math_noblahtex' => '不能运行Blahtex，它应该位于$1',
+	'blahtext-desc' => '为&lt;math&gt;标签使用MathML输出',
+	'math_AmbiguousInfix' => '"$1"的位置含糊不清。
+尝试使用其他大括号"{ ... }"来消除歧义。',
 	'math_CannotChangeDirectory' => '无法创建工作文件夹',
 	'math_CannotCreateTexFile' => '不能创建Tex文件',
+	'math_CannotRunDvipng' => '不能运行 dvipng',
 	'math_CannotRunLatex' => '不能运行latex',
 	'math_CannotWritePngDirectory' => '无法向PNG输出文件夹写入',
 	'math_CannotWriteTexFile' => '不能写入Tex文件',
+	'math_CasesRowTooBig' => '“cases”块中的每一行只能有两个项目',
+	'math_DoubleSubscript' => '遇到连接到相同的目标的两个下标。只允许一个。',
+	'math_DoubleSuperscript' => '遇到连接到相同的目标的两个上标。只允许一个。',
 	'math_IllegalCharacter' => '输入中有非法字符',
 	'math_IllegalCommandInMathMode' => '命令"$1"在数学模式下不合法',
+	'math_IllegalCommandInMathModeWithHint' => '命令"$1"在数学模式中是非法的。
+您想要使用"$2"来代替吗？',
+	'math_IllegalCommandInTextMode' => '命令"$1"在文本模式下不合法',
+	'math_IllegalCommandInTextModeWithHint' => '命令"$1"在文本模式中是非法的。
+您想要使用"$2"来代替吗？',
+	'math_IllegalDelimiter' => '"$1"后有非法分隔符',
+	'math_IllegalFinalBackslash' => '输入的结束处有非法反斜杠"\\"',
+	'math_IllegalNestedFontEncodings' => '不能嵌套字体编码命令',
+	'math_IllegalRedefinition' => '已定义命令"$1"；您不能重定义它',
+	'math_InvalidColour' => '颜色"$1"无效',
+	'math_InvalidUtf8Input' => '输入的字符串不是有效的 utf-8',
+	'math_LatexFontNotSpecified' => '没有 LaTeX 字体已被指定为"$1"',
+	'math_LatexPackageUnavailable' => '无法渲染PNG，因为 LaTeX 包"$1"不可用',
+	'math_MismatchedBeginAndEnd' => '命令"$1"和"$2"不匹配',
+	'math_MisplacedLimits' => '"$1"命令只能出现一个数学运算符之后。
+可以考虑使用"\\mathop"。',
+	'math_MissingCommandAfterNewcommand' => '"\\newcommand"后是丢失的或非法的新命令名称。
+必须有一个命令被精确的定义；
+它必须一个反斜线"\\"开头，并且只能包含字母字符。',
+	'math_MissingDelimiter' => '"$1"后缺少分隔符',
+	'math_MissingOpenBraceAfter' => '"$1"后缺少大括号"{"',
+	'math_MissingOpenBraceAtEnd' => '输入末端缺少大括号"{"',
+	'math_MissingOpenBraceBefore' => '"$1"前缺少大括号"{"',
+	'math_MissingOrIllegalParameterCount' => '在"$1"的定义中有丢失的或非法的参数计数。
+必须是从1到9的单个数字。',
+	'math_MissingOrIllegalParameterIndex' => '"$1"的定义中的参数索引丢失或非法',
+	'math_NonAsciiInMathMode' => '非 ASCII 字符只可用于文本模式。
+尝试用"\\text {...}"封闭问题字符。',
+	'math_NotEnoughArguments' => '"$1"没有足够多的参数',
+	'math_PngIncompatibleCharacter' => '无法正确生成包含字符 $1 的PNG',
+	'math_ReservedCommand' => '命令"$1"被保留供blahtex的内部使用',
+	'math_SubstackRowTooBig' => '"substack"块中的每一行只能有一个项目',
+	'math_TooManyMathmlNodes' => 'MathML 树中有太多的节点',
 	'math_TooManyTokens' => '输入过长',
+	'math_UnavailableSymbolFontCombination' => '在字体"$2"中，符号"$1"不可用',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
