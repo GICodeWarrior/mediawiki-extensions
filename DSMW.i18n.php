@@ -24,10 +24,10 @@ $messages['en'] = array(
 	'dsmw-special-admin-intro' => 'This page helps you during installation of Distributed Semantic MediaWiki.',
 	'dsmw-special-admin-propheader' => 'Update DSMW properties',
 	'dsmw-special-admin-proptext' => 'Distributed Semantic MediaWiki requires some properties type to be set.',
-	'dsmw-special-admin-upheader' => 'Update pre-DSMW articles',
-	'dsmw-special-admin-uptext' => 'For reasons of conflict management, DSMW works only with articles created after it\'s installation.
-		Therefore you need to update articles created before it\'s installation in order to edit them.',
-	'dsmw-special-admin-upbutton' => 'Update articles',
+	'dsmw-special-admin-upheader' => 'Update pre-DSMW pages',
+	'dsmw-special-admin-uptext' => "For reasons of conflict management, DSMW works only with pages created after it's installation.
+Therefore you need to update pages created before it's installation in order to edit them.",
+	'dsmw-special-admin-upbutton' => 'Update pages',
 );
 
 /** German (Deutsch)
