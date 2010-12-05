@@ -53,12 +53,12 @@ class CheckVars {
 	static $mKnownFileClassesDefault = array();
 	static $mKnownFunctionsDefault = array();
 	static $mConstantsDefault = array();
-		
+
 	# Ignore constants with these prefixes:
 	static $constantIgnorePrefixes = array( "PGSQL_", "OCI_", "SQLT_BLOB", "DB2_", "XMLREADER_", "SQLSRV_" );
 	# Ignore functions with these prefixes:
 	static $functionIgnorePrefixes = array( "pg_", "oci_", "db2_", "gmp_", "sqlsrv_", "exif_", "fss_", "tidy_",
-			"apc_", "eaccelerator_", "xcache_", "wincache_", "apache_", "xdiff_", "wikidiff2_", "parsekit_", 
+			"apc_", "eaccelerator_", "xcache_", "wincache_", "apache_", "xdiff_", "wikidiff2_", "parsekit_",
 			"wddx_", "setproctitle", "utf8_", "normalizer_", "dba_", "pcntl_", "finfo_", "mime_content_type",
 			# GD and images functions:
 			"imagecreatetruecolor", "imagecolorallocate", "imagecolortransparent", "imagealphablending",
@@ -72,7 +72,7 @@ class CheckVars {
 		'addslashes' => 'Replace with Database::addQuotes/strencode',
 		'mysql_escape_string' => 'Replace with Database::addQuotes/strencode',
 		);
-	
+
 	protected $generateDeprecatedList = false;
 
 	/* Values for status */
@@ -100,12 +100,12 @@ class CheckVars {
 			if ( count( $this->mTokens ) > 0 ) {
 				$globals = array (
 					'$wgArticle', # Setup.php
-					'$wgAutoloadLocalClasses', # AutoLoader.php, a couple of readers					
+					'$wgAutoloadLocalClasses', # AutoLoader.php, a couple of readers
 					'$wgCanonicalNamespaceNames', # Namespace.php
 					'$wgContLang', # Setup.php
 					'$wgDeferredUpdateList', # Setup.php
 					'$wgExtModifiedFields', '$wgExtNewFields', '$wgExtNewIndexes', '$wgExtNewTables', # Updates
-					'$wgFeedClasses', # Defines.php, many uses					
+					'$wgFeedClasses', # Defines.php, many uses
 					'$wgLang', # Setup.php
 					'$wgLanguageNames', # Language.php, read by others
 					'$wgMemc', # Setup.php
@@ -204,12 +204,12 @@ class CheckVars {
 			'FILEINFO_MIME', 'FILEINFO_MIME_TYPE', 'MHASH_ADLER32',
 			'SIGTERM', 'SIG_DFL',
 			'SVN_REVISION_HEAD', 'SVN_REVISION_INITIAL',
-		) ;				
+		) ;
 	}
-	
+
 	function load( $file, $shortcircuit = true ) {
 		$this->initVars();
-		$this->mFilename = $file;		
+		$this->mFilename = $file;
 
 		$source = file_get_contents( $file );
 		if ( substr( $source, 0, 3 ) == "\xEF\xBB\xBF" ) {
@@ -294,12 +294,12 @@ class CheckVars {
 						$this->mClass = $token[1];
 						$this->mParent = null;
 					}
-					
+
 					if ( $token[0] == '}' ) {
 						$this->mClass = null;
 						$this->mParent = null;
 					}
-					
+
 					if ( ( $lastMeaningfulToken[0] == T_EXTENDS ) && ( $token[0] == T_STRING ) ) {
 						$this->checkClassName( $token );
 						$this->mParent = $token[1];
@@ -310,7 +310,7 @@ class CheckVars {
 						$requirePath = "";
 						continue;
 					}
-					
+
 					if ( $token[0] != T_FUNCTION )
 						continue;
 					$this->mStatus = self::IN_FUNCTION_NAME;
@@ -359,7 +359,7 @@ class CheckVars {
 						$this->mBraces--;
 						if ( $this->mInSwitch <= $this->mBraces )
 							$this->mInSwitch = 0;
-						
+
 						$this->purgeGlobals();
 						if ( ! $this->mBraces ) {
 							$this->mStatus = self::WAITING_FUNCTION;
@@ -503,7 +503,7 @@ class CheckVars {
 				case self::IN_FUNCTION_REQUIRE:
 					if ( $token == ';' ) {
 						$requirePath = trim( $requirePath, ')("' );
-						
+
 						if ( substr( $requirePath, 0, 8 ) == "PHPUnit/" ) {
 							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
 							continue;
@@ -524,7 +524,7 @@ class CheckVars {
 							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
 							continue;
 						}
-						
+
 						if ( ( $requirePath == '' ) || ( !file_exists( $requirePath ) && $requirePath[0] != '/' ) ) {
 							/* Try prepending the script folder, for maintenance scripts (but see Maintenance.php:758) */
 							$requirePath = dirname( $this->mFilename ) . "/" . $requirePath;
@@ -552,10 +552,10 @@ class CheckVars {
 						$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
 						continue;
 					}
-					
+
 					if ( $token[0] == T_WHITESPACE )
 						continue;
-					
+
 					if ( $token[0] == T_STRING_VARNAME ) {
 						$token[0] = T_VARIABLE;
 						$token[1] = '$' . $token[1];
@@ -604,7 +604,7 @@ class CheckVars {
 						$requirePath .= $token[1];
 					}
 					continue;
-				
+
 			}
 		}
 
@@ -614,10 +614,10 @@ class CheckVars {
 
 	function checkDeprecation( $token ) {
 		global $mwDeprecatedFunctions;
-		
-		if ( $mwDeprecatedFunctions && !in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) && 
+
+		if ( $mwDeprecatedFunctions && !in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) &&
 			isset( $mwDeprecatedFunctions[ $token[1] ] ) ) {
-			
+
 			if ( isset( $token['class'] ) ) {
 				if ( in_array( $token['class'], $mwDeprecatedFunctions[ $token[1] ] ) ) {
 					$this->warning( "Non deprecated function $this->mFunction calls deprecated function {$token['class']}::{$token[1]} in line {$token[2]}" );
@@ -628,11 +628,11 @@ class CheckVars {
 			}
 		}
 	}
-	
+
 	function checkFunctionName( $token, $warn = 'defer' ) {
 		if ( !isset( $token['base'] ) ) {
 			// Local function
-			
+
 			if ( substr( $token[1], 0, 2 ) == 'wf' ) {
 				// MediaWiki function
 				// TODO: List them.
@@ -641,30 +641,30 @@ class CheckVars {
 			if ( $token[1] == 'dieout' && in_array( $this->mFunction, array( 'setup_database', 'initial_setup', 'setup_plpgsql' ) ) ) {
 				return;
 			}
-			
+
 			if ( isset( self::$poisonedFunctions[ strtolower($token[1]) ] ) ) {
 				$this->warning( "Poisoned function {$token[1]} called from {$this->mFunction} in line {$token[2]}: " . self::$poisonedFunctions[strtolower($token[1])] );
 				return;
 			}
-			
+
 			if ( function_exists( $token[1] ) ) {
 				return;
 			}
 			if ( in_array( $token[1], $this->mKnownFunctions ) ) {
 				return;
 			}
-			
+
 			if ( self::inIgnoreList( $token[1], self::$functionIgnorePrefixes ) ) {
 				return;
 			}
-			
+
 			if ( $warn == 'now' ) {
 				$this->warning( "Unavailable function {$token[1]} in line {$token[2]}" );
 			} else if ( $warn == 'defer' ) {
 				// Defer to the end of the file
 				$this->mUnknownFunctions[] = $token;
 			}
-			
+
 		}
 	}
 
@@ -674,7 +674,7 @@ class CheckVars {
 		}
 		$this->mUnknownFunctions = array();
 	}
-	
+
 	/* Returns a class name, or null if it couldn't guess */
 	function guessClassName( $token ) {
 		static $wellKnownVars = array(
@@ -691,7 +691,7 @@ class CheckVars {
 			'$sk' => 'Skin',
 			'$wgMemc' => 'MWMemcached',
 		);
-			
+
 		if ( $token[0] == T_VARIABLE ) {
 			if ( isset( $wellKnownVars[ $token[1] ] ) ) {
 				return $wellKnownVars[ $token[1] ];
@@ -704,9 +704,9 @@ class CheckVars {
 				return $this->mClass;
 			if ( ( $token[1] == 'parent' ) && !isset( $token['base'] ) )
 				return $this->getParentName( $token );
-			
+
 			$name = $token[1];
-			
+
 			if ( $token[1][0] == 'm' )  // member
 				$name = substr( $token[1], 1 );
 		} else {
@@ -766,7 +766,7 @@ class CheckVars {
 			/* Skip the error about $site and $lang in Maintenance.php */
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -812,7 +812,7 @@ class CheckVars {
 	}
 
 	/**
-	 * Returns a 
+	 * Returns a
 	 * @param  $token Token holding the class name
 	 * @param  $warn  A value from 'no', 'defer', 'now¡
 	 * @return mixed  The class name if it is found, false otherwise
@@ -860,7 +860,7 @@ class CheckVars {
 		}
 		return false;
 	}
-	
+
 	function getParentName( $token ) {
 		if ( !is_null( $this->mParent ) ) {
 			return $this->mParent;
@@ -868,17 +868,17 @@ class CheckVars {
 		$this->warning( "Use of parent in orphan class {$this->mClass} in line $token[2]" );
 		return "-";
 	}
-	
+
 	/**
-	 * Sets a number of files which are considered as having always been 
-	 * loaded before any loaded one. Any functions/classes defined there 
+	 * Sets a number of files which are considered as having always been
+	 * loaded before any loaded one. Any functions/classes defined there
 	 * will be assumed to be available.
 	 */
 	function preloadFiles( $files ) {
 		$this->initVars();
 		$this->mFilename = '__preload';
 		$this->mTokens = array( T_OPEN_TAG, '<?php', 0 );
-		
+
 		for ( $i = 1; $i <= count( $files ); $i++ ) {
 			$this->mTokens[] = array( T_REQUIRE, 'require', $i );
 			$this->mTokens[] = array( T_CONSTANT_ENCAPSED_STRING, "'" . $files[$i - 1] . "'", $i );
