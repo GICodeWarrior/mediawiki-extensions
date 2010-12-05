@@ -59,7 +59,14 @@ class CheckVars {
 	# Ignore functions with these prefixes:
 	static $functionIgnorePrefixes = array( "pg_", "oci_", "db2_", "gmp_", "sqlsrv_", "exif_", "fss_", "tidy_",
 			"apc_", "eaccelerator_", "xcache_", "wincache_", "apache_", "xdiff_", "wikidiff2_", "parsekit_", 
-			"wddx_", "setproctitle", "utf8_", "normalizer_", "dba_", "pcntl_", "finfo_" );
+			"wddx_", "setproctitle", "utf8_", "normalizer_", "dba_", "pcntl_", "finfo_", "mime_content_type",
+			# GD and images functions:
+			"imagecreatetruecolor", "imagecolorallocate", "imagecolortransparent", "imagealphablending",
+			"imagecopyresized", "imagesx", "imagesy", "imagecopyresampled", "imagesavealpha",
+			"imagedestroy", "imageinterlace", "imagejpeg",
+			# readline is usualy not available since linking libreadline with PHP breaks GPL license
+			"readline",
+		);
 	# Functions to be avoided. Insert in lowercase.
 	static $poisonedFunctions = array(
 		'addslashes' => 'Replace with Database::addQuotes/strencode',
