@@ -11,10 +11,6 @@
 
 require_once "$IP/includes/SpecialPage.php";
 
-/* Extension variables */
-// FIXME
-$wgExtensionFunctions[] = 'wfSetupDSMWGenExhibits';
-
 class DSMWGeneralExhibits extends SpecialPage {
 
 	public function __construct() {
@@ -150,18 +146,6 @@ class DSMWGeneralExhibits extends SpecialPage {
         $wgOut->addWikiText( $wikitext );
 
         return false;
-}// end execute fct
+	}// end execute fct
 
-
-}
-
-/* Global function */
-# Called from $wgExtensionFunctions array when initialising extensions
-function wfSetupDSMWGenExhibits() {
-    global $wgUser;
-    SpecialPage::addPage( new DSMWGeneralExhibits() );
-    if ( $wgUser->isAllowed( "DSMWGeneralExhibits" ) ) {
-        global $wgDSMWGenExhibits;
-        $wgDSMWGenExhibits = new DSMWGeneralExhibits();
-    }
 }

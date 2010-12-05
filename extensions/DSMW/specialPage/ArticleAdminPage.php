@@ -9,9 +9,6 @@
 require_once "$IP/includes/SpecialPage.php";
 require_once "$wgDSMWIP/files/utils.php";
 
-/* Extension variables */
-$wgExtensionFunctions[] = "wfSetupAdminPage";
-
 class ArticleAdminPage extends SpecialPage {
 
 	public function __construct() {
@@ -740,16 +737,4 @@ publish the modifications of the "' . $title . '" article
         return $article;
     }
 
-
-} // end class
-
-/* Global function */
-# Called from $wgExtensionFunctions array when initialising extensions
-function wfSetupAdminPage() {
-    global $wgUser;
-    SpecialPage::addPage( new ArticleAdminPage );
-    if ( $wgUser->isAllowed( "ArticleAdminPage" ) ) {
-        global $wgArticleAdminPage;
-        $wgArticleAdminPage = new ArticleAdminPage();
-    }
-}
+} 
