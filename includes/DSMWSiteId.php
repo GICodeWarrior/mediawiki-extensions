@@ -47,24 +47,25 @@ class DSMWSiteId {
         return strtoupper( $serverId );
     }
 
-/**
- * loads the siteId from the DB
- * @return <string> siteId
- */
+	/**
+	 * loads the siteId from the DB
+	 * @return <string> siteId
+	 */
     private function loadServerId() {
         $db = wfGetDB( DB_SLAVE );
         $res = $db->selectField( 'p2p_params', 'server_id' );
         return $res;
     }
 
-/**
- * stores the siteId to the DB
- * @param <type> $ServerId
- */
+	/**
+	 * stores the siteId to the DB
+	 * @param <type> $ServerId
+	 */
     private function store( $ServerId ) {
         $dbw = wfGetDB( DB_MASTER );
         $dbw->update( 'p2p_params', array(
             'server_id'        => $ServerId,
             ), '*', __METHOD__ );
     }
+    
 }

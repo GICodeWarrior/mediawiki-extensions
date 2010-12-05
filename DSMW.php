@@ -99,6 +99,7 @@ $wgAutoloadClasses['DSMWExhibits'] = "$wgDSMWIP/includes/DSMWExhibits.php";
 
 $wgExtensionFunctions[] = 'dsmwgSetupFunction';
 
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'DSMWHooks::onExtensionSchemaUpdates';
 $wgHooks['UnknownAction'][] = 'DSMWHooks::onUnknownAction';
 $wgHooks['EditPage::attemptSave'][] = 'DSMWHooks::onAttemptSave';
 $wgHooks['EditPageBeforeConflictDiff'][] = 'DSMWHooks::onEditConflict';

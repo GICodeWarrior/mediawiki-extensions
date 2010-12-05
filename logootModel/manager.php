@@ -4,6 +4,7 @@
  * Used to seperated the data access layer
  *
  * @copyright INRIA-LORIA-ECOO project
+ * 
  * @author CUCUTEANU
  */
 class manager {
@@ -23,6 +24,7 @@ class manager {
                 return new boModel();
             }
         } catch ( Exception $e ) {
+        	die($e->getMessage());
             throw new MWException( __METHOD__ . ' db access problems,
 if this page existed before the DSMW installation,
 maybe it has not been processed by DSMW' );
@@ -47,4 +49,5 @@ maybe it has not been processed by DSMW' );
             throw new MWException( __METHOD__ . ' db access problems' );
         }
     }
+    
 }
