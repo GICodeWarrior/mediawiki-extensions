@@ -133,7 +133,7 @@ function get_same_level_html ( $t ) {
 function try_information_template ( $text ) {
   global $titles ;
   $matches = array () ;
-  preg_match_all ( '/span\s+id="field-[^"]+"/' , $text , &$matches ) ;
+  preg_match_all ( '/span\s+id="field-[^"]+"/' , $text , $matches ) ;
   $matches = $matches[0] ;
   if ( count ( $matches ) == 0 ) return false ;
 
