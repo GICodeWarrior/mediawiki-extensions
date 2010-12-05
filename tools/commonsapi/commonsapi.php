@@ -141,7 +141,7 @@ function try_information_template ( $text ) {
   foreach ( $matches AS $m ) {
     $t = array_pop ( explode ( $m , $text , 2 ) ) ;
     $title = array () ;
-    preg_match ( '/\s+title="[^"]*"/' , $t , &$title ) ;
+    preg_match ( '/\s+title="[^"]*"/' , $t , $title ) ;
     $title = $title[0] ;
     $title = array_pop ( explode ( 'title="' , $title , 2 ) ) ;
     $title = substr ( $title , 0 , -1 ) ;
@@ -164,7 +164,7 @@ function try_information_template ( $text ) {
 function try_fileinfo_template ( $text ) {
   global $titles ;
   $matches = array () ;
-  preg_match_all ( '/th[^>]+id="fileinfotpl_[^"]+"/' , $text , &$matches ) ;
+  preg_match_all ( '/th[^>]+id="fileinfotpl_[^"]+"/' , $text , $matches ) ;
   $matches = $matches[0] ;
 
   if ( count ( $matches ) == 0 ) return false ;
@@ -320,7 +320,7 @@ unset ( $titles['description'] ) ;
 // Detect descriptions in many languages
 $language_names = array () ;
 $matches = array () ;
-preg_match_all ( '/div\s+class="description [a-z-]+"/' , $text , &$matches ) ;
+preg_match_all ( '/div\s+class="description [a-z-]+"/' , $text , $matches ) ;
 $matches = $matches[0] ;
 foreach ( $matches AS $m ) {
 	$tx = explode ( $m , $text ) ;
@@ -366,7 +366,7 @@ if ( $get_languages != '' ) {
 // Categories
 $self_made = '' ;
 $cats = array () ;
-preg_match_all ( '/ title="Category:[^"]+"\s*>/' , $text , &$matches ) ;
+preg_match_all ( '/ title="Category:[^"]+"\s*>/' , $text , $matches ) ;
 $matches = $matches[0] ;
 foreach ( $matches AS $m ) {
 	$m = array_pop ( explode ( ':' , $m , 2 ) ) ;
@@ -416,11 +416,11 @@ $location = '' ;
 $lat = '' ;
 $lon = '' ;
 $matches = array () ;
-preg_match_all ( '/<span\s+class="latitude">([0-9\.]+)<\/span>([^<]*)/' , $text , &$matches ) ;
+preg_match_all ( '/<span\s+class="latitude">([0-9\.]+)<\/span>([^<]*)/' , $text , $matches ) ;
 if ( count ( $matches ) == 3 ) {
 	$lat = $matches[1][0] . $matches[2][0] ;
 	$matches = array () ;
-	preg_match_all ( '/<span\s+class="longitude">([0-9\.]+)<\/span>([^<]*)/' , $text , &$matches ) ;
+	preg_match_all ( '/<span\s+class="longitude">([0-9\.]+)<\/span>([^<]*)/' , $text , $matches ) ;
 	if ( count ( $matches ) == 3 ) {
 		$lon = $matches[1][0] . $matches[2][0] ;
 	}
@@ -428,7 +428,7 @@ if ( count ( $matches ) == 3 ) {
 
 if ( $lat . $lon == '' ) {
   $matches = array () ;
-  preg_match_all ( '/<span\s+class="geo"[^>]*>([\-0-9\.]+)\s*;\s*([\-0-9\.]+)<\/span>/' , $text , &$matches ) ;
+  preg_match_all ( '/<span\s+class="geo"[^>]*>([\-0-9\.]+)\s*;\s*([\-0-9\.]+)<\/span>/' , $text , $matches ) ;
   if ( count ( $matches ) == 3 ) {
     $lat = $matches[1][0] ;
     $lon = $matches[2][0] ;
