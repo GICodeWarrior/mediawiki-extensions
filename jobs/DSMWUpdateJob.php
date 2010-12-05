@@ -83,7 +83,7 @@ and `page_title` != \"Administration_push_site_addition\"";
                 $pageText = $lastRev->getText();
 
                 // load an empty model
-                $model = manager::loadModel( 0 );
+                $model = DSMWRevisionManager::loadModel( 0 );
                 $logoot = new logootEngine( $model );
 
                 $listOp = $logoot->generate( "", $pageText );
@@ -111,7 +111,7 @@ and `page_title` != \"Administration_push_site_addition\"";
                     $patch->storePage( $lastRev->getTitle()->getText(), $lastRev->getId() );
                 }
                 
-                manager::storeModel( $lastRev->getId(), $sessionId = session_id(), $modelAfterIntegrate, $blobCB = 0 );
+                DSMWRevisionManager::storeModel( $lastRev->getId(), $sessionId = session_id(), $modelAfterIntegrate, $blobCB = 0 );
             }
         }
 

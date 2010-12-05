@@ -372,6 +372,7 @@ final class DSMWHooks {
 	        $title = Title::newFromText( 'Special:ArticleAdminPage' );
 	        $article = new Article( $title );
 	        $article->doRedirect();
+	        
 	        return false;
 	    }
 	
@@ -381,12 +382,17 @@ final class DSMWHooks {
 	        // wfDebugLog('p2p','Create pull '.$_POST['pullname'].' with pushName '.$_POST['pushname'].' on '.$_POST['url']);
 	        // $url = rtrim($_POST['url'], "/"); //removes the final "/" if there is one
 	        $urlTmp = $_POST['url'];
-	        if ( utils::isValidURL( $urlTmp ) == false )
-	            throw new MWException( __METHOD__ . ': ' . $urlTmp . ' seems not to be an url' ); // throws an exception if $url is invalid
-	
-	            $res = utils::parsePushURL( $urlTmp );
-	        if ( $res === false || empty( $res ) )
-	            throw new MWException( __METHOD__ . ': URL format problem' );
+	        if ( utils::isValidURL( $urlTmp ) == false ) {
+	        	// throws an exception if $url is invalid
+	        	throw new MWException( __METHOD__ . ': ' . $urlTmp . ' seems not to be an url' ); 
+	        }
+	            
+            $res = utils::parsePushURL( $urlTmp );
+            
+	        if ( $res === false || empty( $res ) ) {
+	        	throw new MWException( __METHOD__ . ': URL format problem' );
+	        }
+	            
 	        $pushname = $res[0];
 	        $url = $res[1];
 	
@@ -489,12 +495,15 @@ final class DSMWHooks {
 	            if ( strpos( $cs, "<?xml version=\"1.0\"?>" ) === false ) {
 	                $cs = utils::file_get_contents_curl( utils::lcfirst( $relatedPushServer ) . "/api.php5?action=query&meta=changeSet&cspushName=" . $nameWithoutNS . '&cschangeSet=' . $previousCSID . '&format=xml' );
 	            }
+	            
 	            if ( strpos( $cs, "<?xml version=\"1.0\"?>" ) === false ) {
 	            	$cs = false;
 	            }
 	
-	            if ( $cs === false )
-	                throw new MWException( __METHOD__ . ': Cannot connect to Push Server (ChangeSet API)' );
+	            if ( $cs === false ) {
+	            	throw new MWException( __METHOD__ . ': Cannot connect to Push Server (ChangeSet API)' );
+	            }
+
 	            $cs = trim( $cs );
 	            $dom = new DOMDocument();
 	            $dom->loadXML( $cs );
@@ -627,7 +636,7 @@ final class DSMWHooks {
 	    	return true;
 	    }
 	
-	    $model = manager::loadModel( $rev_id );
+	    $model = DSMWRevisionManager::loadModel( $rev_id );
 	    $logoot = new logootEngine( $model );
 	
 	    // get the revision with the edittime==>V0
@@ -641,10 +650,7 @@ final class DSMWHooks {
 	    }
 	
 	    if ( $conctext != $text ) {// if last revision is not V0, there is editing conflict
-	//        wfDebugLog('testlog',' -> CONCURRENCE: ');
-	//        wfDebugLog('testlog',' -> +'.$conctext.'+('.$rev_id.') ts '.$lastRevision->getTimestamp());
-	//        wfDebugLog('testlog',' -> +'.$text.'+('.$rev_id1.') ts '.$editpage->edittime.' '.$rev->getTimestamp());
-	        $model1 = manager::loadModel( $rev_id1 );
+	        $model1 = DSMWRevisionManager::loadModel( $rev_id1 );
 	        $logoot1 = new logootEngine( $model1 );
 	        $listOp1 = $logoot1->generate( $text, $actualtext );
 	        // creation Patch P2
@@ -675,7 +681,7 @@ final class DSMWHooks {
 	    
 	    $revId = utils::getNewArticleRevId();
 	    wfDebugLog( 'p2p', ' -> store model rev : ' . $revId . ' session ' . session_id() . ' model ' . $modelAfterIntegrate->getText() );
-	    manager::storeModel( $revId + 1, $sessionId = session_id(), $modelAfterIntegrate, $blobCB = 0 );
+	    DSMWRevisionManager::storeModel( $revId + 1, $sessionId = session_id(), $modelAfterIntegrate, $blobCB = 0 );
 	
 	    $patch->storePage( $title, $revId + 1 ); // stores the patch in a wikipage
 	    $editpage->textbox1 = $modelAfterIntegrate->getText();
@@ -713,10 +719,10 @@ final class DSMWHooks {
 	        }
 	        
 	        $revID = $lastRevision->getId();
-	        $model = manager::loadModel( $rev_id );
+	        $model = DSMWRevisionManager::loadModel( $rev_id );
 	        $patch = new Patch( false, true, null, $urlServer, $rev_id, null, null, null, $localfile->mime, $localfile->size, urldecode( $localfile->url ), null );
 	        $patch->storePage( $localfile->getTitle(), $revID ); // stores the patch in a wikipage
-	        manager::storeModel( $revID, $sessionId = session_id(), $model, $blobCB = 0 );
+	        DSMWRevisionManager::storeModel( $revID, $sessionId = session_id(), $model, $blobCB = 0 );
 	    }
 	    
 	    return true;

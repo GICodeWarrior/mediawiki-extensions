@@ -39,12 +39,14 @@ class DSMWAdmin extends SpecialPage {
 		/**** Get status of refresh job, if any ****/
         $dbr =& wfGetDB( DB_SLAVE );
         $row = $dbr->selectRow( 'job', '*', array( 'job_cmd' => 'DSMWUpdateJob' ), __METHOD__ );
+        
         if ( $row !== false ) { // similar to Job::pop_type, but without deleting the job
             $title = Title::makeTitleSafe( $row->job_namespace, $row->job_title );
             $updatejob = Job::factory( $row->job_cmd, $title, Job::extractBlob( $row->job_params ), $row->job_id );
         } else {
             $updatejob = NULL;
         }
+        
         $row1 = $dbr->selectRow( 'job', '*', array( 'job_cmd' => 'DSMWPropertyTypeJob' ), __METHOD__ );
         if ( $row1 !== false ) { // similar to Job::pop_type, but without deleting the job
             $title = Title::makeTitleSafe( $row1->job_namespace, $row1->job_title );
@@ -57,8 +59,6 @@ class DSMWAdmin extends SpecialPage {
         $action = $wgRequest->getText( 'action' );
 
         if ( $action == 'logootize' ) {
-
-
             if ( $updatejob === NULL ) { // careful, there might be race conditions here
                 $title = Title::makeTitle( NS_SPECIAL, 'DSMWAdmin' );
                 $newjob = new DSMWUpdateJob( $title );
@@ -67,7 +67,6 @@ class DSMWAdmin extends SpecialPage {
             } else {
                 $wgOut->addHTML( '<p><font color="red"><b>' . wfMsg( 'dsmw-special-admin-articleuprunning' ) . '</b></font></p>' );
             }
-
         }
 
         elseif ( $action == 'addProperties' ) {
