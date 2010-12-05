@@ -11,8 +11,7 @@ interface Clock {
 
     public function getValue();
 
-    public function setValue($i);
+    public function setValue( $i );
 
     public function incrementClock();
 }
-?>

@@ -1,5 +1,5 @@
 <?php
-if( !defined('MEDIAWIKI') ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 // Eclipse helper - will be ignored in production
     require_once( 'ApiQueryBase.php' );
 }
@@ -7,7 +7,7 @@ if( !defined('MEDIAWIKI') ) {
 /**
  * Description of ApiQueryPatchPush
  * return the list of all patch pushed by the pushName given by the pushName parameters
- * 
+ *
  * if pageName parameter is given, api return the list of patch concerned by this pageName
  * pushed by the pushName
  *
@@ -22,55 +22,55 @@ class ApiPatchPush extends ApiQueryBase {
         $this->run();
     }
 
-    public function encodeRequest($request) {
+    public function encodeRequest( $request ) {
         $req = str_replace(
-            array('-', '#', "\n", ' ', '/', '[', ']', '<', '>', '&lt;', '&gt;', '&amp;', '\'\'', '|', '&', '%', '?', '{', '}'),
-            array('-2D', '-23', '-0A', '-20', '-2F', '-5B', '-5D', '-3C', '-3E', '-3C', '-3E', '-26', '-27-27', '-7C', '-26', '-25', '-3F', '-7B', '-7D'), $request);
+            array( '-', '#', "\n", ' ', '/', '[', ']', '<', '>', '&lt;', '&gt;', '&amp;', '\'\'', '|', '&', '%', '?', '{', '}' ),
+            array( '-2D', '-23', '-0A', '-20', '-2F', '-5B', '-5D', '-3C', '-3E', '-3C', '-3E', '-26', '-27-27', '-7C', '-26', '-25', '-3F', '-7B', '-7D' ), $request );
         return $req;
     }
     private function run() {
         global $wgServerName, $wgScriptPath;
 
         $params = $this->extractRequestParams();
-        wfDebugLog('p2p',' - ApiQueryPatchPushed params '.$params['pushName']);
+        wfDebugLog( 'p2p', ' - ApiQueryPatchPushed params ' . $params['pushName'] );
 
-        $publishedInPush = getPublishedPatches($params['pushName']);
+        $publishedInPush = getPublishedPatches( $params['pushName'] );
         $published = null;
 
-        //filtered on published patch on page title
-        if(isset ($params['pageName'])) {
-            foreach ($publishedInPush as $patch) {
-               
+        // filtered on published patch on page title
+        if ( isset ( $params['pageName'] ) ) {
+            foreach ( $publishedInPush as $patch ) {
+
                 $patches = array();
-                $res = utils::getSemanticQuery('[[Patch:+]][[patchID::'.$patch.']][[onPage::'.$params['pageName'].']]');
+                $res = utils::getSemanticQuery( '[[Patch:+]][[patchID::' . $patch . ']][[onPage::' . $params['pageName'] . ']]' );
                 $count = $res->getCount();
-                for($i=0; $i<$count; $i++) {
+                for ( $i = 0; $i < $count; $i++ ) {
 
                     $row = $res->getNext();
-                    if ($row===false) break;
+                    if ( $row === false ) break;
                     $row = $row[0];
 
-                    $col = $row->getContent();//SMWResultArray object
-                    foreach($col as $object) {//SMWDataValue object
+                    $col = $row->getContent();// SMWResultArray object
+                    foreach ( $col as $object ) {// SMWDataValue object
                         $wikiValue = $object->getWikiValue();
                         $patches[] = $wikiValue;
                     }
                 }
-                if(count($patches)) {
+                if ( count( $patches ) ) {
                     $published[] = $patch;
                 }
             }
-            wfDebugLog('p2p','  -> isset($params[pageName]');
-        }else{
+            wfDebugLog( 'p2p', '  -> isset($params[pageName]' );
+        } else {
             $published = $publishedInPush;
-            wfDebugLog('p2p','  -> not isset($params[pageName]');
+            wfDebugLog( 'p2p', '  -> not isset($params[pageName]' );
         }
-        
+
         $result = $this->getResult();
-        if(!is_null($published)) {
-            $result->setIndexedTagName($published,'patch');
-            $result->addValue('query', $this->getModuleName(), $published);
-            $result->addValue(array('query',$this->getModuleName()),'pushFeed',$params['pushName']);
+        if ( !is_null( $published ) ) {
+            $result->setIndexedTagName( $published, 'patch' );
+            $result->addValue( 'query', $this->getModuleName(), $published );
+            $result->addValue( array( 'query', $this->getModuleName() ), 'pushFeed', $params['pushName'] );
         }
     }
 

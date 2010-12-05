@@ -16,7 +16,7 @@ class UploadFromUrl extends UploadBase {
 	 * user is allowed, pass on permissions checking to the parent.
 	 */
 	public static function isAllowed( $user ) {
-		if( !$user->isAllowed( 'upload_by_url' ) )
+		if ( !$user->isAllowed( 'upload_by_url' ) )
 			return 'upload_by_url';
 		return parent::isAllowed( $user );
 	}
@@ -32,7 +32,7 @@ class UploadFromUrl extends UploadBase {
 	/**
 	 * Entry point for API upload
 	 */
-	public function initialize( $name, $url, $na=false, $nb = false ) {
+	public function initialize( $name, $url, $na = false, $nb = false ) {
 		global $wgTmpDirectory;
 
 		$localFile = tempnam( $wgTmpDirectory, 'WEBUPLOAD' );
@@ -47,7 +47,7 @@ class UploadFromUrl extends UploadBase {
 	 */
 	public function initializeFromRequest( &$request ) {
 		$desiredDestName = $request->getText( 'wpDestFile' );
-		if( !$desiredDestName )
+		if ( !$desiredDestName )
 			$desiredDestName = $request->getText( 'wpUploadFileURL' );
 		return $this->initialize(
 			$desiredDestName,
@@ -59,8 +59,8 @@ class UploadFromUrl extends UploadBase {
 	/**
 	 * @param $request Object: WebRequest object
 	 */
-	public static function isValidRequest( $request ){
-		if( !$request->getVal( 'wpUploadFileURL' ) )
+	public static function isValidRequest( $request ) {
+		if ( !$request->getVal( 'wpUploadFileURL' ) )
 			return false;
 		// check that is a valid url:
 		return self::isValidUrl( $request->getVal( 'wpUploadFileURL' ) );
@@ -75,11 +75,11 @@ class UploadFromUrl extends UploadBase {
 	 * Do the real fetching stuff
 	 */
 	function fetchFile() {
-		if( !self::isValidUrl( $this->mUrl ) ) {
+		if ( !self::isValidUrl( $this->mUrl ) ) {
 			return Status::newFatal( 'upload-proto-error' );
 		}
 		$res = $this->curlCopy();
-		if( $res !== true ) {
+		if ( $res !== true ) {
 			return Status::newFatal( $res );
 		}
 		return Status::newGood();
@@ -94,16 +94,16 @@ class UploadFromUrl extends UploadBase {
 
 		# Open temporary file
 		$this->mCurlDestHandle = @fopen( $this->mTempPath, "wb" );
-		if( $this->mCurlDestHandle === false ) {
+		if ( $this->mCurlDestHandle === false ) {
 			# Could not open temporary file to write in
 			return 'upload-file-error';
 		}
 
 		$ch = curl_init();
-		curl_setopt( $ch, CURLOPT_HTTP_VERSION, 1.0); # Probably not needed, but apparently can work around some bug
-		curl_setopt( $ch, CURLOPT_TIMEOUT, 10); # 10 seconds timeout
-		curl_setopt( $ch, CURLOPT_LOW_SPEED_LIMIT, 512); # 0.5KB per second minimum transfer speed
-		curl_setopt( $ch, CURLOPT_URL, $this->mUrl);
+		curl_setopt( $ch, CURLOPT_HTTP_VERSION, 1.0 ); # Probably not needed, but apparently can work around some bug
+		curl_setopt( $ch, CURLOPT_TIMEOUT, 10 ); # 10 seconds timeout
+		curl_setopt( $ch, CURLOPT_LOW_SPEED_LIMIT, 512 ); # 0.5KB per second minimum transfer speed
+		curl_setopt( $ch, CURLOPT_URL, $this->mUrl );
 		curl_setopt( $ch, CURLOPT_WRITEFUNCTION, array( $this, 'uploadCurlCallback' ) );
 		curl_exec( $ch );
 		$error =  curl_errno( $ch );
@@ -112,7 +112,7 @@ class UploadFromUrl extends UploadBase {
 		fclose( $this->mCurlDestHandle );
 		unset( $this->mCurlDestHandle );
 
-		if( $error )
+		if ( $error )
 			return "upload-curl-error$errornum";
 
 		return true;
@@ -128,7 +128,7 @@ class UploadFromUrl extends UploadBase {
 		global $wgMaxUploadSize;
 		$length = strlen( $data );
 		$this->mFileSize += $length;
-		if( $this->mFileSize > $wgMaxUploadSize ) {
+		if ( $this->mFileSize > $wgMaxUploadSize ) {
 			return 0;
 		}
 		fwrite( $this->mCurlDestHandle, $data );

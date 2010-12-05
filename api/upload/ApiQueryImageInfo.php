@@ -46,7 +46,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 
 		if ( $params['urlheight'] != - 1 && $params['urlwidth'] == - 1 )
 			$this->dieUsage( "iiurlheight cannot be used without iiurlwidth", 'iiurlwidth' );
-		
+
 		if ( $params['urlwidth'] != - 1 ) {
 			$scale = array();
 			$scale['width'] = $params['urlwidth'];
@@ -84,7 +84,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				// Skip redirects
 				if ( $img->getOriginalTitle()->isRedirect() )
 					continue;
-				
+
 				$start = $skip ? $fromTimestamp : $params['start'];
 				$pageId = $pageIds[NS_IMAGE][ $img->getOriginalTitle()->getDBkey() ];
 
@@ -161,7 +161,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 					break;
 				$skip = false;
 			}
-			
+
 			$data = $this->getResultData();
 			foreach ( $data['query']['pages'] as $pageid => $arr ) {
 				if ( !isset( $arr['imagerepository'] ) )
@@ -216,16 +216,16 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		}
 		if ( isset( $prop['mime'] ) )
 			$vals['mime'] = $file->getMimeType();
-		
+
 		if ( isset( $prop['archivename'] ) && $file->isOld() )
 			$vals['archivename'] = $file->getArchiveName();
-			
+
 		if ( isset( $prop['bitdepth'] ) )
 			$vals['bitdepth'] = $file->getBitDepth();
 
 		return $vals;
 	}
-	
+
 	public static function processMetaData( $metadata, $result )
 	{
 		$retval = array();
@@ -281,7 +281,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'continue' => null,
 		);
 	}
-	
+
 	/**
 	 * Returns all possible parameters to iiprop
 	 */
@@ -319,7 +319,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'Returns image information and upload history'
 		);
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'iiurlwidth', 'info' => 'iiurlheight cannot be used without iiurlwidth' ),

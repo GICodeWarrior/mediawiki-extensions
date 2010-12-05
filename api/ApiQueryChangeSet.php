@@ -1,5 +1,5 @@
 <?php
-if( !defined('MEDIAWIKI') ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 // Eclipse helper - will be ignored in production
     require_once( 'ApiQueryBase.php' );
 }
@@ -8,7 +8,7 @@ if( !defined('MEDIAWIKI') ) {
 /**
  * Description of ApiQueryPatch
  * return the changeSet which has the previous changeSet given by
- * the parametere changeSet 
+ * the parametere changeSet
  *
  * @copyright INRIA-LORIA-ECOO project
  * @author hantz
@@ -21,50 +21,50 @@ class ApiQueryChangeSet extends ApiQueryBase {
         $this->run();
     }
 
-    public function encodeRequest($request) {
+    public function encodeRequest( $request ) {
         $req = str_replace(
-            array('-', '#', "\n", ' ', '/', '[', ']', '<', '>', '&lt;', '&gt;', '&amp;', '\'\'', '|', '&', '%', '?', '{', '}'),
-            array('-2D', '-23', '-0A', '-20', '-2F', '-5B', '-5D', '-3C', '-3E', '-3C', '-3E', '-26', '-27-27', '-7C', '-26', '-25', '-3F', '-7B', '-7D'), $request);
+            array( '-', '#', "\n", ' ', '/', '[', ']', '<', '>', '&lt;', '&gt;', '&amp;', '\'\'', '|', '&', '%', '?', '{', '}' ),
+            array( '-2D', '-23', '-0A', '-20', '-2F', '-5B', '-5D', '-3C', '-3E', '-3C', '-3E', '-26', '-27-27', '-7C', '-26', '-25', '-3F', '-7B', '-7D' ), $request );
         return $req;
     }
     private function run() {
         global $wgServerName, $wgScriptPath;
-        wfDebugLog('p2p','ApiQueryChangeSet');
+        wfDebugLog( 'p2p', 'ApiQueryChangeSet' );
         $params = $this->extractRequestParams();
 
-       
-        $res = utils::getSemanticQuery('[[inPushFeed::PushFeed:'.$params['pushName'].']][[previousChangeSet::'.$params['changeSet'].']]', '?changeSetID
-?hasPatch');
+
+        $res = utils::getSemanticQuery( '[[inPushFeed::PushFeed:' . $params['pushName'] . ']][[previousChangeSet::' . $params['changeSet'] . ']]', '?changeSetID
+?hasPatch' );
         $count = $res->getCount();
-        for($i=0; $i<$count; $i++) {
+        for ( $i = 0; $i < $count; $i++ ) {
 
             $row = $res->getNext();
-            if ($row===false) break;
+            if ( $row === false ) break;
             $changesetId = $row[1];
-            $col = $changesetId->getContent();//SMWResultArray object
-            foreach($col as $object) {//SMWDataValue object
+            $col = $changesetId->getContent();// SMWResultArray object
+            foreach ( $col as $object ) {// SMWDataValue object
                 $wikiValue = $object->getWikiValue();
                 $results[1] = $wikiValue;
             }
             $hasPatch = $row[2];
-            $col = $hasPatch->getContent();//SMWResultArray object
-            foreach($col as $object) {//SMWDataValue object
+            $col = $hasPatch->getContent();// SMWResultArray object
+            foreach ( $col as $object ) {// SMWDataValue object
                 $wikiValue = $object->getWikiValue();
                 $patches[] = $wikiValue;
             }
-            $results[2]=$patches;
+            $results[2] = $patches;
         }
 
         $result = $this->getResult();
 
         $CSID = $results[1];
-        wfDebugLog('p2p','  -> CSID : '.$CSID);
-        if($CSID) {
+        wfDebugLog( 'p2p', '  -> CSID : ' . $CSID );
+        if ( $CSID ) {
             $data = $results[2];
 
-            $result->setIndexedTagName($data, 'patch');
-            $result->addValue(array('query',$this->getModuleName()),'id',$CSID);
-            $result->addValue('query', $this->getModuleName(), $data);
+            $result->setIndexedTagName( $data, 'patch' );
+            $result->addValue( array( 'query', $this->getModuleName() ), 'id', $CSID );
+            $result->addValue( 'query', $this->getModuleName(), $data );
         }
     }
 

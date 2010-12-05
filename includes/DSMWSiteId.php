@@ -1,11 +1,11 @@
 <?php
-/* 
+/*
  * @copyright INRIA-LORIA-SCORE Team
  * @author muller jean-philippe
  */
 
 /**
- * Singleton used to manage the siteID 
+ * Singleton used to manage the siteID
  *
  * @author mullejea
  */
@@ -18,16 +18,16 @@ class DSMWSiteId {
         $this->_SiteId = $this->getId();
     }
 
-    public static function getInstance(){
-        if(is_null(self::$_instance)){
+    public static function getInstance() {
+        if ( is_null( self::$_instance ) ) {
             self::$_instance = new DSMWSiteId();
         }
 
         return self::$_instance;
     }
 
-    public function getSiteId(){
-        return strtoupper($this->_SiteId);
+    public function getSiteId() {
+        return strtoupper( $this->_SiteId );
     }
 
     /**
@@ -37,23 +37,23 @@ class DSMWSiteId {
      */
     private function getId() {
         $serverId = $this->loadServerId();
-        if ($serverId===false) {
-            throw new MWException( __METHOD__.': Can\'t get the SiteId from the DB!');
+        if ( $serverId === false ) {
+            throw new MWException( __METHOD__ . ': Can\'t get the SiteId from the DB!' );
         }
-        if($serverId=="0") {
-            $serverId = md5(uniqid(mt_rand(), true));
-            $this->store(strtoupper($serverId));
+        if ( $serverId == "0" ) {
+            $serverId = md5( uniqid( mt_rand(), true ) );
+            $this->store( strtoupper( $serverId ) );
         }
-        return strtoupper($serverId);
+        return strtoupper( $serverId );
     }
 
 /**
  * loads the siteId from the DB
  * @return <string> siteId
  */
-    private function loadServerId(){
+    private function loadServerId() {
         $db = wfGetDB( DB_SLAVE );
-        $res = $db->selectField('p2p_params','server_id');
+        $res = $db->selectField( 'p2p_params', 'server_id' );
         return $res;
     }
 
@@ -61,11 +61,10 @@ class DSMWSiteId {
  * stores the siteId to the DB
  * @param <type> $ServerId
  */
-    private function store($ServerId){
+    private function store( $ServerId ) {
         $dbw = wfGetDB( DB_MASTER );
         $dbw->update( 'p2p_params', array(
             'server_id'        => $ServerId,
             ), '*', __METHOD__ );
     }
 }
-?>

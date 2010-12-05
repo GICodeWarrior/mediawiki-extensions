@@ -7,10 +7,10 @@ require_once 'Clock.php';
  * @copyright INRIA-LORIA-ECOO project
  * @author muller jean-philippe
  */
-class persistentClock implements Clock{
+class persistentClock implements Clock {
 
     public $mClock;
-    
+
 
     public function __construct() {
       ;
@@ -25,12 +25,12 @@ class persistentClock implements Clock{
         return $this->mClock;
     }
 
-    public function setValue($i) {
+    public function setValue( $i ) {
         $this->mClock = $i;
     }
 
     public function incrementClock() {
-        $this->mClock = $this->mClock+1;
+        $this->mClock = $this->mClock + 1;
     }
 
 //    public function load() {
@@ -57,12 +57,12 @@ class persistentClock implements Clock{
 //
 //    }
 
-    function load(){
+    function load() {
     $db = wfGetDB( DB_SLAVE );
-        $this->mClock = $db->selectField('p2p_params','value');
+        $this->mClock = $db->selectField( 'p2p_params', 'value' );
 }
 
-function store(){
+function store() {
 
         $dbw = wfGetDB( DB_MASTER );
         $dbw->update( 'p2p_params', array(
@@ -72,4 +72,3 @@ function store(){
     }
 
 }
-?>

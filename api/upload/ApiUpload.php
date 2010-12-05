@@ -284,7 +284,7 @@ class ApiUpload extends ApiBase {
 			'log out and then log back in). Also you must get and send an edit token before doing any upload stuff.'
 		);
 	}
-	
+
     public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'uploaddisabled' ),
@@ -305,7 +305,7 @@ class ApiUpload extends ApiBase {
 			array( 'code' => 'internal-error', 'info' => 'An internal error occurred' ),
         ) );
 	}
-	
+
 	public function getTokenSalt() {
 		return '';
 	}

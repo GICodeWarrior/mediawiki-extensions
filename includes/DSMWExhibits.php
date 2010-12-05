@@ -10,7 +10,7 @@
  *
  */
 class DSMWExhibits {
-//Constructor
+// Constructor
     public function DSMWExhibits() {
         global $wgHooks;
 
@@ -18,27 +18,27 @@ class DSMWExhibits {
         $wgHooks['SkinTemplateTabs'][] = $this;
     }
 
-    public function onUnknownAction($action, $article) {
+    public function onUnknownAction( $action, $article ) {
         global $wgOut, $wgCachePages, $wgTitle, $wgDBPrefix, $wgDenyAccessMessage;
 
         $wgCachePages = false;
 
-        if($action == 'exhibit') {
-            $wgOut->setPageTitle(str_replace('_', ' ', $wgTitle->getDBKey()));
+        if ( $action == 'exhibit' ) {
+            $wgOut->setPageTitle( str_replace( '_', ' ', $wgTitle->getDBKey() ) );
 
-            if( $wgTitle->mNamespace == PULLFEED) {//if this page is a PullFeed
+            if ( $wgTitle->mNamespace == PULLFEED ) {// if this page is a PullFeed
                 $text = '==Patches pulled on the {{PAGENAME}}\'s channel==
-                        
+
 {{#ask: [[-hasPatch::<q>[[inPullFeed::PullFeed:{{PAGENAME}}]]</q>]]
 |?onPage
 |?modification date
-| format=exhibit 
-| views=timeline, table, tabular 
+| format=exhibit
+| views=timeline, table, tabular
 |sort=modification date
 |facets=onPage
 | limit=1000
 }}';
-            }elseif($wgTitle->mNamespace == PUSHFEED) {//if this page is a PushFeed
+            } elseif ( $wgTitle->mNamespace == PUSHFEED ) {// if this page is a PushFeed
                 $text = '==Patches pushed on the {{PAGENAME}}\'s channel==
 
 {{#ask: [[-hasPatch::<q>[[inPushFeed::PushFeed:{{PAGENAME}}]]</q>]]
@@ -51,11 +51,11 @@ class DSMWExhibits {
 | limit=1000
 }}';
             }
-            else {//articles in main namespace
+            else {// articles in main namespace
 
                 $text = '=={{PAGENAME}}\'s patches==
 
-{{#ask: [[Patch:+]] [[onPage::'.$wgTitle->getDBKey().']]
+{{#ask: [[Patch:+]] [[onPage::' . $wgTitle->getDBKey() . ']]
 |?patchID
 | ?modification date
 | format=exhibit
@@ -76,9 +76,9 @@ class DSMWExhibits {
 |mainlabel=ChangeSet
 }}
 ';
-            }//end else
+            }// end else
 
-            $wgOut->addWikiText($text);
+            $wgOut->addWikiText( $text );
 
 
 
@@ -94,14 +94,14 @@ class DSMWExhibits {
 
         $action = $wgRequest->getText( 'action' );
 
-        if($skin->mTitle->mNamespace == PATCH
+        if ( $skin->mTitle->mNamespace == PATCH
             //                || $skin->mTitle->mNamespace == PULLFEED
             //                || $skin->mTitle->mNamespace == PUSHFEED
             || $skin->mTitle->mNamespace == CHANGESET
         ) {
-        }else {
+        } else {
             $content_actions['exhibit'] = array(
-                'class' => ($action == 'exhibit') ? 'selected' : false,
+                'class' => ( $action == 'exhibit' ) ? 'selected' : false,
                 'text' => "dsmw exhibits",
                 'href' => $skin->mTitle->getLocalURL( 'action=exhibit' )
             );
@@ -111,4 +111,3 @@ class DSMWExhibits {
 
 
 }
-?>

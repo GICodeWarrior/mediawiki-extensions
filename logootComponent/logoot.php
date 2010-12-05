@@ -7,7 +7,7 @@
  * @author Jean-Philippe Muller
  */
 interface  logoot {
-    
+
      /*
       * Generates a list of operations and integrates it to the model
       * (generate includes integrate)
@@ -16,7 +16,7 @@ interface  logoot {
       *
       * return (array)$opList
       */
-    function generate($oldText, $newText);
+    function generate( $oldText, $newText );
 
     /**
      * Integrates an operation list to the model
@@ -24,8 +24,7 @@ interface  logoot {
      *
      * return (object)$modelafterIntegrate
      */
-    function integrate($opList);
-    
+    function integrate( $opList );
+
     function getModel();
 }
-?>
