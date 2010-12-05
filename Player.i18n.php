@@ -394,6 +394,15 @@ $messages['eu'] = array(
 	'player-goto-file' => 'fitxategia',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'player-file' => 'نام پرونده',
+	'player-goto-page' => 'صفحه',
+	'player-goto-file' => 'پرونده',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Str4nd
