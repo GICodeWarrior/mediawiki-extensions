@@ -9,7 +9,9 @@
  * 
  * @copyright 2009 INRIA-LORIA-ECOO project
  * 
- * @author jean-philippe muller & Morel Émile
+ * @author jean-philippe muller
+ * @author Morel Émile
+ * @author Jeroen De Dauw 
  */
 
 /**
@@ -34,8 +36,14 @@ require_once 'includes/IntegrationFunctions.php';
 
 define( 'DSMW_VERSION', '1.1 alpha' );
 
+// Load and register the StoryReview special page and register it's group.
+$wgSpecialPages['ArticleAdminPage'] = 'ArticleAdminPage';
 $wgSpecialPageGroups['ArticleAdminPage'] = 'dsmw_group';
+
+$wgSpecialPages['DSMWAdmin'] = 'DSMWAdmin';
 $wgSpecialPageGroups['DSMWAdmin'] = 'dsmw_group';
+
+$wgSpecialPages['DSMWGeneralExhibits'] = 'DSMWGeneralExhibits';
 $wgSpecialPageGroups['DSMWGeneralExhibits'] = 'dsmw_group';
 
 $wgGroupPermissions['*']['upload_by_url'] = true;

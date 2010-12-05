@@ -38,7 +38,3 @@ function compareMWVersion( $version1, $version2 = '1.14.0' ) {
     else
         return 0;
 }
-
-define( 'INT_MAX', '1000000000000000000000' ); // 22
-define( 'INT_MIN', '0' );
-

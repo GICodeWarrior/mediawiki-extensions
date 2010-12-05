@@ -9,9 +9,6 @@
 
 require_once "$IP/includes/SpecialPage.php";
 
-/* Extension variables */
-$wgExtensionFunctions[] = 'wfSetupDSMWAdmin';
-
 class DSMWAdmin extends SpecialPage {
 
     public function __construct() {
@@ -135,18 +132,6 @@ class DSMWAdmin extends SpecialPage {
 
         $wgOut->addHTML( $output );
         return false;
-}// end execute fct
+	}
 
-
-}// end class
-
-/* Global function */
-# Called from $wgExtensionFunctions array when initialising extensions
-function wfSetupDSMWAdmin() {
-    global $wgUser;
-    SpecialPage::addPage( new DSMWAdmin() );
-    if ( $wgUser->isAllowed( "DSMWAdmin" ) ) {
-        global $wgDSMWAdmin;
-        $wgDSMWAdmin = new DSMWAdmin();
-    }
 }

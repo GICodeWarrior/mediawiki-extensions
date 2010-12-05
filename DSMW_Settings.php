@@ -10,6 +10,9 @@ define( "PUSHFEED", 200 );
 define( "PULLFEED", 210 );
 define( "CHANGESET", 220 );
 
+define( 'INT_MAX', '1000000000000000000000' ); // 22
+define( 'INT_MIN', '0' );
+
 $wgExtraNamespaces[PATCH] = "Patch";
 $wgExtraNamespaces[PUSHFEED] = "PushFeed";
 $wgExtraNamespaces[PULLFEED] = "PullFeed";
