@@ -377,6 +377,13 @@ $messages['eu'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Sarrera akatsa!',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'chemFunctions_Name' => 'نام آیوپاک',
+);
+
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Str4nd
