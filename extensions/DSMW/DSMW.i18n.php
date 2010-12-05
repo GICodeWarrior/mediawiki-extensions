@@ -15,5 +15,9 @@ $messages = array();
 $messages['en'] = array(
 	'dsmw-desc' => 'Allows to create a network of Semantic MediaWiki servers that share common semantic wiki pages. ([http://www.dsmw.org www.dsmw.org])',
 
-	'specialpages-group-dsmw_group' => 'Distributed Semantic MediaWiki'
+	'specialpages-group-dsmw_group' => 'Distributed Semantic MediaWiki',
+	
+	'dsmw-special-admin' => 'DSMW Admin functions',
+	'dsmw-special-settings' => 'DSMW Settings',
+	'dsmw-special-exhibits' => 'DSMW general exhibits',
 );

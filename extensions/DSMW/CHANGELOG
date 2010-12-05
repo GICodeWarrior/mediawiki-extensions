@@ -1,5 +1,9 @@
 For more documentation, see http://www.dsmw.org
 
+== DSMW 1.1 ==
+
+* Stylized all files using the stylize.php script.
+
 == DSMW 1.0 ==
 * Tested with MW-1.16.0
 * better user interface with Ajax

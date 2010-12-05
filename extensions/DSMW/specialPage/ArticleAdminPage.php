@@ -13,19 +13,20 @@ require_once "$wgDSMWIP/files/utils.php";
 $wgExtensionFunctions[] = "wfSetupAdminPage";
 
 class ArticleAdminPage extends SpecialPage {
-// Constructor
-    function ArticleAdminPage() {
+
+	public function __construct() {
         global $wgHooks, $wgSpecialPages, $wgWatchingMessages;
+        
         # Add all our needed hooks
         $wgHooks["UnknownAction"][] = $this;
         $wgHooks["SkinTemplateTabs"][] = $this;
         $wgHooks['SkinTemplateNavigation'][] = $this;
-        SpecialPage::SpecialPage( 'ArticleAdminPage'/*, "block"*/ );// avec block => pasges speciales restreintes
-        wfLoadExtensionMessages( 'DSMW' );
+        
+        parent::__construct( 'ArticleAdminPage' );
     }
 
-    function getDescription() {
-        return "DSMW Admin functions";
+    public function getDescription() {
+        return wfMsg( 'dsmw-special-admin' );
     }
 
     /**
@@ -38,7 +39,7 @@ class ArticleAdminPage extends SpecialPage {
      * @global <String> $wgScriptPath
      * @return <bool>
      */
-    function execute() {
+    public function execute() {
         global $wgOut, $wgServerName, $wgScriptPath, $wgScriptExtension; /*, $wgSitename, $wgCachePages, $wgUser, $wgTitle, $wgDenyAccessMessage, $wgAllowAnonUsers, $wgRequest, $wgMessageCache, $wgWatchingMessages, $wgDBtype, $namespace_titles;*/
 
         $url = 'http://' . $wgServerName . $wgScriptPath . "/index{$wgScriptExtension}";

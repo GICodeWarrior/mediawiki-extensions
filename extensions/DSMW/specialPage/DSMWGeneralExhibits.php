@@ -1,6 +1,9 @@
 <?php
+
 /**
  * DSMW Special page
+ *
+ * TODO: only load when SRF is available?
  *
  * @copyright INRIA-LORIA-SCORE Team
  * @author  jean-Philippe Muller
@@ -9,19 +12,17 @@
 require_once "$IP/includes/SpecialPage.php";
 
 /* Extension variables */
-$wgExtensionFunctions[] = "wfSetupDSMWGenExhibits";
+// FIXME
+$wgExtensionFunctions[] = 'wfSetupDSMWGenExhibits';
 
 class DSMWGeneralExhibits extends SpecialPage {
-// Constructor
-    function DSMWGeneralExhibits() {
-        if ( defined( 'SRF_VERSION' ) ) {
-        SpecialPage::SpecialPage( 'DSMWGeneralExhibits' );
-        }
-        wfLoadExtensionMessages( 'DSMW' );
+
+	public function __construct() {
+		parent::__construct( 'DSMWGeneralExhibits' );
     }
 
-    function getDescription() {
-        return "DSMW general exhibits";
+    public function getDescription() {
+        return wfMsg( 'dsmw-special-exhibits' );
     }
 
     /**
@@ -33,7 +34,7 @@ class DSMWGeneralExhibits extends SpecialPage {
      *
      *
      */
-    function execute() {
+    public function execute() {
         global $wgOut, $wgRequest, $wgServerName, $wgScriptPath, $wgDSMWIP, $wgServerName, $wgScriptPath;
 
         // If the Semantic Results Format isn't installed, a blank warning page appears

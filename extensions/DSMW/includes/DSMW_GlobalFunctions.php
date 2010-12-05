@@ -213,6 +213,7 @@ The \"PUSH\" action publishes the (unpublished) modifications of the articles li
         wfDebugLog( 'p2p', 'push on ' );
         $patches = array();
         $tmpPatches = array();
+        
         if ( isset( $_POST['name'] ) ) {
             $name1 = $_POST['name'];
             if ( !is_array( $name1 ) )
@@ -221,13 +222,17 @@ The \"PUSH\" action publishes the (unpublished) modifications of the articles li
                 wfDebugLog( 'p2p', ' - ' . $push );
             }
         }
-        else
-            $name1 = "";
-        if ( $name1 == "" ) {
+        else {
+        	$name1 = '';
+        }
+            
+        if ( $name1 == '' ) {
             utils::writeAndFlush( '<p><b>No pushfeed selected!</b></p>' );
+            
             $title = Title::newFromText( 'Special:ArticleAdminPage' );
             $article = new Article( $title );
             $article->doRedirect();
+            
             return false;
         }
 
@@ -381,7 +386,6 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
         $article->doEdit( $newtext, $summary = "" );
         $article->doRedirect();
 
-
         return false;
     }
 
@@ -393,9 +397,11 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
             if ( !is_array( $name1 ) )
                 $name1 = array( $name1 );
         }
-        else
-            $name1 = "";
-        if ( $name1 == "" ) {
+        else {
+        	$name1 = '';
+        }
+            
+        if ( $name1 == '' ) {
             utils::writeAndFlush( '<p><b>No pullfeed selected!</b></p> ' );
             $title = Title::newFromText( 'Special:ArticleAdminPage' );
             $article = new Article( $title );
@@ -418,22 +424,27 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
             if ( $previousCSID == false ) {
                 $previousCSID = "none";
             }
+            
             wfDebugLog( 'p2p', '      -> pullHead : ' . $previousCSID );
+            
             $relatedPushServer = getPushURL( $name );
-            if ( is_null( $relatedPushServer )
-
-                )throw new MWException( __METHOD__ . ': no relatedPushServer url' );
+            if ( is_null( $relatedPushServer ) ) {
+            	throw new MWException( __METHOD__ . ': no relatedPushServer url' );
+            }
+            
             $namePush = getPushName( $name );
             $namePush = str_replace( ' ', '_', $namePush );
+            
             wfDebugLog( 'p2p', '      -> pushServer : ' . $relatedPushServer );
             wfDebugLog( 'p2p', '      -> pushName : ' . $namePush );
-            if ( is_null( $namePush )
-
-                )throw new MWException( __METHOD__ . ': no PushName' );
+            
+            if ( is_null( $namePush ) ) {
+            	throw new MWException( __METHOD__ . ': no PushName' );
+            }
+            
             // split NS and name
             preg_match( "/^(.+?)_*:_*(.*)$/S", $namePush, $m );
             $nameWithoutNS = $m[2];
-
 
             // $url = $relatedPushServer.'/api.php?action=query&meta=changeSet&cspushName='.$nameWithoutNS.'&cschangeSet='.$previousCSID.'&format=xml';
             // $url = $relatedPushServer."/api{$wgScriptExtension}?action=query&meta=changeSet&cspushName=".$nameWithoutNS.'&cschangeSet='.$previousCSID.'&format=xml';
@@ -446,9 +457,9 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
             if ( strpos( $cs, "<?xml version=\"1.0\"?>" ) === false ) {
                 $cs = utils::file_get_contents_curl( utils::lcfirst( $relatedPushServer ) . "/api.php5?action=query&meta=changeSet&cspushName=" . $nameWithoutNS . '&cschangeSet=' . $previousCSID . '&format=xml' );
             }
-            if ( strpos( $cs, "<?xml version=\"1.0\"?>" ) === false )
-                $cs = false;
-
+            if ( strpos( $cs, "<?xml version=\"1.0\"?>" ) === false ) {
+            	$cs = false;
+            }
 
             if ( $cs === false )
                 throw new MWException( __METHOD__ . ': Cannot connect to Push Server (ChangeSet API)' );
@@ -458,13 +469,16 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
 
             $changeSet = $dom->getElementsByTagName( 'changeSet' );
             $CSID = null;
+            
             foreach ( $changeSet as $cs ) {
                 if ( $cs->hasAttribute( "id" ) ) {
                     $CSID = $cs->getAttribute( 'id' );
                     $csName = $CSID;
                 }
             }
+            
             wfDebugLog( 'p2p', '     -> changeSet found ' . $CSID );
+            
             while ( $CSID != null ) {
                 // if(!utils::pageExist($CSID)) {
                 $listPatch = null;
@@ -518,10 +532,12 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
                 wfDebugLog( 'p2p', '  - redirect to ChangeSet:' . $csName );
             }
         }// end foreach list pullfeed
+        
         utils::writeAndFlush( '<p><b>End pull</b></p>' );
         $title = Title::newFromText( 'Special:ArticleAdminPage' );
         $article = new Article( $title );
         $article->doRedirect();
+        
         return false;
     } else {
         return true;
@@ -572,14 +588,15 @@ function attemptSave( $editpage ) {
     $urlServer = 'http://' . $wgServerName . $wgScriptPath;
 
     $ns = $editpage->mTitle->getNamespace();
-    if ( ( $ns == PATCH ) || ( $ns == PUSHFEED ) || ( $ns == PULLFEED ) || ( $ns == CHANGESET )
-
-        )return true;
+    if ( ( $ns == PATCH ) || ( $ns == PUSHFEED ) || ( $ns == PULLFEED ) || ( $ns == CHANGESET ) ) {
+    	return true;
+    }
 
     $actualtext = $editpage->textbox1; // V2
 
     $dbr = wfGetDB( DB_SLAVE );
     $lastRevision = Revision::loadFromTitle( $dbr, $editpage->mTitle );
+    
     if ( is_null( $lastRevision ) ) {
         $conctext = "";
         $rev_id = 0;
@@ -592,8 +609,9 @@ function attemptSave( $editpage ) {
     }
 
     // if there is no modification on the text
-    if ( $actualtext == $conctext )
-        return true;
+    if ( $actualtext == $conctext ) {
+    	return true;
+    }
 
     $model = manager::loadModel( $rev_id );
     $logoot = new logootEngine( $model );
@@ -618,10 +636,14 @@ function attemptSave( $editpage ) {
         // creation Patch P2
         $tmp = serialize( $listOp1 );
         $patch = new Patch( false, false, $listOp1, $urlServer, $rev_id1 );
-        if ( $editpage->mTitle->getNamespace() == 0 )
-            $title = $editpage->mTitle->getText();
-        else
-            $title = $editpage->mTitle->getNsText() . ':' . $editpage->mTitle->getText();
+        
+        if ( $editpage->mTitle->getNamespace() == 0 ) {
+        	$title = $editpage->mTitle->getText();
+        }
+        else {
+        	$title = $editpage->mTitle->getNsText() . ':' . $editpage->mTitle->getText();
+        }
+            
         // integration: diffs between VO and V2 into V1
 
         $modelAfterIntegrate = $logoot->integrate( $listOp1 );
@@ -630,6 +652,7 @@ function attemptSave( $editpage ) {
         $modelAfterIntegrate = $logoot->getModel();
         $tmp = serialize( $listOp );
         $patch = new Patch( false, false, $listOp, $urlServer, $rev_id1 );
+        
         if ( $editpage->mTitle->getNamespace() == 0 )
             $title = $editpage->mTitle->getText();
         else
@@ -672,22 +695,4 @@ function uploadComplete( $image ) {
         manager::storeModel( $revID, $sessionId = session_id(), $model, $blobCB = 0 );
     }
     return true;
-}
-
-function dsmwgSetupFunction() {
-    global $smwgNamespacesWithSemanticLinks;
-    
-    $smwgNamespacesWithSemanticLinks += array(
-        PATCH => true,
-        PUSHFEED => true,
-        PULLFEED => true,
-        CHANGESET => true
-	);
-
-    if ( defined( 'SRF_VERSION' ) ) {
-        global $wgDSMWExhibits;
-        if ( !is_object( $wgDSMWExhibits ) ) {
-        	$wgDSMWExhibits = new DSMWExhibits();
-        }
-    }
 }
