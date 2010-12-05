@@ -311,6 +311,7 @@ $messages['et'] = array(
 	'contrib-tracking-error' => 'Viga',
 	'contrib-tracking-submitting' => 'Maksevahendaja juurde suunamine...',
 	'contrib-tracking-continue' => 'Kui sind ei suunata automaatselt, klõpsa nuppu, et annetus PayPalis lõpule viia.',
+	'contrib-tracking-redirect' => 'Annetuse lõpule viimiseks suunatakse sind automaatselt PayPali.',
 	'contrib-tracking-button' => 'Jätka',
 );
 
@@ -638,6 +639,7 @@ $messages['lb'] = array(
 	'contrib-tracking-error-text' => 'Feeler bäi der Iwwermëttlung vum Formulaire',
 	'contrib-tracking-submitting' => 'Weiderschécken op de System fir ze bezuelen ...',
 	'contrib-tracking-continue' => 'Wann Dir net automatesch virugeleed gitt, da clickt w.e.g. op de Knäppchen fir ären Don iwwer PayPal ofzeschléissen.',
+	'contrib-tracking-redirect' => 'Dir gitt automatesch op PayPal virugeleet fir Ären Don ofzeschléissen.',
 	'contrib-tracking-button' => 'Weider',
 );
 
