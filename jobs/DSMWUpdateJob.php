@@ -12,18 +12,22 @@
  */
 class DSMWUpdateJob extends Job {
 
-    function  __construct( $title ) {
-        parent::__construct( 'DSMWUpdateJob', $title );
+    public function  __construct( $title ) {
+        parent::__construct( __CLASS__, $title );
     }
 
-    function run() {
+    public function run() {
         global $wgServerName, $wgScriptPath, $wgServer, $wgScriptExtension;
-        $urlServer = 'http://' . $wgServerName;
+        
         wfProfileIn( 'DSMWUpdateJob::run()' );
+        
+        $urlServer = 'http://' . $wgServerName;
+        
         $revids = array();
         $revids1 = array();
         $page_ids = array();
-// Getting all the revision ids of pages having been logootized
+		
+        // Getting all the revision ids of pages having been logootized
         $db = wfGetDB( DB_SLAVE );
 
         $model_table = $db->tableName( 'model' );
@@ -86,6 +90,7 @@ and `page_title` != \"Administration_push_site_addition\"";
                 $modelAfterIntegrate = $logoot->getModel();
                 $tmp = serialize( $listOp );
                 $patchid = sha1( $tmp );
+
                 if ( $ns == NS_FILE || $ns == NS_IMAGE || $ns == NS_MEDIA ) {
                     $apiUrl = $wgServer . $wgScriptPath . "/api" . $wgScriptExtension;
                     $onPage = str_replace( array( ' ' ), array( '%20' ), $lastRev->getTitle()->getText() );
@@ -105,12 +110,14 @@ and `page_title` != \"Administration_push_site_addition\"";
                     $patch = new Patch( false, false, $listOp, $urlServer, 0 );
                     $patch->storePage( $lastRev->getTitle()->getText(), $lastRev->getId() );
                 }
+                
                 manager::storeModel( $lastRev->getId(), $sessionId = session_id(), $modelAfterIntegrate, $blobCB = 0 );
             }
         }
 
-
         wfProfileOut( 'DSMWUpdateJob::run()' );
+        
         return true;
     }
+    
 }
