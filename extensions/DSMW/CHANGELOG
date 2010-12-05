@@ -2,6 +2,7 @@ For more documentation, see http://www.dsmw.org
 
 == DSMW 1.1 ==
 
+* Compatibility with MediaWiki 1.17.
 * Stylized all files using the stylize.php script.
 
 == DSMW 1.0 ==

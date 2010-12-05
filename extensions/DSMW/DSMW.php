@@ -46,12 +46,10 @@ $wgAllowCopyUploads = true;
 
 $wgExtensionMessagesFiles['DSMW'] = dirname( __FILE__ ) . '/DSMW.i18n.php';
 
-$wgHooks['UnknownAction'][] = 'onUnknownAction';
-// $wgHooks['MediaWikiPerformAction'][] = 'performAction';
-
-$wgHooks['EditPage::attemptSave'][] = 'attemptSave';
-$wgHooks['EditPageBeforeConflictDiff'][] = 'conflict';
-$wgHooks['UploadComplete'][] = 'uploadComplete';
+$wgHooks['UnknownAction'][] = 'DSMWHooks::onUnknownAction';
+$wgHooks['EditPage::attemptSave'][] = 'DSMWHooks::onAttemptSave';
+$wgHooks['EditPageBeforeConflictDiff'][] = 'DSMWHooks::onEditConflict';
+$wgHooks['UploadComplete'][] = 'DSMWHooks::onUploadComplete';
 
 $wgAutoloadClasses['logootEngine'] = "$wgDSMWIP/logootComponent/logootEngine.php";
 $wgAutoloadClasses['logoot'] = "$wgDSMWIP/logootComponent/logoot.php";
