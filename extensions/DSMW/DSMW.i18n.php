@@ -13,7 +13,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'dsmw-desc' => 'Allows to create a network of Semantic MediaWiki servers that share common semantic wiki pages. ([http://www.dsmw.org www.dsmw.org])',
+	'dsmw-desc' => 'Allows creation of a network of Semantic MediaWiki servers that share common semantic wiki pages. ([http://www.dsmw.org www.dsmw.org])',
 
 	'specialpages-group-dsmw_group' => 'Distributed Semantic MediaWiki',
 
@@ -28,8 +28,8 @@ $messages['en'] = array(
 	'dsmw-special-admin-uptext' => "For reasons of conflict management, DSMW works only with pages created after it's installation.
 Therefore you need to update pages created before it's installation in order to edit them.",
 	'dsmw-special-admin-upbutton' => 'Update pages',
-	'dsmw-special-admin-articleupstarted' => 'Articles update process started.',
-	'dsmw-special-admin-articleuprunning' => 'Articles update process is already running.',
+	'dsmw-special-admin-articleupstarted' => 'Page update process started.',
+	'dsmw-special-admin-articleuprunning' => 'Page update process is already running.',
 	'dsmw-special-admin-typeupstarted' => 'Properties update process started.',
 	'dsmw-special-admin-typeuprunning' => 'Properties update process is already running.',
 );
