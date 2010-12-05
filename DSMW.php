@@ -57,11 +57,6 @@ $wgExtensionAliasesFiles['DSMW'] = dirname( __FILE__ ) . '/DSMW.alias.php';
 
 $wgAutoloadClasses['DSMWHooks'] = dirname( __FILE__ )  . '/DSMW.hooks.php';
 
-$wgHooks['UnknownAction'][] = 'DSMWHooks::onUnknownAction';
-$wgHooks['EditPage::attemptSave'][] = 'DSMWHooks::onAttemptSave';
-$wgHooks['EditPageBeforeConflictDiff'][] = 'DSMWHooks::onEditConflict';
-$wgHooks['UploadComplete'][] = 'DSMWHooks::onUploadComplete';
-
 $wgAutoloadClasses['logootEngine'] = "$wgDSMWIP/logootComponent/logootEngine.php";
 $wgAutoloadClasses['logoot'] = "$wgDSMWIP/logootComponent/logoot.php";
 $wgAutoloadClasses['LogootId'] = "$wgDSMWIP/logootComponent/LogootId.php";
@@ -103,6 +98,11 @@ $wgAutoloadClasses['DSMWSiteId'] = "$wgDSMWIP/includes/DSMWSiteId.php";
 $wgAutoloadClasses['DSMWExhibits'] = "$wgDSMWIP/includes/DSMWExhibits.php";
 
 $wgExtensionFunctions[] = 'dsmwgSetupFunction';
+
+$wgHooks['UnknownAction'][] = 'DSMWHooks::onUnknownAction';
+$wgHooks['EditPage::attemptSave'][] = 'DSMWHooks::onAttemptSave';
+$wgHooks['EditPageBeforeConflictDiff'][] = 'DSMWHooks::onEditConflict';
+$wgHooks['UploadComplete'][] = 'DSMWHooks::onUploadComplete';
 
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
     'path' => __FILE__,
