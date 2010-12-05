@@ -35,9 +35,8 @@ class DSMWAdmin extends SpecialPage {
      */
     public function execute() {
         global $wgOut, $wgRequest, $wgServerName, $wgScriptPath, $wgDSMWIP, $wgServerName, $wgScriptPath;
-        $urlServer = 'http://' . $wgServerName . $wgScriptPath;
-
-            /**** Get status of refresh job, if any ****/
+        
+		/**** Get status of refresh job, if any ****/
         $dbr =& wfGetDB( DB_SLAVE );
         $row = $dbr->selectRow( 'job', '*', array( 'job_cmd' => 'DSMWUpdateJob' ), __METHOD__ );
         if ( $row !== false ) { // similar to Job::pop_type, but without deleting the job
@@ -104,24 +103,60 @@ class DSMWAdmin extends SpecialPage {
 
         $wgOut->setPagetitle( "DSMW Settings" );
 
-        $output = '<p>This page helps you during installation of Distributed Semantic MediaWiki.</p>';
+        $wgOut->addHTML(
+        	Html::element(
+        		'p',
+        		array(),
+        		wfMsg( 'dsmw-special-admin-intro' )
+        	)
+        );
+        
+        $wgOut->addHTML(
+        	Html::rawElement(
+        		'form',
+        		array( 'name' => 'properties', 'action' => '', 'method' => 'POST' ),
+        		Html::hidden( 'action', 'addProperties' ) . '<br />' .
+        		Html::element(
+        			'h2',
+        			array(),
+        			wfMsg( 'dsmw-special-admin-propheader' )
+        		) .
+        		Html::element(
+        			'p',
+        			array(),
+        			wfMsg( 'dsmw-special-admin-proptext' )
+        		) . 
+        		Html::input(
+        			'updateProperties',
+        			wfMsg( 'dsmw-special-admin-propheader' ),
+        			'submit'
+        		)
+        	)
+        );
+        
+        $wgOut->addHTML(
+        	Html::rawElement(
+        		'form',
+        		array( 'name' => 'logoot', 'action' => '', 'method' => 'POST' ),
+        		Html::hidden( 'action', 'logootize' ) . '<br />' .
+        		Html::element(
+        			'h2',
+        			array(),
+        			wfMsg( 'dsmw-special-admin-upheader' )
+        		) .
+        		Html::element(
+        			'p',
+        			array(),
+        			wfMsg( 'dsmw-special-admin-uptext' )
+        		) . 
+        		Html::input(
+        			'updateArticles',
+        			wfMsg( 'dsmw-special-admin-upbutton' ),
+        			'submit'
+        		)
+        	)
+        );        
 
-        // creating properties
-        $output .= '<form name="properties" action="" method="POST">' .
-            '<input type="hidden" name="action" value="addProperties">';
-        $output .= '<br /><h2>Update properties type</h2>' .
-            '<p>Distributed Semantic MediaWiki requires some properties type to be set.</p>';
-        $output .= '<input type="submit" value="Update properties type"/></form>';
-
-        // Pass wiki article through Logoot
-        $output .= '<form name="logoot" action="" method="POST">' .
-            '<input type="hidden" name="action" value="logootize" />';
-        $output .= '<br /><h2>DSMW update older articles</h2>' .
-            '<p>For reasons of conflict management, DSMW works only with articles created after it\'s installation.
-                        Therefore you need to update articles created before it\'s installation in order to edit them.</p>';
-        $output .= '<input type="submit" value="Articles update"/></form>';
-
-        $wgOut->addHTML( $output );
         return false;
 	}
 

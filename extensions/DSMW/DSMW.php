@@ -146,6 +146,11 @@ if ( compareMWVersion( $wgVersion, '1.16.0' ) == -1 ) {
     $wgAutoloadLocalClasses['UploadFromUrl'] = dirname( __FILE__ ) . '/api/upload/UploadFromUrl.php';
 }
 
+// To ensure Maps remains compatible with pre 1.16.
+if ( !class_exists( 'Html' ) ) {
+	$wgAutoloadClasses['Html'] = dirname( __FILE__ ) . '/compat/Html.php';
+}
+
 function dsmwgSetupFunction() {
     global $smwgNamespacesWithSemanticLinks;
 
