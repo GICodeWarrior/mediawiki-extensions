@@ -1,13 +1,11 @@
 <?php
 /**
+ * Job that assigns a type to some properties used in the DSMW ontology
+ * 
  * @copyright 2009 INRIA-LORIA-Score Team
  * 
  * @author jean-philippe muller
  * @author Jeroen De Dauw
- */
-
-/**
- * Job that assigns a type to some properties used in the DSMW ontology
  */
 class DSMWPropertyTypeJob extends Job {
 
@@ -43,10 +41,8 @@ class DSMWPropertyTypeJob extends Job {
 		$title = Title::newFromText( $titleName, SMW_NS_PROPERTY );
 		
         if ( !$title->exists() ) {
-	        $article = new Article( $title );
-	        $editpage = new EditPage( $article );
-	        $editpage->textbox1 = $propertyProperties;
-	        $editpage->attemptSave();
+	        $article = new Article( $title, 0 );
+	        $article->doEdit( $article->getRawText() . $propertyProperties, '' ); // TODO: add summary
         }    	
     }
     
