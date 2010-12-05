@@ -55,6 +55,8 @@ $wgAllowCopyUploads = true;
 $wgExtensionMessagesFiles['DSMW'] = dirname( __FILE__ ) . '/DSMW.i18n.php';
 $wgExtensionAliasesFiles['DSMW'] = dirname( __FILE__ ) . '/DSMW.alias.php';
 
+$wgAutoloadClasses['DSMWHooks'] = dirname( __FILE__ )  . '/DSMW.hooks.php';
+
 $wgHooks['UnknownAction'][] = 'DSMWHooks::onUnknownAction';
 $wgHooks['EditPage::attemptSave'][] = 'DSMWHooks::onAttemptSave';
 $wgHooks['EditPageBeforeConflictDiff'][] = 'DSMWHooks::onEditConflict';

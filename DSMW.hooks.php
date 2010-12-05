@@ -135,6 +135,7 @@ final class DSMWHooks {
 	        } else {
 	            $article->insertNewArticle( $newtext, $summary = "", false, false );
 	        }
+	        
 	        $article->doRedirect();
 	
 	        return false;
@@ -247,6 +248,7 @@ final class DSMWHooks {
 	
 	        // $name = $name1[0];
 	        utils::writeAndFlush( '<p><b>Start push </b></p>' );
+	        
 	        foreach ( $name1 as $name ) {
 	            utils::writeAndFlush( "<span style=\"margin-left:30px;\">begin push: <A HREF=" . 'http://' . $wgServerName . $wgScriptPath . "/index.php?title=$name>" . $name . "</a></span> <br/>" );
 	            $patches = array();  /// / for each pushfeed name==> push
