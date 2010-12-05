@@ -286,6 +286,13 @@ $messages['et'] = array(
 	'commentbox-error-namespace' => 'Siin nimeruumis ei ole kommentaarid lubatud.',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'commentbox-name' => 'نام:',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
