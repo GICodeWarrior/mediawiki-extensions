@@ -1057,8 +1057,8 @@ $messages['ja'] = array(
 	'patrol-another' => 'あれば別の編集を表示する。',
 	'patrol-stopped' => 'あなたは別の編集をパトロールしないよう設定しています。$1',
 	'patrol-resume' => '再開するにはここをクリックしてください。',
-	'group-patroller' => 'パトロール権限保持者',
-	'group-patroller-member' => 'パトロール権限保持者',
+	'group-patroller' => '巡回者',
+	'group-patroller-member' => '巡回者',
 	'grouppage-patroller' => '{{ns:project}}:パトローラー',
 	'right-patroller' => 'ページをパトロールする',
 );
