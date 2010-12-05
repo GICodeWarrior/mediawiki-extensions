@@ -10,7 +10,8 @@
  *
  */
 class DSMWExhibits {
-// Constructor
+	
+	// Constructor
     public function DSMWExhibits() {
         global $wgHooks;
 
@@ -80,8 +81,6 @@ class DSMWExhibits {
 
             $wgOut->addWikiText( $text );
 
-
-
             return false;
         }
         else {
@@ -108,6 +107,5 @@ class DSMWExhibits {
         }
         return true;
     }
-
 
 }

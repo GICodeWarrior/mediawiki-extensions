@@ -1,4 +1,5 @@
 <?php
+
 /**
  * JavaScript extension - Includes all *.js files in the directory containing this script
  *
@@ -34,4 +35,3 @@ function wfJavaScriptAddScripts( &$out, $skin = false ) {
         }
         return true;
 }
-?>

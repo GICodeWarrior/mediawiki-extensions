@@ -1,6 +1,6 @@
 <?php
 /**
- * Job that assigns a type to some properties used in the DSMW ontology
+ * Job that assigns a type to some properties used in the DSMW ontology.
  * 
  * @copyright 2009 INRIA-LORIA-Score Team
  * 

@@ -17,6 +17,27 @@ final class DSMWHooks {
 	/**
 	 * @since 1.1
 	 * 
+	 * @return true
+	 */
+	public function onExtensionSchemaUpdates() {
+		global $wgExtNewTables;
+	
+		$wgExtNewTables[] = array(
+			'model',
+			dirname( __FILE__ ) . '/DSMW.sql'
+		);
+	
+		$wgExtNewTables[] = array(
+			'p2p_params',
+			dirname( __FILE__ ) . '/DSMW.sql'
+		);
+			
+		return true;	
+	}
+	
+	/**
+	 * @since 1.1
+	 * 
 	 * @param EditPage $editor
 	 * @param OutputPage &$out
 	 * 
@@ -700,6 +721,5 @@ final class DSMWHooks {
 	    
 	    return true;
 	}
-	
 	
 }

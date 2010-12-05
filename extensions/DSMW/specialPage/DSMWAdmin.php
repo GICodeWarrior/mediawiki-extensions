@@ -4,10 +4,9 @@
  * DSMW Special page
  *
  * @copyright INRIA-LORIA-ECOO project
+ * 
  * @author  jean-Philippe Muller
  */
-
-require_once "$IP/includes/SpecialPage.php";
 
 class DSMWAdmin extends SpecialPage {
 
@@ -35,9 +34,8 @@ class DSMWAdmin extends SpecialPage {
      * @return <bool>
      */
     public function execute() {
-        global $wgOut, $wgRequest, $wgServerName, $wgScriptPath, $wgDSMWIP, $wgServerName, $wgScriptPath; /*, $wgSitename, $wgCachePages, $wgUser, $wgTitle, $wgDenyAccessMessage, $wgAllowAnonUsers, $wgRequest, $wgMessageCache, $wgWatchingMessages, $wgDBtype, $namespace_titles;*/
+        global $wgOut, $wgRequest, $wgServerName, $wgScriptPath, $wgDSMWIP, $wgServerName, $wgScriptPath;
         $urlServer = 'http://' . $wgServerName . $wgScriptPath;
-
 
             /**** Get status of refresh job, if any ****/
         $dbr =& wfGetDB( DB_SLAVE );
@@ -104,17 +102,10 @@ class DSMWAdmin extends SpecialPage {
 
 		}
 
-
         $wgOut->setPagetitle( "DSMW Settings" );
 
         $output = '<p>This page helps you during installation of Distributed Semantic MediaWiki.</p>';
 
-        // creating tables
-        $output .= '<form name="buildtables" action="" method="POST">' .
-            '<input type="hidden" name="action" value="updatetables">';
-        $output .= '<br /><h2>Database: DSMW tables installation</h2>' .
-            '<p>Distributed Semantic MediaWiki requires some tables to be created in the database.</p>';
-        $output .= '<input type="submit" value="Initialise tables"/></form>';
         // creating properties
         $output .= '<form name="properties" action="" method="POST">' .
             '<input type="hidden" name="action" value="addProperties">';
