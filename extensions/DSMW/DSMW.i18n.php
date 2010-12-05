@@ -9,8 +9,8 @@
 
 $messages = array();
 
-/**
- * English
+/** English
+ * @author Jeroen De Dauw
  */
 $messages['en'] = array(
 	'dsmw-desc' => 'Allows to create a network of Semantic MediaWiki servers that share common semantic wiki pages. ([http://www.dsmw.org www.dsmw.org])',

@@ -197,4 +197,3 @@ This is a patch of the article: [[onPage::' . $pageName . ']] <br>
     }
 
 }
-?>
