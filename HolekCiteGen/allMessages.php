@@ -16,18 +16,17 @@ $messages = array();
 
 /** English (English)
  * @author Holek
-
  * @author Wpedzich
  */
 $messages['en'] = array(
-	'ts-citegen-Title' => 'Citation templates generator',
+	'ts-citegen-Title' => 'Citation template generator',
 	
 	// Button
-	'ts-citegen-Send' => 'Send',
+	'ts-citegen-Send' => 'Generate',
 	
 	// Input
 	'ts-citegen-Input-title' => 'Input',
-	'ts-citegen-Input-text' => 'This is a citation template generator. Using it, you can quickly fill in the quotation templates in various language editions of Wikipedia. Please fill in the data (%s) in the fields below, and the script will try to complete the templates. Remember, it does not matter in which fields you will put the input data. Script will automatically match the correct template to given input.',
+	'ts-citegen-Input-text' => 'This is a citation template generator. Using it, you can quickly fill in the citation templates in various language editions of Wikipedia. Please fill in the data (%s) in the fields below, and the script will try to complete the templates. Remember, it does not matter in which fields you put the input data. The script will automatically match the correct template to the input given.',
 	'ts-citegen-Option-append-author-link' => 'Append the author wikilinks into the template',
 	'ts-citegen-Option-append-newlines' => 'Append new lines after each parameter',
 	'ts-citegen-Option-add-references' => 'Add <ref> tags around citing templates',
@@ -35,7 +34,7 @@ $messages['en'] = array(
 	
 	// Output
 	'ts-citegen-Output-title' => 'Result',
-	'ts-citegen-Output-select-disclaimer' => 'Remember that choosing a template language does not guarantee that specific template is available in your language. This field lists available languages of every supported template. Ie. it may display French, because only {{Cite book}} is supported.',
+	'ts-citegen-Output-select-disclaimer' => 'Remember that choosing a template language does not guarantee that the specific template is available in your language. This field lists available languages of every supported template, i.e. it may display French, because only {{Cite book}} is supported.',
 	'ts-citegen-Wrong-input' => '%s: not identified as a correct input.',
 	
 	// Settings
@@ -51,13 +50,12 @@ $messages['en'] = array(
 	'ts-citegen-Sourcer-text' => 'Below the list of used sources is available.',
 	
 	// Sidebar-related messages
-	'ts-citegen-Sidebar-title' => 'Citations generator',
-	'ts-citegen-Sidebar-text' => 'This version of the generator uses the setup found on the full version of this generator. Ie. if you want to change the language version of the template, make the change using the generator itself. The settings are saved with the use of cookies.',
+	'ts-citegen-Sidebar-title' => 'Citation generator',
 	
 	'ts-citegen-Sidebar-add-Firefox' => 'Add to the sidebar',
 	'ts-citegen-Sidebar-add-Opera' => 'Add to the Hotlist',
 	'ts-citegen-Sidebar-add-IE-Mac' => 'Add to the Page Holder',
-	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Once the page has loaded, open your Page Holder, click \'Add\' then use the Page Holder Favorites button to store it as a Page Holder Favourite.',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Once the page has loaded, open your Page Holder, click \'Add\' then use the Page Holder Favorites button to store it as a Page Holder Favorite.',
 	
 	// Portlet messages
 	'ts-citegen-Tools' => 'Tools',
@@ -68,7 +66,7 @@ $messages['en'] = array(
 	// Error messages
 	'ts-citegen-Errors-title' => 'Errors',
 	'ts-citegen-Unavailable-API' => 'Error: Wikimedia API is unavailable',
-	'ts-citegen-Unavailable-SQL' => 'Error: Toolserver database is unavailable. MySQL produced: %s',
+	'ts-citegen-Unavailable-SQL' => 'Error: Toolserver database is unavailable. MySQL returned: %s',
 	'ts-citegen-base-disabled' => 'Error: %s database is unavailable.'
 	
 
@@ -97,7 +95,6 @@ $messages['qqq'] = array(
 	'ts-citegen-Sources-title' => 'Sources section title',
 	'ts-citegen-Sourcer-text' => 'An explanation test for sources section',
 	'ts-citegen-Sidebar-title' => 'Shortened title used for mini-generator',
-	'ts-citegen-Sidebar-text' => 'An explanation text used in the sidebar.',
 	'ts-citegen-Sidebar-add-Firefox' => "Caption of generator addition to Firefox's sidebar",
 	'ts-citegen-Sidebar-add-Opera' => "Caption of generator addition to Opera's Hotlist",
 	'ts-citegen-Sidebar-add-IE-Mac' => "Caption of generator addition to Mac IE's Page Holder",
@@ -225,7 +222,6 @@ $messages['pl'] = array(
 	'ts-citegen-Sources-title' => 'Źródła',
 	'ts-citegen-Sourcer-text' => 'Poniżej podane są strony, z których korzystano przy pobieraniu informacji o książkach. Każdy z linków przenosi',
 	'ts-citegen-Sidebar-title' => 'Generator cytowań',
-	'ts-citegen-Sidebar-text' => 'Ta wersja generatora wykorzystuje ustawienia stosowane przez pełną wersję generatora. Jeżeli chcesz np. zmienić język szablonu, zmień go tamże. Ustawienia zapisywane są za pomoca ciasteczek.',
 	'ts-citegen-Sidebar-add-Firefox' => 'Dodaj do panelu bocznego',
 	'ts-citegen-Sidebar-add-Opera' => 'Dodaj do panelu Opery',
 	'ts-citegen-Sidebar-add-IE-Mac' => 'Dodaj do Page Holdera',
