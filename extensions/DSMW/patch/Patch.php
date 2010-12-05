@@ -40,8 +40,10 @@ class Patch {
      */
     public function __construct( $remote, $attachment, $operations, $siteUrl = '', $causalLink = '', $patchid = '', $previousPatch = '', $siteID = '', $Mime = '', $Size = '', $Url = '', $Date = '' ) {
         global $wgServer;
+        
         $this->mRemote = $remote;
         $this->mID = utils::generateID();
+        
         if ( $remote == true ) {
             $this->mPatchId = $patchid;
             $this->mSiteId = $siteID;
@@ -50,6 +52,7 @@ class Patch {
             $this->mPatchId = "Patch:" . $this->mID;
             $this->mSiteId = DSMWSiteId::getInstance()->getSiteId();
         }
+        
         $this->mOperations = $operations;
         $this->mPrevPatch = $previousPatch;
         $this->mSiteUrl = $siteUrl;
@@ -142,11 +145,8 @@ This is a patch of the article: [[onPage::' . $pageName . ']] <br>
                 foreach ( $this->mOperations as $operation ) {
                     $lineContent = $operation->getLineContent();
                     $lineContent1 = utils::contentEncoding( $lineContent ); // base64 encoding
-                    $type = "";
-                    if ( $operation instanceof LogootIns )
-                        $type = "Insert";
-                    else
-                        $type = "Delete";
+                    $type = $operation instanceof LogootIns ? 'Insert' : 'Delete';
+
                     $operationID = utils::generateID();
                     $text .= '|[[hasOperation::' . $operationID . ';' . $type . ';'
                             . $operation->getLogootPosition()->toString() . ';' . $lineContent1 . '| ]]' . $type;
@@ -187,13 +187,8 @@ This is a patch of the article: [[onPage::' . $pageName . ']] <br>
         $article->doEdit( $text, $summary = "" );
     }
 
-    private function splitLine( $line ) {
-        $text = "";
-        $arr = str_split( $line, 150 );
-        foreach ( $arr as $element ) {
-            $text .= $element . '<br>';
-        }
-        return $text;
+    protected function splitLine( $line ) {
+    	return implode( '<br>', str_split( $line, 150 ) ) . '<br />';
     }
 
 }
