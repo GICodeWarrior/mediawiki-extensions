@@ -235,6 +235,13 @@ $messages['es'] = array(
 	'pf-header-approve' => 'Aprobar',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'pf-admin-menu-default' => 'پیش‌فرض',
+);
+
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Crt
