@@ -416,10 +416,26 @@ class CheckVars {
 
 							$this->checkClassName( $token );
 							$currentToken[0] = self::CLASS_NAME;
-						} else if ( in_array( $token[0], array( T_REQUIRE, T_REQUIRE_ONCE, T_INCLUDE, T_INCLUDE_ONCE ) ) ) {
+						} elseif ( in_array( $token[0], array( T_REQUIRE, T_REQUIRE_ONCE, T_INCLUDE, T_INCLUDE_ONCE ) ) ) {
 							$this->mStatus = self::IN_FUNCTION_REQUIRE;
 							$requirePath = '';
 							continue;
+						}
+					}
+
+					if ( self::isMeaningfulToken( $token ) && ( $lastMeaningfulToken[0] == T_THROW ) ) {
+						if ( $token[0] == T_VARIABLE ) {
+							// Probbly rethrowing from a catch, skip
+						} elseif ( $token[0] == T_NEW ) {
+							// Correct, a new class instance
+							// TODO: Verify it inherits from Exception
+						} else {
+							// We only want the last interpretation, see r77752
+							// throw Exception; -> Exception is a constant
+							// throw Exception("Foo"); -> Exception() is a function
+							// throw new Exception("Foo"); -> Exception is a class.
+							
+							$this->warning( "Not using new when throwing token {$token[1]} in line $token[2], function {$this->mFunction}" );
 						}
 					}
 
