@@ -127,6 +127,14 @@ $messages['ja'] = array(
 	'right-SPMsetup' => '基礎的なセマンティックなプロジェクト管理設定を編集',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'spm_wbs_link' => '"MS Project"-XML-Export',
+	'spm_printername_wbs' => '"MS Project"-Export',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
