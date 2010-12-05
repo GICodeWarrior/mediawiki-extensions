@@ -565,29 +565,19 @@ class WikiSyncClient {
 				return $json_result->getResult( 'no_import_rights' );
 			}
 			$source = ImportStreamSource::newFromFile( $fname );
-			if ( $source instanceof WikiErrorMsg ||
-					WikiError::isError( $source ) ) {
+			if ( !$source->isOK() ) {
 				@unlink( $fname );
-				return $json_result->getResult( 'import', $source->getMessage() );
+				return $json_result->getResult( 'import', $source->getWikiText() );
 			}
-			$importer = new WikiImporter( $source );
+			$importer = new WikiImporter( $source->value );
 			$reporter = new WikiSyncImportReporter( $importer, true, '', wfMsg( 'wikisync_log_imported_by' ) );
-			$result = $importer->doImport();
-			@fclose( $source->mHandle );
-			@unlink( $fname );
-			if ( $result instanceof WikiXmlError ) {
-				$r =
-					array(
-						'line' => $result->mLine,
-						'column' => $result->mColumn,
-						'context' => $result->mByte . $result->mContext,
-						'xmlerror' => xml_error_string( $result->mXmlError )
-					);
-				$json_result->append( $r );
-				return $json_result->getResult( 'import', $result->getMessage() );
-			} elseif ( WikiError::isError( $result ) ) {
-				return $json_result->getResult( 'import', $source->getMessage() );
+			try {
+				$importer->doImport();
+			} catch ( MWException $e ) {
+				return $json_result->getResult( 'import', $e->getMessage() );
 			}
+			@fclose( $source->value->mHandle );
+			@unlink( $fname );
 			$resultData = $reporter->getData();
 			$json_result->setStatus( '1' ); // API success
 			return $json_result->getResult();
