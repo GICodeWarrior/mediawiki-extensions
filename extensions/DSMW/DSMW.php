@@ -86,7 +86,6 @@ $wgAutoloadClasses['ApiQueryImageInfo'] = "$wgDSMWIP/api/upload/ApiQueryImageInf
 $wgAutoloadClasses['ApiPatchPush'] = "$wgDSMWIP/api/ApiPatchPush.php";
 $wgAutoloadClasses['utils'] = "$wgDSMWIP/files/utils.php";
 $wgAutoloadClasses['Math_BigInteger'] = "$wgDSMWIP/logootComponent/Math/BigInteger.php";
-$wgAutoloadClasses['DSMWDBHelpers'] = "$wgDSMWIP/db/DSMWDBHelpers.php";
 
 //// / Register Jobs
 $wgJobClasses['DSMWUpdateJob'] = 'DSMWUpdateJob';

@@ -28,6 +28,10 @@ $messages['en'] = array(
 	'dsmw-special-admin-uptext' => "For reasons of conflict management, DSMW works only with pages created after it's installation.
 Therefore you need to update pages created before it's installation in order to edit them.",
 	'dsmw-special-admin-upbutton' => 'Update pages',
+	'dsmw-special-admin-articleupstarted' => 'Articles update process started.',
+	'dsmw-special-admin-articleuprunning' => 'Articles update process is already running.',
+	'dsmw-special-admin-typeupstarted' => 'Properties update process started.',
+	'dsmw-special-admin-typeuprunning' => 'Properties update process is already running.',
 );
 
 /** German (Deutsch)
