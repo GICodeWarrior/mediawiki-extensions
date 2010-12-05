@@ -53,6 +53,7 @@ $wgGroupPermissions['*']['upload'] = true;
 $wgAllowCopyUploads = true;
 
 $wgExtensionMessagesFiles['DSMW'] = dirname( __FILE__ ) . '/DSMW.i18n.php';
+$wgExtensionAliasesFiles['DSMW'] = dirname( __FILE__ ) . '/DSMW.alias.php';
 
 $wgHooks['UnknownAction'][] = 'DSMWHooks::onUnknownAction';
 $wgHooks['EditPage::attemptSave'][] = 'DSMWHooks::onAttemptSave';
