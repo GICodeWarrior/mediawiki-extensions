@@ -11,8 +11,7 @@
  */
 
 /* XXX: Survey setup */
-$dir = dirname( __FILE__ ) . '/';
-require_once( $dir . '../SimpleSurvey/SimpleSurvey.php' );
+require_once( dirname( dirname( __FILE__ ) ) . '/SimpleSurvey/SimpleSurvey.php' );
 
 /* Configuration */
 
@@ -83,6 +82,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleFeedback'
 );
 // Autoloading
+$dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiQueryArticleFeedback'] = $dir . 'api/ApiQueryArticleFeedback.php';
 $wgAutoloadClasses['ApiArticleFeedback'] = $dir . 'api/ApiArticleFeedback.php';
 $wgAutoloadClasses['ArticleFeedbackHooks'] = $dir . 'ArticleFeedback.hooks.php';
