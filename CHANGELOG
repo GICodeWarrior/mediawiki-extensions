@@ -4,6 +4,7 @@ For more documentation, see http://www.dsmw.org
 
 * Compatibility with MediaWiki 1.17.
 * Stylized all files using the stylize.php script.
+* Added propper i18n support.
 
 == DSMW 1.0 ==
 * Tested with MW-1.16.0

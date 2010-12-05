@@ -30,7 +30,7 @@ $wgNamespaceProtection[PULLFEED] = Array( "editpullfeed" );
 $wgNamespacesWithSubpages[PULLFEED] = true;
 $wgGroupPermissions['*']['editpullfeed'] = false;
 $wgGroupPermissions['sysop']['editpullfeed'] = true;
-$wgNamespaceProtection[CHANGESET] = Array( "editchangeset" );
+$wgNamespaceProtection[CHANGESET] = Array( 'editchangeset' );
 $wgNamespacesWithSubpages[CHANGESET] = true;
 $wgGroupPermissions['*']['editchangeset'] = false;
 $wgGroupPermissions['sysop']['editchangeset'] = true;
@@ -44,9 +44,6 @@ require_once( "$IP/extensions/DSMW/specialPage/DSMWAdmin.php" );
 
 $wgGroupPermissions['*']['DSMWGeneralExhibits']       = true;// sysop
 require_once( "$IP/extensions/DSMW/specialPage/DSMWGeneralExhibits.php" );
-
-// Simple forms extension
-include( "$IP/extensions/DSMW/SimpleForms/SimpleForms.php" );
 
 // semantic mediawiki extension
 $smwgNamespaceIndex = 120;
