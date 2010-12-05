@@ -11,12 +11,12 @@
 class boModel {
     private $positionList = array();
     private $lineList = array();
-    
-    public function setPositionlist($positionList) {
+
+    public function setPositionlist( $positionList ) {
         $this->positionList = $positionList;
     }
 
-    public function setLinelist($lineList) {
+    public function setLinelist( $lineList ) {
         $this->lineList = $lineList;
     }
 
@@ -32,18 +32,17 @@ class boModel {
  * transforms the text array into a string
  * @return <String>
  */
-    public function getText(){
-        $textImage="";
+    public function getText() {
+        $textImage = "";
         $tmp = $this->lineList;
-        $nb=0;
+        $nb = 0;
 
-        $nb = sizeof($tmp);
-        for($i=1; $i<=$nb; $i++){
+        $nb = sizeof( $tmp );
+        for ( $i = 1; $i <= $nb; $i++ ) {
 
-            if($i==1) $textImage = $tmp[$i];
-            else $textImage = $textImage."\n".$tmp[$i];
+            if ( $i == 1 ) $textImage = $tmp[$i];
+            else $textImage = $textImage . "\n" . $tmp[$i];
         }
         return $textImage;
     }
 }
-?>

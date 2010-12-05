@@ -13,17 +13,17 @@ class manager {
      * @param <String> $rev_id Revision id
      * @return boModel
      */
-    static function loadModel($rev_id) {
+    static function loadModel( $rev_id ) {
         try {
-            if($rev_id!=0){
+            if ( $rev_id != 0 ) {
                 $dao = new dao();
-                return $dao->loadModel($rev_id);
+                return $dao->loadModel( $rev_id );
             }
-            else{
+            else {
                 return new boModel();
             }
-        } catch (Exception $e) {
-            throw new MWException( __METHOD__.' db access problems,
+        } catch ( Exception $e ) {
+            throw new MWException( __METHOD__ . ' db access problems,
 if this page existed before the DSMW installation,
 maybe it has not been processed by DSMW' );
         }
@@ -38,14 +38,13 @@ maybe it has not been processed by DSMW' );
      * @param <Object> $blobCB=0 (should have been a causal barrier object but
      * not used yet)
      */
-    static function storeModel($rev_id, $sessionId, $model, $blobCB){
-        wfDebugLog('p2p',' -> store model into revid : '.$rev_id.' sessionid : '.$sessionId.' model : '.$model->getText());
+    static function storeModel( $rev_id, $sessionId, $model, $blobCB ) {
+        wfDebugLog( 'p2p', ' -> store model into revid : ' . $rev_id . ' sessionid : ' . $sessionId . ' model : ' . $model->getText() );
         try {
             $dao = new dao();
-            $dao->storeModel($rev_id, $sessionId, $model, $blobCB);
-        } catch (Exception $e) {
-            throw new MWException( __METHOD__.' db access problems' );
+            $dao->storeModel( $rev_id, $sessionId, $model, $blobCB );
+        } catch ( Exception $e ) {
+            throw new MWException( __METHOD__ . ' db access problems' );
         }
     }
 }
-?>

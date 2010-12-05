@@ -1,10 +1,10 @@
 <?php
 
-if (!defined('MEDIAWIKI')){define( 'MEDIAWIKI', true );}
-if( defined( 'MW_INSTALL_PATH' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) { define( 'MEDIAWIKI', true ); }
+if ( defined( 'MW_INSTALL_PATH' ) ) {
     $IP = MW_INSTALL_PATH;
 } else {
-    $IP = dirname('../../../../.');
+    $IP = dirname( '../../../../.' );
 }
 
 require_once '../../files/utils.php';
@@ -17,11 +17,11 @@ require_once '../../logootComponent/LogootPosition.php';
 require_once '../../logootComponent/LogootIns.php';
 require_once '../../logootComponent/LogootDel.php';
 include_once '../p2pAssert.php';
-//require_once '../../DSMW.php';
+// require_once '../../DSMW.php';
 require_once '../settings.php';
-//require_once '../../patch/Patch.php';
+// require_once '../../patch/Patch.php';
 
-//$wgAutoloadClasses['LogootId'] = "$wgDSMWIP/logootEngine/LogootId.php";
+// $wgAutoloadClasses['LogootId'] = "$wgDSMWIP/logootEngine/LogootId.php";
 
 
 /**
@@ -46,19 +46,19 @@ class extensionTest extends PHPUnit_Framework_TestCase {
      * @access protected
      */
     protected function setUp() {
-        exec('../initWikiTest.sh ../dump.sql');
-        exec('rm ../cache/*');
+        exec( '../initWikiTest.sh ../dump.sql' );
+        exec( 'rm ../cache/*' );
         $basicbot1 = new BasicBot();
         $basicbot1->wikiServer = $this->wiki1;
-        $this->p2pBot1 = new p2pBot($basicbot1);
+        $this->p2pBot1 = new p2pBot( $basicbot1 );
 
         $basicbot2 = new BasicBot();
         $basicbot2->wikiServer = $this->wiki2;
-        $this->p2pBot2 = new p2pBot($basicbot2);
+        $this->p2pBot2 = new p2pBot( $basicbot2 );
 
         $basicbot3 = new BasicBot();
         $basicbot3->wikiServer = $this->wiki3;
-        $this->p2pBot3 = new p2pBot($basicbot3);
+        $this->p2pBot3 = new p2pBot( $basicbot3 );
     }
 
 /*
@@ -129,23 +129,23 @@ previous: [[previous::none]]';
     function testOperationToLogootOp() {
         $pageName = 'Toto';
         $content = 'toto tata titi';
-        $this->assertTrue($this->p2pBot1->createPage($pageName,$content),
-            'failed to create page '.$pageName.' ('.$this->p2pBot1->bot->results.')');
+        $this->assertTrue( $this->p2pBot1->createPage( $pageName, $content ),
+            'failed to create page ' . $pageName . ' (' . $this->p2pBot1->bot->results . ')' );
 
-        $patchId = getSemanticRequest($this->p2pBot1->bot->wikiServer, '[[Patch:+]][[onPage::Toto]]', '');
+        $patchId = getSemanticRequest( $this->p2pBot1->bot->wikiServer, '[[Patch:+]][[onPage::Toto]]', '' );
         $patchId = $patchId[0];
-        $dom = getPatchXML($this->p2pBot1->bot->wikiServer,$patchId);
+        $dom = getPatchXML( $this->p2pBot1->bot->wikiServer, $patchId );
 
-        $op = $dom->getElementsByTagName('operation');
-        foreach($op as $o)
+        $op = $dom->getElementsByTagName( 'operation' );
+        foreach ( $op as $o )
             $operations[] = $o->firstChild->nodeValue;
 
-        $this->assertTrue(count($operations)==1);
+        $this->assertTrue( count( $operations ) == 1 );
 
-        $op = operationToLogootOp($operations[0]);
-        $this->assertTrue($op instanceof LogootIns,'failed to create logootIns operation');
-        $this->assertEquals($content, $op->getLineContent());
-    //logoutIntegrate
+        $op = operationToLogootOp( $operations[0] );
+        $this->assertTrue( $op instanceof LogootIns, 'failed to create logootIns operation' );
+        $this->assertEquals( $content, $op->getLineContent() );
+    // logoutIntegrate
     }
 
 }

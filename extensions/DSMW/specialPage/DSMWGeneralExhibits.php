@@ -12,12 +12,12 @@ require_once "$IP/includes/SpecialPage.php";
 $wgExtensionFunctions[] = "wfSetupDSMWGenExhibits";
 
 class DSMWGeneralExhibits extends SpecialPage {
-//Constructor
+// Constructor
     function DSMWGeneralExhibits() {
-        if(defined('SRF_VERSION')){
-        SpecialPage::SpecialPage('DSMWGeneralExhibits');
+        if ( defined( 'SRF_VERSION' ) ) {
+        SpecialPage::SpecialPage( 'DSMWGeneralExhibits' );
         }
-        wfLoadExtensionMessages('DSMW');
+        wfLoadExtensionMessages( 'DSMW' );
     }
 
     function getDescription() {
@@ -31,12 +31,12 @@ class DSMWGeneralExhibits extends SpecialPage {
      *
      * There are 3 links used to see informations about Patches, PullFeeds or PushFeeds
      *
-     * 
+     *
      */
     function execute() {
         global $wgOut, $wgRequest, $wgServerName, $wgScriptPath, $wgDSMWIP, $wgServerName, $wgScriptPath;
 
-        //If the Semantic Results Format isn't installed, a blank warning page appears
+        // If the Semantic Results Format isn't installed, a blank warning page appears
 //        if (!defined('SRF_VERSION')) {
 //            $wgOut->disable(); // raw output
 //            ob_start();
@@ -56,23 +56,23 @@ class DSMWGeneralExhibits extends SpecialPage {
 //        }
 
 
-        $wgOut->setPagetitle("DSMW General Exhibits");
+        $wgOut->setPagetitle( "DSMW General Exhibits" );
 
         $output = '<p>This page displays general informations about Distributed Semantic MediaWiki.</p>';
 
-        $returntitle1 = Title::makeTitle(NS_SPECIAL, 'DSMWGeneralExhibits');
-        $output .= '<b><a href="' . htmlspecialchars($returntitle1->getFullURL()) . '?action=pushdisplay">[PushFeed data] </a></b>';
+        $returntitle1 = Title::makeTitle( NS_SPECIAL, 'DSMWGeneralExhibits' );
+        $output .= '<b><a href="' . htmlspecialchars( $returntitle1->getFullURL() ) . '?action=pushdisplay">[PushFeed data] </a></b>';
 
-        $returntitle1 = Title::makeTitle(NS_SPECIAL, 'DSMWGeneralExhibits');
-        $output .= '<b><a href="' . htmlspecialchars($returntitle1->getFullURL()) . '?action=pulldisplay">[PullFeed data] </a></b>';
+        $returntitle1 = Title::makeTitle( NS_SPECIAL, 'DSMWGeneralExhibits' );
+        $output .= '<b><a href="' . htmlspecialchars( $returntitle1->getFullURL() ) . '?action=pulldisplay">[PullFeed data] </a></b>';
 
-        $returntitle1 = Title::makeTitle(NS_SPECIAL, 'DSMWGeneralExhibits');
-        $output .= '<b><a href="' . htmlspecialchars($returntitle1->getFullURL()) . '?action=patchdisplay">[Patches data] </a></b>';
+        $returntitle1 = Title::makeTitle( NS_SPECIAL, 'DSMWGeneralExhibits' );
+        $output .= '<b><a href="' . htmlspecialchars( $returntitle1->getFullURL() ) . '?action=patchdisplay">[Patches data] </a></b>';
 
 
         $action = $wgRequest->getText( 'action' );
 
-        switch ($action) {
+        switch ( $action ) {
             case "pushdisplay":
                 $wikitext = '
 ==PushFeeds==
@@ -145,11 +145,11 @@ class DSMWGeneralExhibits extends SpecialPage {
                 break;
         }
 
-        $wgOut->addHTML($output);
-        $wgOut->addWikiText($wikitext);
+        $wgOut->addHTML( $output );
+        $wgOut->addWikiText( $wikitext );
 
         return false;
-}//end execute fct
+}// end execute fct
 
 
 }
@@ -159,9 +159,8 @@ class DSMWGeneralExhibits extends SpecialPage {
 function wfSetupDSMWGenExhibits() {
     global $wgUser;
     SpecialPage::addPage( new DSMWGeneralExhibits() );
-    if ($wgUser->isAllowed("DSMWGeneralExhibits")) {
+    if ( $wgUser->isAllowed( "DSMWGeneralExhibits" ) ) {
         global $wgDSMWGenExhibits;
         $wgDSMWGenExhibits = new DSMWGeneralExhibits();
     }
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 
 define( 'MEDIAWIKI', true );
-//ini_set("include_path", "..".PATH_SEPARATOR);
+// ini_set("include_path", "..".PATH_SEPARATOR);
 require_once 'PHPUnit/Framework/TestSuite.php';
 require_once '../../../../includes/GlobalFunctions.php';
 require_once 'apiTest.php';
@@ -21,17 +21,17 @@ require_once 'PatchTest2.php';
 class AllTests {
 
     public static function main() {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        PHPUnit_TextUI_TestRunner::run( self::suite() );
     }
 
     public static function suite() {
-        $suite = new PHPUnit_Framework_TestSuite('p2p');
-        $suite->addTestSuite('PatchTest1');
-        $suite->addTestSuite('PatchTest2');
-        $suite->addTestSuite('extensionTest');
-        $suite->addTestSuite('apiTest');
-        $suite->addTestSuite('pushTest');
-        $suite->addTestSuite('pullTest');
+        $suite = new PHPUnit_Framework_TestSuite( 'p2p' );
+        $suite->addTestSuite( 'PatchTest1' );
+        $suite->addTestSuite( 'PatchTest2' );
+        $suite->addTestSuite( 'extensionTest' );
+        $suite->addTestSuite( 'apiTest' );
+        $suite->addTestSuite( 'pushTest' );
+        $suite->addTestSuite( 'pullTest' );
         return $suite;
     }
 }

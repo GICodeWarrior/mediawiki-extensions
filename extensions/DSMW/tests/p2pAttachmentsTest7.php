@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MEDIAWIKI')){define( 'MEDIAWIKI', true );}
+if ( !defined( 'MEDIAWIKI' ) ) { define( 'MEDIAWIKI', true ); }
 require_once 'p2pBot.php';
 require_once 'BasicBot.php';
 include_once 'p2pAssert.php';
@@ -10,7 +10,7 @@ require_once '../files/utils.php';
 require_once 'settings.php';
 
 $wgDebugLogGroups  = array(
-        'p2p'=>"/tmp/p2p.log",
+        'p2p' => "/tmp/p2p.log",
 );
 
 /**
@@ -26,7 +26,7 @@ class p2pAttachmentsTest7 extends PHPUnit_Framework_TestCase {
     var $p2pBot2;
     var $wiki1 = WIKI1;
     var $wiki2 = WIKI2;
-    
+
     var $pageName = "Ours";
     var $pushRequest = "[[Category:Animal]]";
     var $pushFeed = 'PushFeed:PushAnimal';
@@ -37,10 +37,10 @@ class p2pAttachmentsTest7 extends PHPUnit_Framework_TestCase {
     var $fileDir = 'Import/';
     var $file = 'Ours';
     var $filePage = 'File:Ours';
-    
+
     var $nb;
-    
-    var $content="Les ours (ou ursinés, du latin ŭrsus, de même sens) sont de grands
+
+    var $content = "Les ours (ou ursinés, du latin ŭrsus, de même sens) sont de grands
 mammifères plantigrades appartenant à la famille des ursidés. Il
 n'existe que huit espèces d'ours vivants, mais ils sont largement
 répandus et apparaissent dans une grande variété d'habitats, aussi
@@ -57,15 +57,15 @@ d'Amérique du Sud, et en Asie.
      * @access protected
      */
     protected function setUp() {
-        exec('./initWikiTest.sh ./dump.sql');
-        exec('rm ./cache/*');
+        exec( './initWikiTest.sh ./dump.sql' );
+        exec( 'rm ./cache/*' );
         $basicbot1 = new BasicBot();
         $basicbot1->wikiServer = $this->wiki1;
-        $this->p2pBot1 = new p2pBot($basicbot1);
+        $this->p2pBot1 = new p2pBot( $basicbot1 );
 
         $basicbot2 = new BasicBot();
         $basicbot2->wikiServer = $this->wiki2;
-        $this->p2pBot2 = new p2pBot($basicbot2);
+        $this->p2pBot2 = new p2pBot( $basicbot2 );
 
         $this->nb = 100;
     }
@@ -78,70 +78,70 @@ d'Amérique du Sud, et en Asie.
      */
     protected function tearDown() {
         $this->viderRepertoire();
-        //exec('./deleteTest.sh');
+        // exec('./deleteTest.sh');
     }
 
 
     /**
      * Create one page with tow attachment, push it
-     * pull it on wiki2 
+     * pull it on wiki2
      */
     public function testSimple1() {
-        //create page
-        $this->assertTrue($this->p2pBot1->createPage($this->pageName,$this->content),
-                'Failed to create page '.$this->pageName.' ('.$this->p2pBot1->bot->results.')');
+        // create page
+        $this->assertTrue( $this->p2pBot1->createPage( $this->pageName, $this->content ),
+                'Failed to create page ' . $this->pageName . ' (' . $this->p2pBot1->bot->results . ')' );
 
         // assert page Ours exist on wiki1
-        assertPageExist($this->p2pBot1->bot->wikiServer, $this->pageName);
+        assertPageExist( $this->p2pBot1->bot->wikiServer, $this->pageName );
 
-        system("cp Import/Ours1.jpg cache/Ours1.jpg");
-        $file_size = filesize("cache/Ours1.jpg");
-        
-        for($i=1; $i<=$this->nb; $i++) {
+        system( "cp Import/Ours1.jpg cache/Ours1.jpg" );
+        $file_size = filesize( "cache/Ours1.jpg" );
 
-            $file = "cache/Ours".$i.".jpg";
-            
-            //upload the file on wiki1
-            $this->assertTrue($this->p2pBot1->uploadFile($file,$this->file.$i.".jpg",'0'));
+        for ( $i = 1; $i <= $this->nb; $i++ ) {
 
-            //test if the good file was upload on wiki1
-            $this->assertTrue($this->p2pBot1->getFileFeatures($this->file.$i.".jpg",$file_size));
+            $file = "cache/Ours" . $i . ".jpg";
 
-            //edit File:Ours.jpg on wiki1
-            $this->assertTrue($this->p2pBot1->editPage($this->filePage.$i.".jpg", $this->pushRequest),
-                    'failed to edit page '.$this->filePage.' ( '.$this->p2pBot1->bot->results.' )');
+            // upload the file on wiki1
+            $this->assertTrue( $this->p2pBot1->uploadFile( $file, $this->file . $i . ".jpg", '0' ) );
 
-            //remove file
-            system("mv cache/Ours".$i.".jpg cache/Ours".($i+1).".jpg");
+            // test if the good file was upload on wiki1
+            $this->assertTrue( $this->p2pBot1->getFileFeatures( $this->file . $i . ".jpg", $file_size ) );
+
+            // edit File:Ours.jpg on wiki1
+            $this->assertTrue( $this->p2pBot1->editPage( $this->filePage . $i . ".jpg", $this->pushRequest ),
+                    'failed to edit page ' . $this->filePage . ' ( ' . $this->p2pBot1->bot->results . ' )' );
+
+            // remove file
+            system( "mv cache/Ours" . $i . ".jpg cache/Ours" . ( $i + 1 ) . ".jpg" );
         }
-        
-        system("rm cache/Ours*");
-         
-        //create push on wiki1
-        $this->assertTrue($this->p2pBot1->createPush($this->pushName, $this->pushRequest),
-                'Failed to create push : '.$this->pushName.' ('.$this->p2pBot1->bot->results.')');
 
-        //push
-        $this->assertTrue($this->p2pBot1->push($this->pushFeed),
-                'failed to push '.$this->pushFeed.' ('.$this->p2pBot2->bot->results.')');
-        
-        //create pull on wiki2
-        $this->assertTrue($this->p2pBot2->createPull($this->pullName,$this->wiki1, $this->pushName),
-                'failed to create pull '.$this->pullName.' ('.$this->p2pBot2->bot->results.')');
+        system( "rm cache/Ours*" );
 
-        //pull
-        $this->assertTrue($this->p2pBot2->Pull($this->pullFeed),
-                'failed to pull '.$this->pullFeed.' ('.$this->p2pBot2->bot->results.')');
+        // create push on wiki1
+        $this->assertTrue( $this->p2pBot1->createPush( $this->pushName, $this->pushRequest ),
+                'Failed to create push : ' . $this->pushName . ' (' . $this->p2pBot1->bot->results . ')' );
 
-        $PatchonWiki1 = getSemanticRequest($this->p2pBot1->bot->wikiServer, '[[Patch:+]]', '-3FpatchID');
-        $PatchonWiki1 = arraytolower($PatchonWiki1);
-        $PatchonWiki2 = getSemanticRequest($this->p2pBot2->bot->wikiServer, '[[Patch:+]]', '-3FpatchID');
-        $PatchonWiki2 = arraytolower($PatchonWiki2);
-        $this->assertEquals(count($PatchonWiki1),count($PatchonWiki2));
+        // push
+        $this->assertTrue( $this->p2pBot1->push( $this->pushFeed ),
+                'failed to push ' . $this->pushFeed . ' (' . $this->p2pBot2->bot->results . ')' );
+
+        // create pull on wiki2
+        $this->assertTrue( $this->p2pBot2->createPull( $this->pullName, $this->wiki1, $this->pushName ),
+                'failed to create pull ' . $this->pullName . ' (' . $this->p2pBot2->bot->results . ')' );
+
+        // pull
+        $this->assertTrue( $this->p2pBot2->Pull( $this->pullFeed ),
+                'failed to pull ' . $this->pullFeed . ' (' . $this->p2pBot2->bot->results . ')' );
+
+        $PatchonWiki1 = getSemanticRequest( $this->p2pBot1->bot->wikiServer, '[[Patch:+]]', '-3FpatchID' );
+        $PatchonWiki1 = arraytolower( $PatchonWiki1 );
+        $PatchonWiki2 = getSemanticRequest( $this->p2pBot2->bot->wikiServer, '[[Patch:+]]', '-3FpatchID' );
+        $PatchonWiki2 = arraytolower( $PatchonWiki2 );
+        $this->assertEquals( count( $PatchonWiki1 ), count( $PatchonWiki2 ) );
 
     }
 
-    function viderRepertoire(){
+    function viderRepertoire() {
     }
 }
 

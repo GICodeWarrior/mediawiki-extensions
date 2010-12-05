@@ -13,20 +13,20 @@
  * @param <String> $request
  * @return <array>
  */
-function getRequestedPages($request) {
-    
+function getRequestedPages( $request ) {
+
         $results = array();
-        $res = utils::getSemanticQuery($request);
-        if($res===false) return false;
+        $res = utils::getSemanticQuery( $request );
+        if ( $res === false ) return false;
         $count = $res->getCount();
-        for($i=0; $i<$count; $i++) {
+        for ( $i = 0; $i < $count; $i++ ) {
 
             $row = $res->getNext();
-            if ($row===false) break;
+            if ( $row === false ) break;
             $row = $row[0];
 
-            $col = $row->getContent();//SMWResultArray object
-            foreach($col as $object) {//SMWDataValue object
+            $col = $row->getContent();// SMWResultArray object
+            foreach ( $col as $object ) {// SMWDataValue object
                 $wikiValue = $object->getWikiValue();
                 $results[] = $wikiValue;
             }
@@ -43,26 +43,26 @@ function getRequestedPages($request) {
  * @param <String> $pfName pushfeed name
  * @return <String>
  */
-function getPushFeedRequest($pfName) {
+function getPushFeedRequest( $pfName ) {
 
     $results = array();
-    $res = utils::getSemanticQuery('[['.$pfName.']]', '?hasSemanticQuery');//PullFeed:PullBureau
-    if($res===false)return false;
+    $res = utils::getSemanticQuery( '[[' . $pfName . ']]', '?hasSemanticQuery' );// PullFeed:PullBureau
+    if ( $res === false )return false;
     $count = $res->getCount();
-    for($i=0; $i<$count; $i++) {
+    for ( $i = 0; $i < $count; $i++ ) {
 
         $row = $res->getNext();
-        if ($row===false) break;
+        if ( $row === false ) break;
         $row = $row[0];
 
-        $col = $row->getContent();//SMWResultArray object
-        foreach($col as $object) {//SMWDataValue object
+        $col = $row->getContent();// SMWResultArray object
+        foreach ( $col as $object ) {// SMWDataValue object
             $wikiValue = $object->getWikiValue();
             $results[] = $wikiValue;
         }
     }
 
-    $value = utils::decodeRequest($results[0]);
+    $value = utils::decodeRequest( $results[0] );
     return $value;
 }
 
@@ -73,7 +73,7 @@ function getPushFeedRequest($pfName) {
  * @param <String> $pfName PushFeed name
  * @return <String> previous changeSet ID
  */
-//function getPreviousCSID($pfName) {
+// function getPreviousCSID($pfName) {
 //    global $wgServerName, $wgScriptPath;
 //    $url = 'http://'.$wgServerName.$wgScriptPath.'/index.php';
 //    $req = '[[ChangeSet:+]] [[inPushFeed::'.$pfName.']]';
@@ -86,7 +86,7 @@ function getPushFeedRequest($pfName) {
 //    $string = str_replace(',', '', $string);
 //    $string = str_replace("\"", "", $string);
 //    return $string;
-//}
+// }
 
 /**
  * Gets the published patches
@@ -96,25 +96,25 @@ function getPushFeedRequest($pfName) {
  * @param <String> $pfname PushFeed name
  * @return <array> array of the published patches' name
  */
-function getPublishedPatches($pfname) {
-    
+function getPublishedPatches( $pfname ) {
+
     $results = array();
-    $res = utils::getSemanticQuery('[[ChangeSet:+]] [[inPushFeed::'.$pfname.']]', '?hasPatch');//PullFeed:PullBureau
-    if($res===false) return false;
+    $res = utils::getSemanticQuery( '[[ChangeSet:+]] [[inPushFeed::' . $pfname . ']]', '?hasPatch' );// PullFeed:PullBureau
+    if ( $res === false ) return false;
     $count = $res->getCount();
-    for($i=0; $i<$count; $i++) {
+    for ( $i = 0; $i < $count; $i++ ) {
 
         $row = $res->getNext();
-        if ($row===false) break;
+        if ( $row === false ) break;
         $row = $row[1];
 
-        $col = $row->getContent();//SMWResultArray object
-        foreach($col as $object) {//SMWDataValue object
+        $col = $row->getContent();// SMWResultArray object
+        foreach ( $col as $object ) {// SMWDataValue object
             $wikiValue = $object->getWikiValue();
             $results[] = $wikiValue;
         }
     }
-    $results = array_unique($results);
+    $results = array_unique( $results );
     return $results;
 }
 
@@ -127,36 +127,36 @@ function getPublishedPatches($pfname) {
  * @return <boolean> returns true if the update is successful
  */
 
-function updatePushFeed($name, $CSID) {
-//split NS and name
+function updatePushFeed( $name, $CSID ) {
+// split NS and name
     preg_match( "/^(.+?)_*:_*(.*)$/S", $name, $m );
     $articleName = $m[2];
 
-    //get PushFeed by name
-    $title = Title::newFromText($articleName, PUSHFEED);
+    // get PushFeed by name
+    $title = Title::newFromText( $articleName, PUSHFEED );
     $dbr = wfGetDB( DB_SLAVE );
-    $revision = Revision::loadFromTitle($dbr, $title);
+    $revision = Revision::loadFromTitle( $dbr, $title );
     $pageContent = $revision->getText();
 
-    //get hasPushHead Value if exists
+    // get hasPushHead Value if exists
     $start = "[[hasPushHead::";
     $val1 = strpos( $pageContent, $start );
-    if ($val1!==false) {//if there is an occurence of [[hasPushHead::
+    if ( $val1 !== false ) {// if there is an occurence of [[hasPushHead::
         $startVal = $val1 + strlen( $start );
         $end = "]]";
         $endVal = strpos( $pageContent, $end, $startVal );
         $value = substr( $pageContent, $startVal, $endVal - $startVal );
 
-        //update hasPushHead Value
-        $result = str_replace($value, $CSID, $pageContent);
+        // update hasPushHead Value
+        $result = str_replace( $value, $CSID, $pageContent );
         $pageContent = $result;
-        if($result=="")return false;
-    }else {//no occurence of [[hasPushHead:: , we add
-        $pageContent.= ' hasPushHead: [[hasPushHead::'.$CSID.']]';
+        if ( $result == "" )return false;
+    } else {// no occurence of [[hasPushHead:: , we add
+        $pageContent .= ' hasPushHead: [[hasPushHead::' . $CSID . ']]';
     }
-    //save update
-    $article = new Article($title);
-    $article->doEdit($pageContent, $summary="");
+    // save update
+    $article = new Article( $title );
+    $article->doEdit( $pageContent, $summary = "" );
 
     return true;
 }
@@ -169,25 +169,25 @@ function updatePushFeed($name, $CSID) {
  * @param <String> $pfName pullfeed name
  * @return <String or bool> false if no pullhead
  */
-function getHasPullHead($pfName) {//pullfeed name with ns
-    
+function getHasPullHead( $pfName ) {// pullfeed name with ns
+
     $results = array();
-    $res = utils::getSemanticQuery('[[PullFeed:+]] [[name::'.$pfName.']]', '?hasPullHead');
-    if ($res===false) return false;
+    $res = utils::getSemanticQuery( '[[PullFeed:+]] [[name::' . $pfName . ']]', '?hasPullHead' );
+    if ( $res === false ) return false;
     $count = $res->getCount();
-    for($i=0; $i<$count; $i++) {
+    for ( $i = 0; $i < $count; $i++ ) {
 
         $row = $res->getNext();
-        if ($row===false) break;
+        if ( $row === false ) break;
         $row = $row[1];
 
-        $col = $row->getContent();//SMWResultArray object
-        foreach($col as $object) {//SMWDataValue object
+        $col = $row->getContent();// SMWResultArray object
+        foreach ( $col as $object ) {// SMWDataValue object
             $wikiValue = $object->getWikiValue();
             $results[] = $wikiValue;
         }
     }
-    if(empty ($results)) return false;
+    if ( empty ( $results ) ) return false;
     else return $results[0];
 }
 
@@ -200,25 +200,25 @@ function getHasPullHead($pfName) {//pullfeed name with ns
  * @param <String> $pfName pushfeed name
  * @return <String or bool> false if no pushhead
  */
-function getHasPushHead($pfName) {//pushfeed name with ns
-    
+function getHasPushHead( $pfName ) {// pushfeed name with ns
+
     $results = array();
-    $res = utils::getSemanticQuery('[[PushFeed:+]] [[name::'.$pfName.']]', '?hasPushHead');
-    if ($res===false) return false;
+    $res = utils::getSemanticQuery( '[[PushFeed:+]] [[name::' . $pfName . ']]', '?hasPushHead' );
+    if ( $res === false ) return false;
     $count = $res->getCount();
-    for($i=0; $i<$count; $i++) {
+    for ( $i = 0; $i < $count; $i++ ) {
 
         $row = $res->getNext();
-        if ($row===false) break;
+        if ( $row === false ) break;
         $row = $row[1];
 
-        $col = $row->getContent();//SMWResultArray object
-        foreach($col as $object) {//SMWDataValue object
+        $col = $row->getContent();// SMWResultArray object
+        foreach ( $col as $object ) {// SMWDataValue object
             $wikiValue = $object->getWikiValue();
             $results[] = $wikiValue;
         }
     }
-    if(empty ($results)) return false;
+    if ( empty ( $results ) ) return false;
     else return $results[0];
 }
 
@@ -230,25 +230,25 @@ function getHasPushHead($pfName) {//pushfeed name with ns
  * @param <type> $name pullfeed name
  * @return <type> pushfeed name
  */
-function getPushName($name) {//pullfeed name with NS
-    
+function getPushName( $name ) {// pullfeed name with NS
+
     $results = array();
-    $res = utils::getSemanticQuery('[[PullFeed:+]] [[name::'.$name.']]', '?pushFeedName');
-    if ($res===false) return false;
+    $res = utils::getSemanticQuery( '[[PullFeed:+]] [[name::' . $name . ']]', '?pushFeedName' );
+    if ( $res === false ) return false;
     $count = $res->getCount();
-    for($i=0; $i<$count; $i++) {
+    for ( $i = 0; $i < $count; $i++ ) {
 
         $row = $res->getNext();
-        if ($row===false) break;
+        if ( $row === false ) break;
         $row = $row[1];
 
-        $col = $row->getContent();//SMWResultArray object
-        foreach($col as $object) {//SMWDataValue object
+        $col = $row->getContent();// SMWResultArray object
+        foreach ( $col as $object ) {// SMWDataValue object
             $wikiValue = $object->getWikiValue();
             $results[] = $wikiValue;
         }
     }
-    if(empty ($results)) return false;
+    if ( empty ( $results ) ) return false;
     else return $results[0];
 }
 
@@ -260,25 +260,25 @@ function getPushName($name) {//pullfeed name with NS
  * @param <String> $name pullfeed name
  * @return <String> Pushfeed Url
  */
-function getPushURL($name) {//pullfeed name with NS
-    
+function getPushURL( $name ) {// pullfeed name with NS
+
     $results = array();
-    $res = utils::getSemanticQuery('[[PullFeed:+]] [[name::'.$name.']]', '?pushFeedServer');
-    if ($res===false) return false;
+    $res = utils::getSemanticQuery( '[[PullFeed:+]] [[name::' . $name . ']]', '?pushFeedServer' );
+    if ( $res === false ) return false;
     $count = $res->getCount();
-    for($i=0; $i<$count; $i++) {
+    for ( $i = 0; $i < $count; $i++ ) {
 
         $row = $res->getNext();
-        if ($row===false) break;
+        if ( $row === false ) break;
         $row = $row[1];
 
-        $col = $row->getContent();//SMWResultArray object
-        foreach($col as $object) {//SMWDataValue object
+        $col = $row->getContent();// SMWResultArray object
+        foreach ( $col as $object ) {// SMWDataValue object
             $wikiValue = $object->getWikiValue();
             $results[] = $wikiValue;
         }
     }
-    if(empty ($results)) return false;
+    if ( empty ( $results ) ) return false;
     else return $results[0];
 }
 /**
@@ -289,38 +289,36 @@ function getPushURL($name) {//pullfeed name with NS
  * @param <String> $CSID ChangeSetID (without namespace)
  * @return <boolean> returns true if the update is successful
  */
-function updatePullFeed($name, $CSID) {
-//split NS and name
+function updatePullFeed( $name, $CSID ) {
+// split NS and name
     preg_match( "/^(.+?)_*:_*(.*)$/S", $name, $m );
     $articleName = $m[2];
 
-    //get PushFeed by name
-    $title = Title::newFromText($articleName, PULLFEED);
+    // get PushFeed by name
+    $title = Title::newFromText( $articleName, PULLFEED );
     $dbr = wfGetDB( DB_SLAVE );
-    $revision = Revision::loadFromTitle($dbr, $title);
+    $revision = Revision::loadFromTitle( $dbr, $title );
     $pageContent = $revision->getText();
 
-    //get hasPushHead Value if exists
+    // get hasPushHead Value if exists
     $start = "[[hasPullHead::";
     $val1 = strpos( $pageContent, $start );
-    if ($val1!==false) {//if there is an occurence of [[hasPushHead::
+    if ( $val1 !== false ) {// if there is an occurence of [[hasPushHead::
         $startVal = $val1 + strlen( $start );
         $end = "]]";
         $endVal = strpos( $pageContent, $end, $startVal );
         $value = substr( $pageContent, $startVal, $endVal - $startVal );
 
-        //update hasPullHead Value
-        $result = str_replace($value, $CSID, $pageContent);
+        // update hasPullHead Value
+        $result = str_replace( $value, $CSID, $pageContent );
         $pageContent = $result;
-        if($result=="")return false;
-    }else {//no occurence of [[hasPushHead:: , we add
-        $pageContent.= ' hasPullHead: [[hasPullHead::'.$CSID.']]';
+        if ( $result == "" )return false;
+    } else {// no occurence of [[hasPushHead:: , we add
+        $pageContent .= ' hasPullHead: [[hasPullHead::' . $CSID . ']]';
     }
-    //save update
-    $article = new Article($title);
-    $article->doEdit($pageContent, $summary="");
+    // save update
+    $article = new Article( $title );
+    $article->doEdit( $pageContent, $summary = "" );
 
     return true;
 }
-
-?>

@@ -1,5 +1,5 @@
 <?php
-if( !defined('MEDIAWIKI') ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 // Eclipse helper - will be ignored in production
     require_once( 'ApiQueryBase.php' );
 }
@@ -19,46 +19,46 @@ class ApiQueryPatch extends ApiQueryBase {
         $this->run();
     }
 
-    public function encodeRequest($request) {
+    public function encodeRequest( $request ) {
         $req = str_replace(
-            array('-', '#', "\n", ' ', '/', '[', ']', '<', '>', '&lt;', '&gt;', '&amp;', '\'\'', '|', '&', '%', '?', '{', '}'),
-            array('-2D', '-23', '-0A', '-20', '-2F', '-5B', '-5D', '-3C', '-3E', '-3C', '-3E', '-26', '-27-27', '-7C', '-26', '-25', '-3F', '-7B', '-7D'), $request);
+            array( '-', '#', "\n", ' ', '/', '[', ']', '<', '>', '&lt;', '&gt;', '&amp;', '\'\'', '|', '&', '%', '?', '{', '}' ),
+            array( '-2D', '-23', '-0A', '-20', '-2F', '-5B', '-5D', '-3C', '-3E', '-3C', '-3E', '-26', '-27-27', '-7C', '-26', '-25', '-3F', '-7B', '-7D' ), $request );
         return $req;
     }
     private function run() {
         global $wgServerName, $wgScriptPath;
 
         $params = $this->extractRequestParams();
-        wfDebugLog('p2p','ApiQueryPatch params '.$params['patchId']);
+        wfDebugLog( 'p2p', 'ApiQueryPatch params ' . $params['patchId'] );
 
-        $array = array(1 => 'id', 2 => 'onPage', 3 => 'operation', 4 => 'previous', 5 => 'siteID', 6 => 'mime', 7 => 'size', 8 => 'url', 9 => 'DateAtt', 10 => 'siteUrl', 11 => 'causal');
-        $array1 = array(1 => 'patchID', 2 => 'onPage', 3 => 'hasOperation', 4 => 'previous', 5 => 'siteID', 6 => 'mime', 7 => 'size', 8 => 'url', 9 => 'DateAtt', 10 => 'siteUrl', 11 => 'causal');
-        
+        $array = array( 1 => 'id', 2 => 'onPage', 3 => 'operation', 4 => 'previous', 5 => 'siteID', 6 => 'mime', 7 => 'size', 8 => 'url', 9 => 'DateAtt', 10 => 'siteUrl', 11 => 'causal' );
+        $array1 = array( 1 => 'patchID', 2 => 'onPage', 3 => 'hasOperation', 4 => 'previous', 5 => 'siteID', 6 => 'mime', 7 => 'size', 8 => 'url', 9 => 'DateAtt', 10 => 'siteUrl', 11 => 'causal' );
+
         $query = '';
 
-        for($j=1; $j<=count($array1); $j++) {
-            $query = $query.'?'.$array1[$j].'
+        for ( $j = 1; $j <= count( $array1 ); $j++ ) {
+            $query = $query . '?' . $array1[$j] . '
 ';
         }
 
-        $res = utils::getSemanticQuery('[[patchID::'.$params['patchId'].']]',$query);
+        $res = utils::getSemanticQuery( '[[patchID::' . $params['patchId'] . ']]', $query );
 
         $count = $res->getCount();
-        for($i=0; $i<$count; $i++) {
+        for ( $i = 0; $i < $count; $i++ ) {
             $row = $res->getNext();
-            if ($row===false) break;
-            for($j=1; $j<=count($array); $j++) {
-                if($j==3){
-                    $col = $row[$j]->getContent();//SMWResultArray object
-                    foreach($col as $object) {//SMWDataValue object
+            if ( $row === false ) break;
+            for ( $j = 1; $j <= count( $array ); $j++ ) {
+                if ( $j == 3 ) {
+                    $col = $row[$j]->getContent();// SMWResultArray object
+                    foreach ( $col as $object ) {// SMWDataValue object
                         $wikiValue = $object->getWikiValue();
                         $op[] = $wikiValue;
                     }
-                    $results[$j]=$op;
+                    $results[$j] = $op;
                 }
-                else{
-                    $col = $row[$j]->getContent();//SMWResultArray object
-                    foreach($col as $object) {//SMWDataValue object
+                else {
+                    $col = $row[$j]->getContent();// SMWResultArray object
+                    foreach ( $col as $object ) {// SMWDataValue object
                         $wikiValue = $object->getWikiValue();
                         $results[$j] = $wikiValue;
                     }
@@ -66,24 +66,24 @@ class ApiQueryPatch extends ApiQueryBase {
             }
         }
         $result = $this->getResult();
-        //$data = str_replace('"', '', $data);
+        // $data = str_replace('"', '', $data);
 
-        //$data = explode('!',$data);
-        
-        if($results[1]) {
-            for($i=1; $i<=count($array); $i++) {
-                if ($results[$i] != null){
-                if ($i == 2){
-                    $title = trim($results[$i],":");
-                    $result->addValue(array('query',$this->getModuleName()),$array[$i],$title);
+        // $data = explode('!',$data);
+
+        if ( $results[1] ) {
+            for ( $i = 1; $i <= count( $array ); $i++ ) {
+                if ( $results[$i] != null ) {
+                if ( $i == 2 ) {
+                    $title = trim( $results[$i], ":" );
+                    $result->addValue( array( 'query', $this->getModuleName() ), $array[$i], $title );
                 }
-                elseif ($i == 3){
+                elseif ( $i == 3 ) {
                     $op = $results[$i];
-                    $result->setIndexedTagName($op, $array[$i]);
-                    $result->addValue('query', $this->getModuleName(), $op);
+                    $result->setIndexedTagName( $op, $array[$i] );
+                    $result->addValue( 'query', $this->getModuleName(), $op );
                 }
 		else
-		    $result->addValue(array('query',$this->getModuleName()),$array[$i],$results[$i]);
+		    $result->addValue( array( 'query', $this->getModuleName() ), $array[$i], $results[$i] );
                 }
             }
         }

@@ -13,29 +13,28 @@ class LogootDel {
     /**
      *
      * @param <Object> $position LogootPosition
-     * @param <String> $content line content 
+     * @param <String> $content line content
      */
-    public function __construct($position, $content) {
-        $this->setLogootPosition($position);
-        $this->setLineContent($content);
+    public function __construct( $position, $content ) {
+        $this->setLogootPosition( $position );
+        $this->setLineContent( $content );
     }
 
-    public function getLogootPosition(){
+    public function getLogootPosition() {
         return $this->mLogootPosition;
     }
 
-    public function getLineContent(){
+    public function getLineContent() {
         return $this->mLineContent;
     }
 
-    public function setLogootPosition($position){
+    public function setLogootPosition( $position ) {
         $this->mLogootPosition = $position;
     }
 
-    public function setLineContent($content) {
+    public function setLineContent( $content ) {
         $this->mLineContent = $content;
     }
 
 
 }
-?>

@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MEDIAWIKI')){define( 'MEDIAWIKI', true );}
+if ( !defined( 'MEDIAWIKI' ) ) { define( 'MEDIAWIKI', true ); }
 require_once 'p2pBot.php';
 require_once 'BasicBot.php';
 include_once 'p2pAssert.php';
@@ -30,16 +30,16 @@ class p2pTest3 extends PHPUnit_Framework_TestCase {
      * @access protected
      */
     protected function setUp() {
-        exec('./initWikiTest.sh ./dump.sql');
-        exec('rm ./cache/*');
+        exec( './initWikiTest.sh ./dump.sql' );
+        exec( 'rm ./cache/*' );
         $basicbot1 = new BasicBot();
         $basicbot1->wikiServer = $this->wiki1;
-        $this->p2pBot1 = new p2pBot($basicbot1);
+        $this->p2pBot1 = new p2pBot( $basicbot1 );
         $this->p2pBot1->updateProperies();
 
         $basicbot2 = new BasicBot();
         $basicbot2->wikiServer = $this->wiki2;
-        $this->p2pBot2 = new p2pBot($basicbot2);
+        $this->p2pBot2 = new p2pBot( $basicbot2 );
         $this->p2pBot2->updateProperies();
     }
 
@@ -53,9 +53,9 @@ class p2pTest3 extends PHPUnit_Framework_TestCase {
     // exec('./deleteTest.sh');
     }
 
-    public function testSimple(){
+    public function testSimple() {
 
-        $this->p2pBot1->createPage('Moldova',
+        $this->p2pBot1->createPage( 'Moldova',
             'Moldova en-us-Moldova.ogg /mɒlˈdoʊvə/ (help·info), officially the Republic of Moldova (Republica Moldova) is a landlocked country in Eastern Europe, located between Romania to the west and Ukraine to the north, east and south.
 
 In the Middle Ages, most of the present territory of Moldova was part of the Principality of Moldavia. In 1812, it was annexed by the Russian Empire, and became known as Bessarabia. Between 1856 and 1878, the southern part was returned to Moldavia. In 1859 it united with Wallachia to form modern Romania.
@@ -66,30 +66,30 @@ After changing hands in 1941 and 1944 during World War II, the territory of the 
 
 In September 1990, a breakaway government was formed in Transnistria, a strip of Moldavian SSR on the east bank of the river Dniester. After a brief war in 1992, it became de facto independent, although no UN member has recognized its independence.
 
-The country is a parliamentary democracy with a president as head of state and a prime minister as head of government. Moldova is a member state of the United Nations, Council of Europe, WTO, OSCE, GUAM, CIS, BSEC and other international organizations. Moldova currently aspires to join the European Union,[4] and has implemented the first three-year Action Plan within the framework of the European Neighbourhood Policy (ENP).[5] About a quarter of the population lives on less than US$ 2 a day.');
+The country is a parliamentary democracy with a president as head of state and a prime minister as head of government. Moldova is a member state of the United Nations, Council of Europe, WTO, OSCE, GUAM, CIS, BSEC and other international organizations. Moldova currently aspires to join the European Union,[4] and has implemented the first three-year Action Plan within the framework of the European Neighbourhood Policy (ENP).[5] About a quarter of the population lives on less than US$ 2 a day.' );
 
-        $this->p2pBot1->createPush('PushPage_Moldova', '[[Moldova]]');
-        $this->p2pBot1->push('PushFeed:PushPage_Moldova');
+        $this->p2pBot1->createPush( 'PushPage_Moldova', '[[Moldova]]' );
+        $this->p2pBot1->push( 'PushFeed:PushPage_Moldova' );
 
-        $this->p2pBot2->createPull('PullMoldova', $this->p2pBot1->bot->wikiServer, 'PushPage_Moldova');
-        $this->p2pBot2->pull('PullFeed:PullMoldova');
+        $this->p2pBot2->createPull( 'PullMoldova', $this->p2pBot1->bot->wikiServer, 'PushPage_Moldova' );
+        $this->p2pBot2->pull( 'PullFeed:PullMoldova' );
 
-        //assert that there is the same changeSet on the 2 wikis
-         $CSonWiki1 = getSemanticRequest($this->p2pBot1->bot->wikiServer, '[[ChangeSet:+]][[inPushFeed::PushFeed:PushPage_Moldova]]', '-3FchangeSetID');
-        $CSonWiki2 = getSemanticRequest($this->p2pBot2->bot->wikiServer, '[[ChangeSet:+]][[inPullFeed::PullFeed:PullMoldova]]', '-3FchangeSetID');
-        $this->assertEquals($CSonWiki1,$CSonWiki2,'changeSet are not equals on the 2 wikis');
+        // assert that there is the same changeSet on the 2 wikis
+         $CSonWiki1 = getSemanticRequest( $this->p2pBot1->bot->wikiServer, '[[ChangeSet:+]][[inPushFeed::PushFeed:PushPage_Moldova]]', '-3FchangeSetID' );
+        $CSonWiki2 = getSemanticRequest( $this->p2pBot2->bot->wikiServer, '[[ChangeSet:+]][[inPullFeed::PullFeed:PullMoldova]]', '-3FchangeSetID' );
+        $this->assertEquals( $CSonWiki1, $CSonWiki2, 'changeSet are not equals on the 2 wikis' );
 
-        //assert that there is the same patch on the 2 wikis
-        $PatchonWiki1 = getSemanticRequest($this->p2pBot1->bot->wikiServer, '[[Patch:+]][[onPage::Moldova]]', '-3FpatchID');
-        $PatchonWiki2 = getSemanticRequest($this->p2pBot2->bot->wikiServer, '[[Patch:+]][[onPage::Moldova]]', '-3FpatchID');
-        $PatchonWiki1 = arraytolower($PatchonWiki1);
-        $PatchonWiki2 = arraytolower($PatchonWiki2);
-        $this->assertEquals($PatchonWiki1,$PatchonWiki2,'patch are not equals on the 2 wikis');
+        // assert that there is the same patch on the 2 wikis
+        $PatchonWiki1 = getSemanticRequest( $this->p2pBot1->bot->wikiServer, '[[Patch:+]][[onPage::Moldova]]', '-3FpatchID' );
+        $PatchonWiki2 = getSemanticRequest( $this->p2pBot2->bot->wikiServer, '[[Patch:+]][[onPage::Moldova]]', '-3FpatchID' );
+        $PatchonWiki1 = arraytolower( $PatchonWiki1 );
+        $PatchonWiki2 = arraytolower( $PatchonWiki2 );
+        $this->assertEquals( $PatchonWiki1, $PatchonWiki2, 'patch are not equals on the 2 wikis' );
         // assert that wiki1/Moldova == wiki2/Moldova
-        assertContentEquals($this->p2pBot1->bot->wikiServer, $this->p2pBot2->bot->wikiServer, 'Moldova');
+        assertContentEquals( $this->p2pBot1->bot->wikiServer, $this->p2pBot2->bot->wikiServer, 'Moldova' );
     }
 
-    public function testSimple2(){
+    public function testSimple2() {
         $text = "DSMW implements the Logoot algorithm (see [[Presentation_and_Papers|Papers and presentations]]).
 This algorithm allows automatic resolution of edition conflicts.
 
@@ -254,33 +254,33 @@ The informations are updated!  You can  display remote patches:
 [[Category:DSMWDocumentation]]
 ";
 
-        $this->assertTrue($this->p2pBot1->createPage('Conflict_Management1', $text));
-        $this->p2pBot1->createPage('Subscription_Procedure1', $text1);
-        $this->p2pBot1->createPush('PushDSMWDoc1', '[[Category:DSMWDocumentation]]');
-        $this->p2pBot1->push('PushFeed:PushDSMWDoc1');
+        $this->assertTrue( $this->p2pBot1->createPage( 'Conflict_Management1', $text ) );
+        $this->p2pBot1->createPage( 'Subscription_Procedure1', $text1 );
+        $this->p2pBot1->createPush( 'PushDSMWDoc1', '[[Category:DSMWDocumentation]]' );
+        $this->p2pBot1->push( 'PushFeed:PushDSMWDoc1' );
 
-        $this->p2pBot2->createPull('PullDSMWDoc1', $this->p2pBot1->bot->wikiServer, 'PushDSMWDoc1');
-        $this->p2pBot2->pull('PullFeed:PullDSMWDoc1');
+        $this->p2pBot2->createPull( 'PullDSMWDoc1', $this->p2pBot1->bot->wikiServer, 'PushDSMWDoc1' );
+        $this->p2pBot2->pull( 'PullFeed:PullDSMWDoc1' );
 
-        //assert that there is the same changeSet on the 2 wikis
-         $CSonWiki1 = getSemanticRequest($this->p2pBot1->bot->wikiServer, '[[ChangeSet:+]][[inPushFeed::PushFeed:PushDSMWDoc1]]', '-3FchangeSetID');
-        $CSonWiki2 = getSemanticRequest($this->p2pBot2->bot->wikiServer, '[[ChangeSet:+]][[inPullFeed::PullFeed:PullDSMWDoc1]]', '-3FchangeSetID');
-        $this->assertEquals($CSonWiki1,$CSonWiki2,'changeSet are not equals on the 2 wikis');
+        // assert that there is the same changeSet on the 2 wikis
+         $CSonWiki1 = getSemanticRequest( $this->p2pBot1->bot->wikiServer, '[[ChangeSet:+]][[inPushFeed::PushFeed:PushDSMWDoc1]]', '-3FchangeSetID' );
+        $CSonWiki2 = getSemanticRequest( $this->p2pBot2->bot->wikiServer, '[[ChangeSet:+]][[inPullFeed::PullFeed:PullDSMWDoc1]]', '-3FchangeSetID' );
+        $this->assertEquals( $CSonWiki1, $CSonWiki2, 'changeSet are not equals on the 2 wikis' );
 
-        //assert that there is the same patch on the 2 wikis
-        $PatchonWiki1 = getSemanticRequest($this->p2pBot1->bot->wikiServer, '[[Patch:+]][[onPage::Conflict_Management1]]', '-3FpatchID');
-        $PatchonWiki2 = getSemanticRequest($this->p2pBot2->bot->wikiServer, '[[Patch:+]][[onPage::Conflict_Management1]]', '-3FpatchID');
-        $PatchonWiki1 = arraytolower($PatchonWiki1);
-        $PatchonWiki2 = arraytolower($PatchonWiki2);
-        $this->assertEquals($PatchonWiki1,$PatchonWiki2,'patch are not equals on the 2 wikis');
-        $PatchonWiki3 = getSemanticRequest($this->p2pBot1->bot->wikiServer, '[[Patch:+]][[onPage::Subscription_Procedure1]]', '-3FpatchID');
-        $PatchonWiki4 = getSemanticRequest($this->p2pBot2->bot->wikiServer, '[[Patch:+]][[onPage::Subscription_Procedure1]]', '-3FpatchID');
-        $PatchonWiki3 = arraytolower($PatchonWiki3);
-        $PatchonWiki4 = arraytolower($PatchonWiki4);
-        $this->assertEquals($PatchonWiki3,$PatchonWiki4,'patch are not equals on the 2 wikis');
+        // assert that there is the same patch on the 2 wikis
+        $PatchonWiki1 = getSemanticRequest( $this->p2pBot1->bot->wikiServer, '[[Patch:+]][[onPage::Conflict_Management1]]', '-3FpatchID' );
+        $PatchonWiki2 = getSemanticRequest( $this->p2pBot2->bot->wikiServer, '[[Patch:+]][[onPage::Conflict_Management1]]', '-3FpatchID' );
+        $PatchonWiki1 = arraytolower( $PatchonWiki1 );
+        $PatchonWiki2 = arraytolower( $PatchonWiki2 );
+        $this->assertEquals( $PatchonWiki1, $PatchonWiki2, 'patch are not equals on the 2 wikis' );
+        $PatchonWiki3 = getSemanticRequest( $this->p2pBot1->bot->wikiServer, '[[Patch:+]][[onPage::Subscription_Procedure1]]', '-3FpatchID' );
+        $PatchonWiki4 = getSemanticRequest( $this->p2pBot2->bot->wikiServer, '[[Patch:+]][[onPage::Subscription_Procedure1]]', '-3FpatchID' );
+        $PatchonWiki3 = arraytolower( $PatchonWiki3 );
+        $PatchonWiki4 = arraytolower( $PatchonWiki4 );
+        $this->assertEquals( $PatchonWiki3, $PatchonWiki4, 'patch are not equals on the 2 wikis' );
 
-        assertContentEquals($this->p2pBot1->bot->wikiServer, $this->p2pBot2->bot->wikiServer, 'Conflict_Management1');
-        assertContentEquals($this->p2pBot1->bot->wikiServer, $this->p2pBot2->bot->wikiServer, 'Subscription_Procedure1');
+        assertContentEquals( $this->p2pBot1->bot->wikiServer, $this->p2pBot2->bot->wikiServer, 'Conflict_Management1' );
+        assertContentEquals( $this->p2pBot1->bot->wikiServer, $this->p2pBot2->bot->wikiServer, 'Subscription_Procedure1' );
     }
 }
 ?>

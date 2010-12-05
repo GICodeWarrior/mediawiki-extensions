@@ -119,4 +119,3 @@ include("$IP/extensions/DSMW/SimpleForms/SimpleForms.php");
 //            $db->sourceFile($wgDSMWIP.'/db/addedTables.sql' );
 //        }
 //    }
-?>

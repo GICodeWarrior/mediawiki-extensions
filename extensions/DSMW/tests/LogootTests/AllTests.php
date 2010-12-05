@@ -13,13 +13,13 @@ require_once 'logootTest1.php';
 class logootTestSuite {
 
     public static function main() {
-        PHPUnit_TextUI_TestRunner::run(self::suite());
+        PHPUnit_TextUI_TestRunner::run( self::suite() );
     }
 
     public static function suite() {
-        $suite = new PHPUnit_Framework_TestSuite('p2p');
-        $suite->addTestSuite('logootTest');
-        $suite->addTestSuite('logootTest1');
+        $suite = new PHPUnit_Framework_TestSuite( 'p2p' );
+        $suite->addTestSuite( 'logootTest' );
+        $suite->addTestSuite( 'logootTest1' );
         return $suite;
     }
 }
