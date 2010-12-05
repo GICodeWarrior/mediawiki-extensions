@@ -270,6 +270,10 @@ $messages['be-tarask'] = array(
 	'articlefeedback-beta-field-wellsourced-tip' => 'Вы лічыце, што гэтая старонка мае дастаткова цытатаў, і яны паходзяць з крыніц вартых даверу?',
 	'articlefeedback-beta-field-complete-label' => 'Скончанасьць',
 	'articlefeedback-beta-field-complete-tip' => 'Вы лічыце, што гэтая старонка раскрывае асноўныя пытаньні тэмы як сьлед?',
+	'articlefeedback-beta-field-neutral-label' => 'Нэўтральнасьць',
+	'articlefeedback-beta-field-neutral-tip' => 'Вы лічыце, што на гэтай старонцы адлюстраваныя усе пункты гледжаньня на пытаньне?',
+	'articlefeedback-beta-field-readable-label' => 'Лёгкасьць чытаньня',
+	'articlefeedback-beta-field-readable-tip' => 'Вы лічыце, што гэтая старонка добра арганізаваная і добра напісаная?',
 );
 
 /** Bulgarian (Български)
@@ -934,6 +938,9 @@ Quizais queira avaliala novamente.",
 	'articlefeedback-alpha-survey-submit' => 'Enviar',
 	'articlefeedback-alpha-survey-title' => 'Responda algunhas preguntas',
 	'articlefeedback-alpha-survey-thanks' => 'Grazas por encher a enquisa.',
+	'articlefeedback-beta-form-tab-label' => 'Deixar un comentario',
+	'articlefeedback-beta-form-panel-title' => 'Os seus comentarios',
+	'articlefeedback-beta-form-panel-instructions' => 'Por favor, tome uns intres para avaliar esta páxina.',
 );
 
 /** Swiss German (Alemannisch)
@@ -1469,11 +1476,21 @@ Et kéint sinn datt dir en nei bewäerte wëllt.",
 	'articlefeedback-alpha-survey-submit' => 'Späicheren',
 	'articlefeedback-alpha-survey-title' => 'Beäntwert w.e.g. e puer Froen',
 	'articlefeedback-alpha-survey-thanks' => 'Merci datt Dir eis Ëmfro ausgefëllt hutt.',
+	'articlefeedback-beta-form-tab-label' => 'Feedback ofgin',
+	'articlefeedback-beta-form-panel-title' => 'Äre Feedback',
 	'articlefeedback-beta-form-panel-instructions' => 'Huelt Iech w.e.g. een Ament fir d¨s Säit ze bewäerten.',
+	'articlefeedback-beta-form-panel-notice' => 'Är Bewäertunge lafe mat der Zäit of.',
+	'articlefeedback-beta-form-panel-submit' => 'Feedback iwwerdroen',
 	'articlefeedback-beta-report-tab-label' => 'Resultater weisen',
+	'articlefeedback-beta-report-panel-title' => 'Resultater vum Fedback',
+	'articlefeedback-beta-field-wellsourced-label' => 'Gutt dokumentéiert',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Hutt Dir den Androck datt dës Säit genuch Zitater huet an datt dës Zitater aus vertrauenswierdege Quelle kommen?',
 	'articlefeedback-beta-field-complete-label' => 'Komplett',
+	'articlefeedback-beta-field-complete-tip' => 'Hutt dir den Androck datt dës Säit déi wesentlech Aspekter vun dësem Sujet behandelt déi solle beliicht ginn?',
 	'articlefeedback-beta-field-neutral-label' => 'Neutral',
+	'articlefeedback-beta-field-neutral-tip' => 'Hutt Dir den Androck datt dës Säit eng ausgeglache Presentatioun vun alle Perspektive vun dësem Thema weist?',
 	'articlefeedback-beta-field-readable-label' => 'Liesbar',
+	'articlefeedback-beta-field-readable-tip' => 'Hutt Dir den Androck datt dës Säit gutt organiséiert a gutt geschriwwen ass?',
 );
 
 /** Limburgish (Limburgs)
@@ -1987,6 +2004,21 @@ Talvez queira voltar a avaliá-la.",
 	'articlefeedback-alpha-survey-submit' => 'Enviar',
 	'articlefeedback-alpha-survey-title' => 'Por favor, responda a algumas perguntas',
 	'articlefeedback-alpha-survey-thanks' => 'Obrigado por preencher o questionário.',
+	'articlefeedback-beta-form-tab-label' => 'Deixar comentário',
+	'articlefeedback-beta-form-panel-title' => 'Os seus comentários',
+	'articlefeedback-beta-form-panel-instructions' => 'Dedique um momento a avaliar esta página abaixo, por favor.',
+	'articlefeedback-beta-form-panel-notice' => 'As suas classificações irão expirar ao longo do tempo.',
+	'articlefeedback-beta-form-panel-submit' => 'Enviar comentários',
+	'articlefeedback-beta-report-tab-label' => 'Mostrar resultados',
+	'articlefeedback-beta-report-panel-title' => 'Resultados dos comentários',
+	'articlefeedback-beta-field-wellsourced-label' => 'Bem referenciada',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Você considera que esta página tem citações suficientes e que essas citações provêm de fontes fiáveis?',
+	'articlefeedback-beta-field-complete-label' => 'Completa',
+	'articlefeedback-beta-field-complete-tip' => 'Você considera que esta página aborda os temas essenciais que deviam ser cobertos?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutra',
+	'articlefeedback-beta-field-neutral-tip' => 'Você acha que esta página representa, de forma equilibrada, todos os pontos de vista sobre o assunto?',
+	'articlefeedback-beta-field-readable-label' => 'Fácil de ler',
+	'articlefeedback-beta-field-readable-tip' => 'Acha que esta página está bem organizada e bem escrita?',
 );
 
 /** Romanian (Română)
