@@ -870,6 +870,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'masseditregex' => '正規表現を使用した大量編集',
@@ -883,7 +884,7 @@ $messages['ja'] = array(
 	'masseditregex-before' => '前',
 	'masseditregex-after' => '後',
 	'masseditregex-max-preview-diffs' => 'プレビューは最初の$1件の一致に限定されています。',
-	'masseditregex-num-changes' => '$1: $2件の変更',
+	'masseditregex-num-changes' => '$1：$2変更',
 	'masseditregex-page-not-exists' => '$1 は存在しません',
 	'masseditregex-num-articles-changed' => '$1個のページが編集されました',
 	'masseditregex-view-full-summary' => '完全な編集要約を表示',
