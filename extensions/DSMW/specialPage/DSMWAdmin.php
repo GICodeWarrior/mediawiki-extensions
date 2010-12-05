@@ -11,7 +11,7 @@
 class DSMWAdmin extends SpecialPage {
 
     public function __construct() {
-        global $wgHooks, $wgSpecialPages, $wgWatchingMessages;
+        global $wgHooks;
         
         # Add all our needed hooks
         $wgHooks['SkinTemplateTabs'][] = $this;

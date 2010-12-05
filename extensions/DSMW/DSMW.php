@@ -29,7 +29,6 @@ require_once dirname( __FILE__ ) . '/includes/DSMW_GlobalFunctions.php';
 $wgDSMWIP = dirname( __FILE__ );
 
 require_once( "$wgDSMWIP/includes/DSMWButton.php" );
-require_once( "$wgDSMWIP/includes/Ajax/include.php" );
 
 require_once 'includes/SemanticFunctions.php';
 require_once 'includes/IntegrationFunctions.php';
