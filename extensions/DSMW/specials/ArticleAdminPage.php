@@ -17,7 +17,7 @@ class ArticleAdminPage extends SpecialPage {
         $wgHooks["SkinTemplateTabs"][] = $this;
         $wgHooks['SkinTemplateNavigation'][] = $this;
         
-        parent::__construct( 'ArticleAdminPage' );
+        parent::__construct( 'ArticleAdminPage', 'delete' );
     }
 
     public function getDescription() {
@@ -35,8 +35,14 @@ class ArticleAdminPage extends SpecialPage {
      * @return <bool>
      */
     public function execute() {
-        global $wgOut, $wgServerName, $wgScriptPath, $wgScriptExtension; /*, $wgSitename, $wgCachePages, $wgUser, $wgTitle, $wgDenyAccessMessage, $wgAllowAnonUsers, $wgRequest, $wgMessageCache, $wgWatchingMessages, $wgDBtype, $namespace_titles;*/
+        global $wgOut, $wgServerName, $wgScriptPath, $wgScriptExtension, $wgUser;
 
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			// If the user is not authorized, show an error.
+			$this->displayRestrictionError();
+			return;
+		}        
+        
         $url = 'http://' . $wgServerName . $wgScriptPath . "/index{$wgScriptExtension}";
         $urlServer = 'http://' . $wgServerName . $wgScriptPath;
         // $wgOut->addHeadItem('script', ArticleAdminPage::javascript());
