@@ -29,8 +29,8 @@ $messages['en'] = array(
 	'ts-citegen-Input-text' => 'This is a citation template generator. Using it, you can quickly fill in the citation templates in various language editions of Wikipedia. Please fill in the data (%s) in the fields below, and the script will try to complete the templates. Remember, it does not matter in which fields you put the input data. The script will automatically match the correct template to the input given.',
 	'ts-citegen-Option-append-author-link' => 'Append the author wikilinks into the template',
 	'ts-citegen-Option-append-newlines' => 'Append new lines after each parameter',
-	'ts-citegen-Option-add-references' => 'Add <ref> tags around citing templates',
-	'ts-citegen-Option-add-list' => 'Create a wikilist of citing templates',
+	'ts-citegen-Option-add-references' => 'Add <ref> tags around citation templates',
+	'ts-citegen-Option-add-list' => 'Create a wikilist of citation templates',
 	
 	// Output
 	'ts-citegen-Output-title' => 'Result',
