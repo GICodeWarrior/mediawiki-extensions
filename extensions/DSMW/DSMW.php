@@ -92,7 +92,6 @@ $wgJobClasses['DSMWPropertyTypeJob'] = 'DSMWPropertyTypeJob';
 $wgAutoloadClasses['DSMWPropertyTypeJob'] = "$wgDSMWIP/jobs/DSMWPropertyTypeJob.php";
 
 $wgAutoloadClasses['DSMWSiteId'] = "$wgDSMWIP/includes/DSMWSiteId.php";
-$wgAutoloadClasses['DSMWExhibits'] = "$wgDSMWIP/includes/DSMWExhibits.php";
 
 $wgExtensionFunctions[] = 'dsmwgSetupFunction';
 
@@ -163,13 +162,6 @@ function dsmwgSetupFunction() {
         PULLFEED => true,
         CHANGESET => true
 	);
-
-    if ( defined( 'SRF_VERSION' ) ) {
-        global $wgDSMWExhibits;
-        if ( !is_object( $wgDSMWExhibits ) ) {
-        	$wgDSMWExhibits = new DSMWExhibits();
-        }
-    }
 }
 
 require_once dirname( __FILE__ ) . '/DSMW_Settings.php';
