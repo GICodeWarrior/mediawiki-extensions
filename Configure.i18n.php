@@ -2104,6 +2104,7 @@ Du bedes oprette den og og køre configure.sql eller rette navnet.',
  * @author Raimond Spekking
  * @author Revolus
  * @author SVG
+ * @author The Evil IP address
  * @author Umherirrender
  * @author W (aka Wuzur)
  */
@@ -2185,7 +2186,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-section-resourceloader' => 'ResourceLoader',
 	'configure-section-namespaces' => 'Namensräume',
 	'configure-section-stats' => 'Website-Statistiken',
-	'configure-section-skin' => 'Skins',
+	'configure-section-skin' => 'Benutzeroberflächen',
 	'configure-section-vector' => 'Vector-Skin',
 	'configure-section-category' => 'Kategorien',
 	'configure-section-cache' => 'Cache',
@@ -5606,7 +5607,7 @@ $messages['ja'] = array(
 	'configure-section-resourceloader' => 'リソース読み込み機能',
 	'configure-section-namespaces' => '名前空間',
 	'configure-section-stats' => 'サイトの統計',
-	'configure-section-skin' => 'スキン',
+	'configure-section-skin' => '外装',
 	'configure-section-vector' => 'ベクター・スキン',
 	'configure-section-category' => 'カテゴリ',
 	'configure-section-cache' => 'キャッシュ',
@@ -6775,7 +6776,7 @@ $messages['mk'] = array(
 	'configure-section-resourceloader' => 'Вчитувач на ресурси',
 	'configure-section-namespaces' => 'Именски простори',
 	'configure-section-stats' => 'Статистики за мреж. место',
-	'configure-section-skin' => 'Маски',
+	'configure-section-skin' => 'Рува',
 	'configure-section-vector' => 'Векторски изглед',
 	'configure-section-category' => 'Категории',
 	'configure-section-cache' => 'Кеш',
