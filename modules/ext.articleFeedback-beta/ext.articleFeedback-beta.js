@@ -30,25 +30,27 @@ $.articleFeedback = {
 			<div class="articleFeedback-rating" rel="wellsourced">\
 				<span class="articleFeedback-label" title-msg="field-wellsourced-tip"><msg key="field-wellsourced-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-form"><label class="articleFeedback-rating-label-first"></label><label></label><label></label><label></label><label class="articleFeedback-rating-label-last"></label></div>\
 			</div>\
 			<div class="articleFeedback-rating" rel="neutral">\
 				<span class="articleFeedback-label" title-msg="field-neutral-tip"><msg key="field-neutral-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-form"><label class="articleFeedback-rating-label-first"></label><label></label><label></label><label></label><label class="articleFeedback-rating-label-last"></label></div>\
 			</div>\
 			<div class="articleFeedback-rating" rel="complete">\
 				<span class="articleFeedback-label" title-msg="field-complete-tip"><msg key="field-complete-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-form"><label class="articleFeedback-rating-label-first"></label><label></label><label></label><label></label><label class="articleFeedback-rating-label-last"></label></div>\
 			</div>\
 			<div class="articleFeedback-rating" rel="readable">\
 				<span class="articleFeedback-label" title-msg="field-readable-tip"><msg key="field-readable-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-form"><label class="articleFeedback-rating-label-first"></label><label></label><label></label><label></label><label class="articleFeedback-rating-label-last"></label></div>\
 			</div>\
 			<div style="clear:both;"></div>\
 		</div>\
+		<button class="articleFeedback-submit articleFeedback-form" type="submit">Submit feedback</button>\
+		<div style="clear:both;"></div>\
 	</div>\
 </div>\
 <div class="articleFeedback-dialog" rel="survey">\
@@ -69,7 +71,7 @@ $.articleFeedback = {
 				' )
 				.localize( { 'prefix': 'articlefeedback-beta-' } )
 				.find( '[title]' )
-					.tipsy( { 'gravity': 'sw', 'fade': true } )
+					.tipsy( { 'gravity': 'nw', 'fade': true, 'center': false } )
 					.end()
 				// Hide report elements initially
 				.find( '.articleFeedback-report' )
