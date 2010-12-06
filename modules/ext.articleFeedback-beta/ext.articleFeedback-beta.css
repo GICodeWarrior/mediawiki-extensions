@@ -3,6 +3,7 @@
  */
 
 .articleFeedback {
+	position: relative;
 	display: inline-block;
 	width: 45em; /* 1em extra space to resolve rounding errors*/
 }
@@ -15,12 +16,24 @@
 	padding-bottom: 1px;
 }
 
-.articleFeedback-panel, .articleFeedback-tabs {
-	float: left;
+.articleFeedback-dialog {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 13.5em;
+	width: 44em;
+	background-color: #f3f3f3;
+	border: 1px solid #cccccc;
+	padding-bottom: 1px;
 }
 
-.articleFeedback-panel[rel=report] {
-	display: none;
+.articleFeedback-dialog .articleFeedback-buffer {
+	padding: 0.75em 1em;
+}
+
+.articleFeedback-panel, .articleFeedback-tabs {
+	float: left;
 }
 
 .articleFeedback-tabs {
@@ -48,7 +61,7 @@
 	background-image: url(images/tab-fade.png);
 }
 
-.articleFeedback-tab[rel=form] {
+.articleFeedback-tab-form {
 	margin-top: 1px;
 	margin-bottom: 1px;
 }
@@ -65,15 +78,15 @@
 	color: #0645ad;
 }
 
-.articleFeedback-tab[rel=form] .articleFeedback-buffer {
+.articleFeedback-tab-form .articleFeedback-buffer {
 	background-image: url(images/form-icon.png);
 }
 
-.articleFeedback-tab[rel=report] .articleFeedback-buffer {
+.articleFeedback-tab-report .articleFeedback-buffer {
 	background-image: url(images/report-icon.png);
 }
 
-.articleFeedback-tab .articleFeedback-buffer:hover {
+.articleFeedback-tab:hover .articleFeedback-buffer {
 	text-decoration: underline;
 }
 
@@ -86,14 +99,16 @@
 	font-size: 1.4em;
 }
 
-.articleFeedback-instructions {
+.articleFeedback-instructions, .articleFeedback-description {
 	float: left;
 	font-weight: bold;
+	margin-bottom: 1em;
 }
 
 .articleFeedback-rating {
 	float: left;
-	width: 16em;
+	width: 17em;
+	height: 3.5em;
 }
 
 .articleFeedback-label {
