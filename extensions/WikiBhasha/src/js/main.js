@@ -335,7 +335,7 @@ wikiBhasha.loadLocalizedStrings = function() {
 // NOTE: Never use any jQuery functions within this function.
 wikiBhasha.loadJQuery = function(callback) {
     if (typeof baseUrl != "undefined") {
-        var script = document.createElement("script")
+        var script = document.createElement("script");
         script.type = "text/javascript";
         //check whether file is loaded or not if so, call the the 'callback' function
         //IE fix, in IE 'readyState' event is fired once the file is loaded

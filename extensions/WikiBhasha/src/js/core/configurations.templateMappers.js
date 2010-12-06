@@ -60,7 +60,7 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
 
 // describes the configuration required for template mapping from source language article to target language article.
 wikiBhasha.configurations.templateMappers = {
-    templateMapConfig :'<?xml version="1.0"?>\
+	templateMapConfig :'<?xml version="1.0"?>\
                         <templateMapConfig>\
 	                        <templateMapBetweenLangPair srcLang="en" tgtLang="ja">\
 		                        <templateMap srcTemplateName="EnTemplate1" tgtTemplateName="JaTempalte1">\
@@ -79,4 +79,4 @@ wikiBhasha.configurations.templateMappers = {
 		                        </templateMap>\
 		                    </templateMapBetweenLangPair>\
 		                </templateMapConfig>'
-}
+};
