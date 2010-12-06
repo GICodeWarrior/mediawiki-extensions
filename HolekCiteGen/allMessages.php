@@ -27,14 +27,14 @@ $messages['en'] = array(
 	// Input
 	'ts-citegen-Input-title' => 'Input',
 	'ts-citegen-Input-text' => 'This is a citation template generator. Using it, you can quickly fill in the citation templates in various language editions of Wikipedia. Please fill in the data (%s) in the fields below, and the script will try to complete the templates. Remember, it does not matter which fields you put the input data into. The script will automatically match the correct template to the input given.',
-	'ts-citegen-Option-append-author-link' => 'Append the author wikilinks into the template',
+	'ts-citegen-Option-append-author-link' => 'Append the author wiki links into the template',
 	'ts-citegen-Option-append-newlines' => 'Append new lines after each parameter',
 	'ts-citegen-Option-add-references' => 'Add <ref> tags around citation templates',
 	'ts-citegen-Option-add-list' => 'Create a wikilist of citation templates',
 	
 	// Output
 	'ts-citegen-Output-title' => 'Result',
-	'ts-citegen-Output-select-disclaimer' => 'Remember that choosing a template language does not guarantee that the specific template is available in your language. This field lists available languages of every supported template, i.e. it may display French because only {{Cite book}} is supported.',
+	'ts-citegen-Output-select-disclaimer' => 'Choosing a template language does not guarantee that the specific template is available in your language. This field lists available languages of every supported template, i.e. it may display French because only {{Cite book}} is supported.',
 	'ts-citegen-Wrong-input' => '%s: not identified as correct input.',
 	
 	// Settings
@@ -65,9 +65,8 @@ $messages['en'] = array(
 	
 	// Error messages
 	'ts-citegen-Errors-title' => 'Errors',
-	'ts-citegen-Unavailable-API' => 'Error: Wikimedia API is unavailable',
 	'ts-citegen-Unavailable-SQL' => 'Error: Toolserver database is unavailable. MySQL returned: %s',
-	'ts-citegen-base-disabled' => 'Error: %s database is unavailable.'
+	'ts-citegen-base-disabled' => 'Error: %s database is unavailable'
 	
 
 );
@@ -81,10 +80,10 @@ $messages['qqq'] = array(
 	'ts-citegen-Send' => 'Send button',
 	'ts-citegen-Input-title' => 'Input secton',
 	'ts-citegen-Input-text' => 'Input section description',
-	'ts-citegen-Option-append-author-link' => 'Appends the author wikilinks into the template',
+	'ts-citegen-Option-append-author-link' => 'Appends the author wiki links into the template',
 	'ts-citegen-Option-append-newlines' => 'Appends new lines after each parameter',
-	'ts-citegen-Option-add-references' => 'Adds <ref> tags around citing templates',
-	'ts-citegen-Option-add-list' => 'Creates a wikilist of citing templates',
+	'ts-citegen-Option-add-references' => 'Adds <ref> tags around citation templates',
+	'ts-citegen-Option-add-list' => 'Creates a wikilist of citation templates',
 	'ts-citegen-Output-title' => 'Output section',
 	'ts-citegen-Output-select-disclaimer' => 'Disclaimer about output templates',
 	'ts-citegen-Wrong-input' => '"%s" is an unidentified input.',
@@ -108,9 +107,8 @@ $messages['qqq'] = array(
 	'ts-citegen-Save-it' => 'Link to itself/current query',
 	'ts-citegen-Errors-title' => 'Errors section title
 {{Identical|Error}}',
-	'ts-citegen-Unavailable-API' => 'Error message: Wikimedia API is unavailable',
 	'ts-citegen-Unavailable-SQL' => 'Error message: Toolserver database is unavailable. %s is an error message',
-	'ts-citegen-base-disabled' => 'Error message: A book database is unavailable. <tt>%s</tt> is the name of the database.',
+	'ts-citegen-base-disabled' => 'Error message: A book database is unavailable. <tt>%s</tt> is the name of the database',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -145,9 +143,8 @@ $messages['be-tarask'] = array(
 	'ts-citegen-Other-languages' => 'На іншых мовах',
 	'ts-citegen-Save-it' => 'Цяперашні запыт',
 	'ts-citegen-Errors-title' => 'Памылкі',
-	'ts-citegen-Unavailable-API' => 'Памылка: Wikimedia API недаступны',
 	'ts-citegen-Unavailable-SQL' => 'Памылка: база зьвестак Toolserver недаступная. адказ MySQL: %s',
-	'ts-citegen-base-disabled' => 'Памылка: база зьвестак %s недаступная.',
+	'ts-citegen-base-disabled' => 'Памылка: база зьвестак %s недаступная',
 );
 
 /** Breton (Brezhoneg)
@@ -158,7 +155,6 @@ $messages['br'] = array(
 	'ts-citegen-Other-languages' => 'Yezhoù all',
 	'ts-citegen-Save-it' => 'Reked red',
 	'ts-citegen-Errors-title' => 'Fazioù',
-	'ts-citegen-Unavailable-API' => "Fazi : N'haller ket tizhout API wikimedia",
 	'ts-citegen-Unavailable-SQL' => "Fazi : N'haller ket tizhout diaz roadennoù ar servijer ostilhoù. Kemenn MySQL : %s",
 	'ts-citegen-base-disabled' => "Fa zi : N'haller ket tizhout diaz roadennoù %s.",
 );
@@ -195,9 +191,8 @@ $messages['de'] = array(
 	'ts-citegen-Other-languages' => 'Andere Sprachen',
 	'ts-citegen-Save-it' => 'Aktuelle Abfrage',
 	'ts-citegen-Errors-title' => 'Fehler',
-	'ts-citegen-Unavailable-API' => 'Fehler: Die Programmierschnittstelle zur Wikipedia ist nicht verfübar.',
 	'ts-citegen-Unavailable-SQL' => 'Fehler: Die Datenbank des Toolservers ist nicht verfügbar. MySQL erzeugte: %s',
-	'ts-citegen-base-disabled' => 'Fehler: %s-Datenbank ist nicht verfügbar.',
+	'ts-citegen-base-disabled' => 'Fehler: %s-Datenbank ist nicht verfügbar',
 );
 
 /** British English (British English)
@@ -235,9 +230,8 @@ $messages['hsb'] = array(
 	'ts-citegen-Other-languages' => 'Druhe rěče',
 	'ts-citegen-Save-it' => 'Aktualne naprašowanje',
 	'ts-citegen-Errors-title' => 'Zmylki',
-	'ts-citegen-Unavailable-API' => 'Zmylk: API Wikipedije njesteji k dispoziciji',
 	'ts-citegen-Unavailable-SQL' => 'Zmylk: Datowa banka Toolserver k dispoziciji njesteji. MySQL wozjewi: %s',
-	'ts-citegen-base-disabled' => 'Zmylk: Datowa banka %s njesteji k dispoziciji.',
+	'ts-citegen-base-disabled' => 'Zmylk: Datowa banka %s njesteji k dispoziciji',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -271,9 +265,8 @@ $messages['id'] = array(
 	'ts-citegen-Other-languages' => 'Bahasa lain',
 	'ts-citegen-Save-it' => 'Kueri saat ini',
 	'ts-citegen-Errors-title' => 'Galat',
-	'ts-citegen-Unavailable-API' => 'Galat: API Wikimedia tidak tersedia',
 	'ts-citegen-Unavailable-SQL' => 'Galat: Basis data Toolserver tidak tersedia. Tanggapan MySQL: %s',
-	'ts-citegen-base-disabled' => 'Galat: Basis data %s tidak tersedia.',
+	'ts-citegen-base-disabled' => 'Galat: Basis data %s tidak tersedia',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -283,7 +276,6 @@ $messages['lb'] = array(
 	'ts-citegen-Template-lang' => 'Sprooch vun der Schabloun',
 	'ts-citegen-Other-languages' => 'Aner Sproochen',
 	'ts-citegen-Errors-title' => 'Feeler',
-	'ts-citegen-Unavailable-API' => 'Feeler: Wikimedia API ass net disponibel',
 	'ts-citegen-base-disabled' => 'Feeler: %s Datebank ass net disponibel.',
 );
 
@@ -318,9 +310,8 @@ $messages['mk'] = array(
 	'ts-citegen-Other-languages' => 'Други јазици',
 	'ts-citegen-Save-it' => 'Тековно барање',
 	'ts-citegen-Errors-title' => 'Грешки',
-	'ts-citegen-Unavailable-API' => 'Грешка: API на Викимедија е недостапен',
 	'ts-citegen-Unavailable-SQL' => 'Грешка: Базата на Toolserver е недостапна. MySQL даде: %s',
-	'ts-citegen-base-disabled' => 'Грешка: Базата на %s е недостапна.',
+	'ts-citegen-base-disabled' => 'Грешка: Базата на %s е недостапна',
 );
 
 /** Polish (Polski)
@@ -336,7 +327,7 @@ $messages['pl'] = array(
 	'ts-citegen-Option-add-references' => 'Umieść szablony pomiędzy tagami <ref></ref>',
 	'ts-citegen-Option-add-list' => 'Dodaj wikilistę do szablonów cytowania',
 	'ts-citegen-Output-title' => 'Rezultat',
-	'ts-citegen-Output-select-disclaimer' => 'Pamiętaj: wybierając konkretny język skrypt nie gwarantuje, że wszystkie szablony są gotowe do użytku w danym języku. To pole wyświetla listę języków z każdego obsługiwanego szablonu. Na przykład może być w nim dostępny język francuski, ponieważ skrypt obsługuje jedynie francuski odpowiednik {{Cytuj książkę}}.',
+	'ts-citegen-Output-select-disclaimer' => 'Wybierając konkretny język skrypt nie gwarantuje, że wszystkie szablony są gotowe do użytku w danym języku. To pole wyświetla listę języków z każdego obsługiwanego szablonu. Na przykład może być w nim dostępny język francuski, ponieważ skrypt obsługuje jedynie francuski odpowiednik {{Cytuj książkę}}.',
 	'ts-citegen-Wrong-input' => '%s: nie zidentyfikowano.',
 	'ts-citegen-Parsers' => 'Bazy',
 	'ts-citegen-Skins' => 'Forma prezentacji',
@@ -354,7 +345,6 @@ $messages['pl'] = array(
 	'ts-citegen-Other-languages' => 'W innych językach',
 	'ts-citegen-Save-it' => 'Samowywołanie (zapisz tę stronę)',
 	'ts-citegen-Errors-title' => 'Błędy',
-	'ts-citegen-Unavailable-API' => 'Błąd: API Wikipedii jest niedostępne',
 	'ts-citegen-Unavailable-SQL' => 'Błąd: Dostęp do bazy danych niemożliwy. MySQL zwróciło: %s',
 	'ts-citegen-base-disabled' => 'Błąd: Baza %s jest niedostępna',
 );
