@@ -58,7 +58,7 @@ class ArticleFeedbackHooks {
 				'articlefeedback-beta-field-readable-label',
 				'articlefeedback-beta-field-readable-tip',
 			),
-			'dependencies' => array( 'jquery.tipsy' ),
+			'dependencies' => array( 'jquery.tipsy', 'jquery.localize' ),
 		),
 		'jquery.stars' => array(
 			'scripts' => 'jquery.stars/jquery.stars.js',
