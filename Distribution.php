@@ -73,28 +73,31 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
  *
  * @return true
  */
-function efDistributionSchemaUpdate() {
-	global $wgExtNewTables;
-
-	$wgExtNewTables[] = array(
-		'distribution_packages',
-		dirname( __FILE__ ) . '/distribution.sql'
-	);
-
-	$wgExtNewTables[] = array(
-		'distribution_units',
-		dirname( __FILE__ ) . '/distribution.sql'
-	);
-
-	$wgExtNewTables[] = array(
-		'distribution_unit_versions',
-		dirname( __FILE__ ) . '/distribution.sql'
-	);
-
-	$wgExtNewTables[] = array(
-		'distribution_mwreleases',
-		dirname( __FILE__ ) . '/distribution.sql'
-	);
+function efDistributionSchemaUpdate( $updater = null ) {
+	if ( $updater === null ) {
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array(
+			'distribution_packages', dirname( __FILE__ ) . '/distribution.sql'
+		);
+		$wgExtNewTables[] = array(
+			'distribution_units', dirname( __FILE__ ) . '/distribution.sql'
+		);
+		$wgExtNewTables[] = array(
+			'distribution_unit_versions', dirname( __FILE__ ) . '/distribution.sql'
+		);
+		$wgExtNewTables[] = array(
+			'distribution_mwreleases', dirname( __FILE__ ) . '/distribution.sql'
+		);
+	} else {
+		$updater->addExtensionUpdate( array( 'addTable', 'distribution_packages',
+			dirname( __FILE__ ) . '/distribution.sql', true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'distribution_units',
+			dirname( __FILE__ ) . '/distribution.sql', true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'distribution_unit_versions',
+			dirname( __FILE__ ) . '/distribution.sql', true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'distribution_mwreleases',
+			dirname( __FILE__ ) . '/distribution.sql', true ) );
+	}
 
 	return true;
 }
