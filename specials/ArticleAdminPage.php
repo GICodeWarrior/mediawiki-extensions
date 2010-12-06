@@ -195,8 +195,6 @@ $output .= '    <td align="center" title="Local patches">[' . $countPulledPatch 
 </table>
 </FORM>';
 
-
-
         ///////////// PUSHFEEDS TABLE//////////////////////////
 
         $i = 0;
@@ -319,15 +317,6 @@ $output .= '    <td align="center" title="Local patches">[' . $countPulledPatch 
 <div id="statepush" ></div><br />
 </div>
 ';
-
-//        if (!$this->getArticle('Property:ChangeSetID')->exists()) {
-//            $output .='
-// <FORM METHOD="POST" ACTION="'.$urlServer.'/extensions/DSMW/bot/DSMWBot.php" name="scriptExec">
-// <table'.$tableStyle.'><td><button type="submit"><b>[UPDATE PROPERTY TYPE]</b></button>
-// </td></table>
-// <input type="hidden" name="server" value="'.$urlServer.'">
-// </form>';
-//        }
 
         $wgOut->addHTML( $output );
         return false;
@@ -481,24 +470,15 @@ $output .= '    <td align="center" title="Local patches">[' . $countPulledPatch 
     }
 
     /**
-     * @param <String> $title
-     * @return <String>
+     * Returns an array of page titles received via the request.
+     * 
+     * @return array
      */
-    function getPageIdWithTitle( $title ) {
-        $dbr = wfGetDB( DB_SLAVE );
-        $id = $dbr->selectField( 'page', 'page_id', array(
-            'page_title' => $title ) );
-        return $id;
-    }
-
-    /**
-     * returns an array of page titles received via the request
-     */
-    function getRequestedPages( $request ) {
-
+    protected function getRequestedPages( $request ) {
         $results = array();
         $res = utils::getSemanticQuery( $request );
         $count = $res->getCount();
+        
         for ( $i = 0; $i < $count; $i++ ) {
 
             $row = $res->getNext();
@@ -513,16 +493,6 @@ $output .= '    <td align="center" title="Local patches">[' . $countPulledPatch 
         }
 
         return $results;
-    }
-
-    function getArticle( $article_title ) {
-        $title = Title::newFromText( $article_title );
-
-        // Can't load page if title is invalid.
-        if ( $title == null )     return null;
-        $article = new Article( $title );
-
-        return $article;
     }
 
 } 
