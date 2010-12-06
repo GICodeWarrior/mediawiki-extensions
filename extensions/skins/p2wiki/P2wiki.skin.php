@@ -7,15 +7,18 @@
 class SkinP2wiki extends SkinTemplate {
 
 	/* Functions */
-	var $skinname = 'p2wiki', $stylename = 'p2wiki',
-		$template = 'P2wikiTemplate', $useHeadElement = true;
+	var $template = 'P2wikiTemplate', $useHeadElement = true;
+
+	function __construct() {
+		$this->skinname = $this->stylename = basename(dirname(__FILE__));
+	}
 
 	/**
 	 * @param $out OutputPage object
 	 */
 	function setupSkinUserCss( OutputPage $out ){
 		parent::setupSkinUserCss( $out );
-		$out->addModuleStyles( 'skins.p2wiki' );
+		$out->addModuleStyles( "skins.{$this->stylename}" );
 	}
 
 

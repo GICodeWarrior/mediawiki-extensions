@@ -31,10 +31,11 @@ $wgExtensionCredits['skin'][] = array (
 	'description' => "P2 wiki, a wiki skin based on the [http://p2theme.com/ P2] WordPress theme.",
 );
 
-$wgValidSkinNames['p2wiki'] = 'P2wiki';
+$skinID = basename(dirname(__FILE__));
+$wgValidSkinNames[$skinID] = 'P2wiki';
 $wgAutoloadClasses['SkinP2wiki'] = dirname(__FILE__).'/P2wiki.skin.php';
 $wgExtensionMessagesFiles['SkinP2wiki'] = dirname(__FILE__).'/P2wiki.i18n.php';
-$wgResourceModules["skins.p2wiki"] = array(
-	'styles' => array( 'skins/p2wiki/style/screen.css' => array( 'media' => 'screen' ) )
+$wgResourceModules["skins.$skinID"] = array(
+	'styles' => array( "skins/$skinID/style/screen.css" => array( 'media' => 'screen' ) )
 );
 
