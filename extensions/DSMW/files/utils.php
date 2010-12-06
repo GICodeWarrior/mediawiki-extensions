@@ -381,7 +381,6 @@ This is a patch of the article: [[onPage::' . $onPage . ']]
 					break;
 				}
                 
-                
                 if ( $row1 === false ) {
                 	break;
                 }

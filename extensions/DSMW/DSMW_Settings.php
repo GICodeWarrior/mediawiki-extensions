@@ -37,13 +37,13 @@ $wgGroupPermissions['sysop']['editchangeset'] = true;
 
 
 $wgGroupPermissions['*']['ArticleAdminPage']       = true;// sysop
-require_once( "$IP/extensions/DSMW/specialPage/ArticleAdminPage.php" );
+require_once( dirname( __FILE__ ) . '/specials/ArticleAdminPage.php' );
 
 $wgGroupPermissions['*']['DSMWAdmin']       = true;// sysop
-require_once( "$IP/extensions/DSMW/specialPage/DSMWAdmin.php" );
+require_once( dirname( __FILE__ ) . '/specials/DSMWAdmin.php' );
 
 $wgGroupPermissions['*']['DSMWGeneralExhibits']       = true;// sysop
-require_once( "$IP/extensions/DSMW/specialPage/DSMWGeneralExhibits.php" );
+require_once( dirname( __FILE__ ) . '/specials/DSMWGeneralExhibits.php' );
 
 // semantic mediawiki extension
 $smwgNamespaceIndex = 120;
