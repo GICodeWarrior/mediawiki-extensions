@@ -128,7 +128,7 @@ function integrate( $changeSetId, $patchIdList, $relatedPushServer, $csName ) {
             if ( $sub === 'ATT' ) {
                 $rev = logootIntegrateAtt( $onPage, $edit );
                 if ( $rev > 0 ) {
-                    $patch = new Patch( true, true, $operations, $SiteUrl, $causal, $patchId, $lastPatch, $siteID, $Mime, $Size, $Url, $Date );
+                    $patch = new DSMWPatch( true, true, $operations, $SiteUrl, $causal, $patchId, $lastPatch, $siteID, $Mime, $Size, $Url, $Date );
                     $patch->storePage( $onPage, $rev );
                 } else {
                     throw new MWException( __METHOD__ . ': article not saved!' );
@@ -138,7 +138,7 @@ function integrate( $changeSetId, $patchIdList, $relatedPushServer, $csName ) {
             else {
                 $rev = logootIntegrate( $operations, $onPage, $sub );
                 if ( $rev > 0 ) {
-                    $patch = new Patch( true, false, $operations, $SiteUrl, $causal, $patchId, $lastPatch, $siteID, null, null, null, null );
+                    $patch = new DSMWPatch( true, false, $operations, $SiteUrl, $causal, $patchId, $lastPatch, $siteID, null, null, null, null );
                     $patch->storePage( $onPage, $rev );
                 }
                 else {

@@ -4,15 +4,13 @@
  * DSMW Special page
  *
  * @copyright INRIA-LORIA-ECOO project
+ * 
  * @author  Hantz Marlene - jean-Philippe Muller
  */
-require_once "$IP/includes/SpecialPage.php";
-require_once "$wgDSMWIP/files/utils.php";
-
 class ArticleAdminPage extends SpecialPage {
 
 	public function __construct() {
-        global $wgHooks, $wgSpecialPages, $wgWatchingMessages;
+        global $wgHooks;
         
         # Add all our needed hooks
         $wgHooks["UnknownAction"][] = $this;
@@ -545,6 +543,7 @@ publish the modifications of the "' . $title . '" article
             return true;
         }
     }
+    
     /**
      * Defines the "Article Admin tab"
      *
@@ -599,7 +598,7 @@ publish the modifications of the "' . $title . '" article
         return false;
     }
 
-        /**
+	/**
      * Defines the "Article Admin tab"
      *
      * @global <type> $wgRequest

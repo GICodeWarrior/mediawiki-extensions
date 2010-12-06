@@ -357,6 +357,7 @@ This is a patch of the article: [[onPage::' . $onPage . ']]
      *
      * @param <String> $pageName
      * @param <Integer> $rev
+     * 
      * @return <String> the causal link
      */
     static function searchCausalLink( $pageName, $rev ) {
@@ -364,13 +365,27 @@ This is a patch of the article: [[onPage::' . $onPage . ']]
             return 'none';
         } else {
             $res = utils::getSemanticQuery( '[[Patch:+]][[onPage::' . $pageName . ']][[Rev::' . $rev . ']]', '?PatchID' );
-            if ( $res === false ) return 'none';
+           
+            if ( $res === false ) {
+            	return 'none';
+            }
+            
             $count1 = $res->getCount();
-            for ( $j = 0; $j < $count1; $j++ ) {
 
-                $row1 = $res->getNext();
-                if ( $row1 === false )
-                    break;
+            for ( $j = 0; $j < $count1; $j++ ) {
+            	
+            	if ( is_object($res) ) {
+            		$row1 = $res->getNext();
+            	} 
+				else {
+					break;
+				}
+                
+                
+                if ( $row1 === false ) {
+                	break;
+                }
+                    
                 $row1 = $row1[0];
 
                 $col1 = $row1->getContent(); // SMWResultArray object
@@ -710,17 +725,17 @@ Pages concerned:
     }
 
     /**
-     *
      * @param <String> $query (e.g. [[ChangeSet:+]][[inPullFeed::Pullfeed:xxxxx]])
      * @param <String> $paramstring Printout parameters (e.g. ?hasPatch?changeSetID)
-     * @return <Object> SMWQueryResult object
+     * 
+     * @return SMWQueryResult or false
      */
-
     static public function getSemanticQuery( $query, $paramstring = '' ) {
         $printouts = array();
         $rawparams = array();
         $params = array( 'format' => ' ', 'sort' => ' ', 'offset' => 0 );
         $rawparams[] = $query;
+        
         if ( $paramstring != '' ) {
             $ps = explode( "\n", $paramstring );
             foreach ( $ps as $param ) {
@@ -738,7 +753,10 @@ Pages concerned:
         $queryobj->setLimit( 5000 );
         $res = smwfGetStore()->getQueryResult( $queryobj );
 
-        if ( !( $res instanceof SMWQueryResult ) )return false;
+        if ( !( $res instanceof SMWQueryResult ) ) {
+        	return false;
+        }
+        
         return $res;
     }
 

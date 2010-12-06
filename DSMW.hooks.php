@@ -655,7 +655,7 @@ final class DSMWHooks {
 	        $listOp1 = $logoot1->generate( $text, $actualtext );
 	        // creation Patch P2
 	        $tmp = serialize( $listOp1 );
-	        $patch = new Patch( false, false, $listOp1, $urlServer, $rev_id1 );
+	        $patch = new DSMWPatch( false, false, $listOp1, $urlServer, $rev_id1 );
 	        
 	        if ( $editpage->mTitle->getNamespace() == 0 ) {
 	        	$title = $editpage->mTitle->getText();
@@ -671,7 +671,7 @@ final class DSMWHooks {
 	        $listOp = $logoot->generate( $conctext, $actualtext );
 	        $modelAfterIntegrate = $logoot->getModel();
 	        $tmp = serialize( $listOp );
-	        $patch = new Patch( false, false, $listOp, $urlServer, $rev_id1 );
+	        $patch = new DSMWPatch( false, false, $listOp, $urlServer, $rev_id1 );
 	        
 	        if ( $editpage->mTitle->getNamespace() == 0 )
 	            $title = $editpage->mTitle->getText();
@@ -720,7 +720,7 @@ final class DSMWHooks {
 	        
 	        $revID = $lastRevision->getId();
 	        $model = DSMWRevisionManager::loadModel( $rev_id );
-	        $patch = new Patch( false, true, null, $urlServer, $rev_id, null, null, null, $localfile->mime, $localfile->size, urldecode( $localfile->url ), null );
+	        $patch = new DSMWPatch( false, true, null, $urlServer, $rev_id, null, null, null, $localfile->mime, $localfile->size, urldecode( $localfile->url ), null );
 	        $patch->storePage( $localfile->getTitle(), $revID ); // stores the patch in a wikipage
 	        DSMWRevisionManager::storeModel( $revID, $sessionId = session_id(), $model, $blobCB = 0 );
 	    }
