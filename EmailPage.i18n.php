@@ -568,6 +568,7 @@ $messages['lb'] = array(
 	'ea-denied' => 'Rechter refuséiert',
 	'ea-show' => 'Adressate weisen',
 	'ea-from' => 'Vum:',
+	'ea-to' => 'Fir:',
 	'ea-cc' => 'Kopie:',
 	'ea-send' => 'Schécken!',
 	'ea-subject' => 'Sujet:',
