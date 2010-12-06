@@ -404,6 +404,21 @@ Da li je želite ocijeniti ponovo.",
 	'articlefeedback-alpha-survey-submit' => 'Pošalji',
 	'articlefeedback-alpha-survey-title' => 'Molimo odgovorite na nekoliko pitanja',
 	'articlefeedback-alpha-survey-thanks' => 'Hvala vam na popunjavanju ankete.',
+	'articlefeedback-beta-form-tab-label' => 'Pošaljite povratne informacije',
+	'articlefeedback-beta-form-panel-title' => 'Vaše povratne informacije',
+	'articlefeedback-beta-form-panel-instructions' => 'Molimo odvojite trenutak vremena da ocijenite ovu stranicu.',
+	'articlefeedback-beta-form-panel-notice' => 'Vaša ocjena će isteći nakon određenog vremena.',
+	'articlefeedback-beta-form-panel-submit' => 'Pošalji povratne informacije',
+	'articlefeedback-beta-report-tab-label' => 'Pokaži rezultate',
+	'articlefeedback-beta-report-panel-title' => 'Rezultati povratnih informacija',
+	'articlefeedback-beta-field-wellsourced-label' => 'Dobro referencirano',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Da li smatrate da ova stranica ima dovoljno izvora i da su oni iz provjerljivih izvora?',
+	'articlefeedback-beta-field-complete-label' => 'Završeno',
+	'articlefeedback-beta-field-complete-tip' => 'Da li mislite da ova stranica pokriva osnovna područja teme koja bi trebala?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutralno',
+	'articlefeedback-beta-field-neutral-tip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
+	'articlefeedback-beta-field-readable-label' => 'Čitljivo',
+	'articlefeedback-beta-field-readable-tip' => 'Da li mislite da je ova stranica dobro organizirana i dobro napisana?',
 );
 
 /** Catalan (Català)
@@ -2145,6 +2160,7 @@ $messages['ru'] = array(
 	'articlefeedback-alpha-survey-title' => 'Пожалуйста, ответьте на несколько вопросов',
 	'articlefeedback-alpha-survey-thanks' => 'Спасибо за участие в опросе.',
 	'articlefeedback-beta-form-tab-label' => 'Обратная связь',
+	'articlefeedback-beta-form-panel-title' => 'Ваш отзыв',
 );
 
 /** Rusyn (Русиньскый)
