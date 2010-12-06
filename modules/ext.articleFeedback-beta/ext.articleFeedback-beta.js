@@ -5,9 +5,6 @@
 ( function( $, mw ) {
 
 $.articleFeedback = {
-	'cfg': {
-		'msgPrefix': 'articlefeedback-beta-',
-	},
 	'fn': {
 		'build': function( context ) {
 			context.$ui
@@ -16,35 +13,35 @@ $.articleFeedback = {
 				.append( '\
 <div class="articleFeedback-tabs">\
 	<div class="articleFeedback-tab articleFeedback-tab-current" rel="form">\
-		<div class="articleFeedback-buffer" msg-text="form-tab-label"></div>\
+		<div class="articleFeedback-buffer"><msg key="form-tab-label" /></div>\
 	</div>\
 	<div class="articleFeedback-tab" rel="report">\
-		<div class="articleFeedback-buffer" msg-text="report-tab-label"></div>\
+		<div class="articleFeedback-buffer"><msg key="report-tab-label" /></div>\
 	</div>\
 </div>\
 <div class="articleFeedback-panel" rel="form">\
 	<div class="articleFeedback-buffer">\
-		<div class="articleFeedback-title" msg-text="form-panel-title"></div>\
-		<div class="articleFeedback-instructions" msg-text="form-panel-instructions"></div>\
+		<div class="articleFeedback-title"><msg key="form-panel-title" /></div>\
+		<div class="articleFeedback-instructions"><msg key="form-panel-instructions" /></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-ratings">\
 			<div class="articleFeedback-rating" rel="wellsourced">\
-				<span class="articleFeedback-label" msg-text="field-wellsourced-label" msg-tip="field-wellsourced-tip"></span>\
+				<span class="articleFeedback-label" title-msg="field-wellsourced-tip"><msg key="field-wellsourced-label" /></span>\
 				<div class="articleFeedback-rating-fields"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels"><label></label><label></label><label></label><label></label><label></label></div>\
 			</div>\
 			<div class="articleFeedback-rating" rel="neutral">\
-				<span class="articleFeedback-label" msg-text="field-neutral-label" msg-tip="field-neutral-tip"></span>\
+				<span class="articleFeedback-label" title-msg="field-neutral-tip"><msg key="field-neutral-label" /></span>\
 				<div class="articleFeedback-rating-fields"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels"><label></label><label></label><label></label><label></label><label></label></div>\
 			</div>\
 			<div class="articleFeedback-rating" rel="complete">\
-				<span class="articleFeedback-label" msg-text="field-complete-label" msg-tip="field-complete-tip"></span>\
+				<span class="articleFeedback-label" title-msg="field-complete-tip"><msg key="field-complete-label" /></span>\
 				<div class="articleFeedback-rating-fields"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels"><label></label><label></label><label></label><label></label><label></label></div>\
 			</div>\
 			<div class="articleFeedback-rating" rel="readable">\
-				<span class="articleFeedback-label" msg-text="field-readable-label" msg-tip="field-readable-tip"></span>\
+				<span class="articleFeedback-label" title-msg="field-readable-tip"><msg key="field-readable-label" /></span>\
 				<div class="articleFeedback-rating-fields"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels"><label></label><label></label><label></label><label></label><label></label></div>\
 			</div>\
@@ -54,22 +51,13 @@ $.articleFeedback = {
 </div>\
 <div class="articleFeedback-panel" rel="report">\
 	<div class="articleFeedback-buffer">\
-		<div class="articleFeedback-title" msg-text="report-panel-title"></div>\
+		<div class="articleFeedback-title"><msg key="report-panel-title" /></div>\
 	</div>\
 </div>\
 				' )
-				// Insert messages
-				.find( '[msg-text]' )
-					.each( function() {
-						$(this).text( $.articleFeedback.fn.msg( $(this).attr( 'msg-text' ) ) );
-					} )
-					.end()
-				.find( '[msg-tip]' )
-					.each( function() {
-						$(this)
-							.attr( 'title', $.articleFeedback.fn.msg( $(this).attr( 'msg-tip' ) ) )
-							.tipsy( { 'gravity': 'sw', 'fade': true } );
-					} )
+				.localize( { 'prefix': 'articlefeedback-beta-' } )
+				.find( '[title]' )
+					.tipsy( { 'gravity': 'sw', 'fade': true } )
 					.end()
 				// Setup tab behavior
 				.find( '.articleFeedback-tab' )
@@ -89,13 +77,7 @@ $.articleFeedback = {
 						e.preventDefault();
 						return false;
 					} );
-		},
-		'msg': function() {
-			if ( arguments.length ) {
-				arguments[0] = $.articleFeedback.cfg.msgPrefix + arguments[0];
-			}
-			return mediaWiki.msg.apply( mediaWiki, arguments );
-		},
+		}
 	}
 };
 
