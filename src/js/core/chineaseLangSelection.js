@@ -27,62 +27,62 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
 }
 
 (function() {
-    wikiBhasha.windowManagement.chineseLangSelectionBox =  {
+    wikiBhasha.windowManagement.chineseLangSelectionBox = {
 
-    windowId : "wbChineseLangSelectionWindow",
-    
-    show : function() {
-        var $chineseLangSelectionElement = $("#" + this.windowId);
-       
-        if ($chineseLangSelectionElement.length === 0) {
-            wbUIHelper.createWindow(this.windowId, wbGlobalSettings.chineseLangSelectionHTML);
+	    windowId : "wbChineseLangSelectionWindow",
 
-            //close the winow when user clicks on exit button
-            $("#wbCLSExitWindow").click(function() {
-                wbChineseLangSelection.hide();
-                wbChineseLangSelection.deleteGlobalVariables();
-            });
-                
-            //assigns the MTS language to zh-CHT
-            $("#wbCHTLangButton").click(function() {
-                wbGlobalSettings.mtTargetLanguageCode = 'zh-CHT';
-                wikiBhasha.loadApplication();
-                wbChineseLangSelection.hide();
-            });
+	    show : function() {
+		    var $chineseLangSelectionElement = $("#" + this.windowId);
 
-            //assigns the MTS language to zh-CHS
-            $("#wbCHSLangButton").click(function() {
-                wbGlobalSettings.mtTargetLanguageCode = 'zh-CHS';
-                wikiBhasha.loadApplication();
-                wbChineseLangSelection.hide();
-            });
-        }
-        $chineseLangSelectionElement.maxZIndex({ inc: 5 });
-    },
-    //removes the window from memory
-    hide: function(){
-        wbUIHelper.hideLightBox();
-        wbUIHelper.removeWindow(wbChineseLangSelection.windowId);
-    },
-    //clean the objects from the memory
-    deleteGlobalVariables: function() {
-            var wbGlobalVariables =
-            ["baseUrl",
-            "s",
-            "wbGlobalSettings",
-            "wbChineseLangSelection",
-            "wbLanguageServices",
-            "wbLocal",
-            "wbSplash",
-            "wbUIHelper",
-            "wbUtil",
-            "wbWikiSite",
-            "wbWorkflow"];
-            for (var i = 0; i < wbGlobalVariables.length; i++) {
-                window[wbGlobalVariables[i]] = undefined;
-            }
-        }
-}
+		    if ($chineseLangSelectionElement.length === 0) {
+			    wbUIHelper.createWindow(this.windowId, wbGlobalSettings.chineseLangSelectionHTML);
+
+			    //close the winow when user clicks on exit button
+			    $("#wbCLSExitWindow").click(function() {
+				    wbChineseLangSelection.hide();
+				    wbChineseLangSelection.deleteGlobalVariables();
+			    });
+
+			    //assigns the MTS language to zh-CHT
+			    $("#wbCHTLangButton").click(function() {
+				    wbGlobalSettings.mtTargetLanguageCode = 'zh-CHT';
+				    wikiBhasha.loadApplication();
+				    wbChineseLangSelection.hide();
+			    });
+
+			    //assigns the MTS language to zh-CHS
+			    $("#wbCHSLangButton").click(function() {
+				    wbGlobalSettings.mtTargetLanguageCode = 'zh-CHS';
+				    wikiBhasha.loadApplication();
+				    wbChineseLangSelection.hide();
+			    });
+		    }
+		    $chineseLangSelectionElement.maxZIndex({ inc: 5 });
+	    },
+	    //removes the window from memory
+	    hide: function() {
+		    wbUIHelper.hideLightBox();
+		    wbUIHelper.removeWindow(wbChineseLangSelection.windowId);
+	    },
+	    //clean the objects from the memory
+	    deleteGlobalVariables: function() {
+		    var wbGlobalVariables =
+				    ["baseUrl",
+					    "s",
+					    "wbGlobalSettings",
+					    "wbChineseLangSelection",
+					    "wbLanguageServices",
+					    "wbLocal",
+					    "wbSplash",
+					    "wbUIHelper",
+					    "wbUtil",
+					    "wbWikiSite",
+					    "wbWorkflow"];
+		    for (var i = 0; i < wbGlobalVariables.length; i++) {
+			    window[wbGlobalVariables[i]] = undefined;
+		    }
+	    }
+    };
 
 wbChineseLangSelection = wikiBhasha.windowManagement.chineseLangSelectionBox;
 

@@ -132,7 +132,7 @@ if (typeof (wikiBhasha.extern) === "undefined") {
                 this.getArticlePageId(sourceLanguage, sourceLanguageArticleTitle, function(pageID) {
                     if (pageID) {
                         $.getJSON(urlData, 'callback=?', function(data) {
-                            var langLinkList = data.query.pages[pageID].langlinks
+                            var langLinkList = data.query.pages[pageID].langlinks;
                             if (langLinkList) {
                                 for (i = 0; i < langLinkList.length; i++) {
                                     if (targetLanguage === langLinkList[i].lang) {
