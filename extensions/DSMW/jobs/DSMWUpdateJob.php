@@ -104,10 +104,10 @@ and `page_title` != \"Administration_push_site_addition\"";
                     $mime = $a['mime'];
                     $size = $a['size'];
                     $url = $a['url'];
-                    $patch = new Patch( false, true, null, $urlServer . $wgScriptPath, 0, null, null, null, $mime, $size, $url, null );
+                    $patch = new DSMWPatch( false, true, null, $urlServer . $wgScriptPath, 0, null, null, null, $mime, $size, $url, null );
                     $patch->storePage( 'File:' . $lastRev->getTitle()->getText(), $lastRev->getId() );
                 } else {
-                    $patch = new Patch( false, false, $listOp, $urlServer, 0 );
+                    $patch = new DSMWPatch( false, false, $listOp, $urlServer, 0 );
                     $patch->storePage( $lastRev->getTitle()->getText(), $lastRev->getId() );
                 }
                 

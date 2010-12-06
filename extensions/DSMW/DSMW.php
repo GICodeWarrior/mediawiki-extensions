@@ -74,8 +74,7 @@ $wgAutoloadClasses['LogootDel'] = "$wgDSMWIP/logootComponent/LogootDel.php";
 
 $wgAutoloadClasses['DSMWRevisionManager'] 		= dirname( __FILE__ ) . '/includes/DSMW_RevisionManager.php';
 $wgAutoloadClasses['DSMWPersistentClock']		= dirname( __FILE__ ) . '/includes/DSMW_PersistentClock.php';
-
-$wgAutoloadClasses['Patch'] = "$wgDSMWIP/patch/Patch.php";
+$wgAutoloadClasses['DSMWPatch']					= dirname( __FILE__ ) . '/includes/DSMW_Patch.php';
 
 $wgAutoloadClasses['ApiQueryPatch'] = "$wgDSMWIP/api/ApiQueryPatch.php";
 $wgAutoloadClasses['ApiQueryChangeSet'] = "$wgDSMWIP/api/ApiQueryChangeSet.php";

@@ -7,7 +7,7 @@
  * @copyright INRIA-LORIA-ECOO project
  * @author muller jean-philippe & Morel Émile
  */
-class Patch {
+class DSMWPatch {
 
     private $mPatchId;
     private $mOperations = array();

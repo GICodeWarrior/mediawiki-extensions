@@ -1,4 +1,4 @@
-[[Distributed Semantic MediaWiki 1.0]]
+[[Distributed Semantic MediaWiki 1.1]]
 
 Contents:
 * Disclaimer
@@ -15,6 +15,7 @@ the software without much risk (though no dedicated uninstall mechanism is
 provided).
 
 == Requirements ==
+
 DSMW has been developped on MW 1.14.0. DSMW-0.3.1 and DSMW-0.3.2 has been tested
 with version MW-1.13.2, MW-1.14.0, MW-1.15.0 and MW-1.15.1.
 The DSMW extension requires an install of Semantic MediaWiki 1.4.2 or 1.4.3
@@ -22,12 +23,10 @@ The DSMW extension requires an install of Semantic MediaWiki 1.4.2 or 1.4.3
 For more details, see those extensions'own
 installation requirements.
 
-
 Important: If you want to run the DSMW tests, you must make a dump of your 
 database immediatly after having installed DSMW but before using DSMW.
 For more details, see the readme file in the tests directory
 [wikipath]/extensions/DSMW/tests.
-
 
 == Installation ==
 
@@ -74,10 +73,7 @@ $wgLogo = "{$wgScriptPath}/extensions/DSMW/files/LogoDSMW.png";
 include_once("$IP/extensions/SemanticMediaWiki/includes/SMW_Settings.php");
 enableSemantics($_SERVER['SERVER_NAME']);
 
-
-
 == Contact ==
 
 If you have any issues or questions, please consult:
 https://gforge.inria.fr/projects/m3p/
-
