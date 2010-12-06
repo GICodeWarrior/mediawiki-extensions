@@ -49,6 +49,7 @@ class ArticleFeedbackHooks {
 				'articlefeedback-beta-form-panel-submit',
 				'articlefeedback-beta-report-tab-label',
 				'articlefeedback-beta-report-panel-title',
+				'articlefeedback-beta-report-panel-description',
 				'articlefeedback-beta-field-wellsourced-label',
 				'articlefeedback-beta-field-wellsourced-tip',
 				'articlefeedback-beta-field-complete-label',
