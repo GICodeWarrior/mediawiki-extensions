@@ -2,8 +2,8 @@
 
 // HAWHAW: HTML and WML hybrid adapted webserver
 // PHP class library
-// Copyright (C) 2008 Norbert Huffschmid
-// Last modified: 24. June 2008
+// Copyright (C) 2009 Norbert Huffschmid
+// Last modified: 6. December 2010
 //
 // This library is free software; you can redistribute it and/or modify it under the
 // terms of the GNU Library General Public License as published by the Free Software
@@ -20,12 +20,6 @@
 //
 // For further information about this library and its license terms please visit:
 // http://www.hawhaw.de/
-//
-// changes against V5.19:
-// - added support of Amazon Kindle device
-// - disabling of simulator supported
-// - improved detection of desktop browsers
-// - improved W3C mobileOK compliance
 
 ###################################
 #   BEGIN OF CONFIGURATION PART   #
@@ -46,7 +40,7 @@
 ###################################
 
 // miscellaneous constants
-define("HAW_HAW_VERSION", "HAWHAW V5.20B");
+define("HAW_HAW_VERSION", "HAWHAW V5.25");
 define("HAW_COPYRIGHT", "(C) Norbert Huffschmid");
 if (defined("HAW_TERA_WURFL_PATH"))
   define("HAW_VERSION", HAW_HAW_VERSION . "/Tera-WURFL");
@@ -552,7 +546,8 @@ class HAW_deck
   var $timeout;
   var $red_url;
   var $disable_cache = false;
-  var $css = "";
+  var $css = "";       // css file
+  var $css_class = ""; // class of deck within css file
   var $ml;
   var $element = array();
   var $number_of_elements = 0;
@@ -578,7 +573,7 @@ class HAW_deck
   var $owgui_1_3 = false;               // Openwave GUI Extensions for WML 1.3
   var $MMLstyle = false;		// Mobile Markup Language
   var $lynx = false;			// Lynx text browser
-  var $iPhoneAlike = false;		// iPhone, iPod Touch etc.
+  var $iPhoneAlike = false;		// iPhone, iPod Touch, iPad etc.
   var $xhtml = false;			// XHTML MP (mobile profile)
   var $gif_enabled = false;             // browser can not deal with GIF images
   var $submitViaLink = false;           // use link instead of <do>
@@ -594,7 +589,7 @@ class HAW_deck
   var $skin = "";                       // contains css url, where skinning is defined
 
   // character set properties
-  var $charset = "iso-8859-1";     // default charset
+  var $charset = "utf-8";          // default charset
   var $unicodemaptab;              // filename of cross mapping table to map country
                                    // specific character code into unicode
   var $unicodearray;               // array containing cross mapping table
@@ -708,18 +703,18 @@ class HAW_deck
     //     resp. other value defined above for HAW_OUTPUT_...
     // query parameter "hawoutput" can be used for overwrite output type
     //     enter http://wap.yourdomain.com/yourscript.php?hawoutput=wap
-    global $HTTP_GET_VARS;
+
     $forced_output = "";
 
-    if (isset ($HTTP_GET_VARS["hawdebug"]))
+    if (isset ($_GET["hawdebug"]))
     {
-      $forced_output = $HTTP_GET_VARS["hawdebug"];
+      $forced_output = $_GET["hawdebug"];
       $this->debug = true;
     }
-    elseif (isset ($HTTP_GET_VARS["hawoutput"]))
+    elseif (isset ($_GET["hawoutput"]))
     {
-      $forced_output = $HTTP_GET_VARS["hawoutput"];
-      $this->hawoutput = $HTTP_GET_VARS["hawoutput"];
+      $forced_output = $_GET["hawoutput"];
+      $this->hawoutput = $_GET["hawoutput"];
     }
     elseif ($output != HAW_OUTPUT_AUTOMATIC)
       $forced_output = $output;
@@ -801,8 +796,8 @@ class HAW_deck
         
     if (strstr($HTTP_USER_AGENT, "(iPhone") ||
         strstr($HTTP_USER_AGENT, "(iPod") ||
-        strstr($HTTP_USER_AGENT, "(Aspen Simulator") ||
-		strstr($HTTP_USER_AGENT, "Android") )
+        strstr($HTTP_USER_AGENT, "(iPad") ||
+        strstr($HTTP_USER_AGENT, "(Aspen Simulator"))
       $this->iPhoneAlike = true;    
     
     if (defined("HAW_TERA_WURFL_PATH") && !$forced_output)
@@ -1170,7 +1165,8 @@ class HAW_deck
     Mapping tables are available at:
     <a href="http://www.unicode.org/Public/MAPPINGS/" target="_blank">
     http://www.unicode.org/Public/MAPPINGS/</a>
-    @param charset Character set that is used in your country.<br>Default: iso-8859-1
+    @param charset Character set used.<br>
+           Default: utf-8 (until hawhaw.inc V5.19: iso-8859-1)
     @param unicodemaptab (optional)<br>
            Cross mapping table from country specific character coding to
            unicode (default: no mapping to unicode activated).<br>
@@ -1253,6 +1249,16 @@ class HAW_deck
   }
 
 
+  /**
+    Sets a css class for this object in a (X)HTML page.
+    @param css_class CSS class to be defined in the deck's central CSS file
+  */
+  function set_css_class($css_class)
+  {
+    $this->css_class = $css_class;
+  }
+
+  
   /**
     Sets a window wallpaper for a HTML (big-screen browser) page.
     Has no effect on WML/handheld pages.
@@ -1688,12 +1694,14 @@ class HAW_deck
   {
     global $haw_license_holder;
     global $haw_license_domain;
+    global $haw_license_key;
     global $haw_signature;
     global $haw_sig_text;
     global $haw_sig_link;
 
     // add hawoutput query parameter to redirection url, if required
-    HAW_handle_forced_output($this->red_url, $this->hawoutput);
+    if ($this->red_url)
+      HAW_handle_forced_output($this->red_url, $this->hawoutput);
 
     if ($this->debug)
       header("content-type: text/plain");
@@ -1773,6 +1781,12 @@ class HAW_deck
         printf("<meta name=\"GENERATOR\" content=\"%s (PHP) %s%s\" %s\n",
                HAW_VERSION, HAW_COPYRIGHT, $license, $endtag);
 
+        if ($this->desktopBrowser && isset($haw_license_key))
+        {
+          printf("<meta name=\"LICENSE_KEY\" content=\"%s\" %s\n",
+                 $haw_license_key, $endtag);
+        }
+        
         if ($this->timeout > 0)
         {
           printf("<meta http-equiv=\"refresh\" content=\"%d; URL=%s\" %s\n",
@@ -1939,7 +1953,13 @@ class HAW_deck
         {
           // use skin design
           echo "<div id=\"skin\">\n";
-          echo "<div id=\"display\">\n";
+
+          if ($this->css_class)
+            $class_param = " class=\"" . $this->css_class . "\"";
+          else
+            $class_param = "";
+          
+          printf("<div id=\"display\"%s>\n", $class_param);
         }
         else if ($this->use_simulator == HAW_SIM_CLASSIC)
         {
@@ -2187,7 +2207,30 @@ class HAW_deck
     if ($this->ml == HAW_HTML)
     {
       if ($this->css_enabled)
-        printf("<div id=\"canvas\" style=\"%s\">\n", $divstyle);
+      {
+        if ($this->css_class)
+        {
+          $class = $this->css_class;
+
+          if (isset($_SERVER['HTTP_USER_AGENT']) && strstr($_SERVER['HTTP_USER_AGENT'], " MSIE "))
+            $class .= " peekaboo"; // CSS hook for peekaboo handling
+        }
+        else
+        {
+          if (isset($_SERVER['HTTP_USER_AGENT']) && strstr($_SERVER['HTTP_USER_AGENT'], " MSIE "))
+            $class = "peekaboo";
+          else
+            $class = "";
+        }
+        
+        if ($class)
+          $class_param = " class=\"" . $class . "\"";
+        else
+          $class_param = "";
+          
+        printf("<div id=\"canvas\" style=\"%s\"%s>\n", $divstyle, $class_param);
+        echo "<span id=\"hawcsshook1\"></span>\n"; // universal CSS hook for toolbars etc.
+      }
       else
         printf("<div id=\"canvas\" align=\"%s\">\n", $this->alignment);
     }
@@ -2232,10 +2275,10 @@ class HAW_deck
       //  IF YOU DO SO, YOU ARE VIOLATING THE LICENSE TERMS
       //  OF THIS SOFTWARE! YOU HAVE TO PAY NOTHING FOR THIS
       //  SOFTWARE, SO PLEASE BE SO FAIR TO ACCEPT THE RULES.
-      //  IF YOU DON'T, YOUR WEBSITE WILL AT LEAST BE LISTED IN
-      //  THE HAWHAW HALL OF SHAME!
+      // 
       //  PLEASE REFER TO THE LIBRARY HEADER AND THE HAWHAW
-      //  HOMEPAGE FOR MORE INFORMATION.
+      //  HOMEPAGE FOR MORE INFORMATION:
+      //  http://www.hawhaw.de/#license
 
       echo "</div>\n";
 
@@ -2274,10 +2317,7 @@ class HAW_deck
                                  $this->waphome, $default_text);
 
           if ($signature && ($this->use_simulator == HAW_SIM_NONE))
-          {
-            echo "<hr width=\"150px\"/>\n"; // seperate content from signature
-            printf("<span style=\"font-size:8pt;\">%s</span>\n", $signature);
-          }
+            printf("<br /><span style=\"font-size:8pt;\">%s</span>\n", $signature);
           else
             echo $signature;
         }
@@ -2374,6 +2414,7 @@ class HAW_deck
         strstr($ua_low, "o2imode") ||
         strstr($ua_low, "opera ") ||
         strstr($ua_low, "reqwirelessweb") ||
+        strstr($acc_low, "xhtml+xml") ||
         strstr($acc_low, "vnd.wap.xhtml"))
     {
       $this->ml = HAW_HTML;   // create HTML (even when device accepts text/vnd.wap.wml too!)
@@ -2446,10 +2487,12 @@ class HAW_deck
         strstr($HTTP_USER_AGENT, "Firefox") ||
         strstr($HTTP_USER_AGENT, "Macintosh") || // Safari desktop browser
         strstr($HTTP_USER_AGENT, "Iceweasel") ||
+        strstr($HTTP_USER_AGENT, "Chrome") ||
         strstr($HTTP_USER_AGENT, "Konqueror") ||
         strstr($HTTP_USER_AGENT, "Opera"))       // can be Opera Mini!
     {
       $this->desktopBrowser = true;
+      $this->css_enabled = true;
       $this->display_banners = true;
     }
     
@@ -2459,6 +2502,7 @@ class HAW_deck
         (strstr($ua_low, "symbianos") && strstr($acc_low, "xhtml+xml")) ||
         ($this->iPhoneAlike == true) ||
         strstr($HTTP_USER_AGENT, "(Linux; U; Android") ||
+        strstr($HTTP_USER_AGENT, "Windows Phone OS") ||
         strstr($HTTP_USER_AGENT, "Kindle/"))
     {
       // XHTML device detected
@@ -2485,6 +2529,7 @@ class HAW_deck
     {
       // PDA browser detected  (or poor old Netscape 4.7x which messes with CSS)
       $this->PDAstyle = true;
+      $this->css_enabled = false;
       $this->desktopBrowser = false;
       $this->display_banners = false;
     }
@@ -2511,13 +2556,6 @@ class HAW_deck
       $this->desktopBrowser = true;
       $this->xhtmlmp_preferred_mime_type = "text/html";
     }
-
-    // determine if browser is CSS-enbled
-    if (($this->ml == HAW_HTML) &&
-        (strstr($HTTP_USER_AGENT, "MSIE") ||
-         strstr($HTTP_USER_AGENT, "Mozilla") ||
-         strstr($HTTP_USER_AGENT, "Opera")))
-      $this->css_enabled = true;
 
     // determine if browser is able to display GIF images
     if (($this->ml == HAW_HTML) ||
@@ -2606,8 +2644,11 @@ class HAW_deck
         else
         {
           // treat it as normal web browser
+          $this->desktopBrowser = true;
           $this->ml = HAW_HTML;
+          $this->xhtml = true;
           $this->css_enabled = true;
+          $this->display_banners = true;
         }
       }
     
@@ -3248,6 +3289,11 @@ class HAW_text
     {
       // HTML or WML
 
+      if (($deck->ml == HAW_HTML) && $deck->css_enabled && $this->css_class)
+      {
+        printf("<span class=\"%s\">\n", $this->css_class);
+      }
+      
       if (($this->attrib & HAW_TEXTFORMAT_BOXED) && ($deck->ml == HAW_HTML))
       {
         // determine text and background color, if not already assigned
@@ -3278,7 +3324,7 @@ class HAW_text
         if ($this->br >= 1)
           $this->br--;
       }
-
+      
       if ($this->attrib & HAW_TEXTFORMAT_BOLD)
         echo "<b>\n";
 
@@ -3307,19 +3353,9 @@ class HAW_text
           printf("<font color=\"%s\">", $this->color);
       }
 
-      if (($deck->ml == HAW_HTML) && $deck->css_enabled && $this->css_class)
-      {
-        printf("<span class=\"%s\">\n", $this->css_class);
-      }
-
       // print text
       if (isset($this->text))
         printf("%s\n", HAW_specchar($this->text, $deck));
-
-      if (($deck->ml == HAW_HTML) && $deck->css_enabled && $this->css_class)
-      {
-        echo "</span>\n";
-      }
 
       if (($deck->ml == HAW_HTML) && $this->color)
       {
@@ -3360,6 +3396,9 @@ class HAW_text
       // create required amount of carriage return's
       for ($i=0; $i < $this->br; $i++)
         echo "<br />\n";
+
+      if (($deck->ml == HAW_HTML) && $deck->css_enabled && $this->css_class)
+        echo "</span>\n";
     }
     elseif($deck->ml == HAW_VXML)
     {
@@ -4227,11 +4266,23 @@ class HAW_input
 
   function create(&$deck)
   {
-    if ($this->type == HAW_INPUT_PASSWORD)
-      $type = "type=\"password\"";
-    else
-      $type = "type=\"text\"";
+    $class_param = "";
 
+    if ($this->type == HAW_INPUT_PASSWORD)
+    {
+      $type = "type=\"password\"";
+      
+      if ($deck->css_enabled)
+        $class_param = " class=\"hawinputpassword\"";
+    }
+    else
+    {
+      $type = "type=\"text\"";
+      
+      if ($deck->css_enabled)
+        $class_param = " class=\"hawinputtext\"";
+    }
+      
     if ($this->size)
       $size = sprintf("size=\"%d\"", $this->size);
     else
@@ -4266,14 +4317,14 @@ class HAW_input
       {
         printf("<label for=\"%s\">%s</label>\n",
                 $this->name, HAW_specchar($this->label, $deck));
-        printf("<input %s name=\"%s\" id=\"%s\" value=\"%s\" %s %s%s /> ",
+        printf("<input %s name=\"%s\" id=\"%s\" value=\"%s\" %s %s%s%s /> ",
                 $type, $this->name,
-                $this->name, $this->value, $size, $maxlength, $mode);
+                $this->name, $this->value, $size, $maxlength, $mode, $class_param);
       }
       else
-        printf("%s <input %s name=\"%s\" value=\"%s\" %s %s%s /> ",
+        printf("%s <input %s name=\"%s\" value=\"%s\" %s %s%s%s /> ",
                 HAW_specchar($this->label, $deck), $type,
-                $this->name, $this->value, $size, $maxlength, $mode);
+                $this->name, $this->value, $size, $maxlength, $mode, $class_param);
 
       for ($i=0; $i < $this->br; $i++)
         echo "<br />\n";
@@ -4833,6 +4884,7 @@ class HAW_radio
     $this->name  = $name;
     $this->value = "";
     $this->number_of_buttons = 0;
+    $this->buttons = array();
     $this->voice_text = HAW_VOICE_ENUMERATE;
     $this->voice_audio_src = "";
     $this->voice_help = array();
@@ -5361,7 +5413,7 @@ class HAW_submit
 {
   var $label;
   var $name;
-
+  
   /**
     Constructor
     @param label What's written on the button.
@@ -5397,7 +5449,7 @@ class HAW_submit
 
       $name = ($this->name ? "name=\"" . "$this->name" ."\"" : "");
 
-      printf("<input type=\"submit\" %s value=\"%s\" /><br />\n", $name,
+      printf("<input type=\"submit\" %s value=\"%s\" id=\"hawinputsubmit\" /><br />\n", $name,
              HAW_specchar($this->label, $deck));
 
     }
@@ -5907,6 +5959,7 @@ class HAW_phone
   var $title;
   var $accesskey; // "1", "2", ... "0", "*", "#"
   var $image;
+  var $css_class;
   var $br;
   var $voice_text;
   var $voice_audio_src;
@@ -5938,6 +5991,7 @@ class HAW_phone
     $this->title = $title;
     $this->accesskey = HAW_NO_ACCESSKEY;
     $this->image = false;
+    $this->css_class = "";
     $this->br = 1; // default: 1 line break
     $this->voice_text = $destination;
     $this->voice_audio_src = "";
@@ -5953,6 +6007,15 @@ class HAW_phone
   function add_image($image)
   {
     $this->image = $image;
+  }
+
+  /**
+    Sets a css class for this object in a (X)HTML page.
+    @param css_class CSS class to be defined in the deck's central CSS file
+  */
+  function set_css_class($css_class)
+  {
+    $this->css_class = $css_class;
   }
 
   /**
@@ -6065,6 +6128,11 @@ class HAW_phone
           $dest = $this->destination;
       }
 
+      if ($deck->css_enabled && $this->css_class)
+      {
+        printf("<span class=\"%s\">\n", $this->css_class);
+      }
+
       if ($deck->link_brackets == true)
         echo "[";
           
@@ -6074,13 +6142,20 @@ class HAW_phone
         // image available for this link, let it create itself
         $this->image->create($deck);
 
-      printf("%s</a>", HAW_specchar($this->label, $deck));
-
+      if ($deck->css_enabled)
+        printf("<span class=\"hawphonelabel\">%s</span></a>", HAW_specchar($this->label, $deck));
+      else
+        printf("%s</a>", HAW_specchar($this->label, $deck));
+      
       if ($deck->link_brackets == true)
         echo "]";
         
       printf("%s\n", $br);
 
+      if ($deck->css_enabled && $this->css_class)
+      {
+        echo "</span>\n";
+      }
     }
     elseif ($deck->ml == HAW_WML)
     {
@@ -6303,6 +6378,14 @@ class HAW_linkset
     $this->number_of_elements++;
   }
 
+  function add_link_without_reference($link)
+  {
+    // workaround for Phalanger duck-typing issue
+    $this->add_link($link);
+    
+    return $link->get_accesskey();
+  }
+
   /**
     Sets text to be spoken by voice browsers. <br>
     @param text Some alternative text that precedes the enumeration of link &lt;label&gt;s.
@@ -6334,8 +6417,8 @@ class HAW_linkset
         {
           // create links inside a frame
 
-          echo "<div id=\"hawlinkset\" style=\"padding: 5px;\">\n";
-
+          echo "<div id=\"hawlinkset\">\n";
+          
           if ($deck->lynx)
           {
             // create link list to avoid whitespace between links
