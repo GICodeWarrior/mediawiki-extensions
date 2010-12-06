@@ -4,7 +4,7 @@
 
 .articleFeedback {
 	display: inline-block;
-	width: 44em;
+	width: 45em; /* 1em extra space to resolve rounding errors*/
 }
 
 .articleFeedback-panel {
