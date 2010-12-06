@@ -117,24 +117,22 @@
 
 .articleFeedback-rating-labels label {
 	float: left;
-	height: 21px;
-	width: 21px;
+	height: 2em;
+	width: 2em;
 	margin: 0;
 	padding: 0;
-	background-image: url(images/rating.png);
+	background-image: url(images/star-empty.png);
 	background-repeat: no-repeat;
-	background-position: -24px 0px;
+	background-position: center center;
 	cursor: pointer;
 }
 
-.articleFeedback-rating-labels label.articleFeedback-rating-label-first {
-	background-position: 0px 0px;
-	width: 24px;
+.articleFeedback-rating-labels label.articleFeedback-rating-label-full {
+	background-image: url(images/star-full.png);
 }
 
-.articleFeedback-rating-labels label.articleFeedback-rating-label-last {
-	background-position: -45px 0px;
-	width: 24px;
+.articleFeedback-rating-labels label.articleFeedback-rating-label-new {
+	background-image: url(images/star-new.png);
 }
 
 .articleFeedback-rating {
