@@ -32,6 +32,10 @@ Therefore you need to update pages created before it's installation in order to 
 	'dsmw-special-admin-articleuprunning' => 'Page update process is already running.',
 	'dsmw-special-admin-typeupstarted' => 'Properties update process started.',
 	'dsmw-special-admin-typeuprunning' => 'Properties update process is already running.',
+	#'right-editpatch' => '', // Please add a description of this useright shown at Special:ListGroupRights
+	#'right-editpushfeed' => '', // Please add a description of this useright shown at Special:ListGroupRights
+	#'right-editpullfeed' => '', // Please add a description of this useright shown at Special:ListGroupRights
+	#'right-editchangeset' => '', // Please add a description of this useright shown at Special:ListGroupRights
 );
 
 /** German (Deutsch)
