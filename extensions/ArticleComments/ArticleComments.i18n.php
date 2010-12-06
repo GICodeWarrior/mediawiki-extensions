@@ -181,6 +181,16 @@ $messages['be-tarask'] = array(
 	'processcomment' => 'Апрацоўка камэнтара артыкулу',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'article-comments-name-string' => 'Име',
+	'article-comments-comment-string' => 'Коментар',
+	'article-comments-comment-field' => 'Коментар:',
+	'article-comments-submit-button' => 'Изпращане',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal

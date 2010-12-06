@@ -324,7 +324,7 @@ $messages['li'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'skinperpage-desc' => 'Додава ознака <code>&lt;skin&gt;</code> за користење на различни маски по страница',
+	'skinperpage-desc' => 'Додава ознака <code>&lt;skin&gt;</code> за користење на различни рува на страниците',
 );
 
 /** Malayalam (മലയാളം)
