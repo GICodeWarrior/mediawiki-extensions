@@ -1107,10 +1107,13 @@ $messages['bg'] = array(
 	'fogg-date-title' => 'Дата',
 	'fogg-license-title' => 'Лиценз',
 	'mwe-select_file' => 'Избиране на файл',
+	'mwe-upload' => 'Качване на файл',
 	'mwe-summary' => 'Резюме',
+	'mwe-uploaded-time-remaining' => 'Оставащо време: $1',
 	'mwe-cc_pd_title' => 'Обществено достояние',
 	'fogg-select_file' => 'Избиране на файл',
 	'fogg-select_new_file' => 'Избиране на нов файл',
+	'fogg-please-install-install-linktext' => 'Инсталиране на Firefogg',
 );
 
 /** Breton (Brezhoneg)
@@ -3265,7 +3268,7 @@ $messages['fr'] = array(
 	'mwe-wgfogg_warning_bad_extension' => 'Vous avez sélectionné un fichier qui comporte une extension non supportée (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">plus d\'informations</a>).',
 	'mwe-thumbnail-more' => 'Agrandir',
 	'mwe-filesource' => 'Source :',
-	'mwe-filestatus' => 'Statut des droits d’auteur :',
+	'mwe-filestatus' => 'Statut du droit d’auteur :',
 	'mwe-loading-add-media-wiz' => "Chargement de l'assistant d'ajout de média",
 	'fogg-wont-upload-to-server' => 'Note: Votre fichier vidéo sera encodé localement et non téléversé sur un serveur',
 	'fogg-save_local_file' => 'Sauvegarder au format Ogg',
