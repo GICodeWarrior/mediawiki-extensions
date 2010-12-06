@@ -2246,6 +2246,17 @@ $messages['scn'] = array(
  */
 $messages['shi'] = array(
 	'badimages' => 'Umuɣ n tisnatin xcnnin',
+	'badimages-name' => 'Assaɣ:',
+	'badimages-not-added' => 'Tawlaft ad ur as tufa an tili',
+	'badimages-not-removed' => 'Tawlaft ad ur as tufa ad ttuykkas.',
+	'badimages-reason' => 'Maɣ..acku:',
+	'badimages-remove' => '(Kkist)',
+	'badimages-remove-btn' => 'Kkist',
+	'badimages-remove-confirm' => 'Is nit trit ad tkkist : $1',
+	'badimages-removed' => '$1 tuykkasd z umuɣ.',
+	'badimages-subheading' => 'Umuɣ n ɣilad',
+	'badimages-unprivileged' => '(Ur ak ittuyskar ad tsbadlt umuɣ ad)',
+	'badimages-log-name' => 'Umuɣ n tiwlaf lli ur igan amya',
 );
 
 /** Slovak (Slovenčina)
