@@ -16,7 +16,7 @@ class DSMWAdmin extends SpecialPage {
         # Add all our needed hooks
         $wgHooks['SkinTemplateTabs'][] = $this;
         
-        parent::__construct( 'DSMWAdmin' );
+        parent::__construct( 'DSMWAdmin', 'delete' );
     }
 
     public function getDescription() {
@@ -34,7 +34,13 @@ class DSMWAdmin extends SpecialPage {
      * @return <bool>
      */
     public function execute() {
-        global $wgOut, $wgRequest, $wgServerName, $wgScriptPath, $wgDSMWIP, $wgServerName, $wgScriptPath;
+        global $wgOut, $wgRequest, $wgServerName, $wgScriptPath, $wgDSMWIP, $wgServerName, $wgScriptPath, $wgUser;
+        
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			// If the user is not authorized, show an error.
+			$this->displayRestrictionError();
+			return;
+		}        
         
 		/**** Get status of refresh job, if any ****/
         $dbr =& wfGetDB( DB_SLAVE );

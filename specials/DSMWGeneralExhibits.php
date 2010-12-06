@@ -12,7 +12,7 @@
 class DSMWGeneralExhibits extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'DSMWGeneralExhibits' );
+		parent::__construct( 'DSMWGeneralExhibits', 'delete' );
     }
 
     public function getDescription() {
@@ -27,8 +27,14 @@ class DSMWGeneralExhibits extends SpecialPage {
      * There are 3 links used to see informations about Patches, PullFeeds or PushFeeds
      */
     public function execute() {
-        global $wgOut, $wgRequest;
+        global $wgOut, $wgRequest, $wgUser;
 
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			// If the user is not authorized, show an error.
+			$this->displayRestrictionError();
+			return;
+		}        
+        
         $output = '<p>This page displays general informations about Distributed Semantic MediaWiki.</p>';
 
         $returntitle1 = Title::makeTitle( NS_SPECIAL, 'DSMWGeneralExhibits' );
