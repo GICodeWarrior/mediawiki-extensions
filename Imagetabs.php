@@ -39,7 +39,7 @@ function createImageTabs_hook(&$content_actions) {
 			// Go to prefix:Image:title. Image: is automatically translated if necessary.
 			$titleObj = Title::newFromText($prefix . ":Image:" . $wgTitle->getText());
 			// Check that we don't link to ourselves
-			if($titleObj->getInterwiki() != $wgLocalInterwiki && $titleObj->getFullURL() != $wgTitle->getFullURL())
+			if($titleObj->getInterwiki() !== $wgLocalInterwiki && $titleObj->getFullURL() != $wgTitle->getFullURL())
 				$content_actions['interwikitab-'.$i++] = array(
 					'class' => false,
 					'text' => $caption,
