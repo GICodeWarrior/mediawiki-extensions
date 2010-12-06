@@ -545,8 +545,10 @@ $messages['uk'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Steven0127
  */
 $messages['zh-hans'] = array(
-	'articletocategory2-create-article-under-category-button' => '建立',
+	'articletocategory2-create-article-under-category-text' => '将页面添加到此类别',
+	'articletocategory2-create-article-under-category-button' => '创建',
 );
 
