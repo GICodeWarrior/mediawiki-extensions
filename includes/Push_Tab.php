@@ -3,6 +3,8 @@
 /**
  * Statis class with methods to create and handle the push tab.
  *
+ * @since 0.1
+ *
  * @file Push_Tab.php
  * @ingroup Push
  *
@@ -14,7 +16,7 @@ final class PushTab {
 	/**
 	 * Adds an "action" (i.e., a tab) to allow pushing the current article.
 	 */
-	static function displayTab( $obj, &$content_actions ) {
+	public static function displayTab( $obj, &$content_actions ) {
 		// Make sure that this is not a special page.
 		if ( isset( $obj->mTitle ) && $obj->mTitle->getNamespace() != NS_SPECIAL ) {
 			global $wgRequest;
@@ -67,6 +69,8 @@ final class PushTab {
 		global $wgOut, $wgUser;
 		
 		$wgOut->setPageTitle( wfMsgExt( 'push-tab-title', 'parsemag', $article->getTitle()->getText() ) );
+		
+		$wgOut->addModules( 'ext.push.tab' );
 		
 		if ( $wgUser->isAllowed( 'push' ) ) {
 			self::displayPushList();
@@ -127,7 +131,8 @@ final class PushTab {
 				Html::element(
 					'button',
 					array(
-						// TODO
+						'class' => 'push-button',
+						'pushtarget' => $url
 					),
 					wfMsg( 'push-button-text' )
 				)

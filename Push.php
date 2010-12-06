@@ -35,6 +35,11 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'push-desc'
 );
 
+$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
+$egPushScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Push';
+$egPushIP = dirname( __FILE__ );
+unset( $useExtensionPath );
+
 $wgExtensionMessagesFiles['Push'] 		= dirname( __FILE__ ) . '/Push.i18n.php';
 
 $wgAutoloadClasses['PushTab'] 			= dirname( __FILE__ ) . '/includes/Push_Tab.php';
@@ -48,6 +53,22 @@ $wgGroupPermissions['*']['push'] = true;
 
 $wgAvailableRights[] = 'pushadmin';
 $wgGroupPermissions['sysop']['pushadmin'] = true;
+
+$moduleTemplate = array(
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteBasePath' => $egPushScriptPath,
+	'group' => 'ext.push'
+);
+
+$wgResourceModules['ext.push.tab'] = $moduleTemplate + array(
+	'scripts' => 'includes/ext.push.tab.js',
+	'dependencies' => array(),
+	'messages' => array(
+		'push-button-pushing',
+		'push-button-completed',
+		'push-button-failed'
+	)
+);
 
 // This function has been deprecated in 1.16, but needed for earlier versions.
 // It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
