@@ -43,6 +43,11 @@ def get_collections(dbname):
     return db.collection_names()
 
 
+def count_records(dbname, collection):
+    db = init_mongo_db(dbname)
+    return db[collection].count()
+
+
 def cleanup_database(dbname, logger, endswith=None):
     coll = get_collections(dbname)
     for c in coll:
