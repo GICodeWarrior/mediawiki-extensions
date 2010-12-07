@@ -52,7 +52,7 @@ $messages['de'] = array(
 	'spm_printername_wbs' => '„MS Project“-Export',
 	'spm-name' => 'Semantisches Projektmanagement',
 	'semanticprojectmanagement-desc' => 'Stellt Semantic MediaWiki zusätzliche, beim Projektmanagement nützliche, Ausgabeformate für eingebettete Abfragen zur Verfügung',
-	'semanticprojectmanagement' => 'Semantisches Projektmanagement',
+	'semanticprojectmanagement' => 'Einstellungen von Semantisches Projektmanagement',
 	'right-SPMsetup' => 'Bearbeiten der grundlegenden Einstellungen von Semantisches Projektmanagement',
 );
 
