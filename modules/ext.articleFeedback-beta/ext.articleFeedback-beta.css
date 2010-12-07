@@ -39,6 +39,7 @@
 .articleFeedback-tabs {
 	width: 8em;
 	height: 15em;
+	/* @embed */
 	background-image: url(images/tab-break.png);
 	background-position: right top;
 	background-repeat: repeat-y;
@@ -52,12 +53,14 @@
 	height: 7.5em;
 	cursor: pointer;
 	background-color: #ffffff;
+	/* @embed */
 	background-image: url(images/tab-edge.png);
 	background-position: right top;
 	background-repeat: repeat-y;
 }
 
 .articleFeedback-tabs .articleFeedback-tab-current {
+	/* @embed */
 	background-image: url(images/tab-fade.png);
 }
 
@@ -79,10 +82,12 @@
 }
 
 .articleFeedback-tab-form .articleFeedback-buffer {
+	/* @embed */
 	background-image: url(images/form-icon.png);
 }
 
 .articleFeedback-tab-report .articleFeedback-buffer {
+	/* @embed */
 	background-image: url(images/report-icon.png);
 }
 
@@ -115,24 +120,48 @@
 	padding-left: 1em;
 }
 
-.articleFeedback-rating-labels label {
+.articleFeedback-rating-labels label, .articleFeedback-rating-clear {
 	float: left;
 	height: 2em;
 	width: 2em;
 	margin: 0;
 	padding: 0;
+	/* @embed */
 	background-image: url(images/star-empty.png);
 	background-repeat: no-repeat;
 	background-position: center center;
 	cursor: pointer;
 }
 
+.articleFeedback-rating-clear {
+	/* @embed */
+	background-image: url(images/trash.png);
+	display: none;
+}
+
+.articleFeedback-rating-labels:hover .articleFeedback-rating-clear {
+	/* @embed */
+	background-image: url(images/trash-hover.png);
+}
+
 .articleFeedback-rating-labels label.articleFeedback-rating-label-full {
+	/* @embed */
 	background-image: url(images/star-full.png);
 }
 
-.articleFeedback-rating-labels label.articleFeedback-rating-label-new {
+.articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-full {
+	/* @embed */
 	background-image: url(images/star-new.png);
+}
+
+.articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-hover {
+	/* @embed */
+	background-image: url(images/star-new-hover.png);
+}
+
+.articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-down {
+	/* @embed */
+	background-image: url(images/star-new-down.png);
 }
 
 .articleFeedback-rating {
@@ -145,12 +174,14 @@
 .articleFeedback-label {
 	cursor: pointer;
 	padding-left: 20px;
+	/* @embed */
 	background-image: url(images/question.png);
 	background-repeat: no-repeat;
 	background-position: center left;
 }
 
 .articleFeedback-label:hover {
+	/* @embed */
 	background-image: url(images/question-hover.png);
 }
 

@@ -7,21 +7,21 @@
 $.articleFeedback = {
 	'fn': {
 		'updateRating': function() {
-			$(this)
-				.find( 'label' )
-					.removeClass( 'articleFeedback-rating-label-new' )
-					.each( function() {
-						if ( $( 'input#' + $(this).attr( 'for' ) + ':checked' ).length ) {
-							$(this)
-								.prevAll( 'label' )
-									.andSelf()
-										.addClass( 'articleFeedback-rating-label-full' )
-										.end()
-									.end()
-								.nextAll( 'label' )
-									.removeClass( 'articleFeedback-rating-label-full' );
-						}
-					} );
+			$(this).find( 'label' ).removeClass( 'articleFeedback-rating-label-full' );
+			var $label = $(this).find( 'label[for=' + $(this).find( 'input:radio:checked' ).attr( 'id' ) + ']' )
+			if ( $label.length ) {
+				$label
+					.prevAll( 'label' )
+						.add( $label )
+							.addClass( 'articleFeedback-rating-label-full' )
+							.end()
+						.end()
+					.nextAll( 'label' )
+						.removeClass( 'articleFeedback-rating-label-full' );
+				$(this).find( '.articleFeedback-rating-clear' ).show();
+			} else {
+				$(this).find( '.articleFeedback-rating-clear' ).hide();
+			}
 		},
 		'build': function( context ) {
 			context.$ui
@@ -44,25 +44,25 @@ $.articleFeedback = {
 		<div class="articleFeedback-description articleFeedback-report"><msg key="report-panel-description" /></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-ratings">\
-			<div class="articleFeedback-rating" rel="wellsourced">\
+			<div class="articleFeedback-rating articleFeedback-rating-new" rel="wellsourced">\
 				<span class="articleFeedback-label" title-msg="field-wellsourced-tip"><msg key="field-wellsourced-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
 			</div>\
-			<div class="articleFeedback-rating" rel="neutral">\
+			<div class="articleFeedback-rating articleFeedback-rating-new" rel="neutral">\
 				<span class="articleFeedback-label" title-msg="field-neutral-tip"><msg key="field-neutral-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
 			</div>\
-			<div class="articleFeedback-rating" rel="complete">\
+			<div class="articleFeedback-rating articleFeedback-rating-new" rel="complete">\
 				<span class="articleFeedback-label" title-msg="field-complete-tip"><msg key="field-complete-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
 			</div>\
-			<div class="articleFeedback-rating" rel="readable">\
+			<div class="articleFeedback-rating articleFeedback-rating-new" rel="readable">\
 				<span class="articleFeedback-label" title-msg="field-readable-tip"><msg key="field-readable-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
 			</div>\
 			<div style="clear:both;"></div>\
 		</div>\
@@ -110,13 +110,19 @@ $.articleFeedback = {
 								.each( function( i ) {
 									$(this)
 										.val( i + 1 )
-										.attr( 'id', 'articleFeedback-rating-field-' + rel + '-' + ( i + 1 ) );
+										.attr(
+											'id',
+											'articleFeedback-rating-field-' + rel + '-' + ( i + 1 )
+										);
 								} )
 								.end()
 							.find( '.articleFeedback-rating-labels label' )
 								.each( function( i ) {
 									$(this)
-										.attr( 'for', 'articleFeedback-rating-field-' + rel + '-' + ( i + 1 ) );
+										.attr(
+											'for',
+											'articleFeedback-rating-field-' + rel + '-' + ( i + 1 )
+										);
 								} );
 					} )
 					.end()
@@ -144,15 +150,40 @@ $.articleFeedback = {
 				.find( '.articleFeedback-rating-labels label' )
 					.hover(
 						function() {
-							$(this).prevAll( 'label' ).andSelf()
-								.addClass( 'articleFeedback-rating-label-new' );
+							$(this)
+								.addClass( 'articleFeedback-rating-label-hover' )
+								.prevAll( 'label' )
+									.andSelf()
+										.addClass( 'articleFeedback-rating-label-full' );
 						},
 						function() {
+							$(this).removeClass( 'articleFeedback-rating-label-hover' );
 							$.articleFeedback.fn.updateRating.call(
 								$(this).closest( '.articleFeedback-rating' )
 							);
 						}
-					);
+					)
+					.mousedown( function() {
+						$(this)
+							.addClass( 'articleFeedback-rating-label-down' )
+							.nextAll()
+								.removeClass( 'articleFeedback-rating-label-full' )
+								.end()
+							.parent()
+								.find( '.articleFeedback-rating-clear' )
+									.show();
+					} )
+					.mouseup( function() {
+						$(this).removeClass( 'articleFeedback-rating-label-down' );
+					} )
+					.end()
+				.find( '.articleFeedback-rating-clear' )
+					.click( function() {
+						$(this).hide();
+						var $rating = $(this).closest( '.articleFeedback-rating' );
+						$rating.find( 'input:radio' ).attr( 'checked', false );
+						$.articleFeedback.fn.updateRating.call( $rating );
+					} );
 		}
 	}
 };
