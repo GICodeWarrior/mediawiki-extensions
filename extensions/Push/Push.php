@@ -59,6 +59,7 @@ $egPushJSMessages = array(
 	'push-button-completed',
 	'push-button-failed',
 	'push-import-revision-message',
+	'push-import-revision-comment',
 );
 
 // For backward compatibility with MW < 1.17.
