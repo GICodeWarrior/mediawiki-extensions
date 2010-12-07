@@ -448,8 +448,8 @@ $messages['lv'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'seealso' => 'Видете исто така',
-	'seealso-desc' => "Локализирани наслови 'Видете исто така' кои ја користат ознаката <code><nowiki><seealso></nowiki></code>",
+	'seealso' => 'Поврзано',
+	'seealso-desc' => 'Локализирани наслови „Поврзано“ кои ја користат ознаката <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Malayalam (മലയാളം)
