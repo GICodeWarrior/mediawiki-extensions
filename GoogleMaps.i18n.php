@@ -673,6 +673,7 @@ $wgGoogleMapsMessages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author <anonymous>
  * @author Fulup
+ * @author Y-M D
  */
 $wgGoogleMapsMessages['br'] = array(
 	'gm-desc' => 'Krouiñ kartennoù aes gant an ereadur wiki',
@@ -711,7 +712,7 @@ $wgGoogleMapsMessages['br'] = array(
 	'gm-large' => 'Grande',
 	'gm-medium' => 'Médio',
 	'gm-small' => 'Pequeno',
-	'gm-no-zoom-control' => 'Sem controle de zoom',
+	'gm-no-zoom-control' => 'Hini ebet',
 	'gm-yes' => 'Ya',
 	'gm-no' => 'Ket',
 	'gm-search-preface' => 'Clique no mapa para adicionar um ponto, ou ir para uma cidade, pais, endereço ou comércio:',
