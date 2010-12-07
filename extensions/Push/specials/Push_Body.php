@@ -5,7 +5,10 @@
  * 
  * @since 0.1
  * 
- * @author Jeroen De Dauw
+ * @file Push_Body.php
+ * @ingroup Push
+ * 
+ * @author Jeroen De Dauw  < jeroendedauw@gmail.com >
  */
 class SpecialPush extends SpecialPage {
 	

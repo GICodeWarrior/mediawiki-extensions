@@ -31,5 +31,5 @@ $messages['en'] = array(
 	'push-import-revision-comment' => ' Last comment: $1',
 	
 	// Special page
-	'special-push' => 'Push',
+	'special-push' => 'Push pages',
 );
