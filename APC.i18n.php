@@ -1129,14 +1129,36 @@ Novija verzija $2 je dostupna na http://pecl.php.net/package/APC/$2',
 
 /** Catalan (Català)
  * @author Aleator
+ * @author El libre
  * @author Jordi Roqué
  * @author Solde
  */
 $messages['ca'] = array(
+	'apc' => 'Informació APC',
 	'viewapc-clear-confirm' => 'Voleu esborrar la memòria cau?',
 	'viewapc-clear-user-cache' => "Esborrar la memòria clau de l'usuari",
 	'viewapc-mode-stats' => "Estadístiques de l'ordinador central",
+	'viewapc-mode-system-cache' => "Sistema d'entrades de la memòria cau",
+	'viewapc-mode-system-cache-dir' => 'Entrades per directori',
+	'viewapc-mode-user-cache' => "Entrades de la memòria cau de l'usuari/a",
+	'viewapc-mode-version-check' => 'Comprova la versió',
 	'viewapc-info-general' => 'Informació general',
+	'viewapc-apc-version' => 'Versió APC',
+	'viewapc-php-version' => 'Versió PHP',
+	'viewapc-shared-memory' => 'Memòria compartida',
+	'viewapc-start-time' => "Hora d'inici",
+	'viewapc-uptime' => 'Temps de funcionament',
+	'viewapc-upload-support' => 'Suport de la pujada de fitxers',
+	'viewapc-filecache-info' => 'Informació de la memòria cau de fitxers',
+	'viewapc-usercache-info' => "Informació de la memòria cau de l'Usuari/a",
+	'viewapc-cached-files' => 'Fitxers guardats a la memòria cau',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|arxiu|arxius}} ($2)',
+	'viewapc-hits' => 'Clics',
+	'viewapc-misses' => 'Faltes',
+	'viewapc-requests' => 'Índex de petició',
+	'viewapc-hitrate' => "Taxa d'èxit",
+	'viewapc-missrate' => 'Taxa de falta',
+	'viewapc-insertrate' => "Taxa d'inserció",
 	'viewapc-rps' => '$1 peticions per segon',
 	'viewapc-info-runtime' => "Informació de temps d'execució",
 	'viewapc-info-memory' => "Diagrames d'estat de l'ordinador central",
