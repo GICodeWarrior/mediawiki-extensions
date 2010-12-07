@@ -74,17 +74,19 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Holek
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'ts-citegen-Title' => 'Generator title',
 	'ts-citegen-Send' => 'Send button',
 	'ts-citegen-Input-title' => 'Input secton',
 	'ts-citegen-Input-text' => 'Input section description',
-	'ts-citegen-Option-append-author-link' => 'Appends the author wiki links into the template',
+	'ts-citegen-Option-append-author-link' => 'Appends the author wikilinks into the template',
 	'ts-citegen-Option-append-newlines' => 'Appends new lines after each parameter',
-	'ts-citegen-Option-add-references' => 'Adds <ref> tags around citation templates',
-	'ts-citegen-Option-add-list' => 'Creates a wikilist of citation templates',
-	'ts-citegen-Output-title' => 'Output section',
+	'ts-citegen-Option-add-references' => 'Adds <ref> tags around citing templates',
+	'ts-citegen-Option-add-list' => 'Creates a wikilist of citing templates',
+	'ts-citegen-Output-title' => 'Output section
+{{Identical|Result}}',
 	'ts-citegen-Output-select-disclaimer' => 'Disclaimer about output templates',
 	'ts-citegen-Wrong-input' => '"%s" is an unidentified input.',
 	'ts-citegen-Parsers' => 'Parsers',
@@ -108,7 +110,7 @@ $messages['qqq'] = array(
 	'ts-citegen-Errors-title' => 'Errors section title
 {{Identical|Error}}',
 	'ts-citegen-Unavailable-SQL' => 'Error message: Toolserver database is unavailable. %s is an error message',
-	'ts-citegen-base-disabled' => 'Error message: A book database is unavailable. <tt>%s</tt> is the name of the database',
+	'ts-citegen-base-disabled' => 'Error message: A book database is unavailable. <tt>%s</tt> is the name of the database.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -118,19 +120,19 @@ $messages['qqq'] = array(
 $messages['be-tarask'] = array(
 	'ts-citegen-Title' => 'Генэратар шаблёнаў цытаваньня',
 	'ts-citegen-Send' => 'Стварыць',
-	'ts-citegen-Input-title' => 'Зьвесткі',
-	'ts-citegen-Input-text' => 'Гэта генэратар шаблёнаў цытаваньня. Стварэньне шаблёнаў для цытатаў і крыніцаў у разьдзелах Вікіпэдыі зь яго дапамогай паскараецца. Калі ласка, пазначце зьвесткі (%s) у палях ніжэй, каб скрыпт мог стварыць шаблён. Памятайце, што няма розьніцы, у якое поле якія зьвесткі ўносіць — скрыпт сам распазнае тыпы зьвестак і сфармуе шаблён неабходным чынам.',
-	'ts-citegen-Option-append-author-link' => 'Дадаць спасылкі на артыкулы пра адпаведных аўтараў',
+	'ts-citegen-Input-title' => 'Уваход',
+	'ts-citegen-Input-text' => 'Гэта генэратар шаблёнаў цытаваньня. Ён паскарае стварэньне шаблёнаў для цытатаў і крыніцаў у розных разьдзелах Вікіпэдыі. Калі ласка, пазначце зьвесткі (%s) у палях ніжэй, каб скрыпт мог стварыць шаблёны. Памятайце, што няма розьніцы, у якое поле якія зьвесткі ўносіць — скрыпт сам распазнае тыпы зьвестак.',
+	'ts-citegen-Option-append-author-link' => 'Дадаваць спасылкі на старонкі аўтараў у шаблён',
 	'ts-citegen-Option-append-newlines' => 'Пераходзіць на новы радок пасьля кожнага парамэтру',
-	'ts-citegen-Option-add-references' => 'Зьмясьціць шаблён у тэг <ref />',
-	'ts-citegen-Option-add-list' => 'Стварыць вікісьпіс шаблёнаў цытаваньня',
+	'ts-citegen-Option-add-references' => 'Зьмяшчаць шаблёны цытаваньня у тэгі <ref>',
+	'ts-citegen-Option-add-list' => 'Стварыць вікі-сьпіс шаблёнаў цытаваньня',
 	'ts-citegen-Output-title' => 'Вынік',
-	'ts-citegen-Output-select-disclaimer' => 'Памятайце, што, калі вы выбіраеце мову шаблёну, гэта не азначае, што пэўны шаблён даступны на вашай мове. Гэтае поле зьмяшчае даступныя мовы для кожнага падтрымліваемага шаблёну. Гэтак, тут можна зьмяшчацца француская мова, бо падтрымліваецца толькі {{cite book}}.',
-	'ts-citegen-Wrong-input' => '%s: тып зьвестак не распазнаны.',
+	'ts-citegen-Output-select-disclaimer' => 'Памятайце, што, калі вы выбіраеце мову шаблёну, гэта не азначае, што пэўны шаблён даступны на Вашай мове. Гэтае поле зьмяшчае даступныя мовы для кожнага шаблёну, якія падтрымліваюцца. Гэтак, тут можа зьмяшчацца француская мова, бо падтрымліваецца толькі {{Cite book}}.',
+	'ts-citegen-Wrong-input' => '%s: тып уваходных зьвестак не распазнаны.',
 	'ts-citegen-Parsers' => 'Парсэры',
-	'ts-citegen-Skins' => 'Форма адлюстраваньня',
-	'ts-citegen-Skin-skins' => 'Афармленьне',
-	'ts-citegen-Skin-outputformat' => 'Для ботаў',
+	'ts-citegen-Skins' => 'Вывад',
+	'ts-citegen-Skin-skins' => 'Афармленьні',
+	'ts-citegen-Skin-outputformat' => 'Фармат вываду',
 	'ts-citegen-Template-lang' => 'Мова шаблёну',
 	'ts-citegen-Sources-title' => 'Крыніцы',
 	'ts-citegen-Sources-text' => 'Ніжэй пададзены сьпіс выкарыстаных крыніцаў.',
@@ -144,13 +146,21 @@ $messages['be-tarask'] = array(
 	'ts-citegen-Save-it' => 'Цяперашні запыт',
 	'ts-citegen-Errors-title' => 'Памылкі',
 	'ts-citegen-Unavailable-SQL' => 'Памылка: база зьвестак Toolserver недаступная. адказ MySQL: %s',
-	'ts-citegen-base-disabled' => 'Памылка: база зьвестак %s недаступная',
+	'ts-citegen-base-disabled' => 'Памылка: база зьвестак %s недаступная.',
 );
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'ts-citegen-Send' => 'Krouiñ',
+	'ts-citegen-Output-title' => "Disoc'h",
+	'ts-citegen-Parsers' => 'Parseroù',
+	'ts-citegen-Skins' => 'Ezvont',
+	'ts-citegen-Skin-skins' => 'Gwiskadurioù',
+	'ts-citegen-Skin-outputformat' => 'Furmad moned er-maez',
+	'ts-citegen-Sources-title' => 'Mammennoù',
 	'ts-citegen-Tools' => 'Ostilhoù',
 	'ts-citegen-Other-languages' => 'Yezhoù all',
 	'ts-citegen-Save-it' => 'Reked red',
@@ -167,13 +177,13 @@ $messages['de'] = array(
 	'ts-citegen-Title' => 'Vorlagengenerator für Quellennachweise',
 	'ts-citegen-Send' => 'Generieren',
 	'ts-citegen-Input-title' => 'Angaben',
-	'ts-citegen-Input-text' => 'Dies ist ein Vorlagengenerator für Quellennachweise. Mit ihm kannst du die entsprechende Vorlage in den unterschiedlichen Sprachausgaben der Wikipedia zur Nutzung als Einzelnachweis oder Literaturangabe schnell erstellen. Gebe die vorhandenen Daten (%s) in die untenstehenden Felder ein. Das Skript wird dann versuchen mit ihnen die Vorlage zu erstellen. Bei der Angabe der Daten ist es unerheblich welches Feld für welche Angabe genutzt wird. Die richtige Zuordnung zu den einzelnen Parametern der Vorlage wird vom Skript übernommen.',
+	'ts-citegen-Input-text' => 'Dies ist ein Vorlagengenerator für Quellennachweise. Mit ihm kannst du die entsprechende Vorlage in den unterschiedlichen Sprachausgaben der Wikipedia, zur Nutzung als Einzelnachweis oder Literaturangabe, schnell erstellen. Gebe die vorhandenen Daten (%s) in die untenstehenden Felder ein. Das Skript wird dann versuchen aus ihnen die Vorlage zu erstellen. Bei der Angabe der Daten ist es unerheblich welches Feld für welche Angabe genutzt wird. Die richtige Zuordnung zu den einzelnen Parametern der Vorlage wird vom Skript übernommen.',
 	'ts-citegen-Option-append-author-link' => 'Der Vorlage Wikilinks zum Autor beifügen',
 	'ts-citegen-Option-append-newlines' => 'Nach jedem Parameter eine neue Zeile beginnen',
 	'ts-citegen-Option-add-references' => 'Ergänze die Vorlage um „<ref>“-Elemente',
 	'ts-citegen-Option-add-list' => 'Erstelle die Vorlagen in Form einer Wikiliste',
 	'ts-citegen-Output-title' => 'Ergebnis',
-	'ts-citegen-Output-select-disclaimer' => 'Die Auswahl einer Sprache für die Vorlage garantiert nicht das Vorhandensein einer entsprechenden Vorlage in der jeweiligen Sprache. Dieses Auswahlmenü gibt die Sprachen an für die eine Vorlage verfügbar ist. Französisch kann beispielsweise deshalb angezeigt werden, weil lediglich die Vorlage „Cite book“ unterstützt wird.',
+	'ts-citegen-Output-select-disclaimer' => 'Die Auswahl einer Sprache für die Vorlage garantiert nicht das Vorhandensein einer entsprechenden Vorlage in der jeweiligen Sprache. Dieses Auswahlmenü gibt die Sprachen an, für die eine Vorlage verfügbar ist. Französisch kann beispielsweise auch deshalb angezeigt werden, weil lediglich die Vorlage „Cite book“ unterstützt wird.',
 	'ts-citegen-Wrong-input' => '%s: Die Angabe wurde nicht als richtige Eingabe erkannt.',
 	'ts-citegen-Parsers' => 'Parser',
 	'ts-citegen-Skins' => 'Ausgabe',
@@ -181,7 +191,7 @@ $messages['de'] = array(
 	'ts-citegen-Skin-outputformat' => 'Ausgabeformat',
 	'ts-citegen-Template-lang' => 'Sprache der Vorlage',
 	'ts-citegen-Sources-title' => 'Quellen',
-	'ts-citegen-Sources-text' => 'Unterhalb ist die Liste der verwenden Quellen verfügbar.',
+	'ts-citegen-Sources-text' => 'Unterhalb wird die Liste der verwendeten Quellen angezeigt.',
 	'ts-citegen-Sidebar-title' => 'Quellennachweisgenerator',
 	'ts-citegen-Sidebar-add-Firefox' => 'Zu den Lesezeichen hinzufügen',
 	'ts-citegen-Sidebar-add-Opera' => 'Zu den Lesezeichen hinzufügen',
@@ -192,13 +202,14 @@ $messages['de'] = array(
 	'ts-citegen-Save-it' => 'Aktuelle Abfrage',
 	'ts-citegen-Errors-title' => 'Fehler',
 	'ts-citegen-Unavailable-SQL' => 'Fehler: Die Datenbank des Toolservers ist nicht verfügbar. MySQL erzeugte: %s',
-	'ts-citegen-base-disabled' => 'Fehler: %s-Datenbank ist nicht verfügbar',
+	'ts-citegen-base-disabled' => 'Fehler: %s-Datenbank ist nicht verfügbar.',
 );
 
 /** British English (British English)
  * @author Holek
  */
 $messages['en-gb'] = array(
+	'ts-citegen-Title' => 'Citation template generator',
 	'ts-citegen-Sidebar-add-IE-Mac-details' => "Once the page has loaded, open your Page Holder, click 'Add' then use the Page Holder Favourites button to store it as a Page Holder Favourite.",
 );
 
@@ -231,7 +242,7 @@ $messages['hsb'] = array(
 	'ts-citegen-Save-it' => 'Aktualne naprašowanje',
 	'ts-citegen-Errors-title' => 'Zmylki',
 	'ts-citegen-Unavailable-SQL' => 'Zmylk: Datowa banka Toolserver k dispoziciji njesteji. MySQL wozjewi: %s',
-	'ts-citegen-base-disabled' => 'Zmylk: Datowa banka %s njesteji k dispoziciji',
+	'ts-citegen-base-disabled' => 'Zmylk: Datowa banka %s njesteji k dispoziciji.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -266,16 +277,20 @@ $messages['id'] = array(
 	'ts-citegen-Save-it' => 'Kueri saat ini',
 	'ts-citegen-Errors-title' => 'Galat',
 	'ts-citegen-Unavailable-SQL' => 'Galat: Basis data Toolserver tidak tersedia. Tanggapan MySQL: %s',
-	'ts-citegen-base-disabled' => 'Galat: Basis data %s tidak tersedia',
+	'ts-citegen-base-disabled' => 'Galat: Basis data %s tidak tersedia.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
+	'ts-citegen-Output-title' => 'Resultat',
 	'ts-citegen-Template-lang' => 'Sprooch vun der Schabloun',
+	'ts-citegen-Sources-title' => 'Quellen',
 	'ts-citegen-Other-languages' => 'Aner Sproochen',
+	'ts-citegen-Save-it' => 'Aktuell Ufro',
 	'ts-citegen-Errors-title' => 'Feeler',
+	'ts-citegen-Unavailable-SQL' => "Feeler: D'Datebank vum Toolserver ass net disponibel. MySQL hat: %s",
 	'ts-citegen-base-disabled' => 'Feeler: %s Datebank ass net disponibel.',
 );
 
@@ -311,11 +326,44 @@ $messages['mk'] = array(
 	'ts-citegen-Save-it' => 'Тековно барање',
 	'ts-citegen-Errors-title' => 'Грешки',
 	'ts-citegen-Unavailable-SQL' => 'Грешка: Базата на Toolserver е недостапна. MySQL даде: %s',
-	'ts-citegen-base-disabled' => 'Грешка: Базата на %s е недостапна',
+	'ts-citegen-base-disabled' => 'Грешка: Базата на %s е недостапна.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'ts-citegen-Title' => 'Citaatsjabloongenerator',
+	'ts-citegen-Send' => 'Aanmaken',
+	'ts-citegen-Input-title' => 'Invoer',
+	'ts-citegen-Input-text' => 'Dit is een citaatsjabloongenerator. Hiermee kunt u de citaatsjablonen in verschillende taalversies van Wikipedia invullen. Vul de gegevens (%s) in de velden hieronder in en het programma probeert dan de sjablonen in te vullen. Het maakt niet uit in welke velden u de invoergegevens plaatst. Het script probeert automatisch het juiste sjabloon te gebruiken voor de ingevoerde gegevens.',
+	'ts-citegen-Option-append-author-link' => 'De wikiverwijzingen van de auteur aan het sjabloon toevoegen',
+	'ts-citegen-Option-append-newlines' => 'Nieuwe regel beginnen na iedere parameter',
+	'ts-citegen-Option-add-references' => 'Het label <ref> toevoegen om citaatsjablonen',
+	'ts-citegen-Option-add-list' => 'Een wikilijst met citaatsjablonen aanmaken',
+	'ts-citegen-Output-title' => 'Resultaat',
+	'ts-citegen-Output-select-disclaimer' => 'Het kiezen van een sjabloontaal is geen garantie dat een bepaald sjabloon in die taal beschikbaar is. In dit veld worden de beschikbare talen voor alle ondersteunde sjablonen weergegeven; het kan bijvoorbeeld zijn dat Frans wordt weergegeven omdat alleen {{Cite book}} wordt ondersteund.',
+	'ts-citegen-Wrong-input' => '%s: dit lijkt geen geldige invoer.',
+	'ts-citegen-Parsers' => 'Parsers',
+	'ts-citegen-Skins' => 'Uitvoer',
+	'ts-citegen-Skin-skins' => 'Vormgevingen',
+	'ts-citegen-Skin-outputformat' => 'Uitvoerformaat',
+	'ts-citegen-Template-lang' => 'Sjabloontaal',
+	'ts-citegen-Sources-title' => 'Bronnen',
+	'ts-citegen-Sidebar-add-Firefox' => 'Toevoegen aan het menu',
+	'ts-citegen-Sidebar-add-Opera' => 'Toevoegen aan de hotlist',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Toevoegen aan de paginahouder',
+	'ts-citegen-Tools' => 'Hulpmiddelen',
+	'ts-citegen-Other-languages' => 'Andere talen',
+	'ts-citegen-Save-it' => 'Huidige zoekopdracht',
+	'ts-citegen-Errors-title' => 'Fouten',
+	'ts-citegen-Unavailable-SQL' => 'Fout: de Toolserverdatabase is niet beschikbaar. MySQL gaf de volgende foutmelding: %s',
+	'ts-citegen-base-disabled' => 'Fout: de database database %s is niet beschikbaar.',
 );
 
 /** Polish (Polski)
  * @author Holek
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'ts-citegen-Title' => 'Generator szablonów cytowania',
@@ -327,7 +375,7 @@ $messages['pl'] = array(
 	'ts-citegen-Option-add-references' => 'Umieść szablony pomiędzy tagami <ref></ref>',
 	'ts-citegen-Option-add-list' => 'Dodaj wikilistę do szablonów cytowania',
 	'ts-citegen-Output-title' => 'Rezultat',
-	'ts-citegen-Output-select-disclaimer' => 'Wybierając konkretny język skrypt nie gwarantuje, że wszystkie szablony są gotowe do użytku w danym języku. To pole wyświetla listę języków z każdego obsługiwanego szablonu. Na przykład może być w nim dostępny język francuski, ponieważ skrypt obsługuje jedynie francuski odpowiednik {{Cytuj książkę}}.',
+	'ts-citegen-Output-select-disclaimer' => 'Pamiętaj: wybierając konkretny język skrypt nie gwarantuje, że wszystkie szablony są gotowe do użytku w danym języku. To pole wyświetla listę języków z każdego obsługiwanego szablonu. Na przykład może być w nim dostępny język francuski, ponieważ skrypt obsługuje jedynie francuski odpowiednik {{Cytuj książkę}}.',
 	'ts-citegen-Wrong-input' => '%s: nie zidentyfikowano.',
 	'ts-citegen-Parsers' => 'Bazy',
 	'ts-citegen-Skins' => 'Forma prezentacji',
@@ -345,7 +393,7 @@ $messages['pl'] = array(
 	'ts-citegen-Other-languages' => 'W innych językach',
 	'ts-citegen-Save-it' => 'Samowywołanie (zapisz tę stronę)',
 	'ts-citegen-Errors-title' => 'Błędy',
-	'ts-citegen-Unavailable-SQL' => 'Błąd: Dostęp do bazy danych niemożliwy. MySQL zwróciło: %s',
+	'ts-citegen-Unavailable-SQL' => 'Błąd – dostęp do bazy danych serwera narzędziowego jest niemożliwy. MySQL zwróciło %s',
 	'ts-citegen-base-disabled' => 'Błąd: Baza %s jest niedostępna',
 );
 
@@ -354,5 +402,40 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'ts-citegen-Title' => 'Gerador de predefinição de citação',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'ts-citegen-Output-title' => 'ఫలితం',
+	'ts-citegen-Sources-title' => 'మూలాలు',
+	'ts-citegen-Tools' => 'పనిముట్లు',
+	'ts-citegen-Other-languages' => 'ఇతర భాషలు',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'ts-citegen-Option-append-newlines' => 'Xuống dòng sau mỗi tham số',
+	'ts-citegen-Option-add-references' => 'Kẹp các bản mẫu chú thích vào trong thẻ <ref>',
+	'ts-citegen-Output-title' => 'Kết quả',
+	'ts-citegen-Parsers' => 'Bộ phân tích',
+	'ts-citegen-Skin-skins' => 'Hình dạng',
+	'ts-citegen-Skin-outputformat' => 'Định dạng cho ra',
+	'ts-citegen-Template-lang' => 'Ngôn ngữ bản mẫu',
+	'ts-citegen-Sources-title' => 'Nguồn',
+	'ts-citegen-Sources-text' => 'Các nguồn ở dưới được sử dụng.',
+	'ts-citegen-Sidebar-add-Firefox' => 'Thêm vào thanh bên',
+	'ts-citegen-Sidebar-add-Opera' => 'Thêm vào Hotlist',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Thêm vào Page Holder',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Sau khi trang tải xong, mở Page Holder, rồi bấm “Add”, “Favorites”, và “Add to Page Holder Favorites”.',
+	'ts-citegen-Tools' => 'Công cụ',
+	'ts-citegen-Other-languages' => 'Ngôn ngữ khác',
+	'ts-citegen-Save-it' => 'Truy vấn hiện tại',
+	'ts-citegen-Errors-title' => 'Lỗi',
+	'ts-citegen-Unavailable-SQL' => 'Lỗi: Cơ sở dữ liệu Toolserver gặp vấn đề MySQL: %s',
+	'ts-citegen-base-disabled' => 'Lỗi: Cơ sở dữ liệu %s không có sẵn',
 );
 
