@@ -14,6 +14,8 @@ import java.util.Map;
 
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.cursor.DataSet;
+import de.brightbyte.data.measure.ScalarVectorSimilarity;
+import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.rdf.RdfException;
@@ -25,6 +27,7 @@ import de.brightbyte.wikiword.disambig.SlidingCoherenceDisambiguator;
 import de.brightbyte.wikiword.disambig.StoredFeatureFetcher;
 import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
 import de.brightbyte.wikiword.disambig.Term;
+import de.brightbyte.wikiword.disambig.CoherenceDisambiguator.CoherenceDisambiguation;
 import de.brightbyte.wikiword.model.AbstractConceptOutput;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.ConceptOutput;
@@ -47,6 +50,7 @@ import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 
 	protected Disambiguator disambiguator;
+	protected Similarity<LabeledVector<Integer>> proximityMeasure;
 	protected ConceptQuerySpec minimalConceptSpec;
 	protected ConceptQuerySpec resolvedConceptSpec;
 	protected ConceptQuerySpec detailedConceptSpec;
@@ -63,6 +67,8 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		detailedConceptSpec.setIncludeDefinition(true);
 		detailedConceptSpec.setIncludeResources(true);
 		detailedConceptSpec.setIncludeRelations(true);
+		
+		proximityMeasure = ScalarVectorSimilarity.<Integer>getInstance();
 	}
 
 	protected static class ConsoleOutput {
@@ -375,11 +381,11 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 				if (isGlobalThesaurus()) {
 					String lang = params.get(1).toString();
 					String term = params.get(2).toString();
-					listMeaningsGlobal(lang, term, out);
+					listMeaningsGlobal(lang, term, out, minimalConceptSpec);
 				}
 				else {
 					String term = params.get(1).toString();
-					listMeaningsLocal(term, out);
+					listMeaningsLocal(term, out, minimalConceptSpec);
 				}
 			}
 			else if (cmd.equals("s") || cmd.equals("cat") || cmd.equals("show")) {
@@ -408,12 +414,22 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 				int id = DatabaseUtil.asInt(params.get(1));
 					showFeatureVector(id, out);
 			}
+			else if (cmd.equals("r") || cmd.equals("rel") || cmd.equals("relatedness") || cmd.equals("proximity")) {
+				int id1 = DatabaseUtil.asInt(params.get(1));
+				int id2 = DatabaseUtil.asInt(params.get(2));
+					showProximity(id1, id2, out);
+			}
+			else if (cmd.equals("nr") || cmd.equals("nrel") || cmd.equals("naiverelatedness") || cmd.equals("naiveproximity")) {
+				String n1 = params.get(1).toString();
+				String n2 = params.get(2).toString();
+					showProximity(n1, n2, out);
+			}
 			else if (cmd.equals("d") || cmd.equals("dis") || cmd.equals("disambig")  || cmd.equals("disambiguate")) {
 				PhraseNode<? extends TermReference> root = getPhrases(params.get(1).toString());
 				showDisambiguation(root, out);
 			}
 			else if (cmd.equals("ls") || cmd.equals("list")) {
-				listConcepts(out);
+				listConcepts(out, minimalConceptSpec);
 			}
 	}
 
@@ -474,18 +490,18 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		}
 	}
 	
-	public void listConcepts(ConsoleOutput out) throws PersistenceException {
-		DataSet<? extends LocalConcept> meanings = getLocalConceptStore().getAllConcepts(minimalConceptSpec);
+	public void listConcepts(ConsoleOutput out, ConceptQuerySpec spec) throws PersistenceException {
+		DataSet<? extends LocalConcept> meanings = getLocalConceptStore().getAllConcepts(spec);
 		out.writeConcepts(meanings);
 	}		
 	
-	public void listMeaningsLocal(String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<? extends WikiWordConcept> meanings = getLocalConceptStore().getMeanings(term, resolvedConceptSpec);
+	public void listMeaningsLocal(String term, ConsoleOutput out, ConceptQuerySpec spec) throws PersistenceException {
+		DataSet<? extends WikiWordConcept> meanings = getLocalConceptStore().getMeanings(term, spec);
 		out.writeConcepts(meanings);
 	}		
 
-	public void listMeaningsGlobal(String lang, String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<GlobalConcept> meanings = getGlobalConceptStore().getMeanings(lang, term, resolvedConceptSpec);
+	public void listMeaningsGlobal(String lang, String term, ConsoleOutput out, ConceptQuerySpec spec) throws PersistenceException {
+		DataSet<GlobalConcept> meanings = getGlobalConceptStore().getMeanings(lang, term, spec);
 		out.writeConcepts(meanings);
 	}		
 
@@ -533,6 +549,35 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	public void showFeatureVector(int id, ConsoleOutput out) throws PersistenceException {
 		ConceptFeatures conceptFeatures = getProximityStore().getConceptFeatures(id);
 		out.writeFeatureVector(conceptFeatures.getFeatureVector());
+	}		
+
+	public void showProximity(String term1, String term2, ConsoleOutput out) throws PersistenceException {
+		List<Term> terms = new ArrayList<Term>(2);
+		
+		Term t1 = new Term(term1);
+		Term t2 = new Term(term2);
+		terms.add(t1);
+		terms.add(t2);
+		
+		CoherenceDisambiguation<Term, WikiWordConcept> r = 
+			(CoherenceDisambiguation<Term, WikiWordConcept>) getDisambiguator().disambiguate(terms, null);
+
+		WikiWordConcept concept1 = (WikiWordConcept)r.getMeanings().get(t1);
+		WikiWordConcept concept2 = (WikiWordConcept)r.getMeanings().get(t2);
+
+		ConceptFeatures<WikiWordConcept, Integer> f1 = r.getFeatures().get(concept1.getId());
+		ConceptFeatures<WikiWordConcept, Integer> f2 = r.getFeatures().get(concept2.getId());
+		
+		double d = proximityMeasure.similarity(f1.getFeatureVector(), f2.getFeatureVector());
+		out.write("proximity of " + concept1+" and " + concept2 + ": " + d);
+	}		
+
+	public void showProximity(int id1, int id2, ConsoleOutput out) throws PersistenceException {
+		ConceptFeatures f1 = getProximityStore().getConceptFeatures(id1);
+		ConceptFeatures f2 = getProximityStore().getConceptFeatures(id2);
+		
+		double d = proximityMeasure.similarity(f1.getFeatureVector(), f2.getFeatureVector());
+		out.write(d);
 	}		
 
 	public void showDisambiguation(PhraseNode<? extends TermReference> root, ConsoleOutput out) throws PersistenceException {
