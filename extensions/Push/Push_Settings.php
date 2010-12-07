@@ -19,3 +19,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $egPushTargets = array();
+
+$wgGroupPermissions['*']['push'] = true;
+$wgGroupPermissions['sysop']['pushadmin'] = true;

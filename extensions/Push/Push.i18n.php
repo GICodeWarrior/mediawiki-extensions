@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'push-desc' => 'Lightweight extension to push content to other wiki\'s',
 	'push-tab-text' => 'Push',
 	'push-button-text' => 'Push',
+	'push-button-desc' => 'This tab allows you to push the current revision of this page to one or more other wiki\'s.',
 	'push-button-pushing' => 'Pushing',
 	'push-button-completed' => 'Push completed',
 	'push-button-failed' => 'Push failed',

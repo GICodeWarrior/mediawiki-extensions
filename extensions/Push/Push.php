@@ -49,10 +49,7 @@ $wgHooks['SkinTemplateTabs'][] = 'PushTab::displayTab';
 $wgHooks['SkinTemplateNavigation'][] = 'PushTab::displayTab2';
 
 $wgAvailableRights[] = 'push';
-$wgGroupPermissions['*']['push'] = true;
-
 $wgAvailableRights[] = 'pushadmin';
-$wgGroupPermissions['sysop']['pushadmin'] = true;
 
 $egPushJSMessages = array(
 	'push-button-pushing',
@@ -77,8 +74,8 @@ if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
 	);	
 }
 
-function efPushAddJSLocalisation( $parser = false ) {
-	global $egPushJSMessages;
+function efPushAddJSLocalisation() {
+	global $egPushJSMessages, $wgOut;
 	
 	$data = array();
 
@@ -86,14 +83,7 @@ function efPushAddJSLocalisation( $parser = false ) {
 		$data[$msg] = wfMsgNoTrans( $msg );
 	}
 
-	$js = 'var wgPushMessages = ' . json_encode( $data ) . ';';
-	
-	if ( $parser ) {
-		$parser->getOutput()->addHeadItem( Html::inlineScript( $js ) );
-	} else {
-		global $wgOut;
-		$wgOut->addInlineScript( $js );		
-	}	
+	$wgOut->addInlineScript( 'var wgPushMessages = ' . json_encode( $data ) . ';' );		
 }
 
 require_once 'Push_Settings.php';
