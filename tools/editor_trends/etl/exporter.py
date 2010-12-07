@@ -132,19 +132,6 @@ class LongDataset(object):
         fh.close()
 
 
-def retrieve_editor_ids_mongo(dbname, collection):
-    if utils.check_file_exists(settings.binary_location,
-                               dbname + 'editors.bin'):
-        ids = utils.load_object(settings.binary_location,
-                               dbname + 'editors.bin')
-    else:
-        mongo = db.init_mongo_db(dbname)
-        editors = mongo[collection]
-        ids = editors.distinct('editor')
-        utils.store_object(ids, settings.binary_location, dbname + 'editors.bin')
-    return ids
-
-
 def expand_edits(edits):
     data = []
     for edit in edits:
@@ -241,7 +228,7 @@ def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
                     window_start = datetime.datetime(y, 12, 31) - relativedelta(months=period)
                     if window_start < datetime.datetime(2001, 1, 1):
                         window_start = datetime.datetime(2001, 1, 1)
-                    if date_falls_in_window(window_start, window_end, first_edit, last_edit):
+                    if date_falls_in_window(window_start, window_end, first_edit):
                         edits.append(period)
                 if edits != []:
                     p = min(edits)
@@ -254,8 +241,8 @@ def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
     cohort_charts.prepare_cohort_dataset(dbname)
 
 
-def date_falls_in_window(window_start, window_end, first_edit, last_edit):
-    if first_edit >= window_start and first_edit <= window_end:
+def date_falls_in_window(window_start, window_end, first_edit):
+    if first_edit >= window_start and  first_edit <= window_end:
         return True
     else:
         return False
@@ -297,7 +284,7 @@ def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):
 def dataset_launcher(dbname, collection, target):
     if type(target) == type('str'):
         target = globals()[target]
-    editors = retrieve_editor_ids_mongo(dbname, collection)
+    editors = db.retrieve_distinct_keys(dbname, collection, 'editor')
     tasks = multiprocessing.JoinableQueue()
     #consumers = [multiprocessing.Process(target=target, args=(tasks, dbname, collection)) for i in xrange(settings.number_of_processes)]
     for editor in editors:

@@ -365,8 +365,6 @@ def retrieve_file_list(location, extension, mask=None):
     all_files = os.listdir(location)
     files = []
     for file in all_files:
-        if file == 'merged_1.txt':
-            print 'debug'
         file = file.split('.')
         if len(file) == 1:
             continue

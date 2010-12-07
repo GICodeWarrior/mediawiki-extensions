@@ -68,7 +68,7 @@ class XMLFileConsumer(models.BaseConsumer):
             if new_xmlfile == None:
                 print 'Swallowed a poison pill'
                 break
-            print 'Queue is %s files long...' % self.task_queue.qsize()
+            print 'Queue is %s files long...' % (self.task_queue.qsize() - settings.number_of_processes)
             new_xmlfile()
 
 
@@ -111,6 +111,10 @@ class XMLFile(object):
                 raw_data = ''.join(raw_data)
                 xml_buffer.write(raw_data)
                 elem = cElementTree.XML(xml_buffer.getvalue())
+            except Exception, error:
+                print error
+                continue
+            try:
                 bots = self.target(elem, fh=self.fh, bots=self.bots)
             except SyntaxError, error:
                 print error
@@ -127,7 +131,6 @@ class XMLFile(object):
                 print self.file, error
                 print raw_data[:12]
                 print 'String was supposed to be %s characters long' % sum([len(raw) for raw in raw_data])
-
         else:
             self.fh.close()
 

@@ -140,8 +140,8 @@ def sort_edits(edits):
     return sorted(edits, key=itemgetter('date'))
 
 
-def transfrom_editors_multi_launcher(dbname, collection):
-    ids = exporter.retrieve_editor_ids_mongo(dbname, collection)
+def transform_editors_multi_launcher(dbname, collection):
+    ids = db.retrieve_distinct_keys(dbname, collection, 'editor')
     kwargs = {'definition': 'traditional',
               'pbar': True,
               }
@@ -173,7 +173,7 @@ def setup_database(dbname, collection):
 
 
 def transform_editors_single_launcher(dbname, collection):
-    ids = exporter.retrieve_editor_ids_mongo(dbname, collection)
+    ids = db.retrieve_distinct_keys(dbname, collection, 'editor')
     input_db, output_db = setup_database(dbname, collection)
     for x, id in enumerate(ids):
         print '%s editors to go...' % (len(ids) - x)
@@ -183,4 +183,4 @@ def transform_editors_single_launcher(dbname, collection):
 
 if __name__ == '__main__':
     transform_editors_single_launcher('enwiki', 'editors')
-    #transfrom_editors_multi_launcher('enwiki', 'editors')
+    #transform_editors_multi_launcher('enwiki', 'editors')

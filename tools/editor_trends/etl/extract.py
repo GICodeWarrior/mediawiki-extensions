@@ -107,8 +107,8 @@ def extract_contributor_id(contributor, **kwargs):
     Currently, we are only interested in registered contributors, hence we
     ignore anonymous editors. 
     '''
-    #if contributor.get('deleted'):
-    #    return None  # ASK: Not sure if this is the best way to code deleted contributors.
+    if contributor.get('deleted'):
+        return None  # ASK: Not sure if this is the best way to code deleted contributors.
     for elem in contributor:
         if elem.tag == 'id' and elem.text != None:
             return {'id':elem.text}
@@ -136,7 +136,6 @@ def output_editor_information(elem, fh, **kwargs):
             'timestamp': {'date': xml.extract_text},
             }
     vars = {}
-    #counter = kwargs.pop('counter')
     headers = ['id', 'date', 'article', 'username']
     revisions = elem.findall('revision')
     for revision in revisions:
@@ -149,10 +148,6 @@ def output_editor_information(elem, fh, **kwargs):
                 if type(value) == type({}):
                     for kw in value:
                         vars[kw] = value[kw]
-                    #if vars['username'] not in counter:
-                    #    counter['username'] = c
-                    #    c += 1
-                    #vars['id'] = counter[vars['username']]
                 else:
                     vars[var] = value
 
@@ -164,7 +159,7 @@ def output_editor_information(elem, fh, **kwargs):
                 data.append(vars[head])
             utils.write_list_to_csv(data, fh)
         vars = {}
-    #return counter, c
+
 
 def run_parse_editors(location, **kwargs):
     bot_ids = bots.retrieve_bots()
@@ -172,7 +167,6 @@ def run_parse_editors(location, **kwargs):
     output = os.path.join(location, 'txt')
     settings.verify_environment([input, output])
     files = utils.retrieve_file_list(input, 'xml')
-
 
     tasks = multiprocessing.JoinableQueue()
     consumers = [models.XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]

@@ -84,13 +84,13 @@ class EditorCache(object):
                 self.editors[key]['edits'] = {}
                 self.add_years(key)
                 self.number_editors += 1
-                self.editors[key]['username'] = value['username']
-                
+                self.editors[key]['username'] = value.pop('username')
+
             id = str(self.editors[key]['obs'])
             year = str(value['date'].year)
             self.editors[key]['edits'][year].append(value)
             self.editors[key]['obs'] += 1
-            
+
 
             #if self.editors[key]['obs'] == self.treshold:
             #    self.treshold_editors.add(key)

@@ -173,7 +173,6 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
     input_xml = os.path.join(location, 'chunks')
     input_txt = os.path.join(location, 'txt')
     files = utils.retrieve_file_list(input_txt, 'txt', mask=None)
-    files = files[400:405]
     input_queue = pc.load_queue(files, poison_pill=True)
     tasks = multiprocessing.JoinableQueue()
     mgr = multiprocessing.Manager()

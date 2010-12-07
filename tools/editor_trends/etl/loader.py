@@ -30,9 +30,6 @@ from database import cache
 from utils import utils
 from utils import sort
 
-#import process_constructor as pc
-
-
 
 def store_editors(input, dbname, collection):
     filename = utils.retrieve_file_list(input, 'txt', mask=None)[0]
@@ -49,9 +46,9 @@ def store_editors(input, dbname, collection):
     for line in sort.readline(fh):
         if len(line) == 0:
             continue
-        contributor = int(line[0])
+        contributor = line[0]
         if prev_contributor != contributor:
-            if edits >= 10:
+            if edits > 9:
                 result = editor_cache.add(prev_contributor, 'NEXT')
                 if result:
                     editors.add(prev_contributor)
@@ -65,12 +62,10 @@ def store_editors(input, dbname, collection):
         date = utils.convert_timestamp_to_datetime_utc(line[1]) #+ datetime.timedelta(days=1)
         article_id = int(line[2])
         username = line[3].encode(settings.encoding)
-        #print line[3]
         value = {'date': date, 'article': article_id, 'username': username}
         editor_cache.add(contributor, value)
         prev_contributor = contributor
     fh.close()
-    utils.store_object(editors, settings.binary_location, 'editors')
 
 
 def mergesort_external_launcher(input, output):
@@ -103,16 +98,13 @@ def mergesort_external_launcher(input, output):
 #        utils.delete_file(output , r)
 
 
-
-
 def mergesort_feeder(tasks, input, output):
     while True:
         try:
             file = tasks.get(block=False)
-            print file, tasks.qsize()
             tasks.task_done()
             if file == None:
-                print 'breaking'
+                print 'Swallowed a poison pill'
                 break
             fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
             data = fh.readlines()
@@ -121,7 +113,7 @@ def mergesort_feeder(tasks, input, output):
             data = [d.split('\t') for d in data]
             sorted_data = sort.mergesort(data)
             sort.write_sorted_file(sorted_data, file, output)
-
+            print file, tasks.qsize()
         except Empty:
             break
 
@@ -157,9 +149,9 @@ def debug_mergesort_feeder(input, output):
 if __name__ == '__main__':
     input = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
     intermediate_output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
+    output = os.path.join(settings.input_location, 'en', 'wiki', 'dbready')
     dbname = 'enwiki'
     collection = 'editors'
-    mergesort_launcher(input, intermediate_output)
-    output = os.path.join(settings.input_location, 'en', 'wiki', 'dbready')
-    mergesort_external_launcher(intermediate_output, output)
+    #mergesort_launcher(input, intermediate_output)
+    #mergesort_external_launcher(intermediate_output, output)
     store_editors(output, dbname, collection)

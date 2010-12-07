@@ -176,7 +176,7 @@ def show_settings(args, logger, **kwargs):
 
 
 def dump_downloader_launcher(args, logger, **kwargs):
-    print 'dump downloader'
+    print 'Start downloading'
     timer = Timer()
     write_message_to_log(logger, args, **kwargs)
     filename = kwargs.get('filename')
@@ -192,7 +192,7 @@ def dump_downloader_launcher(args, logger, **kwargs):
 
 
 def chunker_launcher(args, logger, **kwargs):
-    print 'chunker_launcher'
+    print 'Start splitting'
     timer = Timer()
     write_message_to_log(logger, args, **kwargs)
     filename = kwargs.pop('filename')
@@ -254,10 +254,13 @@ def store_launcher(args, logger, **kwargs):
     timer = Timer()
     location = kwargs.pop('location')
     input = os.path.join(location, 'dbready')
-    dbname = kwargs.pop('full_project')
+    project = kwargs.pop('full_project')
     collection = kwargs.pop('collection')
-    write_message_to_log(logger, args, verb='Storing', location=location, input=input, dbname=dbname, collection=collection)
-    loader.store_editors(input, dbname, collection)
+
+    db.cleanup_database(project, logger)
+
+    write_message_to_log(logger, args, verb='Storing', location=location, input=input, project=project, collection=collection)
+    loader.store_editors(input, project, collection)
     timer.elapsed()
 
 
@@ -266,6 +269,7 @@ def transformer_launcher(args, logger, **kwargs):
     timer = Timer()
     project = kwargs.pop('full_project')
     collection = kwargs.pop('collection')
+    db.cleanup_database(project, logger, 'dataset')
     write_message_to_log(logger, args, verb='Transforming', project=project, collection=collection)
     transformer.transform_editors_single_launcher(project, collection)
     timer.elapsed()
@@ -284,24 +288,36 @@ def exporter_launcher(args, logger, **kwargs):
     timer.elapsed()
 
 
+def cleanup(logger, args, **kwargs):
+    dirs = kwargs.get('directories')[1:]
+    for dir in dirs:
+        write_message_to_log(logger, args, verb='Deleting', dir=dir)
+        utils.delete_file(dir, '', directory=True)
+
+    write_message_to_log(logger, args, verb='Creating', dir=dirs)
+    settings.verify_environment(dirs)
+
+    file = full_project + '_editors.bin'
+    write_message_to_log(logger, args, verb='Deleting', file=file)
+    utils.delete_file(settings.binary_location, file)
+
 def all_launcher(args, logger, **kwargs):
     print 'all_launcher'
     timer = Timer()
     full_project = kwargs.get('full_project', None)
     message = 'Start of building %s dataset.' % full_project
 
-    db.cleanup_database(full_project, logger)
+
     ignore = get_value(args, 'except')
     clean = get_value(args, 'new')
     format = get_value(args, 'format')
     write_message_to_log(logger, args, message=message, full_project=full_project, ignore=ignore, clean=clean)
     if clean:
-        dirs = kwargs.get('directories')[1:]
-        for dir in dirs:
-            write_message_to_log(logger, args, verb='Deleting', dir=dir)
-            utils.delete_file(dir, '', directory=True)
+        cleanup(logger, args, **kwargs)
+
     if format != 'xml':
         ignore = ignore + ',extract'
+
     functions = ordered_dict.OrderedDict(((dump_downloader_launcher, 'download'),
                                           (chunker_launcher, 'split'),
                                           (extract_launcher, 'extract'),

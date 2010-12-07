@@ -17,13 +17,14 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
-#import sqlite3 as sqlite
 from pymongo import Connection
+from bson.code import Code
 
+import configuration
+settings = configuration.Settings()
 
-#import configuration
-#settings = configuration.Settings()
-#from database import db_settings
+from utils import utils
+
 
 
 def init_mongo_db(dbname):
@@ -42,12 +43,13 @@ def get_collections(dbname):
     return db.collection_names()
 
 
-def cleanup_database(dbname, logger):
+def cleanup_database(dbname, logger, endswith=None):
     coll = get_collections(dbname)
     for c in coll:
         if not c.startswith('system'):
-            drop_collection(dbname, c)
-            logger.debug('Deleting collection %s from database %s.' % (c, dbname))
+            if endswith != None and c.endswith(endswith):
+                drop_collection(dbname, c)
+                logger.debug('Deleting collection %s from database %s.' % (c, dbname))
 
 
 def remove_documents_from_mongo_db(collection, ids):
@@ -67,6 +69,39 @@ def add_index_to_collection(db, collection, key):
     mongo.collection.ensure_index(key)
 
 
+def retrieve_distinct_keys(dbname, collection, field):
+    #mongo = init_mongo_db(dbname)
+    #editors = mongo[collection]
+    #ids = retrieve_distinct_keys_mapreduce(editors, field)
+
+    if utils.check_file_exists(settings.binary_location, '%s_%s.bin' % (dbname, field)):
+        ids = utils.load_object(settings.binary_location, '%s_%s.bin' % (dbname, field))
+    else:
+        mongo = init_mongo_db(dbname)
+        editors = mongo[collection]
+        #index_size = mongo.stats()
+        if editors.count () < 200000:   #this is a bit arbitrary, should check if index > 4Mb.
+            ids = editors.distinct(field)
+        else:
+            #params = {}
+            #params['size'] = 'size'
+            #size = editors.find_one({'size': 1})
+            ids = retrieve_distinct_keys_mapreduce(editors, field)
+        utils.store_object(ids, settings.binary_location, '%s_%s.bin' % (dbname, field))
+    return ids
+
+
+def retrieve_distinct_keys_mapreduce(collection, field):
+    emit = 'function () { emit(this.%s, 1)};' % field
+    map = Code(emit)
+
+    reduce = Code("function()")
+
+    ids = []
+    cursor = collection.map_reduce(map, reduce)
+    for c in cursor.find():
+        ids.append(int(c['_id']))
+    return ids
 #def init_database(db=None):
 #    '''
 #    This function initializes the connection with a sqlite db.
@@ -95,11 +130,8 @@ def add_index_to_collection(db, collection, key):
 #        cursor.execute('CREATE TABLE IF NOT EXISTS ? ?' % (table, vars))
 #
 #
-#def debug():
-#    connection = init_database()
-#    cursor = connection.cursor()
-#    create_tables(cursor, settings.TABLES)
-
+def debug():
+    retrieve_distinct_keys('enwiki', 'editors_dataset', 'editor')
 
 if __name__ == '__main__':
     debug()
