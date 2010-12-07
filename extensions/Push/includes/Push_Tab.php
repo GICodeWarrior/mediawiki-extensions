@@ -42,10 +42,13 @@ final class PushTab {
 	 * MW 1.16 - will possibly be called for additional skins later
 	 */
 	public static function displayTab2( $obj, &$links ) {
+		global $egPushShowTab;
+		
 		// The old '$content_actions' array is thankfully just a sub-array of this one
-		$views_links = $links['views'];
+		$views_links = $links[$egPushShowTab ? 'views' : 'actions'];
 		self::displayTab( $obj, $views_links );
-		$links['views'] = $views_links;
+		$links[$egPushShowTab ? 'views' : 'actions'] = $views_links;
+		
 		return true;
 	}
 
