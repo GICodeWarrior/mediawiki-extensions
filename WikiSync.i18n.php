@@ -153,6 +153,25 @@ $messages['be-tarask'] = array(
 	'wikisync_api_result_Blocked' => 'Удзельнік заблякаваны',
 	'wikisync_api_result_mustbeposted' => 'Модуль аўтарызацыі патрабуе выкарыстаньня POST-запытаў',
 	'wikisync_api_result_NeedToken' => 'Вы не падалі ключ уваходу ў сыстэму ці закладку (cookie) сэсіі. Запытайце зноў з ключом і закладкай, якія пададзеныя у гэтым адказе',
+	'wikisync_api_result_no_import_rights' => 'Гэтаму ўдзельніку не дазволена імпартаваць копіі базы зьвестак ў фармаце XML',
+	'wikisync_api_result_Success' => 'Пасьпяховы ўваход ў аддалены вікі-сайт',
+	'wikisync_js_last_op_error' => 'Апошняя апэрацыя вярнула памылку.
+
+Код: $1
+
+Паведамленьне: $2
+
+Націсьніце [Добра] каб паўтарыць апошнюю апэрацыю',
+	'wikisync_js_synchronization_confirmation' => 'Вы ўпэўнены, што жадаеце сынхранізаваць
+
+з $1
+	
+да $2
+	
+пачынаючы з вэрсіі $3?',
+	'wikisync_js_synchronization_success' => 'Сынхранізацыя пасьпяхова скончаная',
+	'wikisync_js_already_synchronized' => 'Крынічная і мэтавая вікі выглядаюць ужо сынхранізаванымі',
+	'wikisync_js_sync_to_itself' => 'Немагчыма сынхранізаваць вікі з самой сябе',
 );
 
 /** Breton (Brezhoneg)
