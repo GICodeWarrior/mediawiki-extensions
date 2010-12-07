@@ -66,7 +66,8 @@ $wgResourceModules['ext.push.tab'] = $moduleTemplate + array(
 	'messages' => array(
 		'push-button-pushing',
 		'push-button-completed',
-		'push-button-failed'
+		'push-button-failed',
+		'push-import-revision-message',
 	)
 );
 
