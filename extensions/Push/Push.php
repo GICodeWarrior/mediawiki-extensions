@@ -54,27 +54,45 @@ $wgGroupPermissions['*']['push'] = true;
 $wgAvailableRights[] = 'pushadmin';
 $wgGroupPermissions['sysop']['pushadmin'] = true;
 
-$moduleTemplate = array(
-	'localBasePath' => dirname( __FILE__ ),
-	'remoteBasePath' => $egPushScriptPath,
-	'group' => 'ext.push'
+$egPushJSMessages = array(
+	'push-button-pushing',
+	'push-button-completed',
+	'push-button-failed',
+	'push-import-revision-message',
 );
 
-$wgResourceModules['ext.push.tab'] = $moduleTemplate + array(
-	'scripts' => 'includes/ext.push.tab.js',
-	'dependencies' => array(),
-	'messages' => array(
-		'push-button-pushing',
-		'push-button-completed',
-		'push-button-failed',
-		'push-import-revision-message',
-	)
-);
+// For backward compatibility with MW < 1.17.
+if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
+	$moduleTemplate = array(
+		'localBasePath' => dirname( __FILE__ ),
+		'remoteBasePath' => $egPushScriptPath,
+		'group' => 'ext.push'
+	);
+	
+	$wgResourceModules['ext.push.tab'] = $moduleTemplate + array(
+		'scripts' => 'includes/ext.push.tab.js',
+		'dependencies' => array(),
+		'messages' => $egPushJSMessages
+	);	
+}
 
-// This function has been deprecated in 1.16, but needed for earlier versions.
-// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
-if ( function_exists( 'wfLoadExtensionMessages' ) ) {
-	wfLoadExtensionMessages( 'Push' );
+function efPushAddJSLocalisation( $parser = false ) {
+	global $egPushJSMessages;
+	
+	$data = array();
+
+	foreach ( $egPushJSMessages as $msg ) {
+		$data[$msg] = wfMsgNoTrans( $msg );
+	}
+
+	$js = 'var wgPushMessages = ' . json_encode( $data ) . ';';
+	
+	if ( $parser ) {
+		$parser->getOutput()->addHeadItem( Html::inlineScript( $js ) );
+	} else {
+		global $wgOut;
+		$wgOut->addInlineScript( $js );		
+	}	
 }
 
 require_once 'Push_Settings.php';
