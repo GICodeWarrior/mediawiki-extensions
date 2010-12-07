@@ -5,9 +5,17 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-$( document ).ready( function() {
+(function($) { $( document ).ready( function() {
 	
-	// TODO: message b/c
+	// Compatibility with pre-RL code.
+	// Messages will have been loaded into wgPushMessages.
+	if ( typeof mediaWiki === 'undefined' ) {
+		mediaWiki = new Object();
+		
+		mediaWiki.msg = function( message ) {
+			return window.wgPushMessages[message];
+		}
+	}
 	
 	$('.push-button').click(function() {
 		this.disabled = true;
@@ -100,4 +108,4 @@ $( document ).ready( function() {
 		sender.innerHTML = mediaWiki.msg( 'push-button-failed' );		
 	}
 	
-} );
+} ); })(jQuery);
