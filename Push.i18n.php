@@ -33,6 +33,7 @@ $messages['en'] = array(
 	'push-tab-push-to' => 'Push to $1',
 	'push-remote-pages' => 'Remote pages',
 	'push-remote-page-link' => '$1 on $2',
+	'push-remote-page-link-full' => 'View $1 on $2',
 	'push-targets-total' => 'There are $1 targets in total.', // $1 will always be plural
 	'push-button-all' => 'Push all',
 	
