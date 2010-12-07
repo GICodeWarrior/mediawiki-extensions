@@ -41,15 +41,15 @@ vicce006.net.gov.bc.ca
 vicce007.net.gov.bc.ca
 vicce008.net.gov.bc.ca
 vicce009.net.gov.bc.ca
-vance005.net.gov.bc.ca
-vance006.net.gov.bc.ca
-vance007.net.gov.bc.ca
-vance008.net.gov.bc.ca
-vance009.net.gov.bc.ca
-vance010.net.gov.bc.ca
-vance011.net.gov.bc.ca
-vance012.net.gov.bc.ca
-vance013.net.gov.bc.ca
+vicce010.net.gov.bc.ca
+vicce011.net.gov.bc.ca
+vicce012.net.gov.bc.ca
+vicce013.net.gov.bc.ca
+vicce014.net.gov.bc.ca
+vance001.net.gov.bc.ca
+vance002.net.gov.bc.ca
+vance003.net.gov.bc.ca
+vance004.net.gov.bc.ca
 
 
 # NTL
