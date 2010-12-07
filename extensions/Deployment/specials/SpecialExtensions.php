@@ -1,24 +1,14 @@
 <?php
 
 /**
- * File holding the SpecialExtensions class.
- *
- * @file SpecialExtensions.php
- * @ingroup Deployment
- * @ingroup SpecialPage
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * A special page that allows browing and searching through installed extensions.
  * Based on Special:Version.
  * 
  * @since 0.1
+ * 
+ * @file SpecialExtensions.php
+ * @ingroup Deployment
+ * @ingroup SpecialPage
  * 
  * @author Jeroen De Dauw
  */

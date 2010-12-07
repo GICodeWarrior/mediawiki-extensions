@@ -1,21 +1,11 @@
 <?php
 
 /**
- * File holding the SpecialDashboard class.
- *
+ * A special page that serves as dashboard for administrative tasks related to deployment.
+ * 
  * @file SpecialDashboard.php
  * @ingroup Deployment
  * @ingroup SpecialPage
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * A special page that serves as dashboard for administrative tasks related to deployment.
  * 
  * @author Jeroen De Dauw
  */
