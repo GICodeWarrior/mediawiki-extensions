@@ -156,10 +156,12 @@ Provjerite Vaš unos.',
 );
 
 /** Catalan (Català)
+ * @author El libre
  * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
+	'ajaxlogin-desc' => 'Caixa dinàmica que permet als usuaris/es entrar i recordar contrasenya',
 	'ajaxLogin2' => "N'esteu segurs?
 Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 	'ajaxlogin-create' => 'Crea un compte',
@@ -469,10 +471,19 @@ $messages['he'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Bhawani Gautam Rhk
  * @author Rsrikanth05
  */
 $messages['hi'] = array(
+	'ajaxlogin-desc' => 'गतिशील बॉक्स जो उपयोगकर्ताओं को प्रवेश करने के लिए और पासवर्ड याद दिलाने की अनुमति देता है',
+	'ajaxLogin1' => 'लॉग इन पूरा करने के लिए, आपको एक नया पासवर्ड दर्ज करना होगा।
+ऐसा करने से आप इस सम्पादित पृष्ठ से दूर जायेंगे और आपका वर्तमान संपादन नष्ट हो जायेगा।',
+	'ajaxLogin2' => 'क्या आप निश्चय कर चुके?
+यदि आप इस पृष्ठ को छोड़ देंगे तो इस पेज पर आपके द्वारा किये गए परिवर्तन खो सकते हैं।',
 	'ajaxlogin-create' => ' नया खाता बनाए',
+	'al-nosuchuser' => '"$1" नाम से कोई उपयोगकर्ता नही है।
+उपयोगकर्ता नाम वर्ण संवेदी होते हैं।
+अपने वर्तनी की जाँच करें।',
 );
 
 /** Hiligaynon (Ilonggo)
@@ -737,6 +748,21 @@ Perubahan yang anda lakukan di laman ini mungkin hilang sekiranya anda tinggalka
  */
 $messages['myv'] = array(
 	'ajaxlogin-create' => 'Шкамс-теемс совамотарка',
+);
+
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam Rhk
+ */
+$messages['ne'] = array(
+	'ajaxlogin-desc' => 'गतिशील बाकस जो प्रयोगकर्ताहरुलाई प्रवेश गर्न र पासवर्डको सम्झना गराउन अनुमति दिन्छ',
+	'ajaxLogin1' => 'तपाईंको प्रवेश (लग इन) पूर्ण गर्न, तपाईंले एक नयाँ पासवर्ड दिनुपर्ने भएकोछ।
+यसो गर्दा तपाईं यो सम्पादन पृष्ठबाट टाड़ा पर्नुहुनेछ र अहिले गरेको सम्पादन व्यर्थ जानेछ।',
+	'ajaxLogin2' => 'के तपाईंले निश्चय गर्नुभएकै हो?
+यो पृष्ठलाई अहिले छोड़दा तपाईंले परिवर्तन गरेको कुरा नष्ट हुनेछ।',
+	'ajaxlogin-create' => 'खाता खोल्ने',
+	'al-nosuchuser' => '"$1" भएको प्रयोगकर्ता छैन।
+नाम वर्ण सम्वेदनशील हुन्छ।
+तपाईंको नामको हिज्जे हेर्नुहोस्।',
 );
 
 /** Dutch (Nederlands)
