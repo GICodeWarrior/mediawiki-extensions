@@ -186,6 +186,8 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'article-comments-name-string' => 'Име',
+	'article-comments-url-field' => 'Уеб сайт:',
+	'article-comments-url-string' => 'Адрес',
 	'article-comments-comment-string' => 'Коментар',
 	'article-comments-comment-field' => 'Коментар:',
 	'article-comments-submit-button' => 'Изпращане',
