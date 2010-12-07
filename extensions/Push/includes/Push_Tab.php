@@ -17,8 +17,8 @@ final class PushTab {
 	 * Adds an "action" (i.e., a tab) to allow pushing the current article.
 	 */
 	public static function displayTab( $obj, &$content_actions ) {
-		// Make sure that this is not a special page.
-		if ( isset( $obj->mTitle ) && $obj->mTitle->getNamespace() != NS_SPECIAL ) {
+		// Make sure that this is not a special page and that the page exists.
+		if ( isset( $obj->mTitle ) && $obj->mTitle->getNamespace() != NS_SPECIAL && $obj->mTitle->exists() ) {
 			global $wgRequest;
 			
 			$content_actions['push'] = array(
