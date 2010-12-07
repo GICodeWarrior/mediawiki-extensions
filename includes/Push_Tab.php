@@ -62,19 +62,48 @@ final class PushTab {
 	}
 	
 	/**
+	 * Loads the needed JavaScript.
+	 * Takes care of non-RL compatibility.
+	 * 
+	 * @since 0.1
+	 */
+	protected static function loadJs() {
+		global $wgOut;
+		
+		// For backward compatibility with MW < 1.17.
+		if ( is_callable( array( $wgOut, 'addModules' ) ) ) {
+			$wgOut->addModules( 'ext.push.tab' );
+		}
+		else {
+			global $egPushScriptPath;
+			
+			efPushAddJSLocalisation();
+			
+			// TODO: jquery
+			
+			$wgOut->addHeadItem(
+				'ext.push.tab',
+				Html::linkedScript( $egPushScriptPath . '/includes/ext.push.tab.js' )
+			);
+		}		
+	}
+	
+	/**
 	 * The function called if we're in index.php (as opposed to one of the
 	 * special pages)
+	 * 
+	 * @since 0.1
 	 */
 	public static function displayPushPage( Article $article ) {
 		global $wgOut, $wgUser, $wgTitle;
 		
 		$wgOut->setPageTitle( wfMsgExt( 'push-tab-title', 'parsemag', $article->getTitle()->getText() ) );
 		
+		self::loadJs();
+		
 		$wgOut->addHTML(
 			Html::hidden( 'pageName', $wgTitle->getFullText(), array( 'id' => 'pageName' ) )
 		);
-		
-		$wgOut->addModules( 'ext.push.tab' );
 		
 		if ( $wgUser->isAllowed( 'push' ) ) {
 			self::displayPushList();
@@ -88,6 +117,11 @@ final class PushTab {
 		return false;
 	}
 	
+	/**
+	 * Displays a list with all targets to which can be pushed.
+	 * 
+	 * @since 0.1
+	 */
 	protected static function displayPushList() {
 		global $wgOut, $egPushTargets;
 		
@@ -120,6 +154,16 @@ final class PushTab {
 		);		
 	}
 	
+	/**
+	 * Returns the HTML for a single push target.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $name
+	 * @param string $url
+	 * 
+	 * @return string
+	 */
 	protected static function getPushItem( $name, $url ) {
 		return Html::rawElement(
 			'tr',
@@ -146,6 +190,11 @@ final class PushTab {
 		// TODO: add edit and delete stuff
 	}
 	
+	/**
+	 * Displays a form via which a new psuh item can be added.
+	 * 
+	 * @since 0.1
+	 */
 	protected static function displayNewPushItem() {
 		global $wgOut;
 		

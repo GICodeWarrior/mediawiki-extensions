@@ -7,6 +7,8 @@
 
 $( document ).ready( function() {
 	
+	// TODO: message b/c
+	
 	$('.push-button').click(function() {
 		this.disabled = true;
 		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
