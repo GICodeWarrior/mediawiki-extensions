@@ -24,5 +24,6 @@ $messages['en'] = array(
 	'push-tab-title' => 'Pushing $1',
 	'push-targets' => 'Push targets',
 	'push-add-target' => 'Add target',
-	'push-import-revision-message' => 'Import from $1 by $2. Last comment: $3',
+	'push-import-revision-message' => 'Import from $1 by $2.$3', // $3 is 'push-import-revision-comment' or empty. 1360!
+	'push-import-revision-comment' => ' Last comment: $1',
 );

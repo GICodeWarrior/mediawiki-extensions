@@ -95,14 +95,15 @@ final class PushTab {
 	 * @since 0.1
 	 */
 	public static function displayPushPage( Article $article ) {
-		global $wgOut, $wgUser, $wgTitle;
+		global $wgOut, $wgUser, $wgTitle, $wgSitename;
 		
 		$wgOut->setPageTitle( wfMsgExt( 'push-tab-title', 'parsemag', $article->getTitle()->getText() ) );
 		
 		self::loadJs();
 		
 		$wgOut->addHTML(
-			Html::hidden( 'pageName', $wgTitle->getFullText(), array( 'id' => 'pageName' ) )
+			Html::hidden( 'pageName', $wgTitle->getFullText(), array( 'id' => 'pageName' ) ) .
+			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) )
 		);
 		
 		if ( $wgUser->isAllowed( 'push' ) ) {
@@ -180,7 +181,7 @@ final class PushTab {
 					'button',
 					array(
 						'class' => 'push-button',
-						'pushtarget' => $url
+						'pushtarget' => $url,
 					),
 					wfMsg( 'push-button-text' )
 				)

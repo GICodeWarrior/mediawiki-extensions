@@ -21,7 +21,10 @@
 		this.disabled = true;
 		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
 		
-		getLocalArtcileAndContinue( this, $(this).attr( 'pushtarget' ) );
+		getLocalArtcileAndContinue(
+			this,
+			$(this).attr( 'pushtarget' )
+		);
 	});
 	
 	function getLocalArtcileAndContinue( sender, targetUrl ) {
@@ -78,9 +81,16 @@
 	
 	function doPush( sender, targetUrl, page, token ) {
 		var summary = mediaWiki.msg( 'push-import-revision-message' );
-		summary = summary.replace( '$1', 'Some wiki' ); // TODO
+		summary = summary.replace( '$1', $('#siteName').attr('value') );
 		summary = summary.replace( '$2', page.revisions[0].user );
-		summary = summary.replace( '$3', page.revisions[0].comment );
+		
+		var comment = '';
+		if ( page.revisions[0].comment ) {
+			comment = mediaWiki.msg( 'push-import-revision-comment' );
+			comment = comment.replace( '$1', page.revisions[0].comment );
+		}
+		
+		summary = summary.replace( '$3', comment );
 		
 		$.post( 
 			targetUrl + '/api.php',
