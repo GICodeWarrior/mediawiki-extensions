@@ -46,13 +46,67 @@
 				else {
 					sender.innerHTML = sender.innerHTML + '.';
 					for (first in data.query.pages) break;
-					getTokenAndContinue( sender, targetUrl, data.query.pages[first] );
+					doLoginAndContinue( sender, targetUrl, data.query.pages[first] );
 				}
 			}
 		); 		
 	}
 	
-	function getTokenAndContinue( sender, targetUrl, page ) {
+	function doLoginAndContinue( sender, targetUrl, page ) {
+		if ( false ) { // TODO
+			var name = 'WikiSysop'; // TODO
+			var password = 'inurwiki'; // TODO			
+			
+			$.post( 
+				targetUrl + '/api.php',
+				{
+					'action': 'login',
+					'format': 'json',
+					'lgname': name,
+					'lgpassword': password,
+				},
+				function( data ) {
+					if ( data.error ) {
+						handleError( sender, targetUrl, data.error );
+					}
+					else {
+						if ( data.login.result == "NeedToken" ) {
+							confirmLoginTokenAndContinue( sender, targetUrl, page, data.login.token, name, password );
+						}
+						else {
+							getEditTokenAndContinue( sender, targetUrl, page );
+						}
+					}
+				}
+			);				
+		}
+		else {
+			getEditTokenAndContinue( sender, targetUrl, page );
+		}
+	}
+	
+	function confirmLoginTokenAndContinue( sender, targetUrl, page, token, name, password ) {
+		$.post( 
+			targetUrl + '/api.php',
+			{
+				'action': 'login',
+				'format': 'json',
+				'lgname': name,
+				'lgpassword': password,
+				'lgtoken': token 
+			},
+			function( data ) {
+				if ( data.error ) {
+					handleError( sender, targetUrl, data.error );
+				}
+				else {
+					getEditTokenAndContinue( sender, targetUrl, page );
+				}
+			}
+		);		
+	}
+	
+	function getEditTokenAndContinue( sender, targetUrl, page ) {
 		$.getJSON(
 			targetUrl + '/api.php',
 			{
@@ -73,11 +127,7 @@
 				}
 			}
 		); 
-	}
-	
-	function doLoginAndContinue() {
-		
-	}
+	}	
 	
 	function doPush( sender, targetUrl, page, token ) {
 		var summary = mediaWiki.msg( 'push-import-revision-message' );
