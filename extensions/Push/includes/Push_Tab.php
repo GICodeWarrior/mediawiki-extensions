@@ -79,7 +79,7 @@ final class PushTab {
 			
 			efPushAddJSLocalisation();
 			
-			// TODO: jquery
+			$wgOut->includeJQuery();
 			
 			$wgOut->addHeadItem(
 				'ext.push.tab',
