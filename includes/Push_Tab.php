@@ -17,8 +17,14 @@ final class PushTab {
 	 * Adds an "action" (i.e., a tab) to allow pushing the current article.
 	 */
 	public static function displayTab( $obj, &$content_actions ) {
-		// Make sure that this is not a special page and that the page exists.
-		if ( isset( $obj->mTitle ) && $obj->mTitle->getNamespace() != NS_SPECIAL && $obj->mTitle->exists() ) {
+		global $wgUser;
+		
+		// Make sure that this is not a special page, the page has contents, and the user can push.
+		if (isset( $obj->mTitle ) 
+			&& $obj->mTitle->getNamespace() != NS_SPECIAL
+			&& $obj->mTitle->exists()
+			&& $wgUser->isAllowed( 'push' ) ) {
+				
 			global $wgRequest;
 			
 			$content_actions['push'] = array(
@@ -97,18 +103,23 @@ final class PushTab {
 	public static function displayPushPage( Article $article ) {
 		global $wgOut, $wgUser, $wgTitle, $wgSitename;
 		
+		if ( !$wgUser->isAllowed( 'push' ) ) {
+			$wgOut->permissionRequired( 'push' );
+			return false;
+		}		
+		
+		self::loadJs();		
+		
 		$wgOut->setPageTitle( wfMsgExt( 'push-tab-title', 'parsemag', $article->getTitle()->getText() ) );
 		
-		self::loadJs();
+		$wgOut->addHTML( '<p>' . htmlspecialchars( wfMsg( 'push-button-desc'  ) ) . '</p>' );
 		
 		$wgOut->addHTML(
 			Html::hidden( 'pageName', $wgTitle->getFullText(), array( 'id' => 'pageName' ) ) .
 			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) )
 		);
 		
-		if ( $wgUser->isAllowed( 'push' ) ) {
-			self::displayPushList();
-		}
+		self::displayPushList();
 		
 		if ( $wgUser->isAllowed( 'pushadmin' ) ) {
 			// TODO
@@ -189,6 +200,15 @@ final class PushTab {
 		);
 		
 		// TODO: add edit and delete stuff
+	}
+	
+	/**
+	 * Displays several configuration options for the push operations.
+	 * 
+	 * @since 0.1
+	 */	
+	protected static function displayPushOptions() {
+		global $wgOut;
 	}
 	
 	/**
