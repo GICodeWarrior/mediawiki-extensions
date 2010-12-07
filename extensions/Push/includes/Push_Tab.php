@@ -66,9 +66,13 @@ final class PushTab {
 	 * special pages)
 	 */
 	public static function displayPushPage( Article $article ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgTitle;
 		
 		$wgOut->setPageTitle( wfMsgExt( 'push-tab-title', 'parsemag', $article->getTitle()->getText() ) );
+		
+		$wgOut->addHTML(
+			Html::hidden( 'pageName', $wgTitle->getFullText(), array( 'id' => 'pageName' ) )
+		);
 		
 		$wgOut->addModules( 'ext.push.tab' );
 		
