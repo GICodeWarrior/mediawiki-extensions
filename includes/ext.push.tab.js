@@ -62,8 +62,8 @@
 	
 	function doLoginAndContinue( sender, targetUrl, page ) {
 		if ( false ) { // TODO
-			var name = 'WikiSysop'; // TODO
-			var password = 'inurwiki'; // TODO			
+			var name = ''; // TODO
+			var password = ''; // TODO			
 			
 			$.post( 
 				targetUrl + '/api.php',
