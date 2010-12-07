@@ -104,25 +104,35 @@ final class PushTab {
 	 * @since 0.1
 	 */
 	public static function displayPushPage( Article $article ) {
-		global $wgOut, $wgUser, $wgTitle, $wgSitename;
+		global $wgOut, $wgUser, $wgTitle, $wgSitename, $egPushTargets;
+		
+		$wgOut->setPageTitle( wfMsgExt( 'push-tab-title', 'parsemag', $article->getTitle()->getText() ) );
 		
 		if ( !$wgUser->isAllowed( 'push' ) ) {
 			$wgOut->permissionRequired( 'push' );
 			return false;
 		}		
 		
-		self::loadJs();		
+		$wgOut->addHTML( '<p>' . htmlspecialchars( wfMsg( 'push-tab-desc'  ) ) . '</p>' );
 		
-		$wgOut->setPageTitle( wfMsgExt( 'push-tab-title', 'parsemag', $article->getTitle()->getText() ) );
+		if ( count( $egPushTargets ) == 0 ) {
+			$wgOut->addHTML( '<p>' . htmlspecialchars( wfMsg( 'push-tab-no-targets'  ) ) . '</p>' );
+			return false;
+		}
 		
-		$wgOut->addHTML( '<p>' . htmlspecialchars( wfMsg( 'push-button-desc'  ) ) . '</p>' );
+		self::loadJs();
 		
 		$wgOut->addHTML(
 			Html::hidden( 'pageName', $wgTitle->getFullText(), array( 'id' => 'pageName' ) ) .
 			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) )
 		);
 		
-		self::displayPushList();
+		if ( count( $egPushTargets ) == 1 ) {
+			self::displayLonelyPushItem();
+		}
+		else {
+			self::displayPushList();
+		}
 		
 		if ( $wgUser->isAllowed( 'pushadmin' ) ) {
 			// TODO
@@ -133,40 +143,93 @@ final class PushTab {
 	}
 	
 	/**
+	 * Displays a target to push to for when there is only a single target.
+	 * 
+	 * @since 0.1
+	 */	
+	protected static function displayLonelyPushItem() {
+		global $wgOut, $egPushTargets;
+
+		$targetNames = array_keys( $egPushTargets );
+		
+		$wgOut->addHTML( '<b>' . htmlspecialchars( wfMsgExt( 'push-tab-push-to', 'parsemag', $targetNames[0] ) ) . '</b>&nbsp;&nbsp;' );
+		
+		$wgOut->addHTML(
+			Html::element(
+				'button',
+				array(
+					'class' => 'push-button',
+					'pushtarget' => $egPushTargets[$targetNames[0]],
+					'style' => 'width: 125px; height: 30px',
+				),
+				wfMsg( 'push-button-text' )
+			)		
+		);
+	}
+	
+	/**
 	 * Displays a list with all targets to which can be pushed.
 	 * 
 	 * @since 0.1
 	 */
 	protected static function displayPushList() {
-		global $wgOut, $egPushTargets;
+		global $wgOut, $egPushTargets, $wgLang;
 		
-		$wgOut->addHtml(
-			Html::element(
-				'h2',
+		$items = array(
+			Html::rawElement(
+				'tr',
 				array(),
-				wfMsg( 'push-targets' )
+				Html::element(
+					'th',
+					array(),
+					wfMsg( 'push-targets' )
+				) .
+				Html::rawElement(
+					'th',
+					array(),
+					wfMsg( 'push-remote-pages' )
+				) .
+				Html::rawElement(
+					'th',
+					array( 'width' => '125px' ),
+					''
+				)
 			)
 		);
-		
-		$items = array();
 		
 		foreach ( $egPushTargets as $name => $url ) {
 			$items[] = self::getPushItem( $name, $url );
 		}
 		
-		if ( count( $items ) > 1 ) {
-			$items = array_merge( array(
-				// TODO: header here
-			), $items );
-		}
+		$items[] = Html::rawElement(
+			'tr',
+			array(),
+			Html::element(
+				'th',
+				array( 'colspan' => 2, 'style' => 'text-align: left' ),
+				wfMsgExt( 'push-targets-total', 'parsemag', $wgLang->formatNum( count( $egPushTargets ) ) )
+			) .
+			Html::rawElement(
+				'th',
+				array( 'width' => '125px' ),
+				Html::element(
+					'button',
+					array(
+						'id' => 'push-all-button',
+						'style' => 'width: 125px; height: 30px',
+					),
+					wfMsg( 'push-button-all' )
+				)				
+			)
+		);
 		
 		$wgOut->addHtml(
 			Html::rawElement(
 				'table',
-				array( 'width' => '100%' ),
+				array( 'class' => 'wikitable', 'width' => '50%' ),
 				implode( "\n", $items )
 			)
-		);		
+		);
 	}
 	
 	/**
@@ -180,6 +243,8 @@ final class PushTab {
 	 * @return string
 	 */
 	protected static function getPushItem( $name, $url ) {
+		global $wgTitle;
+		
 		return Html::rawElement(
 			'tr',
 			array(),
@@ -192,10 +257,20 @@ final class PushTab {
 				'td',
 				array(),
 				Html::element(
+					'a',
+					array( 'href' => $url . '/index.php?title=' . $wgTitle->getFullText(), 'rel' => 'nofollow' ),
+					wfMsgExt( 'push-remote-page-link', 'parsemag', $wgTitle->getFullText(), $name ) 
+				)
+			) .	
+			Html::rawElement(
+				'td',
+				array(),
+				Html::element(
 					'button',
 					array(
 						'class' => 'push-button',
 						'pushtarget' => $url,
+						'style' => 'width: 125px; height: 30px',
 					),
 					wfMsg( 'push-button-text' )
 				)

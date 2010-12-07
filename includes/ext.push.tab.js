@@ -27,6 +27,14 @@
 		);
 	});
 	
+	$('#push-all-button').click(function() {
+		this.disabled = true;
+		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
+		$.each($(".push-button"), function(i,v) {
+			$(v).click();
+		});
+	});	
+	
 	function getLocalArtcileAndContinue( sender, targetUrl ) {
 		var pageName = $('#pageName').attr('value'); 
 		
@@ -158,9 +166,34 @@
 				}
 				else {
 					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
+					setTimeout( function() {reEnableButton( sender );}, 2000 );
 				}
 			}
-		);		
+		);	
+	}
+	
+	function reEnableButton( button ) {
+		button.innerHTML = mediaWiki.msg( 'push-button-text' );
+		button.disabled = false;
+		
+		var pushAllButton = $('#push-all-button');
+		
+		// If there is a "push all" button, make sure to reset it
+		// when all other buttons have been reset.
+		if ( typeof pushAllButton !== "undefined" ) {
+			var hasDisabled = false;
+			
+			$.each($(".push-button"), function(i,v) {
+				if ( v.disabled ) {
+					hasDisabled = true;
+				}
+			});
+			
+			if ( !hasDisabled ) {
+				pushAllButton.attr( "disabled", false );
+				pushAllButton.text( mediaWiki.msg( 'push-button-all' ) );
+			}
+		}
 	}
 	
 	function handleError( sender, targetUrl, error ) {
