@@ -17,13 +17,14 @@ final class PushTab {
 	 * Adds an "action" (i.e., a tab) to allow pushing the current article.
 	 */
 	public static function displayTab( $obj, &$content_actions ) {
-		global $wgUser;
+		global $wgUser, $egPushTargets;
 		
 		// Make sure that this is not a special page, the page has contents, and the user can push.
 		if (isset( $obj->mTitle ) 
 			&& $obj->mTitle->getNamespace() != NS_SPECIAL
 			&& $obj->mTitle->exists()
-			&& $wgUser->isAllowed( 'push' ) ) {
+			&& $wgUser->isAllowed( 'push' )
+			&& count( $egPushTargets ) > 0 ) {
 				
 			global $wgRequest;
 			
