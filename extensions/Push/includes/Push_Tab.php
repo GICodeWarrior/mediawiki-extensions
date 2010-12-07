@@ -203,16 +203,7 @@ final class PushTab {
 	}
 	
 	/**
-	 * Displays several configuration options for the push operations.
-	 * 
-	 * @since 0.1
-	 */	
-	protected static function displayPushOptions() {
-		global $wgOut;
-	}
-	
-	/**
-	 * Displays a form via which a new psuh item can be added.
+	 * Displays a form via which a new push item can be added.
 	 * 
 	 * @since 0.1
 	 */

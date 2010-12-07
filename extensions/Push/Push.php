@@ -42,11 +42,18 @@ unset( $useExtensionPath );
 
 $wgExtensionMessagesFiles['Push'] 		= dirname( __FILE__ ) . '/Push.i18n.php';
 
+$wgAutoloadClasses['PushHooks'] 		= dirname( __FILE__ ) . '/Push.hooks.php';
 $wgAutoloadClasses['PushTab'] 			= dirname( __FILE__ ) . '/includes/Push_Tab.php';
+$wgAutoloadClasses['SpecialPush'] 		= dirname( __FILE__ ) . '/specials/Push_Body.php';
+
+$wgSpecialPages['Push'] = 'SpecialPush';
+$wgSpecialPageGroups['Push'] = 'pagetools';
 
 $wgHooks['UnknownAction'][] = 'PushTab::onUnknownAction';
 $wgHooks['SkinTemplateTabs'][] = 'PushTab::displayTab';
 $wgHooks['SkinTemplateNavigation'][] = 'PushTab::displayTab2';
+
+$wgHooks['AdminLinks'][] = 'PushHooks::addToAdminLinks';
 
 $wgAvailableRights[] = 'push';
 $wgAvailableRights[] = 'pushadmin';
