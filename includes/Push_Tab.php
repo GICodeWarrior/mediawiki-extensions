@@ -154,12 +154,12 @@ final class PushTab {
 		$targetNames = array_keys( $egPushTargets );
 		
 		$wgOut->addHTML(
-			'<b>' . htmlspecialchars( wfMsgExt( 'push-tab-push-to', 'parsemag', $targetNames[0] ) ) . '</b><br /><i>' .
+			'<table><tr><td><b>' . htmlspecialchars( wfMsgExt( 'push-tab-push-to', 'parsemag', $targetNames[0] ) ) . '</b><br /><i>' .
 			Html::element(
 				'a',
 				array( 'href' => $egPushTargets[$targetNames[0]] . '/index.php?title=' . $wgTitle->getFullText(), 'rel' => 'nofollow' ),
 				wfMsgExt( 'push-remote-page-link-full', 'parsemag', $wgTitle->getFullText(), $targetNames[0] )
-			) . '</i><br />' .
+			) . '</i></td><td>&nbsp;&nbsp;&nbsp;' .
 			Html::element(
 				'button',
 				array(
@@ -168,7 +168,7 @@ final class PushTab {
 					'style' => 'width: 125px; height: 30px',
 				),
 				wfMsg( 'push-button-text' )
-			) 	
+			) . '</td></tr></table>'
 		);
 	}
 	
