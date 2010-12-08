@@ -45,8 +45,15 @@
 		var listItem = $( '<li />' );
 		listItem.text( pageName );
 		
+		var box = $('#pushResultDiv');
+		var innerBox = $('#pushResultDiv > .innerResultBox');
+		var atBottom = Math.abs(innerBox.offset().top) + box.height() + box.offset().top >= innerBox.outerHeight();
+		
 		resultList.append( listItem );
-		$('#pushResultDiv').attr( {'scrollTop': $('#pushResultDiv').attr( 'scrollHeight' )} );
+		
+		if ( atBottom ) {
+			box.animate( {'scrollTop': box.attr( 'scrollHeight' )} );
+		}
 		
 		getLocalArtcileAndContinue( listItem, pageName );
 	}

@@ -5,6 +5,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.2 ===
+2010-12-08
 
 * Added Special:Push for bulk pushing
 * Added AdminLinks hook

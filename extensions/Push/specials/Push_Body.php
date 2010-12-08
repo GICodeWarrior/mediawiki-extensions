@@ -165,7 +165,11 @@ class SpecialPush extends SpecialPage {
 					'id' => 'pushResultDiv',
 					'style' => 'width: 100%; height: 300px; overflow: auto'
 				),
-				Html::element( 'ul', array( 'id' => 'pushResultList' ) )
+				Html::rawElement(
+					'div',
+					array( 'class' => 'innerResultBox' ),
+					Html::element( 'ul', array( 'id' => 'pushResultList' ) )
+				)
 			)
 		);
 		
