@@ -752,7 +752,7 @@ class qp_Poll extends qp_AbstractPoll {
 	# @param    $input - text enclosed in poll tag
 	# @return   string representing rendered set of the questions / boolean true - stop further processing
 	function parseInput( $input ) {
-		global $wgTitle, $wgArticle;
+		global $wgTitle;
 		# Process the input
 		$output = $this->parseQuestions( $input );
 		# check whether the poll was successfully submitted
