@@ -42,12 +42,12 @@ class ArticleFeedbackHooks {
 			'scripts' => 'ext.articleFeedback-beta/ext.articleFeedback-beta.js',
 			'styles' => 'ext.articleFeedback-beta/ext.articleFeedback-beta.css',
 			'messages' => array(
-				'articlefeedback-beta-form-tab-label',
+				'articlefeedback-beta-form-switch-label',
 				'articlefeedback-beta-form-panel-title',
 				'articlefeedback-beta-form-panel-instructions',
 				'articlefeedback-beta-form-panel-notice',
 				'articlefeedback-beta-form-panel-submit',
-				'articlefeedback-beta-report-tab-label',
+				'articlefeedback-beta-report-switch-label',
 				'articlefeedback-beta-report-panel-title',
 				'articlefeedback-beta-report-panel-description',
 				'articlefeedback-beta-field-wellsourced-label',
@@ -59,7 +59,12 @@ class ArticleFeedbackHooks {
 				'articlefeedback-beta-field-readable-label',
 				'articlefeedback-beta-field-readable-tip',
 			),
-			'dependencies' => array( 'jquery.tipsy', 'jquery.localize' ),
+			'dependencies' => array(
+				'jquery.tipsy',
+				'jquery.localize',
+				'jquery.ui.dialog',
+				'jquery.ui.button',
+			),
 		),
 		'jquery.stars' => array(
 			'scripts' => 'jquery.stars/jquery.stars.js',
