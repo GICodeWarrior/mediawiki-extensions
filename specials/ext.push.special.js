@@ -21,6 +21,7 @@
 	
 	var targets = window.wgPushTargets;
 	var pages = window.wgPushPages;
+	var revs = window.wgPushRevs;
 	var requestAmount = Math.min( pages.length, window.wgPushWorkerCount );
 	
 	var pageTargets = [];
@@ -65,6 +66,8 @@
 				'prop': 'revisions',
 				'rvprop': 'timestamp|user|comment|content',
 				'titles': pageName,
+				'rvstartid': revs[pageName],
+				'rvendid': revs[pageName],				
 			},
 			function( data ) {
 				if ( data.error ) {

@@ -119,7 +119,7 @@ class SpecialPush extends SpecialPage {
 	 * @param string $pages
 	 */
 	protected function doPush( $pages ) {
-		global $wgOut, $wgLang, $wgRequest, $egPushTargets, $egPushBulkWorkers;
+		global $wgOut, $wgLang, $wgRequest, $wgSitename, $egPushTargets, $egPushBulkWorkers;
 		
 		$pageSet = array(); // Inverted index of all pages to look up
 
@@ -139,10 +139,14 @@ class SpecialPush extends SpecialPage {
 		}
 
 		$pages = array_keys( $pageSet );		
-		$pageCount = count( $pages ); 
 		
 		$targets = array();
 		$links = array();
+		$revisions = array();
+		
+		foreach ( $pages as $page ) {
+			$revisions[$page] = PushFunctions::getRevisionToPush( Title::newFromText( $page ) );
+		}
 		
 		foreach ( $egPushTargets as $targetName => $targetUrl ) {
 			if ( $wgRequest->getCheck( str_replace( ' ', '_', $targetName ) ) ) {
@@ -151,7 +155,7 @@ class SpecialPush extends SpecialPage {
 			}
 		}
 		
-		$wgOut->addWikiMsg( 'push-special-pushing-desc', $wgLang->listToText( $links ), $wgLang->formatNum( $pageCount ), $pageCount );
+		$wgOut->addWikiMsg( 'push-special-pushing-desc', $wgLang->listToText( $links ), $wgLang->formatNum( count( $pages ) ) );
 		
 		$wgOut->addHTML(
 			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) ) .
@@ -167,6 +171,7 @@ class SpecialPush extends SpecialPage {
 		
 		$wgOut->addInlineScript(
 			'var wgPushPages = ' . json_encode( $pages ) . ';' .
+			'var wgPushRevs = ' . json_encode( $revisions ) . ';' .
 			'var wgPushTargets = ' . json_encode( $targets ) . ';' .
 			'var wgPushWorkerCount = ' . $egPushBulkWorkers . ';'
 		);
@@ -302,6 +307,44 @@ class SpecialPush extends SpecialPage {
 			array( 'tl_namespace AS namespace', 'tl_title AS title' ),
 			array( 'page_id=tl_from' )
 		);
+	}
+	
+	/**
+	 * Expand a list of pages to include items used in those pages.
+	 * 
+	 * @since 0.2
+	 */
+	protected function getLinks( $inputPages, $pageSet, $table, $fields, $join ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		foreach( $inputPages as $page ) {
+			$title = Title::newFromText( $page );
+			
+			if( $title ) {
+				$pageSet[$title->getPrefixedText()] = true;
+				/// @todo Fixme: May or may not be more efficient to batch these
+				///        by namespace when given multiple input pages.
+				$result = $dbr->select(
+					array( 'page', $table ),
+					$fields,
+					array_merge(
+						$join,
+						array(
+							'page_namespace' => $title->getNamespace(),
+							'page_title' => $title->getDBkey()
+						)
+					),
+					__METHOD__
+				);
+				
+				foreach( $result as $row ) {
+					$template = Title::makeTitle( $row->namespace, $row->title );
+					$pageSet[$template->getPrefixedText()] = true;
+				}
+			}
+		}
+		
+		return $pageSet;
 	}	
 	
 	/**
