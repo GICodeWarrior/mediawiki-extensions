@@ -12,7 +12,6 @@
 	height: 15em;
 	background-color: #f3f3f3;
 	border: 1px solid #cccccc;
-	border-left: none;
 	padding-bottom: 1px;
 }
 
@@ -32,67 +31,8 @@
 	padding: 0.75em 1em;
 }
 
-.articleFeedback-panel, .articleFeedback-tabs {
+.articleFeedback-panel {
 	float: left;
-}
-
-.articleFeedback-tabs {
-	width: 8em;
-	height: 15em;
-	/* @embed */
-	background-image: url(images/tab-break.png);
-	background-position: right top;
-	background-repeat: repeat-y;
-	padding-bottom: 3px;
-}
-
-.articleFeedback-tab {
-	display: block;
-	text-align: center;
-	width: 8em;
-	height: 7.5em;
-	cursor: pointer;
-	background-color: #ffffff;
-	/* @embed */
-	background-image: url(images/tab-edge.png);
-	background-position: right top;
-	background-repeat: repeat-y;
-}
-
-.articleFeedback-tabs .articleFeedback-tab-current {
-	/* @embed */
-	background-image: url(images/tab-fade.png);
-}
-
-.articleFeedback-tab-form {
-	margin-top: 1px;
-	margin-bottom: 1px;
-}
-
-.articleFeedback-tab .articleFeedback-buffer {
-	display: block;
-	background-position: 50% 45%;
-	background-repeat: no-repeat;
-	padding-top: 6.25em;
-	padding-left: 1em;
-	padding-right: 1em;
-	font-size: 0.8em;
-	line-height: 1.25em;
-	color: #0645ad;
-}
-
-.articleFeedback-tab-form .articleFeedback-buffer {
-	/* @embed */
-	background-image: url(images/form-icon.png);
-}
-
-.articleFeedback-tab-report .articleFeedback-buffer {
-	/* @embed */
-	background-image: url(images/report-icon.png);
-}
-
-.articleFeedback-tab:hover .articleFeedback-buffer {
-	text-decoration: underline;
 }
 
 .articleFeedback-panel .articleFeedback-buffer {
@@ -102,6 +42,40 @@
 
 .articleFeedback-title {
 	font-size: 1.4em;
+}
+
+.articleFeedback-switch {
+	cursor: pointer;
+	color: #0645AD;
+	float: right;
+	line-height: 1.4em;
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 22px;
+}
+
+.articleFeedback-switch:hover {
+	text-decoration: underline;
+}
+
+.articleFeedback-switch-form {
+	/* @embed */
+	background-image: url(images/form.png);
+}
+
+.articleFeedback-switch-report {
+	/* @embed */
+	background-image: url(images/report.png);
+}
+
+.articleFeedback-switch-form:hover {
+	/* @embed */
+	background-image: url(images/form-hover.png);
+}
+
+.articleFeedback-switch-report:hover {
+	/* @embed */
+	background-image: url(images/report-hover.png);
 }
 
 .articleFeedback-instructions, .articleFeedback-description {
