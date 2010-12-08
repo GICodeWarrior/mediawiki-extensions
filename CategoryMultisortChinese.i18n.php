@@ -84,6 +84,21 @@ $messages['bs'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Tradicionalno',
 );
 
+/** Catalan (Català)
+ * @author El libre
+ */
+$messages['ca'] = array(
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarí: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarí: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarí: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarí: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarí: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Cantonès: Jyutping',
+	'categorymultisort-sortkey-name-radical' => 'Radical',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radical: Simplificat',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Tradicional',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
