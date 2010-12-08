@@ -7,7 +7,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 
 	function get_owa_ref_id($ref){
 		// Replication lag means sometimes a new event will not exist in the table yet
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = contributionTrackingConnection(); //wfGetDB( DB_MASTER );
 		$id_num = $dbw->selectField(
 			'contribution_tracking_owa_ref',
 			'id',
@@ -28,7 +28,8 @@ class ContributionTracking extends UnlistedSpecialPage {
 
 
 	function execute( $language ) {
-		global $wgRequest, $wgOut;
+		global $wgRequest, $wgOut, $wgContributionTrackingPayPalIPN, $wgContributionTrackingReturnToURLDefault,
+			$wgContributionTrackingPayPalRecurringIPN, $wgContributionTrackingPayPalBusiness;
 		
 		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {
 			$language = 'en';
@@ -84,7 +85,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 		if( $returnTitle ) {
 			$returnto = $returnTitle->getFullUrl();
 		} else {
-			$returnto = "http://wikimediafoundation.org/wiki/Thank_You/$language";
+			$returnto = $wgContributionTrackingReturnToURLDefault . "/$language";
 		}
 		
 		// Set the action and tracking ID fields
@@ -92,6 +93,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 		$action = 'http://wikimediafoundation.org/';
 		$amount_field_name = 'amount'; // the amount fieldname may be different depending on the service
 		if ( $gateway == 'paypal' ) {
+			
 			$action = 'https://www.paypal.com/cgi-bin/webscr';
 
 			// Premiums
@@ -102,7 +104,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 			}
 			
 			// PayPal
-			$repost['business'] = 'donations@wikimedia.org';
+			$repost['business'] = $wgContributionTrackingPayPalBusiness;
 			$repost['item_name'] = 'One-time donation';
 			$repost['item_number'] = 'DONATE';
 			$repost['no_note'] = '0';
@@ -123,9 +125,10 @@ class ContributionTracking extends UnlistedSpecialPage {
 				$repost[ 'sra' ] = '1'; // Turn on re-attempt on failure
 				$repost[ 'cmd' ] = '_xclick-subscriptions';
 				$amount_field_name = 'a3';
+				$repost['notify_url'] = $wgContributionTrackingPayPalRecurringIPN;
 			} else {
 				$repost['cmd'] = '_xclick';
-				$repost['notify_url'] = 'https://civicrm.wikimedia.org/fundcore_gateway/paypal';
+				$repost['notify_url'] = $wgContributionTrackingPayPalIPN;
 			}
 		}
 		else if ( $gateway == 'moneybookers' ) {
