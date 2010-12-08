@@ -1,3 +1,14 @@
-== Version 0.1 ==
+These are the release notes for the Push extension.
+	
+Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Push
+Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push/RELEASE-NOTES?view=co
 
-* Initial release
+
+== Version 0.1 ==
+2010-12-08
+
+Initial release.
+
+* Push tab that allows pushing the page to one or more other wikis
+* ApprovedRevs support
+* 'push' right
