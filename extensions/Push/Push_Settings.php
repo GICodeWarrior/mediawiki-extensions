@@ -6,7 +6,7 @@
  *
  *                          NOTICE:
  * Changing one of these settings can be done by copieng or cutting it,
- * and placing it in LocalSettings.php, AFTER the inclusion of Maps.
+ * and placing it in LocalSettings.php, AFTER the inclusion of Push.
  *
  * @file Push_Settings.php
  * @ingroup Push

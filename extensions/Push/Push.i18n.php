@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'push-remote-pages' => 'Remote pages',
 	'push-remote-page-link' => '$1 on $2',
 	'push-remote-page-link-full' => 'View $1 on $2',
-	'push-targets-total' => 'There a total of $1 {{PLURAL:$2|target|targets}}.',
+	'push-targets-total' => 'There a total of $1 {{PLURAL:$1|target|targets}}.',
 	'push-button-all' => 'Push all',
 	
 	// Special page
@@ -42,7 +42,7 @@ $messages['en'] = array(
 	'push-special-description' => 'This page enables you to push content of one or more pages to one or more MediaWiki wikis.
 
 To push pages, enter the titles in the text box below, one title per line and hit push all. This can take a while to complete.',
-	'push-special-pushing-desc' => 'Pushing $2 {{PLURAL:$3|page|pages}} to $1...',
+	'push-special-pushing-desc' => 'Pushing $2 {{PLURAL:$2|page|pages}} to $1...',
 	'push-special-button-text' => 'Push pages',
 	'push-special-target-is' => 'Target wiki: $1',
 	'push-special-select-targets' => 'Target wikis:',

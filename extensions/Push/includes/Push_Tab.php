@@ -125,7 +125,7 @@ final class PushTab {
 		$wgOut->addHTML(
 			Html::hidden( 'pageName', $wgTitle->getFullText(), array( 'id' => 'pageName' ) ) .
 			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) ) . 
-			Html::hidden( 'pushRevId', self::getRevisionToPush(), array( 'id' => 'pushRevId' ) )
+			Html::hidden( 'pushRevId', PushFunctions::getRevisionToPush( $wgTitle ), array( 'id' => 'pushRevId' ) )
 		);
 		
 		if ( count( $egPushTargets ) == 1 ) {
@@ -189,12 +189,12 @@ final class PushTab {
 					array(),
 					wfMsg( 'push-targets' )
 				) .
-				Html::Element(
+				Html::element(
 					'th',
 					array(),
 					wfMsg( 'push-remote-pages' )
 				) .
-				Html::Element(
+				Html::element(
 					'th',
 					array( 'width' => '125px' ),
 					''
@@ -212,7 +212,7 @@ final class PushTab {
 			Html::element(
 				'th',
 				array( 'colspan' => 2, 'style' => 'text-align: left' ),
-				wfMsgExt( 'push-targets-total', 'parsemag', $wgLang->formatNum( count( $egPushTargets ) ), count( $egPushTargets ) )
+				wfMsgExt( 'push-targets-total', 'parsemag', $wgLang->formatNum( count( $egPushTargets ) ) )
 			) .
 			Html::rawElement(
 				'th',
@@ -302,28 +302,6 @@ final class PushTab {
 		);
 		
 		// TODO
-	}
-	
-	/**
-	 * Returns the latest revision.
-	 * Has support for the Approvedrevs extension, and will 
-	 * return the latest approved revision where appropriate.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @return integer
-	 */
-	protected static function getRevisionToPush() {
-		global $wgTitle;
-		
-		if ( defined( 'APPROVED_REVS_VERSION' ) ) {
-			$revId = ApprovedRevs::getApprovedRevID( $wgTitle );
-			//var_dump($revId);exit;
-			return is_null( $revId ) ? $wgTitle->getLatestRevID() : $revId;
-		}
-		else {
-			return $wgTitle->getLatestRevID();
-		}
 	}
 	
 }
