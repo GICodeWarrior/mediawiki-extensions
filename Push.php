@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Push_VERSION', '0.1' );
+define( 'Push_VERSION', '0.2 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -44,16 +44,17 @@ $wgExtensionMessagesFiles['Push'] 		= dirname( __FILE__ ) . '/Push.i18n.php';
 
 $wgAutoloadClasses['PushHooks'] 		= dirname( __FILE__ ) . '/Push.hooks.php';
 $wgAutoloadClasses['PushTab'] 			= dirname( __FILE__ ) . '/includes/Push_Tab.php';
+$wgAutoloadClasses['PushFunctions'] 	= dirname( __FILE__ ) . '/includes/Push_Functions.php';
 $wgAutoloadClasses['SpecialPush'] 		= dirname( __FILE__ ) . '/specials/Push_Body.php';
 
-//$wgSpecialPages['Push'] = 'SpecialPush';
-//$wgSpecialPageGroups['Push'] = 'pagetools';
+$wgSpecialPages['Push'] = 'SpecialPush';
+$wgSpecialPageGroups['Push'] = 'pagetools';
 
 $wgHooks['UnknownAction'][] = 'PushTab::onUnknownAction';
 $wgHooks['SkinTemplateTabs'][] = 'PushTab::displayTab';
 $wgHooks['SkinTemplateNavigation'][] = 'PushTab::displayTab2';
 
-//$wgHooks['AdminLinks'][] = 'PushHooks::addToAdminLinks';
+$wgHooks['AdminLinks'][] = 'PushHooks::addToAdminLinks';
 
 $wgAvailableRights[] = 'push';
 $wgAvailableRights[] = 'pushadmin';
@@ -80,19 +81,13 @@ if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
 		'scripts' => 'includes/ext.push.tab.js',
 		'dependencies' => array(),
 		'messages' => $egPushJSMessages
-	);	
-}
-
-function efPushAddJSLocalisation() {
-	global $egPushJSMessages, $wgOut;
+	);
 	
-	$data = array();
-
-	foreach ( $egPushJSMessages as $msg ) {
-		$data[$msg] = wfMsgNoTrans( $msg );
-	}
-
-	$wgOut->addInlineScript( 'var wgPushMessages = ' . json_encode( $data ) . ';' );		
+	$wgResourceModules['ext.push.special'] = $moduleTemplate + array(
+		'scripts' => 'includes/ext.push.special.js',
+		'dependencies' => array(),
+		'messages' => $egPushJSMessages
+	);	
 }
 
 require_once 'Push_Settings.php';
