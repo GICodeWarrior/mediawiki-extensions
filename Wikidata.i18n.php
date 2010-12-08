@@ -10823,6 +10823,7 @@ Não foi feita nenhuma operação de cópia.',
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author Giro720
+ * @author Helder.wiki
  * @author Heldergeovane
  * @author Jorge Morais
  */
@@ -10905,7 +10906,7 @@ Por favor, veja [[{{MediaWiki:Ow editing policy url}}|nossa política de ediçã
 	'transaction' => 'Wikidata: Registro de transações',
 	'ow_transaction_from_transaction' => 'Da transação:',
 	'ow_transaction_count' => 'Número:',
-	'ow_transaction_user' => 'Nome de utilizador:',
+	'ow_transaction_user' => 'Nome de usuário:',
 	'ow_transaction_show_rollback' => 'Mostrar controles de reversão:',
 	'ow_transaction_rollback_button' => 'Reverter',
 	'ow_transaction_rollback_header' => 'Reversão',
