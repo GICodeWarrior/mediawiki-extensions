@@ -27,13 +27,13 @@ $messages['en'] = array(
 	'push-tab-title' => 'Pushing $1',
 	'push-targets' => 'Push targets',
 	'push-add-target' => 'Add target',
-	'push-import-revision-message' => 'Import from $1 by $2.$3', // $3 is 'push-import-revision-comment' or empty. 1360!
-	'push-import-revision-comment' => ' Last comment: $1',
+	'push-import-revision-message' => 'Import from $1 by $2. $3',
+	'push-import-revision-comment' => 'Last comment: $1',
 	'push-tab-no-targets' => 'There are no targets to push to. Please add some to your LocalSettings.php file.',
 	'push-tab-push-to' => 'Push to $1',
 	'push-remote-pages' => 'Remote pages',
-	'push-remote-page-link' => '$1 on $2', // $1: page name, $2: wiki name
-	'push-remote-page-link-full' => 'View $1 on $2', // $1: page name, $2: wiki name
+	'push-remote-page-link' => '$1 on $2',
+	'push-remote-page-link-full' => 'View $1 on $2',
 	'push-targets-total' => 'There a total of $1 {{PLURAL:$2|target|targets}}.',
 	'push-button-all' => 'Push all',
 	
@@ -51,4 +51,12 @@ To push pages, enter the titles in the text box below, one title per line and hi
 	'push-special-item-completed' => '$1: Push completed',
 	'push-special-item-failed' => '$1: Push failed: $2',
 	'push-special-push-done' => 'Push completed'
+	# 'right-push' => '', // Please add a description of this userright which is shown at [[Special:ListGroupRights]]
+	# 'right-pushadmin' => '', // Please add a description of this userright which is shown at [[Special:ListGroupRights]]
+);
+
+$messages['qqq'] = array(
+	'push-import-revision-message' => '$3 is [[MediaWiki:Push-import-revision-comment]] or empty.', 
+	'push-remote-page-link' => '$1: page name, $2: wiki name',
+	'push-remote-page-link-full' => '$1: page name, $2: wiki name',
 );
