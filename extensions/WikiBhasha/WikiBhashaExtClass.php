@@ -37,7 +37,7 @@ class wikiBhashaExt {
 
 	// add wikibhasha link to the wikipedia left bar toolbar box
 	public function wikiBhashaToolbox( &$monobook ) {
-		echo "<li><a href='javascript:void(0);' style='color: rgb(0, 36, 255);' onclick='(function(){" . $this->wikiBhashaUrl . "})()' id='wbInstallLinkff'>" . wfMsg( 'wikiBhashaLink' ) . "</a></li>";
+		echo "<li><a href='javascript:void(0);' style='color: rgb(0, 36, 255);' id='toolbarLinkWikiBhasha' onclick='(function(){" . $this->wikiBhashaUrl . "})()' id='toolbarLinkWikiBhasha'>" . wfMsg( 'wikiBhashaLink' ) . "</a></li>";
 		return true;
 	}
 
@@ -48,16 +48,14 @@ class wikiBhashaExt {
 		$jsIconScript = '';
 		if ( $wgRequest->getText( 'action' ) == 'edit' ) {
 			$imgUrl = $this->url . 'images/Square.png';
-			$jsWBIconScript = " var wbIcon = document.createElement('a'); wbIcon.title = '" . wfMsg( 'wikiBhashaLink' ) . "';wbIcon.href='javascript:(function(){" . addslashes( $this->wikiBhashaUrl ) . "})()'; wbIcon.innerHTML = '<img src=\'" . $imgUrl . "\'>';";
-			$jsIconScript = $jsWBIconScript . "if(document.getElementById('toolbar')){ var toolbar = document.getElementById('toolbar'); if(toolbar.firstChild)  toolbar.appendChild(wbIcon);}";
-			$jsIconScript .= "if(document.getElementById('wikiEditor-ui-toolbar')){wbIconGroupDiv = document.createElement('div');wbIconGroupDiv.setAttribute('class', 'group group-format');wbIconGroupDiv.appendChild(wbIcon);var toolbar = document.getElementById('wikiEditor-ui-toolbar');if(toolbar.firstChild)toolbar.firstChild.appendChild(wbIconGroupDiv);}";
-
+			$jsWBIconScript = " var wbIcon = document.createElement('a'); wbIcon.title = '" . wfMsg( 'wikiBhashaLink' ) . "';wbIcon.href='javascript:(function(){" . addslashes( $this->wikiBhashaUrl ) . "})()'; wbIcon.id = 'iconWikiBhasha'; wbIcon.innerHTML = '<img src=\'" . $imgUrl . "\'>';";
+			$jsIconScript = $jsWBIconScript . "if(document.getElementById('toolbar')) { var toolbar = document.getElementById('toolbar'); if(toolbar.firstChild)  toolbar.appendChild(wbIcon); }else  if(document.getElementById('wikiEditor-ui-toolbar')) { var wbIconGroupDiv = document.createElement('div'); wbIconGroupDiv.setAttribute('class', 'group group-format'); wbIconGroupDiv.appendChild(wbIcon); var toolbar = document.getElementById('wikiEditor-ui-toolbar'); if(toolbar.firstChild)  toolbar.firstChild.appendChild(wbIconGroupDiv); }";
 		}
 		// if the url contain wbAutoLaunch as true launch wikibhasha
 		if ( $wgRequest->getText( 'wbAutoLaunch' ) == "true" ) {
 			$jsAutoLoad = $this->wikiBhashaUrl;
 		}
-		$out->addScript( "<script language='javascript'> window.onload = function(){" . $jsIconScript . $jsAutoLoad . "}</script>" );
+		$out->addInlineScript( "addOnloadHook( function(){" . $jsIconScript . $jsAutoLoad . "});" );
 		return true;
 	}
 }
