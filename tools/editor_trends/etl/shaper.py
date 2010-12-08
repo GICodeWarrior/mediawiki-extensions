@@ -38,14 +38,6 @@ def create_datacontainer(datatype):
     year = datetime.datetime.now().year + 1
     for x in xrange(2001, year):
         data[str(x)] = add_datatype(datatype)
-#        if datatype == 'dict':
-#            data[str(x)] = dict()
-#        elif datatype == 'list':
-#            data[str(x)] = list()
-#        elif datatype == 'set':
-#            data[str(x)] = set()
-#        else:
-#            data[str(x)] = 0.0
     return data
 
 
@@ -54,16 +46,7 @@ def add_months_to_datacontainer(datacontainer, datatype):
         datacontainer[dc] = {}
         for x in xrange(1, 13):
             datacontainer[dc][str(x)] = add_datatype(datatype)
-#            if datatype == 'dict':
-#                datacontainer[dc][str(x)] = dict()
-#            elif datatype == 'list':
-#                datacontainer[dc][str(x)] = list()
-#            elif datatype == 'set':
-#                datacontainer[dc][str(x)] = set()
-#            else:
-#                datacontainer[dc][str(x)] = 0.0
-#            #else:
-            #    datacontainer[dc][str(x)] = 0.0
+
     return datacontainer
 
 

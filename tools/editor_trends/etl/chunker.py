@@ -211,7 +211,7 @@ def split_file(location, file, project, language_code, namespaces=[0], format='x
         output = os.path.join(location, 'chunks')
     else:
         output = os.path.join(location, 'txt')
-        bot_ids = bots.retrieve_bots()
+        bot_ids = bots.retrieve_bots(language_code)
     settings.verify_environment([output])
 
     fh = None

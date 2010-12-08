@@ -35,7 +35,7 @@ class EditorCache(object):
         self.n = 0
 
     def __repr__(self):
-        return '%s' % 'Editor Cache'
+        return self.editors
 
     def clear(self, key):
         if key in self.editors:
@@ -44,9 +44,8 @@ class EditorCache(object):
     def add(self, key, value):
         if value == 'NEXT':
             self.n += 1
-            result = self.insert(key, self.editors[key]['edits'], self.editors[key]['username'])
+            self.insert(key, self.editors[key]['edits'], self.editors[key]['username'])
             del self.editors[key]
-            return result
         else:
             if key not in self.editors:
                 self.editors[key] = {}
@@ -65,11 +64,13 @@ class EditorCache(object):
         self.collection.update({'editor': editor}, {'$pushAll': {'edits': values}}, upsert=True)
 
     def insert(self, editor, values, username):
-        try:
-            self.collection.insert({'editor': editor, 'edits': values, 'username': username})
-            return True
-        except:
-            return False
+        '''
+        Adding the safe=True statement slows down the insert process but this assures that all data
+        will be written. 
+        '''
+        self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
+        #except:
+        #    return False
 
     def store(self):
         utils.store_object(self, settings.binary_location, self.__repr__())

@@ -70,7 +70,7 @@ def read_bots_csv_file(location, filename, encoding, manager=False):
     return bot_dict
 
 
-def retrieve_bots():
+def retrieve_bots(language_code):
     '''
     Loader function to retrieve list of id's of known Wikipedia bots. 
     '''
@@ -79,7 +79,7 @@ def retrieve_bots():
     bots = mongo['ids']
     cursor = bots.find()
     for bot in cursor:
-        if bot['verified'] == 'True':
+        if bot['verified'] == 'True' and language_code in bot['projects']:
             ids[bot['id']] = bot['name']
     return ids
 
@@ -143,18 +143,25 @@ def lookup_bot_userid(data, fh, bots, keys):
     return bots
 
 
-def create_bot_validation_dataset(data, fh, bots, keys):
-    username = data[3].lower()
-    #print username.encode('utf-8')
-    if username.find('bot') > -1 or username.find('script') > -1:
-        bot = bots.get(username, botmodels.Bot(username, verified=False))
-        setattr(bot, 'id', data[0])
+def create_bot_validation_dataset(xml_nodes, fh, bots):
+    revisions = xml_nodes.findall('revision')
+    for revision in revisions:
+        contributor = xml.retrieve_xml_node(revision, 'contributor')
+        username = contributor.find('username')
+        if username == None or username.text == None:
+            continue
+        else:
+            username = username.text.lower()
 
-        timestamp = data[1]
-        if timestamp != None:
-            timestamp = utils.convert_timestamp_to_datetime_naive(timestamp)
-            bot.time[str(timestamp.year)].append(timestamp)
-        bots[username] = bot
+        #print username.encode('utf-8')
+        if username.find('bot') > -1 or username.find('script') > -1:
+            bot = bots.get(username, botmodels.Bot(username, verified=False))
+            bot.id = contributor.find('id').text
+            timestamp = revision.find('timestamp').text
+            if timestamp != None:
+                timestamp = utils.convert_timestamp_to_datetime_naive(timestamp)
+                bot.time[str(timestamp.year)].append(timestamp)
+            bots[username] = bot
 
     return bots
 
@@ -172,26 +179,33 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
     location = os.path.join(settings.input_location, language_code, project)
     input_xml = os.path.join(location, 'chunks')
     input_txt = os.path.join(location, 'txt')
-    files = utils.retrieve_file_list(input_txt, 'txt', mask=None)
-    input_queue = pc.load_queue(files, poison_pill=True)
+
+
     tasks = multiprocessing.JoinableQueue()
     mgr = multiprocessing.Manager()
     keys = ['id', 'name', 'verified', 'projects']
 
     if action == 'lookup':
         output_file = 'bots_ids.csv'
+        files = utils.retrieve_file_list(input_txt, 'txt', mask=None)
+        input_queue = pc.load_queue(files, poison_pill=True)
         bots = read_bots_csv_file(settings.csv_location, 'Bots.csv', settings.encoding, manager=manager)
+        for file in files:
+            tasks.put(models.TXTFile(file, input_txt, settings.csv_location, output_file, target, bots=bots, keys=keys))
+
     else:
         output_file = 'bots_predictionset.csv'
+        files = utils.retrieve_file_list(input_xml, 'xml', mask=None)
+        input_queue = pc.load_queue(files, poison_pill=True)
         bots = {}
+        for file in files:
+            tasks.put(models.XMLFile(file, input_xml, settings.csv_location, output_file, target, bots=bots, keys=keys))
 
     #lock = mgr.Lock()
     if manager:
         manager = mgr
 
 
-    for file in files:
-        tasks.put(models.TXTFile(file, input_txt, settings.csv_location, output_file, target, bots=bots, keys=keys))
 
     tracker = {}
     if single:

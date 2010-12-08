@@ -260,7 +260,9 @@ def store_launcher(args, logger, **kwargs):
     db.cleanup_database(project, logger)
 
     write_message_to_log(logger, args, verb='Storing', location=location, input=input, project=project, collection=collection)
-    loader.store_editors(input, project, collection)
+    num_editors = loader.store_editors(input, project, collection)
+    cnt_editors = db.count_records(project, collection)
+    assert num_editors == cnt_editors
     timer.elapsed()
 
 
@@ -297,7 +299,8 @@ def cleanup(logger, args, **kwargs):
     write_message_to_log(logger, args, verb='Creating', dir=dirs)
     settings.verify_environment(dirs)
 
-    file = full_project + '_editors.bin'
+
+    file = kwargs.get('full_project') + '_editor.bin'
     write_message_to_log(logger, args, verb='Deleting', file=file)
     utils.delete_file(settings.binary_location, file)
 

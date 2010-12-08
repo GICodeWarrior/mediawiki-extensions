@@ -105,7 +105,7 @@ def retrieve_distinct_keys_mapreduce(collection, field):
     ids = []
     cursor = collection.map_reduce(map, reduce)
     for c in cursor.find():
-        ids.append(int(c['_id']))
+        ids.append(c['_id'])
     return ids
 #def init_database(db=None):
 #    '''

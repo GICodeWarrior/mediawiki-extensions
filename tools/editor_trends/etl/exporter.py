@@ -207,11 +207,11 @@ def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
             if id == None:
                 break
             obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
+            if obs == None:
+                continue
             first_edit = obs['first_edit']
             last_edit = obs['final_edit']
             for y in xrange(2001, year):
-#                if y == 2010 and first_edit > datetime.datetime(2010, 1, 1):
-#                    print 'debug'
                 if y not in data:
                     data[y] = {}
                     data[y]['n'] = 0
@@ -226,23 +226,26 @@ def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
                     if period not in data[y]:
                         data[y][period] = 0
                     window_start = datetime.datetime(y, 12, 31) - relativedelta(months=period)
+                    if first_edit.year > y or last_edit.year < y:
+                        continue
                     if window_start < datetime.datetime(2001, 1, 1):
                         window_start = datetime.datetime(2001, 1, 1)
                     if date_falls_in_window(window_start, window_end, first_edit):
                         edits.append(period)
                 if edits != []:
                     p = min(edits)
-                    data[y]['n'] += 1
                     data[y][p] += 1
+                data[y]['n'] += 1
+
         except Empty:
             break
     print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
-    utils.store_object(data, settings.binary_location, dbname + '_cohort_data')
+    utils.store_object(data, settings.binary_location, dbname + '_cohort_data.bin')
     cohort_charts.prepare_cohort_dataset(dbname)
 
 
 def date_falls_in_window(window_start, window_end, first_edit):
-    if first_edit >= window_start and  first_edit <= window_end:
+    if first_edit >= window_start and first_edit <= window_end:
         return True
     else:
         return False

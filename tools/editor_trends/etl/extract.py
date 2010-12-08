@@ -162,12 +162,14 @@ def output_editor_information(elem, fh, **kwargs):
 
 
 def run_parse_editors(location, **kwargs):
-    bot_ids = bots.retrieve_bots()
+
     input = os.path.join(location, 'chunks')
     output = os.path.join(location, 'txt')
+    language_code = kwargs.get('language_code')
     settings.verify_environment([input, output])
     files = utils.retrieve_file_list(input, 'xml')
 
+    bot_ids = bots.retrieve_bots(language_code)
     tasks = multiprocessing.JoinableQueue()
     consumers = [models.XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
     for file in files:
@@ -183,7 +185,8 @@ def run_parse_editors(location, **kwargs):
 
 
 def debug_parse_editors(location):
-    bot_ids = bots.retrieve_bots()
+    language_code = 'en'
+    bot_ids = bots.retrieve_bots(language_code)
     input = os.path.join(location, 'chunks')
     output = os.path.join(location, 'txt')
     xml_file = models.XMLFile(input, output, 'pages_full_en.xml', bot_ids, output_editor_information)

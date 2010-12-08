@@ -73,14 +73,12 @@ class XMLFileConsumer(models.BaseConsumer):
 
 
 class XMLFile(object):
-    def __init__(self, input, output, xml_file, bots, target, output_file=None, **kwargs):
-        self.file = xml_file
-        self.input = input
+    def __init__(self, file, location, output, output_file, target, ** kwargs):
+        self.file = file
+        self.location = location
         self.output = output
-        self.bots = bots
         self.target = target
         self.output_file = output_file
-        self.lock = None
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
 
@@ -96,11 +94,13 @@ class XMLFile(object):
         return '%s' % (self.file)
 
     def __call__(self, bots=None):
+        if bots != {} and bots != None:
+            self.bots = bots
         if settings.debug:
             messages = {}
             vars = {}
 
-        data = xml.read_input(utils.create_txt_filehandle(self.input,
+        data = xml.read_input(utils.create_txt_filehandle(self.location,
                                                       self.file, 'r',
                                                       encoding=settings.encoding))
         self.create_file_handle()
@@ -111,10 +111,6 @@ class XMLFile(object):
                 raw_data = ''.join(raw_data)
                 xml_buffer.write(raw_data)
                 elem = cElementTree.XML(xml_buffer.getvalue())
-            except Exception, error:
-                print error
-                continue
-            try:
                 bots = self.target(elem, fh=self.fh, bots=self.bots)
             except SyntaxError, error:
                 print error

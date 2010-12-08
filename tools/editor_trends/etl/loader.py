@@ -40,21 +40,16 @@ def store_editors(input, dbname, collection):
     collection.create_index('editor')
     editor_cache = cache.EditorCache(collection)
     prev_contributor = -1
-    x = 0
     edits = 0
-    editors = set()
     for line in sort.readline(fh):
         if len(line) == 0:
             continue
         contributor = line[0]
+        #print 'Parsing %s' % contributor
         if prev_contributor != contributor:
             if edits > 9:
-                result = editor_cache.add(prev_contributor, 'NEXT')
-                if result:
-                    editors.add(prev_contributor)
-                    result = None
-                x += 1
-                print 'Stored %s editors' % x
+                editor_cache.add(prev_contributor, 'NEXT')
+                print 'Stored %s' % prev_contributor
             else:
                 editor_cache.clear(prev_contributor)
             edits = 0
@@ -66,7 +61,8 @@ def store_editors(input, dbname, collection):
         editor_cache.add(contributor, value)
         prev_contributor = contributor
     fh.close()
-
+    print editor_cache.n
+    return editor_cache.n
 
 def mergesort_external_launcher(input, output):
     files = utils.retrieve_file_list(input, 'txt', mask='')
@@ -154,4 +150,4 @@ if __name__ == '__main__':
     collection = 'editors'
     #mergesort_launcher(input, intermediate_output)
     #mergesort_external_launcher(intermediate_output, output)
-    store_editors(output, dbname, collection)
+    num_editors = store_editors(output, dbname, collection)
