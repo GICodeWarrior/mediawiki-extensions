@@ -1,5 +1,30 @@
-Once you have downloaded the code, place the 'Push' directory within your MediaWiki 'extensions' directory.
-Then add the following code to your LocalSettings.php file:
+These is the install file for the Push extension.
+	
+Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Push
+Latest version of the install file: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push/INSTALL?view=co
+
+
+== Installation ==
+
+Once you have downloaded the code, place the ''Push'' directory within your MediaWiki 'extensions' directory.
+Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php]] file:
 
 # Push
 require_once( "$IP/extensions/Push/Push.php" );
+
+== Configuration ==
+
+=== Push targets ===
+
+You can add push targets (wikis you can push content to) by adding elements to the $egPushTarget array in your
+[[Manual:LocalSettings.php|LocalSettings.php]] file. The array keys should be the names of your wikis and the
+values should point to the wiki root, without tailing slash. Example:
+
+$egPushTargets['Local MW 1.16'] = 'http://localhost/mw116';
+$egPushTargets['Local MW trunk'] = 'http://localhost/phase3';
+
+=== Tab display ===
+
+When using vector like skins, you can choose to have the push tab displayed on the page itself, or in the action
+menu you can open by clicking the down arrow next to the visible tabs. For this you need to set the $egPushShowTab
+ variable to either true or false in your [[Manual:LocalSettings.php|LocalSettings.php]] file.
