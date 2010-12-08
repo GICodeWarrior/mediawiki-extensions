@@ -11,7 +11,6 @@
  * 
  * @author jean-philippe muller
  * @author Morel Émile
- * @author Jeroen De Dauw 
  */
 
 /**
