@@ -1397,6 +1397,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'passwordreset' => 'Repor Palavra-chave',
@@ -1405,7 +1406,7 @@ $messages['pt-br'] = array(
 	'passwordreset-emptyusername' => 'Nome de Utilizador Vazio',
 	'passwordreset-nopassmatch' => 'Palavras-Chave não coincidem',
 	'passwordreset-badtoken' => 'Token de edição inválido',
-	'passwordreset-username' => 'Nome de utilizador:',
+	'passwordreset-username' => 'Nome de usuário:',
 	'passwordreset-newpass' => 'Nova palavra-chave:',
 	'passwordreset-confirmpass' => 'Confirme a palavra-chave:',
 	'passwordreset-submit' => 'Repor Palavra-Chave',
