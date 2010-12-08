@@ -2,6 +2,7 @@
 
 /**
  * A special page that allows pushing one or more pages to one or more targets.
+ * Partly based on MediaWiki's Special:Export.
  * 
  * @since 0.1
  * 
@@ -102,24 +103,45 @@ class SpecialPush extends SpecialPage {
 		}		
 		
 		if ( $doPush ) {
-			$this->doPush();
+			$this->doPush( $pages );
 		}
 		else {
 			$this->displayPushInterface( $arg, $pages );
 		}
 	}
 	
-	protected function doPush() {
-		global $wgOut, $wgLang;
+	/**
+	 * Outputs the HTML to indicate a push is occuring and
+	 * the JavaScript to needed by the push.
+	 * 
+	 * @since 0.2
+	 * 
+	 * @param string $pages
+	 */
+	protected function doPush( $pages ) {
+		global $wgOut, $wgLang, $wgRequest, $egPushTargets;
+		
+		$pages = explode( "\n", $pages );
+		$pageCount = count( $pages ); 
 		
 		$targets = array();
+		$links = array();
 		
-		// TODO
-		$wgOut->addWikiMsg( 'push-special-pushing-desc', $wgLang->listToText( $targets ) );
+		foreach ( $egPushTargets as $targetName => $targetUrl ) {
+			if ( $wgRequest->getCheck( str_replace( ' ', '_', $targetName ) ) ) {
+				$targets[$targetName] = $targetUrl;
+				$links[] = "[$targetUrl $targetName]";
+			}
+		}
+		
+		$wgOut->addWikiMsg( 'push-special-pushing-desc', $wgLang->listToText( $links ), $wgLang->formatNum( $pageCount ), $pageCount );
+		
+		$wgOut->addInlineScript(
+			'var wgPushPages = ' . json_encode( $pages ) . ';' .
+			'var wgPushTargets = ' . json_encode( $targets ) . ';'
+		);
 		
 		$this->loadJs();
-		
-		// TODO
 	}
 	
 	/**
@@ -151,7 +173,7 @@ class SpecialPush extends SpecialPage {
 			$form .= '<b>' . htmlspecialchars( wfMsg( 'push-special-select-targets' ) ) . '</b><br />';
 			
 			foreach ( $egPushTargets as $targetName => $targetUrl ) {
-				$form .= Xml::checkLabel( $targetName, $targetName, $targetName, true ) . '<br />';
+				$form .= Xml::checkLabel( $targetName, str_replace( ' ', '_', $targetName ), $targetName, true ) . '<br />';
 			}
 		}
 		

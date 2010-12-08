@@ -42,7 +42,7 @@ $messages['en'] = array(
 	'push-special-description' => 'This page enables you to push content of one or more pages to one or more MediaWiki wikis.
 
 To push pages, enter the titles in the text box below, one title per line and hit push all. This can take a while to complete.',
-	'push-special-pushing-desc' => 'Pushing pages to $1.',
+	'push-special-pushing-desc' => 'Pushing $2 {{PLURAL:$3|page|pages}} to $1...',
 	'push-special-button-text' => 'Push pages',
 	'push-special-target-is' => 'Target wiki: $1',
 	'push-special-select-targets' => 'Target wikis:',
