@@ -21,8 +21,7 @@
 	
 	var targets = window.wgPushTargets;
 	var pages = window.wgPushPages;
-
-	var requestAmount = 2;
+	var requestAmount = Math.min( pages.length, window.wgPushWorkerCount );
 	
 	var pageTargets = [];
 	
@@ -46,6 +45,7 @@
 		listItem.text( pageName );
 		
 		resultList.append( listItem );
+		$('#pushResultDiv').attr( {'scrollTop': $('#pushResultDiv').attr( 'scrollHeight' )} );
 		
 		getLocalArtcileAndContinue( listItem, pageName );
 	}
@@ -88,6 +88,7 @@
 		}
 		else {
 			listItem.text( msgReplace( 'push-special-item-completed', pageName ) );
+			listItem.css( 'color', 'darkgray' );
 			initiateNextPush();			
 		}
 	}

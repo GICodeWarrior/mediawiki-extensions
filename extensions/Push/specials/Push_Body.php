@@ -119,7 +119,7 @@ class SpecialPush extends SpecialPage {
 	 * @param string $pages
 	 */
 	protected function doPush( $pages ) {
-		global $wgOut, $wgLang, $wgRequest, $egPushTargets;
+		global $wgOut, $wgLang, $wgRequest, $egPushTargets, $egPushBulkWorkers;
 		
 		$pageSet = array(); // Inverted index of all pages to look up
 
@@ -154,12 +154,20 @@ class SpecialPush extends SpecialPage {
 		$wgOut->addWikiMsg( 'push-special-pushing-desc', $wgLang->listToText( $links ), $wgLang->formatNum( $pageCount ), $pageCount );
 		
 		$wgOut->addHTML(
-			Html::element( 'ul', array( 'id' => 'pushResultList' ) )
+			Html::rawElement(
+				'div',
+				array(
+					'id' => 'pushResultDiv',
+					'style' => 'width: 100%; height: 300px; overflow: auto'
+				),
+				Html::element( 'ul', array( 'id' => 'pushResultList' ) )
+			)
 		);
 		
 		$wgOut->addInlineScript(
 			'var wgPushPages = ' . json_encode( $pages ) . ';' .
-			'var wgPushTargets = ' . json_encode( $targets ) . ';'
+			'var wgPushTargets = ' . json_encode( $targets ) . ';' .
+			'var wgPushWorkerCount = ' . $egPushBulkWorkers . ';'
 		);
 		
 		$this->loadJs();
