@@ -189,12 +189,12 @@ final class PushTab {
 					array(),
 					wfMsg( 'push-targets' )
 				) .
-				Html::rawElement(
+				Html::Element(
 					'th',
 					array(),
 					wfMsg( 'push-remote-pages' )
 				) .
-				Html::rawElement(
+				Html::Element(
 					'th',
 					array( 'width' => '125px' ),
 					''
@@ -212,7 +212,7 @@ final class PushTab {
 			Html::element(
 				'th',
 				array( 'colspan' => 2, 'style' => 'text-align: left' ),
-				wfMsgExt( 'push-targets-total', 'parsemag', $wgLang->formatNum( count( $egPushTargets ) ) )
+				wfMsgExt( 'push-targets-total', 'parsemag', $wgLang->formatNum( count( $egPushTargets ) ), count( $egPushTargets ) )
 			) .
 			Html::rawElement(
 				'th',

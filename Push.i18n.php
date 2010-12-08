@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'push-remote-pages' => 'Remote pages',
 	'push-remote-page-link' => '$1 on $2', // $1: page name, $2: wiki name
 	'push-remote-page-link-full' => 'View $1 on $2', // $1: page name, $2: wiki name
-	'push-targets-total' => 'There are $1 targets in total.', // $1 will always be plural
+	'push-targets-total' => 'There a total of $1 {{PLURAL:$2|target|targets}}.',
 	'push-button-all' => 'Push all',
 	
 	// Special page
