@@ -67,6 +67,11 @@ $egPushJSMessages = array(
 	'push-import-revision-comment',
 	'push-button-text',
 	'push-button-all',
+	'push-special-item-getting',
+	'push-special-item-pushing-to',
+	'push-special-item-completed',
+	'push-special-item-failed',
+	'push-special-push-done',
 );
 
 // For backward compatibility with MW < 1.17.
@@ -84,7 +89,7 @@ if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
 	);
 	
 	$wgResourceModules['ext.push.special'] = $moduleTemplate + array(
-		'scripts' => 'includes/ext.push.special.js',
+		'scripts' => 'specials/ext.push.special.js',
 		'dependencies' => array(),
 		'messages' => $egPushJSMessages
 	);	
