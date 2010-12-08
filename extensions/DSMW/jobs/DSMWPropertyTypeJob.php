@@ -5,7 +5,6 @@
  * @copyright 2009 INRIA-LORIA-Score Team
  * 
  * @author jean-philippe muller
- * @author Jeroen De Dauw
  */
 class DSMWPropertyTypeJob extends Job {
 
