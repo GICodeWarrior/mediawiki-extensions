@@ -242,7 +242,7 @@ wikiBhasha.loadApplicationRequiredFiles = function() {
                     "js/core/themes.js",
                     "js/core/utils.js",
                     "js/core/wikiModeConverters.js",
-                    "js/core/chineaseLangSelection.js",
+                    "js/core/chineseLangSelection.js",
                     "js/core/wikiParser.js"],
 
         //wikiBhasha default theme
