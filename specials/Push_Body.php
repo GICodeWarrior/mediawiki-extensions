@@ -154,6 +154,7 @@ class SpecialPush extends SpecialPage {
 		$wgOut->addWikiMsg( 'push-special-pushing-desc', $wgLang->listToText( $links ), $wgLang->formatNum( $pageCount ), $pageCount );
 		
 		$wgOut->addHTML(
+			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) ) .
 			Html::rawElement(
 				'div',
 				array(
