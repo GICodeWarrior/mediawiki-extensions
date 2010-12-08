@@ -476,6 +476,16 @@ Exemplos:
 	'flagpage-tab' => 'Marcar',
 );
 
+/** Russian (Русский)
+ * @author Lockal
+ */
+$messages['ru'] = array(
+	'flagpage-submitbutton' => 'Сохранить страницу с этим шаблоном',
+	'flagpage-nonexistent' => 'Страница «$1» не существует. Возможно, она была [{{fullurl:Special:Log|page=$1}} перемещена или удалена].',
+	'flagpage-summary' => 'Добавлен шаблон [[$1]] с помощью FlagPage',
+	'flagpage-success' => '[[$1]] добавлен на страницу [[$2]].',
+);
+
 /** Swedish (Svenska)
  * @author Fader
  */

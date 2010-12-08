@@ -404,6 +404,41 @@ $messages['pt'] = array(
 	'ts-citegen-Title' => 'Gerador de predefinição de citação',
 );
 
+/** Russian (Русский)
+ * @author Lockal
+ */
+$messages['ru'] = array(
+	'ts-citegen-Title' => 'Генератор шаблона цитирования',
+	'ts-citegen-Send' => 'Сгенерировать',
+	'ts-citegen-Input-title' => 'Входные данные',
+	'ts-citegen-Input-text' => 'Это генератор шаблонов цитирования. С помощью него вы можете быстро заполнить шаблоны цитирования в различных языковых разделах Википедии. Пожалуйста, заполните данные (%s) в поля ниже, и скрипт попытается заполнить шаблоны. Порядок заполнения полей не имеет значения: скрипт автоматически подберёт правильный порядок для введённых данных.',
+	'ts-citegen-Option-append-author-link' => 'Добавить в шаблон вики-ссылки на авторов',
+	'ts-citegen-Option-append-newlines' => 'Добавлять переносы строк после каждого параметра',
+	'ts-citegen-Option-add-references' => 'Добавить теги <ref> вокруг шаблона цитирования.',
+	'ts-citegen-Option-add-list' => 'Создать вики-список из шаблонов цитирования',
+	'ts-citegen-Output-title' => 'Результат',
+	'ts-citegen-Output-select-disclaimer' => 'Выбор языка шаблона не гарантирует, что этот конкретный шаблон доступен на вашем языке. В этом поле перечислены доступные языки для каждого поддерживаемого шаблона, то есть в нём может быть французский только из-за того, что в разделе поддерживается {{Cite book}}.',
+	'ts-citegen-Wrong-input' => '%s: значение не определено как правильный ввод.',
+	'ts-citegen-Parsers' => 'Парсеры',
+	'ts-citegen-Skins' => 'Результат',
+	'ts-citegen-Skin-skins' => 'Темы оформления',
+	'ts-citegen-Skin-outputformat' => 'Выходной формат',
+	'ts-citegen-Template-lang' => 'Язык шаблона',
+	'ts-citegen-Sources-title' => 'Источники',
+	'ts-citegen-Sources-text' => 'Ниже представлен список использованных источников.',
+	'ts-citegen-Sidebar-title' => 'Генератор цитирований',
+	'ts-citegen-Sidebar-add-Firefox' => 'Добавить на боковую панель',
+	'ts-citegen-Sidebar-add-Opera' => 'Добавить в Hotlist',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Добавить в Page Holder',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'После загрузки страницы откройте Page Holder, нажмите «Add», после чего используйте кнопку Page Holder Favorites для сохранения страницы в качестве избранной.',
+	'ts-citegen-Tools' => 'Инструменты',
+	'ts-citegen-Other-languages' => 'Другие языки',
+	'ts-citegen-Save-it' => 'Текущий запрос',
+	'ts-citegen-Errors-title' => 'Ошибки',
+	'ts-citegen-Unavailable-SQL' => 'Ошибка: база данных тулсервера недоступна. Ответ MySQL: %s',
+	'ts-citegen-base-disabled' => 'Ошибка: база данных %s недоступна',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

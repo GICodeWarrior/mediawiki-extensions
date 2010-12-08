@@ -253,10 +253,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author El libre
  * @author Solde
  */
 $messages['ca'] = array(
 	'article-comments-title-string' => 'títol',
+	'article-comments-name-string' => 'Nom',
 	'article-comments-name-field' => 'Nom (requerit):',
 	'article-comments-url-field' => 'Pàgina web:',
 	'article-comments-url-string' => 'URL',
@@ -264,6 +266,10 @@ $messages['ca'] = array(
 	'article-comments-comment-field' => 'Comentari:',
 	'article-comments-submit-button' => 'Tramet',
 	'article-comments-leave-comment-link' => 'Deixa un comentari ...',
+	'article-comments-required-field' => 'El camp "$1" és obligatori.',
+	'article-comments-comment-missing-name-parameter' => 'Falta el nom',
+	'article-comments-comment-missing-date-parameter' => 'Falta la data del comentari',
+	'processcomment' => "Processa el comentari a l'article",
 );
 
 /** Czech (Česky)
