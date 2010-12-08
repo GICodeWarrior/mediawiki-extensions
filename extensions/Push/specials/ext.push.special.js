@@ -22,13 +22,12 @@
 	var targets = window.wgPushTargets;
 	var pages = window.wgPushPages;
 
-	var finished = false;
-
-	var requestAmount = 1;
+	var requestAmount = 2;
 	
-	while ( requestAmount > 0 ) {
+	var pageTargets = [];
+	
+	for ( i = requestAmount; i > 0; i-- ) {
 		initiateNextPush();
-		requestAmount--;
 	}
 	
 	function initiateNextPush() {
@@ -37,8 +36,7 @@
 		if ( page ) {
 			startPush( page );
 		}
-		else if ( !finished ) {
-			finished = true;
+		else if ( !--requestAmount ) {
 			showCompletion();
 		}
 	}
@@ -73,17 +71,28 @@
 					handleError( listItem, pageName, data.error );
 				}
 				else {
-					for (targetName in targets) {
-						for (first in data.query.pages) break;
-						getEditTokenAndContinue( listItem, pageName, targets[targetName], targetName, data.query.pages[first] );
-						break; // TODO: support multiple targets
-					}
+					for (first in data.query.pages) break;
+					var remainingTargets = [];
+					for (targetName in targets) remainingTargets.push( targetName );
+					initiateEdit( listItem, pageName, data.query.pages[first], remainingTargets );
 				}
 			}
 		); 		
 	}
 	
-	function getEditTokenAndContinue( listItem, pageName, targetUrl, targetName, page ) {
+	function initiateEdit( listItem, pageName, page, remainingTargets ) {
+		targetName = remainingTargets.pop();
+		
+		if ( targetName ) {
+			getEditTokenAndContinue( listItem, pageName, targets[targetName], targetName, page, remainingTargets );
+		}
+		else {
+			listItem.text( msgReplace( 'push-special-item-completed', pageName ) );
+			initiateNextPush();			
+		}
+	}
+	
+	function getEditTokenAndContinue( listItem, pageName, targetUrl, targetName, page, remainingTargets ) {
 		listItem.text( msgReplace( 'push-special-item-pushing-to', pageName, targetName ) );
 		
 		$.getJSON(
@@ -101,13 +110,13 @@
 				}
 				else {
 					for (first in data.query.pages) break;
-					doPush( listItem, pageName, targetUrl, page, data.query.pages[first].edittoken );
+					doPush( listItem, pageName, targetUrl, page, data.query.pages[first].edittoken, remainingTargets );
 				}
 			}
 		); 
 	}	
 	
-	function doPush( listItem, pageName, targetUrl, page, token ) {
+	function doPush( listItem, pageName, targetUrl, page, token, remainingTargets ) {
 		var summary = msgReplace(
 			'push-import-revision-message',
 			$('#siteName').attr('value'),
@@ -130,23 +139,21 @@
 					handleError( listItem, pageName, data.error );
 				}
 				else {
-					listItem.text( msgReplace( 'push-special-item-completed', pageName ) );
-					initiateNextPush();
+					initiateEdit( listItem, pageName, page, remainingTargets );
 				}
 			}
 		);	
 	}
 	
 	function handleError( listItem, pageName, error ) {
-		listItem.text( msgReplace( 'push-special-item-failed', pageName ) );
-		alert( error.info );
+		listItem.text( msgReplace( 'push-special-item-failed', pageName, error.info ) );
 		initiateNextPush();	
 	}
 	
 	function msgReplace() {
 		message = mediaWiki.msg( arguments[0] );
 		for ( var i = arguments.length - 1; i > 0; i-- ) {
-			message = message.replace( '$', arguments[i] );
+			message = message.replace( '$' + i, arguments[i] );
 		}
 		return message;
 	}
