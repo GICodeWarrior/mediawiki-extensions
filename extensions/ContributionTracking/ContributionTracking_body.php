@@ -90,6 +90,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 		// Set the action and tracking ID fields
 		$repost = array();
 		$action = 'http://wikimediafoundation.org/';
+		$amount_field_name = 'amount'; // the amount fieldname may be different depending on the service
 		if ( $gateway == 'paypal' ) {
 			$action = 'https://www.paypal.com/cgi-bin/webscr';
 
@@ -104,17 +105,28 @@ class ContributionTracking extends UnlistedSpecialPage {
 			$repost['business'] = 'donations@wikimedia.org';
 			$repost['item_name'] = 'One-time donation';
 			$repost['item_number'] = 'DONATE';
-			$repost['cmd'] = '_xclick';
 			$repost['no_note'] = '0';
-			$repost['notify_url'] = 'https://civicrm.wikimedia.org/fundcore_gateway/paypal';
 			$repost['return'] = $returnto;
-			
 			$repost['currency_code'] = $wgRequest->getText( 'currency_code', 'USD' );
 			
 			// additional fields to pass to PayPal from single-step credit card form
 			$repost[ 'first_name' ] = $wgRequest->getText( 'fname', null );
 			$repost[ 'last_name' ] = $wgRequest->getText( 'lname', null );
 			$repost[ 'email' ] = $wgRequest->getText( 'email', null );
+			
+			// if this is a recurring donation, we have add'l fields to send to paypal
+			if ( $wgRequest->getText( 'recurring_paypal' ) == 'true' ) {
+				$repost[ 't3' ] = "M"; // The unit of measurement for for p3 (M = month)
+				$repost[ 'p3' ] = '1'; // Billing cycle duration
+				$repost[ 'srt' ] = '12'; // # of billing cycles
+				$repost[ 'src' ] = '1'; // Make this 'recurring' 
+				$repost[ 'sra' ] = '1'; // Turn on re-attempt on failure
+				$repost[ 'cmd' ] = '_xclick-subscriptions';
+				$amount_field_name = 'a3';
+			} else {
+				$repost['cmd'] = '_xclick';
+				$repost['notify_url'] = 'https://civicrm.wikimedia.org/fundcore_gateway/paypal';
+			}
 		}
 		else if ( $gateway == 'moneybookers' ) {
 			$action = 'https://www.moneybookers.com/app/payment.pl';
@@ -134,9 +146,9 @@ class ContributionTracking extends UnlistedSpecialPage {
 		}
 		
 		// Normalized amount
-		$repost['amount'] = $wgRequest->getVal( 'amount' );
+		$repost[ $amount_field_name ] = $wgRequest->getVal( 'amount' );
 		if ( $wgRequest->getVal( 'amountGiven' ) ) {
-			$repost['amount'] = $wgRequest->getVal( 'amountGiven' );
+			$repost[ $amount_field_name ] = $wgRequest->getVal( 'amountGiven' );
 		}
 		
 		// Tracking
