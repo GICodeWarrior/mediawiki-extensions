@@ -24,3 +24,5 @@ $wgGroupPermissions['*']['push'] = true;
 $wgGroupPermissions['sysop']['pushadmin'] = true;
 
 $egPushShowTab = false;
+
+$egPushBulkWorkers = 3;
