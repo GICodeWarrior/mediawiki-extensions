@@ -55,28 +55,28 @@
 // Make sure the base namespace exists.
 // includes all the available configurations for the application.
 if (typeof (wikiBhasha.configurations) === "undefined") {
-    wikiBhasha.configurations = {};
+	wikiBhasha.configurations = {};
 }
 
 // describes the configuration required for template mapping from source language article to target language article.
 wikiBhasha.configurations.templateMappers = {
 	templateMapConfig :'<?xml version="1.0"?>\
-                        <templateMapConfig>\
-	                        <templateMapBetweenLangPair srcLang="en" tgtLang="ja">\
-		                        <templateMap srcTemplateName="EnTemplate1" tgtTemplateName="JaTempalte1">\
-			                        <param srcTemplateParamName="EnTemAttr1" tgtTemplateParamName="JaTemAttr1"/>\
-			                        <param srcTemplateParamName="EnTemAttr2" tgtTemplateParamName="JaTemAttr2"/>\
-		                        </templateMap>\
-		                    </templateMapBetweenLangPair>\
-		                    <templateMapBetweenLangPair srcLang="en" tgtLang="hi">\
-		                        <templateMap srcTemplateName="Age in weeks" tgtTemplateName="उमर_सप्ताह_मे">\
-			                        <param srcTemplateParamName="month1" tgtTemplateParamName="महिना1"/>\
-			                        <param srcTemplateParamName="day1" tgtTemplateParamName="दिन1"/>\
-			                        <param srcTemplateParamName="year1" tgtTemplateParamName="साल1"/>\
-			                        <param srcTemplateParamName="month2" tgtTemplateParamName="महिना2"/>\
-			                        <param srcTemplateParamName="day2" tgtTemplateParamName="दिन2"/>\
-			                        <param srcTemplateParamName="year2" tgtTemplateParamName="साल2"/>\
-		                        </templateMap>\
-		                    </templateMapBetweenLangPair>\
-		                </templateMapConfig>'
+						<templateMapConfig>\
+							<templateMapBetweenLangPair srcLang="en" tgtLang="ja">\
+								<templateMap srcTemplateName="EnTemplate1" tgtTemplateName="JaTempalte1">\
+									<param srcTemplateParamName="EnTemAttr1" tgtTemplateParamName="JaTemAttr1"/>\
+									<param srcTemplateParamName="EnTemAttr2" tgtTemplateParamName="JaTemAttr2"/>\
+								</templateMap>\
+							</templateMapBetweenLangPair>\
+							<templateMapBetweenLangPair srcLang="en" tgtLang="hi">\
+								<templateMap srcTemplateName="Age in weeks" tgtTemplateName="उमर_सप्ताह_मे">\
+									<param srcTemplateParamName="month1" tgtTemplateParamName="महिना1"/>\
+									<param srcTemplateParamName="day1" tgtTemplateParamName="दिन1"/>\
+									<param srcTemplateParamName="year1" tgtTemplateParamName="साल1"/>\
+									<param srcTemplateParamName="month2" tgtTemplateParamName="महिना2"/>\
+									<param srcTemplateParamName="day2" tgtTemplateParamName="दिन2"/>\
+									<param srcTemplateParamName="year2" tgtTemplateParamName="साल2"/>\
+								</templateMap>\
+							</templateMapBetweenLangPair>\
+						</templateMapConfig>'
 };
