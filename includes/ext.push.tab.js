@@ -36,7 +36,7 @@
 	});	
 	
 	function getLocalArtcileAndContinue( sender, targetUrl ) {
-		var pageName = $('#pageName').attr('value'); 
+		var revId = $('#pushRevId').attr('value');
 		
 		$.getJSON(
 			wgScriptPath + '/api.php',
@@ -45,7 +45,9 @@
 				'format': 'json',
 				'prop': 'revisions',
 				'rvprop': 'timestamp|user|comment|content',
-				'titles': pageName,
+				'titles': $('#pageName').attr('value'),
+				'rvstartid': revId,
+				'rvendid': revId,
 			},
 			function( data ) {
 				if ( data.error ) {
@@ -166,7 +168,7 @@
 				}
 				else {
 					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
-					setTimeout( function() {reEnableButton( sender );}, 2000 );
+					setTimeout( function() {reEnableButton( sender );}, 1000 );
 				}
 			}
 		);	
