@@ -49,6 +49,6 @@ To push pages, enter the titles in the text box below, one title per line and hi
 	'push-special-item-getting' => '$1: Getting page',
 	'push-special-item-pushing-to' => '$1: Pushing to $2',
 	'push-special-item-completed' => '$1: Push completed',
-	'push-special-item-failed' => '$1: Push failed',
-	'push-special-push-done' => 'Push completed.'
+	'push-special-item-failed' => '$1: Push failed: $2',
+	'push-special-push-done' => 'Push completed'
 );
