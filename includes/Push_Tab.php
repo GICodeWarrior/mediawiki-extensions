@@ -159,7 +159,7 @@ final class PushTab {
 				'a',
 				array( 'href' => $egPushTargets[$targetNames[0]] . '/index.php?title=' . $wgTitle->getFullText(), 'rel' => 'nofollow' ),
 				wfMsgExt( 'push-remote-page-link-full', 'parsemag', $wgTitle->getFullText(), $targetNames[0] )
-			) . '</i></td><td>&nbsp;&nbsp;&nbsp;' .
+			) . '</i></td><td>&#160;&#160;&#160;' .
 			Html::element(
 				'button',
 				array(
