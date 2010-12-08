@@ -4,11 +4,16 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Push
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push/RELEASE-NOTES?view=co
 
 
-== Version 0.1 ==
+=== Version 0.2 ===
+
+* Added Special:Push for bulk pushing
+* Added AdminLinks hook
+
+=== Version 0.1 ===
 2010-12-08
 
 Initial release.
 
-* Push tab that allows pushing the page to one or more other wikis
-* ApprovedRevs support
-* 'push' right
+* Added push tab that allows pushing the page to one or more other wikis
+* Added ApprovedRevs support
+* Added 'push' right

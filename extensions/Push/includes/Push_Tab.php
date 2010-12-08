@@ -10,7 +10,6 @@
  *
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-
 final class PushTab {
 	
 	/**
@@ -87,7 +86,7 @@ final class PushTab {
 		else {
 			global $egPushScriptPath;
 			
-			efPushAddJSLocalisation();
+			PushFunctions::addJSLocalisation();
 			
 			$wgOut->includeJQuery();
 			
