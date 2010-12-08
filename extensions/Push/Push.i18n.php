@@ -46,4 +46,9 @@ To push pages, enter the titles in the text box below, one title per line and hi
 	'push-special-button-text' => 'Push pages',
 	'push-special-target-is' => 'Target wiki: $1',
 	'push-special-select-targets' => 'Target wikis:',
+	'push-special-item-getting' => '$1: Getting page',
+	'push-special-item-pushing-to' => '$1: Pushing to $2',
+	'push-special-item-completed' => '$1: Push completed',
+	'push-special-item-failed' => '$1: Push failed',
+	'push-special-push-done' => 'Push completed.'
 );

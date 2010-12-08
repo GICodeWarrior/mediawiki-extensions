@@ -121,7 +121,24 @@ class SpecialPush extends SpecialPage {
 	protected function doPush( $pages ) {
 		global $wgOut, $wgLang, $wgRequest, $egPushTargets;
 		
-		$pages = explode( "\n", $pages );
+		$pageSet = array(); // Inverted index of all pages to look up
+
+		// Split up and normalize input
+		foreach( explode( "\n", $pages ) as $pageName ) {
+			$pageName = trim( $pageName );
+			$title = Title::newFromText( $pageName );
+			if( $title && $title->getInterwiki() == '' && $title->getText() !== '' ) {
+				// Only record each page once!
+				$pageSet[$title->getPrefixedText()] = true;
+			}
+		}
+
+		// Look up any linked pages if asked...
+		if( $wgRequest->getCheck( 'templates' ) ) {
+			$pageSet = $this->getTemplates( array_keys( $pageSet ), $pageSet );
+		}
+
+		$pages = array_keys( $pageSet );		
 		$pageCount = count( $pages ); 
 		
 		$targets = array();
@@ -135,6 +152,10 @@ class SpecialPush extends SpecialPage {
 		}
 		
 		$wgOut->addWikiMsg( 'push-special-pushing-desc', $wgLang->listToText( $links ), $wgLang->formatNum( $pageCount ), $pageCount );
+		
+		$wgOut->addHTML(
+			Html::element( 'ul', array( 'id' => 'pushResultList' ) )
+		);
 		
 		$wgOut->addInlineScript(
 			'var wgPushPages = ' . json_encode( $pages ) . ';' .
@@ -256,6 +277,24 @@ class SpecialPush extends SpecialPage {
 		return $pages;
 	}	
 
+	/**
+	 * Expand a list of pages to include templates used in those pages.
+	 * 
+	 * @since 0.2
+	 * 
+	 * @param $inputPages array list of titles to look up
+	 * @param $pageSet array associative array indexed by titles for output
+	 * 
+	 * @return array associative array index by titles
+	 */
+	private function getTemplates( $inputPages, $pageSet ) {
+		return $this->getLinks( $inputPages, $pageSet,
+			'templatelinks',
+			array( 'tl_namespace AS namespace', 'tl_title AS title' ),
+			array( 'page_id=tl_from' )
+		);
+	}	
+	
 	/**
 	 * Loads the needed JavaScript.
 	 * Takes care of non-RL compatibility.
