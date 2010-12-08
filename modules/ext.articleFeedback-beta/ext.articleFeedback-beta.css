@@ -5,12 +5,12 @@
 .articleFeedback {
 	position: relative;
 	display: inline-block;
-	width: 39em; /* 1em extra space to resolve rounding errors*/
+	/* width: 39em; 1em extra space to resolve rounding errors*/
 }
 
 .articleFeedback-panel {
-	height: 15em;
-	background-color: #f3f3f3;
+	/* height: 15em; */
+	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
 }
@@ -20,9 +20,9 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 15em;
-	width: 38em;
-	background-color: #f3f3f3;
+	/* height: 15em; */
+	/* width: 38em; */
+	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
 }
@@ -37,7 +37,7 @@
 
 .articleFeedback-panel .articleFeedback-buffer {
 	padding: 0.75em 1em;
-	width: 28em;
+	/* width: 28em; */
 }
 
 .articleFeedback-title {
@@ -91,20 +91,20 @@
 }
 
 .articleFeedback-rating-labels {
-	padding-left: 1em;
+	margin-left: 10px;
 }
 
 .articleFeedback-rating-labels label, .articleFeedback-rating-clear {
 	float: left;
-	height: 2em;
-	width: 2em;
-	margin: 0;
-	padding: 0;
-	/* @embed */
-	background-image: url(images/star-empty.png);
+	height: 21px;
+	width: 21px;
 	background-repeat: no-repeat;
 	background-position: center center;
 	cursor: pointer;
+}
+.articleFeedback-rating-labels label {
+	/* @embed */
+	background-image: url(images/star-empty.png);
 }
 
 .articleFeedback-rating-clear {
@@ -139,10 +139,32 @@
 }
 
 .articleFeedback-rating {
-	float: left;
-	width: 50%;
-	margin-left: -1px;
+	display: inline-block;
+	/* width: 50%; */
+	/* margin-left: -1px; */
+	width: 11em;
 	height: 4em;
+}
+
+.articleFeedback-rating-meter {
+	height: 21px;
+	width: 107px;
+	border: solid 1px #cccccc;
+	margin-left: 10px;
+	/* @embed */
+	background-image: url(images/segment-empty.png);
+	background-repeat: repeat-x;
+	background-position: center left;
+}
+
+.articleFeedback-rating-meter div {
+	height: 21px;
+	width: 33%;
+	border-right: solid 1px #a8d8f9;
+	/* @embed */
+	background-image: url(images/segment-full.png);
+	background-repeat: repeat-x;
+	background-position: center left;
 }
 
 .articleFeedback-label {

@@ -42,25 +42,29 @@ $.articleFeedback = {
 				<span class="articleFeedback-label" title-msg="field-wellsourced-tip"><msg key="field-wellsourced-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
 			</div>\
 			<div class="articleFeedback-rating articleFeedback-rating-new" rel="neutral">\
 				<span class="articleFeedback-label" title-msg="field-neutral-tip"><msg key="field-neutral-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
 			</div>\
 			<div class="articleFeedback-rating articleFeedback-rating-new" rel="complete">\
 				<span class="articleFeedback-label" title-msg="field-complete-tip"><msg key="field-complete-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
 			</div>\
 			<div class="articleFeedback-rating articleFeedback-rating-new" rel="readable">\
 				<span class="articleFeedback-label" title-msg="field-readable-tip"><msg key="field-readable-label" /></span>\
 				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
 			</div>\
 			<div style="clear:both;"></div>\
 		</div>\
-		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit">Submit feedback</button>\
+		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled>Submit feedback</button>\
 		<div style="clear:both;"></div>\
 	</div>\
 </div>\
@@ -89,6 +93,10 @@ $.articleFeedback = {
 						'delayIn': 300,
 						'delayOut': 100
 					} )
+					.end()
+				// Buttonify the button
+				.find( '.articleFeedback-submit' )
+					.button()
 					.end()
 				// Hide report elements initially
 				.find( '.articleFeedback-visibleWith-report' )
@@ -156,6 +164,7 @@ $.articleFeedback = {
 						}
 					)
 					.mousedown( function() {
+						$( '.articleFeedback-submit' ).button( { 'disabled': false } );
 						$(this)
 							.addClass( 'articleFeedback-rating-label-down' )
 							.nextAll()
