@@ -18,7 +18,7 @@
 //Make sure the base namespace exists.
 
 if (typeof (wikiBhasha.contentManagement) === "undefined") {
-    wikiBhasha.contentManagement = {};
+	wikiBhasha.contentManagement = {};
 }
 
 // Class: templatesAndLinksTranslator
