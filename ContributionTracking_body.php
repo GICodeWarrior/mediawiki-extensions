@@ -92,9 +92,13 @@ class ContributionTracking extends UnlistedSpecialPage {
 		$action = 'http://wikimediafoundation.org/';
 		if ( $gateway == 'paypal' ) {
 			$action = 'https://www.paypal.com/cgi-bin/webscr';
-			
-			// Tracking
-			$repost['on0'] = 'contribution_tracking_id';
+
+			// Premiums
+			if ( $wgRequest->getCheck( 'shirt') ) {
+				$repost['on0'] = 'Shirt Size';
+				$repost['os0'] = $wgRequest->getText( 'size', null );
+				$repost['no_shipping'] = 2;
+			}
 			
 			// PayPal
 			$repost['business'] = 'donations@wikimedia.org';
@@ -136,7 +140,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 		}
 		
 		// Tracking
-		$repost['os0'] = $contribution_tracking_id;
+		$repost['custom'] = $contribution_tracking_id;
 		
 		$wgOut->addWikiText( "{{2009/Donate-banner/$language}}" );
 		$wgOut->addHTML( $this->msgWiki( 'contrib-tracking-submitting' ) );
