@@ -25,48 +25,42 @@ $.articleFeedback = {
 		},
 		'build': function( context ) {
 			context.$ui
-				.addClass( 'articleFeedback articleFeedback-form' )
+				.addClass( 'articleFeedback articleFeedback-visibleWith-form' )
 				// Append HTML
 				.append( '\
-<div class="articleFeedback-tabs">\
-	<div class="articleFeedback-tab articleFeedback-tab-form articleFeedback-tab-current" rel="form">\
-		<div class="articleFeedback-buffer"><msg key="form-tab-label" /></div>\
-	</div>\
-	<div class="articleFeedback-tab articleFeedback-tab-report " rel="report">\
-		<div class="articleFeedback-buffer"><msg key="report-tab-label" /></div>\
-	</div>\
-</div>\
 <div class="articleFeedback-panel">\
 	<div class="articleFeedback-buffer">\
-		<div class="articleFeedback-title articleFeedback-form"><msg key="form-panel-title" /></div>\
-		<div class="articleFeedback-title articleFeedback-report"><msg key="report-panel-title" /></div>\
-		<div class="articleFeedback-instructions articleFeedback-form"><msg key="form-panel-instructions" /></div>\
-		<div class="articleFeedback-description articleFeedback-report"><msg key="report-panel-description" /></div>\
+		<div class="articleFeedback-switch articleFeedback-switch-report articleFeedback-visibleWith-form" rel="report"><msg key="report-switch-label" /></div>\
+		<div class="articleFeedback-switch articleFeedback-switch-form articleFeedback-visibleWith-report" rel="form"><msg key="form-switch-label" /></div>\
+		<div class="articleFeedback-title articleFeedback-visibleWith-form"><msg key="form-panel-title" /></div>\
+		<div class="articleFeedback-title articleFeedback-visibleWith-report"><msg key="report-panel-title" /></div>\
+		<div class="articleFeedback-instructions articleFeedback-visibleWith-form"><msg key="form-panel-instructions" /></div>\
+		<div class="articleFeedback-description articleFeedback-visibleWith-report"><msg key="report-panel-description" /></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-ratings">\
 			<div class="articleFeedback-rating articleFeedback-rating-new" rel="wellsourced">\
 				<span class="articleFeedback-label" title-msg="field-wellsourced-tip"><msg key="field-wellsourced-label" /></span>\
-				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
 			</div>\
 			<div class="articleFeedback-rating articleFeedback-rating-new" rel="neutral">\
 				<span class="articleFeedback-label" title-msg="field-neutral-tip"><msg key="field-neutral-label" /></span>\
-				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
 			</div>\
 			<div class="articleFeedback-rating articleFeedback-rating-new" rel="complete">\
 				<span class="articleFeedback-label" title-msg="field-complete-tip"><msg key="field-complete-label" /></span>\
-				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
 			</div>\
 			<div class="articleFeedback-rating articleFeedback-rating-new" rel="readable">\
 				<span class="articleFeedback-label" title-msg="field-readable-tip"><msg key="field-readable-label" /></span>\
-				<div class="articleFeedback-rating-fields articleFeedback-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
 			</div>\
 			<div style="clear:both;"></div>\
 		</div>\
-		<button class="articleFeedback-submit articleFeedback-form" type="submit">Submit feedback</button>\
+		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit">Submit feedback</button>\
 		<div style="clear:both;"></div>\
 	</div>\
 </div>\
@@ -97,7 +91,7 @@ $.articleFeedback = {
 					} )
 					.end()
 				// Hide report elements initially
-				.find( '.articleFeedback-report' )
+				.find( '.articleFeedback-visibleWith-report' )
 					.hide()
 					.end()
 				// Connect labels and fields
@@ -126,20 +120,18 @@ $.articleFeedback = {
 								} );
 					} )
 					.end()
-				// Setup tab behavior
-				.find( '.articleFeedback-tab' )
+				// Setup switch behavior
+				.find( '.articleFeedback-switch' )
 					.click( function( e ) {
-						$(this).addClass( 'articleFeedback-tab-current' );
 						context.$ui
-							.find( '.articleFeedback-' + $(this).attr( 'rel' ) )
+							.find( '.articleFeedback-visibleWith-' + $(this).attr( 'rel' ) )
 								.show()
 								.end()
-							.find( '.articleFeedback-tab' )
+							.find( '.articleFeedback-switch' )
 								.not( $(this) )
 								.each( function() {
-									$(this).removeClass( 'articleFeedback-tab-current' );
 									context.$ui
-										.find( '.articleFeedback-' + $(this).attr( 'rel' ) )
+										.find( '.articleFeedback-visibleWith-' + $(this).attr( 'rel' ) )
 										.hide();
 								} );
 						e.preventDefault();
