@@ -26,10 +26,32 @@ $wgSpecialPages['ContributionTracking'] = 'ContributionTracking';
 //this only works if contribution tracking is inside a mediawiki DB, which typically it isn't.
 //$wgHooks['LoadExtensionSchemaUpdates'][] = 'efContributionTrackingLoadUpdates'; 
 
+/**
+ * The default 'return to' URL for a thank you page after posting to the contribution
+ * 
+ * NO trailing slash, please
+ */
+$wgContributionTrackingReturnToURLDefault = 'http://wikimediafoundation.org/wiki/Thank_You';
+
 $wgContributionTrackingDBserver = $wgDBserver;
 $wgContributionTrackingDBname = $wgDBname;
 $wgContributionTrackingDBuser = $wgDBuser;
 $wgContributionTrackingDBpassword = $wgDBpassword;
+
+/**
+ * IPN listener address for regular PayPal trxns
+ */
+$wgContributionTrackingPayPalIPN = 'https://civicrm.wikimedia.org/fundcore_gateway/paypal';
+
+/**
+ * IPN listener address for recurring payment PayPal trxns
+ */
+$wgContributionTrackingPayPalRecurringIPN = 'https://civicrm.wikimedia.org/fundcore_gateway/paypal';
+
+/**
+ * 'Business' string for PayPal 
+ */
+$wgContributionTrackingPayPalBusiness = 'donations@wikimedia.org';
 
 function efContributionTrackingLoadUpdates(){
  	global $wgExtNewTables, $wgExtNewFields;
