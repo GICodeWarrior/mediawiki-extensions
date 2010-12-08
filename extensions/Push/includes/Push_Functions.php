@@ -24,6 +24,4 @@ final class PushFunctions {
 		$wgOut->addInlineScript( 'var wgPushMessages = ' . json_encode( $data ) . ';' );		
 	}
 	
-	
-	
 }
