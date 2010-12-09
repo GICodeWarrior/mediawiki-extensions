@@ -253,6 +253,7 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  * @author The Evil IP address
  * @author Umherirrender
@@ -260,7 +261,7 @@ $messages['cy'] = array(
 $messages['de'] = array(
 	'createpage' => 'Neue Seite erstellen',
 	'uwcreatepage-desc' => 'Fügt eine [[Special:CreatePage|Spezialseite]] für das Erstellen von neuen Seiten hinzu',
-	'createpage_submitbutton' => 'Senden',
+	'createpage_submitbutton' => 'Speichern',
 	'createpage_instructions' => 'Gib den Namen der neu zu erstellenden Seite ein:',
 	'createpage_entertitle' => 'Titel für deine Seite.',
 	'createpage_titleexists' => 'Eine Seite mit dem Namen [[$1]] existiert bereits.
