@@ -103,8 +103,8 @@ class LongDataset(object):
                 for m in months:
                     #d = calendar.monthrange(int(year), int(m))[1] #determines the number of days in a given month/year
                     #date = datetime.date(int(year), int(m), d)
-                    if id not in ds.time[year][m] and obs[var][year][str(m)] > 0:
-                        ds.time[year][m][id] = obs[var][year][str(m)]
+                    if id not in ds.time[year][m] and obs[var][year][m] > 0:
+                        ds.time[year][m][id] = obs[var][year][m]
 
     def write_longitudinal_data(self):
         fh = utils.create_txt_filehandle(settings.dataset_location, self.name, 'w', settings.encoding)
@@ -148,7 +148,7 @@ def expand_observations(obs, vars_to_expand):
             keys.sort()
             edits = []
             for key in keys:
-                edits.append(str(obs[var][key]))
+                edits.append(obs[var][key])
             obs[var] = edits
     return obs
 
@@ -191,57 +191,95 @@ def generate_long_editor_dataset(tasks, dbname, collection, **kwargs):
     ld.write_longitudinal_data()
 
 
+def create_windows():
+    years = (datetime.datetime.now().year + 1) - 2001
+    p = [3, 6, 9]
+    windows = [y * 12 for y in xrange(1, years)]
+    windows = p + windows
+    return windows
+
+
 def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
     editors = mongo[collection + '_dataset']
-    year = datetime.datetime.now().year + 1
-    begin = year - 2001
-    p = [3, 6, 9]
-    periods = [y * 12 for y in xrange(1, begin)]
-    periods = p + periods
     data = {}
-    while True:
-        try:
-            id = tasks.get(block=False)
-            tasks.task_done()
-            if id == None:
-                break
-            obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
-            if obs == None:
-                continue
-            first_edit = obs['first_edit']
-            last_edit = obs['final_edit']
-            for y in xrange(2001, year):
-                if y not in data:
-                    data[y] = {}
-                    data[y]['n'] = 0
-                window_end = datetime.datetime(y, 12, 31)
-                if window_end > datetime.datetime.now():
-                    now = datetime.datetime.now()
-                    m = now.month - 1   #Dump files are always lagging at least one month....
-                    d = now.day
-                    window_end = datetime.datetime(y, m, d)
-                edits = []
-                for period in periods:
-                    if period not in data[y]:
-                        data[y][period] = 0
-                    window_start = datetime.datetime(y, 12, 31) - relativedelta(months=period)
-                    if first_edit.year > y or last_edit.year < y:
-                        continue
-                    if window_start < datetime.datetime(2001, 1, 1):
-                        window_start = datetime.datetime(2001, 1, 1)
-                    if date_falls_in_window(window_start, window_end, first_edit):
-                        edits.append(period)
-                if edits != []:
-                    p = min(edits)
-                    data[y][p] += 1
-                data[y]['n'] += 1
+#    while True:
+#        id = tasks.get(block=False)
+#        tasks.task_done()
+#        if id == None:
+#            break
+#        editor = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
+    windows = create_windows()
+    data = shaper.create_datacontainer('dict')
+    data = shaper.add_windows_to_datacontainer(data, windows)
 
-        except Empty:
-            break
+    for editor in tasks:
+        obs = tasks[editor]
+        first_edit = obs['first_edit']
+        last_edit = obs['final_edit']
+        editor_dt = relativedelta(last_edit, first_edit)
+        editor_dt = (editor_dt.years * 12) + editor_dt.months
+        edits = []
+        for year in xrange(2001, datetime.datetime.now().year + 1):
+            #if year == 2009 and editor == '2':
+            #    print 'debug'
+            if first_edit.year > year or last_edit.year < year:
+                continue
+            window_end = datetime.datetime(year, 12, 31)
+            for window in windows:
+                window_start = window_end - relativedelta(months=window)
+                if window_start < datetime.datetime(2001, 1, 1):
+                    window_start = datetime.datetime(2001, 1, 1)
+
+                if editor_dt > 11:
+                    if date_falls_in_window(window_start, window_end, first_edit):
+                        edits.append(window)
+                elif window > editor_dt:
+                    data[year][window] += 1
+                    break
+
+            if edits != []:
+                w = min(edits)
+                data[year][w] += 1
+                edits = []
+
+
     print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
     utils.store_object(data, settings.binary_location, dbname + '_cohort_data.bin')
     cohort_charts.prepare_cohort_dataset(dbname)
+
+
+
+
+def generate_cohort_dataset_howie(tasks, dbname, collection, **kwargs):
+    mongo = db.init_mongo_db(dbname)
+    editors = mongo[collection + '_dataset']
+    windows = create_windows()
+    data = shaper.create_datacontainer('dict')
+    data = shaper.add_windows_to_datacontainer(data, windows)
+
+    while True:
+        id = tasks.get(block=False)
+        tasks.task_done()
+        if id == None:
+            break
+        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1, 'edits_by_year': 1, 'last_edit_by_year': 1})
+        first_edit = obs['first_edit']
+        for year in xrange(2001, datetime.datetime.now().year + 1):
+            year = str(year)
+            if obs['edits_by_year'][year] > 0:
+                last_edit = obs['last_edit_by_year'][year]
+                editor_dt = relativedelta(last_edit, first_edit)
+                editor_dt = (editor_dt.years * 12) + editor_dt.months
+                for w in windows:
+                    if w >= editor_dt:
+                        data[int(year)][w] += 1
+                        break
+    print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
+    utils.store_object(data, settings.binary_location, dbname + '_cohort_data.bin')
+    cohort_charts.prepare_cohort_dataset(dbname)
+
+
 
 
 def date_falls_in_window(window_start, window_end, first_edit):
@@ -293,6 +331,7 @@ def dataset_launcher(dbname, collection, target):
     for editor in editors:
         tasks.put(editor)
     print 'The queue contains %s editors.' % tasks.qsize()
+    tasks.put(None)
     target(tasks, dbname, collection)
 
     #for x in xrange(settings.number_of_processes):
@@ -304,9 +343,27 @@ def dataset_launcher(dbname, collection, target):
     #tasks.join()
 
 
+def debug(dbname, collection):
+    editors = {
+               '1':{'first_edit': datetime.datetime(2009, 10, 1), 'final_edit': datetime.datetime(2009, 11, 30)},
+               '2':{'first_edit': datetime.datetime(2009, 12, 1), 'final_edit': datetime.datetime(2010, 2, 27)},
+               '3':{'first_edit': datetime.datetime(2009, 3, 1), 'final_edit': datetime.datetime(2009, 11, 30)},
+               '4':{'first_edit': datetime.datetime(2007, 1, 1), 'final_edit': datetime.datetime(2008, 4, 30)},
+               '5':{'first_edit': datetime.datetime(2006, 5, 1), 'final_edit': datetime.datetime(2009, 7, 30)},
+               '6':{'first_edit': datetime.datetime(2008, 11, 1), 'final_edit': datetime.datetime(2009, 6, 30)},
+               '7':{'first_edit': datetime.datetime(2009, 1, 1), 'final_edit': datetime.datetime(2009, 10, 30)},
+               '8':{'first_edit': datetime.datetime(2009, 7, 1), 'final_edit': datetime.datetime(2009, 7, 30)},
+               '9':{'first_edit': datetime.datetime(2009, 12, 1), 'final_edit': datetime.datetime(2010, 11, 30)},
+               '10':{'first_edit': datetime.datetime(2008, 5, 1), 'final_edit': datetime.datetime(2010, 11, 30)},
+               '11':{'first_edit': datetime.datetime(2007, 2, 1), 'final_edit': datetime.datetime(2010, 3, 30)},
+               '12':{'first_edit': datetime.datetime(2007, 2, 1), 'final_edit': datetime.datetime(2008, 2, 27)},
+               '13':{'first_edit': datetime.datetime(2007, 2, 1), 'final_edit': datetime.datetime(2009, 4, 30)},
+               }
+    generate_cohort_dataset(editors, dbname, collection)
 if __name__ == '__main__':
     dbname = 'enwiki'
     collection = 'editors'
-    dataset_launcher(dbname, collection, generate_cohort_dataset)
-    dataset_launcher(dbname, collection, generate_long_editor_dataset)
-    dataset_launcher(dbname, collection, generate_wide_editor_dataset)
+    #debug(dbname, collection)
+    dataset_launcher(dbname, collection, generate_cohort_dataset_howie)
+    #dataset_launcher(dbname, collection, generate_long_editor_dataset)
+    #dataset_launcher(dbname, collection, generate_wide_editor_dataset)

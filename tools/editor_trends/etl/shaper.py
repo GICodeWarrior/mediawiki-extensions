@@ -30,22 +30,28 @@ def create_clock():
 def create_datacontainer(datatype):
     '''
     This function initializes an empty dictionary with as key the year (starting
-    2001 and running through) and as value @init_value, in most cases this will
+    2001 and running through) and as value @datatype, in most cases this will
     be zero so the dictionary will act as a running tally for a variable but
-    @init_value can also a list, [], or a dictionary, {}, or a set, set().  
+    @datatype can also a list, [], or a dictionary, {}, or a set, set().  
     '''
     data = {}
     year = datetime.datetime.now().year + 1
     for x in xrange(2001, year):
-        data[str(x)] = add_datatype(datatype)
+        data[x] = add_datatype(datatype)
     return data
 
+def add_windows_to_datacontainer(datacontainer, windows):
+    for dc in datacontainer:
+        for w in windows:
+            datacontainer[dc][w] = add_datatype()
+
+    return datacontainer
 
 def add_months_to_datacontainer(datacontainer, datatype):
     for dc in datacontainer:
         datacontainer[dc] = {}
         for x in xrange(1, 13):
-            datacontainer[dc][str(x)] = add_datatype(datatype)
+            datacontainer[dc][x] = add_datatype(datatype)
 
     return datacontainer
 

@@ -33,21 +33,14 @@ def prepare_cohort_dataset(dbname):
     years.sort()
     periods = dataset[2001].keys()
     periods.sort()
-    periods.remove('n')
     headers = ['months_%s' % i for i in periods]
-    headers.extend(['months_%s_abs' % i for i in periods])
     headers.insert(0, 'year')
     utils.write_list_to_csv(headers, fh)
+
     for year in years:
-        n = float(dataset[year].pop('n'))
-        obs = [100 * float(dataset[year][p]) / n if dataset[year][p] != 0 else '.' for p in periods]
-        raw = [dataset[year][p] for p in periods]
-        #print sum(obs)
+        obs = [dataset[year][p] for p in periods]
         obs.insert(0, year)
-        obs.extend(raw)
-        assert len(headers) == len(obs)
         utils.write_list_to_csv(obs, fh, newline=True)
-        #utils.write_list_to_csv(raw, fh)
     fh.close()
 
 if __name__ == '__main__':

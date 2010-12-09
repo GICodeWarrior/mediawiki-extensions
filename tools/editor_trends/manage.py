@@ -262,7 +262,7 @@ def store_launcher(args, logger, **kwargs):
     write_message_to_log(logger, args, verb='Storing', location=location, input=input, project=project, collection=collection)
     num_editors = loader.store_editors(input, project, collection)
     cnt_editors = db.count_records(project, collection)
-    assert num_editors == cnt_editors
+    #assert num_editors == cnt_editors
     timer.elapsed()
 
 

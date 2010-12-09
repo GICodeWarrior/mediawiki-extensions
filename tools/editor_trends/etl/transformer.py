@@ -64,14 +64,6 @@ class Editor(object):
         return '%s' % (self.id)
 
     def __call__(self):
-        #self.mongo = db.init_mongo_db(self.dbname)
-#        input_db = self.mongo[self.collection]
-#        output_db = self.mongo[self.collection + '_dataset']
-#
-#        output_db.ensure_index('editor')
-#        output_db.create_index('editor')
-#        output_db.ensure_index('year_joined')
-#        output_db.create_index('year_joined')
 
         editor = self.input_db.find_one({'editor': self.id})
         if editor == None:
@@ -79,14 +71,20 @@ class Editor(object):
         edits = editor['edits']
         username = editor['username']
         monthly_edits = determine_edits_by_month(edits)
+        monthly_edits = db.stringify_keys(monthly_edits)
         edits = sort_edits(edits)
         edit_count = len(edits)
         new_wikipedian = edits[9]['date']
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
         edits_by_year = determine_edits_by_year(edits)
+        edits_by_year = db.stringify_keys(edits_by_year)
+        last_edit_by_year = determine_last_edit_by_year(edits)
+        last_edit_by_year = db.stringify_keys(last_edit_by_year)
         articles_by_year = determine_articles_by_year(edits)
+        articles_by_year = db.stringify_keys(articles_by_year)
         edits = edits[:10]
+
         self.output_db.insert({'editor': self.id,
                           'edits': edits,
                           'edits_by_year': edits_by_year,
@@ -96,17 +94,28 @@ class Editor(object):
                           'first_edit': first_edit,
                           'articles_by_year': articles_by_year,
                           'monthly_edits': monthly_edits,
+                          'last_edit_by_year': last_edit_by_year,
                           'username': username
                           })
 
+
+def determine_last_edit_by_year(edits):
+    datacontainer = shaper.create_datacontainer(0)
+    for edit in edits:
+        edit = edit['date']
+        if datacontainer[edit.year] == 0:
+             datacontainer[edit.year] = edit
+        elif datacontainer[edit.year] < edit:
+             datacontainer[edit.year] = edit
+    return datacontainer
 
 def determine_edits_by_month(edits):
     datacontainer = shaper.create_datacontainer(0.0)
     datacontainer = shaper.add_months_to_datacontainer(datacontainer, 0.0)
     for year in edits:
         for edit in edits[year]:
-            m = str(edit['date'].month)
-            datacontainer[year][m] += 1
+            m = edit['date'].month
+            datacontainer[int(year)][m] += 1
     return datacontainer
 
 
@@ -116,7 +125,7 @@ def determine_edits_by_year(dates):
     '''
     edits = shaper.create_datacontainer(0.0)
     for date in dates:
-        year = str(date['date'].year)
+        year = date['date'].year
         edits[year] += 1
     return edits
 
@@ -128,7 +137,7 @@ def determine_articles_by_year(dates):
     '''
     articles = shaper.create_datacontainer('set')
     for date in dates:
-        year = str(date['date'].year)
+        year = date['date'].year
         articles[year].add(date['article'])
     for year in articles:
         articles[year] = len(articles[year])

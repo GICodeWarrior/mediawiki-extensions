@@ -74,11 +74,27 @@ def add_index_to_collection(db, collection, key):
     mongo.collection.ensure_index(key)
 
 
+def stringify_keys(obj):
+    '''
+    @obj should be a dictionary where the keys are not yet strings. this function
+    is called just prior any insert / update query in mongo because mongo only
+    accepts strings as keys.
+    '''
+    d = {}
+    for o in obj:
+        if type(obj[o]) == type({}):
+            obj[o] = stringify_keys(obj[o])
+        d[str(o)] = obj[o]
+    return d
+
 def retrieve_distinct_keys(dbname, collection, field):
     #mongo = init_mongo_db(dbname)
     #editors = mongo[collection]
     #ids = retrieve_distinct_keys_mapreduce(editors, field)
-
+    '''
+    TODO: figure how big the index is and then take appropriate action, index < 4mb
+    just do a distinct query, index > 4mb do a map reduce.
+    '''
     if utils.check_file_exists(settings.binary_location, '%s_%s.bin' % (dbname, field)):
         ids = utils.load_object(settings.binary_location, '%s_%s.bin' % (dbname, field))
     else:

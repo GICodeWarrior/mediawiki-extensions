@@ -32,7 +32,10 @@ from utils import sort
 
 
 def store_editors(input, dbname, collection):
-    filename = utils.retrieve_file_list(input, 'txt', mask=None)[0]
+    filename = utils.retrieve_file_list(input, 'txt', mask=None)
+    if len(filename) > 1:
+        filename = [f for f in filename if f.find('final') > -1]
+    filename = ''.join(filename)
     fh = utils.create_txt_filehandle(input, filename, 'r', settings.encoding)
     mongo = db.init_mongo_db(dbname)
     collection = mongo[collection]

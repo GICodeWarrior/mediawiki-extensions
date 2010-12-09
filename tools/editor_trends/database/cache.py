@@ -20,6 +20,7 @@ __version__ = '0.1'
 
 import sys
 sys.path.append('..')
+import bson
 
 import configuration
 settings = configuration.Settings()
@@ -44,7 +45,8 @@ class EditorCache(object):
     def add(self, key, value):
         if value == 'NEXT':
             self.n += 1
-            self.insert(key, self.editors[key]['edits'], self.editors[key]['username'])
+            edits = db.stringify_keys(self.editors[key]['edits'])
+            self.insert(key, edits, self.editors[key]['username'])
             del self.editors[key]
         else:
             if key not in self.editors:
@@ -55,10 +57,9 @@ class EditorCache(object):
             else:
                 value.pop('username')
 
-            year = str(value['date'].year)
+            year = value['date'].year
             self.editors[key]['edits'][year].append(value)
             self.editors[key]['obs'] += 1
-
 
     def update(self, editor, values):
         self.collection.update({'editor': editor}, {'$pushAll': {'edits': values}}, upsert=True)
@@ -68,9 +69,10 @@ class EditorCache(object):
         Adding the safe=True statement slows down the insert process but this assures that all data
         will be written. 
         '''
-        self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
-        #except:
-        #    return False
+        try:
+            self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
+        except bson.errors.InvalidDocument:
+            print 'BSON document too large'
 
     def store(self):
         utils.store_object(self, settings.binary_location, self.__repr__())
