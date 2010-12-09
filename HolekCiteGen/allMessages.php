@@ -245,6 +245,41 @@ $messages['hsb'] = array(
 	'ts-citegen-base-disabled' => 'Zmylk: Datowa banka %s njesteji k dispoziciji.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'ts-citegen-Title' => 'Generator de patronos de citation',
+	'ts-citegen-Send' => 'Generar',
+	'ts-citegen-Input-title' => 'Entrata',
+	'ts-citegen-Input-text' => 'Isto es un generator de patronos de citation. Con illo, tu pote rapidemente completar le patronos de citation in le editiones de Wikipedia in varie linguas. Per favor completa le datos (%s) in le campos hic infra, e le script tentara completar le patronos. Nota ben que il non importa in qual campos tu mitte le datos de entrata. Le script cerca automaticamente le patrono correspondente al entrata date.',
+	'ts-citegen-Option-append-author-link' => 'Adjunger in le patrono le wiki-ligamines verso le autor',
+	'ts-citegen-Option-append-newlines' => 'Comenciar un nove linea post cata parametro',
+	'ts-citegen-Option-add-references' => 'Adder etiquettas <ref> circa le patronos de citation',
+	'ts-citegen-Option-add-list' => 'Crear un wiki-lista de patronos de citation',
+	'ts-citegen-Output-title' => 'Resultato',
+	'ts-citegen-Output-select-disclaimer' => 'Le selection de un lingua de patrono non garanti que le patrono specific es disponibile in iste lingua. Iste campo lista le linguas disponibile de cata patrono supportate, i.e. illo pote presentar le lingua francese proque solmente {{Cite book}} es supportate.',
+	'ts-citegen-Wrong-input' => '%s: non identificate como entrata correcte.',
+	'ts-citegen-Parsers' => 'Analysatores syntactic',
+	'ts-citegen-Skins' => 'Resultato',
+	'ts-citegen-Skin-skins' => 'Apparentias',
+	'ts-citegen-Skin-outputformat' => 'Formato de output',
+	'ts-citegen-Template-lang' => 'Lingua de patrono',
+	'ts-citegen-Sources-title' => 'Fontes',
+	'ts-citegen-Sources-text' => 'Hic infra es le lista del fontes usate.',
+	'ts-citegen-Sidebar-title' => 'Generator de citationes',
+	'ts-citegen-Sidebar-add-Firefox' => 'Adder al barra lateral',
+	'ts-citegen-Sidebar-add-Opera' => 'Adder al "Hotlist"',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Adder al "Page Holder"',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Un vice que le pagina ha essite cargate, aperi tu "Page Holder", clicca super "Add" e postea usa le button "Page Holder Favorites" pro immagazinar lo como un favorite de Page Holder.',
+	'ts-citegen-Tools' => 'Instrumentos',
+	'ts-citegen-Other-languages' => 'Altere linguas',
+	'ts-citegen-Save-it' => 'Consulta actual',
+	'ts-citegen-Errors-title' => 'Errores',
+	'ts-citegen-Unavailable-SQL' => 'Error: Le base de datos Toolserver es indisponibile. MySQL retornava: %s',
+	'ts-citegen-base-disabled' => 'Error: le base de datos %s es indisponibile',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */
@@ -455,6 +490,7 @@ $messages['te'] = array(
 $messages['vi'] = array(
 	'ts-citegen-Option-append-newlines' => 'Xuống dòng sau mỗi tham số',
 	'ts-citegen-Option-add-references' => 'Kẹp các bản mẫu chú thích vào trong thẻ <ref>',
+	'ts-citegen-Option-add-list' => 'Tạo danh sách bản mẫu chú thích',
 	'ts-citegen-Output-title' => 'Kết quả',
 	'ts-citegen-Parsers' => 'Bộ phân tích',
 	'ts-citegen-Skin-skins' => 'Hình dạng',
