@@ -28,3 +28,4 @@ $wgGroupPermissions['sysop']['pushadmin'] = true;
 $egPushShowTab = false;
 
 $egPushBulkWorkers = 3;
+$egPushBatchSize = 3;

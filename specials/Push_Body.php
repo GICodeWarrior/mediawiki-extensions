@@ -119,7 +119,7 @@ class SpecialPush extends SpecialPage {
 	 * @param string $pages
 	 */
 	protected function doPush( $pages ) {
-		global $wgOut, $wgLang, $wgRequest, $wgSitename, $egPushTargets, $egPushBulkWorkers;
+		global $wgOut, $wgLang, $wgRequest, $wgSitename, $egPushTargets, $egPushBulkWorkers, $egPushBatchSize;
 		
 		$pageSet = array(); // Inverted index of all pages to look up
 
@@ -142,17 +142,17 @@ class SpecialPush extends SpecialPage {
 		
 		$targets = array();
 		$links = array();
-		$revisions = array();
 		
-		foreach ( $pages as $page ) {
-			$revisions[$page] = PushFunctions::getRevisionToPush( Title::newFromText( $page ) );
-		}
-		
-		foreach ( $egPushTargets as $targetName => $targetUrl ) {
-			if ( $wgRequest->getCheck( str_replace( ' ', '_', $targetName ) ) ) {
-				$targets[$targetName] = $targetUrl;
-				$links[] = "[$targetUrl $targetName]";
+		if ( count( $egPushTargets ) > 1 ) {
+			foreach ( $egPushTargets as $targetName => $targetUrl ) {
+				if ( $wgRequest->getCheck( str_replace( ' ', '_', $targetName ) ) ) {
+					$targets[$targetName] = $targetUrl;
+					$links[] = "[$targetUrl $targetName]";
+				}
 			}
+		}
+		else {
+			$targets = $egPushTargets;
 		}
 		
 		$wgOut->addWikiMsg( 'push-special-pushing-desc', $wgLang->listToText( $links ), $wgLang->formatNum( count( $pages ) ) );
@@ -175,9 +175,9 @@ class SpecialPush extends SpecialPage {
 		
 		$wgOut->addInlineScript(
 			'var wgPushPages = ' . json_encode( $pages ) . ';' .
-			'var wgPushRevs = ' . json_encode( $revisions ) . ';' .
 			'var wgPushTargets = ' . json_encode( $targets ) . ';' .
-			'var wgPushWorkerCount = ' . $egPushBulkWorkers . ';'
+			'var wgPushWorkerCount = ' . $egPushBulkWorkers . ';' .
+			'var wgPushBatchSize = ' . $egPushBatchSize . ';'
 		);
 		
 		$this->loadJs();

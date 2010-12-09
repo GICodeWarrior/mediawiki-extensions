@@ -17,6 +17,10 @@ $messages = array();
 $messages['en'] = array(
 	'push-desc' => 'Lightweight extension to push content to other wikis',
 
+	'right-push' => 'Authorization to use push functionality.',
+	'right-bulkpush' => 'Authorization to use bulk push functionality (ie Special:Push).',
+	'right-pushadmin' => 'Authorization to modify push targets and push settings.',
+
 	// Tab
 	'push-tab-text' => 'Push',
 	'push-button-text' => 'Push',
@@ -46,13 +50,13 @@ To push pages, enter the titles in the text box below, one title per line and hi
 	'push-special-button-text' => 'Push pages',
 	'push-special-target-is' => 'Target wiki: $1',
 	'push-special-select-targets' => 'Target wikis:',
-	'push-special-item-getting' => '$1: Getting page',
-	'push-special-item-pushing-to' => '$1: Pushing to $2',
+	'push-special-item-pushing' => '$1: Pushing',
 	'push-special-item-completed' => '$1: Push completed',
 	'push-special-item-failed' => '$1: Push failed: $2',
-	'push-special-push-done' => 'Push completed'
-	# 'right-push' => '', // Please add a description of this userright which is shown at [[Special:ListGroupRights]]
-	# 'right-pushadmin' => '', // Please add a description of this userright which is shown at [[Special:ListGroupRights]]
+	'push-special-push-done' => 'Push completed',
+	'push-special-err-token-failed' => 'Could not obtain an edit token on the target wiki.',
+	'push-special-err-pageget-failed' => 'Could not obtain local page content.',
+	'push-special-err-push-failed' => 'Target wiki refused the pushed page.'
 );
 
 /** Message documentation (Message documentation) */

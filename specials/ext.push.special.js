@@ -12,19 +12,26 @@
 	if ( typeof mediaWiki === 'undefined' ) {
 		mediaWiki = new Object();
 		
-		mediaWiki.msg = function( message ) {
-			return window.wgPushMessages[message];
+		mediaWiki.msg = function() {
+			message = window.wgPushMessages[arguments[0]];
+			
+			for ( var i = arguments.length - 1; i > 0; i-- ) {
+				message = message.replace( '$' + i, arguments[i] );
+			}
+			
+			return message;
 		}
 	}
 
 	var resultList = $('#pushResultList');
 	
-	var targets = window.wgPushTargets;
-	var pages = window.wgPushPages;
-	var revs = window.wgPushRevs;
-	var requestAmount = Math.min( pages.length, window.wgPushWorkerCount );
+	var targets = [];
+	for (targetName in window.wgPushTargets) targets.push( window.wgPushTargets[targetName] ); 
 	
-	var pageTargets = [];
+	var pages = window.wgPushPages;
+	
+	var requestAmount = Math.min( pages.length, window.wgPushWorkerCount );
+	var batchSize = Math.min( targets.length, window.wgPushBatchSize );
 	
 	for ( i = requestAmount; i > 0; i-- ) {
 		initiateNextPush();
@@ -34,139 +41,70 @@
 		var page = pages.pop();
 		
 		if ( page ) {
-			startPush( page );
+			startPush( page, 0, null );
 		}
 		else if ( !--requestAmount ) {
 			showCompletion();
 		}
 	}
 	
-	function startPush( pageName ) {
-		var listItem = $( '<li />' );
-		listItem.text( pageName );
-		
-		var box = $('#pushResultDiv');
-		var innerBox = $('#pushResultDiv > .innerResultBox');
-		var atBottom = Math.abs(innerBox.offset().top) + box.height() + box.offset().top >= innerBox.outerHeight();
-		
-		resultList.append( listItem );
-		
-		if ( atBottom ) {
-			box.attr( {'scrollTop': box.attr( 'scrollHeight' )} );
+	function startPush( pageName, targetOffset, listItem ) {
+		if ( targetOffset == 0 ) {
+			var listItem = $( '<li />' );
+			listItem.text( mediaWiki.msg( 'push-special-item-pushing', pageName ) );
+			
+			var box = $('#pushResultDiv');
+			var innerBox = $('#pushResultDiv > .innerResultBox');
+			var atBottom = Math.abs(innerBox.offset().top) + box.height() + box.offset().top >= innerBox.outerHeight();
+			
+			resultList.append( listItem );
+			
+			if ( atBottom ) {
+				box.attr( {'scrollTop': box.attr( 'scrollHeight' )} );
+			}
 		}
 		
-		getLocalArtcileAndContinue( listItem, pageName );
+		var currentBatchLimit = Math.min( targetOffset + batchSize, targets.length );
+		var currentBatchStart = targetOffset;
+		
+		if ( targetOffset < targets.length ) {
+			listItem.text( listItem.text() + '...' );
+			
+			targetOffset = currentBatchLimit;
+			
+			$.getJSON(
+				wgScriptPath + '/api.php',
+				{
+					'action': 'push',
+					'format': 'json',
+					'page': pageName,
+					'targets': targets.slice( currentBatchStart, currentBatchLimit ).join( '|' )
+				},
+				function( data ) {
+					if ( data.error ) {
+						handleError( listItem, pageName, data.error );
+					}
+					else {
+						startPush( pageName, targetOffset, listItem );
+					}
+				}
+			);			
+		}
+		else {
+			listItem.text( mediaWiki.msg( 'push-special-item-completed', pageName ) );
+			listItem.css( 'color', 'darkgray' );
+			initiateNextPush();				
+		}
 	}
 	
 	function showCompletion() {
 		resultList.append( $( '<li />' ).append( $( '<b />' ).text( mediaWiki.msg( 'push-special-push-done' ) ) ) );
 	}
 	
-	function getLocalArtcileAndContinue( listItem, pageName ) {
-		listItem.text( msgReplace( 'push-special-item-getting', pageName ) );
-		
-		$.getJSON(
-			wgScriptPath + '/api.php',
-			{
-				'action': 'query',
-				'format': 'json',
-				'prop': 'revisions',
-				'rvprop': 'timestamp|user|comment|content',
-				'titles': pageName,
-				'rvstartid': revs[pageName],
-				'rvendid': revs[pageName],				
-			},
-			function( data ) {
-				if ( data.error ) {
-					handleError( listItem, pageName, data.error );
-				}
-				else {
-					for (first in data.query.pages) break;
-					var remainingTargets = [];
-					for (targetName in targets) remainingTargets.push( targetName );
-					initiateEdit( listItem, pageName, data.query.pages[first], remainingTargets );
-				}
-			}
-		); 		
-	}
-	
-	function initiateEdit( listItem, pageName, page, remainingTargets ) {
-		targetName = remainingTargets.pop();
-		
-		if ( targetName ) {
-			getEditTokenAndContinue( listItem, pageName, targets[targetName], targetName, page, remainingTargets );
-		}
-		else {
-			listItem.text( msgReplace( 'push-special-item-completed', pageName ) );
-			listItem.css( 'color', 'darkgray' );
-			initiateNextPush();			
-		}
-	}
-	
-	function getEditTokenAndContinue( listItem, pageName, targetUrl, targetName, page, remainingTargets ) {
-		listItem.text( msgReplace( 'push-special-item-pushing-to', pageName, targetName ) );
-		
-		$.getJSON(
-			targetUrl + '/api.php',
-			{
-				'action': 'query',
-				'format': 'json',
-				'intoken': 'edit',
-				'prop': 'info',
-				'titles': page.title,
-			},
-			function( data ) {
-				if ( data.error ) {
-					handleError( listItem, pageName, data.error );
-				}
-				else {
-					for (first in data.query.pages) break;
-					doPush( listItem, pageName, targetUrl, page, data.query.pages[first].edittoken, remainingTargets );
-				}
-			}
-		); 
-	}	
-	
-	function doPush( listItem, pageName, targetUrl, page, token, remainingTargets ) {
-		var summary = msgReplace(
-			'push-import-revision-message',
-			$('#siteName').attr('value'),
-			page.revisions[0].user,
-			page.revisions[0].comment ? msgReplace( 'push-import-revision-comment', page.revisions[0].comment ) : ''
-		);
-		
-		$.post( 
-			targetUrl + '/api.php',
-			{
-				'action': 'edit',
-				'format': 'json',
-				'token': token,
-				'title': page.title,
-				'summary': summary,
-				'text': page.revisions[0].*
-			},
-			function( data ) {
-				if ( data.error ) {
-					handleError( listItem, pageName, data.error );
-				}
-				else {
-					initiateEdit( listItem, pageName, page, remainingTargets );
-				}
-			}
-		);	
-	}
-	
 	function handleError( listItem, pageName, error ) {
-		listItem.text( msgReplace( 'push-special-item-failed', pageName, error.info ) );
+		listItem.text( mediaWiki.msg( 'push-special-item-failed', pageName, error.info ) );
+		listItem.css( 'color', 'darkred' );
 		initiateNextPush();	
-	}
-	
-	function msgReplace() {
-		message = mediaWiki.msg( arguments[0] );
-		for ( var i = arguments.length - 1; i > 0; i-- ) {
-			message = message.replace( '$' + i, arguments[i] );
-		}
-		return message;
 	}
 	
 } ); })(jQuery);
