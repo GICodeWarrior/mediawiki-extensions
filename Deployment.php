@@ -27,11 +27,15 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Register the internationalization and aliasing files.
-$wgExtensionMessagesFiles['Deployment'] = dirname( __FILE__ ) . '/Deployment.i18n.php';
-$wgExtensionAliasesFiles['Deployment'] = dirname( __FILE__ ) . '/Deployment.alias.php';
+$wgExtensionMessagesFiles['Deployment'] 		= dirname( __FILE__ ) . '/Deployment.i18n.php';
+$wgExtensionAliasesFiles['Deployment'] 			= dirname( __FILE__ ) . '/Deployment.alias.php';
 
 // Load classes.
-$wgAutoloadClasses['ExtensionInfo'] = dirname( __FILE__ ) . '/includes/ExtensionInfo.php';
+$egDeployIncIp = dirname( __FILE__ ) . '/includes/';
+$wgAutoloadClasses['DistributionRepository'] 	= $egDeployIncIp . 'DistributionRepository.php';
+$wgAutoloadClasses['ExtensionInfo'] 			= $egDeployIncIp . 'ExtensionInfo.php';
+$wgAutoloadClasses['PackageRepository'] 		= $egDeployIncIp . 'PackageRepository.php';
+unset( $egDeployIncIp );
 
 // Load and register Special:Dashboard.
 $wgAutoloadClasses['SpecialDashboard'] = dirname( __FILE__ ) . '/specials/SpecialDashboard.php';
@@ -58,3 +62,13 @@ $wgSpecialPageGroups['Update'] = 'administration';
  * By default only sysops have this permission.
  */
 $wgGroupPermissions['sysop']['siteadmin'] = true;
+function wfGetRepository() {
+	global $wgRepositoryApiLocation;
+	static $repository = false;
+
+	if ( $repository === false ) {
+		$repository = new DistributionRepository( $wgRepositoryApiLocation );
+	}
+
+	return $repository;
+}
