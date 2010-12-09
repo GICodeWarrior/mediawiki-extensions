@@ -40,16 +40,19 @@ $egPushScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPat
 $egPushIP = dirname( __FILE__ );
 unset( $useExtensionPath );
 
-$wgExtensionMessagesFiles['Push'] = $egPushIP . '/Push.i18n.php';
-$wgExtensionAliasesFiles['Push'] = $egPushIP . '/Push.alias.php';
+$wgExtensionMessagesFiles['Push'] 			= $egPushIP . '/Push.i18n.php';
+$wgExtensionAliasesFiles['Push'] 			= $egPushIP . '/Push.alias.php';
 
-$wgAutoloadClasses['PushHooks'] = $egPushIP . '/Push.hooks.php';
-$wgAutoloadClasses['PushTab'] = $egPushIP . '/includes/Push_Tab.php';
-$wgAutoloadClasses['PushFunctions'] = $egPushIP . '/includes/Push_Functions.php';
-$wgAutoloadClasses['SpecialPush'] = $egPushIP . '/specials/Push_Body.php';
+$wgAutoloadClasses['PushHooks'] 			= $egPushIP . '/Push.hooks.php';
+$wgAutoloadClasses['ApiPush'] 				= $egPushIP . '/api/ApiPush.php';
+$wgAutoloadClasses['PushTab'] 				= $egPushIP . '/includes/Push_Tab.php';
+$wgAutoloadClasses['PushFunctions'] 		= $egPushIP . '/includes/Push_Functions.php';
+$wgAutoloadClasses['SpecialPush'] 			= $egPushIP . '/specials/Push_Body.php';
 
 $wgSpecialPages['Push'] = 'SpecialPush';
 $wgSpecialPageGroups['Push'] = 'pagetools';
+
+$wgAPIModules['push'] = 'ApiPush';
 
 $wgHooks['UnknownAction'][] = 'PushTab::onUnknownAction';
 $wgHooks['SkinTemplateTabs'][] = 'PushTab::displayTab';
