@@ -522,6 +522,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Imre
+ * @author Kghbln
  * @author MF-Warburg
  * @author Melancholie
  * @author Merlissimo
@@ -547,7 +548,7 @@ $messages['de'] = array(
 	'readerfeedback-level-2' => 'Befriedigend',
 	'readerfeedback-level-3' => 'Gut',
 	'readerfeedback-level-4' => 'Sehr gut',
-	'readerfeedback-submit' => 'OK',
+	'readerfeedback-submit' => 'Speichern',
 	'readerfeedback-main' => 'Es können nur Inhaltsseiten bewertet werden.',
 	'readerfeedback-success' => "'''Danke für deine Bewertung dieser Seite.''' ([$2 Ergebnisse anschauen]) ([$3 Kommentare oder Fragen?]).",
 	'readerfeedback-voted' => "'''Du hast offenbar bereits eine Bewertung für diese Seite abgegeben.''' ([$2 Ergebnisse anschauen]) ([$3 Kommentare oder Fragen?]).",
