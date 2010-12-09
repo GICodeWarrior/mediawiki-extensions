@@ -46,13 +46,10 @@
 				'targets': targetUrl
 			},
 			function( data ) {
-				alert('.');
 				if ( data.error ) {
-					alert('');
 					handleError( sender, targetUrl, data.error );
 				}
 				else {
-					alert('.');
 					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
 					setTimeout( function() {reEnableButton( sender );}, 1000 );
 				}
