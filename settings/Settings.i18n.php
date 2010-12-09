@@ -15618,6 +15618,7 @@ $messages['pdc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Anoon6
  * @author Derbeth
  * @author Leinad
  * @author Shadown
@@ -15848,6 +15849,7 @@ $messages['pl'] = array(
 	'configure-setting-wgMiserMode' => 'Wyłącz niektóre funkcje wymagające dużej wydajności',
 	'configure-setting-wgShowHostnames' => 'Prezentuj nazwę serwera poprzez API i komentarze w HTML',
 	'configure-setting-wgUseDumbLinkUpdate' => 'Używaj do aktualizacji linków <code>DELETE</code> i <code>INSERT</code> zamiast zastępowania',
+	'configure-setting-wgCookieSecure' => 'Zabezpiecz pliki cookie',
 	'configure-setting-wgSessionName' => 'Nazwa sesji',
 	'configure-setting-wgSquidMaxage' => 'Maksymalny dozwolony czas przechowywania dla serwera buforującego (Squid)',
 	'configure-setting-wgUseSquid' => 'Włącz serwer buforujący (squid)',
@@ -15876,6 +15878,7 @@ $messages['pl'] = array(
 	'configure-setting-wgExtraNamespaces-key' => 'ID przestrzeni nazw',
 	'configure-setting-wgExtraNamespaces-value' => 'Nazwa przestrzeni nazw',
 	'configure-setting-wgNamespaceAliases-key' => 'Nazwa aliasu',
+	'configure-setting-wgNamespaceProtection' => 'Zabezpieczenia przestrzeni nazw',
 	'configure-setting-wgDBmysql5' => 'Używaj kodowania UTF‐8',
 	'configure-setting-wgEnableParserCache' => 'Włącz pamięć podręczną analizatora składni',
 	'configure-setting-wgUseTeX' => 'Włącz TeX',
