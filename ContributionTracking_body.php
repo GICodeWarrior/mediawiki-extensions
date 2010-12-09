@@ -131,11 +131,11 @@ class ContributionTracking extends UnlistedSpecialPage {
 				$repost[ 'cmd' ] = '_xclick-subscriptions';
 				$amount_field_name = 'a3';
 				$repost['notify_url'] = $wgContributionTrackingPayPalRecurringIPN;
-				$repost['item_name'] = $this->msgWiki( 'contrib-tracking-item-name-recurring' );
+				$repost['item_name'] = $this->msg( 'contrib-tracking-item-name-recurring' );
 			} else {
 				$repost['cmd'] = '_xclick';
 				$repost['notify_url'] = $wgContributionTrackingPayPalIPN;
-				$repost['item_name'] = $this->msgWiki( 'contrib-tracking-item-name-onetime' );
+				$repost['item_name'] = $this->msg( 'contrib-tracking-item-name-onetime' );
 			}
 		}
 		else if ( $gateway == 'moneybookers' ) {
