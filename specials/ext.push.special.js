@@ -52,7 +52,7 @@
 		resultList.append( listItem );
 		
 		if ( atBottom ) {
-			box.animate( {'scrollTop': box.attr( 'scrollHeight' )} );
+			box.attr( {'scrollTop': box.attr( 'scrollHeight' )} );
 		}
 		
 		getLocalArtcileAndContinue( listItem, pageName );
