@@ -64,7 +64,8 @@ class ApiPush extends ApiBase {
 		
 		$revision = false;
 		
-		if ( array_key_exists( 'query', $response )
+		if ( $response !== false
+			&& array_key_exists( 'query', $response )
 			&& array_key_exists( 'pages', $response['query'] )
 			&& count( $response['query']['pages'] ) > 0 ) {
 			
@@ -78,11 +79,11 @@ class ApiPush extends ApiBase {
 				$revision = $response['query']['pages'][$first]['revisions'][0];
 			}
 			else {
-				// TODO
+				$this->dieUsage( wfMsg( 'push-special-err-pageget-failed' ), 'page-get-failed' );
 			}
 		}
 		else {
-			// TODO
+			$this->dieUsage( wfMsg( 'push-special-err-pageget-failed' ), 'page-get-failed' );
 		}
 
 		return $revision;
@@ -138,11 +139,12 @@ class ApiPush extends ApiBase {
 		foreach ( $requestData as $key => $value ) {
 			$parts[] = $key . '=' . urlencode( $value );
 		}
-		
+
 		$response = FormatJson::decode( Http::get( $target . '?' . implode( '&', $parts ) ) );
 		$token = false;
 
-		if ( property_exists( $response, 'query' )
+		if ( !is_null( $response )
+			&& property_exists( $response, 'query' )
 			&& property_exists( $response->query, 'pages' )
 			&& count( $response->query->pages ) > 0 ) {
 			
@@ -154,12 +156,15 @@ class ApiPush extends ApiBase {
 			if ( property_exists( $response->query->pages->$first, 'edittoken' ) ) {
 				$token = $response->query->pages->$first->edittoken;
 			}
+			elseif ( !is_null( $response ) && property_exists( $response, 'query' ) && property_exists( $response->query, 'error' ) ) {
+				$this->dieUsage( $response->query->error->message, 'token-request-failed' );
+			}
 			else {
-				// TODO
-			}			
+				$this->dieUsage( wfMsg( 'push-special-err-token-failed' ), 'token-request-failed' );
+			}	
 		}
 		else {
-			// TODO
+			$this->dieUsage( wfMsg( 'push-special-err-token-failed' ), 'token-request-failed' );
 		}
 		
 		return $token;
@@ -196,20 +201,25 @@ class ApiPush extends ApiBase {
 		);
 
 		$response = Http::post( $target, array( 'postData' => $requestData ) );
-//var_dump($response);exit;
-		// TODO
+
+		if ( $response !== false ) {
+			die( $response );
+		}
+		else {
+			$this->dieUsage( wfMsg( 'push-special-err-push-failed' ), 'page-push-failed' );
+		}
 	}
 	
 	public function getAllowedParams() {
 		return array(
 			'page' => array(
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true,
+				//ApiBase::PARAM_REQUIRED => true,
 			),
 			'targets' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_REQUIRED => true,
+				//ApiBase::PARAM_REQUIRED => true,
 			),			
 		);
 	}
