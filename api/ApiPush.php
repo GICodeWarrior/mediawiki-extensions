@@ -176,12 +176,12 @@ class ApiPush extends ApiBase {
 	 * @param string $token
 	 */		
 	protected function pushToTarget( Title $title, array $revision, $target, $token ) {
-		global $wgSiteName;
+		global $wgSitename;
 
 		$summary = wfMsgExt(
 			'push-import-revision-message',
 			'parsemag',
-			$wgSiteName,
+			$wgSitename,
 			$revision['user'],
 			$revision['comment'] == '' ? '' : wfMsgExt( 'push-import-revision-comment', 'parsemag', $revision['comment'] )
 		);
@@ -195,29 +195,10 @@ class ApiPush extends ApiBase {
 			'token' => $token,
 		);
 
-		$response = self::post( $target, array( 'postData' => $requestData ) );
-		
-		var_dump($response);exit;
+		$response = Http::post( $target, array( 'postData' => $requestData ) );
+
+		// TODO
 	}
-	
-	public static function post( $url, $options = array() ) {
-		$url = wfExpandUrl( $url );
-		$options['method'] = 'POST';
-
-		if ( !isset( $options['timeout'] ) ) {
-			$options['timeout'] = 'default';
-		}
-
-		$req = MWHttpRequest::factory( $url, $options );
-		$req->setHeader( 'Content-type', 'application/x-www-form-urlencoded' );
-		$status = $req->execute();
-
-		if ( $status->isOK() ) {
-			return $req->getContent();
-		} else {
-			return false;
-		}
-	}	
 	
 	public function getAllowedParams() {
 		return array(
