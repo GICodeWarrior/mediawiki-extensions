@@ -111,7 +111,6 @@ class ContributionTracking extends UnlistedSpecialPage {
 			
 			// PayPal
 			$repost['business'] = $wgContributionTrackingPayPalBusiness;
-			$repost['item_name'] = 'One-time donation';
 			$repost['item_number'] = 'DONATE';
 			$repost['no_note'] = '0';
 			$repost['return'] = $returnto;
@@ -132,9 +131,11 @@ class ContributionTracking extends UnlistedSpecialPage {
 				$repost[ 'cmd' ] = '_xclick-subscriptions';
 				$amount_field_name = 'a3';
 				$repost['notify_url'] = $wgContributionTrackingPayPalRecurringIPN;
+				$repost['item_name'] = $this->msgWiki( 'contrib-tracking-item-name-recurring' );
 			} else {
 				$repost['cmd'] = '_xclick';
 				$repost['notify_url'] = $wgContributionTrackingPayPalIPN;
+				$repost['item_name'] = $this->msgWiki( 'contrib-tracking-item-name-onetime' );
 			}
 		}
 		else if ( $gateway == 'moneybookers' ) {

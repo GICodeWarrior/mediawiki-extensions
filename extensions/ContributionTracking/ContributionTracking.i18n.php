@@ -24,6 +24,9 @@ $messages['en'] = array(
 
 	'contrib-tracking-button' => 'Continue',
 
+	'contrib-tracking-item-name-onetime' => 'One-time donation',
+	'contrib-tracking-item-name-recurring' => 'Recurring monthly donation',
+
 );
 
 /** Message documentation (Message documentation)
