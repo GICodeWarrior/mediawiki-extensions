@@ -5,10 +5,11 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.3 ===
-2010-12-09
+2010-12-10
 
 * Fixed push functionality for wikis on remote domains.
-* Added 'bulkpush' right
+* Added 'bulkpush' right.
+* Added batch operations to Special:Push.
 
 === Version 0.2 ===
 2010-12-08
