@@ -209,6 +209,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Kghbln
  * @author Metalhead64
  * @author Purodha
  * @author Umherirrender
@@ -219,7 +220,7 @@ $messages['de'] = array(
 	'emergencydesysop-title' => 'Entfernt den Administrator-Status des aktuellen und eines anderen Benutzers',
 	'emergencydesysop-otheradmin' => 'Anderen Administrator zum Deklassieren',
 	'emergencydesysop-reason' => 'Grund für die Entfernung',
-	'emergencydesysop-submit' => 'Übertragen',
+	'emergencydesysop-submit' => 'Speichern',
 	'emergencydesysop-incomplete' => 'Es werden Eingaben in allen Feldern benötigt. Bitte erneut versuchen.',
 	'emergencydesysop-notasysop' => "Der gewählte Benutzer ist nicht in der Gruppe ''Administrator''.",
 	'emergencydesysop-nogroups' => 'Keine',

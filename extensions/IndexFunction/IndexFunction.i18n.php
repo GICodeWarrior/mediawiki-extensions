@@ -244,6 +244,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author Kghbln
  * @author MF-Warburg
  * @author The Evil IP address
  */
@@ -263,7 +264,7 @@ Bitte entferne „$1” von <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$3|der obi
 	'index' => 'Indexsuche',
 	'index-legend' => 'Den Index durchsuchen',
 	'index-search' => 'Suche:',
-	'index-submit' => 'Senden',
+	'index-submit' => 'Speichern',
 	'index-disambig-start' => "'''$1''' steht für:",
 	'index-emptylist' => 'Es gibt keine Seiten, die mit „$1“ verbunden sind',
 	'index-expand-detail' => 'Zeige Seiten, die unter diesem Titel indiziert sind',

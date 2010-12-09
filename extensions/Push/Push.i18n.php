@@ -62,6 +62,23 @@ $messages['qqq'] = array(
 	'push-remote-page-link-full' => '$1: page name, $2: wiki name',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'push-desc' => 'Невялікае пашырэньне для распаўсюджваньня зьместу ў іншыя вікі',
+	'push-tab-text' => 'Распаўсюдзіць',
+	'push-button-text' => 'Распаўсюдзіць',
+	'push-tab-desc' => 'Гэтая закладка дазваляе Вам распаўсюджваць цяперашнюю вэрсію гэтай старонкі ў іншыя вікі.',
+	'push-button-pushing' => 'Распаўсюджваньне',
+	'push-button-completed' => 'Распаўсюджваньне скончанае',
+	'push-button-failed' => 'Памылка распаўсюджваньня',
+	'push-tab-title' => 'Распаўсюджваньне $1',
+	'push-targets' => 'Мэты распаўсюджваньня',
+	'push-add-target' => 'Дадаць мэту',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -98,6 +115,44 @@ Um Seiten zu transferieren, sind deren Titel im Eingabefeld unten anzugeben (ein
 	'push-special-item-completed' => '$1: Transfer abgeschlossen',
 	'push-special-item-failed' => '$1: Transfer fehlgeschlagen. Grund: $2',
 	'push-special-push-done' => 'Transfer abgeschlossen',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'push-desc' => 'Extension simple pro transferer contento a altere wikis',
+	'push-tab-text' => 'Transferer',
+	'push-button-text' => 'Transferer',
+	'push-tab-desc' => 'Iste scheda permitte transferer le version actual de iste pagina a un o plus altere wikis.',
+	'push-button-pushing' => 'Transferimento in curso',
+	'push-button-completed' => 'Transferimento complete',
+	'push-button-failed' => 'Transferimento fallite',
+	'push-tab-title' => 'Transfere $1',
+	'push-targets' => 'Destinationes de transferimento',
+	'push-add-target' => 'Adder destination',
+	'push-import-revision-message' => 'Importation ex $1 per $2. $3',
+	'push-import-revision-comment' => 'Ultime commento: $1',
+	'push-tab-no-targets' => 'Il non ha destinationes de transferimento. Per favor adde alcunes in tu file LocalSettings.php.',
+	'push-tab-push-to' => 'Transferer a $1',
+	'push-remote-pages' => 'Paginas remote',
+	'push-remote-page-link' => '$1 in $2',
+	'push-remote-page-link-full' => 'Vider $1 in $2',
+	'push-targets-total' => 'Il ha un total de $1 {{PLURAL:$1|destination|destinationes}}.',
+	'push-button-all' => 'Transferer totes',
+	'special-push' => 'Transferer paginas',
+	'push-special-description' => 'Iste pagina permitte transferer le contento de un o plus paginas a un o plus wikis MediaWiki.
+
+Pro transferer paginas, entra le titulos in le quadro de texto hic infra, un titulo per linea, e preme "Transferer totes". Isto pote prender certe un tempore.',
+	'push-special-pushing-desc' => 'Transfere $2 {{PLURAL:$2|pagina|paginas}} a $1...',
+	'push-special-button-text' => 'Transferer paginas',
+	'push-special-target-is' => 'Wiki de destination: $1',
+	'push-special-select-targets' => 'Wikis de destination:',
+	'push-special-item-getting' => '$1: Obtene pagina',
+	'push-special-item-pushing-to' => '$1: Transfere a $2',
+	'push-special-item-completed' => '$1: Transferimento complete',
+	'push-special-item-failed' => '$1: Transferimento fallite: $2',
+	'push-special-push-done' => 'Transferimento complete',
 );
 
 /** Macedonian (Македонски)

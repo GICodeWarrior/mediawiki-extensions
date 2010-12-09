@@ -24,11 +24,13 @@ Check your spelling.',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'ajaxlogin-desc' => '{{desc}}',
+	'ajaxlogin-create' => '{{Identical|Create account}}',
 );
 
 /** Afrikaans (Afrikaans)

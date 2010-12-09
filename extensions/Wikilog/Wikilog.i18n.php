@@ -1828,7 +1828,7 @@ Der Kommentar wird erst erscheinen, nachdem er von einem Moderator geprüft wurd
 	'wikilog-show-all' => 'Alle Beiträge',
 	'wikilog-show-published' => 'Veröffentlicht',
 	'wikilog-show-drafts' => 'Entwürfe',
-	'wikilog-submit' => 'Abschicken',
+	'wikilog-submit' => 'Speichern',
 	'wikilog-preview' => 'Vorher betrachten',
 	'wikilog-edit-lc' => 'bearbeiten',
 	'wikilog-reply-lc' => 'antworten',

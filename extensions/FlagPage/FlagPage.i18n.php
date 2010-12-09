@@ -478,12 +478,29 @@ Exemplos:
 
 /** Russian (Русский)
  * @author Lockal
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'flagpage' => 'Обозначить страницу',
+	'flagpage-desc' => 'Обозначение страниц предопределёнными шаблонами',
+	'flagpage-templatelist' => '<!--
+Измените эту страницу, для настройки шаблонов.
+Примеры:
+* [[Template:Unsourced|Страница не ссылается на какие-либо источники]]
+* [[Template:NPOV|Перекос в освещении темы]]
+* [[Template:Delete|Страницу следует удалить]]
+-->',
+	'flagpage-nopageselectedtitle' => 'Страница не выбрана',
+	'flagpage-nopageselected' => 'Вы не указали страницу',
+	'flagpage-emptylisttitle' => 'Не настроены шаблоны',
+	'flagpage-emptylist' => 'Вам нужно настроить списки шаблонов. Вы можете исправить [[{{ns:8}}:flagpage-templatelist]] прямо сейчас.',
+	'flagpage-preview' => 'Предпросмотр выбранного шаблона:',
+	'flagpage-confirmsave' => 'Пожалуйста, подтвердите изменения.',
 	'flagpage-submitbutton' => 'Сохранить страницу с этим шаблоном',
 	'flagpage-nonexistent' => 'Страница «$1» не существует. Возможно, она была [{{fullurl:Special:Log|page=$1}} перемещена или удалена].',
 	'flagpage-summary' => 'Добавлен шаблон [[$1]] с помощью FlagPage',
 	'flagpage-success' => '[[$1]] добавлен на страницу [[$2]].',
+	'flagpage-tab' => 'Обозначение',
 );
 
 /** Swedish (Svenska)
