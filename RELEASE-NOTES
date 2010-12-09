@@ -4,6 +4,12 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Push
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push/RELEASE-NOTES?view=co
 
 
+=== Version 0.3 ===
+2010-12-09
+
+* Fixed push functionality for wikis on remote domains.
+* Added 'bulkpush' right
+
 === Version 0.2 ===
 2010-12-08
 

@@ -21,8 +21,9 @@
 		this.disabled = true;
 		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
 		
-		getLocalArtcileAndContinue(
+		initiatePush(
 			this,
+			$('#pageName').attr('value'),
 			$(this).attr( 'pushtarget' )
 		);
 	});
@@ -35,143 +36,28 @@
 		});
 	});	
 	
-	function getLocalArtcileAndContinue( sender, targetUrl ) {
-		var revId = $('#pushRevId').attr('value');
-		
+	function initiatePush( sender, pageName, targetUrl ) {
 		$.getJSON(
 			wgScriptPath + '/api.php',
 			{
-				'action': 'query',
+				'action': 'push',
 				'format': 'json',
-				'prop': 'revisions',
-				'rvprop': 'timestamp|user|comment|content',
-				'titles': $('#pageName').attr('value'),
-				'rvstartid': revId,
-				'rvendid': revId,
+				'page': pageName,
+				'targets': targetUrl
 			},
 			function( data ) {
+				alert('.');
 				if ( data.error ) {
+					alert('');
 					handleError( sender, targetUrl, data.error );
 				}
 				else {
-					sender.innerHTML = sender.innerHTML + '.';
-					for (first in data.query.pages) break;
-					doLoginAndContinue( sender, targetUrl, data.query.pages[first] );
-				}
-			}
-		); 		
-	}
-	
-	function doLoginAndContinue( sender, targetUrl, page ) {
-		if ( false ) { // TODO
-			var name = ''; // TODO
-			var password = ''; // TODO			
-			
-			$.post( 
-				targetUrl + '/api.php',
-				{
-					'action': 'login',
-					'format': 'json',
-					'lgname': name,
-					'lgpassword': password,
-				},
-				function( data ) {
-					if ( data.error ) {
-						handleError( sender, targetUrl, data.error );
-					}
-					else {
-						if ( data.login.result == "NeedToken" ) {
-							confirmLoginTokenAndContinue( sender, targetUrl, page, data.login.token, name, password );
-						}
-						else {
-							getEditTokenAndContinue( sender, targetUrl, page );
-						}
-					}
-				}
-			);				
-		}
-		else {
-			getEditTokenAndContinue( sender, targetUrl, page );
-		}
-	}
-	
-	function confirmLoginTokenAndContinue( sender, targetUrl, page, token, name, password ) {
-		$.post( 
-			targetUrl + '/api.php',
-			{
-				'action': 'login',
-				'format': 'json',
-				'lgname': name,
-				'lgpassword': password,
-				'lgtoken': token 
-			},
-			function( data ) {
-				if ( data.error ) {
-					handleError( sender, targetUrl, data.error );
-				}
-				else {
-					getEditTokenAndContinue( sender, targetUrl, page );
-				}
-			}
-		);		
-	}
-	
-	function getEditTokenAndContinue( sender, targetUrl, page ) {
-		$.getJSON(
-			targetUrl + '/api.php',
-			{
-				'action': 'query',
-				'format': 'json',
-				'intoken': 'edit',
-				'prop': 'info',
-				'titles': page.title,
-			},
-			function( data ) {
-				if ( data.error ) {
-					handleError( sender, targetUrl, data.error );
-				}
-				else {
-					sender.innerHTML = sender.innerHTML + '.';
-					for (first in data.query.pages) break;
-					doPush( sender, targetUrl, page, data.query.pages[first].edittoken );
-				}
-			}
-		); 
-	}	
-	
-	function doPush( sender, targetUrl, page, token ) {
-		var summary = mediaWiki.msg( 'push-import-revision-message' );
-		summary = summary.replace( '$1', $('#siteName').attr('value') );
-		summary = summary.replace( '$2', page.revisions[0].user );
-		
-		var comment = '';
-		if ( page.revisions[0].comment ) {
-			comment = mediaWiki.msg( 'push-import-revision-comment' );
-			comment = comment.replace( '$1', page.revisions[0].comment );
-		}
-		
-		summary = summary.replace( '$3', comment );
-		
-		$.post( 
-			targetUrl + '/api.php',
-			{
-				'action': 'edit',
-				'format': 'json',
-				'token': token,
-				'title': page.title,
-				'summary': summary,
-				'text': page.revisions[0].*
-			},
-			function( data ) {
-				if ( data.error ) {
-					handleError( sender, targetUrl, data.error );
-				}
-				else {
+					alert('.');
 					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
 					setTimeout( function() {reEnableButton( sender );}, 1000 );
 				}
 			}
-		);	
+		); 		
 	}
 	
 	function reEnableButton( button ) {

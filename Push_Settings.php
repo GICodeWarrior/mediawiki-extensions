@@ -21,6 +21,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $egPushTargets = array();
 
 $wgGroupPermissions['*']['push'] = true;
+$wgGroupPermissions['autoconfirmed']['bulkpush'] = true;
+$wgGroupPermissions['sysop']['bulkpush'] = true;
 $wgGroupPermissions['sysop']['pushadmin'] = true;
 
 $egPushShowTab = false;

@@ -124,8 +124,7 @@ final class PushTab {
 		
 		$wgOut->addHTML(
 			Html::hidden( 'pageName', $wgTitle->getFullText(), array( 'id' => 'pageName' ) ) .
-			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) ) . 
-			Html::hidden( 'pushRevId', PushFunctions::getRevisionToPush( $wgTitle ), array( 'id' => 'pushRevId' ) )
+			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) )
 		);
 		
 		if ( count( $egPushTargets ) == 1 ) {
