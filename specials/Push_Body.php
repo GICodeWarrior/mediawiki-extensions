@@ -202,7 +202,12 @@ class SpecialPush extends SpecialPage {
 		$form .= Xml::element( 'textarea', array( 'name' => 'pages', 'cols' => 40, 'rows' => 10 ), $pages, false );
 		$form .= '<br />';
 
-		$form .= Xml::checkLabel( wfMsg( 'export-templates' ), 'templates', 'wpExportTemplates', false ) . '<br />';
+		$form .= Xml::checkLabel(
+			wfMsg( 'export-templates' ),
+			'templates',
+			'wpExportTemplates',
+			$wgRequest->wasPosted() ? $wgRequest->getCheck( 'templates' ) : false
+		) . '<br />';
 		
 		if ( count( $egPushTargets ) == 1 ) {
 			$names = array_keys( $egPushTargets );
@@ -212,7 +217,9 @@ class SpecialPush extends SpecialPage {
 			$form .= '<b>' . htmlspecialchars( wfMsg( 'push-special-select-targets' ) ) . '</b><br />';
 			
 			foreach ( $egPushTargets as $targetName => $targetUrl ) {
-				$form .= Xml::checkLabel( $targetName, str_replace( ' ', '_', $targetName ), $targetName, true ) . '<br />';
+				$checkName = str_replace( ' ', '_', $targetName );
+				$checked = $wgRequest->wasPosted() ? $wgRequest->getCheck( $checkName ) : true;
+				$form .= Xml::checkLabel( $targetName, $checkName, $targetName, $checked ) . '<br />';
 			}
 		}
 		

@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Push_VERSION', '0.3 alpha' );
+define( 'Push_VERSION', '0.3' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -75,6 +75,7 @@ $egPushJSMessages = array(
 	'push-special-item-completed',
 	'push-special-item-failed',
 	'push-special-push-done',
+	'push-err-captacha',
 );
 
 // For backward compatibility with MW < 1.17.

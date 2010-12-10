@@ -282,7 +282,8 @@ final class PushTab {
 						'class' => 'push-button',
 						'pushtarget' => $url,
 						'style' => 'width: 125px; height: 30px',
-						'targetid' => $targetId
+						'targetid' => $targetId,
+						'targetname' => $name
 					),
 					wfMsg( 'push-button-text' )
 				)

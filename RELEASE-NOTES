@@ -10,6 +10,8 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 * Fixed push functionality for wikis on remote domains.
 * Added 'bulkpush' right.
 * Added batch operations to Special:Push.
+* Added redlink support to the tab interface.
+* Improved error handling.
 
 === Version 0.2 ===
 2010-12-08
