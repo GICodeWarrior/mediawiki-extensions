@@ -185,7 +185,7 @@ final class PushTab {
 				array(),
 				Html::element(
 					'th',
-					array(),
+					array( 'width' => '200px' ),
 					wfMsg( 'push-targets' )
 				) .
 				Html::element(
@@ -271,6 +271,13 @@ final class PushTab {
 						'id' => 'targetlink' . $targetId
 					),
 					wfMsgExt( 'push-remote-page-link', 'parsemag', $wgTitle->getFullText(), $name ) 
+				) . 
+				Html::element(
+					'div',
+					array(
+						'id' => 'targetinfo' . $targetId,
+						'style' => 'display:none'
+					)
 				)
 			) .	
 			Html::rawElement(
