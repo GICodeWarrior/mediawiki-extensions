@@ -215,6 +215,22 @@ $messages['ba'] = array(
 	'articlefeedback-alpha-survey-submit' => 'Ебәрергә',
 	'articlefeedback-alpha-survey-title' => 'Зинһар, бер нисә һорауға яуап бирегеҙ',
 	'articlefeedback-alpha-survey-thanks' => 'Һорауҙарға яуап биреүегеҙ өсөн рәхмәт.',
+	'articlefeedback-beta-form-switch-label' => 'Баһалама ебәреү',
+	'articlefeedback-beta-form-panel-title' => 'Һеҙҙең баһаламағыҙ',
+	'articlefeedback-beta-form-panel-instructions' => 'Зинһар, был битте баһалар өсөн ваҡытығыҙҙы бүлегеҙ.',
+	'articlefeedback-beta-form-panel-notice' => 'Һеҙҙең баһалауҙарығыҙ ваҡыт үтеү менән көсөн юғалтасаҡ.',
+	'articlefeedback-beta-form-panel-submit' => 'Баһалауҙы ебәрергә',
+	'articlefeedback-beta-report-switch-label' => 'Һөҙөмтәне күрһәтергә',
+	'articlefeedback-beta-report-panel-title' => 'Баһалау һөҙөмтәһе',
+	'articlefeedback-beta-report-panel-description' => 'Ағымдағы уртаса баһалар.',
+	'articlefeedback-beta-field-wellsourced-label' => 'Сығанаҡтар',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Һеҙ был биттә етәрлек сығанаҡтар бар һәм сығанаҡтар ышаныслы, тип һанайһығыҙмы?',
+	'articlefeedback-beta-field-complete-label' => 'Тулылыҡ',
+	'articlefeedback-beta-field-complete-tip' => 'Һеҙ был бит төп һорауҙарҙы етәрлек кимәлдә аса, тип һанайһығыҙмы?',
+	'articlefeedback-beta-field-neutral-label' => 'Битарафлыҡ',
+	'articlefeedback-beta-field-neutral-tip' => 'Һеҙ был бит ҡағылған һорау буйынса бөтә фекерҙәрҙе лә ғәҙел сағылдыра, тип һанайһығыҙмы?',
+	'articlefeedback-beta-field-readable-label' => 'Уҡымлылыҡ',
+	'articlefeedback-beta-field-readable-tip' => 'Һеҙ был бит яҡшы ойошторолған һәм яҡшы яҙылған, тип һанайһығыҙмы?',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
