@@ -59,21 +59,29 @@
 			},
 			function( data ) {
 				if ( data.query ) {
+					var infoDiv = $( '#targetinfo' + targetId );
+					
 					for ( first in data.query.pages ) break;
+					
 					if ( first == '-1' ) {
 						$( '#targetlink' + targetId ).attr( {'class': 'new'} );
+						var message = mediaWiki.msg( 'push-tab-not-created' );
 					}
 					else {
 						var revision = data.query.pages[first].revisions[0];
 						var dateTime = revision.timestamp.split( 'T' );
-						$( '#targetinfo' + targetId ).css( 'color', 'darkgray' );
-						$( '#targetinfo' + targetId ).text( mediaWiki.msg(
+
+						var message = mediaWiki.msg(
 							'push-tab-last-edit',
 							revision.user,
 							dateTime[0],
 							dateTime[1].replace( 'Z', '' )
-						) ).fadeIn('slow');
+						);
 					}
+					
+					infoDiv.css( 'color', 'darkgray' );
+					infoDiv.text( message );
+					infoDiv.fadeIn( 'slow' );
 				}
 			}
 		);

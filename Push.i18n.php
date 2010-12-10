@@ -40,9 +40,10 @@ $messages['en'] = array(
 	'push-remote-pages' => 'Remote pages',
 	'push-remote-page-link' => '$1 on $2',
 	'push-remote-page-link-full' => 'View $1 on $2',
-	'push-targets-total' => 'There a total of $1 {{PLURAL:$1|target|targets}}.',
+	'push-targets-total' => 'There are a total of $1 {{PLURAL:$1|target|targets}}.',
 	'push-button-all' => 'Push all',
 	'push-tab-last-edit' => 'Last edit by $1 on $2 at $3.',
+	'push-tab-not-created' => 'This page does not exist yet.',
 	
 	// Special page
 	'special-push' => 'Push pages',
