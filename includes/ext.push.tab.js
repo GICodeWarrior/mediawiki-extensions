@@ -12,10 +12,20 @@
 	if ( typeof mediaWiki === 'undefined' ) {
 		mediaWiki = new Object();
 		
-		mediaWiki.msg = function( message ) {
-			return window.wgPushMessages[message];
+		mediaWiki.msg = function() {
+			message = window.wgPushMessages[arguments[0]];
+			
+			for ( var i = arguments.length - 1; i > 0; i-- ) {
+				message = message.replace( '$' + i, arguments[i] );
+			}
+			
+			return message;
 		}
 	}
+	
+	$.each($(".push-button"), function(i,v) {
+		getRemoteArticleInfo( $(v).attr( 'targetid' ), $(v).attr( 'pushtarget' ) );
+	});	
 	
 	$('.push-button').click(function() {
 		this.disabled = true;
@@ -35,6 +45,27 @@
 			$(v).click();
 		});
 	});	
+	
+	function getRemoteArticleInfo( targetId, targetUrl ) {
+		$.getJSON(
+			targetUrl + '/api.php?callback=?',
+			{
+				'action': 'query',
+				'format': 'json',
+				'prop': 'revisions',
+				'rvprop': 'timestamp|user|comment',
+				'titles': $('#pageName').attr('value'),
+			},
+			function( data ) {
+				if ( data.query ) {
+					for ( first in data.query.pages ) break;
+					if ( first == '-1' ) {
+						$( '#targetlink' + targetId ).attr( {'class': 'new'} );
+					}
+				}
+			}
+		);
+	}
 	
 	function initiatePush( sender, pageName, targetUrl ) {
 		$.getJSON(

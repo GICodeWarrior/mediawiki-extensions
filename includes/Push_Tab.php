@@ -249,6 +249,9 @@ final class PushTab {
 	protected static function getPushItem( $name, $url ) {
 		global $wgTitle;
 		
+		static $targetId = 0;
+		$targetId++;
+		
 		return Html::rawElement(
 			'tr',
 			array(),
@@ -262,7 +265,11 @@ final class PushTab {
 				array(),
 				Html::element(
 					'a',
-					array( 'href' => $url . '/index.php?title=' . $wgTitle->getFullText(), 'rel' => 'nofollow' ),
+					array(
+						'href' => $url . '/index.php?title=' . $wgTitle->getFullText(),
+						'rel' => 'nofollow',
+						'id' => 'targetlink' . $targetId
+					),
 					wfMsgExt( 'push-remote-page-link', 'parsemag', $wgTitle->getFullText(), $name ) 
 				)
 			) .	
@@ -275,6 +282,7 @@ final class PushTab {
 						'class' => 'push-button',
 						'pushtarget' => $url,
 						'style' => 'width: 125px; height: 30px',
+						'targetid' => $targetId
 					),
 					wfMsg( 'push-button-text' )
 				)
