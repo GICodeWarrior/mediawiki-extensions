@@ -96,18 +96,12 @@ class ContributionTracking extends UnlistedSpecialPage {
 			
 			$action = 'https://www.paypal.com/cgi-bin/webscr';
 
-			/*
-			Commenting this out until we're ready to launch premiums.
 			// Premiums
 			if ( $wgRequest->getCheck( 'shirt') ) {
 				$repost['on0'] = 'Shirt Size';
 				$repost['os0'] = $wgRequest->getText( 'size', null );
 				$repost['no_shipping'] = 2;
 			}
-			*/
-			
-			// Tracking
-			$repost['on0'] = 'contribution_tracking_id';
 			
 			// PayPal
 			$repost['business'] = $wgContributionTrackingPayPalBusiness;
@@ -162,8 +156,6 @@ class ContributionTracking extends UnlistedSpecialPage {
 		}
 		
 		// Tracking
-		// passing contrib tracking id in two places to ease transition to new model (custom field)
-		$repost['os0'] = $contribution_tracking_id;
 		$repost['custom'] = $contribution_tracking_id;
 		
 		$wgOut->addWikiText( "{{2009/Donate-banner/$language}}" );
