@@ -46,7 +46,7 @@ abstract class ApiWikiSync extends ApiQueryBase {
 	// we construct like ApiBase, however we also use SQL select building methods from ApiQueryBase
 	public function __construct( $mainModule, $moduleName, $modulePrefix = '' ) {
 		// we call ApiBase only, ApiQueryBase is unsuitable to our needs
-		ApiBase::__construct( $mainModule, $moduleName, $modulePrefix = '' );
+		parent::__construct( $mainModule, $moduleName, $modulePrefix );
 		$this->mDb = null;
 		$this->resetQueryParams();
 	}
