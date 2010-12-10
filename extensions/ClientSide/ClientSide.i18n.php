@@ -34,6 +34,13 @@ $messages['ar'] = array(
 	'clientside-desc' => 'يوفر دوال لتوليد كود في صيغ تابعة للعميل مثل HTML، CSS وجافاسكريبت',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'clientside-desc' => 'HTML, CSS һәм JavaScript һымаҡ клиент форматтарында код булдырыу функцияляры менән тәьмин итә.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

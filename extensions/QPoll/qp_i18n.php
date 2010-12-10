@@ -855,12 +855,14 @@ El id sólo puede contener letras, números y espacios',
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
+ * @author Tofu II
  */
 $messages['fi'] = array(
 	'qp_result_NA' => 'Ei vastattu',
 	'qp_result_error' => 'Syntaksivirhe',
 	'qp_vote_button' => 'Äänestä',
 	'qp_vote_again_button' => 'Vaihda ääntäsi',
+	'qp_users_list' => 'Lista kaikista käyttäjistä',
 	'qp_votes_count' => '$1 {{PLURAL:$1|ääni|ääntä}}',
 	'qp_source_link' => 'Lähde',
 	'qp_stats_link' => 'Tilastot',

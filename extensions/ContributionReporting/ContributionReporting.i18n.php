@@ -462,6 +462,7 @@ $messages['ba'] = array(
 	'fundraiserstats-tab-averages' => 'Уртаса (USD)',
 	'fundraiserstats-tab-maximums' => 'Иң күптәре (USD)',
 	'fundraiserstats-tab-ytd' => 'Йыл башынан (USD)',
+	'fundraiserstats-instructions' => 'Кәрәкле көн өсөн статистиканы ҡарау өсөн, курсорҙы ошо көндөң бағанаһына килтерегеҙ. Төрлө йылдар өсөн мәғлүмәт төрлө төҫ менән күрһәтелгән.',
 );
 
 /** Belarusian (Беларуская)

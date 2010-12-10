@@ -63,7 +63,9 @@ To push pages, enter the titles in the text box below, one title per line and hi
 	'push-special-err-push-failed' => 'Target wiki refused the pushed page.'
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Nike
+ */
 $messages['qqq'] = array(
 	'push-import-revision-message' => '$3 is [[MediaWiki:Push-import-revision-comment]] or empty.',
 	'push-remote-page-link' => '$1: page name, $2: wiki name',
@@ -85,6 +87,11 @@ $messages['be-tarask'] = array(
 	'push-tab-title' => 'Распаўсюджваньне $1',
 	'push-targets' => 'Мэты распаўсюджваньня',
 	'push-add-target' => 'Дадаць мэту',
+	'push-import-revision-message' => 'Імпарт з $1 ад $2. $3',
+	'push-import-revision-comment' => 'Апошні камэнтар: $1',
+	'push-tab-no-targets' => 'Няма мэтаў для распаўсюджаньня. Калі ласка, дадайце некаторыя ў Ваш файл LocalSettings.php.',
+	'push-tab-push-to' => 'Распаўсюдзіць у $1',
+	'push-remote-pages' => 'Аддаленыя старонкі',
 );
 
 /** German (Deutsch)
@@ -125,11 +132,22 @@ Um Seiten zu transferieren, sind deren Titel im Eingabefeld unten anzugeben (ein
 	'push-special-push-done' => 'Transfer abgeschlossen',
 );
 
+/** Finnish (Suomi)
+ * @author Tofu II
+ */
+$messages['fi'] = array(
+	'push-add-target' => 'Lisää kohde',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'push-desc' => 'Extension simple pro transferer contento a altere wikis',
+	'right-push' => 'Autorisation a usar le functionalitate de transferimento.',
+	'right-bulkpush' => 'Autorisation a usar le functionalitate de transferimento in massa (i.e. Special:Push).',
+	'right-pushadmin' => 'Autorisation a modificar destinationes e configurationes de transferimento.',
+	'push-err-captacha' => 'Non poteva transferer a $1 a causa de un problema con le "captcha".',
 	'push-tab-text' => 'Transferer',
 	'push-button-text' => 'Transferer',
 	'push-tab-desc' => 'Iste scheda permitte transferer le version actual de iste pagina a un o plus altere wikis.',
@@ -156,11 +174,49 @@ Pro transferer paginas, entra le titulos in le quadro de texto hic infra, un tit
 	'push-special-button-text' => 'Transferer paginas',
 	'push-special-target-is' => 'Wiki de destination: $1',
 	'push-special-select-targets' => 'Wikis de destination:',
-	'push-special-item-getting' => '$1: Obtene pagina',
-	'push-special-item-pushing-to' => '$1: Transfere a $2',
+	'push-special-item-pushing' => '$1: Transferimento in curso',
 	'push-special-item-completed' => '$1: Transferimento complete',
 	'push-special-item-failed' => '$1: Transferimento fallite: $2',
 	'push-special-push-done' => 'Transferimento complete',
+	'push-special-err-token-failed' => 'Non poteva obtener un indicio de modification in le wiki de destination.',
+	'push-special-err-pageget-failed' => 'Non poteva obtener le contento del pagina local.',
+	'push-special-err-push-failed' => 'Le wiki de destination refusava le pagina transferite.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'push-desc' => 'Ekstensi ringan untuk mendorong konten ke wiki lainnya',
+	'push-tab-text' => 'Dorong',
+	'push-button-text' => 'Dorong',
+	'push-tab-desc' => 'Tab ini mengizinkan Anda untuk mendorong revisi terbaru halaman ini ke satu atau lebih wiki lain.',
+	'push-button-pushing' => 'Mendorong',
+	'push-button-completed' => 'Pendorongan selesai',
+	'push-button-failed' => 'Pendorongan gagal',
+	'push-tab-title' => 'Mendorong $1',
+	'push-targets' => 'Target pendorongan',
+	'push-add-target' => 'Tambahkan target',
+	'push-import-revision-message' => 'Impor dari $1 oleh $2. $3',
+	'push-import-revision-comment' => 'Komentar terakhir: $1',
+	'push-tab-no-targets' => 'Tidak ada target untuk pendorongan. Harap tambahkan beberapa berkas ke LocalSettings.php Anda.',
+	'push-tab-push-to' => 'Dorong ke $1',
+	'push-remote-pages' => 'Halaman luar',
+	'push-remote-page-link' => '$1 pada $2',
+	'push-remote-page-link-full' => 'Lihat $1 pada $2',
+	'push-targets-total' => 'Total ada $1 {{PLURAL:$1|target|target}}.',
+	'push-button-all' => 'Dorong semua',
+	'special-push' => 'Dorong halaman',
+	'push-special-description' => 'Halaman ini memungkinkan Anda untuk mendorong satu atau lebih halaman ke satu atau lebih wiki MediaWiki.
+
+Untuk mendorong halaman, masukkan judul dalam kotak teks di bawah ini, satu judul per baris, dan tekan dorong semua. Proses ini dapat memakan waktu cukup lama.',
+	'push-special-pushing-desc' => 'Mendorong $2 {{PLURAL:$2|halaman|halaman}} ke $1...',
+	'push-special-button-text' => 'Dorong halaman',
+	'push-special-target-is' => 'Wiki target: $1',
+	'push-special-select-targets' => 'Wiki target:',
+	'push-special-item-completed' => '$1: Pendorongan selesai',
+	'push-special-item-failed' => '$1: Pendorongan gagal: $2',
+	'push-special-push-done' => 'Pendorongan selesai',
 );
 
 /** Macedonian (Македонски)
@@ -202,9 +258,56 @@ $messages['mk'] = array(
 );
 
 /** Russian (Русский)
+ * @author DCamer
  * @author Lockal
  */
 $messages['ru'] = array(
+	'push-desc' => 'Небольшое расширение для помещения содержимого в другие вики',
+	'right-push' => 'Авторизуйтесь чтобы использовать эту функцию.',
+	'right-bulkpush' => 'Авторизуйтесь чтобы использовать эту объёмную функцию (например, Служебная:Push)',
+	'right-pushadmin' => 'Авторизуйтесь чтобы изменять настройки и направления размещения.',
+	'push-err-captacha' => 'Не удалось разместить на $1 из-за капчи.',
+	'push-tab-text' => 'Разместить',
+	'push-button-text' => 'Поместить',
+	'push-tab-desc' => 'Эта вкладка позволяет разместить текущею версию этой страницы на одну или нескольких других вики.',
+	'push-button-pushing' => 'Размещение',
+	'push-button-completed' => 'Размещение завершено',
+	'push-button-failed' => 'Размещение не удалось',
+	'push-tab-title' => 'Размещение $1',
+	'push-targets' => 'Направление размещения',
+	'push-add-target' => 'Добавить направление',
+	'push-import-revision-message' => 'Импортировать от $1 до $2. $3',
 	'push-import-revision-comment' => 'Последний комментарий: $1',
+	'push-tab-no-targets' => 'Отсутствует направления размещения. Пожалуйста, добавьте их в файл LocalSettings.php.',
+	'push-tab-push-to' => 'Размещение на $1',
+	'push-remote-pages' => 'Удалённые страницы',
+	'push-remote-page-link' => '$1 на $2',
+	'push-remote-page-link-full' => 'Просмотреть $1 на $2',
+	'push-targets-total' => 'Всего $1 {{PLURAL:$1|направление|направления}}.',
+	'push-button-all' => 'Разместить все',
+	'special-push' => 'Разместить страницы',
+	'push-special-description' => 'Эта страница позволяет разместить содержимое одной или нескольких страниц на одну или несколько других вики-сайтов на движке MediaWiki.
+
+Для того, чтобы разместить страницы, введите названия в текстовом поле ниже, один заголовок на строку, и нажмите «Разместить все». Это может занять некоторое время.',
+	'push-special-pushing-desc' => 'Размещение $2 {{PLURAL:$2|страницы|страниц}} на $1...',
+	'push-special-button-text' => 'Разместить страницы',
+	'push-special-target-is' => 'Целевой вики-сайт: $1',
+	'push-special-select-targets' => 'Целевые вики-сайты:',
+	'push-special-item-pushing' => '$1: Размещение',
+	'push-special-item-completed' => '$1: Размещение завершено',
+	'push-special-item-failed' => '$1: Размещение не удалось: $2',
+	'push-special-push-done' => 'Размещение завершено',
+	'push-special-err-token-failed' => 'Не удалось получить маркер редактирование на целевом вики-сайте.',
+	'push-special-err-pageget-failed' => 'Не удалось получить локальное содержимое страницы.',
+	'push-special-err-push-failed' => 'Целевой вики-сайт отказался разместить страницу.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'push-import-revision-comment' => 'చివరి వ్యాఖ్య: $1',
+	'push-special-target-is' => 'లక్ష్యిత వికీ: $1',
+	'push-special-select-targets' => 'లక్ష్యిత వికీలు:',
 );
 

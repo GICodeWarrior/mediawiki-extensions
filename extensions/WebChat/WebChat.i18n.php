@@ -32,6 +32,13 @@ $messages['qqq'] = array(
 	'right-webchat' => '{{doc-right|webchat}}',
 );
 
+/** کھوار (کھوار)
+ * @author Rachitrali
+ */
+$messages['khw'] = array(
+	'webchat-desc' => 'تان ملگیریان سوم گپ شپو بچے خاص صفحہ [[Special:WebChat|کھوارا گپ شپ]]',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
