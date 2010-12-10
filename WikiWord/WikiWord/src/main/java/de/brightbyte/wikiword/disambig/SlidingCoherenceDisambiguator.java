@@ -100,9 +100,11 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 			if (initialWindow == 1) r = popularityDisambiguator.disambiguate(sequences, root, meanings, context);
 			else r = super.disambiguate(sequences, root, meanings, context);
 			
-			sequence.addAll(r.getSequence());
-			currentNode = getLastNode(root, sequence);
-			disambig.putAll(r.getMeanings());
+			if ( r != null ) {
+				sequence.addAll(r.getSequence());
+				currentNode = getLastNode(root, sequence);
+				disambig.putAll(r.getMeanings());
+			}
 		}
 		
 		while (true) {
