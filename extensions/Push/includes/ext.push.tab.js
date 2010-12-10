@@ -34,7 +34,8 @@
 		initiatePush(
 			this,
 			$('#pageName').attr('value'),
-			$(this).attr( 'pushtarget' )
+			$(this).attr( 'pushtarget' ),
+			$(this).attr( 'targetname' )
 		);
 	});
 	
@@ -67,7 +68,7 @@
 		);
 	}
 	
-	function initiatePush( sender, pageName, targetUrl ) {
+	function initiatePush( sender, pageName, targetUrl, targetName ) {
 		$.getJSON(
 			wgScriptPath + '/api.php',
 			{
@@ -79,6 +80,9 @@
 			function( data ) {
 				if ( data.error ) {
 					handleError( sender, targetUrl, data.error );
+				}
+				else if ( data.edit && data.edit.captcha ) {
+					handleError( sender, targetUrl, { info: mediaWiki.msg( 'push-err-captacha', targetName ) } );
 				}
 				else {
 					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
@@ -114,7 +118,8 @@
 	
 	function handleError( sender, targetUrl, error ) {
 		alert( error.info );
-		sender.innerHTML = mediaWiki.msg( 'push-button-failed' );		
+		sender.innerHTML = mediaWiki.msg( 'push-button-failed' );	
+		setTimeout( function() {reEnableButton( sender );}, 3000 );
 	}
 	
 } ); })(jQuery);

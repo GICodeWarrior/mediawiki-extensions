@@ -21,6 +21,8 @@ $messages['en'] = array(
 	'right-bulkpush' => 'Authorization to use bulk push functionality (ie Special:Push).',
 	'right-pushadmin' => 'Authorization to modify push targets and push settings.',
 
+	'push-err-captacha' => 'Could not push to $1 due to captcha.',
+
 	// Tab
 	'push-tab-text' => 'Push',
 	'push-button-text' => 'Push',
