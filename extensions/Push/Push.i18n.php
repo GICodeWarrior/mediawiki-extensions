@@ -42,6 +42,7 @@ $messages['en'] = array(
 	'push-remote-page-link-full' => 'View $1 on $2',
 	'push-targets-total' => 'There a total of $1 {{PLURAL:$1|target|targets}}.',
 	'push-button-all' => 'Push all',
+	'push-tab-last-edit' => 'Last edit by $1 on $2 at $3.',
 	
 	// Special page
 	'special-push' => 'Push pages',

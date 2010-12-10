@@ -63,6 +63,17 @@
 					if ( first == '-1' ) {
 						$( '#targetlink' + targetId ).attr( {'class': 'new'} );
 					}
+					else {
+						var revision = data.query.pages[first].revisions[0];
+						var dateTime = revision.timestamp.split( 'T' );
+						$( '#targetinfo' + targetId ).css( 'color', 'darkgray' );
+						$( '#targetinfo' + targetId ).text( mediaWiki.msg(
+							'push-tab-last-edit',
+							revision.user,
+							dateTime[0],
+							dateTime[1].replace( 'Z', '' )
+						) ).fadeIn('slow');
+					}
 				}
 			}
 		);
