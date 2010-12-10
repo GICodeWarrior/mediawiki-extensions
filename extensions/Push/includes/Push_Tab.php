@@ -134,11 +134,6 @@ final class PushTab {
 			self::displayPushList();
 		}
 		
-		if ( $wgUser->isAllowed( 'pushadmin' ) ) {
-			// TODO
-			//self::displayNewPushItem();
-		}
-		
 		return false;
 	}
 	
@@ -190,7 +185,7 @@ final class PushTab {
 				) .
 				Html::element(
 					'th',
-					array(),
+					array( 'style' => 'min-width:400px;' ),
 					wfMsg( 'push-remote-pages' )
 				) .
 				Html::element(
@@ -296,27 +291,6 @@ final class PushTab {
 				)
 			)
 		);
-		
-		// TODO: add edit and delete stuff
-	}
-	
-	/**
-	 * Displays a form via which a new push item can be added.
-	 * 
-	 * @since 0.1
-	 */
-	protected static function displayNewPushItem() {
-		global $wgOut;
-		
-		$wgOut->addHtml(
-			Html::element(
-				'h2',
-				array(),
-				wfMsg( 'push-add-target' )
-			)
-		);
-		
-		// TODO
 	}
 	
 }
