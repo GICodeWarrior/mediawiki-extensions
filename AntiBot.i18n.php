@@ -65,6 +65,13 @@ $messages['ast'] = array(
 	'antibot-desc' => "Entornu cenciellu pa les comprobaciones de bots de spam y l'activación de conteníos de descarga condicional automatizada.",
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'antibot-desc' => 'Спамботтарҙы тикшереү һәм файҙалы йөкләмәне тоҡандырыү өсөн ябай ҡулайлама',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  * @author Mucalexx
