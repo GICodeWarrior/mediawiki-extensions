@@ -1466,6 +1466,7 @@ Om du är inloggad kan du slå av den här varningen under "Redigering" i dina i
  */
 $messages['sw'] = array(
 	'vector' => 'Mabadiliko ya kuendeleza kusano ya Vector',
+	'vector-desc' => 'Inaboresha kusano kwa ajili ya watumiaji wa umbo la Vector.',
 	'vector-collapsiblenav-preference' => 'Kuwezesha vitu vikunjike katika orodha ya urambazaji, katika umbo la Vector',
 	'vector-collapsiblenav-more' => 'Lugha zingine',
 	'vector-editwarning-warning' => 'Ukitoka kwenye ukurasa huu labda utapoteza madabiliko uliyoyafanya.
