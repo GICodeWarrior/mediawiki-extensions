@@ -99,6 +99,10 @@ $messages['be-tarask'] = array(
  */
 $messages['de'] = array(
 	'push-desc' => 'Ermöglicht den einfachen Transfer von Inhalten eines Wikis in ein anderes',
+	'right-push' => 'Seiten in andere Wikis transferieren',
+	'right-bulkpush' => 'Seiten gesammelt in andere Wikis transferieren',
+	'right-pushadmin' => 'Transfereinstellungen und -ziele ändern',
+	'push-err-captacha' => 'Transfer nach $1 aufgrund eines CAPTCHAs nicht möglich.',
 	'push-tab-text' => 'Transferieren',
 	'push-button-text' => 'Transferieren',
 	'push-tab-desc' => 'Dieser Reiter ermöglicht den Transfer des aktuellen Seiteninhalts in ein oder mehrere andere Wikis.',
@@ -117,6 +121,8 @@ $messages['de'] = array(
 	'push-remote-page-link-full' => 'Seite $1 auf Wiki $2 ansehen',
 	'push-targets-total' => 'Es {{PLURAL:$1|ist|sind}} insgesamt $1 {{PLURAL:$1|Transferziel|Transferziele}} vorhanden.',
 	'push-button-all' => 'Alle transferieren',
+	'push-tab-last-edit' => 'Letzte Bearbeitung durch Benutzer $1 am $2 um $3 Uhr.',
+	'push-tab-not-created' => 'Diese Seite ist nicht vorhanden.',
 	'special-push' => 'Seiten transferieren',
 	'push-special-description' => 'Diese Spezialseite ermöglicht es den Inhalt einer oder mehrerer Seiten zu einem oder mehreren anderen Wikis zu transferieren.
 
@@ -125,11 +131,13 @@ Um Seiten zu transferieren, sind deren Titel im Eingabefeld unten anzugeben (ein
 	'push-special-button-text' => 'Seiten transferieren',
 	'push-special-target-is' => 'Zielwiki: $1',
 	'push-special-select-targets' => 'Zielwikis:',
-	'push-special-item-getting' => '$1: Seite wird geholt',
-	'push-special-item-pushing-to' => '$1: Transferiere nach $2',
+	'push-special-item-pushing' => '$1: Transferiere',
 	'push-special-item-completed' => '$1: Transfer abgeschlossen',
 	'push-special-item-failed' => '$1: Transfer fehlgeschlagen. Grund: $2',
 	'push-special-push-done' => 'Transfer abgeschlossen',
+	'push-special-err-token-failed' => 'Auf dem Zielwiki konnte der Bearbeitungstoken nicht abgerufen werden.',
+	'push-special-err-pageget-failed' => 'Auf diesem Wiki konnte der Seiteninhalt nicht abgerufen werden.',
+	'push-special-err-push-failed' => 'Das Zielwiki hat die zu transferierende Seite zurückgewiesen.',
 );
 
 /** Finnish (Suomi)
@@ -188,6 +196,10 @@ Pro transferer paginas, entra le titulos in le quadro de texto hic infra, un tit
  */
 $messages['id'] = array(
 	'push-desc' => 'Ekstensi ringan untuk mendorong konten ke wiki lainnya',
+	'right-push' => 'Otorisasi untuk menggunakan fungsi dorong.',
+	'right-bulkpush' => 'Otorisasi untuk menggunakan fungsi dorong massal (Special:Push).',
+	'right-pushadmin' => 'Otorisasi untuk memodifikasi target dan pengaturan dorong.',
+	'push-err-captacha' => 'Tidak dapat mendorong ke $1 karena captcha.',
 	'push-tab-text' => 'Dorong',
 	'push-button-text' => 'Dorong',
 	'push-tab-desc' => 'Tab ini mengizinkan Anda untuk mendorong revisi terbaru halaman ini ke satu atau lebih wiki lain.',
@@ -206,6 +218,8 @@ $messages['id'] = array(
 	'push-remote-page-link-full' => 'Lihat $1 pada $2',
 	'push-targets-total' => 'Total ada $1 {{PLURAL:$1|target|target}}.',
 	'push-button-all' => 'Dorong semua',
+	'push-tab-last-edit' => 'Suntingan terakhir oleh $1 pada $2 $3.',
+	'push-tab-not-created' => 'Halaman ini belum ada.',
 	'special-push' => 'Dorong halaman',
 	'push-special-description' => 'Halaman ini memungkinkan Anda untuk mendorong satu atau lebih halaman ke satu atau lebih wiki MediaWiki.
 
@@ -214,9 +228,29 @@ Untuk mendorong halaman, masukkan judul dalam kotak teks di bawah ini, satu judu
 	'push-special-button-text' => 'Dorong halaman',
 	'push-special-target-is' => 'Wiki target: $1',
 	'push-special-select-targets' => 'Wiki target:',
+	'push-special-item-pushing' => '$1: Mendorong',
 	'push-special-item-completed' => '$1: Pendorongan selesai',
 	'push-special-item-failed' => '$1: Pendorongan gagal: $2',
 	'push-special-push-done' => 'Pendorongan selesai',
+	'push-special-err-token-failed' => 'Tidak dapat memperoleh token sunting pada wiki target.',
+	'push-special-err-pageget-failed' => 'Tidak dapat memperoleh konten halaman lokal.',
+	'push-special-err-push-failed' => 'Wiki target menolak laman yang didorong.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'push-desc' => 'Erweiderung déi en einfachen Transfert (Push) vun Inhalt op aner Wikien erméiglecht',
+	'right-push' => "Autorisatioun fir d'Push-Fonctionalitéit ze benotzen",
+	'right-bulkpush' => 'Autorisatioun fir méi Säite mateneen per Push an aner Wikien ze transferéieren',
+	'right-pushadmin' => "Autorisatioun fir d'Zil an d'Astellungen vun der Push-Fonctionalitéit z'änneren.",
+	'push-import-revision-comment' => 'Lescht Bemierkung: $1',
+	'push-remote-page-link' => '$1 op $2',
+	'push-button-all' => 'All pushen',
+	'push-tab-not-created' => 'Dës Säit gëtt et nach net',
+	'special-push' => 'Säite pushen',
+	'push-special-select-targets' => 'Zielwikien:',
 );
 
 /** Macedonian (Македонски)
@@ -224,6 +258,10 @@ Untuk mendorong halaman, masukkan judul dalam kotak teks di bawah ini, satu judu
  */
 $messages['mk'] = array(
 	'push-desc' => 'Мал додаток за пренесување на содржини од едно на други викија',
+	'right-push' => 'Потврда на сметка за да работи функцијата за пренесување.',
+	'right-bulkpush' => 'Потврда на сметка за да работи функцијата за групно пренесување (т.е. Special:Push).',
+	'right-pushadmin' => 'Потврда на сметка за измена на одредниците и поставките за пренесување.',
+	'push-err-captacha' => 'Не можев да го пренесам $1 поради Captcha.',
 	'push-tab-text' => 'Пренеси',
 	'push-button-text' => 'Пренеси',
 	'push-tab-desc' => 'Ова јазиче ви овозможува да ја пренесете тековната ревизија на страницава на едно или повеќе викија',
@@ -231,17 +269,19 @@ $messages['mk'] = array(
 	'push-button-completed' => 'Преносот заврши',
 	'push-button-failed' => 'Преносот не успеа',
 	'push-tab-title' => 'Пренесување на $1',
-	'push-targets' => 'Пренеси цели',
-	'push-add-target' => 'Додај цел',
+	'push-targets' => 'Одредници за преносот',
+	'push-add-target' => 'Додај одредница',
 	'push-import-revision-message' => 'Увоз од $1. Увозник: $2. $3',
 	'push-import-revision-comment' => 'Последен коментар: $1',
-	'push-tab-no-targets' => 'Нема целни места за пренос. Додајте места во вашата податотека LocalSettings.php.',
+	'push-tab-no-targets' => 'Нема одредници во кои би се извршил преносот. Додајте места во вашата податотека LocalSettings.php.',
 	'push-tab-push-to' => 'Пренеси во $1',
 	'push-remote-pages' => 'Далечински страници',
 	'push-remote-page-link' => '$1 на $2',
 	'push-remote-page-link-full' => 'Преглед на $1 на $2',
-	'push-targets-total' => 'Има вкупно $1 {{PLURAL:$1|цел|цели}}.',
+	'push-targets-total' => 'Има вкупно $1 {{PLURAL:$1|одредница|одредници}}.',
 	'push-button-all' => 'Пренеси сè',
+	'push-tab-last-edit' => 'Последна измена од $1 на $2 во $3 ч.',
+	'push-tab-not-created' => 'Оваа страница сè уште не постои.',
 	'special-push' => 'Пренесување страници',
 	'push-special-description' => 'Оваа страница ви овозможува да пренесете содржини од една или повеќе страници од едно вики во едно или повеќе викија што работат на МедијаВики.
 
@@ -250,11 +290,13 @@ $messages['mk'] = array(
 	'push-special-button-text' => 'Пренеси',
 	'push-special-target-is' => 'Целно вики: $1',
 	'push-special-select-targets' => 'Целни викија:',
-	'push-special-item-getting' => '$1: Ја преземам страницата',
-	'push-special-item-pushing-to' => '$1: Пренесуавам во $2',
+	'push-special-item-pushing' => '$1: Преместување',
 	'push-special-item-completed' => '$1: Преносот заврши',
 	'push-special-item-failed' => '$1: Преносот не успеа: $2',
 	'push-special-push-done' => 'Преносот заврши',
+	'push-special-err-token-failed' => 'Не можев да го добијам жетонот на уредувањето на целното вики.',
+	'push-special-err-pageget-failed' => 'Не можев да ја добијам содржината на локалната страница.',
+	'push-special-err-push-failed' => 'Целното вики ја одби пренесената страница.',
 );
 
 /** Russian (Русский)
