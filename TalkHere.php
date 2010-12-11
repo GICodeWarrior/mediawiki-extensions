@@ -145,7 +145,7 @@ function wfTalkHereShowEditFormFields( &$editor, &$out ) {
 }
 
 function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
-	global $mediaWiki, $wgRequest, $wgTitle, $wgArticle, $wgOut;
+	global $wgRequest, $wgTitle, $wgArticle, $wgOut;
 
 	$wgTitle = Title::newFromText($page);
 	if ( !$wgTitle ) return false;
@@ -157,7 +157,7 @@ function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
 			'section' => $section );
 
 	$wgRequest = new FauxRequest( $args );
-	$wgArticle = $mediaWiki->initializeArticle( $wgTitle, $wgRequest );
+	$wgArticle = MediaWiki::articleFromTitle( $wgTitle );
 	$editor = new EditPage( $wgArticle );
 
 	//generate form
