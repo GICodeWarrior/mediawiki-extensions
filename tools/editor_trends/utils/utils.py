@@ -224,7 +224,7 @@ def write_dict_to_csv(data, fh, keys, write_key=True, newline=True):
             write_list_to_csv(data[key], fh, recursive=False, newline=False)
         elif getattr(data[key], '__iter__', False):
             for d in data[key]:
-                fh.write('%s\t' % d)
+                fh.write('%s\t' % data[key][d])
         else:
             fh.write('%s\t' % (data[key]))
     if newline:

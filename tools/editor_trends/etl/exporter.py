@@ -199,22 +199,22 @@ def create_windows():
     return windows
 
 
-def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
+def generate_cohort_dataset_old(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
     editors = mongo[collection + '_dataset']
-    data = {}
-#    while True:
-#        id = tasks.get(block=False)
-#        tasks.task_done()
-#        if id == None:
-#            break
-#        editor = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
     windows = create_windows()
     data = shaper.create_datacontainer('dict')
     data = shaper.add_windows_to_datacontainer(data, windows)
 
-    for editor in tasks:
-        obs = tasks[editor]
+    while True:
+        id = tasks.get(block=False)
+        tasks.task_done()
+        if id == None:
+            break
+        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
+
+    #for editor in tasks:
+    #    obs = tasks[editor]
         first_edit = obs['first_edit']
         last_edit = obs['final_edit']
         editor_dt = relativedelta(last_edit, first_edit)
@@ -251,7 +251,7 @@ def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
 
 
 
-def generate_cohort_dataset_howie(tasks, dbname, collection, **kwargs):
+def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
     editors = mongo[collection + '_dataset']
     windows = create_windows()
