@@ -2832,6 +2832,7 @@ $messages['yo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
+ * @author Hydra
  * @author Jimmy xu wrk
  */
 $messages['zh-hans'] = array(
@@ -2872,5 +2873,9 @@ $messages['zh-hans'] = array(
 	'articlefeedback-alpha-survey-submit' => '提交',
 	'articlefeedback-alpha-survey-title' => '请回答几个问题',
 	'articlefeedback-alpha-survey-thanks' => '谢谢您回答问卷。',
+	'articlefeedback-beta-form-switch-label' => '提供意见',
+	'articlefeedback-beta-form-panel-title' => '您的意见',
+	'articlefeedback-beta-form-panel-instructions' => '请花些时间为这个条目打分',
+	'articlefeedback-beta-form-panel-submit' => '上载意见',
 );
 
