@@ -307,6 +307,13 @@ $messages['ja'] = array(
 $messages['lb'] = array(
 	'flagpage' => 'Eng Säit markéieren',
 	'flagpage-desc' => 'Eng Säit mat enger virdefinéierter Schabloun markéieren',
+	'flagpage-templatelist' => "<!--
+Ännert dës Säit fir d'Schablounen anzestellen déi benotzt solle ginn.
+Beispiller:
+* [[Schabloun:Unsourced|D'Säit ernimmt keng Quellen]]
+* [[Schabloun:NPOV|D'Neutralitéit vun dëser Säit gëtt contestéiert]]
+* [[Schabloun:Delete|D'Säitt soll geläscht ginn]]
+-->",
 	'flagpage-nopageselectedtitle' => 'Keng Säit erausgesicht',
 	'flagpage-nopageselected' => 'Dir hutt keng Säit uginn',
 	'flagpage-emptylisttitle' => 'Keng Schabloun festgeluecht',

@@ -3076,6 +3076,7 @@ $messages['lb'] = array(
 	'fundraiserstats-tab-averages' => 'Duerchschnëtt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximumen (USD)',
 	'fundraiserstats-tab-ytd' => 'Joer-bis-Datum (USD)',
+	'fundraiserstats-instructions' => "Fir d'Statistike fir iergendeen Dag ze gesinn, setzt de Curseur iwwert d'Colonne fir deen Dag. All Joer ass eng aner Faarf am Grafik.",
 );
 
 /** Limburgish (Limburgs)

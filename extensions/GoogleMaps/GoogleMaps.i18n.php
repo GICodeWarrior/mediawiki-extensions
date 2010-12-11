@@ -4673,6 +4673,7 @@ $wgGoogleMapsMessages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Aleksandrit
  * @author EugeneZelenko
+ * @author Exlex
  * @author Lockal
  * @author Александр Сигачёв
  */
@@ -4680,7 +4681,7 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-desc' => 'Позволяет легко создавать карты с помощью вики-отметок',
 	'gm-incompatible-browser' => 'Для просмотра карты воспользуйтесь <a href=\\"http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499\\">совместимым броузером</a>.',
 	'gm-incompatible-browser-link' => 'Нажмите здесь, чтобы увидеть список подходящих браузеров.',
-	'gm-no-editor' => 'К сожалению, ваш броузер на поддерживает функцию создания интерактивных карт. Воспользуйтесь свежей версией <a href=\\"http://www.microsoft.com/ie\\">Internet Explorer</a> (Windows) или <a href=\\"http://www.mozilla.org/products/firefox\\">Firefox</a> (Windows, Mac и Linux).',
+	'gm-no-editor' => 'К сожалению, ваш браузер на поддерживает функцию создания интерактивных карт. Воспользуйтесь свежей версией <a href=\\"http://www.microsoft.com/ie\\">Internet Explorer</a> (Windows) или <a href=\\"http://www.mozilla.org/products/firefox\\">Firefox</a> (Windows, Mac и Linux).',
 	'gm-balloon-title' => 'Заголовок:',
 	'gm-balloon-link-article' => 'Ссылка на эту страницу (необязательно):',
 	'gm-make-marker' => 'Маркер (возможна вики-разметка):',

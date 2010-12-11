@@ -330,6 +330,7 @@ $messages['li'] = array(
  */
 $messages['mk'] = array(
 	'oai-desc' => 'Дава посредник за [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] складот',
+	'oairepository' => 'Складиште OAI',
 );
 
 /** Malayalam (മലയാളം)

@@ -1469,7 +1469,7 @@ $messages['mk'] = array(
 	'changeauthor-success' => 'Вашето барање е успешно обработено.',
 	'changeauthor-logentry' => 'Променет авторот на $2 на $1 од $3 на $4',
 	'changeauthor-logpagename' => 'Дневник на менувања на автори',
-	'changeauthor-rev' => 'р$1',
+	'changeauthor-rev' => 'рев. $1',
 	'right-changeauthor' => 'Менување на авторот на ревизија',
 );
 
