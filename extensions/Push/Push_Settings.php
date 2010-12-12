@@ -18,19 +18,35 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+# List of targets that can be pushed to.
+# The array keys are the target names, and the values are the target urls (path to api.php without the '/api.php' part)
+# Example: $egPushTargets['English Wikipedia'] = 'http://en.wikipedia.org/w'; 
 $egPushTargets = array();
 
+# Push rights.
 $wgGroupPermissions['*']['push'] = true;
 $wgGroupPermissions['autoconfirmed']['bulkpush'] = true;
 $wgGroupPermissions['sysop']['bulkpush'] = true;
 $wgGroupPermissions['sysop']['pushadmin'] = true;
 
+# Show the push action as a tab (if not, it's displayed in the actions dropdown).
+# This only works for skins with an actions dropdown. For others push will always appear as a tab.
 $egPushShowTab = false;
+
+# You can choose to include templates when pushing a page.
+# This is the default choice.
 $egPushIncTemplates = false;
 
+# Indicated if login options should be added to the push interface or not. 
 $egPushAllowLogin = true;
+
+# Default login data. When set, the values will always be used when there is
+# no login interface. If there is, they will be filled in as default.
 $egPushLoginUser = '';
 $egPushLoginPass = '';
 
+# The amount of push 'workers' (simultanious push requests) on Special:Push.
 $egPushBulkWorkers = 3;
+
+# The maximum amount of targets to push a page to in one go.
 $egPushBatchSize = 3;
