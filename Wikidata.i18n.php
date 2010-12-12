@@ -14497,6 +14497,8 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'langman_langname' => 'Nem püka:',
+	'langman_iso639-3' => 'Kot: ISO 639-3:',
+	'langman_iso639-2' => 'Kot: ISO 639-2:',
 	'datasearch' => 'Wikidata: Nünodisuk',
 	'datasearch_language' => 'Pük:',
 	'datasearch_found_word' => 'Vöd petuvon',
