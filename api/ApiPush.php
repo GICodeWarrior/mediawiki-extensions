@@ -48,7 +48,9 @@ class ApiPush extends ApiBase {
 		}
 		
 		global $egPushLoginUser, $egPushLoginPass;
-		$this->doLogin( $egPushLoginUser, $egPushLoginPass, $params['targets'] );
+		if ( $egPushLoginUser != '' && $egPushLoginPass != '' ) {
+			$this->doLogin( $egPushLoginUser, $egPushLoginPass, $params['targets'] );
+		}
 		
 		foreach ( $params['page'] as $page ) {
 			$title = Title::newFromText( $page );
@@ -139,7 +141,7 @@ class ApiPush extends ApiBase {
 						$this->cookieJars[$target] = $req->getCookieJar();
 					}
 					else {
-						var_dump($response->login);exit;
+						// TODO
 					}
 				}
 				else {
@@ -335,9 +337,6 @@ class ApiPush extends ApiBase {
 		if ( array_key_exists( $target, $this->cookieJars ) ) {
 			$req->setCookieJar( $this->cookieJars[$target] );
 		}
-		else {
-			var_dump($this->cookieJars);exit;
-		}			
 		
 		$status = $req->execute();
 		

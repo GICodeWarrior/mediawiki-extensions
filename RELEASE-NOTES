@@ -5,10 +5,11 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.4 ===
-2010-12-xx
+2010-12-12
 
 * Added option to include templates used on the page to the push to the tab interface.
-* Added adittional info about target pages to the tab interface.
+* Added remote authentication support to the push API module.
+* Added additional info about target pages to the tab interface.
 
 === Version 0.3 ===
 2010-12-10
@@ -22,14 +23,14 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 === Version 0.2 ===
 2010-12-08
 
-* Added Special:Push for bulk pushing
-* Added AdminLinks hook
+* Added Special:Push for bulk pushing.
+* Added AdminLinks hook.
 
 === Version 0.1 ===
 2010-12-08
 
 Initial release.
 
-* Added push tab that allows pushing the page to one or more other wikis
-* Added ApprovedRevs support
-* Added 'push' right
+* Added push tab that allows pushing the page to one or more other wikis.
+* Added ApprovedRevs support.
+* Added 'push' right.
