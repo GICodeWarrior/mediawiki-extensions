@@ -682,11 +682,16 @@ $messages['sah'] = array(
 );
 
 /** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
  * @author Zanatos
  */
 $messages['shi'] = array(
 	'categoryintersection' => "taqatoɛ n'omgrd",
+	'categoryintersection-desc' => 'Skr vyat tifliwt n itign n hachage lli rad yakka id [[Special:CategoryIntersection|intersections de catégories]] ɣ ugns tasna yad nit',
 	'categoryintersection-doit' => 'Umuɣ n tiwriqin ɣ kollo imgrad ad',
+	'categoryintersection-maxcategories' => 'Uṭṭun n taggayin lli ittili ur azray uggar n $1',
+	'categoryintersection-mincategories' => 'Illa fllak an tgt iɣ kullu tsdrust snat taggayin.',
+	'categoryintersection-results' => 'Acnubc isurri $1 s  {{PLURAL:$1|uskfa|iskfatn}}',
 );
 
 /** Slovak (Slovenčina)
