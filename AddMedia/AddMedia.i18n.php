@@ -4177,6 +4177,17 @@ $messages['he'] = array(
 	'fogg-badtoken' => 'האסימון אינו תקין',
 );
 
+/** Hindi (हिन्दी)
+ * @author Akansha
+ */
+$messages['hi'] = array(
+	'mwe-summary' => 'सारांश',
+	'mwe-date-of-work' => 'काम की तिथि',
+	'mwe-error_not_loggedin' => 'तुम में लॉग इन होना प्रकट नहीं होता है या क्या करना है विशेषाधिकारों अपलोड नहीं',
+	'mwe-error-not-loggedin-file' => 'तुम में लॉग इन होना प्रकट नहीं करते या वहाँ सॉफ्टवेयर में एक त्रुटि थी',
+	'mwe-link-login' => 'लॉग इन',
+);
+
 /** Croatian (Hrvatski)
  * @author Herr Mlinka
  * @author SpeedyGonsales
