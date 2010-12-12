@@ -46,7 +46,7 @@ $messages['en'] = array(
 	'push-tab-not-created' => 'This page does not exist yet.',
 	'push-tab-push-options' => 'Push options:',
 	'push-tab-inc-templates' => 'Include templates',
-	'push-tab-used-templates' => '(Used templates: $1)',
+	'push-tab-used-templates' => '(Used {{PLURAL:$2|template|templates}}: $1)',
 	'push-tab-no-used-templates' => '(No templates are used on this page.)',
 	
 	// Special page

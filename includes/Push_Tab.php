@@ -306,7 +306,7 @@ final class PushTab {
 					'div',
 					array( 'style' => 'display:inline; opacity:0', 'id' => 'txtTemplateList' ),
 					count( $usedTemplates ) > 0 ?
-						 wfMsgExt( 'push-tab-used-templates', 'parseinline', $wgLang->listToText( $usedTemplates ) ) :
+						 wfMsgExt( 'push-tab-used-templates', 'parseinline', $wgLang->listToText( $usedTemplates ), count( $usedTemplates ) ) :
 						 htmlspecialchars( wfMsg( 'push-tab-no-used-templates' ) )
 				)				
 			)
