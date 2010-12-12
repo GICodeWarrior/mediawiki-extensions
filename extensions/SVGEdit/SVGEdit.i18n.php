@@ -8,6 +8,9 @@
 
 $messages = array();
 
+/** English
+ * @author Brion Vibber <brion@pobox.com>
+ */
 $messages['en'] = array(
 	'svgedit-editbutton-edit' => 'Edit drawing',
 	'svgedit-editor-save-close' => 'Save and close',
@@ -16,6 +19,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Brion Vibber <brion@pobox.com>
  */
 $messages['qqq'] = array(
 	'svgedit-editbutton-edit' => 'Text label on edit button on SVG File: pages',
@@ -33,3 +37,4 @@ $messages['eo'] = array(
 	'svgedit-editor-close' => 'Malfermi',
 	'svgedit-desc' => 'Redakti desegnojn SVG en foliumilo per [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
+
