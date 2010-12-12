@@ -390,7 +390,7 @@ class ApiPush extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiPush.php 63775 2010-03-15 16:35:22Z jeroendedauw $';
+		return __CLASS__ . ': $Id$';
 	}	
 	
 }
