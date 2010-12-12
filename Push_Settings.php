@@ -28,5 +28,9 @@ $wgGroupPermissions['sysop']['pushadmin'] = true;
 $egPushShowTab = false;
 $egPushIncTemplates = false;
 
+$egPushAllowLogin = true;
+$egPushLodignUser = '';
+$egPushLodignPass = '';
+
 $egPushBulkWorkers = 3;
 $egPushBatchSize = 3;

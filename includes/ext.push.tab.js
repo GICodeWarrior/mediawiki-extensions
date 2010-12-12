@@ -31,7 +31,7 @@
 		this.disabled = true;
 		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
 		
-		if ( $('#checkIncTemplates:checked').val() !== null ) {
+		if ( $('#checkIncTemplates:checked').attr('checked') ) {
 			var pages = window.wgPushTemplates;
 			pages.unshift( $('#pageName').attr('value') );
 		}
@@ -128,7 +128,7 @@
 					setTimeout( function() {reEnableButton( sender );}, 1000 );
 				}
 			}
-		); 		
+		); 	
 	}
 	
 	function reEnableButton( button ) {
