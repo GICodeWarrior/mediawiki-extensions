@@ -78,6 +78,7 @@ $egPushJSMessages = array(
 	'push-err-captacha',
 	'push-tab-last-edit',
 	'push-tab-not-created',
+	'push-err-captcha-page',
 );
 
 // For backward compatibility with MW < 1.17.

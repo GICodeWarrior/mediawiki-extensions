@@ -45,6 +45,13 @@ $egPushAllowLogin = true;
 $egPushLoginUser = '';
 $egPushLoginPass = '';
 
+# Default login data per target. Overrides $egPushLoginUser and $egPushLoginPass when specified.
+# Array keys should be the urls assigned in the $egPushTargets array.
+# When set, the values will always be used when there is
+# no login interface. If there is, they will be filled in as default.
+$egPushLoginUsers = array();
+$egPushLoginPasswords = array();
+
 # The amount of push 'workers' (simultanious push requests) on Special:Push.
 $egPushBulkWorkers = 3;
 
