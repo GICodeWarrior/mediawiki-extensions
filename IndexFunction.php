@@ -63,11 +63,14 @@ function efIndexSetup( &$parser ) {
 	return true;
 }
 
-function efIndexUpdateSchema() {
-	global $wgExtNewTables;
-	$wgExtNewTables[] = array(
-		'indexes',
-		dirname( __FILE__ ) . '/indexes.sql' );
+function efIndexUpdateSchema( $updater = null ) {
+	if ( $updater === null ) {
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array( 'indexes', dirname( __FILE__ ) . '/indexes.sql' );
+	} else {
+		$updater->addExtensionUpdate( array( 'addTable', 'indexes',
+			dirname( __FILE__ ) . '/indexes.sql', true ) );
+	}
 	return true;
 }
 function efParserTestTables( &$tables ) {
