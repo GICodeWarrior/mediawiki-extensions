@@ -12,6 +12,8 @@
  */
 class ApiPush extends ApiBase {
 	
+	protected $editResponses = array();
+	
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
 	}
@@ -27,12 +29,41 @@ class ApiPush extends ApiBase {
 			$this->dieUsageMsg( array( 'missingparam', 'targets' ) );
 		}		
 
-		$title = Title::newFromText( $params['page'] );
+		foreach ( $params['page'] as $page ) {
+			$title = Title::newFromText( $page );
 		
-		$revision = $this->getPageRevision( $title );
+			$revision = $this->getPageRevision( $title );
+			
+			if ( $revision !== false ) {
+				$this->doPush( $title, $revision, $params['targets'] );
+			}			 
+		}
 		
-		if ( $revision !== false ) {
-			$this->doPush( $title, $revision, $params['targets'] );
+		// TODO: this is hardcoded for JSON, make use of API stuff to support all formats.
+		if ( count( $this->editResponses ) == 1 ) {
+			die( $this->editResponses[0] );
+		}
+		else {
+			foreach ( $this->editResponses as $rawResponse ) {
+				$response = FormatJson::decode( $rawResponse );
+				
+				if ( property_exists( $response , 'query' )
+					&& property_exists( $response->query , 'error' ) ) {
+					die( $rawResponse );
+				}
+				else if ( property_exists( $response , 'query' ) 
+					&& property_exists( $response->query , 'captcha' ) ) {
+					die( $rawResponse );
+				}
+			}
+			
+			$this->getResult()->addValue(
+				null,
+				$this->getModuleName(),
+				array(
+					'result' => 'Success'
+				)
+			);
 		}
 	}
 	
@@ -203,7 +234,7 @@ class ApiPush extends ApiBase {
 		$response = Http::post( $target, array( 'postData' => $requestData ) );
 
 		if ( $response !== false ) {
-			die( $response );
+			$this->editResponses[] = $response;
 		}
 		else {
 			$this->dieUsage( wfMsg( 'push-special-err-push-failed' ), 'page-push-failed' );
@@ -214,6 +245,7 @@ class ApiPush extends ApiBase {
 		return array(
 			'page' => array(
 				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_ISMULTI => true,
 				//ApiBase::PARAM_REQUIRED => true,
 			),
 			'targets' => array(

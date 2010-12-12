@@ -12,6 +12,12 @@
  */
 final class PushFunctions {
 	
+	/**
+	 * Adds the needed JS messages to the page output.
+	 * This is for backward compatibility with pre-RL MediaWiki.
+	 * 
+	 * @since 0.2
+	 */
 	public static function addJSLocalisation() {
 		global $egPushJSMessages, $wgOut;
 		
@@ -43,6 +49,62 @@ final class PushFunctions {
 		else {
 			return $title->getLatestRevID();
 		}
-	}	
+	}
+
+	/**
+	 * Expand a list of pages to include templates used in those pages.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param $inputPages array list of titles to look up
+	 * @param $pageSet array associative array indexed by titles for output
+	 * 
+	 * @return array associative array index by titles
+	 */
+	public static function getTemplates( $inputPages, $pageSet ) {
+		return self::getLinks( $inputPages, $pageSet,
+			'templatelinks',
+			array( 'tl_namespace AS namespace', 'tl_title AS title' ),
+			array( 'page_id=tl_from' )
+		);
+	}
+	
+	/**
+	 * Expand a list of pages to include items used in those pages.
+	 * 
+	 * @since 0.4
+	 */
+	protected static function getLinks( $inputPages, $pageSet, $table, $fields, $join ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		foreach( $inputPages as $page ) {
+			$title = Title::newFromText( $page );
+			
+			if( $title ) {
+				$pageSet[$title->getPrefixedText()] = true;
+				/// @todo Fixme: May or may not be more efficient to batch these
+				///        by namespace when given multiple input pages.
+				$result = $dbr->select(
+					array( 'page', $table ),
+					$fields,
+					array_merge(
+						$join,
+						array(
+							'page_namespace' => $title->getNamespace(),
+							'page_title' => $title->getDBkey()
+						)
+					),
+					__METHOD__
+				);
+				
+				foreach( $result as $row ) {
+					$template = Title::makeTitle( $row->namespace, $row->title );
+					$pageSet[$template->getPrefixedText()] = true;
+				}
+			}
+		}
+		
+		return $pageSet;
+	}		
 	
 }

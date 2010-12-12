@@ -135,7 +135,7 @@ class SpecialPush extends SpecialPage {
 
 		// Look up any linked pages if asked...
 		if( $wgRequest->getCheck( 'templates' ) ) {
-			$pageSet = $this->getTemplates( array_keys( $pageSet ), $pageSet );
+			$pageSet = PushFunctions::getTemplates( array_keys( $pageSet ), $pageSet );
 		}
 
 		$pages = array_keys( $pageSet );		
@@ -300,62 +300,6 @@ class SpecialPush extends SpecialPage {
 			$pages[] = $n;
 		}
 		return $pages;
-	}	
-
-	/**
-	 * Expand a list of pages to include templates used in those pages.
-	 * 
-	 * @since 0.2
-	 * 
-	 * @param $inputPages array list of titles to look up
-	 * @param $pageSet array associative array indexed by titles for output
-	 * 
-	 * @return array associative array index by titles
-	 */
-	private function getTemplates( $inputPages, $pageSet ) {
-		return $this->getLinks( $inputPages, $pageSet,
-			'templatelinks',
-			array( 'tl_namespace AS namespace', 'tl_title AS title' ),
-			array( 'page_id=tl_from' )
-		);
-	}
-	
-	/**
-	 * Expand a list of pages to include items used in those pages.
-	 * 
-	 * @since 0.2
-	 */
-	protected function getLinks( $inputPages, $pageSet, $table, $fields, $join ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		
-		foreach( $inputPages as $page ) {
-			$title = Title::newFromText( $page );
-			
-			if( $title ) {
-				$pageSet[$title->getPrefixedText()] = true;
-				/// @todo Fixme: May or may not be more efficient to batch these
-				///        by namespace when given multiple input pages.
-				$result = $dbr->select(
-					array( 'page', $table ),
-					$fields,
-					array_merge(
-						$join,
-						array(
-							'page_namespace' => $title->getNamespace(),
-							'page_title' => $title->getDBkey()
-						)
-					),
-					__METHOD__
-				);
-				
-				foreach( $result as $row ) {
-					$template = Title::makeTitle( $row->namespace, $row->title );
-					$pageSet[$template->getPrefixedText()] = true;
-				}
-			}
-		}
-		
-		return $pageSet;
 	}	
 	
 	/**

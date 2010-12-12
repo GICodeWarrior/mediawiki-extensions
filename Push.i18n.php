@@ -44,6 +44,10 @@ $messages['en'] = array(
 	'push-button-all' => 'Push all',
 	'push-tab-last-edit' => 'Last edit by $1 on $2 at $3.',
 	'push-tab-not-created' => 'This page does not exist yet.',
+	'push-tab-push-options' => 'Push options:',
+	'push-tab-inc-templates' => 'Include templates',
+	'push-tab-used-templates' => '(Used templates: $1)',
+	'push-tab-no-used-templates' => '(No templates are used on this page.)',
 	
 	// Special page
 	'special-push' => 'Push pages',
