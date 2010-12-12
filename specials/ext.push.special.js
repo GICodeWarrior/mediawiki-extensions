@@ -84,6 +84,9 @@
 					if ( data.error ) {
 						handleError( listItem, pageName, data.error );
 					}
+					else if ( data.length > 0 && data[0].edit && data[0].edit.captcha ) {
+						handleError( listItem, pageName, { info: mediaWiki.msg( 'push-err-captcha-page', pageName ) } );
+					}					
 					else {
 						startPush( pageName, targetOffset, listItem );
 					}

@@ -29,6 +29,8 @@ class ApiPush extends ApiBase {
 	}
 	
 	public function execute() {
+		global $egPushLoginUser, $egPushLoginPass, $egPushLoginUsers, $egPushLoginPasswords;
+		
 		$params = $this->extractRequestParams();
 		
 		if ( !isset( $params['page'] ) ) {
@@ -40,16 +42,27 @@ class ApiPush extends ApiBase {
 		}		
 
 		foreach ( $params['targets'] as &$target ) {
+			$user = false;
+			$pass = false;
+			
+			if ( array_key_exists( $target, $egPushLoginUsers ) && array_key_exists( $target, $egPushLoginPasswords ) ) {
+				$user = $egPushLoginUsers[$target];
+				$pass = $egPushLoginPasswords[$target];
+			}
+			else if ( $egPushLoginUser != '' && $egPushLoginPass != '' ) {
+				$user = $egPushLoginUser;
+				$pass = $egPushLoginPass;				
+			}			
+			
 			if ( substr( $target, -1 ) !== '/' ) {
 				$target .= '/';
 			}
 			
-			$target .= 'api.php';			
-		}
-		
-		global $egPushLoginUser, $egPushLoginPass;
-		if ( $egPushLoginUser != '' && $egPushLoginPass != '' ) {
-			$this->doLogin( $egPushLoginUser, $egPushLoginPass, $params['targets'] );
+			$target .= 'api.php';
+			
+			if ( $user !== false ) {
+				$this->doLogin( $user, $pass, $target );
+			}
 		}
 		
 		foreach ( $params['page'] as $page ) {
@@ -62,46 +75,38 @@ class ApiPush extends ApiBase {
 			}			 
 		}
 		
-		// TODO: this is hardcoded for JSON, make use of API stuff to support all formats.
 		if ( count( $this->editResponses ) == 1 ) {
-			die( $this->editResponses[0] );
-		}
-		else {
-			foreach ( $this->editResponses as $rawResponse ) {
-				$response = FormatJson::decode( $rawResponse );
-				
-				if ( property_exists( $response , 'query' )
-					&& property_exists( $response->query , 'error' ) ) {
-					die( $rawResponse );
-				}
-				else if ( property_exists( $response , 'query' ) 
-					&& property_exists( $response->query , 'captcha' ) ) {
-					die( $rawResponse );
-				}
-			}
-			
 			$this->getResult()->addValue(
 				null,
-				$this->getModuleName(),
-				array(
-					'result' => 'Success'
-				)
+				null,
+				FormatJson::decode( $this->editResponses[0] )
 			);
+		}
+		else {
+			$success = true;
+			
+			foreach ( $this->editResponses as $response ) {
+				$this->getResult()->addValue(
+					null,
+					null,
+					FormatJson::decode( $response )
+				);					
+			}
 		}
 	}
 	
 	/**
-	 * Logs in into the target wiki using the provided username and password.
+	 * Logs in into a target wiki using the provided username and password.
 	 * 
 	 * @since 0.4
 	 * 
 	 * @param string $user
 	 * @param string $password
-	 * @param array $targets
+	 * @param string $targets
 	 * @param string $token
 	 * @param CookieJar $cookie
 	 */
-	protected function doLogin( $user, $password, array $targets, $token = null, $cookieJar = null ) {
+	protected function doLogin( $user, $password, $target, $token = null, $cookieJar = null ) {
 		$requestData = array(
 			'action' => 'login',
 			'format' => 'json',
@@ -113,44 +118,42 @@ class ApiPush extends ApiBase {
 			$requestData['lgtoken'] = $token;
 		}
 		
-		foreach ( $targets as $target ) {
-			$req = MWHttpRequest::factory( $target, 
-				array(
-					'postData' => $requestData,
-					'method' => 'POST',
-					'timeout' => 'default'
-				)
-			);
+		$req = MWHttpRequest::factory( $target, 
+			array(
+				'postData' => $requestData,
+				'method' => 'POST',
+				'timeout' => 'default'
+			)
+		);
+		
+		if ( !is_null( $cookieJar ) ) {
+			$req->setCookieJar( $cookieJar );
+		}			
+		
+		$status = $req->execute();
+
+		if ( $status->isOK() ) {
+			$response = FormatJson::decode( $req->getContent() );
 			
-			if ( !is_null( $cookieJar ) ) {
-				$req->setCookieJar( $cookieJar );
-			}			
-			
-			$status = $req->execute();
-	
-			if ( $status->isOK() ) {
-				$response = FormatJson::decode( $req->getContent() );
-				
-				if ( property_exists( $response, 'login' )
-					&& property_exists( $response->login, 'result' ) ) {
-	
-					if ( $response->login->result == 'NeedToken' ) {
-						$this->doLogin( $user, $password, array( $target ), $response->login->token, $req->getCookieJar() );
-					}
-					else if ( $response->login->result == 'Success' ) {
-						$this->cookieJars[$target] = $req->getCookieJar();
-					}
-					else {
-						// TODO
-					}
+			if ( property_exists( $response, 'login' )
+				&& property_exists( $response->login, 'result' ) ) {
+
+				if ( $response->login->result == 'NeedToken' ) {
+					$this->doLogin( $user, $password, $target, $response->login->token, $req->getCookieJar() );
+				}
+				else if ( $response->login->result == 'Success' ) {
+					$this->cookieJars[$target] = $req->getCookieJar();
 				}
 				else {
-					// TODO
-				}				
-			} 
-			else {
-				// TODO	
+					$this->dieUsage( wfMsgExt( 'push-err-authentication', 'parsemag', $target, '' ), 'authentication-failed' );
+				}
 			}
+			else {
+				$this->dieUsage( wfMsgExt( 'push-err-authentication', 'parsemag', $target, '' ), 'authentication-failed' );
+			}				
+		} 
+		else {
+			$this->dieUsage( wfMsgExt( 'push-err-authentication', 'parsemag', $target, '' ), 'authentication-failed' );
 		}
 	}
 	

@@ -120,7 +120,7 @@
 				if ( data.error ) {
 					handleError( sender, targetUrl, data.error );
 				}
-				else if ( data.edit && data.edit.captcha ) {
+				else if ( data.length > 0 && data[0].edit && data[0].edit.captcha ) {
 					handleError( sender, targetUrl, { info: mediaWiki.msg( 'push-err-captacha', targetName ) } );
 				}
 				else {
