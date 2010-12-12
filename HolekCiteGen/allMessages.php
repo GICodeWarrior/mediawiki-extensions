@@ -437,18 +437,39 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'ts-citegen-Title' => 'Gerador de predefinição de citação',
+	'ts-citegen-Send' => 'Gerar',
+	'ts-citegen-Input-text' => 'Este é um gerador de predefinição de citação. Usando-o, você pode preencher rapidamente as predefinições de citação nas várias edições linguísticas da Wikipédia. Por favor, preencha os dados (%s) nos campos abaixo, e o script tentará completar as predefinições. Lembre-se de que não importa em que campo você coloca os dados de entrada. O script irá corresponder automaticamente a predefinição correta aos dados fornecidos.',
+	'ts-citegen-Option-append-author-link' => 'Adicionar os links wiki do autor à predefinição',
+	'ts-citegen-Option-append-newlines' => 'Acrescentar novas linhas após cada parâmetro.',
+	'ts-citegen-Option-add-references' => 'Adicionar etiquetas <ref> em torno das predefinições de citação',
+	'ts-citegen-Option-add-list' => 'Criar uma lista wiki de predefinições de citação',
+	'ts-citegen-Output-title' => 'Resultado',
+	'ts-citegen-Output-select-disclaimer' => 'Escolher uma língua para a predefinição não garante que a predefinição específica esteja disponível na sua língua. Este campo lista as línguas disponíveis de para todas as predefinições suportadas, ou seja, pode listar "francês" mesmo que apenas {{citar livro}} seja suportado nessa língua.',
+	'ts-citegen-Wrong-input' => '%s: não identificado como entrada correcta.',
+	'ts-citegen-Parsers' => 'Analisadores',
+	'ts-citegen-Skins' => 'Resultado',
+	'ts-citegen-Skin-skins' => 'Temas',
+	'ts-citegen-Skin-outputformat' => 'Formato de saída',
+	'ts-citegen-Template-lang' => 'Língua da predefinição',
+	'ts-citegen-Sources-title' => 'Referências',
+	'ts-citegen-Sources-text' => 'Abaixo encontra-se a lista de referências utilizadas.',
+	'ts-citegen-Sidebar-title' => 'Gerador de citação',
+	'ts-citegen-Sidebar-add-Firefox' => 'Adicionar à barra lateral',
+	'ts-citegen-Sidebar-add-Opera' => 'Adicionar ao Hotlist',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
+ * @author Waldir
  */
 $messages['pt-br'] = array(
 	'ts-citegen-Send' => 'Gerar',
 	'ts-citegen-Input-title' => 'Entrada',
-	'ts-citegen-Input-text' => 'Este é um gerador de predefinição de citação. Usando-o, você pode preencher rapidamente as predefinições de citação nas várias línguas de edições da Wikipédia. Por favor, preencha os dados (%s) nos campos abaixo, e o script tentará completar os as predefinições. Lembre-se de que não importa em qual campo você coloca os dados de entrada. O script automaticamente irá corresponder a predefinição correta com os dados fornecidos.',
+	'ts-citegen-Input-text' => 'Este é um gerador de predefinição de citação. Usando-o, você pode preencher rapidamente as predefinições de citação nas várias línguas de edições da Wikipédia. Por favor, preencha os dados (%s) nos campos abaixo, e o script tentará completar as predefinições. Lembre-se de que não importa em qual campo você coloca os dados de entrada. O script automaticamente irá corresponder a predefinição correta com os dados fornecidos.',
 	'ts-citegen-Option-append-author-link' => 'Adicionar os links wiki do autor para a predefinição',
 );
 
