@@ -31,9 +31,17 @@
 		this.disabled = true;
 		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
 		
+		if ( $('#checkIncTemplates:checked').val() !== null ) {
+			var pages = window.wgPushTemplates;
+			pages.unshift( $('#pageName').attr('value') );
+		}
+		else {
+			var pages = [$('#pageName').attr('value')];
+		}
+		
 		initiatePush(
 			this,
-			$('#pageName').attr('value'),
+			pages,
 			$(this).attr( 'pushtarget' ),
 			$(this).attr( 'targetname' )
 		);
@@ -46,6 +54,18 @@
 			$(v).click();
 		});
 	});	
+	
+	$('#divIncTemplates').hover(
+		function() {
+			$('#txtTemplateList').fadeTo( 
+				( $('#txtTemplateList').css( 'opacity' ) == 0 ? 'slow' : 'fast' ),
+				1
+			);
+		},
+		function() {
+			$('#txtTemplateList').fadeTo( 'fast', 0.5 )
+		}
+	);
 	
 	function getRemoteArticleInfo( targetId, targetUrl ) {
 		$.getJSON(
@@ -87,13 +107,13 @@
 		);
 	}
 	
-	function initiatePush( sender, pageName, targetUrl, targetName ) {
+	function initiatePush( sender, pages, targetUrl, targetName ) {
 		$.getJSON(
 			wgScriptPath + '/api.php',
 			{
 				'action': 'push',
 				'format': 'json',
-				'page': pageName,
+				'page': pages.join( '|' ),
 				'targets': targetUrl
 			},
 			function( data ) {

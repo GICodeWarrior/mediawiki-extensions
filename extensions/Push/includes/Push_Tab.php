@@ -127,43 +127,11 @@ final class PushTab {
 			Html::hidden( 'siteName', $wgSitename, array( 'id' => 'siteName' ) )
 		);
 		
-		if ( count( $egPushTargets ) == 1 ) {
-			self::displayLonelyPushItem();
-		}
-		else {
-			self::displayPushList();
-		}
+		self::displayPushList();
+		
+		self::displayPushOptions();
 		
 		return false;
-	}
-	
-	/**
-	 * Displays a target to push to for when there is only a single target.
-	 * 
-	 * @since 0.1
-	 */	
-	protected static function displayLonelyPushItem() {
-		global $wgOut, $wgTitle, $egPushTargets;
-
-		$targetNames = array_keys( $egPushTargets );
-		
-		$wgOut->addHTML(
-			'<table><tr><td><b>' . htmlspecialchars( wfMsgExt( 'push-tab-push-to', 'parsemag', $targetNames[0] ) ) . '</b><br /><i>' .
-			Html::element(
-				'a',
-				array( 'href' => $egPushTargets[$targetNames[0]] . '/index.php?title=' . $wgTitle->getFullText(), 'rel' => 'nofollow' ),
-				wfMsgExt( 'push-remote-page-link-full', 'parsemag', $wgTitle->getFullText(), $targetNames[0] )
-			) . '</i></td><td>&#160;&#160;&#160;' .
-			Html::element(
-				'button',
-				array(
-					'class' => 'push-button',
-					'pushtarget' => $egPushTargets[$targetNames[0]],
-					'style' => 'width: 125px; height: 30px',
-				),
-				wfMsg( 'push-button-text' )
-			) . '</td></tr></table>'
-		);
 	}
 	
 	/**
@@ -200,27 +168,30 @@ final class PushTab {
 			$items[] = self::getPushItem( $name, $url );
 		}
 		
-		$items[] = Html::rawElement(
-			'tr',
-			array(),
-			Html::element(
-				'th',
-				array( 'colspan' => 2, 'style' => 'text-align: left' ),
-				wfMsgExt( 'push-targets-total', 'parsemag', $wgLang->formatNum( count( $egPushTargets ) ) )
-			) .
-			Html::rawElement(
-				'th',
-				array( 'width' => '125px' ),
+		// If there is more then one item, display the 'push all' row.
+		if ( count( $egPushTargets ) > 1 ) {
+			$items[] = Html::rawElement(
+				'tr',
+				array(),
 				Html::element(
-					'button',
-					array(
-						'id' => 'push-all-button',
-						'style' => 'width: 125px; height: 30px',
-					),
-					wfMsg( 'push-button-all' )
-				)				
-			)
-		);
+					'th',
+					array( 'colspan' => 2, 'style' => 'text-align: left' ),
+					wfMsgExt( 'push-targets-total', 'parsemag', $wgLang->formatNum( count( $egPushTargets ) ) )
+				) .
+				Html::rawElement(
+					'th',
+					array( 'width' => '125px' ),
+					Html::element(
+						'button',
+						array(
+							'id' => 'push-all-button',
+							'style' => 'width: 125px; height: 30px',
+						),
+						wfMsg( 'push-button-all' )
+					)				
+				)
+			);			
+		}
 		
 		$wgOut->addHtml(
 			Html::rawElement(
@@ -257,7 +228,7 @@ final class PushTab {
 			) .
 			Html::rawElement(
 				'td',
-				array(),
+				array( 'height' => '45px' ),
 				Html::element(
 					'a',
 					array(
@@ -289,6 +260,55 @@ final class PushTab {
 					),
 					wfMsg( 'push-button-text' )
 				)
+			)
+		);
+	}
+	
+	/**
+	 * Outputs the HTML for the push options.
+	 * 
+	 * @since 0.4
+	 */
+	protected static function displayPushOptions() {
+		global $wgOut, $wgTitle, $wgLang, $egPushIncTemplates;
+		
+		$wgOut->addHTML( '<h3>' . htmlspecialchars( wfMsg( 'push-tab-push-options' ) ) . '</h3>' );
+		
+		$usedTemplates = array_keys(
+			PushFunctions::getTemplates(
+				array( $wgTitle->getFullText() ),
+				array( $wgTitle->getFullText() => true )
+			)
+		);
+		
+		array_shift( $usedTemplates );
+
+		$wgOut->addInlineScript(
+			'var wgPushTemplates = ' . json_encode( $usedTemplates ) . ';'
+		);				
+		
+		foreach ( $usedTemplates as &$template ) {
+			$template = "[[$template]]";
+		}
+
+		$wgOut->addHTML(
+			Html::rawElement(
+				'div',
+				array( 'id' => 'divIncTemplates' ),
+				Xml::check( 'checkIncTemplates', $egPushIncTemplates, array( 'id' => 'checkIncTemplates' ) ) .
+				Html::element(
+					'label',
+					array( 'id' => 'lblIncTemplates', 'for' => 'checkIncTemplates' ),
+					wfMsg( 'push-tab-inc-templates' )
+				) .		
+				'&#160;' . 
+				Html::rawElement(
+					'div',
+					array( 'style' => 'display:inline; opacity:0', 'id' => 'txtTemplateList' ),
+					count( $usedTemplates ) > 0 ?
+						 wfMsgExt( 'push-tab-used-templates', 'parseinline', $wgLang->listToText( $usedTemplates ) ) :
+						 htmlspecialchars( wfMsg( 'push-tab-no-used-templates' ) )
+				)				
 			)
 		);
 	}
