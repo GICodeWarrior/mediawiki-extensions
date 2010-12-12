@@ -24,7 +24,7 @@ $(document).ready(function() {
 		};
 
 		var button = $('<button></button>')
-			.text('Edit drawing')
+			.text(mw.msg('svgedit-editbutton-edit'))
 			.click(function() {
 				triggerSVGEdit(mw.config.get('wgTitle'));
 			});

@@ -214,7 +214,7 @@ svgEditor.addExtension("mediawiki", {
 		$('#mw-svgedit-buttons').attr('style', 'position: absolute; top: 4px; right: 4px; text-align: right');
 
 		$('#mw-svgedit-save')
-			.text('Save and close')
+			.text(mediaWiki.msg('svgedit-editor-save-close'))
 			.click(function() {
 				var svg = svgCanvas.getSvgString();
 				var comment = "Modified in svg-edit";
@@ -229,7 +229,7 @@ svgEditor.addExtension("mediawiki", {
 			});
 
 		$('#mw-svgedit-close')
-			.text('Cancel')
+			.text(mediaWiki.msg('svgedit-editor-close'))
 			.click(function() {
 				if (window.parent) {
 					window.parent.$('#svg-edit').remove();
