@@ -29,8 +29,8 @@ $egPushShowTab = false;
 $egPushIncTemplates = false;
 
 $egPushAllowLogin = true;
-$egPushLodignUser = '';
-$egPushLodignPass = '';
+$egPushLoginUser = '';
+$egPushLoginPass = '';
 
 $egPushBulkWorkers = 3;
 $egPushBatchSize = 3;

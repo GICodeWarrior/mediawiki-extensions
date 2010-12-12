@@ -294,7 +294,7 @@ final class PushTab {
 		$wgOut->addHTML(
 			Html::rawElement(
 				'div',
-				array( 'id' => 'divIncTemplates' ),
+				array( 'id' => 'divIncTemplates', 'style' => 'display: table-cell' ),
 				Xml::check( 'checkIncTemplates', $egPushIncTemplates, array( 'id' => 'checkIncTemplates' ) ) .
 				Html::element(
 					'label',
