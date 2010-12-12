@@ -726,6 +726,27 @@ $messages['he'] = array(
 	'amazonplus-less' => 'פחות',
 );
 
+/** Hindi (हिन्दी)
+ * @author Kumar
+ */
+$messages['hi'] = array(
+	'amazonplus-desc' => 'एक उच्च अनुकूलन विस्तार अमेज़न जानकारी प्रदर्शित करने के लिए',
+	'amazonplus-nores' => 'त्रुटि: कोई परिणाम नहीं मिला!',
+	'amazonplus-noidres' => 'त्रुटि: एक उत्पाद ID नहीं मिल सकता है!',
+	'amazonplus-fgcerr' => 'त्रुटि: अमेज़न से डेटा पुनर्प्राप्त नहीं कर सका',
+	'amazonplus-slserr' => 'त्रुटि: अमेज़न से डेटा को पार्स नहीं किया जा सका!',
+	'amazonplus-used' => 'प्रयुक्त',
+	'amazonplus-german' => 'जर्मन',
+	'amazonplus-french' => 'फ़्रेंच',
+	'amazonplus-japanese' => 'जापानी',
+	'amazonplus-amazon' => 'अमेज़न मूल्य',
+	'amazonplus-new' => 'नया',
+	'amazonplus-none' => 'इस आइटम की कोई प्रतिलिपि बिक्री के लिए नहीं हैं',
+	'amazonplus-cp-none' => 'कोई नहीं',
+	'amazonplus-more' => 'अधिक',
+	'amazonplus-less' => 'कम',
+);
+
 /** Croatian (Hrvatski)
  * @author Herr Mlinka
  */
