@@ -213,6 +213,8 @@ $messages['cs'] = array(
 	'contrib-tracking-continue' => 'Pokud nebudete automaticky přesměrován(a), klikněte na tlačítko, abyste mohl(a) dokončit svůj příspěvek pomocí služby PayPal.',
 	'contrib-tracking-redirect' => 'Pro dokončení příspěvku budete automaticky přesměrování na PayPal.',
 	'contrib-tracking-button' => 'Pokračovat',
+	'contrib-tracking-item-name-onetime' => 'Jednorázový dar',
+	'contrib-tracking-item-name-recurring' => 'Pravidelný měsíční příspěvek',
 );
 
 /** German (Deutsch)
@@ -887,6 +889,8 @@ $messages['pt'] = array(
 	'contrib-tracking-continue' => 'Se não for redireccionado automaticamente, clique no botão para completar o seu donativo no PayPal.',
 	'contrib-tracking-redirect' => 'Será reencaminhado automaticamente para o Paypal para terminar o donativo.',
 	'contrib-tracking-button' => 'Continuar',
+	'contrib-tracking-item-name-onetime' => 'Doação única',
+	'contrib-tracking-item-name-recurring' => 'Doação mensal recorrente',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1172,6 +1176,8 @@ $messages['vi'] = array(
 	'contrib-tracking-continue' => 'Nếu không được tự động đổi hướng, nhấn vào nút để hoàn thành quyên góp của bạn tại PayPal.',
 	'contrib-tracking-redirect' => 'Bạn sẽ được tự động chuyển hướng đến PayPal để hoàn thành đóng góp của bạn.',
 	'contrib-tracking-button' => 'Tiếp tục',
+	'contrib-tracking-item-name-onetime' => 'Quyên góp một lần',
+	'contrib-tracking-item-name-recurring' => 'Quyên góp định kỳ hàng tháng',
 );
 
 /** Volapük (Volapük)
@@ -1192,6 +1198,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
+ * @author Hydra
  * @author Liangent
  * @author Wilsonmess
  */
@@ -1201,6 +1208,7 @@ $messages['zh-hans'] = array(
 	'contrib-tracking-submitting' => '正在提交到支付处理器……',
 	'contrib-tracking-continue' => '若阁下没有被重定向至PayPal页面，请点击按钮以完成您的捐助。',
 	'contrib-tracking-button' => '继续',
+	'contrib-tracking-item-name-onetime' => '一次性捐赠',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

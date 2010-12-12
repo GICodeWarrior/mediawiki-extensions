@@ -2246,6 +2246,10 @@ $messages['scn'] = array(
  */
 $messages['shi'] = array(
 	'badimages' => 'Umuɣ n tisnatin xcnnin',
+	'badimage-desc' => 'Sattuy umuɣ n gar tiwlaf n MidyaWiki',
+	'badimages-add-btn' => 'Zayd',
+	'badimages-added' => '$1 Tzaydn i umuɣ',
+	'badimages-count' => "Illa  '''$1''' {{PLURAL:$1|tawlaft|tiwlfin}} ɣ umuɣ n twlfin lli ur ifulkin.",
 	'badimages-name' => 'Assaɣ:',
 	'badimages-not-added' => 'Tawlaft ad ur as tufa an tili',
 	'badimages-not-removed' => 'Tawlaft ad ur as tufa ad ttuykkas.',
@@ -2257,6 +2261,11 @@ $messages['shi'] = array(
 	'badimages-subheading' => 'Umuɣ n ɣilad',
 	'badimages-unprivileged' => '(Ur ak ittuyskar ad tsbadlt umuɣ ad)',
 	'badimages-log-name' => 'Umuɣ n tiwlaf lli ur igan amya',
+	'badimages-log-header' => 'Amzruy n imbddln  n [[{{MediaWiki:Badimages-page}}|umuɣ n gar tiwlaf]]',
+	'badimages-log-add' => 'izaydn [[$1]] i umuɣ n gar tiwlaf',
+	'badimages-log-remove' => 'ikkisd [[$1]] z umuɣ n gar tiwlaf',
+	'badimages-page' => '{{ns:help}}:Umuɣ n gar tiwlaf',
+	'right-badimages' => 'Zbadl umuɣ n gar tiwlaf',
 );
 
 /** Slovak (Slovenčina)
