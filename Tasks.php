@@ -142,8 +142,7 @@ function wfTasksAddCache() { # Checked for HTML and MySQL insertion attacks
  * @param EditPage $editPage
  */
 function wfTaskExtensionEditFormInitialHook( &$editPage ) { # Checked for HTML and MySQL insertion attacks
-	global $wgArticle;
-	return wfTaskExtensionHeaderHook( $wgArticle );
+	return wfTaskExtensionHeaderHook( $editPage->getArticle() );
 }
 
 /**
