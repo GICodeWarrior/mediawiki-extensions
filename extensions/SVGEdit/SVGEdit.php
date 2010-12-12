@@ -1,20 +1,24 @@
 <?php
 
 /**
+ * Wrapper to integrate SVG-edit in-browser vector graphics editor in MediaWiki.
+ * http://www.mediawiki.org/wiki/Extension:SVGEdit
+ *
  * @copyright 2010 Brion Vibber <brion@pobox.com>
  *
- * todo:
- * JS code: load on File pages (ok)
- * JS add 'edit' button (ok)
- * JS edit button -> load svgedit (ok)
- * API point to store file data (ok: using api upload point)
- * hook save UI in the editor (ok)
- * UI to start editor with a new file (create)
- * API point to fetch file data (ok: using ApiSVGProxy extension)
- * hook load UI to browse local files
- * visual cleanup
- * Flash compat for IE?
+ * MediaWiki-side code is GPL
+ *
+ * SVG-edit is under Apache license: http://code.google.com/p/svg-edit/
  */
+
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'SVGEdit',
+	'author'         => array( 'Brion Vibber' ),
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:SVGEdit',
+	'descriptionmsg' => 'svgedit-desc',
+);
+$wgExtensionMessagesFiles['SVGEdit'] =  dirname(__FILE__) . '/SVGEdit.i18n.php';
 
 $wgHooks['BeforePageDisplay'][] = 'SVGEditHooks::beforePageDisplay';
 
@@ -30,6 +34,8 @@ $wgResourceModules += array(
 		'scripts' => 'ext.svgedit.editButton.js',
 		'messages' => array(
 			'svgedit-editbutton-edit',
+			'svgedit-editor-save-close',
+			'svgedit-editor-close',
 		),
 	),
 );
