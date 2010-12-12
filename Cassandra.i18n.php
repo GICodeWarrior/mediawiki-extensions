@@ -327,6 +327,13 @@ $messages['ru'] = array(
 	'cassandra-desc' => 'Хранение текста версии страницы в базе данных [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Tachelhit (Tašlḥiyt)
+ * @author Dalinanir
+ */
+$messages['shi'] = array(
+	'cassandra-desc' => 'Ḥbu aṭṛiṣ n kraygat lqm (asurri) ɣ  n usfrk n taffa [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
