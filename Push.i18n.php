@@ -70,14 +70,14 @@ To push pages, enter the titles in the text box below, one title per line and hi
 );
 
 /** Message documentation (Message documentation)
- * @author Nike
  * @author Jeroen De Dauw
+ * @author Nike
  */
 $messages['qqq'] = array(
+	'push-err-authentication' => '$1: wiki name, $2: optional detailed error message',
 	'push-import-revision-message' => '$3 is [[MediaWiki:Push-import-revision-comment]] or empty.',
 	'push-remote-page-link' => '$1: page name, $2: wiki name',
 	'push-remote-page-link-full' => '$1: page name, $2: wiki name',
-	'push-err-authentication' => '$1: wiki name, $2: optional detailed error message',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -111,6 +111,8 @@ $messages['de'] = array(
 	'right-bulkpush' => 'Seiten gesammelt in andere Wikis transferieren',
 	'right-pushadmin' => 'Transfereinstellungen und -ziele ändern',
 	'push-err-captacha' => 'Transfer nach $1 aufgrund eines CAPTCHAs nicht möglich.',
+	'push-err-captcha-page' => 'Seite $1 konnte aufgrund von CAPTCHAs zu keinem der Ziele transferiert werden.',
+	'push-err-authentication' => 'Authentifizierung auf $1 ist fehlgeschlagen. $2',
 	'push-tab-text' => 'Transferieren',
 	'push-button-text' => 'Transferieren',
 	'push-tab-desc' => 'Dieser Reiter ermöglicht den Transfer des aktuellen Seiteninhalts in ein oder mehrere andere Wikis.',
@@ -120,7 +122,7 @@ $messages['de'] = array(
 	'push-tab-title' => 'Transferiere $1',
 	'push-targets' => 'Transferziele',
 	'push-add-target' => 'Transferziel hinzufügen',
-	'push-import-revision-message' => 'Import von $1 durch Benutzer $2. $3',
+	'push-import-revision-message' => 'Transferiert von $1 durch Benutzer $2. $3',
 	'push-import-revision-comment' => 'Letzter Kommentar: $1',
 	'push-tab-no-targets' => 'Es sind keine Transferziele vorhanden. Es müssen welche in der Datei LocalSettings.php definiert werden.',
 	'push-tab-push-to' => 'Transferiere nach $1',
@@ -131,6 +133,10 @@ $messages['de'] = array(
 	'push-button-all' => 'Alle transferieren',
 	'push-tab-last-edit' => 'Letzte Bearbeitung durch Benutzer $1 am $2 um $3 Uhr.',
 	'push-tab-not-created' => 'Diese Seite ist nicht vorhanden.',
+	'push-tab-push-options' => 'Transferoptionen:',
+	'push-tab-inc-templates' => 'Vorlagen einbeziehen',
+	'push-tab-used-templates' => '({{PLURAL:$2|Vorlage|Vorlagen}} eingesetzt: $1)',
+	'push-tab-no-used-templates' => '(Auf dieser Seite werden keine Vorlagen eingesetzt.)',
 	'special-push' => 'Seiten transferieren',
 	'push-special-description' => 'Diese Spezialseite ermöglicht es den Inhalt einer oder mehrerer Seiten zu einem oder mehreren anderen Wikis zu transferieren.
 
@@ -141,7 +147,7 @@ Um Seiten zu transferieren, sind deren Titel im Eingabefeld unten anzugeben (ein
 	'push-special-select-targets' => 'Zielwikis:',
 	'push-special-item-pushing' => '$1: Transferiere',
 	'push-special-item-completed' => '$1: Transfer abgeschlossen',
-	'push-special-item-failed' => '$1: Transfer fehlgeschlagen. Grund: $2',
+	'push-special-item-failed' => '$1: Transfer fehlgeschlagen. $2',
 	'push-special-push-done' => 'Transfer abgeschlossen',
 	'push-special-err-token-failed' => 'Auf dem Zielwiki konnte der Bearbeitungstoken nicht abgerufen werden.',
 	'push-special-err-pageget-failed' => 'Auf diesem Wiki konnte der Seiteninhalt nicht abgerufen werden.',
@@ -182,6 +188,8 @@ $messages['ia'] = array(
 	'push-remote-page-link-full' => 'Vider $1 in $2',
 	'push-targets-total' => 'Il ha un total de $1 {{PLURAL:$1|destination|destinationes}}.',
 	'push-button-all' => 'Transferer totes',
+	'push-tab-last-edit' => 'Ultime modification per $1 le $2 a $3.',
+	'push-tab-not-created' => 'Iste pagina non existe ancora.',
 	'special-push' => 'Transferer paginas',
 	'push-special-description' => 'Iste pagina permitte transferer le contento de un o plus paginas a un o plus wikis MediaWiki.
 
@@ -253,12 +261,19 @@ $messages['lb'] = array(
 	'right-push' => "Autorisatioun fir d'Push-Fonctionalitéit ze benotzen",
 	'right-bulkpush' => 'Autorisatioun fir méi Säite mateneen per Push an aner Wikien ze transferéieren',
 	'right-pushadmin' => "Autorisatioun fir d'Zil an d'Astellungen vun der Push-Fonctionalitéit z'änneren.",
+	'push-err-captacha' => 'Push op $1 konnt wéint dem Captcha net gemaach ginn.',
+	'push-button-completed' => 'Push ofgeschloss',
 	'push-import-revision-comment' => 'Lescht Bemierkung: $1',
 	'push-remote-page-link' => '$1 op $2',
+	'push-remote-page-link-full' => '$1 op $2 weisen',
 	'push-button-all' => 'All pushen',
+	'push-tab-last-edit' => 'Lescht Ännerung vum $1 de(n) $2 ëm $3 Auer.',
 	'push-tab-not-created' => 'Dës Säit gëtt et nach net',
 	'special-push' => 'Säite pushen',
+	'push-special-button-text' => 'Säite pushen',
 	'push-special-select-targets' => 'Zielwikien:',
+	'push-special-item-pushing' => '$1: Pushen',
+	'push-special-push-done' => 'Push ofgeschloss',
 );
 
 /** Macedonian (Македонски)
