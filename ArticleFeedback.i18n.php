@@ -519,6 +519,16 @@ Možná ji budete chtít ohodnotit znovu.",
 	'articlefeedback-alpha-survey-submit' => 'Odeslat',
 	'articlefeedback-alpha-survey-title' => 'Odpovězte prosím na několik otázek',
 	'articlefeedback-alpha-survey-thanks' => 'Děkujeme za vyplnění průzkumu.',
+	'articlefeedback-beta-form-panel-instructions' => 'Věnujte prosím chvilku ohodnocení této stránky.',
+	'articlefeedback-beta-report-switch-label' => 'Zobrazit výsledky',
+	'articlefeedback-beta-field-wellsourced-label' => 'Podloženost',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Máte pocit, že tato stránka dostatečně odkazuje na zdroje a použité zdroje jsou důvěryhodné?',
+	'articlefeedback-beta-field-complete-label' => 'Úplnost',
+	'articlefeedback-beta-field-complete-tip' => 'Máte pocit, že tato stránka pokrývá všechny důležité části tématu?',
+	'articlefeedback-beta-field-neutral-label' => 'Nezaujatost',
+	'articlefeedback-beta-field-neutral-tip' => 'Máte pocit, že tato stránka spravedlivě pokrývá všechny pohledy na dané téma?',
+	'articlefeedback-beta-field-readable-label' => 'Čtivost',
+	'articlefeedback-beta-field-readable-tip' => 'Máte pocit, že tato stránka je správně organizována a dobře napsána?',
 );
 
 /** German (Deutsch)
@@ -2877,5 +2887,7 @@ $messages['zh-hans'] = array(
 	'articlefeedback-beta-form-panel-title' => '您的意见',
 	'articlefeedback-beta-form-panel-instructions' => '请花些时间为这个条目打分',
 	'articlefeedback-beta-form-panel-submit' => '上载意见',
+	'articlefeedback-beta-field-complete-label' => '完成',
+	'articlefeedback-beta-field-neutral-label' => '中立',
 );
 
