@@ -14,6 +14,16 @@ class ApiPush extends ApiBase {
 	
 	protected $editResponses = array();
 	
+	/**
+	 * Associative array containing CookieJar objects (values) to be passed in
+	 * order to autenticate to the targets (keys).
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var array
+	 */
+	protected $cookieJars = array();
+	
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
 	}
@@ -29,6 +39,17 @@ class ApiPush extends ApiBase {
 			$this->dieUsageMsg( array( 'missingparam', 'targets' ) );
 		}		
 
+		foreach ( $params['targets'] as &$target ) {
+			if ( substr( $target, -1 ) !== '/' ) {
+				$target .= '/';
+			}
+			
+			$target .= 'api.php';			
+		}
+		
+		global $egPushLoginUser, $egPushLoginPass;
+		$this->doLogin( $egPushLoginUser, $egPushLoginPass, $params['targets'] );
+		
 		foreach ( $params['page'] as $page ) {
 			$title = Title::newFromText( $page );
 		
@@ -64,6 +85,70 @@ class ApiPush extends ApiBase {
 					'result' => 'Success'
 				)
 			);
+		}
+	}
+	
+	/**
+	 * Logs in into the target wiki using the provided username and password.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $user
+	 * @param string $password
+	 * @param array $targets
+	 * @param string $token
+	 * @param CookieJar $cookie
+	 */
+	protected function doLogin( $user, $password, array $targets, $token = null, $cookieJar = null ) {
+		$requestData = array(
+			'action' => 'login',
+			'format' => 'json',
+			'lgname' => $user,
+			'lgpassword' => $password
+		);
+		
+		if ( !is_null( $token ) ) {
+			$requestData['lgtoken'] = $token;
+		}
+		
+		foreach ( $targets as $target ) {
+			$req = MWHttpRequest::factory( $target, 
+				array(
+					'postData' => $requestData,
+					'method' => 'POST',
+					'timeout' => 'default'
+				)
+			);
+			
+			if ( !is_null( $cookieJar ) ) {
+				$req->setCookieJar( $cookieJar );
+			}			
+			
+			$status = $req->execute();
+	
+			if ( $status->isOK() ) {
+				$response = FormatJson::decode( $req->getContent() );
+				
+				if ( property_exists( $response, 'login' )
+					&& property_exists( $response->login, 'result' ) ) {
+	
+					if ( $response->login->result == 'NeedToken' ) {
+						$this->doLogin( $user, $password, array( $target ), $response->login->token, $req->getCookieJar() );
+					}
+					else if ( $response->login->result == 'Success' ) {
+						$this->cookieJars[$target] = $req->getCookieJar();
+					}
+					else {
+						var_dump($response->login);exit;
+					}
+				}
+				else {
+					// TODO
+				}				
+			} 
+			else {
+				// TODO	
+			}
 		}
 	}
 	
@@ -130,13 +215,7 @@ class ApiPush extends ApiBase {
 	 * @param array $targets
 	 */		
 	protected function doPush( Title $title, array $revision, array $targets ) {
-		foreach ( $targets as $target ) {
-			if ( substr( $target, -1 ) !== '/' ) {
-				$target .= '/';
-			}
-			
-			$target .= 'api.php';
-			
+		foreach ( $targets as $target ) {			
 			$token = $this->getEditToken( $title, $target );
 
 			if ( $token !== false ) {
@@ -171,7 +250,21 @@ class ApiPush extends ApiBase {
 			$parts[] = $key . '=' . urlencode( $value );
 		}
 
-		$response = FormatJson::decode( Http::get( $target . '?' . implode( '&', $parts ) ) );
+		$req = MWHttpRequest::factory( $target . '?' . implode( '&', $parts ), 
+			array(
+				'method' => 'GET',
+				'timeout' => 'default'
+			)
+		);
+		
+		if ( array_key_exists( $target, $this->cookieJars ) ) {
+			$req->setCookieJar( $this->cookieJars[$target] );
+		}			
+		
+		$status = $req->execute();
+		
+		$response = $status->isOK() ? FormatJson::decode( $req->getContent() ) : null;
+		
 		$token = false;
 
 		if ( !is_null( $response )
@@ -231,10 +324,25 @@ class ApiPush extends ApiBase {
 			'token' => $token,
 		);
 
-		$response = Http::post( $target, array( 'postData' => $requestData ) );
-
-		if ( $response !== false ) {
-			$this->editResponses[] = $response;
+		$req = MWHttpRequest::factory( $target, 
+			array(
+				'method' => 'POST',
+				'timeout' => 'default',
+				'postData' => $requestData
+			)
+		);
+		
+		if ( array_key_exists( $target, $this->cookieJars ) ) {
+			$req->setCookieJar( $this->cookieJars[$target] );
+		}
+		else {
+			var_dump($this->cookieJars);exit;
+		}			
+		
+		$status = $req->execute();
+		
+		if ( $status->isOK() ) {
+			$this->editResponses[] = $req->getContent();
 		}
 		else {
 			$this->dieUsage( wfMsg( 'push-special-err-push-failed' ), 'page-push-failed' );
