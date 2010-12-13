@@ -177,7 +177,8 @@ class SpecialPush extends SpecialPage {
 			'var wgPushPages = ' . json_encode( $pages ) . ';' .
 			'var wgPushTargets = ' . json_encode( $targets ) . ';' .
 			'var wgPushWorkerCount = ' . $egPushBulkWorkers . ';' .
-			'var wgPushBatchSize = ' . $egPushBatchSize . ';'
+			'var wgPushBatchSize = ' . $egPushBatchSize . ';' .
+			'var wgPushIncFiles = ' . ( $wgRequest->getCheck( 'files' ) ? 'true' : 'false' ) . ';'
 		);
 		
 		$this->loadJs();
@@ -187,7 +188,7 @@ class SpecialPush extends SpecialPage {
 	 * @since 0.2
 	 */
 	protected function displayPushInterface( $arg, $pages ) {
-		global $wgOut, $wgUser, $wgRequest, $egPushTargets;
+		global $wgOut, $wgUser, $wgRequest, $egPushTargets, $egPushIncTemplates, $egPushIncFiles;
 		
 		$wgOut->addWikiMsg( 'push-special-description' );
 
@@ -205,9 +206,18 @@ class SpecialPush extends SpecialPage {
 		$form .= Xml::checkLabel(
 			wfMsg( 'export-templates' ),
 			'templates',
-			'wpExportTemplates',
-			$wgRequest->wasPosted() ? $wgRequest->getCheck( 'templates' ) : false
+			'wpPushTemplates',
+			$wgRequest->wasPosted() ? $wgRequest->getCheck( 'templates' ) : $egPushIncTemplates
 		) . '<br />';
+		
+		if ( $wgUser->isAllowed( 'filepush' ) ) {
+			$form .= Xml::checkLabel(
+				wfMsg( 'push-special-inc-files' ),
+				'files',
+				'wpPushFiles',
+				$wgRequest->wasPosted() ? $wgRequest->getCheck( 'files' ) : $egPushIncFiles
+			) . '<br />';				
+		}
 		
 		if ( count( $egPushTargets ) == 1 ) {
 			$names = array_keys( $egPushTargets );

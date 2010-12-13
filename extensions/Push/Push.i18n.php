@@ -68,7 +68,11 @@ To push pages, enter the titles in the text box below, one title per line and hi
 	'push-special-push-done' => 'Push completed',
 	'push-special-err-token-failed' => 'Could not obtain an edit token on the target wiki.',
 	'push-special-err-pageget-failed' => 'Could not obtain local page content.',
-	'push-special-err-push-failed' => 'Target wiki refused the pushed page.'
+	'push-special-err-push-failed' => 'Target wiki refused the pushed page.',
+	'push-special-inc-files' => 'Include files',
+	'push-special-err-imginfo-failed' => 'Could not determine if any files needed to be pushed.',
+	'push-special-obtaining-fileinfo' => '$1: Obtaining file information.',
+	'push-special-pushing-file' => '$1: Pushing file $2.',
 );
 
 /** Message documentation (Message documentation)
