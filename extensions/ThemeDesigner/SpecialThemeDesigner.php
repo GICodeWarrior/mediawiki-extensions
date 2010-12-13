@@ -14,7 +14,6 @@ class SpecialThemeDesigner extends SpecialPage {
 	
 	public function __construct() {
 		parent::__construct( 'ThemeDesigner' );
-		wfLoadExtensionMessages( 'ThemeDesigner' );
 	}
 	
 	/**
@@ -86,8 +85,8 @@ class SpecialThemeDesigner extends SpecialPage {
 		}
 		
 		echo implode( "\n", array(
-			$wgOut->getHeadLinks( $this->mSkin ),
-			$wgOut->buildCssLinks(),
+			$wgOut->getHeadLinks(),
+			$wgOut->buildCssLinks( $this->mSkin ),
 			$wgOut->getHeadItems()
 		) );
 		
