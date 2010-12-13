@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Push_VERSION', '0.4 alpha' );
+define( 'Push_VERSION', '0.5 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -45,6 +45,7 @@ $wgExtensionAliasesFiles['Push'] 			= $egPushIP . '/Push.alias.php';
 
 $wgAutoloadClasses['PushHooks'] 			= $egPushIP . '/Push.hooks.php';
 $wgAutoloadClasses['ApiPush'] 				= $egPushIP . '/api/ApiPush.php';
+$wgAutoloadClasses['ApiPushImages'] 		= $egPushIP . '/api/ApiPushImages.php';
 $wgAutoloadClasses['PushTab'] 				= $egPushIP . '/includes/Push_Tab.php';
 $wgAutoloadClasses['PushFunctions'] 		= $egPushIP . '/includes/Push_Functions.php';
 $wgAutoloadClasses['SpecialPush'] 			= $egPushIP . '/specials/Push_Body.php';
@@ -53,6 +54,7 @@ $wgSpecialPages['Push'] = 'SpecialPush';
 $wgSpecialPageGroups['Push'] = 'pagetools';
 
 $wgAPIModules['push'] = 'ApiPush';
+$wgAPIModules['pushimages'] = 'ApiPushImages';
 
 $wgHooks['UnknownAction'][] = 'PushTab::onUnknownAction';
 $wgHooks['SkinTemplateTabs'][] = 'PushTab::displayTab';

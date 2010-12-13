@@ -270,9 +270,24 @@ final class PushTab {
 	 * @since 0.4
 	 */
 	protected static function displayPushOptions() {
-		global $wgOut, $wgTitle, $wgLang, $egPushIncTemplates;
+		global $wgOut, $wgUser;
 		
 		$wgOut->addHTML( '<h3>' . htmlspecialchars( wfMsg( 'push-tab-push-options' ) ) . '</h3>' );
+		
+		self::displayIncTemplatesOption();
+		
+		if ( $wgUser->isAllowed( 'filepush' ) ) {
+			self::displayIncFilesOption();
+		}
+	}
+	
+	/**
+	 * Outputs the HTML for the "include templates" option.
+	 * 
+	 * @since 0.4
+	 */
+	protected static function displayIncTemplatesOption() {
+		global $wgOut, $wgTitle, $wgLang, $egPushIncTemplates;
 		
 		$usedTemplates = array_keys(
 			PushFunctions::getTemplates(
@@ -310,7 +325,29 @@ final class PushTab {
 						 htmlspecialchars( wfMsg( 'push-tab-no-used-templates' ) )
 				)				
 			)
-		);
+		);		
+	}
+	
+	/**
+	 * Outputs the HTML for the "include files" option.
+	 * 
+	 * @since 0.4
+	 */	
+	protected static function displayIncFilesOption() {
+		global $wgOut, $wgTitle, $egPushIncFiles;
+		
+		$wgOut->addHTML(
+			Html::rawElement(
+				'div',
+				array( 'id' => 'divIncFiles' ),
+				Xml::check( 'checkIncFiles', $egPushIncFiles, array( 'id' => 'checkIncFiles' ) ) .
+				Html::element(
+					'label',
+					array( 'id' => 'lblIncFiles', 'for' => 'checkIncFiles' ),
+					wfMsg( 'push-tab-inc-files' )
+				) 			
+			)
+		);			
 	}
 	
 }

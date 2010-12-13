@@ -1,24 +1,22 @@
 <?php
 
 /**
- * API module to push wiki pages to other MediaWiki wikis.
+ * API module to push images to other MediaWiki wikis.
  *
- * @since 0.3
+ * @since 0.5
  *
- * @file ApiPush.php
+ * @file ApiPushImages.php
  * @ingroup Push
  *
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ApiPush extends ApiBase {
-	
-	protected $editResponses = array();
+class ApiPushImages extends ApiBase {
 	
 	/**
 	 * Associative array containing CookieJar objects (values) to be passed in
 	 * order to autenticate to the targets (keys).
 	 * 
-	 * @since 0.4
+	 * @since 0.5
 	 * 
 	 * @var array
 	 */
@@ -33,8 +31,8 @@ class ApiPush extends ApiBase {
 		
 		$params = $this->extractRequestParams();
 		
-		if ( !isset( $params['page'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'page' ) );
+		if ( !isset( $params['images'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'images' ) );
 		}
 		
 		if ( !isset( $params['targets'] ) ) {
@@ -65,32 +63,10 @@ class ApiPush extends ApiBase {
 			}
 		}
 		
-		foreach ( $params['page'] as $page ) {
-			$title = Title::newFromText( $page );
-		
-			$revision = $this->getPageRevision( $title );
-			
-			if ( $revision !== false ) {
-				$this->doPush( $title, $revision, $params['targets'] );
-			}			 
-		}
-		
-		if ( count( $this->editResponses ) == 1 ) {
-			$this->getResult()->addValue(
-				null,
-				null,
-				FormatJson::decode( $this->editResponses[0] )
-			);
-		}
-		else {
-			$success = true;
-			
-			foreach ( $this->editResponses as $response ) {
-				$this->getResult()->addValue(
-					null,
-					null,
-					FormatJson::decode( $response )
-				);					
+		foreach ( $params['images'] as $image ) {
+			$title = Title::newFromText( $image, NS_FILE );
+			if ( !is_null( $title ) && $title->getNamespace() == NS_FILE && $title->exists() ) {
+				$this->doPush( $title, $params['targets'] );
 			}
 		}
 	}
@@ -98,7 +74,7 @@ class ApiPush extends ApiBase {
 	/**
 	 * Logs in into a target wiki using the provided username and password.
 	 * 
-	 * @since 0.4
+	 * @since 0.5
 	 * 
 	 * @param string $user
 	 * @param string $password
@@ -158,73 +134,19 @@ class ApiPush extends ApiBase {
 	}
 	
 	/**
-	 * Makes an internal request to the API to get the needed revision.
-	 * 
-	 * @since 0.3
-	 * 
-	 * @param Title $title
-	 * 
-	 * @return array or false
-	 */
-	protected function getPageRevision( Title $title ) {
-		$revId = PushFunctions::getRevisionToPush( $title );
-		
-		$requestData = array(
-			'action' => 'query',
-			'format' => 'json',
-			'prop' => 'revisions',
-			'rvprop' => 'timestamp|user|comment|content',
-			'titles' => $title->getFullText(),
-			'rvstartid' => $revId,
-			'rvendid' => $revId,		
-		);
-		
-		$api = new ApiMain( new FauxRequest( $requestData, true ), true );
-		$api->execute();
-		$response = $api->getResultData();
-		
-		$revision = false;
-		
-		if ( $response !== false
-			&& array_key_exists( 'query', $response )
-			&& array_key_exists( 'pages', $response['query'] )
-			&& count( $response['query']['pages'] ) > 0 ) {
-			
-			foreach ( $response['query']['pages'] as $key => $value ) {
-				$first = $key;
-				break;
-			}
-			
-			if ( array_key_exists( 'revisions', $response['query']['pages'][$first] )
-				&& count( $response['query']['pages'][$first]['revisions'] ) > 0 ) {
-				$revision = $response['query']['pages'][$first]['revisions'][0];
-			}
-			else {
-				$this->dieUsage( wfMsg( 'push-special-err-pageget-failed' ), 'page-get-failed' );
-			}
-		}
-		else {
-			$this->dieUsage( wfMsg( 'push-special-err-pageget-failed' ), 'page-get-failed' );
-		}
-
-		return $revision;
-	}
-	
-	/**
 	 * Pushes the page content to the target wikis.
 	 * 
-	 * @since 0.3
+	 * @since 0.5
 	 * 
 	 * @param Title $title
-	 * @param array $revision
 	 * @param array $targets
 	 */		
-	protected function doPush( Title $title, array $revision, array $targets ) {
+	protected function doPush( Title $title, array $targets ) {
 		foreach ( $targets as $target ) {			
 			$token = $this->getEditToken( $title, $target );
 
 			if ( $token !== false ) {
-				$this->pushToTarget( $title, $revision, $target, $token );
+				$this->pushToTarget( $title, $target, $token );
 			}
 		}
 	}
@@ -233,7 +155,7 @@ class ApiPush extends ApiBase {
 	 * Obtains the needed edit token by making an HTTP GET request
 	 * to the remote wikis API. 
 	 * 
-	 * @since 0.3
+	 * @since 0.5
 	 * 
 	 * @param Title $title
 	 * @param string $target
@@ -300,60 +222,55 @@ class ApiPush extends ApiBase {
 	}	
 	
 	/**
-	 * Pushes the page content to the specified wiki.
+	 * Pushes the image to the specified wiki.
 	 * 
-	 * @since 0.3
+	 * @since 0.5
 	 * 
 	 * @param Title $title
-	 * @param array $revision
 	 * @param string $target
 	 * @param string $token
 	 */		
-	protected function pushToTarget( Title $title, array $revision, $target, $token ) {
-		global $wgSitename;
-
-		$summary = wfMsgExt(
-			'push-import-revision-message',
-			'parsemag',
-			$wgSitename,
-			$revision['user'],
-			$revision['comment'] == '' ? '' : wfMsgExt( 'push-import-revision-comment', 'parsemag', $revision['comment'] )
-		);
-
+	protected function pushToTarget( Title $title, $target, $token ) {
+		$imagePage = new ImagePage( $title );
+		
 		$requestData = array(
-			'action' => 'edit',
-			'title' => $title->getFullText(),
+			'action' => 'upload',
 			'format' => 'json',
-			'summary' => $summary,
-			'text' => $revision['*'],
 			'token' => $token,
+			'url' => $imagePage->getDisplayedFile()->getFullUrl(),
+			'filename' => $title->getText(),
+			'ignorewarnings' => '1'
 		);
 
 		$req = MWHttpRequest::factory( $target, 
 			array(
 				'method' => 'POST',
 				'timeout' => 'default',
-				'postData' => $requestData
+				'postData' => $requestData,
 			)
 		);
 		
 		if ( array_key_exists( $target, $this->cookieJars ) ) {
 			$req->setCookieJar( $this->cookieJars[$target] );
-		}
+		}			
 		
 		$status = $req->execute();
 		
-		if ( $status->isOK() ) {
-			$this->editResponses[] = $req->getContent();
+		if ( $status->isOK()  ) {
+			$this->getResult()->addValue(
+				null,
+				null,
+				FormatJson::decode( $req->getContent() )
+			);			
 		}
 		else {
-			$this->dieUsage( wfMsg( 'push-special-err-push-failed' ), 'page-push-failed' );
+			// TODO
 		}
 	}
 	
 	public function getAllowedParams() {
 		return array(
-			'page' => array(
+			'images' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_ISMULTI => true,
 				//ApiBase::PARAM_REQUIRED => true,
@@ -368,7 +285,7 @@ class ApiPush extends ApiBase {
 	
 	public function getParamDescription() {
 		return array(
-			'page' => 'The names of the page to push. Delimitered by |',
+			'images' => 'The names of the images to push. Delimitered by |',
 			'targets' => 'The urls of the wikis to push to. Delimitered by |',
 		);
 	}
@@ -381,14 +298,14 @@ class ApiPush extends ApiBase {
 		
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'page' ),
+			array( 'missingparam', 'images' ),
 			array( 'missingparam', 'targets' ),
 		) );
 	}
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=push&page=Main page&targets=http://en.wikipedia.org/w',
+			'api.php?action=pushimages&images=File:Foo.bar&targets=http://en.wikipedia.org/w',
 		);
 	}
 

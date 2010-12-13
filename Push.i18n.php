@@ -50,6 +50,7 @@ $messages['en'] = array(
 	'push-tab-inc-templates' => 'Include templates',
 	'push-tab-used-templates' => '(Used {{PLURAL:$2|template|templates}}: $1)',
 	'push-tab-no-used-templates' => '(No templates are used on this page.)',
+	'push-tab-inc-files' => 'Include files',
 	
 	// Special page
 	'special-push' => 'Push pages',

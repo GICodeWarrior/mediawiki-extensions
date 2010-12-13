@@ -28,6 +28,8 @@ $wgGroupPermissions['*']['push'] = true;
 $wgGroupPermissions['autoconfirmed']['bulkpush'] = true;
 $wgGroupPermissions['sysop']['bulkpush'] = true;
 $wgGroupPermissions['sysop']['pushadmin'] = true;
+$wgGroupPermissions['autoconfirmed']['filepush'] = true;
+$wgGroupPermissions['sysop']['filepush'] = true;
 
 # Show the push action as a tab (if not, it's displayed in the actions dropdown).
 # This only works for skins with an actions dropdown. For others push will always appear as a tab.
@@ -36,6 +38,10 @@ $egPushShowTab = false;
 # You can choose to include templates when pushing a page.
 # This is the default choice.
 $egPushIncTemplates = false;
+
+# You can choose to push files used in a page.
+# This is the default choice.
+$egPushIncFiles = false;
 
 # Indicated if login options should be added to the push interface or not. 
 $egPushAllowLogin = true;
