@@ -111,7 +111,6 @@
 						);
 					}
 					
-					infoDiv.css( 'color', 'darkgray' );
 					infoDiv.text( message );
 					infoDiv.fadeIn( 'slow' );
 				}
@@ -233,6 +232,8 @@
 	function reEnableButton( button, targetUrl, targetName ) {
 		button.innerHTML = mediaWiki.msg( 'push-button-text' );
 		button.disabled = false;
+		
+		getRemoteArticleInfo( $(button).attr( 'targetid' ), $(button).attr( 'pushtarget' ) );
 		
 		var pushAllButton = $('#push-all-button');
 		
