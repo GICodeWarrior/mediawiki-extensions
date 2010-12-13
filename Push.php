@@ -82,6 +82,9 @@ $egPushJSMessages = array(
 	'push-tab-not-created',
 	'push-err-captcha-page',
 	'push-button-pushing-files',
+	'push-special-err-imginfo-failed',
+	'push-special-obtaining-fileinfo',
+	'push-special-pushing-file',
 );
 
 // For backward compatibility with MW < 1.17.
