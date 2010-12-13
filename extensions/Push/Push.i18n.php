@@ -52,6 +52,7 @@ $messages['en'] = array(
 	'push-tab-used-templates' => '(Used {{PLURAL:$2|template|templates}}: $1)',
 	'push-tab-no-used-templates' => '(No templates are used on this page.)',
 	'push-tab-inc-files' => 'Include files',
+	'push-tab-err-fileinfo' => 'Could not obtain which files are used on this page. None have been pushed.',
 	
 	// Special page
 	'special-push' => 'Push pages',
@@ -71,8 +72,9 @@ To push pages, enter the titles in the text box below, one title per line and hi
 	'push-special-err-push-failed' => 'Target wiki refused the pushed page.',
 	'push-special-inc-files' => 'Include files',
 	'push-special-err-imginfo-failed' => 'Could not determine if any files needed to be pushed.',
-	'push-special-obtaining-fileinfo' => '$1: Obtaining file information.',
-	'push-special-pushing-file' => '$1: Pushing file $2.',
+	'push-special-obtaining-fileinfo' => '$1: Obtaining file information...',
+	'push-special-pushing-file' => '$1: Pushing file $2...',
+	'push-special-return' => 'Push more pages',
 );
 
 /** Message documentation (Message documentation)
