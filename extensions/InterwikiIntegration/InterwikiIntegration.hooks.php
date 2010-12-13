@@ -4,32 +4,35 @@ class InterwikiIntegrationHooks {
 	/**
 	 * Creates necessary tables
 	 */
-	public static function InterwikiIntegrationCreateTable() {
-		global $wgExtNewTables;
-		$wgExtNewTables[] = array(
-			'integration_prefix',
-			dirname( __FILE__ ) . '/interwikiintegration-prefix.sql'
-		);
-		$wgExtNewTables[] = array(
-			'integration_namespace',
-			dirname( __FILE__ ) . '/interwikiintegration-namespace.sql'
-		);
-		$wgExtNewTables[] = array(
-			'integration_iwlinks',
-			dirname( __FILE__ ) . '/interwikiintegration-iwlinks.sql'
-		);
-		$wgExtNewTables[] = array(
-			'integration_watchlist',
-			dirname( __FILE__ ) . '/interwikiintegration-watchlist.sql'
-		);
-		$wgExtNewTables[] = array(
-			'integration_recentchanges',
-			dirname( __FILE__ ) . '/interwikiintegration-recentchanges.sql'
-		);
-		$wgExtNewTables[] = array(
-			'integration_page',
-			dirname( __FILE__ ) . '/interwikiintegration-page.sql'
-		);
+	public static function InterwikiIntegrationCreateTable( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables;
+			$wgExtNewTables[] = array( 'integration_prefix',
+				dirname( __FILE__ ) . '/interwikiintegration-prefix.sql' );
+			$wgExtNewTables[] = array( 'integration_namespace',
+				dirname( __FILE__ ) . '/interwikiintegration-namespace.sql' );
+			$wgExtNewTables[] = array( 'integration_iwlinks',
+				dirname( __FILE__ ) . '/interwikiintegration-iwlinks.sql' );
+			$wgExtNewTables[] = array( 'integration_watchlist',
+				dirname( __FILE__ ) . '/interwikiintegration-watchlist.sql' );
+			$wgExtNewTables[] = array( 'integration_recentchanges',
+				dirname( __FILE__ ) . '/interwikiintegration-recentchanges.sql' );
+			$wgExtNewTables[] = array( 'integration_page',
+				dirname( __FILE__ ) . '/interwikiintegration-page.sql' );
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'integration_prefix',
+				dirname( __FILE__ ) . '/interwikiintegration-prefix.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'integration_namespace',
+				dirname( __FILE__ ) . '/interwikiintegration-namespace.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'integration_iwlinks',
+				dirname( __FILE__ ) . '/interwikiintegration-iwlinks.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'integration_watchlist',
+				dirname( __FILE__ ) . '/interwikiintegration-watchlist.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'integration_recentchanges',
+				dirname( __FILE__ ) . '/interwikiintegration-recentchanges.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'integration_page',
+				dirname( __FILE__ ) . '/interwikiintegration-page.sql', true ) );
+		}
 		return true;
 	}
 	
