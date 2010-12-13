@@ -119,7 +119,7 @@ class SpecialPush extends SpecialPage {
 	 * @param string $pages
 	 */
 	protected function doPush( $pages ) {
-		global $wgOut, $wgLang, $wgRequest, $wgSitename, $egPushTargets, $egPushBulkWorkers, $egPushBatchSize;
+		global $wgOut, $wgLang, $wgRequest, $wgSitename, $wgTitle, $egPushTargets, $egPushBulkWorkers, $egPushBatchSize;
 		
 		$pageSet = array(); // Inverted index of all pages to look up
 
@@ -170,7 +170,8 @@ class SpecialPush extends SpecialPage {
 					array( 'class' => 'innerResultBox' ),
 					Html::element( 'ul', array( 'id' => 'pushResultList' ) )
 				)
-			)
+			) . '<br />' .
+			Html::element( 'a', array( 'href' => $wgTitle->getInternalURL() ), wfMsg( 'push-special-return' ) )
 		);
 		
 		$wgOut->addInlineScript(

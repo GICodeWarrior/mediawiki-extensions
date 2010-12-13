@@ -121,11 +121,13 @@
 					var images = [];
 					
 					for ( page in data.query.pages ) {
-						for ( var i = data.query.pages[page].images.length - 1; i >= 0; i-- ) {
-							if ( $.inArray( data.query.pages[page].images[i].title, pushedFiles ) == -1 ) {
-								pushedFiles.push( data.query.pages[page].images[i].title );
-								images.push( data.query.pages[page].images[i].title );
-							}
+						if ( data.query.pages[page].images ) {
+							for ( var i = data.query.pages[page].images.length - 1; i >= 0; i-- ) {
+								if ( $.inArray( data.query.pages[page].images[i].title, pushedFiles ) == -1 ) {
+									pushedFiles.push( data.query.pages[page].images[i].title );
+									images.push( data.query.pages[page].images[i].title );
+								}
+							}							
 						}
 					}
 					
