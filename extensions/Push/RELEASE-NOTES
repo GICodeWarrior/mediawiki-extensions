@@ -5,9 +5,10 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.5 ===
-2010-12-xx
+2010-12-14
 
 * Added support for file-pushing.
+* Improved push status visualization on the tab interface.
 
 === Version 0.4 ===
 2010-12-12
