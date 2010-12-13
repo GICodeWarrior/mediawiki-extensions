@@ -128,6 +128,8 @@ $messages['be-tarask'] = array(
 	'contrib-tracking-continue' => 'Калі Вы не былі аўтаматычна перанакіраваны, націсьніце кнопку, каб завяршыць Ваша ахвяраваньне праз сыстэму PayPal.',
 	'contrib-tracking-redirect' => 'Вы будзеце аўтаматычна перанакіраваныя ў PayPal для сканчэньня працэдуры.',
 	'contrib-tracking-button' => 'Працягваць',
+	'contrib-tracking-item-name-onetime' => 'Аднаразовае ахвяраваньне',
+	'contrib-tracking-item-name-recurring' => 'Паўтараючаяся штомесячнае ахвяраваньне',
 );
 
 /** Bulgarian (Български)
@@ -184,6 +186,8 @@ $messages['bs'] = array(
 	'contrib-tracking-continue' => 'Ako niste automatski preusmjereni, kliknite na dugme da završite Vašu donaciju putem PayPala.',
 	'contrib-tracking-redirect' => 'Bit ćete automatski preusmjereni na PayPal da dovršite vašu donaciju.',
 	'contrib-tracking-button' => 'nastavi',
+	'contrib-tracking-item-name-onetime' => 'Jednokratna donacija',
+	'contrib-tracking-item-name-recurring' => 'Mjesečna ponavljajuća donacija',
 );
 
 /** Catalan (Català)
@@ -441,6 +445,8 @@ $messages['gsw'] = array(
 	'contrib-tracking-continue' => 'Wänn Si nit automatisch wytergleitet wäre, no drucke Si bitte uf „Wyter“ go Ihri Spände iber PayPal abzschließe.',
 	'contrib-tracking-redirect' => 'Du wirsch automatisch zue PayPal wytergleitet go Dyy Spände vervollständige.',
 	'contrib-tracking-button' => 'Wyter',
+	'contrib-tracking-item-name-onetime' => 'Eimoligi Spänd',
+	'contrib-tracking-item-name-recurring' => 'Spänd, wu all Monet soll widerholt wäre',
 );
 
 /** Gujarati (ગુજરાતી)
@@ -889,8 +895,8 @@ $messages['pt'] = array(
 	'contrib-tracking-continue' => 'Se não for redireccionado automaticamente, clique no botão para completar o seu donativo no PayPal.',
 	'contrib-tracking-redirect' => 'Será reencaminhado automaticamente para o Paypal para terminar o donativo.',
 	'contrib-tracking-button' => 'Continuar',
-	'contrib-tracking-item-name-onetime' => 'Doação única',
-	'contrib-tracking-item-name-recurring' => 'Doação mensal recorrente',
+	'contrib-tracking-item-name-onetime' => 'Donativo único',
+	'contrib-tracking-item-name-recurring' => 'Donativo mensal recorrente',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -906,6 +912,8 @@ $messages['pt-br'] = array(
 	'contrib-tracking-continue' => 'Se você não for redirecionado automaticamente, clique no botão para completar a sua doação no PayPal.',
 	'contrib-tracking-redirect' => 'Será reencaminhado automaticamente para o Paypal para terminar a sua doação.',
 	'contrib-tracking-button' => 'Continuar',
+	'contrib-tracking-item-name-onetime' => 'Doação única',
+	'contrib-tracking-item-name-recurring' => 'Doação mensal recorrente',
 );
 
 /** Romanian (Română)

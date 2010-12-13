@@ -2313,6 +2313,7 @@ Zašto je ne biste pokazali?',
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Dafer45
  */
 $messages['sv'] = array(
@@ -2335,9 +2336,18 @@ Varför inte dela med dig av det?',
 	'storyboard-email' => 'Din e-postadress (krävs)',
 	'storyboard-storytitle' => 'En kort, beskrivande titel (krävs)',
 	'storyboard-charsneeded' => '($ 1 fler ((plural: $ 1 | tecken | tecken)) behövs)',
+	'storyboard-submissioncomplete' => 'Inlämning komplett',
+	'storyboard-submissionincomplete' => 'Inlämning misslyckades',
 	'storyboard-alreadyexists' => '"$1" är redan upptagen.',
 	'storyboard-alreadyexistschange' => '"{0}" är redan upptaget, välj en annan titel.',
 	'storyboard-changetitle' => 'Ändra titeln.',
+	'storyboard-notsubmitted' => 'Autentisering misslyckades, ingen berättelse har sparats.',
+	'storyboard-charstomany' => '$1 tecken för mycket!',
+	'storyboard-morecharsneeded' => '$1 fler tecken behövs',
+	'storyboard-charactersleft' => '$1 tecken kvar',
+	'storyboard-createdsuccessfully' => 'Tack för att du delar din berättelse med oss! 
+ Vi kommer att granska den inom kort. 
+ Du kan [$1 Läsa publicerade berättelser].',
 	'storyboard-deleteimage' => 'Radera bild',
 	'storyboard-done' => 'Klar',
 	'storyboard-working' => 'Arbetar...',

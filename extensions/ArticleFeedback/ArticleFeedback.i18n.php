@@ -1051,6 +1051,22 @@ Villicht witt e nomol yyschetze.",
 	'articlefeedback-alpha-survey-submit' => 'Ibertrage',
 	'articlefeedback-alpha-survey-title' => 'Bitte gib Antworte uf e paar Froge',
 	'articlefeedback-alpha-survey-thanks' => 'Dankschen fir Dyy Ruckmäldig.',
+	'articlefeedback-beta-form-switch-label' => 'Yyschetzig abgee',
+	'articlefeedback-beta-form-panel-title' => 'Dyy Yyschetzig',
+	'articlefeedback-beta-form-panel-instructions' => 'Bitte nimm Dir churz Zyt un tue dää Artikel yyschetze.',
+	'articlefeedback-beta-form-panel-notice' => 'Dyyni Yyschetzige verfalle noch eme Wyyli.',
+	'articlefeedback-beta-form-panel-submit' => 'Yyschetzig ibertrage',
+	'articlefeedback-beta-report-switch-label' => 'Ergebniss zeige',
+	'articlefeedback-beta-report-panel-title' => 'Ergebnis vu dr Yyschetzige',
+	'articlefeedback-beta-report-panel-description' => 'Aktuälli Durschnittsergebnis vu dr Yyschetzige',
+	'articlefeedback-beta-field-wellsourced-label' => 'Guet beleit',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Hesch Du dr Yydruck, ass es in däm Artikel gnue Quällenaagabe het un ass mer däne Quälle cha tröue?',
+	'articlefeedback-beta-field-complete-label' => 'Vollständig',
+	'articlefeedback-beta-field-complete-tip' => 'Hesch Du dr Yydruck, ass in däm Artikel aali Aschpäkt ufgfiert sin, wu mit däm Thema zämmehange?',
+	'articlefeedback-beta-field-neutral-label' => 'Neutral',
+	'articlefeedback-beta-field-neutral-tip' => 'Hesch Du dr Yydruck, ass dää Artikel e uusgwogeni Darstellig isch vu allne Aschpäkt, wu mit däm Thema verbunde sin?',
+	'articlefeedback-beta-field-readable-label' => 'Verständli',
+	'articlefeedback-beta-field-readable-tip' => 'Hesch Du dr Yydruck, ass dää Artikel guet strukturiert un gschribe isch?',
 );
 
 /** Hebrew (עברית)
@@ -2510,6 +2526,10 @@ $messages['sv'] = array(
 	'articlefeedback-alpha-survey-submit' => 'Skicka in',
 	'articlefeedback-alpha-survey-title' => 'Svara på några få frågor',
 	'articlefeedback-alpha-survey-thanks' => 'Tack för att du fyllde i enkäten.',
+	'articlefeedback-beta-report-switch-label' => 'Visa resultat',
+	'articlefeedback-beta-field-complete-label' => 'Heltäckande',
+	'articlefeedback-beta-field-neutral-label' => 'Neutral',
+	'articlefeedback-beta-field-readable-label' => 'Läsbar',
 );
 
 /** Tamil (தமிழ்)

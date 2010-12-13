@@ -84,6 +84,21 @@ $messages['arz'] = array(
 	'communityvoice-ratings-error-no-title' => 'صفة العنوان مفقودة فى وسم التقييم.',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'communityvoice' => 'Берләшмә тауышы',
+	'communityvoice-desc' => 'Берләшмәнең эшмәкәрлеге ҡоралдары',
+	'communityvoice-ratings' => 'Баһалар',
+	'communityvoice-ratings-scale-status-sending' => 'Ебәреү...',
+	'communityvoice-ratings-scale-status-error' => 'Ебәреү хатаһы!',
+	'communityvoice-ratings-scale-status-thanks' => 'Тауыш биреүегеҙ өсөн рәхмәт!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|тауыш}} бирелгән)',
+	'communityvoice-ratings-error-no-category' => 'Баһалау билдәһендә категория атрибуты юҡ.',
+	'communityvoice-ratings-error-no-title' => 'Баһалау билдәһендә исем атрибуты юҡ.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
