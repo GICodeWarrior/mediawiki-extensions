@@ -33,8 +33,8 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CategoryMembersOnSidebar',
-	'description' => 'Extension that adds category members on the sidebar',
-	'version' => '1.0',
+	'descriptionmsg' => 'categorymembersonsidebar-desc',
+	'version' => '1.0.1',
 	'author' => 'Bryan Tong Minh',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryMembersOnSidebar',
 );
