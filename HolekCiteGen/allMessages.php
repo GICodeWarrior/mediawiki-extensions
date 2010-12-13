@@ -508,6 +508,15 @@ $messages['ru'] = array(
 	'ts-citegen-base-disabled' => 'Ошибка: база данных %s недоступна',
 );
 
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'ts-citegen-Output-title' => 'Resultat',
+	'ts-citegen-Sources-title' => 'Källor',
+	'ts-citegen-Errors-title' => 'Fel',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

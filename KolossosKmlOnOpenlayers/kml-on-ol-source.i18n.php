@@ -392,6 +392,18 @@ $messages['ru'] = array(
 	'ts-kml-on-ol-map-by' => 'Карта от',
 );
 
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'ts-kml-on-ol-options' => 'Alternativ',
+	'ts-kml-on-ol-languages' => 'Språk',
+	'ts-kml-on-ol-thumbnails' => 'Miniatyrbilder',
+	'ts-kml-on-ol-help' => 'Hjälp',
+	'ts-kml-on-ol-all' => 'Alla',
+	'ts-kml-on-ol-map-by' => 'Karta av',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
