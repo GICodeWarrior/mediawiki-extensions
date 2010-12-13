@@ -10,6 +10,27 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This is an extension to the MediaWiki package and cannot be run standalone.' );
 }
 
+class ThemeDesignerDummySkin extends Skin {
+	
+	function __construct() {
+		parent::__construct();
+		$this->setMembers();
+	}
+	
+	function commonPrintStylesheet() {
+		return false;
+	}
+	
+	function setupUserCss( OutputPage $out ) {
+		
+		foreach ( $out->getExtStyle() as $url ) {
+			$out->addStyle( $url );
+		}
+		
+	}
+	
+}
+
 class SpecialThemeDesigner extends SpecialPage {
 	
 	public function __construct() {
@@ -24,7 +45,7 @@ class SpecialThemeDesigner extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgExtensionAssetsPath;
 		
-		$this->mSkin = Skin::newFromKey( 'simple' );
+		$this->mSkin = new ThemeDesignerDummySkin;
 		
 		$this->setHeaders();
 		
@@ -43,7 +64,9 @@ class SpecialThemeDesigner extends SpecialPage {
 		$wgOut->addInlineScript($varScript);
 		$wgOut->addScriptFile("$wgExtensionAssetsPath/ThemeDesigner/frame/designer.js");
 		
-		$this->printHtmlHead();
+		echo $wgOut->headElement( $this->mSkin );
+		$wgOut->sendCacheControl();
+		$wgOut->disable();
 		
 		// We've collected our html building into a separate file for readability
 		require(dirname(__FILE__).'/frame/layout.php');
@@ -52,55 +75,6 @@ class SpecialThemeDesigner extends SpecialPage {
 		echo Html::closeElement('body');
 		echo Html::closeElement('html');
 		
-	}
-	
-	/**
-	 * Prints a raw html header for our page complete takeover specialpage
-	 * Note that this matches most of the functionality of OutputPage::headElement
-	 * however that method ads extra we can't have in our head so we have to reimplement
-	 */
-	function printHtmlHead() {
-		global $wgOut, $wgHtml5, $wgMimeType, $wgOutputEncoding;
-		echo Html::htmlHeader( array( 'lang' => wfUILang()->getCode() ) );
-		if ( $wgOut->getHTMLTitle() == '' ) {
-			$wgOut->setHTMLTitle( wfMsg( 'pagetitle', $wgOut->getPageTitle() ) );
-		}
-		$openHead = Html::openElement( 'head' );
-		if ( $openHead ) {
-			echo "$openHead\n";
-		}
-		
-		if ( $wgHtml5 ) {
-			# More succinct than <meta http-equiv=Content-Type>, has the
-			# same effect
-			echo Html::element( 'meta', array( 'charset' => $wgOutputEncoding ) ) . "\n";
-		} else {
-			$wgOut->addMeta( 'http:Content-Type', "$wgMimeType; charset=$wgOutputEncoding" );
-		}
-		
-		echo Html::element( 'title', null, $wgOut->getHTMLTitle() ) . "\n";
-		
-		foreach ( $wgOut->mExtStyles as $extstyle ) {
-			$wgOut->styles[$extstyle] = array();
-		}
-		
-		echo implode( "\n", array(
-			$wgOut->getHeadLinks(),
-			$wgOut->buildCssLinks( $this->mSkin ),
-			$wgOut->getHeadItems()
-		) );
-		
-		$closeHead = Html::closeElement( 'head' );
-		if ( $closeHead ) {
-			echo "$closeHead\n";
-		}
-		
-		$bodyAttrs = array();
-		
-		echo Html::openElement( 'body', $bodyAttrs ) . "\n";
-		
-		$wgOut->sendCacheControl();
-		$wgOut->disable();
 	}
 	
 }
