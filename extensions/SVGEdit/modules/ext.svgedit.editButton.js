@@ -4,6 +4,15 @@
  */
 
 $(document).ready(function() {
+	// We probably should check http://www.w3.org/TR/SVG11/feature#SVG-dynamic
+	// but Firefox is missing a couple random subfeatures.
+	//
+	// Chrome, Safari, Opera, and IE 9 preview all return true for it!
+	//
+	if (!document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Shape', '1.1')) {
+		return;
+	}
+
 	var mw = mediaWiki;
 	if (mw.config.get('wgCanonicalNamespace') == 'File'
 		&& mw.config.get('wgAction') == 'view'

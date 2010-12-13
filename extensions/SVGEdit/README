@@ -22,7 +22,6 @@ Known bugs:
 * Actual editor issues belong upstream: http://code.google.com/p/svg-edit/
 * open seems to have some race conditions (sometimes doesn't load the initial file)
 * save-and-close seems to have some race conditions (sometimes shows a 'sure you want to leave?' prompt)
-* doesn't check if your browser supports SVG before offering the edit button
 
 Todo:
 * add an editor trigger on SVG images visible in regular page views
