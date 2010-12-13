@@ -6,14 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.brightbyte.data.Functors;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermListNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class ForwardPopularityDisambiguator<T extends TermReference, C extends WikiWordConcept> extends PopularityDisambiguator<T, C> {
+public class ForwardPopularityDisambiguator<C extends WikiWordConcept> extends PopularityDisambiguator<C> {
 
 	public ForwardPopularityDisambiguator(MeaningFetcher<? extends C> meaningFetcher,
 			int cacheCapacity) {
@@ -26,13 +25,13 @@ public class ForwardPopularityDisambiguator<T extends TermReference, C extends W
 	}
 
 	@Override
-	public <X extends T> Disambiguator.Disambiguation<X, C> disambiguate(List<X> sequence, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
+	public <X extends TermReference> Disambiguator.Disambiguation<X, C> doDisambiguate(List<X> sequence, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
 		PhraseNode<X> root = new TermListNode<X>( sequence, 0 );
-		return disambiguate(root, meanings, context);
+		return doDisambiguate(root, meanings, context);
 	}
 
 	@Override
-	public <X extends T> Disambiguator.Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
+	public <X extends TermReference> Disambiguator.Disambiguation<X, C> doDisambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
 		Map<X, C> disambig = new HashMap<X, C>();
 		List<X> sequence  = new ArrayList<X>();
 		

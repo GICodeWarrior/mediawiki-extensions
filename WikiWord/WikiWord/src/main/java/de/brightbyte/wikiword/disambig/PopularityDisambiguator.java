@@ -13,7 +13,7 @@ import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class PopularityDisambiguator<T extends TermReference, C extends WikiWordConcept> extends AbstractDisambiguator<T, C> {
+public class PopularityDisambiguator<C extends WikiWordConcept> extends AbstractDisambiguator<C> {
 	
 	protected Measure<? super C> popularityMeasure;
 	
@@ -58,18 +58,18 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 		this.weigthCombiner = weigthCombiner;
 	}
 
-	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
+	public <X extends TermReference>Disambiguation<X, C> doDisambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
 		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
 		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	protected <X extends T>Disambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
+	protected <X extends TermReference>Disambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
 		Disambiguation<X, C> best = null;
 		
 		pruneMeaninglessSequences( sequences, meanings );
 		
 		for (List<X> sequence: sequences) {
-			Disambiguation<X, C> r = disambiguate(sequence, meanings, context);
+			Disambiguation<X, C> r = doDisambiguate(sequence, meanings, context);
 			trace(r.toString());
 			if (best == null || best.getScore() < r.getScore()) {
 				best = r;
@@ -80,7 +80,7 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 		return best;
 	}
 	
-	protected <X extends T> C getBestMeaning(X term, Map<X, List<? extends C>> meanings, Measure<? super C> measure) {
+	protected <X extends TermReference> C getBestMeaning(X term, Map<X, List<? extends C>> meanings, Measure<? super C> measure) {
 		List<? extends C> m = meanings.get(term);
 		if (m==null || m.size()==0) return null;
 		
@@ -99,7 +99,7 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 		return c;
 	}
 	
-	public <X extends T>Disambiguation<X, C> disambiguate(List<X> sequence, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
+	public <X extends TermReference>Disambiguation<X, C> doDisambiguate(List<X> sequence, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
 		if (sequence.isEmpty() || meanings.isEmpty()) return new Disambiguator.Disambiguation<X, C>(Collections.<X, C>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 
 		Map<X, C> disambig = new HashMap<X, C>();

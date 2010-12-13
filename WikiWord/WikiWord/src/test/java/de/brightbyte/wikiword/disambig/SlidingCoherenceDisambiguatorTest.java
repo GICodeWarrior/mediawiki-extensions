@@ -25,7 +25,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		
 		List<Term> sequence = terms("UK", "London", "Underground", "Bank");
 
-		Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
+		Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null, null);
 		
 		Map<? extends Term, ? extends LocalConcept> meanings = result.getMeanings();
 		
@@ -48,7 +48,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		disambiguator.setInitialWindow(1);
 		disambiguator.setWindow(3);
 
-		Disambiguation<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
+		Disambiguation<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null, null);
 		
 		List<? extends PhraseOccurance> sequence = result.getSequence();
 		Map<? extends PhraseOccurance, ? extends LocalConcept> meanings = result.getMeanings();
@@ -70,7 +70,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		disambiguator.setInitialWindow(2);
 		disambiguator.setWindow(3);
 
-		result = disambiguator.disambiguate(set.getRootNode(), null);
+		result = disambiguator.disambiguate(set.getRootNode(), null, null);
 		
 		sequence = result.getSequence();
 		meanings = result.getMeanings();
@@ -92,7 +92,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		disambiguator.setInitialWindow(3);
 		disambiguator.setWindow(3);
 
-		result = disambiguator.disambiguate(set.getRootNode(), null);
+		result = disambiguator.disambiguate(set.getRootNode(), null, null);
 		
 		sequence = result.getSequence();
 		meanings = result.getMeanings();

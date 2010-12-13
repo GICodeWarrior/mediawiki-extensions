@@ -560,7 +560,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		terms.add(t2);
 		
 		CoherenceDisambiguation<Term, WikiWordConcept> r = 
-			(CoherenceDisambiguation<Term, WikiWordConcept>) getDisambiguator().disambiguate(terms, null);
+			(CoherenceDisambiguation<Term, WikiWordConcept>) getDisambiguator().disambiguate(terms, null, null);
 
 		WikiWordConcept concept1 = (WikiWordConcept)r.getMeanings().get(t1);
 		WikiWordConcept concept2 = (WikiWordConcept)r.getMeanings().get(t2);
@@ -581,7 +581,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}		
 
 	public void showDisambiguation(PhraseNode<? extends TermReference> root, ConsoleOutput out) throws PersistenceException {
-		Disambiguator.Disambiguation r = getDisambiguator().disambiguate(root, null);
+		Disambiguator.Disambiguation r = getDisambiguator().disambiguate(root, null, null);
 		out.writeInterpretation(r.getMeanings());
 	}		
 

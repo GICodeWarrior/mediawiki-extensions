@@ -18,7 +18,7 @@ import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class SlidingCoherenceDisambiguator<T extends TermReference, C extends WikiWordConcept> extends CoherenceDisambiguator<T, C> {
+public class SlidingCoherenceDisambiguator<C extends WikiWordConcept> extends CoherenceDisambiguator<C> {
 
 	protected int window;
 	protected int initialWindow; 
@@ -34,7 +34,7 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
  		this.initialWindow = initialWindow;
 	}
 
-	public <X extends T>Disambiguation<X, C> evalStep(List<X> baseSequence, Map<X, C> interpretation, PhraseNode<X> node, 
+	public <X extends TermReference>Disambiguation<X, C> evalStep(List<X> baseSequence, Map<X, C> interpretation, PhraseNode<X> node, 
 			Map<X, List<? extends C>> meanings, Collection<? extends C> context, 
 			LabeledMatrix<C, C> similarities, FeatureFetcher<C, Integer> features) throws PersistenceException {
 			X term = node.getTermReference();
@@ -51,7 +51,7 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 		Disambiguation<X, C> r ;
 		
 		if (to-from < 2) {
-			r = popularityDisambiguator.disambiguate(frame, meanings, context);
+			r = popularityDisambiguator.doDisambiguate(frame, meanings, context);
 		} else {
 			Collection<Disambiguator.Interpretation<X, C>> interpretations = getInterpretations(frame,  interpretation, meanings);
 			r = getBestInterpretation(node, meanings, context, interpretations, similarities, features);
@@ -63,7 +63,7 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends T>CoherenceDisambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
+	public <X extends TermReference>CoherenceDisambiguation<X, C> doDisambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
 		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, C>(Collections.<X, C>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<C, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(1), 0.0, "no terms or meanings");
 
 		int sz = meanings.size();
@@ -75,7 +75,7 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 		FeatureFetcher<C, Integer> features = getFeatureCache(meanings, context); 
 
 		if (window < 2 || sz<2) { 
-			Disambiguation<X, C> r = popularityDisambiguator.disambiguate(root, meanings, context);
+			Disambiguation<X, C> r = popularityDisambiguator.doDisambiguate(root, meanings, context);
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 		
@@ -83,7 +83,7 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 		if (context!=null) sz += context.size();
 
 		if (sz<2) { 
-			Disambiguation<X, C> r = popularityDisambiguator.disambiguate(root, meanings, context);
+			Disambiguation<X, C> r = popularityDisambiguator.doDisambiguate(root, meanings, context);
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 
@@ -134,7 +134,7 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 		return getScore(new Disambiguator.Interpretation<X, C>(disambig, sequence), context, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
 	}
 
-	protected <X extends T>Collection<Disambiguator.Interpretation<X, C>> getInterpretations(List<X> frame,  Map<X, ? extends C> known, Map<? extends T, List<? extends C>> meanings) {
+	protected <X extends TermReference>Collection<Disambiguator.Interpretation<X, C>> getInterpretations(List<X> frame,  Map<X, ? extends C> known, Map<X, List<? extends C>> meanings) {
 		//strip out all terms with no known meaning
 		if (meanings.keySet().size() != frame.size()) {
 			List<X> t = new ArrayList<X>(frame.size());

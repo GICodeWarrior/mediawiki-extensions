@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 
 import de.brightbyte.io.Output;
@@ -15,7 +14,7 @@ import de.brightbyte.wikiword.model.TermListNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public abstract class AbstractDisambiguator<T extends TermReference, C extends WikiWordConcept> implements Disambiguator<T, C> {
+public abstract class AbstractDisambiguator<C extends WikiWordConcept> implements Disambiguator<C> {
 
 	private MeaningFetcher<? extends C> meaningFetcher;
 	
@@ -38,13 +37,13 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		this.meaningOverrides = overrideMap;
 	}	
 	
-	protected <X extends T>PhraseNode<X> getLastNode(PhraseNode<X> root, List<X> sequence) {
+	protected <X extends TermReference>PhraseNode<X> getLastNode(PhraseNode<X> root, List<X> sequence) {
 		PhraseNode<X> n = findLastNode(root, sequence);
 		if (n==null) throw new IllegalArgumentException("sequence does not match node structure: "+sequence);
 		return n;
 	}
 	
-	private <X extends T>PhraseNode<X> findLastNode(PhraseNode<X> root, List<X> sequence) {
+	private <X extends TermReference>PhraseNode<X> findLastNode(PhraseNode<X> root, List<X> sequence) {
 		if (root.getTermReference().getTerm().length()>0) {
 			X t = sequence.get(0);
 			if (!t.getTerm().equals(root.getTermReference().getTerm())) return null;
@@ -74,19 +73,19 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		return root;
 	}
 	
-	protected <X extends T>Collection<X> getTerms(PhraseNode<X> root, int depth) {
+	protected <X extends TermReference>Collection<X> getTerms(PhraseNode<X> root, int depth) {
 		PhraseNode.TermSetBuilder<X> builder = new PhraseNode.TermSetBuilder<X>();
 		builder.walk(root, 0, null, depth, Double.MAX_VALUE);
 		return builder.getTerms();
 	}
 	
-	protected <X extends T>Collection<List<X>> getSequences(PhraseNode<X> root, int depth) {
+	protected <X extends TermReference>Collection<List<X>> getSequences(PhraseNode<X> root, int depth) {
 		PhraseNode.SequenceSetBuilder<X> builder = new PhraseNode.SequenceSetBuilder<X>();
 		builder.walk(root, 0, null, depth, Double.MAX_VALUE);
 		return builder.getSequences();
 	}
 	
-	protected <X extends T>void pruneMeaninglessSequences(Collection<List<X>> sequences,  Map<X, List<? extends C>> meanings) {
+	protected <X extends TermReference>void pruneMeaninglessSequences(Collection<List<X>> sequences,  Map<X, List<? extends C>> meanings) {
 		Iterator<List<X>> it = sequences.iterator();
 		outer: while ( it.hasNext() ) {
 			List<X> seq = it.next();
@@ -101,22 +100,27 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		}
 	}
 	
-	protected <X extends T>Map<X, List<? extends C>> getMeanings(PhraseNode<X> root) throws PersistenceException {
+	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(PhraseNode<X> root, Map<X, C> known) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
-		return getMeanings(terms);
+		return getMeanings(terms, known);
 	}
 	
-	protected <X extends T>Map<X, List<? extends C>> getMeanings(Collection<X> terms) throws PersistenceException {
+	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(Collection<X> terms, Map<X, C> known) throws PersistenceException {
 		Collection<X> todo = terms;
 		
-		if (meaningOverrides!=null) {
+		if (meaningOverrides!=null || known!=null) {
 			todo = new ArrayList<X>();
+			
 			for (X t: terms) {
-				if (!meaningOverrides.containsKey(t.getTerm())) todo.add(t);
+				if (  ( meaningOverrides==null || !meaningOverrides.containsKey(t.getTerm()) ) 
+						&& ( known == null || !known.containsKey(t.getTerm()) )   ) {
+					todo.add(t);
+				}
 			}
 		}
 		
-		Map<X, List<? extends C>> meanings = (Map<X, List<? extends C>>)(Object)meaningFetcher.getMeanings(todo); //FIXME: got confused by generics :(
+		//FIXME: got confused by generics :(
+		Map<X, List<? extends C>> meanings = (Map<X, List<? extends C>>)(Object)meaningFetcher.getMeanings(todo); 
 		
 		if (meaningOverrides!=null && todo.size()!=terms.size()) {
 			for (X t: terms) {
@@ -125,22 +129,29 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 			}
 		}
 
+		if (known!=null && todo.size()!=terms.size()) {
+			for (X t: terms) {
+				C c = known.get(t.getTerm());
+				if (c!=null) meanings.put(t, Collections.singletonList(c));
+			}
+		}
+
 		return meanings;
 	}
 	
-	public <X extends T>Disambiguation<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException {
+	public <X extends TermReference>Disambiguation<X, C> disambiguate(List<X> terms, Map<X, C> known, Collection<? extends C> context) throws PersistenceException {
 		PhraseNode<X> root = new TermListNode<X>(terms, 0);
-		Map<X, List<? extends C>> meanings = getMeanings(terms);
-		return disambiguate(root, meanings, context);
+		Map<X, List<? extends C>> meanings = getMeanings(terms, known);
+		return doDisambiguate(root, meanings, context);
 	}
 	
-	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException {
+	public <X extends TermReference>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, C> known, Collection<? extends C> context) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
-		Map<X, List<? extends C>> meanings = getMeanings(terms);
-		return disambiguate(root, meanings, context);
+		Map<X, List<? extends C>> meanings = getMeanings(terms, known);
+		return doDisambiguate(root, meanings, context);
 	}
-	
-	public abstract <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException;
+		
+	public abstract <X extends TermReference>Disambiguation<X, C> doDisambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException;
 
 	public Output getTrace() {
 		return trace;

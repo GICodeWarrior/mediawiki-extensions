@@ -14,7 +14,7 @@ import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public interface Disambiguator<T extends TermReference, C extends WikiWordConcept> {
+public interface Disambiguator<C extends WikiWordConcept> {
 	
 	public static class Interpretation<T extends TermReference, C extends WikiWordConcept> {
 		private final Map<T, C> meanings; 		
@@ -166,8 +166,8 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 
 	public void setTrace(Output trace);
 
-	public <X extends T>Disambiguation<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException;
-	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException;
+	public <X extends TermReference>Disambiguation<X, C> disambiguate(List<X> terms, Map<X, C> known, Collection<? extends C> context) throws PersistenceException;
+	public <X extends TermReference>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, C> known, Collection<? extends C> context) throws PersistenceException;
 
 	public boolean exploresAllSequences();
 

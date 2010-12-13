@@ -29,14 +29,14 @@ public class TermRelatedness<C extends WikiWordConcept> implements Similarity<St
 	}
 		
 	protected Similarity<WikiWordConcept> relatedness;
-	protected Disambiguator<TermReference, C> disambig;
+	protected Disambiguator<C> disambig;
 	private Collection<C> context;
 
-	public TermRelatedness(Disambiguator<TermReference,C> disambig) {
+	public TermRelatedness(Disambiguator<C> disambig) {
 		this(disambig, null, null);
 	}
 	
-	public TermRelatedness(Disambiguator<TermReference, C> disambig, Similarity<WikiWordConcept> relatedness, Collection<C> context) {
+	public TermRelatedness(Disambiguator<C> disambig, Similarity<WikiWordConcept> relatedness, Collection<C> context) {
 		this.relatedness = relatedness;
 		this.disambig = disambig;
 		this.context = context;
@@ -51,7 +51,7 @@ public class TermRelatedness<C extends WikiWordConcept> implements Similarity<St
 	
 	public Relatedness relatedness(String a, String b) {
 		try {
-			Disambiguator.Disambiguation<Term, ? extends WikiWordConcept> r = disambig.<Term>disambiguate(Term.asTerms(a, b), context);
+			Disambiguator.Disambiguation<Term, ? extends WikiWordConcept> r = disambig.<Term>disambiguate(Term.asTerms(a, b), null, context);
 			if (r==null || r.getMeanings().size()!=2) return null;
 			
 			double d;

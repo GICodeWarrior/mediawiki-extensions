@@ -21,12 +21,13 @@ import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.SanityException;
+import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordConcept> extends AbstractDisambiguator<T, C> {
+public class CoherenceDisambiguator<C extends WikiWordConcept> extends AbstractDisambiguator<C> {
 
 	public static class CoherenceDisambiguation<T extends TermReference, C extends WikiWordConcept> extends Disambiguator.Disambiguation<T, C> {
 		protected LabeledVector<Integer> centroid;
@@ -69,7 +70,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 
 	protected Similarity<LabeledVector<Integer>> similarityMeasure;
 	protected Measure<? super C> popularityMeasure;
-	protected PopularityDisambiguator<T, C> popularityDisambiguator;
+	protected PopularityDisambiguator<C> popularityDisambiguator;
 	protected Comparator<? super C> popularityComparator;
 	
 	private Functor.Double popularityNormalizer = new Functor.Double() { //NOTE: must map [0:inf] to [0:1] and grow monotonously
@@ -211,7 +212,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		this.maxMeanings = maxMeanings;
 	}
 
-	protected FeatureFetcher<C, Integer> getFeatureCache(Map<? extends T, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
+	protected <X extends TermReference>FeatureFetcher<C, Integer> getFeatureCache(Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
 		//NOTE: pre-fetch all features in one go
 		List<C> concepts = new ArrayList<C>(meanings.size()*10);
 		for (List<? extends C> m: meanings.values()) {
@@ -227,7 +228,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends T>CoherenceDisambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
+	public <X extends TermReference>CoherenceDisambiguation<X, C> doDisambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
 		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, C>(Collections.<X, C>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<C, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(1), 0.0, "no terms or meanings");
 		
 		LabeledMatrix<C, C> similarities = new MapLabeledMatrix<C, C>(true);
@@ -237,14 +238,14 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		if (context!=null) sz += context.size();
 		
 		if (sz<2) { 
-			Disambiguation<X, C> r = popularityDisambiguator.disambiguate(root, meanings, context);
+			Disambiguation<X, C> r = popularityDisambiguator.doDisambiguate(root, meanings, context);
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 		
 		sz = meanings.size();
 		if (context!=null) sz += context.size();
 		if (sz <2) {
-			Disambiguation<X, C> r = popularityDisambiguator.disambiguate(root, meanings, context);
+			Disambiguation<X, C> r = popularityDisambiguator.doDisambiguate(root, meanings, context);
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 		
@@ -252,14 +253,14 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	protected <X extends T>CoherenceDisambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
+	protected <X extends TermReference>CoherenceDisambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
 		LabeledMatrix<C, C> similarities = new MapLabeledMatrix<C, C>(true);
 		FeatureFetcher<C, Integer> features = getFeatureCache(meanings, context); 
 
 		return disambiguate(sequences, root, meanings, context, similarities, features);
 	}
 	
-	private <X extends T>CoherenceDisambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context, LabeledMatrix<C, C> similarities, FeatureFetcher<C, Integer> features) throws PersistenceException {
+	private <X extends TermReference>CoherenceDisambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context, LabeledMatrix<C, C> similarities, FeatureFetcher<C, Integer> features) throws PersistenceException {
 		
 		pruneMeaninglessSequences( sequences, meanings );
 		
@@ -270,16 +271,16 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return getBestInterpretation(root, meanings, context, interpretations, similarities, features);
 	}
 	
-	protected <X extends T>Map<X, List<? extends C>> getMeanings(Collection<X> terms) throws PersistenceException {
-		Map<X, List<? extends C>> meanings = super.getMeanings(terms);
+	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(Collection<X> terms, Map<X, C> known) throws PersistenceException {
+		Map<X, List<? extends C>> meanings = super.getMeanings(terms, known);
 		pruneMeanings(meanings);
 		return meanings;
 	}
 	
-	protected void pruneMeanings(Map<? extends T, List<? extends C>> meanings) {
+	protected <X extends TermReference>void pruneMeanings(Map<X, List<? extends C>> meanings) {
 		Iterator<?> eit = meanings.entrySet().iterator();
 		while (eit.hasNext()) {
-			Entry<T, List<? extends C>> e = (Entry<T, List<? extends C>>) eit.next(); //XXX: ugly cast. got confused about generics. ugh.
+			Entry<X, List<? extends C>> e = (Entry<X, List<? extends C>>) eit.next(); //XXX: ugly cast. got confused about generics. ugh.
 			List<? extends C> m = e.getValue();
 			if (m==null) continue;
 			
@@ -314,7 +315,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		}
 	}
 
-	protected <X extends T>CoherenceDisambiguation<X, C> getBestInterpretation(PhraseNode<X> root, Map<X, List<? extends C>> meanings, 
+	protected <X extends TermReference>CoherenceDisambiguation<X, C> getBestInterpretation(PhraseNode<X> root, Map<X, List<? extends C>> meanings, 
 			Collection<? extends C> context, Collection<Disambiguator.Interpretation<X, C>> interpretations, 
 			LabeledMatrix<C, C> similarities, FeatureFetcher<C, Integer> features) throws PersistenceException {
 
@@ -349,7 +350,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		if (best==null || bestScore<minScore || Double.isNaN(bestScore)) {
 			trace("best score is not good enough ("+bestScore+"<"+minScore+"), using popularity disambiguator.");
 			
-			Disambiguation<X, C> p = popularityDisambiguator.disambiguate(root, meanings, context);
+			Disambiguation<X, C> p = popularityDisambiguator.doDisambiguate(root, meanings, context);
 			CoherenceDisambiguation<X, C> r = getScore(p.getInterpretation(), context, similarities, features);
 			
 			trace("best of "+interpretations.size()+" interpretations by popularity: "+r);
@@ -362,7 +363,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return best;
 	}
 
-	public <X extends T>Collection<Disambiguator.Interpretation<X, C>> getInterpretations(Collection<List<X>> sequences, Map<X, List<? extends C>> meanings) {
+	public <X extends TermReference>Collection<Disambiguator.Interpretation<X, C>> getInterpretations(Collection<List<X>> sequences, Map<X, List<? extends C>> meanings) {
 		List<Disambiguator.Interpretation<X, C>> interpretations = new ArrayList<Disambiguator.Interpretation<X, C>>();
 		for (List<X> sq: sequences) {
 			if (sq.isEmpty()) continue;
@@ -373,7 +374,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return interpretations;
 	}
 	
-	public <X extends T>Collection<Disambiguator.Interpretation<X, C>> getSequenceInterpretations(List<X> sequence, Map<X, List<? extends C>> meanings) {
+	public <X extends TermReference>Collection<Disambiguator.Interpretation<X, C>> getSequenceInterpretations(List<X> sequence, Map<X, List<? extends C>> meanings) {
 		if (sequence.size()==0) {
 			return Collections.singletonList(new Disambiguator.Interpretation<X, C>(Collections.<X, C>emptyMap(), sequence));
 		}
@@ -573,5 +574,5 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 	public boolean exploresAllSequences() {
 		return true;
 	}
-	
+
 }

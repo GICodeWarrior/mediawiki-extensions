@@ -155,7 +155,7 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		
 		List<Term> sequence = terms("UK", "London", "Underground", "Bank");
 
-		Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
+		Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null, null);
 		
 		Map<? extends Term, ? extends LocalConcept> meanings = result.getMeanings();
 		
@@ -176,7 +176,7 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		disambiguator.setTrace(traceOutput);
 
-		Disambiguation<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
+		Disambiguation<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null, null);
 		
 		List<? extends PhraseOccurance> sequence = result.getSequence();
 		Map<? extends PhraseOccurance, ? extends LocalConcept> meanings = result.getMeanings();
