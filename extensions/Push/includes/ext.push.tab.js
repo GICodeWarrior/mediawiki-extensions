@@ -23,6 +23,11 @@
 		}
 	}
 	
+	var pages;
+	var imageRequestMade = false;
+	var images = false;
+	var imagePushRequests = [];
+	
 	$.each($(".push-button"), function(i,v) {
 		getRemoteArticleInfo( $(v).attr( 'targetid' ), $(v).attr( 'pushtarget' ) );
 	});	
@@ -31,12 +36,12 @@
 		this.disabled = true;
 		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
 		
-		if ( $('#checkIncTemplates:checked').attr('checked') ) {
-			var pages = window.wgPushTemplates;
+		if ( $('#checkIncTemplates').attr('checked') ) {
+			pages = window.wgPushTemplates;
 			pages.unshift( $('#pageName').attr('value') );
 		}
 		else {
-			var pages = [$('#pageName').attr('value')];
+			pages = [$('#pageName').attr('value')];
 		}
 		
 		initiatePush(
@@ -45,6 +50,10 @@
 			$(this).attr( 'pushtarget' ),
 			$(this).attr( 'targetname' )
 		);
+		
+		if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') && !imageRequestMade ) {
+			getIncludedImages();
+		}
 	});
 	
 	$('#push-all-button').click(function() {
@@ -125,13 +134,13 @@
 				}
 				else {
 					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
-					setTimeout( function() {reEnableButton( sender );}, 1000 );
+					setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );
 				}
 			}
 		); 	
 	}
 	
-	function reEnableButton( button ) {
+	function reEnableButton( button, targetUrl, targetName ) {
 		button.innerHTML = mediaWiki.msg( 'push-button-text' );
 		button.disabled = false;
 		
@@ -139,7 +148,11 @@
 		
 		// If there is a "push all" button, make sure to reset it
 		// when all other buttons have been reset.
-		if ( typeof pushAllButton !== "undefined" ) {
+		if ( typeof pushAllButton === "undefined" ) {
+			imagePushRequests.push( { 'sender': button, 'targetUrl': targetUrl, 'targetName': targetName } );
+			startImagesPush();
+		}
+		else {
 			var hasDisabled = false;
 			
 			$.each($(".push-button"), function(i,v) {
@@ -151,8 +164,75 @@
 			if ( !hasDisabled ) {
 				pushAllButton.attr( "disabled", false );
 				pushAllButton.text( mediaWiki.msg( 'push-button-all' ) );
-			}
+				
+				imagePushRequests.push( { 'sender': button, 'targetUrl': targetUrl, 'targetName': targetName } );
+				startImagesPush();
+			}			
 		}
+	}
+	
+	function getIncludedImages() {
+		imageRequestMade = true;
+		
+		$.getJSON(
+			wgScriptPath + '/api.php',
+			{
+				'action': 'query',
+				'prop': 'images',
+				'format': 'json',
+				'titles': pages.join( '|' ), 
+			},
+			function( data ) {
+				if ( data.query ) {
+					images = [];
+					
+					for ( page in data.query.pages ) {
+						for ( var i = data.query.pages[page].images.length - 1; i >= 0; i-- ) {
+							if ( $.inArray( data.query.pages[page].images[i].title, images ) == -1 ) {
+								images.push( data.query.pages[page].images[i].title );
+							}
+						}
+					}
+					
+					startImagesPush();
+				}
+				else {
+					// TODO
+				}
+			}
+		);		
+	}
+	
+	function startImagesPush() {
+		if ( images !== false ) {
+			var req;
+			while ( req = imagePushRequests.pop() ) {
+				initiateImagePush( req.sender, req.targetUrl, req.targetName );
+			}			
+		}
+	}
+	
+	function initiateImagePush( sender, targetUrl, targetName ) {
+		$.getJSON(
+			wgScriptPath + '/api.php',
+			{
+				'action': 'pushimages',
+				'format': 'json',
+				'images': images.join( '|' ), 
+				'targets': targetUrl
+			},
+			function( data ) {
+				if ( data.upload ) {
+					
+				}
+				else if ( data.error ) {
+					// TODO
+				}
+				else {
+					// TODO
+				}
+			}
+		);			
 	}
 	
 	function handleError( sender, targetUrl, error ) {
