@@ -77,6 +77,7 @@ $messages['gsw'] = array(
 	'spm-name' => 'Semantic Project Management',
 	'semanticprojectmanagement-desc' => 'Projäktmanagement-Format fir Semantic MediaWiki inline-Abfroge',
 	'semanticprojectmanagement' => 'Semantisch Projäktmanagement',
+	'right-SPMsetup' => 'Di grundlegende Yystellige vum Semantische Projäktmanagement bearneite',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
