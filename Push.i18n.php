@@ -94,6 +94,12 @@ $messages['qqq'] = array(
  */
 $messages['be-tarask'] = array(
 	'push-desc' => 'Невялікае пашырэньне для распаўсюджваньня зьместу ў іншыя вікі',
+	'right-push' => 'выкарыстаньне распаўсюджваньня',
+	'right-bulkpush' => 'выкарыстаньне групавога распаўсюджваньня',
+	'right-pushadmin' => 'зьмена мэтаў і наладаў распаўсюджваньня',
+	'push-err-captacha' => 'Немагчыма распаўсюдзіць у $1 з-за captcha.',
+	'push-err-captcha-page' => 'Немагчыма распаўсюдзіць старонку $1 на ўсе мэты з-за captcha.',
+	'push-err-authentication' => 'Аўтэнтыфікацыя на $1 не атрымалася. $2',
 	'push-tab-text' => 'Распаўсюдзіць',
 	'push-button-text' => 'Распаўсюдзіць',
 	'push-tab-desc' => 'Гэтая закладка дазваляе Вам распаўсюджваць цяперашнюю вэрсію гэтай старонкі ў іншыя вікі.',
@@ -103,11 +109,19 @@ $messages['be-tarask'] = array(
 	'push-tab-title' => 'Распаўсюджваньне $1',
 	'push-targets' => 'Мэты распаўсюджваньня',
 	'push-add-target' => 'Дадаць мэту',
-	'push-import-revision-message' => 'Імпарт з $1 ад $2. $3',
+	'push-import-revision-message' => 'Распаўсюджаная з $1 $2. $3',
 	'push-import-revision-comment' => 'Апошні камэнтар: $1',
 	'push-tab-no-targets' => 'Няма мэтаў для распаўсюджаньня. Калі ласка, дадайце некаторыя ў Ваш файл LocalSettings.php.',
 	'push-tab-push-to' => 'Распаўсюдзіць у $1',
 	'push-remote-pages' => 'Аддаленыя старонкі',
+);
+
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'push-tab-text' => 'Bountañ',
+	'push-button-text' => 'Bountañ',
 );
 
 /** German (Deutsch)
@@ -125,6 +139,7 @@ $messages['de'] = array(
 	'push-button-text' => 'Transferieren',
 	'push-tab-desc' => 'Dieser Reiter ermöglicht den Transfer des aktuellen Seiteninhalts in ein oder mehrere andere Wikis.',
 	'push-button-pushing' => 'Transferiere',
+	'push-button-pushing-files' => 'Transferiere Dateien',
 	'push-button-completed' => 'Transfer abgeschlossen',
 	'push-button-failed' => 'Transfer fehlgeschlagen',
 	'push-tab-title' => 'Transferiere $1',
@@ -145,6 +160,8 @@ $messages['de'] = array(
 	'push-tab-inc-templates' => 'Vorlagen einbeziehen',
 	'push-tab-used-templates' => '({{PLURAL:$2|Vorlage|Vorlagen}} eingesetzt: $1)',
 	'push-tab-no-used-templates' => '(Auf dieser Seite werden keine Vorlagen eingesetzt.)',
+	'push-tab-inc-files' => 'Dateien einbeziehen',
+	'push-tab-err-fileinfo' => 'Es konnte nicht ermittelt werden, welche Dateien auf dieser Seite eingebunden sind. Es wurde keine transferiert.',
 	'special-push' => 'Seiten transferieren',
 	'push-special-description' => 'Diese Spezialseite ermöglicht es den Inhalt einer oder mehrerer Seiten zu einem oder mehreren anderen Wikis zu transferieren.
 
@@ -153,13 +170,18 @@ Um Seiten zu transferieren, sind deren Titel im Eingabefeld unten anzugeben (ein
 	'push-special-button-text' => 'Seiten transferieren',
 	'push-special-target-is' => 'Zielwiki: $1',
 	'push-special-select-targets' => 'Zielwikis:',
-	'push-special-item-pushing' => '$1: Transferiere',
+	'push-special-item-pushing' => '$1: Transferiere …',
 	'push-special-item-completed' => '$1: Transfer abgeschlossen',
 	'push-special-item-failed' => '$1: Transfer fehlgeschlagen. $2',
 	'push-special-push-done' => 'Transfer abgeschlossen',
 	'push-special-err-token-failed' => 'Auf dem Zielwiki konnte der Bearbeitungstoken nicht abgerufen werden.',
 	'push-special-err-pageget-failed' => 'Auf diesem Wiki konnte der Seiteninhalt nicht abgerufen werden.',
 	'push-special-err-push-failed' => 'Das Zielwiki hat die zu transferierende Seite zurückgewiesen.',
+	'push-special-inc-files' => 'Dateien einbeziehen',
+	'push-special-err-imginfo-failed' => 'Es konnte nicht ermittelt werden, ob auch Dateien transferiert werden müssen.',
+	'push-special-obtaining-fileinfo' => '$1: Dateiinformationen werden abrufen …',
+	'push-special-pushing-file' => '$1: Transferiere Datei $2 …',
+	'push-special-return' => 'Weitere Seiten transferieren',
 );
 
 /** Finnish (Suomi)
@@ -167,6 +189,23 @@ Um Seiten zu transferieren, sind deren Titel im Eingabefeld unten anzugeben (ein
  */
 $messages['fi'] = array(
 	'push-add-target' => 'Lisää kohde',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'push-add-target' => 'Cil přidać',
+	'push-import-revision-comment' => 'Posledni komentar: $1',
+	'push-remote-pages' => 'Zdalene strony',
+	'push-remote-page-link' => '$1 w $2',
+	'push-remote-page-link-full' => 'Stronu $1 na $2 sej wobhladać',
+	'push-targets-total' => '{{PLURAL:$1|Je $1 strona|Stej $1 stronje|Su $1 strony|Je $1 stronow}}.',
+	'push-tab-inc-templates' => 'Předłohi zapřijeć',
+	'push-tab-used-templates' => '({{PLURAL:$2|Wužita předłoha|Wužitej předłoze|Wužite předłohi|Wužite předłohi}}: $1)',
+	'push-tab-no-used-templates' => '(Na tutej stronje so žane přełohi wužiwaja.)',
+	'push-special-target-is' => 'Cilowy wiki: $1',
+	'push-special-select-targets' => 'Cilowe wikije:',
 );
 
 /** Interlingua (Interlingua)
@@ -178,6 +217,8 @@ $messages['ia'] = array(
 	'right-bulkpush' => 'Autorisation a usar le functionalitate de transferimento in massa (i.e. Special:Push).',
 	'right-pushadmin' => 'Autorisation a modificar destinationes e configurationes de transferimento.',
 	'push-err-captacha' => 'Non poteva transferer a $1 a causa de un problema con le "captcha".',
+	'push-err-captcha-page' => 'Non poteva transferer le pagina $1 a tote le destinationes proque un "captcha" esseva incontrate.',
+	'push-err-authentication' => 'Authentication a $1 ha fallite. $2',
 	'push-tab-text' => 'Transferer',
 	'push-button-text' => 'Transferer',
 	'push-tab-desc' => 'Iste scheda permitte transferer le version actual de iste pagina a un o plus altere wikis.',
@@ -187,7 +228,7 @@ $messages['ia'] = array(
 	'push-tab-title' => 'Transfere $1',
 	'push-targets' => 'Destinationes de transferimento',
 	'push-add-target' => 'Adder destination',
-	'push-import-revision-message' => 'Importation ex $1 per $2. $3',
+	'push-import-revision-message' => 'Transferite ex $1 per $2. $3',
 	'push-import-revision-comment' => 'Ultime commento: $1',
 	'push-tab-no-targets' => 'Il non ha destinationes de transferimento. Per favor adde alcunes in tu file LocalSettings.php.',
 	'push-tab-push-to' => 'Transferer a $1',
@@ -198,6 +239,10 @@ $messages['ia'] = array(
 	'push-button-all' => 'Transferer totes',
 	'push-tab-last-edit' => 'Ultime modification per $1 le $2 a $3.',
 	'push-tab-not-created' => 'Iste pagina non existe ancora.',
+	'push-tab-push-options' => 'Optiones de transferimento:',
+	'push-tab-inc-templates' => 'Includer patronos',
+	'push-tab-used-templates' => '({{PLURAL:$2|Patrono|Patronos}} usate: $1)',
+	'push-tab-no-used-templates' => '(Nulle patrono es usate in iste pagina.)',
 	'special-push' => 'Transferer paginas',
 	'push-special-description' => 'Iste pagina permitte transferer le contento de un o plus paginas a un o plus wikis MediaWiki.
 
@@ -224,6 +269,8 @@ $messages['id'] = array(
 	'right-bulkpush' => 'Otorisasi untuk menggunakan fungsi dorong massal (Special:Push).',
 	'right-pushadmin' => 'Otorisasi untuk memodifikasi target dan pengaturan dorong.',
 	'push-err-captacha' => 'Tidak dapat mendorong ke $1 karena captcha.',
+	'push-err-captcha-page' => 'Tidak dapat mendorong halaman $1 ke semua target karena captcha.',
+	'push-err-authentication' => 'Otentikasi pada $1 gagal. $2',
 	'push-tab-text' => 'Dorong',
 	'push-button-text' => 'Dorong',
 	'push-tab-desc' => 'Tab ini mengizinkan Anda untuk mendorong revisi terbaru halaman ini ke satu atau lebih wiki lain.',
@@ -233,7 +280,7 @@ $messages['id'] = array(
 	'push-tab-title' => 'Mendorong $1',
 	'push-targets' => 'Target pendorongan',
 	'push-add-target' => 'Tambahkan target',
-	'push-import-revision-message' => 'Impor dari $1 oleh $2. $3',
+	'push-import-revision-message' => 'Didorong dari $1 oleh $2. $3',
 	'push-import-revision-comment' => 'Komentar terakhir: $1',
 	'push-tab-no-targets' => 'Tidak ada target untuk pendorongan. Harap tambahkan beberapa berkas ke LocalSettings.php Anda.',
 	'push-tab-push-to' => 'Dorong ke $1',
@@ -244,6 +291,10 @@ $messages['id'] = array(
 	'push-button-all' => 'Dorong semua',
 	'push-tab-last-edit' => 'Suntingan terakhir oleh $1 pada $2 $3.',
 	'push-tab-not-created' => 'Halaman ini belum ada.',
+	'push-tab-push-options' => 'Pilihan dorongan:',
+	'push-tab-inc-templates' => 'Sertakan templat',
+	'push-tab-used-templates' => '({{PLURAL:$2|Templat|Templat}} yang digunakan: $1)',
+	'push-tab-no-used-templates' => '(Tidak ada templat yang digunakan pada halaman ini.)',
 	'special-push' => 'Dorong halaman',
 	'push-special-description' => 'Halaman ini memungkinkan Anda untuk mendorong satu atau lebih halaman ke satu atau lebih wiki MediaWiki.
 
@@ -293,16 +344,19 @@ $messages['mk'] = array(
 	'right-bulkpush' => 'Потврда на сметка за да работи функцијата за групно пренесување (т.е. Special:Push).',
 	'right-pushadmin' => 'Потврда на сметка за измена на одредниците и поставките за пренесување.',
 	'push-err-captacha' => 'Не можев да го пренесам $1 поради Captcha.',
+	'push-err-captcha-page' => 'Не можев да ја пренесам страницата $1 на сите одредници заради Captcha.',
+	'push-err-authentication' => 'Потврдувањето на $1 не успеа. $2',
 	'push-tab-text' => 'Пренеси',
 	'push-button-text' => 'Пренеси',
 	'push-tab-desc' => 'Ова јазиче ви овозможува да ја пренесете тековната ревизија на страницава на едно или повеќе викија',
 	'push-button-pushing' => 'Пренесувам',
+	'push-button-pushing-files' => 'Пренесувам податотеки',
 	'push-button-completed' => 'Преносот заврши',
 	'push-button-failed' => 'Преносот не успеа',
 	'push-tab-title' => 'Пренесување на $1',
 	'push-targets' => 'Одредници за преносот',
 	'push-add-target' => 'Додај одредница',
-	'push-import-revision-message' => 'Увоз од $1. Увозник: $2. $3',
+	'push-import-revision-message' => 'Пренесено од $1. Пренел: $2. $3',
 	'push-import-revision-comment' => 'Последен коментар: $1',
 	'push-tab-no-targets' => 'Нема одредници во кои би се извршил преносот. Додајте места во вашата податотека LocalSettings.php.',
 	'push-tab-push-to' => 'Пренеси во $1',
@@ -313,6 +367,11 @@ $messages['mk'] = array(
 	'push-button-all' => 'Пренеси сè',
 	'push-tab-last-edit' => 'Последна измена од $1 на $2 во $3 ч.',
 	'push-tab-not-created' => 'Оваа страница сè уште не постои.',
+	'push-tab-push-options' => 'Поставки за преносот:',
+	'push-tab-inc-templates' => 'Вклучи шаблони',
+	'push-tab-used-templates' => '({{PLURAL:$2|Шаблон|Шаблони}} во употреба: $1)',
+	'push-tab-no-used-templates' => '(На страницава не се користат шаблони.)',
+	'push-tab-inc-files' => 'Вклучи податотеки',
 	'special-push' => 'Пренесување страници',
 	'push-special-description' => 'Оваа страница ви овозможува да пренесете содржини од една или повеќе страници од едно вики во едно или повеќе викија што работат на МедијаВики.
 
@@ -328,6 +387,60 @@ $messages['mk'] = array(
 	'push-special-err-token-failed' => 'Не можев да го добијам жетонот на уредувањето на целното вики.',
 	'push-special-err-pageget-failed' => 'Не можев да ја добијам содржината на локалната страница.',
 	'push-special-err-push-failed' => 'Целното вики ја одби пренесената страница.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'push-desc' => "Lichtgewichtuitbreiding om inhoud naar andere wiki's te sturen",
+	'right-push' => "Mag inhoud naar andere wiki's versturen.",
+	'right-bulkpush' => "Mag en masse inhoud naar andere wiki's versturen.",
+	'right-pushadmin' => "Mag doelwiki's en instellingen voor het versturen van inhoud aanpassen.",
+	'push-err-captacha' => 'Het was niet mogelijk inhoud te verzenden naar $1 omdat de andere wiki een captchaoplossing heeft gevraagd.',
+	'push-err-captcha-page' => "Het was niet mogelijk de pagina $1 naar alle doelwiki's te verzenden omdat er om een captchaoplossing is gevraagd.",
+	'push-err-authentication' => 'Het aanmelden bij $1 is mislukt. $2',
+	'push-tab-text' => 'Verzenden',
+	'push-button-text' => 'Verzenden',
+	'push-tab-desc' => "Via dit tabblad kunt u de inhoud van de huidige versie van deze pagina naar een of meer andere wiki's verzenden.",
+	'push-button-pushing' => 'Bezig met verzenden',
+	'push-button-completed' => 'Het verzenden is voltooid',
+	'push-button-failed' => 'Het verzenden is mislukt',
+	'push-tab-title' => 'Bezig met het verzenden van $1',
+	'push-targets' => "Doelwiki's",
+	'push-add-target' => 'Doelwiki toevoegen',
+	'push-import-revision-message' => 'Verzonden vanuit $1 door $2. $3',
+	'push-import-revision-comment' => 'Laatste opmerking: $1',
+	'push-tab-no-targets' => "Er zijn geen beschikbare doelwiki's. Voeg deze eerst toe aan uw LocalSettings.php-bestand.",
+	'push-tab-push-to' => 'Verzenden naar $1',
+	'push-remote-pages' => "Pagina's in andere wiki's",
+	'push-remote-page-link' => '$1 op $2',
+	'push-remote-page-link-full' => '$1 op $2 bekijken',
+	'push-targets-total' => "Er {{PLURAL:$1|is één doelwiki|zijn $1 doelwiki's}}.",
+	'push-button-all' => 'Alles verzenden',
+	'push-tab-last-edit' => 'Laatste bewerking door $1 op $2 om $3.',
+	'push-tab-not-created' => 'Deze pagina bestaat nog niet.',
+	'push-tab-push-options' => 'Verzendinstellingen:',
+	'push-tab-inc-templates' => 'Sjablonen ook verzenden',
+	'push-tab-used-templates' => '{{PLURAL:$2|Gebruikt sjabloon|Gebruikte sjablonen}}: $1',
+	'push-tab-no-used-templates' => 'Er worden geen sjablonen gebruikt op deze pagina.',
+	'special-push' => "Pagina's verzenden",
+	'push-special-description' => "Via deze pagina kunt u de inhoud van een of meer pagina's naar een of meer MediaWiki-wiki's verzenden.
+
+Voer paginanamen in het onderstaande invoerveld in om pagina's te kunnen verzenden.
+Voer iedere paginanaam in op een nieuwe regel en klik op \"Alles verzenden\".
+Het verzenden kan enige tijd kosten.",
+	'push-special-pushing-desc' => "Bezig met het verzenden van {{PLURAL:$2|één pagina|$2 pagina's}} naar $1...",
+	'push-special-button-text' => "Pagina's verzenden",
+	'push-special-target-is' => 'Doelwiki: $1',
+	'push-special-select-targets' => "Doelwiki's:",
+	'push-special-item-pushing' => '$1: bezig met verzenden',
+	'push-special-item-completed' => '$1: het verzenden is voltooid',
+	'push-special-item-failed' => '$1: het verzenden is mislukt: $2',
+	'push-special-push-done' => 'Het verzenden is afgerond',
+	'push-special-err-token-failed' => 'Het was niet mogelijk een bewerkingstoken te verkrijgen van de doelwiki.',
+	'push-special-err-pageget-failed' => 'Het was niet mogelijk de inhoud van de lokale pagina te verkrijgen.',
+	'push-special-err-push-failed' => 'De doelwiki heeft de verzonden pagina niet geaccepteerd.',
 );
 
 /** Russian (Русский)
