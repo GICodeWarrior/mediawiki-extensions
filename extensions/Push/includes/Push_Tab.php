@@ -244,7 +244,14 @@ final class PushTab {
 						'id' => 'targetinfo' . $targetId,
 						'style' => 'display:none'
 					)
-				)
+				) .
+				Html::element(
+					'div',
+					array(
+						'id' => 'targeterrors' . $targetId,
+						'style' => 'display:none; color:darkred'
+					)
+				)				
 			) .	
 			Html::rawElement(
 				'td',

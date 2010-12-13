@@ -36,6 +36,9 @@
 		this.disabled = true;
 		this.innerHTML = mediaWiki.msg( 'push-button-pushing' );
 		
+		var errorDiv = $( '#targeterrors' + $(this).attr( 'targetid' ) );
+		errorDiv.fadeOut( 'fast' );			
+		
 		if ( $('#checkIncTemplates').attr('checked') ) {
 			pages = window.wgPushTemplates;
 			pages.unshift( $('#pageName').attr('value') );
@@ -133,42 +136,22 @@
 					handleError( sender, targetUrl, { info: mediaWiki.msg( 'push-err-captacha', targetName ) } );
 				}
 				else {
-					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
-					setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );
+					if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
+						setButtonToImgPush( sender, targetUrl, targetName );
+					}
+					else {
+						sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
+						setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );
+					}
 				}
 			}
 		); 	
 	}
 	
-	function reEnableButton( button, targetUrl, targetName ) {
-		button.innerHTML = mediaWiki.msg( 'push-button-text' );
-		button.disabled = false;
-		
-		var pushAllButton = $('#push-all-button');
-		
-		// If there is a "push all" button, make sure to reset it
-		// when all other buttons have been reset.
-		if ( typeof pushAllButton === "undefined" ) {
-			imagePushRequests.push( { 'sender': button, 'targetUrl': targetUrl, 'targetName': targetName } );
-			startImagesPush();
-		}
-		else {
-			var hasDisabled = false;
-			
-			$.each($(".push-button"), function(i,v) {
-				if ( v.disabled ) {
-					hasDisabled = true;
-				}
-			});
-			
-			if ( !hasDisabled ) {
-				pushAllButton.attr( "disabled", false );
-				pushAllButton.text( mediaWiki.msg( 'push-button-all' ) );
-				
-				imagePushRequests.push( { 'sender': button, 'targetUrl': targetUrl, 'targetName': targetName } );
-				startImagesPush();
-			}			
-		}
+	function setButtonToImgPush( button, targetUrl, targetName ) {
+		button.innerHTML = mediaWiki.msg( 'push-button-pushing-files' );
+		imagePushRequests.push( { 'sender': button, 'targetUrl': targetUrl, 'targetName': targetName } );
+		startImagesPush();			
 	}
 	
 	function getIncludedImages() {
@@ -222,23 +205,61 @@
 				'targets': targetUrl
 			},
 			function( data ) {
-				if ( data.upload ) {
-					
+				var fail = false;
+				
+				for ( i in data.upload ) {
+					if ( data.error ) {
+						handleError( sender, targetUrl, data.error );
+						fail = true;
+						break;
+					}
+					else if ( !data.upload ) {
+						handleError( sender, targetUrl, { info: 'Unknown error' } ); // TODO
+						fail = true;
+						break;
+					}		
 				}
-				else if ( data.error ) {
-					// TODO
-				}
-				else {
-					// TODO
+				
+				if ( !fail ) {
+					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
+					setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );
 				}
 			}
 		);			
 	}
 	
+	function reEnableButton( button, targetUrl, targetName ) {
+		button.innerHTML = mediaWiki.msg( 'push-button-text' );
+		button.disabled = false;
+		
+		var pushAllButton = $('#push-all-button');
+		
+		// If there is a "push all" button, make sure to reset it
+		// when all other buttons have been reset.
+		if ( typeof pushAllButton !== "undefined" ) {
+			var hasDisabled = false;
+			
+			$.each($(".push-button"), function(i,v) {
+				if ( v.disabled ) {
+					hasDisabled = true;
+				}
+			});
+			
+			if ( !hasDisabled ) {
+				pushAllButton.attr( "disabled", false );
+				pushAllButton.text( mediaWiki.msg( 'push-button-all' ) );
+			}			
+		}
+	}	
+	
 	function handleError( sender, targetUrl, error ) {
-		alert( error.info );
+		var errorDiv = $( '#targeterrors' + $(sender).attr( 'targetid' ) );
+
+		errorDiv.text( error.info );
+		errorDiv.fadeIn( 'slow' );			
+		
 		sender.innerHTML = mediaWiki.msg( 'push-button-failed' );	
-		setTimeout( function() {reEnableButton( sender );}, 3000 );
+		setTimeout( function() {reEnableButton( sender );}, 2500 );
 	}
 	
 } ); })(jQuery);
