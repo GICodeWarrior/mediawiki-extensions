@@ -24,12 +24,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $egPushTargets = array();
 
 # Push rights.
-$wgGroupPermissions['*']['push'] = true;
+//$wgGroupPermissions['*']['push'] = true;
+$wgGroupPermissions['autoconfirmed']['push'] = true;
+$wgGroupPermissions['sysop']['push'] = true;
 $wgGroupPermissions['autoconfirmed']['bulkpush'] = true;
 $wgGroupPermissions['sysop']['bulkpush'] = true;
-$wgGroupPermissions['sysop']['pushadmin'] = true;
 $wgGroupPermissions['autoconfirmed']['filepush'] = true;
 $wgGroupPermissions['sysop']['filepush'] = true;
+// $wgGroupPermissions['sysop']['pushadmin'] = true;
 
 # Show the push action as a tab (if not, it's displayed in the actions dropdown).
 # This only works for skins with an actions dropdown. For others push will always appear as a tab.
