@@ -17,7 +17,9 @@ class SVGEditHooks {
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
 		$title = $out->getTitle();
-		if( $title && $title->getNamespace() == NS_FILE ) {
+		if( $title && $title->getNamespace() == NS_FILE &&
+			$title->userCan( 'edit' ) && $title->userCan( 'upload' ) ) {
+
 			$out->addModules('ext.svgedit.editButton');
 		}
 		return true;
