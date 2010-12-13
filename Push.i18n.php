@@ -30,6 +30,7 @@ $messages['en'] = array(
 	'push-button-text' => 'Push',
 	'push-tab-desc' => 'This tab allows you to push the current revision of this page to one or more other wikis.',
 	'push-button-pushing' => 'Pushing',
+	'push-button-pushing-files' => 'Pushing files',
 	'push-button-completed' => 'Push completed',
 	'push-button-failed' => 'Push failed',
 	'push-tab-title' => 'Pushing $1',
