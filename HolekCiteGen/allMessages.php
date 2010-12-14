@@ -319,7 +319,10 @@ $messages['id'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'ts-citegen-Send' => 'Generéieren',
+	'ts-citegen-Option-append-author-link' => "Wikilinken op den Auteur an d'Schabloun derbäisetzen",
 	'ts-citegen-Output-title' => 'Resultat',
+	'ts-citegen-Skin-skins' => 'Skins/Layout',
 	'ts-citegen-Template-lang' => 'Sprooch vun der Schabloun',
 	'ts-citegen-Sources-title' => 'Quellen',
 	'ts-citegen-Other-languages' => 'Aner Sproochen',
@@ -437,18 +440,20 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
-	'ts-citegen-Title' => 'Gerador de predefinição de citação',
+	'ts-citegen-Title' => 'Gerador de predefinições de citação',
 	'ts-citegen-Send' => 'Gerar',
-	'ts-citegen-Input-text' => 'Este é um gerador de predefinição de citação. Usando-o, você pode preencher rapidamente as predefinições de citação nas várias edições linguísticas da Wikipédia. Por favor, preencha os dados (%s) nos campos abaixo, e o script tentará completar as predefinições. Lembre-se de que não importa em que campo você coloca os dados de entrada. O script irá corresponder automaticamente a predefinição correta aos dados fornecidos.',
+	'ts-citegen-Input-title' => 'Entrada',
+	'ts-citegen-Input-text' => 'Este é um gerador de predefinições de citação. Usando-o, pode preencher rapidamente as predefinições de citação nas várias edições linguísticas da Wikipédia. Por favor, preencha os dados (%s) nos campos abaixo, e o script tentará completar as predefinições. Lembre-se de que não importa em que campo coloca os dados de entrada. O script fará corresponder automaticamente a predefinição correcta aos dados fornecidos.',
 	'ts-citegen-Option-append-author-link' => 'Adicionar os links wiki do autor à predefinição',
 	'ts-citegen-Option-append-newlines' => 'Acrescentar novas linhas após cada parâmetro.',
 	'ts-citegen-Option-add-references' => 'Adicionar etiquetas <ref> em torno das predefinições de citação',
 	'ts-citegen-Option-add-list' => 'Criar uma lista wiki de predefinições de citação',
 	'ts-citegen-Output-title' => 'Resultado',
-	'ts-citegen-Output-select-disclaimer' => 'Escolher uma língua para a predefinição não garante que a predefinição específica esteja disponível na sua língua. Este campo lista as línguas disponíveis de para todas as predefinições suportadas, ou seja, pode listar "francês" mesmo que apenas {{citar livro}} seja suportado nessa língua.',
+	'ts-citegen-Output-select-disclaimer' => 'Escolher uma língua para a predefinição não garante que a predefinição específica esteja disponível na sua língua. Este campo lista as línguas disponíveis de todas as predefinições suportadas, ou seja, ele pode listar "francês" mesmo que apenas {{citar livro}} seja suportado nessa língua.',
 	'ts-citegen-Wrong-input' => '%s: não identificado como entrada correcta.',
 	'ts-citegen-Parsers' => 'Analisadores',
 	'ts-citegen-Skins' => 'Resultado',
@@ -460,6 +465,14 @@ $messages['pt'] = array(
 	'ts-citegen-Sidebar-title' => 'Gerador de citação',
 	'ts-citegen-Sidebar-add-Firefox' => 'Adicionar à barra lateral',
 	'ts-citegen-Sidebar-add-Opera' => 'Adicionar ao Hotlist',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Adicionar ao Fixador de Páginas',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => "Depois da página ter sido carregada, abra o Fixador de Páginas, clique 'Adicionar' e use o botão Preferidos do Fixador de Páginas para armazenar a página como uma Preferida.",
+	'ts-citegen-Tools' => 'Ferramentas',
+	'ts-citegen-Other-languages' => 'Outras línguas',
+	'ts-citegen-Save-it' => 'Consulta actual',
+	'ts-citegen-Errors-title' => 'Erros',
+	'ts-citegen-Unavailable-SQL' => 'Erro: A base de dados Toolserver não está disponível. O MySQL devolveu o erro: %s',
+	'ts-citegen-base-disabled' => 'Erro: A base de dados %s não está disponível',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
