@@ -100,6 +100,8 @@
 						var message = mediaWiki.msg( 'push-tab-not-created' );
 					}
 					else {
+						$( '#targetlink' + targetId ).attr( {'class': ''} );
+						
 						var revision = data.query.pages[first].revisions[0];
 						var dateTime = revision.timestamp.split( 'T' );
 
