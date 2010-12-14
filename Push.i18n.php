@@ -81,6 +81,7 @@ To push pages, enter the titles in the text box below, one title per line and hi
 /** Message documentation (Message documentation)
  * @author Jeroen De Dauw
  * @author Nike
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'push-err-authentication' => '$1: wiki name, $2: optional detailed error message',
@@ -104,16 +105,18 @@ $messages['be-tarask'] = array(
 	'push-button-text' => 'Распаўсюдзіць',
 	'push-tab-desc' => 'Гэтая закладка дазваляе Вам распаўсюджваць цяперашнюю вэрсію гэтай старонкі ў іншыя вікі.',
 	'push-button-pushing' => 'Распаўсюджваньне',
+	'push-button-pushing-files' => 'Распаўсюдзіць файлы',
 	'push-button-completed' => 'Распаўсюджваньне скончанае',
 	'push-button-failed' => 'Памылка распаўсюджваньня',
 	'push-tab-title' => 'Распаўсюджваньне $1',
 	'push-targets' => 'Мэты распаўсюджваньня',
 	'push-add-target' => 'Дадаць мэту',
-	'push-import-revision-message' => 'Распаўсюджаная з $1 $2. $3',
-	'push-import-revision-comment' => 'Апошні камэнтар: $1',
+	'push-import-revision-message' => 'Распаўсюджаная з $1 $2.',
 	'push-tab-no-targets' => 'Няма мэтаў для распаўсюджаньня. Калі ласка, дадайце некаторыя ў Ваш файл LocalSettings.php.',
 	'push-tab-push-to' => 'Распаўсюдзіць у $1',
 	'push-remote-pages' => 'Аддаленыя старонкі',
+	'push-remote-page-link' => '$1 на $2',
+	'push-remote-page-link-full' => 'Паказаць $1 на $2',
 );
 
 /** Breton (Brezhoneg)
@@ -145,8 +148,7 @@ $messages['de'] = array(
 	'push-tab-title' => 'Transferiere $1',
 	'push-targets' => 'Transferziele',
 	'push-add-target' => 'Transferziel hinzufügen',
-	'push-import-revision-message' => 'Transferiert von $1 durch Benutzer $2. $3',
-	'push-import-revision-comment' => 'Letzter Kommentar: $1',
+	'push-import-revision-message' => 'Transferiert von $1 durch Benutzer $2.',
 	'push-tab-no-targets' => 'Es sind keine Transferziele vorhanden. Es müssen welche in der Datei LocalSettings.php definiert werden.',
 	'push-tab-push-to' => 'Transferiere nach $1',
 	'push-remote-pages' => 'Entfernte Seiten',
@@ -228,8 +230,7 @@ $messages['ia'] = array(
 	'push-tab-title' => 'Transfere $1',
 	'push-targets' => 'Destinationes de transferimento',
 	'push-add-target' => 'Adder destination',
-	'push-import-revision-message' => 'Transferite ex $1 per $2. $3',
-	'push-import-revision-comment' => 'Ultime commento: $1',
+	'push-import-revision-message' => 'Transferite ex $1 per $2.',
 	'push-tab-no-targets' => 'Il non ha destinationes de transferimento. Per favor adde alcunes in tu file LocalSettings.php.',
 	'push-tab-push-to' => 'Transferer a $1',
 	'push-remote-pages' => 'Paginas remote',
@@ -275,13 +276,13 @@ $messages['id'] = array(
 	'push-button-text' => 'Dorong',
 	'push-tab-desc' => 'Tab ini mengizinkan Anda untuk mendorong revisi terbaru halaman ini ke satu atau lebih wiki lain.',
 	'push-button-pushing' => 'Mendorong',
+	'push-button-pushing-files' => 'Mendorong berkas',
 	'push-button-completed' => 'Pendorongan selesai',
 	'push-button-failed' => 'Pendorongan gagal',
 	'push-tab-title' => 'Mendorong $1',
 	'push-targets' => 'Target pendorongan',
 	'push-add-target' => 'Tambahkan target',
-	'push-import-revision-message' => 'Didorong dari $1 oleh $2. $3',
-	'push-import-revision-comment' => 'Komentar terakhir: $1',
+	'push-import-revision-message' => 'Didorong dari $1 oleh $2.',
 	'push-tab-no-targets' => 'Tidak ada target untuk pendorongan. Harap tambahkan beberapa berkas ke LocalSettings.php Anda.',
 	'push-tab-push-to' => 'Dorong ke $1',
 	'push-remote-pages' => 'Halaman luar',
@@ -295,6 +296,8 @@ $messages['id'] = array(
 	'push-tab-inc-templates' => 'Sertakan templat',
 	'push-tab-used-templates' => '({{PLURAL:$2|Templat|Templat}} yang digunakan: $1)',
 	'push-tab-no-used-templates' => '(Tidak ada templat yang digunakan pada halaman ini.)',
+	'push-tab-inc-files' => 'Sertakan berkas',
+	'push-tab-err-fileinfo' => 'Tidak dapat mengetahui berkas mana yang digunakan pada halaman ini. Tidak ada yang didorong.',
 	'special-push' => 'Dorong halaman',
 	'push-special-description' => 'Halaman ini memungkinkan Anda untuk mendorong satu atau lebih halaman ke satu atau lebih wiki MediaWiki.
 
@@ -310,6 +313,11 @@ Untuk mendorong halaman, masukkan judul dalam kotak teks di bawah ini, satu judu
 	'push-special-err-token-failed' => 'Tidak dapat memperoleh token sunting pada wiki target.',
 	'push-special-err-pageget-failed' => 'Tidak dapat memperoleh konten halaman lokal.',
 	'push-special-err-push-failed' => 'Wiki target menolak laman yang didorong.',
+	'push-special-inc-files' => 'Sertakan berkas',
+	'push-special-err-imginfo-failed' => 'Tidak dapat menentukan apakah ada berkas yang perlu didorong.',
+	'push-special-obtaining-fileinfo' => '$1: Mencari informasi berkas...',
+	'push-special-pushing-file' => '$1: Mendorong berkas $2...',
+	'push-special-return' => 'Dorong halaman lain',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -322,7 +330,6 @@ $messages['lb'] = array(
 	'right-pushadmin' => "Autorisatioun fir d'Zil an d'Astellungen vun der Push-Fonctionalitéit z'änneren.",
 	'push-err-captacha' => 'Push op $1 konnt wéint dem Captcha net gemaach ginn.',
 	'push-button-completed' => 'Push ofgeschloss',
-	'push-import-revision-comment' => 'Lescht Bemierkung: $1',
 	'push-remote-page-link' => '$1 op $2',
 	'push-remote-page-link-full' => '$1 op $2 weisen',
 	'push-button-all' => 'All pushen',
@@ -332,7 +339,10 @@ $messages['lb'] = array(
 	'push-special-button-text' => 'Säite pushen',
 	'push-special-select-targets' => 'Zielwikien:',
 	'push-special-item-pushing' => '$1: Pushen',
+	'push-special-item-completed' => '$1: Push ofgeschloss',
+	'push-special-item-failed' => '$1: Push huet net fonctionnéiert: $2',
 	'push-special-push-done' => 'Push ofgeschloss',
+	'push-special-return' => 'Méi Säite pushen',
 );
 
 /** Macedonian (Македонски)
@@ -356,8 +366,7 @@ $messages['mk'] = array(
 	'push-tab-title' => 'Пренесување на $1',
 	'push-targets' => 'Одредници за преносот',
 	'push-add-target' => 'Додај одредница',
-	'push-import-revision-message' => 'Пренесено од $1. Пренел: $2. $3',
-	'push-import-revision-comment' => 'Последен коментар: $1',
+	'push-import-revision-message' => 'Пренесено од $1. Пренел: $2.',
 	'push-tab-no-targets' => 'Нема одредници во кои би се извршил преносот. Додајте места во вашата податотека LocalSettings.php.',
 	'push-tab-push-to' => 'Пренеси во $1',
 	'push-remote-pages' => 'Далечински страници',
@@ -372,6 +381,7 @@ $messages['mk'] = array(
 	'push-tab-used-templates' => '({{PLURAL:$2|Шаблон|Шаблони}} во употреба: $1)',
 	'push-tab-no-used-templates' => '(На страницава не се користат шаблони.)',
 	'push-tab-inc-files' => 'Вклучи податотеки',
+	'push-tab-err-fileinfo' => 'Не можев да востановам кои податотеки се користат на страницава. Затоа не преместив ниедна.',
 	'special-push' => 'Пренесување страници',
 	'push-special-description' => 'Оваа страница ви овозможува да пренесете содржини од една или повеќе страници од едно вики во едно или повеќе викија што работат на МедијаВики.
 
@@ -387,6 +397,11 @@ $messages['mk'] = array(
 	'push-special-err-token-failed' => 'Не можев да го добијам жетонот на уредувањето на целното вики.',
 	'push-special-err-pageget-failed' => 'Не можев да ја добијам содржината на локалната страница.',
 	'push-special-err-push-failed' => 'Целното вики ја одби пренесената страница.',
+	'push-special-inc-files' => 'Вклучи податотеки',
+	'push-special-err-imginfo-failed' => 'Не можев да утврдам дали треба да се пренесат податотеки.',
+	'push-special-obtaining-fileinfo' => '$1: Преземам податотечни податоци...',
+	'push-special-pushing-file' => '$1: Ја пренесувам податотеката $2...',
+	'push-special-return' => 'Пренеси уште страници',
 );
 
 /** Dutch (Nederlands)
@@ -409,8 +424,7 @@ $messages['nl'] = array(
 	'push-tab-title' => 'Bezig met het verzenden van $1',
 	'push-targets' => "Doelwiki's",
 	'push-add-target' => 'Doelwiki toevoegen',
-	'push-import-revision-message' => 'Verzonden vanuit $1 door $2. $3',
-	'push-import-revision-comment' => 'Laatste opmerking: $1',
+	'push-import-revision-message' => 'Verzonden vanuit $1 door $2.',
 	'push-tab-no-targets' => "Er zijn geen beschikbare doelwiki's. Voeg deze eerst toe aan uw LocalSettings.php-bestand.",
 	'push-tab-push-to' => 'Verzenden naar $1',
 	'push-remote-pages' => "Pagina's in andere wiki's",
@@ -443,9 +457,71 @@ Het verzenden kan enige tijd kosten.",
 	'push-special-err-push-failed' => 'De doelwiki heeft de verzonden pagina niet geaccepteerd.',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'push-desc' => 'Uma extensão ligeira para replicação externa de conteúdos para outras wikis',
+	'right-push' => 'Autorização para usar a funcionalidade de replicação externa.',
+	'right-bulkpush' => 'Autorização para usar a funcionalidade de replicação externa em massa (isto é, a página Special:Push).',
+	'right-pushadmin' => 'Autorização para modificar os destinos e a configuração da replicação externa.',
+	'push-err-captacha' => 'Não foi possível fazer a replicação para $1 devido ao captcha.',
+	'push-err-captcha-page' => 'Não foi possível replicar a página $1 para todos os destinos devido ao captcha.',
+	'push-err-authentication' => 'A autenticação na $1 falhou. $2',
+	'push-tab-text' => 'Replicação',
+	'push-button-text' => 'Replicar',
+	'push-tab-desc' => 'Este separador permite-lhe fazer a replicação externa da última versão desta página para uma ou mais wikis.',
+	'push-button-pushing' => 'A replicar',
+	'push-button-pushing-files' => 'A replicar ficheiros',
+	'push-button-completed' => 'Replicação terminada',
+	'push-button-failed' => 'A replicação falhou',
+	'push-tab-title' => 'A replicar $1',
+	'push-targets' => 'Destinos da replicação',
+	'push-add-target' => 'Adicionar destino',
+	'push-import-revision-message' => 'Replicada de $1 por $2.',
+	'push-tab-no-targets' => 'Não existem destinos para a replicação. Acrescente-os ao ficheiro LocalSettings.php.',
+	'push-tab-push-to' => 'Replicar para $1',
+	'push-remote-pages' => 'Páginas remotas',
+	'push-remote-page-link' => '$1 na $2',
+	'push-remote-page-link-full' => 'Ver $1 na $2',
+	'push-targets-total' => 'Há {{PLURAL:$1|$1 destino|um total de $1 destinos}}.',
+	'push-button-all' => 'Replicar para todos',
+	'push-tab-last-edit' => 'Última edição de $1 a $2 às $3.',
+	'push-tab-not-created' => 'Esta página ainda não existe.',
+	'push-tab-push-options' => 'Opções da replicação externa:',
+	'push-tab-inc-templates' => 'Incluir predefinições',
+	'push-tab-used-templates' => '({{PLURAL:$2|Predefinição usada|Predefinições usadas}}: $1)',
+	'push-tab-no-used-templates' => '(Esta página não contém predefinições)',
+	'push-tab-inc-files' => 'Incluir ficheiros',
+	'push-tab-err-fileinfo' => 'Não foi possível determinar que ficheiros são usados nesta página. Não foi replicado nenhum ficheiro.',
+	'push-tab-err-filepush-unknown' => 'A replicação externa do ficheiro falhou por uma razão desconhecida.',
+	'push-tab-err-filepush' => 'A replicação externa do ficheiro falhou: $1',
+	'special-push' => 'Replicação externa de páginas',
+	'push-special-description' => 'Esta página permite-lhe fazer a replicação externa de uma ou mais páginas, para uma ou mais wikis MediaWiki.
+
+Para fazer a replicação externa de páginas, introduza os respectivos títulos na caixa de texto abaixo, um título por linha e clique "Replicar todas". A operação pode demorar algum tempo.',
+	'push-special-pushing-desc' => 'A replicar $2 {{PLURAL:$2|página|páginas}} para a $1...',
+	'push-special-button-text' => 'Replicar páginas',
+	'push-special-target-is' => 'Wiki de destino: $1',
+	'push-special-select-targets' => 'Wikis de destino:',
+	'push-special-item-pushing' => '$1: A replicar',
+	'push-special-item-completed' => '$1: Replicação terminada',
+	'push-special-item-failed' => '$1: A replicação falhou: $2',
+	'push-special-push-done' => 'Replicação terminada',
+	'push-special-err-token-failed' => 'Não foi possível obter uma chave de edição na wiki de destino.',
+	'push-special-err-pageget-failed' => 'Não foi possível obter o conteúdo da página local.',
+	'push-special-err-push-failed' => 'A wiki de destino recusou a página.',
+	'push-special-inc-files' => 'Incluir ficheiros',
+	'push-special-err-imginfo-failed' => 'Não foi possível determinar se é necessário replicar algum ficheiro.',
+	'push-special-obtaining-fileinfo' => '$1: A obter as informações do ficheiro...',
+	'push-special-pushing-file' => '$1: A replicar o ficheiro $2...',
+	'push-special-return' => 'Replicar mais páginas',
+);
+
 /** Russian (Русский)
  * @author DCamer
  * @author Lockal
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'push-desc' => 'Небольшое расширение для помещения содержимого в другие вики',
@@ -453,17 +529,19 @@ $messages['ru'] = array(
 	'right-bulkpush' => 'Авторизуйтесь чтобы использовать эту объёмную функцию (например, Служебная:Push)',
 	'right-pushadmin' => 'Авторизуйтесь чтобы изменять настройки и направления размещения.',
 	'push-err-captacha' => 'Не удалось разместить на $1 из-за капчи.',
+	'push-err-captcha-page' => 'Невозможно разместить страницу $1 по всем целям из-за CAPTCHA.',
+	'push-err-authentication' => 'Сбой аутентификации в $1. $2',
 	'push-tab-text' => 'Разместить',
 	'push-button-text' => 'Поместить',
 	'push-tab-desc' => 'Эта вкладка позволяет разместить текущею версию этой страницы на одну или нескольких других вики.',
 	'push-button-pushing' => 'Размещение',
+	'push-button-pushing-files' => 'Размещаемые файлы',
 	'push-button-completed' => 'Размещение завершено',
 	'push-button-failed' => 'Размещение не удалось',
 	'push-tab-title' => 'Размещение $1',
 	'push-targets' => 'Направление размещения',
 	'push-add-target' => 'Добавить направление',
-	'push-import-revision-message' => 'Импортировать от $1 до $2. $3',
-	'push-import-revision-comment' => 'Последний комментарий: $1',
+	'push-import-revision-message' => 'Размещено $2 из $1.',
 	'push-tab-no-targets' => 'Отсутствует направления размещения. Пожалуйста, добавьте их в файл LocalSettings.php.',
 	'push-tab-push-to' => 'Размещение на $1',
 	'push-remote-pages' => 'Удалённые страницы',
@@ -471,6 +549,16 @@ $messages['ru'] = array(
 	'push-remote-page-link-full' => 'Просмотреть $1 на $2',
 	'push-targets-total' => 'Всего $1 {{PLURAL:$1|направление|направления}}.',
 	'push-button-all' => 'Разместить все',
+	'push-tab-last-edit' => 'Последняя правка $1 $2 в $3.',
+	'push-tab-not-created' => 'Этой страницы ещё не существует.',
+	'push-tab-push-options' => 'Настройки размещения:',
+	'push-tab-inc-templates' => 'Включать шаблоны',
+	'push-tab-used-templates' => '({{PLURAL:$2|Шаблон|Шаблоны}}: $1)',
+	'push-tab-no-used-templates' => '(На этой странице нет шаблонов)',
+	'push-tab-inc-files' => 'Включать файлы',
+	'push-tab-err-fileinfo' => 'Не удалось установить какие файлы используются на этой странице. Ни один не был размещён.',
+	'push-tab-err-filepush-unknown' => 'сбой размещения файлов по неизвестной причине.',
+	'push-tab-err-filepush' => 'Сбой размещения файла. $1',
 	'special-push' => 'Разместить страницы',
 	'push-special-description' => 'Эта страница позволяет разместить содержимое одной или нескольких страниц на одну или несколько других вики-сайтов на движке MediaWiki.
 
@@ -486,6 +574,11 @@ $messages['ru'] = array(
 	'push-special-err-token-failed' => 'Не удалось получить маркер редактирование на целевом вики-сайте.',
 	'push-special-err-pageget-failed' => 'Не удалось получить локальное содержимое страницы.',
 	'push-special-err-push-failed' => 'Целевой вики-сайт отказался разместить страницу.',
+	'push-special-inc-files' => 'Включить файлы',
+	'push-special-err-imginfo-failed' => 'Не удалось определить, есть ли файлы для размещения.',
+	'push-special-obtaining-fileinfo' => '$1: Получение сведений о файлах…',
+	'push-special-pushing-file' => '$1: Размещение файла $2…',
+	'push-special-return' => 'Разместить другие страницы',
 );
 
 /** Telugu (తెలుగు)
