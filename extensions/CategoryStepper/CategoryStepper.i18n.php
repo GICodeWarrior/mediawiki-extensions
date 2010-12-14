@@ -138,6 +138,14 @@ $messages['cs'] = array(
 	'categorystepper-start' => '(začátek kategorie)',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'categorystepper-end' => '(Diwedd y categori)',
+	'categorystepper-start' => "(Dechrau'r categori)",
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */

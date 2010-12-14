@@ -2530,6 +2530,7 @@ $messages['mk'] = array(
 	'voctrain_Answer_s_' => 'Одговор(и)',
 	'voctrain_logout' => 'одјавување',
 	'voctrain_Powered_by' => 'Благодарение на',
+	'voctrain_Omegawiki' => 'Омегавики',
 	'voctrain_Exercise_complete' => 'Вежбата е завршена',
 	'voctrain_Exercise_terminated' => 'Вежбата е прекината',
 	'voctrain_Start_a_new_exercise' => 'Започни нова вежба',

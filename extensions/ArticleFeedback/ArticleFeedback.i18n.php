@@ -1209,9 +1209,13 @@ Snano chceš ju znowa posudźić.",
 	'articlefeedback-beta-report-panel-title' => 'Wuslědki posudkow',
 	'articlefeedback-beta-report-panel-description' => 'Aktualne přerězkowe pohódnoćenja.',
 	'articlefeedback-beta-field-wellsourced-label' => 'Derje dokładźeny',
+	'articlefeedback-beta-field-wellsourced-tip' => 'Měniće, zo tuta strona ma dosć citatow a zo tute citaty su z dowěry hódnych žórłow?',
 	'articlefeedback-beta-field-complete-label' => 'Dospołny',
+	'articlefeedback-beta-field-complete-tip' => 'Měnicé, zo tuta strona wobkedźbuje wšitke bytostne temowe pola, kotrež měła wobsahować?',
 	'articlefeedback-beta-field-neutral-label' => 'Neutralny',
+	'articlefeedback-beta-field-neutral-tip' => 'Měniš, zo tuta strona pokazuje wurunane předstajenje wšěch perspektiwow tutoho problema?',
 	'articlefeedback-beta-field-readable-label' => 'Čitajomny',
+	'articlefeedback-beta-field-readable-tip' => 'Měniš, zo tuta strona je derje zorganizowana a derje napisana?',
 );
 
 /** Hungarian (Magyar)
@@ -1422,6 +1426,14 @@ Probabilmente vuoi valutarla di nuovo.",
 	'articlefeedback-alpha-survey-submit' => 'Invia',
 	'articlefeedback-alpha-survey-title' => 'Per favore, rispondi ad alcune domande',
 	'articlefeedback-alpha-survey-thanks' => 'Grazie per aver compilato il questionario.',
+	'articlefeedback-beta-form-panel-title' => 'La tua opinione',
+	'articlefeedback-beta-form-panel-instructions' => "Per favore, concedici un po' del tuo tempo per valutare questa pagina.",
+	'articlefeedback-beta-report-switch-label' => 'Mostra i risultati',
+	'articlefeedback-beta-report-panel-description' => 'Valutazione media attuale.',
+	'articlefeedback-beta-field-wellsourced-label' => 'Ben documentata',
+	'articlefeedback-beta-field-complete-label' => 'Completa',
+	'articlefeedback-beta-field-neutral-label' => 'Neutrale',
+	'articlefeedback-beta-field-readable-label' => 'Leggibile',
 );
 
 /** Japanese (日本語)
