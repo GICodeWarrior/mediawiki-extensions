@@ -21,7 +21,6 @@ import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.SanityException;
-import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
@@ -271,7 +270,7 @@ public class CoherenceDisambiguator<C extends WikiWordConcept> extends AbstractD
 		return getBestInterpretation(root, meanings, context, interpretations, similarities, features);
 	}
 	
-	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(Collection<X> terms, Map<X, C> known) throws PersistenceException {
+	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(Collection<X> terms, Map<String, C> known) throws PersistenceException {
 		Map<X, List<? extends C>> meanings = super.getMeanings(terms, known);
 		pruneMeanings(meanings);
 		return meanings;

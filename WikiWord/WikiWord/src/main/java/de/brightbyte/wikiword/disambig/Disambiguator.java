@@ -166,8 +166,8 @@ public interface Disambiguator<C extends WikiWordConcept> {
 
 	public void setTrace(Output trace);
 
-	public <X extends TermReference>Disambiguation<X, C> disambiguate(List<X> terms, Map<X, C> known, Collection<? extends C> context) throws PersistenceException;
-	public <X extends TermReference>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, C> known, Collection<? extends C> context) throws PersistenceException;
+	public <X extends TermReference>Disambiguation<X, C> disambiguate(List<X> terms, Map<String, C> known, Collection<? extends C> context) throws PersistenceException;
+	public <X extends TermReference>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<String, C> known, Collection<? extends C> context) throws PersistenceException;
 
 	public boolean exploresAllSequences();
 

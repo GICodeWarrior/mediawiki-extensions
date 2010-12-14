@@ -100,12 +100,12 @@ public abstract class AbstractDisambiguator<C extends WikiWordConcept> implement
 		}
 	}
 	
-	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(PhraseNode<X> root, Map<X, C> known) throws PersistenceException {
+	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(PhraseNode<X> root, Map<String, C> known) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		return getMeanings(terms, known);
 	}
 	
-	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(Collection<X> terms, Map<X, C> known) throws PersistenceException {
+	protected <X extends TermReference>Map<X, List<? extends C>> getMeanings(Collection<X> terms, Map<String, C> known) throws PersistenceException {
 		Collection<X> todo = terms;
 		
 		if (meaningOverrides!=null || known!=null) {
@@ -139,13 +139,13 @@ public abstract class AbstractDisambiguator<C extends WikiWordConcept> implement
 		return meanings;
 	}
 	
-	public <X extends TermReference>Disambiguation<X, C> disambiguate(List<X> terms, Map<X, C> known, Collection<? extends C> context) throws PersistenceException {
+	public <X extends TermReference>Disambiguation<X, C> disambiguate(List<X> terms, Map<String, C> known, Collection<? extends C> context) throws PersistenceException {
 		PhraseNode<X> root = new TermListNode<X>(terms, 0);
 		Map<X, List<? extends C>> meanings = getMeanings(terms, known);
 		return doDisambiguate(root, meanings, context);
 	}
 	
-	public <X extends TermReference>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, C> known, Collection<? extends C> context) throws PersistenceException {
+	public <X extends TermReference>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<String, C> known, Collection<? extends C> context) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		Map<X, List<? extends C>> meanings = getMeanings(terms, known);
 		return doDisambiguate(root, meanings, context);
