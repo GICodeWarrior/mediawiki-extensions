@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback (
   aa_rating_id int unsigned NOT NULL,
   -- Value of the rating (0 is "unrated", else 1-5)
   aa_rating_value int unsigned NOT NULL,
+  -- Which rating widget the user was given. Default of 0 is the "old" design
+  aa_design_bucket int unsigned NOT NULL DEFAULT 0,
   -- 1 vote per user per revision
   PRIMARY KEY (aa_revision, aa_user_text, aa_rating_id, aa_user_anon_token)
 ) /*$wgDBTableOptions*/;

@@ -98,6 +98,11 @@ class ArticleFeedbackHooks {
 						$dir . '/sql/ArticleFeedback.sql', true ) ); // Initial install tables
 				}
 			}
+
+			if ( !$db->fieldExists( 'article_feedback', 'aa_design_bucket', __METHOD__ ) ) {
+				$updater->addExtensionUpdate( array( 'addField', 'article_feedback', 'aa_design_bucket',
+						$dir . '/sql/AddRatingBucket.sql', true ) );
+			}
 		}
 		return true;
 	}
