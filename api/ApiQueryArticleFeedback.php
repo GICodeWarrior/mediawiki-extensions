@@ -160,8 +160,8 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 	protected function getExamples() {
 		return array(
 			'api.php?action=query&list=articlefeedback',
-			'api.php?action=query&list=articlefeedback&aapageid=1',
-			'api.php?action=query&list=articlefeedback&aapageid=1&aauserrating',
+			'api.php?action=query&list=articlefeedback&afpageid=1',
+			'api.php?action=query&list=articlefeedback&afpageid=1&afuserrating',
 		);
 	}
 
