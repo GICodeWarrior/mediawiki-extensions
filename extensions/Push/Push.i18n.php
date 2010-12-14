@@ -22,7 +22,7 @@ $messages['en'] = array(
 	'right-pushadmin' => 'Authorization to modify push targets and push settings.',
 
 	'push-err-captacha' => 'Could not push to $1 due to captcha.',
-	'push-err-captcha-page' => 'Could not push page $1 to all targets due to captcha.',
+	'push-err-captcha-page' => 'Could not push page $1 to all targets due to CAPTCHA.',
 	'push-err-authentication' => 'Authentication at $1 failed. $2',
 
 	// Tab
@@ -33,7 +33,7 @@ $messages['en'] = array(
 	'push-button-pushing-files' => 'Pushing files',
 	'push-button-completed' => 'Push completed',
 	'push-button-failed' => 'Push failed',
-	'push-tab-title' => 'Pushing $1',
+	'push-tab-title' => 'Push $1',
 	'push-targets' => 'Push targets',
 	'push-add-target' => 'Add target',
 	'push-import-revision-message' => 'Pushed from $1 by $2. $3',
