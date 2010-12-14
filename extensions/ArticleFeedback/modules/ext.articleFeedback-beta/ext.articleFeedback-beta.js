@@ -5,10 +5,27 @@
 ( function( $, mw ) {
 
 $.articleFeedback = {
+	'cfg': {
+		'indexes': {
+			'wellsourced': 1,
+			'neutral': 2,
+			'complete': 3,
+			'readable': 4
+		},
+		'fields': {
+			'1': 'wellsourced',
+			'2': 'neutral',
+			'3': 'complete',
+			'4': 'readable'
+		}
+	},
 	'fn': {
 		'updateRating': function() {
-			$(this).find( 'label' ).removeClass( 'articleFeedback-rating-label-full' );
-			var $label = $(this).find( 'label[for=' + $(this).find( 'input:radio:checked' ).attr( 'id' ) + ']' )
+			var $rating = $(this);
+			$rating.find( 'label' ).removeClass( 'articleFeedback-rating-label-full' );
+			var $label = $rating
+				.find( 'label[for=' + $rating.find( 'input:radio:checked' )
+					.attr( 'id' ) + ']' );
 			if ( $label.length ) {
 				$label
 					.prevAll( 'label' )
@@ -18,12 +35,116 @@ $.articleFeedback = {
 						.end()
 					.nextAll( 'label' )
 						.removeClass( 'articleFeedback-rating-label-full' );
-				$(this).find( '.articleFeedback-rating-clear' ).show();
+				$rating.find( '.articleFeedback-rating-clear' ).show();
 			} else {
-				$(this).find( '.articleFeedback-rating-clear' ).hide();
+				$rating.find( '.articleFeedback-rating-clear' ).hide();
 			}
 		},
-		'build': function( context ) {
+		'submit': function() {
+			var context = this;
+			// Clear out the stale message
+			
+			// Lock the star inputs & submit button
+			context.$ui.find( 'button[type=submit]' ).button( { 'disabled': true } );
+			
+			// Build data from form values
+			var data = {};
+			context.$ui.find( '.articleFeedback-rating' ).each( function() {
+				var value = $(this).find( 'input:radio:checked' ).val();
+				// Clamp irregular values
+				if ( value < 1 || value > 5 ) {
+					value = 0;
+				}
+				data['r' + $.articleFeedback.cfg.indexes[$(this).attr( 'rel' )]] = value;
+			} );
+			$.ajax( {
+				'url': mediaWiki.config.get( 'wgScriptPath' ) + '/api.php',
+				'type': 'POST',
+				'dataType': 'json',
+				'context': context,
+				'data': $.extend( data, {
+					'action': 'articlefeedback',
+					'format': 'json',
+					'anontoken': mediaWiki.user.sessionId(),
+					'userid': mediaWiki.user.sessionId(),
+					'pageid': mediaWiki.config.get( 'wgArticleId' ),
+					'revid': mediaWiki.config.get( 'wgCurRevisionId' ),
+				} ),
+				'success': function( data ) {
+					var context = this;
+					$.articleFeedback.fn.load.call( context );
+				},
+				'error': function() {
+					var context = this;
+					console.log( '<submitForm error />' );
+				}
+			} );
+		},
+		'load': function() {
+			var context = this;
+			$.ajax( {
+				'url': mediaWiki.config.get( 'wgScriptPath' ) + '/api.php',
+				'type': 'GET',
+				'dataType': 'json',
+				'context': context,
+				'data': {
+					'action': 'query',
+					'format': 'json',
+					'list': 'articlefeedback',
+					'afpageid': mediaWiki.config.get( 'wgArticleId' ),
+					'afanontoken': mediaWiki.user.sessionId(),
+					'afuserrating': mediaWiki.user.sessionId()
+				},
+				'success': function( data ) {
+					var context = this;
+					if ( typeof data.query.articlefeedback == undefined ) {
+						// ERROR!
+						console.log( '<loadReport success with bad data />' );
+						return;
+					}
+					if ( !data.query.articlefeedback.length ) {
+						// No ratings here yet
+						context.$ui.find( '.articleFeedback-rating-meter div' ).hide();
+						return;
+					}
+					// Update form and report
+					var ratings = data.query.articlefeedback[0].ratings;
+					for ( var i = 0; i < ratings.length; i++ ) {
+						var field = $.articleFeedback.cfg.fields[ratings[i].ratingid];
+						var rating = ratings[i].userrating;
+						var count = ratings[i].count;
+						var average = Math.max( Math.min( ( ratings[i].total / count ), 5 ), 0 );
+						var $rating =
+							context.$ui.find( '.articleFeedback-rating[rel="' + field + '"]' );
+						$rating
+							.find( '.articleFeedback-rating-average' )
+								.text( average % 1 == 0 ? average + '.0' : average )
+								.end()
+							.find( '.articleFeedback-rating-meter div' )
+								.css( 'width', average >= 1 ? ( average * 20 + 'px' ) : 0 )
+								.end()
+							.find( '.articleFeedback-rating-count' )
+								.text(
+									count === 0
+										? mediaWiki.msg( 'articlefeedback-beta-report-empty' )
+										: '(' + count + ') ' + mediaWiki.msg( 'articlefeedback-beta-report-ratings' ) )
+								.end()
+							.find( '.articleFeedback-rating-fields input[value="' + rating + '"]' )
+								.attr( 'checked', true );
+						$.articleFeedback.fn.updateRating.call( $rating );
+					}
+					// If being called just after a submit, we need to un-new the rating controls
+					context.$ui.find( '.articleFeedback-rating-new' )
+						.removeClass( 'articleFeedback-rating-new' );
+				},
+				'error': function() {
+					var context = this;
+					console.log( '<loadReport error />' );
+				}
+			} );
+		},
+		'build': function() {
+			var context = this;
 			context.$ui
 				.addClass( 'articleFeedback articleFeedback-visibleWith-form' )
 				// Append HTML
@@ -38,33 +159,45 @@ $.articleFeedback = {
 		<div class="articleFeedback-description articleFeedback-visibleWith-report"><msg key="report-panel-description" /></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-ratings">\
-			<div class="articleFeedback-rating articleFeedback-rating-new" rel="wellsourced">\
-				<span class="articleFeedback-label" title-msg="field-wellsourced-tip"><msg key="field-wellsourced-label" /></span>\
+			<div class="articleFeedback-rating" rel="wellsourced">\
+				<div class="articleFeedback-label" title-msg="field-wellsourced-tip"><msg key="field-wellsourced-label" /></div>\
 				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
 				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
+				<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
+				<div style="clear:both;"></div>\
 			</div>\
-			<div class="articleFeedback-rating articleFeedback-rating-new" rel="neutral">\
-				<span class="articleFeedback-label" title-msg="field-neutral-tip"><msg key="field-neutral-label" /></span>\
+			<div class="articleFeedback-rating" rel="neutral">\
+				<div class="articleFeedback-label" title-msg="field-neutral-tip"><msg key="field-neutral-label" /></div>\
 				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
 				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
+				<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
+				<div style="clear:both;"></div>\
 			</div>\
-			<div class="articleFeedback-rating articleFeedback-rating-new" rel="complete">\
-				<span class="articleFeedback-label" title-msg="field-complete-tip"><msg key="field-complete-label" /></span>\
+			<div class="articleFeedback-rating" rel="complete">\
+				<div class="articleFeedback-label" title-msg="field-complete-tip"><msg key="field-complete-label" /></div>\
 				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
 				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
+				<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
+				<div style="clear:both;"></div>\
 			</div>\
-			<div class="articleFeedback-rating articleFeedback-rating-new" rel="readable">\
-				<span class="articleFeedback-label" title-msg="field-readable-tip"><msg key="field-readable-label" /></span>\
+			<div class="articleFeedback-rating" rel="readable">\
+				<div class="articleFeedback-label" title-msg="field-readable-tip"><msg key="field-readable-label" /></div>\
 				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
 				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+				<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
 				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
+				<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
+				<div style="clear:both;"></div>\
 			</div>\
 			<div style="clear:both;"></div>\
 		</div>\
-		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled>Submit feedback</button>\
+		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><msg key="form-panel-submit" /></button>\
 		<div style="clear:both;"></div>\
 	</div>\
 </div>\
@@ -97,6 +230,9 @@ $.articleFeedback = {
 				// Buttonify the button
 				.find( '.articleFeedback-submit' )
 					.button()
+					.click( function() {
+						$.articleFeedback.fn.submit.call( context );
+					} )
 					.end()
 				// Hide report elements initially
 				.find( '.articleFeedback-visibleWith-report' )
@@ -104,27 +240,23 @@ $.articleFeedback = {
 					.end()
 				// Connect labels and fields
 				.find( '.articleFeedback-rating' )
-					.each( function() {
+					.each( function( databaseId ) {
 						var rel = $(this).attr( 'rel' );
+						var htmlId = 'articleFeedback-rating-field-' + $(this).attr( 'rel' ) + '-';
 						$(this)
 							.find( '.articleFeedback-rating-fields input' )
 								.attr( 'name', rel )
 								.each( function( i ) {
-									$(this)
-										.val( i + 1 )
-										.attr(
-											'id',
-											'articleFeedback-rating-field-' + rel + '-' + ( i + 1 )
-										);
+									$(this).attr( {
+										'value': i + 1,
+										'name': 'rating[' + databaseId + ']',
+										'id': htmlId + ( i + 1 )
+									} );
 								} )
 								.end()
 							.find( '.articleFeedback-rating-labels label' )
 								.each( function( i ) {
-									$(this)
-										.attr(
-											'for',
-											'articleFeedback-rating-field-' + rel + '-' + ( i + 1 )
-										);
+									$(this).attr( 'for', htmlId + ( i + 1 ) );
 								} );
 					} )
 					.end()
@@ -164,8 +296,13 @@ $.articleFeedback = {
 						}
 					)
 					.mousedown( function() {
-						$( '.articleFeedback-submit' ).button( { 'disabled': false } );
+						context.$ui
+							.find( '.articleFeedback-submit' )
+								.button( { 'disabled': false } );
 						$(this)
+							.closest( '.articleFeedback-rating' )
+								.addClass( 'articleFeedback-rating-new' )
+								.end()
 							.addClass( 'articleFeedback-rating-label-down' )
 							.nextAll()
 								.removeClass( 'articleFeedback-rating-label-full' )
@@ -180,11 +317,16 @@ $.articleFeedback = {
 					.end()
 				.find( '.articleFeedback-rating-clear' )
 					.click( function() {
+						context.$ui
+							.find( '.articleFeedback-submit' )
+								.button( { 'disabled': false } );
 						$(this).hide();
 						var $rating = $(this).closest( '.articleFeedback-rating' );
 						$rating.find( 'input:radio' ).attr( 'checked', false );
 						$.articleFeedback.fn.updateRating.call( $rating );
 					} );
+			// Show initial form and report values
+			$.articleFeedback.fn.load.call( context );
 		}
 	}
 };
@@ -196,15 +338,15 @@ $.fn.articleFeedback = function( method, data ) {
 			// Create context
 			context = { '$ui': $(this) };
 			// Build user interface
-			$.articleFeedback.fn.build( context );
+			$.articleFeedback.fn.build.call( context );
 			// Save context
 			$(this).data( 'articleFeedback-context', context );
 		}
-		// Proceed with handling input
+		// Proceed with processing method and data
 	} );
 	return $(this);
 };
 
-} )( jQuery, mediaWiki );
-
 $( '#catlinks' ).before( $( '<div></div>' ).articleFeedback() );
+
+} )( jQuery, mediaWiki );
