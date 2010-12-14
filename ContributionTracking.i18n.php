@@ -1010,6 +1010,8 @@ $messages['sl'] = array(
 	'contrib-tracking-continue' => 'Če niste samodejno preusmerjeni, kliknite gumb, da dokončate svoj prispevek pri PayPal.',
 	'contrib-tracking-redirect' => 'Samodejno boste preusmerjeni na PayPal za dokončanje vašega prispevka.',
 	'contrib-tracking-button' => 'Nadaljuj',
+	'contrib-tracking-item-name-onetime' => 'Enkratni prispevek',
+	'contrib-tracking-item-name-recurring' => 'Ponavljajoči se mesečni prispevki',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
