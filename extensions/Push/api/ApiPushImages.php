@@ -84,8 +84,9 @@ class ApiPushImages extends ApiBase {
 	 * @param string $target
 	 * @param string $token
 	 * @param CookieJar $cookie
+	 * @param integer $attemtNr
 	 */
-	protected function doLogin( $user, $password, $target, $token = null, $cookieJar = null ) {
+	protected function doLogin( $user, $password, $target, $token = null, $cookieJar = null, $attemtNr = 0 ) {
 		$requestData = array(
 			'action' => 'login',
 			'format' => 'json',
@@ -97,7 +98,7 @@ class ApiPushImages extends ApiBase {
 			$requestData['lgtoken'] = $token;
 		}
 		
-		$req = MWHttpRequest::factory( $target, 
+		$req = PushFunctions::getHttpRequest( $target, 
 			array(
 				'postData' => $requestData,
 				'method' => 'POST',
@@ -111,14 +112,16 @@ class ApiPushImages extends ApiBase {
 		
 		$status = $req->execute();
 
+		$attemtNr++;
+		
 		if ( $status->isOK() ) {
 			$response = FormatJson::decode( $req->getContent() );
 			
 			if ( property_exists( $response, 'login' )
 				&& property_exists( $response->login, 'result' ) ) {
 
-				if ( $response->login->result == 'NeedToken' ) {
-					$this->doLogin( $user, $password, $target, $response->login->token, $req->getCookieJar() );
+				if ( $response->login->result == 'NeedToken' && $attemtNr < 3 ) {
+					$this->doLogin( $user, $password, $target, $response->login->token, $req->getCookieJar(), $attemtNr );
 				}
 				else if ( $response->login->result == 'Success' ) {
 					$this->cookieJars[$target] = $req->getCookieJar();
@@ -180,7 +183,7 @@ class ApiPushImages extends ApiBase {
 			$parts[] = $key . '=' . urlencode( $value );
 		}
 
-		$req = MWHttpRequest::factory( $target . '?' . implode( '&', $parts ), 
+		$req = PushFunctions::getHttpRequest( $target . '?' . implode( '&', $parts ), 
 			array(
 				'method' => 'GET',
 				'timeout' => 'default'
@@ -245,7 +248,7 @@ class ApiPushImages extends ApiBase {
 			'ignorewarnings' => '1'
 		);
 
-		$req = MWHttpRequest::factory( $target, 
+		$req = PushFunctions::getHttpRequest( $target, 
 			array(
 				'method' => 'POST',
 				'timeout' => 'default',
