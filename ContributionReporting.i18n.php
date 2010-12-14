@@ -1487,6 +1487,7 @@ $messages['et'] = array(
 	'fundraiserstats-tab-averages' => 'Keskmised (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumid (USD)',
 	'fundraiserstats-tab-ytd' => 'Sel aastal (USD)',
+	'fundraiserstats-instructions' => 'Ükskõik millise päeva arvandmete nägemiseks libista kursor üle selle päeva tulba. Iga aasta on graafikul erinevat värvi.',
 );
 
 /** Basque (Euskara)
