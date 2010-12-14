@@ -149,13 +149,7 @@ final class DSMWHooks {
 	{{#input:type=submit|value=ADD}}
 	}}";
 	
-	        // if article doesn't exist insertNewArticle
-	        if ( $article->mTitle->exists() ) {
-	            $article->updateArticle( $newtext, $summary = "", false, false );
-	        } else {
-	            $article->insertNewArticle( $newtext, $summary = "", false, false );
-	        }
-	        
+	        $article->doEdit( $newtext, $summary = "" );
 	        $article->doRedirect();
 	
 	        return false;
