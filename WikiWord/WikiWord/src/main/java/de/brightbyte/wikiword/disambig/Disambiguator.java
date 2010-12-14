@@ -132,11 +132,11 @@ public interface Disambiguator<C extends WikiWordConcept> {
 			return interpretation;
 		}
 		
-		public Map<? extends T, ? extends C> getMeanings() {
+		public Map<T, C> getMeanings() {
 			return getInterpretation().getMeanings();
 		}
 		
-		public List<? extends T> getSequence() {
+		public List<T> getSequence() {
 			return getInterpretation().getSequence();
 		}
 

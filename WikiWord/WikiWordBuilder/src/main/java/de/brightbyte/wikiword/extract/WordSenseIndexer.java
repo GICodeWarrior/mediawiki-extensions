@@ -23,7 +23,6 @@ import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
 import de.brightbyte.wikiword.disambig.Term;
 import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.FeatureStore;
@@ -31,7 +30,7 @@ import de.brightbyte.wikiword.store.LocalConceptStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
 
 public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWordConceptStore> {
-	protected Disambiguator<TermReference, LocalConcept> disambiguator;
+	protected Disambiguator<LocalConcept> disambiguator;
 	protected PlainTextAnalyzer analyzer;
 	private int phraseLength;
 	protected Chunker chunker;
@@ -117,7 +116,7 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 		List<Term> terms =  Term.asTerms(chunker.chunk(line.trim()));
 		if (flip) Collections.reverse(terms);
 		
-		Disambiguator.Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(terms, null);
+		Disambiguator.Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(terms, null, null);
 		if (flip) Collections.reverse(terms);
 		
 		String s = assembleMeanings(terms, result); //TODO: use proper TSV or something
