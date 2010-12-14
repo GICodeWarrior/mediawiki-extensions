@@ -66,7 +66,7 @@ class ApiArticleFeedback extends ApiBase {
 					$thisRating, $lastRating
 			);
 
-			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $rating, $thisRating );
+			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $rating, $thisRating, $params['bucket'] );
 		}
 
 		$r = array( 'result' => 'Success' );
@@ -130,8 +130,9 @@ class ApiArticleFeedback extends ApiBase {
 	 * @param $token Array: Token if necessary
 	 * @param $ratingId Integer: Rating Id
 	 * @param $ratingValue Integer: Value of the Rating
+	 * @param $bucket Integer: Which rating widget was the user shown
 	 */
-	private function insertUserRatings( $pageId, $revisionId, $user, $token, $ratingId, $ratingValue ) {
+	private function insertUserRatings( $pageId, $revisionId, $user, $token, $ratingId, $ratingValue, $bucket ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$timestamp = $dbw->timestamp();
@@ -147,6 +148,7 @@ class ApiArticleFeedback extends ApiBase {
 					'aa_timestamp' => $timestamp,
 					'aa_rating_id' => $ratingId,
 					'aa_rating_value' => $ratingValue,
+					'aa_design_bucket' => $bucket
 				),
 				$token
 			),
@@ -189,6 +191,12 @@ class ApiArticleFeedback extends ApiBase {
 				ApiBase::PARAM_ISMULTI => false,
 			),
 			'anontoken' => null,
+			'bucket' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_ISMULTI => false,
+				ApiBase::PARAM_MIN => 1
+			)
 		);
 
 		foreach( $wgArticleFeedbackRatings as $rating ) {
@@ -209,6 +217,7 @@ class ApiArticleFeedback extends ApiBase {
 			'pageid' => 'Page ID to submit feedback for',
 			'revid' => 'Revision ID to submit feedback for',
 			'anontoken' => 'Token for anonymous users',
+			'bucket' => 'Which rating widget was shown to the user'
 		);
 		foreach( $wgArticleFeedbackRatings as $rating ) {
 		        $ret["r{$rating}"] = "Rating {$rating}";
