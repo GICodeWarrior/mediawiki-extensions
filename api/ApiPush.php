@@ -41,6 +41,9 @@ class ApiPush extends ApiBase {
 			$this->dieUsageMsg( array( 'missingparam', 'targets' ) );
 		}		
 
+		PushFunctions::flipKeys( $egPushLoginUsers, 'users' );
+		PushFunctions::flipKeys( $egPushLoginPasswords, 'passwds' );
+		
 		foreach ( $params['targets'] as &$target ) {
 			$user = false;
 			$pass = false;

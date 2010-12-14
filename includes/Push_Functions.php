@@ -105,6 +105,35 @@ final class PushFunctions {
 		}
 		
 		return $pageSet;
-	}		
+	}
+	
+	/**
+	 * Function to change the keys of $egPushLoginUsers and $egPushLoginPasswords
+	 * from target url to target name using the $egPushTargets array.
+	 * 
+	 * @since 0.5
+	 * 
+	 * @param array $arr
+	 * @param string $id Some string to indentify the array and keep track of it having been flipped.
+	 */
+	public static function flipKeys( array &$arr, $id ) {
+		static $handledArrays = array();
+		
+		if ( !in_array( $id, $handledArrays ) ) {
+			$handledArrays[] = $id;
+			
+			global $egPushTargets;
+			
+			$flipped = array();
+			
+			foreach ( $arr as $key => $value ) {
+				if ( array_key_exists( $key, $egPushTargets ) ) {
+					$flipped[$egPushTargets[$key]] = $value;
+				}
+			}
+			
+			$arr = $flipped;			
+		}
+	}
 	
 }
