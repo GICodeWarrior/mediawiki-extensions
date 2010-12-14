@@ -36,6 +36,16 @@ $messages['br'] = array(
 	'svgedit-editor-close' => 'Nullañ',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'svgedit-editbutton-edit' => 'Uredi crtež',
+	'svgedit-editor-save-close' => 'Sačuvaj i zatvori',
+	'svgedit-editor-close' => 'Odustani',
+	'svgedit-desc' => 'Uređivanje u pregledniku SVG crteža pomoću [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -106,6 +116,16 @@ $messages['id'] = array(
 	'svgedit-desc' => 'Penyuntingan gambar SVG via peramban dengan [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'svgedit-editbutton-edit' => 'Zeechnung änneren',
+	'svgedit-editor-save-close' => 'Späicheren an zoumaachen',
+	'svgedit-editor-close' => 'Annulléieren',
+	'svgedit-desc' => 'Ännere vun SVG Zeechnungen am Browser mat [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -124,6 +144,16 @@ $messages['nl'] = array(
 	'svgedit-editor-save-close' => 'Opslaan en sluiten',
 	'svgedit-editor-close' => 'Annuleren',
 	'svgedit-desc' => 'In de browser bewerken van SVG-tekeningen met [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'svgedit-editbutton-edit' => 'Editar desenho',
+	'svgedit-editor-save-close' => 'Gravar e fechar',
+	'svgedit-editor-close' => 'Cancelar',
+	'svgedit-desc' => 'Edição de desenhos SVG no próprio browser, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
 /** Russian (Русский)
