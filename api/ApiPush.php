@@ -322,8 +322,7 @@ class ApiPush extends ApiBase {
 			'push-import-revision-message',
 			'parsemag',
 			$wgSitename,
-			$revision['user'],
-			$revision['comment'] == '' ? '' : wfMsgExt( 'push-import-revision-comment', 'parsemag', $revision['comment'] )
+			$revision['user']
 		);
 
 		$requestData = array(
