@@ -53,7 +53,9 @@ $messages['en'] = array(
 	'push-tab-no-used-templates' => '(No templates are used on this page.)',
 	'push-tab-inc-files' => 'Include files',
 	'push-tab-err-fileinfo' => 'Could not obtain which files are used on this page. None have been pushed.',
-	
+	'push-tab-err-filepush-unknown' => 'File push failed for an unknown reason.', 
+	'push-tab-err-filepush' => 'File push failed: $1',	
+
 	// Special page
 	'special-push' => 'Push pages',
 	'push-special-description' => 'This page enables you to push content of one or more pages to one or more MediaWiki wikis.

@@ -173,17 +173,17 @@
 				function( data ) {
 					var fail = false;
 					
-					for ( i in data.upload ) {
-						if ( data.error ) {
-							handleError( pageName, data.error );
+					for ( i in data ) {
+						if ( data[i].error ) {
+							handleError( pageName, { info: mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info ) } );
 							fail = true;
 							break;
 						}
-						else if ( !data.upload ) {
-							handleError( pageName, { info: 'Unknown error' } ); // TODO
+						else if ( !data[i].upload ) {
+							handleError( pageName, { info: mediaWiki.msg( 'push-tab-err-filepush-unknown' ) } );
 							fail = true;
-							break;
-						}		
+							break;						
+						}
 					}
 					
 					if ( !fail ) {

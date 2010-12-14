@@ -208,22 +208,22 @@
 			function( data ) {
 				var fail = false;
 				
-				for ( i in data.upload ) {
-					if ( data.error ) {
-						handleError( sender, targetUrl, data.error );
+				for ( i in data ) {
+					if ( data[i].error ) {
+						handleError( sender, targetUrl, { info: mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info ) } );
 						fail = true;
 						break;
 					}
-					else if ( !data.upload ) {
-						handleError( sender, targetUrl, { info: 'Unknown error' } ); // TODO
+					else if ( !data[i].upload ) {
+						handleError( sender, targetUrl, { info: mediaWiki.msg( 'push-tab-err-filepush-unknown' ) } );
 						fail = true;
-						break;
-					}		
+						break;						
+					}
 				}
-				
+
 				if ( !fail ) {
 					sender.innerHTML = mediaWiki.msg( 'push-button-completed' );
-					setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );
+					setTimeout( function() {reEnableButton( sender, targetUrl, targetName );}, 1000 );						
 				}
 			}
 		);			
