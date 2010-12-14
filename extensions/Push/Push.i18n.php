@@ -36,8 +36,7 @@ $messages['en'] = array(
 	'push-tab-title' => 'Push $1',
 	'push-targets' => 'Push targets',
 	'push-add-target' => 'Add target',
-	'push-import-revision-message' => 'Pushed from $1 by $2. $3',
-	'push-import-revision-comment' => 'Last comment: $1',
+	'push-import-revision-message' => 'Pushed from $1 by $2.',
 	'push-tab-no-targets' => 'There are no targets to push to. Please add some to your LocalSettings.php file.',
 	'push-tab-push-to' => 'Push to $1',
 	'push-remote-pages' => 'Remote pages',
@@ -85,7 +84,6 @@ To push pages, enter the titles in the text box below, one title per line and hi
  */
 $messages['qqq'] = array(
 	'push-err-authentication' => '$1: wiki name, $2: optional detailed error message',
-	'push-import-revision-message' => '$3 is [[MediaWiki:Push-import-revision-comment]] or empty.',
 	'push-remote-page-link' => '$1: page name, $2: wiki name',
 	'push-remote-page-link-full' => '$1: page name, $2: wiki name',
 );
