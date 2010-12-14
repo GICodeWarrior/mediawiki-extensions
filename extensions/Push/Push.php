@@ -86,6 +86,8 @@ $egPushJSMessages = array(
 	'push-special-obtaining-fileinfo',
 	'push-special-pushing-file',
 	'push-tab-err-fileinfo',
+	'push-tab-err-filepush',
+	'push-tab-err-filepush-unknown',
 );
 
 // For backward compatibility with MW < 1.17.
