@@ -175,12 +175,12 @@
 					
 					for ( i in data ) {
 						if ( data[i].error ) {
-							handleError( pageName, { info: mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info ) } );
+							handleError( listItem, pageName, { info: mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info ) } );
 							fail = true;
 							break;
 						}
 						else if ( !data[i].upload ) {
-							handleError( pageName, { info: mediaWiki.msg( 'push-tab-err-filepush-unknown' ) } );
+							handleError( listItem, pageName, { info: mediaWiki.msg( 'push-tab-err-filepush-unknown' ) } );
 							fail = true;
 							break;						
 						}
