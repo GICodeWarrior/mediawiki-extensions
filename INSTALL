@@ -57,12 +57,15 @@ variable to either true or false. The default is true.
 As of version 0.4, you can specify a username (<code>$egPushLoginUser</code>) and password (<code>$egPushLoginPass</code>)
 to authenticate with on the remote wikis. You can also specify login information per target wiki, which will override the
 global settings when set. You can do this by adding items to the <code>$egPushLoginUsers</code> and
-<code>$egPushLoginPasswords</code> arrays. The keys need to be the urls set in $egPushTargets. Example:
+<code>$egPushLoginPasswords</code> arrays. The keys need to be the target names set in $egPushTargets. Example:
 
 <source lang="php">
-$egPushLoginUsers['http://mapping.referata.com/w'] = 'Jeroen De Dauw';
-$egPushLoginPasswords['http://mapping.referata.com/w'] = 'Awesome';
+$egPushLoginUsers['English Wikipedia'] = 'Jeroen De Dauw';
+$egPushLoginPasswords['English Wikipedia'] = 'Awesome';
 </source>
+
+If you are running wikis on localhost, pushing from a MW 1.16 install will not work, due to an issue in
+Cookie::validateCookieDomain. It can be fixed by replacing this method by it's MW 1.17 equivalent.
 
 === Pushing files ===
 
