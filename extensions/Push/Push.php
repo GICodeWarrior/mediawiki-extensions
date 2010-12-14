@@ -3,11 +3,14 @@
 /**
  * Initialization file for the Push extension.
  * 
- * On MediaWiki.org: 		http://www.mediawiki.org/wiki/Extension:Push
+ * Documentation:	 		http://www.mediawiki.org/wiki/Extension:Push
+ * Support					http://www.mediawiki.org/wiki/Extension_talk:Push
  * Source code:             http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push
  *
  * @file Push.php
  * @ingroup Push
+ *
+ * @licence GNU GPL v3
  *
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
