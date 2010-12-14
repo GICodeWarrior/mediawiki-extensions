@@ -63,7 +63,7 @@ class ApiArticleFeedback extends ApiBase {
 			}
 
 			$this->insertPageRating( $pageId, $rating, ( $thisRating - $lastRating ),
-					( $lastRating === false && $thisRating !== false )
+					$thisRating, $lastRating
 			);
 
 			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $rating, $thisRating );
@@ -79,10 +79,21 @@ class ApiArticleFeedback extends ApiBase {
 	 * @param $pageId Integer: Page Id
 	 * @param $ratingId Integer: Rating Id
 	 * @param $updateAddition Integer: Difference between user's last rating (if applicable)
-	 * @param $newRating Boolean: Whether this is a new rating (for update, whether this increases the count)
+	 * @param $thisRating Integer|Boolean: Value of the Rating
+	 * @param $lastRating Integer|Boolean: Value of the last Rating
 	 */
-	private function insertPageRating( $pageId, $ratingId, $updateAddition, $newRating ) {
+	private function insertPageRating( $pageId, $ratingId, $updateAddition, $thisRating, $lastRating ) {
 		$dbw = wfGetDB( DB_MASTER );
+
+		$newRating = ( $lastRating === false && $thisRating !== false );
+		$countChange = 0;
+		if ( $newRating ) {
+			$countChange = 1; // Garunteed new rating
+		} else if ( $lastRating === 0 && $thisRating !== 0 ) {
+			$countChange = 1; // "New" rating as last was 0 (abstained)
+		} else if ( $lastRating !== 0 && $thisRating === 0 ) {
+			$countChange = -1; // Rating abstained this time, but there was a prior rating
+		}
 
 		$dbw->insert(
 			'article_feedback_pages',
@@ -100,7 +111,7 @@ class ApiArticleFeedback extends ApiBase {
 			'article_feedback_pages',
 			array(
 				'aap_total = aap_total + ' . $updateAddition,
-				'aap_count = aap_count + ' . ( $newRating ? 1 : 0 ),
+				'aap_count = aap_count + ' . $countChange,
 			),
 			array(
 				'aap_page_id' => $pageId,
