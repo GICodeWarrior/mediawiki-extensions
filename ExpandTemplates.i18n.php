@@ -1209,15 +1209,16 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'expandtemplates' => 'Schablounen expandéieren',
 	'expandtemplates-desc' => "[[Special:ExpandTemplates|Erweidert Schablounen, Parser-Funktiounen a Variabelen]] zu engem komplette Wikitext a weist d'Säiten esou wéi wann se ofgespäichert wieren.",
-	'expand_templates_intro' => 'Op dëser Spezialsäit kann Text agi ginn an all Schablounen doran gi rekursiv expandéiert.
+	'expand_templates_intro' => "Op dëser Spezialsäit kann Text agesat ginn an all Schablounen doran gi rekursiv expandéiert.
 Och Parserfonctioune wéi <nowiki>{{</nowiki>#if:…}} a Variabele wéi 
-<nowiki>{{</nowiki>CURRENTDAY}} ginn ausgewert&mdash; faktisch alles wat an duebele geschweefte Klamere steet.
-Dëst geschitt duerch Oprufe vun de jeweiligen Parser-Phase vu MediaWiki selwer.',
+<nowiki>{{</nowiki>CURRENTDAY}} ginn ausgewäert&mdash; faktesch alles wat duebelen Accolade steet.
+Dat geschitt duerch d'Oprufe vun de jeeweilege Parser-Phase vu MediaWiki selwer.",
 	'expand_templates_title' => 'Titel vun der Säit, dëst kann nëtzlech si wa(nn) {{PAGENAME}} benotzt gëtt:',
 	'expand_templates_input' => 'Gitt ären Text hei an:',
 	'expand_templates_output' => 'Resultat',
