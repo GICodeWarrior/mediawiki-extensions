@@ -2,6 +2,17 @@
 
 //Must come after "CentralNotice", which creates the "Geo" object
 
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'OWALiteTracker',
+	'author' => array(
+		'Nimish Gautam',
+	),
+	'version' => '',
+	'descriptionmsg' => '',
+	'url' => ''
+);
+
 $wgHooks['SkinAfterBottomScripts'][] = 'efOWALiteTracker';
 
 $wgOWAGeoTrackSites = array(
