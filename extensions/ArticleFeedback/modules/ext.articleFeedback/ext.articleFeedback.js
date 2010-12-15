@@ -122,7 +122,7 @@ $.articleFeedback = {
 									.css( 'width', 0 )
 									.end()
 								.find( '.articleFeedback-rating-count' )
-									.text( mediaWiki.msg( 'articlefeedback-beta-report-empty' ) )
+									.text( mediaWiki.msg( 'articlefeedback-report-empty' ) )
 									.end()
 								.find( 'input' )
 									.attr( 'checked', false );
@@ -140,7 +140,7 @@ $.articleFeedback = {
 									.end()
 								.find( '.articleFeedback-rating-count' )
 									.text( mediaWiki.msg(
-										'articlefeedback-beta-report-ratings', ratingData.count
+										'articlefeedback-report-ratings', ratingData.count
 									) )
 									.end()
 								.find( 'input[value="' + ratingData.userrating + '"]' )
@@ -232,7 +232,7 @@ $.articleFeedback = {
 	</div>\
 </div>\
 				' )
-				.localize( { 'prefix': 'articlefeedback-beta-' } )
+				.localize( { 'prefix': 'articlefeedback-' } )
 				.find( '[title]' )
 					.tipsy( {
 						'gravity': 'nw',
