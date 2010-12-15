@@ -29,6 +29,13 @@ $messages['bs'] = array(
 	'categorymembersonsidebar-desc' => 'Dodaje članove kategorije na alatnu traku sa strane',
 );
 
+/** Catalan (Català)
+ * @author Davidpar
+ */
+$messages['ca'] = array(
+	'categorymembersonsidebar-desc' => 'Afegeix membres de la categoria a la barra lateral',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -83,6 +90,13 @@ $messages['mk'] = array(
  */
 $messages['pt'] = array(
 	'categorymembersonsidebar-desc' => 'Adiciona membros de categorias à barra lateral',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'categorymembersonsidebar-desc' => "Aggiunge membre de categorije sus 'a barre laterale",
 );
 
 /** Russian (Русский)
