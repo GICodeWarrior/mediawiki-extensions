@@ -210,6 +210,7 @@ class ApiArticleFeedback extends ApiBase {
 		foreach( $wgArticleFeedbackRatings as $rating ) {
 			$ret["r{$rating}"] = array(
 				ApiBase::PARAM_TYPE => 'limit',
+				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_MIN => 0,
 				ApiBase::PARAM_MAX => 5,
