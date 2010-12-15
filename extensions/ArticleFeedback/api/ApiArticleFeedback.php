@@ -54,12 +54,12 @@ class ApiArticleFeedback extends ApiBase {
 		foreach( $wgArticleFeedbackRatings as $rating ) {
 			$lastRating = false;
 			if ( isset( $lastRatings[$rating] ) ) {
-				$lastRating = $lastRatings[$rating];
+				$lastRating = intval( $lastRatings[$rating] );
 			}
 
 			$thisRating = false;
 			if ( isset( $params["r{$rating}"] ) ) {
-				$thisRating = $params["r{$rating}"];
+				$thisRating = intval( $params["r{$rating}"] );
 			}
 
 			$this->insertPageRating( $pageId, $rating, ( $thisRating - $lastRating ),
