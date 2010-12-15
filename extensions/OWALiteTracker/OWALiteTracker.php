@@ -25,9 +25,15 @@ function efOWALiteTracker($skin, &$text){
 	if( !count( $wgOWAGeoTrackSites ) ) {
 		return;
 	}
-	$text .= "<script> var includeOWA = false; if(Geo){";
+	$text = "<script> var includeOWA = false; if( Geo ){\n";
 	foreach( $condition as $wgOWAGeoTrackSites ){
-		$text .= "if (Geo.{$condition[0]} && Geo.{$condition[0]} == \"{$condition[1]}\"){ if(!includeOWA){includeOWA=true; importScriptURI( document.location.protocol +'//owa.wikimedia.org/owa/modules/base/js/owa.tracker-combined-min.js');} importScriptURI( document.location.protocol + '//owa.wikimedia.org/resources/{$condition[2]}');}";
+		$text .= "if (Geo.{$condition[0]} && Geo.{$condition[0]} == \"{$condition[1]}\"){
+	if( !includeOWA ) {
+		includeOWA = true;
+		importScriptURI( document.location.protocol + '//owa.wikimedia.org/owa/modules/base/js/owa.tracker-combined-min.js' );
+	}
+	importScriptURI( document.location.protocol + '//owa.wikimedia.org/resources/{$condition[2]}');
+}";
 	}
 	$text .= "}</script>";
 }
