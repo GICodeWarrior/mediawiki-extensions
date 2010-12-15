@@ -158,12 +158,12 @@
 	width: 2em;
 	text-align: right;
 	font-size: 0.8em;
-	line-height: 24px;
+	line-height: 17px;
 }
 
 .articleFeedback-rating-meter {
 	float: left;
-	height: 21px;
+	height: 17px;
 	width: 101px;
 	border: solid 1px #cccccc;
 	border-radius: 3px;
@@ -175,7 +175,7 @@
 
 .articleFeedback-rating-meter div {
 	float: left;
-	height: 21px;
+	height: 17px;
 	margin-left: 1px;
 	/* @embed */
 	background-image: url(images/segment-full.png);

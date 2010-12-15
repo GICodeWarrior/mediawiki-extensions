@@ -6,13 +6,13 @@
 
 $.articleFeedback = {
 	'cfg': {
-		'indexes': {
+		'ratingIds': {
 			'wellsourced': 1,
 			'neutral': 2,
 			'complete': 3,
 			'readable': 4
 		},
-		'fields': {
+		'ratingKeys': {
 			'1': 'wellsourced',
 			'2': 'neutral',
 			'3': 'complete',
@@ -42,21 +42,16 @@ $.articleFeedback = {
 		},
 		'submit': function() {
 			var context = this;
-			// Clear out the stale message
-			
-			// Lock the star inputs & submit button
+			// Lock the submit button -- TODO: lock the star inputs too
 			context.$ui.find( 'button[type=submit]' ).button( { 'disabled': true } );
 			
 			// Build data from form values
 			var data = {};
-			context.$ui.find( '.articleFeedback-rating' ).each( function() {
-				var value = $(this).find( 'input:radio:checked' ).val();
-				// Clamp irregular values
-				if ( value < 1 || value > 5 ) {
-					value = 0;
-				}
-				data['r' + $.articleFeedback.cfg.indexes[$(this).attr( 'rel' )]] = value;
-			} );
+			for ( ratingId in $.articleFeedback.cfg.ratingKeys ) {
+				// Default to 0 if the radio set doesn't contain a checked element
+				data['r' + ratingId] =
+					context.$ui.find( 'input[name=r' + ratingId + ']:radio:checked' ).val() | '0';
+			}
 			$.ajax( {
 				'url': mediaWiki.config.get( 'wgScriptPath' ) + '/api.php',
 				'type': 'POST',
@@ -69,6 +64,7 @@ $.articleFeedback = {
 					'userid': mediaWiki.user.sessionId(),
 					'pageid': mediaWiki.config.get( 'wgArticleId' ),
 					'revid': mediaWiki.config.get( 'wgCurRevisionId' ),
+					'bucket': 1
 				} ),
 				'success': function( data ) {
 					var context = this;
@@ -76,7 +72,7 @@ $.articleFeedback = {
 				},
 				'error': function() {
 					var context = this;
-					console.log( '<submitForm error />' );
+					mw.log( '<submitForm error />' );
 				}
 			} );
 		},
@@ -97,49 +93,30 @@ $.articleFeedback = {
 				},
 				'success': function( data ) {
 					var context = this;
-					
-					//console.log( data );
-					
 					if ( typeof data.query.articlefeedback == undefined ) {
 						// ERROR!
-						console.log( '<loadReport success with bad data />' );
+						mw.log( '<loadReport success with bad data />' );
 						return;
 					}
-					if ( !data.query.articlefeedback.length ) {
-						// No ratings here yet
-						context.$ui.find( '.articleFeedback-rating-meter div' ).hide();
-						return;
-					}
-					// Update form and report
-					var ratings = data.query.articlefeedback[0].ratings;
-					for ( var i = 0; i < ratings.length; i++ ) {
-						var field = $.articleFeedback.cfg.fields[ratings[i].ratingid];
-						var rating = ratings[i].userrating;
-						var count = ratings[i].count;
-						var $rating =
-							context.$ui.find( '.articleFeedback-rating[rel="' + field + '"]' );
-						if ( count > 0 ) {
-							var average = Math.max( Math.min( ratings[i].total / count, 5 ), 0 );
-							var text = ( average - ( average % 1 ) ) + '.' +
-								Math.round( ( average % 1 ) * 10 );
-							$rating
+					context.$ui.find( '.articleFeedback-rating' ).each( function() {
+						var ratingData;
+						if (
+							data.query.articlefeedback.length &&
+							typeof data.query.articlefeedback[0].ratings !== 'undefined'
+						) {
+							var ratings = data.query.articlefeedback[0].ratings;
+							var ratingId = $.articleFeedback.cfg.ratingIds[$(this).attr( 'rel' )];
+							for ( var i = 0; i < ratings.length; i++ ) {
+								if ( ratings[i].ratingid == ratingId ) {
+									ratingData = ratings[i];
+								}
+							}
+						}
+						if ( typeof ratingData === 'undefined' ) {
+							// Setup in "no ratings" mode
+							$(this)
 								.find( '.articleFeedback-rating-average' )
-									.text( text )
-									.end()
-								.find( '.articleFeedback-rating-meter div' )
-									.css( 'width', Math.round( average * 20 ) + 'px' )
-									.end()
-								.find( '.articleFeedback-rating-count' )
-									.text( mediaWiki.msg(
-										'articlefeedback-beta-report-ratings', count
-									) )
-									.end()
-								.find( 'input[value="' + rating + '"]' )
-									.attr( 'checked', true );
-						} else {
-							$rating
-								.find( '.articleFeedback-rating-average' )
-									.text( '' )
+									.html( '&nbsp;' )
 									.end()
 								.find( '.articleFeedback-rating-meter div' )
 									.css( 'width', 0 )
@@ -149,16 +126,35 @@ $.articleFeedback = {
 									.end()
 								.find( 'input' )
 									.attr( 'checked', false );
+						} else {
+							// Setup using ratingData
+							var average =
+								Math.max( Math.min( ratingData.total / ratingData.count, 5 ), 0 );
+							$(this)
+								.find( '.articleFeedback-rating-average' )
+									.text( ( average - ( average % 1 ) ) + '.' +
+										Math.round( ( average % 1 ) * 10 ) )
+									.end()
+								.find( '.articleFeedback-rating-meter div' )
+									.css( 'width', Math.round( average * 20 ) + 'px' )
+									.end()
+								.find( '.articleFeedback-rating-count' )
+									.text( mediaWiki.msg(
+										'articlefeedback-beta-report-ratings', ratingData.count
+									) )
+									.end()
+								.find( 'input[value="' + ratingData.userrating + '"]' )
+									.attr( 'checked', true );
 						}
-						$.articleFeedback.fn.updateRating.call( $rating );
-					}
+					} );
+					$.articleFeedback.fn.updateRating.call( $(this) );
 					// If being called just after a submit, we need to un-new the rating controls
 					context.$ui.find( '.articleFeedback-rating-new' )
 						.removeClass( 'articleFeedback-rating-new' );
 				},
 				'error': function() {
 					var context = this;
-					console.log( '<loadReport error />' );
+					mw.log( '<loadReport error />' );
 				}
 			} );
 		},
@@ -259,23 +255,23 @@ $.articleFeedback = {
 					.end()
 				// Connect labels and fields
 				.find( '.articleFeedback-rating' )
-					.each( function( databaseId ) {
+					.each( function( rating ) {
 						var rel = $(this).attr( 'rel' );
-						var htmlId = 'articleFeedback-rating-field-' + $(this).attr( 'rel' ) + '-';
+						var id = 'articleFeedback-rating-field-' + $(this).attr( 'rel' ) + '-';
 						$(this)
 							.find( '.articleFeedback-rating-fields input' )
 								.attr( 'name', rel )
-								.each( function( i ) {
+								.each( function( field ) {
 									$(this).attr( {
-										'value': i + 1,
-										'name': 'rating[' + databaseId + ']',
-										'id': htmlId + ( i + 1 )
+										'value': field + 1,
+										'name': 'r' + ( rating + 1 ),
+										'id': id + ( field + 1 )
 									} );
 								} )
 								.end()
 							.find( '.articleFeedback-rating-labels label' )
 								.each( function( i ) {
-									$(this).attr( 'for', htmlId + ( i + 1 ) );
+									$(this).attr( 'for', id + ( i + 1 ) );
 								} );
 					} )
 					.end()
