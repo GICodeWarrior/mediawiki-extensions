@@ -109,6 +109,8 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'lastuserlogin_userid' => 'Потребителско име',
+	'lastuserlogin_username' => 'Име',
 	'lastuserlogin_lastlogin' => 'Последно влизане',
 );
 
