@@ -90,13 +90,13 @@ class ApiArticleFeedback extends ApiBase {
 		// -1 == Rating last time, but abstained this time
 		$countChange = 0;
 		if ( $lastRating === false || $lastRating === 0 ) {
-			if ( $newRating === 0 ) {
+			if ( $thisRating === 0 ) {
 				$countChange = 0;
 			} else {
 				$countChange = 1;
 			}
 		} else { // Last rating was > 0
-			if ( $newRating === 0 ) {
+			if ( $thisRating === 0 ) {
 				$countChange = -1;
 			} else {
 				$countChange = 0;
