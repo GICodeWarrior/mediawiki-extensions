@@ -85,14 +85,22 @@ class ApiArticleFeedback extends ApiBase {
 	private function insertPageRating( $pageId, $ratingId, $updateAddition, $thisRating, $lastRating ) {
 		$dbw = wfGetDB( DB_MASTER );
 
-		$newRating = ( $lastRating === false && $thisRating !== false );
+		// 0 == No change in rating count
+		// 1 == No rating last time (or new rating), and now there is
+		// -1 == Rating last time, but abstained this time
 		$countChange = 0;
-		if ( $newRating ) {
-			$countChange = 1; // Garunteed new rating
-		} else if ( $lastRating === 0 && $thisRating !== 0 ) {
-			$countChange = 1; // "New" rating as last was 0 (abstained)
-		} else if ( $lastRating !== 0 && $thisRating === 0 ) {
-			$countChange = -1; // Rating abstained this time, but there was a prior rating
+		if ( $lastRating === false || $lastRating === 0 ) {
+			if ( $newRating === 0 ) {
+				$countChange = 0;
+			} else {
+				$countChange = 1;
+			}
+		} else { // Last rating was > 0
+			if ( $newRating === 0 ) {
+				$countChange = -1;
+			} else {
+				$countChange = 0;
+			}
 		}
 
 		$dbw->insert(
