@@ -9,56 +9,27 @@
 class ArticleFeedbackHooks {
 	
 	protected static $modules = array(
-		'ext.articleFeedback-alpha' => array(
-			'scripts' => 'ext.articleFeedback-alpha/ext.articleFeedback-alpha.js',
-			'styles' => 'ext.articleFeedback-alpha/ext.articleFeedback-alpha.css',
+		'ext.articleFeedback' => array(
+			'scripts' => 'ext.articleFeedback/ext.articleFeedback.js',
+			'styles' => 'ext.articleFeedback/ext.articleFeedback.css',
 			'messages' => array(
-				'articlefeedback-alpha-yourfeedback',
-				'articlefeedback-alpha-pleaserate',
-				'articlefeedback-alpha-submit',
-				'articlefeedback-alpha-rating-wellsourced',
-				'articlefeedback-alpha-rating-neutrality',
-				'articlefeedback-alpha-rating-completeness',
-				'articlefeedback-alpha-rating-readability',
-				'articlefeedback-alpha-rating-wellsourced-tooltip',
-				'articlefeedback-alpha-rating-neutrality-tooltip',
-				'articlefeedback-alpha-rating-completeness-tooltip',
-				'articlefeedback-alpha-rating-readability-tooltip',
-				'articlefeedback-alpha-error',
-				'articlefeedback-alpha-thanks',
-				'articlefeedback-alpha-articlerating',
-				'articlefeedback-alpha-featurefeedback',
-				'articlefeedback-alpha-noratings',
-				'articlefeedback-alpha-stalemessage-revisioncount',
-				'articlefeedback-alpha-stalemessage-norevisioncount',
-				'articlefeedback-alpha-results-show',
-				'articlefeedback-alpha-results-hide',
-				'articlefeedback-alpha-survey-title',
-				'articlefeedback-alpha-survey-thanks',
-			),
-			'dependencies' => array( 'jquery.ui.dialog', 'jquery.tipsy', 'jquery.stars' ),
-		),
-		'ext.articleFeedback-beta' => array(
-			'scripts' => 'ext.articleFeedback-beta/ext.articleFeedback-beta.js',
-			'styles' => 'ext.articleFeedback-beta/ext.articleFeedback-beta.css',
-			'messages' => array(
-				'articlefeedback-beta-form-switch-label',
-				'articlefeedback-beta-form-panel-title',
-				'articlefeedback-beta-form-panel-instructions',
-				'articlefeedback-beta-form-panel-submit',
-				'articlefeedback-beta-report-switch-label',
-				'articlefeedback-beta-report-panel-title',
-				'articlefeedback-beta-report-panel-description',
-				'articlefeedback-beta-report-empty',
-				'articlefeedback-beta-report-ratings',
-				'articlefeedback-beta-field-wellsourced-label',
-				'articlefeedback-beta-field-wellsourced-tip',
-				'articlefeedback-beta-field-complete-label',
-				'articlefeedback-beta-field-complete-tip',
-				'articlefeedback-beta-field-neutral-label',
-				'articlefeedback-beta-field-neutral-tip',
-				'articlefeedback-beta-field-readable-label',
-				'articlefeedback-beta-field-readable-tip',
+				'articlefeedback-form-switch-label',
+				'articlefeedback-form-panel-title',
+				'articlefeedback-form-panel-instructions',
+				'articlefeedback-form-panel-submit',
+				'articlefeedback-report-switch-label',
+				'articlefeedback-report-panel-title',
+				'articlefeedback-report-panel-description',
+				'articlefeedback-report-empty',
+				'articlefeedback-report-ratings',
+				'articlefeedback-field-wellsourced-label',
+				'articlefeedback-field-wellsourced-tip',
+				'articlefeedback-field-complete-label',
+				'articlefeedback-field-complete-tip',
+				'articlefeedback-field-neutral-label',
+				'articlefeedback-field-neutral-tip',
+				'articlefeedback-field-readable-label',
+				'articlefeedback-field-readable-tip',
 			),
 			'dependencies' => array(
 				'jquery.tipsy',
@@ -66,10 +37,6 @@ class ArticleFeedbackHooks {
 				'jquery.ui.dialog',
 				'jquery.ui.button',
 			),
-		),
-		'jquery.stars' => array(
-			'scripts' => 'jquery.stars/jquery.stars.js',
-			'styles' => 'jquery.stars/jquery.stars.css',
 		),
 	);
 	
@@ -121,7 +88,7 @@ class ArticleFeedbackHooks {
 	 * BeforePageDisplay hook
 	 */
 	public static function beforePageDisplay( $out ) {
-		global $wgRequest, $wgArticleFeedbackCategories, $wgArticleFeedbackVersion;
+		global $wgRequest, $wgArticleFeedbackCategories;
 		
 		$title = $out->getTitle();
 		
@@ -138,11 +105,7 @@ class ArticleFeedbackHooks {
 			&& count( $wgArticleFeedbackCategories )
 			&& self::isInCategories( $title->getArticleId(), $wgArticleFeedbackCategories )
 		) {
-			if ( $wgArticleFeedbackVersion == 'beta' ) {
-				$out->addModules( 'ext.articleFeedback-beta' );
-			} else {
-				$out->addModules( 'ext.articleFeedback-alpha' );
-			}
+			$out->addModules( 'ext.articleFeedback' );
 		}
 		return true;
 	}
