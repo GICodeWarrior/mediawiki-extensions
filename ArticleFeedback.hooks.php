@@ -13,6 +13,23 @@ class ArticleFeedbackHooks {
 			'scripts' => 'ext.articleFeedback/ext.articleFeedback.js',
 			'styles' => 'ext.articleFeedback/ext.articleFeedback.css',
 			'messages' => array(
+				'articlefeedback-field-wellsourced-label',
+				'articlefeedback-field-wellsourced-tip',
+				'articlefeedback-field-complete-label',
+				'articlefeedback-field-complete-tip',
+				'articlefeedback-field-neutral-label',
+				'articlefeedback-field-neutral-tip',
+				'articlefeedback-field-readable-label',
+				'articlefeedback-field-readable-tip',
+			),
+			'dependencies' => array(
+				'jquery.articleFeedback',
+			),
+		),
+		'jquery.articleFeedback' => array(
+			'scripts' => 'jquery.articleFeedback/jquery.articleFeedback.js',
+			'styles' => 'jquery.articleFeedback/jquery.articleFeedback.css',
+			'messages' => array(
 				'articlefeedback-form-switch-label',
 				'articlefeedback-form-panel-title',
 				'articlefeedback-form-panel-instructions',
@@ -22,14 +39,6 @@ class ArticleFeedbackHooks {
 				'articlefeedback-report-panel-description',
 				'articlefeedback-report-empty',
 				'articlefeedback-report-ratings',
-				'articlefeedback-field-wellsourced-label',
-				'articlefeedback-field-wellsourced-tip',
-				'articlefeedback-field-complete-label',
-				'articlefeedback-field-complete-tip',
-				'articlefeedback-field-neutral-label',
-				'articlefeedback-field-neutral-tip',
-				'articlefeedback-field-readable-label',
-				'articlefeedback-field-readable-tip',
 			),
 			'dependencies' => array(
 				'jquery.tipsy',
