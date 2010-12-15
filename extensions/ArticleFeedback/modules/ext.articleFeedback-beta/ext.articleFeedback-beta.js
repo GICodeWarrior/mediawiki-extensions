@@ -98,7 +98,7 @@ $.articleFeedback = {
 				'success': function( data ) {
 					var context = this;
 					
-					console.log( data );
+					//console.log( data );
 					
 					if ( typeof data.query.articlefeedback == undefined ) {
 						// ERROR!
