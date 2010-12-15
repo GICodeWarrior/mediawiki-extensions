@@ -97,6 +97,9 @@ $.articleFeedback = {
 				},
 				'success': function( data ) {
 					var context = this;
+					
+					console.log( data );
+					
 					if ( typeof data.query.articlefeedback == undefined ) {
 						// ERROR!
 						console.log( '<loadReport success with bad data />' );
@@ -113,24 +116,41 @@ $.articleFeedback = {
 						var field = $.articleFeedback.cfg.fields[ratings[i].ratingid];
 						var rating = ratings[i].userrating;
 						var count = ratings[i].count;
-						var average = Math.max( Math.min( ( ratings[i].total / count ), 5 ), 0 );
 						var $rating =
 							context.$ui.find( '.articleFeedback-rating[rel="' + field + '"]' );
-						$rating
-							.find( '.articleFeedback-rating-average' )
-								.text( average % 1 == 0 ? average + '.0' : average )
-								.end()
-							.find( '.articleFeedback-rating-meter div' )
-								.css( 'width', average >= 1 ? ( average * 20 + 'px' ) : 0 )
-								.end()
-							.find( '.articleFeedback-rating-count' )
-								.text(
-									count === 0
-										? mediaWiki.msg( 'articlefeedback-beta-report-empty' )
-										: '(' + count + ') ' + mediaWiki.msg( 'articlefeedback-beta-report-ratings' ) )
-								.end()
-							.find( '.articleFeedback-rating-fields input[value="' + rating + '"]' )
-								.attr( 'checked', true );
+						if ( count > 0 ) {
+							var average = Math.max( Math.min( ratings[i].total / count, 5 ), 0 );
+							var text = ( average - ( average % 1 ) ) + '.' +
+								Math.round( ( average % 1 ) * 10 );
+							$rating
+								.find( '.articleFeedback-rating-average' )
+									.text( text )
+									.end()
+								.find( '.articleFeedback-rating-meter div' )
+									.css( 'width', Math.round( average * 20 ) + 'px' )
+									.end()
+								.find( '.articleFeedback-rating-count' )
+									.text(
+										'(' + count + ') ' +
+										mediaWiki.msg( 'articlefeedback-beta-report-ratings' )
+									)
+									.end()
+								.find( 'input[value="' + rating + '"]' )
+									.attr( 'checked', true );
+						} else {
+							$rating
+								.find( '.articleFeedback-rating-average' )
+									.text( '' )
+									.end()
+								.find( '.articleFeedback-rating-meter div' )
+									.css( 'width', 0 )
+									.end()
+								.find( '.articleFeedback-rating-count' )
+									.text( mediaWiki.msg( 'articlefeedback-beta-report-empty' ) )
+									.end()
+								.find( 'input' )
+									.attr( 'checked', false );
+						}
 						$.articleFeedback.fn.updateRating.call( $rating );
 					}
 					// If being called just after a submit, we need to un-new the rating controls
