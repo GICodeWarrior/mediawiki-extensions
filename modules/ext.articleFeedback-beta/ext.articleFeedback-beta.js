@@ -130,10 +130,9 @@ $.articleFeedback = {
 									.css( 'width', Math.round( average * 20 ) + 'px' )
 									.end()
 								.find( '.articleFeedback-rating-count' )
-									.text(
-										'(' + count + ') ' +
-										mediaWiki.msg( 'articlefeedback-beta-report-ratings' )
-									)
+									.text( mediaWiki.msg(
+										'articlefeedback-beta-report-ratings', count
+									) )
 									.end()
 								.find( 'input[value="' + rating + '"]' )
 									.attr( 'checked', true );
