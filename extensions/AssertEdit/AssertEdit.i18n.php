@@ -712,6 +712,15 @@ $messages['shi'] = array(
 	'assert_edit_message' => 'Tuwkid ($1) ur izri',
 );
 
+/** Sinhala (සිංහල)
+ * @author Thameera123
+ */
+$messages['si'] = array(
+	'assert_edit_title' => 'ස්ථිර කිරීම අසමත් විය',
+	'assertedit-desc' => 'බොට්වරුන්ගේ ප්‍රයෝජනය සඳහා සංස්කරණ ස්ථිර කිරීම් එකතු කරයි',
+	'assert_edit_message' => 'සඳහන් කළ ස්ථිර කිරීම ($1) අසමත් විය',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

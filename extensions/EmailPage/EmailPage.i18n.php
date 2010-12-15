@@ -164,8 +164,13 @@ $messages['bg'] = array(
 	'ea-listrecipients' => '=== Списък на $1 {{PLURAL:$1|получател|получателя}} ===',
 	'ea-error' => "'''Грешка при изпращане на [[$1]]:''' ''$2''",
 	'ea-show' => 'Показване на получателите',
+	'ea-from' => 'От:',
+	'ea-to' => 'До:',
 	'ea-send' => 'Изпращане!',
+	'ea-subject' => 'Тема:',
+	'ea-message' => 'Съобщение:',
 	'ea-selectcss' => 'Избиране на CSS стил',
+	'ea-allusers' => 'Всички потребители',
 );
 
 /** Breton (Brezhoneg)

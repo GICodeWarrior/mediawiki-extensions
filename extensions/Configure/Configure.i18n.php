@@ -329,6 +329,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 	'configure-condition-operator-or' => '{{Identical|Or}}',
 	'configure-condition-operator-and' => '{{Identical|And}}',
 	'configure-condition-operator-xor' => 'Means "one or the other but not both"',
+	'configure-condition-requirement' => '{{Identical|Requirement}}',
 	'configure-condition-name-3' => '{{Identical|E-mail confirmed}}',
 	'configure-condition-description-1' => '* $1 is the number of edits, <nowiki>{{PLURAL:}}</nowiki> supported if you need it',
 	'configure-condition-description-2' => '* $1 is the number of seconds',
