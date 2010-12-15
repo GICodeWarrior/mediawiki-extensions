@@ -108,7 +108,7 @@ $messages['be-tarask'] = array(
 	'push-button-pushing-files' => 'Распаўсюдзіць файлы',
 	'push-button-completed' => 'Распаўсюджваньне скончанае',
 	'push-button-failed' => 'Памылка распаўсюджваньня',
-	'push-tab-title' => 'Распаўсюджваньне $1',
+	'push-tab-title' => 'Распаўсюдзіць $1',
 	'push-targets' => 'Мэты распаўсюджваньня',
 	'push-add-target' => 'Дадаць мэту',
 	'push-import-revision-message' => 'Распаўсюджаная з $1 $2.',
@@ -117,6 +117,15 @@ $messages['be-tarask'] = array(
 	'push-remote-pages' => 'Аддаленыя старонкі',
 	'push-remote-page-link' => '$1 на $2',
 	'push-remote-page-link-full' => 'Паказаць $1 на $2',
+	'push-targets-total' => 'Усяго $1 {{PLURAL:$1|мэта|мэты|мэтаў}}.',
+	'push-button-all' => 'Распаўсюдзіць усе',
+	'push-tab-last-edit' => 'Апошні раз рэдагавалася $1 $2 у $3.',
+	'push-tab-not-created' => 'Гэтая старонка пакуль не існуе.',
+	'push-tab-push-options' => 'Налады распаўсюджваньня:',
+	'push-tab-inc-templates' => 'Уключыць шаблёны',
+	'push-tab-used-templates' => '({{PLURAL:$2|Выкарыстаны шаблён|Выкарыстаныя шаблёны}}: $1)',
+	'push-tab-no-used-templates' => '(На гэтай старонцы не выкарыстоўваюцца шаблёны.)',
+	'push-tab-inc-files' => 'Уключыць файлы',
 );
 
 /** Breton (Brezhoneg)
@@ -164,6 +173,8 @@ $messages['de'] = array(
 	'push-tab-no-used-templates' => '(Auf dieser Seite werden keine Vorlagen eingesetzt.)',
 	'push-tab-inc-files' => 'Dateien einbeziehen',
 	'push-tab-err-fileinfo' => 'Es konnte nicht ermittelt werden, welche Dateien auf dieser Seite eingebunden sind. Es wurde keine transferiert.',
+	'push-tab-err-filepush-unknown' => 'Dateitransfer ist aus unbekanntem Grund fehlgeschlagen.',
+	'push-tab-err-filepush' => 'Dateitransfer fehlgeschlagen: $1',
 	'special-push' => 'Seiten transferieren',
 	'push-special-description' => 'Diese Spezialseite ermöglicht es den Inhalt einer oder mehrerer Seiten zu einem oder mehreren anderen Wikis zu transferieren.
 
@@ -197,17 +208,24 @@ $messages['fi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'push-err-authentication' => 'Awtentifikacija na $1 je so njeporadźiła. $2',
 	'push-add-target' => 'Cil přidać',
-	'push-import-revision-comment' => 'Posledni komentar: $1',
 	'push-remote-pages' => 'Zdalene strony',
 	'push-remote-page-link' => '$1 w $2',
 	'push-remote-page-link-full' => 'Stronu $1 na $2 sej wobhladać',
 	'push-targets-total' => '{{PLURAL:$1|Je $1 strona|Stej $1 stronje|Su $1 strony|Je $1 stronow}}.',
+	'push-tab-last-edit' => 'Poslednja změna wot wužiwarja $1, $2, $3.',
+	'push-tab-not-created' => 'Tuta strona hišće njeeksistuje.',
 	'push-tab-inc-templates' => 'Předłohi zapřijeć',
 	'push-tab-used-templates' => '({{PLURAL:$2|Wužita předłoha|Wužitej předłoze|Wužite předłohi|Wužite předłohi}}: $1)',
 	'push-tab-no-used-templates' => '(Na tutej stronje so žane přełohi wužiwaja.)',
+	'push-tab-inc-files' => 'Dataje zapřijeć',
 	'push-special-target-is' => 'Cilowy wiki: $1',
 	'push-special-select-targets' => 'Cilowe wikije:',
+	'push-special-err-token-failed' => 'Wobdźěłowanski token njeda so na cilowym wikiju wobstarać.',
+	'push-special-err-pageget-failed' => 'Wobsah lokalneje strony njeda so wobstarać.',
+	'push-special-inc-files' => 'Dataje zapřijeć',
+	'push-special-obtaining-fileinfo' => '$1: Datajowe informacije so wobstaruja...',
 );
 
 /** Interlingua (Interlingua)
@@ -225,9 +243,10 @@ $messages['ia'] = array(
 	'push-button-text' => 'Transferer',
 	'push-tab-desc' => 'Iste scheda permitte transferer le version actual de iste pagina a un o plus altere wikis.',
 	'push-button-pushing' => 'Transferimento in curso',
+	'push-button-pushing-files' => 'Transfere files',
 	'push-button-completed' => 'Transferimento complete',
 	'push-button-failed' => 'Transferimento fallite',
-	'push-tab-title' => 'Transfere $1',
+	'push-tab-title' => 'Transferer $1',
 	'push-targets' => 'Destinationes de transferimento',
 	'push-add-target' => 'Adder destination',
 	'push-import-revision-message' => 'Transferite ex $1 per $2.',
@@ -244,6 +263,10 @@ $messages['ia'] = array(
 	'push-tab-inc-templates' => 'Includer patronos',
 	'push-tab-used-templates' => '({{PLURAL:$2|Patrono|Patronos}} usate: $1)',
 	'push-tab-no-used-templates' => '(Nulle patrono es usate in iste pagina.)',
+	'push-tab-inc-files' => 'Includer files',
+	'push-tab-err-fileinfo' => 'Non poteva determinar qual files es usate in iste pagina. Nulle file ha essite transferite.',
+	'push-tab-err-filepush-unknown' => 'Le transferimento ha fallite pro un ration incognite.',
+	'push-tab-err-filepush' => 'Transferimento de file fallite: $1',
 	'special-push' => 'Transferer paginas',
 	'push-special-description' => 'Iste pagina permitte transferer le contento de un o plus paginas a un o plus wikis MediaWiki.
 
@@ -259,6 +282,11 @@ Pro transferer paginas, entra le titulos in le quadro de texto hic infra, un tit
 	'push-special-err-token-failed' => 'Non poteva obtener un indicio de modification in le wiki de destination.',
 	'push-special-err-pageget-failed' => 'Non poteva obtener le contento del pagina local.',
 	'push-special-err-push-failed' => 'Le wiki de destination refusava le pagina transferite.',
+	'push-special-inc-files' => 'Includer files',
+	'push-special-err-imginfo-failed' => 'Non poteva determinar si es necessari transferer files.',
+	'push-special-obtaining-fileinfo' => '$1: Obtene informationes de file...',
+	'push-special-pushing-file' => '$1: Transfere file $2...',
+	'push-special-return' => 'Transferer plus paginas',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -298,6 +326,8 @@ $messages['id'] = array(
 	'push-tab-no-used-templates' => '(Tidak ada templat yang digunakan pada halaman ini.)',
 	'push-tab-inc-files' => 'Sertakan berkas',
 	'push-tab-err-fileinfo' => 'Tidak dapat mengetahui berkas mana yang digunakan pada halaman ini. Tidak ada yang didorong.',
+	'push-tab-err-filepush-unknown' => 'Gagal mendorong berkas karena alasan yang tidak diketahui.',
+	'push-tab-err-filepush' => 'Gagal mendorong berkas: $1',
 	'special-push' => 'Dorong halaman',
 	'push-special-description' => 'Halaman ini memungkinkan Anda untuk mendorong satu atau lebih halaman ke satu atau lebih wiki MediaWiki.
 
@@ -363,7 +393,7 @@ $messages['mk'] = array(
 	'push-button-pushing-files' => 'Пренесувам податотеки',
 	'push-button-completed' => 'Преносот заврши',
 	'push-button-failed' => 'Преносот не успеа',
-	'push-tab-title' => 'Пренесување на $1',
+	'push-tab-title' => 'Пренеси - $1',
 	'push-targets' => 'Одредници за преносот',
 	'push-add-target' => 'Додај одредница',
 	'push-import-revision-message' => 'Пренесено од $1. Пренел: $2.',
@@ -382,6 +412,8 @@ $messages['mk'] = array(
 	'push-tab-no-used-templates' => '(На страницава не се користат шаблони.)',
 	'push-tab-inc-files' => 'Вклучи податотеки',
 	'push-tab-err-fileinfo' => 'Не можев да востановам кои податотеки се користат на страницава. Затоа не преместив ниедна.',
+	'push-tab-err-filepush-unknown' => 'Пренесувањето на податотеката не успеа од непознати причини.',
+	'push-tab-err-filepush' => 'Пренесувањето на податотеката не успеа: $1',
 	'special-push' => 'Пренесување страници',
 	'push-special-description' => 'Оваа страница ви овозможува да пренесете содржини од една или повеќе страници од едно вики во едно или повеќе викија што работат на МедијаВики.
 
@@ -475,7 +507,7 @@ $messages['pt'] = array(
 	'push-button-pushing-files' => 'A replicar ficheiros',
 	'push-button-completed' => 'Replicação terminada',
 	'push-button-failed' => 'A replicação falhou',
-	'push-tab-title' => 'A replicar $1',
+	'push-tab-title' => 'Replicar $1',
 	'push-targets' => 'Destinos da replicação',
 	'push-add-target' => 'Adicionar destino',
 	'push-import-revision-message' => 'Replicada de $1 por $2.',
