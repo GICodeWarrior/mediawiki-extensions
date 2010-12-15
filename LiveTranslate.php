@@ -45,6 +45,13 @@ unset( $useExtensionPath );
 
 $wgExtensionMessagesFiles['LiveTranslate'] 			= $egLiveTranslateIP . '/LiveTranslate.i18n.php';
 
-$wgAutoloadClasses['LiveTranslate'] 				= $egLiveTranslateIP . '/LiveTranslate.hooks.php';
+$wgAutoloadClasses['LiveTranslateHooks'] 			= $egLiveTranslateIP . '/LiveTranslate.hooks.php';
+$wgAutoloadClasses['ApiLiveTranslate']	 			= $egLiveTranslateIP . '/api/ApiLiveTranslate.php';
+
+$wgAPIModules['livetranslate'] = 'ApiLiveTranslate';
+
+$wgHooks['ArticleViewHeader'][] = 'LiveTranslateHooks::onArticleViewHeader';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'LiveTranslateHooks::onSchemaUpdate';
+$wgHooks['ArticleSaveComplete'][] = 'LiveTranslateHooks::onArticleSaveComplete';
 
 require_once 'LiveTranslate_Settings.php';
