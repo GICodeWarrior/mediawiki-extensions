@@ -15,7 +15,5 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'lte-desc' => 'Enables live translation of page content using the Google Translate service.',
-
-
+	'livetranslate-desc' => 'Enables live translation of page content using the Google Translate service',
 );

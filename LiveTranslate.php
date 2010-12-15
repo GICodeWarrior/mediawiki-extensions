@@ -35,7 +35,7 @@ $wgExtensionCredits['other'][] = array(
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw] for [http://www.wikiworks.com WikiWorks]',
 	),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Live_Translate',
-	'descriptionmsg' => 'lte-desc'
+	'descriptionmsg' => 'livetranslate-desc'
 );
 
 $useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
