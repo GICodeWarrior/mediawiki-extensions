@@ -18,3 +18,4 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$egLiveTranslateDirPage = 'Live Translate Dictionary';
