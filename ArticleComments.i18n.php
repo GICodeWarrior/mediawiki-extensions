@@ -337,6 +337,37 @@ $messages['de-formal'] = array(
 	'article-comments-user-is-blocked' => 'Sie dürfen die Seite „[[$1]]“ derzeit nicht bearbeiten.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'article-comments-desc' => 'Zmóžnja komentarowe wótrězki na wopsimjeśowych bokach',
+	'article-comments-title-string' => 'titel',
+	'article-comments-name-string' => 'Mě',
+	'article-comments-name-field' => 'Mě (trěbne):',
+	'article-comments-url-field' => 'Websedło:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Komentar',
+	'article-comments-comment-field' => 'Komentar:',
+	'article-comments-submit-button' => 'Wótpósłaś',
+	'article-comments-leave-comment-link' => 'Zawóstaj komentar ...',
+	'article-comments-invalid-field' => 'Gódnota <nowiki>[$2]</nowiki> za $1 jo njepłaśiwa.',
+	'article-comments-required-field' => 'Pólo "$1" jo trěbne.',
+	'article-comments-submission-failed' => 'Wótpósłanje komentara jo se njeraźiło',
+	'article-comments-failure-reasons' => 'Bóžko wótposłanje twójogo komentara jo se ze {{PLURAL:$1|slědujuceje pśicyna|slědujuceju pśicynowu|slědujucych pśicynow|slědujucych pśicynow}} njeraźiło:',
+	'article-comments-talk-page-starter' => '<noinclude>Komentary k bokoju „[[$1]]“
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 jo gronił ...',
+	'article-comments-submission-succeeded' => 'Wótpósłanje komentara jo se raźiło',
+	'article-comments-submission-success' => 'Sy komentar za "[[$1]] wuspěšnje wótpósłał',
+	'article-comments-comment-bad-mode' => 'Za komentar jo se njepłaśiwy modus pódał.
+Móžne su "plain", "normal" a "wiki".',
+	'article-comments-comment-missing-name-parameter' => 'Felujuce mě',
+	'article-comments-comment-missing-date-parameter' => 'Felujucy komentarowy datum',
+	'article-comments-no-spam' => 'Nanjemjenjej jadno z wótpóskanych pólow jo se ako spam markěrowało.',
+);
+
 /** Greek (Ελληνικά)
  * @author Glavkos
  */
