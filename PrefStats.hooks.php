@@ -13,9 +13,14 @@ class PrefStatsHooks {
 	/**
 	 * LoadExtensionSchemaUpdates hook
 	 */
-	public static function loadExtensionSchemaUpdates() {
-		global $wgExtNewTables;
-		$wgExtNewTables[] = array( 'prefstats', dirname( __FILE__ ) . '/patches/PrefStats.sql' );
+	public static function loadExtensionSchemaUpdates( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables;
+			$wgExtNewTables[] = array( 'prefstats', dirname( __FILE__ ) . '/patches/PrefStats.sql' );
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'prefstats',
+				dirname( __FILE__ ) . '/patches/PrefStats.sql', true ) );
+		}
 		return true;
 	}
 
