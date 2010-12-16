@@ -22,6 +22,13 @@ $messages['be-tarask'] = array(
 	'categorymembersonsidebar-desc' => 'Дадае старонкі ў катэгорыі ў бакавую панэль',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'categorymembersonsidebar-desc' => 'Ouzhpennañ izili ar rummad er varrenn gostez',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -41,6 +48,13 @@ $messages['ca'] = array(
  */
 $messages['de'] = array(
 	'categorymembersonsidebar-desc' => 'Ermöglicht die Anzeige der einer Kategorie zugeordneten Seiten in der Seitenleiste',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'categorymembersonsidebar-desc' => 'Pśidawa boki kategorije do bócnice',
 );
 
 /** Swiss German (Alemannisch)
@@ -83,6 +97,20 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'categorymembersonsidebar-desc' => 'Додава членови на категорија во страничната лента',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'categorymembersonsidebar-desc' => 'Legger til kategorimedlemmer på sidepanelet',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categorymembersonsidebar-desc' => 'A gionta ij mémber ëd la categorìa an sla bara lateral',
 );
 
 /** Portuguese (Português)
