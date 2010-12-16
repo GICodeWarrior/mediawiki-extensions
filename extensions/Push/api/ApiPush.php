@@ -78,24 +78,13 @@ class ApiPush extends ApiBase {
 			}			 
 		}
 		
-		if ( count( $this->editResponses ) == 1 ) {
+		foreach ( $this->editResponses as $response ) {
 			$this->getResult()->addValue(
 				null,
 				null,
-				FormatJson::decode( $this->editResponses[0] )
-			);
-		}
-		else {
-			$success = true;
-			
-			foreach ( $this->editResponses as $response ) {
-				$this->getResult()->addValue(
-					null,
-					null,
-					FormatJson::decode( $response )
-				);					
-			}
-		}
+				FormatJson::decode( $response )
+			);					
+		}		
 	}
 	
 	/**
