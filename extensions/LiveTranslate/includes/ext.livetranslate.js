@@ -1,6 +1,6 @@
 /**
- * JavasSript for the Push tab in the Push extension.
- * @see http://www.mediawiki.org/wiki/Extension:Push
+ * JavasSript for the Live Translate extension.
+ * @see http://www.mediawiki.org/wiki/Extension:Live_Translate
  * 
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
