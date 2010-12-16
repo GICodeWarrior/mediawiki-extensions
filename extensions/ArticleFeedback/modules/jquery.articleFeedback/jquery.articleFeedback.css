@@ -5,11 +5,9 @@
 .articleFeedback {
 	position: relative;
 	display: inline-block;
-	/* width: 39em; 1em extra space to resolve rounding errors*/
 }
 
 .articleFeedback-panel {
-	/* height: 15em; */
 	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
@@ -20,8 +18,6 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	/* height: 15em; */
-	/* width: 38em; */
 	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
@@ -37,7 +33,6 @@
 
 .articleFeedback-panel .articleFeedback-buffer {
 	padding: 0.75em 1em;
-	/* width: 28em; */
 }
 
 .articleFeedback-title {
@@ -144,9 +139,7 @@
 }
 
 .articleFeedback-rating {
-	display: inline-block;
-	/* width: 50%; */
-	/* margin-left: -1px; */
+	float: left;
 	width: 11em;
 	height: 4em;
 	margin-bottom: 0.5em;
