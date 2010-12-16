@@ -10,7 +10,34 @@
  *
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class PushFunctions {
+final class LiveTranslateFunctions {
+	
+	/**
+	 * Loads the needed JavaScript.
+	 * Takes care of non-RL compatibility.
+	 * 
+	 * @since 0.1
+	 */
+	protected static function loadJs() {
+		global $wgOut;
+		
+		// For backward compatibility with MW < 1.17.
+		if ( is_callable( array( $wgOut, 'addModules' ) ) ) {
+			$wgOut->addModules( 'ext.livetranslate' );
+		}
+		else {
+			global $egLiveTranslateScriptPath;
+			
+			self::addJSLocalisation();
+			
+			$wgOut->includeJQuery();
+			
+			$wgOut->addHeadItem(
+				'ext.livetranslate',
+				Html::linkedScript( $egLiveTranslateScriptPath . '/includes/ext.livetranslate.js' )
+			);
+		}		
+	}	
 	
 	/**
 	 * Adds the needed JS messages to the page output.
