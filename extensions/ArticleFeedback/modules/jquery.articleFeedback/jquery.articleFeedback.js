@@ -4,6 +4,9 @@
 
 ( function( $, mw ) {
 
+/**
+ * Article Feedback jQuery Plugin Support Code
+ */
 $.articleFeedback = {
 	'tpl': {
 		'ui': '\
@@ -72,17 +75,17 @@ $.articleFeedback = {
 				data['r' + id] = context.$ui.find( 'input[name=r' + id + ']:checked' ).val() | 0;
 			}
 			$.ajax( {
-				'url': mediaWiki.config.get( 'wgScriptPath' ) + '/api.php',
+				'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
 				'type': 'POST',
 				'dataType': 'json',
 				'context': context,
 				'data': $.extend( data, {
 					'action': 'articlefeedback',
 					'format': 'json',
-					'anontoken': mediaWiki.user.sessionId(),
-					'userid': mediaWiki.user.sessionId(),
-					'pageid': mediaWiki.config.get( 'wgArticleId' ),
-					'revid': mediaWiki.config.get( 'wgCurRevisionId' ),
+					'anontoken': mw.user.sessionId(),
+					'userid': mw.user.sessionId(),
+					'pageid': mw.config.get( 'wgArticleId' ),
+					'revid': mw.config.get( 'wgCurRevisionId' ),
 					'bucket': 1
 				} ),
 				'success': function( data ) {
@@ -98,7 +101,7 @@ $.articleFeedback = {
 		'load': function() {
 			var context = this;
 			$.ajax( {
-				'url': mediaWiki.config.get( 'wgScriptPath' ) + '/api.php',
+				'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
 				'type': 'GET',
 				'dataType': 'json',
 				'context': context,
@@ -106,9 +109,9 @@ $.articleFeedback = {
 					'action': 'query',
 					'format': 'json',
 					'list': 'articlefeedback',
-					'afpageid': mediaWiki.config.get( 'wgArticleId' ),
-					'afanontoken': mediaWiki.user.sessionId(),
-					'afuserrating': mediaWiki.user.sessionId()
+					'afpageid': mw.config.get( 'wgArticleId' ),
+					'afanontoken': mw.user.sessionId(),
+					'afuserrating': mw.user.sessionId()
 				},
 				'success': function( data ) {
 					var context = this;
@@ -119,6 +122,7 @@ $.articleFeedback = {
 					}
 					context.$ui.find( '.articleFeedback-rating' ).each( function() {
 						var ratingData;
+						// Try to get data provided for this rating
 						if (
 							data.query.articlefeedback.length &&
 							typeof data.query.articlefeedback[0].ratings !== 'undefined'
@@ -141,7 +145,7 @@ $.articleFeedback = {
 									.css( 'width', 0 )
 									.end()
 								.find( '.articleFeedback-rating-count' )
-									.text( mediaWiki.msg( 'articlefeedback-report-empty' ) )
+									.text( mw.msg( 'articlefeedback-report-empty' ) )
 									.end()
 								.find( 'input' )
 									.attr( 'checked', false );
@@ -157,7 +161,7 @@ $.articleFeedback = {
 									.css( 'width', Math.round( average * 20 ) + 'px' )
 									.end()
 								.find( '.articleFeedback-rating-count' )
-									.text( mediaWiki.msg(
+									.text( mw.msg(
 										'articlefeedback-report-ratings', ratingData.count
 									) )
 									.end()
@@ -310,6 +314,27 @@ $.articleFeedback = {
 	}
 };
 
+/**
+ * Article Feedback jQuery Plugin
+ * 
+ * Can be called with an options object like...
+ * 
+ * 	$( ... ).articleFeedback( {
+ * 		'bucket': 1, // Numeric identifier of the bucket being used, which is logged on submit
+ * 		'ratings': {
+ * 			'rating-name': {
+ * 				'id': 1, // Numeric identifier of the rating, same as the rating_id value in the db
+ * 				'label': 'msg-key-for-label', // String of message key for label
+ * 				'tip': 'msg-key-for-tip', // String of message key for tip
+ * 			},
+ *			// More ratings here...
+ * 		}
+ * 	} );
+ * 
+ * Rating IDs need to match up to the contents of your article_feedback_ratings table, which is a
+ * lookup table containing rating IDs and message keys used for translating rating IDs into string;
+ * and be included in $wgArticleFeedbackRatings, which is an array of allowed IDs.
+ */
 $.fn.articleFeedback = function() {
 	var args = arguments;
 	$(this).each( function() {
