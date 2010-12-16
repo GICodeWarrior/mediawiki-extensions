@@ -86,7 +86,7 @@ $.articleFeedback = {
 					'userid': mw.user.sessionId(),
 					'pageid': mw.config.get( 'wgArticleId' ),
 					'revid': mw.config.get( 'wgCurRevisionId' ),
-					'bucket': 1
+					'bucket': context.options.bucket
 				} ),
 				'success': function( data ) {
 					var context = this;
@@ -128,14 +128,14 @@ $.articleFeedback = {
 							typeof data.query.articlefeedback[0].ratings !== 'undefined'
 						) {
 							var ratingsData = data.query.articlefeedback[0].ratings;
-							var ratingId = context.options.ratings[$(this).attr( 'rel' )];
+							var id = context.options.ratings[$(this).attr( 'rel' )].id;
 							for ( var i = 0; i < ratingsData.length; i++ ) {
-								if ( ratingsData[i].ratingid == ratingId ) {
+								if ( ratingsData[i].ratingid == id ) {
 									ratingData = ratingsData[i];
 								}
 							}
 						}
-						if ( typeof ratingData === 'undefined' ) {
+						if ( typeof ratingData === 'undefined' || ratingData.total == 0 ) {
 							// Setup in "no ratings" mode
 							$(this)
 								.find( '.articleFeedback-rating-average' )
@@ -168,8 +168,8 @@ $.articleFeedback = {
 								.find( 'input[value="' + ratingData.userrating + '"]' )
 									.attr( 'checked', true );
 						}
+						$.articleFeedback.fn.updateRating.call( $(this) );
 					} );
-					$.articleFeedback.fn.updateRating.call( $(this) );
 					// If being called just after a submit, we need to un-new the rating controls
 					context.$ui.find( '.articleFeedback-rating-new' )
 						.removeClass( 'articleFeedback-rating-new' );
