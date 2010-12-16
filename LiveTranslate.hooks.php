@@ -24,13 +24,81 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
-		global $wgOut;
+		global $wgOut, $egLiveTranslateDirPage;
 		
-		if ( $article->exists() ) {
-			// TODO
+		$title = $article->getTitle();
+		
+		if ( $article->exists() && $title->getFullText() != $egLiveTranslateDirPage ) {
+			// TODO: obtain source lang
+			$sourceLang = 'English';
+			
+			$wgOut->addHTML(
+				Html::rawElement(
+					'div',
+					array(
+						'id' => 'livetranslatediv',
+						'style' => 'display:inline; float:right'
+					),
+					htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
+					'&#160;' . 
+					self::getLanguageSelector() .
+					'&#160;' . 
+					Html::element(
+						'button',
+						array( 'id' => 'livetranslatebutton' ),
+						wfMsg( 'livetranslate-button-translate' )
+					)
+				)
+			);
 		}
 		
 		return true;
+	}
+	
+	/**
+	 * Returns the HTML for a language selector.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
+	protected static function getLanguageSelector() {
+		$options = array();
+		
+		foreach ( self::getAvailableLanguages() as $language ) {
+			$options[] = Html::element(
+				'option',
+				array(),
+				$language
+			);
+		}
+
+		return 
+			Html::openElement( 'select', array( 'id' => 'livetranslatelang' ) ) .
+			implode( "\n", $options ) . 
+			Html::closeElement( 'select' );
+	}
+	
+	/**
+	 * Gets a list of all available languages.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	protected static function getAvailableLanguages() {
+		$dbr = wfGetDB( DB_SLAVE );
+			
+		$destinationLangs = array();
+			
+		// TODO: fix index
+		$res = $dbr->query( 'SELECT DISTINCT word_language FROM ' . $dbr->tableName( 'live_translate' ) );
+		
+		while ( $lang = $dbr->fetchObject( $res ) ) {
+			$destinationLangs[] = $lang->word_language;
+		}
+
+		return $destinationLangs;
 	}
 	
 	/**

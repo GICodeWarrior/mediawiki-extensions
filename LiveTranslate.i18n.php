@@ -16,6 +16,10 @@ $messages = array();
  */
 $messages['en'] = array(
 	'livetranslate-desc' => 'Enables live translation of page content using the Google Translate service',
+
+	'livetranslate-translate-to' => 'Translate this article to',
+	'livetranslate-button-translate' => 'Translate',
+	'livetranslate-button-translating' => 'Translating...',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
