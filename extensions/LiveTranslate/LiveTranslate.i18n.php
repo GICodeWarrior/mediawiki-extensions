@@ -29,11 +29,31 @@ $messages['be-tarask'] = array(
 	'livetranslate-desc' => 'Дазваляе пераклады тэкстаў старонак на ляту ў Google Translate',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'livetranslate-desc' => 'Aotren a ra treiñ danvez ur bajenn war-eeun en ur ober gant servij treiñ Google',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
 $messages['de'] = array(
 	'livetranslate-desc' => 'Ermöglicht die unmittelbare Übersetzung des Seiteninhalts mit „Google Übersetzer“',
+	'livetranslate-translate-to' => 'Diese Seite in folgende Sprache übersetzen:',
+	'livetranslate-button-translate' => 'Übersetze',
+	'livetranslate-button-translating' => 'Übersetze …',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'livetranslate-desc' => 'Zmóžnja direktne pśełožowanje wopśimjeśa boka z pomocu słužby "Google Translate"',
+	'livetranslate-translate-to' => 'Pśełož toś ten boko do',
+	'livetranslate-button-translate' => 'Pśełožyś',
+	'livetranslate-button-translating' => 'Pśełožujo se...',
 );
 
 /** Swiss German (Alemannisch)
@@ -41,6 +61,16 @@ $messages['de'] = array(
  */
 $messages['gsw'] = array(
 	'livetranslate-desc' => 'Macht di diräkt Ibersetzig vum Syteninhalt megli mit „Google Ibersetzer“',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'livetranslate-desc' => 'Zmóžnja hnydomne přełožowanje wobsaha strony z pomocu słužby "Google Translate"',
+	'livetranslate-translate-to' => 'Přełož tutu stronu do',
+	'livetranslate-button-translate' => 'Přełožić',
+	'livetranslate-button-translating' => 'Přełožuje so...',
 );
 
 /** Interlingua (Interlingua)
@@ -55,6 +85,20 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'livetranslate-desc' => 'Memungkinkan penerjemahan langsung konten halaman dengan menggunakan layanan Google Terjemahan',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'livetranslate-desc' => 'Овозможува преведување на содржината на една страница во живо, користејќи Google Translate',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'livetranslate-desc' => 'A abìlita viragi dal viv ëd contnù ëd pàgine an dovrand ël sërvissi Google Translate',
 );
 
 /** Portuguese (Português)

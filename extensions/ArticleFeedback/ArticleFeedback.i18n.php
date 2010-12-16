@@ -173,7 +173,7 @@ $messages['be-tarask'] = array(
 	'articlefeedback-report-panel-title' => 'Вынікі водгуку',
 	'articlefeedback-report-panel-description' => 'Цяперашнія сярэднія адзнакі.',
 	'articlefeedback-report-empty' => 'Адзнакаў няма',
-	'articlefeedback-report-ratings' => 'адзнакі',
+	'articlefeedback-report-ratings' => '$1 {{PLURAL:$1|адзнака|адзнакі|адзнакаў}}',
 	'articlefeedback-field-wellsourced-label' => 'Са спасылкамі на крыніцы',
 	'articlefeedback-field-wellsourced-tip' => 'Вы лічыце, што гэтая старонка мае дастаткова цытатаў, і яны паходзяць з крыніц вартых даверу?',
 	'articlefeedback-field-complete-label' => 'Скончанасьць',
@@ -398,6 +398,24 @@ $messages['de-formal'] = array(
 	'articlefeedback-survey-thanks' => 'Vielen Dank für Ihre Rückmeldung.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Som kśěł k {{SITENAME}} pśinosowaś',
+	'articlefeedback-survey-answer-whyrated-other' => 'Druge',
+	'articlefeedback-survey-question-useful-iffalse' => 'Cogodla?',
+	'articlefeedback-survey-question-comments' => 'Maš hyšći dalšne komentary?',
+	'articlefeedback-survey-submit' => 'Wótpósłaś',
+	'articlefeedback-survey-title' => 'Pšosym wótegroń na někotare pšašanja',
+	'articlefeedback-report-switch-label' => 'Wuslědki pokazaś',
+	'articlefeedback-report-empty' => 'Žedne pogódnośenja',
+	'articlefeedback-report-ratings' => '$1 pogódnosénjow',
+	'articlefeedback-field-complete-label' => 'Dopołny',
+	'articlefeedback-field-neutral-label' => 'Neutralny',
+	'articlefeedback-field-readable-label' => 'dajo se cytaś',
+);
+
 /** Greek (Ελληνικά)
  * @author Glavkos
  */
@@ -495,9 +513,9 @@ $messages['fa'] = array(
 	'articlefeedback-survey-title' => 'لطفاً به چند پرسش پاسخ دهید',
 	'articlefeedback-survey-thanks' => 'از این که نظرسنجی را تکمیل کردید متشکریم.',
 	'articlefeedback-report-switch-label' => 'نمایش نتایج',
-	'articlefeedback-field-complete-label' => 'کامل کردن',
-	'articlefeedback-field-neutral-label' => 'بی‌طرف',
-	'articlefeedback-field-readable-label' => 'قابل خواندن',
+	'articlefeedback-field-complete-label' => 'کامل بودن',
+	'articlefeedback-field-neutral-label' => 'بی‌طرفی',
+	'articlefeedback-field-readable-label' => 'خوانایی',
 );
 
 /** Finnish (Suomi)
@@ -1190,11 +1208,12 @@ $messages['pl'] = array(
 	'articlefeedback-form-switch-label' => 'Przesyłanie opinii',
 	'articlefeedback-form-panel-title' => 'Twoja opinia',
 	'articlefeedback-form-panel-instructions' => 'Poświeć chwilę, aby ocenić tę stronę.',
-	'articlefeedback-form-panel-notice' => 'Twoja ocena wygaśnie z upływem czasu.',
 	'articlefeedback-form-panel-submit' => 'Prześlij opinię',
 	'articlefeedback-report-switch-label' => 'Wyświetl wyniki',
 	'articlefeedback-report-panel-title' => 'Zebrane opinie',
 	'articlefeedback-report-panel-description' => 'Aktualna średnia ocen.',
+	'articlefeedback-report-empty' => 'Brak ocen',
+	'articlefeedback-report-ratings' => '$1 {{PLURAL:$1|ocena|oceny|ocen}}',
 	'articlefeedback-field-wellsourced-label' => 'Dodane dobre źródła',
 	'articlefeedback-field-wellsourced-tip' => 'Czy uważasz, że strona ma wystarczającą liczbę odnośników i że odnoszą się one do wiarygodnych źródeł?',
 	'articlefeedback-field-complete-label' => 'Wyczerpanie tematu',

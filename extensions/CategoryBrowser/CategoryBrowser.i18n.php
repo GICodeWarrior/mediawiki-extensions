@@ -398,6 +398,28 @@ Dennoch sollte, sofern irgend möglich, der Browser aktualisiert oder gewechselt
 	'cb_edit_paste_right_hint' => 'Operator an nächstmöglicher Position einfügen (sofern möglich)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'cb_cat_name_filter' => 'Kategoriju pó mjenju pytaś:',
+	'cb_cat_name_filter_ci' => 'Wjelikopisanje ignorěrowaś',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|pódkategorija|pódkategoriji|pódkategorije|pódkategorijow}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|bok|boka|boki|bokow}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|dataja|dataji|dataje|datajow}}',
+	'cb_has_parentcategories' => 'nadrědowane kategorije (jolic eksistěruju)',
+	'cb_previous_items_link' => 'Pjerwjejšny',
+	'cb_next_items_link' => 'Pśiducy',
+	'cb_next_items_stats' => '(wót $1)',
+	'cb_cat_subcats' => 'pódkategorije',
+	'cb_cat_pages' => 'boki',
+	'cb_cat_files' => 'dataje',
+	'cb_apply_button' => 'Nałožyś',
+	'cb_all_op' => 'Wšykne',
+	'cb_or_op' => 'abo',
+	'cb_and_op' => 'a',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
