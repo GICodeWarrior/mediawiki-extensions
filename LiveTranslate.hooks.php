@@ -49,6 +49,8 @@ final class LiveTranslateHooks {
 			);
 		}
 		
+		LiveTranslateFunctions::loadJs();
+		
 		return true;
 	}
 	
@@ -244,7 +246,7 @@ final class LiveTranslateHooks {
 	 */
 	public static function onOutputPageBeforeHTML( OutputPage &$out, &$text ) {
 		// TODO: obtain source lang
-		$sourceLang = 'English';		
+		$sourceLang = 'en';		
 		
 		$specialWords = self::getSpecialWordsForLang( $sourceLang );
 		

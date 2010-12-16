@@ -18,7 +18,7 @@ final class LiveTranslateFunctions {
 	 * 
 	 * @since 0.1
 	 */
-	protected static function loadJs() {
+	public static function loadJs() {
 		global $wgOut;
 		
 		// For backward compatibility with MW < 1.17.
@@ -45,7 +45,7 @@ final class LiveTranslateFunctions {
 	 * 
 	 * @since 0.1
 	 */
-	public static function addJSLocalisation() {
+	protected static function addJSLocalisation() {
 		global $egLTJSMessages, $wgOut;
 		
 		$data = array();
