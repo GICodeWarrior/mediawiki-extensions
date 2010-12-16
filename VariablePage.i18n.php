@@ -32,6 +32,15 @@ $messages['af'] = array(
 	'variablepage-navlink_text' => 'Skenk',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'variablepage' => 'ҮҙгәреүсәнБит',
+	'variablepage-navlink_text' => 'Иғәнә бирергә',
+	'variablepage-desc' => 'Үҙгәреүсән биттәргә ябай йүнәлтеү',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
