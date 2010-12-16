@@ -12,3 +12,4 @@ Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php
 # Live Translate
 require_once( "$IP/extensions/LiveTranslate/LiveTranslate.php" );
 
+After this you need to run MediaWikis update script which can be found at /maintenance/update.php.
