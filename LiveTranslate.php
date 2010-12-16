@@ -53,5 +53,7 @@ $wgAPIModules['livetranslate'] = 'ApiLiveTranslate';
 $wgHooks['ArticleViewHeader'][] = 'LiveTranslateHooks::onArticleViewHeader';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LiveTranslateHooks::onSchemaUpdate';
 $wgHooks['ArticleSaveComplete'][] = 'LiveTranslateHooks::onArticleSaveComplete';
+$wgHooks['OutputPageBeforeHTML'][] = 'LiveTranslateHooks::onOutputPageBeforeHTML';
+
 
 require_once 'LiveTranslate_Settings.php';
