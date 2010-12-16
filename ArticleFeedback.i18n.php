@@ -36,14 +36,14 @@ $messages['en'] = array(
 	'articlefeedback-report-panel-description' => 'Current average ratings.',
 	'articlefeedback-report-empty' => 'No ratings',
 	'articlefeedback-report-ratings' => '$1 ratings',
-	'articlefeedback-field-wellsourced-label' => 'Well-sourced',
-	'articlefeedback-field-wellsourced-tip' => 'Do you feel this page has sufficient citations and that those citations come from trustworthy sources?',
+	'articlefeedback-field-trustworthy-label' => 'Trustworthy',
+	'articlefeedback-field-trustworthy-tip' => 'Do you feel this page has sufficient citations and that those citations come from trustworthy sources?',
 	'articlefeedback-field-complete-label' => 'Complete',
 	'articlefeedback-field-complete-tip' => 'Do you feel that this page covers the essential topic areas that it should?',
-	'articlefeedback-field-neutral-label' => 'Neutral',
-	'articlefeedback-field-neutral-tip' => 'Do you feel that this page shows a fair representation of all perspectives on the issue?',
-	'articlefeedback-field-readable-label' => 'Readable',
-	'articlefeedback-field-readable-tip' => 'Do you feel that this page is well-organized and well written?',
+	'articlefeedback-field-unbiased-label' => 'Unbiased',
+	'articlefeedback-field-unbiased-tip' => 'Do you feel that this page shows a fair representation of all perspectives on the issue?',
+	'articlefeedback-field-wellwritten-label' => 'Well-written',
+	'articlefeedback-field-wellwritten-tip' => 'Do you feel that this page is well-organized and well-written?',
 );
 
 /** Message documentation (Message documentation)
