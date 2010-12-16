@@ -3714,6 +3714,7 @@ $messages['no'] = array(
 	'fundraiserstats-tab-averages' => 'Gjennomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
 	'fundraiserstats-tab-ytd' => 'Året til idag (USD)',
+	'fundraiserstats-instructions' => 'For å se statistikk for en dag, hold musepekeren over linjen for den dagen. Hvert år har en egen farge i diagrammet.',
 );
 
 /** Occitan (Occitan)
