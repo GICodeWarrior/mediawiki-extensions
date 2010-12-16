@@ -42,7 +42,7 @@ final class LiveTranslateHooks {
 					'&#160;' . 
 					Html::element(
 						'button',
-						array( 'id' => 'livetranslatebutton' ),
+						array( 'id' => 'livetranslatebutton', 'style' => 'height: 27px' ),
 						wfMsg( 'livetranslate-button-translate' )
 					)
 				)
@@ -62,20 +62,29 @@ final class LiveTranslateHooks {
 	 * @return string
 	 */
 	protected static function getLanguageSelector() {
-		$options = array();
+		global $wgContLanguageCode;
 		
-		foreach ( self::getAvailableLanguages() as $language ) {
-			$options[] = Html::element(
-				'option',
-				array(),
-				$language
-			);
+		$languages = Language::getLanguageNames( false );
+		
+		$currentLang = 'en'; // TODO
+		
+		$currentLang = array_key_exists( $currentLang, $languages ) ? $currentLang : $wgContLanguageCode;
+		
+		$options = array();
+		ksort( $languages );
+		
+		foreach ( $languages as $code => $name ) {
+			$display = wfBCP47( $code ) . ' - ' . $name;
+			$options[$display] = $code;
 		}
+		
+		$languageSelector = new HTMLSelectField( array(
+			'id' => 'livetranslatelang',
+			'fieldname' => 'language',
+			'options' => $options
+		) );
 
-		return 
-			Html::openElement( 'select', array( 'id' => 'livetranslatelang' ) ) .
-			implode( "\n", $options ) . 
-			Html::closeElement( 'select' );
+		return $languageSelector->getInputHTML( $currentLang );
 	}
 	
 	/**
@@ -255,7 +264,7 @@ final class LiveTranslateHooks {
 				$specialWord , 
 				Html::element(
 					'span',
-					array( 'class' => 'notranslate' ),
+					array( 'class' => 'notranslate', 'original' => $specialWord ),
 					$specialWord
 				), 
 				$text 
