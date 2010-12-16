@@ -7,6 +7,8 @@
 
 (function($) { $( document ).ready( function() {
 	
+	var currentLang = 'en'; // TODO
+	
 	// Compatibility with pre-RL code.
 	// Messages will have been loaded into wgPushMessages.
 	if ( typeof mediaWiki === 'undefined' ) {
@@ -25,18 +27,20 @@
 	
 	$('#livetranslatebutton').click(function() {
 		var words = getSpecialWords();
+		var newLang = $( '#livetranslatelang' ).val();
 		
 		$.getJSON(
 			wgScriptPath + '/api.php',
 			{
 				'action': 'livetranslate',
 				'format': 'json',
-				'from': 'en', // TODO
-				'to': 'nl', // TODO
+				'from': currentLang,
+				'to': $( '#livetranslatelang' ).val(),
 				'words': words.join( '|' ),
 			},
 			function( data ) {
 				if ( data.translations ) {
+					currentLang = newLang;
 					replaceSpecialWords( data.translations );
 				}
 			}
@@ -46,7 +50,7 @@
 	function getSpecialWords() {
 		var words = [];
 		
-		$.each($(".notranslate"), function(i,v) {
+		$.each($( '.notranslate' ), function( i, v ) {
 			words.push( $(v).text() );
 		});
 		
