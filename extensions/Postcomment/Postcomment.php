@@ -15,8 +15,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionFunctions[] = 'wfPostComment';
-
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'PostComment',
@@ -28,175 +26,163 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['PostComment'] = $dir . 'Postcomment.i18n.php';
 
-function wfPostcomment( ) {
-	wfLoadExtensionMessages( 'PostComment' );
-	SpecialPage::AddPage(new UnlistedSpecialPage('Postcomment'));
-}
+$wgSpecialPages['Postcomment'] = 'SpecialPostcomment';
 
-function wfPostcommentForm() {
-
-	global $wgUser, $wgTitle,$wgRequest;
-
-	$action = $wgRequest->getVal('action');
-
-	// just for talk pages
-	if (!$wgTitle->isTalkPage() || $action != '')
-		return;
-
-    if (!$wgTitle->userCan( 'edit', true ) ) {
-		echo  wfMsg('postcomment_discussionprotected');
-		return;
+class SpecialPostcomment extends UnlistedSpecialPage {
+	public function __construct() {
+		parent::__construct( 'Postcomment' );
 	}
 
-	$sk = $wgUser->getSkin();
+	function execute( $par ) {
+		global $wgUser, $wgOut, $wgLang, $wgMemc, $wgDBname;
+		global $wgRequest, $wgSitename, $wgLanguageCode;
+		global $wgFilterCallback, $wgWhitelistEdit;
 
-   	$user_str = "";
-    if ($wgUser->getID() == 0) {
-        $user_str = wfMsg('postcomment_notloggedin');
-    } else {
-		$link = $sk->makeLinkObj($wgUser->getUserPage(), $wgUser->getName());
-        $user_str = wfMsg('postcomment_youareloggedinas', $link);
-    }
+		//echo "topic: " . $wgRequest->getVal("topic_name") . "<br />";
+		//echo "title: " . $wgRequest->getVal("title") . "<br />";
+		//echo "comment: " . $wgRequest->getVal("comment_text") . "<br />";
+		//echo "new_topic id " . $wgRequest->getVal("new_topic") . "<br />";
 
-    $msg = wfMsg('postcomment_addcommentdiscussionpage');
-	$pc = Title::newFromText("Postcomment", NS_SPECIAL);
-    if ($wgTitle->getNamespace() == NS_USER_TALK)
-        $msg = wfMsg('postcomment_leavemessagefor',$wgTitle->getText());
-   echo "<br /><br /><table>
-        <FORM name=\"commentForm\" method=\"POST\" action=\"{$pc->getFullURL()}\">
-        <input name=\"target\" type=\"hidden\" value=\"" . htmlspecialchars($wgTitle->getPrefixedDBkey()) . "\"/>
-        <tr><td colspan=\"2\" valign=\"top\">
-        <a name=\"post\"></a>
-        <b>$msg:</b><br /><br /></td></tr>
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
 
-        <tr><td valign=\"top\"></td><td><textarea tabindex=3 rows=\"15\"cols=\"50\" name=\"comment_text\"></TEXTAREA>
-        <tr><td>&#160;</td><td>
-        <input tabindex='4' type='submit' name=\"wpLoginattempt\" value=\"".wfMsg('postcomment_post')."\" class=\"btn\"
-           onmouseover=\"this.className='btn btnhov'\" onmouseout=\"this.className='btn'\"/>
-        </td>
+		$t = Title::newFromDBKey( $wgRequest->getVal( 'target' ) );
 
-        </tr>
-        <tr>
-        <td>
-        <small>
-        $user_str
-        </FORM>
-        </table>";
-}
+		if ( $t == null ) {
+			$wgOut->showErrorPage( 'postcomment', 'postcomment_invalidrequest' );
+			return;
+		}
 
-function wfSpecialPostcomment( $par )
-{
-	global $wgUser, $wgOut, $wgLang, $wgMemc, $wgDBname;
-	global $wgRequest, $wgSitename, $wgLanguageCode;
-	global $wgFeedClasses, $wgFilterCallback, $wgWhitelistEdit;
+		$errors = $t->getUserPermissionsErrors( 'edit', $wgUser );
+		if ( count( $errors ) ) {
+			$wgOut->showPermissionsErrorPage( $errors, 'edit' );
+			return;
+		}
 
+		if ( $wgUser->pingLimiter() ) {
+			$wgOut->rateLimited();
+			return;
+		}
 
-	$wgOut->setRobotPolicy( "noindex,nofollow" );
-	$fname = "wfSpecialPostcomment";
+		$article = new Article( $t );
+		$update = $article->exists();
 
-	//echo "topic: " . $wgRequest->getVal("topic_name") . "<br />";
-	//echo "title: " . $wgRequest->getVal("title") . "<br />";
-	//echo "comment: " . $wgRequest->getVal("comment_text") . "<br />";
-	//echo "new_topic id " . $wgRequest->getVal("new_topic") . "<br />";
+		$comment = $wgRequest->getVal( 'comment_text' );
+		$topic = $wgRequest->getVal( 'topic_name' );
 
-	$t = Title::newFromDBKey($wgRequest->getVal("target"));
-	$update = true;
+		if ( trim( $comment ) == '' ) {
+			$wgOut->showErrorPage( 'postcomment', 'postcomment_nopostingtoadd' );
+			return;
+		}
 
-	if ($t == null) {
-		$wgOut->errorPage('postcomment', 'postcomment_invalidrequest');
-		return;
-	}
+		$user = $wgUser->getName();
+		$real_name = $wgUser->getRealName();
+		if ( $real_name == '' ) {
+			$real_name = $user;
+		}
+		$dateStr = $wgLang->timeanddate( wfTimestampNow() );
 
-	if ($t->getArticleID() <= 0)
-		$update = false;
+		//echo "$dateStr<br />";
 
-	$article = new Article($t);
-
-	$user = $wgUser->getName();
-	$real_name = User::whoIsReal($wgUser->getID());
-	if ($real_name == "") {
-		$real_name = $user;
-	}
-	$dateStr = $wgLang->timeanddate(wfTimestampNow());
-	$comment = $wgRequest->getVal("comment_text");
-	$topic = $wgRequest->getVal("topic_name");
-
-	//echo "$dateStr<br />";
-
-	$formattedComment = "
+		$formattedComment = "
 	<div id=\"discussion_entry\"><table width=\"100%\">
-	   <tr><td width=\"50%\" valign=\"top\" class=\"discussion_entry_user\">
-	[[User:$user|$real_name]] " . wfMsg('postcomment_said') . ":
-</td><td align=\"right\" width=\"50%\" class=\"discussion_entry_date\">" . wfMsg('postcomment_on') . " $dateStr<br />
+		<tr><td width=\"50%\" valign=\"top\" class=\"discussion_entry_user\">
+	[[User:$user|$real_name]] " . wfMsg( 'postcomment_said' ) . ":
+</td><td align=\"right\" width=\"50%\" class=\"discussion_entry_date\">" . wfMsg( 'postcomment_on' ) . " $dateStr<br />
 	</td></tr><tr>
 <td colspan=2 class=\"discussion_entry_comment\">
 	$comment</td></tr>
 	<tr><td colspan=\"2\" class=\"discussion_entry_date\" padding=5>[[User_talk:$user#post|" . wfMsg('postcomment_replyto', $real_name) . "]]</td></tr>
 	</table></div>
 
-	";
-	//echo "$formattedComment";
+";
+		//echo "$formattedComment";
 
-	$text = "";
+		$text = '';
 
-	if ($update) {
-		$r = Revision::newFromTitle($t);
-		$text = $r->getText();
+		if ( $update ) {
+			$r = Revision::newFromTitle( $t );
+			$text = $r->getText();
+		}
+
+		$text .= "\n\n$formattedComment\n\n";
+
+		//echo "updating with text:<br /> $text";
+		//exit;
+
+		$tmp = "";
+		if ( $wgFilterCallback && $wgFilterCallback( $t, $text, $tmp) ) {
+			# Error messages or other handling should be performed by the filter function
+			return;
+		}
+
+		$article->doEdit( $text, '' );
 	}
+}
 
-	$text .= "\n\n$formattedComment\n\n";
+function wfPostcommentForm() {
+	global $wgUser, $wgTitle, $wgRequest;
 
+	$action = $wgRequest->getVal( 'action', 'view' );
 
-	//echo "updating with text:<br /> $text";
-	//exit;
-	$tmp = "";
-	if ( $wgUser->isBlocked() ) {
-		EditPage::blockedIPpage();
-		return;
-	}
-	if ( !$wgUser->getID() && $wgWhitelistEdit ) {
-		$this->userNotLoggedInPage();
-		return;
-	}
-	if ( wfReadOnly() ) {
-		$wgOut->readOnlyPage();
-		return;
-	}
-
-    if ($target == "Spam-Blacklist") {
-   		$wgOut->readOnlyPage();
-        return;
-    }
-
-	if ( $wgUser->pingLimiter() ) {
-		$wgOut->rateLimited();
+	// just for talk pages
+	if ( !$wgTitle->isTalkPage() || $action != 'view' ) {
 		return;
 	}
 
-	if ( $wgFilterCallback && $wgFilterCallback( $t, $text, $tmp) ) {
-		# Error messages or other handling should be performed by the filter function
+	if ( !$wgTitle->userCan( 'edit', true ) ) {
+		echo  wfMsg( 'postcomment_discussionprotected' );
 		return;
 	}
 
-	 if (trim($comment) == ""  ) {
-           $wgOut->errorpage( "postcomment", "postcomment_nopostingtoadd");
-           return;
-        }
+	$sk = $wgUser->getSkin();
 
-	if ( !$t->userCan( 'edit', true ) ) {
-       $wgOut->errorpage( "postcomment", "postcomment_discussionprotected");
-	   return;
-	}
-
-	$watch = false;
-	if ($wgUser->getID() > 0)
-	   $watch = $wgUser->isWatched($t);
-
-	if ($update) {
-		//echo "trying to update article";
-		$article->updateArticle($text, "", true, $watch);
+	$user_str = '';
+	if ($wgUser->getID() == 0) {
+		$user_str = wfMsg( 'postcomment_notloggedin' );
 	} else {
-		//echo "inserting new article";
-		$article->insertNewArticle($text, "", true, $watch, false, false, true);
+		$link = $sk->makeLinkObj( $wgUser->getUserPage(), $wgUser->getName() );
+		$user_str = wfMsg( 'postcomment_youareloggedinas', $link );
 	}
+
+	$pc = SpecialPage::getTitleFor( 'Postcomment' );
+	if ( $wgTitle->getNamespace() == NS_USER_TALK ) {
+		$msg = wfMsg( 'postcomment_leavemessagefor', $wgTitle->getText() );
+	} else {
+		$msg = wfMsg( 'postcomment_addcommentdiscussionpage' );
+	}
+
+	echo "<br /><br />
+<form name=\"commentForm\" method=\"POST\" action=\"{$pc->getFullURL()}\">
+<input name=\"target\" type=\"hidden\" value=\"" . htmlspecialchars( $wgTitle->getPrefixedDBkey() ) . "\"/>
+<table>
+	<tr>
+		<td colspan=\"2\" valign=\"top\">
+			<a name=\"post\"></a>
+			<b>$msg:</b><br /><br />
+		</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td valign=\"top\"></td>
+		<td>
+			<textarea tabindex=3 rows=\"15\"cols=\"50\" name=\"comment_text\"></textarea>
+		</td>
+	</tr>
+	<tr>
+		 <td>&#160;</td><td>
+		<input tabindex='4' type='submit' name=\"wpLoginattempt\" value=\"".wfMsg('postcomment_post')."\" class=\"btn\"
+			onmouseover=\"this.className='btn btnhov'\" onmouseout=\"this.className='btn'\"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<small>$user_str</small>
+		</td>
+		<td></td>
+	</tr>
+</table>
+</form>";
 }
