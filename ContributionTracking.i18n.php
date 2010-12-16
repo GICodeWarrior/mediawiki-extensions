@@ -811,6 +811,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Finnrind
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'contributiontracking-desc' => 'Bidragssporing for Wikimedias innsamling',
@@ -819,7 +820,10 @@ $messages['no'] = array(
 	'contrib-tracking-error-text' => 'Ugyldig skjema',
 	'contrib-tracking-submitting' => 'Sender til betalingshåndtering...',
 	'contrib-tracking-continue' => 'Om du ikke omdirigeres automatisk, klikk på knappen for å gjennomføre donasjonen hos PayPal.',
+	'contrib-tracking-redirect' => 'Du vil automatisk bli omdirigert til PayPal for å fullføre donasjonen din.',
 	'contrib-tracking-button' => 'Fortsett',
+	'contrib-tracking-item-name-onetime' => 'Engangsdonasjon',
+	'contrib-tracking-item-name-recurring' => 'Regelmessige månedlige donasjoner',
 );
 
 /** Occitan (Occitan)
@@ -872,6 +876,8 @@ $messages['pms'] = array(
 	'contrib-tracking-continue' => "S'it ses pa rediressionà automaticament, sgnaca ël boton për completé toa donassion a PayPal.",
 	'contrib-tracking-redirect' => 'It saras rediressionà automaticament su PayPal për completé toa donassion.',
 	'contrib-tracking-button' => 'Continua',
+	'contrib-tracking-item-name-onetime' => 'Donassion sìngola',
+	'contrib-tracking-item-name-recurring' => 'Donassion recorenta mensil',
 );
 
 /** Pashto (پښتو)
