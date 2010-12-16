@@ -19,10 +19,7 @@ class InlineEditor {
 	 * Checks whether or not to spawn the editor, and does so if nessicary.
 	 */
 	public static function mediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
-		global $wgHooks, $wgDisabledActions;
-
-		// the action of the page, i.e. 'view' or 'edit'
-		$action = $request->getVal( 'action', 'view' );
+		global $wgHooks;
 
 		// check if the editor could be used on this page, and if so, hide the [edit] links
 		if ( self::isValidBrowser() && !self::isAdvancedPage( $article, $title ) ) {
@@ -30,8 +27,7 @@ class InlineEditor {
 		}
 
 		// return if the action is not 'edit' or if it's disabled
-		if ( $action != 'edit' || in_array( $action, $wgDisabledActions ) )
-		{
+		if ( $wiki->getAction( $request ) != 'edit' ) {
 			return true;
 		}
 
