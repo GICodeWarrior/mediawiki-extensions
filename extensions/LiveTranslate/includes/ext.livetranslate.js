@@ -23,6 +23,43 @@
 		}
 	}
 	
+	$('#livetranslatebutton').click(function() {
+		var words = getSpecialWords();
+		
+		$.getJSON(
+			wgScriptPath + '/api.php',
+			{
+				'action': 'livetranslate',
+				'format': 'json',
+				'from': 'en', // TODO
+				'to': 'nl', // TODO
+				'words': words.join( '|' ),
+			},
+			function( data ) {
+				if ( data.translations ) {
+					replaceSpecialWords( data.translations );
+				}
+			}
+		);
+	});
 	
+	function getSpecialWords() {
+		var words = [];
+		
+		$.each($(".notranslate"), function(i,v) {
+			words.push( $(v).text() );
+		});
+		
+		return words;
+	}
+	
+	function replaceSpecialWords( translations ) {
+		$.each($(".notranslate"), function(i,v) {
+			var currentText = $(v).text();
+			if ( translations[currentText] ) {
+				$(v).text( translations[currentText] );
+			}
+		});		
+	}
 	
 } ); })(jQuery);
