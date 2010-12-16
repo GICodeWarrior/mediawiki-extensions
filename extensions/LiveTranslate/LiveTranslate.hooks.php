@@ -29,9 +29,6 @@ final class LiveTranslateHooks {
 		$title = $article->getTitle();
 		
 		if ( $article->exists() && $title->getFullText() != $egLiveTranslateDirPage ) {
-			// TODO: obtain source lang
-			$sourceLang = 'English';
-			
 			$wgOut->addHTML(
 				Html::rawElement(
 					'div',
@@ -100,6 +97,34 @@ final class LiveTranslateHooks {
 
 		return $destinationLangs;
 	}
+	
+	/**
+	 * Gets a list of all special words in a language.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $language
+	 * 
+	 * @return array
+	 */
+	protected static function getSpecialWordsForLang( $language ) {
+		$dbr = wfGetDB( DB_SLAVE );
+			
+		$words = array();
+			
+		// TODO: fix index
+		$res = $dbr->query( 
+			'SELECT DISTINCT word_translation FROM ' . 
+			$dbr->tableName( 'live_translate' ) . 
+			' WHERE word_language = ' . $dbr->addQuotes( $language )
+		);
+		
+		while ( $translation = $dbr->fetchObject( $res ) ) {
+			$words[] = $translation->word_translation;
+		}
+
+		return $words;
+	}	
 	
 	/**
 	 * Schema update to set up the needed database tables.
@@ -204,6 +229,38 @@ final class LiveTranslateHooks {
 				);				
 			}
 		}
+	}
+	
+	/**
+	 * Called every time wikitext is added to the OutputPage, after it is parsed but before it is added.
+	 * Wraps the words with special translations into no-translate tags.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param OutputPage $out
+	 * @param string $text
+	 * 
+	 * @return true
+	 */
+	public static function onOutputPageBeforeHTML( OutputPage &$out, &$text ) {
+		// TODO: obtain source lang
+		$sourceLang = 'English';		
+		
+		$specialWords = self::getSpecialWordsForLang( $sourceLang );
+		
+		foreach ( $specialWords as $specialWord ) {
+			$text = str_replace( 
+				$specialWord , 
+				Html::element(
+					'span',
+					array( 'class' => 'notranslate' ),
+					$specialWord
+				), 
+				$text 
+			);
+		}
+		
+		return true;
 	}
 	
 }
