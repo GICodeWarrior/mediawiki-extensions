@@ -125,6 +125,18 @@ $messages['de'] = array(
 	'semanticformsinputs-firstdayofweek' => '1',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'semanticformsinputs-desc' => 'Pśidatne zapódawańske typy [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
+	'semanticformsinputs-wrongformat' => 'Wopacny format',
+	'semanticformsinputs-close' => 'Zacyniś',
+	'semanticformsinputs-prev' => 'Pjerwjejšny',
+	'semanticformsinputs-next' => 'Pśiducy',
+	'semanticformsinputs-today' => 'Źinsa',
+);
+
 /** Spanish (Español)
  * @author Danke7
  * @author Translationista
