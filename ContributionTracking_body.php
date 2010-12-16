@@ -97,9 +97,11 @@ class ContributionTracking extends UnlistedSpecialPage {
 			$action = 'https://www.paypal.com/cgi-bin/webscr';
 
 			// Premiums
-			if ( $wgRequest->getCheck( 'shirt') ) {
+			if ( $wgRequest->getVal( 'tshirt') == '1' ) {
 				$repost['on0'] = 'Shirt Size';
 				$repost['os0'] = $wgRequest->getText( 'size', null );
+				$repost['on1'] = 'Shirt Language';
+				$repost['os1'] = $wgRequest->getText( 'language', null );
 				$repost['no_shipping'] = 2;
 			}
 			
