@@ -52,6 +52,13 @@ $messages['ast'] = array(
 	'oai-desc' => 'Proporciona una interfaz de direutoriu [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] һаҡлағысы өсөн интерфейс менән тәьмин итә',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
