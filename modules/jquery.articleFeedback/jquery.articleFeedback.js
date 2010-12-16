@@ -5,19 +5,38 @@
 ( function( $, mw ) {
 
 $.articleFeedback = {
-	'cfg': {
-		'ratingIds': {
-			'wellsourced': 1,
-			'neutral': 2,
-			'complete': 3,
-			'readable': 4
-		},
-		'ratingKeys': {
-			'1': 'wellsourced',
-			'2': 'neutral',
-			'3': 'complete',
-			'4': 'readable'
-		}
+	'tpl': {
+		'ui': '\
+<div class="articleFeedback-panel">\
+	<div class="articleFeedback-buffer">\
+		<div class="articleFeedback-switch articleFeedback-switch-report articleFeedback-visibleWith-form" rel="report"><msg key="report-switch-label" /></div>\
+		<div class="articleFeedback-switch articleFeedback-switch-form articleFeedback-visibleWith-report" rel="form"><msg key="form-switch-label" /></div>\
+		<div class="articleFeedback-title articleFeedback-visibleWith-form"><msg key="form-panel-title" /></div>\
+		<div class="articleFeedback-title articleFeedback-visibleWith-report"><msg key="report-panel-title" /></div>\
+		<div class="articleFeedback-instructions articleFeedback-visibleWith-form"><msg key="form-panel-instructions" /></div>\
+		<div class="articleFeedback-description articleFeedback-visibleWith-report"><msg key="report-panel-description" /></div>\
+		<div style="clear:both;"></div>\
+		<div class="articleFeedback-ratings"></div>\
+		<div style="clear:both;"></div>\
+		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><msg key="form-panel-submit" /></button>\
+		<div style="clear:both;"></div>\
+	</div>\
+</div>\
+<div class="articleFeedback-dialog" rel="survey"><div class="articleFeedback-buffer"><div class="articleFeedback-title">Take a survey?</div></div></div>\
+<div class="articleFeedback-dialog" rel="register"><div class="articleFeedback-buffer"><div class="articleFeedback-title">Create an account?</div></div></div>\
+<div class="articleFeedback-dialog" rel="edit"><div class="articleFeedback-buffer"><div class="articleFeedback-title">Edit a page?</div></div></div>\
+		',
+		'rating': '\
+<div class="articleFeedback-rating">\
+	<div class="articleFeedback-label"></div>\
+	<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
+	<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+	<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
+	<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
+	<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
+	<div style="clear:both;"></div>\
+</div>\
+		'
 	},
 	'fn': {
 		'updateRating': function() {
@@ -47,10 +66,10 @@ $.articleFeedback = {
 			
 			// Build data from form values
 			var data = {};
-			for ( ratingId in $.articleFeedback.cfg.ratingKeys ) {
+			for ( key in context.options.ratings ) {
+				var id = context.options.ratings[key].id;
 				// Default to 0 if the radio set doesn't contain a checked element
-				data['r' + ratingId] =
-					context.$ui.find( 'input[name=r' + ratingId + ']:radio:checked' ).val() | '0';
+				data['r' + id] = context.$ui.find( 'input[name=r' + id + ']:checked' ).val() | 0;
 			}
 			$.ajax( {
 				'url': mediaWiki.config.get( 'wgScriptPath' ) + '/api.php',
@@ -94,7 +113,7 @@ $.articleFeedback = {
 				'success': function( data ) {
 					var context = this;
 					if ( typeof data.query.articlefeedback == undefined ) {
-						// ERROR!
+						// TODO: Something more clever, and useful, about this error
 						mw.log( '<loadReport success with bad data />' );
 						return;
 					}
@@ -104,11 +123,11 @@ $.articleFeedback = {
 							data.query.articlefeedback.length &&
 							typeof data.query.articlefeedback[0].ratings !== 'undefined'
 						) {
-							var ratings = data.query.articlefeedback[0].ratings;
-							var ratingId = $.articleFeedback.cfg.ratingIds[$(this).attr( 'rel' )];
-							for ( var i = 0; i < ratings.length; i++ ) {
-								if ( ratings[i].ratingid == ratingId ) {
-									ratingData = ratings[i];
+							var ratingsData = data.query.articlefeedback[0].ratings;
+							var ratingId = context.options.ratings[$(this).attr( 'rel' )];
+							for ( var i = 0; i < ratingsData.length; i++ ) {
+								if ( ratingsData[i].ratingid == ratingId ) {
+									ratingData = ratingsData[i];
 								}
 							}
 						}
@@ -128,8 +147,7 @@ $.articleFeedback = {
 									.attr( 'checked', false );
 						} else {
 							// Setup using ratingData
-							var average =
-								Math.max( Math.min( ratingData.total / ratingData.count, 5 ), 0 );
+							var average = ratingData.total / ratingData.count;
 							$(this)
 								.find( '.articleFeedback-rating-average' )
 									.text( ( average - ( average % 1 ) ) + '.' +
@@ -161,78 +179,24 @@ $.articleFeedback = {
 		'build': function() {
 			var context = this;
 			context.$ui
-				.addClass( 'articleFeedback articleFeedback-visibleWith-form' )
-				// Append HTML
-				.append( '\
-<div class="articleFeedback-panel">\
-	<div class="articleFeedback-buffer">\
-		<div class="articleFeedback-switch articleFeedback-switch-report articleFeedback-visibleWith-form" rel="report"><msg key="report-switch-label" /></div>\
-		<div class="articleFeedback-switch articleFeedback-switch-form articleFeedback-visibleWith-report" rel="form"><msg key="form-switch-label" /></div>\
-		<div class="articleFeedback-title articleFeedback-visibleWith-form"><msg key="form-panel-title" /></div>\
-		<div class="articleFeedback-title articleFeedback-visibleWith-report"><msg key="report-panel-title" /></div>\
-		<div class="articleFeedback-instructions articleFeedback-visibleWith-form"><msg key="form-panel-instructions" /></div>\
-		<div class="articleFeedback-description articleFeedback-visibleWith-report"><msg key="report-panel-description" /></div>\
-		<div style="clear:both;"></div>\
-		<div class="articleFeedback-ratings">\
-			<div class="articleFeedback-rating" rel="wellsourced">\
-				<div class="articleFeedback-label" title-msg="field-wellsourced-tip"><msg key="field-wellsourced-label" /></div>\
-				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
-				<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
-				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
-				<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
-				<div style="clear:both;"></div>\
-			</div>\
-			<div class="articleFeedback-rating" rel="neutral">\
-				<div class="articleFeedback-label" title-msg="field-neutral-tip"><msg key="field-neutral-label" /></div>\
-				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
-				<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
-				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
-				<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
-				<div style="clear:both;"></div>\
-			</div>\
-			<div class="articleFeedback-rating" rel="complete">\
-				<div class="articleFeedback-label" title-msg="field-complete-tip"><msg key="field-complete-label" /></div>\
-				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
-				<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
-				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
-				<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
-				<div style="clear:both;"></div>\
-			</div>\
-			<div class="articleFeedback-rating" rel="readable">\
-				<div class="articleFeedback-label" title-msg="field-readable-tip"><msg key="field-readable-label" /></div>\
-				<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-				<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
-				<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
-				<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
-				<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
-				<div style="clear:both;"></div>\
-			</div>\
-			<div style="clear:both;"></div>\
-		</div>\
-		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><msg key="form-panel-submit" /></button>\
-		<div style="clear:both;"></div>\
-	</div>\
-</div>\
-<div class="articleFeedback-dialog" rel="survey">\
-	<div class="articleFeedback-buffer">\
-		<div class="articleFeedback-title">Take a survey?</div>\
-	</div>\
-</div>\
-<div class="articleFeedback-dialog" rel="register">\
-	<div class="articleFeedback-buffer">\
-		<div class="articleFeedback-title">Create an account?</div>\
-	</div>\
-</div>\
-<div class="articleFeedback-dialog" rel="edit">\
-	<div class="articleFeedback-buffer">\
-		<div class="articleFeedback-title">Edit a page?</div>\
-	</div>\
-</div>\
-				' )
+				.addClass( 'articleFeedback' )
+				// Insert and localize HTML
+				.append( $.articleFeedback.tpl.ui )
+				.find( '.articleFeedback-ratings' )
+					.each( function() {
+						for ( key in context.options.ratings ) {
+							$( $.articleFeedback.tpl.rating )
+								.attr( 'rel', key )
+								.find( '.articleFeedback-label' )
+									.attr( 'title', mw.msg( context.options.ratings[key].tip ) )
+									.text( mw.msg( context.options.ratings[key].label ) )
+									.end()
+								.appendTo( $(this) );
+						}
+					} )
+					.end()
 				.localize( { 'prefix': 'articlefeedback-' } )
+				// Activate tooltips
 				.find( '[title]' )
 					.tipsy( {
 						'gravity': 'nw',
@@ -346,18 +310,22 @@ $.articleFeedback = {
 	}
 };
 
-$.fn.articleFeedback = function( method, data ) {
+$.fn.articleFeedback = function() {
+	var args = arguments;
 	$(this).each( function() {
 		var context = $(this).data( 'articleFeedback-context' );
 		if ( !context ) {
 			// Create context
-			context = { '$ui': $(this) };
+			context = { '$ui': $(this), 'options': { 'ratings': {}, 'bucket': 0 } };
+			// Allow customization through an options argument
+			if ( typeof args[0] === 'object' ) {
+				context = $.extend( context, { 'options': args[0] } );
+			}
 			// Build user interface
 			$.articleFeedback.fn.build.call( context );
 			// Save context
 			$(this).data( 'articleFeedback-context', context );
 		}
-		// Proceed with processing method and data
 	} );
 	return $(this);
 };

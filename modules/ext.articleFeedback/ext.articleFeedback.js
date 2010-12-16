@@ -4,35 +4,32 @@
 
 ( function( $, mw ) {
 
+var config = {
+	'ratings': {
+		'wellsourced': {
+			'id': '1',
+			'label': 'articlefeedback-field-wellsourced-label',
+			'tip': 'articlefeedback-field-wellsourced-tip'
+		},
+		'neutral': {
+			'id': '2',
+			'label': 'articlefeedback-field-neutral-label',
+			'tip': 'articlefeedback-field-neutral-tip'
+		},
+		'complete': {
+			'id': '3',
+			'label': 'articlefeedback-field-complete-label',
+			'tip': 'articlefeedback-field-complete-tip'
+		},
+		'readable': {
+			'id': '4',
+			'label': 'articlefeedback-field-readable-label',
+			'tip': 'articlefeedback-field-readable-tip'
+		}
+	}
+};
+// Bucket 1 - load at the bottom of the article
 $( '#catlinks' )
-	.before(
-		$( '<div></div>' )
-			.articleFeedback(/* {
-				'ratings': {
-					'wellsourced': {
-						'id': '1',
-						'label': 'article-feedback-beta-wellsourced-field-wellsourced-label',
-						'tip': 'article-feedback-beta-wellsourced-field-wellsourced-tip',
-					},
-					'neutral': {
-						'id': '2',
-						'label': 'article-feedback-beta-wellsourced-field-neutral-label',
-						'tip': 'article-feedback-beta-wellsourced-field-neutral-tip',
-					},
-					'complete': {
-						'id': '3',
-						'label': 'article-feedback-beta-wellsourced-field-complete-label',
-						'tip': 'article-feedback-beta-wellsourced-field-complete-tip',
-					},
-					'readable': {
-						'id': '4',
-						'label': 'article-feedback-beta-wellsourced-field-readable-label',
-						'tip': 'article-feedback-beta-wellsourced-field-readable-tip',
-					}
-				}
-			}
-			*/
-		)
-	);
+	.before( $( '<div></div>' ).articleFeedback( $.extend( config, { 'bucket': 1 } ) ) );
 
 } )( jQuery, mediaWiki );
