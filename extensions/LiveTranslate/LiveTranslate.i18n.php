@@ -17,7 +17,7 @@ $messages = array();
 $messages['en'] = array(
 	'livetranslate-desc' => 'Enables live translation of page content using the Google Translate service',
 
-	'livetranslate-translate-to' => 'Translate this article to',
+	'livetranslate-translate-to' => 'Translate this page to',
 	'livetranslate-button-translate' => 'Translate',
 	'livetranslate-button-translating' => 'Translating...',
 );
