@@ -25,9 +25,6 @@ $.articleFeedback = {
 		<div style="clear:both;"></div>\
 	</div>\
 </div>\
-<div class="articleFeedback-dialog" rel="survey"><div class="articleFeedback-buffer"><div class="articleFeedback-title">Take a survey?</div></div></div>\
-<div class="articleFeedback-dialog" rel="register"><div class="articleFeedback-buffer"><div class="articleFeedback-title">Create an account?</div></div></div>\
-<div class="articleFeedback-dialog" rel="edit"><div class="articleFeedback-buffer"><div class="articleFeedback-title">Edit a page?</div></div></div>\
 		',
 		'rating': '\
 <div class="articleFeedback-rating">\
@@ -38,6 +35,13 @@ $.articleFeedback = {
 	<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
 	<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
 	<div style="clear:both;"></div>\
+</div>\
+		',
+		'dialog': '\
+<div class="articleFeedback-dialog">\
+	<div class="articleFeedback-buffer">\
+		<div class="articleFeedback-title"></div>\
+	</div>\
 </div>\
 		'
 	},
