@@ -2527,6 +2527,18 @@ Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
 	'prefstats-legend-in' => 'Omogočeno',
 );
 
+/** Albanian (Shqip)
+ * @author Mikullovci11
+ */
+$messages['sq'] = array(
+	'prefstats-factor-hour' => 'Orë',
+	'prefstats-factor-sixhours' => 'gjashtë orë',
+	'prefstats-factor-day' => 'ditë',
+	'prefstats-factor-week' => 'javë',
+	'prefstats-factor-twoweeks' => 'dy javë',
+	'prefstats-factor-fourweeks' => 'katër javë',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Rancher
  * @author Sasa Stefanovic
