@@ -289,19 +289,19 @@ class qp_Setup {
 	 * @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax.
 	 * @param  $argv				An array containing any arguments passed to the extension
 	 * @param  &$parser				The wikitext parser.
-	 * 
+	 * @param  &$frame			PPFrame object passed in MW 1.16+
 	 * @return 						An HTML poll.
 	 */
 
 	/* @param  $input				Text between <qpoll> and </qpoll> tags, in QPoll syntax. */
-	static function renderPoll( $input, $argv, $parser ) {
+	static function renderPoll( $input, $argv, $parser, $frame = false ) {
 		if ( !self::$cache_control ) {
 			$parser->disableCache();
 		}
 		if ( array_key_exists( 'address', $argv ) ) {
-			$qpoll = new qp_PollStats( $argv, $parser );
+			$qpoll = new qp_PollStats( $argv, $parser, $frame );
 		} else {
-			$qpoll = new qp_Poll( $argv, $parser );
+			$qpoll = new qp_Poll( $argv, $parser, $frame );
 		}
 		return $qpoll->parsePoll( $input );
 	}
@@ -323,6 +323,7 @@ class qp_AbstractPoll {
 	static $messagesLoaded = false; // check whether the extension localized messages are loaded
 
 	var $parser; // parser for parsing tags content
+	var $ppframe; // parser context passed in MW 1.16+; unused in MW 1.15
 	var $username;
 
 	# an ID of the poll on current page (used in declaration/voting mode)
@@ -349,9 +350,10 @@ class qp_AbstractPoll {
 	 * 
 	 * @public
 	 */
-	function __construct( $argv, &$parser ) {
+	function __construct( $argv, &$parser, &$frame ) {
 		global $wgUser, $wgRequest, $wgLanguageCode;
 		$this->parser = &$parser;
+		$this->ppframe = $frame;
 		$this->mRequest = &$wgRequest;
 		$this->mResponse = $wgRequest->response();
 		# Determine which messages will be used, according to the language.
@@ -545,8 +547,8 @@ class qp_AbstractPoll {
  */
 class qp_PollStats extends qp_AbstractPoll {
 
-	function __construct( $argv, &$parser ) {
-		parent::__construct( $argv, $parser );
+	function __construct( $argv, &$parser, &$frame ) {
+		parent::__construct( $argv, $parser, $frame );
 		$this->pollAddr = trim( $argv['address'] );
 		# statistical mode is active, but qp_Setup::$global_showresults still can be false
 		if ( qp_Setup::$global_showresults == 0 ) {
@@ -595,7 +597,7 @@ class qp_PollStats extends qp_AbstractPoll {
 		unset( $unparsedAttributes[0] );
 		# first pass: parse the headers
 		foreach ( $this->pollStore->Questions as &$qdata ) {
-			$question = new qp_QuestionStats( $this->parser, $qdata->type, $qdata->question_id, $this->showResults );
+			$question = new qp_QuestionStats( $this->parser, $this->ppframe, $qdata->type, $qdata->question_id, $this->showResults );
 			if ( isset( $unparsedAttributes[$qdata->question_id] ) ) {
 				$attr_str = $unparsedAttributes[$qdata->question_id];
 			} else {
@@ -688,7 +690,7 @@ class qp_PollStats extends qp_AbstractPoll {
 			0=>array( '__tag'=>'div', '__end'=>"\n", 'class'=>'header',
 				0=>array( '__tag'=>'span', 'class'=>'questionId', 0=>$question->mQuestionId )
 			),
-			1=>$this->parser->recursiveTagParse( $question->mCommonQuestion . "\n" )
+			1=>$this->parser->recursiveTagParse( $question->mCommonQuestion . "\n", $this->ppframe )
 		);
 		$tags[] = &$output_table;
 		return qp_Renderer::renderHTMLobject( $tags );
@@ -701,8 +703,8 @@ class qp_PollStats extends qp_AbstractPoll {
  */
 class qp_Poll extends qp_AbstractPoll {
 
-	function __construct( $argv, &$parser ) {
-		parent::__construct( $argv, $parser );
+	function __construct( $argv, &$parser, &$frame ) {
+		parent::__construct( $argv, $parser, $frame );
 		# order_id is used to sort out polls on the Special:PollResults statistics page
 		$this->mOrderId = self::$sOrderId;
 		# Determine if this poll is being corrected or not, according to the pollId
@@ -999,7 +1001,7 @@ class qp_Poll extends qp_AbstractPoll {
 	#          $body   : the text of question body (starting with body header which defines categories and spans, followed by proposal list)
 	# @return            question object with parsed headers and no data loaded
 	function parseQuestionHeader( $header, $body ) {
-		$question = new qp_Question( $this->parser, $this->mBeingCorrected, ++$this->mQuestionId, $this->showResults );
+		$question = new qp_Question( $this->parser, $this->ppframe, $this->mBeingCorrected, ++$this->mQuestionId, $this->showResults );
 		# parse questions common question and XML attributes
 		$question->parseMainHeader( $header );
 		if ( $question->getState() != 'error' ) {
@@ -1067,7 +1069,7 @@ class qp_Poll extends qp_AbstractPoll {
 			0=>array( '__tag'=>'div', '__end'=>"\n", 'class'=>'header',
 				0=>array( '__tag'=>'span', 'class'=>'questionId', 0=>$question->mQuestionId )
 			),
-			1=>$this->parser->recursiveTagParse( $question->mCommonQuestion . "\n" )
+			1=>$this->parser->recursiveTagParse( $question->mCommonQuestion . "\n", $this->ppframe )
 		);
 		$tags[] = &$output_table;
 		return qp_Renderer::renderHTMLobject( $tags );
