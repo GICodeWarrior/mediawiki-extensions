@@ -33,9 +33,13 @@ var config = {
 				// If already taken survey, return false
 				return true;
 			},
+			'action': function() {
+				// Do something
+			},
 			'title': 'articlefeedback-pitch-takesurvey-title',
 			'message': 'articlefeedback-pitch-takesurvey-message',
-			'action': 'articlefeedback-pitch-takesurvey-action'
+			'accept': 'articlefeedback-pitch-takesurvey-accept',
+			'reject': 'articlefeedback-pitch-reject'
 		},
 		'createaccount': {
 			'condition': function() {
@@ -45,9 +49,13 @@ var config = {
 				}
 				return true;
 			},
+			'action': function() {
+				// Do something
+			},
 			'title': 'articlefeedback-pitch-createaccount-title',
 			'message': 'articlefeedback-pitch-createaccount-message',
-			'action': 'articlefeedback-pitch-createaccount-action'
+			'accept': 'articlefeedback-pitch-createaccount-accept',
+			'reject': 'articlefeedback-pitch-reject'
 		},
 		'makefirstedit': {
 			'condition': function() {
@@ -57,9 +65,13 @@ var config = {
 				}
 				return true;
 			},
+			'action': function() {
+				// Do something
+			},
 			'title': 'articlefeedback-pitch-makefirstedit-title',
 			'message': 'articlefeedback-pitch-makefirstedit-message',
-			'action': 'articlefeedback-pitch-makefirstedit-action'
+			'accept': 'articlefeedback-pitch-makefirstedit-accept',
+			'reject': 'articlefeedback-pitch-reject'
 		},
 	}
 };

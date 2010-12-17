@@ -42,7 +42,8 @@ $.articleFeedback = {
 	<div class="articleFeedback-buffer">\
 		<div class="articleFeedback-title"></div>\
 		<div class="articleFeedback-message"></div>\
-		<button class="articleFeedback-action"></button>\
+		<button class="articleFeedback-accept"></button>\
+		<button class="articleFeedback-reject"></button>\
 	</div>\
 </div>\
 		'
@@ -71,7 +72,7 @@ $.articleFeedback = {
 		'submit': function() {
 			var context = this;
 			// Lock the submit button -- TODO: lock the star inputs too
-			context.$ui.find( 'button[type=submit]' ).button( { 'disabled': true } );
+			context.$ui.find( '.articleFeedback-submit' ).button( { 'disabled': true } );
 			
 			// Build data from form values
 			var data = {};
@@ -215,8 +216,19 @@ $.articleFeedback = {
 						.find( '.articleFeedback-message' )
 							.text( mw.msg( context.options.pitches[key].message ) )
 							.end()
-						.find( '.articleFeedback-action' )
-							.text( mw.msg( context.options.pitches[key].action ) )
+						.find( '.articleFeedback-accept' )
+							.text( mw.msg( context.options.pitches[key].accept ) )
+							.click( function() {
+								context.options.pitches[key].action();
+								$(this).closest( '.articleFeedback-pitch' ).fadeOut();
+							} )
+							.button()
+							.end()
+						.find( '.articleFeedback-reject' )
+							.text( mw.msg( context.options.pitches[key].reject ) )
+							.click( function() {
+								$(this).closest( '.articleFeedback-pitch' ).fadeOut();
+							} )
 							.end()
 						.appendTo( $(this) );
 					}
@@ -237,6 +249,14 @@ $.articleFeedback = {
 					.button()
 					.click( function() {
 						$.articleFeedback.fn.submit.call( context );
+						for ( key in context.options.pitches ) {
+							if ( context.options.pitches[key].condition() ) {
+								context.$ui
+									.find( '.articleFeedback-pitch[rel="' + key + '"]' )
+										.show();
+								break;
+							}
+						}
 					} )
 					.end()
 				// Hide report elements initially
