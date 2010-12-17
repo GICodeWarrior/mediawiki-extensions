@@ -100,7 +100,7 @@ $messages['be-tarask'] = array(
 	'right-pushadmin' => 'зьмена мэтаў і наладаў распаўсюджваньня',
 	'push-err-captacha' => 'Немагчыма распаўсюдзіць у $1 з-за captcha.',
 	'push-err-captcha-page' => 'Немагчыма распаўсюдзіць старонку $1 на ўсе мэты з-за captcha.',
-	'push-err-authentication' => 'Аўтэнтыфікацыя на $1 не атрымалася. $2',
+	'push-err-authentication' => 'Немагчыма аўтэнтыфікаваць на $1. $2',
 	'push-tab-text' => 'Распаўсюдзіць',
 	'push-button-text' => 'Распаўсюдзіць',
 	'push-tab-desc' => 'Гэтая закладка дазваляе Вам распаўсюджваць цяперашнюю вэрсію гэтай старонкі ў іншыя вікі.',
@@ -126,6 +126,9 @@ $messages['be-tarask'] = array(
 	'push-tab-used-templates' => '({{PLURAL:$2|Выкарыстаны шаблён|Выкарыстаныя шаблёны}}: $1)',
 	'push-tab-no-used-templates' => '(На гэтай старонцы не выкарыстоўваюцца шаблёны.)',
 	'push-tab-inc-files' => 'Уключыць файлы',
+	'push-tab-err-fileinfo' => 'Немагчыма выявіць, якія файлы выкарыстоўваюцца на гэтай старонцы. Ні адзін ня быў распаўсюджаны.',
+	'push-tab-err-filepush-unknown' => 'Немагчыма распаўсюдзіць файлы па невядомай прычыне.',
+	'push-tab-err-filepush' => 'Немагчыма распаўсюдзіць файлы: $1',
 );
 
 /** Breton (Brezhoneg)
@@ -209,9 +212,15 @@ $messages['fi'] = array(
  */
 $messages['hsb'] = array(
 	'push-desc' => 'Jednore rozšěrjenje za přenošowanje wobsaha do druhich wikijow',
+	'right-push' => 'Awtorizacija za wužiwanje přenošowanskeje funkcionalnosće.',
+	'right-bulkpush' => 'Awtorizacija za wužiwanje přenošowanskeje funkcionalnosće z masami (t. j. Special:Push).',
+	'right-pushadmin' => 'Awtorizacije za změnjenje přenošowanskich cilow a přenošowanskich nastajenjow.',
+	'push-err-captacha' => 'Přenošowanje do $1 CAPTCHA dla njemóžno.',
+	'push-err-captcha-page' => 'Strona $1 njeda so CAPTCHA dla do wšěch cilow přenjesć.',
 	'push-err-authentication' => 'Awtentifikacija na $1 je so njeporadźiła. $2',
 	'push-tab-text' => 'Přenjesć',
 	'push-button-text' => 'Přenjesć',
+	'push-tab-desc' => 'Tutón rajtark ći zmóžnja aktualnu wersiju tuteje strony do druhich wikijow přenjesć.',
 	'push-button-pushing' => 'Přenošowanje',
 	'push-button-pushing-files' => 'Dataje so přenošuja',
 	'push-button-completed' => 'Přenjesenje zakónčene',
@@ -220,6 +229,7 @@ $messages['hsb'] = array(
 	'push-targets' => 'Přenošowanske cile',
 	'push-add-target' => 'Cil přidać',
 	'push-import-revision-message' => 'Z $1 wot $2 přenjeseny.',
+	'push-tab-no-targets' => 'Njejsu žane přenošowanske cile. Prošu zapodaj je w dataji LocalSettings.php.',
 	'push-tab-push-to' => 'Do $1 přenjesć',
 	'push-remote-pages' => 'Zdalene strony',
 	'push-remote-page-link' => '$1 w $2',
@@ -233,9 +243,13 @@ $messages['hsb'] = array(
 	'push-tab-used-templates' => '({{PLURAL:$2|Wužita předłoha|Wužitej předłoze|Wužite předłohi|Wužite předłohi}}: $1)',
 	'push-tab-no-used-templates' => '(Na tutej stronje so žane přełohi wužiwaja.)',
 	'push-tab-inc-files' => 'Dataje zapřijeć',
+	'push-tab-err-fileinfo' => 'Njeda so zwěsćić, kotre dataje so na tutej stronje wužiwaja. Žana njeje so přenjesła.',
 	'push-tab-err-filepush-unknown' => 'Přenjesenje dataje je so z njeznateje přičiny njeporadźiło.',
 	'push-tab-err-filepush' => 'Přenjesenje dataje je so njeporadźiło: $1',
 	'special-push' => 'Strony přenjesć',
+	'push-special-description' => 'Tuta strona ći zmóžnja wobsah stronow do druhich wikijow MediaWiki přenjesć.
+
+Zo by strony přenjesł, zapodaj titule do slědowaceho tekstoweho pola, jedyn titul na linku a klikń potom na "Wšě přenjesć". Móže chwilku trać, doniž přenjesenje njeje zakónčene.',
 	'push-special-pushing-desc' => '{{PLURAL:$2|Přenošuje so $2 strona|Přenošujetej so $2 stronje|Přenošuja so $2 strony|Přenošuje so $2 stronow}} do $1...',
 	'push-special-button-text' => 'Strony přenjesć',
 	'push-special-target-is' => 'Cilowy wiki: $1',
@@ -248,6 +262,7 @@ $messages['hsb'] = array(
 	'push-special-err-pageget-failed' => 'Wobsah lokalneje strony njeda so wobstarać.',
 	'push-special-err-push-failed' => 'Cilowy wiki je přenjesenu stronu wotpokazał.',
 	'push-special-inc-files' => 'Dataje zapřijeć',
+	'push-special-err-imginfo-failed' => 'Njeda so zwěsćić, hač dataje dyrbja so přenjesć.',
 	'push-special-obtaining-fileinfo' => '$1: Datajowe informacije so wobstaruja...',
 	'push-special-pushing-file' => '$1: Dataja $2 so přenošuje...',
 	'push-special-return' => 'Dalše strony přenjesć',
