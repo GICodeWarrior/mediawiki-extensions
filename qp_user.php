@@ -92,11 +92,11 @@ class qp_Setup {
 	public static $cache_control = false;
 	/* end of default configuration settings */
 
-	static function entities( &$s ) {
+	static function entities( $s ) {
 		return htmlentities( $s, ENT_COMPAT, 'UTF-8' );
 	}
 
-	static function specialchars( &$s ) {
+	static function specialchars( $s ) {
 		return htmlspecialchars( $s, ENT_COMPAT, 'UTF-8' );
 	}
 
@@ -1197,7 +1197,8 @@ class qp_Renderer {
 	}
 
 	static function displayRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
-		return self::renderHTMLobject( self::newRow( $row, $rowattrs, $celltag, $attribute_maps ) );
+		$tagsrow = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
+		return self::renderHTMLobject( $tagsrow );
 	}
 
 	// use newRow() or addColumn() to add resulting row/column to the table
