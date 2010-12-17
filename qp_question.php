@@ -180,7 +180,7 @@ abstract class qp_AbstractQuestion {
 				$spanState->cellsLeft = $this->mCategorySpans[ $spanState->id ]['count'];
 				if ( $spanState->cellsLeft < 2 ) {
 					$text = $this->bodyErrorMessage( wfMsg( 'qp_error_too_few_spans' ), 'error' ) . $text;
-					$row[ $catId ][ 'style' ] = QP_CSS_ERROR_STYLE;
+					QP_Renderer::addClass( $row[ $catId ], 'error' );
 				}
 				$spanState->isDrawing = $spanState->cellsLeft != 1 && $spanState->cellsLeft != count( $this->mCategories );
 				# hightlight only spans of count != 1 and count != count(categories)
@@ -301,12 +301,12 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 			if ( $this->categoriesStyle != '' ) {
 				qp_Renderer::applyAttrsToRow( $spansRow, array( 'style'=>$this->categoriesStyle ) );
 			}
-			$this->addRow( $spansRow, array( 'class'=>'spans'), 'th', array( 'count'=>$this->spanType, 'name'=>0 ) );
+			$this->addRow( $spansRow, array( 'class'=>'spans' ), 'th', array( 'count'=>$this->spanType, 'name'=>0 ) );
 		}
 		if ( $this->categoriesStyle != '' ) {
 			qp_Renderer::applyAttrsToRow( $catRow, array( 'style'=>$this->categoriesStyle ) );
 		}
-		$this->addRow( $catRow, array( 'class'=>'categories'), 'th', array( 'name'=>0 ) );
+		$this->addRow( $catRow, array( 'class'=>'categories' ), 'th', array( 'name'=>0 ) );
 		foreach ( $this->mProposalText as $proposalId => $text ) {
 			$row = Array();
 			$rawClass = 'proposal';
@@ -320,7 +320,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 					$this->renderSpan( $name, $catDesc, $text, $rawClass, $spanState );
 					break;
 				}
-				$row[ $catId ][ 'class' ] = $spanState->className;
+				QP_Renderer::addClass( $row[ $catId ], $spanState->className );
 				if ( $this->showResults['type'] != 0 ) {
 					# there ars some stat in row (not necessarily all cells, because size of question table changes dynamically)
 					$row[ $catId ][ 0 ] = $this->{'addShowResults' . $this->showResults['type']}( $proposalId, $catId );
@@ -576,12 +576,12 @@ class qp_Question extends qp_AbstractQuestion {
 			if ( $this->categoriesStyle != '' ) {
 				qp_Renderer::applyAttrsToRow( $spansRow, array( 'style'=>$this->categoriesStyle ) );
 			}
-			$this->addRow( $spansRow, array( 'class'=>'spans'), 'th', array( 'count'=>$this->spanType, 'name'=>0 ) );
+			$this->addRow( $spansRow, array( 'class'=>'spans' ), 'th', array( 'count'=>$this->spanType, 'name'=>0 ) );
 		}
 		if ( $this->categoriesStyle != '' ) {
 			qp_Renderer::applyAttrsToRow( $catRow, array( 'style'=>$this->categoriesStyle ) );
 		}
-		$this->addRow( $catRow, array( 'class'=>'categories'), 'th', array( 'name'=>0 ) );
+		$this->addRow( $catRow, array( 'class'=>'categories' ), 'th', array( 'name'=>0 ) );
 	}
 
 	function singleChoiceParseBody() {
@@ -633,7 +633,7 @@ class qp_Question extends qp_AbstractQuestion {
 							$text = $this->bodyErrorMessage( wfMsg( 'qp_error_unanswered_span' ), 'NA' ) . $text;
 							# highlight current span to indicate an error
 							for ( $i = $catId, $j = $this->mCategorySpans[ $spanState->id ]['count']; $j > 0; $i--, $j-- ) {
-								$row[$i][ 'style' ] = QP_CSS_ERROR_STYLE;
+								QP_Renderer::addClass( $row[$i], 'error' );
 							}
 							$rawClass = 'proposalerror';
 						}
@@ -653,7 +653,7 @@ class qp_Question extends qp_AbstractQuestion {
 							$text = $this->bodyErrorMessage( wfMsg( 'qp_error_non_unique_choice' ), 'NA' ) . $text;
 							$rawClass = 'proposalerror';
 							unset( $inp[ 'checked' ] );
-							$row[ $catId ][ 'style' ] = QP_CSS_ERROR_STYLE;
+							QP_Renderer::addClass( $row[ $catId ], 'error' );
 						}
 					} else {
 						$spanState->wasChecked = true;
@@ -664,7 +664,7 @@ class qp_Question extends qp_AbstractQuestion {
 					$this->mProposalCategoryId[ $proposalId ][] = $catId;
 					$this->mProposalCategoryText[ $proposalId ][] = '';
 				}
-				$row[ $catId ][ 'class' ] = $spanState->className;
+				QP_Renderer::addClass( $row[ $catId ], $spanState->className );
 				if ( $this->mSubType == 'unique' ) {
 					# unique (question,category,proposal) "coordinate" for javascript
 					$inp[ 'id' ] = 'uq' . $this->mQuestionId . 'c' . $catId . 'p' . $proposalId;
@@ -673,7 +673,7 @@ class qp_Question extends qp_AbstractQuestion {
 						# if there was no previous errors, hightlight the whole row
 						if ( $this->getState() == '' ) {
 							foreach( $row as &$cell ) {
-								$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
+								QP_Renderer::addClass( $cell, 'error' );
 							}
 						}
 						$text = $this->bodyErrorMessage( wfMsg( 'qp_error_unique' ), 'error' ) . $text;
@@ -695,7 +695,7 @@ class qp_Question extends qp_AbstractQuestion {
 			if( trim( $text ) == '' ) {
 				$text = $this->bodyErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
 				foreach( $row as &$cell ) {
-					$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
+					QP_Renderer::addClass( $cell, 'error' );
 				}
 				$rawClass = 'proposalerror';
 			}
@@ -704,7 +704,7 @@ class qp_Question extends qp_AbstractQuestion {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
 					foreach( $row as &$cell ) {
-						$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
+						QP_Renderer::addClass( $cell, 'error' );
 					}
 				}
 				$text = $this->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) . $text;
@@ -851,7 +851,7 @@ class qp_Question extends qp_AbstractQuestion {
 			} catch( Exception $e ) {
 				if ( $e->getMessage() == 'qp_error' ) {
 					foreach( $row as &$cell ) {
-						$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
+						QP_Renderer::addClass( $cell, 'error' );
 					}
 					$rawClass = 'proposalerror';
 				} else {

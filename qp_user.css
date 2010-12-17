@@ -1,3 +1,5 @@
+.qpoll .error { background-color: LightYellow; }
+.qpoll .fatalerror { border: 1px solid gray; padding: 4px; background-color: LightYellow; }
 .qpoll .settings input.numerical { width:2em; }
 .qpoll .header {font-weight: bold;}
 *>.qpoll .header .questionId {text-indent: -1.5em; } /* *> prevent ie6 to interprate it. */

@@ -37,9 +37,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is part of the QPoll extension. It is not a valid entry point.\n" );
 }
 
-define( 'QP_CSS_ERROR_COLOR1' , "LightYellow" );
 define( 'QP_CSS_ERROR_COLOR2', "#D700D7" );
-define( 'QP_CSS_ERROR_STYLE', 'background-color: ' . QP_CSS_ERROR_COLOR1 . ';' );
 
 define( 'QP_ERROR_MISSED_TITLE', 1 );
 define( 'QP_ERROR_INVALID_ADDRESS', 2 );
@@ -144,9 +142,9 @@ class qp_Setup {
 		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir ); 
 		$wgExtensionMessagesFiles['QPoll'] = self::$ExtDir . '/qp_i18n.php';
 		$wgAutoloadClasses['PollResults'] = self::$ExtDir . '/qp_results.php';
-		$wgAutoloadClasses['qp_Question'] = self::$ExtDir . '/qp_question.php';
+		$wgAutoloadClasses['qp_Question'] =
 		$wgAutoloadClasses['qp_QuestionStats'] = self::$ExtDir . '/qp_question.php';
-		$wgAutoloadClasses['qp_PollStore'] = self::$ExtDir . '/qp_pollstore.php';
+		$wgAutoloadClasses['qp_PollStore'] =
 		$wgAutoloadClasses['qp_QuestionData'] = self::$ExtDir . '/qp_pollstore.php';
 		$wgAutoloadClasses['qp_QueryPage'] = self::$ExtDir . '/qp_results.php';
 		// TODO: Use the new technique for i18n of special page aliases
@@ -154,10 +152,11 @@ class qp_Setup {
 		// TODO: Use the new technique for i18n of magic words
 		// instantiating fake instance for PHP < 5.2.3, which does not support 'Class::method' type of callbacks
 		$qp_Setup = new qp_Setup;
-		$wgHooks['LanguageGetMagic'][]       = $qp_Setup;
-		$wgHooks['MediaWikiPerformAction'][] = $qp_Setup;
-		$wgHooks['ParserFirstCallInit'][] = $qp_Setup;
-		$wgHooks['LoadAllMessages'][] = $qp_Setup;
+		$wgHooks['LanguageGetMagic'][] =
+		$wgHooks['MediaWikiPerformAction'][] =
+		$wgHooks['ParserFirstCallInit'][] =
+		$wgHooks['LoadAllMessages'][] =
+		$wgHooks['ResourceLoaderRegisterModules'][] = $qp_Setup;
 	}
 
 	static function onLoadAllMessages() {
@@ -236,26 +235,51 @@ class qp_Setup {
 	 * Register the extension with the WikiText parser.
 	 */
 	static function onParserFirstCallInit() {
-		global $wgParser;
-		global $wgExtensionCredits;
-		global $wgQPollFunctionsHook;
-		global $wgContLang;
-		global $wgJsMimeType, $wgOut;
-		# Ouput the style and the script to the header once for all.
-		$head  = '<style type="text/css">' . "\n";
-		$head .= '.qpoll .fatalerror { border: 1px solid gray; padding: 4px; ' . QP_CSS_ERROR_STYLE . ' }' . "\n";
-		$head .= '</style>' . "\n";
-		$head .= '<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/qp_user.js"></script>' . "\n";
-		$wgOut->addScript( $head );
-		$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user.css' );
-		if ( $wgContLang->isRTL() ) {
-			$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user_rtl.css' );
+		global $wgOut;
+		if ( class_exists( 'ResourceLoader' ) ) {
+			# MW 1.17+
+			// $wgOut->addModules( 'jquery' );
+			$wgOut->addModules( 'ext.qpoll' );
+		} else {
+			# MW < 1.17
+			global $wgJsMimeType, $wgContLang;
+			# Ouput the style and the script to the header once for all.
+			$head = '<script type="' . $wgJsMimeType . '" src="' . self::$ScriptPath . '/qp_user.js"></script>' . "\n";
+			$wgOut->addScript( $head );
+			$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user.css' );
+			if ( $wgContLang->isRTL() ) {
+				$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user_rtl.css' );
+			}
 		}
+		global $wgParser;
+		global $wgQPollFunctionsHook;
 		# setup tag hook
 		$wgParser->setHook( 'qpoll', array( 'qp_Setup', 'renderPoll' ) );
 		$wgQPollFunctionsHook = new qp_FunctionsHook();
 		# setup function hook
 		$wgParser->setFunctionHook( 'qpuserchoice', array( &$wgQPollFunctionsHook, 'qpuserchoice' ), SFH_OBJECT_ARGS );
+		return true;
+	}
+
+	/**
+	 * MW 1.17+ ResourceLoader module hook (JS,CSS)
+	 */
+	static function onResourceLoaderRegisterModules( $resourceLoader ) {
+		global $wgExtensionAssetsPath;
+		$localpath = dirname( __FILE__ );
+		$remotepath = "$wgExtensionAssetsPath/QPoll";
+		$resourceLoader->register(
+			array(
+				'ext.qpoll' => new ResourceLoaderFileModule(
+					array(
+						'scripts' => 'qp_user.js',
+						'styles' => 'qp_user.css'
+					),
+					$localpath,
+					$remotepath
+				)
+			)
+		);
 		return true;
 	}
 
@@ -1119,6 +1143,19 @@ class qp_Renderer {
 			$tag_val = $tag;
 		}
 		return $tag_open . $tag_val . $tag_close;
+	}
+
+	/**
+	 * add one or more of CSS class names to tag class attribute
+	 */
+	static function addClass( &$tag, $className ) {
+		if ( !isset( $tag['class'] ) ) {
+			$tag['class'] = $className;
+			return;
+		}
+		if ( array_search( $className, explode( ' ', $tag['class'] ) ) === false ) {
+			$tag['class'] .= " $className";
+		}
 	}
 
 	# creates one "htmlobject" row of the table
