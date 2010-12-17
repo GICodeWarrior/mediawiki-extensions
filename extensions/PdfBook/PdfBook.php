@@ -16,7 +16,7 @@
  */
 if( !defined( 'MEDIAWIKI' ) ) die( "Not an entry point." );
 
-define( 'PDFBOOK_VERSION', "1.0.8, 2010-11-03" );
+define( 'PDFBOOK_VERSION', "1.0.9, 2010-12-17" );
 
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
@@ -84,6 +84,7 @@ class PdfBook {
 			$bottom  = $this->setProperty( 'BottomMargin','1cm' );
 			$font    = $this->setProperty( 'Font',	     'Arial' );
 			$size    = $this->setProperty( 'FontSize',    '8' );
+			$ls      = $this->setProperty( 'LineSpacing', 1 );
 			$linkcol = $this->setProperty( 'LinkColour',  '217A28' );
 			$levels  = $this->setProperty( 'TocLevels',   '2' );
 			$exclude = $this->setProperty( 'Exclude',     array() );
@@ -166,7 +167,7 @@ class PdfBook {
 				header( "Content-Disposition: attachment; filename=\"$book.pdf\"" );
 				$cmd  = "--left $left --right $right --top $top --bottom $bottom";
 				$cmd .= " --header ... --footer $footer --headfootsize 8 --quiet --jpeg --color";
-				$cmd .= " --bodyfont $font --fontsize $size --linkstyle plain --linkcolor $linkcol";
+				$cmd .= " --bodyfont $font --fontsize $size --fontspacing $ls --linkstyle plain --linkcolor $linkcol";
 				$cmd .= "$toc --no-title --format pdf14 --numbered $layout $width";
 				$cmd  = "htmldoc -t pdf --charset $charset $cmd $file";
 				putenv( "HTMLDOC_NOCGI=1" );
