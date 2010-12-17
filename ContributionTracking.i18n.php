@@ -457,6 +457,7 @@ $messages['gu'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotem Liss
  * @author YaronSh
  */
@@ -469,6 +470,8 @@ $messages['he'] = array(
 	'contrib-tracking-continue' => 'אם ההפניה אינה מתבצעת אוטומטית, לחצו על הכפתור כדי להשלים את תרומתכם באתר PayPal.',
 	'contrib-tracking-redirect' => 'כעת תתבצע העברה אוטומטית ל־PayPal כדי להשלים את תרומתך.',
 	'contrib-tracking-button' => 'המשך',
+	'contrib-tracking-item-name-onetime' => 'תרומה חד־פעמית',
+	'contrib-tracking-item-name-recurring' => 'תרומה חודשית חוזרת',
 );
 
 /** Croatian (Hrvatski)
