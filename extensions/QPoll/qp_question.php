@@ -88,7 +88,7 @@ abstract class qp_AbstractQuestion {
 	# @param    $state - sets new question state (note that the 'error' state cannot be changed)
 	function bodyErrorMessage( $msg, $state ) {
 		$prev_state = $this->getState();
-		$this->setState( $state );
+		$this->setState( $state, $msg );
 		# return the message only for the first error occured
 		# (this one has to be short, that's why title attribute is being used)
 		return ( $prev_state == '' ) ? '<span class="proposalerror" title="' . $msg . '">???</span> ' : '';
@@ -827,24 +827,36 @@ class qp_Question extends qp_AbstractQuestion {
 					$row[ $catId ][ 0 ] = $inp;
 				}
 			}
-			# If the proposal text is empty, the question has a syntax error.
-			if( trim( $text ) == '' ) {
-				$text = $this->bodyErrorMessage( wfMsg( "qp_error_proposal_text_empty" ), "error" );
-				foreach( $row as &$cell ) {
-					$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
+			try {
+				# if there is only one category defined and it is not a textfield,
+				# the question has a syntax error
+				if ( count( $matches ) < 2 && $matches[0] != '<>' ) {
+					$text = $this->bodyErrorMessage( wfMsg( 'qp_error_too_few_categories' ), 'error' );
+					throw new Exception( 'qp_error' );
 				}
-				$rawClass = 'proposalerror';
-			}
-			# If the proposal was submitted but unanswered
-			if ( $this->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
-				# if there was no previous errors, hightlight the whole row
-				if ( $this->getState() == '' ) {
+				# If the proposal text is empty, the question has a syntax error.
+				if( trim( $text ) == '' ) {
+					$text = $this->bodyErrorMessage( wfMsg( "qp_error_proposal_text_empty" ), "error" );
+					throw new Exception( 'qp_error' );
+				}
+				# If the proposal was submitted but unanswered
+				if ( $this->mBeingCorrected && !array_key_exists( $proposalId, $this->mProposalCategoryId ) ) {
+					$prev_state = $this->getState();
+					$text = $this->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) . $text;
+					# if there was no previous errors, hightlight the whole row
+					if ( $prev_state == '' ) {
+						throw new Exception( 'qp_error' );
+					}
+				}
+			} catch( Exception $e ) {
+				if ( $e->getMessage() == 'qp_error' ) {
 					foreach( $row as &$cell ) {
 						$cell[ 'style' ] = QP_CSS_ERROR_STYLE;
 					}
+					$rawClass = 'proposalerror';
+				} else {
+					throw new MWException( $e->getMessage() );
 				}
-				$text = $this->bodyErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' ) . $text;
-				$rawClass = 'proposalerror';
 			}
 			$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text ) );
 			if ( $this->proposalsFirst ) {
@@ -910,16 +922,16 @@ class qp_Question extends qp_AbstractQuestion {
 		if ( $curr_elem != '' ) {
 			$categories[] = $curr_elem;
 		}
+		$categories = array_map( 'trim', $categories );
 		# analyze previousely build "raw" categories array
 		# Less than two categories is a syntax error.
-		if ( !array_key_exists( 1, $categories ) ) {
-			$categories[0] .= $this->bodyErrorMessage( wfMsg( "qp_error_too_few_categories" ), "error" );
+		if ( $this->mType != 'mixedChoice' && count( $categories ) < 2 ) {
+			$categories[0] .= $this->bodyErrorMessage( wfMsg( 'qp_error_too_few_categories' ), 'error' );
 		}
 		foreach( $categories as $catkey => $category ) {
-			$category = trim( $category );
 			# If a category name is empty, the question has a syntax error.
-			if( $category == "") {
-				$category = $this->bodyErrorMessage( wfMsg( "qp_error_category_name_empty" ), "error" );
+			if( $category == '' ) {
+				$category = $this->bodyErrorMessage( wfMsg( 'qp_error_category_name_empty' ), 'error' );
 			}
 			$this->mCategories[ $catkey ]["name"] = $category;
 			$row[] = $this->parser->recursiveTagParse( $category );
