@@ -44,6 +44,15 @@ $messages['en'] = array(
 	'articlefeedback-field-unbiased-tip' => 'Do you feel that this page shows a fair representation of all perspectives on the issue?',
 	'articlefeedback-field-wellwritten-label' => 'Well-written',
 	'articlefeedback-field-wellwritten-tip' => 'Do you feel that this page is well-organized and well-written?',
+	'articlefeedback-pitch-takesurvey-title' => 'Would you like to take a survey?',
+	'articlefeedback-pitch-takesurvey-message' => '-- message --',
+	'articlefeedback-pitch-takesurvey-action' => 'Start Survey',
+	'articlefeedback-pitch-createaccount-title' => 'Would you like to create an account?',
+	'articlefeedback-pitch-createaccount-message' => '-- message --',
+	'articlefeedback-pitch-createaccount-action' => 'Create Account',
+	'articlefeedback-pitch-makefirstedit-title' => 'Would you like to edit this article?',
+	'articlefeedback-pitch-makefirstedit-message' => '-- message --',
+	'articlefeedback-pitch-makefirstedit-action' => 'Start Editing',
 );
 
 /** Message documentation (Message documentation)
