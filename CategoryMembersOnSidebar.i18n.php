@@ -134,3 +134,10 @@ $messages['ru'] = array(
 	'categorymembersonsidebar-desc' => 'Добавляет членов категории на боковую панель',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'categorymembersonsidebar-desc' => '侧栏上添加类别成员',
+);
+
