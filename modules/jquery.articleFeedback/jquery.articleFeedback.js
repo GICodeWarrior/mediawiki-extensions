@@ -37,10 +37,12 @@ $.articleFeedback = {
 	<div style="clear:both;"></div>\
 </div>\
 		',
-		'dialog': '\
-<div class="articleFeedback-dialog">\
+		'pitch': '\
+<div class="articleFeedback-pitch">\
 	<div class="articleFeedback-buffer">\
 		<div class="articleFeedback-title"></div>\
+		<div class="articleFeedback-message"></div>\
+		<button class="articleFeedback-action"></button>\
 	</div>\
 </div>\
 		'
@@ -86,8 +88,8 @@ $.articleFeedback = {
 				'data': $.extend( data, {
 					'action': 'articlefeedback',
 					'format': 'json',
-					'anontoken': mw.user.sessionId(),
-					'userid': mw.user.sessionId(),
+					'anontoken': mw.user.id(),
+					'userid': mw.user.id(),
 					'pageid': mw.config.get( 'wgArticleId' ),
 					'revid': mw.config.get( 'wgCurRevisionId' ),
 					'bucket': context.options.bucket
@@ -114,8 +116,8 @@ $.articleFeedback = {
 					'format': 'json',
 					'list': 'articlefeedback',
 					'afpageid': mw.config.get( 'wgArticleId' ),
-					'afanontoken': mw.user.sessionId(),
-					'afuserrating': mw.user.sessionId()
+					'afanontoken': mw.user.id(),
+					'afuserrating': mw.user.id()
 				},
 				'success': function( data ) {
 					var context = this;
@@ -203,6 +205,22 @@ $.articleFeedback = {
 						}
 					} )
 					.end()
+				.each( function() {
+					for ( key in context.options.pitches ) {
+						$( $.articleFeedback.tpl.pitch )
+						.attr( 'rel', key )
+						.find( '.articleFeedback-title' )
+							.text( mw.msg( context.options.pitches[key].title ) )
+							.end()
+						.find( '.articleFeedback-message' )
+							.text( mw.msg( context.options.pitches[key].message ) )
+							.end()
+						.find( '.articleFeedback-action' )
+							.text( mw.msg( context.options.pitches[key].action ) )
+							.end()
+						.appendTo( $(this) );
+					}
+				} )
 				.localize( { 'prefix': 'articlefeedback-' } )
 				// Activate tooltips
 				.find( '[title]' )
@@ -345,7 +363,7 @@ $.fn.articleFeedback = function() {
 		var context = $(this).data( 'articleFeedback-context' );
 		if ( !context ) {
 			// Create context
-			context = { '$ui': $(this), 'options': { 'ratings': {}, 'bucket': 0 } };
+			context = { '$ui': $(this), 'options': { 'ratings': {}, 'pitches': {},'bucket': 0 } };
 			// Allow customization through an options argument
 			if ( typeof args[0] === 'object' ) {
 				context = $.extend( context, { 'options': args[0] } );
