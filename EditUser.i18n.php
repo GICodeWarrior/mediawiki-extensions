@@ -133,7 +133,9 @@ $messages['arz'] = array(
  * @author Chaipau
  */
 $messages['as'] = array(
+	'edituser-username' => 'সদস্যনাম:',
 	'edituser-dosearch' => 'সন্ধান কৰক',
+	'edituser-nouser' => '"$1" নামৰ সদস্যৰ কোনো অস্তিত্ব নাই ।',
 );
 
 /** Kotava (Kotava)
