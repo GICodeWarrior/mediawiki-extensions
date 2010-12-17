@@ -238,9 +238,11 @@ $messages['bg'] = array(
 	'cb_cat_subcats' => 'подкатегории',
 	'cb_cat_pages' => 'страници',
 	'cb_cat_files' => 'файлове',
+	'cb_apply_button' => 'Прилагане',
 	'cb_all_op' => 'Всички',
 	'cb_or_op' => 'или',
 	'cb_and_op' => 'и',
+	'cb_edit_remove_hint' => 'Изтриване, ако е възможно',
 );
 
 /** Breton (Brezhoneg)
@@ -402,6 +404,8 @@ Dennoch sollte, sofern irgend möglich, der Browser aktualisiert oder gewechselt
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'categorybrowser' => 'Wobglědowak kategorijow',
+	'cb_show_no_parents_only' => 'Jano kategorije pokazaś, kótarež njamaju nadrědowane kategorije.',
 	'cb_cat_name_filter' => 'Kategoriju pó mjenju pytaś:',
 	'cb_cat_name_filter_ci' => 'Wjelikopisanje ignorěrowaś',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|pódkategorija|pódkategoriji|pódkategorije|pódkategorijow}}',
@@ -418,6 +422,9 @@ $messages['dsb'] = array(
 	'cb_all_op' => 'Wšykne',
 	'cb_or_op' => 'abo',
 	'cb_and_op' => 'a',
+	'cb_edit_left_hint' => 'Nalěwo gibnuś, jolic móžno',
+	'cb_edit_right_hint' => 'Napšawo gibnuś, jolic móžno',
+	'cb_edit_remove_hint' => 'Wulašowaś, jolic móžno',
 );
 
 /** Esperanto (Esperanto)

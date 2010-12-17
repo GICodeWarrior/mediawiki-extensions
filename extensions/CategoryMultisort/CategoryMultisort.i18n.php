@@ -74,6 +74,13 @@ $messages['be-tarask'] = array(
 	'prefs-category' => 'Катэгорыя',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'prefs-category' => 'Категория',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal

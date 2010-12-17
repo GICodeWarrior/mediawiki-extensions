@@ -2050,6 +2050,7 @@ $messages['ps'] = array(
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
+ * @author Raylton P. Sousa
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -2057,7 +2058,7 @@ $messages['pt'] = array(
 	'readerfeedback' => 'O que acha desta página?',
 	'readerfeedback-text' => "''Por favor, dedique um momento a avaliar esta página. A sua opinião é importante e ajuda-nos a melhorar o ''site''.''",
 	'readerfeedback-reliability' => 'Confiabilidade',
-	'readerfeedback-completeness' => 'Completitude',
+	'readerfeedback-completeness' => 'Abrangência',
 	'readerfeedback-npov' => 'Neutralidade',
 	'readerfeedback-presentation' => 'Apresentação',
 	'readerfeedback-overall' => 'em Geral',
@@ -2088,13 +2089,14 @@ $messages['pt'] = array(
  * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
+ * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
 	'readerfeedback-desc' => 'A validação de páginas permite que os leitores as avaliem, atribuindo-lhes avaliações categóricas',
 	'readerfeedback' => 'O que você acha desta página?',
 	'readerfeedback-text' => "''Por gentileza, dedique um momento para avaliar esta página. Sua opinião é importante e nos ajuda a melhorar o website.''",
 	'readerfeedback-reliability' => 'Confiabilidade',
-	'readerfeedback-completeness' => 'Completeza',
+	'readerfeedback-completeness' => 'Abrangência',
 	'readerfeedback-npov' => 'Neutralidade',
 	'readerfeedback-presentation' => 'Apresentação',
 	'readerfeedback-overall' => 'Em geral',

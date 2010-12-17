@@ -183,14 +183,14 @@ $messages['be-tarask'] = array(
 	'articlefeedback-report-panel-description' => 'Цяперашнія сярэднія адзнакі.',
 	'articlefeedback-report-empty' => 'Адзнакаў няма',
 	'articlefeedback-report-ratings' => '$1 {{PLURAL:$1|адзнака|адзнакі|адзнакаў}}',
-	'articlefeedback-field-wellsourced-label' => 'Са спасылкамі на крыніцы',
-	'articlefeedback-field-wellsourced-tip' => 'Вы лічыце, што гэтая старонка мае дастаткова цытатаў, і яны паходзяць з крыніц вартых даверу?',
+	'articlefeedback-field-trustworthy-label' => 'Надзейны',
+	'articlefeedback-field-trustworthy-tip' => 'Вы лічыце, што гэтая старонка мае дастаткова цытатаў, і яны паходзяць з крыніц вартых даверу?',
 	'articlefeedback-field-complete-label' => 'Скончанасьць',
 	'articlefeedback-field-complete-tip' => 'Вы лічыце, што гэтая старонка раскрывае асноўныя пытаньні тэмы як сьлед?',
-	'articlefeedback-field-neutral-label' => 'Нэўтральнасьць',
-	'articlefeedback-field-neutral-tip' => 'Вы лічыце, што на гэтай старонцы адлюстраваныя усе пункты гледжаньня на пытаньне?',
-	'articlefeedback-field-readable-label' => 'Лёгкасьць чытаньня',
-	'articlefeedback-field-readable-tip' => 'Вы лічыце, што гэтая старонка добра арганізаваная і добра напісаная?',
+	'articlefeedback-field-unbiased-label' => "Аб'ектыўны",
+	'articlefeedback-field-unbiased-tip' => 'Вы лічыце, што на гэтай старонцы адлюстраваныя усе пункты гледжаньня на пытаньне?',
+	'articlefeedback-field-wellwritten-label' => 'Добра напісаны',
+	'articlefeedback-field-wellwritten-tip' => 'Вы лічыце, што гэтая старонка добра арганізаваная і добра напісаная?',
 );
 
 /** Bulgarian (Български)
@@ -421,8 +421,6 @@ $messages['dsb'] = array(
 	'articlefeedback-report-empty' => 'Žedne pogódnośenja',
 	'articlefeedback-report-ratings' => '$1 pogódnosénjow',
 	'articlefeedback-field-complete-label' => 'Dopołny',
-	'articlefeedback-field-neutral-label' => 'Neutralny',
-	'articlefeedback-field-readable-label' => 'dajo se cytaś',
 );
 
 /** Greek (Ελληνικά)
@@ -523,8 +521,6 @@ $messages['fa'] = array(
 	'articlefeedback-survey-thanks' => 'از این که نظرسنجی را تکمیل کردید متشکریم.',
 	'articlefeedback-report-switch-label' => 'نمایش نتایج',
 	'articlefeedback-field-complete-label' => 'کامل بودن',
-	'articlefeedback-field-neutral-label' => 'بی‌طرفی',
-	'articlefeedback-field-readable-label' => 'خوانایی',
 );
 
 /** Finnish (Suomi)
@@ -676,6 +672,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -696,6 +693,23 @@ $messages['he'] = array(
 	'articlefeedback-survey-submit' => 'שליחה',
 	'articlefeedback-survey-title' => 'נא לענות על מספר שאלות',
 	'articlefeedback-survey-thanks' => 'תודה לך על מילוי הסקר.',
+	'articlefeedback-form-switch-label' => 'משוב',
+	'articlefeedback-form-panel-title' => 'המשוב שלכם',
+	'articlefeedback-form-panel-instructions' => 'הקדישו רגע לדרג את הדף.',
+	'articlefeedback-form-panel-submit' => 'לשלוח משוב',
+	'articlefeedback-report-switch-label' => 'להציג תוצאות',
+	'articlefeedback-report-panel-title' => 'תוצאות משוב',
+	'articlefeedback-report-panel-description' => 'ממוצע הדירוגים הנוכחי.',
+	'articlefeedback-report-empty' => 'אין דירוגים',
+	'articlefeedback-report-ratings' => '$1 דירוגים',
+	'articlefeedback-field-trustworthy-label' => 'אמין',
+	'articlefeedback-field-trustworthy-tip' => 'האם אתם מרגישים שבדף הזה יש הפניות מספיקות למקורות ושהמקורות מהימנים?',
+	'articlefeedback-field-complete-label' => 'להשלים',
+	'articlefeedback-field-complete-tip' => 'האם אתם מרגישים שהדף הזה סוקר את התחומים החיוניים הנוגעים בנושא?',
+	'articlefeedback-field-unbiased-label' => 'לא מוטה',
+	'articlefeedback-field-unbiased-tip' => 'האם אתם מרגישים שהדף הזה מייצג באופן הולם את כל נקודות המבט על הנושא?',
+	'articlefeedback-field-wellwritten-label' => 'כתוב היטב',
+	'articlefeedback-field-wellwritten-tip' => 'האם אתם מרגישים שהדף הזה מאורגן וכתוב היטב?',
 );
 
 /** Croatian (Hrvatski)
@@ -720,6 +734,23 @@ $messages['hr'] = array(
 	'articlefeedback-survey-submit' => 'Pošalji',
 	'articlefeedback-survey-title' => 'Molimo odgovorite na nekoliko pitanja',
 	'articlefeedback-survey-thanks' => 'Hvala vam na popunjavanju ankete.',
+	'articlefeedback-form-switch-label' => 'Pošaljite povratne informacije',
+	'articlefeedback-form-panel-title' => 'Vaše povratne informacije',
+	'articlefeedback-form-panel-instructions' => 'Molimo odvojite trenutak vremena da ocijenite ovu stranicu.',
+	'articlefeedback-form-panel-submit' => 'Pošaljite povratnu informaciju',
+	'articlefeedback-report-switch-label' => 'Prikaži rezultate',
+	'articlefeedback-report-panel-title' => 'Rezultati povratnih informacija',
+	'articlefeedback-report-panel-description' => 'Trenutačni prosjek ocjena.',
+	'articlefeedback-report-empty' => 'Nema ocjena',
+	'articlefeedback-report-ratings' => '$1 ocjena',
+	'articlefeedback-field-trustworthy-label' => 'Vjerodostojno',
+	'articlefeedback-field-trustworthy-tip' => 'Smatrate li da ova stranica ima dovoljno izvora i da su oni iz vjerodostojnih izvora?',
+	'articlefeedback-field-complete-label' => 'Zaokružena cjelina teme',
+	'articlefeedback-field-complete-tip' => 'Da li mislite da ova stranica pokriva osnovna područja teme koja bi trebala?',
+	'articlefeedback-field-unbiased-label' => 'Nepristrano',
+	'articlefeedback-field-unbiased-tip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
+	'articlefeedback-field-wellwritten-label' => 'Dobro napisano',
+	'articlefeedback-field-wellwritten-tip' => 'Mislite li da je ova stranica dobro organizirana i dobro napisana?',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1223,14 +1254,11 @@ $messages['pl'] = array(
 	'articlefeedback-report-panel-description' => 'Aktualna średnia ocen.',
 	'articlefeedback-report-empty' => 'Brak ocen',
 	'articlefeedback-report-ratings' => '$1 {{PLURAL:$1|ocena|oceny|ocen}}',
-	'articlefeedback-field-wellsourced-label' => 'Dodane dobre źródła',
-	'articlefeedback-field-wellsourced-tip' => 'Czy uważasz, że strona ma wystarczającą liczbę odnośników i że odnoszą się one do wiarygodnych źródeł?',
+	'articlefeedback-field-trustworthy-tip' => 'Czy uważasz, że strona ma wystarczającą liczbę odnośników i że odnoszą się one do wiarygodnych źródeł?',
 	'articlefeedback-field-complete-label' => 'Wyczerpanie tematu',
 	'articlefeedback-field-complete-tip' => 'Czy uważasz, że strona porusza wszystkie istotne aspekty, które powinna?',
-	'articlefeedback-field-neutral-label' => 'Neutralny punkt widzenia',
-	'articlefeedback-field-neutral-tip' => 'Czy uważasz, że strona prezentuje wszystkie punkty widzenia na to zagadnienie?',
-	'articlefeedback-field-readable-label' => 'Zrozumiałość',
-	'articlefeedback-field-readable-tip' => 'Czy uważasz, że strona jest właściwie sformatowana oraz zrozumiale napisana?',
+	'articlefeedback-field-unbiased-tip' => 'Czy uważasz, że strona prezentuje wszystkie punkty widzenia na to zagadnienie?',
+	'articlefeedback-field-wellwritten-tip' => 'Czy uważasz, że strona jest właściwie sformatowana oraz zrozumiale napisana?',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1739,19 +1767,20 @@ $messages['vi'] = array(
 	'articlefeedback-form-switch-label' => 'Phản hồi',
 	'articlefeedback-form-panel-title' => 'Phản hồi của bạn',
 	'articlefeedback-form-panel-instructions' => 'Xin hãy dành một chút thì giờ để đánh giá trang này.',
-	'articlefeedback-form-panel-notice' => 'Các đánh giá của bạn sẽ hết hạn sau một thời gian.',
 	'articlefeedback-form-panel-submit' => 'Gửi phản hồi',
 	'articlefeedback-report-switch-label' => 'Xem kết quả',
 	'articlefeedback-report-panel-title' => 'Kết quả phản hồi',
 	'articlefeedback-report-panel-description' => 'Đánh giá trung bình hiện tại',
-	'articlefeedback-field-wellsourced-label' => 'Đầy đủ nguồn',
-	'articlefeedback-field-wellsourced-tip' => 'Bạn có cảm thấy rằng bày này chú thích nguồn gốc đầy đủ và đáng tin các nguồn?',
+	'articlefeedback-report-empty' => 'Không có đánh giá',
+	'articlefeedback-report-ratings' => '$1 đánh giá',
+	'articlefeedback-field-trustworthy-label' => 'Đáng tin',
+	'articlefeedback-field-trustworthy-tip' => 'Bạn có cảm thấy rằng bày này chú thích nguồn gốc đầy đủ và đáng tin các nguồn?',
 	'articlefeedback-field-complete-label' => 'Đầy đủ',
 	'articlefeedback-field-complete-tip' => 'Bạn có cảm thấy rằng bài này bao gồm các đề tài cần thiết?',
-	'articlefeedback-field-neutral-label' => 'Trung lập',
-	'articlefeedback-field-neutral-tip' => 'Bạn có cảm thấy rằng bài này đại diện công bằng cho tất cả các quan điểm về các vấn đề?',
-	'articlefeedback-field-readable-label' => 'Dễ đọc',
-	'articlefeedback-field-readable-tip' => 'Bạn có cảm thấy rằng bài này được sắp xếp đàng hoàng có văn bản hay?',
+	'articlefeedback-field-unbiased-label' => 'Trung lập',
+	'articlefeedback-field-unbiased-tip' => 'Bạn có cảm thấy rằng bài này đại diện công bằng cho tất cả các quan điểm về các vấn đề?',
+	'articlefeedback-field-wellwritten-label' => 'Viết hay',
+	'articlefeedback-field-wellwritten-tip' => 'Bạn có cảm thấy rằng bài này được sắp xếp đàng hoàng có văn bản hay?',
 );
 
 /** Yoruba (Yorùbá)
