@@ -7,6 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 abstract class qp_AbstractQuestion {
 
 	var $parser; // an instance of parser from parser tag hook
+	var $ppframe; // an instance of PPFrame (parser context)
 	var $mState = ''; // current state of question parsing (no error)
 	# error message which occured during the question header parsing that will be output later at rendering stage
 	var $headerErrorMessage = 'Unknown error';
@@ -39,12 +40,14 @@ abstract class qp_AbstractQuestion {
 	# Constructor
 	# @public
 	# @param  $parser an instance of parser from parser tag hook
+	# @param  $frame an instance of PPFrame (parser context)
 	# @param  $beingCorrected		boolean
 	# @param  $questionId				the identifier of the question used to gernerate input names
 	# @param  $showResults				poll's showResults (may be overriden in the question)
-	function __construct( &$parser, $beingCorrected, $questionId, $showResults ) {
+	function __construct( &$parser, &$frame, $beingCorrected, $questionId, $showResults ) {
 		global $wgRequest;
 		$this->parser = &$parser;
+		$this->ppframe = &$frame;
 		$this->mRequest = &$wgRequest;
 		$this->mQuestionId = $questionId;
 		$this->mBeingCorrected = $beingCorrected;
@@ -214,11 +217,12 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 	# Constructor
 	# @public
 	# @param  $parser an instance of parser from parser tag hook
+	# @param  $frame an instance of PPFrame (parser context)
 	# @param  $type							type of question (taken from DB)
 	# @param  $questionId				the identifier of the question used to gernerate input names
 	# @param  $showResults			poll's showResults (may be overriden in the question)
-	function __construct( &$parser, $type, $questionId, $showResults ) {
-		parent::__construct( $parser, false, $questionId, $showResults );
+	function __construct( &$parser, &$frame, $type, $questionId, $showResults ) {
+		parent::__construct( $parser, $frame, false, $questionId, $showResults );
 		$this->mType = $type;
 	}
 
@@ -259,7 +263,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 			$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
 		}
 		foreach( $this->mCategories as &$cat ) {
-			$row[] = $this->parser->recursiveTagParse( $cat['name'] );
+			$row[] = $this->parser->recursiveTagParse( $cat['name'], $this->ppframe );
 		}
 		if ( !$this->proposalsFirst ) {
 			// add empty <th> at the end of row to "compensate" proposal text
@@ -277,7 +281,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 				$row[] = array( '__tag'=>'td', 0=>"", 'style'=>'border:none;', '__end'=>"\n" );
 			}
 			foreach( $this->mCategorySpans as &$span ) {
-				$row[] = array( "count"=>$span['count'], 0=>$this->parser->recursiveTagParse( $span['name'] ) );
+				$row[] = array( "count"=>$span['count'], 0=>$this->parser->recursiveTagParse( $span['name'], $this->ppframe ) );
 			}
 			if ( !$this->proposalsFirst ) {
 				// add empty <th> at the end of row to "compensate" proposal text
@@ -328,7 +332,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 					$row[ $catId ][ 0 ] = '';
 				}
 			}
-			$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text ) );
+			$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text, $this->ppframe ) );
 			if ( $this->proposalsFirst ) {
 				# first element is proposaltext
 				array_unshift( $row, $text );
@@ -711,7 +715,7 @@ class qp_Question extends qp_AbstractQuestion {
 				$rawClass = 'proposalerror';
 			}
 			if ( $text !== null ) {
-				$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text ) );
+				$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text, $this->ppframe ) );
 				if ( $this->proposalsFirst ) {
 					# first element is proposaltext
 					array_unshift( $row, $text );
@@ -858,7 +862,7 @@ class qp_Question extends qp_AbstractQuestion {
 					throw new MWException( $e->getMessage() );
 				}
 			}
-			$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text ) );
+			$text = array( '__tag'=>'td', '__end'=>"\n", 'class'=>'proposaltext', 'style'=>$this->proposalTextStyle, 0=>$this->parser->recursiveTagParse( $text, $this->ppframe ) );
 			if ( $this->proposalsFirst ) {
 				# first element is proposaltext
 				array_unshift( $row, $text );
@@ -934,7 +938,7 @@ class qp_Question extends qp_AbstractQuestion {
 				$category = $this->bodyErrorMessage( wfMsg( 'qp_error_category_name_empty' ), 'error' );
 			}
 			$this->mCategories[ $catkey ]["name"] = $category;
-			$row[] = $this->parser->recursiveTagParse( $category );
+			$row[] = $this->parser->recursiveTagParse( $category, $this->ppframe );
 		}
 		
 		# cut unused categories rows which are presented in DB but were removed from article
@@ -1016,7 +1020,9 @@ class qp_Question extends qp_AbstractQuestion {
 			}
 			# fill undefined spans with the last span value
 			$SpanCategDelta = count( $this->mCategories ) - count( $spans[0] );
-			$lastDefinedSpanKey = array_pop( array_diff( array_keys( $spans[1] ), array_keys( $spans[1], "", true ) ) );
+			$diff = array_diff( array_keys( $spans[1] ), array_keys( $spans[1], "", true ) );
+			$lastDefinedSpanKey = array_pop( $diff );
+			unset( $diff );
 			if ($lastDefinedSpanKey !== null) {
 				if ( $SpanCategDelta > 0 ) {
 					# increase the length of last defined span value to match total lenth of categories
@@ -1049,7 +1055,7 @@ class qp_Question extends qp_AbstractQuestion {
 				if ( $spanCategory=="" ) {
 					$colspan++;
 				} else {
-					$row[] = array( "count"=>$colspan + $colspanBase, 0=>$this->parser->recursiveTagParse( $spanCategory ) );
+					$row[] = array( "count"=>$colspan + $colspanBase, 0=>$this->parser->recursiveTagParse( $spanCategory, $this->ppframe ) );
 					if ( $spanType == "|") { // "!" is a comment header, not a real category span
 						$this->mCategorySpans[ $categorySpanId ]['name'] = $spanCategory;
 						$this->mCategorySpans[ $categorySpanId ]['count'] = $colspan;
