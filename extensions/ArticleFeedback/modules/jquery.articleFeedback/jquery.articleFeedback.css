@@ -18,9 +18,23 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	bottom: 0;
+	right: 0;
 	background-color: #f9f9f9;
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
+}
+
+.articleFeedback-reject {
+	border: none;
+	background-color: #f9f9f9;
+	cursor: pointer;
+	color: #0645AD;
+	line-height: 1.4em;
+}
+
+.articleFeedback-reject:hover {
+	text-decoration: underline;
 }
 
 .articleFeedback-pitch .articleFeedback-buffer {
