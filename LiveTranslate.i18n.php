@@ -23,10 +23,15 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'livetranslate-desc' => 'Дазваляе пераклады тэкстаў старонак на ляту ў Google Translate',
+	'livetranslate-translate-to' => 'Перакласьці гэту старонку на',
+	'livetranslate-button-translate' => 'Перакласьці',
+	'livetranslate-button-translating' => 'Ідзе пераклад…',
 );
 
 /** Breton (Brezhoneg)
@@ -85,6 +90,9 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'livetranslate-desc' => 'Memungkinkan penerjemahan langsung konten halaman dengan menggunakan layanan Google Terjemahan',
+	'livetranslate-translate-to' => 'Terjemahkan halaman ini ke',
+	'livetranslate-button-translate' => 'Terjemahkan',
+	'livetranslate-button-translating' => 'Menerjemahkan ...',
 );
 
 /** Macedonian (Македонски)
@@ -92,6 +100,9 @@ $messages['id'] = array(
  */
 $messages['mk'] = array(
 	'livetranslate-desc' => 'Овозможува преведување на содржината на една страница во живо, користејќи Google Translate',
+	'livetranslate-translate-to' => 'Преведи ја страницава на',
+	'livetranslate-button-translate' => 'Преведи',
+	'livetranslate-button-translating' => 'Преведувам...',
 );
 
 /** Piedmontese (Piemontèis)
@@ -106,6 +117,9 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'livetranslate-desc' => 'Permite a tradução imediata do conteúdo das páginas usando o serviço Google Translate',
+	'livetranslate-translate-to' => 'Traduzir esta página para',
+	'livetranslate-button-translate' => 'Traduzir',
+	'livetranslate-button-translating' => 'A traduzir...',
 );
 
 /** Russian (Русский)
