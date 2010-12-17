@@ -80,6 +80,16 @@ $messages['be-tarask'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Стварыць',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Добавяне на страница към тази категория',
+	'articletocategory2-create-article-under-category-button' => 'Създаване',
+	'articletocategory2-create-category-under-category-text' => 'Добавяне на категория към тази категория',
+	'articletocategory2-create-category-under-category-button' => 'Създаване',
+);
+
 /** Breton (Brezhoneg)
  * @author Gwendal
  * @author Y-M D
