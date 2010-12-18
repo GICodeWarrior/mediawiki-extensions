@@ -101,7 +101,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 				$repost['on0'] = 'Shirt Size';
 				$repost['os0'] = $wgRequest->getText( 'size', null );
 				$repost['on1'] = 'Shirt Language';
-				$repost['os1'] = $wgRequest->getText( 'language', null );
+				$repost['os1'] = $wgRequest->getText( 'premium-language', null );
 				$repost['no_shipping'] = 2;
 			}
 			
