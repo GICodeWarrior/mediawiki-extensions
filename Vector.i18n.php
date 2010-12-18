@@ -1408,6 +1408,7 @@ To opozorilo lahko onemogočite v razdelku »Urejanje« svojih nastavitev.',
  * @author Mikullovci11
  */
 $messages['sq'] = array(
+	'vector-collapsiblenav-more' => 'Gjuhët tjera',
 	'vector-simplesearch-search' => 'Kërko',
 	'vector-simplesearch-containing' => 'përmban ...',
 );
