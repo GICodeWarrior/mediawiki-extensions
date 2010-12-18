@@ -39,7 +39,7 @@ from utils import utils, models
 from database import db_settings
 from database import db
 from database import cache
-from wikitree import xml
+import wikitree.parser
 from bots import bots
 from etl import models
 #from utils import process_constructor as pc

@@ -57,7 +57,7 @@ class Settings(object):
             #Change this to match your computers configuration (RAM / CPU)
             self.minimum_python_version = (2, 6)
             self.wp_dump_location = 'http://download.wikimedia.org'
-            self.xml_namespace = 'http://www.mediawiki.org/xml/export-0.3/'
+            self.xml_namespace = 'http://www.mediawiki.org/xml/export-0.4/'
             self.ascii_extensions = ['txt', 'csv', 'xml', 'sql', 'json']
             self.windows_register = {'7z.exe': 'Software\\7-Zip', }
             #Extensions of ascii files, this is used to determine the filemode to use

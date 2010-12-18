@@ -27,7 +27,7 @@ settings = configuration.Settings()
 
 from utils import models
 from utils import utils
-from wikitree import xml
+import wikitree
 
 class TXTFile(object):
 

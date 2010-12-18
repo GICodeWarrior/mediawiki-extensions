@@ -28,7 +28,7 @@ sys.path.append('..')
 
 import configuration
 settings = configuration.Settings()
-from wikitree import xml
+import wikitree
 from database import db
 from utils import utils
 #from etl import extract

@@ -182,9 +182,10 @@ def dump_downloader_launcher(args, logger, **kwargs):
     filename = kwargs.get('filename')
     extension = kwargs.get('extension')
     location = kwargs.get('location')
+    full_project = kwargs.get('full_project')
     pbar = get_value(args, 'progress')
     domain = settings.wp_dump_location
-    path = '/%s/latest/' % project
+    path = '/%s/latest/' % full_project
     extension = utils.determine_file_extension(filename)
     filemode = utils.determine_file_mode(extension)
     dump_downloader.download_wiki_file(domain, path, filename, location, filemode, pbar)
@@ -322,7 +323,7 @@ def all_launcher(args, logger, **kwargs):
         ignore = ignore + ',extract'
 
     functions = ordered_dict.OrderedDict(((dump_downloader_launcher, 'download'),
-                                          (chunker_launcher, 'split'),
+                                          #(chunker_launcher, 'split'),
                                           (extract_launcher, 'extract'),
                                           (sort_launcher, 'sort'),
                                           (store_launcher, 'store'),
@@ -407,9 +408,8 @@ def main():
     parser_download = subparsers.add_parser('download', help='The download sub command allows you to download a Wikipedia dump file.')
     parser_download.set_defaults(func=dump_downloader_launcher)
 
-    parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
-
-    parser_split.set_defaults(func=chunker_launcher)
+    #parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
+    #parser_split.set_defaults(func=chunker_launcher)
 
     parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
     parser_create.set_defaults(func=extract_launcher)

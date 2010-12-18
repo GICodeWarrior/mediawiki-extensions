@@ -213,16 +213,12 @@ def generate_cohort_dataset_old(tasks, dbname, collection, **kwargs):
             break
         obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
 
-    #for editor in tasks:
-    #    obs = tasks[editor]
         first_edit = obs['first_edit']
         last_edit = obs['final_edit']
         editor_dt = relativedelta(last_edit, first_edit)
         editor_dt = (editor_dt.years * 12) + editor_dt.months
         edits = []
         for year in xrange(2001, datetime.datetime.now().year + 1):
-            #if year == 2009 and editor == '2':
-            #    print 'debug'
             if first_edit.year > year or last_edit.year < year:
                 continue
             window_end = datetime.datetime(year, 12, 31)
@@ -251,7 +247,63 @@ def generate_cohort_dataset_old(tasks, dbname, collection, **kwargs):
 
 
 
-def generate_cohort_dataset(tasks, dbname, collection, **kwargs):
+def generate_cohort_dataset_forward(tasks, dbname, collection, **kwargs):
+    mongo = db.init_mongo_db(dbname)
+    editors = mongo[collection + '_dataset']
+    windows = create_windows()
+    data = shaper.create_datacontainer('dict')
+    final_year = datetime.datetime.now().year + 1
+    m1 = [1, 2, 3, 4, 5, 6]
+    m2 = [7, 8, 9, 10, 11, 12]
+    frames = [m1, m2]
+    while True:
+        id = tasks.get(block=False)
+        if id == None:
+            break
+        obs = editors.find_one({'editor': id}, {'new_wikipedian': 1, 'monthly_edits': 1, 'final_edit':1})
+        new_wikipedian = obs['new_wikipedian']
+        last_edit = obs['final_edit']
+        start_year = new_wikipedian.year
+        last_year = last_edit.year + 1
+        if new_wikipedian.month != 1:
+            continue
+        for year in xrange(start_year, last_year):
+            if year not in data[start_year]:
+                data[start_year][year] = {}
+            for x, frame in enumerate(frames):
+                if x not in data[start_year][year]:
+                    data[start_year][year][x] = 0
+                if 'n' not in data[start_year][year]:
+                    data[start_year][year]['n'] = 0
+
+                active = sum([obs['monthly_edits'][str(year)][str(m)] for m in frame])
+                data[start_year][year]['n'] += 1
+                if active > 0:
+                    data[start_year][year][x] += 1
+    filename = '%s_cohort_forward.csv' % dbname
+    fh = utils.create_txt_filehandle(settings.dataset_location, filename, 'w', settings.encoding)
+    frames.append('n')
+    headers = ["%s_%s" % (year, frame[0]) for year in xrange(2001, final_year) for frame in enumerate(frames)]
+    headers.insert(0, '\t')
+    utils.write_list_to_csv(headers, fh)
+
+    for obs_year in data:
+        obs = '%s\t' % obs_year
+        for year in xrange(2001, final_year):
+            values = data[obs_year].get(year, None)
+            if values != None:
+                for value in values:
+                    obs = '%s\t%s\t' % (obs, values[value])
+            else:
+                    obs = '%s\t.\t.\t.\t' % obs
+
+        obs = '%s\n' % obs
+        fh.write(obs)
+    fh.close()
+
+
+
+def generate_cohort_dataset_backward(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
     editors = mongo[collection + '_dataset']
     windows = create_windows()
@@ -360,10 +412,12 @@ def debug(dbname, collection):
                '13':{'first_edit': datetime.datetime(2007, 2, 1), 'final_edit': datetime.datetime(2009, 4, 30)},
                }
     generate_cohort_dataset(editors, dbname, collection)
+
+
 if __name__ == '__main__':
     dbname = 'enwiki'
     collection = 'editors'
     #debug(dbname, collection)
-    dataset_launcher(dbname, collection, generate_cohort_dataset_howie)
+    dataset_launcher(dbname, collection, generate_cohort_dataset_forward)
     #dataset_launcher(dbname, collection, generate_long_editor_dataset)
     #dataset_launcher(dbname, collection, generate_wide_editor_dataset)

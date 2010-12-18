@@ -34,7 +34,7 @@ settings = configuration.Settings()
 
 from utils import utils
 import extract
-from wikitree import xml
+import wikitree.parser
 from bots import bots
 
 

@@ -69,6 +69,7 @@ class DumpStatistics(object):
 def calculate_filesize_overhead(location, filename):
     counter = None
     ds = DumpStatistics()
+    filename = os.path.join(location, filename)
     context = cElementTree.iterparse(filename, events=('start', 'end'))
     context = iter(context)
     event, root = context.next()  #get the root element of the XML doc
@@ -80,20 +81,20 @@ def calculate_filesize_overhead(location, filename):
                 root.clear()  # when done parsing a section clear the tree to release memory
     except SyntaxError:
         pass
-    utils.store_object(ds, settings.binary_location, 'ds')   
+    utils.store_object(ds, settings.binary_location, 'ds')
     xml_size = ds.total_size_xml()
     text_size = ds.total_size_text()
     print text_size, xml_size
     print ds.tags
-    
+
 
 def output_dumpstatistics():
     ds = utils.load_object(settings.binary_location, 'ds.bin')
-    
+
     for key in ds.tags:
         print '%s\t%s' % (key, ds.tags[key])
-    
-if __name__ == '__main__':
-    output_dumpstatistics()
-    #calculate_filesize_overhead(settings.input_location, settings.input_filename)
 
+if __name__ == '__main__':
+    input = os.path.join(settings.input_location, 'en', 'wiki')
+    calculate_filesize_overhead(input, 'enwiki-latest-stub-meta-history.xml')
+    output_dumpstatistics()

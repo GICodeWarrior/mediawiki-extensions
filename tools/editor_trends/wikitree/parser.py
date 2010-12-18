@@ -17,10 +17,11 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
-from utils import utils
+import xml.etree.cElementTree as cElementTree
+
 import configuration
 settings = configuration.Settings()
-
+from utils import utils
 
 def convert_html_entities(text):
     return utils.unescape(text)
@@ -40,16 +41,30 @@ def retrieve_xml_node(xml_nodes, name):
             return xml_node
     return None #maybe this should be replaced with an NotFoundError
 
+def determine_element(line):
+    pos = line.find(' ')
+    elem = line[:pos] + '>'
+
 
 def read_input(file):
     lines = []
+    start_parsing = False
     for line in file:
-        lines.append(line)
-        if line.find('</page>') > -1:
-            yield lines
-            '''
-            #This looks counter intuitive but Python continues with this call
-            after it has finished the yield statement
-            '''
-            lines = []
+        if line == '\n':
+            continue
+        if start_parsing == False and line.find('<page>') > -1:
+            start_parsing = True
+        if start_parsing:
+            lines.append(line.strip())
+            if line.find('</page>') > -1:
+                #print lines
+                lines = '\n'.join(lines)
+                lines = lines.encode(settings.encoding)
+                xml_string = cElementTree.XML(lines)
+                yield xml_string
+                '''
+                #This looks counter intuitive but Python continues with this call
+                after it has finished the yield statement
+                '''
+                lines = []
     file.close()
