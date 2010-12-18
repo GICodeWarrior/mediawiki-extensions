@@ -310,8 +310,8 @@ class ApiPush extends ApiBase {
 		$summary = wfMsgExt(
 			'push-import-revision-message',
 			'parsemag',
-			$wgSitename,
-			$revision['user']
+			$wgSitename
+			//$revision['user']
 		);
 
 		$requestData = array(
