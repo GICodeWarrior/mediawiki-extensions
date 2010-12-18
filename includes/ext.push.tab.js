@@ -24,9 +24,6 @@
 	}
 	
 	var pages;
-	var imageRequestMade = false;
-	var images = false;
-	var imagePushRequests = [];
 	
 	$.each($(".push-button"), function(i,v) {
 		getRemoteArticleInfo( $(v).attr( 'targetid' ), $(v).attr( 'pushtarget' ) );
@@ -53,10 +50,6 @@
 			$(this).attr( 'pushtarget' ),
 			$(this).attr( 'targetname' )
 		);
-		
-		if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') && !imageRequestMade ) {
-			getIncludedImages();
-		}
 	});
 	
 	$('#push-all-button').click(function() {
@@ -69,8 +62,14 @@
 	
 	$('#divIncTemplates').hover(
 		function() {
+			var isHidden = $('#txtTemplateList').css( 'opacity' ) == 0;
+			
+			if ( isHidden ) {
+				$('#txtTemplateList').css( 'display', 'inline' );
+			}
+			
 			$('#txtTemplateList').fadeTo( 
-				( $('#txtTemplateList').css( 'opacity' ) == 0 ? 'slow' : 'fast' ),
+				isHidden? 'slow' : 'fast',
 				1
 			);
 		},
@@ -88,6 +87,7 @@
 			var isHidden = $('#txtFileList').css( 'opacity' ) == 0;
 			
 			if ( isHidden ) {
+				$('#txtFileList').css( 'display', 'inline' );
 				setIncludeFilesText();
 			}
 			
@@ -189,54 +189,12 @@
 	
 	function setButtonToImgPush( button, targetUrl, targetName ) {
 		button.innerHTML = mediaWiki.msg( 'push-button-pushing-files' );
-		imagePushRequests.push( { 'sender': button, 'targetUrl': targetUrl, 'targetName': targetName } );
-		startImagesPush();			
-	}
-	
-	function getIncludedImages() {
-		imageRequestMade = true;
-		
-		$.getJSON(
-			wgScriptPath + '/api.php',
-			{
-				'action': 'query',
-				'prop': 'images',
-				'format': 'json',
-				'titles': pages.join( '|' ), 
-			},
-			function( data ) {
-				if ( data.query ) {
-					images = [];
-					
-					for ( page in data.query.pages ) {
-						if ( data.query.pages[page].images ) {
-							for ( var i = data.query.pages[page].images.length - 1; i >= 0; i-- ) {
-								if ( $.inArray( data.query.pages[page].images[i].title, images ) == -1 ) {
-									images.push( data.query.pages[page].images[i].title );
-								}
-							}							
-						}
-					}
-					
-					startImagesPush();
-				}
-				else {
-					alert( mediaWiki.msg( 'push-tab-err-fileinfo' ) );
-				}
-			}
-		);		
-	}
-	
-	function startImagesPush() {
-		if ( images !== false ) {
-			var req;
-			while ( req = imagePushRequests.pop() ) {
-				initiateImagePush( req.sender, req.targetUrl, req.targetName );
-			}			
-		}
+		initiateImagePush( button, targetUrl, targetName );
 	}
 	
 	function initiateImagePush( sender, targetUrl, targetName ) {
+		var images = window.wgPushPageFiles.concat( window.wgPushTemplateFiles );
+		
 		$.getJSON(
 			wgScriptPath + '/api.php',
 			{
