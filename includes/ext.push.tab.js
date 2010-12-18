@@ -119,6 +119,7 @@
 				$('#txtFileList').text( '(' + mediaWiki.msg( 'push-tab-embedded-files' ) );
 				
 				for ( i in files ) {
+					if ( i > 0 ) $('#txtFileList').append( ', ' );
 					$('#txtFileList').append( $( '<a>' ).attr( 'href', window.wgPushIndexPath + '?title=' + files[i] ).text( files[i] ) );
 				}
 				
