@@ -76,6 +76,15 @@ $messages['eo'] = array(
 	'svgedit-desc' => 'Redakti desegnojn SVG en foliumilo per [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** French (Français)
+ * @author Otourly
+ */
+$messages['fr'] = array(
+	'svgedit-editbutton-edit' => 'Modifiez le dessin',
+	'svgedit-editor-save-close' => 'Enregistrer et fermer',
+	'svgedit-editor-close' => 'Annuler',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
