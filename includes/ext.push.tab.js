@@ -79,6 +79,44 @@
 		}
 	);
 	
+	$('#divIncTemplates').click(function() {
+		setIncludeFilesText();
+	});
+	
+	$('#divIncFiles').hover(
+		function() {
+			var isHidden = $('#txtFileList').css( 'opacity' ) == 0;
+			
+			if ( isHidden ) {
+				setIncludeFilesText();
+			}
+			
+			$('#txtFileList').fadeTo( 
+					isHidden ? 'slow' : 'fast',
+				1
+			);
+		},
+		function() {
+			$('#txtFileList').fadeTo( 'fast', 0.5 )
+		}
+	);	
+	
+	function setIncludeFilesText() {
+		if ( $('#checkIncFiles').length != 0 ) {
+			var files = window.wgPushPageFiles;
+
+			if ( $('#checkIncTemplates').attr('checked') ) {
+				files = files.concat( window.wgPushTemplateFiles );
+			} 
+
+			$('#txtFileList').text(
+				files.length > 0 ? 
+					mediaWiki.msg( 'push-tab-embedded-files', files.join( ', ' ) ) // TODO: i18n 
+					: mediaWiki.msg( 'push-tab-no-embedded-files' )
+			);			
+		}
+	}
+	
 	function getRemoteArticleInfo( targetId, targetUrl ) {
 		$.getJSON(
 			targetUrl + '/api.php?callback=?',
