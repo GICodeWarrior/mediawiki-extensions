@@ -329,7 +329,7 @@ final class PushTab {
 				'&#160;' . 
 				Html::rawElement(
 					'div',
-					array( 'style' => 'display:inline; opacity:0', 'id' => 'txtTemplateList' ),
+					array( 'style' => 'display:none; opacity:0', 'id' => 'txtTemplateList' ),
 					count( $templates ) > 0 ?
 						 wfMsgExt( 'push-tab-used-templates', 'parseinline', $wgLang->listToText( $templates ), count( $templates ) ) :
 						 htmlspecialchars( wfMsg( 'push-tab-no-used-templates' ) )
@@ -376,7 +376,7 @@ final class PushTab {
 				'&#160;' . 
 				Html::rawElement(
 					'div',
-					array( 'style' => 'display:inline; opacity:0', 'id' => 'txtFileList' ),
+					array( 'style' => 'display:none; opacity:0', 'id' => 'txtFileList' ),
 					''
 				)
 			)
