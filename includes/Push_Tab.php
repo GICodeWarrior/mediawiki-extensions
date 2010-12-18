@@ -248,10 +248,17 @@ final class PushTab {
 				Html::element(
 					'div',
 					array(
-						'id' => 'targetconflicts' . $targetId,
+						'id' => 'targettemplateconflicts' . $targetId,
 						'style' => 'display:none; color:darkgray'
 					)
-				) .				
+				) .	
+				Html::element(
+					'div',
+					array(
+						'id' => 'targetfileconflicts' . $targetId,
+						'style' => 'display:none; color:darkgray'
+					)
+				) .	
 				Html::element(
 					'div',
 					array(

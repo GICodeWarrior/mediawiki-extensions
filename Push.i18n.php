@@ -56,7 +56,8 @@ $messages['en'] = array(
 	'push-tab-err-filepush' => 'File push failed: $1',	
 	'push-tab-embedded-files' => '(Embedded files: $1)', // JS message, if you want to add plural, then fix the JS first.
 	'push-tab-no-embedded-files' => '(No files are embedded in this page.)',
-	'push-tab-included-override' => 'One or more included templates or files will be overriden.',
+	'push-tab-files-override' => 'These files already exist: $1', // JS message, if you want to add plural, then fix the JS first.
+	'push-tab-template-override' => 'These templates already exist: $1', // JS message, if you want to add plural, then fix the JS first.
 
 	// Special page
 	'special-push' => 'Push pages',

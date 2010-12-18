@@ -140,6 +140,7 @@
 					.join( '|' ),
 			},
 			function( data ) {
+				alert(data);
 				if ( data.query ) {
 					var infoDiv = $( '#targetinfo' + targetId );
 
@@ -193,30 +194,49 @@
 	}
 	
 	function displayTargetConflictStatus( targetId ) {
-		var nsToCheck = [];
+		if ( !targetData[targetId] ) {
+			// It's possible the request to retrieve this data failed, so don't do anything when this is the case.
+			return;
+		}
 		
 		if ( $('#checkIncTemplates').attr('checked') ) {
-			nsToCheck.push( 10 );
-		}
-		
-		if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
-			nsToCheck.push( 6 );
-		}
-		
-		var hasConflict = false;
-		
-		for ( remotePageId in targetData[targetId].existingPages ) {
-			if ( $.inArray( targetData[targetId].existingPages[remotePageId].ns, nsToCheck ) ) {
-				hasConflict = true;
-				break;
+			var overideTemplates = [];
+			
+			for ( remotePageId in targetData[targetId].existingPages ) {
+				if ( targetData[targetId].existingPages[remotePageId].ns == 10 ) {
+					// Add the template, but get rid of the namespace prefix first.
+					overideTemplates.push( targetData[targetId].existingPages[remotePageId].title.split( ':', 2 )[1] );
+				}
+			}
+			
+			if ( overideTemplates.length > 0 ) {
+				$( '#targettemplateconflicts' + targetId )
+					.text( mediaWiki.msg( 'push-tab-template-override', overideTemplates.join( ', ' ) ) )
+					.fadeIn( 'slow' );
+			}
+			else {
+				$( '#targettemplateconflicts' + targetId ).fadeOut( 'slow' );
 			}
 		}
 		
-		if ( hasConflict ) {
-			$( '#targetconflicts' + targetId ).text( mediaWiki.msg( 'push-tab-included-override' ) ).fadeIn( 'slow' );
-		}
-		else {
-			$( '#targetconflicts' + targetId ).fadeOut( 'slow' );
+		if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
+			var overideFiles = [];
+			
+			for ( remotePageId in targetData[targetId].existingPages ) {
+				if ( targetData[targetId].existingPages[remotePageId].ns == 6 ) {
+					// Add the file, but get rid of the namespace prefix first.
+					overideFiles.push( targetData[targetId].existingPages[remotePageId].title.split( ':', 2 )[1] );
+				}
+			}
+			
+			if ( overideFiles.length > 0 ) {
+				$( '#targetfileconflicts' + targetId )
+					.text( mediaWiki.msg( 'push-tab-files-override', overideFiles.join( ', ' ) ) )
+					.fadeIn( 'slow' );
+			}
+			else {
+				$( '#targetfileconflicts' + targetId ).fadeOut( 'slow' );
+			}			
 		}
 	}
 	
