@@ -140,7 +140,6 @@
 					.join( '|' ),
 			},
 			function( data ) {
-				alert(data);
 				if ( data.query ) {
 					var infoDiv = $( '#targetinfo' + targetId );
 
@@ -218,6 +217,9 @@
 				$( '#targettemplateconflicts' + targetId ).fadeOut( 'slow' );
 			}
 		}
+		else {
+			$( '#targettemplateconflicts' + targetId ).fadeOut( 'fast' );
+		}		
 		
 		if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
 			var overideFiles = [];
@@ -238,6 +240,9 @@
 				$( '#targetfileconflicts' + targetId ).fadeOut( 'slow' );
 			}			
 		}
+		else {
+			$( '#targetfileconflicts' + targetId ).fadeOut( 'fast' );
+		}		
 	}
 	
 	function initiatePush( sender, pages, targetUrl, targetName ) {
