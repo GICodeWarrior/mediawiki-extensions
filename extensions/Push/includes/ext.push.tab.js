@@ -113,13 +113,20 @@
 
 			if ( $('#checkIncTemplates').attr('checked') ) {
 				files = files.concat( window.wgPushTemplateFiles );
-			} 
+			}
 
-			$('#txtFileList').text(
-				files.length > 0 ? 
-					mediaWiki.msg( 'push-tab-embedded-files', files.join( ', ' ) ) // TODO: i18n 
-					: mediaWiki.msg( 'push-tab-no-embedded-files' )
-			);			
+			if ( files.length > 0 ) {
+				$('#txtFileList').text( '(' + mediaWiki.msg( 'push-tab-embedded-files' ) );
+				
+				for ( i in files ) {
+					$('#txtFileList').append( $( '<a>' ).attr( 'href', window.wgPushIndexPath + '?title=' + files[i] ).text( files[i] ) );
+				}
+				
+				$('#txtFileList').append( ')' );
+			}
+			else {
+				$('#txtFileList').text( mediaWiki.msg( 'push-tab-no-embedded-files' ) );
+			}
 		}
 	}
 	
