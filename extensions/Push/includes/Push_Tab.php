@@ -277,24 +277,9 @@ final class PushTab {
 	 * @since 0.4
 	 */
 	protected static function displayPushOptions() {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgTitle;
 		
 		$wgOut->addHTML( '<h3>' . htmlspecialchars( wfMsg( 'push-tab-push-options' ) ) . '</h3>' );
-		
-		self::displayIncTemplatesOption();
-		
-		if ( $wgUser->isAllowed( 'filepush' ) ) {
-			self::displayIncFilesOption();
-		}
-	}
-	
-	/**
-	 * Outputs the HTML for the "include templates" option.
-	 * 
-	 * @since 0.4
-	 */
-	protected static function displayIncTemplatesOption() {
-		global $wgOut, $wgTitle, $wgLang, $egPushIncTemplates;
 		
 		$usedTemplates = array_keys(
 			PushFunctions::getTemplates(
@@ -303,20 +288,38 @@ final class PushTab {
 			)
 		);
 		
-		array_shift( $usedTemplates );
+		// Get rid of the page itself.
+		array_shift( $usedTemplates );		
+		
+		self::displayIncTemplatesOption( $usedTemplates );
+		
+		if ( $wgUser->isAllowed( 'filepush' ) ) {
+			self::displayIncFilesOption( $usedTemplates );
+		}
+	}
+	
+	/**
+	 * Outputs the HTML for the "include templates" option.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param array $templates
+	 */
+	protected static function displayIncTemplatesOption( array $templates ) {
+		global $wgOut, $wgLang, $egPushIncTemplates;
 
 		$wgOut->addInlineScript(
-			'var wgPushTemplates = ' . json_encode( $usedTemplates ) . ';'
+			'var wgPushTemplates = ' . json_encode( $templates ) . ';'
 		);				
 		
-		foreach ( $usedTemplates as &$template ) {
+		foreach ( $templates as &$template ) {
 			$template = "[[$template]]";
 		}
 
 		$wgOut->addHTML(
 			Html::rawElement(
 				'div',
-				array( 'id' => 'divIncTemplates', 'style' => 'display: table-cell' ),
+				array( 'id' => 'divIncTemplates', 'style' => 'display: table-row' ),
 				Xml::check( 'checkIncTemplates', $egPushIncTemplates, array( 'id' => 'checkIncTemplates' ) ) .
 				Html::element(
 					'label',
@@ -327,8 +330,8 @@ final class PushTab {
 				Html::rawElement(
 					'div',
 					array( 'style' => 'display:inline; opacity:0', 'id' => 'txtTemplateList' ),
-					count( $usedTemplates ) > 0 ?
-						 wfMsgExt( 'push-tab-used-templates', 'parseinline', $wgLang->listToText( $usedTemplates ), count( $usedTemplates ) ) :
+					count( $templates ) > 0 ?
+						 wfMsgExt( 'push-tab-used-templates', 'parseinline', $wgLang->listToText( $templates ), count( $templates ) ) :
 						 htmlspecialchars( wfMsg( 'push-tab-no-used-templates' ) )
 				)				
 			)
@@ -339,22 +342,79 @@ final class PushTab {
 	 * Outputs the HTML for the "include files" option.
 	 * 
 	 * @since 0.4
+	 * 
+	 * @param array $templates
 	 */	
-	protected static function displayIncFilesOption() {
+	protected static function displayIncFilesOption( array $templates ) {
 		global $wgOut, $wgTitle, $egPushIncFiles;
+		
+		$allFiles = self::getImagesForPages( array( $wgTitle->getFullText() ) );
+		$templateFiles = self::getImagesForPages( $templates );		
+		$pageFiles = array();
+		
+		foreach ( $allFiles as $file ) {
+			if ( !in_array( $file, $templateFiles ) ) {
+				$pageFiles[] = $file;
+			}
+		}
+		
+		$wgOut->addInlineScript(
+			'var wgPushPageFiles = ' . json_encode( $pageFiles ) . ';' .
+			'var wgPushTemplateFiles = ' . json_encode( $templateFiles ) . ';'
+		);	
 		
 		$wgOut->addHTML(
 			Html::rawElement(
 				'div',
-				array( 'id' => 'divIncFiles' ),
+				array( 'id' => 'divIncFiles', 'style' => 'display: table-row' ),
 				Xml::check( 'checkIncFiles', $egPushIncFiles, array( 'id' => 'checkIncFiles' ) ) .
 				Html::element(
 					'label',
 					array( 'id' => 'lblIncFiles', 'for' => 'checkIncFiles' ),
 					wfMsg( 'push-tab-inc-files' )
-				) 			
+				) .		
+				'&#160;' . 
+				Html::rawElement(
+					'div',
+					array( 'style' => 'display:inline; opacity:0', 'id' => 'txtFileList' ),
+					''
+				)
 			)
-		);			
+		);
+	}
+	
+	/**
+	 * Returns the names of the images embedded in a set of pages.
+	 * 
+	 * @param array $pages
+	 * 
+	 * @return array
+	 */
+	protected static function getImagesForPages( array $pages ) {
+		$images = array();
+		
+		$requestData = array(
+			'action' => 'query',
+			'format' => 'json',
+			'prop' => 'images',
+			'titles' => implode( '|', $pages ),
+		);
+		
+		$api = new ApiMain( new FauxRequest( $requestData, true ), true );
+		$api->execute();
+		$response = $api->getResultData();
+
+		if ( is_array( $response ) && array_key_exists( 'query', $response ) && array_key_exists( 'pages', $response['query'] ) ) {
+			foreach ( $response['query']['pages'] as $page ) {
+				if ( array_key_exists( 'images', $page ) ) {
+					foreach ( $page['images'] as $image ) {
+						$images[] = $image['title'];
+					} 
+				}
+			}
+		}
+
+		return array_unique( $images );
 	}
 	
 }
