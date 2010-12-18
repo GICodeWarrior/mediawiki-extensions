@@ -422,6 +422,8 @@ $messages['gl'] = array(
 	'contrib-tracking-continue' => 'Se non es redirixido automaticamente, fai clic no botón para completar a túa doazón por PayPal.',
 	'contrib-tracking-redirect' => 'Serás redirixido automaticamente ao PayPal para completar a túa doazón.',
 	'contrib-tracking-button' => 'Continuar',
+	'contrib-tracking-item-name-onetime' => 'Doazón única',
+	'contrib-tracking-item-name-recurring' => 'Doazón mensual recorrente',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
