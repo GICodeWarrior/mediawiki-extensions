@@ -142,7 +142,7 @@ $messages['arz'] = array(
  * @author Rajuonline
  */
 $messages['as'] = array(
-	'editmessages' => 'বার্তা সম্পাদনা',
+	'editmessages' => 'বাৰ্তা সম্পাদনা',
 	'editmsg-search' => 'সন্ধান কৰক',
 );
 
