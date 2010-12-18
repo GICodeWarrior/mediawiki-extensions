@@ -483,6 +483,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Olli
  */
@@ -500,7 +501,7 @@ $messages['fi'] = array(
 	'article-comments-invalid-field' => '$1 antoi <nowiki>[$2]</nowiki>, joka ei kelpaa.',
 	'article-comments-required-field' => 'Kenttä »$1» on pakollinen.',
 	'article-comments-submission-failed' => 'Kommentin lähety epäonnistui',
-	'article-comments-failure-reasons' => 'Pahoittelemme, mutta kommentin lähetys epäonnistui seuraavista syistä johtuen:',
+	'article-comments-failure-reasons' => 'Kommenttisi lähetys epäonnistui {{PLURAL:$1|seuraavasta syystä|seuraavista syistä}} johtuen:',
 	'article-comments-no-comments' => 'Valitettavasti sivulle [[$1]] ei sallita uusia kommentteja tällä hetkellä.',
 	'article-comments-talk-page-starter' => '<noinclude>Kommentit sivulla [[$1]]
 <comments />

@@ -61,6 +61,16 @@ $messages['dsb'] = array(
 	'livetranslate-button-translating' => 'Pśełožujo se...',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'livetranslate-desc' => 'Activa a tradución en vivo do contido dunha páxina mediante o servizo de tradución do Google',
+	'livetranslate-translate-to' => 'Traducir esta páxina ao',
+	'livetranslate-button-translate' => 'Traducir',
+	'livetranslate-button-translating' => 'Traducindo...',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -123,9 +133,23 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'livetranslate-desc' => 'Включает перевод текста страницы на лету с помощью службы переводов Google',
+	'livetranslate-translate-to' => 'Перевести эту страницу на',
+	'livetranslate-button-translate' => 'Перевести',
+	'livetranslate-button-translating' => 'Выполняется перевод...',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'livetranslate-desc' => 'Робить можливим безпосередній переклад вмісту сторінки за допомогою служби Google Translate',
+	'livetranslate-translate-to' => 'Перекласти цю сторінку',
+	'livetranslate-button-translate' => 'Перекласти',
+	'livetranslate-button-translating' => 'Перекладаю...',
 );
 

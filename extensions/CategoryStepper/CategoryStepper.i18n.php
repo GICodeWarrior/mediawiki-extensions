@@ -142,6 +142,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'categorystepper-desc' => "Yn dangos blwch categoriau cam-wrth-gam, sy'n rhoi cyfle i ddyn lywio yn ôl ac ymlaen drwy'r holl gategorïau y mae rhyw dudalen yn perthyn iddynt, yn nhrefn yr wyddor.",
 	'categorystepper-end' => '(Diwedd y categori)',
 	'categorystepper-start' => "(Dechrau'r categori)",
 );

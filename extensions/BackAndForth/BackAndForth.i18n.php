@@ -79,9 +79,9 @@ $messages['arz'] = array(
  * @author Rajuonline
  */
 $messages['as'] = array(
-	'backforth-next' => 'পৰবর্তী ($1)',
-	'backandforth-desc' => 'পৃষ্ঠাৰ ওপৰত "পৰবর্তী" আৰু "পুর্ববর্তি" সংযোগ দেখুৱাই',
-	'backforth-prev' => 'পুর্ববর্তি ($1)',
+	'backforth-next' => 'পৰবৰ্তী ($1)',
+	'backandforth-desc' => 'পৃষ্ঠাৰ ওপৰত "পৰবৰ্তী" আৰু "পুৰ্ববৰ্তি" সংযোগ দেখুৱাই',
+	'backforth-prev' => 'পুৰ্ববৰ্তি ($1)',
 );
 
 /** Asturian (Asturianu)

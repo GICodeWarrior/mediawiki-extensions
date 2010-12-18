@@ -57,6 +57,13 @@ $messages['dsb'] = array(
 	'categorymembersonsidebar-desc' => 'Pśidawa boki kategorije do bócnice',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'categorymembersonsidebar-desc' => 'Engade membros de categorías na barra lateral',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

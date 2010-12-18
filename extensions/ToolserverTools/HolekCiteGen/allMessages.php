@@ -477,9 +477,11 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
+ * @author Holek
  * @author Waldir
  */
 $messages['pt-br'] = array(
+	'ts-citegen-Title' => 'Gerador de predefinições de citação',
 	'ts-citegen-Send' => 'Gerar',
 	'ts-citegen-Input-title' => 'Entrada',
 	'ts-citegen-Input-text' => 'Este é um gerador de predefinição de citação. Usando-o, você pode preencher rapidamente as predefinições de citação nas várias línguas de edições da Wikipédia. Por favor, preencha os dados (%s) nos campos abaixo, e o script tentará completar as predefinições. Lembre-se de que não importa em qual campo você coloca os dados de entrada. O script automaticamente irá corresponder a predefinição correta com os dados fornecidos.',
