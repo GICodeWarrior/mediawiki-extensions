@@ -739,6 +739,15 @@ $messages['sl'] = array(
 	'assert_edit_message' => 'Izbrano dejanje ($1) je spodletelo.',
 );
 
+/** Albanian (Shqip)
+ * @author Olsi
+ */
+$messages['sq'] = array(
+	'assert_edit_title' => 'Pohimi dështoi',
+	'assertedit-desc' => 'Shtoni mbrojtje redaktimesh nga përdorimet e robotëve',
+	'assert_edit_message' => 'Mbrojtja e caktuar ($1) dështoi.',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */
