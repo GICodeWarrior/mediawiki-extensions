@@ -24,6 +24,7 @@
 	}
 	
 	var pages;
+	var targetData = [];
 	
 	$.each($(".push-button"), function(i,v) {
 		getRemoteArticleInfo( $(v).attr( 'targetid' ), $(v).attr( 'pushtarget' ) );
@@ -80,7 +81,12 @@
 	
 	$('#divIncTemplates').click(function() {
 		setIncludeFilesText();
+		displayTargetsConflictStatus();
 	});
+	
+	$('#divIncFiles').click(function() {
+		displayTargetsConflictStatus();
+	});	
 	
 	$('#divIncFiles').hover(
 		function() {
@@ -118,6 +124,8 @@
 	}
 	
 	function getRemoteArticleInfo( targetId, targetUrl ) {
+		var pageName = $('#pageName').attr('value');
+		
 		$.getJSON(
 			targetUrl + '/api.php?callback=?',
 			{
@@ -125,22 +133,36 @@
 				'format': 'json',
 				'prop': 'revisions',
 				'rvprop': 'timestamp|user|comment',
-				'titles': $('#pageName').attr('value'),
+				'titles': [pageName]
+					.concat( window.wgPushTemplates )
+					.concat( window.wgPushPageFiles )
+					.concat( window.wgPushTemplateFiles )
+					.join( '|' ),
 			},
 			function( data ) {
 				if ( data.query ) {
 					var infoDiv = $( '#targetinfo' + targetId );
+
+					var existingPages = [];
+					var remotePage = false;
 					
-					for ( first in data.query.pages ) break;
-					
-					if ( first == '-1' ) {
-						$( '#targetlink' + targetId ).attr( {'class': 'new'} );
-						var message = mediaWiki.msg( 'push-tab-not-created' );
+					for ( remotePageId in data.query.pages ) {
+						if ( remotePageId > 0 ) {
+							if ( data.query.pages[remotePageId].title == pageName ) {
+								remotePage = data.query.pages[remotePageId]; 
+							}
+							else {
+								existingPages.push( data.query.pages[remotePageId] );
+							}
+						}
 					}
-					else {
+					
+					targetData[targetId] = { 'existingPages': existingPages };
+					
+					if ( remotePage ) {
 						$( '#targetlink' + targetId ).attr( {'class': ''} );
 						
-						var revision = data.query.pages[first].revisions[0];
+						var revision = remotePage.revisions[0];
 						var dateTime = revision.timestamp.split( 'T' );
 
 						var message = mediaWiki.msg(
@@ -148,14 +170,53 @@
 							revision.user,
 							dateTime[0],
 							dateTime[1].replace( 'Z', '' )
-						);
+						);						
+					}
+					else {
+						$( '#targetlink' + targetId ).attr( {'class': 'new'} );
+						var message = mediaWiki.msg( 'push-tab-not-created' );
 					}
 					
 					infoDiv.text( message );
 					infoDiv.fadeIn( 'slow' );
+					
+					displayTargetConflictStatus( targetId );
 				}
 			}
 		);
+	}
+	
+	function displayTargetsConflictStatus() {
+		$.each($(".push-button"), function(i,v) {
+			displayTargetConflictStatus( $(v).attr( 'targetid' ) );
+		});		
+	}
+	
+	function displayTargetConflictStatus( targetId ) {
+		var nsToCheck = [];
+		
+		if ( $('#checkIncTemplates').attr('checked') ) {
+			nsToCheck.push( 10 );
+		}
+		
+		if ( $('#checkIncFiles').length != 0 && $('#checkIncFiles').attr('checked') ) {
+			nsToCheck.push( 6 );
+		}
+		
+		var hasConflict = false;
+		
+		for ( remotePageId in targetData[targetId].existingPages ) {
+			if ( $.inArray( targetData[targetId].existingPages[remotePageId].ns, nsToCheck ) ) {
+				hasConflict = true;
+			}
+		}
+		
+		if ( hasConflict ) {
+			$( '#targetconflicts' + targetId ).text( mediaWiki.msg( 'push-tab-included-override' ) ).fadeIn( 'slow' );
+		}
+		else {
+			$( '#targetconflicts' + targetId ).fadeOut( 'slow' );
+		}
 	}
 	
 	function initiatePush( sender, pages, targetUrl, targetName ) {
