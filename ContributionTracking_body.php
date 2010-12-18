@@ -98,10 +98,10 @@ class ContributionTracking extends UnlistedSpecialPage {
 
 			// Premiums
 			if ( $wgRequest->getVal( 'tshirt') == '1' ) {
-				$repost['on0'] = 'Shirt Size';
-				$repost['os0'] = $wgRequest->getText( 'size', null );
-				$repost['on1'] = 'Shirt Language';
-				$repost['os1'] = $wgRequest->getText( 'premium-language', null );
+				$repost['on0'] = 'Shirt size';
+				$repost['os0'] = $wgRequest->getText( 'size' );
+				$repost['on1'] = 'Shirt language';
+				$repost['os1'] = $wgRequest->getText( 'premium-language' );
 				$repost['no_shipping'] = 2;
 			}
 			
