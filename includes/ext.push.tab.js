@@ -208,6 +208,7 @@
 		for ( remotePageId in targetData[targetId].existingPages ) {
 			if ( $.inArray( targetData[targetId].existingPages[remotePageId].ns, nsToCheck ) ) {
 				hasConflict = true;
+				break;
 			}
 		}
 		
