@@ -360,7 +360,7 @@ final class PushTab {
 	 * @param array $templates
 	 */	
 	protected static function displayIncFilesOption( array $templates ) {
-		global $wgOut, $wgTitle, $egPushIncFiles;
+		global $wgOut, $wgTitle, $egPushIncFiles, $wgScript;
 		
 		$allFiles = self::getImagesForPages( array( $wgTitle->getFullText() ) );
 		$templateFiles = self::getImagesForPages( $templates );		
@@ -374,9 +374,10 @@ final class PushTab {
 		
 		$wgOut->addInlineScript(
 			'var wgPushPageFiles = ' . json_encode( $pageFiles ) . ';' .
-			'var wgPushTemplateFiles = ' . json_encode( $templateFiles ) . ';'
-		);	
-		
+			'var wgPushTemplateFiles = ' . json_encode( $templateFiles ) . ';' .
+			'var wgPushIndexPath = ' . json_encode( $wgScript )
+		);
+
 		$wgOut->addHTML(
 			Html::rawElement(
 				'div',
