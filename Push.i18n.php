@@ -56,8 +56,8 @@ $messages['en'] = array(
 	'push-tab-err-filepush' => 'File push failed: $1',	
 	'push-tab-embedded-files' => 'Embedded files: ',
 	'push-tab-no-embedded-files' => '(No files are embedded in this page.)',
-	'push-tab-files-override' => 'These files already exist: $1', // JS message, if you want to add plural, then fix the JS first.
-	'push-tab-template-override' => 'These templates already exist: $1', // JS message, if you want to add plural, then fix the JS first.
+	'push-tab-files-override' => 'These files already exist: $1',
+	'push-tab-template-override' => 'These templates already exist: $1',
 
 	// Special page
 	'special-push' => 'Push pages',
@@ -91,6 +91,8 @@ $messages['qqq'] = array(
 	'push-err-authentication' => '$1: wiki name, $2: optional detailed error message',
 	'push-remote-page-link' => '$1: page name, $2: wiki name',
 	'push-remote-page-link-full' => '$1: page name, $2: wiki name',
+	'push-tab-files-override' => 'JavaScript message, no PLURAL available',
+	'push-tab-template-override' => 'JavaScript message, no PLURAL available',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
