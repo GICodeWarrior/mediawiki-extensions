@@ -451,7 +451,7 @@ class System
      * @static
      * @return string The temporary directory on the system
      */
-    function tmpdir()
+    static function tmpdir()
     {
         if (OS_WINDOWS) {
             if ($var = isset($_ENV['TMP']) ? $_ENV['TMP'] : getenv('TMP')) {

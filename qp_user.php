@@ -1236,6 +1236,7 @@ class qp_Renderer {
 	}
 
 	static function displayRow( $row, $rowattrs = "", $celltag = "td", $attribute_maps = null ) {
+		# temporary var $tagsrow used to avoid warning in E_STRICT mode
 		$tagsrow = self::newRow( $row, $rowattrs, $celltag, $attribute_maps );
 		return self::renderHTMLobject( $tagsrow );
 	}

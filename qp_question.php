@@ -1020,6 +1020,7 @@ class qp_Question extends qp_AbstractQuestion {
 			}
 			# fill undefined spans with the last span value
 			$SpanCategDelta = count( $this->mCategories ) - count( $spans[0] );
+			# temporary var $diff used to avoid warning in E_STRICT mode
 			$diff = array_diff( array_keys( $spans[1] ), array_keys( $spans[1], "", true ) );
 			$lastDefinedSpanKey = array_pop( $diff );
 			unset( $diff );
