@@ -819,6 +819,15 @@ $messages['pt'] = array(
 	'ea-allusers' => 'Todos os utilizadores',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'e-mailpage' => 'Enviar páginas por e-mail',
+	'ea-desc' => 'Enviar uma página na sua composição final em HTML, para um endereço de e-mail ou para uma lista de endereços usando o [http://phpmailer.sourceforge.net phpmailer]',
+	'ea-heading' => 'A enviar a página "[[$1]]"',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
