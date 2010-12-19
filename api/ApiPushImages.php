@@ -152,7 +152,13 @@ class ApiPushImages extends ApiBase {
 			$token = $this->getEditToken( $title, $target );
 
 			if ( $token !== false ) {
-				$this->pushToTarget( $title, $target, $token );
+				$doPush = true;
+				
+				wfRunHooks( 'PushAPIBeforeImagePush', array( &$title, &$target, &$token, &$doPush ) );
+				
+				if ( $doPush ) {
+					$this->pushToTarget( $title, $target, $token );
+				}
 			}
 		}
 	}
