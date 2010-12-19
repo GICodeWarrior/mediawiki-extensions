@@ -1,7 +1,7 @@
 
 """
 
-ru.pyn_plots
+run.py_plots
 
 wikimediafoundation.org
 Ryan Faulkner
@@ -27,3 +27,4 @@ tar.run_day()
 blpr.run('LP', 'don_per_view')
 blpr.run('BAN', 'don_per_imp')
 blpr.run('BAN', 'click_rate')
+blpr.run('BAN', 'conversion_rate')
