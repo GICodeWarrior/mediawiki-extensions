@@ -58,6 +58,13 @@ $messages['bs'] = array(
 	'wikimediamobile-desc' => 'MediaWiki podržava funkcije za projekat Wikimedia-mobile koji se nalazi na http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'wikimediamobile-desc' => "Funcions d'ajuda per a MediaWiki del projecte Wikimedia-mobile, hostatjat a http://github.com/hcatlin/wikimedia-mobile",
+);
+
 /** Chechen (Нохчийн)
  * @author Sasan700
  */
