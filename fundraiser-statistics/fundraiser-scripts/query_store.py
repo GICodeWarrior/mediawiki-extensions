@@ -176,6 +176,16 @@ class query_store:
 				return 13
 			elif metric_name == 'amt_per_donation':
 				return 14
+			elif metric_name == 'max_amt':
+				return 15
+			elif metric_name == 'pp_don':
+				return 16
+			elif metric_name == 'cc_don':
+				return 17
+			elif metric_name == 'paypal_click_thru':
+				return 18
+			elif metric_name == 'creditcard_click_thru':
+				return 19
 			else:
 				return -1
 		else:
