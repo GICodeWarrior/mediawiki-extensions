@@ -76,6 +76,15 @@ $messages['eo'] = array(
 	'svgedit-desc' => 'Redakti desegnojn SVG en foliumilo per [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'svgedit-editbutton-edit' => 'Muokkaa piirrosta',
+	'svgedit-editor-save-close' => 'Tallenna ja sulje',
+	'svgedit-editor-close' => 'Peruuta',
+);
+
 /** French (Français)
  * @author Otourly
  */
@@ -163,6 +172,16 @@ $messages['pt'] = array(
 	'svgedit-editor-save-close' => 'Gravar e fechar',
 	'svgedit-editor-close' => 'Cancelar',
 	'svgedit-desc' => 'Edição de desenhos SVG no próprio browser, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'svgedit-editbutton-edit' => 'Editar desenho',
+	'svgedit-editor-save-close' => 'Salvar e fechar',
+	'svgedit-editor-close' => 'Cancelar',
+	'svgedit-desc' => 'Edição de desenhos SVG no próprio navegador, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
 /** Russian (Русский)
