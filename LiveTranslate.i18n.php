@@ -41,6 +41,16 @@ $messages['br'] = array(
 	'livetranslate-desc' => 'Aotren a ra treiñ danvez ur bajenn war-eeun en ur ober gant servij treiñ Google',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'livetranslate-desc' => 'Omogućuje prevođenje uživo sadržaja stranice koristeći uslugu Google Translate',
+	'livetranslate-translate-to' => 'Prevedi ovu stranicu na',
+	'livetranslate-button-translate' => 'Prevedi',
+	'livetranslate-button-translating' => 'Prevodim...',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -76,6 +86,9 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'livetranslate-desc' => 'Macht di diräkt Ibersetzig vum Syteninhalt megli mit „Google Ibersetzer“',
+	'livetranslate-translate-to' => 'Die Syte ibersetze in',
+	'livetranslate-button-translate' => 'Ibersetze',
+	'livetranslate-button-translating' => 'Am Ibersetze …',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -132,6 +145,16 @@ $messages['pt'] = array(
 	'livetranslate-button-translating' => 'A traduzir...',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'livetranslate-desc' => 'Permite a tradução imediata do conteúdo das páginas usando o serviço Google Translate',
+	'livetranslate-translate-to' => 'Traduzir esta página para',
+	'livetranslate-button-translate' => 'Traduzir',
+	'livetranslate-button-translating' => 'Traduzindo...',
+);
+
 /** Russian (Русский)
  * @author MaxSem
  * @author Александр Сигачёв
@@ -141,6 +164,15 @@ $messages['ru'] = array(
 	'livetranslate-translate-to' => 'Перевести эту страницу на',
 	'livetranslate-button-translate' => 'Перевести',
 	'livetranslate-button-translating' => 'Выполняется перевод...',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'livetranslate-translate-to' => 'ఈ పుటని అనువదించండి',
+	'livetranslate-button-translate' => 'అనువదించు',
+	'livetranslate-button-translating' => 'అనువదిస్తున్నాం...',
 );
 
 /** Ukrainian (Українська)
