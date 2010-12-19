@@ -270,7 +270,7 @@ class ApiPushImages extends ApiBase {
 			);			
 		}
 		else {
-			// TODO
+			$this->dieUsage( wfMsg( 'push-special-err-push-failed' ), 'page-push-failed' );
 		}
 	}
 	

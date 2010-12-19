@@ -5,7 +5,7 @@
  * @file Push.alias.php
  * @ingroup Push
  *
- * @author Jeroen De Dauw
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 $specialPageAliases = array();
@@ -16,8 +16,3 @@ $specialPageAliases = array();
 $specialPageAliases['en'] = array(
 	'Push' => array( 'Push' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
