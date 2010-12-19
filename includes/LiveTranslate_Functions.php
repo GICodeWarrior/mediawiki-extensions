@@ -19,7 +19,11 @@ final class LiveTranslateFunctions {
 	 * @since 0.1
 	 */
 	public static function loadJs() {
-		global $wgOut;
+		global $wgOut, $egGoogleApiKey;
+		
+		$wgOut->addInlineScript(
+			'var wgGoogleApiKey = ' . json_encode( $egGoogleApiKey ) . ';'
+		);
 		
 		// For backward compatibility with MW < 1.17.
 		if ( is_callable( array( $wgOut, 'addModules' ) ) ) {

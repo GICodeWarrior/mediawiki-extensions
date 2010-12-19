@@ -19,3 +19,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $egLiveTranslateDirPage = 'Live Translate Dictionary';
+
+# https://code.google.com/apis/console
+$egGoogleApiKey = '';

@@ -26,6 +26,8 @@
 	}
 	
 	$('#livetranslatebutton').click(function() {
+		$( this ).attr( "disabled", true );
+		
 		var words = getSpecialWords();
 		var newLang = $( '#livetranslatelang' ).val();
 		
@@ -35,13 +37,13 @@
 				'action': 'livetranslate',
 				'format': 'json',
 				'from': currentLang,
-				'to': $( '#livetranslatelang' ).val(),
+				'to': newLang,
 				'words': words.join( '|' ),
 			},
 			function( data ) {
 				if ( data.translations ) {
-					currentLang = newLang;
 					replaceSpecialWords( data.translations );
+					requestGoogleTranslate( currentLang, newLang );
 				}
 			}
 		);
@@ -64,6 +66,28 @@
 				$(v).text( translations[currentText] );
 			}
 		});		
+	}
+	
+	function requestGoogleTranslate( sourceLang, targetLang ) {
+		$.getJSON(
+			'https://www.googleapis.com/language/translate/v2?callback=?',
+			{
+				'key': window.wgGoogleApiKey,
+				'format': 'html',
+				'q': ''//$( '#bodyContent' ).text(),
+				'source': sourceLang,
+				'target': targetLang,
+			},
+			function( response ) {
+				for ( i in response.data.translations ) {
+					// TODO
+				}
+				
+				currentLang = targetLang;
+				
+				$( '#livetranslatebutton' ).attr( "disabled", false );
+			}
+		);		
 	}
 	
 } ); })(jQuery);
