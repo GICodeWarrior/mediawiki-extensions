@@ -34,7 +34,7 @@ $wgAntiBotPayloads = array(
 
 /** END CONFIGURATION */
 
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['antispam'][] = array(
 	'path' => __FILE__,
 	'name' => 'AntiBot',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AntiBot',
