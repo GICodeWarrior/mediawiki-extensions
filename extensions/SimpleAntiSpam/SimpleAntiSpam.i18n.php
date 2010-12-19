@@ -686,6 +686,15 @@ $messages['sah'] = array(
 	'simpleantispam-desc' => 'Спам уонна робот туттулларын билэр судургу бэрэбиэркэни эбэр',
 );
 
+/** Sinhala (සිංහල)
+ * @author Budhajeewa
+ */
+$messages['si'] = array(
+	'simpleantispam' => 'ඔබේ සංස්කරණය ප්‍රති-ස්පෑම ක්‍රියා පිළිවෙල සක්‍රීය කළේය',
+	'simpleantispam-label' => "ප්‍රති-ස්පෑම පරීක්‍ෂාව.
+කරුණාකර මෙය පුරවන්න '''එපා'''!",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

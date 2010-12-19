@@ -750,7 +750,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'changeauthor' => 'Muuta muokkausversion tekijä',
-	'changeauthor-desc' => 'Mahdollistaa muokkausversion tekijän muuttamisen',
+	'changeauthor-desc' => 'Mahdollistaa tekijän vaihtamisen sivuhistoriassa jälkikäteen.',
 	'changeauthor-title' => 'Muuta muokkausversion tekijä',
 	'changeauthor-search-box' => 'Hae muokkausversioita',
 	'changeauthor-pagename-or-revid' => 'Sivun nimi tai version tunnus:',

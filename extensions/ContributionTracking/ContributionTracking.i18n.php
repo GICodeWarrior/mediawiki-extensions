@@ -581,6 +581,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi
+ * @author Ohgi
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -592,6 +593,8 @@ $messages['ja'] = array(
 	'contrib-tracking-continue' => '自動的に転送されない場合は、ボタンを押して PayPal での寄付を終えてください。',
 	'contrib-tracking-redirect' => '寄付を完了するため、PayPalに自動的に転送されます。',
 	'contrib-tracking-button' => '続行',
+	'contrib-tracking-item-name-onetime' => '1回だけ寄付',
+	'contrib-tracking-item-name-recurring' => '月ごとに定期寄付',
 );
 
 /** Javanese (Basa Jawa)

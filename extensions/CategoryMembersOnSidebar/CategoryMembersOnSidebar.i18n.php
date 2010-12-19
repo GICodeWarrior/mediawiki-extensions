@@ -57,6 +57,13 @@ $messages['dsb'] = array(
 	'categorymembersonsidebar-desc' => 'Pśidawa boki kategorije do bócnice',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'categorymembersonsidebar-desc' => 'Añade miembros de la categoría a la barra lateral',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -124,6 +131,13 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'categorymembersonsidebar-desc' => 'Adiciona membros de categorias à barra lateral',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
 	'categorymembersonsidebar-desc' => 'Adiciona membros de categorias à barra lateral',
 );
 

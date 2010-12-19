@@ -193,8 +193,8 @@ $messages['be-tarask'] = array(
 	'articlefeedback-field-wellwritten-label' => 'Добра напісаны',
 	'articlefeedback-field-wellwritten-tip' => 'Вы лічыце, што гэтая старонка добра арганізаваная і добра напісаная?',
 	'articlefeedback-pitch-reject' => 'Не, дзякуй',
-	'articlefeedback-pitch-takesurvey-title' => 'Не жадаеце запоўніць анкету?',
-	'articlefeedback-pitch-takesurvey-accept' => 'Запоўніць анкету',
+	'articlefeedback-pitch-takesurvey-title' => 'Не жадаеце прыняць удзел у апытаньні?',
+	'articlefeedback-pitch-takesurvey-accept' => 'Пачаць апытаньне',
 	'articlefeedback-pitch-createaccount-title' => 'Ці жадаеце стварыць рахунак?',
 	'articlefeedback-pitch-createaccount-accept' => 'Стварыць рахунак',
 	'articlefeedback-pitch-makefirstedit-title' => 'Ці жадаеце зьмяніць гэты артыкул?',
@@ -284,19 +284,27 @@ $messages['bs'] = array(
 	'articlefeedback-form-switch-label' => 'Pošaljite povratne informacije',
 	'articlefeedback-form-panel-title' => 'Vaše povratne informacije',
 	'articlefeedback-form-panel-instructions' => 'Molimo odvojite trenutak vremena da ocijenite ovu stranicu.',
-	'articlefeedback-form-panel-notice' => 'Vaša ocjena će isteći nakon određenog vremena.',
 	'articlefeedback-form-panel-submit' => 'Pošalji povratne informacije',
 	'articlefeedback-report-switch-label' => 'Pokaži rezultate',
 	'articlefeedback-report-panel-title' => 'Rezultati povratnih informacija',
 	'articlefeedback-report-panel-description' => 'Trenutni prosječni rejtinzi.',
-	'articlefeedback-field-wellsourced-label' => 'Dobro referencirano',
-	'articlefeedback-field-wellsourced-tip' => 'Da li smatrate da ova stranica ima dovoljno izvora i da su oni iz provjerljivih izvora?',
+	'articlefeedback-report-empty' => 'Bez ocjena',
+	'articlefeedback-report-ratings' => '$1 ocjena',
+	'articlefeedback-field-trustworthy-label' => 'Vjerodostojno',
+	'articlefeedback-field-trustworthy-tip' => 'Da li smatrate da ova stranica ima dovoljno izvora i da su oni iz provjerljivih izvora?',
 	'articlefeedback-field-complete-label' => 'Završeno',
 	'articlefeedback-field-complete-tip' => 'Da li mislite da ova stranica pokriva osnovna područja teme koja bi trebala?',
-	'articlefeedback-field-neutral-label' => 'Neutralno',
-	'articlefeedback-field-neutral-tip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
-	'articlefeedback-field-readable-label' => 'Čitljivo',
-	'articlefeedback-field-readable-tip' => 'Da li mislite da je ova stranica dobro organizirana i dobro napisana?',
+	'articlefeedback-field-unbiased-label' => 'Nepristrano',
+	'articlefeedback-field-unbiased-tip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
+	'articlefeedback-field-wellwritten-label' => 'Dobro napisano',
+	'articlefeedback-field-wellwritten-tip' => 'Da li mislite da je ova stranica dobro organizirana i dobro napisana?',
+	'articlefeedback-pitch-reject' => 'Ne hvala',
+	'articlefeedback-pitch-takesurvey-title' => 'Da li želite da popunite anketu?',
+	'articlefeedback-pitch-takesurvey-accept' => 'Započni anketu',
+	'articlefeedback-pitch-createaccount-title' => 'Da li želite napraviti račun?',
+	'articlefeedback-pitch-createaccount-accept' => 'Napravi račun',
+	'articlefeedback-pitch-makefirstedit-title' => 'Da li želite da uredite ovaj članak?',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Započni uređivanje',
 );
 
 /** Catalan (Català)
@@ -465,6 +473,7 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Locos epraix
+ * @author Sanbec
  * @author Translationista
  */
 $messages['es'] = array(
@@ -485,6 +494,8 @@ $messages['es'] = array(
 	'articlefeedback-survey-submit' => 'Enviar',
 	'articlefeedback-survey-title' => 'Por favor, contesta algunas preguntas',
 	'articlefeedback-survey-thanks' => 'Gracias por completar la encuesta.',
+	'articlefeedback-form-panel-submit' => 'Enviar comentarios',
+	'articlefeedback-report-switch-label' => 'Mostrar los resultados',
 );
 
 /** Estonian (Eesti)
@@ -697,14 +708,21 @@ $messages['gsw'] = array(
 	'articlefeedback-report-panel-description' => 'Aktuälli Durschnittsergebnis vu dr Yyschetzige',
 	'articlefeedback-report-empty' => 'Kei Yyschetzige',
 	'articlefeedback-report-ratings' => 'Yyschetzige',
-	'articlefeedback-field-wellsourced-label' => 'Guet beleit',
-	'articlefeedback-field-wellsourced-tip' => 'Hesch Du dr Yydruck, ass es in däm Artikel gnue Quällenaagabe het un ass mer däne Quälle cha tröue?',
+	'articlefeedback-field-trustworthy-label' => 'Vertröueswirdig',
+	'articlefeedback-field-trustworthy-tip' => 'Hesch Du dr Yydruck, ass es in däm Artikel gnue Quällenaagabe het un ass mer däne Quälle cha tröue?',
 	'articlefeedback-field-complete-label' => 'Vollständig',
 	'articlefeedback-field-complete-tip' => 'Hesch Du dr Yydruck, ass in däm Artikel aali Aschpäkt ufgfiert sin, wu mit däm Thema zämmehange?',
-	'articlefeedback-field-neutral-label' => 'Neutral',
-	'articlefeedback-field-neutral-tip' => 'Hesch Du dr Yydruck, ass dää Artikel e uusgwogeni Darstellig isch vu allne Aschpäkt, wu mit däm Thema verbunde sin?',
-	'articlefeedback-field-readable-label' => 'Verständli',
-	'articlefeedback-field-readable-tip' => 'Hesch Du dr Yydruck, ass dää Artikel guet strukturiert un gschribe isch?',
+	'articlefeedback-field-unbiased-label' => 'Nit voryygnuu',
+	'articlefeedback-field-unbiased-tip' => 'Hesch Du dr Yydruck, ass dää Artikel e uusgwogeni Darstellig isch vu allne Aschpäkt, wu mit däm Thema verbunde sin?',
+	'articlefeedback-field-wellwritten-label' => 'Guet gschribe',
+	'articlefeedback-field-wellwritten-tip' => 'Hesch Du dr Yydruck, ass dää Artikel guet strukturiert un gschribe isch?',
+	'articlefeedback-pitch-reject' => 'Nei dankschen',
+	'articlefeedback-pitch-takesurvey-title' => 'Witt bin ere Umfrog mitmache?',
+	'articlefeedback-pitch-takesurvey-accept' => 'Umfrog aafange',
+	'articlefeedback-pitch-createaccount-title' => 'Witt e Benutzerkonto aalege?',
+	'articlefeedback-pitch-createaccount-accept' => 'Benutzerkonto aalege',
+	'articlefeedback-pitch-makefirstedit-title' => 'Witt dää Artikel bearbeite?',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Bearbeite',
 );
 
 /** Hebrew (עברית)
@@ -989,6 +1007,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Marine-Blue
+ * @author Ohgi
  * @author Yanajin66
  * @author 青子守歌
  */
@@ -1013,19 +1032,24 @@ $messages['ja'] = array(
 	'articlefeedback-form-switch-label' => 'フィードバックを提供',
 	'articlefeedback-form-panel-title' => 'フィードバック',
 	'articlefeedback-form-panel-instructions' => 'このページの評価を算出していますので、少しお待ちください。',
-	'articlefeedback-form-panel-notice' => '評価は、時間が経過すると反映されなくなります。',
 	'articlefeedback-form-panel-submit' => 'フィードバックを送信',
 	'articlefeedback-report-switch-label' => '結果を表示',
 	'articlefeedback-report-panel-title' => 'フィードバック結果',
 	'articlefeedback-report-panel-description' => '現在の評価の平均。',
-	'articlefeedback-field-wellsourced-label' => '出典がよく示されている',
-	'articlefeedback-field-wellsourced-tip' => 'このページは、十分な出典があり、それらの出典は信頼できる情報源によるものですか？',
+	'articlefeedback-report-empty' => '評価なし',
+	'articlefeedback-report-ratings' => '$1 の評価',
+	'articlefeedback-field-trustworthy-label' => '信頼できる',
+	'articlefeedback-field-trustworthy-tip' => 'このページは、十分な出典があり、それらの出典は信頼できる情報源によるものですか？',
 	'articlefeedback-field-complete-label' => '完成度',
 	'articlefeedback-field-complete-tip' => 'この記事は、不可欠な話題を、説明していると思いますか？',
-	'articlefeedback-field-neutral-label' => '中立性',
-	'articlefeedback-field-neutral-tip' => 'このページは、ある問題に対する全ての観点を平等に説明していると思いますか？',
-	'articlefeedback-field-readable-label' => '読みやすさ',
-	'articlefeedback-field-readable-tip' => 'この記事は、良く整理され、良く書かれていると思いますか？',
+	'articlefeedback-field-unbiased-label' => '公平な',
+	'articlefeedback-field-unbiased-tip' => 'このページは、ある問題に対する全ての観点を平等に説明していると思いますか？',
+	'articlefeedback-field-wellwritten-tip' => 'この記事は、良く整理され、良く書かれていると思いますか？',
+	'articlefeedback-pitch-takesurvey-accept' => '調査を開始',
+	'articlefeedback-pitch-createaccount-title' => 'アカウントを作成しますか？',
+	'articlefeedback-pitch-createaccount-accept' => 'アカウント作成',
+	'articlefeedback-pitch-makefirstedit-title' => 'この記事を編集しますか？',
+	'articlefeedback-pitch-makefirstedit-accept' => '編集を開始',
 );
 
 /** Korean (한국어)
@@ -1443,19 +1467,27 @@ $messages['pt-br'] = array(
 	'articlefeedback-form-switch-label' => 'Deixar comentário',
 	'articlefeedback-form-panel-title' => 'Os seus comentários',
 	'articlefeedback-form-panel-instructions' => 'Dedique um momento a avaliar esta página abaixo, por favor.',
-	'articlefeedback-form-panel-notice' => 'As suas classificações irão expirar ao longo do tempo.',
 	'articlefeedback-form-panel-submit' => 'Enviar comentários',
 	'articlefeedback-report-switch-label' => 'Mostrar resultados',
 	'articlefeedback-report-panel-title' => 'Resultados dos comentários',
 	'articlefeedback-report-panel-description' => 'Classificações médias atuais.',
-	'articlefeedback-field-wellsourced-label' => 'Bem referenciada',
-	'articlefeedback-field-wellsourced-tip' => 'Você considera que esta página tem citações suficientes e que essas citações provêm de fontes fiáveis?',
+	'articlefeedback-report-empty' => 'Não existem avaliações',
+	'articlefeedback-report-ratings' => '$1 avaliações',
+	'articlefeedback-field-trustworthy-label' => 'Confiável',
+	'articlefeedback-field-trustworthy-tip' => 'Você considera que esta página tem citações suficientes e que essas citações provêm de fontes fiáveis?',
 	'articlefeedback-field-complete-label' => 'Completa',
 	'articlefeedback-field-complete-tip' => 'Você considera que esta página aborda os temas essenciais que deviam ser cobertos?',
-	'articlefeedback-field-neutral-label' => 'Neutra',
-	'articlefeedback-field-neutral-tip' => 'Você acha que esta página representa, de forma equilibrada, todos os pontos de vista sobre o assunto?',
-	'articlefeedback-field-readable-label' => 'Fácil de ler',
-	'articlefeedback-field-readable-tip' => 'Acha que esta página está bem organizada e bem escrita?',
+	'articlefeedback-field-unbiased-label' => 'Imparcial',
+	'articlefeedback-field-unbiased-tip' => 'Você acha que esta página representa, de forma equilibrada, todos os pontos de vista sobre o assunto?',
+	'articlefeedback-field-wellwritten-label' => 'Bem escrito',
+	'articlefeedback-field-wellwritten-tip' => 'Acha que esta página está bem organizada e bem escrita?',
+	'articlefeedback-pitch-reject' => 'Não, obrigado',
+	'articlefeedback-pitch-takesurvey-title' => 'Você gostaria de participar de uma pesquisa?',
+	'articlefeedback-pitch-takesurvey-accept' => 'Começar questionário',
+	'articlefeedback-pitch-createaccount-title' => 'Você gostaria de criar uma conta?',
+	'articlefeedback-pitch-createaccount-accept' => 'Criar conta',
+	'articlefeedback-pitch-makefirstedit-title' => 'Você gostaria de editar este artigo?',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Começar a editar',
 );
 
 /** Romanian (Română)
@@ -1881,6 +1913,13 @@ $messages['vi'] = array(
 	'articlefeedback-field-unbiased-tip' => 'Bạn có cảm thấy rằng bài này đại diện công bằng cho tất cả các quan điểm về các vấn đề?',
 	'articlefeedback-field-wellwritten-label' => 'Viết hay',
 	'articlefeedback-field-wellwritten-tip' => 'Bạn có cảm thấy rằng bài này được sắp xếp đàng hoàng có văn bản hay?',
+	'articlefeedback-pitch-reject' => 'Không, cám ơn',
+	'articlefeedback-pitch-takesurvey-title' => 'Bạn có muốn trả lời cuộc khảo sát?',
+	'articlefeedback-pitch-takesurvey-accept' => 'Bắt đầu trả lời',
+	'articlefeedback-pitch-createaccount-title' => 'Bạn có muốn mở tài khoản mới?',
+	'articlefeedback-pitch-createaccount-accept' => 'Mở tài khoản',
+	'articlefeedback-pitch-makefirstedit-title' => 'Bạn có muốn sửa đổi bài này?',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Bắt đầu sửa đổi',
 );
 
 /** Yoruba (Yorùbá)

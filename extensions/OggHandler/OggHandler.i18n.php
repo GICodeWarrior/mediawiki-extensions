@@ -2926,6 +2926,7 @@ $messages['sgs'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Budhajeewa
  * @author නන්දිමිතුරු
  */
 $messages['si'] = array(
@@ -2958,6 +2959,8 @@ $messages['si'] = array(
 	'ogg-dismiss' => 'වසන්න',
 	'ogg-download' => 'ගොනුව බා ගන්න',
 	'ogg-desc-link' => 'මෙම ගොනුව පිළිබඳ',
+	'ogg-oggThumb-version' => 'OggHandler සඳහා oggThumb $1 සංස්කරණය හෝ අලුත් එකක් අවැසිය.',
+	'ogg-oggThumb-failed' => 'තම්බ්නේලය තැනුමට oggThumb අසමත්විය.',
 );
 
 /** Slovak (Slovenčina)
