@@ -213,6 +213,41 @@ $messages['en-gb'] = array(
 	'ts-citegen-Sidebar-add-IE-Mac-details' => "Once the page has loaded, open your Page Holder, click 'Add' then use the Page Holder Favourites button to store it as a Page Holder Favourite.",
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'ts-citegen-Title' => 'Vorlagegenerator fir Quällenoowyys',
+	'ts-citegen-Send' => 'Generiere',
+	'ts-citegen-Input-title' => 'Aagabe',
+	'ts-citegen-Input-text' => 'Des isch e Vorlagegenerator fir Quällenoowyys. Mit ihm chasch diejenig Vorlag in dr unterschidlige Sprochuusgabe vu dr Wikipedia, fir d Nutzig as Einzelnoowyys oder Literaturaagab, schnäll aalege. Gib di vorhandene Date (%s) in die Fälder unten yy. S Skript versuecht derno us ene d Vorlag aazlege. Bi dr Aagab vu dr Daten isch nit wichtig, fir weli Aagabe wel Fäld brucht wird. Di richtig Zueornig zue dr einzelne Parameter vu dr Vorlag wird vum Skript ibernuu.',
+	'ts-citegen-Option-append-author-link' => 'Wikilink zum Autor in d Vorlage yyfiege',
+	'ts-citegen-Option-append-newlines' => 'No jedem Parameter e neji Zyyle aafange',
+	'ts-citegen-Option-add-references' => 'Fiegt „<ref>“-Elemänt in d Vorlag yy',
+	'ts-citegen-Option-add-list' => 'E Wikilischt mit Zitiervorlage aalege',
+	'ts-citegen-Output-title' => 'Ergebnis',
+	'ts-citegen-Output-select-disclaimer' => 'D Uuswahl vun ere Sproch fir d Vorlag isch kei Garanti derfir, ass es diejenig Vorlage in däre Sproch au git. Des Uuswahlmenü git d Sprochen aa, wu ne Vorlage verfiegbar isch. S cha syy, ass zem Byschpel Franzesisch nume aazeigt wird, wel d Vorlag „Cite book“ unterstitzt wird.',
+	'ts-citegen-Wrong-input' => '%s: nit erkannt as richtig Yygab.',
+	'ts-citegen-Parsers' => 'Parser',
+	'ts-citegen-Skins' => 'Uusgab',
+	'ts-citegen-Skin-skins' => 'Benutzeroberflechine',
+	'ts-citegen-Skin-outputformat' => 'Uusgabformat',
+	'ts-citegen-Template-lang' => 'Sproch vu dr Vorlag',
+	'ts-citegen-Sources-title' => 'Quälle',
+	'ts-citegen-Sources-text' => 'Unte wird d Lischt vu dr bruchte Quällen aazeigt.',
+	'ts-citegen-Sidebar-title' => 'Quällenoowyysgenerator',
+	'ts-citegen-Sidebar-add-Firefox' => 'Zue dr Läsezeiche zuefiege',
+	'ts-citegen-Sidebar-add-Opera' => 'Zue dr Hotlist zuefiege',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Zue dr Favorite zuefiege',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Sobald d Syte glade woren isch, mach bitte d Favoriteleischten uf, klick derno uf „Zuefiege“ un verwänd derno dr Favoritechnopf go si as Favorit spychere.',
+	'ts-citegen-Tools' => 'Wärchzyyg',
+	'ts-citegen-Other-languages' => 'Anderi Sproche',
+	'ts-citegen-Save-it' => 'Aktuälli Abfrog',
+	'ts-citegen-Errors-title' => 'Fähler',
+	'ts-citegen-Unavailable-SQL' => 'Fähler: D Datebank vum Toolserver isch nit verfiegbar. MySQL het die Antwort gee: %s',
+	'ts-citegen-base-disabled' => 'Fähler: %s-Datebank isch nit verfiegbar.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -325,6 +360,7 @@ $messages['lb'] = array(
 	'ts-citegen-Skin-skins' => 'Skins/Layout',
 	'ts-citegen-Template-lang' => 'Sprooch vun der Schabloun',
 	'ts-citegen-Sources-title' => 'Quellen',
+	'ts-citegen-Tools' => 'Geschir (Tools)',
 	'ts-citegen-Other-languages' => 'Aner Sproochen',
 	'ts-citegen-Save-it' => 'Aktuell Ufro',
 	'ts-citegen-Errors-title' => 'Feeler',
