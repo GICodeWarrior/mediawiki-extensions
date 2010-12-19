@@ -4,6 +4,12 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Push
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push/RELEASE-NOTES?view=co
 
 
+=== Version 0.6 ===
+2010-12-19
+
+* Added listing of embedded images to the tab interface.
+* Added notice to the tab interface that shows up when included templates/files already exist on the target wiki.
+
 === Version 0.5 ===
 2010-12-14
 
