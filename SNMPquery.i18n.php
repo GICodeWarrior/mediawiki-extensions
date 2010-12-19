@@ -37,6 +37,13 @@ $messages['br'] = array(
 	'snmpquery-desc' => "Ouzhpennañ a ra an arc'hwelioù SNMPget ha SNMPwalk hag adkas ar ra ar roadennoù er wiki",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'snmpquery-desc' => 'Dodaje funkcije SNMPget i SNMPwalk i vraća podatke na wiki',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
