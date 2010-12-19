@@ -32,12 +32,13 @@ class MV_SequencePage extends Article {
 	function getSequenceSMIL(){
 		global $wgParser,$wgOut, $wgUser, $wgEnableParserCache;
 		//temporally stop cache:
-		$wgEnableParserCache = $parserOutput =false;
+		$wgEnableParserCache = false;
 
+		$parserOptions = ParserOptions::newFromUser( $wgUser );
+		$parserOptions->addExtraKey( 'mv:seq-xml' ); //differentiate the articles xml from article
+		
 		if( $wgEnableParserCache ) {
-			$parserOptions = ParserOptions::newFromUser( $wgUser );
 			$mvParserCache = ParserCache::singleton();
-			$parserOptions->addExtraKey( 'mv:seq-xml' ); //differentiate the articles xml from article
 			$parserOutput = $mvParserCache->get( $this, $parserOptions );
 			
 			if( $parserOutput != false )
@@ -52,13 +53,13 @@ class MV_SequencePage extends Article {
 
 	    //@@todo get parser Output Object (maybe cleaner way to do this?
 	    //maybe parser cache is not the right place to cache the sequence xml? )
-	    $parserOutput = $wgParser->parse('', $this->mTitle, ParserOptions::newFromUser( $wgUser ));
+	    $parserOutput = $wgParser->parse('', $this->mTitle, $parserOptions );
 	    //output header:
 	    $parserOutput->mText.=$this->smilDoc->saveXML();
 
 		//save to cache if parser cache enabled:
 		if($wgEnableParserCache)
-			$mvParserCache->save( $parserOutput, $this, $wgUser );
+			$mvParserCache->save( $parserOutput, $this, $parserOptions );
 
 		return $parserOutput->getText();
 	}
