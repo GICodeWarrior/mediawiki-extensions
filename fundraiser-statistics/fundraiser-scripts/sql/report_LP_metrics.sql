@@ -20,7 +20,7 @@ max_amt,
 pp_don,
 cc_don,
 pp_don / pp_clicks  as paypal_click_thru,
-cc_don / cc_clicks as credit_card_click_thru
+cc_don / cc_clicks as credit_card_click_thru,
 '%s %s %s %s %s %s %s %s %s %s %s %s' as effluent
 
 from
