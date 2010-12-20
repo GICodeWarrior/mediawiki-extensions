@@ -507,6 +507,10 @@ class BannerLPReporting(FundraiserReporting):
 			query_name = 'report_LP_metrics'		
 		elif type == 'BAN':
 			query_name = 'report_banner_metrics'
+		elif type == 'BAN-TEST':
+			'[0-9](JA|SA|EA)[0-9]'
+		elif type == 'LP-TEST':
+			'[0-9](JA|SA|EA)[0-9]'
 		else:
 			sys.exit("Invalid type name - must be 'LP' or 'BAN'.")	
 		
@@ -524,4 +528,24 @@ class BannerLPReporting(FundraiserReporting):
 		self.gen_plot(metrics, times, title, xlabel, ylabel, ranges, subplot_index, query_name + '_' + metric_name + '.png')
 		
 		return [metrics, times]
+	
+	
+"""
+
+CLASS :: ^TestReporting^
+
+This subclass handles reporting on specific tests as defined by a utm campaign.
+
+"""
+
+class TestReporting(FundraiserReporting):
+	
+	def run_query(self,start_time, end_time, query_name, metric_name):
+		'report_latest_campaign'
+		# select the first row
 		
+		
+	def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
+		
+	def run(self, type, metric_name):
+	

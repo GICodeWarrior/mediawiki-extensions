@@ -37,7 +37,7 @@ utm_source,
 count(*) as views
 from landing_page
 where request_time >=  '%s' and request_time < '%s'
-and utm_campaign REGEXP 'JA'
+and utm_campaign REGEXP '%s'
 group by 1,2) as lp
 
 on imp.utm_source =  lp.utm_source and imp.hr =  lp.hr
@@ -57,7 +57,7 @@ from
 drupal.contribution_tracking LEFT JOIN civicrm.public_reporting 
 ON (contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id)
 where ts >=  '%s' and ts < '%s'
-and utm_campaign REGEXP 'JA'
+and utm_campaign REGEXP '%s'
 group by 1,2) as ecomm
 
 on ecomm.banner = lp.utm_source and ecomm.hr = lp.hr
