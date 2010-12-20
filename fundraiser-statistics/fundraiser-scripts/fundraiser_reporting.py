@@ -262,6 +262,7 @@ class TotalAmountsReporting(FundraiserReporting):
 		for i in range(num_keys):
 			pylab.plot(x, y_lists[i], line_types[i])
 
+		pylab.grid()
 		pylab.xlim(ranges[0], ranges[1])
 		pylab.legend(labels,loc=2)
 
@@ -469,6 +470,7 @@ class BannerLPReporting(FundraiserReporting):
 			pylab.plot(times[key], counts[key], line_types[count])
 			count = count + 1
 
+		pylab.grid()
 		pylab.xlim(ranges[0], ranges[1])
 		pylab.legend(count_keys,loc=2)
 
