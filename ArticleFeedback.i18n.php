@@ -775,6 +775,7 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Herr Mlinka
+ * @author Roberta F.
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
@@ -812,6 +813,8 @@ $messages['hr'] = array(
 	'articlefeedback-field-unbiased-tip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
 	'articlefeedback-field-wellwritten-label' => 'Dobro napisano',
 	'articlefeedback-field-wellwritten-tip' => 'Mislite li da je ova stranica dobro organizirana i dobro napisana?',
+	'articlefeedback-pitch-reject' => 'Ne, hvala',
+	'articlefeedback-pitch-createaccount-accept' => 'Otvori novi suradnički račun',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1110,10 +1113,13 @@ $messages['lb'] = array(
 	'articlefeedback-field-trustworthy-tip' => 'Hutt Dir den Androck datt dës Säit genuch Zitater huet an datt dës Zitater aus vertrauenswierdege Quelle kommen?',
 	'articlefeedback-field-complete-label' => 'Komplett',
 	'articlefeedback-field-complete-tip' => 'Hutt dir den Androck datt dës Säit déi wesentlech Aspekter vun dësem Sujet behandelt déi solle beliicht ginn?',
+	'articlefeedback-field-unbiased-label' => 'Net virageholl',
 	'articlefeedback-field-unbiased-tip' => 'Hutt Dir den Androck datt dës Säit eng ausgeglache Presentatioun vun alle Perspektive vun dësem Thema weist?',
 	'articlefeedback-field-wellwritten-label' => 'Gutt geschriwwen',
 	'articlefeedback-field-wellwritten-tip' => 'Hutt Dir den Androck datt dës Säit gutt organiséiert a gutt geschriwwen ass?',
 	'articlefeedback-pitch-reject' => 'Nee merci',
+	'articlefeedback-pitch-takesurvey-accept' => 'Ëmfro ufänken',
+	'articlefeedback-pitch-createaccount-accept' => 'Benotzerkont opmaachen',
 );
 
 /** Limburgish (Limburgs)
