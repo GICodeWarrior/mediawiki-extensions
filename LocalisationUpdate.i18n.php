@@ -143,10 +143,11 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  */
 $messages['fi'] = array(
-	'localisationupdate-desc' => 'Pitää käännetyt viestit niin ajantasaisina kuin mahdollista',
+	'localisationupdate-desc' => 'Pitää käännetyt viestit niin ajantasaisina kuin mahdollista.',
 );
 
 /** French (Français)
