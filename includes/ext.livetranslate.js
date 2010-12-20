@@ -31,22 +31,28 @@
 		var words = getSpecialWords();
 		var newLang = $( '#livetranslatelang' ).val();
 		
-		$.getJSON(
-			wgScriptPath + '/api.php',
-			{
-				'action': 'livetranslate',
-				'format': 'json',
-				'from': currentLang,
-				'to': newLang,
-				'words': words.join( '|' ),
-			},
-			function( data ) {
-				if ( data.translations ) {
-					replaceSpecialWords( data.translations );
-					requestGoogleTranslate( currentLang, newLang );
+		if ( words.length == 0 ) {
+			requestGoogleTranslate( currentLang, newLang );
+		}
+		else {
+			$.getJSON(
+				wgScriptPath + '/api.php',
+				{
+					'action': 'livetranslate',
+					'format': 'json',
+					'from': currentLang,
+					'to': newLang,
+					'words': words.join( '|' ),
+				},
+				function( data ) {
+					if ( data.translations ) {
+						replaceSpecialWords( data.translations );
+						requestGoogleTranslate( currentLang, newLang );
+					}
 				}
-			}
-		);
+			);			
+		}
+
 	});
 	
 	function getSpecialWords() {
@@ -74,13 +80,24 @@
 			{
 				'key': window.wgGoogleApiKey,
 				'format': 'html',
-				'q': ''//$( '#bodyContent' ).text(),
+				'q': '',//$( '#bodyContent' ).text(),
 				'source': sourceLang,
 				'target': targetLang,
 			},
 			function( response ) {
-				for ( i in response.data.translations ) {
-					// TODO
+				if ( response.data ) {
+					for ( i in response.data.translations ) {
+						// TODO
+						//alert( response.data.translations[i].translatedText );
+					}					
+				}
+				else {
+					if ( response.error ) {
+						alert( response.error.message ); // TODO: i18n
+					}
+					else {
+						// TODO: unknown error
+					}
 				}
 				
 				currentLang = targetLang;
