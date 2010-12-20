@@ -21,8 +21,9 @@ final class LiveTranslateFunctions {
 	public static function loadJs() {
 		global $wgOut, $egGoogleApiKey;
 		
-		$wgOut->addInlineScript(
-			'var wgGoogleApiKey = ' . json_encode( $egGoogleApiKey ) . ';'
+		$wgOut->addScript(
+			Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
+			Html::inlineScript( 'google.load("language", "1");' )
 		);
 		
 		// For backward compatibility with MW < 1.17.
