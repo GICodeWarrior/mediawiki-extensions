@@ -83,6 +83,7 @@ To push pages, enter the titles in the text box below, one title per line and hi
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jeroen De Dauw
  * @author Nike
  * @author Raymond
@@ -91,6 +92,7 @@ $messages['qqq'] = array(
 	'push-err-authentication' => '$1: wiki name, $2: optional detailed error message',
 	'push-remote-page-link' => '$1: page name, $2: wiki name',
 	'push-remote-page-link-full' => '$1: page name, $2: wiki name',
+	'push-tab-embedded-files' => '{{Identical|Embedded file}}',
 	'push-tab-files-override' => 'JavaScript message, no PLURAL available',
 	'push-tab-template-override' => 'JavaScript message, no PLURAL available',
 );
@@ -117,7 +119,7 @@ $messages['be-tarask'] = array(
 	'push-tab-title' => 'Распаўсюдзіць $1',
 	'push-targets' => 'Мэты распаўсюджваньня',
 	'push-add-target' => 'Дадаць мэту',
-	'push-import-revision-message' => 'Распаўсюджаная з $1 $2.',
+	'push-import-revision-message' => 'Распаўсюджаная з $1.',
 	'push-tab-no-targets' => 'Няма мэтаў для распаўсюджаньня. Калі ласка, дадайце некаторыя ў Ваш файл LocalSettings.php.',
 	'push-tab-push-to' => 'Распаўсюдзіць у $1',
 	'push-remote-pages' => 'Аддаленыя старонкі',
@@ -131,10 +133,15 @@ $messages['be-tarask'] = array(
 	'push-tab-inc-templates' => 'Уключыць шаблёны',
 	'push-tab-used-templates' => '({{PLURAL:$2|Выкарыстаны шаблён|Выкарыстаныя шаблёны}}: $1)',
 	'push-tab-no-used-templates' => '(На гэтай старонцы не выкарыстоўваюцца шаблёны.)',
-	'push-tab-inc-files' => 'Уключыць файлы',
+	'push-tab-inc-files' => 'Уключыць убудаваныя файлы',
 	'push-tab-err-fileinfo' => 'Немагчыма выявіць, якія файлы выкарыстоўваюцца на гэтай старонцы. Ні адзін ня быў распаўсюджаны.',
 	'push-tab-err-filepush-unknown' => 'Немагчыма распаўсюдзіць файлы па невядомай прычыне.',
 	'push-tab-err-filepush' => 'Немагчыма распаўсюдзіць файлы: $1',
+	'push-tab-embedded-files' => 'Укладзеныя файлы:',
+	'push-tab-no-embedded-files' => '(На гэтай старонцы няма укладзеных файлаў.)',
+	'push-tab-files-override' => 'Гэтыя файлы ўжо існуюць: $1',
+	'push-tab-template-override' => 'Гэтыя шаблёны ўжо існуюць: $1',
+	'special-push' => 'Распаўсюдзіць старонкі',
 );
 
 /** Breton (Brezhoneg)
@@ -143,6 +150,21 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'push-tab-text' => 'Bountañ',
 	'push-button-text' => 'Bountañ',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'push-err-authentication' => 'Autentificiranje na $1 nije uspjelo. $2',
+	'push-tab-text' => 'Postavi',
+	'push-button-text' => 'Postavi',
+	'push-tab-desc' => 'Ovaj jezičak omogućava vam da postavite trenutno reviziju ove stranice na jednu ili više drugih wikija.',
+	'push-targets' => 'Postavi ciljeve',
+	'push-add-target' => 'Dodaj cilj',
+	'push-remote-page-link' => '$1 na $2',
+	'push-tab-inc-files' => 'Uključi umetnute datoteke',
+	'push-tab-embedded-files' => 'Umetnute datoteke:',
 );
 
 /** German (Deutsch)
@@ -406,6 +428,16 @@ Untuk mendorong halaman, masukkan judul dalam kotak teks di bawah ini, satu judu
 	'push-special-obtaining-fileinfo' => '$1: Mencari informasi berkas...',
 	'push-special-pushing-file' => '$1: Mendorong berkas $2...',
 	'push-special-return' => 'Dorong halaman lain',
+);
+
+/** Japanese (日本語)
+ * @author Ohgi
+ */
+$messages['ja'] = array(
+	'push-add-target' => '対象を追加',
+	'push-tab-files-override' => 'これらのファイルはすでに存在しています： $1',
+	'push-tab-template-override' => 'これらのテンプレートはすでに存在しています： $1',
+	'push-special-target-is' => '対象のウィキ： $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

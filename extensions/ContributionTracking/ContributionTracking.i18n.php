@@ -1159,6 +1159,8 @@ $messages['uk'] = array(
 	'contrib-tracking-continue' => 'Якщо ви не були автоматично перенаправлені, натисніть на кнопку, щоб завершити вашу пожертву на сайті PayPal.',
 	'contrib-tracking-redirect' => 'Ви будете автоматично перенаправлені на PayPal для завершення вашого пожертвування.',
 	'contrib-tracking-button' => 'Продовжити',
+	'contrib-tracking-item-name-onetime' => 'Одноразове пожертвування',
+	'contrib-tracking-item-name-recurring' => 'Періодичне щомісячне пожертвування',
 );
 
 /** Vèneto (Vèneto)

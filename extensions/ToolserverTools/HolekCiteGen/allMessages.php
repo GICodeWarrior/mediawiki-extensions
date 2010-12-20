@@ -350,6 +350,14 @@ $messages['id'] = array(
 	'ts-citegen-base-disabled' => 'Galat: Basis data %s tidak tersedia.',
 );
 
+/** Japanese (日本語)
+ * @author Ohgi
+ */
+$messages['ja'] = array(
+	'ts-citegen-Option-add-references' => 'citationテンプレートの前後に<ref>タグを挿入',
+	'ts-citegen-Skin-skins' => 'スキン',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

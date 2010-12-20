@@ -167,6 +167,15 @@ $messages['fa'] = array(
 	'ts-kml-on-ol-map-by' => 'نقشه توسط',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'ts-kml-on-ol-languages' => 'Kielet',
+	'ts-kml-on-ol-help' => 'Ohje',
+	'ts-kml-on-ol-all' => 'Kaikki',
+);
+
 /** French (Français)
  * @author Gribeco
  * @author Zetud

@@ -516,11 +516,12 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  * @author Nike
  */
 $messages['fi'] = array(
 	'categorybrowser' => 'Luokkaselain',
-	'categorybrowser-desc' => 'Tarjoaa [[Special:CategoryBrowser |erikoissivun]] suodattamaan pois kansoitetuimmat luokat ja navigoimaan niillä AJAX-rajapintaa käyttäen',
+	'categorybrowser-desc' => 'Tarjoaa [[Special:CategoryBrowser|toimintosivun]] suodattamaan pois suosituimmat luokat ja navigoimaan niillä AJAX-rajapintaa käyttäen.',
 	'cb_requires_javascript' => 'Luokkaselainlaajennus edellyttää, että JavaScript on käytössä selaimessa.',
 	'cb_ie6_warning' => 'Ehtomuokkain ei toimi Internet Explorer 6.0 -selaimessa tai sitä varhaisemmissa selaimissa. 
 Esimääriteltyjen ehtojen selailun pitäisi kuitenkin toimia normaalisti.
@@ -529,7 +530,7 @@ Vaihda tai päivitä selaintasi, jos mahdollista.',
 	'cb_cat_name_filter' => 'Etsi luokkaa nimen avulla:',
 	'cb_cat_name_filter_clear' => 'Nollaa luokkanimisuodattimen napsauttamalla',
 	'cb_cat_name_filter_ci' => 'Kirjainkoosta riippuva',
-	'cb_copy_line_hint' => 'Käytä [+] ja [>+]-painikkeita kopioimaan ja liittämään operaattoreita valittuun lausekkeseen',
+	'cb_copy_line_hint' => 'Käytä painikkeita [+] ja [>+] kopioidaksesi ja liittääksesi operaattoreita valittuun lausekkeeseen',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|alaluokka|alaluokkaa}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|sivu|sivua}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|tiedosto|tiedostoa}}',
@@ -540,7 +541,7 @@ Vaihda tai päivitä selaintasi, jos mahdollista.',
 	'cb_cat_subcats' => 'alaluokat',
 	'cb_cat_pages' => 'sivut',
 	'cb_cat_files' => 'tiedostot',
-	'cb_apply_button' => 'Sovella',
+	'cb_apply_button' => 'Käytä',
 	'cb_all_op' => 'Kaikki',
 	'cb_or_op' => 'tai',
 	'cb_and_op' => 'ja',

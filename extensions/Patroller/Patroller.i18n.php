@@ -42,6 +42,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Aotake
+ * @author EugeneZelenko
  * @author Ferrer
  * @author Jon Harald Søby
  * @author Purodha
@@ -51,6 +52,7 @@ $messages['qqq'] = array(
 	'patrol-desc' => '{{desc}}',
 	'patrol-revert' => '{{Identical|Revert}}',
 	'patrol-revert-reason' => '{{Identical|Reason}}',
+	'patrol-skip' => '{{Identical|Skip}}',
 	'patrol-reverting' => '{{Identical|Revert}}',
 	'patrol-reverted-ok' => '{{Identical|Revert}}',
 	'patrol-reverted-failed' => '{{Identical|Revert}}',
