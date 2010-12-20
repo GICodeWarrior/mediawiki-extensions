@@ -48,8 +48,8 @@ class FundraiserReporting:
 	def init_db(self):
 		""" Establish connection """
 		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 		""" Create cursor """
 		self.cur = self.db.cursor()
@@ -373,7 +373,7 @@ This subclass handles reporting on banners and landing pages for the fundraiser.
 
 class BannerLPReporting(FundraiserReporting):
 	
-	def run_query(self,start_time, end_time, query_name, metric_name):
+	def run_query(self,start_time, end_time, campaign, query_name, metric_name):
 		
 		self.init_db()
 		
@@ -387,12 +387,12 @@ class BannerLPReporting(FundraiserReporting):
 		sql_stmnt = mh.read_sql(filename)
 		
 		query_name  = 'report_bannerLP_metrics'  # rename query to work with query store
-		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time])
+		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time, campaign])
 		
 		key_index = query_obj.get_banner_index(query_name)
 		time_index = query_obj.get_time_index(query_name)
 		metric_index = query_obj.get_metric_index(query_name, metric_name)
-
+		
 		# Composes the data for each banner
 		try:
 			err_msg = sql_stmnt
@@ -417,7 +417,6 @@ class BannerLPReporting(FundraiserReporting):
 		except:
 			self.db.rollback()
 			sys.exit("Database Interface Exception:\n" + err_msg)
-
 
 		""" Convert Times to Integers """
 		# Find the earliest date
@@ -483,16 +482,16 @@ class BannerLPReporting(FundraiserReporting):
 	
 	"""
 	
-		type = 'LP' || 'BAN'
+		type = 'LP' || 'BAN' || 'BAN-TEST' || 'LP-TEST'
 		
 	"""
 	def run(self, type, metric_name):
 		
 		# Current date & time
 		now = datetime.datetime.now()
-		#UTC = 8
-		#delta = datetime.timedelta(hours=UTC)
-		#now = now + delta
+		UTC = 8
+		delta = datetime.timedelta(hours=UTC)
+		now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
 		hours_back = 24
@@ -500,52 +499,89 @@ class BannerLPReporting(FundraiserReporting):
 		
 		start_time = times[0]
 		end_time = times[1]
-
+		
 		print '\nGenerating ' + type +' for ' + str(hours_back) + ' hours back. The start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
 		
 		if type == 'LP':
-			query_name = 'report_LP_metrics'		
+			query_name = 'report_LP_metrics'
+			campaign = '[0-9](JA|SA|EA)[0-9]'
+			title = query_name + '_' + metric_name 
+			fname = title + '.png'			
 		elif type == 'BAN':
 			query_name = 'report_banner_metrics'
+			campaign = '[0-9](JA|SA|EA)[0-9]'
+			title = query_name + '_' + metric_name 
+			fname = title + '.png'
 		elif type == 'BAN-TEST':
-			'[0-9](JA|SA|EA)[0-9]'
+			r = self.get_latest_campaign()
+			query_name = 'report_banner_metrics'
+			campaign = r[0]
+			start_time = r[1]
+			title = query_name + '_' + metric_name + '_' + campaign 
+			fname = title + '.png'
 		elif type == 'LP-TEST':
-			'[0-9](JA|SA|EA)[0-9]'
+			r = self.get_latest_campaign()
+			query_name = 'report_LP_metrics'
+			campaign = r[0]
+			start_time = r[1]
+			title = query_name + '_' + metric_name + '_' + campaign 
+			fname = title + '.png'
 		else:
 			sys.exit("Invalid type name - must be 'LP' or 'BAN'.")	
 		
-		return_val = self.run_query(start_time, end_time, query_name, metric_name)
+		
+		return_val = self.run_query(start_time, end_time, campaign, query_name, metric_name)
 		metrics = return_val[0]
 		times = return_val[1]
 		
-		title = metric_name + ': ' + start_time + ' -- ' + end_time
+		# title = metric_name + ': ' + start_time + ' -- ' + end_time
 		xlabel = 'Time - Hours'
 		ylabel = metric_name
 		subplot_index = 111
 		
-		ranges = [-hours_back, -1]
+		min_time = 99
+		for key in times.keys():
+			min_elem = min(times[key])
+			if min_elem < min_time:
+				min_time = min_elem
 		
-		self.gen_plot(metrics, times, title, xlabel, ylabel, ranges, subplot_index, query_name + '_' + metric_name + '.png')
+		ranges = [min_time, -1]
+		
+		self.gen_plot(metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname)
 		
 		return [metrics, times]
 	
 	
-"""
-
-CLASS :: ^TestReporting^
-
-This subclass handles reporting on specific tests as defined by a utm campaign.
-
-"""
-
-class TestReporting(FundraiserReporting):
-	
-	def run_query(self,start_time, end_time, query_name, metric_name):
-		'report_latest_campaign'
-		# select the first row
+	def get_latest_campaign(self):
 		
+		query_name = 'report_latest_campaign'
+		self.init_db()
 		
-	def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
+		# Look at campaigns over the past 24 hours
+		now = datetime.datetime.now()
+		hours_back = 24
+		times = self.gen_date_strings_hr(now, hours_back)
 		
-	def run(self, type, metric_name):
-	
+		query_obj = qs.query_store()
+		sql_stmnt = mh.read_sql('./sql/report_latest_campaign.sql')
+		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [times[0]])
+		
+		campaign_index = query_obj.get_campaign_index(query_name)
+		time_index = query_obj.get_time_index(query_name)
+		
+		try:
+			err_msg = sql_stmnt
+			self.cur.execute(sql_stmnt)
+			
+			row = self.cur.fetchone()
+		except:
+			self.db.rollback()
+			sys.exit("Database Interface Exception:\n" + err_msg)
+			
+		campaign = row[campaign_index]
+		timestamp = row[time_index] 
+			
+		self.close_db()
+		
+		return [campaign, timestamp]
+		

@@ -64,7 +64,12 @@ class query_store:
 		elif query_name == 'report_bannerLP_metrics':
 			start_time = args[0]
 			end_time = args[1]
-			sql_stmnt = sql_stmnt % ('%', '%', '%', '%', start_time, end_time, '%', '%', '%', '%', start_time, end_time, '%', '%', '%', '%', start_time, end_time, '%', '%', '%', '%', start_time, end_time)
+			campaign = args[2]
+			sql_stmnt = sql_stmnt % ('%', '%', '%', '%', start_time, end_time, '%', '%', '%', '%', start_time, end_time, '%', '%', '%', '%', start_time, end_time, campaign, '%', '%', '%', '%', start_time, end_time, campaign)
+		
+		elif query_name == 'report_latest_campaign':
+			start_time = args[0]
+			sql_stmnt = sql_stmnt % (start_time)
 			
 		else:
 			print 'no such table\n'
@@ -98,6 +103,8 @@ class query_store:
 			return 0
 		elif query_name == 'report_bannerLP_metrics':
 			return 0
+		elif query_name == 'report_latest_campaign':
+			return 1
 		else:
 			'no such table'
 
@@ -110,6 +117,8 @@ class query_store:
 			return 3
 		elif query_name == 'report_bannerLP_metrics':
 			return 1
+		elif query_name == 'report_latest_campaign':
+			return 0
 		else:
 			'no such table'
 

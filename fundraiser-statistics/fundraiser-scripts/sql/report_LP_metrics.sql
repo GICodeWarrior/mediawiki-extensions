@@ -53,7 +53,7 @@ from
 drupal.contribution_tracking LEFT JOIN civicrm.public_reporting 
 ON (contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id)
 where ts >=  '%s' and ts < '%s'
-and utm_campaign REGEXP '[0-9](JA|SA|EA)[0-9]'
+and utm_campaign REGEXP '%s'
 group by 1,2) as ecomm
 
 on ecomm.landing_page  = lp.landing_page and ecomm.hr = lp.hr
