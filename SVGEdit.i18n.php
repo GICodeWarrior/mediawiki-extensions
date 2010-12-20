@@ -134,6 +134,14 @@ $messages['id'] = array(
 	'svgedit-desc' => 'Penyuntingan gambar SVG via peramban dengan [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Japanese (日本語)
+ * @author Ohgi
+ */
+$messages['ja'] = array(
+	'svgedit-editor-save-close' => '保存して閉じる',
+	'svgedit-editor-close' => 'キャンセル',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -192,5 +200,13 @@ $messages['ru'] = array(
 	'svgedit-editor-save-close' => 'Сохранить и закрыть',
 	'svgedit-editor-close' => 'Отмена',
 	'svgedit-desc' => 'Редактирование SVG-изображений в браузере с помощью [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'svgedit-editor-save-close' => 'భద్రపరిచి మూసేయి',
+	'svgedit-editor-close' => 'రద్దు',
 );
 
