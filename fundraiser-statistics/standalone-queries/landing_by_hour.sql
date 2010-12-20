@@ -1,7 +1,7 @@
 use faulkner;
 
-set @s = '20101216100000';
-set @e = '20101216200000';
+set @s = '20101220000000';
+set @e = '20101220100000';
 
 select 
 DATE_FORMAT(request_time, '%Y-%m-%d %H') as stamp,

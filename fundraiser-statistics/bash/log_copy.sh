@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Navigate to home directory
-cd /home/rfaulk/bash-scripts
 
 # Get the date and hour
 ymd=$(date +%Y-%m-%d)
