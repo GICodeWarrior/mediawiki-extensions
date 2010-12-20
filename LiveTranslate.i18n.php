@@ -118,6 +118,15 @@ $messages['id'] = array(
 	'livetranslate-button-translating' => 'Menerjemahkan ...',
 );
 
+/** Japanese (日本語)
+ * @author Ohgi
+ */
+$messages['ja'] = array(
+	'livetranslate-translate-to' => 'このページを翻訳',
+	'livetranslate-button-translate' => '翻訳',
+	'livetranslate-button-translating' => '翻訳中...',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
