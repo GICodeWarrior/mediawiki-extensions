@@ -169,10 +169,11 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  * @author Nike
  */
 $messages['fi'] = array(
-	'categorymultisortchinese-desc' => 'Mahdollistaen luokkien katselemisen erilaisilla kiiinankielisille merkeille luonteenomaisilla lajitteluavaimilla',
+	'categorymultisortchinese-desc' => 'Mahdollistaa luokkien tarkastelemisen erilaisilla kiinankielisille merkeille luonteenomaisilla lajitteluavaimilla.',
 	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandariinikiinaa: Pinyin',
 	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandariinikiina: Bopomofo',
 	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandariinikiina: Wade-Giles',
