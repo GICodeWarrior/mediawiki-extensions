@@ -505,27 +505,27 @@ class BannerLPReporting(FundraiserReporting):
 		if type == 'LP':
 			query_name = 'report_LP_metrics'
 			campaign = '[0-9](JA|SA|EA)[0-9]'
-			title = query_name + '_' + metric_name 
-			fname = title + '.png'			
+			title = metric_name + ': ' + start_time + ' -- ' + end_time 
+			fname = query_name + '_' + metric_name + '.png'			
 		elif type == 'BAN':
 			query_name = 'report_banner_metrics'
 			campaign = '[0-9](JA|SA|EA)[0-9]'
-			title = query_name + '_' + metric_name 
-			fname = title + '.png'
+			title = metric_name + ': ' + start_time + ' -- ' + end_time 
+			fname = query_name + '_' + metric_name + '.png'
 		elif type == 'BAN-TEST':
 			r = self.get_latest_campaign()
 			query_name = 'report_banner_metrics'
 			campaign = r[0]
 			start_time = r[1]
-			title = query_name + '_' + metric_name + '_' + campaign 
-			fname = title + '.png'
+			title = metric_name + ': ' + start_time + ' -- ' + end_time + ', CAMPAIGN =' + campaign 
+			fname = query_name + '_' + metric_name + '_latest' + '.png'
 		elif type == 'LP-TEST':
 			r = self.get_latest_campaign()
 			query_name = 'report_LP_metrics'
 			campaign = r[0]
 			start_time = r[1]
-			title = query_name + '_' + metric_name + '_' + campaign 
-			fname = title + '.png'
+			title = metric_name + ': ' + start_time + ' -- ' + end_time + ', CAMPAIGN =' + campaign 
+			fname = query_name + '_' + metric_name + '_latest' + '.png'
 		else:
 			sys.exit("Invalid type name - must be 'LP' or 'BAN'.")	
 		

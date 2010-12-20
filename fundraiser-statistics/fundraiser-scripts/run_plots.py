@@ -28,3 +28,7 @@ blpr.run('LP', 'don_per_view')
 blpr.run('BAN', 'don_per_imp')
 blpr.run('BAN', 'click_rate')
 blpr.run('LP', 'conversion_rate')
+
+# Run the banner/lp plots
+blpr.run('LP-TEST', 'don_per_view')
+blpr.run('BAN-TEST', 'don_per_imp')
