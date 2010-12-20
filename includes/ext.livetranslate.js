@@ -26,7 +26,7 @@
 	}
 	
 	$('#livetranslatebutton').click(function() {
-		$( this ).attr( "disabled", true );
+		$( this ).attr( "disabled", true );		
 		
 		var words = getSpecialWords();
 		var newLang = $( '#livetranslatelang' ).val();
@@ -59,7 +59,9 @@
 		var words = [];
 		
 		$.each($( '.notranslate' ), function( i, v ) {
-			words.push( $(v).text() );
+			if ( $(v).attr( 'id' ) != 'livetranslatespan' ) {
+				words.push( $(v).text() );
+			}
 		});
 		
 		return words;
@@ -75,36 +77,58 @@
 	}
 	
 	function requestGoogleTranslate( sourceLang, targetLang ) {
-		$.getJSON(
-			'https://www.googleapis.com/language/translate/v2?callback=?',
-			{
-				'key': window.wgGoogleApiKey,
-				'format': 'html',
-				'q': '',//$( '#bodyContent' ).text(),
-				'source': sourceLang,
-				'target': targetLang,
-			},
-			function( response ) {
-				if ( response.data ) {
-					for ( i in response.data.translations ) {
-						// TODO
-						//alert( response.data.translations[i].translatedText );
-					}					
+		translateElement( $( '#bodyContent' ), sourceLang, targetLang );
+	}
+	
+	function translateElement( element, sourceLang, targetLang ) {
+		if ( element.children().length == 0 ) {
+			
+		}
+		else {
+			element.children().each( function() {
+				if ( $.inArray( $( this ).attr( 'id' ), [ 'livetranslatediv', 'siteSub', 'jump-to-nav' ] ) == -1
+					&& $.inArray( $( this ).attr( 'class' ), [ 'notranslate', 'printfooter' ] ) == -1
+					&& $( this ).text().trim().length > 0 ) {
+					translateChunk( $( this ).text(), [], 500, sourceLang, targetLang, $( this ) );
+				}
+			} );
+		}
+	}
+	
+	function translateChunk( untranslatedText, chunks, currentMaxSize, sourceLang, targetLang, element ) {
+		var chunkSize = Math.min( untranslatedText.length, currentMaxSize );
+		
+		google.language.translate(
+			untranslatedText.substr( 0, chunkSize ),
+			sourceLang,
+			targetLang,
+			function(result) {
+				if ( result.error ) {
+					if ( result.error.code == '400' ) {
+						translateChunk( untranslatedText, chunks, Math.ceil( currentMaxSize / 2 ), sourceLang, targetLang, element );
+					}
 				}
 				else {
-					if ( response.error ) {
-						alert( response.error.message ); // TODO: i18n
+					chunks.push( result.translation );
+					
+					if ( chunkSize < currentMaxSize ) {
+						element.text( chunks.join() ); // TODO: set actual content
 					}
 					else {
-						// TODO: unknown error
+						translateChunk( untranslatedText.substr( chunkSize ), chunks, currentMaxSize, sourceLang, targetLang, element );
 					}
 				}
-				
-				currentLang = targetLang;
-				
-				$( '#livetranslatebutton' ).attr( "disabled", false );
 			}
-		);		
+		);	
+	}
+	
+	function handleTranslationCompletion( translation, targetLang ) {
+		alert(translation);
+		//$( '#bodyContent' ).innerHTML = result.translation;
+		
+		currentLang = targetLang;
+		
+		$( '#livetranslatebutton' ).attr( "disabled", false );		
 	}
 	
 } ); })(jQuery);

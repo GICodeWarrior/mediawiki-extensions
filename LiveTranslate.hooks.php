@@ -30,11 +30,12 @@ final class LiveTranslateHooks {
 		
 		if ( $article->exists() && $title->getFullText() != $egLiveTranslateDirPage ) {
 			$wgOut->addHTML(
+				'<span class="notranslate" id="livetranslatespan">' .
 				Html::rawElement(
 					'div',
 					array(
 						'id' => 'livetranslatediv',
-						'style' => 'display:inline; float:right'
+						'style' => 'display:inline; float:right',
 					),
 					htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
 					'&#160;' . 
@@ -45,7 +46,8 @@ final class LiveTranslateHooks {
 						array( 'id' => 'livetranslatebutton', 'style' => 'height: 27px' ),
 						wfMsg( 'livetranslate-button-translate' )
 					)
-				)
+				) .
+				'</span>'
 			);
 		}
 		
