@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/rfaulk/fundraiser-scripts
+cd /home/rfaulk/fundraiser-statistics/fundraiser-scripts
 
 # get date from command line args
 day=$1  # start day

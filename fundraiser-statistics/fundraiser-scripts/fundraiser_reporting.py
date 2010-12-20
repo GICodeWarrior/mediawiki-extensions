@@ -462,7 +462,7 @@ class BannerLPReporting(FundraiserReporting):
 		pylab.figure(num=None,figsize=[26,14])	
 		count_keys = counts.keys()
 		
-		line_types = ['b-o','g-o','r-o','c-o','m-o','k-o','b--o','g--o','r--o','c--o','m--o','k--o']
+		line_types = ['b-o','g-o','r-o','c-o','m-o','k-o','y-o','b--d','g--d','r--d','c--d','m--d','k--d','y--d','b-.s','g-.s','r-.s','c-.s','m-.s','k-.s','y-.s']
 		
 		count = 0
 		for key in counts.keys():

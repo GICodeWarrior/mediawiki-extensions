@@ -51,7 +51,7 @@ fi
 #echo $T
 
 
-cd /home/rfaulk/fundraiser-scripts/logs
+cd /home/rfaulk/fundraiser-statistics/fundraiser-scripts/logs
 
 sftp rfaulk@hume.wikimedia.org:/a/static/uncompressed/udplogs/landingpages-$T*
 sftp rfaulk@hume.wikimedia.org:/a/static/uncompressed/udplogs/bannerImpressions-$T*

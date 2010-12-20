@@ -2,7 +2,7 @@
 
 # RUN DONATION PROCESS TESTS HOURLY
 
-cd /home/rfaulk/fundraiser-scripts
+cd /home/rfaulk/fundraiser-statistics/fundraiser-scripts
 
 D=$(date +%Y%m)
 day=$(date +%d)
