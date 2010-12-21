@@ -105,7 +105,7 @@ final class LiveTranslateFunctions {
 		ksort( $languages );
 		
 		foreach ( $languages as $code => $name ) {
-			if ( in_array( $code, $allowedLanguages ) ) {
+			if ( in_array( $code, $allowedLanguages ) && $code != $currentLang ) {
 				$display = wfBCP47( $code ) . ' - ' . $name;
 				$options[$display] = $code;				
 			}

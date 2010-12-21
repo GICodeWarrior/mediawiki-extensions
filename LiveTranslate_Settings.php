@@ -18,12 +18,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+# The name of the page on which the special words translations dirctionary is defined.
 $egLiveTranslateDirPage = 'Live Translate Dictionary';
 
 # https://code.google.com/apis/console
 $egGoogleApiKey = '';
 
+# A list of languages that should be available to translate to.
 $egLiveTranslateLanguages = array(
 	$wgLanguageCode,
-	'nl'
 );
