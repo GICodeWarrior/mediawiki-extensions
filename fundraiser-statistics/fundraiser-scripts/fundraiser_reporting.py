@@ -536,9 +536,9 @@ class BannerLPReporting(FundraiserReporting):
 	def run(self, type, metric_name):
 		
 		# Current date & time
-		now = datetime.datetime.now()
-		UTC = 8
-		delta = datetime.timedelta(hours=UTC)
+		#now = datetime.datetime.now()
+		#UTC = 8
+		#delta = datetime.timedelta(hours=UTC)
 		now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
