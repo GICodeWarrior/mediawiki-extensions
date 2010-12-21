@@ -45,7 +45,7 @@ final class LiveTranslateHooks {
 					'&#160;' . 
 					Html::element(
 						'button',
-						array( 'id' => 'livetranslatebutton', 'style' => 'height: 27px' ),
+						array( 'id' => 'livetranslatebutton' ),
 						wfMsg( 'livetranslate-button-translate' )
 					)
 				) .

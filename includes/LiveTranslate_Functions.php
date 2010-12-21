@@ -85,16 +85,18 @@ final class LiveTranslateFunctions {
 	 * @return string
 	 */
 	public static function getLanguageSelector( $currentLang ) {
-		global $wgUser;
+		global $wgUser, $wgLanguageCode, $egLiveTranslateLanguages;
 		
-		$targetLang = $currentLang;
+		$allowedLanguages = array_merge( $egLiveTranslateLanguages, array( $currentLang ) );
+		
+		$targetLang = $wgLanguageCode;
 		
 		$languages = Language::getLanguageNames( false );
 		
 		if ( $wgUser->isLoggedIn() ) {
 			$userLang = $wgUser->getOption( 'language' );
 			
-			if ( array_key_exists( $userLang, $languages ) ) {
+			if ( array_key_exists( $userLang, $languages ) && in_array( $userLang, $allowedLanguages ) ) {
 				$targetLang = $userLang;
 			}			
 		}
@@ -103,8 +105,10 @@ final class LiveTranslateFunctions {
 		ksort( $languages );
 		
 		foreach ( $languages as $code => $name ) {
-			$display = wfBCP47( $code ) . ' - ' . $name;
-			$options[$display] = $code;
+			if ( in_array( $code, $allowedLanguages ) ) {
+				$display = wfBCP47( $code ) . ' - ' . $name;
+				$options[$display] = $code;				
+			}
 		}
 		
 		$languageSelector = new HTMLSelectField( array(

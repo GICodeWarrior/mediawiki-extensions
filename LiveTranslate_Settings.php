@@ -22,3 +22,8 @@ $egLiveTranslateDirPage = 'Live Translate Dictionary';
 
 # https://code.google.com/apis/console
 $egGoogleApiKey = '';
+
+$egLiveTranslateLanguages = array(
+	$wgLanguageCode,
+	'nl'
+);
