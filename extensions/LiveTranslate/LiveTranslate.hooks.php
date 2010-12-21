@@ -24,13 +24,14 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
-		global $wgOut, $egLiveTranslateDirPage, $egGoogleApiKey;
+		global $wgOut, $egLiveTranslateDirPage, $egGoogleApiKey, $egLiveTranslateLanguages;
 		
 		$title = $article->getTitle();
 		
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
 		
-		if ( $article->exists() && $title->getFullText() != $egLiveTranslateDirPage ) {
+		if ( $article->exists() && $title->getFullText() != $egLiveTranslateDirPage
+			&& ( count( $egLiveTranslateLanguages ) > 1 ) || count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) {
 			$wgOut->addHTML(
 				'<span class="notranslate" id="livetranslatespan">' .
 				Html::rawElement(
