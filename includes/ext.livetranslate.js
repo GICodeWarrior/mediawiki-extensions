@@ -9,6 +9,8 @@
 	
 	var currentLang = 'en'; // TODO
 	
+	var runningJobs = 0;
+	
 	// Compatibility with pre-RL code.
 	// Messages will have been loaded into wgPushMessages.
 	if ( typeof mediaWiki === 'undefined' ) {
@@ -81,16 +83,23 @@
 	}
 	
 	function translateElement( element, sourceLang, targetLang ) {
+		runningJobs++;
+		
 		element.contents().each( function() {
+			// If it's a text node, then translate it.
 			if ( this.nodeType == 3 ) {
+				runningJobs++;
 				translateChunk( this.wholeText, [], 500, sourceLang, targetLang, this );
 			}
+			// If it's an html element, check to see if it should be ignored, and if not, apply function again.
 			else if ( $.inArray( $( this ).attr( 'id' ), [ 'livetranslatediv', 'siteSub', 'jump-to-nav' ] ) == -1
 				&& $.inArray( $( this ).attr( 'class' ), [ 'notranslate', 'printfooter' ] ) == -1
 				&& $( this ).text().trim().length > 0 ) {
 				translateElement( $( this ), sourceLang, targetLang );
 			}
 		} );
+		
+		runningJobs--;
 	}
 	
 	function translateChunk( untranslatedText, chunks, currentMaxSize, sourceLang, targetLang, element ) {
@@ -105,6 +114,8 @@
 				
 				if ( chunkSize < currentMaxSize ) {
 					element.replaceWholeText( chunks.join() );
+					runningJobs--;
+					handleTranslationCompletion( targetLang );
 				}
 				else {
 					translateChunk( untranslatedText.substr( chunkSize ), chunks, currentMaxSize, sourceLang, targetLang, element );
@@ -113,13 +124,11 @@
 		);	
 	}
 	
-	function handleTranslationCompletion( translation, targetLang ) {
-		alert(translation);
-		//$( '#bodyContent' ).innerHTML = result.translation;
-		
-		currentLang = targetLang;
-		
-		$( '#livetranslatebutton' ).attr( "disabled", false );		
+	function handleTranslationCompletion( targetLang ) {
+		if ( !--runningJobs ) {
+			currentLang = targetLang;
+			$( '#livetranslatebutton' ).attr( "disabled", false );				
+		}
 	}
 	
 } ); })(jQuery);
