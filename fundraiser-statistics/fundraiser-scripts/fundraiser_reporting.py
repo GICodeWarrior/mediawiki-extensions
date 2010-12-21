@@ -48,8 +48,8 @@ class FundraiserReporting:
 	def init_db(self):
 		""" Establish connection """
 		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 		""" Create cursor """
 		self.cur = self.db.cursor()
@@ -213,7 +213,7 @@ class TotalAmountsReporting(FundraiserReporting):
 		sql_stmnt = mh.read_sql(filename)
 		sql_stmnt = query_obj.format_query(query_name + descriptor, sql_stmnt, [start_time, end_time])
 		
-		labels = [None] * 9 
+		labels = [None] * 20 
 		labels[0] = 'clicks'
 		labels[1] = 'donations'
 		labels[2] = 'total amount'
@@ -223,6 +223,18 @@ class TotalAmountsReporting(FundraiserReporting):
 		labels[6] = 'Other Amount'
 		labels[7] = 'Email Amount'
 		labels[8] = 'Recurring Guess'
+		labels[9] = 'completion_rate'
+		labels[10] = 'pp_clicks'
+		labels[11] = 'pp_donations'
+		labels[12] = 'pp_completion'
+		labels[13] = 'pp_amount'
+		labels[14] = 'pp_max_amount'
+		labels[15] = 'cc_clicks'
+		labels[16] = 'cc_donations'
+		labels[17] = 'cc_completion'
+		labels[18] = 'cc_amount'
+		labels[19] = 'cc_max_amount'
+
 		
 		num_keys = len(labels)
 		
@@ -248,7 +260,7 @@ class TotalAmountsReporting(FundraiserReporting):
 		self.close_db()
 		
 		# Only interested in amounts
-		return [labels[2:9], lists[2:9]]
+		return [labels, lists]
 	
 	
 	
@@ -274,7 +286,7 @@ class TotalAmountsReporting(FundraiserReporting):
 	
 	
 	
-	def run_hr(self):
+	def run_hr(self, type):
 		
 		
 		# Current date & time
@@ -300,12 +312,38 @@ class TotalAmountsReporting(FundraiserReporting):
 		# RUN BY HOUR
 		descriptor = '_by_hr'
 		return_val = self.run_query(start_time, end_time, query_name, descriptor)
+		
 		labels = return_val[0] 	# curve labels
 		counts = return_val[1]	# curve data - lists
-
-		title = 'Total Amounts: ' + start_time + ' -- ' + end_time
+			
+		if type == 'BAN_EM':
+			indices = range(2,9)
+			title = 'Total Amounts: ' + start_time + ' -- ' + end_time
+			ylabel = 'Amount'
+		elif type == 'CC_PP_completion':
+			indices = [12,17]
+			title = 'Credit Card & Paypal Completion Rates: ' + start_time + ' -- ' + end_time
+			ylabel = 'Rate'			
+		elif type == 'CC_PP_amount':
+			indices = [13,18]
+			title = 'Credit Card & Paypal Total Amounts: ' + start_time + ' -- ' + end_time
+			ylabel = 'Amount'
+		else:
+			sys.exit("Total Amounts: You must enter a valid report type.\n" )
+		
+		# Exract relevant labels and values
+		labels_temp = list()
+		counts_temp = list()
+		
+		for i in range(len(labels)):
+			if i in indices:
+				labels_temp.append(labels[i])
+				counts_temp.append(counts[i])
+				
+		labels = labels_temp
+		counts = counts_temp
+			
 		xlabel = 'Time - Hours'
-		ylabel = 'Amount'
 		subplot_index = 111
 		
 		# plot the curves
@@ -315,7 +353,8 @@ class TotalAmountsReporting(FundraiserReporting):
 		
 		ranges = [min(time_range), max(time_range)]
 		
-		self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, query_name+descriptor)
+		fname = query_name + descriptor + '_' + type
+		self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, fname)
 		
 	
 	
@@ -489,9 +528,9 @@ class BannerLPReporting(FundraiserReporting):
 		
 		# Current date & time
 		now = datetime.datetime.now()
-		UTC = 8
-		delta = datetime.timedelta(hours=UTC)
-		now = now + delta
+		#UTC = 8
+		#delta = datetime.timedelta(hours=UTC)
+		#now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
 		hours_back = 24

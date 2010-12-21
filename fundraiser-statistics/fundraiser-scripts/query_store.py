@@ -173,7 +173,7 @@ class query_store:
 				return 7
 			elif metric_name == 'click_rate':
 				return 8
-			elif metric_name == 'conversion_rate':
+			elif metric_name == 'completion_rate':
 				return 9
 			elif metric_name == 'don_per_imp':
 				return 10

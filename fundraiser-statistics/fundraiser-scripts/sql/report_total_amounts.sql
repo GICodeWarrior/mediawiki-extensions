@@ -13,18 +13,17 @@ sum(if(utm_campaign REGEXP 'EM' or  utm_campaign REGEXP 'RE' , converted_amount 
 sum(if(utm_source REGEXP '.rpp'  ,1 ,0))*0.5*8*10 as recurring_guess,
 
 sum(not isnull(contribution_tracking.contribution_id)) /count(*) as completion_rate,
-sum(converted_amount) AS amount,
-sum(if(right(utm_source,2)='pp' and contribution_tracking.contribution_id,1,0))/sum(if(right(utm_source,2)='cc' and contribution_tracking.contribution_id,1,0)) as pp_over_cc_dons,
+-- sum(if(right(utm_source,2)='pp' and contribution_tracking.contribution_id,1,0))/sum(if(right(utm_source,2)='cc' and contribution_tracking.contribution_id,1,0)) as pp_over_cc_dons,
 sum(if(right(utm_source,2)='pp',1,0)) as pp_clicks,
 sum(if(right(utm_source,2)='pp' and contribution_tracking.contribution_id,1,0))  as pp_donations,
 sum(if(right(utm_source,2)='pp' and contribution_tracking.contribution_id,1,0))/sum(if(right(utm_source,2)='pp',1,0)) as pp_completion,
+sum(if(right(utm_source,2)='pp',converted_amount,0)) as pp_amt,
+max(if(right(utm_source,2)='pp',converted_amount,0)) as max_pp_amt,
 sum(if(right(utm_source,2)='cc',1,0)) as cc_clicks,
 sum(if(right(utm_source,2)='cc' and contribution_tracking.contribution_id,1,0)) as cc_donations,
 sum(if(right(utm_source,2)='cc' and contribution_tracking.contribution_id,1,0))/sum(if(right(utm_source,2)='cc',1,0)) as cc_completion,
 sum(if(right(utm_source,2)='cc',converted_amount,0)) as cc_amt,
-sum(if(right(utm_source,2)='pp',converted_amount,0)) as pp_amt,
 max(if(right(utm_source,2)='cc',converted_amount,0)) as max_cc_amt,
-max(if(right(utm_source,2)='pp',converted_amount,0)) as max_pp_amt,
 avg(converted_amount) as average,
 max(converted_amount) as max_amount
 
