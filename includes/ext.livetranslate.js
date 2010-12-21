@@ -118,7 +118,6 @@
 				
 				if ( chunkSize < currentMaxSize ) {
 					element.replaceWholeText( chunks.join() );
-					runningJobs--;
 					handleTranslationCompletion( targetLang );
 				}
 				else {
