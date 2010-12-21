@@ -48,6 +48,13 @@ $messages['ast'] = array(
 	'opensearchxml-desc' => "La interface qu'[http://www.opensearch.org OpenSearch] XML apurre pa estrayer testu",
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'opensearchxml-desc' => 'Текст өлөштәре өсөн [http://www.opensearch.org OpenSearch] XML интерфейсы менән тәьмин итә',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
