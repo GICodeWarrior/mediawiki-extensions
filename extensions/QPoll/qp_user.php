@@ -185,10 +185,10 @@ class qp_Setup {
 
 	static function clearCache() {
 		if ( self::$cache_control ) {
-			global $wgMemc;
+			global $parserMemc;
 			$parserCache = ParserCache::singleton();
 			$key = $parserCache->getKey( self::$article, self::$user );
-			$wgMemc->delete( $key );
+			$parserMemc->delete( $key );
 			self::$article->doPurge();
 		}
 	}
