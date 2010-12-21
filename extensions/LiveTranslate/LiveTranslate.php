@@ -57,7 +57,8 @@ $wgHooks['ArticleSaveComplete'][] = 'LiveTranslateHooks::onArticleSaveComplete';
 $wgHooks['OutputPageBeforeHTML'][] = 'LiveTranslateHooks::onOutputPageBeforeHTML';
 
 $egLTJSMessages = array(
-
+	'livetranslate-button-translate',
+	'livetranslate-button-translating',
 );
 
 // For backward compatibility with MW < 1.17.

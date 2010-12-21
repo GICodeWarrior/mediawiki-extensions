@@ -11,6 +11,8 @@
 	
 	var runningJobs = 0;
 	
+	var textAreaElement = document.createElement( 'textarea' );
+	
 	// Compatibility with pre-RL code.
 	// Messages will have been loaded into wgPushMessages.
 	if ( typeof mediaWiki === 'undefined' ) {
@@ -28,7 +30,7 @@
 	}
 	
 	$('#livetranslatebutton').click(function() {
-		$( this ).attr( "disabled", true );		
+		$( this ).attr( "disabled", true ).text( mediaWiki.msg( 'livetranslate-button-translating' ) );		
 		
 		var words = getSpecialWords();
 		var newLang = $( '#livetranslatelang' ).val();
@@ -122,7 +124,8 @@
 				
 				if ( chunkSize < currentMaxSize ) {
 					// If the current chunk was smaller then the max size, node translation is complete, so update text.
-					element.replaceWholeText( chunks.join() );
+					textAreaElement.innerHTML = chunks.join(); // This is a hack to decode quotes.
+					element.replaceData( 0, element.length, textAreaElement.value );
 					handleTranslationCompletion( targetLang );
 				}
 				else {
@@ -136,7 +139,7 @@
 	function handleTranslationCompletion( targetLang ) {
 		if ( !--runningJobs ) {
 			currentLang = targetLang;
-			$( '#livetranslatebutton' ).attr( "disabled", false );				
+			$( '#livetranslatebutton' ).attr( "disabled", false ).text( mediaWiki.msg( 'livetranslate-button-translate' ) );				
 		}
 	}
 	
