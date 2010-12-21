@@ -20,6 +20,7 @@ $messages['en'] = array(
 	'livetranslate-translate-to' => 'Translate this page to',
 	'livetranslate-button-translate' => 'Translate',
 	'livetranslate-button-translating' => 'Translating...',
+	'livetranslate-button-revert' => 'Show original',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

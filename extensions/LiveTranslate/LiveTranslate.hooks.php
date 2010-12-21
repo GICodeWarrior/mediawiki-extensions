@@ -48,7 +48,13 @@ final class LiveTranslateHooks {
 						'button',
 						array( 'id' => 'livetranslatebutton' ),
 						wfMsg( 'livetranslate-button-translate' )
-					)
+					) .
+					'&#160;' . 
+					Html::element(
+						'button',
+						array( 'id' => 'ltrevertbutton', 'style' => 'display:none' ),
+						wfMsg( 'livetranslate-button-revert' )
+					)					
 				) .
 				'</span>'
 			);
