@@ -478,6 +478,7 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'contributiontracking-desc' => 'Praćenje doprinosa za Wikimedijino prikupljanje sredstava',
@@ -486,7 +487,10 @@ $messages['hr'] = array(
 	'contrib-tracking-error-text' => 'Neispravno podnošenje obrasca',
 	'contrib-tracking-submitting' => 'Podnošenje obrascu za plaćanje...',
 	'contrib-tracking-continue' => 'Ako niste automatski preusmjereni, kliknite na tipku kako biste dovršili svoju donaciju s PayPalom.',
+	'contrib-tracking-redirect' => 'Bit ćete automatski preusmjereni na PayPal za dovršetak vaše donacije.',
 	'contrib-tracking-button' => 'Nastavi',
+	'contrib-tracking-item-name-onetime' => 'Jednokratna donacija',
+	'contrib-tracking-item-name-recurring' => 'Mjesečna ponavljajuća donacija',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
