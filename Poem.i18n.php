@@ -61,6 +61,13 @@ $messages['az'] = array(
 	'poem-desc' => 'Şeirlərin formatlaşdırılması üçün <code>&lt;poem&gt;</code> teqini əlavə edir',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'poem-desc' => 'Шиғырҙарҙы форматлау өсөн <code>&lt;poem&gt;</code> билдәһен өҫтәй',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
