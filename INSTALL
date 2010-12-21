@@ -13,3 +13,11 @@ Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php
 require_once( "$IP/extensions/LiveTranslate/LiveTranslate.php" );
 
 After this you need to run MediaWikis update script which can be found at /maintenance/update.php.
+
+To be able to actually use Google Translate, you need to [https://code.google.com/apis/console get an API key] and
+add it to your [[LocalSettings.php]] file AFTER the inclusion of the extension.
+
+<source lang="php">
+# Google API key
+$egGoogleApiKey = 'INSERT-YOUR-KEY-HERE';
+</source>
