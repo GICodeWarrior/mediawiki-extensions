@@ -194,15 +194,8 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                     // Wikipedia and there is no text area present in the iFrame, then close the application 
                     // and load the updated Wikipedia page. 
                     if (wbPublishDisplayPane.isContentMovedToWikipedia && (noOfTextAreas === 0)) {
-                        var isFeedbackNeeded = window.confirm(wbLocal.thanksMessage);
-                        // show the feedback window if the user wants to give feedback
-                        if (isFeedbackNeeded) {
-                            wbFeedback.onHideCallback = reloadWikiPage;
-                            wbFeedback.show();
-                        }
-                        else {
-                            reloadWikiPage();
-                        }
+                        //show WikiBhasha share exit popup.
+                        wbShareOnExternSystem.show();
                     }
 
                     // closes the application with an alert message.

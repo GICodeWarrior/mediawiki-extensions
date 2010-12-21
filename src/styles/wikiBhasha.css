@@ -90,6 +90,38 @@ TD
 	color:Black;
 	direction:ltr;
 }
+#wbshareOnExternSystemWindow 
+{
+    z-index: 10000;
+    position: absolute;	     
+	margin:0 auto;
+	width:300px;
+	text-align:left;
+	font-size:12px;
+	color:Black;
+	direction:ltr;
+}
+#wbSWESContent {
+	width:400px;
+	background-image:url('../images/selectionBg.png');
+	background-position:50% top;
+	background-repeat:no-repeat;
+	float:left;
+    font-size:12px;
+}
+#wbSWESFooterDiv {
+	height:7px;
+	background-image:url('../images/selectionBgBottom.png');
+	background-repeat:no-repeat;
+	background-position:bottom;
+	float:left;
+	font-size:2px;
+}
+#wbExitContent
+{
+    text-align:center;
+    clear:both;
+}
 #wbTutorialWindow 
 {
 	visibility: visible;
@@ -333,6 +365,19 @@ a.wbSearchLink:hover {
 	font-size:1px;
 }
 .wbSearchExit:hover {
+	background-position: -198px -22px;
+}
+.wbSWESExit {
+	display:block;
+	width:22px;
+	height:22px;
+	background: url('../images/TopRightIconSpriteSquare.png') no-repeat -198px 0px;
+	float:left;
+	margin:5px 10px 0px 5px;
+	cursor:pointer;
+	font-size:1px;
+}
+.wbSWESExit:hover {
 	background-position: -198px -22px;
 }
 a.wbExit {
@@ -719,4 +764,12 @@ ul.tabs li.active, ul.tabs li:hover  {
     text-align:center;
     border-top: 1px solid #999;
     padding:2px;
+}
+.shareIcons
+{
+    width:17px;
+    height:17px;
+    padding-left:2px;
+    float:right;
+    text-align:left;
 }

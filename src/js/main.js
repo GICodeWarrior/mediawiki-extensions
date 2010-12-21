@@ -220,30 +220,33 @@ wikiBhasha.loadApplicationRequiredFiles = function() {
 					"js/core/languageSelectionWindow.js",
 					"js/core/utils.js"],
 
-		//files required for loading complete application
-			reqJSForCoreApplication = ["js/jsLib/jquery-ui-1.7.2.min.js",
-					"js/jsLib/jquery.contextmenu.js",
-					"js/jsLib/jquery.shortcut.js",
-					"js/extern/wikipediaInterface.js",
-					"js/extern/languageServicesInterface.js",
-					"js/extern/transliterationServicesInterface.js",
-					"js/extern/loggerInterface.js",
-					"js/core/configurations.js",
-					"js/core/configurations.templateMappers.js",
-					"js/core/globalSettings.js",
-					"js/core/historyManagement.js",
-					"js/core/mainWindow.js",
-					"js/core/paneManagement.js",
-					"js/core/scratchpadWindow.js",
-					"js/core/feedbackWindow.js",
-					"js/core/searchWindow.js",
-					"js/core/wikiMarkupEditWindow.js",
-					"js/core/templateAndLinkTranslator.js",
-					"js/core/themes.js",
-					"js/core/utils.js",
-					"js/core/wikiModeConverters.js",
-					"js/core/chineseLangSelection.js",
-					"js/core/wikiParser.js"],
+
+        //files required for loading complete application
+            reqJSForCoreApplication = ["js/jsLib/jquery-ui-1.7.2.min.js",
+                    "js/jsLib/jquery.contextmenu.js",
+                    "js/jsLib/jquery.shortcut.js",
+                    "js/extern/wikipediaInterface.js",
+                    "js/extern/languageServicesInterface.js",
+                    "js/extern/transliterationServicesInterface.js",
+                    "js/extern/loggerInterface.js",
+                    "js/extern/shareOnExternSystems.js",
+                    "js/core/configurations.js",
+                    "js/core/configurations.templateMappers.js",
+                    "js/core/globalSettings.js",
+                    "js/core/historyManagement.js",
+                    "js/core/mainWindow.js",
+                    "js/core/paneManagement.js",
+                    "js/core/scratchpadWindow.js",
+                    "js/core/shareWikiBhasha.js",
+                    "js/core/feedbackWindow.js",
+                    "js/core/searchWindow.js",
+                    "js/core/wikiMarkupEditWindow.js",
+                    "js/core/templateAndLinkTranslator.js",
+                    "js/core/themes.js",
+                    "js/core/utils.js",
+                    "js/core/wikiModeConverters.js",
+                    "js/core/chineaseLangSelection.js",
+                    "js/core/wikiParser.js"],
 
 		//wikiBhasha default theme
 			themeCss = ["styles/themes/wikiBhasha.blue.css"];
@@ -333,30 +336,30 @@ wikiBhasha.loadLocalizedStrings = function() {
 // load jquery library if it is not downloaded yet
 // We require separate function for loading jQuery because this should not use any jQuery methods by itself.
 // NOTE: Never use any jQuery functions within this function.
-wikiBhasha.loadJQuery = function(callback) {
-	if (typeof baseUrl != "undefined") {
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-		//check whether file is loaded or not if so, call the the 'callback' function
-		//IE fix, in IE 'readyState' event is fired once the file is loaded
-		if (script.readyState) {
-			script.onreadystatechange = function() {
-				if (script.readyState == "loaded" ||
-					script.readyState == "complete") {
-					script.onreadystatechange = null;
-					callback();
-				}
-			};
-		}
-		//other browsers, 'onload' event will be fired
-		else {
-			script.onload = function() {
-				callback();
-			};
-		}
-		script.src = baseUrl + "js/jsLib/jquery-1.3.2.min.js";
-		document.body.appendChild(script);
-	}
+wikiBhasha.loadJQuery = function (callback) {
+    if (typeof baseUrl != "undefined") {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        //check whether file is loaded or not if so, call the the 'callback' function
+        //IE fix, in IE 'readyState' event is fired once the file is loaded
+        if (script.readyState) {
+            script.onreadystatechange = function () {
+                if (script.readyState == "loaded" ||
+                    script.readyState == "complete") {
+                    script.onreadystatechange = null;
+                    callback();
+                }
+            };
+        }
+        //other browsers, 'onload' event will be fired
+        else {
+            script.onload = function () {
+                callback();
+            };
+        }
+        script.src = baseUrl + "js/jsLib/jquery-1.3.2.min.js";
+        document.body.appendChild(script);
+    }
 };
 
 //load jquery library if it is not loaded
