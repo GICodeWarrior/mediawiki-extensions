@@ -118,6 +118,14 @@ $messages['id'] = array(
 	'livetranslate-button-translating' => 'Menerjemahkan ...',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'livetranslate-button-translate' => 'Traduci',
+	'livetranslate-button-translating' => 'Traduzione in corso...',
+);
+
 /** Japanese (日本語)
  * @author Ohgi
  */
@@ -142,6 +150,9 @@ $messages['mk'] = array(
  */
 $messages['pms'] = array(
 	'livetranslate-desc' => 'A abìlita viragi dal viv ëd contnù ëd pàgine an dovrand ël sërvissi Google Translate',
+	'livetranslate-translate-to' => 'Vòlta sta pàgina an',
+	'livetranslate-button-translate' => 'Traduv',
+	'livetranslate-button-translating' => 'Volté...',
 );
 
 /** Portuguese (Português)
