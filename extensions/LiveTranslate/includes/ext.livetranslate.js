@@ -31,11 +31,7 @@
 		}
 	}
 	
-	$('#ltrevertbutton').click(function() {
-		$( '#bodyContent' ).html( originalHtml );
-	});
-	
-	$('#livetranslatebutton').click(function() {
+	initiateTranslating = function() {
 		if ( originalHtml === false ) {
 			originalHtml = $( '#bodyContent' ).html();
 		}		
@@ -66,7 +62,17 @@
 				}
 			);			
 		}
-	});
+	}
+	
+	showOriginal = function() {
+		currentLang = window.sourceLang;
+		$( '#bodyContent' ).html( originalHtml );
+		$('#livetranslatebutton').click( initiateTranslating );	
+		$('#ltrevertbutton').click( showOriginal );	
+	}	
+	
+	$('#livetranslatebutton').click( initiateTranslating );	
+	$('#ltrevertbutton').click( showOriginal );	
 	
 	function getSpecialWords() {
 		var words = [];
