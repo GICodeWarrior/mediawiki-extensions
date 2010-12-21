@@ -55,6 +55,13 @@ $messages['ast'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'mwsearch-desc' => 'MWSearch плагины',
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */

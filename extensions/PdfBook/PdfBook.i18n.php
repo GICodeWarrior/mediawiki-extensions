@@ -153,6 +153,13 @@ $messages['id'] = array(
 	'pdfbook-desc' => 'Menyusun suatu buku dari halaman dalam kategori dan mengekspornya sebagai buku PDF',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'pdfbook-action' => 'Stampa in formato PDF',
+);
+
 /** Japanese (日本語)
  * @author Iwai.masaharu
  * @author 青子守歌

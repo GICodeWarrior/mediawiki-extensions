@@ -2230,6 +2230,7 @@ $messages['hr'] = array(
 	'fundraiserstats-tab-averages' => 'Prosjeci (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumi (USD)',
 	'fundraiserstats-tab-ytd' => 'Od početka godine (USD)',
+	'fundraiserstats-instructions' => 'Da biste pogledali statistiku za neki dan, pomaknite kursor iznad prikaza za taj dan. Na grafikonu je svaka godina prikazana drugom bojom.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

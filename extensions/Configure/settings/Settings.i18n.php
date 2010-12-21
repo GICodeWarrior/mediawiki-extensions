@@ -21546,8 +21546,11 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'configure-setting-wgArticleRobotPolicies-key' => 'בלאַטנאָמען:',
+	'configure-setting-wgExtraLanguageNames-key' => 'שפּראַך קאָד',
 	'configure-setting-wgExtraLanguageNames-value' => 'נאָמען',
+	'configure-setting-wgSpecialPageGroups-key' => 'גרופע',
 	'configure-setting-wgDebugLogGroups-value' => 'טעקע',
+	'configure-setting-wgXhtmlNamespaces-key' => 'נאָמענטייל',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

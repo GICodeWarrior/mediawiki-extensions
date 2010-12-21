@@ -41,6 +41,13 @@ $messages['ast'] = array(
 	'trustedxff-desc' => "Xestión d'una llista de direiciones proxy d'enfotu ([http://meta.wikimedia.org/wiki/XFF_project proyeutu XFF])",
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'trustedxff-desc' => 'Ышаныслы прокси адрестар исемлеген эшкәртеү ([http://meta.wikimedia.org/wiki/XFF_project XFF проекты])',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

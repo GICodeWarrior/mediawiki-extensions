@@ -11502,13 +11502,14 @@ $messages['wuu'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'configure-desc-group' => 'גרופע',
 	'configure-js-remove' => 'אויסמעקן',
 	'configure-old-changes' => 'ענדערונגען',
+	'configure-section-pages' => 'בלעטער',
 	'configure-section-email' => 'ע-פאסט',
 	'configure-section-enotif' => 'ע־פאסט אָנזאָג',
 	'configure-section-localization' => 'לאקאַליזאַציע',
 	'configure-section-timezone' => 'צײַט זאנע:',
-	'configure-section-zh-conversion' => 'כינעזיש־פֿאַרוואַנדלונג',
 	'configure-section-css-js' => 'CSS און JavaScript',
 	'configure-section-namespaces' => 'נאָמענטיילן',
 	'configure-section-category' => 'קאַטעגאָריעס',
@@ -11518,7 +11519,9 @@ $messages['yi'] = array(
 	'configure-section-copyright' => 'קאפירעכט',
 	'configure-view' => 'זען',
 	'configure-throttle-action-edit' => 'רעדאַקטירן',
+	'configure-throttle-action-move' => 'באַװעגן',
 	'configure-throttle-action-rollback' => 'צוריקדרייען',
+	'configure-throttle-group' => 'טיפ',
 	'configure-condition-description-3' => 'ע-פּאָסט באַשטעטיקט',
 );
 

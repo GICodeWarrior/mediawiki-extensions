@@ -151,6 +151,13 @@ $messages['bn'] = array(
 	'languageselector-setlang' => 'স্থাপন',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Freeyak
+ */
+$messages['bo'] = array(
+	'languageselector' => 'སྐད་རིགས།',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

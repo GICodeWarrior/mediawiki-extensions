@@ -81,9 +81,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  */
 $messages['fi'] = array(
-	'svgzoom-desc' => 'Lisää vierityksen ja loitonnus/lähennysominaisuudet MediaWikiin katsottaessa SVG-tiedostoja',
+	'svgzoom-desc' => 'Lisää vierityksen ja loitonnus/lähennysominaisuudet MediaWikiin katsottaessa SVG-tiedostoja.',
 );
 
 /** French (Français)

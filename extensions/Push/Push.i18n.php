@@ -142,6 +142,17 @@ $messages['be-tarask'] = array(
 	'push-tab-files-override' => 'Гэтыя файлы ўжо існуюць: $1',
 	'push-tab-template-override' => 'Гэтыя шаблёны ўжо існуюць: $1',
 	'special-push' => 'Распаўсюдзіць старонкі',
+	'push-special-description' => 'Гэтая старонка дазваляе Вам распаўсюджваць зьмест адной ці болей старонак на адну ці некалькі іншых вікі, якія выкарыстоўваюць MediaWiki.
+
+Для распаўсюджваньня старонак, увядзіце назвы ў тэкставым полі ніжэй, адну назву ў радок і націсьніце распаўсюдзіць усе. Гэта можа заняць некаторы час для выкананьня.',
+	'push-special-pushing-desc' => 'Распаўсюджваньне $2 {{PLURAL:$2|старонкі|старонак|старонак}} у $1…',
+	'push-special-button-text' => 'Распаўсюдзіць старонкі',
+	'push-special-target-is' => 'Мэтавая вікі: $1',
+	'push-special-select-targets' => 'Мэтавыя вікі:',
+	'push-special-item-pushing' => '$1: Распаўсюджваньне',
+	'push-special-item-completed' => '$1: Распаўсюджваньне скончанае',
+	'push-special-item-failed' => '$1: Памылка распаўсюджваньня: $2',
+	'push-special-push-done' => 'Распаўсюджваньне скончанае',
 );
 
 /** Breton (Brezhoneg)

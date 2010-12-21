@@ -71,6 +71,14 @@ $messages['az'] = array(
 	'nstab-comments' => 'İzahat',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'commentpages-desc' => 'Төп исемдәр арауығы өсөн аңлатма биттәре',
+	'nstab-comments' => 'Аңлатма',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

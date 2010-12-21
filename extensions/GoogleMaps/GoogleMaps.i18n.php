@@ -670,6 +670,55 @@ $wgGoogleMapsMessages['bn'] = array(
 	'gm-search' => 'অনুসন্ধান',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Freeyak
+ */
+$wgGoogleMapsMessages['bo'] = array(
+	'gm-load-map' => 'ས་ཁྲ་ཕྱེ་བ།',
+	'gm-clip-result' => 'ས་ཁྲར་སྣོན་པ།',
+	'gm-no-results' => 'དགོངས་པ་མ་ཚོམས། རྙེད་མ་སོང་།',
+	'gm-searching' => 'འཚོལ་བཞིན་པ་་་་',
+	'gm-map' => 'ས་ཁྲ།',
+	'gm-note' => 'དྲན་སྐུལ། "Load map" དང་ "save" ཡང་ན་ "preview" མ་ནན་པའི་སྔོན་དུ་གང་ཞིག་དྲ་ངོས་སུ་འཇོག་འདོད་པ་འདྲ་གཤུ་བྱེད་རྒྱུ་མ་བརྗེད།',
+	'gm-are-you-sure' => 'ངོ་མ་ཡིན་ནམ།',
+	'gm-clear-all-points' => 'དམིགས་འབེན་ཆ་ཚང་གསུབ་པ།',
+	'gm-refresh-points' => 'དམིགས་འབེན་བསྐྱར་ཞིབ།',
+	'gm-width' => 'ཁ་ཞེང་།',
+	'gm-height' => 'མཐོ་ཚད།',
+	'gm-selector-control' => 'ས་ཁྲའམ་འཁོར་སྐར་གདམ་ང།',
+	'gm-zoom-control' => 'ལམ་སྟོན་མཉེན་ཆས།',
+	'gm-large' => 'ཆེན་པོ།',
+	'gm-medium' => 'འབྲིང་།',
+	'gm-small' => 'ཆུང་བ།',
+	'gm-no-zoom-control' => 'ཅི་ཡང་མིན།',
+	'gm-yes' => 'རེད།',
+	'gm-no' => 'མ་རེད།',
+	'gm-search-preface' => 'ས་ཁྲར་མནན་ཏེ་འགྲོ་ཡུལ་སྣོན་པའམ་ཡང་ན་ས་ཆ་དང་གྲོང་ཁྱེར། སྡོད་གནས་སོགས་བརྗེ་བ།',
+	'gm-geocode-preface' => 'ས་ཁྲར་མནན་ཏེ་དམིགས་ཡུལ་ཁ་སྣོན་རྒྱག་པའམ། ཡང་ན་ས་ཆ་དང་གྲོང་ཁྱེར། སྡོད་གནས་སོགས་བརྗེ་བ།',
+	'gm-no-search-preface' => 'ས་ཁྲར་མནན་ཏེ་དམིགས་ཡུལ་ཁ་སྣོན་རྒྱག་པ།',
+	'gm-search' => 'འཚོལ་བ།',
+	'gm-clear-search' => 'བཙལ་འབྲས་གསུབ་པ།',
+	'gm-meters' => 'རྨི་ཚད།',
+	'gm-miles' => 'མ་ལེ།',
+	'gm-editing-path' => 'ས་ཁྲར་མནན་ཏེ་ལམ་ཁ་འདིར་ས་རྟགས་མང་དུ་སྣོན་པ།',
+	'gm-save-path' => 'ཉར་བ།',
+	'gm-edit-path' => 'ས་ཚུགས་སྣོན་པ།',
+	'gm-show-path' => 'ས་ཚུགས་སྟོན་པ།',
+	'gm-color-path' => 'ཁ་ཏོག་བརྗེ་བ།',
+	'gm-line-color' => 'ཐུག་མདོག',
+	'gm-opacity' => 'ལམ་ཆད།',
+	'gm-line-width' => 'ཞེང་ཚད།',
+	'gm-make-map' => 'ས་ཁྲ་བཟོ་བ།',
+	'gm-hide-map' => 'ས་ཁྲ་སྦས་པ',
+	'gm-back' => 'ཕྱིར་ནུར།',
+	'gm-kml-include-link' => 'ས་ཁྲར་སྣོན་པ།',
+	'gm-kml-loading' => 'འདྲེན་བཞིན་པ་་་',
+	'gm-kml-export' => 'ས་ཁྲ་འདི་KML དུ་ཕྱི་འདྲེན་བྱེད་པ།',
+	'gm-earth' => 'སའི་གོ་ལ།',
+	'gm-moon' => 'ཟླ་བ།',
+	'gm-mars' => 'མིག་དམར།',
+);
+
 /** Breton (Brezhoneg)
  * @author <anonymous>
  * @author Fulup

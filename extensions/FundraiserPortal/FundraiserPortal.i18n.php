@@ -845,6 +845,23 @@ $messages['oc'] = array(
 	'fundraiserportal-tourmaline-close' => 'Amagar aquò ara',
 );
 
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Aalam
+ */
+$messages['pa'] = array(
+	'fundraiserportal' => 'ਫੰਡ ਉਗਰਾਹੀ ਸੱਥ',
+	'fundraiserportal-desc' => 'ਬਾਹੀ ਦੇ ਉੱਤੇ "ਦਾਨ ਦਿਉ ਜੀ" ਸੱਥ ਸ਼ਾਮਲ ਕਰੋ।',
+	'fundraiserportal-plain-button' => 'ਵਿਕਿਪੀਡਿਆ ਦਾ ਸਾਥ ਦਿਓ!',
+	'fundraiserportal-ruby-button' => 'ਹੁਣੇ ਦਾਨ ਦਿਓ',
+	'fundraiserportal-rubytext-button' => 'ਹੁਣੇ ਦਾਨ ਦਿਓ',
+	'fundraiserportal-rubytext-message' => 'ਦਿੱਤਾ ਗਿਆ ਦਾਨ ਸਾਨੂੰ ਵਿਕਿਪੀਡਿਆ ਨੂੰ ਹਰੇਕ ਲਈ ਮੁਫ਼ਤ/ਮੁਕਤ ਰੱਖਣ ਲਈ ਮੱਦਦ ਕਰਦਾ ਹੈ।',
+	'fundraiserportal-rubytext-close' => 'ਹੁਣ ਤੋਂ ਇਹ ਓਹਲੇ ਰੱਖੋ',
+	'fundraiserportal-sapphire-button' => 'ਹੁਣੇ ਦਾਨ ਦਿਓ',
+	'fundraiserportal-tourmaline-button' => 'ਹੁਣੇ ਦਾਨ ਦਿਓ',
+	'fundraiserportal-tourmaline-message' => 'ਦਿੱਤਾ ਗਿਆ ਦਾਨ ਸਾਨੂੰ ਵਿਕਿਪੀਡਿਆ ਨੂੰ ਹਰੇਕ ਲਈ ਮੁਫ਼ਤ/ਮੁਕਤ ਰੱਖਣ ਲਈ ਮੱਦਦ ਕਰਦਾ ਹੈ।',
+	'fundraiserportal-tourmaline-close' => 'ਹੁਣ ਤੋਂ ਇਹ ਓਹਲੇ ਰੱਖੋ',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe
