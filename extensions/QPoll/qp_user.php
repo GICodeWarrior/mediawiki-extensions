@@ -185,13 +185,14 @@ class qp_Setup {
 
 	static function clearCache() {
 		if ( self::$cache_control ) {
+			global $wgMemc
 			$parserCache = ParserCache::singleton();
 			$key = $parserCache->getKey( self::$article, self::$user );
-			$parserCache->mMemc->delete( $key );
+			$wgMemc->delete( $key );
 			self::$article->doPurge();
 		}
 	}
-	
+
 	static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
 		global $wgCookiePrefix;
 		global $qp_enable_showresults; // deprecated since v0.6.5
