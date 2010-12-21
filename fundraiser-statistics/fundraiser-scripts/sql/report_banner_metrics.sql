@@ -63,5 +63,5 @@ group by 1,2) as ecomm
 on ecomm.banner = lp.utm_source and ecomm.hr = lp.hr
 
 group by 1,2,3,4
-having impressions > 100000
+having impressions > 100000 and donations > 50
 order by 1 desc;
