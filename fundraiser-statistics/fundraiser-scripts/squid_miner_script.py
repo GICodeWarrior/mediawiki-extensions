@@ -76,50 +76,6 @@ Insert a new test run and get the id.
 
 """
 
-fname_parts = logFileName.split('-')
-
-year = int(fname_parts[1])
-month = int(fname_parts[2])
-day = int(fname_parts[3])
-hour = int(fname_parts[4][0:2])
-min = int(fname_parts[6][0:2])
-
-# Is this an afternoon log?
-afternoon = (fname_parts[4][2:4] == 'PM')
-
-if afternoon and hour < 12:
-	hour = hour + 12
-
-next_hr = mh.getNextHour(year, month, day, hour)
-log_start =  str(year) + '-' + str(month) + '-' + str(day) + ' ' + str(hour) + ':' + str(min) + ':00'
-log_end =  str(next_hr[0]) + '-' + str(next_hr[1]) + '-' + str(next_hr[2]) + ' ' + str(next_hr[3]) + ':' + str(min) + ':00'
-"""
-try:
-	val = '(convert(\'' + log_start + '\',datetime), convert(\'' + log_end + '\',datetime), \'Auto-Generated\');'
-	cur.execute(insertStmt_tr + val)
-except:
-	db.rollback()
-	sys.exit("Database Interface Exception: Could not execute statement:\n" + insertStmt_tr + val)
-
-try:
-	cur.execute(selectStmt_tr)
-	# results = cur.fetchall()
-	# for row in results:
-	row = cur.fetchone()
-	run_id = int(row[0])
-
-except:
-	db.rollback()
-	sys.exit("Database Interface Exception: Could not execute statement:\n" + selectStmt_tr)
-
-"""
-
-"""
-
-A log_run record has been created for this log
-call the mining scripts for the respective
-
-"""
 run_id = 0
 if mine_option == 'l':
 	mlp.mine_landing_pages(run_id, logFileName, db, cur)

@@ -1,7 +1,7 @@
 use faulkner;
 
-set @s = '20101220000000';
-set @e = '20101220100000';
+set @s = '20101220160000';
+set @e = '20101221020000';
 
 select 
 DATE_FORMAT(on_minute, '%Y-%m-%d %H') as stamp,

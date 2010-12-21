@@ -9,7 +9,7 @@
 // Authenticate form
 $pwd_key=$_POST["pwd"];
 
-if ($pwd_key != "fundra1535TaT5") {
+if ($pwd_key != "angelface") {
 	$message  = "Invalid Key.\n";
 	die($message);
 }

@@ -465,7 +465,7 @@ class BannerLPReporting(FundraiserReporting):
 		except:
 			self.db.rollback()
 			sys.exit("Database Interface Exception:\n" + err_msg)
-
+		
 		""" Convert Times to Integers """
 		# Find the earliest date
 		max_i = 0
@@ -537,9 +537,9 @@ class BannerLPReporting(FundraiserReporting):
 		
 		# Current date & time
 		now = datetime.datetime.now()
-		#UTC = 8
-		#delta = datetime.timedelta(hours=UTC)
-		#now = now + delta
+		UTC = 8
+		delta = datetime.timedelta(hours=UTC)
+		now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
 		hours_back = 24
