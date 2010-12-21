@@ -81,18 +81,16 @@
 	}
 	
 	function translateElement( element, sourceLang, targetLang ) {
-		if ( element.children().length == 0 ) {
-			
-		}
-		else {
-			element.children().each( function() {
-				if ( $.inArray( $( this ).attr( 'id' ), [ 'livetranslatediv', 'siteSub', 'jump-to-nav' ] ) == -1
-					&& $.inArray( $( this ).attr( 'class' ), [ 'notranslate', 'printfooter' ] ) == -1
-					&& $( this ).text().trim().length > 0 ) {
-					translateChunk( $( this ).text(), [], 500, sourceLang, targetLang, $( this ) );
-				}
-			} );
-		}
+		element.contents().each( function() {
+			if ( this.nodeType == 3 ) {
+				translateChunk( this.wholeText, [], 500, sourceLang, targetLang, this );
+			}
+			else if ( $.inArray( $( this ).attr( 'id' ), [ 'livetranslatediv', 'siteSub', 'jump-to-nav' ] ) == -1
+				&& $.inArray( $( this ).attr( 'class' ), [ 'notranslate', 'printfooter' ] ) == -1
+				&& $( this ).text().trim().length > 0 ) {
+				translateElement( $( this ), sourceLang, targetLang );
+			}
+		} );
 	}
 	
 	function translateChunk( untranslatedText, chunks, currentMaxSize, sourceLang, targetLang, element ) {
@@ -103,20 +101,13 @@
 			sourceLang,
 			targetLang,
 			function(result) {
-				if ( result.error ) {
-					if ( result.error.code == '400' ) {
-						translateChunk( untranslatedText, chunks, Math.ceil( currentMaxSize / 2 ), sourceLang, targetLang, element );
-					}
+				chunks.push( result.translation );
+				
+				if ( chunkSize < currentMaxSize ) {
+					element.replaceWholeText( chunks.join() );
 				}
 				else {
-					chunks.push( result.translation );
-					
-					if ( chunkSize < currentMaxSize ) {
-						element.text( chunks.join() ); // TODO: set actual content
-					}
-					else {
-						translateChunk( untranslatedText.substr( chunkSize ), chunks, currentMaxSize, sourceLang, targetLang, element );
-					}
+					translateChunk( untranslatedText.substr( chunkSize ), chunks, currentMaxSize, sourceLang, targetLang, element );
 				}
 			}
 		);	
