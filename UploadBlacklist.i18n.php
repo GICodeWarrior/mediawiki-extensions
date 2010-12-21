@@ -47,6 +47,13 @@ $messages['arz'] = array(
 	'uploadblacklist-desc' => 'يزود وظيفه بلاكليست للرفع',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'uploadblacklist-desc' => 'Тейәүҙәр ҡара исемлеген ҡулланыу мөмкинлеген өҫтәй',
+);
+
 /** Bavarian (Boarisch)
  * @author Wikifan
  */
