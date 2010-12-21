@@ -56,16 +56,5 @@ sftp rfaulk@hume.wikimedia.org:/a/static/uncompressed/udplogs/bannerImpressions-
 
 cd ..
 
-python squid_miner_script.py l ./logs/landingpages-$T* 1>./mine_log/log-$T.txt 2>./mine_log/log-$T.txt
-python squid_miner_script.py i ./logs/bannerImpressions-$T* 1>./mine_log/log-$T.txt 2>./mine_log/log-$T.txt
-
-cd /home/rfaulk/bash-scripts
-
-# Run the hourly test
-#./run_test.sh
-
-# start_time="20101110000000"
-# end_time="20101110010000"
-# banner="testing50_2010"
-#
-# python data_aggregation_script.py start_time end_time banner
+python squid_miner_script.py l ./logs/landingpages-$T* 1>./mine-log/log-banimp-$T.txt 2>./mine-log/log-banimp-$T.txt
+python squid_miner_script.py i ./logs/bannerImpressions-$T* 1>./mine-log/log-lp-$T.txt 2>./mine-log/log-lp-$T.txt
