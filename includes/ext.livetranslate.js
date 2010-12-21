@@ -13,6 +13,8 @@
 	
 	var textAreaElement = document.createElement( 'textarea' );
 	
+	var originalHtml = false;
+	
 	// Compatibility with pre-RL code.
 	// Messages will have been loaded into wgPushMessages.
 	if ( typeof mediaWiki === 'undefined' ) {
@@ -29,7 +31,15 @@
 		}
 	}
 	
+	$('#ltrevertbutton').click(function() {
+		$( '#bodyContent' ).html( originalHtml );
+	});
+	
 	$('#livetranslatebutton').click(function() {
+		if ( originalHtml === false ) {
+			originalHtml = $( '#bodyContent' ).html();
+		}		
+		
 		$( this ).attr( "disabled", true ).text( mediaWiki.msg( 'livetranslate-button-translating' ) );		
 		
 		var words = getSpecialWords();
@@ -51,8 +61,8 @@
 				function( data ) {
 					if ( data.translations ) {
 						replaceSpecialWords( data.translations );
-						requestGoogleTranslate( currentLang, newLang );
 					}
+					requestGoogleTranslate( currentLang, newLang );
 				}
 			);			
 		}
@@ -139,7 +149,8 @@
 	function handleTranslationCompletion( targetLang ) {
 		if ( !--runningJobs ) {
 			currentLang = targetLang;
-			$( '#livetranslatebutton' ).attr( "disabled", false ).text( mediaWiki.msg( 'livetranslate-button-translate' ) );				
+			$( '#livetranslatebutton' ).attr( "disabled", false ).text( mediaWiki.msg( 'livetranslate-button-translate' ) );
+			$('#ltrevertbutton').css( 'display', 'inline' );
 		}
 	}
 	
