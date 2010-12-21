@@ -332,6 +332,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
             wbUIHelper.removeWindow(wbScratchPad.windowId);
             wbUIHelper.removeWindow(wbTutorial.windowId);
             wbUIHelper.removeWindow(wbFeedback.windowId);
+            wbUIHelper.removeWindow(wbShareOnExternSystem.windowId);
 
             $("div[class=wbTooltip]").remove();
 
@@ -365,6 +366,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 "wbLanguageServices",
                 "wbLocal",
                 "wbMainWindow",
+                "wbShareOnExternSystem",
                 "wbResizeManager",
                 "wbScratchPad",
                 "wbSearch",

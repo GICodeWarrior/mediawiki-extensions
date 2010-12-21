@@ -532,6 +532,47 @@ Please select the appropriate Chinese language translation system to be used.\
 <div id="wbFooterDiv" style="float:right;"></div>\
 </div>',
 
+shareOnExternSystemHTML:'<div id="wbshareOnExternSystemHTMLDiv">\
+<div id="wbSWESContent">\
+<div id="wbSWESDraggableHandle" class="wbHeaderContainer" style="cursor:move;">\
+<div class="wbH3" style="width:300px;float:left">Exiting WikiBhasha...</div>\
+<div style="float: right;">\
+</div>\
+</div>\
+<table border="0" cellpadding="0" cellspacing="0" style="margin:5px;width:387px">\
+<tr>\
+<td class="wbWindowTopLeft" />\
+<td class="wbWindowTopCenter" />\
+<td class="wbWindowTopRight" />\
+</tr>\
+<tr>\
+<td class="wbWindowContentLeft" />\
+<td class="wbWindowContentCenter">\
+<div style="clear:both">\
+<div style="padding:10px;float:right;" id="wbShareIconsSection"></div>\
+<div class="wbContent" id="wbExitContent">\
+</div>\
+<table border="0" cellpadding="0" cellspacing="0" width="100%">\
+<tr>\
+<td>\
+<div style="padding:10px;clear:both;width:100%;text-align:center"><input type="button" id="wbSWESExitButton" value="Exit WikiBhasha"></div>\
+</td>\
+</tr>\
+</table>\
+</div>\
+</td>\
+<td class="wbWindowContentRight"></td>\
+</tr>\
+<tr>\
+<td class="wbWindowBottomLeft" />\
+<td class="wbWindowBottomCenter" />\
+<td class="wbWindowBottomRight" />\
+</tr>\
+</table>\
+</div>\
+<div id="wbSWESFooterDiv"></div>\
+</div>',
+
 
 feedbackWindowHTML:'<div id="wbFeedbackDiv" >\
 <table border="0" cellspacing="0" cellpadding="0" id="wbFeedbackTable" class="wbFeedbackTableBackground">\
