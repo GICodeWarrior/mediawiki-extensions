@@ -44,7 +44,8 @@ class ApiLiveTranslate extends ApiBase {
 					array( 'word_translation' ),
 					array(
 						'word_language' => $params['to'],
-						'word_id' => $source->word_id
+						'word_id' => $source->word_id,
+						'word_primary' => 1
 					)
 				);
 
