@@ -56,8 +56,8 @@ sftp rfaulk@hume.wikimedia.org:/a/static/uncompressed/udplogs/bannerImpressions-
 
 cd ..
 
-python squid_miner_script.py l ./logs/landingpages-$T*
-python squid_miner_script.py i ./logs/bannerImpressions-$T*
+python squid_miner_script.py l ./logs/landingpages-$T* 1>./mine_log/log-$T.txt 2>./mine_log/log-$T.txt
+python squid_miner_script.py i ./logs/bannerImpressions-$T* 1>./mine_log/log-$T.txt 2>./mine_log/log-$T.txt
 
 cd /home/rfaulk/bash-scripts
 

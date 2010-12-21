@@ -59,7 +59,7 @@ group by 1,2) as ecomm
 on ecomm.landing_page  = lp.landing_page and ecomm.hr = lp.hr
 
 group by 1,2,3,4
-having views > 1000
+having views > 1000 and donations > 20
 order by 1 desc;
 
 
