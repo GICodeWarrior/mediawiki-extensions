@@ -37,6 +37,13 @@ $messages['ar'] = array(
 	'localisationupdate-desc' => 'يبقي الرسائل المترجمة محدثة كأفضل ما يكون',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'localisationupdate-desc' => 'Локалләштерелгән хәбәрҙәрҙең мөмкин тиклем яңы булыуын тәьмин итә',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -147,7 +154,7 @@ $messages['eu'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
-	'localisationupdate-desc' => 'Pitää käännetyt viestit niin ajantasaisina kuin mahdollista.',
+	'localisationupdate-desc' => 'Pitää ohjelmiston käännöksen ajantasaisena.',
 );
 
 /** French (Français)
