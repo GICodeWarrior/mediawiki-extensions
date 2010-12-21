@@ -38,6 +38,23 @@ class ApiLiveTranslate extends ApiBase {
 				)
 			);
 			
+			$toggledWord = false;
+			
+			if ( !$source ) {
+				$toggledWord = LiveTranslateFunctions::getToggledCase( $word );
+				
+				if ( $toggledWord ) {
+					$source = $dbr->selectRow(
+						'live_translate',
+						array( 'word_id' ),
+						array(
+							'word_language' => $params['from'],
+							'word_translation' => $toggledWord
+						)
+					);					
+				}
+			}
+			
 			if ( $source ) {
 				$destination = $dbr->selectRow(
 					'live_translate',
@@ -50,6 +67,14 @@ class ApiLiveTranslate extends ApiBase {
 				);
 
 				if ( $destination ) {
+					if ( $toggledWord ) {
+						$translation = LiveTranslateFunctions::getToggledCase( $destination->word_translation );
+						
+						if ( $translation ) {
+							$destination->word_translation = $translation;
+						}
+					}
+					
 					$this->getResult()->addValue(
 						'translations',
 						$word,
