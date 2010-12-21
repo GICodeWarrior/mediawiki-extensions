@@ -16,23 +16,15 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
+$wgHooks['SkinTemplateContentActions'][] = 'PurgeAction::contentHook';
 $wgExtensionMessagesFiles['Purge'] = $dir . 'Purge.i18n.php';
 
 class PurgeAction {
-	public static function init() {
-		global $wgHooks;
-
-		$wgHooks['SkinTemplateContentActions'][] = 'PurgeAction::contentHook';
-		#$wgHooks['ArticlePurge'][] = 'PurgeAction::purgeHook';
-	}
-		
 	public static function contentHook( array &$content_actions ) {
 		global $wgRequest, $wgTitle;
 
 		if ( $wgTitle->getNamespace() !== NS_SPECIAL ) {
 			$action = $wgRequest->getText( 'action' );
-
-			wfLoadExtensionMessages( 'Purge' );
 
 			$content_actions['purge'] = array(
 				'class' => $action === 'purge' ? 'selected' : false,
@@ -43,10 +35,4 @@ class PurgeAction {
 
 		return true;
 	}
-
-	public static function purgeHook( Article &$article ) {
-		return false;
-	}
 }
-
-PurgeAction::init();
