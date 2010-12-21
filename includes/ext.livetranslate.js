@@ -87,9 +87,9 @@
 		
 		element.contents().each( function() {
 			// If it's a text node, then translate it.
-			if ( this.nodeType == 3 ) {
+			if ( this.nodeType == 3 && this.wholeText.trim().length > 0 ) {
 				runningJobs++;
-				translateChunk( this.wholeText, [], 500, sourceLang, targetLang, this );
+				translateChunk( this.wholeText, [], 498, sourceLang, targetLang, this );
 			}
 			// If it's an html element, check to see if it should be ignored, and if not, apply function again.
 			else if ( $.inArray( $( this ).attr( 'id' ), [ 'livetranslatediv', 'siteSub', 'jump-to-nav' ] ) == -1
@@ -99,18 +99,22 @@
 			}
 		} );
 		
-		runningJobs--;
+		handleTranslationCompletion( targetLang );
 	}
 	
 	function translateChunk( untranslatedText, chunks, currentMaxSize, sourceLang, targetLang, element ) {
 		var chunkSize = Math.min( untranslatedText.length, currentMaxSize );
 		
 		google.language.translate(
-			untranslatedText.substr( 0, chunkSize ),
+			// Surround the text stuff so spaces and newlines don't get trimmed away.
+			'|' + untranslatedText.substr( 0, chunkSize ) + '|',
 			sourceLang,
 			targetLang,
 			function(result) {
-				chunks.push( result.translation );
+				if ( result.translation.length >= 2 ) {
+					// Remove the trim-preventing stuff and add the result to the chunks array.
+					chunks.push( result.translation.substr( 1, result.translation.length -2 ) );
+				}
 				
 				if ( chunkSize < currentMaxSize ) {
 					element.replaceWholeText( chunks.join() );
