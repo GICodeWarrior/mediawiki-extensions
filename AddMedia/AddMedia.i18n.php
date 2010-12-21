@@ -10043,6 +10043,8 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 פֿון $2',
+	'mwe-uploaderror' => 'אַרויפֿלאָדן פֿעלער',
 	'fogg-copyright-title' => 'קאפירעכט',
 );
 
