@@ -172,6 +172,14 @@ Exemples :
 	'flagpage-tab' => 'Marquer',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'flagpage-nopageselectedtitle' => 'Non se seleccionou ningunha páxina',
+	'flagpage-tab' => 'Marcar',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
