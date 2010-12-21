@@ -131,7 +131,17 @@ final class LiveTranslateHooks {
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $wgTitle );	
 		$specialWords = LiveTranslateFunctions::getSpecialWordsForLang( $currentLang );
 		
-		foreach ( $specialWords as $specialWord ) {
+		$toggeledSpecials = array();
+		
+		foreach ( $specialWords as $word ) {
+			$toggledWord = LiveTranslateFunctions::getToggledCase( $word );
+			
+			if ( $toggledWord ) {
+				$toggeledSpecials[] = $toggledWord;
+			}
+		}
+		
+		foreach ( array_merge( $specialWords, $toggeledSpecials ) as $specialWord ) {
 			$text = str_replace( 
 				$specialWord , 
 				Html::element(

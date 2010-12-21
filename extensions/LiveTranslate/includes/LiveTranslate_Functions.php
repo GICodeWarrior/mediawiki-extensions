@@ -353,4 +353,28 @@ final class LiveTranslateFunctions {
 		);
 	}
 	
+	/**
+	 * Returns the provided text starting with a letter in toggeled case.
+	 * If there is no difference between lowercase and upercase for the first
+	 * character, false is returned.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $text
+	 * 
+	 * @return mixed
+	 */
+	public static function getToggledCase( $text ) {
+		$isUpper = $text{0} == strtoupper( $text{0} );
+		$isLower = $text{0} == strtolower( $text{0} );
+		
+		if ( $isUpper XOR $isLower ) {
+			$text{0} = $isUpper ? strtolower( $text{0} ) : strtoupper( $text{0} );
+			return $text;
+		}
+		else {
+			return false;
+		}
+	}
+	
 }
