@@ -48,8 +48,8 @@ class FundraiserReporting:
 	def init_db(self):
 		""" Establish connection """
 		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 		""" Create cursor """
 		self.cur = self.db.cursor()
@@ -315,34 +315,13 @@ class TotalAmountsReporting(FundraiserReporting):
 		
 		labels = return_val[0] 	# curve labels
 		counts = return_val[1]	# curve data - lists
-			
-		if type == 'BAN_EM':
-			indices = range(2,9)
-			title = 'Total Amounts: ' + start_time + ' -- ' + end_time
-			ylabel = 'Amount'
-		elif type == 'CC_PP_completion':
-			indices = [12,17]
-			title = 'Credit Card & Paypal Completion Rates: ' + start_time + ' -- ' + end_time
-			ylabel = 'Rate'			
-		elif type == 'CC_PP_amount':
-			indices = [13,18]
-			title = 'Credit Card & Paypal Total Amounts: ' + start_time + ' -- ' + end_time
-			ylabel = 'Amount'
-		else:
-			sys.exit("Total Amounts: You must enter a valid report type.\n" )
 		
-		# Exract relevant labels and values
-		labels_temp = list()
-		counts_temp = list()
+		r = self.get_query_fields(labels, counts, type, start_time, end_time)
+		labels = r[0]
+		counts = r[1]
+		title = r[2]
+		ylabel = r[3]
 		
-		for i in range(len(labels)):
-			if i in indices:
-				labels_temp.append(labels[i])
-				counts_temp.append(counts[i])
-				
-		labels = labels_temp
-		counts = counts_temp
-			
 		xlabel = 'Time - Hours'
 		subplot_index = 111
 		
@@ -385,9 +364,13 @@ class TotalAmountsReporting(FundraiserReporting):
 		labels = return_val[0]
 		counts = return_val[1]
 
-		title = 'Total Amounts: ' + start_time + ' -- ' + end_time
+		r = self.get_query_fields(labels, counts, 'BAN_EM', start_time, end_time)
+		labels = r[0]
+		counts = r[1]
+		title = r[2]
+		ylabel = r[3]
+		
 		xlabel = 'Time - Days'
-		ylabel = 'Amount'
 		subplot_index = 111
 		
 		# Plot values
@@ -400,8 +383,34 @@ class TotalAmountsReporting(FundraiserReporting):
 		self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, query_name+descriptor)
 		
 		
+	def get_query_fields(self, labels, counts, type, start_time, end_time):
 		
+		if type == 'BAN_EM':
+			indices = range(2,9)
+			title = 'Total Amounts: ' + start_time + ' -- ' + end_time
+			ylabel = 'Amount'
+		elif type == 'CC_PP_completion':
+			indices = [12,17]
+			title = 'Credit Card & Paypal Completion Rates: ' + start_time + ' -- ' + end_time
+			ylabel = 'Rate'			
+		elif type == 'CC_PP_amount':
+			indices = [13,18]
+			title = 'Credit Card & Paypal Total Amounts: ' + start_time + ' -- ' + end_time
+			ylabel = 'Amount'
+		else:
+			sys.exit("Total Amounts: You must enter a valid report type.\n" )
+		
+		# Exract relevant labels and values
+		labels_temp = list()
+		counts_temp = list()
+		
+		for i in range(len(labels)):
+			if i in indices:
+				labels_temp.append(labels[i])
+				counts_temp.append(counts[i])
 
+		return [labels_temp, counts_temp, title, ylabel]
+		
 """
 
 CLASS :: ^BannerLPReporting^
