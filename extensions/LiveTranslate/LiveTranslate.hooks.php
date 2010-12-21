@@ -24,9 +24,11 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
-		global $wgOut, $egLiveTranslateDirPage;
+		global $wgOut, $egLiveTranslateDirPage, $egGoogleApiKey;
 		
 		$title = $article->getTitle();
+		
+		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
 		
 		if ( $article->exists() && $title->getFullText() != $egLiveTranslateDirPage ) {
 			$wgOut->addHTML(
@@ -39,7 +41,7 @@ final class LiveTranslateHooks {
 					),
 					htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
 					'&#160;' . 
-					self::getLanguageSelector() .
+					self::getLanguageSelector( $currentLang ) .
 					'&#160;' . 
 					Html::element(
 						'button',
@@ -51,6 +53,14 @@ final class LiveTranslateHooks {
 			);
 		}
 		
+		$wgOut->addScript(
+			Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
+			Html::inlineScript(
+				'google.load("language", "1");' .
+				'var sourceLang = ' . json_encode( $currentLang ) . ';'
+			)
+		);		
+		
 		LiveTranslateFunctions::loadJs();
 		
 		return true;
@@ -61,16 +71,24 @@ final class LiveTranslateHooks {
 	 * 
 	 * @since 0.1
 	 * 
+	 * @param string $currentLang
+	 * 
 	 * @return string
 	 */
-	protected static function getLanguageSelector() {
-		global $wgContLanguageCode;
+	protected static function getLanguageSelector( $currentLang ) {
+		global $wgUser;
+		
+		$targetLang = $currentLang;
 		
 		$languages = Language::getLanguageNames( false );
 		
-		$currentLang = 'en'; // TODO
-		
-		$currentLang = array_key_exists( $currentLang, $languages ) ? $currentLang : $wgContLanguageCode;
+		if ( $wgUser->isLoggedIn() ) {
+			$userLang = $wgUser->getOption( 'language' );
+			
+			if ( array_key_exists( $userLang, $languages ) ) {
+				$targetLang = $userLang;
+			}			
+		}
 		
 		$options = array();
 		ksort( $languages );
@@ -86,7 +104,7 @@ final class LiveTranslateHooks {
 			'options' => $options
 		) );
 
-		return $languageSelector->getInputHTML( $currentLang );
+		return $languageSelector->getInputHTML( $targetLang );
 	}
 	
 	/**
@@ -256,10 +274,10 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */
 	public static function onOutputPageBeforeHTML( OutputPage &$out, &$text ) {
-		// TODO: obtain source lang
-		$sourceLang = 'en';		
+		global $wgTitle;
 		
-		$specialWords = self::getSpecialWordsForLang( $sourceLang );
+		$currentLang = LiveTranslateFunctions::getCurrentLang( $wgTitle );	
+		$specialWords = self::getSpecialWordsForLang( $currentLang );
 		
 		foreach ( $specialWords as $specialWord ) {
 			$text = str_replace( 

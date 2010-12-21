@@ -19,12 +19,7 @@ final class LiveTranslateFunctions {
 	 * @since 0.1
 	 */
 	public static function loadJs() {
-		global $wgOut, $egGoogleApiKey;
-		
-		$wgOut->addScript(
-			Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
-			Html::inlineScript( 'google.load("language", "1");' )
-		);
+		global $wgOut;
 		
 		// For backward compatibility with MW < 1.17.
 		if ( is_callable( array( $wgOut, 'addModules' ) ) ) {
@@ -60,6 +55,24 @@ final class LiveTranslateFunctions {
 		}
 	
 		$wgOut->addInlineScript( 'var wgLTEMessages = ' . json_encode( $data ) . ';' );		
-	}	
+	}
+	
+	/**
+	 * Returns the language code for a title.
+	 * 
+	 * @param Title $title
+	 * 
+	 * @return string
+	 */
+	public static function getCurrentLang( Title $title ) {
+		$subPage = array_pop( explode( '/', $title->getSubpageText() ) );
+
+		if ( $subPage != '' && array_key_exists( $subPage, Language::getLanguageNames( false ) ) ) {
+			return $subPage;
+		}
+		
+		global $wgLanguageCode;
+		return $wgLanguageCode;
+	}
 	
 }

@@ -7,7 +7,7 @@
 
 (function($) { $( document ).ready( function() {
 	
-	var currentLang = 'en'; // TODO
+	var currentLang = window.sourceLang;
 	
 	var runningJobs = 0;
 	
@@ -54,7 +54,6 @@
 				}
 			);			
 		}
-
 	});
 	
 	function getSpecialWords() {
@@ -89,6 +88,7 @@
 			// If it's a text node, then translate it.
 			if ( this.nodeType == 3 && this.wholeText.trim().length > 0 ) {
 				runningJobs++;
+				// Initiate translation of the text node. Max chunk size is 500 - 2 for the anti-trim delimiters.
 				translateChunk( this.wholeText, [], 498, sourceLang, targetLang, this );
 			}
 			// If it's an html element, check to see if it should be ignored, and if not, apply function again.
@@ -111,16 +111,22 @@
 			sourceLang,
 			targetLang,
 			function(result) {
-				if ( result.translation.length >= 2 ) {
+				if ( result.translation && result.translation.length >= 2 ) {
 					// Remove the trim-preventing stuff and add the result to the chunks array.
 					chunks.push( result.translation.substr( 1, result.translation.length -2 ) );
 				}
+				else {
+					// If the translation failed, keep the original text.
+					chunks.push( untranslatedText.substr( 0, chunkSize ) );
+				}
 				
 				if ( chunkSize < currentMaxSize ) {
+					// If the current chunk was smaller then the max size, node translation is complete, so update text.
 					element.replaceWholeText( chunks.join() );
 					handleTranslationCompletion( targetLang );
 				}
 				else {
+					// If there is more work to do, move on to the next chunk.
 					translateChunk( untranslatedText.substr( chunkSize ), chunks, currentMaxSize, sourceLang, targetLang, element );
 				}
 			}
