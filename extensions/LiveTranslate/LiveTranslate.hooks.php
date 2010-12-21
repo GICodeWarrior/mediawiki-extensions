@@ -41,7 +41,7 @@ final class LiveTranslateHooks {
 					),
 					htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
 					'&#160;' . 
-					self::getLanguageSelector( $currentLang ) .
+					LiveTranslateFunctions::getLanguageSelector( $currentLang ) .
 					'&#160;' . 
 					Html::element(
 						'button',
@@ -66,96 +66,7 @@ final class LiveTranslateHooks {
 		return true;
 	}
 	
-	/**
-	 * Returns the HTML for a language selector.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $currentLang
-	 * 
-	 * @return string
-	 */
-	protected static function getLanguageSelector( $currentLang ) {
-		global $wgUser;
-		
-		$targetLang = $currentLang;
-		
-		$languages = Language::getLanguageNames( false );
-		
-		if ( $wgUser->isLoggedIn() ) {
-			$userLang = $wgUser->getOption( 'language' );
-			
-			if ( array_key_exists( $userLang, $languages ) ) {
-				$targetLang = $userLang;
-			}			
-		}
-		
-		$options = array();
-		ksort( $languages );
-		
-		foreach ( $languages as $code => $name ) {
-			$display = wfBCP47( $code ) . ' - ' . $name;
-			$options[$display] = $code;
-		}
-		
-		$languageSelector = new HTMLSelectField( array(
-			'id' => 'livetranslatelang',
-			'fieldname' => 'language',
-			'options' => $options
-		) );
 
-		return $languageSelector->getInputHTML( $targetLang );
-	}
-	
-	/**
-	 * Gets a list of all available languages.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @return array
-	 */
-	protected static function getAvailableLanguages() {
-		$dbr = wfGetDB( DB_SLAVE );
-			
-		$destinationLangs = array();
-			
-		// TODO: fix index
-		$res = $dbr->query( 'SELECT DISTINCT word_language FROM ' . $dbr->tableName( 'live_translate' ) );
-		
-		while ( $lang = $dbr->fetchObject( $res ) ) {
-			$destinationLangs[] = $lang->word_language;
-		}
-
-		return $destinationLangs;
-	}
-	
-	/**
-	 * Gets a list of all special words in a language.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $language
-	 * 
-	 * @return array
-	 */
-	protected static function getSpecialWordsForLang( $language ) {
-		$dbr = wfGetDB( DB_SLAVE );
-			
-		$words = array();
-			
-		// TODO: fix index
-		$res = $dbr->query( 
-			'SELECT DISTINCT word_translation FROM ' . 
-			$dbr->tableName( 'live_translate' ) . 
-			' WHERE word_language = ' . $dbr->addQuotes( $language )
-		);
-		
-		while ( $translation = $dbr->fetchObject( $res ) ) {
-			$words[] = $translation->word_translation;
-		}
-
-		return $words;
-	}	
 	
 	/**
 	 * Schema update to set up the needed database tables.
@@ -190,76 +101,17 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */		
 	public static function onArticleSaveComplete( &$article, &$user, $text, $summary,
-		$minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId, &$redirect ) {
+		$minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId, &$redirect = null ) {
 		
 		global $egLiveTranslateDirPage;
 		
 		$title = $article->getTitle();
 
 		if ( $title->getFullText() == $egLiveTranslateDirPage ) {
-			self::saveTranslations( self::parseTranslations( $text ) );
+			LiveTranslateFunctions::saveTranslations( LiveTranslateFunctions::parseTranslations( $text ) );
 		}
 		
 		return true;
-	}
-	
-	/**
-	 * Parses the provided dictionary content and returns it as an
-	 * array of associative arrays. 
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $content
-	 * 
-	 * @return array
-	 */		
-	protected static function parseTranslations( $content ) {
-		$translationSets = array();
-		
-		$lines = explode( "\n", $content );
-		$languages = array_map( 'trim', explode( ',', array_shift( $lines ) ) );
-		
-		foreach ( $lines as $line ) {
-			$values = array_map( 'trim', explode( ',', $line ) );
-			
-			$translations = array();
-			
-			foreach ( $values as $nr => $value ) {
-				if ( array_key_exists( $nr, $languages ) ) {
-					$translations[$languages[$nr]] = $value;
-				}
-			}
-			
-			$translationSets[] = $translations;
-		}
-		
-		return $translationSets;
-	}
-	
-	/**
-	 * Replaces the current translations with the provided ones. 
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param array $translationSets
-	 */		
-	protected static function saveTranslations( array $translationSets ) {
-		$dbw = wfGetDB( DB_MASTER );
-		
-		$dbw->query( 'TRUNCATE TABLE ' . $dbw->tableName( 'live_translate' ) );
-
-		foreach ( $translationSets as $wordId => $translations ) {
-			foreach ( $translations as $language => $translation ) {
-				$dbw->insert(
-					'live_translate',
-					array(
-						'word_id' => $wordId,
-						'word_language' => $language,
-						'word_translation' => $translation
-					)
-				);				
-			}
-		}
 	}
 	
 	/**
@@ -277,7 +129,7 @@ final class LiveTranslateHooks {
 		global $wgTitle;
 		
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $wgTitle );	
-		$specialWords = self::getSpecialWordsForLang( $currentLang );
+		$specialWords = LiveTranslateFunctions::getSpecialWordsForLang( $currentLang );
 		
 		foreach ( $specialWords as $specialWord ) {
 			$text = str_replace( 
