@@ -23,7 +23,7 @@ class PurgeAction {
 	public static function contentHook( array &$content_actions ) {
 		global $wgRequest, $wgTitle, $wgUser;
 
-		if ( $wgTitle->getNamespace() !== NS_SPECIAL && !$wgUser->isAnon() ) {
+		if ( $wgTitle->getNamespace() !== NS_SPECIAL && $wgUser->isAllowed( 'purge' ) ) {
 			$action = $wgRequest->getText( 'action' );
 
 			$content_actions['purge'] = array(
