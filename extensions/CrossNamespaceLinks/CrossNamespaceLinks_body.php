@@ -1,32 +1,7 @@
 <?php
 if (!defined('MEDIAWIKI')) die();
 
-global $wgHooks, $IP;
-
-require_once "$IP/includes/QueryPage.php";
-
-class CrossNamespaceLinks extends SpecialPage {
-	/**
-	 * Constructor
-	 */
-	function __construct() {
-		parent::__construct( 'CrossNamespaceLinks' );
-	}
-
-	/**
-	 * main()
-	 */
-	function execute( $parameters ) {
-		$this->setHeaders();
-		list( $limit, $offset ) = wfCheckLimits();
-
-		$cnl = new CrossNamespaceLinksPage();
-
-		$cnl->doQuery( $offset, $limit );
-	}
-}
-
-class CrossNamespaceLinksPage extends QueryPage {
+class CrossNamespaceLinks extends QueryPage {
 	/**
 	 * An inclusive list of namespaces that are acceptable for a
 	 * page in the main namespace on Wikimedia sites (Wikipedia) to
@@ -62,7 +37,10 @@ class CrossNamespaceLinksPage extends QueryPage {
 		//NS_CATEGORY
 	);
 
-	function getName() { return 'CrossNamespaceLinks'; }
+	public function __construct( $name = 'CrossNamespaceLinks' ) {
+		parent::__construct( $name );
+	}
+	
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
@@ -87,12 +65,12 @@ class CrossNamespaceLinksPage extends QueryPage {
 		return array(
 			'tables' => array( 'page', 'pagelinks' ),
 			'fields' => array( 'COUNT(*) AS namespace', 'page_title AS title', 'pl_namespace AS value' ),
-			'options' => array ( 'GROUP BY' => 'page_id' ),
+			'options' => array( 'GROUP BY' => 'page_id' ),
 			'conds' => array( 'page_is_redirect' => 0,
 				'page_namespace' => NS_MAIN,
 				'pl_namespace NOT' => $this->namespaces ),
 			'join_conds' => array(
-				'page' => array( 'LEFT JOIN' => array( 'page_id=pl_from' ) )
+				'page' => array( 'LEFT JOIN', array( 'page_id=pl_from' ) )
 			)
 		);
 	}
