@@ -66,6 +66,10 @@ $messages['de'] = array(
 	'livetranslate-translate-to' => 'Diese Seite in folgende Sprache übersetzen:',
 	'livetranslate-button-translate' => 'Übersetze',
 	'livetranslate-button-translating' => 'Übersetze …',
+	'livetranslate-button-revert' => 'Originalinhalt anzeigen',
+	'livetranslate-dictionary-empty' => 'Momentan befinden sich keine Vokabeln im Wörterbuch. Auf „Bearbeiten“ klicken, um welche hinzuzufügen.',
+	'livetranslate-dictionary-count' => 'Momentan {{PLURAL:$1|befindet sich $1 Wort|befinden sich $1 Wörter}} in $2 {{PLURAL:$2|Sprache|Sprachen}} im Wörterbuch. Auf „Bearbeiten“ klicken, um weitere hinzuzufügen.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Diese Sprache ist|Diese Sprachen sind}} momentan nicht zum Übersetzen zugelassen: $1. Entweder nun die Einstellung der übersetzbaren Sprachen in der Wikikonfiguration anpassen oder diese aus dem Wörterbuch entfernen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -96,6 +100,10 @@ $messages['gsw'] = array(
 	'livetranslate-translate-to' => 'Die Syte ibersetze in',
 	'livetranslate-button-translate' => 'Ibersetze',
 	'livetranslate-button-translating' => 'Am Ibersetze …',
+	'livetranslate-button-revert' => 'Originalinhalt aazeige',
+	'livetranslate-dictionary-empty' => 'Zurzyt het s kei Vokable im Werterbuech. Uf „Bearbeite“ klicke go ne baar yyfiege.',
+	'livetranslate-dictionary-count' => 'Zurzyt {{PLURAL:$1|git s $1 Wort|git s $1 Werter}} in $2 {{PLURAL:$2|Sproch|Sproche}} im Werterbuech. Uf „Bearbeite“ klicke go wyteri yyfiege.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Die Sproch isch|Die Sproche sin}} zurzyt nit zum Ibersetze zuegloo: $1. Entwäder jetz d Yystellig vu dr ibersetzbare Sproche in dr Wikikonfiguration aapasse oder die us em Werterbuech uuseneh.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -170,6 +178,10 @@ $messages['pt'] = array(
 	'livetranslate-translate-to' => 'Traduzir esta página para',
 	'livetranslate-button-translate' => 'Traduzir',
 	'livetranslate-button-translating' => 'A traduzir...',
+	'livetranslate-button-revert' => 'Mostrar original',
+	'livetranslate-dictionary-empty' => 'Ainda não existem palavras no dicionário. Clique o separador "editar" para adicionar algumas.',
+	'livetranslate-dictionary-count' => '{{PLURAL:$1|Existe $1 palavra|Existem $1 palavras}} de $2 {{PLURAL:$2|língua|línguas}}. Clique o separador "editar" para acrescentar mais.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Esta língua não está definida como destino válido|Estas línguas não estão definidas como destinos válidos}} para tradução: $1. Altere na configuração da wiki as línguas permitidas, ou remova estas do dicionário.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
