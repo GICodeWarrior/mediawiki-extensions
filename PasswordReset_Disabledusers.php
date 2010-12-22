@@ -51,16 +51,15 @@ class DisabledusersPage extends QueryPage {
 		return false;
 	}
 
-	function getSQL() {
-		$db = wfGetDB( DB_SLAVE );
-		$user = $db->tableName( 'user' );
-
-		return
-			"SELECT 'Disabledusers' as type, 
-			user_id, 
-			user_name as value 
-			FROM $user
-			WHERE user_password='DISABLED'";
+	function getQueryInfo() {
+		return array(
+			'tables' => array ( 'user' ),
+			'fields' => array(
+				'user_id',
+				'user_name AS value'
+			),
+			'conds' => array ( 'user_password' => 'DISABLED' )
+		);
 	}
 
 	function sortDescending() {
