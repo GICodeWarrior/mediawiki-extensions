@@ -155,6 +155,18 @@ $messages['es'] = array(
 	'ts-kml-on-ol-map-by' => 'Mapa por',
 );
 
+/** Estonian (Eesti)
+ * @author WikedKentaur
+ */
+$messages['et'] = array(
+	'ts-kml-on-ol-options' => 'Sätted',
+	'ts-kml-on-ol-languages' => 'Keeled',
+	'ts-kml-on-ol-thumbnails' => 'Pisipildid',
+	'ts-kml-on-ol-help' => 'Juhend',
+	'ts-kml-on-ol-all' => 'Kõik',
+	'ts-kml-on-ol-map-by' => 'Kaart:',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */
