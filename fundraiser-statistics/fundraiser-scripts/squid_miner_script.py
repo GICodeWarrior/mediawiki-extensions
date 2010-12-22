@@ -56,25 +56,14 @@ INITIALIZE DB ACCESS
 """
 
 """ Establish connection """
-# db = MySQLdb.connect(host='localhost', user='root', passwd='baggin5', db='faulkner')
+#db = MySQLdb.connect(host='localhost', user='root', passwd='baggin5', db='faulkner')
 # db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
 db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 """ Create cursor """
 cur = db.cursor()
 
-""" """
-insertStmt_tr = 'INSERT INTO log_run (start_time, end_time, notes) values '
-selectStmt_tr = 'SELECT max(id) FROM log_run;'
 
-
-
-"""
-
-MODIFY LOG_RUN TABLE
-Insert a new test run and get the id.
-
-"""
 
 run_id = 0
 if mine_option == 'l':

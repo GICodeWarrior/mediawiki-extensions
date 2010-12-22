@@ -9,7 +9,7 @@ Ryan Faulkner
 December 16th, 2010
 
 
-Pulls data from db9.faulkner and generates plots.
+Pulls data from storage3.faulkner and generates plots.
 
 
 """
@@ -536,10 +536,10 @@ class BannerLPReporting(FundraiserReporting):
 	def run(self, type, metric_name):
 		
 		# Current date & time
-		#now = datetime.datetime.now()
+		now = datetime.datetime.now()
 		#UTC = 8
 		#delta = datetime.timedelta(hours=UTC)
-		now = now + delta
+		#now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
 		hours_back = 24

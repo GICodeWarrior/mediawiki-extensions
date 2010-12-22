@@ -45,8 +45,6 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 	queryIndex = 4;
 	pathIndex = 2;
 
-	counts = mh.AutoVivification()
-
 
 
 	# INITIALIZE DB ACCESS
@@ -58,7 +56,6 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 	insertStmt_lp = 'INSERT INTO landing_page (utm_source, utm_campaign, utm_medium, landing_page,' + \
 	'page_url, referrer_url, browser, lang, country, project, ip, request_time) values '
 
-	insertStmt_lpa = 'INSERT INTO landing_page_aggregate (run_id, utm_source, project, landing_page, hits) values '
 
 	# PROCESS LOG FILE
 	# ================
@@ -111,15 +108,15 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 			source_lang = 'NONE';
 		else:
 			hostname = parsed_referrer_url[hostIndex].split('.')
-
-			if ( len( hostname ) <= 2 ) :
+			
+			if ( len( hostname[0] ) <= 2 ) :
 				# referrer_path = parsed_referrer_url[pathIndex].split('/')
 				project = hostname[0]  				# wikimediafoundation.org
 				source_lang = hostname[0]
 			else:
 				project = hostname[0] if ( hostname[1] == 'wikimedia' ) else hostname[1]  # species.wikimedia vs en.wikinews
-				source_lang = hostname[0] if ( hostname[1] == 'wikimedia' ) else 'en'  # pl.wikipedia vs commons.wikimedia
-
+				source_lang = hostname[0] if ( len(hostname[1]) < 5 ) else 'en'  # pl.wikipedia vs commons.wikimedia
+			
 		# Process User agent string
 		# =====================
 		
@@ -188,7 +185,14 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 				try:
 					lp_country = query_fields['title'][0].split('/')
 					landing_page = lp_country[0]
-					country = lp_country[1]
+					
+					if len(lp_country) == 3:
+						country = lp_country[2]
+					else:
+						country = lp_country[1]
+						
+					if country == country.lower():
+						country = ''
 				except:
 					landing_page = 'NONE'
 					country = 'NONE'
@@ -196,19 +200,17 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 				landing_path = parsed_landing_url[pathIndex].split('/')
 				landing_page = landing_path[2];
 				try:
-					
 					country = query_fields['country_code'][0]
 				except:
 					try:
 						if len(landing_path) == 5:
 							country = landing_path[4] 
-							source_lang = landing_path[3] 							
+							# source_lang = landing_path[3] 							
 						else:
 							country = landing_path[3]
 					except:
 						country = 'NONE'
-						
-
+			
 			# ensure fields exist
 			try:
 				utm_source = query_fields['utm_source'][0]
@@ -220,7 +222,6 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 				utm_campaign = 'NONE'
 				utm_medium = 'NONE'
 				
-			
 			# INSERT INTO landing_page ('utm_source', 'utm_campaign', 'utm_medium', 'landing_page', 'page_url', 'lang', 'project', 'ip')  values ()
 			try:
 				val = '(\'' + utm_source + '\',\'' + utm_campaign + '\',\'' + utm_medium + '\',\'' + landing_page + \
@@ -234,41 +235,9 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 				print "Could not insert:\n" + insertStmt_lp + val
 				pass
 				
-
-			if ( re.search( '^2010', utm_source) and not (re.search( 'utm_campaign', utm_source )) ) : # Second part removes some noise
-				try:
-					counts[utm_source][project][landing_page] = counts[utm_source][project][landing_page] + 1;
-				except TypeError:
-					counts[utm_source][project][landing_page] = 1
 			
 		line = logFile.readline()
-	
-	# MODIFY THE DB
-	# ==============
-	
-	bannerKeys = counts.keys()
-	for banner_ind in range(len(bannerKeys)):
-		banner = bannerKeys[banner_ind]
-		projectCounts = counts[banner]
-		projectKeys = projectCounts.keys()
 
-		for project_ind in range(len(projectKeys)):
-			project = projectKeys[project_ind]
-			lpCounts = projectCounts[project]
-			lpKeys = lpCounts.keys()
-
-			for lp_ind in range(len(lpKeys)):
-				landing_page = lpKeys[lp_ind]
-				count = lpCounts[landing_page]
-				val = '(' + str(run_id) + ',\'' + utm_source + '\',\'' + project + '\',\'' + landing_page + '\',' \
-				+ str(count) + ');'
-
-				try:
-					cur.execute(insertStmt_lpa + val)
-				except:
-					# print "Database Interface Exception: Could not execute statement:\n" + insertStmt_lpa + val
-					db.rollback()
-					sys.exit("Database Interface Exception: Could not execute statement:\n" + insertStmt_lpa + val)
 
 
 
