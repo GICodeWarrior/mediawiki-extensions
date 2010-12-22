@@ -508,6 +508,15 @@ $messages['tr'] = array(
 	'spl3_nosubpages' => '$1, listelenecek altsayfalara sahip değil.',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'spl3-desc' => 'Автоматично створює список підсторінок сторінки за допомогою тегу <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Невідоме значення параметра $1.',
+	'spl3_nosubpages' => '$1 не має підсторінок для складання списку.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
