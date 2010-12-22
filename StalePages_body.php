@@ -11,34 +11,10 @@
  * @ingroup Extensions
  * @author Tim Laqua <t.laqua@gmail.com>
  */
-
-class Stalepages extends SpecialPage
+class Stalepages extends QueryPage
 {
-	///StalePages Class Constructor
-	public function __construct() {
-		parent::__construct( 'StalePages' );
-	}
-
-	function getDescription() {
-		return wfMsg( 'stalepages' );
-	}
-
-	function execute( $parameters ) {
-		wfLoadExtensionMessages( 'Stalepages' );
-
-		$this->setHeaders();
-		list( $limit, $offset ) = wfCheckLimits();
-
-		$sp = new StalepagesPage();
-
-		$sp->doQuery( $offset, $limit );
-	}
-}
-
-class StalepagesPage extends QueryPage
-{
-	function getName() {
-		return "Stalepages";
+	public function __construct( $name = 'Stalepages' ) {
+		parent::__construct( $name );
 	}
 
 	function isExpensive() {
