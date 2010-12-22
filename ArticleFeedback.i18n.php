@@ -1630,6 +1630,15 @@ $messages['rue'] = array(
 	'articlefeedback-survey-submit' => 'Одослати',
 	'articlefeedback-survey-title' => 'Просиме, одповіджте на пару вопросів',
 	'articlefeedback-survey-thanks' => 'Дякуєме за выповнїня звідованя.',
+	'articlefeedback-form-panel-title' => 'Ваш назор',
+	'articlefeedback-form-panel-instructions' => 'Просиме, найдьте собі час про оцінку той статї.',
+	'articlefeedback-report-switch-label' => 'Указати резултаты',
+	'articlefeedback-field-trustworthy-tip' => 'Маєте чутя, же тота сторінка достаточно одказує на жрідла і хоснованы жрідла суть способны довірованя?',
+	'articlefeedback-field-complete-label' => 'Комплетность',
+	'articlefeedback-field-complete-tip' => 'Маєте чутя, же тота сторінка покрывать вшыткы важны части темы?',
+	'articlefeedback-field-unbiased-tip' => 'Маєте чутя, же тота сторінка справедливо покрывать вшыткы погляды на даны темы?',
+	'articlefeedback-field-wellwritten-tip' => 'Маєте чутя, же тота сторінка є правилно орґанізована о добрї написана?',
+	'articlefeedback-pitch-createaccount-accept' => 'Вытворити конто',
 );
 
 /** Yakut (Саха тыла)
