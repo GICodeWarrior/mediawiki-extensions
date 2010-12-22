@@ -58,3 +58,6 @@ cd ..
 
 python squid_miner_script.py l ./logs/landingpages-$T* 1>./mine-log/log-banimp-$T.txt 2>./mine-log/log-banimp-$T.txt
 python squid_miner_script.py i ./logs/bannerImpressions-$T* 1>./mine-log/log-lp-$T.txt 2>./mine-log/log-lp-$T.txt
+
+cp ./mine-log/log-banimp-$T.txt /srv/org.wikimedia.fundraising/stats/
+cp ./mine-log/log-lp-$T.txt /srv/org.wikimedia.fundraising/stats/
