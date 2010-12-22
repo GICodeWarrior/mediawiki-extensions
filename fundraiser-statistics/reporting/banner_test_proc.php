@@ -47,6 +47,10 @@ if ($sql_file == "banner_test.sql" || $sql_file == "banner_test_banners.sql") {
 	$query = sprintf($query, $start, $end, $cmpgn, $start, $end, $cmpgn);
 } elseif ($sql_file == "landing_page_test_by_hour.sql") {
 	$query = sprintf($query, "%", "%", "%", "%",  $start, $end, $cmpgn, "%", "%", "%", "%",  $start, $end, $cmpgn);
+} elseif ($sql_file == "ecomm_test.sql") {
+	$query = sprintf($query, $start, $end, $cmpgn);
+} elseif ($sql_file == "ecomm_test_by_hour.sql") {
+	$query = sprintf($query, "%", "%", "%", "%", $start, $end, $cmpgn);
 } elseif ($sql_file == "banner_test_by_hour.sql") {
 	$query = sprintf($query, "%", "%", "%", "%", $start, $end, "%", "%", "%", "%", $start, $end, $cmpgn, "%", "%", "%", "%", $start, $end, $cmpgn, "%", "%", "%", "%", $start, $end, $cmpgn, "%");
 }
