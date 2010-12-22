@@ -14,6 +14,17 @@ require_once( "$IP/extensions/LiveTranslate/LiveTranslate.php" );
 
 After this you need to run MediaWikis update script which can be found at /maintenance/update.php.
 
+After doing this, you have installed the extension. To be able to use it in a meaningful way, you also need to take care of some configuration:
+
+== Configuration ==
+
+Configuration of Live Translate is done by adding simple PHP statements to your [[Manual:LocalSettings.php|LocalSettings.php]]
+file. These statements need to be placed AFTER the inclusion of Live Translate. The options are listed below and their default
+is set in the [http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/LiveTranslate_Settings.php?view=markup Live Translate settings file].
+You should NOT modify the settings file, but can have a look at it to get an idea of how to use the  settings, in case the below descriptions do not suffice.
+
+=== Google API key ===
+
 To be able to actually use Google Translate, you need to [https://code.google.com/apis/console get an API key] and
 add it to your [[LocalSettings.php]] file AFTER the inclusion of the extension.
 
@@ -21,3 +32,15 @@ add it to your [[LocalSettings.php]] file AFTER the inclusion of the extension.
 # Google API key
 $egGoogleApiKey = 'INSERT-YOUR-KEY-HERE';
 </source>
+
+=== Available languages ===
+
+You have to specify which languages users should be able to translate to. This is done by adding language codes to <code>$egLiveTranslateLanguages</code>.
+By default it contains only your wikis main language (as specified by <code>$wgLanguageCode</code> in [[LocalSettings.php]]). You add languages as follows:
+
+<source lang="php">
+$egLiveTranslateLanguages[] = 'nl';
+$egLiveTranslateLanguages[] = 'de';
+</source>
+
+If there are no languages available other then the current language of the page, then the translation control will not show up.

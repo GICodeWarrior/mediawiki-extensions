@@ -5,7 +5,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.1 ===
-2010-12-xx
+2010-12-22
 
 * Added simple translation interface to the right top of articles.
 * Implemented translation via the Google Translate API.
