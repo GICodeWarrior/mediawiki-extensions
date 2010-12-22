@@ -142,6 +142,16 @@ $messages['ja'] = array(
 	'svgedit-editor-close' => 'キャンセル',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'svgedit-editbutton-edit' => 'កែប្រែគំនូរ',
+	'svgedit-editor-save-close' => 'រក្សាទុករួចបិទ',
+	'svgedit-editor-close' => 'បោះបង់',
+	'svgedit-desc' => 'ការកែសំរួលគំនូរប្រភេទ SVG ជាមួយ [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -932,9 +932,13 @@ $messages['tt-cyrl'] = array(
 /** Ukrainian (Українська)
  * @author Aleksandrit
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'filelist' => 'Список файлів',
+	'filelist-desc' => '[[Special:Filelist|Спеціальна сторінка]] для складання списків завантажених файлів',
+	'filelist-show-list' => 'Показати список',
+	'filelist-show-gallery' => 'Показати галерею',
 	'filelist-image-desc' => 'опис',
 );
 

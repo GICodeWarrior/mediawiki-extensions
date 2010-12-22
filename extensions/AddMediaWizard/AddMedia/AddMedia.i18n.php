@@ -8201,6 +8201,22 @@ $messages['ru'] = array(
 	'mwe-review-upload' => 'Просмотреть {{PLURAL:$1|загрузку файла|загрузки файлов}}',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 з $2',
+	'mwe-upload-unknown-size' => 'Незнамый розмір',
+	'mwe-uploaderror' => 'При начітаваню дішло ку хыби',
+	'mwe-uploadwarning' => 'Увага про начітаня',
+	'mwe-unknown-error' => 'Незнама хыба:',
+	'mwe-ignorewarning' => 'Іґноровати варованя тай начітати файл.',
+	'mwe-upload-misc-error' => 'Незнама хыба почас начітаня',
+	'mwe-thumbnail-more' => 'Звекшыти',
+	'mwe-filesource' => 'Жрідло:',
+	'mwe-filestatus' => 'Статус авторьскых прав:',
+);
+
 /** Sicilian (Sicilianu)
  * @author Aushulz
  */
@@ -10045,7 +10061,12 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 פֿון $2',
 	'mwe-uploaderror' => 'אַרויפֿלאָדן פֿעלער',
+	'mwe-thumbnail-more' => 'פאַרגרעסערן',
+	'mwe-filesource' => 'מקור:',
 	'fogg-copyright-title' => 'קאפירעכט',
+	'rsd_results_next' => 'נעקסטער',
+	'mwe-link' => 'לינק',
+	'mwe-loggin-link' => 'ביטע ארײַנלאָגירן',
 );
 
 /** Yoruba (Yorùbá)

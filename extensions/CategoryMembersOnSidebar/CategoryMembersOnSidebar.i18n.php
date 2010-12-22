@@ -120,6 +120,13 @@ $messages['no'] = array(
 	'categorymembersonsidebar-desc' => 'Legger til kategorimedlemmer på sidepanelet',
 );
 
+/** Polish (Polski)
+ * @author Anoon6
+ */
+$messages['pl'] = array(
+	'categorymembersonsidebar-desc' => 'Dodaje członków kategorii na pasku bocznym',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

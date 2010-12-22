@@ -1728,6 +1728,14 @@ $messages['vi'] = array(
 	'mwe-clipedit-edit-tools' => 'Công cụ sửa đổi',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'mwe-clipedit-start_time' => 'אָנהייב צייַט',
+	'mwe-clipedit-end_time' => 'סוף צייַט',
+);
+
 /** Yoruba (Yorùbá)
  * @author Demmy
  */

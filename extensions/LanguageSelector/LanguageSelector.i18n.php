@@ -970,6 +970,13 @@ $messages['sv'] = array(
 	'languageselector-setlang' => 'välj',
 );
 
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'languageselector' => 'மொழி',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
