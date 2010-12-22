@@ -83,22 +83,18 @@ class CrossNamespaceLinksPage extends QueryPage {
 	 * that it could be fixed rather than put these two on the
 	 * whitelist.
 	 */
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		extract( $dbr->tableNames( 'page', 'pagelinks' ) );
-		$namespaces = implode( ',', $this->namespaces );
-		return
-			"
-			SELECT
-				'CrossNamespaceLinks' as type,
-				COUNT(*) as namespace,
-				page_title as title,
-				pl_namespace as value
-			FROM $pagelinks
-			LEFT JOIN $page ON page_id = pl_from
-			WHERE page_is_redirect = 0 AND page_namespace = " . NS_MAIN . " AND pl_namespace NOT IN ($namespaces)
-			GROUP BY page_id
-			";
+	function getQueryInfo() {
+		return array(
+			'tables' => array( 'page', 'pagelinks' ),
+			'fields' => array( 'COUNT(*) AS namespace', 'page_title AS title', 'pl_namespace AS value' ),
+			'options' => array ( 'GROUP BY' => 'page_id' ),
+			'conds' => array( 'page_is_redirect' => 0,
+				'page_namespace' => NS_MAIN,
+				'pl_namespace NOT' => $this->namespaces ),
+			'join_conds' => array(
+				'page' => array( 'LEFT JOIN' => array( 'page_id=pl_from' ) )
+			)
+		);
 	}
 
 	function sortDescending() { return false; }
