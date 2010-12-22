@@ -29,7 +29,7 @@ $wgSpecialPageGroups['CrossNamespaceLinks'] = 'maintenance';
 
 function wfSpecialCrossNamespaceLinksHook( &$QueryPages ) {
 	$QueryPages[] = array(
-		'CrossNamespaceLinksPage',
+		'CrossNamespaceLinks',
 		'CrossNamespaceLinks',
 		// Would probably be slow on large wikis -ævar
 		//false
