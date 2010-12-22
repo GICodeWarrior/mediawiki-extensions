@@ -64,7 +64,7 @@ final class LiveTranslateHooks {
 						Html::element(
 							'span',
 							array( 'style' => 'color:darkred' ),
-							wfMsgExt( 'livetranslate-dictionary-unallowed-langs', 'parsemag', $wgLang->listToText( $notAllowedLanguages ) )
+							wfMsgExt( 'livetranslate-dictionary-unallowed-langs', 'parsemag', $wgLang->listToText( $notAllowedLanguages ), count( $notAllowedLanguages ) )
 						)
 						
 					);

@@ -25,8 +25,8 @@ $messages['en'] = array(
 	
 	// Special words dictionary
 	'livetranslate-dictionary-empty' => 'There are no words in the dictionary yet. Click the "edit" tab to add some.',
-	'livetranslate-dictionary-count' => 'There {{PLURAL:$1|is|are}} $1 {{PLURAL:$1|word|words}} in $2 {{PLURAL:$2|language|languages}}. Click the "edit" tab to add more.',
-	'livetranslate-dictionary-unallowed-langs' => 'These languages are not currently set as allowed translation target: $1. Modify the allowed languages in your wikis configuration, or remove these from the dictionary.'
+	'livetranslate-dictionary-count' => 'There {{PLURAL:$1|is $1 word|are $1 words}} in $2 {{PLURAL:$2|language|languages}}. Click the "edit" tab to add more.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|This language is|These languages are}} not currently set as allowed translation target: $1. Modify the allowed languages in your wikis configuration, or remove these from the dictionary.'
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
