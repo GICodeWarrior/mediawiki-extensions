@@ -11,31 +11,9 @@
  * @ingroup Extensions
  * @author Tim Laqua <t.laqua@gmail.com>
  */
-
-class Disabledusers extends SpecialPage {
-	///StalePages Class Constructor
-	public function __construct() {
-		wfLoadExtensionMessages('PasswordReset');
-		parent::__construct( 'Disabledusers', 'passwordreset' );
-	}
-
-	function getDescription() {
-		return wfMsg( 'disabledusers' );
-	}
-
-	function execute( $parameters ) {
-		$this->setHeaders();
-		list( $limit, $offset ) = wfCheckLimits();
-
-		$sp = new DisabledusersPage();
-
-		$sp->doQuery( $offset, $limit );
-	}
-}
-
-class DisabledusersPage extends QueryPage {
-	function getName() {
-		return "Disabledusers";
+class Disabledusers extends QueryPage {
+	public function __construct( $name = 'Disabledusers' ) {
+		parent::__construct( $name, 'passwordreset' );
 	}
 
 	function isExpensive() {
