@@ -24,13 +24,56 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
-		global $wgOut, $egLiveTranslateDirPage, $egGoogleApiKey, $egLiveTranslateLanguages;
+		global $wgOut, $wgLang, $egLiveTranslateDirPage, $egGoogleApiKey, $egLiveTranslateLanguages;
 		
 		$title = $article->getTitle();
 		
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
 		
-		if ( $article->exists() && $title->getFullText() != $egLiveTranslateDirPage
+		if ( $title->getFullText() == $egLiveTranslateDirPage ) {
+			$wordSets = LiveTranslateFunctions::parseTranslations( $article->getContent() );
+			
+			if ( count( $wordSets ) == 0 ) {
+				$wgOut->addWikiMsg( 'livetranslate-dictionary-empty' );
+			}
+			else {
+				$wgOut->addWikiMsg(
+					'livetranslate-dictionary-count',
+					$wgLang->formatNum( count( $wordSets ) ) ,
+					$wgLang->formatNum( count( $wordSets[0] ) )
+				);
+				
+				$notAllowedLanguages = array();
+				
+				foreach ( $wordSets[0] as $languageCode => $translations ) {
+					if ( !in_array( $languageCode, $egLiveTranslateLanguages ) ) {
+						$notAllowedLanguages[] = $languageCode;
+					}
+				}
+				
+				if ( count( $notAllowedLanguages ) > 0 ) {
+					$languages = Language::getLanguageNames( false );
+					
+					foreach ( $notAllowedLanguages as &$notAllowedLang ) {
+						if ( array_key_exists( $notAllowedLang, $languages ) ) {
+							$notAllowedLang = $languages[$notAllowedLang];
+						}
+					}
+					
+					$wgOut->addHTML(
+						Html::element(
+							'span',
+							array( 'style' => 'color:darkred' ),
+							wfMsgExt( 'livetranslate-dictionary-unallowed-langs', 'parsemag', $wgLang->listToText( $notAllowedLanguages ) )
+						)
+						
+					);
+				}
+			}
+			
+			$outputDone = true;
+		}
+		else if ( $article->exists() 
 			&& ( count( $egLiveTranslateLanguages ) > 1 ) || count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) {
 			$wgOut->addHTML(
 				'<span class="notranslate" id="livetranslatespan">' .
