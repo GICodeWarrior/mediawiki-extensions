@@ -7046,6 +7046,8 @@ $messages['wa'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'viewapc-start-time' => 'אָנהייב צייַט',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|טעקע|טעקעס}} ($2)',
 	'viewapc-display-info' => 'נאָמען',
 	'viewapc-ls-header-name' => 'נאָמען',
 	'viewapc-ls-sort-size' => 'גרייס',
