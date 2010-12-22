@@ -17,10 +17,16 @@ $messages = array();
 $messages['en'] = array(
 	'livetranslate-desc' => 'Enables live translation of page content using the Google Translate service',
 
+	// Translation interface
 	'livetranslate-translate-to' => 'Translate this page to',
 	'livetranslate-button-translate' => 'Translate',
 	'livetranslate-button-translating' => 'Translating...',
 	'livetranslate-button-revert' => 'Show original',
+	
+	// Special words dictionary
+	'livetranslate-dictionary-empty' => 'There are no words in the dictionary yet. Click the "edit" tab to add some.',
+	'livetranslate-dictionary-count' => 'There {{PLURAL:$1|is|are}} $1 {{PLURAL:$1|word|words}} in $2 {{PLURAL:$2|language|languages}}. Click the "edit" tab to add more.',
+	'livetranslate-dictionary-unallowed-langs' => 'These languages are not currently set as allowed translation target: $1. Modify the allowed languages in your wikis configuration, or remove these from the dictionary.'
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
