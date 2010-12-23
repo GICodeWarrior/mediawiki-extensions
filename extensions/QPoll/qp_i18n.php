@@ -29,7 +29,7 @@
  * require_once "$IP/extensions/QPoll/qp_user.php";
  *
  * @file
- * @version 0.6.5
+ * @version 0.7.0
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
  * @ingroup Extensions
@@ -76,6 +76,7 @@ $messages['en'] = array(
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
 	'qp_results_line_qucl' => '$1: $2 $3',
 	'qp_export_to_xls' => 'Export statistics into XLS format',
+	'qp_voices_to_xls' => 'Export voices into XLS format',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|user|users}} answered to the questions',
 	'qp_func_no_such_poll' => 'No such poll ($1)',
 	'qp_func_missing_question_id' => 'Please specify an existing question id (starting from 1) for the poll $1',
@@ -2220,6 +2221,7 @@ $messages['ru'] = array(
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
 	'qp_results_line_qucl' => '$1: $2 $3',
 	'qp_export_to_xls' => 'Экспортировать статистику в XLS формате',
+	'qp_voices_to_xls' => 'Экспортировать голоса в XLS формате',
 	'qp_users_answered_questions' => 'На вопросы {{PLURAL:$1|ответил $1 участник|ответило $1 участника|ответили $1 участников}}',
 	'qp_func_no_such_poll' => 'Опрос не найден ($1)',
 	'qp_func_missing_question_id' => 'Укажите существующий идентификатор вопроса (начинающийся с единицы) для опроса $1',

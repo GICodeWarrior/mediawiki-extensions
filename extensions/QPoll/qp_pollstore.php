@@ -276,6 +276,60 @@ class qp_PollStore {
 		return $result;
 	}
 
+	/**
+	 * iterates through the list of users who voted the current poll
+	 * @return mixed false on failure, array of (uid=>username) on success (might be empty)
+	 */
+	function pollVotersPager( $offset = 0, $limit = 10 ) {
+		if ( $this->pid === null ) {
+			return false;
+		}
+		$qp_users_polls = self::$db->tableName( 'qp_users_polls' );
+		$qp_users = self::$db->tableName( 'qp_users' );
+		$query = "SELECT qup.uid AS uid, name AS username " .
+				"FROM $qp_users_polls qup " .
+				"INNER JOIN $qp_users qu ON qup.uid = qu.uid " .
+				"WHERE pid = ". intval( $this->pid ) . " " .
+				"LIMIT " . intval( $offset ) . ", " . intval( $limit );
+		$res = self::$db->query( $query, __METHOD__ );
+		$result = array();
+		while( $row = self::$db->fetchObject( $res ) ) {
+			$result[intval($row->uid)] = $row->username;
+		}
+		return $result;
+	}
+
+	/**
+	 * returns voices of the selected users in the selected question of current poll
+	 * @param $uids array of user id's in DB
+	 * @return mixed array [uid][proposal_id][cat_id]=text_answer on success,
+	 * false on failure
+	 */
+	function questionVoicesRange( $question_id, array $uids ) {
+		if ( $this->pid === null ) {
+			return false;
+		}
+		$qp_question_answers = self::$db->tableName( 'qp_question_answers' );
+		$query = "SELECT uid, proposal_id, cat_id, text_answer " .
+				"FROM $qp_question_answers " .
+				"WHERE pid = " . intval( $this->pid ) .  " AND question_id = " . intval( $question_id ) . " AND uid IN (" . implode( ',', array_map( 'intval', $uids ) ) . ") " .
+				"ORDER BY uid";
+		$res = self::$db->query( $query, __METHOD__ );
+		$result = array();
+		while( $row = self::$db->fetchObject( $res ) ) {
+			$uid = intval( $row->uid );
+			if ( !isset( $result[$uid] ) ) {
+				$result[$uid] = array();
+			}
+			$proposal_id = intval( $row->proposal_id );
+			if ( !isset( $result[$uid][$proposal_id] ) ) {
+				$result[$uid][$proposal_id] = array();
+			}
+			$result[$uid][$proposal_id][intval( $row->cat_id )] = ( ($row->text_answer == "") ? "+" : $row->text_answer );
+		}
+		return $result;
+	}
+
 	// checks whether single user already voted the poll's questions
 	// will be written into self::Questions[]->alreadyVoted
 	// may be used only after loadQuestions()
