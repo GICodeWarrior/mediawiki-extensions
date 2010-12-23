@@ -32,7 +32,7 @@ function _analyze_tokens( $token_array ) {
 	while( $tokens->valid() ) {
 		$token = $tokens->current();
 
-		# handles braces returned by token_get_all() as strings
+		# handles braces returned as strings by token_get_all()
 		if( is_string( $token ) ) {
 			if( $token == '{' ) {
 				$state['depth']++;
@@ -122,7 +122,7 @@ class TokenIterator extends ArrayIterator {
 	}
 
 	/**
-	 * Skip tokens until we reach the wanted token. Return it. 
+	 * Skip tokens until we reach the wanted token, return it. 
 	 */
 	function nextOfKind( $wanted_token_index ) {
 		$found = false;
@@ -175,7 +175,7 @@ function analyze_file( $file ) {
 
 # Print usage when no source file given
 if( $argc == 1 ) {
-	die( "Usage: $argv[0] <PHP_source_file>\n" );
+	die( "Usage: $argv[0] <PHP_source_file> [<PHP_source_file> [...]]\n" );
 }
 array_shift( $argv );  // skip script name
 
