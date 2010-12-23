@@ -51,7 +51,7 @@ $messages['en'] = array(
 	'articlefeedback-pitch-createaccount-title' => 'Would you like to create an account?',
 	'articlefeedback-pitch-createaccount-message' => '-- message --',
 	'articlefeedback-pitch-createaccount-accept' => 'Create account',
-	'articlefeedback-pitch-makefirstedit-title' => 'Would you like to edit this article?',
+	'articlefeedback-pitch-makefirstedit-title' => 'Would you like to edit this page?',
 	'articlefeedback-pitch-makefirstedit-message' => '-- message --',
 	'articlefeedback-pitch-makefirstedit-accept' => 'Start editing',
 );
@@ -68,16 +68,16 @@ $messages['qqq'] = array(
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
 	'articlefeedback-desc' => '{{desc}}',
 	'articlefeedback-survey-question-whyrated' => 'This is a question in the survey with checkboxes for the answers. The user can check multiple answers.',
-	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-development' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-didntrate' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-other' => 'This is a possible answer for the "Why did you rate this article today?" survey question. The user can check this to fill out an answer that wasn\'t provided as a checkbox.
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-development' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-other' => 'This is a possible answer for the "Why did you rate this page today?" survey question. The user can check this to fill out an answer that wasn\'t provided as a checkbox.
 {{Identical|Other}}',
 	'articlefeedback-survey-question-useful' => 'This is a question in the survey with "yes" and "no" (prefswitch-survey-true and prefswitch-survey-false) as possible answers.',
 	'articlefeedback-survey-question-useful-iffalse' => 'This question appears when the user checks "no" for the "Do you believe the ratings provided are useful and clear?" question. The user can enter their answer in a text box.',
-	'articlefeedback-survey-question-expert' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articlefeedback-survey-question-expert' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
 	'articlefeedback-survey-question-expert-iftrue' => 'This question appears when the user checks "no" for the "Do you consider yourself an expert?" question. The user can enter their answer in a text box.',
 	'articlefeedback-survey-question-comments' => 'This is a question in the survey with a text box that the user can enter their answer in.',
 	'articlefeedback-survey-submit' => 'This is the caption for the button that submits the survey.
