@@ -46,10 +46,10 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 	pathIndex = 2;
 
 
-
-	# INITIALIZE DB ACCESS
-	# ===================
-
+	# Clear the records for hour ahead of adding 
+	#timestamp_raw_start = year + month + day + hour + min + '00'
+	#timestamp_raw_end = year + month + day + hour + min + '00'
+	#clear_recs_query = 'delete from landing_page where request_time >= \'' + +'\' and request_time < \' \'';
 
 	# SQL Statements
 
@@ -114,8 +114,12 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 				project = hostname[0]  				# wikimediafoundation.org
 				source_lang = hostname[0]
 			else:
-				project = hostname[0] if ( hostname[1] == 'wikimedia' ) else hostname[1]  # species.wikimedia vs en.wikinews
-				source_lang = hostname[0] if ( len(hostname[1]) < 5 ) else 'en'  # pl.wikipedia vs commons.wikimedia
+				try:
+					project = hostname[0] if ( hostname[1] == 'wikimedia' ) else hostname[1]  # species.wikimedia vs en.wikinews
+					source_lang = hostname[0] if ( len(hostname[1]) < 5 ) else 'en'  # pl.wikipedia vs commons.wikimedia
+				except:
+					project = ''
+					source_lang = 'en'
 			
 		# Process User agent string
 		# =====================
