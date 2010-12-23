@@ -76,6 +76,14 @@ $messages['eo'] = array(
 	'svgedit-desc' => 'Redakti desegnojn SVG en foliumilo per [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'svgedit-editor-save-close' => 'Gorde eta itxi',
+	'svgedit-editor-close' => 'Utzi',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

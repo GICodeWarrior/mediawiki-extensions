@@ -113,6 +113,13 @@ $messages['mk'] = array(
 	'categorymembersonsidebar-desc' => 'Додава членови на категорија во страничната лента',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'categorymembersonsidebar-desc' => 'Voegt categorieleden toe aan de zijbalk',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
