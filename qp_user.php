@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
  * 
- * @version 0.6.5
+ * @version 0.7.0
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
  */
@@ -52,7 +52,7 @@ qp_Setup::init();
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QPoll',
-	'version' => '0.6.5',
+	'version' => '0.7.0',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'descriptionmsg' => 'qp_desc',
@@ -60,7 +60,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'QPoll results page',
-	'version' => '0.6.5',
+	'version' => '0.7.0',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
 	'descriptionmsg' => 'qp_desc-sp',
@@ -161,8 +161,12 @@ class qp_Setup {
 
 	static function onLoadAllMessages() {
 		if ( !self::$messagesLoaded ) {
+			global $wgVersion;
 			self::$messagesLoaded = true;
-			wfLoadExtensionMessages('QPoll');
+			# for MW 1.15 (still being used by many customers)
+			if ( version_compare( $wgVersion, '1.16', '<' ) ) {
+				wfLoadExtensionMessages('QPoll');
+			}
 		}
 		return true;
 	}
@@ -236,7 +240,13 @@ class qp_Setup {
 	 * Register the extension with the WikiText parser.
 	 */
 	static function onParserFirstCallInit() {
-		global $wgOut;
+		global $wgOut, $wgTitle;
+		if ( !is_object( $wgTitle ) || $wgTitle->getNamespace() === NS_SPECIAL ) {
+			# special page will add it's proper module itself;
+			# 'ext.qpoll' and 'ext.qpoll.special.pollresults' currently are not
+			# designed to be used together
+			return true;
+		}
 		if ( class_exists( 'ResourceLoader' ) ) {
 			# MW 1.17+
 			// $wgOut->addModules( 'jquery' );
@@ -275,6 +285,13 @@ class qp_Setup {
 					array(
 						'scripts' => 'qp_user.js',
 						'styles' => 'qp_user.css'
+					),
+					$localpath,
+					$remotepath
+				),
+				'ext.qpoll.special.pollresults' => new ResourceLoaderFileModule(
+					array(
+						'styles' => 'qp_results.css'
 					),
 					$localpath,
 					$remotepath
@@ -321,7 +338,6 @@ class qp_AbstractPoll {
 	static $skin;
 	static $sOrderId = 0; // order of polls on the page (used for sorting of the output)
 	static $sPrevPollIDs = Array(); // used to check uniqueness of PollId on the page
-	static $messagesLoaded = false; // check whether the extension localized messages are loaded
 
 	var $parser; // parser for parsing tags content
 	var $ppframe; // parser context passed in MW 1.16+; unused in MW 1.15
@@ -358,7 +374,7 @@ class qp_AbstractPoll {
 		$this->mRequest = &$wgRequest;
 		$this->mResponse = $wgRequest->response();
 		# Determine which messages will be used, according to the language.
-		self::loadMessages();
+		qp_Setup::onLoadAllMessages();
 		# load current skin
 		if ( self::$skin === null ) {
 			self::$skin = $wgUser->getSkin();
@@ -433,14 +449,6 @@ class qp_AbstractPoll {
 	function isUniquePollId( $pollId ) {
 		return !in_array( $pollId, self::$sPrevPollIDs );
 	}
-
-	static function loadMessages() {
-		if ( !self::$messagesLoaded ) {
-			self::$messagesLoaded = true;
-			wfLoadExtensionMessages('QPoll');
-		}
-		return true;
-	}	
 
 	static function currentUserName() {
 		global $wgUser, $wgSquidServers;

@@ -23,3 +23,4 @@ http://pear.php.net/bugs/bug.php?id=2159
 
 18.09.2009: patch to Excel_Workbook.php
 Removed "& new" (create object by reference) because it is incompatible with future versions of PHP
+19.12.2010: tweaked for PHP 5.3 in E_STRICT mode
