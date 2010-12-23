@@ -39,6 +39,9 @@ $messages['be-tarask'] = array(
 	'livetranslate-translate-to' => 'Перакласьці гэту старонку на',
 	'livetranslate-button-translate' => 'Перакласьці',
 	'livetranslate-button-translating' => 'Ідзе пераклад…',
+	'livetranslate-dictionary-empty' => 'Пакуль што няма словаў у слоўніку. Націсьніце кнопку «рэдагаваць» каб дадаць.',
+	'livetranslate-dictionary-count' => 'Ёсьць $1 {{PLURAL:$1|слова|словы|словаў}} у $2 {{PLURAL:$2|мове|мовах|мовах}}. Націсьніце кнопку «рэдагаваць» каб дадаць болей.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Гэтая мова не дазволеная|Гэтыя мовы не дазволеныя}} у цяперашні момант як мэтавыя для перакладу: $1. Зьмяніце дазволеныя мовы ў Вашых наладах {{GRAMMAR:родны|{{SITENAME}}}}, ці выдаліце са слоўніка.',
 );
 
 /** Breton (Brezhoneg)
@@ -80,6 +83,19 @@ $messages['dsb'] = array(
 	'livetranslate-translate-to' => 'Pśełož toś ten boko do',
 	'livetranslate-button-translate' => 'Pśełožyś',
 	'livetranslate-button-translating' => 'Pśełožujo se...',
+	'livetranslate-button-revert' => 'Original pokazaś',
+	'livetranslate-dictionary-empty' => 'Hyšći njejsu žedne słowa w słowniku. Klikni na rejtark "wobźěłaś", aby někotare dodał.',
+	'livetranslate-dictionary-count' => '{{PLURAL:$1|Jo $1 słowo|Stej $1 słowje|Su $1 słowa|Jo $1 słowow}} w $2 {{PLURAL:$2|rěcy|rěcoma|rěcach|rěcach}}. Klikni na rejterk "wobźěłaś", aby dalšne dodał.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Toś ta rěc njejo|Toś tej rěcy njejstej|Toś te rěcy njejsu|Toś te rěcy njejsu}} tuchylu ako dowólony pśełožowański cel {{PLURAL:$2|nastajona|nastajonej|nastajone|nastajone}}: $1. Změń dowólone rěcy w konfiguraciji twójogo wikija abo wótpóraj te ze słownika.',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'livetranslate-button-translate' => 'Itzuli',
+	'livetranslate-button-translating' => 'Itzultzen...',
+	'livetranslate-button-revert' => 'Jatorrizkoa erakutsi',
 );
 
 /** Galician (Galego)
@@ -90,6 +106,7 @@ $messages['gl'] = array(
 	'livetranslate-translate-to' => 'Traducir esta páxina ao',
 	'livetranslate-button-translate' => 'Traducir',
 	'livetranslate-button-translating' => 'Traducindo...',
+	'livetranslate-button-revert' => 'Mostrar o orixinal',
 );
 
 /** Swiss German (Alemannisch)
@@ -114,6 +131,10 @@ $messages['hsb'] = array(
 	'livetranslate-translate-to' => 'Přełož tutu stronu do',
 	'livetranslate-button-translate' => 'Přełožić',
 	'livetranslate-button-translating' => 'Přełožuje so...',
+	'livetranslate-button-revert' => 'Original pokazać',
+	'livetranslate-dictionary-empty' => 'Hišće žane słowa w słowniku njejsu. Klikń na rajtark "wobdźěłać", zo by někotre přidał.',
+	'livetranslate-dictionary-count' => '{{PLURAL:$1|Je $1 słowo|Stej $1 słowje|Su $1 słowa|Je $1 słowow}} w $2 {{PLURAL:$2|rěči|rěčomaj|rěčach|rěčach}}. Klikń na rajtark $wobdźěłać", zo by dalše přidał.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Tuta rěč njeje |Tutej rěči njejstej|Tute rěče njejsu|Tute rěče njejsu}} tuchwilu jako dowoleny přełožowanski cil {{PLURAL:$2|nastajena|nastajenej|nastajene|nastajene}}: $1. Změń dowolene rěče w konfiguraciji twojeho wikija abo wotstroń je ze słownika.',
 );
 
 /** Interlingua (Interlingua)
@@ -158,6 +179,20 @@ $messages['mk'] = array(
 	'livetranslate-translate-to' => 'Преведи ја страницава на',
 	'livetranslate-button-translate' => 'Преведи',
 	'livetranslate-button-translating' => 'Преведувам...',
+	'livetranslate-button-revert' => 'Прикажи изворно',
+	'livetranslate-dictionary-empty' => 'Сè уште нема зборови во речникот. Стиснете на јазичето „уреди“ и додајте некои.',
+	'livetranslate-dictionary-count' => 'Има {{PLURAL:$1|$1 збор|$1 збора}} на $2 {{PLURAL:$2|јазик|јазици}}. Ситиснете на јазичето „уреди“ за да додадете уште.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Овој јазик моментално не е зададен|Овие јазици моментално не се зададени}} како допуштена преводна одредница: $1. Изменете ги допуштените јазици во вики-поставките, или пак отстранете ги постоечкиве од речникот.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'livetranslate-translate-to' => 'Pagina vertalen naar',
+	'livetranslate-button-translate' => 'Vertalen',
+	'livetranslate-button-translating' => 'Bezig met vertalen...',
+	'livetranslate-button-revert' => 'Origineel weergeven',
 );
 
 /** Piedmontese (Piemontèis)
@@ -203,6 +238,10 @@ $messages['ru'] = array(
 	'livetranslate-translate-to' => 'Перевести эту страницу на',
 	'livetranslate-button-translate' => 'Перевести',
 	'livetranslate-button-translating' => 'Выполняется перевод...',
+	'livetranslate-button-revert' => 'Показать оригинал',
+	'livetranslate-dictionary-empty' => 'В словаре ещё нет слов. Нажмите «править», чтобы добавить несколько.',
+	'livetranslate-dictionary-count' => '$1 {{PLURAL:$1|слово|слова|слов}} на $2 {{PLURAL:$2|языке|языках|языках}}. Нажмите «править», чтобы добавить ещё.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Этот язык|Эти языки}} не разрешено использовать в качестве цели перевода: $1. Измените разрешения в настройках вашей вики, или удалите их из словаря.',
 );
 
 /** Telugu (తెలుగు)
