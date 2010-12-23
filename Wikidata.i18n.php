@@ -1820,6 +1820,19 @@ $messages['bn'] = array(
 	'ow_nstab_edit_copy' => 'অনুলিপি সম্পাদনা',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Freeyak
+ */
+$messages['bo'] = array(
+	'langman_title' => 'སྐད་ཡིག་འདེམས་སྒྲིག',
+	'langman_langname' => 'སྐད་རིགས་ཀྱི་མིང་།',
+	'datasearch_meaning' => 'གོ་དོན།',
+	'ow_dm_OK' => 'ལགས་སོ།',
+	'ow_Class' => 'སྡེ་ཚན།',
+	'ow_ClassAttributeLevel' => 'ཚད།',
+	'ow_ClassAttributeType' => 'རིགས།',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
