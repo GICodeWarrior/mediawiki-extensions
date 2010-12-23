@@ -74,7 +74,7 @@ final class LiveTranslateHooks {
 			$outputDone = true;
 		}
 		else if ( $article->exists() 
-			&& ( count( $egLiveTranslateLanguages ) > 1 ) || count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) {
+			&& ( count( $egLiveTranslateLanguages ) > 1 || ( count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) ) ) {
 			$wgOut->addHTML(
 				'<span class="notranslate" id="livetranslatespan">' .
 				Html::rawElement(
@@ -127,17 +127,26 @@ final class LiveTranslateHooks {
 	 * 
 	 * @return true
 	 */	
-	public static function onSchemaUpdate( DatabaseUpdater $updater ) {
+	public static function onSchemaUpdate( /* DatabaseUpdater */ $updater = null ) {
 		global $wgDBtype, $egLiveTranslateIP;
 		
 		if ( $wgDBtype == 'mysql' ) {
 			// Set up the current schema.
-			$updater->addExtensionUpdate( array( 
-				'addTable',
-				'livetranslate',
-				$egLiveTranslateIP . '/LiveTranslate.sql',
-				true
-			) );
+			if ( $updater === null ) {
+				global $wgExtNewTables;
+				$wgExtNewTables[] = array(
+					'livetranslate',
+					$egLiveTranslateIP . '/LiveTranslate.sql'
+				);
+			}
+			else {
+				$updater->addExtensionUpdate( array( 
+					'addTable',
+					'livetranslate',
+					$egLiveTranslateIP . '/LiveTranslate.sql',
+					true
+				) );				
+			}		
 		}
 		
 		return true;

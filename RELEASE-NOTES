@@ -4,6 +4,12 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Live_Tr
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/RELEASE-NOTES?view=co
 
 
+=== Version 0.2 ===
+201x-xx-xx
+
+* Fixed installation compatibility issue with MW 1.16.
+* Fixed display of translation control to only happen on existing pages.
+
 === Version 0.1 ===
 2010-12-22
 
