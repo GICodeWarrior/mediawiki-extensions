@@ -111,14 +111,19 @@
 		$( '#livetranslatebutton' ).attr( "disabled", false ).text( mediaWiki.msg( 'livetranslate-button-translate' ) );		
 		$( '#livetranslatebutton' ).click( setupTranslationFeatures );	
 		$( '#ltrevertbutton' ).click( showOriginal );	
-	}	
+	}
 	
 	$( '#livetranslatebutton' ).click( setupTranslationFeatures );	
 	$( '#ltrevertbutton' ).click( showOriginal );	
 	
 	function insertNoTranslateTags( words ) {
 		for ( i in words ) {
-			$( '#bodyContent *' ).replaceText( words[i], function( str ) { return '<span class="notranslate">' + str + '</span>' } );
+			$( '#bodyContent *' ).replaceText( 
+				eval( "/\\b" + words[i] + "\\b/gi" ), // If you know how to kill the evil eval, let me know :)
+				function( str ) {
+					return '<span class="notranslate">' + str + '</span>'
+				}
+			);
 		}
 	}
 	
