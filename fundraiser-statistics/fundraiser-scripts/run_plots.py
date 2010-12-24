@@ -8,7 +8,7 @@ Ryan Faulkner
 December 16th, 2010
 
 
-Pulls data from db9.faulkner and generates plots.
+Pulls data from storage3.faulkner and generates plots.
 
 
 """
@@ -34,3 +34,4 @@ blpr.run('LP', 'completion_rate')
 # Run the banner/lp plots
 blpr.run('LP-TEST', 'don_per_view')
 blpr.run('BAN-TEST', 'don_per_imp')
+blpr.run('BAN-TEST', 'click_rate')
