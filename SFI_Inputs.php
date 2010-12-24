@@ -343,23 +343,22 @@ JAVASCRIPT;
 	 * @return array of arrays of DateTimes
 	*/
 	static private function createRangesArray ( $rangesAsStrings ) {
-
 		// transform array of strings into array of array of dates
 		return array_map(
-				function( $range ) {
-
-					if ( strpos ( $range, '-' ) === FALSE ) { // single date
-						$date = date_create( $range );
-						return ( $date ) ? array( $date, clone $date ):null;
-					} else { // date range
-						$dates = array_map( "date_create", explode( '-', $range ) );
-						return  ( $dates[0] && $dates[1] ) ? $dates:null;
-					}
-
-				} ,
-				$rangesAsStrings
+			self::createRange(),
+			$rangesAsStrings
 		);
 
+	}
+	
+	private static function createRange( $range ) {
+		if ( strpos ( $range, '-' ) === FALSE ) { // single date
+			$date = date_create( $range );
+			return ( $date ) ? array( $date, clone $date ):null;
+		} else { // date range
+			$dates = array_map( "date_create", explode( '-', $range ) );
+			return  ( $dates[0] && $dates[1] ) ? $dates:null;
+		}		
 	}
 
 	/**
@@ -767,18 +766,7 @@ JAVASCRIPT;
 				// register disabled dates with datepicker
 				if ( count( $disabledDates ) ) {
 
-					$disabledDatesString = '[' . implode( ',', array_map( function ( $range ) {
-
-								$y0 = $range[0]->format( "Y" );
-								$m0 = $range[0]->format( "m" ) - 1;
-								$d0 = $range[0]->format( "d" );
-
-								$y1 = $range[1]->format( "Y" );
-								$m1 = $range[1]->format( "m" ) - 1;
-								$d1 = $range[1]->format( "d" );
-
-								return "[new Date({$y0}, {$m0}, {$d0}), new Date({$y1}, {$m1}, {$d1})]";
-							} , $disabledDates ) ) . ']';
+					$disabledDatesString = '[' . implode( ',', array_map( self::createDateString(), $disabledDates ) ) . ']';
 
 					$jstext .= "				jQuery(\"#input_{$sfgFieldNum}_show\").datepicker(\"option\", \"disabledDates\", $disabledDatesString);\n";
 
@@ -787,18 +775,7 @@ JAVASCRIPT;
 				// register highlighted dates with datepicker
 				if ( count( $highlightedDates ) ) {
 
-					$highlightedDatesString = '[' . implode( ',', array_map( function ( $range ) {
-
-								$y0 = $range[0]->format( "Y" );
-								$m0 = $range[0]->format( "m" ) - 1;
-								$d0 = $range[0]->format( "d" );
-
-								$y1 = $range[1]->format( "Y" );
-								$m1 = $range[1]->format( "m" ) - 1;
-								$d1 = $range[1]->format( "d" );
-
-								return "[new Date({$y0}, {$m0}, {$d0}), new Date({$y1}, {$m1}, {$d1})]";
-							} , $highlightedDates ) ) . ']';
+					$highlightedDatesString = '[' . implode( ',', array_map( self::createDateString(), $highlightedDates ) ) . ']';
 
 					$jstext .= "				jQuery(\"#input_{$sfgFieldNum}_show\").datepicker(\"option\", \"highlightedDates\", $highlightedDatesString);\n";
 
@@ -832,13 +809,25 @@ JAVASCRIPT;
 
 
 		}
-
+		
 		// add span for error messages (e.g. used for mandatory inputs)
 		$html .= Html::element( "span", array( "id" => "info_$sfgFieldNum", "class" => "errorMessage" ) );
 
 		$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
 
 		return array( $html, "" );
-
 	}
+	
+	private static function createDateString( $range ) {
+		$y0 = $range[0]->format( "Y" );
+		$m0 = $range[0]->format( "m" ) - 1;
+		$d0 = $range[0]->format( "d" );
+
+		$y1 = $range[1]->format( "Y" );
+		$m1 = $range[1]->format( "m" ) - 1;
+		$d1 = $range[1]->format( "d" );
+
+		return "[new Date({$y0}, {$m0}, {$d0}), new Date({$y1}, {$m1}, {$d1})]";		
+	}
+			
 }
