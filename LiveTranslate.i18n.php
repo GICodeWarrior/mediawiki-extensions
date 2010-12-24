@@ -22,6 +22,7 @@ $messages['en'] = array(
 	'livetranslate-button-translate' => 'Translate',
 	'livetranslate-button-translating' => 'Translating...',
 	'livetranslate-button-revert' => 'Show original',
+	'livetranslate-dictionary-error' => 'Could not obtain the live translate dictionary. No words will be treated as special during the translation process.',
 	
 	// Special words dictionary
 	'livetranslate-dictionary-empty' => 'There are no words in the dictionary yet. Click the "edit" tab to add some.',

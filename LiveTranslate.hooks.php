@@ -172,47 +172,5 @@ final class LiveTranslateHooks {
 		
 		return true;
 	}
-	
-	/**
-	 * Called every time wikitext is added to the OutputPage, after it is parsed but before it is added.
-	 * Wraps the words with special translations into no-translate tags.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param OutputPage $out
-	 * @param string $text
-	 * 
-	 * @return true
-	 */
-	public static function onOutputPageBeforeHTML( OutputPage &$out, &$text ) {
-		global $wgTitle;
 		
-		$currentLang = LiveTranslateFunctions::getCurrentLang( $wgTitle );	
-		$specialWords = LiveTranslateFunctions::getSpecialWordsForLang( $currentLang );
-		
-		$toggeledSpecials = array();
-		
-		foreach ( $specialWords as $word ) {
-			$toggledWord = LiveTranslateFunctions::getToggledCase( $word );
-			
-			if ( $toggledWord ) {
-				$toggeledSpecials[] = $toggledWord;
-			}
-		}
-		
-		foreach ( array_merge( $specialWords, $toggeledSpecials ) as $specialWord ) {
-			$text = str_replace( 
-				$specialWord , 
-				Html::element(
-					'span',
-					array( 'class' => 'notranslate', 'original' => $specialWord ),
-					$specialWord
-				), 
-				$text 
-			);
-		}
-		
-		return true;
-	}
-	
 }

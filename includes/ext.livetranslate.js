@@ -6,6 +6,16 @@
  */
 
 (function($) { $( document ).ready( function() {
+
+	/*
+	 * jQuery replaceText - v1.1 - 11/21/2009
+	 * http://benalman.com/projects/jquery-replacetext-plugin/
+	 * 
+	 * Copyright (c) 2009 "Cowboy" Ben Alman
+	 * Dual licensed under the MIT and GPL licenses.
+	 * http://benalman.com/about/license/
+	 */
+	$.fn.replaceText=function(b,a,c){return this.each(function(){var f=this.firstChild,g,e,d=[];if(f){do{if(f.nodeType===3){g=f.nodeValue;e=g.replace(b,a);if(e!==g){if(!c&&/</.test(e)){$(f).before(e);d.push(f)}else{f.nodeValue=e}}}}while(f=f.nextSibling)}d.length&&$(d).remove()})}
 	
 	var currentLang = window.sourceLang;
 	
@@ -31,13 +41,44 @@
 		}
 	}
 	
-	initiateTranslating = function() {
+	setupTranslationFeatures = function() {
+		$( this ).attr( "disabled", true ).text( mediaWiki.msg( 'livetranslate-button-translating' ) );
+		
 		if ( originalHtml === false ) {
-			originalHtml = $( '#bodyContent' ).html();
-		}		
-		
-		$( this ).attr( "disabled", true ).text( mediaWiki.msg( 'livetranslate-button-translating' ) );		
-		
+			$.getJSON(
+				wgScriptPath + '/api.php',
+				{
+					'action': 'query',
+					'format': 'json',
+					'list': 'livetranslate',
+					'ltlanguage': currentLang,
+				},
+				function( data ) {
+					if ( data.words ) {
+						insertNoTranslateTags( data.words );						
+					}
+					else if ( data.error && data.error.info ) {
+						alert( data.error.info );
+					}
+					else {
+						for ( i in data ) {
+							alert( mediaWiki.msg( 'livetranslate-dictionary-error' ) );
+							break;
+						}
+					}
+					
+					originalHtml = $( '#bodyContent' ).html();
+					
+					initiateTranslating();					
+				}
+			);			
+		}
+		else {
+			initiateTranslating();
+		}
+	}
+	
+	function initiateTranslating() {
 		var words = getSpecialWords();
 		var newLang = $( '#livetranslatelang' ).val();
 		
@@ -67,12 +108,19 @@
 	showOriginal = function() {
 		currentLang = window.sourceLang;
 		$( '#bodyContent' ).html( originalHtml );
-		$('#livetranslatebutton').click( initiateTranslating );	
-		$('#ltrevertbutton').click( showOriginal );	
+		$( '#livetranslatebutton' ).attr( "disabled", false ).text( mediaWiki.msg( 'livetranslate-button-translate' ) );		
+		$( '#livetranslatebutton' ).click( setupTranslationFeatures );	
+		$( '#ltrevertbutton' ).click( showOriginal );	
 	}	
 	
-	$('#livetranslatebutton').click( initiateTranslating );	
-	$('#ltrevertbutton').click( showOriginal );	
+	$( '#livetranslatebutton' ).click( setupTranslationFeatures );	
+	$( '#ltrevertbutton' ).click( showOriginal );	
+	
+	function insertNoTranslateTags( words ) {
+		for ( i in words ) {
+			$( '#bodyContent *' ).replaceText( words[i], function( str ) { return '<span class="notranslate">' + str + '</span>' } );
+		}
+	}
 	
 	function getSpecialWords() {
 		var words = [];
