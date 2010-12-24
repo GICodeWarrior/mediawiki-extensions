@@ -369,11 +369,11 @@ final class LiveTranslateFunctions {
 	 * @return mixed
 	 */
 	public static function getToggledCase( $text ) {
-		$isUpper = $text{0} == strtoupper( $text{0} );
-		$isLower = $text{0} == strtolower( $text{0} );
+		$isUpper = Language::firstChar( $text) == strtoupper( Language::firstChar( $text) );
+		$isLower = Language::firstChar( $text) == strtolower( Language::firstChar( $text) );
 		
 		if ( $isUpper XOR $isLower ) {
-			$text{0} = $isUpper ? strtolower( $text{0} ) : strtoupper( $text{0} );
+			$text = $isUpper ? Language::lcfirst( $text ) : Language::ucfirst( $text );
 			return $text;
 		}
 		else {
