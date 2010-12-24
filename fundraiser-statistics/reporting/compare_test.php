@@ -48,7 +48,7 @@ for ( $counter = 0; $counter < count($query_parts); $counter += 1)
 }
 
 //  Format the query based on the type
-if ($sql_file == "banner_test_by_banner.sql") {
+if ($sql_file == "banner_test_by_banner.sql" || $sql_file == "banner_test_by_lp.sql") {
 	$query1 = sprintf($query, '%','%','%','%','10','10', $start, $end, $item1, '%','%','%','%','10','10', $start, $end, $cmpgn1, $item1, '%','%','%','%','10','10', $start, $end, $cmpgn1, $item1);
 	$query2 = sprintf($query, '%','%','%','%','10','10', $start, $end, $item2, '%','%','%','%','10','10', $start, $end, $cmpgn2, $item2, '%','%','%','%','10','10', $start, $end, $cmpgn2, $item2);
 } elseif ($sql_file == "landing_compare.sql") {

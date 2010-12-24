@@ -20,7 +20,7 @@ import sys
 import datetime
 import MySQLdb
 import pylab
-
+import HTML
 
 import query_store as qs
 import miner_help as mh
@@ -171,6 +171,15 @@ class FundraiserReporting:
 			new_values.append(new_val)
 
 		return new_values
+	
+	# workaround for issue with tuple objects in HTML.py 
+	# MySQLdb returns unfamiliar tuple elements from its fetchall method
+	# this is probably a version problem since the issue popped up in 2.5 but not 2.6
+	def listify(row):
+		l = []
+		for i in row:
+			l.append(i)
+		return l
 	
 	def run_query(self, start_time, end_time, query_name, metric_name):
 		return
@@ -429,7 +438,8 @@ class BannerLPReporting(FundraiserReporting):
 
 		metric_lists = mh.AutoVivification()
 		time_lists = mh.AutoVivification()
-
+		# table_data = []		# store the results in a table for reporting
+		
 		# Load the SQL File & Format
 		filename = './sql/' + query_name + '.sql'
 		sql_stmnt = mh.read_sql(filename)
@@ -447,6 +457,10 @@ class BannerLPReporting(FundraiserReporting):
 			self.cur.execute(sql_stmnt)
 			
 			results = self.cur.fetchall()
+			
+			# Compile Table Data
+			# cpRow = self.listify(row)
+			# table_data.append(cpRow)
 			
 			for row in results:
 
@@ -502,6 +516,7 @@ class BannerLPReporting(FundraiserReporting):
 
 		self.close_db()
 		
+		# return [metric_lists, time_norm, table_data]
 		return [metric_lists, time_norm]
 		
 		
@@ -632,4 +647,78 @@ class BannerLPReporting(FundraiserReporting):
 		self.close_db()
 		
 		return [campaign, timestamp]
+		
+"""
+
+CLASS :: ^ConfidenceReporting^
+
+To be called primarily for reporting 
+
+"""
+
+class ConfidenceReporting(FundraiserReporting):
+	
+	def __init__(self, query_name, cmpgn1, cmpgn2, item_1, item_2, start_time , end_time, metric):
+		self.query_name = query_name
+		self.cmpgn1 = cmpgn1
+		self.cmpgn2 = cmpgn2
+		self.item1 = item1
+		self.item2 = item2
+		self.start_time = start_time
+		self.end_time = end_time
+		self.metric = metric
+
+	
+	def run_query(self):
+		
+		self.init_db()
+		query_obj = qs.query_store()
+		
+		metric_list_1 = mh.AutoVivification()
+		metric_list_2 = mh.AutoVivification()
+		time_list = mh.AutoVivification()
+		
+		# Load the SQL File & Format
+		filename = './sql/' + self.query_name + '.sql'
+		sql_stmnt = mh.read_sql(filename)
+		
+		query_name  = 'report_bannerLP_metrics'  # rename query to work with query store
+		sql_stmnt = query_obj.format_query(self.query_name, sql_stmnt, [self.start_time, self.end_time, self.cmpgn1, self.item1])
+		
+		time_index = query_obj.get_time_index(query_name)
+		metric_index = query_obj.get_metric_index(query_name, metric_name)
+		
+		# Composes the data for each banner
+		try:
+			err_msg = sql_stmnt
+			self.cur.execute(sql_stmnt)
+			
+			results = self.cur.fetchall()
+			
+			for row in results:
+
+				key_name = row[key_index]
+				
+				try:
+					metric_lists[key_name].append(row[metric_index])
+					time_lists[key_name].append(row[time_index])
+				except:
+					metric_lists[key_name] = list()
+					time_lists[key_name] = list()
+
+					metric_lists[key_name].append(row[metric_index])
+					time_lists[key_name].append(row[time_index])
+
+		except:
+			self.db.rollback()
+			sys.exit("Database Interface Exception:\n" + err_msg)
+		
+		self.close_db()
+		
+	def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
+		return
+		
+	def run(self):
+		self.run_query()
+		self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname)
 		

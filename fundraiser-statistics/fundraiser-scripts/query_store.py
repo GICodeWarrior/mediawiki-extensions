@@ -71,6 +71,21 @@ class query_store:
 			start_time = args[0]
 			sql_stmnt = sql_stmnt % (start_time)
 			
+		elif query_name == 'report_confidence_banner':
+			start = args[0]
+			end = args[1]
+			cmpgn = args[2]
+			banner = args[3]
+			sql_stmnt = sql_stmnt % ('%','%','%','%','10','10', start, end, banner, '%','%','%','%','10','10', start, end, cmpgn, banner, \
+			'%','%','%','%','10','10', start, end, cmpgn, banner)
+		
+		elif query_name == 'report_confidence_lp':
+			start = args[0]
+			end = args[1]
+			cmpgn = args[2]
+			banner = args[3]
+			sql_stmnt = sql_stmnt % ('%','%','%','%','10','10', start, end, cmpgn, banner, \
+			'%','%','%','%','10','10', start, end, cmpgn, banner)		
 		else:
 			print 'no such table\n'
 

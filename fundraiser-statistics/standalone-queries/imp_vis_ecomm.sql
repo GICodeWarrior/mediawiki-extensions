@@ -27,9 +27,9 @@
 
 use faulkner;
 
-set @s = '20101217185500';
-set @e = '20101217215500';
-set @campaign = '20101217JA033';
+set @s = '20101223183800';
+set @e = '20101224010000';
+set @campaign = '20101223JA056';
 
 
 drop table if exists query_bin_imp_vis_ecomm;
