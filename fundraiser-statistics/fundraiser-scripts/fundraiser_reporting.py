@@ -48,8 +48,8 @@ class FundraiserReporting:
 	def init_db(self):
 		""" Establish connection """
 		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 		""" Create cursor """
 		self.cur = self.db.cursor()
@@ -446,7 +446,7 @@ class BannerLPReporting(FundraiserReporting):
 		
 		query_name  = 'report_bannerLP_metrics'  # rename query to work with query store
 		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time, campaign])
-		
+		#print sql_stmnt
 		key_index = query_obj.get_banner_index(query_name)
 		time_index = query_obj.get_time_index(query_name)
 		metric_index = query_obj.get_metric_index(query_name, metric_name)
@@ -552,9 +552,9 @@ class BannerLPReporting(FundraiserReporting):
 		
 		# Current date & time
 		now = datetime.datetime.now()
-		#UTC = 8
-		#delta = datetime.timedelta(hours=UTC)
-		#now = now + delta
+		UTC = 8
+		delta = datetime.timedelta(hours=UTC)
+		now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
 		hours_back = 24
@@ -608,7 +608,7 @@ class BannerLPReporting(FundraiserReporting):
 			if min_elem < min_time:
 				min_time = min_elem
 		
-		ranges = [min_time, -1]
+		ranges = [min_time, 0]
 		
 		self.gen_plot(metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname)
 		
