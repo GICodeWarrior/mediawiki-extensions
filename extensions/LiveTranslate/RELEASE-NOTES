@@ -5,7 +5,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.2 ===
-201x-xx-xx
+2010-12-24
 
 * Fixed installation compatibility issue with MW 1.16.
 * Fixed display of translation control to only happen on existing pages.
