@@ -47,18 +47,20 @@ $wgExtensionMessagesFiles['LiveTranslate'] 			= $egLiveTranslateIP . '/LiveTrans
 
 $wgAutoloadClasses['LiveTranslateHooks'] 			= $egLiveTranslateIP . '/LiveTranslate.hooks.php';
 $wgAutoloadClasses['ApiLiveTranslate']	 			= $egLiveTranslateIP . '/api/ApiLiveTranslate.php';
+$wgAutoloadClasses['ApiQueryLiveTranslate']	 		= $egLiveTranslateIP . '/api/ApiQueryLiveTranslate.php';
 $wgAutoloadClasses['LiveTranslateFunctions']	 	= $egLiveTranslateIP . '/includes/LiveTranslate_Functions.php';
 
 $wgAPIModules['livetranslate'] = 'ApiLiveTranslate';
+$wgAPIListModules['livetranslate'] = 'ApiQueryLiveTranslate';
 
 $wgHooks['ArticleViewHeader'][] = 'LiveTranslateHooks::onArticleViewHeader';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LiveTranslateHooks::onSchemaUpdate';
 $wgHooks['ArticleSaveComplete'][] = 'LiveTranslateHooks::onArticleSaveComplete';
-$wgHooks['OutputPageBeforeHTML'][] = 'LiveTranslateHooks::onOutputPageBeforeHTML';
 
 $egLTJSMessages = array(
 	'livetranslate-button-translate',
 	'livetranslate-button-translating',
+	'livetranslate-dictionary-error',
 );
 
 // For backward compatibility with MW < 1.17.
@@ -70,7 +72,7 @@ if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
 	);
 	
 	$wgResourceModules['ext.livetranslate'] = $moduleTemplate + array(
-		'scripts' => 'includes/ext.livetranslate.js',
+		'scripts' => array( 'includes/ext.livetranslate.js' ),
 		'dependencies' => array(),
 		'messages' => $egLTJSMessages
 	);
