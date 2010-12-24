@@ -369,15 +369,15 @@ class PollResults extends SpecialPage {
 				# iterate through the voters of the current poll (there might be many)
 				while ( ( $limit = count( $voters = $pollStore->pollVotersPager( $offset ) ) ) > 0 ) {
 					$uvoices = $pollStore->questionVoicesRange( $qdata->question_id, array_keys( $voters ) );
-					# output square table of proposal / category answers for each uid in uvoices array
-					$voicesTable = array();
 					# get each of proposal votes for current uid
 					foreach ( $uvoices as $uid => &$pvoices ) {
+						# output square table of proposal / category answers for each uid in uvoices array
+						$voicesTable = array();
 						foreach( $qdata->ProposalText as $propkey => &$proposal_text ) {
 							$row = array_fill( 0, count( $qdata->Categories ), '' );
 							if ( isset( $pvoices[$propkey] ) ) {
 								foreach ( $pvoices[$propkey] as $catkey => $text_answer ) {
-									$row[$catkey] = $text_answer;
+									$row[$catkey] = qp_Excel::prepareExcelString( $text_answer );
 								}
 								if ( $spansUsed ) {
 									foreach( $row as $catkey=>&$cell ) {

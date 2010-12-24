@@ -280,7 +280,7 @@ class qp_PollStore {
 	 * iterates through the list of users who voted the current poll
 	 * @return mixed false on failure, array of (uid=>username) on success (might be empty)
 	 */
-	function pollVotersPager( $offset = 0, $limit = 10 ) {
+	function pollVotersPager( $offset = 0, $limit = 20 ) {
 		if ( $this->pid === null ) {
 			return false;
 		}
