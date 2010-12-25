@@ -23,9 +23,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'special404-desc',
 );
 
-$wgExtensionMessagesFiles['Special404'] = dirname( __FILE__ ) . '/Special404.i18n.php';
-$wgExtensionAliasesFiles['Special404'] = dirname( __FILE__ ) . '/Special404.alias.php';
+$dir = dirname( __FILE__ );
+$wgExtensionMessagesFiles['Special404'] = $dir . '/Special404.i18n.php';
+$wgExtensionAliasesFiles['Special404'] = $dir . '/Special404.alias.php';
 
 $wgSpecialPages['Error404'] = array( 'Special404' );
-$wgAutoloadClasses['Special404'] = dirname( __FILE__ ) . '/Special404_body.php';
+$wgAutoloadClasses['Special404'] = $dir . '/Special404_body.php';
 
