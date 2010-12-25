@@ -20,12 +20,25 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Brion Vibber <brion@pobox.com>
+ * @author EugeneZelenko
  */
 $messages['qqq'] = array(
 	'svgedit-editbutton-edit' => 'Text label on edit button on SVG File: pages',
 	'svgedit-editor-save-close' => 'Editor button to save the SVG file and close the editor',
-	'svgedit-editor-close' => 'Editor button to close the editor without saving',
+	'svgedit-editor-close' => 'Editor button to close the editor without saving
+{{Identical|Cancel}}',
 	'svgedit-desc' => 'Extension description displayed on [[Special:Version]]',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'svgedit-editbutton-edit' => 'Рэдагаваць малюнак',
+	'svgedit-editor-save-close' => 'Захаваць і зачыніць',
+	'svgedit-editor-close' => 'Скасаваць',
+	'svgedit-desc' => 'Рэдагаваньне SVG-малюнкаў у браўзэры з дапамогай [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
 /** Breton (Brezhoneg)
@@ -190,6 +203,16 @@ $messages['nl'] = array(
 	'svgedit-desc' => 'In de browser bewerken van SVG-tekeningen met [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'svgedit-editbutton-edit' => 'Rediger tegning',
+	'svgedit-editor-save-close' => 'Lagre og lukk',
+	'svgedit-editor-close' => 'Avbryt',
+	'svgedit-desc' => 'Nettleserredigering av SVG-tegninger med [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -218,6 +241,15 @@ $messages['ru'] = array(
 	'svgedit-editor-save-close' => 'Сохранить и закрыть',
 	'svgedit-editor-close' => 'Отмена',
 	'svgedit-desc' => 'Редактирование SVG-изображений в браузере с помощью [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'svgedit-editbutton-edit' => 'Uredi risbo',
+	'svgedit-editor-save-close' => 'Shrani in zapri',
+	'svgedit-editor-close' => 'Prekliči',
 );
 
 /** Telugu (తెలుగు)
