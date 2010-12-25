@@ -40,6 +40,7 @@ $messages['be-tarask'] = array(
 	'livetranslate-translate-to' => 'Перакласьці гэту старонку на',
 	'livetranslate-button-translate' => 'Перакласьці',
 	'livetranslate-button-translating' => 'Ідзе пераклад…',
+	'livetranslate-button-revert' => 'Паказаць арыгінал',
 	'livetranslate-dictionary-empty' => 'Пакуль што няма словаў у слоўніку. Націсьніце кнопку «рэдагаваць» каб дадаць.',
 	'livetranslate-dictionary-count' => 'Ёсьць $1 {{PLURAL:$1|слова|словы|словаў}} у $2 {{PLURAL:$2|мове|мовах|мовах}}. Націсьніце кнопку «рэдагаваць» каб дадаць болей.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Гэтая мова не дазволеная|Гэтыя мовы не дазволеныя}} у цяперашні момант як мэтавыя для перакладу: $1. Зьмяніце дазволеныя мовы ў Вашых наладах {{GRAMMAR:родны|{{SITENAME}}}}, ці выдаліце са слоўніка.',
@@ -71,6 +72,7 @@ $messages['de'] = array(
 	'livetranslate-button-translate' => 'Übersetze',
 	'livetranslate-button-translating' => 'Übersetze …',
 	'livetranslate-button-revert' => 'Originalinhalt anzeigen',
+	'livetranslate-dictionary-error' => 'Das Wörterbuch konnte nicht geladen werden. Daher werden die in ihm enthaltenen Wörter nicht während des Übersetzungsvorgangs berücksichtigt.',
 	'livetranslate-dictionary-empty' => 'Momentan befinden sich keine Vokabeln im Wörterbuch. Auf „Bearbeiten“ klicken, um welche hinzuzufügen.',
 	'livetranslate-dictionary-count' => 'Momentan {{PLURAL:$1|befindet sich $1 Wort|befinden sich $1 Wörter}} in $2 {{PLURAL:$2|Sprache|Sprachen}} im Wörterbuch. Auf „Bearbeiten“ klicken, um weitere hinzuzufügen.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Diese Sprache ist|Diese Sprachen sind}} momentan nicht zum Übersetzen zugelassen: $1. Entweder nun die Einstellung der übersetzbaren Sprachen in der Wikikonfiguration anpassen oder diese aus dem Wörterbuch entfernen.',
@@ -143,6 +145,14 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'livetranslate-desc' => 'Permitte le traduction in directo de contento de paginas usante le servicio Google Translate',
+	'livetranslate-translate-to' => 'Traducer iste pagina in',
+	'livetranslate-button-translate' => 'Traducer',
+	'livetranslate-button-translating' => 'Traduction in curso...',
+	'livetranslate-button-revert' => 'Monstrar original',
+	'livetranslate-dictionary-error' => 'Non poteva obtener le dictionario de traduction in directo. Nulle parola essera tractate como special durante le processo de traduction.',
+	'livetranslate-dictionary-empty' => 'Le dictionario non ha ancora parolas. Clicca sur le scheda "modificar" pro adder alcunes.',
+	'livetranslate-dictionary-count' => 'Il ha {{PLURAL:$1|$1 parola|$1 parolas}} in $2 {{PLURAL:$2|linguas|linguas}}. Clicca sur le scheda "modificar" pro adder alteres.',
+	'livetranslate-dictionary-unallowed-langs' => 'Iste {{PLURAL:$2|lingua|linguas}} non es actualmente definite como destinationes valide pro traduction: $1. Modifica le linguas permittite in le configuration de tu wiki, o remove istes del dictionario.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -153,6 +163,10 @@ $messages['id'] = array(
 	'livetranslate-translate-to' => 'Terjemahkan halaman ini ke',
 	'livetranslate-button-translate' => 'Terjemahkan',
 	'livetranslate-button-translating' => 'Menerjemahkan ...',
+	'livetranslate-button-revert' => 'Tampilkan yang asli',
+	'livetranslate-dictionary-empty' => 'Belum tersedia kata dalam kamus. Klik tab "sunting" untuk menambahkan.',
+	'livetranslate-dictionary-count' => 'Ada {{PLURAL:$1|$1 kata|$1 kata}} dalam $2 {{PLURAL:$2|bahasa|bahasa}}. Klik tab "sunting" untuk menambakan.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Bahasa ini|Bahasa-bahasa ini}} disetel sebagai target terjemahan: $1. Ubah bahasa yang diizinkan dalam konfigurasi wiki, atau hapus dari kamus.',
 );
 
 /** Italian (Italiano)
@@ -172,6 +186,20 @@ $messages['ja'] = array(
 	'livetranslate-button-translating' => '翻訳中...',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'livetranslate-desc' => 'Erméiglecht d\'live Iwwersetzen vu Säiteninhalt mam Service "Google Translate"',
+	'livetranslate-translate-to' => 'Iwwersetzt dës Säit op',
+	'livetranslate-button-translate' => 'Iwwersetzen',
+	'livetranslate-button-translating' => 'Iwwersetzen...',
+	'livetranslate-button-revert' => "D'Original weisen",
+	'livetranslate-dictionary-error' => 'De Live-Iwwersetzungs-Dictionnaire gouf net fonnt. Keng Wierder gi bei der Iwwersetzung als spezial ugekuckt.',
+	'livetranslate-dictionary-empty' => 'Et gëtt nach keng Wierder am Dictionnaire. Klickt op den "Änneren"-Tab fir der derbäizesetzen.',
+	'livetranslate-dictionary-count' => 'Et gëtt {{PLURAL:$1|ee Wuert|$1 Wierder}} a(n) {{PLURAL:$2|enger Sprooch|$2 Sproochen}}. Klickt den "Änneren"-Tab fir der derbäizesetzen.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -187,13 +215,29 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'livetranslate-translate-to' => 'Pagina vertalen naar',
+	'livetranslate-translate-to' => 'Pagina vertalen in het',
 	'livetranslate-button-translate' => 'Vertalen',
 	'livetranslate-button-translating' => 'Bezig met vertalen...',
 	'livetranslate-button-revert' => 'Origineel weergeven',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'livetranslate-desc' => 'Aktiverer live-oversettelse av sideinnhold ved hjelp av tjenesten Google Translate',
+	'livetranslate-translate-to' => 'Oversett denne siden til',
+	'livetranslate-button-translate' => 'Oversett',
+	'livetranslate-button-translating' => 'Oversetter...',
+	'livetranslate-button-revert' => 'Vis opprinnelig',
+	'livetranslate-dictionary-error' => 'Kunne ikke få tak i sanntidsoversettelsesordlisten. Ingen ord vil bli behandlet som spesielle under oversettelsesprosessen.',
+	'livetranslate-dictionary-empty' => 'Det er ingen ord i ordlisten ennå. Klikk på «rediger»-fanen for å legge til noen.',
+	'livetranslate-dictionary-count' => 'Det er {{PLURAL:$1|ett ord|$1 ord}} i $2 {{PLURAL:$2|språk|språk}}. Klikk på «rediger»-fanen for å legge til flere.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Dette språket|Disse språkene}} er for øyeblikket ikke satt som tillatte oversettelsesmål: $1. Endre tillatte språk i din wikis konfigurasjon eller fjern disse fra ordlisten.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -215,6 +259,7 @@ $messages['pt'] = array(
 	'livetranslate-button-translate' => 'Traduzir',
 	'livetranslate-button-translating' => 'A traduzir...',
 	'livetranslate-button-revert' => 'Mostrar original',
+	'livetranslate-dictionary-error' => 'Não foi possível obter o dicionário de tradução imediata. Durante o processo de tradução, nenhuma palavra será considerada especial.',
 	'livetranslate-dictionary-empty' => 'Ainda não existem palavras no dicionário. Clique o separador "editar" para adicionar algumas.',
 	'livetranslate-dictionary-count' => '{{PLURAL:$1|Existe $1 palavra|Existem $1 palavras}} de $2 {{PLURAL:$2|língua|línguas}}. Clique o separador "editar" para acrescentar mais.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Esta língua não está definida como destino válido|Estas línguas não estão definidas como destinos válidos}} para tradução: $1. Altere na configuração da wiki as línguas permitidas, ou remova estas do dicionário.',
