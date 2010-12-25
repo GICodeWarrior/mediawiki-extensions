@@ -107,6 +107,13 @@ $messages['ja'] = array(
 	'snmpquery-desc' => 'SNMPgetとSNMPwalk関数を追加し、ウィキへデータを返す',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'snmpquery-desc' => 'Brängk de Funxjohne <code lang="en">SNMPget</code> un <code lang="en">SNMPwalk</code> en et Wiki.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -119,6 +126,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'snmpquery-desc' => 'Voegt de functies SNMPget en SNMPwalk toe en levert deze gegevens aan de wiki',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'snmpquery-desc' => 'Legg til funksjonene SNMPget og SNMPwalk og returner dataene inn i wikien',
 );
 
 /** Polish (Polski)
