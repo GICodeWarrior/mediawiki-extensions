@@ -160,6 +160,18 @@ $messages['nl'] = array(
 	'right-SPMsetup' => 'Basisinstellingen voor semantisch projectmanagement bewerken',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'spm_wbs_link' => 'MS Project XML-eksport',
+	'spm_printername_wbs' => 'MS Project-eksport',
+	'spm-name' => 'Semantic Project Management',
+	'semanticprojectmanagement-desc' => 'Project Management Formats for Semantic MediaWiki «inline»-spørringer',
+	'semanticprojectmanagement' => 'Semantic Project Management',
+	'right-SPMsetup' => 'Rediger grunnleggende semantic project management innstillinger',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
