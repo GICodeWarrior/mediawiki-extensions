@@ -12,17 +12,13 @@ $messages = array();
  * @author Daniel Friesen
  */
 $messages['en'] = array(
-	'special404-desc' => "Provides a 404 special page destination for 404 Not Found errors.",
-	'error404' => "404 Not Found",
-	'special404-body' => <<<MSG
-The URL you requested was not found.
+	'special404-desc' => 'Provides a 404 special page destination for 404 Not found errors',
+	'error404' => '404 Not found',
+	'special404-body' => 'The URL you requested was not found.
 
-Did you mean to type [{{fullurl:$1}} {{fullurl:$1}}]?
+Did you mean to type {{fullurl:$1}}?
 
 Maybe you would like to look at:
-* [[{{int:mainpage}}|The main page]]
-
-MSG
-	,
+* [[{{int:mainpage}}|The main page]]',
 );
 
