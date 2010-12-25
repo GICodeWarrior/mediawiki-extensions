@@ -3008,7 +3008,7 @@ $messages['eu'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Luzapenak',
 	'configure-ext-doc' => 'Lineako dokumentazioa ikusi',
-	'configure-ext-settings' => 'Konfigurazioa',
+	'configure-ext-settings' => 'Hobespenak',
 	'configure-ext-use-extension' => 'Luzapen hau erabili',
 	'configure-form-reason' => 'Arrazoia:',
 	'configure-arrayinput-oneperline' => "''(bat lerro bakoitzeko)''",
@@ -11522,6 +11522,7 @@ $messages['yi'] = array(
 	'configure-throttle-action-move' => 'באַװעגן',
 	'configure-throttle-action-rollback' => 'צוריקדרייען',
 	'configure-throttle-group' => 'טיפ',
+	'configure-condition-name-5' => 'באַניצערס IP אַדרעס',
 	'configure-condition-description-3' => 'ע-פּאָסט באַשטעטיקט',
 );
 
