@@ -272,6 +272,13 @@ $messages['de'] = array(
 	'ea-allusers' => 'Alle Benutzer',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'e-mailpage' => 'Σελίδα ηλεκτρονικού ταχυδρομείου',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -567,8 +574,10 @@ $messages['km'] = array(
 $messages['lb'] = array(
 	'e-mailpage' => 'Säit per Mail schécken',
 	'ea-heading' => '=== Säit [[$1]] peer E-Mail verschécken ===',
+	'ea-group-info' => "Zousätzlech kënnt Dir d'Säit de Membere vun engem Grupp schécken",
 	'ea-pagesend' => 'D\'Säit "$1" gouf verschéckt vum $2',
 	'ea-norecipients' => 'Keng gëlteg E-Mailadress fonnt',
+	'ea-listrecipients' => '=== {{PLURAL:$1|Destinataire|Lëscht vun de(n) $1 Destinatairen}} ===',
 	'ea-error' => "'''Feeler beim Verschécke vun der Säit [[$1]]:''' ''$2''",
 	'ea-denied' => 'Rechter refuséiert',
 	'ea-show' => 'Adressate weisen',
@@ -580,6 +589,7 @@ $messages['lb'] = array(
 	'ea-message' => 'Message:',
 	'ea-style' => 'Style:',
 	'ea-selectcss' => "Dir kënnt een ''CSS Stylesheet'' eraussichen",
+	'ea-data' => 'Donnéeën',
 	'ea-allusers' => 'All Benotzer',
 );
 
@@ -714,7 +724,7 @@ $messages['no'] = array(
 	'ea-heading' => '=== Send siden [[$1]] som e-post ===',
 	'ea-group-info' => 'I tillegg kan du sende siden til medlemmene av en gruppe',
 	'ea-pagesend' => 'Siden «$1» sendt fra $2',
-	'ea-nopage' => 'Oppgi en side du vil sende, for eksempel [[Special:e-mailpage/{{MediaWiki:Mainpage-url}}]].',
+	'ea-nopage' => 'Ingen side ble angitt for sending, bruk e-postlenken fra sidepanelet eller sidehandlinger.',
 	'ea-norecipients' => 'Ingen gyldige e-postadresser funnet.',
 	'ea-listrecipients' => '=== Liste over $1 {{PLURAL:$1|mottaker|mottakere}} ===',
 	'ea-error' => "'''Feil under sending av [[$1]]:''' ''$2''",
@@ -729,7 +739,12 @@ $messages['no'] = array(
 	'ea-send' => 'Send',
 	'ea-subject' => 'Emne:',
 	'ea-message' => 'Melding:',
+	'ea-message-info' => 'Heng på innhold foran med valgfri wikitekstmelding',
+	'ea-style' => 'Stil:',
 	'ea-selectcss' => 'Du kan velge et stilark',
+	'ea-data' => 'Data',
+	'ea-selectrecord' => 'Disse malene kan brukes til å fylle ut felt i meldingsinnholdet',
+	'ea-allusers' => 'Alle brukere',
 );
 
 /** Occitan (Occitan)

@@ -260,6 +260,7 @@ $messages['hsb'] = array(
 	'ts-citegen-Option-add-references' => 'Taflički <ref> wokoło citowanskich předłohow přidać',
 	'ts-citegen-Option-add-list' => 'Wikilisćinu citowacych předłohow wutworić',
 	'ts-citegen-Output-title' => 'Wuslědk',
+	'ts-citegen-Output-select-disclaimer' => 'Wuběranje předłohoweje rěče njegarantuje, zo specifiska předłoha w twojej rěči k dispoziciji steji. Tute polo naliča k dispoziciji stejace rěče kóždeje podpěrowaneje předłohi, t. r. móže so Francošćina zwobraznić, dokelž so jenož "Cite book" podpěruje.',
 	'ts-citegen-Wrong-input' => '%s: njeidentifikowany jako korektne zapodaće.',
 	'ts-citegen-Parsers' => 'Parsery',
 	'ts-citegen-Skins' => 'Wudaće',
@@ -272,6 +273,7 @@ $messages['hsb'] = array(
 	'ts-citegen-Sidebar-add-Firefox' => 'K bóčnicy přidać',
 	'ts-citegen-Sidebar-add-Opera' => 'Hotlistej Opery přidać',
 	'ts-citegen-Sidebar-add-IE-Mac' => 'Page Holderej přidać',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Hdyž strona je začitana. wočiń swój Page holder, klikń na "Přidać", potom wužij tłočatko faworitow w Page Holder, zo by ju jako faworit w Page Hodler składował.',
 	'ts-citegen-Tools' => 'Nastroje',
 	'ts-citegen-Other-languages' => 'Druhe rěče',
 	'ts-citegen-Save-it' => 'Aktualne naprašowanje',
@@ -444,6 +446,41 @@ $messages['nl'] = array(
 	'ts-citegen-Errors-title' => 'Fouten',
 	'ts-citegen-Unavailable-SQL' => 'Fout: de Toolserverdatabase is niet beschikbaar. MySQL gaf de volgende foutmelding: %s',
 	'ts-citegen-base-disabled' => 'Fout: de database database %s is niet beschikbaar.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'ts-citegen-Title' => 'Sitat-malgenerator',
+	'ts-citegen-Send' => 'Generer',
+	'ts-citegen-Input-title' => 'Inndata',
+	'ts-citegen-Input-text' => 'Dette er en sitatmalgenerator. Ved å bruke den kan du raskt fylle ut sitatmaler på forskjellige språkversjoner av Wikipedia. Fyll ut dataene (%s) i feltene nedenfor og skriptet vil prøve å fullføre malene. Husk, det spiller ingen rolle hvilke felt du setter inndataene i. Skriptet vil automatisk finne den riktige malen samsvarende med de gitte inndatene.',
+	'ts-citegen-Option-append-author-link' => 'Tilføy forfatterwikilenkene inn i malen',
+	'ts-citegen-Option-append-newlines' => 'Tilføy nye linjer etter hver parameter',
+	'ts-citegen-Option-add-references' => 'Legg til <ref>-element rundt sitatmalene',
+	'ts-citegen-Option-add-list' => 'Opprett en wikiliste over sitatmaler',
+	'ts-citegen-Output-title' => 'Resultat',
+	'ts-citegen-Output-select-disclaimer' => 'Å velge et malspråk garanterer ikke at den spesifikke malen er tilgjengelig på ditt språk. Dette feltet lister opp tilgjengelige språk for hver støttet mal, dvs. den kan vise fransk fordi kun {{Cite book}} er støttet.',
+	'ts-citegen-Wrong-input' => '%s: ikke identifisert som korrekt inndata.',
+	'ts-citegen-Parsers' => 'Tolkere',
+	'ts-citegen-Skins' => 'Utdata',
+	'ts-citegen-Skin-skins' => 'Drakter',
+	'ts-citegen-Skin-outputformat' => 'Utdataformat',
+	'ts-citegen-Template-lang' => 'Malspråk',
+	'ts-citegen-Sources-title' => 'Kilder',
+	'ts-citegen-Sources-text' => 'Nedenfor er listen over brukte kilder tilgjengelig.',
+	'ts-citegen-Sidebar-title' => 'Sitatgenerator',
+	'ts-citegen-Sidebar-add-Firefox' => 'Legg til sidepanelet',
+	'ts-citegen-Sidebar-add-Opera' => 'Legg til Favorittlisten',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Legg til i Page Holder',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => "Når siden er lastet, åpne din Page Holder, klikk 'Add' og bruk Page Holder sin Favorites-knapp for å lagre den som en Page Holder Favorite.",
+	'ts-citegen-Tools' => 'Verktøy',
+	'ts-citegen-Other-languages' => 'Andre språk',
+	'ts-citegen-Save-it' => 'Gjeldende spørring',
+	'ts-citegen-Errors-title' => 'Feil',
+	'ts-citegen-Unavailable-SQL' => 'Feil: Verktøytjenerdatabasen er ikke tilgjengelig. MySQL returnerte: %s',
+	'ts-citegen-base-disabled' => 'Feil: % s-databasen er ikke tilgjengelig',
 );
 
 /** Polish (Polski)

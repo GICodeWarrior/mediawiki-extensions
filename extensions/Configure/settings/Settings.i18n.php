@@ -21545,9 +21545,11 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'configure-setting-wgActionPaths-value' => 'URL שאַבלאן',
 	'configure-setting-wgArticleRobotPolicies-key' => 'בלאַטנאָמען:',
 	'configure-setting-wgExtraLanguageNames-key' => 'שפּראַך קאָד',
 	'configure-setting-wgExtraLanguageNames-value' => 'נאָמען',
+	'configure-setting-wgVersion' => 'מעדיעוויקי ווערסיע',
 	'configure-setting-wgSpecialPageGroups-key' => 'גרופע',
 	'configure-setting-wgDebugLogGroups-value' => 'טעקע',
 	'configure-setting-wgXhtmlNamespaces-key' => 'נאָמענטייל',

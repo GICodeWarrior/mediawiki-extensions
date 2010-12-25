@@ -387,6 +387,32 @@ Voorbeelden:
 	'flagpage-tab' => 'Markeren',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'flagpage' => 'Flagg en side',
+	'flagpage-desc' => 'Flagg en side med forhåndsdefinerte maler',
+	'flagpage-templatelist' => '<!--
+Rediger denne siden for å konfigurere hvilke maler å bruke.
+Eksempler:
+* [[Mal:Referanseløs|Denne siden trenger kildehenvisninger]]
+* [[Mal:Objektivitet|Denne sidens objektivitet er omstridt]]
+* [[Mal:Sletting|Denne siden har blitt forslått slettet]]
+-->',
+	'flagpage-nopageselectedtitle' => 'Ingen side er valgt',
+	'flagpage-nopageselected' => 'Du spesifiserte ikke en side',
+	'flagpage-emptylisttitle' => 'Ingen maler konfigurert',
+	'flagpage-emptylist' => 'Du må konfigurere din liste over maler. Rediger [[{{ns:8}}:flagpage-templatelist]] for å gjøre det nå.',
+	'flagpage-preview' => 'Forhåndsvisning av den valgte malen:',
+	'flagpage-confirmsave' => 'Bekreft endringene dine.',
+	'flagpage-submitbutton' => 'Lagre siden med denne malen',
+	'flagpage-nonexistent' => 'Siden «$1» finnes ikke. Kanskje den har blitt [{{fullurl:Special:Log|page=$1}} flyttet eller slettet].',
+	'flagpage-summary' => 'La til malen [[$1]] ved hjelp av FlagPage',
+	'flagpage-success' => '[[$1]] har blitt lagt til siden [[$2]].',
+	'flagpage-tab' => 'Flagg',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
