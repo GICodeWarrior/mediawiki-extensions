@@ -89,6 +89,13 @@ $messages['cs'] = array(
 	'gnuplot-desc' => 'Přidává značku <code><nowiki>&lt;gnuplot&gt;</nowiki></code> pro použití Gnuplot',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'gnuplot-desc' => 'Tilføjer tagget <code><nowiki><gnuplot></nowiki></code> til brug af Gnuplot',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'gnuplot-desc' => 'Fügt den <code><nowiki><gnuplot></nowiki></code>-Tag hinzu, um Gnuplot zu verwenden',
