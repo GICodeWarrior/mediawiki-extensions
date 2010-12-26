@@ -341,6 +341,18 @@ $messages['nl'] = array(
 	'ts-kml-on-ol-map-by' => 'Kaart door',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'ts-kml-on-ol-options' => 'Val',
+	'ts-kml-on-ol-languages' => 'Språk',
+	'ts-kml-on-ol-thumbnails' => 'Miniatyrbilete',
+	'ts-kml-on-ol-help' => 'Hjelp',
+	'ts-kml-on-ol-all' => 'Alle',
+	'ts-kml-on-ol-map-by' => 'Kartet er frå',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
