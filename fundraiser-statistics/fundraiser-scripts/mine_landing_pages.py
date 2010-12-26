@@ -17,6 +17,7 @@ October 30th, 2010
 import sys
 import urlparse as up
 import httpagentparser
+import math
 
 import cgi	# web queries
 import re		# regular expression matching
@@ -45,18 +46,33 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 	queryIndex = 4;
 	pathIndex = 2;
 
-
-	# Clear the records for hour ahead of adding 
-	#timestamp_raw_start = year + month + day + hour + min + '00'
-	#timestamp_raw_end = year + month + day + hour + min + '00'
-	#clear_recs_query = 'delete from landing_page where request_time >= \'' + +'\' and request_time < \' \'';
-
-	# SQL Statements
+	""" SQL Statements """
 
 	insertStmt_lp = 'INSERT INTO landing_page (utm_source, utm_campaign, utm_medium, landing_page,' + \
 	'page_url, referrer_url, browser, lang, country, project, ip, request_time) values '
 
-
+	""" Clear the records for hour ahead of adding """
+	time_stamps = mh.get_timestamps(logFileName)
+	
+	start = time_stamps[0]
+	end = time_stamps[1]
+	
+	# Ensure that the range is correct; otherwise abort - critical that outside records are not deleted
+	time_diff = mh.get_timestamps_diff(start, end) 
+		
+	if math.fabs(time_diff) <= 1.0:
+		deleteStmnt = 'delete from landing_page where request_time >= \'' + start + '\' and request_time < \'' + end + '\';'
+		
+		try:
+			# cur.execute(deleteStmnt)
+			print >> sys.stdout, "Executed delete from landing page: " + deleteStmnt
+		except:
+			print >> sys.stderr, "Could not execute delete:\n" + deleteStmnt + "\nResuming insert ..."
+			pass
+	else:
+		print >> sys.stdout, "Could not execute delete statement, DIFF too large\ndiff = " + str(time_diff) + "\ntime_start = " + start + "\ntime_end = " + end + "\nResuming insert ..."
+	
+	
 	# PROCESS LOG FILE
 	# ================
 	line = logFile.readline()

@@ -16,6 +16,7 @@ October 30th, 2010
 import MySQLdb
 import sys
 import urlparse as up
+import math
 
 import cgi
 import re
@@ -43,6 +44,28 @@ def mine_impression_requests(run_id, logFileName, db, cur):
 	hr_change = 0
 	clamp = 0
 
+	""" Clear the records for hour ahead of adding """
+	time_stamps = mh.get_timestamps(logFileName)
+	
+	start = time_stamps[0]
+	end = time_stamps[1]
+	
+	# Ensure that the range is correct; otherwise abort - critical that outside records are not deleted
+	time_diff = mh.get_timestamps_diff(start, end) 
+		
+	if math.fabs(time_diff) <= 1.0:
+		deleteStmnt = 'delete from impression where on_minute >= \'' + start + '\' and on_minute < \'' + end + '\';'
+		
+		try:
+			# cur.execute(deleteStmnt)
+			print >> sys.stdout, "Executed delete from landing page: " + deleteStmnt
+		except:
+			print >> sys.stderr, "Could not execute delete:\n" + deleteStmnt + "\nResuming insert ..."
+			pass
+	else:
+		print >> sys.stdout, "Could not execute delete statement, DIFF too large\ndiff = " + str(time_diff) + "\ntime_start = " + start + "\ntime_end = " + end + "\nResuming insert ..."
+	
+	
 	# PROCESS LOG FILE
 	# ================
 
