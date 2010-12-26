@@ -114,6 +114,13 @@ $messages['ksh'] = array(
 	'snmpquery-desc' => 'Brängk de Funxjohne <code lang="en">SNMPget</code> un <code lang="en">SNMPwalk</code> en et Wiki.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'snmpquery-desc' => "Setzt SNMPget an SNMPwalk-Fonctiounen derbäi a setzt d'Donnéeën an d'Wiki",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
