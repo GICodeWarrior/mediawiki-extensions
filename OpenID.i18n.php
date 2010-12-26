@@ -4578,6 +4578,7 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  * @author Kaganer
  * @author Lockal
+ * @author Putnik
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -4620,7 +4621,7 @@ $messages['ru'] = array(
 	'openidchooseurl' => 'Имя, полученное из вашего OpenID ($1)',
 	'openidchooseauto' => 'Автоматически созданное имя ($1)',
 	'openidchoosemanual' => 'Имя на ваш выбор:',
-	'openidchooseexisting' => 'Существующая учётная запись на этой вики',
+	'openidchooseexisting' => 'Существующая учётная запись в этой вики',
 	'openidchooseusername' => 'имя участника:',
 	'openidchoosepassword' => 'Пароль:',
 	'openidconvertinstructions' => 'Эта форма позволяет вам сменить использование вашей учётной записи на использование адреса OpenID, добавить несколько адресов OpenID.',
@@ -4636,7 +4637,7 @@ $messages['ru'] = array(
 	'openidbadusername' => 'Указано неверное имя участника.',
 	'openidautosubmit' => 'Эта страница содержит форму, которая должна быть автоматически отправлена, если у вас включён JavaScript.
 Если этого не произошло, попробуйте нажать на кнопку «Продолжить».',
-	'openidclientonlytext' => 'Вы не можете использовать учётные записи с этой вики, как OpenID на другом сайте.',
+	'openidclientonlytext' => 'Вы не можете использовать учётные записи из этой вики как OpenID на другом сайте.',
 	'openidloginlabel' => 'Адрес OpenID',
 	'openidlogininstructions' => '{{SITENAME}} поддерживает стандарт [http://openid.net/ OpenID], позволяющий использовать одну учётную запись для входа на различные веб-сайты.
 OpenID позволяет вам заходить на различные веб-сайты без указания разных паролей для них
