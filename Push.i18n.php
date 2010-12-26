@@ -622,6 +622,8 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Krinkle
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -641,7 +643,7 @@ $messages['nl'] = array(
 	'push-tab-title' => 'Bezig met het verzenden van $1',
 	'push-targets' => "Doelwiki's",
 	'push-add-target' => 'Doelwiki toevoegen',
-	'push-import-revision-message' => 'Verzonden vanuit $1 door $2.',
+	'push-import-revision-message' => 'Verzonden vanuit $1.',
 	'push-tab-no-targets' => "Er zijn geen beschikbare doelwiki's. Voeg deze eerst toe aan uw LocalSettings.php-bestand.",
 	'push-tab-push-to' => 'Verzenden naar $1',
 	'push-remote-pages' => "Pagina's in andere wiki's",
@@ -655,6 +657,8 @@ $messages['nl'] = array(
 	'push-tab-inc-templates' => 'Sjablonen ook verzenden',
 	'push-tab-used-templates' => '{{PLURAL:$2|Gebruikt sjabloon|Gebruikte sjablonen}}: $1',
 	'push-tab-no-used-templates' => 'Er worden geen sjablonen gebruikt op deze pagina.',
+	'push-tab-files-override' => 'Deze bestanden bestaan al: $1',
+	'push-tab-template-override' => 'Deze sjablonen bestaan al: $1',
 	'special-push' => "Pagina's verzenden",
 	'push-special-description' => "Via deze pagina kunt u de inhoud van een of meer pagina's naar een of meer MediaWiki-wiki's verzenden.
 
