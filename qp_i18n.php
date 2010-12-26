@@ -1978,6 +1978,7 @@ $messages['pms'] = array(
 	'qp_results_line_qpl' => 'Pàgina "$1" Sondagi "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Pàgina "$2" Sondagi "$3" ]',
 	'qp_export_to_xls' => 'Espòrta statìstiche an formà XLS',
+	'qp_voices_to_xls' => 'Espòrta vos an formà XLS',
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|utent|utent}} a l'han arspondù a la custion",
 	'qp_func_no_such_poll' => 'Ël sondagi a esist pa ($1)',
 	'qp_func_missing_question_id' => "Për piasì specìfica n'id ëd custion esistent (partend da 1) për ël sondagi $1",
