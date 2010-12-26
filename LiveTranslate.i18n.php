@@ -46,6 +46,14 @@ $messages['be-tarask'] = array(
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Гэтая мова не дазволеная|Гэтыя мовы не дазволеныя}} у цяперашні момант як мэтавыя для перакладу: $1. Зьмяніце дазволеныя мовы ў Вашых наладах {{GRAMMAR:родны|{{SITENAME}}}}, ці выдаліце са слоўніка.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'livetranslate-button-translate' => 'Превеждане',
+	'livetranslate-button-translating' => 'Превеждане...',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -99,6 +107,16 @@ $messages['eu'] = array(
 	'livetranslate-button-translate' => 'Itzuli',
 	'livetranslate-button-translating' => 'Itzultzen...',
 	'livetranslate-button-revert' => 'Jatorrizkoa erakutsi',
+);
+
+/** French (Français)
+ * @author Crochet.david
+ */
+$messages['fr'] = array(
+	'livetranslate-translate-to' => 'Traduire cette page en',
+	'livetranslate-button-translate' => 'Traduire',
+	'livetranslate-button-translating' => 'Traduction en cours...',
+	'livetranslate-button-revert' => 'Afficher l’original',
 );
 
 /** Galician (Galego)
@@ -164,6 +182,7 @@ $messages['id'] = array(
 	'livetranslate-button-translate' => 'Terjemahkan',
 	'livetranslate-button-translating' => 'Menerjemahkan ...',
 	'livetranslate-button-revert' => 'Tampilkan yang asli',
+	'livetranslate-dictionary-error' => 'Tidak dapat memperoleh kamus penerjemahan langsung. Tidak ada kata yang diperlakukan secara khusus selama proses penerjemahan.',
 	'livetranslate-dictionary-empty' => 'Belum tersedia kata dalam kamus. Klik tab "sunting" untuk menambahkan.',
 	'livetranslate-dictionary-count' => 'Ada {{PLURAL:$1|$1 kata|$1 kata}} dalam $2 {{PLURAL:$2|bahasa|bahasa}}. Klik tab "sunting" untuk menambakan.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Bahasa ini|Bahasa-bahasa ini}} disetel sebagai target terjemahan: $1. Ubah bahasa yang diizinkan dalam konfigurasi wiki, atau hapus dari kamus.',
@@ -209,6 +228,7 @@ $messages['mk'] = array(
 	'livetranslate-button-translate' => 'Преведи',
 	'livetranslate-button-translating' => 'Преведувам...',
 	'livetranslate-button-revert' => 'Прикажи изворно',
+	'livetranslate-dictionary-error' => 'Не можев да го добијам речникот за преведување во живо. Ниеден збор нема да се смета за посебен во текот на преводната постапка.',
 	'livetranslate-dictionary-empty' => 'Сè уште нема зборови во речникот. Стиснете на јазичето „уреди“ и додајте некои.',
 	'livetranslate-dictionary-count' => 'Има {{PLURAL:$1|$1 збор|$1 збора}} на $2 {{PLURAL:$2|јазик|јазици}}. Ситиснете на јазичето „уреди“ за да додадете уште.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Овој јазик моментално не е зададен|Овие јазици моментално не се зададени}} како допуштена преводна одредница: $1. Изменете ги допуштените јазици во вики-поставките, или пак отстранете ги постоечкиве од речникот.',
@@ -216,6 +236,7 @@ $messages['mk'] = array(
 
 /** Dutch (Nederlands)
  * @author McDutchie
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -223,6 +244,8 @@ $messages['nl'] = array(
 	'livetranslate-button-translate' => 'Vertalen',
 	'livetranslate-button-translating' => 'Bezig met vertalen...',
 	'livetranslate-button-revert' => 'Origineel weergeven',
+	'livetranslate-dictionary-empty' => 'Er zijn nog geen woorden in het woordenboek. Klik op de tab "bewerken" om meer toe te voegen.',
+	'livetranslate-dictionary-count' => 'Er {{PLURAL:$1|is $1 woord|zijn $1 woorden}} in $2 {{PLURAL:$2|taal|talen}}. Klik op de tab "bewerken" om meer toe te voegen.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -276,6 +299,7 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author Byulent
  * @author MaxSem
  * @author Александр Сигачёв
  */
@@ -285,6 +309,7 @@ $messages['ru'] = array(
 	'livetranslate-button-translate' => 'Перевести',
 	'livetranslate-button-translating' => 'Выполняется перевод...',
 	'livetranslate-button-revert' => 'Показать оригинал',
+	'livetranslate-dictionary-error' => 'Не удалось получить словарь живого перевода. Нет слов, которые будут рассматриваться как специальные во время процесса перевода.',
 	'livetranslate-dictionary-empty' => 'В словаре ещё нет слов. Нажмите «править», чтобы добавить несколько.',
 	'livetranslate-dictionary-count' => '$1 {{PLURAL:$1|слово|слова|слов}} на $2 {{PLURAL:$2|языке|языках|языках}}. Нажмите «править», чтобы добавить ещё.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Этот язык|Эти языки}} не разрешено использовать в качестве цели перевода: $1. Измените разрешения в настройках вашей вики, или удалите их из словаря.',
