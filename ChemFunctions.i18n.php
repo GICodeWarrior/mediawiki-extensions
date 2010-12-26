@@ -243,8 +243,11 @@ $messages['cs'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Vstupní chyba!',
 );
 
-/** Danish (Dansk) */
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
 $messages['da'] = array(
+	'chemFunctions_CAS' => 'CAS-nummer',
 	'chemFunctions_Name' => 'IUPAC Navn',
 );
 
