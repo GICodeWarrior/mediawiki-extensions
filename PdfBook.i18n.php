@@ -72,6 +72,15 @@ $messages['cy'] = array(
 	'pdfbook-desc' => 'Yn defnyddio tudalennau o rhyw gategori i lunio llyfr, ac allforio hwnnw ar ffurf llyfr PDF',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'pdfbook-action' => 'Udskriv som PDF',
+	'pdfbook-log' => '$1 eksporteret som en PDF-bog',
+	'pdfbook-desc' => 'Sammensætter en bog fra siderne i en kategori og eksporterer den som PDF',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
