@@ -322,7 +322,14 @@ $messages['bs'] = array(
 $messages['ca'] = array(
 	'articlefeedback' => "Avaluació de l'article",
 	'articlefeedback-desc' => "Avaluació de l'article",
+	'articlefeedback-survey-question-whyrated' => "Per favor, diga'ns per què has valorat aquesta pàgina avui (marca totes les opcions que creguis convenient):",
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Vull contribuir a la qualificació global de la pàgina',
+	'articlefeedback-survey-answer-whyrated-development' => 'Espero que la meva qualificació afecti positivament al desenvolupament de la pàgina',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Volia contribuir a {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Vull compartir la meva opinió',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'No he valorat res avui, però volia donar resposta a la característica',
 	'articlefeedback-survey-answer-whyrated-other' => 'Altres',
+	'articlefeedback-survey-question-useful' => 'Creus que les valoracions proporcionades són útils i clares?',
 	'articlefeedback-survey-question-useful-iffalse' => 'Per què?',
 	'articlefeedback-survey-question-expert' => 'Et consideres un expert en el camp que aquesta pàgina cobreix?',
 	'articlefeedback-survey-question-expert-iftrue' => 'Pots descriure la teva experiència?',
@@ -337,10 +344,21 @@ $messages['ca'] = array(
 	'articlefeedback-report-switch-label' => 'Mostra els resultats',
 	'articlefeedback-report-panel-title' => 'Resultats dels comentaris',
 	'articlefeedback-report-panel-description' => 'Actual mitjana de qualificacions.',
-	'articlefeedback-field-wellsourced-label' => 'Bones fonts',
+	'articlefeedback-report-empty' => 'No hi ha valoracions',
+	'articlefeedback-report-ratings' => '$1 valoracions',
+	'articlefeedback-field-trustworthy-label' => 'Digne de confiança',
 	'articlefeedback-field-complete-label' => 'Complet',
-	'articlefeedback-field-neutral-label' => 'Neutral',
-	'articlefeedback-field-readable-label' => 'Llegible',
+	'articlefeedback-field-complete-tip' => 'Consideres que aquesta pàgina aborda els temes essencials que havien de ser coberts?',
+	'articlefeedback-field-unbiased-label' => 'Imparcial',
+	'articlefeedback-field-unbiased-tip' => "Creus que aquesta pàgina representa, de forma equilibrada, tots els punts de vista sobre l'assumpte?",
+	'articlefeedback-field-wellwritten-label' => 'Ben escrit',
+	'articlefeedback-pitch-reject' => 'No, gràcies',
+	'articlefeedback-pitch-takesurvey-title' => 'Vols participar en una enquesta?',
+	'articlefeedback-pitch-takesurvey-accept' => "Comença l'enquesta",
+	'articlefeedback-pitch-createaccount-title' => 'Vols crear un compte?',
+	'articlefeedback-pitch-createaccount-accept' => 'Crea un compte',
+	'articlefeedback-pitch-makefirstedit-title' => 'Vols editar aquesta pàgina?',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Comença a editar',
 );
 
 /** Czech (Česky)
@@ -584,6 +602,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Peter17
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'articlefeedback' => 'Évaluation d’article',
@@ -611,9 +630,12 @@ $messages['fr'] = array(
 	'articlefeedback-report-panel-title' => 'Résultats du retour',
 	'articlefeedback-report-panel-description' => 'Notations moyennes actuelles.',
 	'articlefeedback-report-empty' => 'Aucune évaluation',
+	'articlefeedback-report-ratings' => 'Notations $1',
+	'articlefeedback-field-trustworthy-label' => 'Digne de confiance',
 	'articlefeedback-field-trustworthy-tip' => 'Pensez-vous que cette page a suffisamment de citations et que celles-ci proviennent de sources dignes de confiance.',
 	'articlefeedback-field-complete-label' => 'Complet',
 	'articlefeedback-field-complete-tip' => 'Pensez-vous que cette page couvre les thèmes essentiels du sujet ?',
+	'articlefeedback-field-unbiased-label' => 'Impartial',
 	'articlefeedback-field-unbiased-tip' => 'Pensez-vous que cette page fournit une présentation équitable de toutes les perspectives du sujet traité ?',
 	'articlefeedback-field-wellwritten-label' => 'Bien écrit',
 	'articlefeedback-field-wellwritten-tip' => 'Pensez-vous que cette page soit bien organisée et bien écrite ?',
