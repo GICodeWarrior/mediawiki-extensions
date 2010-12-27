@@ -176,6 +176,13 @@ $messages['cs'] = array(
 	'lastuserlogin_username' => 'Skutečné jméno',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Byulent
+ */
+$messages['csb'] = array(
+	'lastuserlogin_userid' => 'Miono brëkòwnika',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address

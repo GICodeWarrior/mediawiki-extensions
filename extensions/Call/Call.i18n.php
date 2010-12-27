@@ -205,9 +205,11 @@ U slučaju problema možete pokušati <b>{{#special:call}}/DebuG</b>",
 );
 
 /** Catalan (Català)
+ * @author El libre
  * @author Paucabot
  */
 $messages['ca'] = array(
+	'call' => 'Crida',
 	'call-save-success' => 'El següent text ha estat desat a la pàgina <big>[[$1]]</big> .',
 );
 

@@ -164,9 +164,14 @@ Provjerite Vaš unos.',
  */
 $messages['ca'] = array(
 	'ajaxlogin-desc' => 'Caixa dinàmica que permet als usuaris/es entrar i recordar contrasenya',
+	'ajaxLogin1' => "Per completar el teu registre, has d'introduir una nova contrasenya. 
+ Això et portarà fora d'aquesta pàgina i pots perdre l'edició actual.",
 	'ajaxLogin2' => "N'esteu segurs?
 Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 	'ajaxlogin-create' => 'Crea un compte',
+	'al-nosuchuser' => 'No hi ha cap usuari/a amb el nom "$1". 
+ Els noms d\'usuari/a distingeixen entre majúscules i minúscules. 
+ Revisa la teva ortografia.',
 );
 
 /** Sorani (کوردی)
@@ -196,6 +201,13 @@ Pokud opustíte tuto stránku, můžete ztratit své neuložené úpravy.',
 	'al-nosuchuser' => 'Uživatel se jménem „$1“ neexistuje.
 V uživatelských jménech se dbá na velikost písmen!
 Zkontrolujte zda jste jméno napsali správně!',
+);
+
+/** Kashubian (Kaszëbsczi)
+ * @author Byulent
+ */
+$messages['csb'] = array(
+	'ajaxlogin-create' => 'Założë kònto',
 );
 
 /** Welsh (Cymraeg)

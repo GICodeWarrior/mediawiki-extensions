@@ -44,6 +44,18 @@ $messages['br'] = array(
 	'right-SPMsetup' => 'Kemmañ arventennoù merañ  diazez ar raktres ereadurel',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'spm_wbs_link' => 'MS Projekat XML izvoz',
+	'spm_printername_wbs' => 'MS Projekat izvoz',
+	'spm-name' => 'Semantičko upravljanje projektom',
+	'semanticprojectmanagement-desc' => 'Formati upravljanja projektom za linijske upite na Semantic MediaWiki',
+	'semanticprojectmanagement' => 'Semantičko upravljanje projektom',
+	'right-SPMsetup' => 'Uređivanje osnovih postavki semantičkog upravljanja projektom',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

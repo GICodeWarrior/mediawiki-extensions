@@ -682,18 +682,35 @@ Pokušajte koristiti komandu "$3{...}".',
 
 /** Catalan (Català)
  * @author Aleator
+ * @author El libre
  * @author Paucabot
  */
 $messages['ca'] = array(
+	'math_noblahtex' => 'No es pot executar blahtex, que hauria de ser a $1',
+	'blahtext-desc' => 'Sortida MathML per les etiquetes &lt;math&gt;',
+	'math_CannotChangeDirectory' => 'No es pot canviar el directori de treball',
 	'math_CannotCreateTexFile' => "No s'ha pogut crear el fitxer tex",
+	'math_CannotRunDvipng' => 'No pot executar dvipng',
 	'math_CannotRunLatex' => 'No es pot executar latex',
+	'math_CannotWritePngDirectory' => 'No es pot escriure al directori de sortida PNG',
 	'math_CannotWriteTexFile' => "No s'ha pogut escriure al fitxer tex",
+	'math_IllegalCharacter' => "Caràcter il.legal en l'entrada",
+	'math_IllegalCommandInMathMode' => 'La comanda "$1" és il·legal en mode matemàtic',
+	'math_IllegalDelimiter' => 'Delimitador il·legal a continuació de "$1"',
+	'math_IllegalFinalBackslash' => 'Barra invertida il·legal "\\" al final de l\'entrada',
+	'math_IllegalRedefinition' => 'La comanda "$1" ja s\'ha definit, no la pots redefinir',
 	'math_InvalidColour' => 'El color "$1" és invàlid',
+	'math_InvalidUtf8Input' => "La cadena d'entrada no era UTF-8 vàlid",
 	'math_LatexFontNotSpecified' => 'No s\'ha especificat cap font LaTeX per "$1"',
 	'math_MissingDelimiter' => 'Falta un delimitador després de "$1"',
 	'math_MissingOpenBraceAfter' => 'Falta obrir un claudàtor "{" després de "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Falta obrir un claudàtor "{" al final de l\'entrada',
 	'math_MissingOpenBraceBefore' => 'Falta obrir un claudàtor "{" abans de "$1"',
+	'math_NotEnoughArguments' => 'No han estat subministrats arguments suficients per a "$1"',
+	'math_PngIncompatibleCharacter' => 'No es pot generar correctament el PNG que conté el caràcter $1',
+	'math_ReservedCommand' => 'La comanda "$1" és reservada a per a ús intern de blahtex',
+	'math_TooManyTokens' => "L'entrada és massa llarga",
+	'math_UnavailableSymbolFontCombination' => 'El símbol "$1" no està disponible a la font "$2"',
 );
 
 /** Czech (Česky)

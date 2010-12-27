@@ -1185,6 +1185,7 @@ $messages['ca'] = array(
 	'viewapc-display-creation_time' => 'Creat',
 	'viewapc-display-deletion_time' => 'Esborrat',
 	'viewapc-display-no-delete' => 'No esborrat',
+	'viewapc-display-access_time' => 'Accedit',
 	'viewapc-display-ref_count' => 'Recompte de referència',
 	'viewapc-display-mem_size' => 'Mida',
 	'viewapc-display-stored-value' => 'Valor emmagatzemat',
@@ -1217,6 +1218,8 @@ $messages['ca'] = array(
 	'viewapc-version-changelog' => 'Registre de Canvis',
 	'viewapc-version-failed' => "No s'ha pogut recuperar la informació de la versió.",
 	'viewapc-version-ok' => "Estàs executant la versió més recent d'APC ($1)",
+	'viewapc-filecache-cleared' => "'''''Memòria cau d'arxiu netejada.'''''",
+	'viewapc-usercache-cleared' => "'''''Memòria cau de l'aplicació netejada.'''''",
 );
 
 /** Chechen (Нохчийн)

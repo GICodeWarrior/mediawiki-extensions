@@ -257,6 +257,7 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
+	'article-comments-desc' => 'Permet fer comentaris de les seccions a les pàgines de contingut',
 	'article-comments-title-string' => 'títol',
 	'article-comments-name-string' => 'Nom',
 	'article-comments-name-field' => 'Nom (requerit):',
@@ -266,9 +267,23 @@ $messages['ca'] = array(
 	'article-comments-comment-field' => 'Comentari:',
 	'article-comments-submit-button' => 'Tramet',
 	'article-comments-leave-comment-link' => 'Deixa un comentari ...',
+	'article-comments-invalid-field' => 'El $1 proporcionat <nowiki>[$2]</nowiki> és invàlid.',
 	'article-comments-required-field' => 'El camp "$1" és obligatori.',
+	'article-comments-submission-failed' => "L'enviament del comentari ha fallat",
+	'article-comments-failure-reasons' => 'Ho sentim. El teu comentari no ha pogut enviar-se per {{PLURAL:$1|la següent raó|les següents raons}}:',
+	'article-comments-no-comments' => 'Ho sentim. La pàgina "[[$1]]" no accepta comentaris en aquest moment.',
+	'article-comments-talk-page-starter' => '<noinclude> Comentaris sobre "[[$1]]" 
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 ha dit ...',
+	'article-comments-summary' => "Comentari proporcionat per $1 - a través de l'extensió ArticleComments",
+	'article-comments-submission-succeeded' => 'Enviament del comentari realitzat amb èxit',
+	'article-comments-submission-success' => 'Has enviat correctament un comentari sobre "[[$1]]"',
+	'article-comments-submission-view-all' => 'Pots veure [[$1|tots els comentaris sobre aquesta pàgina]]',
+	'article-comments-user-is-blocked' => 'El teu compte d\'usuari està bloquejat per editar  "[[$1]]".',
 	'article-comments-comment-missing-name-parameter' => 'Falta el nom',
 	'article-comments-comment-missing-date-parameter' => 'Falta la data del comentari',
+	'article-comments-no-spam' => "Com a mínim un dels camps enviats s'ha marcat com no desitjat.",
 	'processcomment' => "Processa el comentari a l'article",
 );
 

@@ -418,6 +418,13 @@ $messages['sk'] = array(
 	'editown-desc' => 'Používatelia bez oprávnenia editall môžu upravovať iba stránky, ktoré vytvorili',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'editown-desc' => 'Uporabniki brez pravice editall lahko urejajo samo strani, ki so jih sami ustvarili',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

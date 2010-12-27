@@ -1797,14 +1797,27 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'patrol' => 'Nadziranje urejanj',
+	'patrol-endorse' => 'Vključi se',
 	'patrol-revert' => 'Vrni',
 	'patrol-revert-reason' => 'Razlog:',
 	'patrol-skip' => 'Preskoči',
 	'patrol-reverting' => 'Vračanje: $1',
+	'patrol-endorsed-ok' => 'Urejanje je bilo označeno kot nadzorovano.',
+	'patrol-endorsed-failed' => 'Urejanja ni bilo mogoče označiti kot nadzorovano.',
 	'patrol-reverted-ok' => 'Urejanje je bilo vrnjeno.',
 	'patrol-reverted-failed' => 'Urejanja ni bilo mogoče vrniti.',
+	'patrol-skipped-ok' => 'Preziranje urejanja.',
+	'patrol-reasons' => '* Preprost vandalizem
+* Preizkus novinca
+* Glej pogovorno stran',
+	'patrol-another' => 'Prikaži drugo urejanje, če je na voljo.',
+	'patrol-stopped' => 'Odločili ste se za prenehanje nadziranja urejanj. $1',
+	'patrol-resume' => 'Kliknite tukaj za nadaljevanje.',
 	'group-patroller' => 'Nadzorniki',
 	'group-patroller-member' => 'nadzornik',
+	'grouppage-patroller' => '{{ns:project}}:Nadzornik',
+	'right-patroller' => 'Nadziranje strani',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
