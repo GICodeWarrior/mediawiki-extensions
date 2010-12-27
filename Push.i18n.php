@@ -258,6 +258,19 @@ $messages['fi'] = array(
 	'push-add-target' => 'Lisää kohde',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'push-desc' => "Extension peu gourmande servant à pousser du contenu vers d'autres wikis",
+	'right-push' => "Autorisation d'utiliser les fonctionnalités de ''Push''.",
+	'right-bulkpush' => "Autorisation d'utiliser les fonctionnalités de ''Push'' en vrac (c'est-à-dire ''Special:Push'').",
+	'right-pushadmin' => "Autorisation de modifier les cibles et les paramètres de ''Push''.",
+	'push-err-captacha' => "Impossible de pousser vers $1 en raison d'un CAPTCHA.",
+	'push-err-captcha-page' => 'Impossible de pousser la page $1 vers toutes les cibles en raison de CAPTCHA.',
+	'push-err-authentication' => "Échec de l'authentification à $1. $2",
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -638,6 +651,7 @@ $messages['nl'] = array(
 	'push-button-text' => 'Verzenden',
 	'push-tab-desc' => "Via dit tabblad kunt u de inhoud van de huidige versie van deze pagina naar een of meer andere wiki's verzenden.",
 	'push-button-pushing' => 'Bezig met verzenden',
+	'push-button-pushing-files' => 'Bezig met het versturen van bestanden',
 	'push-button-completed' => 'Het verzenden is voltooid',
 	'push-button-failed' => 'Het verzenden is mislukt',
 	'push-tab-title' => 'Bezig met het verzenden van $1',
@@ -657,6 +671,12 @@ $messages['nl'] = array(
 	'push-tab-inc-templates' => 'Sjablonen ook verzenden',
 	'push-tab-used-templates' => '{{PLURAL:$2|Gebruikt sjabloon|Gebruikte sjablonen}}: $1',
 	'push-tab-no-used-templates' => 'Er worden geen sjablonen gebruikt op deze pagina.',
+	'push-tab-inc-files' => 'Ingesloten bestanden bijsluiten',
+	'push-tab-err-fileinfo' => 'Het was niet mogelijk vast te stellen welke bestanden op deze pagina gebruikt worden. Er zijn geen bestanden verstuurd.',
+	'push-tab-err-filepush-unknown' => 'Het versturen van een bestand is om onbekende reden mislukt.',
+	'push-tab-err-filepush' => 'Het versturen van een bestand is mislukt: $1',
+	'push-tab-embedded-files' => 'Ingesloten bestanden:',
+	'push-tab-no-embedded-files' => 'Er zijn geen ingesloten bestanden op deze pagina.',
 	'push-tab-files-override' => 'Deze bestanden bestaan al: $1',
 	'push-tab-template-override' => 'Deze sjablonen bestaan al: $1',
 	'special-push' => "Pagina's verzenden",
@@ -676,6 +696,11 @@ Het verzenden kan enige tijd kosten.",
 	'push-special-err-token-failed' => 'Het was niet mogelijk een bewerkingstoken te verkrijgen van de doelwiki.',
 	'push-special-err-pageget-failed' => 'Het was niet mogelijk de inhoud van de lokale pagina te verkrijgen.',
 	'push-special-err-push-failed' => 'De doelwiki heeft de verzonden pagina niet geaccepteerd.',
+	'push-special-inc-files' => 'Ingesloten bestanden bijsluiten',
+	'push-special-err-imginfo-failed' => 'Het was niet mogelijk vast te stellen of er bestanden meegestuurd moeten worden.',
+	'push-special-obtaining-fileinfo' => '$1: bestandsgegevens aan het ophalen...',
+	'push-special-pushing-file' => '$1: bestand $2 aan het verzenden...',
+	'push-special-return' => "Meer pagina's verzenden",
 );
 
 /** Portuguese (Português)
