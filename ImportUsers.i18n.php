@@ -369,6 +369,13 @@ $messages['cs'] = array(
 	'right-import_users' => 'Hromadné importování uživatelů',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Byulent
+ */
+$messages['csb'] = array(
+	'importusers-password' => 'parola',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -1724,8 +1731,10 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'importusers' => 'Uvoz uporabnikov',
+	'importusers-desc' => 'Množično [[Special:ImportUsers|uvaža uporabnike]] iz datoteke CSV; kodiranje: UTF-8',
 	'importusers-uploadfile' => 'Naloži datoteko',
 	'importusers-form-caption' => 'Pošiljanje datoteke CSV (UTF-8)',
+	'importusers-form-file' => 'Oblika datoteke uporabnikov (CSV):',
 	'importusers-form-replace-present' => 'Zamenjaj obstoječe uporabnike',
 	'importusers-form-button' => 'Uvozi',
 	'importusers-user-added' => "Uporabnik '''$1''' je bil dodan.",
@@ -1733,6 +1742,8 @@ $messages['sl'] = array(
 Posodobljen.",
 	'importusers-user-present-not-update' => "Uporabnik '''$1''' že obstaja.
 Ni bil posodobljen.",
+	'importusers-user-invalid-format' => 'Uporabniški podatki v vrstici št. $1 imajo neveljavno obliko ali pa so prazni.
+Preskočeno.',
 	'importusers-log' => 'Dnevnik uvoza uporabnikov',
 	'importusers-log-summary' => 'Povzetek',
 	'importusers-log-summary-all' => 'Vsi',
@@ -1742,6 +1753,7 @@ Ni bil posodobljen.",
 	'importusers-password' => 'geslo',
 	'importusers-email' => 'e-pošta',
 	'importusers-realname' => 'pravo ime',
+	'right-import_users' => 'Množično uvažanje uporabnikov',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
