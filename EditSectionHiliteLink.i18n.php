@@ -320,6 +320,13 @@ $messages['sk'] = array(
 	'editsectionhilitelink-desc' => 'Zvýrazniť príslušnú sekciu článku keď podržíte ukazovateľ myši nad odkazom „upraviť“',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'editsectionhilitelink-desc' => 'Označi ustrezen razdelek strani, ko premaknete miško na povezavo za urejanje',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
