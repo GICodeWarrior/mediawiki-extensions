@@ -8,7 +8,7 @@ sum(converted_amount) as total_amt,
 sum(if(utm_campaign NOT REGEXP 'EM' and utm_campaign NOT REGEXP 'RE',converted_amount ,0)) as banner_amt,
 sum(if(utm_source REGEXP '_US' and utm_campaign NOT REGEXP 'EM' and utm_campaign NOT REGEXP 'RE',converted_amount,0)) as US_amt,
 sum(if(utm_source REGEXP '_EN' and utm_campaign NOT REGEXP 'EM' and utm_campaign NOT REGEXP 'RE',converted_amount,0)) as EN_amt,
-sum(if(utm_campaign NOT REGEXP'_EN' and utm_source NOT REGEXP '_US' and utm_campaign NOT REGEXP'EM' and utm_campaign NOT REGEXP 'RE',converted_amount,0)) as OT_amt,
+sum(if(utm_source NOT REGEXP'_EN' and utm_source NOT REGEXP '_US' and utm_campaign NOT REGEXP'EM' and utm_campaign NOT REGEXP 'RE',converted_amount,0)) as OT_amt,
 sum(if(utm_campaign REGEXP 'EM' or  utm_campaign REGEXP 'RE' , converted_amount ,0)) as email_amt,
 sum(if(utm_source REGEXP '.rpp'  ,1 ,0))*0.5*8*10 as recurring_guess,
 
