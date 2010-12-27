@@ -326,12 +326,22 @@ Molimo promijenite ili ažurirajte verziju vašeg preglednika, ako je moguće.',
 );
 
 /** Catalan (Català)
+ * @author El libre
  * @author Solde
  */
 $messages['ca'] = array(
+	'categorybrowser' => 'Navegador de categories',
+	'cb_show_no_parents_only' => 'Mostra només les categories que no tenen categories superiors',
+	'cb_cat_name_filter' => 'Cerca la categoria pel nom:',
+	'cb_cat_name_filter_clear' => 'Fes clic aquí per netejar el filtre del nom de categoria',
+	'cb_cat_name_filter_ci' => 'No distingeix entre majúscules i minúscules',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategoria|subcategories}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|pàgina|pàgines}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|arxiu|arxius}}',
+	'cb_has_parentcategories' => "categories superiors (si n'hi ha)",
 	'cb_previous_items_link' => 'Anterior',
 	'cb_next_items_link' => 'Següent',
-	'cb_next_items_stats' => '(Des de $ 1)',
+	'cb_next_items_stats' => ' (de $1)',
 	'cb_cat_subcats' => 'subcategories',
 	'cb_cat_pages' => 'pàgines',
 	'cb_cat_files' => 'fitxers',
@@ -339,6 +349,14 @@ $messages['ca'] = array(
 	'cb_all_op' => 'Tots',
 	'cb_or_op' => 'o',
 	'cb_and_op' => 'i',
+	'cb_edit_left_hint' => "Mou a l'esquerra, si és possible",
+	'cb_edit_right_hint' => 'Mou a la dreta, si és possible',
+	'cb_edit_remove_hint' => 'Esborra, si és possible',
+	'cb_edit_copy_hint' => "Copia l'operador al portapapers",
+	'cb_edit_append_hint' => "Insereix l'operador en l'última posició",
+	'cb_edit_clear_hint' => "Neteja l'expressió present (selecciona totes)",
+	'cb_edit_paste_hint' => 'Enganxa operador a la seva posició actual, si és possible',
+	'cb_edit_paste_right_hint' => 'Enganxa operador a la posició següent, si és possible',
 );
 
 /** Czech (Česky)
@@ -1470,10 +1488,15 @@ $messages['shi'] = array(
  */
 $messages['sl'] = array(
 	'categorybrowser' => 'Brskalnik po kategorijah',
+	'cb_requires_javascript' => 'Razširitev brskanja po kategorijah v brskalniku zahteva omogočen JavaScript.',
+	'cb_ie6_warning' => 'Urejevalnik pogojev ne deluje v Internet Explorer 6.0 ali starejših različicah.
+Kljub temu brskanje po vnaprej določenih pogojih deluje normalno.
+Prosimo, spremenite ali posodobite svoj brskalnik, če je le mogoče.',
 	'cb_show_no_parents_only' => 'Prikaži samo kategorije, ki nimajo staršev',
 	'cb_cat_name_filter' => 'Iskanje kategorije po imenu:',
 	'cb_cat_name_filter_clear' => 'Protisnite, da počistite filter imena kategorije',
 	'cb_cat_name_filter_ci' => 'Neobčutljivo na velikost črk',
+	'cb_copy_line_hint' => 'Uporabite gumba [+] in [>+] za kopiranje in lepljenje operatorjev v izbrani izraz',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|podkategorija|podkategoriji|podkategorije|podkategorij}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|stran|strani}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|datoteka|datoteki|datoteke|datotek}}',
