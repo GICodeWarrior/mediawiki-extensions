@@ -41,6 +41,7 @@ $messages['be-tarask'] = array(
 	'livetranslate-button-translate' => 'Перакласьці',
 	'livetranslate-button-translating' => 'Ідзе пераклад…',
 	'livetranslate-button-revert' => 'Паказаць арыгінал',
+	'livetranslate-dictionary-error' => 'Немагчыма атрымаць слоўнік перакладу на ляту. Няма словаў, якая будуць разглядацца як спэцыяльныя, падчас працэсу перакладу.',
 	'livetranslate-dictionary-empty' => 'Пакуль што няма словаў у слоўніку. Націсьніце кнопку «рэдагаваць» каб дадаць.',
 	'livetranslate-dictionary-count' => 'Ёсьць $1 {{PLURAL:$1|слова|словы|словаў}} у $2 {{PLURAL:$2|мове|мовах|мовах}}. Націсьніце кнопку «рэдагаваць» каб дадаць болей.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Гэтая мова не дазволеная|Гэтыя мовы не дазволеныя}} у цяперашні момант як мэтавыя для перакладу: $1. Зьмяніце дазволеныя мовы ў Вашых наладах {{GRAMMAR:родны|{{SITENAME}}}}, ці выдаліце са слоўніка.',
@@ -95,6 +96,7 @@ $messages['dsb'] = array(
 	'livetranslate-button-translate' => 'Pśełožyś',
 	'livetranslate-button-translating' => 'Pśełožujo se...',
 	'livetranslate-button-revert' => 'Original pokazaś',
+	'livetranslate-dictionary-error' => 'Słownik za Live Translate njedajo se zacytaś. Jogo słowa njezapśimuju se za pśełožowański proces.',
 	'livetranslate-dictionary-empty' => 'Hyšći njejsu žedne słowa w słowniku. Klikni na rejtark "wobźěłaś", aby někotare dodał.',
 	'livetranslate-dictionary-count' => '{{PLURAL:$1|Jo $1 słowo|Stej $1 słowje|Su $1 słowa|Jo $1 słowow}} w $2 {{PLURAL:$2|rěcy|rěcoma|rěcach|rěcach}}. Klikni na rejterk "wobźěłaś", aby dalšne dodał.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Toś ta rěc njejo|Toś tej rěcy njejstej|Toś te rěcy njejsu|Toś te rěcy njejsu}} tuchylu ako dowólony pśełožowański cel {{PLURAL:$2|nastajona|nastajonej|nastajone|nastajone}}: $1. Změń dowólone rěcy w konfiguraciji twójogo wikija abo wótpóraj te ze słownika.',
@@ -111,12 +113,18 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
+	'livetranslate-desc' => 'Permet la traduction immédiate du contenu de la page en utilisant le service de traduction de Google',
 	'livetranslate-translate-to' => 'Traduire cette page en',
 	'livetranslate-button-translate' => 'Traduire',
 	'livetranslate-button-translating' => 'Traduction en cours...',
 	'livetranslate-button-revert' => 'Afficher l’original',
+	'livetranslate-dictionary-error' => "Impossible d'obtenir la traduction immédiate du dictionnaire. Aucun mot ne recevra de traitement spécial pendant le processus de traduction.",
+	'livetranslate-dictionary-empty' => "Il n'y a aucun mot dans le dictionnaire encore. Cliquez sur l'onglet « Modifier » pour en ajouter.",
+	'livetranslate-dictionary-count' => "Il y a $1 {{PLURAL:$1|mot|mots}} dans {{PLURAL:$2|une langue|$2 langues}}. Cliquez sur l'onglet « Modifier » pour en ajouter.",
+	'livetranslate-dictionary-unallowed-langs' => "{{PLURAL:$2|Cette langue n'est|Ces langues ne sont}} pas sélectionnées comme {{PLURAL:$2|langue cible|langues cibles}} : $1. Modifiez les langues autorisées dans votre configuration de wiki ou supprimez-les du dictionnaire.",
 );
 
 /** Galician (Galego)
@@ -153,6 +161,7 @@ $messages['hsb'] = array(
 	'livetranslate-button-translate' => 'Přełožić',
 	'livetranslate-button-translating' => 'Přełožuje so...',
 	'livetranslate-button-revert' => 'Original pokazać',
+	'livetranslate-dictionary-error' => 'Słownik za Live Translate njeda so začitać. Jeho słowa so za přełožowanski proces njewobkedźbuja.',
 	'livetranslate-dictionary-empty' => 'Hišće žane słowa w słowniku njejsu. Klikń na rajtark "wobdźěłać", zo by někotre přidał.',
 	'livetranslate-dictionary-count' => '{{PLURAL:$1|Je $1 słowo|Stej $1 słowje|Su $1 słowa|Je $1 słowow}} w $2 {{PLURAL:$2|rěči|rěčomaj|rěčach|rěčach}}. Klikń na rajtark $wobdźěłać", zo by dalše přidał.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Tuta rěč njeje |Tutej rěči njejstej|Tute rěče njejsu|Tute rěče njejsu}} tuchwilu jako dowoleny přełožowanski cil {{PLURAL:$2|nastajena|nastajenej|nastajene|nastajene}}: $1. Změń dowolene rěče w konfiguraciji twojeho wikija abo wotstroń je ze słownika.',
@@ -240,12 +249,15 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'livetranslate-desc' => 'Maakt het mogelijk paginainhoud live te vertalen met behulp van de dienst Google Translate',
 	'livetranslate-translate-to' => 'Pagina vertalen in het',
 	'livetranslate-button-translate' => 'Vertalen',
 	'livetranslate-button-translating' => 'Bezig met vertalen...',
 	'livetranslate-button-revert' => 'Origineel weergeven',
-	'livetranslate-dictionary-empty' => 'Er zijn nog geen woorden in het woordenboek. Klik op de tab "bewerken" om meer toe te voegen.',
-	'livetranslate-dictionary-count' => 'Er {{PLURAL:$1|is $1 woord|zijn $1 woorden}} in $2 {{PLURAL:$2|taal|talen}}. Klik op de tab "bewerken" om meer toe te voegen.',
+	'livetranslate-dictionary-error' => 'Het was niet mogelijk het woordenboek voor livevertaling op te halen. Er zijn geen woorden die een speciale behandeling krijgen tijdens het vertaalproces.',
+	'livetranslate-dictionary-empty' => 'Er zijn nog geen woorden in het woordenboek. Klik op de tab "bewerken" om woorden toe te voegen.',
+	'livetranslate-dictionary-count' => 'Er {{PLURAL:$1|is één woord|zijn $1 woorden}} in $2 {{PLURAL:$2|taal|talen}}. Klik op de tab "bewerken" om meer woorden toe te voegen.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Deze taal is|Deze taken zijn}} niet ingesteld als toegestane doeltaal: $1. Wijzig te toegestane talen in de instellingen van uw wiki of verwijder ze uit het woordenboek.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -261,6 +273,16 @@ $messages['no'] = array(
 	'livetranslate-dictionary-empty' => 'Det er ingen ord i ordlisten ennå. Klikk på «rediger»-fanen for å legge til noen.',
 	'livetranslate-dictionary-count' => 'Det er {{PLURAL:$1|ett ord|$1 ord}} i $2 {{PLURAL:$2|språk|språk}}. Klikk på «rediger»-fanen for å legge til flere.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Dette språket|Disse språkene}} er for øyeblikket ikke satt som tillatte oversettelsesmål: $1. Endre tillatte språk i din wikis konfigurasjon eller fjern disse fra ordlisten.',
+);
+
+/** Polish (Polski)
+ * @author Byulent
+ */
+$messages['pl'] = array(
+	'livetranslate-translate-to' => 'Przetłumacz tę stronę na',
+	'livetranslate-button-translate' => 'Tłumacz',
+	'livetranslate-button-translating' => 'Tłumaczenie...',
+	'livetranslate-button-revert' => 'Pokaż w oryginale',
 );
 
 /** Piedmontese (Piemontèis)
