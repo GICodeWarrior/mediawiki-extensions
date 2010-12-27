@@ -83,10 +83,13 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author El libre
  * @author Paucabot
  */
 $messages['ca'] = array(
 	'checkpoint' => 'Desa i continua editant',
+	'checkpoint-desc' => 'Permet guardar una edició i continuar editant',
+	'checkpoint-tooltip' => 'Salva el teu progrés i continua editant la pàgina',
 );
 
 /** German (Deutsch)
