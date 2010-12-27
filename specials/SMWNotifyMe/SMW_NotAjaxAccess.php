@@ -7,8 +7,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 global $wgAjaxExportList;
-global $smwgNMIP;
-
 $wgAjaxExportList[] = 'smwf_nm_NotifyAccess';
 
 function smwf_nm_NotifyAccess( $method, $params ) {

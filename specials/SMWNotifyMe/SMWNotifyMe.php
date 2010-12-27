@@ -9,11 +9,6 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 global $IP;
 require_once( $IP . "/includes/SpecialPage.php" );
-require_once( "SMW_NotAjaxAccess.php" );
-
-global $smwgNMIP;
-
-require_once( $smwgNMIP . '/includes/SMW_NotifyProcessor.php' );
 
 /*
  * Standard class that is resopnsible for the creation of the Special Page
