@@ -9,9 +9,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 global $wgAjaxExportList;
 global $smwgNMIP;
 
-require_once( $smwgNMIP . '/includes/SMW_NotifyProcessor.php' );
 $wgAjaxExportList[] = 'smwf_nm_NotifyAccess';
-
 
 function smwf_nm_NotifyAccess( $method, $params ) {
 	$p_array = explode( ",", $params );
