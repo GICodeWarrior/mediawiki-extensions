@@ -119,7 +119,7 @@
 	function insertNoTranslateTags( words ) {
 		for ( i in words ) {
 			$( '#bodyContent *' ).replaceText( 
-				eval( "/\\b" + words[i] + "\\b/gi" ), // If you know how to kill the evil eval, let me know :)
+				new RegExp( "\\b" + words[i] + "\\b", "g" ),
 				function( str ) {
 					return '<span class="notranslate">' + str + '</span>'
 				}
@@ -159,8 +159,23 @@
 			// If it's a text node, then translate it.
 			if ( this.nodeType == 3 && this.wholeText.trim().length > 0 ) {
 				runningJobs++;
+				
+				var sentances = this.wholeText.split( new RegExp( "(\\S.+?[.!?])(?=\\s+|$)", "gi" ) );
+				var chunk = '';
+				
+				for ( i in sentances ) {
+					var longerChunk = chunk + sentances[i];
+					
+					if ( longerChunk.length < 498 ) {
+						chunk = longerChunk; 
+					}
+					else {
+						break;
+					}
+				}
+				
 				// Initiate translation of the text node. Max chunk size is 500 - 2 for the anti-trim delimiters.
-				translateChunk( this.wholeText, [], 498, sourceLang, targetLang, this );
+				translateChunk( this.wholeText, [], chunk.length, sourceLang, targetLang, this );
 			}
 			// If it's an html element, check to see if it should be ignored, and if not, apply function again.
 			else if ( $.inArray( $( this ).attr( 'id' ), [ 'livetranslatediv', 'siteSub', 'jump-to-nav' ] ) == -1
@@ -175,7 +190,7 @@
 	
 	function translateChunk( untranslatedText, chunks, currentMaxSize, sourceLang, targetLang, element ) {
 		var chunkSize = Math.min( untranslatedText.length, currentMaxSize );
-		
+
 		google.language.translate(
 			// Surround the text stuff so spaces and newlines don't get trimmed away.
 			'|' + untranslatedText.substr( 0, chunkSize ) + '|',
