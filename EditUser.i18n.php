@@ -281,6 +281,14 @@ $messages['cs'] = array(
 	'right-edituser-exempt' => 'Jiní nemohou měnit nastavení uživatele',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Byulent
+ */
+$messages['csb'] = array(
+	'edituser-username' => 'Miono brëkòwnika:',
+	'edituser-dosearch' => 'Szëkba',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
