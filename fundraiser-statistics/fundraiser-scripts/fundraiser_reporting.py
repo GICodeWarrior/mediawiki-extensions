@@ -69,6 +69,7 @@ class FundraiserReporting:
 		delta = datetime.timedelta(hours=-hours_back)
 
 		time_obj = now + delta
+		now = now + datetime.timedelta(hours=-1) # Move an hour back to terminate at 55 minute
 		
 		if time_obj.month < 10:
 			month = '0' + str(time_obj.month)
@@ -102,7 +103,7 @@ class FundraiserReporting:
 			hour_e = str(now.hour)
 		
 		start_time = str(time_obj.year) + month + day + hour + '0000'
-		end_time = str(now.year) + month_e + day_e + hour_e + '0000'
+		end_time = str(now.year) + month_e + day_e + hour_e + '5500'
 		
 		return [start_time, end_time]
 			
@@ -552,9 +553,9 @@ class BannerLPReporting(FundraiserReporting):
 		
 		# Current date & time
 		now = datetime.datetime.now()
-		UTC = 8
-		delta = datetime.timedelta(hours=UTC)
-		now = now + delta
+		#UTC = 8
+		#delta = datetime.timedelta(hours=UTC)
+		#now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
 		hours_back = 24
@@ -622,13 +623,13 @@ class BannerLPReporting(FundraiserReporting):
 		
 		# Look at campaigns over the past 24 hours
 		now = datetime.datetime.now()
-		hours_back = 24
+		hours_back = 72
 		times = self.gen_date_strings_hr(now, hours_back)
 		
 		query_obj = qs.query_store()
 		sql_stmnt = mh.read_sql('./sql/report_latest_campaign.sql')
 		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [times[0]])
-		
+		print sql_stmnt
 		campaign_index = query_obj.get_campaign_index(query_name)
 		time_index = query_obj.get_time_index(query_name)
 		
