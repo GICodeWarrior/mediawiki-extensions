@@ -404,6 +404,13 @@ $messages['sk'] = array(
 	'contributorsaddon-desc' => 'Pridáva vyskakovacie okná nad odkazy „Hlavní prispievatelia“',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'contributorsaddon-desc' => 'Povezavam »Glavni sodelavci« doda pojavna okenca JavaScript',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */
