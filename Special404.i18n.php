@@ -22,6 +22,21 @@ Maybe you would like to look at:
 * [[{{MediaWiki:Mainpage}}|The main page]]',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'special404-desc' => 'Прадстаўляе спэцыяльную старонку для памылак «404 Ня знойдзена»',
+	'error404' => '404 Ня знойдзена',
+	'special404-body' => 'Запытаны Вамі URL-адрас ня знойдзены.
+
+Вы мелі на ўвазе {{fullurl:$1}}?
+
+Верагодна Вы пажадаеце паглядзець на:
+* [[{{MediaWiki:Mainpage}}|Галоўную старонку]]',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -33,7 +48,21 @@ $messages['br'] = array(
 Ha fellout a rae deoc'h skrivañ {{fullurl:$1}}?
 
 Marteze ho po c'hoant da sellet ouzh :
-* [[{{int:mainpage}}|Ar bajenn degemer]]",
+* [[{{MediaWiki:Mainpage}}|Ar bajenn degemer]]",
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'special404-desc' => 'Omogućava odredište za greške tipa 404 Nije pronađeno',
+	'error404' => '404 Nije pronađeno',
+	'special404-body' => 'URL koji ste zahtijevali nije pronađen.
+
+Da li ste mislili na {{fullurl:$1}}?
+
+Možda bi ste željeli da pogledate:
+* [[{{MediaWiki:Mainpage}}|Početnu stranu]]',
 );
 
 /** German (Deutsch)
@@ -47,21 +76,63 @@ $messages['de'] = array(
 Sollte tatsächlich {{fullurl:$1}} aufgerufen werden?
 
 Vielleicht sollte stattdessen folgende Seite aufgerufen werden:
-* [[{{int:mainpage}}|Hauptseite]]',
+* [[{{MediaWiki:Mainpage}}|Hauptseite]]',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'special404-desc' => 'Zmóžnja cel za zmólki "404 - njenamakany"',
+	'error404' => 'Zmólka 404 - njenamakany',
+	'special404-body' => 'Pominany URL njejo se namakał.
+
+Sy {{fullurl:$1}} měnił?
+
+Snaź coš se slědujucy bok woglědaś:
+* [[{{MediaWiki:Mainpage}}|Głowny bok]]',
+);
+
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'special404-desc' => 'Offre une page par défaut pour les erreurs 404 introuvable',
+	'error404' => '404 introuvable',
+	'special404-body' => "L'URL que vous avez demandé n'a pas été trouvé.
+
+Vouliez-vous saisir {{fullurl:$1}} ?
+
+Peut-être que vous désirez aller à la
+* [[{{MediaWiki:Mainpage}}|Page d'accueil]] ?",
 );
 
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
-	'special404-desc' => 'Proporciona unha páxina especial de destino para os erros "404 Non atopado"',
-	'error404' => '404 Non atopado',
+	'special404-desc' => 'Proporciona un destino para os erros "404 non atopado"',
+	'error404' => '404 non atopado',
 	'special404-body' => 'Non se puido atopar o enderezo URL solititado.
 
 Quizais quixo escribir {{fullurl:$1}}?
 
 Seica quere botar un ollo á:
-* [[{{int:mainpage}}|Portada]]',
+* [[{{MediaWiki:Mainpage}}|Portada]]',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'special404-desc' => 'Zmóžnja cil za zmylki "404 - njenamakany"',
+	'error404' => 'Zmylk 404 - njenamakany',
+	'special404-body' => 'Požadany URL njebu namakany.
+
+Sy {{fullurl:$1}} měnił?
+
+Snano chceš sej slědowacu stronu wobhladać:
+* [[{{MediaWiki:Mainpage}}|Hłowna strona]]',
 );
 
 /** Interlingua (Interlingua)
@@ -75,7 +146,7 @@ $messages['ia'] = array(
 Voleva tu scriber {{fullurl:$1}}?
 
 Si non, tu pote consultar:
-* [[{{int:mainpage}}|Le pagina principal]]',
+* [[{{MediaWiki:Mainpage}}|Le pagina principal]]',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -89,7 +160,7 @@ $messages['id'] = array(
 Apakah Anda bermaksud mengetik {{fullurl:$1}}? 
 
 Mungkin Anda ingin melihat: 
-* [[{{int:mainpage}}|Halaman utama]]',
+* [[{{MediaWiki:Mainpage}}|Halaman utama]]',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -111,14 +182,21 @@ $messages['mk'] = array(
 Да не мислевте на {{fullurl:$1}}?
 
 Можеби би сакале да ја погледате:
-* [[{{int:mainpage}}|Главната страница]]',
+* [[{{MediaWiki:Mainpage}}|Главната страница]]',
 );
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
+	'special404-desc' => 'Biedt een doelpagina voor foutmeldingen van het type "404 Niet gevonden"',
 	'error404' => '404 Niet gevonden',
+	'special404-body' => 'De URL die u hebt opgevraagd is niet aangetroffen.
+
+Bedoelde u {{fullurl:$1}}?
+
+Misschien wilt u de [[{{MediaWiki:Mainpage}}|hoofdpagina]] bekijken.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -132,7 +210,7 @@ $messages['no'] = array(
 Mente du å skrive {{fullurl:$1}}?
 
 Kanskje du vil se på:
-* [[{{int:mainpage}}|Hovedsiden]]',
+* [[{{MediaWiki:Mainpage}}|Hovedsiden]]',
 );
 
 /** Polish (Polski)
@@ -146,7 +224,7 @@ $messages['pl'] = array(
 Czy na pewno chodziło o {{fullurl:$1}}?
 
 Może chcesz zobaczyć
-* [[{{int:mainpage}}|stronę główną]]',
+* [[{{MediaWiki:Mainpage}}|stronę główną]]',
 );
 
 /** Russian (Русский)
@@ -160,6 +238,6 @@ $messages['ru'] = array(
 Вы хотели написать {{fullurl:$1}}?
 
 Может быть, вы бы хотели посмотреть:
-* [[{{int:mainpage}}|The Main page]]',
+* [[{{MediaWiki:Mainpage}}|The Main page]]',
 );
 
