@@ -108,11 +108,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Otourly
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'svgedit-editbutton-edit' => 'Modifiez le dessin',
 	'svgedit-editor-save-close' => 'Enregistrer et fermer',
 	'svgedit-editor-close' => 'Annuler',
+	'svgedit-desc' => 'Modification des dessins au format SVG dans votre navigateur en utilisant [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
 /** Swiss German (Alemannisch)
@@ -250,6 +252,7 @@ $messages['sl'] = array(
 	'svgedit-editbutton-edit' => 'Uredi risbo',
 	'svgedit-editor-save-close' => 'Shrani in zapri',
 	'svgedit-editor-close' => 'Prekliči',
+	'svgedit-desc' => 'Urejanje risb SVG v brskalniku s [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
 /** Telugu (తెలుగు)
