@@ -64,6 +64,13 @@ $messages['es'] = array(
 	'categorymembersonsidebar-desc' => 'Añade miembros de la categoría a la barra lateral',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'categorymembersonsidebar-desc' => 'Ajoute des membres de la catégorie sur la barre latérale',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -167,6 +174,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'categorymembersonsidebar-desc' => 'Добавляет членов категории на боковую панель',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'categorymembersonsidebar-desc' => 'Doda člane kategorije v stransko vrstico',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
