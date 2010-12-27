@@ -884,6 +884,7 @@ $messages['fi'] = array(
  * @author Jean-Frédéric
  * @author McDutchie
  * @author PieRRoMaN
+ * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -913,6 +914,7 @@ $messages['fr'] = array(
 	'qp_results_line_qpl' => 'Page « $1 » Sondage « $2 » : $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Page « $2 » Sondage « $3 » ]',
 	'qp_export_to_xls' => 'Exporter les statistiques au format XLS',
+	'qp_voices_to_xls' => 'Exporter les votes au format XLS',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|utilisateur a|utilisateurs ont}} répondu aux questions',
 	'qp_func_no_such_poll' => 'Ce sondage n’existe pas ($1)',
 	'qp_func_missing_question_id' => 'Veuillez spécifier un id question existant (à partir de 1) pour le sondage $1',
