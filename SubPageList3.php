@@ -21,7 +21,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Subpage List 3',
 	'version' => '1.05',
-	'descriptionmsg' => 'spl3_desc',
+	'descriptionmsg' => 'spl3-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SubPageList3',
 	'author' => array('James McCormack', 'Martin Schallnahs', 'Rob Church'),
 );
