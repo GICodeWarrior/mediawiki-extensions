@@ -2,7 +2,7 @@
 
 /**
  * File defining the settings for the Live Translate extension.
- * More info can be found at http://www.mediawiki.org/wiki/Extension:LiveTranslate#Settings
+ * More info can be found at http://www.mediawiki.org/wiki/Extension:LiveTranslate#Configuration
  *
  *                          NOTICE:
  * Changing one of these settings can be done by copieng or cutting it,
