@@ -20,10 +20,14 @@ $wgExtensionFunctions[] = 'efSubpageList3';
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Subpage List 3',
-	'version' => '1.05',
+	'version' => '1.06',
 	'descriptionmsg' => 'spl3-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SubPageList3',
-	'author' => array('James McCormack', 'Martin Schallnahs', 'Rob Church'),
+	'author' => array(
+		'James McCormack',
+		'Martin Schallnahs',
+		'Rob Church'
+	),
 );
 
 $dir = dirname(__FILE__) . '/';
@@ -41,9 +45,15 @@ function efSubpageList3() {
  * Function called by the Hook, returns the wiki text
  */
 function efRenderSubpageList3( $input, $args, $parser ) {
+	// This function has been deprecated in 1.16, but needed for earlier versions.
+	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
+	if ( version_compare( $wgVersion, '1.15', '<=' ) ) {
+		wfLoadExtensionMessages( 'SubPageList3' );
+	}		
+	
 	$list = new SubpageList3( $parser );
-	wfLoadExtensionMessages('SubPageList3');
 	$list->options( $args );
+	
 	# $parser->disableCache();
 	return $list->render();
 }
@@ -496,4 +506,5 @@ class SubpageList3 {
 		wfProfileOut( __METHOD__ );
 		return $output->getText();
 	}
+	
 }
