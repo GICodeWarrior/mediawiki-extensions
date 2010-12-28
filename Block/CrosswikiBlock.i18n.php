@@ -1786,7 +1786,7 @@ $messages['ml'] = array(
 താഴെ കൊടുത്തിരിക്കുന്ന താളുകളിലൊന്നിലേക്കു തിരിച്ചു പോവുക:
 * [[Special:CrosswikiBlock|തടയൽ ഫോം]]
 * [[$4]]",
-	'crosswikiunblock-local' => 'ഈ സമ്പർക്കമുഖം വഴി പ്രാദേശികമായ തടയൽ നീക്കാൻ സാധിക്കില്ല. [[Special:BlockIP|{{int:blockip}}]] ഉപയോഗിക്കുക',
+	'crosswikiunblock-local' => 'ഈ സമ്പർക്കമുഖം വഴി പ്രാദേശിക തടയൽ നീക്കാൻ സാധിക്കില്ല. [[Special:IPBlockList|{{int:ipblocklist}}]] ഉപയോഗിക്കുക',
 	'right-crosswikiblock' => 'മറ്റ് വിക്കികളെ തടയുകയും തടയൽ മാറ്റുകയും ചെയ്യുക',
 );
 
