@@ -167,7 +167,7 @@ Mungkin Anda ingin melihat:
  * @author Robby
  */
 $messages['lb'] = array(
-	'special404-desc' => 'Erméiglecht eng 404 Spezialzilsäit fir de Fall wou de Feeler "404 Net fonnt" geschitt',
+	'special404-desc' => 'Erméiglecht eng Zilsäit fir "404 Net fonnt"-Feeler',
 	'error404' => '404 Net fonnt',
 );
 
@@ -175,7 +175,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'special404-desc' => 'Овозможува одредница за специјална страница за грешки од видот „404 не е пронајденo“',
+	'special404-desc' => 'Овозможува одредница за грешки од видот „404 не е пронајденo“',
 	'error404' => '404 не е пронајденo',
 	'special404-body' => 'URL-адресата што ја побаравте не е пронајдена.
 
@@ -229,9 +229,10 @@ Może chcesz zobaczyć
 
 /** Russian (Русский)
  * @author Byulent
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'special404-desc' => 'Предоставляет специальную страницу "404" для ошибок "404 Not Found"',
+	'special404-desc' => 'Обеспечивает перенаправление для ошибок 404',
 	'error404' => '404 Не найдено',
 	'special404-body' => 'Запрошенный URL-адрес не найден.
 
