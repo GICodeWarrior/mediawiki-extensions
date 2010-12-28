@@ -21,8 +21,10 @@
 	
 	var runningJobs = 0;
 	
+	// This is to enable a hack to decode quotes.
 	var textAreaElement = document.createElement( 'textarea' );
 	
+	// For the "show original" feature.
 	var originalHtml = false;
 	
 	// Compatibility with pre-RL code.
@@ -41,6 +43,10 @@
 		}
 	}
 	
+	/**
+	 * Queries the special words in the source language, finds them in the page,
+	 * and wraps the into notranslate spans. Then initiates the translation process. 
+	 */
 	setupTranslationFeatures = function() {
 		$( this ).attr( "disabled", true ).text( mediaWiki.msg( 'livetranslate-button-translating' ) );
 		
@@ -78,6 +84,12 @@
 		}
 	}
 	
+	/**
+	 * Initiates the translation process.
+	 * First all special words are found and send to the local API,
+	 * and then replaced by their translation in the response. Then
+	 * the Google Translate translation is initiated.
+	 */
 	function initiateTranslating() {
 		var words = getSpecialWords();
 		var newLang = $( '#livetranslatelang' ).val();
@@ -105,6 +117,10 @@
 		}
 	}
 	
+	/**
+	 * Shows the original page content, simply by setting the html to a stored copy of the original.
+	 * Also re-binds the jQuery events, as they get lost when doing the html replace.
+	 */
 	showOriginal = function() {
 		currentLang = window.sourceLang;
 		$( '#bodyContent' ).html( originalHtml );
@@ -113,9 +129,13 @@
 		$( '#ltrevertbutton' ).click( showOriginal );	
 	}
 	
+	// Initial binding of the button click events.
 	$( '#livetranslatebutton' ).click( setupTranslationFeatures );	
 	$( '#ltrevertbutton' ).click( showOriginal );	
 	
+	/**
+	 * Inserts notranslate spans around the words specified in the passed array in the page content.
+	 */
 	function insertNoTranslateTags( words ) {
 		for ( i in words ) {
 			$( '#bodyContent *' ).replaceText( 
@@ -127,6 +147,12 @@
 		}
 	}
 	
+	/**
+	 * Finds the special words in the page contents by getting the contents of all
+	 * notranslate spans and pushing them onto an array.
+	 * 
+	 * @returns {Array}
+	 */ 
 	function getSpecialWords() {
 		var words = [];
 		
@@ -139,19 +165,41 @@
 		return words;
 	}
 	
+	/**
+	 * Replaced the special words in the page content by looping over them,
+	 * and checking if there is a matching translation in the provided object.
+	 * 
+	 * @param translations
+	 */
 	function replaceSpecialWords( translations ) {
 		$.each($(".notranslate"), function(i,v) {
-			var currentText = $(v).text();
+			var currentText = $//(v).text();
 			if ( translations[currentText] ) {
 				$(v).text( translations[currentText] );
 			}
 		});		
 	}
 	
+	/**
+	 * Initiates the Google Translate translation.
+	 * 
+	 * @param sourceLang
+	 * @param targetLang
+	 */
 	function requestGoogleTranslate( sourceLang, targetLang ) {
 		translateElement( $( '#bodyContent' ), sourceLang, targetLang );
 	}
 	
+	/**
+	 * Translates a single DOM element using Google Translate.
+	 * Loops through child elements and recursivly calls itself to translate these.
+	 * 
+	 * TODO: be smarter with the requests, and make sure they don't get broken up unecesarrily.
+	 * 
+	 * @param element
+	 * @param sourceLang
+	 * @param targetLang
+	 */
 	function translateElement( element, sourceLang, targetLang ) {
 		runningJobs++;
 		
@@ -182,6 +230,17 @@
 		handleTranslationCompletion( targetLang );
 	}
 	
+	/**
+	 * Determines a chunk to translate of an DOM elements contents and calls the Google Translate API.
+	 * Then calls itself if there is any remaining word to be done.
+	 * 
+	 * @param untranslatedScentances
+	 * @param chunks
+	 * @param currentMaxSize
+	 * @param sourceLang
+	 * @param targetLang
+	 * @param element
+	 */
 	function translateChunk( untranslatedScentances, chunks, currentMaxSize, sourceLang, targetLang, element ) {
 		var remainingPart = false;
 		var partToUse = false;
@@ -226,7 +285,7 @@
 			handleTranslationCompletion( targetLang );
 			return;
 		}
-alert(chunk);
+
 		google.language.translate(
 			// Surround the text stuff so spaces and newlines don't get trimmed away.
 			'|' + chunk + '|',
@@ -256,6 +315,13 @@ alert(chunk);
 		);	
 	}
 	
+	/**
+	 * Should be called every time a DOM element has been translated.
+	 * By use of the runningJobs var, completion of the translation process is detected,
+	 * and further handled by this function.
+	 * 
+	 * @param targetLang
+	 */
 	function handleTranslationCompletion( targetLang ) {
 		if ( !--runningJobs ) {
 			currentLang = targetLang;
