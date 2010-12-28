@@ -17,7 +17,6 @@ import fundraiser_reporting as fr
 
 
 # process sys args
-$script_args = $sql_file . ' ' . $cmpgn1 . ' ' . $cmpgn2 . ' ' . $item1 . ' ' . $item2 . ' ' . $start . ' ' . $end . ' ' . $metric;
 try:
 	type = sys.argv[1]
 	cmpgn1 = sys.argv[2]
