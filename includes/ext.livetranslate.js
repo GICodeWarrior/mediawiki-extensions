@@ -173,7 +173,7 @@
 	 */
 	function replaceSpecialWords( translations ) {
 		$.each($(".notranslate"), function(i,v) {
-			var currentText = $//(v).text();
+			var currentText = $(v).text();
 			if ( translations[currentText] ) {
 				$(v).text( translations[currentText] );
 			}
