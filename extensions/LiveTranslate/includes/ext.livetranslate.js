@@ -135,6 +135,8 @@
 	
 	/**
 	 * Inserts notranslate spans around the words specified in the passed array in the page content.
+	 * 
+	 * @param {Array} words
 	 */
 	function insertNoTranslateTags( words ) {
 		for ( i in words ) {
@@ -169,7 +171,7 @@
 	 * Replaced the special words in the page content by looping over them,
 	 * and checking if there is a matching translation in the provided object.
 	 * 
-	 * @param translations
+	 * @param {object} translations
 	 */
 	function replaceSpecialWords( translations ) {
 		$.each($(".notranslate"), function(i,v) {
@@ -183,8 +185,8 @@
 	/**
 	 * Initiates the Google Translate translation.
 	 * 
-	 * @param sourceLang
-	 * @param targetLang
+	 * @param {string} sourceLang
+	 * @param {string} targetLang
 	 */
 	function requestGoogleTranslate( sourceLang, targetLang ) {
 		translateElement( $( '#bodyContent' ), sourceLang, targetLang );
@@ -196,9 +198,9 @@
 	 * 
 	 * TODO: be smarter with the requests, and make sure they don't get broken up unecesarrily.
 	 * 
-	 * @param element
-	 * @param sourceLang
-	 * @param targetLang
+	 * @param {jQuery} element
+	 * @param {string} sourceLang
+	 * @param {string} targetLang
 	 */
 	function translateElement( element, sourceLang, targetLang ) {
 		runningJobs++;
@@ -234,12 +236,12 @@
 	 * Determines a chunk to translate of an DOM elements contents and calls the Google Translate API.
 	 * Then calls itself if there is any remaining word to be done.
 	 * 
-	 * @param untranslatedScentances
-	 * @param chunks
-	 * @param currentMaxSize
-	 * @param sourceLang
-	 * @param targetLang
-	 * @param element
+	 * @param {array} untranslatedScentances
+	 * @param {array} chunks
+	 * @param {integer} currentMaxSize
+	 * @param {string} sourceLang
+	 * @param {string} targetLang
+	 * @param {jQuery} element
 	 */
 	function translateChunk( untranslatedScentances, chunks, currentMaxSize, sourceLang, targetLang, element ) {
 		var remainingPart = false;
@@ -320,7 +322,7 @@
 	 * By use of the runningJobs var, completion of the translation process is detected,
 	 * and further handled by this function.
 	 * 
-	 * @param targetLang
+	 * @param {string} targetLang
 	 */
 	function handleTranslationCompletion( targetLang ) {
 		if ( !--runningJobs ) {
