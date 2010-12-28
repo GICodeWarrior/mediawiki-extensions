@@ -213,6 +213,38 @@ $messages['en-gb'] = array(
 	'ts-citegen-Sidebar-add-IE-Mac-details' => "Once the page has loaded, open your Page Holder, click 'Add' then use the Page Holder Favourites button to store it as a Page Holder Favourite.",
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'ts-citegen-Title' => 'Générateur de modèles de citation',
+	'ts-citegen-Send' => 'Générer',
+	'ts-citegen-Input-title' => 'Entrée',
+	'ts-citegen-Input-text' => "Il s'agit d'un générateur de modèles de citations. Vous pouvez rapidement remplir des modèles de citation dans les différentes éditions de langue de Wikipédia. Veuillez remplir les données (%s) dans les champs ci-dessous et le script essaiera de remplir les modèles. Peu importe l'endroit où se trouvent les données d'entrée dans les champs, le script fera correspondre automatiquement le modèle à l'entrée donnée.",
+	'ts-citegen-Option-append-author-link' => "Ajouter les liens wiki de l'auteur dans le modèle",
+	'ts-citegen-Option-append-newlines' => 'Ajouter de nouveaux sauts de ligne après chaque paramètre',
+	'ts-citegen-Option-add-references' => 'Ajouter des balises <ref> autour des modèles de citation',
+	'ts-citegen-Option-add-list' => 'Créer une wikiliste des modèles de citation',
+	'ts-citegen-Output-title' => 'Résultats',
+	'ts-citegen-Output-select-disclaimer' => 'Choisir une langue pour un modèle ne garantit pas que ce modèle est disponible dans cette langue. Ce champ montre les langues disponibles pour tous les modèles reconnus, par exemple, il peut afficher le modèle en français car seul {{Cite book}} est reconnu.',
+	'ts-citegen-Wrong-input' => '%s: pas identifié comme une entrée correcte.',
+	'ts-citegen-Parsers' => 'Analyseurs syntaxiques',
+	'ts-citegen-Skins' => 'Sortie',
+	'ts-citegen-Skin-skins' => 'Habillages',
+	'ts-citegen-Skin-outputformat' => 'Format de sortie',
+	'ts-citegen-Template-lang' => 'Langue du modèle',
+	'ts-citegen-Sources-title' => 'Sources',
+	'ts-citegen-Sources-text' => 'Ci-dessous la liste des sources utilisées est affichée.',
+	'ts-citegen-Sidebar-title' => 'Générateur de citations',
+	'ts-citegen-Sidebar-add-Firefox' => 'Ajouter au panneau latéral',
+	'ts-citegen-Tools' => 'Outils',
+	'ts-citegen-Other-languages' => 'Autres langues',
+	'ts-citegen-Save-it' => 'Requête en cours',
+	'ts-citegen-Errors-title' => 'Erreurs',
+	'ts-citegen-Unavailable-SQL' => "Erreur: le ''toolserver'' de la base de données n'est pas disponible. MySQL a retourné: %s",
+	'ts-citegen-base-disabled' => "Erreur: la base de données %s n'est pas disponible",
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
