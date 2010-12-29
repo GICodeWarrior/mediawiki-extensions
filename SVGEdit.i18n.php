@@ -215,6 +215,16 @@ $messages['no'] = array(
 	'svgedit-desc' => 'Nettleserredigering av SVG-tegninger med [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'svgedit-editbutton-edit' => 'Modìfica disegn',
+	'svgedit-editor-save-close' => 'Salva e sara',
+	'svgedit-editor-close' => 'Scancela',
+	'svgedit-desc' => 'Modìfica ant ël browser dij disegn SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
