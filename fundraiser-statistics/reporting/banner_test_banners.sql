@@ -63,6 +63,6 @@ group by 1,2) as ecomm
 
 on ecomm.banner = imp.utm_source 
 
-where impressions > 10000
+where impressions > 50000
 
 group by 1,2 order by 10 desc;

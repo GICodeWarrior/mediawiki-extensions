@@ -12,8 +12,10 @@ views / impressions  as click_rate,
 donations / total_clicks as conversion_rate,
 round(donations / impressions,6) as don_per_imp,
 amount / impressions as amt_per_imp,
+amount50 / impressions as amt50_per_imp,
 donations / views as don_per_view,
-amount / views as amt_per_view
+amount / views as amt_per_view,
+amount50 / views as amt50_per_view
 
 
 from
@@ -59,7 +61,8 @@ FLOOR(MINUTE(ts) / %s) * %s as dt_min,
 SUBSTRING_index(substring_index(utm_source, '.', 2),'.',1) as banner,
 count(*) as total_clicks,
 sum(not isnull(contribution_tracking.contribution_id)) as donations,
-sum(converted_amount) AS amount
+sum(converted_amount) AS amount,
+sum(if(converted_amount > 50, 50, converted_amount)) as amount50
 from
 drupal.contribution_tracking LEFT JOIN civicrm.public_reporting 
 ON (contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id)
@@ -70,6 +73,6 @@ group by 1,2,3) as ecomm
 
 on ecomm.banner = imp.utm_source and imp.dt_hr = ecomm.dt_hr and imp.dt_min = ecomm.dt_min
 
-where impressions > 10000
+where impressions > 50000
 
 group by 1,2 ;

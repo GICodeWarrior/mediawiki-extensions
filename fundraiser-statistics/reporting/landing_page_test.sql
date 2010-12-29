@@ -13,7 +13,6 @@ donations / total_clicks as completion_rate,
 donations / views as don_per_view,
 amount / views as amt_per_view,
 amount50 / views as amt50_per_view,
-modified_amount / views as amt_per_view_reduced,
 max_amt,
 pp_don,
 cc_don,
@@ -43,7 +42,6 @@ count(*) as total_clicks,
 sum(not isnull(contribution_tracking.contribution_id)) as donations,
 sum(converted_amount) AS amount,
 sum(if(converted_amount > 50, 50, converted_amount)) as amount50,
-sum(if(converted_amount > 100, 100, converted_amount)) AS modified_amount, -- truncates donations over 100 
 max(converted_amount) AS max_amt,
 sum(if(right(utm_source,2)='cc',1,0))  as cc_clicks,
 sum(if(right(utm_source,2)='cc' and contribution_tracking.contribution_id,1,0)) as cc_don,
@@ -60,7 +58,7 @@ group by 1,2) as ecomm
 
 on ecomm.landing_page = lp.landing_page and ecomm.utm_campaign = lp.utm_campaign
 
-where views > 100
+where views > 1000
 
 group by 1,2,3 order by 8 desc;
 

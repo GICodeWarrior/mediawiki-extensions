@@ -6,7 +6,8 @@ utm_campaign,
 count(*) as total_clicks,
 sum(not isnull(contribution_tracking.contribution_id)) as donations,
 sum(converted_amount) AS amount,
-sum(if(converted_amount > 100, 100, converted_amount)) AS modified_amount,  -- truncates donations over 100 
+sum(if(converted_amount > 50, 50, converted_amount)) as amount50,
+-- sum(if(converted_amount > 100, 100, converted_amount)) AS modified_amount,  -- truncates donations over 100 
 max(converted_amount) AS max_amt,
 sum(if(right(utm_source,2)='cc',1,0))  as cc_clicks,
 sum(if(right(utm_source,2)='cc' and contribution_tracking.contribution_id,1,0)) as cc_don,

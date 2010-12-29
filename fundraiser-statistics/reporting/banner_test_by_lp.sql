@@ -7,9 +7,11 @@ views as views,
 total_clicks as clicks,
 donations as donations,
 amount as amount,
+amount50 as amount50,
 donations / total_clicks as conversion_rate,
 donations / views as don_per_view,
-amount / views as amt_per_view
+amount / views as amt_per_view,
+amount50 / views as amt50_per_view
 
 
 from
@@ -33,7 +35,8 @@ FLOOR(MINUTE(ts) / %s) * %s as dt_min,
 SUBSTRING_index(substring_index(utm_source, '.', 2),'.',-1) as landing_page,
 count(*) as total_clicks,
 sum(not isnull(contribution_tracking.contribution_id)) as donations,
-sum(converted_amount) AS amount
+sum(converted_amount) AS amount,
+sum(if(converted_amount > 50, 50, converted_amount)) as amount50
 from
 drupal.contribution_tracking LEFT JOIN civicrm.public_reporting 
 ON (contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id)

@@ -35,14 +35,10 @@ $cmpgn=$_POST["utm_campaign"];
 
 // generate plots
 $args = ' ' . $cmpgn . ' ' . $start;
-// $cmd = 'echo "baggin5" | sudo -S ./plot_build_latest.sh' . $args;
-$cmd = './plot_build_latest.sh' . $args;
-
-chdir('/home/rfaulk/fundraiser-statistics/bash/');
+$cmd = '/home/rfaulk/fundraiser-statistics/bash/plot_build_latest.sh' ;
 
 // Execute the shell command
-//$output1 = shell_exec($cmd . ' 2>&1');
-//$output2 = shell_exec('whoami');
+chdir('/home/rfaulk/fundraiser-statistics/bash/');
 $output = shell_exec('echo ' . $cmd. $args . ' >async_plotter.sh');
 
 echo '<html>';
