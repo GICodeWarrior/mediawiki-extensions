@@ -10848,6 +10848,7 @@ $messages['it'] = array(
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Marine-Blue
  * @author Naohiro19
  * @author 青子守歌
  */
@@ -11453,7 +11454,7 @@ $messages['ja'] = array(
 	'configure-setting-wgBlockAllowsUTEdit' => 'ブロックされた利用者が自身の会話ページを編集できるようにする',
 	'configure-setting-wgBlockDisablesLogin' => 'ブロックされた利用者のログインを許可しない',
 	'configure-setting-wgSysopEmailBans' => '利用者が [[Special:EmailUser]] にアクセスするのを管理者が禁止できるようにする',
-	'configure-setting-wgSysopRangeBans' => '管理者にIPアドレス範囲を禁止することを許可する',
+	'configure-setting-wgSysopRangeBans' => '管理者にIPアドレス範囲を規制することを許可する',
 	'configure-setting-wgSysopUserBans' => '管理者が登録利用者をブロックできるようにする',
 	'configure-setting-wgEnotifFromEditor' => '電子メール通知が(ウィキサーバーからではなく)ページの編集者から来るようにみせる',
 	'configure-setting-wgEnotifImpersonal' => '各利用者にパーソナライズされたメールではなく、汎用のメールを送る',

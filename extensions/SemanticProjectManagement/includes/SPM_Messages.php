@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'right-SPMsetup' => 'Edit basic semantic project management settings'
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'right-SPMsetup' => '{{doc-right|SPMsetup}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -146,6 +153,7 @@ $messages['ja'] = array(
 $messages['lb'] = array(
 	'spm_wbs_link' => '"MS Project"-XML-Export',
 	'spm_printername_wbs' => '"MS Project"-Export',
+	'spm-name' => "Semantesch Projet's-Gestioun",
 );
 
 /** Macedonian (Македонски)

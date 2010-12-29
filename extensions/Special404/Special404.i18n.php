@@ -139,7 +139,7 @@ Snano chceš sej slědowacu stronu wobhladać:
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'special404-desc' => 'Procura un pagina special de destination pro le errores "404 Non trovate"',
+	'special404-desc' => 'Procura un destination pro le errores "404 Non trovate"',
 	'error404' => '404 Non trovate',
 	'special404-body' => 'Le URL que tu requestava non esseva trovate.
 
@@ -169,6 +169,12 @@ Mungkin Anda ingin melihat:
 $messages['lb'] = array(
 	'special404-desc' => 'Erméiglecht eng Zilsäit fir "404 Net fonnt"-Feeler',
 	'error404' => '404 Net fonnt',
+	'special404-body' => 'Déi URL, déi Dir gefrot hutt gouf net fonnt.
+
+Wollt Dir wierklech {{fullurl:$1}} tippen?
+
+Vläicht wëllt Dir op der:
+* [[{{MediaWiki:Mainpage}}|Haaptsäit]] kucken',
 );
 
 /** Macedonian (Македонски)
@@ -225,6 +231,34 @@ Czy na pewno chodziło o {{fullurl:$1}}?
 
 Może chcesz zobaczyć
 * [[{{MediaWiki:Mainpage}}|stronę główną]]',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'special404-desc' => "A dà na destinassion për j'eror 404 Pa trovà",
+	'error404' => '404 Pa trovà',
+	'special404-body' => "L'URL ch'it l'has ciamà a l'é pa stàita trovà
+
+Vorìës-to scrive {{fullurl:$1}}?
+
+A peul esse ch'it veubie vardé:
+* [[{{MediaWiki:Mainpage}}|La pàgina prinsipal]]",
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'special404-desc' => 'Fornece um destino para os erros "404 Não encontrado"',
+	'error404' => '404 Não encontrado',
+	'special404-body' => 'A URL solicitada não foi encontrada. 
+
+Você quis escrever {{fullurl:$1}}? 
+
+Talvez queira ver:
+ * [[{{MediaWiki:Mainpage}}|A página principal]]',
 );
 
 /** Russian (Русский)

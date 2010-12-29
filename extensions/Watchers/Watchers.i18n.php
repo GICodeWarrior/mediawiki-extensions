@@ -26,6 +26,7 @@ $messages['en'] = array(
  * @author Lejonel
  * @author PieRRoMaN
  * @author Raymond
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'watchers' => 'In Watchers extension. The title of the page Special:Watchers, which lists users who has an article on their watch list.',
@@ -39,6 +40,7 @@ $1 is an integer (specified in the configuration of the wiki).',
 	'watchers_less_than_x' => 'In Watchlist extension. Used in Special:Watchers for pages that has less than a certain number of watching users.
 
 Parameter $1 is an integer (specified in the configuration of the wiki).',
+	'right-watchers-list' => '{{doc-right|watchers-list}}',
 );
 
 /** Afrikaans (Afrikaans)

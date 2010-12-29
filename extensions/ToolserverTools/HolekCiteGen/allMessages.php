@@ -213,6 +213,24 @@ $messages['en-gb'] = array(
 	'ts-citegen-Sidebar-add-IE-Mac-details' => "Once the page has loaded, open your Page Holder, click 'Add' then use the Page Holder Favourites button to store it as a Page Holder Favourite.",
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'ts-citegen-Send' => 'تولید',
+	'ts-citegen-Input-title' => 'ورودی',
+	'ts-citegen-Output-title' => 'نتیجه',
+	'ts-citegen-Skins' => 'خروجی',
+	'ts-citegen-Skin-outputformat' => 'قالب خروجی:',
+	'ts-citegen-Template-lang' => 'زبان الگو',
+	'ts-citegen-Sources-title' => 'منابع',
+	'ts-citegen-Tools' => 'ابزارها',
+	'ts-citegen-Other-languages' => 'زبان‌های دیگر',
+	'ts-citegen-Errors-title' => 'خطاها',
+	'ts-citegen-Unavailable-SQL' => 'خطا: پایگاه داده تولسرور در دسترس نیست. پیغام بازگشتی مای‌اس‌کیو‌ال: %s',
+	'ts-citegen-base-disabled' => 'خطا: پایگاه داده %s در دسترس نیست',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */
@@ -388,8 +406,22 @@ $messages['id'] = array(
  * @author Ohgi
  */
 $messages['ja'] = array(
-	'ts-citegen-Option-add-references' => 'citationテンプレートの前後に<ref>タグを挿入',
+	'ts-citegen-Title' => '出典テンプレート生成ツール',
+	'ts-citegen-Send' => '生成',
+	'ts-citegen-Input-title' => '入力',
+	'ts-citegen-Option-add-references' => '出典テンプレートの前後に<ref>タグを挿入',
+	'ts-citegen-Output-title' => '生成結果',
+	'ts-citegen-Skins' => '出力',
 	'ts-citegen-Skin-skins' => 'スキン',
+	'ts-citegen-Skin-outputformat' => '出力形式',
+	'ts-citegen-Template-lang' => 'テンプレートの言語',
+	'ts-citegen-Sidebar-title' => '生成ツール',
+	'ts-citegen-Sidebar-add-Firefox' => 'サイドバーに追加',
+	'ts-citegen-Sidebar-add-Opera' => 'Hotlistに追加',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Page Holderに追加',
+	'ts-citegen-Other-languages' => '他の言語',
+	'ts-citegen-Unavailable-SQL' => 'エラー： Toolserverデータベースが使用できません。MySQLは次の値を返しました： %s',
+	'ts-citegen-base-disabled' => 'エラー： %s データベースが使用できません',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

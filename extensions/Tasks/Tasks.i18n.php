@@ -2400,6 +2400,7 @@ $messages['lb'] = array(
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logpagetext' => 'Dëst ass eng Lëscht vun den Ännerunge vun den Aufgaben',
 	'tasks_logentry' => 'Fir "[[$1]]"',
+	'tasks-pref-showtaskcomments' => 'Diskussiounssäite vun den Aufgaben abannen.',
 );
 
 /** Lazuri (Lazuri)
