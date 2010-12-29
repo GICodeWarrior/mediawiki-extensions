@@ -34,17 +34,16 @@ $start=$_POST["start_time"];
 $cmpgn=$_POST["utm_campaign"];
 
 // generate plots
-$home_path = './plot_build_latest.sh';
-$cmd_arr = array();
 $args = ' ' . $cmpgn . ' ' . $start;
-$cmd = 'sh plot_build_latest.sh' . $args;
-
+// $cmd = 'echo "baggin5" | sudo -S ./plot_build_latest.sh' . $args;
+$cmd = './plot_build_latest.sh' . $args;
 
 chdir('/home/rfaulk/fundraiser-statistics/bash/');
-// $output= shell_exec($cmd);
 
 // Execute the shell command
-$output = shell_exec($cmd);
+//$output1 = shell_exec($cmd . ' 2>&1');
+//$output2 = shell_exec('whoami');
+$output = shell_exec('echo ' . $cmd. $args . ' >async_plotter.sh');
 
 echo '<html>';
 echo '<head>';
@@ -52,8 +51,9 @@ echo '<title>Wikimedia Fundraiser Reporting</title>';
 echo '</head>';
 echo '<body>';
 
-echo $cmd . '<br>';
-echo $output . '<br>';
+// echo $cmd . '<br>';
+// echo $output . '<br>';
+// echo $output2 . '<br>';
 echo 'Plots are generating, results will be up momentarily.<br>';
 echo '<a href="http://fundraising.wikimedia.org/stats/reporting_latest.html">Back to latest Reports</a><br>';
 

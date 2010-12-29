@@ -48,8 +48,8 @@ class FundraiserReporting:
 	def init_db(self):
 		""" Establish connection """
 		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 		""" Create cursor """
 		self.cur = self.db.cursor()
@@ -435,8 +435,8 @@ class BannerLPReporting(FundraiserReporting):
 	def __init__(self, *args):
 		
 		if len(args) == 2:
-			self.campaign = campaign
-			self.start_time = start_time
+			self.campaign = args[0]
+			self.start_time = args[1]
 		else:
 			self.campaign = None
 			self.start_time = None
@@ -563,9 +563,9 @@ class BannerLPReporting(FundraiserReporting):
 		
 		# Current date & time
 		now = datetime.datetime.now()
-		UTC = 8
-		delta = datetime.timedelta(hours=UTC)
-		now = now + delta
+		#UTC = 8
+		#delta = datetime.timedelta(hours=UTC)
+		#now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
 		hours_back = 24
