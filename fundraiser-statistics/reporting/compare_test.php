@@ -269,10 +269,10 @@ while ($i < mysql_num_fields($result1))
 		
 $script_args = $type . ' ' . $cmpgn1 . ' ' . $cmpgn2 . ' ' . $item1 . ' ' . $item2 . ' ' . $start . ' ' . $end . ' ' . $metric_index;
 $cmd_output = ' 1>./plotrun_out.txt';
-echo 'python ' . $home_path . 'run_confidence_plot.py '. $script_args . $cmd_output;
+// echo 'python ' . $home_path . 'run_confidence_plot.py '. $script_args . $cmd_output;
 $retval1 = system('python ' . $home_path . 'run_confidence_plot.py '. $script_args . $cmd_output, $retval2);
 
-echo '<br>' .$retval1. '<br>';
-echo $retval2;
+// echo '<br>' .$retval1. '<br>';
+// echo $retval2;
 
 ?>

@@ -57,7 +57,68 @@ class FundraiserReporting:
 	def close_db(self):
 		self.cur.close()
 		self.db.close()
+	
+	
+	"""
+	
+		Takes as input and converts it to a set of hours counting back from 0
 		
+		time_lists 		- a list of timestamp lists
+		time_norm 	- a dictionary of normalized times
+		
+	"""
+	def normalize_timestamps(self, time_lists):
+		
+		# Convert lists into dictionaries before processing
+		# it is assumed that lists are composed of only simple types
+		isList = 0
+		if type(time_lists) is list:
+			isList = 1
+			
+			old_list = time_lists
+			time_lists = mh.AutoVivification()
+			
+			key = 'key'
+			time_lists[key] = list()
+			
+			for i in range(len(old_list)):
+				time_lists[key].append(old_list[i])
+		
+		
+		# Find the earliest date
+		max_i = 0
+		
+		for key in time_lists.keys():
+			for date_str in time_lists[key]:
+				day_int = int(date_str[8:10])
+				hr_int = int(date_str[11:13])
+				date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
+				if date_int > max_i:
+					max_i = date_int
+					max_day = day_int
+					max_hr = hr_int 
+		
+		
+		# Normalize dates
+		time_norm = mh.AutoVivification()
+		for key in time_lists.keys():
+			for date_str in time_lists[key]:
+				day = int(date_str[8:10])
+				hr = int(date_str[11:13])
+				# date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
+				elem = (day - max_day) * 24 + (hr - max_hr)
+				try: 
+					time_norm[key].append(elem)
+				except:
+					time_norm[key] = list()
+					time_norm[key].append(elem)
+		
+		# If the original argument was a list put it back in that form 
+		if isList:
+			time_norm = time_norm[key]
+			
+		return time_norm
+				
 	"""
 	
 	input - python datetime object
@@ -173,27 +234,53 @@ class FundraiserReporting:
 
 		return new_values
 	
-	# workaround for issue with tuple objects in HTML.py 
-	# MySQLdb returns unfamiliar tuple elements from its fetchall method
-	# this is probably a version problem since the issue popped up in 2.5 but not 2.6
+	"""
+	
+	workaround for issue with tuple objects in HTML.py 
+	MySQLdb returns unfamiliar tuple elements from its fetchall method
+	this is probably a version problem since the issue popped up in 2.5 but not 2.6
+	
+	"""
 	def listify(row):
 		l = []
 		for i in row:
 			l.append(i)
 		return l
+		
+
+	"""
 	
+	To be overloaded by subclasses for specific types of queries
+	
+	"""
 	def run_query(self, start_time, end_time, query_name, metric_name):
 		return
+		
 	
+	"""
+	
+	To be overloaded by subclasses for different plotting behaviour
+	
+	"""
 	def gen_plot(self,x, y_lists, labels, title, xlabel, ylabel, subplot_index, fname):
 		return
+
+	"""
 	
-	def publish_google_sheet(self):
-		return
-		
+	To be overloaded by subclasses for writing tables - this functionality currently exists outside of this class structure (test_reporting.py)
+	
+	"""
 	def write_to_html_table(self):
 		return
 	
+	
+	
+	"""
+	
+	The access point of FundraiserReporting and derived objects.  Will be used for executing and orchestrating the creation of plots, tables etc.
+	To be overloaded by subclasses 
+	
+	"""
 	def run(self):
 		return
 		
@@ -421,6 +508,7 @@ class TotalAmountsReporting(FundraiserReporting):
 
 		return [labels_temp, counts_temp, title, ylabel]
 		
+
 """
 
 CLASS :: ^BannerLPReporting^
@@ -684,9 +772,163 @@ class BannerLPReporting(FundraiserReporting):
 		
 		return [campaign, timestamp]
 
+
+
+	
+	"""
+	
+		Takes as input and converts it to a set of hours counting back from 0
+		
+		time_lists 		- a dictionary of timestamp lists
+		time_norm 	- a dictionary of normalized times
+		
+	"""
+	def normalize_timestamps(self, time_lists):
+		# Find the earliest date
+		max_i = 0
+		
+		for key in time_lists.keys():
+			for date_str in time_lists[key]:
+				day_int = int(date_str[8:10])
+				hr_int = int(date_str[11:13])
+				date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
+				if date_int > max_i:
+					max_i = date_int
+					max_day = day_int
+					max_hr = hr_int 
+		
+		
+		# Normalize dates
+		time_norm = mh.AutoVivification()
+		for key in time_lists.keys():
+			for date_str in time_lists[key]:
+				day = int(date_str[8:10])
+				hr = int(date_str[11:13])
+				# date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
+				elem = (day - max_day) * 24 + (hr - max_hr)
+				try: 
+					time_norm[key].append(elem)
+				except:
+					time_norm[key] = list()
+					time_norm[key].append(elem)
+		
+		return time_norm
+
+"""
+
+CLASS :: ^MinerReporting^
+
+This subclass handles reporting on raw values imported into the database.
+
+"""
+
+class MinerReporting(FundraiserReporting):
+	
+	def run_query(self, start_time, end_time, query_name):
+		
+		self.init_db()
+		
+		query_obj = qs.query_store()
+
+		counts = list()
+		times = list()
+			
+		# Load the SQL File & Format
+		filename = './sql/' + query_name + '.sql'
+		sql_stmnt = mh.read_sql(filename)
+		
+		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time])
+		#print sql_stmnt
+		
+		# Get Indexes into Query
+		count_index = query_obj.get_count_index(query_name)
+		time_index = query_obj.get_time_index(query_name)
+
+		# Composes the data for each banner
+		try:
+			err_msg = sql_stmnt
+			self.cur.execute(sql_stmnt)
+			
+			results = self.cur.fetchall()
+			
+			for row in results:
+				counts.append(row[count_index])
+				times.append(row[time_index])
+				
+		except:
+			self.db.rollback()
+			sys.exit("Database Interface Exception:\n" + err_msg)
+		
+		""" Convert Times to Integers """
+		time_norm =  self.normalize_timestamps(times)
+					
+
+		self.close_db()
+		
+		return [counts, time_norm]
+	
+
+	# Create histograms for hourly counts
+	def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
+		
+		pylab.subplot(subplot_index)
+		pylab.figure(num=None,figsize=[26,14])	
+		
+		# pylab.plot(times, counts)
+		# pylab.hist(counts, times)
+		pylab.bar(times, counts, width=0.5)
+		
+		pylab.grid()
+		pylab.xlim(ranges[0], ranges[1])
+		
+		pylab.xlabel(xlabel)
+		pylab.ylabel(ylabel)
+
+		pylab.title(title)
+		pylab.savefig(fname, format='png')
+	
+		
+		
+	def run(self, query_name):
+		
+		query_obj = qs.query_store()
+		
+		# Current date & time
+		now = datetime.datetime.now()
+		#UTC = 8
+		#delta = datetime.timedelta(hours=UTC)
+		#now = now + delta
+		
+		# ESTABLISH THE START TIME TO PULL ANALYTICS
+		hours_back = 24
+		times = self.gen_date_strings_hr(now, hours_back)
+		
+		start_time = times[0]
+		end_time = times[1]
+		
+		# Run Query
+		return_val = self.run_query(start_time, end_time, query_name)
+		counts = return_val[0]
+		times = return_val[1]
+		
+		# Normalize times
+		min_time = min(times)
+		ranges = [min_time, 0]
+		
+		xlabel = 'Hours'
+		subplot_index = 111
+		fname = query_name + '.png'
+		
+		title = query_obj.get_plot_title(query_name)
+		ylabel = query_obj.get_plot_ylabel(query_name)
+		
+		# Generate Histogram
+		self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname)
+		
 	
 """
 
+INCOMPLETE - 
 CLASS :: ^ConfidenceReporting^
 
 To be called primarily for reporting 

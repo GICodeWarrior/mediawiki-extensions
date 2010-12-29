@@ -85,9 +85,20 @@ class query_store:
 			cmpgn = args[2]
 			banner = args[3]
 			sql_stmnt = sql_stmnt % ('%','%','%','%','10','10', start, end, cmpgn, banner, \
-			'%','%','%','%','10','10', start, end, cmpgn, banner)		
+			'%','%','%','%','10','10', start, end, cmpgn, banner)
+		
+		elif query_name == 'report_banner_impressions_by_hour':
+			start = args[0]
+			end = args[1]
+			sql_stmnt = sql_stmnt % ('%','%','%','%', start, end)
+		
+		elif query_name == 'report_lp_views_by_hour':
+			start = args[0]
+			end = args[1]
+			sql_stmnt = sql_stmnt % ('%','%','%','%', start, end)
+			
 		else:
-			print 'no such table\n'
+			return 'no such table\n'
 
 		return sql_stmnt
 
@@ -97,7 +108,7 @@ class query_store:
 		elif query_name == '':
 			return ''
 		else:
-			'no such table'
+			return 'no such table'
 
 	def get_query_header(self, query_name):
 		if query_name == 'report_contribution_tracking':
@@ -105,8 +116,16 @@ class query_store:
 		elif query_name == '':
 			return ''
 		else:
-			'no such table'
+			return 'no such table'
 
+	def get_count_index(self, query_name):
+		if query_name == 'report_lp_views_by_hour':
+			return 1
+		elif query_name == 'report_banner_impressions_by_hour':
+			return 1
+		else:
+			return -1
+			
 	def get_time_index(self, query_name):
 		if query_name == 'report_campaign_logs_by_min':
 			return 0
@@ -120,8 +139,12 @@ class query_store:
 			return 0
 		elif query_name == 'report_latest_campaign':
 			return 1
+		elif query_name == 'report_banner_impressions_by_hour':
+			return 0
+		elif query_name == 'report_lp_views_by_hour':
+			return 0
 		else:
-			'no such table'
+			return -1
 
 	def get_campaign_index(self, query_name):
 		if query_name == 'report_campaign_logs_by_min':
@@ -135,7 +158,7 @@ class query_store:
 		elif query_name == 'report_latest_campaign':
 			return 0
 		else:
-			'no such table'
+			return -1
 
 	def get_banner_index(self, query_name):
 		if query_name == 'report_campaign_logs_by_min':
@@ -147,7 +170,7 @@ class query_store:
 		elif query_name == 'report_bannerLP_metrics':
 			return 1
 		else:
-			'no such table'
+			return -1
 
 	def get_landing_page_index(self, query_name):
 		if query_name == 'report_campaign_logs_by_min':
@@ -161,7 +184,7 @@ class query_store:
 		elif query_name == 'report_bannerLP_metrics':
 			return 1
 		else:
-			'no such table'
+			return -1
 
 	def get_metric_index(self, query_name, metric_name):
 		if query_name == 'report_campaign_logs_by_min':
@@ -213,4 +236,20 @@ class query_store:
 			else:
 				return -1
 		else:
-			'no such table'
+			return 'no such table'
+	
+	def get_plot_title(self, query_name):
+		if query_name == 'report_banner_impressions_by_hour':
+			return 'Banner Impressions Over the Past 24 Hours'
+		elif query_name == 'report_lp_views_by_hour':
+			return 'Landing Page Views Over the Past 24 Hours'
+		else:
+			return 'no such table'
+		
+	def get_plot_ylabel(self, query_name):
+		if query_name == 'report_banner_impressions_by_hour':
+			return 'IMPRESSIONS'
+		elif query_name == 'report_lp_views_by_hour':
+			return 'VIEWS'
+		else:
+			return'no such table'

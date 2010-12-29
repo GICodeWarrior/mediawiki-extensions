@@ -165,3 +165,18 @@ def get_timestamps_diff(timestamp_start, timestamp_end):
 	diff = float(diff.seconds) / 3600
 	
 	return diff
+	
+""" Converts a list to a dictionary or vice versa -- INCOMPLETE MAY BE USEFUL AT SOME FUTURE POINT """
+def convert_list_dict(collection):
+	
+	if type(collection) is dict:
+		new_collection = list()
+		
+	elif type(collection) is list:
+		new_collection = dict()
+		
+	else:
+		print "miner_help::convert_list_dict:  Invalid type, must be a list or a dictionary."
+		return 0;
+
+	return new_collection

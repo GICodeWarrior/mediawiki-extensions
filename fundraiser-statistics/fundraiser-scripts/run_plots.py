@@ -17,6 +17,7 @@ import fundraiser_reporting as fa
 
 tar = fa.TotalAmountsReporting()
 blpr = fa.BannerLPReporting()
+mr = fa.MinerReporting()
 
 
 # Run the total amount plots
@@ -35,3 +36,7 @@ blpr.run('LP', 'completion_rate')
 blpr.run('LP-TEST', 'don_per_view')
 blpr.run('BAN-TEST', 'don_per_imp')
 blpr.run('BAN-TEST', 'click_rate')
+
+# Run the impression / view counts
+mr.run('report_banner_impressions_by_hour')
+mr.run('report_lp_views_by_hour')

@@ -83,7 +83,7 @@ group by 1,2,3) as ecomm
 
 on ecomm.banner = lp.utm_source and if(ecomm.landing_page like 'WMFJAcontrol%s','WMFJAcontrol', ecomm.landing_page) = lp.landing_page and ecomm.utm_campaign = lp.utm_campaign
 
-where floor(impressions * views / views_banner) > 50000
+where floor(impressions * views / views_banner) > 10000
 
 group by 1,2,3 order by 12 desc;
 
