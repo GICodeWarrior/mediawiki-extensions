@@ -226,6 +226,7 @@ $messages['lb'] = array(
 	'livetranslate-dictionary-error' => 'De Live-Iwwersetzungs-Dictionnaire gouf net fonnt. Keng Wierder gi bei der Iwwersetzung als spezial ugekuckt.',
 	'livetranslate-dictionary-empty' => 'Et gëtt nach keng Wierder am Dictionnaire. Klickt op den "Änneren"-Tab fir der derbäizesetzen.',
 	'livetranslate-dictionary-count' => 'Et gëtt {{PLURAL:$1|ee Wuert|$1 Wierder}} a(n) {{PLURAL:$2|enger Sprooch|$2 Sproochen}}. Klickt den "Änneren"-Tab fir der derbäizesetzen.',
+	'livetranslate-dictionary-unallowed-langs' => "Dës {{PLURAL:$2|Sprooch ass|Sprooche si}} momentan net fir d'Iwwersetzen zougelooss: $1. Entweder ännert d'Astellung vun den  erlaabte Sproochen an Ärer Wiki-Konfiguratioun oder huelt se aus dem Dictionnaire eraus.",
 );
 
 /** Macedonian (Македонски)
@@ -293,6 +294,11 @@ $messages['pms'] = array(
 	'livetranslate-translate-to' => 'Vòlta sta pàgina an',
 	'livetranslate-button-translate' => 'Traduv',
 	'livetranslate-button-translating' => 'Volté...',
+	'livetranslate-button-revert' => 'Mosta original',
+	'livetranslate-dictionary-error' => 'As peul pa avèj ël dissionari ëd viragi viv. Pa gnun-e paròle a saran tratà com speciaj an mente dël process ëd viragi.',
+	'livetranslate-dictionary-empty' => 'A-i é pa anco\' gnun-e paròle ant ël dissionari. Sgnaca ël boton "modìfica" për giuntene quaidun-e.',
+	'livetranslate-dictionary-count' => 'A-i {{PLURAL:$1|é $1 paròla|son $1 paròle}} an $2 {{PLURAL:$2|lenga|lenghe}}. Sgnaca ël boton "modìfica" për giontene ëd pi.',
+	'livetranslate-dictionary-unallowed-langs' => "{{PLURAL:$2|Sta lenga a l'é|Ste lenghe a son}} al moment pa ampostà com obietiv përmëttù ed viragi: $1. Modìfica le lenghe përmëttùe ant la configurassion ëd toe wiki, o gav-je dal dissionari.",
 );
 
 /** Portuguese (Português)
