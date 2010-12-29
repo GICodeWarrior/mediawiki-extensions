@@ -906,6 +906,8 @@ class MinerReporting(FundraiserReporting):
 		start_time = times[0]
 		end_time = times[1]
 		
+		print '\nGenerating ' + query_name +', start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
+		
 		# Run Query
 		return_val = self.run_query(start_time, end_time, query_name)
 		counts = return_val[0]
@@ -920,8 +922,16 @@ class MinerReporting(FundraiserReporting):
 		fname = query_name + '.png'
 		
 		title = query_obj.get_plot_title(query_name)
+		title = title + ' -- ' + start_time + ' - ' + end_time
 		ylabel = query_obj.get_plot_ylabel(query_name)
 		
+		# Convert counts to float (from Decimal) to prevent exception when bar plotting
+		# Bbox::update_numerix_xy expected numerix array
+		counts_new = list()
+		for i in range(len(counts)):
+			counts_new.append(float(counts[i]))
+		counts = counts_new
+			
 		# Generate Histogram
 		self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname)
 		
