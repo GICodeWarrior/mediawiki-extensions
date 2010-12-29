@@ -580,6 +580,7 @@ $messages['lb'] = array(
 	'ea-listrecipients' => '=== {{PLURAL:$1|Destinataire|Lëscht vun de(n) $1 Destinatairen}} ===',
 	'ea-error' => "'''Feeler beim Verschécke vun der Säit [[$1]]:''' ''$2''",
 	'ea-denied' => 'Rechter refuséiert',
+	'ea-compose' => 'Inhalt zesummestellen',
 	'ea-show' => 'Adressate weisen',
 	'ea-from' => 'Vum:',
 	'ea-to' => 'Fir:',
