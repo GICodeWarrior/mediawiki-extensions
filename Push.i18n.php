@@ -87,8 +87,12 @@ To push pages, enter the titles in the text box below, one title per line and hi
  * @author Jeroen De Dauw
  * @author Nike
  * @author Raymond
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'right-push' => '{{doc-right|push}}',
+	'right-bulkpush' => '{{doc-right|bulkpush}}',
+	'right-pushadmin' => '{{doc-right|pushadmin}}',
 	'push-err-authentication' => '$1: wiki name, $2: optional detailed error message',
 	'push-remote-page-link' => '$1: page name, $2: wiki name',
 	'push-remote-page-link-full' => '$1: page name, $2: wiki name',
