@@ -21,7 +21,6 @@ if (!defined('MEDIAWIKI')) die();
 class NewsChannel extends SpecialPage
 {
 	var $feedFormat = '';
-	var $renderingPage = null;
 
 	/**
 	 * Constructor is used to initialize class member variables and load extension messages.
@@ -321,15 +320,9 @@ class NewsChannel extends SpecialPage
 	 * @param string $text Text with wiki markup to render.
 	 */
 	function renderWikiMarkup( $text ) {
-		global $wgServer;
+		global $wgServer, $wgOut;
 
-		if ( $this->renderingPage == null )
-			$this->renderingPage = new OutputPage();
-		else
-			$this->renderingPage->clearHTML();
-
-		$this->renderingPage->addWikiText( $text );
-		$text = $this->renderingPage->getHTML();
+		$text = $wgOut->parse( $text );
 
 		if ( $wgNewsChannelExportTextOnly ) {
 			$text = preg_replace( '/<(img|embed) [^>]+>/is', '', $text );
