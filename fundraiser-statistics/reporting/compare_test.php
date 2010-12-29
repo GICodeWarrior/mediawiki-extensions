@@ -18,14 +18,14 @@ if ($pwd_key != "angelface") {
 $link = mysql_connect('storage3.pmtpa.wmnet', 'rfaulk');
 
 if (!$link) {
-    die('Could not connect: ' . mysql_error());
+	die('Could not connect: ' . mysql_error());
 }
 
 // echo 'Connected successfully<br>';
 
 $db_selected = mysql_select_db('faulkner', $link);
 if (!$db_selected) {
-    die ('Can\'t use faulkner : ' . mysql_error());
+	die ('Can\'t use faulkner : ' . mysql_error());
 }
 
 $sql_file=$_POST["sqlFile"];
@@ -44,7 +44,7 @@ $query_parts = explode('\\',$query);
 $query='';
 for ( $counter = 0; $counter < count($query_parts); $counter += 1)
 {
-    $query=$query.$query_parts[$counter];
+	$query=$query.$query_parts[$counter];
 }
 
 //  Format the query based on the type
@@ -69,100 +69,165 @@ if (!$result1 || !$result2) {
 }
 
 
-// Compute the mean and standard deviation of the results
-$m1= 0;
-$m2= 0;
+/* Compute the mean and standard deviation of the results */
 $n1 = 0;
 $n2 = 0;
+$m1= array();
+$m2= array();
+$interval = 6;
 
 // These will store the table values
 $time = array();
 $metric1 = array();
 $metric2 = array();
 
-// Means
+// Compute the means of the first item
+$counter = 0;
+$index = 0;
 while ($row = mysql_fetch_assoc($result1)) {
 
-    $time[$n1] = $row["day_hr"];
-    $metric1[$n1] = $row[$metric];
-    
-    $x1 = $row[$metric];
-    $group1[$n] = $x1;
-    $m1 = $x1 + $m1;
-    $n1=$n1+1;
+	$time[$n1] = $row["day_hr"];
+	$metric1[$n1] = $row[$metric];
+
+	$x1 = $row[$metric];
+	$group1[$n] = $x1;
+	$m1[$index] = $x1 + $m1[$index];
+	$n1=$n1+1;
+
+	if ($counter < $interval) {
+		$counter = $counter + 1;
+	} else {
+		$index = $index + 1;
+		$counter = 0; 
+	}
 }
 
+// Compute the means of the second item
+$counter = 0;
+$index = 0;
 while ($row = mysql_fetch_assoc($result2)) {
-    $metric2[$n2] = $row[$metric];
-    
-    $x2 = $row[$metric];
-    $group2[$n] = $x2;
-    $m2 = $x2 + $m2;
-    $n2=$n2+1;
+	$metric2[$n2] = $row[$metric];
+
+	$x2 = $row[$metric];
+	$group2[$n] = $x2;
+	$m2[$index] = $x2 + $m2[$index];
+	$n2=$n2+1;
+
+	if ($counter < $interval) {
+		$counter += 1;
+	} else {
+		$index = $index + 1;
+		$counter = 0; 
+	}
 }
 
 $n = $n1;
-$m1= $m1/$n;
-$m2= $m2/$n;
-$v1 = 0;
-$v2 = 0;
 
-// Variance
-for ( $counter = 0; $counter < $n; $counter += 1)
-{
-    $diff1 = $group1[$counter] - $m1;
-    $diff2 = $group2[$counter] - $m2;
-    $v1 = $v1 + pow($diff1,2);
-    $v2 = $v2 + pow($diff2,2);
+// Normalize means
+for ( $i = 0; $i < count($m1); $i += 1) {
+	$m1[$i] = $m1[$i] / $interval;
+	$m2[$i] = $m2[$i] / $interval;
 }
 
-$v1=$v1/$n;
-$v2=$v2/$n;
+$v1 = array();
+$v2 = array();
+
+// Compute variance for both groups
+for ( $counter = 0; $counter < $n; $counter += 1)
+{  
+	$index = floor($counter / $interval);
+	
+	$diff1 = $group1[$counter] - $m1[$index];
+	$diff2 = $group2[$counter] - $m2[$index];
+	$v1[$index] = $v1[$index] + pow($diff1,2);
+	$v2[$index] = $v2[$index] + pow($diff2,2);
+	
+}
+
+// Normalize variances
+for ( $i = 0; $i < count($v1); $i += 1) {
+	$v1[$i] = $v1[$i] / $interval;
+	$v2[$i] = $v2[$i] / $interval;
+}
+
+
+//  Compute W values for each test hour
+$W = array();
+for ( $i = 0; $i < count($v1); $i += 1)
+{
+	$W[$i] = abs($m1[$i] - $m2[$i]) / pow(($v1[$i] + $v2[$i]) ,0.5);
+}
+
 
 // Student's t test
-$t = ($m1 - $m2) / pow(($v1 + $v2) / $n, 0.5);
-$df = pow(($v1+$v2)/$n,2) / ((pow($v1/$n,2)/($n-1)) + (pow($v2/$n,2)/($n-1)));
+// $t = ($m1 - $m2) / pow(($v1 + $v2) / $n, 0.5);
+// $df = pow(($v1+$v2)/$n,2) / ((pow($v1/$n,2)/($n-1)) + (pow($v2/$n,2)/($n-1)));
 
 // Wald test test
-$W = abs($m1 - $m2) / pow(($v1 + $v2) ,0.5);
+// $W = abs($m1 - $m2) / pow(($v1 + $v2) ,0.5);
 
 echo '<h2> Test Analysis: </h2></br>';
 
-echo 'Average ' . $metric . ' for ' . $item1 .' = '.$m1.'<br>';
-echo 'Average ' . $metric . ' for ' . $item2 .' = '.$m2.'<br><br>';
-echo 'The Wald test value is: ' . $W . '<br>';
+// echo 'Average ' . $metric . ' for ' . $item1 .' = '.$m1.'<br>';
+// echo 'Average ' . $metric . ' for ' . $item2 .' = '.$m2.'<br><br>';
+// echo 'The Wald test value is: ' . $W . '<br>';
 // echo 'sample variance of group 1 '.$v1.'<br>';
 // echo 'sample variance of group 2 '.$v2.'<br>';
 
-if ($W >= 0.1) {
-echo '<br>8% confident about the winner.<br>';
-} elseif ($W >= 0.2) {
-echo '<br>16% confident about the winner.<br>';
-} elseif ($W >= 0.3) {
-echo '<br>24% confident about the winner.<br>';
-} elseif ($W >= 0.4) {
-echo '<br>31% confident about the winner.<br>';
-} elseif ($W >= 0.5) {
-echo '<br>38% confident about the winner.<br>';
-} elseif ($W >= 0.6) {
-echo '<br>45% confident about the winner.<br>';
-} elseif ($W >= 0.7) {
-echo '<br>52% confident about the winner.<br>';
-} elseif ($W >= 0.8) {
-echo '<br>63% confident about the winner.<br>';
-} elseif ($W >= 0.9) {
-echo '<br>68% confident about the winner.<br>';
-} elseif ($W >= 1.0) {
-echo '<br>73% confident about the winner.<br>';
-} elseif ($W >= 1.3) {
-echo '<br>81% confident about the winner.<br>';
-} elseif ($W >= 1.6) {
-echo '<br>89% confident about the winner.<br>';
-} elseif ($W >= 1.9) {
-echo '<br>95% confident about the winner.<br>';
-} else {
-echo '<br>There is no clear winner.<br>';
+$P = 1;
+for ( $i = 0; $i < count($m1); $i += 1) {
+	
+	echo 'The average of Group 1 for hour ' . ($i + 1). ': ' . $m1[$i] . '<br>';
+	echo 'The average of Group 2 for hour ' . ($i + 1). ': ' . $m2[$i] . '<br>';
+	
+	if ($W[$i] >= 0.1) {
+		echo '<br>8% confident about the winner.<br>';
+		$P *= 0.08;
+	} elseif ($W[$i] >= 0.2) {
+		echo '<br>16% confident about the winner.<br>';
+		$P *= 0.16;
+	} elseif ($W[$i] >= 0.3) {
+		echo '<br>24% confident about the winner.<br>';
+		$P *= 0.24;
+	} elseif ($W[$i] >= 0.4) {
+		echo '<br>31% confident about the winner.<br>';
+		$P *= 0.31;
+	} elseif ($W[$i] >= 0.5) {
+		echo '<br>38% confident about the winner.<br>';
+		$P *= 0.38;
+	} elseif ($W[$i] >= 0.6) {
+		echo '<br>45% confident about the winner.<br>';
+		$P *= 0.45;
+	} elseif ($W[$i] >= 0.7) {
+		echo '<br>52% confident about the winner.<br>';
+		$P *= 0.52;
+	} elseif ($W[$i] >= 0.8) {
+		echo '<br>63% confident about the winner.<br>';
+		$P *= 0.63;
+	} elseif ($W[$i] >= 0.9) {
+		echo '<br>68% confident about the winner.<br>';
+		$P *= 0.68;
+	} elseif ($W[$i] >= 1.0) {
+		echo '<br>73% confident about the winner.<br>';
+		$P *= 0.73;
+	} elseif ($W[$i] >= 1.3) {
+		echo '<br>81% confident about the winner.<br>';
+		$P *= 0.81;
+	} elseif ($W[$i] >= 1.6) {
+		echo '<br>89% confident about the winner.<br>';
+		$P *= 0.89;
+	} elseif ($W[$i] >= 1.9) {
+		echo '<br>95% confident about the winner.<br>';
+		$P *= 0.95;
+	} else {
+		echo '<br>There is no clear winner.<br>';
+		$P *= 0.08;
+	}
+	
+	echo '<br>';
 }
+
+echo '<br>Overall there is ' . ($P * 100) . '% confidence on the winner.<br>';
 
 // Build Table of data
 
@@ -203,6 +268,11 @@ while ($i < mysql_num_fields($result1))
 
 		
 $script_args = $type . ' ' . $cmpgn1 . ' ' . $cmpgn2 . ' ' . $item1 . ' ' . $item2 . ' ' . $start . ' ' . $end . ' ' . $metric_index;
-$retval = system($home_path . 'python run_confidfence_plots.py '. $script_args , $retval);
+$cmd_output = ' 1>./plotrun_out.txt';
+echo 'python ' . $home_path . 'run_confidence_plot.py '. $script_args . $cmd_output;
+$retval1 = system('python ' . $home_path . 'run_confidence_plot.py '. $script_args . $cmd_output, $retval2);
+
+echo '<br>' .$retval1. '<br>';
+echo $retval2;
 
 ?>

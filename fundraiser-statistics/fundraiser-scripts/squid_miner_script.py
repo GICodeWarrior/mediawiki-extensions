@@ -56,9 +56,9 @@ INITIALIZE DB ACCESS
 """
 
 """ Establish connection """
-#db = MySQLdb.connect(host='localhost', user='root', passwd='baggin5', db='faulkner')
+db = MySQLdb.connect(host='localhost', user='root', passwd='baggin5', db='faulkner')
 # db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+#db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 """ Create cursor """
 cur = db.cursor()

@@ -32,27 +32,53 @@
 
 
 <p>
-This page will be used for graphical reporting of fundraiserrelated data for the latest tests.
+This page will be used for graphical reporting of fundraiser related data for the latest tests.
 </p>
+<br>
+
+<p>
+Is the campaign data missing?  Enter a campaign manually.
+</p>
+<form action="custom_campaign_plot.php" method="post">
+<label for="utm_campaign"> 
+<pre>UTM CAMPAIGN:		</pre>
+</label>
+<input type="text" name="utm_campaign" />
+<br/>
+<br/>
+<label for="start_time"> 
+<pre>START TIMESTAMP:	</pre>		
+</label>
+ <input type="text" name="start_time" />
+<br/>
+<br/>
+<label for="pwd"> 
+<pre>Key:				</pre>		
+</label>
+<input type="password" name="pwd" size="20">
+<br/>
+<input type="submit" value="Generate Plots">
+</form>
+
 <br>
 
 <h3><u>Banners Donations Per Impression</u></h3>
 <OBJECT WIDTH="1600" HEIGHT="800" data="report_banner_metrics_don_per_imp_latest.png" type="image/png">
-<p>Total donation amounts over a given period.</p>
+<!-- <p>Total donation amounts over a given period.</p> -->
 </OBJECT>
 
 <br>
 
 <h3><u>Landing Pages Donations Per View</u></h3>
 <OBJECT WIDTH="1600" HEIGHT="800" data="report_LP_metrics_don_per_view_latest.png" type="image/png">
-<p>Total donation amounts over a given period.</p>
+<!-- <p>Total donation amounts over a given period.</p> -->
 </OBJECT>
 
 <br>
 
-<h3><u>Landing Pages Donations Per View</u></h3>
+<h3><u>Banner Click Rate</u></h3>
 <OBJECT WIDTH="1600" HEIGHT="800" data="report_banner_metrics_click_rate_latest.png" type="image/png">
-<p>Total donation amounts over a given period.</p>
+<!-- <p>Click rate of the latest test.</p> -->
 </OBJECT>
 
 <br>

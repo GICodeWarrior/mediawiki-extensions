@@ -58,7 +58,7 @@ def mine_impression_requests(run_id, logFileName, db, cur):
 		
 		try:
 			# cur.execute(deleteStmnt)
-			print >> sys.stdout, "Executed delete from landing page: " + deleteStmnt
+			print >> sys.stdout, "Executed delete from impression: " + deleteStmnt
 		except:
 			print >> sys.stderr, "Could not execute delete:\n" + deleteStmnt + "\nResuming insert ..."
 			pass

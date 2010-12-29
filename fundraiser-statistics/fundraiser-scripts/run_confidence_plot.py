@@ -13,6 +13,7 @@ Shell to generate errorbar plots for confidence analysis.
 
 """
 
+import sys
 import fundraiser_reporting as fr
 
 
@@ -30,7 +31,6 @@ try:
 except IndexError:
 	sys.exit('Invalid command args.\n')
 	
-query = sql_filename.split('.')[0]
-r = fr.ConfidenceReporting(query, cmpgn1, cmpgn2, item_1, item_2, start_time , end_time, metric)
+r = fr.ConfidenceReporting(type, cmpgn1, cmpgn2, item_1, item_2, start_time , end_time, metric)
 
 r.run()

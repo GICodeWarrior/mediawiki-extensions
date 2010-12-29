@@ -48,8 +48,8 @@ class FundraiserReporting:
 	def init_db(self):
 		""" Establish connection """
 		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 		""" Create cursor """
 		self.cur = self.db.cursor()
@@ -431,6 +431,16 @@ This subclass handles reporting on banners and landing pages for the fundraiser.
 
 class BannerLPReporting(FundraiserReporting):
 	
+		
+	def __init__(self, *args):
+		
+		if len(args) == 2:
+			self.campaign = campaign
+			self.start_time = start_time
+		else:
+			self.campaign = None
+			self.start_time = None
+		
 	def run_query(self,start_time, end_time, campaign, query_name, metric_name):
 		
 		self.init_db()
@@ -447,7 +457,7 @@ class BannerLPReporting(FundraiserReporting):
 		
 		query_name  = 'report_bannerLP_metrics'  # rename query to work with query store
 		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time, campaign])
-		#print sql_stmnt
+		# print sql_stmnt
 		key_index = query_obj.get_banner_index(query_name)
 		time_index = query_obj.get_time_index(query_name)
 		metric_index = query_obj.get_metric_index(query_name, metric_name)
@@ -553,9 +563,9 @@ class BannerLPReporting(FundraiserReporting):
 		
 		# Current date & time
 		now = datetime.datetime.now()
-		#UTC = 8
-		#delta = datetime.timedelta(hours=UTC)
-		#now = now + delta
+		UTC = 8
+		delta = datetime.timedelta(hours=UTC)
+		now = now + delta
 		
 		# ESTABLISH THE START TIME TO PULL ANALYTICS
 		hours_back = 24
@@ -568,31 +578,56 @@ class BannerLPReporting(FundraiserReporting):
 		
 		if type == 'LP':
 			query_name = 'report_LP_metrics'
-			campaign = '[0-9](JA|SA|EA)[0-9]'
+			
+			# Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
+			if self.campaign == None:
+				campaign = '[0-9](JA|SA|EA)[0-9]'
+			else:
+				campaign = self.campaign 
+				
 			title = metric_name + ': ' + start_time + ' -- ' + end_time 
 			fname = query_name + '_' + metric_name + '.png'			
 		elif type == 'BAN':
 			query_name = 'report_banner_metrics'
-			campaign = '[0-9](JA|SA|EA)[0-9]'
+			
+			# Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
+			if self.campaign == None:
+				campaign = '[0-9](JA|SA|EA)[0-9]'
+			else:
+				campaign = self.campaign 
+				
 			title = metric_name + ': ' + start_time + ' -- ' + end_time 
 			fname = query_name + '_' + metric_name + '.png'
 		elif type == 'BAN-TEST':
 			r = self.get_latest_campaign()
 			query_name = 'report_banner_metrics'
-			campaign = r[0]
-			start_time = r[1]
+			
+			# Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
+			if self.campaign == None:
+				campaign = r[0]
+				start_time = r[1]
+			else:
+				campaign = self.campaign 
+				start_time = self.start_time
+				
 			title = metric_name + ': ' + start_time + ' -- ' + end_time + ', CAMPAIGN =' + campaign 
 			fname = query_name + '_' + metric_name + '_latest' + '.png'
 		elif type == 'LP-TEST':
 			r = self.get_latest_campaign()
 			query_name = 'report_LP_metrics'
-			campaign = r[0]
-			start_time = r[1]
+			
+			# Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
+			if self.campaign == None:
+				campaign = r[0]
+				start_time = r[1]
+			else:
+				campaign = self.campaign 
+				start_time = self.start_time
+				
 			title = metric_name + ': ' + start_time + ' -- ' + end_time + ', CAMPAIGN =' + campaign 
 			fname = query_name + '_' + metric_name + '_latest' + '.png'
 		else:
 			sys.exit("Invalid type name - must be 'LP' or 'BAN'.")	
-		
 		
 		return_val = self.run_query(start_time, end_time, campaign, query_name, metric_name)
 		metrics = return_val[0]
@@ -629,7 +664,7 @@ class BannerLPReporting(FundraiserReporting):
 		query_obj = qs.query_store()
 		sql_stmnt = mh.read_sql('./sql/report_latest_campaign.sql')
 		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [times[0]])
-		print sql_stmnt
+		
 		campaign_index = query_obj.get_campaign_index(query_name)
 		time_index = query_obj.get_time_index(query_name)
 		
@@ -648,7 +683,8 @@ class BannerLPReporting(FundraiserReporting):
 		self.close_db()
 		
 		return [campaign, timestamp]
-		
+
+	
 """
 
 CLASS :: ^ConfidenceReporting^
@@ -659,12 +695,12 @@ To be called primarily for reporting
 
 class ConfidenceReporting(FundraiserReporting):
 	
-	def __init__(self, query_name, cmpgn1, cmpgn2, item_1, item_2, start_time , end_time, metric):
+	def __init__(self, query_name, cmpgn_1, cmpgn_2, item_1, item_2, start_time , end_time, metric):
 		self.query_name = query_name
-		self.cmpgn1 = cmpgn1
-		self.cmpgn2 = cmpgn2
-		self.item1 = item1
-		self.item2 = item2
+		self.cmpgn_1 = cmpgn_1
+		self.cmpgn_2 = cmpgn_2
+		self.item_1 = item_1
+		self.item_2 = item_2
 		self.start_time = start_time
 		self.end_time = end_time
 		self.metric = metric
@@ -683,8 +719,7 @@ class ConfidenceReporting(FundraiserReporting):
 		filename = './sql/' + self.query_name + '.sql'
 		sql_stmnt = mh.read_sql(filename)
 		
-		query_name  = 'report_bannerLP_metrics'  # rename query to work with query store
-		sql_stmnt = query_obj.format_query(self.query_name, sql_stmnt, [self.start_time, self.end_time, self.cmpgn1, self.item1])
+		sql_stmnt = query_obj.format_query(self.query_name, sql_stmnt, [self.start_time, self.end_time, self.cmpgn_1, self.item_1])
 		
 		time_index = query_obj.get_time_index(query_name)
 		metric_index = query_obj.get_metric_index(query_name, metric_name)
