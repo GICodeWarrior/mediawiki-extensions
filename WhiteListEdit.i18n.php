@@ -2301,7 +2301,7 @@ $messages['mk'] = array(
 	'whitelistnewtablereview' => 'Проверка',
 	'whitelistselectrestricted' => '== Одберете корисничко име ==',
 	'whitelistpagelist' => 'Страници за $1 на {{SITENAME}}',
-	'whitelistnocalendar' => '<span class="error">Изгледа дека [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] не е инсталирано како што треба, а од него зависи проширувањето.</span>',
+	'whitelistnocalendar' => '<span class="error">Изгледа дека додатокот [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] не е инсталиран како што треба, а од него зависи бараниот додаток.</span>',
 	'whitelistoverview' => '== Преглед на промени за $1 ==',
 	'whitelistoverviewcd' => "* Промена на датум на '''$1''' за [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Додели пристап на '''$1''' за [[:$2|$2]]",
