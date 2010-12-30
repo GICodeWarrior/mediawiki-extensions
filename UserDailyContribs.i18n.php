@@ -344,7 +344,7 @@ $messages['min'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'userdailycontribs-desc' => 'Дневни придонеси од корисници за проширувањето „Следење на кликови“',
+	'userdailycontribs-desc' => 'Дневни придонеси од корисници за додатокот „Следење на стискања“',
 );
 
 /** Malayalam (മലയാളം)
