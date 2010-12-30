@@ -469,6 +469,8 @@ $messages['vi'] = array(
  * @author Hydra
  */
 $messages['zh-hans'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => '资助',
+	'variablepage-desc' => '轻变页面重定向',
 );
 
