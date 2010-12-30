@@ -24,6 +24,19 @@
 <body>
 <h1><u>Custom Banner / LP Test:</u></h1>
 
+<br/>
+<p>
+<b><u>To get the best results from this test use it across full hours.</u>  That is your start and end timestamps should be
+right on the hour (ie. ending in '0000'). </b> The statistical test being used is the Wald test which assumes a normal
+distribution of the data.  Due to the known variance over several hours each hour is tested indendently.
+</p>
+<p>
+This test compates one metric across two landing pages running concurrently (which usually also entails running over the same campaign).  
+So to test the performance of the two pages over some metric enter the times, camapaign(s), landing page names, and finally select the metric from the 
+radio button to test.
+</p>
+<br/>
+
 <form action="compare_test.php" method="post">
 <input type="hidden" name="sqlFile" value="banner_test_by_lp.sql">
 <br/>

@@ -48,12 +48,16 @@ for ( $counter = 0; $counter < count($query_parts); $counter += 1)
 }
 
 //  Format the query based on the type
-if ($sql_file == "banner_test_by_banner.sql" || $sql_file == "banner_test_by_lp.sql") {
+if ($sql_file == "banner_test_by_banner.sql") {
 	$query1 = sprintf($query, '%','%','%','%','10','10', $start, $end, $item1, '%','%','%','%','10','10', $start, $end, $cmpgn1, $item1, '%','%','%','%','10','10', $start, $end, $cmpgn1, $item1);
 	$query2 = sprintf($query, '%','%','%','%','10','10', $start, $end, $item2, '%','%','%','%','10','10', $start, $end, $cmpgn2, $item2, '%','%','%','%','10','10', $start, $end, $cmpgn2, $item2);
-} elseif ($sql_file == "landing_compare.sql") {
-	$query = sprintf($query, $start, $end, $cmpgn, $start, $end, $cmpgn);
+} elseif ($sql_file == "banner_test_by_lp.sql") {
+	$query1 = sprintf($query, '%','%','%','%','10','10', $start, $end, $cmpgn1, $item1, '%','%','%','%','10','10', $start, $end, $cmpgn1, $item1);
+	$query2 = sprintf($query, '%','%','%','%','10','10', $start, $end, $cmpgn2, $item2, '%','%','%','%','10','10', $start, $end, $cmpgn2, $item2);
 }
+
+// echo '<br><br>' . $query1 . '<br><br>';
+// echo '<br><br>' . $query2 . '<br><br>';
 
 // Execute Queries
 $result1 = mysql_query($query1);
@@ -80,6 +84,7 @@ $interval = 6;
 $time = array();
 $metric1 = array();
 $metric2 = array();
+$num_samples = array();
 
 // Compute the means of the first item
 $counter = 0;
@@ -87,10 +92,9 @@ $index = 0;
 while ($row = mysql_fetch_assoc($result1)) {
 
 	$time[$n1] = $row["day_hr"];
-	$metric1[$n1] = $row[$metric];
-
 	$x1 = $row[$metric];
-	$group1[$n] = $x1;
+	$metric1[$n1] = $x1;
+
 	$m1[$index] = $x1 + $m1[$index];
 	$n1=$n1+1;
 
@@ -106,10 +110,9 @@ while ($row = mysql_fetch_assoc($result1)) {
 $counter = 0;
 $index = 0;
 while ($row = mysql_fetch_assoc($result2)) {
-	$metric2[$n2] = $row[$metric];
-
 	$x2 = $row[$metric];
-	$group2[$n] = $x2;
+	$metric2[$n2] = $x2;
+
 	$m2[$index] = $x2 + $m2[$index];
 	$n2=$n2+1;
 
@@ -137,8 +140,8 @@ for ( $counter = 0; $counter < $n; $counter += 1)
 {  
 	$index = floor($counter / $interval);
 	
-	$diff1 = $group1[$counter] - $m1[$index];
-	$diff2 = $group2[$counter] - $m2[$index];
+	$diff1 = $metric1[$counter] - $m1[$index];
+	$diff2 = $metric2[$counter] - $m2[$index];
 	$v1[$index] = $v1[$index] + pow($diff1,2);
 	$v2[$index] = $v2[$index] + pow($diff2,2);
 	
@@ -179,6 +182,9 @@ for ( $i = 0; $i < count($m1); $i += 1) {
 	
 	echo 'The average of Group 1 for hour ' . ($i + 1). ': ' . $m1[$i] . '<br>';
 	echo 'The average of Group 2 for hour ' . ($i + 1). ': ' . $m2[$i] . '<br>';
+	echo 'The standard deviation of Group 1 for hour ' . ($i + 1). ': ' . pow($v1[$i], 0.5) . '<br>';
+	echo 'The standard deviation of Group 2 for hour ' . ($i + 1). ': ' . pow($v2[$i], 0.5) . '<br>';
+
 	
 	if ($W[$i] >= 0.1) {
 		echo '<br>8% confident about the winner.<br>';
@@ -234,8 +240,9 @@ echo '<br>Overall there is ' . ($P * 100) . '% confidence on the winner.<br>';
 echo "</br></br><table width='50%'><tr>";
 //loop thru the field names to print the correct headers
 echo "<th>". "Time Stamp" . "</th>";
-echo "<th>". mysql_field_name($result1, $metric) . "_1" . "</th>";
-echo "<th>". mysql_field_name($result1, $metric) . "_2" . "</th>";
+echo "<th>". $metric . "_1" . "</th>";
+echo "<th>". $metric . "_2" . "</th>";
+// echo "<th>". mysql_field_name($result2, $metric) . "_2" . "</th>";
 echo "</tr>"; 
 
 for ( $counter = 0; $counter < $n; $counter += 1) {

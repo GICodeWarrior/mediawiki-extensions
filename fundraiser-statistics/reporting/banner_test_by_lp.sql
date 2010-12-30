@@ -47,6 +47,6 @@ group by 1,2,3) as ecomm
 
 on ecomm.landing_page = lp.landing_page and lp.dt_hr = ecomm.dt_hr and lp.dt_min = ecomm.dt_min
 
-where views > 1000 and donations > 20
+where views > 100 and donations > 20
 
 group by 1,2 ;

@@ -310,7 +310,7 @@ class TotalAmountsReporting(FundraiserReporting):
 		sql_stmnt = mh.read_sql(filename)
 		sql_stmnt = query_obj.format_query(query_name + descriptor, sql_stmnt, [start_time, end_time])
 		
-		labels = [None] * 20 
+		labels = [None] * 21
 		labels[0] = 'clicks'
 		labels[1] = 'donations'
 		labels[2] = 'total amount'
@@ -331,6 +331,7 @@ class TotalAmountsReporting(FundraiserReporting):
 		labels[17] = 'cc_completion'
 		labels[18] = 'cc_amount'
 		labels[19] = 'cc_max_amount'
+		labels[20] = 'total_amt50'
 
 		
 		num_keys = len(labels)
@@ -434,7 +435,7 @@ class TotalAmountsReporting(FundraiserReporting):
 		
 	
 	
-	def run_day(self):
+	def run_day(self,type):
 		
 		# Current date & time
 		now = datetime.datetime.now()
@@ -461,7 +462,7 @@ class TotalAmountsReporting(FundraiserReporting):
 		labels = return_val[0]
 		counts = return_val[1]
 
-		r = self.get_query_fields(labels, counts, 'BAN_EM', start_time, end_time)
+		r = self.get_query_fields(labels, counts, type, start_time, end_time)
 		labels = r[0]
 		counts = r[1]
 		title = r[2]
@@ -477,7 +478,8 @@ class TotalAmountsReporting(FundraiserReporting):
 		
 		ranges = [min(time_range), max(time_range)]
 		
-		self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, query_name+descriptor)
+		fname = query_name + descriptor + '_' + type
+		self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, fname)
 		
 		
 	def get_query_fields(self, labels, counts, type, start_time, end_time):
@@ -493,6 +495,10 @@ class TotalAmountsReporting(FundraiserReporting):
 		elif type == 'CC_PP_amount':
 			indices = [13,18]
 			title = 'Credit Card & Paypal Total Amounts: ' + start_time + ' -- ' + end_time
+			ylabel = 'Amount'
+		elif type == 'AMT_VS_AMT50':
+			indices = [2,20]
+			title = 'Amount50 and Amount Totals: ' + start_time + ' -- ' + end_time
 			ylabel = 'Amount'
 		else:
 			sys.exit("Total Amounts: You must enter a valid report type.\n" )

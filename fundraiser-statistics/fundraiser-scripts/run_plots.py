@@ -24,7 +24,9 @@ mr = fa.MinerReporting()
 tar.run_hr('BAN_EM')
 tar.run_hr('CC_PP_completion')
 tar.run_hr('CC_PP_amount')
-tar.run_day()
+tar.run_hr('AMT_VS_AMT50')
+tar.run_day('BAN_EM')
+tar.run_day('AMT_VS_AMT50')
 
 # Run the banner/lp plots
 blpr.run('LP', 'don_per_view')

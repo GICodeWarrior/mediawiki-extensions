@@ -24,9 +24,9 @@ sum(if(right(utm_source,2)='cc' and contribution_tracking.contribution_id,1,0)) 
 sum(if(right(utm_source,2)='cc' and contribution_tracking.contribution_id,1,0))/sum(if(right(utm_source,2)='cc',1,0)) as cc_completion,
 sum(if(right(utm_source,2)='cc',converted_amount,0)) as cc_amt,
 max(if(right(utm_source,2)='cc',converted_amount,0)) as max_cc_amt,
+sum(if(converted_amount > 50,50,converted_amount)) as total_amt50,
 avg(converted_amount) as average,
 max(converted_amount) as max_amount
-
 
 from (drupal.contribution_tracking left join civicrm.public_reporting on (drupal.contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id))
 WHERE   ts >= '%s' and ts < '%s'
