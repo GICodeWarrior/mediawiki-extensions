@@ -6,6 +6,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 
 class ApiFirefoggChunkedUpload extends ApiUpload {
+	private $mUpload = null, $mParams = null;
+
 	public function execute() {
 		global $wgUser;
 
@@ -102,7 +104,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		} else if ( $this->mUpload->getChunkMode() == FirefoggChunkedUploadHandler::CHUNK ) {
 			$ret = $this->performUploadChunk();
 		} else if ( $this->mUpload->getChunkMode() == FirefoggChunkedUploadHandler::DONE ) {
-			$ret = $this->performUploadDone($user);
+			$ret = $this->performUploadDone($wgUser);
 		}
 
 		return $ret;
