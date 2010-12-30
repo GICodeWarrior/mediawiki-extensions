@@ -221,10 +221,13 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Uno
  */
 $messages['it'] = array(
 	'htmlets-desc' => 'Permette di includere frammenti di codice HTML da file usando il tag <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Impossibile trovare il file HTML $1',
+	'htmlets-loadfailed' => 'Impossibile caricare il file HTML $1',
 );
 
 /** Japanese (日本語)
