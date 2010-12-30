@@ -38,19 +38,19 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 		foreach ( array( 'mFilteredName', 'repoPath', 'mFileSize', 'mDesiredDestName' )
 				as $key ) {
 			if ( isset( $this->$key ) ) {
-				$_SESSION[self::SESSION_KEYNAME][$this->sessionKey][$key] = $this->$key;
+				$_SESSION[UploadBase::SESSION_KEYNAME][$this->sessionKey][$key] = $this->$key;
 			}
 		}
 		if ( isset( $comment ) ) {
-			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['commment'] = $comment;
+			$_SESSION[UploadBase::SESSION_KEYNAME][$this->sessionKey]['commment'] = $comment;
 		}
 		if ( isset( $pageText ) ) {
-			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['pageText'] = $pageText;
+			$_SESSION[UploadBase::SESSION_KEYNAME][$this->sessionKey]['pageText'] = $pageText;
 		}
 		if ( isset( $watchlist ) ) {
-			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['watchlist'] = $watchlist;
+			$_SESSION[UploadBase::SESSION_KEYNAME][$this->sessionKey]['watchlist'] = $watchlist;
 		}
-		$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['version'] = self::SESSION_VERSION;
+		$_SESSION[UploadBase::SESSION_KEYNAME][$this->sessionKey]['version'] = UploadBase::SESSION_VERSION;
 
 		return $this->sessionKey;
 	}
@@ -108,7 +108,7 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 		$this->sessionKey = $sessionKey;
 
 		if ( isset( $sessionData[$this->sessionKey]['version'] )
-			&& $sessionData[$this->sessionKey]['version'] == self::SESSION_VERSION )
+			&& $sessionData[$this->sessionKey]['version'] == UploadBase::SESSION_VERSION )
 		{
 			foreach ( array( 'comment', 'pageText', 'watchlist', 'mFilteredName', 'repoPath', 'mFileSize', 'mDesiredDestName' )
 					as $key ) {
@@ -138,7 +138,7 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 
 			if ( $this->status->isOK() ) {
 				$this->repoPath = $this->status->value;
-				$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['repoPath'] = $this->repoPath;
+				$_SESSION[UploadBase::SESSION_KEYNAME][$this->sessionKey]['repoPath'] = $this->repoPath;
 			}
 			return $this->status;
 		}
