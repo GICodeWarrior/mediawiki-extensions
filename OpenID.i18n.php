@@ -3387,7 +3387,7 @@ $messages['mk'] = array(
 	'openidallowtrust' => 'Дозволи му на $1 да ѝ верува на оваа корисничка сметка.',
 	'openidnopolicy' => 'Страницата нема назначено правила за приватност.',
 	'openidpolicy' => 'Погледајте го <a target="_new" href="$1">правилникот за приватност</a> за повеќе информации.',
-	'openidoptional' => 'Изборно',
+	'openidoptional' => 'Незадолжително',
 	'openidrequired' => 'Задолжително',
 	'openidnickname' => 'Прекар',
 	'openidfullname' => 'Полно име',
