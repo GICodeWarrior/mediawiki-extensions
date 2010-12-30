@@ -166,6 +166,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'wikibhasha-desc' => 'Програм за создавање на повеќејазични содржини користејќи ги содржините на англиската Википедија',
+	'wikiBhashaLink' => 'WikiBhasha (Бета)',
 );
 
 /** Dutch (Nederlands)
