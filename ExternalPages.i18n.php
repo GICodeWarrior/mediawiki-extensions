@@ -711,10 +711,14 @@ $messages['vi'] = array(
 	'externalpages-no-page' => 'Chưa định rõ trang',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
 $messages['zh-hans'] = array(
 	'externalpages' => '外部网页',
 	'externalpages-desc' => '检索和显示来自WMF的网站页面',
+	'externalpages-bad-page' => '指定的错误页',
+	'externalpages-no-page' => '未指定页',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
