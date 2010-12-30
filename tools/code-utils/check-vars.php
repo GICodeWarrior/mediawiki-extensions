@@ -71,6 +71,8 @@ class CheckVars {
 	static $poisonedFunctions = array(
 		'addslashes' => 'Replace with Database::addQuotes/strencode',
 		'mysql_escape_string' => 'Replace with Database::addQuotes/strencode',
+		'create_function' => 'create_function should be avoided. See http://www.mediawiki.org/wiki/Security_for_developers#Dynamic_code_generation',
+		'eval' => 'eval should be avoided. See r78046', # eval.php is magically not listed for not containing any function. Should get an exception if it starts being parsed.
 		);
 
 	protected $generateDeprecatedList = false;
@@ -555,7 +557,7 @@ class CheckVars {
 							$this->mConstants = array_merge( $this->mConstants, self::$mRequireKnownConstants[$requirePath] );
 						} else {
 							$newCheck = new CheckVars;
-							$newCheck->load( $requirePath );
+							$newCheck->load( $requirePath, false );
 							$newCheck->execute();
 							/* Get the classes defined there */
 							$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, $newCheck->mKnownFileClasses );
