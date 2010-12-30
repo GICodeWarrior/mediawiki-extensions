@@ -16,14 +16,9 @@ See the COPYING file for more information.
 
 == Installation ==
 
-Having Semantic MediaWiki and Semantic Forms installed is a
-precondition for the Semantic Forms Inputs extension; the code
-will not work without it. The version of Semantic Forms must be at
-least 2.0 for the 'simpledatepicker' input to work.
-
-For the 'datepicker' input to work the Yahoo! User Interface (YUI)
-Javascript library (version 2.7.0b or higher) must be available,
-either locally or via an existing internet connection.
+Having at least MediaWiki 1.16, Semantic MediaWiki 1.5.4 and Semantic
+Forms 2.07 installed is a precondition for the Semantic Forms Inputs
+extension; the code will not work without it.
 
 To install Semantic Forms Inputs, create a directory named
 SemanticFormsInputs in the extensions directory of your MediaWiki
