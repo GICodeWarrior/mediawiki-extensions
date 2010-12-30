@@ -5549,12 +5549,15 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
  * @author Chenzw
+ * @author Hydra
  * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'contributionreporting-desc' => '现场报告维基媒体筹款活动',
 	'contributiontotal' => '贡献汇总',
 	'contributionhistory' => '贡献历史',
+	'contrib-hist-header' => '世界各地的捐助者评论',
 	'contrib-hist-name' => '名称',
 	'contrib-hist-date' => '时间和日期',
 	'contrib-hist-amount' => '金额',
@@ -5566,6 +5569,10 @@ $messages['zh-hans'] = array(
 	'contribstats-daily-totals' => '{{PLURAL:$1|今天的汇总|最近$1天的汇总}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|本月的汇总|最近$1月的汇总}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|$1月的汇总|$1月的汇总}}',
+	'contribstats-currency-range-totals' => '货币总计（从$1至$2）',
+	'contribstats-contribution-range-breakdown' => '列出分项数字的值（从$1至$2） 的贡献',
+	'contribstats-currency-totals' => '$1的财政年度货币总计',
+	'contribstats-contribution-breakdown' => '值为$1的财政年度的贡献的分项数字',
 	'contribstats-day' => '日',
 	'contribstats-month' => '月份',
 	'contribstats-currency' => '货币',
@@ -5586,6 +5593,7 @@ $messages['zh-hans'] = array(
 	'contribstats-weekly-totals' => '{{PLURAL:$1|本周总额|包括最近$1周的周总额}}',
 	'contribstats-payment-type' => '支付类型',
 	'contribstats-banner' => '横幅',
+	'contribstats-payment-type-hits' => '支付类型点击',
 	'contribstats-clicks' => '点击数',
 	'contribstats-donations' => '捐赠',
 	'contribstats-conversion' => '转换率（%）',
@@ -5594,20 +5602,25 @@ $messages['zh-hans'] = array(
 	'contribstats-landingpage' => '着陆页面',
 	'contribstats-donatepage' => '捐助页面',
 	'contribstats-average' => '平均',
+	'contribstats-imperfect-data' => '此数据是不完美，而无需使用的会话跟踪其限制跟踪捐助者。',
 	'contribstats-paypal-donations' => 'PayPal捐赠',
 	'contribstats-credit-card' => '信用卡',
 	'contribstats-fraud-note' => '有虚假的捐助存在。',
+	'contribstats-unaudited' => '这些都是未经审核的总计。',
 	'fundraiserstatistics' => '募捐者统计',
 	'fundraiserstats-date' => '日期',
 	'fundraiserstats-day' => '$2的第$1日',
 	'fundraiserstats-contributions' => '贡献',
 	'fundraiserstats-total' => '总额（美元）',
 	'fundraiserstats-avg' => '平均（美元）',
+	'fundraiserstats-ytd' => '累积总数 (美元)',
 	'fundraiserstats-max' => '最大（美元）',
 	'fundraiserstats-tab-totals' => '总额（美元）',
 	'fundraiserstats-tab-contributions' => '贡献数',
 	'fundraiserstats-tab-averages' => '平均（美元）',
 	'fundraiserstats-tab-maximums' => '最大（美元）',
+	'fundraiserstats-tab-ytd' => '年直到日期 (美元)',
+	'fundraiserstats-instructions' => '要查看统计信息的任何一天，将光标悬停在栏，那一天。每年是以不同的颜色，在图表上。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
