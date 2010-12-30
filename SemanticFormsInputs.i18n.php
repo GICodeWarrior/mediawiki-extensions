@@ -291,8 +291,6 @@ $messages['mk'] = array(
 	'semanticformsinputs-prev' => 'Претходно',
 	'semanticformsinputs-next' => 'Следно',
 	'semanticformsinputs-today' => 'Денес',
-	'semanticformsinputs-dateformatlong' => 'д ММ ГГ',
-	'semanticformsinputs-dateformatshort' => 'дд/мм/гг',
 );
 
 /** Malayalam (മലയാളം)
