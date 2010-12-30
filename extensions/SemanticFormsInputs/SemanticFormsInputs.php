@@ -4,8 +4,8 @@
  *
  * @author Stephan Gambke
  * @author Sanyam Goyal
- * @version 0.3.1
-  */
+ * @version 0.4 alpha
+ */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point.' );
@@ -15,7 +15,7 @@ if ( !defined( 'SF_VERSION' ) ) {
 	die( 'This is a Semantic Forms extension. You need to install Semantic Forms first.' );
 }
 
-define( 'SFI_VERSION', '0.7.3 alpha' );
+define( 'SFI_VERSION', '0.4 alpha' );
 
 // create and initialize settings
 $sfigSettings = new SFISettings();
@@ -30,10 +30,11 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 	'version' => SFI_VERSION,
 );
 
-// load user settings
-require_once( 'SFI_Settings.php' );
-
 $dir = dirname( __FILE__ );
+
+// load user settings
+require_once( $dir. '/SFI_Settings.php' );
+
 $wgExtensionMessagesFiles['SemanticFormsInputs'] = $dir . '/SemanticFormsInputs.i18n.php';
 $wgExtensionFunctions[] = "wfSFISetup";
 $wgAutoloadClasses['SFIInputs'] = $dir . '/SFI_Inputs.php';
@@ -71,6 +72,10 @@ function wfSFISetup() {
 	$sfgFormPrinter->setInputTypeHook( 'regexp', array( 'SFIInputs', 'regexpHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'datepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'simpledatepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
+	$sfgFormPrinter->setInputTypeHook( 'timepicker', array( 'SFIInputs', 'timepickerHTML' ), array() );
+//	$sfgFormPrinter->setInputTypeHook( 'wysiwyg', array( 'SFIInputs', 'wysiwygHTML' ), array() );
+	$sfgFormPrinter->setInputTypeHook( 'menuselect', array( 'SFIInputs', 'menuselectHTML' ), array() );
 
-	$wgOut->addInlineScript( 'sfiElements = new Object();' );
+	// TODO: obsolete as of MW 1.16, remove around 1.18 or so
+	wfLoadExtensionMessages( 'SemanticFormsInputs' );
 }
