@@ -859,13 +859,20 @@ Nilai pengganti tidak boleh diloloskan.',
 	'masseditregex-tooltip-execute' => 'Terapkan perubahan ini ke setiap halaman',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Beta16
+ */
 $messages['it'] = array(
 	'masseditregex-matchtxt' => 'Cerca per:',
 	'masseditregex-replacetxt' => 'Sostituisci con:',
+	'masseditregex-executebtn' => 'Esegui',
 	'masseditregex-before' => 'Prima del',
 	'masseditregex-after' => 'Dopo il',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|modifica|modifiche}}',
+	'masseditregex-page-not-exists' => '$1 non esiste',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|pagina|pagine}} modificate',
 	'masseditregex-hint-headreplace' => 'Sostituisci',
+	'masseditregex-tooltip-execute' => 'Applica queste modifiche ad ogni pagina',
 );
 
 /** Japanese (日本語)

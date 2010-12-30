@@ -1233,12 +1233,16 @@ $messages['yi'] = array(
  * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
+	'contributiontracking-desc' => '跟踪维基媒体筹款的贡献',
+	'contributiontracking' => '跟踪的贡献',
 	'contrib-tracking-error' => '错误',
 	'contrib-tracking-error-text' => '无效的表单提交',
 	'contrib-tracking-submitting' => '正在提交到支付处理器……',
 	'contrib-tracking-continue' => '若阁下没有被重定向至PayPal页面，请点击按钮以完成您的捐助。',
+	'contrib-tracking-redirect' => '您将被自动重定向到 PayPal 来完成你的捐款。',
 	'contrib-tracking-button' => '继续',
 	'contrib-tracking-item-name-onetime' => '一次性捐赠',
+	'contrib-tracking-item-name-recurring' => '每月定期捐款',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

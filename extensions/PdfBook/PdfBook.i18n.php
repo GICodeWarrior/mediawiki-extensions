@@ -167,6 +167,8 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'pdfbook-action' => 'Stampa in formato PDF',
+	'pdfbook-log' => '$1 esportato come libro in PDF',
+	'pdfbook-desc' => 'Compone un libro dalle pagine in una categoria ed esporta come libro in PDF',
 );
 
 /** Japanese (日本語)

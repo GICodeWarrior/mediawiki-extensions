@@ -335,6 +335,15 @@ Masukkan nama pengguna atau alamat IP untuk memeroleh daftar halaman yang ingin 
 	'right-massblank' => 'Halaman kosong massal',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'massblank-nopages' => 'Non sono state trovate nuove pagine create da [[Special:Contributions/$1|$1]] tra le modifiche recenti.',
+	'massblank-submit-user' => 'Vai',
+	'massblank-blankcomment' => 'Motivo:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

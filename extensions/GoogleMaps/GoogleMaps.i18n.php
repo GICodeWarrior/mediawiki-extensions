@@ -3463,7 +3463,7 @@ $wgGoogleMapsMessages['mk'] = array(
 	'gm-incompatible-browser-link' => 'Клинете тука за список на соодветни прелистувачи.',
 	'gm-no-editor' => 'Нажалост, вашиот прелистувач не поддржува интерактивни алатки за правење карти.  Преземете ја најновата верзија на <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac и Linux).',
 	'gm-balloon-title' => 'Наслов:',
-	'gm-balloon-link-article' => 'Врска до оваа страница (изборно):',
+	'gm-balloon-link-article' => 'Врска до оваа страница (незадолжително):',
 	'gm-make-marker' => 'Опис (дозволена е и викисинтакса):',
 	'gm-remove' => 'отстрани',
 	'gm-caption' => 'Опис',

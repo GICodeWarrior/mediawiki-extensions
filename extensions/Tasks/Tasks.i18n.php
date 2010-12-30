@@ -4149,6 +4149,7 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
  * @author Gzdavidwong
+ * @author Hydra
  * @author Liangent
  * @author Wmr89502270
  */
@@ -4196,7 +4197,7 @@ $messages['zh-hans'] = array(
 	'tasks_on_creation_comment' => '自动任务，于页面创建时生成',
 	'tasks_link_your_assignments' => '打开的分配',
 	'tasks_see_your_assignments' => '你当前有$1个打开的分配。参见你的$2。',
-	'tasks_my_assignments' => '你当前的{{PLURAL:$1|分配|多个分配}}',
+	'tasks_my_assignments' => '你目前的{{PLURAL:$1|分配|多个分配}}',
 	'tasks_table_header_page' => '页面',
 	'tasks_you_have_no_assignments' => '你没有打开的分配',
 	'tasks_search_form_title' => '搜索',

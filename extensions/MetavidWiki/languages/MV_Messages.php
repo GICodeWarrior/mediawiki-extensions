@@ -6372,7 +6372,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_remove_category' => 'Бриши категорија',
 	'mv_existing_categories' => '{{PLURAL:$1|категорија|категории}}:',
 	'mv_add_category' => 'Додај категоризација',
-	'mv_basic_text_desc' => 'Текстуален опис (изборно)',
+	'mv_basic_text_desc' => 'Текстуален опис (незадолжително)',
 	'mv_viewnext' => 'Видете ($1)',
 	'mv_viewprevnext' => 'Видете ($1) ($2)',
 	'mediasearch' => 'Пребарај податотека',
