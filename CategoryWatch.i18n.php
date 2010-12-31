@@ -838,8 +838,10 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
  * @author Gzdavidwong
+ * @author Hydra
  */
 $messages['zh-hans'] = array(
+	'categorywatch-desc' => '扩展的监视功能，包括有关受监视的类别的成员身份更改的通知',
 	'categorywatch-emailsubject' => '在被监视的分类"$1"中的活动',
 	'categorywatch-catmovein' => '$1已经由$2搬到$3。',
 	'categorywatch-catmoveout' => '$1已经移离$2并改到$3',
