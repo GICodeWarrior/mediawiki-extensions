@@ -21557,6 +21557,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  * @author Liangent
  */
 $messages['zh-hans'] = array(
@@ -21581,13 +21582,13 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgParserCacheExpireTime' => '缓存解析器的到期时间',
 	'configure-setting-wgParserTestFiles' => '为parserTests.php运行的文件',
 	'configure-setting-wgRestrictDisplayTitle' => '需要使用<nowiki>{{DISPLAYTITLE}}</nowiki>常态化至相同标准页面标题',
-	'configure-setting-wgDisableLangConversion' => '禁用语言转换',
+	'configure-setting-wgDisableLangConversion' => '禁用语言变量转换',
 	'configure-setting-wgDisableTitleConversion' => '禁用页面标题的语言变体转换',
 	'configure-setting-wgInputEncoding' => '输入文字的编码',
 	'configure-setting-wgInterwikiMagic' => '在一特殊列表中显示跨语言（维基）链接',
 	'configure-setting-wgLanguageCode' => '网站语言编码',
 	'configure-setting-wgOutputEncoding' => '输出文字编码',
-	'configure-setting-wgTranslateNumerals' => '翻译数字',
+	'configure-setting-wgTranslateNumerals' => '音译数字',
 	'configure-setting-wgUseDatabaseMessages' => '允许使用MediaWiki名字空间修改信息',
 	'configure-setting-wgArticleRobotPolicies' => '每页机器人方针',
 	'configure-setting-wgArticleRobotPolicies-key' => '页面标题',
