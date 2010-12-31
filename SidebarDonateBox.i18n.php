@@ -233,3 +233,10 @@ $messages['uk'] = array(
 	'sidebardonatebox-desc' => 'Додає вікно для пожертвувань на бічну панель',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'sidebardonatebox-desc' => '侧栏中添加一个自定义捐框',
+);
+
