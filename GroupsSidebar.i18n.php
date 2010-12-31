@@ -290,3 +290,10 @@ $messages['uk'] = array(
 	'groupssidebar-desc' => 'Це розширення дозволяє адміністраторам сайту включати елементи бічної панелі для конкретних груп користувачів',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'groupssidebar-desc' => '此扩展使站点管理员，包括为特定用户组的侧栏元素',
+);
+
