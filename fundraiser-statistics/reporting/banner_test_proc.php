@@ -41,6 +41,8 @@ for ( $counter = 0; $counter < count($query_parts); $counter += 1)
     $query=$query.$query_parts[$counter];
 }
 
+
+// FORMAT THE SQL QUERY BASED ON THE FILE WHICH INDICATES THE REQUEST
 if ($sql_file == "banner_test.sql" || $sql_file == "banner_test_banners.sql") {
 	$query = sprintf($query, $start, $end, $start, $end, $cmpgn, $start, $end, $cmpgn, $start, $end, $cmpgn, "%");
 } elseif ($sql_file == "landing_page_test.sql") {
@@ -53,6 +55,19 @@ if ($sql_file == "banner_test.sql" || $sql_file == "banner_test_banners.sql") {
 	$query = sprintf($query, "%", "%", "%", "%", $start, $end, $cmpgn);
 } elseif ($sql_file == "banner_test_by_hour.sql") {
 	$query = sprintf($query, "%", "%", "%", "%", $start, $end, "%", "%", "%", "%", $start, $end, $cmpgn, "%", "%", "%", "%", $start, $end, $cmpgn, "%", "%", "%", "%", $start, $end, $cmpgn, "%");
+} elseif ($sql_file == "landing_page_test_by_interval.sql") {
+	$interval=$_POST["interval"];
+	$query = sprintf($query, "%", "%", "%", "%",  $interval, $interval, $start, $end, $cmpgn, "%", "%", "%", "%",  $interval, $interval, $start, $end, $cmpgn);
+} elseif ($sql_file == "ecomm_test_by_interval.sql") {
+	$interval=$_POST["interval"];
+	$query = sprintf($query, $interval, $interval, "%", "%", "%", "%",  $interval, $interval, "%", "%", "%", "%",  $interval, $interval, $start, $end, $cmpgn);
+} elseif ($sql_file == "banner_test_banners_by_interval.sql") {
+	$interval=$_POST["interval"];
+	$query = sprintf($query, "%", "%", "%", "%", $interval, $interval, $start, $end, "%", "%", "%", "%", $interval, $interval, $start, $end, $cmpgn, "%", "%", "%", "%", $interval, $interval, $start, $end, $cmpgn);
+} elseif ($sql_file == "banner_test_by_interval.sql") {
+	$interval=$_POST["interval"];
+	$query = sprintf($query, "%", "%", "%", "%", $interval, $interval, $start, $end, "%", "%", "%", "%", $interval, $interval,  $start, $end, $cmpgn, "%", "%", "%", "%", 
+	$interval, $interval,  $start, $end, $cmpgn, "%", "%", "%", "%", $interval, $interval, $start, $end, $cmpgn);
 }
 
 // Perform Query
