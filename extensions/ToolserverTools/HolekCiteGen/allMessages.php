@@ -403,6 +403,7 @@ $messages['id'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Marine-Blue
  * @author Ohgi
  */
 $messages['ja'] = array(
@@ -424,7 +425,7 @@ $messages['ja'] = array(
 	'ts-citegen-Sources-text' => '以下のリストにある出典が使用可能です、',
 	'ts-citegen-Sidebar-title' => '生成ツール',
 	'ts-citegen-Sidebar-add-Firefox' => 'サイドバーに追加',
-	'ts-citegen-Sidebar-add-Opera' => 'Hotlistに追加',
+	'ts-citegen-Sidebar-add-Opera' => 'ホットリストに追加',
 	'ts-citegen-Sidebar-add-IE-Mac' => 'Page Holderに追加',
 	'ts-citegen-Tools' => 'ツール',
 	'ts-citegen-Other-languages' => '他の言語',

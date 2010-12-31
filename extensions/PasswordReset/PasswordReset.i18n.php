@@ -1860,6 +1860,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  * @author Kuailong
  */
 $messages['zh-hans'] = array(
@@ -1877,7 +1878,7 @@ $messages['zh-hans'] = array(
 	'passwordreset-accountdisabled' => '账户已停用',
 	'disabledusers' => '已禁用的用户',
 	'disabledusers-summary' => '这是通过PasswordReset禁用账户的用户列表。',
-	'right-passwordreset' => '重置账户密码（[[Special:PasswordReset|重置页面]]）',
+	'right-passwordreset' => '重置密码或用户（[[Special:PasswordReset|特殊页面]]）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -70,6 +70,11 @@ $messages['bs'] = array(
 	'livetranslate-translate-to' => 'Prevedi ovu stranicu na',
 	'livetranslate-button-translate' => 'Prevedi',
 	'livetranslate-button-translating' => 'Prevodim...',
+	'livetranslate-button-revert' => 'Prikaži original',
+	'livetranslate-dictionary-error' => 'Ne može se pronaći rječnik za prevođenje uživo. Nijedna riječ neće biti posmatrana posebno tokom procesa prevođenja.',
+	'livetranslate-dictionary-empty' => "Još uvijek nema riječi u rječniku. Kliknite na jezičak ''uredi'' da ih dodate.",
+	'livetranslate-dictionary-count' => 'Ima {{PLURAL:$1|$1 riječ|$1 riječi}} na $2 {{PLURAL:$2|jeziku|jezika}}. Kliknite na jezičak "uredi" da dodate više.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Ovaj jezik nije|Ovi jezici nisu}} trenutno {{PLURAL:$2|postavljen|postavljeni}} kao dopušteni cilj prevođenja: $1. Promijenite dopuštene jezike u vašim postavkama wikija ili uklonite ove iz rječnika.',
 );
 
 /** German (Deutsch)
