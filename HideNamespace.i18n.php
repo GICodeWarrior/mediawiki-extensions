@@ -284,3 +284,10 @@ $messages['vi'] = array(
 	'hidens-desc' => 'Ẩn không gian tên trong tiêu đề và tựa trang khi nào cho các trang thuộc không gian tên được chọn hoặc sử dụng hàm cú pháp <code><nowiki>{{#hidens:}}</nowiki></code>.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'hidens-desc' => '隐藏标题和标题中的命名空间，当页中指定的命名空间或时，<code><nowiki>{{#hidens:}}</nowiki></code> 解析器函数称为',
+);
+
