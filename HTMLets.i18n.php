@@ -437,9 +437,13 @@ $messages['yue'] = array(
 	'htmlets-desc' => '令你可以用<code>&lt;htmlet&gt;</code>標籤響檔案度用HTML插件',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
 $messages['zh-hans'] = array(
 	'htmlets-desc' => '令您可以利用<code>&lt;htmlet&gt;</code>标签于文件中使用HTML插件',
+	'htmlets-filenotfound' => '找不到$1的 HTML 文件',
+	'htmlets-loadfailed' => '未能加载 HTML 文件 $1',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */
