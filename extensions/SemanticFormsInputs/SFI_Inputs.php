@@ -840,12 +840,7 @@ JAVASCRIPT;
 			// assemble JS code to attach datepicker to input field
 			$jstext = <<<JAVASCRIPT
 				jQuery("#" + inputId + "_show").datepicker( $jsattribsString );
-				jQuery("#" + inputId + "_show").datepicker( "setDate", jQuery.datepicker.parseDate("yy/mm/dd", "$cur_value", null) );
 				jQuery("#" + inputId + "_show").datepicker( "option", "altField", "#" + inputId);
-				jQuery("#" + inputId + "_show").change(function() {
-					jQuery("#" + inputId ).attr("value", jQuery.datepicker.parseDate(jQuery(this).datepicker( "option", "dateFormat"), jQuery(this).attr("value"), null));
-				});
-
 JAVASCRIPT;
 
 			// append setting of first date
@@ -952,10 +947,27 @@ JAVASCRIPT;
 JAVASCRIPT;
 			}
 
-			// wrap the JS code fragment in a function which can be called by SF for deferred init
+			// set value of datepicker, attach event listener for keyboard input
+			// and wrap the JS code fragment in a function  which can be called
+			// by SF for deferred init
 			$jstext = <<<JAVASCRIPT
 	function initInput$sfgFieldNum(inputId) {
 $jstext
+				try {
+					jQuery("#" + inputId + "_show").datepicker( "setDate", jQuery.datepicker.parseDate("yy/mm/dd", "$cur_value", null) );
+				} catch (e) {
+					jQuery("#" + inputId + "_show").attr("value", "$cur_value");
+					jQuery("#" + inputId).attr("value", "$cur_value");
+				}
+
+				jQuery("#" + inputId + "_show").change(function() {
+					try {
+						jQuery("#" + inputId ).attr("value", jQuery.datepicker.parseDate(jQuery(this).datepicker( "option", "dateFormat"), jQuery(this).attr("value"), null));
+					} catch (e) {
+						jQuery("#" + inputId).attr("value", jQuery(this).attr("value"));
+					}
+				});
+
 	}
 
 	addOnloadHook(function(){initInput$sfgFieldNum("input_$sfgFieldNum");});
