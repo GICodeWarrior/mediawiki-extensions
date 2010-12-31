@@ -924,6 +924,7 @@ $messages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author Liangent
  * @author Xiaomingyan
  */
@@ -931,8 +932,8 @@ $messages['zh-hans'] = array(
 	'whoiswatching' => '正在监视某wiki页面的用户',
 	'whoiswatching-desc' => '提供正在监视某wiki页面的用户名列表',
 	'specialwhoiswatchingthepage' => '正在监视用户%s',
-	'specialwhoiswatchingusage' => '本特殊页面不能对自己生效。
-请使用[[MediaWik:Number_of_watching_users_pageview]]页面定义本特殊页面的切入点。',
+	'specialwhoiswatchingusage' => '此特殊页面不能自行使用。
+请使用页面 [[MediaWiki:Number_of_watching_users_pageview]] 定义的入口点，这种特殊的页面。',
 	'specialwhoiswatchingaddusers' => '添加用户以监视本页面',
 	'specialwhoiswatchingaddbtn' => '添加已选择用户',
 );
