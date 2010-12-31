@@ -322,8 +322,8 @@ JAVASCRIPT;
 						. $wgLang->firstChar( wfMsg( 'fri' ) ) . "','"
 						. $wgLang->firstChar( wfMsg( 'sat' ) ) . "'],\n"
 					. "		weekHeader: '',\n"
-					. "		dateFormat: '" . wfMsg( 'semanticformsinputs-dateformat' ) . "',\n"
-					. "		firstDay: '" . wfMsg( 'semanticformsinputs-firstday' ) . "',\n"
+					. "		dateFormat: '" . wfMsg( 'semanticformsinputs-dateformatshort' ) . "',\n"
+					. "		firstDay: '" . wfMsg( 'semanticformsinputs-firstdayofweek' ) . "',\n"
 					. "		isRTL: " . ( $wgLang->isRTL() ? "true":"false" ) . ",\n"
 					. "		showMonthAfterYear: false,\n"
 					. "		yearSuffix: ''};\n"
@@ -947,26 +947,19 @@ JAVASCRIPT;
 JAVASCRIPT;
 			}
 
-			// set value of datepicker, attach event listener for keyboard input
-			// and wrap the JS code fragment in a function  which can be called
-			// by SF for deferred init
+			// set value of datepicker and wrap the JS code fragment in a
+			// function  which can be called by SF for deferred init
 			$jstext = <<<JAVASCRIPT
 	function initInput$sfgFieldNum(inputId) {
 $jstext
 				try {
+					re = /\d{4}\/\d{2}\/\d{2}/
+					if ( ! re.test("$cur_value") ) {throw "Wrong date format!";}
 					jQuery("#" + inputId + "_show").datepicker( "setDate", jQuery.datepicker.parseDate("yy/mm/dd", "$cur_value", null) );
 				} catch (e) {
 					jQuery("#" + inputId + "_show").attr("value", "$cur_value");
 					jQuery("#" + inputId).attr("value", "$cur_value");
 				}
-
-				jQuery("#" + inputId + "_show").change(function() {
-					try {
-						jQuery("#" + inputId ).attr("value", jQuery.datepicker.parseDate(jQuery(this).datepicker( "option", "dateFormat"), jQuery(this).attr("value"), null));
-					} catch (e) {
-						jQuery("#" + inputId).attr("value", jQuery(this).attr("value"));
-					}
-				});
 
 	}
 
