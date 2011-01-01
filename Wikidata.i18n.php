@@ -8648,6 +8648,7 @@ $messages['mk'] = array(
 	'ow_IdenticalMeaning' => 'Идентично значење?',
 	'ow_IncomingRelations' => 'Доаѓачки релации',
 	'ow_GotoSource' => 'Иди на извор',
+	'ow_ID' => 'Назнака (ID)',
 	'ow_Language' => 'Јазик',
 	'ow_LevelAnnotation' => 'Забелешка',
 	'ow_LinkAttributeHeader' => 'Атробут за врска',
@@ -8736,6 +8737,7 @@ $messages['mk'] = array(
 	'ow_nstab_edit_copy' => 'уреди го примерокот',
 	'right-addlanguage' => 'Додавање и менување на јазични нагодувања',
 	'ow_shown_datasets' => 'Прикажи збирови податоци',
+	'prefs-omegawiki' => 'ОмегаВики',
 );
 
 /** Malayalam (മലയാളം)
