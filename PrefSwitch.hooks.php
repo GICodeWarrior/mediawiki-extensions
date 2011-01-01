@@ -23,12 +23,18 @@ class PrefSwitchHooks {
 	/*
 	 * LoadExtensionSchemaUpdates hook
 	 */
-	public static function loadExtensionSchemaUpdates() {
-		global $wgExtNewTables, $wgExtNewFields;
-
+	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		$dir = dirname( __FILE__ ) . '/patches';
-		$wgExtNewTables[] = array( 'prefswitch_survey', $dir  . '/PrefSwitch.sql' );
-		$wgExtNewFields[] = array( 'prefswitch_survey', 'pss_user_text', $dir  . '/PrefSwitch-addusertext.sql' );
+		if ( $updater === null ) {
+			global $wgExtNewTables, $wgExtNewFields;
+			$wgExtNewTables[] = array( 'prefswitch_survey', $dir  . '/PrefSwitch.sql' );
+			$wgExtNewFields[] = array( 'prefswitch_survey', 'pss_user_text', $dir  . '/PrefSwitch-addusertext.sql' );
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'prefswitch_survey',
+				$dir  . '/PrefSwitch.sql', true ) );
+			$updater->addExtensionUpdate( array( 'addField', 'prefswitch_survey',
+				'pss_user_text', $dir  . '/PrefSwitch-addusertext.sql', true ) );
+		}
 		return true;
 	}
 
