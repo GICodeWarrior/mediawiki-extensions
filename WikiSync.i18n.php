@@ -265,7 +265,16 @@ $messages['bs'] = array(
 	'wikisync_login_to_remote_wiki' => 'Prijava na udaljenu wiki',
 	'wikisync_remote_wiki_root' => 'Osnovna adresa udaljene wiki',
 	'wikisync_remote_wiki_example' => 'Putanja do api.php, Na primjer: http://www.mediawiki.org/w',
+	'wikisync_remote_wiki_user' => 'Korisničko ime na udaljenoj wiki',
+	'wikisync_remote_wiki_pass' => 'Šifra udaljene wiki',
 	'wikisync_remote_login_button' => 'Prijava',
+	'wikisync_sync_files' => 'Usaglasi datotek',
+	'wikisync_store_password' => 'Sačuvaj šifru udaljene wiki',
+	'wikisync_storing_password_warning' => 'Čuvanje udaljene šifre nije sigurno i nije preporučeno',
+	'wikisync_synchronization_button' => 'Usaglasi',
+	'wikisync_scheduler_log' => 'Zapisnik izvođenja',
+	'wikisync_scheduler_setup' => 'Postavke izvođenja',
+	'wikisync_apply_button' => 'Primijeni',
 );
 
 /** German (Deutsch)
@@ -880,6 +889,7 @@ $messages['lb'] = array(
 	'wikisync_api_result_Throttled' => 'Dir hutt Iech während kuerzer Zäit ze dacks ageloggt.',
 	'wikisync_api_result_Blocked' => 'Benotzer ass gespaart',
 	'wikisync_js_synchronization_success' => "D'Synchronisatioun ass komplett ofgeschloss",
+	'wikisync_js_already_synchronized' => 'Déi zwou Wikie schénge scho synchroniséiert ze sinn',
 	'wikisync_js_sync_to_itself' => "Dir kënnt d'Wiki net mat sech selwer synchroniséieren",
 	'wikisync_js_revision' => 'Versioun $1',
 	'wikisync_js_scheduler_countdown' => '{{PLURAL:$1|Eng Minutt|$1 Minutten}} iwwreg',
