@@ -145,19 +145,19 @@ class FCKeditor_MediaWiki {
 	}
 
 	public function onCustomEditor( $article, $user ) {
-		global $wgRequest, $mediaWiki;
+		global $wgRequest, $wgUseExternalEditor;
 
-		$action = $mediaWiki->getVal( 'Action' );
+		$action = $wgRequest->getVal( 'action', 'view' );
 
 		$internal = $wgRequest->getVal( 'internaledit' );
 		$external = $wgRequest->getVal( 'externaledit' );
 		$section = $wgRequest->getVal( 'section' );
 		$oldid = $wgRequest->getVal( 'oldid' );
-		if( !$mediaWiki->getVal( 'UseExternalEditor' ) || $action == 'submit' || $internal ||
+		if( !$wgUseExternalEditor || $action == 'submit' || $internal ||
 		$section || $oldid || ( !$user->getOption( 'externaleditor' ) && !$external ) ) {
 			$editor = new FCKeditorEditPage( $article );
 			$editor->submit();
-		} elseif( $mediaWiki->getVal( 'UseExternalEditor' ) && ( $external || $user->getOption( 'externaleditor' ) ) ) {
+		} elseif( $wgUseExternalEditor && ( $external || $user->getOption( 'externaleditor' ) ) ) {
 			$mode = $wgRequest->getVal( 'mode' );
 			$extedit = new ExternalEdit( $article, $mode );
 			$extedit->edit();
