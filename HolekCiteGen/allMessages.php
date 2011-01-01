@@ -444,6 +444,7 @@ $messages['lb'] = array(
 	'ts-citegen-Skin-skins' => 'Skins/Layout',
 	'ts-citegen-Template-lang' => 'Sprooch vun der Schabloun',
 	'ts-citegen-Sources-title' => 'Quellen',
+	'ts-citegen-Sidebar-title' => 'Generator fir Zitatiounen',
 	'ts-citegen-Tools' => 'Geschir (Tools)',
 	'ts-citegen-Other-languages' => 'Aner Sproochen',
 	'ts-citegen-Save-it' => 'Aktuell Ufro',
