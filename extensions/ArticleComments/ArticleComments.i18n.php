@@ -235,6 +235,7 @@ Gallout a reer ober gant ar modoù "plaen", "normal" ha "wiki".',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'article-comments-desc' => 'Omogućava komentiranje sekcija na stranicama sadržaja',
 	'article-comments-title-string' => 'naslov',
 	'article-comments-name-string' => 'Ime',
 	'article-comments-name-field' => 'Ime (obavezno):',
@@ -247,6 +248,8 @@ $messages['bs'] = array(
 	'article-comments-invalid-field' => 'Navedeni $1 <nowiki>[$2]</nowiki> nije valjan.',
 	'article-comments-required-field' => '$1 polje je obavezno.',
 	'article-comments-submission-failed' => 'Slanje komentara nije uspjelo',
+	'article-comments-failure-reasons' => 'Žao nam je, vaše slanje komentara nije uspjelo iz {{PLURAL:$1|slijedećeg razloga|slijedećih razloga}}:',
+	'article-comments-no-comments' => 'Žao nam je, stranica "[[$1]]" trenutno ne prima komentare.',
 	'article-comments-commenter-said' => '$1 je napisao ...',
 	'article-comments-comment-missing-name-parameter' => 'Nedostaje ime',
 	'article-comments-comment-missing-date-parameter' => 'Nedostaje datum komentara',
