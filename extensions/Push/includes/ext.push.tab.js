@@ -116,7 +116,7 @@
 			}
 
 			if ( files.length > 0 ) {
-				$('#txtFileList').text( '(' + mediaWiki.msg( 'push-tab-embedded-files' ) );
+				$('#txtFileList').text( '(' + mediaWiki.msg( 'push-tab-embedded-files' ) + ' ' );
 				
 				for ( i in files ) {
 					if ( i > 0 ) $('#txtFileList').append( ', ' );
