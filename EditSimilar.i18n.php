@@ -266,15 +266,16 @@ Katso {{PLURAL:$2|tämä aiheeseen liittyvä sivu|nämä aiheeseen liittyvät si
  * @author IAlex
  * @author McDutchie
  * @author Verdy p
+ * @author Wyz
  */
 $messages['fr'] = array(
 	'editsimilar-desc' => 'Encourage les utilisateurs à modifier les pages similaires après avoir publié une page',
 	'editsimilar-thanks' => 'Merci pour votre contribution.
-Vérifiez {{PLURAL:$2|cette page apparentée|ces pages apparentées}} : $1.',
+Pouvez-vous vérifier {{PLURAL:$2|cette page connexe|ces pages connexes}} ? $1',
 	'editsimilar-thanks-notsimilar' => 'Merci pour votre contribution.
-{{PLURAL:$2|Cette page devrait|Ces pages devraient}} avoir, aussi, besoin de votre aide : $1.',
+{{PLURAL:$2|Cette page pourrait|Ces pages pourraient}} également avoir besoin de votre aide : $1.',
 	'editsimilar-thankyou' => 'Merci pour votre contribution, $1 !',
-	'editsimilar-link-disable' => 'paramétrer les préférences',
+	'editsimilar-link-disable' => 'définir les préférences',
 	'tog-edit-similar' => 'Activer les suggestions des pages similaires',
 );
 
