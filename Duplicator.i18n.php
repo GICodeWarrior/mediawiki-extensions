@@ -1005,7 +1005,7 @@ $messages['mk'] = array(
 Ова е корисно за разделување на страница во две посебни и сл.',
 	'duplicator-options' => 'Нагодувања',
 	'duplicator-source' => 'Извор:',
-	'duplicator-dest' => 'Дестинација:',
+	'duplicator-dest' => 'Одредница:',
 	'duplicator-dotalk' => 'Дуплирај ја страницата за разговор (ако е можно)',
 	'duplicator-submit' => 'Дуплирај',
 	'duplicator-summary' => 'Копирано од [[$1]]',
