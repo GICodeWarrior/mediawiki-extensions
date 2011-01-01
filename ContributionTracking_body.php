@@ -28,6 +28,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 
 
 	function execute( $language ) {
+		require_once( 'countryCodes.inc' );
 		global $wgRequest, $wgOut, $wgContributionTrackingPayPalIPN, $wgContributionTrackingReturnToURLDefault,
 			$wgContributionTrackingPayPalRecurringIPN, $wgContributionTrackingPayPalBusiness;
 		
@@ -52,6 +53,14 @@ class ContributionTracking extends UnlistedSpecialPage {
 		if($owa_ref != null  && !is_numeric($owa_ref)){
 			$owa_ref = $this->get_owa_ref_id($owa_ref);
 		}
+		
+		// Translate the shipping country from a code to a country name
+		$country = '';
+		$code = $wgRequest->getText('country2');
+		if ( $code ) {
+			$countries = countryCodes();
+			$country = $countries[$code];
+		}
 
 		$tracked_contribution = array(
 			'note' => $wgRequest->getText('comment', null),
@@ -62,6 +71,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 			'utm_campaign' => $wgRequest->getText('utm_campaign', null),
 			'optout' => ($wgRequest->getCheck('email-opt', 0) ? 0 : 1),
 			'language' => $wgRequest->getText('language', null),
+			'country' => $country,
 			'owa_session' => $wgRequest->getText('owa_session', null),
 			'owa_ref' => $owa_ref,
 			'ts' => $ts,
