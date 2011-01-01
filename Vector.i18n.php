@@ -72,6 +72,7 @@ $messages['aln'] = array(
  */
 $messages['am'] = array(
 	'vector-simplesearch-search' => 'ፈልግ',
+	'vector-simplesearch-containing' => 'በመጣጥፎች ይዘት ለመፈልግ...',
 );
 
 /** Aragonese (Aragonés)
