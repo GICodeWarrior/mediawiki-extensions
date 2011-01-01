@@ -188,6 +188,10 @@ $messages['bs'] = array(
 	'push-remote-page-link' => '$1 na $2',
 	'push-tab-inc-files' => 'Uključi umetnute datoteke',
 	'push-tab-embedded-files' => 'Umetnute datoteke:',
+	'push-special-target-is' => 'Ciljna wiki: $1',
+	'push-special-select-targets' => 'Ciljne wiki:',
+	'push-special-item-pushing' => '$1: Premještanje',
+	'push-special-item-completed' => '$1: Premještanje završeno',
 );
 
 /** German (Deutsch)
@@ -615,6 +619,11 @@ $messages['lb'] = array(
 	'push-tab-last-edit' => 'Lescht Ännerung vum $1 de(n) $2 ëm $3 Auer.',
 	'push-tab-not-created' => 'Dës Säit gëtt et nach net',
 	'push-tab-push-options' => 'Push-Optiounen',
+	'push-tab-inc-templates' => 'Inklusiv Schablounen',
+	'push-tab-inc-files' => 'Agebonne Fichieren abannen',
+	'push-tab-embedded-files' => 'Agebonne Fichieren:',
+	'push-tab-files-override' => 'Dës Fichiere gëtt et schonn: $1',
+	'push-tab-template-override' => 'Dës Schabloune gëtt et schonn: $1',
 	'special-push' => 'Säite pushen',
 	'push-special-button-text' => 'Säite pushen',
 	'push-special-select-targets' => 'Zielwikien:',
