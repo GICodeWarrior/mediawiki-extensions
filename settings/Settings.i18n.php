@@ -5147,6 +5147,7 @@ $messages['en-gb'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Petrus Adamus
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -5230,8 +5231,8 @@ $messages['eo'] = array(
 	'configure-setting-wgNamespacesToBeSearchedDefault' => 'Defaŭlte serĉeblaj nomspacoj',
 	'configure-setting-wgNamespacesWithSubpages' => 'Nomspacoj kun subpaĝoj',
 	'configure-setting-wgUseCategoryBrowser' => 'Ŝalti kategorian trovidilon',
-	'configure-setting-wgCopyrightIcon' => 'HTML por la kopirajta ikono',
-	'configure-setting-wgRightsIcon' => 'Kopirajta ikono',
+	'configure-setting-wgCopyrightIcon' => 'HTML por la aŭtorrajta bildsimbolo',
+	'configure-setting-wgRightsIcon' => 'Aŭtorrajta bildsimbolo',
 	'configure-setting-wgAllowRealName' => 'Permesi realajn nomojn',
 	'configure-setting-wgAllowUserSkin' => 'Permesi al uzantoj ŝanĝi ilian etoson',
 	'configure-setting-wgAllowPrefChange-key' => 'Uzula prefero',
@@ -12293,7 +12294,6 @@ $messages['lb'] = array(
 	'configure-setting-wgAPICacheHelp' => 'Den API Hëllefstext tëschespäicheren',
 	'configure-setting-wgAPIMaxResultSize' => 'Maximal Gréisst (a Bytes) vun engem API-Resultat',
 	'configure-setting-wgDisableQueryPageUpdate' => 'Spezialsäiten déi ausgeschalt sinn',
-	'configure-setting-wgDisableSearchContext' => 'Zousätzlech Informatiounen iwwer spezifiesch Datumer a Säiteversiounen an de Resultater vun der Sich desaktivéieren',
 	'configure-setting-wgDisableSearchUpdate' => 'Aktualisatioun vun der Sich ausschalten',
 	'configure-setting-wgDisableTextSearch' => 'Volltext-Sich ausschalten',
 	'configure-setting-wgEdititis' => 'De Compteur vun de Benotzerkontributiounen op verschiddene bekannte Plazen weisen',
@@ -12344,6 +12344,7 @@ $messages['lb'] = array(
 	'configure-setting-wgCountTotalSearchHits' => "D'Sichmaschinn zielt den Total vun de Resultater fir se op Special:Search unzeginn",
 	'configure-setting-wgUseTwoButtonsSearchForm' => 'Verhale vum säitleche Sich-Formulaire',
 	'configure-setting-wgCountCategorizedImagesAsUsed' => 'Op der [[Special:UnusedImages|Spezialsäit von den net benotzte Biller]] Fichieren als benotzt betruechten wa se an enger Kategorie stinn',
+	'configure-setting-wgActiveUserDays' => 'Zäit no där e Benotzer als inaktiv gëllt',
 	'configure-setting-wgDisableCounters' => 'Compteur vun de Säitenopruffer ausschalten',
 	'configure-setting-wgHitcounterUpdateFreq' => 'Frequenz vun der Aktualisatioun vum Compteur vun de Säitenoffroen',
 	'configure-setting-wgWantedPagesThreshold' => 'Mindestzuel vu Linken fir datt eng Säit bäi de [[Special:WantedPages|gewënschte Säiten]] derbäisteet',
@@ -12371,6 +12372,7 @@ $messages['lb'] = array(
 	'configure-setting-wgNonincludableNamespaces' => 'Nummraim déi net kënnen dragesat ginn',
 	'configure-setting-wgSitemapNamespaces' => "Nummraim déi an d'Sitemap dragesat ginn",
 	'configure-setting-wgCategoryMagicGallery' => 'Eng Minitaturgallerie op Kategoriesäite weisen',
+	'configure-setting-wgUseCategoryBrowser' => 'Navigatioun vun de Kategorien aschalten',
 	'configure-setting-wgCheckCopyrightUpload' => 'Copyright-Informatiounen beim Eroplueden nokucken',
 	'configure-setting-wgCopyrightIcon' => 'HTML fir de Copyright-Icon',
 	'configure-setting-wgEnableCreativeCommonsRdf' => 'Creative-Commons-Lizenzinformatiounen abannen',
@@ -12424,7 +12426,6 @@ $messages['lb'] = array(
 	'configure-setting-wgSVGConverters-value' => "Commande fir d'Ëmwandlung",
 	'configure-setting-wgUseImageMagick' => 'ImageMagick benotzen',
 	'configure-setting-wgMemCachedServers' => 'Memcached-Serveren',
-	'configure-setting-wgUseMemCached' => 'Memcached benotzen',
 	'configure-setting-wgAlwaysUseTidy' => 'Tidy ëmmer benotzen',
 	'configure-setting-wgValidateAllHtml' => 'Net valabel Säiten net weisen',
 	'configure-setting-wgUseTeX' => 'TeX aschalten',
@@ -19108,6 +19109,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -19250,7 +19252,7 @@ $messages['sr-ec'] = array(
 	'configure-setting-wgEnableUserEmail' => 'Омогући корисницима да међусобно размењују имејлове',
 	'configure-setting-wgSMTP' => 'SMTP сервер',
 	'configure-setting-wgUserEmailUseReplyTo' => 'Користи Reply-To уместо From параметра',
-	'configure-setting-wgDebugLogGroups-value' => 'Фајл',
+	'configure-setting-wgDebugLogGroups-value' => 'Датотека',
 	'configure-setting-wgShowSQLErrors' => 'Покажи стране са грешкама базе података',
 	'configure-setting-wgStatsMethod' => 'Дестинација за wfIncrStats() податке',
 	'configure-setting-wgDisableQueryPageUpdate' => 'Онемогућене специјалне стране',
@@ -19279,6 +19281,7 @@ $messages['sr-ec'] = array(
 	'configure-setting-wgAdvancedSearchHighlighting' => 'Омогући означавање делова текста у резултатима претраге',
 	'configure-setting-wgEnableMWSuggest' => 'Омогући сугерисање захтева претраге током писања у кутијицама за претрагу',
 	'configure-setting-wgSearchForwardUrl' => 'Проследи захтеве претраге',
+	'configure-setting-wgActiveUserDays' => 'Време након кога је неки корисник неактиван',
 	'configure-setting-wgDisableCounters' => 'Онемогући приказ бројача прегледа страна',
 	'configure-setting-wgHitcounterUpdateFreq' => 'Фреквенција освежавања бројача страна',
 	'configure-setting-wgDefaultSkin' => 'Име подразумеваног изгледа',
@@ -19364,9 +19367,6 @@ $messages['sr-ec'] = array(
 	'configure-setting-wgXhtmlDefaultNamespace' => 'Подразумевани XHTML именски простор',
 	'configure-setting-wgXhtmlNamespaces' => 'Други XHTML именски простори',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Именски простор',
-	'configure-setting-wgUseZhdaemon' => 'Користи ZhDaemon за процесирање кинеског текста',
-	'configure-setting-wgZhdaemonHost' => 'ZhDaemon хост',
-	'configure-setting-wgZhdaemonPort' => 'ZhDaemon порт',
 	'configure-setting-wgLocaltimezone' => 'Локална временска зона',
 	'configure-setting-wgLocalTZoffset' => 'Разлика временске зоне',
 	'configure-setting-wgAllowUserCss' => 'Омогући корисничке Cascading Style Sheet (CSS) стране',
