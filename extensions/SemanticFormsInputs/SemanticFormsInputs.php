@@ -33,7 +33,7 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 $dir = dirname( __FILE__ );
 
 // load user settings
-require_once( $dir. '/SFI_Settings.php' );
+require_once( $dir . '/SFI_Settings.php' );
 
 $wgExtensionMessagesFiles['SemanticFormsInputs'] = $dir . '/SemanticFormsInputs.i18n.php';
 $wgExtensionFunctions[] = "wfSFISetup";
