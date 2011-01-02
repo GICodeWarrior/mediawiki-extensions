@@ -881,6 +881,7 @@ $messages['lb'] = array(
 	'wikisync_log_imported_by' => 'Vu [[Special:WikiSync|WikiSync]] importéiert',
 	'wikisync_log_uploaded_by' => 'Vu [[Special:WikiSync|WikiSync]] eropgelueden',
 	'wikisync_api_result_unknown_action' => 'Onbekannten API Aktioun',
+	'wikisync_api_result_noaccess' => 'Nëmme Membere vun de Gruppe $1 kënnen dës Aktioun duerchféieren',
 	'wikisync_api_result_invalid_parameter' => 'Net valabele Wäert vum Parameter',
 	'wikisync_api_result_Illegal' => 'Dir hutt en illegale Benotzernumm uginn',
 	'wikisync_api_result_NotExists' => 'De Benotzernumm deen Dir uginn hutt gëtt et net',
