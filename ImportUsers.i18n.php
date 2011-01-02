@@ -1182,7 +1182,7 @@ $messages['lb'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
-	'importusers-log' => "Tatitr'asa mikasaika ny fampidirana mpikambana",
+	'importusers-log' => "Laogin'ny fampidirana mpikambana",
 );
 
 /** Eastern Mari (Олык Марий)
