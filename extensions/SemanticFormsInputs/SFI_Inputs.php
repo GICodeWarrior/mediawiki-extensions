@@ -195,28 +195,13 @@ class SFIInputs {
 		$message = Xml::encodeJsVar( $message );
 		$regexp = Xml::encodeJsVar( $regexp );
 
-
-		// register this input for validation
-		// $sfgJSValidationCalls are sanitized for HTML by SF before output, no htmlspecialchars() here
-		if ( array_key_exists( 'part_of_multiple', $other_args ) && $other_args['part_of_multiple'] == 1 ) {
-			$jstext = "validate_input_with_regexp($sfgFieldNum, {$regexp}, {$inverseString}, {$message}, true)";
-		} else {
-			$jstext = "validate_input_with_regexp($sfgFieldNum, {$regexp}, {$inverseString}, {$message}, false)";
-		}
-
-		// register event to validate regexp on submit
-		// TODO: Improve so regexp is also validated on preview
+		// register event to validate regexp on submit/preview
 		$jstext = <<<JAVASCRIPT
-
-		jQuery(function($){
-			$('#sfForm').submit( function() {
-				return $jstext;
-			} );
-		});
-
+jQuery(function(){
+	jQuery('#input_$sfgFieldNum').registerValidation( SFI_RE_validate, {retext: {$regexp}, inverse: {$inverseString}, message: {$message} });
+});
 JAVASCRIPT;
 
-		//$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
 		$wgOut->addInlineScript( $jstext );
 
 		// create other_args for base input type
@@ -265,8 +250,8 @@ JAVASCRIPT;
 
 			// set localized messages (use MW i18n, not jQuery i18n)
 			$jstext =
-					"jQuery(function($){\n"
-					. "	$.datepicker.regional['wiki'] = {\n"
+					"jQuery(function(){\n"
+					. "	jQuery.datepicker.regional['wiki'] = {\n"
 					. "		closeText: '" . wfMsg( 'semanticformsinputs-close' ) . "',\n"
 					. "		prevText: '" . wfMsg( 'semanticformsinputs-prev' ) . "',\n"
 					. "		nextText: '" . wfMsg( 'semanticformsinputs-next' ) . "',\n"
@@ -327,7 +312,7 @@ JAVASCRIPT;
 					. "		isRTL: " . ( $wgLang->isRTL() ? "true":"false" ) . ",\n"
 					. "		showMonthAfterYear: false,\n"
 					. "		yearSuffix: ''};\n"
-					. "	$.datepicker.setDefaults($.datepicker.regional['wiki']);\n"
+					. "	jQuery.datepicker.setDefaults(jQuery.datepicker.regional['wiki']);\n"
 					. "});\n";
 
 
@@ -657,16 +642,8 @@ JAVASCRIPT;
 
 			// set datepicker widget attributes
 			$jsattribs = array(
-					'showOn' => 'both',
+					'currValue' => $cur_value,
 					'buttonImage' => $sfigSettings->scriptPath . '/images/DatePickerButton.gif',
-					'buttonImageOnly' => false,
-					'changeMonth' => true,
-					'changeYear' => true,
-					'altFormat' => "yy/mm/dd",
-					// Today button does not work (http://dev.jqueryui.com/ticket/4045)
-					// do not show button panel for now
-					// TODO: show date picker button panel when bug is fixed
-					'showButtonPanel' => false
 			);
 
 			// set first day of the week
@@ -683,7 +660,8 @@ JAVASCRIPT;
 					|| ( !array_key_exists( 'hide week numbers', $other_args ) && $sfigSettings->datePickerShowWeekNumbers ) ) {
 
 				$jsattribs['showWeek'] = true;
-
+			} else {
+				$jsattribs['showWeek'] = false;
 			}
 
 			// set date format
@@ -837,45 +815,20 @@ JAVASCRIPT;
 			// build JS code from attributes array
 			$jsattribsString = Xml::encodeJsVar( $jsattribs );
 
-			// assemble JS code to attach datepicker to input field
-			$jstext = <<<JAVASCRIPT
-				jQuery("#" + inputId + "_show").datepicker( $jsattribsString );
-				jQuery("#" + inputId + "_show").datepicker( "option", "altField", "#" + inputId);
-JAVASCRIPT;
-
-			// append setting of first date
+			// store min date as JS attrib
 			if ( $minDate ) {
-
-				$minDateString = $minDate->format( 'Y-m-d' );
-				$jstext .= <<<JAVASCRIPT
-				jQuery("#" + inputId + "_show").datepicker( "option", "minDate", jQuery.datepicker.parseDate("yy/mm/dd", "$minDateString", null) );
-
-JAVASCRIPT;
+				$jsattribs['minDate'] = $minDate->format( 'Y/m/d' );
 			}
 
-			// append setting of last date
+			// store max date as JS attrib
 			if ( $maxDate ) {
-
-				$maxDateString = $maxDate->format( 'Y-m-d' );
-
-				$jstext .= <<<JAVASCRIPT
-				jQuery("#" + inputId + "_show").datepicker( "option", "maxDate", jQuery.datepicker.parseDate("yy/mm/dd", "$maxDateString", null) );
-
-JAVASCRIPT;
+				$jsattribs['maxDate'] = $maxDate->format( 'Y/m/d' );
 			}
 
 
 			// add user-defined class(es) to all datepicker components
 			if ( array_key_exists( 'class', $other_args ) ) {
-
-				// sanitize names of user-defined classes
-				$userClasses = Xml::encodeJsVar ( $userClasses );
-
-				$jstext .= <<<JAVASCRIPT
-				jQuery("#" + inputId + "_show").datepicker("widget").addClass({$userClasses});
-				jQuery("#" + inputId + "_show + button").addClass({$userClasses});
-
-JAVASCRIPT;
+				$jsattribs['userClass'] = $userClasses;
 			}
 
 			// attach event handler to handle disabled and highlighted dates
@@ -885,7 +838,7 @@ JAVASCRIPT;
 				if ( count( $disabledDates ) ) {
 
 					// convert the PHP array of date ranges into a JS array definition
-					$disabledDatesString = '[' . implode( ',', array_map( create_function ( '$range', '
+					$jsattribs["disabledDates"] = array_map( create_function ( '$range', '
 
 								$y0 = $range[0]->format( "Y" );
 								$m0 = $range[0]->format( "m" ) - 1;
@@ -895,19 +848,15 @@ JAVASCRIPT;
 								$m1 = $range[1]->format( "m" ) - 1;
 								$d1 = $range[1]->format( "d" );
 
-								return "[new Date({$y0}, {$m0}, {$d0}), new Date({$y1}, {$m1}, {$d1})]";
-							' ) , $disabledDates ) ) . ']';
-
-					// register array of disabled dates with datepicker
-					$jstext .= "				jQuery(\"#\" + inputId + \"_show\").datepicker(\"option\", \"disabledDates\", $disabledDatesString);\n";
-
+								return array($y0, $m0, $d0, $y1, $m1, $d1);
+							' ) , $disabledDates );
 				}
 
 				// then register highlighted dates with datepicker
 				if ( count( $highlightedDates ) > 0 ) {
 
 					// convert the PHP array of date ranges into a JS array definition
-					$highlightedDatesString = '[' . implode( ',', array_map( create_function ( '$range', '
+					$jsattribs["highlightedDates"] = array_map( create_function ( '$range', '
 
 								$y0 = $range[0]->format( "Y" );
 								$m0 = $range[0]->format( "m" ) - 1;
@@ -917,53 +866,27 @@ JAVASCRIPT;
 								$m1 = $range[1]->format( "m" ) - 1;
 								$d1 = $range[1]->format( "d" );
 
-								return "[new Date({$y0}, {$m0}, {$d0}), new Date({$y1}, {$m1}, {$d1})]";
-							' ) , $highlightedDates ) ) . ']';
-
-					// register array of highlighted dates with datepicker
-					$jstext .= "				jQuery(\"#\" + inputId + \"_show\").datepicker(\"option\", \"highlightedDates\", $highlightedDatesString);\n";
-
+								return array($y0, $m0, $d0, $y1, $m1, $d1);
+							' ) , $highlightedDates );
 				}
 
 				// register disabled days of week with datepicker
 				if ( count( $disabledDays ) ) {
-					$disabledDaysString = Xml::encodeJsVar( $disabledDays );
-					$jstext .= "				jQuery(\"#\" + inputId + \"_show\").datepicker(\"option\", \"disabledDays\", $disabledDaysString);\n";
+					$jsattribs["disabledDays"] = $disabledDays;
 				}
 
 				// register highlighted days of week with datepicker
 				if ( count( $highlightedDays ) ) {
-					$highlightedDaysString = Xml::encodeJsVar( $highlightedDays );
-					$jstext .= "				jQuery(\"#\" + inputId + \"_show\").datepicker(\"option\", \"highlightedDays\", $highlightedDaysString);\n";
+					$jsattribs["highlightedDays"] = $highlightedDays;
 				}
-
-				// attach the event handler to the datepicker's beforeShowDay event
-				// the actual handler function is loaded separately and uses the
-				// data atached to the datepicker above
-				$jstext .= <<<JAVASCRIPT
-
-				jQuery("#" + inputId + "_show").datepicker("option", "beforeShowDay", function (date) {return SFI_DP_checkDate(this, date);});
-
-JAVASCRIPT;
 			}
 
-			// set value of datepicker and wrap the JS code fragment in a
-			// function  which can be called by SF for deferred init
+			// build JS code from attributes array
+			$jsattribsString = Xml::encodeJsVar( $jsattribs );
+
+			// wrap the JS code fragment in a function for deferred init
 			$jstext = <<<JAVASCRIPT
-	function initInput$sfgFieldNum(inputId) {
-$jstext
-				try {
-					re = /\d{4}\/\d{2}\/\d{2}/
-					if ( ! re.test("$cur_value") ) {throw "Wrong date format!";}
-					jQuery("#" + inputId + "_show").datepicker( "setDate", jQuery.datepicker.parseDate("yy/mm/dd", "$cur_value", null) );
-				} catch (e) {
-					jQuery("#" + inputId + "_show").attr("value", "$cur_value");
-					jQuery("#" + inputId).attr("value", "$cur_value");
-				}
-
-	}
-
-	addOnloadHook(function(){initInput$sfgFieldNum("input_$sfgFieldNum");});
+jQuery(function(){ jQuery('#input_$sfgFieldNum').registerInitialisation(SFI_DP_init, $jsattribsString ); });
 JAVASCRIPT;
 
 
@@ -972,8 +895,7 @@ JAVASCRIPT;
 		// add span for error messages (e.g. used for mandatory inputs)
 		$html .= Xml::element( "span", array( "id" => "info_$sfgFieldNum", "class" => "errorMessage" ) );
 
-		// directly insert the code of the JS init function into the pages code
-		// there seemed to be issues when this code was piped through SF
+		// insert the code of the JS init function into the pages code
 		$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
 
 		return array( $html, "", "initInput$sfgFieldNum" );
@@ -1214,7 +1136,6 @@ JAVASCRIPT;
 			$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
 
 			// return HTML and name of JS init function
-			//return array( $html, "", "initInput$sfgFieldNum" );
 			return $html;
 
 		} else {
@@ -1276,13 +1197,13 @@ JAVASCRIPT;
 					'name' => $input_name,
 					'value' => $cur_value
 				) );
-		
-		
+
+
 		$html .= "<span class='SFI_menuselect' id='input_{$sfgFieldNum}_tree'>";
 
 
-		//if ( array_key_exists( 'delimiter', $other_args ) ) $delimiter = $other_args[ 'delimiter' ];
-		//else $delimiter = ' ';
+		// if ( array_key_exists( 'delimiter', $other_args ) ) $delimiter = $other_args[ 'delimiter' ];
+		// else $delimiter = ' ';
 
 		// parse menu structure
 
@@ -1291,15 +1212,15 @@ JAVASCRIPT;
 		$oldStripState = $wgParser->mStripState;
 		$wgParser->mStripState = new StripState();
 
-		//FIXME: SF does not parse options correctly. Users have to replace | by {{!}}
-		$structure = str_replace('{{!}}','|',$other_args["structure"]);
+		// FIXME: SF does not parse options correctly. Users have to replace | by {{!}}
+		$structure = str_replace( '{{!}}', '|', $other_args["structure"] );
 
-		$structure = $wgParser->parse($structure, $wgTitle, $options )->getText();
+		$structure = $wgParser->parse( $structure, $wgTitle, $options )->getText();
 
 		$wgParser->mStripState = $oldStripState;
 
 
-		$html .= str_replace('<li', '<li class=\'ui-state-default\'', $structure);
+		$html .= str_replace( '<li', '<li class=\'ui-state-default\'', $structure );
 
 		$html .= "</span>";
 
