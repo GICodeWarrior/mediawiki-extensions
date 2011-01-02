@@ -45,9 +45,11 @@ Available ones are "plain", "normal" and "wiki".',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Hamilton Abreu
+ * @author Hydra
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'article-comments-desc' => 'This is the description of a user right.',
 	'article-comments-title-string' => '{{Identical|Title}}',
 	'article-comments-name-string' => '{{Identical|Name}}',
 	'article-comments-comment-string' => '{{Identical|Comment}}',
@@ -1532,6 +1534,7 @@ $messages['uk'] = array(
  * @author Hydra
  */
 $messages['zh-hans'] = array(
+	'article-comments-desc' => '内容页上启用注释部分',
 	'article-comments-name-string' => '名字',
 	'article-comments-name-field' => '名字（必须写一个）：',
 	'article-comments-url-field' => '网址：',

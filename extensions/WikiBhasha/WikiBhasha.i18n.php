@@ -165,6 +165,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'wikibhasha' => 'WikiBhasha',
 	'wikibhasha-desc' => 'Програм за создавање на повеќејазични содржини користејќи ги содржините на англиската Википедија',
 	'wikiBhashaLink' => 'WikiBhasha (Бета)',
 );
@@ -230,5 +231,12 @@ $messages['ru'] = array(
  */
 $messages['uk'] = array(
 	'wikibhasha-desc' => 'Додаток для створення багатомовного змісту використовуючи зміст англійської Вікіпедії',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'wikibhasha-desc' => '应用程序创建多语言内容，利用英语维基百科的内容',
 );
 

@@ -454,6 +454,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'lua_error' => 'Feeler an der Linn $1',
 	'lua_extension_notfound' => 'Lua-Erweiderung net configuréiert',
+	'lua_interp_notfound' => 'Lua-Interpreter net fonnt',
 	'lua_error_internal' => 'Interne Feeler',
 );
 

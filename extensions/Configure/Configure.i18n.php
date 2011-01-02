@@ -1710,6 +1710,7 @@ $messages['ca'] = array(
 	'configure-section-upload' => 'Pujada',
 	'configure-section-sharedupload' => 'Pujada compartida',
 	'configure-section-mime' => 'Tipus MIME',
+	'configure-section-images' => 'Arxius',
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-mw-extensions' => 'Extensions MediaWiki',
 	'configure-throttle-action-edit' => 'Modifica',
@@ -2674,6 +2675,7 @@ $messages['el'] = array(
 /** Esperanto (Esperanto)
  * @author Amikeco
  * @author Melancholie
+ * @author Petrus Adamus
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -2725,7 +2727,6 @@ $messages['eo'] = array(
 	'configure-section-enotif' => 'Retpoŝta informado',
 	'configure-section-localization' => 'Asimilado',
 	'configure-section-timezone' => 'Horzono',
-	'configure-section-zh-conversion' => 'Konvertado al la ĉina lingvo',
 	'configure-section-debug' => 'Sencimigo',
 	'configure-section-site' => 'Agordado de retejo',
 	'configure-section-css-js' => 'CSS kaj JavaScript',
@@ -2755,7 +2756,7 @@ $messages['eo'] = array(
 	'configure-section-job' => 'Taskoj',
 	'configure-section-extension' => 'Etendiloj',
 	'configure-section-search' => 'Serĉi',
-	'configure-section-copyright' => 'Kopirajto',
+	'configure-section-copyright' => 'Aŭtorrajto',
 	'configure-section-htcp' => 'HTCP multsendaĵo',
 	'configure-section-misc' => 'Diversaĵoj',
 	'configure-section-filter' => 'Filtrado',
@@ -9800,6 +9801,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -9870,13 +9872,12 @@ $messages['sr-ec'] = array(
 	'configure-section-enotif' => 'Обавештења путем е-поште',
 	'configure-section-localization' => 'Локализација',
 	'configure-section-timezone' => 'Временска зона',
-	'configure-section-zh-conversion' => 'Кинеска конверзија',
 	'configure-section-debug' => 'Дебаговање',
 	'configure-section-site' => 'Прилагођавање сајта',
 	'configure-section-css-js' => 'CSS и јаваскрипт',
 	'configure-section-namespaces' => 'Именски простори',
-	'configure-section-stats' => 'Статистике сајта',
-	'configure-section-skin' => 'Коже',
+	'configure-section-stats' => 'Статистика сајта',
+	'configure-section-skin' => 'Теме',
 	'configure-section-category' => 'Категорије',
 	'configure-section-cache' => 'Кеш',
 	'configure-section-pcache' => 'Кеш парсера',

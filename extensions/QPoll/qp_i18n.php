@@ -2280,6 +2280,7 @@ $messages['rue'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2291,7 +2292,7 @@ $messages['sr-ec'] = array(
 	'qp_polls_list' => 'Прикажи све анкете',
 	'qp_users_list' => 'Прикажи све кориснике',
 	'qp_votes_count' => '$1 {{PLURAL:$1|глас|гласа|гласа|гласа|гласова}}',
-	'qp_stats_link' => 'Статистике',
+	'qp_stats_link' => 'Статистика',
 	'qp_users_link' => 'Корисници',
 	'qp_user_polls_link' => 'Учествовао у $1 {{PLURAL:$1|анкети|анкета}}',
 );

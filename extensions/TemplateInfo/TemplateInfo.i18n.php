@@ -336,12 +336,13 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  * @author Тест
  */
 $messages['uk'] = array(
 	'templateinfo-desc' => 'Підтримує визначення структури даних шаблонів за допомогою розмітки XML',
-	'templateinfo-header' => 'XML-визначення для цього шаблона:',
+	'templateinfo-header' => 'XML-визначення для цього шаблону:',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1641,6 +1641,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Alex Khimich
+ * @author NickK
  * @author Тест
  */
 $messages['uk'] = array(
@@ -1656,7 +1657,7 @@ $messages['uk'] = array(
 	'mwe-clipedit-sc_overlays' => 'Перекриття',
 	'mwe-clipedit-sc_audio' => 'Аудіо контроль',
 	'mwe-clipedit-sc_duration' => 'Тривалість',
-	'mwe-clipedit-template_properties' => 'Властивості шаблона',
+	'mwe-clipedit-template_properties' => 'Властивості шаблону',
 	'mwe-clipedit-custom_title' => 'Власний заголовок',
 	'mwe-clipedit-edit_properties' => 'Змінити властивості',
 	'mwe-clipedit-other_properties' => 'Інші властивості',
