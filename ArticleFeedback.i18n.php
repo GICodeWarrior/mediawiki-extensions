@@ -1941,6 +1941,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Arturyatsko
+ * @author Тест
  */
 $messages['uk'] = array(
 	'articlefeedback' => 'Оцінка статті',
@@ -1960,6 +1961,8 @@ $messages['uk'] = array(
 	'articlefeedback-survey-submit' => 'Відправити',
 	'articlefeedback-survey-title' => 'Будь ласка, дайте відповідь на кілька питань',
 	'articlefeedback-survey-thanks' => 'Дякуємо за заповнення опитування.',
+	'articlefeedback-report-switch-label' => 'Показати результати',
+	'articlefeedback-pitch-createaccount-accept' => 'Створити обліковий запис',
 );
 
 /** Vèneto (Vèneto)
