@@ -58,6 +58,13 @@ $messages['be-tarask'] = array(
 	'localisationupdate-desc' => 'Сынхранізуе перакладзеныя сыстэмныя паведамленьні як мага даўжэй',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'localisationupdate-desc' => 'Поддържа локализираните съобщения възможно най-актуални',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
