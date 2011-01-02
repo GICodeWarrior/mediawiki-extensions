@@ -12386,6 +12386,7 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -12428,7 +12429,7 @@ $messages['sr-ec'] = array(
 	'ow_exporttsv_languages' => 'Језици:',
 	'ow_exporttsv_export_failed' => 'Извоз неуспешан',
 	'ow_save' => 'Сачувај',
-	'ow_history' => 'Историја',
+	'ow_history' => 'Историјат',
 	'ow_datasets' => 'Одабир скупа података',
 	'ow_noedit_title' => 'Без дозволе за уређивање',
 	'ow_noedit' => 'Није ти дозвољено да мењаш стране у скупу података "$1". Види [[{{MediaWiki:Ow editing policy url}}|нашу уређивачку политику]].',
