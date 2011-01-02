@@ -172,12 +172,13 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Petrus Adamus
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'icon-badimage' => 'Malbona bildo',
 	'icon-badwidth' => 'Fuŝa Larĝo',
-	'icon-desc' => 'Permesas al vi utiligi bildojn kiel ikonojn kaj ikonligilojn',
+	'icon-desc' => 'Ebligas al vi utiligi bildojn kiel bildsimbolojn kaj bildsimbolajn ligilojn',
 );
 
 /** Spanish (Español)
