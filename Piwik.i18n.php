@@ -572,13 +572,14 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'piwik-desc' => 'Убацује Piwik скрипту у МедијаВики стране зарад праћења и додаје [[Special:Piwik|статистике]]',
 	'piwik-lastvisits' => 'Последње посете',
 	'piwik-countries' => 'Земље',
-	'piwik-browsers' => 'Браузери',
+	'piwik-browsers' => 'Прегледачи',
 	'right-viewpiwik' => 'Преглед [[Special:Piwik|Piwik статистика]]',
 );
 
