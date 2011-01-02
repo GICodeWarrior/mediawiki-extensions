@@ -368,7 +368,7 @@ class CategoryMultisortHooks {
 				}
 			}
 			
-			$wgOut->addHTML( $this->onCategoryPageView_buildSortkeySelectForm( $skn ) );
+			$wgOut->addHTML( $this->onCategoryPageView_buildSortkeySelectForm( $skn, $title ) );
 			
 			if ( !$skn || !array_key_exists( $skn, $wgCategoryMultisortSortkeySettings ) ) {
 				return true;
@@ -386,8 +386,8 @@ class CategoryMultisortHooks {
 		}
 	}
 	
-	function onCategoryPageView_buildSortkeySelectForm( $current = '' ) {
-		global $wgCategoryMultisortSortkeySettings, $wgArticle, $wgScript, $wgContLang;
+	function onCategoryPageView_buildSortkeySelectForm( $current, $title ) {
+		global $wgCategoryMultisortSortkeySettings, $wgScript, $wgContLang;
 		
 		$html = '';
 		
@@ -415,7 +415,7 @@ class CategoryMultisortHooks {
 				Html::input( '', wfMsgNoTrans( 'categorymultisort-go' ), 'submit' , array(
 				'id' => 'categorymultisort-select-go',
 			) ) );
-			$html = Html::hidden( 'title', $wgArticle->getTitle()->getPrefixedDBkey() ) . $html;
+			$html = Html::hidden( 'title', $title->getPrefixedDBkey() ) . $html;
 			$html = Html::rawElement( 'form', array(
 				'action' => $wgScript,
 				'method' => 'get',
