@@ -153,7 +153,7 @@ Si non, tu pote consultar:
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'special404-desc' => 'Menyediakan halaman khusus 404 untuk galat 404 Tidak ditemukan',
+	'special404-desc' => 'Menyediakan suatu tujuan untuk galat 404 Tidak ditemukan',
 	'error404' => '404 Tidak ditemukan',
 	'special404-body' => 'URL yang diminta tidak ditemukan. 
 
