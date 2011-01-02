@@ -11,13 +11,15 @@
  *
  * @param inputID ( String ) the id of the input to initialize
  */
-function SFI_MS_init( inputID ) {
+function SFI_MS_init( inputID, params ) {
 
-	jQuery("#" + inputID + "_tree").css("visibility","hidden");
+	var treeid = "#" + inputID.replace(/input/,"span") + "_tree"
+
+	jQuery(treeid).css("visibility","hidden");
 
 	// wrap content in span to separate content from sub-menus,
 	// wrap content in div to support animating the list item width later
-	jQuery( "#" + inputID + "_tree li" ).each(
+	jQuery( treeid + " li" ).each(
 		function() {
 
 			jQuery( this ).contents().not( "ul" )
@@ -39,13 +41,13 @@ function SFI_MS_init( inputID ) {
 	// ensure labels of list item have constant width regardless of width of list item
 	// prevents layout changes when list item width is changed
 	// set position static ( was set to fixed to calculate text width )
-	jQuery( "#" + inputID + "_tree li>span>div.cont" ).each( function() {
+	jQuery( treeid + " li>span>div.cont" ).each( function() {
 		jQuery( this ).width( jQuery( this ).outerWidth(true) +  jQuery( this ).siblings("div.arrow").outerWidth(true) + 5);
 		jQuery( this ).css( "position", "static" );
 	} );
 
 	// add class for default state and fix dimensions
-	jQuery( "#" + inputID + "_tree li" )
+	jQuery( treeid + " li" )
 	.addClass( "ui-state-default" )
 	.each(
 		function() {
@@ -58,18 +60,18 @@ function SFI_MS_init( inputID ) {
 	);
 		
 	// initially hide everything
-	jQuery( "#" + inputID + "_tree ul" )
+	jQuery( treeid + " ul" )
 	.css({"z-index":1})
 	.hide()
 	.fadeTo(0, 0 );
 
 	// some crap "browsers" need special treatment
 	if ( jQuery.browser.msie ) {
-		jQuery( "#" + inputID + "_tree ul" ).css({ "position":"relative" });
+		jQuery( treeid + " ul" ).css({ "position":"relative" });
 	}
 
 	// sanitize links
-	jQuery( "#" + inputID + "_tree" ).find( "a" )
+	jQuery( treeid ).find( "a" )
 	.each(
 		function() {
 
@@ -100,7 +102,7 @@ function SFI_MS_init( inputID ) {
 	// attach event handlers
 
 	// mouse entered list item
-	jQuery( "#" + inputID + "_tree li" )
+	jQuery( treeid + " li" )
 	.mouseenter( function( evt ) {
 
 		// switch classes to change display style
@@ -163,7 +165,7 @@ function SFI_MS_init( inputID ) {
 	} );
 
 	// mouse left list item
-	jQuery( "#" + inputID + "_tree li" )
+	jQuery( treeid + " li" )
 	.mouseleave( function( evt ) {
 
 		// switch classes to change display style
@@ -216,7 +218,7 @@ function SFI_MS_init( inputID ) {
 	} );
 
 	// clicked list item
-	jQuery( "#" + inputID + "_tree li" )
+	jQuery( treeid + " li" )
 	.mousedown( function() {
 
 		// set visible value and leave input
@@ -245,19 +247,19 @@ function SFI_MS_init( inputID ) {
 	// show top menu when input gets focus
 	jQuery( "#" + inputID + "_show" )
 	.focus( function() {
-		jQuery( "#" + inputID + "_tree>ul" ).css( "display", "inline" ).fadeTo( 400, 1 );
+		jQuery( treeid + ">ul" ).css( "display", "inline" ).fadeTo( 400, 1 );
 	} );
 
 	// hide all menus when input loses focus
 	jQuery( "#" + inputID + "_show" )
 	.blur( function() {
 
-		jQuery( "#" + inputID + "_tree ul" ).fadeTo( 400, 0,
+		jQuery( treeid + " ul" ).fadeTo( 400, 0,
 			function() {
 				jQuery( this ).css( "display", "none" );
 			} );
 	} );
 
-	jQuery("#" + inputID + "_tree").css("visibility","visible");
+	jQuery( treeid ).css("visibility","visible");
 
 }

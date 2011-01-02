@@ -39,7 +39,7 @@ class SFIInputs {
 		// array of attributes to pass to the input field
 		$attribs = array(
 				"name" => $input_name,
-				"cssclass" => $class,
+				"class" => $class,
 				"value" => $cur_value,
 				"type" => "text"
 		);
@@ -56,12 +56,12 @@ class SFIInputs {
 
 		// modify class attribute for mandatory form fields
 		if ( $is_mandatory ) {
-			$attribs["cssclass"] .= ' mandatory';
+			$attribs["class"] .= ' mandatoryField';
 		}
 
 		// add user class(es) to class attribute of input field
 		if ( array_key_exists( 'class', $other_args ) ) {
-			$attribs["cssclass"] .= ' ' . $other_args['class'];
+			$attribs["class"] .= ' ' . $other_args['class'];
 		}
 
 		// set readonly attrib
@@ -892,8 +892,8 @@ JAVASCRIPT;
 
 		}
 
-		// add span for error messages (e.g. used for mandatory inputs)
-		$html .= Xml::element( "span", array( "id" => "info_$sfgFieldNum", "class" => "errorMessage" ) );
+		// wrap in span (e.g. used for mandatory inputs)
+		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
 
 		// insert the code of the JS init function into the pages code
 		$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
@@ -1032,7 +1032,7 @@ JAVASCRIPT;
 					. Xml::expandAttributes ( array(
 					'type' => 'button',
 					'class' => 'createboxInput ' . $userClasses,
-					'id' => "input_{$sfgFieldNum}_button",
+					'name' => "button",
 					) )
 					. "onclick=\"document.getElementById(this.id.replace('_button','_show')).focus();\""
 					. ">"
@@ -1074,7 +1074,7 @@ JAVASCRIPT;
 						. Xml::expandAttributes ( array(
 						'type' => 'button',
 						'class' => 'createboxInput ' . $userClasses,
-						'id' => "input_{$sfgFieldNum}_resetbutton",
+						'name' => "resetbutton",
 						) )
 						. "onclick=\"document.getElementById(this.id.replace('_resetbutton','')).value='';"
 						. "document.getElementById(this.id.replace('_resetbutton','_show')).value='';\""
@@ -1090,20 +1090,14 @@ JAVASCRIPT;
 			}
 		}
 
-		// append span for error messages (e.g. fore mandatory fields)
-		$html .= Xml::element( "span", array( "id" => "info_$sfgFieldNum", "class" => "errorMessage" ) );
+		// wrap in span (e.g. used for mandatory inputs)
+		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
 
 		// third: if the timepicker is not disabled set up JS attributes ans assemble JS call
 		if ( !$is_disabled ) {
 
 			self::timepickerSetup();
 
-//			if ( array_key_exists( 'delimiter', $other_args ) ) {
-//				$delimiter = $other_args[ 'delimiter' ];
-//			} else {
-//				$delimiter = ' ';
-//			}
-//
 			// set min time if valid, else use default
 			if ( array_key_exists( 'mintime', $other_args )
 					&& ( preg_match( '/^\d+:\d\d$/', trim( $other_args['mintime'] ) ) == 1 ) ) {
@@ -1128,8 +1122,16 @@ JAVASCRIPT;
 				$interval = '15';
 			}
 
+			// build JS code from attributes array
+			$jstext = Xml::encodeJsVar( array(
+				"minTime" => $minTime,
+				"maxTime" => $maxTime,
+				"interval" => $interval,
+				"format" => "hh:mm"
+				) );
+
 			$jstext = <<<JAVASCRIPT
-	addOnloadHook(function(){SFI_TP_init ( "input_$sfgFieldNum", "$minTime", "$maxTime", "$interval", "" );});
+jQuery(function(){ jQuery('#input_$sfgFieldNum').registerInitialisation(SFI_TP_init, $jstext ); });
 JAVASCRIPT;
 
 			// write JS code directly to the page's code
@@ -1199,7 +1201,7 @@ JAVASCRIPT;
 				) );
 
 
-		$html .= "<span class='SFI_menuselect' id='input_{$sfgFieldNum}_tree'>";
+		$html .= "<span class='SFI_menuselect' id='span_{$sfgFieldNum}_tree'>";
 
 
 		// if ( array_key_exists( 'delimiter', $other_args ) ) $delimiter = $other_args[ 'delimiter' ];
@@ -1224,12 +1226,16 @@ JAVASCRIPT;
 
 		$html .= "</span>";
 
-			$jstext = <<<JAVASCRIPT
-	addOnloadHook(function(){SFI_MS_init("input_$sfgFieldNum");});
+		// wrap in span (e.g. used for mandatory inputs)
+		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
+
+		$jstext = <<<JAVASCRIPT
+jQuery(function(){ jQuery('#input_$sfgFieldNum').registerInitialisation(SFI_MS_init, null ); });
 JAVASCRIPT;
 
 			// write JS code directly to the page's code
-			$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
+		$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
+
 		return array( $html, "", "SFI_MS_init" );
 
 	}

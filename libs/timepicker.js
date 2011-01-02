@@ -10,68 +10,66 @@
  * Initializes a timepicker input
  *
  * @param inputID (String) the id of the input to initialize
- * @param minTime (String) the minimum time to be shown (format hh:mm)
- * @param maxTime (String) the maximum time to be shown (format hh:mm)
- * @param interval (String) the interval between selectable times in minutes
- * @param format (String) a format string (unused) (do we even need it?)
+ * @param params (Object) the parameter object for the timepicker, contains
+ *		minTime: (String) the minimum time to be shown (format hh:mm)
+ *		maxTime: (String) the maximum time to be shown (format hh:mm)
+ *		interval: (String) the interval between selectable times in minutes
+ *		format: (String) a format string (unused) (do we even need it?)
  *
  */
-function SFI_TP_init( inputID, minTime, maxTime, interval, format ) {
+function SFI_TP_init( inputID, params ) { // minTime, maxTime, interval, format
 
 	// sanitize inputs
-	re = /^\d+:\d\d$/;
+	var re = /^\d+:\d\d$/;
+	var minh = 0;
+	var minm = 0;
 
-	if ( re.test( minTime ) ) {
+	var maxh = 23;
+	var maxm = 59;
 
-		min = minTime.split( ':', 2 );
+if ( re.test( params.minTime ) ) {
+
+		var min = params.minTime.split( ':', 2 );
 		minh = Number( min[0] );
 		minm = Number( min[1] );
 
 		if ( minm > 59 ) minm = 59;
-
-	} else {
-		minh = 0;
-		minm = 0;
 	}
 
-	if ( re.test( maxTime ) ) {
+	if ( re.test( params.maxTime ) ) {
 
-		max = maxTime.split( ':', 2 );
+		var max = params.maxTime.split( ':', 2 );
 		maxh = Number( max[0] );
 		maxm = Number( max[1] );
 
 		if ( maxm > 59 ) maxm = 59;
-
-	} else {
-		maxh = 23;
-		maxm = 59;
 	}
 
-	interv = Number( interval );
+	var interv = Number( params.interval );
 	
 	if ( interv < 1 ) interv = 1;
 	else if ( interv > 60 ) interv = 60;
 
 	// build html structure
-	sp = jQuery( "<span class='SFI_timepicker' id='" + inputID + "_tree' ></span>" ).insertAfter( "#" + inputID );
+	var sp = jQuery( "<span class='SFI_timepicker' id='" + inputID + "_tree' ></span>" ).insertAfter( "#" + inputID );
 
-	ulh = jQuery( "<ul>" ).appendTo( sp );
+	var ulh = jQuery( "<ul>" ).appendTo( sp );
 
 
-	for ( h = minh; h <= maxh; ++h ) {
+	for ( var h = minh; h <= maxh; ++h ) {
 
-		lih = jQuery( "<li class='ui-state-default'>" + ( ( h < 10 ) ? "0" : "" ) + h + "</li>" ).appendTo( ulh );
+		var lih = jQuery( "<li class='ui-state-default'>" + ( ( h < 10 ) ? "0" : "" ) + h + "</li>" ).appendTo( ulh );
 
 		//TODO: Replace value for "show" by formatted string
 		lih
 		.data( "value", ( ( h < 10 ) ? "0" : "" ) + h + ":00" )
 		.data( "show", ( ( h < 10 ) ?"0" : "" ) + h + ":00" );
 
-		ulm = jQuery( "<ul>" ).appendTo( lih );
+		var ulm = jQuery( "<ul>" ).appendTo( lih );
 
-		for ( m = ( (h == minh) ? minm : 0 ) ; m <= ( (h == maxh) ? maxm : 59 ); m += interv ) {
+		for ( var m = ( (h == minh) ? minm : 0 ) ; m <= ( (h == maxh) ? maxm : 59 ); m += interv ) {
 
-			lim = jQuery( "<li class='ui-state-default'>" + ( ( m < 10 ) ? "0" : "" ) + m  + "</li>" ).appendTo( ulm );
+			var lim = jQuery( "<li class='ui-state-default'>" + ( ( m < 10 ) ? "0" : "" ) + m  + "</li>" ).appendTo( ulm );
 
 			//TODO: Replace value for "show" by formatted string
 			lim
@@ -151,4 +149,15 @@ function SFI_TP_init( inputID, minTime, maxTime, interval, format ) {
 		jQuery("#" + inputID ).attr("value", jQuery(this).attr("value"));
 	});
 
+	jQuery("#" + inputID + '~ button[name="button"]' )
+	.attr("id", inputID + "_button")
+	.click(function() {
+		jQuery("#" + inputID + "_show" ).focus();
+	});
+
+	jQuery("#" + inputID + '~ button[name="resetbutton"]' )
+	.attr("id", inputID + "_resetbutton")
+	.click(function() {
+		jQuery("#" + inputID + "_show" ).attr("value", "");
+	});
 }
