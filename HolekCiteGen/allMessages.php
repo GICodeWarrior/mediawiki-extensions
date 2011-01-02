@@ -445,6 +445,7 @@ $messages['lb'] = array(
 	'ts-citegen-Template-lang' => 'Sprooch vun der Schabloun',
 	'ts-citegen-Sources-title' => 'Quellen',
 	'ts-citegen-Sidebar-title' => 'Generator fir Zitatiounen',
+	'ts-citegen-Sidebar-add-Opera' => "Op d'Hotlist derbäisetzen",
 	'ts-citegen-Tools' => 'Geschir (Tools)',
 	'ts-citegen-Other-languages' => 'Aner Sproochen',
 	'ts-citegen-Save-it' => 'Aktuell Ufro',
@@ -559,6 +560,7 @@ $messages['no'] = array(
 );
 
 /** Polish (Polski)
+ * @author Herr Kriss
  * @author Holek
  * @author Sp5uhe
  */
@@ -578,7 +580,7 @@ $messages['pl'] = array(
 	'ts-citegen-Skins' => 'Forma prezentacji',
 	'ts-citegen-Skin-skins' => 'Skórki',
 	'ts-citegen-Skin-outputformat' => 'Dla botów',
-	'ts-citegen-Template-lang' => 'Język szablonu',
+	'ts-citegen-Template-lang' => 'Godka szablůny',
 	'ts-citegen-Sources-title' => 'Źródła',
 	'ts-citegen-Sources-text' => 'Poniżej podane są strony, z których korzystano przy pobieraniu informacji o książkach.',
 	'ts-citegen-Sidebar-title' => 'Generator cytowań',
@@ -686,6 +688,41 @@ $messages['sv'] = array(
 	'ts-citegen-Output-title' => 'Resultat',
 	'ts-citegen-Sources-title' => 'Källor',
 	'ts-citegen-Errors-title' => 'Fel',
+);
+
+/** Silesian (Ślůnski)
+ * @author Herr Kriss
+ */
+$messages['szl'] = array(
+	'ts-citegen-Title' => 'Richtowanjy cytatůw',
+	'ts-citegen-Send' => 'Machnij',
+	'ts-citegen-Input-title' => 'Dane',
+	'ts-citegen-Input-text' => 'To je workcojg, kery robi szablůny cytowanjyo. Łůn tak zrobi, cobyś mioł szablůn cytowanjo we růżnistych godkach Wikipedyj. Podej dane (%s) na spodku, a skrypt Ci bydzie průbowoł wyrichtować szablůna. Pamjyntej - uobojyntnjy de kerego pola dosz co byś chcioł, bydzie dobrze, skrypt som wyrytichtuje szablůna tak jak trza.',
+	'ts-citegen-Option-append-author-link' => 'Dociep wikilink ze autorym do szablůny',
+	'ts-citegen-Option-append-newlines' => 'Dociep nowo linia pů kożdym paramytrze.',
+	'ts-citegen-Option-add-references' => 'Dociep <ref> </ref> kole szablůny cytowanio.',
+	'ts-citegen-Option-add-list' => 'Szrajbnij wikilista szablůnůw cytowonjyo.',
+	'ts-citegen-Output-title' => 'Wynik',
+	'ts-citegen-Output-select-disclaimer' => 'Pozůr: kej se wybierzesz godka, kej njy mo tokej szalbůny, to łůn Ci go njy wyrichtuje jak trza. To pole mo godki, kere zno, nale czasym je tak, co pokazuje francusko godka po tymu bo skrypt umjy wyrichtować ino francuski uodpowjednjyk.',
+	'ts-citegen-Wrong-input' => '% je felerne',
+	'ts-citegen-Parsers' => 'Bazy',
+	'ts-citegen-Skins' => 'Wynik',
+	'ts-citegen-Skin-skins' => 'Łoblyczynie',
+	'ts-citegen-Skin-outputformat' => 'Do botůw',
+	'ts-citegen-Template-lang' => 'Godka szablůny',
+	'ts-citegen-Sources-title' => 'Zdrzůdła',
+	'ts-citegen-Sources-text' => 'Na spodku je lista zdrzůdeł.',
+	'ts-citegen-Sidebar-title' => 'Richtowanjy cytatůw',
+	'ts-citegen-Sidebar-add-Firefox' => 'Dociep do Sidebar',
+	'ts-citegen-Sidebar-add-Opera' => 'Dociep do Hotlist',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Dociep do Page Holder',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Kej zajta śjy uodymnknjy, uodymknij Page Holder, naciś \'Dociep" a naciś knyfel "Favorites", coby boła Page Holder Favorite.',
+	'ts-citegen-Tools' => 'Werkcojgi',
+	'ts-citegen-Other-languages' => 'We inkszych godkach.',
+	'ts-citegen-Save-it' => 'Co terozki robi',
+	'ts-citegen-Errors-title' => 'Felery',
+	'ts-citegen-Unavailable-SQL' => 'Feler: baza Toolservera je zawarto. MySQL pedziało: %s',
+	'ts-citegen-base-disabled' => 'Feler: baza %s je zawarto',
 );
 
 /** Telugu (తెలుగు)
