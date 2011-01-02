@@ -442,6 +442,8 @@ Dat eetste Feld met däm Name fun dä Schablon es ävver nüüdesch.',
  */
 $messages['lb'] = array(
 	'datatransclusion-desc' => 'Import and Duerstellung vun Daten aus externe Quellen',
+	'datatransclusion-missing-argument-template' => 'Keng Schabloun spezifizéiert.
+Dat éischt oder "Schabloun"-Argument ass obligatoresch.',
 	'datatransclusion-bad-template-name' => 'Schlechten Numm fir eng Schabloun: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> gëtt et net.',
 );
@@ -717,10 +719,11 @@ Birincisi ya da "şablon" ispatı gerekmektedir.',
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Тест
  */
 $messages['uk'] = array(
-	'datatransclusion-bad-template-name' => 'Неправильна назва шаблона: $1.',
+	'datatransclusion-bad-template-name' => 'Неправильна назва шаблону: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> не існує.',
 );
 
