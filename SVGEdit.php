@@ -21,6 +21,7 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionMessagesFiles['SVGEdit'] =  dirname(__FILE__) . '/SVGEdit.i18n.php';
 
 $wgHooks['BeforePageDisplay'][] = 'SVGEditHooks::beforePageDisplay';
+$wgHooks['MakeGlobalVariablesScript'][] = 'SVGEditHooks::makeGlobalVariablesScript';
 
 $wgAutoloadClasses['SVGEditHooks'] = dirname( __FILE__ ) . '/SVGEdit.hooks.php';
 
@@ -31,11 +32,32 @@ $myResourceTemplate = array(
 );
 $wgResourceModules += array(
 	'ext.svgedit.editButton' => $myResourceTemplate + array(
-		'scripts' => 'ext.svgedit.editButton.js',
+		'scripts' => array(
+			'ext.svgedit.embedapi.js',
+			'ext.svgedit.formmultipart.js',
+			'ext.svgedit.io.js',
+			'ext.svgedit.editButton.js',
+		),
+		'styles' => array(
+			'ext.svgedit.editButton.css',
+		),
 		'messages' => array(
 			'svgedit-editbutton-edit',
+			'svgedit-summary-label',
+			'svgedit-summary-default',
 			'svgedit-editor-save-close',
 			'svgedit-editor-close',
 		),
 	),
 );
+
+// Can set to alternate SVGEdit URL to pull the editor's HTML/CSS/JS/SVG
+// resources from another domain; will still need to have the MediaWiki
+// extension in it, so use a checkout of this extension rather than a
+// master copy of svg-edit on its own.
+//
+// Example: $wgSVGEditEditor = 'http://toolserver.org/~brion/svg-edit/svg-editor.html';
+//
+// If left empty, the local copy will be used on the main MediaWiki domain.
+//
+$wgSVGEditEditor = false;
