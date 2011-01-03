@@ -66,6 +66,8 @@ $messages['bs'] = array(
  */
 $messages['de'] = array(
 	'svgedit-editbutton-edit' => 'Datei bearbeiten',
+	'svgedit-summary-label' => 'Zusammenfassung',
+	'svgedit-summary-default' => '/ * Mit SVG-edit geändert * /',
 	'svgedit-editor-save-close' => 'Speichern und schließen',
 	'svgedit-editor-close' => 'Abbrechen',
 	'svgedit-desc' => 'Ermöglicht das Bearbeiten einer SVG-Datei mit [http://code.google.com/p/svg-edit/ SVG-edit]',
@@ -134,6 +136,8 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'svgedit-editbutton-edit' => 'Rysowanku wobdźěłać',
+	'svgedit-summary-label' => 'Zjeće wobdźěłać',
+	'svgedit-summary-default' => '/* W SVG-edit změnjeny */',
 	'svgedit-editor-save-close' => 'Składować a začinić',
 	'svgedit-editor-close' => 'Přetorhnyć',
 	'svgedit-desc' => 'Zmóžnja wobdźěłanje SVG-rysowanki z [http://code.google.com/p/svg-edit/ SVG-Edit] we wobhladowaku',
@@ -144,6 +148,8 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'svgedit-editbutton-edit' => 'Modificar designo',
+	'svgedit-summary-label' => 'Summario del modification',
+	'svgedit-summary-default' => '/* Modificate in svg-edit */',
 	'svgedit-editor-save-close' => 'Salveguardar e clauder',
 	'svgedit-editor-close' => 'Cancellar',
 	'svgedit-desc' => 'Modification in le navigator de designos SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
