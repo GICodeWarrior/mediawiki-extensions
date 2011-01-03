@@ -45,7 +45,7 @@ $wgAutoloadClasses['SFIInputs'] = $dir . '/SFI_Inputs.php';
 class SFISettings {
 	// general settings
 	public $scriptPath;
-	public $yuiBase;
+	//public $yuiBase;
 
 	// settings for input type datepicker
 	public $datePickerFirstDate;
@@ -73,6 +73,7 @@ function wfSFISetup() {
 	$sfgFormPrinter->setInputTypeHook( 'datepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'simpledatepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'timepicker', array( 'SFIInputs', 'timepickerHTML' ), array() );
+	$sfgFormPrinter->setInputTypeHook( 'datetimepicker', array( 'SFIInputs', 'datetimepickerHTML' ), array() );
 //	$sfgFormPrinter->setInputTypeHook( 'wysiwyg', array( 'SFIInputs', 'wysiwygHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'menuselect', array( 'SFIInputs', 'menuselectHTML' ), array() );
 

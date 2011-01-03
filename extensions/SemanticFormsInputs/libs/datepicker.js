@@ -8,82 +8,113 @@
 
 function SFI_DP_init ( input_id, params ) {
 
-	var input = jQuery("#" + input_id + "_show");
+	var input = jQuery("#" + input_id);
+	var re = /\d{4}\/\d{2}\/\d{2}/
 
-	input.datepicker( {
-		"showOn": "both", 
-		"buttonImage": params.buttonImage,
-		"buttonImageOnly": false, 
-		"changeMonth": true, 
-		"changeYear": true, 
-		"altFormat": "yy/mm/dd", 
-		// Today button does not work (http://dev.jqueryui.com/ticket/4045)
-		// do not show button panel for now
-		// TODO: show date picker button panel when bug is fixed
-		"showButtonPanel": false, 
-		"firstDay": params.firstDay,
-		"showWeek": params.showWeek,
-		"dateFormat": params.dateFormat,
-		"altField": "#" + input_id,
-		"beforeShowDay": function (date) {return SFI_DP_checkDate("#" + input_id + "_show", date);}
-	} );
+	if ( params.disabled ) {
 
-	if ( params.minDate ) {
-		input.datepicker( "option", "minDate",
-			jQuery.datepicker.parseDate("yy/mm/dd", params.minDate, null) );
-	}
-
-	if ( params.maxDate ) {
-		input.datepicker( "option", "maxDate",
-			jQuery.datepicker.parseDate("yy/mm/dd", params.maxDate, null) );
-	}
-
-	if ( params.userClass ) {
-		input.datepicker("widget").addClass( params.userClass );
-		jQuery("#" + input_id + "_show + button").addClass( params.userClass );
-	}
-
-	if ( params.disabledDates ) {
-
-		var disabledDates = params.disabledDates.map(function(range) {
-			return [new Date(range[0], range[1], range[2]), new Date(range[3], range[4], range[5])]
-		});
-
-		input.datepicker("option", "disabledDates", disabledDates);
-	}
-
-	if ( params.highlightedDates ) {
-
-		var highlightedDates = params.highlightedDates.map(function(range) {
-			return [new Date(range[0], range[1], range[2]), new Date(range[3], range[4], range[5])]
-		});
-
-		input.datepicker("option", "highlightedDates", highlightedDates);
-	}
-
-	if (params.disabledDays) {
-		input.datepicker("option", "disabledDays", params.disabledDays);
-	}
-
-	if (params.highlightedDays) {
-		input.datepicker("option", "highlightedDays", params.highlightedDays);
-	}
-
-	//input.datepicker("option", "beforeShowDay", function (date) {return SFI_DP_checkDate("#" + input_id + "_show", date);});
-
-	try {
-
-		var re = /\d{4}\/\d{2}\/\d{2}/
-		if ( ! re.test( params.currValue ) ) {
-			throw "Wrong date format!";
+		// append inert reset button if image is set
+		if ( params.resetButtonImage && ! params.partOfDTP ) {
+			input.after('<button type="button" class="ui-datepicker-trigger' + params.userClasses + '" disabled><img src="' + params.resetButtonImage + '" alt="..." title="..."></button>');
 		}
-		input.datepicker( "setDate", jQuery.datepicker.parseDate( "yy/mm/dd", params.currValue, null ) );
-		
-	} catch (e) {
-		input.attr( "value", params.currValue );
-		jQuery( "#" + input_id).attr( "value", params.currValue );
-	}
 
+		// append inert datepicker button
+		input.after('<button type="button" class="ui-datepicker-trigger' + params.userClasses + '" disabled><img src="' + params.buttonImage + '" alt="..." title="..."></button>');
+
+		// set value for input fields
+		try {
+			if ( ! re.test( params.currValue ) ) {
+				throw "Wrong date format!";
+			}
+			input.attr( "value", jQuery.datepicker.formatDate(params.dateFormat, jQuery.datepicker.parseDate( "yy/mm/dd", params.currValue, null ), null ) );
+
+		} catch (e) {
+			input.attr( "value", params.currValue );
+		}
+	} else {
+
+		// append reset button if image is set
+		if ( params.resetButtonImage && ! params.partOfDTP ) {
+			var resetbutton = jQuery('<button type="button" class="ui-datepicker-trigger ' + params.userClasses + '" ><img src="' + params.resetButtonImage + '" alt="..." title="..."></button>');
+			input.after(resetbutton);
+			resetbutton.click(function(){
+				input.datepicker( "setDate", null);
+			})
+		}
+
+		input.datepicker( {
+			"showOn": "both",
+			"buttonImage": params.buttonImage,
+			"buttonImageOnly": false,
+			"changeMonth": true,
+			"changeYear": true,
+			"altFormat": "yy/mm/dd",
+			// Today button does not work (http://dev.jqueryui.com/ticket/4045)
+			// do not show button panel for now
+			// TODO: show date picker button panel when bug is fixed
+			"showButtonPanel": false,
+			"firstDay": params.firstDay,
+			"showWeek": params.showWeek,
+			"dateFormat": params.dateFormat,
+			"beforeShowDay": function (date) {return SFI_DP_checkDate("#" + input_id, date);}
+		} );
+
+		if ( ! params.partOfDTP ) {
+			input.datepicker( "option", "altField", "#" + input_id.replace( "_dp_show", "" ) );
+		}
+
+		if ( params.minDate ) {
+			input.datepicker( "option", "minDate",
+				jQuery.datepicker.parseDate("yy/mm/dd", params.minDate, null) );
+		}
+
+		if ( params.maxDate ) {
+			input.datepicker( "option", "maxDate",
+				jQuery.datepicker.parseDate("yy/mm/dd", params.maxDate, null) );
+		}
+
+		if ( params.userClasses ) {
+			input.datepicker("widget").addClass( params.userClasses );
+			jQuery("#" + input_id + " + button").addClass( params.userClasses );
+		}
+
+		if ( params.disabledDates ) {
+
+			var disabledDates = params.disabledDates.map(function(range) {
+				return [new Date(range[0], range[1], range[2]), new Date(range[3], range[4], range[5])]
+			});
+
+			input.datepicker("option", "disabledDates", disabledDates);
+		}
+
+		if ( params.highlightedDates ) {
+
+			var highlightedDates = params.highlightedDates.map(function(range) {
+				return [new Date(range[0], range[1], range[2]), new Date(range[3], range[4], range[5])]
+			});
+
+			input.datepicker("option", "highlightedDates", highlightedDates);
+		}
+
+		if (params.disabledDays) {
+			input.datepicker("option", "disabledDays", params.disabledDays);
+		}
+
+		if (params.highlightedDays) {
+			input.datepicker("option", "highlightedDays", params.highlightedDays);
+		}
+
+		try {
+			if ( ! re.test( params.currValue ) ) {
+				throw "Wrong date format!";
+			}
+			input.datepicker( "setDate", jQuery.datepicker.parseDate( "yy/mm/dd", params.currValue, null ) );
+
+		} catch (e) {
+			input.attr( "value", params.currValue );
+			jQuery( "#" + input_id.replace( "_dp_show", "" )).attr( "value", params.currValue );
+		}
+	}
 }
 
 /**
@@ -139,4 +170,3 @@ function SFI_DP_checkDate( input, date ) {
 
 	return [ enable, highlight, "" ];
 }
-

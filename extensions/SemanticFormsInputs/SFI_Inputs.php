@@ -9,8 +9,8 @@
  *
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'This file is a MediaWiki extension, it is not a valid entry point.' );
+if ( !defined( 'SFI_VERSION' ) ) {
+	die( 'This file is part of a MediaWiki extension, it is not a valid entry point.' );
 }
 
 class SFIInputs {
@@ -111,19 +111,15 @@ class SFIInputs {
 	/**
 	 * Definition of input type "regexp"
 	 *
-	 * Returns an array containing three elements: the html code and the JS code
-	 * to be included in the page and the name of a JS function to be called to
-	 * initialize the input.
-	 *
-	 * These values are all taken from the base input type, the JS for the
-	 * regexp is written to the code directly.
+	 * Returns the html code to be included in the page and registers the
+	 * input's JS initialisation method
 	 *
 	 * @param string $cur_value current value of this field (which is sometimes null)
 	 * @param string $input_name HTML name that this input should have
 	 * @param boolean $is_mandatory indicates whether this field is mandatory for the user
 	 * @param boolean $is_disabled indicates whether this field is disabled (meaning, the user can't edit)
 	 * @param array $other_args hash representing all the other properties defined for this input in the form definition
-	 * @return array of two strings
+	 * @return string html code of input
 	*/
 	static function regexpHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
 
@@ -458,17 +454,15 @@ JAVASCRIPT;
 	/**
 	 * Definition of input type "datepicker".
 	 *
-	 * Returns an array containing three elements: the html code to be included
-	 * in the page, an empty string (instead of JS initialization code, which is
-	 * inserted into the page directly) and the name of a JS function to be
-	 * called to initialize the input.
+	 * Returns the html code to be included in the page and registers the
+	 * input's JS initialisation method
 	 *
 	 * @param string $cur_value current value of this field (which is sometimes null)
 	 * @param string $input_name HTML name that this input should have
 	 * @param boolean $is_mandatory indicates whether this field is mandatory for the user
 	 * @param boolean $is_disabled indicates whether this field is disabled (meaning, the user can't edit)
 	 * @param array $other_args hash representing all the other properties defined for this input in the form definition
-	 * @return array of three strings
+	 * @return string html code of input
 	*/
 	static function jqDatePickerHTML( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
 
@@ -499,8 +493,95 @@ JAVASCRIPT;
 			|| ( !array_key_exists( 'enable input field', $other_args ) && $sfigSettings->datePickerDisableInputField )
 			|| $is_disabled	;
 
-		// second: set up JS attributes, but only if we need them
-		if ( !$is_disabled ) {
+		// second: set up JS attributes
+
+		// set up attributes required for both enabled and disabled datepickers
+		$jsattribs = array(
+				'currValue' => $cur_value,
+				'disabled' => $is_disabled,
+				'userClasses' => $userClasses
+		);
+
+		if ( array_key_exists( 'part of dtp', $other_args ) ) {
+			$jsattribs['partOfDTP'] = $other_args['part of dtp'];
+		}
+
+		// set date format
+		// SHORT and LONG are SFI specific acronyms and are translated here
+		// into format strings, anything else is passed to the jQuery date picker
+		// Americans need special treatment
+		if ( $wgAmericanDates && $wgLang->getCode() == "en" ) {
+
+			if ( array_key_exists( 'date format', $other_args ) ) {
+
+				if ( $other_args['date format'] == 'SHORT' ) {
+					$jsattribs['dateFormat'] = 'mm/dd/yy';
+				} elseif ( $other_args['date format'] == 'LONG' ) {
+					$jsattribs['dateFormat'] = 'MM d, yy';
+				} else {
+					$jsattribs['dateFormat'] = $other_args['date format'];
+				}
+
+			} elseif ( $sfigSettings->datePickerDateFormat ) {
+
+				if ( $sfigSettings->datePickerDateFormat == 'SHORT' ) {
+					$jsattribs['dateFormat'] = 'mm/dd/yy';
+				} elseif ( $sfigSettings->datePickerDateFormat == 'LONG' ) {
+					$jsattribs['dateFormat'] = 'MM d, yy';
+				} else {
+					$jsattribs['dateFormat'] = $sfigSettings->datePickerDateFormat;
+				}
+
+			} else $jsattribs['dateFormat'] = 'yy/mm/dd';
+
+		} else {
+
+			if ( array_key_exists( 'date format', $other_args ) ) {
+
+				if ( $other_args['date format'] == 'SHORT' ) {
+					$jsattribs['dateFormat'] = wfMsg( 'semanticformsinputs-dateformatshort' );
+				} elseif ( $other_args['date format'] == 'LONG' ) {
+					$jsattribs['dateFormat'] = wfMsg( 'semanticformsinputs-dateformatlong' );
+				} else {
+					$jsattribs['dateFormat'] = $other_args['date format'];
+				}
+
+			} elseif ( $sfigSettings->datePickerDateFormat ) {
+
+				if ( $sfigSettings->datePickerDateFormat == 'SHORT' ) {
+					$jsattribs['dateFormat'] = wfMsg( 'semanticformsinputs-dateformatshort' );
+				} elseif ( $sfigSettings->datePickerDateFormat == 'LONG' ) {
+					$jsattribs['dateFormat'] = wfMsg( 'semanticformsinputs-dateformatlong' );
+				} else {
+					$jsattribs['dateFormat'] = $sfigSettings->datePickerDateFormat;
+				}
+
+			} else $jsattribs['dateFormat'] = 'yy/mm/dd';
+
+		}
+
+		// setup attributes required only for either disabled or enabled datepickers
+		if ( $is_disabled ) {
+
+			$jsattribs['buttonImage'] = $sfigSettings->scriptPath . '/images/DatePickerButtonDisabled.gif';
+
+			if ( array_key_exists( 'show reset button', $other_args ) ||
+					( !array_key_exists( 'hide reset button', $other_args ) && $sfigSettings->datePickerShowResetButton ) ) {
+
+				$jsattribs['resetButtonImage'] = $sfigSettings->scriptPath . '/images/DatePickerResetButtonDisabled.gif';
+
+			}
+
+		} else {
+
+			$jsattribs['buttonImage'] = $sfigSettings->scriptPath . '/images/DatePickerButton.gif';
+
+			if ( array_key_exists( 'show reset button', $other_args ) ||
+					( !array_key_exists( 'hide reset button', $other_args ) && $sfigSettings->datePickerShowResetButton ) ) {
+
+				$jsattribs['resetButtonImage'] = $sfigSettings->scriptPath . '/images/DatePickerResetButton.gif';
+
+			}
 
 			// find min date, max date and disabled dates
 
@@ -640,12 +721,6 @@ JAVASCRIPT;
 				$highlightedDays = null;
 			}
 
-			// set datepicker widget attributes
-			$jsattribs = array(
-					'currValue' => $cur_value,
-					'buttonImage' => $sfigSettings->scriptPath . '/images/DatePickerButton.gif',
-			);
-
 			// set first day of the week
 			if ( array_key_exists( 'week start', $other_args ) ) {
 				$jsattribs['firstDay'] = $other_args['week start'];
@@ -664,157 +739,6 @@ JAVASCRIPT;
 				$jsattribs['showWeek'] = false;
 			}
 
-			// set date format
-			// SHORT and LONG are SFI specific acronyms and are translated here
-			// into format strings, anything else is passed to the jQuery date picker
-			// Americans need special treatment
-			if ( $wgAmericanDates && $wgLang->getCode() == "en" ) {
-
-				if ( array_key_exists( 'date format', $other_args ) ) {
-
-					if ( $other_args['date format'] == 'SHORT' ) {
-						$jsattribs['dateFormat'] = 'mm/dd/yy';
-					} elseif ( $other_args['date format'] == 'LONG' ) {
-						$jsattribs['dateFormat'] = 'MM d, yy';
-					} else {
-						$jsattribs['dateFormat'] = $other_args['date format'];
-					}
-
-				} elseif ( $sfigSettings->datePickerDateFormat ) {
-
-					if ( $sfigSettings->datePickerDateFormat == 'SHORT' ) {
-						$jsattribs['dateFormat'] = 'mm/dd/yy';
-					} elseif ( $sfigSettings->datePickerDateFormat == 'LONG' ) {
-						$jsattribs['dateFormat'] = 'MM d, yy';
-					} else {
-						$jsattribs['dateFormat'] = $sfigSettings->datePickerDateFormat;
-					}
-
-				} else $jsattribs['dateFormat'] = 'yy/mm/dd';
-
-			} else {
-
-				if ( array_key_exists( 'date format', $other_args ) ) {
-
-					if ( $other_args['date format'] == 'SHORT' ) {
-						$jsattribs['dateFormat'] = wfMsg( 'semanticformsinputs-dateformatshort' );
-					} elseif ( $other_args['date format'] == 'LONG' ) {
-						$jsattribs['dateFormat'] = wfMsg( 'semanticformsinputs-dateformatlong' );
-					} else {
-						$jsattribs['dateFormat'] = $other_args['date format'];
-					}
-
-				} elseif ( $sfigSettings->datePickerDateFormat ) {
-
-					if ( $sfigSettings->datePickerDateFormat == 'SHORT' ) {
-						$jsattribs['dateFormat'] = wfMsg( 'semanticformsinputs-dateformatshort' );
-					} elseif ( $sfigSettings->datePickerDateFormat == 'LONG' ) {
-						$jsattribs['dateFormat'] = wfMsg( 'semanticformsinputs-dateformatlong' );
-					} else {
-						$jsattribs['dateFormat'] = $sfigSettings->datePickerDateFormat;
-					}
-
-				} else $jsattribs['dateFormat'] = 'yy/mm/dd';
-
-			}
-
-		}
-
-
-		// third: assemble HTML and JS code
-
-		if ( $is_disabled ) {
-
-			// if the input field is disabled, create a mockup without functionality
-
-			// first create a simple text input and an inert button
-			$html = self::textHTML( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args, null, null, "createboxInput" )
-
-					. Xml::element( "button",
-					array(
-					'type' => 'button',
-					'class' => $userClasses,
-					'disabled' => '1',
-					'id' => "input_{$sfgFieldNum}_button"
-					) )
-
-					. Xml::element( "image",
-					array(
-					'src' => $sfigSettings->scriptPath . '/images/DatePickerButtonDisabled.gif'
-					) )
-
-					. Xml::closeElement( "button" );
-
-			// append reset button if required
-			if ( array_key_exists( 'show reset button', $other_args ) ||
-					$sfigSettings->datePickerShowResetButton && !array_key_exists( 'hide reset button', $other_args ) ) {
-
-				$html .= Xml::openElement( "button",
-						array(
-						'type' => 'button',
-						'class' => $userClasses,
-						'disabled' => '1',
-						'id' => "input_{$sfgFieldNum}_resetbutton"
-						) )
-
-						. Xml::element( "image",
-						array(
-						'src' => $sfigSettings->scriptPath . '/images/DatePickerResetButtonDisabled.gif'
-						) )
-
-						. Xml::closeElement( "button" );
-
-			}
-
-			// no JS needed on a disabled datepicker
-			$jstext = '';
-
-		} else {
-
-			// start with the displayed input and append the real, but hidden
-			// input that gets sent to SF; it will be filled by the datepicker
-			$html = self::textHTML( $cur_value, "", $is_mandatory, $inputFieldDisabled,
-						$other_args, "input_{$sfgFieldNum}_show", null, "createboxInput" )
-
-					. Xml::element( "input",
-					array(
-					"id" => "input_{$sfgFieldNum}",
-					"name" => $input_name,
-					"type" => "hidden"
-					) );
-
-			// append reset button if required
-			if ( array_key_exists( 'show reset button', $other_args ) ||
-					( !array_key_exists( 'hide reset button', $other_args ) && $sfigSettings->datePickerShowResetButton ) ) {
-
-				// can not use Xml::element, it would sanitize the onclick attribute
-				$html .= "<button "
-						. Xml::expandAttributes ( array(
-						'type' => 'button',
-						'class' => $userClasses,
-						'id' => "input_{$sfgFieldNum}_resetbutton",
-						) )
-						. "onclick= \"\n"
-						. "document.getElementById(this.id.replace('_resetbutton','')).value='';"
-						. "document.getElementById(this.id.replace('_resetbutton','_show')).value='';"
-						. "\""
-						. ">"
-
-						. Xml::element( "image",
-						array(
-						'src' => $sfigSettings->scriptPath . '/images/DatePickerResetButton.gif'
-						) )
-
-						. Xml::closeElement( "button" );
-
-			}
-
-			// sanitize current value before putting it into the JS code
-			$cur_value = Xml::escapeJsString( $cur_value );
-
-			// build JS code from attributes array
-			$jsattribsString = Xml::encodeJsVar( $jsattribs );
-
 			// store min date as JS attrib
 			if ( $minDate ) {
 				$jsattribs['minDate'] = $minDate->format( 'Y/m/d' );
@@ -825,82 +749,180 @@ JAVASCRIPT;
 				$jsattribs['maxDate'] = $maxDate->format( 'Y/m/d' );
 			}
 
+			// register disabled dates with datepicker
+			if ( count( $disabledDates ) > 0 ) {
 
-			// add user-defined class(es) to all datepicker components
-			if ( array_key_exists( 'class', $other_args ) ) {
-				$jsattribs['userClass'] = $userClasses;
+				// convert the PHP array of date ranges into an array of numbers
+				$jsattribs["disabledDates"] = array_map( create_function ( '$range', '
+
+							$y0 = $range[0]->format( "Y" );
+							$m0 = $range[0]->format( "m" ) - 1;
+							$d0 = $range[0]->format( "d" );
+
+							$y1 = $range[1]->format( "Y" );
+							$m1 = $range[1]->format( "m" ) - 1;
+							$d1 = $range[1]->format( "d" );
+
+							return array($y0, $m0, $d0, $y1, $m1, $d1);
+						' ) , $disabledDates );
 			}
 
-			// attach event handler to handle disabled and highlighted dates
-			if ( count( $disabledDates ) || count( $highlightedDates ) || count( $disabledDays ) || count( $highlightedDays ) ) {
+			// register highlighted dates with datepicker
+			if ( count( $highlightedDates ) > 0 ) {
 
-				// first register disabled dates with datepicker
-				if ( count( $disabledDates ) ) {
+				// convert the PHP array of date ranges into an array of numbers
+				$jsattribs["highlightedDates"] = array_map( create_function ( '$range', '
 
-					// convert the PHP array of date ranges into a JS array definition
-					$jsattribs["disabledDates"] = array_map( create_function ( '$range', '
+							$y0 = $range[0]->format( "Y" );
+							$m0 = $range[0]->format( "m" ) - 1;
+							$d0 = $range[0]->format( "d" );
 
-								$y0 = $range[0]->format( "Y" );
-								$m0 = $range[0]->format( "m" ) - 1;
-								$d0 = $range[0]->format( "d" );
+							$y1 = $range[1]->format( "Y" );
+							$m1 = $range[1]->format( "m" ) - 1;
+							$d1 = $range[1]->format( "d" );
 
-								$y1 = $range[1]->format( "Y" );
-								$m1 = $range[1]->format( "m" ) - 1;
-								$d1 = $range[1]->format( "d" );
-
-								return array($y0, $m0, $d0, $y1, $m1, $d1);
-							' ) , $disabledDates );
-				}
-
-				// then register highlighted dates with datepicker
-				if ( count( $highlightedDates ) > 0 ) {
-
-					// convert the PHP array of date ranges into a JS array definition
-					$jsattribs["highlightedDates"] = array_map( create_function ( '$range', '
-
-								$y0 = $range[0]->format( "Y" );
-								$m0 = $range[0]->format( "m" ) - 1;
-								$d0 = $range[0]->format( "d" );
-
-								$y1 = $range[1]->format( "Y" );
-								$m1 = $range[1]->format( "m" ) - 1;
-								$d1 = $range[1]->format( "d" );
-
-								return array($y0, $m0, $d0, $y1, $m1, $d1);
-							' ) , $highlightedDates );
-				}
-
-				// register disabled days of week with datepicker
-				if ( count( $disabledDays ) ) {
-					$jsattribs["disabledDays"] = $disabledDays;
-				}
-
-				// register highlighted days of week with datepicker
-				if ( count( $highlightedDays ) ) {
-					$jsattribs["highlightedDays"] = $highlightedDays;
-				}
+							return array($y0, $m0, $d0, $y1, $m1, $d1);
+						' ) , $highlightedDates );
 			}
 
-			// build JS code from attributes array
-			$jsattribsString = Xml::encodeJsVar( $jsattribs );
+			// register disabled days of week with datepicker
+			if ( count( $disabledDays ) > 0 ) {
+				$jsattribs["disabledDays"] = $disabledDays;
+			}
 
-			// wrap the JS code fragment in a function for deferred init
-			$jstext = <<<JAVASCRIPT
-jQuery(function(){ jQuery('#input_$sfgFieldNum').registerInitialisation(SFI_DP_init, $jsattribsString ); });
-JAVASCRIPT;
-
-
+			// register highlighted days of week with datepicker
+			if ( count( $highlightedDays ) > 0 ) {
+				$jsattribs["highlightedDays"] = $highlightedDays;
+			}
 		}
 
-		// wrap in span (e.g. used for mandatory inputs)
-		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
+
+		// third: assemble HTML and JS code
+
+		// start with the displayed input and append the real, but hidden
+		// input that gets sent to SF; it will be filled by the datepicker
+		$html = self::textHTML( $cur_value, "", $is_mandatory, $inputFieldDisabled,
+					$other_args, "input_{$sfgFieldNum}_dp_show", null, "createboxInput" );
+
+		if ( ! array_key_exists( 'part of dtp', $other_args ) ) {
+
+			$html .= Xml::element( "input",
+					array(
+						"id" => "input_{$sfgFieldNum}",
+						"name" => $input_name,
+						"type" => "hidden",
+						"value" => $cur_value
+					) );
+
+			// wrap in span (e.g. used for mandatory inputs)
+			$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
+		}
+
+		// build JS code from attributes array
+		$jsattribsString = Xml::encodeJsVar( $jsattribs );
+
+		// wrap the JS code fragment in a function for deferred init
+		$jstext = <<<JAVASCRIPT
+jQuery(function(){ jQuery('#input_{$sfgFieldNum}_dp_show').registerInitialisation(SFI_DP_init, $jsattribsString ); });
+JAVASCRIPT;
 
 		// insert the code of the JS init function into the pages code
 		$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
 
-		return array( $html, "", "initInput$sfgFieldNum" );
+		//return array( $html, "", "initInput$sfgFieldNum" );
+		return $html;
 
 	}
+
+	/**
+	 * Setup for input type jqdatepicker.
+	 *
+	 * Adds the Javascript code used by all datetimepickers.
+	*/
+	static private function datetimePickerSetup () {
+
+		global $wgOut, $sfigSettings;
+
+		static $hasRun = false;
+
+		if ( !$hasRun ) {
+			$hasRun = true;
+
+			$wgOut->addScript( '<script type="text/javascript" src="' . $sfigSettings->scriptPath . '/libs/datetimepicker.js"></script> ' );
+
+		}
+	}
+
+	/**
+	 * Definition of input type "datetimepicker".
+	 *
+	 * Returns the html code to be included in the page and registers the
+	 * input's JS initialisation method
+	 *
+	 * @param string $cur_value current value of this field (which is sometimes null)
+	 * @param string $input_name HTML name that this input should have
+	 * @param boolean $is_mandatory indicates whether this field is mandatory for the user
+	 * @param boolean $is_disabled indicates whether this field is disabled (meaning, the user can't edit)
+	 * @param array $other_args hash representing all the other properties defined for this input in the form definition
+	 * @return string html code of input
+	*/
+	static function datetimepickerHTML($cur_value, $input_name, $is_mandatory, $is_disabled, $other_args) {
+
+		global $wgOut, $sfgFieldNum, $sfigSettings;
+
+		self::datetimePickerSetup();
+
+		$other_args["part of dtp"] = true;
+
+		$jsAttribs = array();
+
+		// if we have to show a reset button
+		if ( array_key_exists( 'show reset button', $other_args ) ||
+				( !array_key_exists( 'hide reset button', $other_args ) && $sfigSettings->datetimePickerShowResetButton ) ) {
+
+			// some values must be available to the init function
+
+			// is the button disabled?
+			$jsattribs['disabled'] = $is_disabled;
+
+			// set the button image
+			if ( $is_disabled ) {
+				$jsattribs['resetButtonImage'] = $sfigSettings->scriptPath . '/images/DateTimePickerResetButtonDisabled.gif';
+			} else {
+				$jsattribs['resetButtonImage'] = $sfigSettings->scriptPath . '/images/DateTimePickerResetButton.gif';
+			}
+
+			// set user classes
+			if ( array_key_exists( 'class', $other_args ) ) $jsattribs[ "userClasses" ] = $other_args['class'];
+			else $jsattribs[ "userClasses" ] = "";
+
+		}
+
+		// build JS code from attributes array
+		$jsattribsString = Xml::encodeJsVar( $jsattribs );
+
+		$jstext = <<<JAVASCRIPT
+jQuery(function(){ jQuery('#input_$sfgFieldNum').registerInitialisation(SFI_DTP_init, $jsattribsString ); });
+JAVASCRIPT;
+
+		// insert the code of the JS init function into the pages code
+		$wgOut->addScript('<script type="text/javascript">' . $jstext . '</script>');
+
+		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .
+				self::jqDatePickerHTML($cur_value, $input_name, $is_mandatory, $is_disabled, $other_args) . " " .
+				self::timepickerHTML($cur_value, $input_name, $is_mandatory, $is_disabled, $other_args) .
+				Xml::element("input",
+						array(
+							"id" => "input_{$sfgFieldNum}",
+							"name" => $input_name,
+							"type" => "hidden",
+							"value" => $cur_value
+						))
+				. '</span>';
+
+		return $html;
+	}
+
 //
 //	static function wysiwygSetup() {
 //
@@ -963,17 +985,15 @@ JAVASCRIPT;
 	/**
 	 * Definition of input type "timepicker"
 	 *
-	 * Returns an array containing three elements: the html code to be included
-	 * in the page, an empty string (instead of JS initialization code, which is
-	 * inserted into the page directly) and the name of a JS function to be
-	 * called to initialize the input.
+	 * Returns the html code to be included in the page and registers the
+	 * input's JS initialisation method
 	 *
 	 * @param string $cur_value current value of this field (which is sometimes null)
 	 * @param string $input_name HTML name that this input should have
 	 * @param boolean $is_mandatory indicates whether this field is mandatory for the user
 	 * @param boolean $is_disabled indicates whether this field is disabled (meaning, the user can't edit)
 	 * @param array $other_args hash representing all the other properties defined for this input in the form definition
-	 * @return array of three strings
+	 * @return string html code of input
 	*/
 	static function timepickerHTML( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
 
@@ -999,13 +1019,16 @@ JAVASCRIPT;
 
 		// second: assemble HTML
 		// create visible input field (for display) and invisible field (for data)
-		$html = self::textHTML( $cur_value, '', $is_mandatory, $inputFieldDisabled, $other_args, "input_{$sfgFieldNum}_show", null, "createboxInput" )
-				. Xml::element( "input", array(
+		$html = self::textHTML( $cur_value, '', $is_mandatory, $inputFieldDisabled, $other_args, "input_{$sfgFieldNum}_tp_show", null, "createboxInput" );
+
+		if ( ! array_key_exists( 'part of dtp', $other_args ) ) {
+			$html .= Xml::element( "input", array(
 					'id' => "input_{$sfgFieldNum}",
 					'type' => 'hidden',
 					'name' => $input_name,
 					'value' => $cur_value
 				) );
+		}
 
 		// append time picker button
 		if ( $is_disabled ) {
@@ -1034,7 +1057,7 @@ JAVASCRIPT;
 					'class' => 'createboxInput ' . $userClasses,
 					'name' => "button",
 					) )
-					. "onclick=\"document.getElementById(this.id.replace('_button','_show')).focus();\""
+					. "onclick=\"document.getElementById(this.id.replace('_button','_tp_show')).focus();\""
 					. ">"
 
 					. Xml::element(
@@ -1047,8 +1070,11 @@ JAVASCRIPT;
 		}
 
 		// append reset button (if selected)
-		if ( array_key_exists( 'show reset button', $other_args ) ||
-				$sfigSettings->timePickerShowResetButton && !array_key_exists( 'hide reset button', $other_args ) ) {
+		if ( ! array_key_exists( 'part of dtp', $other_args ) &&
+				( array_key_exists( 'show reset button', $other_args ) ||
+					$sfigSettings->timePickerShowResetButton && !array_key_exists( 'hide reset button', $other_args )
+				)
+			)  {
 
 			if ( $is_disabled ) {
 
@@ -1077,7 +1103,7 @@ JAVASCRIPT;
 						'name' => "resetbutton",
 						) )
 						. "onclick=\"document.getElementById(this.id.replace('_resetbutton','')).value='';"
-						. "document.getElementById(this.id.replace('_resetbutton','_show')).value='';\""
+						. "document.getElementById(this.id.replace('_resetbutton','_tp_show')).value='';\""
 						. ">"
 
 						. Xml::element(
@@ -1091,7 +1117,9 @@ JAVASCRIPT;
 		}
 
 		// wrap in span (e.g. used for mandatory inputs)
-		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
+		if ( ! array_key_exists( 'part of dtp', $other_args ) ) {
+			$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
+		}
 
 		// third: if the timepicker is not disabled set up JS attributes ans assemble JS call
 		if ( !$is_disabled ) {
@@ -1123,28 +1151,31 @@ JAVASCRIPT;
 			}
 
 			// build JS code from attributes array
-			$jstext = Xml::encodeJsVar( array(
+			$jsattribs = array(
 				"minTime" => $minTime,
 				"maxTime" => $maxTime,
 				"interval" => $interval,
 				"format" => "hh:mm"
-				) );
+			);
+
+			if ( array_key_exists( 'part of dtp', $other_args ) ) {
+				$jsattribs['partOfDTP'] = $other_args['part of dtp'];
+			}
+
+			$jstext = Xml::encodeJsVar( $jsattribs );
 
 			$jstext = <<<JAVASCRIPT
-jQuery(function(){ jQuery('#input_$sfgFieldNum').registerInitialisation(SFI_TP_init, $jstext ); });
+jQuery(function(){ jQuery('#input_{$sfgFieldNum}_tp_show').registerInitialisation(SFI_TP_init, $jstext ); });
 JAVASCRIPT;
 
 			// write JS code directly to the page's code
 			$wgOut->addScript( '<script type="text/javascript">' . $jstext . '</script>' );
 
 			// return HTML and name of JS init function
-			return $html;
-
-		} else {
-
-			return $html;
 
 		}
+
+		return $html;
 
 	}
 
@@ -1172,10 +1203,15 @@ JAVASCRIPT;
 	/**
 	 * Definition of input type "menuselect"
 	 *
-	 * Returns an array containing two elements: the html text to be included
-	 * and an empty string (no JS code necessary)
+	 * Returns the html code to be included in the page and registers the
+	 * input's JS initialisation method
 	 *
-	 * @return array of two strings
+	 * @param string $cur_value current value of this field (which is sometimes null)
+	 * @param string $input_name HTML name that this input should have
+	 * @param boolean $is_mandatory indicates whether this field is mandatory for the user
+	 * @param boolean $is_disabled indicates whether this field is disabled (meaning, the user can't edit)
+	 * @param array $other_args hash representing all the other properties defined for this input in the form definition
+	 * @return string html code of input
 	*/
 	static function menuselectHTML( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
 		global $wgParser, $wgUser, $wgTitle, $wgOut;

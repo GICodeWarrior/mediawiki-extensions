@@ -17,7 +17,9 @@
  *		format: (String) a format string (unused) (do we even need it?)
  *
  */
-function SFI_TP_init( inputID, params ) { // minTime, maxTime, interval, format
+function SFI_TP_init( inputIDshow, params ) { // minTime, maxTime, interval, format
+
+	var inputID = inputIDshow.replace( "_tp_show", "" );
 
 	// sanitize inputs
 	var re = /^\d+:\d\d$/;
@@ -27,7 +29,7 @@ function SFI_TP_init( inputID, params ) { // minTime, maxTime, interval, format
 	var maxh = 23;
 	var maxm = 59;
 
-if ( re.test( params.minTime ) ) {
+	if ( re.test( params.minTime ) ) {
 
 		var min = params.minTime.split( ':', 2 );
 		minh = Number( min[0] );
@@ -46,12 +48,12 @@ if ( re.test( params.minTime ) ) {
 	}
 
 	var interv = Number( params.interval );
-	
+
 	if ( interv < 1 ) interv = 1;
 	else if ( interv > 60 ) interv = 60;
 
 	// build html structure
-	var sp = jQuery( "<span class='SFI_timepicker' id='" + inputID + "_tree' ></span>" ).insertAfter( "#" + inputID );
+	var sp = jQuery( "<span class='SFI_timepicker' id='" + inputID + "_tree' ></span>" ).insertBefore( "#" + inputIDshow );
 
 	var ulh = jQuery( "<ul>" ).appendTo( sp );
 
@@ -128,36 +130,50 @@ if ( re.test( params.minTime ) ) {
 	});
 
 	jQuery("#" + inputID + "_tree li") // hours, minutes
-	.mousedown(function(){
+	.mousedown(function(evt){
 		// set values and leave input
-		jQuery("#" + inputID + "_show").attr("value", jQuery(this).data("show")).blur();
-		jQuery("#" + inputID ).attr("value", jQuery(this).data("value"));
+		jQuery("#" + inputIDshow ).attr("value", jQuery(this).data("show")).blur().change();
+		//jQuery("#" + inputID ).attr("value", jQuery(this).data("value"));
+
+		// clear any timeout that may still run on this jQuery list item
+		clearTimeout(jQuery(evt.currentTarget).data("timeout"));
+
+		jQuery(evt.currentTarget)
+
+		// switch classes to change display style
+		.removeClass("ui-state-hover")
+		.addClass("ui-state-default")
+
+		// avoid propagation to parent list item (e.g. hours),
+		// they would overwrite the input value
 		return false;
 	});
 
 	// show timepicker when input gets focus
-	jQuery("#" + inputID + "_show").focus(function() {
+	jQuery("#" + inputIDshow ).focus(function() {
 		jQuery("#" + inputID + "_tree>ul").fadeIn();
-    });
+	});
 
 	// hide timepicker when input loses focus
-	jQuery("#" + inputID + "_show").blur(function() {
-		jQuery("#" + inputID + "_tree ul").fadeOut();
+	jQuery("#" + inputIDshow ).blur(function() {
+		jQuery("#" + inputID + "_tree ul").fadeOut("normal", function() {jQuery(this).hide()});
 	});
 
-	jQuery("#" + inputID + "_show").change(function() {
-		jQuery("#" + inputID ).attr("value", jQuery(this).attr("value"));
-	});
+	if ( ! params.partOfDTP ) {
+		jQuery("#" + inputIDshow).change(function() {
+			jQuery("#" + inputID ).attr("value", jQuery(this).attr("value"));
+		});
+	}
 
-	jQuery("#" + inputID + '~ button[name="button"]' )
+	jQuery("#" + inputID + '_tp_show ~ button[name="button"]' )
 	.attr("id", inputID + "_button")
 	.click(function() {
-		jQuery("#" + inputID + "_show" ).focus();
+		jQuery("#" + inputIDshow ).focus();
 	});
 
-	jQuery("#" + inputID + '~ button[name="resetbutton"]' )
+	jQuery("#" + inputID + '_tp_show ~ button[name="resetbutton"]' )
 	.attr("id", inputID + "_resetbutton")
 	.click(function() {
-		jQuery("#" + inputID + "_show" ).attr("value", "");
+		jQuery("#" + inputIDshow ).attr("value", "");
 	});
 }

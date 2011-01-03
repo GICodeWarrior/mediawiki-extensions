@@ -159,3 +159,10 @@ $sfigSettings->timePickerDisableInputField = false;
 #
 $sfigSettings->timePickerShowResetButton = false;
 
+
+##
+# This determines if a reset button shall be shown. This is the only
+# way to erase the input field if it is disabled for direct input.
+#
+$sfigSettings->datetimePickerShowResetButton = false;
+

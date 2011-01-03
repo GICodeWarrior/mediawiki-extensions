@@ -6,9 +6,9 @@
  */
 
 .SFI_timepicker {
-	display: block;
 	position: absolute;
 	cursor: default;
+	margin-top: 22px;
 }
 
 .SFI_timepicker ul { /* hours and minutes lists */
