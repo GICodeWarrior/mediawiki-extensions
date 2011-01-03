@@ -8641,6 +8641,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -8648,8 +8649,8 @@ $messages['sr-ec'] = array(
 	'mwe-upload-unknown-size' => 'Непозната величина',
 	'mwe-cancel-confim' => 'Да ли сте сигурни да желите да поништите?',
 	'mwe-successfulupload' => 'Слање успешно',
-	'mwe-uploaderror' => 'Грешка при слању',
-	'mwe-uploadwarning' => 'Упозорење при слању',
+	'mwe-uploaderror' => 'Грешка при отпремању',
+	'mwe-uploadwarning' => 'Упозорење при отпремању',
 	'mwe-unknown-error' => 'Непозната грешка:',
 	'mwe-return-to-form' => 'Врати се на форму',
 	'mwe-fileexists-thumb' => 'Постојећи фајл',
@@ -8687,12 +8688,12 @@ $messages['sr-ec'] = array(
 	'fogg-contact-help' => 'Контакт-линк',
 	'mwe-select_file' => 'Избор фајла',
 	'mwe-upload' => 'Пошаљи фајл',
-	'mwe-destfilename' => 'Циљано име фајла:',
+	'mwe-destfilename' => 'Крајњи назив датотеке:',
 	'mwe-summary' => 'Сажетак',
 	'mwe-date-of-work' => 'Датум рада',
 	'mwe-link-login' => 'пријавите се',
-	'mwe-watch-this-file' => 'Надгледај овај фајл',
-	'mwe-ignore-any-warnings' => 'Игнориши сва упозорења',
+	'mwe-watch-this-file' => 'Надгледај ову датотеку',
+	'mwe-ignore-any-warnings' => 'Занемари сва упозорења',
 	'mwe-upload-in-progress' => 'Слање у току (не затварајте овај прозор)',
 	'mwe-uploaded-status' => 'Послато',
 	'mwe-uploaded-time-remaining' => 'Преостало време: $1',
