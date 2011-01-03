@@ -21,12 +21,9 @@ have a git repo where I may have some experimental branches:
 Known bugs:
 * Actual editor issues belong upstream: http://code.google.com/p/svg-edit/
 * open seems to have some race conditions (sometimes doesn't load the initial file)
-* save-and-close seems to have some race conditions (sometimes shows a 'sure you want to leave?' prompt)
 
 Todo:
 * add an editor trigger on SVG images visible in regular page views
 * allow saving without closing the editor
-* allow user to write their own edit summary
 * autosave & recover drafts
 * editor toolbar button to open the editor with a fresh canvas and insert the saved file
-* ability to use offsite copy of svg-edit so the whole blob doesn't need to be shipped

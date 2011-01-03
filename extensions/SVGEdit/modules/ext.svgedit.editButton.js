@@ -13,29 +13,81 @@ $(document).ready(function() {
 		return;
 	}
 
-	var mw = mediaWiki;
-	if (mw.config.get('wgCanonicalNamespace') == 'File'
-		&& mw.config.get('wgAction') == 'view'
-		&& mw.config.get('wgTitle').match(/\.svg$/i)) {
+	if (wgCanonicalNamespace == 'File'
+		&& wgAction == 'view'
+		&& wgTitle.match(/\.svg$/i)) {
 
 		var triggerSVGEdit = function(filename) {
-			var url = mw.config.get('wgScriptPath') +
-				'/extensions/SVGEdit/svg-edit/svg-editor.html' +
-				'?extensions=ext-mediawiki.js';
+			var svgedit;
+			var pipe;
+			var url = wgSVGEditEditor ||
+				(wgScriptPath + '/extensions/SVGEdit/svg-edit/svg-editor.html');
 
-			var editor = $('<iframe id="svg-edit"></iframe>')
-				.attr('src', url)
-				.attr('style', 'position: fixed; left: 2.5%; top: 2.5%; ; z-index: 99999')
-				.attr('width', '95%')
-				.attr('height', '95%');
 			$('body')
-				.append(editor);
+				.append('<div id="mw-svgedit">' +
+						'<div id="mw-svgedit-toolbar">' +
+							'<label id="mw-svgedit-summary-label"></label> ' +
+							'<input id="mw-svgedit-summary" size="60" /> ' +
+							'<button id="mw-svgedit-save"></button> ' +
+							'<button id="mw-svgedit-close"></button>' +
+						'</div>' +
+						'<iframe id="mw-svgedit-frame" width="100%" height="90%"></iframe>' +
+						'<div id="mw-svgedit-spinner"></div>' +
+						'</div>');
+
+			$('#mw-svgedit-summary-label')
+				.text(mediaWiki.msg('svgedit-summary-label'));
+
+			$('#mw-svgedit-summary')
+				.val(mediaWiki.msg('svgedit-summary-default') + ' ');
+
+			$('#mw-svgedit-save')
+				.text(mediaWiki.msg('svgedit-editor-save-close'))
+				.click(function() {
+					$('#mw-svgedit-spinner').show();
+					svgedit.getSvgString()(function(svg) {
+						var comment = $('#mw-svgedit-summary').val();
+						mwSVG.saveSVG(filename, svg, comment, function(data, textStatus, xhr) {
+							if (data.upload && data.upload.result == "Success") {
+								// kill the editor so it doesn't prompt us to save
+								$('#mw-svgedit-frame').remove();
+								// refresh parent window
+								window.location = window.location;
+							} else if (data.error && data.error.info) {
+								$('#mw-svgedit-spinner').hide();
+								alert('Error saving file: ' + data.error.info);
+							} else {
+								$('#mw-svgedit-spinner').hide();
+								alert('Possible error saving file...');
+							}
+						});
+					});
+				});
+
+			$('#mw-svgedit-close')
+				.text(mediaWiki.msg('svgedit-editor-close'))
+				.click(function() {
+					$('#mw-svgedit').remove();
+				});
+
+			$('#mw-svgedit-frame')
+				.load(function() {
+					svgedit = new embedded_svg_edit(this);
+
+					// Load up the original file!
+					mwSVG.fetchSVG(filename, function(xmlSource, textStatus, xhr) {
+						svgedit.setSvgString(xmlSource)(function() {
+							$('#mw-svgedit-spinner').hide();
+						});
+					});
+				})
+				.attr('src', url);
 		};
 
 		var button = $('<button></button>')
-			.text(mw.msg('svgedit-editbutton-edit'))
+			.text(mediaWiki.msg('svgedit-editbutton-edit'))
 			.click(function() {
-				triggerSVGEdit(mw.config.get('wgTitle'));
+				triggerSVGEdit(wgTitle);
 			});
 
 		$('.fullMedia').append(button);

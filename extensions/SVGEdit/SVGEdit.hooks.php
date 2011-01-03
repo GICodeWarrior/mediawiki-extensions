@@ -17,11 +17,36 @@ class SVGEditHooks {
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
 		$title = $out->getTitle();
-		if( $title && $title->getNamespace() == NS_FILE &&
-			$title->userCan( 'edit' ) && $title->userCan( 'upload' ) ) {
-
+		if( self::trigger( $title ) ) {
 			$out->addModules('ext.svgedit.editButton');
 		}
 		return true;
 	}
+
+	/**
+	 * MakeGlobalVariablesScript hook
+	 *
+	 * Exports a setting if necessary.
+	 *
+	 * @param $vars array of vars
+	 */
+	public static function makeGlobalVariablesScript( &$vars ) {
+		global $wgTitle, $wgSVGEditEditor;
+		if( self::trigger( $wgTitle ) ) {
+			$vars['wgSVGEditEditor'] = $wgSVGEditEditor;
+		}
+		return true;
+	}
+
+	/**
+	 * Should the editor links trigger on this page?
+	 *
+	 * @param Title $title
+	 * @return boolean
+	 */
+	private static function trigger( $title ) {
+		return $title && $title->getNamespace() == NS_FILE &&
+			$title->userCan( 'edit' ) && $title->userCan( 'upload' );
+	}
+
 }

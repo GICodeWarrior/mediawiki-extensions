@@ -1,0 +1,41 @@
+#mw-svgedit {
+	background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99999;
+}
+#mw-svgedit-toolbar {
+	padding: 6px;
+	background: #f4f4f4;
+}
+#mw-svgedit-buttons {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	text-align: right;
+}
+
+#mw-svgedit-frame {
+	position: absolute;
+	border: none;
+    top: 2em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#mw-svgedit-spinner {
+	position: absolute;
+    top: 2em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5)
+		 url("../images/ajax-loader.gif")
+		 50%
+		 no-repeat;
+    z-index: 999999
+}

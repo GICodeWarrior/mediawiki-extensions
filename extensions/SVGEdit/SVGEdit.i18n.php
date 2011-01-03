@@ -13,6 +13,8 @@ $messages = array();
  */
 $messages['en'] = array(
 	'svgedit-editbutton-edit' => 'Edit drawing',
+	'svgedit-summary-label' => 'Edit summary',
+	'svgedit-summary-default' => '/* Modified in svg-edit */',
 	'svgedit-editor-save-close' => 'Save and close',
 	'svgedit-editor-close' => 'Cancel',
 	'svgedit-desc' => 'In-browser editing of SVG drawings with [http://code.google.com/p/svg-edit/ SVG-Edit]',
