@@ -874,7 +874,7 @@ JAVASCRIPT;
 
 		$other_args["part of dtp"] = true;
 
-		$jsAttribs = array();
+		$jsattribs = array();
 
 		// if we have to show a reset button
 		if ( array_key_exists( 'show reset button', $other_args ) ||
@@ -908,9 +908,11 @@ JAVASCRIPT;
 		// insert the code of the JS init function into the pages code
 		$wgOut->addScript('<script type="text/javascript">' . $jstext . '</script>');
 
+		$separator = strpos($cur_value, " ");
+
 		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .
-				self::jqDatePickerHTML($cur_value, $input_name, $is_mandatory, $is_disabled, $other_args) . " " .
-				self::timepickerHTML($cur_value, $input_name, $is_mandatory, $is_disabled, $other_args) .
+				self::jqDatePickerHTML(substr($cur_value, 0, $separator), $input_name, $is_mandatory, $is_disabled, $other_args) . " " .
+				self::timepickerHTML(substr($cur_value, $separator + 1), $input_name, $is_mandatory, $is_disabled, $other_args) .
 				Xml::element("input",
 						array(
 							"id" => "input_{$sfgFieldNum}",
