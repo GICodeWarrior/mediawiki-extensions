@@ -1360,6 +1360,7 @@ $messages['scn'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Budhajeewa
  * @author Calcey
  * @author තඹරු විජේසේකර
  * @author බිඟුවා
@@ -1367,6 +1368,7 @@ $messages['scn'] = array(
 $messages['si'] = array(
 	'vector' => 'දෛශික සඳහා UI දියුණු කිරීම්',
 	'vector-desc' => 'දෛශික පෘෂ්ඨයේ පරිශීලක අතුරු මුහුණත් මූලිකාංග මත දියුණු කරයි',
+	'vector-collapsiblenav-preference' => 'Vector ඡවියේ ගමන්කෙරුම් මෙනුවේ අංග හැකිළුම සක්‍රීය කරයි',
 	'vector-collapsiblenav-more' => 'තවත් භාෂාවන්',
 	'vector-editwarning-warning' => 'අවධානයට: මෙම පිටුවෙන් නික්ම යාම ඔබ සිදු කළ වෙනස්කම් නැතිවී යෑමට හේතු විය හැක.
 ඔබ ප්‍රවිෂ්ටවී ඇත්නම්, ඔබගේ වරණයන්වල "සංසකරණය කිරීම්" කොටසේ ඇති මෙම අනතුරු ඇඟවීම අක්‍රීය කළ හැක.',
