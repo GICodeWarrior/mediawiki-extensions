@@ -767,10 +767,11 @@ $messages['ru'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'purewikideletion-blanknologin' => 'Нисте улоговани',
+	'purewikideletion-blanknologin' => 'Нисте пријављени',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
