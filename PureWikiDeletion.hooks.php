@@ -286,11 +286,14 @@ class PureWikiDeletionHooks {
 	       return false; // If too many expensive functions have been run
        }
 
-       public static function PureWikiDeletionCreateTable() {
-	   global $wgExtNewTables;
-	   $wgExtNewTables[] = array(
-	       'blanked_page',
-	       dirname( __FILE__ ) . '/purewikideletiontable.sql' );
-	   return true;
-       }
+	public static function PureWikiDeletionCreateTable( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables;
+			$wgExtNewTables[] = array( 'blanked_page', dirname( __FILE__ ) . '/purewikideletiontable.sql' );
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'blanked_page',
+				dirname( __FILE__ ) . '/purewikideletiontable.sql', true ) );
+		}
+		return true;
+	}
 }
