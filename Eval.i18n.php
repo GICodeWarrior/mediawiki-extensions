@@ -18,10 +18,24 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'eval-desc' => 'Extension description displayed on [[Special:Version]].',
+	'eval_code' => '{{Identical|Code}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => "Voeg [[Special:Eval|'n koppelvlak]] vir die funksie <code>eval()</code> by",
+	'eval_submit' => 'Evalueer',
+	'eval_escape' => 'Stop afvoer',
+	'eval_out' => 'Afvoer',
+	'eval_code' => 'Kode',
 );
 
 /** Arabic (العربية)
