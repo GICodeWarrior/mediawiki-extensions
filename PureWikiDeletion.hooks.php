@@ -289,8 +289,7 @@ class PureWikiDeletionHooks {
 			global $wgExtNewTables;
 			$wgExtNewTables[] = array( 'blanked_page', dirname( __FILE__ ) . '/purewikideletiontable.sql' );
 		} else {
-			$updater->addExtensionUpdate( array( 'addTable', 'blanked_page',
-				dirname( __FILE__ ) . '/purewikideletiontable.sql', true ) );
+			$updater->addExtensionTable( 'blanked_page', dirname( __FILE__ ) . '/purewikideletiontable.sql' );
 		}
 		return true;
 	}
