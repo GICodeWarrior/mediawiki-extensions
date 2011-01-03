@@ -428,6 +428,14 @@ $messages['sah'] = array(
 	'dontswitchmeover-pref' => 'По умолчанию тиэмэ уларыйдаҕына мин тиэмэбин уларытыма',
 );
 
+/** Sinhala (සිංහල)
+ * @author Budhajeewa
+ */
+$messages['si'] = array(
+	'dontswitchmeover-desc' => 'පෙරනිමි ඡවිය වෙනස්කළ කල්හි පරිශීලකයන්ට තමන්ගේ ඡවි සැකසුම් එසේම තබාගැනීමේ රිසිකෙරුම්.',
+	'dontswitchmeover-pref' => 'පෙරනිමි ඡවිය වෙනස් වන විට මගේ ඡවිය වෙනස් කරන්නට ඉඩ නොදෙන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
