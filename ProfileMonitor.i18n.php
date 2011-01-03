@@ -916,11 +916,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'profiling-process' => 'Обради стринг:',
-	'profiling-ok' => 'ОК',
+	'profiling-ok' => 'У реду',
 	'profiling-data-process' => 'Обради',
 	'profiling-data-count' => 'Број',
 	'profiling-data-time' => 'Време (укупно)',
