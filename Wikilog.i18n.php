@@ -4429,7 +4429,7 @@ $messages['lzz'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
-	'wikilog-specialwikilog-title' => "Tatitr'asa wiki",
+	'wikilog-specialwikilog-title' => 'Wikilaogy',
 	'wikilog-log-pagename' => "Tatitr'asa momban'ny tao eo amin'ny Tatitr'asa wiki",
 	'wikilog-log-pagetext' => "Eo ambany misy lisitry ny tao eo amin'ny wikilog",
 	'wikilog-new-item-go' => 'Amboary',
