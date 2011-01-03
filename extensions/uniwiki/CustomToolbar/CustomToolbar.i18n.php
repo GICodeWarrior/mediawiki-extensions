@@ -2667,6 +2667,7 @@ $wgCustomToolbarMessages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $wgCustomToolbarMessages['sr-ec'] = array(
@@ -2695,7 +2696,7 @@ $wgCustomToolbarMessages['sr-ec'] = array(
 	'ct_math_tip_wrap' => 'Учини овај текст математичком формулом (LaTeX)',
 	'ct_math_caption' => 'Формула',
 	'ct_nowiki_sample' => 'Убаци неформатиран текст овде',
-	'ct_nowiki_tip_ins' => 'Игнориши Вики-форматирање',
+	'ct_nowiki_tip_ins' => 'Занемари вики обликовање',
 	'ct_nowiki_tip_wrap' => 'Игнориши Вики-форматирање над овим текстом',
 	'ct_horizontal_tip' => 'Убаци хоризонталну линију (користити штедљиво)',
 	'ct_horizontal_caption' => 'Хоризонтална линија',

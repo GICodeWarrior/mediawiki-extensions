@@ -1107,6 +1107,13 @@ $messages['ja'] = array(
 	'articlefeedback-pitch-makefirstedit-accept' => '編集を開始',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'articlefeedback-pitch-reject' => 'არა, გმადლობთ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

@@ -454,6 +454,19 @@ $messages['bn'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'অনুগ্রহ করে ভিডিও এর বর্ণনা দিন।',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Freeyak
+ */
+$messages['bo'] = array(
+	'youtubeauthsub' => 'ཡུ་ཁྲུབ་གློག་བརྙན་ཡར་འཇུག',
+	'youtubeauthsub_title' => 'ཁ་བྱང་།',
+	'youtubeauthsub_description' => 'འགྲེལ་བཤད།',
+	'youtubeauthsub_password' => 'ཡུ་ཁྲུབ་ལམ་ཡིག',
+	'youtubeauthsub_username' => 'ཡུ་ཁྲུབ་བཀོལ་མིང་།',
+	'youtubeauthsub_category' => 'དཀར་ཆག',
+	'youtubeauthsub_uploadbutton' => 'ཡར་འཇོག',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D

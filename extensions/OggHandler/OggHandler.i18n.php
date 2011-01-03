@@ -857,6 +857,7 @@ Pšosym <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Cient_downlo
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Dead3y3
+ * @author Glavkos
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -890,6 +891,7 @@ $messages['el'] = array(
 	'ogg-dismiss' => 'Κλείσιμο',
 	'ogg-download' => 'Κατεβάστε το αρχείο',
 	'ogg-desc-link' => 'Σχετικά με αυτό το αρχείο',
+	'ogg-oggThumb-failed' => 'το oggThumb απέτυχε να δημιουργήσει τη μικρογραφία.',
 );
 
 /** Esperanto (Esperanto)
@@ -2949,6 +2951,7 @@ $messages['si'] = array(
 	'ogg-no-xiphqt' => 'QuickTime සඳහා XiphQT සංරචකය ඔබ සතුව ඇති බවක් නොපෙනේ.
 මෙම සංරචකය නොමැතිව Ogg ගොනු ධාවනය කිරීම  QuickTime විසින් සිදුකල නොහැක.
 කරුණාකර <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> XiphQT බා ගන්න</a> නැතහොත් වෙනත් ධාවකයක් තෝරාගන්න.',
+	'ogg-player-videoElement' => 'පියවි පරික්සක සහය',
 	'ogg-player-oggPlugin' => 'බ්‍රවුසර ප්ලගිත',
 	'ogg-player-cortado' => 'Cortado (ජාවා)',
 	'ogg-player-thumbnail' => 'නිශ්චල රූප පමණි',

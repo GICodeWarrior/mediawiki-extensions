@@ -305,6 +305,7 @@ $messages['hsb'] = array(
 	'ts-citegen-Title' => 'Generator citatowych předłohow',
 	'ts-citegen-Send' => 'Wupłodźić',
 	'ts-citegen-Input-title' => 'Zapodaće',
+	'ts-citegen-Input-text' => 'To je generator žórłowych předłohow. Z jeho pomocu móžeš žórłowe předłohi we wšelakich rěčnych wudaćach Wikipedije wutworić. Prošu zapisaj daty (%s) w slědowacych polach, a skript spyta předłohi dokónčić. Dźiwaj na to, zo žana róla njehraje, kotre daty do kotreho pola zapisuješ. Skript budźe prawu předłohu za zapodate daty wužiwać.',
 	'ts-citegen-Option-append-author-link' => 'Awtorowe wikiwotkazy do předłohi připowěsnyć',
 	'ts-citegen-Option-append-newlines' => 'Za kóždym parametrom nowe linki připowěsnyć',
 	'ts-citegen-Option-add-references' => 'Taflički <ref> wokoło citowanskich předłohow přidać',

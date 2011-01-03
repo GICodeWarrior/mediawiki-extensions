@@ -783,11 +783,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'filelist' => 'Списак фајлова',
+	'filelist' => 'Списак датотека',
 	'filelist-desc' => '[[Special:Filelist|Специјална страна]] за спискове послатих фајлова',
 	'filelist-show-list' => 'Прикажи списак',
 	'filelist-show-gallery' => 'Прикажи галерију',
