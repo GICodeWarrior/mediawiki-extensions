@@ -634,10 +634,11 @@ Pozrite sa na {{PLURAL:$2|túto súvisiacu stránku|tieto súvisiace stránky}}:
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'editsimilar-link-disable' => 'постави подешавања',
+	'editsimilar-link-disable' => 'подеси поставке',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
