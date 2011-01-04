@@ -908,11 +908,22 @@ JAVASCRIPT;
 		// insert the code of the JS init function into the pages code
 		$wgOut->addScript('<script type="text/javascript">' . $jstext . '</script>');
 
+		// find allowed values and keep only the date portion
+		if ( array_key_exists( 'possible_values', $other_args ) &&
+				count( $other_args[ 'possible_values' ] ) ) {
+
+			$other_args[ 'possible_values' ] = preg_replace(
+							'/^\s*(\d{4}\/\d{2}\/\d{2}).*/',
+							'$1',
+							$other_args[ 'possible_values' ]
+			);
+		}
+
 		$separator = strpos($cur_value, " ");
 
 		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .
-				self::jqDatePickerHTML(substr($cur_value, 0, $separator), $input_name, $is_mandatory, $is_disabled, $other_args) . " " .
-				self::timepickerHTML(substr($cur_value, $separator + 1), $input_name, $is_mandatory, $is_disabled, $other_args) .
+				self::jqDatePickerHTML(substr($cur_value + " ", 0, $separator), $input_name, $is_mandatory, $is_disabled, $other_args) . " " .
+				self::timepickerHTML(substr($cur_value + " ", $separator + 1), $input_name, $is_mandatory, $is_disabled, $other_args) .
 				Xml::element("input",
 						array(
 							"id" => "input_{$sfgFieldNum}",
@@ -1059,7 +1070,7 @@ JAVASCRIPT;
 					'class' => 'createboxInput ' . $userClasses,
 					'name' => "button",
 					) )
-					. "onclick=\"document.getElementById(this.id.replace('_button','_tp_show')).focus();\""
+					. " onclick=\"document.getElementById(this.id.replace('_button','_tp_show')).focus();\""
 					. ">"
 
 					. Xml::element(
@@ -1104,7 +1115,7 @@ JAVASCRIPT;
 						'class' => 'createboxInput ' . $userClasses,
 						'name' => "resetbutton",
 						) )
-						. "onclick=\"document.getElementById(this.id.replace('_resetbutton','')).value='';"
+						. " onclick=\"document.getElementById(this.id.replace('_resetbutton','')).value='';"
 						. "document.getElementById(this.id.replace('_resetbutton','_tp_show')).value='';\""
 						. ">"
 
