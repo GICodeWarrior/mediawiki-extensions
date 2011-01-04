@@ -17,6 +17,8 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
+import cStringIO
+import codecs
 import xml.etree.cElementTree as cElementTree
 
 import configuration
@@ -47,24 +49,29 @@ def determine_element(line):
 
 
 def read_input(file):
-    lines = []
+    buffer = cStringIO.StringIO()
+    wrapper = codecs.getwriter(settings.encoding)(buffer)
+    wrapper.write("<?xml version='1.0' encoding='UTF-8' ?>\n")
     start_parsing = False
-    for line in file:
-        if line == '\n':
+
+    for raw_data in file:
+        if raw_data == '\n':
             continue
-        if start_parsing == False and line.find('<page>') > -1:
+        if start_parsing == False and raw_data.find('<page>') > -1:
             start_parsing = True
         if start_parsing:
-            lines.append(line.strip())
-            if line.find('</page>') > -1:
-                #print lines
-                lines = '\n'.join(lines)
-                lines = lines.encode(settings.encoding)
-                xml_string = cElementTree.XML(lines)
-                yield xml_string
+            raw_data = ''.join(raw_data.strip())
+            wrapper.write(raw_data)
+            if raw_data.find('</page>') > -1:
+                article = wrapper.getvalue()
+                #article.encode(settings.encoding)
+                article = cElementTree.XML(article)
+                yield article
                 '''
                 #This looks counter intuitive but Python continues with this call
                 after it has finished the yield statement
                 '''
-                lines = []
+                buffer = cStringIO.StringIO()
+                wrapper = codecs.getwriter(settings.encoding)(buffer)
+                wrapper.write("<?xml version='1.0' encoding='UTF-8' ?>\n")
     file.close()
