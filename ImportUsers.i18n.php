@@ -1757,6 +1757,7 @@ Preskočeno.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1771,7 +1772,7 @@ $messages['sr-ec'] = array(
 	'importusers-user-present-not-update' => "Корисник '''$1''' већ постоји. Није ажурирано.",
 	'importusers-user-invalid-format' => 'Кориснички подаци у линији #$1 су неисправно форматирани или је линија празна. Прескочено.',
 	'importusers-log' => 'Историја увоза корисника',
-	'importusers-log-summary' => 'Опис',
+	'importusers-log-summary' => 'Сажетак',
 	'importusers-log-summary-all' => 'Све',
 	'importusers-log-summary-added' => 'Додато',
 	'importusers-log-summary-updated' => 'Ажурирано',
