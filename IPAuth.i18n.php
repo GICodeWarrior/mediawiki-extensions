@@ -52,6 +52,13 @@ $messages['be-tarask'] = array(
 	'ipauth-desc' => 'Аўтаматычны ўваход у сыстэму з пастаянных IP-адрасоў',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'ipauth-desc' => 'Автоматично влизане от фиксирани IP адреси',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
