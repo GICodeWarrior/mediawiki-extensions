@@ -121,10 +121,6 @@ class TrustedMath {
 		$file = "{$this->dir}/$hash" . wfBaseConvert( mt_rand(), 10, 36 );
 		file_put_contents( "$file.tex", self::wrapEquation( $this->getText() ) );
 		
-		// FIXME: dangerous
-		// Set-up the environment variables needed when running Windows
-		
-		
 		$retval = null;
 		
 		// Render the LaTeX file as DVI

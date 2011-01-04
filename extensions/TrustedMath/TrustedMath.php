@@ -33,11 +33,16 @@ $wgAutoloadClasses['TrustedMath'] = "$dir/TrustedMath_body.php";
 $wgAutoloadClasses['TrustedMathHooks'] = "$dir/TrustedMathHooks.php";
 
 $wgExtensionMessagesFiles['TrustedMath'] = "$dir/TrustedMath.i18n.php";
+$wgExtensionMessagesFiles['TrustedMathNamespaces'] = "$dir/TrustedMath.namespaces.php";
 
 $wgExtensionFunctions[] = 'TrustedMathHooks::initGlobals';
 $wgHooks['ParserFirstCallInit'][] = 'TrustedMathHooks::onParserFirstCallInit';
+$wgHooks['CanonicalNamespaces'][] = 'TrustedMathHooks::initNamespace';
 #Broken
 #$wgHooks['ParserAfterStrip'][] = 'TrustedMathHooks::onParserAfterStrip';
+
+define( 'NS_TRUSTEDMATH', 262 );
+define( 'NS_TRUSTEDMATH_TALK', 263 );
 
 // Path to latex
 $wgTrustedMathLatexPath = null;
@@ -53,5 +58,5 @@ $wgTrustedMathEnvironment = array();
 $wgTrustedMathPath = null;
 // Allow math in <math> tags
 $wgTrustedMathUnsafeMode = false;
-// Namespace for safe math
-$wgTrustedMathNamespace = 262;
+
+
