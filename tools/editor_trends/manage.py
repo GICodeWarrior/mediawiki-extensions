@@ -141,7 +141,7 @@ def determine_file_locations(args, logger):
     config['language_code'] = language_code
     config['language'] = get_value(args, 'language')
     config['location'] = os.path.join(location, language_code, project)
-    config['chunks'] = os.path.join(config['location'], 'chunks')
+    #config['chunks'] = os.path.join(config['location'], 'chunks')
     config['txt'] = os.path.join(config['location'], 'txt')
     config['sorted'] = os.path.join(config['location'], 'sorted')
     config['dbready'] = os.path.join(config['location'], 'dbready')
@@ -150,7 +150,7 @@ def determine_file_locations(args, logger):
     config['filename'] = generate_wikidump_filename(language_code, project, args)
     config['collection'] = get_value(args, 'collection')
     config['namespaces'] = get_namespaces(args)
-    config['directories'] = [config['location'], config['chunks'], config['txt'], config['sorted'], config['dbready']]
+    config['directories'] = [config['location'], config['txt'], config['sorted'], config['dbready']]
 
     message = 'Settings as generated from the configuration module.'
     write_message_to_log(logger, args, message, None, **config)
@@ -164,9 +164,9 @@ def show_settings(args, logger, **kwargs):
     language = kwargs.pop('language')
     language_code = kwargs.pop('language_code')
     config = {}
-    config['Project'] = '\t\t%s' % settings.projects.get(kwargs.pop('project'), 'wiki').title()
-    config['Language'] = '\t%s / %s' % (language_map[language_code], language) #.decode(settings.encoding)
-    config['Input directory'] = '\t%s' % kwargs.get('location')
+    config['Project'] = '%s' % settings.projects.get(kwargs.pop('project'), 'wiki').title()
+    config['Language'] = '%s / %s' % (language_map[language_code], language) #.decode(settings.encoding)
+    config['Input directory'] = '%s' % kwargs.get('location')
     config['Output directory'] = '%s and subdirectories' % kwargs.get('location')
 
     message = 'Final settings after parsing command line arguments:'
@@ -246,7 +246,7 @@ def sort_launcher(args, logger, **kwargs):
     final_output = os.path.join(location, 'dbready')
     write_message_to_log(logger, args, location=location, input=input, output=output, final_output=final_output)
     loader.mergesort_launcher(input, output)
-    loader.mergesort_external_launcher(output, final_output)
+    #loader.mergesort_external_launcher(output, final_output)
     timer.elapsed()
 
 
@@ -254,14 +254,14 @@ def store_launcher(args, logger, **kwargs):
     print 'Start storing data in MongoDB'
     timer = Timer()
     location = kwargs.pop('location')
-    input = os.path.join(location, 'dbready')
+    input = os.path.join(location, 'sorted')
     project = kwargs.pop('full_project')
     collection = kwargs.pop('collection')
 
     db.cleanup_database(project, logger)
 
     write_message_to_log(logger, args, verb='Storing', location=location, input=input, project=project, collection=collection)
-    num_editors = loader.store_editors(input, project, collection)
+    store.launcher(input, project, collection)
     cnt_editors = db.count_records(project, collection)
     #assert num_editors == cnt_editors
     timer.elapsed()
@@ -408,8 +408,8 @@ def main():
     parser_download = subparsers.add_parser('download', help='The download sub command allows you to download a Wikipedia dump file.')
     parser_download.set_defaults(func=dump_downloader_launcher)
 
-    #parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
-    #parser_split.set_defaults(func=chunker_launcher)
+    parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
+    parser_split.set_defaults(func=chunker_launcher)
 
     parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
     parser_create.set_defaults(func=extract_launcher)
@@ -460,9 +460,9 @@ def main():
                         help='A list of namespaces to include for analysis.',
                         default='0')
 
-    parser.add_argument('-fo', '--format', action='store',
-                        help='Indicate which format the chunks should be stored. Valid options are xml and txt.',
-                        default='txt')
+    #parser.add_argument('-fo', '--format', action='store',
+    #                    help='Indicate which format the chunks should be stored. Valid options are xml and txt.',
+    #                    default='txt')
 
     parser.add_argument('-f', '--file', action='store',
                         choices=file_choices,
