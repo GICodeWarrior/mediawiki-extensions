@@ -112,6 +112,19 @@ def track_errors(xml_buffer, error, file, messages):
     return messages
 
 
+def readline(file):
+    '''
+    @file should be a file object
+    '''
+    for line in file:
+        line = line.replace('\n', '')
+        if line == '':
+            continue
+        else:
+            line = line.split('\t')
+            yield line
+
+
 def report_error_messages(messages, function):
     store_object(messages, settings.log_location, function.func_name)
     errors = messages.keys()
