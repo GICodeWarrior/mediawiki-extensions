@@ -22,6 +22,8 @@ import re
 import json
 import os
 import xml.etree.cElementTree as cElementTree
+import multiprocessing
+from Queue import Empty
 
 sys.path.append('..')
 import configuration
@@ -230,7 +232,6 @@ def output_editor_information(revisions, page, bots):
             for head in headers:
                 f.append(vars[x][head])
             flat.append(f)
-
     return flat
 
 
@@ -240,30 +241,50 @@ def parse_dumpfile(project, language_code, namespaces=['0']):
     ns = build_namespaces_locale(ns, namespaces)
 
     location = os.path.join(settings.input_location, language_code, project)
+    output = os.path.join(settings.input_location, language_code, project, 'txt')
+    filehandles = [utils.create_txt_filehandle(output, '%s.csv' % file, 'a', settings.encoding) for file in xrange(500)]
+
     fh = utils.create_txt_filehandle(location, 'enwiki-latest-stub-meta-history.xml', 'r', settings.encoding)
+    total_pages, processed_pages = 0.0, 0.0
     for page in wikitree.parser.read_input(fh):
         title = page.find('title')
+        total_pages += 1
         if is_article_main_namespace(title, ns):
             #cElementTree.dump(page)
             article_id = page.find('id').text
             revisions = page.findall('revision')
             revisions = parse_comments(revisions, remove_numeric_character_references)
             output = output_editor_information(revisions, article_id, bot_ids)
-            write_output(output, project, language_code)
+            write_output(output, filehandles)
+            processed_pages += 1
+            print processed_pages
         page.clear()
     fh.close()
+    print 'Total pages: %s' % total_pages
+    print 'Pages processed: %s (%s)' % (processed_pages, processed_pages / total_pages)
+    filehandles = [file.close() for file in filehandles]
 
 
-def write_output(output, project, language_code):
-    location = os.path.join(settings.input_location, language_code, project, 'txt')
-    for o in output:
-        file = '%s.csv' % hash(o[0])
-        try:
-            fh = utils.create_txt_filehandle(location, file, 'a', settings.encoding)
-            utils.write_list_to_csv(o, fh)
-            fh.close()
-        except Exception, error:
-            print error
+def group_observations(obs):
+    d = {}
+    for o in obs:
+        id = o[0]
+        if id not in d:
+            d[id] = []
+        d[id].append(o)
+    return d
+
+
+def write_output(observations, filehandles):
+    observations = group_observations(observations)
+    for obs in observations:
+        for i, o in enumerate(observations[obs]):
+            if i == 0:
+                fh = filehandles[hash(obs)]
+            try:
+                utils.write_list_to_csv(o, fh)
+            except Exception, error:
+                print error
 
 
 def hash(id):
