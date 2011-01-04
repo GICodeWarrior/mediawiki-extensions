@@ -194,7 +194,7 @@ class SFIInputs {
 		// register event to validate regexp on submit/preview
 		$jstext = <<<JAVASCRIPT
 jQuery(function(){
-	jQuery('#input_$sfgFieldNum').registerValidation( SFI_RE_validate, {retext: {$regexp}, inverse: {$inverseString}, message: {$message} });
+	jQuery('#input_$sfgFieldNum').SemanticForms_registerInputValidation( SFI_RE_validate, {retext: {$regexp}, inverse: {$inverseString}, message: {$message} });
 });
 JAVASCRIPT;
 
@@ -823,7 +823,7 @@ JAVASCRIPT;
 
 		// wrap the JS code fragment in a function for deferred init
 		$jstext = <<<JAVASCRIPT
-jQuery(function(){ jQuery('#input_{$sfgFieldNum}_dp_show').registerInitialisation(SFI_DP_init, $jsattribsString ); });
+jQuery(function(){ jQuery('#input_{$sfgFieldNum}_dp_show').SemanticForms_registerInputInit(SFI_DP_init, $jsattribsString ); });
 JAVASCRIPT;
 
 		// insert the code of the JS init function into the pages code
@@ -902,7 +902,7 @@ JAVASCRIPT;
 		$jsattribsString = Xml::encodeJsVar( $jsattribs );
 
 		$jstext = <<<JAVASCRIPT
-jQuery(function(){ jQuery('#input_$sfgFieldNum').registerInitialisation(SFI_DTP_init, $jsattribsString ); });
+jQuery(function(){ jQuery('#input_$sfgFieldNum').SemanticForms_registerInputInit(SFI_DTP_init, $jsattribsString ); });
 JAVASCRIPT;
 
 		// insert the code of the JS init function into the pages code
@@ -1167,7 +1167,7 @@ JAVASCRIPT;
 			$jstext = Xml::encodeJsVar( $jsattribs );
 
 			$jstext = <<<JAVASCRIPT
-jQuery(function(){ jQuery('#input_{$sfgFieldNum}_tp_show').registerInitialisation(SFI_TP_init, $jstext ); });
+jQuery(function(){ jQuery('#input_{$sfgFieldNum}_tp_show').SemanticForms_registerInputInit(SFI_TP_init, $jstext ); });
 JAVASCRIPT;
 
 			// write JS code directly to the page's code
@@ -1268,7 +1268,7 @@ JAVASCRIPT;
 		$html = '<span class="inputSpan' . ($is_mandatory ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
 
 		$jstext = <<<JAVASCRIPT
-jQuery(function(){ jQuery('#input_$sfgFieldNum').registerInitialisation(SFI_MS_init, null ); });
+jQuery(function(){ jQuery('#input_$sfgFieldNum').SemanticForms_registerInputInit(SFI_MS_init, null ); });
 JAVASCRIPT;
 
 			// write JS code directly to the page's code
