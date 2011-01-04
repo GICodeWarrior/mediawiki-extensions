@@ -21,9 +21,7 @@ import xml.etree.cElementTree as cElementTree
 import sys
 import codecs
 import re
-import json
 import os
-import random
 
 import progressbar
 
@@ -31,11 +29,7 @@ import progressbar
 sys.path.append('..')
 import configuration
 settings = configuration.Settings()
-
 from utils import utils
-import extract
-import wikitree.parser
-from bots import bots
 
 
 try:
@@ -75,26 +69,26 @@ def remove_namespace(element, namespace):
     return element
 
 
-def load_namespace(language):
-    file = '%s_ns.json' % language
-    fh = utils.create_txt_filehandle(settings.namespace_location, file, 'r', settings.encoding)
-    ns = json.load(fh)
-    fh.close()
-    ns = ns['query']['namespaces']
-    return ns
-
-
-def build_namespaces_locale(namespaces, include=[0]):
-    '''
-    @include is a list of namespace keys that should not be ignored, the default
-    setting is to ignore all namespaces except the main namespace. 
-    '''
-    ns = []
-    for namespace in namespaces:
-        if namespace not in include:
-            value = namespaces[namespace].get(u'*', None)
-            ns.append(value)
-    return ns
+#def load_namespace(language):
+#    file = '%s_ns.json' % language
+#    fh = utils.create_txt_filehandle(settings.namespace_location, file, 'r', settings.encoding)
+#    ns = json.load(fh)
+#    fh.close()
+#    ns = ns['query']['namespaces']
+#    return ns
+#
+#
+#def build_namespaces_locale(namespaces, include=[0]):
+#    '''
+#    @include is a list of namespace keys that should not be ignored, the default
+#    setting is to ignore all namespaces except the main namespace. 
+#    '''
+#    ns = []
+#    for namespace in namespaces:
+#        if namespace not in include:
+#            value = namespaces[namespace].get(u'*', None)
+#            ns.append(value)
+#    return ns
 
 
 def parse_comments(xml, function):
@@ -107,15 +101,15 @@ def parse_comments(xml, function):
     return xml
 
 
-def is_article_main_namespace(elem, namespace):
-    '''
-    checks whether the article belongs to the main namespace
-    '''
-    title = elem.find('title').text
-    for ns in namespace:
-        if title.startswith(ns):
-            return False
-    return True
+#def is_article_main_namespace(elem, namespace):
+#    '''
+#    checks whether the article belongs to the main namespace
+#    '''
+#    title = elem.find('title').text
+#    for ns in namespace:
+#        if title.startswith(ns):
+#            return False
+#    return True
 
 
 def write_xml_file(element, fh, output, counter, format):
@@ -125,15 +119,18 @@ def write_xml_file(element, fh, output, counter, format):
         size = len(xml_string)
         fh, counter, new_file = create_file_handle(fh, output, counter, size, format)
         fh.write(xml_string)
-    except MemoryError:
-        print 'Add error capturing logic'
-    except UnicodeEncodeError, error:
+    except Exception, error:
         print error
-        n = random.randrange(0, 10000)
-        f = '%s%s.bin' % ('element', n)
-        new_file = False
-        #if element != None:
-        #    utils.store_object(element, settings.binary_location, f)
+
+#        MemoryError:
+#        print 'Add error capturing logic'
+#    except UnicodeEncodeError, error:
+#        print error
+#        n = random.randrange(0, 10000)
+#        f = '%s%s.bin' % ('element', n)
+#        new_file = False
+#        #if element != None:
+#        #    utils.store_object(element, settings.binary_location, f)
     fh.write('\n')
     return fh, counter, new_file
 
@@ -162,44 +159,44 @@ def create_file_handle(fh, output, counter, size, format):
         return fh, counter, False
 
 
-def flatten_xml_elements(data, page, bots):
-    headers = ['id', 'date', 'article', 'username']
-    tags = {'contributor': {'id': extract.extract_contributor_id,
-                            'bot': extract.determine_username_is_bot,
-                            'username': extract.extract_username,
-                            },
-            'timestamp': {'date': xml.extract_text},
-            }
-    vars = {}
-    flat = []
+#def flatten_xml_elements(data, page, bots):
+#    headers = ['id', 'date', 'article', 'username']
+#    tags = {'contributor': {'id': extract.extract_contributor_id,
+#                            'bot': extract.determine_username_is_bot,
+#                            'username': extract.extract_username,
+#                            },
+#            'timestamp': {'date': xml.extract_text},
+#            }
+#    vars = {}
+#    flat = []
+#
+#    for x, elems in enumerate(data):
+#        vars[x] = {}
+#        vars[x]['article'] = page
+#        for tag in tags:
+#            el = xml.retrieve_xml_node(elems, tag)
+#            for function in tags[tag].keys():
+#                f = tags[tag][function]
+#                value = f(el, bots=bots)
+#                if type(value) == type({}):
+#                    for kw in value:
+#                        vars[x][kw] = value[kw]
+#                else:
+#                    vars[x][function] = value
+#
+#    for x, var in enumerate(vars):
+#        if vars[x]['bot'] == 1 or vars[x]['id'] == None or vars[x]['username'] == None:
+#            continue
+#        else:
+#            f = []
+#            for head in headers:
+#                f.append(vars[x][head])
+#            flat.append(f)
+#
+#    return flat
 
-    for x, elems in enumerate(data):
-        vars[x] = {}
-        vars[x]['article'] = page
-        for tag in tags:
-            el = xml.retrieve_xml_node(elems, tag)
-            for function in tags[tag].keys():
-                f = tags[tag][function]
-                value = f(el, bots=bots)
-                if type(value) == type({}):
-                    for kw in value:
-                        vars[x][kw] = value[kw]
-                else:
-                    vars[x][function] = value
 
-    for x, var in enumerate(vars):
-        if vars[x]['bot'] == 1 or vars[x]['id'] == None or vars[x]['username'] == None:
-            continue
-        else:
-            f = []
-            for head in headers:
-                f.append(vars[x][head])
-            flat.append(f)
-
-    return flat
-
-
-def split_file(location, file, project, language_code, namespaces=[0], format='xml', zip=False):
+def split_file(location, file, project, language_code, zip=False):
     '''
     Reads xml file and splits it in N chunks
     @namespaces is a list indicating which namespaces should be included, default
@@ -207,11 +204,11 @@ def split_file(location, file, project, language_code, namespaces=[0], format='x
     @zip indicates whether to compress the chunk or not
     '''
     input = os.path.join(location, file)
-    if format == 'xml':
-        output = os.path.join(location, 'chunks')
-    else:
-        output = os.path.join(location, 'txt')
-        bot_ids = bots.retrieve_bots(language_code)
+    #if format == 'xml':
+    output = os.path.join(location, 'chunks')
+    #else:
+    #    output = os.path.join(location, 'txt')
+    #    bot_ids = bots.retrieve_bots(language_code)
     settings.verify_environment([output])
 
     fh = None
@@ -230,25 +227,26 @@ def split_file(location, file, project, language_code, namespaces=[0], format='x
             if event == 'end':
                 if elem.tag == tag:
                     elem = remove_namespace(elem, settings.xml_namespace)
-                    if is_article_main_namespace(elem, ns):
-                        page = elem.find('id').text
-                        elem = parse_comments(elem, remove_numeric_character_references)
+                    #if is_article_main_namespace(elem, ns):
+                    #    page = elem.find('id').text
+                    elem = parse_comments(elem, remove_numeric_character_references)
 
-                        if format == 'xml':
-                            fh, counter, new_file = write_xml_file(elem, fh, output, counter, format)
-                        else:
-                            data = [el.getchildren() for el in elem if el.tag == 'revision']
-                            data = flatten_xml_elements(data, page, bot_ids)
-                            if data != None:
-                                size = 64 * len(data)
-                                fh, counter, new_file = create_file_handle(fh, output, counter, size, format)
-                                utils.write_list_to_csv(data, fh, recursive=False, newline=True)
+ #                       if format == 'xml':
+                    fh, counter, new_file = write_xml_file(elem, fh, output, counter, format)
+#                        else:
+#                            data = [el.getchildren() for el in elem if el.tag == 'revision']
+#                            data = flatten_xml_elements(data, page, bot_ids)
+#                            if data != None:
+#                                size = 64 * len(data)
+#                                fh, counter, new_file = create_file_handle(fh, output, counter, size, format)
+#                                utils.write_list_to_csv(data, fh, recursive=False, newline=True)
 
-                        if zip and new_file:
-                            file = str(counter - 1) + format
-                            utils.zip_archive(settings.path_ziptool, output, file)
-                            utils.delete_file(output, file)
+                    if zip and new_file:
+                        file = str(counter - 1) + format
+                        utils.zip_archive(settings.path_ziptool, output, file)
+                        utils.delete_file(output, file)
                     root.clear()  # when done parsing a section clear the tree to safe memory
+
     except SyntaxError:
         f = utils.create_txt_filehandle(settings.log_location, 'split_xml', 'w', settings.encoding)
         f.write(cElementTree.tostring(elem))
