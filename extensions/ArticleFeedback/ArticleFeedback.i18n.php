@@ -100,6 +100,12 @@ $messages['af'] = array(
 	'articlefeedback-survey-submit' => 'Dien in',
 	'articlefeedback-survey-title' => "Antwoord asseblief 'n paar vrae",
 	'articlefeedback-survey-thanks' => 'Dankie dat u die opname ingevul het.',
+	'articlefeedback-form-switch-label' => 'Verskaf terugvoer',
+	'articlefeedback-form-panel-title' => 'U terugvoer',
+	'articlefeedback-form-panel-instructions' => "Neem asseblief 'n oomblik om vir hierdie bladsy te stem.",
+	'articlefeedback-form-panel-submit' => 'Stuur terugvoer',
+	'articlefeedback-report-switch-label' => 'Wys resultate',
+	'articlefeedback-pitch-reject' => 'Nee dankie',
 );
 
 /** Arabic (العربية)

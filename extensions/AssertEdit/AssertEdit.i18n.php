@@ -353,12 +353,13 @@ $messages['hsb'] = array(
 );
 
 /** Haitian (Kreyòl ayisyen)
+ * @author Boukman
  * @author Masterches
  */
 $messages['ht'] = array(
-	'assert_edit_title' => 'Sa ou ta renmen ajoute a pa fèt',
-	'assertedit-desc' => 'Ajoute tout edisyon ki te rantre pou wobo yo kapab itilize',
-	'assert_edit_message' => 'Sa ou ta renmen ajoute a ($1) pa fèt.',
+	'assert_edit_title' => 'Alegasyon pa t ajoute',
+	'assertedit-desc' => 'Ajoute alegasyon sou modifikasyon pou wobo yo kapab itilize',
+	'assert_edit_message' => 'Alegasyon pou ($1) pa t ajoute.',
 );
 
 /** Hungarian (Magyar)

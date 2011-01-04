@@ -993,6 +993,7 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1001,7 +1002,7 @@ $messages['sr-ec'] = array(
 	'am-email' => 'имејл',
 	'am-active' => 'активан',
 	'am-updated' => 'Баше измене су успешно снимљене',
-	'nss-save-changes' => 'Сними промене',
+	'nss-save-changes' => 'Сачувај измене',
 	'nss-create-account-header' => 'Направи нови налог',
 	'nss-create-account' => 'Направи налог',
 	'nss-no-mail' => 'Не шаљи имејл',

@@ -3456,6 +3456,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -3500,7 +3501,7 @@ $messages['sr-ec'] = array(
 	'tasks_link_your_assignments' => 'отворене доделе',
 	'tasks_see_your_assignments' => 'Тренутно вам је {{PLURAL:$1|додељен $1 отворен задатак|додељено $1 отворених задатака}}. Погледајте Ваше $2.',
 	'tasks_my_assignments' => '{{PLURAL:$1|Ваш тренутни задатак|Ваши тренутни задаци}}',
-	'tasks_table_header_page' => 'Чланак',
+	'tasks_table_header_page' => 'Страна',
 	'tasks_you_have_no_assignments' => 'Немате отворених задатака',
 	'tasks_search_form_title' => 'Претрага',
 	'tasks_search_tasks' => 'Задаци',

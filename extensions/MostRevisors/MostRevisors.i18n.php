@@ -822,11 +822,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'mostrevisors-namespace' => 'Именски простор:',
-	'mostrevisors-submit' => 'Иди',
+	'mostrevisors-submit' => 'Пређи',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */

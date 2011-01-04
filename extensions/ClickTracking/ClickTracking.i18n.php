@@ -2165,7 +2165,7 @@ $messages['sr-ec'] = array(
 	'ct-date-range' => 'Опсег датума',
 	'ct-editing' => 'Тренутно мења:',
 	'ct-anon-users' => 'Анонимни корисници',
-	'ct-user-contribs' => 'Укупно корисничких доприноса',
+	'ct-user-contribs' => 'Укупно прилога',
 	'ct-and' => 'и',
 	'ct-update-table' => 'Ажурирај табелу',
 );

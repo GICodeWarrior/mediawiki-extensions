@@ -116,9 +116,23 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'svgedit-editbutton-edit' => 'Modifiez le dessin',
+	'svgedit-summary-label' => 'Résumé de la modification',
+	'svgedit-summary-default' => '/* Modifiée avec svg-edit */',
 	'svgedit-editor-save-close' => 'Enregistrer et fermer',
 	'svgedit-editor-close' => 'Annuler',
 	'svgedit-desc' => 'Modification des dessins au format SVG dans votre navigateur en utilisant [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'svgedit-editbutton-edit' => 'Editar o debuxo',
+	'svgedit-summary-label' => 'Resumo de edición',
+	'svgedit-summary-default' => '/* Modificado con svg-edit */',
+	'svgedit-editor-save-close' => 'Gardar e pechar',
+	'svgedit-editor-close' => 'Cancelar',
+	'svgedit-desc' => 'Edición de debuxos en formato SVG no propio navegador co [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
 /** Swiss German (Alemannisch)
@@ -160,6 +174,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'svgedit-editbutton-edit' => 'Sunting gambar',
+	'svgedit-summary-label' => 'Ringkasan suntingan:',
+	'svgedit-summary-default' => '/* Diubah dalam svg-edit */',
 	'svgedit-editor-save-close' => 'Simpan dan tutup',
 	'svgedit-editor-close' => 'Batalkan',
 	'svgedit-desc' => 'Penyuntingan gambar SVG via peramban dengan [http://code.google.com/p/svg-edit/ SVG-Edit]',
@@ -198,6 +214,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'svgedit-editbutton-edit' => 'Уреди',
+	'svgedit-summary-label' => 'Опис на уредувањето',
+	'svgedit-summary-default' => '/* Изменето во svg-edit */',
 	'svgedit-editor-save-close' => 'Зачувај и затвори',
 	'svgedit-editor-close' => 'Откажи',
 	'svgedit-desc' => 'Уредување на SVG-цртежи во самиот прелистувач со [http://code.google.com/p/svg-edit/ SVG-Edit]',
@@ -228,6 +246,8 @@ $messages['no'] = array(
  */
 $messages['pms'] = array(
 	'svgedit-editbutton-edit' => 'Modìfica disegn',
+	'svgedit-summary-label' => 'Resumé dla modìfica',
+	'svgedit-summary-default' => '/* Modificà an svg-edit */',
 	'svgedit-editor-save-close' => 'Salva e sara',
 	'svgedit-editor-close' => 'Scancela',
 	'svgedit-desc' => 'Modìfica ant ël browser dij disegn SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
@@ -258,6 +278,8 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'svgedit-editbutton-edit' => 'Редактировать рисунок',
+	'svgedit-summary-label' => 'Описание изменений',
+	'svgedit-summary-default' => '/ * Изменено в svg-edit * /',
 	'svgedit-editor-save-close' => 'Сохранить и закрыть',
 	'svgedit-editor-close' => 'Отмена',
 	'svgedit-desc' => 'Редактирование SVG-изображений в браузере с помощью [http://code.google.com/p/svg-edit/ SVG-Edit]',

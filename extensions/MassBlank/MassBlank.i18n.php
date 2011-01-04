@@ -582,10 +582,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'massblank-submit-user' => 'Иди',
+	'massblank-submit-user' => 'Пређи',
 	'massblank-blankcomment' => 'Разлог:',
 );
 

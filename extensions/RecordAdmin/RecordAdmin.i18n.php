@@ -2002,6 +2002,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2015,11 +2016,11 @@ $messages['sr-ec'] = array(
 	'recordadmin-buttonsave' => 'Сними',
 	'recordadmin-newcreated' => 'Нови $1 направљен са јавне форме',
 	'recordadmin-summary-typecreated' => 'Нови $1 направљен',
-	'recordadmin-viewlink' => 'види',
+	'recordadmin-viewlink' => 'прикажи',
 	'recordadmin-editlink' => 'измени',
 	'recordadmin-created' => 'Направљено',
 	'recordadmin-modified' => 'Измењено',
-	'recordadmin-actions' => 'Акције',
+	'recordadmin-actions' => 'Уреди',
 	'recordadmin-needscontent' => 'Додај садржај...',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',

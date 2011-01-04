@@ -6454,6 +6454,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -6464,7 +6465,7 @@ $messages['sr-ec'] = array(
 	'wikilog-draft' => 'Нацрт',
 	'wikilog-authors' => 'Аутори',
 	'wikilog-title' => 'Наслов',
-	'wikilog-actions' => 'Акције',
+	'wikilog-actions' => 'Радње',
 	'wikilog-comments' => 'Коментари',
 	'wikilog-replies' => 'Реплике',
 	'wikilog-view-archives' => 'Архиве',

@@ -789,11 +789,12 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'searchbox-search' => 'Претрага',
-	'searchbox-go' => 'Иди',
+	'searchbox-go' => 'Пређи',
 	'searchbox-namespaces' => 'Именски простори:',
 );
 
