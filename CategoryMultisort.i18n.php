@@ -32,6 +32,8 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Standaard',
+	'categorymultisort-go' => 'Gaan',
+	'prefs-category' => 'Kategorie',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -573,13 +575,14 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'categorymultisort-desc' => 'Омогућава преглед категорија са различитим кључевима сортирања',
 	'categorymultisort-defaultsortkey-name' => 'Подразумевано',
 	'categorymultisort-sortkey' => 'Кључ сортирања:',
-	'categorymultisort-go' => 'Иди',
+	'categorymultisort-go' => 'Пређи',
 	'categorymultisort-default-sortkey' => 'Подразумевани кључ сортирања:',
 	'prefs-category' => 'Категорија',
 );
