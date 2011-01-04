@@ -423,7 +423,11 @@ final class PushTab {
 			foreach ( $response['query']['pages'] as $page ) {
 				if ( array_key_exists( 'images', $page ) ) {
 					foreach ( $page['images'] as $image ) {
-						$images[] = $image['title'];
+						$title = Title::newFromText( $image['title'], NS_FILE );
+						
+						if ( !is_null( $title ) && $title->getNamespace() == NS_FILE && $title->exists() ) {
+							$images[] = $image['title'];
+						}
 					} 
 				}
 			}
