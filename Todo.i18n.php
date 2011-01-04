@@ -1852,6 +1852,7 @@ $4',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1864,8 +1865,8 @@ $messages['sr-ec'] = array(
 	'todo-add-queue' => 'Додај ред…',
 	'todo-move-queue' => 'Премести у ред…',
 	'todo-list-for' => 'Списак ствари за урадити, за $1',
-	'todo-list-change' => 'Промени',
-	'todo-list-cancel' => 'Поништи',
+	'todo-list-change' => 'Измени',
+	'todo-list-cancel' => 'Откажи',
 	'todo-form-details' => 'Детаљи:',
 	'todo-form-submit' => 'Пошањи упит',
 );
