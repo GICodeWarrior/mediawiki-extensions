@@ -2616,7 +2616,7 @@ Pli pri <a target="_new" href="http://en.wikipedio.org/wiki/Frame_rate">filmer-r
 	'fogg-organization-title' => 'Organizo',
 	'fogg-organization-help' => 'Nomo de organizo (studio)',
 	'fogg-copyright-title' => 'Aŭtorrajto',
-	'fogg-copyright-help' => 'La kopirajt-statuso de la mediaĵo',
+	'fogg-copyright-help' => 'Aŭtorrajta statuso de la eltondaĵo',
 	'fogg-license-title' => 'Permesilo',
 	'fogg-license-help' => 'Permesilo de la dosiero (prefere retadreso de la Krea Komunaĵo).',
 	'fogg-contact-title' => 'Kontakto',
