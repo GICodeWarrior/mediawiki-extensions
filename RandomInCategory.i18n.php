@@ -920,6 +920,7 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -929,7 +930,7 @@ $messages['sr-ec'] = array(
 	'randomincategory-toolbox' => 'Случајна страна',
 	'randomincategory-nocategory' => 'Категорија $1 не постоји или је празна',
 	'randomincategory-label' => 'Категорија:',
-	'randomincategory-submit' => 'Иди',
+	'randomincategory-submit' => 'Пређи',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
