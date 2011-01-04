@@ -1258,6 +1258,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1274,8 +1275,8 @@ $messages['sr-ec'] = array(
 	'player-invalid-title' => 'погрешан наслов',
 	'player-clicktoplay' => 'Пусти $1',
 	'player-goto-player' => 'плејер',
-	'player-goto-page' => 'Страница',
-	'player-goto-file' => 'фајл',
+	'player-goto-page' => 'Страна',
+	'player-goto-file' => 'датотека',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
