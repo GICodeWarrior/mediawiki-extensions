@@ -12447,7 +12447,7 @@ $messages['sr-ec'] = array(
 	'ow_transaction_object' => 'Објекат',
 	'ow_transaction_first_dm' => 'Прво дефинисано значење',
 	'ow_transaction_second_dm' => 'Друго дефинисано значење',
-	'ow_transaction_summary' => 'Опис',
+	'ow_transaction_summary' => 'Сажетак',
 	'ow_conceptmapping_help' => '<p>могуће акције: <ul> <li>&action=insert&<data_context_prefix>=<defined_id>&... унеси мапирање</li> <li>&action=get&concept=<concept_id> поново прочитај мапирање</li> <li>&action=list_sets врати листу могућих контекстуалних префикса и оног на шта упућују.</li> <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> за једно дефинисано значење у концепту врати сва остала</li> <li>&action=help Прикажи помоћ.</li> </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Мапирање концепата ти омогућава да установиш које је дефинисано значење у једном скупу података истоветно с дефинисаним значењима у другим скуповима података.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Акција "$1" није подржана.',
