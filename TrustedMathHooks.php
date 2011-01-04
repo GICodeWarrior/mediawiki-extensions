@@ -9,9 +9,7 @@ class TrustedMathHooks {
 	 * TODO fix
 	 */
 	public static function onParserAfterStrip( $parser, &$text, &$stripState ) {
-		global $wgTrustedMathNamespace;
-		
-		if ( $parser->getTitle()->getNamespace() == $wgTrustedMathNamespace ) {
+		if ( $parser->getTitle()->getNamespace() == NS_TRUSTEDMATH ) {
 			if ( strpos( $text, '<math>' ) === false ) {
 				$text = "<math>$text</math>";
 				return false;
@@ -36,28 +34,27 @@ class TrustedMathHooks {
 		}
 		
 		// Initialize the namespace for TrustedMath
-		self::initNamespace();
+		global $wgVersion, $wgExtraNamespaces;
+		if ( version_compare( $wgVersion, '1.17alpha', '<' ) ) {
+			self::initNamespace( $wgExtraNamespaces );
+		}
+		
 	}
 	
 	/**
 	 * TODO: check, fix, etc.
 	 */
-	public static function initNamespace() {
-		global $wgExtraNamespaces, $wgNamespaceProtection;
-		global $wgTrustedMathNamespace;
+	public static function initNamespace( &$list ) {
+		global $wgNamespaceProtection;
 		
-		if ( !isset( $wgExtraNamespaces[$wgTrustedMathNamespace] ) ) {
-			$wgExtraNamespaces[$wgTrustedMathNamespace] = 
-				wfMsgForContent( 'trustedmath-namespace' );
-		}
-		if ( !isset( $wgExtraNamespaces[$wgTrustedMathNamespace+1] ) ) {
-			$wgExtraNamespaces[$wgTrustedMathNamespace+1] = 
-				wfMsgForContent( 'trustedmath-talk-namespace' );
+		$list[NS_TRUSTEDMATH] = 'Math';
+		$list[NS_TRUSTEDMATH_TALK] = 'Math_talk';
+
+		if ( !isset( $wgNamespaceProtection[NS_TRUSTEDMATH] ) ) {
+			$wgNamespaceProtection[NS_TRUSTEDMATH] = array( 'editmath' );
 		}
 		
-		if ( !isset( $wgNamespaceProtection[$wgTrustedMathNamespace] ) ) {
-			$wgNamespaceProtection[$wgTrustedMathNamespace] = array( 'editmath' );
-		}
+		return true;
 	}
 	
 	/**
@@ -78,12 +75,15 @@ class TrustedMathHooks {
 	 * @param mixed $frame
 	 */
 	public static function mathTag( $input, $args, $parser, $frame ) {
-		global $wgTrustedMathNamespace;
-		
 		if ( isset( $args['name'] ) ) {
 			// Safe mode
 			
-			$title = Title::newFromText( $args['name'], $wgTrustedMathNamespace );
+			$title = Title::newFromText( $args['name'], NS_TRUSTEDMATH );
+			if ( !$title->exists() ) {
+				return $parser->recursiveTagParse( '<span class="error">' . 
+					wfMsg( 'trustedmath-not-found', $title->getPrefixedText() ) . 
+					'</span>' );
+			}
 			if ( !self::validateSafeMode( $title ) ) {
 				// Requested title was not in the math namespace
 				return self::getPermissionError( $parser );
@@ -128,9 +128,8 @@ class TrustedMathHooks {
 	 * @return bool True if safe
 	 */
 	protected static function validateSafeMode( $title ) {
-		global $wgTrustedMathNamespace;
 		return !( self::safeMode() && 
-			$title->getNamespace() != $wgTrustedMathNamespace );
+			$title->getNamespace() != NS_TRUSTEDMATH );
 	}
 	/**
 	 * Check if unsafe math is allowed
