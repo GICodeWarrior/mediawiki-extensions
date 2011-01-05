@@ -223,7 +223,7 @@ Kanskje du vil se på:
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'special404-desc' => 'Udostępnia specjalną stronę wyświetlaną przy wystąpieniu błędu 404 oznaczającego brak strony',
+	'special404-desc' => 'Wskazuje stronę wyświetlaną przy wystąpieniu błędu 404 oznaczającego brak strony',
 	'error404' => '404 Nie znaleziono',
 	'special404-body' => 'Wybrany adres URL nie istnieje.
 
