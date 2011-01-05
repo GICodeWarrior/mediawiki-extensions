@@ -8276,7 +8276,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-section-access' => 'Dostępy',
 	'configure-section-groups' => 'Grupy',
 	'configure-section-block' => 'Blokady',
-	'configure-section-rates' => 'Ograniczenia',
+	'configure-section-rates' => 'Ograniczenia prędkości',
 	'configure-section-proxy' => 'Serwery Proxy',
 	'configure-section-cookie' => 'Ciasteczka',
 	'configure-section-performance' => 'Wydajność',
