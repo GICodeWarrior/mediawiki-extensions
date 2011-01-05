@@ -5081,6 +5081,7 @@ $messages['io'] = array(
  * @author Beta16
  * @author F. Cosoleto
  * @author Gianfranco
+ * @author Minerva Titani
  */
 $messages['it'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 di $2',
@@ -5109,6 +5110,8 @@ Controlla <b><code>$1</code></b> e verifica scrupolosamente che davvero si debba
 	'fogg-date-title' => 'Data',
 	'fogg-location-title' => 'Località',
 	'fogg-license-title' => 'Licenza',
+	'mwe-upload' => 'Carica file',
+	'mwe-destfilename' => 'Nome del file di destinazione',
 	'mwe-upload-in-progress' => 'Caricamento in corso (non chiudere la finestra)',
 	'mwe-uploaded-status' => 'Caricato',
 	'mwe-uploaded-time-remaining' => 'Tempo rimanente: $1',
@@ -8687,8 +8690,8 @@ $messages['sr-ec'] = array(
 	'fogg-contact-title' => 'Контакт',
 	'fogg-contact-help' => 'Контакт-линк',
 	'mwe-select_file' => 'Избор фајла',
-	'mwe-upload' => 'Пошаљи фајл',
-	'mwe-destfilename' => 'Крајњи назив датотеке:',
+	'mwe-upload' => 'Отпреми датотеку',
+	'mwe-destfilename' => 'Назив:',
 	'mwe-summary' => 'Сажетак',
 	'mwe-date-of-work' => 'Датум рада',
 	'mwe-link-login' => 'пријавите се',
@@ -8702,7 +8705,7 @@ $messages['sr-ec'] = array(
 	'rsd_results_next' => 'следеће',
 	'rsd_results_prev' => 'претходно',
 	'rsd_no_results' => 'Нема резултата претраге за <b>$1</b>',
-	'mwe-upload_tab' => 'Пошаљи фајл',
+	'mwe-upload_tab' => 'Отпреми датотеку',
 	'rsd_layout' => 'Изглед:',
 	'mwe-link' => 'веза',
 	'rsd_do_insert' => 'Убаци',
