@@ -30,3 +30,7 @@ $wgExtensionAliasesFiles['Special404'] = $dir . '/Special404.alias.php';
 $wgSpecialPages['Error404'] = array( 'Special404' );
 $wgAutoloadClasses['Special404'] = $dir . '/Special404_body.php';
 
+// Enable this to force an automatic 301 Moved Permanently redirect if a matching title exists
+// This might be useful if you used to use root /Article urls and moved to something else
+$egSpecial404RedirectExistingRoots = false;
+
