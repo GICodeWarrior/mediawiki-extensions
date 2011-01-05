@@ -101,6 +101,13 @@ $messages['el'] = array(
 	'apisvgproxy-desc' => 'Αντιπροσωπευτικά αρχεία SVG από μία (πιθανώς απομακρυσμένη) αποθήκη αρχείων στον τοπικό τομέα',
 );
 
+/** Esperanto (Esperanto)
+ * @author Mihxil
+ */
+$messages['eo'] = array(
+	'apisvgproxy-desc' => 'Prokuras SVG-dosierojn de (eble fora) dosierdeponejo al la loka domajno',
+);
+
 /** Spanish (Español)
  * @author Pertile
  */

@@ -1537,6 +1537,7 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Verlor
  * @author Михајло Анђелковић
  */
@@ -1549,7 +1550,7 @@ $messages['sr-ec'] = array(
 	'multiupload-fileuploaded' => 'Фајл послат.',
 	'multiupload-toolbox' => 'Пошаљи више фајлова',
 	'multiupload-no-files' => 'Молимо Вас да назначите макар један фајл за слање',
-	'multiupload-blank' => 'Ни један фајл није био назначен за слање',
+	'multiupload-blank' => 'Није изабрана ниједна датотека',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
