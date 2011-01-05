@@ -119,4 +119,3 @@ if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
 }
 
 require_once 'Push_Settings.php';
-
