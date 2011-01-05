@@ -12,7 +12,18 @@ class Special404 extends UnlistedSpecialPage {
 	}
 	
 	public function execute( $par ) {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $egSpecial404RedirectExistingRoots;
+		
+		if ( $egSpecial404RedirectExistingRoots ) {
+			$t = Title::newFromText($wgRequest->getRequestURL());
+			if ( !is_object($t) || !$t->exists() ) {
+				$t = Title::newFromText(trim($wgRequest->getRequestURL(), '/\\'));
+			}
+			if ( is_object($t) && $t->exists() ) {
+				$wgOut->redirect( $t->getFullURL(), 301 );
+				return;
+			}
+		}
 		
 		$this->setHeaders();
 		$wgOut->setStatusCode( 404 );
