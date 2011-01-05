@@ -4,6 +4,12 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Push
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push/RELEASE-NOTES?view=co
 
 
+=== Version 0.7 ===
+2011-01-xx
+
+* Fixed issue with non-existing, but embedded, images.
+* Added 2 hooks that allows modifying push requests before they are executed.
+
 === Version 0.6 ===
 2010-12-19
 
