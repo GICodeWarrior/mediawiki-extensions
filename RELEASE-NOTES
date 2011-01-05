@@ -9,6 +9,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 * Fixed issue with non-existing, but embedded, images.
 * Added 2 hooks that allows modifying push requests before they are executed.
+* Improved error message shown when the target wiki does not allow API uploads via url.
 
 === Version 0.6 ===
 2010-12-19
