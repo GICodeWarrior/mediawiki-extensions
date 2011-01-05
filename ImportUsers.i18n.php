@@ -1762,7 +1762,7 @@ Preskočeno.',
  */
 $messages['sr-ec'] = array(
 	'importusers' => 'Увези кориснике',
-	'importusers-uploadfile' => 'Пошаљи фајл',
+	'importusers-uploadfile' => 'Отпреми датотеку',
 	'importusers-form-caption' => 'Унеси CSV-фајл (UTF-8)',
 	'importusers-form-file' => 'Кориснички формат фајла (CSV):',
 	'importusers-form-replace-present' => 'Пиши преко података постојећих корисника',
