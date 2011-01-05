@@ -94,6 +94,7 @@ $egPushJSMessages = array(
 	'push-tab-no-embedded-files',
 	'push-tab-files-override',
 	'push-tab-template-override',
+	'push-tab-err-uploaddisabled'
 );
 
 // For backward compatibility with MW < 1.17.

@@ -303,12 +303,14 @@
 				
 				for ( i in data ) {
 					if ( data[i].error ) {
-						handleError( sender, targetUrl, { info: mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info ) } );
+						data[i].error.info = mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info );
+						handleError( sender, targetUrl, data[i].error );
 						fail = true;
 						break;
 					}
 					else if ( !data[i].upload ) {
-						handleError( sender, targetUrl, { info: mediaWiki.msg( 'push-tab-err-filepush-unknown' ) } );
+						data[i].error.info = mediaWiki.msg( 'push-tab-err-filepush-unknown' );
+						handleError( sender, targetUrl, data[i].error );
 						fail = true;
 						break;						
 					}
@@ -351,6 +353,10 @@
 	function handleError( sender, targetUrl, error ) {
 		var errorDiv = $( '#targeterrors' + $(sender).attr( 'targetid' ) );
 
+		if ( error.code && error.code == 'uploaddisabled' ) {
+			error.info = mediaWiki.msg( 'push-tab-err-uploaddisabled' );
+		}
+		
 		errorDiv.text( error.info );
 		errorDiv.fadeIn( 'slow' );			
 		
