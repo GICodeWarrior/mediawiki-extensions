@@ -39,6 +39,7 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 import exceptions
+import messages
 
 try:
     import psyco
@@ -415,7 +416,7 @@ def update_progressbar(pbar, queue):
     '''
     Updates the progressbar by determining how much work is left in a queue
     '''
-    x = pbar.maxval - queue.qsize()
+    x = pbar.maxval - messages.show(queue.qsize)
     '''
     Currently, calling the pbar.update function gives the following error:
     File "build\bdist.win32\egg\progressbar.py", line 352, in update

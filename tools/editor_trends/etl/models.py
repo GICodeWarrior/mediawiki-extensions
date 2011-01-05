@@ -27,6 +27,7 @@ settings = configuration.Settings()
 
 from utils import models
 from utils import utils
+from utils import messages
 import wikitree
 
 class TXTFile(object):
@@ -68,7 +69,7 @@ class XMLFileConsumer(models.BaseConsumer):
             if new_xmlfile == None:
                 print 'Swallowed a poison pill'
                 break
-            print 'Queue is %s files long...' % (self.task_queue.qsize() - settings.number_of_processes)
+            print 'Queue is %s files long...' % (messages.show(self.task_queue.qsize) - settings.number_of_processes)
             new_xmlfile()
 
 

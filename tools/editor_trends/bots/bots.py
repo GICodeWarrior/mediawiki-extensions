@@ -31,8 +31,10 @@ settings = configuration.Settings()
 import wikitree
 from database import db
 from utils import utils
+from utils import messages
 #from etl import extract
-from utils import process_constructor as pc
+#from utils import process_constructor as pc
+
 from etl import models
 import models as botmodels
 
@@ -211,7 +213,7 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
     if single:
         while True:
             try:
-                print '%s files left in the queue...' % tasks.qsize()
+                print '%s files left in the queue...' % messages.show(tasks.qsize)
                 task = tasks.get(block=False)
                 bots = task(bots)
             except Empty:

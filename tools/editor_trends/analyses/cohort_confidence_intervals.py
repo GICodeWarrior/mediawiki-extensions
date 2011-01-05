@@ -7,8 +7,9 @@ import sys
 sys.path.append('..')
 
 import configuration
-settings  = configuration.Settings()
+settings = configuration.Settings()
 from utils import utils
+from utils import messages
 from database import db
 
 
@@ -23,7 +24,7 @@ from database import db
 #    while True:
 #        try:
 #            id = input_queue.get(block=False)
-#            print input_queue.qsize()
+#            print messages.show(input_queue.qsize)
 #            obs = editors.find_one({'editor': id})
 #            obs = expand_observations(obs, vars_to_expand)
 #            if x == 0:
@@ -45,5 +46,4 @@ from database import db
 
 
 if __name__ == '__main__':
-    
-    
+

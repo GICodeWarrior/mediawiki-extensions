@@ -44,7 +44,7 @@ RE_NUMERIC_CHARACTER = re.compile('&#(\d+);')
 
 
 def remove_numeric_character_references(text):
-    return re.sub(RE_NUMERIC_CHARACTER, lenient_deccharref, text).encode('utf-8')
+    return re.sub(RE_NUMERIC_CHARACTER, lenient_deccharref, text).encode(settings.encoding)
 
 
 def lenient_deccharref(m):
@@ -242,9 +242,9 @@ def parse_dumpfile(project, language_code, namespaces=['0']):
 
     location = os.path.join(settings.input_location, language_code, project)
     output = os.path.join(settings.input_location, language_code, project, 'txt')
-    filehandles = [utils.create_txt_filehandle(output, '%s.csv' % file, 'a', settings.encoding) for file in xrange(500)]
+    filehandles = [utils.create_txt_filehandle(output, '%s.csv' % file, 'a', settings.encoding) for file in xrange(settings.max_filehandles)]
 
-    fh = utils.create_txt_filehandle(location, 'enwiki-latest-stub-meta-history.xml', 'r', settings.encoding)
+    fh = utils.create_txt_filehandle(location, '%s%s-latest-stub-meta-history.xml' % (language_code, project), 'r', settings.encoding)
     total_pages, processed_pages = 0.0, 0.0
     for page in wikitree.parser.read_input(fh):
         title = page.find('title')
@@ -290,13 +290,13 @@ def write_output(observations, filehandles):
 def hash(id):
     '''
     A very simple hash function based on modulo. The except clause has been 
-    addde because there are instances where the username is stored in userid
+    added because there are instances where the username is stored in userid
     tag and hence that's a string and not an integer. 
     '''
     try:
-        return int(id) % 500
+        return int(id) % settings.max_filehandles
     except:
-        return sum([ord(i) for i in id]) % 500
+        return sum([ord(i) for i in id]) % settings.max_filehandles
 
 if __name__ == '__main__':
     project = 'wiki'

@@ -76,7 +76,7 @@ foreach proj of local projects {
 	label var  fewer_one_year_abs "Editors with less than one year experience"
 	label var  more_one_year_abs "Editors with more than one year experience"
 
-	twoway (line one_year_exp year), ylabel(0(10)100, labsize(vsmall)) ytitle(%, size(vsmall)) xtitle() xlabel(2001(1)2009, labsize(vsmall)) title(Percentage of Wikipedia editors with 1 year experience) note("Based on the `proj' project, dataset `obs' editors.", size(vsmall))
+	twoway (line one_year_exp year), ylabel(0(10)100, labsize(vsmall)) ytitle(%, size(vsmall)) xtitle() xlabel(2001(1)2010, labsize(vsmall)) title(Percentage of Wikipedia editors with 1 year experience) note("Based on the `proj' project, dataset `obs' editors.", size(vsmall))
 	local f =  "`loc'" + "`proj'" + "_line_rel_one_vs_multi_years.png"
 	graph export `f', replace
 	//subtitle(Editors are getting older and influx of new editors has stagnated) 

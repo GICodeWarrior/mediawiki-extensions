@@ -25,6 +25,7 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 from utils import utils
+from utils import messages
 from database import cache
 from database import db
 
@@ -35,8 +36,12 @@ def store_editors(tasks, dbname, collection, input):
     edits = 0
     while True:
         file = tasks.get(block=False)
+        tasks.task_done()
         if file == None:
+            print 'Swallowing a poison pill.'
             break
+        print '%s files left in the queue.' % messages.show(tasks.qsize)
+
         fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
         for line in utils.readline(fh):
             if len(line) == 0:
@@ -46,7 +51,7 @@ def store_editors(tasks, dbname, collection, input):
             if prev_contributor != contributor:
                 if edits > 9:
                     editor_cache.add(prev_contributor, 'NEXT')
-                    print 'Stored %s' % prev_contributor
+                    #print 'Stored %s' % prev_contributor
                 else:
                     editor_cache.clear(prev_contributor)
                 edits = 0

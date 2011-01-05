@@ -30,7 +30,9 @@ from Queue import Empty
 sys.path.append('..')
 import configuration
 settings = configuration.Settings()
-from utils import models, utils
+from utils import utils
+from utils import messages
+from utils import models
 from database import db
 from etl import shaper
 from analyses import cohort_charts
@@ -199,50 +201,50 @@ def create_windows():
     return windows
 
 
-def generate_cohort_dataset_old(tasks, dbname, collection, **kwargs):
-    mongo = db.init_mongo_db(dbname)
-    editors = mongo[collection + '_dataset']
-    windows = create_windows()
-    data = shaper.create_datacontainer('dict')
-    data = shaper.add_windows_to_datacontainer(data, windows)
-
-    while True:
-        id = tasks.get(block=False)
-        tasks.task_done()
-        if id == None:
-            break
-        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
-
-        first_edit = obs['first_edit']
-        last_edit = obs['final_edit']
-        editor_dt = relativedelta(last_edit, first_edit)
-        editor_dt = (editor_dt.years * 12) + editor_dt.months
-        edits = []
-        for year in xrange(2001, datetime.datetime.now().year + 1):
-            if first_edit.year > year or last_edit.year < year:
-                continue
-            window_end = datetime.datetime(year, 12, 31)
-            for window in windows:
-                window_start = window_end - relativedelta(months=window)
-                if window_start < datetime.datetime(2001, 1, 1):
-                    window_start = datetime.datetime(2001, 1, 1)
-
-                if editor_dt > 11:
-                    if date_falls_in_window(window_start, window_end, first_edit):
-                        edits.append(window)
-                elif window > editor_dt:
-                    data[year][window] += 1
-                    break
-
-            if edits != []:
-                w = min(edits)
-                data[year][w] += 1
-                edits = []
-
-
-    print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
-    utils.store_object(data, settings.binary_location, dbname + '_cohort_data.bin')
-    cohort_charts.prepare_cohort_dataset(dbname)
+#def generate_cohort_dataset_old(tasks, dbname, collection, **kwargs):
+#    mongo = db.init_mongo_db(dbname)
+#    editors = mongo[collection + '_dataset']
+#    windows = create_windows()
+#    data = shaper.create_datacontainer('dict')
+#    data = shaper.add_windows_to_datacontainer(data, windows)
+#
+#    while True:
+#        id = tasks.get(block=False)
+#        tasks.task_done()
+#        if id == None:
+#            break
+#        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
+#
+#        first_edit = obs['first_edit']
+#        last_edit = obs['final_edit']
+#        editor_dt = relativedelta(last_edit, first_edit)
+#        editor_dt = (editor_dt.years * 12) + editor_dt.months
+#        edits = []
+#        for year in xrange(2001, datetime.datetime.now().year + 1):
+#            if first_edit.year > year or last_edit.year < year:
+#                continue
+#            window_end = datetime.datetime(year, 12, 31)
+#            for window in windows:
+#                window_start = window_end - relativedelta(months=window)
+#                if window_start < datetime.datetime(2001, 1, 1):
+#                    window_start = datetime.datetime(2001, 1, 1)
+#
+#                if editor_dt > 11:
+#                    if date_falls_in_window(window_start, window_end, first_edit):
+#                        edits.append(window)
+#                elif window > editor_dt:
+#                    data[year][window] += 1
+#                    break
+#
+#            if edits != []:
+#                w = min(edits)
+#                data[year][w] += 1
+#                edits = []
+#
+#
+#    print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
+#    utils.store_object(data, settings.binary_location, dbname + '_cohort_data.bin')
+#    cohort_charts.prepare_cohort_dataset(dbname)
 
 
 
@@ -353,7 +355,7 @@ def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):
             id = input_queue.get(block=False)
             if id == None:
                 break
-            print input_queue.qsize()
+            print messages.show(input_queue.qsize)
             obs = editors.find_one({'editor': id})
             obs = expand_observations(obs, vars_to_expand)
             if x == 0:
@@ -382,7 +384,7 @@ def dataset_launcher(dbname, collection, target):
     #consumers = [multiprocessing.Process(target=target, args=(tasks, dbname, collection)) for i in xrange(settings.number_of_processes)]
     for editor in editors:
         tasks.put(editor)
-    print 'The queue contains %s editors.' % tasks.qsize()
+    print 'The queue contains %s editors.' % messages.show(tasks.qsize)
     tasks.put(None)
     target(tasks, dbname, collection)
 

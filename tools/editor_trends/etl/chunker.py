@@ -259,6 +259,6 @@ if __name__ == "__main__":
               'file': settings.input_filename,
               'project':'wiki',
               'language_code':'en',
-              'format': 'tsv'
+              'format': 'csv'
               }
     split_file(**kwargs)

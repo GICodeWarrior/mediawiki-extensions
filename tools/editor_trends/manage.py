@@ -40,8 +40,9 @@ from utils import ordered_dict
 from utils import exceptions
 from database import db
 from etl import chunker
-from etl import extract
-from etl import loader
+from etl import extracter
+from etl import store
+from etl import sort
 from etl import transformer
 from etl import exporter
 
@@ -233,7 +234,7 @@ def extract_launcher(args, logger, **kwargs):
     language_code = kwargs.pop('language_code')
     project = kwargs.pop('project')
     write_message_to_log(logger, args, location=location, language_code=language_code, project=project)
-    extract.run_parse_editors(location, **kwargs)
+    extracter.parse_dumpfile(project, language_code, namespaces=['0'])
     timer.elapsed()
 
 
@@ -245,7 +246,7 @@ def sort_launcher(args, logger, **kwargs):
     output = os.path.join(location, 'sorted')
     final_output = os.path.join(location, 'dbready')
     write_message_to_log(logger, args, location=location, input=input, output=output, final_output=final_output)
-    loader.mergesort_launcher(input, output)
+    sort.mergesort_launcher(input, output)
     #loader.mergesort_external_launcher(output, final_output)
     timer.elapsed()
 
@@ -277,6 +278,9 @@ def transformer_launcher(args, logger, **kwargs):
     transformer.transform_editors_single_launcher(project, collection)
     timer.elapsed()
 
+
+def debug_launcher(args, logger, **kwargs):
+    pass
 
 def exporter_launcher(args, logger, **kwargs):
     print 'Start exporting dataset'
@@ -319,8 +323,8 @@ def all_launcher(args, logger, **kwargs):
     if clean:
         cleanup(logger, args, **kwargs)
 
-    if format != 'xml':
-        ignore = ignore + ',extract'
+    #if format != 'xml':
+    #    ignore = ignore + ',extract'
 
     functions = ordered_dict.OrderedDict(((dump_downloader_launcher, 'download'),
                                           #(chunker_launcher, 'split'),
@@ -380,8 +384,8 @@ def about():
 def main():
     default_language = determine_default_language()
 
-    datasets = {'cohort': 'generate_cohort_dataset',
-                'long': 'generate_long_editor_dataset',
+    datasets = {'forward': 'generate_cohort_dataset_forward',
+                'backward': 'generate_cohort_dataset_backward',
                 'wide': 'generate_wide_editor_dataset',
                 }
 
@@ -425,6 +429,9 @@ def main():
 
     parser_dataset = subparsers.add_parser('export', help='Create a dataset from the MongoDB and write it to a csv file.')
     parser_dataset.set_defaults(func=exporter_launcher)
+
+    parser_debug = subparsers.add_parser('debug', help='Input custom dump files for debugging purposes')
+    parser_debug.set_defaults(func=debug_launcher)
 
     parser_all = subparsers.add_parser('all', help='The all sub command runs the download, split, store and dataset commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
@@ -477,7 +484,7 @@ def main():
     parser.add_argument('-d', '--datasets', action='store',
                         choices=datasets.keys(),
                         help='Indicate what type of data should be exported.',
-                        default=datasets['cohort'])
+                        default=datasets['backward'])
 
     parser.add_argument('-prog', '--progress', action='store_true', default=True,
                       help='Indicate whether you want to have a progressbar.')

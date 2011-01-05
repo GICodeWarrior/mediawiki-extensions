@@ -31,7 +31,8 @@ settings = configuration.Settings()
 from database import db
 from database import cache
 from utils import utils
-from utils import sort
+from utils import messages
+
 
 
 #def mergesort_external_launcher(input, output):
@@ -112,9 +113,9 @@ def merge_sorted_files(output, files, iteration):
 
 
 def write_sorted_file(sorted_data, file, output):
-    file = file.split('.')
-    file[0] = file[0] + '_sorted'
-    file = '.'.join(file)
+    #file = file.split('.')
+    #file[0] = file[0] + '_sorted'
+    #file = '.'.join(file)
     fh = utils.create_txt_filehandle(output, file, 'w', settings.encoding)
     utils.write_list_to_csv(sorted_data, fh)
     fh.close()
@@ -135,7 +136,7 @@ def mergesort_feeder(tasks, input, output):
             data = [d.split('\t') for d in data]
             sorted_data = mergesort(data)
             write_sorted_file(sorted_data, file, output)
-            print file, tasks.qsize()
+            print file, messages.show(tasks.qsize)
         except Empty:
             break
 
@@ -165,6 +166,6 @@ if __name__ == '__main__':
     output = os.path.join(settings.input_location, 'en', 'wiki', 'dbready')
     dbname = 'enwiki'
     collection = 'editors'
-    #mergesort_launcher(input, intermediate_output)
+    mergesort_launcher(input, intermediate_output)
     #mergesort_external_launcher(intermediate_output, output)
-    num_editors = store_editors(output, dbname, collection)
+    #num_editors = store_editors(output, dbname, collection)

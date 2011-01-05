@@ -15,12 +15,13 @@ import cProfile
 import configuration
 settings = configuration.Settings()
 
-from etl import extract
-from utils import models
-from wikitree import xml
-from utils import utils
-from etl import chunker
 
+from utils import models
+from utils import messages
+from utils import utils
+from etl import extract
+from etl import chunker
+from wikitree import parser
 
 def extract_article_talk_pages(page, output, **kwargs):
     tags = {'title': xml.extract_text,
@@ -88,7 +89,7 @@ def article_to_talk_launcher(**kwargs):
     for x in xrange(settings.number_of_processes):
         tasks.put(None)
 
-    print tasks.qsize()
+    print messages.show(tasks.qsize)
     for w in consumers:
         w.start()
 

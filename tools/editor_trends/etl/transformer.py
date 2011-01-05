@@ -27,9 +27,10 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 from database import db
-from utils import process_constructor as pc
+#from utils import process_constructor as pc
 from utils import utils
 from utils import models
+from utils import messages
 import exporter
 import shaper
 
@@ -46,7 +47,7 @@ class EditorConsumer(models.BaseConsumer):
         while True:
             new_editor = self.task_queue.get()
             self.task_queue.task_done()
-            print '%s editors to go...' % self.task_queue.qsize()
+            print '%s editors to go...' % messages.show(self.task_queue.qsize)
             if new_editor == None:
                 break
             new_editor()
@@ -96,7 +97,7 @@ class Editor(object):
                           'monthly_edits': monthly_edits,
                           'last_edit_by_year': last_edit_by_year,
                           'username': username
-                          })
+                          }, safe=True)
 
 
 def determine_last_edit_by_year(edits):
@@ -162,7 +163,7 @@ def transform_editors_multi_launcher(dbname, collection):
     for x in xrange(settings.number_of_processes):
         tasks.put(None)
 
-    print tasks.qsize()
+    print messages.show(tasks.qsize)
     for w in consumers:
         w.start()
 
