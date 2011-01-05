@@ -15,13 +15,19 @@ class Special404 extends UnlistedSpecialPage {
 		global $wgOut, $wgRequest, $egSpecial404RedirectExistingRoots;
 		
 		if ( $egSpecial404RedirectExistingRoots ) {
-			$t = Title::newFromText($wgRequest->getRequestURL());
-			if ( !is_object($t) || !$t->exists() ) {
-				$t = Title::newFromText(trim($wgRequest->getRequestURL(), '/\\'));
-			}
-			if ( is_object($t) && $t->exists() ) {
-				$wgOut->redirect( $t->getFullURL(), 301 );
-				return;
+			$t = null;
+			$titles = array(
+				$wgRequest->getRequestURL(),
+				trim($wgRequest->getRequestURL(), '/\\'),
+				urldecode($wgRequest->getRequestURL()),
+				urldecode(trim($wgRequest->getRequestURL(), '/\\')),
+			);
+			foreach ( $titles as $pageTitle ) {
+				$t = Title::newFromText($pageTitle);
+				if ( is_object($t) && $t->exists() ) {
+					$wgOut->redirect( $t->getFullURL(), 301 );
+					return;
+				}
 			}
 		}
 		
