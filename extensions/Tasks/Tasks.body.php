@@ -49,7 +49,7 @@ class SpecialTasks extends IncludableSpecialPage {
 			return $key;
 		}
 	}
-		
+
 	/**
 	 * Returns the text key for a given task type constant
 	 * @param $num numeric key
@@ -62,14 +62,12 @@ class SpecialTasks extends IncludableSpecialPage {
 		}
 		return $this->task_types[$num];
 	}
-		
+
 	/**
 	 * Updates task_types and creation_tasks from wfMsg
 	 * @fixme Provide localized display names for user's UI language
 	 */
 	function update_types() { # Checked for HTML and MySQL insertion attacks
-		wfLoadExtensionMessages('Tasks');
-
 		# task type numeric key, text key, localized text
 		$this->task_types = array();
 		$s = wfMsgForContent( 'tasks_task_types' );
@@ -179,7 +177,7 @@ class SpecialTasks extends IncludableSpecialPage {
 				$tg[$t->task_type] = $t->task_status;
 			}
 		}
-			
+
 		foreach( array_keys( $this->task_types ) as $a ) {
 			if( $exists == $this->is_creation_task( $a ) ) {
 				# Creation task and existence exclude each other
@@ -222,7 +220,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		}
 		return $out;
 	}
-		
+
 	/**
 	 * Adds a new task
 	 */
@@ -249,7 +247,7 @@ class SpecialTasks extends IncludableSpecialPage {
 				'task_timestamp'     => $dbw->timestamp()
 				) );
 	}
-		
+
 	/**
 	 * For a list of tasks, get a single table row
 	 * This function is heavy on output!
@@ -257,7 +255,7 @@ class SpecialTasks extends IncludableSpecialPage {
 	function get_task_table_row( &$task, &$title, $show_page = false, $returnto = '' ) { # Checked for HTML and MySQL insertion attacks
 		global $wgContLang, $wgUser, $wgTasksNamespace, $wgExtraNamespaces;
 		$out = '';
-		$sk =& $wgUser->getSkin();
+		$sk = $wgUser->getSkin();
 		$ct = $wgContLang->timeanddate( $task->task_timestamp ); # Time object from string of digits
 		$cu = Title::makeTitleSafe( NS_USER, $task->task_user_text ); # Safe user name
 		$comment = htmlspecialchars( $task->task_comment ); # Safe user comment, no HTML allowed
@@ -355,7 +353,7 @@ class SpecialTasks extends IncludableSpecialPage {
 			if( $wgUser->isAllowed( 'delete' ) ) {
 				$txt[] = $sk->makeLinkObj( $title, wfMsgHTML( 'tasks_delete' ), "action=tasks&mode=delete&taskid={$tid}{$returnto}" );
 			}
-				
+
 			if( count( $txt ) > 0 ) {
 				$out .= '<br />' . implode( ' - ', $txt );
 			}
@@ -364,7 +362,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		$tdp = $this->get_task_discussion_page( $task );
 		$out .= '<br />' . $sk->makeLinkObj( $tdp, wfMsgHTML('tasks_discussion_page_link') );
 		$out .= '</td></tr>' ;
-			
+
 		# Transclude comments page, if wanted
 		if( $wgUser->getOption( 'show_task_comments' ) ) {
 			if( $this->pagemode == 'search' || $this->pagemode == 'tasks_of_page' ) {
@@ -375,7 +373,7 @@ class SpecialTasks extends IncludableSpecialPage {
 	}
 
 	/**
-	 * Returns the 
+	 * Returns the
 	 * @param Title $title of task page to load
 	 * @param int $col_compensator Number of table columns to span
 	 * @return string HTML table row, or empty string
@@ -417,12 +415,12 @@ class SpecialTasks extends IncludableSpecialPage {
 		}
 
 		$out = "<h2>" . wfMsgHTML( 'tasks_existing_header' ) . "</h2>\n" .
-			"<table border='1' cellspacing='1' cellpadding='2'>" . 
+			"<table border='1' cellspacing='1' cellpadding='2'>" .
 			"<tr>" . self::getTableHeader() . "</tr>" .
 			$out . "</table>";
 		return $out;
 	}
-		
+
 	/**
 	 * Checks if there's a "mode" set in the URL of the current page
 	 * (performs changes on tasks, like assigning or closing them)
@@ -532,7 +530,7 @@ class SpecialTasks extends IncludableSpecialPage {
 
 		return $out;
 	}
-		
+
 	/**
 	 * Returns the number for the status
 	 * @param string $status key
@@ -547,7 +545,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		# Invalid status
 		return 0;
 	}
-		
+
 	/**
 	 * Changes the status of a task, performs some associated cleanup, and logs the action
 	 */
@@ -589,8 +587,8 @@ class SpecialTasks extends IncludableSpecialPage {
 		$log = new LogPage( 'tasks' );
 		$log->addEntry( 'tasks', $title, $act );
 	}
-		
-		
+
+
 	/**
 	 * Returns the list of active tasks for this page, for display in the sidebar
 	 */
@@ -692,9 +690,9 @@ class SpecialTasks extends IncludableSpecialPage {
 		$dbw->update( 'tasks',
 			array( 'task_page_title' => $new_title->getPrefixedDBkey() ), # SET
 			array( 'task_page_title' => $old_title->getPrefixedDBkey() ), # WHERE
-			__METHOD__ );			
+			__METHOD__ );
 	}
-		
+
 	/**
 	 * THIS IS THE MAIN FUNCTION FOR THE TAB-BASED INTERFACE
 	 */
@@ -747,7 +745,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		}
 		return false;
 	}
-		
+
 	/**
 	 * Confirm that the given redirect page is local to this site
 	 * FIXME: this can still pass you anywhere on the domain,
@@ -806,7 +804,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		      . '</form>';
 		return $out;
 	}
-		
+
 	/**
 	 * Returns the exisiting tasks for a single page
 	 */
@@ -857,7 +855,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		krsort( $ret );
 		return $ret;
 	}
-	
+
 	/**
 	 * Special page main function
 	 */
@@ -868,7 +866,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		$mode = trim( $wgRequest->getVal( 'mode' ) );
 		$skin = $wgUser->getSkin();
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		# Assignments
 		if( $wgUser->isLoggedIn() ) {
 			if( $mode == 'myassignments' ) {
@@ -928,7 +926,7 @@ class SpecialTasks extends IncludableSpecialPage {
 			$status_type = $_POST['status_type'];
 		}
 		$ascending = $wgRequest->getCheck( 'ascending' );
-			
+
 		$get_task_type = $wgRequest->getInt( 'task_type' , 0 ) ;
 		if ( count ( $task_type ) == 0 && $get_task_type > 0 ) {
 			$task_type = array() ;
@@ -957,7 +955,7 @@ class SpecialTasks extends IncludableSpecialPage {
 				# No choice => search all
 				$search_status = array_keys( $this->status_types );
 			}
-				
+
 			$limit = intval( wfMsg( 'tasks_search_limit' ) );
 			$offset = $wgRequest->getInt( 'offset', 0 );
 			if( $wgRequest->getCheck( 'next' ) ) {
@@ -1058,7 +1056,7 @@ class SpecialTasks extends IncludableSpecialPage {
 		$this->setHeaders();
 		$wgOut->addHTML( $out );
 	}
-		
+
 	/**
 	 * Format an HTML checkbox
 	 * @param string $name

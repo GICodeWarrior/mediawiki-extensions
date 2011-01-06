@@ -24,9 +24,9 @@ class TasksHooks {
 			self::headerSign( $title );
 			return true;
 		}
-	
+
 		$subtitle = '';
-	
+
 		if( ctype_digit( $title->getText() ) ) {
 			// Page title format 'Task:123', suggested by Rowan Collins
 			$taskid = intval( $title->getText() );
@@ -35,7 +35,6 @@ class TasksHooks {
 			return true;
 		}
 
-		wfLoadExtensionMessages('Tasks');
 		$st = new SpecialTasks();
 		$task = '';
 		$page_title = $st->get_title_from_task( $taskid, $task );
@@ -49,11 +48,11 @@ class TasksHooks {
 		$link1 = $sk->makeLinkObj( $page_title );
 		$link2 = $sk->makeLinkObj( $page_title, wfMsgHTML( 'tasks_here' ), 'action=tasks' );
 		$subtitle .= '<div id="task_header">' . wfMsgForContent( 'tasks_discussion_page_for', $link1, $link2 ) . "</div>\n" ;
-		$subtitle .= '<table border="1" cellspacing="1" cellpadding="2" id="task_header_table">' . 
+		$subtitle .= '<table border="1" cellspacing="1" cellpadding="2" id="task_header_table">' .
 				'<tr>' . SpecialTasks::getTableHeader( false ) . "</tr>\n";
 		$subtitle .= $st->get_task_table_row( $task, $page_title, false, $returnto );
 		$subtitle .= "</table>\n";
-	
+
 		$subtitle = $wgOut->getSubtitle() . '<br />' . $subtitle;
 		$wgOut->setSubtitle( $subtitle );
 		return true;
@@ -74,14 +73,13 @@ class TasksHooks {
 			return true;
 		}
 
-		wfLoadExtensionMessages('Tasks');
 		$st = new SpecialTasks();
 		$tasks = $st->get_open_task_list( $title, true );
 		if( count( $tasks ) == 0 ) {
-			# No tasks	
+			# No tasks
 			return true;
 		}
-	
+
 		$out = '';
 		$max = 0;
 		foreach( $tasks as $task ) {
@@ -105,10 +103,10 @@ class TasksHooks {
 			# Nothing for you to see here, please move along
 			return;
 		}
-	
+
 		// Wiki-safe output
 		$out = $wgOut->parse( '<div id="task_sign">' . $max_msg . '</div>' );
-	
+
 		$subtitle = $wgOut->getSubtitle() . '<br />' . $out;
 		$wgOut->setSubtitle( $subtitle );
 	}
@@ -126,12 +124,11 @@ class TasksHooks {
 			# No special pages please
 			return true;
 		}
-	
-		wfLoadExtensionMessages('Tasks');
+
 		$st = new SpecialTasks;
 		$tasks = $st->get_open_task_list( $wgTitle, true );
 		if( count( $tasks ) == 0 ) {
-			# No tasks	
+			# No tasks
 			return true;
 		}
 
@@ -160,7 +157,7 @@ class TasksHooks {
 				}
 				?></li>
 <?php
-		
+
 		}
 		return true;
 	}
@@ -174,8 +171,6 @@ class TasksHooks {
 			return false;
 		}
 
-		wfLoadExtensionMessages('Tasks');
-
 		$st = new SpecialTasks;
 		$st->rename_tasks_page( $old_title, $new_title );
 		return false;
@@ -187,7 +182,6 @@ class TasksHooks {
 	 */
 	public static function onArticleDeleteComplete( &$article, &$user, $reason ) { # Checked for HTML and MySQL insertion attacks
 		# return false ; # Uncomment this line to prevent deletion of tasks upon deletion of article
-		wfLoadExtensionMessages('Tasks');
 		$t = $article->getTitle();
 		if( $t->isTalkPage() ) {
 			# No tasks for talk pages, no need to bother the database...
@@ -214,16 +208,15 @@ class TasksHooks {
 	 */
 	public static function onArticleInsertComplete( &$article, &$user, $text, $summary, $isminor, $watchthis, $something ) { # Checked for HTML and MySQL insertion attacks
 		global $wgUser;
-		wfLoadExtensionMessages('Tasks');
 		$t = $article->getTitle();
 		if( $t->isTalkPage() ) {
 			# No tasks for talk pages, no need to bother the database...
 			return false;
 		}
-	
+
 		$st = new SpecialTasks;
 		$tasks = $st->get_tasks_for_page( $t, true );
-	
+
 		# Mark creation tasks as closed
 		foreach( $tasks as $task ) {
 			if( !$st->is_creation_task( $task->task_type ) ) {
@@ -236,13 +229,13 @@ class TasksHooks {
 			}
 			$st->change_task_status( $task->task_id, MW_TASK_CLOSED );
 			$st->set_new_article_id( $t );
-		
+
 			$id = $t->getArticleId();
 			# Nothing more to do
 			break;
 		}
-	
-		# OPTIONALLY create a new task 
+
+		# OPTIONALLY create a new task
 		$on_create = $st->get_task_num( wfMsgForContent( 'tasks_event_on_creation' ) );
 		$on_create_anon = $st->get_task_num( wfMsgForContent( 'tasks_event_on_creation_anon' ) );
 		$add_task = MW_TASK_INVALID;
@@ -255,7 +248,7 @@ class TasksHooks {
 			$comment = htmlspecialchars( wfMsgForContent( 'tasks_on_creation_comment' ) );
 			$st->add_new_task( $t, $comment, $add_task ) ;
 		}
-	
+
 		return false;
 	}
 
@@ -275,7 +268,7 @@ class TasksHooks {
 	 * @param array $content_actions
 	 * @return bool true to continue running other hooks, false to abort operation
 	 */
-	public static function onSkinTemplateTabs( $skin, &$content_actions ) { # Checked for HTML and MySQL insertion attacks
+	public static function onSkinTemplateNavigation( $skin, &$content_actions ) { # Checked for HTML and MySQL insertion attacks
 		global $wgTitle, $wgRequest;
 
 		if( $wgTitle->isTalkPage() ) {
@@ -287,8 +280,7 @@ class TasksHooks {
 			return true;
 		}
 
-		wfLoadExtensionMessages('Tasks');
-		$content_actions['tasks'] = array(
+		$content_actions['actions']['tasks'] = array(
 			'class' => ($wgRequest->getVal( 'action', 'view' ) == 'tasks') ? 'selected' : false,
 			'text' => wfMsgHTML('tasks_tab'),
 			'href' => $wgTitle->getLocalUrl( 'action=tasks' )
@@ -304,9 +296,7 @@ class TasksHooks {
 			# Not my kind of action!
 			return true;
 		}
-	
-		wfLoadExtensionMessages('Tasks');
-	
+
 		$t = new SpecialTasks;
 		return $t->page_management( $article->getTitle() );
 	}
