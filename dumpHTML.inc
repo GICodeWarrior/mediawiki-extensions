@@ -796,7 +796,7 @@ class DumpHTML {
 		$ns = $wgTitle->getNamespace();
 		if ( $ns == NS_SPECIAL ) {
 			$wgOut = new OutputPage;
-			$wgOut->setParserOptions( new ParserOptions );
+			$wgOut->parserOptions( new ParserOptions );
 			SpecialPage::executePath( $wgTitle );
 		} else {
 			/** @todo merge with Wiki.php code */
@@ -812,7 +812,7 @@ class DumpHTML {
 				return $this->getRedirect( $rt );
 			} else {
 				$wgOut = new OutputPage;
-				$wgOut->setParserOptions( new ParserOptions );
+				$wgOut->parserOptions( new ParserOptions );
 
 				$wgArticle->view();
 			}
