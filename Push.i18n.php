@@ -238,6 +238,7 @@ $messages['de'] = array(
 	'push-tab-no-embedded-files' => '(Auf dieser Seite gibt es keine eingebetteten Dateien.)',
 	'push-tab-files-override' => 'Diese Dateien sind bereits vorhanden: $1',
 	'push-tab-template-override' => 'Diese Vorlagen sind bereits vorhanden: $1',
+	'push-tab-err-uploaddisabled' => 'Das Hochladen von Dateien ist nicht möglich. Die Parameter $wgEnableUploads und $wgAllowCopyUploads müssen in der Datei LocalSettings.php des Zielwikis auf „true“ gesetzt werden.',
 	'special-push' => 'Seiten transferieren',
 	'push-special-description' => 'Diese Spezialseite ermöglicht es den Inhalt einer oder mehrerer Seiten zu einem oder mehreren anderen Wikis zu transferieren.
 
@@ -505,6 +506,7 @@ $messages['ia'] = array(
 	'push-tab-no-embedded-files' => '(Nulle file es incastrate in iste pagina.)',
 	'push-tab-files-override' => 'Iste files ja existe: $1',
 	'push-tab-template-override' => 'Iste patronos ja exite: $1',
+	'push-tab-err-uploaddisabled' => 'Le incargamento non es activate. Assecura te que le variabiles $wgEnableUploads e $wgAllowCopyUploads sia specificate como "true" in le file LocalSettings.php del wiki de destination.',
 	'special-push' => 'Transferer paginas',
 	'push-special-description' => 'Iste pagina permitte transferer le contento de un o plus paginas a un o plus wikis MediaWiki.
 
@@ -570,6 +572,7 @@ $messages['id'] = array(
 	'push-tab-no-embedded-files' => '(Tidak ada berkas yang tersemat pada halaman ini.)',
 	'push-tab-files-override' => 'Berkas berikut telah ada: $1',
 	'push-tab-template-override' => 'Templat berikut telah ada: $1',
+	'push-tab-err-uploaddisabled' => 'Pengunggahan tidak aktif. Pastikan $wgEnableUploads dan $wgAllowCopyUploads disetel sebagai true dalam LocalSettings.php wiki target.',
 	'special-push' => 'Dorong halaman',
 	'push-special-description' => 'Halaman ini memungkinkan Anda untuk mendorong satu atau lebih halaman ke satu atau lebih wiki MediaWiki.
 
