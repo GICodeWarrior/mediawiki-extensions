@@ -57,7 +57,7 @@
 					'action': 'query',
 					'format': 'json',
 					'list': 'livetranslate',
-					'ltlanguage': currentLang,
+					'ltlanguage': currentLang
 				},
 				function( data ) {
 					if ( data.words ) {
@@ -105,7 +105,7 @@
 					'format': 'json',
 					'from': currentLang,
 					'to': newLang,
-					'words': words.join( '|' ),
+					'words': words.join( '|' )
 				},
 				function( data ) {
 					if ( data.translations ) {
@@ -209,7 +209,7 @@
 		
 		element.contents().each( function() {
 			// If it's a text node, then translate it.
-			if ( this.nodeType == 3 && this.data != undefined && this.data.trim().length > 0 ) {
+			if ( this.nodeType == 3 && this.data != undefined && jQuery.trim( this.data ).length > 0 ) {
 				runningJobs++;
 				translateChunk(
 					this.data.split( new RegExp( "(\\S.+?[.!?])(?=\\s+|$)", "gi" ) ),
