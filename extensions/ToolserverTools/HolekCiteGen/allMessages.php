@@ -169,6 +169,15 @@ $messages['br'] = array(
 	'ts-citegen-base-disabled' => "Fa zi : N'haller ket tizhout diaz roadennoù %s.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'ts-citegen-Skin-skins' => 'Kože',
+	'ts-citegen-Sources-title' => 'Izvori',
+	'ts-citegen-Tools' => 'Alati',
+);
+
 /** German (Deutsch)
  * @author Holek
  * @author Kghbln

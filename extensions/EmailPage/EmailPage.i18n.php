@@ -573,6 +573,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'e-mailpage' => 'Säit per Mail schécken',
+	'ea-desc' => 'Schéckt generéiert HTML-Säiten un eng E-Mailadress oder eng Lëscht vun E-Mailadresse mat [http://phpmailer.sourceforge.net phpmailer]',
 	'ea-heading' => '=== Säit [[$1]] peer E-Mail verschécken ===',
 	'ea-group-info' => "Zousätzlech kënnt Dir d'Säit de Membere vun engem Grupp schécken",
 	'ea-pagesend' => 'D\'Säit "$1" gouf verschéckt vum $2',

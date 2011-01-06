@@ -283,12 +283,18 @@ $messages['no'] = array(
 
 /** Polish (Polski)
  * @author Byulent
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'livetranslate-desc' => 'Włącza tłumaczenie zawartości strony na żywo z wykorzystaniem serwisu tłumaczącego Google',
 	'livetranslate-translate-to' => 'Przetłumacz tę stronę na',
 	'livetranslate-button-translate' => 'Tłumacz',
 	'livetranslate-button-translating' => 'Tłumaczenie...',
 	'livetranslate-button-revert' => 'Pokaż w oryginale',
+	'livetranslate-dictionary-error' => 'Nie można uzyskać dostępu na żywo do słownika tłumaczącego. Żadne słowo nie będzie traktowane specjalnie w czasie wykonywania tłumaczenia.',
+	'livetranslate-dictionary-empty' => 'Na razie brak jest jeszcze słów w słowniku. Kliknij zakładkę „Edytuj“ aby jakieś dodać.',
+	'livetranslate-dictionary-count' => '{{PLURAL:$1|Jest $1 słowo|Są $1 słowa|Jest $1 słów}} w $2 {{PLURAL:$2|języku|językach}}. Kliknij zakładkę „Edytuj“ aby dodać następne.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Język $1 nie jest obecnie dostępny jako docelowy|Języki $1 nie są obecnie dostępne jako docelowe}} dla tłumaczeń. Zmień dopuszczalne języki w konfiguracji swojej wiki lub usuń to ze słownika.',
 );
 
 /** Piedmontese (Piemontèis)
