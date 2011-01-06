@@ -67,6 +67,7 @@ class InlineScriptsHooks {
 
 	/**
 	 * Register parser hook
+	 * @param $parser Parser
 	 */
 	public static function setupParserHook( &$parser ) {
 		$parser->setFunctionTagHook( 'wikiscript', 'InlineScriptsHooks::scriptHook', SFH_OBJECT_ARGS );
@@ -74,6 +75,11 @@ class InlineScriptsHooks {
 		return true;
 	}
 
+	/**
+	 * @static
+	 * @param  $parser Parser
+	 * @return bool
+	 */
 	public static function clearState( &$parser ) {
 		$parser->is_evalsCount = 0;
 		$parser->is_tokensCount = 0;
@@ -81,6 +87,13 @@ class InlineScriptsHooks {
 		return true;
 	}
 
+	/**
+	 * @static
+	 * @param  $parser Parser
+	 * @param  $frame
+	 * @param  $args
+	 * @return string
+	 */
 	public static function inlineHook( &$parser, $frame, $args ) {
 		wfProfileIn( __METHOD__ );
 		$scriptParser = self::getInterpreter();
@@ -96,6 +109,14 @@ class InlineScriptsHooks {
 		return trim( $result );
 	}
 
+	/**
+	 * @static
+	 * @param  $parser Parser
+	 * @param  $frame
+	 * @param  $code
+	 * @param  $attribs
+	 * @return string
+	 */
 	public static function scriptHook( &$parser, $frame, $code, $attribs ) {
 		wfProfileIn( __METHOD__ );
 		$scriptParser = self::getInterpreter();
@@ -113,6 +134,12 @@ class InlineScriptsHooks {
 		return trim( $result );
 	}
 
+	/**
+	 * @static
+	 * @param  $parser Parser
+	 * @param  $report
+	 * @return bool
+	 */
 	public static function reportLimits( &$parser, &$report ) {
 		global $wgInlineScriptsLimits;
 		$i = self::getInterpreter();
@@ -123,9 +150,14 @@ class InlineScriptsHooks {
 		return true;
 	}
 
+	/**
+	 * @static
+	 * @return InlineScriptInterpreter
+	 */
 	public static function getInterpreter() {
-		if( !self::$scriptParser )
+		if( !self::$scriptParser ) {
 			self::$scriptParser = new InlineScriptInterpreter();
+		}
 		return self::$scriptParser;
 	}
 }
