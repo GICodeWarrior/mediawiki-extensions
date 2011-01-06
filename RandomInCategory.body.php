@@ -45,7 +45,7 @@ class RandomPageInCategory extends SpecialPage {
 			return;
 		}
 
-		$wgOut->reportTime();
+		wfReportTime(); #FIXME: this does nothing?
 		$wgOut->redirect( $title->getFullUrl() );
 	}
 
