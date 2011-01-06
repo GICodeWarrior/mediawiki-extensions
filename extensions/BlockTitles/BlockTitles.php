@@ -46,8 +46,7 @@ function wfCheckBlockTitles ( &$article ) {
 	foreach ( $wgBlockTitlePatterns as $re ) {
 		if ( preg_match( $re, $t ) ) {
 			// too bad you can't pass parameter to errorpage
-			$wgOut->errorpage( 'block_title_error_page_title', 'block_title_error' );
-			return false;
+			throw new ErrorPageError( 'block_title_error_page_title', 'block_title_error' );
 		}
 	}
 

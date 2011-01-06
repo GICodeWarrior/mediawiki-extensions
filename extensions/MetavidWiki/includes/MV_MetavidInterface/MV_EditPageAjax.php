@@ -312,7 +312,7 @@
 			if ( $title instanceof Title && $title->exists() && $title->userCanRead() ) {
 				global $wgOut;
 				$revision = Revision::newFromTitle( $title );
-				$wgOut->addSecondaryWikiText( $revision->getText() );
+				$wgOut->addWikiText( $revision->getText() );
 				return true;
 			} else {
 				return false;
