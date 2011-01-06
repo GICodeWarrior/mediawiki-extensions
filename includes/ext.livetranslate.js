@@ -205,8 +205,7 @@
 	function translateElement( element, sourceLang, targetLang ) {
 		runningJobs++;
 		
-		// Max chunk size is 500 - 2 for the anti-trim delimiters.
-		var maxChunkLength = 498;
+		var maxChunkLength = 500;
 		
 		element.contents().each( function() {
 			// If it's a text node, then translate it.
@@ -288,15 +287,16 @@
 			return;
 		}
 
+		var leadingSpace = chunk.substr( 0, 1 ) == ' ' ? ' ' : '';
+		var tailingSpace = ( chunk.length > 1 && chunk.substr( chunk.length - 1, 1 ) == ' ' ) ? ' ' : '';
+		
 		google.language.translate(
-			// Surround the text stuff so spaces and newlines don't get trimmed away.
-			'|' + chunk + '|',
+			jQuery.trim( chunk ),
 			sourceLang,
 			targetLang,
 			function(result) {
-				if ( result.translation && result.translation.length >= 2 ) {
-					// Remove the trim-preventing stuff and add the result to the chunks array.
-					chunks.push( result.translation.substr( 1, result.translation.length -2 ) );
+				if ( result.translation ) {
+					chunks.push( leadingSpace + result.translation + tailingSpace );
 				}
 				else {
 					// If the translation failed, keep the original text.
@@ -328,7 +328,7 @@
 		if ( !--runningJobs ) {
 			currentLang = targetLang;
 			$( '#livetranslatebutton' ).attr( "disabled", false ).text( mediaWiki.msg( 'livetranslate-button-translate' ) );
-			$('#ltrevertbutton').css( 'display', 'inline' );
+			$( '#ltrevertbutton' ).css( 'display', 'inline' );
 		}
 	}
 	
