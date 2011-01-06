@@ -543,9 +543,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	}
 
 	function SaveValues( $request, $sreg ) {
-		global $wgSessionStarted, $wgUser;
-
-		if ( !$wgSessionStarted ) {
+		if( session_id() == '' ) {
 			wfSetupSession();
 		}
 

@@ -258,14 +258,14 @@ class SpecialOpenID extends SpecialPage {
 
 		// Create AX fetch request and add attributes
 		$ax_request = new Auth_OpenID_AX_FetchRequest;
-		
+
 		foreach($attribute as $attr){
 			$ax_request->add($attr);
 		}
 
 		if ($ax_request) {
 			$auth_request->addExtension($ax_request);
-		}		
+		}
 
 		$process_url = $this->scriptUrl( $finish_page );
 
@@ -316,9 +316,7 @@ class SpecialOpenID extends SpecialPage {
 	}
 
 	protected function setupSession() {
-		global $wgSessionStarted;
-
-		if ( !$wgSessionStarted ) {
+		if( session_id() == '' ) {
 			wfSetupSession();
 		}
 	}
