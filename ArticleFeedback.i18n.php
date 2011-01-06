@@ -1745,6 +1745,16 @@ $messages['sah'] = array(
 	'articlefeedback-survey-submit' => 'Ыытарга',
 	'articlefeedback-survey-title' => 'Бука диэн аҕыйах ыйытыыга хоруйдаа эрэ',
 	'articlefeedback-survey-thanks' => 'Ыйытыыларга хоруйдаабыккар махтанабыт.',
+	'articlefeedback-form-switch-label' => 'Хоруй-алтыһыы',
+	'articlefeedback-form-panel-title' => 'Эн этииҥ',
+	'articlefeedback-form-panel-instructions' => 'Бука диэн бу сирэйгэ сыанабылла туруор эрэ.',
+	'articlefeedback-form-panel-submit' => 'Санаа этиитэ',
+	'articlefeedback-report-switch-label' => 'Түмүктэрин көрдөр',
+	'articlefeedback-report-panel-title' => 'Харда түмүктэрэ',
+	'articlefeedback-report-panel-description' => 'Билиҥҥи орто сыанабыллар.',
+	'articlefeedback-report-empty' => 'Сыанабыл суох',
+	'articlefeedback-report-ratings' => '$1 сыанабыл',
+	'articlefeedback-field-trustworthy-label' => 'Итэҕэтиилээҕэ',
 );
 
 /** Sicilian (Sicilianu)
