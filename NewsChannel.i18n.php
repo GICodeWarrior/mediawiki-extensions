@@ -660,11 +660,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'newschannel_format' => 'Формат:',
-	'newschannel_limit' => 'Лимит:',
+	'newschannel_limit' => 'Ограничење:',
 	'newschannel_include_category' => 'Додатна категорија:',
 	'newschannel_exclude_category' => 'Искључи категорију:',
 );
