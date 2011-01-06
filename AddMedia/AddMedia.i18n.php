@@ -1446,6 +1446,7 @@ $messages['bs'] = array(
 	'fogg-latest-firefox' => 'najnoviji Firefox',
 	'fogg-passthrough_mode' => 'Vaša odabrana datoteka je već Ogg ili nije video datoteka',
 	'fogg-badtoken' => 'Token nije valjan',
+	'fogg-hidepreview' => 'Sakrij pregled uživo',
 );
 
 /** Catalan (Català)
@@ -10083,9 +10084,16 @@ $messages['yi'] = array(
 	'mwe-thumbnail-more' => 'פאַרגרעסערן',
 	'mwe-filesource' => 'מקור:',
 	'fogg-copyright-title' => 'קאפירעכט',
+	'mwe-upload' => 'אַרױפֿלאָדן טעקע',
+	'mwe-link-login' => 'אַרײַנלאגירן',
 	'rsd_results_next' => 'נעקסטער',
 	'mwe-link' => 'לינק',
 	'mwe-loggin-link' => 'ביטע ארײַנלאָגירן',
+	'mwe-ftype-svg' => 'SVG וועקטאָר טעקע',
+	'mwe-ftype-jpg' => 'JPEG בילד טעקע',
+	'mwe-ftype-png' => 'PNG בילד טעקע',
+	'rsd-this_wiki-title' => 'די דאָזיקע וויקי',
+	'rsd-this_wiki-desc' => 'די לאקאַלע וויקי',
 );
 
 /** Yoruba (Yorùbá)
