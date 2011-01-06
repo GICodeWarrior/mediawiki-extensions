@@ -4,6 +4,11 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Live_Tr
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/LiveTranslate/RELEASE-NOTES?view=co
 
 
+=== Version 0.3 ===
+2011-01-xx
+
+* Fixed issue with trim-prevention, causing |-signs to semi-randomly get inserted into translated text.
+
 === Version 0.2 ===
 2010-12-24
 
