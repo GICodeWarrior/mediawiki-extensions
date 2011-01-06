@@ -4430,7 +4430,7 @@ $messages['lzz'] = array(
  */
 $messages['mg'] = array(
 	'wikilog-specialwikilog-title' => 'Wikilaogy',
-	'wikilog-log-pagename' => "Tatitr'asa momban'ny tao eo amin'ny Tatitr'asa wiki",
+	'wikilog-log-pagename' => "Laogin'ny tao eto amin'i Wikilaogy",
 	'wikilog-log-pagetext' => "Eo ambany misy lisitry ny tao eo amin'ny wikilog",
 	'wikilog-new-item-go' => 'Amboary',
 	'wikilog-published' => 'Voatahiry',
@@ -4442,10 +4442,10 @@ $messages['mg'] = array(
 	'wikilog-comment-reject' => 'Handà io hafatra io (tao mandaitra avy hatrany)',
 	'wikilog-newtalk-text' => "<!-- Pejy fotsy noforonin'i Wikilog -->",
 	'wikilog-newtalk-summary' => "noforonin'i Wikilog ho azy",
-	'wikilog-feed-ns-title' => "Lahatsoratra tatitr'asa wiki $1",
+	'wikilog-feed-ns-title' => 'Lahatsoratra wilikaogy $1',
 	'wikilog-comment-feed-title1' => "Hafatra napetrak'i $2 (faha $1)",
 	'wikilog-comment-feed-title2' => "Hafatri'i $2 tamin'ny $3 (faha $1)",
-	'wikilog-form-wikilog' => "Tatitr'asa wiki",
+	'wikilog-form-wikilog' => 'Wikilaogy :',
 	'wikilog-form-category' => 'Sokajy :',
 	'wikilog-form-name' => 'Anarana :',
 	'wikilog-form-author' => 'Mpanoratra azy:',
@@ -4466,7 +4466,7 @@ $messages['mg'] = array(
 	'wikilog-reject-lc' => 'lavina',
 	'wikilog-page-lc' => 'pejy',
 	'wikilog-history-lc' => 'tantara',
-	'wikilog-doc-import-comment' => "Toromarika nampidirina avy any amin'ny Tatitr'asa wiki",
+	'wikilog-doc-import-comment' => "Toromarika nampidirina avy any amin'ny laogy wiki",
 );
 
 /** Macedonian (Македонски)
