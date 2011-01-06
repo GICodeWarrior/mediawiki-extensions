@@ -16,8 +16,7 @@ class SpecialAsksql extends SpecialPage {
 		wfLoadExtensionMessages( 'Asksql' );
 
 		if ( !$wgAllowSysopQueries ) {
-			$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
-			return;
+			throw new ErrorPageError( 'nosuchspecialpage', 'nospecialpagetext' );
 		}
 		if ( !$wgUser->isAllowed( 'asksql' ) ) {
 			$wgOut->permissionRequired( 'asksql' );
