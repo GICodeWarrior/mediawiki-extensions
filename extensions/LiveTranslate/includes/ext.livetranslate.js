@@ -223,7 +223,8 @@
 			// If it's an html element, check to see if it should be ignored, and if not, apply function again.
 			else if ( $.inArray( $( this ).attr( 'id' ), [ 'livetranslatediv', 'siteSub', 'jump-to-nav' ] ) == -1
 				&& $.inArray( $( this ).attr( 'class' ), [ 'notranslate', 'printfooter' ] ) == -1
-				&& $( this ).text().trim().length > 0 ) {
+				&& $( this ).text().length > 0 ) {
+				
 				translateElement( $( this ), sourceLang, targetLang );
 			}
 		} );
