@@ -209,10 +209,10 @@
 		
 		element.contents().each( function() {
 			// If it's a text node, then translate it.
-			if ( this.nodeType == 3 && this.wholeText.trim().length > 0 ) {
+			if ( this.nodeType == 3 && this.data != undefined && this.data.trim().length > 0 ) {
 				runningJobs++;
 				translateChunk(
-					this.wholeText.split( new RegExp( "(\\S.+?[.!?])(?=\\s+|$)", "gi" ) ),
+					this.data.split( new RegExp( "(\\S.+?[.!?])(?=\\s+|$)", "gi" ) ),
 					[],
 					maxChunkLength,
 					sourceLang,
