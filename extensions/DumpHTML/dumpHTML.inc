@@ -799,16 +799,9 @@ class DumpHTML {
 			$wgOut->parserOptions( new ParserOptions );
 			SpecialPage::executePath( $wgTitle );
 		} else {
-			/** @todo merge with Wiki.php code */
-			if ( $ns == NS_IMAGE ) {
-				$wgArticle = new ImagePage( $wgTitle );
-			} elseif ( $ns == NS_CATEGORY ) {
-				$wgArticle = new CategoryPage( $wgTitle );
-			} else {
-				$wgArticle = new Article( $wgTitle );
-			}
-			$rt = Title::newFromRedirect( $wgArticle->fetchContent() );
-			if ( $rt != NULL ) {
+			$wgArticle = MediaWiki::articleFromTitle( $wgTitle );
+			$rt = $wgArticle->followRedirect();
+			if ( is_object( $rt ) ) {
 				return $this->getRedirect( $rt );
 			} else {
 				$wgOut = new OutputPage;
@@ -818,8 +811,8 @@ class DumpHTML {
 			}
 		}
 
-	
-		$sk =& $wgUser->getSkin();
+
+		$sk = $wgUser->getSkin();
 		ob_start();
 		$sk->outputPage( $wgOut );
 		$text = ob_get_contents();
