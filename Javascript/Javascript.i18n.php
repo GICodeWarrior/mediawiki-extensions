@@ -431,3 +431,10 @@ $messages['vi'] = array(
 	'javascript-desc' => 'Thêm uniwiki.js vào mỗi trang có chứa mã JavaScript để chia sẻ chúng với các bộ mở rộng Uniwiki',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'javascript-desc' => '將uniwiki.js加入到每頁的JavaScript代碼之間共享Uniwiki擴展',
+);
+
