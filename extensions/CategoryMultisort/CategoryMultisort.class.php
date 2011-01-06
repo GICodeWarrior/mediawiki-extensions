@@ -78,7 +78,7 @@ class CategoryMultisortViewer extends CategoryViewer {
 					array(),
 					array( 'known', 'noclasses' )
 				) . '</span>'
-			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
+			: $this->getSkin()->link( $title );
 		
 		$this->articles_start_char[] = $this->decorateSortkey( $sortkey );
 	}
