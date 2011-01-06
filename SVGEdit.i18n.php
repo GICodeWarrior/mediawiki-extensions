@@ -241,6 +241,18 @@ $messages['no'] = array(
 	'svgedit-desc' => 'Nettleserredigering av SVG-tegninger med [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'svgedit-editbutton-edit' => 'Edytuj rysunek',
+	'svgedit-summary-label' => 'Opis zmian',
+	'svgedit-summary-default' => '/* Zmodyfikowane z użyciem svg-edit */',
+	'svgedit-editor-save-close' => 'Zapisz i zamknij',
+	'svgedit-editor-close' => 'Anuluj',
+	'svgedit-desc' => 'Edycja wewnątrz okna przeglądarki rysunków w formacie SVG z użyciem [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
