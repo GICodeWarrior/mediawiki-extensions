@@ -236,29 +236,29 @@
 	 * Determines a chunk to translate of an DOM elements contents and calls the Google Translate API.
 	 * Then calls itself if there is any remaining word to be done.
 	 * 
-	 * @param {array} untranslatedScentances
+	 * @param {array} untranslatedsentences
 	 * @param {array} chunks
 	 * @param {integer} currentMaxSize
 	 * @param {string} sourceLang
 	 * @param {string} targetLang
 	 * @param {jQuery} element
 	 */
-	function translateChunk( untranslatedScentances, chunks, currentMaxSize, sourceLang, targetLang, element ) {
+	function translateChunk( untranslatedsentences, chunks, currentMaxSize, sourceLang, targetLang, element ) {
 		var remainingPart = false;
 		var partToUse = false;
-		var scentanceCount = 0;
+		var sentenceCount = 0;
 		var currentLength = 0;
 		
-		for ( i in untranslatedScentances ) {
-			scentanceCount++;
+		for ( i in untranslatedsentences ) {
+			sentenceCount++;
 			
-			if ( currentLength + untranslatedScentances[i].length < currentMaxSize ) {
-				currentLength += untranslatedScentances[i].length;
+			if ( currentLength + untranslatedsentences[i].length < currentMaxSize ) {
+				currentLength += untranslatedsentences[i].length;
 			}
-			else if ( untranslatedScentances[i].length > 0 ) {
+			else if ( untranslatedsentences[i].length > 0 ) {
 				if ( currentLength == 0 ) {
-					partToUse = untranslatedScentances[i].substr( 0, currentMaxSize - currentLength );
-					remainingPart = untranslatedScentances[i].substr( currentMaxSize - currentLength );
+					partToUse = untranslatedsentences[i].substr( 0, currentMaxSize - currentLength );
+					remainingPart = untranslatedsentences[i].substr( currentMaxSize - currentLength );
 				}
 				
 				break;
@@ -267,16 +267,16 @@
 		
 		var chunk = '';
 		
-		for ( i = 0; i < scentanceCount; i++ ) {
-			var part = untranslatedScentances.shift();
+		for ( i = 0; i < sentenceCount; i++ ) {
+			var part = untranslatedsentences.shift();
 			
-			if ( i != scentanceCount - 1 || partToUse === false ) {
+			if ( i != sentenceCount - 1 || partToUse === false ) {
 				chunk += part; 
 			}
 		}
 		
 		if ( remainingPart !== false ) {
-			untranslatedScentances.unshift( remainingPart );
+			untranslatedsentences.unshift( remainingPart );
 		}
 		
 		if ( partToUse !== false ) {
@@ -304,7 +304,7 @@
 					chunks.push( chunk );
 				}
 				
-				if ( untranslatedScentances.length == 0 ) {
+				if ( untranslatedsentences.length == 0 ) {
 					// If the current chunk was smaller then the max size, node translation is complete, so update text.
 					textAreaElement.innerHTML = chunks.join(); // This is a hack to decode quotes.
 					element.replaceData( 0, element.length, textAreaElement.value );
@@ -312,7 +312,7 @@
 				}
 				else {
 					// If there is more work to do, move on to the next chunk.
-					translateChunk( untranslatedScentances, chunks, currentMaxSize, sourceLang, targetLang, element );
+					translateChunk( untranslatedsentences, chunks, currentMaxSize, sourceLang, targetLang, element );
 				}
 			}
 		);	
