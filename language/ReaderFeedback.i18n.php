@@ -2389,6 +2389,7 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -2410,7 +2411,7 @@ $messages['sr-ec'] = array(
 	'readerfeedback-main' => 'Само стране садржаја могу бити оцењиване.',
 	'readerfeedback-submitting' => 'Слање …',
 	'readerfeedback-finished' => 'Хвала Вам!',
-	'readerfeedback-tagfilter' => 'Таг:',
+	'readerfeedback-tagfilter' => 'Ознака:',
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
 );
 
