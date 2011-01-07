@@ -441,6 +441,7 @@ $messages['hsb'] = array(
 	'push-tab-no-embedded-files' => '(Žane zasadźene dataje na tutej stronje.)',
 	'push-tab-files-override' => 'Tute dataje hižo eksistuja: $1',
 	'push-tab-template-override' => 'Tute předłohi hižo eksistuja: $1',
+	'push-tab-err-uploaddisabled' => 'Nahraća njejsu zmóžnjene, Staj $wgEnableUploads a $wgAllowCopyUploads w dataji LocalSettings.php ciloweho wikija na "true".',
 	'special-push' => 'Strony přenjesć',
 	'push-special-description' => 'Tuta strona ći zmóžnja wobsah stronow do druhich wikijow MediaWiki přenjesć.
 
@@ -681,6 +682,7 @@ $messages['mk'] = array(
 	'push-tab-no-embedded-files' => '(Во страницава нема вметнати податотеки.)',
 	'push-tab-files-override' => 'Веќе постојат следниве податотеки: $1',
 	'push-tab-template-override' => 'Веќе постојат следниве шаблони: $1',
+	'push-tab-err-uploaddisabled' => 'Подигањето не е овозможено. Наместете ги $wgEnableUploads и $wgAllowCopyUploads на „true“ во LocalSettings.php на целното вики.',
 	'special-push' => 'Пренесување страници',
 	'push-special-description' => 'Оваа страница ви овозможува да пренесете содржини од една или повеќе страници од едно вики во едно или повеќе викија што работат на МедијаВики.
 
@@ -748,6 +750,7 @@ $messages['nl'] = array(
 	'push-tab-no-embedded-files' => 'Er zijn geen ingesloten bestanden op deze pagina.',
 	'push-tab-files-override' => 'Deze bestanden bestaan al: $1',
 	'push-tab-template-override' => 'Deze sjablonen bestaan al: $1',
+	'push-tab-err-uploaddisabled' => 'Uploaden is niet ingeschakeld. Zorg ervoor dat $wgEnableUploads en $wgAllowCopyUploads zijn ingesteld op "waar" in LocalSettings.php van de doelwiki.',
 	'special-push' => "Pagina's verzenden",
 	'push-special-description' => "Via deze pagina kunt u de inhoud van een of meer pagina's naar een of meer MediaWiki-wiki's verzenden.
 
