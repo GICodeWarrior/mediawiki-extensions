@@ -200,27 +200,38 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 		
 		if include_request:
 			
-			# Address cases where the query string contains the landing page
+			# Address cases where the query string contains the landing page - ...wikimediafoundation.org/w/index.php?...
 			if index_str_flag:
 				try:
+					# URLs of the form ...?title=<lp_name>
 					lp_country = query_fields['title'][0].split('/')
 					landing_page = lp_country[0]
 					
-					if len(lp_country) == 3:
-						country = lp_country[2]
-					else:
-						country = lp_country[1]
+					# URLs of the form ...?county_code=<iso_code>
+					try:
+						country = query_fields['country_code'][0]
 						
-					if country == country.lower():
-						country = ''
+					# URLs of the form ...?title=<lp_name>/<lang>/<iso_code>
+					except:
+						if len(lp_country) == 3:
+							country = lp_country[2]
+						else:
+							country = lp_country[1]
+						
 				except:
 					landing_page = 'NONE'
-					country = 'NONE'
-			else:
+					country = mh.localize_IP(ip_add) + ' !'
+					
+			else: # ...wikimediafoundation.org/wiki/...
+				
 				landing_path = parsed_landing_url[pathIndex].split('/')
 				landing_page = landing_path[2];
+				
+				# URLs of the form ...?county_code=<iso_code>
 				try:
 					country = query_fields['country_code'][0]
+				
+				# URLs of the form ...<path>/ <lp_name>/<lang>/<iso_code>
 				except:
 					try:
 						if len(landing_path) == 5:
@@ -228,9 +239,15 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 							# source_lang = landing_path[3] 							
 						else:
 							country = landing_path[3]
+							
 					except:
-						country = 'NONE'
+						country =  mh.localize_IP(ip_add) + ' !'
 			
+			# If country is confused with the language use the ip
+			if country == country.lower():
+				country = mh.localize_IP(ip_add) + ' !'
+				
+							
 			# ensure fields exist
 			try:
 				utm_source = query_fields['utm_source'][0]

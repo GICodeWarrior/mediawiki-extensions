@@ -14,8 +14,13 @@ October 30th, 2010
 # Helper script for mining
 # ===================
 
-import calendar as cal
+
+import sys
 import math
+import calendar as cal
+import csv
+import MySQLdb
+
 
 
 """ Determines the following hour based on the precise date to the hour """
@@ -180,3 +185,92 @@ def convert_list_dict(collection):
 		return 0;
 
 	return new_collection
+	
+""" Given an IP localizes the country """
+def localize_IP(ip_string):
+	
+	""" Get db object / Create cursor  """
+	# db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+	db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+	cur = db.cursor()
+	
+	
+	# compute ip number
+	ip_fields = ip_string.split('.')
+	w = int(ip_fields[0])
+	x = int(ip_fields[1])
+	y = int(ip_fields[2])
+	z = int(ip_fields[3])
+	
+	ip_num = 16777216 * w + 65536 * x + 256 * y + z;
+	
+	sql_stmnt = 'select country_ISO_1 from ip_country where ' + str(ip_num) + ' >= ip_from and ' + str(ip_num) + ' <= ip_to'
+	
+	try:
+		cur.execute(sql_stmnt)
+		row = cur.fetchone()
+	except:
+		db.rollback()
+		sys.exit("Could execute: " + sql_stmnt)
+	
+	country = row[0]
+	
+	# Commit to the db
+	db.commit()
+
+	# Close connection
+	cur.close()
+	db.close()
+	
+	return country
+	
+""" Load  data into the IP localization table to associate IPs with countries """
+def load_IP_localization_table():
+	
+	""" Get db object / Create cursor  """
+	# db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+	db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+	cur = db.cursor()
+	
+	# Parse CSV file 
+	ipReader = csv.reader(open('./csv/IpToCountry.csv', 'rb'))
+	insert_stmnt = 'INSERT INTO ip_country VALUES '
+	# (ip_from,ip_to,registry,assigned,country_ISO_1,country_ISO_2,country_name) 
+	header = 1
+	for row in ipReader:
+		# skip the csv comments
+		if row[0][0] != '#':
+			header = 0
+		
+		if not(header):
+			
+			for i in range(len(row)):
+				pieces = row[i].split('\'')
+				
+				if len(pieces) > 1:
+					new_str = pieces[0]
+					
+					# remove single quotes from fields
+					for j in range(1,len(pieces)):
+						new_str = new_str + ' ' + pieces[j]
+				
+					row[i] = new_str
+						
+			vals = '\',\''.join(row)
+			sql_stmnt = insert_stmnt + '(\'' + vals + '\')'
+			
+			print vals
+			#cur.execute(sql_stmnt)
+			try:
+				cur.execute(sql_stmnt)
+			except:
+				db.rollback()
+				sys.exit("Could not insert: " + sql_stmnt)
+	
+	
+	# Commit to the db
+	db.commit()
+
+	# Close connection
+	cur.close()
+	db.close()
