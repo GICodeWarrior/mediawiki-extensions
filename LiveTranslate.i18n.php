@@ -371,5 +371,6 @@ $messages['uk'] = array(
 	'livetranslate-translate-to' => 'Перекласти цю сторінку',
 	'livetranslate-button-translate' => 'Перекласти',
 	'livetranslate-button-translating' => 'Перекладаю...',
+	'livetranslate-button-revert' => 'Показати оригінал',
 );
 
