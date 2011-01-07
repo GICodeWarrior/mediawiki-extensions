@@ -5,9 +5,11 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.3 ===
-2011-01-xx
+2011-01-07
 
+* Added compatibility with IE8.
 * Fixed issue with trim-prevention, causing |-signs to semi-randomly get inserted into translated text.
+* Only show the translation control when an API key is provided.
 
 === Version 0.2 ===
 2010-12-24
