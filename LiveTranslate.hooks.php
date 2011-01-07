@@ -73,7 +73,9 @@ final class LiveTranslateHooks {
 			
 			$outputDone = true;
 		}
-		else if ( $article->exists() 
+		else if (
+			$egGoogleApiKey != ''
+			&& $article->exists() 
 			&& ( count( $egLiveTranslateLanguages ) > 1 || ( count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) ) ) {
 			$wgOut->addHTML(
 				'<span class="notranslate" id="livetranslatespan">' .
@@ -101,17 +103,17 @@ final class LiveTranslateHooks {
 				) .
 				'</span>'
 			);
+			
+			$wgOut->addScript(
+				Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
+				Html::inlineScript(
+					'google.load("language", "1");' .
+					'var sourceLang = ' . json_encode( $currentLang ) . ';'
+				)
+			);		
+			
+			LiveTranslateFunctions::loadJs();		
 		}
-		
-		$wgOut->addScript(
-			Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
-			Html::inlineScript(
-				'google.load("language", "1");' .
-				'var sourceLang = ' . json_encode( $currentLang ) . ';'
-			)
-		);		
-		
-		LiveTranslateFunctions::loadJs();
 		
 		return true;
 	}
