@@ -4,7 +4,7 @@
  * Extension that adds a new toggle in user preferences to show if the user is
  * aviabled or not. See http://mediawiki.org/wiki/Extension:OnlineStatus for
  * more informations.
- * Require MediaWiki 1.16 alpha r52503 or higher to work.
+ * Require MediaWiki 1.17 r77011 or higher to work.
  *
  * @file
  * @ingroup Extensions
@@ -41,34 +41,34 @@ $wgDefaultUserOptions['offlineonlogout'] = 1;
 $wgExtensionMessagesFiles['OnlineStatus'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.php';
 $wgExtensionMessagesFiles['OnlineStatusMagic'] = dirname( __FILE__ ) . '/OnlineStatus.i18n.magic.php';
 
+// Hooks for the Parser
+$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
+
+// Magic words hooks
+$wgHooks['MagicWordwgVariableIDs'][] = 'OnlineStatus::MagicWordVariable';
+$wgHooks['ParserGetVariableValueSwitch'][] = 'OnlineStatus::ParserGetVariable';
+
+// Hooks for Special:Preferences
+$wgHooks['GetPreferences'][] = 'OnlineStatus::GetPreferences';
+
+// User hook
+$wgHooks['UserLoginComplete'][] = 'OnlineStatus::UserLoginComplete';
+$wgHooks['UserLogoutComplete'][] = 'OnlineStatus::UserLogoutComplete';
+
+// User page
+$wgHooks['BeforePageDisplay'][] = 'OnlineStatus::BeforePageDisplay';
+$wgHooks['PersonalUrls'][] = 'OnlineStatus::PersonalUrls';
+
+// Ajax stuff
+$wgAjaxExportList[] = 'OnlineStatus::Ajax';
+
+$wgResourceModules['ext.onlineStatus'] = array(
+	'scripts' => 'extensions/OnlineStatus/OnlineStatus.js',
+	'styles' => 'extensions/OnlineStatus/OnlineStatus.css',
+);
+
 // FIXME: Should be a separate class file
 class OnlineStatus {
-	// FIXME: Can't this just be in the core bit instead of the class? The init() will not have to be called
-	static function init(){
-		global $wgExtensionFunctions, $wgHooks, $wgAjaxExportList;
-
-		// Hooks for the Parser
-		$wgHooks['ParserFirstCallInit'][] = 'OnlineStatus::ParserFirstCallInit';
-
-		// Magic words hooks
-		$wgHooks['MagicWordwgVariableIDs'][] = 'OnlineStatus::MagicWordVariable';
-		$wgHooks['ParserGetVariableValueSwitch'][] = 'OnlineStatus::ParserGetVariable';
-
-		// Hooks for Special:Preferences
-		$wgHooks['GetPreferences'][] = 'OnlineStatus::GetPreferences';
-
-		// User hook
-		$wgHooks['UserLoginComplete'][] = 'OnlineStatus::UserLoginComplete';
-		$wgHooks['UserLogoutComplete'][] = 'OnlineStatus::UserLogoutComplete';
-
-		// User page
-		$wgHooks['BeforePageDisplay'][] = 'OnlineStatus::BeforePageDisplay';
-		$wgHooks['PersonalUrls'][] = 'OnlineStatus::PersonalUrls';
-
-		// Ajax stuff
-		$wgAjaxExportList[] = 'OnlineStatus::Ajax';
-	}
-
 	/**
 	 * Get the user online status
 	 *
@@ -274,18 +274,16 @@ class OnlineStatus {
 	 * Hook function for BeforePageDisplay
 	 */
 	static function BeforePageDisplay( &$out ){
-		global $wgTitle, $wgRequest, $wgUser;
+		global $wgRequest, $wgUser;
 		global $wgUseAjax;
 
 		if( $wgUser->isLoggedIn() && $wgUseAjax ){
-			global $wgScriptPath;
-			$out->addScriptFile( "{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.js" );
-			$out->addExtensionStyle( "{$wgScriptPath}/extensions/OnlineStatus/OnlineStatus.css" );
+			$out->addModules( 'ext.onlineStatus' );
 		}
 
 		if( !in_array( $wgRequest->getVal( 'action', 'view' ), array( 'view', 'purge' ) ) )
 			return true;
-		$status = self::GetUserStatus( $wgTitle, true );
+		$status = self::GetUserStatus( $out->getTitle(), true );
 		if( $status === null )
 			return true;
 		$out->setSubtitle( wfMsgExt( 'onlinestatus-subtitle-' . $status, array( 'parse' ) ) );
@@ -316,5 +314,3 @@ class OnlineStatus {
 		return true;
 	}
 }
-
-OnlineStatus::init();
