@@ -5778,6 +5778,8 @@ $messages['lb'] = array(
 	'fogg-badtoken' => 'Token net valabel',
 	'fogg-preview' => 'Video kucken ouni ze späicheren',
 	'fogg-hidepreview' => 'Preview verstoppen',
+	'fogg-warning-firebug' => '<b>Firebug</b> ka Konflikter mat <i>Firefogg</i> ausléisen.
+Schalt w.e.g. <b>Firebug</b> fir dës Säit aus.',
 	'mwe-upload-multi' => '{{PLURAL:$1|Fichier|Fichieren}} eroplueden',
 	'mwe-review-upload' => '{{PLURAL:$1|Eropgeluedene Fichier|Eropgeluede Fichieren}} nokucken',
 );
@@ -8699,7 +8701,7 @@ $messages['sr-ec'] = array(
 	'mwe-watch-this-file' => 'Надгледај ову датотеку',
 	'mwe-ignore-any-warnings' => 'Занемари сва упозорења',
 	'mwe-upload-in-progress' => 'Слање у току (не затварајте овај прозор)',
-	'mwe-uploaded-status' => 'Послато',
+	'mwe-uploaded-status' => 'Отпремљено',
 	'mwe-uploaded-time-remaining' => 'Преостало време: $1',
 	'rsd_results_desc' => 'Резултати $1 до $2',
 	'rsd_results_desc_total' => 'Резултати од $1 до $2 од $3',
@@ -8724,7 +8726,9 @@ $messages['sr-ec'] = array(
 	'fogg-select_file' => 'Избор фајла',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (Srpski (latinica))
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 od $2',
 	'mwe-upload-unknown-size' => 'Nepoznata veličina',
@@ -8776,7 +8780,7 @@ $messages['sr-el'] = array(
 	'mwe-watch-this-file' => 'Nadgledaj ovaj fajl',
 	'mwe-ignore-any-warnings' => 'Ignoriši sva upozorenja',
 	'mwe-upload-in-progress' => 'Slanje u toku (ne zatvarajte ovaj prozor)',
-	'mwe-uploaded-status' => 'Poslato',
+	'mwe-uploaded-status' => 'Otpremljeno',
 	'mwe-uploaded-time-remaining' => 'Preostalo vreme: $1',
 	'rsd_results_desc' => 'Rezultati $1 do $2',
 	'rsd_results_desc_total' => 'Rezultati od $1 do $2 od $3',

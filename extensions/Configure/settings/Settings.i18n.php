@@ -19413,6 +19413,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'configure-setting-wgSitename' => 'Ime sajta',
@@ -19553,7 +19554,7 @@ $messages['sr-el'] = array(
 	'configure-setting-wgEnableUserEmail' => 'Omogući korisnicima da međusobno razmenjuju imejlove',
 	'configure-setting-wgSMTP' => 'SMTP server',
 	'configure-setting-wgUserEmailUseReplyTo' => 'Koristi Reply-To umesto From parametra',
-	'configure-setting-wgDebugLogGroups-value' => 'Fajl',
+	'configure-setting-wgDebugLogGroups-value' => 'Datoteka',
 	'configure-setting-wgShowSQLErrors' => 'Pokaži strane sa greškama baze podataka',
 	'configure-setting-wgStatsMethod' => 'Destinacija za wfIncrStats() podatke',
 	'configure-setting-wgDisableQueryPageUpdate' => 'Onemogućene specijalne strane',
@@ -19582,6 +19583,7 @@ $messages['sr-el'] = array(
 	'configure-setting-wgAdvancedSearchHighlighting' => 'Omogući označavanje delova teksta u rezultatima pretrage',
 	'configure-setting-wgEnableMWSuggest' => 'Omogući sugerisanje zahteva pretrage tokom pisanja u kutijicama za pretragu',
 	'configure-setting-wgSearchForwardUrl' => 'Prosledi zahteve pretrage',
+	'configure-setting-wgActiveUserDays' => 'Vreme nakon koga je neki korisnik neaktivan',
 	'configure-setting-wgDisableCounters' => 'Onemogući prikaz brojača pregleda strana',
 	'configure-setting-wgHitcounterUpdateFreq' => 'Frekvencija osvežavanja brojača strana',
 	'configure-setting-wgDefaultSkin' => 'Ime podrazumevanog izgleda',
@@ -19667,9 +19669,6 @@ $messages['sr-el'] = array(
 	'configure-setting-wgXhtmlDefaultNamespace' => 'Podrazumevani XHTML imenski prostor',
 	'configure-setting-wgXhtmlNamespaces' => 'Drugi XHTML imenski prostori',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Imenski prostor',
-	'configure-setting-wgUseZhdaemon' => 'Koristi ZhDaemon za procesiranje kineskog teksta',
-	'configure-setting-wgZhdaemonHost' => 'ZhDaemon host',
-	'configure-setting-wgZhdaemonPort' => 'ZhDaemon port',
 	'configure-setting-wgLocaltimezone' => 'Lokalna vremenska zona',
 	'configure-setting-wgLocalTZoffset' => 'Razlika vremenske zone',
 	'configure-setting-wgAllowUserCss' => 'Omogući korisničke Cascading Style Sheet (CSS) strane',

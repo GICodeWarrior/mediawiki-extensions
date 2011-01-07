@@ -1117,7 +1117,11 @@ $messages['ja'] = array(
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'articlefeedback-survey-question-useful-iffalse' => 'რატომ?',
+	'articlefeedback-survey-question-comments' => 'კიდევ დაამატებთ რამეს?',
+	'articlefeedback-report-switch-label' => 'შედეგების ჩვენება',
 	'articlefeedback-pitch-reject' => 'არა, გმადლობთ',
+	'articlefeedback-pitch-makefirstedit-accept' => 'რედაქტირების დაწყება',
 );
 
 /** Korean (한국어)
@@ -1755,6 +1759,19 @@ $messages['sah'] = array(
 	'articlefeedback-report-empty' => 'Сыанабыл суох',
 	'articlefeedback-report-ratings' => '$1 сыанабыл',
 	'articlefeedback-field-trustworthy-label' => 'Итэҕэтиилээҕэ',
+	'articlefeedback-field-complete-label' => 'Толорута',
+	'articlefeedback-field-complete-tip' => 'Бу сирэй тиэмэ сүрүн ис хоһоонун арыйар дуо?',
+	'articlefeedback-field-unbiased-label' => 'Тутулуга суоҕа',
+	'articlefeedback-field-unbiased-tip' => 'Бу сирэй араас көрүүлэри тэҥҥэ, тугу да күөмчүлээбэккэ көрдөрөр дии саныыгын дуо?',
+	'articlefeedback-field-wellwritten-label' => 'Суруйуу истиилэ',
+	'articlefeedback-field-wellwritten-tip' => 'Бу сирэй бэркэ сааһыланан суруллубут дии саныыгын дуо?',
+	'articlefeedback-pitch-reject' => 'Суох, махталы кытта',
+	'articlefeedback-pitch-takesurvey-title' => 'Ыйытыкка кытыаххын баҕараҕын дуо?',
+	'articlefeedback-pitch-takesurvey-accept' => 'Ыйытыгы саҕалыырга',
+	'articlefeedback-pitch-createaccount-title' => 'Саҥа ааты бэлиэтээри гынаҕын дуо?',
+	'articlefeedback-pitch-createaccount-accept' => 'Саҥа ааты бэлиэтииргэ',
+	'articlefeedback-pitch-makefirstedit-title' => 'Бу ыстатыйаны улартыаҥ этэ дуо?',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Уларытыыны саҕалаа',
 );
 
 /** Sicilian (Sicilianu)

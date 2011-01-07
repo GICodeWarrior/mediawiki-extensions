@@ -232,12 +232,13 @@ $3',
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Mihxil
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'latexdoc_no_text' => 'Pagxo enhavas neniom da teksto; ne eblas fari DVI',
+	'latexdoc_no_text' => 'Paĝo enhavas neniom da teksto; ne eblas fari DVI',
 	'latexdoc_cant_create_dir' => 'Ne eblas krei provizoran dosierujon $1',
-	'latexdoc_cant_write' => 'Ne povas skribi dosieron $1',
+	'latexdoc_cant_write' => 'Ne eblas skribi dosieron $1',
 	'latexdoc_error' => 'LaTeX-eraro
 
 Komando: $1
@@ -247,6 +248,7 @@ Eligo: $2
 $3',
 	'latexdoc_get_dvi' => 'Akiri DVI',
 	'latexdoc_get_pdf' => 'Akiri PDF-on',
+	'latexdoc-desc' => 'Kuna redaktado de LaTeX-dosieroj.',
 );
 
 /** Spanish (Español)

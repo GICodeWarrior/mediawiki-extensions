@@ -920,10 +920,11 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'abc-desc' => 'Dodaje <code>&lt;abc&gt;</code> tag za formatiranje ABC muzike',
-	'abcdownload' => 'Snimi:',
+	'abcdownload' => 'Preuzmi:',
 );
 
 /** Seeltersk (Seeltersk)

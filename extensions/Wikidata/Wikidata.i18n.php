@@ -12404,7 +12404,7 @@ $messages['sr-ec'] = array(
 	'langman_iso639-2' => 'ISO 639-2 код:',
 	'langman_wikimedia' => 'Викимедија код:',
 	'langman_field_optional' => '(необавезно)',
-	'langman_addlang' => 'Додајте језик',
+	'langman_addlang' => 'Додај језик',
 	'importlangnames_title' => 'Увезите називе језика',
 	'importlangnames_not_allowed' => 'Ви немате права приступа потребна за увожење називе језика.',
 	'importlangnames_added' => 'Називи језика за "$1" су додати.',
@@ -12548,7 +12548,7 @@ $messages['sr-ec'] = array(
 	'ow_needs_xlation_dest_lang' => 'Потребан језик:',
 	'ow_needs_xlation_no_dest_lang' => 'Молимо Вас да означите језик на који преводите.',
 	'ow_show' => 'Прикажи',
-	'ow_upload' => 'Пошаљи',
+	'ow_upload' => 'Отпреми',
 	'ow_create' => 'Направи',
 	'ow_collection_added' => '<strong>Колекција $1 је додата.</strong>',
 	'ow_suggest_previous' => 'Претходни',
@@ -12561,6 +12561,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'languages' => 'Vikipodaci: Menadžer za jezike',
@@ -12575,7 +12576,7 @@ $messages['sr-el'] = array(
 	'langman_iso639-2' => 'ISO 639-2 kod:',
 	'langman_wikimedia' => 'Vikimedija kod:',
 	'langman_field_optional' => '(neobavezno)',
-	'langman_addlang' => 'Dodajte jezik',
+	'langman_addlang' => 'Dodaj jezik',
 	'importlangnames_title' => 'Uvezite nazive jezika',
 	'importlangnames_not_allowed' => 'Vi nemate prava pristupa potrebna za uvoženje nazive jezika.',
 	'importlangnames_added' => 'Nazivi jezika za "$1" su dodati.',
@@ -12719,7 +12720,7 @@ Da li ste na ovu stranu došli direktno? Obično je u njenom linku naznačena i 
 	'ow_needs_xlation_dest_lang' => 'Potreban jezik:',
 	'ow_needs_xlation_no_dest_lang' => 'Molimo Vas da označite jezik na koji prevodite.',
 	'ow_show' => 'Prikaži',
-	'ow_upload' => 'Pošalji',
+	'ow_upload' => 'Otpremi',
 	'ow_create' => 'Napravi',
 	'ow_collection_added' => '<strong>Kolekcija $1 je dodata.</strong>',
 	'ow_suggest_previous' => 'Prethodni',

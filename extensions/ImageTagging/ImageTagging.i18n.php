@@ -1915,7 +1915,7 @@ $messages['sr-ec'] = array(
 	'imagetagging-new' => '<sup><span style="color:red">Ново!</span></sup>',
 	'imagetagging-removetag' => 'обриши таг',
 	'imagetagging-done-button' => 'Таговање завршено',
-	'imagetagging-tag-button' => 'Тагуј',
+	'imagetagging-tag-button' => 'Означи',
 	'imagetagging-tagcancel-button' => 'Откажи',
 	'imagetagging-tagging-instructions' => 'Кликните на људе или ствари на слици, како бисте их таговали.',
 	'imagetagging-addingtag' => 'Додавање тага…',
@@ -1937,6 +1937,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'taggedimages' => 'Tagovane slike',
@@ -1953,7 +1954,7 @@ $messages['sr-el'] = array(
 	'imagetagging-new' => '<sup><span style="color:red">Novo!</span></sup>',
 	'imagetagging-removetag' => 'obriši tag',
 	'imagetagging-done-button' => 'Tagovanje završeno',
-	'imagetagging-tag-button' => 'Taguj',
+	'imagetagging-tag-button' => 'Označi',
 	'imagetagging-tagcancel-button' => 'Poništi',
 	'imagetagging-tagging-instructions' => 'Kliknite na ljude ili stvari na slici, kako biste ih tagovali.',
 	'imagetagging-addingtag' => 'Dodavanje taga…',

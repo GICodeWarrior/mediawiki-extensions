@@ -2812,7 +2812,7 @@ $messages['eo'] = array(
 	'configure-condition-operator' => 'Operacio:',
 	'configure-condition-operator-or' => 'Aŭ',
 	'configure-condition-operator-and' => 'Kaj',
-	'configure-condition-operator-xor' => 'XOR (Eksklusiva Aŭ)',
+	'configure-condition-operator-xor' => 'XOR (Ekskluziva Aŭ))',
 	'configure-condition-operator-not' => '(Not) Ne',
 	'configure-condition-name' => 'Kondiĉo',
 	'configure-condition-requirement' => 'Postulspecifo',
@@ -9903,10 +9903,10 @@ $messages['sr-ec'] = array(
 	'configure-section-proxy' => 'Проксији',
 	'configure-section-cookie' => 'Колачићи',
 	'configure-section-performance' => 'Перформансе',
-	'configure-section-upload' => 'Пошаљи',
+	'configure-section-upload' => 'Отпреми',
 	'configure-section-sharedupload' => 'Заједничко слање',
 	'configure-section-mime' => 'MIME типови',
-	'configure-section-images' => 'Слике',
+	'configure-section-images' => 'Датотеке',
 	'configure-section-antivirus' => 'Антивирус',
 	'configure-section-parser' => 'Парсер',
 	'configure-section-specialpages' => 'Посебне странице',
@@ -9986,6 +9986,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-el'] = array(
@@ -10053,7 +10054,6 @@ Molimo Vas da ga napravite ili ga promenite kako biste koristili ovu ekstenziju.
 	'configure-section-enotif' => 'Obaveštenja putem e-pošte',
 	'configure-section-localization' => 'Lokalizacija',
 	'configure-section-timezone' => 'Vremenska zona',
-	'configure-section-zh-conversion' => 'Kineska konverzija',
 	'configure-section-debug' => 'Debagovanje',
 	'configure-section-site' => 'Prilagođavanje sajta',
 	'configure-section-css-js' => 'CSS i javaskript',
@@ -10070,10 +10070,10 @@ Molimo Vas da ga napravite ili ga promenite kako biste koristili ovu ekstenziju.
 	'configure-section-proxy' => 'Proksiji',
 	'configure-section-cookie' => 'Kolačići',
 	'configure-section-performance' => 'Performanse',
-	'configure-section-upload' => 'Pošalji',
+	'configure-section-upload' => 'Otpremi',
 	'configure-section-sharedupload' => 'Zajedničko slanje',
 	'configure-section-mime' => 'MIME tipovi',
-	'configure-section-images' => 'Slike',
+	'configure-section-images' => 'Datoteke',
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-parser' => 'Parser',
 	'configure-section-specialpages' => 'Posebne stranice',
