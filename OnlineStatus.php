@@ -68,4 +68,5 @@ $wgAjaxExportList[] = 'OnlineStatus::Ajax';
 $wgResourceModules['ext.onlineStatus'] = array(
 	'scripts' => 'extensions/OnlineStatus/OnlineStatus.js',
 	'styles' => 'extensions/OnlineStatus/OnlineStatus.css',
+	'dependencies' => 'mediawiki.legacy.wikibits',
 );
