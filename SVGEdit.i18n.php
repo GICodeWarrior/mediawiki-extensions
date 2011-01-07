@@ -226,6 +226,8 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'svgedit-editbutton-edit' => 'Tekening bewerken',
+	'svgedit-summary-label' => 'Bewerkingssamenvatting',
+	'svgedit-summary-default' => '/* Aangepast met svg-edit */',
 	'svgedit-editor-save-close' => 'Opslaan en sluiten',
 	'svgedit-editor-close' => 'Annuleren',
 	'svgedit-desc' => 'In de browser bewerken van SVG-tekeningen met [http://code.google.com/p/svg-edit/ SVG-Edit]',
