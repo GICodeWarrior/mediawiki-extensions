@@ -234,7 +234,7 @@
 	
 	/**
 	 * Determines a chunk to translate of an DOM elements contents and calls the Google Translate API.
-	 * Then calls itself if there is any remaining word to be done.
+	 * Then calls itself if there is any remaining work to be done.
 	 * 
 	 * @param {array} untranslatedsentences
 	 * @param {array} chunks
@@ -249,6 +249,7 @@
 		var sentenceCount = 0;
 		var currentLength = 0;
 		
+		// Find the scentances that can be put in the current chunk.
 		for ( i in untranslatedsentences ) {
 			sentenceCount++;
 			
@@ -257,6 +258,7 @@
 			}
 			else if ( untranslatedsentences[i].length > 0 ) {
 				if ( currentLength == 0 ) {
+					// If the first scentance is longer then the max chunk legth, split it.
 					partToUse = untranslatedsentences[i].substr( 0, currentMaxSize - currentLength );
 					remainingPart = untranslatedsentences[i].substr( currentMaxSize - currentLength );
 				}
@@ -267,6 +269,7 @@
 		
 		var chunk = '';
 		
+		// Build the chunck.
 		for ( i = 0; i < sentenceCount; i++ ) {
 			var part = untranslatedsentences.shift();
 			
@@ -275,24 +278,28 @@
 			}
 		}
 		
+		// If there is a remaining part, re-add it to the scentances to translate list.
 		if ( remainingPart !== false ) {
 			untranslatedsentences.unshift( remainingPart );
 		}
 		
+		// If there is a partial scentance, add it to the chunk.
 		if ( partToUse !== false ) {
 			chunk += partToUse;
 		}
 		
+		// If the lenght is 0, the element has been translated.
 		if ( chunk.length == 0 ) {
 			handleTranslationCompletion( targetLang );
 			return;
 		}
 
+		// Keep track of leading and tailing spaces, as they often get modified by the GT API.
 		var leadingSpace = chunk.substr( 0, 1 ) == ' ' ? ' ' : '';
 		var tailingSpace = ( chunk.length > 1 && chunk.substr( chunk.length - 1, 1 ) == ' ' ) ? ' ' : '';
 		
 		google.language.translate(
-			jQuery.trim( chunk ),
+			jQuery.trim( chunk ), // Trim, so the result does not contain preceding or tailing spaces.
 			sourceLang,
 			targetLang,
 			function(result) {
