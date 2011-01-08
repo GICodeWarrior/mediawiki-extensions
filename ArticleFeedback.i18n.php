@@ -259,19 +259,22 @@ $messages['br'] = array(
 	'articlefeedback-form-switch-label' => 'Kas evezhiadennoù',
 	'articlefeedback-form-panel-title' => 'Ho soñj',
 	'articlefeedback-form-panel-instructions' => 'Trugarez da gemer un tamm amzer da briziañ ar bajenn-mañ.',
-	'articlefeedback-form-panel-notice' => "Gant an amzer ez aio da get hoc'h evezhiadennoù.",
 	'articlefeedback-form-panel-submit' => 'Kas an evezhiadenn',
 	'articlefeedback-report-switch-label' => "Diskouez an disoc'hoù",
 	'articlefeedback-report-panel-title' => "Disoc'hoù an evezhiadenn",
 	'articlefeedback-report-panel-description' => 'Notennoù keitat evit ar mare.',
-	'articlefeedback-field-wellsourced-label' => 'Titouret mat',
-	'articlefeedback-field-wellsourced-tip' => "Ha soñjal a ra deoc'h ez eus arroudennoù a-walc'h er bajenn-mañ ? Ha diwar mammennoù sirius e teuont ?",
+	'articlefeedback-report-empty' => 'Priziadenn ebet',
+	'articlefeedback-report-ratings' => '$1 priziadenn',
+	'articlefeedback-field-trustworthy-label' => 'A fiziañs',
+	'articlefeedback-field-trustworthy-tip' => "Ha soñjal a ra deoc'h ez eus arroudennoù a-walc'h er bajenn-mañ ? Ha diwar mammennoù sirius e teuont ?",
 	'articlefeedback-field-complete-label' => 'Graet',
 	'articlefeedback-field-complete-tip' => "Ha soñjal a ra deoc'h e vez graet mat tro temoù pennañ ar sujed ?",
-	'articlefeedback-field-neutral-label' => 'Neptu',
-	'articlefeedback-field-neutral-tip' => "Ha soñjal a ra deoc'h e vez kavet displeget er bajenn-mañ, en un doare reizh a-walc'h, holl tuioù ar sujed ?",
-	'articlefeedback-field-readable-label' => 'Lennus',
-	'articlefeedback-field-readable-tip' => "Ha soñjal a ra deoc'h eo skrivet brav ha frammet mat ar bajenn-mañ ?",
+	'articlefeedback-field-unbiased-tip' => "Ha soñjal a ra deoc'h e vez kavet displeget er bajenn-mañ, en un doare reizh a-walc'h, holl tuioù ar sujed ?",
+	'articlefeedback-field-wellwritten-label' => 'Skrivet brav',
+	'articlefeedback-field-wellwritten-tip' => "Ha soñjal a ra deoc'h eo skrivet brav ha frammet mat ar bajenn-mañ ?",
+	'articlefeedback-pitch-reject' => 'Nann, trugarez',
+	'articlefeedback-pitch-takesurvey-title' => "Ha c'hoant hoc'h eus respont d'ur sontadeg ?",
+	'articlefeedback-pitch-takesurvey-accept' => 'Kregiñ gant an enklask',
 );
 
 /** Bosnian (Bosanski)
@@ -1069,6 +1072,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Marine-Blue
  * @author Ohgi
+ * @author Whym
  * @author Yanajin66
  * @author 青子守歌
  */
@@ -1106,6 +1110,8 @@ $messages['ja'] = array(
 	'articlefeedback-field-unbiased-label' => '公平な',
 	'articlefeedback-field-unbiased-tip' => 'このページは、ある問題に対する全ての観点を平等に説明していると思いますか？',
 	'articlefeedback-field-wellwritten-tip' => 'この記事は、良く整理され、良く書かれていると思いますか？',
+	'articlefeedback-pitch-reject' => '遠慮します',
+	'articlefeedback-pitch-takesurvey-title' => 'アンケートにお答えいただけますか？',
 	'articlefeedback-pitch-takesurvey-accept' => '調査を開始',
 	'articlefeedback-pitch-createaccount-title' => 'アカウントを作成しますか？',
 	'articlefeedback-pitch-createaccount-accept' => 'アカウント作成',
