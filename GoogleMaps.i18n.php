@@ -785,7 +785,7 @@ $wgGoogleMapsMessages['br'] = array(
 	'gm-line-width' => 'Ledander',
 	'gm-make-map' => 'criar um mapa',
 	'gm-hide-map' => 'esconder um mapa',
-	'gm-back' => 'voltar',
+	'gm-back' => 'distreiñ',
 	'gm-kml-include' => 'KML/GeoRSS diavaez :',
 	'gm-kml-include-link' => "ouzhpennañ d'ar gartenn",
 	'gm-kml-loading' => 'o kargañ...',
@@ -5231,7 +5231,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-no-results' => 'Нема резултата',
 	'gm-searching' => 'претраживање...',
 	'gm-map' => 'Мапа',
-	'gm-are-you-sure' => 'Да ли сте сигурни?',
+	'gm-are-you-sure' => 'Јесте ли сигурни?',
 	'gm-clear-all-points' => 'Обриши све бодове',
 	'gm-refresh-points' => 'Освежи тачке',
 	'gm-width' => 'Ширина',
@@ -5253,7 +5253,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-meters' => 'метри',
 	'gm-miles' => 'миље',
 	'gm-editing-path' => 'Кликни мапу за додавање нових тачака овој путањи.',
-	'gm-save-path' => 'Сними',
+	'gm-save-path' => 'Сачувај',
 	'gm-edit-path' => 'додај бодове',
 	'gm-show-path' => 'покажи бодове',
 	'gm-color-path' => 'промени боју',
@@ -5277,6 +5277,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Rancher
  */
 $wgGoogleMapsMessages['sr-el'] = array(
 	'gm-desc' => 'Lako pravi mape, pomoću Vikificiranih markera',
@@ -5301,7 +5302,7 @@ $wgGoogleMapsMessages['sr-el'] = array(
 	'gm-no-results' => 'Nema rezultata',
 	'gm-searching' => 'pretraživanje...',
 	'gm-map' => 'Mapa',
-	'gm-are-you-sure' => 'Da li ste sigurni?',
+	'gm-are-you-sure' => 'Jeste li sigurni?',
 	'gm-clear-all-points' => 'Obriši sve bodove',
 	'gm-refresh-points' => 'Osveži tačke',
 	'gm-width' => 'Širina',
