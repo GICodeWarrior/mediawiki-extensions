@@ -1178,6 +1178,13 @@ $messages['lb'] = array(
 	'right-import_users' => 'Benotzer a grousser Zuel importéieren',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'importusers-log-summary-all' => 'Vysā',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
