@@ -718,6 +718,17 @@ Naudotojų vardai gali turėti didžiąsias ir mažąsias raidės.
 Pasitikrinkite rašybą.',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'ajaxlogin-desc' => "Fanatsofohan-tsoratra hahafahan'ny mpampiasa miditra ary manatadidy ny tenimiafiny",
+	'ajaxLogin1' => "Mba hanatanteraka ny fidiranao, mila mampiditra tenimiafina vaovao ianao.
+Hanidy an'ity pejy ity izany ary mety ho very ny fanovana mbola ataonao.",
+	'ajaxLogin2' => "Tena tapa-kevitra ve ianao ?
+Mety ho very ny fanovana mbola atao eto amin'ity pejy ity raha tonga dia hidiana.",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
