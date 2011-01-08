@@ -1014,6 +1014,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Evropi
  * @author Omnipaedista
  */
 $messages['el'] = array(
@@ -1046,7 +1047,7 @@ $messages['el'] = array(
 	'voctrain_Answer' => 'Απάντηση',
 	'voctrain_one_of' => 'ένα από',
 	'voctrain_Answer_s_' => 'Απαντήσεις',
-	'voctrain_logout' => 'αποσύνδεση',
+	'voctrain_logout' => 'έξοδος',
 	'voctrain_Start_a_new_exercise' => 'Ξεκινήστε μια νέα άσκηση',
 	'voctrain_User_name' => 'Όνομα χρήστη',
 	'voctrain_Password' => 'Κωδικός',
