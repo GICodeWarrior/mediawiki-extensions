@@ -78,12 +78,11 @@ final class LiveTranslateHooks {
 			&& $article->exists() 
 			&& ( count( $egLiveTranslateLanguages ) > 1 || ( count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) ) ) {
 			$wgOut->addHTML(
-				'<span class="notranslate" id="livetranslatespan">' .
+				'<span class="notranslate" id="livetranslatespan" style="display:inline; float:right">' .
 				Html::rawElement(
 					'div',
 					array(
-						'id' => 'livetranslatediv',
-						'style' => 'display:inline; float:right',
+						'id' => 'livetranslatediv'
 					),
 					htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
 					'&#160;' . 
@@ -101,13 +100,14 @@ final class LiveTranslateHooks {
 						wfMsg( 'livetranslate-button-revert' )
 					)					
 				) .
-				'</span>'
+				'<br /><div id="googlebranding" style="display:inline; float:right"></div></span>'
 			);
 			
 			$wgOut->addScript(
 				Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
 				Html::inlineScript(
-					'google.load("language", "1");' .
+					'google.load("language", "1");
+					google.setOnLoadCallback(function(){google.language.getBranding("googlebranding");});' .
 					'var sourceLang = ' . json_encode( $currentLang ) . ';'
 				)
 			);		
