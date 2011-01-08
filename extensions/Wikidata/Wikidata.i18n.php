@@ -3280,6 +3280,7 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Evropi
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -3462,7 +3463,7 @@ $messages['el'] = array(
 	'ow_needs_xlation_dest_lang' => 'Γλώσσα προορισμού:',
 	'ow_needs_xlation_no_dest_lang' => 'Παρακαλώ δώστε μια γλώσσα προορισμού.',
 	'ow_show' => 'Προβολή',
-	'ow_upload' => 'Φόρτωση',
+	'ow_upload' => 'Επιφόρτωση',
 	'ow_create' => 'Δημιουργία',
 	'ow_collection_added' => '<strong>Η συλλογή $1 προστέθηκε.</strong>',
 	'ow_suggest_previous' => 'Προηγούμενος',

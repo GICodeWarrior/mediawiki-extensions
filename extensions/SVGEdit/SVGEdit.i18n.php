@@ -78,6 +78,8 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'svgedit-editbutton-edit' => 'Kreslanku wobźěłaś',
+	'svgedit-summary-label' => 'Zespominanje',
+	'svgedit-summary-default' => '/* W svg-edit změnjony */',
 	'svgedit-editor-save-close' => 'Składowaś a zacyniś',
 	'svgedit-editor-close' => 'Pśetergnuś',
 	'svgedit-desc' => 'Zmóžnja wobźěłowanje SVG-kreslankow z [http://code.google.com/p/svg-edit/ SVG-Edit] we wobglědowaku',

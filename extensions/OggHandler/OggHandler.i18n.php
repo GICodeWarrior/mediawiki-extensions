@@ -3093,6 +3093,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'ogg-desc' => 'Rukovaoc ogg Teora i Vorbis fajlovima sa javaskript plejerom',
@@ -3117,7 +3118,7 @@ $messages['sr-el'] = array(
 	'ogg-use-player' => 'Koristi plejer:',
 	'ogg-more' => 'Više...',
 	'ogg-dismiss' => 'Zatvori',
-	'ogg-download' => 'Preuzmi fajl',
+	'ogg-download' => 'Preuzmi datoteku',
 	'ogg-desc-link' => 'O ovom fajlu',
 );
 

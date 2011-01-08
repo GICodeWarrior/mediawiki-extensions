@@ -75,6 +75,18 @@ $messages['de'] = array(
 	'right-SPMsetup' => 'Bearbeiten der grundlegenden Einstellungen von Semantisches Projektmanagement',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'spm_wbs_link' => 'XML-eksport za MS Projekt',
+	'spm_printername_wbs' => 'Eksport za MS Projekt',
+	'spm-name' => 'Semantiske projektowe zastojanje',
+	'semanticprojectmanagement-desc' => 'Formaty projektowego zastojanja za zasajźone wótpšašanja w Semantic MediaWiki',
+	'semanticprojectmanagement' => 'Semantiske projektowe zastojanje',
+	'right-SPMsetup' => 'Zakładne nastajenja semantiskego projektowego zastojanja wobźěłaś',
+);
+
 /** French (Français)
  * @author Peter17
  */

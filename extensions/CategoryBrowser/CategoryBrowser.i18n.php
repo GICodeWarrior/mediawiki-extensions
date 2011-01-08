@@ -1037,6 +1037,13 @@ Wiesselt Äre Borwseroder maacht en Update, wa méiglech.",
 	'cb_edit_paste_right_hint' => 'Operateur an déi nächst Positioun drasetzen (wa méiglech)',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'cb_all_op' => 'Vysi',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

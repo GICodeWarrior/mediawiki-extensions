@@ -261,6 +261,13 @@ $messages['ja'] = array(
 	'variablepage-desc' => '軽い可変ページのリダイレクト',
 );
 
+/** Georgian (ქართული)
+ * @author Dawid Deutschland
+ */
+$messages['ka'] = array(
+	'variablepage-navlink_text' => 'შეწირულობები',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

@@ -41,7 +41,7 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'special404-desc' => 'Pourchas a ra ur bajenn dal 404 dibar evit ar fazioù dianav',
+	'special404-desc' => 'Pourchas a ra ur bajenn 404 dre ziouer evit ar fazioù dianav',
 	'error404' => '404 dianav',
 	'special404-body' => "N'eo ket bet kavet an URL goulennet ganeoc'h.
 
@@ -248,6 +248,7 @@ A peul esse ch'it veubie vardé:
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -255,10 +256,10 @@ $messages['pt'] = array(
 	'error404' => '404 Não encontrado',
 	'special404-body' => 'A URL solicitada não foi encontrada. 
 
-Você quis escrever {{fullurl:$1}}? 
+Pretendia escrever {{fullurl:$1}}? 
 
-Talvez queira ver:
- * [[{{MediaWiki:Mainpage}}|A página principal]]',
+Talvez queira visitar:
+* [[{{MediaWiki:Mainpage}}|A página principal]]',
 );
 
 /** Russian (Русский)

@@ -375,17 +375,22 @@ $messages['dsb'] = array(
 	'article-comments-required-field' => 'Pólo "$1" jo trěbne.',
 	'article-comments-submission-failed' => 'Wótpósłanje komentara jo se njeraźiło',
 	'article-comments-failure-reasons' => 'Bóžko wótposłanje twójogo komentara jo se ze {{PLURAL:$1|slědujuceje pśicyna|slědujuceju pśicynowu|slědujucych pśicynow|slědujucych pśicynow}} njeraźiło:',
+	'article-comments-no-comments' => 'Bóžko bok "[[$1]]" tuchylu njeakceptěrujo komentary.',
 	'article-comments-talk-page-starter' => '<noinclude>Komentary k bokoju „[[$1]]“
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 jo gronił ...',
+	'article-comments-summary' => '$1 jo dał komentar  pśez rozšyrjenje ArticleComments',
 	'article-comments-submission-succeeded' => 'Wótpósłanje komentara jo se raźiło',
 	'article-comments-submission-success' => 'Sy komentar za "[[$1]] wuspěšnje wótpósłał',
+	'article-comments-submission-view-all' => 'Móžoš se [[$1|wšykne komentary na toś tom boku]] woglědaś',
+	'article-comments-user-is-blocked' => 'Twójo wužywarske konto jo se tuchylu blokěrował pśeśiwo wobźěłowanjoju "[[$1]]".',
 	'article-comments-comment-bad-mode' => 'Za komentar jo se njepłaśiwy modus pódał.
 Móžne su "plain", "normal" a "wiki".',
 	'article-comments-comment-missing-name-parameter' => 'Felujuce mě',
 	'article-comments-comment-missing-date-parameter' => 'Felujucy komentarowy datum',
 	'article-comments-no-spam' => 'Nanjemjenjej jadno z wótpóskanych pólow jo se ako spam markěrowało.',
+	'processcomment' => 'Nastawkowy komentar pśeźěłaś',
 );
 
 /** Greek (Ελληνικά)

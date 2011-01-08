@@ -925,8 +925,8 @@ $messages['lt'] = array(
  */
 $messages['mg'] = array(
 	'countedits' => 'Mpanisa fanovana',
-	'countedits-warning' => "'''Tandremo''' : Aza mitsara boky amin'ny alàlan'ny foniny. 
-Ary aza mitsara ny mpandray anjara amin'ny alàlan'ny isan'ny fanovana nataony.",
+	'countedits-warning' => "'''Tandremo''' : Aza mitsara boky amin'ny foniny. 
+Ary aza mitsara ny mpandray anjara amin'ny isan'ny fanovana nataony.",
 	'countedits-username' => 'Solonanarana :',
 	'countedits-ok' => 'Eka',
 	'countedits-nosuchuser' => 'Tsy misy mpikambana mitondra ny anarana $1',

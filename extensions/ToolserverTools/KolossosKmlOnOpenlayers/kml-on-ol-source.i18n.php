@@ -292,6 +292,13 @@ $messages['lb'] = array(
 	'ts-kml-on-ol-map-by' => 'Kaart vum',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'ts-kml-on-ol-all' => 'Vysi',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

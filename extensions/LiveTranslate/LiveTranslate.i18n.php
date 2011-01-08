@@ -60,6 +60,14 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'livetranslate-desc' => 'Aotren a ra treiñ danvez ur bajenn war-eeun en ur ober gant servij treiñ Google',
+	'livetranslate-translate-to' => 'Treiñ ar bajenn-mañ e',
+	'livetranslate-button-translate' => 'Treiñ',
+	'livetranslate-button-translating' => 'O treiñ...',
+	'livetranslate-button-revert' => 'Diskouez ar stumm orin',
+	'livetranslate-dictionary-error' => 'Dibosupl kavout troidigezh ar geriadur war ar prim. Ne vo pledet gant ger ebet en un doare dibar e-keit ha ne vo ket bet sevenet an droidigezh.',
+	'livetranslate-dictionary-empty' => 'Ger ebet er geriadur evit c\'hoazh. Klikit war an ivinell "kemmañ" evit ouzhpennañ unan.',
+	'livetranslate-dictionary-count' => '{{PLURAL:$1|$1 ger|$1 ger}} e $2 {{PLURAL:$2|yezh|yezh}} zo. Klikañ war an ivinell "kemmañ" da zegas re all.',
+	'livetranslate-dictionary-unallowed-langs' => "N'eo ket bet dibabet ar {{PLURAL:$2|yezh-mañ|ar yezhoù-mañ}} da yezh(où) da dreiñ daveto evit c'hoazh : $1. Cheñchit ar yezhoù aotreet dre ho kefluniadur wiki pe lamit anezho kuit eus ar geriadur.",
 );
 
 /** Bosnian (Bosanski)

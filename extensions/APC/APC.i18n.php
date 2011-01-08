@@ -4060,6 +4060,13 @@ $messages['lt'] = array(
 	'viewapc-php-version' => 'PHP versija',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'viewapc-ls-limit-none' => 'Vysi',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  * @author Xil
