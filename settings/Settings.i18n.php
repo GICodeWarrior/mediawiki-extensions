@@ -5044,11 +5044,13 @@ $messages['de-formal'] = array(
  */
 $messages['dsb'] = array(
 	'configure-setting-desc' => 'Wopisanja za konfiguraciske nastajenja MediaWiki',
+	'configure-setting-wgActionPaths-key' => 'Akcija',
 );
 
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Evropi
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -5129,14 +5131,11 @@ $messages['el'] = array(
 	'configure-setting-wgSVGConverters' => 'Μετατροπείς SVG',
 	'configure-setting-wgSVGConverters-key' => 'Όνομα μετατροπέα',
 	'configure-setting-wgSVGConverters-value' => 'Εντολή μετατροπής',
-	'configure-setting-wgUseMemCached' => 'Χρήση memcached',
 	'configure-setting-wgParserCacheType' => 'Τύπος λανθάνουσας λεξιαναλυτή',
 	'configure-setting-wgAlwaysUseTidy' => 'Πάντοτε χρήση του Tidy',
 	'configure-setting-wgUseTeX' => 'Ενεργοποίηση TeX',
 	'configure-setting-wgXMLMimeTypes-key' => 'Τύπος MIME',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Περιοχή ονομάτων',
-	'configure-setting-wgZhdaemonHost' => 'Φιλοξενία ZhDaemon',
-	'configure-setting-wgZhdaemonPort' => 'Θύρα ZhDaemon',
 	'configure-setting-wgLocaltimezone' => 'Τοπική χρονική ζωνή',
 	'configure-setting-wgUseAjax' => 'Ενεργοποίηση AJAX',
 	'configure-setting-wgLivePreview' => 'Ενεργοποίηση ζωντανής προεπισκόπησης',
