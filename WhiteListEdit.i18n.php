@@ -2249,6 +2249,13 @@ Dës Säit ass nëmme valabel fir limitéiert Benotzer.",
 	'group-manager-member' => 'Manager',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'whitelisttablemodifyall' => 'Vysi',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */
