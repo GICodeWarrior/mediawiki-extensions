@@ -109,7 +109,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'rdfio-desc' => 'Funcionalidade estendida de importación e exportación RDF, incluído o punto de fin SPARQL, para Semantic MediaWiki',
-	'rdfimport' => 'Importación RDF',
+	'rdfimport' => 'Importación en RDF',
 	'rdfio-arc2admin-desc' => 'Páxina de administración do ARC2 RDF Store para Semantic MediaWiki',
 	'rdfio-rdfimport-desc' => 'Unha páxina especial para importar datos semánticos en formato RDF/XML',
 	'rdfio-sparqlendpoint-desc' => 'Un punto de fin SPARQL proporcionado polo SMWRDFConnector',
