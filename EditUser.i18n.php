@@ -1201,6 +1201,7 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Обрадовић Горан
  */
@@ -1209,7 +1210,7 @@ $messages['sr-ec'] = array(
 	'edituser' => 'Измени корисника',
 	'edituser-username' => 'Име',
 	'edituser-dosearch' => 'Претрага',
-	'edituser-nouser' => 'Жељени корисник не постоји',
+	'edituser-nouser' => 'Корисник „$1“ не постоји.',
 	'edituser-exempt' => 'Жељени корисник не може да буде измењен',
 	'right-edituser' => 'Измени подешавања других корисника',
 	'right-edituser-exempt' => 'Други не могу да мењају подешавања овог корисника',
