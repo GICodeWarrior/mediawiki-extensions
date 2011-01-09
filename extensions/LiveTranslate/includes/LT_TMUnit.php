@@ -74,4 +74,15 @@ class LTTMUnit {
 		}
 	}
 	
+	/**
+	 * Returns if the translation unit has any variants. If not, it can probably be ignored.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean
+	 */
+	public function hasVariants() {
+		return count( $this->variants ) > 0;
+	}
+	
 }

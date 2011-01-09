@@ -33,4 +33,7 @@ abstract class LTTMParser {
 	 */
 	public abstract function parse( $text );
 	
+	
+	// file_get_contents
+	
 }
