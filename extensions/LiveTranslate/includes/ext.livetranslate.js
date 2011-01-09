@@ -158,10 +158,8 @@
 	function getSpecialWords() {
 		var words = [];
 		
-		$.each($( '.notranslate' ), function( i, v ) {
-			if ( $(v).attr( 'id' ) != 'livetranslatespan' ) {
-				words.push( $(v).text() );
-			}
+		$.each($( 'span.notranslate' ), function( i, v ) {
+			words.push( $(v).text() );
 		});
 		
 		return words;
@@ -174,7 +172,7 @@
 	 * @param {object} translations
 	 */
 	function replaceSpecialWords( translations ) {
-		$.each($(".notranslate"), function(i,v) {
+		$.each($("span.notranslate"), function(i,v) {
 			var currentText = $(v).text();
 			if ( translations[currentText] ) {
 				$(v).text( translations[currentText] );
@@ -221,7 +219,7 @@
 				);
 			}
 			// If it's an html element, check to see if it should be ignored, and if not, apply function again.
-			else if ( $.inArray( $( this ).attr( 'id' ), [ 'livetranslatediv', 'siteSub', 'jump-to-nav' ] ) == -1
+			else if ( $.inArray( $( this ).attr( 'id' ), [ 'siteSub', 'jump-to-nav' ] ) == -1
 				&& !$( this ).hasClass( 'notranslate' ) && !$( this ).hasClass( 'printfooter' )
 				&& $( this ).text().length > 0 ) {
 				
