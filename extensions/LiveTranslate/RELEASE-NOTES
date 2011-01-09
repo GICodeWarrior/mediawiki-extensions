@@ -7,13 +7,15 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 === Version 0.4 ===
 2011-01-xx
 
+* Added support for Translation Memory eXchange (TMX) files.
+* Added support for translation memory files in the Google CSV format.
 * Added Google branding, which is required when using the Google Translate API.
 : https://code.google.com/apis/language/translate/v1/getting_started.html#getBranding
 
 === Version 0.3 ===
 2011-01-07
 
-* Added compatibility with IE8.
+* Added (partial) compatibility with IE8. Random errors still occur. Use a modern browser to prevent this.
 * Fixed issue with trim-prevention, causing |-signs to semi-randomly get inserted into translated text.
 * Only show the translation control when an API key is provided.
 
