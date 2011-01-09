@@ -78,11 +78,12 @@ final class LiveTranslateHooks {
 			&& $article->exists() 
 			&& ( count( $egLiveTranslateLanguages ) > 1 || ( count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) ) ) {
 			$wgOut->addHTML(
-				'<span class="notranslate" id="livetranslatespan" style="display:inline; float:right">' .
 				Html::rawElement(
 					'div',
 					array(
-						'id' => 'livetranslatediv'
+						'id' => 'livetranslatediv',
+						'style' => 'display:inline; float:right',
+						'class' => 'notranslate'
 					),
 					htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
 					'&#160;' . 
@@ -100,7 +101,7 @@ final class LiveTranslateHooks {
 						wfMsg( 'livetranslate-button-revert' )
 					)					
 				) .
-				'<br /><div id="googlebranding" style="display:inline; float:right"></div></span>'
+				'<br /><br /><div id="googlebranding" style="display:inline; float:right"></div>'
 			);
 			
 			$wgOut->addScript(
