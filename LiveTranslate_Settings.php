@@ -28,3 +28,13 @@ $egGoogleApiKey = '';
 $egLiveTranslateLanguages = array(
 	$wgLanguageCode,
 );
+
+# A list of translation memory exchange (TMX) files.
+$egLiveTranslateTXMFiles = array(
+
+);
+
+# A list of translation memory files in the Google CSV format.
+$egLiveTranslateGCVSFiles = array(
+
+);
