@@ -136,11 +136,23 @@ final class LiveTranslateHooks {
 		if ( $wgDBtype == 'mysql' ) {
 			// Set up the current schema.
 			if ( $updater === null ) {
-				global $wgExtNewTables;
+				global $wgExtNewTables, $wgExtNewIndexes;
 				$wgExtNewTables[] = array(
 					'livetranslate',
-					$egLiveTranslateIP . '/LiveTranslate.sql'
+					$egLiveTranslateIP . '/LiveTranslate.sql',
+					true
 				);
+				$wgExtNewTables[] = array(
+					'livetranslatememories',
+					$egLiveTranslateIP . '/LiveTranslate.sql',
+					true
+				);				
+				$wgExtNewIndexes[] = array(
+					'live_translate',
+					'word_translation',
+					$egLiveTranslateIP . '/sql/LT_IndexWordTranslation.sql',
+					true
+				);			
 			}
 			else {
 				$updater->addExtensionUpdate( array( 
@@ -148,7 +160,20 @@ final class LiveTranslateHooks {
 					'livetranslate',
 					$egLiveTranslateIP . '/LiveTranslate.sql',
 					true
+				) );
+				$updater->addExtensionUpdate( array( 
+					'addTable',
+					'livetranslatememories',
+					$egLiveTranslateIP . '/LiveTranslate.sql',
+					true
 				) );				
+				$updater->addExtensionUpdate( array(
+					'addIndex',
+					'live_translate',
+					'word_translation',
+					$egLiveTranslateIP . '/sql/LT_IndexWordTranslation.sql',
+					true
+				) );	
 			}		
 		}
 		
