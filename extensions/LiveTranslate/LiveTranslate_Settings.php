@@ -18,9 +18,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-# The name of the page on which the special words translations dirctionary is defined.
-$egLiveTranslateDirPage = 'Live Translate Dictionary';
-
 # https://code.google.com/apis/console
 $egGoogleApiKey = '';
 
@@ -35,3 +32,7 @@ $wgGroupPermissions['sysop']['managetms'] = true;
 # Default translation memory type.
 # TMT_LTF, TMT_TMX, TMT_GCSV
 $egLiveTranslateTMT = TMT_LTF;
+
+# The name of the page on which the special words translations dirctionary is defined.
+# NOTICE: This is only used for the initial setup. Use Special:LiveTranslate to modify after installation.
+$egLiveTranslateDirPage = 'Live Translate Dictionary';
