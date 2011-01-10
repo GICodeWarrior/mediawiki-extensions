@@ -38,3 +38,6 @@ $egLiveTranslateTXMFiles = array(
 $egLiveTranslateGCVSFiles = array(
 
 );
+
+# Permission to mannage translation memories.
+$wgGroupPermissions['sysop']['managetms'] = true;

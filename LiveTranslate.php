@@ -57,6 +57,11 @@ $wgAutoloadClasses['LTTMXParser']					= $incDirIP . 'LT_TMXParser.php';
 $wgAutoloadClasses['LTTranslationMemory']			= $incDirIP . 'LT_TranslationMemory.php';
 unset( $incDirIP );
 
+$wgAutoloadClasses['SpecialLiveTranslate']	 		= $egLiveTranslateIP . '/specials/SpecialLiveTranslate.php';
+
+$wgSpecialPages['LiveTranslate'] = 'SpecialLiveTranslate';
+$wgSpecialPageGroups['LiveTranslate'] = 'pagetools';
+
 $wgAPIModules['livetranslate'] = 'ApiLiveTranslate';
 $wgAPIListModules['livetranslate'] = 'ApiQueryLiveTranslate';
 
