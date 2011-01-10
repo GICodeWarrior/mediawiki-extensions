@@ -76,7 +76,79 @@ class SpecialLiveTranslate extends SpecialPage {
 			return;
 		} 
 		
-		// TODO
+		$this->displayTMConfig();
+	}
+	
+	/**
+	 * Displays the translation memories config table.
+	 * 
+	 * @since 0.4
+	 */		
+	protected function displayTMConfig() {
+		global $wgOut;
+		
+		$tms = $this->getTMConfigItems();
+		
+		if ( count( $tms ) > 0 ) {
+			foreach ( $tms as $tm ) {
+				$this->displayTMItem( $tm );
+			}			
+		}
+		else {
+			$wgOut->addWikiMsg( 'livetranslate-special-no-tms-yet' );
+		}
+		
+		$this->displayAddNewTM();
+	}
+	
+	/**
+	 * Displays a single row in the translation memories config table.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */		
+	protected function getTMConfigItems() {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$res = $dbr->select(
+			'live_translate_memories',
+			array( 'memory_id', 'memory_type', 'memory_location' ),
+			array(),
+			__METHOD__,
+			array( 'LIMIT' => '5000' )
+		);
+		
+		$tms = array();
+		
+		// Iterate over the result items in the result wrapper to end up with a regular array.
+		foreach ( $res as $tm ) {
+			$tms[] = $tm;
+		}
+		
+		return $tms;
+	}
+	
+	/**
+	 * Displays a single row in the translation memories config table.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param object $tm
+	 */	
+	protected function displayTMItem( $tm ) {
+		global $wgOut;
+		
+		
+	}
+	
+	/**
+	 * Displays an input to add a new translation memory.
+	 * 
+	 * @since 0.4
+	 */		
+	protected function displayAddNewTM() {
+		
 	}
 	
 }
