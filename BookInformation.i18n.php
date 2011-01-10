@@ -732,19 +732,20 @@ $messages['hsb'] = array(
 );
 
 /** Haitian (Kreyòl ayisyen)
+ * @author Boukman
  * @author Masterches
  */
 $messages['ht'] = array(
-	'bookinfo-header' => 'Enfòmasyon anlè liv yo',
-	'bookinformation-desc' => 'Ap etann [[Special:Booksources]] ak enfòmasyon twouve nan sèvis wèb, entènèt',
+	'bookinfo-header' => 'Enfòmasyon sou liv',
+	'bookinformation-desc' => 'Ap etann [[Special:Booksources|paj espesyal sou sous ki soti nan liv]] ak enfòmasyon nou jwenn nan yon sèvis wèb',
 	'bookinfo-result-title' => 'Tit, non l:',
 	'bookinfo-result-publisher' => 'Editè :',
 	'bookinfo-result-year' => 'Lane :',
 	'bookinfo-error-invalidisbn' => 'ISBN ou bay an pa bon ditou.',
-	'bookinfo-error-nosuchitem' => 'Eleman sa a pa egziste oubyen nou pa kapab twouve l.',
-	'bookinfo-error-nodriver' => 'Nou pa kapab twouve tout enfòmasyon itil pou liv yo, motè enfòmasyon sa pa mache ditou.',
+	'bookinfo-error-nosuchitem' => 'Eleman sa a pa egziste oubyen nou pa kapab jwenn li.',
+	'bookinfo-error-nodriver' => 'Nou pa kapab fè motè enfòmasyon sou liv yo mache ditou.',
 	'bookinfo-error-noresponse' => 'Pa gen pyès repons oubyen delè nesesè a depase.',
-	'bookinfo-purchase' => 'Achte liv sa anlè $1',
+	'bookinfo-purchase' => 'Achte liv sa nan men $1',
 	'bookinfo-provider' => 'Moun ki ap bay enfòmasyon sa : $1',
 );
 
