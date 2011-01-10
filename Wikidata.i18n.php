@@ -7365,12 +7365,14 @@ Mangga hubungi operator server utawa pangurus.',
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author David1010
  * @author Malafaya
  * @author Sopho
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
 	'languages' => 'ვიკიდატა: ენების მენეჯერი',
+	'langman-desc' => 'ენის პარამეტრების დამატება და შეცვლა [[Special:Languages]] დახმარებით',
 	'langman_title' => 'ენების მენეჯერი',
 	'langman_langname' => 'ენის სახელი:',
 	'langman_iso639-3' => 'ISO 639-3 კოდი:',
