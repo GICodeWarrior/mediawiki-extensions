@@ -39,7 +39,7 @@ class LTTranslationMemory {
 	 * @param LTTMUnit $tu
 	 */		
 	public function addTranslationUnit( LTTMUnit $tu ) {
-		$translationUnits[] = $tu;
+		$this->translationUnits[] = $tu;
 	}
 	
 	/**

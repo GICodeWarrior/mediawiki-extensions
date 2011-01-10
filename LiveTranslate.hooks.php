@@ -31,21 +31,23 @@ final class LiveTranslateHooks {
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
 		
 		if ( $title->getFullText() == $egLiveTranslateDirPage ) {
-			$wordSets = LiveTranslateFunctions::parseTranslations( $article->getContent() );
+			$parser = new LTLTFParser();
+			$tm = $parser->parse( $article->getContent() );	
+			$tus = $tm->getTranslationUnits();	
 			
-			if ( count( $wordSets ) == 0 ) {
+			if ( count( $tus ) == 0 ) {
 				$wgOut->addWikiMsg( 'livetranslate-dictionary-empty' );
 			}
 			else {
 				$wgOut->addWikiMsg(
 					'livetranslate-dictionary-count',
-					$wgLang->formatNum( count( $wordSets ) ) ,
-					$wgLang->formatNum( count( $wordSets[0] ) )
+					$wgLang->formatNum( count( $tus ) ) ,
+					$wgLang->formatNum( count( $tus[0]->getVariants() ) )
 				);
 				
 				$notAllowedLanguages = array();
 				
-				foreach ( $wordSets[0] as $languageCode => $translations ) {
+				foreach ( $tus[0]->getVariants() as $languageCode => $translations ) {
 					if ( !in_array( $languageCode, $egLiveTranslateLanguages ) ) {
 						$notAllowedLanguages[] = $languageCode;
 					}
@@ -195,7 +197,16 @@ final class LiveTranslateHooks {
 		$title = $article->getTitle();
 
 		if ( $title->getFullText() == $egLiveTranslateDirPage ) {
-			LiveTranslateFunctions::saveTranslations( LiveTranslateFunctions::parseTranslations( $text ) );
+			$requestData = array(
+				'action' => 'importtms',
+				'format' => 'json',
+				'source' => $title->getFullText(),
+				'type' => 0,
+			);
+			
+			$api = new ApiMain( new FauxRequest( $requestData, true ), true );
+			$api->execute();
+			$response = $api->getResultData();					
 		}
 		
 		return true;

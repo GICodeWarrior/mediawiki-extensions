@@ -18,8 +18,28 @@ class LTLTFParser extends LTTMParser {
 	 * @see LTTMParser::parse()
 	 */
 	public function parse( $text ) {
-		// LiveTranslateFunctions::parseTranslations
-		return new LTTranslationMemory(); // TODO
+		$tm = new LTTranslationMemory();
+		
+		$translationSets = array();
+		
+		$lines = explode( "\n", $text );
+		$languages = array_map( 'trim', explode( ',', array_shift( $lines ) ) );
+		
+		foreach ( $lines as $line ) {
+			$values = array_map( 'trim', explode( ',', $line ) );
+			$tu = new LTTMUnit();
+			
+			foreach ( $values as $nr => $value ) {
+				if ( array_key_exists( $nr, $languages ) ) {
+					// Add the translation (or translations) (value, array) of the word in the language (key).
+					$tu->addVariants( array( $languages[$nr] => array_map( 'trim', explode( '|', $value ) ) ) );
+				}
+			}
+			
+			$tm->addTranslationUnit( $tu );
+		}
+		
+		return $tm;
 	}	
 	
 }
