@@ -14,18 +14,13 @@
 class SpecialLiveTranslate extends SpecialPage {
 	
 	/**
-	 * Map type numbers to messages.
-	 * Messages are build by prepending "livetranslate-tmtype-" and then passing it to wfMsg or similar.
+	 * Enum for translation memory types.
 	 * 
 	 * @since 0.4
-	 * 
-	 * @var array
 	 */
-	protected static $tmTypes = array(
-		0 => 'ltf',
-		1 => 'tmx',
-		2 => 'gcsv',
-	);
+	const TMT_LTF = 0;
+	const TMT_TMX = 1;
+	const TMT_GCSV = 2;
 	
 	/**
 	 * Constructor.
@@ -91,18 +86,45 @@ class SpecialLiveTranslate extends SpecialPage {
 	protected function handleSubmission() {
 		global $wgRequest;
 		
+		$tms = $this->getTMConfigItems();
+		
 		$dbw = wfGetDB( DB_MASTER );
 
+		// Loop over the existing translation memories and update/delete them if requested.
+		foreach ( $tms as $tm ) {
+			// If a delete has been requested, remove the item.
+			if ( $wgRequest->getCheck( 'tmdel-' . $tm->memory_id ) ) {
+				$dbw->delete(
+					'live_translate_memories',
+					array( 'memory_id' => $tm->memory_id )
+				);
+			}
+			// If changes where made, apply them in the db.
+			elseif (
+				$wgRequest->getText( 'tmlocation-' . $tm->memory_id ) != $tm->memory_location
+				|| $wgRequest->getInt( 'wptmtype-' . $tm->memory_id ) != $tm->memory_type
+				) {
+				$dbw->update(
+					'live_translate_memories',
+					array(
+						'memory_location' => $wgRequest->getText( 'tmlocation-' . $tm->memory_id ),
+						'memory_type' => $wgRequest->getInt( 'wptmtype-' . $tm->memory_id )
+					),
+					array( 'memory_id' => $tm->memory_id )
+				);
+			}
+		}
+		
+		// If there is a new item, insert it.
 		if ( $wgRequest->getText( 'newtm-location' ) != '' ) {
 			$dbw->insert(
 				'live_translate_memories',
 				array(
-					'memory_type' => $wgRequest->getVal( 'wpnewtm-type' ),
+					'memory_type' => $wgRequest->getInt( 'wpnewtm-type' ),
 					'memory_location' => $wgRequest->getText( 'newtm-location' )
 				)
 			);
 		}
-		
 	}
 	
 	/**
@@ -126,6 +148,7 @@ class SpecialLiveTranslate extends SpecialPage {
 		) );
 		
 		if ( count( $tms ) > 0 ) {
+			/*
 			$wgOut->addHTML( '<h3>' . htmlspecialchars( wfMsg( 'livetranslate-special-tms-update' ) ) . '</h3>' );
 			
 			$wgOut->addHTML(
@@ -136,6 +159,7 @@ class SpecialLiveTranslate extends SpecialPage {
 					array( 'id' => 'tmform-updatesubmit' )
 				)
 			);
+			*/
 			
 			$wgOut->addHTML( '<h3>' . htmlspecialchars( wfMsg( 'livetranslate-special-current-tms' ) ) . '</h3>' );
 			
@@ -242,14 +266,14 @@ class SpecialLiveTranslate extends SpecialPage {
 	 * @since 0.4
 	 */		
 	protected function displayAddNewTM() {
-		global $wgOut;
+		global $wgOut, $egLiveTranslateTMT;
 		
 		$wgOut->addHTML( '<h3>' . htmlspecialchars( wfMsg( 'livetranslate-special-add-tm' ) ) . '</h3>' );
 		
 		$wgOut->addHTML(
 			'<table><tr>' .
 				'<td><b>' . htmlspecialchars( wfMsg( 'livetranslate-special-type' ) ) . ': </b></td>' .
-				'<td>' . $this->getTypeSelector( 'newtm-type', '' ) . '</td>' . // TODO		
+				'<td>' . $this->getTypeSelector( 'newtm-type', $egLiveTranslateTMT ) . '</td>' .		
 			'</tr><tr>' .
 				'<td><b>' . htmlspecialchars( wfMsg( 'livetranslate-special-location' ) ) . ': </b></td>' .
 				'<td>' . Html::input( 'newtm-location', '', 'text', array( 'size' => 75 ) ) . '</td>' .
@@ -257,6 +281,17 @@ class SpecialLiveTranslate extends SpecialPage {
 		);
 	}
 	
+	/**
+	 * Builds up an HTML select for translation memory types with the provided name.
+	 * The value parameter allows setting which item should be selected.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $name
+	 * @param string $value
+	 * 
+	 * @return string
+	 */
 	protected function getTypeSelector( $name, $value ) {
 		$typeSelector = new HTMLSelectField( array(
 			'fieldname' => $name,
@@ -266,13 +301,27 @@ class SpecialLiveTranslate extends SpecialPage {
 		return $typeSelector->getInputHTML( $value );
 	}
 	
+	/**
+	 * Returns an array with the translation memory type names (keys)
+	 * and their database values (values).
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */
 	protected function getTypeOptions() {
 		static $options = false;
 		
 		if ( $options === false ) {
 			$options = array();
 			
-			foreach ( self::$tmTypes as $dbValue => $msgKey ) {
+			$tmTypes = array(
+				self::TMT_LTF => 'ltf',
+				self::TMT_TMX => 'tmx',
+				self::TMT_GCSV => 'gcsv',
+			);			
+			
+			foreach ( $tmTypes as $dbValue => $msgKey ) {
 				$options[wfMsg( 'livetranslate-tmtype-' . $msgKey )] = $dbValue;
 			}
 		}

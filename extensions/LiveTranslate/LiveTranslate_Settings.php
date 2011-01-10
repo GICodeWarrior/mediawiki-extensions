@@ -29,15 +29,9 @@ $egLiveTranslateLanguages = array(
 	$wgLanguageCode,
 );
 
-# A list of translation memory exchange (TMX) files.
-$egLiveTranslateTXMFiles = array(
-
-);
-
-# A list of translation memory files in the Google CSV format.
-$egLiveTranslateGCVSFiles = array(
-
-);
-
 # Permission to mannage translation memories.
 $wgGroupPermissions['sysop']['managetms'] = true;
+
+# Default translation memory type.
+# TMT_LTF, TMT_TMX, TMT_GCSV
+$egLiveTranslateTMT = SpecialLiveTranslate::TMT_LTF;
