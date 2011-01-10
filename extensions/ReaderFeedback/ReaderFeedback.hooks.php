@@ -70,10 +70,10 @@ class ReaderFeedbackHooks {
 	}
 
 	public static function addFeedbackForm( &$data, $skin ) {
-		global $wgOut, $wgArticle;
+		global $wgOut;
 		$title = $skin->getTitle();
-		if( $wgOut->isArticleRelated() && isset($wgArticle) ) {
-			global $wgRequest, $wgUser, $wgOut;
+		if( $wgOut->isArticleRelated() ) {
+			global $wgRequest, $wgUser;
 			if( !$title->exists() || !ReaderFeedback::isPageRateable($title) || !$wgOut->getRevisionId() ) {
 				return true;
 			}
@@ -85,7 +85,7 @@ class ReaderFeedbackHooks {
 			if( $wgUser->isAllowed( 'feedback' ) ) {
 				# Only allow votes on the latest revision!
 				$id = $wgOut->getRevisionId();
-				if( $id != $wgArticle->getLatest() ) {
+				if( $id != $title->getLatestRevID() ) {
 					return true;
 				}
 				# If the user already voted, then don't show the form.
