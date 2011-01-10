@@ -507,10 +507,11 @@ $messages['hsb'] = array(
 );
 
 /** Haitian (Kreyòl ayisyen)
+ * @author Boukman
  * @author Jvm
  */
 $messages['ht'] = array(
-	'metadata_help' => 'Metadata:',
+	'metadata_help' => 'Metadone:',
 );
 
 /** Hungarian (Magyar)
