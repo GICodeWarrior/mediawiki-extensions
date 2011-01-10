@@ -43,6 +43,9 @@ $messages['en'] = array(
 	'livetranslate-special-current-tms' => 'Existing translation memories',
 	'livetranslate-special-tms-update' => 'Update translation memories',
 	'livetranslate-special-update' => 'Update translation memories',
+
+	// API ImportTranslationMemories
+	'livetranslate-importtms-param-miscmatch' => 'Mismatch between amount of locations and types',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
