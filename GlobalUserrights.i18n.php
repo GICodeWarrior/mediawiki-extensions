@@ -276,6 +276,18 @@ $messages['gsw'] = array(
 	'right-userrights-global' => 'Wältwyti Benutzerrächt verwalte',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'globaluserrights' => 'ניהול הרשאות גלובלי',
+	'gur-desc' => 'ניהול קל של [[Special:GlobalUserRights|global user rights]]',
+	'gur-rightslog-name' => 'יומן הרשאות גלובליות',
+	'gur-rightslog-header' => 'זהו יומן של שינויים בהרשאות גלובליות',
+	'gur-rightslog-entry' => 'שינה את החברות בקבוצה הגלובלית עבור $1 מ$2 ל$3',
+	'right-userrights-global' => 'ניהול הרשאות גלובליות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
