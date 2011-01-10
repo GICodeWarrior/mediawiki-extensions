@@ -141,10 +141,11 @@ $messages['hsb'] = array(
 );
 
 /** Haitian (Kreyòl ayisyen)
+ * @author Boukman
  * @author Jagwar
  */
 $messages['ht'] = array(
-	'filepagemasking-desc' => 'Reekri ".xxx" nan "_xxx" nan paj lyen File description',
+	'filepagemasking-desc' => 'Ranplase ".xxx" pou "_xxx" nan paj lyen pou deskripsyon fichye a',
 );
 
 /** Hungarian (Magyar)
