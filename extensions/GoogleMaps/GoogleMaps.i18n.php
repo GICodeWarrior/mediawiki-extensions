@@ -5203,7 +5203,7 @@ $wgGoogleMapsMessages['sq'] = array(
 	'gm-mars' => 'Marsi',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић

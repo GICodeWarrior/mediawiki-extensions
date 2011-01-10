@@ -113,6 +113,19 @@ $messages['de'] = array(
 	'livetranslate-dictionary-empty' => 'Momentan befinden sich keine Vokabeln im Wörterbuch. Auf „Bearbeiten“ klicken, um welche hinzuzufügen.',
 	'livetranslate-dictionary-count' => 'Momentan {{PLURAL:$1|befindet sich $1 Wort|befinden sich $1 Wörter}} in $2 {{PLURAL:$2|Sprache|Sprachen}} im Wörterbuch. Auf „Bearbeiten“ klicken, um weitere hinzuzufügen.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Diese Sprache ist|Diese Sprachen sind}} momentan nicht zum Übersetzen zugelassen: $1. Entweder nun die Einstellung der übersetzbaren Sprachen in der Wikikonfiguration anpassen oder diese aus dem Wörterbuch entfernen.',
+	'special-livetranslate' => 'Direktübersetzung',
+	'livetranslate-tmtype-ltf' => 'Live Translate format',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google-CSV',
+	'livetranslate-special-no-tms-yet' => 'Momentan sind keine Übersetzungsspeicher vorhanden.',
+	'livetranslate-special-button' => 'Speichern',
+	'livetranslate-special-type' => 'Eingeben',
+	'livetranslate-special-location' => 'Ort',
+	'livetranslate-special-remove' => 'Entfernen',
+	'livetranslate-special-add-tm' => 'Einen neuen Übersetzungsspeicher anlegen',
+	'livetranslate-special-current-tms' => 'Vorhandene Übersetzungsspeicher',
+	'livetranslate-special-tms-update' => 'Übersetzungsspeicher aktualisieren',
+	'livetranslate-special-update' => 'Übersetzungsspeicher aktualisieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -175,6 +188,7 @@ $messages['gsw'] = array(
 	'livetranslate-button-translate' => 'Ibersetze',
 	'livetranslate-button-translating' => 'Am Ibersetze …',
 	'livetranslate-button-revert' => 'Originalinhalt aazeige',
+	'livetranslate-dictionary-error' => 'S Werterbuech het nit chenne glade wäre. Wäge däm wäre d Werter, wu s dert din het, bim Ibersetzigsvorgang nit berucksichtigt.',
 	'livetranslate-dictionary-empty' => 'Zurzyt het s kei Vokable im Werterbuech. Uf „Bearbeite“ klicke go ne baar yyfiege.',
 	'livetranslate-dictionary-count' => 'Zurzyt {{PLURAL:$1|git s $1 Wort|git s $1 Werter}} in $2 {{PLURAL:$2|Sproch|Sproche}} im Werterbuech. Uf „Bearbeite“ klicke go wyteri yyfiege.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Die Sproch isch|Die Sproche sin}} zurzyt nit zum Ibersetze zuegloo: $1. Entwäder jetz d Yystellig vu dr ibersetzbare Sproche in dr Wikikonfiguration aapasse oder die us em Werterbuech uuseneh.',
@@ -208,6 +222,14 @@ $messages['ia'] = array(
 	'livetranslate-dictionary-empty' => 'Le dictionario non ha ancora parolas. Clicca sur le scheda "modificar" pro adder alcunes.',
 	'livetranslate-dictionary-count' => 'Il ha {{PLURAL:$1|$1 parola|$1 parolas}} in $2 {{PLURAL:$2|linguas|linguas}}. Clicca sur le scheda "modificar" pro adder alteres.',
 	'livetranslate-dictionary-unallowed-langs' => 'Iste {{PLURAL:$2|lingua|linguas}} non es actualmente definite como destinationes valide pro traduction: $1. Modifica le linguas permittite in le configuration de tu wiki, o remove istes del dictionario.',
+	'special-livetranslate' => 'Traduction in directo',
+	'livetranslate-tmtype-ltf' => 'Formato de traduction in directo',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'CSV de Google',
+	'livetranslate-special-no-tms-yet' => 'Il non ha ancora memorias de traduction.',
+	'livetranslate-special-button' => 'Salveguardar',
+	'livetranslate-special-type' => 'Typo',
+	'livetranslate-special-location' => 'Loco',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -270,6 +292,19 @@ $messages['mk'] = array(
 	'livetranslate-dictionary-empty' => 'Сè уште нема зборови во речникот. Стиснете на јазичето „уреди“ и додајте некои.',
 	'livetranslate-dictionary-count' => 'Има {{PLURAL:$1|$1 збор|$1 збора}} на $2 {{PLURAL:$2|јазик|јазици}}. Ситиснете на јазичето „уреди“ за да додадете уште.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Овој јазик моментално не е зададен|Овие јазици моментално не се зададени}} како допуштена преводна одредница: $1. Изменете ги допуштените јазици во вики-поставките, или пак отстранете ги постоечкиве од речникот.',
+	'special-livetranslate' => 'Преведување во живо',
+	'livetranslate-tmtype-ltf' => 'Формат на преведувањето во живо',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'Сè уште нема преводни памтила',
+	'livetranslate-special-button' => 'Зачувај',
+	'livetranslate-special-type' => 'Тип',
+	'livetranslate-special-location' => 'Место',
+	'livetranslate-special-remove' => 'Отстрани',
+	'livetranslate-special-add-tm' => 'Додај ново преводно памтило',
+	'livetranslate-special-current-tms' => 'Постоечки преводни памтила',
+	'livetranslate-special-tms-update' => 'Поднови преводни памтила',
+	'livetranslate-special-update' => 'Поднови преводни памтила',
 );
 
 /** Dutch (Nederlands)

@@ -263,11 +263,12 @@ $messages['hsb'] = array(
 );
 
 /** Haitian (Kreyòl ayisyen)
+ * @author Boukman
  * @author Masterches
  */
 $messages['ht'] = array(
-	'templatelink' => 'Lyen pou modèl an',
-	'templatelink_empty' => 'Ou dwèt bay yon paramèt.',
+	'templatelink' => 'Lyen pou modèl la',
+	'templatelink_empty' => 'Ou dwe bay yon paramèt.',
 	'templatelink_newtitle' => '$1 (mete paj sa anndan yon lòt paj)',
 );
 

@@ -246,15 +246,16 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'transliterator-desc' => 'הוספת פונקציות פענוח לתעתוק',
+	'transliterator-desc' => 'הוספת פונקציית פענוח גמישה לתעתיק אותיות',
 	'transliterator-error-ambiguous' => 'כלל רב־משמעי <code>$1</code> בדף [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'תחביר שגוי <code>$1</code> בדף [[MediaWiki:$2]]',
-	'transliterator-error-rulecount' => 'יש יותר מ{{PLURAL:$1|כלל אחד|־$1 כללים}} בדף [[MediaWiki:$2]]',
-	'transliterator-error-rulesize' => 'בכלל <code>$1</code> יש יותר מ{{PLURAL:$3|תו אחד|־$3 תווים}} בשמאל בדף [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'יש יותר {{PLURAL:$1|מכלל אחד|מ־$1 כללים}} בדף [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'בכלל <code>$1</code> יש יותר {{PLURAL:$3|מתו אחד|מ־$3 תווים}} בצד שמאל בדף [[MediaWiki:$2]]',
 	'transliterator-error-prefix' => 'על [[MediaWiki:$2]] להכיל {{PLURAL:$1|תו אחד|$1 תווים}} לפחות.',
 );
 
@@ -271,10 +272,11 @@ $messages['hsb'] = array(
 );
 
 /** Haitian (Kreyòl ayisyen)
+ * @author Boukman
  * @author Internoob
  */
 $messages['ht'] = array(
-	'transliterator-error-rulecount' => 'Plis pase $1 règ nan [[MedyaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Plis pase $1 {{PLURAL:$1|règ|règ yo}} nan [[MediaWiki:$2]]',
 );
 
 /** Hungarian (Magyar)

@@ -121,6 +121,20 @@ Seica quere botar un ollo á:
 * [[{{MediaWiki:Mainpage}}|Portada]]',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'special404-desc' => 'Macht e benutzerdefinierti Ziilsyte megli fir dr Fall, ass dr HTTP-Fähler „404 Nit gfunde“ uftritt',
+	'error404' => '404 Nit gfunde',
+	'special404-body' => 'Di gwinscht URL isch nit gfunde wore.
+
+Hesch {{fullurl:$1}} gmeint?
+
+Villicht hesch au die Syte welle ufruefe:
+* [[{{MediaWiki:Mainpage}}|Houptsyte]]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

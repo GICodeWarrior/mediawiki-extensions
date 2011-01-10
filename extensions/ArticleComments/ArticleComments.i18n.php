@@ -420,6 +420,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Mihxil
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -435,7 +436,7 @@ $messages['eo'] = array(
 	'article-comments-invalid-field' => 'La $1 provizis <nowiki>[$2]</nowiki> estas malvalida.',
 	'article-comments-required-field' => '$1 kampo estas deviga.',
 	'article-comments-submission-failed' => 'Enmetado de komento malsukcesis',
-	'article-comments-failure-reasons' => 'Bedaŭrinde, via komentado malsukcesis pro la jena(j) kialo(j):',
+	'article-comments-failure-reasons' => 'Bedaŭrinde via komentado malsukcesis pro la {{PLURAL:$1|jena kialo|jenaj kialoj}}:',
 	'article-comments-commenter-said' => '$1 diris ...',
 	'article-comments-comment-missing-name-parameter' => 'Nomo mankas',
 	'article-comments-comment-missing-date-parameter' => 'Mankas dato de komento',
@@ -657,9 +658,11 @@ Megli sin d Modi „plain“, „normal“ un „wiki“.',
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'article-comments-desc' => 'הפעלה של הוספת פסקאות של הערות בדפי תוכן',
 	'article-comments-title-string' => 'כותרת',
 	'article-comments-name-string' => 'שם',
 	'article-comments-name-field' => 'שם (נחוץ):',
@@ -669,8 +672,26 @@ $messages['he'] = array(
 	'article-comments-comment-field' => 'הערה:',
 	'article-comments-submit-button' => 'שליחה',
 	'article-comments-leave-comment-link' => 'הוספת תגובה ...',
+	'article-comments-invalid-field' => 'ה$1 <nowiki>[$2]</nowiki> אינה תקינה.',
+	'article-comments-required-field' => 'חוב להזין שדה "$1".',
+	'article-comments-submission-failed' => 'שליחת הערה נכשלה',
+	'article-comments-failure-reasons' => 'סליחה, שליחת ההערה נכשלה {{PLURAL:$1|מהסיבה הבאה|מהסיבות הבאות}}',
+	'article-comments-no-comments' => 'סליחה, הדף "[[$1]]" אינו מקבל תגובות עכשיו.',
+	'article-comments-talk-page-starter' => '<noinclude>הערות על "[[$1]]"
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => 'הערה של $1...',
+	'article-comments-summary' => 'הערה של $1 – דרך הרחבת ArticleComments',
+	'article-comments-submission-succeeded' => 'שליחת ההערה הצליחה',
+	'article-comments-submission-success' => 'שלחתם בהצלחה הערה לדף "[[$1]]"',
+	'article-comments-submission-view-all' => 'אתם יכולים להציג את [[$1|כל ההערות על דף זה]]',
+	'article-comments-user-is-blocked' => 'חשבון המשתמש שלכם חסום עכשיו לעריכת "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'מצב לא תקין הוגדר להערה.
+המצבים הזמינים הם "חלק", "רגיל" ו"ויקי".',
 	'article-comments-comment-missing-name-parameter' => 'שם חסר',
 	'article-comments-comment-missing-date-parameter' => 'תאריך ההערה חסר',
+	'article-comments-no-spam' => 'לפחות אחד מהשדות שנשלחו סומן כזבל.',
+	'processcomment' => 'עיבוד הערה לדף',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
