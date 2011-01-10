@@ -38,6 +38,7 @@ $messages['en'] = array(
 	'livetranslate-special-button' => 'Save',
 	'livetranslate-special-type' => 'Type',
 	'livetranslate-special-location' => 'Location',
+	'livetranslate-special-add-tm' => 'Add a new translation memory',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

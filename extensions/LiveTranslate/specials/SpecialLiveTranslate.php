@@ -65,7 +65,7 @@ class SpecialLiveTranslate extends SpecialPage {
 	 * @param string $arg
 	 */
 	public function execute( $arg ) {
-		global $wgOut, $wgUser, $wgRequest, $egPushTargets;
+		global $wgOut, $wgUser, $wgRequest;
 		
 		$this->setHeaders();
 		$this->outputHeader();
@@ -74,11 +74,35 @@ class SpecialLiveTranslate extends SpecialPage {
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
 			return;
-		} 
+		}
 		
-		// TODO: handle submissions
+		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+			$this->handleSubmission();
+		}
 		
 		$this->displayTMConfig();
+	}
+	
+	/**
+	 * Handles the submission of the config form.
+	 * 
+	 * @since 0.4
+	 */	
+	protected function handleSubmission() {
+		global $wgRequest;
+		
+		$dbw = wfGetDB( DB_MASTER );
+
+		if ( $wgRequest->getText( 'newtm-location' ) != '' ) {
+			$dbw->insert(
+				'live_translate_memories',
+				array(
+					'memory_type' => $wgRequest->getVal( 'wpnewtm-type' ),
+					'memory_location' => $wgRequest->getText( 'newtm-location' )
+				)
+			);
+		}
+		
 	}
 	
 	/**
@@ -110,7 +134,7 @@ class SpecialLiveTranslate extends SpecialPage {
 			$wgOut->addHTML( Html::rawElement(
 				'tr',
 				array(),
-				Html::element( 'th', array(), wfMsg( 'livetranslate-special-location' ) ),
+				Html::element( 'th', array(), wfMsg( 'livetranslate-special-location' ) ) .
 				Html::element( 'th', array(), wfMsg( 'livetranslate-special-type' ) )
 			) );			
 			
@@ -127,6 +151,7 @@ class SpecialLiveTranslate extends SpecialPage {
 		$this->displayAddNewTM();
 		
 		$wgOut->addHtml(
+			'<br />' .
 			Html::input(
 				'',
 				wfMsg( 'livetranslate-special-button' ),
@@ -179,8 +204,8 @@ class SpecialLiveTranslate extends SpecialPage {
 		$wgOut->addHTML( Html::rawElement(
 			'tr',
 			array(),
-			Html::element( 'td', array(), $tm->memory_location ), // TODO
-			Html::element( 'rd', array(), $tm->memory_type ) // TODO	
+			Html::element( 'td', array(), $tm->memory_location ) . // TODO
+			Html::element( 'td', array(), $tm->memory_type ) // TODO	
 		) );
 	}
 	
@@ -190,7 +215,42 @@ class SpecialLiveTranslate extends SpecialPage {
 	 * @since 0.4
 	 */		
 	protected function displayAddNewTM() {
-		// TODO
+		global $wgOut;
+		
+		$wgOut->addHTML( '<h3>' . htmlspecialchars( wfMsg( 'livetranslate-special-add-tm' ) ) . '</h3>' );
+		
+		$wgOut->addHTML(
+			'<table><tr>' .
+				'<td><b>' . htmlspecialchars( wfMsg( 'livetranslate-special-location' ) ) . ': </b></td>' .
+				'<td>' . Html::input( 'newtm-location', '', 'text', array( 'size' => 75 ) ) . '</td>' .
+			'</tr><tr>' .
+				'<td><b>' . htmlspecialchars( wfMsg( 'livetranslate-special-type' ) ) . ': </b></td>' .
+				'<td>' . $this->getTypeSelector( 'newtm-type', '' ) . '</td>' . // TODO
+			'</tr></table>'
+		);
+	}
+	
+	protected function getTypeSelector( $name, $value ) {
+		$typeSelector = new HTMLSelectField( array(
+			'fieldname' => $name,
+			'options' => $this->getTypeOptions()
+		) );
+		
+		return $typeSelector->getInputHTML( $value );
+	}
+	
+	protected function getTypeOptions() {
+		static $options = false;
+		
+		if ( $options === false ) {
+			$options = array();
+			
+			foreach ( self::$tmTypes as $dbValue => $msgKey ) {
+				$options[wfMsg( 'livetranslate-tmtype-' . $msgKey )] = $dbValue;
+			}
+		}
+		
+		return $options;
 	}
 	
 }
