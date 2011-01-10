@@ -28,8 +28,6 @@ class BaseConsumer(multiprocessing.Process):
         self.result_queue = result_queue
 
 
-        
-
 #        for kw in kwargs:
 #            setattr(self, kw, kwargs[kw])
 #

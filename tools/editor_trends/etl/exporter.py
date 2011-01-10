@@ -20,8 +20,8 @@ __version__ = '0.1'
 import os
 import sys
 import datetime
-from dateutil.relativedelta import *
 import calendar
+from dateutil.relativedelta import *
 import multiprocessing
 from Queue import Empty
 
@@ -51,7 +51,13 @@ class Variable(object):
     '''
     def __init__(self, var):
         self.name = var
+        self.obs = []
         self.stats = ['n', 'avg', 'sd', 'min', 'max']
+
+    def __repr__(self):
+        return self.name
+
+    def descriptives(self):
         self.time = shaper.create_datacontainer()
         self.time = shaper.add_months_to_datacontainer(getattr(self, 'time'), datatype='dict')
 
@@ -59,10 +65,6 @@ class Variable(object):
             setattr(self, var, shaper.create_datacontainer())
             setattr(self, var, shaper.add_months_to_datacontainer(getattr(self, var), datatype='list'))
 
-    def __repr__(self):
-        return self.name
-
-    def descriptives(self):
         for year in self.time:
             for month in self.time[year]:
                 data = [self.time[year][month][k] for k in self.time[year][month].keys()]
@@ -78,8 +80,8 @@ class LongDataset(object):
     This class acts as a container for the Variable class and has some methods
     to output the dataset to a csv file. 
     '''
-    def __init__(self, vars):
-        self.name = 'long_dataset.tsv'
+    def __init__(self, vars, name):
+        self.name = name
         self.vars = []
         for var in vars:
             setattr(self, var, Variable(var))
@@ -92,8 +94,9 @@ class LongDataset(object):
         fh.write('_time\t')
         for var in self.vars:
             var = getattr(self, var)
-            for stat in var.stats:
-                fh.write('%s_%s\t' % (var.name, stat))
+            fh.write('%s\t' % var.name)
+            #for stat in var.stats:
+            #    fh.write('%s_%s\t' % (var.name, stat))
         fh.write('\n')
 
     def convert_to_longitudinal_data(self, id, obs, vars):
@@ -108,30 +111,41 @@ class LongDataset(object):
                     if id not in ds.time[year][m] and obs[var][year][m] > 0:
                         ds.time[year][m][id] = obs[var][year][m]
 
-    def write_longitudinal_data(self):
+    def write_longitudinal_data(self, write_time=True):
         fh = utils.create_txt_filehandle(settings.dataset_location, self.name, 'w', settings.encoding)
         self.write_headers(fh)
-        dc = shaper.create_datacontainer()
-        dc = shaper.add_months_to_datacontainer(dc)
-
         for var in self.vars:
             var = getattr(self, var)
-            var.descriptives()
-        years = dc.keys()
-        years.sort()
-        for year in years:
-            months = dc[year].keys()
-            months.sort()
-            for month in months:
-                d = calendar.monthrange(int(year), int(month))[1] #determines the number of days in a given month/year
-                date = datetime.date(int(year), int(month), d)
-                fh.write('%s\t' % date)
-                for var in self.vars:
-                    var = getattr(self, var)
-                    #data = ['%s_%s\t' % (var.name, getattr(var, stat)[year][month]) for stat in var.stats]
-                    fh.write(''.join(['%s\t' % (getattr(var, stat)[year][month],) for stat in var.stats]))
-                fh.write('\n')
+            for o in var.obs:
+                if write_time:
+                    fh.write('%s\t%s\n' % (o[0], o[1]))
+                else:
+                    fh.write('%s\n' % (o[1]))
         fh.close()
+
+#        windows = create_windows()
+#        dc = shaper.create_datacontainer()
+#        dc = shaper.add_months_to_datacontainer(dc, windows)
+#
+##        for var in self.vars:
+##            var = getattr(self, var)
+##            var.descriptives()
+#        years = dc.keys()
+#        years.sort()
+#        for year in years:
+#            months = dc[year].keys()
+#            months.sort()
+#            for month in months:
+#                d = calendar.monthrange(int(year), int(month))[1] #determines the number of days in a given month/year
+#                date = datetime.date(int(year), int(month), d)
+#                fh.write('%s\t' % date)
+#                for var in self.vars:
+#                    var = getattr(self, var)
+#                    #data = ['%s_%s\t' % (var.name, getattr(var, stat)[year][month]) for stat in var.stats]
+#                    fh.write(''.join([ % s\t]))
+#                    #fh.write(''.join(['%s\t' % (getattr(var, stat)[year][month],) for stat in var.stats]))
+#                fh.write('\n')
+
 
 
 def expand_edits(edits):
@@ -201,107 +215,110 @@ def create_windows():
     return windows
 
 
-#def generate_cohort_dataset_old(tasks, dbname, collection, **kwargs):
-#    mongo = db.init_mongo_db(dbname)
-#    editors = mongo[collection + '_dataset']
-#    windows = create_windows()
-#    data = shaper.create_datacontainer('dict')
-#    data = shaper.add_windows_to_datacontainer(data, windows)
-#
-#    while True:
-#        id = tasks.get(block=False)
-#        tasks.task_done()
-#        if id == None:
-#            break
-#        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1})
-#
-#        first_edit = obs['first_edit']
-#        last_edit = obs['final_edit']
-#        editor_dt = relativedelta(last_edit, first_edit)
-#        editor_dt = (editor_dt.years * 12) + editor_dt.months
-#        edits = []
-#        for year in xrange(2001, datetime.datetime.now().year + 1):
-#            if first_edit.year > year or last_edit.year < year:
-#                continue
-#            window_end = datetime.datetime(year, 12, 31)
-#            for window in windows:
-#                window_start = window_end - relativedelta(months=window)
-#                if window_start < datetime.datetime(2001, 1, 1):
-#                    window_start = datetime.datetime(2001, 1, 1)
-#
-#                if editor_dt > 11:
-#                    if date_falls_in_window(window_start, window_end, first_edit):
-#                        edits.append(window)
-#                elif window > editor_dt:
-#                    data[year][window] += 1
-#                    break
-#
-#            if edits != []:
-#                w = min(edits)
-#                data[year][w] += 1
-#                edits = []
-#
-#
-#    print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
-#    utils.store_object(data, settings.binary_location, dbname + '_cohort_data.bin')
-#    cohort_charts.prepare_cohort_dataset(dbname)
+
+def diff_month(d1, d2):
+    return (d1.year - d2.year) * 12 + d1.month - d2.month
 
 
-
-
-def generate_cohort_dataset_forward(tasks, dbname, collection, **kwargs):
+def generate_cohort_dataset_raw(tasks, dbname, collection):
     mongo = db.init_mongo_db(dbname)
-    editors = mongo[collection + '_dataset']
+    editors = mongo['%s%s' % (collection, '_dataset')]
     windows = create_windows()
     data = shaper.create_datacontainer('dict')
     final_year = datetime.datetime.now().year + 1
-    m1 = [1, 2, 3, 4, 5, 6]
-    m2 = [7, 8, 9, 10, 11, 12]
-    frames = [m1, m2]
+    ld = LongDataset(['experience'], '%s_forward_cohort.csv' % dbname)
+    while True:
+        id = tasks.get(block=False)
+        tasks.task_done()
+        if id == None:
+            break
+        obs = editors.find_one({'editor': id},
+                               {'new_wikipedian': 1,
+                                'monthly_edits': 1,
+                                'final_edit':1
+                                })
+
+        new_wikipedian = obs['new_wikipedian']
+        last_edit = obs['final_edit']
+        dt = diff_month(last_edit, new_wikipedian)
+        day = calendar.monthrange(new_wikipedian.year, new_wikipedian.month)[1]
+        tenth_edit = datetime.date(new_wikipedian.year, new_wikipedian.month, day)
+        ld.experience.obs.append([tenth_edit, dt])
+
+    ld.write_longitudinal_data()
+
+def generate_cohort_dataset_forward(tasks, dbname, collection):
+    mongo = db.init_mongo_db(dbname)
+    editors = mongo[collection + '_dataset']
+    final_year = datetime.datetime.now().year + 1
+    windows = create_windows()
+    data = shaper.create_datacontainer('dict')
     while True:
         id = tasks.get(block=False)
         if id == None:
             break
+
         obs = editors.find_one({'editor': id}, {'new_wikipedian': 1, 'monthly_edits': 1, 'final_edit':1})
         new_wikipedian = obs['new_wikipedian']
+        year = new_wikipedian.year
+
         last_edit = obs['final_edit']
-        start_year = new_wikipedian.year
-        last_year = last_edit.year + 1
-        if new_wikipedian.month != 1:
-            continue
-        for year in xrange(start_year, last_year):
-            if year not in data[start_year]:
-                data[start_year][year] = {}
-            for x, frame in enumerate(frames):
-                if x not in data[start_year][year]:
-                    data[start_year][year][x] = 0
-                if 'n' not in data[start_year][year]:
-                    data[start_year][year]['n'] = 0
+        edits = obs['monthly_edits']
 
-                active = sum([obs['monthly_edits'][str(year)][str(m)] for m in frame])
-                data[start_year][year]['n'] += 1
-                if active > 0:
-                    data[start_year][year][x] += 1
-    filename = '%s_cohort_forward.csv' % dbname
-    fh = utils.create_txt_filehandle(settings.dataset_location, filename, 'w', settings.encoding)
-    frames.append('n')
-    headers = ["%s_%s" % (year, frame[0]) for year in xrange(2001, final_year) for frame in enumerate(frames)]
-    headers.insert(0, '\t')
-    utils.write_list_to_csv(headers, fh)
+        if new_wikipedian.month not in data[new_wikipedian.year]:
+            data[new_wikipedian.year][new_wikipedian.month] = {}
+        for i, year in enumerate(xrange(new_wikipedian.year, final_year)):
+            months = edits.get(str(year), [])
+            if i == 0:
+                months = months.keys()
+                months = [int(m) for m in months]
+                months.sort()
+                months = months[new_wikipedian.month - 1:]
+                months = [str(m) for m in months]
+            for month in months:
+                experience = str(i * 12 + int(month))
+                if experience not in data[new_wikipedian.year][new_wikipedian.month]:
+                    data[new_wikipedian.year][new_wikipedian.month][experience] = 0
+                data[new_wikipedian.year][new_wikipedian.month][experience] += 1 if edits[str(year)][month] > 0 else 0
 
-    for obs_year in data:
-        obs = '%s\t' % obs_year
-        for year in xrange(2001, final_year):
-            values = data[obs_year].get(year, None)
-            if values != None:
-                for value in values:
-                    obs = '%s\t%s\t' % (obs, values[value])
-            else:
-                    obs = '%s\t.\t.\t.\t' % obs
-
-        obs = '%s\n' % obs
-        fh.write(obs)
+    fh = utils.create_txt_filehandle(settings.dataset_location, '%s_cohort_data_forward.csv' % (dbname), 'w', settings.encoding)
+    for year in data:
+        for month in data[year]:
+            obs = data[year][month].keys()
+            obs.sort()
+            for o in obs:
+                utils.write_list_to_csv(['%s-%s' % (month, year), o, data[year][month][o]], fh, recursive=False, newline=True)
     fh.close()
+
+
+def generate_cohort_dataset_backward_custom(tasks, dbname, collection):
+    mongo = db.init_mongo_db(dbname)
+    editors = mongo[collection + '_dataset']
+    windows = create_windows()
+    data = shaper.create_datacontainer('dict')
+    data = shaper.add_windows_to_datacontainer(data, windows)
+
+    while True:
+        id = tasks.get(block=False)
+        tasks.task_done()
+        if id == None:
+            break
+        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1, 'monthly_edits':1, 'edits_by_year': 1, 'last_edit_by_year': 1})
+        first_edit = obs['first_edit']
+
+        if obs['monthly_edits']['2010']['8'] > 0:
+            for year in xrange(2001, datetime.datetime.now().year + 1):
+                if obs['edits_by_year'].get(year, 0) > 0:
+                    last_edit = obs['last_edit_by_year'][year]
+                    editor_dt = relativedelta(last_edit, first_edit)
+                    editor_dt = (editor_dt.years * 12) + editor_dt.months
+                    for w in windows:
+                        if w >= editor_dt:
+                            data[int(year)][w] += 1
+                            break
+        filename = '_august_2010_cohort_data_.bin'
+        utils.store_object(data, settings.binary_location, '%s_%s' % (dbname, filename))
+        cohort_charts.prepare_cohort_dataset(dbname, filename)
 
 
 
@@ -332,15 +349,6 @@ def generate_cohort_dataset_backward(tasks, dbname, collection, **kwargs):
     print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
     utils.store_object(data, settings.binary_location, dbname + '_cohort_data.bin')
     cohort_charts.prepare_cohort_dataset(dbname)
-
-
-
-
-def date_falls_in_window(window_start, window_end, first_edit):
-    if first_edit >= window_start and first_edit <= window_end:
-        return True
-    else:
-        return False
 
 
 def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):

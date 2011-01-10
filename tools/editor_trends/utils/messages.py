@@ -26,7 +26,12 @@ settings = configuration.Settings()
 
 
 def show(func):
+    '''
+    @func should be an qsize() belonging to a task queue. qsize() is not supported 
+    on OSX hence this simple workaround to make sure that we can continue supporting
+    OSX.
+    '''
     try:
-        func()
+        return func()
     except:
-        print 'Calling function %s caused an error, probably your platform is not supporting this function' % func
+        return 'unknown'

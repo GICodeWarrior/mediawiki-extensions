@@ -27,14 +27,14 @@ from utils import exceptions
 from utils import utils
 
 
-def start_mongodb_server(platform, x, path):
+def start_mongodb_server(x, path):
     default_port = 27017
     port = default_port + x
-    if platform == 'Windows':
+    if settings.platform == 'Windows':
         p = subprocess.Popen([path, '--port', str(port), '--dbpath', 'c:\data\db', '--logpath', 'c:\mongodb\logs'])
-    elif platform == 'Linux':
+    elif settings.platform == 'Linux':
         subprocess.Popen([path, '--port %s' % port])
-    elif platform == 'OSX':
+    elif settings.platform == 'OSX':
         raise NotImplementedError
     else:
         raise exceptions.PlatformNotSupportedError(platform)

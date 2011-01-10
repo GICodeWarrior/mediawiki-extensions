@@ -101,13 +101,16 @@ def parse_comments(revisions, function):
     return revisions
 
 
-def is_article_main_namespace(elem, namespace):
+def verify_article_belongs_namespace(elem, namespaces):
     '''
-    checks whether the article belongs to the main namespace
+    @namespaces is a list of namespaces that should be ignored, hence if the
+    title of article starts with the namespace then return False else return True
     '''
     title = elem.text
-    for ns in namespace:
-        if title.startswith(ns):
+    if title == None:
+        return False
+    for namespace in namespaces:
+        if title.startswith(namespace):
             return False
     return True
 
@@ -249,7 +252,7 @@ def parse_dumpfile(project, language_code, namespaces=['0']):
     for page in wikitree.parser.read_input(fh):
         title = page.find('title')
         total_pages += 1
-        if is_article_main_namespace(title, ns):
+        if verify_article_belongs_namespace(title, ns):
             #cElementTree.dump(page)
             article_id = page.find('id').text
             revisions = page.findall('revision')

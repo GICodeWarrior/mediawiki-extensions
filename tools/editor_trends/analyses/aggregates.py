@@ -31,11 +31,6 @@ from utils import utils
 from utils import messages
 
 
-class Dataset:
-    def __init__(self):
-        pass
-
-
 def new_editor_count(editors, dbname, collection, month=12):
     '''
     @month should be an integer in the range of 1-12. 
@@ -104,6 +99,7 @@ def new_editor_count_launcher(dbname, collection):
     utils.write_list_to_csv(keys, fh, recursive=False, newline=True)
     utils.write_dict_to_csv(data, fh, keys, write_key=False, newline=True)
     fh.close()
+
 
 def active_editor_count_launcher(dbname, collection):
     editors = db.retrieve_distinct_keys(dbname, collection, 'editor')

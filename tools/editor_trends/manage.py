@@ -46,7 +46,11 @@ from etl import sort
 from etl import transformer
 from etl import exporter
 
-
+datasets = {'forward': 'generate_cohort_dataset_forward',
+            'backward': 'generate_cohort_dataset_backward',
+            'backward_custom': 'generate_cohort_dataset_backward_custom',
+            'wide': 'generate_wide_editor_dataset',
+            }
 
 class Timer(object):
     def __init__(self):
@@ -102,24 +106,29 @@ def get_namespaces(args):
     else:
         return namespaces
 
+
 def write_message_to_log(logger, args, message=None, verb=None, **kwargs):
     function = get_value(args, 'func')
-    logger.debug('Starting %s task' % function.func_name)
+    logger.debug('%s\tStarting %s task' % (datetime.datetime.now(), function.func_name))
     if message:
-        logger.debug(message)
+        logger.debug('%s\t%s' % (datetime.datetime.now(), message))
 
     max_length = max([len(kw) for kw in kwargs])
-    #max_tab = max_length / 4
+    max_tabs = max_length // settings.tab_width
+    res = max_length % settings.tab_width
+    if res > 0:
+        max_tabs += 1
+    pos = max_tabs * settings.tab_width
     for kw in kwargs:
         if verb:
-            logger.debug('Action: %s\tSetting: %s' % (verb, kwargs[kw]))
+            logger.debug('%s\tAction: %s\tSetting: %s' % (datetime.datetime.now(), verb, kwargs[kw]))
         else:
-            tabs = (max_length - len(kw)) / 4
-            if tabs == 0:
-                tabs = 1
+            tabs = (pos - len(kw)) // settings.tab_width
+            res = len(kw) % settings.tab_width
+            if res > 0 or tabs == 0:
+                tabs += 1
             tabs = ''.join(['\t' for t in xrange(tabs)])
-            logger.debug('\tKey: %s%sSetting: %s' % (kw, tabs, kwargs[kw]))
-
+            logger.debug('%s\t\tKey: %s%sSetting: %s' % (datetime.datetime.now(), kw, tabs, kwargs[kw]))
 
 
 def get_project(args):
@@ -142,21 +151,17 @@ def determine_file_locations(args, logger):
     config['language_code'] = language_code
     config['language'] = get_value(args, 'language')
     config['location'] = os.path.join(location, language_code, project)
-    #config['chunks'] = os.path.join(config['location'], 'chunks')
     config['txt'] = os.path.join(config['location'], 'txt')
     config['sorted'] = os.path.join(config['location'], 'sorted')
-    config['dbready'] = os.path.join(config['location'], 'dbready')
     config['project'] = project
     config['full_project'] = get_projectname(args)
     config['filename'] = generate_wikidump_filename(language_code, project, args)
     config['collection'] = get_value(args, 'collection')
     config['namespaces'] = get_namespaces(args)
-    config['directories'] = [config['location'], config['txt'], config['sorted'], config['dbready']]
+    config['directories'] = [config['location'], config['txt'], config['sorted']]
 
     message = 'Settings as generated from the configuration module.'
     write_message_to_log(logger, args, message, None, **config)
-    #for c in config:
-    #    logger.debug('Key: %s - Setting: %s' % (c, config[c]))
     return config
 
 
@@ -170,10 +175,11 @@ def show_settings(args, logger, **kwargs):
     config['Input directory'] = '%s' % kwargs.get('location')
     config['Output directory'] = '%s and subdirectories' % kwargs.get('location')
 
+    max_length_key = max([len(key) for key in config.keys()])
     message = 'Final settings after parsing command line arguments:'
     write_message_to_log(logger, args, message, None, **config)
     for c in config:
-        print '%s\t%s' % (c, config[c])
+        print '%s: %s' % (c.rjust(max_length_key), config[c])
 
 
 def dump_downloader_launcher(args, logger, **kwargs):
@@ -244,10 +250,8 @@ def sort_launcher(args, logger, **kwargs):
     location = kwargs.pop('location')
     input = os.path.join(location, 'txt')
     output = os.path.join(location, 'sorted')
-    final_output = os.path.join(location, 'dbready')
-    write_message_to_log(logger, args, location=location, input=input, output=output, final_output=final_output)
+    write_message_to_log(logger, args, location=location, input=input, output=output)
     sort.mergesort_launcher(input, output)
-    #loader.mergesort_external_launcher(output, final_output)
     timer.elapsed()
 
 
@@ -264,7 +268,6 @@ def store_launcher(args, logger, **kwargs):
     write_message_to_log(logger, args, verb='Storing', location=location, input=input, project=project, collection=collection)
     store.launcher(input, project, collection)
     cnt_editors = db.count_records(project, collection)
-    #assert num_editors == cnt_editors
     timer.elapsed()
 
 
@@ -282,6 +285,7 @@ def transformer_launcher(args, logger, **kwargs):
 def debug_launcher(args, logger, **kwargs):
     pass
 
+
 def exporter_launcher(args, logger, **kwargs):
     print 'Start exporting dataset'
     timer = Timer()
@@ -291,6 +295,7 @@ def exporter_launcher(args, logger, **kwargs):
     targets = targets.split(',')
     for target in targets:
         write_message_to_log(logger, args, verb='Exporting', target=target, dbname=dbname, collection=collection)
+        target = datasets[target]
         exporter.dataset_launcher(dbname, collection, target)
     timer.elapsed()
 
@@ -309,8 +314,9 @@ def cleanup(logger, args, **kwargs):
     write_message_to_log(logger, args, verb='Deleting', file=file)
     utils.delete_file(settings.binary_location, file)
 
+
 def all_launcher(args, logger, **kwargs):
-    print 'all_launcher'
+    print 'The entire data processing chain has been called, this will take a couple of hours (at least) to complete.'
     timer = Timer()
     full_project = kwargs.get('full_project', None)
     message = 'Start of building %s dataset.' % full_project
@@ -323,9 +329,6 @@ def all_launcher(args, logger, **kwargs):
     if clean:
         cleanup(logger, args, **kwargs)
 
-    #if format != 'xml':
-    #    ignore = ignore + ',extract'
-
     functions = ordered_dict.OrderedDict(((dump_downloader_launcher, 'download'),
                                           #(chunker_launcher, 'split'),
                                           (extract_launcher, 'extract'),
@@ -337,7 +340,6 @@ def all_launcher(args, logger, **kwargs):
     for function, callname in functions.iteritems():
         if callname not in ignore:
             function(args, logger, **kwargs)
-
     timer.elapsed()
 
 
@@ -374,9 +376,9 @@ def detect_python_version(logger):
 
 
 def about():
-    print 'Editor Trends Software is (c) 2010 by the Wikimedia Foundation.'
+    print '\nEditor Trends Software is (c) 2010 by the Wikimedia Foundation.'
     print 'Written by Diederik van Liere (dvanliere@gmail.com).'
-    print 'This software comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to distribute it under certain conditions.'
+    print 'This software comes with ABSOLUTELY NO WARRANTY.\nThis is free software, and you are welcome to distribute it\nunder certain conditions.'
     print 'See the README.1ST file for more information.'
     print '\n'
 
@@ -384,15 +386,11 @@ def about():
 def main():
     default_language = determine_default_language()
 
-    datasets = {'forward': 'generate_cohort_dataset_forward',
-                'backward': 'generate_cohort_dataset_backward',
-                'wide': 'generate_wide_editor_dataset',
-                }
-
     file_choices = ('stub-meta-history.xml.gz',
                     'stub-meta-current.xml.gz',
                     'pages-meta-history.xml.7z',
-                    'pages-meta-current.xml.bz2')
+                    'pages-meta-current.xml.bz2',
+                    )
 
 
     parser = ArgumentParser(prog='manage', formatter_class=RawTextHelpFormatter)
@@ -418,7 +416,7 @@ def main():
     parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
     parser_create.set_defaults(func=extract_launcher)
 
-    parser_sort = subparsers.add_parser('sort', help='By presorting the data, significant processing time reducations are achieved.')
+    parser_sort = subparsers.add_parser('sort', help='By presorting the data, significant processing time reductions are achieved.')
     parser_sort.set_defaults(func=sort_launcher)
 
     parser_store = subparsers.add_parser('store', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
@@ -435,59 +433,75 @@ def main():
 
     parser_all = subparsers.add_parser('all', help='The all sub command runs the download, split, store and dataset commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
-    parser_all.add_argument('-e', '--except', action='store',
+    parser_all.add_argument('-e', '--except',
+                            action='store',
                             help='Should be a list of functions that are to be ignored when executing \'all\'.',
-                            default=[])
+                            default=[]
+                            )
 
-    parser_all.add_argument('-n', '--new', action='store_true',
+    parser_all.add_argument('-n', '--new',
+                            action='store_true',
                             help='This will delete all previous output and starts from scratch. Mostly useful for debugging purposes.',
-                            default=False)
+                            default=False
+                            )
 
-    parser.add_argument('-l', '--language', action='store',
+    parser.add_argument('-l', '--language',
+                        action='store',
                         help='Example of valid languages.',
                         choices=supported_languages(),
-                        default=default_language)
+                        default=default_language
+                        )
 
-    parser.add_argument('-p', '--project', action='store',
+    parser.add_argument('-p', '--project',
+                        action='store',
                         help='Specify the Wikimedia project that you would like to download',
                         choices=settings.projects.keys(),
-                        default='wiki')
+                        default='wiki'
+                        )
 
     parser.add_argument('-c', '--collection', action='store',
                         help='Name of MongoDB collection',
                         default='editors')
 
 
-    parser.add_argument('-o', '--location', action='store',
+    parser.add_argument('-o', '--location',
+                        action='store',
                         help='Indicate where you want to store the downloaded file.',
                         default=settings.input_location
                         )
 
-    parser.add_argument('-ns', '--namespace', action='store',
+    parser.add_argument('-ns', '--namespace',
+                        action='store',
                         help='A list of namespaces to include for analysis.',
-                        default='0')
+                        default='0'
+                        )
 
-    #parser.add_argument('-fo', '--format', action='store',
-    #                    help='Indicate which format the chunks should be stored. Valid options are xml and txt.',
-    #                    default='txt')
-
-    parser.add_argument('-f', '--file', action='store',
+    parser.add_argument('-f', '--file',
+                        action='store',
                         choices=file_choices,
                         help='Indicate which dump you want to download. Valid choices are:\n %s' % ''.join([f + ',\n' for f in file_choices]),
-                        default='stub-meta-history.xml.gz')
+                        default='stub-meta-history.xml.gz'
+                        )
 
-    parser.add_argument('-dv', '--dumpversion', action='store',
+    parser.add_argument('-dv', '--dumpversion',
+                        action='store',
                         choices=settings.dumpversions.keys(),
                         help='Indicate the Wikidump version that you are parsing.',
-                        default=settings.dumpversions['0'])
+                        default=settings.dumpversions['0']
+                        )
 
-    parser.add_argument('-d', '--datasets', action='store',
+    parser.add_argument('-d', '--datasets',
+                        action='store',
                         choices=datasets.keys(),
                         help='Indicate what type of data should be exported.',
-                        default=datasets['backward'])
+                        default='backward'
+                        )
 
-    parser.add_argument('-prog', '--progress', action='store_true', default=True,
-                      help='Indicate whether you want to have a progressbar.')
+    parser.add_argument('-prog', '--progress',
+                        action='store_true',
+                        default=True, \
+                        help='Indicate whether you want to have a progressbar.'
+                        )
 
     args = parser.parse_args()
     #initialize logger

@@ -24,14 +24,13 @@ import ConfigParser
 from utils import utils
 import languages
 
+
 def show_choices(settings, attr):
     choices = getattr(settings, attr).items()
     choices.sort()
     choices = ['%s\t%s' % (choice[0], choice[1]) for choice in choices]
-    #print '\n'.join(choices)
     return choices
-    #for choice in choices:
-    #    print '%s\t%s' % (choice[0], choice[1])
+
 
 def create_configuration(settings, args):
     force = getattr(args, 'force', False)
@@ -61,9 +60,6 @@ def create_configuration(settings, args):
             dumpversion = raw_input('Please indicate the version of the Wikipedia project you are analyzing.\nValid choices are:\n%s\nDefault is: 0 (%s)\nPress Enter to accept default.\n' % (choices, settings.dumpversions['0']))
             if len(dumpversion) == 0:
                 dumpversion = settings.dumpversions['0']
-
-
-            #dumpversion = dumpversion if dumpversion in settings.dumpversions.keys() else args.dumpversion
 
         dumpversion = settings.dumpversions[dumpversion]
         input_location = input_location if len(input_location) > 0 else settings.input_location

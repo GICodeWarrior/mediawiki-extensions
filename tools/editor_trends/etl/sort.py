@@ -162,10 +162,9 @@ def mergesort_launcher(input, output):
 
 if __name__ == '__main__':
     input = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
-    intermediate_output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
-    output = os.path.join(settings.input_location, 'en', 'wiki', 'dbready')
+    output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
     dbname = 'enwiki'
     collection = 'editors'
-    mergesort_launcher(input, intermediate_output)
+    mergesort_launcher(input, output)
     #mergesort_external_launcher(intermediate_output, output)
     #num_editors = store_editors(output, dbname, collection)
