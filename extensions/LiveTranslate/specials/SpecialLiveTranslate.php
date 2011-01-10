@@ -14,15 +14,6 @@
 class SpecialLiveTranslate extends SpecialPage {
 	
 	/**
-	 * Enum for translation memory types.
-	 * 
-	 * @since 0.4
-	 */
-	const TMT_LTF = 0;
-	const TMT_TMX = 1;
-	const TMT_GCSV = 2;
-	
-	/**
 	 * Constructor.
 	 * 
 	 * @since 0.4
@@ -316,9 +307,9 @@ class SpecialLiveTranslate extends SpecialPage {
 			$options = array();
 			
 			$tmTypes = array(
-				self::TMT_LTF => 'ltf',
-				self::TMT_TMX => 'tmx',
-				self::TMT_GCSV => 'gcsv',
+				TMT_LTF => 'ltf',
+				TMT_TMX => 'tmx',
+				TMT_GCSV => 'gcsv',
 			);			
 			
 			foreach ( $tmTypes as $dbValue => $msgKey ) {

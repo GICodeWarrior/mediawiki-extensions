@@ -34,4 +34,4 @@ $wgGroupPermissions['sysop']['managetms'] = true;
 
 # Default translation memory type.
 # TMT_LTF, TMT_TMX, TMT_GCSV
-$egLiveTranslateTMT = SpecialLiveTranslate::TMT_LTF;
+$egLiveTranslateTMT = TMT_LTF;

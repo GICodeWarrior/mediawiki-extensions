@@ -46,11 +46,14 @@ unset( $useExtensionPath );
 $wgExtensionMessagesFiles['LiveTranslate'] 			= $egLiveTranslateIP . '/LiveTranslate.i18n.php';
 
 $wgAutoloadClasses['LiveTranslateHooks'] 			= $egLiveTranslateIP . '/LiveTranslate.hooks.php';
+$wgAutoloadClasses['ApiImportTranslationMemories']	= $egLiveTranslateIP . '/api/ApiImportTranslationMemories.php';
 $wgAutoloadClasses['ApiLiveTranslate']	 			= $egLiveTranslateIP . '/api/ApiLiveTranslate.php';
 $wgAutoloadClasses['ApiQueryLiveTranslate']	 		= $egLiveTranslateIP . '/api/ApiQueryLiveTranslate.php';
 
 $incDirIP = $egLiveTranslateIP . '/includes/';
 $wgAutoloadClasses['LiveTranslateFunctions']	 	= $incDirIP . 'LiveTranslate_Functions.php';
+$wgAutoloadClasses['LTGCSVParser']					= $incDirIP . 'LT_GCSVParser.php';
+$wgAutoloadClasses['LTLTFParser']					= $incDirIP . 'LT_LFTParser.php';
 $wgAutoloadClasses['LTTMParser']					= $incDirIP . 'LT_TMParser.php';
 $wgAutoloadClasses['LTTMUnit']						= $incDirIP . 'LT_TMUnit.php';
 $wgAutoloadClasses['LTTMXParser']					= $incDirIP . 'LT_TMXParser.php';
@@ -62,6 +65,7 @@ $wgAutoloadClasses['SpecialLiveTranslate']	 		= $egLiveTranslateIP . '/specials/
 $wgSpecialPages['LiveTranslate'] = 'SpecialLiveTranslate';
 $wgSpecialPageGroups['LiveTranslate'] = 'pagetools';
 
+$wgAPIModules['importtms'] = 'ApiImportTranslationMemories';
 $wgAPIModules['livetranslate'] = 'ApiLiveTranslate';
 $wgAPIListModules['livetranslate'] = 'ApiQueryLiveTranslate';
 
@@ -89,5 +93,14 @@ if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
 		'messages' => $egLTJSMessages
 	);
 }
+
+/**
+ * Enum for translation memory types.
+ * 
+ * @since 0.4
+ */
+define( 'TMT_LTF', 0 );
+define( 'TMT_TMX', 1 );
+define( 'TMT_GCSV', 2 );
 
 require_once 'LiveTranslate_Settings.php';
