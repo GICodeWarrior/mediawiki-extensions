@@ -735,33 +735,13 @@ if (0) {
       
   /* Utility function which returns the revid of the revision which is 
    * currently being displayed.
-   * It tries to do this using the global wgArticle object, and if this fails
-   * queries the DB directly.
    *
    * This is a replacement for getRevFTitle() and eliminates 1 db call.
    */
   static function util_getRevFArticle()
   {
-    // If no revid, assume it is the most recent one.
-    // Try using the article object, and only if this fails use the Title.
-    global $wgArticle;
-    $rev_id = 0;
-    if (method_exists($wgArticle, "getLatest"))
-      $rev_id = $wgArticle->getLatest();
-    else { // Otherwise, ask the db for the latest revid for the given pageid.
-      global $wgTitle;
-      $rev_id = 0;
-      $page_id = $wgTitle->getArticleID();
-      $dbr = wfGetDB( DB_SLAVE );
-      $res = $dbr->select('page', array('page_latest'), 
-                          array('page_id' => $page_id), array());
-      if ($res && $dbr->numRows($res) > 0) {
-        $row = $dbr->fetchRow($res);
-        $rev_id = $row['page_latest'];
-      }
-      $dbr->freeResult( $res ); 
-    }
-    return $rev_id;
+    global $wgTitle;
+    return $wgTitle->getLatestRevID();
   }
 
   // Returns the current revid from the $out object.
