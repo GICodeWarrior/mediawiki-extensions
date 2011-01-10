@@ -252,10 +252,21 @@ function wfAddWikiFeedHeaders( $out, $text ) {
  * @param QuickTemplate $template Instance of MonoBookTemplate or other QuickTemplate
  */
 function wfWikiArticleFeedsToolboxLinks( $template ) {
-	global $wgOut, $wgServer, $wgScript, $wgArticle, $wgWikiFeedPresent;
+	global $wgServer, $wgScript, $wgWikiFeedPresent;
 
-	# Short-circuit if wgArticle has not been set or there are no Feeds present
-	if ( !$wgArticle || !$wgWikiFeedPresent ) return true;
+	# Short-circuit if there are no Feeds present
+	if ( !$wgWikiFeedPresent ) return true;
+
+	if ( is_callable( $template, 'getSkin' ) ) {
+		$title = $template->getSkin()->getTitle();
+	} else {
+		global $wgTitle;
+		$title = $wgTitle;
+	}
+
+	if ( $title->getNamespace() < NS_MAIN ) {
+		return true;
+	}
 
 	$result = '<li id="feedlinks">';
 
@@ -281,7 +292,6 @@ function wfWikiArticleFeedsToolboxLinks( $template ) {
 
 	# Generate regular RSS and Atom feeds if not fed by feedBurner
 	if ( !$burned ) {
-		$title = $wgArticle->getTitle();
 		$dbKey = $title->getPrefixedDBkey();
 		$baseUrl = $wgServer . $wgScript . '?title=' . $dbKey . '&action=feed&feed=';
 		$feeds = array( 'rss' => 'RSS', 'atom' => 'Atom' );
