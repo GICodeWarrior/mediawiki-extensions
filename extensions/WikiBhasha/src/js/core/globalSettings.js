@@ -1,7 +1,7 @@
 ﻿
 /*
 *
-*   Copyright (c) Microsoft. All rights reserved.
+*   Copyright (c) Microsoft. 
 *
 *	This code is licensed under the Apache License, Version 2.0.
 *   THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -548,17 +548,15 @@ shareOnExternSystemHTML:'<div id="wbshareOnExternSystemHTMLDiv">\
 <tr>\
 <td class="wbWindowContentLeft" />\
 <td class="wbWindowContentCenter">\
-<div style="clear:both">\
-<div style="padding:10px;float:right;" id="wbShareIconsSection"></div>\
+<div style="clear:both;text-align:left">\
 <div class="wbContent" id="wbExitContent">\
+<div id="thxMsg"></div>\
+<div id="msgTitle"></div>\
+<div id="msgText"></div>\
+<div id="copyToClipboardDiv"><a href="#" id="copyToClipboard"></a></div>\
 </div>\
-<table border="0" cellpadding="0" cellspacing="0" width="100%">\
-<tr>\
-<td>\
+<div style="padding:5px;" id="wbShareIconsSection"></div>\
 <div style="padding:10px;clear:both;width:100%;text-align:center"><input type="button" id="wbSWESExitButton" value="Exit WikiBhasha"></div>\
-</td>\
-</tr>\
-</table>\
 </div>\
 </td>\
 <td class="wbWindowContentRight"></td>\

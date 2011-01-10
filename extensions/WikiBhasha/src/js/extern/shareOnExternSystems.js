@@ -1,6 +1,6 @@
 ﻿/*
 *
-*   Copyright (c) Microsoft. All rights reserved.
+*   Copyright (c) Microsoft. 
 *
 *	This code is licensed under the Apache License, Version 2.0.
 *   THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -50,10 +50,10 @@ if (typeof (wikiBhasha.extern) === "undefined") {
         // facebook base url
         systemUrl : "http://www.facebook.com/share.php?t=",
         elementId : "icnFacebook",
-        icon : "images/facebook_16.png",
+        icon : "images/facebook.png",
         shareSystemMessage : "Facebook",
-        initialize: function(title, lang){
-            wbFacebook.shareSystemLogic(title, lang);
+        initialize: function(){
+            wbFacebook.shareSystemLogic();
             $('#'+wbFacebook.elementId).click(function(){
                 wbFacebook.executeShareSystemAPI();
             });
@@ -63,10 +63,9 @@ if (typeof (wikiBhasha.extern) === "undefined") {
             var icnUrl = (wbGlobalSettings.imgBaseUrl ? wbGlobalSettings.imgBaseUrl : baseUrl) +wbFacebook.icon;
             return wbUtil.stringFormat("<div class='shareIcons'><a href='#' id='{0}'><img src='{1}'></a></div>", wbFacebook.elementId, icnUrl);
         },
-        shareSystemLogic : function(title, lang){
+        shareSystemLogic : function(){
             // form the facebook api call url
-            // Note: title is passed to the function in case if anyone want to use in the share system message field
-			wbFacebook.systemUrl +=wbUtil.stringFormat(wbLocal.shareMessage, lang);
+			wbFacebook.systemUrl +=wbUtil.stringFormat(wbLocal.shareMessage, wbShareOnExternSystem.setShortenURL(wbGlobalSettings.targetLanguageArticleTitle, false), wbGlobalSettings.$targetLanguageName);
 			wbFacebook.systemUrl +="&u=http://www.wikibhasha.org/";
 			return wbFacebook.systemUrl;
         },
@@ -79,10 +78,10 @@ if (typeof (wikiBhasha.extern) === "undefined") {
     wikiBhasha.extern.shareOnTwitter = {
         systemUrl :"http://www.twitter.com/home?status=",
         elementId : "icnTwitter",
-        icon : "images/twitter_16.png",
+        icon : "images/twitter.png",
         shareSystemMessage : "Twitter",
-        initialize: function(title, lang){
-            wbTwitter.shareSystemLogic(title, lang);
+        initialize: function(){
+            wbTwitter.shareSystemLogic();
             $('#'+wbTwitter.elementId).click (function(){
                 wbTwitter.executeShareSystemAPI();
             });
@@ -92,12 +91,16 @@ if (typeof (wikiBhasha.extern) === "undefined") {
             var icnUrl = (wbGlobalSettings.imgBaseUrl ? wbGlobalSettings.imgBaseUrl : baseUrl) + wbTwitter.icon;
             return wbUtil.stringFormat("<div class='shareIcons'><a href='#' id='{0}'><img src='{1}'></a></div>", wbTwitter.elementId, icnUrl);
         },
-        shareSystemLogic : function(title, lang){
+        shareSystemLogic : function(){
             // form the twitter api call url
-            // Note: title is passed to the function in case if anyone want to use in the share system message field
-			var tweet = wbUtil.stringFormat(wbLocal.shareMessage, lang);
-            wbTwitter.systemUrl +=tweet.toString().replace(/ /gi,'+');
-            return wbTwitter.systemUrl;
+            if (wbGlobalSettings.sourceLanguageArticleTitle == "") {
+                var tweet = wbUtil.stringFormat(wbLocal.defaultShareMessage, wbShareOnExternSystem.setShortenURL(wbGlobalSettings.$targetLanguageName, false));
+                wbTwitter.systemUrl +=tweet.toString().replace(/ /gi,'+');
+            }else{
+                var tweet = wbUtil.stringFormat(wbLocal.shareMessage, wbShareOnExternSystem.setShortenURL(wbGlobalSettings.sourceLanguageArticleTitle, false), wbGlobalSettings.$targetLanguageName);
+                wbTwitter.systemUrl +=tweet.toString().replace(/ /gi,'+');
+            }
+            return true;
         },
         executeShareSystemAPI : function(){
             window.open(wbTwitter.systemUrl, wbTwitter.elementId);
