@@ -1,11 +1,10 @@
 <?php
-
 /**
  * Extension based on SkinPerPage to allow a customized skin per namespace
  *
- * Require MediaWiki 1.13.0 for the new version of BeforePageDisplay hook, will
- * produce a warning on older versions.
+ * Require MediaWiki 1.15.0 or greater.
  *
+ * @file
  * @author Alexandre Emsenhuber
  * @license GPLv2
  */
@@ -17,7 +16,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'SkinPerNamespace',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:SkinPerNamespace',
-	'version'     => '2009-04-25',
+	'version'     => '2011-01-10',
 	'description' => 'Allow a per-namespace skin',
 	'author'      => 'Alexandre Emsenhuber',
 	
@@ -51,13 +50,12 @@ $wgSkinPerNamespaceOverrideLoggedIn = true;
  */
 function efSkinPerPageBeforePageDisplayHook( &$out, &$skin ){
 	global $wgSkinPerNamespace, $wgSkinPerSpecialPage,
-		$wgSkinPerNamespaceOverrideLoggedIn, $wgUser, $wgTitle;
+		$wgSkinPerNamespaceOverrideLoggedIn, $wgUser;
 
 	if( !$wgSkinPerNamespaceOverrideLoggedIn && $wgUser->isLoggedIn() )
 		return true;
 
-	$title = is_callable( array( $out, 'getTitle' ) ) ? # 1.15 +
-		$out->getTitle() : $wgTitle;
+	$title = $out->getTitle();
 	$ns = $title->getNamespace();
 	$skinName = null;
 
@@ -74,8 +72,7 @@ function efSkinPerPageBeforePageDisplayHook( &$out, &$skin ){
 	
 	if( $skinName !== null ) {
 		$skin = Skin::newFromKey( $skinName );
-		if( is_callable( array( $skin, 'setTitle' ) ) ) # 1.15 +
-			$skin->setTitle( $out->getTitle() );
+		$skin->setTitle( $out->getTitle() );
 	}
 
 	return true;
