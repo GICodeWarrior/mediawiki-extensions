@@ -76,6 +76,8 @@ class SpecialLiveTranslate extends SpecialPage {
 			return;
 		} 
 		
+		// TODO: handle submissions
+		
 		$this->displayTMConfig();
 	}
 	
@@ -85,20 +87,55 @@ class SpecialLiveTranslate extends SpecialPage {
 	 * @since 0.4
 	 */		
 	protected function displayTMConfig() {
-		global $wgOut;
+		global $wgOut, $wgUser;
 		
-		$tms = $this->getTMConfigItems();
+		$wgOut->addHtml( Html::openElement(
+			'form',
+			array(
+				'id' => 'tmform',
+				'name' => 'tmform',
+				'method' => 'post',
+				'action' => $this->getTitle()->getLocalURL(),
+			)
+		) );
+		
+		$tms = $this->getTMConfigItems();		
 		
 		if ( count( $tms ) > 0 ) {
+			$wgOut->addHTML( Html::openElement(
+				'table',
+				array( 'class' => 'wikitable', 'style' => 'width:100%' )
+			) );
+
+			$wgOut->addHTML( Html::rawElement(
+				'tr',
+				array(),
+				Html::element( 'th', array(), wfMsg( 'livetranslate-special-location' ) ),
+				Html::element( 'th', array(), wfMsg( 'livetranslate-special-type' ) )
+			) );			
+			
 			foreach ( $tms as $tm ) {
 				$this->displayTMItem( $tm );
-			}			
+			}
+
+			$wgOut->addHTML( Html::closeElement( 'table' ) );
 		}
 		else {
 			$wgOut->addWikiMsg( 'livetranslate-special-no-tms-yet' );
 		}
 		
 		$this->displayAddNewTM();
+		
+		$wgOut->addHtml(
+			Html::input(
+				'',
+				wfMsg( 'livetranslate-special-button' ),
+				'submit',
+				array( 'id' => 'tmform-submit' )
+			) .
+			Html::hidden( 'wpEditToken', $wgUser->editToken() ) .
+			Html::closeElement( 'form' )
+		);
 	}
 	
 	/**
@@ -139,7 +176,12 @@ class SpecialLiveTranslate extends SpecialPage {
 	protected function displayTMItem( $tm ) {
 		global $wgOut;
 		
-		
+		$wgOut->addHTML( Html::rawElement(
+			'tr',
+			array(),
+			Html::element( 'td', array(), $tm->memory_location ), // TODO
+			Html::element( 'rd', array(), $tm->memory_type ) // TODO	
+		) );
 	}
 	
 	/**
@@ -148,7 +190,7 @@ class SpecialLiveTranslate extends SpecialPage {
 	 * @since 0.4
 	 */		
 	protected function displayAddNewTM() {
-		
+		// TODO
 	}
 	
 }
