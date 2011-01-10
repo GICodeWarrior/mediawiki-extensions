@@ -142,6 +142,8 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'svgedit-editbutton-edit' => 'Datei bearbeite',
+	'svgedit-summary-label' => 'Zämmefassig',
+	'svgedit-summary-default' => '/ * Mit SVG-edit gänderet * /',
 	'svgedit-editor-save-close' => 'Spychere un zuemache',
 	'svgedit-editor-close' => 'Abbräche',
 	'svgedit-desc' => 'Macht a Bearbeite vun ere SVG-Datei mit [http://code.google.com/p/svg-edit/ SVG-edit] megli',
@@ -206,6 +208,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'svgedit-editbutton-edit' => 'Zeechnung änneren',
+	'svgedit-summary-label' => 'Resumé vun der Ännerung',
 	'svgedit-editor-save-close' => 'Späicheren an zoumaachen',
 	'svgedit-editor-close' => 'Annulléieren',
 	'svgedit-desc' => 'Ännere vun SVG Zeechnungen am Browser mat [http://code.google.com/p/svg-edit/ SVG-Edit]',
@@ -306,6 +309,8 @@ $messages['ru'] = array(
  */
 $messages['sl'] = array(
 	'svgedit-editbutton-edit' => 'Uredi risbo',
+	'svgedit-summary-label' => 'Povzetek urejanja',
+	'svgedit-summary-default' => '/* Spremenjeno v svg-edit */',
 	'svgedit-editor-save-close' => 'Shrani in zapri',
 	'svgedit-editor-close' => 'Prekliči',
 	'svgedit-desc' => 'Urejanje risb SVG v brskalniku s [http://code.google.com/p/svg-edit/ SVG-Edit]',
