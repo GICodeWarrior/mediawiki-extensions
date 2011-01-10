@@ -376,6 +376,7 @@ $messages['gsw'] = array(
 	'push-tab-no-embedded-files' => '(Uf däre Syte git s kei yybetteti Dateie.)',
 	'push-tab-files-override' => 'Die Dateie git s scho: $1',
 	'push-tab-template-override' => 'Die Vorlage git s scho: $1',
+	'push-tab-err-uploaddisabled' => 'S Uffelade vu Dateien isch nit megli. D Parameter $wgEnableUploads un $wgAllowCopyUploads mien in dr Datei LocalSettings.php vum Ziilwiki uf „true“ gsetzt wäre.',
 	'special-push' => 'Syte transferiere',
 	'push-special-description' => 'Die Spezialsyte macht s megli dr Inhalt vu eire oder mehrere Syte zue eim oder mehrere andere Wikis z transferiere.
 
@@ -618,6 +619,7 @@ $messages['lb'] = array(
 	'push-tab-text' => 'Push',
 	'push-button-text' => 'Push',
 	'push-button-completed' => 'Push ofgeschloss',
+	'push-tab-title' => '$1 pushen',
 	'push-remote-page-link' => '$1 op $2',
 	'push-remote-page-link-full' => '$1 op $2 weisen',
 	'push-button-all' => 'All pushen',
@@ -625,6 +627,8 @@ $messages['lb'] = array(
 	'push-tab-not-created' => 'Dës Säit gëtt et nach net',
 	'push-tab-push-options' => 'Push-Optiounen',
 	'push-tab-inc-templates' => 'Inklusiv Schablounen',
+	'push-tab-used-templates' => '({{PLURAL:$2|Schabloun gëtt|Schabloune gi}} benotzt: $1)',
+	'push-tab-no-used-templates' => '(Op dëser Säit gi keng Schabloune benotzt.)',
 	'push-tab-inc-files' => 'Agebonne Fichieren abannen',
 	'push-tab-embedded-files' => 'Agebonne Fichieren:',
 	'push-tab-files-override' => 'Dës Fichiere gëtt et schonn: $1',
@@ -636,6 +640,7 @@ $messages['lb'] = array(
 	'push-special-item-completed' => '$1: Push ofgeschloss',
 	'push-special-item-failed' => '$1: Push huet net fonctionnéiert: $2',
 	'push-special-push-done' => 'Push ofgeschloss',
+	'push-special-inc-files' => 'Agebonne Fichieren abannen',
 	'push-special-return' => 'Méi Säite pushen',
 );
 
@@ -843,6 +848,7 @@ Para fazer a replicação externa de páginas, introduza os respectivos títulos
 /** Russian (Русский)
  * @author DCamer
  * @author Lockal
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -885,6 +891,7 @@ $messages['ru'] = array(
 	'push-tab-no-embedded-files' => '(На этой странице нет встроенных файлов.)',
 	'push-tab-files-override' => 'Следующие файлы уже существуют: $1',
 	'push-tab-template-override' => 'Следующие шаблоны уже существуют: $1',
+	'push-tab-err-uploaddisabled' => 'Загрузки не включены. Убедитесь, что параметры $wgEnableUploads и $wgAllowCopyUploads в файле настроек LocalSettings.php установлены в true.',
 	'special-push' => 'Разместить страницы',
 	'push-special-description' => 'Эта страница позволяет разместить содержимое одной или нескольких страниц на одну или несколько других вики-сайтов на движке MediaWiki.
 
