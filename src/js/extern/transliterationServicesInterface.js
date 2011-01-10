@@ -1,6 +1,6 @@
 ﻿/*
 *
-*   Copyright (c) Microsoft. All rights reserved.
+*   Copyright (c) Microsoft. 
 *
 *	This code is licensed under the Apache License, Version 2.0.
 *   THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF

@@ -1,6 +1,6 @@
 ﻿/*
 *
-*   Copyright (c) Microsoft. All rights reserved.
+*   Copyright (c) Microsoft. 
 *
 *	This code is licensed under the Apache License, Version 2.0.
 *   THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -126,6 +126,16 @@
             // The below commented statement, which is using ‘jQuery.data()’ will work with “jquery-1.4.2.min.js” and the above versions. 
             //$(elem).data("_wbData", data);
             elem.setAttribute("_wbData", data);
+        },
+
+        //copy content to clipboard
+        copyContentToClipboard: function (text) {
+            if (window.clipboardData) {
+                window.clipboardData.setData('text', text);
+                return true;
+            } else {
+                return false;
+            }
         }
     };
 

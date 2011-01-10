@@ -1,6 +1,6 @@
 ﻿/*
 *
-*   Copyright (c) Microsoft. All rights reserved.
+*   Copyright (c) Microsoft. 
 *
 *	This code is licensed under the Apache License, Version 2.0.
 *   THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -102,42 +102,80 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
         //If 'doNotAppendAgain' property present for any pane(specifically for wiki compose pane) then
         //that pane content won't be removed from the DOM tree. In this case, we won't load IFRAME again and again.
         doNotAppendAgain: false,
-        isIFrameLoaded: false,
+        isWikiPediaEditWindowLoaded: false,
         // It is a Boolean variable to store whether the content moved to Wikipedia or not.
         isContentMovedToWikipedia: false,
         //It is a Boolean variable to store whether the content moved from previous steps to Wikipedia edit page.
         isContentMovedToComposePane: false,
 
+        wbChildWikipedia: null,
+
+        timeoutObj: null,
+
         initialize: function() {
+            wbPublishDisplayPane.$contentElem = $("#" + this.contentDivId);
             //get wikipedia article compose url
-            var urlData = wbWikiSite.getEditPageUrl(wbGlobalSettings.targetLanguageCode, wbGlobalSettings.targetLanguageArticleTitle),
-            //iframe object
-            composeFrameObject = document.getElementById("wbComposeIFrame");
+            var urlData = wbWikiSite.getEditPageUrl(wbGlobalSettings.targetLanguageCode, wbGlobalSettings.targetLanguageArticleTitle);
+            // window object
+            
+            wbPublishDisplayPane.wbChildWikipedia = window.open(urlData, 'wbChildWikipediaWindow');
+             
+            wbPublishDisplayPane.check_load();
+            return;
+        },
+        check_load: function (){
+            if( wbPublishDisplayPane.wbChildWikipedia.document.readyState == "complete" && !wbPublishDisplayPane.wbChildWikipedia.loaded){
+                wbPublishDisplayPane.loadWikiEditPage();
+                if(wbPublishDisplayPane && wbPublishDisplayPane.wbChildWikipedia){
+                    wbPublishDisplayPane.wbChildWikipedia.loaded = 1;
+                }
+            }else{
+                wbPublishDisplayPane.timeoutObj = setTimeout(wbPublishDisplayPane.check_load,100);
+            }
+            return;
+        },
+        loadWikiEditPage : function () {
+            wbDisplayPaneHelper.setPaneTitleFromConfig(wbPublishDisplayPane.$contentElem, wbPublishDisplayPane.paneConfigInfo);
+            wbPublishDisplayPane.$contentElem.html("<center><h2>Your edited content has been loaded into a Wikipedia edit page in the new window. <br>Please use that new window to save the content. Once you save the content to Wikipedia, you will be redirected back here.</h2></center>");
+            // get the existance of the text area in the iFrame.
+            var noOfTextAreas = wbPublishDisplayPane.getWikiTextareaElement().length;
 
-            this.$contentElem = $("#" + this.contentDivId);
+            // Check the state of the content and the text area. If the content is already moved to 
+            // Wikipedia and there is no text area present in the iFrame, then close the application 
+            // and load the updated Wikipedia page. 
+            if (wbPublishDisplayPane.isContentMovedToWikipedia && (noOfTextAreas === 0)) {
+                var currentPageUrl = window.location.href;
+                currentPageUrl = currentPageUrl.replace(/&action=edit/ig, "");
+                wbPublishDisplayPane.wbChildWikipedia.close();
+                clearTimeout(wbPublishDisplayPane.timeoutObj);
+                wbPublishDisplayPane.$contentElem.html(" ");
+                //window.location.href = currentPageUrl;
+                //wbMainWindow.hide();
+                //show WikiBhasha share exit popup.
+                wbShareOnExternSystem.show();
+                return;
+            }
 
-            //make sure wikipedia edit page loads into iframe by having a small amount of delay(ex: 10ms)
-            window.setTimeout(function() {
-                loadWikiEditPage();
-            }, 10);
+            wbPublishDisplayPane.isWikiPediaEditWindowLoaded = true;
 
-            //loads the wikiPedia edit page and updates it with the target article content(modified in compose step).
-            function loadWikiEditPage() {
-                //adjust the iFrame dimensions according to available space.
-                var $splitterElement = $("#wbSplitter");
-                $(composeFrameObject).css({
-                    "height": $splitterElement.height() - 105,
-                    "width": "99%"
-                });
+            //collect all edits from target content pane and post the same to wiki edit page.
+            wbPublishDisplayPane.postDataToWikiPage();
 
-                composeFrameObject.contentWindow.location.href = urlData;
+            // call the method to bind the click event to the wikipedia save button
+            wbPublishDisplayPane.addSnippetInjectCodeToSaveButton();
 
-                // Binds the click event on wikipedia edit page's save button. This is to add the wikiBhasha versioning code snippet and creating the interwiki links
-                // into wikipedia article content when user clicks the save button.
-                function addSnippetInjectCodeToSaveButton() {
+            wbDisplayPaneHelper.configureComposeArea(wbPublishDisplayPane.wbChildWikipedia);
+            // Reset isChangedByUser and hook to text area to turn that flag on, when user makes changes.
+            wbPublishDisplayPane.getWikiTextareaElement().change(function() {
+                wbPublishDisplayPane.isChangedByUser = true;
+            });
+        },
+        // Binds the click event on wikipedia edit page's save button. This is to add the wikiBhasha versioning code snippet and creating the interwiki links
+        // into wikipedia article content when user clicks the save button.
+        addSnippetInjectCodeToSaveButton : function () {
 
                     // get the iFrame which contains the wikipedia text area and the save button
-                    var iFrameDoc = composeFrameObject.contentWindow.document,
+                    var iFrameDoc = wbPublishDisplayPane.wbChildWikipedia.document,
                     // get the save button from the iFrame
                         saveButton = iFrameDoc.getElementById(wbWikiSite.wikiSaveButton);
                     if (saveButton) {
@@ -179,60 +217,13 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
                             // log the usage of save button
                             wbLoggerService.logFeatureUsage(wbGlobalSettings.sessionId, "ArticleSaved", wbGlobalSettings.targetLanguageArticleTitle, wbGlobalSettings.targetLanguageCode);
+                            wbPublishDisplayPane.check_load();
                             return true;
                         };
                     }
-                }
-
-                //bind load event on iframe
-                $(composeFrameObject).load(function() {
-
-                    // get the existance of the text area in the iFrame.
-                    var noOfTextAreas = wbPublishDisplayPane.getWikiTextareaElement().length;
-
-                    // Check the state of the content and the text area. If the content is already moved to 
-                    // Wikipedia and there is no text area present in the iFrame, then close the application 
-                    // and load the updated Wikipedia page. 
-                    if (wbPublishDisplayPane.isContentMovedToWikipedia && (noOfTextAreas === 0)) {
-                        //show WikiBhasha share exit popup.
-                        wbShareOnExternSystem.show();
-                    }
-
-                    // closes the application with an alert message.
-                    function reloadWikiPage() {
-                        window.alert("Your session will be closed now.");
-                        var currentPageUrl = window.location.href;
-                        currentPageUrl = currentPageUrl.replace(/&action=edit/ig, "");
-                        window.location.href = currentPageUrl;
-                        return;
-                    }
-
-                    wbPublishDisplayPane.isIFrameLoaded = true;
-
-                    //collect all edits from target content pane and post the same to wiki edit page.
-                    wbPublishDisplayPane.postDataToWikiPage();
-
-                    // call the method to bind the click event to the wikipedia save button
-                    addSnippetInjectCodeToSaveButton();
-
-                    wbDisplayPaneHelper.configureComposeArea(composeFrameObject);
-
-                    // Reset isChangedByUser and hook to text area to turn that flag on, when user makes changes.
-                    wbPublishDisplayPane.getWikiTextareaElement().change(function() {
-                        wbPublishDisplayPane.isChangedByUser = true;
-                    });
-                });
-            }
-        },
-
+                },
         onShow: function() {
-            wbDisplayPaneHelper.setPaneTitleFromConfig(wbPublishDisplayPane.$contentElem, wbPublishDisplayPane.paneConfigInfo);
-
-            //If the iFram is loaded then push the content to Wikipedia editpage
-            if (wbPublishDisplayPane.isIFrameLoaded) {
-                //collect all edits from target content pane and post the same to wikipedia edit page.
-                this.postDataToWikiPage();
-            }
+                this.initialize();
         },
 
         // this function gets called just before the pane is to be hidden, for example, when user
@@ -256,12 +247,12 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
             var wikiText = "";
             wbPublishDisplayPane.isChangedByUser = false;
             // if there is content in targetContentPane, then copy that content to compose textbox area
-            if (wbTargetContentPane.isInitialized && wbPublishDisplayPane.isIFrameLoaded) {
+            if (wbTargetContentPane.isInitialized && wbPublishDisplayPane.isWikiPediaEditWindowLoaded) {
                 wikiText = wbWikiModeConverter.getWikiFromHtmlDomElement(wbTargetContentPane.$contentElem[0]);
             }
             // if user has not visited targetContentPane (step 2 in default config), then copy the translated content
             // from sourceTranslatedPane (step 1 in default config) only when it is new article.
-            else if (!wbTargetContentPane.isInitialized && wbPublishDisplayPane.isIFrameLoaded && wbGlobalSettings.isNewArticle) {
+            else if (!wbTargetContentPane.isInitialized && wbPublishDisplayPane.isWikiPediaEditWindowLoaded && wbGlobalSettings.isNewArticle) {
                 var originalSrcContent = wbHistoryManager.getHistoryEntity(wbGlobalSettings.sourceLanguageArticleTitle, wbGlobalSettings.sourceLanguageCode);
                 wikiText = wbWikiModeConverter.getWikiFromHtmlDomElement(originalSrcContent.$translatedContent[0]);
             }
@@ -273,9 +264,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         //gets the textarea element available in wiki edit page
         getWikiTextareaElement: function() {
-            var composeFrameObject = document.getElementById("wbComposeIFrame"),
-                iFrameDoc = composeFrameObject.contentWindow.document;
-            return $("#" + wbWikiSite.wikiComposeTextArea + ", textarea[name='" + wbWikiSite.wikiComposeTextArea + "']", iFrameDoc);
+            return $("#" + wbWikiSite.wikiComposeTextArea + ", textarea[name='" + wbWikiSite.wikiComposeTextArea + "']", wbPublishDisplayPane.wbChildWikipedia.document);
         },
 
         //gets the number of times current document edited using WikiBhasha. 
@@ -651,7 +640,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                 if (!articleFormattedText) { // New article case
                     // for this new article, if user already visited compose pane, then we should copy the translated content
                     // automatically to targetContentPane. This is for better usability.
-                    if (wbPublishDisplayPane.isInitialized && wbPublishDisplayPane.isIFrameLoaded && wbGlobalSettings.isNewArticle) {
+                    if (wbPublishDisplayPane.isInitialized && wbPublishDisplayPane.isWikiPediaEditWindowLoaded && wbGlobalSettings.isNewArticle) {
                         // get the translated and corrected content of the original source article for which the user is intended to create local language version
                         var originalSrcContent = wbHistoryManager.getHistoryEntity(wbGlobalSettings.sourceLanguageArticleTitle, wbGlobalSettings.sourceLanguageCode);
 
@@ -812,9 +801,11 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                 }
             }
 
-            paneElement.$contentElem.show();
-            if (paneElement.onShow) {
-                paneElement.onShow();
+            if(paneElement.$contentElem){
+                paneElement.$contentElem.show();
+                if (paneElement.onShow) {
+                    paneElement.onShow();
+                }
             }
         },
 
@@ -1073,9 +1064,9 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
         },
 
         //configures the compose area for wikipedia edit page pane
-        configureComposeArea: function(composeFrameObject) {
+        configureComposeArea: function() {
             //iframe document object
-            var iframeDoc = composeFrameObject.contentWindow.document;
+            var iframeDoc = wbPublishDisplayPane.wbChildWikipedia.document;
 
             //removing unwanted divs from compose area
             $(wbWikiSite.wikiEditPageNonCriticalDivs, iframeDoc).hide();

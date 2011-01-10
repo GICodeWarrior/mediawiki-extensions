@@ -1,6 +1,6 @@
 ﻿/*
 *
-*   Copyright (c) Microsoft. All rights reserved.
+*   Copyright (c) Microsoft. 
 *
 *	This code is licensed under the Apache License, Version 2.0.
 *   THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
@@ -117,10 +117,21 @@ TD
 	float:left;
 	font-size:2px;
 }
-#wbExitContent
+#wbExitContent div
 {
-    text-align:center;
+    text-align:left;
     clear:both;
+    padding:5px;
+}
+#thxMsg, #msgTitle
+{
+    font-weight:bold;
+}
+#msgText
+{
+    border: 1px dotted;
+    padding:10px;
+    background-color: #ACBEBE;
 }
 #wbTutorialWindow 
 {
@@ -767,9 +778,9 @@ ul.tabs li.active, ul.tabs li:hover  {
 }
 .shareIcons
 {
-    width:17px;
-    height:17px;
-    padding-left:2px;
-    float:right;
+    width:32px;
+    height:32px;
+    padding-left:4px;
+    float:left;
     text-align:left;
 }
