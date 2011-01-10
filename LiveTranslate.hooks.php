@@ -31,6 +31,8 @@ final class LiveTranslateHooks {
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
 		
 		if ( $title->getFullText() == $egLiveTranslateDirPage ) {
+			LiveTranslateFunctions::createInitialMemoryIfNeeded();
+			
 			$parser = new LTLTFParser();
 			$tm = $parser->parse( $article->getContent() );	
 			$tus = $tm->getTranslationUnits();	

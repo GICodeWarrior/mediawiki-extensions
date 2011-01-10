@@ -62,9 +62,14 @@ class SpecialLiveTranslate extends SpecialPage {
 			return;
 		}
 		
-		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
-			$this->handleSubmission();
+		if ( $wgRequest->wasPosted() ) {
+			if ( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+				$this->handleSubmission();
+			}
 		}
+		else {
+			LiveTranslateFunctions::createInitialMemoryIfNeeded();
+		}			
 		
 		$tms = $this->getTMConfigItems();
 		
