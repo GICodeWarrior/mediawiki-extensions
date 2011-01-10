@@ -34,6 +34,7 @@ $messages['en'] = array(
 	'livetranslate-tmtype-ltf' => 'Live Translate format',
 	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
 	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'There are no translation memories yet.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
