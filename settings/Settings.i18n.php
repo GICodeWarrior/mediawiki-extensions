@@ -12403,6 +12403,7 @@ $messages['lb'] = array(
 	'configure-setting-wgMaxNameChars' => 'Maximal Byte-Längt vum Benotzernumm',
 	'configure-setting-wgMaxSigChars' => 'maxima Längt vun der personaliséierter Ënnerschrëft',
 	'configure-setting-wgMinimalPasswordLength' => 'Mindest Längt vun de Passwieder',
+	'configure-setting-wgWeakPasswords' => 'Lëscht vun den net zougeloossene Passwierder',
 	'configure-setting-wgNewUserLog' => 'e Logbuch vun den neie Benotzer ënnerhalen',
 	'configure-setting-wgReservedUsernames' => "Bentzernimm déi fir d'Software reservéiert sinn",
 	'configure-setting-wgShowIPinHeader' => "D'IP-Adress an der Benotzerläischt weisen",
