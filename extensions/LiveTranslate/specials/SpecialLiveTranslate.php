@@ -66,7 +66,11 @@ class SpecialLiveTranslate extends SpecialPage {
 			$this->handleSubmission();
 		}
 		
-		$this->displayTMConfig( $this->getTMConfigItems() );
+		$tms = $this->getTMConfigItems();
+		
+		$this->displayTMConfig( $tms );
+		
+		$this->updateTranslationMemory( $tms );
 	}
 	
 	/**
@@ -115,6 +119,28 @@ class SpecialLiveTranslate extends SpecialPage {
 					'memory_location' => $wgRequest->getText( 'newtm-location' )
 				)
 			);
+		}
+	}
+	
+	/**
+	 * Updates the translation memory stored in the db.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param array $tms The current translation memories
+	 */
+	protected function updateTranslationMemory( array $tms ) {
+		foreach ( $tms as $tm ) {
+			$requestData = array(
+				'action' => 'importtms',
+				'format' => 'json',
+				'source' => $tm->memory_location,
+				'type' => $tm->memory_type,
+			);
+			
+			$api = new ApiMain( new FauxRequest( $requestData, true ), true );
+			$api->execute();
+			$response = $api->getResultData();					
 		}
 	}
 	

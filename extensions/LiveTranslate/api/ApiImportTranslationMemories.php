@@ -55,8 +55,6 @@ class ApiImportTranslationMemories extends ApiBase {
 					break;
 			}
 			
-			
-			
 			if ( $tm !== false ) {
 				$this->doTMImport( $tm );
 			}
@@ -64,7 +62,34 @@ class ApiImportTranslationMemories extends ApiBase {
 	}
 	
 	protected function doTMImport( LTTranslationMemory $tm ) {
+		$dbw = wfGetDB( DB_MASTER );
 		
+		// TODO: move
+		$dbw->query( 'TRUNCATE TABLE ' . $dbw->tableName( 'live_translate' ) );
+
+		$wordId = 0;
+		
+		foreach ( $tm->getTranslationUnits() as $tu ) {
+			foreach ( $tu->getVariants() as $language => $translations ) {
+				$primary = 1;
+				
+				foreach ( $translations as $translation ) {
+					$dbw->insert(
+						'live_translate',
+						array(
+							'word_id' => $wordId,
+							'word_language' => $language,
+							'word_translation' => $translation,
+							'word_primary' => $primary
+						)
+					);
+
+					$primary = 0;
+				}
+				
+				$wordId++;
+			}
+		}		
 	}
 
 	public function getAllowedParams() {
