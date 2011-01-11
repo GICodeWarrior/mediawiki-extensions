@@ -24,7 +24,7 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
-		global $wgOut, $wgLang, $egLiveTranslateDirPage, $egGoogleApiKey, $egLiveTranslateLanguages;
+		global $wgOut, $wgLang, $egGoogleApiKey, $egLiveTranslateLanguages;
 		
 		$title = $article->getTitle();
 		
@@ -209,8 +209,6 @@ final class LiveTranslateHooks {
 	 */		
 	public static function onArticleSaveComplete( &$article, &$user, $text, $summary,
 		$minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId, &$redirect = null ) {
-		
-		global $egLiveTranslateDirPage;
 		
 		$title = $article->getTitle();
 
