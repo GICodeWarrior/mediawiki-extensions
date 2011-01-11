@@ -7,8 +7,10 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 === Version 0.4 ===
 2011-01-xx
 
-* Added support for Translation Memory eXchange (TMX) files.
-* Added support for translation memory files in the Google CSV format.
+* Added support for multiple translation memories.
+* Added Special:LiveTranslate to manage the translation memories that should be used.
+* Added support for remote translation memories. 
+* Added support for the Translation Memory eXchange (TMX) format.
 * Added Google branding, which is required when using the Google Translate API.
 : https://code.google.com/apis/language/translate/v1/getting_started.html#getBranding
 
