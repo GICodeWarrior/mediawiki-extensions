@@ -76,7 +76,7 @@ class LTTMXParser extends LTTMParser {
 	public function __construct() {
 		parent::__construct();
 		
-		$this->parser = xml_parser_create( $this );
+		$this->parser = xml_parser_create();
 		
 		xml_parser_set_option( $this->parser, XML_OPTION_CASE_FOLDING, 0 );
         
@@ -125,7 +125,7 @@ class LTTMXParser extends LTTMParser {
                 break;
             case 'tuv':
                 if ( array_key_exists( 'xml:lang', $attribs ) ) { 
-                	$this->currentLanguage = $attribs['xml:lang'];
+                	$this->currentLanguage = strtolower( $attribs['xml:lang'] );
                 }
                 else {
                 	// TODO: ignore node or give warning

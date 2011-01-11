@@ -139,6 +139,7 @@ class SpecialLiveTranslate extends SpecialPage {
 				'format' => 'json',
 				'source' => $tm->memory_location,
 				'type' => $tm->memory_type,
+				'local' => $tm->memory_local,
 			);
 			
 			$api = new ApiMain( new FauxRequest( $requestData, true ), true );

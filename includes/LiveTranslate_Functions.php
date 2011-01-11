@@ -178,7 +178,7 @@ final class LiveTranslateFunctions {
 	 * 
 	 * @return array LANGUAGE_NAME => 'code' 
 	 */
-	public static function getGTSupportedLanguages() {
+	public static function getGTSupportedLanguages() { //Language::getLanguageNames( false );
 		return array(
 			'AFRIKAANS' => 'af',
 			'ALBANIAN' => 'sq',
