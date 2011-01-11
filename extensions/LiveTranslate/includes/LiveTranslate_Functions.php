@@ -346,4 +346,31 @@ final class LiveTranslateFunctions {
 		}		
 	}
 	
+	/**
+	 * Returns the pages containing live translate format dictionaries.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */
+	public static function getLTFMemoryNames() {
+		$dbr = wfGetDb( DB_MASTER );
+		
+		$res = $dbr->select(
+			'live_translate_memories',
+			array( 'memory_location' ),
+			array( 'memory_type' => 0 ),
+			__METHOD__,
+			array( 'LIMIT' => '5000' )
+		);
+
+		$names = array();
+		
+		foreach ( $res as $tm ) {
+			$names[] = $tm->memory_location;
+		}
+
+		return $names;
+	}
+	
 }
