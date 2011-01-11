@@ -21,21 +21,21 @@ class ApiImportTranslationMemories extends ApiBase {
 		$params = $this->extractRequestParams();
 		
 		// In MW 1.17 and above ApiBase::PARAM_REQUIRED can be used, this is for b/c with 1.16.
-		foreach ( array( 'source', 'type' ) as $requiredParam ) {
+		foreach ( array( 'source', 'type', 'local' ) as $requiredParam ) {
 			if ( !isset( $params[$requiredParam] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', $requiredParam ) );
 			}			
 		}
 		
-		if ( count( $params['source'] ) != count( $params['type'] ) ) {
+		if ( count( $params['source'] ) != count( $params['type'] ) || count( $params['type'] ) != count( $params['local'] ) ) {
 			$this->dieUsage( wfMsg( 'livetranslate-importtms-param-miscmatch' ) );
 		}
 
 		foreach ( $params['source'] as $location ) {
 			$type = array_shift( $params['type'] );
+			$local = array_shift( $params['local'] ) != "0";
 			
 			$text = false;
-			$local = true; // TODO
 			
 			if ( $local ) {
 				$title = Title::newFromText( $location, NS_MAIN );
@@ -99,6 +99,11 @@ class ApiImportTranslationMemories extends ApiBase {
 				ApiBase::PARAM_ISMULTI => true,
 				//ApiBase::PARAM_REQUIRED => true,
 			),
+			'local' => array(
+				ApiBase::PARAM_TYPE => array( 0, 1 ),
+				ApiBase::PARAM_ISMULTI => true,
+				//ApiBase::PARAM_REQUIRED => true,
+			),			
 		);
 	}
 	
@@ -106,6 +111,7 @@ class ApiImportTranslationMemories extends ApiBase {
 		return array(
 			'source' => 'Location of the translation memory. Multiple sources can be provided using the | delimiter.',
 			'type' => 'Type of the translation memory. Multiple types can be provided using the | delimiter.',
+			'local' => 'Indicates if translation memory is local or not. Multiple types can be provided using the | delimiter.',
 		);
 	}
 	
@@ -119,6 +125,7 @@ class ApiImportTranslationMemories extends ApiBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'source' ),
 			array( 'missingparam', 'type' ),
+			array( 'missingparam', 'local' ),
 		) );
 	}
 
