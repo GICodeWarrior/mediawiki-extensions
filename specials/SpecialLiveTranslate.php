@@ -62,14 +62,9 @@ class SpecialLiveTranslate extends SpecialPage {
 			return;
 		}
 		
-		if ( $wgRequest->wasPosted() ) {
-			if ( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
-				$this->handleSubmission();
-			}
+		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+			$this->handleSubmission();
 		}
-		else {
-			LiveTranslateFunctions::createInitialMemoryIfNeeded();
-		}			
 		
 		$tms = $this->getTMConfigItems();
 		
@@ -103,12 +98,14 @@ class SpecialLiveTranslate extends SpecialPage {
 			elseif (
 				$wgRequest->getText( 'tmlocation-' . $tm->memory_id ) != $tm->memory_location
 				|| $wgRequest->getInt( 'wptmtype-' . $tm->memory_id ) != $tm->memory_type
+				|| ( $wgRequest->getCheck( 'tmlocal-' . $tm->memory_id ) ? 1 : 0 ) != $tm->memory_local
 				) {
 				$dbw->update(
 					'live_translate_memories',
 					array(
 						'memory_location' => $wgRequest->getText( 'tmlocation-' . $tm->memory_id ),
-						'memory_type' => $wgRequest->getInt( 'wptmtype-' . $tm->memory_id )
+						'memory_type' => $wgRequest->getInt( 'wptmtype-' . $tm->memory_id ),
+						'memory_local' => $wgRequest->getCheck( 'tmlocal-' . $tm->memory_id ) ? 1 : 0
 					),
 					array( 'memory_id' => $tm->memory_id )
 				);
@@ -121,7 +118,8 @@ class SpecialLiveTranslate extends SpecialPage {
 				'live_translate_memories',
 				array(
 					'memory_type' => $wgRequest->getInt( 'wpnewtm-type' ),
-					'memory_location' => $wgRequest->getText( 'newtm-location' )
+					'memory_location' => $wgRequest->getText( 'newtm-location' ),
+					'memory_local' => $wgRequest->getCheck( 'newtm-local' ) ? 1 : 0
 				)
 			);
 		}
@@ -194,7 +192,8 @@ class SpecialLiveTranslate extends SpecialPage {
 				'tr',
 				array(),
 				Html::element( 'th', array( 'width' => '400px' ), wfMsg( 'livetranslate-special-location' ) ) .
-				Html::element( 'th', array( 'width' => '200px' ), wfMsg( 'livetranslate-special-type' ) ) .
+				Html::element( 'th', array( 'width' => '160px' ), wfMsg( 'livetranslate-special-type' ) ) .
+				Html::element( 'th', array( 'width' => '160px' ), wfMsg( 'livetranslate-special-local' ) ) .
 				Html::element( 'th', array( 'width' => '100px' ), wfMsg( 'livetranslate-special-remove' ) )
 			) );			
 			
@@ -235,7 +234,7 @@ class SpecialLiveTranslate extends SpecialPage {
 		
 		$res = $dbr->select(
 			'live_translate_memories',
-			array( 'memory_id', 'memory_type', 'memory_location' ),
+			array( 'memory_id', 'memory_type', 'memory_location', 'memory_local' ),
 			array(),
 			__METHOD__,
 			array( 'LIMIT' => '5000' )
@@ -260,7 +259,7 @@ class SpecialLiveTranslate extends SpecialPage {
 	 */	
 	protected function displayTMItem( $tm ) {
 		global $wgOut;
-		
+
 		$wgOut->addHTML( Html::rawElement(
 			'tr',
 			array(),
@@ -273,6 +272,11 @@ class SpecialLiveTranslate extends SpecialPage {
 				'td',
 				array(),
 				$this->getTypeSelector( 'tmtype-' . $tm->memory_id, $tm->memory_type )
+			) .	
+			Html::rawElement(
+				'td',
+				array( 'style' => 'text-align:center' ),
+				Xml::check( 'tmlocal-' . $tm->memory_id, $tm->memory_local != "0" )
 			) .						
 			Html::rawElement(
 				'td',
@@ -299,6 +303,9 @@ class SpecialLiveTranslate extends SpecialPage {
 			'</tr><tr>' .
 				'<td><b>' . htmlspecialchars( wfMsg( 'livetranslate-special-location' ) ) . ': </b></td>' .
 				'<td>' . Html::input( 'newtm-location', '', 'text', array( 'size' => 75 ) ) . '</td>' .
+			'</tr><tr>' .
+				'<td><b>' . htmlspecialchars( wfMsg( 'livetranslate-special-local' ) ) . ': </b></td>' .
+				'<td>' . Xml::check( 'newtm-local', false ) . '</td>' .		
 			'</tr></table>'
 		);
 	}

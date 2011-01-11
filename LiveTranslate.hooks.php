@@ -32,8 +32,6 @@ final class LiveTranslateHooks {
 		
 		// FIXME: Hitting the db on every page load should be avoided
 		if ( in_array( $title->getFullText(), LiveTranslateFunctions::getLocalMemoryNames() ) ) {
-			LiveTranslateFunctions::createInitialMemoryIfNeeded();
-			
 			$parser = LTTMParser::newFromType( LiveTranslateFunctions::getMemoryType( $title->getFullText() ) );
 			$tm = $parser->parse( $article->getContent() );	
 			$tus = $tm->getTranslationUnits();	

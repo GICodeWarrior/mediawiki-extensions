@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/live_translate (
   word_translation        VARCHAR(255)      NOT NULL,
   word_primary            INT(1) unsigned   NOT NULL,
   memory_id               INT(4) unsigned   NOT NULL
-) /*$wgDBTableOptions*/;
+) /*$wgDBTableOptions*/; 
 
 -- Table to keep track of translation memories for the special words.
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/live_translate_memories (
@@ -16,3 +16,5 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/live_translate_memories (
   memory_location         VARCHAR(255)      NOT NULL,  
   memory_local            INT(1) unsigned   NOT NULL
 ) /*$wgDBTableOptions*/;
+
+INSERT INTO /*$wgDBprefix*/live_translate_memories VALUES (NULL, 0, "Live Translate Dictionary", 1);
