@@ -30,7 +30,8 @@ final class LiveTranslateHooks {
 		
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
 		
-		if ( $title->getFullText() == $egLiveTranslateDirPage ) {
+		// FIXME: Hitting the db on every page load should be avoided
+		if ( in_array( $title->getFullText(), LiveTranslateFunctions::getLTFMemoryNames() ) ) {
 			LiveTranslateFunctions::createInitialMemoryIfNeeded();
 			
 			$parser = new LTLTFParser();
@@ -198,7 +199,8 @@ final class LiveTranslateHooks {
 		
 		$title = $article->getTitle();
 
-		if ( $title->getFullText() == $egLiveTranslateDirPage ) {
+		// FIXME: Hitting the db on every page save should be avoided
+		if ( in_array( $title->getFullText(), LiveTranslateFunctions::getLTFMemoryNames() ) ) {
 			$requestData = array(
 				'action' => 'importtms',
 				'format' => 'json',
