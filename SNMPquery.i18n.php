@@ -12,7 +12,7 @@ $messages = array();
  * @author Rudy Rucker, Jr.'
  */
 $messages['en'] = array(
-	'snmpquery-desc' => 'Add SNMPget and SNMPwalk functions and return the data into the wiki',
+	'snmpquery-desc' => 'Add SNMPget and SNMPwalk functions and allow displaying the results in the wiki',
 );
 
 /** Message documentation (Message documentation)
