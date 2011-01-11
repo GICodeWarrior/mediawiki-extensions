@@ -79,13 +79,14 @@ class ApiImportTranslationMemories extends ApiBase {
 	 */
 	protected function doTMImport( LTTranslationMemory $tm, $memoryId ) {
 		$dbw = wfGetDB( DB_MASTER );
-		
+
 		// Delete the memory from the db if already there.
 		$dbw->delete(
 			'live_translate',
 			array( 'memory_id' => $memoryId )
 		);
 
+		// FIXME: this obviously goes wrong with multiple tms!
 		$wordId = 0;
 		
 		// Insert the memory in the db.
@@ -98,7 +99,7 @@ class ApiImportTranslationMemories extends ApiBase {
 						'live_translate',
 						array(
 							'word_id' => $wordId,
-							'word_language' => $language,
+							'word_language' => $this->cleanLanguage( $language ),
 							'word_translation' => $translation,
 							'word_primary' => $primary,
 							'memory_id' => $memoryId
@@ -111,6 +112,26 @@ class ApiImportTranslationMemories extends ApiBase {
 				$wordId++;
 			}
 		}		
+	}
+	
+	/**
+	 * Cleans the language code.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string language
+	 * 
+	 * @return string
+	 */
+	protected function cleanLanguage( $language ) {
+		$language = strtolower( $language );
+		$mappings = LiveTranslateFunctions::getInputLangMapping();
+		
+		if ( array_key_exists( $language, $mappings ) ) {
+			$language = $mappings[$language];
+		}
+		
+		return $language;
 	}
 
 	public function getAllowedParams() {

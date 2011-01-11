@@ -187,7 +187,7 @@
 	 * @param {string} targetLang
 	 */
 	function requestGoogleTranslate( sourceLang, targetLang ) {
-		translateElement( $( '#bodyContent' ), sourceLang, targetLang );
+		//translateElement( $( '#bodyContent' ), sourceLang, targetLang );
 	}
 	
 	/**

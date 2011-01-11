@@ -125,7 +125,7 @@ class LTTMXParser extends LTTMParser {
                 break;
             case 'tuv':
                 if ( array_key_exists( 'xml:lang', $attribs ) ) { 
-                	$this->currentLanguage = strtolower( $attribs['xml:lang'] );
+                	$this->currentLanguage = $attribs['xml:lang'];
                 }
                 else {
                 	// TODO: ignore node or give warning
