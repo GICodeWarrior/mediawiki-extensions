@@ -5,7 +5,6 @@
  * @addtogroup Extensions
 */
 
-
 $messages = array();
 
 /** English
@@ -15,7 +14,7 @@ $messages['en'] = array(
 	'spm_printername_wbs' => 'MS Project export',
 	'spm-name' => 'Semantic Project Management',
 	'semanticprojectmanagement-desc' => 'Project Management Formats for Semantic MediaWiki inline queries',
-	'semanticprojectmanagement' => 'Semantic Project Management',
+	'semanticprojectmanagement' => 'Semantic Project Management settings',
 	'right-SPMsetup' => 'Edit basic semantic project management settings'
 );
 
