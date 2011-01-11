@@ -18,52 +18,77 @@ class ApiImportTranslationMemories extends ApiBase {
 	}
 	
 	public function execute() {
+		global $wgUser;
+		
 		$params = $this->extractRequestParams();
 		
 		// In MW 1.17 and above ApiBase::PARAM_REQUIRED can be used, this is for b/c with 1.16.
-		foreach ( array( 'source', 'type', 'local' ) as $requiredParam ) {
+		foreach ( array( 'source' ) as $requiredParam ) {
 			if ( !isset( $params[$requiredParam] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', $requiredParam ) );
 			}			
 		}
 		
-		if ( count( $params['source'] ) != count( $params['type'] ) || count( $params['type'] ) != count( $params['local'] ) ) {
-			$this->dieUsage( wfMsg( 'livetranslate-importtms-param-miscmatch' ) );
-		}
+		//if ( !$wgUser->isAllowed( 'managetms' ) ) {
+		//	$this->dieUsageMsg( array( 'permissiondenied' ) );
+		//}
 
 		foreach ( $params['source'] as $location ) {
-			$type = array_shift( $params['type'] );
-			$local = array_shift( $params['local'] ) != "0";
-			
 			$text = false;
 			
-			if ( $local ) {
-				$title = Title::newFromText( $location, NS_MAIN );
-				
-				if ( is_object( $title ) && $title->exists() ) {
-					$article = new Article( $title );
-					$text = $article->getContent();
-				}				
-			}
-			else {
-				// TODO
-			}
+			$dbr = wfGetDB( DB_SLAVE );
 			
-			if ( $text !== false ) {
-				$parser = LTTMParser::newFromType( $type );
-				$this->doTMImport( $parser->parse( $text ) );
+			$res = $dbr->select(
+				'live_translate_memories',
+				array( 'memory_id', 'memory_local', 'memory_type' ),
+				array( 'memory_location' => $location ),
+				__METHOD__,
+				array( 'LIMIT' => '1' )
+			);			
+			
+			foreach ( $res as $tm ) {
+				if ( $tm->memory_local != "0" ) {
+					$title = Title::newFromText( $location, NS_MAIN );
+					
+					if ( is_object( $title ) && $title->exists() ) {
+						$article = new Article( $title );
+						$text = $article->getContent();
+					}				
+				}
+				else {
+					// TODO
+				}
+				
+				if ( $text !== false ) {
+					$parser = LTTMParser::newFromType( $tm->memory_type );
+					$this->doTMImport( $parser->parse( $text ), $tm->memory_id );
+				}				
+				
+				break;
 			}
 		}
 	}
 	
-	protected function doTMImport( LTTranslationMemory $tm ) {
+	/**
+	 * Imports a translation memory into the database.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param LTTranslationMemory $tm
+	 * @param integer $memoryId
+	 */
+	protected function doTMImport( LTTranslationMemory $tm, $memoryId ) {
 		$dbw = wfGetDB( DB_MASTER );
 		
-		// TODO: move
-		$dbw->query( 'TRUNCATE TABLE ' . $dbw->tableName( 'live_translate' ) );
+		// Delete the memory from the db if already there.
+		$dbw->delete(
+			'live_translate',
+			array( 'memory_id' => $memoryId )
+		);
 
 		$wordId = 0;
 		
+		// Insert the memory in the db.
 		foreach ( $tm->getTranslationUnits() as $tu ) {
 			foreach ( $tu->getVariants() as $language => $translations ) {
 				$primary = 1;
@@ -75,7 +100,8 @@ class ApiImportTranslationMemories extends ApiBase {
 							'word_id' => $wordId,
 							'word_language' => $language,
 							'word_translation' => $translation,
-							'word_primary' => $primary
+							'word_primary' => $primary,
+							'memory_id' => $memoryId
 						)
 					);
 
@@ -94,24 +120,12 @@ class ApiImportTranslationMemories extends ApiBase {
 				ApiBase::PARAM_ISMULTI => true,
 				//ApiBase::PARAM_REQUIRED => true,
 			),
-			'type' => array(
-				ApiBase::PARAM_TYPE => array( TMT_LTF, TMT_TMX, TMT_GCSV ),
-				ApiBase::PARAM_ISMULTI => true,
-				//ApiBase::PARAM_REQUIRED => true,
-			),
-			'local' => array(
-				ApiBase::PARAM_TYPE => array( 0, 1 ),
-				ApiBase::PARAM_ISMULTI => true,
-				//ApiBase::PARAM_REQUIRED => true,
-			),			
 		);
 	}
 	
 	public function getParamDescription() {
 		return array(
 			'source' => 'Location of the translation memory. Multiple sources can be provided using the | delimiter.',
-			'type' => 'Type of the translation memory. Multiple types can be provided using the | delimiter.',
-			'local' => 'Indicates if translation memory is local or not. Multiple types can be provided using the | delimiter.',
 		);
 	}
 	
@@ -124,15 +138,13 @@ class ApiImportTranslationMemories extends ApiBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'source' ),
-			array( 'missingparam', 'type' ),
-			array( 'missingparam', 'local' ),
 		) );
 	}
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=importtms&source=http://localhost/tmx.xml&type=1',
-			'api.php?action=importtms&source=http://localhost/tmx.xml|http://localhost/google.csv&type=1|2',
+			'api.php?action=importtms&source=http://localhost/tmx.xml',
+			'api.php?action=importtms&source=http://localhost/tmx.xml|http://localhost/google.csv|Live Translate Dictionary',
 		);
 	}	
 	
