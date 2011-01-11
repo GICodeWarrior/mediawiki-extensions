@@ -48,6 +48,15 @@ $messages['en'] = array(
 	'livetranslate-importtms-param-miscmatch' => 'Mismatch between amount of locations and types',
 );
 
+/** Message documentation (Message documentation)
+ * @author Jeroen De Dauw
+ */
+$messages['qqq'] = array(
+	'livetranslate-special-location' => 'Table column header on Special:LiveTranslate',
+	'livetranslate-special-type' => 'Table column header on Special:LiveTranslate',
+	'livetranslate-importtms-param-miscmatch' => 'Error message for when one of the API modules gets called with a different amount of translation memory types compared to the amount of translation memory names',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
