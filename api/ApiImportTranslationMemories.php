@@ -149,7 +149,7 @@ class ApiImportTranslationMemories extends ApiBase {
 	}	
 	
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiLiveTranslate.php 78734 2010-12-21 20:29:41Z jeroendedauw $';
+		return __CLASS__ . ': $Id$';
 	}		
 	
 }
