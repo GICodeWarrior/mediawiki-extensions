@@ -86,8 +86,7 @@ class ApiImportTranslationMemories extends ApiBase {
 			array( 'memory_id' => $memoryId )
 		);
 
-		// FIXME: this obviously goes wrong with multiple tms!
-		$wordId = 0;
+		$wordId = ( $memoryId - 1 ) * 100000;
 		
 		// Insert the memory in the db.
 		foreach ( $tm->getTranslationUnits() as $tu ) {
