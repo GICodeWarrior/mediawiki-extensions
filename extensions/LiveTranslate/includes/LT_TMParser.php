@@ -33,8 +33,6 @@ abstract class LTTMParser {
 	 */
 	public abstract function parse( $text );
 	
-	// file_get_contents
-	
 	/**
 	 * Retruns a new instance of a parser that implements LTTMParser and can parse
 	 * translation memories of the provided type. If none is found, an exception is thrown.

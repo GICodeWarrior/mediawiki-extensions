@@ -48,6 +48,7 @@ class ApiImportTranslationMemories extends ApiBase {
 			
 			foreach ( $res as $tm ) {
 				if ( $tm->memory_local != "0" ) {
+					// Obtain the contents of the article.
 					$title = Title::newFromText( $location, NS_MAIN );
 					
 					if ( is_object( $title ) && $title->exists() ) {
@@ -56,10 +57,12 @@ class ApiImportTranslationMemories extends ApiBase {
 					}				
 				}
 				else {
-					// TODO
+					// Make an HTTP request to get the file contents. False is returned on failiure.
+					$text = Http::get( $location );
 				}
 				
 				if ( $text !== false ) {
+					// If the text was obtained, parse it to a translation memory and import it into the db.
 					$parser = LTTMParser::newFromType( $tm->memory_type );
 					$this->doTMImport( $parser->parse( $text ), $tm->memory_id );
 				}				
