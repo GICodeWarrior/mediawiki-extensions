@@ -39,6 +39,7 @@ $messages['en'] = array(
 	'livetranslate-special-type' => 'Type',
 	'livetranslate-special-location' => 'Location',
 	'livetranslate-special-remove' => 'Remove',
+	'livetranslate-special-local' => 'Local',
 	'livetranslate-special-add-tm' => 'Add a new translation memory',
 	'livetranslate-special-current-tms' => 'Existing translation memories',
 	'livetranslate-special-tms-update' => 'Update translation memories',
@@ -54,6 +55,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'livetranslate-special-location' => 'Table column header on Special:LiveTranslate',
 	'livetranslate-special-type' => 'Table column header on Special:LiveTranslate',
+	'livetranslate-special-local' => 'Table column header on Special:LiveTranslate',
 	'livetranslate-importtms-param-miscmatch' => 'Error message for when one of the API modules gets called with a different amount of translation memory types compared to the amount of translation memory names',
 );
 

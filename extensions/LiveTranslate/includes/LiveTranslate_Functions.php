@@ -319,6 +319,7 @@ final class LiveTranslateFunctions {
 	 * 
 	 * @since 0.4
 	 */
+	/*
 	public static function createInitialMemoryIfNeeded() {
 		$dbw = wfGetDb( DB_MASTER );
 		
@@ -345,6 +346,7 @@ final class LiveTranslateFunctions {
 			);			
 		}		
 	}
+	*/
 	
 	/**
 	 * Returns the names of the pages containing a translation memory.
