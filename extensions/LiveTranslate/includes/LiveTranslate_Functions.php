@@ -315,40 +315,6 @@ final class LiveTranslateFunctions {
 	}
 	
 	/**
-	 * Creates the initial translation memory if there is none yet.
-	 * 
-	 * @since 0.4
-	 */
-	/*
-	public static function createInitialMemoryIfNeeded() {
-		$dbw = wfGetDb( DB_MASTER );
-		
-		$res = $dbw->select(
-			'live_translate_memories',
-			array( 'memory_id' ),
-			array(),
-			__METHOD__,
-			array( 'LIMIT' => '1' )
-		);
-
-		$hasTms = false;
-		
-		foreach ( $res as $tm ) {
-			$hasTms = true;
-			break;
-		}
-
-		if ( !$hasTms ) {
-			global $egLiveTranslateDirPage;
-			$dbw->insert(
-				'live_translate_memories',
-				array( 'memory_location' => $egLiveTranslateDirPage, 'memory_type' => 0 )
-			);			
-		}		
-	}
-	*/
-	
-	/**
 	 * Returns the names of the pages containing a translation memory.
 	 * 
 	 * @since 0.4
@@ -361,7 +327,7 @@ final class LiveTranslateFunctions {
 		$res = $dbr->select(
 			'live_translate_memories',
 			array( 'memory_location' ),
-			array(),
+			array( 'memory_local' => 1 ),
 			__METHOD__,
 			array( 'LIMIT' => '5000' )
 		);

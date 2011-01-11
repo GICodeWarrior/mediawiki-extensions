@@ -221,6 +221,7 @@ final class LiveTranslateHooks {
 				'format' => 'json',
 				'source' => $title->getFullText(),
 				'type' => LiveTranslateFunctions::getMemoryType( $title->getFullText() ),
+				'local' => 1
 			);
 			
 			$api = new ApiMain( new FauxRequest( $requestData, true ), true );
