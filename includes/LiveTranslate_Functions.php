@@ -291,6 +291,34 @@ final class LiveTranslateFunctions {
 	}
 	
 	/**
+	 * Returns an array with mapping from input language codes to MediaWiki language codes.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array 
+	 */	
+	public static function getInputLangMapping() {
+		return array(
+			'en-us' => 'en',
+			'en' => 'en-gb',
+		);
+	}
+	
+	/**
+	 * Returns an array with mapping from MediaWiki language codes to Google Translate language codes.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array 
+	 */	
+	public static function getOuputLangMapping() {
+		return array(
+			'en-us' => 'en',
+			'en-gb' => 'en',
+		);
+	}	
+	
+	/**
 	 * Returns the provided text starting with a letter in toggeled case.
 	 * If there is no difference between lowercase and upercase for the first
 	 * character, false is returned.
