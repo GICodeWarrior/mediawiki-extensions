@@ -31,10 +31,10 @@ final class LiveTranslateHooks {
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
 		
 		// FIXME: Hitting the db on every page load should be avoided
-		if ( in_array( $title->getFullText(), LiveTranslateFunctions::getLTFMemoryNames() ) ) {
+		if ( in_array( $title->getFullText(), LiveTranslateFunctions::getLocalMemoryNames() ) ) {
 			LiveTranslateFunctions::createInitialMemoryIfNeeded();
 			
-			$parser = new LTLTFParser();
+			$parser = LTTMParser::newFromType( LiveTranslateFunctions::getMemoryType( $title->getFullText() ) );
 			$tm = $parser->parse( $article->getContent() );	
 			$tus = $tm->getTranslationUnits();	
 			
@@ -217,12 +217,12 @@ final class LiveTranslateHooks {
 		$title = $article->getTitle();
 
 		// FIXME: Hitting the db on every page save should be avoided
-		if ( in_array( $title->getFullText(), LiveTranslateFunctions::getLTFMemoryNames() ) ) {
+		if ( in_array( $title->getFullText(), LiveTranslateFunctions::getLocalMemoryNames() ) ) {
 			$requestData = array(
 				'action' => 'importtms',
 				'format' => 'json',
 				'source' => $title->getFullText(),
-				'type' => 0,
+				'type' => LiveTranslateFunctions::getMemoryType( $title->getFullText() ),
 			);
 			
 			$api = new ApiMain( new FauxRequest( $requestData, true ), true );

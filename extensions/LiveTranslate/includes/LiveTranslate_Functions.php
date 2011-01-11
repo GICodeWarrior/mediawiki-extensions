@@ -347,19 +347,19 @@ final class LiveTranslateFunctions {
 	}
 	
 	/**
-	 * Returns the pages containing live translate format dictionaries.
+	 * Returns the names of the pages containing a translation memory.
 	 * 
 	 * @since 0.4
 	 * 
 	 * @return array
 	 */
-	public static function getLTFMemoryNames() {
+	public static function getLocalMemoryNames() {
 		$dbr = wfGetDb( DB_MASTER );
 		
 		$res = $dbr->select(
 			'live_translate_memories',
 			array( 'memory_location' ),
-			array( 'memory_type' => 0 ),
+			array(),
 			__METHOD__,
 			array( 'LIMIT' => '5000' )
 		);
@@ -371,6 +371,37 @@ final class LiveTranslateFunctions {
 		}
 
 		return $names;
+	}
+	
+	/**
+	 * Returns the type of a translation memory when given it's location.
+	 * If the memory is not found, -1 is returned.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $location
+	 * 
+	 * @return integer
+	 */
+	public static function getMemoryType( $location ) {
+		$dbr = wfGetDb( DB_MASTER );
+		
+		$res = $dbr->select(
+			'live_translate_memories',
+			array( 'memory_type' ),
+			array( 'memory_location' => $location ),
+			__METHOD__,
+			array( 'LIMIT' => '5000' )
+		);
+
+		$type = -1;
+
+		foreach ( $res as $row ) {
+			$type = $row->memory_type;
+			break;
+		}
+		
+		return $type;
 	}
 	
 }

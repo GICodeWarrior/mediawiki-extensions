@@ -34,29 +34,24 @@ class ApiImportTranslationMemories extends ApiBase {
 		foreach ( $params['source'] as $location ) {
 			$type = array_shift( $params['type'] );
 			
-			$tm = false;
+			$text = false;
+			$local = true; // TODO
 			
-			switch ( $type ) {
-				case TMT_LTF :
-					$title = Title::newFromText( $location, NS_MAIN );
-					
-					if ( is_object( $title ) && $title->exists() ) {
-						$article = new Article( $title );
-						$parser = new LTLTFParser();
-						$tm = $parser->parse( $article->getContent() );
-					}
-					
-					break;
-				case TMT_TMX :
-					$parser = new LTTMXParser();
-					break;
-				case TMT_GCSV :
-					$parser = new LTGCSVParser();
-					break;
+			if ( $local ) {
+				$title = Title::newFromText( $location, NS_MAIN );
+				
+				if ( is_object( $title ) && $title->exists() ) {
+					$article = new Article( $title );
+					$text = $article->getContent();
+				}				
+			}
+			else {
+				// TODO
 			}
 			
-			if ( $tm !== false ) {
-				$this->doTMImport( $tm );
+			if ( $text !== false ) {
+				$parser = LTTMParser::newFromType( $type );
+				$this->doTMImport( $parser->parse( $text ) );
 			}
 		}
 	}
@@ -100,7 +95,7 @@ class ApiImportTranslationMemories extends ApiBase {
 				//ApiBase::PARAM_REQUIRED => true,
 			),
 			'type' => array(
-				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_TYPE => array( TMT_LTF, TMT_TMX, TMT_GCSV ),
 				ApiBase::PARAM_ISMULTI => true,
 				//ApiBase::PARAM_REQUIRED => true,
 			),
