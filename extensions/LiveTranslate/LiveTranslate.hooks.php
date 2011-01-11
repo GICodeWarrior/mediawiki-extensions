@@ -141,44 +141,61 @@ final class LiveTranslateHooks {
 		if ( $wgDBtype == 'mysql' ) {
 			// Set up the current schema.
 			if ( $updater === null ) {
-				global $wgExtNewTables, $wgExtNewIndexes;
+				global $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
+				
 				$wgExtNewTables[] = array(
-					'livetranslate',
+					'live_translate',
 					$egLiveTranslateIP . '/LiveTranslate.sql',
 					true
 				);
 				$wgExtNewTables[] = array(
-					'livetranslatememories',
+					'live_translate_memories',
 					$egLiveTranslateIP . '/LiveTranslate.sql',
 					true
-				);				
+				);		
+				
 				$wgExtNewIndexes[] = array(
 					'live_translate',
 					'word_translation',
 					$egLiveTranslateIP . '/sql/LT_IndexWordTranslation.sql',
 					true
-				);			
+				);
+				
+				$wgExtNewFields[] = array(
+					'live_translate',
+					'memory_id',
+					$egLiveTranslateIP . '/sql/LT_addTMField.sql'
+				);	
 			}
 			else {
 				$updater->addExtensionUpdate( array( 
 					'addTable',
-					'livetranslate',
+					'live_translate',
 					$egLiveTranslateIP . '/LiveTranslate.sql',
 					true
 				) );
 				$updater->addExtensionUpdate( array( 
 					'addTable',
-					'livetranslatememories',
+					'live_translate_memories',
 					$egLiveTranslateIP . '/LiveTranslate.sql',
 					true
-				) );				
+				) );	
+							
 				$updater->addExtensionUpdate( array(
 					'addIndex',
 					'live_translate',
 					'word_translation',
 					$egLiveTranslateIP . '/sql/LT_IndexWordTranslation.sql',
 					true
-				) );	
+				) );
+				
+				$updater->addExtensionUpdate( array(
+					'addField',
+					'live_translate',
+					'memory_id',
+					$egLiveTranslateIP . '/sql/LT_addTMField.sql',
+					true
+				) );
 			}		
 		}
 		
