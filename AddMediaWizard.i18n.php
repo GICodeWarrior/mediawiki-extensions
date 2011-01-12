@@ -199,11 +199,12 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'addmediawizard-desc' => 'אשף הוספת מדיה, שפותח בשיתוף פעולה בין Kaltura וקרן ויקימדיה',
+	'addmediawizard-desc' => 'אשף הוספת מדיה, שפותח בשיתוף פעולה בין קלטורה וקרן ויקימדיה',
 );
 
 /** Hindi (हिन्दी)
