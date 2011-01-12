@@ -1778,6 +1778,17 @@ $messages['ca'] = array(
 	'mv_seconds_singular' => '1 segon',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'mv_upload_file' => 'Чуйаккха хlум',
+	'mv_tool_search' => 'Лаха',
+	'mv_viewnext' => 'Хьажа ($1)',
+	'mv_viewprevnext' => 'Хьажа ($1) ($2)',
+	'mv_video_search' => 'Лаха йухагойтург',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
