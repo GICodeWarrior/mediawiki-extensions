@@ -72,7 +72,7 @@ var config = {
 			'message': 'articlefeedback-pitch-makefirstedit-message',
 			'accept': 'articlefeedback-pitch-makefirstedit-accept',
 			'reject': 'articlefeedback-pitch-reject'
-		},
+		}
 	}
 };
 // Bucket 1 - load at the bottom of the article
