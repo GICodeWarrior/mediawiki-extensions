@@ -149,6 +149,20 @@ Snano chceš sej slědowacu stronu wobhladać:
 * [[{{MediaWiki:Mainpage}}|Hłowna strona]]',
 );
 
+/** Hungarian (Magyar)
+ * @author BáthoryPéter
+ */
+$messages['hu'] = array(
+	'special404-body' => 'A kért URL nem található. 
+
+Biztos ezt akartad beírni: {{fullurl:$1}}?
+
+Esetleg próbál kresni:
+* [[{{MediaWiki:Mainpage}}|A kezdőlapon
+
+]]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -289,5 +303,12 @@ $messages['ru'] = array(
 
 Может быть, вы бы хотели посмотреть:
 * [[{{MediaWiki:Mainpage}}|The Main page]]',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'error404' => '404 Не знайдено',
 );
 
