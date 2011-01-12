@@ -230,6 +230,14 @@ $messages['ca'] = array(
 	'index-hide-detail' => 'Oculta la llista de pàgines',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'index-search' => 'Лаха:',
+	'index-no-results' => 'Лахаро хилам ца белла',
+);
+
 /** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'index-search' => 'گەڕان:',
@@ -1319,6 +1327,7 @@ $messages['uk'] = array(
 	'index-search' => 'Пошук:',
 	'index-submit' => 'Відправити',
 	'index-hide-detail' => 'Сховати список сторінок',
+	'index-no-results' => 'Пошук не дав результатів',
 );
 
 /** Veps (Vepsan kel')
