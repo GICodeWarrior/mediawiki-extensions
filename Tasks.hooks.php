@@ -14,7 +14,7 @@ class TasksHooks {
 	 * Display header on 'Task:' pages
 	 * @param Article $article
 	 */
-	public static function onArticleViewHeader( &$article ) { # Checked for HTML and MySQL insertion attacks
+	public static function onArticleViewHeader( $article ) { # Checked for HTML and MySQL insertion attacks
 		global $wgTasksNamespace, $wgOut, $wgUser;
 
 		$title = $article->getTitle();
