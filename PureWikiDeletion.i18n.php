@@ -384,10 +384,12 @@ Hlej $2 za datowu sadźbu najnowšich wuprózdnjenjow.',
 );
 
 /** Hungarian (Magyar)
+ * @author BáthoryPéter
  * @author Dani
  */
 $messages['hu'] = array(
 	'randomexcludeblank' => 'Véletlen lap (üres lapokat kivéve)',
+	'purewikideletion-pref-watchblank' => 'Az általam kiürített lapok felvétele a figyelőlistára',
 	'purewikideletion-blanknologin' => 'Nem vagy bejelentkezve',
 );
 
