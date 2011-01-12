@@ -161,6 +161,13 @@ $messages['ca'] = array(
 	'uos-other' => '*Altres',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'useroptionstats' => 'Декъашхоша гIирс латорна хилам',
+);
+
 /** Sorani (کوردی)
  * @author Marmzok
  */
