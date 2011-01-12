@@ -537,6 +537,13 @@ $wgCustomToolbarMessages['ca'] = array(
 	'ct_user_sample' => "Nom d'usuari",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$wgCustomToolbarMessages['ce'] = array(
+	'ct_user_user' => 'Декъашхо',
+);
+
 /** Sorani (کوردی)
  * @author Marmzok
  */
