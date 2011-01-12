@@ -311,6 +311,7 @@ $messages['fr'] = array(
 	'push-tab-no-embedded-files' => '(Aucun fichier joint dans cette page.)',
 	'push-tab-files-override' => 'Ces fichiers existent déjà: $1',
 	'push-tab-template-override' => 'Ces modèles existent déjà: $1',
+	'push-tab-err-uploaddisabled' => "Les téléchargements ne sont pas activés. Assurez-vous que \$wgEnableUploads et \$wgAllowCopyUploads sont mis à ''true'' dans le fichier LocalSettings.php du wiki cible.",
 	'special-push' => 'Pages à pousser',
 	'push-special-description' => "Cette page permet de pousser (''push'' en anglais) le contenu d'une ou plusieurs pages vers un ou plusieurs wikis de MediaWiki.
 
@@ -823,6 +824,7 @@ $messages['pt'] = array(
 	'push-tab-no-embedded-files' => '(Não há nenhum ficheiro incorporado nesta página).',
 	'push-tab-files-override' => 'Estes ficheiros já existem: $1',
 	'push-tab-template-override' => 'Estas predefinições já existem: $1',
+	'push-tab-err-uploaddisabled' => 'Os uploads não foram possibilitados. Certifique-se que $wgEnableUploads e $wgAllowCopyUploads estão definidas como "true" no ficheiro LocalSettings.php da wiki de destino.',
 	'special-push' => 'Replicação externa de páginas',
 	'push-special-description' => 'Esta página permite-lhe fazer a replicação externa de uma ou mais páginas, para uma ou mais wikis MediaWiki.
 
