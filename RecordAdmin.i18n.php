@@ -388,6 +388,14 @@ $messages['ca'] = array(
 	'recordadmin-editlink' => 'modifica',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'recordadmin-newsearch' => 'Керла лахар $1',
+	'recordadmin-viewlink' => 'хьажа',
+);
+
 /** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'recordadmin-submit' => 'ناردن',
