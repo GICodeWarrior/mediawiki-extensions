@@ -329,6 +329,13 @@ S'han omès.",
 	'right-import_users' => 'Importa els usuaris en gran',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'importusers-uploadfile' => 'Чуйаккха хlум',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
