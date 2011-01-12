@@ -110,9 +110,9 @@ class ApiImportTranslationMemories extends ApiBase {
 
 					$primary = 0;
 				}
-				
-				$wordId++;
 			}
+			
+			$wordId++;
 		}		
 	}
 	

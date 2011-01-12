@@ -133,6 +133,11 @@ class SpecialLiveTranslate extends SpecialPage {
 	 * @param array $tms The current translation memories
 	 */
 	protected function updateTranslationMemory( array $tms ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		// Just drop everything and rebuild the entire translation memory.
+		$dbr->query( 'TRUNCATE TABLE ' . $dbr->tableName( 'live_translate' ) );
+		
 		foreach ( $tms as $tm ) {
 			$requestData = array(
 				'action' => 'importtms',
