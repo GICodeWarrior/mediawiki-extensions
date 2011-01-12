@@ -731,6 +731,7 @@ K dispoziciji steja "plain", "normal" a "wiki".',
 );
 
 /** Hungarian (Magyar)
+ * @author BáthoryPéter
  * @author Dani
  * @author Glanthor Reviol
  */
@@ -748,7 +749,7 @@ $messages['hu'] = array(
 	'article-comments-invalid-field' => 'A megadott $1 <nowiki>[$2]</nowiki> érvénytelen.',
 	'article-comments-required-field' => '$1 mező kitöltése kötelező.',
 	'article-comments-submission-failed' => 'A hozzászólás elküldése nem sikerült',
-	'article-comments-failure-reasons' => 'A hozzászólás elküldése nem sikerült a következő ok(ok) miatt:',
+	'article-comments-failure-reasons' => 'A hozzászólás elküldése nem sikerült a következő {{PLURAL:$1|ok|okok}} miatt:',
 	'article-comments-no-comments' => 'Sajnáljuk, a(z) „[[$1]]” laphoz jelenleg nem lehet hozzászólásokat írni.',
 	'article-comments-talk-page-starter' => '<noinclude>Hozzászólások a(z) [[$1]] laphoz
 <comments />
