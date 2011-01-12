@@ -189,6 +189,13 @@ $messages['ca'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|enllaç|enllaços}} a $3',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'crossnamespacelinks' => 'Хьажораш ана юкъара цIерашца',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */
