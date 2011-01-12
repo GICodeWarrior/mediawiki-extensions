@@ -300,7 +300,6 @@ final class LiveTranslateFunctions {
 	public static function getInputLangMapping() {
 		return array(
 			'en-us' => 'en',
-			'en' => 'en-gb',
 		);
 	}
 	
