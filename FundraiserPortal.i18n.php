@@ -166,6 +166,13 @@ $messages['ca'] = array(
 	'fundraiserportal-tourmaline-close' => "Amaga això a partir d'ara",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'fundraiserportal' => 'Гlодарна ков',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
