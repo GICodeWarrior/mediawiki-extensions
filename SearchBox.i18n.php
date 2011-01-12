@@ -159,6 +159,13 @@ $messages['ca'] = array(
 	'searchbox-go' => 'Vés-hi',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'searchbox-search' => 'Лаха',
+);
+
 /** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'searchbox-search' => 'گەڕان',
