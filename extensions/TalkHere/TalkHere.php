@@ -34,18 +34,17 @@ $wgExtensionMessagesFiles['TalkHere'] = $dir . 'TalkHere.i18n.php';
 $wgAutoloadClasses['TalkHereArticle'] = $dir . 'TalkHereArticle.php';
 $wgAutoloadClasses['TalkHereEditTarget'] = $dir . 'TalkHereArticle.php';
 
-$wgExtensionFunctions[] = 'wfTalkHereExtension';
-
-$wgHooks['ArticleFromTitle'][] = 'wfTalkHereArticleFromTitle';
+$wgHooks['BeforePageDisplay'][] = 'wfTalkHereBeforePageDisplay';
+#$wgHooks['ArticleFromTitle'][] = 'wfTalkHereArticleFromTitle';
 $wgHooks['CustomEditor'][] = 'wfTalkHereCustomEditor';
 $wgHooks['EditPage::showEditForm:fields'][] = 'wfTalkHereShowEditFormFields';
 
 $wgAjaxExportList[] = 'wfTalkHereAjaxEditor';
 
-function wfTalkHereExtension( ) {
-	global $wgOut, $wgScriptPath, $wgJsMimeType, $wgUseAjax;
+function wfTalkHereBeforePageDisplay( $out, $skin ) {
+	global $wgScriptPath, $wgJsMimeType, $wgUseAjax;
 
-	$wgOut->addLink(
+	$out->addLink(
 		array(
 			'rel' => 'stylesheet',
 			'type' => 'text/css',
@@ -53,10 +52,12 @@ function wfTalkHereExtension( ) {
 		)
 	);
 
-	if ( $wgUseAjax ) $wgOut->addScript(
+	if ( $wgUseAjax ) $out->addScript(
 		"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/TalkHere/TalkHere.js\">" .
 		"</script>\n"
 	);
+
+	return true;
 }
 
 function wfTalkHereArticleFromTitle( &$title, &$article ) {
@@ -109,7 +110,7 @@ function mangleEditForm( &$out, $returnto = false, $ajax = false ) { //HACK! too
 	$out->addHTML($html);
 }
 
-function wfTalkHereCustomEditor( &$article, &$user ) {
+function wfTalkHereCustomEditor( $article, $user ) {
 	global $wgRequest, $wgOut;
 
 	$action = $wgRequest->getVal( 'action' );
@@ -145,20 +146,24 @@ function wfTalkHereShowEditFormFields( &$editor, &$out ) {
 }
 
 function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
-	global $wgRequest, $wgTitle, $wgArticle, $wgOut;
+	global $wgRequest, $wgTitle, $wgOut;
 
-	$wgTitle = Title::newFromText($page);
-	if ( !$wgTitle ) return false;
+	$wgTitle = Title::newFromText( $page );
+	if ( !$wgTitle ) {
+		return false;
+	}
 
 	//fake editor environment
-	$args = array( 'wpTalkHere' => '1',
-			'wpReturnTo' => $returnto,
-			'action' => 'edit',
-			'section' => $section );
+	$args = array(
+		'wpTalkHere' => '1',
+		'wpReturnTo' => $returnto,
+		'action' => 'edit',
+		'section' => $section
+	);
 
 	$wgRequest = new FauxRequest( $args );
-	$wgArticle = MediaWiki::articleFromTitle( $wgTitle );
-	$editor = new EditPage( $wgArticle );
+	$article = MediaWiki::articleFromTitle( $wgTitle );
+	$editor = new EditPage( $article );
 
 	//generate form
 	$editor->importFormData( $wgRequest );
