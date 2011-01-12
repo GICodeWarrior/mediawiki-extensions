@@ -370,6 +370,13 @@ $messages['ca'] = array(
 	'articlefeedback-pitch-makefirstedit-accept' => 'Comença a editar',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'articlefeedback-form-panel-submit' => 'Дlадахьийта хетарг',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -555,6 +562,19 @@ $messages['et'] = array(
 	'articlefeedback-survey-submit' => 'Saada',
 	'articlefeedback-survey-title' => 'Palun vasta mõnele küsimusele.',
 	'articlefeedback-survey-thanks' => 'Aitäh küsitlusele vastamast!',
+);
+
+/** Basque (Euskara)
+ * @author Joxemai
+ */
+$messages['eu'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'Beste bat',
+	'articlefeedback-survey-question-useful-iffalse' => 'Zergatik?',
+	'articlefeedback-survey-submit' => 'Bidali',
+	'articlefeedback-form-panel-instructions' => 'Har ezazu mesedez une bat orri hau baloratzeko.',
+	'articlefeedback-field-complete-label' => 'Osorik',
+	'articlefeedback-pitch-makefirstedit-title' => 'Nahi al duzu orrialde hau editatu?',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Hasi editatzen',
 );
 
 /** Persian (فارسی)
