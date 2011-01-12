@@ -25,7 +25,7 @@ $messages['qqq'] = array(
 	'right-SPMsetup' => '{{doc-right|SPMsetup}}',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -58,7 +58,7 @@ $messages['bs'] = array(
 	'spm_printername_wbs' => 'MS Projekat izvoz',
 	'spm-name' => 'Semantičko upravljanje projektom',
 	'semanticprojectmanagement-desc' => 'Formati upravljanja projektom za linijske upite na Semantic MediaWiki',
-	'semanticprojectmanagement' => 'Semantičko upravljanje projektom',
+	'semanticprojectmanagement' => 'Postavke semantičkog upravljanja projektom',
 	'right-SPMsetup' => 'Uređivanje osnovih postavki semantičkog upravljanja projektom',
 );
 
@@ -82,19 +82,20 @@ $messages['dsb'] = array(
 	'spm_printername_wbs' => 'Eksport za MS Projekt',
 	'spm-name' => 'Semantiske projektowe zastojanje',
 	'semanticprojectmanagement-desc' => 'Formaty projektowego zastojanja za zasajźone wótpšašanja w Semantic MediaWiki',
-	'semanticprojectmanagement' => 'Semantiske projektowe zastojanje',
+	'semanticprojectmanagement' => 'Nastajenja zastojanja semantiskich projektow',
 	'right-SPMsetup' => 'Zakładne nastajenja semantiskego projektowego zastojanja wobźěłaś',
 );
 
 /** French (Français)
  * @author Peter17
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'spm_wbs_link' => 'Export XML de MS Project',
 	'spm_printername_wbs' => 'Export de MS Project',
 	'spm-name' => 'Gestion de projet sémantique',
 	'semanticprojectmanagement-desc' => 'Formats de gestion de projet pour les requêtes de Semantic MediaWiki',
-	'semanticprojectmanagement' => 'Gestion de projet sémantique',
+	'semanticprojectmanagement' => 'Paramètres de gestion du projet sémantique',
 	'right-SPMsetup' => 'Modifier les paramètres basiques de gestion de projet sémantique',
 );
 
@@ -118,7 +119,7 @@ $messages['hsb'] = array(
 	'spm_printername_wbs' => 'Eksport do MS Project',
 	'spm-name' => 'Zarjadowanje semantiskeho projekta',
 	'semanticprojectmanagement-desc' => 'Formaty projektoweho zarjadowanja za naprašowanja semantiskeho MediaWiki',
-	'semanticprojectmanagement' => 'Zarjadowanje semantiskeho projekta',
+	'semanticprojectmanagement' => 'Nastajenja zarjadowanja semantiskeho projekta',
 	'right-SPMsetup' => 'Zakładne nastajenja zarjadowanja semantikseho projekta wobdźěłać',
 );
 
@@ -130,7 +131,7 @@ $messages['ia'] = array(
 	'spm_printername_wbs' => 'Exportation in MS Project',
 	'spm-name' => 'Gestion semantic de projectos',
 	'semanticprojectmanagement-desc' => 'Formatos de gestion de projectos pro incorporar consultas de Semantic MediaWiki',
-	'semanticprojectmanagement' => 'Gestion semantic de projectos',
+	'semanticprojectmanagement' => 'Configurationes del gestion semantic de projectos',
 	'right-SPMsetup' => 'Modificar le configurationes basic del gestion semantic de projectos',
 );
 
@@ -175,7 +176,7 @@ $messages['mk'] = array(
 	'spm_printername_wbs' => 'Извоз на МС Проект',
 	'spm-name' => 'Раководење со семантички проект',
 	'semanticprojectmanagement-desc' => 'Формат за раководење на проект за барања во редови со Семантички МедијаВики',
-	'semanticprojectmanagement' => 'Раководење со семантички проект',
+	'semanticprojectmanagement' => 'Нагодувања на Раководење со семантички проект',
 	'right-SPMsetup' => 'Основни нагодувања за семантички проект',
 );
 
@@ -187,7 +188,7 @@ $messages['nl'] = array(
 	'spm_printername_wbs' => 'Naar MS Project exporteren',
 	'spm-name' => 'Semantisch projectmanagement',
 	'semanticprojectmanagement-desc' => 'Projectmanagementformaten voor inline zoekopdrachten van Semantic MediaWiki',
-	'semanticprojectmanagement' => 'Semantisch projectmanagement',
+	'semanticprojectmanagement' => 'Instellingen Semantisch projectmanagement',
 	'right-SPMsetup' => 'Basisinstellingen voor semantisch projectmanagement bewerken',
 );
 
@@ -219,11 +220,11 @@ $messages['pl'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'spm_wbs_link' => 'Exportação em XML do MS Project',
+	'spm_wbs_link' => 'Exportação do MS Project para XML',
 	'spm_printername_wbs' => 'Exportação do MS Project',
 	'spm-name' => 'Gestão de Projectos Semântica',
 	'semanticprojectmanagement-desc' => 'Formatos de Gestão de Projectos, para consultas em linha do MediaWiki Semântico',
-	'semanticprojectmanagement' => 'Gestão de Projectos Semântica',
+	'semanticprojectmanagement' => 'Configuração da Gestão de Projectos Semântica',
 	'right-SPMsetup' => 'Editar configurações básicas da gestão de projectos semântica',
 );
 
@@ -235,7 +236,7 @@ $messages['ru'] = array(
 	'spm_printername_wbs' => 'Экспорт из MS Project',
 	'spm-name' => 'Управление семантическими проектами',
 	'semanticprojectmanagement-desc' => 'Форматы управления проектами для встроенных запросов Semantic MediaWiki',
-	'semanticprojectmanagement' => 'Управление семантическими проектами',
+	'semanticprojectmanagement' => 'Настройки Управления семантическими проектами',
 	'right-SPMsetup' => 'изменять основные настройки управления семантическими проектами',
 );
 
