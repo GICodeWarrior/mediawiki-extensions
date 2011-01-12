@@ -251,6 +251,14 @@ $messages['ca'] = array(
 	'editmsg-warning-parse1' => '* El missatge regex no correspon: $1',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'editmsg-search' => 'Лаха',
+	'editmsg-new-search' => 'Керла лахар',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
