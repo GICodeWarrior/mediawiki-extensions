@@ -50,16 +50,23 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jeroen De Dauw
+ * @author Raymond
  */
 $messages['qqq'] = array(
-	'livetranslate-special-location' => 'Table column header on Special:LiveTranslate',
-	'livetranslate-special-type' => 'Table column header on Special:LiveTranslate',
+	'livetranslate-special-type' => 'Table column header on Special:LiveTranslate
+
+{{Identical|Type}}',
+	'livetranslate-special-location' => '{{Identical|Location}}
+
+Table column header on Special:LiveTranslate',
+	'livetranslate-special-remove' => '{{Identical|Remove}}',
 	'livetranslate-special-local' => 'Table column header on Special:LiveTranslate',
 	'livetranslate-importtms-param-miscmatch' => 'Error message for when one of the API modules gets called with a different amount of translation memory types compared to the amount of translation memory names',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -74,6 +81,21 @@ $messages['be-tarask'] = array(
 	'livetranslate-dictionary-empty' => 'Пакуль што няма словаў у слоўніку. Націсьніце кнопку «рэдагаваць» каб дадаць.',
 	'livetranslate-dictionary-count' => 'Ёсьць $1 {{PLURAL:$1|слова|словы|словаў}} у $2 {{PLURAL:$2|мове|мовах|мовах}}. Націсьніце кнопку «рэдагаваць» каб дадаць болей.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Гэтая мова не дазволеная|Гэтыя мовы не дазволеныя}} у цяперашні момант як мэтавыя для перакладу: $1. Зьмяніце дазволеныя мовы ў Вашых наладах {{GRAMMAR:родны|{{SITENAME}}}}, ці выдаліце са слоўніка.',
+	'special-livetranslate' => 'Пераклад на ляту',
+	'livetranslate-tmtype-ltf' => 'Фармат перакладу на ляту',
+	'livetranslate-tmtype-tmx' => 'Абмен памяцьцю перакладаў',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'Пакуль што няма памяці перакладаў.',
+	'livetranslate-special-button' => 'Захаваць і абнавіць',
+	'livetranslate-special-type' => 'Тып',
+	'livetranslate-special-location' => 'Месцазнаходжаньне',
+	'livetranslate-special-remove' => 'Выдаліць',
+	'livetranslate-special-local' => 'Лякальная',
+	'livetranslate-special-add-tm' => 'Дадаць новую памяць перакладаў',
+	'livetranslate-special-current-tms' => 'Існуючыя памяці перакладаў',
+	'livetranslate-special-tms-update' => 'Абнавіць памяці перакладаў',
+	'livetranslate-special-update' => 'Абнавіць памяці перакладаў',
+	'livetranslate-importtms-param-miscmatch' => 'Несупадзеньне паміж колькасьцю знаходжаньняў і тыпамі',
 );
 
 /** Bulgarian (Български)
@@ -132,14 +154,16 @@ $messages['de'] = array(
 	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
 	'livetranslate-tmtype-gcsv' => 'Google-CSV',
 	'livetranslate-special-no-tms-yet' => 'Momentan sind keine Übersetzungsspeicher vorhanden.',
-	'livetranslate-special-button' => 'Speichern',
+	'livetranslate-special-button' => 'Speichern und aktualisieren',
 	'livetranslate-special-type' => 'Eingeben',
 	'livetranslate-special-location' => 'Ort',
 	'livetranslate-special-remove' => 'Entfernen',
+	'livetranslate-special-local' => 'Lokal',
 	'livetranslate-special-add-tm' => 'Einen neuen Übersetzungsspeicher anlegen',
 	'livetranslate-special-current-tms' => 'Vorhandene Übersetzungsspeicher',
 	'livetranslate-special-tms-update' => 'Übersetzungsspeicher aktualisieren',
 	'livetranslate-special-update' => 'Übersetzungsspeicher aktualisieren',
+	'livetranslate-importtms-param-miscmatch' => 'Missverhältnis zwischen Anzahl an Übersetzungsspeichern und Übersetzungsspeicherarten',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -179,7 +203,21 @@ $messages['fr'] = array(
 	'livetranslate-dictionary-error' => "Impossible d'obtenir la traduction immédiate du dictionnaire. Aucun mot ne recevra de traitement spécial pendant le processus de traduction.",
 	'livetranslate-dictionary-empty' => "Il n'y a aucun mot dans le dictionnaire encore. Cliquez sur l'onglet « Modifier » pour en ajouter.",
 	'livetranslate-dictionary-count' => "Il y a $1 {{PLURAL:$1|mot|mots}} dans {{PLURAL:$2|une langue|$2 langues}}. Cliquez sur l'onglet « Modifier » pour en ajouter.",
-	'livetranslate-dictionary-unallowed-langs' => "{{PLURAL:$2|Cette langue n'est|Ces langues ne sont}} pas sélectionnées comme {{PLURAL:$2|langue cible|langues cibles}} : $1. Modifiez les langues autorisées dans votre configuration de wiki ou supprimez-les du dictionnaire.",
+	'livetranslate-dictionary-unallowed-langs' => "{{PLURAL:$2|Cette langue n'est pas sélectionnée comme langue cible|Ces langues ne sont pas sélectionnées comme langues cibles}} : $1. Modifiez les langues autorisées dans votre configuration de wiki ou supprimez-les du dictionnaire.",
+	'special-livetranslate' => 'Live translate',
+	'livetranslate-tmtype-ltf' => 'Format Live Translate',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => "Il n'ya pas de mémoires de traduction pour le moment.",
+	'livetranslate-special-button' => 'Enregistrer et mettre à jour',
+	'livetranslate-special-type' => 'Type',
+	'livetranslate-special-location' => 'Localisation',
+	'livetranslate-special-remove' => 'Enlever',
+	'livetranslate-special-add-tm' => 'Ajouter une nouvelle mémoire de traduction',
+	'livetranslate-special-current-tms' => 'Mémoires de traduction existantes',
+	'livetranslate-special-tms-update' => 'Mise à jour de mémoires de traduction',
+	'livetranslate-special-update' => 'Mise à jour de mémoires de traduction',
+	'livetranslate-importtms-param-miscmatch' => "Incompatibilité entre la quantité d'emplacements et les types",
 );
 
 /** Galician (Galego)
@@ -221,6 +259,21 @@ $messages['hsb'] = array(
 	'livetranslate-dictionary-empty' => 'Hišće žane słowa w słowniku njejsu. Klikń na rajtark "wobdźěłać", zo by někotre přidał.',
 	'livetranslate-dictionary-count' => '{{PLURAL:$1|Je $1 słowo|Stej $1 słowje|Su $1 słowa|Je $1 słowow}} w $2 {{PLURAL:$2|rěči|rěčomaj|rěčach|rěčach}}. Klikń na rajtark $wobdźěłać", zo by dalše přidał.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Tuta rěč njeje |Tutej rěči njejstej|Tute rěče njejsu|Tute rěče njejsu}} tuchwilu jako dowoleny přełožowanski cil {{PLURAL:$2|nastajena|nastajenej|nastajene|nastajene}}: $1. Změń dowolene rěče w konfiguraciji twojeho wikija abo wotstroń je ze słownika.',
+	'special-livetranslate' => 'Live translate',
+	'livetranslate-tmtype-ltf' => 'Live Translate format',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google-CSV',
+	'livetranslate-special-no-tms-yet' => 'Hišće přełožkowe składowaki njejsu.',
+	'livetranslate-special-button' => 'Składować a aktualizować',
+	'livetranslate-special-type' => 'Typ',
+	'livetranslate-special-location' => 'Městno',
+	'livetranslate-special-remove' => 'Wotstronić',
+	'livetranslate-special-local' => 'Lokalny',
+	'livetranslate-special-add-tm' => 'Nowy přełožkowy składowak přidać',
+	'livetranslate-special-current-tms' => 'Eksistowace přełožkowe składowaki',
+	'livetranslate-special-tms-update' => 'Přełožkowe składowaki aktualizować',
+	'livetranslate-special-update' => 'Přełožkowe składowaki aktualizować',
+	'livetranslate-importtms-param-miscmatch' => 'Njepoměr mjez ličbu městnow a typow',
 );
 
 /** Interlingua (Interlingua)
@@ -241,9 +294,16 @@ $messages['ia'] = array(
 	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
 	'livetranslate-tmtype-gcsv' => 'CSV de Google',
 	'livetranslate-special-no-tms-yet' => 'Il non ha ancora memorias de traduction.',
-	'livetranslate-special-button' => 'Salveguardar',
+	'livetranslate-special-button' => 'Salveguardar e actualisar',
 	'livetranslate-special-type' => 'Typo',
 	'livetranslate-special-location' => 'Loco',
+	'livetranslate-special-remove' => 'Remover',
+	'livetranslate-special-local' => 'Local',
+	'livetranslate-special-add-tm' => 'Adder un nove memoria de traduction',
+	'livetranslate-special-current-tms' => 'Memorias de traduction existente',
+	'livetranslate-special-tms-update' => 'Actualisar memorias de traduction',
+	'livetranslate-special-update' => 'Actualisar memorias de traduction',
+	'livetranslate-importtms-param-miscmatch' => 'Le numero de locos differe del numero de typos',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -311,14 +371,16 @@ $messages['mk'] = array(
 	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
 	'livetranslate-tmtype-gcsv' => 'Google CSV',
 	'livetranslate-special-no-tms-yet' => 'Сè уште нема преводни памтила',
-	'livetranslate-special-button' => 'Зачувај',
+	'livetranslate-special-button' => 'Зачувај и поднови',
 	'livetranslate-special-type' => 'Тип',
 	'livetranslate-special-location' => 'Место',
 	'livetranslate-special-remove' => 'Отстрани',
+	'livetranslate-special-local' => 'Локално',
 	'livetranslate-special-add-tm' => 'Додај ново преводно памтило',
 	'livetranslate-special-current-tms' => 'Постоечки преводни памтила',
 	'livetranslate-special-tms-update' => 'Поднови преводни памтила',
 	'livetranslate-special-update' => 'Поднови преводни памтила',
+	'livetranslate-importtms-param-miscmatch' => 'Бројот на местата и бројот на типовите не се совпаѓаат',
 );
 
 /** Dutch (Nederlands)
@@ -336,6 +398,20 @@ $messages['nl'] = array(
 	'livetranslate-dictionary-empty' => 'Er zijn nog geen woorden in het woordenboek. Klik op de tab "bewerken" om woorden toe te voegen.',
 	'livetranslate-dictionary-count' => 'Er {{PLURAL:$1|is één woord|zijn $1 woorden}} in $2 {{PLURAL:$2|taal|talen}}. Klik op de tab "bewerken" om meer woorden toe te voegen.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Deze taal is|Deze taken zijn}} niet ingesteld als toegestane doeltaal: $1. Wijzig te toegestane talen in de instellingen van uw wiki of verwijder ze uit het woordenboek.',
+	'special-livetranslate' => 'Live vertalen',
+	'livetranslate-tmtype-ltf' => 'Live Vertalen-opmaak',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'Er zijn nog geen vertaalgeheugens.',
+	'livetranslate-special-button' => 'Opslaan en bijwerken',
+	'livetranslate-special-type' => 'Type',
+	'livetranslate-special-location' => 'Locatie',
+	'livetranslate-special-remove' => 'Verwijderen',
+	'livetranslate-special-add-tm' => 'Nieuw vertaalgeheugen toevoegen',
+	'livetranslate-special-current-tms' => 'Bestaande vertaalgeheugens',
+	'livetranslate-special-tms-update' => 'Vertaalgeheugens bijwerken',
+	'livetranslate-special-update' => 'Vertaalgeheugens bijwerken',
+	'livetranslate-importtms-param-miscmatch' => 'Er is een verschil tussen het aantal locaties en typen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -444,5 +520,9 @@ $messages['uk'] = array(
 	'livetranslate-button-translate' => 'Перекласти',
 	'livetranslate-button-translating' => 'Перекладаю...',
 	'livetranslate-button-revert' => 'Показати оригінал',
+	'livetranslate-special-button' => 'Зберегти та оновити',
+	'livetranslate-special-type' => 'Тип',
+	'livetranslate-special-location' => 'Розташування',
+	'livetranslate-special-remove' => 'Вилучити',
 );
 
