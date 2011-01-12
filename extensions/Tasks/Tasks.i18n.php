@@ -633,6 +633,13 @@ $messages['ca'] = array(
 	'tasks_status_closed' => 'Tancat',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'tasks_search_form_title' => 'Лаха',
+);
+
 /** Sorani (کوردی)
  * @author Marmzok
  */

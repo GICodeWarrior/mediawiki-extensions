@@ -2381,6 +2381,14 @@ $messages['ca'] = array(
 	'ow_suggest_next' => 'Següent',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'datasearch_search_text' => 'Йоза лахар:',
+	'ow_User' => 'Декъашхо',
+);
+
 /** Sorani (کوردی)
  * @author Marmzok
  */

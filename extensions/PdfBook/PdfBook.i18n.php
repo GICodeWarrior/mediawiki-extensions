@@ -144,6 +144,15 @@ $messages['hsb'] = array(
 	'pdfbook-desc' => 'Zestaja knihu ze stronow w kategoriji a eksportuje jako PDF-knihu',
 );
 
+/** Hungarian (Magyar)
+ * @author BáthoryPéter
+ */
+$messages['hu'] = array(
+	'pdfbook-action' => 'Nyomtatás PDF formátumban',
+	'pdfbook-log' => '$ 1 exportálva PDF-könyvként',
+	'pdfbook-desc' => 'Kiválasztott oldalakat kategóriába helyez, összeállít belőlük egy könyvet, és exportálja PDF-könyvként',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

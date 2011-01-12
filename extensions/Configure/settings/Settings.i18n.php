@@ -4096,6 +4096,13 @@ $messages['ca'] = array(
 	'configure-setting-wgUseSquid' => 'Habilita Squid',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'configure-setting-wgActionPaths-value' => 'URL куцкепа',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Jkjk

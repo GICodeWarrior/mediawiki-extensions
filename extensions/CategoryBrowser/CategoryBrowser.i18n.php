@@ -361,6 +361,13 @@ $messages['ca'] = array(
 	'cb_edit_paste_right_hint' => 'Enganxa operador a la posició següent, si és possible',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'cb_cat_name_filter' => 'Кадегар лахар цIерашца:',
+);
+
 /** Czech (Česky)
  * @author Jkjk
  */

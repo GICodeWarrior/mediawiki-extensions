@@ -282,6 +282,9 @@ appear to be combined to produce:
 	'mwe-link' => '{{Identical|Link}}',
 	'mwe-cc_title' => '{{optional}}',
 	'rsd-wiki_commons-title' => '{{optional}}',
+	'fogg-please-install' => 'Message that shows that Firefogg should be installed. Parameters:
+* $1 is the install link. {{msg-mw|fogg-please-install-install-linktext}} is substituted as link text.
+* $2 is the about link. {{msg-mw|fogg-please-install-about-linktext}} is substituted as link text.',
 	'mwe-upload-multi' => '{{Identical|Upload file}}',
 );
 
@@ -1666,6 +1669,14 @@ $1 inicieu una sessió i $2',
 	'fogg-warning-firebug' => "El <b>Firebug</b> pot provocar problemes amb el <i>Firefogg</i>. Inhabiliteu el <b>Firebug</b> d'aquesta pàgina.",
 	'mwe-upload-multi' => 'Carrega {{PLURAL:$1|un fitxer|uns fitxers}}',
 	'mwe-review-upload' => 'Reviseu {{PLURAL:$1|la càrrega|les càrregues}} de fitxer',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'mwe-upload' => 'Чуйаккха хlум',
+	'mwe-upload-multi' => 'Чуйаккха {{PLURAL:$1|хlум|хlумнаш}}',
 );
 
 /** Sorani (کوردی) */
@@ -4105,20 +4116,48 @@ $messages['he'] = array(
 	'fogg-cg-advVideo' => 'פקדי הצפנת וידאו מתקדמים',
 	'fogg-cg-advAudio' => 'פקדי הצפנת שמע מתקדמים',
 	'fogg-preset-custom' => 'הגדרות מותאמות אישית',
+	'fogg-webvideo-desc' => 'Ogg Theora לרוחב פס נמוך, Vorbis ‏(600 קס"ש ורוחב מרבי 400 פיקסל)',
+	'fogg-savebandwidth-desc' => 'Ogg Theora לרוחב פס נמוך, Vorbis ‏(164 קס"ש ורוחב מרבי 200 פיקסל)',
+	'fogg-highquality-desc' => 'Ogg Theora באיכות גבוהה, Vorbis (רוחב מרבי 1080 פיקסל)',
+	'fogg-webvideo-webm-desc' => 'WebM VP8 וידאו רשת (600 קס"ש ורוחב מרבי 480 פיקסל)',
+	'fogg-highquality-webm-desc' => 'WebM VP8 באיכות גבוהה (רוחב מרבי 1080 פיקסל)',
 	'fogg-videoQuality-title' => 'איכות הווידאו',
+	'fogg-videoQuality-help' => 'משמש לקביעת איכות התצוגה של הווידאו המקודד (לא בשימוש עם תגדירו את קצב הסיביות בפקדים למטה).',
 	'fogg-starttime-title' => 'שניית ההתחלה',
 	'fogg-starttime-help' => 'לקודד בלבד מזמן מסויים בשניות',
 	'fogg-endtime-title' => 'שניית הסיום',
 	'fogg-endtime-help' => 'לקודד בלבד עד זמן מסויים בשניות',
 	'fogg-audioQuality-title' => 'איכות השמע',
+	'fogg-audioQuality-help' => 'משמש לקביעת איכות הצליל של השמע המקודד (לא בשימוש עם תגדירו את קצב הסיביות בפקדים למטה).',
 	'fogg-videoCodec-title' => 'מקודד וידאו',
+	'fogg-audioCodec-title' => 'מקודד שמע',
+	'fogg-audioCodec-help' => 'משמש להגדרת מקודד השמע של הסרטון. כעת נתמך רק מקודד Vorbis. מידע נוסף על <a target="_new" href="http://he.wikipedia.org/wiki/Vorbis">מקודד Vorbis</a>',
 	'fogg-width-title' => 'רוחב הווידאו',
 	'fogg-width-help' => 'שינוי לרוחב נתון.',
 	'fogg-height-title' => 'גובה הווידאו',
 	'fogg-height-help' => 'שינוי לגובה נתון.',
+	'fogg-videoBitrate-title' => 'קצב סיביות וידאו',
+	'fogg-videoBitrate-help' => 'קצב סיביות וידאו מגדיר את קצב הסיביות של קידוד וידאו (בקס"ש)',
+	'fogg-twopass-title' => '‫קידוד בשני מעברים',
+	'fogg-twopass-help' => 'קידוד בשני מעברים מאפשר איכות עקיבה יותר באמצעות שני מעברים על קובץ הווידאו',
 	'fogg-framerate-title' => 'קצב שקופיות',
+	'fogg-framerate-help' => 'קצב שקופיות וידאו.
+מידע נוסף על <a target="_new" href="http://en.wikipedia.org/wiki/Frame_rate">קצב שקופיות</a>.',
 	'fogg-aspect-title' => 'יחס תצוגה',
+	'fogg-aspect-help' => 'יחס תצוגה של וידאו יכול להיות 4:3 או 16:9.
+מידע נוסף על <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">יחס תצוגה</a>.',
+	'fogg-keyframeInterval-title' => 'הפרש בין שקופיות מפתח',
+	'fogg-keyframeInterval-help' => 'הפרש בין שקופיות מפתח, בשקופיות.
+שימו לב: רב המקודדים מחייבים שקופיות מפתח אם ההפרש בין שקופיות מפתח גדול מגודל קידוד שקופית מפתח.
+מידע נוסף על <a href="http://en.wikipedia.org/wiki/I-frame">שקופיות מפתח</a>.',
+	'fogg-denoise-title' => 'מסנן לביטול רעש',
+	'fogg-denoise-help' => 'לבטל רעש בווידאו הנקלט.
+מידע נוסף על <a href="http://en.wikipedia.org/wiki/Video_denoising">ביטול רעש</a>.',
 	'fogg-novideo-title' => 'אין וידאו',
+	'fogg-novideo-help' => 'ביטול הווידאו בפלט',
+	'fogg-audioBitrate-title' => 'קצב סיביות שמע',
+	'fogg-samplerate-title' => 'קצב דגימת שמע',
+	'fogg-samplerate-help' => 'להגדיר קצב דגימה פלט (בהרץ).',
 	'fogg-noaudio-title' => 'ללא שמע',
 	'fogg-noaudio-help' => 'נטרול השמע בפלט',
 	'fogg-title-title' => 'כותרת',
@@ -4141,6 +4180,7 @@ $messages['he'] = array(
 	'fogg-gui-title' => 'ליצור וידאו לרשת',
 	'mwe-select_file' => 'בחירת קובץ',
 	'mwe-select_ownwork' => 'אני מעלה יצירה שכולה שלי ומפרסם אותה לפי תנאי הרישיון הבא:',
+	'mwe-license_cc-by-sa' => 'Creative Commons שיתוף זהה (3.0)',
 	'mwe-upload' => 'העלאת קובץ',
 	'mwe-destfilename' => 'שם קובץ היעד:',
 	'mwe-summary' => 'תקציר',
@@ -4160,7 +4200,9 @@ $messages['he'] = array(
 	'mwe-upload-refresh' => 'לרענן את רשימת ההעלאות שלכם',
 	'mwe-ie-inline-upload' => 'העלאה פנימית אינה פועלת עתה עבור מיקרוסופט אינטרנט אקספלורר.
 אפשר $1 ואז $2.',
+	'mwe-upload-in-progress' => 'מתבצעת העלאה (אין לסגור את החלון)',
 	'mwe-uploaded-status' => 'הועלה',
+	'mwe-transcoded-status' => 'מומר מחדש',
 	'mwe-uploaded-time-remaining' => 'הזמן שנותר: $1',
 	'mwe-upload-done' => 'מה שהעליתם אמור להיות נגיש.',
 	'mwe-add_media_wizard' => 'אשף הוספת המדיה',
@@ -4184,10 +4226,17 @@ $messages['he'] = array(
 	'mwe-cc_sa_title' => 'שיתוף זהה',
 	'mwe-cc_pd_title' => 'נחלת הכלל',
 	'mwe-unknown_license' => 'רשיון בלתי ידוע',
+	'mwe-no-import-by-url' => 'המשתמש או הוויקי הזה <b>אינו יכול</b> לייבא נכסים מכתובות מרוחקות.
+<p>האם אתם צריכים להיכנס לחשבון?</p>
+<p>האם ניתנה לכם ההרשאה upload_by_url (להעלות מכתובת)?
+האם מופעלת בוויקי האפשרות $1?</p>',
 	'mwe-results_from' => 'תוצאות מ־$1',
+	'mwe-missing_desc_see_source' => 'לנכס הזה חסר תיאור.
+אנא בדקו את [$1 המקור] ועזרו לתאר אותו.',
 	'rsd_config_error' => 'שגיאה בהגדרות אשף הוספת המדיה: $1',
 	'mwe-your-recent-uploads' => 'ההעלאות האחרונות שלך ל{{grammar:תחילית|$1}}',
 	'mwe-no_recent_uploads' => 'אין העלאות לאחרונה',
+	'mwe-ie-eye-permision' => 'אם אתם משתמשים במיקרוסופט אינטרנט אקספלורר ונכנסתם לחשבון שלכם, ייתכן שתצטרכו לכוונן את הגדרות הפרטיות שלכם',
 	'mwe-loggin-link' => 'נא להיכנס',
 	'mwe-try-again-link' => 'ניסיון חוזר',
 	'mwe-upload-a-file' => 'העלאת קובץ חדש',
@@ -4201,6 +4250,8 @@ $messages['he'] = array(
 	'mwe-return-search-results' => 'חזרה לתוצאות החיפוש',
 	'mwe-importing_asset' => 'מייבא נכס',
 	'mwe-do-more-modification' => 'לעשות עוד שינויים',
+	'mwe-checking-resource' => 'בדיקת משאב',
+	'mwe-warning-upload-to-commons' => 'באתר $1 מומלץ להעלות לוויקישיתוף. העלו מקומית רק אחרי שקראתם את $2',
 	'mwe-local-upload-policy-link' => 'מדיניות העלאה מקומית',
 	'mwe-ftype-svg' => 'קובץ וקטורי SVG',
 	'mwe-ftype-jpg' => 'קובץ תמונת JPEG',
@@ -4208,10 +4259,19 @@ $messages['he'] = array(
 	'mwe-ftype-oga' => 'קובץ שמע Ogg',
 	'mwe-ftype-ogg' => 'קובץ וידאו Ogg',
 	'mwe-ftype-unk' => 'מבנה הקובץ אינו מוכר',
+	'rsd-wiki_commons' => 'ויקישיתוף, ארכיון של מדיה חופשית (תמונות, צלילים וסרטונים)',
 	'rsd-kaltura-title' => 'חיפוש קלטורה (כל המקורות)',
+	'rsd-kaltura' => 'חיפוש מצטבר של קלטורה עבור מדיה עם רישיונות חופשיים דרך ספקי חיפוש מרובים',
 	'rsd-this_wiki-title' => 'הוויקי הזה',
 	'rsd-this_wiki-desc' => 'הוויקי המקומי',
+	'rsd-archive_org-desc' => 'ארכיון אינטרנט, אוסף ספרתי של חפצי תרבות',
+	'rsd-flickr-desc' => 'Flickr.com, אתר שיתוף תמונות מקוון',
+	'rsd-metavid-desc' => 'Metavid.org, ארכיון קהילתי של הליכים בסנאט ובבית הנבחרים של ארצות הברית',
+	'rsd-search-timeout' => 'בקשת החיפוש לא הושלמה.
+ייתכן שיש עומס רב על השרת.
+נסו מאוחר יותר',
 	'mwe-upload-transcoded-status' => 'מומר מחדש',
+	'mwe-upload-transcode-in-progress' => 'מתבצעים קידוד מחדש והעלאה (אין לסגור את החלון)',
 	'fogg-transcoding' => 'קידוד הווידאו ל־Ogg',
 	'fogg-select_file' => 'בחירת קובץ',
 	'fogg-select_new_file' => 'בחירת קובץ חדש',
@@ -4220,7 +4280,8 @@ $messages['he'] = array(
 	'fogg-installed' => 'Firefogg מותקן',
 	'fogg-not-installed' => 'Firefogg אינו מותקן או שאינו מופעל.',
 	'fogg-for_improved_uploads' => 'להעלאות משופרות:',
-	'fogg-please-install-install-linktext' => 'התקנת Firefogg',
+	'fogg-please-install' => '$1. מידע נוסף $2',
+	'fogg-please-install-install-linktext' => 'התקינו את Firefogg',
 	'fogg-please-install-about-linktext' => 'על אודות Firefogg',
 	'fogg-use_latest_firefox' => 'ראשית יש להתקין את $1.
 <i>לאחר מכן יש לבקר בדף זה שוב כדי להתקין את ההרחבה <b>Firefogg</b>.</i>',
@@ -4230,6 +4291,8 @@ $messages['he'] = array(
 	'fogg-badtoken' => 'האסימון אינו תקין',
 	'fogg-preview' => 'תצוגה מקדימה של וידאו',
 	'fogg-hidepreview' => 'להסתיר תצוגה מקדימה',
+	'fogg-warning-firebug' => '<b>Firebug</b> עלול לגרום להתנגשויות עם <i>Firefogg</i>.
+נא לבטל את <b>Firebug</b> עבור דף זה.',
 	'mwe-upload-multi' => 'להעלות את {{PLURAL:$1|הקובץ|הקבצים}}',
 	'mwe-review-upload' => 'סקירה של העלאת {{PLURAL:$1|קובץ|קבצים}}',
 );

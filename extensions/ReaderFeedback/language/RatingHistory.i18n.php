@@ -407,6 +407,13 @@ $messages['ca'] = array(
 	'ratinghistory-table-votes' => 'Vots',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'ratinghistory-3years' => 'тlяхьаралерачу 3 шарахь',
+);
+
 /** Czech (Česky)
  * @author Beren
  * @author Mormegil

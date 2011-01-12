@@ -1312,6 +1312,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1324,7 +1325,7 @@ $messages['ml'] = array(
 	'imagetagging-logentry' => '[[$1]] എന്ന  താളിലെ ടാഗ്  $2 മാറ്റിയിരിക്കുന്നു',
 	'imagetagging-log-tagged' => '[[$1|$2]] എന്ന ചിത്രം [[$3]] എന്ന താളിലേക്ക്  $4 ടാഗ് ചെയ്തിരിക്കുന്നു',
 	'imagetagging-removetag' => 'ടാഗ് മാറ്റുക',
-	'imagetagging-tag-button' => 'ടാഗ്',
+	'imagetagging-tag-button' => 'റ്റാഗ്',
 	'imagetagging-tagcancel-button' => 'റദ്ദാക്കുക',
 	'imagetagging-addingtag' => 'ടാഗ് ചേർക്കുന്നു...',
 	'imagetagging-removingtag' => 'ടാഗ് ഒഴിവാക്കുന്നു...',

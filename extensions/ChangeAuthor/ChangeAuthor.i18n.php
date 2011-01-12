@@ -492,6 +492,13 @@ Si l'error persisteix, és probable que la base de dades estigui avariada.",
 	'right-changeauthor' => "Canviar l'autoria d'una modificació",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'changeauthor-search-box' => 'Нисдинарш лахар',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
@@ -2033,7 +2040,7 @@ Prosimo, ponovite svojo zahtevo.
 	'right-changeauthor' => 'Spreminjanje avtorjev redakcij',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -2042,7 +2049,7 @@ $messages['sr-ec'] = array(
 	'changeauthor' => 'Промени аутора ревизије',
 	'changeauthor-desc' => 'Омогући промене аутора ревизија',
 	'changeauthor-title' => 'Промени аутора неке ревизије',
-	'changeauthor-search-box' => 'Претражи ревизије',
+	'changeauthor-search-box' => 'Претражи измене',
 	'changeauthor-pagename-or-revid' => 'Име странице или ИД ревизије:',
 	'changeauthor-pagenameform-go' => 'Пређи',
 	'changeauthor-comment' => 'Коментар:',

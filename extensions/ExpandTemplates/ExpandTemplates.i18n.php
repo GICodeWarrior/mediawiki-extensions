@@ -369,7 +369,7 @@ Ho fa cridant el nivell sintàctic pertinent del mateix MediaWiki.",
 $messages['ce'] = array(
 	'expandtemplates' => 'Хьадаста куцкепаш',
 	'expand_templates_output' => 'Хилам',
-	'expand_templates_remove_comments' => 'Комментариш дIаяккха',
+	'expand_templates_remove_comments' => 'Дlадайа далийнадешнаш',
 	'expand_templates_preview' => 'Хьалха муха ю хьажа',
 );
 

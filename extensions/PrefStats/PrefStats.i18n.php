@@ -485,6 +485,14 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 	'prefstats-legend-in' => 'Activat',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'prefstats' => 'ГIирс латорна хилам',
+	'prefstats-title' => 'ГIирс латорна хилам',
+);
+
 /** Sorani (کوردی)
  * @author Marmzok
  */

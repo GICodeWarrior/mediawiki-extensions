@@ -336,7 +336,7 @@ $messages['mr'] = array(
 $messages['nl'] = array(
 	'spl3-desc' => "Maakt automatisch een lijst met de subpagina's van een pagina met de tag <code><nowiki><splist /></nowiki></code>",
 	'spl3_debug' => 'Onbekende waarde voor optie $1.',
-	'spl3_nosubpages' => "$1 heeft geen weer te geven subpagina's",
+	'spl3_nosubpages' => "$1 heeft geen subpagina's.",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

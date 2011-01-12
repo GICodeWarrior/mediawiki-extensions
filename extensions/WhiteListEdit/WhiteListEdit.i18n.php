@@ -666,6 +666,13 @@ $messages['ca'] = array(
 	'whitelistnever' => 'mai',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'whitelisttableview' => 'Хьажа',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */

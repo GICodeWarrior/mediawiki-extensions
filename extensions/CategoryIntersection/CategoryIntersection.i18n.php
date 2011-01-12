@@ -150,6 +150,13 @@ $messages['ca'] = array(
 	'categoryintersection-results' => 'La cerca demanada ha donat {{PLURAL:$1|un resultat|$1 resultats}}.',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'categoryintersection-results' => 'Лахаро гойту {{PLURAL:$1|$1 хилам|$1 хилам|$1 хиламаш}}.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

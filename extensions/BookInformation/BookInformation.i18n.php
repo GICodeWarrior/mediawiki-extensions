@@ -312,6 +312,13 @@ $messages['ca'] = array(
 	'bookinfo-provider' => 'Proveïdor de dades: $1',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'bookinfo-result-year' => 'Шо:',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

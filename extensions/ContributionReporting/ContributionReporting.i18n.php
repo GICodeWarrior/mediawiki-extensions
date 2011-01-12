@@ -842,6 +842,13 @@ $messages['ca'] = array(
 	'fundraiserstats-tab-maximums' => 'Màxims ($)',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'contribstats-template' => 'Куцкеп',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Matěj Grabovský

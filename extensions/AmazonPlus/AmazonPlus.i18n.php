@@ -338,6 +338,7 @@ $messages['ceb'] = array(
 
 /** Czech (Česky)
  * @author Jkjk
+ * @author Mormegil
  * @author Wrightbus
  */
 $messages['cs'] = array(
@@ -345,7 +346,7 @@ $messages['cs'] = array(
 	'amazonplus-nores' => 'Chyba: Žádné výsledky nebyly nalezeny!',
 	'amazonplus-noidres' => 'Chyba: Nemohu najít ID produktu!',
 	'amazonplus-fgcerr' => 'Chyby: Nepodařilo se získat data z Amazonu!',
-	'amazonplus-slserr' => 'Chyba: Není možné přiřadit data z Amazonu!',
+	'amazonplus-slserr' => 'Chyba: Nepodařilo se zpracovat data z Amazonu!',
 	'amazonplus-used' => 'použité',
 	'amazonplus-german' => 'Němčina',
 	'amazonplus-french' => 'Francouzština',

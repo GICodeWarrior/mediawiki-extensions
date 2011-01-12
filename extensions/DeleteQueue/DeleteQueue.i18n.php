@@ -1082,8 +1082,12 @@ $messages['ca'] = array(
 	'deletequeue-case-reason' => 'Motiu:',
 );
 
-/** Chechen (Нохчийн) */
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
 $messages['ce'] = array(
+	'deletequeue-list-search-legend' => 'Лаха агIонашца',
+	'deletequeue-list-search' => 'Лаха',
 	'deletequeue-case-reason' => 'Бахьан:',
 );
 

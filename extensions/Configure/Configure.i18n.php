@@ -1731,9 +1731,13 @@ $messages['ca'] = array(
 	'configure-throttle-action-edit' => 'Modifica',
 );
 
-/** Chechen (Нохчийн) */
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
 $messages['ce'] = array(
 	'configure-form-reason' => 'Бахьан:',
+	'configure-section-search' => 'Лаха',
+	'configure-view' => 'Хьажа',
 );
 
 /** Chamorro (Chamoru)

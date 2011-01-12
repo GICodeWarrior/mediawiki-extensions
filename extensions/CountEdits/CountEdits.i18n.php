@@ -251,6 +251,13 @@ $messages['ca'] = array(
 	'countedits-nocontribs' => 'No hi ha hagut cap coŀlaboració en aquest wiki.',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'countedits-username' => 'Декъашхо:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Reaperman
@@ -1348,7 +1355,8 @@ $messages['sr'] = array(
 	'countedits-nocontribs' => 'Не постоје прилози на овој вики.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1357,7 +1365,7 @@ $messages['sr-ec'] = array(
 	'countedits' => 'Бројач измена',
 	'countedits-desc' => '[[Special:CountEdits|Посебна страница]] која израчунава измене корисника и пружа списак десет најактивнијих аутора',
 	'countedits-warning' => "'''Упозорење:''' Не судите о књизи по њеном омоту. Не судите о кориснику по његовом броју измена.",
-	'countedits-username' => 'Корисник:',
+	'countedits-username' => 'Корисничко име:',
 	'countedits-ok' => 'У реду',
 	'countedits-nosuchuser' => 'Не постоји корисник са именом $1.',
 	'countedits-resultheader' => 'Резултати за $1',

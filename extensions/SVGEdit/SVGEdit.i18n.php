@@ -277,6 +277,8 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'svgedit-editbutton-edit' => 'Editar desenho',
+	'svgedit-summary-label' => 'Resumo da edição',
+	'svgedit-summary-default' => '/* Modificado no svg-edit */',
 	'svgedit-editor-save-close' => 'Gravar e fechar',
 	'svgedit-editor-close' => 'Cancelar',
 	'svgedit-desc' => 'Edição de desenhos SVG no próprio browser, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
@@ -322,5 +324,17 @@ $messages['sl'] = array(
 $messages['te'] = array(
 	'svgedit-editor-save-close' => 'భద్రపరిచి మూసేయి',
 	'svgedit-editor-close' => 'రద్దు',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'svgedit-editbutton-edit' => 'Редагувати малюнок',
+	'svgedit-summary-label' => 'Опис редагування',
+	'svgedit-summary-default' => '/* Відредаговано за допомогою svg-edit */',
+	'svgedit-editor-save-close' => 'Зберегти і закрити',
+	'svgedit-editor-close' => 'Скасувати',
+	'svgedit-desc' => 'Редагування у браузері SVG-малюнків за допомогою [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 

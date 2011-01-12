@@ -946,6 +946,13 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-mars' => 'Mart',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$wgGoogleMapsMessages['ce'] = array(
+	'gm-search' => 'Лаха',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */

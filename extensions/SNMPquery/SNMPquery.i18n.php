@@ -22,7 +22,7 @@ $messages['qqq'] = array(
 	'snmpquery-desc' => '{{desc}}',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -41,28 +41,29 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'snmpquery-desc' => 'Dodaje funkcije SNMPget i SNMPwalk i vraća podatke na wiki',
+	'snmpquery-desc' => 'Dodaje funkcije SNMPget i SNMPwalk i omogućava prikazivanje rezultata na wikiju',
 );
 
 /** German (Deutsch)
  * @author Kghbln
  */
 $messages['de'] = array(
-	'snmpquery-desc' => 'Erweitert den Parser um die Funktionen SNMPget und SNMPwalk',
+	'snmpquery-desc' => 'Erweitert den Parser um die Funktionen SNMPget und SNMPwalk und ermöglicht die Anzeige von deren Ausgabewerten im Wiki',
 );
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'snmpquery-desc' => 'Funkcije SNMPGet a SNMPwalk pśidaś a daty do wikija wróśiś',
+	'snmpquery-desc' => 'Funkcije SNMPGet a SNMPwalk pśidaś a zwobraznjenje wuslědkow we wikiju dowóliś',
 );
 
 /** French (Français)
  * @author Peter17
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'snmpquery-desc' => 'Ajoute les fonctions SNMPget et SNMPwalk et renvoie les données dans le wiki',
+	'snmpquery-desc' => 'Ajoute les fonctions SNMPget et SNMPwalk et affiche les données dans le wiki',
 );
 
 /** Swiss German (Alemannisch)
@@ -83,14 +84,14 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'snmpquery-desc' => 'Funkcije SNMPget a SNMPwalk přidać a daty do wikija wróćić',
+	'snmpquery-desc' => 'Funkcije SNMPget a SNMPwalk přidać a zwobraznjenje wuslědkow we wikiju dowolić',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'snmpquery-desc' => 'Adde le functiones SNMPget and SNMPwalk e retorna le datos in le wiki',
+	'snmpquery-desc' => 'Adde le functiones SNMPget and SNMPwalk e permitte presentar le resultatos in le wiki',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -125,14 +126,14 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'snmpquery-desc' => 'Додај функции SNMPget и SNMPwalk и врати ги податоците во викито',
+	'snmpquery-desc' => 'Додава на функции SNMPget и SNMPwalk и овозможува резултатите да се прикажат во викито',
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'snmpquery-desc' => 'Voegt de functies SNMPget en SNMPwalk toe en levert deze gegevens aan de wiki',
+	'snmpquery-desc' => 'Voegt de functies SNMPget en SNMPwalk toe en maakt het mogelijk deze gegevens in de wiki weer te geven',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -153,20 +154,20 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'snmpquery-desc' => 'Gionta le funsion SNMPget e SNMPwalk e artorna ij dat ant la wiki',
+	'snmpquery-desc' => "Gionta le funsion SNMPget e SNMPwalk e përmëtt ëd mosté j'arzultà ant la wiki",
 );
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'snmpquery-desc' => 'Acrescentar as funções SNMPget e SNMPwalk e devolver os dados à wiki',
+	'snmpquery-desc' => 'Acrescentar as funções SNMPget e SNMPwalk e permitir que os dados sejam apresentados na wiki',
 );
 
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'snmpquery-desc' => 'Добавляет функции SNMPget и SNMPwalk и возвращает данные в вики',
+	'snmpquery-desc' => 'Добавляет функции SNMPget и SNMPwalk и позволяет отображать результаты в вики',
 );
 

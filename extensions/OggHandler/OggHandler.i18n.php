@@ -614,6 +614,14 @@ $messages['ca'] = array(
 	'ogg-oggThumb-failed' => "L'oggThumb no ha pogut crear una miniatura.",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'ogg-dismiss' => 'Къайлайаккха',
+	'ogg-download' => 'Чуйаккха хlум',
+);
+
 /** Sorani (کوردی)
  * @author Asoxor
  */

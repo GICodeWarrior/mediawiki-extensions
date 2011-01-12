@@ -2438,7 +2438,7 @@ Voeg de volgende code toe om uw video in een pagina op te nemen:
 Even geduld alstublieft.',
 	'youtubeauthsub_viewpage' => 'U kunt uw video ook [[$1|bekijken]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Geef alstublieft een of meer trefwoorden op.',
-	'youtubeauthsub_jserror_notitle' => 'Geef alstublieft een naam voor de video op.',
+	'youtubeauthsub_jserror_notitle' => 'Geef een naam op voor de video.',
 	'youtubeauthsub_jserror_nodesc' => 'Geef alstublieft een beschrijving voor de video op.',
 );
 

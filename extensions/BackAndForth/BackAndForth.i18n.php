@@ -190,6 +190,13 @@ $messages['ca'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'backforth-next' => 'Кхин ($1)',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

@@ -257,6 +257,13 @@ $messages['ca'] = array(
 	'invitations-invite-success' => 'Heu convidat $1 a usar aquesta funcionalitat amb èxit!',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'invitations-inviteform-username' => 'Декъашхо',
+);
+
 /** German (Deutsch)
  * @author Jens Liebenau
  * @author Melancholie

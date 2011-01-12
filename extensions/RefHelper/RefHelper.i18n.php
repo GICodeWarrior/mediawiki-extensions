@@ -241,6 +241,13 @@ $messages['bs'] = array(
 Možete [[Special:RefHelper|dodati referencu ručno]] ili [[Special:RefSearch|tražiti citat za dodavanje]].',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'refhelper-year' => 'Шо:',
+);
+
 /** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'refhelper-search' => 'گەڕان',
