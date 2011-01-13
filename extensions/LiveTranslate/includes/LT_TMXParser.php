@@ -69,6 +69,15 @@ class LTTMXParser extends LTTMParser {
 	protected $insideSegment;
 	
 	/**
+	 * Boolean to keep track of if the XML parser is inside a node that should be ingored.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean
+	 */	
+	protected $insideIgnoreNode;
+	
+	/**
 	 * Constructor.
 	 * 
 	 * @since 0.4
@@ -135,6 +144,9 @@ class LTTMXParser extends LTTMParser {
                 $this->currentTranslation = '';
                 $this->insideSegment = true;
                 break;
+            case 'ut' :
+            	$this->insideIgnoreNode = true;
+            	break;                
         }
     }
     
@@ -160,6 +172,9 @@ class LTTMXParser extends LTTMParser {
             case 'seg':
             	$this->insideSegment = false;
                 break;
+            case 'ut' :
+            	$this->insideIgnoreNode = false;
+            	break;
         }
     }
     
@@ -172,7 +187,7 @@ class LTTMXParser extends LTTMParser {
      * @param string $data The second parameter, data, contains the character data as a string. 
      */
     protected function segmentContentHandler( $parser, $data ) {
-        if ( $this->insideSegment ) {
+        if ( $this->insideSegment && !$this->insideIgnoreNode ) {
             $this->currentTranslation .= $data;
         }
     }
