@@ -96,6 +96,13 @@ class query_store:
 			start = args[0]
 			end = args[1]
 			sql_stmnt = sql_stmnt % ('%','%','%','%', start, end)
+		
+		elif query_name == 'report_banner_confidence':
+			start = args[0]
+			end = args[1]
+			banner = args[2]
+			campaign = args[3]
+			sql_stmnt = sql_stmnt % (start, end, banner, start, end, campaign, start, end, campaign, banner)
 			
 		else:
 			return 'no such table\n'
@@ -233,6 +240,15 @@ class query_store:
 				return 18
 			elif metric_name == 'creditcard_click_thru':
 				return 19
+			else:
+				return -1
+		elif query_name == 'report_banner_confidence':
+			if metric_name == 'click_rate':
+				return 7
+			elif metric_name == 'don_per_imp':
+				return 9
+			elif metric_name == 'amt_per_imp':
+				return 10
 			else:
 				return -1
 		else:

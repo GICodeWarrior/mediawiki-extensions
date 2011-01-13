@@ -551,7 +551,7 @@ class BannerLPReporting(FundraiserReporting):
 		
 		query_name  = 'report_bannerLP_metrics'  # rename query to work with query store
 		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time, campaign])
-		# print sql_stmnt
+		
 		key_index = query_obj.get_banner_index(query_name)
 		time_index = query_obj.get_time_index(query_name)
 		metric_index = query_obj.get_metric_index(query_name, metric_name)
@@ -675,7 +675,7 @@ class BannerLPReporting(FundraiserReporting):
 			
 			# Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
 			if self.campaign == None:
-				campaign = '[0-9](JA|SA|EA)[0-9]'
+				campaign = '[0-9](JA|SA|EA|TY)[0-9]'
 			else:
 				campaign = self.campaign 
 				
@@ -686,7 +686,7 @@ class BannerLPReporting(FundraiserReporting):
 			
 			# Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
 			if self.campaign == None:
-				campaign = '[0-9](JA|SA|EA)[0-9]'
+				campaign = '[0-9](JA|SA|EA|TY)[0-9]'
 			else:
 				campaign = self.campaign 
 				
