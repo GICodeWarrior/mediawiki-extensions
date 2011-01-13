@@ -415,21 +415,24 @@ $messages['ru'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|сохранение контрольной точки]])',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
+ * @author Жељко Тодоровић
  */
 $messages['sr-ec'] = array(
 	'checkpoint' => 'Сачувај и настави уређивање',
 	'checkpoint-desc' => 'Омогућава Вам да сачувате измене и наставите уређивање',
-	'checkpoint-tooltip' => 'Сачувајте свој напредак и наставите уређивање стране',
+	'checkpoint-tooltip' => 'Сачувајте свој напредак и наставите уређивање странице',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|прелаз чувања]])',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+ * @author Жељко Тодоровић
+ */
 $messages['sr-el'] = array(
 	'checkpoint' => 'Sačuvaj i nastavi uređivanje',
 	'checkpoint-desc' => 'Omogućava Vam da sačuvate izmene i nastavite uređivanje',
-	'checkpoint-tooltip' => 'Sačuvajte svoj napredak i nastavite uređivanje strane',
+	'checkpoint-tooltip' => 'Sačuvajte svoj napredak i nastavite uređivanje stranice',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|prelaz čuvanja]])',
 );
 
