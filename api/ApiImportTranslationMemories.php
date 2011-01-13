@@ -28,10 +28,6 @@ class ApiImportTranslationMemories extends ApiBase {
 				$this->dieUsageMsg( array( 'missingparam', $requiredParam ) );
 			}			
 		}
-		
-		//if ( !$wgUser->isAllowed( 'managetms' ) ) {
-		//	$this->dieUsageMsg( array( 'permissiondenied' ) );
-		//}
 
 		foreach ( $params['source'] as $location ) {
 			$text = false;
@@ -89,7 +85,8 @@ class ApiImportTranslationMemories extends ApiBase {
 			array( 'memory_id' => $memoryId )
 		);
 
-		$wordId = ( $memoryId - 1 ) * 100000;
+		$idOffset = ( $memoryId - 1 ) * 100000;
+		$wordId = 0;
 		
 		$dbw->begin();
 		
@@ -106,7 +103,7 @@ class ApiImportTranslationMemories extends ApiBase {
 					$dbw->insert(
 						'live_translate',
 						array(
-							'word_id' => $wordId,
+							'word_id' => $idOffset + $wordId,
 							'word_language' => $this->cleanLanguage( $language ),
 							'word_translation' => $translation,
 							'word_primary' => $primary,
@@ -125,6 +122,15 @@ class ApiImportTranslationMemories extends ApiBase {
 				$dbw->begin();
 			}
 		}
+		
+		$dbw->update(
+			'live_translate_memories',
+			array(
+				'memory_lang_count' => $tm->getLanguageAmount(),
+				'memory_tu_count' => $wordId
+			),
+			array( 'memory_id' => $memoryId )
+		);
 
 		$dbw->commit();
 	}

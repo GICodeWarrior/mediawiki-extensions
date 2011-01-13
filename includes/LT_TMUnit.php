@@ -129,4 +129,15 @@ class LTTMUnit {
 		return false;
 	}
 	
+	/**
+	 * Returns the amount of languages (variants).
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return integer
+	 */
+	public function getLanguageAmount() {
+		return count( $this->variants );
+	}
+	
 }
