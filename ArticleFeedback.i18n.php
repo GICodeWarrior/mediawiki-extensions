@@ -234,6 +234,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  * @author Gwendal
  * @author Y-M D
@@ -275,6 +276,10 @@ $messages['br'] = array(
 	'articlefeedback-pitch-reject' => 'Nann, trugarez',
 	'articlefeedback-pitch-takesurvey-title' => "Ha c'hoant hoc'h eus respont d'ur sontadeg ?",
 	'articlefeedback-pitch-takesurvey-accept' => 'Kregiñ gant an enklask',
+	'articlefeedback-pitch-createaccount-title' => "C'hoant hoc'h eus da grouiñ ur gont ?",
+	'articlefeedback-pitch-createaccount-accept' => 'Krouiñ ur gont',
+	'articlefeedback-pitch-makefirstedit-title' => "Ha c'hoant hoc'h eus da aozañ ar bajenn-mañ ?",
+	'articlefeedback-pitch-makefirstedit-accept' => 'Krogit da aozañ',
 );
 
 /** Bosnian (Bosanski)
