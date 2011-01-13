@@ -102,10 +102,11 @@ $messages['id'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Ohgi
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'snmpquery-desc' => 'SNMPgetとSNMPwalk関数を追加し、ウィキへデータを返す',
+	'snmpquery-desc' => 'SNMPget関数とSNMPwalk関数を追加し、ウィキ上で結果を表示できるようにする',
 );
 
 /** Colognian (Ripoarisch)
