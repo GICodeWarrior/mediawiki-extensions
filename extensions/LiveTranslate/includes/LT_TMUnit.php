@@ -85,4 +85,48 @@ class LTTMUnit {
 		return count( $this->variants ) > 0;
 	}
 	
+	/**
+	 * Returns if the translation unit has any significant value. This means it has at least 2
+	 * variants with different values.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean
+	 */	
+	public function isSignificant() {
+		return count( $this->variants ) > 1 && $this->hasVariantDifferences();
+	}
+	
+	/**
+	 * Returns if the translation unit has a certain minimal amount (default: 1) of
+	 * differences in values in it's variants.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return boolean
+	 */		
+	public function hasVariantDifferences( $minAmount = 1 ) {
+		$amount = -1; // The first unknown value is not a difference.
+		$knownValues = array();
+		
+		foreach ( $this->variants as $variant ) {
+			// If the value is not known yet, it's a difference.
+			if ( !in_array( $variant[0], $knownValues ) ) {
+				$knownValues[] = $variant[0];
+				$amount++;
+			}
+			// If there are synonyms, just assume it's different.
+			// This might not be the case, but no full accuracy is required.
+			else if ( count( $variant ) > 1 ) {
+				$amount++;
+			}
+			
+			if ( $amount >= $minAmount ) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 }
