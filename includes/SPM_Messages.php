@@ -148,6 +148,7 @@ $messages['id'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Ohgi
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -155,7 +156,7 @@ $messages['ja'] = array(
 	'spm_printername_wbs' => 'MS Project書き出し',
 	'spm-name' => 'セマンティックなプロジェクト管理',
 	'semanticprojectmanagement-desc' => 'セマンティックMediaWikiの内部問い合わせのためのプロジェクト管理形式',
-	'semanticprojectmanagement' => 'セマンティックなプロジェクト管理',
+	'semanticprojectmanagement' => 'セマンティックプロジェクトの設定',
 	'right-SPMsetup' => '基礎的なセマンティックなプロジェクト管理設定を編集',
 );
 
