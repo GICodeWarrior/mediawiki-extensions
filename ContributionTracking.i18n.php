@@ -994,6 +994,8 @@ $messages['sah'] = array(
 	'contrib-tracking-submitting' => 'Төлөбүрү таҥастааччыга ыытыы...',
 	'contrib-tracking-continue' => 'Аптамаатынан наадалаах сиргэ тиийбэтэх буоллаххына, тимэҕи баттаан PayPal тиһилигин көмөтүнэн сиэртибэлээһиҥҥин түмүктээ.',
 	'contrib-tracking-button' => 'Салгыы',
+	'contrib-tracking-item-name-onetime' => 'Биир төлөбүрүнэн',
+	'contrib-tracking-item-name-recurring' => 'Ый аайы төлөбүр',
 );
 
 /** Sinhala (සිංහල)
