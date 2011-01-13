@@ -35,7 +35,7 @@ $wgAutoloadClasses['TalkHereArticle'] = $dir . 'TalkHereArticle.php';
 $wgAutoloadClasses['TalkHereEditTarget'] = $dir . 'TalkHereArticle.php';
 
 $wgHooks['BeforePageDisplay'][] = 'wfTalkHereBeforePageDisplay';
-#$wgHooks['ArticleFromTitle'][] = 'wfTalkHereArticleFromTitle';
+$wgHooks['ArticleFromTitle'][] = 'wfTalkHereArticleFromTitle';
 $wgHooks['CustomEditor'][] = 'wfTalkHereCustomEditor';
 $wgHooks['EditPage::showEditForm:fields'][] = 'wfTalkHereShowEditFormFields';
 
@@ -44,18 +44,11 @@ $wgAjaxExportList[] = 'wfTalkHereAjaxEditor';
 function wfTalkHereBeforePageDisplay( $out, $skin ) {
 	global $wgScriptPath, $wgJsMimeType, $wgUseAjax;
 
-	$out->addLink(
-		array(
-			'rel' => 'stylesheet',
-			'type' => 'text/css',
-			'href' => $wgScriptPath . '/extensions/TalkHere/TalkHere.css'
-		)
-	);
+	$out->addExtensionStyle( $wgScriptPath . '/extensions/TalkHere/TalkHere.css' );
 
-	if ( $wgUseAjax ) $out->addScript(
-		"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/TalkHere/TalkHere.js\">" .
-		"</script>\n"
-	);
+	if ( $wgUseAjax ) {
+		$out->addScriptFile( $wgScriptPath . '/extensions/TalkHere/TalkHere.js' );
+	}
 
 	return true;
 }
@@ -63,7 +56,9 @@ function wfTalkHereBeforePageDisplay( $out, $skin ) {
 function wfTalkHereArticleFromTitle( &$title, &$article ) {
 	global $wgRequest, $wgTalkHereNamespaces;
 
-	if (isset($title->noTalkHere)) return true; //stop recursion
+	if ( isset( $title->noTalkHere ) ) {
+		return true; //stop recursion
+	}
 
 	$action    = $wgRequest->getVal( 'action'    );
 	$oldid     = $wgRequest->getVal( 'oldid'     );
