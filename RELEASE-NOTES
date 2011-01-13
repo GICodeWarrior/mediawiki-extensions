@@ -13,6 +13,8 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 * Added support for the Translation Memory eXchange (TMX) format.
 * Added Google branding, which is required when using the Google Translate API.
 : https://code.google.com/apis/language/translate/v1/getting_started.html#getBranding
+* Improved translation memory insertion into the database.
+* Added better tracking of translation memory sizes and language counts.
 
 === Version 0.3 ===
 2011-01-07
