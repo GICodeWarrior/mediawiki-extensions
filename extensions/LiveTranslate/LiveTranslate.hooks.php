@@ -13,7 +13,7 @@
 final class LiveTranslateHooks {
 	
 	/**
-	 * 
+	 * Hook to insert things into article headers.
 	 * 
 	 * @since 0.1
 	 * 
@@ -55,22 +55,45 @@ final class LiveTranslateHooks {
 	 * @param Title $title
 	 */
 	protected static function displayDictionaryPage( Article &$article, Title $title ) {
-		global $wgOut, $wgLang, $egLiveTranslateLanguages;
+		global $wgOut, $wgLang, $wgUser, $egLiveTranslateLanguages;
 		
-		$parser = LTTMParser::newFromType( LiveTranslateFunctions::getMemoryType( $title->getFullText() ) );
-		$tm = $parser->parse( $article->getContent() );	
-		$tus = $tm->getTranslationUnits();	
+		$dbr = wfGetDb( DB_SLAVE );
 		
-		if ( count( $tus ) == 0 ) {
+		$res = $dbr->select(
+			'live_translate_memories',
+			array(
+				'memory_lang_count',
+				'memory_tu_count'
+			),
+			array( 'memory_location' => $title->getFullText() ),
+			array( 'LIMIT' => 1 )
+		);
+		
+		foreach ( $res as $tm ) {
+			break;
+		}
+		
+		if ( $tm->memory_tu_count == 0 ) {
 			$wgOut->addWikiMsg( 'livetranslate-dictionary-empty' );
 		}
 		else {
 			$wgOut->addWikiMsg(
 				'livetranslate-dictionary-count',
-				$wgLang->formatNum( count( $tus ) ) ,
-				$wgLang->formatNum( count( $tus[0]->getVariants() ) )
+				$wgLang->formatNum( $tm->memory_tu_count ) ,
+				$wgLang->formatNum( $tm->memory_lang_count )
 			);
 			
+			if ( $wgUser->isAllowed( 'managetms' ) ) {
+				$wgOut->addHTML(
+					Html::element( 
+						'a',
+						array( 'href' => Title::newFromText( 'Special:LiveTranslate' )->getInternalURL() ),
+						wfMsg( 'livetranslate-dictionary-goto-edit' )
+					)
+				);
+			}
+			
+			/*
 			$notAllowedLanguages = array();
 			
 			foreach ( $tus[0]->getVariants() as $languageCode => $translations ) {
@@ -103,6 +126,7 @@ final class LiveTranslateHooks {
 					)
 				);
 			}
+			*/
 		}		
 	}
 	
