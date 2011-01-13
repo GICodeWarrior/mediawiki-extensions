@@ -66,6 +66,9 @@ class SpecialChemicalsources extends SpecialPage {
 	public function execute( $params ) {
 		global $wgOut, $wgRequest, $wgChemFunctions_Parameters, $wgChemFunctions_Prefix;
 
+		$this->setHeaders();
+		$this->outputHeader();
+
 		$this->Parameters = $this->wgChemFunctions_Parameters;
 		$this->Prefix = $this->wgChemFunctions_Prefix;
 
@@ -203,18 +206,17 @@ class SpecialChemicalsources extends SpecialPage {
 
 	# If no parameters supplied, get them!
 	function getParams() {
-		global $wgTitle, $wgOut;
-		if ( !empty( $wgTitle ) ) {
-			$action = $wgTitle->escapeLocalUrl();
-			$go = htmlspecialchars( wfMsg( "go" ) );
+		global $wgOut;
 
-			$wgOut->addWikitext ( wfMsg( $this->Prefix . '_SearchExplanation' ) );
-			$wgOut->addHTML( "<table><tr><td>" );
-			foreach ( $this->Parameters as $key ) {
-				$this->GetParam_Row( $this->Prefix . "_" . $key, $key, $action, $go );
-			}
-			$wgOut->addHTML( "</table>" );
+		$action = $this->getTitle()->escapeLocalUrl();
+		$go = htmlspecialchars( wfMsg( "go" ) );
+
+		$wgOut->addWikitext ( wfMsg( $this->Prefix . '_SearchExplanation' ) );
+		$wgOut->addHTML( "<table><tr><td>" );
+		foreach ( $this->Parameters as $key ) {
+			$this->GetParam_Row( $this->Prefix . "_" . $key, $key, $action, $go );
 		}
+		$wgOut->addHTML( "</table>" );
 	}
 
 	# Creates a table row
