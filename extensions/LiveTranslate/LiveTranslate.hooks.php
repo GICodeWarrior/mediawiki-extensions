@@ -13,7 +13,7 @@
 final class LiveTranslateHooks {
 	
 	/**
-	 * Adds the translation interface to articles.
+	 * 
 	 * 
 	 * @since 0.1
 	 * 
@@ -24,7 +24,7 @@ final class LiveTranslateHooks {
 	 * @return true
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
-		global $wgOut, $wgLang, $egGoogleApiKey, $egLiveTranslateLanguages;
+		global $egGoogleApiKey, $egLiveTranslateLanguages;
 		
 		$title = $article->getTitle();
 		
@@ -32,97 +32,128 @@ final class LiveTranslateHooks {
 		
 		// FIXME: Hitting the db on every page load should be avoided
 		if ( in_array( $title->getFullText(), LiveTranslateFunctions::getLocalMemoryNames() ) ) {
-			$parser = LTTMParser::newFromType( LiveTranslateFunctions::getMemoryType( $title->getFullText() ) );
-			$tm = $parser->parse( $article->getContent() );	
-			$tus = $tm->getTranslationUnits();	
-			
-			if ( count( $tus ) == 0 ) {
-				$wgOut->addWikiMsg( 'livetranslate-dictionary-empty' );
-			}
-			else {
-				$wgOut->addWikiMsg(
-					'livetranslate-dictionary-count',
-					$wgLang->formatNum( count( $tus ) ) ,
-					$wgLang->formatNum( count( $tus[0]->getVariants() ) )
-				);
-				
-				$notAllowedLanguages = array();
-				
-				foreach ( $tus[0]->getVariants() as $languageCode => $translations ) {
-					if ( !in_array( $languageCode, $egLiveTranslateLanguages ) ) {
-						$notAllowedLanguages[] = $languageCode;
-					}
-				}
-				
-				if ( count( $notAllowedLanguages ) > 0 ) {
-					$languages = Language::getLanguageNames( false );
-					
-					foreach ( $notAllowedLanguages as &$notAllowedLang ) {
-						if ( array_key_exists( $notAllowedLang, $languages ) ) {
-							$notAllowedLang = $languages[$notAllowedLang];
-						}
-					}
-					
-					$wgOut->addHTML(
-						Html::element(
-							'span',
-							array( 'style' => 'color:darkred' ),
-							wfMsgExt( 'livetranslate-dictionary-unallowed-langs', 'parsemag', $wgLang->listToText( $notAllowedLanguages ), count( $notAllowedLanguages ) )
-						)
-						
-					);
-				}
-			}
-			
-			$outputDone = true;
+			self::displayDictionaryPage( $article, $title );
+			$outputDone = true; // The translations themselves should not be shown. 
 		}
 		else if (
 			$egGoogleApiKey != ''
 			&& $article->exists() 
 			&& ( count( $egLiveTranslateLanguages ) > 1 || ( count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) ) ) {
-			$wgOut->addHTML(
-				Html::rawElement(
-					'div',
-					array(
-						'id' => 'livetranslatediv',
-						'style' => 'display:inline; float:right',
-						'class' => 'notranslate'
-					),
-					htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
-					'&#160;' . 
-					LiveTranslateFunctions::getLanguageSelector( $currentLang ) .
-					'&#160;' . 
-					Html::element(
-						'button',
-						array( 'id' => 'livetranslatebutton' ),
-						wfMsg( 'livetranslate-button-translate' )
-					) .
-					'&#160;' . 
-					Html::element(
-						'button',
-						array( 'id' => 'ltrevertbutton', 'style' => 'display:none' ),
-						wfMsg( 'livetranslate-button-revert' )
-					)					
-				) .
-				'<br /><br /><div id="googlebranding" style="display:inline; float:right"></div>'
-			);
 			
-			$wgOut->addScript(
-				Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
-				Html::inlineScript(
-					'google.load("language", "1");
-					google.setOnLoadCallback(function(){google.language.getBranding("googlebranding");});' .
-					'var sourceLang = ' . json_encode( $currentLang ) . ';'
-				)
-			);		
-			
-			LiveTranslateFunctions::loadJs();		
+			self::displayTranslationControl( $currentLang );
 		}
 		
 		return true;
 	}
 	
-
+	/**
+	 * Displays some shorts statistics about the dictionary page.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param Article $article
+	 * @param Title $title
+	 */
+	protected static function displayDictionaryPage( Article &$article, Title $title ) {
+		global $wgOut, $wgLang, $egLiveTranslateLanguages;
+		
+		$parser = LTTMParser::newFromType( LiveTranslateFunctions::getMemoryType( $title->getFullText() ) );
+		$tm = $parser->parse( $article->getContent() );	
+		$tus = $tm->getTranslationUnits();	
+		
+		if ( count( $tus ) == 0 ) {
+			$wgOut->addWikiMsg( 'livetranslate-dictionary-empty' );
+		}
+		else {
+			$wgOut->addWikiMsg(
+				'livetranslate-dictionary-count',
+				$wgLang->formatNum( count( $tus ) ) ,
+				$wgLang->formatNum( count( $tus[0]->getVariants() ) )
+			);
+			
+			$notAllowedLanguages = array();
+			
+			foreach ( $tus[0]->getVariants() as $languageCode => $translations ) {
+				$languageCode = strtolower( $languageCode );
+				$mappings = LiveTranslateFunctions::getInputLangMapping();
+				
+				if ( array_key_exists( $languageCode, $mappings ) ) {
+					$languageCode = $mappings[$languageCode];
+				}	
+								
+				if ( !in_array( $languageCode, $egLiveTranslateLanguages ) ) {
+					$notAllowedLanguages[] = $languageCode;
+				}
+			}
+			
+			if ( count( $notAllowedLanguages ) > 0 ) {
+				$languages = Language::getLanguageNames( false );
+				
+				foreach ( $notAllowedLanguages as &$notAllowedLang ) {
+					if ( array_key_exists( $notAllowedLang, $languages ) ) {
+						$notAllowedLang = $languages[$notAllowedLang];
+					}
+				}
+				
+				$wgOut->addHTML(
+					Html::element(
+						'span',
+						array( 'style' => 'color:darkred' ),
+						wfMsgExt( 'livetranslate-dictionary-unallowed-langs', 'parsemag', $wgLang->listToText( $notAllowedLanguages ), count( $notAllowedLanguages ) )
+					)
+				);
+			}
+		}		
+	}
+	
+	/**
+	 * Outputs the Live Translate translation control.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param string $currentLang
+	 */
+	protected static function displayTranslationControl( $currentLang ) {
+		global $wgOut, $egGoogleApiKey;
+		
+		$wgOut->addHTML(
+			Html::rawElement(
+				'div',
+				array(
+					'id' => 'livetranslatediv',
+					'style' => 'display:inline; float:right',
+					'class' => 'notranslate'
+				),
+				htmlspecialchars( wfMsg( 'livetranslate-translate-to' ) ) .
+				'&#160;' . 
+				LiveTranslateFunctions::getLanguageSelector( $currentLang ) .
+				'&#160;' . 
+				Html::element(
+					'button',
+					array( 'id' => 'livetranslatebutton' ),
+					wfMsg( 'livetranslate-button-translate' )
+				) .
+				'&#160;' . 
+				Html::element(
+					'button',
+					array( 'id' => 'ltrevertbutton', 'style' => 'display:none' ),
+					wfMsg( 'livetranslate-button-revert' )
+				)					
+			) .
+			'<br /><br /><div id="googlebranding" style="display:inline; float:right"></div>'
+		);
+		
+		$wgOut->addScript(
+			Html::linkedScript( 'https://www.google.com/jsapi?key=' . htmlspecialchars( $egGoogleApiKey ) ) .
+			Html::inlineScript(
+				'google.load("language", "1");
+				google.setOnLoadCallback(function(){google.language.getBranding("googlebranding");});' .
+				'var sourceLang = ' . json_encode( $currentLang ) . ';'
+			)
+		);		
+		
+		LiveTranslateFunctions::loadJs();			
+	}
 	
 	/**
 	 * Schema update to set up the needed database tables.
