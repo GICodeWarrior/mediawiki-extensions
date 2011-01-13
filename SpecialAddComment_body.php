@@ -62,7 +62,7 @@ class SpecialAddComment extends UnlistedSpecialPage {
 
 			$wgOut->addWikiText( wfMsg( 'spamprotectiontext' ) );
 			$wgOut->addWikiText( wfMsg( 'spamprotectionmatch', "<nowiki>{$matches[0]}</nowiki>" ) );
-			$wgOut->returnToMain( false, $wgTitle );
+			$wgOut->returnToMain( false, $title );
 			return;
 		}
 
