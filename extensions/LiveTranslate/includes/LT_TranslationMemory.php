@@ -51,4 +51,26 @@ class LTTranslationMemory {
 		return $this->translationUnits;
 	}
 	
+	/**
+	 * Returns the max amount of languages (variants) in a single translation unit.
+	 * Note: this might not be the total amount of unique languages!
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return integer
+	 */	
+	public function getLanguageAmount() {
+		$maxAmount = 0;
+		
+		foreach ( $this->translationUnits as $tu ) {
+			$amount = $tu->getLanguageAmount();
+			
+			if ( $amount > $maxAmount ) {
+				$maxAmount = $amount;
+			}
+		}
+		
+		return $maxAmount;
+	}
+	
 }

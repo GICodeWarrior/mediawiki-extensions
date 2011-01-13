@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/live_translate_memories (
   memory_id               INT(4) unsigned   NOT NULL auto_increment PRIMARY KEY,
   memory_type             INT(2) unsigned   NOT NULL,
   memory_location         VARCHAR(255)      NOT NULL,  
-  memory_local            INT(1) unsigned   NOT NULL
+  memory_local            INT(1) unsigned   NOT NULL,
+  memory_lang_count       INT(2) unsigned   NOT NULL,
+  memory_tu_count         INT(8) unsigned   NOT NULL
 ) /*$wgDBTableOptions*/;
 
-INSERT INTO /*$wgDBprefix*/live_translate_memories VALUES (NULL, 0, "Live Translate Dictionary", 1);
+INSERT INTO /*$wgDBprefix*/live_translate_memories VALUES (NULL, 0, "Live Translate Dictionary", 1, 0, 0);
