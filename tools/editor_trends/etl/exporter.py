@@ -32,7 +32,6 @@ import configuration
 settings = configuration.Settings()
 from utils import utils
 from utils import messages
-from utils import models
 from database import db
 from etl import shaper
 from analyses import cohort_charts
@@ -207,11 +206,15 @@ def generate_long_editor_dataset(tasks, dbname, collection, **kwargs):
     ld.write_longitudinal_data()
 
 
-def create_windows():
+def create_windows(break_down_first_year=True):
+    '''
+    This function creates a list of months. If break_down_first_year = True then
+    the first year will be split in 3, 6, 9 months as well. 
+    '''
     years = (datetime.datetime.now().year + 1) - 2001
-    p = [3, 6, 9]
     windows = [y * 12 for y in xrange(1, years)]
-    windows = p + windows
+    if break_down_first_year:
+        windows = [3, 6, 9] + windows
     return windows
 
 
@@ -247,6 +250,7 @@ def generate_cohort_dataset_raw(tasks, dbname, collection):
 
     ld.write_longitudinal_data()
 
+
 def generate_cohort_dataset_forward(tasks, dbname, collection):
     mongo = db.init_mongo_db(dbname)
     editors = mongo[collection + '_dataset']
@@ -276,7 +280,7 @@ def generate_cohort_dataset_forward(tasks, dbname, collection):
                 months = months[new_wikipedian.month - 1:]
                 months = [str(m) for m in months]
             for month in months:
-                experience = str(i * 12 + int(month))
+                experience = str(i * 12 + (int(month) - 1))
                 if experience not in data[new_wikipedian.year][new_wikipedian.month]:
                     data[new_wikipedian.year][new_wikipedian.month][experience] = 0
                 data[new_wikipedian.year][new_wikipedian.month][experience] += 1 if edits[str(year)][month] > 0 else 0
@@ -306,17 +310,17 @@ def generate_cohort_dataset_backward_custom(tasks, dbname, collection):
         obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1, 'monthly_edits':1, 'edits_by_year': 1, 'last_edit_by_year': 1})
         first_edit = obs['first_edit']
 
-        if obs['monthly_edits']['2010']['8'] > 0:
+        if obs['monthly_edits']['2010']['8'] > 4:
             for year in xrange(2001, datetime.datetime.now().year + 1):
-                if obs['edits_by_year'].get(year, 0) > 0:
-                    last_edit = obs['last_edit_by_year'][year]
+                if obs['edits_by_year'].get(str(year), 0) > 0:
+                    last_edit = obs['last_edit_by_year'][str(year)]
                     editor_dt = relativedelta(last_edit, first_edit)
                     editor_dt = (editor_dt.years * 12) + editor_dt.months
                     for w in windows:
                         if w >= editor_dt:
                             data[int(year)][w] += 1
                             break
-        filename = '_august_2010_cohort_data_.bin'
+        filename = 'august_2010_cohort_data_.bin'
         utils.store_object(data, settings.binary_location, '%s_%s' % (dbname, filename))
         cohort_charts.prepare_cohort_dataset(dbname, filename)
 
@@ -325,7 +329,7 @@ def generate_cohort_dataset_backward_custom(tasks, dbname, collection):
 def generate_cohort_dataset_backward(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
     editors = mongo[collection + '_dataset']
-    windows = create_windows()
+    windows = create_windows(break_down_first_year=False)
     data = shaper.create_datacontainer('dict')
     data = shaper.add_windows_to_datacontainer(data, windows)
 
@@ -346,9 +350,10 @@ def generate_cohort_dataset_backward(tasks, dbname, collection, **kwargs):
                     if w >= editor_dt:
                         data[int(year)][w] += 1
                         break
-    print 'Storing data as %s' % os.path.join(settings.binary_location, dbname + '_cohort_data.bin')
-    utils.store_object(data, settings.binary_location, dbname + '_cohort_data.bin')
-    cohort_charts.prepare_cohort_dataset(dbname)
+    filename = 'cohort_data_backward.bin'
+    print 'Storing data as %s' % os.path.join(settings.binary_location, '%s%s' % (dbname, filename))
+    utils.store_object(data, settings.binary_location, '%s%s' % (dbname, filename))
+    cohort_charts.prepare_cohort_dataset(dbname, filename)
 
 
 def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):
@@ -428,6 +433,6 @@ if __name__ == '__main__':
     dbname = 'enwiki'
     collection = 'editors'
     #debug(dbname, collection)
-    dataset_launcher(dbname, collection, generate_cohort_dataset_forward)
+    dataset_launcher(dbname, collection, generate_cohort_dataset_backward_custom)
     #dataset_launcher(dbname, collection, generate_long_editor_dataset)
     #dataset_launcher(dbname, collection, generate_wide_editor_dataset)

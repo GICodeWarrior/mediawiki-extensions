@@ -38,6 +38,7 @@ from utils import dump_downloader
 from utils import compression
 from utils import ordered_dict
 from utils import exceptions
+from utils import log
 from database import db
 from etl import chunker
 from etl import extracter
@@ -51,6 +52,15 @@ datasets = {'forward': 'generate_cohort_dataset_forward',
             'backward_custom': 'generate_cohort_dataset_backward_custom',
             'wide': 'generate_wide_editor_dataset',
             }
+
+class Config(object):
+    def __init__(self, locations):
+        for location in locations:
+            setattr(self, location, locations[location])
+
+    def __iter__(self):
+        for item in self.__dict__:
+            yield item
 
 class Timer(object):
     def __init__(self):
@@ -68,7 +78,7 @@ def get_value(args, key):
     return getattr(args, key, None)
 
 
-def config_launcher(args, logger, **kwargs):
+def config_launcher(args, logger, config):
     settings.load_configuration()
 
 
@@ -107,28 +117,30 @@ def get_namespaces(args):
         return namespaces
 
 
-def write_message_to_log(logger, args, message=None, verb=None, **kwargs):
+def write_message_to_log(logger, args, config, message=None, verb=None, **kwargs):
     function = get_value(args, 'func')
     logger.debug('%s\tStarting %s task' % (datetime.datetime.now(), function.func_name))
     if message:
         logger.debug('%s\t%s' % (datetime.datetime.now(), message))
 
-    max_length = max([len(kw) for kw in kwargs])
+    if config == None:
+        config = Config(kwargs)
+    max_length = max([len(prop) for prop in config if type(prop) != type(True)])
     max_tabs = max_length // settings.tab_width
     res = max_length % settings.tab_width
     if res > 0:
         max_tabs += 1
     pos = max_tabs * settings.tab_width
-    for kw in kwargs:
+    for prop in config:
         if verb:
-            logger.debug('%s\tAction: %s\tSetting: %s' % (datetime.datetime.now(), verb, kwargs[kw]))
+            logger.debug('%s\tAction: %s\tSetting: %s' % (datetime.datetime.now(), verb, getattr(config, prop)))
         else:
-            tabs = (pos - len(kw)) // settings.tab_width
-            res = len(kw) % settings.tab_width
+            tabs = (pos - len(prop)) // settings.tab_width
+            res = len(prop) % settings.tab_width
             if res > 0 or tabs == 0:
                 tabs += 1
             tabs = ''.join(['\t' for t in xrange(tabs)])
-            logger.debug('%s\t\tKey: %s%sSetting: %s' % (datetime.datetime.now(), kw, tabs, kwargs[kw]))
+            logger.debug('%s\t\t%s %s%s%s %s' % (datetime.datetime.now(), 'Key:', prop, tabs, 'Setting:', getattr(config, prop)))
 
 
 def get_project(args):
@@ -147,187 +159,197 @@ def determine_file_locations(args, logger):
     location = get_value(args, 'location') if get_value(args, 'location') != None else settings.input_location
     project = get_project(args)
     language_code = get_language(args)
-    config['format'] = get_value(args, 'format')
+    targets = get_value(args, 'datasets')
+
     config['language_code'] = language_code
     config['language'] = get_value(args, 'language')
+    config['collection'] = get_value(args, 'collection')
+    config['ignore'] = get_value(args, 'except')
+    config['clean'] = get_value(args, 'new')
+
+    config['dataset'] = os.path.join(settings.dataset_location, config['full_project'])
     config['location'] = os.path.join(location, language_code, project)
     config['txt'] = os.path.join(config['location'], 'txt')
     config['sorted'] = os.path.join(config['location'], 'sorted')
+
     config['project'] = project
     config['full_project'] = get_projectname(args)
     config['filename'] = generate_wikidump_filename(language_code, project, args)
-    config['collection'] = get_value(args, 'collection')
     config['namespaces'] = get_namespaces(args)
-    config['directories'] = [config['location'], config['txt'], config['sorted']]
+    config['directories'] = [config['location'], config['txt'], config['sorted'], config['dataset']]
+    config['path'] = '/%s/latest/' % config['full_project']
+    config['targets'] = targets.split(',')
 
+    c = Config(config)
     message = 'Settings as generated from the configuration module.'
-    write_message_to_log(logger, args, message, None, **config)
-    return config
+    write_message_to_log(logger, args, c, message)
+    return c
 
 
-def show_settings(args, logger, **kwargs):
+def show_settings(args, logger, config):
     language_map = languages.language_map()
-    language = kwargs.pop('language')
-    language_code = kwargs.pop('language_code')
-    config = {}
-    config['Project'] = '%s' % settings.projects.get(kwargs.pop('project'), 'wiki').title()
-    config['Language'] = '%s / %s' % (language_map[language_code], language) #.decode(settings.encoding)
-    config['Input directory'] = '%s' % kwargs.get('location')
-    config['Output directory'] = '%s and subdirectories' % kwargs.get('location')
 
-    max_length_key = max([len(key) for key in config.keys()])
+    about = {}
+    about['Project'] = '%s' % settings.projects.get(config.project).title()
+    about['Language'] = '%s / %s' % (language_map[config.language_code], config.language) #.decode(settings.encoding)
+    about['Input directory'] = '%s' % config.location
+    about['Output directory'] = '%s and subdirectories' % config.location
+
+    max_length_key = max([len(key) for key in about.keys()])
     message = 'Final settings after parsing command line arguments:'
-    write_message_to_log(logger, args, message, None, **config)
-    for c in config:
-        print '%s: %s' % (c.rjust(max_length_key), config[c])
+    for a in about:
+        print '%s: %s' % (a.rjust(max_length_key), about[a])
+    about = Config(about)
+    write_message_to_log(logger, args, about, message)
 
 
-def dump_downloader_launcher(args, logger, **kwargs):
+def dump_downloader_launcher(args, logger, config):
     print 'Start downloading'
     timer = Timer()
-    write_message_to_log(logger, args, **kwargs)
-    filename = kwargs.get('filename')
-    extension = kwargs.get('extension')
-    location = kwargs.get('location')
-    full_project = kwargs.get('full_project')
-    pbar = get_value(args, 'progress')
-    domain = settings.wp_dump_location
-    path = '/%s/latest/' % full_project
-    extension = utils.determine_file_extension(filename)
+    write_message_to_log(logger, args, config)
+
+    extension = utils.determine_file_extension(config.filename)
     filemode = utils.determine_file_mode(extension)
-    dump_downloader.download_wiki_file(domain, path, filename, location, filemode, pbar)
+    log.log_to_mongo(config.full_project, 'download', timer, type='start')
+    task_queue = dump_downloader.create_list_dumpfiles('%s%s' % (settings.wp_dump_location, path), config.filename, extension)
+    while True:
+        filename = task_queue.get(block=False)
+        if filename == None:
+            break
+        tasks_queue.task_done()
+        dump_downloader.download_wiki_file(settings.wp_dump_location, config.path, filename, config.location, filemode, config.pbar)
+
+
     timer.elapsed()
+    log.log_to_mongo(full_project, 'download', timer, type='finish')
 
-
-def chunker_launcher(args, logger, **kwargs):
-    print 'Start splitting'
-    timer = Timer()
-    write_message_to_log(logger, args, **kwargs)
-    filename = kwargs.pop('filename')
-    location = kwargs.pop('location')
-    project = kwargs.pop('project')
-    language = kwargs.pop('language')
-    language_code = kwargs.pop('language_code')
-    namespaces = kwargs.pop('namespaces')
-    format = kwargs.pop('format')
-    ext = utils.determine_file_extension(filename)
-    file = filename.replace('.' + ext, '')
-    result = utils.check_file_exists(location, file)
-    if not result:
-        retcode = launch_zip_extractor(args, logger, location, filename)
-    else:
-        retcode = 0
-    if retcode != 0:
-        sys.exit(retcode)
-
-    chunker.split_file(location, file, project, language_code, namespaces, format=format, zip=False)
-    timer.elapsed()
+#def chunker_launcher(args, logger, **kwargs):
+#    print 'Start splitting'
+#    timer = Timer()
+#    write_message_to_log(logger, args, **kwargs)
+#    filename = kwargs.pop('filename')
+#    location = kwargs.pop('location')
+#    project = kwargs.pop('project')
+#    language = kwargs.pop('language')
+#    language_code = kwargs.pop('language_code')
+#    namespaces = kwargs.pop('namespaces')
+#    format = kwargs.pop('format')
+#    ext = utils.determine_file_extension(filename)
+#    file = filename.replace('.' + ext, '')
+#    result = utils.check_file_exists(location, file)
+#    if not result:
+#        retcode = launch_zip_extractor(args, logger, location, filename)
+#    else:
+#        retcode = 0
+#    if retcode != 0:
+#        sys.exit(retcode)
+#
+#    chunker.split_file(location, file, project, language_code, namespaces, format=format, zip=False)
+#    timer.elapsed()
 
 
 def launch_zip_extractor(args, logger, location, file):
     print 'Unzipping zip file'
     timer = Timer()
-    write_message_to_log(logger, args, location=location, file=file)
+    log.log_to_mongo(config.full_project, 'unpack', timer, type='start')
+    write_message_to_log(logger, args, None, message=None, verb=None, location=location, file=file)
     compressor = compression.Compressor(location, file)
     compressor.extract()
     timer.elapsed()
+    log.log_to_mongo(full_project, 'unpack', timer, type='finish')
 
 
-def extract_launcher(args, logger, **kwargs):
+def extract_launcher(args, logger, config):
     print 'Extracting data from XML'
     timer = Timer()
-    location = kwargs.pop('location')
-    language_code = kwargs.pop('language_code')
-    project = kwargs.pop('project')
-    write_message_to_log(logger, args, location=location, language_code=language_code, project=project)
-    extracter.parse_dumpfile(project, language_code, namespaces=['0'])
+    log.log_to_mongo(config.full_project, 'extract', timer, type='start')
+    write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, language_code=config.language_code, project=config.project)
+    '''make sure that the file exists, if it doesn't then expand it first'''
+    print 'Checking if dump file has been extracted...'
+    extension = utils.determine_file_extension(config.filename)
+    filename = config.filename.replace(extension, '')
+    result = utils.check_file_exists(config.location, filename)
+    if not result:
+        print 'Dump file has not yet been extracted...'
+        retcode = launch_zip_extractor(args, logger, config.location, config.filename)
+    else:
+        print 'Dump file has been extracted...'
+        retcode = 0
+    if retcode != 0:
+        sys.exit(retcode)
+    extracter.parse_dumpfile(config.project, config.language_code, namespaces=['0'])
     timer.elapsed()
+    log.log_to_mongo(full_project, 'extract', timer, type='finish')
 
 
-def sort_launcher(args, logger, **kwargs):
+def sort_launcher(args, logger, config):
     print 'Start sorting data'
     timer = Timer()
-    location = kwargs.pop('location')
-    input = os.path.join(location, 'txt')
-    output = os.path.join(location, 'sorted')
-    write_message_to_log(logger, args, location=location, input=input, output=output)
+    log.log_to_mongo(config.full_project, 'sort', timer, type='start')
+    write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, input=config.input, output=config.output)
     sort.mergesort_launcher(input, output)
     timer.elapsed()
+    log.log_to_mongo(full_project, 'sort', timer, type='finish')
 
 
-def store_launcher(args, logger, **kwargs):
+def store_launcher(args, logger, config):
     print 'Start storing data in MongoDB'
     timer = Timer()
-    location = kwargs.pop('location')
-    input = os.path.join(location, 'sorted')
-    project = kwargs.pop('full_project')
-    collection = kwargs.pop('collection')
-
-    db.cleanup_database(project, logger)
-
-    write_message_to_log(logger, args, verb='Storing', location=location, input=input, project=project, collection=collection)
-    store.launcher(input, project, collection)
-    cnt_editors = db.count_records(project, collection)
+    log.log_to_mongo(config.full_project, 'store', timer, type='start')
+    db.cleanup_database(config.project, logger)
+    write_message_to_log(logger, args, None, message=None, verb='Storing', location=config.location, input=config.input, project=config.project, collection=config.collection)
+    store.launcher(config.input, config.project, config.collection)
     timer.elapsed()
+    log.log_to_mongo(full_project, 'store', timer, type='finish')
 
 
 def transformer_launcher(args, logger, **kwargs):
     print 'Start transforming dataset'
     timer = Timer()
-    project = kwargs.pop('full_project')
-    collection = kwargs.pop('collection')
-    db.cleanup_database(project, logger, 'dataset')
-    write_message_to_log(logger, args, verb='Transforming', project=project, collection=collection)
-    transformer.transform_editors_single_launcher(project, collection)
+    log.log_to_mongo(config.full_project, 'transform', timer, type='start')
+    db.cleanup_database(config.project, logger, 'dataset')
+    write_message_to_log(logger, args, None, message=None, verb='Transforming', project=config.project, collection=config.collection)
+    transformer.transform_editors_single_launcher(config.project, config.collection)
     timer.elapsed()
+    log.log_to_mongo(full_project, 'transform', timer, type='finish')
 
 
-def debug_launcher(args, logger, **kwargs):
-    pass
-
-
-def exporter_launcher(args, logger, **kwargs):
+def exporter_launcher(args, logger, config):
     print 'Start exporting dataset'
     timer = Timer()
-    collection = get_value(args, 'collection')
-    dbname = kwargs.get('full_project')
-    targets = get_value(args, 'datasets')
-    targets = targets.split(',')
-    for target in targets:
-        write_message_to_log(logger, args, verb='Exporting', target=target, dbname=dbname, collection=collection)
+    log.log_to_mongo(config.full_project, 'export', timer, type='start')
+    for target in config.targets:
+        write_message_to_log(logger, args, None, message=None, verb='Exporting', target=target, dbname=config.full_project, collection=config.collection)
         target = datasets[target]
-        exporter.dataset_launcher(dbname, collection, target)
+        exporter.dataset_launcher(config.full_project, config.collection, target)
     timer.elapsed()
+    log.log_to_mongo(config.full_project, 'export', timer, type='finish')
 
 
-def cleanup(logger, args, **kwargs):
-    dirs = kwargs.get('directories')[1:]
-    for dir in dirs:
-        write_message_to_log(logger, args, verb='Deleting', dir=dir)
+def cleanup(logger, args, config):
+    #dirs = kwargs.get('directories')[1:]
+    for dir in config.directories[1:]:
+        write_message_to_log(logger, args, None, message=None, verb='Deleting', dir=dir)
         utils.delete_file(dir, '', directory=True)
 
-    write_message_to_log(logger, args, verb='Creating', dir=dirs)
+    write_message_to_log(logger, args, None, message=None, verb='Creating', dir=dirs)
     settings.verify_environment(dirs)
 
-
-    file = kwargs.get('full_project') + '_editor.bin'
-    write_message_to_log(logger, args, verb='Deleting', file=file)
+    file = '%s%s' % (config.full_project, '_editor.bin')
+    #file = kwargs.get('full_project') + '_editor.bin'
+    write_message_to_log(logger, args, None, message=None, verb='Deleting', file=file)
     utils.delete_file(settings.binary_location, file)
 
 
-def all_launcher(args, logger, **kwargs):
+def all_launcher(args, logger, config):
     print 'The entire data processing chain has been called, this will take a couple of hours (at least) to complete.'
     timer = Timer()
-    full_project = kwargs.get('full_project', None)
-    message = 'Start of building %s dataset.' % full_project
+    log.log_to_mongo(config.full_project, 'all', timer, type='start')
+    message = 'Start of building %s dataset.' % config.full_project
 
-
-    ignore = get_value(args, 'except')
-    clean = get_value(args, 'new')
-    format = get_value(args, 'format')
-    write_message_to_log(logger, args, message=message, full_project=full_project, ignore=ignore, clean=clean)
-    if clean:
-        cleanup(logger, args, **kwargs)
+    write_message_to_log(logger, args, None, message=message, verb=None, full_project=config.full_project, ignore=config.ignore, clean=config.clean)
+    if config.clean:
+        cleanup(logger, args, config)
 
     functions = ordered_dict.OrderedDict(((dump_downloader_launcher, 'download'),
                                           #(chunker_launcher, 'split'),
@@ -338,9 +360,10 @@ def all_launcher(args, logger, **kwargs):
                                           (exporter_launcher, 'export')))
 
     for function, callname in functions.iteritems():
-        if callname not in ignore:
-            function(args, logger, **kwargs)
+        if callname not in config.ignore:
+            function(args, logger, config)
     timer.elapsed()
+    log.log_to_mongo(full_project, 'all', timer, type='finish')
 
 
 def supported_languages():
@@ -349,7 +372,7 @@ def supported_languages():
     return tuple(choices)
 
 
-def show_languages(args, logger, **kwargs):
+def show_languages(args, logger, config):
     first = get_value(args, 'startswith')
     if first != None:
         first = first.title()
@@ -376,7 +399,7 @@ def detect_python_version(logger):
 
 
 def about():
-    print '\nEditor Trends Software is (c) 2010 by the Wikimedia Foundation.'
+    print '\nEditor Trends Software is (c) 2010-2011 by the Wikimedia Foundation.'
     print 'Written by Diederik van Liere (dvanliere@gmail.com).'
     print 'This software comes with ABSOLUTELY NO WARRANTY.\nThis is free software, and you are welcome to distribute it\nunder certain conditions.'
     print 'See the README.1ST file for more information.'
@@ -410,8 +433,8 @@ def main():
     parser_download = subparsers.add_parser('download', help='The download sub command allows you to download a Wikipedia dump file.')
     parser_download.set_defaults(func=dump_downloader_launcher)
 
-    parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
-    parser_split.set_defaults(func=chunker_launcher)
+    #parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
+    #parser_split.set_defaults(func=chunker_launcher)
 
     parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
     parser_create.set_defaults(func=extract_launcher)
@@ -428,8 +451,8 @@ def main():
     parser_dataset = subparsers.add_parser('export', help='Create a dataset from the MongoDB and write it to a csv file.')
     parser_dataset.set_defaults(func=exporter_launcher)
 
-    parser_debug = subparsers.add_parser('debug', help='Input custom dump files for debugging purposes')
-    parser_debug.set_defaults(func=debug_launcher)
+    #parser_debug = subparsers.add_parser('debug', help='Input custom dump files for debugging purposes')
+    #parser_debug.set_defaults(func=debug_launcher)
 
     parser_all = subparsers.add_parser('all', help='The all sub command runs the download, split, store and dataset commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
@@ -521,9 +544,9 @@ def main():
     about()
     config.create_configuration(settings, args)
     locations = determine_file_locations(args, logger)
-    settings.verify_environment(locations['directories'])
-    show_settings(args, logger, **locations)
-    args.func(args, logger, **locations)
+    settings.verify_environment(locations.directories)
+    show_settings(args, logger, locations)
+    args.func(args, logger, locations)
 
 
 if __name__ == '__main__':

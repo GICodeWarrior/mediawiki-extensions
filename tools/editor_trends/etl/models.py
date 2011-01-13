@@ -25,7 +25,7 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 
-from utils import models
+from utils import consumers
 from utils import utils
 from utils import messages
 import wikitree
@@ -60,7 +60,7 @@ class TXTFile(object):
         self.fw.close()
         return self.bots
 
-class XMLFileConsumer(models.BaseConsumer):
+class XMLFileConsumer(consumers.BaseConsumer):
 
     def run(self):
         while True:

@@ -29,7 +29,7 @@ settings = configuration.Settings()
 from database import db
 #from utils import process_constructor as pc
 from utils import utils
-from utils import models
+from utils import consumers
 from utils import messages
 import exporter
 import shaper
@@ -41,7 +41,7 @@ except ImportError:
     pass
 
 
-class EditorConsumer(models.BaseConsumer):
+class EditorConsumer(consumers.BaseConsumer):
 
     def run(self):
         while True:

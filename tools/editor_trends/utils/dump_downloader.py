@@ -21,7 +21,7 @@ import os
 import sys
 import urllib2
 import httplib
-
+import multiprocessing
 import progressbar
 
 import configuration
@@ -29,36 +29,60 @@ settings = configuration.Settings()
 import utils
 
 
-
-def determine_remote_filesize(domain, filename):
+def create_list_dumpfiles(url, canonical_filename, ext):
     '''
-    @domain is the full path of the file to be downloaded
+    Wikipedia offers the option to download one dump file in separate batches.
+    This function determines how many files there are for a giving dump and puts
+    them in a queue. 
+    '''
+    task_queue = multiprocessing.JoinableQueue()
+    for x in xrange(1, 100):
+        f = '%s%s%s' % (canonical_filename, x, ext)
+        res = check_remote_file_exists(url, f)
+        if res == None or res.status != 200:
+            break
+        else:
+            task_queue.add(f)
+    for x in xrange(settings.number_of_processes):
+        task_queue.add(None)
+    return task_queue
+
+
+def check_remote_file_exists(url, filename):
+    '''
+    @url is the full path of the file to be downloaded
     @filename is the name of the file to be downloaded
     '''
     try:
-        if domain.startswith('http://'):
-            domain = domain[7:]
-        conn = httplib.HTTPConnection(domain)
+        if url.startswith('http://'):
+            url = url[7:]
+        conn = httplib.HTTPConnection(url)
         conn.request('HEAD', filename)
         res = conn.getresponse()
         conn.close()
-        if res.status == 200:
-            return int(res.getheader('content-length', -1))
-        else:
-            return - 1
+        return res
+
     except httplib.socket.error:
-        #print 'It seemst that %s is temporarily unavailable, please try again later.' % url
         raise httplib.NotConnected('It seems that %s is temporarily unavailable, please try again later.' % url)
 
+
+def determine_remote_filesize(domain, filename):
+    res = check_remote_file_exists(domain, filename)
+    if res != None and res.status == 200:
+        return int(res.getheader('content-length', -1))
+    else:
+        return - 1
 
 def download_wiki_file(domain, path, filename, location, filemode, pbar):
     '''
     This is a very simple replacement for wget and curl because Windows does
-    support these tools. 
-    @url location of the file to be downloaded
+    not have these tools installed by default
+    @domain of the website where dump file is located
+    @path location of the dumpfile
     @filename name of the file to be downloaded
     @location indicates where to store the file locally
-    @filemode indicates whether we are downloading a binary or ascii file.
+    @filemode indicates whether we are downloading a binary or ascii file. (zip,
+    7z,gz are binary, json is ascii)
     @pbar is an instance of progressbar.ProgressBar()
     '''
     chunk = 4096
@@ -70,13 +94,13 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
 
     if filesize != -1 and pbar:
         widgets = ['%s: ' % filename, progressbar.Percentage(), ' ',
-                   progressbar.Bar(marker=progressbar.RotatingMarker()),' ', 
+                   progressbar.Bar(marker=progressbar.RotatingMarker()), ' ',
                    progressbar.ETA(), ' ', progressbar.FileTransferSpeed()]
 
-        pbar = progressbar.ProgressBar(widgets=widgets,maxval=filesize).start()
+        pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
     else:
         pbar = False
-    
+
     try:
         if filename.endswith('json'):
             req = urllib2.Request(domain + path)
@@ -102,6 +126,8 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
         print 'Error: %s' % error
     finally:
         fh.close()
+
+
 
 
 if __name__ == '__main__':

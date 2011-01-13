@@ -19,8 +19,8 @@ class Editor(models.Model):
     class Meta:
         db_table = 'editors_dataset'
 
-    def __str__(self):
-        return '%s, total edits: %s' % (self.username.encode('utf-8'), self.edit_count)
+    def __unicode__(self):
+        return u'%s, total edits: %s' % (self.username, self.edit_count)
 
 
 class EditorAdmin(admin.ModelAdmin):

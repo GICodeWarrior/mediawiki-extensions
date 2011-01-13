@@ -230,20 +230,25 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
         fh.write('\n')
 
 
-def write_dict_to_csv(data, fh, keys, write_key=True, newline=True):
-    for key in keys:
-        if write_key:
-            fh.write('%s\t' % key)
-        if type(data[key]) == type(list):
-            write_list_to_csv(data[key], fh, recursive=False, newline=False)
-        elif getattr(data[key], '__iter__', False):
-            for d in data[key]:
-                fh.write('%s\t' % data[key][d])
-        else:
-            fh.write('%s\t' % (data[key]))
-    if newline:
-        fh.write('\n')
+def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
+    assert format == 'long' or format == 'wide'
 
+    if format == 'long':
+        for key in keys:
+            if write_key:
+                fh.write('%s\t' % key)
+            if type(data[key]) == type([]):
+                for d in data[key]:
+                    fh.write('%s\t%s\n' % (key, d))
+            elif getattr(data[key], '__iter__', False):
+                for d in data[key]:
+                    fh.write('%s\t%s\t%s\n' % (key, d, data[key][d]))
+            else:
+                fh.write('%s\n' % (data[key]))
+    else:
+        print 'not yet implemented'
+        #if type(data[key]) == type([]):
+        #    write_list_to_csv(data[key], fh, recursive=False, newline=True)
 
 def create_txt_filehandle(location, name, mode, encoding):
     filename = construct_filename(name, '.csv')

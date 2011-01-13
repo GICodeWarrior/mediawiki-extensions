@@ -1,3 +1,16 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+'''
+Copyright (C) 2010 by Diederik van Liere (dvanliere@gmail.com)
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 2
+as published by the Free Software Foundation.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details, at
+http://www.fsf.org/licenses/gpl.html
+'''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
 __author__email = 'dvanliere at gmail dot com'
@@ -20,7 +33,7 @@ class Compressor(object):
         self.extension = utils.determine_file_extension(file)
         self.file = file
         self.location = location
-        self.path = os.path.join(self.file, self.location)
+        self.path = os.path.join(self.location, self.file)
         self.output = None
         self.name = None
         self.program = []
@@ -124,5 +137,5 @@ class Compressor(object):
 
 
 if __name__ == '__main__':
-    c = Compressor(settings.input_location, 'test.zip')
+    c = Compressor('C:\Users\diederik.vanliere\Documents', 'django.zip')
     c.extract()

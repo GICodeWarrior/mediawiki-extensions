@@ -131,10 +131,6 @@ class Settings(object):
             else:
                 return os
 
-        #def determine_path_ziptool(self):
-        #    return self.detect_installed_program(self.determine_ziptool())
-
-
         def verify_environment(self, directories):
             for dir in directories:
                 if not os.path.exists(dir):
