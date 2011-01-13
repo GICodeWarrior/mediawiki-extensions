@@ -2766,6 +2766,7 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author Dawid Deutschland
  * @author Malafaya
  * @author გიორგიმელა
  */
@@ -2791,7 +2792,9 @@ $messages['ka'] = array(
 	'contributiontrackingstatistics' => 'თანხის შეგროვების სტატისტიკა',
 	'contribstats-day-totals' => 'სულ დღეში',
 	'contribstats-week' => 'კვირა',
+	'contribstats-payment-type' => 'გადახდის სახე',
 	'contribstats-banner' => 'ლოზუნგი',
+	'contribstats-payment-type-hits' => 'გადახდის მეთოდთა გამოყენება',
 	'contribstats-donations' => 'შეწირულობები',
 	'contribstats-conversion' => 'კონვერსიის მაჩვენებელი (%)',
 	'contribstats-template' => 'თარგი',

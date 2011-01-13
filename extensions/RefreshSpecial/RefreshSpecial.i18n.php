@@ -1276,7 +1276,8 @@ Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
 	'right-refreshspecial' => 'Obnoviť špeciálne stránky',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1285,7 +1286,7 @@ $messages['sr-ec'] = array(
 	'refreshspecial-refreshing' => 'Освежавање специјалних страна',
 	'refreshspecial-choice' => 'освежавање специјалних страна',
 	'refreshspecial-js-disabled' => '(<i>Не можете да назначите све стране када је JavaScript онемогућен</i>)',
-	'refreshspecial-select-all-pages' => 'Означи све стране',
+	'refreshspecial-select-all-pages' => 'Одабери све странице',
 	'refreshspecial-link-back' => 'Врати се на специјалну страну',
 	'refreshspecial-none-selected' => 'Можда нисте означили ни једну специјалну страну. Враћање на подразумеван избор.',
 	'refreshspecial-db-error' => 'Није успело: Грешка у бази података',
@@ -1295,14 +1296,16 @@ $messages['sr-ec'] = array(
 	'refreshspecial-page-result' => '{{PLURAL:$1|добијен|добијено}} $1 {{PLURAL:$1|ред|редова}} у',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+ * @author Жељко Тодоровић
+ */
 $messages['sr-el'] = array(
 	'refreshspecial-button' => 'Osveži naznačeno',
 	'refreshspecial-fail' => 'Treba da naznačite makar jednu specijalnu stranu za osvežavanje.',
 	'refreshspecial-refreshing' => 'Osvežavanje specijalnih strana',
 	'refreshspecial-choice' => 'osvežavanje specijalnih strana',
 	'refreshspecial-js-disabled' => '(<i>Ne možete da naznačite sve strane kada je JavaScript onemogućen</i>)',
-	'refreshspecial-select-all-pages' => 'Označi sve strane',
+	'refreshspecial-select-all-pages' => 'Odaberi sve stranice',
 	'refreshspecial-link-back' => 'Vrati se na specijalnu stranu',
 	'refreshspecial-none-selected' => 'Možda niste označili ni jednu specijalnu stranu. Vraćanje na podrazumevan izbor.',
 	'refreshspecial-db-error' => 'Nije uspelo: Greška u bazi podataka',

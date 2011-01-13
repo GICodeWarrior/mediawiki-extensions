@@ -407,6 +407,7 @@ $messages['nl'] = array(
 	'livetranslate-special-type' => 'Type',
 	'livetranslate-special-location' => 'Locatie',
 	'livetranslate-special-remove' => 'Verwijderen',
+	'livetranslate-special-local' => 'Lokaal',
 	'livetranslate-special-add-tm' => 'Nieuw vertaalgeheugen toevoegen',
 	'livetranslate-special-current-tms' => 'Bestaande vertaalgeheugens',
 	'livetranslate-special-tms-update' => 'Vertaalgeheugens bijwerken',

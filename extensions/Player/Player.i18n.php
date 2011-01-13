@@ -1257,7 +1257,7 @@ $messages['sl'] = array(
 	'player-goto-page' => 'Stran',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
@@ -1275,12 +1275,13 @@ $messages['sr-ec'] = array(
 	'player-invalid-title' => 'погрешан наслов',
 	'player-clicktoplay' => 'Пусти $1',
 	'player-goto-player' => 'плејер',
-	'player-goto-page' => 'Страна',
+	'player-goto-page' => 'Страница',
 	'player-goto-file' => 'датотека',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'player' => 'Plejer',
@@ -1294,7 +1295,7 @@ $messages['sr-el'] = array(
 	'player-invalid-title' => 'pogrešan naslov',
 	'player-clicktoplay' => 'Pusti $1',
 	'player-goto-player' => 'plejer',
-	'player-goto-page' => 'Strana',
+	'player-goto-page' => 'Stranica',
 	'player-goto-file' => 'fajl',
 );
 

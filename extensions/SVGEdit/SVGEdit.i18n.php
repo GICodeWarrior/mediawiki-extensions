@@ -289,6 +289,8 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'svgedit-editbutton-edit' => 'Editar desenho',
+	'svgedit-summary-label' => 'Resumo da edição',
+	'svgedit-summary-default' => '/* Modificado no svg-edit */',
 	'svgedit-editor-save-close' => 'Salvar e fechar',
 	'svgedit-editor-close' => 'Cancelar',
 	'svgedit-desc' => 'Edição de desenhos SVG no próprio navegador, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
