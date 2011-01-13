@@ -91,8 +91,14 @@ class ApiImportTranslationMemories extends ApiBase {
 
 		$wordId = ( $memoryId - 1 ) * 100000;
 		
+		$dbw->begin();
+		
 		// Insert the memory in the db.
 		foreach ( $tm->getTranslationUnits() as $tu ) {
+			if ( !$tu->isSignificant() ) {
+				continue;
+			}
+			
 			foreach ( $tu->getVariants() as $language => $translations ) {
 				$primary = 1;
 				
@@ -113,7 +119,14 @@ class ApiImportTranslationMemories extends ApiBase {
 			}
 			
 			$wordId++;
-		}		
+			
+			if ( $wordId % 500 == 0 ) {
+				$dbw->commit();
+				$dbw->begin();
+			}
+		}
+
+		$dbw->commit();
 	}
 	
 	/**
