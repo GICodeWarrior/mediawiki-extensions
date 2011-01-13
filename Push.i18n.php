@@ -102,7 +102,7 @@ $messages['qqq'] = array(
 	'push-tab-template-override' => 'JavaScript message, no PLURAL available',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -146,6 +146,7 @@ $messages['be-tarask'] = array(
 	'push-tab-no-embedded-files' => '(На гэтай старонцы няма укладзеных файлаў.)',
 	'push-tab-files-override' => 'Гэтыя файлы ўжо існуюць: $1',
 	'push-tab-template-override' => 'Гэтыя шаблёны ўжо існуюць: $1',
+	'push-tab-err-uploaddisabled' => 'Загрузкі не дазволеныя. Упэўніцеся, што парамэтры $wgEnableUploads і $wgAllowCopyUploads маюць значэньне «true» у LocalSettings.php мэтавай вікі.',
 	'special-push' => 'Распаўсюдзіць старонкі',
 	'push-special-description' => 'Гэтая старонка дазваляе Вам распаўсюджваць зьмест адной ці болей старонак на адну ці некалькі іншых вікі, якія выкарыстоўваюць MediaWiki.
 
