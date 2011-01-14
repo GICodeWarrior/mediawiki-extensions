@@ -19,6 +19,7 @@
     NSString *postContext;
     UIWindow *window;
     PhotoPickerViewController *viewController;
+	UINavigationController *navController;
 }
 
 @property (nonatomic, assign) int defaultImageSource;
@@ -30,6 +31,7 @@
 @property (nonatomic, assign) BOOL launchedAsUrlHandler;
 @property (nonatomic, retain) NSString *postContext;
 @property (nonatomic, retain) IBOutlet PhotoPickerViewController *viewController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @end

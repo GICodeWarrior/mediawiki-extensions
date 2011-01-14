@@ -22,6 +22,7 @@
 @synthesize launchedAsUrlHandler;
 @synthesize postContext;
 @synthesize viewController;
+@synthesize navController;
 @synthesize window;
 
 
@@ -32,14 +33,14 @@
     self.defaultImageSource = -1;
     self.postContext = @"";
 
-    if (launchOptions) {
+    /*if (launchOptions) {
         NSURL *url = [launchOptions valueForKey:@"UIApplicationLaunchOptionsURLKey"];
         [self setupForUrl:url];
-    }
+    }*/
 
     [self checkIfJustInstalled];
 
-    [window addSubview:viewController.view];
+    [window addSubview:navController.view];
     [window makeKeyAndVisible];
 
     return YES;
