@@ -17,18 +17,18 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
-from pymongo import Connection
+import pymongo
 from bson.code import Code
+import sys
+sys.path.append('..')
 
 import configuration
 settings = configuration.Settings()
 
 from utils import utils
 
-
-
 def init_mongo_db(dbname):
-    connection = Connection()
+    connection = pymongo.Connection()
     db = connection[dbname]
     return db
 
@@ -74,6 +74,17 @@ def add_index_to_collection(db, collection, key):
     mongo.collection.ensure_index(key)
 
 
+def run_query(dbname, collection, var, qualifier=None):
+    mongo = init_mongo_db(dbname)
+    collection = mongo[collection]
+    if qualifier == 'min':
+        return collection.find().sort(var, pymongo.ASCENDING).limit(1)[0]
+    elif qualifier == 'max':
+        return collection.find().sort(var, pymongo.DESCENDING).limit(1)[0]
+    else:
+        return collection.find({var: 1})
+
+
 def stringify_keys(obj):
     '''
     @obj should be a dictionary where the keys are not yet strings. this function
@@ -86,6 +97,28 @@ def stringify_keys(obj):
             obj[o] = stringify_keys(obj[o])
         d[str(o)] = obj[o]
     return d
+
+
+def retrieve_min_value(dbname, collection, var):
+    mongo = init_mongo_db(dbname)
+    coll = mongo[collection]
+    emit = 'function () {emit(this.editor, this.edit_count);}'
+    map = Code(emit)
+    reduce = Code("function()")
+#    reduce = Code("""reduce = function (key, value) {
+#                        return Math.max(value);
+#                        }
+#                    """)
+    cursor = coll.map_reduce(map, reduce)
+
+    data = []
+    for c in cursor.find():
+        data.append(c)
+    return data
+
+
+def retrieve_max_value(dbname, collection, var):
+    pass
 
 def retrieve_distinct_keys(dbname, collection, field):
     #mongo = init_mongo_db(dbname)
@@ -152,7 +185,7 @@ def retrieve_distinct_keys_mapreduce(collection, field):
 #
 #
 def debug():
-    retrieve_distinct_keys('enwiki', 'editors_dataset', 'editor')
-
+    #retrieve_distinct_keys('enwiki', 'editors_dataset', 'editor')
+    retrieve_min_value('enwiki', 'editors_dataset', 'new_wikipedian')
 if __name__ == '__main__':
     debug()

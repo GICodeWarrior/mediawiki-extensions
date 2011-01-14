@@ -406,7 +406,7 @@ def retrieve_file_list(location, extension, mask=None):
         file = file.split('.')
         if len(file) == 1:
             continue
-        if re.match(mask, file[0]) and file[1].endswith(extension):
+        if re.match(mask, file[0]) and file[-1].endswith(extension):
             files.append('.'.join(file))
     return files
 

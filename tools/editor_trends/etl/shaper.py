@@ -40,7 +40,10 @@ def create_clock():
         d[i] = 0.0
     return d
 
-def create_datacontainer(datatype='dict'):
+
+
+
+def create_datacontainer(first_year, final_year, datatype='dict'):
     '''
     This function initializes an empty dictionary with as key the year (starting
     2001 and running through) and as value @datatype, in most cases this will
@@ -48,8 +51,7 @@ def create_datacontainer(datatype='dict'):
     @datatype can also a list, [], or a dictionary, {}, or a set, set().  
     '''
     data = {}
-    year = datetime.datetime.now().year + 1
-    for x in xrange(2001, year):
+    for x in xrange(first_year, final_year):
         data[x] = add_datatype(datatype)
     return data
 
@@ -68,11 +70,10 @@ def add_months_to_datacontainer(datacontainer, datatype):
 
     return datacontainer
 
-def add_years_to_datacontainer(datacontainer, datatype):
-    final_year = datetime.datetime.now().year
+def add_years_to_datacontainer(first_year, final_yaer, datacontainer, datatype):
     for dc in datacontainer:
         datacontainer[dc] = {}
-        for x in range(2001, final_year):
+        for x in range(first_year, final_year):
             datacontainer[dc][x] = datatype
     return datacontainer
 

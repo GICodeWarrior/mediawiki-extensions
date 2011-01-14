@@ -234,30 +234,6 @@ def dump_downloader_launcher(args, logger, config):
     timer.elapsed()
     log.log_to_mongo(full_project, 'download', timer, type='finish')
 
-#def chunker_launcher(args, logger, **kwargs):
-#    print 'Start splitting'
-#    timer = Timer()
-#    write_message_to_log(logger, args, **kwargs)
-#    filename = kwargs.pop('filename')
-#    location = kwargs.pop('location')
-#    project = kwargs.pop('project')
-#    language = kwargs.pop('language')
-#    language_code = kwargs.pop('language_code')
-#    namespaces = kwargs.pop('namespaces')
-#    format = kwargs.pop('format')
-#    ext = utils.determine_file_extension(filename)
-#    file = filename.replace('.' + ext, '')
-#    result = utils.check_file_exists(location, file)
-#    if not result:
-#        retcode = launch_zip_extractor(args, logger, location, filename)
-#    else:
-#        retcode = 0
-#    if retcode != 0:
-#        sys.exit(retcode)
-#
-#    chunker.split_file(location, file, project, language_code, namespaces, format=format, zip=False)
-#    timer.elapsed()
-
 
 def launch_zip_extractor(args, logger, location, file):
     print 'Unzipping zip file'
@@ -277,17 +253,20 @@ def extract_launcher(args, logger, config):
     write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, language_code=config.language_code, project=config.project)
     '''make sure that the file exists, if it doesn't then expand it first'''
     print 'Checking if dump file has been extracted...'
+    canonical_filename = utils.determine_canonical_name(config.filename)
     extension = utils.determine_file_extension(config.filename)
-    filename = config.filename.replace(extension, '')
-    result = utils.check_file_exists(config.location, filename)
-    if not result:
-        print 'Dump file has not yet been extracted...'
-        retcode = launch_zip_extractor(args, logger, config.location, config.filename)
-    else:
-        print 'Dump file has been extracted...'
-        retcode = 0
-    if retcode != 0:
-        sys.exit(retcode)
+    files = utils.retrieve_file_list(config.location, extension, mask=canonical_filename)
+    for file in files:
+        file_without_ext = file.replace('%s%s' % ('.', extension), '')
+        result = utils.check_file_exists(config.location, file_without_ext)
+        if not result:
+            print 'Dump file has not yet been extracted...'
+            retcode = launch_zip_extractor(args, logger, config.location, file)
+        else:
+            print 'Dump file has already been extracted...'
+            retcode = 0
+        if retcode != 0:
+            sys.exit(retcode)
     extracter.parse_dumpfile(config.project, config.language_code, namespaces=['0'])
     timer.elapsed()
     log.log_to_mongo(full_project, 'extract', timer, type='finish')

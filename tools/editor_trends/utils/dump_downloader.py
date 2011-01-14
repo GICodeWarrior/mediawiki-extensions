@@ -54,7 +54,7 @@ def create_list_dumpfiles(domain, path, filename, ext):
 
 def check_remote_file_exists(domain, path, filename):
     '''
-    @url is the full path of the file to be downloaded
+    @path is the full path of the file to be downloaded
     @filename is the name of the file to be downloaded
     '''
     try:
@@ -77,6 +77,7 @@ def determine_remote_filesize(domain, path, filename):
         return int(res.getheader('content-length', -1))
     else:
         return - 1
+
 
 def download_wiki_file(domain, path, filename, location, filemode):
     '''

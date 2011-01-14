@@ -177,8 +177,8 @@ def setup_database(dbname, collection):
 
     output_db.ensure_index('editor')
     output_db.create_index('editor')
-    output_db.ensure_index('year_joined')
-    output_db.create_index('year_joined')
+    output_db.ensure_index('new_wikipedian')
+    output_db.create_index('new_wikipedian')
     return input_db, output_db
 
 
