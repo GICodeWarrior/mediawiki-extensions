@@ -111,7 +111,8 @@ if ( !window.Photocommons ) {
 								$.each( data.query.pageids, function( key, pageid ) {
 									var img = data.query.pages[pageid];
 									if ( img.imageinfo && img.imageinfo[0] ) {
-										$( '<img style="display:none"/>' ).attr({
+										$( '<img>' ).attr({
+											'style': 'display:none',
 											'src': img.imageinfo[0].thumburl,
 											'title': img.title,
 											'data-filename': img.title
