@@ -39,6 +39,7 @@ from utils import compression
 from utils import ordered_dict
 from utils import exceptions
 from utils import log
+from utils import timer
 from database import db
 from etl import chunker
 from etl import extracter
@@ -64,21 +65,6 @@ class Config(object):
     def __iter__(self):
         for item in self.__dict__:
             yield item
-
-class Timer(object):
-    def __init__(self):
-        self.t0 = datetime.datetime.now()
-
-    def __str__(self):
-        return 'Timer started: %s' % self.t0
-
-    def stop(self):
-        self.t1 = datetime.datetime.now()
-
-    def elapsed(self):
-        self.stop()
-        print 'Processing time: %s' % (self.t1 - self.t0)
-
 
 def get_value(args, key):
     return getattr(args, key, None)
@@ -213,44 +199,30 @@ def show_settings(args, logger, config):
 
 def dump_downloader_launcher(args, logger, config):
     print 'Start downloading'
-    timer = Timer()
+    stopwatch = timer.Timer()
     write_message_to_log(logger, args, config)
-
-    extension = utils.determine_file_extension(config.filename)
-    filemode = utils.determine_file_mode(extension)
-    log.log_to_mongo(config.full_project, 'download', timer, type='start')
-    task_queue, result = dump_downloader.create_list_dumpfiles(settings.wp_dump_location, config.path, config.filename, extension)
-
-    if result:
-        while True:
-            filename = task_queue.get(block=False)
-            if filename == None:
-                break
-            task_queue.task_done()
-            dump_downloader.download_wiki_file(settings.wp_dump_location, config.path, filename, config.location, filemode)
-    else:
-        dump_downloader.download_wiki_file(settings.wp_dump_location, config.path, config.filename, config.location, filemode)
-
-    timer.elapsed()
-    log.log_to_mongo(config.full_project, 'download', timer, type='finish')
+    log.log_to_mongo(config.full_project, 'download', stopwatch, type='start')
+    dump_downloader.launcher(config)
+    stopwatch.elapsed()
+    log.log_to_mongo(config.full_project, 'download', stopwatch, type='finish')
 
 
 def launch_zip_extractor(args, logger, location, file, config):
     print 'Unzipping zip file'
-    timer = Timer()
-    log.log_to_mongo(config.full_project, 'unpack', timer, type='start')
+    stopwatch = timer.Timer()
+    log.log_to_mongo(config.full_project, 'unpack', stopwatch, type='start')
     write_message_to_log(logger, args, None, message=None, verb=None, location=location, file=file)
     compressor = compression.Compressor(location, file)
     retcode = compressor.extract()
-    timer.elapsed()
-    log.log_to_mongo(config.full_project, 'unpack', timer, type='finish')
+    stopwatch.elapsed()
+    log.log_to_mongo(config.full_project, 'unpack', stopwatch, type='finish')
     return retcode
 
 
 def extract_launcher(args, logger, config):
     print 'Extracting data from XML'
-    timer = Timer()
-    log.log_to_mongo(config.full_project, 'extract', timer, type='start')
+    stopwatch = timer.Timer()
+    log.log_to_mongo(config.full_project, 'extract', stopwatch, type='start')
     write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, language_code=config.language_code, project=config.project)
     '''make sure that the file exists, if it doesn't then expand it first'''
     print 'Checking if dump file has been extracted...'
@@ -269,59 +241,59 @@ def extract_launcher(args, logger, config):
             print 'Dump file has already been extracted...'
             retcode = 0
         if retcode != 0:
+            print 'There was an error while extracting %s, please make sure that %s is valid archive.' % (file, file)
             sys.exit(retcode)
         extracter.parse_dumpfile(config.project, file_without_ext, config.language_code, namespaces=['0'])
-    timer.elapsed()
-    log.log_to_mongo(config.full_project, 'extract', timer, type='finish')
+    stopwatch.elapsed()
+    log.log_to_mongo(config.full_project, 'extract', stopwatch, type='finish')
 
 
 def sort_launcher(args, logger, config):
     print 'Start sorting data'
-    timer = Timer()
-    log.log_to_mongo(config.full_project, 'sort', timer, type='start')
+    stopwatch = timer.Timer()
+    log.log_to_mongo(config.full_project, 'sort', stopwatch, type='start')
     write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, input=config.txt, output=config.sorted)
     sort.mergesort_launcher(config.txt, config.sorted)
-    timer.elapsed()
-    log.log_to_mongo(config.full_project, 'sort', timer, type='finish')
+    stopwatch.elapsed()
+    log.log_to_mongo(config.full_project, 'sort', stopwatch, type='finish')
 
 
 def store_launcher(args, logger, config):
     print 'Start storing data in MongoDB'
-    timer = Timer()
-    log.log_to_mongo(config.full_project, 'store', timer, type='start')
+    stopwatch = timer.Timer()
+    log.log_to_mongo(config.full_project, 'store', stopwatch, type='start')
     db.cleanup_database(config.project, logger)
     write_message_to_log(logger, args, None, message=None, verb='Storing', location=config.location, input=config.sorted, project=config.full_project, collection=config.collection)
     store.launcher(config.sorted, config.full_project, config.collection)
-    timer.elapsed()
-    log.log_to_mongo(config.full_project, 'store', timer, type='finish')
+    stopwatch.elapsed()
+    log.log_to_mongo(config.full_project, 'store', stopwatch, type='finish')
 
 
 def transformer_launcher(args, logger, **kwargs):
     print 'Start transforming dataset'
-    timer = Timer()
-    log.log_to_mongo(config.full_project, 'transform', timer, type='start')
+    stopwatch = timer.Timer()
+    log.log_to_mongo(config.full_project, 'transform', stopwatch, type='start')
     db.cleanup_database(config.project, logger, 'dataset')
     write_message_to_log(logger, args, None, message=None, verb='Transforming', project=config.project, collection=config.collection)
     transformer.transform_editors_single_launcher(config.project, config.collection)
-    timer.elapsed()
-    log.log_to_mongo(full_project, 'transform', timer, type='finish')
+    stopwatch.elapsed()
+    log.log_to_mongo(full_project, 'transform', stopwatch, type='finish')
 
 
 def exporter_launcher(args, logger, config):
     print 'Start exporting dataset'
-    timer = Timer()
-    log.log_to_mongo(config.full_project, 'export', timer, type='start')
+    stopwatch = timer.Timer()
+    log.log_to_mongo(config.full_project, 'export', stopwatch, type='start')
     for target in config.targets:
         write_message_to_log(logger, args, None, message=None, verb='Exporting', target=target, dbname=config.full_project, collection=config.collection)
         target = datasets[target]
         print 'Dataset is created by: %s' % target
         exporter.dataset_launcher(config.full_project, config.collection, target)
-    timer.elapsed()
-    log.log_to_mongo(config.full_project, 'export', timer, type='finish')
+    stopwatch.elapsed()
+    log.log_to_mongo(config.full_project, 'export', stopwatch, type='finish')
 
 
 def cleanup(logger, args, config):
-    #dirs = kwargs.get('directories')[1:]
     for dir in config.directories[1:]:
         write_message_to_log(logger, args, None, message=None, verb='Deleting', dir=dir)
         utils.delete_file(dir, '', directory=True)
@@ -330,15 +302,14 @@ def cleanup(logger, args, config):
     settings.verify_environment(dirs)
 
     file = '%s%s' % (config.full_project, '_editor.bin')
-    #file = kwargs.get('full_project') + '_editor.bin'
     write_message_to_log(logger, args, None, message=None, verb='Deleting', file=file)
     utils.delete_file(settings.binary_location, file)
 
 
 def all_launcher(args, logger, config):
     print 'The entire data processing chain has been called, this will take a couple of hours (at least) to complete.'
-    timer = Timer()
-    log.log_to_mongo(config.full_project, 'all', timer, type='start')
+    stopwatch = timer.Timer()
+    log.log_to_mongo(config.full_project, 'all', stopwatch, type='start')
     message = 'Start of building %s dataset.' % config.full_project
 
     write_message_to_log(logger, args, None, message=message, verb=None, full_project=config.full_project, ignore=config.ignore, clean=config.clean)
@@ -356,8 +327,8 @@ def all_launcher(args, logger, config):
     for function, callname in functions.iteritems():
         if callname not in config.ignore:
             function(args, logger, config)
-    timer.elapsed()
-    log.log_to_mongo(full_project, 'all', timer, type='finish')
+    stopwatch.elapsed()
+    log.log_to_mongo(full_project, 'all', stopwatch, type='finish')
 
 
 def supported_languages():
