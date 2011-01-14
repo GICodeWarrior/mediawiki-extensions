@@ -1,0 +1,5 @@
+* Search engine moet beter worden herschreven
+* Knop moet worden toegevoegd admin interface
+* Popup
+* Insert HTML / shortcode in de tekst
+* Frontend parsen shortcode in HTML
