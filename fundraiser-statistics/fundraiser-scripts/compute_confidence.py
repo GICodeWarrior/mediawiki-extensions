@@ -185,18 +185,19 @@ class ConfidenceTest:
 		
 		plot the test results with errorbars
 	"""
-	def gen_plot(self,means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, fname):
+	def gen_plot(self,means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname):
 		
 		pylab.subplot(subplot_index)
 		pylab.figure(num=None,figsize=[26,14])	
 		
-		pylab.errorbar(times_indices, means_1, yerr=std_devs_1, fmt='-xb')
-		pylab.errorbar(times_indices, means_2, yerr=std_devs_2, fmt='-dr')
+		e1 = pylab.errorbar(times_indices, means_1, yerr=std_devs_1, fmt='-xb')
+		e2 = pylab.errorbar(times_indices, means_2, yerr=std_devs_2, fmt='-dr')
 		# pylab.hist(counts, times)
 		
 		pylab.grid()
-		pylab.xlim(ranges[0], ranges[1])
 		pylab.ylim(ranges[2], ranges[3])
+		pylab.xlim(ranges[0], ranges[1])
+		pylab.legend([e1[0], e2[0]], labels,loc=2)
 		
 		pylab.xlabel(xlabel)
 		pylab.ylabel(ylabel)
@@ -223,6 +224,20 @@ class ConfidenceTest:
 		std_devs_2 = ret[3]
 		confidence = ret[4]
 		
+		# Pad data with beginning and end points
+		times_indices.insert(len(times_indices), math.ceil(times_indices[-1]))
+		times_indices.insert(0, 0)
+		
+		means_1.insert(len(means_1),means_1[-1])
+		means_2.insert(len(means_2),means_2[-1])
+		means_1.insert(0,means_1[0])
+		means_2.insert(0,means_2[0])
+		
+		std_devs_1.insert(len(std_devs_1),0)
+		std_devs_2.insert(len(std_devs_2),0)
+		std_devs_1.insert(0,0)
+		std_devs_2.insert(0,0)
+		
 		#print means_1
 		#print means_2
 		#print std_devs_1
@@ -244,7 +259,8 @@ class ConfidenceTest:
 		ranges = [-0.5, max_x, 0, max_y]
 		
 		ylabel = metric_name
-		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, fname)
+		labels = [item_1, item_2]
+		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
 		
 		return
 		
