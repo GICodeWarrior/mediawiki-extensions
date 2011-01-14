@@ -221,6 +221,7 @@ class ConfidenceTest:
 		means_2 = ret[1]
 		std_devs_1 = ret[2]
 		std_devs_2 = ret[3]
+		confidence = ret[4]
 		
 		#print means_1
 		#print means_2
@@ -233,8 +234,7 @@ class ConfidenceTest:
 		subplot_index = 111
 		fname = test_name + '.png'
 		
-		title = query_obj.get_plot_title(test_name)
-		title = title + ' -- ' + start_time + ' - ' + end_time
+		title = confidence + '\n\n' + test_name + ' -- ' + start_time + ' - ' + end_time
 		
 		max_mean = max(max(means_1),max(means_2))
 		max_sd = max(max(std_devs_1),max(std_devs_2))
@@ -243,7 +243,7 @@ class ConfidenceTest:
 		max_x = float(math.ceil(max(times_indices))) + 1.0
 		ranges = [-0.5, max_x, 0, max_y]
 		
-		ylabel = query_obj.get_plot_ylabel(metric_name)
+		ylabel = metric_name
 		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, fname)
 		
 		return
@@ -321,50 +321,50 @@ class WaldTest(ConfidenceTest):
 			
 		# determine the probability that the 
 		if (W >= 1.9):
-			print '95% confident about the winner.'
+			conf_str = '95% confident about the winner.'
 			P = 0.95
 		elif (W >= 1.6):
-			print '89% confident about the winner.'
+			conf_str = '89% confident about the winner.'
 			P = 0.89
 		elif (W >= 1.3):
-			print '81% confident about the winner.'
+			conf_str = '81% confident about the winner.'
 			P = 0.81
 		elif (W >= 1.0):
-			print '73% confident about the winner.'
+			conf_str = '73% confident about the winner.'
 			P = 0.73
 		elif (W >= 0.9):
-			print '68% confident about the winner.'
+			conf_str = '68% confident about the winner.'
 			P = 0.68
 		elif (W >= 0.8):
-			print '63% confident about the winner.'
+			conf_str = '63% confident about the winner.'
 			P = 0.63
 		elif (W >= 0.7):
-			print '52% confident about the winner.'
+			conf_str = '52% confident about the winner.'
 			P = 0.52
 		elif (W >= 0.6):
-			print '45% confident about the winner.'
+			conf_str = '45% confident about the winner.'
 			P = 0.45
 		elif (W >= 0.5):
-			print '38% confident about the winner.'
+			conf_str = '38% confident about the winner.'
 			P = 0.38
 		elif (W >= 0.4):
-			print '31% confident about the winner.'
+			conf_str = '31% confident about the winner.'
 			P = 0.31
 		elif (W >= 0.3):
-			print '24% confident about the winner.'
+			conf_str = '24% confident about the winner.'
 			P = 0.24
 		elif (W >= 0.2):
-			print '16% confident about the winner.'
+			conf_str = '16% confident about the winner.'
 			P = 0.16
 		elif (W >= 0.1):
-			print '8% confident about the winner.'
+			conf_str = '8% confident about the winner.'
 			P = 0.08
 		else:
-			print 'There is no clear winner.'
+			conf_str = 'There is no clear winner.'
 			P = 0.08
 	
 		
-		return [means_1, means_2, std_devs_1, std_devs_2]
+		return [means_1, means_2, std_devs_1, std_devs_2, conf_str]
 		
 
 """
