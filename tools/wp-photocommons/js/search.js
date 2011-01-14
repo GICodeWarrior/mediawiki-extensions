@@ -6,6 +6,7 @@ if ( !window.Photocommons ) {
 	window.Photocommons = {};
 }
 
+(function($) {
 $.extend( Photocommons, {
 	
 	getQueryUrl: function( type, args ) {
@@ -118,3 +119,4 @@ $.extend( Photocommons, {
 
 // Init
 $( document ).ready( Photocommons.init );
+})(jQuery);
