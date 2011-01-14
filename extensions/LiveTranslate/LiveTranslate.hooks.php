@@ -83,16 +83,6 @@ final class LiveTranslateHooks {
 				$wgLang->formatNum( $tm->memory_lang_count )
 			);
 			
-			if ( $wgUser->isAllowed( 'managetms' ) ) {
-				$wgOut->addHTML(
-					Html::element( 
-						'a',
-						array( 'href' => Title::newFromText( 'Special:LiveTranslate' )->getInternalURL() ),
-						wfMsg( 'livetranslate-dictionary-goto-edit' )
-					)
-				);
-			}
-			
 			/*
 			$notAllowedLanguages = array();
 			
@@ -127,6 +117,16 @@ final class LiveTranslateHooks {
 				);
 			}
 			*/
+		}
+
+		if ( $wgUser->isAllowed( 'managetms' ) ) {
+			$wgOut->addHTML(
+				Html::element( 
+					'a',
+					array( 'href' => Title::newFromText( 'Special:LiveTranslate' )->getInternalURL() ),
+					wfMsg( 'livetranslate-dictionary-goto-edit' )
+				)
+			);
 		}		
 	}
 	

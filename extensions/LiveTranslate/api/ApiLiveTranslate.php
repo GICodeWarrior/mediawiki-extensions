@@ -74,7 +74,7 @@ class ApiLiveTranslate extends ApiBase {
 							$destination->word_translation = $translation;
 						}
 					}
-					
+
 					$this->getResult()->addValue(
 						'translations',
 						$word,
