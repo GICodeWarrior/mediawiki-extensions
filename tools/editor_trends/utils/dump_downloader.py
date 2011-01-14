@@ -37,6 +37,7 @@ def create_list_dumpfiles(domain, path, filename, ext):
     '''
     task_queue = multiprocessing.JoinableQueue()
     canonical_filename = utils.determine_canonical_name(filename)
+    result = False
     for x in xrange(1, 100):
         f = '%s%s.xml.%s' % (canonical_filename, x, ext)
         res = check_remote_file_exists(domain, path, f)
@@ -45,9 +46,10 @@ def create_list_dumpfiles(domain, path, filename, ext):
         else:
             print 'Added chunk to download: %s' % f
             task_queue.put(f)
+            result = True
     for x in xrange(settings.number_of_processes):
         task_queue.put(None)
-    return task_queue
+    return task_queue, result
 
 
 def check_remote_file_exists(domain, path, filename):
@@ -69,14 +71,14 @@ def check_remote_file_exists(domain, path, filename):
         raise httplib.NotConnected('It seems that %s is temporarily unavailable, please try again later.' % url)
 
 
-def determine_remote_filesize(domain, filename):
-    res = check_remote_file_exists(domain, filename)
+def determine_remote_filesize(domain, path, filename):
+    res = check_remote_file_exists(domain, path, filename)
     if res != None and res.status == 200:
         return int(res.getheader('content-length', -1))
     else:
         return - 1
 
-def download_wiki_file(domain, path, filename, location, filemode, pbar):
+def download_wiki_file(domain, path, filename, location, filemode):
     '''
     This is a very simple replacement for wget and curl because Windows does
     not have these tools installed by default
@@ -89,20 +91,18 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
     @pbar is an instance of progressbar.ProgressBar()
     '''
     chunk = 4096
-    filesize = determine_remote_filesize(domain, path + filename)
+    filesize = determine_remote_filesize(domain, path, filename)
     if filemode == 'w':
         fh = utils.create_txt_filehandle(location, filename, filemode, settings.encoding)
     else:
         fh = utils.create_binary_filehandle(location, filename, 'wb')
 
-    if filesize != -1 and pbar:
+    if filesize != -1:
         widgets = ['%s: ' % filename, progressbar.Percentage(), ' ',
                    progressbar.Bar(marker=progressbar.RotatingMarker()), ' ',
                    progressbar.ETA(), ' ', progressbar.FileTransferSpeed()]
 
         pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
-    else:
-        pbar = False
 
     try:
         if filename.endswith('json'):
@@ -117,11 +117,10 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
                 break
             fh.write(data)
 
-            if pbar:
-                filesize -= chunk
-                if filesize < 0:
-                    chunk = chunk + filesize
-                pbar.update(pbar.currval + chunk)
+            filesize -= chunk
+            if filesize < 0:
+                chunk = chunk + filesize
+            pbar.update(pbar.currval + chunk)
 
     except urllib2.URLError, error:
         print 'Reason: %s' % error
@@ -129,8 +128,6 @@ def download_wiki_file(domain, path, filename, location, filemode, pbar):
         print 'Error: %s' % error
     finally:
         fh.close()
-
-
 
 
 if __name__ == '__main__':

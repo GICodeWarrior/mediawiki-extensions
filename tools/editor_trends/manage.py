@@ -219,14 +219,17 @@ def dump_downloader_launcher(args, logger, config):
     extension = utils.determine_file_extension(config.filename)
     filemode = utils.determine_file_mode(extension)
     log.log_to_mongo(config.full_project, 'download', timer, type='start')
-    task_queue = dump_downloader.create_list_dumpfiles(settings.wp_dump_location, config.path, config.filename, extension)
-    while True:
-        filename = task_queue.get(block=False)
-        if filename == None:
-            break
-        tasks_queue.task_done()
-        dump_downloader.download_wiki_file(settings.wp_dump_location, config.path, filename, config.location, filemode, config.pbar)
+    task_queue, result = dump_downloader.create_list_dumpfiles(settings.wp_dump_location, config.path, config.filename, extension)
 
+    if result:
+        while True:
+            filename = task_queue.get(block=False)
+            if filename == None:
+                break
+            task_queue.task_done()
+            dump_downloader.download_wiki_file(settings.wp_dump_location, config.path, filename, config.location, filemode)
+    else:
+        dump_downloader.download_wiki_file(settings.wp_dump_location, config.path, config.filename, config.location, filemode)
 
     timer.elapsed()
     log.log_to_mongo(full_project, 'download', timer, type='finish')
