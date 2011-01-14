@@ -59,6 +59,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'mirrortools' => 'MirrorAlati',
 	'right-mirroredit' => 'Uređivanje preko API pod bilo kojim korisničkim imenom',
 );
 

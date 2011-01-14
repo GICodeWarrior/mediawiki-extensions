@@ -56,6 +56,8 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'svgedit-editbutton-edit' => 'Uredi crtež',
+	'svgedit-summary-label' => 'Uredi sažetak',
+	'svgedit-summary-default' => '/* Izmijenjeno u svg-edit */',
 	'svgedit-editor-save-close' => 'Sačuvaj i zatvori',
 	'svgedit-editor-close' => 'Odustani',
 	'svgedit-desc' => 'Uređivanje u pregledniku SVG crteža pomoću [http://code.google.com/p/svg-edit/ SVG-Edit]',

@@ -617,6 +617,7 @@ Obacht: S Aktualisiere cha uf große Wiki lenger goh.',
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -642,7 +643,7 @@ $messages['he'] = array(
 	'refreshspecial-reconnected' => 'בוצעה התחברות מחדש.',
 	'refreshspecial-reconnecting' => 'ההתחברות נכשלה, מתחבר תוך 10 שניות...',
 	'refreshspecial-page-result' => 'יש {{PLURAL:$1|שורה אחת|$1 שורות}} ב',
-	'refreshspecial-total-display' => '{{PLURAL:$1|דף אחד עבר|$1 דפים עברו}} רענון, בסך הכל {{PLURAL:$2|שורה אחת|$2 שורות}} תוך $3 (זמן השלמת הרצת הסקריפט הוא $4)',
+	'refreshspecial-total-display' => '{{PLURAL:$1|דף אחד עבר|$1 דפים עברו}} רענון, בסך הכול {{PLURAL:$2|שורה אחת|$2 שורות}} תוך $3 (זמן השלמת הרצת הסקריפט הוא $4)',
 	'right-refreshspecial' => 'רענון דפים מיוחדים',
 );
 

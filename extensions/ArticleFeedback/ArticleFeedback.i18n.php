@@ -1146,10 +1146,18 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author Dawid Deutschland
  */
 $messages['ka'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'სხვა',
+	'articlefeedback-survey-question-useful' => 'გჯერათ, რომ მოცემული შეფასებები გამოსაყენებელი და გასაგებია?',
 	'articlefeedback-survey-question-useful-iffalse' => 'რატომ?',
+	'articlefeedback-survey-question-expert-iftrue' => 'შეგიძლიათ, აღწეროთ თქვენი ექსპერტიზა?',
 	'articlefeedback-survey-question-comments' => 'კიდევ დაამატებთ რამეს?',
+	'articlefeedback-survey-submit' => 'შენახვა',
+	'articlefeedback-survey-title' => 'გთხოვთ, გვიპასუხეთ რამდენიმე შეკითხვაზე',
+	'articlefeedback-survey-thanks' => 'გმადლობთ საპასუხო შეტყობინებისათვის',
+	'articlefeedback-form-panel-instructions' => 'გთხოვთ, გამონახეთ დრო ამ გვერდის შეფასებისათვის.',
 	'articlefeedback-report-switch-label' => 'შედეგების ჩვენება',
 	'articlefeedback-pitch-reject' => 'არა, გმადლობთ',
 	'articlefeedback-pitch-makefirstedit-accept' => 'რედაქტირების დაწყება',
@@ -1889,6 +1897,7 @@ $messages['sl'] = array(
 /** Swedish (Svenska)
  * @author Ainali
  * @author Fluff
+ * @author Tobulos1
  */
 $messages['sv'] = array(
 	'articlefeedback' => 'Artikelbedömning',
@@ -1908,10 +1917,19 @@ $messages['sv'] = array(
 	'articlefeedback-survey-submit' => 'Skicka in',
 	'articlefeedback-survey-title' => 'Svara på några få frågor',
 	'articlefeedback-survey-thanks' => 'Tack för att du fyllde i enkäten.',
+	'articlefeedback-form-switch-label' => 'Ge feedback',
+	'articlefeedback-form-panel-title' => 'Din feedback',
+	'articlefeedback-form-panel-instructions' => 'Vänligen betygsätt denna sida.',
+	'articlefeedback-form-panel-submit' => 'Skicka in feedback',
 	'articlefeedback-report-switch-label' => 'Visa resultat',
+	'articlefeedback-report-panel-title' => 'Resultat av feedback',
+	'articlefeedback-report-panel-description' => 'Nuvarande genomsnittliga betyg.',
+	'articlefeedback-report-empty' => 'Inga betyg',
+	'articlefeedback-report-ratings' => '$1 betyg',
 	'articlefeedback-field-complete-label' => 'Heltäckande',
-	'articlefeedback-field-neutral-label' => 'Neutral',
-	'articlefeedback-field-readable-label' => 'Läsbar',
+	'articlefeedback-pitch-createaccount-accept' => 'Skapa ett konto',
+	'articlefeedback-pitch-makefirstedit-title' => 'Skulle du vilja redigera denna sida?',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Börja redigera',
 );
 
 /** Tamil (தமிழ்)

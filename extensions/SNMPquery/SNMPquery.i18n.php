@@ -27,7 +27,7 @@ $messages['qqq'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'snmpquery-desc' => 'Дадае функцыі SNMPget і SNMPwalk і вяртае зьвесткі ў {{GRAMMAR:родны|{{SITENAME}}}}',
+	'snmpquery-desc' => 'Дадае функцыі SNMPget і SNMPwalk і дазваляе паказваць вынікі ў {{GRAMMAR:родны|{{SITENAME}}}}',
 );
 
 /** Breton (Brezhoneg)
@@ -98,7 +98,7 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'snmpquery-desc' => 'Tambahkan fungsi SNMPget dan SNMPwalk dan kembalikan data ke wiki',
+	'snmpquery-desc' => 'Menambahkan fungsi SNMPget dan SNMPwalk dan memungkinkan penayangan hasil dalam wiki',
 );
 
 /** Japanese (日本語)

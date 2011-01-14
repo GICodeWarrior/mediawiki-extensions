@@ -848,10 +848,17 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'ea-fromgroup' => 'Din grupul:',
+	'ea-heading' => 'Se trimite pagina „[[$1]]”',
+	'ea-denied' => 'Permisiune refuzată',
+	'ea-from' => 'De la:',
+	'ea-to' => 'Către:',
 	'ea-send' => 'Trimite!',
+	'ea-subject' => 'Subiect:',
+	'ea-message' => 'Mesaj:',
+	'ea-style' => 'Stil:',
 );
 
 /** Russian (Русский)
