@@ -34,7 +34,7 @@ $messages['be-tarask'] = array(
 	'spm_printername_wbs' => 'Экспарт у MS Project',
 	'spm-name' => 'Кіраваньне сэмантычным праектам',
 	'semanticprojectmanagement-desc' => 'Фарматы кіраваньня праектамі для ўбудаваных запытаў сэмантычнай MediaWiki',
-	'semanticprojectmanagement' => 'Кіраваньне сэмантычнымі праектамі',
+	'semanticprojectmanagement' => 'Налады кіраваньня сэмантычнымі праектамі',
 	'right-SPMsetup' => 'Рэдагаваць базавыя устаноўкі кіраваньня сэмантычнымі праектамі',
 );
 
@@ -143,7 +143,7 @@ $messages['id'] = array(
 	'spm_printername_wbs' => 'Ekspor MS Project',
 	'spm-name' => 'Manajemen Proyek Semantik',
 	'semanticprojectmanagement-desc' => 'Format manajemen proyek untuk pertanyaan sisip MediaWiki Semantik',
-	'semanticprojectmanagement' => 'Manajemen Proyek Semantik',
+	'semanticprojectmanagement' => 'Pengaturan Manajemen Proyek Semantik',
 	'right-SPMsetup' => 'Sunting pengaturan dasar manajemen proyek semantik',
 );
 
