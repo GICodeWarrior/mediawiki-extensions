@@ -1,5 +1,6 @@
-// Debug
-window.log = (console && console.log) ? console.log : function(){};
+window.log = function(a){
+	console.log(a);
+}
 
 if ( !window.Photocommons ) {
 	window.Photocommons = {};
@@ -21,7 +22,8 @@ $.extend( Photocommons, {
 					'action' : 'query',
 					'prop' : 'images',
 					'indexpageids' : '1',
-					'titles' : q.title
+					'titles' : q.title,
+					'redirects' : '1'
 				};
 			},
 			
@@ -32,13 +34,13 @@ $.extend( Photocommons, {
 					'iiprop' : 'url',
 					'iiurlwidth' : q.width,
 					'indexpageids' : '1',
-					'titles' : q.image
+					'titles' : q.images//.join( '|' )
 				};
 			}
 		};
 		
 		if (!queries[type]) {
-			throw new Error('Unknown query type');
+			throw new Error( 'Unknown query type' );
 		}
 		
 		return Photocommons.makeUrl(queries[type](args));
@@ -57,7 +59,7 @@ $.extend( Photocommons, {
 			url += (first) ? '?' : '&';
 			first = false;
 		
-			if (value.indexOf('!noencode!') === 0 && typeof value === 'string') {
+			if (value.indexOf( '!noencode!' ) === 0 && typeof value === 'string' ) {
 				value = value.slice(10);
 			} else {
 				value = encodeURIComponent(value);
@@ -69,10 +71,10 @@ $.extend( Photocommons, {
 	},
 	init: function() {
 
-		$('#wp-photocommons-search').autocomplete({
+		$( '#wp-photocommons-search' ).autocomplete({
 			source : function(request, response) {
-				var url = Photocommons.getQueryUrl('pagesearch', {
-					'search' : $('#wp-photocommons-search').val()
+				var url = Photocommons.getQueryUrl( 'pagesearch', {
+					'search' : $( '#wp-photocommons-search' ).val()
 				});
 			
 				$.getJSON(url, function(data) {
@@ -81,35 +83,45 @@ $.extend( Photocommons, {
 			},
 		
 			select : function(event, ui) {
-				$('#wp-photocommons-images').empty();
-				$('#wp-photocommons-loading').show();
+				$( '#wp-photocommons-images' ).empty();
+				$( '#wp-photocommons-loading' ).show();
 				
-				var url = Photocommons.getQueryUrl('pageimages', {
+				var url = Photocommons.getQueryUrl( 'pageimages', {
 					'title' : ui.item.value
 				});
 				
 				$.getJSON(url, function(data) {
-					var pageid = data.query.pageids[0],
-					query = data.query.pages[pageid].images;
+					var	pageid = data.query.pageids[0],
+						pageimages = data.query.pages[pageid].images,
+						titles = '';
 					
-					if (!query) {
-						$('#wp-photocommons-images').html('No images found :(');
+					if ( !pageimages.length ) {
+						$( '#wp-photocommons-images' ).html( 'No images found :(' );
 					}
 					
-					$.each(query, function() {
-						var url = Photocommons.getQueryUrl('thumbs', {
-							width : '200',
-							image : this.title
-						});
-						
-						$.getJSON(url, function(data) {
-							var pageid = data.query.pageids[0],
-							src = data.query.pages[pageid].imageinfo[0].thumburl;
-							$('#wp-photocommons-images').append('<img src="' + src + '" style="display:none;"/>').find('img').fadeIn();
-						});
+					$.each( pageimages, function() {
+						titles += '|' + this.title;					
+					} );
+					
+					var url = Photocommons.getQueryUrl( 'thumbs', {
+						width : '200',
+						images : titles
 					});
 					
-					$('#wp-photocommons-loading').hide();
+					
+					$.getJSON(url, function(data){
+						
+						$.each(data.query.pageids, function(key,pageid){
+							var img = data.query.pages[pageid];
+							if ( img.imageinfo && img.imageinfo[0] ) {
+								$( '#wp-photocommons-images' ).append( '<img src="' + img.imageinfo[0].thumburl + '" style="display:none;"/>' ).find( 'img' ).fadeIn();
+
+							}
+						})					
+					
+					});				
+					
+					$( '#wp-photocommons-loading' ).hide();
 				});
 			}
 		});

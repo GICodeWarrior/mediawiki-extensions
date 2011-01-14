@@ -1,3 +1,5 @@
+<?php
+ if ( basename( $_SERVER['SCRIPT_FILENAME'] ) == 'search.php' ) : ?>
 <!doctype html>
 <html>
 <head>
@@ -8,6 +10,8 @@
     <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.5.custom.css" />
 </head>
 <body>
+<?php endif; ?>
+
 
 	<input type="search" id="wp-photocommons-search" />
 
@@ -17,5 +21,10 @@
 
 	<div id="wp-photocommons-images"></div>
 
+
+
+
+<?php if ( basename( $_SERVER['SCRIPT_FILENAME'] ) == 'search.php' ) : ?>
 </body>
 </html>
+<?php endif; ?>
