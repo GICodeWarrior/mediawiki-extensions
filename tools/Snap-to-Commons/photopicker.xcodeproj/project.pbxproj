@@ -31,6 +31,7 @@
 		A159144112E0F6770003BBE2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A159144012E0F6770003BBE2 /* CFNetwork.framework */; };
 		A159144712E0F69C0003BBE2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A159144612E0F69C0003BBE2 /* MobileCoreServices.framework */; };
 		A159144B12E0F6BE0003BBE2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A159144A12E0F6BE0003BBE2 /* SystemConfiguration.framework */; };
+		A1FECB2812E10D41007CF08C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1FECB2712E10D41007CF08C /* icon@2x.png */; };
 		F130561C10CEDA5C00271CD6 /* home-background.png in Resources */ = {isa = PBXBuildFile; fileRef = F130561B10CEDA5C00271CD6 /* home-background.png */; };
 		F130561F10CEDBAC00271CD6 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = F130561E10CEDBAC00271CD6 /* Configuration.m */; };
 		F13056EF10CEEB3100271CD6 /* cancel-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F13056ED10CEEB3100271CD6 /* cancel-button-pressed.png */; };
@@ -84,6 +85,7 @@
 		A159144012E0F6770003BBE2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A159144612E0F69C0003BBE2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A159144A12E0F6BE0003BBE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A1FECB2712E10D41007CF08C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		F130561B10CEDA5C00271CD6 /* home-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-background.png"; sourceTree = "<group>"; };
 		F130561D10CEDBAC00271CD6 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		F130561E10CEDBAC00271CD6 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1FECB2712E10D41007CF08C /* icon@2x.png */,
 				F1A2672F10C9C04A0044762E /* icon.png */,
 				F13056ED10CEEB3100271CD6 /* cancel-button-pressed.png */,
 				F13056EE10CEEB3100271CD6 /* cancel-button.png */,
@@ -284,6 +287,7 @@
 				F13056F010CEEB3100271CD6 /* cancel-button.png in Resources */,
 				3A113EC910CF3C5500C9DDCF /* Entitlements.plist in Resources */,
 				A127DA4112E0DF9700149FC9 /* SettingsViewController.xib in Resources */,
+				A1FECB2812E10D41007CF08C /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
