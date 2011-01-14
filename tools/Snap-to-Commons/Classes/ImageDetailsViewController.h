@@ -18,4 +18,6 @@
 @property (nonatomic, retain) UITextField *titleField;
 @property (nonatomic, retain) UITextView *descriptionText;
 
+
+-(IBAction)textFieldDidEnd:(id)sender;
 @end

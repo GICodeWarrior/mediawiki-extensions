@@ -58,5 +58,14 @@
     [super dealloc];
 }
 
+-(IBAction)textFieldDidEnd:(id)sender {
+	if(sender == titleField ) {
+		[descriptionText becomeFirstResponder];
+		return;
+	}
+	[sender resignFirstResponder];
+}
+
+
 
 @end
