@@ -145,7 +145,6 @@ $.suggestions = {
 						var $results = context.data.$container.children( '.suggestions-results' );
 						$results.empty();
 						var expWidth = -1;
-						var $autoEllipseMe = $( [] );
 						var matchedText = null;
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
 							var text = context.config.suggestions[i];
@@ -180,7 +179,6 @@ $.suggestions = {
 									// factor in any padding, margin, or border space on the parent
 									expWidth = $span.outerWidth() + ( context.data.$container.width() - $span.parent().width());
 								}
-								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}
 						}
 						// Apply new width for results box, if any
@@ -188,8 +186,6 @@ $.suggestions = {
 							var maxWidth = context.config.maxExpandFactor*context.data.$textbox.width();
 							context.data.$container.width( Math.min( expWidth, maxWidth ) );
 						}
-						// autoEllipse the results. Has to be done after changing the width
-						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true, matchText: matchedText } );
 					}
 				}
 				break;
@@ -303,6 +299,8 @@ $.suggestions = {
 				break;
 			// Enter
 			case 13:
+				console.log('case 13');
+				//debugger;
 				context.data.$container.hide();
 				preventDefault = wasVisible;
 				selected = context.data.$container.find( '.suggestions-result-current' );
