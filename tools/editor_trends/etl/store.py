@@ -31,6 +31,8 @@ from database import db
 
 
 def store_editors(tasks, dbname, collection, input):
+    mongo = db.init_mongo_db(dbname)
+    collection = mongo[collection]
     editor_cache = cache.EditorCache(collection)
     prev_contributor = -1
     edits = 0
@@ -44,6 +46,7 @@ def store_editors(tasks, dbname, collection, input):
 
         fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
         for line in utils.readline(fh):
+            print line
             if len(line) == 0:
                 continue
             contributor = line[0]
@@ -68,15 +71,21 @@ def store_editors(tasks, dbname, collection, input):
 
 
 def launcher(input, dbname, collection):
+    hack = True
     mongo = db.init_mongo_db(dbname)
-    collection = mongo[collection]
-    collection.ensure_index('editor')
-    collection.create_index('editor')
-    files = utils.retrieve_file_list(input, 'csv')
+    coll = mongo[collection]
+    coll.ensure_index('editor')
+    coll.create_index('editor')
+
+    if hack:
+        input = 'C:\wikimedia\en\wiki\dbready'
+        files = utils.retrieve_file_list(input, 'txt')
+    else:
+        files = utils.retrieve_file_list(input, 'csv')
     print files
     print input
     tasks = multiprocessing.JoinableQueue()
-    consumers = [multiprocessing.Process(target=store_editors, args=(tasks, dbname, collection, input)) for i in xrange(settings.number_of_processes)]
+    consumers = [multiprocessing.Process(target=store_editors, args=(tasks, dbname, collection, input)) for i in xrange(1)]
     for file in files:
         tasks.put(file)
 

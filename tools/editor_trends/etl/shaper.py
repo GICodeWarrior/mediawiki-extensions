@@ -68,6 +68,14 @@ def add_months_to_datacontainer(datacontainer, datatype):
 
     return datacontainer
 
+def add_years_to_datacontainer(datacontainer, datatype):
+    final_year = datetime.datetime.now().year
+    for dc in datacontainer:
+        datacontainer[dc] = {}
+        for x in range(2001, final_year):
+            datacontainer[dc][x] = datatype
+    return datacontainer
+
 
 def get_standard_deviation(numberList):
     mean = get_mean(numberList)

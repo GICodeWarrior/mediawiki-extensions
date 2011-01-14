@@ -272,27 +272,66 @@ def generate_cohort_dataset_forward(tasks, dbname, collection):
         if new_wikipedian.month not in data[new_wikipedian.year]:
             data[new_wikipedian.year][new_wikipedian.month] = {}
         for i, year in enumerate(xrange(new_wikipedian.year, final_year)):
+            min_edits = min(obs['monthly_edits'].values())
+            if min_edits < 5:
+                continue
             months = edits.get(str(year), [])
-            if i == 0:
-                months = months.keys()
-                months = [int(m) for m in months]
-                months.sort()
-                months = months[new_wikipedian.month - 1:]
-                months = [str(m) for m in months]
+#            if i == 0:
+#                months = months.keys()
+#                months = [int(m) for m in months]
+#                months.sort()
+#                months = months[new_wikipedian.month - 1:]
+#                months = [str(m) for m in months]
             for month in months:
                 experience = str(i * 12 + (int(month) - 1))
                 if experience not in data[new_wikipedian.year][new_wikipedian.month]:
                     data[new_wikipedian.year][new_wikipedian.month][experience] = 0
                 data[new_wikipedian.year][new_wikipedian.month][experience] += 1 if edits[str(year)][month] > 0 else 0
 
-    fh = utils.create_txt_filehandle(settings.dataset_location, '%s_cohort_data_forward.csv' % (dbname), 'w', settings.encoding)
+    filename = 'cohort_data_forward.bin'
+    print 'Storing data as %s' % os.path.join(settings.binary_location, '%s_%s' % (dbname, filename))
+    utils.store_object(data, settings.binary_location, '%s_%s' % (dbname, filename))
+    cohort_charts.prepare_cohort_dataset(dbname, filename)
+
+    filename = '_cohort_data_forward_histogram.csv'
+    fh = utils.create_txt_filehandle(settings.dataset_location, '%s_%s' % (dbname, filename), 'w', settings.encoding)
     for year in data:
         for month in data[year]:
             obs = data[year][month].keys()
             obs.sort()
             for o in obs:
-                utils.write_list_to_csv(['%s-%s' % (month, year), o, data[year][month][o]], fh, recursive=False, newline=True)
+                utils.write_list_to_csv(['%s-%s' % (month, year), o, data[year][month][o]], fh, recursive=False, format='long')
     fh.close()
+
+def generate_cohort_dataset_backward(tasks, dbname, collection, **kwargs):
+    mongo = db.init_mongo_db(dbname)
+    editors = mongo[collection + '_dataset']
+    windows = create_windows(break_down_first_year=False)
+    data = shaper.create_datacontainer('dict')
+    data = shaper.add_windows_to_datacontainer(data, windows)
+
+    while True:
+        id = tasks.get(block=False)
+        tasks.task_done()
+        if id == None:
+            break
+        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1, 'edits_by_year': 1, 'last_edit_by_year': 1})
+        first_edit = obs['first_edit']
+        for year in xrange(2001, datetime.datetime.now().year + 1):
+            year = str(year)
+            if obs['edits_by_year'][year] > 0:
+                last_edit = obs['last_edit_by_year'][year]
+                editor_dt = relativedelta(last_edit, first_edit)
+                editor_dt = (editor_dt.years * 12) + editor_dt.months
+                for w in windows:
+                    if w >= editor_dt:
+                        data[int(year)][w] += 1
+                        break
+    filename = 'cohort_data_backward.bin'
+    print 'Storing data as %s' % os.path.join(settings.binary_location, '%s_%s' % (dbname, filename))
+    utils.store_object(data, settings.binary_location, '%s_%s' % (dbname, filename))
+    cohort_charts.prepare_cohort_dataset(dbname, filename)
+
 
 
 def generate_cohort_dataset_backward_custom(tasks, dbname, collection):
@@ -326,34 +365,6 @@ def generate_cohort_dataset_backward_custom(tasks, dbname, collection):
 
 
 
-def generate_cohort_dataset_backward(tasks, dbname, collection, **kwargs):
-    mongo = db.init_mongo_db(dbname)
-    editors = mongo[collection + '_dataset']
-    windows = create_windows(break_down_first_year=False)
-    data = shaper.create_datacontainer('dict')
-    data = shaper.add_windows_to_datacontainer(data, windows)
-
-    while True:
-        id = tasks.get(block=False)
-        tasks.task_done()
-        if id == None:
-            break
-        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1, 'edits_by_year': 1, 'last_edit_by_year': 1})
-        first_edit = obs['first_edit']
-        for year in xrange(2001, datetime.datetime.now().year + 1):
-            year = str(year)
-            if obs['edits_by_year'][year] > 0:
-                last_edit = obs['last_edit_by_year'][year]
-                editor_dt = relativedelta(last_edit, first_edit)
-                editor_dt = (editor_dt.years * 12) + editor_dt.months
-                for w in windows:
-                    if w >= editor_dt:
-                        data[int(year)][w] += 1
-                        break
-    filename = 'cohort_data_backward.bin'
-    print 'Storing data as %s' % os.path.join(settings.binary_location, '%s%s' % (dbname, filename))
-    utils.store_object(data, settings.binary_location, '%s%s' % (dbname, filename))
-    cohort_charts.prepare_cohort_dataset(dbname, filename)
 
 
 def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):

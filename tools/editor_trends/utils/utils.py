@@ -195,7 +195,7 @@ def determine_file_mode(extension):
         return 'wb'
 
 
-def write_list_to_csv(data, fh, recursive=False, newline=True):
+def write_list_to_csv(data, fh, recursive=False, newline=True, format='wide'):
     '''
     @data is a list which can contain other lists that will be written as a
     single line to a textfile
@@ -218,7 +218,7 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
             if len(d) == len(data[x]):
                 fh.write('\n')
         elif type(d) == type({}):
-            tab = write_dict_to_csv(d, fh, write_key=False, newline=newline)
+            tab = write_dict_to_csv(d, fh, d.keys(), write_key=False, format=format)
         else:
             fh.write('%s' % d)
             tab = True
@@ -245,8 +245,19 @@ def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
                     fh.write('%s\t%s\t%s\n' % (key, d, data[key][d]))
             else:
                 fh.write('%s\n' % (data[key]))
-    else:
-        print 'not yet implemented'
+    elif format == 'wide':
+        for key in keys:
+            if write_key:
+                fh.write('%s\t' % key)
+            if type(data[key]) == type([]):
+                for d in data[key]:
+                    fh.write('%s\t')
+            elif type(data[key]) == type({}):
+                write_dict_to_csv(data[key], fh, data[key].keys(), write_key=False, format=format)
+            else:
+                fh.write('%s\t' % (data[key]))
+        fh.write('\n')
+
         #if type(data[key]) == type([]):
         #    write_list_to_csv(data[key], fh, recursive=False, newline=True)
 
@@ -365,6 +376,14 @@ def create_dict_from_csv_file(location, filename, encoding, keys=None):
             for k, v in zip(keys, values):
                 d[key][k] = v
     return d
+
+
+def determine_canonical_name(filename):
+    while filename.find('.') > -1:
+        ext = determine_file_extension(filename)
+        ext = '.%s' % ext
+        filename = filename.replace(ext, '')
+    return filename
 
 
 def retrieve_file_list(location, extension, mask=None):

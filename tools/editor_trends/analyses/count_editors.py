@@ -70,6 +70,7 @@ def loop_editors(dbname, collection, func, unit):
         data = shaper.create_datacontainer('list')
     elif unit == 'year_dict':
         data = shaper.create_datacontainer('dict')
+        data = shaper.add_years_to_datacontainer(data, 0)
     else:
         data = {}
 
@@ -82,6 +83,47 @@ def loop_editors(dbname, collection, func, unit):
     return data, prop
 
 
+def cohort_dataset_forward_histogram(data, editor, prop):
+    if prop == None:
+        final_year = datetime.datetime.now().year + 1
+        prop = ChartProperties(headers, False, 'long')
+        headers = ['year', 'edits']
+        prop.final_year = final_year
+
+    new_wikipedian = editor['new_wikipedian']
+    yearly_edits = editor['edits_by_year']
+    for year in xrange(new_wikipedian.year, prop.final_year):
+        data[new_wikipedian.year].append(yearly_edits[year])
+    return data, prop
+
+
+def cohort_dataset_forward_bar(data, editor, prop):
+    if prop == None:
+        final_year = datetime.datetime.now().year + 1
+        headers = ['experience'] + [y for y in xrange(2001, final_year)]
+        prop = ChartProperties(headers, False, 'wide')
+
+        prop.final_year = final_year
+        prop.cutoff_value = 5
+
+    new_wikipedian = editor['new_wikipedian']
+    last_edit = editor['final_edit']
+    monthly_edits = editor['monthly_edits']
+    yearly_edits = editor['edits_by_year']
+    active = []
+    for year in xrange(new_wikipedian.year, prop.final_year):
+        max_edits = max(monthly_edits.get(str(year), {0:0}).values())
+        if yearly_edits.get(str(year), 0) == 0 or max_edits < prop.cutoff_value:
+            continue
+        else:
+            active.append(year)
+
+    if active != []:
+        year = max(active)
+        data[new_wikipedian.year][year] += 1
+    return data, prop
+
+
 def new_editor_count(data, editor, prop):
     '''
     Summary: This function generates an overview of the number of
@@ -90,7 +132,7 @@ def new_editor_count(data, editor, prop):
     stats.download.org to make sure that we are using the same numbers. 
     '''
     if prop == None:
-        headers = ['time', 'count']
+        headers = ['year', 'month', 'count']
         prop = ChartProperties(headers, False, 'long')
     new_wikipedian = editor['new_wikipedian']
     data[new_wikipedian.year][new_wikipedian.month] += 1
@@ -167,5 +209,6 @@ def time_to_new_wikipedian(data, editor, prop):
 
 
 if __name__ == '__main__':
-    generate_chart_data('enwiki', 'editors', histogram_edits, unit='year_list')
+    generate_chart_data('enwiki', 'editors', cohort_dataset_forward_bar, unit='year_dict')
+    #generate_chart_data('enwiki', 'editors', histogram_edits, unit='year_list')
     #generate_chart_data('enwiki', 'editors', time_to_new_wikipedian, unit='year_list')

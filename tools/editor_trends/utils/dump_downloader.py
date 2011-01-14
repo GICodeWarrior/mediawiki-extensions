@@ -29,35 +29,38 @@ settings = configuration.Settings()
 import utils
 
 
-def create_list_dumpfiles(url, canonical_filename, ext):
+def create_list_dumpfiles(domain, path, filename, ext):
     '''
     Wikipedia offers the option to download one dump file in separate batches.
     This function determines how many files there are for a giving dump and puts
     them in a queue. 
     '''
     task_queue = multiprocessing.JoinableQueue()
+    canonical_filename = utils.determine_canonical_name(filename)
     for x in xrange(1, 100):
-        f = '%s%s%s' % (canonical_filename, x, ext)
-        res = check_remote_file_exists(url, f)
+        f = '%s%s.xml.%s' % (canonical_filename, x, ext)
+        res = check_remote_file_exists(domain, path, f)
         if res == None or res.status != 200:
             break
         else:
-            task_queue.add(f)
+            print 'Added chunk to download: %s' % f
+            task_queue.put(f)
     for x in xrange(settings.number_of_processes):
-        task_queue.add(None)
+        task_queue.put(None)
     return task_queue
 
 
-def check_remote_file_exists(url, filename):
+def check_remote_file_exists(domain, path, filename):
     '''
     @url is the full path of the file to be downloaded
     @filename is the name of the file to be downloaded
     '''
     try:
-        if url.startswith('http://'):
-            url = url[7:]
-        conn = httplib.HTTPConnection(url)
-        conn.request('HEAD', filename)
+        if domain.startswith('http://'):
+            domain = domain[7:]
+        conn = httplib.HTTPConnection(domain)
+        url = '%s%s' % (path, filename)
+        conn.request('HEAD', url)
         res = conn.getresponse()
         conn.close()
         return res

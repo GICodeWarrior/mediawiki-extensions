@@ -58,6 +58,9 @@ class Config(object):
         for location in locations:
             setattr(self, location, locations[location])
 
+    def __str__(self):
+        return 'Configurator'
+
     def __iter__(self):
         for item in self.__dict__:
             yield item
@@ -65,6 +68,9 @@ class Config(object):
 class Timer(object):
     def __init__(self):
         self.t0 = datetime.datetime.now()
+
+    def __str__(self):
+        return 'Timer started: %s' % self.t0
 
     def stop(self):
         self.t1 = datetime.datetime.now()
@@ -167,16 +173,18 @@ def determine_file_locations(args, logger):
     config['ignore'] = get_value(args, 'except')
     config['clean'] = get_value(args, 'new')
 
-    config['dataset'] = os.path.join(settings.dataset_location, config['full_project'])
-    config['location'] = os.path.join(location, language_code, project)
-    config['txt'] = os.path.join(config['location'], 'txt')
-    config['sorted'] = os.path.join(config['location'], 'sorted')
-
     config['project'] = project
     config['full_project'] = get_projectname(args)
     config['filename'] = generate_wikidump_filename(language_code, project, args)
     config['namespaces'] = get_namespaces(args)
-    config['directories'] = [config['location'], config['txt'], config['sorted'], config['dataset']]
+
+    config['dataset'] = os.path.join(settings.dataset_location, config['full_project'])
+    config['charts'] = os.path.join(settings.chart_location, config['full_project'])
+    config['location'] = os.path.join(location, language_code, project)
+    config['txt'] = os.path.join(config['location'], 'txt')
+    config['sorted'] = os.path.join(config['location'], 'sorted')
+
+    config['directories'] = [config['location'], config['txt'], config['sorted'], config['dataset'], config['charts']]
     config['path'] = '/%s/latest/' % config['full_project']
     config['targets'] = targets.split(',')
 
@@ -211,7 +219,7 @@ def dump_downloader_launcher(args, logger, config):
     extension = utils.determine_file_extension(config.filename)
     filemode = utils.determine_file_mode(extension)
     log.log_to_mongo(config.full_project, 'download', timer, type='start')
-    task_queue = dump_downloader.create_list_dumpfiles('%s%s' % (settings.wp_dump_location, path), config.filename, extension)
+    task_queue = dump_downloader.create_list_dumpfiles(settings.wp_dump_location, config.path, config.filename, extension)
     while True:
         filename = task_queue.get(block=False)
         if filename == None:
@@ -297,8 +305,8 @@ def store_launcher(args, logger, config):
     timer = Timer()
     log.log_to_mongo(config.full_project, 'store', timer, type='start')
     db.cleanup_database(config.project, logger)
-    write_message_to_log(logger, args, None, message=None, verb='Storing', location=config.location, input=config.input, project=config.project, collection=config.collection)
-    store.launcher(config.input, config.project, config.collection)
+    write_message_to_log(logger, args, None, message=None, verb='Storing', location=config.location, input=config.sorted, project=config.full_project, collection=config.collection)
+    store.launcher(config.sorted, config.full_project, config.collection)
     timer.elapsed()
     log.log_to_mongo(full_project, 'store', timer, type='finish')
 
@@ -321,6 +329,7 @@ def exporter_launcher(args, logger, config):
     for target in config.targets:
         write_message_to_log(logger, args, None, message=None, verb='Exporting', target=target, dbname=config.full_project, collection=config.collection)
         target = datasets[target]
+        print 'Dataset is created by: %s' % target
         exporter.dataset_launcher(config.full_project, config.collection, target)
     timer.elapsed()
     log.log_to_mongo(config.full_project, 'export', timer, type='finish')

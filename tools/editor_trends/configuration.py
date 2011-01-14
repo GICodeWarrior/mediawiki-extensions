@@ -194,3 +194,4 @@ class Settings(object):
 'data', 'objects')
             self.namespace_location = os.path.join(self.working_directory,
 'namespaces')
+            self.chart_location = os.path.join(self.working_directory, 'statistics', 'charts')

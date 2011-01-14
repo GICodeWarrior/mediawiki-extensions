@@ -298,8 +298,9 @@ def hash(id):
     '''
     try:
         return int(id) % settings.max_filehandles
-    except:
+    except ValueError:
         return sum([ord(i) for i in id]) % settings.max_filehandles
+
 
 if __name__ == '__main__':
     project = 'wiki'
