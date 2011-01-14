@@ -7,7 +7,10 @@
 Plugin Name: Photocommons
 Plugin URI: http://#
 Description: 
-Author: Husksy, Krinkle
+Author: Husky, Krinkle
 Version: 0.0.1
 Author URI: http://
 */
+
+require 'inc/class-photocommons.php';
+new PhotoCommons();
