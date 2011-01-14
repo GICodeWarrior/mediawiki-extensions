@@ -2386,6 +2386,7 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'datasearch_search_text' => 'Йоза лахар:',
+	'ow_history' => 'Исторе',
 	'ow_User' => 'Декъашхо',
 );
 
