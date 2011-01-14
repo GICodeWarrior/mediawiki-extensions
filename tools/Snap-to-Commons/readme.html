@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Customizing PhotoPicker for your own iPhone-based web app</title>
+  </head>
+  <h1>Customizing PhotoPicker for your own iPhone-based web app</h1>
+  <h2>XCode Project</h2>
+  <h3>Images</h3>
+  <ul>
+    <li>icon.png - replace with an iPhone app icon (57x57 pixels)</li>
+    <li>logo.png - replace with your logo (280x88 pixels max -- will center automatically)</li>
+  </ul>
+  <h3>XIBs</h3>
+  <ul>
+    <li>PhotoPickerViewController.xib - can be customized with fancier graphics or button labels</li>
+  </ul>
+  <h3>Plist</h3>
+  <ul>
+    <li>photopicker-Info.plist - replace "yourcompany" with the name of your company.  See "Bundle identifier", "URL types":"URL identifier", and "URL types":"URL Schemes".  Also replace "${PRODUCT_NAME}" with the name of your product or company.</li>
+  </ul>
+  <h3>Source Code</h3>
+  <ul>
+    <li>PhotoPickerAppDelegate.m - replace "yourcompanyname" with the name of your company (or update the URL appropriately otherwise -- see comment).</li>
+  </ul>
+  <h2>From the Web App</h2>
+  <ul>
+    <li>
+      <p>Add the following Javascript section to your web application, replacing the URLs as appropriate.</p>
+      <code><pre>
+        &lt;script type="text/javascript"&gt;
+          window.launchNativeApp = function() {
+              setTimeout(function() {
+                  window.location = 'http://www.yourcompanyname.com/instruction-to-install-app.html'
+              }, 500);
+
+              window.location = 'yourcompany://photopicker?action=http://www.yourcompanyname.com/path-to-upload-to/?continue=http://www.yourcompanyname.com&amp;maxsize=300&amp;source=camera';
+          };
+        &lt;/script&gt;
+      </pre></code>
+    </li>
+    <li>
+      <p>GET params for launching the application include:</p>
+      <ul>
+        <li>action - (required) the URL to upload to.</li>
+        <li>continue - (required) the URL to open in Safari after the POST operation is complete, or the user cancels.  The GET parameter "success=1" is automatically added on success.</li>
+        <li>context - (optional) a string value to pass as a POST parameter to the upload URL.  This can be used to help maintain state information.</li>
+        <li>source - (optional) the preferred source type, to start out with, if it's available.  Options are: "camera" and "library".  If left off, a menu of choices may be presented in the application.</li>
+        <li>maxsize - (optional) the maximum width or height of the image to upload.  Images are scaled with their aspects maintained.</li>
+      </ul>
+    </li>
+  </ul>
+  <h2>On Your Web Server</h2>
+  <ul>
+    <li>
+      <p>You will need to write code to accept uploaded images.  Images are uploaded using standard http multipart/form-data encoding.  The following POST parameters are passed:</p>
+      <ul>
+        <li>context - the string value passed when launching the application.</li>
+        <li>image_file - the uploaded file.  This will always be given the filename "photopicker.jpg".</li>
+      </ul>
+    </li>
+  </ul>
+</html>
