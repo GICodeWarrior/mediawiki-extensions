@@ -1,7 +1,9 @@
 // Debug
 window.log = (console && console.log) ? console.log : function(){};
 
-if (!window.Photocommons) window.Photocommons = {};
+if ( !window.Photocommons ) {
+	window.Photocommons = {};
+}
 
 $.extend( Photocommons, {
 	
@@ -67,10 +69,10 @@ $.extend( Photocommons, {
 	},
 	init: function() {
 
-		$('#search').autocomplete({
+		$('#wp-photocommons-search').autocomplete({
 			source : function(request, response) {
 				var url = Photocommons.getQueryUrl('pagesearch', {
-					'search' : $('#search').val()
+					'search' : $('#wp-photocommons-search').val()
 				});
 			
 				$.getJSON(url, function(data) {
@@ -79,8 +81,8 @@ $.extend( Photocommons, {
 			},
 		
 			select : function(event, ui) {
-				$('#images').empty();
-				$('#loading').show();
+				$('#wp-photocommons-images').empty();
+				$('#wp-photocommons-loading').show();
 				
 				var url = Photocommons.getQueryUrl('pageimages', {
 					'title' : ui.item.value
@@ -91,7 +93,7 @@ $.extend( Photocommons, {
 					query = data.query.pages[pageid].images;
 					
 					if (!query) {
-						$('#images').html('No images found :(');
+						$('#wp-photocommons-images').html('No images found :(');
 					}
 					
 					$.each(query, function() {
@@ -103,11 +105,11 @@ $.extend( Photocommons, {
 						$.getJSON(url, function(data) {
 							var pageid = data.query.pageids[0],
 							src = data.query.pages[pageid].imageinfo[0].thumburl;
-							$('#images').append('<img src="' + src + '" style="display:none;"/>').find('img').fadeIn();
+							$('#wp-photocommons-images').append('<img src="' + src + '" style="display:none;"/>').find('img').fadeIn();
 						});
 					});
 					
-					$('#loading').hide();
+					$('#wp-photocommons-loading').hide();
 				});
 			}
 		});
