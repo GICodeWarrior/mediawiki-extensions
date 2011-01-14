@@ -232,18 +232,19 @@ def dump_downloader_launcher(args, logger, config):
         dump_downloader.download_wiki_file(settings.wp_dump_location, config.path, config.filename, config.location, filemode)
 
     timer.elapsed()
-    log.log_to_mongo(full_project, 'download', timer, type='finish')
+    log.log_to_mongo(config.full_project, 'download', timer, type='finish')
 
 
-def launch_zip_extractor(args, logger, location, file):
+def launch_zip_extractor(args, logger, location, file, config):
     print 'Unzipping zip file'
     timer = Timer()
     log.log_to_mongo(config.full_project, 'unpack', timer, type='start')
     write_message_to_log(logger, args, None, message=None, verb=None, location=location, file=file)
     compressor = compression.Compressor(location, file)
-    compressor.extract()
+    retcode = compressor.extract()
     timer.elapsed()
-    log.log_to_mongo(full_project, 'unpack', timer, type='finish')
+    log.log_to_mongo(config.full_project, 'unpack', timer, type='finish')
+    return retcode
 
 
 def extract_launcher(args, logger, config):
@@ -256,30 +257,32 @@ def extract_launcher(args, logger, config):
     canonical_filename = utils.determine_canonical_name(config.filename)
     extension = utils.determine_file_extension(config.filename)
     files = utils.retrieve_file_list(config.location, extension, mask=canonical_filename)
+    print files
     for file in files:
         file_without_ext = file.replace('%s%s' % ('.', extension), '')
         result = utils.check_file_exists(config.location, file_without_ext)
+        result = False
         if not result:
             print 'Dump file has not yet been extracted...'
-            retcode = launch_zip_extractor(args, logger, config.location, file)
+            retcode = launch_zip_extractor(args, logger, config.location, file, config)
         else:
             print 'Dump file has already been extracted...'
             retcode = 0
         if retcode != 0:
             sys.exit(retcode)
-    extracter.parse_dumpfile(config.project, config.language_code, namespaces=['0'])
+        extracter.parse_dumpfile(config.project, file_without_ext, config.language_code, namespaces=['0'])
     timer.elapsed()
-    log.log_to_mongo(full_project, 'extract', timer, type='finish')
+    log.log_to_mongo(config.full_project, 'extract', timer, type='finish')
 
 
 def sort_launcher(args, logger, config):
     print 'Start sorting data'
     timer = Timer()
     log.log_to_mongo(config.full_project, 'sort', timer, type='start')
-    write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, input=config.input, output=config.output)
-    sort.mergesort_launcher(input, output)
+    write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, input=config.txt, output=config.sorted)
+    sort.mergesort_launcher(config.txt, config.sorted)
     timer.elapsed()
-    log.log_to_mongo(full_project, 'sort', timer, type='finish')
+    log.log_to_mongo(config.full_project, 'sort', timer, type='finish')
 
 
 def store_launcher(args, logger, config):
@@ -290,7 +293,7 @@ def store_launcher(args, logger, config):
     write_message_to_log(logger, args, None, message=None, verb='Storing', location=config.location, input=config.sorted, project=config.full_project, collection=config.collection)
     store.launcher(config.sorted, config.full_project, config.collection)
     timer.elapsed()
-    log.log_to_mongo(full_project, 'store', timer, type='finish')
+    log.log_to_mongo(config.full_project, 'store', timer, type='finish')
 
 
 def transformer_launcher(args, logger, **kwargs):

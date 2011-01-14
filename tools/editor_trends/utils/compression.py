@@ -96,10 +96,13 @@ class Compressor(object):
                 'tar': ['%s' % self.program_installed, '-xvf', '%s' % self.path]
                 }
         commands = args.get(self.name, None)
+        print commands
         if commands != None:
-            p = subprocess.Popen(commands, shell=True).wait()
+            p = subprocess.call(commands)
+            #p = subprocess.Popen(commands, shell=True).wait()
         else:
             raise exceptions.CompressionNotSupportedError
+        return p
 
 #        if self.name == '7z':
 #            p = subprocess.Popen(['%s' % tool.extract_installed, 'e', '-o%s' % location, '%s' % input], shell=True).wait()

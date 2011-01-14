@@ -238,16 +238,17 @@ def output_editor_information(revisions, page, bots):
     return flat
 
 
-def parse_dumpfile(project, language_code, namespaces=['0']):
+def parse_dumpfile(project, file, language_code, namespaces=['0']):
     bot_ids = bots.retrieve_bots(language_code)
     ns = load_namespace(language_code)
     ns = build_namespaces_locale(ns, namespaces)
 
     location = os.path.join(settings.input_location, language_code, project)
     output = os.path.join(settings.input_location, language_code, project, 'txt')
-    filehandles = [utils.create_txt_filehandle(output, '%s.csv' % file, 'a', settings.encoding) for file in xrange(settings.max_filehandles)]
+    filehandles = [utils.create_txt_filehandle(output, '%s.csv' % fh, 'a', settings.encoding) for fh in xrange(settings.max_filehandles)]
 
-    fh = utils.create_txt_filehandle(location, '%s%s-latest-stub-meta-history.xml' % (language_code, project), 'r', settings.encoding)
+    fh = utils.create_txt_filehandle(location, file, 'r', settings.encoding)
+    #fh = utils.create_txt_filehandle(location, '%s%s-latest-stub-meta-history.xml' % (language_code, project), 'r', settings.encoding)
     total_pages, processed_pages = 0.0, 0.0
     for page in wikitree.parser.read_input(fh):
         title = page.find('title')

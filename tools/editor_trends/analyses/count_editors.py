@@ -104,6 +104,38 @@ def cohort_dataset_forward_histogram(data, editor, prop, **kwargs):
     return data, prop
 
 
+def cohort_dataset_backward_bar(data, editor, prop, **kwargs):
+
+    mongo = db.init_mongo_db(dbname)
+    editors = mongo[collection + '_dataset']
+    windows = create_windows(break_down_first_year=False)
+    data = shaper.create_datacontainer('dict')
+    data = shaper.add_windows_to_datacontainer(data, windows)
+
+    while True:
+        id = tasks.get(block=False)
+        tasks.task_done()
+        if id == None:
+            break
+        obs = editors.find_one({'editor': id}, {'first_edit': 1, 'final_edit': 1, 'edits_by_year': 1, 'last_edit_by_year': 1})
+        first_edit = obs['first_edit']
+        for year in xrange(2001, datetime.datetime.now().year + 1):
+            year = str(year)
+            if obs['edits_by_year'][year] > 0:
+                last_edit = obs['last_edit_by_year'][year]
+                editor_dt = relativedelta(last_edit, first_edit)
+                editor_dt = (editor_dt.years * 12) + editor_dt.months
+                for w in windows:
+                    if w >= editor_dt:
+                        data[int(year)][w] += 1
+                        break
+    filename = 'cohort_data_backward.bin'
+    print 'Storing data as %s' % os.path.join(settings.binary_location, '%s_%s' % (dbname, filename))
+    utils.store_object(data, settings.binary_location, '%s_%s' % (dbname, filename))
+    cohort_charts.prepare_cohort_dataset(dbname, filename)
+
+
+
 def cohort_dataset_forward_bar(data, editor, prop, **kwargs):
     if prop == None:
         first_year, final_year = kwargs['first_year'], kwargs['final_year']
