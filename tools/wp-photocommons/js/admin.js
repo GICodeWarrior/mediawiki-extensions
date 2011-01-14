@@ -13,13 +13,20 @@
 
             $("body").prepend('<div id="photocommons-dialog"></div>');
             $("#photocommons-dialog").load(PATH + "/search.php?standalone=1", function() {
-                console.log(Photocommons, $.suggestions);
                 Photocommons.init();
+
                 var $self = $("#photocommons-dialog");
-                $self.dialog();
-                $self.find("button").click(function() {
-                    var cnt = $("#content").val();
-                    $("#content").val('[photocommons file="flep" size="300"]' + cnt);
+
+                $self.dialog({
+                    width : 800,
+                    height : 500
+                });
+
+                $("#wp-photocommons-images img").live('click', function() {
+                    var file = $(this).attr('data-filename'),
+                        cnt = $("#content").val();
+
+                    $("#content").val('[photocommons file="' + file + '" size="300"]' + cnt);
                     $self.dialog('close');
                 });
             });

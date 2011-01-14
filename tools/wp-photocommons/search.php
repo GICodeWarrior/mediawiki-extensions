@@ -9,6 +9,7 @@ if ($standalone) : ?>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="<?=$dir?>/css/ui-lightness/jquery-ui-1.8.5.custom.css" />
     <link rel="stylesheet" href="<?=$dir?>/css/jquery.suggestions.css" />
+    <link rel="stylesheet" href="css/search.css" />
 </head>
 <body>
 <?php endif; ?>
