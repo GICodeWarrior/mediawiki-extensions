@@ -23,8 +23,30 @@ class FancyUploader(object):
     def __init__(self):
         pass
 
-    def construct_title(self):
-        pass
+    def construct_title(self, metadata, maxlength=120):
+        '''
+        Need the following fields in the metadata dictionary:
+        * title
+        * project
+        * id
+        * extension
+        '''
+
+        if len(metadata['title']) > maxlength:
+            base_title = metadata['title'][0 : maxlength]
+        else:
+            base_title = metadata['title']
+
+        title = u'%s - %s - %s.%s' % (base_title, metadata['project'], metadata['id'], metadata['extension'])
+        
+        return cleanup_title(title)
+
+    def cleanup_title(self, title):
+        '''
+        Remove all funky chars that might cause problems
+        '''
+        return title
+        
 
     def convert_dict_to_wikitext(self, template, dict):
         # TODO curly brace escaping
