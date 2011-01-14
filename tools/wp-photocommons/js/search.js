@@ -111,7 +111,11 @@ if ( !window.Photocommons ) {
 								$.each( data.query.pageids, function( key, pageid ) {
 									var img = data.query.pages[pageid];
 									if ( img.imageinfo && img.imageinfo[0] ) {
-										$( '#wp-photocommons-images' ).append( '<img src="' + img.imageinfo[0].thumburl + '" style="display:none;"/>' ).find( 'img' ).fadeIn();
+										$( '<img style="display:none"/>' ).attr({
+											'src': img.imageinfo[0].thumburl,
+											'title': img.title,
+											'data-filename': img.title
+										}).appendTo( '#wp-photocommons-images' ).fadeIn();
 						
 									}
 								});
