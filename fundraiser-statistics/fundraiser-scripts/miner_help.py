@@ -187,13 +187,7 @@ def convert_list_dict(collection):
 	return new_collection
 	
 """ Given an IP localizes the country """
-def localize_IP(ip_string):
-	
-	""" Get db object / Create cursor  """
-	# db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-	db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
-	cur = db.cursor()
-	
+def localize_IP(cur, ip_string):
 	
 	# compute ip number
 	ip_fields = ip_string.split('.')
@@ -211,16 +205,12 @@ def localize_IP(ip_string):
 		row = cur.fetchone()
 	except:
 		db.rollback()
-		sys.exit("Could execute: " + sql_stmnt)
+		sys.exit("Could not execute: " + sql_stmnt)
 	
-	country = row[0]
-	
-	# Commit to the db
-	db.commit()
-
-	# Close connection
-	cur.close()
-	db.close()
+	try:
+		country = row[0]
+	except:
+		country = ''
 	
 	return country
 	

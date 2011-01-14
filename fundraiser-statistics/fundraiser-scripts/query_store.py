@@ -103,7 +103,14 @@ class query_store:
 			banner = args[2]
 			campaign = args[3]
 			sql_stmnt = sql_stmnt % (start, end, banner, start, end, campaign, start, end, campaign, banner)
-			
+		
+		elif query_name == 'report_LP_confidence':
+			start = args[0]
+			end = args[1]
+			lp = args[2]
+			campaign = args[3]
+			sql_stmnt = sql_stmnt % (start, end, campaign, lp, start, end, campaign, lp)
+		
 		else:
 			return 'no such table\n'
 
@@ -249,6 +256,17 @@ class query_store:
 				return 9
 			elif metric_name == 'amt_per_imp':
 				return 10
+			else:
+				return -1
+		elif query_name == 'report_LP_confidence':
+			if metric_name == 'completion_rate':
+				return 5
+			elif metric_name == 'don_per_view':
+				return 6
+			elif metric_name == 'amt_per_view':
+				return 7
+			elif metric_name == 'amt_per_donation':
+				return 8
 			else:
 				return -1
 		else:
