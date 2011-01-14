@@ -14,3 +14,5 @@
 // FIXME insecure
 #define COMMONS_PASSWORD_KEY @"CommonsPasswordKey"
 
+#define DEFAULT_LICENSE @"{{cc-by-sa-3.0}}"
+#define APPLICATION_CATEGORY @"Images uploaded with WikiSnaps"
