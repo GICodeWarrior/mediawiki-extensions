@@ -3,8 +3,8 @@
 
     function addButtons() {
         $("#media-buttons").append(''.concat(
-            '<a id="photocommons-add" title="Add a free image">',
-            '<img src="' + PATH + '/img/favicon.png" />',
+            '<a id="photocommons-add" title="Add a free image" style="padding-left:4px;">',
+            '<img src="' + PATH + '/img/button.png"/>',
             '</a>'
         ));
 
@@ -12,7 +12,7 @@
             e.preventDefault();
 
             $("body").prepend('<div id="photocommons-dialog"></div>');
-            $("#photocommons-dialog").load(PATH + "/test.php", function(html) {
+            $("#photocommons-dialog").load(PATH + "/search.php", function(html) {
                 var $self = $("#photocommons-dialog");
                 $self.dialog();
                 $self.find("button").click(function() {
