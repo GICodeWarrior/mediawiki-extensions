@@ -5,7 +5,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.7 ===
-2011-01-xx
+2011-01-14
 
 * Fixed issue with non-existing, but embedded, images.
 * Added 2 hooks that allows modifying push requests before they are executed.
