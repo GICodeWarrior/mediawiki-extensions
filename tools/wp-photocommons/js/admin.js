@@ -13,6 +13,8 @@
 
             $("body").prepend('<div id="photocommons-dialog"></div>');
             $("#photocommons-dialog").load(PATH + "/search.php?standalone=1", function() {
+                console.log(Photocommons, $.suggestions);
+                Photocommons.init();
                 var $self = $("#photocommons-dialog");
                 $self.dialog();
                 $self.find("button").click(function() {

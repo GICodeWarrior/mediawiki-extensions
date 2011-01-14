@@ -41,7 +41,7 @@
  * highlightInput: Whether to hightlight matched portions of the input or not
  *		Type: Boolean, Default: false
  */
-
+(function($) {
 $.suggestions = {
 	/**
 	 * Cancel any delayed updateSuggestions() call and inform the user so
@@ -514,3 +514,4 @@ $.fn.suggestions = function() {
 	} );
 	return returnValue !== null ? returnValue : $(this);
 };
+})(jQuery);

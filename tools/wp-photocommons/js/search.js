@@ -162,6 +162,7 @@ if ( !window.Photocommons ) {
 	});
 
 	// Init
+	// FIXME
 	$( document ).ready( Photocommons.init );
 
 })(jQuery);
