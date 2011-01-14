@@ -8,6 +8,8 @@
 
 #import "SettingsViewController.h"
 #import "PhotoPickerViewController.h"
+#import "ASIFormDataRequest.h"
+
 
 @implementation SettingsViewController
 

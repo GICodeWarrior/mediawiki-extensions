@@ -9,3 +9,8 @@
 
 #define UPLOAD_URL @"http://www.yourcompany.com/upload/"
 #define CONTINUE_URL @"http://www.yourcompany.com/continue/"
+
+#define COMMONS_USERNAME_KEY @"CommonsUsernameKey"
+// FIXME insecure
+#define COMMONS_PASSWORD_KEY @"CommonsPasswordKey"
+

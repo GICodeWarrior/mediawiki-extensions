@@ -25,6 +25,10 @@
     IBOutlet UIImageView *uploadOverlayImage;
     IBOutlet UIProgressView *uploadProgress;
     IBOutlet UILabel *uploadProgressMessage;
+															 
+	NSString *token;
+	NSString *editToken;
+															 
 }
 
 - (IBAction)onCameraClicked;

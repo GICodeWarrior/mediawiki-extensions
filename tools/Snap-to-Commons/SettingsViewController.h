@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#define COMMONS_USERNAME_KEY @"CommonsUsernameKey"
-// FIXME insecure
-#define COMMONS_PASSWORD_KEY @"CommonsPasswordKey"
-
+#import "Configuration.h"
 
 @interface SettingsViewController : UIViewController <UINavigationControllerDelegate,
 														 UITextFieldDelegate>{
