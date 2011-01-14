@@ -1,16 +1,13 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.5.custom.css" />
-</head>
-<body>
-<input type="search" id="search" />
-<ul id="results"></ul>
-<img src="img/loading.gif" style="display:none;" id="loading" />
-<div id="images"></div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script src="js/jquery-ui-1.8.5.custom.min.js"></script>
-<script src="search.js"></script>
-</body>
-</html>
+<?php
+/**
+ * @package Photocommons
+ * @version 0.0.1
+ */
+/*
+Plugin Name: Photocommons
+Plugin URI: http://#
+Description: 
+Author: Husksy, Krinkle
+Version: 0.0.1
+Author URI: http://
+*/
