@@ -59,9 +59,10 @@ if ( !window.Photocommons ) {
 
 			var	url = 'http://commons.wikimedia.org/w/api.php',
 				first = true,
-				key;
+				key,
+				value;
 			for ( key in args ) {
-				var value = args[key];
+				value = args[key];
 				url += (first) ? '?' : '&';
 				first = false;
 
