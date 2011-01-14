@@ -16,25 +16,28 @@ $.extend( Photocommons, {
 					'search' : q.search
 				};
 			},
-			
+/* http://commons.wikimedia.org/w/api.php
+	? action=query
+	& generator=images
+	& gimlimit=20
+	& indexpageids=1
+	& titles=Cat
+	& redirects=1
+	& prop=imageinfo
+	& iiprop=url
+	& iiurlwidth=200		
+*/	
 			'pageimages' : function(q) {
 				return {
 					'action' : 'query',
-					'prop' : 'images',
+					'generator' : 'images',
+					'gimlimit' : '20',
 					'indexpageids' : '1',
 					'titles' : q.title,
-					'redirects' : '1'
-				};
-			},
-			
-			'thumbs' : function(q) {
-				return {
-					'action' : 'query',
+					'redirects' : '1',
 					'prop' : 'imageinfo',
 					'iiprop' : 'url',
 					'iiurlwidth' : q.width,
-					'indexpageids' : '1',
-					'titles' : q.images//.join( '|' )
 				};
 			}
 		};
@@ -87,30 +90,15 @@ $.extend( Photocommons, {
 				$( '#wp-photocommons-loading' ).show();
 				
 				var url = Photocommons.getQueryUrl( 'pageimages', {
-					'title' : ui.item.value
+					'title' : ui.item.value,
+					'width' : '200'
 				});
 				
 				$.getJSON(url, function(data) {
-					var	pageid = data.query.pageids[0],
-						pageimages = data.query.pages[pageid].images,
-						titles = '';
-					
-					if ( !pageimages.length ) {
+
+					if ( !data.query.pageids.length ) {
 						$( '#wp-photocommons-images' ).html( 'No images found :(' );
-					}
-					
-					$.each( pageimages, function() {
-						titles += '|' + this.title;					
-					} );
-					
-					var url = Photocommons.getQueryUrl( 'thumbs', {
-						width : '200',
-						images : titles
-					});
-					
-					
-					$.getJSON(url, function(data){
-						
+					} else {
 						$.each(data.query.pageids, function(key,pageid){
 							var img = data.query.pages[pageid];
 							if ( img.imageinfo && img.imageinfo[0] ) {
@@ -119,7 +107,7 @@ $.extend( Photocommons, {
 							}
 						})					
 					
-					});				
+					}				
 					
 					$( '#wp-photocommons-loading' ).hide();
 				});
