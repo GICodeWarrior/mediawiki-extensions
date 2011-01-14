@@ -21,7 +21,7 @@
 <?php if ($standalone) : ?>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script src="js/jquery-ui-1.8.5.custom.min.js"></script>
-	<script src="search.js"></script>
+	<script src="js/search.js"></script>
 </body>
 </html>
 <?php endif; ?>
