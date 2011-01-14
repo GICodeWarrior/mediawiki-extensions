@@ -50,7 +50,7 @@ class FancyUploader(object):
 
     def convert_dict_to_wikitext(self, template, dict):
         # TODO curly brace escaping
-        return '{{%s|%s}}' % (template, '|'.join('%s=%s' for i in dict.iteritems()))
+        return '{{subst:%s|%s|subst=subst:}}' % (template, '|'.join('%s=%s' for i in dict.iteritems()))
 
     def upload(self, username, password, file, filename, wikitext):
         site = mwclient.Site('commons.wikimedia.org')
