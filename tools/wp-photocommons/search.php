@@ -1,12 +1,9 @@
-<?php
- if ( basename( $_SERVER['SCRIPT_FILENAME'] ) == 'search.php' ) : ?>
+<?php $standalone = empty($_GET['standalone']); ?>
+<?php if ($standalone) : ?>
 <!doctype html>
 <html>
 <head>
     <meta charset="utf-8" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-	<script src="js/jquery-ui-1.8.5.custom.min.js"></script>
-	<script src="search.js"></script>
     <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.5.custom.css" />
 </head>
 <body>
@@ -21,10 +18,10 @@
 
 	<div id="wp-photocommons-images"></div>
 
-
-
-
-<?php if ( basename( $_SERVER['SCRIPT_FILENAME'] ) == 'search.php' ) : ?>
+<?php if ($standalone) : ?>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script src="js/jquery-ui-1.8.5.custom.min.js"></script>
+	<script src="search.js"></script>
 </body>
 </html>
 <?php endif; ?>
