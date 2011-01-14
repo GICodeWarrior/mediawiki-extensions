@@ -39,7 +39,7 @@ class FancyUploader(object):
 
         title = u'%s - %s - %s.%s' % (base_title, metadata['project'], metadata['id'], metadata['extension'])
         
-        return cleanup_title(title)
+        return self.cleanup_title(title)
 
     def cleanup_title(self, title):
         '''
@@ -50,23 +50,24 @@ class FancyUploader(object):
 
     def convert_dict_to_wikitext(self, template, dict):
         # TODO curly brace escaping
-        return '{{subst:%s|%s|subst=subst:}}' % (template, '|'.join('%s=%s' for i in dict.iteritems()))
+        return '{{subst:%s|%s|subst=subst:}}' % (template, '|'.join('%s=%s' % i for i in dict.iteritems()))
 
     def upload(self, username, password, file, filename, wikitext):
-        site = mwclient.Site('commons.wikimedia.org')
+        site = mwclient.Site('test.wikipedia.org')
         site.login(username, password)
-        return site.upload(file, filename, wikitext)
+        return site.upload(file, filename, wikitext, ignore = True)
 
     def run(self, data, filename):
-        title = self.construct_title()
+        title = self.construct_title(data['metadata'])
         wikitext = self.convert_dict_to_wikitext(data['body_template'],
                                                  data['metadata'])
         result = self.upload(data['username'], data['password'],
                              open(filename, 'rb'), title, wikitext)
+        return result
 
 if __name__ == '__main__':
     uploader = FancyUploader()
     data = json.load(open(sys.argv[1], 'rb'))
     result = uploader.run(data, sys.argv[2])
-    json.dump(sys.stdout, result)
+    json.dump(result, sys.stdout)
     
