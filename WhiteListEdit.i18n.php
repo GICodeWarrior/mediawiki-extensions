@@ -670,6 +670,7 @@ $messages['ca'] = array(
  * @author Sasan700
  */
 $messages['ce'] = array(
+	'whitelisttablemodon' => 'Тlаьххьара хийцамаш',
 	'whitelisttableview' => 'Хьажа',
 );
 
