@@ -19130,7 +19130,7 @@ $messages['sl'] = array(
 	'configure-setting-wgAjaxSearch' => 'Omogoči uporabo Ajax za samodejne predloge za iskanje',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Rancher
  * @author Жељко Тодоровић
@@ -19138,7 +19138,7 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'configure-setting-wgSitename' => 'Име сајта',
-	'configure-setting-wgActionPaths-key' => 'Акција',
+	'configure-setting-wgActionPaths-key' => 'Радња',
 	'configure-setting-wgActionPaths-value' => 'URL шаблон',
 	'configure-setting-wgAllDBsAreLocalhost' => 'Тихо препиши све повезане базе података на локални хост',
 	'configure-setting-wgDBAvgStatusPoll' => 'Просећно време између SHOW STATUS захтева и услова претоварења',
@@ -21699,19 +21699,22 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'configure-setting-wgSitename' => '網站名稱',
+	'configure-setting-wgActionPaths' => '每次操作的網址',
+	'configure-setting-wgActionPaths-key' => '操作',
 	'configure-setting-wgActionPaths-value' => '網址模板',
 	'configure-setting-wgDBAvgStatusPoll' => '在滿載情況下SHOW STATUS查詢的平均時間',
 	'configure-setting-wgDBerrorLog' => '把數據庫出錯記錄寫入檔案',
 	'configure-setting-wgDBname' => '使用的數據庫名稱',
 	'configure-setting-wgDBpassword' => '供$wgDBuser使用的密碼',
-	'configure-setting-wgDBport' => '數據庫伺服器的連接埠',
-	'configure-setting-wgDBserver' => '數據庫伺服器的主機名稱或IP位址',
-	'configure-setting-wgDBtype' => '使用的數據庫類型',
-	'configure-setting-wgSharedDB' => '共用數據庫名稱',
+	'configure-setting-wgDBport' => '資料庫伺服器的連接埠',
+	'configure-setting-wgDBserver' => '資料庫伺服器的主機名稱或IP位址',
+	'configure-setting-wgDBtype' => '使用的資料庫類型',
+	'configure-setting-wgSharedDB' => '共用資料庫名稱',
 	'configure-setting-wgMediaHandlers-key' => 'MIME類型',
 	'configure-setting-wgShowEXIF' => '在檔案描述頁面顯示EXIF資料',
 	'configure-setting-wgTrustedMediaFormats' => '視為「安全」的媒體類型及MIME類型',
@@ -21745,7 +21748,7 @@ $messages['zh-hant'] = array(
 	'configure-setting-wgPageShowWatchingUsers' => '顯示正在監視頁面的使用者',
 	'configure-setting-wgRestrictionLevels' => '可設定的限制級別',
 	'configure-setting-wgSiteNotice' => '網站通告',
-	'configure-setting-wgSiteSupportPage' => '含捐款信息的頁面',
+	'configure-setting-wgSiteSupportPage' => '含捐款資訊的頁面',
 	'configure-setting-wgStyleVersion' => 'MediaWiki CSS/JS檔案版本',
 	'configure-setting-wgUniversalEditButton' => '啟用「通用編輯按鈕」',
 	'configure-setting-wgUrlProtocols' => '准許的外部連結協定',
@@ -21764,7 +21767,7 @@ $messages['zh-hant'] = array(
 	'configure-setting-wgSpecialPageGroups' => '特殊頁面組別',
 	'configure-setting-wgSpecialPageGroups-key' => '組別',
 	'configure-setting-wgAutopromote-value' => '條件',
-	'configure-setting-wgAccountCreationThrottle' => '每個IP位址可創建的帳號數量',
+	'configure-setting-wgAccountCreationThrottle' => '每個IP位址可建立的帳號數量',
 	'configure-setting-wgEnableAPI' => '啟用API',
 	'configure-setting-wgEnableWriteAPI' => '啟用編寫API',
 	'configure-setting-wgEmergencyContact' => '網站管理員電郵地址',
@@ -21787,7 +21790,7 @@ $messages['zh-hant'] = array(
 	'configure-setting-wgAllowRealName' => '准許真實姓名',
 	'configure-setting-wgMaxNameChars' => '使用者名稱的最大位元組',
 	'configure-setting-wgMinimalPasswordLength' => '最小密碼長度',
-	'configure-setting-wgInterwikiCache' => '啟用跨維基緩存',
+	'configure-setting-wgInterwikiCache' => '啟用跨維基快取',
 	'configure-setting-wgDBmysql5' => '使用UTF-8編碼',
 	'configure-setting-wgDBservers' => '數據庫伺服器',
 	'configure-setting-wgExternalServers' => '外部MySQL伺服器',
