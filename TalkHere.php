@@ -31,61 +31,14 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['TalkHere'] = $dir . 'TalkHere.i18n.php';
 
 ///// hook it up /////////////////////////////////////////////////////
-$wgAutoloadClasses['TalkHereArticle'] = $dir . 'TalkHereArticle.php';
-$wgAutoloadClasses['TalkHereEditTarget'] = $dir . 'TalkHereArticle.php';
+$wgAutoloadClasses['TalkHereHooks'] = $dir . 'TalkHereHooks.php';
 
-$wgHooks['BeforePageDisplay'][] = 'wfTalkHereBeforePageDisplay';
-$wgHooks['ArticleFromTitle'][] = 'wfTalkHereArticleFromTitle';
-$wgHooks['CustomEditor'][] = 'wfTalkHereCustomEditor';
-$wgHooks['EditPage::showEditForm:fields'][] = 'wfTalkHereShowEditFormFields';
+$wgHooks['BeforePageDisplay'][] = 'TalkHereHooks::onBeforePageDisplay';
+$wgHooks['CustomEditor'][] = 'TalkHereHooks::onCustomEditor';
+$wgHooks['EditPage::showEditForm:fields'][] = 'TalkHereHooks::onShowEditFormFields';
+$wgHooks['ArticleViewFooter'][] = 'TalkHereHooks::onArticleViewFooter';
 
 $wgAjaxExportList[] = 'wfTalkHereAjaxEditor';
-
-function wfTalkHereBeforePageDisplay( $out, $skin ) {
-	global $wgScriptPath, $wgJsMimeType, $wgUseAjax;
-
-	$out->addExtensionStyle( $wgScriptPath . '/extensions/TalkHere/TalkHere.css' );
-
-	if ( $wgUseAjax ) {
-		$out->addScriptFile( $wgScriptPath . '/extensions/TalkHere/TalkHere.js' );
-	}
-
-	return true;
-}
-
-function wfTalkHereArticleFromTitle( &$title, &$article ) {
-	global $wgRequest, $wgTalkHereNamespaces;
-
-	if ( isset( $title->noTalkHere ) ) {
-		return true; //stop recursion
-	}
-
-	$action    = $wgRequest->getVal( 'action'    );
-	$oldid     = $wgRequest->getVal( 'oldid'     );
-	$diff      = $wgRequest->getVal( 'diff'      );
-
-	if ($action == 'purge') $action = null; //"purge" is not considered an action in this context
-
-	if ( $action || $oldid || $diff ) return true;
-
-	$ns = $title->getNamespace();
-
-	if ( !MWNamespace::isTalk($ns) && MWNamespace::canTalk($ns) && $title->exists()
-		&& ( !$wgTalkHereNamespaces || in_array($ns, $wgTalkHereNamespaces) ) ) {
-		$tns = MWNamespace::getTalk($ns);
-		$talk = Title::makeTitle($tns, $title->getDBkey());
-
-		if ($talk && $talk->userCan('read')) {
-			$t = clone $title;
-			$t->noTalkHere = true; //stop recursion
-
-			$a = MediaWiki::articleFromTitle( $t );
-			$article = new TalkHereArticle( $a, $talk );
-		}
-	}
-
-	return true;
-}
 
 function mangleEditForm( &$out, $returnto = false, $ajax = false ) { //HACK! too bad we need this :(
 	global $wgUser;
@@ -103,41 +56,6 @@ function mangleEditForm( &$out, $returnto = false, $ajax = false ) { //HACK! too
 
 	$out->clearHTML();
 	$out->addHTML($html);
-}
-
-function wfTalkHereCustomEditor( $article, $user ) {
-	global $wgRequest, $wgOut;
-
-	$action = $wgRequest->getVal( 'action' );
-	$oldid = $wgRequest->getVal( 'oldid' );
-	$returnto = $wgRequest->getVal( 'wpReturnTo' );
-	$talkhere = $wgRequest->getVal( 'wpTalkHere' );
-	if (!$talkhere || $action != 'submit' || !$returnto || $oldid) return true; //go on as normal
-
-	$to = Title::newFromText($returnto);
-	if (!$to) return true; //go on as normal
-
-	//use a wrapper to override redirection target
-	$a = new TalkHereEditTarget( $article, $to );
-	$editor = new EditPage( $a );
-	$editor->submit();
-
-	mangleEditForm( $wgOut, $returnto ); //HACK. This sucks.
-	return false;
-}
-
-function wfTalkHereShowEditFormFields( &$editor, &$out ) {
-	global $wgRequest;
-
-	$returnto = $wgRequest->getVal( 'wpReturnTo' );
-	$talkhere = $wgRequest->getVal( 'wpTalkHere' );
-
-	if ($talkhere && $returnto) {
-		$out->addHTML('<input type="hidden" value="1" name="wpTalkHere" id="wpTalkHere" />');
-		$out->addHTML('<input type="hidden" value="'.htmlspecialchars($returnto).'" name="wpReturnTo" id="wpReturnTo" />');
-	}
-
-	return true;
 }
 
 function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
