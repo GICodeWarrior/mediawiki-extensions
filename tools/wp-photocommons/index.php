@@ -1,17 +1,12 @@
 <?php
-/**
- * @package Photocommons
- * @version 0.0.1
- */
 /*
 Plugin Name: Photocommons
-Plugin URI: http://#
-Description: 
-Author: Husky, Krinkle
-Version: 0.0.1
-Author URI: http://
+Plugin URI: http://www.mediawiki.org/wiki/Photocommons
+Description: Search and add free images from Wikimedia Commons directly in your blog 
+Author: Husky (Hay Kranen), Krinkle
+Version: 1.0
+Author URI: http://www.mediawiki.org/wiki/Photocommons
 */
 
-require 'inc/class-http-request.php';
 require 'inc/class-photocommons.php';
 new PhotoCommons();
