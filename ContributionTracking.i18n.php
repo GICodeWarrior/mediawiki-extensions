@@ -1249,11 +1249,18 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'contributiontracking-desc' => '追蹤維基媒體籌款的貢獻',
+	'contributiontracking' => '追蹤的貢獻',
 	'contrib-tracking-error' => '錯誤',
 	'contrib-tracking-error-text' => '無效的表單提交',
 	'contrib-tracking-submitting' => '正在提交到支付處理器……',
+	'contrib-tracking-continue' => '若閣下沒有被重定向至 PayPal 頁面，請點擊按鈕以完成您的捐助。',
+	'contrib-tracking-redirect' => '您將被自動重定向到 PayPal 來完成你的捐款。',
 	'contrib-tracking-button' => '繼續',
+	'contrib-tracking-item-name-onetime' => '一次性捐助',
+	'contrib-tracking-item-name-recurring' => '每月定期捐款',
 );
 
