@@ -327,6 +327,13 @@ $messages['ca'] = array(
 	'amazonplus-less' => 'menys',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'amazonplus-german' => 'германхой',
+);
+
 /** Cebuano (Cebuano)
  * @author Wrightbus
  */
@@ -1805,10 +1812,11 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'amazonplus-desc' => '輸出Amazon網站資訊的高自定性擴展',
+	'amazonplus-desc' => '輸出Amazon網站資訊的高自訂性擴充套件',
 	'amazonplus-nores' => '錯誤：找不到任何資料！',
 	'amazonplus-noidres' => '錯誤：找不到產品代碼',
 	'amazonplus-fgcerr' => '錯誤：無法從Amazon接收資料！',
