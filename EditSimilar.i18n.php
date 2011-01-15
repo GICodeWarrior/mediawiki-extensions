@@ -726,13 +726,14 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'editsimilar-desc' => '當用戶保存頁面後鼓勵用戶編輯一個類似的頁面。',
+	'editsimilar-desc' => '當使用者儲存頁面後鼓勵使用者編輯一個類似的頁面。',
 	'editsimilar-thanks' => '多謝你的貢獻。建議你編輯以下$2個相關頁面：$1',
 	'editsimilar-thanks-notsimilar' => '多謝你的貢獻，不防繼續考慮編輯這$2個頁面：$1',
 	'editsimilar-thankyou' => '$1，多謝你的貢獻。',
-	'editsimilar-link-disable' => '設置參數',
+	'editsimilar-link-disable' => '設定偏好',
 	'tog-edit-similar' => '啟用類似頁面編輯建議',
 );
 
