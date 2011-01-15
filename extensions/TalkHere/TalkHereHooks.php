@@ -8,55 +8,45 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * Proxy object wrapping an article, intercepting rendering functions
  * to inject the talk page's content.
  */
-class TalkHereArticle {
+class TalkHereHooks {
 
-	var $_article;
-	var $_talkTitle;
-	var $_talk;
+	public static function onArticleViewFooter( $article ) {
+		global $wgOut, $wgRequest, $wgUser, $wgJsMimeType, $wgUseAjax, $wgTalkHereNamespaces;
 
-	/**
-	 * Constructor
-	 */
-	function __construct(&$article, $talkTitle) {
-		if (!$article) wfDebugDieBacktrace("article object required");
+		$action = $wgRequest->getVal( 'action', 'view' );
 
-		$this->_article = $article;
-		$this->_talkTitle = $talkTitle;
-		$this->_talk = null;
-	}
+		if ( $action != 'view' && $action != 'purge' ) {
+			return true;
+		}
 
-	function __call( $name, $args ) {
-		$callback = array($this->_article, $name);
-		return call_user_func_array( $callback, $args );
-	}
+		if ( $wgRequest->getVal( 'oldid' ) || $wgRequest->getVal( 'diff' ) ) {
+			return true;
+		}
 
-	function __get( $name ) {
-		return $this->_article->$name;
-	}
+		$title = $article->getTitle();
+		$ns = $title->getNamespace();
 
-	function render() {
-		global $wgOut;
+		if ( MWNamespace::isTalk($ns) || !MWNamespace::canTalk($ns) || !$title->exists()
+			|| ( $wgTalkHereNamespaces && !in_array( $ns, $wgTalkHereNamespaces ) ) ) {
+			return true;
+		}
+		
+		$talk = $title->getTalkPage();
 
-		$wgOut->setArticleBodyOnly(true);
-		$this->view();
-	}
+		if ( !$talk || !$talk->userCanRead() ) {
+			return true;
+		}
 
-	function view() {
-		global $wgOut, $wgUser, $wgJsMimeType, $wgUseAjax;
+		$hastalk = $talk->exists();
+		$cantalk = $talk->userCan('edit');
 
-		wfLoadExtensionMessages( 'TalkHere' );
+		if ( !$hastalk && !$cantalk ) {
+			return true;
+		}
 
 		$skin = $wgUser->getSkin();
-		$hastalk = $this->_talkTitle->exists();
-		$cantalk = $this->_talkTitle->userCan('edit');
 
-		$this->_article->view();
-
-		if (!$hastalk && !$cantalk) return;
-
-		if (!$this->_talk) {
-			$this->_talk = MediaWiki::articleFromTitle( $this->_talkTitle );
-		}
+		$talkArticle = MediaWiki::articleFromTitle( $talk );
 
 		$wgOut->addHTML('<div class="talkhere" id="talkhere">');
 
@@ -65,15 +55,15 @@ class TalkHereArticle {
 			$wgOut->addHTML('<div class="talkhere-head">');
 
 			$wgOut->addHTML('<h1>');
-			if ($this->_talkTitle->userCan('edit')) {
+			if ($talk->userCan('edit')) {
 				$wgOut->addHTML('<span class="editsection">');
-				$wgOut->addHTML( '[' . $skin->makeKnownLinkObj( $this->_talkTitle, wfMsg('talkhere-talkpage' ) ) . ']' );
+				$wgOut->addHTML( '[' . $skin->makeKnownLinkObj( $talk, wfMsg('talkhere-talkpage' ) ) . ']' );
 				$wgOut->addHTML('</span>');
 			}
-			$wgOut->addWikiText( wfMsg('talkhere-title', $this->_talkTitle->getPrefixedText() ), false );
+			$wgOut->addWikiText( wfMsg('talkhere-title', $talk->getPrefixedText() ), false );
 			$wgOut->addHTML('</h1>');
 
-			$headtext = wfMsg('talkhere-headtext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
+			$headtext = wfMsg('talkhere-headtext', $title->getPrefixedText(), $talk->getPrefixedText() );
 			if ( $headtext ) {
 				$wgOut->addWikiText( $headtext );
 				$wgOut->addHTML('<hr/>');
@@ -82,7 +72,7 @@ class TalkHereArticle {
 			$wgOut->addHTML('</div>'); //talkhere-head
 
 			$wgOut->addHTML('<div class="talkhere-comments">');
-			$this->_talk->view();
+			$talkArticle->view();
 			$wgOut->addHTML('</div>'); // talkhere-comments
 		}
 
@@ -106,23 +96,23 @@ class TalkHereArticle {
 				</script>\n"
 			);
 
-			$returnto = $this->_article->mTitle->getPrefixedDBKey();
-			$talktitle = $this->_talkTitle->getPrefixedDBKey();
+			$returnto = $title->getPrefixedDBKey();
+			$talktitle = $talk->getPrefixedDBKey();
 			$q = 'action=edit&section=new&wpTalkHere=1&wpReturnTo=' . urlencode($returnto);
 
 			$js = $wgUseAjax ? 'this.href="javascript:void(0);"; talkHereLoadEditor("talkhere_talklink", "talkhere_talkform", "'.Xml::escapeJsString($talktitle).'", "new", "'.Xml::escapeJsString($returnto).'"); ' : '';
 			$a = 'onclick="'.htmlspecialchars($js).'" id="talkhere_talklink"';
 
 			$wgOut->addHTML('<div class="talkhere-talklink">');
-			$wgOut->addHTML( $skin->makeKnownLinkObj( $this->_talkTitle, wfMsg('talkhere-addcomment' ), $q, '', '', $a ) );
+			$wgOut->addHTML( $skin->makeKnownLinkObj( $talk, wfMsg('talkhere-addcomment' ), $q, '', '', $a ) );
 			$wgOut->addHTML('</div>');
 
 			$wgOut->addHTML('<div id="talkhere_talkform" style="display:none;">&#160;</div>');
-			//$this->showCommentForm('new');
+			//self::showCommentForm( $title, $talk, 'new' );
 		}
 
 		if ($hastalk) {
-			$foottext = wfMsg('talkhere-foottext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
+			$foottext = wfMsg('talkhere-foottext', $title->getPrefixedText(), $talk->getPrefixedText() );
 			if ( $foottext ) {
 				$wgOut->addHTML('<hr/>');
 				$wgOut->addWikiText( $foottext );
@@ -131,34 +121,19 @@ class TalkHereArticle {
 
 		$wgOut->addHTML('</div>'); // talkhere-foot
 		$wgOut->addHTML('</div>'); // talkhere
-	}
 
-	function doPurge() {
-		global $wgUseSquid;
-		// Invalidate the cache
-		$this->mTitle->invalidateCache();
-
-		if ( $wgUseSquid ) {
-			// Commit the transaction before the purge is sent
-			$dbw = wfGetDB( DB_MASTER );
-			$dbw->commit();
-
-			// Send purge
-			$update = SquidUpdate::newSimplePurge( $this->mTitle );
-			$update->doUpdate();
-		}
-		$this->view();
+		return true;
 	}
 
 	/*
-	function showCommentForm( $section = 'new' ) {
+	static function showCommentForm( $title, $talk, $section = 'new' ) {
 		global $wgOut, $wgUser;
 		$tabindex = 1;
 
 		$skin = $wgUser->getSkin();
 
 		$q = 'action=submit';
-		$action = $this->_talkTitle->escapeLocalURL( $q );
+		$action = $talk->escapeLocalURL( $q );
 		$wgOut->addHTML('<form action="'.$action.'" method="post" id="editform"  name="editform" enctype="multipart/form-data">');
 
 		$wgOut->addHTML("<div>");
@@ -170,7 +145,7 @@ class TalkHereArticle {
 		$wgOut->addHTML('<input type="hidden" value="" name="wpEdittime" />');
 		$wgOut->addHTML('<input type="hidden" value="" name="wpScrolltop" id="wpScrolltop" />');
 
-		$returnto = urlencode( $this->_article->mTitle->getPrefixedDBKey() );
+		$returnto = urlencode( $title->getPrefixedDBKey() );
 		$wgOut->addHTML('<input type="hidden" value="'.htmlspecialchars($returnto).'" name="wpReturnTo" id="wpReturnTo" />');
 		$wgOut->addHTML('<input type="hidden" value="1" name="wpTalkHere" id="wpTalkHere" />');
 
@@ -209,10 +184,10 @@ class TalkHereArticle {
 			if( $wgUser->getOption( 'watchdefault' ) ) {
 				# Watch all edits
 				$watchthis = true;
-			} elseif( $wgUser->getOption( 'watchcreations' ) && !$this->_talkTitle->exists() ) {
+			} elseif( $wgUser->getOption( 'watchcreations' ) && !$talk->exists() ) {
 				# Watch creations
 				$watchthis = true;
-			} elseif( $this->_talkTitle->userIsWatching() ) {
+			} elseif( $talk->userIsWatching() ) {
 				# Already watched
 				$watchthis = true;
 			}
@@ -277,45 +252,84 @@ class TalkHereArticle {
 		$wgOut->addWikiText( wfMsg('talkhere-afterform') );
 		$wgOut->addHTML("</div>");
 	}*/
+
+	public static function onBeforePageDisplay( $out, $skin ) {
+		global $wgScriptPath, $wgJsMimeType, $wgUseAjax;
+
+		$out->addExtensionStyle( $wgScriptPath . '/extensions/TalkHere/TalkHere.css' );
+
+		if ( $wgUseAjax ) {
+			$out->addScriptFile( $wgScriptPath . '/extensions/TalkHere/TalkHere.js' );
+		}
+
+		return true;
+	}
+
+	public static function onCustomEditor( $article, $user ) {
+		global $wgRequest, $wgOut;
+
+		$action = $wgRequest->getVal( 'action' );
+		$oldid = $wgRequest->getVal( 'oldid' );
+		$returnto = $wgRequest->getVal( 'wpReturnTo' );
+		$talkhere = $wgRequest->getVal( 'wpTalkHere' );
+		if (!$talkhere || $action != 'submit' || !$returnto || $oldid) return true; //go on as normal
+
+		$to = Title::newFromText($returnto);
+		if (!$to) return true; //go on as normal
+
+		//use a wrapper to override redirection target
+		$editor = new TalkHereEditPage( $article );
+		$editor->submit();
+		$code = $editor->getCode();
+
+		if ( $code == EditPage::AS_SUCCESS_NEW_ARTICLE ) {
+			$wgOut->redirect( $to->getFullURL() . '#talkhere' );
+		} elseif ( $code == EditPage::AS_SUCCESS_UPDATE ) {
+			$wgOut->redirect( $to->getFullURL() . $editor->getAnchor() );
+		}
+
+		mangleEditForm( $wgOut, $returnto ); //HACK. This sucks.
+		return false;
+	}
+
+	public static function onShowEditFormFields( &$editor, &$out ) {
+		global $wgRequest;
+
+		$returnto = $wgRequest->getVal( 'wpReturnTo' );
+		$talkhere = $wgRequest->getVal( 'wpTalkHere' );
+
+		if ($talkhere && $returnto) {
+			$out->addHTML('<input type="hidden" value="1" name="wpTalkHere" id="wpTalkHere" />');
+			$out->addHTML('<input type="hidden" value="'.htmlspecialchars($returnto).'" name="wpReturnTo" id="wpReturnTo" />');
+		}
+
+		return true;
+	}
+
 }
 
 /**
- * Proxy object wrapping an article, overriding the redirect target after the
- * article was updated.
+ * EditPage subclass that saves the result and the section anchor after an internalAttemptSave()
+ * call
  */
-class TalkHereEditTarget {
+class TalkHereEditPage extends EditPage {
+	private $code = 0;
+	private $sectionanchor = '';
 
-	var $_article;
-	var $_returnto;
-
-	/**
-	 * Constructor
-	 */
-	function __construct(&$article, $returnto) {
-		if ( !$article ) wfDebugDieBacktrace("article object required");
-
-		$this->_article = $article;
-		$this->_returnto = $returnto;
-	}
-
-	function __call( $name, $args ) {
-		global $wgOut;
-
-		$callback = array( $this->_article, $name );
-		$res = call_user_func_array( $callback, $args );
-
-		if ($name == 'insertNewArticle') {
-			$wgOut->redirect( $this->_returnto->getFullURL() . '#talkhere' );
+	public function internalAttemptSave( &$result, $bot = false ) {
+		$res = parent::internalAttemptSave( $result, $bot );
+		$this->code = $res;
+		if ( isset( $result['sectionanchor'] ) ) {
+			$this->sectionanchor = $result['sectionanchor'];
 		}
-		else if ($name == 'updateArticle' && $res) {
-			$sectionAnchor = isset($args[5]) ? $args[5] : '';
-			$wgOut->redirect( $this->_returnto->getFullURL() . $sectionAnchor );
-		}
-
 		return $res;
 	}
 
-	function __get( $name ) {
-		return $this->_article->$name;
+	public function getCode() {
+		return $this->code;
+	}
+
+	public function getAnchor() {
+		return $this->sectionanchor;
 	}
 }
