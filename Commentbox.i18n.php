@@ -1146,3 +1146,11 @@ $messages['zh-hans'] = array(
 	'commentbox-log' => '新评论',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'commentbox-name' => '名稱：',
+	'commentbox-error-page-nonexistent' => '該頁面不存在！',
+);
+
