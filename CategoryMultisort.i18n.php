@@ -670,13 +670,15 @@ $messages['zh-hans'] = array(
 	'prefs-category' => '分类',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
 	'categorymultisort-desc' => '允許按照不同的排序字查看分類',
-	'categorymultisort-defaultsortkey-name' => '默認',
+	'categorymultisort-defaultsortkey-name' => '預設',
 	'categorymultisort-sortkey' => '排序字：',
 	'categorymultisort-go' => '轉到',
-	'categorymultisort-default-sortkey' => '默認排序字：',
+	'categorymultisort-default-sortkey' => '預設排序字：',
 	'prefs-category' => '分類',
 );
 
