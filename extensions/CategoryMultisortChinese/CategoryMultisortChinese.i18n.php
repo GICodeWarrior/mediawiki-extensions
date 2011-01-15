@@ -600,9 +600,15 @@ $messages['zh-hans'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => '繁体部首',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
+	'categorymultisort-sortkey-name-stroke' => '筆劃',
 	'categorymultisort-sortkey-name-stroke-simplified' => '中文（簡體）',
 	'categorymultisort-sortkey-name-stroke-traditional' => '中文（繁體）',
+	'categorymultisort-sortkey-name-radical' => '部首',
+	'categorymultisort-sortkey-name-radical-simplified' => '簡體部首',
+	'categorymultisort-sortkey-name-radical-traditional' => '繁體部首',
 );
 

@@ -4337,7 +4337,8 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] podpísal [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -4388,7 +4389,7 @@ $1',
 	'sign-viewfield-ip' => 'IP адреса',
 	'sign-viewfield-agent' => 'Браузер корисника',
 	'sign-viewfield-phone' => 'Телефон',
-	'sign-viewfield-email' => 'Имејл',
+	'sign-viewfield-email' => 'Е-пошта',
 	'sign-viewfield-age' => 'Старост',
 	'sign-viewfield-options' => 'Опције',
 	'sign-viewsigs-intro' => 'Испод су приказани потписи снимљени за <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',

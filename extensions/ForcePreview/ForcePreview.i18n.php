@@ -622,9 +622,10 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'forcepreview' => '保存頁面（需先預覽）',
+	'forcepreview' => '儲存頁面（需先預覽）',
 );
 

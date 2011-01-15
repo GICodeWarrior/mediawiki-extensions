@@ -1523,7 +1523,8 @@ $messages['sk'] = array(
 	'right-passwordreset' => 'Vygenerovať nové heslo pre používateľa ([[Special:PasswordReset|špeciálna stránka]])',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1533,7 +1534,7 @@ $messages['sr-ec'] = array(
 	'passwordreset-nopassmatch' => 'Лозинке се не поклапају',
 	'passwordreset-username' => 'Корисничко име:',
 	'passwordreset-newpass' => 'Нова лозинка:',
-	'passwordreset-confirmpass' => 'Потврди лозинку:',
+	'passwordreset-confirmpass' => 'Потврдите лозинку:',
 	'passwordreset-submit' => 'Обнови лозинку',
 	'passwordreset-success' => 'Лозинка је обновљена за кориснички ID: $1',
 	'passwordreset-disableuser' => 'Онемогућити кориснички налог?',

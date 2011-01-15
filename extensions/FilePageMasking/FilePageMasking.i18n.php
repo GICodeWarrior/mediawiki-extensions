@@ -365,8 +365,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'filepagemasking-desc' => '在檔案描述頁連結中將 ".xxx" 重寫為 "_xxx" 。',
+	'filepagemasking-desc' => '在檔案描述頁連結中將「.xxx」重寫為「_xxx」。',
 );
 

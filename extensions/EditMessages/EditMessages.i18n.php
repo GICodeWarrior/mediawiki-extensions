@@ -1662,10 +1662,12 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'editmessages' => '編輯消息',
-	'editmsg-search' => '搜索',
-	'editmsg-new-search' => '新搜索',
+	'editmessages' => '編輯訊息',
+	'editmsg-target' => '目標訊息：',
+	'editmsg-search' => '搜尋',
+	'editmsg-new-search' => '新的搜尋',
 );
 

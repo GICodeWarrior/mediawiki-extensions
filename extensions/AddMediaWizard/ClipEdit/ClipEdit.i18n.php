@@ -1779,3 +1779,19 @@ $messages['zh-hans'] = array(
 	'mwe-clipedit-layout_left' => '左侧图像布局',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'mwe-clipedit-crop' => '裁切圖像',
+	'mwe-clipedit-insert_image_page' => '插入到頁面',
+	'mwe-clipedit-cancel_image_insert' => '取消插入',
+	'mwe-clipedit-sc_attributes' => '編輯剪輯細節',
+	'mwe-clipedit-sc_overlays' => '重疊',
+	'mwe-clipedit-sc_audio' => '音訊控制',
+	'mwe-clipedit-template_properties' => '模板屬性',
+	'mwe-clipedit-custom_title' => '自訂標題',
+	'mwe-clipedit-edit_properties' => '編輯屬性',
+	'mwe-clipedit-other_properties' => '其他屬性',
+);
+

@@ -801,3 +801,10 @@ $messages['zh-hans'] = array(
 	'categorystepper-start' => '（分类开�头）',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'categorystepper-end' => '（分類結尾）',
+);
+

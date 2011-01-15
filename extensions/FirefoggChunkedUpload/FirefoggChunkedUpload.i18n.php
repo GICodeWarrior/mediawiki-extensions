@@ -306,8 +306,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'firefoggcu-desc' => 'Firefogg的分塊上傳協議',
+	'firefoggcu-desc' => 'Firefogg 的分塊上傳協議',
 );
 

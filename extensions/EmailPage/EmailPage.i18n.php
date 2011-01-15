@@ -991,3 +991,14 @@ $messages['vi'] = array(
 	'ea-data' => 'Dữ liệu',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'e-mailpage' => '電子郵件頁面',
+	'ea-subject' => '主旨：',
+	'ea-style' => '風格：',
+	'ea-data' => '日期',
+	'ea-allusers' => '所有用戶',
+);
+

@@ -555,7 +555,7 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'emailaddressimage-desc' => '加入<code>&lt;email&gt;</code>把電郵地址顯示成圖片',
+	'emailaddressimage-desc' => '加入<code>&lt;email&gt;</code>把電郵位址顯示成圖片',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)

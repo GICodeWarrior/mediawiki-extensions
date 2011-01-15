@@ -1488,6 +1488,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1497,7 +1498,7 @@ $messages['zh-hant'] = array(
 	'edituser-dosearch' => '搜尋',
 	'edituser-nouser' => '指定的用戶不存在',
 	'edituser-exempt' => '指定的用戶無法被編輯',
-	'right-edituser' => '編輯其他用戶的參數設置',
-	'right-edituser-exempt' => '他人無法編輯這個用戶的參數設置',
+	'right-edituser' => '編輯其他用戶的偏好設定',
+	'right-edituser-exempt' => '他人無法編輯這個使用者的偏好設定',
 );
 

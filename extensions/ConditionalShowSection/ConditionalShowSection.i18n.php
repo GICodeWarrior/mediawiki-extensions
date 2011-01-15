@@ -387,8 +387,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'conditionalshowsection-desc' => '添加cshow標籤有條件地 顯示 /隱藏一段維基文本',
+	'conditionalshowsection-desc' => '加入 cshow 標籤有條件地顯示／隱藏一段維基文字',
 );
 

@@ -365,6 +365,13 @@ $messages['ca'] = array(
 	'createsigndoc-error-pagenoexist' => 'Error: La pàgina [[$1]] no existeix.',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'createsigndoc-introtext' => 'Дlадолош:',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'createsigndoc-create' => 'Creà',

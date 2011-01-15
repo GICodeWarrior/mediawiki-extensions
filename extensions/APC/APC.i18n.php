@@ -1230,7 +1230,9 @@ $messages['ce'] = array(
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|хlум|хlума|хlумнаш}} ($2)',
 	'viewapc-display-filename' => 'Хlуман цlе',
 	'viewapc-ls-options' => 'Литтар: $1 Листар: $2$3$4 Лахар: $5 $6',
+	'viewapc-ls-header-modified' => 'Тlаьххьара хийцамаш',
 	'viewapc-ls-delete' => '[Дlадайá]',
+	'viewapc-ls-sort-modified' => 'Тlаьххьара хийцамаш',
 );
 
 /** Sorani (کوردی) */

@@ -502,8 +502,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'contributorsaddon-desc' => '添加JavaScript的彈出式窗口至“主要貢獻者”鏈接',
+	'contributorsaddon-desc' => '加入JavaScript的彈出式視窗至「主要貢獻者」連結',
 );
 

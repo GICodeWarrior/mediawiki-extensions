@@ -1493,6 +1493,13 @@ $messages['ca'] = array(
 	'wikilog-history-lc' => 'historial',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikilog-reply-lc' => 'жоп ло',
+);
+
 /** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'wikilog-view-summary' => 'پوختە',
@@ -6471,7 +6478,7 @@ $messages['sl'] = array(
 	'wikilog-doc-import-comment' => 'Uvožena dokumentacija Wikiloga',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -6485,7 +6492,7 @@ $messages['sr-ec'] = array(
 	'wikilog-title' => 'Наслов',
 	'wikilog-actions' => 'Радње',
 	'wikilog-comments' => 'Коментари',
-	'wikilog-replies' => 'Реплике',
+	'wikilog-replies' => 'Одговори',
 	'wikilog-view-archives' => 'Архиве',
 	'wikilog-view-summary' => 'Сажетак',
 	'wikilog-draft-title-mark' => '(нацрт)',
@@ -7479,7 +7486,9 @@ $messages['zh-hans'] = array(
 	'wikilog-history-lc' => '历史',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
 	'wikilog-new-item-go' => '創建',
 	'wikilog-item-name' => '文章名稱：',
@@ -7570,7 +7579,7 @@ $messages['zh-hant'] = array(
 	'wikilog-submit' => '提交',
 	'wikilog-preview' => '預覽',
 	'wikilog-edit-lc' => '編輯',
-	'wikilog-reply-lc' => '回復',
+	'wikilog-reply-lc' => '回覆',
 	'wikilog-delete-lc' => '刪除',
 	'wikilog-approve-lc' => '批准',
 	'wikilog-reject-lc' => '拒絕',
