@@ -402,8 +402,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'apisvgproxy-desc' => '代理從 SVG文件（可能是遠程）文件存放到本地域名',
+	'apisvgproxy-desc' => '從 SVG 檔案代理（可能是遠端）檔案存放到本地域名',
 );
 
