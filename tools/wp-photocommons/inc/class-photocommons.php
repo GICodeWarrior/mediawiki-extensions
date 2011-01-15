@@ -1,5 +1,5 @@
 <?php
-class Photocommons {
+class PhotoCommons {
     // TODO: ugly
     const PLUGIN_PATH = "/wp-content/plugins/wp-photocommons/";
     const RESIZE_URL = "http://commons.wikimedia.org/w/api.php?action=query&titles=%s&prop=imageinfo&iiprop=url&iiurlwidth=%s&format=php";
@@ -15,19 +15,21 @@ class Photocommons {
     public function addShortcode($args) {
         $filename = $args['file'];
         $size = $args['size'];
+        $align = empty($args['align']) ? 'alignright' : 'align' . $args['align'];
         $d = $this->doApiThumbResizeRequest($filename, $size);
 
         return sprintf(
             '<a href="%s" title="%s">' .
-            '<img src="%s" title="%s" alt="%s" width="%s" height="%s" />' .
+            '<img src="%s" title="%s" alt="%s" class="%s" width="%s" height="%s" />' .
             '</a>',
             $d['url'], $d['title'], $d['src'], $d['title'], $d['title'],
+            $align,
             $d['width'], $d['height']
         );
     }
 
     private function doApiThumbResizeRequest($filename, $size) {
-        ini_set('user_agent', 'Photocommons/1.0');
+        ini_set('user_agent', 'PhotoCommons/1.0');
         $url = $this->getResizeUrl($filename, $size);
         $result = unserialize(file_get_contents($url));
         $data = array_pop($result['query']['pages']);

@@ -3,7 +3,7 @@
 
     function addButtons() {
         $("#media-buttons").append(''.concat(
-            '<a id="photocommons-add" title="Add a free image" style="padding-left:4px;">',
+            '<a id="photocommons-add" title="Afbeelingen invoegen van Wikimedia Commons" style="padding-left:4px;">',
             '<img src="' + PATH + '/img/button.png"/>',
             '</a>'
         ));
@@ -18,7 +18,7 @@
                 var $self = $("#photocommons-dialog");
 
                 $self.dialog({
-                	title : 'Photocommons - Insert images from Wikimedia Commons',
+                	title : 'PhotoCommons - Afbeelingen invoegen van Wikimedia Commons',
                     width : 800,
                     height : 500
                 });
