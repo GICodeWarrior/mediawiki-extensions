@@ -504,3 +504,13 @@ $messages['zh-hans'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|保存点]])',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'checkpoint' => '儲存並繼續編輯',
+	'checkpoint-desc' => '允許用戶儲存正在進行的編輯並恢復編輯',
+	'checkpoint-tooltip' => '儲存你的進度並繼續編輯',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|檢查點儲存]])',
+);
+
