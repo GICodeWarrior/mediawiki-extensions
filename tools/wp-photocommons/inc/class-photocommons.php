@@ -75,7 +75,7 @@ class PhotoCommons {
         // Register our own styles and enqueue
         wp_register_style('jquid_jquery_blog_stylesheet', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/redmond/jquery-ui.css');
         wp_register_style('suggestions', self::PLUGIN_PATH . "css/jquery.suggestions.css");
-        wp_register_style('suggestions', self::PLUGIN_PATH . "css/style.css");
+        wp_register_style('search', self::PLUGIN_PATH . "css/search.css");
 
 		wp_enqueue_style('jquid_jquery_blog_stylesheet');
 		wp_enqueue_style('suggestions');

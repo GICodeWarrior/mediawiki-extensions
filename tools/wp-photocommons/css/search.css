@@ -1,3 +1,7 @@
 #wp-photocommons-images img:hover {
     cursor: pointer;
 }
+
+#wp-photocommons-search { 
+    width: 500px;
+}
