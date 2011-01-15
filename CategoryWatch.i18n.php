@@ -852,9 +852,12 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'categorywatch-desc' => '擴充套件的監視功能，包括有關受監視的類別的成員身份更改的通知',
+	'categorywatch-emailsubject' => '在被監視的分類"$1"中的活動',
 	'categorywatch-catmovein' => '$1已經由$2搬到$3。',
 	'categorywatch-catmoveout' => '$1已經移離$2並改到$3',
 	'categorywatch-catadd' => '已把$1新增至分類$2',
