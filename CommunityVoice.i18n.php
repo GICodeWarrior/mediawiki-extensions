@@ -1085,6 +1085,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
 	'communityvoice' => '社群之聲',
@@ -1094,5 +1095,7 @@ $messages['zh-hant'] = array(
 	'communityvoice-ratings-scale-status-error' => '發送錯誤！',
 	'communityvoice-ratings-scale-status-thanks' => '感謝投票！',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 個投票)',
+	'communityvoice-ratings-error-no-category' => '分類屬性的分級標籤遺失。',
+	'communityvoice-ratings-error-no-title' => '分類屬性標題標籤遺失。',
 );
 
