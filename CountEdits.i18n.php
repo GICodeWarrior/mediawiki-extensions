@@ -1695,6 +1695,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
+ * @author Mark85296341
  * @author Shinjiman
  * @author Wrightbus
  */
@@ -1702,9 +1703,9 @@ $messages['zh-hant'] = array(
 	'countedits' => '編輯計量',
 	'countedits-desc' => '計算及提供頭十名編輯次數最多的貢獻者之[[Special:CountEdits|特殊頁面]]',
 	'countedits-warning' => "'''警告:''' 不要只憑封面判斷書本。不要以幾他們的編輯計量判斷一位貢獻者。",
-	'countedits-username' => '用戶名稱:',
+	'countedits-username' => '使用者名稱：',
 	'countedits-ok' => '確定',
-	'countedits-nosuchuser' => '沒有一位名叫$1的用戶。',
+	'countedits-nosuchuser' => '沒有一位名叫$1的使用者。',
 	'countedits-resultheader' => '$1的結果',
 	'countedits-resulttext' => '$1做了$2次{{PLURAL:$2|edit|編輯}}',
 	'countedits-mostactive' => '最活躍的貢獻者',
