@@ -99,7 +99,7 @@ class ApiLiveTranslate extends ApiBase {
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_ISMULTI => true,
 				//ApiBase::PARAM_REQUIRED => true,
-			),					
+			),
 		);
 	}
 	
