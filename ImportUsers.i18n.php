@@ -1770,7 +1770,7 @@ Preskočeno.',
 	'right-import_users' => 'Množično uvažanje uporabnikov',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1792,7 +1792,7 @@ $messages['sr-ec'] = array(
 	'importusers-log-summary-updated' => 'Ажурирано',
 	'importusers-login-name' => 'Корисничко име',
 	'importusers-password' => 'лозинка',
-	'importusers-email' => 'мејл',
+	'importusers-email' => 'е-пошта',
 	'importusers-realname' => 'право име',
 );
 
