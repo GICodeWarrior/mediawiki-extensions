@@ -48,14 +48,9 @@ final class DSMWHooks {
 		$initialtext = $editor->getBaseRevision()->mText;
 
 		// TODO: WTF?!
-		$editor->mArticle->updateArticle(
-			$actualtext,
-			$editor->summary,
-			$editor->minoredit,
-			$editor->watchthis,
-			$bot = false,
-			$sectionanchor = ''
-		);
+		$editor->mArticle->doEdit( $actualtext, $editor->summary, $editor->minoredit ? EDIT_MINOR : 0 );
+		$query = Title::newFromRedirect( $actualtext ) === null ? '' : 'redirect=no';
+		$out->redirect( $editor->mTitle->getFullURL( $query ) );
 
 		return true;
 	}
@@ -150,7 +145,7 @@ final class DSMWHooks {
 	}}";
 
 			$article->doEdit( $newtext, $summary = "" );
-			$article->doRedirect();
+			$wgOut->redirect( $article->getTitle()->getFullURL() );
 
 			return false;
 		}
@@ -173,7 +168,7 @@ final class DSMWHooks {
 	}}";
 
 			$article->doEdit( $newtext, $summary = "" );
-			$article->doRedirect();
+			$wgOut->redirect( $article->getTitle()->getFullURL() );
 			return false;
 		}
 
@@ -212,7 +207,7 @@ The \"PUSH\" action publishes the (unpublished) modifications of the articles li
 
 			$article = new Article( $title );
 			$edit = $article->doEdit( $newtext, $summary = "" );
-			$article->doRedirect();
+			$wgOut->redirect( $title->getFullURL() );
 			return false;
 		}
 		////// / ChangeSet page////////
@@ -252,8 +247,7 @@ The \"PUSH\" action publishes the (unpublished) modifications of the articles li
 				utils::writeAndFlush( '<p><b>No pushfeed selected!</b></p>' );
 
 				$title = Title::newFromText( 'Special:ArticleAdminPage' );
-				$article = new Article( $title );
-				$article->doRedirect();
+				$wgOut->redirect( $title->getFullURL() );
 
 				return false;
 			}
@@ -361,8 +355,7 @@ This ChangeSet is in : [[inPushFeed::" . $name . "]]<br>
 			}// end foreach pushfeed list
 			utils::writeAndFlush( '<p><b>End push</b></p>' );
 			$title = Title::newFromText( 'Special:ArticleAdminPage' );
-			$article = new Article( $title );
-			$article->doRedirect();
+			$wgOut->redirect( $title->getFullURL() );
 
 			return false;
 		}
@@ -413,7 +406,7 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
 			$title = Title::newFromText( $pullname, PULLFEED );
 			$article = new Article( $title );
 			$article->doEdit( $newtext, $summary = "" );
-			$article->doRedirect();
+			$wgOut->redirect( $title->getFullURL() );
 
 			return false;
 		}
@@ -434,7 +427,7 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
 				$title = Title::newFromText( 'Special:ArticleAdminPage' );
 				$article = new Article( $title );
 				$article->doEdit( '', $summary = "" );
-				$article->doRedirect();
+				$wgOut->redirect( $title->getFullURL() );
 				return false;
 			}
 
@@ -566,8 +559,7 @@ The \"PULL\" action gets the modifications published in the PushFeed of the Push
 
 			utils::writeAndFlush( '<p><b>End pull</b></p>' );
 			$title = Title::newFromText( 'Special:ArticleAdminPage' );
-			$article = new Article( $title );
-			$article->doRedirect();
+			$wgOut->redirect( $title->getFullURL() );
 
 			return false;
 		} else {
