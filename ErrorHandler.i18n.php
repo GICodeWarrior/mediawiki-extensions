@@ -1502,11 +1502,12 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'errorhandler-desc' => 'MediaWiki的錯誤處理程序',
-	'errorhandler-errors' => '錯誤:',
+	'errorhandler-errors' => '錯誤：',
 	'errorhandler-error-fatal' => '致命錯誤',
 	'errorhandler-error-warning' => '警告',
 	'errorhandler-error-parse' => '解析器錯誤',
@@ -1522,10 +1523,10 @@ $messages['zh-hant'] = array(
 	'errorhandler-error-user-deprecated' => '用戶不推薦使用',
 	'errorhandler-error-strict' => '嚴格的標準',
 	'errorhandler-error-recoverable' => '可捕獲的致命錯誤',
-	'errorhandler-msg-text' => '$1 : $2 在 $3 中 （第$4行）',
-	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> 在 <b>$3</b> 中（第 <b>$4</b> 行）',
-	'errorhandler-trace' => '跟蹤：',
-	'errorhandler-trace-line' => '$1 （第$2行）: $3',
-	'errorhandler-trace-line-internal' => '[內部函數]: $1',
+	'errorhandler-msg-text' => '$1：$2 在 $3 中（第 $4 行）',
+	'errorhandler-msg-html' => '<b>$1</b>：<i>$2</i> 在 <b>$3</b> 中（第 <b>$4</b> 行）',
+	'errorhandler-trace' => '追蹤：',
+	'errorhandler-trace-line' => '$1（第$2行）：$3',
+	'errorhandler-trace-line-internal' => '[內部函數]：$1',
 );
 
