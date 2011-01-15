@@ -1847,6 +1847,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  * @author Wrightbus
  */
@@ -1856,8 +1857,8 @@ $messages['zh-hant'] = array(
 	'duplicator-toolbox' => '複製這篇文章',
 	'duplicator-header' => '這一版可以完全複製一篇文章，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
 	'duplicator-options' => '選項',
-	'duplicator-source' => '來源:',
-	'duplicator-dest' => '目標:',
+	'duplicator-source' => '來源：',
+	'duplicator-dest' => '目的地：',
 	'duplicator-dotalk' => '複製討論頁 （如可用的話）',
 	'duplicator-submit' => '複製',
 	'duplicator-summary' => '由[[$1]]複製過來',
@@ -1865,12 +1866,12 @@ $messages['zh-hant'] = array(
 	'duplicator-success-revisions' => '$1個修訂已經複製。',
 	'duplicator-success-talkcopied' => '討論頁亦已經複製。',
 	'duplicator-success-talknotcopied' => '討論頁不能夠複製。',
-	'duplicator-failed' => '這一頁唔能夠複製落來。發生了未知的錯誤。',
+	'duplicator-failed' => '這一頁不能夠複製過來。發生了未知的錯誤。',
 	'duplicator-source-invalid' => '請提供一個正確的來源標題。',
 	'duplicator-source-notexist' => '[[$1]]並不存在。請提供一個已經存在的頁面標題。',
 	'duplicator-dest-invalid' => '請提供一個正確的目標標題。',
 	'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
-	'duplicator-toomanyrevisions' => '[[$1]]有太多 （$2次） 修訂，不能夠複製。目前的上限有$3次。',
+	'duplicator-toomanyrevisions' => '[[$1]]有太多（$2次）修訂，不能夠複製。目前的上限有$3次。',
 	'right-duplicate' => '複製文章',
 );
 
