@@ -57,6 +57,7 @@ if ( !window.Photocommons ) {
 				'callback' : '!noencode!?'
 			}, args);
 
+
 			var	url = 'http://commons.wikimedia.org/w/api.php',
 				first = true,
 				key,
