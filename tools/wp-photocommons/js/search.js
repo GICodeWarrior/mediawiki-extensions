@@ -131,40 +131,6 @@ if ( !window.Photocommons ) {
 				}
 				
 			} );
-
-			/* jQuery UI Autosuggest*/
-			/*
-			$( '#wp-photocommons-search' ).autocomplete({
-
-				select : function( event, ui ) {
-					$( '#wp-photocommons-images' ).empty();
-					$( '#wp-photocommons-loading' ).show();
-
-					var url = Photocommons.getQueryUrl( 'pageimages', {
-						'title' : ui.item.value,
-						'width' : '200'
-					});
-
-					$.getJSON( url, function( data ) {
-
-						if ( !data.query.pageids.length ) {
-							$( '#wp-photocommons-images' ).html( 'No images found :(' );
-						} else {
-							$.each( data.query.pageids, function( key, pageid ) {
-								var img = data.query.pages[pageid];
-								if ( img.imageinfo && img.imageinfo[0] ) {
-									$( '#wp-photocommons-images' ).append( '<img src="' + img.imageinfo[0].thumburl + '" style="display:none;"/>' ).find( 'img' ).fadeIn();
-
-								}
-							});
-
-						}
-
-						$( '#wp-photocommons-loading' ).hide();
-					});
-				}
-			});
-			*/
 		}
 	});
 
