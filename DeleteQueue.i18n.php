@@ -7012,6 +7012,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -7026,11 +7027,13 @@ $messages['zh-hant'] = array(
 	'deletequeue-vote-submit' => '提交',
 	'deletequeue-showvotes-restrict-endorse' => '只顯示贊成票',
 	'deletequeue-showvotes-restrict-object' => '只顯示反對票',
+	'deletequeue-list-queue' => '隊列：',
 	'deletequeue-list-status' => '狀態：',
 	'deletequeue-list-search' => '搜尋',
 	'deletequeue-list-anyqueue' => '（任何）',
 	'deletequeue-list-votes' => '投票清單',
 	'deletequeue-list-header-page' => '頁面',
+	'deletequeue-list-header-queue' => '隊列',
 	'deletequeue-case-reason' => '原因：',
 );
 
