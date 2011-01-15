@@ -26,7 +26,39 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 			$this->dieUsageMsg( array( 'missingparam', 'language' ) );
 		}			
 		
-		$specialWords = LiveTranslateFunctions::getSpecialWordsForLang( $params['language'] );	
+		$this->addTables( 'live_translate' );
+		
+		$this->addFields( array(
+			'word_id',
+			'word_translation'
+		) );
+		
+		$this->addWhere( array(
+			'word_language' => $params['language']
+		) );
+
+		if ( !is_null( $params['continue'] ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$this->addWhere( 'word_id >= ' . $dbr->addQuotes( $params['continue'] ) );			
+		}
+		
+		$this->addOption( 'LIMIT', $params['limit'] + 1 );
+		$this->addOption( 'ORDER BY', 'word_id ASC' );		
+		
+		$words = $this->select( __METHOD__ );
+		$specialWords = array();
+		$count = 0;
+		
+		while ( $word = $words->fetchObject() ) {
+			if ( ++$count > $params['limit'] ) {
+				// We've reached the one extra which shows that
+				// there are additional pages to be had. Stop here...
+				$this->setContinueEnumParameter( 'continue', $word->word_id );
+				break;
+			}
+
+			$specialWords[] = $word->word_translation;
+		}
 		
 		$toggeledSpecials = array();
 		
@@ -57,6 +89,14 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'string',
 				//ApiBase::PARAM_REQUIRED => true,
 			),
+			'limit' => array(
+				ApiBase :: PARAM_DFLT => 500,
+				ApiBase :: PARAM_TYPE => 'limit',
+				ApiBase :: PARAM_MIN => 1,
+				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
+				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
+			),			
+			'continue' => null,
 		);
 	}
 
@@ -67,6 +107,8 @@ class ApiQueryLiveTranslate extends ApiQueryBase {
 	public function getParamDescription() {
 		return array (
 			'language' => 'The language for which to return special words',
+			'continue' => 'Offset number from where to continue the query',
+			'limit'   => 'Max amount of words to return',
 		);
 	}
 

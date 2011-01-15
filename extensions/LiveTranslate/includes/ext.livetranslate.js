@@ -44,44 +44,65 @@
 	}
 	
 	/**
-	 * Queries the special words in the source language, finds them in the page,
-	 * and wraps the into notranslate spans. Then initiates the translation process. 
+	 * Disables the translation button and then either kicks of insertion of
+	 * notranslate spans around special words, or when this already happened,
+	 * the actual translation process.
 	 */
 	setupTranslationFeatures = function() {
 		$( this ).attr( "disabled", true ).text( mediaWiki.msg( 'livetranslate-button-translating' ) );
 		
 		if ( originalHtml === false ) {
-			$.getJSON(
-				wgScriptPath + '/api.php',
-				{
-					'action': 'query',
-					'format': 'json',
-					'list': 'livetranslate',
-					'ltlanguage': currentLang
-				},
-				function( data ) {
-					if ( data.words ) {
-						insertNoTranslateTags( data.words );						
-					}
-					else if ( data.error && data.error.info ) {
-						alert( data.error.info );
-					}
-					else {
-						for ( i in data ) {
-							alert( mediaWiki.msg( 'livetranslate-dictionary-error' ) );
-							break;
-						}
-					}
-					
-					originalHtml = $( '#bodyContent' ).html();
-					
-					initiateTranslating();					
-				}
-			);			
+			obtainAndInsertTranslations( -1 );
 		}
 		else {
 			initiateTranslating();
 		}
+	}
+	
+	/**
+	 * Queries a batch of special words in the source language, finds them in the page,
+	 * and wraps the into notranslate spans. If there are no more words, the translation
+	 * process is initaiated, otherwise the function calls itself again.
+	 */
+	function obtainAndInsertTranslations( offset ) {
+		var requestArgs = {
+			'action': 'query',
+			'format': 'json',
+			'list': 'livetranslate',
+			'ltlanguage': currentLang,
+		};
+		
+		if ( offset > 0 ) {
+			requestArgs['ltcontinue'] = offset;
+		}
+		
+		$.getJSON(
+			wgScriptPath + '/api.php',
+			requestArgs,
+			function( data ) {
+				if ( data.words ) {
+					insertNoTranslateTags( data.words );						
+				}
+				else if ( data.error && data.error.info ) {
+					alert( data.error.info );
+				}
+				else {
+					for ( i in data ) {
+						alert( mediaWiki.msg( 'livetranslate-dictionary-error' ) );
+						break;
+					}
+				}
+				
+				originalHtml = $( '#bodyContent' ).html();
+				
+				if ( data['query-continue'] ) {
+					obtainAndInsertTranslations( data['query-continue'].livetranslate.ltcontinue );
+				}
+				else {
+					initiateTranslating();
+				}
+			}
+		);		
 	}
 	
 	/**
@@ -134,6 +155,18 @@
 	$( '#ltrevertbutton' ).click( showOriginal );	
 	
 	/**
+	 * Regex text escaping function.
+	 * Borrowed from http://simonwillison.net/2006/Jan/20/escape/
+	 */
+	RegExp.escape = function(text) {
+		if (!arguments.callee.sRE) {
+			var specials = [  '/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\' ];
+		    arguments.callee.sRE = new RegExp( '(\\' + specials.join('|\\') + ')', 'g' );
+		}
+		return text.replace(arguments.callee.sRE, '\\$1');
+	}
+	
+	/**
 	 * Inserts notranslate spans around the words specified in the passed array in the page content.
 	 * 
 	 * @param {Array} words
@@ -141,7 +174,7 @@
 	function insertNoTranslateTags( words ) {
 		for ( i in words ) {
 			$( '#bodyContent *' ).replaceText( 
-				new RegExp( "\\b" + words[i] + "\\b", "g" ),
+				new RegExp( "\\b" + RegExp.escape( words[i] ) + "\\b", "g" ),
 				function( str ) {
 					return '<span class="notranslate">' + str + '</span>'
 				}

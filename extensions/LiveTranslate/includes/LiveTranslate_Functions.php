@@ -143,34 +143,6 @@ final class LiveTranslateFunctions {
 	}
 	
 	/**
-	 * Gets a list of all special words in a language.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param string $language
-	 * 
-	 * @return array
-	 */
-	public static function getSpecialWordsForLang( $language ) {
-		$dbr = wfGetDB( DB_SLAVE );
-			
-		$words = array();
-			
-		// TODO: fix index
-		$res = $dbr->query( 
-			'SELECT DISTINCT word_translation FROM ' . 
-			$dbr->tableName( 'live_translate' ) . 
-			' WHERE word_language = ' . $dbr->addQuotes( $language )
-		);
-		
-		while ( $translation = $dbr->fetchObject( $res ) ) {
-			$words[] = $translation->word_translation;
-		}
-
-		return $words;
-	}
-	
-	/**
 	 * Returns a PHP version of the JavaScript google.language.Languages enum of the Google Translate v1 API.
 	 * @see https://code.google.com/apis/language/translate/v1/getting_started.html#LangNameArray
 	 * 
