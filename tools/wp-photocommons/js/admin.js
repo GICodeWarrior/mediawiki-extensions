@@ -18,6 +18,7 @@
                 var $self = $("#photocommons-dialog");
 
                 $self.dialog({
+                	title : 'Photocommons - Insert images from Wikimedia Commons',
                     width : 800,
                     height : 500
                 });
