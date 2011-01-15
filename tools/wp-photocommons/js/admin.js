@@ -3,7 +3,7 @@
 
     function addButtons() {
         $("#media-buttons").append(''.concat(
-            '<a id="photocommons-add" title="Afbeelingen invoegen van Wikimedia Commons" style="padding-left:4px;">',
+            '<a id="photocommons-add" title="Afbeeldingen invoegen van Wikimedia Commons" style="padding-left:4px;">',
             '<img src="' + PATH + '/img/button.png"/>',
             '</a>'
         ));
