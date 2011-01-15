@@ -770,3 +770,12 @@ $messages['zh-hans'] = array(
 	'discussionthreading-threadnewsection' => '新',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'discussionthreading-replysection' => '回覆',
+	'discussionthreading-replysectionhint' => '回覆這個帖子',
+	'discussionthreading-threadnewsection' => '新',
+);
+
