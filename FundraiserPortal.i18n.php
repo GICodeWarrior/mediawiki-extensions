@@ -1172,8 +1172,8 @@ $messages['tl'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
-	'fundraiserportal' => 'Fonsağlayıcı Portalı',
-	'fundraiserportal-desc' => 'Kenar çubuğunun en üstüne bir "lütfen bağış yapın" portalı ekler.',
+	'fundraiserportal' => 'Fonsağlayıcı Portali',
+	'fundraiserportal-desc' => 'Kenar çubuğunun en üstüne bir "lütfen bağış yapın" portali ekler.',
 	'fundraiserportal-plain-button' => 'Vikipediyi destekleyin!',
 	'fundraiserportal-ruby-button' => 'Şimdi bağış yapın',
 	'fundraiserportal-rubytext-button' => 'Şimdi bağış yapın',
@@ -1300,11 +1300,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'fundraiserportal' => '捐款主題',
-	'fundraiserportal-desc' => '在側邊欄的最頂處加入 "請捐款" 主題。',
+	'fundraiserportal-desc' => '在側邊欄的最頂處加入「請捐款」主題。',
 	'fundraiserportal-plain-button' => '支持維基百科！',
 	'fundraiserportal-ruby-button' => '立即捐款',
 	'fundraiserportal-rubytext-button' => '立即捐款',
