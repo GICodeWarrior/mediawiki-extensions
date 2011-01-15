@@ -2873,6 +2873,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  * @author Liangent
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
@@ -2884,7 +2885,7 @@ $messages['zh-hant'] = array(
 	'badimages-name' => '名稱:',
 	'badimages-not-added' => '這幅圖像不能加入。',
 	'badimages-not-removed' => '這幅圖像不能移除。',
-	'badimages-reason' => '原因:',
+	'badimages-reason' => '原因：',
 	'badimages-remove' => '（移除）',
 	'badimages-remove-btn' => '移除',
 	'badimages-remove-confirm' => '請確認您打算要將 $1 由列表中移除:',
