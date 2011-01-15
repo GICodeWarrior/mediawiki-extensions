@@ -2200,3 +2200,10 @@ $messages['zh-hans'] = array(
 	'articlefeedback-pitch-makefirstedit-accept' => '开始编辑',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'articlefeedback-report-switch-label' => '顯示結果',
+);
+
