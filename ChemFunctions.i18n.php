@@ -1449,3 +1449,22 @@ $messages['zh-hans'] = array(
 	'chemFunctions_ChemFormInputError' => '化学格式：输入错误！',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'chemicalsources' => '化學源',
+	'chemicalsource-desc' => '加入代碼<nowiki><chemform></nowiki>來顯示化學方程式',
+	'chemicalsources-desc' => '化學源的[[Special:ChemicalSources|特殊頁面]]',
+	'chemFunctions_ListPage' => '化學源',
+	'chemFunctions_DataList' => '下面是你可能正在尋找的的提供有關化學物質資訊網站。<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST 復合$MIXCASNameFormula</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">英國牛津大學MSDS（不能搜尋）</a><br />',
+	'chemFunctions_CAS' => 'CAS號',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'EC編號',
+	'chemFunctions_Formula' => '化學式',
+	'chemFunctions_Name' => 'IUPAC名稱',
+	'chemFunctions_ChemFormInputError' => '化學格式：輸入錯誤！',
+);
+
