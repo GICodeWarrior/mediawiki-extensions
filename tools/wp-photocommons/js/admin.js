@@ -27,7 +27,7 @@
                     var file = $(this).attr('data-filename'),
                         cnt = $("#content").val();
 
-                    $("#content").val('[photocommons file="' + file + '" size="300"]' + cnt);
+                    $("#content").val('[photocommons file="' + file + '" size="300"]' + "\n" + cnt);
                     $self.dialog('close');
                 });
             });
