@@ -971,14 +971,15 @@ $messages['sl'] = array(
 	'showprocesslist-info' => 'Informacije',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'showprocesslist' => 'Покажи списак процеса',
 	'showprocesslist-desc' => 'Прикажи излаз за [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-user' => 'Корисник',
-	'showprocesslist-host' => 'Хост',
+	'showprocesslist-host' => 'Домаћин',
 	'showprocesslist-db' => 'База података',
 	'showprocesslist-command' => 'Команда',
 	'showprocesslist-time' => 'Време',
