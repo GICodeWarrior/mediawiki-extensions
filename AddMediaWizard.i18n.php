@@ -550,9 +550,10 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  * @author Pbdragonwang
  */
 $messages['zh-hant'] = array(
-	'addmediawizard-desc' => '添加由Kaltura和維基媒體基金會所開發的媒體嚮導。',
+	'addmediawizard-desc' => '加入由Kaltura和維基媒體基金會所開發的媒體精靈。',
 );
 
