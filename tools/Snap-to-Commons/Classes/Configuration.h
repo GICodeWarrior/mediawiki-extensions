@@ -17,5 +17,5 @@
 
 // Constants
 #define API_URL @"http://commons.wikimedia.org/w/api.php"
-#define DEFAULT_LICENSE @"{{cc-by-sa-3.0}}"
+#define DEFAULT_LICENSE @"{{self|cc-by-sa-3.0}}"
 #define APPLICATION_CATEGORY @"Images uploaded with WikiSnaps"

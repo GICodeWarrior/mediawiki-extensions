@@ -20,14 +20,16 @@
 }
 
 - (NSString *)getUploadDescription {
-	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-	[formatter setDateFormat:@"%Y-%m-%d"];
-	NSString *date = [formatter stringFromDate:[NSDate date] ];
+	NSDate *today = [NSDate date];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateFormat:@"yyyy-MM-dd"];
+	NSString *dateString = [formatter stringFromDate:today];
+	NSLog(dateString);
 	
 	return [NSString stringWithFormat: @"{{Information\n|Description={{en|1=%@}}\n|Author=[[User:%@]]\n|Source={{own}}\n|Date=%@\n|Permission=\n|other_versions=\n}}\n\n== {{int:license}} ==\n%@\n\n[[Category:%@]]",
 	 description,
 	 [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY],
-	 date,
+	 dateString,
 	 DEFAULT_LICENSE,
 	 APPLICATION_CATEGORY,
 	 nil
@@ -35,9 +37,6 @@
 }
 
 - (void)uploadImage {
-//    uploadProgress.progress = 0.0f;
-//    uploadProgressMessage.text = @"uploading";
-	
 	NSURL *url = [NSURL URLWithString:API_URL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostFormat:ASIURLEncodedPostFormat];
@@ -130,7 +129,7 @@
 	[newRequest addPostValue:@"query" forKey:@"action"];
 	[newRequest addPostValue:@"xml" forKey: @"format"];
 	[newRequest addPostValue:@"edit" forKey:@"intoken"];
-	[newRequest addPostValue:@"WikiSnaps.jpg" forKey:@"titles"];
+	[newRequest addPostValue:title forKey:@"titles"];
 	[newRequest addPostValue:@"info" forKey:@"prop"];
 	
 	[newRequest setDelegate:self];
@@ -174,10 +173,10 @@
 	[newRequest addPostValue:@"upload" forKey:@"action"];
 	[newRequest addPostValue:@"xml" forKey: @"format"];
 	[newRequest addPostValue:editToken forKey:@"token"];
-	[newRequest addPostValue:@"WikiSnaps.jpg" forKey:@"filename"];
-	[newRequest addPostValue:@"TestComment" forKey:@"comment"];
-	[newRequest addPostValue:@"TestText" forKey:@"text"];
-	[newRequest addData:self.imageData forKey:@"file"];
+	[newRequest addPostValue:title forKey:@"filename"];
+	[newRequest addPostValue:[self getUploadDescription] forKey:@"comment"];
+	[newRequest addPostValue:[self getUploadDescription] forKey:@"text"];
+	[newRequest addData:imageData forKey:@"file"];
 	
 	
 	[newRequest setDelegate:self];
@@ -200,6 +199,7 @@
 	// Use when fetching text data
 	NSString *responseString = [request responseString];
 	NSLog(responseString );
+	[delegate uploadSucceeded];
 }
 
 - (void)requestUploadFailed:(ASIHTTPRequest *)request

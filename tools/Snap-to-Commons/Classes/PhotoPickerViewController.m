@@ -9,31 +9,26 @@
 #import "NSData+PhotoPicker.h"
 #import "PhotoPickerAppDelegate.h"
 #import "UIImage+PhotoPicker.h"
+#import "CommonsUpload.h"
+#import "ImageDetailsViewController.h"
 
 static int kPhotoPickerViewControllerSourceIndexCamera = 0;
 static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
+static int kPhotoPickerViewControllerSettings = 2;
 
 
 @interface PhotoPickerViewController ()
-    @property (nonatomic, retain) NSURLConnection *connection;
     @property (nonatomic, retain) NSData *imageData;
-    @property (nonatomic, retain) NSHTTPURLResponse *response;
-    @property (nonatomic, retain) NSMutableData *responseData;
     - (void)cancelApp;
     - (void)pickPhoto:(UIImagePickerControllerSourceType)sourceType;
     - (void)showPhotoSourceMenu;
     - (void)showPhotoSourceMenuOrPhotoSourceDirectly;
-    - (void)uploadImage;
 @end
 
 
 @implementation PhotoPickerViewController
 
-
-@synthesize connection;
 @synthesize imageData;
-@synthesize response;
-@synthesize responseData;
 
 
 #pragma mark UIActionSheetDelegate Methods
@@ -50,7 +45,9 @@ static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
         [self onCameraClicked];
     } else if (buttonIndex == kPhotoPickerViewControllerSourceIndexPhotoLibrary) {
         [self onPhotoLibraryClicked];
-    }
+	} else if (buttonIndex == kPhotoPickerViewControllerSettings) {
+		[self onSettingsClicked];
+	}
 }
 
 
@@ -68,18 +65,26 @@ static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
 
     image = [image correctOrientation:image];
 
-    self.imageData = UIImageJPEGRepresentation(image, 0.85f);
+	CommonsUpload *ourUpload = [[CommonsUpload alloc] init];
+	ourUpload.imageData = UIImageJPEGRepresentation(image, 0.85f);
 
-    uploadOverlayImage.image = image;
-    uploadProgressMessage.text = @"uploading";
-    uploadProgress.progress = 0.0f;
+    //uploadOverlayImage.image = image;
+    //uploadProgressMessage.text = @"uploading";
+    //uploadProgress.progress = 0.0f;
 
-    uploadPhotoOverlay.frame = CGRectMake(0, 20, 320, 460);
-    [[UIApplication sharedApplication].keyWindow addSubview:uploadPhotoOverlay];
+    //uploadPhotoOverlay.frame = CGRectMake(0, 20, 320, 460);
+    //[[UIApplication sharedApplication].keyWindow addSubview:uploadPhotoOverlay];
+	
+	ImageDetailsViewController *detailsController = [[ImageDetailsViewController alloc] init];
+	
+	detailsController.upload = ourUpload;
+	[ourUpload release];
 
-    [self uploadImage];
-
-    [picker.view removeFromSuperview];
+	//to push the UIView.
+	[self.navigationController pushViewController:detailsController animated:YES];
+	[detailsController release];
+	
+	[picker.view removeFromSuperview];
     [picker release];
 }
 
@@ -108,6 +113,8 @@ static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
 
 
 - (void)viewDidLoad {
+	[super viewDidLoad];
+
     #ifdef FORCE_ENABLE_CAMERA
         cameraAvailable = YES;
         fakeCameraAvailable = ![UIImagePickerController
@@ -132,79 +139,6 @@ static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
     #endif
 }
 
-
-#pragma mark URL Connection Event Handlers
-
-
-// Final event, memory is cleaned up at the end of this.
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    self.connection = nil;
-    self.response = nil;
-
-    uploadProgress.progress = 0.0f;
-    uploadProgressMessage.text = @"An error occurred, retrying in 10 seconds...";
-
-    retryCounter = 10;
-    [self performSelector:@selector(retry) withObject:nil afterDelay:1.0f];
-}
-
-
-// Final event, memory is cleaned up at the end of this.
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    self.connection = nil;
-
-    if ([self.response statusCode] == 200) {
-        uploadProgress.progress = 1.0f;
-        
-        NSString *responseString = [[[NSString alloc] initWithBytes:[self.responseData bytes]
-                                                      length:[self.responseData length]
-                                                      encoding:NSUTF8StringEncoding] autorelease];
-        responseString =
-            [responseString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        NSString *successContinueUrl = CONTINUE_URL;
-
-        successContinueUrl =
-            [successContinueUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-        BOOL hasQuestionMark = [successContinueUrl rangeOfString:@"?"].location != NSNotFound;
-
-        successContinueUrl =
-            [successContinueUrl stringByAppendingString:hasQuestionMark ? @"&" : @"?"];
-        successContinueUrl = [successContinueUrl stringByAppendingFormat:@"success=1&response=%@",
-                                                                         responseString];
-
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:successContinueUrl]];
-    } else {
-        uploadProgress.progress = 0.0f;
-        uploadProgressMessage.text = @"An error occurred, retrying in 10 seconds...";
-
-        retryCounter = 10;
-        [self performSelector:@selector(retry) withObject:nil afterDelay:1.0f];
-    }
-    
-    self.response = nil;
-}
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)newData {
-  [responseData appendData:newData];
-}
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)newResponse {
-  self.response = (NSHTTPURLResponse *) newResponse;
-}
-
-
-- (void)connection:(NSURLConnection *)connection
-        didSendBodyData:(NSInteger)bytesWritten
-        totalBytesWritten:(NSInteger)totalBytesWritten
-        totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
-    uploadProgress.progress = (float) totalBytesWritten / totalBytesExpectedToWrite;
-}
-
-
 #pragma mark Public
 
 
@@ -212,18 +146,20 @@ static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
     [self pickPhoto:UIImagePickerControllerSourceTypeCamera];
 }
 
+- (IBAction)onPhotoLibraryClicked {
+    [self pickPhoto:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+- (IBAction)onSettingsClicked {
+	[self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 - (IBAction)onCancelUploadClicked {
-    [self.connection cancel];
-    self.connection = nil;
-
-    [NSObject cancelPreviousPerformRequestsWithTarget:self
-              selector:@selector(retry)
-              object:nil];
+/*
     [NSObject cancelPreviousPerformRequestsWithTarget:self
               selector:@selector(uploadImage)
               object:nil];
-
+*/
     [uploadPhotoOverlay removeFromSuperview];
 
     [self showPhotoSourceMenuOrPhotoSourceDirectly];
@@ -235,27 +171,13 @@ static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
 }
 
 
-- (IBAction)onPhotoLibraryClicked {
-    [self pickPhoto:UIImagePickerControllerSourceTypePhotoLibrary];
-}
 
 
 #pragma mark Private
 
 
 - (void)cancelApp {
-    NSString *cancelContinueUrl = CONTINUE_URL;
-
-    cancelContinueUrl =
-        [cancelContinueUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-    BOOL hasQuestionMark = [cancelContinueUrl rangeOfString:@"?"].location != NSNotFound;
-
-    cancelContinueUrl =
-        [cancelContinueUrl stringByAppendingString:hasQuestionMark ? @"&" : @"?"];
-    cancelContinueUrl = [cancelContinueUrl stringByAppendingString:@"success=0"];
-
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:cancelContinueUrl]];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -279,22 +201,6 @@ static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
 }
 
 
-- (void)retry {
-    retryCounter--;
-
-    if (retryCounter <= 0) {
-        [self uploadImage];
-    } else {
-        uploadProgressMessage.text =
-            [NSString stringWithFormat:@"An error occurred, retrying in %d second%@...",
-                                       retryCounter,
-                                       retryCounter != 1 ? @"s" : @""];
-
-        [self performSelector:@selector(retry) withObject:nil afterDelay:1.0f];
-    }
-}
-
-
 - (void)showPhotoSourceMenu {
     if (cameraAvailable) {
         photoSourceActionSheet = [[UIActionSheet alloc]
@@ -302,24 +208,27 @@ static int kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
             delegate:self
             cancelButtonTitle:@"Cancel"
             destructiveButtonTitle:nil
-            otherButtonTitles:@"Camera", @"Photo Library", nil];
+            otherButtonTitles:@"Camera", @"Photo Library", @"Settings", nil];
         kPhotoPickerViewControllerSourceIndexCamera = 0;
         kPhotoPickerViewControllerSourceIndexPhotoLibrary = 1;
+		kPhotoPickerViewControllerSettings = 2;
     } else {
         photoSourceActionSheet = [[UIActionSheet alloc]
             initWithTitle:nil
             delegate:self
             cancelButtonTitle:@"Cancel"
             destructiveButtonTitle:nil
-            otherButtonTitles:@"Choose Photo", nil];
+            otherButtonTitles:@"Choose Photo", @"Settings", nil];
         kPhotoPickerViewControllerSourceIndexCamera = -99;
         kPhotoPickerViewControllerSourceIndexPhotoLibrary = 0;
+		kPhotoPickerViewControllerSettings = 1;
     }
     photoSourceActionSheet.actionSheetStyle = UIBarStyleDefault;
 
     UIImage *backgroundImage = [UIImage imageNamed:@"home-background.png"];
     UIView *background = [[UIImageView alloc] initWithImage:backgroundImage];
     background.frame = CGRectMake(0, cameraAvailable ? -253 : -320, 320, 460);
+
     [photoSourceActionSheet insertSubview:background atIndex:0];
 
     [photoSourceActionSheet showInView:self.view];

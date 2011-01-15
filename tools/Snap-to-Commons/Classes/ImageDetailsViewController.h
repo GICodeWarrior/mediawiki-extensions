@@ -7,17 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommonsUpload.h"
 
 
 @interface ImageDetailsViewController : UIViewController <UINavigationControllerDelegate,
-															UITextFieldDelegate> {
+															UITextFieldDelegate,
+															UITextViewDelegate,
+															CommonsUploadDelegate,
+															UIAlertViewDelegate> {
 	IBOutlet UITextField *titleField;
 	IBOutlet UITextView *descriptionText;
+	CommonsUpload *upload;
 }
 
 @property (nonatomic, retain) UITextField *titleField;
 @property (nonatomic, retain) UITextView *descriptionText;
+@property (nonatomic, retain) CommonsUpload *upload;
 
-
--(IBAction)textFieldDidEnd:(id)sender;
+- (IBAction)textFieldDidEnd:(id)sender;
+- (void)doUpload:(id)sender;
 @end

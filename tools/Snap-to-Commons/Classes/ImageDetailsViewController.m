@@ -13,6 +13,7 @@
 
 @synthesize titleField;
 @synthesize descriptionText;
+@synthesize upload;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -25,12 +26,13 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"Upload" style: UIBarButtonItemStyleDone target: self action: @selector( doUpload: ) ];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -55,6 +57,9 @@
 
 
 - (void)dealloc {
+	[titleField release];
+	[descriptionText release];
+	[upload release];
     [super dealloc];
 }
 
@@ -66,6 +71,40 @@
 	[sender resignFirstResponder];
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range 
+ replacementText:(NSString *)text
+{
+	return YES;
+}
 
+- (void)doUpload:(id)sender {
+	upload.title = [NSString stringWithFormat: @"%@.jpg", titleField.text];
+	upload.description = descriptionText.text;
+	[descriptionText resignFirstResponder];
+	upload.delegate = self;
+	
+	[upload uploadImage];
+}
+
+- (void)uploadSucceeded {
+	UIAlertView *alert =
+	[[UIAlertView alloc] initWithTitle: @"Upload succeeded"
+							   message: nil
+							  delegate: self
+					 cancelButtonTitle: @"Show upload"
+					 otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+}
+
+- (void)uploadFailed:(NSString *)error {
+	NSLog(error);
+	[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://commons.wikimedia.org/wiki/File:%@", [upload.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
+	//[self.navigationController popToRootViewControllerAnimated:YES];
+} // clickedButtonAtIndex
 
 @end

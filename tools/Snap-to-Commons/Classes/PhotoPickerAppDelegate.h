@@ -15,7 +15,6 @@
 @interface PhotoPickerAppDelegate : NSObject <UIApplicationDelegate> {
     int defaultImageSource;
     BOOL justInstalled;
-    BOOL launchedAsUrlHandler;
     NSString *postContext;
     UIWindow *window;
     PhotoPickerViewController *viewController;
@@ -28,7 +27,6 @@
 // the first time they run the app.
 @property (nonatomic, assign) BOOL justInstalled;
 
-@property (nonatomic, assign) BOOL launchedAsUrlHandler;
 @property (nonatomic, retain) NSString *postContext;
 @property (nonatomic, retain) IBOutlet PhotoPickerViewController *viewController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;

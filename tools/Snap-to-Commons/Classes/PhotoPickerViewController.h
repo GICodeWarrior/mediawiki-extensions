@@ -13,13 +13,9 @@
                                                          UIImagePickerControllerDelegate,
                                                          UINavigationControllerDelegate> {
     BOOL cameraAvailable;
-    NSURLConnection *connection;
     BOOL fakeCameraAvailable;
     NSData *imageData;
     UIActionSheet *photoSourceActionSheet;
-    NSHTTPURLResponse *response;
-    NSMutableData *responseData;
-    int retryCounter;
     IBOutlet UIButton *takePhotoButton;
     IBOutlet UIView *uploadPhotoOverlay;
     IBOutlet UIImageView *uploadOverlayImage;
@@ -29,8 +25,8 @@
 }
 
 - (IBAction)onCameraClicked;
-- (IBAction)onCancelUploadClicked;
 - (IBAction)onPhotoLibraryClicked;
-
+- (IBAction)onSettingsClicked;
+- (IBAction)onCancelUploadClicked;
 @end
 

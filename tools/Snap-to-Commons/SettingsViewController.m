@@ -58,6 +58,9 @@
 
 
 - (void)dealloc {
+	[username release];
+	[password release];
+	[save release];
     [super dealloc];
 }
 
