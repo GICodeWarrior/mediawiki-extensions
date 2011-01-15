@@ -1212,11 +1212,13 @@ $messages['zh-hans'] = array(
 	'crossnamespacelinkstext' => '$1: $2 个链接到 $3',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
 	'crossnamespacelinks' => '跨名字空間的連結',
 	'crossnamespacelinks-desc' => '列示不存在於{{SITENAME}}中的[[Special:CrossNamespaceLinks|跨名字空間連結]]',
-	'crossnamespacelinks-summary' => '本頁面提供一個從主名字空間到其他名字空間頁面的連結清單（{{ns:special}}, {{ns:talk}}, {{ns:project}} 和 {{ns:template}}名字空間的除外），我們不推薦這種從主名字空間鏈接到到其他名字的做法。',
+	'crossnamespacelinks-summary' => '本頁面提供一個從主名字空間到其他名字空間頁面的連結清單（{{ns:special}}, {{ns:talk}}, {{ns:project}} 和 {{ns:template}}名字空間的除外），我們不推薦這種從主名字空間連結到到其他名字的做法。',
 	'crossnamespacelinkstext' => '$1: $2 個連結到 $3',
 );
 
