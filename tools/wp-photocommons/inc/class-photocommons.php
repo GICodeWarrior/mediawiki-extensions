@@ -2,6 +2,7 @@
 class Photocommons {
     // TODO: ugly
     const PLUGIN_PATH = "/wp-content/plugins/wp-photocommons/";
+    const RESIZE_URL = "http://commons.wikimedia.org/w/api.php?action=query&titles=%s&prop=imageinfo&iiprop=url&iiurlwidth=%s&format=php";
 
     function __construct() {
         if (is_admin()) {
@@ -12,7 +13,38 @@ class Photocommons {
     }
 
     public function addShortcode($args) {
-        return print_r($args, false);
+        $filename = $args['file'];
+        $size = $args['size'];
+        $d = $this->doApiThumbResizeRequest($filename, $size);
+
+        return sprintf(
+            '<a href="%s" title="%s">' .
+            '<img src="%s" title="%s" alt="%s" width="%s" height="%s" />' .
+            '</a>',
+            $d['url'], $d['title'], $d['src'], $d['title'], $d['title'],
+            $d['width'], $d['height']
+        );
+    }
+
+    private function doApiThumbResizeRequest($filename, $size) {
+        ini_set('user_agent', 'Photocommons/1.0');
+        $url = $this->getResizeUrl($filename, $size);
+        $result = unserialize(file_get_contents($url));
+        $data = array_pop($result['query']['pages']);
+
+        $image = $data['imageinfo'][0];
+
+        return array(
+            "url" => $image['descriptionurl'],
+            "src" => $image['thumburl'],
+            "width" => $image['thumbwidth'],
+            "height" => $image['thumbheight'],
+            "title" => $data['title']
+        );
+    }
+
+    private function getResizeUrl($file, $size) {
+        return sprintf(self::RESIZE_URL, rawurlencode($file), rawurlencode($size));
     }
 
     private function initAdmin() {
@@ -40,6 +72,6 @@ class Photocommons {
     }
 
     private function initFrontend() {
-        add_shortcode("shortcode", array($this, "addShortcode"));
+        add_shortcode("photocommons", array($this, "addShortcode"));
     }
 }
