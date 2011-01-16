@@ -29,12 +29,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 /* ---- INTERNATIONALIZATION ---- */
-
-require_once( 'CustomToolbar.i18n.php' );
-
-// add the internationalization function to the list
-global $wgExtensionFunctions;
-$wgExtensionFunctions[] = 'CustomToolbar_i18n';
+$wgExtensionMessagesFiles['CustomToolbar'] = dirname( __FILE__ ) . '/CustomToolbar.i18n.php';
 
 //add file extensions for acceptable images and attachments
 global $wgFileExtensions;
@@ -44,16 +39,6 @@ $wgFileExtensions = array( 'png', 'gif', 'jpg', 'jpeg', 'ogg', 'mp3', 'wav', 'do
 $ct_uploadable_images = array('png', 'gif', 'jpg', 'jpeg' );
 //these will get media links
 //$ct_uploadable_attachments = array('ogg', 'mp3', 'wav', 'doc', 'xls', 'csv', 'bmp', 'ppt', 'pdf', 'txt', 'rm', 'mov', 'avi' );
-
-
-
-function CustomToolbar_i18n() {
-	// add this extension's messages to the message cache
-	global $wgMessageCache, $wgCustomToolbarMessages;
-	foreach( $wgCustomToolbarMessages as $lang => $messages )
-		$wgMessageCache->addMessages($messages, $lang);
-}
-
 
 $wgHooks['EditPage::showEditForm:initial'][] = "CustomToolbar_turnOffToolbar";
 function CustomToolbar_turnOffToolbar() {
