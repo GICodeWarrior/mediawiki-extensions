@@ -652,7 +652,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 			} else {
 				// Count is less than the maximum
 				// Skip any gaps in the callback array to find the true largest match
-				matchingCount = count;
+
 				/* Known rules: If we have three opening braces but only two closing ones, we want the two.
 				 * With less than the minimum, matchingCount = 0.
 				 */

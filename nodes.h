@@ -259,8 +259,14 @@ printf("breakSyntax(%.*s)\n", *nodeStringLen, nodeString);
 		}
 		
 		/* Go for part nodes */
-		while ( readpos < *nodeStringLen ) {
-			readpos += NODE_LEN; /* <part> */
+		while ( readpos < *nodeStringLen ) {printf("breakSyntaw(%.*s) %d %d\n", *nodeStringLen, nodeString, readpos, writepos);
+			assert( nodeString[readpos] == part_node ); /* <part> node */
+			assert( !memcmp( nodeString + readpos + 8, "00000001", 8 ) ); /* Part nodes contain exactly one character (the pipe) */
+			node->contentLength = 1;
+			serializeNode( nodeString + writepos, node );
+			readpos += NODE_LEN;
+			writepos += NODE_LEN;
+			
 			assert( readpos < *nodeStringLen ); /* All part nodes contain one name node inside */
 			int nameChildren = getNextSibling( nodeString + readpos ); /* <name> */
 			readpos += NODE_LEN;
