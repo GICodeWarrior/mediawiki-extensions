@@ -174,7 +174,7 @@
 	function insertNoTranslateTags( words ) {
 		for ( i in words ) {
 			$( '#bodyContent *' ).replaceText( 
-				new RegExp( "\\b" + RegExp.escape( words[i] ) + "\\b", "g" ),
+				new RegExp( "(\\W)*" + RegExp.escape( words[i] ) + "(\\W)*", "g" ),
 				function( str ) {
 					return '<span class="notranslate">' + str + '</span>'
 				}
