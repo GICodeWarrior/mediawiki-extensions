@@ -39,21 +39,11 @@ $wgHooks['EditSectionLinkForOther'][] =  'efDiscussionLink4other';
 $wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
 $wgHooks['DoEditSectionLink'][] =  'efDoDiscussionLink';
 
-# must use the deprecated efDiscussionLink hook if before MW Version 1.14
-#
-if (version_compare( $wgVersion , '1.14.0' ) < 0 ) {
-	$wgHooks['EditSectionLink'][] =  'efDiscussionLink';
-}
 /**
  * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
 */
 function efDiscussionThreadSetup() {
-	global $wgVersion;
-	if (version_compare( $wgVersion , '1.11.0' ) < 0 ) {
-		global $wgMessageCache, $messages;
-		foreach( $messages as $lang => $LangMsg )
-			$wgMessageCache->addMessages( $LangMsg, $lang );
-	} else wfLoadExtensionMessages( 'DiscussionThreading' );
+	wfLoadExtensionMessages( 'DiscussionThreading' );
 }
 
 /**
@@ -76,32 +66,6 @@ function efDiscussionLink4other ( $callobj , $title , $section , $url , &$result
 		$newthreadurl = '&section=new';
 		$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-threadnewsection' ) , 'action=edit'.$newthreadurl );
 		$result =  $nurl."][".$url."][".$curl;
-	}
-	return ( true );
-}
-
-/**
- * This function creates a linkobject for the editSectionLink function in linker
- *
- * @param $callobj Article object.
- * @param $nt Title object.
- * @param $section Integer: section number.
- * @param $hint Link String: title, or default if omitted or empty
- * @param $url Link String: for edit url
- * @param $result String: Returns the section [new][edit][reply] html  if in a talk page - otherwise whatever came in with
- * @return  true
- */
-function efDiscussionLink ( $callobj , $nt , $section , $hint='' , $url , &$result )
-{
-	global $wgSectionThreadingOn;
-	if( $wgSectionThreadingOn && $nt->isTalkPage() ) {
-		$commenturl = '&section='.$section.'&replyto=yes';
-		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-replysectionhint', htmlspecialchars( $hint ) ) . '"';
-		$curl = $callobj->makeKnownLinkObj( $nt, wfMsg( 'discussionthreading-replysection' ), 'action=edit'.$commenturl , '' , '' , '' ,  $hint );
-		$newthreadurl = '&section=new';
-		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-threadnewsectionhint', htmlspecialchars( $hint ) ) . '"';
-		$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-threadnewsection' ), 'action=edit'.$newthreadurl, '' , '' , '' ,  $hint );
-		$result = $nurl."][".$url."][".$curl;
 	}
 	return ( true );
 }
