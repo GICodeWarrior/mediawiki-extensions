@@ -13,6 +13,7 @@ Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php
 require_once( "$IP/extensions/LiveTranslate/LiveTranslate.php" );
 
 After this you need to run MediaWikis update script which can be found at /maintenance/update.php.
+You also need to run this when upgrading to version 0.4 or above from any older version.
 
 After doing this, you have installed the extension. To be able to use it in a meaningful way, you also need to take care of some configuration:
 

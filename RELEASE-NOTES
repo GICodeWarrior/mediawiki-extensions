@@ -5,7 +5,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.5 ===
-2011-01-xx
+2011-01-16
 
 * Modified the LT API to work with batches, so translation doesn't break for big translation memories.
 * Fixed regex escaping issue that caused translations to stop when encountering certain characters in special words.
