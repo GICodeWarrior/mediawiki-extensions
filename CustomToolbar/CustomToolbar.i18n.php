@@ -2,9 +2,9 @@
 /* Internationalisation file for CustomToolbar extension.
  */
 
-$wgCustomToolbarMessages = array();
+$messages = array();
 
-$wgCustomToolbarMessages['en'] = array(
+$messages['en'] = array(
 	'ct-desc' => 'Adds an extensible toolbar',
 
 	'ct_bold_sample'   => "Bold text",
@@ -67,7 +67,7 @@ $wgCustomToolbarMessages['en'] = array(
  * @author Purodha
  * @author Siebrand
  */
-$wgCustomToolbarMessages['qqq'] = array(
+$messages['qqq'] = array(
 	'ct-desc' => '{{desc}}',
 	'ct_internal_caption' => '{{Identical|Internal link}}',
 	'ct_external_caption' => '{{Identical|External link}}',
@@ -80,14 +80,14 @@ $wgCustomToolbarMessages['qqq'] = array(
 /** Abkhazian (Аҧсуа)
  * @author Temuri rajavi
  */
-$wgCustomToolbarMessages['ab'] = array(
+$messages['ab'] = array(
 	'ct_user_user' => 'Алахәыла',
 );
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
-$wgCustomToolbarMessages['af'] = array(
+$messages['af'] = array(
 	'ct_bold_sample' => 'Vetgedrukte teks',
 	'ct_bold_tip_ins' => 'Voeg vetgedrukte teks by',
 	'ct_bold_tip_wrap' => 'Maak hierdie teks vetdruk',
@@ -126,7 +126,7 @@ $wgCustomToolbarMessages['af'] = array(
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
-$wgCustomToolbarMessages['aln'] = array(
+$messages['aln'] = array(
 	'ct-desc' => 'Shton një toolbar zgjeruar',
 	'ct_bold_sample' => 'Tekst i trashë',
 	'ct_bold_tip_ins' => 'Vendos tekst bold',
@@ -174,7 +174,7 @@ $wgCustomToolbarMessages['aln'] = array(
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
-$wgCustomToolbarMessages['am'] = array(
+$messages['am'] = array(
 	'ct_bold_sample' => 'ጨለማ ጽሕፈት',
 	'ct_italic_sample' => 'ያንጋደደ ጽሕፈት',
 	'ct_external_caption' => 'የውጭ መያያዣ',
@@ -187,7 +187,7 @@ $wgCustomToolbarMessages['am'] = array(
  * @author OsamaK
  * @author Ouda
  */
-$wgCustomToolbarMessages['ar'] = array(
+$messages['ar'] = array(
 	'ct-desc' => 'يضيف شريط أدوات ممدد',
 	'ct_bold_sample' => 'نص عريض',
 	'ct_bold_tip_ins' => 'إدراج نص عريض',
@@ -235,7 +235,7 @@ $wgCustomToolbarMessages['ar'] = array(
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
-$wgCustomToolbarMessages['arc'] = array(
+$messages['arc'] = array(
 	'ct_bold_sample' => 'ܟܬܒܬܐ ܥܒܝܬܐ',
 	'ct_bold_caption' => 'ܥܒܝܬܐ',
 	'ct_italic_sample' => 'ܟܬܒܬܐ ܦܠܝܡܬܐ',
@@ -258,7 +258,7 @@ $wgCustomToolbarMessages['arc'] = array(
  * @author Ouda
  * @author Ramsis II
  */
-$wgCustomToolbarMessages['arz'] = array(
+$messages['arz'] = array(
 	'ct-desc' => 'بيضيف توول بار قابل للتمدد',
 	'ct_bold_sample' => 'نص عريض',
 	'ct_bold_tip_ins' => 'إدراج نص عريض',
@@ -309,7 +309,7 @@ $wgCustomToolbarMessages['arz'] = array(
  * @author Jim-by
  * @author Red Winged Duck
  */
-$wgCustomToolbarMessages['be-tarask'] = array(
+$messages['be-tarask'] = array(
 	'ct-desc' => 'Дадае пашыраную панэль',
 	'ct_bold_sample' => 'Тлусты тэкст',
 	'ct_bold_tip_ins' => 'Уставіць тлусты тэкст',
@@ -358,7 +358,7 @@ $wgCustomToolbarMessages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-$wgCustomToolbarMessages['bg'] = array(
+$messages['bg'] = array(
 	'ct_bold_sample' => 'Получер',
 	'ct_bold_tip_ins' => 'Вмъкване на текст в получер',
 	'ct_bold_caption' => 'Получер',
@@ -389,7 +389,7 @@ $wgCustomToolbarMessages['bg'] = array(
 /** Bengali (বাংলা)
  * @author Bellayet
  */
-$wgCustomToolbarMessages['bn'] = array(
+$messages['bn'] = array(
 	'ct_bold_sample' => 'গাঢ় লেখা',
 	'ct_bold_tip_ins' => 'গাঢ় লেখা যোগ',
 	'ct_bold_tip_wrap' => 'এই লেখাকে গাঢ় কর',
@@ -415,7 +415,7 @@ $wgCustomToolbarMessages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fulup
  */
-$wgCustomToolbarMessages['br'] = array(
+$messages['br'] = array(
 	'ct-desc' => 'Ouzhpennañ a ra ur varrenn ostilhoù astennidik',
 	'ct_bold_sample' => 'Testenn dev',
 	'ct_bold_tip_ins' => "Ensoc'hañ un destenn e tev",
@@ -463,7 +463,7 @@ $wgCustomToolbarMessages['br'] = array(
 /** Bosnian (Bosanski)
  * @author CERminator
  */
-$wgCustomToolbarMessages['bs'] = array(
+$messages['bs'] = array(
 	'ct-desc' => 'Dodaje proširivu alatnu traku',
 	'ct_bold_sample' => 'Podebljan tekst',
 	'ct_bold_tip_ins' => 'Ubaci podebljan tekst',
@@ -513,7 +513,7 @@ $wgCustomToolbarMessages['bs'] = array(
  * @author Solde
  * @author Toniher
  */
-$wgCustomToolbarMessages['ca'] = array(
+$messages['ca'] = array(
 	'ct_bold_sample' => 'Text en negreta',
 	'ct_bold_tip_ins' => 'Insereix text en negreta',
 	'ct_bold_tip_wrap' => 'Fes aquest text en negreta',
@@ -540,14 +540,14 @@ $wgCustomToolbarMessages['ca'] = array(
 /** Chechen (Нохчийн)
  * @author Sasan700
  */
-$wgCustomToolbarMessages['ce'] = array(
+$messages['ce'] = array(
 	'ct_user_user' => 'Декъашхо',
 );
 
 /** Sorani (کوردی)
  * @author Marmzok
  */
-$wgCustomToolbarMessages['ckb'] = array(
+$messages['ckb'] = array(
 	'ct_bold_sample' => 'دەقی تۆخ',
 	'ct_bold_tip_ins' => 'دەقی تۆخ دابنێ',
 	'ct_bold_tip_wrap' => 'ئەم دەقە تۆخ بکە',
@@ -580,7 +580,7 @@ $wgCustomToolbarMessages['ckb'] = array(
  * @author Kuvaly
  * @author Matěj Grabovský
  */
-$wgCustomToolbarMessages['cs'] = array(
+$messages['cs'] = array(
 	'ct-desc' => 'Přidává rozširitelný panel nástrojů',
 	'ct_bold_sample' => 'Tučný text',
 	'ct_bold_tip_ins' => 'Vložit tučný text',
@@ -630,7 +630,7 @@ Prosím, zkontrolujte blokování vyskakovacích oken ve vašem prohlížeči.',
  * @author Melancholie
  * @author Umherirrender
  */
-$wgCustomToolbarMessages['de'] = array(
+$messages['de'] = array(
 	'ct-desc' => 'Fügt eine erweiterbare Werkzeugleiste hinzu',
 	'ct_bold_sample' => 'Fetter Text',
 	'ct_bold_tip_ins' => 'Fetten Text einfügen',
@@ -679,14 +679,14 @@ Bitte überprüfe deinen Popup-Blocker.',
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
  */
-$wgCustomToolbarMessages['de-formal'] = array(
+$messages['de-formal'] = array(
 	'ct_popupblocked' => 'Das Hochladen-Popup wurde am Öffnen gehindert. Bitte überprüfen Sie Ihren Popup-Blocker.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
-$wgCustomToolbarMessages['dsb'] = array(
+$messages['dsb'] = array(
 	'ct-desc' => 'Pśidawa rozšyrjabnu rědowu kšomu',
 	'ct_bold_sample' => 'Tucny tekst',
 	'ct_bold_tip_ins' => 'Tucny tekst zasunuś',
@@ -733,7 +733,7 @@ Pšosym pśekontrolěruj swój blokěrowak wuskokowańskich woknow.',
 );
 
 /** Ewe (Eʋegbe) */
-$wgCustomToolbarMessages['ee'] = array(
+$messages['ee'] = array(
 	'ct_submit' => 'Yi',
 );
 
@@ -742,7 +742,7 @@ $wgCustomToolbarMessages['ee'] = array(
  * @author Omnipaedista
  * @author ZaDiak
  */
-$wgCustomToolbarMessages['el'] = array(
+$messages['el'] = array(
 	'ct-desc' => 'Προσθέτει μία επεκτάσιμη εργαλειοθήκη',
 	'ct_bold_sample' => 'Έντονο κείμενο',
 	'ct_bold_tip_ins' => 'Εισαγωγή έντονου κειμένου',
@@ -793,7 +793,7 @@ $wgCustomToolbarMessages['el'] = array(
  * @author Michawiki
  * @author Yekrats
  */
-$wgCustomToolbarMessages['eo'] = array(
+$messages['eo'] = array(
 	'ct-desc' => 'Aldonas etendeblan ilobreton',
 	'ct_bold_sample' => 'Grasa teksto',
 	'ct_bold_tip_ins' => 'Enmeti grasan tekston',
@@ -843,7 +843,7 @@ Bonvolu kontroli vian ŝprucfenestran barilon.',
  * @author Crazymadlover
  * @author Imre
  */
-$wgCustomToolbarMessages['es'] = array(
+$messages['es'] = array(
 	'ct-desc' => 'Agregar una barra de herramientas extensible',
 	'ct_bold_sample' => 'Texto en negrita',
 	'ct_bold_tip_ins' => 'Insertar texto en negrita',
@@ -892,7 +892,7 @@ $wgCustomToolbarMessages['es'] = array(
  * @author Avjoska
  * @author Pikne
  */
-$wgCustomToolbarMessages['et'] = array(
+$messages['et'] = array(
 	'ct_bold_sample' => 'Rasvane kiri',
 	'ct_bold_tip_ins' => 'Sisesta rasvane tekst',
 	'ct_bold_tip_wrap' => 'Tee see kiri paksuks',
@@ -924,7 +924,7 @@ $wgCustomToolbarMessages['et'] = array(
  * @author An13sa
  * @author Kobazulo
  */
-$wgCustomToolbarMessages['eu'] = array(
+$messages['eu'] = array(
 	'ct_bold_sample' => 'Testu beltza',
 	'ct_bold_tip_ins' => 'Testu beltza txertatu',
 	'ct_bold_tip_wrap' => 'Testu hau belztu',
@@ -967,7 +967,7 @@ $wgCustomToolbarMessages['eu'] = array(
  * @author Nike
  * @author Str4nd
  */
-$wgCustomToolbarMessages['fi'] = array(
+$messages['fi'] = array(
 	'ct-desc' => 'Lisää laajennettavan työkalupalkin.',
 	'ct_bold_sample' => 'Lihavoitu teksti',
 	'ct_bold_tip_ins' => 'Lisää lihavoitu teksti',
@@ -1020,7 +1020,7 @@ Tarkista ponnahdusikkunoiden eston asetukset.',
  * @author Sherbrooke
  * @author Verdy p
  */
-$wgCustomToolbarMessages['fr'] = array(
+$messages['fr'] = array(
 	'ct-desc' => 'Ajoute une barre d’outils extensible',
 	'ct_bold_sample' => 'Texte gras',
 	'ct_bold_tip_ins' => 'Insérer un texte en gras',
@@ -1069,7 +1069,7 @@ $wgCustomToolbarMessages['fr'] = array(
  * @author Cedric31
  * @author ChrisPtDe
  */
-$wgCustomToolbarMessages['frp'] = array(
+$messages['frp'] = array(
 	'ct-desc' => 'Apond una bârra d’outils èxtensibla.',
 	'ct_bold_sample' => 'Tèxto en grâs',
 	'ct_bold_tip_ins' => 'Entrebetar un tèxto en grâs',
@@ -1118,7 +1118,7 @@ Volyéd controlar voutron bloquior de fenétres sortentes.',
 /** Irish (Gaeilge)
  * @author Alison
  */
-$wgCustomToolbarMessages['ga'] = array(
+$messages['ga'] = array(
 	'ct_bold_sample' => 'Cló trom',
 	'ct_bold_caption' => 'Trom',
 );
@@ -1126,7 +1126,7 @@ $wgCustomToolbarMessages['ga'] = array(
 /** Galician (Galego)
  * @author Toliño
  */
-$wgCustomToolbarMessages['gl'] = array(
+$messages['gl'] = array(
 	'ct-desc' => 'Engade unha caixa de ferramentas extensible',
 	'ct_bold_sample' => 'Texto en negra',
 	'ct_bold_tip_ins' => 'Inserir texto en negra',
@@ -1176,7 +1176,7 @@ Por favor, comprobe o seu bloqueador de ventás emerxentes.',
  * @author Crazymadlover
  * @author Omnipaedista
  */
-$wgCustomToolbarMessages['grc'] = array(
+$messages['grc'] = array(
 	'ct_external_caption' => 'Ἐξωτερικὸς σύνδεσμος',
 	'ct_submit' => 'Ἰέναι!',
 	'ct_user_user' => 'Χρώμενος',
@@ -1186,7 +1186,7 @@ $wgCustomToolbarMessages['grc'] = array(
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
-$wgCustomToolbarMessages['gsw'] = array(
+$messages['gsw'] = array(
 	'ct-desc' => 'Fiegt e uuswytbari Wärchzyygleischte zue',
 	'ct_bold_sample' => 'Fette Text',
 	'ct_bold_tip_ins' => 'Fette Text yyfiege',
@@ -1235,7 +1235,7 @@ Bitte iberprief Dyy Popup-Blocker.',
 /** Gujarati (ગુજરાતી)
  * @author Dineshjk
  */
-$wgCustomToolbarMessages['gu'] = array(
+$messages['gu'] = array(
 	'ct_user_sample' => 'સભ્ય નામ',
 );
 
@@ -1243,7 +1243,7 @@ $wgCustomToolbarMessages['gu'] = array(
  * @author Rotemliss
  * @author YaronSh
  */
-$wgCustomToolbarMessages['he'] = array(
+$messages['he'] = array(
 	'ct-desc' => 'הוספת סרגל כלים הניתן להרחבה',
 	'ct_bold_sample' => 'טקסט מודגש',
 	'ct_bold_tip_ins' => 'הוספת טקסט מודגש',
@@ -1292,7 +1292,7 @@ $wgCustomToolbarMessages['he'] = array(
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
-$wgCustomToolbarMessages['hr'] = array(
+$messages['hr'] = array(
 	'ct_image_tip' => 'Umetnite sliku',
 	'ct_image_caption' => 'Dodajte sliku',
 	'ct_attachment_tip' => 'Umetanje privitaka',
@@ -1303,7 +1303,7 @@ $wgCustomToolbarMessages['hr'] = array(
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
-$wgCustomToolbarMessages['hsb'] = array(
+$messages['hsb'] = array(
 	'ct-desc' => 'Přidawa rozšerjomnu gratowu lajstu',
 	'ct_bold_sample' => 'Tučny tekst',
 	'ct_bold_tip_ins' => 'Tučny tekst zasunyć',
@@ -1353,7 +1353,7 @@ Prošu skontroluj swój blokowak wuskakowacych woknow.',
  * @author Dani
  * @author Glanthor Reviol
  */
-$wgCustomToolbarMessages['hu'] = array(
+$messages['hu'] = array(
 	'ct-desc' => 'Bővíthető eszköztár',
 	'ct_bold_sample' => 'Félkövér szöveg',
 	'ct_bold_tip_ins' => 'Félkövér szöveg beillesztése',
@@ -1402,7 +1402,7 @@ Ellenőrízd a felugró ablakokat blokkoló programodat.',
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
-$wgCustomToolbarMessages['ia'] = array(
+$messages['ia'] = array(
 	'ct-desc' => 'Adde un barra extensibile de instrumentos',
 	'ct_bold_sample' => 'Texto grasse',
 	'ct_bold_tip_ins' => 'Inserer texto grasse',
@@ -1451,7 +1451,7 @@ Per favor verifica que tu blocator de pop-up lo permitte.',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
-$wgCustomToolbarMessages['id'] = array(
+$messages['id'] = array(
 	'ct-desc' => 'Tambahkan batang penyuntingan berpengaya',
 	'ct_bold_sample' => 'Teks cetak tebal',
 	'ct_bold_tip_ins' => 'Masukkan teks cetak tebal',
@@ -1499,7 +1499,7 @@ $wgCustomToolbarMessages['id'] = array(
 /** Igbo (Igbo)
  * @author Ukabia
  */
-$wgCustomToolbarMessages['ig'] = array(
+$messages['ig'] = array(
 	'ct_bold_caption' => 'Shí íke',
 	'ct_external_caption' => 'Jikodo di èzí',
 	'ct_nowiki_caption' => 'Wiki àdíghị',
@@ -1514,7 +1514,7 @@ $wgCustomToolbarMessages['ig'] = array(
  * @author Darth Kule
  * @author Melos
  */
-$wgCustomToolbarMessages['it'] = array(
+$messages['it'] = array(
 	'ct-desc' => 'Aggiunge una toolbar estendibile',
 	'ct_bold_sample' => 'Testo in grassetto',
 	'ct_bold_tip_ins' => 'Inserisci testo in grassetto',
@@ -1565,7 +1565,7 @@ $wgCustomToolbarMessages['it'] = array(
  * @author Whym
  * @author 青子守歌
  */
-$wgCustomToolbarMessages['ja'] = array(
+$messages['ja'] = array(
 	'ct-desc' => '拡張可能なツールバーを追加する',
 	'ct_bold_sample' => '太字テキスト',
 	'ct_bold_tip_ins' => '太字テキストを挿入する',
@@ -1613,7 +1613,7 @@ $wgCustomToolbarMessages['ja'] = array(
 /** Javanese (Basa Jawa)
  * @author Pras
  */
-$wgCustomToolbarMessages['jv'] = array(
+$messages['jv'] = array(
 	'ct_bold_sample' => 'Tèks cithak kandel',
 	'ct_bold_tip_ins' => 'Seselaké tèks cithak kandel',
 	'ct_bold_tip_wrap' => 'Gawénen tèks iki cithak kandel',
@@ -1660,7 +1660,7 @@ $wgCustomToolbarMessages['jv'] = array(
  * @author Thearith
  * @author គីមស៊្រុន
  */
-$wgCustomToolbarMessages['km'] = array(
+$messages['km'] = array(
 	'ct-desc' => 'បន្ថែម​របារឧបករណ៍​ដែល​អាច​ដាក់​បាន',
 	'ct_bold_sample' => 'អក្សរ​ដិត',
 	'ct_bold_tip_ins' => 'បញ្ចូល​អក្សរ​ដិត',
@@ -1707,14 +1707,14 @@ $wgCustomToolbarMessages['km'] = array(
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */
-$wgCustomToolbarMessages['kn'] = array(
+$messages['kn'] = array(
 	'ct_submit' => 'ಹೋಗು!',
 );
 
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
-$wgCustomToolbarMessages['ksh'] = array(
+$messages['ksh'] = array(
 	'ct-desc' => 'Deiht en ußboubare Reih met Werkzüch dobei.',
 	'ct_bold_sample' => '{{int:bold sample}}',
 	'ct_bold_tip_ins' => '{{int:bold tip}} enfööje',
@@ -1764,7 +1764,7 @@ Odder loor ens noh Dingem <i lang="en">Popup-Blocker</i>.',
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$wgCustomToolbarMessages['lb'] = array(
+$messages['lb'] = array(
 	'ct-desc' => 'Eng erweiderbar Toolbar derbäisetzen',
 	'ct_bold_sample' => 'Fetten Text',
 	'ct_bold_tip_ins' => 'Fetten Text drasetzen',
@@ -1813,7 +1813,7 @@ Kuckt w.e.g. d'Astellunge vu ärem Popup-Blocker no.",
 /** Lazuri (Lazuri)
  * @author Bombola
  */
-$wgCustomToolbarMessages['lzz'] = array(
+$messages['lzz'] = array(
 	'ct_bold_sample' => "Mçxu nç'ara",
 	'ct_bold_caption' => 'Mçxu',
 	'ct_submit' => 'İgzali!',
@@ -1822,7 +1822,7 @@ $wgCustomToolbarMessages['lzz'] = array(
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
-$wgCustomToolbarMessages['mk'] = array(
+$messages['mk'] = array(
 	'ct-desc' => 'Додава алатник на отворање',
 	'ct_bold_sample' => 'Дебел текст',
 	'ct_bold_tip_ins' => 'Вметни дебел текст',
@@ -1870,7 +1870,7 @@ $wgCustomToolbarMessages['mk'] = array(
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
-$wgCustomToolbarMessages['mn'] = array(
+$messages['mn'] = array(
 	'ct_submit' => 'Явах',
 	'ct_user_sample' => 'Хэрэглэгчийн нэр',
 );
@@ -1878,14 +1878,14 @@ $wgCustomToolbarMessages['mn'] = array(
 /** Maltese (Malti)
  * @author Chrisportelli
  */
-$wgCustomToolbarMessages['mt'] = array(
+$messages['mt'] = array(
 	'ct_submit' => 'Mur!',
 );
 
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
-$wgCustomToolbarMessages['myv'] = array(
+$messages['myv'] = array(
 	'ct_bold_sample' => 'Эчкстэ текст',
 	'ct_italic_sample' => 'Комавтонь текст',
 	'ct_italic_tip_ins' => 'Совавтомс комавтонь текст',
@@ -1899,7 +1899,7 @@ $wgCustomToolbarMessages['myv'] = array(
 /** Dutch (Nederlands)
  * @author Siebrand
  */
-$wgCustomToolbarMessages['nl'] = array(
+$messages['nl'] = array(
 	'ct-desc' => 'Voegt een uitbreidbare toolbar toe',
 	'ct_bold_sample' => 'Vetgedrukte tekst',
 	'ct_bold_tip_ins' => 'Vetgedrukte tekt invoegen',
@@ -1948,7 +1948,7 @@ Controleer uw pop-upblokkeerprogramma.',
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
  */
-$wgCustomToolbarMessages['nn'] = array(
+$messages['nn'] = array(
 	'ct-desc' => 'Legg til ein verktymeny som kan bli utvida',
 	'ct_bold_sample' => 'Feit tekst',
 	'ct_bold_tip_ins' => 'Set inn feit tekst',
@@ -1997,7 +1997,7 @@ Kontroller innstillingane dine for sprettoppvindaugo.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$wgCustomToolbarMessages['no'] = array(
+$messages['no'] = array(
 	'ct-desc' => 'Legger til en verktøymeny som kan utvides',
 	'ct_bold_sample' => 'Fet tekst',
 	'ct_bold_tip_ins' => 'Sett inn fet tekst',
@@ -2045,7 +2045,7 @@ $wgCustomToolbarMessages['no'] = array(
 /** Occitan (Occitan)
  * @author Cedric31
  */
-$wgCustomToolbarMessages['oc'] = array(
+$messages['oc'] = array(
 	'ct-desc' => 'Apondre una barra d’espleches extensibla',
 	'ct_bold_sample' => 'Tèxte en gras',
 	'ct_bold_tip_ins' => 'Inserir un tèxte en gras',
@@ -2094,7 +2094,7 @@ Consultatz vòstres paramètres de blocatge dels popups.',
 /** Ossetic (Иронау)
  * @author Amikeco
  */
-$wgCustomToolbarMessages['os'] = array(
+$messages['os'] = array(
 	'ct_external_caption' => 'Æддаг æрвитæн',
 	'ct_math_caption' => 'Формулæ',
 );
@@ -2102,7 +2102,7 @@ $wgCustomToolbarMessages['os'] = array(
 /** Deitsch (Deitsch)
  * @author Xqt
  */
-$wgCustomToolbarMessages['pdc'] = array(
+$messages['pdc'] = array(
 	'ct_external_caption' => 'Gewebbgleecher',
 	'ct_nowiki_caption' => 'Ken Wiki',
 	'ct_submit' => 'Go!',
@@ -2116,7 +2116,7 @@ $wgCustomToolbarMessages['pdc'] = array(
  * @author Leinad
  * @author Sp5uhe
  */
-$wgCustomToolbarMessages['pl'] = array(
+$messages['pl'] = array(
 	'ct-desc' => 'Dodaje rozszerzony pasek narzędzi',
 	'ct_bold_sample' => 'Pogrubiony tekst',
 	'ct_bold_tip_ins' => 'Wstaw pogrubiony tekst',
@@ -2166,7 +2166,7 @@ Proszę sprawdzić swoją blokadę wyskakujących okienek.',
  * @author Borichèt
  * @author Dragonòt
  */
-$wgCustomToolbarMessages['pms'] = array(
+$messages['pms'] = array(
 	'ct-desc' => "A gionta na bara d'utiss estendìbil",
 	'ct_bold_sample' => 'Test an grassèt',
 	'ct_bold_tip_ins' => 'Anserì un test an grassèt',
@@ -2214,7 +2214,7 @@ $wgCustomToolbarMessages['pms'] = array(
 /** Western Punjabi (پنجابی)
  * @author Khalid Mahmood
  */
-$wgCustomToolbarMessages['pnb'] = array(
+$messages['pnb'] = array(
 	'ct_italic_caption' => 'ترچھا',
 	'ct_image_caption' => 'مورت لاؤ',
 	'ct_math_caption' => 'فارمولا',
@@ -2225,7 +2225,7 @@ $wgCustomToolbarMessages['pnb'] = array(
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
-$wgCustomToolbarMessages['ps'] = array(
+$messages['ps'] = array(
 	'ct_bold_sample' => 'زغرد متن',
 	'ct_bold_caption' => 'زغرد',
 	'ct_italic_sample' => 'د رېوندليک متن',
@@ -2247,7 +2247,7 @@ $wgCustomToolbarMessages['ps'] = array(
  * @author Malafaya
  * @author Waldir
  */
-$wgCustomToolbarMessages['pt'] = array(
+$messages['pt'] = array(
 	'ct-desc' => 'Adiciona uma barra de ferramentas extensível',
 	'ct_bold_sample' => 'Texto a negrito',
 	'ct_bold_tip_ins' => 'Inserir texto a negrito',
@@ -2297,7 +2297,7 @@ $wgCustomToolbarMessages['pt'] = array(
  * @author Giro720
  * @author Luckas Blade
  */
-$wgCustomToolbarMessages['pt-br'] = array(
+$messages['pt-br'] = array(
 	'ct-desc' => 'Adiciona uma barra de ferramentas extensível',
 	'ct_bold_sample' => 'Texto em negrito',
 	'ct_bold_tip_ins' => 'Digitar texto em negrito',
@@ -2347,7 +2347,7 @@ $wgCustomToolbarMessages['pt-br'] = array(
  * @author KlaudiuMihaila
  * @author Stelistcristi
  */
-$wgCustomToolbarMessages['ro'] = array(
+$messages['ro'] = array(
 	'ct-desc' => 'Adaugă o bară de unelte extensibilă',
 	'ct_bold_sample' => 'Text aldin',
 	'ct_bold_tip_ins' => 'Inserează text aldin',
@@ -2392,7 +2392,7 @@ $wgCustomToolbarMessages['ro'] = array(
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
-$wgCustomToolbarMessages['roa-tara'] = array(
+$messages['roa-tara'] = array(
 	'ct-desc' => "Aggiunge 'na barre de le struminde estensibbele",
 	'ct_bold_sample' => 'Teste in grascette',
 	'ct_bold_tip_ins' => 'Sckaffe teste in grascette',
@@ -2432,7 +2432,7 @@ $wgCustomToolbarMessages['roa-tara'] = array(
  * @author Ferrer
  * @author Александр Сигачёв
  */
-$wgCustomToolbarMessages['ru'] = array(
+$messages['ru'] = array(
 	'ct-desc' => 'Добавляет растяжимую панель',
 	'ct_bold_sample' => 'Жирный текст',
 	'ct_bold_tip_ins' => 'Вставить жирный текст',
@@ -2481,14 +2481,14 @@ $wgCustomToolbarMessages['ru'] = array(
 /** Rusyn (Русиньскый)
  * @author Gazeb
  */
-$wgCustomToolbarMessages['rue'] = array(
+$messages['rue'] = array(
 	'ct_user_user' => 'Хоснователь',
 );
 
 /** Sicilian (Sicilianu)
  * @author Melos
  */
-$wgCustomToolbarMessages['scn'] = array(
+$messages['scn'] = array(
 	'ct_bold_sample' => 'Testu n grassettu',
 	'ct_bold_tip_ins' => 'Nserisci testu n grassettu',
 	'ct_bold_tip_wrap' => 'Fai stu testu grassettu',
@@ -2531,7 +2531,7 @@ $wgCustomToolbarMessages['scn'] = array(
 /** Sinhala (සිංහල)
  * @author Calcey
  */
-$wgCustomToolbarMessages['si'] = array(
+$messages['si'] = array(
 	'ct-desc' => 'විතන්‍ය මෙවලම් තීරුවක් එකතු කරයි',
 	'ct_bold_sample' => 'තද පැහැ පෙළ',
 	'ct_bold_tip_ins' => 'තද පැහැ පෙළ ඇතුල් කරන්න',
@@ -2579,7 +2579,7 @@ $wgCustomToolbarMessages['si'] = array(
 /** Slovak (Slovenčina)
  * @author Helix84
  */
-$wgCustomToolbarMessages['sk'] = array(
+$messages['sk'] = array(
 	'ct-desc' => 'Pridáva rozšíriteľný panel nástrojov',
 	'ct_bold_sample' => 'Hrubý text',
 	'ct_bold_tip_ins' => 'Vložiť hrubý text',
@@ -2628,7 +2628,7 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
-$wgCustomToolbarMessages['sl'] = array(
+$messages['sl'] = array(
 	'ct-desc' => 'Doda razširljivo orodno vrstico',
 	'ct_bold_sample' => 'Krepko besedilo',
 	'ct_bold_tip_ins' => 'Vstavi krepko besedilo',
@@ -2677,7 +2677,7 @@ $wgCustomToolbarMessages['sl'] = array(
  * @author Rancher
  * @author Михајло Анђелковић
  */
-$wgCustomToolbarMessages['sr-ec'] = array(
+$messages['sr-ec'] = array(
 	'ct-desc' => 'Додаје проширив бар са алаткама',
 	'ct_bold_sample' => 'Подебљан текст',
 	'ct_bold_tip_ins' => 'Убаци подебљан текст',
@@ -2723,7 +2723,7 @@ $wgCustomToolbarMessages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
-$wgCustomToolbarMessages['sr-el'] = array(
+$messages['sr-el'] = array(
 	'ct-desc' => 'Dodaje proširiv bar sa alatkama',
 	'ct_bold_sample' => 'Podebljan tekst',
 	'ct_bold_tip_ins' => 'Ubaci podebljan tekst',
@@ -2769,7 +2769,7 @@ $wgCustomToolbarMessages['sr-el'] = array(
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
-$wgCustomToolbarMessages['stq'] = array(
+$messages['stq'] = array(
 	'ct-desc' => 'Föiget ne ärwiederboare Reewelieste bietou',
 	'ct_bold_sample' => 'Fatten Text',
 	'ct_bold_tip_ins' => 'Fatten Text ienföigje',
@@ -2819,7 +2819,7 @@ Wröich din Popup-Blocker.',
  * @author Najami
  * @author Ozp
  */
-$wgCustomToolbarMessages['sv'] = array(
+$messages['sv'] = array(
 	'ct-desc' => 'Lägger till en utökad verktygslåda',
 	'ct_bold_sample' => 'Fet text',
 	'ct_bold_tip_ins' => 'Sätt in fet text',
@@ -2867,7 +2867,7 @@ $wgCustomToolbarMessages['sv'] = array(
 /** Silesian (Ślůnski)
  * @author Ozi64
  */
-$wgCustomToolbarMessages['szl'] = array(
+$messages['szl'] = array(
 	'ct_internal_sample' => 'MjanoZajty',
 );
 
@@ -2875,7 +2875,7 @@ $wgCustomToolbarMessages['szl'] = array(
  * @author Mahir78
  * @author TRYPPN
  */
-$wgCustomToolbarMessages['ta'] = array(
+$messages['ta'] = array(
 	'ct_bold_sample' => 'தடித்த எழுத்து',
 	'ct_bold_tip_ins' => 'தடித்த எழுத்தை உள்ளிடு',
 	'ct_bold_tip_wrap' => 'இந்த வார்த்தையை தடிமனாக்கு',
@@ -2912,7 +2912,7 @@ $wgCustomToolbarMessages['ta'] = array(
 /** Telugu (తెలుగు)
  * @author Veeven
  */
-$wgCustomToolbarMessages['te'] = array(
+$messages['te'] = array(
 	'ct_bold_sample' => 'బొద్దు పాఠ్యం',
 	'ct_bold_tip_ins' => 'బొద్దు పాఠ్యాన్ని చేర్చండి',
 	'ct_bold_tip_wrap' => 'ఈ పాఠ్యాన్ని బొద్దుగా చేయండి',
@@ -2952,7 +2952,7 @@ $wgCustomToolbarMessages['te'] = array(
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
-$wgCustomToolbarMessages['tg-cyrl'] = array(
+$messages['tg-cyrl'] = array(
 	'ct_external_caption' => 'Пайванди беруна',
 	'ct_image_tip' => 'Иловаи як акс',
 	'ct_image_caption' => 'Иловаи акс',
@@ -2962,7 +2962,7 @@ $wgCustomToolbarMessages['tg-cyrl'] = array(
 /** Tajik (Latin) (Тоҷикӣ (Latin))
  * @author Liangent
  */
-$wgCustomToolbarMessages['tg-latn'] = array(
+$messages['tg-latn'] = array(
 	'ct_external_caption' => 'Pajvandi beruna',
 	'ct_image_tip' => 'Ilovai jak aks',
 	'ct_image_caption' => 'Ilovai aks',
@@ -2972,7 +2972,7 @@ $wgCustomToolbarMessages['tg-latn'] = array(
 /** Thai (ไทย)
  * @author Woraponboonkerd
  */
-$wgCustomToolbarMessages['th'] = array(
+$messages['th'] = array(
 	'ct_bold_sample' => 'ตัวอักษรหนา',
 	'ct_bold_tip_ins' => 'ใส่ตัวอักษรหนา',
 	'ct_bold_tip_wrap' => 'ทำเป็นตัวอักษรหนา',
@@ -2986,7 +2986,7 @@ $wgCustomToolbarMessages['th'] = array(
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
-$wgCustomToolbarMessages['tk'] = array(
+$messages['tk'] = array(
 	'ct_bold_sample' => 'Goýy tekst',
 	'ct_bold_tip_ins' => 'Goýy tekst giriz',
 	'ct_bold_tip_wrap' => 'Teksti goýy et',
@@ -3017,7 +3017,7 @@ $wgCustomToolbarMessages['tk'] = array(
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
-$wgCustomToolbarMessages['tl'] = array(
+$messages['tl'] = array(
 	'ct-desc' => 'Nagdaragdag ng isang nauunat/napapahabang balansang o bareta ng mga kagamitan',
 	'ct_bold_sample' => 'Makapal na panitik',
 	'ct_bold_tip_ins' => 'Magsingit ng makapal na panitik',
@@ -3067,7 +3067,7 @@ Pakisuri ang iyong panghadlang ng sulpot-litaw.",
  * @author Karduelis
  * @author Vito Genovese
  */
-$wgCustomToolbarMessages['tr'] = array(
+$messages['tr'] = array(
 	'ct_bold_sample' => 'Kalın metin',
 	'ct_bold_tip_ins' => 'Kalın metin gir',
 	'ct_bold_caption' => 'Kalın',
@@ -3097,7 +3097,7 @@ $wgCustomToolbarMessages['tr'] = array(
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Alfredie
  */
-$wgCustomToolbarMessages['ug-arab'] = array(
+$messages['ug-arab'] = array(
 	'ct_submit' => 'كۆچۈش!',
 	'ct_user_sample' => 'ئىشلەتكۇچى ئىسمى',
 );
@@ -3105,7 +3105,7 @@ $wgCustomToolbarMessages['ug-arab'] = array(
 /** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
-$wgCustomToolbarMessages['ug-latn'] = array(
+$messages['ug-latn'] = array(
 	'ct_submit' => 'Köchüsh!',
 	'ct_user_sample' => 'Ishletkuchi ismi',
 );
@@ -3115,7 +3115,7 @@ $wgCustomToolbarMessages['ug-latn'] = array(
  * @author Aleksandrit
  * @author Prima klasy4na
  */
-$wgCustomToolbarMessages['uk'] = array(
+$messages['uk'] = array(
 	'ct-desc' => 'Додає розширювану панель',
 	'ct_bold_sample' => 'Жирний текст',
 	'ct_bold_tip_ins' => 'Вставити жирний текст',
@@ -3164,7 +3164,7 @@ $wgCustomToolbarMessages['uk'] = array(
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
-$wgCustomToolbarMessages['vep'] = array(
+$messages['vep'] = array(
 	'ct-desc' => 'Ližadab azegišt, kudambad sab levitada',
 	'ct_bold_sample' => 'Lihavoitud tekst',
 	'ct_bold_tip_ins' => 'Ližada lihavoitud tekst',
@@ -3213,7 +3213,7 @@ $wgCustomToolbarMessages['vep'] = array(
  * @author Minh Nguyen
  * @author Vinhtantran
  */
-$wgCustomToolbarMessages['vi'] = array(
+$messages['vi'] = array(
 	'ct-desc' => 'Thêm thanh công cụ mở rộng',
 	'ct_bold_sample' => 'Văn bản in đậm',
 	'ct_bold_tip_ins' => 'Chèn chữ đậm',
@@ -3262,7 +3262,7 @@ $wgCustomToolbarMessages['vi'] = array(
  * @author Malafaya
  * @author Smeira
  */
-$wgCustomToolbarMessages['vo'] = array(
+$messages['vo'] = array(
 	'ct_bold_sample' => 'Vödem bigik',
 	'ct_bold_tip_ins' => 'Nüpladön vödemi bigik',
 	'ct_bold_tip_wrap' => 'Bigükön vödemi at',
@@ -3301,7 +3301,7 @@ $wgCustomToolbarMessages['vo'] = array(
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */
-$wgCustomToolbarMessages['yi'] = array(
+$messages['yi'] = array(
 	'ct_internal_sample' => 'בלאַטנאָמען',
 	'ct_math_caption' => 'פֿארמל',
 	'ct_nowiki_caption' => 'קיין וויקי',
@@ -3314,7 +3314,7 @@ $wgCustomToolbarMessages['yi'] = array(
  * @author Gzdavidwong
  * @author Liangent
  */
-$wgCustomToolbarMessages['zh-hans'] = array(
+$messages['zh-hans'] = array(
 	'ct-desc' => '增加了可扩展工具栏',
 	'ct_bold_sample' => '粗体文字',
 	'ct_bold_tip_ins' => '插入粗体文字',
@@ -3366,7 +3366,7 @@ $wgCustomToolbarMessages['zh-hans'] = array(
  * @author Mark85296341
  * @author Wrightbus
  */
-$wgCustomToolbarMessages['zh-hant'] = array(
+$messages['zh-hant'] = array(
 	'ct-desc' => '增加了可擴展工具欄',
 	'ct_bold_sample' => '粗體文字',
 	'ct_bold_tip_ins' => '插入粗體文字',
