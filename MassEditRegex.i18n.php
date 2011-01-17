@@ -1554,3 +1554,19 @@ $messages['zh-hans'] = array(
 	'masseditregex-hint-headreplace' => '替换',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'masseditregex-replacetxt' => '替換為：',
+	'masseditregex-executebtn' => '執行',
+	'masseditregex-before' => '之前',
+	'masseditregex-after' => '之後',
+	'masseditregex-page-not-exists' => '$1 不存在',
+	'masseditregex-hint-headeffect' => '影響',
+	'masseditregex-listtype-intro' => '這是一個列表：',
+	'masseditregex-listtype-pagenames' => '頁面名稱（編輯這些網頁）',
+	'masseditregex-listtype-pagename-prefixes' => '網頁名稱前綴（編輯網頁名稱的開頭有這個文字）',
+	'masseditregex-editfailed' => '編輯失敗：',
+);
+
