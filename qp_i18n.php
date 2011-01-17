@@ -2526,3 +2526,18 @@ $messages['zh-hans'] = array(
 	'qp_users_link' => '用户',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'qp_result_NA' => '未回答',
+	'qp_result_error' => '語法錯誤',
+	'qp_vote_button' => '投票',
+	'qp_vote_again_button' => '修改你的投票',
+	'qp_polls_list' => '所有投票名單',
+	'qp_users_list' => '列出所有使用者',
+	'qp_source_link' => '來源',
+	'qp_stats_link' => '統計',
+	'qp_users_link' => '用戶',
+);
+
