@@ -389,8 +389,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'redirect-desc' => '可以在[[MediaWiki:Redirect-addnewaccount|用戶創建]]及[[MediaWiki:Redirect-userlogoutcomplete|登出]]中容易設定重定向。',
+	'redirect-desc' => '可以在[[MediaWiki:Redirect-addnewaccount|使用者建立]]及[[MediaWiki:Redirect-userlogoutcomplete|登出]]中容易設定重定向。',
 );
 
