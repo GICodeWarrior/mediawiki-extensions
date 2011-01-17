@@ -1960,14 +1960,16 @@ $messages['zh-hans'] = array(
 	'bookinfo-provider' => '资料提供者: $1',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
 	'bookinfo-header' => '書籍資料',
 	'bookinformation-desc' => '擴充[[Special:Booksources|{{int:booksources}}]]的功能得以從外部網站取得資訊',
-	'bookinfo-result-title' => '標題:',
+	'bookinfo-result-title' => '標題：',
 	'bookinfo-result-author' => '作者:',
 	'bookinfo-result-publisher' => '出版者:',
-	'bookinfo-result-year' => '年份:',
+	'bookinfo-result-year' => '年份：',
 	'bookinfo-error-invalidisbn' => '不正確的 ISBN 輸入。',
 	'bookinfo-error-nosuchitem' => '項目不正確或找不到。',
 	'bookinfo-error-nodriver' => '無法初始化一個合適的書籍資料驅動器。',
