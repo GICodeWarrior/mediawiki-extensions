@@ -106,7 +106,7 @@ struct literalNode {
 		ALLOC_NODESTRING(); \
 		serializeNode(nodeString + nodeStringLen, &tmpnode); \
 		nodeStringLen += NODE_LEN; \
-		storedLength += length; printf("storedLength: %d @%d\n", storedLength, __LINE__);\
+		storedLength += length; \
 	} while (0);
 
 /**
@@ -114,7 +114,7 @@ struct literalNode {
  * Adjacent literal nodes are stored inside of a single node.
  */
 #define addLiteral(literalText,offset,length) \
-	do { printf("Addliteral '%.*s'\n", length, literalText+offset);\
+	do { \
 		int my_len = length; \
 		assert( literalText == text ); \
 		if ( my_len == -1 ) { \
@@ -139,7 +139,7 @@ struct literalNode {
 		struct node* tmpnode; \
 		if ( currentLiteral.len ) { \
 			storeNodeWithText(literal_node, currentLiteral.from, currentLiteral.len); \
-			currentLiteral.len = 0; printf("currentLiteral committed\n"); \
+			currentLiteral.len = 0; \
 		} \
 		\
 		tmpnode = alloc_node(); \
@@ -156,7 +156,7 @@ struct literalNode {
 		ALLOC_NODESTRING(); \
 		serializeNode(nodeString + nodeStringLen, tmpnode); \
 		nodeStringLen += NODE_LEN; \
-		storedLength += charsToSkip; printf("storedLength: %d @%d\n", storedLength, __LINE__);\
+		storedLength += charsToSkip; \
 	} while(0)
 
 #define closeNode(nodeType) \
@@ -165,9 +165,8 @@ struct literalNode {
 		assert( nodeType == tmpnode->type ); \
 		if ( currentLiteral.len ) { \
 			storeNodeWithText(literal_node, currentLiteral.from, currentLiteral.len); \
-			printf("adding literal of %d with parent %c\n", currentLiteral.len, tmpnode->type); \
 			currentLiteral.len = 0; \
-		} printf("closing node %c at %d with len of %d\n", tmpnode->type, tmpnode->index, tmpnode->contentLength); \
+		} \
 		tmpnode->nextSibling = nodeStringLen - tmpnode->index - NODE_LEN; \
 		serializeNode( nodeString + tmpnode->index, tmpnode ); \
 		parentNode = parentNode->parent; \
@@ -233,7 +232,7 @@ static struct node* breakSyntax( struct node* node, char * const nodeString, int
 	 * may be our nephew, instead of our sister (we could ask our 
 	 * parent, though)
 	 */
-printf("breakSyntax(%.*s)\n", *nodeStringLen, nodeString);
+
 	if ( node->type == bracket_node ) {
 		node->type = literal_node;
 		node->nextSibling = 0;
@@ -259,7 +258,7 @@ printf("breakSyntax(%.*s)\n", *nodeStringLen, nodeString);
 		}
 		
 		/* Go for part nodes */
-		while ( readpos < *nodeStringLen ) {printf("breakSyntaw(%.*s) %d %d\n", *nodeStringLen, nodeString, readpos, writepos);
+		while ( readpos < *nodeStringLen ) {
 			assert( nodeString[readpos] == part_node ); /* <part> node */
 			assert( !memcmp( nodeString + readpos + 8, "00000001", 8 ) ); /* Part nodes contain exactly one character (the pipe) */
 			node->contentLength = 1;
