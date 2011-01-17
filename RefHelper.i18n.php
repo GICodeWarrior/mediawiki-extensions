@@ -1394,13 +1394,27 @@ $messages['vi'] = array(
 	'refhelper-search' => 'Tìm kiếm',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hans'] = array(
 	'refhelper-title' => '标题：',
 	'refhelper-pages' => '页面:',
 	'refhelper-year' => '年份:',
-	'refhelper-category' => '分类： $1',
+	'refhelper-category' => '分类：$1',
 	'refhelper-create' => '创建',
 	'refhelper-search' => '搜索',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'refhelper-title' => '標題：',
+	'refhelper-pages' => '頁面：',
+	'refhelper-year' => '年份：',
+	'refhelper-category' => '分類：$1',
+	'refhelper-create' => '建立',
+	'refhelper-search' => '搜尋',
 );
 
