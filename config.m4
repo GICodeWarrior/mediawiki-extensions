@@ -5,6 +5,6 @@ PHP_ARG_ENABLE(mediawiki-preprocessor, mediawiki preprocessor support,
 
 if test "$PHP_MEDIAWIKIPREPROCESSOR" != "no"; then
   dnl Enable the extension
-  PHP_NEW_EXTENSION(mediawiki_preprocessor, mediawiki_preprocessor.c in_array.c preprocesstoobj.c, $ext_shared)
+  PHP_NEW_EXTENSION(mediawiki_preprocessor, mediawiki_preprocessor.c tag_util.c preprocesstoobj.c, $ext_shared)
   PHP_SUBST(MEDIAWIKI_PREPROCESSOR_SHARED_LIBADD)
 fi
