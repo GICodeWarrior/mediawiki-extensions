@@ -79,6 +79,11 @@ int identifyTag(const char* __restrict string, int string_len, const HashTable* 
 				if ( string[0] == '/' ) {
 					string++;
 					string_len--;
+
+					if ( i ) {
+						memmove( lowername, lowername + 1, i - 1 );
+						i--;
+					}
 				}
 				continue;
 			}
