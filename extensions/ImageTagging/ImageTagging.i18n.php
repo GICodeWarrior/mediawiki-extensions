@@ -244,9 +244,10 @@ $messages['be'] = array(
 	'imagetagging-imghistory' => 'Гісторыя',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'taggedimages' => 'Выявы з пазнакамі',
@@ -264,7 +265,7 @@ $messages['be-tarask'] = array(
 	'imagetagging-removetag' => 'выдаліць метку',
 	'imagetagging-done-button' => 'Стварыць метку',
 	'imagetagging-tag-button' => 'Метка',
-	'imagetagging-tagcancel-button' => 'Адмяніць',
+	'imagetagging-tagcancel-button' => 'Скасаваць',
 	'imagetagging-tagging-instructions' => 'Пазначце людзей ці рэчы ў выяве, якіх трэба памеціць.',
 	'imagetagging-addingtag' => 'Даданьне меткі…',
 	'imagetagging-removingtag' => 'Выдаленьне меткі…',
@@ -2304,13 +2305,14 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'imagetagging-addimagetag' => '標籤這幅圖片',
 	'imagetagging-article' => '頁面：',
+	'imagetagging-imghistory' => '歷史',
 	'imagetagging-images' => '圖片',
 	'imagetagging-removetag' => '移除標籤',
 	'imagetagging-done-button' => '完成標籤',
 	'imagetagging-tag-button' => '標籤',
 	'imagetagging-tagcancel-button' => '取消',
-	'imagetagging-addingtag' => '正在新增標籤...',
-	'imagetagging-removingtag' => '正在移除標籤...',
+	'imagetagging-addingtag' => '正在新增標籤......',
+	'imagetagging-removingtag' => '正在移除標籤......',
 	'imagetagging-addtagsuccess' => '已新增標籤。',
 	'imagetagging-removetagsuccess' => '已移除標籤。',
 	'tag-logpagename' => '標籤記錄',

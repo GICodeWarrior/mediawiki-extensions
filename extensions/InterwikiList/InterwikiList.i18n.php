@@ -806,3 +806,14 @@ $messages['yi'] = array(
 	'interwikilist-prefix' => 'אינטערוויקי פּרעפֿיקס:',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'interwikilist' => '跨語言列表',
+	'interwikilist-linkname' => '跨語言連結',
+	'interwikilist-target' => '目標 URL',
+	'interwikilist-filter' => '過濾列表',
+	'interwikilist-prefix' => '跨語言的前綴：',
+);
+

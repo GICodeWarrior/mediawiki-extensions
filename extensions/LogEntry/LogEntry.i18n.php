@@ -612,3 +612,11 @@ $messages['vo'] = array(
 	'logentry-invalidpage' => 'Pad no lonöföl',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'logentry-invalidpage' => '無效的頁面',
+	'logentry-invalidtoken' => '無效的標記',
+);
+

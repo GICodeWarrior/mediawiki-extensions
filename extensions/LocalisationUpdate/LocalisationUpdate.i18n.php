@@ -467,9 +467,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Tom Maaswinkel
  */
 $messages['zh-hant'] = array(
-	'localisationupdate-desc' => '將本地化的信息保持最新',
+	'localisationupdate-desc' => '將本地化的資訊盡可能保持最新',
 );
 

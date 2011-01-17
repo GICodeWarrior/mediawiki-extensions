@@ -4004,6 +4004,7 @@ $2',
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -4025,7 +4026,7 @@ $messages['zh-hant'] = array(
 	'whitelistnewtableprocess' => '處理',
 	'whitelistnewtablereview' => '評論',
 	'whitelistselectrestricted' => '== 選擇受限制的用戶名 ==',
-	'whitelistpagelist' => '$1 的{{SITENAME}}頁面',
+	'whitelistpagelist' => '$1 的 {{SITENAME}} 頁面',
 	'whitelistoverview' => '== 查看 $1 的更改 ==',
 	'whitelistoverviewcd' => "* [[:$2|$2]]，修改日期為 '''$1'''",
 	'whitelistrequestmsg' => '$1請求訪問以下頁面：

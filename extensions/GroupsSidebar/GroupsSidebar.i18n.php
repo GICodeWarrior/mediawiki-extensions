@@ -297,3 +297,10 @@ $messages['zh-hans'] = array(
 	'groupssidebar-desc' => '此扩展使站点管理员，包括为特定用户组的侧栏元素',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'groupssidebar-desc' => '此擴充套件使站點管理員，包含為特定使用者群組的側邊欄元素',
+);
+

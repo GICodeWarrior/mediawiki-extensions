@@ -6589,13 +6589,14 @@ $wgGoogleMapsMessages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Roc michael
  */
 $wgGoogleMapsMessages['zh-hant'] = array(
-	'gm-desc' => '輕鬆地創建地圖的wiki-fied標誌',
-	'gm-incompatible-browser' => '您必須使用相容的網頁瀏覽器以利設查看所設定於此處的地圖',
-	'gm-incompatible-browser-link' => '按此處以查看相容瀏覽器的清單。',
-	'gm-no-editor' => '很遺憾！您的瀏覽器不支援此互動式地圖製作元件，請試試看最新版的 <a href="http://www.microsoft.com/ie">IE</a> 或<a href="http://www.mozilla.org/products/firefox">火狐狸（Firefox）</a>',
+	'gm-desc' => '輕鬆地建立地圖的 wiki-fied 標誌',
+	'gm-incompatible-browser' => '您必須使用相容的網頁瀏覽器以利設檢視所設定於此處的地圖',
+	'gm-incompatible-browser-link' => '按此處以檢視相容瀏覽器的清單。',
+	'gm-no-editor' => '很遺憾！您的瀏覽器不支援此互動式地圖製作元件，請試試看最新版的 <a href="http://www.microsoft.com/ie">IE</a> 或 <a href="http://www.mozilla.org/products/firefox">Firefox</a>',
 	'gm-balloon-title' => '標題：',
 	'gm-balloon-link-article' => '連結至此頁（可選擇性使用的）：',
 	'gm-make-marker' => '標題（維基標記 OK）：',
@@ -6623,7 +6624,7 @@ $wgGoogleMapsMessages['zh-hant'] = array(
 	'gm-height' => '高度',
 	'gm-scale-control' => '比例尺',
 	'gm-overview-control' => '瀏覽（Overview）',
-	'gm-selector-control' => '地圖/衛星選取器',
+	'gm-selector-control' => '地圖／衛星選取器',
 	'gm-zoom-control' => '導航',
 	'gm-large' => '大型',
 	'gm-medium' => '中型',
@@ -6656,7 +6657,7 @@ $wgGoogleMapsMessages['zh-hant'] = array(
 	'gm-kml-include' => '外部的 KML/GeoRSS：',
 	'gm-kml-include-link' => '新增至地圖',
 	'gm-kml-loading' => '載入中.....',
-	'gm-kml-export' => '匯出此地圖至KML',
+	'gm-kml-export' => '匯出此地圖至 KML',
 	'gm-earth' => '地球',
 	'gm-moon' => '月亮',
 	'gm-mars' => '火星',

@@ -914,17 +914,19 @@ Samo: „* PD-“ no ojenon kladis valik, kels primons me: „PD-“ , äs „PD
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hans'] = array(
 	'minipreview-files_in_category' => "本分类包含'''$1'''个档案。",
-	'minipreview-files_in_gallery' => "本图片廊包含'''$1'''个档案。",
+	'minipreview-files_in_gallery' => "本图片廊包含 '''$1''' {{PLURAL:$1|文件|文件}}。",
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'minipreview-files_in_category' => "本分類包含'''$1'''個檔案。",
-	'minipreview-files_in_gallery' => "本圖片廊包含'''$1'''個檔案。",
+	'minipreview-files_in_category' => "本分類包含 '''$1''' {{PLURAL:$1|檔案|檔案}}。",
+	'minipreview-files_in_gallery' => "本圖片廊包含 '''$1''' {{PLURAL:$1|檔案|檔案}}。",
 );
 

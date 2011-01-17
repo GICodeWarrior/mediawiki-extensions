@@ -512,9 +512,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'opensearchxml-desc' => '提供文字擷取的[http://www.opensearch.org OpenSearch] XML界面',
+	'opensearchxml-desc' => '提供文字擷取的 [http://www.opensearch.org OpenSearch] XML 介面',
 );
 

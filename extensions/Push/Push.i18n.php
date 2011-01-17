@@ -926,3 +926,11 @@ $messages['te'] = array(
 	'push-special-select-targets' => 'లక్ష్యిత వికీలు:',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'push-add-target' => '新增目標',
+	'push-tab-inc-templates' => '包含模板',
+);
+

@@ -213,7 +213,7 @@ $messages['pl'] = array(
 	'spm_printername_wbs' => 'Eksport do MS Project',
 	'spm-name' => 'Zarządzanie projektem semantycznym',
 	'semanticprojectmanagement-desc' => 'Formaty zarządzania projektami dla zapytań semantycznego MediaWiki',
-	'semanticprojectmanagement' => 'Zarządzanie projektem semantycznym',
+	'semanticprojectmanagement' => 'Ustawienia zarządzania projektem semantycznym',
 	'right-SPMsetup' => 'Edycja podstawowych ustawień zarządzania projektem semantycznym',
 );
 

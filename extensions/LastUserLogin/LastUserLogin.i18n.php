@@ -737,15 +737,17 @@ $messages['zh-hans'] = array(
 	'right-lastlogin' => '查看用户最后一次登录时间',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
-	'lastuserlogin' => '最後一次用戶登錄',
-	'lastuserlogin-desc' => '顯示用戶最後一次登錄的時間',
+	'lastuserlogin' => '最後一次用戶登入',
+	'lastuserlogin-desc' => '顯示用戶最後一次登入的時間',
 	'lastuserlogin_userid' => '用戶名',
 	'lastuserlogin_username' => '真實姓名',
 	'lastuserlogin_useremail' => '用戶電子郵件',
-	'lastuserlogin_lastlogin' => '最後一次登錄',
+	'lastuserlogin_lastlogin' => '最後一次登入',
 	'lastuserlogin_daysago' => '天之前',
-	'right-lastlogin' => '查看用戶最後一次登錄時間',
+	'right-lastlogin' => '檢視使用者最後一次登入時間',
 );
 

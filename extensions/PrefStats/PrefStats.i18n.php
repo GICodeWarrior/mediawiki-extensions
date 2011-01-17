@@ -3092,6 +3092,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
@@ -3101,21 +3102,21 @@ $messages['zh-hant'] = array(
 	'prefstats-list-intro' => '直到現時，以下的喜好設定會追蹤下來。
 點擊其中一種設定去查看有關它的統計。',
 	'prefstats-noprefs' => '無喜好可供追蹤。設定 $wgPrefStatsTrackPrefs 去追蹤喜好。',
-	'prefstats-counters' => '* $1名用戶在統計啟用之後啟用了此選項
-** $2名用戶啟用了它
-** $3名用戶禁用了它',
-	'prefstats-counters-expensive' => '* $1名用戶在統計啟用之後啟用了此選項
-** $2名用戶啟用了它
-** $3名用戶禁用了它
-* 總的來說，$4名用戶設定了此選項',
+	'prefstats-counters' => '* $1 名用戶在統計啟用之後啟用了此選項
+** $2 名用戶啟用了它
+** $3 名用戶禁用了它',
+	'prefstats-counters-expensive' => '* $1 名用戶在統計啟用之後啟用了此選項
+** $2 名用戶啟用了它
+** $3 名用戶禁用了它
+* 總的來說，$4 名用戶設定了此選項',
 	'prefstats-xaxis' => '持續時間（小時）',
 	'prefstats-factors' => '檢視時限︰$1',
-	'prefstats-factor-hour' => '1小時',
-	'prefstats-factor-sixhours' => '6小時',
-	'prefstats-factor-day' => '1天',
-	'prefstats-factor-week' => '1週',
-	'prefstats-factor-twoweeks' => '2週',
-	'prefstats-factor-fourweeks' => '4週',
+	'prefstats-factor-hour' => '1 小時',
+	'prefstats-factor-sixhours' => '6 小時',
+	'prefstats-factor-day' => '1 天',
+	'prefstats-factor-week' => '1 週',
+	'prefstats-factor-twoweeks' => '2 週',
+	'prefstats-factor-fourweeks' => '4 週',
 	'prefstats-factor-default' => '恢復預設設定',
 	'prefstats-legend-out' => '已停用',
 	'prefstats-legend-in' => '已啟用',

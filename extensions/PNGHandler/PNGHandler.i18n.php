@@ -442,6 +442,6 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'pnghandler-desc' => '使用pngds調整PNG圖片大小',
+	'pnghandler-desc' => '使用 pngds 調整 PNG 圖片大小',
 );
 

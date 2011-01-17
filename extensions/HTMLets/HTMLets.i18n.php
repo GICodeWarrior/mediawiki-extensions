@@ -446,8 +446,12 @@ $messages['zh-hans'] = array(
 	'htmlets-loadfailed' => '未能加载 HTML 文件 $1',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
-	'htmlets-desc' => '令您可以利用<code>&lt;htmlet&gt;</code>標籤於檔案中使用HTML插件',
+	'htmlets-desc' => '令您可以利用<code>&lt;htmlet&gt;</code>標籤於檔案中使用 HTML 外掛',
+	'htmlets-filenotfound' => '找不到 $1 的 HTML 檔案',
+	'htmlets-loadfailed' => '無法載入 HTML 檔案 $1',
 );
 

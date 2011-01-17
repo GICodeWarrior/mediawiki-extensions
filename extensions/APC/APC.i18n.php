@@ -7184,6 +7184,7 @@ APC 似乎不会运行。',
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author Mark85296341
  * @author Pbdragonwang
  * @author Wrightbus
  */
@@ -7196,6 +7197,7 @@ $messages['zh-hant'] = array(
 	'viewapc-upload-support' => '檔案上載支援',
 	'viewapc-display-filename' => '檔名',
 	'viewapc-ls-options-legend' => '選項',
+	'viewapc-ls-submit' => '確定！',
 	'viewapc-ls-sort-modified' => '最近更改',
 	'viewapc-version-info' => '版本資料',
 );

@@ -835,3 +835,12 @@ The reason given for blanking was: ''<nowiki>$3</nowiki>''.
 You may [{{fullurl:{{FULLPAGENAMEE}}|action=history}} view the page's history], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} edit the last version], or type new page into the white space below.",
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'blank-log' => '空白',
+	'blank-log-name' => '空白日誌',
+	'purewikideletion-blanknologin' => '未登入',
+);
+

@@ -120,7 +120,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'snmpquery-desc' => "Setzt SNMPget an SNMPwalk-Fonctiounen derbäi a setzt d'Donnéeën an d'Wiki",
+	'snmpquery-desc' => "Setzt SNMPget an SNMPwalk-Fonctiounen derbäi an erlaabt et d'Resultater an der Wiki ze weisen",
 );
 
 /** Macedonian (Македонски)
@@ -148,7 +148,7 @@ $messages['no'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'snmpquery-desc' => 'Dodaje funkcje SNMPget i SNMPwalk zwracające pobrane dane do wiki',
+	'snmpquery-desc' => 'Dodaje funkcje SNMPget i SNMPwalk oraz umożliwia wyświetlenie wyników przez wiki',
 );
 
 /** Piedmontese (Piemontèis)

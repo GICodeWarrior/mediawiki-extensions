@@ -880,13 +880,14 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'securepasswords-minlength' => '長度需要最少$1個字元',
-	'securepasswords-lowercase' => '包含最少1個小寫字母',
-	'securepasswords-uppercase' => '包含最少1個大寫字母',
-	'securepasswords-digit' => '包含最少1個數字',
+	'securepasswords-minlength' => '長度需要最少 $1 個字元',
+	'securepasswords-lowercase' => '包含最少一個小寫字母',
+	'securepasswords-uppercase' => '包含最少一個大寫字母',
+	'securepasswords-digit' => '包含最少一個數字',
 	'securepasswords-username' => '不與您的使用者名稱相同',
 );
 

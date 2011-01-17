@@ -421,8 +421,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'i18ntags-desc' => '提供存取任何語言的數字格式、文法和複數型等i18n相關資訊',
+	'i18ntags-desc' => '提供存取任何語言的數位格式、文法和複數型等 i18n 相關資訊',
 );
 

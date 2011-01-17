@@ -662,3 +662,12 @@ $messages['zh-hans'] = array(
 	'massblank-blankcomment' => '原因：',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'massblank' => '大量空白',
+	'massblank-blankcomment' => '原因：',
+	'right-massblank' => '大量空白頁',
+);
+

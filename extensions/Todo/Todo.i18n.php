@@ -196,7 +196,7 @@ $4',
 	'todo-form-submit' => 'تنفيذ الاستعلام',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -226,7 +226,7 @@ $4',
 	'todo-move-queue' => 'Перанесьці ў чаргу…',
 	'todo-list-for' => 'Сьпіс заданьняў для $1',
 	'todo-list-change' => 'Зьмяніць',
-	'todo-list-cancel' => 'Адмяніць',
+	'todo-list-cancel' => 'Скасаваць',
 	'todo-new-item' => 'Новае заданьне',
 	'todo-not-updated' => 'Немагчыма абнавіць запіс базы зьвестак',
 	'todo-issue-summary' => 'Агульная колькасьць:',

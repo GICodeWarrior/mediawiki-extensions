@@ -597,9 +597,10 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'donationform-desc' => '加入<code>&lt;donateform&gt;</code>標籤以支持使用PayPal的捐贈',
-	'donationform-submit' => '經PayPal捐款',
+	'donationform-desc' => '加入 <code>&lt;donateform&gt;</code> 標籤以支援使用 PayPal 的捐贈',
+	'donationform-submit' => '經 PayPal 捐款',
 );
 

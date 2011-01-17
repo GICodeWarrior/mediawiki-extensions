@@ -802,12 +802,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'newusernotifsubj' => '$1的新用戶通知',
-	'newusernotif-desc' => '當用戶創建時，發送郵件確認電子郵件地址',
+	'newusernotifsubj' => '$1 的新用戶通知',
+	'newusernotif-desc' => '當用戶建立時，發送郵件確認電子郵件地址',
 	'newusernotifbody' => '你好 $1，
 
-一個新的用戶帳號$2，已經在$4於$3創建。',
+一個新的用戶帳號 $2，已經在 $4 於 $3 建立。',
 );
 

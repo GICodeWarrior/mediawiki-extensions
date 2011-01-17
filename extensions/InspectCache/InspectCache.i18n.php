@@ -1157,9 +1157,14 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'inspectcache-delete' => '删除',
+	'inspectcache' => '檢查快取',
+	'inspectcache-message' => '訊息快取',
+	'inspectcache-get' => '取得',
+	'inspectcache-delete' => '刪除',
+	'inspectcache-list' => '列表',
 );
 

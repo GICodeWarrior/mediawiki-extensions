@@ -618,9 +618,11 @@ $messages['zh-hans'] = array(
 	'mediafunctions-not-exist' => '"$1" 不存在',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
-	'mediafunctions-invalid-title' => '"$1" 不是一個有效的標題',
-	'mediafunctions-not-exist' => '"$1" 不存在',
+	'mediafunctions-invalid-title' => '「$1」不是一個有效的標題',
+	'mediafunctions-not-exist' => '「$1」不存在',
 );
 

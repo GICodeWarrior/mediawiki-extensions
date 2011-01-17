@@ -1703,33 +1703,34 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'imstatus-desc' => '增加了顯示各種即時通訊軟件在線狀態標籤（例如AIM、Google Talk、ICQ、MSN/Live Messenger、Skype、Xfire、Yahoo）',
+	'imstatus-desc' => '增加了顯示各種即時通訊軟體線上狀態標籤（例如AIM、Google Talk、ICQ、MSN/Live Messenger、Skype、Xfire、Yahoo）',
 	'imstatus_syntax' => '語法',
-	'imstatus_default' => '默認',
+	'imstatus_default' => '預設',
 	'imstatus_example' => '例子',
 	'imstatus_possible_val' => '可能值',
 	'imstatus_max' => '最大',
 	'imstatus_min' => '最小',
 	'imstatus_or' => '或者',
-	'imstatus_style' => '狀態指示符的樣式',
+	'imstatus_style' => '狀態指示燈的風格',
 	'imstatus_action' => '當按鈕按下時，就',
-	'imstatus_details_saa' => '如要獲得更多關於樣式和動作的信息，請參見$1。',
-	'imstatus_your_name' => '您的$1名稱',
-	'imstatus_aim_presence' => '$1顯示了您的狀態，並提供了一個鏈接，以便那些安裝了AIM的用戶可以直接發給您一個即時信息。',
-	'imstatus_aim_api' => '$1顯示了您的狀態，並提供了一個鏈接，以啟動<b>瀏覽器</b>，通過javascript版本的AIM發給您一個即時信息。',
-	'imstatus_gtalk_code' => '您的Google Talk代碼',
-	'imstatus_gtalk_get_code' => '您的Google Talk代碼：在$1獲得它。',
-	'imstatus_gtalk_height' => '箱體的高度，單位為pixel。',
-	'imstatus_gtalk_width' => '箱體的寬度，單位為pixel。',
-	'imstatus_icq_id' => '您的ICQ ID',
-	'imstatus_icq_style' => '範圍從0到26（沒錯，一共有27種樣式可供選擇...…）。',
-	'imstatus_live_code' => '您的Live Messenger網站ID',
-	'imstatus_live_get_code' => '您的Live Messenger網站ID：<strong>並不是您的電子郵件地址</strong>，您需要在<a href="$1">您的live messenger選項
+	'imstatus_details_saa' => '欲了解更多關於樣式和動作的細節，請參見 $1。',
+	'imstatus_your_name' => '您的 $1 名稱',
+	'imstatus_aim_presence' => '$1 顯示了您的狀態，並提供了一個連結，以便那些安裝了 AIM 的用戶可以直接發給您一個即時訊息。',
+	'imstatus_aim_api' => '$1 顯示了您的狀態，並提供了一個連結，以啟動<b>瀏覽器</b>，透過 Javascript 版本的 AIM 發給您一個即時訊息。',
+	'imstatus_gtalk_code' => '您的 Google Talk 代碼',
+	'imstatus_gtalk_get_code' => '您的 Google Talk 代碼：在 $1 獲得它。',
+	'imstatus_gtalk_height' => '箱體的高度，單位為 pixel。',
+	'imstatus_gtalk_width' => '寬度框中，單位為 pixel。',
+	'imstatus_icq_id' => '您的 ICQ ID',
+	'imstatus_icq_style' => '範圍從 0 到 26（沒錯，一共有 27 種樣式可供選擇...…）。',
+	'imstatus_live_code' => '您的 Live Messenger 網站 ID',
+	'imstatus_live_get_code' => '您的 Live Messenger 網站 ID：<strong>並不是您的電子郵件位址</strong>，您需要在<a href="$1">您的 Live Messenger 選項
 </a>中生成。
-需要提供的ID由"$2"和"$3"之間的數字、字母組成。',
+需要提供的 ID 由「$2」和「$3」之間的數字、字母組成。',
 	'imstatus_xfire_size' => '按鈕的大小，可從 $1 （最大） 到 $2 （最小）供選擇。',
 );
 

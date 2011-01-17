@@ -2262,32 +2262,33 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
  * @author KilluaZaoldyeck
+ * @author Mark85296341
  * @author Shinjiman
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'patrol' => '覆查編輯',
-	'patrol-desc' => '分擔工作量以增強巡邏界面',
+	'patrol' => '複查編輯',
+	'patrol-desc' => '分擔工作量以增強巡查介面',
 	'patrol-endorse' => '批註',
 	'patrol-revert' => '回退',
 	'patrol-revert-reason' => '原因：',
 	'patrol-skip' => '略過',
 	'patrol-reverting' => '正在回退：$1',
-	'patrol-nonefound' => '沒有覆查修改的記錄。',
-	'patrol-endorsed-ok' => '此編輯已標記覆查記錄。',
-	'patrol-endorsed-failed' => '此編輯無法標記覆查記錄。',
+	'patrol-nonefound' => '沒有複查修改的記錄。',
+	'patrol-endorsed-ok' => '此編輯已標記複查記錄。',
+	'patrol-endorsed-failed' => '此編輯無法標記複查記錄。',
 	'patrol-reverted-ok' => '編輯被回退。',
 	'patrol-reverted-failed' => '編輯無法回退。',
 	'patrol-skipped-ok' => '忽略編輯。',
 	'patrol-reasons' => '* 純粹破壞
 * 新人測試
-* 參看討論頁',
+* 參見討論頁',
 	'patrol-another' => '列出其他存在的編輯。',
-	'patrol-stopped' => '你選擇不覆查其他編輯。$1',
+	'patrol-stopped' => '你選擇不複查其他編輯。$1',
 	'patrol-resume' => '點擊這裡繼續。',
-	'group-patroller' => '巡邏員',
-	'group-patroller-member' => '巡邏員',
-	'grouppage-patroller' => '{{ns:project}}:巡邏員',
-	'right-patroller' => '巡視頁面',
+	'group-patroller' => '巡查員',
+	'group-patroller-member' => '巡查員',
+	'grouppage-patroller' => '{{ns:project}}：巡查員',
+	'right-patroller' => '巡查頁面',
 );
 

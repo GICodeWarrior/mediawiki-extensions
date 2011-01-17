@@ -2177,12 +2177,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'importusers' => '匯入使用者',
-	'importusers-uploadfile' => '上載檔案',
+	'importusers-uploadfile' => '上傳檔案',
 	'importusers-form-button' => '匯入',
+	'importusers-log-summary' => '摘要',
+	'importusers-log-summary-all' => '全部',
 	'importusers-log-summary-added' => '已加入',
 	'importusers-log-summary-updated' => '已更新',
 	'importusers-password' => '密碼',

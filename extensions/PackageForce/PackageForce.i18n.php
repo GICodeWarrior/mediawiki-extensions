@@ -850,3 +850,14 @@ $messages['zh-hans'] = array(
 	'pf-header-approve' => '批复',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'pf-admin-menu-default' => '預設',
+	'pf-admin-link-editlink-page' => '編輯頁面',
+	'pf-header-edit' => '編輯連結',
+	'pf-header-page_title' => '標題',
+	'pf-header-approve' => '獲准',
+);
+

@@ -580,3 +580,11 @@ Nó cũng cho phép bạn sử dung trang người dùng làm một OpenID.',
 	'linkopenid-prefstext-v2url' => 'URL máy chủ dành cho OpenID phiên bản 2:',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'linkopenid-desc' => '允許使用者連結他們的帳號和外部的 OpenID',
+	'linkopenid-prefstext-openid' => '您的 OpenID：',
+);
+

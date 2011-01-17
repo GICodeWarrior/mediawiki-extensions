@@ -14833,6 +14833,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -14982,9 +14983,9 @@ $messages['zh-hant'] = array(
 	'ow_TranslatedTextAttributeValue' => '文字',
 	'ow_TranslatedTextAttributeValues' => '可翻譯的文本',
 	'ow_Label' => '標籤',
-	'ow_Link' => '鏈接',
+	'ow_Link' => '連結',
 	'ow_LinkAttribute' => '屬性',
-	'ow_LinkAttributeValues' => '鏈接',
+	'ow_LinkAttributeValues' => '連結',
 	'ow_User' => '用戶',
 	'ow_Property' => '屬性',
 	'ow_Value' => '值',
@@ -15004,7 +15005,7 @@ $messages['zh-hant'] = array(
 	'ow_needs_xlation_dest_lang' => '目標語言：',
 	'ow_show' => '顯示',
 	'ow_upload' => '上載',
-	'ow_create' => '創建',
+	'ow_create' => '建立',
 	'ow_suggest_previous' => '上一個',
 	'ow_suggest_next' => '下一個',
 	'ow_suggest_clear' => '清除',

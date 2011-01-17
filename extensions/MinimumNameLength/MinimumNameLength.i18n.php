@@ -606,9 +606,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'minnamelength-error' => '你的用戶名太短。最少的長度是$1個字元。',
+	'minnamelength-error' => '你的用戶名太短。最少的長度是 $1 個字元。',
 );
 

@@ -718,10 +718,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'piwik-countries' => '國家地區',
+	'piwik-countries' => '國家',
 	'piwik-browsers' => '瀏覽器',
 );
 

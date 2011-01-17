@@ -533,9 +533,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'googleadsense-desc' => '在頁側欄位加入[http://www.google.com/adsense Google AdSense]',
+	'googleadsense-desc' => '在頁側欄位加入 [http://www.google.com/adsense Google AdSense]',
 );
 

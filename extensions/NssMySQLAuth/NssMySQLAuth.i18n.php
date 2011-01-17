@@ -1197,14 +1197,18 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'accountmanager' => '帳號管理',
 	'am-username' => '使用者名稱',
-	'am-email' => '電郵',
+	'am-email' => '電子郵件',
 	'am-active' => '活躍',
 	'nss-rights' => '權限',
 	'nss-save-changes' => '儲存變更',
-	'nss-no-mail' => '不要傳送電郵',
+	'nss-create-account-header' => '建立新帳號',
+	'nss-create-account' => '建立新帳號',
+	'nss-no-mail' => '不要發送電子郵件',
 );
 

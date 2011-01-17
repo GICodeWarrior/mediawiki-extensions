@@ -753,6 +753,6 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'icon-badimage' => '圖片錯誤',
 	'icon-badwidth' => '寬度錯誤',
-	'icon-desc' => '增加icon參數以產生於圖片上的連結',
+	'icon-desc' => '增加 icon 參數以產生於圖片上的連結',
 );
 

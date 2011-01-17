@@ -722,11 +722,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'purgecache' => '清除緩存',
-	'purgecache-purged' => '緩存經已清除。',
+	'purgecache' => '清除快取',
+	'purgecache-purged' => '快取已被清除。',
 	'purgecache-button' => '清除',
 );
 

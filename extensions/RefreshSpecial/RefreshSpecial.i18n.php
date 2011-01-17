@@ -1512,6 +1512,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1519,5 +1520,11 @@ $messages['zh-hant'] = array(
 	'refreshspecial-title' => '重新載入特殊頁面',
 	'refreshspecial-button' => '重新載入已選頁面',
 	'refreshspecial-choice' => '正在重新載入特殊頁面',
+	'refreshspecial-select-all-pages' => '選擇所有頁面',
+	'refreshspecial-link-back' => '回到特殊頁面',
+	'refreshspecial-db-error' => '失敗：資料庫錯誤',
+	'refreshspecial-no-page' => '此特殊頁面不存在',
+	'refreshspecial-reconnecting' => '連接失敗，在 10 秒後重新連接...',
+	'right-refreshspecial' => '重新載入特殊頁面',
 );
 

@@ -1091,10 +1091,11 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'abc-desc' => '加入<code>&lt;abc&gt;</code>標籤以格式化ABC音樂',
-	'abcdownload' => '下載:',
+	'abc-desc' => '加入 <code>&lt;abc&gt;</code> 標籤以格式化 ABC 音樂',
+	'abcdownload' => '下載：',
 );
 

@@ -466,10 +466,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'microid-desc' => '在用戶頁面新增一個[http://www.microid.org/ MicroID]以確認含外部服務的帳戶',
-	'tog-microid' => '發佈一個<a href="http://microid.org/">MicroID</a>以確認含外部服務的帳戶',
+	'microid-desc' => '在使用者頁面新增一個 [http://www.microid.org/ MicroID] 以確認含外部服務的帳戶',
+	'tog-microid' => '發布一個 <a href="http://microid.org/">MicroID</a> 以確認含外部服務的帳號',
 );
 

@@ -758,16 +758,17 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author PhiLiP
  */
 $messages['zh-hant'] = array(
-	'lua_desc' => '透過支援嵌入[http://www.lua.org/ Lua]程式碼段來拓展解析器。',
-	'lua_error' => '第$1行有錯誤',
-	'lua_extension_notfound' => '未設定Lua插件',
-	'lua_interp_notfound' => '未找到Lua直譯器',
+	'lua_desc' => '透過支援嵌入 [http://www.lua.org/ Lua] 程式碼段來擴充套件解析器。',
+	'lua_error' => '第 $1 行有錯誤',
+	'lua_extension_notfound' => '未設定 Lua 擴充套件',
+	'lua_interp_notfound' => '未找到 Lua 直譯器',
 	'lua_error_internal' => '內部錯誤',
-	'lua_overflow_recursion' => '遞回越限',
-	'lua_overflow_loc' => '程式碼行數越限',
-	'lua_overflow_time' => '執行時間越限',
+	'lua_overflow_recursion' => '遞回的極限',
+	'lua_overflow_loc' => '程式碼行數的極限',
+	'lua_overflow_time' => '達到最大的執行時間',
 );
 
