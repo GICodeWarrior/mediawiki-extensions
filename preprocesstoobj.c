@@ -402,10 +402,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 			enum internalTags internalTag;
 			const char* name = text + i + 1;
 			int name_len;
-			/* TODO: optimize this search by not going further than 
-			 *  max( strlen( getParserStripList() + internalTags() ) )
-			 * while not setting noMoreGT in such case.
-			 */
+
 			name_len = identifyTag(name, text_len - i - 1, parserStripList, &internalTag, lowername);
 			if ( name_len == -1 ) {	/* Does it make sense to allow 0-length tags? */
 				addLiteral( text, i, 1 );
