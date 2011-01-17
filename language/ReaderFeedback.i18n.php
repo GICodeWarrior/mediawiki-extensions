@@ -2885,12 +2885,13 @@ $messages['zh-hans'] = array(
  * @author Alexsh
  * @author Gaoxuewei
  * @author Horacewai2
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'readerfeedback-desc' => '頁面驗證允許讀者提供反饋的形式明確評級',
+	'readerfeedback-desc' => '頁面驗證允許讀者提供回饋意見的形式明確評級',
 	'readerfeedback' => '您對這個頁面有什麽意見？',
-	'readerfeedback-text' => "''請花一點時間來評價下面這個頁面。您反饋的意見將幫助我們改進我們的網站。''",
+	'readerfeedback-text' => "''請花一點時間來評價下面這個頁面。您回饋的意見將幫助我們改進我們的網站。''",
 	'readerfeedback-reliability' => '可靠性',
 	'readerfeedback-completeness' => '完整性',
 	'readerfeedback-npov' => '中立性',
@@ -2904,11 +2905,11 @@ $messages['zh-hant'] = array(
 	'readerfeedback-level-4' => '極好',
 	'readerfeedback-submit' => '提交',
 	'readerfeedback-main' => '只有內容頁才可被評級。',
-	'readerfeedback-success' => "'''感謝您對本頁的評論 !'''（[$2 查看結果]） （[$3 留言或者有疑問？]）",
-	'readerfeedback-voted' => "'''您已經對本頁評論過了'''（[$2 查看結果]） （[$3 留言或者有疑問？]）",
-	'readerfeedback-error' => "'''評論本頁時出現了一個錯誤'''（[$2 查看結果]） （[$3 留言或者有疑問？]）",
+	'readerfeedback-success' => "'''感謝您對本頁的評論！'''（[$2 檢視結果]） （[$3 留言或者有疑問？]）",
+	'readerfeedback-voted' => "'''您已經對本頁評論過了'''（[$2 檢視結果]） （[$3 留言或者有疑問？]）",
+	'readerfeedback-error' => "'''評論本頁時出現了一個錯誤'''（[$2 檢視結果]） （[$3 留言或者有疑問？]）",
 	'readerfeedback-submitting' => '提交中...',
-	'readerfeedback-finished' => '謝謝！',
+	'readerfeedback-finished' => '謝謝您！',
 	'readerfeedback-tagfilter' => '標籤：',
 	'readerfeedback-tierfilter' => '評級：',
 	'readerfeedback-tier-high' => '高',

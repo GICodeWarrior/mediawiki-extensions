@@ -2604,11 +2604,12 @@ $messages['zh-hans'] = array(
  * @author Gaoxuewei
  * @author Horacewai2
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'ratinghistory' => '頁面評級歷史',
-	'ratinghistory-leg' => '[[:$1|$1]]的評級歷史數據',
+	'ratinghistory-leg' => '[[:$1|$1]] 的評級歷史數據',
 	'ratinghistory-tab' => '評分',
 	'ratinghistory-link' => '頁面評分',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">謝謝您對本頁的評論！</font>''",
@@ -2619,21 +2620,21 @@ $messages['zh-hant'] = array(
 	'ratinghistory-3years' => '過去三年',
 	'ratinghistory-ave' => '平均：$1',
 	'ratinghistory-chart' => '讀者評分隨著時間的推移',
-	'ratinghistory-purge' => '清空緩存',
+	'ratinghistory-purge' => '清理快取',
 	'ratinghistory-table' => '讀者評論總覽',
 	'ratinghistory-users' => '給出評價的用戶',
-	'ratinghistory-graph' => '"$3" 的 $2 （$1 {{PLURAL:$1|複審|複審}}）',
-	'ratinghistory-svg' => '以SVG檢視',
+	'ratinghistory-graph' => '「$3」的 $2 （$1 {{PLURAL:$1|複審|複審}}）',
+	'ratinghistory-svg' => '以 SVG 檢視',
 	'ratinghistory-table-rating' => '評分',
 	'ratinghistory-table-votes' => '投票',
-	'ratinghistory-none' => '目前沒有足夠的讀者反饋數據來製作圖表。',
+	'ratinghistory-none' => '目前沒有足夠的讀者回饋數據來製作圖表。',
 	'ratinghistory-ratings' => "'''圖例：''' '''(1)''' - 差； '''(2)''' - 不好； '''(3)''' - 一般； '''(4 )''' - 好； '''(5)''' - 極好；",
 	'ratinghistory-legend' => "'''每日評論數量'''<font color=\"red\">''（紅色）''</font>，'''每日平均評級'''<font color=\"blue\">'' （藍色）''</font>，以及'''移動平均評級'''<font color=\"green\">''（綠色）''</font>如下圖所示。
 '''移動平均評級'''是在某一天前後一段時間''內''每日評級的平均數。
 評級結果如下：
 
 '''(1)''' - 差； '''(2)''' - 不好； '''(3)''' - 一般； '''(4)''' - 好； ' ''(5)''' - 極好；",
-	'ratinghistory-graph-scale' => "'''每天評論'''<font color=\"red\">''（紅色）''</font>以''1:\$1''的比例顯示。",
-	'right-feedback' => '使用反饋表單來對頁面評級',
+	'ratinghistory-graph-scale' => "'''每天評論'''<font color=\"red\">''（紅色）''</font>以 ''1:\$1'' 的比例顯示。",
+	'right-feedback' => '使用回饋意見表單來對頁面評級',
 );
 
