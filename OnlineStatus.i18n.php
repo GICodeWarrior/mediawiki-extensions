@@ -1292,17 +1292,18 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'onlinestatus-subtitle-offline' => '這用戶現正離線',
-	'onlinestatus-subtitle-online' => '這用戶現正在線',
+	'onlinestatus-subtitle-online' => '這用戶目前在線上',
 	'onlinestatus-tab' => '狀態',
 	'onlinestatus-toggles-desc' => '您的狀態：',
-	'onlinestatus-toggles-show' => '在我的用戶頁面顯示在線狀態',
+	'onlinestatus-toggles-show' => '在我的用戶頁面顯示線上狀態',
 	'onlinestatus-toggle-offline' => '離線',
-	'onlinestatus-toggle-online' => '在線',
-	'onlinestatus-pref-onlineonlogin' => '當登入時把我的狀態設為在線',
+	'onlinestatus-toggle-online' => '線上',
+	'onlinestatus-pref-onlineonlogin' => '當登入時把我的狀態設為線上',
 	'onlinestatus-pref-offlineonlogout' => '當登出時把我的狀態設為離線',
 );
 
