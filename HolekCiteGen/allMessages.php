@@ -113,6 +113,21 @@ $messages['qqq'] = array(
 	'ts-citegen-base-disabled' => 'Error message: A book database is unavailable. <tt>%s</tt> is the name of the database.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'ts-citegen-Send' => 'Genereer',
+	'ts-citegen-Input-title' => 'Invoer',
+	'ts-citegen-Output-title' => 'Resultaat',
+	'ts-citegen-Skins' => 'Afvoer',
+	'ts-citegen-Skin-outputformat' => 'Afvoerformaat',
+	'ts-citegen-Template-lang' => 'Sjabloontaal',
+	'ts-citegen-Tools' => 'Gereedskap',
+	'ts-citegen-Other-languages' => 'Ander tale',
+	'ts-citegen-Errors-title' => 'Foute',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Wizardist
