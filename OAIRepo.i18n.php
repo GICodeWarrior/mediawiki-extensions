@@ -555,9 +555,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'oai-desc' => '提供[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]檔案庫界面',
+	'oai-desc' => '提供 [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] 檔案庫介面',
 );
 
