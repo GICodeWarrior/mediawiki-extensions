@@ -389,3 +389,10 @@ $messages['vi'] = array(
 	'ipauth-desc' => 'Tự động đăng nhập từ địa chỉ IP cố định',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'ipauth-desc' => '自動從固定的 IP 位址登入',
+);
+
