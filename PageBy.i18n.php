@@ -774,12 +774,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'pageby-first' => '頁面由$1，在$2創建',
-	'pageby-last' => '上次在$2，由$1<a href="$3">修改</a>',
-	'pageby-contributors' => '貢獻者:',
+	'pageby-first' => '頁面由 $1，在 $2 建立',
+	'pageby-last' => '上次在 $2，由 $1 <a href=「$3」>修改</a>',
+	'pageby-contributors' => '貢獻者：',
 	'pageby-anon' => '<i>匿名</i>',
 );
 
