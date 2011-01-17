@@ -12,12 +12,17 @@ if( ! $IP = getenv( 'MW_INSTALL_PATH' ) ) {
 
 require_once( "$IP/includes/Defines.php" ); # Faster than parsing
 require_once( "$IP/includes/AutoLoader.php" );
+$wgAutoloadClasses = &$wgAutoloadLocalClasses;
+require_once( "$IP/tests/TestsAutoLoader.php" );
 
 $mwDeprecatedFunctions = false;
 @include( dirname( __FILE__ ) . "/deprecated.functions" );
+$mwParentClasses = array();
+@include( dirname( __FILE__ ) . "/parent.classes" );
 
 if ( !extension_loaded( 'sockets' ) ) dl( 'sockets.so' );
 if ( !extension_loaded( 'PDO' ) ) dl( 'pdo.so' );
+if ( !extension_loaded( 'zip' ) ) dl( 'zip.so' );
 
 $wgAutoloadLocalClasses += array(
 		'DBAccessError' => 'LBFactory',
@@ -59,7 +64,7 @@ class CheckVars {
 	# Ignore functions with these prefixes:
 	static $functionIgnorePrefixes = array( "pg_", "oci_", "db2_", "gmp_", "sqlsrv_", "exif_", "fss_", "tidy_",
 			"apc_", "eaccelerator_", "xcache_", "wincache_", "apache_", "xdiff_", "wikidiff2_", "parsekit_",
-			"wddx_", "setproctitle", "utf8_", "normalizer_", "dba_", "pcntl_", "finfo_", "mime_content_type",
+			"wddx_", "setproctitle", "utf8_", "normalizer_", "dba_", "pcntl_", "finfo_", "mime_content_type", "curl_",
 			# GD and images functions:
 			"imagecreatetruecolor", "imagecolorallocate", "imagecolortransparent", "imagealphablending",
 			"imagecopyresized", "imagesx", "imagesy", "imagecopyresampled", "imagesavealpha",
@@ -76,6 +81,7 @@ class CheckVars {
 		);
 
 	protected $generateDeprecatedList = false;
+	protected $generateParentList = false;
 
 	/* Values for status */
 	const WAITING_FUNCTION = 0;
@@ -181,6 +187,22 @@ class CheckVars {
 		file_put_contents( $filename, $data );
 	}
 
+	function setGenerateParentList( $bool = true ) {
+		$this->generateParentList = $bool;
+	}
+	function getGenerateParentList() {
+		return $this->generateParentList;
+	}
+	function saveParentList( $filename ) {
+		global $mwParentClasses;
+		$data = "<?php\n\$mwParentClasses = array(\n";
+		foreach( $mwParentClasses as $class => $parent ) {
+			$data .= "\t'$class' => '$parent' ),\n";
+		}
+		$data .= "\n);\n\n";
+		file_put_contents( $filename, $data );
+	}
+	
 	private function initVars() {
 		$this->mProblemCount = 0;
 
@@ -305,6 +327,9 @@ class CheckVars {
 					if ( ( $lastMeaningfulToken[0] == T_EXTENDS ) && ( $token[0] == T_STRING ) ) {
 						$this->checkClassName( $token );
 						$this->mParent = $token[1];
+						if ( $this->getGenerateParentList() ) {
+							$mwParentClasses[ $this->mClass ] = $this->mParent;
+						}
 					}
 
 					if ( in_array( $token[0], array( T_REQUIRE, T_REQUIRE_ONCE, T_INCLUDE, T_INCLUDE_ONCE ) ) ) {
@@ -538,6 +563,14 @@ class CheckVars {
 							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
 							continue;
 						}
+						if ( substr( $requirePath, -18 ) == "/StartProfiler.php" ) {
+							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
+							continue;
+						}
+						if ( strpos( $requirePath, '/wmf-config/' ) !== false ) {
+							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
+							continue;
+						}
 						if ( $requirePath == "Mail.php" ) { # PEAR mail
 							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
 							continue;
@@ -618,6 +651,8 @@ class CheckVars {
 						}
 					} elseif ( $token[0] == T_STRING && $token[1] == 'DO_MAINTENANCE' ) {
 						$requirePath .= "$IP/maintenance/doMaintenance.php";
+					} elseif ( $token[0] == T_STRING && $token[1] == 'MW_CONFIG_FILE' ) {
+						$requirePath .= "$IP/LocalSettings.php";
 					} else {
 						$requirePath .= $token[1];
 					}
@@ -631,15 +666,23 @@ class CheckVars {
 	}
 
 	function checkDeprecation( $token ) {
-		global $mwDeprecatedFunctions;
+		global $mwDeprecatedFunctions, $mwParentClasses;
 
 		if ( $mwDeprecatedFunctions && !in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) &&
 			isset( $mwDeprecatedFunctions[ $token[1] ] ) ) {
 
 			if ( isset( $token['class'] ) ) {
-				if ( in_array( $token['class'], $mwDeprecatedFunctions[ $token[1] ] ) ) {
-					$this->warning( "Non deprecated function $this->mFunction calls deprecated function {$token['class']}::{$token[1]} in line {$token[2]}" );
-				}
+				$class = $token['class'];
+				do {
+					if ( in_array( $class, $mwDeprecatedFunctions[ $token[1] ] ) ) {
+						$this->warning( "Non deprecated function $this->mFunction calls deprecated function {$token['class']}::{$token[1]} in line {$token[2]}" );
+						return;
+					}
+					if ( !isset( $mwParentClasses[ $class ] ) ) {
+						return;
+					}
+					$class = $parentClasses[ $class ];
+				} while( true );
 			} else if ( isset( $token['base'] ) ) { # Avoid false positives for local functions, see maintenance/rebuildInterwiki.inc
 				$this->warning( "Non deprecated function $this->mFunction may be calling deprecated function " .
 					implode( '/', $mwDeprecatedFunctions[ $token[1] ] ) . "::" . $token[1] . " in line {$token[2]}" );
@@ -910,7 +953,7 @@ class CheckVars {
 }
 
 if( $argc < 2 ) {
-	die ("Usage: php $argv[0] [--generate-deprecated-list] <PHP_source_file1> <PHP_source_file2> ...\n");
+	die ("Usage: php $argv[0] [--generate-deprecated-list] [--generate-parent-list] <PHP_source_file1> <PHP_source_file2> ...\n");
 }
 
 $cv = new CheckVars();
@@ -918,6 +961,10 @@ $cv = new CheckVars();
 array_shift( $argv );
 if ( $argv[0] == '--generate-deprecated-list' ) {
 	$cv->setGenerateDeprecatedList( true );
+	array_shift( $argv );
+}
+if ( $argv[0] == '--generate-parent-list' ) {
+	$cv->setGenerateParentList( true );
 	array_shift( $argv );
 }
 $cv->preloadFiles( array( $IP . '/includes/GlobalFunctions.php' ) );
@@ -928,4 +975,7 @@ foreach ( $argv as $arg ) {
 }
 if ( $cv->getGenerateDeprecatedList( ) ) {
 	$cv->saveDeprecatedList( dirname( __FILE__ ) . "/deprecated.functions" );
+}
+if ( $cv->getGenerateParentList( ) ) {
+	$cv->saveParentList( dirname( __FILE__ ) . "/parent.classes" );
 }
