@@ -1913,6 +1913,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1927,6 +1928,6 @@ $messages['zh-hant'] = array(
 	'wah-transcode-fail' => '這個文件轉碼失敗',
 	'wah-javascript-off' => '你必須啟用JavaScript以參與Wiki@Home',
 	'wah-loading' => '正在載入Wiki@Home介面...',
-	'wah-menu-pref' => '參數設置',
+	'wah-menu-pref' => '偏好設定',
 );
 
