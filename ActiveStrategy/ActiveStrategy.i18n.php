@@ -290,6 +290,7 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author Dawid Deutschland
  * @author ITshnik
  */
 $messages['ka'] = array(
@@ -580,11 +581,12 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
 	'activestrategy' => '積極工作隊',
 	'active-strategy-desc' => '以數字顯示工作隊的編輯頁面',
 	'active-strategy-intro' => '此頁面編輯數 (在過去{{PLURAL:$1|$1日|$1日}})',
-	'nedits' => '$1次{{PLURAL:$1|編輯|編輯}}',
+	'nedits' => '$1 次{{PLURAL:$1|編輯|編輯}}',
 );
 
