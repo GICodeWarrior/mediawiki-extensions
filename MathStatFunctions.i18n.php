@@ -726,9 +726,10 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'msfunc_desc' => '數學與統計功能的集合',
+	'msfunc_desc' => '數學與統計功能的整合',
 	'msfunc_nan' => '結果數值不是一個數字',
 	'msfunc_inf' => '結果數值是無限',
 	'msfunc_div_zero' => '除以零',
