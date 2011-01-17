@@ -381,8 +381,10 @@ $messages['zh-hans'] = array(
 	'navigationpopups-desc' => '在MediaWiki中载入Lupin的Popup导航popup script',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
-	'navigationpopups-desc' => '在MediaWiki中載入Lupin的Popup導航popup script',
+	'navigationpopups-desc' => '在 MediaWiki 中載入 Lupin 的 Popup 導航 popup script',
 );
 
