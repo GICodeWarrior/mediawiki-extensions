@@ -473,9 +473,10 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'honeypot-desc' => '提供可与MediaWiki站点集成的[http://projecthoneypot.org/ Project Honey Pot]程式',
-	'abusefilter-edit-builder-vars-honeypot-list-count' => '根據Project Honey Pot的設定，最近事件的數量激活了IP地址規則。',
+	'honeypot-desc' => '提供可與 MediaWiki 站點整合的 [http://projecthoneypot.org/ Project Honey Pot] 程式',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => '根據 Project Honey Pot 的設定，最近事件的數量啟動了 IP 位址規則。',
 );
 
