@@ -21,24 +21,18 @@ $wgExtensionCredits['other'][] = array(
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:phpbbData',
 );
 
-$wgExtensionFunctions[] = 'efPhpbbData_Setup';
+$wgHooks['ParserFirstCallInit'][] = 'efPhpbbData_ParserFirstCallInit';
 $wgHooks['LanguageGetMagic' ][] = 'efPhpbbData_LanguageGetMagic';
 $wgHooks['BeforePageDisplay'][] = 'efPhpbbData_BeforePageDisplay';
 
-function efPhpbbData_Setup() {
-        global $wgParser, $wgMessageCache;
-	
-		#Add Messages
-		require( dirname( __FILE__ ) . '/phpbbData.i18n.php' );
-		foreach( $messages as $key => $value ) {
-			  $wgMessageCache->addMessages( $messages[$key], $key );
-		}
-		
-        # Set a function hook associating the "example" magic word with our function
-        $wgParser->setFunctionHook( 'phpbb', 'efPhpbbData_RenderList' );
-        $wgParser->setFunctionHook( 'phpbblink', 'efPhpbbData_RenderLink' );
-		
-		return true;
+$wgExtensionMessagesFiles['phpbbData'] = dirname( __FILE__ ) . '/phpbbData.i18n.php';
+
+function efPhpbbData_ParserFirstCallInit( $parser ) {
+	# Set a function hook associating the "example" magic word with our function
+	$parser->setFunctionHook( 'phpbb', 'efPhpbbData_RenderList' );
+	$parser->setFunctionHook( 'phpbblink', 'efPhpbbData_RenderLink' );
+
+	return true;
 }
 
 function efPhpbbData_BeforePageDisplay(&$out) { 
