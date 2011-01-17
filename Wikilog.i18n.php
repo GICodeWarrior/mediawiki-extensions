@@ -6553,7 +6553,7 @@ $messages['sr-ec'] = array(
 	'wikilog-preview' => 'Прегледај',
 	'wikilog-edit-lc' => 'измени',
 	'wikilog-reply-lc' => 'одговори',
-	'wikilog-delete-lc' => 'избриши',
+	'wikilog-delete-lc' => 'обриши',
 	'wikilog-approve-lc' => 'одобри',
 	'wikilog-reject-lc' => 'одбаци',
 	'wikilog-page-lc' => 'страна',
@@ -7490,7 +7490,7 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'wikilog-new-item-go' => '創建',
+	'wikilog-new-item-go' => '建立',
 	'wikilog-item-name' => '文章名稱：',
 	'wikilog-published' => '穩定',
 	'wikilog-updated' => '已更新',
@@ -7498,7 +7498,7 @@ $messages['zh-hant'] = array(
 	'wikilog-title' => '標題',
 	'wikilog-actions' => '操作',
 	'wikilog-comments' => '註解',
-	'wikilog-replies' => '回復',
+	'wikilog-replies' => '回覆',
 	'wikilog-view-archives' => '清單模式',
 	'wikilog-view-summary' => '摘要',
 	'wikilog-draft-title-mark' => '草稿',
