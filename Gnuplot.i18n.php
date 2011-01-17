@@ -495,8 +495,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'gnuplot-desc' => '使用Gnuplot增加<code><nowiki><gnuplot></nowiki></code>標籤',
+	'gnuplot-desc' => '使用 Gnuplot 增加<code><nowiki><gnuplot></nowiki></code>標籤',
 );
 
