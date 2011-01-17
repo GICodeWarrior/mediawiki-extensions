@@ -604,11 +604,12 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'selectcategory-title' => '選擇分類',
 	'selectcategory-desc' => '讓使用者可以在編輯頁面時直接選擇已存在的分類',
-	'selectcategory-subtitle' => '按著Shift鍵再以滑鼠選取連續的項目，按著Ctrl鍵再以滑鼠選取非連續的項目。',
+	'selectcategory-subtitle' => '按著 Shift 鍵再以滑鼠選取連續的項目，按著 Ctrl 鍵再以滑鼠選取非連續的項目。',
 );
 
