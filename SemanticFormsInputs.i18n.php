@@ -452,3 +452,14 @@ $messages['zh-hans'] = array(
 	'semanticformsinputs-today' => '今天',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'semanticformsinputs-wrongformat' => '格式不正確。',
+	'semanticformsinputs-close' => '關閉',
+	'semanticformsinputs-prev' => '上一個',
+	'semanticformsinputs-next' => '下一個',
+	'semanticformsinputs-today' => '今天',
+);
+
