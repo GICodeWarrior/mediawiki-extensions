@@ -246,7 +246,7 @@ class TasksHooks {
 		}
 		if( $add_task != MW_TASK_INVALID ) {
 			$comment = htmlspecialchars( wfMsgForContent( 'tasks_on_creation_comment' ) );
-			$st->add_new_task( $t, $comment, $add_task ) ;
+			$st->add_new_task( $t, $comment, $add_task, null ) ;
 		}
 
 		return false;
