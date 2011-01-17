@@ -373,8 +373,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'gotocategory-desc' => "檢查的搜索字詞的種類：名字空間的到'跳轉到頁'的功能",
+	'gotocategory-desc' => "檢查的搜尋字詞的種類：名字空間的到'跳轉到頁'的功能",
 );
 
