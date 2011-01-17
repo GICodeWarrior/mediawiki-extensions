@@ -421,8 +421,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'psinotocnum-desc' => '新的魔術字"<nowiki>__NOTOCNUM__</nowiki>"',
+	'psinotocnum-desc' => '新的魔術字「<nowiki>__NOTOCNUM__</nowiki>」',
 );
 
