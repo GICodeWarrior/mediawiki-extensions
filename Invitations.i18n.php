@@ -1554,9 +1554,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'invite-logpage' => '邀請記錄',
+	'invitations-inviteform-submit' => '邀請',
 );
 
