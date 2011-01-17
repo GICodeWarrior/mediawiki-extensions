@@ -1374,14 +1374,15 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'indexfunc-badtitle' => '無效標題：“$1”',
-	'indexfunc-index-exists' => '“$1”頁面已存在',
+	'indexfunc-badtitle' => '無效標題：「$1」',
+	'indexfunc-index-exists' => '「$1」頁面已存在',
 	'index-search' => '搜尋：',
 	'index-submit' => '遞交',
 	'index-hide-detail' => '隱藏頁面清單',
-	'index-no-results' => '無任何搜索結果',
+	'index-no-results' => '無任何搜尋結果',
 );
 
