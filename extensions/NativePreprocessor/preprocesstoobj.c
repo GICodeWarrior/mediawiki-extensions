@@ -7,7 +7,7 @@
 #undef NDEBUG
 #include <assert.h>
 
-#include "in_array.h"
+#include "tag_util.h"
 #include "nodes.h"
 
 #define PTD_FOR_INCLUSION 1 /* Matches Parser::PTD_FOR_INCLUSION */
@@ -22,14 +22,6 @@ int strpos(const char* haystack, const char* needle, int offset) {
 
 #define strsize(x) (sizeof(x)-1)
 #define min(x,y) (((x) < (y)) ? (x) : (y))
-
-enum internalTags {
-	None,
-	includeonly,
-	onlyinclude,
-	noinclude
-};
-const char* internalTagNames[] = { NULL, "includeonly", "onlyinclude", "noinclude" };
 
 enum internalTags getInternalTag(const char* name, int name_len) {
 	#define CHECK_INTERNAL_TAG(x) if ((sizeof(#x)-1 == name_len) && !strncasecmp(name, #x, sizeof(#x)-1)) return x;
@@ -72,7 +64,7 @@ void addToSearch(char* search, int search_len, char x) {
 size_t mwpp_strcspn(const char* text, int text_len, const char* search, int offset) {
 	/* Optimize me */
 	//printf(" mwpp_strcspn(%s, %d, %s, %d)\n", text, text_len, search, offset);
-	return php_strcspn( text + offset, search, text + text_len, search + strlen(search) );
+	return php_strcspn( (char*)text + offset, (char*)search, (char*)text + text_len, (char*)search + strlen(search) );
 }
 
 /**
@@ -173,11 +165,18 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 	bool enableOnlyinclude = false;
 	enum internalTags ignoredElement; /* Act as this tag isn't there */
 	
-	HashTable* xmlishElements = parserStripList;
 	/* Instead of $xmlishRegex, we use directly the stripList.
 	 * As it is shared with Parser, includeonly/onlyinclude/noinclude are handled separatedly.
 	 * Per Parser::set{FunctionTag,}Hook(), the items are all strings and lowercase.
 	 */
+	int longestTagLen = array_max_strlen( parserStripList );
+	if ( longestTagLen == -1 ) {
+		*preprocessed_len = 1;
+		return NULL;
+	}
+	if ( longestTagLen < strsize( "onlyinclude" ) ) {
+		longestTagLen = strsize( "onlyinclude" );
+	}
 		
 	if ( forInclusion ) {
 		/* $ignoredTags = array( 'includeonly', '/includeonly' ); */
@@ -192,6 +191,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 	#define isIgnoredTag(internalTag) (forInclusion ? ((internalTag) == includeonly) : ((internalTag) > includeonly) )	
 
 	int i = 0;
+	char * lowername = NULL;
 	bool findEquals = false;            // True to find equals signs in arguments
 	bool findPipe = false;              // True to take notice of pipe characters
 	int headingIndex = 1;
@@ -225,7 +225,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 			findOnlyinclude = false;
 		}
 
-		enum foundTypes found;
+		enum foundTypes found = -1;
 		if ( fakeLineStart ) {
 			found = lineStart;
 		} else if ( fakePipeFound ) {
@@ -260,7 +260,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 			// Output literal section, advance input counter
 			size_t literalLength = mwpp_strcspn( text, text_len, search, i );
 			if ( literalLength > 0 ) {
-				addLiteral( text, i, literalLength );
+				addLiteral( text, i, (int)literalLength );
 				i += literalLength;
 			}
 			if ( i >= text_len ) {
@@ -393,30 +393,32 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 			}
 			
 			/**
-			 * We differ here from the $xmlishRegex approach
-			 * The regex ends the tag name with a \s character, /> or >
-			 * so we start seeking for them, then look which name is it.
+			 * The identifyTag() function performs everything the $xmlishRegex would have done.
 			 */
+			if ( !lowername ) {
+				lowername = emalloc( longestTagLen + 2 );
+			}
 			assert(text[i] == '<');
+			enum internalTags internalTag;
 			const char* name = text + i + 1;
 			int name_len;
 			/* TODO: optimize this search by not going further than 
 			 *  max( strlen( getParserStripList() + internalTags() ) )
 			 * while not setting noMoreGT in such case.
 			 */
-			name_len = findSpaceOrAngle(name, text_len - i - 1);
-			if ( name_len > 0 && name[name_len] == '>' && name[name_len - 1] == '/' ) {
-				name_len--;
+			name_len = identifyTag(name, text_len - i - 1, parserStripList, &internalTag, lowername);
+			if ( name_len == -1 ) {	/* Does it make sense to allow 0-length tags? */
+				addLiteral( text, i, 1 );
+				i++;
+				continue;
 			}
+			
 			int attrStart = i + name_len + 1;
 			
-			int tagEndPos = -1;
-			if ( name_len != -1 ) {
-				// Find end of tag
-				char* end = memchr(name + name_len, '>', text_len - i - 1);
-				
-				tagEndPos = end ? end - text : -1;
-			}
+			// Find end of tag
+			char* end = memchr(name + name_len, '>', text_len - i - 1);
+			int tagEndPos = end ? end - text : -1;
+
 			if ( tagEndPos == -1 ) {
 				// Infinite backtrack
 				// Disable tag search to prevent worst-case O(N^2) performance
@@ -427,9 +429,6 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 			}
 			assert(text[tagEndPos] == '>');
 
-			enum internalTags internalTag;
-			internalTag = getInternalTag(name, name_len);
-
 			// Handle ignored tags
 			if ( isIgnoredTag( internalTag ) ) {
 				addNodeWithText( ignore_node,  text, i, tagEndPos - i + 1 );
@@ -437,28 +436,11 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 				continue;
 			}
 			
-			char * lowername;
-			if ( internalTag == None ) {
-				int j;
-				// Verify that it's not just tag-looking text
-				lowername = alloca( name_len + 1 ); /* FIXME */
-				for (j = 0; j < name_len; j++) {
-					lowername[j] = tolower(name[j]);
-				}
-				lowername[j] = '\0';
-				if ( !str_in_array(lowername, name_len, xmlishElements, true) ) {
-					addLiteral( text, i, 1 );
-					++i;
-					continue;
-				}
-			} else {
-				lowername = (char*)internalTagNames[internalTag];
-			}
-
 			int tagStartPos, attrEnd, endTagBegin, endTagLen;
 			int innerTextBegin, innerTextLen;
 			tagStartPos = i; endTagLen = 0;
 			innerTextBegin = -1; innerTextLen = -1;
+			endTagBegin = 42; /* Disable warning. This variable is only used when endTagLen != 0 */
 			
 			if ( text[tagEndPos-1] == '/' ) {
 				attrEnd = tagEndPos - 1;
@@ -822,6 +804,10 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 		} else {
 			closeNode( parentNode->type );
 		}
+	}
+	
+	if ( lowername ) { // No reason to TSRMLS_FETCH() if we didn't allocate anything
+		efree( lowername );
 	}
 	
 	nodeString[nodeStringLen] = '\0';

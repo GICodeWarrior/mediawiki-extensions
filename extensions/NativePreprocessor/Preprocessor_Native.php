@@ -21,7 +21,7 @@ class Preprocessor_Native implements Preprocessor {
 	
 	function preprocessToObjInternal( $text, $flags = 0 ) {
 		$nativePP = new MediaWikiPreprocessor();
-		$ntobj = $nativePP->preprocessToObjInternal( $text, $flags, $this->parser->getStripList() );
+		$ntobj = $nativePP->preprocessToObj( $text, $flags, $this->parser->getStripList() );
 		
 		return $ntobj;
 	}
@@ -41,7 +41,7 @@ class Preprocessor_Native implements Preprocessor {
 		$childrenLen = hexdec( substr( $node, 2, 6 ) );
 		$textLen = hexdec( substr( $node, 8, 8 ) );
 		$result = htmlspecialchars( substr( $text, 0,  $textLen ) );
-		if ( strlen( $text ) < $textLen ) throw new MWException( 'Bad length in node' );
+		if ( strlen( $text ) < $textLen ) throw new MWException( 'Bad length in node of type ' . $node[0] . ". Expected $textLen bytes, but only " . strlen( $text ) . " available."  );
 		$text = substr( $text, $textLen );
 		if ( strpos( '<et|p', $node[0] ) !== false )
 			$result = ''; // Not present in Preprocessor_DOM
