@@ -649,7 +649,7 @@ class CheckVars {
 							//$this->warning( "require uses unknown variable {$token[1]} in line {$token[2]}" );
 							$requirePath .= $token[1];
 						}
-					} elseif ( $token[0] == T_STRING && $token[1] == 'DO_MAINTENANCE' ) {
+					} elseif ( $token[0] == T_STRING && $token[1] == 'RUN_MAINTENANCE_IF_MAIN' ) {
 						$requirePath .= "$IP/maintenance/doMaintenance.php";
 					} elseif ( $token[0] == T_STRING && $token[1] == 'MW_CONFIG_FILE' ) {
 						$requirePath .= "$IP/LocalSettings.php";
