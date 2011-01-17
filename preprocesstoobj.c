@@ -12,18 +12,22 @@
 
 #define PTD_FOR_INCLUSION 1 /* Matches Parser::PTD_FOR_INCLUSION */
 
-// FIXME: Do not rely on the terminating \0
-#define STRSTR(haystack, needle) strpos(haystack, needle, 0)
-int strpos(const char* haystack, const char* needle, int offset) {
-	char* s = strstr(haystack+offset, needle);
-	if (!s) return -1;
-	return s - haystack;
+static int strpos(const char* haystack, int haystack_len, const char* needle, int needle_len, int offset) {
+	int i;
+	
+	for ( i = offset; i < haystack_len - needle_len; i++ ) {
+		if ( !memcmp( haystack + i, needle, needle_len ) ) {
+			return i;
+		} 
+	}
+	
+	return -1;
 }
 
 #define strsize(x) (sizeof(x)-1)
 #define min(x,y) (((x) < (y)) ? (x) : (y))
 
-enum internalTags getInternalTag(const char* name, int name_len) {
+static enum internalTags getInternalTag(const char* name, int name_len) {
 	#define CHECK_INTERNAL_TAG(x) if ((sizeof(#x)-1 == name_len) && !strncasecmp(name, #x, sizeof(#x)-1)) return x;
 	if (name[0] == '/') {
 		name++;
@@ -52,7 +56,7 @@ enum foundTypes {
 #define searchReset() strcpy(search, "[{<\n") // $search = $searchBase;
 #define addSearch(x) addToSearch(search, sizeof(search), x) // $search .= 'x';
 #define MAX_SEARCH_CHARS "[{<\n|=}]"
-void addToSearch(char* search, int search_len, char x) {
+static void addToSearch(char* search, int search_len, char x) {
 	int e;
 	assert(strchr(MAX_SEARCH_CHARS, x));
 	e = strlen(search);
@@ -70,7 +74,7 @@ size_t mwpp_strcspn(const char* text, int text_len, const char* search, int offs
 /**
  * Counts the number of times the character c appears since start, up to length.
  */
-int chrspn( const char* text, int c, int start, int length ) {
+static int chrspn( const char* text, int c, int start, int length ) {
 	int i;
 	for (i=0; i < length; i++) {
 		if ( text[start+i] != c ) {
@@ -78,27 +82,6 @@ int chrspn( const char* text, int c, int start, int length ) {
 		}
 	}
 	return i;
-}
-
-/**
- * Return the first index in text that either matches a PCRE \s or a '<'
- * Returns -1 if not found. Remember that for PERL compatibility, \s doesn't
- * include the Vertical Tab (0x11)
- */
-int findSpaceOrAngle(const char* text, int text_len) {
-	int i;
-	for (i = 0; i < text_len; i++) {
-		switch ( text[i] ) {
-			case '\t':
-			case '\n':
-			case '\f':
-			case '\r':
-			case ' ':
-			case '>':
-				return i;
-		}
-	}
-	return -1;
 }
 
 /**
@@ -140,7 +123,7 @@ static int findEndTag( const char* text, int text_len, int from, const char* nam
 /**
  * Returns the number of times the character c appears in text, searching backwards from position start
  */
-int chrrspn( const char* text, int c, int start ) {
+static int chrrspn( const char* text, int c, int start ) {
 	int i = 0;
 	while ( ( start-i >= 0 ) && text[start-i] == c ) {
 		i++;
@@ -181,7 +164,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 	if ( forInclusion ) {
 		/* $ignoredTags = array( 'includeonly', '/includeonly' ); */
 		ignoredElement = noinclude;
-		if ( STRSTR( text, "<onlyinclude>" ) && STRSTR( text, "</onlyinclude>" ) ) {
+		if ( strpos( text, text_len, "<onlyinclude>", 13, 0 ) != -1 && strpos( text, text_len, "</onlyinclude>", 14, 0 ) != -1 ) {
 			enableOnlyinclude = true;
 		}
 	} else {
@@ -213,7 +196,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 		
 		if ( findOnlyinclude ) {
 			// Ignore all input up to the next <onlyinclude>
-			int startPos = strpos( text, "<onlyinclude>", i );
+			int startPos = strpos( text, text_len, "<onlyinclude>", 13, i );
 			if ( startPos == -1 ) {
 				// Ignored section runs to the end
 				addNodeWithText(ignore_node, text, i, -1);
@@ -323,7 +306,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 				// trailing spaces and one of the newlines.
 
 				// Find the end
-				int endPos = strpos( text, "-->", i + 4 );
+				int endPos = strpos( text, text_len, "-->", 3, i + 4 );
 				if ( endPos == -1 ) {
 					// Unclosed comment in input, runs to end
 					addNodeWithText(comment_node, text, i, -1);
