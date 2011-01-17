@@ -1149,6 +1149,11 @@ $messages['ja'] = array(
  * @author Dawid Deutschland
  */
 $messages['ka'] = array(
+	'articlefeedback-survey-question-whyrated' => 'გთხოვთ შეგვატყობინეთ, თუ რატომ შეაფასეთ დღეს ეს სტატია (შეამოწმეთ სისწორე)',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'მე ვისურვებდი სტატიის შეფასებაში მონაწილეობის მიღებას',
+	'articlefeedback-survey-answer-whyrated-development' => 'ვიმედოვნებ, რომ ჩემი შეფასება დადებითად აისახება სტატიის მომავალ განვითარებაზე',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'მე ვისურვებდი {{SITENAME}}-ში მონაწილეობას',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'მე სიამოვნებით გაგიზიარებთ ჩემს აზრს',
 	'articlefeedback-survey-answer-whyrated-other' => 'სხვა',
 	'articlefeedback-survey-question-useful' => 'გჯერათ, რომ მოცემული შეფასებები გამოსაყენებელი და გასაგებია?',
 	'articlefeedback-survey-question-useful-iffalse' => 'რატომ?',
@@ -1158,8 +1163,23 @@ $messages['ka'] = array(
 	'articlefeedback-survey-title' => 'გთხოვთ, გვიპასუხეთ რამდენიმე შეკითხვაზე',
 	'articlefeedback-survey-thanks' => 'გმადლობთ საპასუხო შეტყობინებისათვის',
 	'articlefeedback-form-panel-instructions' => 'გთხოვთ, გამონახეთ დრო ამ გვერდის შეფასებისათვის.',
+	'articlefeedback-form-panel-submit' => 'დაეთანხმე შეფასებას',
 	'articlefeedback-report-switch-label' => 'შედეგების ჩვენება',
+	'articlefeedback-report-panel-title' => 'შეფასების შედეგები',
+	'articlefeedback-report-panel-description' => 'შეფასების ამჟამინდელი შედეგები',
+	'articlefeedback-report-empty' => 'შეფასებები არაა',
+	'articlefeedback-report-ratings' => '$1 შეფასება',
+	'articlefeedback-field-trustworthy-label' => 'სანდო',
+	'articlefeedback-field-trustworthy-tip' => 'ფიქრობთ, რომ ეს სტატია საკმარისი რაოდენობით შეიცავს სანდო წყაროებს?',
+	'articlefeedback-field-complete-label' => 'დასრულებულია',
+	'articlefeedback-field-wellwritten-label' => 'კარგად დაწერილი',
+	'articlefeedback-field-wellwritten-tip' => 'მიგაჩნიათ, რომ ეს სტატია კარგი სტრუქტურისაა და კარგადაა დაწერილი?',
 	'articlefeedback-pitch-reject' => 'არა, გმადლობთ',
+	'articlefeedback-pitch-takesurvey-title' => 'გსურთ გამოკითხვაში მონაწილეობის მიღება?',
+	'articlefeedback-pitch-takesurvey-accept' => 'გამოკითხვის დაწყება',
+	'articlefeedback-pitch-createaccount-title' => 'გსურთ შექმნათ მომხმარებლის ანგარიში?',
+	'articlefeedback-pitch-createaccount-accept' => 'გახსენი ანგარიში',
+	'articlefeedback-pitch-makefirstedit-title' => 'გსურთ ამ სტატიის რედაქტირება?',
 	'articlefeedback-pitch-makefirstedit-accept' => 'რედაქტირების დაწყება',
 );
 
