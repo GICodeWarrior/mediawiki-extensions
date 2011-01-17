@@ -957,12 +957,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'mostrevisors-limitlinks' => '顯示 $1 個頁面',
 	'mostrevisors-namespace' => '名字空間：',
 	'mostrevisors-showredir' => '顯示重定向頁面',
 	'mostrevisors-hideredir' => '隱藏重定向頁面',
+	'mostrevisors-users' => '$1 次{{PLURAL:$1|編輯|編輯}}',
 	'mostrevisors-viewcontributors' => '檢視主要貢獻者',
 );
 
