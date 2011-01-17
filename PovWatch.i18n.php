@@ -2556,19 +2556,20 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'povwatch_already_subscribed' => '您已訂閱過PovWatch',
-	'povwatch_subscribed' => '您現已訂閱PovWatch',
-	'povwatch_not_subscribed' => '您並未訂閱PovWatch，因此不能取消訂閱。',
-	'povwatch_unsubscribed' => '您已取消訂閱PovWatch',
+	'povwatch_already_subscribed' => '您已訂閱過 PovWatch',
+	'povwatch_subscribed' => '您現已訂閱 PovWatch',
+	'povwatch_not_subscribed' => '您並未訂閱 PovWatch，因此不能取消訂閱。',
+	'povwatch_unsubscribed' => '您已取消訂閱 PovWatch',
 	'povwatch_subscriber_list_intro' => '<strong>訂閱用戶清單</strong>',
 	'povwatch_title' => '標題：',
-	'povwatch_comment' => '日誌註釋:',
+	'povwatch_comment' => '日誌註釋：',
 	'povwatch_no_subscribers' => '現時沒有訂閱用戶。',
 	'povwatch_unsubscribe' => '取消訂閱',
-	'povwatch_subscribe_intro' => '您並未訂閱PovWatch。
+	'povwatch_subscribe_intro' => '您並未訂閱 PovWatch。
 按下方的按鈕訂閱。',
 	'povwatch_subscribe' => '訂閱',
 	'povwatch_added' => '已加入',
