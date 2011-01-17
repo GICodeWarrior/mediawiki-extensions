@@ -1122,6 +1122,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -1133,26 +1134,27 @@ $messages['zh-hans'] = array(
 	'profiling-data' => '正在检核`$1`的数据',
 	'profiling-data-process' => '处理',
 	'profiling-data-count' => '数量',
-	'profiling-data-time' => '时间 （全部）',
-	'profiling-data-average' => '时间 （平均）',
+	'profiling-data-time' => '时间（全部）',
+	'profiling-data-average' => '时间（平均）',
 	'profiling-no-data' => '找不到匹配的数据。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'profiling' => '檢核資料',
-	'profiling-desc' => '[[Special:Profiling|特殊頁面]]用以查找和檢查配置信息',
-	'profiling-process' => '處理字串:',
+	'profiling-desc' => '[[Special:Profiling|特殊頁面]]用以尋找和檢查配置資料',
+	'profiling-process' => '處理字串：',
 	'profiling-wildcard' => '使用萬用字元',
 	'profiling-ok' => '確定',
 	'profiling-data' => '正在檢核`$1`的資料',
 	'profiling-data-process' => '處理',
 	'profiling-data-count' => '數量',
-	'profiling-data-time' => '時間 （全部）',
-	'profiling-data-average' => '時間 （平均）',
+	'profiling-data-time' => '時間（全部）',
+	'profiling-data-average' => '時間（平均）',
 	'profiling-no-data' => '找不到對應的資料。',
 );
 
