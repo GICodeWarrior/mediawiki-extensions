@@ -1883,22 +1883,24 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'passwordreset' => '密碼重設',
+	'passwordreset' => '重新設定密碼',
 	'passwordreset-invalidusername' => '無效的用戶名',
 	'passwordreset-emptyusername' => '空白的用戶名',
 	'passwordreset-nopassmatch' => '密碼不匹配',
 	'passwordreset-badtoken' => '無效的編輯幣',
-	'passwordreset-username' => '用戶名',
-	'passwordreset-newpass' => '新密碼',
-	'passwordreset-confirmpass' => '確認新密碼',
+	'passwordreset-username' => '使用者名稱：',
+	'passwordreset-newpass' => '新密碼：',
+	'passwordreset-confirmpass' => '確認密碼：',
 	'passwordreset-submit' => '重設密碼',
 	'passwordreset-success' => 'User_id: $1 的密碼已經重設',
-	'passwordreset-disableuser' => '停用使用者戶口?',
-	'passwordreset-accountdisabled' => '戶口經已停用',
+	'passwordreset-disableuser' => '停用使用者帳號？',
+	'passwordreset-accountdisabled' => '帳號已停用',
 	'disabledusers' => '已停用的使用者',
-	'disabledusers-summary' => '這是透過PasswordReset停用戶口的使用者清單。',
+	'disabledusers-summary' => '這是透過 PasswordReset 停用帳號的使用者清單。',
+	'right-passwordreset' => '使用者的密碼重新設定（[[Special:PasswordReset|特殊頁面]]）',
 );
 
