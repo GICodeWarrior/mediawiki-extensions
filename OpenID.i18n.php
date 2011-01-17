@@ -5994,33 +5994,34 @@ OpenID可以让你不必使用不同的密码登录不同站点。
  * @author Gzdavidwong
  * @author Horacewai2
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'openid-desc' => '使用一個[http://openid.net/ OpenID]來登錄到這個wiki，以及使用wiki用戶帳號登錄到其他接受OpenID的網站',
-	'openidlogin' => '使用OpenID登入',
-	'openidserver' => 'OpenID伺服器',
-	'openidxrds' => 'Yadis文件',
-	'openidconvert' => 'OpenID轉換器',
+	'openid-desc' => '使用一個 [http://openid.net/ OpenID] 來登入到這個 wiki，以及使用 wiki 用戶帳號登入到其他接受 OpenID 的網站',
+	'openidlogin' => '使用 OpenID 登入',
+	'openidserver' => 'OpenID 伺服器',
+	'openidxrds' => 'Yadis 檔案',
+	'openidconvert' => 'OpenID 轉換器',
 	'openiderror' => '驗證錯誤',
-	'openiderrortext' => '在驗證OpenID地址時出現了一個錯誤。',
-	'openidconfigerror' => 'OpenID配製出錯',
-	'openidconfigerrortext' => '這個維基的OpenID存儲設置無法使用。
+	'openiderrortext' => '在驗證 OpenID 地址時出現了一個錯誤。',
+	'openidconfigerror' => 'OpenID 配置出錯',
+	'openidconfigerrortext' => '這個 wiki 的 OpenID 儲存設定是無效的。
 請通知[[Special:ListUsers/sysop|管理員]]。',
-	'openidpermission' => 'OpenID許可錯誤',
-	'openidpermissiontext' => '您提供的OpenID不允許在本服務器上登錄。',
+	'openidpermission' => 'OpenID 的權限錯誤',
+	'openidpermissiontext' => '您提供的 OpenID 不允許在本服務器上登入。',
 	'openidcancel' => '驗證已取消',
-	'openidcanceltext' => 'OpenID地址驗證被取消。',
+	'openidcanceltext' => 'OpenID 地址驗證被取消。',
 	'openidfailure' => '驗證失敗',
-	'openidfailuretext' => 'OpenID地址驗證失敗。錯誤信息："$1"',
+	'openidfailuretext' => 'OpenID 地址驗證失敗。錯誤資訊：「$1」',
 	'openidsuccess' => '驗證成功',
-	'openidsuccesstext' => 'OpenID地址驗證成功。',
-	'openidusernameprefix' => 'OpenID用戶',
-	'openidserverlogininstructions' => '請在下面輸入您的密碼以便以用戶$2登陸$3 （用戶頁面$1）。',
-	'openidtrustinstructions' => '請確認您是否願與$1分享數據。',
-	'openidallowtrust' => '允許$1信任這個用戶的賬戶。',
-	'openidnopolicy' => '站點沒有提供隱私政策。',
-	'openidpolicy' => '如要獲得更多信息，請參見<a target="_new" href="$1">隱私政策</a>。',
+	'openidsuccesstext' => 'OpenID 地址驗證成功。',
+	'openidusernameprefix' => 'OpenID 使用者',
+	'openidserverlogininstructions' => '請在下面輸入您的密碼以便以使用者 $2 登入 $3 （使用者頁面 $1）。',
+	'openidtrustinstructions' => '請確認您是否願與 $1 共用資料。',
+	'openidallowtrust' => '允許 $1 信任這個用使用者的帳號。',
+	'openidnopolicy' => '站點沒有提供隱私權政策。',
+	'openidpolicy' => '如要取得更多資訊，請參見<a target="_new" href="$1">隱私權政策</a>。',
 	'openidoptional' => '可選',
 	'openidrequired' => '必選',
 	'openidnickname' => '暱稱',
@@ -6028,63 +6029,63 @@ $messages['zh-hant'] = array(
 	'openidemail' => '電郵地址',
 	'openidlanguage' => '語言',
 	'openidtimezone' => '時區',
-	'openidchooselegend' => '用戶名選擇',
-	'openidchooseinstructions' => '所有的用戶都需要提供昵稱；
+	'openidchooselegend' => '用戶名的選擇',
+	'openidchooseinstructions' => '所有的用戶都需要提供暱稱；
 您可以從下面任選一個。',
-	'openidchoosenick' => '你的暱稱 ($1)',
-	'openidchoosefull' => '您的全名 （$1）',
-	'openidchooseurl' => '從您的OpenID獲取的名稱（$1）',
+	'openidchoosenick' => '你的暱稱（$1）',
+	'openidchoosefull' => '您的全名（$1）',
+	'openidchooseurl' => '從您的 OpenID 得到的名稱（$1）',
 	'openidchooseauto' => '自動生成的名稱（$1）',
 	'openidchoosemanual' => '您選擇的名稱：',
-	'openidchooseexisting' => '本維基已經存在的帳戶：',
+	'openidchooseexisting' => '本維基已經存在的帳號：',
 	'openidchooseusername' => '用戶名：',
 	'openidchoosepassword' => '密碼：',
-	'openidconvertinstructions' => '本表單可以將您的用戶賬號修改為OpenID地址。',
-	'openidconvertoraddmoreids' => '轉換到OpenID或添加另一個OpenID URL',
-	'openidconvertsuccess' => '成功轉換為OpenID',
-	'openidconvertsuccesstext' => '您已經成功的將您的OpenID轉化為$1。',
-	'openidconvertyourstext' => '這已是您的OpenID了。',
-	'openidconvertothertext' => '這是別人的OpenID。',
-	'openidalreadyloggedin' => "'''您已經成功登陸了，$1！'''
+	'openidconvertinstructions' => '本表單可以將您的用戶帳號修改為 OpenID 地址。',
+	'openidconvertoraddmoreids' => '轉換到 OpenID 或加入另一個 OpenID URL',
+	'openidconvertsuccess' => '成功轉換為 OpenID',
+	'openidconvertsuccesstext' => '您已經成功的將您的 OpenID 轉化為 $1。',
+	'openidconvertyourstext' => '這已是您的 OpenID 了。',
+	'openidconvertothertext' => '這是別人的 OpenID。',
+	'openidalreadyloggedin' => "'''您已經成功登入了，$1！'''
 
-如果您想以後使用OpenID登陸，您可以[[Special:OpenIDConvert|轉換您的帳戶使用OpenID]]。",
+如果您想以後使用 OpenID 登入，您可以[[Special:OpenIDConvert|轉換您的帳號使用 OpenID]]。",
 	'openidnousername' => '沒有指定用戶名。',
 	'openidbadusername' => '指定的用戶名是錯誤的。',
-	'openidautosubmit' => '本頁包含的表單在啟用JavaScript的情況下可以自動提交。
-如果沒有自動提交，請按 "Continue" （繼續）按鈕。',
-	'openidclientonlytext' => '你不能在其他站點上使用這個wiki的帳號作為OpenID。',
-	'openidloginlabel' => 'OpenID網址',
-	'openidlogininstructions' => '{{SITENAME}} 支持用於網站間單點登錄的[http://openid.net/ OpenID] 標準。
-OpenID可以讓你不必使用不同的密碼登錄不同站點。
-(詳情請參見[http://zh.wikipedia.org/wiki/OpenID 維基百科關於 OpenID 的條目]。)
+	'openidautosubmit' => '本頁包含的表單在啟用 JavaScript 的情況下可以自動提交。
+如果沒有自動提交，請按「Continue」（繼續）按鈕。',
+	'openidclientonlytext' => '你不能在其他站點上使用這個 wiki 的帳號作為 OpenID。',
+	'openidloginlabel' => 'OpenID 網址',
+	'openidlogininstructions' => '{{SITENAME}} 支援用於網站間單點登入的 [http://openid.net/ OpenID] 標準。
+OpenID 可以讓你不必使用不同的密碼登入不同站點。
+（詳情請參見[http://zh.wikipedia.org/wiki/OpenID 維基百科關於 OpenID 的條目]。）
 
-如果你已經在{{SITENAME}}有一個帳戶，你可以用你的帳號及密碼[[Special:UserLogin|登入]]。
+如果你已經在 {{SITENAME}} 有一個帳戶，你可以用你的帳號及密碼[[Special:UserLogin|登入]]。
 
-要在未來使用OpenID，你可以在登入後[[Special:OpenIDConvert|轉換你的帳戶]]成為OpenID
+要在未來使用 OpenID，你可以在登入後[[Special:OpenIDConvert|轉換你的帳號]]成為 OpenID
 
-這裡有許多[http://openid.net/get/ OpenID提供者]，你可能已經有一個OpenID了。',
-	'openidupdateuserinfo' => '更新我的個人信息',
-	'openiddelete' => '刪除OpenID',
-	'openiddelete-text' => '當你按下"{{int:openiddelete-button}}"按鈕，你會將OpenID $1從你的戶口中移除。你以後都不可以再使用這個OpenID登入。',
+這裡有許多 [http://openid.net/get/ OpenID 提供者]，你可能已經有一個 OpenID 了。',
+	'openidupdateuserinfo' => '更新我的個人資料',
+	'openiddelete' => '刪除 OpenID',
+	'openiddelete-text' => '當你按下「{{int:openiddelete-button}}」按鈕，你會將 OpenID $1 從你的帳戶中移除。你以後都不可以再使用這個 OpenID 登入。',
 	'openiddelete-button' => '確認',
-	'openiddeleteerrornopassword' => '不得刪除全部OpenID，否則您的賬戶將無密碼保護。
-沒有OpenID您將無法登錄。',
-	'openiddeleteerroropenidonly' => '不得刪除全部OpenID，因為這是你目前登錄站點的唯一方法。
-沒有OpenID您將無法登錄。',
-	'openiddelete-sucess' => 'OpenID已被成功刪除。',
-	'openiddelete-error' => '在移除你的OpenID的時候出現了一個錯誤。',
-	'openid-prefstext' => '[http://openid.net/ OpenID]參數設置',
-	'openid-pref-hide' => '如果使用OpenID登陸，您可以在您的用戶頁隱藏您的OpenID。',
-	'openid-pref-update-userinfo-on-login' => '每次登錄時，都從OpenID的用戶信息中更新以下信息。',
-	'openid-urls-desc' => '和你的帳號關聯的OpenID：',
+	'openiddeleteerrornopassword' => '不得刪除全部 OpenID，否則您的帳戶將無密碼保護。
+沒有 OpenID 您將無法登入。',
+	'openiddeleteerroropenidonly' => '不得刪除全部 OpenID，因為這是你目前登入站點的唯一方法。
+沒有 OpenID 您將無法登入。',
+	'openiddelete-sucess' => 'OpenID 已被成功刪除。',
+	'openiddelete-error' => '在移除你的 OpenID 的時候出現了一個錯誤。',
+	'openid-prefstext' => '[http://openid.net/ OpenID] 偏好設定',
+	'openid-pref-hide' => '如果使用 OpenID 登入，您可以在您的用戶頁隱藏您的 OpenID。',
+	'openid-pref-update-userinfo-on-login' => '每次登入時，都從 OpenID 的使用者資料中更新以下資料。',
+	'openid-urls-desc' => '和你的帳號關聯的 OpenID：',
 	'openid-urls-action' => '動作',
-	'openid-urls-delete' => '删除',
-	'openid-add-url' => '加入一個新的OpenID',
-	'openidsigninorcreateaccount' => '登錄或創建新帳號',
-	'openid-provider-label-openid' => '輸入你的OpenID URL',
-	'openid-provider-label-google' => '以您的Google帳戶登入',
-	'openid-provider-label-yahoo' => '以您的Yahoo帳戶登入',
-	'openid-provider-label-aol' => '輸入你的AOL屏幕名稱',
-	'openid-provider-label-other-username' => '輸入你的$1用戶名',
+	'openid-urls-delete' => '刪除',
+	'openid-add-url' => '加入一個新的 OpenID',
+	'openidsigninorcreateaccount' => '登入或建立新帳號',
+	'openid-provider-label-openid' => '輸入你的 OpenID URL',
+	'openid-provider-label-google' => '以您的 Google 帳戶登入',
+	'openid-provider-label-yahoo' => '以您的 Yahoo 帳戶登入',
+	'openid-provider-label-aol' => '輸入你的 AOL 螢幕名稱',
+	'openid-provider-label-other-username' => '輸入你的 $1 用戶名',
 );
 
