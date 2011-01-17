@@ -1378,8 +1378,11 @@ $messages['zh-hans'] = array(
 	'metadata_help' => '元数据：',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
-	'metadata_help' => '元數據:',
+	'metadataedit-desc' => '把分類、語言模板的連結以及被允許的模版放在編輯頁面的一個單獨的文字框裡。',
+	'metadata_help' => '元數據：',
 );
 
