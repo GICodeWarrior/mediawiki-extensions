@@ -32,12 +32,15 @@ $messages['qqq'] = array(
 	'svgedit-desc' => 'Extension description displayed on [[Special:Version]]',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'svgedit-editbutton-edit' => 'Рэдагаваць малюнак',
+	'svgedit-summary-label' => 'Кароткае апісаньне рэдагаваньня',
+	'svgedit-summary-default' => '/* Зьменена ў svg-edit */',
 	'svgedit-editor-save-close' => 'Захаваць і зачыніць',
 	'svgedit-editor-close' => 'Скасаваць',
 	'svgedit-desc' => 'Рэдагаваньне SVG-малюнкаў у браўзэры з дапамогай [http://code.google.com/p/svg-edit/ SVG-Edit]',
