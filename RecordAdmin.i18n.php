@@ -2324,14 +2324,20 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'recordadmin-select' => '選擇',
+	'recordadmin-newsearch' => '新的 $1 搜尋',
+	'recordadmin-alreadyexist' => '對不起，「$1」已經存在！',
 	'recordadmin-badtitle' => '標題錯誤！',
 	'recordadmin-invert' => '反向選擇',
 	'recordadmin-buttonsearch' => '搜尋',
+	'recordadmin-buttoncreate' => '建立',
 	'recordadmin-buttonreset' => '重置',
-	'recordadmin-buttonsave' => '保存',
+	'recordadmin-searchresult' => '搜尋結果',
+	'recordadmin-buttonsave' => '儲存',
 	'recordadmin-viewlink' => '檢視',
 	'recordadmin-editlink' => '編輯',
 );
