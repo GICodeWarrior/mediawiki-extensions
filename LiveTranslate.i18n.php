@@ -67,6 +67,22 @@ Table column header on Special:LiveTranslate',
 	'livetranslate-importtms-param-miscmatch' => 'Error message for when one of the API modules gets called with a different amount of translation memory types compared to the amount of translation memory names',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'livetranslate-translate-to' => 'Vertaal die bladsy na',
+	'livetranslate-button-translate' => 'Vertaal',
+	'livetranslate-button-translating' => 'Besig met vertaling...',
+	'livetranslate-button-revert' => 'Wys oorspronklike',
+	'livetranslate-special-no-tms-yet' => 'Daar is nog geen vertaalgeheues nie.',
+	'livetranslate-special-button' => 'Stoor en opdateer',
+	'livetranslate-special-type' => 'Tipe',
+	'livetranslate-special-location' => 'Ligging',
+	'livetranslate-special-remove' => 'Verwyder',
+	'livetranslate-special-local' => 'Lokaal',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -513,6 +529,22 @@ $messages['pt'] = array(
 	'livetranslate-dictionary-empty' => 'Ainda não existem palavras no dicionário. Clique o separador "editar" para adicionar algumas.',
 	'livetranslate-dictionary-count' => '{{PLURAL:$1|Existe $1 palavra|Existem $1 palavras}} de $2 {{PLURAL:$2|língua|línguas}}. Clique o separador "editar" para acrescentar mais.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Esta língua não está definida como destino válido|Estas línguas não estão definidas como destinos válidos}} para tradução: $1. Altere na configuração da wiki as línguas permitidas, ou remova estas do dicionário.',
+	'livetranslate-dictionary-goto-edit' => 'Modificar as memórias de tradução.',
+	'special-livetranslate' => 'Tradução ao vivo',
+	'livetranslate-tmtype-ltf' => 'Formato de Tradução ao Vivo',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'Ainda não há nenhuma memória de tradução.',
+	'livetranslate-special-button' => 'Gravar e actualizar',
+	'livetranslate-special-type' => 'Tipo',
+	'livetranslate-special-location' => 'Localização',
+	'livetranslate-special-remove' => 'Remover',
+	'livetranslate-special-local' => 'Local',
+	'livetranslate-special-add-tm' => 'Adicionar uma memória de tradução nova',
+	'livetranslate-special-current-tms' => 'Memórias de tradução existentes',
+	'livetranslate-special-tms-update' => 'Actualizar memórias de tradução',
+	'livetranslate-special-update' => 'Actualizar memórias de tradução',
+	'livetranslate-importtms-param-miscmatch' => 'Discordância entre a quantidade de locais e tipos',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -570,5 +602,22 @@ $messages['uk'] = array(
 	'livetranslate-special-type' => 'Тип',
 	'livetranslate-special-location' => 'Розташування',
 	'livetranslate-special-remove' => 'Вилучити',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'livetranslate-translate-to' => '翻譯此頁',
+	'livetranslate-button-translate' => '翻譯',
+	'livetranslate-special-button' => '儲存和更新',
+	'livetranslate-special-type' => '類型',
+	'livetranslate-special-location' => '位置',
+	'livetranslate-special-remove' => '移除',
+	'livetranslate-special-local' => '地點',
+	'livetranslate-special-add-tm' => '增加一個新的翻譯記憶',
+	'livetranslate-special-current-tms' => '現有的翻譯記憶',
+	'livetranslate-special-tms-update' => '更新翻譯記憶',
+	'livetranslate-special-update' => '更新翻譯記憶',
 );
 
