@@ -21567,7 +21567,13 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'configure-setting-wgSitename' => 'וועב־ארט נאָמען',
+	'configure-setting-wgActionPaths-key' => 'אַקציע',
 	'configure-setting-wgActionPaths-value' => 'URL שאַבלאן',
+	'configure-setting-wgAllowImageMoving' => 'צולאזן באַנאָמענען טעקעס',
+	'configure-setting-wgAllowDisplayTitle' => 'צולאזן פֿאַרניצן <nowiki>{{DISPLAYTITLE}}</nowiki>',
+	'configure-setting-wgAllowImageTag' => 'צולאזן <nowiki><img></nowiki> טאַג אין וויקיטעקסט',
+	'configure-setting-wgInterwikiMagic' => 'ווייַזן אינטערוויקי לינקען אין אַ באַזונדערער ליסטע',
 	'configure-setting-wgArticleRobotPolicies-key' => 'בלאַטנאָמען:',
 	'configure-setting-wgExtraLanguageNames-key' => 'שפּראַך קאָד',
 	'configure-setting-wgExtraLanguageNames-value' => 'נאָמען',
