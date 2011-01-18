@@ -531,3 +531,11 @@ $messages['zh-hans'] = array(
 	'dontswitchmeover-pref' => '党默认皮肤改动时，不要让我所使用的皮肤也进行相应的改动',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Waihorace
+ */
+$messages['zh-hant'] = array(
+	'dontswitchmeover-desc' => '關於在默認面板改動後，用戶面板是否也進行相應改動的設定。',
+	'dontswitchmeover-pref' => '當預設面板改動時，不要讓我所使用的面板也進行相應的改動',
+);
+
