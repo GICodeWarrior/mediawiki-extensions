@@ -578,6 +578,15 @@ $messages['ru'] = array(
 	'livetranslate-tmtype-tmx' => 'Обмен памятью перевода',
 	'livetranslate-tmtype-gcsv' => 'Google CSV',
 	'livetranslate-special-no-tms-yet' => 'Памяти переводов пока нет.',
+	'livetranslate-special-button' => 'Сохранить и обновить',
+	'livetranslate-special-type' => 'Тип',
+	'livetranslate-special-location' => 'Расположение',
+	'livetranslate-special-local' => 'Местное',
+	'livetranslate-special-add-tm' => 'Добавить новую память переводов',
+	'livetranslate-special-current-tms' => 'Существующие памяти переводов',
+	'livetranslate-special-tms-update' => 'Обновление памяти переводов',
+	'livetranslate-special-update' => 'Обновление памяти переводов',
+	'livetranslate-importtms-param-miscmatch' => 'Несоответствие количества расположений и типов',
 );
 
 /** Telugu (తెలుగు)
