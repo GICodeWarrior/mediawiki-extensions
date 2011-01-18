@@ -22,10 +22,12 @@ $messages['en'] = array (
 	'toolbase-footer-exectime' => 'Executed in $1 seconds',
 	'toolbase-footer-source' => 'View source',
 	'toolbase-footer-language' => 'Change language',
+	'toolbase-footer-translate' => 'Translate',
 	
 	'toolbase-navigation' => 'Navigation',
 	'toolbase-navigation-homepage' => 'Homepage',
 	'toolbase-navigation-api' => 'API',
+	'toolbase-navigation-user_id' => 'Find user ID',
 	
 	'toolbase-userid-submit' => 'Get user ID',
 	'toolbase-userid-title' => 'Find a user ID',
