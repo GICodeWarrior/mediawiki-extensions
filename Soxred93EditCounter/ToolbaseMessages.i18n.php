@@ -4,7 +4,7 @@ $messages = array();
 /** English
  * @author soxred93
  */
-$messages['en'] => array (
+$messages['en'] = array (
 	'toolbase-header-title' => "X!'s Tools",
 	'toolbase-header-bugs' => 'Bugs',
 	'toolbase-header-twitter' => 'Twitter',
