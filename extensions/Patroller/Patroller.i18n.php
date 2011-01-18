@@ -628,10 +628,32 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
-	'group-patroller' => 'گشت‌زنان',
-	'group-patroller-member' => 'گشت‌زن',
+	'patrol' => 'نگهبانی ویرایش‌ها',
+	'patrol-desc' => 'رابط بهبودیافته نگهبانی با امکان اشتراک بارکاری',
+	'patrol-endorse' => 'تأیید',
+	'patrol-revert' => 'واگردانی',
+	'patrol-revert-reason' => 'دلیل:',
+	'patrol-skip' => 'گذشتن',
+	'patrol-reverting' => 'واگردانی: $1',
+	'patrol-nonefound' => 'ویرایش مناسب برای نگهبانی پیدا نشد.',
+	'patrol-endorsed-ok' => 'ویرایش برچسب نگهبانی خورد.',
+	'patrol-endorsed-failed' => 'نشد به ویرایش برچسب نگهبانی زد.',
+	'patrol-reverted-ok' => 'ویرایش واگردانی شد.',
+	'patrol-reverted-failed' => 'ویرایش را نمی‌شد واگردانی کرد.',
+	'patrol-skipped-ok' => 'ویرایش نادیده گرفته شد.',
+	'patrol-reasons' => '* خرابکاری ساده
+* آزمایش تازه‌کار
+* رجوع شود به صفحهٔ بحث',
+	'patrol-another' => 'ویرایشی دیگر را در صورت وجود نمایش بده.',
+	'patrol-stopped' => 'شما انتخاب کردید که ویرایشی دیگر را نگهبانی نکنید. $1',
+	'patrol-resume' => 'برای ادامه این‌جا کلیک کنید.',
+	'group-patroller' => 'نگهبانان',
+	'group-patroller-member' => 'نگهبان',
+	'grouppage-patroller' => '{{ns:project}}:نگهبان',
+	'right-patroller' => 'نگهبانی صفحه‌ها',
 );
 
 /** Finnish (Suomi)

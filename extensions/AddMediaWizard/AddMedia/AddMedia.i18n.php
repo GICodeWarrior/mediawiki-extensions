@@ -237,6 +237,7 @@ Please disable <b>Firebug</b> for this page.',
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Hamilton Abreu
+ * @author Mdale
  * @author Purodha
  * @author Raymond
  * @author Siebrand
@@ -252,6 +253,14 @@ $messages['qqq'] = array(
 	'fogg-copyright-title' => '{{Identical|Copyright}}',
 	'fogg-license-title' => '{{Identical|License}}',
 	'fogg-contact-title' => '{{Identical|Contact}}',
+	'mwe-imported_from' => 'Parameters:
+* $1 is The title of the resource that has been imported
+* $2 is is a URL to the site the resource was imported from.
+* $3 is The name of the site that the resource was imported from.  
+* $4 is a URL to the original resource page.',
+	'mwe-import-description' => 'Parameters:
+* $1 is A link to the specific resource
+* $2 is The site that the resource was imported from',
 	'mwe-select_file' => '{{Identical|Select file}}',
 	'mwe-upload' => '{{Identical|Upload file}}',
 	'mwe-summary' => '{{Identical|Summary}}',
@@ -278,6 +287,11 @@ appear to be combined to produce:
 	'rsd_layout' => '{{Identical|Layout}}',
 	'mwe-link' => '{{Identical|Link}}',
 	'mwe-cc_title' => '{{optional}}',
+	'mwe-not-logged-in-uploads' => 'Parameters:
+* $1 is An action to log into your account
+* $2 is An action to try the request again',
+	'mwe-preview_insert_resource' => 'Parameters:
+* $1 is The title of the resource to be previewed.',
 	'rsd-wiki_commons-title' => '{{optional}}',
 	'fogg-please-install' => 'Message that shows that Firefogg should be installed. Parameters:
 * $1 is the install link. {{msg-mw|fogg-please-install-install-linktext}} is substituted as link text.
@@ -397,8 +411,6 @@ $messages['aln'] = array(
 	'mwe-no_recent_uploads' => 'Nuk Ngarkimet më të fundit',
 	'mwe-not-logged-in-uploads' => 'Ju nuk mund të jetë i regjistruar në mënyrë që të mos Ngarkimet më të fundit mund të shfaqet. $1 $2 hyrje me emrin përkatës dhe',
 	'mwe-ie-eye-permision' => 'Nëse përdorni Internet Explorer dhe regjistruar, ju mund të kenë nevojë për të rregulluar your privacy settings',
-	'mwe-loggin-link' => 'Ju lutemi hyrje me emrin përkatës',
-	'mwe-try-again-link' => 'provoni përsëri',
 	'mwe-upload-a-file' => 'Ngarkoj një dokument të ri',
 	'mwe-upload-a-file-to' => 'Ngarko një skedar të ri në $1',
 	'mwe-resource_page_desc' => 'Përshkrimi i Burimeve faqe:',
@@ -655,7 +667,7 @@ $messages['arc'] = array(
 	'fogg-hidepreview' => 'ܛܫܝ ܚܝܪܐ ܩܕܡܝܐ',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -808,8 +820,6 @@ $messages['ba'] = array(
 	'mwe-not-logged-in-uploads' => 'Һеҙ системала танылмағанһығыҙ, шикелле, шуға күрә һуңғы тейәүҙәр исемлеге күрһәтелә алмай.
 $1 танылырға һәм $2',
 	'mwe-ie-eye-permision' => 'Әгәр һеҙ Internet Explorer ҡулланаһығыҙ һәм танылғанһығыҙ икән, һеҙгә, бәлки, серлелек көйләүҙәрен үҙгәртергә кәрәктер',
-	'mwe-loggin-link' => 'Зинһар, танылығыҙ',
-	'mwe-try-again-link' => 'яңынан ҡабатлап ҡарағыҙ',
 	'mwe-upload-a-file' => 'Яңы файл тейәргә',
 	'mwe-upload-a-file-to' => '$1 проектына яңы файл тейәргә',
 	'mwe-resource_page_desc' => 'Сығанаҡ битенең тасуирламаһы:',
@@ -877,7 +887,7 @@ $messages['be'] = array(
 	'fogg-license-title' => 'Ліцэнзія',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -1026,8 +1036,6 @@ $messages['be-tarask'] = array(
 	'mwe-no_recent_uploads' => 'Няма апошніх загрузак',
 	'mwe-not-logged-in-uploads' => 'Магчыма Вы не ўвайшлі ў сыстэму, таму апошнія загрузкі ня могуць быць паказаныя. $1 увайсьці ў сыстэму і $2',
 	'mwe-ie-eye-permision' => 'Калі Вы выкарыстоўваеце Internet Explorer і ўвайшлі ў сыстэму, магчыма Вам трэба зьмяніць устаноўкі прыватнасьці',
-	'mwe-loggin-link' => 'Калі ласка, увайдзіце ў сыстэму',
-	'mwe-try-again-link' => 'спрабаваць зноў',
 	'mwe-upload-a-file' => 'Загрузіць новы файл',
 	'mwe-upload-a-file-to' => 'Загрузіць новы файл у $1',
 	'mwe-resource_page_desc' => 'Апісаньне старонкі рэсурсу:',
@@ -1272,8 +1280,6 @@ $messages['br'] = array(
 	'mwe-no_recent_uploads' => 'Kargadenn nevez ebet',
 	'mwe-not-logged-in-uploads' => "Marteze n'oc'h ket kevreet, dre-se esporzhiadur ebet na c'hell bezañ diskouezet. $1 kevreañ ha $2",
 	'mwe-ie-eye-permision' => "Ma implijoc'h Internet Explorer hag ez oc'h kevreet, e rankfer spisaat an arventennoù prevezded.",
-	'mwe-loggin-link' => 'Mar plij kevreit',
-	'mwe-try-again-link' => 'Klask en-dro',
 	'mwe-upload-a-file' => 'Enporzhiañ ur restr nevez',
 	'mwe-upload-a-file-to' => 'Enporzhiañ ur restr nevez war $1',
 	'mwe-resource_page_desc' => 'Pajenn deskrivañ ar vammenn :',
@@ -1624,8 +1630,6 @@ Comproveu-ne la [$1 font] i ajudeu a descriure'l.",
 	'mwe-not-logged-in-uploads' => 'Pot ser que no hàgiu iniciat una sessió i, per això, no es poden mostrar les pujades més recents.
 $1 inicieu una sessió i $2',
 	'mwe-ie-eye-permision' => "Si feu servir l'Internet Exploreu i heu iniciat una sessió, pot caler que ajusteu els paràmetres de privadesa",
-	'mwe-loggin-link' => 'Inicieu una sessió',
-	'mwe-try-again-link' => 'torna-ho a provar',
 	'mwe-upload-a-file' => 'Carrega un fitxer nou',
 	'mwe-upload-a-file-to' => 'Carrega un fitxer nou a $1',
 	'mwe-resource_page_desc' => 'Descripció de la pàgina de recursos:',
@@ -2022,10 +2026,8 @@ $messages['de'] = array(
 	'rsd_config_error' => 'Konfigurationsfehler des Assistenten zum Hochladen von Mediendateien: $1',
 	'mwe-your-recent-uploads' => 'Deine bisherigen Uploads nach $1',
 	'mwe-no_recent_uploads' => 'Keine aktuellen Uploads',
-	'mwe-not-logged-in-uploads' => 'Es kann sein, dass du nicht angemeldet bist, weswegen keine aktuellen Uploads angezeigt werden können. Bitte $1 und $2',
+	'mwe-not-logged-in-uploads' => 'Es kann sein, dass du nicht angemeldet bist, weswegen keine aktuellen Uploads angezeigt werden können. Bitte [$1 anmelden] und es [$2 erneut versuchen]',
 	'mwe-ie-eye-permision' => 'Sofern du den Internet Explorer nutzt und angemeldet bist, musst du gegebenenfalls deine Einstellung zur Privatsphäre anpassen',
-	'mwe-loggin-link' => 'melde dich an',
-	'mwe-try-again-link' => 'versuche es erneut',
 	'mwe-upload-a-file' => 'Upload einer neuen Datei',
 	'mwe-upload-a-file-to' => 'Upload einer neuen Datei nach $1',
 	'mwe-resource_page_desc' => 'Quellseitenbeschreibung:',
@@ -2427,8 +2429,6 @@ $messages['dsb'] = array(
 	'mwe-no_recent_uploads' => 'žedne aktuelne nagraśa',
 	'mwe-not-logged-in-uploads' => 'Móžo byś, až njejsy pśizjawjony, tak až nejnowše nagraśa njedaju so zwobrazniś. $1 pśizjaw se a $2',
 	'mwe-ie-eye-permision' => 'Jolic wužywaš Internet Explorer a sy pśizjawjony, musyš snaź swóje nastajenja priwatnosći pśiměriś',
-	'mwe-loggin-link' => 'Pšosym pśizjaw se',
-	'mwe-try-again-link' => 'wopytaj hyšći raz',
 	'mwe-upload-a-file' => 'Nagraj nowu dataju',
 	'mwe-upload-a-file-to' => 'Nagraj nowu dataju do $1',
 	'mwe-resource_page_desc' => 'Wopsianje resursowego boka:',
@@ -2888,8 +2888,6 @@ $messages['es'] = array(
 	'mwe-no_recent_uploads' => 'Sin cargas recientes',
 	'mwe-not-logged-in-uploads' => 'Puedes no haber iniciado sesión en ese caso las cargas recientes no podrán ser mostradas. $1 iniciar sesión y $2',
 	'mwe-ie-eye-permision' => 'Si estás usando Internet Explorer y has iniciado sesión, puedes necesitar ajustar tu configuración de privacidad',
-	'mwe-loggin-link' => 'Por favor iniciar sesión',
-	'mwe-try-again-link' => 'intentar nuevamente',
 	'mwe-upload-a-file' => 'Subir un nuevo archivo',
 	'mwe-upload-a-file-to' => 'Subir un nuevo archivo a $1',
 	'mwe-resource_page_desc' => 'Descripción de la página de recurso:',
@@ -3436,8 +3434,6 @@ $messages['fr'] = array(
 	'mwe-no_recent_uploads' => 'Aucun téléversement récent',
 	'mwe-not-logged-in-uploads' => 'Vous ne semblez pas être connecté donc aucun téléversement récent ne peut être affiché. $1 connecter et $2',
 	'mwe-ie-eye-permision' => 'Si vous utilisez Internet Explorer et êtes connecté, vous devrez peut-être ajuster les paramètres de confidentialité',
-	'mwe-loggin-link' => 'Veuillez vous connecter',
-	'mwe-try-again-link' => 'essayez à nouveau',
 	'mwe-upload-a-file' => 'Téléverser un nouveau fichier',
 	'mwe-upload-a-file-to' => 'Téléverser un nouveau fichier sur $1',
 	'mwe-resource_page_desc' => 'Page de  description de la ressource :',
@@ -3810,8 +3806,6 @@ $messages['gl'] = array(
 	'mwe-no_recent_uploads' => 'Non hai cargas recentes',
 	'mwe-not-logged-in-uploads' => 'Parece non ter accedido ao sistema, polo que non se poden mostrar as cargas recentes. $1 acceder ao sistema e $2',
 	'mwe-ie-eye-permision' => 'Se emprega o Internet Explorer e accedeu ao sistema, poida que necesite axustar as configuracións de seguridade',
-	'mwe-loggin-link' => 'Acceda ao sistema',
-	'mwe-try-again-link' => 'inténteo de novo',
 	'mwe-upload-a-file' => 'Cargar un novo ficheiro',
 	'mwe-upload-a-file-to' => 'Cargar un novo ficheiro en $1',
 	'mwe-resource_page_desc' => 'Páxina de descrición do recurso:',
@@ -4027,8 +4021,6 @@ $messages['gsw'] = array(
 	'mwe-no_recent_uploads' => 'Kei aktuälli Uffeladige',
 	'mwe-not-logged-in-uploads' => 'S cha syy, ass Du nit aagmäldet bisch un wäge däm kei aktuälle Uffeladige chenne aazeigt wäre. $1 aamälde un $2',
 	'mwe-ie-eye-permision' => 'Wänn Du imfall dr Internet Explorer bruchsch un aagmäldet bisch, muesch villicht Dyy Yystellig zue dr Privatsfäre aapasse.',
-	'mwe-loggin-link' => 'Bitte mäld di aa',
-	'mwe-try-again-link' => 'versuech s nomol',
 	'mwe-upload-a-file' => 'Uffelade vun ere neje Datei',
 	'mwe-upload-a-file-to' => 'Uffelade vun ere neje Datei no $1',
 	'mwe-resource_page_desc' => 'Bschryybig:',
@@ -4498,8 +4490,6 @@ $messages['hsb'] = array(
 	'mwe-no_recent_uploads' => 'Žane nowe nahraća',
 	'mwe-not-logged-in-uploads' => 'Móže być, zo njejsy přizjawjeny, tak zo najnowše nahraća njedadźa so zwobraznić. $1 přizjew so a $2',
 	'mwe-ie-eye-permision' => 'Jeli wužiwaš Internet Explorer a sy přizjewjeny, je móžno, zo dyrbiš swoje nastajenja priwatnosće přiměrić',
-	'mwe-loggin-link' => 'Prošu přizjew so',
-	'mwe-try-again-link' => 'hišće raz spytać',
 	'mwe-upload-a-file' => 'Nowu dataju nahrać',
 	'mwe-upload-a-file-to' => 'Nowu dataju do $1 nahrać',
 	'mwe-resource_page_desc' => 'Wopisanje resursoweje strony:',
@@ -4898,8 +4888,6 @@ $messages['ia'] = array(
 	'mwe-no_recent_uploads' => 'Nulle incargamento recente',
 	'mwe-not-logged-in-uploads' => 'Tu possibilemente non es authenticate, dunque nulle incargamento recente pote esser monstrate. $1 aperir session e $2',
 	'mwe-ie-eye-permision' => 'Si tu usa Internet Explorer e ha aperite un session, tu pote deber adjustar tu configurationes de confidentialitate',
-	'mwe-loggin-link' => 'Per favor aperi un session',
-	'mwe-try-again-link' => 'reprobar',
 	'mwe-upload-a-file' => 'Incargar un nove file',
 	'mwe-upload-a-file-to' => 'Incargar un nove file in $1',
 	'mwe-resource_page_desc' => 'Description del pagina de ressource:',
@@ -4910,7 +4898,7 @@ $messages['ia'] = array(
 	'mwe-update_preview' => 'Actualisar previsualisation',
 	'mwe-return-search-results' => 'Retornar al resultatos del recerca',
 	'mwe-importing_asset' => 'Importation in curso',
-	'mwe-preview_insert_resource' => 'Previsualiar le insertion del ressource: $1',
+	'mwe-preview_insert_resource' => 'Previsualisar le insertion del ressource: $1',
 	'mwe-do-more-modification' => 'Facer plus modificationes',
 	'mwe-checking-resource' => 'Verification de ressource',
 	'mwe-resource-needs-import' => 'Le ressource $1 debe esser importate in $2',
@@ -5106,8 +5094,6 @@ $messages['id'] = array(
 	'mwe-no_recent_uploads' => 'Tidak ada pemuatan terkini',
 	'mwe-not-logged-in-uploads' => 'Anda belum masuk log sehingga tidak ada pemuatan terkini yang dapat ditampilkan. Masuk log $1 dan $2',
 	'mwe-ie-eye-permision' => 'Jika menggunakan Internet Explorer dan masuk log, Anda perlu menyesuaikan pengaturan privasi Anda',
-	'mwe-loggin-link' => 'Silakan masuk log',
-	'mwe-try-again-link' => 'coba lagi',
 	'mwe-upload-a-file' => 'Muat berkas baru',
 	'mwe-upload-a-file-to' => 'Muat berkas baru ke $1',
 	'mwe-resource_page_desc' => 'Keterangan sumber halaman',
@@ -5397,8 +5383,6 @@ $messages['ja'] = array(
 	'mwe-no_recent_uploads' => '最近のアップロードはありません',
 	'mwe-not-logged-in-uploads' => 'ログインしてないようなので、アップロードされたものは表示されません。$1ログインして、$2',
 	'mwe-ie-eye-permision' => 'Internet Explorerを利用してログインしている場合は、プライバシーの設定を調整する必要があります',
-	'mwe-loggin-link' => 'ログインしてください',
-	'mwe-try-again-link' => 'もう一度試やり直してください',
 	'mwe-upload-a-file' => '新しいファイルをアップロード',
 	'mwe-upload-a-file-to' => '$1に新しいファイルをアップロード',
 	'mwe-resource_page_desc' => '出典情報ページの解説:',
@@ -5565,8 +5549,6 @@ $messages['km'] = array(
 	'mwe-no_recent_uploads' => 'គ្មានការផ្ទុកឡើងនាពេលថ្មីៗនេះទេ',
 	'mwe-not-logged-in-uploads' => 'អ្នកប្រហែលចាមិនទាន់បាន់កត់ឈ្មោះចូលទេ ហេតុនេះគ្មានការផ្ទុកឡើងនាពេលថ្មីៗនេះសំរាប់បង្ហាញទេ។ $1 កត់ឈ្មោះចូលរួច $2',
 	'mwe-ie-eye-permision' => 'ប្រសិនបើអ្នកកំពុងប្រើប្រាស់ Internet Explorer ដើម្បីកត់ឈ្មោះចូល នោះអ្នកប្រហែលជាត្រូវតំរូវការកំណត់ភាពឯកជនរបស់អ្នកហើយ',
-	'mwe-loggin-link' => 'សូមកត់ឈ្មោះចូល',
-	'mwe-try-again-link' => 'សាកល្បងម្ដងទៀត',
 	'mwe-upload-a-file' => 'ផ្ទុកឡើងឯកសារថ្មីមួយ',
 	'mwe-upload-a-file-to' => 'ផ្ទុកឡើងឯកសារថ្មីមួយទៅ $1',
 	'mwe-resource_page_desc' => 'ចំណារពន្យល់ពីទំព័រប្រភព៖',
@@ -5854,8 +5836,6 @@ $messages['lb'] = array(
 	'mwe-your-recent-uploads' => 'Är Fichieren déi Dir rezent op $1 eropgelueden hutt',
 	'mwe-no_recent_uploads' => 'Rezent gouf näischt eropgelueden',
 	'mwe-not-logged-in-uploads' => 'Et ka sinn datt Dir net ageloggt sidd an dofir Är rezent eropgeluede Fichieren net gewise ginn. $1 Aloggen an $2',
-	'mwe-loggin-link' => 'Logt Iech w.e.g. eran',
-	'mwe-try-again-link' => 'probéiert nach eng kéier',
 	'mwe-upload-a-file' => 'En neie Fichier eroplueden',
 	'mwe-upload-a-file-to' => 'En neie Fichier op $1 eroplueden',
 	'mwe-resource_page_desc' => 'Säitebeschreiwung vun der Quell:',
@@ -6097,8 +6077,6 @@ $messages['mk'] = array(
 	'mwe-no_recent_uploads' => 'Нема скорешни подигања',
 	'mwe-not-logged-in-uploads' => 'Можеби не сте најавени, и затоа не се прикажани скорешни подигања. $1 најава и $2',
 	'mwe-ie-eye-permision' => 'Ако користите Internet Explorer и сте најавени, може да треба да ги прилагодите поставките за приватност.',
-	'mwe-loggin-link' => 'Прво најавете се',
-	'mwe-try-again-link' => 'обидете се повторно',
 	'mwe-upload-a-file' => 'Подигни нова податотека',
 	'mwe-upload-a-file-to' => 'Подигни нова податотека во $1',
 	'mwe-resource_page_desc' => 'Опис на страницата на ресурсот:',
@@ -6476,8 +6454,6 @@ $messages['nl'] = array(
 	'mwe-no_recent_uploads' => 'Geen recente uploads',
 	'mwe-not-logged-in-uploads' => 'U bent mogelijk niet aangemeld en dus kunnen er geen recente uploads worden weergegeven. $1 aanmelden en $2',
 	'mwe-ie-eye-permision' => 'Als u Internet Explorer gebruikt en bent aangemeld, dient u wellicht uw privacyinstellingen aan te passen',
-	'mwe-loggin-link' => 'Meld u aan',
-	'mwe-try-again-link' => 'probeer het opnieuw',
 	'mwe-upload-a-file' => 'Nieuw bestand uploaden',
 	'mwe-upload-a-file-to' => 'Nieuw bestand uploaden naar $1',
 	'mwe-resource_page_desc' => 'Beschrijving:',
@@ -6750,8 +6726,6 @@ Sjekk [$1 kilden] og hjelp med å beskrive den.',
 	'mwe-not-logged-in-uploads' => 'Du er kanskje ikke innlogget så ingen nylige opplastinger kan vises.
 $1 logg inn og $2',
 	'mwe-ie-eye-permision' => 'Om du er logget inn og bruker Internet Explorer må du kanskje endre personverninnstillingene',
-	'mwe-loggin-link' => 'Vennligst logg inn',
-	'mwe-try-again-link' => 'prøv igjen',
 	'mwe-upload-a-file' => 'Last opp en ny fil',
 	'mwe-upload-a-file-to' => 'Last opp en ny fil til $1',
 	'mwe-resource_page_desc' => 'Ressurssidebeskrivelse:',
@@ -7122,8 +7096,6 @@ $messages['pl'] = array(
 	'mwe-no_recent_uploads' => 'Brak ostatnio przesłanych plików',
 	'mwe-not-logged-in-uploads' => 'Możesz nie być zalogowany i dlatego ostatnio przesłane pliki nie zostaną wyświetlone. $1 i $2',
 	'mwe-ie-eye-permision' => 'Jeśli korzystasz z Internet Explorera i zalogowałeś się, możliwe, że powinieneś dostosować swoje ustawienia prywatności',
-	'mwe-loggin-link' => 'Zaloguj się',
-	'mwe-try-again-link' => 'spróbować ponownie',
 	'mwe-upload-a-file' => 'Prześlij nowy plik',
 	'mwe-upload-a-file-to' => 'Prześlij nowy plik do $1',
 	'mwe-resource_page_desc' => 'Opis strony zasobów',
@@ -7328,8 +7300,6 @@ $messages['pms'] = array(
 	'mwe-no_recent_uploads' => 'Gnun cariament recent',
 	'mwe-not-logged-in-uploads' => "Peul desse ch'a l'é pa intrà ant ël sistema, parèj gnun cariament recent a peul esse mostrà. $1 intré ant ël sistema e $2",
 	'mwe-ie-eye-permision' => "S'a deuvra Internet Explorer e a l'é intrà ant ël sistema, a podrìa dovèj rangé soe ampostassion ëd confidensialità",
-	'mwe-loggin-link' => "Për piasì, ch'a intra ant ël sistema",
-	'mwe-try-again-link' => 'preuva torna',
 	'mwe-upload-a-file' => "Caria n'archivi neuv",
 	'mwe-upload-a-file-to' => "Caria n'archivi neuv su $1",
 	'mwe-resource_page_desc' => "Descrission dla pàgina dl'arsorsa:",
@@ -7559,10 +7529,8 @@ $messages['pt'] = array(
 	'rsd_config_error' => 'Erro de configuração do assistente de carregamento de multimédia: $1',
 	'mwe-your-recent-uploads' => 'Os seus uploads recentes para $1',
 	'mwe-no_recent_uploads' => 'Não existem uploads recentes',
-	'mwe-not-logged-in-uploads' => 'Você pode não estar autenticado e, por tanto, nenhum carregamento recente pode ser apresentado. $1 autentique e $2',
+	'mwe-not-logged-in-uploads' => 'Parece não estar autenticado e, portanto, não pode ser apresentado nenhum carregamento. $1 autentique-se e $2',
 	'mwe-ie-eye-permision' => 'Se está a usar o Internet Explorer e se autenticou, pode necessitar de ajustar as suas definições de privacidade',
-	'mwe-loggin-link' => 'Autentique-se por favor',
-	'mwe-try-again-link' => 'tente novamente',
 	'mwe-upload-a-file' => 'Carregar um ficheiro novo',
 	'mwe-upload-a-file-to' => 'Carregar um ficheiro novo para $1',
 	'mwe-resource_page_desc' => 'Descrição da página do recurso:',
@@ -7577,7 +7545,7 @@ $messages['pt'] = array(
 	'mwe-do-more-modification' => 'Fazer mais modificações',
 	'mwe-checking-resource' => 'A procurar o recurso',
 	'mwe-resource-needs-import' => 'O recurso $1 precisa de ser importado para $2',
-	'mwe-warning-upload-to-commons' => '$1 recomenta que você carregue no Wikimedia Commons, carregue localmente somente após ter lido $2',
+	'mwe-warning-upload-to-commons' => '$1 recomenda que coloque no Wikimedia Commons, só inserindo localmente depois de ler $2',
 	'mwe-local-upload-policy-link' => 'normas locais para uploads',
 	'mwe-ftype-svg' => 'Ficheiro vectorial SVG',
 	'mwe-ftype-jpg' => 'Ficheiro de imagem JPEG',
@@ -7776,8 +7744,6 @@ Você pode $1 e depois $2',
 	'mwe-no_recent_uploads' => 'Nenhum carregamento recente',
 	'mwe-not-logged-in-uploads' => 'Você pode não estar autenticado e, portanto, nenhum carregamento recente pode ser apresentado. $1 autentique e $2',
 	'mwe-ie-eye-permision' => 'Se você está usando o Internet Explorer e está autenticado, talvez você deva ajustar as suas definições de privacidade',
-	'mwe-loggin-link' => 'Autentique-se por favor',
-	'mwe-try-again-link' => 'tentar novamente',
 	'mwe-upload-a-file' => 'Carregar um novo arquivo',
 	'mwe-upload-a-file-to' => 'Carregar um arquivo novo para $1',
 	'mwe-resource_page_desc' => 'Descrição da página do recurso:',
@@ -8096,8 +8062,6 @@ Tu pòte $1, poi $2',
 	'mwe-not-logged-in-uploads' => "L'utinde non ha da essere reggistrate accussì ca nisciune carecamènde recende pòte essere visualizzate.
 $1 tràse e $2",
 	'mwe-ie-eye-permision' => "Ce stè ause Internet Explorer e sì trasùte, tène abbesògne de cangià le 'mbostazziune de privacy",
-	'mwe-loggin-link' => 'Se preghe de trasè',
-	'mwe-try-again-link' => "prueve n'otra vote",
 	'mwe-upload-a-file' => "Careche 'nu fail nuève",
 	'mwe-upload-a-file-to' => "Careche 'nu fail nuève a $1",
 	'mwe-resource_page_desc' => 'Pagene de descriziune de le resorse:',
@@ -8276,8 +8240,6 @@ $messages['ru'] = array(
 	'mwe-no_recent_uploads' => 'Недавние загрузки отсутствуют',
 	'mwe-not-logged-in-uploads' => 'Вероятно, вы не представились системе, поэтому список недавних загрузок не может быть показан. $1 представиться и $2',
 	'mwe-ie-eye-permision' => 'Если вы используете Internet Explorer и представились системе, возможно, вам потребуется настроить ваши параметры конфиденциальности',
-	'mwe-loggin-link' => 'Пожалуйста, представьтесь',
-	'mwe-try-again-link' => 'попробуйте ещё раз',
 	'mwe-upload-a-file' => 'Загрузить новый файл',
 	'mwe-upload-a-file-to' => 'Загрузить новый файл на $1',
 	'mwe-resource_page_desc' => 'Описание страницы ресурса:',
@@ -8415,8 +8377,6 @@ $messages['si'] = array(
 	'mwe-error_not_loggedin' => 'ඔබ ප්‍රවේශ වී නොමැති බව හෝ,එසේත් නැතහොත්, උඩුගත කිරීමේ වරප්‍රසාදයට හිමිකම් නොකියන බවක් පෙනීයයි.',
 	'mwe-not-logged-in-uploads' => 'ඔබ ප්‍රවිශ්ට වී නොමැති විය හැකි අතර එබැවින්, නවතම උඩුගත කිරීම් ප්‍රදර්ශනය කල නොහැක.',
 	'mwe-ie-eye-permision' => 'ඔබ ප්‍රවිශ්ට වී ඇත්තේ ඉන්ටනෙට් එක්ස්ප්ලෝරර් හරහා නම්, ඔබට පෞද්ගලික පරිස්ථිති (privacy settings) සීරුමාරු කිරීමට අවශ්‍ය වනු ඇත.',
-	'mwe-loggin-link' => 'කරුණාකර ප්‍රවිෂ්ට වන්න.',
-	'mwe-try-again-link' => 'කරුණාකර නැවත උත්සාහ කරන්න',
 	'mwe-upload-a-file' => 'නව ගොනුවක් උඩුගත කරන්න',
 	'mwe-upload-a-file-to' => '$1 ට නව ගොනුවක් උඩුගත කරන්න',
 	'mwe-resource_page_desc' => 'මූලාශ්‍ර පිටුවේ විස්තරය',
@@ -8592,8 +8552,6 @@ Pozrite si prosím [$1 pôvodný zdroj] a pomôžte ho popísať.',
 	'mwe-not-logged-in-uploads' => 'Možno sa posledné nahrané súbory nezobrazujú preto, že nie ste prihlásený.
 $1 prihláste sa a $2',
 	'mwe-ie-eye-permision' => 'Ak používate Internet Explorer a ste prihlásený, budete možno musieť upraviť svoje nastavenia ochrany osobných údajov',
-	'mwe-loggin-link' => 'Prosím, prihláste sa',
-	'mwe-try-again-link' => 'skúste to znova',
 	'mwe-upload-a-file' => 'Nahrať nový súbor',
 	'mwe-upload-a-file-to' => 'Nahrať nový súbor na $1',
 	'mwe-resource_page_desc' => 'Popisná stránka zdroja:',
@@ -8759,7 +8717,7 @@ $messages['sl'] = array(
 	'mwe-upload-multi' => 'Naloži {{PLURAL:$1|datoteko|datoteki|datoteke}}',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -8805,7 +8763,7 @@ $messages['sr-ec'] = array(
 	'fogg-license-title' => 'Лиценца',
 	'fogg-contact-title' => 'Контакт',
 	'fogg-contact-help' => 'Контакт-линк',
-	'mwe-select_file' => 'Избор фајла',
+	'mwe-select_file' => 'Избор датотеке',
 	'mwe-upload' => 'Отпреми датотеку',
 	'mwe-destfilename' => 'Назив:',
 	'mwe-summary' => 'Сажетак',
@@ -8827,7 +8785,6 @@ $messages['sr-ec'] = array(
 	'rsd_do_insert' => 'Убаци',
 	'mwe-cc_pd_title' => 'Јавно власништво',
 	'mwe-unknown_license' => 'Непозната лиценца',
-	'mwe-try-again-link' => 'покушај опет',
 	'mwe-upload-a-file-to' => 'пошаљи нови фајл на $1',
 	'mwe-ftype-svg' => 'SVG векторски фајл',
 	'mwe-ftype-jpg' => 'JPEG слика',
@@ -8836,7 +8793,7 @@ $messages['sr-ec'] = array(
 	'mwe-ftype-ogg' => 'Ogg видео фајл',
 	'mwe-ftype-unk' => 'Непознати формат фајла',
 	'rsd-this_wiki-title' => 'Ова вики',
-	'fogg-select_file' => 'Избор фајла',
+	'fogg-select_file' => 'Избор датотеке',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -9081,8 +9038,6 @@ Kontrollera [$1 källa] och hjälp till att beskriva den.',
 	'mwe-no_recent_uploads' => 'Inga nya uppladdningar',
 	'mwe-not-logged-in-uploads' => 'Du kanske inte är inloggad så inga senaste uppladdningar kan visas. $1 logga in och $2',
 	'mwe-ie-eye-permision' => 'Om du använder Internet Explorer och är inloggad, kan du behöva justera dina sekretessinställningar',
-	'mwe-loggin-link' => 'Vänligen logga in',
-	'mwe-try-again-link' => 'försök igen',
 	'mwe-upload-a-file' => 'Ladda upp en ny fil',
 	'mwe-upload-a-file-to' => 'Ladda upp en ny fil till $1',
 	'mwe-resource_page_desc' => 'Resurssidebeskrivning:',
@@ -9484,8 +9439,6 @@ $messages['tl'] = array(
 	'mwe-no_recent_uploads' => 'Walang kamakailang paitaas na mga pagkakarga',
 	'mwe-not-logged-in-uploads' => "Maaaring hindi ka nakalagda kaya't walang kamakailang mga pagkakargang paitaas na maipapakita. $1 lumagda at $2",
 	'mwe-ie-eye-permision' => 'Kapag ginagamit ang Internet Explorer at nakalagda, maaaring kailanganin mong ayusin ang iyong mga katakdaan ng pagkapribado',
-	'mwe-loggin-link' => 'Mangyaring lumagda',
-	'mwe-try-again-link' => 'subukan uli',
 	'mwe-upload-a-file' => 'Magkarga ng isang bagong talaksan',
 	'mwe-upload-a-file-to' => 'Magkarga ng isang bagong talaksan sa $1',
 	'mwe-resource_page_desc' => 'Paglalarawan ng pahina ng pinagkunan:',
@@ -9891,8 +9844,6 @@ $messages['uk'] = array(
 	'mwe-no_recent_uploads' => 'Немає останніх завантажень',
 	'mwe-not-logged-in-uploads' => 'Можливо, ви не увійшли в систему, тому останні завантаження не можуть бути відображені. $1 увійти в систему і $2',
 	'mwe-ie-eye-permision' => 'Якщо ви використовуєте Internet Explorer і увійши в систему, можливо, вам потрібно налаштувати ваші параметри конфіденційності',
-	'mwe-loggin-link' => 'Будь ласка, увійдіть в систему',
-	'mwe-try-again-link' => 'спробуйте ще раз',
 	'mwe-upload-a-file' => 'Завантажити новий файл',
 	'mwe-upload-a-file-to' => 'Завантажити новий файл на $1',
 	'mwe-resource_page_desc' => 'Опис сторінки ресурсу:',
@@ -10420,8 +10371,6 @@ $messages['zh-hans'] = array(
 	'mwe-not-logged-in-uploads' => '你可能未登录或者最近没有上传而无法显示。
 $1 登录并且$2',
 	'mwe-ie-eye-permision' => '如果使用Internet Explorer并登录，你可能需要调整你的隐私设置',
-	'mwe-loggin-link' => '请登录',
-	'mwe-try-again-link' => '重试',
 	'mwe-upload-a-file' => '上传一个新文件',
 	'mwe-upload-a-file-to' => '上传一个新文件到$1',
 	'mwe-resource_page_desc' => '资源页描述',
@@ -10564,8 +10513,6 @@ $messages['zh-hant'] = array(
 	'mwe-unknown_license' => '未知的許可協議',
 	'mwe-results_from' => '關於 $1 的結果',
 	'mwe-no_recent_uploads' => '最近沒有上傳',
-	'mwe-loggin-link' => '請登入',
-	'mwe-try-again-link' => '重試',
 	'mwe-upload-a-file' => '上傳一個新的檔案',
 	'mwe-upload-a-file-to' => '上傳新的檔案到$1',
 	'mwe-return-search-results' => '返回到搜尋結果',

@@ -904,7 +904,8 @@ $messages['sk'] = array(
 	'right-emergencydesysop' => 'Dokáže odstrániť správcovské práva iného používateľa zároveň so svojimi',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -913,7 +914,7 @@ $messages['sr-ec'] = array(
 	'emergencydesysop-title' => 'Уклањање администраторских права са сопственог налога и налога другог администратора',
 	'emergencydesysop-otheradmin' => 'Други администратор, чија права треба уклонити',
 	'emergencydesysop-reason' => 'Разлог за уклањање',
-	'emergencydesysop-submit' => 'Потврди',
+	'emergencydesysop-submit' => 'Пошаљи',
 	'emergencydesysop-incomplete' => 'Потребно је попунити сва поља форме, молим Вас да покушате поново.',
 	'emergencydesysop-notasysop' => 'Циљани корисник није у групи администратора.',
 	'emergencydesysop-nogroups' => 'Непопуњено',

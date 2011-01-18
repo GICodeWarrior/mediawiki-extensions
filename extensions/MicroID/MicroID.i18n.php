@@ -139,8 +139,8 @@ $messages['es'] = array(
  * @author Huji
  */
 $messages['fa'] = array(
-	'microid-desc' => 'یک [http://www.microid.org/ MicroID] به صفحهٔ کاربری اضافه می‌کند تا حساب کاربری با خدمات خارجی را تایید کند',
-	'tog-microid' => 'یک <a href="http://microid.org/">MicroID</a> منتشر کنید تا حساب کاربری با خدمات خارجی را تایید کنید',
+	'microid-desc' => 'یک [http://www.microid.org/ MicroID] به صفحهٔ کاربری اضافه می‌کند تا حساب کاربری با خدمات خارجی را تأیید کند',
+	'tog-microid' => 'یک <a href="http://microid.org/">MicroID</a> منتشر کنید تا حساب کاربری با خدمات خارجی را تأیید کنید',
 );
 
 /** Finnish (Suomi)

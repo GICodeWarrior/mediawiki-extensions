@@ -1146,9 +1146,12 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author David1010
  * @author Dawid Deutschland
  */
 $messages['ka'] = array(
+	'articlefeedback' => 'სტატიის შეფასება',
+	'articlefeedback-desc' => 'სტატიის შეფასება',
 	'articlefeedback-survey-question-whyrated' => 'გთხოვთ შეგვატყობინეთ, თუ რატომ შეაფასეთ დღეს ეს სტატია (შეამოწმეთ სისწორე)',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'მე ვისურვებდი სტატიის შეფასებაში მონაწილეობის მიღებას',
 	'articlefeedback-survey-answer-whyrated-development' => 'ვიმედოვნებ, რომ ჩემი შეფასება დადებითად აისახება სტატიის მომავალ განვითარებაზე',
@@ -1162,6 +1165,8 @@ $messages['ka'] = array(
 	'articlefeedback-survey-submit' => 'შენახვა',
 	'articlefeedback-survey-title' => 'გთხოვთ, გვიპასუხეთ რამდენიმე შეკითხვაზე',
 	'articlefeedback-survey-thanks' => 'გმადლობთ საპასუხო შეტყობინებისათვის',
+	'articlefeedback-form-switch-label' => 'შეფასების გაცემა',
+	'articlefeedback-form-panel-title' => 'თქვენი შეფასება',
 	'articlefeedback-form-panel-instructions' => 'გთხოვთ, გამონახეთ დრო ამ გვერდის შეფასებისათვის.',
 	'articlefeedback-form-panel-submit' => 'დაეთანხმე შეფასებას',
 	'articlefeedback-report-switch-label' => 'შედეგების ჩვენება',
@@ -1172,6 +1177,9 @@ $messages['ka'] = array(
 	'articlefeedback-field-trustworthy-label' => 'სანდო',
 	'articlefeedback-field-trustworthy-tip' => 'ფიქრობთ, რომ ეს სტატია საკმარისი რაოდენობით შეიცავს სანდო წყაროებს?',
 	'articlefeedback-field-complete-label' => 'დასრულებულია',
+	'articlefeedback-field-complete-tip' => 'მიგაჩნიათ, რომ ეს სტატია შეიცავს მისივე შინაარსთან დაკავშირებულ ყველა მნიშვნელოვან ასპექტს?',
+	'articlefeedback-field-unbiased-label' => 'მიუკერძოებელია',
+	'articlefeedback-field-unbiased-tip' => 'მიგაჩნიათ, რომ ეს სტატია შეიცავს მისივე თემასთან დაკავშირებული წარმოდგენის შესახებ მიუკერძოებელ ინფორმაციას?',
 	'articlefeedback-field-wellwritten-label' => 'კარგად დაწერილი',
 	'articlefeedback-field-wellwritten-tip' => 'მიგაჩნიათ, რომ ეს სტატია კარგი სტრუქტურისაა და კარგადაა დაწერილი?',
 	'articlefeedback-pitch-reject' => 'არა, გმადლობთ',

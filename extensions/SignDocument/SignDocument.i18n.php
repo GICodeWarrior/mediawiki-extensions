@@ -685,10 +685,12 @@ $messages['zh-hans'] = array(
 	'signaturelogentry' => '已经签署$1文件',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
 $messages['zh-hant'] = array(
 	'signaturelogpage' => '簽署日誌',
-	'signaturelogpagetext' => '這個是所有經過[[Special:SignDocument]]簽署文件的日誌。',
-	'signaturelogentry' => '已經簽署$1文件',
+	'signaturelogpagetext' => '這個是所有經過 [[Special:SignDocument]] 簽署文件的日誌。',
+	'signaturelogentry' => '已經簽署 $1 文件',
 );
 

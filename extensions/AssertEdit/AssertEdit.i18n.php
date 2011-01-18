@@ -245,9 +245,9 @@ $messages['eu'] = array(
  * @author Huji
  */
 $messages['fa'] = array(
-	'assert_edit_title' => 'تایید ناموفق',
-	'assertedit-desc' => 'امکان تایید ویرایش‌ها را برای استفاده ربات‌ها اضافه می‌کند',
-	'assert_edit_message' => 'تایید مورد نظر ($1) ناموفق بود.',
+	'assert_edit_title' => 'تأیید ناموفق',
+	'assertedit-desc' => 'امکان تأیید ویرایش‌ها را برای استفاده ربات‌ها اضافه می‌کند',
+	'assert_edit_message' => 'تأیید مورد نظر ($1) ناموفق بود.',
 );
 
 /** Finnish (Suomi)

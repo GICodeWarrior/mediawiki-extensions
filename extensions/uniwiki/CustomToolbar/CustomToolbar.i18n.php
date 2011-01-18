@@ -2673,7 +2673,7 @@ $messages['sl'] = array(
 	'ct_user_sample' => 'Uporabniško ime',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -2713,7 +2713,7 @@ $messages['sr-ec'] = array(
 	'ct_link' => 'Додај назив линка (необавезно):',
 	'ct_submit' => 'Пређи!',
 	'ct_close' => 'Затвори прозор',
-	'ct_success' => 'Слање фајла успешно!',
+	'ct_success' => 'Отпремање датотеке је извршено!',
 	'ct_user_user' => 'Корисник',
 	'ct_user_tip' => 'Убаци линк ка корисничкој страни',
 	'ct_user_caption' => 'Кориснички линк',

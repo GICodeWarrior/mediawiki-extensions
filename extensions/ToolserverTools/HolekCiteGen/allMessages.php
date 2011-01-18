@@ -760,6 +760,13 @@ $messages['te'] = array(
 	'ts-citegen-Other-languages' => 'ఇతర భాషలు',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'ts-citegen-Sources-title' => 'Джерела',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
