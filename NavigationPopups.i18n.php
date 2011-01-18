@@ -385,6 +385,6 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'navigationpopups-desc' => '在 MediaWiki 中載入 Lupin 的 Popup 導航 popup script',
+	'navigationpopups-desc' => '在 MediaWiki 中載入 Lupin 的 Popup 導覽 popup script',
 );
 
