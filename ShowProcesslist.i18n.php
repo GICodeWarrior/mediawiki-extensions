@@ -1183,11 +1183,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'showprocesslist-user' => '使用者',
+	'showprocesslist-host' => '主機',
+	'showprocesslist-db' => '資料庫',
 	'showprocesslist-time' => '時間',
 	'showprocesslist-state' => '狀態',
+	'showprocesslist-info' => '資訊',
 );
 
