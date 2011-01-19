@@ -19,18 +19,6 @@ $wgExtensionCredits['specialpage'][] = array(
         'description' => 'Show maps',
 );
 
-global $wgWikimapsMessages;
-$wgWikimapsMessages = array();
-
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['SpecialWikimaps'] = $dir . 'SpecialWikimaps_body.php';
 $wgSpecialPages['Wikimaps'] = 'SpecialWikimaps';
-
-function wfSpecialWikimaps() {
-        # Add messages
-        global $wgMessageCache, $wgWikimapsMessages, $wgSpecialPages;
-        foreach( $wgWikimapsMessages as $key => $value ) {
-                $wgMessageCache->addMessages( $wgWikimapsMessages[$key], $key );
-        }
-#	print "<pre>"; print_r( $wgSpecialPages ); print "</pre>";
-}
