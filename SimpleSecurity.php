@@ -127,7 +127,7 @@ function wfSimpleSecurityLanguageGetMagic( &$magicWords, $langCode = 0 ) {
  * Called from $wgExtensionFunctions array when initialising extensions
  */
 function wfSetupSimpleSecurity() {
-	global $wgSimpleSecurity, $wgLanguageCode, $wgMessageCache, $wgSecurityUseDBHook,  $wgLoadBalancer, $wgDBtype, $wgOldDBtype;
+	global $wgSimpleSecurity, $wgSecurityUseDBHook,  $wgLoadBalancer, $wgDBtype, $wgOldDBtype;
 
 	# Instantiate the SimpleSecurity singleton now that the environment is prepared
 	$wgSimpleSecurity = new SimpleSecurity();
