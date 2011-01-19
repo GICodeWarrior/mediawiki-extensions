@@ -263,7 +263,7 @@ class ConfidenceTest:
 		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
 		
 		""" Print out results """ 
-		self.print_metrics(title, means_1, means_2, std_devs_1, std_devs_2, times_indices)
+		self.print_metrics(test_name + '.txt', title, means_1, means_2, std_devs_1, std_devs_2, times_indices)
 		
 		return
 		
@@ -327,15 +327,22 @@ class ConfidenceTest:
 
 
 	""" Print in Tabular form the means and standard deviation of each group over each interval """
-	def print_metrics(self, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices):
+	def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices):
+		
+		file = open(filename, 'w')
 		
 		print  '\n\n' +  metric_name 
 		print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
+		file.write('\n\n' +  metric_name)
+		file.write('\n\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n\n')
 		
 		for i in range(1,len(times_indices) - 1):
 			line_args = str(i) + '\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
 			line_str = line_args % (means_1[i], means_2[i], std_devs_1[i], std_devs_2[i])
 			print  line_str
+			file.write(line_str)
+			
+		file.close()
 		
 		
 """
