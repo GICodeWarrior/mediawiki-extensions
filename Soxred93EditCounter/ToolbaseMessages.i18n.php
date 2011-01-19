@@ -31,7 +31,7 @@ $messages['en'] = array (
 	
 	'toolbase-userid-submit' => 'Get user ID',
 	'toolbase-userid-title' => 'Find a user ID',
-	'toolbase-userid-result' => 'The user ID for <b>$1</b> is <b>$2</b>.',
+	'toolbase-userid-result' => 'The user ID for <b>$1</b> on <a href="$3"><b>$3</b></a> is <b>$2</b>.',
 
 	'toolbase-main-title' => 'Welcome!',
 	'toolbase-main-content' => 'Welcome to X!\'s tools! The tool suite is still in the process of being converted to the <a href="$1">Symfony</a> framework. This process will take a while, but it should be working now. 
