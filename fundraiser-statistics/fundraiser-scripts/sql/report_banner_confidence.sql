@@ -59,4 +59,4 @@ group by 1) as ecomm
 on ecomm.banner = lp.utm_source 
 
 group by 1
-having impressions > 100000 and donations > 10;
+-- having impressions > 100000 and donations > 10;

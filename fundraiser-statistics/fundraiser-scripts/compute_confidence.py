@@ -262,6 +262,9 @@ class ConfidenceTest:
 		labels = [item_1, item_2]
 		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
 		
+		""" Print out results """ 
+		self.print_metrics(title, means_1, means_2, std_devs_1, std_devs_2, times_indices)
+		
 		return
 		
 		
@@ -270,33 +273,32 @@ class ConfidenceTest:
 	"""
 	def confidence_test(self, metrics_1, metrics_2, time_indices, num_samples):
 		return
-
-"""
-
-Implements a Wald test where the distribution of donations over a given period are assumed to be normal
-
-"""
-class WaldTest(ConfidenceTest):
-	
-	def confidence_test(self, metrics_1, metrics_2, num_samples):
 		
-		# Partition over different 
-		num_trials = math.ceil(len(metrics_1) / num_samples)
+	
+	"""
+		assess the confidence of the winner - define in subclass
+	"""
+	def compute_parameters(self, metrics_1, metrics_2, num_samples):
+		
+		# A trial represents a group of samples over which parameters are computed 
+		num_trials = int(math.ceil(len(metrics_1) / num_samples))
+		
 		means_1 = []
-		std_devs_1 = []
 		means_2 = []
-		std_devs_2 = []
+		vars_1 = []
+		vars_2 = []
 		
 		m_tot = 0
 		sd_tot = 0
 		
-		# print num_trials
-		for i in range(int(num_trials)):
+		
+		# Compute the mean and variance for each group across all trials
+		for i in range(num_trials):
 			
-			m1 = 0
-			m2 = 0
-			sd1 = 0
-			sd2 = 0
+			m1 = 0		# mean of group 1
+			m2 = 0		# mean of group 2
+			var1 = 0		# variance of group 1
+			var2 = 0		# variance of group 2
 				
 			for j in range(num_samples):
 				index = i + j
@@ -308,29 +310,74 @@ class WaldTest(ConfidenceTest):
 			m1 = m1 / num_samples
 			m2 = m2 / num_samples
 			
+			# Compute Sample Variance for each group
 			for j in range(num_samples):
 				index = i + j
 				
-				# Compute standard deviation
-				sd1 = sd1 + math.pow((metrics_1[i] - m1), 2) 
-				sd2 = sd2 + math.pow((metrics_2[i] - m2), 2)
-			
-			# Perform wald		
-			sd = math.pow(sd1 / num_samples + sd2 / num_samples, 0.5)
-			m = math.fabs(m1 - m2) 
+				var1 = var1 + math.pow((metrics_1[i] - m1), 2) 
+				var2 = var2 + math.pow((metrics_2[i] - m2), 2)
 			
 			means_1.append(float(m1))
 			means_2.append(float(m2))
-			std_devs_1.append(math.pow(sd1 / num_samples, 0.5))
-			std_devs_2.append(math.pow(sd2 / num_samples, 0.5))
+			vars_1.append(var1 / num_samples)
+			vars_2.append(var2 / num_samples)
+			
+			
+		return [num_trials, means_1, means_2, vars_1, vars_2]
+
+
+	""" Print in Tabular form the means and standard deviation of each group over each interval """
+	def print_metrics(self, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices):
+		
+		print  '\n\n' +  metric_name 
+		print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
+		
+		for i in range(1,len(times_indices) - 1):
+			line_args = str(i) + '\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
+			line_str = line_args % (means_1[i], means_2[i], std_devs_1[i], std_devs_2[i])
+			print  line_str
+		
+		
+"""
+
+Implements a Wald test where the distribution of donations over a given period are assumed to be normal
+
+http://en.wikipedia.org/wiki/Wald_test
+
+"""
+class WaldTest(ConfidenceTest):
+	
+	def confidence_test(self, metrics_1, metrics_2, num_samples):
+		
+		ret = self.compute_parameters(metrics_1, metrics_2, num_samples)
+		num_trials = ret[0]
+		means_1 = ret[1]
+		means_2 = ret[2]
+		vars_1 = ret[3]
+		vars_2 = ret[4]
+		
+		""" Compute std devs """
+		std_devs_1 = []
+		std_devs_2 = []
+		for i in range(len(vars_1)):
+			std_devs_1.append(math.pow(vars_1[i], 0.5))
+			std_devs_2.append(math.pow(vars_2[i], 0.5))
+		
+		m_tot = 0
+		sd_tot = 0
+		
+		# Compute the parameters for the Wald test
+		# The difference of the means and the sum of the variances is used to compose the random variable W = X1 - X2 for each trial
+		# where X{1,2} is the random variable corresponding to the group {1,2}
+		for i in range(num_trials):
+			
+			# Perform wald - compose W = X1 - X2 for each trial
+			sd = math.pow(vars_1[i] + vars_2[i], 0.5)
+			m = math.fabs(means_1[i] - means_2[i]) 
 			
 			m_tot  = m_tot + m
 			sd_tot  = sd_tot + sd
 			
-			# print m1
-			# print m2
-			# print m
-			# print sd
 			
 		W = m_tot / sd_tot
 		# print W
@@ -387,37 +434,91 @@ class WaldTest(ConfidenceTest):
 
 Implements a Student's T test where the distribution of donations over a given period are assumed to resemble those of a students t distribution
 
+http://en.wikipedia.org/wiki/Student%27s_t-test
+
 """
 class TTest(ConfidenceTest):
 	
-	def confidence_test(self, metrics_1, metrics_2, time_indices, num_samples):
+	def confidence_test(self, metrics_1, metrics_2, num_samples):
 		
-		# Partition over different 
+		# retrieve means and variances
+		ret = self.compute_parameters(metrics_1, metrics_2, num_samples)
+		num_trials = ret[0]
+		means_1 = ret[1]
+		means_2 = ret[2]
+		vars_1 = ret[3]
+		vars_2 = ret[4]
 		
-		
-		# Compute mean for each group
-		m1 = sum(metrics_1) / len(metrics_1)
-		m2 = sum(metrics_2) / len(metrics_2)
-		
-		# Compute standard deviation
-		sd1 = 0
-		sd2 = 0
-		for i in range(len(metrics_1)):
-			sd1 = sd1 + math.pow((metrics_1[i] - m1), 2) 
-			sd2 = sd2 + math.pow((metrics_2[i] - m2), 2)
+		""" Compute std devs """
+		std_devs_1 = []
+		std_devs_2 = []
+		for i in range(len(vars_1)):
+			std_devs_1.append(math.pow(vars_1[i], 0.5))
+			std_devs_2.append(math.pow(vars_2[i], 0.5))
 			
-		sd1 = pow(sd1 / len(metrics_1), 0.5)
-		sd2 = pow(sd2 / len(metrics_2), 0.5)
+		m_tot = 0
+		var_1_tot = 0
+		var_2_tot = 0
 		
-		# degrees of freedom
+		# Compute the parameters for the Wald test
+		# The difference of the means and the sum of the variances is used to compose the random variable W = X1 - X2 for each trial
+		# where X{1,2} is the random variable corresponding to the group {1,2}
+		for i in range(num_trials): 
 		
-		# Perform wald
-		m1
+			m_tot  = m_tot + math.fabs(means_1[i] - means_2[i])
+			var_1_tot  = var_1_tot + vars_1[i]
+			var_2_tot  = var_2_tot + vars_2[i]
+			
+		m = m_tot / num_trials
+		s_1 = var_1_tot / num_trials
+		s_2 = var_2_tot / num_trials
 		
-		print m1
-		print m2
-		print sd1
-		print sd2
+		total_samples = len(metrics_1)
 		
+		t = m / math.pow((s_1 + s_2) / total_samples, 0.5)
+		degrees_of_freedom = (math.pow(s_1 / total_samples + s_2 / total_samples, 2) / (math.pow(s_1 / total_samples, 2) + math.pow(s_2 / total_samples, 2))) * total_samples
+			
+		
+		""" lookup confidence """
+		
+		print ''
+		print t 
+		print degrees_of_freedom
+		
+		# get t and df
+		degrees_of_freedom = math.ceil(degrees_of_freedom)
+		if degrees_of_freedom > 30:
+			degrees_of_freedom = 99
+			
+		select_stmnt = 'select max(p) from t_test where degrees_of_freedom = ' + str(degrees_of_freedom) + ' and t >= ' + str(t)
+		
+		self.init_db()
+		
+		try:
+			self.cur.execute(select_stmnt)
+			results = self.cur.fetchone()
+			
+			p = float(results[0])
+		except:
+			self.db.rollback()
+			self.db.close()
+			sys.exit('Could not execute: ' + select_stmnt)
+		
+		print p 
+		self.db.close()
+		
+		conf_str =  str((1 - p) * 100) + '% confident about the winner.'
+		
+		return [means_1, means_2, std_devs_1, std_devs_2, conf_str]
+		
+"""
+
+Implements a Chi Square test where the distribution of donations over a given period are assumed to resemble those of a students t distribution
+
+http://en.wikipedia.org/wiki/Chi-square_test
+
+"""
+class ChiSquareTest(ConfidenceTest):
+	def confidence_test(self, metrics_1, metrics_2, num_samples):
 		return
-		
+	

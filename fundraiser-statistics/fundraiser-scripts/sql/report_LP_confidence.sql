@@ -3,7 +3,7 @@
 
 select
 
-lp.utm_source,
+lp.landing_page,
 views as views,
 total_clicks as clicks,
 donations as donations,
@@ -15,19 +15,21 @@ amount / donations  as amt_per_donation
 
 from
 
-select 
+(select 
 landing_page, 
+utm_campaign,
 count(*) as views
 from landing_page
 where request_time >= '%s' and request_time < '%s'
 and utm_campaign REGEXP '%s'
 and landing_page REGEXP '%s'
-group by 1) as lp
+group by 1,2) as lp
 
 join
 
 (select 
 SUBSTRING_index(substring_index(utm_source, '.', 2),'.',-1) as landing_page,
+utm_campaign,
 count(*) as total_clicks,
 sum(not isnull(contribution_tracking.contribution_id)) as donations,
 sum(converted_amount) AS amount
@@ -37,7 +39,7 @@ ON (contribution_tracking.contribution_id = civicrm.public_reporting.contributio
 where ts >= '%s' and ts < '%s'
 and utm_campaign REGEXP '%s'
 and SUBSTRING_index(substring_index(utm_source, '.', 2),'.',-1) REGEXP '%s'
-group by 1) as ecomm
+group by 1,2) as ecomm
 
 on ecomm.landing_page = lp.landing_page and ecomm.utm_campaign = lp.utm_campaign
 
