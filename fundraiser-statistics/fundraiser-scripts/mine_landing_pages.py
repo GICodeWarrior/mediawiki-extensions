@@ -73,6 +73,9 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 		print >> sys.stdout, "Could not execute delete statement, DIFF too large\ndiff = " + str(time_diff) + "\ntime_start = " + start + "\ntime_end = " + end + "\nResuming insert ..."
 	
 	
+	count_correct = 0
+	count_total = 0
+	
 	# PROCESS LOG FILE
 	# ================
 	line = logFile.readline()
@@ -220,7 +223,7 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 						
 				except:
 					landing_page = 'NONE'
-					country = mh.localize_IP(ip_add) + ' !'
+					country = mh.localize_IP(cur, ip_add)
 					
 			else: # ...wikimediafoundation.org/wiki/...
 				
@@ -241,12 +244,11 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 							country = landing_path[3]
 							
 					except:
-						country =  mh.localize_IP(ip_add) + ' !'
+						country =  mh.localize_IP(cur, ip_add) 
 			
 			# If country is confused with the language use the ip
 			if country == country.lower():
-				country = mh.localize_IP(ip_add) + ' !'
-				
+				country = mh.localize_IP(cur, ip_add) 
 							
 			# ensure fields exist
 			try:
@@ -272,11 +274,9 @@ def mine_landing_pages(run_id, logFileName, db, cur):
 				print "Could not insert:\n" + insertStmt_lp + val
 				pass
 				
-			
 		line = logFile.readline()
 
-
-
+	
 
 	
 
