@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback_ratings (
   -- Rating Id
   aar_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   -- Text (i18n key) for rating description
-  aar_rating varchar(255) binary NOT NULL
+  aar_rating varbinary(255) NOT NULL
 ) /*$wgDBTableOptions*/;
 
 -- Default article feedback ratings for the pilot
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback (
   -- User Id (0 if anon)
   aa_user_id integer NOT NULL,
   -- Username or IP address
-  aa_user_text varchar(255) binary NOT NULL,
+  aa_user_text varbinary(255) NOT NULL,
   -- Unique token for anonymous users (to facilitate ratings from multiple users on the same IP)
   aa_user_anon_token binary(32) DEFAULT '',
   -- Foreign key to revision.rev_id
