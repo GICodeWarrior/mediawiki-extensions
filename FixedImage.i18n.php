@@ -104,6 +104,13 @@ $messages['ca'] = array(
 	'fixedimage-desc' => "Afegeix l'etiqueta <code>&lt;fundraising&gt;</code> com una imatge",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'fixedimage-desc' => 'Тlетуху билгалло <code>&lt;fundraising&gt;</code> сурт санна',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
