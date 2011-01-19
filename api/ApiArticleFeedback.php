@@ -68,6 +68,8 @@ class ApiArticleFeedback extends ApiBase {
 
 			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $rating, $thisRating, $params['bucket'] );
 		}
+		
+		$this->insertProperties( $revisionId, $wgUser, $token, $params );
 
 		$r = array( 'result' => 'Success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
@@ -169,7 +171,6 @@ class ApiArticleFeedback extends ApiBase {
 					'aa_timestamp' => $timestamp,
 					'aa_rating_value' => $ratingValue,
 				),
-				array_merge(
 				array(
 					'aa_page_id' => $pageId,
 					'aa_user_text' => $user->getName(),
@@ -178,6 +179,52 @@ class ApiArticleFeedback extends ApiBase {
 					'aa_user_anon_token' => $token
 				),
 				__METHOD__
+			);
+		}
+	}
+	
+	/**
+	 * Inserts or updates properties for a specific rating
+	 * @param $revisionId int Revision ID
+	 * @param $user User object
+	 * @param $token string Anon token or empty string
+	 * @param $params array Request parameters
+	 */
+	private function insertProperties( $revisionId, $user, $token, $params ) {
+		$this->insertProperty( $revisionId, $user, $token, 'expertise', $params['expertise'] );
+	}
+
+	/**
+	 * Inserts or updates a specific property for a specific rating
+	 * @param $revisionId int Revision ID
+	 * @param $user User object
+	 * @param $token string Anon token or empty string
+	 * @param $key string Property key
+	 * @param $value int Property value
+	 */
+	private function insertProperty( $revisionId, $user, $token, $key, $value ) {
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$dbw->insert( 'article_feedback_properties', array(
+				'afp_revision' => $revisionId,
+				'afp_user_text' => $user->getName(),
+				'afp_user_anon_token' => $token,
+				'afp_key' => $key,
+				'afp_value' => $value
+			),
+			__METHOD__,
+			array( 'IGNORE' )
+		);
+		
+		if ( !$dbw->affectedRows() ) {
+			$dbw->update( 'article_feedback_properties',
+				array( 'afp_value' => $value ),
+				array(
+					'afp_revision' => $revisionId,
+					'afp_user_text' => $user->getName(),
+					'afp_user_anon_token' => $token,
+					'afp_key' => $key,
+				), __METHOD__
 			);
 		}
 	}
@@ -201,6 +248,9 @@ class ApiArticleFeedback extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI => false,
 				ApiBase::PARAM_MIN => 1
+			),
+			'expertise' => array(
+				ApiBase::PARAM_TYPE => 'integer',
 			)
 		);
 
@@ -223,7 +273,8 @@ class ApiArticleFeedback extends ApiBase {
 			'pageid' => 'Page ID to submit feedback for',
 			'revid' => 'Revision ID to submit feedback for',
 			'anontoken' => 'Token for anonymous users',
-			'bucket' => 'Which rating widget was shown to the user'
+			'bucket' => 'Which rating widget was shown to the user',
+			'expertise' => 'Which expertise level the user claimed to have',
 		);
 		foreach( $wgArticleFeedbackRatings as $rating ) {
 		        $ret["r{$rating}"] = "Rating {$rating}";

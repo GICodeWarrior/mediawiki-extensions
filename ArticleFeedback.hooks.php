@@ -89,6 +89,8 @@ class ArticleFeedbackHooks {
 				$updater->addExtensionUpdate( array( 'addField', 'article_feedback', 'aa_design_bucket',
 						$dir . '/sql/AddRatingBucket.sql', true ) );
 			}
+			$updater->addExtensionUpdate( array( 'addTable', 'article_feedback_properties',
+						"$dir/sql/article_feedback_properties.sql", true ) );
 		}
 		return true;
 	}
