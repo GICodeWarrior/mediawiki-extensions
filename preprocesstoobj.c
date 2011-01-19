@@ -651,6 +651,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 
 				addLiteral( text, i, matchingCount );
 				i += matchingCount;
+				getFlags();
 				continue;
 			}
 			assert( ( parentNode->parent && ( parentNode->parent->type == brace_node ) ) );
