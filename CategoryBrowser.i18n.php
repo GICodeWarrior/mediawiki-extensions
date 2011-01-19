@@ -366,6 +366,13 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'cb_cat_name_filter' => 'Кадегар лахар цIерашца:',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|бухаркадегар|бухаркадегарш}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|агlо|агlонаш}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|хlум|хlумнаш}}',
+	'cb_cat_subcats' => 'бухаркадегарш',
+	'cb_cat_pages' => 'агlонаш',
+	'cb_cat_files' => 'хlумнаш',
+	'cb_all_op' => 'Массо',
 );
 
 /** Czech (Česky)
