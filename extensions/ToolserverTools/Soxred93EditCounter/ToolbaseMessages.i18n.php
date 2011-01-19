@@ -5,7 +5,7 @@ $messages = array();
  * @author soxred93
  */
 $messages['en'] = array (
-	'toolbase-header-title' => "X!'s Tools",
+	'toolbase-header-title' => "X!'s Tools (BETA)",
 	'toolbase-header-bugs' => 'Bugs',
 	'toolbase-header-twitter' => 'Twitter',
 	'toolbase-header-sitenotice' => 'Global Toolserver Sitenotice: $1',
