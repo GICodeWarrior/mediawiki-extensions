@@ -393,7 +393,13 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'recordadmin-newsearch' => 'Керла лахар $1',
+	'recordadmin-buttonsearch' => 'Лаха',
+	'recordadmin-buttoncreate' => 'Кхолла',
+	'recordadmin-buttonsave' => 'lалашдан',
 	'recordadmin-viewlink' => 'хьажа',
+	'recordadmin-editlink' => 'нисйé',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
 );
 
 /** Sorani (کوردی) */
