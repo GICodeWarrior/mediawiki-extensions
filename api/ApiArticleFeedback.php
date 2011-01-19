@@ -16,7 +16,9 @@ class ApiArticleFeedback extends ApiBase {
 				$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
 			}
 
-			$token['aa_user_anon_token'] = $params['anontoken'];
+			$token = $params['anontoken'];
+		} else {
+			$token = '';
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -26,14 +28,12 @@ class ApiArticleFeedback extends ApiBase {
 		$res = $dbr->select(
 			'article_feedback',
 			array( 'aa_rating_id', 'aa_rating_value', 'aa_revision' ),
-			array_merge(
-				array(
-					'aa_user_id' => $wgUser->getId(),
-					'aa_user_text' => $wgUser->getName(),
-					'aa_page_id' => $params['pageid'],
-					'aa_rating_id' => $wgArticleFeedbackRatings,
-				),
-				$token
+			array(
+				'aa_user_id' => $wgUser->getId(),
+				'aa_user_text' => $wgUser->getName(),
+				'aa_page_id' => $params['pageid'],
+				'aa_rating_id' => $wgArticleFeedbackRatings,
+				'aa_user_anon_token' => $token,
 			),
 			__METHOD__,
 			array(
@@ -147,18 +147,16 @@ class ApiArticleFeedback extends ApiBase {
 
 		$dbw->insert(
 			'article_feedback',
-			array_merge(
-				array(
-					'aa_page_id' => $pageId,
-					'aa_user_id' => $user->getId(),
-					'aa_user_text' => $user->getName(),
-					'aa_revision' => $revisionId,
-					'aa_timestamp' => $timestamp,
-					'aa_rating_id' => $ratingId,
-					'aa_rating_value' => $ratingValue,
-					'aa_design_bucket' => $bucket
-				),
-				$token
+			array(
+				'aa_page_id' => $pageId,
+				'aa_user_id' => $user->getId(),
+				'aa_user_text' => $user->getName(),
+				'aa_revision' => $revisionId,
+				'aa_timestamp' => $timestamp,
+				'aa_rating_id' => $ratingId,
+				'aa_rating_value' => $ratingValue,
+				'aa_design_bucket' => $bucket,
+				'aa_user_anon_token' => $token
 			),
 			__METHOD__,
 			 array( 'IGNORE' )
@@ -172,13 +170,12 @@ class ApiArticleFeedback extends ApiBase {
 					'aa_rating_value' => $ratingValue,
 				),
 				array_merge(
-					array(
-						'aa_page_id' => $pageId,
-						'aa_user_text' => $user->getName(),
-						'aa_revision' => $revisionId,
-						'aa_rating_id' => $ratingId,
-					),
-					$token
+				array(
+					'aa_page_id' => $pageId,
+					'aa_user_text' => $user->getName(),
+					'aa_revision' => $revisionId,
+					'aa_rating_id' => $ratingId,
+					'aa_user_anon_token' => $token
 				),
 				__METHOD__
 			);
