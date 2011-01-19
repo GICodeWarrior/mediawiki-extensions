@@ -64,6 +64,13 @@ $messages['bs'] = array(
 	'nll-lastseparator' => '&#32;i&#32;',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'nll-lastseparator' => '&#32;а&#32;',
+);
+
 /** Danish (Dansk)
  * @author Svip
  */
