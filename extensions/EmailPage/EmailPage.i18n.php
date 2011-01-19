@@ -237,6 +237,15 @@ $messages['bs'] = array(
 	'ea-allusers' => 'Svi korisnici',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'ea-from' => 'Соьгар:',
+	'ea-to' => 'Хьан:',
+	'ea-message' => 'Хаам:',
+);
+
 /** German (Deutsch)
  * @author Church of emacs
  * @author Kghbln

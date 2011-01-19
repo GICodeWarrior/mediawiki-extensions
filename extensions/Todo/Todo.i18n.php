@@ -365,6 +365,15 @@ $messages['ca'] = array(
 	'todo-form-submit' => 'Tramet una consulta',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'todo-tab' => 'дадезарш',
+	'todo-new-queue' => 'керла',
+	'todo-list-cancel' => 'Цаоьшу',
+);
+
 /** Sorani (کوردی)
  * @author Marmzok
  */

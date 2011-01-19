@@ -114,6 +114,17 @@ Aquest correu electrònic t'ha estat enviat a través del sistema de correu elec
 $2",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'email-desc' => 'Атто бо лелош болу декъашхойн куй тlетоха йа декъашхонгара декъашхона хааман чаккхе йа',
+	'email_footer' => '----------------------------------------------------------------------------
+Хlара хаам тесна, оцу дуьнена машан чура {{SITENAME}} декъашхочо $1.
+
+$2',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

@@ -63,6 +63,15 @@ $messages['bs'] = array(
 	'pdfbook-desc' => 'Sastavlja knjigu od stranica u kategoriji i izvozi ih kao PDF knjigu',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'pdfbook-action' => 'Зорба оц PDF',
+	'pdfbook-log' => '$1 арадаькхина PDF-жайна санна',
+	'pdfbook-desc' => 'Кадегари агlонех кхуллу жайна, PDF бараме дерзош',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

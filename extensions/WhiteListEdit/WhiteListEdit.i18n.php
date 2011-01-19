@@ -670,6 +670,7 @@ $messages['ca'] = array(
  * @author Sasan700
  */
 $messages['ce'] = array(
+	'whitelisttablemodifynone' => 'Хlумма цаоьшу',
 	'whitelisttablemodon' => 'Тlаьххьара хийцамаш',
 	'whitelisttableview' => 'Хьажа',
 );
@@ -3314,7 +3315,8 @@ Táto stránka sa týka iba obmedzneých používateľov.",
 	'group-manager-member' => 'Správca',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -3345,8 +3347,8 @@ $messages['sr-ec'] = array(
 $2',
 	'whitelistrequestconf' => 'Захтев за новим страницама је послат $1',
 	'whitelistnever' => 'никад',
-	'group-manager' => 'Менаџери',
-	'group-manager-member' => 'Менаџер',
+	'group-manager' => 'Управљачи',
+	'group-manager-member' => 'Управљач',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

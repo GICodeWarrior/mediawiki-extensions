@@ -52,6 +52,13 @@ $messages['ca'] = array(
 	'hidens-desc' => "Oculta l'espai de noms en l'encapçalament i al títol quan una pàgina està en un espai de noms determinat o quan es crida a la funció <code><nowiki>{{#hidens:}}</nowiki></code>",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'hidens-desc' => 'Ана цlераш къайла хьо хlокху <code><nowiki>{{#hidens:}}</nowiki></code> ишаро, коьрта могlан цlе а, нагахьсан и агlо юкъайогlуш йалахь ана цверашна, йа оцун чохь хьаржаман йоза делахь.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

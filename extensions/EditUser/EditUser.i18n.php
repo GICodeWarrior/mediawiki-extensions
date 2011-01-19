@@ -254,6 +254,14 @@ $messages['ca'] = array(
 	'right-edituser-exempt' => "Altres usuaris no poden editar les preferències d'aquest usuari",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'edituser-username' => 'Декъашхон цlе:',
+	'edituser-dosearch' => 'Лаха',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */

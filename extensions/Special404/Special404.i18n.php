@@ -65,6 +65,20 @@ Možda bi ste željeli da pogledate:
 * [[{{MediaWiki:Mainpage}}|Početnu stranu]]',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'special404-desc' => 'Латта до дlасхьажор оцу гlалатан 404',
+	'error404' => '404 Ца карийна',
+	'special404-body' => 'Дехарца йолу URL-меттиг ца карайна.
+
+Хьо язъйа лууш вари {{fullurl:$1}}?
+
+Хила мега, хьо оуьнга хьажа лууш:
+* [[{{MediaWiki:Mainpage}}|The Main page]]',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

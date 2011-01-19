@@ -81,6 +81,13 @@ $messages['ca'] = array(
 	'ipauth-desc' => "Inici de sessió automàtic des d'adreces IP fixes",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'ipauth-desc' => 'Шашех чувалар массо хенахь долучу IP цани',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
