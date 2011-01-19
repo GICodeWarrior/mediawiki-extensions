@@ -234,6 +234,13 @@ $messages['ca'] = array(
 	'player-goto-file' => 'fitxer',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'player-file' => 'Хlуман цlе',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
