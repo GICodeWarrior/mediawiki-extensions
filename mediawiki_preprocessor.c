@@ -137,5 +137,14 @@ PHP_METHOD(WikiTextPreprocessor, preprocessToObj)
 	DEBUG("Constructed with text «%s» of length %d, flags %d", wikitext, wikitext_len, flags );
 	preprocessed = preprocessToObj( wikitext, wikitext_len, flags, Z_ARRVAL_P(array), &preprocessed_len );
 	
+	if ( !preprocessed ) {
+		/* Preprocessing failed. The error code is given in preprocessed_len */
+		if ( preprocessed_len == 1 ) {
+			zend_throw_exception(zend_exception_get_default(), "Non-strings found in the parser strip list", 1 TSRMLS_CC);
+		} else {
+			zend_throw_exception(zend_exception_get_default(), "Unknown error preprocessing", 1 TSRMLS_CC);
+		}
+	}
+
 	RETURN_STRINGL( preprocessed, preprocessed_len, 0 );
 }
