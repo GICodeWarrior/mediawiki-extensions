@@ -90,7 +90,6 @@ $.articleFeedback = {
 					'action': 'articlefeedback',
 					'format': 'json',
 					'anontoken': mw.user.id(),
-					'userid': mw.user.id(),
 					'pageid': mw.config.get( 'wgArticleId' ),
 					'revid': mw.config.get( 'wgCurRevisionId' ),
 					'bucket': context.options.bucket
