@@ -581,6 +581,7 @@ $messages['ru'] = array(
 	'livetranslate-special-button' => 'Сохранить и обновить',
 	'livetranslate-special-type' => 'Тип',
 	'livetranslate-special-location' => 'Расположение',
+	'livetranslate-special-remove' => 'Удалить',
 	'livetranslate-special-local' => 'Местное',
 	'livetranslate-special-add-tm' => 'Добавить новую память переводов',
 	'livetranslate-special-current-tms' => 'Существующие памяти переводов',
