@@ -65,6 +65,19 @@ $messages['bs'] = array(
 	'specialarc2admin' => 'ARC2 RDF Store administratorska stranica',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'rdfio-desc' => 'Шуьйра аттонаш чуйаха а арайаха RDF, цаьрца тlаьххьара тlадам SPARQL оцу билгаллонца MediaWiki',
+	'rdfimport' => 'Чуйакха RDF',
+	'rdfio-arc2admin-desc' => 'Дlайуллу чоьн урхалла до агlо ARC2 RDF билгаллонца MediaWiki',
+	'rdfio-rdfimport-desc' => 'Леррина хlумнаш чуйоху агlо, RDF/XML барамца',
+	'rdfio-sparqlendpoint-desc' => 'Тlаьххьара тlадам SPARQL белла SMWRDFConnector',
+	'sparqlendpoint' => 'Тlаьххьара тlадам SPARQL',
+	'specialarc2admin' => 'ARC2 RDF дlайуллу чоьн урхалла до агlо',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
