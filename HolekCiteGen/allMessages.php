@@ -128,6 +128,22 @@ $messages['af'] = array(
 	'ts-citegen-Errors-title' => 'Foute',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'ts-citegen-Send' => 'توليد',
+	'ts-citegen-Input-title' => 'مدخل',
+	'ts-citegen-Output-title' => 'النتيجة',
+	'ts-citegen-Skins' => 'مخرج',
+	'ts-citegen-Skin-skins' => 'الواجهات',
+	'ts-citegen-Sources-title' => 'المصادر',
+	'ts-citegen-Tools' => 'أدوات',
+	'ts-citegen-Other-languages' => 'لغات أخرى',
+	'ts-citegen-Save-it' => 'الاستعلام الحالي',
+	'ts-citegen-Errors-title' => 'أخطاء',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Wizardist

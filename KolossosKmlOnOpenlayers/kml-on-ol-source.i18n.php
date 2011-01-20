@@ -57,6 +57,18 @@ $messages['an'] = array(
 	'ts-kml-on-ol-thumbnails' => 'Miniatura',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'ts-kml-on-ol-options' => 'خيارات',
+	'ts-kml-on-ol-languages' => 'اللغات',
+	'ts-kml-on-ol-thumbnails' => 'الصور المصغرة',
+	'ts-kml-on-ol-help' => 'مساعدة',
+	'ts-kml-on-ol-all' => 'الكل',
+	'ts-kml-on-ol-map-by' => 'الخريطة بواسطة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

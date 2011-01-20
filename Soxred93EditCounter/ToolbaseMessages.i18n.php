@@ -50,6 +50,7 @@ If you followed a link from somewhere, please <a href="$1">report a bug</a>.
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author X!
  */
 $messages['qqq'] = array(
@@ -60,8 +61,10 @@ $messages['qqq'] = array(
 	'toolbase-footer-exectime' => 'Text shown in the footer. Used to show how many seconds were used in the loading of the page',
 	'toolbase-footer-source' => 'Text used in the link to the source code',
 	'toolbase-footer-language' => 'Text on the button that changes the interface language',
-	'toolbase-footer-translate' => 'Text shown in the link to the translation page',
-	'toolbase-navigation' => 'Text shown at the top of the navigation sidebar',
+	'toolbase-footer-translate' => 'Text shown in the link to the translation page
+{{Identical|Translate}}',
+	'toolbase-navigation' => 'Text shown at the top of the navigation sidebar
+{{Identical|Navigation}}',
 	'toolbase-navigation-homepage' => 'Text shown in the nagivation link to the homepage',
 	'toolbase-navigation-user_id' => 'Text shown in the nagivation link to the user_id tool',
 	'toolbase-userid-submit' => 'Text on the submit button for the user_id tool',
@@ -116,6 +119,28 @@ As u \'n skakel vanaf elders gevolg het, <a href="$1">rapporteer \'n fout</a>.
 	'toolbase-error-nouser' => "$1 is nie 'n geldige gebruiker nie",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'toolbase-header-bugs' => 'علل',
+	'toolbase-replag-years' => 'سنة',
+	'toolbase-replag-months' => 'شهر',
+	'toolbase-replag-weeks' => 'أسبوع',
+	'toolbase-replag-days' => 'يوم',
+	'toolbase-replag-hours' => 'ساعة',
+	'toolbase-replag-minutes' => 'دقيقة',
+	'toolbase-replag-seconds' => 'ثانية',
+	'toolbase-footer-source' => 'عرض المصدر',
+	'toolbase-footer-language' => 'تغيير اللغة',
+	'toolbase-footer-translate' => 'ترجمة',
+	'toolbase-navigation' => 'إبحار',
+	'toolbase-navigation-homepage' => 'الصفحة الرئيسية',
+	'toolbase-main-title' => 'مرحبا!',
+	'toolbase-main-404' => 'الملف غير موجود',
+	'toolbase-form-wiki' => 'ويكي',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -132,6 +157,17 @@ $messages['be-tarask'] = array(
 	'toolbase-replag-hours' => 'гадзіны',
 	'toolbase-replag-minutes' => 'хвілінаў',
 	'toolbase-replag-seconds' => 'сэкунд',
+	'toolbase-footer-exectime' => 'Выканана за $1 сэкундаў',
+	'toolbase-footer-source' => 'Паказаць крынічны код',
+	'toolbase-footer-language' => 'Зьмяніць мову',
+	'toolbase-footer-translate' => 'Перакласьці',
+	'toolbase-navigation' => 'Навігацыя',
+	'toolbase-navigation-homepage' => 'Хатняя старонка',
+	'toolbase-navigation-user_id' => 'Знайсьці ідэнтыфікатар удзельніка',
+	'toolbase-userid-submit' => 'Атрымаць ідэнтыфікатар удзельніка',
+	'toolbase-userid-title' => 'Знайсьці ідэнтыфікатар удзельніка',
+	'toolbase-userid-result' => 'Ідэнтыфікатарам удзельніка <b>$1</b> на <a href="$3"><b>$3</b></a> зьяўляецца <b>$2</b>.',
+	'toolbase-main-title' => 'Вітаем!',
 );
 
 /** German (Deutsch)
@@ -190,12 +226,18 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Grondin
  * @author X!
  */
 $messages['fr'] = array(
 	'toolbase-replag-hours' => 'heures',
 	'toolbase-replag-minutes' => 'minutes',
 	'toolbase-replag-seconds' => 'secondes',
+	'toolbase-footer-translate' => 'Traduire',
+	'toolbase-main-title' => 'Bienvenue !',
+	'toolbase-main-404' => 'Fichier introuvable',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => "$1 n'est pas un utilisateur valide",
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -206,13 +248,13 @@ $messages['hsb'] = array(
 	'toolbase-header-bugs' => 'Programowe zmylki',
 	'toolbase-header-sitenotice' => 'Globalna zdźělenka toolserwera: $1',
 	'toolbase-replag' => 'Serwer komdźeše so wo $1',
-	'toolbase-replag-years' => 'lěta',
-	'toolbase-replag-months' => 'měsacy',
-	'toolbase-replag-weeks' => 'njedźele',
-	'toolbase-replag-days' => 'dny',
-	'toolbase-replag-hours' => 'hodźiny',
-	'toolbase-replag-minutes' => 'mjeńšiny',
-	'toolbase-replag-seconds' => 'sekundy',
+	'toolbase-replag-years' => 'lět',
+	'toolbase-replag-months' => 'měsacow',
+	'toolbase-replag-weeks' => 'njedźelow',
+	'toolbase-replag-days' => 'dnjow',
+	'toolbase-replag-hours' => 'hodźin',
+	'toolbase-replag-minutes' => 'mjeńšin',
+	'toolbase-replag-seconds' => 'sekundow',
 	'toolbase-footer-exectime' => 'Wob $1 sekundow wuwjedźeny',
 	'toolbase-footer-source' => 'Žórło sej wobhladać',
 	'toolbase-footer-language' => 'Rěč změnić',
@@ -224,6 +266,11 @@ $messages['hsb'] = array(
 	'toolbase-userid-title' => 'Wužiwarski ID pytać',
 	'toolbase-userid-result' => 'Wužiwarski ID za <b>$1</b> na <a href="$3"><b>$3</b></a> je <b>$2</b>.',
 	'toolbase-main-title' => 'Witaj!',
+	'toolbase-main-content' => 'Witaj k X!\'s tools! Gratowy pakćik so runje hišće do frameworka <a href="$1">Symfony</a> konwertuje. Tutón proces budźe chwilku trać, ale měł hižo nětko fungować.
+
+Za lisćinu gratow, kotrež hižo z tutym frameworkom funguja, hlej bóčnicu naprawo.
+
+Programowe zmylki móžeš k <a href="$2">Google Code</a> zdźělić.',
 	'toolbase-main-404' => 'Dataja njenamakana',
 	'toolbase-main-404-content' => 'Ow jej! Žane websydło namakane!
 
@@ -273,6 +320,47 @@ Si un ligamine te ha ducite hic, per favor <a href="$1">reporta un falta</a>.
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '"$1" non es un usator valide',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'toolbase-header-title' => 'Alat X! (BETA)',
+	'toolbase-header-bugs' => 'Bug',
+	'toolbase-header-sitenotice' => 'Pesan situs global Toolserver: $1',
+	'toolbase-replag' => 'Server tertinggal selama $1',
+	'toolbase-replag-years' => 'tahun',
+	'toolbase-replag-months' => 'bulan',
+	'toolbase-replag-weeks' => 'pekan',
+	'toolbase-replag-days' => 'hari',
+	'toolbase-replag-hours' => 'jam',
+	'toolbase-replag-minutes' => 'menit',
+	'toolbase-replag-seconds' => 'detik',
+	'toolbase-footer-exectime' => 'Dilaksanakan dalam $1 detik',
+	'toolbase-footer-source' => 'Lihat sumber',
+	'toolbase-footer-language' => 'Ganti bahasa',
+	'toolbase-footer-translate' => 'Terjemahkan',
+	'toolbase-navigation' => 'Navigasi',
+	'toolbase-navigation-homepage' => 'Beranda',
+	'toolbase-navigation-user_id' => 'Cari ID pengguna',
+	'toolbase-userid-submit' => 'Cari ID pengguna',
+	'toolbase-userid-title' => 'Cari suatu ID pengguna',
+	'toolbase-userid-result' => 'ID pengguna untuk <b>$1</b> pada <a href="$3"><b>$3</b></a> adalah <b>$2</b>.',
+	'toolbase-main-title' => 'Selamat datang!',
+	'toolbase-main-content' => 'Selamat datang di alat X! Perangkat alat ini masih dalam proses yang konversi ke kerangka kerja <a href="$1">Symfony</a>. Proses ini memerlukan waktu, tetapi sekarang telah dapat dipakai.
+
+Untuk daftar alat yang saat ini berjalan pada kerangka kerja ini, lihat bilah sisi di sebelah kanan.
+
+Bug dapat dilaporkan ke <a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'Berkas tidak ditemukan.',
+	'toolbase-main-404-content' => 'Ups! Halaman tidak ditemukan! 
+
+Pastikan bahwa Anda mengetik URL dengan benar.
+Jika Anda mengikuti tautan dari tempat lain, silahkan <a href="$1">laporkan bug</a>.
+</ul>',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 bukan pengguna yang sah',
 );
 
 /** Macedonian (Македонски)
@@ -376,6 +464,11 @@ $messages['uk'] = array(
 	'toolbase-navigation-homepage' => 'Домашня сторінка',
 	'toolbase-main-title' => 'Ласкаво просимо!',
 	'toolbase-main-404' => 'Файл не знайдено',
+	'toolbase-main-404-content' => 'Отакої! Сторінку не знайдено!
+
+Переконайтеся, що ви набрали URL правильно.
+Якщо ви перейшли за посиланням звідки-небудь, будь ласка, <a href="$1">повідомте про помилку</a>.
+</ul>',
 	'toolbase-form-wiki' => 'Вікі',
 );
 
