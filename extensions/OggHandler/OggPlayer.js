@@ -720,7 +720,7 @@ var wgOggPlayer = {
 					if ( !xiphQtVersion || xiphQtVersion == '0.0' ) {
 						var div = document.createElement( 'div' );
 						div.className = 'ogg-player-options';
-						div.style.cssText = 'width:' + ( params.width - 10 ) + 'px;'
+						div.style.cssText = 'width:' + ( params.width - 10 ) + 'px;';
 						div.innerHTML = this_.getMsg( 'ogg-no-xiphqt' );
 						var optionsDiv = document.getElementById( params.id + '_options_box' );
 						if ( optionsDiv ) {
