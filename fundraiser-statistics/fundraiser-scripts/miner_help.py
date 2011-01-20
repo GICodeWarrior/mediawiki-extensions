@@ -90,7 +90,9 @@ def read_sql(filename):
 	while (line != ''):
 		sql_stmnt = sql_stmnt + line
 		line = sql_file.readline()
-
+	
+	sql_file.close()
+	
 	return sql_stmnt
 	
 def drange(start, stop, step):
