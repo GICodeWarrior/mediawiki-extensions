@@ -18,7 +18,7 @@
                 var $self = $("#photocommons-dialog");
 
                 $self.dialog({
-                	title : 'PhotoCommons - Afbeelingen invoegen van Wikimedia Commons',
+                	title : 'Photocommons - Afbeelingen invoegen van Wikimedia Commons',
                     width : 800,
                     height : 500
                 });

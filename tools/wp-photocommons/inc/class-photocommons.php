@@ -1,5 +1,5 @@
 <?php
-class PhotoCommons {
+class Photocommons {
     // TODO: ugly
     const PLUGIN_PATH = "/wp-content/plugins/wp-photocommons/";
     const RESIZE_URL = "http://commons.wikimedia.org/w/api.php?action=query&titles=%s&prop=imageinfo&iiprop=url&iiurlwidth=%s&format=php";
@@ -29,7 +29,7 @@ class PhotoCommons {
     }
 
     private function doApiThumbResizeRequest($filename, $size) {
-        ini_set('user_agent', 'PhotoCommons/1.0');
+        ini_set('user_agent', 'Photocommons/1.0');
         $url = $this->getResizeUrl($filename, $size);
         $result = unserialize(file_get_contents($url));
         $data = array_pop($result['query']['pages']);
