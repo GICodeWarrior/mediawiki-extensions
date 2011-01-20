@@ -2,6 +2,7 @@
 window.log = function( a, b ) {
 	//console.log( a, b );
 };
+
 if ( !window.Photocommons ) {
 	window.Photocommons = {};
 }

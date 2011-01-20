@@ -4,7 +4,7 @@ Plugin Name: Photocommons
 Plugin URI: http://www.mediawiki.org/wiki/Photocommons
 Description: Search and add free images from Wikimedia Commons directly in your blog 
 Author: Hay Kranen, Timo Tijhof
-Version: 1.0
+Version: 0.1-alpha
 Author URI: http://www.mediawiki.org/wiki/Photocommons
 */
 

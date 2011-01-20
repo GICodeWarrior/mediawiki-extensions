@@ -25,9 +25,19 @@
 
                 $("#wp-photocommons-images img").live('click', function() {
                     var file = $(this).attr('data-filename'),
-                        cnt = $("#content").val();
+                        shortcode = '[photocommons file="' + file + '" size="300"]' + "\n";
 
-                    $("#content").val('[photocommons file="' + file + '" size="300"]' + "\n" + cnt);
+                    // Depending on whether we are in Wysiwyg or HTML mode we
+                    // do a different insert
+                    if ($("#edButtonHTML").hasClass('active')) {
+                        // HTML editor
+                        cnt = $("#content").val();
+                        $("#content").val( + cnt);
+                    } else {
+                        // Wysiwyg
+                        tinyMCE.execCommand('mceInsertContent', false, shortcode);
+                    }
+
                     $self.dialog('close');
                 });
             });
