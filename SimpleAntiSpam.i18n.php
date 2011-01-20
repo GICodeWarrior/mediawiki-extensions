@@ -843,12 +843,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'simpleantispam' => '您的編輯已經觸發了防垃圾裝置',
 	'simpleantispam-label' => "反垃圾檢查。
 '''不要'''加入這個！",
-	'simpleantispam-desc' => '加一個簡單的垃圾／機械人檢查表格',
+	'simpleantispam-desc' => '加一個簡單的垃圾／機器人檢查表格',
 );
 
