@@ -2299,6 +2299,19 @@ $messages['ksh'] = array(
 	'voctrain_other' => 'en ander Zahl',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'voctrain_Languages' => 'Zimanan',
+	'voctrain_Answer' => 'Bersiv',
+	'voctrain_User_name' => 'Navê bikarhêner',
+	'voctrain_Password' => 'Şîfre',
+	'voctrain_Language' => 'Ziman',
+	'voctrain_Translation' => 'Wergerr',
+	'voctrain_other' => 'yên din',
+);
+
 /** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
