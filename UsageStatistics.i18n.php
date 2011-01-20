@@ -1435,6 +1435,16 @@ $messages['ksh'] = array(
 	'right-viewsystemstats' => 'Dem [[Special:UserStats|Wiki sing Jebruchs_Shtatistike]] aanloore',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'usagestatisticstype' => 'Cure:',
+	'usagestatisticsintervalday' => 'Roj',
+	'usagestatisticsintervalweek' => 'Hefte',
+	'usagestatisticsintervalmonth' => 'Meh',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
