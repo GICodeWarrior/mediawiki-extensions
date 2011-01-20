@@ -1201,6 +1201,13 @@ $messages['ksh'] = array(
 	'expand_templates_preview' => 'Vör-Aansich',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'expand_templates_ok' => 'Temam',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */
