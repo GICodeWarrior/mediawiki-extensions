@@ -3255,9 +3255,16 @@ Uppder donn op en Shtadt, e Land, en Address, udder e Jeschäff z höppe:',
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author George Animal
  */
 $wgGoogleMapsMessages['ku-latn'] = array(
+	'gm-balloon-title' => 'Sernav',
+	'gm-yes' => 'Erê',
+	'gm-no' => 'Na',
 	'gm-search' => 'Lêbigere',
+	'gm-earth' => 'Erd',
+	'gm-moon' => 'Heyv',
+	'gm-mars' => 'Behram',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
