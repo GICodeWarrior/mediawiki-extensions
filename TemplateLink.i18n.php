@@ -661,9 +661,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'templatelink' => '模板連結',
+	'templatelink_desc' => '這個擴充套件可以將一個模版作為新頁面來展示。',
+	'templatelink_empty' => '您必須提供一個參數。',
+	'templatelink_newtitle' => '$1 (已引用)',
 );
 
