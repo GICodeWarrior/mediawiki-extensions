@@ -546,9 +546,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'skinperpage-desc' => '加入<code>&lt;skin&gt;</code>標籤在每一頁面中使用不同的面版',
+	'skinperpage-desc' => '加入 <code>&lt;skin&gt;</code> 標籤在每一頁面中使用不同的外觀',
 );
 

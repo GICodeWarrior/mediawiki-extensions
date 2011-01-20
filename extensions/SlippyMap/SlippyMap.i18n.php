@@ -1360,9 +1360,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'slippymap_error' => '$1錯誤：$2',
+	'slippymap_error' => '$1 錯誤：$2',
+	'slippymap_clicktoactivate' => '點擊以啟動地圖',
 );
 

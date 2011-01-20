@@ -2641,7 +2641,7 @@ $messages['zh-hant'] = array(
 	'ct-anon-users' => '匿名用戶',
 	'ct-user-contribs' => '用戶貢獻合計',
 	'ct-user-span' => '時間範圍內的用戶貢獻',
-	'ct-and' => '和',
+	'ct-and' => '&#32;和&#32;',
 	'ct-update-table' => '更新表格',
 );
 

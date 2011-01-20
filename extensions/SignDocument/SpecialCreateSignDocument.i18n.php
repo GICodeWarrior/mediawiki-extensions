@@ -2111,6 +2111,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -2121,6 +2122,8 @@ $messages['zh-hant'] = array(
 	'createsigndoc-bday' => '出生日期：',
 	'createsigndoc-hidden' => '隱藏',
 	'createsigndoc-optional' => '可選擇',
+	'createsigndoc-create' => '建立',
 	'createsigndoc-error-generic' => '錯誤：$1',
+	'createsigndoc-error-pagenoexist' => '錯誤：頁面 [[$1]] 不存在。',
 );
 

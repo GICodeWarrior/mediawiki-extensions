@@ -391,6 +391,13 @@ $messages['ja'] = array(
 	'livetranslate-button-translating' => '翻訳中...',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'livetranslate-special-type' => 'Cure',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

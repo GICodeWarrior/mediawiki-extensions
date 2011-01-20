@@ -345,3 +345,11 @@ $messages['uk'] = array(
 	'svgedit-desc' => 'Редагування у браузері SVG-малюнків за допомогою [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'svgedit-summary-label' => '編輯摘要',
+	'svgedit-editor-close' => '取消',
+);
+

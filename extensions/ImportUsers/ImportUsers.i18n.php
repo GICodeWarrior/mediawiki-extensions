@@ -1150,6 +1150,13 @@ $messages['ksh'] = array(
 	'right-import_users' => 'Date övver Metmaachere em  Knubbel empotteere',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'importusers-log-summary-all' => 'Hemû',
+);
+
 /** Latin (Latina)
  * @author UV
  */

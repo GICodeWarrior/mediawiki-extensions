@@ -462,9 +462,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Tomchiukc
  */
 $messages['zh-hant'] = array(
-	'stringfunctions-desc' => '利用字串函數來增強parser',
+	'stringfunctions-desc' => '利用字串函數來增強 parser',
 );
 

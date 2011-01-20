@@ -436,6 +436,13 @@ $messages['km'] = array(
 	'right-lastlogin' => 'មើលពេលវេលាដែលអ្នកប្រើប្រាស់បានកត់ឈ្មោះចូលចុងក្រោយ',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'lastuserlogin_userid' => 'Navê bikarhêner',
+);
+
 /** Latin (Latina)
  * @author UV
  */

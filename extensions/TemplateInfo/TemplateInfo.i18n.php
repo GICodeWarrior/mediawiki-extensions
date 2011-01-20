@@ -361,3 +361,11 @@ $messages['zh-hans'] = array(
 	'templateinfo-header' => '此模版的XML定义是：',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'templateinfo-desc' => '支援的模版已將其資料結構用 XML 代碼聲明。',
+	'templateinfo-header' => '此模版的 XML 定義是：',
+);
+

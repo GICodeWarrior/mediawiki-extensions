@@ -586,7 +586,7 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'activestrategy' => '積極工作隊',
 	'active-strategy-desc' => '以數字顯示工作隊的編輯頁面',
-	'active-strategy-intro' => '此頁面編輯數 (在過去{{PLURAL:$1|$1日|$1日}})',
-	'nedits' => '$1 次{{PLURAL:$1|編輯|編輯}}',
+	'active-strategy-intro' => '此頁面編輯數 (在過去 {{PLURAL:$1|$1 天|$1 天}})',
+	'nedits' => '$1 {{PLURAL:$1|編輯|次編輯}}',
 );
 

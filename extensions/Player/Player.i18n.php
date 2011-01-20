@@ -828,6 +828,13 @@ $messages['ksh'] = array(
 	'player-goto-file' => 'Datei',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'player-goto-page' => 'Rûpel',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */

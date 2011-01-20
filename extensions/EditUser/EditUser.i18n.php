@@ -796,8 +796,10 @@ $messages['ksh'] = array(
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'edituser-username' => 'Navê bikarhêner:',
 	'edituser-dosearch' => 'Lêbigere',
 );
 

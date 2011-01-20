@@ -590,6 +590,13 @@ $messages['ksh'] = array(
 	'languageselector-setlang' => 'Setze',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'languageselector' => 'Ziman',
+);
+
 /** Cornish (Kernewek)
  * @author Kw-Moon
  */
