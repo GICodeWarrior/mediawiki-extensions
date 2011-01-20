@@ -447,8 +447,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'tab0-desc' => '添加“0”選項卡，鏈接到頁面的第一節的編輯頁面',
+	'tab0-desc' => '加入「0」標籤，連結到頁面的第一節的編輯頁面',
 );
 
