@@ -1,6 +1,11 @@
-// Debug
-window.log = function( a, b ) {
-	//console.log( a, b );
+// usage: log('inside coolFunc',this,arguments);
+// paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
+window.log = function(){
+    log.history = log.history || [];   // store logs to an array for reference
+    log.history.push(arguments);
+    if(this.console){
+        console.log( Array.prototype.slice.call(arguments) );
+    }
 };
 
 if ( !window.Photocommons ) {
@@ -51,6 +56,7 @@ if ( !window.Photocommons ) {
 
 			return Photocommons.makeUrl(queries[type](args));
 		},
+		
 		makeUrl: function( args ) {
 			// default arguments
 			args = $.extend({
@@ -78,6 +84,7 @@ if ( !window.Photocommons ) {
 			}
 			return url;
 		},
+		
 		init: function() {
 			
 			/* jQuery suggestions */
@@ -86,8 +93,6 @@ if ( !window.Photocommons ) {
 					var url = Photocommons.getQueryUrl( 'pagesearch', {
 						'search' : query
 					});
-					log('query', query);
-					log('url', url);
 					$.getJSON( url, function( data ) {
 						$( '#wp-photocommons-search' ).suggestions( 'suggestions', data[1] );
 					});
@@ -114,12 +119,10 @@ if ( !window.Photocommons ) {
 								$.each( data.query.pageids, function( key, pageid ) {
 									var img = data.query.pages[pageid];
 									if ( img.imageinfo && img.imageinfo[0] ) {
-										$( '<img>' ).attr({
-											'style': 'display:none',
-											'src': img.imageinfo[0].thumburl,
-											'title': img.title,
+										$('<div class="image">').attr({
+											'style': "background-image:url('" + img.imageinfo[0].thumburl + "');",
 											'data-filename': img.title
-										}).appendTo( '#wp-photocommons-images' ).fadeIn();
+										}).appendTo('#wp-photocommons-images');
 						
 									}
 								});

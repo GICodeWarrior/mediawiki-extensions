@@ -299,7 +299,6 @@ $.suggestions = {
 				break;
 			// Enter
 			case 13:
-				console.log('case 13');
 				//debugger;
 				context.data.$container.hide();
 				preventDefault = wasVisible;

@@ -23,7 +23,7 @@
                     height : 500
                 });
 
-                $("#wp-photocommons-images img").live('click', function() {
+                $("#wp-photocommons-images .image").live('click', function() {
                     var file = $(this).attr('data-filename'),
                         shortcode = '[photocommons file="' + file + '" size="300"]' + "\n";
 

@@ -16,7 +16,7 @@ if ($standalone) : ?>
 <body>
 <?php endif; ?>
 
-    <label for="wp-photoommons-search">Zoek:</label>
+    <label for="wp-photocommons-search">Zoek:</label>
 	<input type="search" id="wp-photocommons-search" />
 
 	<ul id="wp-photocommons-results"></ul>
