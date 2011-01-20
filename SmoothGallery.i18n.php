@@ -977,9 +977,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'smoothgallery-javascript-disabled' => '需要JavaScript以正常檢視本圖片廊。',
+	'smoothgallery-javascript-disabled' => '需要 JavaScript 以正常檢視本圖片廊。',
 );
 
