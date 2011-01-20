@@ -163,7 +163,7 @@ class SpecialLiveTranslate extends SpecialPage {
 	protected function displayTMConfig( array $tms ) {
 		global $wgOut, $wgUser;
 		
-		$wgOut->addHtml( Html::openElement(
+		$wgOut->addHtml( Xml::openElement(
 			'form',
 			array(
 				'id' => 'tmform',
@@ -189,7 +189,7 @@ class SpecialLiveTranslate extends SpecialPage {
 			
 			$wgOut->addHTML( '<h3>' . htmlspecialchars( wfMsg( 'livetranslate-special-current-tms' ) ) . '</h3>' );
 			
-			$wgOut->addHTML( Html::openElement(
+			$wgOut->addHTML( Xml::openElement(
 				'table',
 				array( 'class' => 'wikitable', 'style' => 'width:50%' )
 			) );
@@ -207,7 +207,7 @@ class SpecialLiveTranslate extends SpecialPage {
 				$this->displayTMItem( $tm );
 			}
 
-			$wgOut->addHTML( Html::closeElement( 'table' ) );
+			$wgOut->addHTML( Xml::closeElement( 'table' ) );
 		}
 		else {
 			$wgOut->addWikiMsg( 'livetranslate-special-no-tms-yet' );
@@ -224,7 +224,7 @@ class SpecialLiveTranslate extends SpecialPage {
 				array( 'id' => 'tmform-submit' )
 			) .
 			Html::hidden( 'wpEditToken', $wgUser->editToken() ) .
-			Html::closeElement( 'form' )
+			Xml::closeElement( 'form' )
 		);
 	}
 	
