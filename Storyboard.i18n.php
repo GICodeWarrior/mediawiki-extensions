@@ -2501,3 +2501,14 @@ $messages['zh-hans'] = array(
 	'storyboard-deletestory' => '移除',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'storyboard-hidden' => '隱藏',
+	'storyboard-hide' => '隱藏',
+	'storyboard-done' => '完成',
+	'storyboard-showimage' => '顯示圖片',
+	'storyboard-hideimage' => '隱藏圖片',
+);
+
