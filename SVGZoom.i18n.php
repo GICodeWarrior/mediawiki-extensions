@@ -317,3 +317,10 @@ $messages['zh-hans'] = array(
 	'svgzoom-desc' => '让MediaWiki查看SVG文件时具有移动和缩放功能',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'svgzoom-desc' => '讓 MediaWiki 檢視 SVG 檔案時具有移動和縮放功能',
+);
+
