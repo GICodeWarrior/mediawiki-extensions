@@ -923,6 +923,15 @@ Müjjelesh sin bloß „<code lang="en">plain</code>“, „<code lang="en">norm
 	'processcomment' => 'Ben di Aanmerkung aam verärbeide',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'article-comments-title-string' => 'sernav',
+	'article-comments-name-string' => 'Nav',
+	'article-comments-url-field' => 'Malper:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
