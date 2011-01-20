@@ -4,7 +4,7 @@ wgAjaxQueryPages.inprogress = false;
 
 wgAjaxQueryPages.onLoad = function() {
 	wgAjaxQueryPages.replacelinks( document );
-}
+};
 
 wgAjaxQueryPages.replacelinks = function( target ) {
 	var elsPrev = getElementsByClassName(target, "a", "mw-prevlink");
