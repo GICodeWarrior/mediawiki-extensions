@@ -967,13 +967,20 @@ $messages['ksh'] = array(
 	'passwordreset-confirmpass' => 'Norr_ens dat Paßwoot:',
 	'passwordreset-submit' => 'Paßwoot zeröck setze',
 	'passwordreset-success' => 'Dat Paßwoot för de Metmaacher-Nommer $1 wood zeröck jesatz.',
-	'passwordreset-disableuser' => 'Däm Metmaacher singe Zojang still läje?',
+	'passwordreset-disableuser' => 'Däm Metmaacher singe Zohjang stell lääje?',
 	'passwordreset-disableuserexplain' => '(Dat setz ene onjölltijje <i lang="en">hash</i> för et Paßwoot — dat määt et Enlogge onmüjjelesch)',
 	'passwordreset-disablesuccess' => 'Däm Metmaacher Nummero $1 singe Zojang es jez stilljelaat.',
 	'passwordreset-accountdisabled' => 'Zojang still jelaat',
 	'disabledusers' => 'Stilljelaate Metmaacher',
 	'disabledusers-summary' => 'Hee es de Leß met (per Paßwoot Zeröcksetze) stilljelaate Metmaacher.',
 	'right-passwordreset' => 'Dat Paßwoot fun enem Metmaacher zeröck setze ([[Special:PasswordReset|Söndersigg]])',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'passwordreset-username' => 'Navê bikarhêner:',
 );
 
 /** Latin (Latina)
