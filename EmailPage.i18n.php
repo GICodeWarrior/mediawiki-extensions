@@ -577,6 +577,15 @@ $messages['km'] = array(
 	'ea-send' => 'ផ្ញើ!',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'ea-from' => 'Ji',
+	'ea-message' => 'Peyam',
+	'ea-allusers' => 'Hemû bikarhêneran',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
