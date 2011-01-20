@@ -1174,9 +1174,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'security-type-category' => '分類',
 	'security-type-namespace' => '名字空間',
 );
 
