@@ -553,10 +553,11 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'spl3_debug' => '不明的選項$1的設定值',
-	'spl3_nosubpages' => '$1沒有子頁面來顯示',
+	'spl3_debug' => '不明的選項 $1 的設定值',
+	'spl3_nosubpages' => '$1 沒有子頁面來顯示',
 );
 
