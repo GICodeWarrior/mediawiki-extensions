@@ -26,7 +26,7 @@ function CommunityVoicePool() {
 			return true;
 		}
 		return false;
-	}
+	};
 	/**
 	 * Removes an object form pool
 	 * @param	id	ID number of object to remove
@@ -39,7 +39,7 @@ function CommunityVoicePool() {
 			return true;
 		}
 		return false;
-	}
+	};
 	/**
 	 * Gets an object from pool
 	 * @param	id	ID number of object to get
@@ -80,7 +80,7 @@ function CommunityVoiceRatingsScale(
 
 	this.getId = function() {
 		return id;
-	}
+	};
 
 	this.rate = function(
 		newRating
@@ -112,7 +112,7 @@ function CommunityVoiceRatingsScale(
 		);
 		// Restores current request type
 		sajax_request_type = oldRequestType;
-	}
+	};
 
 	this.respond = function(
 		request
@@ -149,21 +149,21 @@ function CommunityVoiceRatingsScale(
 		}
 		// Updates UI
 		self.update();
-	}
+	};
 
 	this.lock = function() {
 		locked = true;
 		for ( star in stars ) {
 			stars[star].style.cursor = 'default';
 		}
-	}
+	};
 
 	this.unlock = function() {
 		locked = false;
 		for ( star in stars ) {
 			stars[star].style.cursor = 'pointer';
 		}
-	}
+	};
 
 	this.update = function(
 		hoveredStar
@@ -191,7 +191,7 @@ function CommunityVoiceRatingsScale(
 		labels.stats.className = 'stats';
 		labels.status.innerHTML = messages.status[status];
 		labels.status.className = status;
-	}
+	};
 
 	// Loops 5 times (once per star)
 	for ( var i = 0; i < 5; i++ ) {
