@@ -1012,6 +1012,16 @@ Nemm ene neuere Brauser, wann De kanns.',
 	'cb_edit_paste_right_hint' => 'Dat Rääschezeijshe aan de näächste Pussizjuhn endraare, wann müjjelesch',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'cb_next_items_stats' => '  (ji $1)',
+	'cb_cat_pages' => 'rûpelan',
+	'cb_all_op' => 'Hemû',
+	'cb_and_op' => 'û',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
