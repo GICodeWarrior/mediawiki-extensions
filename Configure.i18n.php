@@ -6254,6 +6254,18 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-farmer-extensions-list' => 'De [[Special:Extensions|Projramm-Zohsäz för dat Wiki hee opleßte]]',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'configure-desc-group' => 'Grûp',
+	'configure-section-pages' => 'Rûpelan',
+	'configure-section-groups' => 'Grûpan',
+	'configure-section-images' => 'Dosyeyan',
+	'configure-throttle-group' => 'Cure',
+	'configure-condition-operator-and' => 'Û',
+);
+
 /** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
@@ -11959,7 +11971,7 @@ $messages['zh-hant'] = array(
 	'configure-throttle-none' => '沒有限制',
 	'configure-condition-operator' => '操作者：',
 	'configure-condition-operator-or' => '或',
-	'configure-condition-operator-and' => '和',
+	'configure-condition-operator-and' => '&#32;和&#32;',
 	'configure-condition-operator-xor' => '異或',
 	'configure-condition-operator-not' => '非',
 	'configure-condition-name' => '條件',
