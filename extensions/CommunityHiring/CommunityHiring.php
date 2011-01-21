@@ -1,6 +1,13 @@
 <?php
 // Community department job applications
 
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'CommunityHirings',
+	'author' => 'Andrew Garrett',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CommunityHirings',
+);
+
 $wgSpecialPages['CommunityHiring'] = 'SpecialCommunityHiring';
 $wgAutoloadClasses['SpecialCommunityHiring'] = dirname(__FILE__) . "/SpecialCommunityHiring.php";
 
