@@ -29,10 +29,10 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'version'     => '0.2',
-	'name' => 'Throttle',
+	'name' => 'UserThrottle',
 	'author' => 'Brion Vibber',
 	'descriptionmsg' => 'userthrottle-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Throttle',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:UserThrottle',
 );
 
 $wgHooks['AbortNewAccount'][] = 'throttleGlobalHit';
