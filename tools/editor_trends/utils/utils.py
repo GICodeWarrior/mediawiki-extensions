@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
@@ -31,13 +31,14 @@ import codecs
 import os
 import ctypes
 import time
-#import subprocess
 import sys
 import shutil
 sys.path.append('..')
 
+
 import configuration
 settings = configuration.Settings()
+
 import exceptions
 import messages
 
@@ -113,12 +114,12 @@ def track_errors(xml_buffer, error, file, messages):
     return messages
 
 
-def readline(file):
+def readline(fh):
     '''
-    @file should be a file object
+    @fh should be a file object
     '''
-    for line in file:
-        line = line.replace('\n', '')
+    for line in fh:
+        line = line.strip()
         if line == '':
             continue
         else:
@@ -240,9 +241,11 @@ def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
             if type(data[key]) == type([]):
                 for d in data[key]:
                     fh.write('%s\t%s\n' % (key, d))
-            elif getattr(data[key], '__iter__', False):
-                for d in data[key]:
-                    fh.write('%s\t%s\t%s\n' % (key, d, data[key][d]))
+            elif type(data[key]) == type({}):
+                write_dict_to_csv(data[key], fh, data[key].keys(), write_key=False, format=format)
+#            elif getattr(data[key], '__iter__', False):
+#                for d in data[key]:
+#                    fh.write('%s\t%s\t%s\n' % (key, d, data[key][d]))
             else:
                 fh.write('%s\n' % (data[key]))
     elif format == 'wide':
@@ -274,24 +277,28 @@ def create_binary_filehandle(location, filename, mode):
 
 def construct_filename(name, extension):
     if hasattr(name, '__call__'):
-        return name.func_name + extension
+        return '%s%s' % (name.func_name, extension)
     else:
         return name
 
 
 def delete_file(location, filename, directory=False):
-    if check_file_exists(location, filename):
-        if not directory:
+    if not directory:
+        if check_file_exists(location, filename):
             try:
                 path = os.path.join(location, filename)
                 os.remove(path)
             except WindowsError, error:
                 print error
-        else:
-            try:
-                shutil.rmtree(location)
-            except Exception, error:
-                print error
+    else:
+        try:
+            shutil.rmtree(location)
+        except Exception, error:
+            print error
+
+def determine_filesize(location, filename):
+    path = os.path.join(location, filename)
+    return os.path.getsize(path)
 
 
 def check_file_exists(location, filename):
@@ -341,11 +348,6 @@ def load_object(location, filename):
     return obj
 
 
-def clean_string(string):
-    string = string.replace('\n', '')
-    return string
-
-
 def invert_dict(dictionary):
     '''
     @dictionary is a simple dictionary containing simple values, ie. no lists,
@@ -364,7 +366,7 @@ def create_dict_from_csv_file(location, filename, encoding, keys=None):
     '''
     d = {}
     for line in read_data_from_csv(location, filename, encoding):
-        line = clean_string(line)
+        line = line.strip()
         line = line.split('\t')
         key = line[0]
         values = line[1:]
@@ -411,9 +413,6 @@ def retrieve_file_list(location, extension, mask=None):
     return files
 
 
-
-
-
 def merge_list(datalist):
     merged = []
     for d in datalist:
@@ -435,25 +434,12 @@ def split_list(datalist, maxval):
     return chunks
 
 
-# Progress bar related functions
-def update_progressbar(pbar, queue):
-    '''
-    Updates the progressbar by determining how much work is left in a queue
-    '''
-    x = pbar.maxval - messages.show(queue.qsize)
-    '''
-    Currently, calling the pbar.update function gives the following error:
-    File "build\bdist.win32\egg\progressbar.py", line 352, in update
-        self.fd.write(self._format_line() + '\r')
-    ValueError: I/O operation on closed file
-    Not sure how to fix this, that's why the line is commented.
-    '''
-    pbar.update(pbar.currval + x)
-
-
-if __name__ == '__main__':
+def debug():
     tool = settings.determine_ziptool()
     path = settings.detect_installed_program(tool)
     location = os.path.join(settings.input_location, 'en', 'wiki')
     source = 'enwiki-20100916-stub-meta-history.xml'
     zip_archive(path, location, source)
+
+if __name__ == '__main__':
+    debug()
