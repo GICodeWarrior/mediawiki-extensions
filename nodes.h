@@ -214,10 +214,12 @@ static inline int hex2dec(char val) {
 
 /**
  * Get the nextSibling value from a node serialized at pointer.
+ * The nextSibling is a hexadecimal value in bytes 2-7, forming a 
+ * value from 0 to 0x01000000.
  */
 static inline int getNextSibling(const char* pointer) {
 	assert( pointer[2] != '?' );
-	return ( ( ( ( ( hex2dec(pointer[2]) << 4 ) | hex2dec(pointer[3]) << 4 ) | hex2dec(pointer[4]) << 4 ) | hex2dec(pointer[5]) << 4 ) | hex2dec(pointer[6]) << 4 ) | hex2dec(pointer[7]);
+	return ( ( ( ( ( hex2dec(pointer[2]) << 4 ) | hex2dec(pointer[3]) ) << 4 | hex2dec(pointer[4]) ) << 4 | hex2dec(pointer[5]) ) << 4 | hex2dec(pointer[6]) ) << 4 | hex2dec(pointer[7]);
 }
 
 /**
