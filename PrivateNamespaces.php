@@ -48,6 +48,13 @@
  *
  */
 
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'PrivateNamespaces',
+	'author'         => '',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:PrivateNamespaces',
+);
+
 /**
  * An array mapping namespace ids to the right needed to view or edit
  * pages in the namespace.
