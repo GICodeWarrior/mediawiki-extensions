@@ -18,7 +18,7 @@ class InlineEditorText implements Serializable {
 	private $article;      /// < article object for parsing
 	private $markings;     /// < array of InlineEditorMarking objects
 	private $previous;     /// < array of InlineEditorMarking objects before this edit
-	private $editedPiece;  /// < InlineEditorMarking object to describe the range where edits occured
+	private $editedPiece;  /// < InlineEditorMarking object to describe the range where edits occurred
 	private $changedNode;  /// < Node which should be rendered when doing a partial rendering
 	private $root;         /// < Root of the tree where the markings are arranged in
 	
@@ -50,7 +50,7 @@ class InlineEditorText implements Serializable {
 	 * Before and after partial rendering hooks are called (InlineEditorPartialBeforeParse and 
 	 * InlineEditorPartialAfterParse), to have the ability to terminate in the case something in
 	 * the partial rendering has a dependency elsewhere on the page. In this case, the entire page 
-	 * is rerendered.
+	 * is re-rendered.
 	 * 
 	 * @return array An array with the id of the object to replace, and the html to replace it with
 	 */
@@ -98,7 +98,7 @@ class InlineEditorText implements Serializable {
 	}
 	
 	/**
-	 * Add a marking to the list of markings. To be called by the different edit modes.
+	 * Add a marking to the list of markings. To be called by the different edit extensions.
 	 * @param $marking InlineEditorMarking
 	 */
 	public function addMarking( InlineEditorMarking $marking ) {
@@ -144,7 +144,7 @@ class InlineEditorText implements Serializable {
 		}
 		
 		// add 'edited' and 'lastEdit' classes to the edited marking
-		// 'edited' will stay (yellow highlight), 'lastEdit' will vanish after an animation
+		// 'edited' will stay (yellow highlight), 'lastEdit' will be removed quickly
 		$editMarking->addClasses( array( 'edited', 'lastEdit' ) );
 		
 		// store a copy of the edited marking to denote the range of changed wikitext
@@ -156,7 +156,7 @@ class InlineEditorText implements Serializable {
 		unset( $this->markings );
 		
 		// remove all 'lastEdit' classes so that when copying previous markings to new markings,
-		// no leftover animations will be present
+		// no leftover classes are there
 		foreach( $this->previous as $marking ) {
 			$marking->removeClass( 'lastEdit' );
 		}
@@ -225,16 +225,16 @@ class InlineEditorText implements Serializable {
 	 * depending on the sorting conditions, which are start position (asc), length (desc)
 	 * and class names (asc).
 	 * Whenever a match is found, the previous marking is used to preserve the ids already
-	 * present at the client so we don't have to rerender this piece. Whenever a mismatch
+	 * present at the client so we don't have to re-render this piece. Whenever a mismatch
 	 * occurs, $this->editedPiece grows to include the mismatch, because it needs to be
-	 * rerendered.
+	 * re-rendered.
 	 */
 	protected function matchPreviousMarkings() {
 		// abort if there is nothing to match
 		if( empty( $this->previous ) ) return;
 		
-		// sort the previous markings, while *rekeying* to natural numbers (0, 1, 2, ...)
-		// this is nessicary to be able to run through the array using an integer pointer
+		// sort the previous markings, while *re-keying* to natural numbers (0, 1, 2, ...)
+		// this is necessary to be able to run through the array using an integer pointer
 		usort( $this->previous, 'InlineEditorText::sortByStartAndLength' );
 		
 		// point to the start of the previous markings list
@@ -299,7 +299,7 @@ class InlineEditorText implements Serializable {
 		$root = new InlineEditorRoot( $this->wikiOriginal );
 		
 		// $workingNode is the node we're trying to add children to
-		// init it to the root node
+		// initialise it to the root node
 		$workingNode = $root;
 		
 		foreach( $markingsSorted as $marking ) {
@@ -372,6 +372,7 @@ class InlineEditorText implements Serializable {
 	 * Sort function which sorts markings - in this particular order - on:
 	 * - start position (asc)
 	 * - length (desc)
+	 * - level (desc)
 	 * - class name (asc)
 	 * @param $a InlineEditorMarking
 	 * @param $b InlineEditorMarking
@@ -380,11 +381,11 @@ class InlineEditorText implements Serializable {
 	private static function sortByStartAndLength( $a, $b ) {
 		if( $a->getStart() == $b->getStart() ) {
 			if( $a->getLength() == $b->getLength() ) {
-				if( $a->getPriority() == $b->getPriority() ) {
+				if( $a->getLevel() == $b->getLevel() ) {
 					return strcmp( $a->getClass(), $b->getClass() );
 				}
 				else {
-					return ( $a->getPriority() > $b->getPriority() ? -1 : 1 );
+					return ( $a->getLevel() > $b->getLevel() ? -1 : 1 );
 				}
 			}
 			else {
@@ -399,7 +400,7 @@ class InlineEditorText implements Serializable {
 	/**
 	 * Serialize by doing a normal serialization of the original wikitext, the markings
 	 * and the unique identifier to guarantee unique ids across the session. The serialization
-	 * is base64 encoded to make sure it won't be fragged up by javascript.
+	 * is base64 encoded to make sure it won't be screwed up by javascript.
 	 */
 	public function serialize() {
 		return base64_encode( serialize( array( 

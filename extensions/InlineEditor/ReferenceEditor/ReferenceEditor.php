@@ -17,16 +17,6 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-// credits
-$wgExtensionCredits['other'][] = array(
-	'path' => __FILE__,
-	'name' => 'ReferenceEditor',
-	'author' => array( 'Jan Paul Posma' ),
-	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:InlineEditor#ReferenceEditor',
-	'descriptionmsg' => 'reference-editor-desc',
-);
-
 // current directory including trailing slash
 $dir = dirname( __FILE__ ) . '/';
 
@@ -35,7 +25,3 @@ $wgAutoloadClasses['ReferenceEditor']        = $dir . 'ReferenceEditor.class.php
 
 // register hooks
 $wgHooks['InlineEditorMark'][]               = 'ReferenceEditor::mark';
-$wgHooks['InlineEditorDefineEditors'][]      = 'ReferenceEditor::defineEditors';
-
-// i18n messages
-$wgExtensionMessagesFiles['ReferenceEditor'] = $dir . 'ReferenceEditor.i18n.php';

@@ -5,41 +5,40 @@
  * and whether or not it has been matched before. 
  */
 class InlineEditorMarking extends InlineEditorPiece {
-	const defaultClasses = 'notEditing'; // default classes; unfortunately we cannot use an array here 
+	const defaultClasses = 'inlineEditorElement notEditing'; // default classes; unfortunately we cannot use an array here
+	const autoClasses = 'block inline bar nobar'; // automatically added classes which shouldn't be added by hand 
 	protected static $lastId = 0; /// < counter which is used to generate unique ids
 
 	protected $start;     /// < start position of the marking in the wikitext
 	protected $end;       /// < end position of the marking in the wikitext
-	protected $classes;   /// < class(es) attached to the marking, usually identifies the edit mode
-	protected $inline;    /// < whether or not the marking is inline or not
+	protected $classes;   /// < class(es) attached to the marking which identifies the type
+	protected $block;     /// < whether the tag should be added as a block or inline
+	protected $bar;       /// < whether the text should carry a bar at the left, or be fully selectable
 	protected $id;        /// < id in the original text; this will be unique even when calculating new ids!
 	protected $matched;   /// < bool whether or not this marking has been matched with a previous marking (default: true)
-	protected $priority;
-	
-	public function setPriority( $value ) {
-		$this->priority = $value;
-	}
-	
-	public function getPriority() {
-		return $this->priority;
-	}
+	protected $level;     /// < nesting level, which is used to sort consistently when two markings are of same length
 	
 	/**
 	 * @param $start   int Start of the marking, offset in number of characters from the begin of the wikitext
 	 * @param $end     int End of the marking, offset in number of characters from the begin of the wikitext
 	 * @param $classes mixed Class(es) the marking should be labeled with, can be either a string or an array of strings 
-	 * @param $inline  bool Whether the marking is inline or not
+	 * @param $block   bool Whether the tag should be added as a block or inline
+	 * @param $bar     bool Whether the text should carry a bar at the left, or be fully selectable
+	 * @param $level   int Nesting level, which is used to sort consistently when two markings are of same length, default: 0
 	 */
-	function __construct( $start, $end, $classes, $inline ) {
+	function __construct( $start, $end, $classes, $block, $bar, $level = 0 ) {
 		$this->start    = $start;
 		$this->end      = $end;
-		$this->inline   = $inline;
-		$this->id       = self::uniqueId();
+		$this->block    = $block;
+		$this->bar      = $bar;
+		$this->level    = $level;
+		
 		$this->matched  = true;
+		$this->id       = self::uniqueId();
 		
 		$this->classes  = array();
 		$this->addClasses( $classes );
-		$this->priority = 0;
+		
 	}
 	
 	/**
@@ -126,6 +125,9 @@ class InlineEditorMarking extends InlineEditorPiece {
 		// exclude the default classes that are always included
 		$classes = array_diff( $classes, self::getDefaultClassesArray() );
 		
+		// also exclude classes that are automatically included
+		$classes = array_diff( $classes, self::getAutoClassesArray() );
+		
 		// merge with the current classes and remove duplicates
 		$this->classes = array_unique( array_merge( $this->classes, $classes ) );
 	}
@@ -149,6 +151,9 @@ class InlineEditorMarking extends InlineEditorPiece {
 		// exclude the default classes that are always included
 		$classes = array_diff( $classes, self::getDefaultClassesArray() );
 		
+		// also exclude classes that are automatically included
+		$classes = array_diff( $classes, self::getAutoClassesArray() );
+		
 		// save the difference between the existing classes and the classes we're removing
 		$this->classes = array_diff( $this->classes, $classes );
 	}
@@ -168,6 +173,22 @@ class InlineEditorMarking extends InlineEditorPiece {
 	 */
 	public function setMatched( $value ) {
 		$this->matched = $value;
+	}
+	
+	/**
+	 * Get the nesting level, which is used to sort consistently when two markings are of same length.
+	 * @param $value int
+	 */
+	public function getLevel() {
+		return $this->level;
+	}
+	
+	/**
+	 * Set the nesting level, which is used to sort consistently when two markings are of same length.
+	 * @param $value int
+	 */
+	public function setLevel( $value ) {
+		$this->level = $value;
 	}
 	
 	/**
@@ -192,8 +213,8 @@ class InlineEditorMarking extends InlineEditorPiece {
 	}
 	
 	/**
-	 * Render the open tag with classes and id. Depending on $this->inline there will be
-	 * a newline after the tag, or an extra 'inline' class.
+	 * Render the open tag with classes and id. Depending on $this->block there will be
+	 * a newline after the tag, or not.
 	 * @return string HTML
 	 */
 	public function renderStartTag() {
@@ -202,7 +223,7 @@ class InlineEditorMarking extends InlineEditorPiece {
 	}
 
 	/**
-	 * Render the close tag (</div>) with an extra newline before it if !$this->inline.
+	 * Render the close tag (</div>) with an extra newline before it if $this->block.
 	 * @return string HTML
 	 */
 	public function renderEndTag() {
@@ -211,19 +232,22 @@ class InlineEditorMarking extends InlineEditorPiece {
 	
 	/**
 	 * Get the full class string to render. Includes the default classes
-	 * for more convenient CSS, and depending on $this->inline an extra 'inline' class.
+	 * for more convenient CSS, and depending on the class values
+	 * additionally 'block' or 'inline', plus 'bar' or 'nobar'.
 	 * @return string Space separated classes
 	 */
 	protected function getFullClass() {
-		return $this->getClass() . ' ' . self::defaultClasses . ($this->inline ? ' inline' : '');
+		return $this->getClass() . ' ' . self::defaultClasses 
+		. ( $this->block ? ' block' : ' inline' )
+		. ( $this->bar ? ' bar' : ' nobar' );
 	}
 	
 	/**
-	 * Get a newline or not based on $this->inline.
-	 * @return string Empty string or single newline character
+	 * Get a newline when $this->block is set or else an empty string.
+	 * @return string Newline or nothing
 	 */
 	protected function getNewline() {
-		return $this->inline ? '' : "\n";
+		return $this->block ? "\n": '';
 	}
 	
 	/**
@@ -232,6 +256,14 @@ class InlineEditorMarking extends InlineEditorPiece {
 	 */
 	protected static function getDefaultClassesArray() { 
 		return explode( ' ', self::defaultClasses );
+	}
+	
+	/**
+	 * Get an array version of the automatically added classes
+	 * @return array
+	 */
+	protected static function getAutoClassesArray() { 
+		return explode( ' ', self::autoClasses );
 	}
 
 	/**
@@ -252,7 +284,7 @@ class InlineEditorMarking extends InlineEditorPiece {
 	
 	/**
 	 * Set the $lastId variable in order to preserve it across requests.
-	 * @param $state int State aquired by getUniqueIdState()
+	 * @param $state int State acquired by getUniqueIdState()
 	 */
 	public static function setUniqueIdState( $state ) {
 		if( $state > self::$lastId ) self::$lastId = $state;

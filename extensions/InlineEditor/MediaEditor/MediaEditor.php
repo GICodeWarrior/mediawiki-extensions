@@ -17,16 +17,6 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-// credits
-$wgExtensionCredits['other'][] = array(
-	'path' => __FILE__,
-	'name' => 'MediaEditor',
-	'author' => array( 'Jan Paul Posma' ),
-	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:InlineEditor#MediaEditor',
-	'descriptionmsg' => 'media-editor-desc',
-);
-
 // current directory including trailing slash
 $dir = dirname( __FILE__ ) . '/';
 
@@ -35,7 +25,3 @@ $wgAutoloadClasses['MediaEditor']        = $dir . 'MediaEditor.class.php';
 
 // register hooks
 $wgHooks['InlineEditorMark'][]           = 'MediaEditor::mark';
-$wgHooks['InlineEditorDefineEditors'][]  = 'MediaEditor::defineEditors';
-
-// i18n messages
-$wgExtensionMessagesFiles['MediaEditor'] = $dir . 'MediaEditor.i18n.php';

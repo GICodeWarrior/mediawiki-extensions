@@ -22,28 +22,8 @@ class ListEditor {
 			// do not include the trailing newline
 			if ( substr( $match[0], -1 ) == "\n" ) $end--;
 
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'listEditorElement', false ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'listEditorElement', true, false ) );
 		}
-
-		return true;
-	}
-
-	/**
-	 * Hooks into InlineEditorDefineEditors. Adds the option to to the list and adds CSS and JS files
-	 * @param $editor InlineEditor
-	 * @param $output OutputPage
-	 */
-	public static function defineEditors( &$editor, &$output ) {
-		global $wgExtensionAssetsPath;
-
-		$editor->addEditMode(
-			'listEditor',
-			 wfMsgExt( 'list-editor-editmode-caption', 'parseinline' ),
-			 wfMsgExt( 'list-editor-editmode-description', 'parseinline' )
-		);
-
-		$output->addExtensionStyle( "$wgExtensionAssetsPath/InlineEditor/ListEditor/ListEditor.css?0" );
-		$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/ListEditor/jquery.inlineEditor.editors.listEditor.js?0" );
 
 		return true;
 	}

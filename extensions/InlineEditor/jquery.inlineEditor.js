@@ -1,12 +1,9 @@
 /**
  * Client side framework of the InlineEditor. Facilitates publishing, previewing,
- * switching edit modes and undo/redo operations.
+ * using specific editors, and undo/redo operations.
  */
 ( function( $ ) { $.inlineEditor = {
 editors: {},
-
-editModes: [],
-currentMode: '',
 
 states: [],
 currentState: 0,
@@ -52,7 +49,7 @@ previewTextById: function( text, id ) {
 addNewState: function( request ) {
 	state = JSON.parse( request.responseText );
 	
-	// restore the html to the current state, instantly remove the animations,
+	// restore the html to the current state, instantly remove the lastEdit,
 	// and then add the new html
 	$( '#editContent' ).html( $.inlineEditor.states[$.inlineEditor.currentState].html );
 	$( '.lastEdit' ).removeClass( 'lastEdit' );
@@ -83,11 +80,18 @@ addNewState: function( request ) {
  * Reloads the current editor and finish some things in the HTML.
  */
 reload: function() {
-	// reload the current editor
-	$.inlineEditor.editors[$.inlineEditor.currentMode].reload();
+	$.inlineEditor.basicEditor.cancelAll();
 	
-	// fade out all lastEdit elements
-	$('.lastEdit').removeClass( 'lastEdit', 800 );
+	// bind all events of the basic editor
+	$.inlineEditor.basicEditor.bindEvents( $( '.inlineEditorElement' ) );
+	
+	// reload the specific editors
+	for( var optionNr in $.inlineEditor.editors) {
+		$.inlineEditor.editors[optionNr].reload();
+	}
+	
+	// remove all lastEdit elements
+	$('.lastEdit').removeClass( 'lastEdit' );
 	
 	// make the links in the article unusable
 	$( '#editContent a' ).click( function( event ) { event.preventDefault(); } );
@@ -147,57 +151,6 @@ updateEditCounter: function() {
 },
 
 /**
- * Checks if the mode radio button has changed and selects the new editor and description.
- */
-changeMode: function( event ) {
-	// set the currently visible descriptions in the foreground to have them
-	// fade away nicely
-	$( '.editmode .descriptionInner' ).css( 'z-index', 2 );
-	$( '.editmode .descriptionInner' ).fadeOut(300);
-	
-	// check for all options if they are selected
-	for( var optionNr in $.inlineEditor.editModes ) {
-		if( $.inlineEditor.editModes[optionNr] ) {
-			var option = $.inlineEditor.editModes[optionNr];
-			
-			// if a certain option is selected, show the description
-			// and set the edit mode in #content, then exit this function as only
-			// one mode can be selected
-			if( $( '#radio-' + option ).attr( 'checked' ) ) {
-				// get the description, put it behind the currently visible description,
-				// and show it instantly
-				$description = $( '#description-' + option );
-				$description.show();
-				$description.css( 'z-index', 1 );
-				
-				// resize the outer box to match the description height, also take in
-				// account the padding of the description box
-				$( '.editmode .descriptionOuter' ).animate( {
-					height: $description.height() + 15
-				}, 600);
-				
-				// if we've actually switched, disable the previous editor and enable
-				// the new one
-				if( $.inlineEditor.currentMode != option ) {
-					if( $.inlineEditor.editors[$.inlineEditor.currentMode] ) {
-						$.inlineEditor.editors[$.inlineEditor.currentMode].disable();
-					}
-					
-					$.inlineEditor.currentMode = option;
-					
-					if( $.inlineEditor.editors[$.inlineEditor.currentMode] ) {
-						$.inlineEditor.editors[$.inlineEditor.currentMode].enable();
-					}
-				}
-				
-				// we've found the option to switch to, nothing to be done anymore
-				return;
-			}
-		}
-	}
-},
-
-/**
  * Publishes the document in its current state.
  */
 publish: function( event ) {
@@ -206,7 +159,7 @@ publish: function( event ) {
 	
 	// get the wikitext from the state as it's currently on the screen
 	var data = {
-			'object': $.inlineEditor.states[$.inlineEditor.currentState].object,
+			'object': $.inlineEditor.states[$.inlineEditor.currentState].object
 	};
 	var json = JSON.stringify( data );
 	
@@ -219,21 +172,9 @@ publish: function( event ) {
  * Initializes the editor.
  */
 init : function() {
-	// make the edit mode radiobuttons clickable
-	$( '.optionMode' ).change( $.inlineEditor.changeMode );
-	
 	$( '#publish' ).click( $.inlineEditor.publish );
-	$( '#undo' ).click( $.inlineEditor.undo );
-	$( '#redo' ).click( $.inlineEditor.redo );
-	
-	// initially hide the descriptions, else things look messy because of the animation
-	$( '.editmode .descriptionInner' ).hide();
-	
-	// open all our links in a new window except for switching to the full editor
-	$( '#siteNotice a[class!=fulleditor]' ).attr( 'target', '_blank' );
-	
-	// check the current selected edit mode
-	$.inlineEditor.changeMode();
+	//$( '#undo' ).click( $.inlineEditor.undo );
+	//$( '#redo' ).click( $.inlineEditor.redo );
 	
 	// reload the current editor
 	$.inlineEditor.reload();

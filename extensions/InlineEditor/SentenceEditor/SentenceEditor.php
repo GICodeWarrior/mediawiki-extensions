@@ -17,16 +17,6 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-// credits
-$wgExtensionCredits['other'][] = array(
-	'path' => __FILE__,
-	'name' => 'SentenceEditor',
-	'author' => array( 'Jan Paul Posma' ),
-	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:InlineEditor#SentenceEditor',
-	'descriptionmsg' => 'sentence-editor-desc',
-);
-
 // current directory including trailing slash
 $dir = dirname( __FILE__ ) . '/';
 
@@ -37,10 +27,6 @@ $wgAutoloadClasses['SentenceDetectionBasic'] = $dir . 'SentenceDetection/Sentenc
 
 // register hooks
 $wgHooks['InlineEditorMark'][]               = 'SentenceEditor::mark';
-$wgHooks['InlineEditorDefineEditors'][]      = 'SentenceEditor::defineEditors';
-
-// i18n messages
-$wgExtensionMessagesFiles['SentenceEditor'] = $dir . 'SentenceEditor.i18n.php';
 
 // default settings
 $wgSentenceEditorDetectionDefault = 'SentenceDetectionBasic';

@@ -23,33 +23,9 @@ class SectionEditor {
 			$end     = $match[1]-1;
 			$prevPos = $match[1];
 
-			$marking = new InlineEditorMarking( $start, $end, 'sectionEditorElement', false );
-			$marking->setPriority( 2 );
-			$inlineEditorText->addMarking( $marking );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'sectionEditorElement', true, true, 2 ) );
 		}
 
-		return true;
-	}
-
-	/**
-	 * Hooks into InlineEditorDefineEditors. Adds the option to to the list and adds CSS and JS files
-	 * @param $editor InlineEditor
-	 * @param $output OutputPage
-	 */
-	public static function defineEditors( &$editor, &$output ) {
-		global $wgExtensionAssetsPath, $wgInlineEditorSectionEditorVisible;
-
-		if( $wgInlineEditorSectionEditorVisible ) {
-			$editor->addEditMode(
-				'sectionEditor',
-				 wfMsgExt( 'section-editor-editmode-caption', 'parseinline' ),
-				 wfMsgExt( 'section-editor-editmode-description', 'parseinline' )
-			);
-	
-			$output->addExtensionStyle( "$wgExtensionAssetsPath/InlineEditor/SectionEditor/SectionEditor.css?0" );
-			$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/SectionEditor/jquery.inlineEditor.editors.sectionEditor.js?0" );
-		}
-		
 		return true;
 	}
 }

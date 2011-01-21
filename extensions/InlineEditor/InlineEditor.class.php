@@ -11,12 +11,11 @@ class InlineEditor {
 	const REASON_ADVANCED = 2;      /// < reason is editing an 'advanced' page, whatever that may be
 
 	private $article;               /// < Article object to edit
-	private $editModes;             /// < array of different edit modes, see addEditMode()
 	private $extendedEditPage;      /// < ExtendedEditPage object we're using to handle editor logic
 
 	/**
 	 * Main entry point, hooks into MediaWikiPerformAction.
-	 * Checks whether or not to spawn the editor, and does so if nessicary.
+	 * Checks whether or not to spawn the editor, and does so if necessary.
 	 */
 	public static function mediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
 		global $wgHooks;
@@ -38,6 +37,7 @@ class InlineEditor {
 			return true;
 		}
 		
+		// for now, ignore section edits and just edit the whole page
 		unset( $_GET['section'] );
 		unset( $_POST['section'] );
 		$request->setVal( 'section', null );
@@ -141,7 +141,7 @@ class InlineEditor {
 	}
 
 	/**
-	 * Entry point for the 'Preview' function through Ajax.
+	 * Entry point for the 'Preview' function through ajax.
 	 * No real point in securing this, as nothing is actually saved.
 	 * @param $json string JSON object from the client
 	 * @param $pageName string The page we're editing
@@ -182,7 +182,6 @@ class InlineEditor {
 	 */
 	public function __construct( $article ) {
 		$this->article = $article;
-		$editmodes = array();
 	}
 
 	/**
@@ -208,7 +207,7 @@ class InlineEditor {
 			$text = new InlineEditorText( $this->article );
 		}
 
-		// try to init, or else return false, which will spawn an 'advanced page' notice
+		// try to initialise, or else return false, which will spawn an 'advanced page' notice
 		$this->extendedEditPage = new ExtendedEditPage( $this->article );
 		if ( $this->extendedEditPage->initInlineEditor() ) {
 			// IMPORTANT: if the page was being saved, the script has been terminated by now!!
@@ -216,11 +215,11 @@ class InlineEditor {
 			// include the required JS and CSS files
 			$output->includeJQuery();
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.elastic.js?0" );
-			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.textWidth.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.basicEditor.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery-ui-effects-1.8.4.min.js?0" );
 			$output->addExtensionStyle( $wgExtensionAssetsPath . "/InlineEditor/InlineEditor.css?0" );
+			$output->addExtensionStyle( $wgExtensionAssetsPath . "/InlineEditor/BasicEditor.css?0" );
 
 			// have the different kind of editors register themselves
 			wfRunHooks( 'InlineEditorDefineEditors', array( &$this, &$output ) );
@@ -236,20 +235,19 @@ class InlineEditor {
 			$output->addParserOutput( $parserOutput );
 			$output->setPageTitle( $parserOutput->getTitleText() );
 			
+			// convert the text object into an initial state to send
 			$initial = InlineEditorText::initialState( $text );
 			
+			// store the actual object in the session, as it can be quite large 
 			$objectID = (isset($_SESSION['inline-editor-id']) ? $_SESSION['inline-editor-id'] + 1 : 0);
 			$_SESSION['inline-editor-id'] = $objectID;
 			$_SESSION['inline-editor-object-' . $objectID] = $initial['object'];
 			$initial['object'] = $objectID;
-
-			$initialJSON = FormatJson::encode( $initial );
 			
-			// add the different edit modes and initial JSON state in Javascript, and finally init the editor
+			// add the initial JSON state in Javascript, and then initialise the editor
+			$initialJSON = FormatJson::encode( $initial );
 			$output->addInlineScript(
 				'jQuery( document ).ready( function() {
-					jQuery.inlineEditor.editModes = ["' . implode( '","', array_keys( $this->editModes ) ) . '"];
-					jQuery.inlineEditor.currentMode = "' . reset( $this->editModes ) . '";
 					jQuery.inlineEditor.addInitialState( ' . $initialJSON . ' );
 					jQuery.inlineEditor.init();
 				} );'
@@ -279,19 +277,26 @@ class InlineEditor {
 	 * @return string
 	 */
 	public function preview ( $json ) {
+		// decode the JSON
 		$request = FormatJson::decode( $json, true );
 		
+		// add the actual object from session, as it's quite big
 		$request['object'] = $_SESSION['inline-editor-object-' . $request['object']];
 		
+		// load the JSON to a text object and perform the edit
 		$text = InlineEditorText::restoreObject( $request, $this->article );
 		$text->doEdit( $request['lastEdit']['id'], $request['lastEdit']['text'] );
 		
+		// get the next state
 		$subseq = InlineEditorText::subsequentState( $text );
+		
+		// save the object to a new unique key in the session
 		$objectID = (isset($_SESSION['inline-editor-id']) ? $_SESSION['inline-editor-id'] + 1 : 0);
 		$_SESSION['inline-editor-id'] = $objectID;
 		$_SESSION['inline-editor-object-' . $objectID] = $subseq['object'];
 		$subseq['object'] = $objectID;
 		
+		// send back the JSON
 		return FormatJson::encode( $subseq );
 	}
 
@@ -300,23 +305,8 @@ class InlineEditor {
 	 * @param $siteNotice string
 	 */
 	public function siteNoticeBefore( &$siteNotice ) {
-		$siteNotice = $this->renderEditBox() . $this->renderEditModes();
+		$siteNotice = $this->renderEditBox();
 		return false;
-	}
-
-	/**
-	 * Add an edit mode to the list.
-	 * @param $name string Name to be used in id-fields
-	 * @param $caption string Name to be displayed
-	 * @param $description string Description to be displayed when the mode is selected (*escaped* HTML only!)
-	 */
-	public function addEditMode( $name, $caption, $description ) {
-		$this->editModes[$name] = array(
-			'radioid'       => 'radio-' . $name,
-			'descriptionid' => 'description-' . $name,
-			'caption'       => $caption,
-			'description'   => $description
-		);
 	}
 
 	/**
@@ -335,7 +325,9 @@ class InlineEditor {
 	 *     inline-editor-editbox-publish-notice
 	 *     <div class="terms">inline-editor-editbox-publish-terms</div>
 	 *   </div>
-	 *   <a id="publish">inline-editor-editbox-publish-caption</a></div>
+	 *   <a id="publish">inline-editor-editbox-publish-caption</a>
+	 * </div>
+	 *   
 	 * @return string HTML
 	 */
 	private function renderEditBox() {
@@ -369,68 +361,9 @@ class InlineEditor {
 	}
 
 	/**
-	 * Generates "Edit mode" box (the second one)
-	 * This looks like this:
-	 * <div class="editmode">
-	 *   <div class="header">
-	 *     <div class="radio title">Edit mode: <!-- inline-editor-editmodes-caption --></div>
-	 *     <div class="radio"><!-- radio button + label --></div>
-	 *     <div class="radio"><!-- radio button + label --></div>
-	 *     <!-- for every edit mode one button -->
-	 *     <!-- and finally undo and redo buttons (with class 'button') -->
-	 *   </div>
-	 *   <div class="descriptionOuter">
-	 *     <div class="descriptionInner" id="description-text">
-	 *       <!-- for every edit mode a description -->
-	 *     </div>
-	 *   </div>
-	 * @return string HTML
-	 */
-	private function renderEditModes() {
-		if ( !isset( $this->editModes ) ) return '';
-
-		$header = Html::rawElement( 'div', array( 'class' => 'radio title' ),
-			wfMsgExt( 'inline-editor-editmodes-caption', 'parseinline' ) );
-
-		$descriptions = '';
-		$first = true;
-		foreach ( $this->editModes as $editmode ) {
-			$inputOptions = array( 'id' => $editmode['radioid'], 'class' => 'optionMode' );
-			if ( $first ) {
-				$inputOptions['checked'] = 'checked';
-				$first = false;
-			}
-			$input = Html::input( 'optionMode', '', 'radio', $inputOptions );
-			$label = Html::rawElement( 'label', array( 'for' => $editmode['radioid'] ), $editmode['caption'] );
-
-			$header .= Html::rawElement( 'div', array( 'class' => 'radio' ), $input . $label );
-
-			$descriptions .= Html::rawElement( 'div', array( 'class' => 'descriptionInner', 'id' => $editmode['descriptionid'] ),
-				$editmode['description'] );
-		}
-
-		$header .= Html::rawElement( 'div', array( 'class' => 'button' ),
-			Html::rawElement( 'a', array( 'id' => 'redo', 'href' => '#' ),
-				wfMsgExt( 'inline-editor-editmodes-redo', 'parseinline' ) )
-		);
-		$header .= Html::rawElement( 'div', array( 'class' => 'button' ),
-			Html::rawElement( 'a', array( 'id' => 'undo', 'href' => '#' ),
-				wfMsgExt( 'inline-editor-editmodes-undo', 'parseinline' ) )
-		);
-		$header .= Html::rawElement( 'div', array( 'class' => 'button' ),
-			Html::rawElement( 'div', array( 'id' => 'editCounter', 'href' => '#' ), '#0' )
-		);
-
-		return Html::rawElement( 'div', array( 'class' => 'editmode' ),
-			Html::rawElement( 'div', array( 'class' => 'header' ), $header )
-			. Html::rawElement( 'div', array( 'class' => 'descriptionOuter' ), $descriptions )
-		);
-	}
-	
-	/**
 	 * Make sure the entire page rerenders when rendering a reference.
 	 * 
-	 * This should be moved over to the Cite extension, and something like this should
+	 * @todo: FIXME: This should be moved over to the Cite extension, and something like this should
 	 * be included in other extensions as well. In the future, something smarter should be
 	 * implemented, to be able to only rerender the dependencies and not the entire page.
 	 *  

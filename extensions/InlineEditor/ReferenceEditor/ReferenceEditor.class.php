@@ -18,28 +18,8 @@ class ReferenceEditor {
 		foreach ( $matches[0] as $match ) {
 			$start = $match[1];
 			$end   = $start + strlen( $match[0] );
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'referenceEditorElement', true ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'referenceEditorElement', false, false ) );
 		}
-
-		return true;
-	}
-
-	/**
-	 * Hooks into InlineEditorDefineEditors. Adds the option to to the list and adds CSS and JS files
-	 * @param $editor InlineEditor
-	 * @param $output OutputPage
-	 */
-	public static function defineEditors( &$editor, &$output ) {
-		global $wgExtensionAssetsPath;
-
-		$editor->addEditMode(
-			'referenceEditor',
-			 wfMsgExt( 'reference-editor-editmode-caption', 'parseinline' ),
-			 wfMsgExt( 'reference-editor-editmode-description', 'parseinline' )
-		);
-
-		$output->addExtensionStyle( "$wgExtensionAssetsPath/InlineEditor/ReferenceEditor/ReferenceEditor.css?0" );
-		$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/ReferenceEditor/jquery.inlineEditor.editors.referenceEditor.js?0" );
 
 		return true;
 	}
