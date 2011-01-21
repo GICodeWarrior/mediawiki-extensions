@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
@@ -62,10 +62,10 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
     poison_pill = kwargs.get('poison_pill', True)
     input_queues = {}
     result_queues = {}
-    
+
     assert len(obj) == nr_input_processors
     if result_queue:
-        assert len(obj)== nr_output_processors
+        assert len(obj) == nr_output_processors
 
     for i, o in enumerate(obj):
         input_queues[i] = load_input_queue(obj[o], poison_pill=poison_pill)
@@ -80,7 +80,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
         kwargs['pbar'] = pbar
     else:
         pbar = False
-        
+
     input_processes = [models.ProcessInputQueue(main, input_queues[i], result_queues[i],
                         **kwargs) for i in xrange(nr_input_processors)]
 
@@ -108,7 +108,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
 
     if pbar:
         pbar.finish()
-        print 'Total elapsed time: %s.' % (utils.humanize_time_difference(pbar.seconds_elapsed))
+        print 'Total elapsed time: %s.' % (timer.humanize_time_difference(pbar.seconds_elapsed))
 
 
 def load_queue(obj, poison_pill=False):
@@ -121,7 +121,7 @@ def load_queue(obj, poison_pill=False):
     '''
     input_queue = Queue()
     if isinstance(obj, type(list)):
-        data = utils.load_object(obj)
+        data = file_utils.load_object(obj)
     else:
         data = obj
     for d in data:

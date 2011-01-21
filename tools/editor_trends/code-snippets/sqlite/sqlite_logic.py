@@ -16,15 +16,15 @@ def retrieve_editor_ids_db():
         if x % 100000 == 0:
             pbar.update(x)
     print 'Serializing contributors...'
-    utils.store_object(contributors, 'contributors')
+    file_utils.store_object(contributors, 'contributors')
     print 'Finished serializing contributors...'
 
     if pbar:
         pbar.finish()
-        print 'Total elapsed time: %s.' % (utils.humanize_time_difference(pbar.seconds_elapsed))
+        print 'Total elapsed time: %s.' % (timer.humanize_time_difference(pbar.seconds_elapsed))
 
     connection.close()
-    
+
 def retrieve_edits_by_contributor(input_queue, result_queue, pbar):
     connection = db.init_database()
     cursor = connection.cursor()
@@ -39,20 +39,20 @@ def retrieve_edits_by_contributor(input_queue, result_queue, pbar):
             edits = {}
             edits[contributor] = set()
             for edit, timestamp, bot in cursor:
-                date = utils.convert_timestamp_to_date(timestamp)
+                date = file_utils.convert_timestamp_to_date(timestamp)
                 edits[contributor].add(date)
                 #print edit, timestamp, bot
 
-            utils.write_data_to_csv(edits, retrieve_edits_by_contributor)
+            file_utils.write_data_to_csv(edits, retrieve_edits_by_contributor)
             if pbar:
-                utils.update_progressbar(pbar, input_queue)
+                file_utils.update_progressbar(pbar, input_queue)
 
         except Empty:
             pass
 
     connection.close()
-    
-    
+
+
 def store_data_db(data_queue, pids):
     connection = db.init_database()
     cursor = connection.cursor()
@@ -96,7 +96,7 @@ def create_bots_db(db_name):
     db.create_tables(cursor, db_settings.BOT_TABLE)
     values = []
     fields = [field[0] for field in db_settings.BOT_TABLE['bots']]
-    for line in utils.read_data_from_csv('data/csv/StatisticsBots.csv', settings.encoding):
+    for line in file_utils.read_data_from_csv('data/csv/StatisticsBots.csv', settings.encoding):
         line = line.split(',')
         row = []
         for x, (field, value) in enumerate(zip(fields, line)):
@@ -114,7 +114,7 @@ def create_bots_db(db_name):
         return cursor
     else:
         connection.close()
-        
+
 def retrieve_botnames_without_id(cursor, language):
     return cursor.execute('SELECT name FROM bots WHERE language=?', (language,)).fetchall()
 
@@ -129,7 +129,7 @@ def add_id_to_botnames():
     input_queue. The launcher also accepts optional keyword arguments.
     '''
     cursor = create_bots_db(':memory')
-    files = utils.retrieve_file_list(settings.input_location, 'xml')
+    files = file_utils.retrieve_file_list(settings.input_location, 'xml')
 
     botnames = retrieve_botnames_without_id(cursor, 'en')
     bots = {}
