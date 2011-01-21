@@ -9,6 +9,13 @@
  */
 require_once( 'MogileFS.php' );
 
+$wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'MogileClient',
+	'author'         => '',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:MogileClient',
+);
+
 /**
  * Entry point
  */
