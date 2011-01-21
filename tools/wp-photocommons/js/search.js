@@ -1,20 +1,15 @@
-// usage: log('inside coolFunc',this,arguments);
-// paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
-window.log = function(){
-    log.history = log.history || [];   // store logs to an array for reference
-    log.history.push(arguments);
-    if(this.console){
-        console.log( Array.prototype.slice.call(arguments) );
-    }
+// Debug
+window.log = function( a, b ) {
+	//console.log( a, b );
 };
 
-if ( !window.Photocommons ) {
-	window.Photocommons = {};
+if ( !window.PhotoCommons ) {
+	window.PhotoCommons = {};
 }
 
 (function($){
 
-	$.extend( Photocommons, {
+	$.extend( PhotoCommons, {
 
 		getQueryUrl: function( type, args ) {
 			var queries = {
@@ -54,7 +49,7 @@ if ( !window.Photocommons ) {
 				throw new Error( 'Unknown query type' );
 			}
 
-			return Photocommons.makeUrl(queries[type](args));
+			return PhotoCommons.makeUrl(queries[type](args));
 		},
 		
 		makeUrl: function( args ) {
@@ -90,7 +85,7 @@ if ( !window.Photocommons ) {
 			/* jQuery suggestions */
 			$( '#wp-photocommons-search' ).suggestions( {
 				fetch: function( query ) {
-					var url = Photocommons.getQueryUrl( 'pagesearch', {
+					var url = PhotoCommons.getQueryUrl( 'pagesearch', {
 						'search' : query
 					});
 					$.getJSON( url, function( data ) {
@@ -104,7 +99,7 @@ if ( !window.Photocommons ) {
 				result: {
 					select: function( $result ) {
 						var	value = $result.val(),
-							url = Photocommons.getQueryUrl( 'pageimages', {
+							url = PhotoCommons.getQueryUrl( 'pageimages', {
 								'title' : value,
 								'width' : '200'
 							});
@@ -117,11 +112,15 @@ if ( !window.Photocommons ) {
 								$( '#wp-photocommons-images' ).html( 'No images found :(' );
 							} else {
 								$.each( data.query.pageids, function( key, pageid ) {
-									var img = data.query.pages[pageid];
+									var	img = data.query.pages[pageid],
+										pagetitle;
 									if ( img.imageinfo && img.imageinfo[0] ) {
+										pagetitle = img.title.split(':');
+										pagetitle.shift();
+										pagetitle = pagetitle.join(':');
 										$('<div class="image">').attr({
 											'style': "background-image:url('" + img.imageinfo[0].thumburl + "');",
-											'data-filename': img.title
+											'data-filename': pagetitle
 										}).appendTo('#wp-photocommons-images');
 						
 									}
@@ -140,6 +139,6 @@ if ( !window.Photocommons ) {
 
 	// Init
 	// FIXME
-	$( document ).ready( Photocommons.init );
+	$( document ).ready( PhotoCommons.init );
 
 })(jQuery);
