@@ -1,27 +1,29 @@
 <?php
-if ( isset( $GET_ ) ) {
-	echo( "This file cannot be run from the web.\n" );
-	die( 1 );
+if ( !defined('MW_PHPUNIT_TEST') ) {
+	if ( isset( $GET_ ) ) {
+		echo( "This file cannot be run from the web.\n" );
+		die( 1 );
+	}
+	
+	if ( getenv( 'MW_INSTALL_PATH' ) ) {
+		$IP = getenv( 'MW_INSTALL_PATH' );
+	} else {
+		$dir = dirname( __FILE__ );
+	
+		if ( file_exists( "$dir/../../LocalSettings.php" ) ) $IP = "$dir/../..";
+		else if ( file_exists( "$dir/../../../LocalSettings.php" ) ) $IP = "$dir/../../..";
+		else if ( file_exists( "$dir/../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../phase3";
+		else if ( file_exists( "$dir/../../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../../phase3";
+		else $IP = $dir;
+	}
+	
+	require_once( "$IP/maintenance/commandLine.inc" );
+	
+	// requires PHPUnit 3.4
+	require_once 'PHPUnit/Framework.php';
+	
+	error_reporting( E_ALL );
 }
-
-if ( getenv( 'MW_INSTALL_PATH' ) ) {
-	$IP = getenv( 'MW_INSTALL_PATH' );
-} else {
-	$dir = dirname( __FILE__ );
-
-	if ( file_exists( "$dir/../../LocalSettings.php" ) ) $IP = "$dir/../..";
-	else if ( file_exists( "$dir/../../../LocalSettings.php" ) ) $IP = "$dir/../../..";
-	else if ( file_exists( "$dir/../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../phase3";
-	else if ( file_exists( "$dir/../../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../../phase3";
-	else $IP = $dir;
-}
-
-require_once( "$IP/maintenance/commandLine.inc" );
-
-// requires PHPUnit 3.4
-require_once 'PHPUnit/Framework.php';
-
-error_reporting( E_ALL );
 
 class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	protected static $templates = array(
@@ -46,27 +48,15 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	}
 
 	function setUp() {
-		global $wgTitle;
+		global $wgTitle, $wgParser;
 
 		$wgTitle = Title::newFromText( "Test" );
+		
+		$wgParser->Options( new ParserOptions() );
+		$wgParser->clearState();
+		$wgParser->setTitle( $wgTitle );
 	}
 	
-	function runTest() {
-		$this->testErrorMessage();
-		$this->testSanitizeValue();
-		$this->testNormalizeRecord();
-		$this->testBuildAssociativeArguments();
-		$this->testGetDataSource();
-		$this->testCachedFetchRecord();
-		$this->testRender();
-		$this->testHandleRecordTransclusion();
-		$this->testHandleRecordFunction();
-		$this->testHandleRecordTag();
-		$this->testDBDataTransclusionSource();
-		$this->testWebDataTransclusionSource();
-		$this->testXmlDataTransclusionSource();
-	}
-
 	function testErrorMessage() {
 		$m = DataTransclusionHandler::errorMessage( 'datatransclusion-test-wikitext', false );
 		$this->assertEquals( $m, '<span class="error datatransclusion-test-wikitext">some <span class="test">html</span> and \'\'markup\'\'.</span>' );
@@ -257,7 +247,8 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$text = 'xx {{#record:Test|FOO|id=3|extra=Hallo}} xx';
 		$wgParser->parse( $text, $title, $options );
 
-		$html = $wgParser->getOutput()->getText();   
+		$html = $wgParser->getOutput()->getText();
+		print "<<<$html>>>";   
 		$this->assertEquals( $html, '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;&#39;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
 		$templates = $wgParser->getOutput()->getTemplates();
 		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
@@ -500,10 +491,25 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	}
 }
 
-$wgShowExceptionDetails = true;
-
-$t = new DataTransclusionTest();
-$t->setUp();
-$t->runTest();
-
-echo "OK.\n";
+if ( !defined('MW_PHPUNIT_TEST') ) {
+	$wgShowExceptionDetails = true;
+	
+	$t = new DataTransclusionTest();
+	$t->setUp();
+	
+	$t->testErrorMessage();
+	$t->testSanitizeValue();
+	$t->testNormalizeRecord();
+	$t->testBuildAssociativeArguments();
+	$t->testGetDataSource();
+	$t->testCachedFetchRecord();
+	$t->testRender();
+	$t->testHandleRecordTransclusion();
+	$t->testHandleRecordFunction();
+	$t->testHandleRecordTag();
+	$t->testDBDataTransclusionSource();
+	$t->testWebDataTransclusionSource();
+	$t->testXmlDataTransclusionSource();
+	
+	echo "OK.\n";
+}
