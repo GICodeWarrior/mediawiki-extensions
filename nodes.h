@@ -215,7 +215,7 @@ static inline int hex2dec(char val) {
 /**
  * Get the nextSibling value from a node serialized at pointer.
  * The nextSibling is a hexadecimal value in bytes 2-7, forming a 
- * value from 0 to 0x01000000.
+ * value in the range [0,0x01000000).
  */
 static inline int getNextSibling(const char* pointer) {
 	assert( pointer[2] != '?' );
