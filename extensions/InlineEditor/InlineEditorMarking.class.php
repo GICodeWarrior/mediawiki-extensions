@@ -9,34 +9,38 @@ class InlineEditorMarking extends InlineEditorPiece {
 	const autoClasses = 'block inline bar nobar'; // automatically added classes which shouldn't be added by hand 
 	protected static $lastId = 0; /// < counter which is used to generate unique ids
 
-	protected $start;     /// < start position of the marking in the wikitext
-	protected $end;       /// < end position of the marking in the wikitext
-	protected $classes;   /// < class(es) attached to the marking which identifies the type
-	protected $block;     /// < whether the tag should be added as a block or inline
-	protected $bar;       /// < whether the text should carry a bar at the left, or be fully selectable
-	protected $id;        /// < id in the original text; this will be unique even when calculating new ids!
-	protected $matched;   /// < bool whether or not this marking has been matched with a previous marking (default: true)
-	protected $level;     /// < nesting level, which is used to sort consistently when two markings are of same length
+	protected $start;       /// < start position of the marking in the wikitext
+	protected $end;         /// < end position of the marking in the wikitext
+	protected $classes;     /// < class(es) attached to the marking which identifies the type
+	protected $block;       /// < whether the tag should be added as a block or inline
+	protected $bar;         /// < whether the text should carry a bar at the left, or be fully selectable
+	protected $level;       /// < nesting level, which is used to sort consistently when two markings are of same length
+	protected $collapsible; /// < whether or not the marking can be collapsed when only containing one nested element
+	
+	protected $id;          /// < id in the original text; this will be unique even when calculating new ids!
+	protected $matched;     /// < bool whether or not this marking has been matched with a previous marking (default: true)
 	
 	/**
-	 * @param $start   int Start of the marking, offset in number of characters from the begin of the wikitext
-	 * @param $end     int End of the marking, offset in number of characters from the begin of the wikitext
-	 * @param $classes mixed Class(es) the marking should be labeled with, can be either a string or an array of strings 
-	 * @param $block   bool Whether the tag should be added as a block or inline
-	 * @param $bar     bool Whether the text should carry a bar at the left, or be fully selectable
-	 * @param $level   int Nesting level, which is used to sort consistently when two markings are of same length, default: 0
+	 * @param $start       int Start of the marking, offset in number of characters from the begin of the wikitext
+	 * @param $end         int End of the marking, offset in number of characters from the begin of the wikitext
+	 * @param $classes     mixed Class(es) the marking should be labeled with, can be either a string or an array of strings 
+	 * @param $block       bool Whether the tag should be added as a block or inline
+	 * @param $bar         bool Whether the text should carry a bar at the left, or be fully selectable
+	 * @param $level       int Nesting level, which is used to sort consistently when two markings are of same length, default: 0
+	 * @param $collapsible bool Whether or not the marking can be collapsed when only containing one nested element, default: true
 	 */
-	function __construct( $start, $end, $classes, $block, $bar, $level = 0 ) {
-		$this->start    = $start;
-		$this->end      = $end;
-		$this->block    = $block;
-		$this->bar      = $bar;
-		$this->level    = $level;
+	function __construct( $start, $end, $classes, $block, $bar, $level = 0, $collapsible = true ) {
+		$this->start       = $start;
+		$this->end         = $end;
+		$this->block       = $block;
+		$this->bar         = $bar;
+		$this->level       = $level;
+		$this->collapsible = $collapsible;
 		
-		$this->matched  = true;
-		$this->id       = self::uniqueId();
+		$this->matched     = true;
+		$this->id          = self::uniqueId();
 		
-		$this->classes  = array();
+		$this->classes     = array();
 		$this->addClasses( $classes );
 		
 	}
@@ -184,11 +188,11 @@ class InlineEditorMarking extends InlineEditorPiece {
 	}
 	
 	/**
-	 * Set the nesting level, which is used to sort consistently when two markings are of same length.
+	 * Get whether or not the marking can be collapsed when only containing one nested element.
 	 * @param $value int
 	 */
-	public function setLevel( $value ) {
-		$this->level = $value;
+	public function getCollapsible() {
+		return $this->collapsible;
 	}
 	
 	/**

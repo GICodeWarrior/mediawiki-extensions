@@ -178,6 +178,9 @@ class InlineEditorText implements Serializable {
 		// sort the markings while preserving the keys (ids)
 		uasort( $this->markings, 'InlineEditorText::sortByStartAndLength' );
 		
+		// collapse markings
+		$this->collapseMarkings();
+		
 		// match up previous markings
 		$this->matchPreviousMarkings();
 	}
@@ -217,6 +220,21 @@ class InlineEditorText implements Serializable {
 	}
 	
 	/**
+	 * Finds markings of exact same positions, and uses only the deepest markings.
+	 */
+	protected function collapseMarkings() {
+		foreach( $this->markings as $id => $marking ) {
+			if( isset( $previous ) ) {
+				if( $previous->getCollapsible() && $marking->samePositionAs( $previous ) ) {
+					unset( $this->markings[$previousID] );
+				}
+			}
+			$previous = $marking;
+			$previousID = $id;
+		}
+	}
+	
+	/**
 	 * Previous markings are moved into the current markings list to be able to only
 	 * render a part of the page which is much faster. 
 	 * 
@@ -249,28 +267,22 @@ class InlineEditorText implements Serializable {
 			while( isset( $this->previous[$indexPrevious] ) ) {
 				$previous = $this->previous[$indexPrevious];
 				
-				if( $previous->getStart() < $marking->getStart() ) {
-					$indexPrevious++;
-				}
-				elseif( $previous->getStart() == $marking->getStart() && $previous->getLength() > $marking->getLength() ) {
-					$indexPrevious++;
-				}
-				elseif( $previous->samePositionAs( $marking ) && strcmp( $previous->getClass(), $marking->getClass() ) < 0 ) {
-					$indexPrevious++;
-				}
-				elseif( $marking->equals( $previous, array( 'edited', 'lastEdit') ) ) 
-				{
-					// a previous marking has been matched with a current marking
-					// the previous marking will replace the current one
-					$previous->setMatched( true );
-					$newMarkings[$previous->getId()] = $previous;
-					$foundMatch = true;
-					$indexPrevious++;
-					break;
-				}
-				else {
-					// if we've moved past the current marking, break, mismatch, and go to the next current marking
-					break;
+				switch( self::sortByStartAndLength( $previous, $marking ) ) {
+					case 1:
+						// if we've moved past the current marking, break, mismatch, and go to the next current marking
+						break(2);
+					case -1:
+						// if we haven't moved past the current marking but also haven't found it, continue the search
+						$indexPrevious++;
+						break;
+					default:
+						// a previous marking has been matched with a current marking
+						// the previous marking will replace the current one
+						$previous->setMatched( true );
+						$newMarkings[$previous->getId()] = $previous;
+						$foundMatch = true;
+						$indexPrevious++;
+						break(2);
 				}
 			}
 			
@@ -373,7 +385,6 @@ class InlineEditorText implements Serializable {
 	 * - start position (asc)
 	 * - length (desc)
 	 * - level (desc)
-	 * - class name (asc)
 	 * @param $a InlineEditorMarking
 	 * @param $b InlineEditorMarking
 	 * @return int
@@ -382,7 +393,7 @@ class InlineEditorText implements Serializable {
 		if( $a->getStart() == $b->getStart() ) {
 			if( $a->getLength() == $b->getLength() ) {
 				if( $a->getLevel() == $b->getLevel() ) {
-					return strcmp( $a->getClass(), $b->getClass() );
+					return $a->equals( $b, array( 'edited', 'lastEdit' ) ) ? 0 : 1;
 				}
 				else {
 					return ( $a->getLevel() > $b->getLevel() ? -1 : 1 );
