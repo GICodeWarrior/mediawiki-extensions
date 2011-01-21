@@ -371,7 +371,6 @@ class InlineEditor {
 	 * @return bool
 	 */
 	public static function partialRenderCite( $markedWiki ) {
-		return true;
-		/*return ( preg_match( '/<ref[^\/]*?>.*?<\/ref>|<ref.*?\/>/is', $markedWiki) <= 0) ;*/
+		return ( preg_match( '/<ref[^\/]*?>.*?<\/ref>|<ref.*?\/>/is', $markedWiki) <= 0) ;
 	}
 }
