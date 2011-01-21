@@ -4,6 +4,13 @@ if ( ! defined( 'MEDIAWIKI' ) ) {
 	die;
 }
 
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'CommunityApplications',
+	'author' => 'Andrew Garrett',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CommunityApplications',
+);
+
 // Reader for CommunityHiring data
 $wgSpecialPages['CommunityApplications'] = 'SpecialCommunityApplications';
 $wgAutoloadClasses['SpecialCommunityApplications'] = dirname(__FILE__) . "/SpecialCommunityApplications.php";
