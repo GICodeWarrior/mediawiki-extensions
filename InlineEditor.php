@@ -1,19 +1,14 @@
 <?php
 /**
- * InlineEditor extension.
+ * InlineEditor extension, basic include file.
  *
  * @file
  * @ingroup Extensions
  *
  * This is the include file for the InlineEditor.
  *
- * Usage: It's recommended to use one of the following configurations in LocalSettings.php:
- * 
- * 1. For editors like "Sentences", "Lists", "Media", etc. use:
- * require_once( "$IP/extensions/InlineEditor/InlineEditorFunctional.php" );
- * 
- * 2. For editors "Sentences", "Paragraphs" and "Sections" use:
- * require_once( "$IP/extensions/InlineEditor/InlineEditorBlocks.php" );
+ * Usage: It's recommended to use the following configuration LocalSettings.php:
+ * require_once( "$IP/extensions/InlineEditor/InlineEditorRecommended.php" );
  *
  * @author Jan Paul Posma <jp.posma@gmail.com>
  * @license GPL v2 or later

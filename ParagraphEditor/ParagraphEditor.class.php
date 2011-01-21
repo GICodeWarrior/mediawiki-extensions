@@ -22,33 +22,9 @@ class ParagraphEditor {
 			// do not include the trailing newline
 			if ( substr( $match[0], -1 ) == "\n" ) $end--;
 
-			$marking = new InlineEditorMarking( $start, $end, 'paragraphEditorElement', false );
-			$marking->setPriority( 1 );
-			$inlineEditorText->addMarking( $marking );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'paragraphEditorElement', true, true, 1 ) );
 		}
 
-		return true;
-	}
-
-	/**
-	 * Hooks into InlineEditorDefineEditors. Adds the option to to the list and adds CSS and JS files
-	 * @param $editor InlineEditor
-	 * @param $output OutputPage
-	 */
-	public static function defineEditors( &$editor, &$output ) {
-		global $wgExtensionAssetsPath, $wgInlineEditorParagraphEditorVisible;
-		
-		if( $wgInlineEditorParagraphEditorVisible ) {
-			$editor->addEditMode(
-				'paragraphEditor',
-				 wfMsgExt( 'paragraph-editor-editmode-caption', 'parseinline' ),
-				 wfMsgExt( 'paragraph-editor-editmode-description', 'parseinline' )
-			);
-	
-			$output->addExtensionStyle( "$wgExtensionAssetsPath/InlineEditor/ParagraphEditor/ParagraphEditor.css?0" );
-			$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/ParagraphEditor/jquery.inlineEditor.editors.paragraphEditor.js?0" );
-		}
-		
 		return true;
 	}
 }

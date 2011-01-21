@@ -17,16 +17,6 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-// credits
-$wgExtensionCredits['other'][] = array(
-	'path' => __FILE__,
-	'name' => 'TemplateEditor',
-	'author' => array( 'Jan Paul Posma' ),
-	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:InlineEditor#TemplateEditor',
-	'descriptionmsg' => 'template-editor-desc',
-);
-
 // current directory including trailing slash
 $dir = dirname( __FILE__ ) . '/';
 
@@ -35,7 +25,3 @@ $wgAutoloadClasses['TemplateEditor']        = $dir . 'TemplateEditor.class.php';
 
 // register hooks
 $wgHooks['InlineEditorMark'][]              = 'TemplateEditor::mark';
-$wgHooks['InlineEditorDefineEditors'][]     = 'TemplateEditor::defineEditors';
-
-// i18n messages
-$wgExtensionMessagesFiles['TemplateEditor'] = $dir . 'TemplateEditor.i18n.php';

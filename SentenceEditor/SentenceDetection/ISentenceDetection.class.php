@@ -18,7 +18,8 @@ interface ISentenceDetection {
 	 * All the sentences and their offsets have to be added as markings to $inlineEditorText.
 	 * @param $inlineEditorText InlineEditorText Object the markings should be added to
 	 * @param $class string Class name of the markings
-	 * @param $inline bool Whether the markings are inline or not
+	 * @param $block bool Whether the markings are block or inline
+	 * @param $bar bool Whether the markings have a bar at the left or are fully clickable
 	 */
-	public function addMarkingsToText( InlineEditorText &$inlineEditorText, $class, $inline );
+	public function addMarkingsToText( InlineEditorText &$inlineEditorText, $class, $block, $bar );
 }

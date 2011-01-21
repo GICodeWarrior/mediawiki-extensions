@@ -1,9 +1,9 @@
 <?php
 /**
- * InlineEditorPiece is a base (abstract) class for everything that describes a start-
- * and endpoint, and provides some basic functionality. Subclasses have to implement
+ * InlineEditorPiece is a base (abstract) class for everything that describes a start
+ * and end point, and provides some basic functionality. Subclasses have to implement
  * getStart() and getEnd(), and then things like getLength(), equals(), etc. are provided
- * as a convenience. 
+ * for your convenience. 
  */
 abstract class InlineEditorPiece {
 	/**

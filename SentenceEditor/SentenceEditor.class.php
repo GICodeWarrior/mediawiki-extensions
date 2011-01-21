@@ -38,27 +38,7 @@ class SentenceEditor {
 
 		// have the detection class add the markings to the InlineEditorText object,
 		// class 'sentenceEditorElement', inline elements
-		$detection->addMarkingsToText( $inlineEditorText, 'sentenceEditorElement', true );
-
-		return true;
-	}
-
-	/**
-	 * Hooks into InlineEditorDefineEditors. Adds the option to to the list and adds CSS and JS files
-	 * @param $editor InlineEditor
-	 * @param $output OutputPage
-	 */
-	public static function defineEditors( &$editor, &$output ) {
-		global $wgExtensionAssetsPath;
-
-		$editor->addEditMode(
-			'sentenceEditor',
-			 wfMsgExt( 'sentence-editor-editmode-caption', 'parseinline' ),
-			 wfMsgExt( 'sentence-editor-editmode-description', 'parseinline' )
-		);
-
-		$output->addExtensionStyle( "$wgExtensionAssetsPath/InlineEditor/SentenceEditor/SentenceEditor.css?0" );
-		$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/SentenceEditor/jquery.inlineEditor.editors.sentenceEditor.js?0" );
+		$detection->addMarkingsToText( $inlineEditorText, 'sentenceEditorElement', false, false );
 
 		return true;
 	}

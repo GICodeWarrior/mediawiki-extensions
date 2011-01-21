@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Basic implementation of sentence splitting. Not recommended for actual use, but does the job
- * for a simple demo.
+ * Basic implementation of sentence splitting. Works until a certain degree, for Western languages.
+ * It's recommended to use an algorithm that uses a trained data set for a specific language to get
+ * better results.
  */
 class SentenceDetectionBasic implements ISentenceDetection {
 	private $wikiTexts;
@@ -15,7 +16,11 @@ class SentenceDetectionBasic implements ISentenceDetection {
 		$this->wikiTexts[] = array( 'text' => $text, 'offset' => $offset );
 	}
 
-	public function addMarkingsToText( InlineEditorText &$inlineEditorText, $class, $inline ) {
+	/**
+	 * Splits sentences at '.', '?' and '!', only when a dot is not one, two or three positions to the
+	 * left or to the right of the character.
+	 */
+	public function addMarkingsToText( InlineEditorText &$inlineEditorText, $class, $block, $bar ) {
 		foreach ( $this->wikiTexts as $wikiText ) {
 			$sentences =  preg_split( "/(?<!\..|\...|\....)([\?\!\.]+)\s(?!.\.|..\.|...\.)/u", $wikiText['text'], -1,
 				PREG_SPLIT_OFFSET_CAPTURE | PREG_SPLIT_DELIM_CAPTURE );
@@ -27,7 +32,7 @@ class SentenceDetectionBasic implements ISentenceDetection {
 					}
 					$start = $wikiText['offset'] + $sentence[1];
 					$end   = $start + strlen( $sentence[0] );
-					$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, $class, $inline ) );
+					$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, $class, $block, $bar ) );
 				}
 			}
 		}

@@ -18,28 +18,8 @@ class TemplateEditor {
 		foreach ( $matches[0] as $match ) {
 			$start = $match[1];
 			$end   = $start + strlen( $match[0] );
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'templateEditorElement templateEditorElementNotEditing', false ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'templateEditorElement', true, false ) );
 		}
-
-		return true;
-	}
-
-	/**
-	 * Hooks into InlineEditorDefineEditors. Adds the option to to the list and adds CSS and JS files
-	 * @param $editor InlineEditor
-	 * @param $output OutputPage
-	 */
-	public static function defineEditors( &$editor, &$output ) {
-		global $wgExtensionAssetsPath;
-
-		$editor->addEditMode(
-			'templateEditor',
-			 wfMsgExt( 'template-editor-editmode-caption', 'parseinline' ),
-			 wfMsgExt( 'template-editor-editmode-description', 'parseinline' )
-		);
-
-		$output->addExtensionStyle( "$wgExtensionAssetsPath/InlineEditor/TemplateEditor/TemplateEditor.css?0" );
-		$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/TemplateEditor/jquery.inlineEditor.editors.templateEditor.js?0" );
 
 		return true;
 	}

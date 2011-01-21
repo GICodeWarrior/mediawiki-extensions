@@ -22,7 +22,6 @@ $messages['en'] = array(
 	'inline-editor-editbox-publish-terms' => 'When you click "Publish", you agree with our copyright policy.
 See $1 for more information.',
 	'inline-editor-editbox-publish-caption' => 'Publish',
-	'inline-editor-editmodes-caption' => 'Edit mode:',
 	'inline-editor-redirect-browser' => 'The new editing interface is not supported by your browser.',
 	'inline-editor-redirect-advanced' => "Editing this page is considered '''advanced''' use of {{SITENAME}}.
 You can only use the '''full editor''' for this page.",
@@ -30,23 +29,36 @@ You can only use the '''full editor''' for this page.",
 	'inline-editor-editmodes-redo' => 'Redo',
 );
 
-/** Dutch / Nederlands
+/** Language descriptions
  * @author Jan Paul Posma
  */
-$messages['nl'] = array(
-	'inline-editor-desc' => 'Stelt een alternatieve editor in die makkelijker in gebruik is.',
+$messages['qqq'] = array(
+	'inline-editor-editbox-top' => 'The "edit box" should be as small as possible. It should present the most essential information, and nothing more. It should ask for nothing more but the bare minimum. I chose to include a few basic guidelines, starting with some positive reinforcement: "Awesome, you\'re editing Wikipedia!". This invites novice users to actually edit the article. After all, what they are doing is "awesome"!',
+	'inline-editor-editbox-changes-question' => "The line above the edit summary is chosen very carefully: \"Can you briefly describe the changes you're making?\"
+Asking for \"changes you ''have'' made\" looks strange when first encountering this page. 
+Asking for \"changes you ''will be'' making\" looks strange when
+the changes have actually been made. Therefore, the page asks to describe
+\"changes you ''are'' making\", which is a continuous process, without
+defined start and end points.",
+	'inline-editor-editbox-changes-example' => "The line under the textbox suggests some things you can type into it: \"For
+example: 'Fixed spelling mistake', 'Corrected facts', 'Wrote a new
+paragraph', etc.\" These are not just possible inputs for the textfield, but
+possible ''actions'' when editing the page. The user is encouraged to look for
+mistakes, and even to write a new paragraph.",
+	'inline-editor-editbox-publish-notice' => 'Next to the button is a description: "When you\'re done, don\'t forget to
+publish the page!". This text serves two purposes. When reading from top to
+bottom, the user is reminded that somewhere there is a way of publishing.
+When users haven\'t already found this button, they will now. The second
+purpose is telling that anything you do is not final until the page is
+published. This way the user is invited to try some things out, as it will not
+be published before hitting the button.',
+	'inline-editor-editbox-publish-terms' => '',
+	'inline-editor-editbox-publish-caption' => 'Below the edit summary is the most important button on the page: the
+"Publish" button. On the original edit-page, there are some problems with the
+"Save" button. The first problem is the caption. "Save" can mean different
+things: "Will it be visible for everyone or just saved for myself?", "Will
+it be saved into some kind of database, waiting for approval?" "Publish" is
+unambiguous: it will be shown to the world. On the other hand, using the word "Publish" may have legal
+consequences in some countries, which should be looked into.',
 
-	'inline-editor-editbox-top' => "'''Geweldig, je bewerkt nu {{SITENAME}}!'''<br />Je kunt het artikel hieronder bewerken, door op <span class=\"highlightExample\">blauwe elementen</span> te klikken.",
-	'inline-editor-editbox-changes-question' => "Kun je kort beschrijven wat voor veranderingen je maakt?",
-	'inline-editor-editbox-changes-example' => 'Bijvoorbeeld: "Typfout verbeterd", "Feiten gecontroleerd", "Nieuwe paragraaf geschreven", etc.',
-	'inline-editor-editbox-publish-notice' => "Vergeet niet de pagina te publiceren als je klaar bent!",
-	'inline-editor-editbox-publish-terms' => 'Wanneer je op "Publiceren" klikt, ga je akkoord met de voorwaarden omtrend auteursrechten.
-Zie $1 voor meer informatie.',
-	'inline-editor-editbox-publish-caption' => 'Publiceren',
-	'inline-editor-editmodes-caption' => 'Bewerkoptie:',
-	'inline-editor-redirect-browser' => 'De nieuwe editor wordt niet ondersteund door de browser.',
-	'inline-editor-redirect-advanced' => "Het bewerken van deze pagina wordt gezien als '''geavanceerd''' gebruik van {{SITENAME}}.
-Je kunt alleen de '''volledige editor''' gebruiken.",
-	'inline-editor-editmodes-undo' => 'Ongedaan maken',
-	'inline-editor-editmodes-redo' => 'Opnieuw',
 );

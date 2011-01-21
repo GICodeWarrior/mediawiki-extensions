@@ -1,18 +1,20 @@
 <?php
 
 /**
- * This 'editor' just shows some description with a link to the full/traditional editor.
+ * Simple editor that wraps everything.
  */
 class FullEditor {
-	public static function defineEditors( &$editor, &$output ) {
-		$editor->addEditMode(
-			'FullEditor',
-			 wfMsgExt( 'fulleditor-editmode-caption', 'parseinline' ),
-			 wfMsgExt( 'fulleditor-editmode-description', 'parseinline' )
-			 . '<br /><a class="fulleditor" href="' . $editor->getArticle()->getTitle()->getLocalURL( 'action=edit&fulleditor=1' ) . '">'
-			 . wfMsgExt( 'fulleditor-editmode-description-link', 'parseinline' )
-			 . '</a>'
-		);
+	/**
+	 * This function hooks into InlineEditorMark and marks everything.
+	 * @param $inlineEditorText InlineEditorText
+	 */
+	public static function mark( &$inlineEditorText ) {
+		// get the original wikitext
+		$text = $inlineEditorText->getWikiOriginal();
+
+		// match everything
+		$inlineEditorText->addMarking( new InlineEditorMarking( 0, strlen( $text ), 'fullEditorElement', true, true, 100 ) );
+
 		return true;
 	}
 }

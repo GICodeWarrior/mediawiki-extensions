@@ -31,29 +31,9 @@ class MediaEditor {
 			if ( $namespace == NS_FILE ) {
 				$start = $match[1];
 				$end   = $start + strlen( $match[0] );
-				$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'mediaEditorElement', false ) );
+				$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'mediaEditorElement', true, false ) );
 			}
 		}
-
-		return true;
-	}
-
-	/**
-	 * Hooks into InlineEditorDefineEditors. Adds the option to to the list and adds CSS and JS files
-	 * @param $editor InlineEditor
-	 * @param $output OutputPage
-	 */
-	public static function defineEditors( &$editor, &$output ) {
-		global $wgExtensionAssetsPath;
-
-		$editor->addEditMode(
-			'mediaEditor',
-			 wfMsgExt( 'media-editor-editmode-caption', 'parseinline' ),
-			 wfMsgExt( 'media-editor-editmode-description', 'parseinline' )
-		);
-
-		$output->addExtensionStyle( "$wgExtensionAssetsPath/InlineEditor/MediaEditor/MediaEditor.css?0" );
-		$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/MediaEditor/jquery.inlineEditor.editors.mediaEditor.js?0" );
 
 		return true;
 	}
