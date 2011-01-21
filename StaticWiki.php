@@ -16,6 +16,13 @@ $wgStaticWikiNamespaces = array ( 0 , 10 , 14 ) ;
 
 if (!defined('MEDIAWIKI')) die();
 
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'StaticWiki',
+	'author'         => '',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:StaticWiki',
+);
+
 $wgHooks['AlternateEdit'][] = 'wfStaticEditHook' ;
 
 function wfStaticWikiGetRevisionText ( $url_title , $revision ) {
