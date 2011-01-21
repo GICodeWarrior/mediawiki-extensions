@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
@@ -23,33 +23,91 @@ import urllib2
 import httplib
 import multiprocessing
 import progressbar
+from HTMLParser import HTMLParser
 
+sys.path.append('..')
+#print sys.path
 import configuration
 settings = configuration.Settings()
 import utils
+import log
 
 
-def launcher(config):
-    tasks = create_list_dumpfiles(settings.wp_dump_location, config.path, config.filename)
-    consumers = [multiprocessing.Process(target=download_wiki_file, args=(tasks, config)) for i in xrange(settings.number_of_processes)]
+class AnchorParser(HTMLParser):
+    '''
+    A simple HTML parser that takes an HTML directory listing and extracts the
+    directories.
+    '''
+    def __init__(self,):
+        HTMLParser.__init__(self)
+        self.directories = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'a':
+            for key, value in attrs:
+                if key == 'href':
+                    self.directories.append(value)
+                    #print value
+
+
+def launcher(properties, settings, logger):
+    print 'Creating list of files to be downloaded...'
+    tasks = create_list_dumpfiles(settings.wp_dump_location,
+                                  properties.path,
+                                  properties.filename)
+    consumers = [multiprocessing.Process(target=download_wiki_file,
+                args=(tasks, properties))
+                for i in xrange(settings.number_of_processes)]
+
+    print 'Starting consumers to download files...'
     for w in consumers:
         w.start()
 
     tasks.join()
 
 
+def read_data_from_http_connection(domain, path):
+    if not domain.startswith('http://'):
+        domain = 'http://%s' % domain
+    url = '%s/%s' % (domain, path)
+
+    try:
+        req = urllib2.Request(url)
+        response = urllib2.urlopen(req)
+        data = response.read()
+    except urllib2.URLError, error:
+        print 'Reason: %s' % error
+    except urllib2.HTTPError, error:
+        print 'Error: %s' % error
+
+    return data
+
+
+def read_directory_contents(domain, path):
+    parser = AnchorParser()
+    data = read_data_from_http_connection(domain, path)
+    parser.feed(data)
+    return parser.directories
+
+
+def retrieve_md5_hashes(domain, project, date):
+    path = '%s/%s/%s-%s-md5sums.txt' % (project, date, project, date)
+    data = read_data_from_http_connection(domain, path)
+
+
+
 def create_list_dumpfiles(domain, path, filename):
     '''
-    Wikipedia offers the option to download one dump file in separate batches.
+    Wikipedia offers the option to download one dump file in separate pieces.
     This function determines how many files there are for a giving dump and puts
     them in a queue. 
     '''
     task_queue = multiprocessing.JoinableQueue()
-    ext = utils.determine_file_extension(filename)
-    canonical_filename = utils.determine_canonical_name(filename)
+    ext = file_utils.determine_file_extension(filename)
+    canonical_filename = file_utils.determine_canonical_name(filename)
     for x in xrange(1, 100):
         f = '%s%s.xml.%s' % (canonical_filename, x, ext)
-        res = check_remote_file_exists(domain, path, f)
+        res = check_remote_path_exists(domain, path, f)
         if res == None or res.status != 200:
             if x == 1:
                 task_queue.put(filename)
@@ -62,7 +120,8 @@ def create_list_dumpfiles(domain, path, filename):
     return task_queue
 
 
-def check_remote_file_exists(domain, path, filename):
+
+def check_remote_path_exists(domain, path, filename):
     '''
     @path is the full path of the file to be downloaded
     @filename is the name of the file to be downloaded
@@ -71,18 +130,22 @@ def check_remote_file_exists(domain, path, filename):
         if domain.startswith('http://'):
             domain = domain[7:]
         conn = httplib.HTTPConnection(domain)
-        url = '%s%s' % (path, filename)
+        if filename != None:
+            url = '%s%s' % (path, filename)
+        else:
+            url = '%s' % path
         conn.request('HEAD', url)
         res = conn.getresponse()
         conn.close()
         return res
 
     except httplib.socket.error:
-        raise httplib.NotConnected('It seems that %s is temporarily unavailable, please try again later.' % url)
+        raise httplib.NotConnected('It seems that %s is temporarily \
+        unavailable, please try again later.' % url)
 
 
 def determine_remote_filesize(domain, path, filename):
-    res = check_remote_file_exists(domain, path, filename)
+    res = check_remote_path_exists(domain, path, filename)
     if res != None and res.status == 200:
         return int(res.getheader('content-length', -1))
     else:
@@ -94,27 +157,24 @@ def download_wiki_file(task_queue, config):
     This is a very simple replacement for wget and curl because Windows does
     not have these tools installed by default
     '''
-    chunk = 4096
+    success = True
+    chunk = 1024 * 4
     while True:
         filename = task_queue.get(block=False)
         task_queue.task_done()
         if filename == None:
             print 'Swallowed a poison pill'
             break
-        filename = 'zhwiki-latest-page_props.sql.gz'
-        extension = utils.determine_file_extension(filename)
-        filemode = utils.determine_file_mode(extension)
+        extension = file_utils.determine_file_extension(filename)
+        filemode = file_utils.determine_file_mode(extension)
         filesize = determine_remote_filesize(settings.wp_dump_location, config.path, filename)
         if filemode == 'w':
-            fh = utils.create_txt_filehandle(config.location, filename, filemode, settings.encoding)
+            fh = file_utils.create_txt_filehandle(config.location, filename, filemode, settings.encoding)
         else:
-            fh = utils.create_binary_filehandle(config.location, filename, 'wb')
+            fh = file_utils.create_binary_filehandle(config.location, filename, 'wb')
 
         if filesize != -1:
-            widgets = ['%s: ' % filename, progressbar.Percentage(), ' ',
-                       progressbar.Bar(marker=progressbar.RotatingMarker()), ' ',
-                       progressbar.ETA(), ' ', progressbar.FileTransferSpeed()]
-
+            widgets = log.init_progressbar_widgets(filename)
             pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
 
         try:
@@ -137,11 +197,22 @@ def download_wiki_file(task_queue, config):
 
         except urllib2.URLError, error:
             print 'Reason: %s' % error
+            success = False
         except urllib2.HTTPError, error:
             print 'Error: %s' % error
+            success = False
         finally:
             fh.close()
 
+    return success
+
 
 if __name__ == '__main__':
-    download_wp_dump('http://download.wikimedia.org/enwiki/latest', 'enwiki-latest-page_props.sql.gz', settings.input_location)
+    domain = 'download.wikimedia.org'
+    path = 'enwikinews'
+    filename = None
+    #check_remote_path_exists(domain, path, filename)
+    #read_directory_contents(domain, path)
+#    download_wp_dump('http://download.wikimedia.org/enwiki/latest',
+#                     'enwiki-latest-page_props.sql.gz',
+#                     settings.input_location)
