@@ -72,24 +72,30 @@ function ConditionalShowSection( $input, $argv, &$parser ) {
 
 	# Extract the parameters passed
 	# the parser lowers the case of all the parameters passed...
-	if ( isset( $argv["logged"] ) )
-	{
+	if ( isset( $argv["logged"] ) ) {
 		$userReqLogged = $argv["logged"];
 
-		if ( $userReqLogged === "1" && ( $wgUser->isLoggedIn() === true ) )
+		if ( $userReqLogged === "1" && ( $wgUser->isLoggedIn() === true ) ) {
 			$cond1 = true;
+		}
  
-		if ( $userReqLogged === "0" && ( $wgUser->isLoggedIn() === false ) )
+		if ( $userReqLogged === "0" && ( $wgUser->isLoggedIn() === false ) ) {
 			$cond1 = true;
-	} else $cond1 = true;
-	if ( isset( $argv["ingroup"] ) )
-	{
+		}
+	} else {
+		$cond1 = true;
+	}
+
+	if ( isset( $argv["ingroup"] ) ) {
 		$userReqGroup  = explode( ',', $argv["ingroup"] );
 		# which groups is the user part of?
 		$ugroups = $wgUser->getEffectiveGroups();  // changed in v1.4
-		if ( array_intersect( $userReqGroup, $ugroups ) )
+		if ( array_intersect( $userReqGroup, $ugroups ) ) {
 			$cond2 = true;
-	} else $cond1 = true;
+		}
+	} else {
+		$cond1 = true;
+	}
 	# if both conditions are met, then SHOW else HIDE
 	if ( ( $cond1 === true ) and ( $cond2 === true ) ) {
 		$output = $parser->recursiveTagParse( $input );
