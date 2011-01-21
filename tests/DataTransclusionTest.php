@@ -59,47 +59,47 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	
 	function testErrorMessage() {
 		$m = DataTransclusionHandler::errorMessage( 'datatransclusion-test-wikitext', false );
-		$this->assertEquals( $m, '<span class="error datatransclusion-test-wikitext">some <span class="test">html</span> and \'\'markup\'\'.</span>' );
+		$this->assertEquals( '<span class="error datatransclusion-test-wikitext">some <span class="test">html</span> and \'\'markup\'\'.</span>', $m );
 
 		$m = DataTransclusionHandler::errorMessage( 'datatransclusion-test-evil-html', false );
-		$this->assertEquals( $m, '<span class="error datatransclusion-test-evil-html">some <object>evil</object> html.</span>' );
+		$this->assertEquals( '<span class="error datatransclusion-test-evil-html">some <object>evil</object> html.</span>', $m );
 
 		$m = DataTransclusionHandler::errorMessage( 'datatransclusion-test-nowiki', false );
-		$this->assertEquals( $m, '<span class="error datatransclusion-test-nowiki">some <nowiki>{{nowiki}}</nowiki> code.</span>' );
+		$this->assertEquals( '<span class="error datatransclusion-test-nowiki">some <nowiki>{{nowiki}}</nowiki> code.</span>', $m );
 
 		$m = DataTransclusionHandler::errorMessage( 'datatransclusion-test-wikitext', true );
-		$this->assertEquals( $m, '<span class="error datatransclusion-test-wikitext">some <span class="test">html</span> and <i>markup</i>.</span>' );
+		$this->assertEquals( '<span class="error datatransclusion-test-wikitext">some <span class="test">html</span> and <i>markup</i>.</span>', $m );
 
 		$m = DataTransclusionHandler::errorMessage( 'datatransclusion-test-evil-html', true );
-		$this->assertEquals( $m, '<span class="error datatransclusion-test-evil-html">some &lt;object&gt;evil&lt;/object&gt; html.</span>' );
+		$this->assertEquals( '<span class="error datatransclusion-test-evil-html">some &lt;object&gt;evil&lt;/object&gt; html.</span>', $m );
 
 		$m = DataTransclusionHandler::errorMessage( 'datatransclusion-test-nowiki', true );
-		$this->assertEquals( $m, '<span class="error datatransclusion-test-nowiki">some {{nowiki}} code.</span>' );
+		$this->assertEquals( '<span class="error datatransclusion-test-nowiki">some {{nowiki}} code.</span>', $m );
 	}
 
 	function testSanitizeValue() {
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo bar' ), 'foo bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo &bar;' ), 'foo &amp;bar;' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo&bar' ), 'foo&bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo <bar>' ), 'foo &lt;bar&gt;' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo [[bar]]' ), 'foo &#91;&#91;bar&#93;&#93;' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo {{bar}}' ), 'foo &#123;&#123;bar&#125;&#125;' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo \'bar\'' ), 'foo &#39;bar&#39;' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo|bar' ), 'foo&#124;bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( '* foo bar' ), '&#42; foo bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo*bar' ), 'foo*bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( '#foo bar' ), '&#35;foo bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo#bar' ), 'foo#bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( ':foo bar' ), '&#58;foo bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo:bar' ), 'foo:bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( ';foo bar' ), '&#59;foo bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo;bar' ), 'foo;bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( '==foo bar==' ), '&#61;=foo bar==' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo=bar' ), 'foo=bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( '---- foo bar' ), '&#45;--- foo bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( 'foo-bar' ), 'foo-bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( "foo\r\nbar" ), 'foo  bar' );
-		$this->assertEquals( DataTransclusionHandler::sanitizeValue( '  foo bar' ), '&#32; foo bar' );
+		$this->assertEquals( 'foo bar' ,  DataTransclusionHandler::sanitizeValue( 'foo bar' ));
+		$this->assertEquals('foo &amp;bar;', DataTransclusionHandler::sanitizeValue( 'foo &bar;' ));
+		$this->assertEquals('foo&bar', DataTransclusionHandler::sanitizeValue( 'foo&bar' ));
+		$this->assertEquals('foo &lt;bar&gt;', DataTransclusionHandler::sanitizeValue( 'foo <bar>' ));
+		$this->assertEquals('foo &#91;&#91;bar&#93;&#93;', DataTransclusionHandler::sanitizeValue( 'foo [[bar]]' ));
+		$this->assertEquals('foo &#123;&#123;bar&#125;&#125;', DataTransclusionHandler::sanitizeValue( 'foo {{bar}}' ));
+		$this->assertEquals( 'foo &#39;bar&#39;', DataTransclusionHandler::sanitizeValue( 'foo \'bar\'' ) );
+		$this->assertEquals( 'foo&#124;bar', DataTransclusionHandler::sanitizeValue( 'foo|bar' ) );
+		$this->assertEquals( '&#42; foo bar', DataTransclusionHandler::sanitizeValue( '* foo bar' ) );
+		$this->assertEquals( 'foo*bar', DataTransclusionHandler::sanitizeValue( 'foo*bar' ) );
+		$this->assertEquals( '&#35;foo bar', DataTransclusionHandler::sanitizeValue( '#foo bar' ) );
+		$this->assertEquals( 'foo#bar', DataTransclusionHandler::sanitizeValue( 'foo#bar' ) );
+		$this->assertEquals( '&#58;foo bar', DataTransclusionHandler::sanitizeValue( ':foo bar' ) );
+		$this->assertEquals( 'foo:bar', DataTransclusionHandler::sanitizeValue( 'foo:bar' ) );
+		$this->assertEquals( '&#59;foo bar', DataTransclusionHandler::sanitizeValue( ';foo bar' ) );
+		$this->assertEquals( 'foo;bar', DataTransclusionHandler::sanitizeValue( 'foo;bar' ) );
+		$this->assertEquals( '&#61;=foo bar==', DataTransclusionHandler::sanitizeValue( '==foo bar==' ) );
+		$this->assertEquals( 'foo=bar', DataTransclusionHandler::sanitizeValue( 'foo=bar' ) );
+		$this->assertEquals( '&#45;--- foo bar', DataTransclusionHandler::sanitizeValue( '---- foo bar' ) );
+		$this->assertEquals( 'foo-bar', DataTransclusionHandler::sanitizeValue( 'foo-bar' ) );
+		$this->assertEquals( 'foo  bar', DataTransclusionHandler::sanitizeValue( "foo\r\nbar" ) );
+		$this->assertEquals( '&#32; foo bar', DataTransclusionHandler::sanitizeValue( '  foo bar' ) );
 	}
 
 	function testBuildAssociativeArguments() {
@@ -110,10 +110,10 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$this->asserttrue( !isset( $assoc[3] ) );
 		$this->asserttrue( !isset( $assoc['foo'] ) );
 		$this->asserttrue( !isset( $assoc['foo bar'] ) );
-		$this->assertEquals( $assoc[1], 'foo bar' );
-		$this->assertEquals( $assoc[2], 'blubber bla' );
-		$this->assertEquals( $assoc['x'], 'y' );
-		$this->assertEquals( $assoc['ah'], 'be' );
+		$this->assertEquals( 'foo bar', $assoc[1] );
+		$this->assertEquals( 'blubber bla', $assoc[2] );
+		$this->assertEquals( 'y', $assoc['x'] );
+		$this->assertEquals( 'be', $assoc['ah'] );
 	}
 
 	function testGetDataSource() {
@@ -128,14 +128,14 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue( $src instanceof FakeDataTransclusionSource );
 		
 		$rec = $src->fetchRecord( 'id', 3 );
-		$this->assertEquals( $rec['id'], 3 );
-		$this->assertEquals( $rec['name'], 'foo' );
-		$this->assertEquals( $rec['info'], 'test 1' );
+		$this->assertEquals( 3, $rec['id'] );
+		$this->assertEquals( 'foo', $rec['name'] );
+		$this->assertEquals( 'test 1', $rec['info'] );
 		
 		$rec = $src->fetchRecord( 'name', 'bar' );
-		$this->assertEquals( $rec['id'], 5 );
-		$this->assertEquals( $rec['name'], 'bar' );
-		$this->assertEquals( $rec['info'], 'test 2' );
+		$this->assertEquals( 5, $rec['id'] );
+		$this->assertEquals( 'bar', $rec['name'] );
+		$this->assertEquals( 'test 2', $rec['info'] );
 
 		// /////////////////////////////////////////////////////////////////////////////
 		$spec[ 'class' ] = 'FakeDataTransclusionSource';
@@ -145,17 +145,17 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$src = DataTransclusionHandler::getDataSource( 'BAR' );
 		$this->assertTrue( $src instanceof FakeDataTransclusionSource );
-		$this->assertEquals( $src->getName(), 'BAR' );
+		$this->assertEquals( 'BAR', $src->getName() );
 		
 		$rec = $src->fetchRecord( 'id', 3 );
-		$this->assertEquals( $rec['id'], 3 );
-		$this->assertEquals( $rec['name'], 'foo' );
-		$this->assertEquals( $rec['info'], 'test 1' );
+		$this->assertEquals( 3, $rec['id'] );
+		$this->assertEquals( 'foo', $rec['name'] );
+		$this->assertEquals( 'test 1', $rec['info'] );
 		
 		$rec = $src->fetchRecord( 'name', 'bar' );
-		$this->assertEquals( $rec['id'], 5 );
-		$this->assertEquals( $rec['name'], 'bar' );
-		$this->assertEquals( $rec['info'], 'test 2' );
+		$this->assertEquals( 5, $rec['id'] );
+		$this->assertEquals( 'bar', $rec['name'] );
+		$this->assertEquals( 'test 2', $rec['info'] );
 
 		$src = DataTransclusionHandler::getdataSource( 'XYZZY' );
 		$this->assertTrue( $src === null || $src === false );
@@ -214,11 +214,11 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		////////////////////////////////////////////////////////
 		# success: render record
 		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'id' => 3 ), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
-		$this->assertEquals( $res, '\'\'\'3\'\'\'|foo|test&X' );
+		$this->assertEquals( '\'\'\'3\'\'\'|foo|test&X', $res );
 		
 		# success: render record (find by name)
 		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'name' => 'foo'), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
-		$this->assertEquals( $res, '\'\'\'3\'\'\'|foo|test&X' );
+		$this->assertEquals( '\'\'\'3\'\'\'|foo|test&X', $res );
 		
 		# success: render record (as HTML)
 		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'id' => 3 ), $wgParser, true, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
@@ -248,8 +248,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$wgParser->parse( $text, $title, $options );
 
 		$html = $wgParser->getOutput()->getText();
-		print "<<<$html>>>";   
-		$this->assertEquals( $html, '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;&#39;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
+		$this->assertEquals( '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;&#39;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>', $html ); // XXX: should be more lenient wrt whitespace
 		$templates = $wgParser->getOutput()->getTemplates();
 		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
 	}
@@ -277,7 +276,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$wgParser->parse( $text, $title, $options );
 
 		$html = $wgParser->getOutput()->getText();      
-		$this->assertEquals( $html, '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;&#39;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
+		$this->assertEquals( '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;&#39;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>', $html ); // XXX: should be more lenient wrt whitespace
 		$templates = $wgParser->getOutput()->getTemplates();
 		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
 	}
@@ -299,13 +298,13 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$args = array( "name" => "cruft", "more" => "stuff" );
 		$rec = $handler->normalizeRecord( $rec, $args );
 
-		$this->assertEquals( $rec['source-name'], 'FOO' );
-		$this->assertEquals( $rec['quux'], 'xyzzy' );
-		$this->assertEquals( $rec['x'], 43 );
-		$this->assertEquals( $rec['more'], 'stuff' );
-		$this->assertEquals( $rec['name'], 'foo' );
-		$this->assertEquals( $rec['id'], '3' );
-		$this->assertEquals( $rec['info'], '&#123;&#123;test&#125;&#125;=&#91;&#91;x&#93;&#93; 1&2 ' );
+		$this->assertEquals( 'FOO', $rec['source-name'] );
+		$this->assertEquals( 'xyzzy', $rec['quux'] );
+		$this->assertEquals( 43, $rec['x'] );
+		$this->assertEquals( 'stuff', $rec['more'] );
+		$this->assertEquals( 'foo', $rec['name'] );
+		$this->assertEquals( '3', $rec['id'] );
+		$this->assertEquals( '&#123;&#123;test&#125;&#125;=&#91;&#91;x&#93;&#93; 1&2 ', $rec['info'] );
 		$this->assertTrue( !isset( $rec['stuff'] ) );
 		$this->assertTrue( !isset( $rec['name.keyFields'] ) );
 	}
@@ -321,7 +320,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$handler = new DataTransclusionHandler( $wgParser, $source, $title, $template );
 		$res = $handler->render( $rec );
 
-		$this->assertEquals( $res, '3|foo|test X' );
+		$this->assertEquals( '3|foo|test X', $res );
 	}
 
 	function testCachedFetchRecord() {
@@ -345,9 +344,9 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		// get original version
 		$rec = $src->fetchRecord( 'id', 3 );
-		$this->assertEquals( $rec['id'], 3 );
-		$this->assertEquals( $rec['name'], 'foo' );
-		$this->assertEquals( $rec['info'], 'test 1' );
+		$this->assertEquals( 3, $rec['id'] );
+		$this->assertEquals( 'foo', $rec['name'] );
+		$this->assertEquals( 'test 1', $rec['info'] );
 
 		// change record
 		$rec = array( "name" => "foo", "id" => 3, "info" => 'test X' );
@@ -355,13 +354,13 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		// fetch record - should be the cached version
 		$rec = $src->fetchRecord( 'id', 3 );
-		$this->assertEquals( $rec['info'], 'test 1' );
+		$this->assertEquals( 'test 1', $rec['info'] );
 
 		sleep( 3 );
 
 		// fetch record - cached version should have expired
 		$rec = $src->fetchRecord( 'id', 3 );
-		$this->assertEquals( $rec['info'], 'test X' );
+		$this->assertEquals( 'test X', $rec['info'] );
 	}
 
 	function testDBDataTransclusionSource() {
@@ -388,7 +387,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		// check blocking of evil field names
 		$sql = $source->getQuery( 'name = 0; select * from x;', 'foo' );
-		$this->assertEquals( $sql, false );
+		$this->assertEquals( false, $sql );
 	}
 
 	function testWebDataTransclusionSource() {
@@ -406,13 +405,13 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$source = new WebDataTransclusionSource( $spec );
 
 		$u = $source->getRecordURL( 'name', 'foo&bar' );
-		$this->assertEquals( $u, 'http://acme.com/foo%26bar' );
+		$this->assertEquals( 'http://acme.com/foo%26bar', $u );
 
 		$u = $source->getRecordURL( 'id', '23' );
-		$this->assertEquals( $u, 'http://acme.com/?id=23' );
+		$this->assertEquals( 'http://acme.com/?id=23', $u );
 
 		$u = $source->getRecordURL( 'name', 'foo&bar', array( 'x' => '42', 'y' => 57 ) );
-		$this->assertEquals( $u, 'http://acme.com/foo%26bar?x=42&y=57' );
+		$this->assertEquals( 'http://acme.com/foo%26bar?x=42&y=57', $u );
 
 		$rec = array( 
 			"name" => array( 'type' => 'string', 'value' => "foo" ), 
@@ -431,8 +430,8 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$rec = $source->extractRecord( $source->decodeData( $data, 'php' ) );
 		$err = $source->extractError( $source->decodeData( $data, 'php' ) );
 
-		$this->assertEquals( $err, 'test error' );
-		$this->assertEquals( $rec['id'], 3 );
+		$this->assertEquals( 'test error', $err );
+		$this->assertEquals( 3, $rec['id'] );
 
 		//TODO: test extractField, with fancy snytax!
 		//TODO: test flattenRecord
@@ -443,7 +442,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$source = new WebDataTransclusionSource( $spec );
 
 		$rec = $source->fetchRecord( 'name', 'foo' );
-		$this->assertEquals( $rec['id'], 3 );
+		$this->assertEquals( 3, $rec['id'] );
 
 		////////////////////////
 		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-name-{name}.json';
@@ -451,7 +450,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$source = new WebDataTransclusionSource( $spec );
 
 		$rec = $source->fetchRecord( 'name', 'foo' );
-		$this->assertEquals( $rec['id'], 3 );
+		$this->assertEquals( 3, $rec['id'] );
 
 		////////////////////////
 		if ( function_exists( 'wddx_unserialize' ) ) {
@@ -460,7 +459,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			$source = new WebDataTransclusionSource( $spec );
 
 			$rec = $source->fetchRecord( 'name', 'foo' );
-			$this->assertEquals( $rec['id'], 3 );
+			$this->assertEquals( 3, $rec['id'] );
 		}
 	}
 
@@ -487,7 +486,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$source = new WebDataTransclusionSource( $spec );
 
 		$rec = $source->fetchRecord( 'item', 'Berlin' );
-		$this->assertEquals( $rec['latitude'], "52.461" );
+		$this->assertEquals( "52.461", $rec['latitude'] );
 	}
 }
 
