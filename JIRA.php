@@ -43,6 +43,13 @@
 # is a quick search string, as describe at 
 #   http://www.atlassian.com/software/jira/docs/v3.11/quicksearch.html
 
+$wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'JIRA',
+	'author'         => 'River Tarnell',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:JIRA',
+);
+
 $wgExtensionFunctions[] = 'efJIRASetup';
 
 function efJIRASetup() {
