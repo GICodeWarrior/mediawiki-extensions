@@ -334,4 +334,12 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			}
 		}
 	}
+
+	/**
+	 * Returns a string that identifies the version of this class.
+	 * @return string
+	 */
+	public static function getVersion() {
+		return __CLASS__ . ': $Id$';
+	}
 }
