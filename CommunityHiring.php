@@ -3,7 +3,7 @@
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'CommunityHirings',
+	'name' => 'CommunityHiring',
 	'author' => 'Andrew Garrett',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CommunityHirings',
 );
