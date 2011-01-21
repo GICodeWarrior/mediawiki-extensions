@@ -3,6 +3,13 @@
 if (!defined('MEDIAWIKI'))
 	die;
 
+$wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'Preview',
+	'author'         => '',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Preview',
+);
+
 $wgSpecialPages['Preview'] = 'SpecialPreview';
 
 class SpecialPreview extends SpecialPage {

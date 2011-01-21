@@ -27,6 +27,12 @@ THE SOFTWARE.
 
 */
 
+$wgExtensionCredits['parserhooks'][] = array(
+	'path' => __FILE__,
+	'name' => 'TrustedMath',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:TrustedMath',
+	'author' => 'Bryan Tong Minh',
+);
 
 $dir = dirname( __FILE__ );
 $wgAutoloadClasses['TrustedMath'] = "$dir/TrustedMath_body.php";

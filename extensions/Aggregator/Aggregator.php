@@ -6,6 +6,12 @@ define( 'MW_AGGREGATOR_VERSION', 1 );
 global $wgAggregatorExpiry;
 global $wgExtensionFunctions;
 
+$wgExtensionCredits['parserhooks'][] = array(
+	'path' => __FILE__,
+	'name' => 'Aggregator',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Aggregator',
+	'author' => 'Brion Vibber',
+);
 
 // Do not poll remote feeds more often than every 30 minutes
 $wgAggregatorExpiry = 1800;

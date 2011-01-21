@@ -3,6 +3,12 @@
 #
 # There is a <citation>author=Manske M ||title="The best paper ever" ||journal=''Biochemistry'' ||volume='''5''', 11</citation> citation here!
 
+$wgExtensionCredits['parserhooks'][] = array(
+	'path' => __FILE__,
+	'name' => 'Citation',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Citation',
+	'author' => 'Magnus Manske',
+);
 
 $wgHooks['ParserBeforeTidy'][] = 'citation_hooker';
 $wgHooks['ParserClearState'][] = 'citation_clear_state';

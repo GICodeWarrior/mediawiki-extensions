@@ -34,6 +34,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
+$wgExtensionCredits['parserhook'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'Footnote',
+	'author'         => '',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Footnote',
+);
 
 $wgExtensionFunctions[] = "wfFootnote";
 

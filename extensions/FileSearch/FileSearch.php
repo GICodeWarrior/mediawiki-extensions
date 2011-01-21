@@ -14,6 +14,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'FileSearch',
+	'author'         => '',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:FileSearch',
+);
+
 $wgExtensionFunctions[] = 'efFileSearchSetup';
 $wgAutoloadClasses['FileSearchIndexer'] = dirname( __FILE__ ) . '/FileSearchIndexer.php';
 $wgAutoloadClasses['Extractor'] = dirname( __FILE__ ) . '/extract/Extractor.php';

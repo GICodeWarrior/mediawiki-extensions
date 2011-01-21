@@ -1,4 +1,12 @@
 <?php
+
+$wgExtensionCredits['parserhooks'][] = array(
+	'path' => __FILE__,
+	'name' => 'WitionaryInflection',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:WitionaryInflection',
+	'author' => '',
+);
+
 $wgExtensionFunctions[] = "wfInflectionExtension";
 
 function wfInflectionExtension() {

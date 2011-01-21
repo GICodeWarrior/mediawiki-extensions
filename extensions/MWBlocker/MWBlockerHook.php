@@ -2,6 +2,13 @@
 
 require_once( 'MWBlocker.php' );
 
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'BlockerHook',
+	'author'         => '',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:BlockerHook',
+);
+
 $wgExtensionFunctions[] = 'mwBlockerHookSetup';
 
 function mwBlockerHookSetup() {
