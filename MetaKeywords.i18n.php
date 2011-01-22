@@ -60,7 +60,7 @@ $messages['arz'] = array(
  # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -386,14 +386,14 @@ $messages['sq'] = array(
 	'metakeywords-desc' => 'Lejon konfigurimin e kodeve <code>&lt;meta "keywords"&gt;</code> dhe <code>&lt;meta "description"&gt;</code> për çdo hapësirë',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'metakeywords-desc' => 'Омогућује конфигурацију <code>&lt;meta "keywords"&gt;</code> и <code>&lt;meta "description"&gt;</code> тагова по именском простору',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
