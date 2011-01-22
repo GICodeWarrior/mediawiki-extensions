@@ -47,7 +47,7 @@ $messages['arz'] = array(
 	'uploadblacklist-desc' => 'يزود وظيفه بلاكليست للرفع',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -61,7 +61,7 @@ $messages['bar'] = array(
 	'uploadblacklist-desc' => 'fügt a schwoaze listn füa die Upload-fungtion hianzur',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -426,14 +426,14 @@ $messages['sl'] = array(
 	'uploadblacklist-desc' => 'Doda funkcionalnost črne liste nalaganj',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'uploadblacklist-desc' => 'Додаје функционалност црне листе за слање фајлова',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'uploadblacklist-desc' => 'Dodaje funkcionalnost crne liste za slanje fajlova',
 );
