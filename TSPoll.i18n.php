@@ -30,7 +30,7 @@ $messages['ar'] = array(
 	'tspoll-id-error' => 'لا رقم معطى!',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
