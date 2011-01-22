@@ -47,7 +47,7 @@ $messages['arz'] = array(
 	'gnuplot-desc' => 'يضيف الوسم <code><nowiki><gnuplot></nowiki></code> لاستخدام جنو بلوت',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -342,6 +342,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Helder.wiki
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -404,14 +405,14 @@ $messages['sq'] = array(
 	'gnuplot-desc' => 'E vendos kodin <code><nowiki><gnuplot></nowiki></code> për të përdorur Gnuplot',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'gnuplot-desc' => 'Додаје таг <code><nowiki><gnuplot></nowiki></code> зарад коришћења Gnuplot-а',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -499,5 +500,12 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'gnuplot-desc' => '使用 Gnuplot 增加<code><nowiki><gnuplot></nowiki></code>標籤',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'gnuplot-desc' => '加入 <code><nowiki><gnuplot></nowiki></code> 的標籤以使用 Gnuplot',
 );
 
