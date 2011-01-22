@@ -407,7 +407,7 @@ $messages['ay'] = array(
 	'mywhitelistpages' => 'Uñstawinakaja',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -860,7 +860,7 @@ Diese Seite gilt nur für berechtigte Benutzer.",
 	'group-manager-member' => 'Verwalter',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -2750,7 +2750,7 @@ $messages['pdc'] = array(
 	'whitelistnever' => 'nie naett',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -2968,6 +2968,7 @@ Esta página só se aplica a utilizadores restritos.",
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Helder.wiki
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -3351,7 +3352,7 @@ $2',
 	'group-manager-member' => 'Управљач',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
