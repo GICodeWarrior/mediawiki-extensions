@@ -177,7 +177,7 @@ $messages['arc'] = array(
 	'storyboard-hideimage' => 'ܛܫܝ ܨܘܪܬܐ',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -452,7 +452,7 @@ Du kannst bereits veröffentlichte Botschaften [$1 hier] lesen.',
 	'storyboard-storydeletionconfirm' => 'Bist du sicher, dass du diese Botschaft dauerhaft löschen möchtest?',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
  * @author Umherirrender
  */
@@ -2215,7 +2215,7 @@ $messages['rue'] = array(
 	'storyboard-working' => 'Робить ся...',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2266,7 +2266,7 @@ $messages['sr-ec'] = array(
 	'storyboard-deletestory' => 'Обриши',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'storyboard-anerroroccured' => 'Došlo je do greške: $1',
 	'storyboard-unpublished' => 'Povučeno iz objave',
