@@ -151,7 +151,7 @@ $messages['bcc'] = array(
 	'scanset_prev' => '&lt; پیش',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -828,7 +828,7 @@ $messages['ksh'] = array(
 	'scanset_prev' => '← Vörijje',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1078,7 +1078,7 @@ $messages['pdc'] = array(
 	'scanset_prev' => '← Letscht',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -1301,7 +1301,7 @@ $messages['sl'] = array(
 	'scanset_prev' => '&lt; Prejšnji',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Sasa Stefanovic
  */
@@ -1320,7 +1320,7 @@ $messages['sr-ec'] = array(
 	'scanset_prev' => '&lt; Прет.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
