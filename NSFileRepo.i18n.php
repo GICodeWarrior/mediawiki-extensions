@@ -30,7 +30,7 @@ $messages['ar'] = array(
 	'nsfilerepo-desc' => 'يوفر خصائص معنمدة على النطاق للملفات المرفوعة',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
