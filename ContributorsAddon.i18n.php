@@ -50,14 +50,14 @@ $messages['az'] = array(
 	'contributorsaddon-desc' => '"Əsas müəlliflər" keçidi üçün üzə çıxan JavaScript-sahəni əlavə edir',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
 	'contributorsaddon-desc' => '"Төп өлөш индереүселәр" һылтанмаһы өсөн JavaScript юлы өҫтәй.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -418,14 +418,14 @@ $messages['sq'] = array(
 	'contributorsaddon-desc' => 'Vendosë dritare JavaScript në lidhjet "Kontribuuesit kryesorë"',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'contributorsaddon-desc' => 'Додаје јаваскрипт поп-апове везама ка "Главним ауторима"',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -506,5 +506,12 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'contributorsaddon-desc' => '加入JavaScript的彈出式視窗至「主要貢獻者」連結',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
+	'contributorsaddon-desc' => '添加JavaScript的彈出式窗口至“主要貢獻者”連結',
 );
 
