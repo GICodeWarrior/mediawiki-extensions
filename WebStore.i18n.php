@@ -272,7 +272,7 @@ $messages['bcl'] = array(
 	'webstore_no_response' => 'Mayong simbag hali sa server',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -653,7 +653,7 @@ $1',
 	'webstore_no_handler' => 'Keine Routine zur Transformation dieses MIME-Typ vorhanden',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  */
 $messages['de-formal'] = array(
@@ -2567,7 +2567,7 @@ $1',
 	'webstore_no_handler' => 'Pre transformáciu tohto typu MIME neexistuje obsluha',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2615,7 +2615,7 @@ $1',
 	'webstore_no_handler' => 'Није дефинисано трансформисање овог MIME типа',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
