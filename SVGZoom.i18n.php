@@ -30,7 +30,7 @@ $messages['ar'] = array(
 	'svgzoom-desc' => 'يضيف إمكانيات قص وتقريب لميدياويكي عند رؤية ملفات SVG',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -263,14 +263,14 @@ $messages['sk'] = array(
 	'svgzoom-desc' => 'Pridáva možnosti posúvania a približovania do prehliadača SVG súborov MediaWiki',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'svgzoom-desc' => 'Додаје МедијаВикију могућност скроловања по и увећавања SVG слика',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'svgzoom-desc' => 'Dodaje MedijaVikiju mogućnost skrolovanja po i uvećavanja SVG slika',
 );
