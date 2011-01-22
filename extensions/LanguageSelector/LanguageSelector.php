@@ -45,7 +45,6 @@ $wgLanguageSelectorDetectLanguage = LANGUAGE_SELECTOR_PREFER_CLIENT_LANG;
 /**
 * Languages to offer in the language selector. Per default, this includes all languages MediaWiki knows
 * about by virtue of $wgLanguageNames. A shorter list may be more usable, though.
-* If the Polyglot extension is installed, $wgPolyglotLanguages is used as fallback.
 */
 $wgLanguageSelectorLanguages = null;
 
@@ -87,10 +86,10 @@ $wgLanguageSelectorFormUsed = false;
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['LanguageSelector'] = $dir . 'LanguageSelector.i18n.php';
 $wgJSAutoloadClasses['LanguageSelector'] = 'extensions/LanguageSelector/LanguageSelector.js';
+$wgAutoloadClasses['StubAutoLang'] = $dir . 'StubAutoLang.php';
 
-function wfLanguageSelectorSetHook() {
-	global $wgParser;
-	$wgParser->setHook( 'languageselector', 'wfLanguageSelectorTag' );
+function wfLanguageSelectorSetHook( $parser ) {
+	$parser->setHook( 'languageselector', 'wfLanguageSelectorTag' );
 	return true;
 }
 
@@ -102,10 +101,6 @@ function wfLanguageSelectorExtension() {
 
 	if ( $wgCommandLineMode ) {
 		return true;
-	}
-
-	if ( $wgLanguageSelectorLanguages === null ) {
-		$wgLanguageSelectorLanguages = @$GLOBALS['wgPolyglotLanguages'];
 	}
 
 	if ( $wgLanguageSelectorLanguages === null ) {
@@ -134,42 +129,9 @@ function wfLanguageSelectorExtension() {
 	}
 
 	if ( !$wgRequest->getVal( 'uselang' ) && $wgUser->isAnon() ) {
-
-		//NOTE: we need this for anons, so squids don't get confused.
-		//      but something is still wrong with caching...
-		header( 'Vary: Cookie', false ); //hrm, this is pretty BAD.
-		header( 'Vary: Accept-Language', false );
-
 		if ( $wgLanguageSelectorRequestedLanguage || $wgLanguageSelectorDetectLanguage != LANGUAGE_SELECTOR_USE_CONTENT_LANG ) {
-
-			if ( !class_exists( 'StubAutoLang' ) ) {
-				class StubAutoLang extends StubObject {
-					function __construct() {
-						parent::__construct( 'wgLang' );
-					}
-				
-					function __call( $name, $args ) {
-						return $this->_call( $name, $args );
-					}
-				
-					//partially copied from StubObject.php. There should be a better way...
-					function _newObject() {
-						global $wgContLanguageCode, $wgContLang, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage;
-
-						$code = $wgLanguageSelectorRequestedLanguage;
-						if (!$code) $code = wfLanguageSelectorDetectLanguage( $wgLanguageSelectorDetectLanguage );
-
-						if( $code == $wgContLanguageCode ) {
-							return $wgContLang;
-						} else {
-							$obj = Language::factory( $code );
-							return $obj;
-						}
-					}
-				}
-			}
-	
 			$wgLang = new StubAutoLang;
+			$wgLang->setRequestedLanguage( $wgLanguageSelectorRequestedLanguage );
 		}
 	}
 
@@ -204,11 +166,8 @@ function wfLanguageSelectorBeforePageDisplay( &$out ) {
 	return true;
 }
 
-function wfLanguageSelectorGetCacheVaryCookies( &$cookies ) {
-	global $wgCookiePrefix;
-
+function wfLanguageSelectorGetCacheVaryCookies( $out, &$cookies ) {
 	$cookies[] = $wgCookiePrefix.'LanguageSelectorLanguage';
-
 	return true;
 }
 
