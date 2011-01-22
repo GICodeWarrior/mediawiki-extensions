@@ -85,7 +85,7 @@ $messages['ast'] = array(
 	'simpleantispam-desc' => 'Amiesta al formulariu la comprobación de spam con un bot',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -105,7 +105,7 @@ $messages['bcc'] = array(
 	'simpleantispam-desc' => 'اضافه کنت یم ساده اسپم/روبوت چک په کنترل فرم آن',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -196,7 +196,7 @@ $messages['de'] = array(
 	'simpleantispam-desc' => 'Ergänzt Formulare um einen einfachen Bot-Spamschutz',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author MichaelFrey
  */
 $messages['de-formal'] = array(
@@ -716,7 +716,7 @@ $messages['sl'] = array(
 	'simpleantispam-desc' => 'Doda preprosto preverjanje smetja/botov v obrazce',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -725,7 +725,7 @@ $messages['sr-ec'] = array(
 	'simpleantispam-desc' => 'Додаје једноставну спам/бот проверу у форме.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
