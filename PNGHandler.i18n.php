@@ -51,7 +51,7 @@ $messages['az'] = array(
 	'pnghandler-desc' => 'pngds vasitəsilə PNG formatlı faylların həcmini dəyişir',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -360,14 +360,14 @@ $messages['sl'] = array(
 	'pnghandler-desc' => 'Spremeni velikost PNG-jev z uporabo pngds',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
 	'pnghandler-desc' => 'Промени величину ПНГ слика користећи pngds',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
