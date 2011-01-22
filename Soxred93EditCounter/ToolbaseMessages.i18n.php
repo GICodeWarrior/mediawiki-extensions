@@ -170,6 +170,45 @@ $messages['be-tarask'] = array(
 	'toolbase-userid-title' => 'Знайсьці ідэнтыфікатар удзельніка',
 	'toolbase-userid-result' => 'Ідэнтыфікатарам удзельніка <b>$1</b> на <a href="$3"><b>$3</b></a> зьяўляецца <b>$2</b>.',
 	'toolbase-main-title' => 'Вітаем!',
+	'toolbase-main-content' => 'Вітаем у інструмэнтах X!! Набор інструмэнтаў яшчэ знаходзіцца ў працэсе канвэртацыі на базу <a href="$1">Symfony</a>. Гэта працэс яшчэ працягнецца некаторы час, яле ўсё павінна працаваць ужо зараз. 
+
+Для таго, каб убачыць сьпіс інструмэнтаў, якія цяпер даступныя ў гэтай базе, глядзіце панэль справа.
+
+Пра памылкі можна паведамляць на <a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'Файл ня знойдзены',
+	'toolbase-main-404-content' => 'Старонка ня знойдзеная!
+
+Упэўніцеся, што Вы ўвялі слушны URL-адрас.
+Калі Вы перайшлі па нейкай спасылцы, калі ласка <a href="$1">паведаміце пра памылку</a>.
+</ul>',
+	'toolbase-form-wiki' => 'Вікі',
+	'toolbase-error-nouser' => '«$1» не зьяўляецца слушнай назвай рахунку удзельніка',
+);
+
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'toolbase-header-title' => 'Ostilh X! (BETA)',
+	'toolbase-header-bugs' => 'Drein',
+	'toolbase-replag-years' => 'bloavezhioù',
+	'toolbase-replag-months' => 'mizioù',
+	'toolbase-replag-weeks' => 'sizhunvezhioù',
+	'toolbase-replag-days' => 'deizioù',
+	'toolbase-replag-hours' => 'eurvezhioù',
+	'toolbase-replag-minutes' => 'munutennoù',
+	'toolbase-replag-seconds' => 'eilennoù',
+	'toolbase-footer-source' => 'Sellet ouzh tarzh an destenn',
+	'toolbase-footer-language' => 'Cheñch yezh',
+	'toolbase-footer-translate' => 'Treiñ',
+	'toolbase-navigation' => 'Merdeiñ',
+	'toolbase-navigation-homepage' => 'Pajenn degemer',
+	'toolbase-navigation-user_id' => 'Kavout ID an implijer',
+	'toolbase-userid-title' => 'Kavout ID un implijer',
+	'toolbase-main-title' => 'Degemer mat !',
+	'toolbase-main-404' => "N'eo ket bet kavet ar restr",
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '"$1" n’eo ket un implijer reizh.',
 );
 
 /** German (Deutsch)
@@ -229,17 +268,64 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Sherbrooke
  * @author X!
  */
 $messages['fr'] = array(
+	'toolbase-header-title' => 'Outils X! (BETA)',
+	'toolbase-header-bugs' => 'Bugs',
+	'toolbase-replag-years' => 'années',
+	'toolbase-replag-months' => 'mois',
+	'toolbase-replag-weeks' => 'semaines',
+	'toolbase-replag-days' => 'jours',
 	'toolbase-replag-hours' => 'heures',
 	'toolbase-replag-minutes' => 'minutes',
 	'toolbase-replag-seconds' => 'secondes',
+	'toolbase-footer-exectime' => 'Complété en $1 {{PLURAL:$1|seconde|secondes}}',
+	'toolbase-footer-language' => 'Changer de langue',
 	'toolbase-footer-translate' => 'Traduire',
+	'toolbase-navigation' => 'Navigation',
+	'toolbase-navigation-homepage' => "Page d'accueil",
 	'toolbase-main-title' => 'Bienvenue !',
 	'toolbase-main-404' => 'Fichier introuvable',
+	'toolbase-main-404-content' => 'Oups ! Aucune page n\'a été trouvé !
+
+Assurez-vous que vous avez tapé l\'URL correctement.
+Si vous avez suivi un lien, veuillez <a href="$1">rapporter le bug</a>.
+</ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => "$1 n'est pas un utilisateur valide",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'toolbase-header-title' => 'Ferramentas de X! (BETA)',
+	'toolbase-header-bugs' => 'Erros',
+	'toolbase-header-sitenotice' => 'Anuncio global do servidor de ferramentas: $1',
+	'toolbase-replag' => 'Servidor con atraso por $1',
+	'toolbase-replag-years' => 'anos',
+	'toolbase-replag-months' => 'meses',
+	'toolbase-replag-weeks' => 'semanas',
+	'toolbase-replag-days' => 'días',
+	'toolbase-replag-hours' => 'horas',
+	'toolbase-replag-minutes' => 'minutos',
+	'toolbase-replag-seconds' => 'segundos',
+	'toolbase-footer-exectime' => 'Executado en $1 segundos',
+	'toolbase-footer-source' => 'Ver o código fonte',
+	'toolbase-footer-language' => 'Cambiar a lingua',
+	'toolbase-footer-translate' => 'Traducir',
+	'toolbase-navigation' => 'Navegación',
+	'toolbase-navigation-homepage' => 'Inicio',
+	'toolbase-navigation-user_id' => 'Atopar o ID de usuario',
+	'toolbase-userid-submit' => 'Obter o ID de usuario',
+	'toolbase-userid-title' => 'Atopar o ID de usuario',
+	'toolbase-userid-result' => 'O ID de usuario de <b>$1</b> en <a href="$3"><b>$3</b></a> é <b>$2</b>.',
+	'toolbase-main-title' => 'Benvido!',
+	'toolbase-main-404' => 'Non se atopou o ficheiro',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '"$1" non é un usuario válido',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -281,6 +367,7 @@ Jeli wotkaz je će wot něhdźe sem wjedł, <a href="$1">zdźěl prošu programo
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 płaćiwy wužiwar njeje.',
+	'toolbase-error-nowiki' => '$1.$2.org płaćiwy wiki njeje',
 );
 
 /** Interlingua (Interlingua)
@@ -365,6 +452,25 @@ Jika Anda mengikuti tautan dari tempat lain, silahkan <a href="$1">laporkan bug<
 	'toolbase-error-nouser' => '$1 bukan pengguna yang sah',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'toolbase-replag-years' => 'Joer',
+	'toolbase-replag-months' => 'Méint',
+	'toolbase-replag-weeks' => 'Wochen',
+	'toolbase-replag-days' => 'Deeg',
+	'toolbase-replag-hours' => 'Stonnen',
+	'toolbase-replag-minutes' => 'Minutten',
+	'toolbase-replag-seconds' => 'Sekonnen',
+	'toolbase-footer-language' => 'Sprooch wiesselen',
+	'toolbase-footer-translate' => 'Iwwersetzen',
+	'toolbase-navigation' => 'Navigatioun',
+	'toolbase-main-404' => 'Fichier gouf net fonnt',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '"$1" ass kee gültege Benotzernumm',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -445,6 +551,22 @@ Als u een verwijzing ergens anders vandaan hebt gevolgd, <a href="$1">meld dan a
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 is geen geldige gebruiker',
+	'toolbase-error-nowiki' => '$1.$2.org is geen geldige wiki',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'toolbase-replag-years' => 'సంవత్సరాలు',
+	'toolbase-replag-months' => 'నెలలు',
+	'toolbase-replag-weeks' => 'వారాలు',
+	'toolbase-replag-days' => 'రోజులు',
+	'toolbase-replag-hours' => 'గంటలు',
+	'toolbase-replag-minutes' => 'నిమిషాలు',
+	'toolbase-replag-seconds' => 'క్షణాలు',
+	'toolbase-main-title' => 'స్వాగతం!',
+	'toolbase-form-wiki' => 'వికీ',
 );
 
 /** Ukrainian (Українська)
@@ -472,5 +594,21 @@ $messages['uk'] = array(
 Якщо ви перейшли за посиланням звідки-небудь, будь ласка, <a href="$1">повідомте про помилку</a>.
 </ul>',
 	'toolbase-form-wiki' => 'Вікі',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'toolbase-replag-seconds' => '秒',
+	'toolbase-footer-source' => '檢視原始碼',
+	'toolbase-navigation' => '導覽',
+	'toolbase-navigation-homepage' => '首頁',
+	'toolbase-navigation-user_id' => '尋找使用者 ID',
+	'toolbase-userid-submit' => '取得使用者 ID',
+	'toolbase-userid-title' => '尋找使用者 ID',
+	'toolbase-main-title' => '歡迎！',
+	'toolbase-main-404' => '找不到檔案',
+	'toolbase-form-wiki' => 'Wiki',
 );
 
