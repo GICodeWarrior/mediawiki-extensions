@@ -43,14 +43,14 @@ $messages['az'] = array(
 	'conditionalshowsection-desc' => 'Vikimətnin bölməsinin şərti göstərilməsi və ya gizlədilməsi üçün cshow teqini əlavə edir.',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Haqmar
  */
 $messages['ba'] = array(
 	'conditionalshowsection-desc' => 'Викитекст бүлеген шартлы күрһәтеү йәки йәшереү өсөн cshow тегы өҫтәй',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -317,14 +317,14 @@ $messages['sl'] = array(
 	'conditionalshowsection-desc' => 'Dodajanje etikete cshow za pogojno prikazovanje/skrivanje razdelka wikibesedila',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'conditionalshowsection-desc' => 'Додаје cshow таг за условно приказивање и скривање одељака вики-текста.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
@@ -391,5 +391,12 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'conditionalshowsection-desc' => '加入 cshow 標籤有條件地顯示／隱藏一段維基文字',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
+	'conditionalshowsection-desc' => '添加cshow標籤來有條件地顯示或隱藏一段維基文本',
 );
 
