@@ -6436,6 +6436,7 @@ $messages['sl'] = array(
 	'wikilog-comment-reject' => 'Zavrni to pripombo (takojšnje dejanje)',
 	'wikilog-newtalk-text' => '<!-- prazna stran, ki jo ustvaril Wikilog -->',
 	'wikilog-newtalk-summary' => 'samodejno ustvaril Wikilog',
+	'wikilog-feed-ns-title' => '$1 člankov wikilog',
 	'wikilog-comment-feed-title1' => 'Pripomba $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Pripomba $2 na $3 (#$1)',
 	'wikilog-title-comments' => 'Pripombe – $1',
