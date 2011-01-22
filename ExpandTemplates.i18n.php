@@ -181,7 +181,7 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_preview' => 'Previsualizar',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -231,7 +231,7 @@ $messages['bcl'] = array(
 	'expand_templates_preview' => 'Patânaw',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1875,7 +1875,7 @@ $messages['sq'] = array(
 	'expand_templates_remove_comments' => 'Hiq komentet',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -1898,7 +1898,7 @@ $messages['sr-ec'] = array(
 	'expand_templates_preview' => 'Приказ',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
  */
@@ -2330,6 +2330,24 @@ $messages['zh-hant'] = array(
 	'expand_templates_remove_comments' => '移除注釋',
 	'expand_templates_remove_nowiki' => '在結果中隱藏<nowiki>標記',
 	'expand_templates_generate_xml' => '顯示XML語法樹',
+	'expand_templates_preview' => '預覽',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
+	'expandtemplates' => '展開模板',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|展開模板、模版擴展語法以及變數]]去顯示展開之wiki文字和預覽處理後之頁面',
+	'expand_templates_intro' => '本特殊頁面用於將一些文字中的模版展開，包括模版中引用的模版。同時也展開解譯器函數如<nowiki> {{</nowiki>#if:...}}，以及變數如<nowiki>{{< /nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有在雙括弧中的內容都被展開。本特殊頁面是通過使用 MediaWiki的相關解釋階段的功能完成的。',
+	'expand_templates_title' => '上下文標題，用於 {{PAGENAME}} 等：',
+	'expand_templates_input' => '輸入文字：',
+	'expand_templates_output' => '結果：',
+	'expand_templates_xml_output' => 'XML輸出',
+	'expand_templates_ok' => '確定',
+	'expand_templates_remove_comments' => '移除註釋',
+	'expand_templates_remove_nowiki' => '在結果中隱藏<nowiki>標記',
+	'expand_templates_generate_xml' => '顯示XML解析樹',
 	'expand_templates_preview' => '預覽',
 );
 
