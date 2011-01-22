@@ -216,7 +216,7 @@ $messages['arz'] = array(
 	'right-recordadmin' => 'أبحث و عدل صفحات السجل',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -474,7 +474,7 @@ $messages['de'] = array(
 	'recordadmin-properties' => 'Attribute',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  * @author Revolus
  * @author Umherirrender
@@ -799,7 +799,7 @@ $messages['frp'] = array(
 	'recordadmin-notset' => 'Nion « $1 »',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -1642,7 +1642,7 @@ $messages['pdc'] = array(
 	'recordadmin-notset' => 'Keen „$1“',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -2031,7 +2031,7 @@ $messages['sr-ec'] = array(
 	'recordadmin-newcreated' => 'Нови $1 направљен са јавне форме',
 	'recordadmin-summary-typecreated' => 'Нови $1 направљен',
 	'recordadmin-viewlink' => 'прикажи',
-	'recordadmin-editlink' => 'измени',
+	'recordadmin-editlink' => 'уреди',
 	'recordadmin-created' => 'Направљено',
 	'recordadmin-modified' => 'Измењено',
 	'recordadmin-actions' => 'Уреди',
@@ -2040,7 +2040,7 @@ $messages['sr-ec'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
