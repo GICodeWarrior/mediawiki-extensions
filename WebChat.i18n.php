@@ -657,6 +657,10 @@ Anonymní používatelia dostanú automaticky vytvorenú prezývku, ale možno j
 $messages['sl'] = array(
 	'webchat' => 'Spletni klepet',
 	'webchat-desc' => 'Doda [[Special:WebChat|posebno stran]], ki se uporablja za klepet z ostalimi wikiuporabniki v realnem času',
+	'webchat-header' => 'Ta posebna stran vam omogoča sodelovati z drugimi uporabniki wikija v realnem času.
+Za povezavo preprosto pritisnite gumb »Connect«.
+Će ste prijavljeni, bo vaš vzdevek že vnesen.
+Brezimnim uporabnikom se vzdevek ustvari samodejno, vendar ga je mogoče spremeniti.',
 	'right-webchat' => 'Dovoljena uporaba [[Special:WebChat|spletnega klepeta]]',
 );
 
