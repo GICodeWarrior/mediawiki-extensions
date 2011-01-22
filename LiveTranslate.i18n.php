@@ -156,6 +156,7 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
 	'livetranslate-desc' => 'Ermöglicht die unmittelbare Übersetzung des Seiteninhalts mit „Google Übersetzer“',
@@ -172,9 +173,9 @@ $messages['de'] = array(
 	'livetranslate-tmtype-ltf' => 'Live Translate format',
 	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
 	'livetranslate-tmtype-gcsv' => 'Google-CSV',
-	'livetranslate-special-no-tms-yet' => 'Momentan sind keine Übersetzungsspeicher vorhanden.',
+	'livetranslate-special-no-tms-yet' => 'Momentan sind noch keine Übersetzungsspeicher vorhanden.',
 	'livetranslate-special-button' => 'Speichern und aktualisieren',
-	'livetranslate-special-type' => 'Eingeben',
+	'livetranslate-special-type' => 'Art',
 	'livetranslate-special-location' => 'Ort',
 	'livetranslate-special-remove' => 'Entfernen',
 	'livetranslate-special-local' => 'Lokal',
@@ -239,6 +240,7 @@ $messages['fr'] = array(
 	'livetranslate-dictionary-empty' => "Il n'y a aucun mot dans le dictionnaire encore. Cliquez sur l'onglet « Modifier » pour en ajouter.",
 	'livetranslate-dictionary-count' => "Il y a $1 {{PLURAL:$1|mot|mots}} dans {{PLURAL:$2|une langue|$2 langues}}. Cliquez sur l'onglet « Modifier » pour en ajouter.",
 	'livetranslate-dictionary-unallowed-langs' => "{{PLURAL:$2|Cette langue n'est pas sélectionnée comme langue cible|Ces langues ne sont pas sélectionnées comme langues cibles}} : $1. Modifiez les langues autorisées dans votre configuration de wiki ou supprimez-les du dictionnaire.",
+	'livetranslate-dictionary-goto-edit' => 'Modifier les mémoires de traduction.',
 	'special-livetranslate' => 'Live translate',
 	'livetranslate-tmtype-ltf' => 'Format Live Translate',
 	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
@@ -248,6 +250,7 @@ $messages['fr'] = array(
 	'livetranslate-special-type' => 'Type',
 	'livetranslate-special-location' => 'Localisation',
 	'livetranslate-special-remove' => 'Enlever',
+	'livetranslate-special-local' => 'Local',
 	'livetranslate-special-add-tm' => 'Ajouter une nouvelle mémoire de traduction',
 	'livetranslate-special-current-tms' => 'Mémoires de traduction existantes',
 	'livetranslate-special-tms-update' => 'Mise à jour de mémoires de traduction',
@@ -279,6 +282,22 @@ $messages['gsw'] = array(
 	'livetranslate-dictionary-empty' => 'Zurzyt het s kei Vokable im Werterbuech. Uf „Bearbeite“ klicke go ne baar yyfiege.',
 	'livetranslate-dictionary-count' => 'Zurzyt {{PLURAL:$1|git s $1 Wort|git s $1 Werter}} in $2 {{PLURAL:$2|Sproch|Sproche}} im Werterbuech. Uf „Bearbeite“ klicke go wyteri yyfiege.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Die Sproch isch|Die Sproche sin}} zurzyt nit zum Ibersetze zuegloo: $1. Entwäder jetz d Yystellig vu dr ibersetzbare Sproche in dr Wikikonfiguration aapasse oder die us em Werterbuech uuseneh.',
+	'livetranslate-dictionary-goto-edit' => 'D Ibersetzigsspycher aapasse.',
+	'special-livetranslate' => 'Diräktibersetzig',
+	'livetranslate-tmtype-ltf' => 'Live Translate-Format',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google-CSV',
+	'livetranslate-special-no-tms-yet' => 'S git no kei Ibersetzigsspycher.',
+	'livetranslate-special-button' => 'Spychere un aktualisiere',
+	'livetranslate-special-type' => 'Typ',
+	'livetranslate-special-location' => 'Ort',
+	'livetranslate-special-remove' => 'Uuseneh',
+	'livetranslate-special-local' => 'Lokal',
+	'livetranslate-special-add-tm' => 'E neje Ibersetzigsspycher aalege',
+	'livetranslate-special-current-tms' => 'Ibersetzigsspycher, wu s het',
+	'livetranslate-special-tms-update' => 'Ibersetzigsspycher aktualisiere',
+	'livetranslate-special-update' => 'Ibersetzigsspycher aktualisiere',
+	'livetranslate-importtms-param-miscmatch' => 'Missverhältnis zwische dr Aazahl vu Spycherplätz un Type',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -389,6 +408,38 @@ $messages['ja'] = array(
 	'livetranslate-translate-to' => 'このページを翻訳',
 	'livetranslate-button-translate' => '翻訳',
 	'livetranslate-button-translating' => '翻訳中...',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'livetranslate-desc' => 'Määt en „{{int:special-livetranslate}}“ müjjelesch met <span class="plainlinks">[http://translate.google.com/ Google Translate]</span>.',
+	'livetranslate-translate-to' => 'Don di Sigg hee övversäze noh',
+	'livetranslate-button-translate' => 'Övversätze!',
+	'livetranslate-button-translating' => 'Am Övversätze&nbsp;…',
+	'livetranslate-button-revert' => 'Ojinaal Shprooch aanzeije',
+	'livetranslate-dictionary-error' => 'Mer kunnte kein Wööterbooch fenge. Kei Woot weet beim Övversäze extra behandelt.',
+	'livetranslate-dictionary-empty' => 'Mer han noch kei Woot em Wööterbooch.
+Övver dä „{{int:edit}}“-Knopp kam_mer Wööter enjävve.',
+	'livetranslate-dictionary-count' => 'Mer han {{PLURAL:$1|ei Woot|$1 Wööter|kei Woot}} en $2 {{PLURAL:$2|Shprooch|Shprooche|Shprooche}} em Wööterbooch. Övver dä „{{int:Edit}}“-Knopp kam_mer noch mieh enjävve.',
+	'livetranslate-dictionary-unallowed-langs' => 'Di {{PLURAL:$2|Shprooch es|Shprooche sin|X}} em Momang nit zohjelohße för et Övversäze: $1. Donn jäz de zohjelohße Shprooche em Wiki ändere udder heh di {{PLURAL:$2|Shprooch|Shprooche|X}} uss_em Wööterbooch schmieße.',
+	'livetranslate-dictionary-goto-edit' => 'De Speicher för Övversäzunge ändere.',
+	'special-livetranslate' => 'Lebändesch Övversäze',
+	'livetranslate-tmtype-ltf' => '<i lang="en">Live-Translate</i>-Format',
+	'livetranslate-tmtype-tmx' => '<i lang="en">Translation Memory eXchange</i>',
+	'livetranslate-tmtype-gcsv' => '<i lang="en">Google-CSV</i>',
+	'livetranslate-special-no-tms-yet' => 'Mer han noch kein Speicher för Övversäzunge.',
+	'livetranslate-special-button' => 'Faßhallde un op ene neue Stand bränge',
+	'livetranslate-special-type' => 'Zoot',
+	'livetranslate-special-location' => 'Woh?',
+	'livetranslate-special-remove' => 'Nemm fott!',
+	'livetranslate-special-local' => 'Heh',
+	'livetranslate-special-add-tm' => 'Ene neue Speicher för Övversäzunge dobei donn',
+	'livetranslate-special-current-tms' => 'Speicher för Övversäzunge, di ald doh sin',
+	'livetranslate-special-tms-update' => 'Speicher för Övversäzunge op ene neue Stand bränge',
+	'livetranslate-special-update' => 'Speicher för Övversäzunge op ene neue Stand bränge',
+	'livetranslate-importtms-param-miscmatch' => 'De Aanzahl Speicherplätz un Zoote paß nit zosamme.',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
