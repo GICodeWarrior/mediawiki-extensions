@@ -76,7 +76,7 @@ $messages['ar'] = array(
 	'rt-nomatches' => 'لا تذاكر RT مطابقة تم العثور عليها',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author McDutchie
@@ -170,7 +170,7 @@ Deine Eingabe: '''$1'''",
 	'rt-nomatches' => 'Es wurden keine passenden RT-Tickets gefunden',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
