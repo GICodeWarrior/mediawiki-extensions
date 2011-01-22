@@ -350,7 +350,7 @@ pre:
     {
         CX->beginPre(CX);
     }
-    (()=> INDENT inline_text_line (NEWLINE|EOF))+
+    (()=> INDENT (inline_text_line)? (NEWLINE|EOF))+
     {
         CX->endPre(CX);
     }
