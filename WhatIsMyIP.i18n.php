@@ -99,7 +99,7 @@ $messages['bar'] = array(
 	'right-whatismyip' => "d'[[Special:WhatIsMyIP|eigene IP-Adress]] ãuschau",
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -211,7 +211,7 @@ $messages['de'] = array(
 	'right-whatismyip' => '[[Special:WhatIsMyIP|Eigene IP-Adresse]] sehen',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -682,6 +682,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Helder.wiki
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
