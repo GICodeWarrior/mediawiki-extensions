@@ -61,7 +61,7 @@ $messages['bar'] = array(
 	'rightfunctions-ns' => '(vu da Nãmensraumsperrung)',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
