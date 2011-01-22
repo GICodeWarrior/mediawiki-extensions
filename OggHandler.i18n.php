@@ -1774,13 +1774,20 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author Dawid Deutschland
  * @author ITshnik
  * @author Malafaya
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'ogg-short-audio' => 'Ogg $1 აუდიო ფაილი, $2',
 	'ogg-short-video' => 'Ogg $1 ვიდეო ფაილი, $2',
 	'ogg-short-general' => 'Ogg $1 მედია ფაილი, $2',
+	'ogg-long-audio' => 'Ogg $1 აუდიო ფაილი, სიგრძე $2, $3',
+	'ogg-long-video' => 'Ogg $1 ვიდეო ფაილი, სიგრძე $2, $4×$5 პიქსელი, $3',
+	'ogg-long-multiplexed' => 'Ogg აუდიო/ვიდეო ფაილი, $1, სიგრძე: $2, $4×$5 პიქსელი, $3',
+	'ogg-long-general' => 'Ogg მედია ფაილი, სიგრძე $2, $3',
+	'ogg-long-error' => 'არასწორი ogg-ფაილი: $1',
 	'ogg-play' => 'თამაში',
 	'ogg-pause' => 'პაუზა',
 	'ogg-stop' => 'შეჩერება',
@@ -1788,6 +1795,7 @@ $messages['ka'] = array(
 	'ogg-play-sound' => 'ხმის ტამაში',
 	'ogg-player-videoElement' => 'მშობლიური ბრაუზერის მხარდაჭერა',
 	'ogg-player-oggPlugin' => 'ბრაუზერის მოდული',
+	'ogg-player-thumbnail' => 'მხოლოდ წინასწარი სურათი',
 	'ogg-player-soundthumb' => 'No player',
 	'ogg-player-selected' => '(არჩეულია)',
 	'ogg-more' => 'მეტი...',
