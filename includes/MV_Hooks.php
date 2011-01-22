@@ -243,8 +243,6 @@ function mvCustomEditor( &$article, &$user ) {
   * by processing the given title request/namespace
   */
 function mvDoMvPage ( &$title, &$article, $doOutput = true ) {
-	global $wgOut, $wgTitle, $wgArticle;
-
 	//add js
 	mvAddPerNamespaceJS( $title );
 
@@ -273,7 +271,6 @@ function mvDoMvPage ( &$title, &$article, $doOutput = true ) {
 			return false;
 		}
 	}
-	$wgArticle = $article;
 	return true;
 }
 function mvCatHook( &$catArticle ) {

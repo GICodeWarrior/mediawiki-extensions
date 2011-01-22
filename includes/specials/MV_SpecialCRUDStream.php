@@ -187,8 +187,8 @@ class MV_SpecialCRUDStream extends SpecialPage {
 
 				// insert page
 				$streamTitle = Title::newFromText( $this->stream_name, MV_NS_STREAM  );
-				$wgArticle = new Article( $streamTitle );
-				$status = $wgArticle->doEdit( $this->stream_desc, wfMsg( 'mv_summary_add_stream' ) );
+				$article = new Article( $streamTitle );
+				$status = $article->doEdit( $this->stream_desc, wfMsg( 'mv_summary_add_stream' ) );
 				if ( $status === true || ( is_object( $status ) && $status->isOK() ) ) {
 					// stream inserted sucesfully report to output
 					$out = wfMsg('mv_stream_added', $sk->makeLinkObj( $streamTitle,  $this->stream_name ) );
