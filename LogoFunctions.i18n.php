@@ -29,7 +29,7 @@ $messages['af'] = array(
 	'logofunctions-filenotexist' => 'Fout: [[File:$1]] bestaan nie',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
  */
