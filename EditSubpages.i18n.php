@@ -66,7 +66,7 @@ $messages['arz'] = array(
   #</pre><!-- اترك هذا السطر بمفرده -->',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -659,7 +659,7 @@ $messages['sk'] = array(
   #</pre><!-- nechajte tento riadok ako je -->',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Обрадовић Горан
  */
@@ -676,7 +676,7 @@ $messages['sr-ec'] = array(
  #</pre><!-- leave this line alone -->',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
