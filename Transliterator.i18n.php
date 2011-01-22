@@ -71,7 +71,7 @@ $messages['ar'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] يجب أن تكون $1 {{PLURAL:$1|حرف|حروف}} كطول.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
