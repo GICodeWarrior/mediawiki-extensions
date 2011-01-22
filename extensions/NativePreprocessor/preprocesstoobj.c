@@ -189,7 +189,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 	
 	#define getFlags() \
 		inHeading = (parentNode->type == heading_node); \
-		findPipe = (parentNode->type != heading_node) && (parentNode->type != bracket_node); \
+		findPipe = (parentNode->type != heading_node) && (parentNode->type != bracket_node) && (parentNode->type != root_node); \
 		findEquals = findPipe && ( parentNode->nextSibling > 0 ) && ( parentNode->type != value_node );
 	
 	while ( true ) {
