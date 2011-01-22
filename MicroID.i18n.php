@@ -46,7 +46,7 @@ $messages['arz'] = array(
 	'tog-microid' => 'انشر <a href="http://microid.org/">هوية مصغرة</a> لتأكيد الحساب مع الخدمات الخارجية',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -384,7 +384,7 @@ $messages['sk'] = array(
 	'tog-microid' => 'Zverejniť <a href="http://microid.org/">MicroID</a> na potvrdenie účtu pre externé služby',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -392,7 +392,7 @@ $messages['sr-ec'] = array(
 	'tog-microid' => 'Објавите <a href="http://microid.org/">MicroID</a> да бисте потврдили налог за спољашње услуге',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
