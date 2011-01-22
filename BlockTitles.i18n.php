@@ -83,7 +83,7 @@ $messages['avk'] = array(
 	'block_title_error' => 'Argenon, vergumvelt ke batu bu me zo rogiwar.',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -100,7 +100,7 @@ $messages['bcl'] = array(
 	'block_title_error' => 'Despensa, dai tinotogotan na itagama an titulo kaining artikulo.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -713,7 +713,7 @@ $messages['sl'] = array(
 	'block_title_error' => 'Žal naslova te strani ni dovoljeno shraniti.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -724,7 +724,7 @@ $messages['sr-ec'] = array(
 	'block_title_error' => 'Жао нам је, наслов ове странице није могуће снимити.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
