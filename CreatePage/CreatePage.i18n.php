@@ -1272,12 +1272,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'createpage' => '創建新頁面',
+	'createpage' => '建立新頁面',
 	'createpage_submitbutton' => '提交',
 	'createpage_entertitle' => '請輸入您的頁面標題。',
-	'createpage-badtitle' => '「$1」不可以用作頁面標題',
+	'createpage-badtitle' => '「$1」不可以用來當作頁面標題',
 );
 

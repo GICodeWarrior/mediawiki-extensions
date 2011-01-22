@@ -704,12 +704,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'formatchanges-desc' => '將[[Special:RecentChanges|最近更新]]重新格式化',
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '$1 - 由$2創建（$3）',
-	'formatchanges-editedby' => '$1 - 由$2編輯（$3）',
+	'formatchanges-createdby' => '$1 - 由 $2 建立（$3）',
+	'formatchanges-editedby' => '$1 - 由 $2 編輯（$3）',
 );
 
