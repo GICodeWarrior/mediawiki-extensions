@@ -50,7 +50,7 @@ $messages['arz'] = array(
 	'javascript-desc' => 'بيضيف uniwiki.js لكل صفحة فيها شفرة جافاسكربت مشاركة بين امتدادات يونيويكى',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -361,14 +361,14 @@ $messages['sq'] = array(
 	'javascript-desc' => 'Vendosë uniwiki.js në çdo faqe që përmban kodin JavaScript të ndarë mes prapashtesave në Uniwiki',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'javascript-desc' => 'Додаје uniwiki.js на сваку страну која садржи јаваскрипт код који се користи између више Унивики екстензија',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
