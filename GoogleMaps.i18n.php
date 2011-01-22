@@ -507,7 +507,7 @@ $wgGoogleMapsMessages['az'] = array(
 	'gm-kml-loading' => 'yüklənir…',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1281,7 +1281,7 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-mars' => 'Mars',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author LWChris
  * @author Raimond Spekking
  * @author The Evil IP address
@@ -2084,7 +2084,7 @@ $wgGoogleMapsMessages['ga'] = array(
 	'gm-zoom-control' => 'Nascleanúint',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $wgGoogleMapsMessages['gan-hant'] = array(
@@ -5289,7 +5289,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-mars' => 'Марс',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -6671,6 +6671,7 @@ $wgGoogleMapsMessages['zh-hant'] = array(
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Mark85296341
  * @author Roc michael
  */
 $wgGoogleMapsMessages['zh-tw'] = array(
@@ -6705,7 +6706,7 @@ $wgGoogleMapsMessages['zh-tw'] = array(
 	'gm-scale-control' => '比例尺',
 	'gm-overview-control' => '瀏覽(Overview)',
 	'gm-selector-control' => '地圖/衛星選取器',
-	'gm-zoom-control' => '導航',
+	'gm-zoom-control' => '導覽',
 	'gm-large' => '大型',
 	'gm-medium' => '中型',
 	'gm-small' => '小型',
