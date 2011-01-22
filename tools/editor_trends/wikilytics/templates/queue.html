@@ -1,0 +1,17 @@
+
+{% block content %}
+<h1>Job Status</h1>
+	{% for job in jobs %}
+	<ul>
+		<li>Project: {{ job.project }}</li>
+		<li>Language: {{ job.language }}</li>
+		<li>Created: {{ job.created }}</li>
+		<li>Finished: {{ job.finished }}</li>
+		<li>In progress: {{ job.in_progress }}</li>
+	</ul>
+		{% for subtasks in job %}
+		
+		{% endfor %}
+	{% endfor %}
+<h2>Please return in a couple of hours, the dataset will be finished by then.<h2>
+{% endblock %}
