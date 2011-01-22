@@ -46,7 +46,7 @@ $messages['arc'] = array(
 	'articletocategory2-create-category-under-category-button' => 'ܒܪܝ',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -68,7 +68,7 @@ $messages['bar'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Erstöin',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -483,7 +483,7 @@ $messages['rue'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Створити',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
 $messages['sr-ec'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Направи',
 	'articletocategory2-create-category-under-category-button' => 'Направи',
