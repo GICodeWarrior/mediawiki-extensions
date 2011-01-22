@@ -1521,6 +1521,7 @@ $messages['shi'] = array(
  */
 $messages['sl'] = array(
 	'categorybrowser' => 'Brskalnik po kategorijah',
+	'categorybrowser-desc' => 'Nudi [[Special:CategoryBrowser|posebno stran]] za izločanje najbolj poseljenih kategorij in navigiranje po njih z uporabo vmesnika Ajax',
 	'cb_requires_javascript' => 'Razširitev brskanja po kategorijah v brskalniku zahteva omogočen JavaScript.',
 	'cb_ie6_warning' => 'Urejevalnik pogojev ne deluje v Internet Explorer 6.0 ali starejših različicah.
 Kljub temu brskanje po vnaprej določenih pogojih deluje normalno.
