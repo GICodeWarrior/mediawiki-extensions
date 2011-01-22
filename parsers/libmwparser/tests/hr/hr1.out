@@ -1,6 +1,8 @@
 BEGIN ARTICLE
     HORIZONTAL_RULE
-    WORD[text]
+    BEGIN GARBAGE
+        WORD[text]
+    END GARBAGE
     BEGIN PARAGRAPH
         WORD[text]
     END PARAGRAPH
@@ -9,7 +11,9 @@ BEGIN ARTICLE
         WORD[text]
     END PARAGRAPH
     HORIZONTAL_RULE
-    WORD[text]
+    BEGIN GARBAGE
+        WORD[text]
+    END GARBAGE
     BEGIN PARAGRAPH
         WORD[text]
     END PARAGRAPH

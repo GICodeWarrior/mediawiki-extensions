@@ -29,7 +29,9 @@ text]
         WORD[text]
         SPACE[ ]
     END PARAGRAPH
-    SPACE[ ]
+    BEGIN GARBAGE
+        SPACE[ ]
+    END GARBAGE
     BEGIN TABLE
         BEGIN TABLE BODY
             BEGIN ROW

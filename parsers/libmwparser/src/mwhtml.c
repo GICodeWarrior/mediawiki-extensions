@@ -43,6 +43,7 @@ static void endHtmlAbbr(MWPARSERCONTEXT *context);
 static void
 beginHtmlDiv(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginHtmlDiv(l, attr);
 }
@@ -57,6 +58,7 @@ endHtmlDiv(MWPARSERCONTEXT *context)
 static void
 beginHtmlBlockquote(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginHtmlBlockquote(l, attr);
 }
@@ -71,6 +73,7 @@ endHtmlBlockquote(MWPARSERCONTEXT *context)
 static void
 beginHtmlCenter(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginHtmlCenter(l, attr);
 }

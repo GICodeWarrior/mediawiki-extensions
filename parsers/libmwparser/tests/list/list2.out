@@ -60,57 +60,50 @@ BEGIN ARTICLE
                             WORD[ul]
                             SPECIAL[>]
                         END DEFINED TERM ITEM
-                        BEGIN PARAGRAPH
-                            SPECIAL[<]
-                            WORD[dd]
-                            SPECIAL[>]
-                            SPECIAL[<]
-                            WORD[ul]
-                            SPECIAL[>]
-                            SPECIAL[<]
-                            WORD[li]
-                            SPECIAL[>]
-                            WORD[definition]
-                            SPECIAL[</]
-                            WORD[dd]
-                            SPECIAL[>]
-                            NEWLINE
-                            SPECIAL[</]
-                            WORD[dd]
-                            SPECIAL[>]
-                        END PARAGRAPH
-                        BEGIN BULLET LIST
-                            BEGIN BULLET LIST ITEM
-                                BEGIN BULLET LIST
-                                    BEGIN BULLET LIST ITEM
-                                        WORD[wikitext]
-                                        SPACE[ ]
-                                        WORD[list]
-                                        SPACE[ ]
-                                        WORD[item]
-                                    END BULLET LIST ITEM
-                                END BULLET LIST
-                            END BULLET LIST ITEM
-                        END BULLET LIST
-                        BEGIN PARAGRAPH
-                            SPECIAL[</]
-                            WORD[ol]
-                            SPECIAL[>]
-                            NEWLINE
-                            SPECIAL[</]
-                            WORD[ul]
-                            SPECIAL[>]
-                            NEWLINE
-                            SPECIAL[<]
-                            WORD[li]
-                            SPECIAL[>]
-                            SPACE[ ]
-                            WORD[item]
-                            SPACE[ ]
-                            SPECIAL[</]
-                            WORD[li]
-                            SPECIAL[>]
-                        END PARAGRAPH
+                        BEGIN DEFINITION ITEM
+                            BEGIN BULLET LIST
+                                BEGIN BULLET LIST ITEM
+                                    WORD[definition]
+                                    SPECIAL[</]
+                                    WORD[dd]
+                                    SPECIAL[>]
+                                    NEWLINE
+                                    SPECIAL[</]
+                                    WORD[dd]
+                                    SPECIAL[>]
+                                    NEWLINE
+                                    BEGIN BULLET LIST
+                                        BEGIN BULLET LIST ITEM
+                                            BEGIN BULLET LIST
+                                                BEGIN BULLET LIST ITEM
+                                                    WORD[wikitext]
+                                                    SPACE[ ]
+                                                    WORD[list]
+                                                    SPACE[ ]
+                                                    WORD[item]
+                                                END BULLET LIST ITEM
+                                            END BULLET LIST
+                                        END BULLET LIST ITEM
+                                    END BULLET LIST
+                                    BEGIN PARAGRAPH
+                                        SPECIAL[</]
+                                        WORD[ol]
+                                        SPECIAL[>]
+                                    END PARAGRAPH
+                                END BULLET LIST ITEM
+                            END BULLET LIST
+                            BEGIN PARAGRAPH
+                                SPECIAL[<]
+                                WORD[li]
+                                SPECIAL[>]
+                                SPACE[ ]
+                                WORD[item]
+                                SPACE[ ]
+                                SPECIAL[</]
+                                WORD[li]
+                                SPECIAL[>]
+                            END PARAGRAPH
+                        END DEFINITION ITEM
                     END DEFINITION LIST
                 END ENUMERATION LIST ITEM
             END ENUMERATION LIST

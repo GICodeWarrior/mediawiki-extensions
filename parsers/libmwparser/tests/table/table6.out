@@ -1,5 +1,7 @@
 BEGIN ARTICLE
-    SPACE[ ]
+    BEGIN GARBAGE
+        SPACE[ ]
+    END GARBAGE
     BEGIN TABLE
         BEGIN TABLE BODY
             BEGIN ROW
@@ -30,7 +32,9 @@ BEGIN ARTICLE
         SPECIAL[|]
         SPECIAL[}]
     END PARAGRAPH
-    SPACE[ ]
+    BEGIN GARBAGE
+        SPACE[ ]
+    END GARBAGE
     BEGIN TABLE
         BEGIN TABLE BODY
             BEGIN ROW
@@ -48,7 +52,9 @@ BEGIN ARTICLE
         WORD[table]
         SPECIAL[>]
     END PARAGRAPH
-    SPACE[ ]
+    BEGIN GARBAGE
+        SPACE[ ]
+    END GARBAGE
     BEGIN TABLE
         BEGIN TABLE BODY
             BEGIN ROW
@@ -77,7 +83,9 @@ BEGIN ARTICLE
                                                     WORD[table]
                                                     WORD[6]
                                                     NEWLINE
-                                                    SPACE[ ]
+                                                    BEGIN GARBAGE
+                                                        SPACE[ ]
+                                                    END GARBAGE
                                                     BEGIN TABLE
                                                         BEGIN TABLE BODY
                                                             BEGIN ROW

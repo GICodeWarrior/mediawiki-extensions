@@ -1,0 +1,66 @@
+BEGIN ARTICLE
+    BEGIN GARBAGE
+        WORD[garbage]
+    END GARBAGE
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN GARBAGE
+                WORD[garbage]
+            END GARBAGE
+            BEGIN GARBAGE
+                WORD[garbage]
+            END GARBAGE
+            BEGIN ROW
+                BEGIN CELL
+                    WORD[cell]
+                END CELL
+                BEGIN GARBAGE
+                    WORD[garbage]
+                END GARBAGE
+            END ROW
+            BEGIN GARBAGE
+                WORD[garbage]
+            END GARBAGE
+            BEGIN GARBAGE
+                WORD[garbage]
+            END GARBAGE
+            BEGIN ROW
+                BEGIN CELL
+                    WORD[cell]
+                END CELL
+                BEGIN GARBAGE
+                    WORD[garbage]
+                END GARBAGE
+            END ROW
+            BEGIN GARBAGE
+                WORD[garbage]
+            END GARBAGE
+            BEGIN GARBAGE
+                WORD[garbage]
+            END GARBAGE
+        END TABLE BODY
+    END TABLE
+    BEGIN GARBAGE
+        WORD[garbage]
+    END GARBAGE
+    BEGIN DEFINITION LIST
+        BEGIN DEFINITION ITEM
+            WORD[dd]
+        END DEFINITION ITEM
+        BEGIN GARBAGE
+            WORD[garbage]
+        END GARBAGE
+        BEGIN DEFINED TERM ITEM
+            WORD[dd]
+        END DEFINED TERM ITEM
+        BEGIN GARBAGE
+            WORD[garbage]
+        END GARBAGE
+        BEGIN DEFINITION ITEM
+            WORD[dd]
+        END DEFINITION ITEM
+        BEGIN GARBAGE
+            WORD[garbage]
+        END GARBAGE
+    END DEFINITION LIST
+END ARTICLE

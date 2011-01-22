@@ -53,6 +53,13 @@ AT_CHECK([testtext ${srcdir}/html/inline1.in > tempoutput && diff ${srcdir}/html
 
 AT_CLEANUP
 
+AT_SETUP([garbage])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/html/garbage.in > tempoutput && diff ${srcdir}/html/garbage.out tempoutput])
+
+AT_CLEANUP
+
 AT_SETUP([italic1])
 
 AT_DATA([tempoutput], [])
@@ -176,6 +183,13 @@ AT_SETUP([table6])
 
 AT_DATA([tempoutput], [])
 AT_CHECK([testtext ${srcdir}/table/table6.in > tempoutput && diff ${srcdir}/table/table6.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([table7])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/table/table7.in > tempoutput && diff ${srcdir}/table/table7.out tempoutput])
 
 AT_CLEANUP
 

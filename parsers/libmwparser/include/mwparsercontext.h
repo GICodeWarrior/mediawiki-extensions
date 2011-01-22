@@ -59,7 +59,7 @@ typedef struct MWPARSERCONTEXT_struct
     void (*endItalic)(struct MWPARSERCONTEXT_struct * context);
     void (*beginBold)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*endBold)(struct MWPARSERCONTEXT_struct * context);
-    void (*beginPre)(struct MWPARSERCONTEXT_struct * context);
+    void (*beginPre)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*endPre)(struct MWPARSERCONTEXT_struct * context);
     void (*beginArticle)(struct MWPARSERCONTEXT_struct * context);
     void (*endArticle)(struct MWPARSERCONTEXT_struct * context);
@@ -151,6 +151,8 @@ typedef struct MWPARSERCONTEXT_struct
     void (*beginHtmlAbbr)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*endHtmlAbbr)(struct MWPARSERCONTEXT_struct * context);
     void (*onHtmlPre)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING body, pANTLR3_VECTOR attr);
+    void (*beginGarbage)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
+    void (*endGarbage)(struct MWPARSERCONTEXT_struct * context);
     /*
      * The listener API.
      */
@@ -231,9 +233,9 @@ MWPARSERCONTEXT * MWParserContextNew(void* parser, const MWLISTENER *listener, s
  * @param context 
  * @param beginmethod The name of the begin method.
  * @param endmethod The name of the corresponding end method.
+ * @param parameter Parameter to pass as last argument
  * @param delayFirst If also the first occurence should be delayed, i.e.,
  * if even explicitly inputted empty instances should be removed.
- * @param identifier Unique identifier in case of multiple active instances are allowed.                 
  */
 #define MW_DELAYED_CALL(context, beginmethod, endmethod, parameter, delayFirst) \
 do {                                                                    \

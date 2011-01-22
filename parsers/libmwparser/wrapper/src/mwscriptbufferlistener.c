@@ -122,6 +122,8 @@ static void SBEndHtmlVar(MWLISTENER *listener);
 static void SBBeginHtmlAbbr(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndHtmlAbbr(MWLISTENER *listener);
 static void SBOnHtmlPre(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr);
+static void SBBeginGarbage(MWLISTENER *listener);
+static void SBEndGarbage(MWLISTENER *listener);
 static void * SBNew(void);
 static void SBReset(void *data);
 static void SBFree(void *data);
@@ -267,7 +269,8 @@ const MWLISTENER mwScriptBufferListener = {
     .beginHtmlAbbr            = SBBeginHtmlAbbr,
     .endHtmlAbbr              = SBEndHtmlAbbr,
     .onHtmlPre                = SBOnHtmlPre,
-
+    .beginGarbage             = SBBeginGarbage,
+    .endGarbage               = SBEndGarbage,
 };
 
 
@@ -872,7 +875,7 @@ renderMediaLinkOpen(MWLISTENER *listener,
             DATA->width    = width;
             DATA->url      = linkResolution->url;
             DATA->imageUrl = linkResolution->imageUrl;
-            DATA->alt      = mlOption == NULL ? NULL : mlOption->alt;
+            DATA->alt      = (char *) (mlOption == NULL ? NULL : mlOption->alt);
             DATA->renderMarkup = false;
             DATA->startCaption = getIndex(&DATA->buf);
         }
@@ -1876,4 +1879,15 @@ SBOnHtmlPre(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr)
     HTML_TAG("pre");
     SBOnSpecial(listener, body);
     HTML_END("pre");
+}
+
+
+static void
+SBBeginGarbage(MWLISTENER *listener)
+{
+}
+
+static void
+SBEndGarbage(MWLISTENER *listener)
+{
 }

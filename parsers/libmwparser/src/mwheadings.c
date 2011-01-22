@@ -12,6 +12,7 @@ static void endTableOfContentsItem(MWPARSERCONTEXT *context);
 static void
 beginHeading(MWPARSERCONTEXT *context, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attr)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginHeading(l, level, anchor, attr);
 }
@@ -26,6 +27,7 @@ endHeading(MWPARSERCONTEXT *context)
 static void
 beginTableOfContents(MWPARSERCONTEXT *context)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginTableOfContents(l);
 }

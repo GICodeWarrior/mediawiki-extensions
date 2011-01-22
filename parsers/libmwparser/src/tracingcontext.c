@@ -126,6 +126,8 @@ static void TCEndHtmlVar(MWLISTENER *listener);
 static void TCBeginHtmlAbbr(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlAbbr(MWLISTENER *listener);
 static void TCOnHtmlPre(MWLISTENER *listener, pANTLR3_STRING nowiki, pANTLR3_VECTOR attr);
+static void TCBeginGarbage(MWLISTENER *listener);
+static void TCEndGarbage(MWLISTENER *listener);
 
 static void * TCNew(void);
 static void TCFree(void *tcontext);
@@ -257,6 +259,8 @@ const MWLISTENER mwParserTracingListener = {
     .beginHtmlAbbr            = TCBeginHtmlAbbr,
     .endHtmlAbbr              = TCEndHtmlAbbr,
     .onHtmlPre                = TCOnHtmlPre,
+    .beginGarbage             = TCBeginGarbage,
+    .endGarbage               = TCEndGarbage,
 };
 
 
@@ -1322,3 +1326,16 @@ TCDecreaseIndent(MWLISTENER *listener)
     TC(listener)->indent -= INDENT_SPACES;
 }
 
+static void
+TCBeginGarbage(MWLISTENER *listener) {
+    TCPrintIndent(listener);
+    printf("BEGIN GARBAGE\n");
+    TCIncreaseIndent(listener);
+}
+
+static void
+TCEndGarbage(MWLISTENER *listener) {
+    TCDecreaseIndent(listener);
+    TCPrintIndent(listener);
+    printf("END GARBAGE\n");
+}

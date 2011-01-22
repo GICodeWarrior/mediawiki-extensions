@@ -153,6 +153,8 @@ typedef struct MWLISTENER_struct
     void (*beginHtmlAbbr)(struct MWLISTENER_struct * listener, pANTLR3_VECTOR attr);
     void (*endHtmlAbbr)(struct MWLISTENER_struct * listener);
     void (*onHtmlPre)(struct MWLISTENER_struct * listener, pANTLR3_STRING nowiki, pANTLR3_VECTOR attr);
+    void (*beginGarbage)(struct MWLISTENER_struct * listener);
+    void (*endGarbage)(struct MWLISTENER_struct * listener);
 }
     MWLISTENER;
 

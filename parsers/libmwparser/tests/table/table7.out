@@ -1,0 +1,39 @@
+BEGIN ARTICLE
+    BEGIN GARBAGE
+        BEGIN BULLET LIST
+            BEGIN BULLET LIST ITEM
+                WORD[list]
+                SPACE[ ]
+                WORD[item]
+                SPACE[    ]
+            END BULLET LIST ITEM
+        END BULLET LIST
+    END GARBAGE
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN TABLE HEADING
+                    WORD[t]
+                    NEWLINE
+                END TABLE HEADING
+            END ROW
+            BEGIN GARBAGE
+                BEGIN BULLET LIST
+                    BEGIN BULLET LIST ITEM
+                        WORD[list]
+                        SPACE[ ]
+                        WORD[item]
+                        SPACE[   ]
+                    END BULLET LIST ITEM
+                END BULLET LIST
+            END GARBAGE
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[z]
+                    NEWLINE
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+END ARTICLE

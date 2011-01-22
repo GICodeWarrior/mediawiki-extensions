@@ -22,9 +22,11 @@ BEGIN ARTICLE
                     END ROW
                 END TABLE BODY
             END TABLE
-            SPACE[ ]
-            WORD[foo]
-            SPACE[ ]
+            BEGIN PARAGRAPH
+                SPACE[ ]
+                WORD[foo]
+                SPACE[ ]
+            END PARAGRAPH
         END MEDIA LINK
         SPACE[ ]
         WORD[bar]

@@ -34,7 +34,6 @@ static void
 onSpace(MWPARSERCONTEXT *context, pANTLR3_STRING space)
 {
     MW_TRIGGER_DELAYED_CALLS(context);
-
     MWLISTENER *l = &context->listener;
     l->onSpace(l, space);
 }
@@ -42,6 +41,7 @@ onSpace(MWPARSERCONTEXT *context, pANTLR3_STRING space)
 static void
 onNewline(MWPARSERCONTEXT *context)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->onNewline(l);
 }
@@ -49,6 +49,7 @@ onNewline(MWPARSERCONTEXT *context)
 static void
 onBr(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->onBr(l, attr);
 }
@@ -56,6 +57,7 @@ onBr(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 beginParagraph(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginParagraph(l, attr);
 }

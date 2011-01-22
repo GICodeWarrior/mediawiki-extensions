@@ -117,6 +117,8 @@ static void PREFIX`EndHtmlVar'(MWLISTENER *listener);
 static void PREFIX`BeginHtmlAbbr'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`EndHtmlAbbr'(MWLISTENER *listener);
 static void PREFIX`OnHtmlPre'(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr);
+static void PREFIX`BeginGarbage'(MWLISTENER *listener);
+static void PREFIX`EndGarbage'(MWLISTENER *listener);
 static void * PREFIX`New'(void);
 static void PREFIX`Reset'(void *data);
 static void PREFIX`Free'(void *data);
@@ -256,6 +258,8 @@ const MWLISTENER LISTENER_NAME = {
     .beginHtmlAbbr            = PREFIX`BeginHtmlAbbr',
     .endHtmlAbbr              = PREFIX`EndHtmlAbbr',
     .onHtmlPre                = PREFIX`OnHtmlPre',
+    .beginGarbage            = PREFIX`BeginGarbage',
+    .endGarbage              = PREFIX`EndGarbage',
 
 };
 
@@ -1463,3 +1467,27 @@ static void
 PREFIX`OnHtmlPre'(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr)
 {
 }
+
+
+/**
+ * Indicates beginning of garbage.
+ *
+ * The listener could ignore any generated event untli end of garbage,
+ * or it could render the contents in a special error box.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginGarbage'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Indicates end of garbage.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndGarbage'(MWLISTENER *listener)
+{

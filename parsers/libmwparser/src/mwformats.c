@@ -6,6 +6,8 @@ static void beginItalic(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr);
 static void endItalic(MWPARSERCONTEXT *context);
 static void beginBold(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr);
 static void endBold(MWPARSERCONTEXT *context);
+static void beginPre(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr);
+static void endPre(MWPARSERCONTEXT *context);
 
 static void
 beginItalic(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
@@ -72,8 +74,9 @@ onHorizontalRule(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 }
 
 static void
-beginPre(MWPARSERCONTEXT *context)
+beginPre(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
+    MW_DELAYED_CALL(        context, beginPre, endPre, attr, true);
     MWLISTENER *l = &context->listener;
     l->beginPre(l);
 }
@@ -81,6 +84,7 @@ beginPre(MWPARSERCONTEXT *context)
 static void
 endPre(MWPARSERCONTEXT *context)
 {
+    MW_SKIP_IF_EMPTY(     context, beginPre, endPre);
     MWLISTENER *l = &context->listener;
     l->endPre(l);
 }

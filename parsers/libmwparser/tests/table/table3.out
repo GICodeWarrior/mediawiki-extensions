@@ -1,11 +1,19 @@
 BEGIN ARTICLE
-    WORD[garbage]
-    WORD[inline]
-    SPACE[ ]
-    BEGIN ITALIC
-        WORD[formatted]
-    END ITALIC
-    WORD[text]
+    BEGIN GARBAGE
+        BEGIN GARBAGE
+            WORD[garbage]
+        END GARBAGE
+        BEGIN GARBAGE
+            WORD[inline]
+            SPACE[ ]
+            BEGIN ITALIC
+                WORD[formatted]
+            END ITALIC
+        END GARBAGE
+        BEGIN GARBAGE
+            WORD[text]
+        END GARBAGE
+    END GARBAGE
     BEGIN TABLE key1="value" key2="value"
         BEGIN TABLE BODY
             BEGIN ROW
@@ -74,12 +82,14 @@ BEGIN ARTICLE
             END ROW
         END TABLE BODY
     END TABLE
-    SPACE[ ]
-    WORD[garbage]
-    SPACE[ ]
-    BEGIN ITALIC
-        WORD[formatted]
-    END ITALIC
-    SPACE[ ]
-    WORD[text]
+    BEGIN GARBAGE
+        SPACE[ ]
+        WORD[garbage]
+        SPACE[ ]
+        BEGIN ITALIC
+            WORD[formatted]
+        END ITALIC
+        SPACE[ ]
+        WORD[text]
+    END GARBAGE
 END ARTICLE

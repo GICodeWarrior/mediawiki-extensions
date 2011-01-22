@@ -45,6 +45,7 @@ libmwparser_la_SOURCES		=		\
 	include/mwformats.h			\
 	include/mwheadings.h			\
 	include/mwhtml.h			\
+	include/mwgarbage.h			\
 	include/mwkeyvalue.h			\
 	include/mwlexercontext.h		\
 	include/mwlinkcollection.h              \
@@ -65,6 +66,7 @@ libmwparser_la_SOURCES		=		\
 	src/mwhtml.c				\
 	src/mwlexercontext.c			\
 	src/mwlinks.c				\
+	src/mwgarbage.c				\
 	src/mwlinkresolution.c                  \
 	src/mwlinkcollection.c                  \
 	src/mwmedialinkoption.c                 \

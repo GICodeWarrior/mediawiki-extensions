@@ -24,6 +24,7 @@
 #include <mwparser.h>
 #include <mwtables.h>
 #include <mwheadings.h>
+#include <mwgarbage.h>
 #include <mwhtml.h>
 #include <mwlinks.h>
 #include <mwlexercontext.h>
@@ -177,6 +178,7 @@ MWPARSERCONTEXT * MWParserContextNew(void * parser, const MWLISTENER *listener, 
     mwHeadingsInit(context);
     mwLinksInit(context);
     mwHtmlInit(context);
+    mwGarbageInit(context);
 
     context->closeFormats                 = closeFormats;
     context->openFormats                  = openFormats;

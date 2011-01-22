@@ -70,7 +70,7 @@ empty_lines:
     (()=> NEWLINE)+
     ;
 
-block_element: paragraph | table | wikitext_list | heading | pre | horizontal_rule | html_div | html_list | html_pre | html_blockquote | html_center | block_tag_extension
+block_element: paragraph | table | html_table | wikitext_list | heading | pre | horizontal_rule | html_div | html_list | html_pre | html_blockquote | html_center | block_tag_extension
     ;
 
 html_div: 
@@ -121,13 +121,12 @@ html_list: html_ul | html_ol | html_dl
     ;
 
 html_ul:
-    token = HTML_UL_OPEN
+    token = HTML_UL_OPEN html_garbage
     {
+        MW_TRIGGER_DELAYED_CALLS(CX);
         LISTENER->beginBulletList(LISTENER, $token->custom);
     }
-    ((~(EOF|HTML_UL_CLOSE))=>
-     (()=> html_ul_li
-    |      block_element_contents))*
+    ((~(EOF|HTML_UL_CLOSE))=> html_ul_li)*
     (HTML_UL_CLOSE|EOF)
     {
         LISTENER->endBulletList(LISTENER);
@@ -135,13 +134,12 @@ html_ul:
     ;
 
 html_ol:
-    token = HTML_OL_OPEN
+    token = HTML_OL_OPEN html_garbage
     {
+        MW_TRIGGER_DELAYED_CALLS(CX);
         LISTENER->beginEnumerationList(LISTENER, $token->custom);
     }
-    ((~(EOF|HTML_OL_CLOSE))=>
-     (()=> html_ol_li
-    |      block_element_contents))*
+    ((~(EOF|HTML_OL_CLOSE))=> html_ol_li)*
     (HTML_OL_CLOSE|EOF)
     {
         LISTENER->endEnumerationList(LISTENER);
@@ -149,14 +147,12 @@ html_ol:
     ;
 
 html_dl:
-    token = HTML_DL_OPEN
+    token = HTML_DL_OPEN html_garbage
     {
+        MW_TRIGGER_DELAYED_CALLS(CX);
         LISTENER->beginDefinitionList(LISTENER, $token->custom);
     }
-    ((~(HTML_DL_CLOSE|EOF))=>
-     (()=> html_dd
-    | ()=> html_dt
-    | block_element_contents))*
+    ((~(HTML_DL_CLOSE|EOF))=> (html_dd | html_dt))*
     (HTML_DL_CLOSE|EOF)
     {
         LISTENER->endDefinitionList(LISTENER);
@@ -166,6 +162,7 @@ html_dl:
 html_ul_li:
     token = HTML_UL_LI_OPEN
     {
+        MW_TRIGGER_DELAYED_CALLS(CX);
         LISTENER->beginBulletListItem(LISTENER, $token->custom);
     }
     block_element_contents
@@ -173,11 +170,13 @@ html_ul_li:
     {
         LISTENER->endBulletListItem(LISTENER);
     }
+    html_garbage
     ;
 
 html_ol_li:
     token = HTML_OL_LI_OPEN
     {
+        MW_TRIGGER_DELAYED_CALLS(CX);
         LISTENER->beginEnumerationItem(LISTENER, $token->custom);
     }
     block_element_contents
@@ -185,11 +184,13 @@ html_ol_li:
     {
         LISTENER->endEnumerationItem(LISTENER);
     }
+    html_garbage
     ;
 
 html_dt:
     token = HTML_DT_OPEN
     {
+        MW_TRIGGER_DELAYED_CALLS(CX);
         LISTENER->beginDefinedTermItem(LISTENER, $token->custom);
     }
     block_element_contents
@@ -197,11 +198,13 @@ html_dt:
     {
         LISTENER->endDefinedTermItem(LISTENER);
     }
+    html_garbage
     ;
 
 html_dd:
     token = HTML_DD_OPEN
     {
+        MW_TRIGGER_DELAYED_CALLS(CX);
         LISTENER->beginDefinitionItem(LISTENER, $token->custom);
     }
     block_element_contents
@@ -209,10 +212,18 @@ html_dd:
     {
         LISTENER->endDefinitionItem(LISTENER);
     }
+    html_garbage
     ;
 
 
-wikitext_list: (()=> list_element (()=>NEWLINE)?)+ {CX->onNonListBlockElement(CX);}
+wikitext_list:
+    {
+        MW_TRIGGER_DELAYED_CALLS(CX);
+    }
+    (()=> list_element (()=>NEWLINE)?)+
+    {
+        CX->onNonListBlockElement(CX);
+    }
     ;
 
 list_element: 
@@ -348,7 +359,7 @@ end_italic:   { CX->inShortItalic}?=> APOS APOS      {CX->endItalic(CX);}  ;
 
 pre:
     {
-        CX->beginPre(CX);
+        CX->beginPre(CX, NULL);
     }
     (()=> INDENT (inline_text_line)? (NEWLINE|EOF))+
     {
@@ -359,23 +370,42 @@ pre:
 table:
     begin_table 
     ((TABLE_CAPTION|TABLE_ROW_SEPARATOR|TABLE_CELL|
-      TABLE_HEADING|HTML_CAPTION_OPEN|HTML_TR_OPEN|
-      HTML_TD_OPEN|HTML_TH_OPEN|HTML_TBODY_OPEN)=> table_body)*
+      TABLE_HEADING)=> table_body)*
     end_table
     (()=> garbage_inline_text_line)?
     ;
 
+html_table:
+    html_begin_table
+    ((HTML_CAPTION_OPEN|HTML_TR_OPEN|
+      HTML_TD_OPEN|HTML_TH_OPEN|HTML_TBODY_OPEN)=> html_table_body)*
+    html_end_table
+    ;
+
 table_body:
-    ((TABLE_CAPTION|HTML_CAPTION_OPEN)=> table_captions)?
-    ((~(END_TABLE|HTML_TABLE_CLOSE))=>
+    ((TABLE_CAPTION)=> table_captions)?
+    ((~(END_TABLE))=>
+        {
+            CX->beginTableBody(CX, NULL);
+        }
+        table_rows
+        {
+           CX->endTableBody(CX);
+        }
+    )?   
+    ;
+
+html_table_body:
+    ((HTML_CAPTION_OPEN)=> html_table_captions)?
+    ((~(HTML_TABLE_CLOSE))=>
         {
             CX->beginTableBody(CX, NULL);
         }
         (
-           (()=> HTML_TBODY_OPEN table_rows HTML_TBODY_CLOSE?)
-           |
-           table_rows
-        )
+            (()=> HTML_TBODY_OPEN html_garbage html_table_rows (HTML_TBODY_CLOSE html_garbage)?)
+            |
+            html_table_rows
+         )
         {
            CX->endTableBody(CX);
         }
@@ -383,13 +413,11 @@ table_body:
     ;
 
 table_captions:
-    (
-      caption = TABLE_CAPTION table_caption_contents[$caption->custom] ((TABLE_CELL_INLINE)=> inline_table_caption)*
-    )
-    |
-    (
-      caption = HTML_CAPTION_OPEN table_caption_contents[$caption->custom] HTML_CAPTION_CLOSE?
-    )
+    caption = TABLE_CAPTION table_caption_contents[$caption->custom] ((TABLE_CELL_INLINE)=> inline_table_caption)*
+    ;
+
+html_table_captions:
+    caption = HTML_CAPTION_OPEN table_caption_contents[$caption->custom] HTML_CAPTION_CLOSE?
     ;
 
 inline_table_caption: TABLE_CELL_INLINE table_caption_contents[NULL]
@@ -406,61 +434,84 @@ table_caption_contents[pANTLR3_VECTOR attrs]:
     ;
 
 begin_table:
-    begin = (BEGIN_TABLE|HTML_TABLE_OPEN) (()=> NEWLINE)*
-    (()=> garbage_inline_text_line (()=>NEWLINE)*)*
-    block_element_contents
+    begin = BEGIN_TABLE table_garbage
     {CX->beginTable(CX, $begin->custom);}
     ;
 
-garbage_inline_text_line: inline_text_line
+html_begin_table:
+    begin = HTML_TABLE_OPEN html_garbage
+    {CX->beginTable(CX, $begin->custom);}
     ;
 
-end_table: (END_TABLE | HTML_TABLE_CLOSE | EOF) {CX->endTable(CX);}
+end_table: (END_TABLE | EOF) {CX->endTable(CX);}
     ;
 
-table_rows: ((~(TABLE_ROW_SEPARATOR|HTML_TR_OPEN))=> table_first_row)? ((TABLE_ROW_SEPARATOR|HTML_TR_OPEN)=> table_row)*
+html_end_table: (HTML_TABLE_CLOSE | EOF) {CX->endTable(CX);}
+    ;
+
+table_rows: ((~(TABLE_ROW_SEPARATOR))=> table_first_row)? ((TABLE_ROW_SEPARATOR)=> table_row)*
     ;
 
 table_first_row: table_row_content[NULL]
     ;
 
-table_row: 
-    (row = TABLE_ROW_SEPARATOR table_row_content[$row->custom])
-    |
-    (row = HTML_TR_OPEN table_row_content[$row->custom] HTML_TR_CLOSE?)
+html_table_rows: ((HTML_TR_OPEN|HTML_TD_OPEN|HTML_TH_OPEN)=> html_table_row)*
     ;
+
+table_row:
+    row = TABLE_ROW_SEPARATOR table_garbage table_row_content[$row->custom]
+    ;
+
+html_table_row:
+    ((HTML_TR_OPEN)=>
+       (row = HTML_TR_OPEN html_garbage html_table_row_content[$row->custom] ((HTML_TR_CLOSE)=> HTML_TR_CLOSE html_garbage)?)
+       |
+       html_table_row_content[NULL]
+     )
+    ;
+
 
 table_row_content[pANTLR3_VECTOR attrs]:
-        {
-            CX->beginTableRow(CX, attrs);
-        } 
-        table_cells
-        {
-            CX->endTableRow(CX);
-        }
+    {
+        CX->beginTableRow(CX, attrs);
+    }
+    table_cells
+    {
+        CX->endTableRow(CX);
+    }
     ;
 
-table_cells: ((TABLE_CELL|TABLE_CELL_INLINE|TABLE_HEADING|TABLE_HEADING_INLINE|HTML_TD_OPEN|HTML_TH_OPEN)=> (table_cell|table_heading))*
+html_table_row_content[pANTLR3_VECTOR attrs]:
+    {
+        CX->beginTableRow(CX, attrs);
+    }
+    html_table_cells
+    {
+        CX->endTableRow(CX);
+    }
     ;
 
-table_cell: 
-        (
-           cell = (TABLE_CELL|TABLE_CELL_INLINE)   table_cell_common[$cell->custom]
-        )
-        |
-        (
-           cell = HTML_TD_OPEN                     table_cell_common[$cell->custom] HTML_TD_CLOSE?
-        )
+table_cells: ((TABLE_CELL|TABLE_CELL_INLINE|TABLE_HEADING|TABLE_HEADING_INLINE)=> (table_cell|table_heading))*
     ;
+
+html_table_cells: ((HTML_TD_OPEN|HTML_TH_OPEN)=> (html_table_cell|html_table_heading))*
+    ;
+
+table_cell:
+    cell = (TABLE_CELL|TABLE_CELL_INLINE)   table_cell_common[$cell->custom]
+    ;
+
+html_table_cell:
+    cell = HTML_TD_OPEN                     table_cell_common[$cell->custom] (HTML_TD_CLOSE html_garbage)?
+    ;
+
 
 table_heading: 
-        (
-           h= (TABLE_HEADING|TABLE_HEADING_INLINE) table_heading_common[$h->custom]
-        )
-        |
-        (
-           h = HTML_TH_OPEN                        table_heading_common[$h->custom] HTML_TH_CLOSE?
-        )
+    h= (TABLE_HEADING|TABLE_HEADING_INLINE) table_heading_common[$h->custom]
+    ;
+
+html_table_heading: 
+    h = HTML_TH_OPEN                        table_heading_common[$h->custom] (HTML_TH_CLOSE html_garbage)?
     ;
 
 table_cell_common[pANTLR3_VECTOR attrs]:
@@ -481,6 +532,38 @@ table_heading_common[pANTLR3_VECTOR attrs]:
         {
             CX->endTableHeading(CX);
         }
+    ;
+
+table_garbage:
+    {
+       CX->beginGarbage(CX, NULL);
+    }
+    (()=> NEWLINE)*
+    (()=> garbage_inline_text_line (()=>NEWLINE)*)*
+    block_element_contents
+    {
+       CX->endGarbage(CX);
+    }
+    ;
+
+html_garbage:
+    {
+       CX->beginGarbage(CX, NULL);
+    }
+    block_element_contents
+    {
+       CX->endGarbage(CX);
+    }
+    ;
+
+garbage_inline_text_line:
+    {
+       CX->beginGarbage(CX, NULL);
+    }
+    inline_text_line
+    {
+       CX->endGarbage(CX);
+    }
     ;
 
 block_element_contents:
@@ -657,6 +740,7 @@ block_tag_extension: tagextToken = TAGEXT_BLOCK
         attr->remove(attr, attr->count - 1);
         const char * name = attr->get(attr, attr->count - 1);
         attr->remove(attr, attr->count - 1);
+        MW_TRIGGER_DELAYED_CALLS(CX);
         LISTENER->onTagExtension(LISTENER, name, body, attr);
     }
     ;

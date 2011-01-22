@@ -18,6 +18,7 @@ static void endTableBody(MWPARSERCONTEXT *context);
 static void
 beginTable(MWPARSERCONTEXT *context, pANTLR3_VECTOR attributes)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginTable(l, attributes);
 }
@@ -32,6 +33,7 @@ endTable(MWPARSERCONTEXT *context)
 static void
 beginTableRow(MWPARSERCONTEXT *context, pANTLR3_VECTOR attributes)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginTableRow(l, attributes);
 }
@@ -46,6 +48,7 @@ endTableRow(MWPARSERCONTEXT *context)
 static void
 beginTableCell(MWPARSERCONTEXT *context, pANTLR3_VECTOR attributes)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginTableCell(l, attributes);
 }
@@ -60,6 +63,7 @@ endTableCell(MWPARSERCONTEXT *context)
 static void
 beginTableHeading(MWPARSERCONTEXT *context, pANTLR3_VECTOR attributes)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginTableHeading(l, attributes);
 }
@@ -74,6 +78,7 @@ endTableHeading(MWPARSERCONTEXT *context)
 static void
 beginTableCaption(MWPARSERCONTEXT *context, pANTLR3_VECTOR attributes)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginTableCaption(l, attributes);
 }
@@ -85,10 +90,10 @@ endTableCaption(MWPARSERCONTEXT *context)
     l->endTableCaption(l);
 }
 
-
 static void
 beginTableBody(MWPARSERCONTEXT *context, pANTLR3_VECTOR attributes)
 {
+    MW_TRIGGER_DELAYED_CALLS(context);
     MWLISTENER *l = &context->listener;
     l->beginTableBody(l, attributes);
 }

@@ -224,7 +224,7 @@ array(
           'close'             => 'htmlDtClose',
           'initiallyDisabled' =>  array('BLOCK_CONTEXT'),
           'affects'           =>  array(new TypeDisable('block', 'BLOCK')),
-          'mayNest'           =>  true,
+          'mayNest'           =>  false,
           'types'             =>  array('block', 'html'),
           ),
     array(
