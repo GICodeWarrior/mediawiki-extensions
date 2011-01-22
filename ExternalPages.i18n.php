@@ -55,7 +55,7 @@ $messages['ar'] = array(
 	'externalpages-no-page' => 'لم تحدد الصفحة',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  * @author Comp1089
  * @author Haqmar
@@ -67,7 +67,7 @@ $messages['ba'] = array(
 	'externalpages-no-page' => 'Бер бит тә күрһәтелмәгән',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -601,7 +601,7 @@ $messages['sl'] = array(
 	'externalpages-no-page' => 'Določena ni nobena stran',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
@@ -611,7 +611,7 @@ $messages['sr-ec'] = array(
 	'externalpages-no-page' => 'Страница није одређена.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'externalpages' => 'Spoljašnje stranice',
 	'externalpages-desc' => 'Preuzima i prikazuje stranice iz daljinskih WMF sajtova',
@@ -723,6 +723,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Waihorace
  */
 $messages['zh-hant'] = array(
 	'externalpages' => '外部網頁',
