@@ -292,7 +292,7 @@ $messages['avk'] = array(
 	'math_InvalidColour' => '"$1" kseva tir meenafa',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -363,7 +363,7 @@ $messages['ba'] = array(
 "$3{...}" фарманын ҡулланып ҡарағыҙ.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -848,7 +848,7 @@ Versuche die problematischen Zeichen in „\\text{…}“ einzuschließen.',
 Probiere die Anweisung „$3{…}“ aus.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -3126,7 +3126,7 @@ Ste namesto tega morda nameravali uporabiti »$2«?',
 	'math_UnrecognisedCommand' => 'Neprepoznani ukaz »$1«',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -3185,7 +3185,7 @@ $messages['sr-ec'] = array(
 Покушајте да употребите команду "$3{...}".',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
