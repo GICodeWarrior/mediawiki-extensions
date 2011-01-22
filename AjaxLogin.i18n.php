@@ -63,7 +63,7 @@ $messages['arc'] = array(
 	'ajaxlogin-create' => 'ܒܪܝ ܚܘܫܒܢܐ',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -79,7 +79,7 @@ $messages['ba'] = array(
 Яҙылышын тикшерегеҙ.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -260,7 +260,7 @@ Benutzernamen können sich in der Groß- und Kleinschreibung unterscheiden.
 Bitte Schreibweise überprüfen.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -1034,7 +1034,7 @@ $messages['sr-ec'] = array(
 Проверите да ли сте добро укуцали.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
  */
