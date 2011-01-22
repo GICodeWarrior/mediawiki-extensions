@@ -450,6 +450,7 @@ Jika Anda mengikuti tautan dari tempat lain, silahkan <a href="$1">laporkan bug<
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 bukan pengguna yang sah',
+	'toolbase-error-nowiki' => '$1.$2.org bukan wiki yang sah',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
