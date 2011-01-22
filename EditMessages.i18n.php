@@ -146,7 +146,7 @@ $messages['as'] = array(
 	'editmsg-search' => 'সন্ধান কৰক',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -493,7 +493,7 @@ $messages['fy'] = array(
 	'editmsg-search' => 'Sykje',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -915,7 +915,7 @@ $messages['ku-latn'] = array(
 	'editmsg-search' => 'Lêbigere',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1403,7 +1403,7 @@ $messages['sk'] = array(
 	'editmsg-patch-success' => 'Záplata úspešne použitá.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -1416,7 +1416,7 @@ $messages['sr-ec'] = array(
 	'editmsg-patch-success' => 'Успешно печовано.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
