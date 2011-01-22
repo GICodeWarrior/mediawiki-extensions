@@ -73,7 +73,7 @@ $messages['bar'] = array(
 	'seealso' => 'Schau aa',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -398,7 +398,7 @@ $messages['ksh'] = array(
 	'seealso-desc' => 'Övverschreffte en de jeweilije Shprooch met däm zosäzlijje <code><nowiki><seealso></nowiki></code> Befäähl em Wiki.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
