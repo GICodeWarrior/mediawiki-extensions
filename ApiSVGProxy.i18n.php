@@ -29,7 +29,7 @@ $messages['ar'] = array(
 	'apisvgproxy-desc' => 'يُمرّر ملفات SVG من مستودع ملفات (يمكن أن يكون بعيدًا) إلى النطاق المحلي',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -213,7 +213,7 @@ $messages['ksh'] = array(
 	'apisvgproxy-desc' => 'Deiht Datteije em SVG Fommaat als ene <i lang="en">proxy</i>-ẞööver onger de eije Domain aanbeede.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -334,14 +334,14 @@ $messages['sl'] = array(
 	'apisvgproxy-desc' => 'Posreduje datoteke SVG iz (po možnosti) oddaljene hrambe datotek na lokalno domeno',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
 	'apisvgproxy-desc' => 'Посредници SVG датотека из (вероватно даљинске) датотеке на дељеном складишту у локалном домену',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'apisvgproxy-desc' => 'Posrednici SVG datoteka iz (verovatno daljinske) datoteke na deljenom skladištu u lokalnom domenu',
 );
