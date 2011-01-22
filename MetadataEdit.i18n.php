@@ -104,7 +104,7 @@ $messages['az'] = array(
 	'metadata_help' => 'Metaməlumatlar:',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Haqmar
  */
 $messages['ba'] = array(
@@ -140,7 +140,7 @@ $messages['be'] = array(
 	'metadata_help' => 'Метазвесткі:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Red Winged Duck
  */
@@ -408,12 +408,12 @@ $messages['gag'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Simplified Gan script (赣语(简体)) */
+/** Simplified Gan script (‪赣语(简体)‬) */
 $messages['gan-hans'] = array(
 	'metadata_help' => '元数据:',
 );
 
-/** Traditional Gan script (贛語(繁體)) */
+/** Traditional Gan script (‪贛語(繁體)‬) */
 $messages['gan-hant'] = array(
 	'metadata_help' => '元數據:',
 );
@@ -684,7 +684,7 @@ $messages['ku-latn'] = array(
 	'metadata_help' => "Data'yên meta:",
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -1129,7 +1129,7 @@ $messages['sq'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1137,7 +1137,7 @@ $messages['sr-ec'] = array(
 	'metadata_help' => 'Метаподаци:',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'metadataedit-desc' => 'Ubacuje kategorije, jezičke veze i odobrene šablone u odvojenu kutijicu za vreme izmene strana',
 	'metadata_help' => 'Metapodaci:',
