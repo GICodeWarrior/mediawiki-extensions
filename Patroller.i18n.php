@@ -630,10 +630,11 @@ $messages['eu'] = array(
  * @author Ebraminio
  * @author Huji
  * @author Mjbmr
+ * @author Sahim
  */
 $messages['fa'] = array(
 	'patrol' => 'گشت‌زنی ویرایش‌ها',
-	'patrol-desc' => 'رابط بهبودیافته گشت با امکان اشتراک بارکاری',
+	'patrol-desc' => 'رابط بهبودیافتهٔ گشت با امکان به اشتراک گذاری پرونده بارگذاری‌شده',
 	'patrol-endorse' => 'تأیید',
 	'patrol-revert' => 'واگردانی',
 	'patrol-revert-reason' => 'دلیل:',
@@ -651,7 +652,7 @@ $messages['fa'] = array(
 	'patrol-another' => 'ویرایشی دیگر را در صورت وجود نمایش بده.',
 	'patrol-stopped' => 'شما انتخاب کردید که ویرایشی دیگر را گشت نزنید. $1',
 	'patrol-resume' => 'برای ادامه این‌جا کلیک کنید.',
-	'group-patroller' => 'نگهبانان',
+	'group-patroller' => 'گشت‌زنان',
 	'group-patroller-member' => 'گشت‌زن',
 	'grouppage-patroller' => '{{ns:project}}:گشت‌زن',
 	'right-patroller' => 'گشت‌زنی صفحه‌ها',
@@ -1821,11 +1822,13 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'patrol' => 'Nadziranje urejanj',
+	'patrol-desc' => 'Izboljšan vmesnik za nadziranje z delitvijo delovne obremenitve',
 	'patrol-endorse' => 'Vključi se',
 	'patrol-revert' => 'Vrni',
 	'patrol-revert-reason' => 'Razlog:',
 	'patrol-skip' => 'Preskoči',
 	'patrol-reverting' => 'Vračanje: $1',
+	'patrol-nonefound' => 'Za nadziranje ni bilo najdeno nobeno primerno urejanje.',
 	'patrol-endorsed-ok' => 'Urejanje je bilo označeno kot nadzorovano.',
 	'patrol-endorsed-failed' => 'Urejanja ni bilo mogoče označiti kot nadzorovano.',
 	'patrol-reverted-ok' => 'Urejanje je bilo vrnjeno.',
