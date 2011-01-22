@@ -80,7 +80,7 @@ $messages['avk'] = array(
 $2 warzafa favesikpata su zo redur koe $3 ko $4.',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -101,7 +101,7 @@ $messages['bar'] = array(
 Am $5 is um $6 auf $3 a neichs Benutzakonto ãnglegt woan: $2.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -616,7 +616,7 @@ $messages['sk'] = array(
 $3 na $4 bol vytvorený nový používateľský účet $2.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -627,7 +627,7 @@ $messages['sr-ec'] = array(
 Нови кориснички налог, $2, је направљен на $3 у $4.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
