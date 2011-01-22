@@ -25,9 +25,20 @@ class InlineEditor {
 			self::hideEditSection( $output );
 		}
 
+		
 		// return if the action is not 'edit' or if it's disabled
-		if ( $wiki->getAction( $request ) != 'edit' ) {
-			return true;
+		// @todo: FIXME: we don't want to break with older versions just yet,
+		// but do remove this when the time is there!
+		if( method_exists( $wiki, 'getAction' ) ) {
+			if( $wiki->getAction( $request ) != 'edit' ) {
+				return true;
+			}
+		}
+		else {
+			$action = $request->getVal( 'action', 'view' );
+			if ( $action != 'edit' || in_array( $action, $wiki->getVal( 'DisabledActions', array() ) ) ) {
+				return true;
+		 	}
 		}
 
 		// check if the 'fulleditor' parameter is set either in GET or POST
@@ -193,7 +204,7 @@ class InlineEditor {
 	 * @param $output OutputPage
 	 */
 	public function render( &$output ) {
-		global $wgParser, $wgHooks, $wgRequest, $wgExtensionAssetsPath;
+		global $wgParser, $wgHooks, $wgRequest, $wgExtensionAssetsPath, $wgDisableOutputCompression;
 
 		// if the page is being saved, retrieve the wikitext from the JSON
 		if ( $wgRequest->wasPosted() ) {
@@ -234,6 +245,9 @@ class InlineEditor {
 			// put the marked output into the page
 			$output->addParserOutput( $parserOutput );
 			$output->setPageTitle( $parserOutput->getTitleText() );
+			
+			// make sure that no compression is used, or the page might be corrupted
+			$wgDisableOutputCompression = false;
 			
 			// convert the text object into an initial state to send
 			$initial = InlineEditorText::initialState( $text );
