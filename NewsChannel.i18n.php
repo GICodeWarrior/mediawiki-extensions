@@ -91,7 +91,7 @@ $messages['be'] = array(
 	'newschannel_format' => 'Фармат:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -659,7 +659,7 @@ $messages['sk'] = array(
 	'newschannel_submit_button' => 'Vytvoriť kanál',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -670,7 +670,7 @@ $messages['sr-ec'] = array(
 	'newschannel_exclude_category' => 'Искључи категорију:',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
