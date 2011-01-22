@@ -1715,12 +1715,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'tasklist' => '任務清單',
 	'tasklist-parser-desc' => '增加了<nowiki>{{#todo:}}</nowiki>語句，用來分配任務',
-	'tasklist-special-desc' => '增加了一個特殊頁面，用以查看[[Special:TaskList|分配到的任務]]',
+	'tasklist-special-desc' => '增加了一個特殊頁面，用以檢視[[Special:TaskList|分配到的任務]]',
 	'tasklistbyproject' => '項目任務列表',
 	'tasklistunknownproject' => '未知的項目',
 	'tasklistunspecuser' => '未認證用戶',
@@ -1729,17 +1730,17 @@ $messages['zh-hant'] = array(
 	'tasklistemailsubject' => '[%s] 任務列表有變化',
 	'tasklistmytasks' => '我的任務',
 	'tasklistbyprojectbad' => "任務 '''%s''' 無法識別。
-如要查看可執行的任務，請見[[MediaWiki:TodoTasksValidProjects]]。",
-	'tasklistbyprojname' => "'''%s'''的指定任務",
+如要檢視可執行的任務，請參閱 [[MediaWiki:TodoTasksValidProjects]]。",
+	'tasklistbyprojname' => "'''%s''' 的指定任務",
 	'tasklistchooseproj' => '選擇項目：',
 	'tasklistprojdisp' => '顯示',
 	'tasklistbyname' => '== %s 的任務列表 ==',
-	'tasklistnoprojects' => "錯誤：您啟動了'''\$wgUseProjects'''，但是沒有創建[[MediaWiki:TodoTasksValidProjects]]。參見[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions]以獲得更多信息。",
+	'tasklistnoprojects' => "錯誤：您啟動了 '''\$wgUseProjects'''，但是沒有建立 [[MediaWiki:TodoTasksValidProjects]]。參見 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] 以取得更多資訊。",
 	'tasklistemailbody' => '，
 
 某人在 %s 上給您指定了新的任務。
 
-如要查看您的完整任務列表，請到 %s。
+如要檢視您的完整任務列表，請到 %s。
 
 %s 提示系統敬上',
 );
