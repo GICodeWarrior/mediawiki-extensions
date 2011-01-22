@@ -216,7 +216,7 @@ $messages['arz'] = array(
 	'prefstats-legend-in' => 'مشترك',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -260,7 +260,7 @@ $messages['be'] = array(
 * Разам, $4 {{PLURAL:$4|удзельнік|удзельнікаў}} трымаюць магчымасць уключанай',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -648,7 +648,7 @@ Klicke auf eine, um Statistiken darüber zu erhalten.',
 	'prefstats-legend-in' => 'Angemeldet',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -2212,6 +2212,7 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
  * @author Eduardo.mps
+ * @author Helder.wiki
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -2562,7 +2563,7 @@ $messages['sq'] = array(
 	'prefstats-factor-fourweeks' => 'katër javë',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -2578,7 +2579,7 @@ $messages['sr-ec'] = array(
 	'prefstats-factor-default' => 'врати се на подразумевану скалу',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
