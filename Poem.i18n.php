@@ -61,7 +61,7 @@ $messages['az'] = array(
 	'poem-desc' => 'Şeirlərin formatlaşdırılması üçün <code>&lt;poem&gt;</code> teqini əlavə edir',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -82,7 +82,7 @@ $messages['bcc'] = array(
 	'poem-desc' => 'هورکنت <code>&lt;poem&gt;</code> برچسپء په فرمت شئر',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -541,7 +541,7 @@ $messages['sq'] = array(
 	'poem-desc' => 'Vendosë kodin <code>&lt;poem&gt;</code> për formatim të poezive',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Nikola Smolenski
  */
@@ -549,7 +549,7 @@ $messages['sr-ec'] = array(
 	'poem-desc' => 'Додаје <code>&lt;poem&gt;</code> ознаку за форматирање песама.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
