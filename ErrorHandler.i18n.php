@@ -144,7 +144,7 @@ $messages['arz'] = array(
 	'errorhandler-trace-line-internal' => '[وظيفة داخلية]: $1',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1246,7 +1246,7 @@ $messages['sk'] = array(
 	'errorhandler-trace-line-internal' => '[vnútorná funkcia]: $1',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1272,7 +1272,7 @@ $messages['sr-ec'] = array(
 	'errorhandler-trace-line-internal' => '[интерна функција]: $1',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
