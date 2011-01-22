@@ -55,7 +55,7 @@ $messages['ast'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -76,7 +76,7 @@ $messages['bcc'] = array(
 	'mwsearch-desc' => 'پلاگین گردگ م.و',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -534,14 +534,14 @@ $messages['sl'] = array(
 	'mwsearch-desc' => 'Vtičnik MWSearch',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'mwsearch-desc' => 'MWSearch додатак',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
