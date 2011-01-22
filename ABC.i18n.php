@@ -104,7 +104,7 @@ $messages['arz'] = array(
 	'abcdownload' => 'تنزيل:',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  * @author Comp1089
  */
@@ -120,7 +120,7 @@ $messages['bar'] = array(
 	'abcdownload' => 'Owerloon',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Red Winged Duck
  */
@@ -544,7 +544,7 @@ $messages['ku-latn'] = array(
 	'abcdownload' => 'Daxistin:',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -909,7 +909,7 @@ $messages['sq'] = array(
 	'abcdownload' => 'Shkarko:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -918,7 +918,7 @@ $messages['sr-ec'] = array(
 	'abcdownload' => 'Преузимање:',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -1097,5 +1097,20 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'abc-desc' => '加入 <code>&lt;abc&gt;</code> 標籤以格式化 ABC 音樂',
 	'abcdownload' => '下載：',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'abcdownload' => '下載：',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
+	'abc-desc' => '將<code>&lt;abc&gt;</code>標籤加入到ABC音樂格式',
+	'abcdownload' => '下載:',
 );
 
