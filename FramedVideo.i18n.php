@@ -962,6 +962,16 @@ $messages['tr'] = array(
 	'framedvideo-desc' => '<code>&lt;video&gt;</code> etiketi kullanılarak çeşitli web sitelerinden alınan videoların yerleştirilmesini mümkün kılmaktadır',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'framedvideo_error_no_id_given' => 'Відсутній параметр "id".',
+	'framedvideo_helppage' => 'Help:Відео',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Детальніше про синтаксис]].',
+	'framedvideo-desc' => 'Дозволяє вбудовувати відео з різних веб-сайтів за допомогою тега <code>&lt;video&gt;</code>',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
