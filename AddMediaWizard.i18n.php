@@ -50,7 +50,7 @@ $messages['az'] = array(
 	'addmediawizard-desc' => 'Kaltura və Vikimedia Fondunun birgə əməkdaşlığı sayəsində hazırlanmış media-fayllar əlavəçisi',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -64,7 +64,7 @@ $messages['be'] = array(
 	'addmediawizard-desc' => 'Дадаць медыя-майстар, распрацаваны ў партнёрстве Kaltura і Фонду Вікімедыя',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -473,14 +473,14 @@ $messages['sl'] = array(
 	'addmediawizard-desc' => 'Doda predstavnostni čarovnik, ki je nastal v sodelovanju Kalture in fundacije Wikimedia',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
 	'addmediawizard-desc' => 'Додај медија водич, развијен у партнерству с Калтуром и Викимедија Задужбином',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'addmediawizard-desc' => 'Dodaj medija vodič, razvijen u partnerstvu s Kalturom i Vikimedija Zadužbinom',
 );
@@ -555,5 +555,12 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'addmediawizard-desc' => '加入由Kaltura和維基媒體基金會所開發的媒體精靈。',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
+	'addmediawizard-desc' => '添加由Kaltura和維基媒體基金會所開發的媒體嚮導。',
 );
 
