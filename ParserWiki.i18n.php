@@ -26,7 +26,7 @@ $messages['aln'] = array(
 	'parserwiki-desc' => 'Lejon për të përcaktuar një gramatikë në një wiki atëherë përdorim që e ciklit të lartë të informatave të dhëna në të njëjtën wiki',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
