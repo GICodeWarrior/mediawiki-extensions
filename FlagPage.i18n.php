@@ -133,6 +133,25 @@ Beispiele:
 	'flagpage-tab' => 'Kennzeichnen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'flagpage' => 'Bok wobznamjeniś',
+	'flagpage-desc' => 'Bok z pśeddefiněrowanymi pśedłogami wobznamjeniś',
+	'flagpage-nopageselectedtitle' => 'Žeden bok wubrany',
+	'flagpage-nopageselected' => 'Njejsy žeden bok pódał',
+	'flagpage-emptylisttitle' => 'Žedne pśedłogi konfigurěrowane',
+	'flagpage-emptylist' => 'Musyš swóje lisćiny pśedłogow konfigurěrowaś. Wobźěłaj [[{{ns:8}}:flagpage-templatelist]], aby to něnto cynił.',
+	'flagpage-preview' => 'Pśeglěd wubraneje pśedłogi:',
+	'flagpage-confirmsave' => 'Pšosym wobkšuś swóje změny.',
+	'flagpage-submitbutton' => 'Bok z toś teju pśedłogu składowaś',
+	'flagpage-nonexistent' => 'Bok "$1" njeeksistěrujo. Snaź jo se [{{fullurl:Special:Log|page=$1}} pśesunuł abo wulašował].',
+	'flagpage-summary' => 'Psédłoga [[$1]] z pomocu FlagPage dodana',
+	'flagpage-success' => '[[$1]] jo se bokoju [[$2]] dodał.',
+	'flagpage-tab' => 'Wobznamjeniś',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mjbmr
