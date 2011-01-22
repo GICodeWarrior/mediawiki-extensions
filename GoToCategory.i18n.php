@@ -38,7 +38,7 @@ $messages['arz'] = array(
 	'gotocategory-desc' => "يتحقق من مدخلات البحث فى نطاق Category: لوظيفة اذهب 'اقفز إلى الصفحة'",
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
