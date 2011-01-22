@@ -74,7 +74,7 @@ $messages['arc'] = array(
 	'commentbox-name' => 'ܫܡܐ:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -190,7 +190,7 @@ Du hast einen Kommentar zu dieser Seite? Trage ihn hier ein oder <span class="pl
 	'commentbox-error-empty-comment' => 'Leere Kommentare sind nicht erlaubt!',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -955,7 +955,7 @@ Imate pripombo na to stran? Dodajte jo tukaj <span class="plainlinks">[{{fullurl
 	'commentbox-error-empty-comment' => 'Prazne pripombe niso dovoljene!',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -972,7 +972,7 @@ $messages['sr-ec'] = array(
 	'commentbox-error-empty-comment' => 'Празни коментари нису могући!',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'commentbox-desc' => 'Dodaje kutijice za komentare na izvesne strane',
 	'commentbox-intro' => '== Dodavanje komentara... ==
