@@ -33,7 +33,7 @@ If you want to read the response in context, visit <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 has responded to your summary bullet point',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -138,7 +138,7 @@ Rufe <$4> auf, sofern du die Antwort im entsprechenden Zusammenhang lesen möcht
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 hat auf deine Zusammenfassung einer Aussage reagiert.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
  */
 $messages['de-formal'] = array(
