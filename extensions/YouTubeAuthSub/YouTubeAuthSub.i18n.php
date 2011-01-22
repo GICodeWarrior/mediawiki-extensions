@@ -4014,6 +4014,7 @@ YouTube可能需要一些时间处理您的视频，所以可能不会立即出�
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -4038,7 +4039,7 @@ YouTube需要一些時間去處理閣下的影片，因此或未能即時觀看�
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => '在上載影片前，您需先登入YouTube。',
 	'youtubeauthsub_uploadhere' => '自這裡上載您的影片：',
-	'youtubeauthsub_uploadbutton' => '上載',
+	'youtubeauthsub_uploadbutton' => '上傳',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}
 
 本影片可在[http://www.youtube.com/watch?v=$1 這裡]觀看',

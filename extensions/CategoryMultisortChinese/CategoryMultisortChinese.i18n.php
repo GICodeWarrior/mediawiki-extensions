@@ -602,8 +602,16 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
+ * @author Waihorace
  */
 $messages['zh-hant'] = array(
+	'categorymultisortchinese-desc' => '允許分類按照中文的不同顺序表排序。',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => '普通話：拼音',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => '普通話：聲母音序',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => '普通話：威氏拼音法',
+	'categorymultisort-sortkey-name-mandarin-mps2' => '普通話：注音符號第二式',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => '普通話：通用拼音',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => '粵語：粵拼',
 	'categorymultisort-sortkey-name-stroke' => '筆劃',
 	'categorymultisort-sortkey-name-stroke-simplified' => '中文（簡體）',
 	'categorymultisort-sortkey-name-stroke-traditional' => '中文（繁體）',

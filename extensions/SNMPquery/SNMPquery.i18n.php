@@ -70,7 +70,7 @@ $messages['fr'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'snmpquery-desc' => 'Fiegt d Funktione SNMPget un SNMPwalk zue un schickt d Date retur in s Wiki',
+	'snmpquery-desc' => 'Fiegt d Funktione SNMPget un SNMPwalk zum Parser zue un macht d Aazeig vu dr Uusgabewärt im Wiki megli',
 );
 
 /** Hebrew (עברית)
@@ -113,7 +113,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'snmpquery-desc' => 'Brängk de Funxjohne <code lang="en">SNMPget</code> un <code lang="en">SNMPwalk</code> en et Wiki.',
+	'snmpquery-desc' => 'Brängk de Funxjohne <code lang="en">SNMPget</code> un <code lang="en">SNMPwalk</code> en et Wiki un määt et müjjelesch, aanzezeije, wat se livvere.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

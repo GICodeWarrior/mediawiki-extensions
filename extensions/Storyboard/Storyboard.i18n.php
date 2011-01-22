@@ -1445,7 +1445,7 @@ $messages['mk'] = array(
 	'storyboard-hidden' => 'Сокриено',
 	'storyboard-unpublish' => 'Тргни',
 	'storyboard-publish' => 'Објави',
-	'storyboard-hide' => 'Сокриј',
+	'storyboard-hide' => 'Скриј',
 	'storyboard-option-unpublished' => 'необјавени',
 	'storyboard-option-published' => 'објавени',
 	'storyboard-option-hidden' => 'скриени',
@@ -1504,7 +1504,7 @@ $messages['mk'] = array(
 	'storyboard-imagedeletionconfirm' => 'Дали сте сигурни дека сакате трајно да ја избришете оваа слика?',
 	'storyboard-imagedeleted' => 'Сликата е избришана',
 	'storyboard-showimage' => 'Прикажи слика',
-	'storyboard-hideimage' => 'Сокриј слика',
+	'storyboard-hideimage' => 'Скриј слика',
 	'storyboard-deletestory' => 'Отстрани',
 	'storyboard-storydeletionconfirm' => 'Дали сте дигурни дека сакате трајно да ја избришете приказнава?',
 );

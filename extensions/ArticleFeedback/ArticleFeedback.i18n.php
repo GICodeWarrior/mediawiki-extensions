@@ -109,14 +109,51 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Ciphers
  * @author Mido
  */
 $messages['ar'] = array(
 	'articlefeedback' => 'ملاحظات على المقال',
 	'articlefeedback-desc' => 'ملاحظات على المقال',
+	'articlefeedback-survey-question-whyrated' => 'الرجاء إخبارنا لماذا قمت بتقييم هذه الصفحة اليوم (ضع علامة أمام كل ما ينطبق):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'أردت أن أساهم في التقييم الكلي للصفحة',
+	'articlefeedback-survey-answer-whyrated-development' => 'آمل أن التصويت الذي أدلي به سيؤثر إيجابا على تطوير الصفحة',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => ' أردت أن أساهم في {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'أود مشاركة رأيي',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'لم أقدم أي تقييمات اليوم، لكني أردت إعطاء ملاحظات عن هذه الأداة',
 	'articlefeedback-survey-answer-whyrated-other' => 'ܐܚܪܢܐ',
+	'articlefeedback-survey-question-useful' => 'هل تعتقد أن التقييم المقدم مفيد وواضح؟',
 	'articlefeedback-survey-question-useful-iffalse' => 'ܠܡܢܐ?',
+	'articlefeedback-survey-question-expert' => 'هل تعتبر نفسك خبيراً في المجال الذي تغطيه هذه الصفحة؟',
+	'articlefeedback-survey-question-expert-iftrue' => 'هل بإمكان وصف الخبرات التي لديك؟',
+	'articlefeedback-survey-question-comments' => 'هل لديك أي تعليقات إضافية؟',
 	'articlefeedback-survey-submit' => 'ܫܕܪ',
+	'articlefeedback-survey-title' => 'الرجاء الإجابة على بعض الأسئلة',
+	'articlefeedback-survey-thanks' => 'شكرا لملء الاستبيان.',
+	'articlefeedback-form-switch-label' => 'تقديم استبيان',
+	'articlefeedback-form-panel-title' => 'ملاحظاتك',
+	'articlefeedback-form-panel-instructions' => 'الرجاء قضاء بعض وقت لتقييم هذه الصفحة.',
+	'articlefeedback-form-panel-submit' => 'إرسال الملاحظات',
+	'articlefeedback-report-switch-label' => 'عرض النتائج',
+	'articlefeedback-report-panel-title' => 'نتائج الملاحظات',
+	'articlefeedback-report-panel-description' => 'متوسط التقييمات الحالية.',
+	'articlefeedback-report-empty' => 'لا توجد تقييمات',
+	'articlefeedback-report-ratings' => 'تقييمات $1',
+	'articlefeedback-field-trustworthy-label' => 'جدير بالثقة',
+	'articlefeedback-field-trustworthy-tip' => 'هل تظن أن لهذه الصفحة استشهادات كافية وأن تلك الاستشهادات تأتي من مصادر جديرة بالثقة؟',
+	'articlefeedback-field-complete-label' => 'مكتمل',
+	'articlefeedback-field-complete-tip' => 'هل تشعر بأن هذه الصفحة تغطي مجالات الموضوع الأساسية كما ينبغي؟',
+	'articlefeedback-field-unbiased-label' => 'غير متحيز',
+	'articlefeedback-field-unbiased-tip' => 'هل تشعر أن تظهر هذه الصفحة هي تمثيل عادل لجميع وجهات النظر حول هذ الموضوع؟',
+	'articlefeedback-field-wellwritten-label' => 'مكتوبة بشكل جيد',
+	'articlefeedback-field-wellwritten-tip' => 'هل تشعر بأن هذه الصفحة منظمة تنظيماً جيدا ومكتوبة بشكل جيد؟',
+	'articlefeedback-pitch-reject' => 'لا، شكراً',
+	'articlefeedback-pitch-takesurvey-title' => 'هل تريد أن تأخذ الاستقصاء؟',
+	'articlefeedback-pitch-takesurvey-accept' => 'بدء الاستقصاء',
+	'articlefeedback-pitch-createaccount-title' => 'هل ترغب في إنشاء حساب جديد؟',
+	'articlefeedback-pitch-createaccount-accept' => 'أنشئ حسابا',
+	'articlefeedback-pitch-makefirstedit-title' => 'هل ترغب في تحرير هذه الصفحة؟',
+	'articlefeedback-pitch-makefirstedit-accept' => 'بدء التحرير',
 );
 
 /** Bashkir (Башҡорт)

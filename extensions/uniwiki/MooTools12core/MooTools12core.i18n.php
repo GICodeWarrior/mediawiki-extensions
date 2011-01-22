@@ -444,3 +444,10 @@ $messages['zh-hans'] = array(
 	'mootools12core-desc' => '向每一个页面增加[http://mootools.net mootools-1.2-core-yc.js]，一个简洁的JavaScript框架。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'mootools12core-desc' => '向每一個頁面增加 [http://mootools.net mootools-1.2-core-yc.js]，一個簡潔的 JavaScript 框架。',
+);
+

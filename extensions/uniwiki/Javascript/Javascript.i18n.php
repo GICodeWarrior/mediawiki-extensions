@@ -433,8 +433,9 @@ $messages['vi'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'javascript-desc' => '將uniwiki.js加入到每頁的JavaScript代碼之間共享Uniwiki擴展',
+	'javascript-desc' => '將 uniwiki.js 加入到每頁的 JavaScript 代碼之間分享 Uniwiki 擴充套件',
 );
 

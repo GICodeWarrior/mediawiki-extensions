@@ -475,6 +475,13 @@ $messages['ja'] = array(
 	'ts-citegen-base-disabled' => 'エラー： %s データベースが使用できません',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'ts-citegen-Skin-skins' => 'Ovverflääsche',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -3527,8 +3527,9 @@ $messages['sr-ec'] = array(
 	'tasks_logentry' => 'За "[[$1]]"',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'tasks' => 'Zadaci',
@@ -3579,7 +3580,7 @@ $messages['sr-el'] = array(
 	'tasks_search_status' => 'Status',
 	'tasks_previous' => 'Prethodni',
 	'tasks_next' => 'Sledeći',
-	'tasks_sort' => 'Sortiraj',
+	'tasks_sort' => 'Poređaj',
 	'tasks_ascending' => 'Najstariji prvo',
 	'tasks_status_open' => 'Otvori',
 	'tasks_status_assigned' => 'Dodeljeno',

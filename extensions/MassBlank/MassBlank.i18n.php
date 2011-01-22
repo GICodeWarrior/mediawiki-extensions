@@ -575,6 +575,9 @@ $messages['rue'] = array(
  */
 $messages['sl'] = array(
 	'massblank' => 'Praznjenje strani',
+	'massblank-desc' => 'Skrbnikom omogoča [[Special:MassBlank|množično praznjenje]] strani',
+	'massblank-nopages' => 'V zadnjih spremembah ni novih strani [[Special:Contributions/$1|$1]]',
+	'massblank-defaultreason' => 'Množično praznjenje strani, ki jih je dodal $1',
 	'massblank-submit-user' => 'Pojdi',
 	'massblank-submit-blank' => 'Izprazni izbrane',
 	'massblank-blankcomment' => 'Razlog:',

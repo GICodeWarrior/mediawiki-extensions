@@ -508,9 +508,10 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'trustedxff-desc' => '處理一個可信的Proxy地址一覽 （[http://meta.wikimedia.org/wiki/XFF_project XFF project]）',
+	'trustedxff-desc' => '處理一個可信的 Proxy 位址一覽（[http://meta.wikimedia.org/wiki/XFF_project XFF project]）',
 );
 

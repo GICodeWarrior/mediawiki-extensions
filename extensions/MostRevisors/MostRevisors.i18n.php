@@ -582,7 +582,7 @@ $messages['mk'] = array(
 	'mostrevisors-showing' => 'Содржи {{PLURAL:$1|1 страница|$1 страници}}:',
 	'mostrevisors-submit' => 'Оди',
 	'mostrevisors-showredir' => 'Прикажи страници за пренасочување',
-	'mostrevisors-hideredir' => 'Сокриј страници за пренасочување',
+	'mostrevisors-hideredir' => 'Скриј пренасочувања',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|уредник|уредници}}',
 	'mostrevisors-viewcontributors' => 'Прикажи ги главните уредници',
 );

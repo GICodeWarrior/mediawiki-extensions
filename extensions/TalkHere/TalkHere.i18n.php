@@ -700,7 +700,7 @@ $messages['mk'] = array(
 	'talkhere-addcomment' => 'додај коментар',
 	'talkhere-beforeinput' => 'Подолу можете да додадете коментар',
 	'talkhere-loading' => 'го вчитувам уредувачот...',
-	'talkhere-collapse' => 'сокриј уредувач',
+	'talkhere-collapse' => 'скриј уредувач',
 );
 
 /** Malayalam (മലയാളം)

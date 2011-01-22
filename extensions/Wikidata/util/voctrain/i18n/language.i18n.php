@@ -2565,8 +2565,8 @@ $messages['mk'] = array(
 	'voctrain_unhide_definition' => 'откриј толкување',
 	'voctrain_unhide_words' => 'откриј зборови',
 	'voctrain_hiding' => 'Скривање',
-	'voctrain_hide_definitions_in_question_language' => 'Сокриј толкувања за јазикот на прашањата',
-	'voctrain_hide_words_in_question_language' => 'Сокриј ги зборовите на јазикот на прашањата',
+	'voctrain_hide_definitions_in_question_language' => 'Скриј толкувања за јазикот на прашањата',
+	'voctrain_hide_words_in_question_language' => 'Скриј ги зборовите на јазикот на прашањата',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Одделувајте ги  вредностите со запирки за да користите повеќе јазици',
 	'voctrain_other' => 'друго',
 );

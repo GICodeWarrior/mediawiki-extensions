@@ -1046,6 +1046,14 @@ $messages['ksh'] = array(
 	'bookinfo-provider' => 'De Date hät jelivvert: $1',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'bookinfo-result-title' => 'Sernav:',
+	'bookinfo-result-year' => 'Sal:',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */

@@ -587,6 +587,13 @@ Häß De en Aamerkung zoh heh dä Sigg? Donn se heh enjävve, udder <span class=
 	'commentbox-error-empty-comment' => 'Aanmerkunge met nix dren nit zohjelohße!',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'commentbox-name' => 'Nav:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
