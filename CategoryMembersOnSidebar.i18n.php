@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'categorymembersonsidebar-desc' => 'Adds category members on the sidebar',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
