@@ -34,7 +34,7 @@ $messages['arz'] = array(
 	'newsextension-desc' => 'يعرض أحدث تغييرات معدلة فى صفحات الويكى أو كتلقيم آر إس إس أو أتوم.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца)) */
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬) */
 $messages['be-tarask'] = array(
 	'newsextension-desc' => 'Паказаць налады апошніх зьменаў як старонкі вікі ці у выглядзе RSS ці Atom',
 );
@@ -358,14 +358,14 @@ $messages['sk'] = array(
 	'newsextension-desc' => 'Zobrazuje prispôsobené Posledné úpravy na wiki stránkach alebo ako kanál RSS alebo Atom',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'newsextension-desc' => 'Приказује подесиве скорашње измене, или их приказује као RSS или атом фид',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'newsextension-desc' => 'Prikazuje podesive skorašnje izmene, ili ih prikazuje kao RSS ili atom fid',
 );
