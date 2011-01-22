@@ -164,7 +164,7 @@ $messages['az'] = array(
 	'right-edituser-exempt' => 'digər istifadəçilər bu istifadəçinin nizamlamalarını redaktə edə bilməz',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -469,7 +469,7 @@ $messages['fy'] = array(
 	'edituser-dosearch' => 'Sykje',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -803,7 +803,7 @@ $messages['ku-latn'] = array(
 	'edituser-dosearch' => 'Lêbigere',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1226,7 +1226,7 @@ $messages['sr-ec'] = array(
 	'right-edituser-exempt' => 'Други не могу да мењају подешавања овог корисника',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
