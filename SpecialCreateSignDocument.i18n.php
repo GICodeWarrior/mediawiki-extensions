@@ -222,7 +222,7 @@ $messages['bcl'] = array(
 	'createsigndoc-error-generic' => 'Salâ: $1',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -436,7 +436,7 @@ Du kannst es [{{fullurl:{{#Special:SignDocument}}|doc=$2}} hier ausprobieren].',
 Es kann nicht erneut signiert werden.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Revolus
  * @author The Evil IP address
  * @author Umherirrender
@@ -1155,7 +1155,7 @@ Mer kann jetz dat [{{fullurl:{{#Special:SignDocument}}|doc=$2}} Ungerschriive oc
 	'createsigndoc-error-alreadycreated' => 'De Ongerschreffte-Mapp för de Sigg „$1“ es ald aanjelaat.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1773,7 +1773,7 @@ $messages['sl'] = array(
 	'createsigndoc-pagename' => 'Stran:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1794,7 +1794,7 @@ $messages['sr-ec'] = array(
 	'createsigndoc-error-generic' => 'Грешка: $1',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

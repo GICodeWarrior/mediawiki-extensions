@@ -59,7 +59,7 @@ $messages['bar'] = array(
 	'signaturelogpage' => 'Untaschrifts-Logbuach',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -561,7 +561,7 @@ $messages['sk'] = array(
 	'right-createsigndocument' => 'Vytvoriť dokumenty, ktoré možno podpísať',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -571,7 +571,7 @@ $messages['sr-ec'] = array(
 	'signaturelogentry' => 'потписао документ $1',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
