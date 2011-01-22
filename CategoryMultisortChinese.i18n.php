@@ -25,7 +25,7 @@ $messages['en'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Traditional',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
