@@ -34,7 +34,7 @@ $messages['bar'] = array(
 	'magicnonumberedheadings-desc' => "Fügt s'magische Woat „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“ dazua",
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -314,14 +314,14 @@ $messages['sk'] = array(
 	'magicnonumberedheadings-desc' => 'Pridáva magické slovo „<nowiki>__NONUMBEREDHEADINGS__</nowiki>“',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'magicnonumberedheadings-desc' => 'Додаје магичну реч "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
