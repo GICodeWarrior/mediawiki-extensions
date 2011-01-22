@@ -31,7 +31,7 @@ $messages['ar'] = array(
 	'minify-desc' => 'يقلص مُخرج CSS وجافاسكربت من action=raw',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -272,14 +272,14 @@ $messages['sk'] = array(
 	'minify-desc' => 'Zmenší výstup CSS a JavaScript z action=raw',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'minify-desc' => 'Избацује CSS и JavaScript излаз из action=raw',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'minify-desc' => 'Izbacuje CSS i JavaScript izlaz iz action=raw',
 );
