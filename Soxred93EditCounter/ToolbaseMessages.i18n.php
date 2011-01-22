@@ -46,7 +46,9 @@ Make sure that you typed the URL correctly.
 If you followed a link from somewhere, please <a href="$1">report a bug</a>.
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
+	
 	'toolbase-error-nouser' => '$1 is not a valid user',	
+	'toolbase-error-nowiki' => '$1.$2.org is not a valid wiki',
 );
 
 /** Message documentation (Message documentation)
