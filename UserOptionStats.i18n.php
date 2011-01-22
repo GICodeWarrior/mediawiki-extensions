@@ -96,7 +96,7 @@ $messages['bar'] = array(
 	'uos-choose' => 'Suach da ane vu de Eistellungen aus: $1',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -218,7 +218,7 @@ $messages['de'] = array(
 „$1“',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Purodha
  */
 $messages['de-formal'] = array(
@@ -617,6 +617,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Helder.wiki
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -686,7 +687,7 @@ $messages['sk'] = array(
 	'uos-title' => 'Rozdelenie hodnôt používateľskej voľby $1',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -696,7 +697,7 @@ $messages['sr-ec'] = array(
 	'uos-other' => '*Друго',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -810,10 +811,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'uos-warn' => '尚未安裝PHPlot！',
+	'uos-warn' => '尚未安裝 PHPlot！',
 	'uos-unknown' => '*預設',
 	'uos-other' => '*其他',
 );
