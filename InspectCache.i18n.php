@@ -99,7 +99,7 @@ $messages['arz'] = array(
 	'inspectcache-list' => 'عرض',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -794,7 +794,7 @@ $messages['pdc'] = array(
 	'inspectcache-list' => 'Lischt',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -938,7 +938,7 @@ $messages['sk'] = array(
 	'inspectcache-list' => 'Zoznam',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -954,7 +954,7 @@ $messages['sr-ec'] = array(
 	'right-inspectcache' => 'Преглед и брисање уноса кеша',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
