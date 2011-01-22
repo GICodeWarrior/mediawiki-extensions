@@ -44,7 +44,7 @@ $messages['arc'] = array(
 	'prefs-category' => 'ܣܕܪܐ',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -63,7 +63,7 @@ $messages['be'] = array(
 	'prefs-category' => 'Катэгорыя',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -574,7 +574,7 @@ $messages['sl'] = array(
 	'prefs-category' => 'Kategorija',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -587,7 +587,7 @@ $messages['sr-ec'] = array(
 	'prefs-category' => 'Категорија',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Podrazumevano',
 	'categorymultisort-sortkey' => 'Ključ sortiranja:',
