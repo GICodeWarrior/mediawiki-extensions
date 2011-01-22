@@ -84,7 +84,7 @@ $messages['arz'] = array(
 	'communityvoice-ratings-error-no-title' => 'صفة العنوان مفقودة فى وسم التقييم.',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -99,7 +99,7 @@ $messages['ba'] = array(
 	'communityvoice-ratings-error-no-title' => 'Баһалау билдәһендә исем атрибуты юҡ.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -210,7 +210,7 @@ $messages['de'] = array(
 	'communityvoice-ratings-error-no-title' => 'Bewertungstag hat kein Titel-Attribut.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  */
 $messages['de-formal'] = array(
@@ -914,7 +914,7 @@ $messages['sl'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atribut naslova manjka v oznaki glasova.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -923,7 +923,7 @@ $messages['sr-ec'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Хвала Вам за учешће у гласању!',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
