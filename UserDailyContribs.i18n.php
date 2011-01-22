@@ -59,7 +59,7 @@ $messages['arz'] = array(
 	'userdailycontribs-desc' => 'مساهمات المستخدمين اليويمه لامتداد تتبع الضغطات',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -73,7 +73,7 @@ $messages['be'] = array(
 	'userdailycontribs-desc' => 'Штодзённы ўклад удзельніка для гаджэта сачэння за націскамі мышшу',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -561,8 +561,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'userdailycontribs-desc' => '點擊跟蹤擴展的用戶每日貢獻',
+	'userdailycontribs-desc' => '點擊追蹤擴展的用戶每日貢獻',
 );
 
