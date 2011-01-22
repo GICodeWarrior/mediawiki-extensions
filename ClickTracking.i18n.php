@@ -184,7 +184,7 @@ $messages['arz'] = array(
 	'ct-update-table' => 'حدّث الجدول',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -212,7 +212,7 @@ $messages['ba'] = array(
 	'ct-update-table' => 'Таблицаны яңыртырға',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -2146,7 +2146,7 @@ $messages['sl'] = array(
 	'ct-update-table' => 'Posodobi tabelo',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -2170,7 +2170,7 @@ $messages['sr-ec'] = array(
 	'ct-update-table' => 'Ажурирај табелу',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'ct-expert-header' => 'Klikovi "eksperata"',
 	'ct-intermediate-header' => 'Klikovi "naprednih"',
@@ -2559,6 +2559,7 @@ $messages['yo'] = array(
 /** Cantonese (粵語)
  * @author Horacewai2
  * @author Shinjiman
+ * @author Waihorace
  */
 $messages['yue'] = array(
 	'clicktracking' => '可用性倡議撳追蹤',
