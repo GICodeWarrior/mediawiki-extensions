@@ -103,7 +103,7 @@ $messages['bar'] = array(
 	'searchbox-namespaces' => 'Nãmensräim:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -307,7 +307,7 @@ $messages['frp'] = array(
 	'searchbox-namespaces' => 'Èspâços de noms :',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -795,7 +795,7 @@ $messages['sq'] = array(
 	'searchbox-namespaces' => 'Hapësira:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -805,7 +805,7 @@ $messages['sr-ec'] = array(
 	'searchbox-namespaces' => 'Именски простори:',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
