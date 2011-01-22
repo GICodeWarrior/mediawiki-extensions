@@ -125,7 +125,7 @@ Dai inaakò kan mga operador sa site na ini an mga responsibilidad para mga kome
 	'talkhere-collapse' => 'tagôon an editor',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -941,7 +941,7 @@ Prevádzkovatelia tejto stránky nepreberajú zodpovednosť za obsah takýchto k
 	'talkhere-collapse' => 'skryť editor',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -957,7 +957,7 @@ $messages['sr-ec'] = array(
 	'talkhere-collapse' => 'сакриј едитор',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
