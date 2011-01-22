@@ -40,7 +40,7 @@ $messages['ar'] = array(
 	'dontswitchmeover-pref' => 'لا تسمح لواجهتي أن تتغيّر حين تتغيرُ الواجهة المبدئية',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -48,7 +48,7 @@ $messages['ba'] = array(
 	'dontswitchmeover-pref' => 'Ғәҙәттәге күренеш үҙгәргәндән һуң мин һайлаған күренеште үҙгәртмәҫкә',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
  */
@@ -389,6 +389,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author GoEThe
+ * @author Helder.wiki
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -452,7 +453,7 @@ $messages['sl'] = array(
 	'dontswitchmeover-pref' => 'Ne dovoli spremembe moje kože, ko se spremeni privzeta koža',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
