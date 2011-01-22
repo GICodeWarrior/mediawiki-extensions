@@ -58,7 +58,7 @@ $messages['arz'] = array(
 	'mediafunctions-not-exist' => '"$1" غير موجود',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -494,7 +494,7 @@ $messages['sk'] = array(
 	'mediafunctions-not-exist' => '„$1“ neexistuje',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -504,7 +504,7 @@ $messages['sr-ec'] = array(
 	'mediafunctions-not-exist' => 'Датотека „$1“ не постоји',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
