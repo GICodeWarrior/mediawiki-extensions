@@ -58,7 +58,7 @@ $messages['bar'] = array(
 	'userthrottle-desc' => 'Neiãnmöidungen drossln',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -110,7 +110,7 @@ $messages['de'] = array(
 	'acct_creation_global_hard_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warte einen Moment und drücke dann die Neuladen-Schaltfläche an deinem Browser.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
@@ -400,7 +400,7 @@ $messages['sk'] = array(
 	'acct_creation_global_hard_throttle_hit' => 'Tvorba účtov bola na niekoľko sekúnd automaticky vypnutá z dôvodu zabránenia útokom hromadnej registrácie. Prosím, chvíľu počkajte a znovu odošlite formulár stlačením tlačidla „Znovu načítať“ vo vašom prehliadači.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -409,7 +409,7 @@ $messages['sr-ec'] = array(
 Молимо Вас да мало сачекате и притиснете дугме за освежавање у вашем браузеру, да бисте опет послали податке.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -486,9 +486,10 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'userthrottle-desc' => '因受到短時間內大量賬戶登錄的影響，註冊功能被自動暫停。請稍等片刻后重試。',
-	'acct_creation_global_hard_throttle_hit' => '因為受到短時間內註冊大量賬號的攻擊，賬號註冊被自動暫停。請稍等片刻後點擊瀏覽器的“刷新”按鈕重新提交。',
+	'userthrottle-desc' => '因受到短時間內大量帳戶登錄的影響，註冊功能被自動暫停。請稍等片刻後重試。',
+	'acct_creation_global_hard_throttle_hit' => '因為受到短時間內註冊大量帳號的攻擊，帳號註冊被自動暫停。請稍等片刻後點擊瀏覽器的「重新載入」按鈕重新提交。',
 );
 
