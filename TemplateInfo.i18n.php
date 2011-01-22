@@ -53,7 +53,7 @@ $messages['arz'] = array(
 	'templateinfo-header' => 'تعريف XML للقالب ده هو:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
