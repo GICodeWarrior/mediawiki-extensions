@@ -59,7 +59,7 @@ $messages['avk'] = array(
 	'protectsection_forbidden' => 'Poun',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -129,7 +129,7 @@ $messages['de'] = array(
 	'right-protectsection' => 'Abschnitte einer Seite schützen',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  * @author PasO
  */
@@ -567,14 +567,14 @@ $messages['sk'] = array(
 	'right-protectsection' => 'Zamykať sekcie stránky',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'protectsection_forbidden' => 'Забрањено',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'protectsection_forbidden' => 'Zabranjeno',
 );
