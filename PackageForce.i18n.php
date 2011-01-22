@@ -74,7 +74,7 @@ $messages['arc'] = array(
 	'pf-header-approve' => 'ܩܘܒܠܐ',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -734,7 +734,7 @@ $messages['ru'] = array(
 	'pf-header-approve' => 'Утверждение',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -751,7 +751,7 @@ $messages['sr-ec'] = array(
 	'pf-header-approve' => 'Одобри',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'pf-admin-menu-default' => 'Podrazumevano',
 	'pf-admin-menu-unsortedtemplates' => 'Šabloni još uvek nisu sortirani',
