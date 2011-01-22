@@ -51,7 +51,7 @@ $messages['arz'] = array(
 	'wlfeed-desc' => 'رتب توليد تلقيم ممددة',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -291,14 +291,14 @@ $messages['si'] = array(
 	'wlfeed-desc' => 'වර්ධිත සංග්‍රහ ප්‍රවේණි පංති',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'wlfeed-desc' => 'Класе за побољшане фидове',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'wlfeed-desc' => 'Klase za poboljšane fidove',
 );
