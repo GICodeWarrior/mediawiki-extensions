@@ -106,7 +106,7 @@ $messages['be'] = array(
 	'randomincategory-label' => 'Катэгорыя:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -605,7 +605,7 @@ $messages['ksh'] = array(
 	'randomincategory-submit' => 'Loß Jonn!',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -919,7 +919,7 @@ $messages['sk'] = array(
 	'randomincategory-submit' => 'Vykonať',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -933,7 +933,7 @@ $messages['sr-ec'] = array(
 	'randomincategory-submit' => 'Пређи',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
