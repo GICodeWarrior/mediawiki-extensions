@@ -24,7 +24,7 @@ $messages['qqq'] = array(
 	'slimboxthumbs-desc' => '{{desc}}',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
