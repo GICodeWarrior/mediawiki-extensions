@@ -39,7 +39,7 @@ $messages['arz'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحة خاصة]] تعرض صفحة جذر عشوائية',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
