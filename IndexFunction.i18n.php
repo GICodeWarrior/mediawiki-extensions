@@ -124,7 +124,7 @@ $messages['arc'] = array(
 	'index-submit' => 'ܫܕܪ',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -285,7 +285,7 @@ Gib die ersten Zeichen ein und drücke die {{int:index-submit}}-Schaltfläche, u
 Klicke auf den Pfeil, um alle unter diesem Titel indizierten Seiten anzuzeigen.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  * @author The Evil IP address
  */
@@ -1194,7 +1194,7 @@ Napíšte niekoľko prvých znakov a stlačte tlačidlo odoslať. Vyhľadajú sa
 Po kliknutí na šípku sa zobrazia všetky stránky indexované pod daným názvom.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1208,7 +1208,7 @@ $messages['sr-ec'] = array(
 	'index-no-results' => 'Претрага није дала никакве резултате',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'indexfunc-badtitle' => 'Neispravan naslov: "$1"',
 	'index-search' => 'Pretraga:',
