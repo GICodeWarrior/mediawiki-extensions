@@ -205,6 +205,19 @@ Mungkin Anda ingin melihat:
 * [[{{MediaWiki:Mainpage}}|Halaman utama]]',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'special404-desc' => 'Määd_en Sigg för dä Fähler „{{int:Error404}}“ müjjelesch.',
+	'error404' => '404 Nit jefonge',
+	'special404-body' => 'Dä aanjefroochte URL ham_mer nit jefonge.
+
+Wohr velleisch {{fullurl:$1}} jemeint?
+
+Söns kam_mer och de [[{{MediaWiki:Mainpage}}|{{int:Mainpage}}]] bekike.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
