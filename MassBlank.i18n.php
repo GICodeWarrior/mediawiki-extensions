@@ -68,7 +68,7 @@ $messages['be'] = array(
 	'massblank-blankcomment' => 'Прычына:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -148,7 +148,7 @@ Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Se
 	'right-massblank' => 'Massenleerung von Seiten',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
  */
 $messages['de-formal'] = array(
@@ -584,7 +584,7 @@ $messages['sl'] = array(
 	'right-massblank' => 'Množično praznjenje strani',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -593,7 +593,7 @@ $messages['sr-ec'] = array(
 	'massblank-blankcomment' => 'Разлог:',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'massblank-submit-user' => 'Idi',
 	'massblank-blankcomment' => 'Razlog:',
