@@ -482,7 +482,6 @@ $messages['aln'] = array(
 	'configure-section-enotif' => 'Njoftimi me email',
 	'configure-section-localization' => 'Lokalizimi',
 	'configure-section-timezone' => 'Time zone',
-	'configure-section-zh-conversion' => 'konvertimit kineze',
 	'configure-section-debug' => 'Debugging',
 );
 
@@ -589,7 +588,6 @@ $messages['ar'] = array(
 	'configure-section-enotif' => 'إخطار البريد الإلكتروني',
 	'configure-section-localization' => 'ترجمة',
 	'configure-section-timezone' => 'منطقة زمنية',
-	'configure-section-zh-conversion' => 'تحويل صيني',
 	'configure-section-html' => 'إتش تي إم إل',
 	'configure-section-debug' => 'تصليح',
 	'configure-section-profiling' => 'الملف',
@@ -831,7 +829,6 @@ $messages['arz'] = array(
 	'configure-section-enotif' => 'إخطار البريد الإلكتروني',
 	'configure-section-localization' => 'ترجمة',
 	'configure-section-timezone' => 'منطقة زمنية',
-	'configure-section-zh-conversion' => 'تحويل صيني',
 	'configure-section-html' => 'إتش تى إم إل',
 	'configure-section-debug' => 'تصليح',
 	'configure-section-profiling' => 'الملف',
@@ -967,7 +964,7 @@ $messages['be'] = array(
 	'configure-throttle-group' => 'Тып',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Cesco
  * @author EugeneZelenko
  * @author Jim-by
@@ -1836,7 +1833,6 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-section-enotif' => 'E-mailová upozornění',
 	'configure-section-localization' => 'Lokalizace',
 	'configure-section-timezone' => 'Časové pásmo',
-	'configure-section-zh-conversion' => 'Konverze čínštiny',
 	'configure-section-debug' => 'Ladění',
 	'configure-section-profiling' => 'Profilování',
 	'configure-section-site' => 'Přizpůsobení webu',
@@ -2051,7 +2047,6 @@ Du bedes oprette den og og køre configure.sql eller rette navnet.',
 	'configure-section-enotif' => 'Email besked',
 	'configure-section-localization' => 'Oversættelse',
 	'configure-section-timezone' => 'Tidszone',
-	'configure-section-zh-conversion' => 'Kinesisk konvertering',
 	'configure-section-debug' => 'Fejlsøgning',
 	'configure-section-profiling' => 'Profilering',
 	'configure-section-site' => 'Tilpasning af sitet',
@@ -2365,7 +2360,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Liste der für dieses Wiki verfügbaren Erweiterungen]].',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  * @author Imre
  * @author Umherirrender
@@ -3651,7 +3646,6 @@ $messages['frp'] = array(
 	'configure-section-enotif' => 'Notificacion per mèssageria èlèctronica',
 	'configure-section-localization' => 'Localisacion',
 	'configure-section-timezone' => 'Zona horèra',
-	'configure-section-zh-conversion' => 'Convèrsion du ch·inouès',
 	'configure-section-debug' => 'Èliminacion de les cofieries',
 	'configure-section-site' => 'Pèrsonalisacion du seto',
 	'configure-section-css-js' => 'CSS et JavaScript',
@@ -3768,7 +3762,7 @@ $messages['ga'] = array(
 	'configure-section-recentchanges' => 'Athruithe is déanaí',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -4536,7 +4530,6 @@ Molimo stvorite ju ili promijenite za korištenje ekstenzije.',
 	'configure-section-enotif' => 'E-mail obavijest',
 	'configure-section-localization' => 'Lokalizacija',
 	'configure-section-timezone' => 'Vremenska zona',
-	'configure-section-zh-conversion' => 'Kineska pretvorba',
 	'configure-section-debug' => 'Otkrivanje grešaka',
 	'configure-section-profiling' => 'Profiliranje',
 	'configure-section-site' => 'Prilagodba projekta',
@@ -4859,7 +4852,6 @@ Készítsd el, vagy változtasd meg a kiterjesztés használatához.',
 	'configure-section-enotif' => 'Értesítés e-mailben',
 	'configure-section-localization' => 'Lokalizáció',
 	'configure-section-timezone' => 'Időzóna',
-	'configure-section-zh-conversion' => 'Kínai átalakítása',
 	'configure-section-debug' => 'Hibakeresés',
 	'configure-section-profiling' => 'Futásidő-analizálás',
 	'configure-section-site' => 'Az oldal beállításai',
@@ -5479,7 +5471,6 @@ Assegnare a PHP il diritto di scrittura su di essa per utilizzare questa estensi
 	'configure-section-enotif' => 'Notifica via e-mail',
 	'configure-section-localization' => 'Localizzazione',
 	'configure-section-timezone' => 'Fuso orario',
-	'configure-section-zh-conversion' => 'Conversione cinese',
 	'configure-section-debug' => 'Debugging',
 	'configure-section-profiling' => 'Profiling',
 	'configure-section-site' => 'Personalizzazione del sito',
@@ -6136,7 +6127,6 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-section-enotif' => 'Noheschte övver de <i lang="en">e-mail</i>',
 	'configure-section-localization' => 'Shprooche, un Enshtellunge för en Jääjend',
 	'configure-section-timezone' => 'Zickzon',
-	'configure-section-zh-conversion' => 'Ömwandlunge för et Shineesesche',
 	'configure-section-debug' => 'Fähler Söke',
 	'configure-section-profiling' => 'Et <i lang="en">Profiling</i>',
 	'configure-section-site' => 'Aanpassunge för de Webßait',
@@ -6266,7 +6256,7 @@ $messages['ku-latn'] = array(
 	'configure-condition-operator-and' => 'Û',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -6562,7 +6552,6 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-enotif' => 'E-mailberichte',
 	'configure-section-localization' => 'Lokalisatie',
 	'configure-section-timezone' => 'Tiedzone',
-	'configure-section-zh-conversion' => 'Chinese conversie',
 	'configure-section-debug' => 'Debugge',
 	'configure-section-profiling' => 'Profilen',
 	'configure-section-site' => 'Aanpassinge aan de site',
@@ -7166,7 +7155,6 @@ $messages['mr'] = array(
 	'configure-section-enotif' => 'इ-मेल नोटिफिकेशन',
 	'configure-section-localization' => 'स्थानिकीकरण',
 	'configure-section-timezone' => 'वेळक्षेत्र',
-	'configure-section-zh-conversion' => 'चिनी लिप्यंतरण',
 	'configure-section-debug' => 'डिबगिंग',
 	'configure-section-profiling' => 'प्रोफिलिंग',
 	'configure-section-site' => 'संकेतस्थळ कस्टमायझेशन',
@@ -7576,7 +7564,6 @@ Opprett ho eller endra ho for å nytta denne utvidinga.',
 	'configure-section-enotif' => 'E-postvarsling',
 	'configure-section-localization' => 'Omsetjing',
 	'configure-section-timezone' => 'Tidssona',
-	'configure-section-zh-conversion' => 'Kinesisk konvertering',
 	'configure-section-html' => 'HTML',
 	'configure-section-debug' => 'Feilsøkjing',
 	'configure-section-profiling' => 'Profilering',
@@ -7957,7 +7944,6 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-section-enotif' => 'Notificacion per corrièr electronic',
 	'configure-section-localization' => 'Localizacion',
 	'configure-section-timezone' => 'Zòna orària',
-	'configure-section-zh-conversion' => 'Conversion del Chinés',
 	'configure-section-html' => 'HTML',
 	'configure-section-debug' => 'Debogatge',
 	'configure-section-profiling' => 'Perfilatge',
@@ -8133,7 +8119,6 @@ $messages['pa'] = array(
 	'configure-section-enotif' => 'ਈਮੇਲ ਨੋਟੀਫਿਕੇਸ਼ਨ',
 	'configure-section-localization' => 'ਲੋਕਲਾਈਜੇਸ਼ਨ',
 	'configure-section-timezone' => 'ਸਮਾਂ ਖੇਤਰ',
-	'configure-section-zh-conversion' => 'ਚੀਨੀ ਗਲਬਾਤ',
 	'configure-section-stats' => 'ਸਾਈਟ ਅੰਕੜੇ',
 	'configure-section-skin' => 'ਸਕਿਨ',
 	'configure-section-vector' => 'ਵੈਕਟਰ ਸਕਿਨ',
@@ -8188,7 +8173,7 @@ $messages['pdc'] = array(
 	'configure-condition-operator-and' => 'Unn',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -9079,7 +9064,6 @@ $messages['ro'] = array(
 	'configure-section-enotif' => 'Notificare e-mail',
 	'configure-section-localization' => 'Localizare',
 	'configure-section-timezone' => 'Fus orar',
-	'configure-section-zh-conversion' => 'Conversie în chineză',
 	'configure-section-debug' => 'Depanare',
 	'configure-section-site' => 'Personalizarea site-ului',
 	'configure-section-css-js' => 'CSS și JavaScript',
@@ -9541,7 +9525,6 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-section-enotif' => 'Upozornenie emailom',
 	'configure-section-localization' => 'Lokalizácia',
 	'configure-section-timezone' => 'Časové pásmo',
-	'configure-section-zh-conversion' => 'Konverzia čínštiny',
 	'configure-section-debug' => 'Ladenie',
 	'configure-section-profiling' => 'Profilovanie',
 	'configure-section-site' => 'Prispôsobenie lokality',
@@ -10002,7 +9985,7 @@ $messages['sr-ec'] = array(
 	'configure-boolop-description-not' => 'Ни један од услова не сме бити истинит',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  * @author Михајло Анђелковић
@@ -10217,7 +10200,6 @@ $messages['stq'] = array(
 	'configure-section-enotif' => 'E-Mail Bescheed',
 	'configure-section-localization' => 'Lokalisierenge',
 	'configure-section-timezone' => 'Tiedzone',
-	'configure-section-zh-conversion' => 'Chinesisk-Konvertierenge',
 	'configure-section-html' => 'HTML',
 	'configure-section-debug' => 'Debugging',
 	'configure-section-profiling' => 'Profiling',
@@ -10384,7 +10366,6 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-enotif' => 'E-postbesked',
 	'configure-section-localization' => 'Lokalisering',
 	'configure-section-timezone' => 'Tidszon',
-	'configure-section-zh-conversion' => 'Kinesisk konvertering',
 	'configure-section-debug' => 'Avlusning',
 	'configure-section-profiling' => 'Profilering',
 	'configure-section-site' => 'Anpassning av sajten',
@@ -10715,7 +10696,6 @@ Pakilikha ito o baguhin ito upang magamit ang ganitong karugtong.',
 	'configure-section-enotif' => 'Pagbibigay-alam sa pamamagitan ng e-liham',
 	'configure-section-localization' => 'Pagsasapook',
 	'configure-section-timezone' => 'Sona ng oras',
-	'configure-section-zh-conversion' => 'Pagpapalitang Intsik',
 	'configure-section-debug' => 'Pagtatanggal ng depekto',
 	'configure-section-profiling' => 'Pagtatala ng katangian',
 	'configure-section-site' => 'Pagpapasadya ng sityo',
@@ -10902,7 +10882,6 @@ Lütfen bu eklentiyi kullanmak için PHP ile dizini yazılabilir hale getirin.',
 	'configure-section-enotif' => 'E-posta uyarısı',
 	'configure-section-localization' => 'Yerelleştirme',
 	'configure-section-timezone' => 'Zaman dilimi',
-	'configure-section-zh-conversion' => 'Çince dönüşümü',
 	'configure-section-profiling' => 'Profil',
 	'configure-section-site' => 'Site kişiselleştirme',
 	'configure-section-css-js' => 'CSS ve JavaScript',
@@ -11069,7 +11048,6 @@ $messages['ug-arab'] = array(
 	'configure-section-enotif' => 'ئېلخەت ئۇقتۇرۇشى',
 	'configure-section-localization' => 'يەرلىكلەشتۈرۈش',
 	'configure-section-timezone' => 'ۋاقىت رايونى',
-	'configure-section-zh-conversion' => 'خەنچە ئايلاندۇرۇش',
 	'configure-section-debug' => 'سازلاش',
 	'configure-section-site' => 'بېكەت ئىختىيارىيلاشتۇرۇش',
 	'configure-section-css-js' => 'CSS ۋە JavaScript',
@@ -11179,7 +11157,6 @@ $messages['uk'] = array(
 	'configure-section-enotif' => 'Повідомлення електронною поштою',
 	'configure-section-localization' => 'Локалізація',
 	'configure-section-timezone' => 'Часовий пояс',
-	'configure-section-zh-conversion' => 'Перетворення для китайської мови',
 	'configure-section-html' => 'HTML',
 	'configure-section-debug' => 'Налагодження',
 	'configure-section-profiling' => 'Профілювання',
@@ -11369,7 +11346,6 @@ Xin hãy khởi tạo hoặc thay đổi nó để dùng được phần mở r�
 	'configure-section-enotif' => 'Thông báo có thư',
 	'configure-section-localization' => 'Ngôn ngữ',
 	'configure-section-timezone' => 'Múi giờ',
-	'configure-section-zh-conversion' => 'Chuyển đổi tiếng Trung',
 	'configure-section-debug' => 'Gỡ rối',
 	'configure-section-profiling' => 'Phân loại thành viên',
 	'configure-section-site' => 'Tinh chỉnh trang',
