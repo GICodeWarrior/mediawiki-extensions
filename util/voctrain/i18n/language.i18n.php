@@ -577,7 +577,7 @@ $messages['bcc'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'ارزشانء گون کاما دورا کنیت په استفاده کتن چه چنت زبان.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
  */
@@ -2312,7 +2312,7 @@ $messages['ku-latn'] = array(
 	'voctrain_other' => 'yên din',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -3288,6 +3288,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Helder.wiki
  * @author Heldergeovane
  * @author Malafaya
  * @author Waldir
@@ -3361,6 +3362,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Helder.wiki
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
