@@ -495,7 +495,7 @@ $messages['de'] = array(
 	'wah-api-error' => 'Es ist ein Fehler mit dem API aufgetreten. Bitte versuche es später noch einmal.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  * @author Imre
  */
