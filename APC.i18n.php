@@ -6059,8 +6059,9 @@ $messages['sr-ec'] = array(
 	'viewapc-usercache-cleared' => "'''''Међумеморија програма је очишћена.'''''",
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'viewapc-apc-not-available' => 'Nema informacija o kešu.
@@ -6103,7 +6104,7 @@ Izgleda da APC na radi.',
 	'viewapc-fragmentation-none' => 'Fragmentacija: nema je',
 	'viewapc-display-attribute' => 'Atribut',
 	'viewapc-display-value' => 'Vrednost',
-	'viewapc-display-filename' => 'Naziv fajla',
+	'viewapc-display-filename' => 'Naziv datoteke',
 	'viewapc-display-device' => 'Uređaj',
 	'viewapc-display-info' => 'Ime',
 	'viewapc-display-ttl' => 'Vreme isteka',
