@@ -89,7 +89,7 @@ $messages['arz'] = array(
 	'discussionthreading-threadnewsectionhint' => 'بدء مجموعة رسائل جديدة',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -443,7 +443,7 @@ $messages['ksh'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Ene neue Fäddem aanfange',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -644,7 +644,7 @@ $messages['sk'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Začať nové vlákno',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -653,7 +653,7 @@ $messages['sr-ec'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Започни нову тему',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'discussionthreading-replysection' => 'odgovori',
 	'discussionthreading-threadnewsection' => 'novo',
