@@ -107,7 +107,7 @@ $messages['gsw'] = array(
 	'spm_printername_wbs' => '„MS Project“-Export',
 	'spm-name' => 'Semantic Project Management',
 	'semanticprojectmanagement-desc' => 'Projäktmanagement-Format fir Semantic MediaWiki inline-Abfroge',
-	'semanticprojectmanagement' => 'Semantisch Projäktmanagement',
+	'semanticprojectmanagement' => 'Yystellige zum Semantische Projäktmanagement',
 	'right-SPMsetup' => 'Di grundlegende Yystellige vum Semantische Projäktmanagement bearneite',
 );
 
