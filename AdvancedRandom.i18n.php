@@ -79,7 +79,7 @@ $messages['avk'] = array(
 	'advancedrandom' => 'Xuyavapon',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -88,7 +88,7 @@ $messages['ba'] = array(
 Осраҡлы һайланған мәҡләне алыр өсөн [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] миҫалындағы һымаҡ, йәки осраҡлы GFDL-файлды алыр өсөн [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] миҫалындағы һымаҡ ҡулланыла ала',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -630,7 +630,7 @@ $messages['sk'] = array(
 Je možné ho použiť na získanie náhodného odporúčaného článku v tvare [[{{#special:advancedrandom}}/{{ns:template}}:Odporúčané/{{ns:talk}}]] alebo na získanie náhodného GFDL súboru v tvare [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -640,7 +640,7 @@ $messages['sr-ec'] = array(
 Може да се користи као [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] да би се добила страница која укључује наведени шаблон, или слично [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], итд.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -780,5 +780,12 @@ $messages['zh-hant'] = array(
 	'advancedrandom' => '進階隨機',
 	'advancedrandom-desc' => '凡是有子頁面或討論頁的，都可以用此功能來隨機展示。例如按下[[{{#special:advancedrandom}}/{{ns:template}}:特色條目/{{ns:talk}}]]這個連結，就可以隨機展示特色條目；
 又或按下[[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]這個連結，就可以隨機得到一個GFDL檔案。',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'advancedrandom' => '進階隨機',
 );
 
