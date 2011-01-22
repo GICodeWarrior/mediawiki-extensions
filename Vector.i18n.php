@@ -128,7 +128,7 @@ $messages['arz'] = array(
 	'vector-simplesearch-containing' => 'جوّاه...',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -167,7 +167,7 @@ $messages['be'] = array(
 	'vector-simplesearch-containing' => 'змяшчае...',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -413,7 +413,7 @@ Als angemeldeter Benutzer kann das Anzeigen dieser Warnung im „Bearbeiten“-B
 	'vector-simplesearch-containing' => 'Volltextsuche nach …',
 );
 
-/** German (formal address) (Deutsch (Sie-Form)) */
+/** German (formal address) (‪Deutsch (Sie-Form)‬) */
 $messages['de-formal'] = array(
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass Ihre Änderungen verloren gehen.
 Wenn Sie angemeldet sind, können Sie das Anzeigen dieser Warnung im „Bearbeiten“-Bereich Ihrer Einstellungen abschalten.',
@@ -593,7 +593,7 @@ Se vos éte branchiê, vos pouede enlevar ceti avèrtissement dens la sèccion �
 	'vector-simplesearch-containing' => 'que contint...',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -922,7 +922,7 @@ $messages['ku-latn'] = array(
 	'vector-simplesearch-containing' => 'dihundirîne...',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -1416,7 +1416,7 @@ $messages['sq'] = array(
 	'vector-simplesearch-containing' => 'përmban ...',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Helios13
  * @author Жељко Тодоровић
  */
@@ -1428,7 +1428,7 @@ $messages['sr-ec'] = array(
 	'vector-simplesearch-containing' => 'садржи...',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
@@ -1670,6 +1670,7 @@ Tó bá jẹ́ pé ẹ ti wọlé, ẹ lè dẹ́kun ìkìlọ̀ yìí nínù ab
 
 /** Cantonese (粵語)
  * @author Horacewai2
+ * @author Waihorace
  */
 $messages['yue'] = array(
 	'vector' => '對於Vector嘅界面改進',
@@ -1706,13 +1707,13 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'vector' => 'Vector用戶界面改進',
-	'vector-desc' => '改進Vector皮膚中的用戶界面元素。',
+	'vector' => 'Vector 使用者介面改進',
+	'vector-desc' => '改進 Vector 外觀中的使用者介面元素。',
 	'vector-collapsiblenav-preference' => '在 Vector 外觀的導覽選單中摺疊項目',
 	'vector-collapsiblenav-more' => '更多語言',
 	'vector-editwarning-warning' => '離開這個頁面可能會令您失去之前的所有更改。
-若您已經登入，您可在您參數設置的“編輯”節中關閉此警告。',
-	'vector-editwarning-preference' => '當我在更改未保存時離開頁面時警告我',
+若您已經登入，您可在您偏好設定的「編輯」節中關閉此警告。',
+	'vector-editwarning-preference' => '當我在更改未儲存時離開頁面時警告我',
 	'vector-simplesearch-search' => '搜尋',
 	'vector-simplesearch-containing' => '包含...',
 );
