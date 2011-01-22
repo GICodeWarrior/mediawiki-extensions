@@ -68,16 +68,16 @@ $messages['qqq'] = array(
 Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a prototype installation.',
 	'articlefeedback-desc' => '{{desc}}',
 	'articlefeedback-survey-question-whyrated' => 'This is a question in the survey with checkboxes for the answers. The user can check multiple answers.',
-	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-development' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-didntrate' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
-	'articlefeedback-survey-answer-whyrated-other' => 'This is a possible answer for the "Why did you rate this page today?" survey question. The user can check this to fill out an answer that wasn\'t provided as a checkbox.
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-development' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articlefeedback-survey-answer-whyrated-other' => 'This is a possible answer for the "Why did you rate this article today?" survey question. The user can check this to fill out an answer that wasn\'t provided as a checkbox.
 {{Identical|Other}}',
 	'articlefeedback-survey-question-useful' => 'This is a question in the survey with "yes" and "no" (prefswitch-survey-true and prefswitch-survey-false) as possible answers.',
 	'articlefeedback-survey-question-useful-iffalse' => 'This question appears when the user checks "no" for the "Do you believe the ratings provided are useful and clear?" question. The user can enter their answer in a text box.',
-	'articlefeedback-survey-question-expert' => 'This is a possible answer for the "Why did you rate this page today?" survey question.',
+	'articlefeedback-survey-question-expert' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
 	'articlefeedback-survey-question-expert-iftrue' => 'This question appears when the user checks "no" for the "Do you consider yourself an expert?" question. The user can enter their answer in a text box.',
 	'articlefeedback-survey-question-comments' => 'This is a question in the survey with a text box that the user can enter their answer in.',
 	'articlefeedback-survey-submit' => 'This is the caption for the button that submits the survey.
@@ -156,7 +156,14 @@ $messages['ar'] = array(
 	'articlefeedback-pitch-makefirstedit-accept' => 'بدء التحرير',
 );
 
-/** Bashkir (Башҡорт)
+/** Aramaic (ܐܪܡܝܐ) */
+$messages['arc'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'ܐܚܪܢܐ',
+	'articlefeedback-survey-question-useful-iffalse' => 'ܠܡܢܐ?',
+	'articlefeedback-survey-submit' => 'ܫܕܪ',
+);
+
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -203,7 +210,7 @@ $messages['ba'] = array(
 	'articlefeedback-pitch-makefirstedit-accept' => 'Үҙгәртә башларға',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -442,14 +449,11 @@ $messages['cs'] = array(
 	'articlefeedback-survey-thanks' => 'Děkujeme za vyplnění průzkumu.',
 	'articlefeedback-form-panel-instructions' => 'Věnujte prosím chvilku ohodnocení této stránky.',
 	'articlefeedback-report-switch-label' => 'Zobrazit výsledky',
-	'articlefeedback-field-wellsourced-label' => 'Podloženost',
-	'articlefeedback-field-wellsourced-tip' => 'Máte pocit, že tato stránka dostatečně odkazuje na zdroje a použité zdroje jsou důvěryhodné?',
+	'articlefeedback-field-trustworthy-tip' => 'Máte pocit, že tato stránka dostatečně odkazuje na zdroje a použité zdroje jsou důvěryhodné?',
 	'articlefeedback-field-complete-label' => 'Úplnost',
 	'articlefeedback-field-complete-tip' => 'Máte pocit, že tato stránka pokrývá všechny důležité části tématu?',
-	'articlefeedback-field-neutral-label' => 'Nezaujatost',
-	'articlefeedback-field-neutral-tip' => 'Máte pocit, že tato stránka spravedlivě pokrývá všechny pohledy na dané téma?',
-	'articlefeedback-field-readable-label' => 'Čtivost',
-	'articlefeedback-field-readable-tip' => 'Máte pocit, že tato stránka je správně organizována a dobře napsána?',
+	'articlefeedback-field-unbiased-tip' => 'Máte pocit, že tato stránka spravedlivě pokrývá všechny pohledy na dané téma?',
+	'articlefeedback-field-wellwritten-tip' => 'Máte pocit, že tato stránka je správně organizována a dobře napsána?',
 );
 
 /** German (Deutsch)
@@ -500,7 +504,7 @@ $messages['de'] = array(
 	'articlefeedback-pitch-makefirstedit-accept' => 'Bearbeiten',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Catrope
  * @author Kghbln
  */
@@ -512,6 +516,12 @@ $messages['de-formal'] = array(
 	'articlefeedback-survey-question-comments' => 'Haben Sie noch weitere Anmerkungen?',
 	'articlefeedback-survey-title' => 'Bitte beantworten Sie uns ein paar Fragen',
 	'articlefeedback-survey-thanks' => 'Vielen Dank für Ihre Rückmeldung.',
+	'articlefeedback-field-trustworthy-tip' => 'Haben Sie den Eindruck, dass dieser Artikel über genügend Quellenangaben verfügt und diese zudem aus vertrauenswürdigen Quellen stammen?',
+	'articlefeedback-field-complete-tip' => 'Haben Sie den Eindruck, dass dieser Artikel alle wichtigen Aspekte enthält, die mit dessen Inhalt zusammenhängen?',
+	'articlefeedback-field-unbiased-tip' => 'Haben Sie den Eindruck, dass dieser Artikel eine ausgewogene Darstellung aller mit dessen Inhalt verbundenen Aspekte enthält?',
+	'articlefeedback-pitch-takesurvey-title' => 'Möchten Sie an einer Umfrage teilnehmen?',
+	'articlefeedback-pitch-createaccount-title' => 'Möchten Sie ein Benutzerkonto erstellen?',
+	'articlefeedback-pitch-makefirstedit-title' => 'Möchten Sie diesen Artikel bearbeiten?',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -536,6 +546,25 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'articlefeedback' => 'Αξιολόγηση Άρθρου',
 	'articlefeedback-desc' => 'Αξιολόγηση Άρθρου (πιλοτική έκδοση)',
+	'articlefeedback-survey-question-whyrated' => 'Bonvolu informigi nin  kial vi taksis ĉi tiun paĝon hodiaŭ (marku ĉion taŭgan):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Mi volis kontribui al la suma taksado de la paĝo',
+	'articlefeedback-survey-answer-whyrated-development' => 'Mi esperas ke mia takso pozitive influus la disvolvadon de la paĝo',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Mi volis kontribui al {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Plaĉas al mi doni mian opinion.',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Mi ne provizas taksojn hodiaŭ, se volis doni komentojn pri la ilo',
+	'articlefeedback-survey-answer-whyrated-other' => 'Alia',
+	'articlefeedback-survey-question-useful' => 'Ĉu vi konsideras ke la taksoj provizitaj estas utilaj kaj klara?',
+	'articlefeedback-survey-question-useful-iffalse' => 'Kial?',
+	'articlefeedback-survey-question-expert' => 'Ĉu vi konsideras ke vi mem estas spertulo en la fako kiu tiun paĝo temas?',
+	'articlefeedback-survey-question-expert-iftrue' => 'Bonvolu priskribi vian fako-sperton',
+	'articlefeedback-survey-question-comments' => 'Ĉu vi havas iujn suplementajn komentojn?',
+	'articlefeedback-survey-submit' => 'Enigi',
+	'articlefeedback-survey-title' => 'Bonvolu respondi al kelkaj demandoj',
+	'articlefeedback-survey-thanks' => 'Dankon pro plenumante la enketon.',
+);
+
+/** Esperanto (Esperanto) */
+$messages['eo'] = array(
 	'articlefeedback' => 'Takso de artikolo',
 	'articlefeedback-desc' => 'Artikola takso (testa versio)',
 	'articlefeedback-survey-question-whyrated' => 'Bonvolu informigi nin  kial vi taksis ĉi tiun paĝon hodiaŭ (marku ĉion taŭgan):',
@@ -1435,6 +1464,13 @@ $messages['ms'] = array(
 	'articlefeedback-survey-submit' => 'Максомс',
 );
 
+/** Erzya (Эрзянь) */
+$messages['myv'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'Лия',
+	'articlefeedback-survey-question-useful-iffalse' => 'Мезекс?',
+	'articlefeedback-survey-submit' => 'Максомс',
+);
+
 /** Dutch (Nederlands)
  * @author Catrope
  * @author Siebrand
@@ -2215,7 +2251,6 @@ $messages['yo'] = array(
 	'articlefeedback-form-panel-instructions' => '请花些时间为这个条目打分',
 	'articlefeedback-form-panel-submit' => '上载意见',
 	'articlefeedback-field-complete-label' => '完成',
-	'articlefeedback-field-neutral-label' => '中立',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
