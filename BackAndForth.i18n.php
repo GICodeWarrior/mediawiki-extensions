@@ -110,7 +110,7 @@ $messages['az'] = array(
 	'backforth-prev' => 'Əvvəlki ($1)',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Comp1089
  */
 $messages['ba'] = array(
@@ -136,7 +136,7 @@ $messages['bcl'] = array(
 	'backforth-prev' => 'Nakaagi ($1)',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -553,7 +553,7 @@ $messages['ksh'] = array(
 	'backforth-prev' => 'Förije ($1)',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -738,7 +738,7 @@ $messages['pdc'] = array(
 	'backforth-prev' => 'Letscht ($1)',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -876,7 +876,7 @@ $messages['sl'] = array(
 	'backforth-prev' => 'Prejšnja ($1)',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -886,7 +886,7 @@ $messages['sr-ec'] = array(
 	'backforth-prev' => 'Претходно ($1)',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
