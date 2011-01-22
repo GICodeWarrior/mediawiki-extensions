@@ -47,7 +47,7 @@ $messages['ar'] = array(
 	'right-getfamily' => 'أنشأ ملف عائلة لpywikipediabot',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -96,7 +96,7 @@ $messages['de'] = array(
 	'right-getfamily' => 'Eine Familiendatei für pywikipediabot erstellen',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
