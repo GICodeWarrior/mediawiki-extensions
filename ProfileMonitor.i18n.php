@@ -107,7 +107,7 @@ $messages['arz'] = array(
 	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -915,7 +915,7 @@ $messages['sk'] = array(
 	'profiling-no-data' => 'Neboli nájdené vyhovujúce údaje.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -928,7 +928,7 @@ $messages['sr-ec'] = array(
 	'profiling-data-average' => 'Време (средње)',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'profiling-process' => 'Obradi string:',
 	'profiling-ok' => 'OK',
