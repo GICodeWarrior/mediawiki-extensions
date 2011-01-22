@@ -264,7 +264,7 @@ $messages['be'] = array(
 	'crosswikiunblock-reason' => 'Прычына:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -589,7 +589,7 @@ Zurück zu:
 	'right-crosswikiblock' => 'Benutzer auf anderen Wikis sperren oder entsperren',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -2491,7 +2491,7 @@ $messages['sl'] = array(
 	'crosswikiunblock-reason' => 'Razlog:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -2508,7 +2508,7 @@ $messages['sr-ec'] = array(
 	'crosswikiblock-noblock' => 'Овај корисник није блокиран.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
