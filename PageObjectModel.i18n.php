@@ -19,7 +19,7 @@ $messages['qqq'] = array(
 	'pageobjectmodel-desc' => '{{desc}}',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
