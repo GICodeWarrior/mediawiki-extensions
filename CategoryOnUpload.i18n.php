@@ -73,7 +73,7 @@ $messages['az'] = array(
 	'categoryonupload-label' => 'Kateqoriya:',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -96,7 +96,7 @@ $messages['be'] = array(
 	'categoryonupload-label' => 'Катэгорыя:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -409,7 +409,7 @@ $messages['ksh'] = array(
 	'categoryonupload-none' => '-',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -650,7 +650,7 @@ $messages['sl'] = array(
 	'categoryonupload-label' => 'Kategorija:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -658,7 +658,7 @@ $messages['sr-ec'] = array(
 	'categoryonupload-label' => 'Категорија:',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
