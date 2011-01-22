@@ -55,7 +55,7 @@ $messages['arz'] = array(
 	'cspammer-log-page' => 'سجل تعليق السبام',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -140,7 +140,7 @@ Die Seite wurde nicht gespeichert.
 	'cspammer-log-page' => 'Kommentar-Spammer Logbuch',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
