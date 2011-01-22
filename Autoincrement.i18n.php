@@ -27,7 +27,7 @@ $messages['ar'] = array(
 	'autoincrement-desc' => 'خطاف متغير يضيف المتغير الزائد تلقائيا <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -337,7 +337,7 @@ $messages['sl'] = array(
 	'autoincrement-desc' => 'Spremenljiva priponka, ki doda samodejno naraščajočo spremenljivko <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -345,7 +345,7 @@ $messages['sr-ec'] = array(
 	'autoincrement-desc' => 'Закачка која додаје самоувећавајућу променљиву <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
@@ -408,6 +408,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Waihorace
  */
 $messages['zh-hant'] = array(
 	'autoincrement-desc' => '堵加<nowiki>{{AUTOINCREMENT}}</nowiki>變量。',
