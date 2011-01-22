@@ -48,7 +48,7 @@ $messages['az'] = array(
 	'randomimage-desc' => '<code>&lt;randomimage /&gt;</code> vasitəsilə təsadüfi media seçimi etmək imkanı verir',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -367,14 +367,14 @@ $messages['sq'] = array(
 	'randomimage-desc' => 'Mundëson hapje të rastësishme të mediave duke përdorur <code>&lt;randomimage /&gt;</code>',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'randomimage-desc' => 'Приказује случајно изабрану слику помоћу тага <code>&lt;randomimage /&gt;</code>',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
