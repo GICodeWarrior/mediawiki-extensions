@@ -44,7 +44,7 @@ $messages['arz'] = array(
 	'emailaddressimage-desc' => 'يضيف <code>&lt;email&gt;</code> لعرض عنوان بريد إلكترونى كصورة',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -262,7 +262,7 @@ $messages['ksh'] = array(
 	'emailaddressimage-desc' => '<tt> &lt;email&gt; </tt> määt et müjjelesch, <i lang="en">e-mail</i> Addresse als e Belldsche ußzejävve.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -438,14 +438,14 @@ $messages['sq'] = array(
 	'emailaddressimage-desc' => 'Vendosë kodin <code>&lt;email&gt;</code> që të paraqesë adresën e postës elektronike si figurë',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'emailaddressimage-desc' => 'Додаје <code>&lt;email&gt;</code> таг, за приказивање имејл адреса као слика',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
