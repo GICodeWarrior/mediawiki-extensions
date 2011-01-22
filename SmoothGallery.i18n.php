@@ -95,7 +95,7 @@ $messages['arz'] = array(
 	'smoothgallery-javascript-disabled' => 'الجافاسكريبت مطلوب لرؤية هذا المعرض جيدا.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -209,7 +209,7 @@ $messages['de'] = array(
 	'smoothgallery-javascript-disabled' => 'JavaScript wird benötigt, um die Galerie darzustellen.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -846,7 +846,7 @@ Uistite sa, že {{PLURAL:$3|požadovaný obrázok existuje|všetky požadované 
 	'smoothgallery-javascript-disabled' => 'Správne zobrazenie tejto galérie vyžaduje JavaScript.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -867,7 +867,7 @@ $messages['sr-ec'] = array(
 	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан да би се галерија нормално приказала.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
