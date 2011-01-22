@@ -242,7 +242,7 @@ $messages['avk'] = array(
 	'badimages-page' => '{{ns:help}}:Ewaveemaj',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -306,7 +306,7 @@ $messages['be'] = array(
 	'badimages-reason' => 'Прычына:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -595,7 +595,7 @@ $messages['de'] = array(
 	'right-badimages' => 'Liste der unerwünschten Bilder aktualisieren',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
@@ -2345,7 +2345,7 @@ $messages['sr'] = array(
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -2374,7 +2374,7 @@ $messages['sr-ec'] = array(
 	'right-badimages' => 'Ажурирање списка лоших слика',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2875,6 +2875,7 @@ $messages['zh-hans'] = array(
  * @author Liangent
  * @author Mark85296341
  * @author Shinjiman
+ * @author Waihorace
  */
 $messages['zh-hant'] = array(
 	'badimages' => '損壞圖像列表',

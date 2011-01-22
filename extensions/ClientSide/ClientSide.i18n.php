@@ -34,14 +34,14 @@ $messages['ar'] = array(
 	'clientside-desc' => 'يوفر دوال لتوليد كود في صيغ تابعة للعميل مثل HTML، CSS وجافاسكريبت',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
 	'clientside-desc' => 'HTML, CSS һәм JavaScript һымаҡ клиент форматтарында код булдырыу функцияляры менән тәьмин итә.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -400,14 +400,14 @@ $messages['sl'] = array(
 	'clientside-desc' => 'Zagotavlja funkcije za ustvarjanje kode v oblikah odjemalske strani, kot so HTML, CSS in JavaScript',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Обрадовић Горан
  */
 $messages['sr-ec'] = array(
 	'clientside-desc' => 'Пружа функције за генерисање кода у форматима који раде на страни клијента као што су HTML, CSS и JavaScript',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

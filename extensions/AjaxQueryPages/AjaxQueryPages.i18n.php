@@ -56,14 +56,14 @@ $messages['az'] = array(
 	'ajaxquerypages-desc' => 'Sorğu səhifələrinə bəzi AJAX-lar əlavə edir, məsələn, [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
 	'ajaxquerypages-desc' => 'Ҡайһы бер биттәргә AJAX өҫтәй, мәҫәлән — [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -355,7 +355,7 @@ $messages['ksh'] = array(
 	'ajaxquerypages-desc' => 'Deit jet AJAX dobei en Sigge met Leßte, wi zem Beispöll en de [[Special:Shortpages|{{int:shortpages}}]].',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -588,14 +588,14 @@ $messages['sl'] = array(
 	'ajaxquerypages-desc' => 'Doda nekaj Ajaxa stranem s poizvedbami, kot je [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'ajaxquerypages-desc' => 'AJAX додаци за стране претрага попут [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -709,6 +709,13 @@ $messages['zh-hans'] = array(
  * @author Alex S.H. Lin
  */
 $messages['zh-hant'] = array(
+	'ajaxquerypages-desc' => '在查詢頁面（如[[Special:Shortpages]]）加入AJAX',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
 	'ajaxquerypages-desc' => '在查詢頁面（如[[Special:Shortpages]]）加入AJAX',
 );
 

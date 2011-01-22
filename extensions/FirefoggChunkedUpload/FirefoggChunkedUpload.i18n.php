@@ -19,7 +19,7 @@ $messages['qqq'] = array(
 	'firefoggcu-desc' => '{{desc}}',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -252,14 +252,14 @@ $messages['ru'] = array(
 	'firefoggcu-desc' => 'Порционный протокол загрузки Firefogg',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
 	'firefoggcu-desc' => 'Firefogg-ов протокол отпремања',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'firefoggcu-desc' => 'Firefogg-ov protokol otpremanja',
 );

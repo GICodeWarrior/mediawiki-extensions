@@ -12,7 +12,7 @@ $messages['en'] = array(
 	'proxyconnect-desc' => 'Implements the server side functionality of Proxy Connect',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(

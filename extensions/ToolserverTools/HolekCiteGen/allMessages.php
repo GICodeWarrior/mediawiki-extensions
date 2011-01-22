@@ -144,7 +144,7 @@ $messages['ar'] = array(
 	'ts-citegen-Errors-title' => 'أخطاء',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
  */

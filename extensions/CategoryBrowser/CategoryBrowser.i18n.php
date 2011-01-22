@@ -154,7 +154,7 @@ $messages['az'] = array(
 	'cb_and_op' => 'və',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -193,7 +193,7 @@ $messages['ba'] = array(
 	'cb_edit_paste_right_hint' => 'Әгәр мөмкин булһа, операторҙы киләһе урынға өҫтәргә',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1241,7 +1241,7 @@ $messages['pdc'] = array(
 	'cb_next_items_link' => 'Neegschte',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(

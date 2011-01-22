@@ -33,7 +33,7 @@ $messages['ar'] = array(
 	'filepagemasking-desc' => 'يعيد كتابة ".xxx" إلى "_xxx" في وصلات صفحات وصف الملفات',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -304,14 +304,14 @@ $messages['sk'] = array(
 	'filepagemasking-desc' => 'Prepisuje „.xxx“ na „_xxx“ v odkazoch na popisných stránkach súborov',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
 	'filepagemasking-desc' => 'Записује „.xxx“ у „_xxx“ у опису веза',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'filepagemasking-desc' => 'Zapisuje „.xxx“ u „_xxx“ u opisu veza',
 );
@@ -369,5 +369,12 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'filepagemasking-desc' => '在檔案描述頁連結中將「.xxx」重寫為「_xxx」。',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
+	'filepagemasking-desc' => '在檔案描述頁連結中將 ".xxx" 重寫為 "_xxx" 。',
 );
 

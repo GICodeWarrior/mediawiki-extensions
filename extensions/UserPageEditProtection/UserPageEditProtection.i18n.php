@@ -58,7 +58,7 @@ $messages['bar'] = array(
 	'right-editalluserpages' => 'Benutzerseiten beorweiten',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -346,7 +346,7 @@ $messages['si'] = array(
 	'right-editalluserpages' => 'පරිශීලක පිටු සංස්කරණය කිරීම',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -354,7 +354,7 @@ $messages['sr-ec'] = array(
 	'right-editalluserpages' => 'Измена корисничких страна',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'userpageeditprotection-desc' => 'Ograničava uređivanje korisničkih strana na korisnika i odobrene urednike',
 	'right-editalluserpages' => 'Izmena korisničkih strana',
@@ -405,10 +405,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wong128hk
  */
 $messages['zh-hant'] = array(
-	'userpageeditprotection-desc' => '限制用戶及獲授權者編輯用戶頁',
-	'right-editalluserpages' => '編輯用戶頁',
+	'userpageeditprotection-desc' => '限制使用者及獲授權者編輯使用者頁面',
+	'right-editalluserpages' => '編輯使用者頁面',
 );
 

@@ -50,7 +50,7 @@ $messages['arz'] = array(
 	'stalepages-summary' => 'هذه قائمة بالصفحات التى لم يتم تعديلها فى آخر $1 {{PLURAL:$1|يوم|يوم}}.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -456,14 +456,14 @@ $messages['sk'] = array(
 	'stalepages-summary' => 'Toto je zoznam stránok, ktoré neboli upravované aspoň $1 {{PLURAL:$1|deň|dni|dní}}.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'stalepages-summary' => 'Ово је списак страна које нису биле мењане током {{PLURAL:$1|задњег дана|задња $1 дана|задња $1 дана|задња $1 дана|задњих $1 дана}}.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'stalepages-summary' => 'Ovo je spisak strana koje nisu bile menjane tokom {{PLURAL:$1|zadnjeg dana|zadnja $1 dana|zadnja $1 dana|zadnja $1 dana|zadnjih $1 dana}}.',
 );

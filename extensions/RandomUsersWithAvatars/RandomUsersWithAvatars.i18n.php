@@ -40,7 +40,7 @@ $messages['arz'] = array(
 	'random-users-avatars-desc' => 'يضيف وسم <code>&lt;randomuserswithavatars&gt;</code> لعرض أفاترات مستخدمين مختارين عشوائيا',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -236,7 +236,7 @@ $messages['ksh'] = array(
 	'random-users-avatars-desc' => 'Määt et müjjelesch, met <code>&lt;randomuserswithavatars&gt;</code> de Avataare fun zofälesch ußsohte Metmaacher aanzezeije.',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */

@@ -131,7 +131,7 @@ $messages['be'] = array(
 	'refhelper-category' => 'Катэгорыя $1:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -299,7 +299,7 @@ $messages['de'] = array(
 Du kannst [[Special:RefHelper|den Literaturhinweis selbst erstellen]] oder [[Special:RefSearch|nach dem hinzuzufügenden Autorenzitat suchen]].',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
  * @author The Evil IP address
  */
@@ -525,7 +525,7 @@ $messages['frp'] = array(
 	'refhelper-newarticle_nocitation' => 'Ora, ègziste gins de citacion avouéc ceti nom.',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -1249,7 +1249,7 @@ $messages['sl'] = array(
 	'refhelper-year' => 'Leto:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1264,7 +1264,7 @@ $messages['sr-ec'] = array(
 	'refhelper-toolbox_link_create' => 'Направи референцу',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'refhelper-label_authorsurname' => 'Prezime:',
 	'refhelper-title' => 'Naslov:',

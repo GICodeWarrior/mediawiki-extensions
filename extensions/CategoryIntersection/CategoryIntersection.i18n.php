@@ -75,7 +75,7 @@ $messages['az'] = array(
 	'categoryintersection-results' => 'Axtarış $1 {{PLURAL:$1|nəticə}} verdi.',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -87,7 +87,7 @@ $messages['ba'] = array(
 	'categoryintersection-results' => 'Эҙләү $1 {{PLURAL:$1|һөҙөмтә}} бирҙе.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -184,7 +184,7 @@ $messages['de'] = array(
 	'categoryintersection-results' => 'Die Suche ergab $1 {{PLURAL:$1|Treffer|Treffer}}.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
  */
 $messages['de-formal'] = array(
@@ -712,7 +712,7 @@ $messages['sk'] = array(
 	'categoryintersection-results' => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Михајло Анђелковић
  */
@@ -725,7 +725,7 @@ $messages['sr-ec'] = array(
 	'categoryintersection-results' => 'Претрага је вратила $1 {{PLURAL:$1|резултат|резултата}}.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

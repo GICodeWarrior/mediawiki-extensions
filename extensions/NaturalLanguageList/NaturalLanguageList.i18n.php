@@ -40,7 +40,7 @@ $messages['arc'] = array(
 	'nll-lastseparator' => '&#32;ܘ&#32;',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(

@@ -78,7 +78,7 @@ $messages['bar'] = array(
 	'usercontactlinks-desc' => 'Eamöglicht, dass Benutzanãmen oafåch mid ^^^Benutza^^^ valinkt wean',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -525,7 +525,7 @@ $messages['sq'] = array(
 	'usercontactlink-baduser' => 'llogari jo korrekte',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -533,7 +533,7 @@ $messages['sr-ec'] = array(
 	'usercontactlinks-desc' => 'Пружа могућност једноставног и непрекидног додавања других корисничких имена, коришћењем ^^^user^^^ синтаксе',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

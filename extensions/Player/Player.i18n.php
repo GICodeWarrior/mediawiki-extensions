@@ -153,7 +153,7 @@ $messages['ast'] = array(
 	'player-goto-file' => 'archivu',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1286,7 +1286,7 @@ $messages['sr-ec'] = array(
 	'player-play' => 'Пусти',
 	'player-not-allowed' => 'недозвољен формат',
 	'player-not-found' => 'фајл није пронађен',
-	'player-invalid-title' => 'погрешан наслов',
+	'player-invalid-title' => 'неисправан наслов',
 	'player-clicktoplay' => 'Пусти $1',
 	'player-goto-player' => 'плејер',
 	'player-goto-page' => 'Страница',

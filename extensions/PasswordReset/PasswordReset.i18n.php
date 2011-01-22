@@ -207,7 +207,7 @@ $messages['bar'] = array(
 	'disabledusers-summary' => 'Des is a Listn vo Benutza de wo mim PasswordReset deaktiviad worn han.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1551,7 +1551,7 @@ $messages['sr-ec'] = array(
 	'disabledusers' => 'Онемогућени корисници',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

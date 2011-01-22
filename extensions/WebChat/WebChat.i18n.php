@@ -75,7 +75,7 @@ $messages['ar'] = array(
 	'right-webchat' => 'السماح باستخذام [[Special:WebChat|دردشة الوب]]',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -167,7 +167,7 @@ Andernfalls wird der Chatname automatisch erzeugt. Dieser kann aber noch geände
 	'right-webchat' => '[[Special:WebChat|Web-Chat]] benutzen',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Merlissimo
  */
 $messages['de-formal'] = array(
@@ -664,7 +664,7 @@ Brezimnim uporabnikom se vzdevek ustvari samodejno, vendar ga je mogoče spremen
 	'right-webchat' => 'Dovoljena uporaba [[Special:WebChat|spletnega klepeta]]',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
@@ -785,9 +785,16 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'webchat' => '網上聊天',
+	'webchat-desc' => '加入一個用於與其他用戶實時聊天的[[Special:WebChat|專頁]]',
+	'webchat-header' => '該特殊頁面允許您與其他維基人進行實時的協同合作。
+點擊「連接」繼續。
+如果您已登入，那麼您的暱稱將被自動輸入。
+如果您是匿名用戶，系統將自動產生一個暱稱，不過登入後可以進行修改。',
+	'right-webchat' => '允許使用[[Special:WebChat|線上聊天]]',
 );
 

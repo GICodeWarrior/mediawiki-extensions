@@ -626,7 +626,7 @@ $messages['arz'] = array(
 	'viewapc-usercache-cleared' => "'''''تم إفراغ كاش التطبيق.'''''",
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -744,7 +744,7 @@ $messages['be'] = array(
 	'viewapc-ls-sort-size' => 'Памер',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1468,7 +1468,7 @@ Die neuere Version $2 steht auf http://pecl.php.net/package/APC/$2 zum Download 
 	'viewapc-usercache-cleared' => "'''''Anwendungs-Cache geleert.'''''",
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author MichaelFrey
  */
 $messages['de-formal'] = array(
@@ -5332,6 +5332,7 @@ A versão mais recente $2 está disponível em http://pecl.php.net/package/APC/$
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Helder.wiki
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -5949,7 +5950,7 @@ Novejša različica $2 je na voljo na http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Predpomnilnik aplikacij je počiščen.'''''",
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */

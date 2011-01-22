@@ -111,7 +111,7 @@ $messages['bar'] = array(
 	'right-findspam' => 'Nåch gråd east eigstöidn Spam suacha',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -898,7 +898,7 @@ $messages['sk'] = array(
 	'right-findspam' => 'Hľadať iba nedávno pridaný spam',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -911,7 +911,7 @@ $messages['sr-ec'] = array(
 	'right-findspam' => 'Потражи скоро додати спам',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

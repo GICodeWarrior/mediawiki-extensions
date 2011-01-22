@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo received the illegal width parameter "$1".',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
  */

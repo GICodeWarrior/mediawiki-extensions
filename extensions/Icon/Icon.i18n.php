@@ -69,7 +69,7 @@ $messages['avk'] = array(
 	'icon-badwidth' => 'Lumaj',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -593,7 +593,7 @@ $messages['sk'] = array(
 	'icon-desc' => 'Umožnuje použiť obrázky ako ikony a ikony odkazov',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -602,7 +602,7 @@ $messages['sr-ec'] = array(
 	'icon-desc' => 'Омогућује коришћење слика као икона и њихових спољашњих веза',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

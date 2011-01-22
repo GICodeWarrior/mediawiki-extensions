@@ -217,7 +217,7 @@ $messages['arz'] = array(
 	'masseditregex-tooltip-execute' => 'طبق هذه التغييرات على كل صفحة',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -405,7 +405,7 @@ Die Ersetzungswerte sollten nicht ausgelassen werden.',
 	'masseditregex-tooltip-execute' => 'Diese Änderungen an jeder Seite durchführen',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  * @author LWChris
  */
@@ -1390,7 +1390,7 @@ $messages['ru'] = array(
 	'masseditregex-tooltip-execute' => 'Применить эти изменения для каждой страницы',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1417,7 +1417,7 @@ $messages['sr-ec'] = array(
 	'masseditregex-tooltip-execute' => 'Примени ове промене на сваку страну',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'masseditregex-pagelisttxt' => 'Strane za izmenu (ne koristite prefiks za imenski prostor):',
 	'masseditregex-matchtxt' => 'Traži:',

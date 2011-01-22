@@ -131,7 +131,7 @@ $messages['bar'] = array(
 	'invitations-inviteform-submit' => 'eilådn',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -296,7 +296,7 @@ $messages['de'] = array(
 	'invitations-invite-success' => 'Du hast erfolgreich $1 zu dieser Softwarefunktion eingeladen!',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -1337,7 +1337,7 @@ $messages['sk'] = array(
 	'invitations-invite-success' => 'Úspešne ste pozvali používateľa $1 využívať túto možnosť!',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1347,7 +1347,7 @@ $messages['sr-ec'] = array(
 	'invitations-inviteform-submit' => 'Позови',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'invite-logpage' => 'Isotrija pozivnica',
 	'invitations-inviteform-title' => 'Pozovi korisnika da koristi $1',

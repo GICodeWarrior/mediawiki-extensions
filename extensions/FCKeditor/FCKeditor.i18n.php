@@ -79,7 +79,7 @@ $messages['ar'] = array(
 	'tog-riched_toggle_remember_state' => 'تذكر آخر حالة تبديل',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1372,9 +1372,11 @@ $messages['zh-hant'] = array(
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
  * @author Roc michael
  */
 $messages['zh-tw'] = array(
+	'fckeditor-desc' => '允許在編輯時使用所見即所得工具FCKeditor',
 	'textrichditor' => '視覺化編輯器(Rich Editor)',
 	'prefs-fckeditor' => '視覺化編輯器',
 	'tog-riched_disable' => '停用視覺化編輯器(rich editor)',

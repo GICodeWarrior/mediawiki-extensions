@@ -30,7 +30,7 @@ This extension extends various API classes to allow revisions to be added with a
 	'right-mirroredit' => '{{doc-right|mirroredit}}',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
  */

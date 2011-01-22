@@ -166,7 +166,7 @@ $messages['be'] = array(
 	'gep-addsectionbutton' => 'Дадаць',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -359,7 +359,7 @@ Mit den Werkzeugen an der Seite können welche hinzugefügt werden.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -1439,7 +1439,7 @@ Dodajte jih nekaj z uporabo orodij v menijski vrstici.',
 	'gep-nocategories' => 'Prosimo, pred shranjevanjem izberite vsaj eno kategorijo',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1465,7 +1465,7 @@ $messages['sr-ec'] = array(
 	'gep-nocategories' => 'Молимо вас да изаберете макар једну категорију пре снимања',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */

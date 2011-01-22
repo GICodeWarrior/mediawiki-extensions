@@ -279,7 +279,7 @@ $messages['be'] = array(
 	'usagestatisticstype' => 'Тып:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -2137,7 +2137,7 @@ $messages['sk'] = array(
 	'right-viewsystemstats' => 'Zobraziť [[Special:UserStats|štatistiku použitia wiki]]',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -2169,7 +2169,7 @@ $messages['sr-ec'] = array(
 	'usagestatistics-editpages' => 'Статистике страница индивидуалних корисника $1',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  * @author Жељко Тодоровић
@@ -2617,6 +2617,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -2626,6 +2627,7 @@ $messages['zh-hant'] = array(
 	'usagestatisticsfor' => '<h2>[[User:$1|$1]]的使用分析</h2>',
 	'usagestatisticsforallusers' => '<h2>所有用戶的使用分析</h2>',
 	'usagestatisticsinterval' => '區間',
+	'usagestatisticsnamespace' => '名字空間：',
 	'usagestatisticstype' => '類型',
 	'usagestatisticsstart' => '開始日期',
 	'usagestatisticsend' => '結束日期',
@@ -2641,7 +2643,7 @@ $messages['zh-hant'] = array(
 	'usagestatisticscumulative' => '累積',
 	'usagestatisticscumulative-text' => '累積',
 	'usagestatisticscalselect' => '選擇',
-	'usagestatistics-editindividual' => '用戶$1編輯統計分析',
-	'usagestatistics-editpages' => '用戶$1統計分析',
+	'usagestatistics-editindividual' => '使用者 $1 編輯統計分析',
+	'usagestatistics-editpages' => '使用者 $1 統計分析',
 );
 

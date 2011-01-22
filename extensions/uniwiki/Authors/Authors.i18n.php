@@ -77,7 +77,7 @@ $messages['be'] = array(
 	'authors_authors' => 'Аўтары',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -594,7 +594,7 @@ $messages['sl'] = array(
 	'authors_anonymous' => 'Brezimnež',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -604,7 +604,7 @@ $messages['sr-ec'] = array(
 	'authors_anonymous' => 'Анонимно',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -26,7 +26,7 @@ $messages['qqq'] = array(
 	'frontbackforced-forced' => 'Page name postfix (supposed not to be long)',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
 $messages['be-tarask'] = array(

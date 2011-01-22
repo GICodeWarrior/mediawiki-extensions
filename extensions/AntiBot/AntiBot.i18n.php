@@ -65,7 +65,7 @@ $messages['ast'] = array(
 	'antibot-desc' => "Entornu cenciellu pa les comprobaciones de bots de spam y l'activación de conteníos de descarga condicional automatizada.",
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -80,7 +80,7 @@ $messages['bar'] = array(
 	'antibot-desc' => "Oafochs ''Framework'' fyr Spambot-Priafungen",
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -550,7 +550,7 @@ $messages['sl'] = array(
 	'antibot-desc' => 'Preprosto ogrodje za preverjanje smetečih robotov in povzročanja obremenitev',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -558,7 +558,7 @@ $messages['sr-ec'] = array(
 	'antibot-desc' => 'Једноставан оквир за провере о непожељним роботима и реаговање на одређене квоте активности',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

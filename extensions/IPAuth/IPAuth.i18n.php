@@ -44,7 +44,7 @@ $messages['be'] = array(
 	'ipauth-desc' => 'Аўтаматычны ўваход з фіксаваных IP адрасоў',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -340,14 +340,14 @@ $messages['sk'] = array(
 	'ipauth-desc' => 'Automatické prihlásenie z pevných IP adries',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'ipauth-desc' => 'Аутоматско пријављивање са фиксних IP адреса',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Liangent
  */
 $messages['sr-el'] = array(
@@ -401,5 +401,12 @@ $messages['vi'] = array(
  */
 $messages['zh-hant'] = array(
 	'ipauth-desc' => '自動從固定的 IP 位址登入',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'ipauth-desc' => '來自固定的 IP 位址的自動登入',
 );
 

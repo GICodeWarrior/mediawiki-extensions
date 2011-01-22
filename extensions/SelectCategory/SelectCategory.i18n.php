@@ -69,7 +69,7 @@ $messages['bcl'] = array(
 	'selectcategory-title' => 'Magpilì nin mga kategorya',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */

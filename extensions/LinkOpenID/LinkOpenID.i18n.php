@@ -75,7 +75,7 @@ $messages['arz'] = array(
 	'linkopenid-prefstext-v2url' => 'مسار الخادم للهوية المفتوحة النسخة 2:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -132,7 +132,7 @@ Dies ermöglicht dir die alternative Nutzung deiner Benutzerseite als OpenID.',
 	'linkopenid-prefstext-v2url' => 'Server-URL für OpenID Version 2:',
 );
 
-/** German (formal address) (Deutsch (Sie-Form)) */
+/** German (formal address) (‪Deutsch (Sie-Form)‬) */
 $messages['de-formal'] = array(
 	'linkopenid-prefstext-pre' => 'Wenn Sie eine OpenID bei einem externen Anbieter besitzen, können Sie diese hier angeben.
 Dies ermöglicht Ihnen die alternative Nutzung Ihrer Benutzerseite als OpenID.',

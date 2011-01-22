@@ -84,7 +84,7 @@ $3',
 	'latexdoc-desc' => 'تعديل تعاونى لوثائق لا تك',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -889,7 +889,7 @@ $3',
 	'latexdoc-desc' => 'Latex Doc.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -906,7 +906,7 @@ $3',
 	'latexdoc_get_pdf' => 'Преузми PDF',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'latexdoc_cant_create_dir' => 'Nije mogao da se napravi privremeni direktorijum $1',
 	'latexdoc_cant_write' => 'Nije moglo da se piše u fajl $1',

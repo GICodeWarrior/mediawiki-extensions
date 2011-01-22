@@ -62,7 +62,7 @@ $messages['bcc'] = array(
 	'skinperpage-desc' => 'هورکنت <code>&lt;skin&gt;</code> برچسپء په استفاده مختلف این پوست ته هر صفحه ای',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -453,7 +453,7 @@ $messages['sq'] = array(
 	'skinperpage-desc' => 'Vendosë kodin <code>&lt;skin&gt;</code> për të përdorur pamje të ndryshme për çdo faqe',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Жељко Тодоровић
  */
@@ -461,7 +461,7 @@ $messages['sr-ec'] = array(
 	'skinperpage-desc' => 'Додаје ознаку <code>&lt;skin&gt;</code> за коришћење различитих кожа на различитим страницама',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

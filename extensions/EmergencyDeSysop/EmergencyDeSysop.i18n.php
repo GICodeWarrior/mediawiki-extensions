@@ -110,7 +110,7 @@ $messages['arz'] = array(
 	'right-emergencydesysop' => 'القدرة على عزل مستخدم آخر، بشكل متبادل',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -231,7 +231,7 @@ $messages['de'] = array(
 	'right-emergencydesysop' => 'Degradierung eines anderen Administrator auf Gegenseitigkeit',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -743,7 +743,7 @@ $messages['pdc'] = array(
 	'emergencydesysop-nogroups' => 'Ken',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -925,7 +925,7 @@ $messages['sr-ec'] = array(
 	'right-emergencydesysop' => 'Омогућава администратору да одузме администраторска права себи и другом администратору',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1109,6 +1109,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Waihorace
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(

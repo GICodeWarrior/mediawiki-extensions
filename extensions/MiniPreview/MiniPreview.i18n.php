@@ -104,7 +104,7 @@ $messages['bcl'] = array(
 	'minipreview-files_in_gallery' => "$1 total na mga ''file'' sa galleriang ini.",
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -785,7 +785,7 @@ $messages['sk'] = array(
 * Self',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Обрадовић Горан
  */
 $messages['sr-ec'] = array(
@@ -793,7 +793,7 @@ $messages['sr-ec'] = array(
 	'minipreview-no_category_gallery' => 'Нема категорија или галерија',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

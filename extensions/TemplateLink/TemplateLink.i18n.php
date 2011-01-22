@@ -80,7 +80,7 @@ $messages['bcl'] = array(
 	'templatelink_empty' => 'Kaipuhan mong suplayan an parametro.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */

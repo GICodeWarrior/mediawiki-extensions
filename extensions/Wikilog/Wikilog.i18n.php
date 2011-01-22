@@ -874,7 +874,7 @@ $messages['be'] = array(
 	'wikilog-history-lc' => 'Гісторыя',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -1865,7 +1865,7 @@ Der Kommentar wird erst erscheinen, nachdem er von einem Moderator geprüft wurd
 	'wikilog-doc-import-comment' => 'Importierte Wikilog-Dokumentation',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -5202,7 +5202,7 @@ $messages['pdc'] = array(
 	'wikilog-page-lc' => 'Blatt',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -6552,16 +6552,16 @@ $messages['sr-ec'] = array(
 	'wikilog-show-drafts' => 'Нацрти',
 	'wikilog-submit' => 'Пошаљи',
 	'wikilog-preview' => 'Прегледај',
-	'wikilog-edit-lc' => 'измени',
+	'wikilog-edit-lc' => 'уреди',
 	'wikilog-reply-lc' => 'одговори',
 	'wikilog-delete-lc' => 'обриши',
 	'wikilog-approve-lc' => 'одобри',
 	'wikilog-reject-lc' => 'одбаци',
 	'wikilog-page-lc' => 'страна',
-	'wikilog-history-lc' => 'историја',
+	'wikilog-history-lc' => 'историјат',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'wikilog-new-item-go' => 'Napravi',
 	'wikilog-item-name' => 'Naslov članka:',

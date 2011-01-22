@@ -32,7 +32,7 @@ $messages['af'] = array(
 	'variablepage-navlink_text' => 'Skenk',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -41,7 +41,7 @@ $messages['ba'] = array(
 	'variablepage-desc' => 'Үҙгәреүсән биттәргә ябай йүнәлтеү',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -479,5 +479,13 @@ $messages['zh-hans'] = array(
 	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => '资助',
 	'variablepage-desc' => '轻变页面重定向',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => '捐助',
 );
 

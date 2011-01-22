@@ -49,7 +49,7 @@ $messages['arz'] = array(
 	'woopra-desc' => 'يسمح ل[http://www.woopra.com/ برنامج وبرا للتتبع الحي] بالعمل لنسخة ميدياويكى الخاصة بك',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -455,14 +455,14 @@ $messages['sq'] = array(
 	'woopra-desc' => 'Lejon që [http://www.woopra.com/ Softueri Për Ndjekje Woopra] të punojë për MediaWiki instalimin tuaj',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'woopra-desc' => 'Омогућава [http://www.woopra.com/ Woopra Софтверу за праћење уживо] да ради са Вашом инсталацијом МедијаВикија.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

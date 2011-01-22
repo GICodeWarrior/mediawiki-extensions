@@ -921,7 +921,6 @@ $messages['ru'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'push-import-revision-comment' => 'చివరి వ్యాఖ్య: $1',
 	'push-special-target-is' => 'లక్ష్యిత వికీ: $1',
 	'push-special-select-targets' => 'లక్ష్యిత వికీలు:',
 );

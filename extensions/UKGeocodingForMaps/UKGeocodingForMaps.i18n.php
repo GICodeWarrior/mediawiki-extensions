@@ -32,7 +32,7 @@ $messages['aln'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Një ose më shumë postalcodes nuk mund të geocoded dhe janë lënë jashtë nga harta.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */

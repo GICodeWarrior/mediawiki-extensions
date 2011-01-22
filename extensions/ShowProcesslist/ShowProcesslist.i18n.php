@@ -103,7 +103,7 @@ $messages['arz'] = array(
 	'showprocesslist-info' => 'معلومات',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -986,7 +986,7 @@ $messages['sr-ec'] = array(
 	'showprocesslist-state' => 'Стање',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

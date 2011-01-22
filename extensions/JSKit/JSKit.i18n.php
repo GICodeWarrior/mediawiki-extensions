@@ -58,7 +58,7 @@ $messages['be'] = array(
 	'jskit-desc' => 'Інтэграцыя js-камплекту інструментаў на вікі-старонку',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -327,14 +327,14 @@ $messages['sq'] = array(
 	'jskit-desc' => 'Integron mjetet js-kit në një faqe wiki',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'jskit-desc' => 'Интегрише js-kit алате у Вики-чланак',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

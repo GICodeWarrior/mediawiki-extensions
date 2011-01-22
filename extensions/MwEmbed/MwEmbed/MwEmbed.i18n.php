@@ -86,7 +86,7 @@ $messages['arc'] = array(
 	'mwe-cancel' => 'ܒܛܘܠ',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -101,6 +101,13 @@ $messages['be-tarask'] = array(
 	'mwe-enable-gadget-done' => 'Дапаўненьне бэта-мультымэтыя ўключанае',
 	'mwe-must-login-gadget' => 'Для ўключэньня дапаўненьня Вам неабходна <a target="_new" href="$1">ўвайсьці ў сыстэму</a>',
 	'mwe-test-plural' => 'Я прайшоў $1 {{PLURAL:$1|тэст|тэсты|тэстаў}}',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'mwe-loading_txt' => 'Зареждане ...',
 );
 
 /** Breton (Brezhoneg)
@@ -213,10 +220,18 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Evropi
  */
 $messages['el'] = array(
 	'mwe-loading_txt' => 'φόρτωση ...',
+	'mwe-apiproxy-setup' => 'Ρύθμιση του μεσολαβητή ΔΠΕ (API)',
+	'mwe-load-drag-item' => 'Φόρτωση συρόμενου στοιχείου',
+	'mwe-ok' => 'Εντάξει',
 	'mwe-cancel' => 'Ακύρωση',
+	'mwe-enable-gadget' => 'Ενεργοποίηση του beta για τα πολυμέσα (mwEmbed) για όλες τις σελίδες',
+	'mwe-enable-gadget-done' => 'Ενεργοποιήθηκε η beta μικροεφαρμογή πολυμέσων',
+	'mwe-must-login-gadget' => 'Για να ενεργοποιήσετε τη μικροεφαρμογή πρέπει να κάνετε <a target="_new" href="$1">είσοδο</a>',
+	'mwe-test-plural' => 'Εκτέλεσα {{PLURAL:$1|$1 δοκιμή|$1 δοκιμές}}',
 );
 
 /** Esperanto (Esperanto)
@@ -322,15 +337,21 @@ $messages['ha'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'mwe-loading_txt' => 'בטעינה ...',
 	'mwe-error_load_lib' => 'שגיאה: לא ניתן היה לטעון את ספריית ה־JavaScript בשם $1 או שהיא אינה מגדירה את $2',
+	'mwe-apiproxy-setup' => 'הגדרה של API proxy',
+	'mwe-load-drag-item' => 'טעינה של פריט שנגרר',
 	'mwe-ok' => 'אישור',
 	'mwe-cancel' => 'ביטול',
-	'mwe-test-plural' => 'הופעל{{PLURAL:$1|ה בדיקה אחת|ו $1 בדיקות}}',
+	'mwe-enable-gadget' => 'הפעלת גרסה ניסיונית של mwEmbed להצגת מולטימדיה בכל הדפים',
+	'mwe-enable-gadget-done' => 'הופעל תוסף ניסיוני להצגת מולטימדיה',
+	'mwe-must-login-gadget' => 'כדי להפעיל את התוסף, צריך <a target="_new" href="$1">להתחבר לחשבון</a>',
+	'mwe-test-plural' => '{{PLURAL:$1|הופעלה בדיקה אחת|הופעלו $1 בדיקות}}',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -483,6 +504,10 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'mwe-loading_txt' => 'Вчитувам...',
+	'mwe-size-gigabytes' => '$1 ГБ',
+	'mwe-size-megabytes' => '$1 МБ',
+	'mwe-size-kilobytes' => '$1 К',
+	'mwe-size-bytes' => '$1 Б',
 	'mwe-error_load_lib' => 'Грешка: JavaScript $1 не е достапен или не определува $2',
 	'mwe-apiproxy-setup' => 'Поставувам API застапник (proxy)',
 	'mwe-load-drag-item' => 'Го вчитувам повлечениот елемент',
@@ -623,6 +648,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author Helder.wiki
  * @author Heldergeovane
  * @author Malafaya
  */
@@ -641,6 +667,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
+ * @author Helder.wiki
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -698,17 +725,18 @@ $messages['sk'] = array(
 	'mwe-error_load_lib' => 'Error: JavaScript $1 nebolo možné získať alebo neobsahuje definíciu $2',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'mwe-loading_txt' => 'Учитавање ...',
-	'mwe-ok' => 'ОК',
+	'mwe-ok' => 'У реду',
 	'mwe-cancel' => 'Поништи',
 	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'mwe-loading_txt' => 'Učitavanje ...',
 	'mwe-ok' => 'OK',
@@ -723,6 +751,9 @@ $messages['sr-el'] = array(
  */
 $messages['sv'] = array(
 	'mwe-loading_txt' => 'Laddar…',
+	'mwe-error_load_lib' => 'Fel: JavaScript $1 var inte tillgänglig eller definierade inte $2',
+	'mwe-apiproxy-setup' => 'Konfigurerar API-proxy',
+	'mwe-load-drag-item' => 'Laddar draget objekt',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Avbryt',
 	'mwe-enable-gadget' => 'Aktivera multimedia beta (mwEmbed) på alla sidor',
@@ -818,5 +849,22 @@ $messages['zh-hans'] = array(
 	'mwe-loading_txt' => '载入中……',
 	'mwe-ok' => '确定',
 	'mwe-cancel' => '取消',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ * @author Waihorace
+ */
+$messages['zh-hant'] = array(
+	'mwe-loading_txt' => '載入中...',
+	'mwe-error_load_lib' => '錯誤：JavaScript $1 是不可檢索或未定義 $2',
+	'mwe-apiproxy-setup' => 'API 的代理設定',
+	'mwe-load-drag-item' => '拖動項載入中',
+	'mwe-ok' => '確定',
+	'mwe-cancel' => '取消',
+	'mwe-enable-gadget' => '在所有頁面啟用多媒體測試版（mwEmbed）。',
+	'mwe-enable-gadget-done' => '小工具多媒體測試版已啟用',
+	'mwe-must-login-gadget' => '要啟用小工具，你必須先<a target="_new" href="$1">登入</a>。',
+	'mwe-test-plural' => '我在執行 {{PLURAL:$1|$1 個|$1 個}}測試',
 );
 

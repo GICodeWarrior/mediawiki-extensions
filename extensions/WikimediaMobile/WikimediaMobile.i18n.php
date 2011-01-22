@@ -28,7 +28,7 @@ $messages['af'] = array(
 	'wikimediamobile-desc' => 'Ondersteunende funksies in MediaWiki vir die projek Wikipedia-mobiel by http://github.com/hcatlin/wikimedia-mobile',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */
 $messages['be-tarask'] = array(

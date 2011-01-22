@@ -109,7 +109,7 @@ $2',
 	'userrightsnotif-desc' => 'يبعت إيميل لليوزرز على تغييرات الحقوق',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -288,7 +288,7 @@ $2',
 	'userrightsnotif-desc' => 'Sendet E-Mail-Benachrichtungen über Rechteänderungen an den Benutzer',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
@@ -1270,19 +1270,20 @@ $2',
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'userrightsnotifysubject' => '$1上的用戶群組資格改變',
-	'userrightsnotifybody' => '$1您好，
+	'userrightsnotifysubject' => '$1 上的用戶群組資格改變',
+	'userrightsnotifybody' => '$1 您好，
 
-這個消息通知您您在$2的用戶權限已在$4被$3更改。
+這個消息通知您您在 $2 的用戶權限已在 $4 被 $3 更改。
 
-添加了：$5
+增加了：$5
 移除了：$6
 
 此致，
 
 $2',
-	'userrightsnotif-desc' => '在權限改變時給用戶發送電子郵件通知',
+	'userrightsnotif-desc' => '在權限改變時給使用者發送電子郵件通知',
 );
 

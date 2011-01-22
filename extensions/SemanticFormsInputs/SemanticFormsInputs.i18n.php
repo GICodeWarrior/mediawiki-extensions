@@ -53,7 +53,7 @@ $messages['arc'] = array(
 	'semanticformsinputs-today' => 'ܝܘܡܢܐ',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -291,6 +291,8 @@ $messages['mk'] = array(
 	'semanticformsinputs-prev' => 'Претходно',
 	'semanticformsinputs-next' => 'Следно',
 	'semanticformsinputs-today' => 'Денес',
+	'semanticformsinputs-dateformatlong' => 'д ММ ГГ',
+	'semanticformsinputs-dateformatshort' => 'дд/мм/гг',
 );
 
 /** Malayalam (മലയാളം)
@@ -334,7 +336,7 @@ $messages['pdc'] = array(
 	'semanticformsinputs-next' => 'Neegschte',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(

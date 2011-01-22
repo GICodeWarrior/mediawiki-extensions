@@ -160,7 +160,7 @@ $messages['bar'] = array(
 	'watchers_less_than_x' => 'Weniga wia {{PLURAL:$1|$1 Benutza|$1 Benutza}} beobåchtn de Seitn.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -968,7 +968,7 @@ $messages['sk'] = array(
 	'watchers_less_than_x' => 'Menej ako $1 {{PLURAL:$1|používateľ sleduje|používatelia sledujú|používateľov sleduje}} túto stránku.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -976,7 +976,7 @@ $messages['sr-ec'] = array(
 	'watchers_error_article' => "'''Грешка:''' Чланак не постоји.",
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1152,16 +1152,18 @@ $messages['zh-hans'] = array(
  * @author Gzdavidwong
  * @author Horacewai2
  * @author Liangent
+ * @author Mark85296341
+ * @author Waihorace
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'watchers' => '監視者',
 	'watchers-desc' => '顯示[[Special:Watchers|邊個用戶係監視列表裡面有頁面]]',
-	'watchers_link_title' => '誰在監視此頁？',
+	'watchers_link_title' => '有誰監視此頁？',
 	'watchers_error_article' => "'''錯誤：'''頁面不存在。",
-	'watchers_header' => '監視"[[:$1]]"的{{PLURAL:$2|用戶|用戶}}',
+	'watchers_header' => '監視「[[:$1]]」的{{PLURAL:$2|用戶|用戶}}',
 	'watchers_noone_watches' => '沒有人監視此頁面。',
 	'watchers_x_or_more' => '$1 或者更多的{{PLURAL:$1|用戶|用戶}}將本頁加入了他們的監視列表。',
-	'watchers_less_than_x' => '少於$1的{{PLURAL:$1|用戶|用戶}}將本頁加入了他們的監視列表。',
+	'watchers_less_than_x' => '少於 $1 的{{PLURAL:$1|用戶|用戶}}將本頁加入了他們的監視列表。',
 );
 

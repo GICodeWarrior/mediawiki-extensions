@@ -85,7 +85,7 @@ $messages['bar'] = array(
 	'cooperationstatistics-articles' => '$1 Seitn',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -774,7 +774,7 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
 	'cooperationstatistics-legendmore' => 'alebo viac redaktorov.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -788,7 +788,7 @@ $messages['sr-ec'] = array(
 	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|има}} $1 или више уредника',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'cooperationstatistics-tablearticle' => 'Broj strana',
 	'cooperationstatistics-tablevalue' => 'Broj urednika',

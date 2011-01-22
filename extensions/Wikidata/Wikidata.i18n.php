@@ -1414,7 +1414,7 @@ $messages['be'] = array(
 	'ow_TranslatedTextAttributeValue' => 'Тэкст',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -2998,7 +2998,7 @@ Bitte kontaktiere den Serveradminstrator.',
 	'ow_shown_datasets' => 'Datasets zeigen',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  * @author Imre
  * @author Kghbln
@@ -8054,7 +8054,7 @@ $messages['ku-latn'] = array(
 	'ow_Source' => 'Çavkanî',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -10041,7 +10041,7 @@ $messages['pdc'] = array(
 	'ow_suggest_next' => 'Neegschte',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -12396,7 +12396,7 @@ $messages['sq'] = array(
 	'ow_Collection' => 'Koleksioni',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Rancher
  * @author Sasa Stefanovic
@@ -12571,7 +12571,7 @@ $messages['sr-ec'] = array(
 	'ow_shown_datasets' => 'Приказани низови података',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */

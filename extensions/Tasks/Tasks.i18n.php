@@ -333,7 +333,7 @@ $messages['arz'] = array(
 	'tasks-pref-showtaskcomments' => 'ضمن صفحة تعليقات المهمة.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -807,7 +807,7 @@ Falls du nicht in ein paar Sekunden weitergeleitet wirst, klicke $1.',
 	'tasks-pref-showtaskcomments' => 'Aufgaben-Diskussionsseite einbinden.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -1403,7 +1403,7 @@ $messages['frp'] = array(
 	'tasks-pref-showtaskcomments' => 'Vêre la pâge de comentèros a propôs des travâlys.',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -2851,7 +2851,7 @@ $messages['pdc'] = array(
 	'tasks_logentry' => 'fer „[[$1]]“',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -3462,7 +3462,7 @@ $messages['sl'] = array(
 	'tasks_table_header_page' => 'Stran',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -3516,7 +3516,7 @@ $messages['sr-ec'] = array(
 	'tasks_previous' => 'Претходни',
 	'tasks_next' => 'Следећи',
 	'tasks_sort' => 'Сортирај',
-	'tasks_ascending' => 'Најстарији прво',
+	'tasks_ascending' => 'Прво старије',
 	'tasks_status_open' => 'Отвори',
 	'tasks_status_assigned' => 'Додељено',
 	'tasks_status_closed' => 'Затворено',

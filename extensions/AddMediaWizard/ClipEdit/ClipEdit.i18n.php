@@ -99,7 +99,7 @@ $messages['arc'] = array(
 	'mwe-clipedit-edit-tools' => 'ܡܐܢ̈ܐ ܕܫܘܚܠܦܐ',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -133,7 +133,7 @@ $messages['ba'] = array(
 	'mwe-clipedit-layout_left' => 'Һул яҡ рәсем ҡалыбы',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -1440,7 +1440,7 @@ $messages['sl'] = array(
 	'mwe-clipedit-duration' => 'Trajanje:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
@@ -1474,7 +1474,7 @@ $messages['sr-ec'] = array(
 	'mwe-clipedit-layout_left' => 'Изглед с леве стране слике',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'mwe-clipedit-crop' => 'Iseci sliku',
 	'mwe-clipedit-apply_crop' => 'Primeni isecanje slike',
@@ -1793,5 +1793,21 @@ $messages['zh-hant'] = array(
 	'mwe-clipedit-custom_title' => '自訂標題',
 	'mwe-clipedit-edit_properties' => '編輯屬性',
 	'mwe-clipedit-other_properties' => '其他屬性',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'mwe-clipedit-insert_image_page' => '插入到頁面',
+	'mwe-clipedit-preview_insert' => '預覽插入',
+	'mwe-clipedit-cancel_image_insert' => '取消插入',
+	'mwe-clipedit-sc_audio' => '音訊控制',
+	'mwe-clipedit-custom_title' => '自訂標題',
+	'mwe-clipedit-resource_page' => '來源頁面：',
+	'mwe-clipedit-start_time' => '開始時間',
+	'mwe-clipedit-end_time' => '結束時間',
+	'mwe-clipedit-edit-tools' => '編輯工具',
+	'mwe-clipedit-edit-video-tools' => '編輯影片工具：',
 );
 

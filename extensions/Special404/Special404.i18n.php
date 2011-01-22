@@ -22,7 +22,7 @@ Maybe you would like to look at:
 * [[{{MediaWiki:Mainpage}}|The main page]]',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */

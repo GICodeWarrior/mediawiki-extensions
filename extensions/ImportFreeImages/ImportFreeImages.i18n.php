@@ -156,7 +156,7 @@ $messages['be'] = array(
 	'importfreeimages_owner' => 'Аўтар',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -318,7 +318,7 @@ $messages['de'] = array(
 	'importfreeimages_size_original' => 'Original',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Raimond Spekking
  * @author The Evil IP address
  */
@@ -1223,7 +1223,7 @@ $messages['sl'] = array(
 	'importfreeimages_owner' => 'Avtor',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Verlor
  * @author Михајло Анђелковић
@@ -1241,7 +1241,7 @@ $messages['sr-ec'] = array(
 	'importfreeimages_size_original' => 'Оригинална величина',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'importfreeimages' => 'Uvezi slobodne slike',
 	'importfreeimages_owner' => 'Autor',

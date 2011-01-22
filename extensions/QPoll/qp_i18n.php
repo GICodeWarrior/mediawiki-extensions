@@ -436,7 +436,7 @@ $messages['be'] = array(
 	'qp_stats_link' => 'Статыстыка',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -669,7 +669,7 @@ Um die Abstimmung zu speichern, übermittle sie während du nicht auf eine Antra
 	'qp_error_unique' => 'Die Frage des Typs unique() hat mehr Vorschläge, als mögliche Antworten definiert sind: Ausführung unmöglich',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -1872,7 +1872,7 @@ For å lagre en spørreundersøkelse, send den mens du ikke svarer på noen fors
 	'qp_error_unique' => 'Spørsmål av typen unique() har flere forslag enn mulige definerte svar: umulig å gjennomføre',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -2109,6 +2109,7 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
+ * @author Helder.wiki
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -2279,7 +2280,7 @@ $messages['rue'] = array(
 	'qp_users_link' => 'Хоснователї',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -2297,7 +2298,7 @@ $messages['sr-ec'] = array(
 	'qp_user_polls_link' => 'Учествовао у $1 {{PLURAL:$1|анкети|анкета}}',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'qp_desc' => 'Omogućava pokretanje anketa',
 	'qp_result_NA' => 'Nije odgovoreno',

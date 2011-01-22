@@ -80,7 +80,7 @@ $messages['ar'] = array(
 	'plotters-errors' => '{{PLURAL:$1|خطأ|أخطاء}} الرسام:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -187,7 +187,7 @@ Bitte definiere eine Tabellenklasse, die maximal 255 Zeichen aufweist.',
 	'plotters-errors' => 'Plotter{{PLURAL:$1|fehler|fehler}}:',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  * @author Kghbln
  * @author Umherirrender
@@ -796,7 +796,7 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
 	'plotters-errors' => '<b>{{PLURAL:$1|Chyba|Chyby}} plotrov:</b>',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -806,7 +806,7 @@ $messages['sr-ec'] = array(
 	'plotters-no-data' => 'Нису достављени никакви подаци.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'plotters' => 'Ploteri',
 	'plotters-title' => 'Ploteri',

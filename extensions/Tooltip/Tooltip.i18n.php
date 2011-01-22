@@ -48,7 +48,7 @@ $messages['az'] = array(
 	'tooltip-desc' => '<code>&lt;tooltip&gt;</code> və <code>{{#tooltip:}}</code> teqlərini əlavə edir',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -418,14 +418,14 @@ $messages['sq'] = array(
 	'tooltip-desc' => 'Vendosë kodet <code>&lt;tooltip&gt;</code> dhe <code>{{#tooltip:}}</code>',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'tooltip-desc' => 'Додаје <code>&lt;tooltip&gt;</code> и <code>{{#tooltip:}}</code> тагове',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

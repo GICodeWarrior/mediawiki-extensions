@@ -50,7 +50,7 @@ $messages['ar'] = array(
 	'replaceset-error-regexbadmodifier' => "معدل الريجيكس '$1' غير صحيح.",
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */

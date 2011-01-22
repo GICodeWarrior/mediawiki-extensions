@@ -32,14 +32,14 @@ $messages['az'] = array(
 	'cassandra-desc' => 'Səhifənin versiyasının mətninin [http://cassandra.apache.org/ Apache Cassandra] verilənlər bazasında saxlanılması',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
 	'cassandra-desc' => 'Биттең өлгөһөнөң эстәлеген [http://cassandra.apache.org/ Apache Cassandra] базаһанды һаҡлау',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -341,14 +341,14 @@ $messages['sl'] = array(
 	'cassandra-desc' => 'Shrani redakcije besedil v zbirko podatkov [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
 	'cassandra-desc' => 'Смешта ревизију текста у [http://cassandra.apache.org Апаш Касандра] базу података',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'cassandra-desc' => 'Smešta reviziju teksta u [http://cassandra.apache.org Apaš Kasandra] bazu podataka',
 );

@@ -391,7 +391,7 @@ $messages['arz'] = array(
 	'fundraiserstats-tab-maximums' => 'الحدود القصوى (بالدولار الامريكاني)',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  * @author Haqmar
  */
@@ -472,7 +472,7 @@ $messages['be'] = array(
 	'contribstats-template' => 'Шаблон',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -4647,7 +4647,7 @@ $messages['sl'] = array(
 	'fundraiserstats-instructions' => 'Če si želite ogledati statistiko nekega dne, premaknite miškin kazalec na vrstico tega dneva. Vsako leto je na grafikonu drugače obarvano.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Јованвб
  * @author Михајло Анђелковић
  */
@@ -4684,7 +4684,7 @@ $messages['sr-ec'] = array(
 	'fundraiserstats-tab-contributions' => 'Број доприноса',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

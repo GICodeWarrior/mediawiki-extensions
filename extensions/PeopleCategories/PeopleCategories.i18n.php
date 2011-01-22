@@ -28,7 +28,7 @@ $messages['aln'] = array(
 	'peoplecategories-desc' => 'Ndryshimet shfaqet emrat faqe nga "Emri Lastname" për "Lastname, Emri" në faqet e specifikuara kategori',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(

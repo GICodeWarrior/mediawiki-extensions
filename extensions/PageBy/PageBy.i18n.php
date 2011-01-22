@@ -83,7 +83,7 @@ $messages['arz'] = array(
 	'pageby-anon' => '<i>مجهول</i>',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -601,7 +601,7 @@ $messages['sk'] = array(
 	'pageby-anon' => '<i>anonymní</i>',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -609,7 +609,7 @@ $messages['sr-ec'] = array(
 	'pageby-anon' => '<i>анонимно</i>',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'pageby-contributors' => 'Doprinosi:',
 	'pageby-anon' => '<i>anonimno</i>',

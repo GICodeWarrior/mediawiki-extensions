@@ -125,7 +125,7 @@ $messages['avk'] = array(
 	'querysuccessful' => 'Kucilanhara',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Comp1089
  */
 $messages['ba'] = array(
@@ -154,7 +154,7 @@ $messages['bcl'] = array(
 	'querysuccessful' => 'Matriumpo an paghapot',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -311,7 +311,7 @@ Die Abfragen können die Server sehr stark belasten, deshalb nutze die Funktion 
 	'right-asksql' => 'Ausführung von SQL-Abfragen',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
@@ -1124,7 +1124,7 @@ Ta funkcija lahko pogosto precej obremeni strežnik, zato jo uporabljajte varčn
 	'right-asksql' => 'Pošiljanje poizvedb SQL',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Sasa Stefanovic
  */
@@ -1142,7 +1142,7 @@ $messages['sr-ec'] = array(
 	'right-asksql' => 'Направи SQL упите',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1342,6 +1342,7 @@ Việc làm này thường kéo tải của máy chủ một cách đáng kể, 
 /** Cantonese (粵語)
  * @author Horacewai2
  * @author Shinjiman
+ * @author Waihorace
  */
 $messages['yue'] = array(
 	'asksql' => 'SQL查詢',

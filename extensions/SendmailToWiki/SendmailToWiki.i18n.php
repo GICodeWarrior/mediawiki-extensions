@@ -60,7 +60,7 @@ $messages['ar'] = array(
 	'sendmailtowiki-err-onlyplain' => 'بسبب إساءة الفهم المحتملة فالرسائل النصية النقية فقط مقبولة.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -143,7 +143,7 @@ $messages['de'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Aufgrund potenzieller Fehlinterpretationen werden nur reine Textnachrichten akzeptiert.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(

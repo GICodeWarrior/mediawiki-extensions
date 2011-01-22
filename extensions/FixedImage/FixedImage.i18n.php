@@ -62,7 +62,7 @@ $messages['bcc'] = array(
 	'fixedimage-desc' => 'اضافه کتن <code>&lt;fundraising&gt;</code> برچسپ په یک عکس',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -490,14 +490,14 @@ $messages['sq'] = array(
 	'fixedimage-desc' => 'Vendos shenjë <code>&lt;fundraising&gt;</code> në figurë',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  */
 $messages['sr-ec'] = array(
 	'fixedimage-desc' => 'Додаје ознаку <code>&lt;fundraising&gt;</code> као слику.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -62,7 +62,7 @@ $messages['arz'] = array(
 	'eval_code' => 'كود',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -603,7 +603,7 @@ $messages['sk'] = array(
 	'eval_code' => 'Kód',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */
 $messages['sr-ec'] = array(
@@ -615,7 +615,7 @@ $messages['sr-ec'] = array(
 	'eval_code' => 'Кôд',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'eval' => 'Eval',
 	'eval-desc' => 'Dodaje [[Special:Eval|sučelje]] na <code>eval()</code> funkciju',

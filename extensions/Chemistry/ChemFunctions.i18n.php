@@ -123,7 +123,7 @@ $messages['az'] = array(
 	'chemFunctions_Formula' => 'Formul',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -277,7 +277,7 @@ $messages['de'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!',
 );
 
-/** German (formal address) (Deutsch (Sie-Form)) */
+/** German (formal address) (‪Deutsch (Sie-Form)‬) */
 $messages['de-formal'] = array(
 	'chemFunctions_DataList' => 'Nachfolgend finden Sie Links zu Seiten, die eventuell Informationen über chemische Substanzen anbieten, nach denen Sie suchen:<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindung $MIXCASNameFormula auf NIST</a><br />
@@ -1169,7 +1169,7 @@ $messages['sl'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Napaka pri vnosu!',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1184,7 +1184,7 @@ $messages['sr-ec'] = array(
 	'chemFunctions_ChemFormInputError' => 'ХемФормула: грешка!',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

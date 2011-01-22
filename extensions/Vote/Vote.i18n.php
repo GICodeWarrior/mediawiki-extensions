@@ -188,7 +188,7 @@ $messages['bcl'] = array(
 	'vote-login' => 'Kaipuhan mong [$1 maglaog] magboto.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -423,7 +423,7 @@ riddler|Riddler',
 	'right-voteadmin' => 'Wahlergebnis anschauen',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -1545,6 +1545,7 @@ riddler|Enigmático',
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  * @author GKnedo
+ * @author Helder.wiki
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -1725,7 +1726,7 @@ $messages['sq'] = array(
 	'vote-invalid-choice' => 'Duhet të zgjidhni një nga zgjedhjet e mundshme.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1751,7 +1752,7 @@ pecenje|Печење',
 	'right-voteadmin' => 'Прегледање резултата гласања',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2137,6 +2138,7 @@ riddler|谜题先生',
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Shinjiman
  * @author Wrightbus
  */
@@ -2157,7 +2159,7 @@ riddler|謎人',
 	'vote-results-choice' => '選擇',
 	'vote-results-count' => '數量',
 	'vote-results-none' => '在這個時間無放任何投票。',
-	'vote-login' => '你必須[$1 登錄]以投票。',
+	'vote-login' => '你必須[$1 登入]以投票。',
 	'vote-invalid-choice' => '您一定要在可以選擇的選項中選擇一個。',
 	'right-vote' => '投票',
 	'right-voteadmin' => '觀看投票結果',

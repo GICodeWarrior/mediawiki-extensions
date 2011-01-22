@@ -81,7 +81,7 @@ $messages['arz'] = array(
 	'formatchanges-editedby' => '$1 - عدلها $2 ($3)',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -562,7 +562,7 @@ $messages['sl'] = array(
 	'formatchanges-editedby' => '$1 – uredil $2 ($3)',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -572,7 +572,7 @@ $messages['sr-ec'] = array(
 	'formatchanges-editedby' => '$1 - изменио $2 ($3)',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -185,7 +185,7 @@ $messages['arz'] = array(
 	'amazonplus-less' => 'أقل',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -206,7 +206,7 @@ $messages['ba'] = array(
 	'amazonplus-less' => 'әҙерәк',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1230,7 +1230,7 @@ $messages['pdc'] = array(
 	'amazonplus-more' => 'meh',
 );
 
-/** Pfälzisch (Pfälzisch)
+/** Pälzisch (Pälzisch)
  * @author Xqt
  */
 $messages['pfl'] = array(
@@ -1492,7 +1492,7 @@ $messages['sl'] = array(
 	'amazonplus-less' => 'manj',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1514,7 +1514,7 @@ $messages['sr-ec'] = array(
 	'amazonplus-less' => 'мање',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1834,20 +1834,30 @@ $messages['zh-hant'] = array(
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
  * @author Wrightbus
  */
 $messages['zh-hk'] = array(
+	'amazonplus-nores' => '錯誤：沒有結果找到！',
+	'amazonplus-noidres' => '錯誤：找不到產品編號',
+	'amazonplus-used' => '二手',
 	'amazonplus-german' => '德語',
 	'amazonplus-french' => '法語',
 	'amazonplus-japanese' => '日語',
+	'amazonplus-amazon' => 'Amazon 價錢',
+	'amazonplus-new' => '新產品',
+	'amazonplus-more' => '更多',
+	'amazonplus-less' => '更少',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
  * @author Wrightbus
  */
 $messages['zh-tw'] = array(
 	'amazonplus-german' => '德語',
 	'amazonplus-french' => '法語',
 	'amazonplus-japanese' => '日語',
+	'amazonplus-new' => '全新',
 );
 

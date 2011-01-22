@@ -94,7 +94,7 @@ $messages['bar'] = array(
 	'lua_error_internal' => 'Inteana Fehla',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -655,7 +655,7 @@ $messages['sk'] = array(
 	'lua_overflow_time' => 'Bol dosiahnutý limit času behu',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -665,7 +665,7 @@ $messages['sr-ec'] = array(
 	'lua_overflow_time' => 'Достигнуто максимално време извршења',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'lua_error_internal' => 'Interna greška',
 	'lua_overflow_recursion' => 'Dostignut limit za rekurziju',

@@ -36,7 +36,7 @@ $messages['bar'] = array(
 	'editsectionhilitelink-desc' => "Hebt in entsprechadn Åbschnitt vu ana Seitn außa, wãnn'd Maus üwa'm „werkln“-Link is",
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -327,14 +327,14 @@ $messages['sl'] = array(
 	'editsectionhilitelink-desc' => 'Označi ustrezen razdelek strani, ko premaknete miško na povezavo za urejanje',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'editsectionhilitelink-desc' => 'Истиче одговарајући одељак стране када се мишем пређе преко везе за његову измену',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

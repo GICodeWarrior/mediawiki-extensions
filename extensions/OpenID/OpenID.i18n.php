@@ -512,7 +512,7 @@ $messages['be'] = array(
 	'openiddelete-button' => 'Пацвердзіць',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1154,7 +1154,7 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openid-provider-label-other-username' => 'Gib deinen „$1“-Benutzernamen an',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  * @author Imre
  * @author LWChris
@@ -4980,7 +4980,7 @@ $messages['sr-ec'] = array(
 	'openid-urls-delete' => 'Обриши',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Ex13
  * @author Michaello
  */
@@ -5995,6 +5995,7 @@ OpenID可以让你不必使用不同的密码登录不同站点。
  * @author Horacewai2
  * @author Liangent
  * @author Mark85296341
+ * @author Waihorace
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(

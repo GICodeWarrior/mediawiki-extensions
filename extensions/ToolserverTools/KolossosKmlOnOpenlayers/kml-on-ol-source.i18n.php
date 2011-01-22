@@ -69,7 +69,7 @@ $messages['ar'] = array(
 	'ts-kml-on-ol-map-by' => 'الخريطة بواسطة',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(

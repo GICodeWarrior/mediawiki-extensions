@@ -94,7 +94,7 @@ $messages['bar'] = array(
 	'userimages-noimages' => '$1 håd kane Büidl aufeglådn.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -693,7 +693,7 @@ $messages['sr'] = array(
 	'userimages-noimages' => '$1 нема послатих слика.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -703,7 +703,7 @@ $messages['sr-ec'] = array(
 	'userimages-noimages' => '$1 нема послатих слика.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -878,8 +878,8 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'userimages-caption' => '$1上傳的圖片',
+	'userimages-caption' => '$1 上傳的圖片',
 	'userimages-noname' => '無效或未有填寫帳號名稱。',
-	'userimages-noimages' => '$1沒有上傳圖片。',
+	'userimages-noimages' => '$1 沒有上傳圖片。',
 );
 

@@ -98,7 +98,7 @@ $messages['az'] = array(
 	'crossnamespacelinks' => 'Adlar fəzası arasındakı keçidlər',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -128,7 +128,7 @@ $messages['bcc'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|لینک|لینکان}} په $3',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -983,7 +983,7 @@ $messages['sq'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lidhje|lidhje}} tek hapësira $3',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -993,7 +993,7 @@ $messages['sr-ec'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|веза|везе|веза}} ка $3 именском простору',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

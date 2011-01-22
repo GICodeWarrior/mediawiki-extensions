@@ -121,7 +121,7 @@ $messages['arz'] = array(
 	'ea-selectcss' => 'اختر شريحة CSS',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -694,13 +694,6 @@ $messages['nah'] = array(
 	'e-mailpage' => 'E-mail zāzanilli',
 	'ea-heading' => '=== E-mailhua in zāzanilli $1 ===',
 	'ea-send' => 'Ticquihuāz',
-);
-
-/** Low German (Plattdüütsch)
- * @author Slomox
- */
-$messages['nds'] = array(
-	'ea-fromgroup' => 'Vun Grupp:',
 );
 
 /** Dutch (Nederlands)

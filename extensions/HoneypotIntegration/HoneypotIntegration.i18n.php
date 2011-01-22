@@ -40,7 +40,7 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'عدد الأحداث الأخيرة التي أطلقها عنوان الأيبي، طبقا لProject Honey Pot',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(

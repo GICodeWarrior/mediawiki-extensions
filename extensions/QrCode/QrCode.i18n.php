@@ -31,7 +31,7 @@ $messages['az'] = array(
 	'qrcode-desc' => 'QR şifrəli təsvirlər yaradır və onları viki səhifələrə əlavə edir',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(

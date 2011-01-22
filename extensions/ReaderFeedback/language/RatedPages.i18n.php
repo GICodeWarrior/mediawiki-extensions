@@ -62,7 +62,7 @@ $messages['arz'] = array(
 	'ratedpages-graphs' => 'بيانات التقييم',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  * @author Haqmar
  */
@@ -84,7 +84,7 @@ $messages['bcc'] = array(
 	'ratedpages-graphs' => 'دیتای درجه بندی',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -737,7 +737,7 @@ $messages['sl'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}}',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -747,7 +747,7 @@ $messages['sr-ec'] = array(
 	'ratedpages-none' => 'Нема страница у овом списку',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

@@ -470,7 +470,7 @@ Bitte warte, bis die momentane Aktion abgeschlossen ist.',
 	'tag-logpagetext' => 'Dies ist ein Logbuch aller hinzugefügten und entfernten Bildertags.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  * @author Imre
  */
@@ -1898,7 +1898,7 @@ $messages['sl'] = array(
 	'imagetagging-images' => 'slike',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1937,7 +1937,7 @@ $messages['sr-ec'] = array(
 	'tag-logpagetext' => 'Ово је историја свих додавања и брисања тагова са слика',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */

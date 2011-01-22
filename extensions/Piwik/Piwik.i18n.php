@@ -89,7 +89,7 @@ $messages['ast'] = array(
 	'piwik-browsers' => 'Navegadores',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -571,7 +571,7 @@ $messages['sk'] = array(
 	'right-viewpiwik' => 'Zobraziť [[Special:Piwik|štatistiku Piwik]]',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -583,7 +583,7 @@ $messages['sr-ec'] = array(
 	'right-viewpiwik' => 'Преглед [[Special:Piwik|Piwik статистика]]',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
  */

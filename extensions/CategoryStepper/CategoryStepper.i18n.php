@@ -65,7 +65,7 @@ $messages['az'] = array(
 	'categorystepper-start' => '(kateqoriyanın başlanğıcı)',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -74,7 +74,7 @@ $messages['ba'] = array(
 	'categorystepper-start' => '(Категорияның башы)',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -640,7 +640,7 @@ $messages['sl'] = array(
 	'categorystepper-start' => '(Začetek kategorije)',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -650,7 +650,7 @@ $messages['sr-ec'] = array(
 	'categorystepper-start' => '(Почетак категорије)',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -806,5 +806,13 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'categorystepper-end' => '（分類結尾）',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
+	'categorystepper-end' => '(分類結尾)',
+	'categorystepper-start' => '(分類開頭)',
 );
 

@@ -468,7 +468,7 @@ $4',
 	'right-todosubmit' => 'Benutzerrechte auf Aufgabenliste beschränken',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author ChrisiPK
  */
 $messages['de-formal'] = array(
@@ -1860,7 +1860,7 @@ $4',
 	'right-todosubmit' => 'Obmedziť právo používateľa na zoznam čo treba spraviť',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1880,7 +1880,7 @@ $messages['sr-ec'] = array(
 	'todo-form-submit' => 'Пошањи упит',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

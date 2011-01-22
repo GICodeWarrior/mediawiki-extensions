@@ -69,7 +69,7 @@ $messages['arz'] = array(
 	'securepasswords-word' => 'لا تكون كلمة',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -709,7 +709,7 @@ $messages['sk'] = array(
 	'securepasswords-word' => 'nesmie to byť slovo zo slovníka',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -723,7 +723,7 @@ $messages['sr-ec'] = array(
 	'securepasswords-word' => 'не може да буде реч',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'securepasswords-valid' => 'Vaša lozinka je neispravna ili prekratka.
 Ona mora:',

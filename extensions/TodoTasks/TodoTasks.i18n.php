@@ -128,7 +128,7 @@ $messages['arz'] = array(
 نظام إخطار %s الصديق',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -339,7 +339,7 @@ Zum Anschauen deiner kompletten Aufgabenliste siehe %s.
 Dein freundliches %s-Benachrichtungssystem',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  * @author The Evil IP address
  */
@@ -1405,7 +1405,7 @@ Svoj kompletný Zoznam úloh si môžete pozrieť na %s.
 Váš priateľský upozorňovací systém %s',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1423,7 +1423,7 @@ $messages['sr-ec'] = array(
 	'tasklistprojdisp' => 'Прикажи',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

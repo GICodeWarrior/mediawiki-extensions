@@ -97,7 +97,7 @@ $messages['arz'] = array(
 	'contrib-tracking-button' => 'استمر',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -113,7 +113,7 @@ $messages['ba'] = array(
 	'contrib-tracking-item-name-recurring' => 'Ай һайын ҡабатланған иғәнә',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -239,11 +239,13 @@ $messages['de'] = array(
 	'contrib-tracking-item-name-recurring' => 'Monatlich wiederholende Spende',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
+ * @author Kghbln
  */
 $messages['de-formal'] = array(
-	'contrib-tracking-continue' => 'Wenn Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf „Weiter“, um Ihre Spende über PayPal abzuschließen.',
+	'contrib-tracking-continue' => 'Sofern Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf „{{int:contrib-tracking-button}}“, um Ihre Spende über PayPal abzuschließen.',
+	'contrib-tracking-redirect' => 'Sie werden automatisch zu PayPal weitergeleitet, um Ihre Spende abzuschließen zu können.',
 );
 
 /** Zazaki (Zazaki)
@@ -663,7 +665,7 @@ $messages['ksh'] = array(
 	'contrib-tracking-button' => 'Wigger',
 );
 
-/** Cornish (Kernewek)
+/** Cornish (Kernowek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -1034,7 +1036,7 @@ $messages['sl'] = array(
 	'contrib-tracking-item-name-recurring' => 'Ponavljajoči se mesečni prispevki',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Јованвб
  */
 $messages['sr-ec'] = array(
@@ -1042,7 +1044,7 @@ $messages['sr-ec'] = array(
 	'contrib-tracking-button' => 'Настави',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

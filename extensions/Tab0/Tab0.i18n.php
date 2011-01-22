@@ -34,7 +34,7 @@ $messages['arz'] = array(
 	'tab0-desc' => 'يضيف اللسان "0"، موصولا إلى صفحة التعديل لأول قسم من الصفحة',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -352,7 +352,7 @@ $messages['sl'] = array(
 	'tab0-desc' => 'Doda »ničto« oznako, ki se povezuje na urejevalno stran prvega razdelka strani',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -360,7 +360,7 @@ $messages['sr-ec'] = array(
 	'tab0-desc' => 'Додаје језичак „0“, повезујући ка форми за измену првог одељка странице',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */
@@ -433,6 +433,7 @@ $messages['vi'] = array(
 
 /** Cantonese (粵語)
  * @author Horacewai2
+ * @author Waihorace
  */
 $messages['yue'] = array(
 	'tab0-desc' => '新增"0"標籤去編輯第一段',

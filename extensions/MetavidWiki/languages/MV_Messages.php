@@ -1133,7 +1133,7 @@ $messages['be'] = array(
 	'mv_search_categories' => 'Катэгорыі',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -2103,7 +2103,7 @@ Zur Stream-Ansicht springen: $2',
 	'right-mv_edit_stream' => 'Stream-Dateien bearbeiten',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  * @author Pill
  * @author Revolus
@@ -3360,7 +3360,7 @@ $messages['ga'] = array(
 	'mv_category' => 'catagóir',
 );
 
-/** Traditional Gan script (贛語(繁體))
+/** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
 $messages['gan-hant'] = array(
@@ -9384,7 +9384,7 @@ $messages['sl'] = array(
 	'mv_history' => 'Zgodovina',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -9487,8 +9487,8 @@ $messages['sr-ec'] = array(
 	'mv_date_last_week' => 'Последња седмица',
 	'mv_category_results' => 'Резултати категорије',
 	'mv_intrest_group_results' => 'Интересне групе',
-	'mv_most_relevant' => 'Најрелевантнији',
-	'mv_most_recent' => 'Најскорији',
+	'mv_most_relevant' => 'Најрелевантније',
+	'mv_most_recent' => 'Најновије',
 	'mv_most_viewed' => 'Најпрегледанији',
 	'mv_category' => 'категорија',
 	'mv_remove_filter' => 'избриши филтер',
@@ -9544,7 +9544,7 @@ $messages['sr-ec'] = array(
 	'mv_new_anno_en' => 'Нови таг или белешка',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

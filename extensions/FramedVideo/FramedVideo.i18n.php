@@ -102,7 +102,7 @@ $messages['arz'] = array(
 	'framedvideo-desc' => 'يسمح بتضمين الفيديو من مواقع ويب متعددة باستخدام الوسم <code>&lt;video&gt;</code>',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -863,7 +863,7 @@ $messages['sk'] = array(
 	'framedvideo-desc' => 'Umožňuje vkladanie videa z rozličných webstránok pomocou značky <code>&lt;video&gt;</code>',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -875,7 +875,7 @@ $messages['sr-ec'] = array(
 	'framedvideo_error_height_too_big' => 'Задата вредност за параметар "height" је превелика.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'framedvideo_errors' => 'Došlo je do nekoliko grešaka!',
 	'framedvideo_error' => 'Došlo je do greške!',

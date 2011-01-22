@@ -42,7 +42,7 @@ $messages['ar'] = array(
 	'delaydef-error-redef' => 'خطأ: محاولة لإعادة تعريف $1.',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -432,8 +432,19 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Waihorace
  */
 $messages['zh-hant'] = array(
+	'delaydef-error-no-name' => '錯誤：沒有指定name參數。',
+	'delaydef-error-redef' => '錯誤：試圖重新定義為$1。',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Pbdragonwang
+ */
+$messages['zh-tw'] = array(
+	'delayeddefinition-desc' => '添加&lt;define&gt;與&lt;display&gt;以重定位代碼。',
+	'delaydef-error-missing-def' => '錯誤：定義需要沒有找到的<顯示 name="$1">。',
 	'delaydef-error-no-name' => '錯誤：沒有指定name參數。',
 	'delaydef-error-redef' => '錯誤：試圖重新定義為$1。',
 );

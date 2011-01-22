@@ -96,7 +96,7 @@ Du kååst de Saiten ned åleeng, ower du kååstas [{{fullurl:{{FULLPAGENAME}}|
 <createbox>break=no</createbox>",
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Zedlik
@@ -197,7 +197,7 @@ Du kannst diese Seite daher nicht anlegen, sie aber [{{fullurl:{{FULLPAGENAME}}|
 <createbox>break=no</createbox>",
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  */
 $messages['de-formal'] = array(
@@ -776,7 +776,7 @@ Túto stránku nemôžete vytvoriť, ale môžete ju [{{fullurl:{{FULLPAGENAME}}
 <createbox>break=no</createbox>",
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
 $messages['sr-ec'] = array(
 	'createbox-create' => 'Направи',
 );

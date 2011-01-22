@@ -126,7 +126,7 @@ Mechadst de existirate Seiten beorwaten?',
 	'createpage-badtitle' => '„$1“ kå ned ois Seitentitl gnutzt wern',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -271,7 +271,7 @@ Möchtest du die existierende Seite bearbeiten?',
 	'createpage-badtitle' => '„$1“ kann nicht als Seitentitel genutzt werden',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
  * @author Umherirrender
  */
@@ -1008,7 +1008,7 @@ $messages['sl'] = array(
 	'createpage-badtitle' => '»$1« ni mogoče uporabiti kot naslov strani',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1025,7 +1025,7 @@ $messages['sr-ec'] = array(
 	'createpage-badtitle' => '"$1" не може бити употребљен као наслов стране',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Жељко Тодоровић
  */

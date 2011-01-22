@@ -168,7 +168,7 @@ $messages['avk'] = array(
 	'bookinfo-provider' => 'Origdafusik : $1',
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -201,7 +201,7 @@ $messages['be'] = array(
 	'bookinfo-result-author' => 'Аўтар:',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -1603,7 +1603,7 @@ $messages['sl'] = array(
 	'bookinfo-provider' => 'Podatke nudi: $1',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
@@ -1617,7 +1617,7 @@ $messages['sr-ec'] = array(
 	'bookinfo-provider' => 'Подаци из: $1',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

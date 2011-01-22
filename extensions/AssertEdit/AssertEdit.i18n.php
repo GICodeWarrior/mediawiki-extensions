@@ -67,7 +67,7 @@ $messages['ast'] = array(
 	'assert_edit_message' => "Falló l'afirmación especificada ($1).",
 );
 
-/** Bashkir (Башҡорт)
+/** Bashkir (Башҡортса)
  * @author Assele
  */
 $messages['ba'] = array(
@@ -85,7 +85,7 @@ $messages['bcc'] = array(
 	'assert_edit_message' => 'مشخص بوتگین اعلان ($1) پروش وارت',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
@@ -749,7 +749,7 @@ $messages['sq'] = array(
 	'assert_edit_message' => 'Mbrojtja e caktuar ($1) dështoi.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  */
 $messages['sr-ec'] = array(
@@ -758,7 +758,7 @@ $messages['sr-ec'] = array(
 	'assert_edit_message' => 'Одређена тврдња ($1) није успела.',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(

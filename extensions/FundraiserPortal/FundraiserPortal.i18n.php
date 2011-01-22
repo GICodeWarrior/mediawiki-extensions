@@ -67,7 +67,7 @@ $messages['ar'] = array(
 	'fundraiserportal-tourmaline-close' => 'أخفِ هذا من الآن فصاعدًا',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -1062,7 +1062,7 @@ $messages['sl'] = array(
 	'fundraiserportal-tourmaline-close' => 'Skrij od zdaj naprej',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1074,7 +1074,7 @@ $messages['sr-ec'] = array(
 	'fundraiserportal-tourmaline-button' => 'Донирајте сад',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'fundraiserportal-ruby-button' => 'Donirajte sad',
 	'fundraiserportal-rubytext-button' => 'Donirajte sad',

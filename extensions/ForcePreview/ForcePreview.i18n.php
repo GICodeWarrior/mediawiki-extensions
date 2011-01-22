@@ -73,7 +73,7 @@ $messages['bar'] = array(
 	'right-forcepreviewexempt' => 'Speichan ohne dass a Voaschau dazwunga wiad',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
