@@ -82,7 +82,7 @@ $messages['arc'] = array(
 	'blank-log-name' => 'ܣܓܠܐ ܣܦܝܩܐ',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -185,7 +185,7 @@ Siehe das $2 für eine Liste der letzten Leerungen.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Erzeuge]] Tabelle mit geleerten Seiten',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
  * @author The Evil IP address
  */
@@ -768,7 +768,7 @@ $messages['ru'] = array(
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|заполнение]] таблицы очищенных страниц',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -776,7 +776,7 @@ $messages['sr-ec'] = array(
 	'purewikideletion-blanknologin' => 'Нисте пријављени',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'purewikideletion-blanknologin' => 'Niste ulogovani',
 );
