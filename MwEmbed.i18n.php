@@ -23,7 +23,7 @@ $messages['af'] = array(
 	'mwembed-desc' => 'Bied ondersteuning vir mwEmbed-modules en -uitbreidings',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -72,6 +72,20 @@ $messages['de'] = array(
 	'mwembed-desc' => 'Ermöglicht die Nutzung von Modulen und Erweiterungen, die „mwEmbed“ benötigen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mwembed-desc' => 'Dawa pódpěru za module a rozšyrjenja za mwEmbed',
+);
+
+/** Greek (Ελληνικά)
+ * @author Evropi
+ */
+$messages['el'] = array(
+	'mwembed-desc' => 'Παρέχει υποστήριξη για τις μονάδες και επεκτάσεις του mwEmbed',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */
@@ -100,6 +114,13 @@ $messages['gsw'] = array(
 	'mwembed-desc' => 'Unterstitzig fir d Nutzig vu „mwEmbed“-Module un -Erwyterige',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'mwembed-desc' => 'אספקת תמיכה במודולים והרחבות של mwEmbed',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -107,11 +128,25 @@ $messages['hsb'] = array(
 	'mwembed-desc' => 'Skići podpěru za module a rozšěrjenja mwEmbed',
 );
 
+/** Hungarian (Magyar)
+ * @author BáthoryPéter
+ */
+$messages['hu'] = array(
+	'mwembed-desc' => 'Támogatást nyújt az „mwEmbed“ modulokhoz és bővítményekhez',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'mwembed-desc' => 'Le extension MwEmbed forni supporto pro modulos e extensiones mwEmbed',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'mwembed-desc' => 'Menyediakan dukungan untuk modul dan ekstensi mwEmbed',
 );
 
 /** Japanese (日本語)
@@ -210,5 +245,12 @@ $messages['tl'] = array(
  */
 $messages['uk'] = array(
 	'mwembed-desc' => 'Забезпечує підтримку модулів та розширень mwEmbed',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'mwembed-desc' => '提供支援 mwEmbed 的模塊及擴充套件',
 );
 
