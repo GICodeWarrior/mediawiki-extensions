@@ -71,7 +71,7 @@ class LocalisationUpdate {
 				// I ain't kidding... RecursiveIteratorIterator.
 				foreach( new RecursiveIteratorIterator( $dirs ) as $pathname => $item ) {
 					$filename = basename( $pathname );
-					
+					$matches = array();
 					if( preg_match( '/^(.*)\.i18n\.php$/', $filename, $matches ) ) {
 						$group = $matches[1];
 						$extFiles[$group] = $pathname;

@@ -162,6 +162,7 @@ class OAIRepo {
 	function validateDatestamp( $var ) {
 		if( isset( $this->_request[$var] ) ) {
 			$time = $this->_request[$var];
+			$matches = array();
 			if( preg_match( '/^(\d\d\d\d)-(\d\d)-(\d\d)$/', $time, $matches ) ) {
 				return wfTimestamp( TS_UNIX,
 					$matches[1] . $matches[2] . $matches[3] . '000000' );
@@ -408,7 +409,9 @@ class OAIRepo {
 		if( !isset( $this->_request[$var] ) ) {
 			return null;
 		}
+		$matches = array();
 		if( preg_match( '/^([a-z_]+):(\d+)(?:|:(\d{14}))$/', $this->_request[$var], $matches ) ) {
+			$token = array();
 			$token['metadataPrefix'] = $matches[1];
 			$token['resume']         = IntVal( $matches[2] );
 			$token['until']          = isset( $matches[3] )
