@@ -25,7 +25,7 @@ class SpecialEmailPage extends SpecialPage {
 	 * Override SpecialPage::execute($param = '')
 	 */
 	function execute( $param ) {
-		global $wgOut, $wgUser, $wgRequest, $wgParser, $wgEmailPageContactsCat, $wgGroupPermissions, $wgSitename,
+		global $wgOut, $wgUser, $wgRequest, $wgEmailPageContactsCat, $wgGroupPermissions, $wgSitename,
 			$wgRecordAdminCategory, $wgEmailPageCss, $wgEmailPageAllowAllUsers, $wgEmergencyContact;
 
 		$db = wfGetDB( DB_SLAVE );

@@ -32,7 +32,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Daniel Kinzler',
 	'descriptionmsg' => 'ajaxtest-desc',
 );
-$wgExtensionFunctions[] = 'efAjaxTestSetup';
+
 $wgSpecialPages['AjaxTest'] = 'AjaxTestPage';
 
 $dir = dirname( __FILE__ ) . '/';
@@ -44,13 +44,6 @@ $wgAutoloadClasses['AjaxTestPage'] = $dir . 'AjaxTestPage.php';
  * register Ajax function
  */
 $wgAjaxExportList[] = 'efAjaxTest';
-
-/**
- * Hook it up
- */
-function efAjaxTestSetup() {
-	global $wgParser, $wgCategoryTreeAllowTag;
-}
 
 /**
  * Entry point for Ajax, registered in $wgAjaxExportList.
