@@ -104,8 +104,8 @@ class VectorHooks {
 	 * 
 	 * Adds Vector-releated items to the preferences
 	 * 
-	 * @param $out User current user
-	 * @param $skin array list of default user preference controls
+	 * @param $user User current user
+	 * @param $defaultPreferences array list of default user preference controls
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
 		global $wgVectorFeatures;
