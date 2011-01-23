@@ -26,7 +26,7 @@ function efOWALiteTracker($skin, &$text){
 		return;
 	}
 	$text = "<script> var includeOWA = false; if( Geo ){\n";
-	foreach( $condition as $wgOWAGeoTrackSites ){
+	foreach( $wgOWAGeoTrackSites as $condition ){
 		$text .= "if (Geo.{$condition[0]} && Geo.{$condition[0]} == \"{$condition[1]}\"){
 	if( !includeOWA ) {
 		includeOWA = true;
