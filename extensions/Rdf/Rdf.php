@@ -91,29 +91,17 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionFunctions[] = 'setupMwRdf';
 
+$wgExtensionMessagesFiles['Rdf'] = dirname( __FILE__ ) . '/Rdf.i18n.php';
+
+$wgHooks['ParserFirstCallInit'][] = 'MwRdfOnParserFirstCallInit';
+$wgHooks['ArticleSave'][] = 'MwRdfOnArticleSave';
+$wgHooks['ArticleSaveComplete'][] = 'MwRdfOnArticleSaveComplete';
+$wgHooks['TitleMoveComplete'][] = 'MwRdfOnTitleMoveComplete';
+$wgHooks['ArticleDeleteComplete'][] = 'MwRdfOnArticleDeleteComplete';
+
 function setupMwRdf() {
-	global $wgParser, $wgMessageCache, $wgRequest, $wgOut, $wgHooks;
+	global $wgRequest, $wgOut;
 
-	$wgMessageCache->addMessages(array('rdf' => 'Rdf',
-									   'rdf-inpage' => "Embedded In-page Turtle",
-									   'rdf-dcmes' => "Dublin Core Metadata Element Set",
-									   'rdf-cc' => "Creative Commons",
-									   'rdf-image' => "Embedded images",
-									   'rdf-linksto' => "Links to the page",
-									   'rdf-linksfrom' => "Links from the page",
-									   'rdf-links' => "All links",
-									   'rdf-history' => "Historical versions",
-									   'rdf-interwiki' => "Interwiki links",
-									   'rdf-categories' => "Categories",
-									   'rdf-target' => "Target page",
-									   'rdf-modelnames' => "Model(s)",
-									   'rdf-format' => "Output format",
-									   'rdf-output-xml' => "XML",
-									   'rdf-output-turtle' => "Turtle",
-									   'rdf-output-ntriples' => "NTriples",
-									   'rdf-instructions' => "Select the target page and RDF models you're interested in."));;
-
-	$wgParser->setHook( 'rdf', 'renderMwRdf' );
 	SpecialPage::AddPage(new SpecialPage('Rdf', '', true, 'wfSpecialRdf',
 										 'extensions/MwRdf.php'));
 
@@ -158,13 +146,12 @@ function setupMwRdf() {
 			}
 		}
 	}
+}
 
-	# We set some hooks for invalidating the cache
+function MwRdfOnParserFirstCallInit( $parser ) {
+	$parser->setHook( 'rdf', 'renderMwRdf' );
 
-	$wgHooks['ArticleSave'][] = 'MwRdfOnArticleSave';
-	$wgHooks['ArticleSaveComplete'][] = 'MwRdfOnArticleSaveComplete';
-	$wgHooks['TitleMoveComplete'][] = 'MwRdfOnTitleMoveComplete';
-	$wgHooks['ArticleDeleteComplete'][] = 'MwRdfOnArticleDeleteComplete';
+	return true;
 }
 
 function wfSpecialRdf($par) {
