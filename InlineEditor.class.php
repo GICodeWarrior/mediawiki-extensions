@@ -204,7 +204,7 @@ class InlineEditor {
 	 * @param $output OutputPage
 	 */
 	public function render( &$output ) {
-		global $wgParser, $wgHooks, $wgRequest, $wgExtensionAssetsPath, $wgDisableOutputCompression;
+		global $wgHooks, $wgRequest, $wgExtensionAssetsPath, $wgDisableOutputCompression;
 
 		// if the page is being saved, retrieve the wikitext from the JSON
 		if ( $wgRequest->wasPosted() ) {
