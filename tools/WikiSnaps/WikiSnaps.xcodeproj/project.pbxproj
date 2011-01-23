@@ -62,15 +62,15 @@
 		494C81E112E8DBAD000931F2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		494C820F12E8E385000931F2 /* SourcePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcePickerViewController.h; sourceTree = "<group>"; };
 		494C821012E8E385000931F2 /* SourcePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcePickerViewController.m; sourceTree = "<group>"; };
-		494C821112E8E385000931F2 /* SourcePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SourcePickerViewController.xib; path = Classes/SourcePickerViewController.xib; sourceTree = "<group>"; };
+		494C821112E8E385000931F2 /* SourcePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourcePickerViewController.xib; sourceTree = "<group>"; };
 		494C82C512ECBEB6000931F2 /* ImageUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadViewController.h; sourceTree = "<group>"; };
 		494C82C612ECBEB6000931F2 /* ImageUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploadViewController.m; sourceTree = "<group>"; };
-		494C82C712ECBEB6000931F2 /* ImageUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ImageUploadViewController.xib; path = Classes/ImageUploadViewController.xib; sourceTree = "<group>"; };
+		494C82C712ECBEB6000931F2 /* ImageUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageUploadViewController.xib; sourceTree = "<group>"; };
 		494C834C12ECEAB3000931F2 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = XMLtoDict/XMLReader.h; sourceTree = "<group>"; };
 		494C834D12ECEAB3000931F2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = XMLtoDict/XMLReader.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WikiSnaps-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WikiSnaps-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		A127DA3D12E0DF9700149FC9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ../SettingsViewController.h; sourceTree = "<group>"; };
-		A127DA3E12E0DF9700149FC9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ../SettingsViewController.m; sourceTree = "<group>"; };
+		A127DA3D12E0DF9700149FC9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		A127DA3E12E0DF9700149FC9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		A127DA3F12E0DF9700149FC9 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		A1338B7212E0F01700662B28 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = ASI/ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		A1338B7312E0F01700662B28 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = ASI/ASIAuthenticationDialog.m; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		A1FECB2712E10D41007CF08C /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		A1FECB2912E10DCA007CF08C /* ImageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDetailsViewController.h; sourceTree = "<group>"; };
 		A1FECB2A12E10DCA007CF08C /* ImageDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDetailsViewController.m; sourceTree = "<group>"; };
-		A1FECB2B12E10DCA007CF08C /* ImageDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ImageDetailsViewController.xib; path = Classes/ImageDetailsViewController.xib; sourceTree = "<group>"; };
+		A1FECB2B12E10DCA007CF08C /* ImageDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageDetailsViewController.xib; sourceTree = "<group>"; };
 		A1FECB3C12E1105B007CF08C /* CommonsUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonsUpload.h; sourceTree = "<group>"; };
 		A1FECB3D12E1105B007CF08C /* CommonsUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonsUpload.m; sourceTree = "<group>"; };
 		F130561B10CEDA5C00271CD6 /* home-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-background.png"; sourceTree = "<group>"; };
