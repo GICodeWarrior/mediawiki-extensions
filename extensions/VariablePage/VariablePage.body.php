@@ -15,11 +15,15 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		global $wgOut, $wgRequest;
 		global $wgVariablePagePossibilities;
 
-		$lang = ( preg_match( '/^[A-Za-z-]+$/', $wgRequest->getVal( 'lang' ) ) ) ? $wgRequest->getVal( 'lang' ) : 'en' ;
+		$lang = ( preg_match( '/^[A-Za-z-]+$/', $wgRequest->getVal( 'lang' ) ) )
+				? $wgRequest->getVal( 'lang' )
+				: 'en' ;
 		$utm_source = $wgRequest->getVal( 'utm_source' );
 		$utm_medium = $wgRequest->getVal( 'utm_medium' );
 		$utm_campaign = $wgRequest->getVal( 'utm_campaign' );
-		$referrer = ( $wgRequest->getVal( 'referrer' )) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' );
+		$referrer = ( $wgRequest->getVal( 'referrer' ))
+				? $wgRequest->getVal( 'referrer' )
+				: $wgRequest->getHeader( 'referer' );
 	
 		$query = array();
 		if ( strlen( $lang ) ) $query[ 'language' ] = $lang;
@@ -76,7 +80,7 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		global $wgVariablePagePossibilities, $wgVariablePageDefault;
 
 		$total_probability = 0;
-		foreach ( $wgVariablePagePossibilities as $url => $probability ) {
+		foreach ( $wgVariablePagePossibilities as $probability ) {
 			$total_probability += $probability;
 		}
 
