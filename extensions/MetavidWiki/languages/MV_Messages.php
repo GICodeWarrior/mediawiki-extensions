@@ -14,6 +14,8 @@ $messages['en'] = array(
 
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
 
+	'mvadmin' => 'Admin functions for MetavidWiki',
+
 	# javascript mappings have moved to /js/mwEmbed/languages (so mwEmbed is more self contained)
 
 	# normal php based msg keys:
