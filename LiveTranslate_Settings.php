@@ -32,3 +32,26 @@ $wgGroupPermissions['sysop']['managetms'] = true;
 # Default translation memory type.
 # TMT_LTF, TMT_TMX, TMT_GCSV
 $egLiveTranslateTMT = TMT_LTF;
+
+# The namespaces that should show the translation control.
+$egLTNSWithTranslationControl = array(
+	              NS_MAIN => true,
+	              NS_TALK => false,
+	              NS_USER => true,
+	         NS_USER_TALK => false,
+	           NS_PROJECT => true,
+	      NS_PROJECT_TALK => false,
+	             NS_IMAGE => true,
+	        NS_IMAGE_TALK => false,
+	         NS_MEDIAWIKI => false,
+	    NS_MEDIAWIKI_TALK => false,
+	          NS_TEMPLATE => false,
+	     NS_TEMPLATE_TALK => false,
+	              NS_HELP => true,
+	         NS_HELP_TALK => false,
+	          NS_CATEGORY => true,
+	     NS_CATEGORY_TALK => false,
+);
+
+# Show the control for namespaces not specified in $egLTNSWithTranslationControl?
+$egLTUnknownNSShowControl = true;
