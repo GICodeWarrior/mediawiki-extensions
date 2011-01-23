@@ -645,25 +645,25 @@ class OAIRepo {
 
 	function fetchReferenceData( $rows ) {
 		$page_ids = array();
-		foreach($rows as $row){
+		foreach( $rows as $row ){
 			$page_ids[] = $row->up_page;
 		}
 
-		if(count($page_ids) == 1)
-			$pages_where = " AND up_page = $page_ids[0] ";
-		else
-			$pages_where = " AND up_page IN (".implode(",",$page_ids).") ";
+		$res = $this->_db->select(
+			array( 'updates', 'page', 'redirect' ),
+			array( 'up_page,up_sequence', 'rp.page_namespace AS page_namespace',
+                'rp.page_title AS page_title' ),
+			array(
+				'u.up_page=p.page_id',
+				'p.page_namespace=r.rd_namespace',
+                'p.page_title=r.rd_title',
+				'r.rd_from=rp.page_id',
+				'up_page' => $page_ids
+			),
+			__METHOD__
+		);
 
-		extract( $this->_db->tableNames( 'updates', 'page', 'redirect' ) );
-		$sql = "SELECT up_page,up_sequence,
-    rp.page_namespace AS page_namespace,
-    rp.page_title AS page_title
-    FROM $updates AS u, $page AS p, $redirect AS r, $page AS rp
-    WHERE u.up_page=p.page_id AND p.page_namespace=r.rd_namespace
-    AND p.page_title=r.rd_title AND r.rd_from=rp.page_id
-    $pages_where";
-
-		return $this->_db->resultObject( $this->_db->query( $sql ) );
+		return $this->_db->resultObject( $res );
 	}
 
 
