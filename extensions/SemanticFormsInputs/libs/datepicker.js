@@ -114,6 +114,15 @@ function SFI_DP_init ( input_id, params ) {
 			input.attr( "value", params.currValue );
 			jQuery( "#" + input_id.replace( "_dp_show", "" )).attr( "value", params.currValue );
 		}
+
+		// delete date when user deletes input field
+		input.change(function() {
+
+			if ( this.value == "" ) {
+				input.datepicker( "setDate", null );
+			}
+
+		});
 	}
 }
 
