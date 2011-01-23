@@ -284,6 +284,7 @@ class OAIUpdateRecord {
 	}
 	
 	function getTimestamp( $time ) {
+		$matches = array();
 		if( preg_match( '/^(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z$/', $time, $matches ) ) {
 			return wfTimestamp( TS_MW,
 				$matches[1] . $matches[2] . $matches[3] .
@@ -759,6 +760,7 @@ class OAIUpdateRecord {
  */
 function oaiNodeMap( $parent, $map ) {
 	$callMap = array();
+	$textMap = array();
 	foreach( $map as $key => $value ) {
 		if( is_int( $key ) ) {
 			$textMap[$value] = true;
@@ -766,7 +768,8 @@ function oaiNodeMap( $parent, $map ) {
 			$callMap[$key] = $value;
 		}
 	}
-	
+
+	$data = array();
 	foreach( $parent->childNodes as $node ) {
 		if( $node->nodeType == XML_ELEMENT_NODE ) {
 			$name = $node->nodeName;
