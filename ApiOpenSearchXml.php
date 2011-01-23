@@ -98,7 +98,8 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			
 			list( $extract, $badge ) = $this->getExtract( $title );
 			$image = $this->getBadge( $title, $badge );
-			
+
+			$item = array();
 			$item['Text']['*'] = $title->getPrefixedText();
 			$item['Description']['*'] = $extract;
 			$item['Url']['*'] = $title->getFullUrl();
@@ -208,6 +209,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		$end = "(?:$endgroup)";
 		$sentence = ".*?$end+";
 		$firstone = "/^($sentence)/u";
+		$matches = array();
 		if( preg_match( $firstone, $text, $matches ) ) {
 			return $matches[1];
 		} else {
@@ -224,6 +226,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	function _extractBadge( $text ) {
 		global $wgContLang;
 		$image = preg_quote( $wgContLang->getNsText( NS_IMAGE ), '#' );
+		$matches = array();
 		if( preg_match( "#\[\[\s*(?:image|$image)\s*:\s*([^|\]]+)#", $text, $matches ) ) {
 			return trim( $matches[1] );
 		} else {
