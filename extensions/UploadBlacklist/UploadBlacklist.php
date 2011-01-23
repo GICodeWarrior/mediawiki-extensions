@@ -9,13 +9,12 @@
 
 if( !defined( 'MEDIAWIKI' ) )
 	die();
-if( !function_exists( 'sha1_file' ) )
-	die( "UploadBlacklist extension requires PHP 4.3.0 or higher." );
 
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'UploadBlacklist',
 	'descriptionmsg' => 'uploadblacklist-desc',
+	'author'         => 'Brion Vibber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:UploadBlacklist',
 );
 
