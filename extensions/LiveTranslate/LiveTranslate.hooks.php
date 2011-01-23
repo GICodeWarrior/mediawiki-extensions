@@ -37,10 +37,17 @@ final class LiveTranslateHooks {
 		}
 		else if (
 			$egGoogleApiKey != ''
-			&& $article->exists() 
+			&& $article->exists()
 			&& ( count( $egLiveTranslateLanguages ) > 1 || ( count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) ) ) {
 			
-			self::displayTranslationControl( $currentLang );
+			global $egLTNSWithTranslationControl, $egLTUnknownNSShowControl;
+			$ns =  $title->getNamespace();
+			
+			if ( ( array_key_exists( $ns, $egLTNSWithTranslationControl ) && $egLTNSWithTranslationControl[$ns] )
+			 || ( !array_key_exists( $ns, $egLTNSWithTranslationControl ) && $egLTUnknownNSShowControl )
+			 ) {
+				self::displayTranslationControl( $currentLang );
+			}
 		}
 		
 		return true;
