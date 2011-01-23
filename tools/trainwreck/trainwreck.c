@@ -287,7 +287,9 @@ int	i;
 	}
 	mysql_close(writer.wr_conn);
 	writer.wr_status = ST_STOPPED;
-	logmsg("slave threads stopped");
+	logmsg("slave threads stopped; last executed = %s,%lu",
+			writer.wr_last_executed_file,
+			(long unsigned int) writer.wr_last_executed_pos);
 }
 
 static int
