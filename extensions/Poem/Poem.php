@@ -34,6 +34,13 @@ function wfPoemExtension( &$parser ) {
 	return true;
 }
 
+/**
+ * @param  $in
+ * @param array $param
+ * @param $parser Parser
+ * @param bool $frame
+ * @return string
+ */
 function PoemExtension( $in, $param=array(), $parser=null, $frame=false ) {
 
 	/* using newlines in the text will cause the parser to add <p> tags,

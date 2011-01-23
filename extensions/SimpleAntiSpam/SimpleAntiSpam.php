@@ -32,6 +32,10 @@ function efSimpleAntiSpamField(&$editpage, &$out) {
 }
 
 //check for the field and if it isn't empty, negate the save
+/**
+ * @param  $editpage EditPage
+ * @return bool
+ */
 function efSimpleAntiSpamCheck( $editpage ) {
 	global $wgRequest, $wgUser;
 	$spam = $wgRequest->getText( 'wpAntispam' );
@@ -43,7 +47,7 @@ function efSimpleAntiSpamCheck( $editpage ) {
 			'" submitted bogus field "' .
 			$spam .
 			'"' );
-		$editpage->spamPage();
+		$editpage->spamPageWithContent();
 		return false;
 	}
 	return true;

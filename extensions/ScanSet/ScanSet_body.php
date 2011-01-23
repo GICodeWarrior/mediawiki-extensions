@@ -186,6 +186,7 @@ class ScanSet {
 
 		$volumes = array();
 		while ( ( $file = readdir( $dir ) ) !== false ) {
+			$m = array();
 			if ( preg_match( '/^VOL([0-9]+) (.*)$/', $file, $m ) ) {
 				$volumes[$m[1]] = $m[2];
 				// Is this the current volume? Use strcmp to enforce leading zeros
@@ -226,6 +227,7 @@ class ScanSet {
 		$passedCurrent = false;
 		for ( $i = 0; $i < count( $lines ); $i++) {
 			$line = $lines[$i];
+			$m = array();
 			if ( !preg_match( '/^(\w+)\.(\w+),(.*)$/', trim( $line ), $m ) ) {
 				$this->doError( 'index_file_error', $i + 1 );
 				return false;
