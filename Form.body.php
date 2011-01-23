@@ -89,7 +89,7 @@ class SpecialForm extends SpecialPage {
 	}
 
 	function showForm( $form, $errmsg = null ) {
-		global $wgOut, $wgRequest, $wgParser, $wgUser, $wgSpecialFormRecaptcha;
+		global $wgOut, $wgRequest, $wgUser, $wgSpecialFormRecaptcha;
 
 		$self = $this->getTitle( $form->name );
 
