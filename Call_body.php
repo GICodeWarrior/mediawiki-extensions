@@ -36,7 +36,6 @@ class Call extends SpecialPage {
 
 
 	function execute( $par ) {
-		global $wgParser;
 		global $wgOut, $wgRequest, $wgRawHtml, $wgUser;
 		$oldRawHtml = $wgRawHtml;
 		$wgRawHtml = false;         // disable raw html if it's enabled as this could be XSS security risk
