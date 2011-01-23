@@ -27,7 +27,6 @@ $wgExtensionMessagesFiles['I18nTags'] = $dir . 'I18nTags.i18n.php';
 $wgHooks['ParserFirstCallInit'][] = 'efI18nTagsInit';
 
 function efI18nTagsInit( &$parser ) {
-	global $wgParser;
 	$class = 'I18nTags';
 	$parser->setHook( 'formatnum', array($class, 'formatNumber')  );
 	$parser->setHook( 'grammar',   array($class, 'grammar') );
