@@ -31,8 +31,6 @@ class MVAdmin extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct() {
-		global $wgMessageCache; // /TODO: should these be messages?
-		$wgMessageCache->addMessages( array( 'mvadmin' => 'Admin functions for MetavidWiki' ) );
 		parent::__construct( 'MVAdmin', 'delete' );
 	}
 
