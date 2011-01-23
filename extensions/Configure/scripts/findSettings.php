@@ -64,7 +64,6 @@ class FindSettings extends Maintenance {
 				'wgCheckUserStyleVersion',
 				'wgCaptcha', 'wgConfirmEditIP',
 				'wgCitationCache', 'wgCitationCounter', 'wgCitationRunning',
-				'wgCodeReviewStyleVersion',
 				'wgCollectionVersion', 'wgCollectionStyleVersion',
 				'wgCSS',
 				'wgDeleteQueueStyleVersion',
