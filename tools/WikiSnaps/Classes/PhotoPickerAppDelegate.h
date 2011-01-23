@@ -1,8 +1,11 @@
 //
 //  PhotoPickerAppDelegate.h
 //
-//  Copyright yourcompanyname 2009. All rights reserved.
+//  Created by Derk-Jan Hartman on 14-01-11.
+//  Copyright 2011 Derk-Jan Hartman
 //
+//  Dual-licensed MIT and BSD
+//  Based on Photopicker (MIT)
 
 #import <UIKit/UIKit.h>
 

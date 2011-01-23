@@ -1,8 +1,7 @@
 //
 //  NSData+PhotoPicker.m
 //
-//  Copyright 2009 yourcompanyname. All rights reserved.
-//
+//  Based on Photopicker (MIT)
 
 #import "NSData+PhotoPicker.h"
 

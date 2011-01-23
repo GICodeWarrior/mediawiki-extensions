@@ -1,16 +1,17 @@
 //
 //  SettingsViewController.h
-//  photopicker
+//  WikiSnaps
 //
 //  Created by Derk-Jan Hartman on 14-01-11.
-//  Copyright 2011 Wikimedia Commons. All rights reserved.
+//  Copyright 2011 Derk-Jan Hartman
 //
+//  Dual-licensed MIT and BSD
 
 #import <UIKit/UIKit.h>
 #import "Configuration.h"
 
 @interface SettingsViewController : UIViewController <UINavigationControllerDelegate,
-														 UITextFieldDelegate>{
+                                                        UITextFieldDelegate>{
 
 	IBOutlet UITextField *username;
 	IBOutlet UITextField *password;

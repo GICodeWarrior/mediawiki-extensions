@@ -1,10 +1,11 @@
 //
 //  CommonsUpload.m
-//  photopicker
+//  WikiSnaps
 //
 //  Created by Derk-Jan Hartman on 15-01-11.
-//  Copyright 2011 Wikimedia Commons. All rights reserved.
+//  Copyright 2011 Derk-Jan Hartman
 //
+//  Dual-licensed MIT and BSD
 
 #import "CommonsUpload.h"
 #import "Configuration.h"
@@ -37,7 +38,7 @@
 }
 
 - (void)uploadImage {
-	NSURL *url = [NSURL URLWithString:API_URL];
+	NSURL *url = [NSURL URLWithString:COMMONS_API_URL];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostFormat:ASIURLEncodedPostFormat];
 	
@@ -64,7 +65,7 @@
 	NSString *result;
 	[aScanner scanUpToString:@"\"" intoString:&result];
 	if( ![result isEqualToString:@"NeedToken"] ) {
-		NSLog( @"no needtoken response: %@", result);
+		[delegate uploadFailed: [NSString stringWithFormat:@"no needtoken response: %@", result]];
 		return;
 	}
 	
@@ -73,7 +74,7 @@
 	[aScanner scanUpToString:@"\"" intoString:&token];
 	
 	//New request
-	NSURL *url = [NSURL URLWithString:API_URL];
+	NSURL *url = [NSURL URLWithString:COMMONS_API_URL];
 	ASIFormDataRequest *newRequest = [ASIFormDataRequest requestWithURL:url];
 	[newRequest setPostFormat:ASIURLEncodedPostFormat];
 	
@@ -98,6 +99,7 @@
 - (void)requestTokenFailed:(ASIHTTPRequest *)request
 {
 	NSError *error = [request error];
+        [delegate uploadFailed: [error localizedDescription]];
 }
 
 
@@ -113,7 +115,7 @@
 	NSString *result;
 	[aScanner scanUpToString:@"\"" intoString:&result];
 	if( ![result isEqualToString:@"Success"] ) {
-		NSLog( @"no success response, %@", result);
+		[delegate uploadFailed: [NSString stringWithFormat:@"no success response, %@", result]];
 		return;
 	}
 	
@@ -122,7 +124,7 @@
 	[aScanner scanUpToString:@"\"" intoString:&token];
 	
 	//New request
-	NSURL *url = [NSURL URLWithString:API_URL];
+	NSURL *url = [NSURL URLWithString:COMMONS_API_URL];
 	ASIFormDataRequest *newRequest = [ASIFormDataRequest requestWithURL:url];
 	[newRequest setPostFormat:ASIURLEncodedPostFormat];
 	
@@ -146,6 +148,7 @@
 - (void)requestLoginFailed:(ASIHTTPRequest *)request
 {
 	NSError *error = [request error];
+        [delegate uploadFailed:[error localizedDescription]];
 }
 
 - (void)requestEditTokenFinished:(ASIHTTPRequest *)request
@@ -161,12 +164,12 @@
 	BOOL res;
 	res = [aScanner scanUpToString:@"\"" intoString:&editToken];
 	if( !res ) {
-		NSLog( @"could not find edittoken");
+		[delegate uploadFailed: [NSString stringWithFormat:@"could not find edittoken"]];
 		return;
 	}
 	
 	//New request
-	NSURL *url = [NSURL URLWithString:API_URL];
+	NSURL *url = [NSURL URLWithString:COMMONS_API_URL];
 	ASIFormDataRequest *newRequest = [ASIFormDataRequest requestWithURL:url];
 	[newRequest setPostFormat:ASIMultipartFormDataPostFormat];
 	
@@ -192,6 +195,7 @@
 - (void)requestEditTokenFailed:(ASIHTTPRequest *)request
 {
 	NSError *error = [request error];
+        [delegate uploadFailed:[error localizedDescription]];
 }
 
 - (void)requestUploadFinished:(ASIHTTPRequest *)request
@@ -205,6 +209,7 @@
 - (void)requestUploadFailed:(ASIHTTPRequest *)request
 {
 	NSError *error = [request error];
+        [delegate uploadFailed:[error localizedDescription]];
 }
 
 

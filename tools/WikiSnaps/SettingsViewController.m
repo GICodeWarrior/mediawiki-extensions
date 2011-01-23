@@ -1,13 +1,13 @@
 //
 //  SettingsViewController.m
-//  photopicker
+//  WikiSnaps
 //
 //  Created by Derk-Jan Hartman on 14-01-11.
-//  Copyright 2011 Wikimedia Commons. All rights reserved.
+//  Copyright 2011 Derk-Jan Hartman
 //
+//  Dual-licensed MIT and BSD
 
 #import "SettingsViewController.h"
-#import "PhotoPickerViewController.h"
 #import "ASIFormDataRequest.h"
 
 
@@ -30,10 +30,36 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	username.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY];
-	password.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_PASSWORD_KEY];
+    self.title = NSLocalizedString( @"Settings", @"Title of the settings view" ); 
+    username.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY];
+    password.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_PASSWORD_KEY];
 
 }
+
+/*
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+*/
+/*
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+*/
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    /* Save the data */
+    [[NSUserDefaults standardUserDefaults] setObject:username.text forKey:COMMONS_USERNAME_KEY];
+    // FIXME insecure
+    [[NSUserDefaults standardUserDefaults] setObject:password.text forKey:COMMONS_PASSWORD_KEY];
+}
+
+/*
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+}
+*/
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -58,34 +84,24 @@
 
 
 - (void)dealloc {
-	[username release];
-	[password release];
-	[save release];
+    [username release];
+    [password release];
+    [save release];
     [super dealloc];
 }
 
 
 -(IBAction)textFieldDidEnd:(id)sender {
-	if(sender == username ) {
-		[password becomeFirstResponder];
-		return;
-	}
-	[sender resignFirstResponder];
+    if(sender == username ) {
+        [password becomeFirstResponder];
+        return;
+    }
+    [sender resignFirstResponder];
 }
 
 -(IBAction)saveAction:(id)sender {
-	
-	[[NSUserDefaults standardUserDefaults] setObject:username.text forKey:COMMONS_USERNAME_KEY];
-	// FIXME insecure
-	[[NSUserDefaults standardUserDefaults] setObject:password.text forKey:COMMONS_PASSWORD_KEY];
-	
-	PhotoPickerViewController *photopickerController = [[PhotoPickerViewController alloc] init];
-	//photopickerController.title = @"hoi";
-	//photopickerController.view.backgroundColor = [UIColor redColor];
-	
-	//to push the UIView.
-	[self.navigationController pushViewController:photopickerController animated:YES];
-	[photopickerController release];
+    /* Return to Primary view */
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

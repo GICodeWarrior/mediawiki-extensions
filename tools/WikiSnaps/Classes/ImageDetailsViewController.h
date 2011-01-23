@@ -1,20 +1,20 @@
 //
 //  ImageDetailsViewController.h
-//  photopicker
+//  WikiSnaps
 //
 //  Created by Derk-Jan Hartman on 15-01-11.
-//  Copyright 2011 Wikimedia Commons. All rights reserved.
+//  Copyright 2011 Derk-Jan Hartman
 //
+//  Dual-licensed MIT and BSD
 
 #import <UIKit/UIKit.h>
 #import "CommonsUpload.h"
 
 
 @interface ImageDetailsViewController : UIViewController <UINavigationControllerDelegate,
-															UITextFieldDelegate,
-															UITextViewDelegate,
-															CommonsUploadDelegate,
-															UIAlertViewDelegate> {
+                                                            UITextFieldDelegate,
+                                                            UITextViewDelegate,
+                                                            UIAlertViewDelegate> {
 	IBOutlet UITextField *titleField;
 	IBOutlet UITextView *descriptionText;
 	CommonsUpload *upload;

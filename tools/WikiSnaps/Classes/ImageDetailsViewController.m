@@ -1,13 +1,15 @@
 //
 //  ImageDetailsViewController.m
-//  photopicker
+//  WikiSnaps
 //
 //  Created by Derk-Jan Hartman on 15-01-11.
-//  Copyright 2011 Wikimedia Commons. All rights reserved.
+//  Copyright 2011 Derk-Jan Hartman
 //
+//  Dual-licensed MIT and BSD
 
 #import "ImageDetailsViewController.h"
 
+#import "ImageUploadViewController.h"
 
 @implementation ImageDetailsViewController
 
@@ -30,7 +32,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"Upload" style: UIBarButtonItemStyleDone target: self action: @selector( doUpload: ) ];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString( @"Upload", @"Title for upload buton on image details view" )
+                        style: UIBarButtonItemStyleDone
+                        target: self
+                        action: @selector( doUpload: ) ];
 }
 
 
@@ -57,18 +62,18 @@
 
 
 - (void)dealloc {
-	[titleField release];
-	[descriptionText release];
-	[upload release];
+    [titleField release];
+    [descriptionText release];
+    [upload release];
     [super dealloc];
 }
 
 -(IBAction)textFieldDidEnd:(id)sender {
-	if(sender == titleField ) {
-		[descriptionText becomeFirstResponder];
-		return;
-	}
-	[sender resignFirstResponder];
+    if(sender == titleField ) {
+            [descriptionText becomeFirstResponder];
+            return;
+    }
+    [sender resignFirstResponder];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range 
@@ -78,33 +83,14 @@
 }
 
 - (void)doUpload:(id)sender {
-	upload.title = [NSString stringWithFormat: @"%@.jpg", titleField.text];
-	upload.description = descriptionText.text;
-	[descriptionText resignFirstResponder];
-	upload.delegate = self;
-	
-	[upload uploadImage];
+    upload.title = [NSString stringWithFormat: @"%@.jpg", titleField.text];
+    upload.description = descriptionText.text;
+    [descriptionText resignFirstResponder];
+    
+    ImageUploadViewController *uploadViewController = [[ImageUploadViewController alloc] init];
+    uploadViewController.upload = upload;
+    [self.navigationController pushViewController:uploadViewController animated:YES];
+    [uploadViewController release];
 }
-
-- (void)uploadSucceeded {
-	UIAlertView *alert =
-	[[UIAlertView alloc] initWithTitle: @"Upload succeeded"
-							   message: nil
-							  delegate: self
-					 cancelButtonTitle: @"Show upload"
-					 otherButtonTitles: nil];
-    [alert show];
-    [alert release];
-}
-
-- (void)uploadFailed:(NSString *)error {
-	NSLog(error);
-	[self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-- (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"http://commons.wikimedia.org/wiki/File:%@", [upload.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
-	//[self.navigationController popToRootViewControllerAnimated:YES];
-} // clickedButtonAtIndex
 
 @end
