@@ -286,9 +286,8 @@ You can then give the model a name like so:
 
 $wgRdfModelFunctions['charcount'] = 'CharacterCount';
 
-You can add a message to the site describing your model like so:
-
-$wgMessageCache->addMessages(array('rdf-charcount' => 'Count of characters'));
+You can add a message to the site describing your model by creating the page
+MediaWiki:Rdf-charcount and set its content to "Count of characters".
 
 You can also create model-outputting functions if you so desire; they
 should accept a RAP model as input and make output as they would to
