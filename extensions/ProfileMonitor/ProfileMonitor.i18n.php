@@ -592,6 +592,13 @@ $messages['ksh'] = array(
 	'profiling-no-data' => 'Kein zopass Date jefonge.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'profiling-ok' => 'Temam',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

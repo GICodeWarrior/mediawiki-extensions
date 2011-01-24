@@ -1138,9 +1138,11 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Рэдактар мэта-зьвестак відэа і пошук мэдыя]',
+	'mvadmin' => 'Функцыі адміністратара для MetavidWiki',
 	'metavid' => 'Старонка MetaVid',
 	'mv_missing_stream' => 'Адсутнічае струмень: $1',
 	'specialpages-group-mv_group' => 'Спэцыяльныя старонкі MetaVidWiki',
@@ -1235,8 +1237,8 @@ $messages['be-tarask'] = array(
 	'thomas_en' => 'Афіцыйная стэнаграма',
 	'thomas_en_desc' => 'Афіцыйная стэнаграма Thomas з дзяржаўнай службы запісаў THOMAS.
 Крынічны час сынхранізаваны з дапамогай C-SPAN c-spanarchives.org',
-	'mvd_default_mismatch' => 'Памылка ў файле ўстановак',
-	'mvd_default_mismatch_text' => 'Ваш файле ўстановак зьмяшчае памылку.
+	'mvd_default_mismatch' => 'Памылка ў файле наладаў',
+	'mvd_default_mismatch_text' => 'Ваш файле наладаў зьмяшчае памылку.
 $mvMVDTypeDefaultDisp павінна быць падмноствам $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 для $2 з $3',
 	'mv_time_separator' => '$1 да $2',
@@ -1346,7 +1348,7 @@ $mvMVDTypeDefaultDisp павінна быць падмноствам $mvMVDTypeA
 	'mv_seq_add_end' => 'Дадаць у канец пасьлядоўнасьці',
 	'mv_sequence_edit_text' => 'Перайсьці ў рэдактар тэксту',
 	'mv_sequence_edit_visual_editor' => 'Перайсьці ў візуальны рэдактар',
-	'mv_other_options' => 'Іншыя ўстаноўкі',
+	'mv_other_options' => 'Іншыя налады',
 	'mv_contextmenu_opt' => 'Дазволіць кантэкстныя мэню',
 	'mv_days' => '$1 {{PLURAL:$1|дзень|дні|дзён}}',
 	'mv_hours' => '$1 {{PLURAL:$1|гадзіна|гадзіны|гадзінаў}}',
@@ -1382,7 +1384,7 @@ $mvMVDTypeDefaultDisp павінна быць падмноствам $mvMVDTypeA
 	'mv_new_ht_en' => 'Новая стэнаграма',
 	'mv_new_anno_en' => 'Новая метка ці камэнтар',
 	'mv_mang_layers' => 'Кіраваньне слаямі',
-	'mv_mang_layers_title' => 'Кіраваньне ўстаноўкамі адлюстраваньня слаёў для цяперашняга струменя',
+	'mv_mang_layers_title' => 'Кіраваньне наладамі адлюстраваньня слаёў для цяперашняга струменя',
 	'mv_protect_source_material' => 'Арыгінальны крынічны матэрыял абаронены ад рэдагаваньняў',
 	'right-mv_delete_mvd' => 'Выдаліць мэта-зьвесткі MetaVid',
 	'action-mv_delete_mvd' => 'выдаліць гэты сэгмэнт мэта-зьвестак MetaVid',
@@ -1844,6 +1846,7 @@ $messages['da'] = array(
  * @author DaSch
  * @author Imre
  * @author Jan Luca
+ * @author Kghbln
  * @author Leithian
  * @author MF-Warburg
  * @author Melancholie
@@ -1857,6 +1860,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video-Metadaten-Editor & Medien-Suche]',
+	'mvadmin' => 'Administration von MetavidWiki',
 	'metavid' => 'Metavid-Seite',
 	'mv_missing_stream' => 'Fehlender Stream: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki-Spezialseiten',
@@ -2130,6 +2134,7 @@ oder <a href="$3">fügen Sie den Stream hinzu</a>.',
  */
 $messages['dsb'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor wideometadatow & pytanje medijow]',
+	'mvadmin' => 'Administratorowe funkcije za Metavid Wiki',
 	'metavid' => 'Bok MetaVid',
 	'mv_missing_stream' => 'Felujuca tšuga: $1',
 	'specialpages-group-mv_group' => 'Specialne boki MetaVidWiki',
@@ -3066,12 +3071,14 @@ $messages['fi'] = array(
  * @author IAlex
  * @author McDutchie
  * @author PieRRoMaN
+ * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
  * @author Zetud
  */
 $messages['fr'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Éditeur de métadonnées vidéo et recherche de médias]',
+	'mvadmin' => "fonctions d'administration pour MetavidWiki",
 	'metavid' => 'Page Metavid',
 	'mv_missing_stream' => 'Flux manquant : $1',
 	'specialpages-group-mv_group' => 'Pages spéciales de MetaVidWiki',
@@ -4270,6 +4277,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
+	'mvadmin' => 'Administratorowe funkcije za Metavid Wiki',
 	'metavid' => 'Strona Metavid',
 	'mv_missing_stream' => 'Falowacy stream: $1',
 	'specialpages-group-mv_group' => 'Specialne strony MetaVidWiki',
@@ -4778,6 +4786,7 @@ $messages['hy'] = array(
  */
 $messages['ia'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de metadatos de video & Recerca de multimedia]',
+	'mvadmin' => 'Functiones administrative pro MetavidWiki',
 	'metavid' => 'Pagina Metavid',
 	'mv_missing_stream' => 'Fluxo mancante: $1',
 	'specialpages-group-mv_group' => 'Paginas special de MetaVidWiki',
@@ -5779,7 +5788,8 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Aan de Metta_Daate vun Viddejos Ändere un en Meedije_Datteije Söhke]',
-	'metavid' => 'Metavid Sigg',
+	'mvadmin' => 'Verwalldung vun <i lang="en">MetaVid</i>Wiki',
+	'metavid' => '<i lang="en">MetaVid</i> Sigg',
 	'mv_missing_stream' => 'Dä Dahteshtrohm „$1“ fäählt.',
 	'specialpages-group-mv_group' => 'MetaVidWiki Söndersigge',
 	'mv_warning_wiki' => '<i>Opjepaß: <i lang="en">MetaVid</i> Viddejo Protokolle [[Help:FAQ#How_accurate_is_the_information.3F|künne unjenou sin]], donn uns hellfe, [[Help:Participation#Improving_Archive_Accuracy|noch e besser Aschiif opzeboue]]</i>',
@@ -5835,7 +5845,7 @@ dobei</a>.',
 	'mv_label_stream_desc' => 'Dä Dahteshtrohm beschrevve',
 	'add_stream_permission' => 'Dier fähld et Rääsch, ene neue Dahteshtrohm derbei ze donn',
 	'edit_stream_missing' => 'Dä Name för dä Dahteshtrohm es nit aanjejovve',
-	'mv_missing_req_time' => '!!FIZZY!!De Zick för de Aanforderung es nit aanjejovve',
+	'mv_missing_req_time' => 'De Zick för de Aanforderung es nit aanjejovve',
 	'mv_missing_cat' => 'Dä Name för die Saachjrupp es nit aanjejovve',
 	'mv_stream_already_exists' => 'Dä Dahteshtrohm „<a href="$2">$1</a>“ jidd_et alld',
 	'mv_summary_add_stream' => 'Dä Dahteshtrohm wood övver e Fommulaa dobei jedonn',
@@ -6241,6 +6251,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Уредник на метаподатоци за снимки и пребарување на мултимедијални податотеки]',
+	'mvadmin' => 'Администраторски функции на MetavidWiki',
 	'metavid' => 'Metavid страница',
 	'mv_missing_stream' => 'Недостасува емитување: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki специјални страници',
@@ -6788,6 +6799,7 @@ $messages['nds-nl'] = array(
  */
 $messages['nl'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Videometadataeditor &amp; Mediazoekmachine]',
+	'mvadmin' => 'Beheerfuncties voor MetavidWiki',
 	'metavid' => 'MetaVid-pagina',
 	'mv_missing_stream' => 'Stream niet aanwezig: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki',
@@ -7838,6 +7850,7 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Edytor metadanych wideo oraz wyszukiwarka multimediów]',
+	'mvadmin' => 'Funkcje administratora dla MetavidWiki',
 	'metavid' => 'Strona MetaVid',
 	'mv_missing_stream' => 'Brak strumienia $1',
 	'specialpages-group-mv_group' => 'Strony specjalne MetaVidWiki',
@@ -8405,6 +8418,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de Metadados de Vídeo e Pesquisa de Conteúdos Multimédia]',
+	'mvadmin' => 'Funções administrativas para o MetaVidWiki',
 	'metavid' => 'Página MetaVid',
 	'mv_missing_stream' => 'Stream não localizado: $1',
 	'specialpages-group-mv_group' => 'Páginas especiais MetaVidWiki',
@@ -8418,11 +8432,11 @@ $messages['pt'] = array(
 Por favor, reporte este facto ao [[{{MediaWiki:Grouppage-sysop}}|administrador do site]].',
 	'mv_stream_added' => 'Adicionou a stream $1',
 	'mv_stream_meta' => 'Página de stream',
-	'mv_add_stream' => 'Adicionar stream Metavid',
-	'mv_edit_stream' => 'Editar stream Metavid',
-	'mvexportsearch' => 'Exportar Metavid',
-	'mvexportsequence' => 'Exportar sequência Metavid',
-	'mvexportstream' => 'Exportar stream Metavid',
+	'mv_add_stream' => 'Adicionar stream MetaVid',
+	'mv_edit_stream' => 'Editar stream MetaVid',
+	'mvexportsearch' => 'Exportar MetaVid',
+	'mvexportsequence' => 'Exportar sequência MetaVid',
+	'mvexportstream' => 'Exportar stream MetaVid',
 	'mv_move_delete_msg' => 'movido para $1',
 	'mv_add_stream_page' => 'MetaVid adicionar stream',
 	'mv_edit_strea_docu' => '<p>Editar stream como <b>administrador</b><br />para ver ou editar como utilizador normal, consulte a página $1</p>',
@@ -8504,11 +8518,11 @@ Hora fonte sincronizada por c-spanarchives.org da C-SPAN',
 $mvMVDTypeDefaultDisp deverá ser um subconjunto de $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 para $2 de $3',
 	'mv_time_separator' => '$1 a $2',
-	'mv_list_streams' => 'Streams da lista Metavid',
-	'mv_list_streams_page' => 'Listar streams Metavid',
-	'mv_list_streams_docu' => 'Os seguintes streams se encontram disponíveis:',
+	'mv_list_streams' => 'Listar streams MetaVid',
+	'mv_list_streams_page' => 'Listar streams MetaVid',
+	'mv_list_streams_docu' => 'Existem os seguintes streams:',
 	'mv_list_streams_none' => 'Não há streams disponíveis',
-	'mvvideofeed' => 'Exportação de feed de vídeo Metavid',
+	'mvvideofeed' => 'Exportação de feed de vídeo MetaVid',
 	'mvexportask' => 'Exportação de feed de vídeo semântica',
 	'video_feed_cat' => '"Feed" de vídeo para a Categoria:',
 	'mv_cat_search_note' => "Nota: 'Categorias' apenas lista categorias de nível de topo.
@@ -8547,7 +8561,7 @@ Saltar para vista de stream: $2',
 	'mv_viewprevnext' => 'Ver ($1) ($2)',
 	'mediasearch' => 'Pesquisa de multimédia',
 	'mv_search_sel_t' => 'Seleccionar tipo de pesquisa',
-	'mv_do_media_search' => 'Efetuar pesquisa de multimédia Metavid por $1',
+	'mv_do_media_search' => 'Efetuar pesquisa de multimédia MetaVid por $1',
 	'mv_results_for' => 'Resultados para $1',
 	'mv_video_search' => 'Pesquisa de vídeo',
 	'mv_page_search' => 'Efetuar pesquisa de páginas wiki por $1',
@@ -8866,6 +8880,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Редактор метаданных видео и медиа поиск]',
+	'mvadmin' => 'Функции администрирования для MetavidWiki',
 	'metavid' => 'Страница Metavid',
 	'mv_missing_stream' => 'Ошибка в потоке: $1',
 	'specialpages-group-mv_group' => 'Служебные страницы MetaVidWiki',

@@ -1917,17 +1917,18 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'wah-short-audio' => '$1聲音文件，$2',
-	'wah-short-video' => '$1視頻文件，$2',
-	'wah-short-general' => '$1媒體文件，$2',
-	'wah-long-audio' => '（$1聲音文件，長度$2，$3）',
-	'wah-long-video' => '（$1視頻文件，長度$2，$4×$5像素，$3）',
-	'wah-long-general' => '（媒體文件，長度$2，$3）',
-	'wah-long-error' => '（ffmpeg不能讀取這個文件：$1）',
-	'wah-transcode-working' => '本影片正在處理中，請稍後再試',
-	'wah-transcode-fail' => '這個文件轉碼失敗',
-	'wah-javascript-off' => '你必須啟用JavaScript以參與Wiki@Home',
-	'wah-loading' => '正在載入Wiki@Home介面...',
+	'wah-short-audio' => '$1 聲音檔案，$2',
+	'wah-short-video' => '$1 視訊檔案，$2',
+	'wah-short-general' => '$1 媒體檔案，$2',
+	'wah-long-audio' => '（$1 聲音檔案，長度 $2，$3）',
+	'wah-long-video' => '（$1 視訊檔案，長度 $2，$4×$5 像素，$3）',
+	'wah-long-general' => '（媒體檔案，長度 $2，$3）',
+	'wah-long-error' => '（ffmpeg 不能讀取這個檔案：$1）',
+	'wah-transcode-working' => '該影片正在處理中，請稍後再試',
+	'wah-transcode-fail' => '這個檔案轉碼失敗',
+	'wah-javascript-off' => '你必須啟用 JavaScript 以參與 Wiki@Home',
+	'wah-loading' => '正在載入 Wiki@Home 介面...',
 	'wah-menu-pref' => '偏好設定',
+	'wah-uploadfail' => '上傳失敗',
 );
 

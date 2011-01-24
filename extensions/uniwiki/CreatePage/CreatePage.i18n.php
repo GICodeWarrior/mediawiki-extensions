@@ -1009,6 +1009,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1017,7 +1018,7 @@ $messages['sr-ec'] = array(
 	'uwcreatepage-desc' => 'Додаје [[Special:CreatePage|посебну страницу]] за прављење нових страница',
 	'createpage_submitbutton' => 'Пошаљи',
 	'createpage_instructions' => 'Унеси наслов кога желиш да направиш:',
-	'createpage_entertitle' => 'Молимо Вас да унесете наслов за Ваш чланак.',
+	'createpage_entertitle' => 'Унесите наслов странице.',
 	'createpage_titleexists' => 'Чланак са насловом [[$1]] већ постоји.
 Да ли бисте желели да измените постојећи чланак?',
 	'createpage_tryagain' => 'Не. Желим да направим нови чланак са његовим сопственим насловом.',

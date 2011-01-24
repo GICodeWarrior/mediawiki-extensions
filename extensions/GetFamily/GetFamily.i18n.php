@@ -50,11 +50,12 @@ $messages['ar'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'getfamily-desc' => 'Стварае файл групы вікі-праектаў для pywikipediabot',
 	'getfamily' => 'Атрымаць групу вікі-праектаў для pywikipediabot',
-	'getfamily-interwikierror' => 'Памылка: няслушная ўстаноўка інтэрвікі, зьвяжыцеся з Вашым лякальным адміністратарам.',
+	'getfamily-interwikierror' => 'Памылка: няслушная налада інтэрвікі, зьвяжыцеся з Вашым лякальным адміністратарам.',
 	'right-getfamily' => 'стварэньня файла групы вікі-праектаў для pywikipediabot',
 );
 

@@ -97,11 +97,12 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'smoothgallery' => 'Плыўная галерэя',
 	'smoothgallery-desc' => 'Дазваляе ўдзельнікам ствараць галерэі з выявамі, якія яны загрузілі.
-Падтрымлівае большасьць установак плыўнай галерэі',
+Падтрымлівае большасьць наладаў плыўнай галерэі',
 	'smoothgallery-title' => 'Плыўная галерэя',
 	'smoothgallery-smoothgallerytitle' => 'Плыўная галерэя: $1',
 	'smoothgallery-error' => '<b>Памылка плыўнай галерэі:</b>',

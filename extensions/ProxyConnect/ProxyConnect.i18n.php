@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'proxyconnect-desc' => 'Implements the server side functionality of Proxy Connect',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'proxyconnect-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
@@ -101,6 +108,13 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'proxyconnect-desc' => 'サーバー側のProxy Connect機能を実装',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'proxyconnect-desc' => 'Deiht de ßöver-siggije Fungxjohne vun <i lang="en">Proxy Connect</i> en et Wiki.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

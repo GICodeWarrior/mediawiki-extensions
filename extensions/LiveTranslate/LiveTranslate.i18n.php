@@ -137,6 +137,21 @@ $messages['br'] = array(
 	'livetranslate-dictionary-empty' => 'Ger ebet er geriadur evit c\'hoazh. Klikit war an ivinell "kemmañ" evit ouzhpennañ unan.',
 	'livetranslate-dictionary-count' => '{{PLURAL:$1|$1 ger|$1 ger}} e $2 {{PLURAL:$2|yezh|yezh}} zo. Klikañ war an ivinell "kemmañ" da zegas re all.',
 	'livetranslate-dictionary-unallowed-langs' => "N'eo ket bet dibabet ar {{PLURAL:$2|yezh-mañ|ar yezhoù-mañ}} da yezh(où) da dreiñ daveto evit c'hoazh : $1. Cheñchit ar yezhoù aotreet dre ho kefluniadur wiki pe lamit anezho kuit eus ar geriadur.",
+	'livetranslate-dictionary-goto-edit' => 'Kemmañ ar memorioù treiñ.',
+	'livetranslate-tmtype-ltf' => 'Live Translate format',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => "N'eus tamm memor treiñ ebet evit c'hoazh",
+	'livetranslate-special-button' => 'Enrollañ hag hizivaat',
+	'livetranslate-special-type' => 'Seurt',
+	'livetranslate-special-location' => "Lec'hiadur",
+	'livetranslate-special-remove' => 'Dilemel',
+	'livetranslate-special-local' => "Lec'hel",
+	'livetranslate-special-add-tm' => 'Ouzhpennañ ur memor treiñ nevez',
+	'livetranslate-special-current-tms' => 'Memorioù treiñ hegerz',
+	'livetranslate-special-tms-update' => 'Hizivaat ar memorioù treiñ',
+	'livetranslate-special-update' => 'Hizivaat ar memorioù treiñ',
+	'livetranslate-importtms-param-miscmatch' => "Disklot etre ar c'hementad a lec'hiadurioù hag ar seurtoù",
 );
 
 /** Bosnian (Bosanski)

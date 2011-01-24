@@ -615,6 +615,14 @@ $messages['ksh'] = array(
 	'showprocesslist-info' => 'Enfommazjohn',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'showprocesslist-user' => 'Bikarhêner',
+	'showprocesslist-time' => 'Dem',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

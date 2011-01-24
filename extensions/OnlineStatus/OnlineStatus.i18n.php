@@ -129,9 +129,10 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'onlinestatus-desc' => 'Дадае устаноўкі для паказу, ці прысутнічае ўдзельнік у {{GRAMMAR:месны|{{SITENAME}}}}, ці не',
+	'onlinestatus-desc' => 'Дадае налады для паказу, ці прысутнічае ўдзельнік у {{GRAMMAR:месны|{{SITENAME}}}}, ці не',
 	'onlinestatus-js-anon' => 'Памылка: Вам неабходна увайсьці ў сыстэму, каб выкарыстоўваць гэтую магчымасьць',
 	'onlinestatus-js-changed' => 'Ваш статус быў зьменены на «$1»',
 	'onlinestatus-js-error' => 'Немагчыма зьмяніць статус, няслушнае значэньне «$1»',

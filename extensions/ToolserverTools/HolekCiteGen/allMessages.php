@@ -272,6 +272,7 @@ $messages['fa'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Sherbrooke
  */
 $messages['fr'] = array(
@@ -295,6 +296,7 @@ $messages['fr'] = array(
 	'ts-citegen-Sources-text' => 'Ci-dessous la liste des sources utilisées est affichée.',
 	'ts-citegen-Sidebar-title' => 'Générateur de citations',
 	'ts-citegen-Sidebar-add-Firefox' => 'Ajouter au panneau latéral',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Ajouter au titulaire de la page',
 	'ts-citegen-Tools' => 'Outils',
 	'ts-citegen-Other-languages' => 'Autres langues',
 	'ts-citegen-Save-it' => 'Requête en cours',

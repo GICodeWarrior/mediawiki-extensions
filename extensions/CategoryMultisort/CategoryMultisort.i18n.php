@@ -374,6 +374,13 @@ $messages['ksh'] = array(
 	'prefs-category' => 'Saachjropp',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'prefs-category' => 'Kategorî',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

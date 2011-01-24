@@ -60,9 +60,10 @@ $messages['bar'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'tidy-desc' => 'Дадае закладку «акуратны HTML» альбо «неакуратны HTML» (у залежнасьці ад $wgUseTidy) на старонкі, што дазваляе зьмяняць глябальную ўстаноўку «акуратнасьці HTML» для асобных старонак',
+	'tidy-desc' => 'Дадае закладку «акуратны HTML» альбо «неакуратны HTML» (у залежнасьці ад $wgUseTidy) на старонкі, што дазваляе зьмяняць глябальную наладу «акуратнасьці HTML» для асобных старонак',
 	'tidy' => 'Акуратны HTML',
 	'untidy' => 'Неакуратны HTML',
 );

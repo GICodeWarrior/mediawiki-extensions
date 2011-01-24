@@ -922,12 +922,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Liangent
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'whatismyip' => '顯示我的IP',
-	'whatismyip-desc' => '顯示當前用戶的[[Special:WhatIsMyIP|IP地址]]',
-	'whatismyip-out' => '您的IP位址：',
-	'right-whatismyip' => '查看[[Special:WhatIsMyIP|自己的IP地址]]',
+	'whatismyip' => '顯示我的 IP',
+	'whatismyip-desc' => '顯示目前使用者的 [[Special:WhatIsMyIP|IP 位址]]',
+	'whatismyip-out' => '您的 IP 位址：',
+	'right-whatismyip' => '檢視[[Special:WhatIsMyIP|自己的 IP 位址]]',
 );
 

@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'categorymembersonsidebar-desc' => 'Adds category members on the sidebar',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'categorymembersonsidebar-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
@@ -104,6 +111,13 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'categorymembersonsidebar-desc' => 'Menambahkan anggota kategori di bilah samping',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categorymembersonsidebar-desc' => 'Deiht de Less met de Saachjroppe aan de Sigg aanzeije.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

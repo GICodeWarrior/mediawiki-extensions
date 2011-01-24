@@ -413,3 +413,11 @@ $messages['zh-hans'] = array(
 	'wikiarticlefeeds_combined_description' => '这是一个包含多个源来源的复合源。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'wikiarticlefeeds-desc' => '為 MediaWiki 頁面產生消息來源',
+	'wikiarticlefeeds_combined_description' => '這是一個包含多個 feed 來源的復合源。',
+);
+

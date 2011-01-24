@@ -272,6 +272,8 @@ $messages['ka'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'variablepage' => 'Variabel Sigg',
+	'variablepage-navlink_text' => 'Schpände',
 	'variablepage-desc' => 'Ein eijfache Ömleidung op ongerscheidlijje Sigge.',
 );
 

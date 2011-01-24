@@ -878,6 +878,10 @@ $messages['br'] = array(
 ** E maez ar raktres",
 	'deletequeue-nom-alreadyqueued' => 'Emañ ar bajenn-mañ en ul lostad dilemel dija.',
 	'deletequeue-speedy-title' => 'Merkañ "$1" evit un diverkadenn brim',
+	'deletequeue-speedy-text' => "Gallout a rit ober gan tar furmskrid-mañ evit merkañ ar bajenn \"'''\$1'''\" evel unan da vezañ diverket raktal.
+
+Sellet e vo ouzh ar goulenn gant ur merour ha diverkañ ar raio ar bajenn ma kav dezhañ ez eus d'en ober.
+Ret eo deoc'h dibab un abeg diverkañ e-touez ar re kinniget er roll desachañ a-is; ouzhpennit titouroù ouzhpenn diouzh an ezhomm.",
 	'deletequeue-prod-title' => 'Kinnig diverkañ "$1"',
 	'deletequeue-prod-text' => "Gallout a rit ober gant ar furmskrid-mañ evit kinnig ma vefe diverket \"'''\$1'''\".
 

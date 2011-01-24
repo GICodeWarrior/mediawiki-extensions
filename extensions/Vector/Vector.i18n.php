@@ -171,6 +171,7 @@ $messages['be'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'vector' => 'Паляпшэньні інтэрфэйсу для афармленьня «Вэктар»',
@@ -178,7 +179,7 @@ $messages['be-tarask'] = array(
 	'vector-collapsiblenav-preference' => 'Дазволіць згортваньне блёкаў у навігацыйным мэню для афармленьня «Вэктар»',
 	'vector-collapsiblenav-more' => 'Болей моваў',
 	'vector-editwarning-warning' => 'Усе зробленыя Вамі зьмены могуць быць страчаныя, калі Вы пакінеце гэтую старонку.
-Калі Вы ўвайшлі ў сыстэму, Вы можаце адключыць гэтае папярэджаньне у сэкцыі «Рэдагаваньне» Вашых установак.',
+Калі Вы ўвайшлі ў сыстэму, Вы можаце адключыць гэтае папярэджаньне у сэкцыі «Рэдагаваньне» Вашых наладаў.',
 	'vector-editwarning-preference' => 'Папярэджваць мяне, калі я буду пакідаць старонку рэдагаваньня зь незахаванымі зьменамі',
 	'vector-simplesearch-search' => 'Пошук',
 	'vector-simplesearch-containing' => 'утрымлівае...',

@@ -845,6 +845,20 @@ $messages['ko'] = array(
 	'refsearch' => '참고 자료 찾기',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'refhelper-label_authorsurname' => 'Paşnav:',
+	'refhelper-title' => 'Sernav:',
+	'refhelper-journal' => 'Kovar:',
+	'refhelper-volume' => 'Cild:',
+	'refhelper-year' => 'Sal:',
+	'refhelper-category' => 'Kategorî ($1):',
+	'refhelper-create' => 'Çêke',
+	'refhelper-search' => 'Lêbigere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -2303,11 +2303,20 @@ $messages['ksh'] = array(
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'voctrain_Hello_World' => 'SILAV WIKI!',
 	'voctrain_Languages' => 'Zimanan',
+	'voctrain_Questions' => 'Pirsan',
+	'voctrain_Answers' => 'Bersivan',
+	'voctrain_Definition' => 'Wate',
+	'voctrain_Word' => 'Peyv',
+	'voctrain_Question' => 'Pirs',
 	'voctrain_Answer' => 'Bersiv',
+	'voctrain_Answer_s_' => 'Pirs(an)',
 	'voctrain_User_name' => 'Navê bikarhêner',
 	'voctrain_Password' => 'Şîfre',
+	'voctrain_Create_new_user' => 'Bikarhênerekî nû çêke',
 	'voctrain_Language' => 'Ziman',
+	'voctrain_Definitions' => 'Wateyan',
 	'voctrain_Translation' => 'Wergerr',
 	'voctrain_other' => 'yên din',
 );

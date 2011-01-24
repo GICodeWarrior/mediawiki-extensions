@@ -3881,6 +3881,13 @@ En neuer Version ($2) steiht ald parat op http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Aanwendungs-<i lang=\"en\">cache</i> leddisch jemaat.'''''",
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'viewapc-ls-limit-none' => 'Hemû',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

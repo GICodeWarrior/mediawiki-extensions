@@ -1360,6 +1360,13 @@ $messages['ksh'] = array(
 	'ct-update-table' => 'De Tabäll op der neuste Schtand bränge',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'ct-and' => 'û',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

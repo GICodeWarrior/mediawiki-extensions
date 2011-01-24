@@ -269,6 +269,13 @@ $messages['ja'] = array(
 	'semanticformsinputs-today' => '今日',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'semanticformsinputs-today' => 'Îro',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

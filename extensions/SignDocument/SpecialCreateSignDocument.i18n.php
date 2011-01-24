@@ -1155,6 +1155,15 @@ Mer kann jetz dat [{{fullurl:{{#Special:SignDocument}}|doc=$2}} Ungerschriive oc
 	'createsigndoc-error-alreadycreated' => 'De Ongerschreffte-Mapp för de Sigg „$1“ es ald aanjelaat.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'createsigndoc-pagename' => 'Rûpel:',
+	'createsigndoc-extaddress' => 'Bajarr, dewlet, welat:',
+	'createsigndoc-bday' => 'Rojbûn:',
+);
+
 /** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
