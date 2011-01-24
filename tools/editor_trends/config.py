@@ -21,7 +21,7 @@ __version__ = '0.1'
 import os
 import ConfigParser
 
-from utils import utils
+from utils import file_utils
 from classes import wikiprojects
 
 
