@@ -939,10 +939,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'specialwhoiswatchingthepage' => '誰正觀看%s',
+	'whoiswatching' => '正在監視某 wiki 頁面的使用者',
+	'whoiswatching-desc' => '提供正在監視某 wiki 頁面的用戶名列表',
+	'specialwhoiswatchingthepage' => '誰正在監視 %s',
+	'specialwhoiswatchingaddusers' => '新增使用者以監視本頁面',
+	'specialwhoiswatchingaddbtn' => '新增已選擇用戶',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)
