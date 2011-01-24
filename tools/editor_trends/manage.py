@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
@@ -24,300 +24,181 @@ import sys
 import datetime
 from argparse import ArgumentParser
 from argparse import RawTextHelpFormatter
-import locale
-import progressbar
 
-sys.path.append('..')
+
 import configuration
-settings = configuration.Settings()
-
-import languages
 import config
-from utils import utils
-from utils import dump_downloader
-from utils import compression
+from utils import file_utils
+
 from utils import ordered_dict
-from utils import exceptions
 from utils import log
 from utils import timer
+from classes import wikiprojects
 from database import db
-from etl import chunker
+from etl import downloader
 from etl import extracter
 from etl import store
 from etl import sort
 from etl import transformer
-from etl import exporter
 
-datasets = {'forward': 'generate_cohort_dataset_forward',
-            'backward': 'generate_cohort_dataset_backward',
-            'backward_custom': 'generate_cohort_dataset_backward_custom',
-            'wide': 'generate_wide_editor_dataset',
-            }
-
-class Config(object):
-    def __init__(self, locations):
-        for location in locations:
-            setattr(self, location, locations[location])
-
-    def __str__(self):
-        return 'Configurator'
-
-    def __iter__(self):
-        for item in self.__dict__:
-            yield item
-
-def get_value(args, key):
-    return getattr(args, key, None)
+from analyses import count_editors
 
 
-def config_launcher(args, logger, config):
+
+
+def config_launcher(properties, settings, logger):
+    '''
+    Config launcher is used to reconfigure editor trends toolkit. 
+    '''
     settings.load_configuration()
 
 
-def determine_default_language():
-    language_code = locale.getdefaultlocale()[0]
-    return language_code.split('_')[0]
-
-
-def get_projectname(args):
-    language_code = get_language(args)
-    if language_code == None:
-        print 'Entered language: %s is not a valid Wikimedia language' % get_value(args, 'language')
-        sys.exit(-1)
-    project = get_project(args)
-
-    if project == None:
-        print 'Entered project: %s is not valid Wikimedia Foundation project.' % get_value(args, 'project')
-        sys.exit(-1)
-    if project == 'commonswiki':
-        return project
-    else:
-        return '%s%s' % (language_code, project)
-
-
-def get_language(args):
-    language = get_value(args, 'language')
-    language = language.title()
-    return languages.MAPPING.get(language, 'en')
-
-
-def get_namespaces(args):
-    namespaces = get_value(args, 'namespace')
-    if namespaces != None:
-        return namespaces.split(',')
-    else:
-        return namespaces
-
-
-def write_message_to_log(logger, args, config, message=None, verb=None, **kwargs):
-    function = get_value(args, 'func')
-    logger.debug('%s\tStarting %s task' % (datetime.datetime.now(), function.func_name))
-    if message:
-        logger.debug('%s\t%s' % (datetime.datetime.now(), message))
-
-    if config == None:
-        config = Config(kwargs)
-    max_length = max([len(prop) for prop in config if type(prop) != type(True)])
-    max_tabs = max_length // settings.tab_width
-    res = max_length % settings.tab_width
-    if res > 0:
-        max_tabs += 1
-    pos = max_tabs * settings.tab_width
-    for prop in config:
-        if verb:
-            logger.debug('%s\tAction: %s\tSetting: %s' % (datetime.datetime.now(), verb, getattr(config, prop)))
-        else:
-            tabs = (pos - len(prop)) // settings.tab_width
-            res = len(prop) % settings.tab_width
-            if res > 0 or tabs == 0:
-                tabs += 1
-            tabs = ''.join(['\t' for t in xrange(tabs)])
-            logger.debug('%s\t\t%s %s%s%s %s' % (datetime.datetime.now(), 'Key:', prop, tabs, 'Setting:', getattr(config, prop)))
-
-
-def get_project(args):
-    project = get_value(args, 'project')
-    if project != 'wiki':
-        project = settings.projects.get(project, None)
-    return project
-
-
-def generate_wikidump_filename(language_code, project, args):
-    return '%s%s-%s-%s' % (language_code, project, 'latest', get_value(args, 'file'))
-
-
-def determine_file_locations(args, logger):
-    config = {}
-    location = get_value(args, 'location') if get_value(args, 'location') != None else settings.input_location
-    project = get_project(args)
-    language_code = get_language(args)
-    targets = get_value(args, 'datasets')
-
-    config['language_code'] = language_code
-    config['language'] = get_value(args, 'language')
-    config['collection'] = get_value(args, 'collection')
-    config['ignore'] = get_value(args, 'except')
-    config['clean'] = get_value(args, 'new')
-
-    config['project'] = project
-    config['full_project'] = get_projectname(args)
-    config['filename'] = generate_wikidump_filename(language_code, project, args)
-    config['namespaces'] = get_namespaces(args)
-
-    config['dataset'] = os.path.join(settings.dataset_location, config['full_project'])
-    config['charts'] = os.path.join(settings.chart_location, config['full_project'])
-    config['location'] = os.path.join(location, language_code, project)
-    config['txt'] = os.path.join(config['location'], 'txt')
-    config['sorted'] = os.path.join(config['location'], 'sorted')
-
-    config['directories'] = [config['location'], config['txt'], config['sorted'], config['dataset'], config['charts']]
-    config['path'] = '/%s/latest/' % config['full_project']
-    config['targets'] = targets.split(',')
-
-    c = Config(config)
-    message = 'Settings as generated from the configuration module.'
-    write_message_to_log(logger, args, c, message)
-    return c
-
-
-def show_settings(args, logger, config):
-    language_map = languages.language_map()
-
-    about = {}
-    about['Project'] = '%s' % settings.projects.get(config.project).title()
-    about['Language'] = '%s / %s' % (language_map[config.language_code], config.language) #.decode(settings.encoding)
-    about['Input directory'] = '%s' % config.location
-    about['Output directory'] = '%s and subdirectories' % config.location
-
-    max_length_key = max([len(key) for key in about.keys()])
-    message = 'Final settings after parsing command line arguments:'
-    for a in about:
-        print '%s: %s' % (a.rjust(max_length_key), about[a])
-    about = Config(about)
-    write_message_to_log(logger, args, about, message)
-
-
-def dump_downloader_launcher(args, logger, config):
+def downloader_launcher(properties, settings, logger):
+    '''
+    This launcher calls the dump downloader to download a Wikimedia dump file.
+    '''
     print 'Start downloading'
     stopwatch = timer.Timer()
-    write_message_to_log(logger, args, config)
-    log.log_to_mongo(config.full_project, 'download', stopwatch, type='start')
-    dump_downloader.launcher(config)
+    #project, language, jobtype, task, timer, event = 'start'
+    log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='start')
+    downloader.launcher(properties, settings, logger)
     stopwatch.elapsed()
-    log.log_to_mongo(config.full_project, 'download', stopwatch, type='finish')
+    log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='finish')
 
 
-def launch_zip_extractor(args, logger, location, file, config):
-    print 'Unzipping zip file'
-    stopwatch = timer.Timer()
-    log.log_to_mongo(config.full_project, 'unpack', stopwatch, type='start')
-    write_message_to_log(logger, args, None, message=None, verb=None, location=location, file=file)
-    compressor = compression.Compressor(location, file)
-    retcode = compressor.extract()
-    stopwatch.elapsed()
-    log.log_to_mongo(config.full_project, 'unpack', stopwatch, type='finish')
-    return retcode
 
-
-def extract_launcher(args, logger, config):
+def extract_launcher(properties, settings, logger):
+    '''
+    The extract launcher is used to extract the required variables from a dump
+    file. If the zip file is a known archive then it will first launch the
+    unzip launcher. 
+    '''
     print 'Extracting data from XML'
     stopwatch = timer.Timer()
-    log.log_to_mongo(config.full_project, 'extract', stopwatch, type='start')
-    write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, language_code=config.language_code, project=config.project)
-    '''make sure that the file exists, if it doesn't then expand it first'''
-    print 'Checking if dump file has been extracted...'
-    canonical_filename = utils.determine_canonical_name(config.filename)
-    extension = utils.determine_file_extension(config.filename)
-    files = utils.retrieve_file_list(config.location, extension, mask=canonical_filename)
-    print files
-    for file in files:
-        file_without_ext = file.replace('%s%s' % ('.', extension), '')
-        result = utils.check_file_exists(config.location, file_without_ext)
-        result = False
-        if not result:
-            print 'Dump file has not yet been extracted...'
-            retcode = launch_zip_extractor(args, logger, config.location, file, config)
-        else:
-            print 'Dump file has already been extracted...'
-            retcode = 0
-        if retcode != 0:
-            print 'There was an error while extracting %s, please make sure that %s is valid archive.' % (file, file)
-            sys.exit(retcode)
-        extracter.parse_dumpfile(config.project, file_without_ext, config.language_code, namespaces=['0'])
+    log.log_to_mongo(properties, 'dataset', 'extract', stopwatch, event='start')
+    extracter.launcher(properties)
     stopwatch.elapsed()
-    log.log_to_mongo(config.full_project, 'extract', stopwatch, type='finish')
+    log.log_to_mongo(properties, 'dataset', 'extract', stopwatch, event='finish')
 
 
-def sort_launcher(args, logger, config):
+def sort_launcher(properties, settings, logger):
+    '''
+    After the extracter has finished then the created output files need to be
+    sorted. This function takes care of that. 
+    '''
     print 'Start sorting data'
     stopwatch = timer.Timer()
-    log.log_to_mongo(config.full_project, 'sort', stopwatch, type='start')
-    write_message_to_log(logger, args, None, message=None, verb=None, location=config.location, input=config.txt, output=config.sorted)
-    sort.mergesort_launcher(config.txt, config.sorted)
+    log.log_to_mongo(properties, 'dataset', 'sort', stopwatch, event='start')
+#    write_message_to_log(logger, settings,
+#                         message=None,
+#                         verb=None,
+#                         location=properties.location,
+#                         input=properties.txt,
+#                         output=properties.sorted)
+    sort.mergesort_launcher(properties.txt, properties.sorted)
     stopwatch.elapsed()
-    log.log_to_mongo(config.full_project, 'sort', stopwatch, type='finish')
+    log.log_to_mongo(properties, 'dataset', 'sort', stopwatch, event='finish')
 
 
-def store_launcher(args, logger, config):
+def store_launcher(properties, settings, logger):
+    '''
+    The data is ready to be stored once the sorted function has completed. This
+    function starts storing data in MongoDB.
+    '''
     print 'Start storing data in MongoDB'
     stopwatch = timer.Timer()
-    log.log_to_mongo(config.full_project, 'store', stopwatch, type='start')
-    db.cleanup_database(config.project, logger)
-    write_message_to_log(logger, args, None, message=None, verb='Storing', location=config.location, input=config.sorted, project=config.full_project, collection=config.collection)
-    store.launcher(config.sorted, config.full_project, config.collection)
+    log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='start')
+    db.cleanup_database(properties.project, logger)
+#    write_message_to_log(logger, settings,
+#                         message=None,
+#                         verb='Storing',
+#                         function=properties.function,
+#                         location=properties.location,
+#                         input=properties.sorted,
+#                         project=properties.full_project,
+#                         collection=properties.collection)
+    for key in properties:
+        print key, getattr(properties, key)
+    store.launcher(properties.sorted, properties.project, properties.collection)
     stopwatch.elapsed()
-    log.log_to_mongo(config.full_project, 'store', stopwatch, type='finish')
+    log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='finish')
 
 
-def transformer_launcher(args, logger, **kwargs):
+def transformer_launcher(properties, settings, logger):
     print 'Start transforming dataset'
     stopwatch = timer.Timer()
-    log.log_to_mongo(config.full_project, 'transform', stopwatch, type='start')
-    db.cleanup_database(config.project, logger, 'dataset')
-    write_message_to_log(logger, args, None, message=None, verb='Transforming', project=config.project, collection=config.collection)
-    transformer.transform_editors_single_launcher(config.project, config.collection)
+    log.log_to_mongo(properties, 'dataset', 'transform', stopwatch, event='start')
+    db.cleanup_database(properties.project, logger, 'dataset')
+#    write_message_to_log(logger, settings,
+#                         message=None,
+#                         verb='Transforming',
+#                         project=properties.project,
+#                         collection=properties.collection)
+    transformer.transform_editors_single_launcher(properties.project,
+                                                  properties.collection)
     stopwatch.elapsed()
-    log.log_to_mongo(full_project, 'transform', stopwatch, type='finish')
+    log.log_to_mongo(properties, 'dataset', 'transform', stopwatch,
+                     event='finish')
 
 
-def exporter_launcher(args, logger, config):
+def exporter_launcher(properties, settings, logger):
     print 'Start exporting dataset'
     stopwatch = timer.Timer()
-    log.log_to_mongo(config.full_project, 'export', stopwatch, type='start')
-    for target in config.targets:
-        write_message_to_log(logger, args, None, message=None, verb='Exporting', target=target, dbname=config.full_project, collection=config.collection)
-        target = datasets[target]
+    log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='start')
+    for target in properties.targets:
+#        write_message_to_log(logger, settings,
+#                             message=None,
+#                             verb='Exporting',
+#                             target=target,
+#                             dbname=properties.full_project,
+#                             collection=properties.collection)
         print 'Dataset is created by: %s' % target
-        exporter.dataset_launcher(config.full_project, config.collection, target)
+        count_editors.generate_chart_data(properties.project, properties.collection, target)
     stopwatch.elapsed()
-    log.log_to_mongo(config.full_project, 'export', stopwatch, type='finish')
+    log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='finish')
 
 
-def cleanup(logger, args, config):
-    for dir in config.directories[1:]:
-        write_message_to_log(logger, args, None, message=None, verb='Deleting', dir=dir)
-        utils.delete_file(dir, '', directory=True)
+def cleanup(properties, settings, logger):
+    directories = properties.directories[1:]
+    for directory in directories:
+        write_message_to_log(logger, setting,
+                             message=None,
+                             verb='Deleting',
+                             dir=directory)
+        file_utils.delete_file(directory, '', directory=True)
 
-    write_message_to_log(logger, args, None, message=None, verb='Creating', dir=dirs)
-    settings.verify_environment(dirs)
+    write_message_to_log(logger, settings,
+                         message=None,
+                         verb='Creating',
+                         dir=directories)
+    settings.verify_environment(directories)
 
-    file = '%s%s' % (config.full_project, '_editor.bin')
-    write_message_to_log(logger, args, None, message=None, verb='Deleting', file=file)
-    utils.delete_file(settings.binary_location, file)
+    filename = '%s%s' % (properties.full_project, '_editor.bin')
+    write_message_to_log(logger, settings,
+                         message=None,
+                         verb='Deleting',
+                         filename=filename)
+    file_utils.delete_file(settings.binary_location, filename)
 
 
-def all_launcher(args, logger, config):
-    print 'The entire data processing chain has been called, this will take a couple of hours (at least) to complete.'
+def all_launcher(properties, settings, logger):
+    print 'The entire data processing chain has been called, this will take a \
+    couple of hours (at least) to complete.'
+    print properties.__dict__
     stopwatch = timer.Timer()
-    log.log_to_mongo(config.full_project, 'all', stopwatch, type='start')
-    message = 'Start of building %s dataset.' % config.full_project
+    log.log_to_mongo(properties, 'dataset', 'all', stopwatch, event='start')
+    print 'Start of building %s dataset.' % properties.project
 
-    write_message_to_log(logger, args, None, message=message, verb=None, full_project=config.full_project, ignore=config.ignore, clean=config.clean)
-    if config.clean:
-        cleanup(logger, args, config)
+#    write_message_to_log(logger, settings,
+#                         message=message,
+#                         verb=None,
+#                         full_project=properties.full_project,
+#                         ignore=properties.ignore,
+#                         clean=properties.clean)
+    if properties.clean:
+        cleanup(properties, settings, logger)
 
-    functions = ordered_dict.OrderedDict(((dump_downloader_launcher, 'download'),
-                                          #(chunker_launcher, 'split'),
+    functions = ordered_dict.OrderedDict(((downloader_launcher, 'download'),
                                           (extract_launcher, 'extract'),
                                           (sort_launcher, 'sort'),
                                           (store_launcher, 'store'),
@@ -325,28 +206,28 @@ def all_launcher(args, logger, config):
                                           (exporter_launcher, 'export')))
 
     for function, callname in functions.iteritems():
-        if callname not in config.ignore:
-            function(args, logger, config)
+        if callname not in properties.ignore:
+            print 'Starting %s' % function.func_name
+            res = function(properties, settings, logger)
+            if res == False:
+                sys.exit(False)
+            elif res == None:
+                print 'Function %s does not return a status, \
+                implement NOW' % function.func_name
     stopwatch.elapsed()
-    log.log_to_mongo(full_project, 'all', stopwatch, type='finish')
+    log.log_to_mongo(properties, 'dataset', 'all', stopwatch, event='finish')
 
 
-def supported_languages():
-    choices = languages.MAPPING.keys()
-    choices = [c.encode(settings.encoding) for c in choices]
-    return tuple(choices)
-
-
-def show_languages(args, logger, config):
-    first = get_value(args, 'startswith')
+def show_languages(settings, logger, properties):
+    first = properties.get_value('startswith')
     if first != None:
         first = first.title()
-    choices = supported_languages()
-    languages = []
+    choices = languages.supported_languages()
+    lang = []
     for choice in choices:
-        languages.append(choice)
-    languages.sort()
-    for language in languages:
+        lang.append(choice)
+    lang.sort()
+    for language in lang:
         try:
             if first != None and language.startswith(first):
                 print '%s' % language.decode(settings.encoding)
@@ -356,162 +237,179 @@ def show_languages(args, logger, config):
             print '%s' % language
 
 
-def detect_python_version(logger):
-    version = sys.version_info[0:2]
-    logger.debug('Python version: %s' % '.'.join(str(version)))
-    if version < settings.minimum_python_version:
-        raise exceptions.OutDatedPythonVersionError
-
-
-def about():
-    print '\nEditor Trends Software is (c) 2010-2011 by the Wikimedia Foundation.'
+def about_statement():
+    print ''
+    print 'Editor Trends Software is (c) 2010-2011 by the Wikimedia Foundation.'
     print 'Written by Diederik van Liere (dvanliere@gmail.com).'
-    print 'This software comes with ABSOLUTELY NO WARRANTY.\nThis is free software, and you are welcome to distribute it\nunder certain conditions.'
+    print '''This software comes with ABSOLUTELY NO WARRANTY.\nThis is 
+    free software, and you are welcome to distribute it under certain 
+    conditions.'''
     print 'See the README.1ST file for more information.'
-    print '\n'
+    print ''
 
 
-def main():
-    default_language = determine_default_language()
-
-    file_choices = ('stub-meta-history.xml.gz',
-                    'stub-meta-current.xml.gz',
-                    'pages-meta-history.xml.7z',
-                    'pages-meta-current.xml.bz2',
-                    )
-
-
+def init_args_parser():
+    '''
+    Entry point for parsing command line and launching the needed function(s).
+    '''
+    settings = configuration.Settings()
+    default_language = wikiprojects.determine_default_language()
+    wiki = wikiprojects.Wiki(settings)
+    projects = wiki.projects.keys()
+    #Init Argument Parser
     parser = ArgumentParser(prog='manage', formatter_class=RawTextHelpFormatter)
     subparsers = parser.add_subparsers(help='sub - command help')
 
-    parser_languages = subparsers.add_parser('show_languages', help='Overview of all valid languages.')
+    #SHOW LANGUAGES
+    parser_languages = subparsers.add_parser('show_languages',
+        help='Overview of all valid languages.')
     parser_languages.add_argument('-s', '--startswith',
-                                  action='store',
-                                  help='Enter the first letter of a language to see which languages are available.')
+        action='store',
+        help='Enter the first letter of a language to see which languages are \
+        available.')
     parser_languages.set_defaults(func=show_languages)
 
-    parser_config = subparsers.add_parser('config', help='The config sub command allows you set the data location of where to store files.')
+    #CONFIG 
+    parser_config = subparsers.add_parser('config',
+        help='The config sub command allows you set the data location of where \
+        to store files.')
     parser_config.set_defaults(func=config_launcher)
-    parser_config.add_argument('-f', '--force', action='store_true',
-                               help='Reconfigure Editor Toolkit (this will replace wiki.cfg')
+    parser_config.add_argument('-f', '--force',
+        action='store_true',
+        help='Reconfigure Editor Toolkit (this will replace wiki.cfg')
 
-    parser_download = subparsers.add_parser('download', help='The download sub command allows you to download a Wikipedia dump file.')
-    parser_download.set_defaults(func=dump_downloader_launcher)
+    #DOWNLOAD
+    parser_download = subparsers.add_parser('download',
+        help='The download sub command allows you to download a Wikipedia dump\
+         file.')
+    parser_download.set_defaults(func=downloader_launcher)
 
-    #parser_split = subparsers.add_parser('split', help='The split sub command splits the downloaded file in smaller chunks to parallelize extracting information.')
-    #parser_split.set_defaults(func=chunker_launcher)
-
-    parser_create = subparsers.add_parser('extract', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
+    #EXTRACT
+    parser_create = subparsers.add_parser('extract',
+        help='The store sub command parsers the XML chunk files, extracts the \
+        information and stores it in a MongoDB.')
     parser_create.set_defaults(func=extract_launcher)
 
-    parser_sort = subparsers.add_parser('sort', help='By presorting the data, significant processing time reductions are achieved.')
+
+    #SORT
+    parser_sort = subparsers.add_parser('sort',
+        help='By presorting the data, significant processing time reductions \
+        are achieved.')
     parser_sort.set_defaults(func=sort_launcher)
 
-    parser_store = subparsers.add_parser('store', help='The store sub command parsers the XML chunk files, extracts the information and stores it in a MongoDB.')
+    #STORE
+    parser_store = subparsers.add_parser('store',
+        help='The store sub command parsers the XML chunk files, extracts the \
+        information and stores it in a MongoDB.')
     parser_store.set_defaults(func=store_launcher)
 
-    parser_transform = subparsers.add_parser('transform', help='Transform the raw datatable to an enriched dataset that can be exported.')
+    #TRANSFORM
+    parser_transform = subparsers.add_parser('transform',
+        help='Transform the raw datatable to an enriched dataset that can be \
+        exported.')
     parser_transform.set_defaults(func=transformer_launcher)
 
-    parser_dataset = subparsers.add_parser('export', help='Create a dataset from the MongoDB and write it to a csv file.')
+    #EXPORT
+    parser_dataset = subparsers.add_parser('export',
+        help='Create a dataset from the MongoDB and write it to a csv file.')
     parser_dataset.set_defaults(func=exporter_launcher)
 
-    #parser_debug = subparsers.add_parser('debug', help='Input custom dump files for debugging purposes')
-    #parser_debug.set_defaults(func=debug_launcher)
-
-    parser_all = subparsers.add_parser('all', help='The all sub command runs the download, split, store and dataset commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
+    #ALL
+    parser_all = subparsers.add_parser('all',
+        help='The all sub command runs the download, split, store and dataset \
+        commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE \
+        CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
     parser_all.add_argument('-e', '--except',
-                            action='store',
-                            help='Should be a list of functions that are to be ignored when executing \'all\'.',
-                            default=[]
-                            )
+        action='store',
+        help='Should be a list of functions that are to be ignored when \
+        executing all.',
+        default=[])
 
     parser_all.add_argument('-n', '--new',
-                            action='store_true',
-                            help='This will delete all previous output and starts from scratch. Mostly useful for debugging purposes.',
-                            default=False
-                            )
+        action='store_true',
+        help='This will delete all previous output and starts from scratch. \
+        Mostly useful for debugging purposes.',
+        default=False)
+
+    #DJANGO
+    parser_django = subparsers.add_parser('django')
+    parser_django.add_argument('-e', '--except',
+        action='store',
+        help='Should be a list of functions that are to be ignored when \
+        executing all.',
+        default=[])
+
 
     parser.add_argument('-l', '--language',
-                        action='store',
-                        help='Example of valid languages.',
-                        choices=supported_languages(),
-                        default=default_language
-                        )
+        action='store',
+        help='Example of valid languages.',
+        choices=wiki.supported_languages(),
+        default=default_language)
 
     parser.add_argument('-p', '--project',
-                        action='store',
-                        help='Specify the Wikimedia project that you would like to download',
-                        choices=settings.projects.keys(),
-                        default='wiki'
-                        )
+        action='store',
+        help='Specify the Wikimedia project that you would like to download',
+        choices=projects,
+        default='wiki')
 
-    parser.add_argument('-c', '--collection', action='store',
-                        help='Name of MongoDB collection',
-                        default='editors')
-
+    parser.add_argument('-c', '--collection',
+        action='store',
+        help='Name of MongoDB collection',
+        default='editors')
 
     parser.add_argument('-o', '--location',
-                        action='store',
-                        help='Indicate where you want to store the downloaded file.',
-                        default=settings.input_location
-                        )
+        action='store',
+        help='Indicate where you want to store the downloaded file.',
+        default=settings.input_location)
 
     parser.add_argument('-ns', '--namespace',
-                        action='store',
-                        help='A list of namespaces to include for analysis.',
-                        default='0'
-                        )
+        action='store',
+        help='A list of namespaces to include for analysis.',
+        default='0')
 
     parser.add_argument('-f', '--file',
-                        action='store',
-                        choices=file_choices,
-                        help='Indicate which dump you want to download. Valid choices are:\n %s' % ''.join([f + ',\n' for f in file_choices]),
-                        default='stub-meta-history.xml.gz'
-                        )
-
-    parser.add_argument('-dv', '--dumpversion',
-                        action='store',
-                        choices=settings.dumpversions.keys(),
-                        help='Indicate the Wikidump version that you are parsing.',
-                        default=settings.dumpversions['0']
-                        )
+        action='store',
+        choices=settings.file_choices,
+        help='Indicate which dump you want to download. Valid choices are:\n \
+            %s' % ''.join([f + ',\n' for f in settings.file_choices]),
+        default='stub-meta-history.xml.gz')
 
     parser.add_argument('-d', '--datasets',
-                        action='store',
-                        choices=datasets.keys(),
-                        help='Indicate what type of data should be exported.',
-                        default='backward'
-                        )
+        action='store',
+        choices=count_editors.available_analyses(),
+        help='Indicate what type of data should be exported.',
+        default='cohort_dataset_backward_bar')
 
-    parser.add_argument('-prog', '--progress',
-                        action='store_true',
-                        default=True, \
-                        help='Indicate whether you want to have a progressbar.'
-                        )
+    return parser, settings, wiki
 
+def main():
+    parser, settings, wiki = init_args_parser()
     args = parser.parse_args()
+    properties = wikiprojects.Wiki(settings, args)
     #initialize logger
     logger = logging.getLogger('manager')
     logger.setLevel(logging.DEBUG)
 
     # Add the log message handler to the logger
     today = datetime.datetime.today()
-    log_filename = os.path.join(settings.log_location, '%s%s_%s-%s-%s.log' % (args.language, args.project, today.day, today.month, today.year))
-    handler = logging.handlers.RotatingFileHandler(log_filename, maxBytes=1024 * 1024, backupCount=3)
+    log_filename = os.path.join(settings.log_location, '%s%s_%s-%s-%s.log' \
+        % (properties.language_code, properties.project,
+           today.day, today.month, today.year))
+    handler = logging.handlers.RotatingFileHandler(log_filename,
+                                                   maxBytes=1024 * 1024,
+                                                   backupCount=3)
 
     logger.addHandler(handler)
-    logger.debug('Default language: \t%s' % default_language)
+    logger.debug('Chosen language: \t%s' % wiki.language)
 
     #start manager
-    detect_python_version(logger)
-    about()
+    #detect_python_version(logger)
+    about_statement()
     config.create_configuration(settings, args)
-    locations = determine_file_locations(args, logger)
-    settings.verify_environment(locations.directories)
-    show_settings(args, logger, locations)
-    args.func(args, logger, locations)
+
+    properties.show_settings()
+    args.func(properties, settings, logger)
 
 
 if __name__ == '__main__':
