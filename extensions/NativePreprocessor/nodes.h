@@ -277,8 +277,15 @@ static struct node* breakSyntax( struct node* node, char * const nodeString, int
 				writepos += nameChildren;
 			}
 			if (readpos >= *nodeStringLen) break; /* It may be the case for eg. {{Foo|Bar */
+			if ( nodeString[readpos] == literal_node ) { /* if this template had a name, there will be an equal inside a literal node */
+				assert( !memcmp( nodeString + readpos, "L000000000000001", NODE_LEN ) );
+				memmove( nodeString + writepos, nodeString + readpos, NODE_LEN );
+				readpos += NODE_LEN;
+				writepos += NODE_LEN;
+			}
+			
 			int valueChildren = getNextSibling( nodeString + readpos ); /* <value> */
-			assert( nodeString[readpos] == value_node ); /* <part> node */
+			assert( nodeString[readpos] == value_node ); /* <value> node */
 			readpos += NODE_LEN;
 			if ( valueChildren ) {
 				memmove( nodeString + writepos, nodeString + readpos, valueChildren );
