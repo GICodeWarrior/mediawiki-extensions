@@ -30,13 +30,11 @@ import configuration
 settings = configuration.Settings()
 import wikitree
 from database import db
-from utils import utils
+from utils import file_utils
 from utils import messages
-#from etl import extract
-#from utils import process_constructor as pc
 
 from etl import models
-import models as botmodels
+from classes import bots
 
 import cProfile
 

@@ -27,7 +27,7 @@ sys.path.append('..')
 
 import configuration
 settings = configuration.Settings()
-from utils import utils
+from utils import file_utils
 
 def convert_html_entities(text):
     return file_utils.unescape(text)
@@ -134,9 +134,14 @@ def read_input(fh):
                 wrapper.write("<?xml version='1.0' encoding='UTF-8' ?>\n")
     fh.close()
 
-if __name__ == '__main__':
+
+def debug():
     fh = codecs.open('c:\\wikimedia\\en\\wiki\dewiki-latest-stub-meta-history.xml', 'r', 'utf-8')
     for article in read_input(fh):
         print article
     extract_meta_information(fh)
     fh.close()
+
+
+if __name__ == '__main__':
+    debug()

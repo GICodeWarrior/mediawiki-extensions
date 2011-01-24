@@ -28,7 +28,7 @@ import configuration
 settings = configuration.Settings()
 
 import wikitree.parser
-from bots import bots
+from bots import detector
 from utils import file_utils
 from utils import compression
 from utils import log
@@ -228,7 +228,7 @@ def output_editor_information(revisions, page, bots):
 
 
 def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=['0']):
-    bot_ids = bots.retrieve_bots(language_code)
+    bot_ids = detector.retrieve_bots(language_code)
     location = os.path.join(settings.input_location, language_code, project)
     output = os.path.join(settings.input_location, language_code, project, 'txt')
     widgets = log.init_progressbar_widgets('Extracting data')
