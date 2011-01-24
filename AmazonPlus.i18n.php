@@ -990,6 +990,15 @@ $messages['ksh'] = array(
 	'amazonplus-less' => 'winnijer',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'amazonplus-german' => 'Elmanî',
+	'amazonplus-french' => 'Frensî',
+	'amazonplus-new' => 'nû',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
