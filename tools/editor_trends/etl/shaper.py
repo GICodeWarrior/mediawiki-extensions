@@ -14,7 +14,7 @@ http://www.fsf.org/licenses/gpl.html
 
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-24'
 __version__ = '0.1'
 
@@ -39,8 +39,6 @@ def create_clock():
     for i in xrange(0, 24):
         d[i] = 0.0
     return d
-
-
 
 
 def create_datacontainer(first_year, final_year, datatype='dict'):
@@ -70,7 +68,7 @@ def add_months_to_datacontainer(datacontainer, datatype):
 
     return datacontainer
 
-def add_years_to_datacontainer(first_year, final_yaer, datacontainer, datatype):
+def add_years_to_datacontainer(first_year, final_year, datacontainer, datatype):
     for dc in datacontainer:
         datacontainer[dc] = {}
         for x in range(first_year, final_year):
@@ -78,31 +76,4 @@ def add_years_to_datacontainer(first_year, final_yaer, datacontainer, datatype):
     return datacontainer
 
 
-def get_standard_deviation(numberList):
-    mean = get_mean(numberList)
-    std = 0
-    n = len(numberList)
-    for i in numberList:
-        std = std + (i - mean) ** 2
-    return math.sqrt(std / float(n - 1))
 
-
-def get_median(numberList):
-    #print numberList
-    if numberList == []: return '.'
-    theValues = sorted(numberList)
-    theValues = [float(x) for x in theValues]
-    if len(theValues) % 2 == 1:
-        return theValues[(len(theValues) + 1) / 2 - 1]
-    else:
-        lower = theValues[len(theValues) / 2 - 1]
-        upper = theValues[len(theValues) / 2]
-        #print upper, lower
-    return (lower + upper) / 2
-
-
-def get_mean(numberList):
-    #print numberList
-    if numberList == []: return '.'
-    floatNums = [float(x) for x in numberList]
-    return sum(floatNums) / len(numberList)

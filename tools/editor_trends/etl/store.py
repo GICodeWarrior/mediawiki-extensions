@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-04'
 __version__ = '0.1'
 
@@ -24,29 +24,37 @@ import sys
 sys.path.append('..')
 import configuration
 settings = configuration.Settings()
-from utils import utils
+from utils import file_utils
+from utils import text_utils
 from utils import messages
 from database import cache
 from database import db
 
 
-def store_editors(tasks, dbname, collection, input):
+def store_editors(tasks, dbname, collection, source):
+    '''
+    This function is called by multiple consumers who each take a sorted file 
+    and create a cache object. If the number of edits made by an editor is above
+    the treshold then the cache object stores the data in Mongo, else the data
+    is discarded.
+    The treshold is currently more than 9 edits and is not yet configurable. 
+    '''
     mongo = db.init_mongo_db(dbname)
     collection = mongo[collection]
     editor_cache = cache.EditorCache(collection)
     prev_contributor = -1
     edits = 0
     while True:
-        file = tasks.get(block=False)
+        filename = tasks.get(block=False)
         tasks.task_done()
-        if file == None:
+        if filename == None:
             print 'Swallowing a poison pill.'
             break
         print '%s files left in the queue.' % messages.show(tasks.qsize)
 
-        fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
-        for line in utils.readline(fh):
-            print line
+        fh = file_utils.create_txt_filehandle(source, filename, 'r', settings.encoding)
+        for line in file_utils.read_raw_data(fh):
+            #print line
             if len(line) == 0:
                 continue
             contributor = line[0]
@@ -59,7 +67,7 @@ def store_editors(tasks, dbname, collection, input):
                     editor_cache.clear(prev_contributor)
                 edits = 0
             edits += 1
-            date = utils.convert_timestamp_to_datetime_utc(line[1]) #+ datetime.timedelta(days=1)
+            date = text_utils.convert_timestamp_to_datetime_utc(line[1]) #+ datetime.timedelta(days=1)
             article_id = int(line[2])
             username = line[3].encode(settings.encoding)
             value = {'date': date, 'article': article_id, 'username': username}
@@ -67,27 +75,28 @@ def store_editors(tasks, dbname, collection, input):
             prev_contributor = contributor
         fh.close()
         print editor_cache.n
-        #return editor_cache.n
 
 
-def launcher(input, dbname, collection):
-    hack = True
+def launcher(source, dbname, collection):
+    '''
+    This is the main entry point and creates a number of workers and launches
+    them. 
+    '''
     mongo = db.init_mongo_db(dbname)
     coll = mongo[collection]
     coll.ensure_index('editor')
     coll.create_index('editor')
 
-    if hack:
-        input = 'C:\wikimedia\en\wiki\dbready'
-        files = utils.retrieve_file_list(input, 'txt')
-    else:
-        files = utils.retrieve_file_list(input, 'csv')
+    files = file_utils.retrieve_file_list(source, 'csv')
     print files
-    print input
+    print source
     tasks = multiprocessing.JoinableQueue()
-    consumers = [multiprocessing.Process(target=store_editors, args=(tasks, dbname, collection, input)) for i in xrange(1)]
-    for file in files:
-        tasks.put(file)
+    consumers = [multiprocessing.Process(target=store_editors,
+                args=(tasks, dbname, collection, source))
+                for i in xrange(settings.number_of_processes)]
+
+    for filename in files:
+        tasks.put(filename)
 
     for x in xrange(settings.number_of_processes):
         tasks.put(None)
@@ -96,10 +105,4 @@ def launcher(input, dbname, collection):
         w.start()
 
     tasks.join()
-
-    #filename = utils.retrieve_file_list(input, 'txt', mask=None)
-    #if len(filename) > 1:
-    #    filename = [f for f in filename if f.find('final') > -1]
-    #filename = ''.join(filename)
-
 

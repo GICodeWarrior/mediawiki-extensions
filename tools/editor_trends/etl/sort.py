@@ -13,13 +13,12 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-16'
 __version__ = '0.1'
 
 
 import heapq
-import datetime
 import sys
 import os
 import multiprocessing
@@ -28,44 +27,17 @@ from Queue import Empty
 sys.path.append('..')
 import configuration
 settings = configuration.Settings()
-from database import db
-from database import cache
-from utils import utils
+
+from utils import file_utils
 from utils import messages
-
-
-
-#def mergesort_external_launcher(input, output):
-#    files = utils.retrieve_file_list(input, 'txt', mask='')
-#    x = 0
-#    maxval = 99999
-#    while maxval >= settings.max_filehandles:
-#        x += 1.0
-#        maxval = round(len(files) / x)
-#    chunks = utils.split_list(files, int(x))
-#
-#    to_remove = []
-#    for chunk in chunks:
-#        print '1st iteration external mergesort'
-#        filehandles = [utils.create_txt_filehandle(input, file, 'r', settings.encoding) for file in chunks[chunk]]
-#        filename = sort.merge_sorted_files(output, filehandles, chunk)
-#        if len(chunks) > 1:
-#            to_remove.append(filename)
-#        filehandles = [fh.close() for fh in filehandles]
-#
-#    if len(chunks) > 1:
-#        print '2nd iteration external mergesort'
-#        files = utils.retrieve_file_list(output, 'txt', mask='[merged]')
-#        filehandles = [utils.create_txt_filehandle(output, file, 'r', settings.encoding) for file in files]
-#        filename = sort.merge_sorted_files(output, filehandles, 'final')
-#        filehandles = [fh.close() for fh in filehandles]
-#        filename = 'merged_final.txt'
-#    for r in to_remove:
-#        print 'Going to delete: %s' % os.path.join(output, r)
-##        utils.delete_file(output , r)
-
+import wikitree.parser
 
 def quick_sort(obs):
+    '''
+    Quicksort is a sorting algorithm developed by C. A. R. Hoare that, on \
+    average, makes O(nlogn) (big O notation) comparisons to sort n items.
+    More info: http://en.wikipedia.org/wiki/Quicksort
+    '''
     if obs == []:
         return []
     else:
@@ -76,80 +48,104 @@ def quick_sort(obs):
 
 
 def mergesort(n):
-        """Recursively merge sort a list. Returns the sorted list."""
-        front = n[:len(n) / 2]
-        back = n[len(n) / 2:]
+    """
+    Merge sort is an O(n log n) comparison-based sorting algorithm.
+    Recursively merge sort a list. Returns the sorted list.
+    """
+    front = n[:len(n) / 2]
+    back = n[len(n) / 2:]
 
-        if len(front) > 1:
-                front = mergesort(front)
-        if len(back) > 1:
-                back = mergesort(back)
+    if len(front) > 1:
+        front = mergesort(front)
+    if len(back) > 1:
+        back = mergesort(back)
 
-        return merge(front, back)
+    return merge(front, back)
 
 
 def merge(front, back):
-        """Merge two sorted lists together. Returns the merged list."""
-        result = []
-        while front and back:
-                # pick the smaller one from the front and stick it on
-                # note that list.pop(0) is a linear operation, so this gives quadratic running time...
-                result.append(front.pop(0) if front[0] <= back[0] else back.pop(0))
+    """Merge two sorted lists together. Returns the merged list."""
+    result = []
+    while front and back:
+        '''
+        pick the smaller one from the front and stick it on
+        note that list.pop(0) is a linear operation, so this gives quadratic 
+        running time...
+        '''
+        result.append(front.pop(0) if front[0] <= back[0] else back.pop(0))
         # add the remaining end
-        result.extend(front or back)
-        return result
+    result.extend(front or back)
+    return result
 
 
 
-def merge_sorted_files(output, files, iteration):
-    fh = utils.create_txt_filehandle(output, 'merged_%s.txt' % iteration, 'w', settings.encoding)
+def merge_sorted_files(target, files, iteration):
+    '''
+    Merges smaller sorted files in one big file, no longer used. 
+    '''
+    fh = file_utils.create_txt_filehandle(target, 'merged_%s.txt' % iteration, 'w',
+                                     settings.encoding)
     lines = 0
-    for line in heapq.merge(*[readline(file) for file in files]):
-        utils.write_list_to_csv(line, fh)
+    for line in heapq.merge(*[readline(filename) for filename in files]):
+        file_utils.write_list_to_csv(line, fh)
         lines += 1
     fh.close()
     print lines
     return fh.name
 
 
-def write_sorted_file(sorted_data, file, output):
-    #file = file.split('.')
-    #file[0] = file[0] + '_sorted'
-    #file = '.'.join(file)
-    fh = utils.create_txt_filehandle(output, file, 'w', settings.encoding)
-    utils.write_list_to_csv(sorted_data, fh)
+def write_sorted_file(sorted_data, filename, target):
+    '''
+    Writes the sorted file to target
+    '''
+    fh = file_utils.create_txt_filehandle(target, filename, 'w', settings.encoding)
+    file_utils.write_list_to_csv(sorted_data, fh)
     fh.close()
 
 
-def mergesort_feeder(tasks, input, output):
+def mergesort_feeder(tasks, source, target):
+    '''
+    The feeder function is called by the launcher and gives it a task to
+    complete.
+    '''
     while True:
         try:
-            file = tasks.get(block=False)
+            filename = tasks.get(block=False)
             tasks.task_done()
-            if file == None:
+            if filename == None:
                 print 'Swallowed a poison pill'
                 break
-            fh = utils.create_txt_filehandle(input, file, 'r', settings.encoding)
-            data = fh.readlines()
+
+            fh = file_utils.create_txt_filehandle(source,
+                                             filename,
+                                             'r',
+                                             settings.encoding)
+            #print fh
+            #data = fh.readlines()
+            data = wikitree.parser.read_unicode_text(fh)
             fh.close()
-            data = [d.replace('\n', '') for d in data]
+            data = [d.strip() for d in data]
             data = [d.split('\t') for d in data]
             sorted_data = mergesort(data)
-            write_sorted_file(sorted_data, file, output)
-            print file, messages.show(tasks.qsize)
+            write_sorted_file(sorted_data, filename, target)
+            print filename, messages.show(tasks.qsize)
+        except UnicodeDecodeError:
+            continue
         except Empty:
             break
 
 
-def mergesort_launcher(input, output):
-    settings.verify_environment([input, output])
-    files = utils.retrieve_file_list(input, 'csv')
-    print files
-    print input
+def mergesort_launcher(source, target):
+    settings.verify_environment([source, target])
+    files = file_utils.retrieve_file_list(source, 'csv')
+    #print files
+    print source
     tasks = multiprocessing.JoinableQueue()
-    consumers = [multiprocessing.Process(target=mergesort_feeder, args=(tasks, input, output)) for i in xrange(settings.number_of_processes)]
-    for file in files:
-        tasks.put(file)
+    consumers = [multiprocessing.Process(target=mergesort_feeder,
+                                args=(tasks, source, target))
+                                for x in xrange(settings.number_of_processes)]
+    for filename in files:
+        tasks.put(filename)
 
     for x in xrange(settings.number_of_processes):
         tasks.put(None)
@@ -159,12 +155,14 @@ def mergesort_launcher(input, output):
 
     tasks.join()
 
+def debug():
+    '''
+    Simple test function
+    '''
+    source = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
+    target = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
+    mergesort_launcher(source, target)
+
 
 if __name__ == '__main__':
-    input = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
-    output = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
-    dbname = 'enwiki'
-    collection = 'editors'
-    mergesort_launcher(input, output)
-    #mergesort_external_launcher(intermediate_output, output)
-    #num_editors = store_editors(output, dbname, collection)
+    debug()

@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-02'
 __version__ = '0.1'
 
@@ -27,11 +27,9 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 from database import db
-#from utils import process_constructor as pc
-from utils import utils
-from utils import consumers
+from utils import file_utils
 from utils import messages
-import exporter
+from classes import consumers
 import shaper
 
 try:
@@ -71,18 +69,19 @@ class Editor(object):
             return
         edits = editor['edits']
         username = editor['username']
-        monthly_edits = determine_edits_by_month(edits)
+        first_year, final_year = determine_year_range(edits)
+        monthly_edits = determine_edits_by_month(edits, first_year, final_year)
         monthly_edits = db.stringify_keys(monthly_edits)
         edits = sort_edits(edits)
         edit_count = len(edits)
         new_wikipedian = edits[9]['date']
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
-        edits_by_year = determine_edits_by_year(edits)
+        edits_by_year = determine_edits_by_year(edits, first_year, final_year)
         edits_by_year = db.stringify_keys(edits_by_year)
-        last_edit_by_year = determine_last_edit_by_year(edits)
+        last_edit_by_year = determine_last_edit_by_year(edits, first_year, final_year)
         last_edit_by_year = db.stringify_keys(last_edit_by_year)
-        articles_by_year = determine_articles_by_year(edits)
+        articles_by_year = determine_articles_by_year(edits, first_year, final_year)
         articles_by_year = db.stringify_keys(articles_by_year)
         edits = edits[:10]
 
@@ -99,44 +98,53 @@ class Editor(object):
                           'username': username
                           }, safe=True)
 
+def determine_year_range(edits):
+    years = [year for year in edits if edits[year] != []]
+    first_year = int(min(years))
+    final_year = int(max(years)) + 1
+    return first_year, final_year
 
-def determine_last_edit_by_year(edits):
-    datacontainer = shaper.create_datacontainer(0)
+
+def determine_last_edit_by_year(edits, first_year, final_year):
+    dc = shaper.create_datacontainer(first_year, final_year, 0)
     for edit in edits:
         edit = edit['date']
-        if datacontainer[edit.year] == 0:
-             datacontainer[edit.year] = edit
-        elif datacontainer[edit.year] < edit:
-             datacontainer[edit.year] = edit
-    return datacontainer
+        if dc[edit.year] == 0:
+             dc[edit.year] = edit
+        elif dc[edit.year] < edit:
+             dc[edit.year] = edit
+    return dc
 
-def determine_edits_by_month(edits):
-    datacontainer = shaper.create_datacontainer(0.0)
-    datacontainer = shaper.add_months_to_datacontainer(datacontainer, 0.0)
+
+
+
+def determine_edits_by_month(edits, first_year, final_year):
+    dc = shaper.create_datacontainer(first_year, final_year)
+    dc = shaper.add_months_to_datacontainer(dc, 0.0)
     for year in edits:
         for edit in edits[year]:
             m = edit['date'].month
-            datacontainer[int(year)][m] += 1
-    return datacontainer
+            dc[int(year)][m] += 1
+    return dc
 
 
-def determine_edits_by_year(dates):
+def determine_edits_by_year(edits, first_year, final_year):
     '''
     This function counts the number of edits by year made by a particular editor. 
     '''
-    edits = shaper.create_datacontainer(0.0)
-    for date in dates:
-        year = date['date'].year
-        edits[year] += 1
-    return edits
+    dc = shaper.create_datacontainer(first_year, final_year, 0)
+    for edit in edits:
+        year = edit['date'].year
+        dc[year] += 1
+    return dc
 
 
-def determine_articles_by_year(dates):
+def determine_articles_by_year(dates, first_year, final_year):
     '''
     This function counts the number of unique articles by year edited by a
     particular editor.
     '''
-    articles = shaper.create_datacontainer('set')
+    articles = shaper.create_datacontainer(first_year, final_year, 'set')
     for date in dates:
         year = date['date'].year
         articles[year].add(date['article'])
@@ -146,7 +154,7 @@ def determine_articles_by_year(dates):
 
 
 def sort_edits(edits):
-    edits = utils.merge_list(edits)
+    edits = file_utils.merge_list(edits)
     return sorted(edits, key=itemgetter('date'))
 
 
@@ -173,7 +181,7 @@ def transform_editors_multi_launcher(dbname, collection):
 def setup_database(dbname, collection):
     mongo = db.init_mongo_db(dbname)
     input_db = mongo[collection]
-    output_db = mongo[collection + '_dataset']
+    output_db = mongo['%s_dataset' % collection]
 
     output_db.ensure_index('editor')
     output_db.create_index('editor')
