@@ -41,10 +41,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
 	'wikibhasha' => '{{Optional}}',
+	'wikibhasha-desc' => '{{desc}}',
 	'wikiBhashaLink' => '{{Optional}}',
 );
 
@@ -53,6 +55,14 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'wikibhasha-desc' => 'Toepassing om inhoud in verskeie tale te skep en sodoende die inhoud van die Engelse Wikipedia beter te gebruik',
+);
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'wikibhasha' => 'ويكي باشا',
+	'wikiBhashaLink' => 'ويكي باشا (بيتا)',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -96,6 +106,13 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'wikibhasha-desc' => 'Aplikacija za zgótowanje wěcejrěcnego wopśimjeśa, ab se wopśimjeśe engelskeje Wikipedije lěpjej zwužytkowało',
+);
+
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'wikibhasha-desc' => 'Εφαρμογή για τη δημιουργία πολυγλωσσικού περιεχομένου αξιοποιώντας το περιεχόμενο της αγγλική Wikipedia',
 );
 
 /** French (Français)
@@ -152,6 +169,13 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'wikibhasha-desc' => 'ウィキペディア英語版の記事を利用して、多言語記事を作成するアプリケーション',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikibhasha-desc' => 'En Aanwendung, öm Enhallde en mieh wi eine Shprooch ze schaffe un esu de Wikipedija op Änglesch mieh Ennfommazjuhne zohzeföhre.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
