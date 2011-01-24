@@ -3,7 +3,7 @@ from multiprocessing import Process
 from celery.decorators import task
 from celery.registry import tasks
 
-from editor_trends.utils import wikiprojects
+from editor_trends.classes import wikiprojects
 from editor_trends import manage as manager
 
 from wikilytics.api.models import Job

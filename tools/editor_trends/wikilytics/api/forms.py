@@ -2,7 +2,7 @@ import datetime
 from django import forms
 
 from wikilytics.api.widgets import MonthYearWidget
-from editor_trends.utils import wikiprojects
+from editor_trends.classes import wikiprojects
 
 
 wiki = wikiprojects.Wiki('settings')
@@ -18,6 +18,6 @@ class SearchForm(forms.Form):
 
     language = forms.CharField(initial='en',
                                widget=forms.Select(choices=wiki.supported_languages(output='django')))
-    print 'Project: %s' % language
-    date = forms.DateField(widget=MonthYearWidget(years=years))
+    #print 'Project: %s' % language
+    #date = forms.DateField(widget=MonthYearWidget(years=years))
 
