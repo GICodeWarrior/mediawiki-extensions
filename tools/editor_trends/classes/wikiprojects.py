@@ -29,10 +29,10 @@ import locale
 import datetime
 import time
 import re
-import ordered_dict as odict
+sys.path.append('..')
 
-import text_utils
-
+from utils import text_utils
+from utils import ordered_dict as odict
 
 class Wiki:
     '''

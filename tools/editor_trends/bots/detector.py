@@ -33,7 +33,7 @@ from database import db
 from utils import file_utils
 from utils import messages
 
-from etl import models
+from classes import consumers
 from classes import bots
 
 import cProfile
@@ -61,7 +61,7 @@ def read_bots_csv_file(location, filename, encoding, manager=False):
         bots = bots.split('|')
         for bot in bots:
             if bot not in bot_dict:
-                b = botmodels.Bot(bot)
+                b = botconsumers.Bot(bot)
                 b.id = None
             else:
                 b = bot_dict[bot]
@@ -156,7 +156,7 @@ def create_bot_validation_dataset(xml_nodes, fh, bots):
 
         #print username.encode('utf-8')
         if username.find('bot') > -1 or username.find('script') > -1:
-            bot = bots.get(username, botmodels.Bot(username, verified=False))
+            bot = bots.get(username, botconsumers.Bot(username, verified=False))
             bot.id = contributor.find('id').text
             timestamp = revision.find('timestamp').text
             if timestamp != None:
@@ -192,15 +192,14 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
         input_queue = pc.load_queue(files, poison_pill=True)
         bots = read_bots_csv_file(settings.csv_location, 'Bots.csv', settings.encoding, manager=manager)
         for file in files:
-            tasks.put(models.TXTFile(file, input_txt, settings.csv_location, output_file, target, bots=bots, keys=keys))
+            tasks.put(consumers.TXTFile(file, input_txt, settings.csv_location, output_file, target, bots=bots, keys=keys))
 
     else:
         output_file = 'bots_predictionset.csv'
         files = file_utils.retrieve_file_list(input_xml, 'xml', mask=None)
-        input_queue = pc.load_queue(files, poison_pill=True)
         bots = {}
         for file in files:
-            tasks.put(models.XMLFile(file, input_xml, settings.csv_location, output_file, target, bots=bots, keys=keys))
+            tasks.put(consumers.XMLFile(file, input_xml, settings.csv_location, output_file, target, bots=bots, keys=keys))
 
     #lock = mgr.Lock()
     if manager:
@@ -253,7 +252,7 @@ def bot_launcher_multi(tasks):
     '''
     This is the launcher that uses multiprocesses. 
     '''
-    consumers = [models.XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
+    consumers = [consumers.XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
     for x in xrange(settings.number_of_processes):
         tasks.put(None)
 

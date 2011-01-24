@@ -107,6 +107,7 @@ def generate_chart_data(project, collection, language_code, func, **kwargs):
     stopwatch.elapsed()
     log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='finish')
 
+
 def loop_editors(dbname, project, collection, language_code, func, **kwargs):
     '''
     Generic loop function that loops over all the editors of a Wikipedia project
@@ -119,7 +120,7 @@ def loop_editors(dbname, project, collection, language_code, func, **kwargs):
     print 'Number of editors: %s' % len(editors)
     mongo = db.init_mongo_db(dbname)
     coll = mongo[collection]
-    format = kwargs.pop('format')
+    format = kwargs.pop('format', 'long')
     kwargs['min_year'] = min_year
     kwargs['max_year'] = max_year
     vars = []
@@ -145,7 +146,7 @@ def cohort_dataset_forward_histogram(var, editor, **kwargs):
     yearly_edits = editor['edits_by_year']
     n = editor['edit_count']
 
-    if n >= ds.count.cum_cutoff:
+    if n >= var.cum_cutoff:
         for i, year in enumerate(xrange(new_wikipedian.year, final_edit.year)):
             edits = editor['monthly_edits'].get(str(year), {0:0})
             if year == new_wikipedian.year:
@@ -153,7 +154,7 @@ def cohort_dataset_forward_histogram(var, editor, **kwargs):
             else:
                 start = 1
             for month in xrange(start, 13):
-                if edits.get(str(month), 0) >= ds.count.cutoff:
+                if edits.get(str(month), 0) >= var.cutoff:
                     experience = i * 12 + (month - new_wikipedian.month)
                     var.add(new_wikipedian, {experience: 1})
     return var
@@ -240,7 +241,7 @@ def time_to_new_wikipedian(var, editor, **kwargs):
 
 
 if __name__ == '__main__':
-    #generate_chart_data('wiki', 'editors_dataset', 'en',cohort_dataset_forward_histogram, time_unit='month', cutoff=1, cum_cutoff=50)
+    generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_forward_histogram, time_unit='month', cutoff=1, cum_cutoff=50)
     generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_backward_bar, time_unit='year', cutoff=0, cum_cutoff=50, format='wide')
     generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_forward_bar, time_unit='year', cutoff=0, cum_cutoff=50, format='wide')
     #generate_chart_data('wiki', 'editors_dataset','en', histogram_edits, time_unit='year', cutoff=0)

@@ -30,6 +30,7 @@ import configuration
 settings = configuration.Settings()
 
 from utils import file_utils
+from utils import data_converter
 from database import db
 
 class Transform(SONManipulator):
@@ -46,11 +47,23 @@ class Transform(SONManipulator):
     def transform_outgoing(self, son, collection):
         for (key, value) in son.items():
             if isinstance(value, dict):
-                if "_type" in value and value["_type"] == "custom":
-                    son[key] = decode_custom(value)
+                names = value.keys()
+                for name in names:
+                    var = Variable(name, None)
+                    var.decode(value)
+                    son['variables'][name] = var
             else: # Again, make sure to recurse into sub-docs
-                son[key] = self.transform_outgoing(value, collection)
-        return son
+                son[key] = value
+        name = son.pop('name', None)
+        project = son.pop('project', None)
+        collection = son.pop('collection', None)
+        language_code = son.pop('language_code', None)
+        variables = son.pop('variables', [])
+        ds = Dataset(name, project, collection, language_code, **son)
+        for var in variables:
+            var = variables[var]
+            ds.add_variable(var)
+        return ds
 
 
 class Data:
@@ -66,9 +79,7 @@ class Data:
                 kwargs[key] = d
         return kwargs
 
-    def convert_seconds_to_date(self, secs):
-        #return time.gmtime(secs)
-        return datetime.datetime.fromtimestamp(secs)
+
 
     def convert_date_to_epoch(self, date):
         assert self.time_unit == 'year' or self.time_unit == 'month' \
@@ -91,6 +102,7 @@ class Observation(Data):
         self.t0 = self.set_start_date(date)
         self.t1 = self.set_end_date(date)
         self.hash = self.__hash__(date)
+        self.date = date
         self.data = {}
         self._type = 'observation'
 
@@ -103,6 +115,9 @@ class Observation(Data):
     def __iter__(self):
         for obs in self.obs:
             yield self.obs[obs]
+
+    def __getitem__(self, key):
+        return getattr(self, key, [])
 
     def next(self):
         try:
@@ -153,9 +168,10 @@ class Variable(Data):
         self.obs = {}
         self.time_unit = time_unit
         self._type = 'variable'
-        #self.stats = stats
+        self.props = ['name', 'time_unit', '_type']
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
+            self.props.append(kw)
 
     def __str__(self):
         return self.name
@@ -164,7 +180,7 @@ class Variable(Data):
         return self.name
 
     def __getitem__(self, key):
-        return self.obs[key]
+        return getattr(self, key, [])
 
     def __iter__(self):
         dates = self.obs.keys()
@@ -246,12 +262,29 @@ class Variable(Data):
 
     def encode(self):
         bson = {}
-        for x, obs in enumerate(self):
-            obs = self[obs]
-            x = str(x)
-            bson[x] = obs.encode_to_bson()
-            #print bson
+        for prop in self.props:
+            bson[prop] = getattr(self, prop)
+
+        bson['obs'] = {}
+        for obs in self:
+            data = self.obs[obs]
+            obs = str(obs)
+            bson['obs'][obs] = data.encode_to_bson()
         return bson
+
+    def decode(self, values):
+        for varname in values:
+            for prop in values[varname]:
+                if isinstance(values[varname][prop], dict):
+                    data = values[varname][prop]
+                    for d in data:
+                        date = data[d]['date']
+                        obs = data[d]['data']
+                        self.add(date, obs)
+                else:
+                    setattr(self, prop, values[varname][prop])
+                    self.props.append(prop)
+
 
 class Dataset:
     '''
@@ -268,97 +301,32 @@ class Dataset:
         self._type = 'dataset'
         self.filename = '%s_%s.csv' % (self.project, self.name)
         self.created = datetime.datetime.now()
-        self.props = self.__dict__.keys()
-        self.vars = []
         for kw in kwargs:
-            if kw == 'format':
-                setattr(self, kw, kwargs.get(kw, 'long'))
-            else:
-                setattr(self, kw, kwargs[kw])
+            setattr(self, kw, kwargs[kw])
+        self.props = self.__dict__.keys()
+
+        self.variables = []
         if vars != None:
             for kwargs in vars:
                 name = kwargs.pop('name')
                 setattr(self, name, Variable(name, **kwargs))
-                self.vars.append(name)
+                self.variables.append(name)
 
     def __repr__(self):
         return 'Dataset contains %s variables' % (len(self.vars))
 
     def __iter__(self):
-        for var in self.vars:
+        for var in self.variables:
             yield getattr(self, var)
 
     def add_variable(self, var):
         if isinstance(var, Variable):
-            self.vars.append(var.name)
+            self.variables.append(var.name)
             setattr(self, var.name, var)
 
         else:
             raise TypeError('You can only instance of Variable to a dataset.')
 
-    def get_all_keys(self, data):
-        all_keys = []
-        for d in data:
-            for key in d:
-                if key not in all_keys:
-                    all_keys.append(key)
-        all_keys.sort()
-        all_keys.insert(0, all_keys[-1])
-        del all_keys[-1]
-        return all_keys
-
-    def make_data_rectangular(self, data, all_keys):
-        for i, d in enumerate(data):
-            for key in all_keys:
-                if key not in d:
-                    d[key] = 0
-                data[i] = d
-        return data
-
-    def sort(self, data, all_keys):
-        dates = [date['date'] for date in data]
-        dates.sort()
-        cube = []
-        for date in dates:
-            for i, d in enumerate(data):
-                if d['date'] == date:
-                    raw_data = d
-                    del data[i]
-                    break
-            obs = []
-            for key in all_keys:
-                obs.append(raw_data[key])
-            cube.append(obs)
-        return cube
-
-    def convert_dataset_to_lists(self):
-        assert self.format == 'long' or self.format == 'wide'
-        data, all_keys = [], []
-        for var in self:
-            for date in var.obs.keys():
-                datum = var.convert_seconds_to_date(date)
-                if self.format == 'long':
-                    o = []
-                else:
-                    o = {}
-                    o['date'] = datum
-
-                for obs in var[date].data:
-                    if self.format == 'long':
-                        o.append([datum, obs, var.obs[date].data[obs]])
-                        data.extend(o)
-                        o = []
-                    else:
-                        o[obs] = var.obs[date].data[obs]
-                        #o.append({obs:var.obs[date].data[obs]})
-                if self.format == 'wide':
-                    data.append(o)
-        if self.format == 'wide':
-            #Make sure that each variable / observation combination exists.
-            all_keys = self.get_all_keys(data)
-            data = self.make_data_rectangular(data, all_keys)
-            data = self.sort(data, all_keys)
-        return data, all_keys
 
     def write(self, format='csv'):
         if format == 'csv':
@@ -371,36 +339,17 @@ class Dataset:
         mongo = db.init_mongo_db(dbname)
         coll = mongo['%s_%s' % (dbname, 'charts')]
         mongo.add_son_manipulator(Transform())
-        #transform = Transform()
-        #bson = transform.transform_incoming(self, coll)
-#        coll.update(
-#                     {'$set': {'variables': self}})
         coll.remove({'hash':self.hash, 'project':self.project,
                     'language_code':self.language_code})
         coll.insert({'variables': self})
 
     def to_csv(self):
-
-        data, all_keys = self.convert_dataset_to_lists()
-        headers = self.add_headers(all_keys)
-        fh = file_utils.create_txt_filehandle(settings.dataset_location, self.name, 'w', settings.encoding)
+        data, all_keys = data_converter.convert_dataset_to_lists(self, 'manage')
+        headers = data_converter.add_headers(self, all_keys)
+        fh = file_utils.create_txt_filehandle(settings.dataset_location, self.filename, 'w', settings.encoding)
         file_utils.write_list_to_csv(headers, fh, recursive=False, newline=True, format=self.format)
         file_utils.write_list_to_csv(data, fh, recursive=False, newline=True, format=self.format)
         fh.close()
-
-    def add_headers(self, all_keys):
-        assert self.format == 'long' or self.format == 'wide'
-        headers = []
-        if self.format == 'long':
-            headers.append('date')
-        for var in self:
-            if self.format == 'long':
-                headers.extend([var.time_unit, var.name])
-            else:
-                for key in all_keys:
-                    header = '%s_%s' % (key, var.name)
-                    headers.append(header)
-        return headers
 
     def encode(self):
         props = {}
@@ -408,36 +357,60 @@ class Dataset:
             props[prop] = getattr(self, prop)
         return props
 
-    def encode_to_bson(self, var):
-        return {'_type': 'dataset', 'x': var.x()}
 
-    def decode_from_bson(self, document):
-        assert document["_type"] == "custom"
-        return self(document["x"])
+
+#    def transform_to_stacked_bar_json(self):
+#        '''
+#        This function outputs data in a format that is understood by jquery
+#        flot plugin.
+#        '''
+#        options = {}
+#        options['xaxis'] = {}
+#        options['xaxis']['ticks'] = []
+#        data = []
+#        obs, all_keys = ds.convert_dataset_to_lists()
+#
+#        for ob in obs:
+#            d = {}
+#            d['label'] = ob[0].year
+#            d['data'] = []
+#            ob = ob[1:]
+#            for x, o in enumerate(ob):
+#                d['data'].append([x, o])
+#            data.append(d)
+#        for x, date in enumerate(obs[0]):
+#            options['xaxis']['ticks'].append([x, date.year])
+#
+#        return data, options
+
 
 def debug():
     mongo = db.init_mongo_db('enwiki')
-    rawdata = mongo['test']
+    rawdata = mongo['enwiki_charts']
     mongo.add_son_manipulator(Transform())
-    d1 = datetime.datetime.today()
-    d2 = datetime.datetime(2007, 6, 7)
-    ds = Dataset('test', 'enwiki', 'editors_dataset', [{'name': 'count', 'time_unit': 'year'},
-                                                       {'name': 'testest', 'time_unit': 'year'}])
-    ds.count.add(d1, 5)
-    ds.count.add(d2, 514)
-    ds.testest.add(d1, 135)
-    ds.testest.add(d2, 535)
-    #ds.summary()
-    #ds.write_to_csv()
-    v = Variable('test', 'year')
-    ds.encode()
-    mongo.test.insert({'variables': ds})
+#    d1 = datetime.datetime.today()
+#    d2 = datetime.datetime(2007, 6, 7)
+#    ds = Dataset('test', 'enwiki', 'editors_dataset', [{'name': 'count', 'time_unit': 'year'},
+#                                                       {'name': 'testest', 'time_unit': 'year'}])
+#    ds.count.add(d1, 5)
+#    ds.count.add(d2, 514)
+#    ds.testest.add(d1, 135)
+#    ds.testest.add(d2, 535)
+#    #ds.summary()
+#    #ds.write_to_csv()
+#    v = Variable('test', 'year')
+#    ds.encode()
+#    mongo.test.insert({'variables': ds})
 
     #v.add(date , 5)
     #o = v.get_observation(date)
-
+    ds = rawdata.find_one({'project': 'wiki', 'language_code': 'en', 'hash': 'cohort_dataset_backward_bar'})
+    transform_to_stacked_bar_json(ds)
     #v.summary()
     print ds
+
+
+
 
 
 if __name__ == '__main__':
