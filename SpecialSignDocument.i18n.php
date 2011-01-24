@@ -2805,6 +2805,17 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] hät [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] ungerschrevve.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'sign-realname' => 'Nav:',
+	'sign-city' => 'Bajarr',
+	'sign-country' => 'Welat:',
+	'sign-viewfield-realname' => 'Nav',
+	'sign-viewfield-country' => 'Welat',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */
