@@ -3211,8 +3211,8 @@ $messages['sr-ec'] = array(
 Молимо Вас, будите стрпљиви.',
 	'youtubeauthsub_viewpage' => 'Такође можете да [[$1|погледате свој видео]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Молимо Вас, унесите једну или више кључних речи.',
-	'youtubeauthsub_jserror_notitle' => 'Молимо Вас, унесите наслов видеа.',
-	'youtubeauthsub_jserror_nodesc' => 'Молимо Вас, унесите опис видеа.',
+	'youtubeauthsub_jserror_notitle' => 'Унесите наслов видео снимка.',
+	'youtubeauthsub_jserror_nodesc' => 'Унесите опис видео снимка.',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
@@ -4018,33 +4018,33 @@ YouTube可能需要一些时间处理您的视频，所以可能不会立即出�
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'youtubeauthsub' => '上載YouTube影片',
-	'youtubeauthsub-desc' => '容許使用者直接[[Special:YouTubeAuthSub|上載影片]]至YouTube。',
-	'youtubeauthsub_info' => '在上載YouTube影片至包含頁面前，請填寫以下資料:',
+	'youtubeauthsub' => '上傳 YouTube 影片',
+	'youtubeauthsub-desc' => '容許使用者直接[[Special:YouTubeAuthSub|上傳影片]]至 YouTube。',
+	'youtubeauthsub_info' => '在上傳 YouTube 影片至包含頁面前，請填寫以下資料：',
 	'youtubeauthsub_title' => '標題',
 	'youtubeauthsub_description' => '描述',
-	'youtubeauthsub_password' => 'YouTube密碼',
-	'youtubeauthsub_username' => 'YouTube使用者名稱',
+	'youtubeauthsub_password' => 'YouTube 密碼',
+	'youtubeauthsub_username' => 'YouTube 使用者名稱',
 	'youtubeauthsub_keywords' => '關鍵字',
 	'youtubeauthsub_category' => '分類',
 	'youtubeauthsub_submit' => '提交',
-	'youtubeauthsub_clickhere' => '按這裡登入YouTube',
+	'youtubeauthsub_clickhere' => '按這裡登入 YouTube',
 	'youtubeauthsub_tokenerror' => '驗證使用者訊息發生錯誤，請重新整理頁面。',
-	'youtubeauthsub_success' => "上載成功!
-您的影片經已上載。
-按<a href='http://www.youtube.com/watch?v=$1'這裡</a>觀看恁的影片。
-YouTube需要一些時間去處理閣下的影片，因此或未能即時觀看它。
+	'youtubeauthsub_success' => "上傳成功！
+您的影片已上傳。
+按<a href='http://www.youtube.com/watch?v=$1'這裡</a>觀看您的影片。
+YouTube 需要一些時間去處理閣下的影片，因此或未能即時觀看它。
 
-要把影片方進wiki的頁面內，請使用以下代碼:
+要把影片放進 wiki 的頁面內，請使用以下代碼：
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => '在上載影片前，您需先登入YouTube。',
-	'youtubeauthsub_uploadhere' => '自這裡上載您的影片：',
+	'youtubeauthsub_authsubinstructions' => '在上傳影片前，您需先登入 YouTube。',
+	'youtubeauthsub_uploadhere' => '從這裡上傳您的影片：',
 	'youtubeauthsub_uploadbutton' => '上傳',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}
 
 本影片可在[http://www.youtube.com/watch?v=$1 這裡]觀看',
-	'youtubeauthsub_summary' => '上載YouTube影片中',
-	'youtubeauthsub_uploading' => '您的影片正在上載中。
+	'youtubeauthsub_summary' => '上傳 YouTube 影片中',
+	'youtubeauthsub_uploading' => '您的影片正在上傳中。
 請耐心等候。',
 	'youtubeauthsub_viewpage' => '除此之外，您也可在[[$1|這裡]]觀看影片。',
 	'youtubeauthsub_jserror_nokeywords' => '請輸入一個或以上的關鍵詞。',
