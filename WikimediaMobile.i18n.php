@@ -380,8 +380,9 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'wikimediamobile-desc' => 'MediaWiki支援Wikimedia-mobile職能計畫，請至http://github.com/hcatlin/wikimedia-mobile',
+	'wikimediamobile-desc' => 'MediaWiki 支援 Wikimedia-mobile 職能計畫，請至 http://github.com/hcatlin/wikimedia-mobile',
 );
 
