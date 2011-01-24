@@ -99,15 +99,16 @@ $messages['bar'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'useroptionstats' => 'Статыстыка ўстановак ўдзельнікаў',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Спэцыяльная старонка]] для стварэньня справаздачы па выкарыстаньню ўстановак ўдзельнікаў MediaWiki',
+	'useroptionstats' => 'Статыстыка наладаў ўдзельнікаў',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Спэцыяльная старонка]] для стварэньня справаздачы па выкарыстаньню наладаў ўдзельнікаў MediaWiki',
 	'uos-warn' => 'PHPlot не ўсталяваны!',
-	'uos-choose' => 'Выберыце адну з наступных установак удзельніка: $1',
+	'uos-choose' => 'Выберыце адну з наступных наладаў удзельніка: $1',
 	'uos-unknown' => '*Па змоўчваньні',
 	'uos-other' => '*Іншая',
-	'uos-title' => 'Разьмеркаваньне значэньняў ўстановак удзельнікаў $1',
+	'uos-title' => 'Разьмеркаваньне значэньняў наладаў удзельнікаў $1',
 );
 
 /** Bulgarian (Български)
