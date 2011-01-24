@@ -30,9 +30,8 @@ $wgHooks['userCan'][] = 'sendmailtowikiUserCanHook';
 $sendmailtowikiPrefix = 'wikipost';
  
 function sendmailtowikiPinValidate( $value, $alldata ) {
-	global $wgMessageCache;
 	if ($value != '' && strlen($value) != 5)
-		return $wgMessageCache->get('sendmailtowiki-err-pinlength');
+		return wfMsg( 'sendmailtowiki-err-pinlength' );
 	return true;
 }
 	
