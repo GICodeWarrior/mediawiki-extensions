@@ -79,6 +79,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'editsimilar-desc' => 'Заахвочвае ўдзельнікаў рэдагаваць падобныя старонкі пасьля запісу старонкі',
@@ -87,7 +88,7 @@ $messages['be-tarask'] = array(
 	'editsimilar-thanks-notsimilar' => 'Дзякуй за Ваш унёсак.
 {{PLURAL:$2|Гэтая старонка таксама можа|Гэтыя старонкі таксама могуць}} патрабаваць Вашай дапамогі: $1.',
 	'editsimilar-thankyou' => 'Дзякуй за Ваш унёсак, $1!',
-	'editsimilar-link-disable' => 'зьмяніць устаноўкі',
+	'editsimilar-link-disable' => 'зьмяніць налады',
 	'tog-edit-similar' => 'Уключыць прапановы падобных старонак',
 );
 
