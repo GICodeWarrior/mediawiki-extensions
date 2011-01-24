@@ -1,18 +1,21 @@
 clear
 set more off
 local loc "C:\Users\diederik.vanliere\workspace\editor_trends\datasets\"
-local projects "ruwiki dewiki eswiki jawiki enwiki"
-
+//local projects "ruwiki dewiki eswiki jawiki enwiki"
+local projects "enwiki"
 foreach proj of local projects {
 	clear
-	local p = "`loc'" + "`proj'" + "_cohort_data_forward.csv"
+	//local p = "`loc'" + "`proj'" + "_cohort_data_forward.csv"
+	local p = "`loc'" + "cohort_dataset_forward_histogram.csv"
 	insheet using `p'
-	ren v1 raw_date
-	ren v2 experience
-	ren v3 count
-
-	gen date = date(raw_date, "MY")
-	format date %td
+	ren date raw_date
+	ren month experience
+	//ren count count
+	split raw_date, p(" ")
+	drop raw_date
+	ren raw_date1 raw_date
+	gen date = date(raw_date, "YMD")
+	//format date %tC
 	
 	egen min_year= min(year(date))
 	egen max_year= max(year(date))
@@ -40,7 +43,7 @@ foreach proj of local projects {
 	
 	replace count = . if count ==0
 	
-		forvalues year = `min_year'(1)`max_year' {
+	forvalues year = `min_year'(1)`max_year' {
 		di `year'
 		//local end_date = "1,31," + "`year'"
 		//di `end_date'

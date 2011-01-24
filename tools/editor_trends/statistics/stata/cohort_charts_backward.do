@@ -5,12 +5,17 @@ local target "C:\Users\diederik.vanliere\workspace\editor_trends\statistics\char
 local projects "enwiki"
 //local projects "enwiki ruwiki dewiki eswiki jawiki"
 foreach proj of local projects {
+	clear
 	//di "`loc'"
 	//di "`proj'"
-	local p = "`source'" + "`proj'" + "_cohort_data_backward.txt"
+	//local p = "`source'" + "`proj'" + "_cohort_dataset_backward_bar.csv"
+	ren year experience
+	local p = "`source'" + "cohort_dataset_backward_bar.csv"
 	//di "`p'"
 	insheet using `p'
-	
+	split date, p("-")
+	destring date1, replace
+	ren date1 year
 	sort year
 		
 	by year: generate n = months_12 + months_24 + months_36 + months_48 + months_60 + months_72 + months_84 + months_96 + months_108
@@ -84,7 +89,7 @@ foreach proj of local projects {
 	label var  more_one_year_abs "Editors with more than one year experience"
 
 	twoway (line one_year_exp year), ylabel(0(10)100, labsize(vsmall)) ytitle(%, size(vsmall)) xtitle() xlabel(2001(1)2010, labsize(vsmall)) title(Percentage of Wikipedia editors with 1 year experience) note("Based on the `proj' project, dataset `obs' editors.", size(vsmall))
-	local f =  "`loc'" + "\`proj'\" + "`proj'" + "_line_rel_one_vs_multi_years.png"
+	local f =  "`target'" + "\`proj'\" + "`proj'" + "_line_rel_one_vs_multi_years.png"
 	graph export `f', replace
 	//subtitle(Editors are getting older and influx of new editors has stagnated) 
 	
@@ -99,7 +104,7 @@ foreach proj of local projects {
 	graph export `f', replace
 
 
-	clear
+	
 }
 set more on
 

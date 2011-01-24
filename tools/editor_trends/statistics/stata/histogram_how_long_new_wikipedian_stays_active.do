@@ -1,12 +1,13 @@
 clear
 set more off
 local loc "C:\Users\diederik.vanliere\workspace\editor_trends\datasets\"
-local projects "ruwiki dewiki eswiki jawiki enwiki"
-
+//local projects "ruwiki dewiki eswiki jawiki enwiki"
+local projects "enwiki"
 foreach proj of local projects {
 	clear
 	
-	local p = "`loc'" + "`proj'" + "_forward_cohort.csv"
+	//local p = "`loc'" + "`proj'" + "_forward_cohort.csv"
+	local p = "`loc'" + "cohort_dataset_forward_histogram.csv"
 	insheet using `p'
 	label var experience "Number of months active"
 	gen date = date(_time, "YMD")
