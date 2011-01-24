@@ -514,6 +514,14 @@ $messages['ksh'] = array(
 	'searchbox-namespaces' => 'Appachtemengs:',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'searchbox-search' => 'Lêbigere',
+	'searchbox-go' => 'Biçe',
+);
+
 /** Latin (Latina)
  * @author UV
  */
