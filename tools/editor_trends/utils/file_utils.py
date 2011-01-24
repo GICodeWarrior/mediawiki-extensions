@@ -138,13 +138,15 @@ def write_list_to_csv(data, fh, recursive=False, newline=True, format='wide'):
     for x, d in enumerate(data):
         if tab:
             fh.write('\t')
-        if type(d) == type([]):
+        if isinstance(d, list):
+        #if type(d) == type([]):
             recursive = write_list_to_csv(d, fh, recursive=True, newline=False)
             #when there is a list of lists but no other elements in the first list
             #then write a newline. 
             if len(d) == len(data[x]):
                 fh.write('\n')
-        elif type(d) == type({}):
+        elif isinstance(d, dict):
+        #elif type(d) == type({}):
             tab = write_dict_to_csv(d, fh, d.keys(), write_key=False, format=format)
         else:
             fh.write('%s' % d)
@@ -164,10 +166,12 @@ def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
         for key in keys:
             if write_key:
                 fh.write('%s\t' % key)
-            if type(data[key]) == type([]):
+            if isinstance(data[key], list):
+            #if type(data[key]) == type([]):
                 for d in data[key]:
                     fh.write('%s\t%s\n' % (key, d))
-            elif type(data[key]) == type({}):
+            elif isinstance(data[key], dict):
+            #elif type(data[key]) == type({}):
                 write_dict_to_csv(data[key], fh, data[key].keys(), write_key=False, format=format)
 #            elif getattr(data[key], '__iter__', False):
 #                for d in data[key]:
@@ -178,10 +182,12 @@ def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
         for key in keys:
             if write_key:
                 fh.write('%s\t' % key)
-            if type(data[key]) == type([]):
+            if isinstance(data[key], list):
+            #if type(data[key]) == type([]):
                 for d in data[key]:
                     fh.write('%s\t')
-            elif type(data[key]) == type({}):
+            elif isinstance(data[key], list):
+            #elif type(data[key]) == type({}):
                 write_dict_to_csv(data[key], fh, data[key].keys(), write_key=False, format=format)
             else:
                 fh.write('%s\t' % (data[key]))

@@ -27,8 +27,8 @@ import configuration
 settings = configuration.Settings()
 
 from database import db
-import dump_downloader
-import wikiprojects
+from utils import http_utils
+from classes import wikiprojects
 
 class AnchorParser(HTMLParser):
     '''
@@ -73,10 +73,10 @@ class Dumper(Thread):
 
         for lang in langs:
             path = '%s%s' % (lang, project)
-            res = dump_downloader.check_remote_path_exists(settings.wp_dump_location, path, None)
+            res = http_utils.check_remote_path_exists(settings.wp_dump_location, path, None)
             if res != None and (res.status == 200 or res.status == 301):
                 print 'Constructing list of available dumps for %s' % path
-                directories = dump_downloader.read_directory_contents(settings.wp_dump_location, path)
+                directories = http_utils.read_directory_contents(settings.wp_dump_location, path)
                 dates = determine_available_dumps(directories)
                 self.data.setdefault(lang, dates)
 
