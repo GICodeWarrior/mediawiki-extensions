@@ -537,6 +537,7 @@ $messages['br'] = array(
 	'qp_results_line_qpl' => 'Pajenn "$1" Sontadeg "$2" : $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Pajenn "$2" Votadeg "$3" ]',
 	'qp_export_to_xls' => "Ezporzhiañ ar stadegoù d'ar furmad XLS",
+	'qp_voices_to_xls' => "Ezporzhiañ ar votoù d'ar furmad XLS",
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|implijer|implijer}} o deus respontet d'ar goulennoù",
 	'qp_func_no_such_poll' => "N'eus ket eus ar votadeg-mañ ($1)",
 	'qp_func_missing_question_id' => "Spisait un ID evit ur goulenn zo anezhañ c'hoazh (adalek 1) evit ar sontadeg $1",
