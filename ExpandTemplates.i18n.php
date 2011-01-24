@@ -728,7 +728,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'expandtemplates' => 'Expandir os modelos',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Amplía modelos, analiza funcións e variables]] para amosar wikitexto expandido e unha vista previa da páxina renderizada',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Amplía modelos, analiza funcións e variables]] para amosar texto wiki expandido e unha vista previa da páxina renderizada',
 	'expand_templates_intro' => 'Esta páxina especial toma texto e amplía todos os modelos dentro del recursivamente.
 Tamén expande as funcións de análise como <nowiki>{{</nowiki>#if:…}} e variables como
 <nowiki>{{</nowiki>CURRENTDAY}} (de feito, case calquera cousa entre chaves duplas).
