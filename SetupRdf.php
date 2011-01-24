@@ -65,45 +65,22 @@ $wgRdfVocabularies = array(
 
 $wgExtensionFunctions[] = 'setupMwRdf';
 
+$wgExtensionMessagesFiles['RdfRedland'] = dirname( __FILE__ ) . '/RdfRedland.i18n.php';
+
+$wgHooks['ParserFirstCallInit'][] = 'wfRdfOnParserFirstCallInit';
+$wgHooks['ArticleSave'][]           = array( 'wfRdfOnArticleSave' );
+$wgHooks['ArticleSaveComplete'][]   = array( 'wfRdfOnArticleSaveComplete' );
+$wgHooks['TitleMoveComplete'][]     = array( 'wfRdfOnTitleMoveComplete' );
+$wgHooks['ArticleDeleteComplete'][] = array( 'wfRdfOnArticleDeleteComplete' );
+
 function setupMwRdf() {
-	global $wgParser, $wgMessageCache, $wgRequest, $wgOut, $wgHooks;
-
-	$wgMessageCache->addMessages(array(
-		'rdf' => 'Rdf',
-		'rdf-inpage'          => "Embedded In-page Turtle",
-		'rdf-dcmes'           => "Dublin Core Metadata Element Set",
-		'rdf-cc'              => "Creative Commons",
-		'rdf-image'           => "Embedded images",
-		'rdf-linksfrom'       => "Links from the page",
-		'rdf-links'           => "All links",
-		'rdf-linksto'         => "Links to the page",
-		'rdf-history'         => "Historical versions",
-		'rdf-interwiki'       => "Interwiki links",
-		'rdf-categories'      => "Categories",
-		'rdf-target'          => "Target page",
-		'rdf-modelnames'      => "Model(s)",
-		'rdf-format'          => "Output format",
-		'rdf-output-rdfxml'   => "RDFXML",
-		'rdf-output-turtle'   => "Turtle",
-		'rdf-output-ntriples' => "NTriples",
-		'rdf-instructions'    => "Select the target page and RDF models you're interested in."
-	));;
-
-	$wgParser->setHook( 'rdf', 'renderMwRdf' );
+	global $wgRequest, $wgOut;
 
 	SpecialPage::addPage(new SpecialPage('Rdf', '', true, 'wfRdfSpecialPage',
 		'extensions/Rdf/Rdf.php'));
 
 	SpecialPage::addPage(new SpecialPage('RdfQuery', '', true, 'wfSpecialRdfQuery',
 		'extensions/Rdf/Rdf.php'));
-
-	# next we set some hooks for saving and clearing RDF data.  Each
-	# hook is called on the same ModelingAgent object as it preserves
-	# the list of pages we link to in its state
-	$wgHooks['ArticleSave'][]           = array( 'wfRdfOnArticleSave' );
-	$wgHooks['ArticleSaveComplete'][]   = array( 'wfRdfOnArticleSaveComplete' );
-	$wgHooks['TitleMoveComplete'][]     = array( 'wfRdfOnTitleMoveComplete' );
-	$wgHooks['ArticleDeleteComplete'][] = array( 'wfRdfOnArticleDeleteComplete' );
 
 	# Add an RDF metadata link if requested
 	$action = $wgRequest->getText('action', 'view');
@@ -131,6 +108,12 @@ function setupMwRdf() {
 		'href' => $rdft->getLocalURL( array( 'target' => $target ) )
 	);
 	$wgOut->addMetadataLink($linkdata);
+	return true;
+}
+
+function wfRdfOnParserFirstCallInit( $parser ) {
+	$parser->setHook( 'rdf', 'renderMwRdf' );
+
 	return true;
 }
 

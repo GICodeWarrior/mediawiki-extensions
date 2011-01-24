@@ -303,13 +303,11 @@ function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = 
 function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 	global $wgParser, $wgContLang, $wgMessageCache, $wgLang;
 
-	if ( is_object( $wgMessageCache ) )
-		$transstat = $wgMessageCache->getTransform();
-
 	if( is_object( $wgMessageCache ) ) {
-		if ( ! $transform )
-			$wgMessageCache->disableTransform();
 		$message = $wgMessageCache->get( $key, $useDB, $forContent );
+		if ( $transform  && strstr( $message, '{{' ) !== false ) {
+			$message = $wgMessageCache->transform( $message );
+		}
 	} else {
 		if( $forContent ) {
 			$lang = &$wgContLang;
@@ -331,9 +329,6 @@ function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 			$message = $wgParser->transformMsg($message, $wgMessageCache->getParserOptions() );
 		}
 	}
-
-	if ( is_object( $wgMessageCache ) && ! $transform )
-		$wgMessageCache->setTransform( $transstat );
 
 	return $message;
 }
