@@ -453,6 +453,14 @@ $messages['ksh'] = array(
 	'newschannel_submit_button' => 'Kanaal opmaache',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Sînor:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
