@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-27'
 __version__ = '0.1'
 
@@ -24,13 +24,15 @@ sys.path.append('..')
 
 import configuration
 settings = configuration.Settings()
-import utils
+import file_utils
 import exceptions
+import timer
+import log
 
 class Compressor(object):
 
     def __init__(self, location, file, output=None):
-        self.extension = utils.determine_file_extension(file)
+        self.extension = file_utils.determine_file_extension(file)
         self.file = file
         self.location = location
         self.path = os.path.join(self.location, self.file)
@@ -60,7 +62,10 @@ class Compressor(object):
         if self.program_installed == None:
             raise exceptions.CompressionNotSupportedError
 
-        args = {'7z': ['%s' % self.program_installed, 'a', '-scsUTF-8', '-t%s' % self.compression, '%s' % self.output, '%s' % self.input],
+        args = {'7z': ['%s' % self.program_installed, 'a', '-scsUTF-8',
+                       '-t%s' % self.compression,
+                       '%s' % self.output,
+                       '%s' % self.input],
                 }
 
         commands = args.get(self.name, None)
@@ -84,10 +89,8 @@ class Compressor(object):
 
         print self.location
         print self.file
-        if not utils.check_file_exists(self.location, self.file):
+        if not file_utils.check_file_exists(self.location, self.file):
             raise exceptions.FileNotFoundException(self.location, self.file)
-
-
 
         args = {'7z': ['%s' % self.program_installed, 'e', '-y', '-o%s' % self.location, '%s' % self.path],
                 'bunzip2': ['%s' % self.program_installed, '-k', '%s' % self.path],
@@ -96,26 +99,13 @@ class Compressor(object):
                 'tar': ['%s' % self.program_installed, '-xvf', '%s' % self.path]
                 }
         commands = args.get(self.name, None)
-        print commands
+        #print commands
         if commands != None:
             p = subprocess.call(commands)
             #p = subprocess.Popen(commands, shell=True).wait()
         else:
             raise exceptions.CompressionNotSupportedError
         return p
-
-#        if self.name == '7z':
-#            p = subprocess.Popen(['%s' % tool.extract_installed, 'e', '-o%s' % location, '%s' % input], shell=True).wait()
-#        elif tool_extract_installed.endswith('bunzip2'):
-#            p = subprocess.Popen(['%s' % tool.extract_installed, '-k', '%s' % input], shell=True).wait()
-#        elif tool.extract_installed.endswith('zip'):
-#            p = subprocess.Popen(['%s' % tool.extract_installed, '-o', '%s' % input], shell=True).wait()
-#        elif tool.extract_installed.endswith('gz'):
-#            p = subprocess.Popen(['%s' % tool.extract_installed, '-xzvf', '%s' % input], shell=True).wait()
-#        elif tool.extract_installed.endswith('tar'):
-#            p = subprocess.Popen([])
-#        else:
-#            raise exceptions.CompressionNotSupportedError
 
     def init_compression_tool(self, extension, action):
         compression = {'gz': [['tar', 'tar'], ['7z', '7z']],
@@ -138,6 +128,18 @@ class Compressor(object):
                 self.name = p
                 self.program_installed = path
 
+def launch_zip_extractor(location, filename, properties):
+    '''
+    
+    '''
+    print 'Unzipping zip file'
+    stopwatch = timer.Timer()
+    log.log_to_mongo(properties, 'dataset', 'unpack', stopwatch, event='start')
+    compressor = Compressor(location, filename)
+    retcode = compressor.extract()
+    stopwatch.elapsed()
+    log.log_to_mongo(properties, 'dataset', 'unpack', stopwatch, event='finish')
+    return retcode
 
 if __name__ == '__main__':
     c = Compressor('C:\Users\diederik.vanliere\Documents', 'django.zip')
