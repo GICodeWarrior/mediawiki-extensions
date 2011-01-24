@@ -46,6 +46,7 @@ Available ones are "plain", "normal" and "wiki".',
  * @author EugeneZelenko
  * @author Hamilton Abreu
  * @author Hydra
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
@@ -62,6 +63,8 @@ $messages['qqq'] = array(
 * $1 being is one of {{msg-mw|article-comments-title-string}}, {{msg-mw|article-comments-name-string}}, {{msg-mw|article-comments-url-string}}, {{msg-mw|article-comments-comment-string}}.',
 	'article-comments-submission-failed' => 'Page title when there are errors in the comment submission',
 	'article-comments-talk-page-starter' => 'Keep the wikisyntax as is.',
+	'article-comments-commenter-said' => '$1 is a value filled into a form field by a commenter. It is not necessarily related to any wiki user name.',
+	'article-comments-summary' => '$1 is a value filled into a form field by a commenter. It is not necessarily related to any wiki user name.',
 	'article-comments-comment-bad-mode' => '{{doc-important|Do not translate the words "plain", "normal" and "wiki".}}',
 );
 
@@ -904,13 +907,13 @@ $messages['ksh'] = array(
 	'article-comments-invalid-field' => 'De aanjejovve $1 <nowiki>[$2]</nowiki> es nix wäät.',
 	'article-comments-required-field' => '$1 moß aanjejovve sin.',
 	'article-comments-submission-failed' => 'En Aanmerkung ze maache hät nit jeflup',
-	'article-comments-failure-reasons' => 'En Aanmerkung ze maache hät nit jeflup, weil:',
+	'article-comments-failure-reasons' => 'En Aanmerkung ze maache hät nit jeflup, weil:{{PLURAL:$1||}}:',
 	'article-comments-no-comments' => 'För de Sigg „[[$1]]“ künne em Momang kein Aanmerkunge jemaat wääde.',
-	'article-comments-talk-page-starter' => '<noinclude>Aanmerkunge op [[$1]]
+	'article-comments-talk-page-starter' => '<noinclude>Aanmerkunge op „[[$1]]“
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
-	'article-comments-commenter-said' => '{{GENDER:$1|Dä||Et|Dä Metmaacher|De|Et}} $1 hät jeschrevve&nbsp;…',
-	'article-comments-summary' => '{{GENDER:$1|Dä||Et|Dä Metmaacher|De|Et}} $1 hät en Aanmerkung jeschrevve övver et Zohsaz_Programm <i lang="en">ArticleComments</i>.',
+	'article-comments-commenter-said' => 'Ene „$1“ hät jeschrevve&nbsp;…',
+	'article-comments-summary' => 'Ene „$1“ hät en Aanmerkung jeschrevve övver et Zohsaz_Programm <i lang="en">ArticleComments</i>.',
 	'article-comments-submission-succeeded' => 'Di Aanmerkung es jemaat',
 	'article-comments-submission-success' => 'Do häs en Aanmerkung för di Sigg „[[$1]]“ jemaat.',
 	'article-comments-submission-view-all' => 'Do kanns Der [[$1|alle Aanmerkunge op dä Sigg]] beluore.',
@@ -1571,12 +1574,34 @@ $messages['uk'] = array(
  */
 $messages['zh-hans'] = array(
 	'article-comments-desc' => '内容页上启用注释部分',
+	'article-comments-title-string' => '标题',
 	'article-comments-name-string' => '名字',
 	'article-comments-name-field' => '名字（必须写一个）：',
 	'article-comments-url-field' => '网址：',
 	'article-comments-url-string' => '互联网地止',
+	'article-comments-comment-string' => '评论',
+	'article-comments-comment-field' => '评论：',
 	'article-comments-submit-button' => '输入',
+	'article-comments-leave-comment-link' => '留言...',
+	'article-comments-invalid-field' => '$1 所提供的 <nowiki>[$2]</nowiki> 是无效的。',
 	'article-comments-required-field' => '$1必须写一个东西。',
+	'article-comments-submission-failed' => '评论提交失败',
+	'article-comments-failure-reasons' => '对不起，您的意见提交失败是由以下的{{PLURAL:$1|原因|原因}}：',
+	'article-comments-no-comments' => '抱歉，页 "[[$1]]" 在这个时候不会接受的评论。',
+	'article-comments-talk-page-starter' => '<noinclude>对"[[$1]]"评论
+<comments />
+----__NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1说。。。',
+	'article-comments-summary' => '提供由 $1 - 通过 ArticleComments 扩展名的评论',
+	'article-comments-submission-succeeded' => '评论提交成功',
+	'article-comments-submission-success' => '您已成功为 "[[$1]]" 提交注释',
+	'article-comments-submission-view-all' => '您可以查看[[$1|所有该页上的评论]]',
+	'article-comments-user-is-blocked' => '您的用户帐户当前阻止编辑 "[[$1]]"。',
+	'article-comments-comment-bad-mode' => '无效的模式给予评论。
+"plain"、"normal"和"wiki"的可用的。',
+	'article-comments-comment-missing-name-parameter' => '缺少名称',
+	'article-comments-comment-missing-date-parameter' => '缺少注释的日期',
+	'article-comments-no-spam' => '提交的字段中，至少一个被标记为垃圾邮件。',
+	'processcomment' => '进程文章注释',
 );
 
