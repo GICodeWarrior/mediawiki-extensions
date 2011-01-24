@@ -550,8 +550,9 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  * @author Liangent
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'woopra-desc' => '允許[http://www.woopra.com/ Woopra線上追縱軟體]為您的MediaWiki安裝工作',
+	'woopra-desc' => '允許 [http://www.woopra.com/ Woopra 線上追縱軟體]為您的 MediaWiki 安裝工作',
 );
 
