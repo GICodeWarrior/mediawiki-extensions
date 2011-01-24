@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+	{% if analyses %}
+		<ul>
+		{% for analysis in analyses %}
+			{{ analysis }}
+			<li><a href="{{ analysis.get_absolute_url }}">{{ analysis.hash }}</a></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
+
+{% endblock %}

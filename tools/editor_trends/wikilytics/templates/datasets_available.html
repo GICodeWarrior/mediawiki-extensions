@@ -1,17 +1,30 @@
+{% extends "base.html" %}
+
 
 {% block content %}
 	{% if datasets %}
-		<ul>
 		{% for dataset in datasets %}
-			<li>{{ dataset }}</li>
-	    	{{ dataset.count }}	
-	    	{% for key,value in dataset.items %}
-	    	 {{ key }} -- {{ value }}
-	    	{% endfor %}
-	    	
+			<h1>Dataset {{ dataset.name }}</h1>
+			<ul>
+				<li>{{ dataset.project }} </li>
+				<li>{{ dataset.collection }} </li>
+				<h2>Variables</h2>
+				<ul>	
+	    		{% for variable_name,variables in dataset.variables.items %}
+		    	 	<h3>Variable {{ variable_name }}</h3>
+		    	 		{% for key ,variable in variables.items %}
+		    	 			<h4>Observation:{{ key }}</h4> 
+		    	 				{% for k, v in variable.items %}
+		    	 				<li>{{ k }}: {{ v }}</li>
+		    	 				{% endfor %}
+		    	 		{% endfor %}
+	    	 	{% endfor %}
+	    	 	</ul>
+	    	<ul>
 	    {% endfor %}
-		<ul>
-		{% else %}
+	    	
+	{% else %}
 			<h1>There are no datasets available yet.</h1>
 	{% endif %}
+	
 {% endblock %}
