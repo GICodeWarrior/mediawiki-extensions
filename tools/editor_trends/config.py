@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
@@ -22,7 +22,7 @@ import os
 import ConfigParser
 
 from utils import utils
-import languages
+from classes import wikiprojects
 
 
 def show_choices(settings, attr):
@@ -34,12 +34,13 @@ def show_choices(settings, attr):
 
 def create_configuration(settings, args):
     force = getattr(args, 'force', False)
+
     if not os.path.exists('wiki.cfg') or force:
         config = ConfigParser.RawConfigParser()
         project = None
         language = None
         dumpversion = None
-        language_map = languages.language_map()
+        #language_map = languages.language_map()
         working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
         input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.\n' % settings.input_location)
 
@@ -49,19 +50,20 @@ def create_configuration(settings, args):
             if project not in settings.projects.keys():
                 print 'Valid choices for a project are: %s' % ','.join(settings.projects.keys())
 
-        while language not in languages.MAPPING:
+        wiki = wikiprojects.Wiki(settings.encoding, project=project)
+        while language not in wiki.valid_languages:
             language = raw_input('Please indicate which language of project %s you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % (settings.projects[project].capitalize(), language_map[args.language]))
             if len(language) == 0:
                 language = language_map[args.language]
-            language = language if language in languages.MAPPING else args.language
+            language = language if language in wiki.valid_languages else args.language
 
-        while dumpversion not in settings.dumpversions.keys():
-            choices = '\n'.join(show_choices(settings, 'dumpversions'))
-            dumpversion = raw_input('Please indicate the version of the Wikipedia project you are analyzing.\nValid choices are:\n%s\nDefault is: 0 (%s)\nPress Enter to accept default.\n' % (choices, settings.dumpversions['0']))
-            if len(dumpversion) == 0:
-                dumpversion = settings.dumpversions['0']
+#        while dumpversion not in settings.dumpversions.keys():
+#            choices = '\n'.join(show_choices(settings, 'dumpversions'))
+#            dumpversion = raw_input('Please indicate the version of the Wikipedia project you are analyzing.\nValid choices are:\n%s\nDefault is: 0 (%s)\nPress Enter to accept default.\n' % (choices, settings.dumpversions['0']))
+#            if len(dumpversion) == 0:
+#                dumpversion = settings.dumpversions['0']
 
-        dumpversion = settings.dumpversions[dumpversion]
+        #dumpversion = settings.dumpversions[dumpversion]
         input_location = input_location if len(input_location) > 0 else settings.input_location
         working_directory = working_directory if len(working_directory) > 0 else os.getcwd()
 
@@ -72,15 +74,15 @@ def create_configuration(settings, args):
         config.add_section('wiki')
         config.set('wiki', 'project', project)
         config.set('wiki', 'language', language)
-        config.set('wiki', 'dumpversion', dumpversion)
+        #config.set('wiki', 'dumpversion', dumpversion)
 
-        fh = utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
+        fh = file_utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
         config.write(fh)
         fh.close()
 
         settings.working_directory = config.get('file_locations', 'working_directory')
         settings.input_location = config.get('file_locations', 'input_location')
-        settings.xml_namespace = config.get('wiki', 'dumpversion')
+        #settings.xml_namespace = config.get('wiki', 'dumpversion')
         return settings
 
 

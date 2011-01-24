@@ -21,7 +21,7 @@ from multiprocessing import Process
 
 
 from database import db
-from utils import wikiprojects
+from classes import wikiprojects
 import manage as manager
 
 def launch_editor_trends_toolkit(task):
