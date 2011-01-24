@@ -11,59 +11,13 @@ define( 'SMW_NM_VERSION', '0.5.3' );
 $smwgNMIP = $IP . '/extensions/SemanticNotifyMe';
 $smwgNMScriptPath = $wgScriptPath . '/extensions/SemanticNotifyMe';
 
+$wgExtensionMessagesFiles['SemanticNotifyMe'] = $smwgNMIP . '/languages/SMW_NMLanguage.php';
+
 global $wgExtensionFunctions;
 $wgExtensionFunctions[] = 'smwgNMSetupExtension';
 
 global $wgDefaultUserOptions;
 $wgDefaultUserOptions['enotifyme'] = 1;
-
-function smwfNMInitMessages() {
-	global $smwgNMMessagesInitialized;
-	if ( isset( $smwgNMMessagesInitialized ) ) return; // prevent double init
-
-	smwfNMInitUserMessages(); // lazy init for ajax calls
-
-	$smwgNMMessagesInitialized = true;
-}
-function smwfNMInitUserMessages() {
-	global $wgMessageCache, $smwgNMContLang, $wgLanguageCode;
-	smwfNMInitContentLanguage( $wgLanguageCode );
-
-	global $smwgNMIP, $smwgNMLang;
-	if ( !empty( $smwgNMLang ) ) { return; }
-	global $wgMessageCache, $wgLang;
-	$smwLangClass = 'SMW_NMLanguage' . str_replace( '-', '_', ucfirst( $wgLang->getCode() ) );
-
-	if ( file_exists( $smwgNMIP . '/languages/' . $smwLangClass . '.php' ) ) {
-		include_once( $smwgNMIP . '/languages/' . $smwLangClass . '.php' );
-	}
-	// fallback if language not supported
-	if ( !class_exists( $smwLangClass ) ) {
-		global $smwgNMContLang;
-		$smwgNMLang = $smwgNMContLang;
-	} else {
-		$smwgNMLang = new $smwLangClass();
-	}
-
-	$wgMessageCache->addMessages( $smwgNMLang->getUserMsgArray(), $wgLang->getCode() );
-}
-function smwfNMInitContentLanguage( $langcode ) {
-	global $smwgNMIP, $smwgNMContLang;
-	if ( !empty( $smwgNMContLang ) ) { return; }
-
-	$smwContLangClass = 'SMW_NMLanguage' . str_replace( '-', '_', ucfirst( $langcode ) );
-
-	if ( file_exists( $smwgNMIP . '/languages/' . $smwContLangClass . '.php' ) ) {
-		include_once( $smwgNMIP . '/languages/' . $smwContLangClass . '.php' );
-	}
-
-	// fallback if language not supported
-	if ( !class_exists( $smwContLangClass ) ) {
-		include_once( $smwgNMIP . '/languages/SMW_NMLanguageEn.php' );
-		$smwContLangClass = 'SMW_NMLanguageEn';
-	}
-	$smwgNMContLang = new $smwContLangClass();
-}
 
 function smwfNMInitializeTables() {
 	global $smwgNMIP;
@@ -86,9 +40,6 @@ function smwfNMGetAjaxMethodPrefix() {
 function smwgNMSetupExtension() {
 	global $smwgNMIP, $wgHooks, $wgJobClasses, $wgExtensionCredits;
 	global $wgAutoloadClasses, $wgSpecialPages, $wgSpecialPageGroups;
-
-	smwfNMInitMessages();
-
 
 	// register SMW hooks
 	$wgHooks['smwInitializeTables'][] = 'smwfNMInitializeTables';
