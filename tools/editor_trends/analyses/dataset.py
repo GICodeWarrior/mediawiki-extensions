@@ -29,16 +29,18 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 
-from utils import utils
+from utils import file_utils
 from database import db
 
 class Transform(SONManipulator):
     def transform_incoming(self, son, collection):
         for (key, ds) in son.items():
-            if isinstance(ds, Dataset):
-                son[key] = ds.encode()
-            #elif isinstance(value, dict): # Make sure we recurse into sub-docs
-            #    son[key] = self.transform_incoming(value, collection)
+            son[key] = {}
+            for x, var in enumerate(ds):
+                if isinstance(var, Variable):
+                    son[key][var.name] = var.encode()
+        for prop in ds.props:
+            son[prop] = getattr(ds, prop)
         return son
 
     def transform_outgoing(self, son, collection):
@@ -62,11 +64,7 @@ class Data:
             if isinstance(value, dict):
                 d = dict([(str(k), v) for k, v in value.iteritems()])
                 kwargs[key] = d
-
-
-        kwargs['_type'] = self._type
         return kwargs
-        #return {'_type': 'c', 'x': var.x()}
 
     def convert_seconds_to_date(self, secs):
         #return time.gmtime(secs)
@@ -149,6 +147,7 @@ class Variable(Data):
     This class constructs a time-based variable and has some associated simple 
     statistical descriptives
     '''
+
     def __init__(self, name, time_unit, **kwargs):
         self.name = name
         self.obs = {}
@@ -173,9 +172,12 @@ class Variable(Data):
         for date in dates:
             yield date
 
-
     def __len__(self):
         return [x for x in xrange(self.obs())]
+
+    def items(self):
+        for key in self.__dict__.keys():
+            yield key, getattr(self, key)
 
     def obs(self):
         for date in self:
@@ -196,7 +198,7 @@ class Variable(Data):
         #return min([self.obs[date].data[k]  for date in self.obs.keys() for k in self.obs[date].data.keys()])
 
     def max(self):
-        return max([self.obs[date].data[k]  for date in self.obs.keys() for k in self.obs[date].data.keys()])
+        return max([self.obs[date].data[k] for date in self.obs.keys() for k in self.obs[date].data.keys()])
 
     def get_standard_deviation(self, number_list):
         mean = get_mean(number_list)
@@ -242,20 +244,42 @@ class Variable(Data):
         self.obs[data.hash] = data
 
 
+    def encode(self):
+        bson = {}
+        for x, obs in enumerate(self):
+            obs = self[obs]
+            x = str(x)
+            bson[x] = obs.encode_to_bson()
+            #print bson
+        return bson
+
 class Dataset:
     '''
     This class acts as a container for the Variable class and has some methods
-    to output the dataset to a csv file. 
+    to output the dataset to a csv file, mongodb and display statistics. 
     '''
-    def __init__(self, name, vars=[{}]):
-        self.name = '%s.csv' % name
-        self.vars = []
-        self.format = 'long'
+
+    def __init__(self, name, project, collection, language_code, vars=None, **kwargs):
+        self.name = name
+        self.project = project
+        self.collection = collection
+        self.language_code = language_code
+        self.hash = self.name
         self._type = 'dataset'
-        for kwargs in vars:
-            name = kwargs.pop('name')
-            setattr(self, name, Variable(name, **kwargs))
-            self.vars.append(name)
+        self.filename = '%s_%s.csv' % (self.project, self.name)
+        self.created = datetime.datetime.now()
+        self.props = self.__dict__.keys()
+        self.vars = []
+        for kw in kwargs:
+            if kw == 'format':
+                setattr(self, kw, kwargs.get(kw, 'long'))
+            else:
+                setattr(self, kw, kwargs[kw])
+        if vars != None:
+            for kwargs in vars:
+                name = kwargs.pop('name')
+                setattr(self, name, Variable(name, **kwargs))
+                self.vars.append(name)
 
     def __repr__(self):
         return 'Dataset contains %s variables' % (len(self.vars))
@@ -263,6 +287,14 @@ class Dataset:
     def __iter__(self):
         for var in self.vars:
             yield getattr(self, var)
+
+    def add_variable(self, var):
+        if isinstance(var, Variable):
+            self.vars.append(var.name)
+            setattr(self, var.name, var)
+
+        else:
+            raise TypeError('You can only instance of Variable to a dataset.')
 
     def get_all_keys(self, data):
         all_keys = []
@@ -331,6 +363,21 @@ class Dataset:
     def write(self, format='csv'):
         if format == 'csv':
             self.to_csv()
+        elif format == 'mongo':
+            self.to_mongo()
+
+    def to_mongo(self):
+        dbname = '%s%s' % (self.language_code, self.project)
+        mongo = db.init_mongo_db(dbname)
+        coll = mongo['%s_%s' % (dbname, 'charts')]
+        mongo.add_son_manipulator(Transform())
+        #transform = Transform()
+        #bson = transform.transform_incoming(self, coll)
+#        coll.update(
+#                     {'$set': {'variables': self}})
+        coll.remove({'hash':self.hash, 'project':self.project,
+                    'language_code':self.language_code})
+        coll.insert({'variables': self})
 
     def to_csv(self):
 
@@ -356,21 +403,13 @@ class Dataset:
         return headers
 
     def encode(self):
-        bson = {}
-        for var in self:
-            dates = var.obs.keys()
-            dates.sort()
-            bson[var.name] = {}
-            for date in dates:
-                obs = var[date]
-                key = str(obs.hash)
-                bson[var.name][key] = obs.encode_to_bson()
-                print bson
-        return bson
+        props = {}
+        for prop in self.props:
+            props[prop] = getattr(self, prop)
+        return props
 
     def encode_to_bson(self, var):
         return {'_type': 'dataset', 'x': var.x()}
-
 
     def decode_from_bson(self, document):
         assert document["_type"] == "custom"
@@ -380,14 +419,19 @@ def debug():
     mongo = db.init_mongo_db('enwiki')
     rawdata = mongo['test']
     mongo.add_son_manipulator(Transform())
-    date = datetime.datetime.today()
-    ds = Dataset('test', [{'name': 'count', 'time_unit': 'year'}])
-    ds.count.add(date, 5)
+    d1 = datetime.datetime.today()
+    d2 = datetime.datetime(2007, 6, 7)
+    ds = Dataset('test', 'enwiki', 'editors_dataset', [{'name': 'count', 'time_unit': 'year'},
+                                                       {'name': 'testest', 'time_unit': 'year'}])
+    ds.count.add(d1, 5)
+    ds.count.add(d2, 514)
+    ds.testest.add(d1, 135)
+    ds.testest.add(d2, 535)
     #ds.summary()
     #ds.write_to_csv()
     v = Variable('test', 'year')
     ds.encode()
-    mongo.test.insert({'dataset': ds})
+    mongo.test.insert({'variables': ds})
 
     #v.add(date , 5)
     #o = v.get_observation(date)

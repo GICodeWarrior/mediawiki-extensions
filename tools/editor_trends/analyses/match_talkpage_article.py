@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-07'
 __version__ = '0.1'
 
@@ -48,9 +48,11 @@ def parse_dumpfile(project, language_code, namespaces=['0', '1']):
 
 
     location = os.path.join(settings.input_location, language_code, project)
-    fh = utils.create_txt_filehandle(location, '%s%s-latest-stub-meta-history.xml' % (language_code, project), 'r', settings.encoding)
+    fh = file_utils.create_txt_filehandle(location,
+                '%s%s-latest-stub-meta-history.xml' % (language_code, project),
+                'r', settings.encoding)
 
-    for page in wikitree.parser.read_input(fh):
+    for page, article_size in wikitree.parser.read_input(fh):
         title = page.find('title')
         if extracter.verify_article_belongs_namespace(title, non_valid_namespaces):
             article_id = page.find('id').text
@@ -64,7 +66,7 @@ def parse_dumpfile(project, language_code, namespaces=['0', '1']):
                 article = articles.get(article_id, Article(title, article_id))
             articles[article_id] = article
 
-    utils.store_object(articles, settings.binary_location, 'talk2article.bin')
+    file_utils.store_object(articles, settings.binary_location, 'talk2article.bin')
 
 if __name__ == '__main__':
     parse_dumpfile('wiki', 'en')

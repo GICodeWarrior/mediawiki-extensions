@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-10'
 __version__ = '0.1'
 
@@ -45,7 +45,7 @@ def create_edgelist(project, collection):
     ids = db.retrieve_distinct_keys(project, collection, 'editor')
     conn = db.init_mongo_db(project)
     ids.sort()
-    fh = utils.create_txt_filehandle(settings.dataset_location, '%s_edgelist.csv' % project, 'w', settings.encoding)
+    fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_edgelist.csv' % project, 'w', settings.encoding)
     for i in ids:
         author_i = conn[collection].find_one({'editor': i})
         article_i = create_articles_set(author_i['edits'])
@@ -55,7 +55,7 @@ def create_edgelist(project, collection):
                 article_j = create_articles_set(author_j['edits'])
                 common = article_i.intersection(article_j)
                 if len(common) > 0:
-                    utils.write_list_to_csv([i, j, len(common)], fh, recursive=False, newline=True)
+                    file_utils.write_list_to_csv([i, j, len(common)], fh, recursive=False, newline=True)
     fh.close()
 
 if __name__ == '__main__':

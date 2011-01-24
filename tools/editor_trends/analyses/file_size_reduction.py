@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-15'
 __version__ = '0.1'
 
@@ -81,7 +81,7 @@ def calculate_filesize_overhead(location, filename):
                 root.clear()  # when done parsing a section clear the tree to release memory
     except SyntaxError:
         pass
-    utils.store_object(ds, settings.binary_location, 'ds')
+    file_utils.store_object(ds, settings.binary_location, 'ds')
     xml_size = ds.total_size_xml()
     text_size = ds.total_size_text()
     print text_size, xml_size
@@ -89,7 +89,7 @@ def calculate_filesize_overhead(location, filename):
 
 
 def output_dumpstatistics():
-    ds = utils.load_object(settings.binary_location, 'ds.bin')
+    ds = file_utils.load_object(settings.binary_location, 'ds.bin')
 
     for key in ds.tags:
         print '%s\t%s' % (key, ds.tags[key])
