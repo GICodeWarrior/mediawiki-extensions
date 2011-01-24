@@ -13,17 +13,15 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-12-13'
 __version__ = '0.1'
 
 import sys
 import re
-import json
 import os
-import xml.etree.cElementTree as cElementTree
 import multiprocessing
-from Queue import Empty
+import progressbar
 
 sys.path.append('..')
 import configuration
@@ -31,7 +29,9 @@ settings = configuration.Settings()
 
 import wikitree.parser
 from bots import bots
-from utils import utils
+from utils import file_utils
+from utils import compression
+from utils import log
 
 try:
     import psyco
@@ -60,34 +60,15 @@ def lenient_deccharref(m):
         return ''
 
 
-def remove_namespace(element, namespace):
-    '''Remove namespace from the XML document.'''
-    ns = u'{%s}' % namespace
-    nsl = len(ns)
-    for elem in element.getiterator():
-        if elem.tag.startswith(ns):
-            elem.tag = elem.tag[nsl:]
-    return element
-
-
-def load_namespace(language):
-    file = '%s_ns.json' % language
-    fh = utils.create_txt_filehandle(settings.namespace_location, file, 'r', settings.encoding)
-    ns = json.load(fh)
-    fh.close()
-    ns = ns['query']['namespaces']
-    return ns
-
-
 def build_namespaces_locale(namespaces, include=['0']):
     '''
     @include is a list of namespace keys that should not be ignored, the default
     setting is to ignore all namespaces except the main namespace. 
     '''
     ns = []
-    for namespace in namespaces:
-        if namespace not in include:
-            value = namespaces[namespace].get(u'*', None)
+    for key, value in namespaces.iteritems():
+        if key not in include:
+            #value = namespaces[namespace].get(u'*', None)
             ns.append(value)
     return ns
 
@@ -95,7 +76,6 @@ def build_namespaces_locale(namespaces, include=['0']):
 def parse_comments(revisions, function):
     for revision in revisions:
         comment = revision.find('{%s}comment' % settings.xml_namespace)
-        #timestamp = revision.find('{%s}timestamp' % settings.xml_namespace).text
         if comment != None and comment.text != None:
             comment.text = function(comment.text)
     return revisions
@@ -104,7 +84,8 @@ def parse_comments(revisions, function):
 def verify_article_belongs_namespace(elem, namespaces):
     '''
     @namespaces is a list of namespaces that should be ignored, hence if the
-    title of article starts with the namespace then return False else return True
+    title of article starts with the namespace then return False else return 
+    True
     '''
     title = elem.text
     if title == None:
@@ -114,11 +95,13 @@ def verify_article_belongs_namespace(elem, namespaces):
             return False
     return True
 
+
 def validate_hostname(address):
     '''
-    This is not a foolproof solution at all. The problem is that it's really hard
-    to determine whether a string is a hostname or not **reliably**. This is a 
-    very fast rule of thumb. Will lead to false positives, but that's life :)
+    This is not a foolproof solution at all. The problem is that it's really 
+    hard to determine whether a string is a hostname or not **reliably**. This 
+    is a very fast rule of thumb. Will lead to false positives, 
+    but that's life :)
     '''
     parts = address.split(".")
     if len(parts) > 2:
@@ -174,13 +157,16 @@ def extract_contributor_id(contributor, **kwargs):
     ignore anonymous editors. 
     '''
     if contributor.get('deleted'):
-        return None  # ASK: Not sure if this is the best way to code deleted contributors.
+        # ASK: Not sure if this is the best way to code deleted contributors.
+        return None
     elem = contributor.find('id')
     if elem != None:
         return {'id':elem.text}
     else:
         elem = contributor.find('ip')
-        if elem != None and elem.text != None and validate_ip(elem.text) == False and validate_hostname(elem.text) == False:
+        if elem != None and elem.text != None \
+        and validate_ip(elem.text) == False \
+        and validate_hostname(elem.text) == False:
             return {'username':elem.text, 'id': elem.text}
         else:
             return None
@@ -192,8 +178,8 @@ def output_editor_information(revisions, page, bots):
     @output is where to store the data,  a filehandle
     @**kwargs contains extra information 
     
-    the variable tags determines which attributes are being parsed, the values in
-    this dictionary are the functions used to extract the data. 
+    the variable tags determines which attributes are being parsed, the values 
+    in this dictionary are the functions used to extract the data. 
     '''
     headers = ['id', 'date', 'article', 'username']
     tags = {'contributor': {'id': extract_contributor_id,
@@ -218,17 +204,20 @@ def output_editor_information(revisions, page, bots):
             for function in tags[tag].keys():
                 f = tags[tag][function]
                 value = f(el, bots=bots)
-                if type(value) == type({}):
+                if isinstance(value, list):
+                #if type(value) == type({}):
                     for kw in value:
                         vars[x][kw] = value[kw]
                 else:
                     vars[x][function] = value
 
     '''
-    This loop determines for each observation whether it should be stored or not. 
+    This loop determines for each observation whether it should be stored 
+    or not. 
     '''
     for x in vars:
-        if vars[x]['bot'] == 1 or vars[x]['id'] == None or vars[x]['username'] == None:
+        if vars[x]['bot'] == 1 or vars[x]['id'] == None \
+        or vars[x]['username'] == None:
             continue
         else:
             f = []
@@ -238,38 +227,50 @@ def output_editor_information(revisions, page, bots):
     return flat
 
 
-def parse_dumpfile(project, file, language_code, namespaces=['0']):
+def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=['0']):
     bot_ids = bots.retrieve_bots(language_code)
-    ns = load_namespace(language_code)
-    ns = build_namespaces_locale(ns, namespaces)
-
     location = os.path.join(settings.input_location, language_code, project)
     output = os.path.join(settings.input_location, language_code, project, 'txt')
-    filehandles = [utils.create_txt_filehandle(output, '%s.csv' % fh, 'a', settings.encoding) for fh in xrange(settings.max_filehandles)]
+    widgets = log.init_progressbar_widgets('Extracting data')
 
-    fh = utils.create_txt_filehandle(location, file, 'r', settings.encoding)
-    #fh = utils.create_txt_filehandle(location, '%s%s-latest-stub-meta-history.xml' % (language_code, project), 'r', settings.encoding)
-    total_pages, processed_pages = 0.0, 0.0
-    for page in wikitree.parser.read_input(fh):
-        title = page.find('title')
-        total_pages += 1
-        if verify_article_belongs_namespace(title, ns):
-            #cElementTree.dump(page)
-            article_id = page.find('id').text
-            revisions = page.findall('revision')
-            revisions = parse_comments(revisions, remove_numeric_character_references)
-            output = output_editor_information(revisions, article_id, bot_ids)
-            write_output(output, filehandles)
-            processed_pages += 1
-            print processed_pages
-        page.clear()
-    fh.close()
-    print 'Total pages: %s' % total_pages
-    print 'Pages processed: %s (%s)' % (processed_pages, processed_pages / total_pages)
-    filehandles = [file.close() for file in filehandles]
+    while True:
+        total, processed = 0.0, 0.0
+        filename = tasks.get(block=False)
+        tasks.task_done()
+        if filename == None:
+            print 'There are no more jobs in the queue left.'
+            break
+
+        filesize = file_utils.determine_filesize(location, filename)
+        fh = file_utils.create_txt_filehandle(location, filename, 'r', settings.encoding)
+        ns, xml_namespace = wikitree.parser.extract_meta_information(fh)
+        ns = build_namespaces_locale(ns, namespaces)
+        settings.xml_namespace = xml_namespace
+
+        pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
+        for page, article_size in wikitree.parser.read_input(fh):
+            title = page.find('title')
+            total += 1
+            if verify_article_belongs_namespace(title, ns):
+                article_id = page.find('id').text
+                revisions = page.findall('revision')
+                revisions = parse_comments(revisions, remove_numeric_character_references)
+                output = output_editor_information(revisions, article_id, bot_ids)
+                write_output(output, filehandles, lock)
+                processed += 1
+            page.clear()
+            pbar.update(pbar.currval + article_size)
+        fh.close()
+        print 'Total pages: %s' % total
+        print 'Pages processed: %s (%s)' % (processed, processed / total)
+
+    return True
 
 
 def group_observations(obs):
+    '''
+    mmm forgot the purpose of this function
+    '''
     d = {}
     for o in obs:
         id = o[0]
@@ -279,14 +280,16 @@ def group_observations(obs):
     return d
 
 
-def write_output(observations, filehandles):
+def write_output(observations, filehandles, lock):
     observations = group_observations(observations)
     for obs in observations:
         for i, o in enumerate(observations[obs]):
             if i == 0:
                 fh = filehandles[hash(obs)]
             try:
-                utils.write_list_to_csv(o, fh)
+                lock.acquire()
+                file_utils.write_list_to_csv(o, fh)
+                lock.releas()
             except Exception, error:
                 print error
 
@@ -303,7 +306,88 @@ def hash(id):
         return sum([ord(i) for i in id]) % settings.max_filehandles
 
 
-if __name__ == '__main__':
+def prepare(output):
+    file_utils.delete_file(output, None, directory=True)
+    file_utils.create_directory(output)
+
+
+def unzip(properties):
+    tasks = multiprocessing.JoinableQueue()
+    canonical_filename = file_utils.determine_canonical_name(properties.filename)
+    extension = file_utils.determine_file_extension(properties.filename)
+    files = file_utils.retrieve_file_list(properties.location,
+                                     extension,
+                                     mask=canonical_filename)
+    print 'Checking if dump file has been extracted...'
+    for fn in files:
+        file_without_ext = fn.replace('%s%s' % ('.', extension), '')
+        result = file_utils.check_file_exists(properties.location, file_without_ext)
+        if not result:
+            print 'Dump file %s has not yet been extracted...' % fn
+            retcode = compression.launch_zip_extractor(properties.location,
+                                                       fn,
+                                                       properties)
+        else:
+            print 'Dump file has already been extracted...'
+            retcode = 0
+        if retcode == 0:
+            tasks.put(file_without_ext)
+        elif retcode != 0:
+            print 'There was an error while extracting %s, please make sure \
+            that %s is valid archive.' % (fn, fn)
+            return False
+
+    return tasks
+
+def launcher(properties):
+    '''
+    This is the main entry point for the extact phase of the data processing
+    chain. First, it will put a the files that need to be extracted in a queue
+    called tasks, then it will remove some old files to make sure that there is
+    no data pollution and finally it will start the parser to actually extract
+    the variables from the different dump files. 
+    '''
+    result = True
+    tasks = unzip(properties)
+    prepare(properties.language_code, properties.project)
+    lock = multiprocessing.Lock()
+    filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
+                settings.encoding) for fh in xrange(settings.max_filehandles)]
+    output = os.path.join(settings.input_location, properties.language_code,
+                          properties.project, 'txt')
+
+    consumers = [multiprocessing.Process(target=parse_dumpfile,
+                                args=(tasks,
+                                      properties.project,
+                                      properties.language_code,
+                                      filehandles,
+                                      lock,
+                                      properties.namespaces))
+                                for x in xrange(settings.number_of_processes)]
+
+    for x in xrange(settings.number_of_processes):
+        tasks.put(None)
+
+    for w in consumers:
+        w.start()
+
+    tasks.join()
+    filehandles = [fh.close() for fh in filehandles]
+#    result = parse_dumpfile(properties.project, file_without_ext,
+#                       properties.language_code,
+#                       namespaces=['0'])
+
+
+    result = all([consumer.exitcode for consumer in consumers])
+    return result
+
+
+def debug():
     project = 'wiki'
-    language_code = 'en'
-    parse_dumpfile(project, language_code)
+    language_code = 'sv'
+    filename = 'svwiki-latest-stub-meta-history.xml'
+    #parse_dumpfile(project, filename, language_code)
+    launcher()
+
+if __name__ == '__main__':
+    debug()
