@@ -126,6 +126,7 @@ As u \'n skakel vanaf elders gevolg het, <a href="$1">rapporteer \'n fout</a>.
  */
 $messages['ar'] = array(
 	'toolbase-header-bugs' => 'علل',
+	'toolbase-header-twitter' => 'تويتر',
 	'toolbase-replag-years' => 'سنة',
 	'toolbase-replag-months' => 'شهر',
 	'toolbase-replag-weeks' => 'أسبوع',
@@ -138,6 +139,7 @@ $messages['ar'] = array(
 	'toolbase-footer-translate' => 'ترجمة',
 	'toolbase-navigation' => 'إبحار',
 	'toolbase-navigation-homepage' => 'الصفحة الرئيسية',
+	'toolbase-navigation-api' => 'إيه بي آي',
 	'toolbase-main-title' => 'مرحبا!',
 	'toolbase-main-404' => 'الملف غير موجود',
 	'toolbase-form-wiki' => 'ويكي',
@@ -183,9 +185,11 @@ $messages['be-tarask'] = array(
 </ul>',
 	'toolbase-form-wiki' => 'Вікі',
 	'toolbase-error-nouser' => '«$1» не зьяўляецца слушнай назвай рахунку удзельніка',
+	'toolbase-error-nowiki' => '$1.$2.org не зьяўляецца слушным адрасам вікі',
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -207,8 +211,14 @@ $messages['br'] = array(
 	'toolbase-userid-title' => 'Kavout ID un implijer',
 	'toolbase-main-title' => 'Degemer mat !',
 	'toolbase-main-404' => "N'eo ket bet kavet ar restr",
+	'toolbase-main-404-content' => "Opala ! N'eus bet kavet pajenn ebet !
+
+Bezit sur hoc'h eus skrivet un URL difazi.
+Mard oc'h deuet eus lec'h all dre ul liamm, kasit <a href=\"\$1\">ur c'hemenn evit un draen</a>.
+</ul>",
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '"$1" n’eo ket un implijer reizh.',
+	'toolbase-error-nowiki' => "N'eo ket $1.$2.org ur wiki reizh",
 );
 
 /** German (Deutsch)
@@ -268,12 +278,15 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Hashar
  * @author Sherbrooke
  * @author X!
  */
 $messages['fr'] = array(
 	'toolbase-header-title' => 'Outils X! (BETA)',
 	'toolbase-header-bugs' => 'Bugs',
+	'toolbase-header-sitenotice' => "Avis de site du serveur d'outils global : $1",
+	'toolbase-replag' => 'Serveur en retard de $1',
 	'toolbase-replag-years' => 'années',
 	'toolbase-replag-months' => 'mois',
 	'toolbase-replag-weeks' => 'semaines',
@@ -282,11 +295,21 @@ $messages['fr'] = array(
 	'toolbase-replag-minutes' => 'minutes',
 	'toolbase-replag-seconds' => 'secondes',
 	'toolbase-footer-exectime' => 'Complété en $1 {{PLURAL:$1|seconde|secondes}}',
+	'toolbase-footer-source' => 'Voir le texte source',
 	'toolbase-footer-language' => 'Changer de langue',
 	'toolbase-footer-translate' => 'Traduire',
 	'toolbase-navigation' => 'Navigation',
 	'toolbase-navigation-homepage' => "Page d'accueil",
+	'toolbase-navigation-user_id' => "Trouver l'ID utilisateur",
+	'toolbase-userid-submit' => "Obtenir l'ID utilisateur",
+	'toolbase-userid-title' => 'Trouver un ID utilisateur',
+	'toolbase-userid-result' => 'L\'ID utilisateur pour <b>$1</b> sur <a href="$3"><b>$3</b></a> est <b>$2</b>.',
 	'toolbase-main-title' => 'Bienvenue !',
+	'toolbase-main-content' => 'Bienvenue sur la page d\'outils X ! Cette suite d\'outils est présentement en conversion vers le framework <a href="$1">Symfony</a>. Ce processus prendra un certain temps, mais les outils devraient fonctionner correctement dès maintenant. 
+
+Pour obtenir une liste d\'outils qui sont fonctionnels sur ce framework, voir l\'encadré à droite. 
+
+Les bugs peuvent être rapportés à <a href="$2">Google Code</a>.',
 	'toolbase-main-404' => 'Fichier introuvable',
 	'toolbase-main-404-content' => 'Oups ! Aucune page n\'a été trouvé !
 
@@ -295,6 +318,7 @@ Si vous avez suivi un lien, veuillez <a href="$1">rapporter le bug</a>.
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => "$1 n'est pas un utilisateur valide",
+	'toolbase-error-nowiki' => "$1.$2.org n'est pas un wiki valide",
 );
 
 /** Galician (Galego)
@@ -478,6 +502,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'toolbase-header-title' => 'Алатки на X!',
 	'toolbase-header-bugs' => 'Грешки',
+	'toolbase-header-twitter' => 'Twitter',
 	'toolbase-header-sitenotice' => 'Глобално известување на Toolserver: $1',
 	'toolbase-replag' => 'Опслужувачот изостанува $1',
 	'toolbase-replag-years' => 'години',
@@ -493,6 +518,7 @@ $messages['mk'] = array(
 	'toolbase-footer-translate' => 'Преведи',
 	'toolbase-navigation' => 'Навигација',
 	'toolbase-navigation-homepage' => 'Домашна страница',
+	'toolbase-navigation-api' => 'API',
 	'toolbase-navigation-user_id' => 'Пронајди кориснички ID',
 	'toolbase-userid-submit' => 'Дај кориснички ID',
 	'toolbase-userid-title' => 'Пронаоѓање на кориснички ID',
@@ -511,6 +537,7 @@ $messages['mk'] = array(
 </ul>',
 	'toolbase-form-wiki' => 'Вики',
 	'toolbase-error-nouser' => 'Нема корисник по име $1',
+	'toolbase-error-nowiki' => '$1.$2.org не претставува важечко вики',
 );
 
 /** Dutch (Nederlands)
@@ -555,6 +582,48 @@ Als u een verwijzing ergens anders vandaan hebt gevolgd, <a href="$1">meld dan a
 	'toolbase-error-nowiki' => '$1.$2.org is geen geldige wiki',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'toolbase-header-title' => 'Narzędzia X! (BETA)',
+	'toolbase-header-bugs' => 'Błędy',
+	'toolbase-header-sitenotice' => 'Globalny komunikat serwera narzędziowego: $1',
+	'toolbase-replag' => 'Serwer jest opóźniony o $1',
+	'toolbase-replag-years' => 'lat',
+	'toolbase-replag-months' => 'miesięcy',
+	'toolbase-replag-weeks' => 'tygodni',
+	'toolbase-replag-days' => 'dni',
+	'toolbase-replag-hours' => 'godzin',
+	'toolbase-replag-minutes' => 'minut',
+	'toolbase-replag-seconds' => 'sekund',
+	'toolbase-footer-exectime' => 'Wykonano w $1 {{PLURAL:$1|sekundę|sekundy|sekund}}',
+	'toolbase-footer-source' => 'Tekst źródłowy',
+	'toolbase-footer-language' => 'Zmień język',
+	'toolbase-footer-translate' => 'Przetłumacz',
+	'toolbase-navigation' => 'Nawigacja',
+	'toolbase-navigation-homepage' => 'Strona domowa',
+	'toolbase-navigation-user_id' => 'Znajdź identyfikator użytkownika',
+	'toolbase-userid-submit' => 'Pobierz identyfikator użytkownika',
+	'toolbase-userid-title' => 'Znajdź identyfikator użytkownika',
+	'toolbase-userid-result' => 'Identyfikator użytkownika dla <b>$1</b> na <a href="$3"><b>$3</b></a> to <b>$2</b>.',
+	'toolbase-main-title' => 'Witaj!',
+	'toolbase-main-content' => 'Witamy w zestawie narzędzi X! Pakiet narzędzi jest nadal konwertowany do pracy w ramach <href="$1">Symfony</a>. Proces ten jest czasochłonny, ale narzędzia powinny działać już teraz.
+
+Lista narzędzi, które są obecnie uruchomione dostępna jest w pasku bocznym po prawej.
+
+Błędy można zgłaszać poprzez <a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'Nie odnaleziono pliku',
+	'toolbase-main-404-content' => 'Oj! Nie odnaleziono strony!
+
+Upewnij się, że wpisałeś poprawny adres URL.
+Jeśli dotarłeś tu klikając jakiś link <a href="$1">zgłoś błąd</a>.
+</ul>',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '„$1” nie jest poprawną nazwą użytkownika',
+	'toolbase-error-nowiki' => '$1.$2.org nie jest poprawnym adresem wiki',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -595,6 +664,62 @@ $messages['uk'] = array(
 Якщо ви перейшли за посиланням звідки-небудь, будь ласка, <a href="$1">повідомте про помилку</a>.
 </ul>',
 	'toolbase-form-wiki' => 'Вікі',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'toolbase-header-title' => 'Các công cụ của X (BETA)',
+	'toolbase-header-bugs' => 'Lỗi',
+	'toolbase-header-sitenotice' => 'Thông báo toàn cầu Toolserver: $1',
+	'toolbase-replag' => 'Máy chủ chậm $1',
+	'toolbase-replag-years' => 'năm',
+	'toolbase-replag-months' => 'tháng',
+	'toolbase-replag-weeks' => 'tuần',
+	'toolbase-replag-days' => 'ngày',
+	'toolbase-replag-hours' => 'giờ',
+	'toolbase-replag-minutes' => 'phút',
+	'toolbase-replag-seconds' => 'giây',
+	'toolbase-footer-exectime' => 'Thực hiện trong $1 giây',
+	'toolbase-footer-source' => 'Xem mã nguồn',
+	'toolbase-footer-language' => 'Thay đổi ngôn ngữ',
+	'toolbase-footer-translate' => 'Biên dịch',
+	'toolbase-navigation' => 'Xem nhanh',
+	'toolbase-navigation-homepage' => 'Trang đầu',
+	'toolbase-navigation-user_id' => 'Tìm ID người dùng',
+	'toolbase-userid-submit' => 'Tìm ID người dùng',
+	'toolbase-userid-title' => 'Tìm ID người dùng',
+	'toolbase-userid-result' => 'ID của người dùng <b>$1</b> tại <a href="$3"><b>$3</b></a> là <b>$2</b>.',
+	'toolbase-main-title' => 'Hoan nghênh!',
+	'toolbase-main-content' => 'Hoan nghênh bạn đã đến với các công cụ của X! Bộ công cụ này vẫn đang được chuyển qua khuôn khổ <a href="$1">Symfony</a>. Quá trình này chưa xong nhưng có lẽ đã hoạt động.
+
+Xem các công cụ đang hoạt động tốt trên khuôn khổ này trong thanh bên.
+
+Có thể báo cáo lỗi tại <a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'Không tìm thấy tập tin',
+	'toolbase-main-404-content' => 'Oái! Không tìm thấy tập tin!
+
+Hãy xem lại URL có đúng hay không.
+Nếu bạn theo một liên kết từ trang khác, xin vui lòng <a href="$1">báo cáo lỗi</a>.
+</ul>',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '“$1” không phải là người dùng hợp lệ',
+	'toolbase-error-nowiki' => '“$1.$2.org” không phải là wiki hợp lệ',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'toolbase-replag-years' => '年',
+	'toolbase-replag-months' => '月',
+	'toolbase-replag-weeks' => '周',
+	'toolbase-replag-days' => '天',
+	'toolbase-replag-hours' => '小时',
+	'toolbase-replag-minutes' => '分钟',
+	'toolbase-replag-seconds' => '秒',
+	'toolbase-form-wiki' => '维基',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -67,6 +67,8 @@ $messages['ar'] = array(
 	'ts-kml-on-ol-help' => 'مساعدة',
 	'ts-kml-on-ol-all' => 'الكل',
 	'ts-kml-on-ol-map-by' => 'الخريطة بواسطة',
+	'ts-kml-on-ol-openstreetmap' => 'أوبن ستريت ماب',
+	'ts-kml-on-ol-wikipedia' => 'ويكيبيديا',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -153,6 +155,18 @@ $messages['dsb'] = array(
 	'ts-kml-on-ol-help' => 'Pomoc',
 	'ts-kml-on-ol-all' => 'Wšykne',
 	'ts-kml-on-ol-map-by' => 'Kórta wót',
+);
+
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'ts-kml-on-ol-options' => 'Επιλογές',
+	'ts-kml-on-ol-languages' => 'Γλώσσες',
+	'ts-kml-on-ol-thumbnails' => 'Μικρογραφίες',
+	'ts-kml-on-ol-help' => 'Βοήθεια',
+	'ts-kml-on-ol-all' => 'Ὀλα',
+	'ts-kml-on-ol-map-by' => 'Χάρτης από',
 );
 
 /** Spanish (Español)
