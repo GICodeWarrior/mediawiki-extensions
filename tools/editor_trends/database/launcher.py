@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-05'
 __version__ = '0.1'
 
@@ -23,7 +23,7 @@ import os
 
 import configuration
 settings = configuration.Settings()
-from utils import exceptions
+from classes import exceptions
 from utils import utils
 
 
@@ -46,7 +46,7 @@ def launcher(n=2):
     '''
     n = 2 if n < 2 else n
     program = 'mongod.exe' if settings.platform == 'Windows' else 'mongod'
-    path = utils.which(program)
+    path = file_utils.which(program)
     for x in xrange(1, n):
         start_mongodb_server(platform, x, path)
 

@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
@@ -24,8 +24,7 @@ sys.path.append('..')
 
 import configuration
 settings = configuration.Settings()
-
-from utils import utils
+import file_utils
 
 def init_mongo_db(dbname):
     connection = pymongo.Connection()
@@ -93,7 +92,8 @@ def stringify_keys(obj):
     '''
     d = {}
     for o in obj:
-        if type(obj[o]) == type({}):
+        if isinstance(obj[o], dict):
+        #if type(obj[o]) == type({}):
             obj[o] = stringify_keys(obj[o])
         d[str(o)] = obj[o]
     return d
@@ -120,28 +120,29 @@ def retrieve_min_value(dbname, collection, var):
 def retrieve_max_value(dbname, collection, var):
     pass
 
-def retrieve_distinct_keys(dbname, collection, field):
+def retrieve_distinct_keys(dbname, collection, field, force_new=False):
     #mongo = init_mongo_db(dbname)
     #editors = mongo[collection]
     #ids = retrieve_distinct_keys_mapreduce(editors, field)
     '''
-    TODO: figure how big the index is and then take appropriate action, index < 4mb
-    just do a distinct query, index > 4mb do a map reduce.
+    TODO: figure how big the index is and then take appropriate action, index 
+    < 4mb just do a distinct query, index > 4mb do a map reduce.
     '''
-    if utils.check_file_exists(settings.binary_location, '%s_%s.bin' % (dbname, field)):
-        ids = utils.load_object(settings.binary_location, '%s_%s.bin' % (dbname, field))
+    if force_new == False and file_utils.check_file_exists(settings.binary_location,
+                                                '%s_%s.bin' % (dbname, field)):
+        ids = file_utils.load_object(settings.binary_location, '%s_%s.bin' % (dbname, field))
     else:
         mongo = init_mongo_db(dbname)
         editors = mongo[collection]
         #index_size = mongo.stats()
-        if editors.count () < 200000:   #this is a bit arbitrary, should check if index > 4Mb.
+        if editors.count () < 200000:   #TODO this is a bit arbitrary, should check if index > 4Mb.
             ids = editors.distinct(field)
         else:
             #params = {}
             #params['size'] = 'size'
             #size = editors.find_one({'size': 1})
             ids = retrieve_distinct_keys_mapreduce(editors, field)
-        utils.store_object(ids, settings.binary_location, '%s_%s.bin' % (dbname, field))
+        file_utils.store_object(ids, settings.binary_location, '%s_%s.bin' % (dbname, field))
     return ids
 
 
@@ -156,36 +157,12 @@ def retrieve_distinct_keys_mapreduce(collection, field):
     for c in cursor.find():
         ids.append(c['_id'])
     return ids
-#def init_database(db=None):
-#    '''
-#    This function initializes the connection with a sqlite db.
-#    If the database already exists then it returns False to indicate
-#    that the db already exists, else it returns True to indicate
-#    that it's an empty database without tables.
-#    '''
-#    if db == None:
-#        db = settings.DATABASE_NAME
-#
-#    return sqlite.connect(db, check_same_thread=False)
-#
-#
-#def create_tables(cursor, tables):
-#    '''
-#    Tables is expected to be a dictionary, with key
-#    table name and value another dictionary. This second
-#    dictionary contains variable names and datatypes.
-#    '''
-#    for table in tables:
-#        vars = '('
-#        for var, datatype in tables[table]:
-#            vars = vars + '%s %s,' % (var, datatype)
-#        vars = vars[:-1]
-#        vars = vars + ')'
-#        cursor.execute('CREATE TABLE IF NOT EXISTS ? ?' % (table, vars))
-#
-#
+
+
 def debug():
     #retrieve_distinct_keys('enwiki', 'editors_dataset', 'editor')
     retrieve_min_value('enwiki', 'editors_dataset', 'new_wikipedian')
+
+
 if __name__ == '__main__':
     debug()

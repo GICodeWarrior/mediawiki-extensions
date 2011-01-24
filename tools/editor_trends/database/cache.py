@@ -14,10 +14,11 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = 'Oct 24, 2010'
 __version__ = '0.1'
 
+import datetime
 import sys
 sys.path.append('..')
 import bson
@@ -33,6 +34,7 @@ class EditorCache(object):
     def __init__(self, collection):
         self.collection = collection
         self.editors = {}
+        self.final_year = datetime.datetime.now().year + 1
         self.n = 0
 
     def __repr__(self):
@@ -42,17 +44,25 @@ class EditorCache(object):
         if key in self.editors:
             del self.editors[key]
 
+    def drop_years_no_obs(self, edits):
+        data = {}
+        for edit in edits:
+            if edits[edit] != []:
+                data[edit] = edits[edit]
+        return data
+
     def add(self, key, value):
         if value == 'NEXT':
             self.n += 1
             edits = db.stringify_keys(self.editors[key]['edits'])
+            edits = self.drop_years_no_obs(edits)
             self.insert(key, edits, self.editors[key]['username'])
             del self.editors[key]
         else:
             if key not in self.editors:
                 self.editors[key] = {}
                 self.editors[key]['obs'] = 0
-                self.editors[key]['edits'] = shaper.create_datacontainer('list')
+                self.editors[key]['edits'] = shaper.create_datacontainer(2001, self.final_year, 'list')
                 self.editors[key]['username'] = value.pop('username')
             else:
                 value.pop('username')
@@ -75,4 +85,4 @@ class EditorCache(object):
             print 'BSON document too large'
 
     def store(self):
-        utils.store_object(self, settings.binary_location, self.__repr__())
+        file_utils.store_object(self, settings.binary_location, self.__repr__())
