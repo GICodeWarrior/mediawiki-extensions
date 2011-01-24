@@ -167,16 +167,17 @@ $messages['az'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'edituser-desc' => 'Дазваляе прывілеяваным удзельнікам рэдагаваць устаноўкі іншых удзельнікаў',
+	'edituser-desc' => 'Дазваляе прывілеяваным удзельнікам рэдагаваць налады іншых удзельнікаў',
 	'edituser' => 'Рэдагаваць удзельніка',
 	'edituser-username' => 'Імя ўдзельніка:',
 	'edituser-dosearch' => 'Шукаць',
 	'edituser-nouser' => 'Удзельнік «$1» не існуе.',
 	'edituser-exempt' => 'Удзельнік «$1» ня можа рэдагавацца.',
-	'right-edituser' => 'рэдагаваньне ўстановак іншых удзельнікаў',
-	'right-edituser-exempt' => 'іншыя ня могуць рэдагаваць ўстаноўкі гэтага ўдзельніка',
+	'right-edituser' => 'рэдагаваньне наладаў іншых удзельнікаў',
+	'right-edituser-exempt' => 'іншыя ня могуць рэдагаваць налады гэтага ўдзельніка',
 );
 
 /** Bulgarian (Български)
