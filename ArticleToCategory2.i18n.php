@@ -560,5 +560,7 @@ $messages['uk'] = array(
 $messages['zh-hans'] = array(
 	'articletocategory2-create-article-under-category-text' => '将页面添加到此类别',
 	'articletocategory2-create-article-under-category-button' => '创建',
+	'articletocategory2-create-category-under-category-text' => '此类别中添加类别',
+	'articletocategory2-create-category-under-category-button' => '创建',
 );
 
