@@ -314,6 +314,7 @@ $messages['br'] = array(
 	'articlefeedback-field-trustworthy-tip' => "Ha soñjal a ra deoc'h ez eus arroudennoù a-walc'h er bajenn-mañ ? Ha diwar mammennoù sirius e teuont ?",
 	'articlefeedback-field-complete-label' => 'Graet',
 	'articlefeedback-field-complete-tip' => "Ha soñjal a ra deoc'h e vez graet mat tro temoù pennañ ar sujed ?",
+	'articlefeedback-field-unbiased-label' => 'Diuntu',
 	'articlefeedback-field-unbiased-tip' => "Ha soñjal a ra deoc'h e vez kavet displeget er bajenn-mañ, en un doare reizh a-walc'h, holl tuioù ar sujed ?",
 	'articlefeedback-field-wellwritten-label' => 'Skrivet brav',
 	'articlefeedback-field-wellwritten-tip' => "Ha soñjal a ra deoc'h eo skrivet brav ha frammet mat ar bajenn-mañ ?",
@@ -1278,6 +1279,13 @@ $messages['ko'] = array(
 	'articlefeedback-survey-submit' => '제출',
 	'articlefeedback-survey-title' => '몇 가지 질문에 답해 주시기 바랍니다.',
 	'articlefeedback-survey-thanks' => '설문에 응해 주셔서 감사합니다.',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'articlefeedback-survey-question-useful-iffalse' => 'Çima?',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
