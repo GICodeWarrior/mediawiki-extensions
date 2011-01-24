@@ -733,6 +733,13 @@ Binibigyan ang hindi nakikilalang mga tagagamit ng isang kusang nalikha, subalit
 	'right-webchat' => 'Pinayagang gumamit ng [[Special:WebChat|satsatang pangweb]]',
 );
 
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
+$messages['tr'] = array(
+	'webchat' => 'Veb sohbet',
+);
+
 /** Ukrainian (Українська)
  * @author Alex Khimich
  * @author NickK
