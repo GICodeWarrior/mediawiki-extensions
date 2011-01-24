@@ -220,3 +220,10 @@ $messages['uk'] = array(
 	'livelets-desc' => 'Дозволяє включати сторінки у інші сторінки після основного їх змісту і динамічно оновлювати за допомогою Ajax',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'livelets-desc' => '允许将被引用的页加载主页面内容之后，可以使用 Ajax 动态更新',
+);
+
