@@ -37,6 +37,8 @@ class Preprocessor_Native implements Preprocessor {
 	
 	const NODE_LEN = 16;
 	function unserializeNode( $node, $children, &$text ) {
+		if ( $node == '' ) throw new MWException( 'Empty node' );
+		
 		$flags = ord( $node[1] ) - 48;
 		$childrenLen = hexdec( substr( $node, 2, 6 ) );
 		$textLen = hexdec( substr( $node, 8, 8 ) );

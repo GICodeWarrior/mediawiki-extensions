@@ -278,10 +278,12 @@ static struct node* breakSyntax( struct node* node, char * const nodeString, int
 			}
 			if (readpos >= *nodeStringLen) break; /* It may be the case for eg. {{Foo|Bar */
 			int valueChildren = getNextSibling( nodeString + readpos ); /* <value> */
+			assert( nodeString[readpos] == value_node ); /* <part> node */
+			readpos += NODE_LEN;
 			if ( valueChildren ) {
-				memmove( nodeString + writepos, nodeString + readpos, nameChildren );
-				readpos += nameChildren;
-				writepos += nameChildren;
+				memmove( nodeString + writepos, nodeString + readpos, valueChildren );
+				readpos += valueChildren;
+				writepos += valueChildren;
 			}
 		}
 		*nodeStringLen = writepos;
