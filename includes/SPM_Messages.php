@@ -28,6 +28,7 @@ $messages['qqq'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'spm_wbs_link' => 'Экспарт у фармат XML MS Project',
@@ -35,7 +36,7 @@ $messages['be-tarask'] = array(
 	'spm-name' => 'Кіраваньне сэмантычным праектам',
 	'semanticprojectmanagement-desc' => 'Фарматы кіраваньня праектамі для ўбудаваных запытаў сэмантычнай MediaWiki',
 	'semanticprojectmanagement' => 'Налады кіраваньня сэмантычнымі праектамі',
-	'right-SPMsetup' => 'Рэдагаваць базавыя устаноўкі кіраваньня сэмантычнымі праектамі',
+	'right-SPMsetup' => 'Рэдагаваць базавыя налады кіраваньня сэмантычнымі праектамі',
 );
 
 /** Breton (Brezhoneg)
@@ -46,7 +47,7 @@ $messages['br'] = array(
 	'spm_printername_wbs' => 'Ezporzhiadnen eus MS Project',
 	'spm-name' => 'Mererezh raktresoù ereadurel',
 	'semanticprojectmanagement-desc' => 'Furmadoù merañ raktresoù evit ar rekedoù Semantic MediaWiki',
-	'semanticprojectmanagement' => 'Mererezh raktresoù ereadurel',
+	'semanticprojectmanagement' => 'Arventennoù merañ ar raktres ereadurel',
 	'right-SPMsetup' => 'Kemmañ arventennoù merañ  diazez ar raktres ereadurel',
 );
 
