@@ -14,7 +14,7 @@ http://www.fsf.org/licenses/gpl.html
 
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-24'
 __version__ = '0.1'
 
@@ -25,14 +25,6 @@ def convert_seconds_to_date(secs):
     return datetime.datetime.fromtimestamp(secs)
 
 def convert_dataset_to_lists(ds, caller):
-#        for var in ds.variables:
-#            var = ds.variables[var]
-#            for date in var['obs'].keys():
-#                o = {}
-#                o['date'] = datum
-#                
-#                print date
-
     assert ds.format == 'long' or ds.format == 'wide'
     data, all_keys = [], []
     for var in ds.variables:
