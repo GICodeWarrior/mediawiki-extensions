@@ -34,6 +34,11 @@ from utils import data_converter
 from database import db
 
 class Transform(SONManipulator):
+    '''
+    This encoder transforms a Dataset to a MongoDB bson document. 
+    To use this encoder initalize a mongo database instance and then add:
+    mongo.add_son_manipulator(Transform())    
+    '''
     def transform_incoming(self, son, collection):
         for (key, ds) in son.items():
             son[key] = {}
@@ -67,6 +72,10 @@ class Transform(SONManipulator):
 
 
 class Data:
+    '''
+    Some generic functions that are required by the Observation, Variable, and
+    Dataset classes. 
+    '''
     def __hash__(self, date):
         #return hash(self.convert_date_to_epoch(date))
         return int(self.convert_date_to_epoch(date))
@@ -78,8 +87,6 @@ class Data:
                 d = dict([(str(k), v) for k, v in value.iteritems()])
                 kwargs[key] = d
         return kwargs
-
-
 
     def convert_date_to_epoch(self, date):
         assert self.time_unit == 'year' or self.time_unit == 'month' \
@@ -96,8 +103,13 @@ class Data:
 
 
 class Observation(Data):
+    '''
+    The smallest unit, here the actual data is being stored. 
+    Time_unit should either be 'year', 'month' or 'day'. 
+    '''
     def __init__(self, date, time_unit):
         assert isinstance(date, datetime.datetime)
+        assert time_unit == 'year' or time_unit == 'month' or time_unit == 'day'
         self.time_unit = time_unit
         self.t0 = self.set_start_date(date)
         self.t1 = self.set_end_date(date)
@@ -142,6 +154,11 @@ class Observation(Data):
             return datetime.datetime(date.year, date.month, date.day)
 
     def add(self, value, update):
+        '''
+        If update == True then data[i] will be incremented else data[i] will be
+        created, in that case make sure that i is unique. Update is useful for
+        tallying a variable. 
+        '''
         if hasattr(value, '__iter__') == False:
             d = {}
             d[0] = value
@@ -209,56 +226,10 @@ class Variable(Data):
         key = self.__hash__(date)
         return self.obs.get(key, Observation(date, self.time_unit))
 
-    def min(self):
-        return min([obs for obs in self])
-        #return min([self.obs[date].data[k]  for date in self.obs.keys() for k in self.obs[date].data.keys()])
-
-    def max(self):
-        return max([self.obs[date].data[k] for date in self.obs.keys() for k in self.obs[date].data.keys()])
-
-    def get_standard_deviation(self, number_list):
-        mean = get_mean(number_list)
-        std = 0
-        n = len(number_list)
-        for i in number_list:
-            std = std + (i - mean) ** 2
-        return math.sqrt(std / float(n - 1))
-
-
-    def get_median(self, number_list):
-        #print number_list
-        if number_list == []: return '.'
-        data = sorted(number_list)
-        data = [float(x) for x in data]
-        if len(data) % 2 == 1:
-            return data[(len(data) + 1) / 2 - 1]
-        else:
-            lower = data[len(data) / 2 - 1]
-            upper = data[len(data) / 2]
-            #print upper, lower
-        return (lower + upper) / 2
-
-
-    def get_mean(self, number_list):
-        #print number_list
-        if number_list == []: return '.'
-        float_nums = [float(x) for x in number_list]
-        return sum(float_nums) / len(number_list)
-
-    def summary(self):
-        print 'Variable: %s' % self.name
-        print 'Mean: %s' % self.get_mean(self)
-        print 'Median: %s' % self.get_median(self)
-        print 'Standard Deviation: %s' % self.get_standard_deviation(self)
-        print 'Minimum: %s' % self.min()
-        print 'Maximum: %s' % self.max()
-
-
     def add(self, date, value, update=True):
         data = self.get_observation(date)
         data.add(value, update)
         self.obs[data.hash] = data
-
 
     def encode(self):
         bson = {}
@@ -327,7 +298,6 @@ class Dataset:
         else:
             raise TypeError('You can only instance of Variable to a dataset.')
 
-
     def write(self, format='csv'):
         if format == 'csv':
             self.to_csv()
@@ -357,56 +327,77 @@ class Dataset:
             props[prop] = getattr(self, prop)
         return props
 
+    def min(self):
+        return min([obs for obs in self])
+        #return min([self.obs[date].data[k]  for date in self.obs.keys() for k in self.obs[date].data.keys()])
+
+    def max(self):
+        return max([self.obs[date].data[k] for date in self.obs.keys() for k in self.obs[date].data.keys()])
+
+    def get_standard_deviation(self, number_list):
+        mean = get_mean(number_list)
+        std = 0
+        n = len(number_list)
+        for i in number_list:
+            std = std + (i - mean) ** 2
+        return math.sqrt(std / float(n - 1))
 
 
-#    def transform_to_stacked_bar_json(self):
-#        '''
-#        This function outputs data in a format that is understood by jquery
-#        flot plugin.
-#        '''
-#        options = {}
-#        options['xaxis'] = {}
-#        options['xaxis']['ticks'] = []
-#        data = []
-#        obs, all_keys = ds.convert_dataset_to_lists()
-#
-#        for ob in obs:
-#            d = {}
-#            d['label'] = ob[0].year
-#            d['data'] = []
-#            ob = ob[1:]
-#            for x, o in enumerate(ob):
-#                d['data'].append([x, o])
-#            data.append(d)
-#        for x, date in enumerate(obs[0]):
-#            options['xaxis']['ticks'].append([x, date.year])
-#
-#        return data, options
+    def get_median(self, number_list):
+        #print number_list
+        if number_list == []: return '.'
+        data = sorted(number_list)
+        data = [float(x) for x in data]
+        if len(data) % 2 == 1:
+            return data[(len(data) + 1) / 2 - 1]
+        else:
+            lower = data[len(data) / 2 - 1]
+            upper = data[len(data) / 2]
+            #print upper, lower
+        return (lower + upper) / 2
+
+
+    def get_mean(self, number_list):
+        #print number_list
+        if number_list == []: return '.'
+        float_nums = [float(x) for x in number_list]
+        return sum(float_nums) / len(number_list)
+
+    def summary(self):
+        print 'Variable: %s' % self.name
+        print 'Mean: %s' % self.get_mean(self)
+        print 'Median: %s' % self.get_median(self)
+        print 'Standard Deviation: %s' % self.get_standard_deviation(self)
+        print 'Minimum: %s' % self.min()
+        print 'Maximum: %s' % self.max()
 
 
 def debug():
     mongo = db.init_mongo_db('enwiki')
     rawdata = mongo['enwiki_charts']
     mongo.add_son_manipulator(Transform())
-#    d1 = datetime.datetime.today()
-#    d2 = datetime.datetime(2007, 6, 7)
-#    ds = Dataset('test', 'enwiki', 'editors_dataset', [{'name': 'count', 'time_unit': 'year'},
-#                                                       {'name': 'testest', 'time_unit': 'year'}])
-#    ds.count.add(d1, 5)
-#    ds.count.add(d2, 514)
-#    ds.testest.add(d1, 135)
-#    ds.testest.add(d2, 535)
-#    #ds.summary()
-#    #ds.write_to_csv()
-#    v = Variable('test', 'year')
-#    ds.encode()
-#    mongo.test.insert({'variables': ds})
 
-    #v.add(date , 5)
-    #o = v.get_observation(date)
-    ds = rawdata.find_one({'project': 'wiki', 'language_code': 'en', 'hash': 'cohort_dataset_backward_bar'})
-    transform_to_stacked_bar_json(ds)
-    #v.summary()
+    d1 = datetime.datetime.today()
+    d2 = datetime.datetime(2007, 6, 7)
+    ds = Dataset('test', 'enwiki', 'editors_dataset', [
+                                        {'name': 'count', 'time_unit': 'year'},
+                                        {'name': 'testest', 'time_unit': 'year'}
+                                        ])
+    ds.count.add(d1, 5)
+    ds.count.add(d2, 514)
+    ds.testest.add(d1, 135)
+    ds.testest.add(d2, 535)
+    #ds.summary()
+    ds.write_to_csv()
+    v = Variable('test', 'year')
+    ds.encode()
+    mongo.test.insert({'variables': ds})
+
+    v.add(date , 5)
+    o = v.get_observation(date)
+    ds = rawdata.find_one({'project': 'wiki',
+                           'language_code': 'en',
+                           'hash': 'cohort_dataset_backward_bar'})
     print ds
 
 
