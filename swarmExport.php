@@ -40,7 +40,7 @@ SH;
 }
 $file = $options['outfile'];
 $append = isset( $options['append'] );
-$start = isset( $options['startid'] ) ? $options['startid'] : null;
+$start = isset( $options['startid'] ) ? intval($options['startid']) : null;
 $prefix = isset( $options['pageprefix'] ) ? $options['pageprefix'] : '';
 $namespaces = isset( $options['namespaces'] )
 	? array_map( 'intval', explode( ',', $options['namespaces'] ) )
