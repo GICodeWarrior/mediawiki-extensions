@@ -19,14 +19,16 @@ __version__ = '0.1'
 
 from multiprocessing import Process
 
+import manage as manager
 
 from database import db
 from classes import wikiprojects
-import manage as manager
+from analyses import analyzer
+
 
 def launch_editor_trends_toolkit(task):
     '''
-    This function should only be called as a cronjob.
+    This function should only be called as a cronjob and not directly.
     '''
     parser, settings, wiki = manager.init_args_parser()
     args = parser.parse_args(['django'])
@@ -34,37 +36,77 @@ def launch_editor_trends_toolkit(task):
     args.project = task['project']
     print args
     wiki = wikiprojects.Wiki(settings, args)
-    manager.all_launcher(wiki, settings, None)
-    #wiki.update_language(language)
-    #wiki.update_project(project)
+    res = manager.all_launcher(wiki, settings, None)
+    return res
 
-    #p = Process(target=manager.all_launcher, args=(wiki, settings, None))
-    #p.start()
 
-def launch_chart(project, language):
-    pass
+def launch_chart(task):
+    '''
+    This function should only be called as a cronjob and not directly. 
+    '''
+    res = True
+    try:
+        project = task['project']
+        language_code = task['language_code']
+        func = task['jobtype']
+
+        collection = 'editors_dataset'  #FIXME hardcoded string
+        time_unit = 'month'  #FIXME hardcoded string
+        cutoff = 1  #FIXME hardcoded string
+        cum_cutoff = 50  #FIXME hardcoded string
+
+        analyzer.generate_chart_data(project,
+                                          collection,
+                                          language_code,
+                                          func,
+                                          time_unit=time_unit,
+                                          cutoff=cutoff,
+                                          cum_cutoff=cum_cutoff)
+    except AttributeError, e:
+        res = False
+        print e #need to capture more fine grained errors but not quite what errors are going to happen.
+    except Exception, e:
+        res = False
+        print e #need to capture more fine grained errors but not quite what errors are going to happen.
+
+    return res
 
 
 def launcher():
+    '''
+    This is the main entry point, it creates a queue with jobs and determines
+    the type of job and fires it off 
+    '''
     mongo = db.init_mongo_db('wikilytics')
     coll = mongo['jobs']
     tasks = []
-    #'in_progress': False}
-    jobs = coll.find({'finished': False, 'in_progress': False})
+    jobs = coll.find({'finished': False, 'in_progress': False, 'error': False})
     for job in jobs:
         tasks.append(job)
 
     for task in tasks:
         if task['jobtype'] == 'dataset':
-            launch_editor_trends_toolkit(task)
-        elif task['jobtype'] == 'chart':
-            launch_chart(task)
+            print 'Launching the Editor Trends Analytics Toolkit.'
+            res = launch_editor_trends_toolkit(task)
+            #res = False
+        else:
+            print 'Launching %s.' % task['jobtype']
+            res = launch_chart(task)
+
+        if res:
+            coll.update({'_id': task['_id']}, {'$set': {'finished': True}})
+        else:
+            '''
+            To prevent jobs from recurring non-stop, set error to True. These
+            jobs will be excluded and need to be investigated to see what's
+            happening. 
+            '''
+            coll.update({'_id': task['_id']}, {'$set': {'error': True}})
+
 
 def debug():
-    project = 'wiki'
-    language = 'en'
-    #launch_editor_trends_toolkit(project, language)
     launcher()
+
 
 if __name__ == '__main__':
     debug()
