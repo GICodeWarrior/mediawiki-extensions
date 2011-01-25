@@ -3,6 +3,7 @@
 
 {% block content %}
 	{% if datasets %}
+		<h1> Available Datasets</h1>
 		{% for dataset in datasets %}
 			<h1>Dataset {{ dataset.name }}</h1>
 			<ul>
@@ -25,6 +26,27 @@
 	    	
 	{% else %}
 			<h1>There are no datasets available yet.</h1>
+	{% endif %}
+
+
+	{% if jobs %}
+		<h1>Job Status</h1>
+		{% for job in jobs %}
+		<ul>
+			<li>Project: {{ job.project }}</li>
+			<li>Language: {{ job.language }}</li>
+			<li>Created: {{ job.created }}</li>
+			<li>Finished: {{ job.finished }}</li>
+			<li>In progress: {{ job.in_progress }}</li>
+		</ul>
+			{% for subtasks in job.tasks %}
+			
+			{% endfor %}
+		{% endfor %}
+		<h2>Please return in a couple of hours, the dataset will be finished by then.<h2>
+	
+	{% else %}
+		<h2> There are currently no jobs in the queue.</h2>	
 	{% endif %}
 	
 {% endblock %}
