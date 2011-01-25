@@ -2304,11 +2304,13 @@ $messages['ksh'] = array(
  */
 $messages['ku-latn'] = array(
 	'voctrain_Hello_World' => 'SILAV WIKI!',
+	'voctrain_bye' => 'oxir be',
 	'voctrain_Languages' => 'Zimanan',
 	'voctrain_Questions' => 'Pirsan',
 	'voctrain_Answers' => 'Bersivan',
 	'voctrain_Definition' => 'Wate',
 	'voctrain_Word' => 'Peyv',
+	'voctrain_list_answers' => 'lîsteya bersivan',
 	'voctrain_Question' => 'Pirs',
 	'voctrain_Answer' => 'Bersiv',
 	'voctrain_Answer_s_' => 'Pirs(an)',
@@ -2318,6 +2320,9 @@ $messages['ku-latn'] = array(
 	'voctrain_Language' => 'Ziman',
 	'voctrain_Definitions' => 'Wateyan',
 	'voctrain_Translation' => 'Wergerr',
+	'voctrain_unhide_definition' => 'wateyê nîșan bide',
+	'voctrain_unhide_words' => 'peyvan nîșan bide',
+	'voctrain_hiding' => 'Veșartin',
 	'voctrain_other' => 'yên din',
 );
 
