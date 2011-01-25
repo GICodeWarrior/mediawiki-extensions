@@ -3,7 +3,7 @@ from django import forms
 
 from wikilytics.api.widgets import MonthYearWidget
 from editor_trends.classes import wikiprojects
-
+from editor_trends.analyses.analyzer import available_analyses
 
 wiki = wikiprojects.Wiki('settings')
 
@@ -20,4 +20,7 @@ class SearchForm(forms.Form):
                                widget=forms.Select(choices=wiki.supported_languages(output='django')))
     #print 'Project: %s' % language
     #date = forms.DateField(widget=MonthYearWidget(years=years))
+
+class AnalysisForm(forms.Form):
+    analysis = forms.CharField(widget=forms.Select(choices=available_analyses('django')))
 

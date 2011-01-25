@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     #url(r'^search/(?P<project>[\w]*)/available_dumps/json/$', 'api.views.available_dumps', name='available_dumps'),
     url(r'^(?P<project>[\w]*)/(?P<language>\w{2})/datasets/$', 'api.views.dataset_dispatcher', name='dataset_dispatcher'),
     url(r'^(?P<project>[\w]*)/(?P<language>\w{2})/analyses/$', 'api.views.chart_dispatcher', name='chart_dispatcher'),
-    url(r'^(?P<project>[\w]*)/(?P<language>\w{2})/chart/(?P<chart>[\w]*)/$', 'api.views.chart_generator', name='chart_generator'),
+    url(r'^(?P<project>[\w]*)/(?P<language>\w{2})/analyses/(?P<chart>[\w]*)/$', 'api.views.chart_generator', name='chart_generator'),
     url(r'^static/js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_JS}),
     url(r'^static/css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_CSS}),
 

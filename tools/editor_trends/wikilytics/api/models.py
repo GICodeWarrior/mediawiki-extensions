@@ -63,6 +63,7 @@ class Job(models.Model):
     created = models.DateField(auto_now_add=True)
     finished = models.BooleanField(default=False)
     in_progress = models.BooleanField(default=False)
+    error = models.BooleanField(default=False)
     jobtype = models.CharField(max_length=15, default='dataset')
 
     def __unicode__(self):
@@ -71,13 +72,13 @@ class Job(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        if self.jobtype == 'chart':
-            print reverse('chart_generator', args=[self.project, self.language_code, self.hash])
+        if self.jobtype != 'dataset':
+            print reverse('chart_generator', args=[self.project, self.language_code, self.jobtype])
             return ('chart_generator', (),
                     {'project': self.project,
                      'language': self.language_code,
-                     'chart': self.hash})
-        elif self.jobtype == 'dataset':
+                     'chart': self.jobtype})
+        else:
             return ('dataset_dispatcher', (),
                     {'project': self.project,
                      'language': self.language_code,
