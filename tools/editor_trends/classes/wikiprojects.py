@@ -66,8 +66,9 @@ class Wiki:
         self.short_project = 'wiki'
         self.long_project = 'wikipedia' if self.short_project == 'wiki' else \
             self.projects.get(self.short_project, None)
-        self.language_code = determine_default_language()
-        self.language = self.get_english_language_name()
+
+        self.language = determine_default_language()
+        self.language_code = MAPPING[self.language]
         self.valid_languages = self.project_supports_language()
 
         if args:
@@ -85,7 +86,7 @@ class Wiki:
             self.collection = self.get_value('collection')
             self.ignore = self.get_value('except')
             self.clean = self.get_value('new')
-
+            self.force = self.get_value('force')
             self.project = self.get_projectname()
             self.location = self.get_project_location()
             self.filename = self.generate_wikidump_filename()
@@ -317,7 +318,8 @@ def determine_default_language():
     Wikipedia project is most likely of interest
     '''
     language_code = locale.getdefaultlocale()[0]
-    return language_code.split('_')[0]
+    language_code = language_code.split('_')[0]
+    return get_language(language_code)
 
 
 def get_language(language_code):
