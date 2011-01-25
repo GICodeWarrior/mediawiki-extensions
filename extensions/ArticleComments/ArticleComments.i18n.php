@@ -1205,7 +1205,7 @@ $messages['pms'] = array(
 	'article-comments-invalid-field' => "Ël $1 dàit <nowiki>[$2]</nowiki> a l'é pa bon.",
 	'article-comments-required-field' => "Ël camp $1 a l'é obligatòri.",
 	'article-comments-submission-failed' => "La spedission dël coment a l'é falìa",
-	'article-comments-failure-reasons' => "An dëspias, la spedission ëd sò coment a l'é falìa për {{PLURAL:$1|la rason|le rason}} si-dapress:",
+	'article-comments-failure-reasons' => "An dëspias, la spedission ëd sò coment a l'é falìa për {{PLURAL:$1|la rason|le rason}} sì-dapress:",
 	'article-comments-no-comments' => 'An dëspias, la pàgina «[[$1]]» a aceta pa ëd coment al moment.',
 	'article-comments-talk-page-starter' => '<noinclude>Coment su [[$1]]
 <comments />

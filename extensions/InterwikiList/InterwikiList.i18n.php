@@ -649,6 +649,18 @@ $messages['ru'] = array(
 	'interwikilist-prefix' => 'Префикс интервики:',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'interwikilist' => 'Список інтервікі',
+	'interwikilist-desc' => 'Додасть [[Special:Interwikilist|шпеціалну сторінку]] про перегляд доступных інтервікі-одказів',
+	'interwikilist-linkname' => 'Інтервікі-одказ',
+	'interwikilist-target' => 'Цілёва URL-адреса',
+	'interwikilist-filter' => 'Список філтрів',
+	'interwikilist-prefix' => 'Префікс інтервікі:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

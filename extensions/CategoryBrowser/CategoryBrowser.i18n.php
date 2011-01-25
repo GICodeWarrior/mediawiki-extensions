@@ -1482,6 +1482,7 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'categorybrowser' => 'Перегляд катеґорій',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|підкатеґорія|підкатеґорії|підкатеґорій}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|сторінка|сторінкы|сторінок}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|файл|файлы|файлів}}',

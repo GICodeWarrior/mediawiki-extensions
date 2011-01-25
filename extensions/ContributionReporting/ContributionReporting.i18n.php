@@ -1066,6 +1066,10 @@ $messages['de'] = array(
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Aufgelaufen im Jahr (USD)',
 	'fundraiserstats-instructions' => 'Um Statistiken für jeden Tag anzusehen, fahre mit der Maus über die Säule des betreffenden Tages. Jedes Jahr ist im Diagramm andersfarbig.',
+	'fundraiserstats-customize' => 'Anpassen',
+	'fundraiserstats-show-years' => 'Die folgenden Jahre anzeigen:',
+	'fundraiserstats-time-zone' => 'Zeitzone:',
+	'fundraiserstats-utc' => '(von UTC)',
 );
 
 /** Zazaki (Zazaki)
@@ -1212,6 +1216,10 @@ $messages['dsb'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 	'fundraiserstats-tab-ytd' => 'Doněnta w lěśe (USD)',
 	'fundraiserstats-instructions' => 'Aby se woglědał statistiku za źeń, staj kursor nad grědu za ten źeń. Kužde lěto ma drugu barwu na diagramje.',
+	'fundraiserstats-customize' => 'Pśiměriś',
+	'fundraiserstats-show-years' => 'Slědujuce lěta pokazaś:',
+	'fundraiserstats-time-zone' => 'Casowa cona:',
+	'fundraiserstats-utc' => '(wót UTC)',
 );
 
 /** Greek (Ελληνικά)
@@ -1837,6 +1845,10 @@ $messages['fr'] = array(
 	'fundraiserstats-tab-maximums' => 'Maximums (dollars US)',
 	'fundraiserstats-tab-ytd' => 'Année en cours (dollars US)',
 	'fundraiserstats-instructions' => 'Pour afficher les statistiques d’un jour donné, placer le curseur sur la barre pour ce jour. Chaque année est représentée d’une couleur différente sur le graphique.',
+	'fundraiserstats-customize' => 'Personnaliser',
+	'fundraiserstats-show-years' => 'Afficher les années suivantes :',
+	'fundraiserstats-time-zone' => 'Fuseau horaire :',
+	'fundraiserstats-utc' => '(depuis UTC)',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -2318,6 +2330,10 @@ $messages['hsb'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 	'fundraiserstats-tab-ytd' => 'Dotal w lěće (USD)',
 	'fundraiserstats-instructions' => 'Zo by sej statistiku na dźeń wobhladał, staj kursor nad hrjadu za tón dźeń. Kóžde lěto ma druhu barbu na diagramje.',
+	'fundraiserstats-customize' => 'Přiměrić',
+	'fundraiserstats-show-years' => 'Slědowace lěta pokazać:',
+	'fundraiserstats-time-zone' => 'Časowe pasmo:',
+	'fundraiserstats-utc' => '(wot UTC)',
 );
 
 /** Hungarian (Magyar)
@@ -2467,6 +2483,10 @@ $messages['ia'] = array(
 	'fundraiserstats-tab-maximums' => 'Maximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Anno in curso (USD)',
 	'fundraiserstats-instructions' => 'Pro vider le statisticas de un die, positiona le cursor super le barra correspondente a ille die. Cata anno ha un altere color in le diagramma.',
+	'fundraiserstats-customize' => 'Personalisar',
+	'fundraiserstats-show-years' => 'Monstrar le sequente annos:',
+	'fundraiserstats-time-zone' => 'Fuso horari:',
+	'fundraiserstats-utc' => '(ab UTC)',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2648,6 +2668,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Ohgi
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -2718,6 +2739,10 @@ $messages['ja'] = array(
 	'fundraiserstats-tab-maximums' => '最大 (米ドル)',
 	'fundraiserstats-tab-ytd' => '年度累計 (米ドル)',
 	'fundraiserstats-instructions' => '特定の日の統計を表示するには、その日のバーにカーソルを合わせてください。毎年のグラフはグラフ上で別の色で表示されています。',
+	'fundraiserstats-customize' => 'カスタマイズ',
+	'fundraiserstats-show-years' => '表示する年:',
+	'fundraiserstats-time-zone' => 'タイムゾーン:',
+	'fundraiserstats-utc' => '（UTCから）',
 );
 
 /** Javanese (Basa Jawa)
@@ -3020,7 +3045,8 @@ $messages['ksh'] = array(
 	'fundraiserstats-tab-contributions' => 'Aanzahl Beidrääsch',
 	'fundraiserstats-tab-averages' => 'De Schnette (en Dollar us de USA)',
 	'fundraiserstats-tab-maximums' => 'de Deckste Spende (en Dollar us de USA)',
-	'fundraiserstats-tab-ytd' => 'En diesem Johr ald ? US$',
+	'fundraiserstats-tab-ytd' => 'En dissem Johr ald (en Dollar us de USA)',
+	'fundraiserstats-instructions' => 'Öm de Statistike för ene Daach aanzeloore, donn dä Köser övver dä Balke för dä Daach. Jeede Daach es met en ander Färv enjzeichent.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3314,6 +3340,10 @@ $messages['mk'] = array(
 	'fundraiserstats-tab-maximums' => 'Највисоки (USD)',
 	'fundraiserstats-tab-ytd' => 'Догодина на овој ден (USD)',
 	'fundraiserstats-instructions' => 'За да ги прегледате статитстиките за извесен ден, одете со слушецот врз столбот за тој ден. Секоја година е претставена со своја боја.',
+	'fundraiserstats-customize' => 'Прилагоди',
+	'fundraiserstats-show-years' => 'Прикажи ги следниве години:',
+	'fundraiserstats-time-zone' => 'Часовна зона:',
+	'fundraiserstats-utc' => '(од UTC)',
 );
 
 /** Malayalam (മലയാളം)
@@ -3387,6 +3417,10 @@ $messages['ml'] = array(
 	'fundraiserstats-tab-maximums' => 'പരമാവധികൾ (USD)',
 	'fundraiserstats-tab-ytd' => 'ഈ ദിവസം വരെയുള്ള വർഷം (USD)',
 	'fundraiserstats-instructions' => 'ഒരു പ്രത്യേക ദിവസത്തെ സ്ഥിതിവിവരക്കണക്ക് അറിയാൻ, കഴ്സർ ആ ദിവസത്തെ കുറിക്കുന്ന പട്ടയുടെ മുകളിലേയ്ക്ക് നീക്കുക. ചാർട്ടിൽ ഓരോ വർഷവും ഓരോരോ വർണ്ണത്തിലാണ് നൽകിയിരിക്കുന്നത്.',
+	'fundraiserstats-customize' => 'ഇച്ഛാനുസരണമാക്കുക',
+	'fundraiserstats-show-years' => 'താഴെക്കൊടുത്തിരിക്കുന്ന വർഷങ്ങൾ പ്രദർശിപ്പിക്കുക',
+	'fundraiserstats-time-zone' => 'സമയ മേഖല:',
+	'fundraiserstats-utc' => '(യൂ.റ്റി.സി.യിൽ നിന്ന്)',
 );
 
 /** Hill Mari (Кырык мары)
@@ -3593,6 +3627,10 @@ $messages['nl'] = array(
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar tot op heden (USD)',
 	'fundraiserstats-instructions' => 'Om de statistieken voor een dag te bekijken, kunt u met de muisaanwijzer over de balk voor die dag bewegen. Ieder jaar heeft een andere kleur in de grafiek.',
+	'fundraiserstats-customize' => 'Aanpassen',
+	'fundraiserstats-show-years' => 'De volgende jaren weergeven:',
+	'fundraiserstats-time-zone' => 'Tijdzone:',
+	'fundraiserstats-utc' => '(vanaf UTC)',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -3902,6 +3940,10 @@ $messages['pl'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksima (USD)',
 	'fundraiserstats-tab-ytd' => 'Rok do danej chwili (USD)',
 	'fundraiserstats-instructions' => 'Statystyki dla dnia zostaną wyświetlone jeśli umieścisz kursor nad paskiem tego dnia. Każdy rok oznaczono innym kolorem.',
+	'fundraiserstats-customize' => 'Dostosuj',
+	'fundraiserstats-show-years' => 'Pokaż następujące lata:',
+	'fundraiserstats-time-zone' => 'Strefa czasowa',
+	'fundraiserstats-utc' => '(względem UTC)',
 );
 
 /** Piedmontese (Piemontèis)
@@ -4078,6 +4120,10 @@ $messages['pt'] = array(
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Desde o início do ano (USD)',
 	'fundraiserstats-instructions' => 'Para ver as estatísticas de qualquer dia, passe o cursor sobre a barra desse dia. Cada ano tem uma cor diferente no gráfico.',
+	'fundraiserstats-customize' => 'Personalizar',
+	'fundraiserstats-show-years' => 'Mostrar os seguintes anos:',
+	'fundraiserstats-time-zone' => 'Fuso horário:',
+	'fundraiserstats-utc' => '(do UTC)',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -4360,6 +4406,10 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-maximums' => 'Максимумы (USD)',
 	'fundraiserstats-tab-ytd' => 'На данный год (USD)',
 	'fundraiserstats-instructions' => 'Для просмотра статистики за конкретный день, наведите курсор на столбец этого дня. Данные за разные годы представлены разными цветами.',
+	'fundraiserstats-customize' => 'Настроить',
+	'fundraiserstats-show-years' => 'Показать следующие годы:',
+	'fundraiserstats-time-zone' => 'Часовой пояс:',
+	'fundraiserstats-utc' => '(от UTC)',
 );
 
 /** Rusyn (Русиньскый)
@@ -4650,6 +4700,10 @@ $messages['sl'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimumi (USD)',
 	'fundraiserstats-tab-ytd' => 'Preteklo obdobje leta (USD)',
 	'fundraiserstats-instructions' => 'Če si želite ogledati statistiko nekega dne, premaknite miškin kazalec na vrstico tega dneva. Vsako leto je na grafikonu drugače obarvano.',
+	'fundraiserstats-customize' => 'Prilagodi',
+	'fundraiserstats-show-years' => 'Pokaži naslednja leta:',
+	'fundraiserstats-time-zone' => 'Časovni pas:',
+	'fundraiserstats-utc' => '(od UTC)',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
@@ -5524,6 +5578,10 @@ $messages['vi'] = array(
 	'fundraiserstats-tab-maximums' => 'Tối đa (USD)',
 	'fundraiserstats-tab-ytd' => 'Năm đến nay (USD)',
 	'fundraiserstats-instructions' => 'Để xem thống kê về bất cứ ngày nào, hãy giữ con trỏ trên thanh cho ngày đó. Các năm được tô đậm màu khác nhau trên biểu đồ.',
+	'fundraiserstats-customize' => 'Tùy chỉnh',
+	'fundraiserstats-show-years' => 'Hiện các năm sau:',
+	'fundraiserstats-time-zone' => 'Múi giờ:',
+	'fundraiserstats-utc' => '(đối với UTC)',
 );
 
 /** Volapük (Volapük)
@@ -5637,6 +5695,10 @@ $messages['zh-hans'] = array(
 	'fundraiserstats-tab-maximums' => '最大（美元）',
 	'fundraiserstats-tab-ytd' => '年直到日期 (美元)',
 	'fundraiserstats-instructions' => '要查看统计信息的任何一天，将光标悬停在栏，那一天。每年是以不同的颜色，在图表上。',
+	'fundraiserstats-customize' => '自定义',
+	'fundraiserstats-show-years' => '显示以下年：',
+	'fundraiserstats-time-zone' => '时区：',
+	'fundraiserstats-utc' => '（从 UTC）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -842,6 +842,7 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'abc-desc' => 'Додає значку <code>&lt;abc&gt;</code> про форматованя музикы ABC',
 	'abcdownload' => 'Скачати:',
 );
 

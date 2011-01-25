@@ -876,6 +876,15 @@ $messages['ru'] = array(
 	'languageselector-setlang' => 'установить',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'languageselector' => 'Язык',
+	'languageselector-desc' => 'Выбер языка на каждій сторінцї і тыж про навщівників',
+	'languageselector-setlang' => 'становити',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

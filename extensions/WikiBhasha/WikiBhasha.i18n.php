@@ -216,10 +216,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'wikibhasha-desc' => 'Aplicassion për creé contnù multilenga an fasend leva an sël contnù dla Wikipedia anglèisa',
+	'wikibhasha-desc' => 'Aplicassion për creé dël contnù multilenga an pogiand-se an sël contnù dla Wikipedia anglèisa',
 );
 
 /** Portuguese (Português)

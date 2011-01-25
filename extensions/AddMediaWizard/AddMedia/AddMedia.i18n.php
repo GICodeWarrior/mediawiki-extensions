@@ -5735,6 +5735,15 @@ $messages['ksh'] = array(
 	'mwe-review-upload' => 'Donn de huhjelaade {{PLURAL:$1|Dattei|Datteije|nix}} nohloore',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'fogg-title-title' => 'Sernav',
+	'fogg-title-help' => 'Sernavekî ji bo klîba te',
+	'mwe-results_from' => 'Encamên ji  $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

@@ -127,3 +127,10 @@ $messages['ru'] = array(
 	'researchtools-page-prefs' => 'Статистика настроек',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'researchtools' => 'పరిశోధన పనిముట్లు',
+);
+

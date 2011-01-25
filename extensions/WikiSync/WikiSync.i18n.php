@@ -172,6 +172,7 @@ $messages['be-tarask'] = array(
 	'wikisync_js_synchronization_success' => 'Сынхранізацыя пасьпяхова скончаная',
 	'wikisync_js_already_synchronized' => 'Крынічная і мэтавая вікі выглядаюць ужо сынхранізаванымі',
 	'wikisync_js_sync_to_itself' => 'Немагчыма сынхранізаваць вікі з самой сябе',
+	'wikisync_js_diff_search' => 'Пошук адрозьненьняў у мэтавых вэрсіях',
 );
 
 /** Breton (Brezhoneg)

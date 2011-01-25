@@ -2168,6 +2168,7 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -2191,7 +2192,7 @@ $messages['vi'] = array(
 	'patrol-stopped' => 'Bạn đã chọn không tuần tra sửa đổi khác. $1',
 	'patrol-resume' => 'Nhấn vào đây để tiếp tục.',
 	'group-patroller' => 'Tuần tra viên',
-	'group-patroller-member' => 'Tuần tra viên',
+	'group-patroller-member' => 'tuần tra viên',
 	'grouppage-patroller' => '{{ns:project}}:Tuần tra viên',
 	'right-patroller' => 'Tuần tra trang',
 );
