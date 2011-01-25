@@ -191,12 +191,12 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		}
 		
 		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configtoggle' ) ) );
-		$wgOut->addHTML( '<a id="customize-chart">Customize</a>' );
+		$wgOut->addHTML( '<a id="customize-chart">'.wfMsg( 'fundraiserstats-customize' ).'</a>' );
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );
 		
 		$wgOut->addHTML( Xml::openElement( 'form', array( 'method' => 'post', 'id' => 'configform' ) ) );
 		
-		$years = 'Show the following years:<br/>';
+		$years = wfMsg( 'fundraiserstats-show-years' ).'<br/>';
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 			$years .= Xml::check( 'toogle'.$fundraiser['id'], $showYear[$fundraiser['id']], array( 'id' => 'bar-'.$fundraiser['id'], 'class' => 'yeartoggle' ) );
 			$years .= Xml::label( $fundraiser['id'], 'toogle'.$fundraiser['id'] );
@@ -204,8 +204,8 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		}
 		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configholder' ) ) );
 		$wgOut->addHTML( $years );
-		$wgOut->addHTML( 'Time Zone:<br/>' );
-		$wgOut->addHTML( '&nbsp;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' (from UTC)' );
+		$wgOut->addHTML( wfMsg( 'fundraiserstats-time-zone' ).'<br/>' );
+		$wgOut->addHTML( '&nbsp;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' '.wfMsg( 'fundraiserstats-utc' ) );
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );
 		
 		$wgOut->addHTML( Xml::closeElement( 'form' ) );
