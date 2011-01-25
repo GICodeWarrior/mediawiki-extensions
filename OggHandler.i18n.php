@@ -2018,6 +2018,8 @@ udder sök Der en annder Affspellprojramm uß.',
 	'ogg-dismiss' => 'Zohmaache',
 	'ogg-download' => 'Datei erunger lade',
 	'ogg-desc-link' => 'Övver di Datei',
+	'ogg-oggThumb-version' => 'Dä <code lang="en">OggHandler</code> bruch <code lang="en">oggThumb</code> in dä Version $1 udder hüüter.',
+	'ogg-oggThumb-failed' => '<code lang="en">oggThumb</code> kunnt kei MiniBelldsche maache.',
 );
 
 /** Latin (Latina)
