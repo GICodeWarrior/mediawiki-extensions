@@ -28,10 +28,10 @@ $messages['en'] = array(
 	'articlefeedback-survey-thanks' => 'Thanks for filling out the survey.',
 	/* Beta Messages */
 	'articlefeedback-form-switch-label' => 'Rate this page',
-	'articlefeedback-form-panel-title' => 'Rate this Page',
+	'articlefeedback-form-panel-title' => 'Rate this page',
 	'articlefeedback-form-panel-instructions' => 'Please take a moment to rate this page.',
 	'articlefeedback-form-panel-submit' => 'Submit feedback',
-	'articlefeedback-report-switch-label' => 'View Page Ratings',
+	'articlefeedback-report-switch-label' => 'View page ratings',
 	'articlefeedback-report-panel-title' => 'Page ratings',
 	'articlefeedback-report-panel-description' => 'Current average ratings.',
 	'articlefeedback-report-empty' => 'No ratings',
