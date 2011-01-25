@@ -69,33 +69,38 @@ class RecordAdmin {
 					$offset = $brace['OFFSET'];
 					$length = $brace['LENGTH'];
 					$records[$name] = substr( $content, $offset, $length );
-					$content = substr_replace( $content, str_repeat( "\x07", $length ), $offset, $length );
+					$content = substr_replace( $content, "\x07$name" . str_repeat( "\x07", $length - strlen( $name ) - 1 ), $offset, $length );
 				}
 			}
 		}
 		$count = count( $records );
 
-		# If any were found, remove them from the textbox and render their forms instead
+		# If any were found, replace them with a simple {{type}} placeholder in the textarea
 		if( $count > 0 ) {
 
-			# Add the prefs JS for the tabset
-			#$wgOut->addScript( "<script src=\"$wgStylePath/common/prefs.js\"></script>" );
+			# Strip noincludes if any, they will be put back later
+			$content = preg_replace( "|<noinclude>\s*\x07|", "\x07", $content );
+			$content = preg_replace( "|(\x07+)\s*</noinclude>|", "$1", $content );
 
-			$editPage->textbox1 = preg_replace( "|(<noinclude>)?\s*\x07+\s*(</noinclude>)?|", "", $content );
+			# Replace the template calls with the simple {{type}} placeholder
+			$editPage->textbox1 = preg_replace( "|\x07([^\x07]+)\x07+|", '{{$1}}', $content );
 
+			# Add a tab for each type with a form filled in with the parameters from its template call
 			$jsFormsList = array();
 			$tabset = "<div class=\"tabset\">";
 			$tabset .= "<fieldset><legend>" . wfMsg( 'recordadmin-properties' ) . "</legend>";
-			$tabset .= wfMsg( 'recordadmin-edit-info' ) . "</fieldset>";
+			$tabset .= wfMsg( 'recordadmin-edit-info', $wgRequest->appendQuery( 'nora=1' ) ) . "</fieldset>";
 			foreach( $records as $type => $record ) {
 				$jsFormsList[] = "'$type'";
 				$this->preProcessForm( $type );
 				$this->examineForm();
-				$this->populateForm( $this->valuesFromText( $record ) );
+				$values = $this->valuesFromText( $record );
+				$this->populateForm( $values );
 				$tabset .= "<fieldset><legend>$type " . strtolower( wfMsg( 'recordadmin-properties' ) ) . "</legend>\n";
 				$tabset .= "<form id=\"$type-form\" class=\"$type-record recordadmin\">$this->form</form>\n";
 				$tabset .= "</fieldset>";
 			}
+
 			$tabset .= "</div>";
 			$jsFormsList = join( ', ', $jsFormsList );
 
@@ -155,17 +160,20 @@ class RecordAdmin {
 		# Bail if no record data was posted
 		if( count( $data ) == 0 ) return true;
 
-		# Build the template syntax for the posted record data
-		$templates = '';
+		# Build the template syntax for each record and replace the current template or prepend if none
 		foreach( $data as $type => $values ) {
 			$this->preProcessForm( $type );
 			$this->examineForm();
-			$templates .= $this->valuesToText( $type, $values ) . "\n";
+			$template = "<noinclude>" . $this->valuesToText( $type, $values ) . "</noinclude>";
+
+			# Replace any instance of the template in the text with the new parameters
+			$text = preg_replace( "|\{\{$type\}\}|", $template, $text, -1, $count );
+
+			# If there were no matches, prepend it (either its newly added, or is a prepended one)
+			if( $count == 0) $text = "$template\n$text";
+
 		}
 
-		# Prepend the template syntax to the posted wikitext (which had them removed by onEditPage)
-		# - wrap them in noincludes as these should never show in enbeded articles
-		$text = "<noinclude>$templates</noinclude>$text";
 		return true;
 	}
 
@@ -595,7 +603,7 @@ class RecordAdmin {
 		# Parse any brace structures
 		global $wgTitle, $wgUser, $wgParser;
 		$options = ParserOptions::newFromUser( $wgUser );
-		$max = 25;
+		$max = 10;
 		do {
 			$braces = false;
 			foreach( self::examineBraces( $this->form ) as $brace ) {
