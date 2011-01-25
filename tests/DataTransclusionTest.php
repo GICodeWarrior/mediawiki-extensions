@@ -46,12 +46,16 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			return Parser::statelessFetchTemplate( $title, $parser );
 		}
 	}
+	
+	static function setUpBeforeClass() {
+		global $wgTitle, $wgParser;
+		$wgTitle = Title::newFromText( "Test" );
+	}
 
 	function setUp() {
 		global $wgTitle, $wgParser;
 
-		$wgTitle = Title::newFromText( "Test" );
-		
+		$wgParser = new Parser();
 		$wgParser->Options( new ParserOptions() );
 		$wgParser->clearState();
 		$wgParser->setTitle( $wgTitle );
@@ -493,6 +497,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 if ( !defined('MW_PHPUNIT_TEST') ) {
 	$wgShowExceptionDetails = true;
 	
+	DataTransclusionTest::setUpBeforeClass();
 	$t = new DataTransclusionTest();
 	$t->setUp();
 	
