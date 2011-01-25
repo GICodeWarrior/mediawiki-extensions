@@ -24,7 +24,7 @@ import os
 import configuration
 settings = configuration.Settings()
 from classes import exceptions
-from utils import utils
+from utils import file_utils
 
 
 def start_mongodb_server(x, path):

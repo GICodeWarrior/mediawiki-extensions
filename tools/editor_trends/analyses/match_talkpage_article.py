@@ -25,7 +25,7 @@ import configuration
 settings = configuration.Settings()
 
 from etl import extracter
-from utils import utils
+from utils import file_utils
 import wikitree
 
 try:

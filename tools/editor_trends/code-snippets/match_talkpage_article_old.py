@@ -32,7 +32,7 @@ settings = configuration.Settings()
 
 from utils import models
 from utils import messages
-from utils import utils
+from utils import file_utils
 from etl import extract
 from etl import chunker
 from wikitree import parser

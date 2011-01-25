@@ -24,7 +24,7 @@ import os
 import xml.etree.cElementTree as cElementTree
 
 import configuration
-from utils import utils
+from utils import file_utils
 settings = configuration.Settings()
 
 

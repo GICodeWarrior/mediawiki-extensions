@@ -29,7 +29,7 @@ from Queue import Empty
 sys.path.append('..')
 import configuration
 settings = configuration.Settings()
-from utils import utils
+from utils import file_utils
 from utils import messages
 from database import db
 from etl import shaper

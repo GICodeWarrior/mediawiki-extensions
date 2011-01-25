@@ -23,7 +23,7 @@ sys.path.append('..')
 
 import configuration
 settings = configuration.Settings()
-from utils import utils
+from utils import file_utils
 
 def prepare_cohort_dataset(dbname, filename):
     dataset = file_utils.load_object(settings.binary_location, '%s_%s' % (dbname, filename))

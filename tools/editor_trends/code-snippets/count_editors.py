@@ -10,7 +10,7 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 
-from utils import utils
+from utils import file_utils
 
 def main():
     input = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')

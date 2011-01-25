@@ -27,7 +27,7 @@ import configuration
 settings = configuration.Settings()
 
 import db
-from utils import utils
+from utils import file_utils
 from etl import shaper
 
 class EditorCache(object):
