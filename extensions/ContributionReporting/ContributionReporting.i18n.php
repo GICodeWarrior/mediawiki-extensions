@@ -95,7 +95,7 @@ $messages['en'] = array(
 	'fundraiserstats-instructions' => 'To view statistics for any day, hover the cursor over the bar for that day. Each year is a different color on the chart.',
 	'fundraiserstats-customize' => 'Customize',
 	'fundraiserstats-show-years' => 'Show the following years:',
-	'fundraiserstats-time-zone' => 'Time Zone:',
+	'fundraiserstats-time-zone' => 'Time zone:',
 	'fundraiserstats-utc' => '(from UTC)',
 );
 
