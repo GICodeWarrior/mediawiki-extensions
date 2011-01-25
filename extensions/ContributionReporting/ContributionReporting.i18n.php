@@ -93,6 +93,10 @@ $messages['en'] = array(
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
 	'fundraiserstats-tab-ytd' => 'Year-to-date (USD)',
 	'fundraiserstats-instructions' => 'To view statistics for any day, hover the cursor over the bar for that day. Each year is a different color on the chart.',
+	'fundraiserstats-customize' => 'Customize',
+	'fundraiserstats-show-years' => 'Show the following years:',
+	'fundraiserstats-time-zone' => 'Time Zone:',
+	'fundraiserstats-utc' => '(from UTC)',
 );
 
 /** Message documentation (Message documentation)
@@ -125,6 +129,7 @@ $messages['qqq'] = array(
 	'fundraiserstats-date' => '{{Identical|Date}}',
 	'fundraiserstats-day' => '* $1 is the nth day of an annual fundraiser
 * $2 is the year/name of a fundraiser',
+	'fundraiserstats-utc' => "Note appearing after time zone select list. UTC stands for Coordinated Universal Time and usually doesn't require translation",
 );
 
 /** Afrikaans (Afrikaans)
