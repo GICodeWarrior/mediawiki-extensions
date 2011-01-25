@@ -54,7 +54,7 @@ $messages['en'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'No "$1"',
-	'recordadmin-edit-info' => 'This page contains templates which have their own forms that you can fill in from this tab-set.<br />Click <a href="$1">here</a> to use the normal MediaWiki edit functionality without template forms.',
+	'recordadmin-edit-info' => 'This page contains templates which have their own forms that you can fill in from this tab-set.<br />Alternatively <a href="$1">use the normal MediaWiki edit functionality without template forms</a>.',
 	'recordadmin-properties' => 'Properties',
 );
 
