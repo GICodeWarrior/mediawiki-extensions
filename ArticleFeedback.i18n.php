@@ -27,12 +27,12 @@ $messages['en'] = array(
 	'articlefeedback-survey-title' => 'Please answer a few questions',
 	'articlefeedback-survey-thanks' => 'Thanks for filling out the survey.',
 	/* Beta Messages */
-	'articlefeedback-form-switch-label' => 'Provide feedback',
-	'articlefeedback-form-panel-title' => 'Your feedback',
+	'articlefeedback-form-switch-label' => 'Rate this page',
+	'articlefeedback-form-panel-title' => 'Rate this Page',
 	'articlefeedback-form-panel-instructions' => 'Please take a moment to rate this page.',
 	'articlefeedback-form-panel-submit' => 'Submit feedback',
-	'articlefeedback-report-switch-label' => 'Show results',
-	'articlefeedback-report-panel-title' => 'Feedback results',
+	'articlefeedback-report-switch-label' => 'View Page Ratings',
+	'articlefeedback-report-panel-title' => 'Page ratings',
 	'articlefeedback-report-panel-description' => 'Current average ratings.',
 	'articlefeedback-report-empty' => 'No ratings',
 	'articlefeedback-report-ratings' => '$1 ratings',
@@ -54,6 +54,11 @@ $messages['en'] = array(
 	'articlefeedback-pitch-makefirstedit-title' => 'Would you like to edit this page?',
 	'articlefeedback-pitch-makefirstedit-message' => '-- message --',
 	'articlefeedback-pitch-makefirstedit-accept' => 'Start editing',
+    'articlefeedback-expert-assessment-question' => 'Do you have knowledge in this topic?',
+    'articlefeedback-expert-assessment-level-1-label' => 'Marginal',
+    'articlefeedback-expert-assessment-level-2-label' => 'Competent',
+    'articlefeedback-expert-assessment-level-3-label' => 'Expert',
+
 );
 
 /** Message documentation (Message documentation)
@@ -84,6 +89,12 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|Submit}}',
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
+
+    'articlefeedback-expert-assessment-question' => 'This question asks the user to self-identify as a subject matter expert',
+    'articlefeedback-expert-assessment-level-1-label' => 'This is a term that indicates some degree of knowledge in the subject',
+    'articlefeedback-expert-assessment-level-2-label' => 'This is a term that indicates an average level of knowledge in the subject',
+    'articlefeedback-expert-assessment-level-3-label' => 'This is a term that indicates an above-average, expert level of knowledge in the subject',
+
 );
 
 /** Afrikaans (Afrikaans)
