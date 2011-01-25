@@ -1,3 +1,33 @@
+div#configholder {
+	position: absolute;
+	top: 22px;
+	right: 0;
+	z-index: 200;
+	width: 180px;
+	border: 1px solid silver;
+	background-color: white;
+	padding: 2px 5px 5px 5px;
+	display: none;
+}
+div#configtoggle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 199;
+	height: 17px;
+	border: 1px solid silver;
+	background-color: white;
+	padding: 2px 5px 2px 0px;
+	cursor: pointer;
+}
+div#configtoggle a, div#configtoggle a:visited {
+    background-image: url("arrow.png");
+    background-position: 0px -3px;
+    background-repeat: no-repeat;
+    padding-left: 16px;
+    outline: 0;
+}
+
 .fundraiserstats-view-box {
 	border: solid 1px silver;
 }
@@ -13,29 +43,27 @@
 	margin-top: 3px;
 	margin-left: -1px;
 }
+.fundraiserstats-bar {
+	width: 2px;
+}
 .fundraiserstats-bar-2007 {
 	background-color: #AAAAFF;
 	border: outset 1px #AAAAFF;
-	width: 2px;
-	margin-left: 3px;
 }
 .fundraiserstats-bar-2008 {
 	background-color: #AAFFAA;
 	border: outset 1px #AAFFAA;
-	width: 2px;
 }
 .fundraiserstats-bar-2009 {
 	background-color: #FFAAAA;
 	border: outset 1px #FFAAAA;
-	width: 2px;
 }
 .fundraiserstats-bar-2010 {
 	background-color: #FF0000;
 	border: outset 1px #FF0000;
-	width: 2px;
 }
 .fundraiserstats-bar-space {
-	width: 2px;
+	width: 3px;
 }
 .fundraiserstats-chart {
 	padding: 10px;

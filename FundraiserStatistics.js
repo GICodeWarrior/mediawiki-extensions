@@ -33,4 +33,19 @@ $j( document ).ready( function() {
 	$j( '.fundraiserstats-current' ).each( function() {
 		replaceView( $j(this).attr( 'rel' ) )
 	} );
+	$j( '#configholder .yeartoggle' ).click( function() {
+		$j('.fundraiserstats-'+$j(this).attr( 'id' )).toggle();
+	} );
+	$j( '#configtoggle' ).click( function() {
+		$j('#configholder').toggle();
+		if ($j( '#configtoggle a' ).css( 'background-position' ) == '0px -18px') {
+			$j( '#configtoggle a' ).css( 'background-position', '0px -3px' );
+		} else {
+			$j( '#configtoggle a' ).css( 'background-position','0px -18px' );
+		}
+	} );
+	$j( '#timezone' ).change( function() {
+		$j('#configform').submit();
+	} );
+	
 } );
