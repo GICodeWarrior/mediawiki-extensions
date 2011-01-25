@@ -3885,6 +3885,10 @@ En neuer Version ($2) steiht ald parat op http://pecl.php.net/package/APC/$2',
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'viewapc-display-info' => 'Nav',
+	'viewapc-display-type' => 'Cure',
+	'viewapc-ls-submit' => 'Biçe!',
+	'viewapc-ls-header-name' => 'Nav',
 	'viewapc-ls-limit-none' => 'Hemû',
 );
 
