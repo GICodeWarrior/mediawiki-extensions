@@ -37,6 +37,7 @@
 - (NSString *)getUploadText;
 - (NSString *)getUploadDescription;
 
-- (void) uploadImage;
+- (void)uploadImage;
+- (BOOL)verifyTitle:(NSString *)possibleTitle;
 
 @end

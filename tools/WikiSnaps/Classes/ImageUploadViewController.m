@@ -82,6 +82,7 @@
 }
 
 - (IBAction)onCancelUploadClicked: (id)sender {
+    /* FIXME cancel all api events on upload */
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -95,7 +96,6 @@
                                      otherButtonTitles: nil];
     [alert show];
     [alert release];
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)uploadFailed:(NSString *)error {

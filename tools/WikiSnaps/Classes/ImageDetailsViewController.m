@@ -32,10 +32,11 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString( @"Upload", @"Title for upload buton on image details view" )
-                        style: UIBarButtonItemStyleDone
-                        target: self
-                        action: @selector( doUpload: ) ];
+    self.title = NSLocalizedString( @"Image details", "Title of the Image Details view" );
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString( @"Upload", @"Title for upload buton on image details view" )
+                    style: UIBarButtonItemStyleDone
+                    target: self
+                    action: @selector( doUpload: ) ];
 }
 
 
@@ -69,9 +70,19 @@
 }
 
 -(IBAction)textFieldDidEnd:(id)sender {
+    [self textFieldDidEndEditing:sender];
+}
+
+-(void)textFieldDidEndEditing:(id)sender {
     if(sender == titleField ) {
+        /* Verify name */
+        if( ![upload verifyTitle: titleField.text] ) {
+            titleField.textColor = [UIColor redColor];
+        } else {
+            titleField.textColor = [UIColor blackColor];
             [descriptionText becomeFirstResponder];
-            return;
+        }
+        return;
     }
     [sender resignFirstResponder];
 }
