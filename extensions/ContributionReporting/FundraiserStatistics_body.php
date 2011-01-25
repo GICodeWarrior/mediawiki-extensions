@@ -17,6 +17,17 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	public function execute( $sub ) {
 		global $wgRequest, $wgOut, $wgUser, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
 		
+		$showYear = array();
+		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
+			if ( $wgRequest->wasPosted() ) {
+				$showYear[$fundraiser['id']] = $wgRequest->getCheck( 'toogle'.$fundraiser['id'] );
+			} else {
+				$showYear[$fundraiser['id']] = true;
+			}
+		}
+		
+		$this->timezone = $wgRequest->getText( 'timezone', '+0:00' );
+		
 		/* Configuration (this isn't totally static data, some of it gets built on the fly) */
 		
 		$charts = array(
@@ -101,9 +112,25 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					if ( !isset( $charts[$name]['data'][$column] ) ) {
 						$charts[$name]['data'][$column] = '';
 					}
+					
+					// Add spacer between days
+					if ( $fundraiserIndex == 0 ) {
+						$attributes = array(
+							'style' => 'height:1px',
+							'class' => 'fundraiserstats-bar-space'
+						);
+						$charts[$name]['data'][$column] .= Xml::tags(
+							'td', array( 'valign' => 'bottom' ), Xml::element( 'div', $attributes, '', false )
+						);
+					}
+					
 					$height = $chart['factor'] * $day[$chart['index']];
+					$style = "height:{$height}px;";
+					if ( $showYear[$fundraiser['id']] !== true ) {
+						$style .= "display:none;";
+					}
 					$attributes = array(
-						'style' => "height:{$height}px",
+						'style' => $style,
 						'class' => "fundraiserstats-bar fundraiserstats-bar-{$fundraiser['id']}",
 						'rel' => "fundraiserstats-view-box-{$view}",
 					);
@@ -162,6 +189,27 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				}
 			}
 		}
+		
+		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configtoggle' ) ) );
+		$wgOut->addHTML( '<a id="customize-chart">Customize</a>' );
+		$wgOut->addHTML( Xml::closeElement( 'div' ) );
+		
+		$wgOut->addHTML( Xml::openElement( 'form', array( 'method' => 'post', 'id' => 'configform' ) ) );
+		
+		$years = 'Show the following years:<br/>';
+		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
+			$years .= Xml::check( 'toogle'.$fundraiser['id'], $showYear[$fundraiser['id']], array( 'id' => 'bar-'.$fundraiser['id'], 'class' => 'yeartoggle' ) );
+			$years .= Xml::label( $fundraiser['id'], 'toogle'.$fundraiser['id'] );
+			$years .= "<br/>";
+		}
+		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configholder' ) ) );
+		$wgOut->addHTML( $years );
+		$wgOut->addHTML( 'Time Zone:<br/>' );
+		$wgOut->addHTML( '&nbsp;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' (from UTC)' );
+		$wgOut->addHTML( Xml::closeElement( 'div' ) );
+		
+		$wgOut->addHTML( Xml::closeElement( 'form' ) );
+		
 		// Instructions
 		$wgOut->addWikiMsg( 'fundraiserstats-instructions' );
 
@@ -236,7 +284,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			case 'dailyTotals':
 				$select = $dbr->select( 'public_reporting',
 					array(
-						"FROM_UNIXTIME(received, '%Y-%m-%d')",
+						"DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')",
 						'sum(converted_amount)',
 						'count(*)',
 						'avg(converted_amount)',
@@ -246,7 +294,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__,
 					array(
 						'ORDER BY' => 'received',
-						'GROUP BY' => "FROM_UNIXTIME(received, '%Y-%m-%d')"
+						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
 					)
 				);
 				$result = array();
@@ -263,7 +311,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__,
 					array(
 						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "FROM_UNIXTIME(received, '%Y-%m-%d')",
+						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
 					)
 				);
 				break;
@@ -281,7 +329,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__,
 					array(
 						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "FROM_UNIXTIME(received, '%Y-%m-%d')",
+						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
 					)
 				);
 				break;
@@ -292,7 +340,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__,
 					array(
 						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "FROM_UNIXTIME(received, '%Y-%m-%d')",
+						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
 					)
 				);
 				break;
@@ -303,7 +351,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__,
 					array(
 						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "FROM_UNIXTIME(received, '%Y-%m-%d')",
+						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
 					)
 				);
 				break;
@@ -313,5 +361,14 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			return $result;
 		}
 		return null;
+	}
+	
+	private function dropDownList ( $values ) {
+		$dropDown = '';
+		foreach ( $values as $value ) {
+			if ( $value >= 0 ) $dropDown .= '+';
+			$dropDown .= "$value:00\n";
+		}
+		return $dropDown;
 	}
 }
