@@ -76,10 +76,10 @@ $.articleFeedback = {
 			
 			// Build data from form values
 			var data = {};
-			for ( key in context.options.ratings ) {
+			for ( var key in context.options.ratings ) {
 				var id = context.options.ratings[key].id;
 				// Default to 0 if the radio set doesn't contain a checked element
-				data['r' + id] = context.$ui.find( 'input[name=r' + id + ']:checked' ).val() | 0;
+				data['r' + id] = context.$ui.find( 'input[name=r' + id + ']:checked' ).val() || 0;
 			}
 			$.ajax( {
 				'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
@@ -117,11 +117,11 @@ $.articleFeedback = {
 					'list': 'articlefeedback',
 					'afpageid': mw.config.get( 'wgArticleId' ),
 					'afanontoken': mw.user.id(),
-					'afuserrating': mw.user.id()
+					'afuserrating': 1
 				},
 				'success': function( data ) {
 					var context = this;
-					if ( typeof data.query.articlefeedback == undefined ) {
+					if ( typeof data.query.articlefeedback == 'undefined' ) {
 						// TODO: Something more clever, and useful, about this error
 						mw.log( '<loadReport success with bad data />' );
 						return;
@@ -160,7 +160,7 @@ $.articleFeedback = {
 							var average = ratingData.total / ratingData.count;
 							$(this)
 								.find( '.articleFeedback-rating-average' )
-									.text( ( average - ( average % 1 ) ) + '.' +
+									.text( Math.floor( average ) + '.' +
 										Math.round( ( average % 1 ) * 10 ) )
 									.end()
 								.find( '.articleFeedback-rating-meter div' )
@@ -194,7 +194,7 @@ $.articleFeedback = {
 				.append( $.articleFeedback.tpl.ui )
 				.find( '.articleFeedback-ratings' )
 					.each( function() {
-						for ( key in context.options.ratings ) {
+						for ( var key in context.options.ratings ) {
 							$( $.articleFeedback.tpl.rating )
 								.attr( 'rel', key )
 								.find( '.articleFeedback-label' )
@@ -206,7 +206,7 @@ $.articleFeedback = {
 					} )
 					.end()
 				.each( function() {
-					for ( key in context.options.pitches ) {
+					for ( var key in context.options.pitches ) {
 						$( $.articleFeedback.tpl.pitch )
 						.attr( 'rel', key )
 						.find( '.articleFeedback-title' )
@@ -248,7 +248,7 @@ $.articleFeedback = {
 					.button()
 					.click( function() {
 						$.articleFeedback.fn.submit.call( context );
-						for ( key in context.options.pitches ) {
+						for ( var key in context.options.pitches ) {
 							if ( context.options.pitches[key].condition() ) {
 								context.$ui
 									.find( '.articleFeedback-pitch[rel="' + key + '"]' )
@@ -266,7 +266,7 @@ $.articleFeedback = {
 				.find( '.articleFeedback-rating' )
 					.each( function( rating ) {
 						var rel = $(this).attr( 'rel' );
-						var id = 'articleFeedback-rating-field-' + $(this).attr( 'rel' ) + '-';
+						var id = 'articleFeedback-rating-field-' + rel + '-';
 						$(this)
 							.find( '.articleFeedback-rating-fields input' )
 								.attr( 'name', rel )
