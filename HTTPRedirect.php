@@ -19,7 +19,7 @@ $wgHooks['ArticleViewRedirect'][] = 'efRedirectHook';
 function efRedirectHook( Article &$article ) {
 	global $wgOut;
 
-	$wgOut->redirect( $article->mTitle->escapeFullURL(), 302 );
+	$wgOut->redirect( $article->getTitle()->escapeFullURL(), 302 );
 
 	return false;
 }
