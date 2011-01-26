@@ -82,6 +82,18 @@ $messages['id'] = array(
 	'researchtools-page-prefs' => 'Statistik Preferensi',
 );
 
+/** Japanese (日本語)
+ * @author Ohgi
+ */
+$messages['ja'] = array(
+	'researchtools' => '調査ツール',
+	'researchtools-desc' => '利用者の調査研究用の便利なツール集',
+	'researchtools-page-dashboard' => 'ダッシュボード',
+	'researchtools-page-surveys' => '調査回答',
+	'researchtools-page-clicks' => 'Trackingをクリック',
+	'researchtools-page-prefs' => '個人設定の統計',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -113,6 +125,18 @@ $messages['nl'] = array(
 	'researchtools-page-surveys' => 'Vragenlijstresultaten',
 	'researchtools-page-clicks' => 'Kliks bijhouden',
 	'researchtools-page-prefs' => 'Voorkeurenstatistieken',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'researchtools' => 'Ferramentas de Pesquisa',
+	'researchtools-desc' => 'Conjunto de ferramentas úteis para conduzir estudos e pesquisas sobre os utilizadores',
+	'researchtools-page-dashboard' => 'Painel',
+	'researchtools-page-surveys' => 'Respostas a Inquéritos',
+	'researchtools-page-clicks' => 'Monitorização de Cliques',
+	'researchtools-page-prefs' => 'Estatísticas de Preferências',
 );
 
 /** Russian (Русский)
