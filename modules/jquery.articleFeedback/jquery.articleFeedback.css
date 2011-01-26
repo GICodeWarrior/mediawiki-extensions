@@ -174,6 +174,7 @@
 	background-image: url(images/segment-empty.png);
 	background-repeat: repeat-x;
 	background-position: center left;
+	overflow: hidden;
 }
 
 .articleFeedback-rating-meter div {

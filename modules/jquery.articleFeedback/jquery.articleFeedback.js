@@ -164,7 +164,7 @@ $.articleFeedback = {
 										Math.round( ( average % 1 ) * 10 ) )
 									.end()
 								.find( '.articleFeedback-rating-meter div' )
-									.css( 'width', Math.round( average * 20 ) + 'px' )
+									.css( 'width', Math.round( average * 21 ) + 'px' )
 									.end()
 								.find( '.articleFeedback-rating-count' )
 									.text( mw.msg(
