@@ -1238,7 +1238,7 @@ $messages['be-tarask'] = array(
 	'thomas_en_desc' => 'Афіцыйная стэнаграма Thomas з дзяржаўнай службы запісаў THOMAS.
 Крынічны час сынхранізаваны з дапамогай C-SPAN c-spanarchives.org',
 	'mvd_default_mismatch' => 'Памылка ў файле наладаў',
-	'mvd_default_mismatch_text' => 'Ваш файле наладаў зьмяшчае памылку.
+	'mvd_default_mismatch_text' => 'Ваш файле наладаў утрымлівае памылку.
 $mvMVDTypeDefaultDisp павінна быць падмноствам $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 для $2 з $3',
 	'mv_time_separator' => '$1 да $2',
