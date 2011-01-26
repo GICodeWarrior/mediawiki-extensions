@@ -71,6 +71,8 @@ $wgExtensionCredits['parserhook'][] = array(
 
 );
 
+$wgHooks['MessagesPreLoad'][] = 'wfSimpleSecurityMessagesPreLoad';
+
 # SearchEngine is based on $wgDBtype so must be set before it gets changed to DatabaseSimpleSecurity
 # - this may be paranoid now since $wgDBtype is changed back after LoadBalancer has initialised
 SimpleSecurity::fixSearchType();
@@ -120,6 +122,45 @@ function wfSimpleSecurityLanguageGetMagic( &$magicWords, $langCode = 0 ) {
 	global $wgSecurityMagicIf, $wgSecurityMagicGroup;
 	$magicWords[$wgSecurityMagicIf]    = array( $langCode, $wgSecurityMagicIf );
 	$magicWords[$wgSecurityMagicGroup] = array( $langCode, $wgSecurityMagicGroup );
+	return true;
+}
+
+function wfSimpleSecurityMessagesPreLoad( $title, &$text ) {
+	global $wgSecurityExtraActions, $wgSecurityExtraGroups;
+
+	if ( substr( $title, 0, 12 ) == 'Restriction-' ) {
+		$key = substr( $title, 12 );
+		if ( isset( $wgSecurityExtraActions[$key] ) ) {
+			$text = empty( $wgSecurityExtraActions[$key] ) ? ucfirst( $key ) : $wgSecurityExtraActions[$key];
+		}
+		return true;
+	} elseif ( substr( $title, 0, 14 ) == 'Protect-level-' ) {
+		$key = substr( $title, 14 );
+		$type = 'level';
+	} elseif ( substr( $title, 0, 6 ) == 'Right-' ) {
+		$key = substr( $title, 6 );
+		$type = 'right';
+	} else {
+		return true;
+	}
+
+	if ( isset( $wgSecurityExtraGroups[$key] ) ) {
+		$name = empty( $wgSecurityExtraGroups[$key] ) ? ucfirst( $key ) : $wgSecurityExtraGroups[$key];	
+	} else {
+		$lower = array_map( 'strtolower', $wgSecurityExtraGroups );
+		$nkey = array_search( strtolower( $key ), $lower, true );
+		if ( !is_numeric( $nkey ) ) {
+			return true;
+		}
+		$name = ucfirst( $wgSecurityExtraGroups[$nkey] );
+	}
+
+	if ( $type == 'level' ) {
+		$text = $name;
+	} else {
+		$text = wfMsg( 'security-restricttogroup', $name );
+	}
+
 	return true;
 }
 
