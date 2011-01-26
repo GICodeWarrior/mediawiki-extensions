@@ -716,6 +716,7 @@ $messages['fi'] = array(
  * @author PieRRoMaN
  * @author Sherbrooke
  * @author Verdy p
+ * @author Wyz
  */
 $messages['fr'] = array(
 	'recordadmin' => 'Gestion des enregistrements',
@@ -756,7 +757,7 @@ $messages['fr'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Aucun « $1 »',
-	'recordadmin-edit-info' => 'Cette page contient des modèles qui ont leurs propres formulaires que vous pouvez remplir depuis ce jeu d’onglets. <br />Cliquer<a href="$1">ici</a> pour utiliser les fonctions d\'édition MediaWiki habituelles sans les modèles de formulaires.',
+	'recordadmin-edit-info' => 'Cette page contient des modèles qui ont leurs propres formulaires que vous pouvez remplir depuis ce jeu d’onglets.<br /> Vous pouvez aussi <a href="$1">utiliser les fonctions de modification de MediaWiki habituelles sans les formulaires de modèles</a>.',
 	'recordadmin-properties' => 'Propriétés',
 );
 
