@@ -26,11 +26,8 @@ from argparse import ArgumentParser
 from argparse import RawTextHelpFormatter
 import ConfigParser
 
-
 import configuration
-import config
 from utils import file_utils
-
 from utils import ordered_dict
 from utils import log
 from utils import timer
@@ -41,8 +38,7 @@ from etl import extracter
 from etl import store
 from etl import sort
 from etl import transformer
-
-from analyses import count_editors
+from analyses import analyzer
 
 
 def show_choices(settings, attr):
@@ -200,7 +196,11 @@ def exporter_launcher(properties, settings, logger):
 #                             dbname=properties.full_project,
 #                             collection=properties.collection)
         print 'Dataset is created by: %s' % target
-        count_editors.generate_chart_data(properties.project, properties.collection, target)
+
+        analyzer.generate_chart_data(properties.project,
+                                     properties.collection,
+                                     properties.language_code,
+                                     target)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='finish')
 
@@ -424,7 +424,7 @@ def init_args_parser():
 
     parser.add_argument('-d', '--datasets',
         action='store',
-        choices=count_editors.available_analyses(),
+        choices=analyzer.available_analyses(),
         help='Indicate what type of data should be exported.',
         default='cohort_dataset_backward_bar')
 
