@@ -32,6 +32,7 @@ $wgExtensionCredits['parserhooks'][] = array(
 	'name' => 'TrustedMath',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:TrustedMath',
 	'author' => 'Bryan Tong Minh',
+	'descriptionmsg' => 'trustedmath-desc',
 );
 
 $dir = dirname( __FILE__ );
