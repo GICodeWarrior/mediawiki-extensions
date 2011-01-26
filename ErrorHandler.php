@@ -206,16 +206,8 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
  */
 function efErrorHandlerGetMessage(){
 	static $messages = false;
-	static $loaded = false;
 	$args = func_get_args();
-	if( !$loaded ){
-		global $wgMessageCache;
-		if( function_exists( 'wfMsgExt' ) && is_object( $wgMessageCache ) ){
-			$loaded = true;
-			wfLoadExtensionMessages( 'ErrorHandler' );
-		}
-	}
-	if( $loaded ){
+	if( function_exists( 'wfMsgExt' ) ){
 		global $wgTitle;
 		$msg = array_shift( $args );
 		$opts = array( 'replaceafter' );
