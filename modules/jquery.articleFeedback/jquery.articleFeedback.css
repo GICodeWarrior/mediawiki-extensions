@@ -172,7 +172,7 @@
 	float: left;
 	height: 17px;
 	width: 101px;
-	border: none;
+	border: solid 1px #cccccc;
 	border-radius: 3px;
 	/* @embed */
 	background-image: url(images/segment-empty.png);
@@ -191,8 +191,7 @@
 }
 
 .articleFeedback-rating-count {
-	float: left;
-	margin-left: 2.5em;
+	float: right;
 	font-size: 0.8em;
 	color: #999999;
 	cursor: default;
