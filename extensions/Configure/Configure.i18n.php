@@ -998,8 +998,8 @@ $messages['be-tarask'] = array(
 	'configure-db-error' => 'База зьвестак, якую Вы вызначылі для захаваньня наладаў ($1), не існуе.
 Калі ласка, стварыце яе і выканайце configure.sql альбо зьмяніце яе назву.',
 	'configure-db-table-error' => 'База зьвестак, якую Вы вызначылі, ня мае неабходных табліцаў. Калі ласка, выканайце configure.sql для гэтай базы зьвестак.',
-	'configure-directory-not-writable' => 'Дырэкторыя, якая выкарыстоўваецца для захаваньня наладаў, <tt>$1</tt>, недаступная для запісаў.
-Калі ласка, зрабіце яе даступнай для запісаў PHP, для выкарыстаньня гэтага пашырэньня.',
+	'configure-directory-not-writable' => 'Дырэкторыя, якая выкарыстоўваецца для захаваньня наладаў, <tt>$1</tt>, недаступная для запісу.
+Калі ласка, зрабіце яе даступнай для запісу для PHP, каб выкарыстоўваць гэтае пашырэньне.',
 	'configure-edit-old' => "'''Папярэджаньне''': Вы рэдагуеце <strong>старую</strong> вэрсію наладаў (ад $1).",
 	'configure-error' => 'Устаноўка ня можа быць захаваная',
 	'configure-js-add' => 'Дадаць новы запіс',
@@ -8459,7 +8459,7 @@ Për piasì, ch'a lo crea o ch'a lo cambia për dovré st'estension-sì.",
 	'configure-section-profiling' => 'Profilé',
 	'configure-section-site' => 'Përsonalisassion dël sit',
 	'configure-section-css-js' => 'CSS e JavaScript',
-	'configure-section-resourceloader' => "Cariador d'arsorse",
+	'configure-section-resourceloader' => "Carior d'arsorse",
 	'configure-section-namespaces' => 'Spassi nominaj',
 	'configure-section-stats' => 'Statìstiche dël sit',
 	'configure-section-skin' => 'Pej',

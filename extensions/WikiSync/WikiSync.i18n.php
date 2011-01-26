@@ -363,6 +363,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -391,9 +392,10 @@ $messages['fr'] = array(
 	'wikisync_apply_button' => 'Appliquer',
 	'wikisync_log_imported_by' => 'Importé par [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Téléversé par [[Special:WikiSync|WikiSync]]',
+	'wikisync_unsupported_user' => "Seul un robot spécialisé $1 peut effectuer les synchronisations des wikis. Veuillez vous connecter en tant que $1. Ne modifiez pas le nom de $1 entre les synchronisations, sinon les révisions nulles d'information ne seront pas correctement sautées (voir [http://www.mediawiki.org/wiki/Extension:WikiSync] pour plus d'infos).",
 	'wikisync_api_result_unknown_action' => 'Action inconnue de l’API',
 	'wikisync_api_result_exception' => 'Une exception s’est produite durant l’appel de l’API locale',
-	'wikisync_api_result_noaccess' => 'Seuls les membres des groupes suivants peuvent effectuer cette action : $1',
+	'wikisync_api_result_noaccess' => 'Seuls les membres {{PLURAL:$2|du groupe suivant|des groupes suivants}} peuvent effectuer cette action : $1',
 	'wikisync_api_result_invalid_parameter' => 'Valeur invalide du paramètre',
 	'wikisync_api_result_http' => 'Une erreur HTTP est survenue lors de la requête de données de l’API distante',
 	'wikisync_api_result_Unsupported' => 'Votre version de MediaWiki n’est pas pris en charge (inférieure à 1.15)',
@@ -594,9 +596,10 @@ $messages['hsb'] = array(
 	'wikisync_apply_button' => 'Nałožić',
 	'wikisync_log_imported_by' => 'Importowany přez [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Nahraty přez [[Special:WikiSync|WikiSync]]',
+	'wikisync_unsupported_user' => 'Jenož specialny boćik $1 móže wikisynchronizacije přewjesć. Prošu přizjew so jako $1. Njezměń mjeno $1 mjez synchronizacijemi, hewak so informacionelne prózdne wersije projadnje njepřeskakuja (hlej [http://www.mediawiki.org/wiki/Extension:WikiSync] za dalše informacije).',
 	'wikisync_api_result_unknown_action' => 'Njeznata API-akcija',
 	'wikisync_api_result_exception' => 'Wuwzaće je při lokalnym API-wołanju wustupiło',
-	'wikisync_api_result_noaccess' => 'Jenož čłonojo slědowacych skupinow móža tutu akciju přewjesć: $1',
+	'wikisync_api_result_noaccess' => 'Jenož čłonojo {{PLURAL:$2|slědowaceje skupiny|slědowaceju skupinow|slědowacych skupinow|slědowacych skupinow}} móža tutu akciju přewjesć: $1',
 	'wikisync_api_result_invalid_parameter' => 'Njepłaćiwa parametrowa hódnota',
 	'wikisync_api_result_http' => 'HTTP-zmylk při naprašowanju datow wot zdaleneho API',
 	'wikisync_api_result_Unsupported' => 'Twoja wersija MediaWiki so njepodpěruje (starša wersija hač 1.15)',
@@ -1156,9 +1159,10 @@ $messages['pt'] = array(
 	'wikisync_apply_button' => 'Aplicar',
 	'wikisync_log_imported_by' => 'Importação de [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Upload de [[Special:WikiSync|WikiSync]]',
+	'wikisync_unsupported_user' => 'A sincronização de wikis só pode ser realizada pelo utilizador robô especial $1. Autentique-se como $1, por favor. Não altere o nome $1 entre as sincronizações, pois de outra forma as revisões nulas informativas não serão devidamente ignoradas (consulte [http://www.mediawiki.org/wiki/Extension:WikiSync] para mais informações).',
 	'wikisync_api_result_unknown_action' => 'Operação desconhecida da API',
 	'wikisync_api_result_exception' => 'Ocorreu uma excepção na chamada local da API',
-	'wikisync_api_result_noaccess' => 'Só os membros dos seguintes grupos podem executar esta operação: $1',
+	'wikisync_api_result_noaccess' => 'Esta operação só pode ser executada pelos membros {{PLURAL:$2|do seguinte grupo|dos seguintes grupos}}: $1',
 	'wikisync_api_result_invalid_parameter' => 'O valor do parâmetro é inválido',
 	'wikisync_api_result_http' => 'Ocorreu um erro de HTTP ao fazer uma consulta de dados pela API remota',
 	'wikisync_api_result_Unsupported' => 'A sua versão do MediaWiki não é suportada (anterior à 1.15)',

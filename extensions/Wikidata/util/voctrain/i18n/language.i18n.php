@@ -4086,9 +4086,12 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'voctrain_Hello_World' => '维基，您好！',
+	'voctrain_Permission_Denied' => '你的要求被拒绝',
 	'voctrain_other' => '其他',
 );
 

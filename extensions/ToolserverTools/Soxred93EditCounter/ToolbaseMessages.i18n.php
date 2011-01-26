@@ -281,6 +281,7 @@ $messages['fi'] = array(
  * @author Hashar
  * @author Sherbrooke
  * @author X!
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'toolbase-header-title' => 'Outils X! (BETA)',
@@ -311,7 +312,7 @@ Pour obtenir une liste d\'outils qui sont fonctionnels sur ce framework, voir l\
 
 Les bugs peuvent être rapportés à <a href="$2">Google Code</a>.',
 	'toolbase-main-404' => 'Fichier introuvable',
-	'toolbase-main-404-content' => 'Oups ! Aucune page n\'a été trouvé !
+	'toolbase-main-404-content' => 'Oups ! Aucune page n\'a été trouvée !
 
 Assurez-vous que vous avez tapé l\'URL correctement.
 Si vous avez suivi un lien, veuillez <a href="$1">rapporter le bug</a>.

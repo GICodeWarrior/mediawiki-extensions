@@ -411,6 +411,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -419,7 +420,7 @@ $messages['pms'] = array(
 	'ts-kml-on-ol-thumbnails' => 'Miniadure',
 	'ts-kml-on-ol-help' => 'Agiut',
 	'ts-kml-on-ol-all' => 'Tùit',
-	'ts-kml-on-ol-map-by' => 'Mapa da',
+	'ts-kml-on-ol-map-by' => 'Carta creà da',
 );
 
 /** Portuguese (Português)

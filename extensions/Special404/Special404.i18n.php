@@ -205,6 +205,20 @@ Mungkin Anda ingin melihat:
 * [[{{MediaWiki:Mainpage}}|Halaman utama]]',
 );
 
+/** Japanese (日本語)
+ * @author Ohgi
+ */
+$messages['ja'] = array(
+	'special404-desc' => 'アクセス先に404エラーが発生したことをお知らせします',
+	'error404' => '404 ページが見つかりません',
+	'special404-body' => 'あなたが要求したURLはみつかりませんでした。
+
+お探しのURLは {{fullurl:$1}} でしょうか。
+
+以下もご参照ください:
+* [[{{MediaWiki:Mainpage}}|メインページ]]',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

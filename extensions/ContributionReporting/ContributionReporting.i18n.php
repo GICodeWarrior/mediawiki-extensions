@@ -550,6 +550,8 @@ $messages['be-tarask'] = array(
 	'fundraiserstats-tab-maximums' => 'Максымальныя (USD)',
 	'fundraiserstats-tab-ytd' => 'На цяперашні год (USD)',
 	'fundraiserstats-instructions' => 'Каб паглядзець статыстыку за любы дзень, навядзіце курсор на слупок гэтага дня. У табліцы кожны год адрозьніваецца ўласным колерам.',
+	'fundraiserstats-customize' => 'Наладзіць',
+	'fundraiserstats-show-years' => 'Паказаць наступныя гады:',
 );
 
 /** Bulgarian (Български)

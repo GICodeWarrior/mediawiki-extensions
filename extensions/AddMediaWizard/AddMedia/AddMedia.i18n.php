@@ -276,6 +276,7 @@ appear to be combined to produce:
 *{{int:mwe-ie-inline-upload|{{int:mwe-upload-in-new-win-link}}|{{int:mwe-upload-refresh}}}}",
 	'mwe-upload-refresh' => '{{MediaWiki:Mwe-upload-in-new-win-link/qqq}}',
 	'mwe-ie-inline-upload' => '{{MediaWiki:Mwe-upload-in-new-win-link/qqq}}',
+	'mwe-uploaded-status' => '{{Identical|Uploaded}}',
 	'mwe-add_media_wizard' => 'This message is used as the title of the popup window of the "Add media wizard"',
 	'rsd_results_desc_total' => 'Parameters:
 * $1 is the lowest result number in the displayed set for the current search
@@ -932,13 +933,13 @@ $messages['be-tarask'] = array(
 	'fogg-webvideo-webm-desc' => 'Відэа VP8 600 кбіт\\/с і максымальнай шырынёй 480пкс',
 	'fogg-highquality-webm-desc' => 'Высакаякаснае відэа VP8 з максымальнай шырынёй 1080пкс',
 	'fogg-videoQuality-title' => 'Якасьць відэа',
-	'fogg-videoQuality-help' => 'Выкарыстоўваюцца для налады <i>візуальнай якасьці</i> кадаванага відэа (не выкарыстоўваецца, калі Вы ўстанавілі хуткасьць перадачы ніжэй у пашыраных наладах).',
+	'fogg-videoQuality-help' => 'Выкарыстоўваюцца для ўстаноўкі <i>візуальнай якасьці</i> кадаванага відэа (не выкарыстоўваецца, калі Вы ўстанавілі хуткасьць перадачы ніжэй у пашыраных наладах).',
 	'fogg-starttime-title' => 'Пачаць з сэкунды',
 	'fogg-starttime-help' => 'Кадаваць толькі з часу, пазначанага ў сэкундах',
 	'fogg-endtime-title' => 'Скончыць на сэкундзе',
 	'fogg-endtime-help' => 'Кадаваць толькі да часу, пазначанага ў сэкундах',
 	'fogg-audioQuality-title' => 'Якасьць аўдыё',
-	'fogg-audioQuality-help' => 'Выкарыстоўваецца для налады <i>якасьці гуку</i> кадаванага аўдыё (не выкарыстоўваецца, калі Вы ўстанавілі бітрэйт ў пашыраных наладах).',
+	'fogg-audioQuality-help' => 'Выкарыстоўваецца для ўстаноўкі <i>якасьці гуку</i> кадаванага аўдыё (не выкарыстоўваецца, калі Вы ўстанавілі бітрэйт ў пашыраных наладах).',
 	'fogg-videoCodec-title' => 'Альгарытмы кадаваньня відэа',
 	'fogg-videoCodec-help' => 'Выкарыстоўваецца для выбару альгарытму кадаваньня відэа. У цяперашні час падтрымліваецца толькі Theora. Падрабязьней пра <a target="_new" href="http://en.wikipedia.org/wiki/Theora">альгарытм кадаваньня Theora</a>.',
 	'fogg-audioCodec-title' => 'Альгарытмы кадаваньня аўдыё',
@@ -5220,6 +5221,7 @@ Controlla <b><code>$1</code></b> e verifica scrupolosamente che davvero si debba
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Ohgi
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -5365,7 +5367,7 @@ $messages['ja'] = array(
 	'rsd_config_error' => 'メディア追加ウィザードの設定エラー: $1',
 	'mwe-your-recent-uploads' => '$1へのあなたの最近のアップロード',
 	'mwe-no_recent_uploads' => '最近のアップロードはありません',
-	'mwe-not-logged-in-uploads' => 'ログインしてないようなので、アップロードされたものは表示されません。$1ログインして、$2',
+	'mwe-not-logged-in-uploads' => 'ログインしていないようなので、アップロードされたものは表示されません。[$1 ログインして]、[$2 再度お試しください]。',
 	'mwe-ie-eye-permision' => 'Internet Explorerを利用してログインしている場合は、プライバシーの設定を調整する必要があります',
 	'mwe-upload-a-file' => '新しいファイルをアップロード',
 	'mwe-upload-a-file-to' => '$1に新しいファイルをアップロード',

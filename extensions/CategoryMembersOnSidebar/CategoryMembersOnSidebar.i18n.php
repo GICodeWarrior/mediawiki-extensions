@@ -113,6 +113,13 @@ $messages['id'] = array(
 	'categorymembersonsidebar-desc' => 'Menambahkan anggota kategori di bilah samping',
 );
 
+/** Japanese (日本語)
+ * @author Ohgi
+ */
+$messages['ja'] = array(
+	'categorymembersonsidebar-desc' => 'サイドバーにカテゴリを追加',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

@@ -245,12 +245,13 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'pdfbook-action' => 'Stampa com PDF',
-	'pdfbook-log' => '$1 esportà con un lìber PDF',
-	'pdfbook-desc' => 'A compon un lìber da pàgine ant un-a categorìa e a lo espòrta com un lìber PDF',
+	'pdfbook-log' => '$1 esportà coma lìber PDF',
+	'pdfbook-desc' => 'A compon un lìber a parte da le pàgine an na categorìa e a lo espòrta com un lìber an PDF',
 );
 
 /** Portuguese (Português)

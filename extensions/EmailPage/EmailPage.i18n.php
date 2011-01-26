@@ -121,6 +121,19 @@ $messages['arz'] = array(
 	'ea-selectcss' => 'اختر شريحة CSS',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Proger
+ */
+$messages['az'] = array(
+	'e-mailpage' => 'E-poçt səhifəsi',
+	'ea-from' => 'Kimdən:',
+	'ea-to' => 'Kimə:',
+	'ea-cc' => 'Kopya',
+	'ea-send' => 'Göndər',
+	'ea-subject' => 'Başlıq:',
+	'ea-message' => 'Məktub:',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
