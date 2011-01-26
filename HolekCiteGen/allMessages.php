@@ -299,6 +299,7 @@ $messages['fr'] = array(
 	'ts-citegen-Sidebar-add-Firefox' => 'Ajouter au panneau latéral',
 	'ts-citegen-Sidebar-add-Opera' => 'Ajouter à la liste préférée',
 	'ts-citegen-Sidebar-add-IE-Mac' => 'Ajouter au titulaire de la page',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Une fois la page chargée, ouvrez votre liste de favoris, cliquez sur « Ajouter » et ensuite utilisez le bouton favoris pour stocker dans vos favoris.',
 	'ts-citegen-Tools' => 'Outils',
 	'ts-citegen-Other-languages' => 'Autres langues',
 	'ts-citegen-Save-it' => 'Requête en cours',
