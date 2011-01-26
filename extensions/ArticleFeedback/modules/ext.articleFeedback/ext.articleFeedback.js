@@ -30,11 +30,11 @@ var config = {
 	'pitches': {
 		'takesurvey': {
 			'condition': function() {
-				// If already taken survey, return false
+				// TODO: If already taken survey, return false
 				return true;
 			},
 			'action': function() {
-				// Do something
+				// TODO: Do something
 			},
 			'title': 'articlefeedback-pitch-takesurvey-title',
 			'message': 'articlefeedback-pitch-takesurvey-message',
@@ -44,13 +44,10 @@ var config = {
 		'createaccount': {
 			'condition': function() {
 				// If user is logged in, return false
-				if ( !mediaWiki.user.anonymous() ) {
-					return false;
-				}
-				return true;
+				return mediaWiki.user.anonymous();
 			},
 			'action': function() {
-				// Do something
+				// TODO: Do something
 			},
 			'title': 'articlefeedback-pitch-createaccount-title',
 			'message': 'articlefeedback-pitch-createaccount-message',
@@ -60,13 +57,10 @@ var config = {
 		'makefirstedit': {
 			'condition': function() {
 				// If user is not logged in, return false
-				if ( mediaWiki.user.anonymous() ) {
-					return false;
-				}
-				return true;
+				return !mediaWiki.user.anonymous();
 			},
 			'action': function() {
-				// Do something
+				// TODO: Do something
 			},
 			'title': 'articlefeedback-pitch-makefirstedit-title',
 			'message': 'articlefeedback-pitch-makefirstedit-message',
