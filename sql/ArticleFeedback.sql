@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback_ratings (
 
 -- Default article feedback ratings for the pilot
 INSERT INTO /*$wgDBprefix*/article_feedback_ratings (aar_rating) VALUES
-('articlefeedback-rating-trustworthy'), ('articlefeedback-rating-unbiased'),
+('articlefeedback-rating-trustworthy'), ('articlefeedback-rating-objective'),
 ('articlefeedback-rating-complete'), ('articlefeedback-rating-wellwritten');
 
 -- Store article feedbacks (user rating per revision)

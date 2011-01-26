@@ -11,10 +11,10 @@ var config = {
 			'label': 'articlefeedback-field-trustworthy-label',
 			'tip': 'articlefeedback-field-trustworthy-tip'
 		},
-		'unbiased': {
+		'objective': {
 			'id': '2',
-			'label': 'articlefeedback-field-unbiased-label',
-			'tip': 'articlefeedback-field-unbiased-tip'
+			'label': 'articlefeedback-field-objective-label',
+			'tip': 'articlefeedback-field-objective-tip'
 		},
 		'complete': {
 			'id': '3',
