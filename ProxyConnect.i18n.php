@@ -146,10 +146,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'proxyconnect-desc' => 'A implementa le funsionalità da part ëd servent ëd Proxy Connect',
+	'proxyconnect-desc' => 'A implementa le funsionalità da la part dël servent ëd Proxy Connect',
 );
 
 /** Portuguese (Português)
