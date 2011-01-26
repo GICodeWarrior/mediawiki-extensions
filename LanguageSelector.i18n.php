@@ -106,6 +106,14 @@ $messages['ast'] = array(
 	'languageselector-setlang' => 'establecer',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Proger
+ */
+$messages['az'] = array(
+	'languageselector' => 'Dil',
+	'languageselector-setlang' => 'Seç',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  * @author Рустам Нурыев
