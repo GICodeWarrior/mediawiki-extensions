@@ -307,13 +307,15 @@ $.articleFeedback = {
 					.hover(
 						function() {
 							$(this)
-								.addClass( 'articleFeedback-rating-label-hover' )
+								.addClass( 'articleFeedback-rating-label-hover-head' )
 								.prevAll( 'label' )
-									.andSelf()
-										.addClass( 'articleFeedback-rating-label-full' );
+									.addClass( 'articleFeedback-rating-label-hover-tail' );
 						},
 						function() {
-							$(this).removeClass( 'articleFeedback-rating-label-hover' );
+							$(this)
+								.removeClass( 'articleFeedback-rating-label-hover-head' )
+								.prevAll( 'label' )
+									.removeClass( 'articleFeedback-rating-label-hover-tail' );
 							$.articleFeedback.fn.updateRating.call(
 								$(this).closest( '.articleFeedback-rating' )
 							);
