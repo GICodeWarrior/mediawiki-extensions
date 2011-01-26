@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.3.1
+ * @version 0.3.2
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -108,10 +108,17 @@ WikiSyncSetup::init();
 class WikiSyncSetup {
 
 	const COOKIE_EXPIRE_TIME = 2592000; // 60 * 60 * 24 * 30; see also WikiSync.js, WikiSync.cookieExpireTime
+	# please never change next value in between the synchronizations
+	# otherwise null revisions created by ImportReporter::reportPage
+	# will not be skipped, thus fake synchronizations might occur
+	const WIKISYNC_BOT_NAME = 'WikiSyncBot';
 
+	static $remote_wiki_user = self::WIKISYNC_BOT_NAME;
+	static $report_null_revisions = false;
 	# {{{ changable in LocalSettings.php :
+	# debug mode (do not erase temporary XML dump files)
+	static $debug_mode = false;
 	static $remote_wiki_root = 'http://www.mediawiki.org/w';
-	static $remote_wiki_user = '';
 	static $proxy_address = ''; # 'http://10.0.0.78:3128';
 	# which user groups can synchronize from remote to local
 	static $rtl_access_groups = array( 'user' );
@@ -126,7 +133,7 @@ class WikiSyncSetup {
 	static $proxy_pass = '';
 	# }}}
 
-	static $version = '0.3.1'; // version of extension
+	static $version = '0.3.2'; // version of extension
 	static $ExtDir; // filesys path with windows path fix
 	static $ScriptPath; // apache virtual path
 
@@ -181,11 +188,13 @@ class WikiSyncSetup {
 		$wgAutoloadClasses['ApiWikiSync'] =
 		$wgAutoloadClasses['ApiRevisionHistory'] =
 		$wgAutoloadClasses['ApiFindSimilarRev'] =
-		$wgAutoloadClasses['ApiGetFile'] = self::$ExtDir . '/WikiSyncApi.php';
+		$wgAutoloadClasses['ApiGetFile'] =
+		$wgAutoloadClasses['ApiSyncImport'] = self::$ExtDir . '/WikiSyncApi.php';
 
 		$wgAPIModules['revisionhistory'] = 'ApiRevisionHistory';
 		$wgAPIModules['similarrev'] = 'ApiFindSimilarRev';
 		$wgAPIModules['getfile'] = 'ApiGetFile';
+		$wgAPIModules['syncimport'] = 'ApiSyncImport';
 
 		$wgAjaxExportList[] = 'WikiSyncClient::remoteLogin';
 		$wgAjaxExportList[] = 'WikiSyncClient::localAPIget';
@@ -273,15 +282,15 @@ class WikiSyncSetup {
 	}
 
 	static function checkUserMembership( $groups ) {
-		global $wgUser, $wgLang;
-		$ug = $wgUser->getEffectiveGroups();
-		if ( !$wgUser->isAnon() && !in_array( 'user', $ug ) ) {
+		global $wgLang;
+		$ug = self::$user->getEffectiveGroups();
+		if ( !self::$user->isAnon() && !in_array( 'user', $ug ) ) {
 			$ug[] = 'user';
 		}
 		if ( array_intersect( $groups, $ug ) ) {
 			return true;
 		}
-		return wfMsg( 'wikisync_api_result_noaccess', $wgLang->commaList( $groups ) );
+		return wfMsgExt( 'wikisync_api_result_noaccess', array( 'parsemag' ), $wgLang->commaList( $groups ), count( $groups ) );
 	}
 
 	/**
@@ -294,12 +303,15 @@ class WikiSyncSetup {
 	 * @return true, when the current user has access to synchronization;
 	 *     string error message, when the current user has no access
 	 */
-	static function initUser( $direction = null) {
+	static function initUser( $direction = null ) {
 		global $wgUser, $wgRequest;
 		self::$user = is_object( $wgUser ) ? $wgUser : new User();
 		self::$response = $wgRequest->response();
-		wfLoadExtensionMessages( 'WikiSync' );
 		self::$cookie_prefix = 'WikiSync_' . md5( self::$user->getName() ) . '_';
+		wfLoadExtensionMessages( 'WikiSync' );
+		if ( self::$user->getName() !== self::WIKISYNC_BOT_NAME ) {
+			return wfMsg( 'wikisync_unsupported_user', self::WIKISYNC_BOT_NAME );
+		}
 		if ( $direction === true ) {
 			return self::checkUserMembership( self::$rtl_access_groups );
 		} elseif ( $direction === false ) {

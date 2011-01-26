@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.3.1
+ * @version 0.3.2
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -83,7 +83,11 @@ class WikiSyncImportReporter extends ImportReporter {
 		# call the parent to do the logging
 		# avoid bug in 1.15.4 Special:Import (new file page text without the file uploaded)
 		# PHP Fatal error:  Call to a member function insertOn() on a non-object in E:\www\psychologos\includes\specials\SpecialImport.php on line 334
-		if ( $title->getArticleId() !== 0 ) {
+		// do not create informational null revisions
+		// because they are placed on top of real user made revisions,
+		// making the binary search algorithm used to compare local and remote revs to fail
+		// TODO: change the binary search algorithm to two/three level hashes
+		if ( WikiSyncSetup::$report_null_revisions && $title->getArticleId() !== 0 ) {
 			parent::reportPage( $title, $origTitle, $revisionCount, $successCount, $pageInfo );
 		}
 	}

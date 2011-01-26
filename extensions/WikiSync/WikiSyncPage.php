@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.3.1
+ * @version 0.3.2
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -61,7 +61,7 @@ class WikiSyncPage extends SpecialPage {
 					),
 					array( '__tag'=>'tr',
 						array( '__tag'=>'td', wfMsgHtml( 'wikisync_remote_wiki_user' ) ),
-						array( '__tag'=>'td', array( '__tag'=>'input', 'type'=>'text', 'name'=>'remote_wiki_user', 'value'=>$remote_wiki_user ) )
+						array( '__tag'=>'td', array( '__tag'=>'input', 'type'=>'text', 'name'=>'remote_wiki_user', 'value'=>$remote_wiki_user, 'disabled'=>'' ) )
 					),
 					array( '__tag'=>'tr',
 						array( '__tag'=>'td', wfMsgHtml( 'wikisync_remote_wiki_pass' ) ),
