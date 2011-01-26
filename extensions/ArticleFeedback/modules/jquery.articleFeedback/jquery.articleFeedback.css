@@ -132,17 +132,13 @@
 	background-image: url(images/star-full.png);
 }
 
-.articleFeedback-rating-labels label.articleFeedback-rating-label-hover {
-	/* @embed */
-	background-image: url(images/star-full-hover.png);
-}
-
-.articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-full {
+.articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-full,
+.articleFeedback-rating .articleFeedback-rating-labels label.articleFeedback-rating-label-hover-tail {
 	/* @embed */
 	background-image: url(images/star-new.png);
 }
 
-.articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-hover {
+.articleFeedback-rating .articleFeedback-rating-labels label.articleFeedback-rating-label-hover-head {
 	/* @embed */
 	background-image: url(images/star-new-hover.png);
 }
@@ -171,7 +167,7 @@
 .articleFeedback-rating-meter {
 	float: left;
 	height: 17px;
-	width: 101px;
+	width: 104px;
 	border: solid 1px #cccccc;
 	border-radius: 3px;
 	/* @embed */
@@ -183,7 +179,6 @@
 .articleFeedback-rating-meter div {
 	float: left;
 	height: 17px;
-	margin-left: 1px;
 	/* @embed */
 	background-image: url(images/segment-full.png);
 	background-repeat: repeat-x;
