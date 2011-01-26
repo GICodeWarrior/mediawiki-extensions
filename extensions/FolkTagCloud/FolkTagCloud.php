@@ -27,7 +27,7 @@ $wgExtensionCredits['parserhook'][] = array (
 	'path' => __FILE__,
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FolkTagCloud',
 	'version' => FolkTagCloud_VERSION,
-	'author' => 'Katharina W&auml;schle',
+	'author' => 'Katharina Wäschle',
 	'descriptionmsg' => 'folktagcloud-desc'
 );
 
