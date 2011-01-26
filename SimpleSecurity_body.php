@@ -14,7 +14,7 @@ class SimpleSecurity {
 
 
 	function __construct() {
-		global $wgParser, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions, $wgMessageCache,
+		global $wgParser, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions,
 			$wgSecurityMagicIf, $wgSecurityMagicGroup, $wgSecurityExtraActions, $wgSecurityExtraGroups,
 			$wgRestrictionTypes, $wgRestrictionLevels, $wgGroupPermissions,
 			$wgSecurityRenderInfo, $wgSecurityAllowUnreadableLinks, $wgSecurityGroupsArticle;
@@ -39,15 +39,9 @@ class SimpleSecurity {
 
 		# Load messages
 		wfLoadExtensionMessages ( 'SimpleSecurity' );
-		$wgMessageCache->addMessages( array( 'protect-unchain'  => wfMsg( 'security-unchain' ) ) );
-		$wgMessageCache->addMessages( array( 'badaccess-group1' => wfMsg( 'badaccess-group0' ) ) );
-		$wgMessageCache->addMessages( array( 'badaccess-group2' => wfMsg( 'badaccess-group0' ) ) );
-		$wgMessageCache->addMessages( array( 'badaccess-groups' => wfMsg( 'badaccess-group0' ) ) );
 
 		foreach ( $wgSecurityExtraActions as $k => $v ) {
-			if ( empty( $v ) ) $v = ucfirst( $k );
 			$wgRestrictionTypes[] = $k;
-			$wgMessageCache->addMessages( array( "restriction-$k" => $v ) );
 		}
 
 		# Add extra available groups if $wgSecurityGroupsArticle is set
@@ -69,12 +63,8 @@ class SimpleSecurity {
 		foreach ( $wgSecurityExtraGroups as $k => $v ) {
 			if ( is_numeric( $k ) ) {
 				$k = strtolower( $v );
-				$v = ucfirst( $v );
 			}
-			if ( empty( $v ) ) $v = ucfirst( $k );
 			$wgRestrictionLevels[] = $k;
-			$wgMessageCache->addMessages( array( "protect-level-$k" => $v ) );
-			$wgMessageCache->addMessages( array( "right-$k" => wfMsg( 'security-restricttogroup', $v ) ) );
 			$wgGroupPermissions[$k][$k] = true;      # members of $k must be allowed to perform $k
 			$wgGroupPermissions['sysop'][$k] = true; # sysops must be allowed to perform $k as well
 		}

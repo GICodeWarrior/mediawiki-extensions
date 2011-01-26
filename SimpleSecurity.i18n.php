@@ -31,6 +31,7 @@ $messages['en'] = array(
 	'security-type-category'   => 'category',
 	'security-type-namespace'  => 'namespace',
 	'security-restricttogroup' => 'Access content restricted to members of "$1"',
+	'restriction-read'         => 'Read',
 );
 
 /** Message documentation (Message documentation)
