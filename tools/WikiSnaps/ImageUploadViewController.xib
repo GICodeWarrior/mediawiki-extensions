@@ -62,7 +62,7 @@
 					</object>
 					<object class="IBUIImageView" id="182060304">
 						<reference key="NSNextResponder" ref="1015022196"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">288</int>
 						<string key="NSFrame">{{20, 64}, {279, 310}}</string>
 						<reference key="NSSuperview" ref="1015022196"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -73,7 +73,7 @@
 					</object>
 					<object class="IBUIButton" id="860458292">
 						<reference key="NSNextResponder" ref="1015022196"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">288</int>
 						<string key="NSFrame">{{21, 394}, {278, 46}}</string>
 						<reference key="NSSuperview" ref="1015022196"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -109,7 +109,7 @@
 					</object>
 					<object class="IBUIProgressView" id="413664359">
 						<reference key="NSNextResponder" ref="1015022196"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">288</int>
 						<string key="NSFrame">{{78, 26}, {164, 11}}</string>
 						<reference key="NSSuperview" ref="1015022196"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -121,7 +121,7 @@
 					</object>
 					<object class="IBUILabel" id="329379503">
 						<reference key="NSNextResponder" ref="1015022196"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">288</int>
 						<string key="NSFrameSize">{320, 23}</string>
 						<reference key="NSSuperview" ref="1015022196"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -648,7 +648,7 @@
 			<integer value="3000" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<string key="IBDocument.LastKnownRelativeProjectPath">../WikiSnaps.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">WikiSnaps.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<bool key="EncodedWithXMLCoder">YES</bool>

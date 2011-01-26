@@ -11,6 +11,7 @@
 
 // Keys for preferences
 #define COMMONS_USERNAME_KEY @"CommonsUsernameKey"
+#define COMMONS_LICENSE_KEY @"CommonsLicenseKey"
 // FIXME insecure
 #define COMMONS_PASSWORD_KEY @"CommonsPasswordKey"
 
