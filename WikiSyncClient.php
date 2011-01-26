@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.3.1
+ * @version 0.3.2
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -260,7 +260,7 @@ class WikiSyncClient {
 		return true;
 	}
 	
-	/*
+	/**
 	 * called via AJAX to perform remote login via the API
 	 * @param $args[0] : remote wiki root
 	 * @param $args[1] : remote wiki user
@@ -347,22 +347,23 @@ class WikiSyncClient {
 		return $json_result->getResult( $response->login->result );
 	}
 
-	/*
+	/**
 	 * Access to local API
 	 * @param $api_params string in JSON format {key:val} or PHP array ($key=>val)
 	 * @return result of local API query
 	 */
 	static function localAPIwrap( $api_params ) {
+		global $wgEnableWriteAPI;
 		if ( is_string( $api_params ) ) {
 			$api_params = FormatJson::decode( $api_params, true );
 		}
 		$req = new FauxRequest( $api_params );
-		$api = new ApiMain( $req );
+		$api = new ApiMain( $req, $wgEnableWriteAPI );
 		$api->execute();
 		return $api->getResultData();
 	}
 
-	/*
+	/**
 	 * called via AJAX to perform API request on local wiki (HTTP GET)
 	 * @param $args[0] : API query parameters line in JSON format {'key':'val'} or PHP associative array
 	 * @param $args[1] : optional, type of result:
@@ -402,7 +403,7 @@ class WikiSyncClient {
 		return $json_result->getResult();
 	}
 
-	/*
+	/**
 	 * called via AJAX to perform API request on remote wiki (HTTP GET/POST)
 	 * @param $args[0] : remote context in JSON format, keys
 	 * 	{ 'wikiroot':val, 'userid':val, 'username':val, 'logintoken':val, 'cookieprefix':val, 'sessionid':val }
@@ -549,7 +550,8 @@ class WikiSyncClient {
 		}
 		fclose( $fp );
 		if ( self::$directionToLocal ) {
-			# suppress "pear mail" smtp bugs in EmailNotification::actuallyNotifyOnPageChange()
+			# suppress "pear mail" possible smtp fatal errors
+			# in EmailNotification::actuallyNotifyOnPageChange()
 			$wgSMTP = false;
 			$wgEnableEmail = false;
 			$wgEnableUserEmail = false;
@@ -565,25 +567,46 @@ class WikiSyncClient {
 				return $json_result->getResult( 'no_import_rights' );
 			}
 			$source = ImportStreamSource::newFromFile( $fname );
-			if ( !$source->isOK() ) {
+			$err_msg = null;
+			if ( $source instanceof Status ) {
+				if ( $source->isOK() ) {
+					$source = $source->value;
+				} else {
+					$err_msg = $source->getWikiText();
+				}
+			} elseif ( $source instanceof WikiErrorMsg || WikiError::isError( $source ) ) {
+				$err_msg = $source->getMessage();
+			}
+			if ( $err_msg !== null ) {
 				@unlink( $fname );
-				return $json_result->getResult( 'import', $source->getWikiText() );
+				return $json_result->getResult( 'import',  $err_msg );
 			}
-			$importer = new WikiImporter( $source->value );
-			$reporter = new WikiSyncImportReporter( $importer, true, '', wfMsg( 'wikisync_log_imported_by' ) );
-			try {
-				$importer->doImport();
-			} catch ( MWException $e ) {
-				return $json_result->getResult( 'import', $e->getMessage() );
+			$importer = new WikiImporter( $source );
+			$reporter = new WikiSyncImportReporter( $importer, false, '', wfMsg( 'wikisync_log_imported_by' ) );
+			$result = $importer->doImport();
+			@fclose( $source->mHandle );
+			if ( !WikiSyncSetup::$debug_mode ) {
+				@unlink( $fname );
 			}
-			@fclose( $source->value->mHandle );
-			@unlink( $fname );
+			if ( $result instanceof WikiXmlError ) {
+				$r =
+					array(
+						'line' => $result->mLine,
+						'column' => $result->mColumn,
+						'context' => $result->mByte . $result->mContext,
+						'xmlerror' => xml_error_string( $result->mXmlError )
+					);
+				$json_result->append( $r );
+				return $json_result->getResult( 'import', $result->getMessage() );
+			} elseif ( WikiError::isError( $result ) ) {
+				return $json_result->getResult( 'import', $source->getMessage() );
+			}
 			$resultData = $reporter->getData();
 			$json_result->setStatus( '1' ); // API success
 			return $json_result->getResult();
 		} else {
 			$APIparams = array(
-				'action' => 'import',
+				'action' => 'syncimport',
 				'format' => 'json',
 				'token' => $dstImportToken,
 			);
@@ -597,7 +620,7 @@ class WikiSyncClient {
 		}
 	}
 
-	/*
+	/**
 	 * called via AJAX to perform synchronization of one XML chunk from source to destination wiki
 	 * @param $args[0] : remote context in JSON format, keys
 	 * 	{ 'wikiroot':val, 'userid':val, 'username':val, 'logintoken':val, 'cookieprefix':val, 'sessionid':val }
@@ -613,6 +636,7 @@ class WikiSyncClient {
 		$APIparams = array(
 			'action' => 'revisionhistory',
 			'format' => 'json',
+			'exclude_user' => WikiSyncSetup::$remote_wiki_user,
 			'xmldump' => '',
 			'dir' => 'newer',
 			'startid' => $client_params['startid'],
@@ -623,7 +647,7 @@ class WikiSyncClient {
 			$result['ws_msg'] = 'source: ' . $result['ws_msg'] . ' (' . __METHOD__ . ')';
 			return FormatJson::encode( $result );
 		}
-		# collect the file titles existed in current chunk's revisions
+		# collect the file titles that exist in current chunk's revisions
 		$files = array();
 		foreach ( $result['query']['revisionhistory'] as $entry ) {
 			if ( $entry['namespace'] == NS_FILE && $entry['redirect'] === '0' ) {
@@ -658,7 +682,7 @@ class WikiSyncClient {
 		return array( 'titles'=>$titles, 'sha1'=>$sha1, 'sizes'=>$sizes, 'timestamps'=>$timestamps );
 	}
 
-	/*
+	/**
 	 * called via AJAX to compare source and destination list of files
 	 * @param $args[0] : remote context in JSON format, keys
 	 * 	{ 'wikiroot':val, 'userid':val, 'username':val, 'logintoken':val, 'cookieprefix':val, 'sessionid':val }
@@ -726,7 +750,7 @@ class WikiSyncClient {
 		return $wgTmpDirectory . '/' . $snoopy->logintoken . '_' . $snoopy->sessionid . '_' . $chunk_fname;
 	}
 
-	/*
+	/**
 	 * called via AJAX to transfer one chunk of file from source to destination wiki
 	 * @param $args[0] : remote context in JSON format, keys
 	 * 	{ 'wikiroot':val, 'userid':val, 'username':val, 'logintoken':val, 'cookieprefix':val, 'sessionid':val }
@@ -833,8 +857,8 @@ class WikiSyncClient {
 		}
 	}
 
-	/*
-	 * called via AJAX to transfer one chunk of file from source to destination wiki
+	/**
+	 * called via AJAX to store previousely uploaded temporary file into local repository
 	 * @param $args[0] : remote context in JSON format, keys
 	 * 	{ 'wikiroot':val, 'userid':val, 'username':val, 'logintoken':val, 'cookieprefix':val, 'sessionid':val }
 	 * @param $args[1] : client parameters line in JSON format {'key':'val'}
@@ -871,7 +895,7 @@ class WikiSyncClient {
 			if ( !$status->isGood() ) {
 				return $json_result->getResult( 'upload', $status->getWikiText() );
 			}
-			if ( !unlink( $chunk_fpath ) ) {
+			if ( !@unlink( $chunk_fpath ) ) {
 				return $json_result->getResult( 'chunk_file', 'Cannot unlink temporary file ' . $chunk_fpath . ' in ' . __METHOD__ );
 			}
 			// API success

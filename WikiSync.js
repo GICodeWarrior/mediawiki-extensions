@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.3.1
+ * @version 0.3.2
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -127,6 +127,9 @@ window.WikiSync = {
 	srcWikiRoot : '',
 	dstWikiRoot : '',
 
+	// remote login form DOM node
+	loginForm : null,
+
 	// revision ids of source wiki (dichotomy search)
 	// note that all of these should be numbers, while API/callback parameters should be string
 	srcFirstId : null, // very first revid
@@ -153,7 +156,7 @@ window.WikiSync = {
 	syncFiles : false, // true, when files should be synched as well
 	fileList : [],  // list of files in format of {'title':,'size':,'timestamp':}
 	fileListIdx : 0, // current index of the list of files
-	// currently _accumulated_ size of all files in fileList (counted in chunks, file by fule)
+	// currently _accumulated_ size of all files in fileList (counted in chunks, file by file)
 	fileListSize : 0,
 	// currently accumulated offset (which is also a current size) of currently transferred file
 	currFileOffset : 0,
@@ -824,8 +827,8 @@ window.WikiSync = {
 		case 'xml_chunk' :
 			var clientParams = {
 				'startid' : parseInt( operation.startid ),
-				// please do not use larger value because it can cause memory exhaust errors and php timeouts
-				'limit' : 10,
+				// please do not use larger value because it may cause memory exhaust errors and php timeouts
+				'limit' : (typeof operation.limit === 'undefined') ? 10 : parseInt( operation.limit ),
 				'dst_import_token' : this.dstImportToken
 			};
 			var nextOp = {
@@ -862,12 +865,12 @@ window.WikiSync = {
 				return;
 			}
 			// try to synchronize next chunk
-			var params = {
+			var nextOp = {
 				'fname' : 'synchronize',
 				'opcode' : 'xml_chunk',
 				'startid' : '' + this.xmlContinueStartId
 			};
-			this.synchronize( params );
+			this.synchronize( nextOp );
 			return;
 		case 'success' :
 			this.filesPercents.setVisibility( false );
@@ -972,6 +975,7 @@ window.WikiSync = {
 		case 'start' :
 			var APIparams = {
 				'action' : 'revisionhistory',
+				'exclude_user' : 'WikiSyncBot',
 				'format' : 'json',
 				'dir' : 'older',
 				'limit' : '1'
@@ -1045,6 +1049,7 @@ window.WikiSync = {
 		}
 		// disable all buttons
 		this.setButtons( false );
+		this.syncFiles = this.loginForm.ws_sync_files.checked;
 		WikiSyncScheduler.reset();
 		this.schedulerLogger.log(
 			this.formatMessage(
@@ -1073,10 +1078,10 @@ window.WikiSync = {
 		this.filesPercents.setVisibility( false );
 		this.showIframe( '' );
 		this.errorDefaultAction();
-		var loginForm = document.getElementById( 'remote_login_form' );
+		this.loginForm = document.getElementById( 'remote_login_form' );
 		// {{{ restore remote login / password cookies to login form, if any
-		WikiSyncUtils.cookieToInput( 'ruser', loginForm.remote_wiki_user );
-		var rpass = WikiSyncUtils.cookieToInput( 'rpass', loginForm.remote_wiki_pass );
+		WikiSyncUtils.cookieToInput( 'ruser', this.loginForm.remote_wiki_user );
+		var rpass = WikiSyncUtils.cookieToInput( 'rpass', this.loginForm.remote_wiki_pass );
 		// }}}
 		// {{{ restore scheduler cookies to scheduler form, if any
 		var schedulerForm = document.getElementById( 'scheduler_form' );
@@ -1085,9 +1090,9 @@ window.WikiSync = {
 		WikiSyncUtils.cookieToInput( 'auto_sync_time_interval', schedulerForm.ws_auto_sync_time_interval );
 		// }}}
 		if ( rpass !== null ) {
-			loginForm.ws_store_password.checked = true;
+			this.loginForm.ws_store_password.checked = true;
 			// try to autologin
-			this.submitRemoteLogin( loginForm );
+			this.submitRemoteLogin( this.loginForm );
 		}
 		WikiSyncScheduler.setup( schedulerForm );
 		window.setTimeout( function() { WikiSyncScheduler.poll(); }, this.pollTimeout );

@@ -28,7 +28,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/WikiSync/WikiSync.php";
  *
- * @version 0.3.1
+ * @version 0.3.2
  * @link http://www.mediawiki.org/wiki/Extension:WikiSync
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -46,7 +46,7 @@ abstract class ApiWikiSync extends ApiQueryBase {
 	// we construct like ApiBase, however we also use SQL select building methods from ApiQueryBase
 	public function __construct( $mainModule, $moduleName, $modulePrefix = '' ) {
 		// we call ApiBase only, ApiQueryBase is unsuitable to our needs
-		parent::__construct( $mainModule, $moduleName, $modulePrefix );
+		ApiBase::__construct( $mainModule, $moduleName, $modulePrefix = '' );
 		$this->mDb = null;
 		$this->resetQueryParams();
 	}
@@ -245,9 +245,9 @@ class ApiRevisionHistory extends ApiWikiSync {
 	}
 
 	public function execute() {
-		$db = $this->getDB();
 		/* Get the parameters of the request. */
 		$params = $this->extractRequestParams();
+		$db = $this->getDB();
 		# next line is required, because getCustomPrinter() is not being executed from FauxRequest
 		$this->xmlDumpMode = $params['xmldump'];
 
@@ -259,19 +259,36 @@ class ApiRevisionHistory extends ApiWikiSync {
 			'rev_user_text',
 			'OCTET_LENGTH( old_text ) AS text_len'
 		);
-		$this->addFields( $selectFields );
 		$this->addTables( array( 'revision', 'text' ) );
 		$this->addWhereRange( 'rev_id', $params['dir'], $params['startid'], $params['endid'] );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
+		if ( $params['exclude_user'] !== null ) {
+			# we are not including revisions created by WikiSyncBot, which are created in
+			# ImportReporter::reportPage to log the reason of import (set by constructors of
+			# WikiSyncImportReporter / ImportReporter)
+			# otherwise, fake reverse synchronizations might occur
+			$this->addWhere( 'rev_user_text != ' . $db->addQuotes( $params['exclude_user'] ) );
+		}
 		$this->addJoinConds(
 			array(
 				'text' => array( 'INNER JOIN', 'rev_text_id=old_id' )
 			)
 		);
+		if ( $params['pageinfo'] === true ) {
+			$this->addTables( 'page' );
+			$this->addJoinConds(
+				array(
+					'page' => array( 'INNER JOIN', 'page_id=rev_page' ),
+				)
+			);
+			$selectFields = array_merge( $selectFields,
+				array( 'page_namespace', 'page_title', 'page_latest' )
+			);
+		}
+		$this->addFields( $selectFields );
 		$dbres = $this->select(__METHOD__);
-
-		$result = $this->getResult();
 		$limit = $params['limit'];
+		$result = $this->getResult();
 
 		if ( $this->xmlDumpMode ) {
 			# use default IIS / Apache execution time limit which much larger than default PHP limit
@@ -280,19 +297,30 @@ class ApiRevisionHistory extends ApiWikiSync {
 			$db->dataSeek( $dbres, $count - 1 );
 			$last_row = $db->fetchObject( $dbres );
 			$db->dataSeek( $dbres, 0 );
-			# I don't know how to remove last element of db result list without of re-sending the select
-			# do we really need rev_deleted ???
-			$selectFields = array_merge( $selectFields,
-				array( 'page_id', 'page_namespace', 'page_title', 'page_restrictions', 'page_is_redirect', 'rev_user', 'rev_text_id', 'rev_deleted', 'rev_minor_edit', 'rev_comment', 'old_text' )
-			);
-			$this->addFields( $selectFields );
-			$this->addTables( 'page' );
 			$this->addOption( 'LIMIT', $params['limit'] );
-			$this->addJoinConds(
-				array(
-					'page' => array( 'INNER JOIN', 'page_id=rev_page' ),
-				)
+			$selectFields = array_merge( $selectFields,
+				array( 'page_id',
+					'page_restrictions',
+					'page_is_redirect',
+					'rev_user',
+					'rev_text_id',
+					'rev_deleted',
+					'rev_minor_edit',
+					'rev_comment',
+					'old_text' )
 			);
+			if ( $params['pageinfo'] !== true ) {
+				$this->addTables( 'page' );
+				$this->addJoinConds(
+					array(
+						'page' => array( 'INNER JOIN', 'page_id=rev_page' ),
+					)
+				);
+				$selectFields = array_merge( $selectFields,
+					array( 'page_namespace', 'page_title', 'page_latest' )
+				);
+			}
+			$this->addFields( $selectFields );
 			$dbres = $this->select(__METHOD__);
 			if ( !$this->rawOutputMode ) {
 				while ( $row = $db->fetchObject( $dbres ) ) {
@@ -351,13 +379,16 @@ class ApiRevisionHistory extends ApiWikiSync {
 		$vals['textlen'] = $row->text_len;
 		$vals['usertext'] = $row->rev_user_text;
 		if ( isset( $row->page_namespace ) ) {
-			$vals['namespace'] = $row->page_namespace;
+			$vals['namespace'] = intval( $row->page_namespace );
 		}
 		if ( isset( $row->page_title ) ) {
 			$vals['title'] = $row->page_title;
 		}
 		if ( isset( $row->page_is_redirect ) ) {
 			$vals['redirect'] = $row->page_is_redirect;
+		}
+		if ( isset( $row->page_latest ) ) {
+			$vals['latest'] = $row->page_latest;
 		}
 		return $vals;
 	}
@@ -396,6 +427,10 @@ class ApiRevisionHistory extends ApiWikiSync {
 				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
 				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
+			'exclude_user' => array(
+				ApiBase :: PARAM_TYPE => 'user'
+			),
+			'pageinfo' => false,
 			'xmldump' => false,
 			'rawxml' => false
 		);
@@ -407,7 +442,9 @@ class ApiRevisionHistory extends ApiWikiSync {
 			'endid' => 'stop revision enumeration on this revid (enum)',
 			'dir' => 'direction of enumeration - towards "newer" or "older" revisions (enum)',
 			'limit' => 'limit how many revisions will be returned (enum)',
-			'xmldump' => 'return xml dump of selected revisions instead',
+			'exclude_user' => 'exclude revisions created by particular user',
+			'pageinfo' => 'return also information about pages associated with selected revisions',
+			'xmldump' => 'return also xml dump of selected revisions',
 			'rawxml' => 'return xml dump as raw xml'
 		);
 	}
@@ -422,11 +459,17 @@ class ApiRevisionHistory extends ApiWikiSync {
 			'api.php?action=revisionhistory',
 			'The same as it would look in JSON (use without fm postfix)',
 			'api.php?action=revisionhistory&format=jsonfm',
+			'The same with associated page info (use without fm postfix)',
+			'api.php?action=revisionhistory&pageinfo&format=jsonfm',
+			'Most recently created revisions with no revisions created by WikiSyncBot',
+			'api.php?action=revisionhistory&exclude_user=WikiSyncBot',
 			'Get first results (with continuation) of revisions with id from 20000 to 19000',
 			'api.php?action=revisionhistory&startid=20000&endid=19000',
 			'Get first results (with continuation) of revisions with id values from 19000 to 20000 in reverse order',
 			'api.php?action=revisionhistory&startid=19000&endid=20000&dir=newer',
 			'Get xml dump of first results (with continuation) of revisions with id values from 19000 (wrap)',
+			'api.php?action=revisionhistory&startid=19000&dir=newer&xmldump&format=jsonfm',
+			'Get xml dump of first results (with continuation) of revisions with id values from 19000 (wrap) with associated page info',
 			'api.php?action=revisionhistory&startid=19000&dir=newer&xmldump&format=jsonfm',
 			'Get xml dump of first results (no continuation) of revisions with id values from 19000 (raw xml)',
 			'api.php?action=revisionhistory&startid=19000&dir=newer&xmldump&rawxml',
@@ -440,7 +483,7 @@ class ApiRevisionHistory extends ApiWikiSync {
 	}
 } /* end of ApiRevisionHistory class */
 
-class ApiGetFile extends ApiQueryBase {
+class ApiGetFile extends ApiBase {
 
 	var $dbkey = ''; // a dbkey name of file
 	var $fpath; // a filesystem path to file
@@ -604,3 +647,88 @@ class ApiGetFile extends ApiQueryBase {
 	}
 
 } /* end of ApiGetFile class */
+
+class ApiSyncImport extends ApiImport {
+
+	public function __construct($main, $action) {
+		parent :: __construct($main, $action);
+	}
+
+	public function execute() {
+		global $wgUser;
+		if ( !$wgUser->isAllowed( 'import' ) ) {
+			$this->dieUsageMsg( array('cantimport') );
+		}
+		$params = $this->extractRequestParams();
+		if ( !isset( $params['token'] ) ) {
+			$this->dieUsageMsg( array('missingparam', 'token') );
+		}
+		if ( !$wgUser->matchEditToken( $params['token'] ) ) {
+			$this->dieUsageMsg( array('sessionfailure') );
+		}
+		$source = null;
+		if ( !$wgUser->isAllowed( 'importupload' ) ) {
+			$this->dieUsageMsg( array('cantimport-upload') );
+		}
+		$source = ImportStreamSource::newFromUpload( 'xml' );
+		if ( $source instanceof Status ) {
+			if ( $source->isOK() ) {
+				$source = $source->value;
+			} else {
+				$this->dieUsageMsg( array('import-unknownerror', $source->getWikiText() ) );
+			}
+		} elseif ( $source instanceof WikiErrorMsg ) {
+			$this->dieUsageMsg( array_merge( array($source->getMessageKey()), $source->getMessageArgs() ) );
+		} elseif ( WikiError::isError( $source ) ) {
+			// This shouldn't happen
+			$this->dieUsageMsg( array('import-unknownerror', $source->getMessage() ) );
+		}
+		$importer = new WikiImporter( $source );
+		$reporter = new WikiSyncImportReporter( $importer, true, '', wfMsg( 'wikisync_log_imported_by' ) );
+
+		$result = $importer->doImport();
+		if ( $result instanceof WikiXmlError ) {
+			$this->dieUsageMsg( array('import-xml-error',
+				$result->mLine,
+				$result->mColumn,
+				$result->mByte . $result->mContext,
+				xml_error_string($result->mXmlError) ) );
+		} elseif ( WikiError::isError( $result ) ) {
+			// This shouldn't happen
+			$this->dieUsageMsg( array('import-unknownerror', $result->getMessage() ) );
+		}
+		$resultData = $reporter->getData();
+		$this->getResult()->setIndexedTagName( $resultData, 'page' );
+		$this->getResult()->addValue( null, $this->getModuleName(), $resultData );
+	}
+
+	public function getAllowedParams() {
+		global $wgImportSources;
+		return array (
+			'token' => null,
+			'xml' => null,
+		);
+	}
+
+	public function getParamDescription() {
+		return array (
+			'token' => 'Import token obtained through prop=info',
+			'xml' => 'Uploaded XML file',
+		);
+	}
+
+	public function getDescription() {
+		return array (
+			'Import a page from XML file, with suppressing of creation of informational null revisions'
+		);
+	}
+
+	protected function getExamples() {
+		return array();
+	}
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
+	}
+
+} /* end of ApiSyncImport class */
