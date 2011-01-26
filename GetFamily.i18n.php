@@ -55,7 +55,7 @@ $messages['ar'] = array(
 $messages['be-tarask'] = array(
 	'getfamily-desc' => 'Стварае файл групы вікі-праектаў для pywikipediabot',
 	'getfamily' => 'Атрымаць групу вікі-праектаў для pywikipediabot',
-	'getfamily-interwikierror' => 'Памылка: няслушная налада інтэрвікі, зьвяжыцеся з Вашым лякальным адміністратарам.',
+	'getfamily-interwikierror' => 'Памылка: інтэрвікі сканфігураваныя няслушным чынам, зьвяжыцеся з Вашым лякальным адміністратарам.',
 	'right-getfamily' => 'стварэньня файла групы вікі-праектаў для pywikipediabot',
 );
 
