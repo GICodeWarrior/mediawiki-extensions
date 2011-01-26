@@ -31,7 +31,9 @@ from utils import file_utils
 from utils import ordered_dict
 from utils import log
 from utils import timer
-from classes import wikiprojects
+from classes import projects
+from classes import languages
+from classes import runtime_settings
 from database import db
 from etl import downloader
 from etl import extracter
@@ -184,10 +186,11 @@ def transformer_launcher(properties, settings, logger):
                      event='finish')
 
 
-def exporter_launcher(properties, settings, logger):
+def dataset_launcher(properties, settings, logger):
     print 'Start exporting dataset'
     stopwatch = timer.Timer()
     log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='start')
+
     for target in properties.targets:
 #        write_message_to_log(logger, settings,
 #                             message=None,
@@ -195,12 +198,11 @@ def exporter_launcher(properties, settings, logger):
 #                             target=target,
 #                             dbname=properties.full_project,
 #                             collection=properties.collection)
-        print 'Dataset is created by: %s' % target
-
-        analyzer.generate_chart_data(properties.project,
+        analyzer.generate_chart_data(properties.project.name,
                                      properties.collection,
-                                     properties.language_code,
-                                     target)
+                                     properties.language.code,
+                                     target,
+                                     **properties.keywords)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='finish')
 
@@ -265,24 +267,6 @@ def all_launcher(properties, settings, logger):
     log.log_to_mongo(properties, 'dataset', 'all', stopwatch, event='finish')
 
 
-def show_languages(settings, logger, properties):
-    first = properties.get_value('startswith')
-    if first != None:
-        first = first.title()
-    choices = languages.supported_languages()
-    lang = []
-    for choice in choices:
-        lang.append(choice)
-    lang.sort()
-    for language in lang:
-        try:
-            if first != None and language.startswith(first):
-                print '%s' % language.decode(settings.encoding)
-            elif first == None:
-                print '%s' % language.decode(settings.encoding)
-        except UnicodeEncodeError:
-            print '%s' % language
-
 
 def about_statement():
     print ''
@@ -300,9 +284,10 @@ def init_args_parser():
     Entry point for parsing command line and launching the needed function(s).
     '''
     settings = configuration.Settings()
-    default_language = wikiprojects.determine_default_language()
-    wiki = wikiprojects.Wiki(settings)
-    projects = wiki.projects.keys()
+    language = languages.init()
+    project = projects.init()
+    rts = runtime_settings.RunTimeSettings(project, language, settings)
+
     #Init Argument Parser
     parser = ArgumentParser(prog='manage', formatter_class=RawTextHelpFormatter)
     subparsers = parser.add_subparsers(help='sub - command help')
@@ -356,10 +341,19 @@ def init_args_parser():
         exported.')
     parser_transform.set_defaults(func=transformer_launcher)
 
-    #EXPORT
-    parser_dataset = subparsers.add_parser('export',
+    #DATASET
+    parser_dataset = subparsers.add_parser('dataset',
         help='Create a dataset from the MongoDB and write it to a csv file.')
-    parser_dataset.set_defaults(func=exporter_launcher)
+    parser_dataset.set_defaults(func=dataset_launcher)
+    parser_dataset.add_argument('-c', '--charts',
+                                action='store',
+                                help='Should be a valid function name that matches one of the plugin functions',
+                                default=analyzer.available_analyses()['new_editor_count'])
+
+    parser_dataset.add_argument('-k', '--keywords',
+                                action='store',
+                                help='Add additional keywords in the format keyword1=value1,keyword2=value2',
+                                default={})
 
     #ALL
     parser_all = subparsers.add_parser('all',
@@ -387,12 +381,11 @@ def init_args_parser():
         executing all.',
         default=[])
 
-
     parser.add_argument('-l', '--language',
         action='store',
         help='Example of valid languages.',
-        choices=wiki.supported_languages(),
-        default=default_language)
+        choices=project.supported_languages(),
+        default=language.name)
 
     parser.add_argument('-p', '--project',
         action='store',
@@ -422,18 +415,13 @@ def init_args_parser():
             %s' % ''.join([f + ',\n' for f in settings.file_choices]),
         default='stub-meta-history.xml.gz')
 
-    parser.add_argument('-d', '--datasets',
-        action='store',
-        choices=analyzer.available_analyses(),
-        help='Indicate what type of data should be exported.',
-        default='cohort_dataset_backward_bar')
 
-    return parser, settings, wiki
+    return project, language, parser, settings
 
 def main():
-    parser, settings, wiki = init_args_parser()
+    project, language, parser, settings = init_args_parser()
     args = parser.parse_args()
-    properties = wikiprojects.Wiki(settings, args)
+    properties = runtime_settings.RunTimeSettings(project, language, settings, args)
     #initialize logger
     logger = logging.getLogger('manager')
     logger.setLevel(logging.DEBUG)
@@ -441,19 +429,19 @@ def main():
     # Add the log message handler to the logger
     today = datetime.datetime.today()
     log_filename = os.path.join(settings.log_location, '%s%s_%s-%s-%s.log' \
-        % (properties.language_code, properties.project,
+        % (properties.language.code, properties.project.name,
            today.day, today.month, today.year))
     handler = logging.handlers.RotatingFileHandler(log_filename,
                                                    maxBytes=1024 * 1024,
                                                    backupCount=3)
 
     logger.addHandler(handler)
-    logger.debug('Chosen language: \t%s' % wiki.language)
+    logger.debug('Chosen language: \t%s' % properties.language)
 
     #start manager
     #detect_python_version(logger)
     about_statement()
-    config.create_configuration(settings, args)
+    #config.create_configuration(settings, args)
 
     properties.show_settings()
     args.func(properties, settings, logger)

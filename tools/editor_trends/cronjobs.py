@@ -22,7 +22,9 @@ from multiprocessing import Process
 import manage as manager
 
 from database import db
-from classes import wikiprojects
+from classes import languages
+from classes import projects
+from classes import runtime_settings
 from analyses import analyzer
 
 
@@ -30,13 +32,10 @@ def launch_editor_trends_toolkit(task):
     '''
     This function should only be called as a cronjob and not directly.
     '''
-    parser, settings, wiki = manager.init_args_parser()
+    project, language, parser, settings = manager.init_args_parser()
     args = parser.parse_args(['django'])
-    args.language = wikiprojects.get_language(task['language'])
-    args.project = task['project']
-    print args
-    wiki = wikiprojects.Wiki(settings, args)
-    res = manager.all_launcher(wiki, settings, None)
+    rts = runtime_settings.RunTimeSettings(project, language, settings, args)
+    res = manager.all_launcher(rts, settings, None)
     return res
 
 

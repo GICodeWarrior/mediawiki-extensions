@@ -197,7 +197,9 @@ class Settings:
             return 500
 
     def update_python_path(self):
-        IGNORE_DIRS = ['wikistats', 'zips']
+        IGNORE_DIRS = ['wikistats', 'zips', 'datasets', 'mapreduce', 'logs',
+                       'statistics', 'js_scripts', 'deployment',
+                       'documentation', 'data', 'code-snippets']
         dirs = [name for name in os.listdir(self.working_directory) if
             os.path.isdir(os.path.join(self.working_directory, name))]
         for subdirname in dirs:
