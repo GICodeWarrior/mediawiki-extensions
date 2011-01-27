@@ -19,6 +19,28 @@ $messages['en'] = array(
 	'trustedmath-not-found' => 'Page [[:$1]] does not exist',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'trustedmath-desc' => 'Дазваляе ўстаўляць LaTeX-ураўненьні на старонкі, падобна на ўбудаваныя матэматычныя формулы, але без залежнасьці ад Ocaml',
+	'trustedmath-permission-error' => 'Небясьпечныя матэматычныя формулы забароненыя ў {{GRAMMAR:месны|{{SITENAME}}}}',
+	'trustedmath-path-error' => 'Памылка стварэньня матэматычнай дырэкторыі',
+	'trustedmath-convert-error' => 'Памылка стварэньня матэматычнай выявы. «$1» вярнула <tt><nowiki>$2</nowiki></tt>.',
+);
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'trustedmath-desc' => 'Ermöglicht, ohne von Ocaml abhängig zu sein, die Einbettung von mathematischen Gleichungen in LaTeX',
+	'trustedmath-permission-error' => 'Nicht vertrauenswürdig gerenderte mathematische Gleichungen wurde für dieses Wiki deaktiviert',
+	'trustedmath-path-error' => 'Fehler beim Erstellen des Verzeichnisses für mathematische Gleichungen',
+	'trustedmath-convert-error' => 'Fehler beim Erstellen des Bildes der mathematischen Gleichung: „$1“ gab <tt><nowiki>$2</nowiki></tt> aus.',
+	'trustedmath-not-found' => 'Seite [[:$1]] ist nicht vorhanden',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Zetud
@@ -40,6 +62,39 @@ $messages['hsb'] = array(
 	'trustedmath-path-error' => 'Zmylk při wutworjenju zapisa math',
 	'trustedmath-convert-error' => 'Wobraz při wutworjenju wobraza math: "$1" wróći <tt><nowiki>$2</nowiki></tt>',
 	'trustedmath-not-found' => 'Strona [[:$1]] njeeksistuje',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'trustedmath-desc' => 'Permitte incorporar equationes LaTeX in paginas, de forma similar al renditor mathematic integrate, ma sin dependentia de Ocaml',
+	'trustedmath-permission-error' => 'Le functionalitate mathematic non approbate es disactivate in iste wiki',
+	'trustedmath-path-error' => 'Error durante le creation del directorio "math"',
+	'trustedmath-convert-error' => 'Error durante le creation del imagine a mathematica. "$1" retornava <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Le pagina [[:$1]] non existe',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'trustedmath-desc' => 'Овозможува вметнување на равенки од LaTeX во страници, слично на вградената математичка алатка, но не зависи од Ocaml',
+	'trustedmath-permission-error' => 'На ова вики е оневозможена недоверлива математика',
+	'trustedmath-path-error' => 'Грешка при создавањето на математичкиот директориум',
+	'trustedmath-convert-error' => 'Грешка при создавањето на математичката слика. „$1“ даде <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Страницата [[:$1]] не постои',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'trustedmath-desc' => "Maakt het mogelijk LaTeX-vergelijkingen weer te geven op pagina's, omgeveer gelijk aan de ingebouwde tekstverwerker voor wiskundige vergelijkingen, maar zonder de afhankelijkheid van Ocaml",
+	'trustedmath-permission-error' => '"Untrusted math" is uitgeschakeld op deze wiki',
+	'trustedmath-path-error' => 'Er is een fout opgetreden bij het aanmaken van de map "math"',
+	'trustedmath-convert-error' => 'Er is een fout opgetreden tijdens het aanmaken van de wiskundige afbeelding. "$1" gaf de foutmelding <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Pagina [[:$1]] bestaat niet',
 );
 
 /** Portuguese (Português)

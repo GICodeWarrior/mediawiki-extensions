@@ -509,7 +509,7 @@ $messages['de'] = array(
 	'articlefeedback-field-objective-tip' => 'Hast du den Eindruck, dass diese Seite eine ausgewogene Darstellung aller mit dessen Inhalt verbundenen Aspekte enthält?',
 	'articlefeedback-field-wellwritten-label' => 'Gut geschrieben',
 	'articlefeedback-field-wellwritten-tip' => 'Hast du den Eindruck, dass diese Seite gut strukturiert sowie geschrieben wurde?',
-	'articlefeedback-pitch-reject' => 'Nein, vielen Dank',
+	'articlefeedback-pitch-reject' => 'Vielleicht später',
 	'articlefeedback-pitch-takesurvey-title' => 'Möchtest du an einer Umfrage teilnehmen?',
 	'articlefeedback-pitch-takesurvey-accept' => 'Umfrage starten',
 	'articlefeedback-pitch-createaccount-title' => 'Möchtest du ein Benutzerkonto erstellen?',
@@ -555,7 +555,13 @@ $messages['dsb'] = array(
 	'articlefeedback-report-switch-label' => 'Pogódnośenja boka pokazaś',
 	'articlefeedback-report-empty' => 'Žedne pogódnośenja',
 	'articlefeedback-report-ratings' => '$1 pogódnosénjow',
+	'articlefeedback-field-trustworthy-label' => 'Dowěry gódny',
 	'articlefeedback-field-complete-label' => 'Dopołny',
+	'articlefeedback-field-wellwritten-label' => 'Derje napisany',
+	'articlefeedback-pitch-reject' => 'Snaź pózdźej',
+	'articlefeedback-pitch-createaccount-title' => 'Coš konto załožyś?',
+	'articlefeedback-pitch-createaccount-accept' => 'Konto załožyś',
+	'articlefeedback-pitch-makefirstedit-accept' => 'Wobźěłaś',
 );
 
 /** Greek (Ελληνικά)
@@ -758,7 +764,7 @@ $messages['fr'] = array(
 	'articlefeedback-field-objective-tip' => 'Pensez-vous que cette page fournit une présentation équitable de toutes les perspectives du sujet traité ?',
 	'articlefeedback-field-wellwritten-label' => 'Bien écrit',
 	'articlefeedback-field-wellwritten-tip' => 'Pensez-vous que cette page soit bien organisée et bien écrite ?',
-	'articlefeedback-pitch-reject' => 'Non merci',
+	'articlefeedback-pitch-reject' => 'Peut-être plus tard',
 	'articlefeedback-pitch-takesurvey-title' => 'Souhaitez-vous répondre à un sondage?',
 	'articlefeedback-pitch-takesurvey-accept' => 'Démarrer l’enquête',
 	'articlefeedback-pitch-createaccount-title' => 'Souhaitez-vous créer un compte?',
@@ -922,7 +928,7 @@ $messages['he'] = array(
 	'articlefeedback-field-objective-tip' => 'האם אתם מרגישים שהדף הזה מייצג באופן הולם את כל נקודות המבט על הנושא?',
 	'articlefeedback-field-wellwritten-label' => 'כתוב היטב',
 	'articlefeedback-field-wellwritten-tip' => 'האם אתם מרגישים שהדף הזה מאורגן וכתוב היטב?',
-	'articlefeedback-pitch-reject' => 'לא, תודה',
+	'articlefeedback-pitch-reject' => 'אולי מאוחר יותר',
 	'articlefeedback-pitch-takesurvey-title' => 'האם תרצו למלא סקר?',
 	'articlefeedback-pitch-takesurvey-accept' => 'להתחיל את הסקר',
 	'articlefeedback-pitch-createaccount-title' => 'האם תרצו ליצור חשבון?',
@@ -1018,7 +1024,7 @@ $messages['hsb'] = array(
 	'articlefeedback-field-objective-tip' => 'Měniš, zo tuta strona pokazuje wurunane předstajenje wšěch perspektiwow tutoho problema?',
 	'articlefeedback-field-wellwritten-label' => 'Derje napisany',
 	'articlefeedback-field-wellwritten-tip' => 'Měniš, zo tuta strona je derje zorganizowana a derje napisana?',
-	'articlefeedback-pitch-reject' => 'Ně, dźakuju so',
+	'articlefeedback-pitch-reject' => 'Snano pozdźišo',
 	'articlefeedback-pitch-takesurvey-title' => 'Chceš pohódnoćenje přewjesć?',
 	'articlefeedback-pitch-takesurvey-accept' => 'Pohódnoćenje započeć',
 	'articlefeedback-pitch-createaccount-title' => 'Chceš konto załožić?',
@@ -1094,7 +1100,7 @@ $messages['ia'] = array(
 	'articlefeedback-field-objective-tip' => 'Pensa tu que iste pagina monstra un representation juste de tote le perspectivas super le question?',
 	'articlefeedback-field-wellwritten-label' => 'Ben scribite',
 	'articlefeedback-field-wellwritten-tip' => 'Pensa tu que iste pagina es ben organisate e ben scribite?',
-	'articlefeedback-pitch-reject' => 'No, gratias',
+	'articlefeedback-pitch-reject' => 'Forsan plus tarde',
 	'articlefeedback-pitch-takesurvey-title' => 'Vole tu responder a un sondage?',
 	'articlefeedback-pitch-takesurvey-accept' => 'Comenciar sondage',
 	'articlefeedback-pitch-createaccount-title' => 'Vole tu crear un conto?',
@@ -1346,12 +1352,12 @@ $messages['lb'] = array(
 	'articlefeedback-survey-submit' => 'Späicheren',
 	'articlefeedback-survey-title' => 'Beäntwert w.e.g. e puer Froen',
 	'articlefeedback-survey-thanks' => 'Merci datt Dir eis Ëmfro ausgefëllt hutt.',
-	'articlefeedback-form-switch-label' => 'Feedback ofgin',
-	'articlefeedback-form-panel-title' => 'Äre Feedback',
+	'articlefeedback-form-switch-label' => 'Dës Säit bewäerten',
+	'articlefeedback-form-panel-title' => 'Dës Säit bewäerten',
 	'articlefeedback-form-panel-instructions' => 'Huelt Iech w.e.g. een Ament fir d¨s Säit ze bewäerten.',
 	'articlefeedback-form-panel-submit' => 'Feedback iwwerdroen',
-	'articlefeedback-report-switch-label' => 'Resultater weisen',
-	'articlefeedback-report-panel-title' => 'Resultater vum Fedback',
+	'articlefeedback-report-switch-label' => 'Bewäertunge vun der Säit weisen',
+	'articlefeedback-report-panel-title' => 'Bewäertunge vun der Säit',
 	'articlefeedback-report-panel-description' => 'Aktuell duerchschnëttlech Bewäertung.',
 	'articlefeedback-report-empty' => 'Keng Bewäertungen',
 	'articlefeedback-report-ratings' => '$1 Bewäertungen',
@@ -1370,6 +1376,7 @@ $messages['lb'] = array(
 	'articlefeedback-pitch-createaccount-accept' => 'Benotzerkont opmaachen',
 	'articlefeedback-pitch-makefirstedit-title' => 'Wëllt Dir dës Säit änneren?',
 	'articlefeedback-pitch-makefirstedit-accept' => 'Ufänke mat änneren',
+	'articlefeedback-expert-assessment-level-3-label' => 'Expert',
 );
 
 /** Limburgish (Limburgs)
@@ -1434,7 +1441,7 @@ $messages['mk'] = array(
 	'articlefeedback-field-objective-tip' => 'Дали сметате дека статијава на праведен начин ги застапува сите гледишта по оваа проблематика?',
 	'articlefeedback-field-wellwritten-label' => 'Добро напишано',
 	'articlefeedback-field-wellwritten-tip' => 'Дали сметате дека страницава е добро организирана и убаво напишана?',
-	'articlefeedback-pitch-reject' => 'Не, благодарам',
+	'articlefeedback-pitch-reject' => 'Можеби подоцна',
 	'articlefeedback-pitch-takesurvey-title' => 'Дали би сакале да пополните една анкета?',
 	'articlefeedback-pitch-takesurvey-accept' => 'Почни',
 	'articlefeedback-pitch-createaccount-title' => 'Дали би сакале да создадете сметка?',
@@ -1525,6 +1532,7 @@ $messages['myv'] = array(
 
 /** Dutch (Nederlands)
  * @author Catrope
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -1562,7 +1570,7 @@ $messages['nl'] = array(
 	'articlefeedback-field-objective-tip' => 'Vindt u dat deze pagina een eerlijke weergave is van alle invalshoeken voor dit onderwerp?',
 	'articlefeedback-field-wellwritten-label' => 'Goed geschreven',
 	'articlefeedback-field-wellwritten-tip' => 'Vindt u dat deze pagina een correcte opbouw heeft een goed is geschreven?',
-	'articlefeedback-pitch-reject' => 'Nee, bedankt',
+	'articlefeedback-pitch-reject' => 'Nu niet',
 	'articlefeedback-pitch-takesurvey-title' => 'Wilt u een vragenlijst invullen?',
 	'articlefeedback-pitch-takesurvey-accept' => 'Vragenlijst starten',
 	'articlefeedback-pitch-createaccount-title' => 'Wilt u een gebruiker aanmaken?',
@@ -2054,7 +2062,7 @@ $messages['sl'] = array(
 	'articlefeedback-field-objective-tip' => 'Menite, da ta stran prikazuje pravično zastopanost vseh pogledov na obravnavano temo?',
 	'articlefeedback-field-wellwritten-label' => 'Dobro napisano',
 	'articlefeedback-field-wellwritten-tip' => 'Menite, da je ta stran dobro organizirana in dobro napisana?',
-	'articlefeedback-pitch-reject' => 'Ne, hvala',
+	'articlefeedback-pitch-reject' => 'Morda kasneje',
 	'articlefeedback-pitch-takesurvey-title' => 'Želite biti anketirani?',
 	'articlefeedback-pitch-takesurvey-accept' => 'Začni z anketo',
 	'articlefeedback-pitch-createaccount-title' => 'Želite ustvariti račun?',

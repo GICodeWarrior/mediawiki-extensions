@@ -1299,9 +1299,9 @@ $messages['mk'] = array(
 	'patrol-another' => 'Прикажи друго уредување, ако го има.',
 	'patrol-stopped' => 'Одлучивте да не патролирате друго уредување. $1',
 	'patrol-resume' => 'Кликнете тука за да продолжите',
-	'group-patroller' => 'Патролирачи',
-	'group-patroller-member' => 'патролирач',
-	'grouppage-patroller' => '{{ns:project}}:Патролирач',
+	'group-patroller' => 'Патролери',
+	'group-patroller-member' => 'патролер',
+	'grouppage-patroller' => '{{ns:project}}:Патролер',
 	'right-patroller' => 'Патролирани страници',
 );
 

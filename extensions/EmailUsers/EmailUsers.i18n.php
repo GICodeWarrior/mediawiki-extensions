@@ -23,3 +23,75 @@ $messages['en'] = array(
     'emailusers-toomanyrecipientsselected' => 'Too many recipients are selected.',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'emailusers-desc' => 'Ermöglicht das Versenden von E-Mails an mehrere Empfänger',
+	'emailusers' => 'E-Mails versenden',
+	'emailusers-target-reverse' => 'An alle Benutzer, mit Ausnahme der ausgewählten, versenden',
+	'emailusers-norecipient' => 'Es sind keine Benutzer vorhanden, denen eine E-Mail gesandt werden kann.',
+	'emailusers-norecipientselected' => 'Es wurde kein Empfänger ausgewählt.',
+	'emailusers-toomanyrecipientsselected' => 'Es wurden zu viele Empfänger ausgewählt.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'emailusers-desc' => 'Zmóžnja wužywarjam e-maile na někotarych dostawarjow pósłaś',
+	'emailusers' => 'Wužywarjam e-mail pósłaś',
+	'emailusers-target-reverse' => 'Wšym wužywarjam mimo wubranych pósłaś',
+	'emailusers-norecipient' => 'Njejo nichten, kótaremuž móžoš e-mail pósłaś.',
+	'emailusers-norecipientselected' => 'Žeden dostawaŕ wubrany.',
+	'emailusers-toomanyrecipientsselected' => 'Pśewjele dostawarjow jo wubrane.',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'emailusers-desc' => 'Zmóžnja wužiwarjam, e-mejlki na wjacorych přijimowarjow pósłać',
+	'emailusers' => 'Wužiwarjam e-mejlku pósłać',
+	'emailusers-target-reverse' => 'Na wšěch wužiwarjow nimo wubranych pósłać',
+	'emailusers-norecipient' => 'Njeje nichtó, kotremuž móžeš e-mejlku pósłać.',
+	'emailusers-norecipientselected' => 'Žadyn přijimowar wubrany.',
+	'emailusers-toomanyrecipientsselected' => 'Přewjele přijimowarjow je wubrane.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'emailusers-desc' => 'Permitte a usatores de inviar e-mails a multiple destinatarios',
+	'emailusers' => 'Inviar e-mail a usatores',
+	'emailusers-target-reverse' => 'Inviar a tote le usatores excepte les seligite',
+	'emailusers-norecipient' => 'Il ha nulle persona a qui tu pote inviar e-mail.',
+	'emailusers-norecipientselected' => 'Nulle destinatario es seligite.',
+	'emailusers-toomanyrecipientsselected' => 'Troppo de destinatarios es seligite.',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'emailusers-desc' => 'Им дава можност на корисниците да испраќаат е-пошта до повеќе примачи наеднаш',
+	'emailusers' => 'Испрати е-пошта на корисниците',
+	'emailusers-target-reverse' => 'Испрати на сите корисници освен избраните',
+	'emailusers-norecipient' => 'Нема на кого да му испратите е-пошта.',
+	'emailusers-norecipientselected' => 'Не е избран примач.',
+	'emailusers-toomanyrecipientsselected' => 'Избрани се премногу примачи.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'emailusers-desc' => 'Maakt het mogelijk om e-mail te verzenden naar meerdere ontvangers',
+	'emailusers' => 'Gebruikers e-mailen',
+	'emailusers-target-reverse' => 'Naar alle gebruikers verzenden behalve de geselecteerde gebruikers',
+	'emailusers-norecipient' => 'Er is niemand die u een e-mail kunt sturen.',
+	'emailusers-norecipientselected' => 'Er zijn geen ontvangers geselecteerd.',
+	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd.',
+);
+

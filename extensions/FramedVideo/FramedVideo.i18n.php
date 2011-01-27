@@ -608,6 +608,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'framedvideo_position' => 'десно',
 	'framedvideo_errors' => 'Настанаа повеќе грешки!',
 	'framedvideo_error' => 'Настана грешка!',
 	'framedvideo_error_unknown_type' => 'Непознат id на видеосервисот („$1“): проверете го параметарот „type“.',

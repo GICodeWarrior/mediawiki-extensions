@@ -129,6 +129,7 @@ $messages['qqq'] = array(
 	'fundraiserstats-date' => '{{Identical|Date}}',
 	'fundraiserstats-day' => '* $1 is the nth day of an annual fundraiser
 * $2 is the year/name of a fundraiser',
+	'fundraiserstats-time-zone' => '{{Identical|Time zone}}',
 	'fundraiserstats-utc' => "Note appearing after time zone select list. UTC stands for Coordinated Universal Time and usually doesn't require translation",
 );
 
@@ -552,6 +553,8 @@ $messages['be-tarask'] = array(
 	'fundraiserstats-instructions' => 'Каб паглядзець статыстыку за любы дзень, навядзіце курсор на слупок гэтага дня. У табліцы кожны год адрозьніваецца ўласным колерам.',
 	'fundraiserstats-customize' => 'Наладзіць',
 	'fundraiserstats-show-years' => 'Паказаць наступныя гады:',
+	'fundraiserstats-time-zone' => 'Часавы пояс:',
+	'fundraiserstats-utc' => '(з UTC)',
 );
 
 /** Bulgarian (Български)
@@ -1778,6 +1781,7 @@ $messages['fi'] = array(
  * @author Sherbrooke
  * @author Toliño
  * @author Verdy p
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'contributionreporting-desc' => 'Rapport de suivi en direct sur la collecte de fonds de Wikimedia',
@@ -1828,7 +1832,7 @@ $messages['fr'] = array(
 	'contribstats-landingpage' => "Page d'arrivée",
 	'contribstats-donatepage' => 'Page de don',
 	'contribstats-average' => 'Moyenne',
-	'contribstats-imperfect-data' => "Cette donnée est imparfaite tel que le suivi des donateurs, sans l'utilisation du suivi de la session, a ses limites.",
+	'contribstats-imperfect-data' => "Cette donnée est imparfaite puisque le suivi des donateurs, sans l'utilisation du suivi de la session, a ses limites.",
 	'contribstats-paypal-donations' => 'Donations par PayPal',
 	'contribstats-credit-card' => 'Carte de Crédit',
 	'contribstats-fraud-note' => 'Quelques donations frauduleuses existent.',

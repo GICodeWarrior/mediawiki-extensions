@@ -6485,7 +6485,7 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'wikilog-new-item-go' => 'Направи',
-	'wikilog-item-name' => 'Наслов чланка:',
+	'wikilog-item-name' => 'Назив чланка:',
 	'wikilog-published' => 'Објављено',
 	'wikilog-updated' => 'Ажурирано',
 	'wikilog-draft' => 'Нацрт',
@@ -6516,7 +6516,7 @@ $messages['sr-ec'] = array(
 	'wikilog-comment-note-item' => 'послато на $1',
 	'wikilog-comment-note-edited' => 'последње измењен на $1 у $2',
 	'wikilog-comment-anonsig' => '$3 (анонимни)',
-	'wikilog-comment-autosumm' => 'Нови коментар од $1: $2',
+	'wikilog-comment-autosumm' => 'Нови коментар од члана $1: $2',
 	'wikilog-reply-to-comment' => 'Пошаљи реплику на овај коментар',
 	'wikilog-comment-page' => 'Иди на страну овог коментара',
 	'wikilog-comment-edit' => 'Измени овај коментар',

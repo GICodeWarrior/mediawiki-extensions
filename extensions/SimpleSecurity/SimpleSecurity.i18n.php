@@ -171,6 +171,7 @@ $messages['be-tarask'] = array(
 	'security-type-category' => 'катэгорыя',
 	'security-type-namespace' => 'прастора назваў',
 	'security-restricttogroup' => 'Доступ да зьместу абмежаваны для групы «$1»',
+	'restriction-read' => 'Чытаць',
 );
 
 /** Bulgarian (Български)
@@ -271,6 +272,7 @@ $messages['de'] = array(
 	'security-type-category' => 'in der Kategorie',
 	'security-type-namespace' => 'im Namensraum',
 	'security-restricttogroup' => 'Zugriff auf Inhalte, die auf Benutzer der Gruppe „$1“ beschränkt sind',
+	'restriction-read' => 'Lesen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -302,6 +304,7 @@ $messages['dsb'] = array(
 	'security-type-category' => 'kategorija',
 	'security-type-namespace' => 'mjenjowy rum',
 	'security-restricttogroup' => 'Pśistup na wopśimjeśe na cłonkow kupki "$1" wobgranicowany',
+	'restriction-read' => 'Cytaś',
 );
 
 /** Greek (Ελληνικά)
@@ -529,6 +532,7 @@ $messages['hsb'] = array(
 	'security-type-category' => 'kategorija',
 	'security-type-namespace' => 'mjenowy rum',
 	'security-restricttogroup' => 'Přistup na wobsah je za čłonow wot "$1" wobmjezowany',
+	'restriction-read' => 'Čitać',
 );
 
 /** Hungarian (Magyar)
@@ -573,6 +577,7 @@ $messages['ia'] = array(
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'spatio de nomines',
 	'security-restricttogroup' => 'Accesso al contento restringite al membros de "$1"',
+	'restriction-read' => 'Leger',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -740,6 +745,7 @@ $messages['mk'] = array(
 	'security-type-category' => 'категорија',
 	'security-type-namespace' => 'именски простор',
 	'security-restricttogroup' => 'Отвори содржина ограничена на членови на „$1“',
+	'restriction-read' => 'Прочитај',
 );
 
 /** Mongolian (Монгол)
@@ -783,6 +789,7 @@ $messages['nl'] = array(
 	'security-type-category' => 'categorie',
 	'security-type-namespace' => 'naamruimte',
 	'security-restricttogroup' => 'Toegang tot de inhoud is beperkt tot de leden van de groep "$1"',
+	'restriction-read' => 'Lezen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
