@@ -45,7 +45,7 @@ var config = {
 							'modal': true,
 							'title': mediaWiki.msg( 'articlefeedback-survey-title' ),
 							'close': function() {
-								$( this )
+								$(this)
 									.dialog( 'option', 'height', 400 )
 									.find( '.articleFeedback-success-msg, .articleFeedback-error-msg' )
 									.remove()
@@ -55,10 +55,19 @@ var config = {
 							}
 						} );
 					$dialog.load(
-						wgScript + '?title=Special:SimpleSurvey&survey=articlerating&raw=1',
+						mediaWiki.config.get( 'wgScript' ) +
+							'?title=Special:SimpleSurvey&survey=articlerating&raw=1',
 						function() {
-							//$( this ).find( 'form' ).bind( 'submit', $.ArticleAssessment.fn.submitFeedback );
-							$( this ).removeClass( 'loading' );
+							$(this)
+								.append(
+									$( '<button></button>' )
+										.text( $(this).find( 'input[type=submit]' ).val() )
+										.button()
+								)
+								.find( 'input[type=submit]' )
+									.remove()
+									.end()
+								.removeClass( 'loading' );
 						}
 					);
 				}
