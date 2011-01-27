@@ -236,12 +236,7 @@ class ConfidenceTest:
 		std_devs_2.insert(len(std_devs_2),0)
 		std_devs_1.insert(0,0)
 		std_devs_2.insert(0,0)
-		
-		#print means_1
-		#print means_2
-		#print std_devs_1
-		#print std_devs_2
-		#print times_indices
+	
 		
 		# plot the results
 		xlabel = 'Hours'
@@ -263,7 +258,7 @@ class ConfidenceTest:
 		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
 		
 		""" Print out results """ 
-		self.print_metrics(test_name + '.txt', title, means_1, means_2, std_devs_1, std_devs_2, times_indices)
+		self.print_metrics(test_name + '.txt', title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels)
 		
 		return
 		
@@ -327,14 +322,29 @@ class ConfidenceTest:
 
 
 	""" Print in Tabular form the means and standard deviation of each group over each interval """
-	def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices):
+	def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels):
 		
 		file = open(filename, 'w')
 		
+		# Compute % increase and report
+		av_means_1 = sum(means_1) / len(means_1)
+		av_means_2 = sum(means_2) / len(means_2)
+		percent_increase = math.fabs(av_means_1 - av_means_2) / min(av_means_1,av_means_2) * 100.0
+		
+		if av_means_1 > av_means_2:
+			winner = labels[0]
+		else:
+			winner = labels[1]
+			
+		win_str =  "\nThe winner " + winner + " had a %s%.2f."
+		win_str = win_str % ('%', percent_increase)
+		
 		print  '\n\n' +  metric_name 
+		print win_str
 		print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
 		file.write('\n\n' +  metric_name)
 		file.write('\n\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n\n')
+		file.write(win_str)
 		
 		for i in range(1,len(times_indices) - 1):
 			line_args = str(i) + '\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
