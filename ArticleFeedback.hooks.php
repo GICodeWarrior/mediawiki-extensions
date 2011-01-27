@@ -110,7 +110,7 @@ class ArticleFeedbackHooks {
 			$updater->addExtensionUpdate( array(
 				'addTable',
 				'article_feedback_properties',
-				$dir . 'sql/AddPropertiesTable.sql',
+				$dir . '/sql/AddPropertiesTable.sql',
 				true
 			) );
 			$updater->addExtensionUpdate( array(
