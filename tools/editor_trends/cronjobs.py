@@ -17,6 +17,7 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
+import time
 from multiprocessing import Process
 
 import manage as manager
@@ -107,5 +108,8 @@ def debug():
     launcher()
 
 
+
 if __name__ == '__main__':
-    debug()
+    while True:
+        launcher()
+        time.sleep(5 * 60)

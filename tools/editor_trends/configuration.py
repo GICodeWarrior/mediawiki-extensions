@@ -64,11 +64,9 @@ class Singleton(type):
 class Settings:
     __metaclass__ = Singleton
 
-    def __init__(self, debug=True, process_multiplier=1, **kwargs):
+    def __init__(self, process_multiplier=1, **kwargs):
         self.minimum_python_version = (2, 6)
         self.detect_python_version()
-        self.debug = debug
-        self.progressbar = True
         self.encoding = 'utf-8'
 
         #Date format as used by Erik Zachte
@@ -98,11 +96,10 @@ class Settings:
         self.max_filehandles = self.determine_max_filehandles_open()
         self.tab_width = 4 if self.platform == 'Windows' else 8
 
-        self.load_configuration()
-        self.set_custom_settings(**kwargs)
 
 
         self.input_location = os.path.join(self.root, 'wikimedia')
+        self.load_configuration()
         # Default Input file
         self.input_filename = os.path.join(self.input_location, 'en',
                                            'wiki',
@@ -115,18 +112,13 @@ class Settings:
         self.dataset_location = os.path.join(self.working_directory, 'datasets')
         self.binary_location = os.path.join(self.working_directory,
                                             'data', 'objects')
-        self.namespace_location = os.path.join(self.working_directory,
-                                               'namespaces')
+
         self.chart_location = os.path.join(self.working_directory, 'statistics',
                                            'charts')
         self.file_choices = ('stub-meta-history.xml.gz',
                              'stub-meta-current.xml.gz',
                              'pages-meta-history.xml.7z',
                              'pages-meta-current.xml.bz2',)
-
-    def set_custom_settings(self, **kwargs):
-        for kw in kwargs:
-            setattr(self, kw, kwargs[kw])
 
     def load_configuration(self):
         if os.path.exists(os.path.join(self.working_directory, 'wiki.cfg')):
@@ -157,10 +149,10 @@ class Settings:
             return platform.system()
 
     def verify_environment(self, directories):
-        for dir in directories:
-            if not os.path.exists(dir):
+        for directory in directories:
+            if not os.path.exists(directory):
                 try:
-                    os.makedirs(dir)
+                    os.makedirs(directory)
                 except IOError:
                     raise 'Configuration Error, could not create directory.'
 

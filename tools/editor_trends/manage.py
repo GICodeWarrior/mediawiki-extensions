@@ -191,6 +191,7 @@ def dataset_launcher(properties, settings, logger):
     stopwatch = timer.Timer()
     log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='start')
 
+    collection = '%s_%s' % (properties.collection, 'dataset')
     for target in properties.targets:
 #        write_message_to_log(logger, settings,
 #                             message=None,
@@ -198,8 +199,9 @@ def dataset_launcher(properties, settings, logger):
 #                             target=target,
 #                             dbname=properties.full_project,
 #                             collection=properties.collection)
+
         analyzer.generate_chart_data(properties.project.name,
-                                     properties.collection,
+                                     collection,
                                      properties.language.code,
                                      target,
                                      **properties.keywords)
@@ -252,7 +254,7 @@ def all_launcher(properties, settings, logger):
                                           (sort_launcher, 'sort'),
                                           (store_launcher, 'store'),
                                           (transformer_launcher, 'transform'),
-                                          (exporter_launcher, 'export')))
+                                          (dataset_launcher, 'dataset')))
 
     for function, callname in functions.iteritems():
         if callname not in properties.ignore:
@@ -299,7 +301,7 @@ def init_args_parser():
         action='store',
         help='Enter the first letter of a language to see which languages are \
         available.')
-    parser_languages.set_defaults(func=show_languages)
+    parser_languages.set_defaults(func=language.show_languages(settings, project))
 
     #CONFIG 
     parser_config = subparsers.add_parser('config',
