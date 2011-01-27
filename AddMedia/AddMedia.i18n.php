@@ -7305,7 +7305,7 @@ $messages['pms'] = array(
 	'rsd_config_error' => "Eror ëd configurassion ëd l'assistent ëd gionte multimojen: $1",
 	'mwe-your-recent-uploads' => 'Toe carie recente su $1',
 	'mwe-no_recent_uploads' => 'Gnun cariament recent',
-	'mwe-not-logged-in-uploads' => "Peul desse ch'a l'é pa intrà ant ël sistema, parèj gnun cariament recent a peul esse mostrà. $1 intré ant ël sistema e $2",
+	'mwe-not-logged-in-uploads' => "A peul desse ch'a sia pa intrà ant ël sistema, parèj gnun cariament recent a peul esse mostrà. [$1 Për piasì intré ant ël sistema] e [$2 preuva torna].",
 	'mwe-ie-eye-permision' => "S'a deuvra Internet Explorer e a l'é intrà ant ël sistema, a podrìa dovèj rangé soe ampostassion ëd confidensialità",
 	'mwe-upload-a-file' => "Caria n'archivi neuv",
 	'mwe-upload-a-file-to' => "Caria n'archivi neuv su $1",
@@ -8794,7 +8794,7 @@ $messages['sr-ec'] = array(
 	'mwe-ftype-oga' => 'Ogg аудио фајл',
 	'mwe-ftype-ogg' => 'Ogg видео фајл',
 	'mwe-ftype-unk' => 'Непознати формат фајла',
-	'rsd-this_wiki-title' => 'Ова вики',
+	'rsd-this_wiki-title' => 'Ова викија',
 	'fogg-select_file' => 'Избор датотеке',
 );
 
