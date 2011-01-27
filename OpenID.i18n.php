@@ -3443,6 +3443,7 @@ OpenID ви овозможува да се најавувате на многу 
 	'openid-pref-hide' => 'Скријте ја вашата OpenID URL адреса на вашата корисничката страница, ако се најавувате со OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Ажурирајте ги следниве информации од OpenID секојпат кога ќе се најавам:',
 	'openid-urls-desc' => 'OpenID поврзани со вашата сметка:',
+	'openid-urls-url' => 'URL',
 	'openid-urls-action' => 'Дејство',
 	'openid-urls-delete' => 'Избриши',
 	'openid-add-url' => 'Додај нов OpenID',
