@@ -28,7 +28,9 @@ settings = configuration.Settings()
 
 from database import db
 from utils import http_utils
-from classes import wikiprojects
+from classes import runtime_settings
+from classes import languages
+from classes import projects
 
 class AnchorParser(HTMLParser):
     '''
@@ -109,7 +111,9 @@ def determine_available_dumps(directories):
 
 
 def launcher():
-    properties = wikiprojects.Wiki(settings)
+    project = projects.init()
+    language = languages.init()
+    properties = runtime_settings.RunTimeSettings(project, language, settings)
     dumpers = []
     for project in properties.projects:
         if project == 'wiki':

@@ -38,8 +38,8 @@ def log_to_mongo(properties, jobtype, task, timer, event='start'):
     if job == None:
         if jobtype == 'dataset':
             _id = coll.save({'hash': hash, 'created': created, 'finished': False,
-                             'language_code': properties.language_code,
-                             'project': properties.short_project,
+                             'language_code': properties.language.code,
+                             'project': properties.project.name,
                              'in_progress': True, 'jobtype': jobtype,
                              'tasks': {}})
 

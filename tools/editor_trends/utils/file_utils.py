@@ -215,19 +215,22 @@ def construct_filename(name, extension):
 
 
 def delete_file(location, filename, directory=False):
+    res = True
     if not directory:
         if check_file_exists(location, filename):
             try:
                 path = os.path.join(location, filename)
                 os.remove(path)
             except WindowsError, error:
+                res = False
                 print error
     else:
         try:
             shutil.rmtree(location)
         except Exception, error:
+            res = False
             print error
-
+    return res
 
 def determine_filesize(location, filename):
     path = os.path.join(location, filename)

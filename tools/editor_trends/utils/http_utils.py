@@ -76,8 +76,10 @@ def create_list_dumpfiles(domain, path, filename):
         else:
             print 'Added chunk to download: %s' % f
             task_queue.put(f)
-    for x in xrange(settings.number_of_processes):
-        task_queue.put(None)
+    if x < settings.number_of_processes:
+        settings.number_of_processes = x
+        for x in xrange(settings.number_of_processes):
+            task_queue.put(None)
     return task_queue
 
 
