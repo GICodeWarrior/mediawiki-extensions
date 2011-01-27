@@ -5,7 +5,7 @@
 	{% if datasets %}
 		<h1> Available Datasets</h1>
 		{% for dataset in datasets %}
-			<h1>Dataset {{ dataset.name }}</h1>
+			<h1>Dataset <a href="{{ dataset.get_absolute_url }}">{{ dataset.name }}</a></h1>
 			<ul>
 				<li>{{ dataset.project }} </li>
 				<li>{{ dataset.collection }} </li>
@@ -14,14 +14,13 @@
 	    		{% for variable_name,variables in dataset.variables.items %}
 		    	 	<h3>Variable {{ variable_name }}</h3>
 		    	 		{% for key ,variable in variables.items %}
-		    	 			<h4>Observation:{{ key }}</h4> 
-		    	 				{% for k, v in variable.items %}
-		    	 				<li>{{ k }}: {{ v }}</li>
-		    	 				{% endfor %}
+		    	 			<h4>{{ key }} {{ variable }}</h4> 
 		    	 		{% endfor %}
-	    	 	{% endfor %}
-	    	 	</ul>
-	    	<ul>
+		    	{% endfor %}
+		    	</ul>
+		    </ul>
+	    	
+	
 	    {% endfor %}
 	    	
 	{% else %}

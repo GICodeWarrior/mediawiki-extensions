@@ -18,27 +18,28 @@
 	  						var data = json['data'];
 	  						var options = json['options'];
 	  						var css_id = "#wikilytics";
-	  						console.log(options);
-	  						//$.plot($(css_id), data, options);
+	  						console.log(data);
+	  						$("#status > h1").hide();
+	  						$.plot($(css_id), data, options);
 	  					}
 					});
 			 
 			$(function () {
 	
-				var css_id = "#placeholder2";
-				var data = [
-				        {label: 'foo', data: [[1,300], [2,300], [3,300], [4,300], [5,300]]},
+				//var css_id = "#placeholder2";
+				//var data = [
+				//        {label: 'foo', data: [[1,300], [2,300], [3,300], [4,300], [5,300]]},
 
-				    ];
+				//    ];
 	
-				 var options = {
-				        series: {stack: 0,
-				                 lines: {show: false, steps: false },
-				                 bars: {show: true, barWidth: 0.9, align: 'center',},},
-				        xaxis: {ticks: [[1,'One'], [2,'Two'], [3,'Three'], [4,'Four'], [5,'Five']]},
-				    };
-				 console.log(options);
-				 $.plot($(css_id), data, options);
+				// var options = {
+				//        series: {stack: 0,
+				//                 lines: {show: false, steps: false },
+				//                 bars: {show: true, barWidth: 0.9, align: 'center',},},
+				//        xaxis: {ticks: [[1,'One'], [2,'Two'], [3,'Three'], [4,'Four'], [5,'Five']]},
+				//    };
+				// console.log(options);
+				//$.plot($(css_id), data, options);
 				});
 	 		});
 	 	</script>
@@ -51,8 +52,11 @@
 	<p>This should be finished in a couple of minutes (depending on the size 
 	of the project and the length of the queue).</p>
 {% else %}
-	<div id="placeholder2" style="width:1000px;height:400px;"></div>
-	<div id="wikilytics" style="width:1000px;height:400px;"></div>
+	<div id="status">
+		<!-- <div id="placeholder2" style="width:1000px;height:400px;"></div> -->
+		<h1>JSON data is being downloaded... please wait...</h1>
+		<div id="wikilytics" style="width:1000px;height:400px;"></div>
+	</div>
 {% endif %}
 
 	{% if analysis %}

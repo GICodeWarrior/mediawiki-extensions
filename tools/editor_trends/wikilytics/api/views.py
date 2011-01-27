@@ -41,7 +41,7 @@ def dataset_dispatcher(request, project, language):
     if created:
         job.save()
     jobs = Job.objects.filter(jobtype='dataset', finished=False, in_progress=False)
-    ds = Dataset.objects.filter(project=project, language_code=language)
+    ds = Dataset.objects.using('enwiki').filter(project=project, language_code=language)
     print ds
     return render_to_response('datasets.html', {'datasets': ds, 'jobs': jobs})
 
@@ -59,6 +59,7 @@ def chart_generator(request, project, language, chart):
     print project, language, chart
     try:
         ds = Dataset.objects.using('enwiki').get(project=project, language_code=language, name=chart)
+        print ds
     except:
         hash = helpers.create_hash(project, language)
         job = Job()
@@ -75,7 +76,7 @@ def chart_generator(request, project, language, chart):
         return HttpResponseRedirect(reverse('chart_generator', args=[project, language, chart]))
     elif xhr:
         dthandler = lambda obj:'new Date("%s")' % datetime.date.ctime(obj) if isinstance(obj, datetime.datetime) else obj
-        data = helpers.transform_to_stacked_bar_json(ds)
+        data = helpers.transform_to_json(ds)
         return HttpResponse(json.dumps(data, default=dthandler), mimetype='application/json')
     else:
 

@@ -3,6 +3,21 @@ import time
 
 
 from editor_trends.utils import data_converter
+from analyses import analyzer
+
+
+def transform_to_json(ds):
+    analyses = analyzer.available_analyses()
+    analysis = '%s_%s_%s' % ('transform_to', ds.name, 'json')
+    print analysis
+    analysis = getattr(locals(), analysis, None)
+    if analysis != None:
+        data = analysis(ds)
+
+    return data
+
+
+
 
 
 def transform_to_stacked_bar_json(ds):
@@ -45,6 +60,7 @@ def transform_to_stacked_bar_json(ds):
         for x, o in enumerate(ob):
             d['data'].append([x, o])
         data.append(d)
+        print d
     for x, date in enumerate(obs):
         options['xaxis']['ticks'].append([x, date[0].year])
 
