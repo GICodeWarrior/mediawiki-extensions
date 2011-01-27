@@ -31,9 +31,13 @@ class ArticleFeedbackHooks {
 				'articlefeedback-pitch-makefirstedit-title',
 				'articlefeedback-pitch-makefirstedit-message',
 				'articlefeedback-pitch-makefirstedit-accept',
+				'articlefeedback-survey-title',
 			),
 			'dependencies' => array(
+				'jquery.ui.dialog',
+				'jquery.ui.button',
 				'jquery.articleFeedback',
+				'jquery.cookie',
 			),
 		),
 		'jquery.articleFeedback' => array(
@@ -55,6 +59,7 @@ class ArticleFeedbackHooks {
 				'jquery.localize',
 				'jquery.ui.dialog',
 				'jquery.ui.button',
+				'jquery.cookie',
 			),
 		),
 	);
@@ -74,23 +79,45 @@ class ArticleFeedbackHooks {
 		} else {
 			$dir = dirname( __FILE__ );
 			$db = $updater->getDB();
-
 			if ( !$db->tableExists( 'article_feedback' ) ) {
+				// Rename tables
 				if ( $db->tableExists( 'article_assessment' ) ) {
-					$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
-						$dir . '/sql/RenameTables.sql', true ) ); // Rename tables
+					$updater->addExtensionUpdate( array(
+						'addTable',
+						'article_feedback',
+						$dir . '/sql/RenameTables.sql',
+						true
+					) );
 				} else {
-					$updater->addExtensionUpdate( array( 'addTable', 'article_feedback',
-						$dir . '/sql/ArticleFeedback.sql', true ) ); // Initial install tables
+					// Initial install tables
+					$updater->addExtensionUpdate( array(
+						'addTable',
+						'article_feedback',
+						$dir . '/sql/ArticleFeedback.sql',
+						true
+					) );
 				}
 			}
-
 			if ( !$db->fieldExists( 'article_feedback', 'aa_design_bucket', __METHOD__ ) ) {
-				$updater->addExtensionUpdate( array( 'addField', 'article_feedback', 'aa_design_bucket',
-						$dir . '/sql/AddRatingBucket.sql', true ) );
+				$updater->addExtensionUpdate( array(
+					'addField',
+					'article_feedback',
+					'aa_design_bucket',
+					$dir . '/sql/AddRatingBucket.sql',
+					true
+				) );
 			}
-			$updater->addExtensionUpdate( array( 'addTable', 'article_feedback_properties',
-						"$dir/sql/article_feedback_properties.sql", true ) );
+			$updater->addExtensionUpdate( array(
+				'addTable',
+				'article_feedback_properties',
+				$dir . 'sql/AddPropertiesTable.sql',
+				true
+			) );
+			$updater->addExtensionUpdate( array(
+				'applyPatch',
+				$dir . '/sql/FixAnonTokenSchema.sql',
+				true
+			) );
 		}
 		return true;
 	}
