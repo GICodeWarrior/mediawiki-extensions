@@ -98,9 +98,10 @@ class Data:
         elif self.time_unit == 'month':
             datum = datetime.datetime(date.year, date.month, 1)
             return time.mktime(datum.timetuple())
-        else:
+        elif self.time_unit == 'day':
             return time.mktime(date.timetuple())
-
+        else:
+            return date
 
 class Observation(Data):
     '''
@@ -176,8 +177,7 @@ class Observation(Data):
 
 class Variable(Data):
     '''
-    This class constructs a time-based variable and has some associated simple 
-    statistical descriptives
+    This class constructs a time-based variable. 
     '''
 
     def __init__(self, name, time_unit, **kwargs):
@@ -284,7 +284,7 @@ class Dataset:
                 self.variables.append(name)
 
     def __repr__(self):
-        return 'Dataset contains %s variables' % (len(self.vars))
+        return 'Dataset contains %s variables' % (len(self.variables))
 
     def __iter__(self):
         for var in self.variables:

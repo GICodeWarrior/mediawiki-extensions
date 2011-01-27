@@ -17,26 +17,20 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-12-10'
 __version__ = '0.1'
 
-import datetime
-import multiprocessing
-import calendar
+
 import sys
 import os
 import progressbar
 import types
-from dateutil.relativedelta import relativedelta
+import datetime
 
 sys.path.append('..')
 
 import configuration
 settings = configuration.Settings()
 from database import db
-from etl import shaper
-from utils import file_utils
 from utils import timer
-from utils import messages
 from utils import log
-import analyses.plugins as plugins
 import dataset
 
 
@@ -56,16 +50,19 @@ def generate_chart_data(project, collection, language_code, func, **kwargs):
     print 'Exporting data for chart: %s' % func.func_name
     print 'Project: %s' % dbname
     print 'Dataset: %s' % collection
+
     ds = loop_editors(dbname, project, collection, language_code, func, **kwargs)
-    file = '%s_%s.csv' % (dbname, func.func_name)
-    print 'Storing dataset: %s' % os.path.join(settings.dataset_location, file)
+    fn = '%s_%s.csv' % (dbname, func.func_name)
+
+    print 'Storing dataset: %s' % os.path.join(settings.dataset_location, fn)
     ds.write(format='csv')
+
     print 'Serializing dataset to %s_%s' % (dbname, 'charts')
     log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='start')
     ds.write(format='mongo')
     stopwatch.elapsed()
-    log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='finish')
 
+    log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='finish')
     return res
 
 
@@ -74,26 +71,32 @@ def loop_editors(dbname, project, collection, language_code, func, **kwargs):
     Generic loop function that loops over all the editors of a Wikipedia project
     and then calls the function that does the actual aggregation.
     '''
-
-    editors = db.retrieve_distinct_keys(dbname, collection, 'editor')
-
-    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
-    min_year, max_year = determine_project_year_range(dbname, collection, 'new_wikipedian')
-    print 'Number of editors: %s' % len(editors)
     mongo = db.init_mongo_db(dbname)
     coll = mongo[collection]
-    format = kwargs.pop('format', 'long')
+    editors = db.retrieve_distinct_keys(dbname, collection, 'editor')
+
+
+    min_year, max_year = determine_project_year_range(dbname, collection, 'new_wikipedian')
+    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
+    print 'Number of editors: %s' % len(editors)
+
+    fmt = kwargs.pop('format', 'long')
     kwargs['min_year'] = min_year
     kwargs['max_year'] = max_year
-    vars = []
-    ds = dataset.Dataset(func.func_name, project, coll.name, language_code, vars, format=format)
+    variables = []
+    ds = dataset.Dataset(func.func_name,
+                         project,
+                         coll.name,
+                         language_code,
+                         variables,
+                         format=fmt)
     var = dataset.Variable('count', **kwargs)
 
 
 
     for editor in editors:
         editor = coll.find_one({'editor': editor})
-        data = func(var, editor, dbname=dbname)
+        var = func(var, editor, dbname=dbname)
         pbar.update(pbar.currval + 1)
 
     ds.add_variable(var)
@@ -112,8 +115,9 @@ def available_analyses(caller='manage'):
     ignore = ['__init__']
     functions = {}
 
-    pos = __file__.rfind(os.sep)
-    loc = __file__[:pos]
+    fn = os.path.realpath(__file__)
+    pos = fn.rfind(os.sep)
+    loc = fn[:pos]
     path = os.path.join(loc , 'plugins')
     plugins = import_libs(path)
 
@@ -135,7 +139,6 @@ def import_libs(path):
     '''
     Dynamically importing functions from the plugins directory. 
     '''
-
     library_list = []
     sys.path.append(path)
     for f in os.listdir(os.path.abspath(path)):
@@ -152,10 +155,14 @@ def determine_project_year_range(dbname, collection, var):
     '''
     Determine the first and final year for the observed data
     '''
-    max_year = db.run_query(dbname, collection, var, 'max')
-    max_year = max_year[var].year + 1
-    min_year = db.run_query(dbname, collection, var, 'min')
-    min_year = min_year[var].year
+    try:
+        max_year = db.run_query(dbname, collection, var, 'max')
+        max_year = max_year[var].year + 1
+        min_year = db.run_query(dbname, collection, var, 'min')
+        min_year = min_year[var].year
+    except KeyError:
+        min_year = 2001
+        max_year = datetime.datetime.today().year + 1
     return min_year, max_year
 
 
@@ -172,8 +179,10 @@ def create_windows(var, break_down_first_year=True):
 
 
 if __name__ == '__main__':
-
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=50)
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', time_unit='year')
+    generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', time_unit='year')
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', time_unit='year')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=50)
     #generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_backward_bar, time_unit='year', cutoff=0, cum_cutoff=50, format='wide')
     #generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_forward_bar, time_unit='year', cutoff=0, cum_cutoff=50, format='wide')
     #generate_chart_data('wiki', 'editors_dataset','en', histogram_edits, time_unit='year', cutoff=0)

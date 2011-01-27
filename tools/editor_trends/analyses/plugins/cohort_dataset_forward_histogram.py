@@ -21,12 +21,12 @@ __version__ = '0.1'
 def cohort_dataset_forward_histogram(var, editor, **kwargs):
 #        headers = ['year', 'month', 'edits']
     new_wikipedian = editor['new_wikipedian']
-    final_edit = editor['final_edit']
+    final_edit = editor['final_edit'].year + 1
     yearly_edits = editor['edits_by_year']
     n = editor['edit_count']
 
     if n >= var.cum_cutoff:
-        for i, year in enumerate(xrange(new_wikipedian.year, final_edit.year)):
+        for i, year in enumerate(xrange(new_wikipedian.year, final_edit)):
             edits = editor['monthly_edits'].get(str(year), {0:0})
             if year == new_wikipedian.year:
                 start = new_wikipedian.month
