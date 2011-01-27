@@ -28,25 +28,36 @@ class FileNotFoundException(Error):
         self.path = path
 
     def __str__(self):
-        print 'The file %s was not found. Please make sure that the file exists and the path is correct.' % (os.path.join(self.path, self.file))
+        return  '''The file %s was not found. Please make sure that the file \ 
+            exists and the path is correct.''' \
+            % (os.path.join(self.path, self.file))
 
 class PlatformNotSupportedError(Error):
     def __init__(self, platform):
         self.platform = platform
 
     def __str__(self):
-        print 'Platform %s is not supported' % self.platform
+        return 'Platform %s is not supported' % self.platform
 
 class CompressionNotSupportedError(Error):
     def __init__(self, extension):
         self.extension = extension
 
     def __str__(self):
-        print 'You have not installed a program to extract %s archives.' % self.extension
+        return 'You have not installed a program to extract %s archives.' \
+            % self.extension
 
 class OutDatedPythonVersionError(Error):
     def __init__(self, version):
         self.version = version
 
     def __str__(self):
-        print 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'
+        return 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'
+
+class UnknownJSONEncoderError(Error):
+    def __init__(self, func):
+        self.func = func
+
+    def __str__(self):
+        return 'There is no JSON encoder called %s, please make sure that you \
+            entered the right name' % self.func

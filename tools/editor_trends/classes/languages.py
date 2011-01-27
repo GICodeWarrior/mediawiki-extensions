@@ -643,7 +643,7 @@ class LanguageContainer:
         return 'contains %s languages' % (len(self.languages))
 
     def get_language(self, code):
-            return '%s' % self.languages.get(code, None)
+        return self.languages.get(code, None)
 
     def determine_default_language(self):
         '''

@@ -52,8 +52,6 @@ class RunTimeSettings:
         if args:
             self.args = args
             self.hash = self.secs_since_epoch()
-            print self.settings.input_location
-            print self.settings.working_directory
             self.base_location = self.settings.input_location if \
                 self.settings.input_location != None else self.get_value('location')
             self.update_project_settings()
@@ -67,8 +65,6 @@ class RunTimeSettings:
             self.clean = self.get_value('new')
             self.force = self.get_value('force')
             self.location = self.get_project_location()
-            print self.location
-            print self.settings.working_directory
             self.filename = self.generate_wikidump_filename()
             self.namespaces = self.get_namespaces()
 
@@ -85,11 +81,14 @@ class RunTimeSettings:
                                 self.sorted,
                                 self.dataset,
                                 self.charts]
-            self.path = '/%s/latest/' % self.project
+            self.dump_filename = self.generate_wikidump_filename()
+            self.dump_relative_path = self.set_dump_path()
+            self.dump_absolute_path = self.set_dump_path(absolute=True)
             settings.verify_environment(self.directories)
 
     def __str__(self):
-        return 'Runtime Settings for project %s%s' % (self.language.name, self.project.name)
+        return 'Runtime Settings for project %s%s' % (self.language.name,
+                                                      self.project.name)
 
     def __iter__(self):
         for item in self.__dict__:
@@ -148,11 +147,17 @@ class RunTimeSettings:
         '''
         return getattr(self.args, key, None)
 
+    def set_dump_path(self, absolute=False):
+        if absolute:
+            return '%s/%s%s/latest/' % (self.settings.wp_dump_location, self.language.code, self.project.name)
+        else:
+            return '/%s%s/latest/' % (self.language.code, self.project.name)
+
     def generate_wikidump_filename(self):
         '''
         Generate the main name of the wikidump file to be downloaded.
         '''
-        return '%s-latest-%s' % (self.project, self.get_value('file'))
+        return '%s%s-latest-%s' % (self.language.code, self.project.name, self.get_value('file'))
 
     def update_language_settings(self):
         '''

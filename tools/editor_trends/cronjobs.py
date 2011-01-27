@@ -35,6 +35,10 @@ def launch_editor_trends_toolkit(task):
     '''
     project, language, parser, settings = manager.init_args_parser()
     args = parser.parse_args(['django'])
+    pjc = projects.ProjectContainer()
+    project = pjc.get_project(task['project'])
+    lnc = languages.LanguageContainer()
+    language = lnc.get_language(task['language_code'])
     rts = runtime_settings.RunTimeSettings(project, language, settings, args)
     res = manager.all_launcher(rts, settings, None)
     return res
@@ -82,6 +86,7 @@ def launcher():
     tasks = []
     jobs = coll.find({'finished': False, 'in_progress': False, 'error': False})
     for job in jobs:
+        job['language_code'] = u'nl'
         tasks.append(job)
 
     for task in tasks:

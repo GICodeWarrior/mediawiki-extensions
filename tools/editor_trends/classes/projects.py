@@ -34,21 +34,18 @@ class Project:
         '''
         assert output == 'django' or output == 'parser'
         lnc = languages.LanguageContainer()
-        d = []
-        if output == 'parser':
-            for lang in self.valid_languages:
-                d.append(lnc.languages.get(lang, 'Unknown language'))
-        else:
-            print 'not yet implemented'
-#    def supported_languages(self, output='parser'):
-#        if output == 'parser':
-#            choices = [d.values() for d in self.match_languages()]
-#            choices = [item for sublist in choices for item in sublist]
-#            #print choices
-#            return choices
-#        else:
-#            choices = [(d.get('lnc'), '%s' % (' | '.join(d.values()))) for d in self.match_languages()]
-#            return tuple(choices)
+        choices = []
+
+        for lang  in lnc.init_languages:
+            lang = lnc.init_languages[lang]
+            if lang in self.valid_languages:
+                if output == 'parser':
+                    choices.append(lnc.languages.get(lang, 'Unknown language'))
+                elif output == 'django':
+                    lang = lnc.languages.get(lang, languages.Language('Unknown language', lang, None))
+                    choices.append((lang.code, lang.name))
+        return choices
+
 
 class ProjectContainer:
     def __init__(self):
@@ -82,7 +79,7 @@ class ProjectContainer:
         return self.projects.get(name, None)
 
     def supported_projects(self):
-        choices = ([(key, value.title()) for key, value in self.wikis.iteritems()])
+        choices = ([(key, d['full_name']) for key, d in self.wikis.iteritems()])
         return tuple(choices)
 
     def project_supports_language(self, urlname):

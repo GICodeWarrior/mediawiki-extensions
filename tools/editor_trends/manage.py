@@ -106,10 +106,10 @@ def downloader_launcher(properties, settings, logger):
     stopwatch = timer.Timer()
     #project, language, jobtype, task, timer, event = 'start'
     log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='start')
-    downloader.launcher(properties, settings, logger)
+    res = downloader.launcher(properties, settings, logger)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='finish')
-
+    return res
 
 
 def extract_launcher(properties, settings, logger):
@@ -162,8 +162,8 @@ def store_launcher(properties, settings, logger):
 #                         input=properties.sorted,
 #                         project=properties.full_project,
 #                         collection=properties.collection)
-    for key in properties:
-        print key, getattr(properties, key)
+#    for key in properties:
+#        print key, getattr(properties, key)
     store.launcher(properties.sorted, properties.project, properties.collection)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='finish')
@@ -235,10 +235,9 @@ def cleanup(properties, settings, logger):
 def all_launcher(properties, settings, logger):
     print 'The entire data processing chain has been called, this will take a \
     couple of hours (at least) to complete.'
-    print properties.__dict__
     stopwatch = timer.Timer()
     log.log_to_mongo(properties, 'dataset', 'all', stopwatch, event='start')
-    print 'Start of building %s dataset.' % properties.project
+    print 'Start of building %s %s dataset.' % (properties.language.name, properties.project)
 
 #    write_message_to_log(logger, settings,
 #                         message=message,
@@ -301,7 +300,7 @@ def init_args_parser():
         action='store',
         help='Enter the first letter of a language to see which languages are \
         available.')
-    parser_languages.set_defaults(func=language.show_languages(settings, project))
+    parser_languages.set_defaults(func=language.show_languages)
 
     #CONFIG 
     parser_config = subparsers.add_parser('config',
