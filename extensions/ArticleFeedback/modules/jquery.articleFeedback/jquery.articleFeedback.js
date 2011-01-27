@@ -208,27 +208,31 @@ $.articleFeedback = {
 				.each( function() {
 					for ( var key in context.options.pitches ) {
 						$( $.articleFeedback.tpl.pitch )
-						.attr( 'rel', key )
-						.find( '.articleFeedback-title' )
-							.text( mw.msg( context.options.pitches[key].title ) )
-							.end()
-						.find( '.articleFeedback-message' )
-							.text( mw.msg( context.options.pitches[key].message ) )
-							.end()
-						.find( '.articleFeedback-accept' )
-							.text( mw.msg( context.options.pitches[key].accept ) )
-							.click( function() {
-								context.options.pitches[key].action();
-								$(this).closest( '.articleFeedback-pitch' ).fadeOut();
-							} )
-							.button()
-							.end()
-						.find( '.articleFeedback-reject' )
-							.text( mw.msg( context.options.pitches[key].reject ) )
-							.click( function() {
-								$(this).closest( '.articleFeedback-pitch' ).fadeOut();
-							} )
-							.end()
+							.attr( 'rel', key )
+							.find( '.articleFeedback-title' )
+								.text( mw.msg( context.options.pitches[key].title ) )
+								.end()
+							.find( '.articleFeedback-message' )
+								.text( mw.msg( context.options.pitches[key].message ) )
+								.end()
+							.find( '.articleFeedback-accept' )
+								.text( mw.msg( context.options.pitches[key].accept ) )
+								.click( function() {
+									var $pitch = $(this).closest( '.articleFeedback-pitch' );
+									var key = $pitch.attr( 'rel' );
+									context.options.pitches[key].action();
+									$pitch.fadeOut();
+								} )
+								.button()
+								.end()
+							.find( '.articleFeedback-reject' )
+								.text( mw.msg( context.options.pitches[key].reject ) )
+								.click( function() {
+									// Remember that the users rejected this, set a cookie to not
+									// show this for 3 days
+									$(this).closest( '.articleFeedback-pitch' ).fadeOut();
+								} )
+								.end()
 						.appendTo( $(this) );
 					}
 				} )
@@ -249,6 +253,8 @@ $.articleFeedback = {
 					.click( function() {
 						$.articleFeedback.fn.submit.call( context );
 						for ( var key in context.options.pitches ) {
+							// Dont' bother checking the condition if there's a cookie that says
+							// the user has rejected this within 3 days of right now
 							if ( context.options.pitches[key].condition() ) {
 								context.$ui
 									.find( '.articleFeedback-pitch[rel="' + key + '"]' )

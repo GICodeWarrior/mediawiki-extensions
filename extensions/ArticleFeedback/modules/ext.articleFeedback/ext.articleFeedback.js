@@ -34,7 +34,35 @@ var config = {
 				return true;
 			},
 			'action': function() {
-				// TODO: Do something
+				var $dialog = $( '#articleFeedback-dialog' );
+				if ( $dialog.size() == 0 ) {
+					$dialog = $( '<div id="articleFeedback-dialog" class="loading" />' )
+						.dialog( {
+							'width': 600,
+							'height': 400,
+							'bgiframe': true,
+							'autoOpen': true,
+							'modal': true,
+							'title': mediaWiki.msg( 'articlefeedback-survey-title' ),
+							'close': function() {
+								$( this )
+									.dialog( 'option', 'height', 400 )
+									.find( '.articleFeedback-success-msg, .articleFeedback-error-msg' )
+									.remove()
+									.end()
+									.find( 'form' )
+									.show();
+							}
+						} );
+					$dialog.load(
+						wgScript + '?title=Special:SimpleSurvey&survey=articlerating&raw=1',
+						function() {
+							//$( this ).find( 'form' ).bind( 'submit', $.ArticleAssessment.fn.submitFeedback );
+							$( this ).removeClass( 'loading' );
+						}
+					);
+				}
+				$dialog.dialog( 'open' );
 			},
 			'title': 'articlefeedback-pitch-takesurvey-title',
 			'message': 'articlefeedback-pitch-takesurvey-message',

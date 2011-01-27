@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback (
   -- Username or IP address
   aa_user_text varbinary(255) NOT NULL,
   -- Unique token for anonymous users (to facilitate ratings from multiple users on the same IP)
-  aa_user_anon_token binary(32) DEFAULT '',
+  aa_user_anon_token varbinary(32) NOT NULL DEFAULT '',
   -- Foreign key to revision.rev_id
   aa_revision integer unsigned NOT NULL,
   -- MW Timestamp
