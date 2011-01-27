@@ -209,7 +209,7 @@ class Variable(Data):
         return self.obs.get(key, Observation(date))
 
     def add(self, date, value, update=True):
-        key = self.__hash__(self.set_end_date(date))
+        key = self.__hash__(self.set_date_range(date, start=False))
         data = self.get_observation(key, date)
         data.add(value, update)
         self.obs[key] = data
@@ -239,21 +239,36 @@ class Variable(Data):
                     setattr(self, prop, values[varname][prop])
                     self.props.append(prop)
 
-    def set_start_date(self, date):
+    def set_date_range(self, date, start=True):
         if self.time_unit == 'year':
-            return datetime.datetime(date.year, 1, 1)
+            day = 31
+            month = 12
+        elif start:
+            day = 1
+            month = 1
         elif self.time_unit == 'month':
-            return datetime.datetime(date.year, date.month, 1)
+            day = calendar.monthrange(date.year, date.month)[1]
+
+        if self.time_unit == 'year':
+            return datetime.datetime(date.year, month, day)
+        elif self.time_unit == 'month':
+            return datetime.datetime(date.year, date.month, day)
         else:
             return datetime.datetime(date.year, date.month, date.day)
 
-    def set_end_date(self, date):
-        if self.time_unit == 'year':
-            return datetime.datetime(date.year, 12, 31)
-        elif self.time_unit == 'month':
-            return datetime.datetime(date.year, date.month, calendar.monthrange(date.year, date.month)[1])
-        else:
-            return datetime.datetime(date.year, date.month, date.day)
+#    def set_end_date(self, date):
+#        if self.time_unit == 'year':
+#            return datetime.datetime(date.year, 12, 31)
+#        elif self.time_unit == 'month':
+#            return datetime.datetime(date.year, date.month, calendar.monthrange(date.year, date.month)[1])
+#        else:
+#            return datetime.datetime(date.year, date.month, date.day)
+
+    def get_date_range(self):
+        dates = [date for date in self]
+        first = datetime.datetime.fromtimestamp(min(dates))
+        last = datetime.datetime.fromtimestamp(max(dates))
+        return first, last
 
 class Dataset:
     '''
@@ -371,16 +386,20 @@ class Dataset:
             variable.min = min(data)
             variable.max = max(data)
             variable.n = len(data)
+            variable.first_obs, variable.last_obs = variable.get_date_range()
+
 
     def summary(self):
         self.descriptives()
-        print '%s\t%s\t%s\t%s\t%s\t%s\t%s' % ('Variable', 'Mean', 'Median', 'SD',
-                                          'Minimum', 'Maximum', 'Num Obs')
+        print '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % ('Variable', 'Mean', 'Median', 'SD',
+                                          'Minimum', 'Maximum', 'Num Obs',
+                                          'First Obs', 'Final Obs')
         for variable in self:
-            print '%s\t%s\t%s\t%s\t%s\t%s\t%s' % (variable.name, variable.mean,
+            print '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % (variable.name, variable.mean,
                                               variable.median, variable.sds,
                                               variable.min, variable.max,
-                                              variable.n)
+                                              variable.n, variable.first_obs,
+                                              variable.last_obs)
 
 
 def debug():

@@ -180,9 +180,9 @@ def create_windows(var, break_down_first_year=True):
 
 
 if __name__ == '__main__':
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', time_unit='year')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', time_unit='year')
     generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', time_unit='year')
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', time_unit='year')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', time_unit='year')
     #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=50)
     #generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_backward_bar, time_unit='year', cutoff=0, cum_cutoff=50, format='wide')
     #generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_forward_bar, time_unit='year', cutoff=0, cum_cutoff=50, format='wide')
