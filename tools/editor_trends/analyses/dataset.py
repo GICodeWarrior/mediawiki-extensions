@@ -108,26 +108,22 @@ class Observation(Data):
     The smallest unit, here the actual data is being stored. 
     Time_unit should either be 'year', 'month' or 'day'. 
     '''
-    def __init__(self, date, time_unit):
+    def __init__(self, date):
         assert isinstance(date, datetime.datetime)
-        assert time_unit == 'year' or time_unit == 'month' or time_unit == 'day'
-        self.time_unit = time_unit
-        self.t0 = self.set_start_date(date)
-        self.t1 = self.set_end_date(date)
-        self.hash = self.__hash__(date)
         self.date = date
         self.data = {}
         self._type = 'observation'
 
     def __repr__(self):
-        return '%s' % self.t1
+        return '%s' % self.date
 
     def __str__(self):
-        return 'range: %s:%s' % (self.t0, self.t1)
+        return '%s' % self.date
+        #return 'range: %s:%s' % (self.t0, self.t1)
 
     def __iter__(self):
-        for obs in self.obs:
-            yield self.obs[obs]
+        for obs in self.data:
+            yield self.data[obs]
 
     def __getitem__(self, key):
         return getattr(self, key, [])
@@ -137,22 +133,6 @@ class Observation(Data):
             return len(self.data.keys()) + 1
         except IndexError:
             return 0
-
-    def set_start_date(self, date):
-        if self.time_unit == 'year':
-            return datetime.datetime(date.year, 1, 1)
-        elif self.time_unit == 'month':
-            return datetime.datetime(date.year, date.month, 1)
-        else:
-            return datetime.datetime(date.year, date.month, date.day)
-
-    def set_end_date(self, date):
-        if self.time_unit == 'year':
-            return datetime.datetime(date.year, 12, 31)
-        elif self.time_unit == 'month':
-            return datetime.datetime(date.year, date.month, calendar.monthrange(date.year, date.month)[1])
-        else:
-            return datetime.datetime(date.year, date.month, date.day)
 
     def add(self, value, update):
         '''
@@ -191,10 +171,10 @@ class Variable(Data):
             self.props.append(kw)
 
     def __str__(self):
-        return self.name
+        return '%s' % self.name
 
     def __repr__(self):
-        return self.name
+        return '%s' % self.name
 
     def __getitem__(self, key):
         return getattr(self, key, [])
@@ -212,7 +192,7 @@ class Variable(Data):
         for key in self.__dict__.keys():
             yield key, getattr(self, key)
 
-    def obs(self):
+    def itervalues(self):
         for date in self:
             for key in self.obs[date].data.keys():
                 yield self.obs[date].data[key]
@@ -222,14 +202,17 @@ class Variable(Data):
             for value in self.obs[date].data.keys():
                 yield (value, self.obs[date].data[value])
 
-    def get_observation(self, date):
-        key = self.__hash__(date)
-        return self.obs.get(key, Observation(date, self.time_unit))
+    def get_data(self):
+        return [o for o in self.itervalues()]
+
+    def get_observation(self, key, date):
+        return self.obs.get(key, Observation(date))
 
     def add(self, date, value, update=True):
-        data = self.get_observation(date)
+        key = self.__hash__(self.set_end_date(date))
+        data = self.get_observation(key, date)
         data.add(value, update)
-        self.obs[data.hash] = data
+        self.obs[key] = data
 
     def encode(self):
         bson = {}
@@ -256,6 +239,21 @@ class Variable(Data):
                     setattr(self, prop, values[varname][prop])
                     self.props.append(prop)
 
+    def set_start_date(self, date):
+        if self.time_unit == 'year':
+            return datetime.datetime(date.year, 1, 1)
+        elif self.time_unit == 'month':
+            return datetime.datetime(date.year, date.month, 1)
+        else:
+            return datetime.datetime(date.year, date.month, date.day)
+
+    def set_end_date(self, date):
+        if self.time_unit == 'year':
+            return datetime.datetime(date.year, 12, 31)
+        elif self.time_unit == 'month':
+            return datetime.datetime(date.year, date.month, calendar.monthrange(date.year, date.month)[1])
+        else:
+            return datetime.datetime(date.year, date.month, date.day)
 
 class Dataset:
     '''
@@ -272,6 +270,7 @@ class Dataset:
         self._type = 'dataset'
         self.filename = '%s_%s.csv' % (self.project, self.name)
         self.created = datetime.datetime.now()
+        self.format = 'long'
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
         self.props = self.__dict__.keys()
@@ -335,7 +334,7 @@ class Dataset:
         return max([self.obs[date].data[k] for date in self.obs.keys() for k in self.obs[date].data.keys()])
 
     def get_standard_deviation(self, number_list):
-        mean = get_mean(number_list)
+        mean = self.get_mean(number_list)
         std = 0
         n = len(number_list)
         for i in number_list:
@@ -363,13 +362,25 @@ class Dataset:
         float_nums = [float(x) for x in number_list]
         return sum(float_nums) / len(number_list)
 
+    def descriptives(self):
+        for variable in self:
+            data = variable.get_data()
+            variable.mean = self.get_mean(data)
+            variable.median = self.get_median(data)
+            variable.sds = self.get_standard_deviation(data)
+            variable.min = min(data)
+            variable.max = max(data)
+            variable.n = len(data)
+
     def summary(self):
-        print 'Variable: %s' % self.name
-        print 'Mean: %s' % self.get_mean(self)
-        print 'Median: %s' % self.get_median(self)
-        print 'Standard Deviation: %s' % self.get_standard_deviation(self)
-        print 'Minimum: %s' % self.min()
-        print 'Maximum: %s' % self.max()
+        self.descriptives()
+        print '%s\t%s\t%s\t%s\t%s\t%s\t%s' % ('Variable', 'Mean', 'Median', 'SD',
+                                          'Minimum', 'Maximum', 'Num Obs')
+        for variable in self:
+            print '%s\t%s\t%s\t%s\t%s\t%s\t%s' % (variable.name, variable.mean,
+                                              variable.median, variable.sds,
+                                              variable.min, variable.max,
+                                              variable.n)
 
 
 def debug():
@@ -379,29 +390,29 @@ def debug():
 
     d1 = datetime.datetime.today()
     d2 = datetime.datetime(2007, 6, 7)
-    ds = Dataset('test', 'enwiki', 'editors_dataset', [
+    ds = Dataset('test', 'wiki', 'editors_dataset', 'en', [
                                         {'name': 'count', 'time_unit': 'year'},
                                         {'name': 'testest', 'time_unit': 'year'}
                                         ])
     ds.count.add(d1, 5)
+    ds.count.add(d1, 135)
     ds.count.add(d2, 514)
     ds.testest.add(d1, 135)
     ds.testest.add(d2, 535)
     #ds.summary()
-    ds.write_to_csv()
+    ds.write(format='csv')
     v = Variable('test', 'year')
+    ds.summary()
     ds.encode()
+    print ds
+
     mongo.test.insert({'variables': ds})
 
-    v.add(date , 5)
-    o = v.get_observation(date)
+    v.add(d2 , 5)
+    #o = v.get_observation(d2)
     ds = rawdata.find_one({'project': 'wiki',
                            'language_code': 'en',
                            'hash': 'cohort_dataset_backward_bar'})
-    print ds
-
-
-
 
 
 if __name__ == '__main__':

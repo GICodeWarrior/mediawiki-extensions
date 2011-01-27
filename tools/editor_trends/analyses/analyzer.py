@@ -61,8 +61,9 @@ def generate_chart_data(project, collection, language_code, func, **kwargs):
     log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='start')
     ds.write(format='mongo')
     stopwatch.elapsed()
-
     log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='finish')
+
+    ds.summary()
     return res
 
 
