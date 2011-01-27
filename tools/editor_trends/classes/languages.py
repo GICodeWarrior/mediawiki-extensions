@@ -1,6 +1,16 @@
 #!/usr/bin/python
 # coding=utf-8
-
+'''
+Copyright (C) 2010 by Diederik van Liere (dvanliere@gmail.com)
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 2
+as published by the Free Software Foundation.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details, at
+http://www.fsf.org/licenses/gpl.html
+'''
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
 __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-01-26'
@@ -12,13 +22,27 @@ sys.path.append('..')
 from utils import ordered_dict as odict
 
 class Language:
-    def __init__(self, name, code, locale=None):
+    def __init__(self, name, code, default, locale=None):
         self.name = name
         self.locale = locale
         self.code = code
+        self.default = default
 
     def __repr__(self):
         return '%s - %s' % (self.code, self.name)
+
+    def show_languages(self, settings, project, startswith=None):
+        if startswith != None:
+            startswith = startswith.title()
+        project.valid_languages.sort()
+        for language in project.valid_languages:
+            try:
+                if startswith != None and language.startswith(first):
+                    print '%s' % language.decode(settings.encoding)
+                elif startswith == None:
+                    print '%s' % language.decode(settings.encoding)
+            except UnicodeEncodeError:
+                print '%s' % language
 
 class LanguageContainer:
     def __init__(self):
@@ -605,18 +629,21 @@ class LanguageContainer:
     ])
 
         self.languages = {}
+        self.default = self.determine_default_language()
         for language, code in self.init_languages.iteritems():
-            ln = self.languages.get(code, Language(language, code))
+            ln = self.languages.get(code, Language(language, code, self.default))
             if language != ln.name:
                 ln.locale = language
+            elif language == 'English':
+                ln.locale = 'English'
             self.languages[code] = ln
-        self.default = self.determine_default_language()
+
 
     def __repr__(self):
         return 'contains %s languages' % (len(self.languages))
 
     def get_language(self, code):
-            return self.languages.get(code, None)
+            return '%s' % self.languages.get(code, None)
 
     def determine_default_language(self):
         '''
@@ -624,26 +651,7 @@ class LanguageContainer:
         Wikipedia project is most likely of interest
         '''
         code = locale.getdefaultlocale()[0]
-        code = code.split('_')[0]
-        return self.languages[code]
-
-    def show_languages(settings, project, startswith=None):
-        if startswith != None:
-            startswith = startswith.title()
-        choices = project.supported_languages()
-        lang = []
-        for choice in choices:
-            lang.append(choice)
-        lang.sort()
-        for language in lang:
-            try:
-                if startswith != None and language.startswith(first):
-                    print '%s' % language.decode(settings.encoding)
-                elif startswith == None:
-                    print '%s' % language.decode(settings.encoding)
-            except UnicodeEncodeError:
-                print '%s' % language
-
+        return code.split('_')[0]
 
     def extract_language_code_from_wikiprojects(self):
         '''
@@ -663,7 +671,7 @@ class LanguageContainer:
 
 def init():
     lnc = LanguageContainer()
-    return lnc.determine_default_language()
+    return lnc.languages[lnc.default]
 
 if __name__ == '__main__':
     init()

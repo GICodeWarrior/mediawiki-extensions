@@ -52,12 +52,14 @@ class RunTimeSettings:
         if args:
             self.args = args
             self.hash = self.secs_since_epoch()
-            self.base_location = self.get_value('location') \
-                if self.get_value('location') != None else settings.input_location
+            print self.settings.input_location
+            print self.settings.working_directory
+            self.base_location = self.settings.input_location if \
+                self.settings.input_location != None else self.get_value('location')
             self.update_project_settings()
             self.update_language_settings()
 
-            self.targets = self.get_value('charts')
+            self.targets = self.split_keywords(self.get_value('charts'))
             self.keywords = self.split_keywords(self.get_value('keywords'))
             self.function = self.get_value('func')
             self.collection = self.get_value('collection')
@@ -65,6 +67,8 @@ class RunTimeSettings:
             self.clean = self.get_value('new')
             self.force = self.get_value('force')
             self.location = self.get_project_location()
+            print self.location
+            print self.settings.working_directory
             self.filename = self.generate_wikidump_filename()
             self.namespaces = self.get_namespaces()
 
@@ -82,7 +86,6 @@ class RunTimeSettings:
                                 self.dataset,
                                 self.charts]
             self.path = '/%s/latest/' % self.project
-            self.targets = self.targets.split(', ')
             settings.verify_environment(self.directories)
 
     def __str__(self):
@@ -102,11 +105,19 @@ class RunTimeSettings:
         return props
 
     def split_keywords(self, keywords):
-        keywords = keywords.split(',')
         d = {}
-        for kw in keywords:
-            key, value = kw.split('=')
-            d[key] = value
+        if keywords != None:
+            keywords = keywords.split(',')
+            if [True for kw in keywords if kw.find('=') > -1] != []:
+                for kw in keywords:
+                    key, value = kw.split('=')
+                    try:
+                        value = int(value)
+                    except ValueError:
+                        pass
+                    d[key] = value
+            else:
+                return keywords
         return d
 
     def get_project_location(self):
@@ -149,7 +160,7 @@ class RunTimeSettings:
         '''
         lang = self.get_value('language')
         lnc = languages.LanguageContainer()
-        default = lnc.determine_default_language()
+        default = lnc.languages[lnc.default]
         if lang != default.name:
             lang = lnc.get_language(lang)
             return lang
