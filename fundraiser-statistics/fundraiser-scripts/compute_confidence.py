@@ -78,6 +78,8 @@ class ConfidenceTest:
 			formatted_sql_stmnt_1 = query_obj.format_query(query_name, sql_stmnt, [t1, t2, item_1, campaign])
 			formatted_sql_stmnt_2 = query_obj.format_query(query_name, sql_stmnt, [t1, t2, item_2, campaign])
 			
+			# print formatted_sql_stmnt_1
+			
 			try:
 				err_msg = formatted_sql_stmnt_1
 				
@@ -91,9 +93,6 @@ class ConfidenceTest:
 			except:
 				self.db.rollback()
 				sys.exit("Database Interface Exception:\n" + err_msg)
-			
-			#print results_1[metric_index]
-			#print results_2[metric_index]
 			
 			metrics_1.append(results_1[metric_index])
 			metrics_2.append(results_2[metric_index])
@@ -260,6 +259,7 @@ class ConfidenceTest:
 		
 		ylabel = metric_name
 		labels = [item_1, item_2]
+		
 		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
 		
 		""" Print out results """ 
@@ -301,7 +301,7 @@ class ConfidenceTest:
 			var2 = 0		# variance of group 2
 				
 			for j in range(num_samples):
-				index = i + j
+				index = i  * num_samples + j
 		
 				# Compute mean for each group
 				m1 = m1 + metrics_1[index]
@@ -488,9 +488,9 @@ class TTest(ConfidenceTest):
 		
 		""" lookup confidence """
 		
-		print ''
-		print t 
-		print degrees_of_freedom
+		#print ''
+		#print t 
+		#print degrees_of_freedom
 		
 		# get t and df
 		degrees_of_freedom = math.ceil(degrees_of_freedom)
@@ -504,14 +504,17 @@ class TTest(ConfidenceTest):
 		try:
 			self.cur.execute(select_stmnt)
 			results = self.cur.fetchone()
-			
-			p = float(results[0])
+				
+			if results[0] != None:
+				p = float(results[0])
+			else:
+				p = .0005
 		except:
 			self.db.rollback()
 			self.db.close()
 			sys.exit('Could not execute: ' + select_stmnt)
-		
-		print p 
+			
+		#print p 
 		self.db.close()
 		
 		conf_str =  str((1 - p) * 100) + '% confident about the winner.'
