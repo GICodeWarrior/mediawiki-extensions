@@ -3895,6 +3895,18 @@ $messages['zh-hans'] = array(
 	'math_TooManyMathmlNodes' => 'MathML 树中有太多的节点',
 	'math_TooManyTokens' => '输入过长',
 	'math_UnavailableSymbolFontCombination' => '在字体"$2"中，符号"$1"不可用',
+	'math_UnexpectedNextCell' => '"&"命令只能出现在"\\begin ... \\end"块中',
+	'math_UnexpectedNextRow' => '"\\\\"命令只能出现在"\\begin ... \\end"块中',
+	'math_UnmatchedBegin' => '出现了未与"\\end"配对的"\\begin"',
+	'math_UnmatchedCloseBrace' => '出现了未与"}"配对的"{"',
+	'math_UnmatchedEnd' => '出现了未与"\\begin"配对的"\\end"',
+	'math_UnmatchedLeft' => '出现了未与"\\right"配对的"\\left"',
+	'math_UnmatchedOpenBrace' => '出现了未与"}"配对的"{"',
+	'math_UnmatchedOpenBracket' => '出现了未与"]"配对的"["',
+	'math_UnmatchedRight' => '出现了未与"\\left"配对的"\\right"',
+	'math_UnrecognisedCommand' => '未被识别的命令 $1',
+	'math_WrongFontEncoding' => '符号"$1"不能出现在字体编码$2中',
+	'math_WrongFontEncodingWithHint' => '符号"$1"不能出现在字体编码$2中。尝试使用"$3{...}"命令。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
