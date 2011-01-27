@@ -402,6 +402,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Leithian
  * @author Melancholie
  * @author Revolus
@@ -429,7 +430,7 @@ Bitte sei dir ebenfalls sicher, dass du alle nötigen Felder angegeben hast, ''b
 	'createsigndoc-optional' => 'Optional',
 	'createsigndoc-create' => 'Erstelle',
 	'createsigndoc-error-generic' => 'Fehler: $1',
-	'createsigndoc-error-pagenoexist' => 'Fehler: Die Seite [[$1]] existiert nicht.',
+	'createsigndoc-error-pagenoexist' => 'Fehler: Die Seite [[$1]] ist nicht vorhanden.',
 	'createsigndoc-success' => 'Das Signieren wurde auf [[$1]] erfolgreich aktiviert.
 Du kannst es [{{fullurl:{{#Special:SignDocument}}|doc=$2}} hier ausprobieren].',
 	'createsigndoc-error-alreadycreated' => 'Dokumentsignatur „$1“ existiert bereits.
