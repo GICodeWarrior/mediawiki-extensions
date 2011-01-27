@@ -5993,6 +5993,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -6081,9 +6082,9 @@ $messages['sr-ec'] = array(
 	'deletequeue-list-header-queue' => 'Ред',
 	'deletequeue-list-header-votes' => 'Подршке и противљења',
 	'deletequeue-list-header-expiry' => 'Истек',
-	'deletequeue-list-header-discusspage' => 'Страна дискусије',
+	'deletequeue-list-header-discusspage' => 'Страница за разговор',
 	'deletequeue-case-intro' => 'Ова страна приказује информацију о појединачном случају брисања.',
-	'deletequeue-list-header-reason' => 'Разлог брисања',
+	'deletequeue-list-header-reason' => 'Разлог',
 	'deletequeue-case-votes' => 'Подршке/противљења:',
 	'deletequeue-case-title' => 'Детаљи о случају брисања',
 	'deletequeue-case-details' => 'Основни детаљи',
