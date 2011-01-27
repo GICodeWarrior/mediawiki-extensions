@@ -336,8 +336,8 @@ class ConfidenceTest:
 		else:
 			winner = labels[1]
 			
-		win_str =  "\nThe winner " + winner + " had a %s%.2f."
-		win_str = win_str % ('%', percent_increase)
+		win_str =  "\nThe winner " + winner + " had a %.2f%s."
+		win_str = win_str % (percent_increase, '%')
 		
 		print  '\n\n' +  metric_name 
 		print win_str
