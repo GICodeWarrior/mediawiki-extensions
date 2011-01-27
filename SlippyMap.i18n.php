@@ -859,6 +859,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'slippymap_desc' => 'Додава ознака <tt>&lt;slippymap&gt;</tt> која дозволува вгнездување на статични и динамични карти. Поддржува повеќе картографски сервиси, вклучувајќи ги [http://openstreetmap.org OpenStreetMap] и NASA Worldwind',
+	'slippymap_extname' => 'SlippyMap',
 	'slippymap_error' => '$1 грешка: $2',
 	'slippymap_errors' => '$1 грешка:',
 	'slippymap_error_tag_content_given' => 'Ознаката <tt>&lt;$1&gt;</tt> прима само атрибутни аргументи (&lt;$1 [...]/&gt;), а не вносен текст (&lt;$1&gt; ... &lt;/$1&gt;)',
