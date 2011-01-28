@@ -24,7 +24,10 @@
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
 }
-
+.articleFeedback-pitch-or {
+	margin-left: 0.75em;
+	margin-right: 0.25em;
+}
 .articleFeedback-reject {
 	border: none;
 	background-color: #f9f9f9;

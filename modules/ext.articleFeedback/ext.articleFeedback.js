@@ -195,28 +195,14 @@ var config = {
 		}
 	},
 	'pitches': {
-		'takesurvey': {
-			'condition': function() {
-				// If already taken survey, return false
-				return isPitchMuted( 'takesurvey' ) ? false : lottery( 0.33 );
-			},
-			'action': function() {
-				survey.load();
-				// Hide the pitch immediately
-				return true;
-			},
-			'title': 'articlefeedback-pitch-takesurvey-title',
-			'message': 'articlefeedback-pitch-takesurvey-message',
-			'accept': 'articlefeedback-pitch-takesurvey-accept',
-			'reject': 'articlefeedback-pitch-reject'
-		},
 		'createaccount': {
 			'condition': function() {
 				// If user is logged in, return false
-				return !isPitchMuted( 'createaccount' ) && mediaWiki.user.anonymous();
+				return ( isPitchMuted( 'createaccount' ) || !mediaWiki.user.anonymous() )
+					? false : lottery( 0.5 );
 			},
 			'action': function() {
-				// TODO: Do something
+				// Go to account creation page
 				window.location =
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': 'Special:UserLogin',
@@ -230,15 +216,29 @@ var config = {
 			'title': 'articlefeedback-pitch-createaccount-title',
 			'message': 'articlefeedback-pitch-createaccount-message',
 			'accept': 'articlefeedback-pitch-createaccount-accept',
-			'reject': 'articlefeedback-pitch-reject'
+			'reject': 'articlefeedback-pitch-reject',
+			// Special alternative action for going to login page
+			'altAccept': 'articlefeedback-pitch-createaccount-login',
+			'altAction': function() {
+				// Go to login page
+				window.location =
+					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
+						'title': 'Special:UserLogin',
+						'returnto': mediaWiki.config.get( 'wgPageName' )
+					} );
+				// Mute for 1 day
+				mutePitch( 'createaccount', 1 );
+				return false;
+			}
 		},
 		'makefirstedit': {
 			'condition': function() {
 				// If user is not logged in, return false
-				return !isPitchMuted( 'makefirstedit' ) && !mediaWiki.user.anonymous();
+				return ( isPitchMuted( 'makefirstedit' ) || mediaWiki.user.anonymous() )
+					? false : lottery( 0.5 );
 			},
 			'action': function() {
-				// TODO: Do something
+				// Go to edit page
 				window.location =
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': mediaWiki.config.get( 'wgPageName' ),
@@ -251,6 +251,21 @@ var config = {
 			'title': 'articlefeedback-pitch-makefirstedit-title',
 			'message': 'articlefeedback-pitch-makefirstedit-message',
 			'accept': 'articlefeedback-pitch-makefirstedit-accept',
+			'reject': 'articlefeedback-pitch-reject'
+		},
+		'takesurvey': {
+			'condition': function() {
+				// If already taken survey, return false
+				return !isPitchMuted( 'takesurvey' );
+			},
+			'action': function() {
+				survey.load();
+				// Hide the pitch immediately
+				return true;
+			},
+			'title': 'articlefeedback-pitch-takesurvey-title',
+			'message': 'articlefeedback-pitch-takesurvey-message',
+			'accept': 'articlefeedback-pitch-takesurvey-accept',
 			'reject': 'articlefeedback-pitch-reject'
 		}
 	}
