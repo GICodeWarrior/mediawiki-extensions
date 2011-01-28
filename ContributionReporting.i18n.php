@@ -2839,6 +2839,7 @@ $messages['ka'] = array(
 	'contribstats-average' => 'საშუალო',
 	'contribstats-credit-card' => 'საკრედიტო ბარათი',
 	'fundraiserstats-date' => 'თარიღი',
+	'fundraiserstats-day' => 'დღე $1 $2-დან',
 	'fundraiserstats-contributions' => 'წვლილი',
 	'fundraiserstats-total' => 'სულ (USD)',
 	'fundraiserstats-avg' => 'საშუალო (USD)',
@@ -4553,6 +4554,11 @@ $messages['sah'] = array(
 	'fundraiserstats-tab-averages' => 'Ортотунан (USD)',
 	'fundraiserstats-tab-maximums' => 'Саамай үрдээбитэ (USD)',
 	'fundraiserstats-tab-ytd' => 'Бу сылга (USD)',
+	'fundraiserstats-instructions' => 'Талбыт күнүҥ статиистикатын көрөргө курсору күн столбигыгар илт. Араас сыллар дааннайдара туспа өҥүнэн бэриллэллэр.',
+	'fundraiserstats-customize' => 'Уларытыы',
+	'fundraiserstats-show-years' => 'Аныгыскы сыллары көрдөр:',
+	'fundraiserstats-time-zone' => 'Олохтоох кэм:',
+	'fundraiserstats-utc' => '(UTC-тан уратыта)',
 );
 
 /** Sicilian (Sicilianu)
