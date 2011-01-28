@@ -37,8 +37,9 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 
-import exceptions
+from classes import exceptions
 import messages
+import text_utils
 
 try:
     import psyco
@@ -74,14 +75,8 @@ def read_raw_data(fh):
     '''
     for line in fh:
         line = line.strip()
-        if line == '':
-            continue
-        else:
-            line = line.split('\t')
-            yield line
-
-
-
+        line = line.split('\t')
+        yield line
 
 
 # read / write data related functions
@@ -235,6 +230,22 @@ def delete_file(location, filename, directory=False):
 def determine_filesize(location, filename):
     path = os.path.join(location, filename)
     return os.path.getsize(path)
+
+
+def set_modified_data(mod_rem, location, filename):
+    '''
+    Mod_rem is the modified date of the remote file (the Wikimedia dump file)
+    Mon, 15 Mar 2010 07:07:30 GMT Example server timestamp
+    '''
+    path = os.path.join(location, filename)
+    print mod_rem
+    mod_rem = text_utils.convert_timestamp_to_datetime_naive(mod_rem, settings.timestamp_format)
+    os.utime(path, (mod_rem, mod_rem))
+    raise exceptions.NotYetImplementedError(set_modified_data)
+
+def get_modified_date(location, filename):
+    path = os.path.join(location, filename)
+    return os.stat(path).st_mtime
 
 
 def check_file_exists(location, filename):

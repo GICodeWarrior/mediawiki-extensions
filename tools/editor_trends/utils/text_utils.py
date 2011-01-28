@@ -30,15 +30,16 @@ def convert_timestamp_to_date(timestamp):
     return datetime.datetime.strptime(timestamp[:10], settings.date_format)
 
 
-def convert_timestamp_to_datetime_naive(timestamp):
-    return datetime.datetime.strptime(timestamp, settings.timestamp_format)
+def convert_timestamp_to_datetime_naive(timestamp, timestamp_format):
+    return datetime.datetime.strptime(timestamp, timestamp_format)
 
 
 def convert_timestamp_to_datetime_utc(timestamp):
     tz = datetime.tzinfo('utc')
-    d = convert_timestamp_to_datetime_naive(timestamp)
+    d = convert_timestamp_to_datetime_naive(timestamp, settings.timestamp_format)
     #return d.replace(tzinfo=tz) #enabling this line crashes pymongo
     return d
+
 
 
 

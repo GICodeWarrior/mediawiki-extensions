@@ -153,7 +153,7 @@ def store_launcher(properties, settings, logger):
     print 'Start storing data in MongoDB'
     stopwatch = timer.Timer()
     log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='start')
-    db.cleanup_database(properties.project, logger)
+    db.cleanup_database(properties.project.name, logger)
 #    write_message_to_log(logger, settings,
 #                         message=None,
 #                         verb='Storing',
@@ -164,7 +164,7 @@ def store_launcher(properties, settings, logger):
 #                         collection=properties.collection)
 #    for key in properties:
 #        print key, getattr(properties, key)
-    store.launcher(properties.sorted, properties.project, properties.collection)
+    store.launcher(properties.sorted, properties.project.name, properties.collection)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='finish')
 
@@ -300,7 +300,7 @@ def init_args_parser():
         action='store',
         help='Enter the first letter of a language to see which languages are \
         available.')
-    parser_languages.set_defaults(func=language.show_languages)
+    parser_languages.set_defaults(func=language.show_languages, args=[settings, project])
 
     #CONFIG 
     parser_config = subparsers.add_parser('config',

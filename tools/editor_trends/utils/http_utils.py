@@ -31,8 +31,6 @@ import file_utils
 import log
 
 
-
-
 def read_data_from_http_connection(domain, path):
     if not domain.startswith('http://'):
         domain = 'http://%s' % domain
@@ -48,7 +46,6 @@ def read_data_from_http_connection(domain, path):
         print 'Error: %s' % error
 
     return data
-
 
 
 def retrieve_md5_hashes(domain, project, date):
@@ -68,7 +65,7 @@ def create_list_dumpfiles(domain, path, filename):
     canonical_filename = file_utils.determine_canonical_name(filename)
     for x in xrange(1, 100):
         f = '%s%s.xml.%s' % (canonical_filename, x, ext)
-        res = check_remote_path_exists(domain, path, f)
+        res = get_headers(domain, path, f)
         if res == None or res.status != 200:
             if x == 1:
                 task_queue.put(filename)
@@ -83,8 +80,7 @@ def create_list_dumpfiles(domain, path, filename):
     return task_queue
 
 
-
-def check_remote_path_exists(domain, path, filename):
+def get_headers(domain, path, filename):
     '''
     @path is the full path of the file to be downloaded
     @filename is the name of the file to be downloaded
@@ -104,11 +100,20 @@ def check_remote_path_exists(domain, path, filename):
 
     except httplib.socket.error:
         raise httplib.NotConnected('It seems that %s is temporarily \
-        unavailable, please try again later.' % url)
+            unavailable, please try again later.' % url)
+
+
+def determine_modified_date(domain, path, filename):
+    res = get_headers(domain, path, filename)
+    print res.__dict__
+    if res != None and res.status == 200:
+        return int(res.getheader('last-modified', -1))
+    else:
+        return - 1
 
 
 def determine_remote_filesize(domain, path, filename):
-    res = check_remote_path_exists(domain, path, filename)
+    res = get_headers(domain, path, filename)
     if res != None and res.status == 200:
         return int(res.getheader('content-length', -1))
     else:
@@ -116,9 +121,10 @@ def determine_remote_filesize(domain, path, filename):
 
 
 def debug():
-    domain = 'download.wikimedia.org'
-    path = 'enwikinews'
-    filename = None
+    domain = 'http://download.wikimedia.org'
+    path = '/enwikinews/20100315/'
+    filename = 'enwikinews-20100315-all-titles-in-ns0.gz'
+    determine_modified_date(domain, path, filename)
     #check_remote_path_exists(domain, path, filename)
     #read_directory_contents(domain, path)
 #    download_wp_dump('http://download.wikimedia.org/enwiki/latest',

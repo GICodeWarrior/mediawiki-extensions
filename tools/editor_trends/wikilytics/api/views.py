@@ -13,6 +13,7 @@ from django.core import serializers
 from wikilytics.api.forms import SearchForm, AnalysisForm
 from wikilytics.api.models import Editor, Dataset, Job, Dump
 import wikilytics.api.helpers as helpers
+from editor_trends.analyses import json_encoders
 
 
 def search(request):
@@ -76,7 +77,7 @@ def chart_generator(request, project, language, chart):
         return HttpResponseRedirect(reverse('chart_generator', args=[project, language, chart]))
     elif xhr:
         dthandler = lambda obj:'new Date("%s")' % datetime.date.ctime(obj) if isinstance(obj, datetime.datetime) else obj
-        data = helpers.transform_to_json(ds)
+        data = json_encoders.transform_to_json(ds)
         return HttpResponse(json.dumps(data, default=dthandler), mimetype='application/json')
     else:
 

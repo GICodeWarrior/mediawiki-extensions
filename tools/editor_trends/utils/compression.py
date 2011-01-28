@@ -25,7 +25,7 @@ sys.path.append('..')
 import configuration
 settings = configuration.Settings()
 import file_utils
-import exceptions
+from classes import exceptions
 import timer
 import log
 
