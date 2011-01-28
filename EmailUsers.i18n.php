@@ -20,7 +20,7 @@ $messages['en'] = array(
     
     'emailusers-norecipient' => 'There is no one you can send e-mail to.',
     'emailusers-norecipientselected' => 'No recipient is selected.',
-    'emailusers-toomanyrecipientsselected' => 'Too many recipients are selected (max. $1).',
+    'emailusers-toomanyrecipientsselected' => 'Too many recipients are selected ({{PLURAL:$1|maximum $1|maximum $1}}).',
 );
 
 /** German (Deutsch)
