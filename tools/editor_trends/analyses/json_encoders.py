@@ -17,13 +17,21 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-01-27'
 __version__ = '0.1'
 
+import types
+import analyzer
+
+from classes import exceptions
+from utils import data_converter
+
 
 def available_json_encoders():
-    functions = locals()
+    functions = globals()
     d = {}
+    ignore = ['transform_to_json']
     for func in functions:
-        if func.func_name.endswith('json'):
-            d[func.func_name] = func
+        if func.endswith('json') \
+            and func not in ignore:
+                d[func] = func
 
     return d
 
@@ -31,17 +39,61 @@ def available_json_encoders():
 def transform_to_json(ds):
     analyses = analyzer.available_analyses()
     json_encoders = available_json_encoders()
-    analysis = '%s_%s_%s' % ('transform_to', ds.name, 'json')
+    analysis = '%s_%s_%s' % ('transform_to', ds.encoder, 'json')
     print analysis
-    analysis = getattr(locals(), analysis, None)
-    if analysis in json_encoders:
-        data = analysis(ds)
-    else:
-        raise exceptions.UnknownJSONEncoderError
+    encoder = getattr(locals(), analysis, None)
+    if encoder == None:
+        encoder = to_bar_json
+
+    data = encoder(ds)
+#    except Exception, e:
+#        print e
+#        raise exceptions.UnknownJSONEncoderError(analysis)
+
     return data
 
+def init_options():
+    options = {}
+    options['xaxis'] = {}
+    options['xaxis']['ticks'] = []
+    options['series'] = {}
+    options['series']['stack'] = 0
+    options['series']['lines'] = {}
+    options['series']['lines']['show'] = False
+    options['series']['lines']['steps'] = False
+    options['series']['bars'] = {}
+    options['series']['bars']['show'] = True
+    options['series']['bars']['barWidth'] = 0.5
+    options['series']['bars']['align'] = 'center'
+    return options
+
+def to_bar_json(ds):
+    data = {}
+
+    options = init_options()
+    obs, all_keys = data_converter.convert_dataset_to_lists(ds, 'django')
+
+    for ob in obs:
+        year = ob[0].year
+        row = data.get(year, {})
+        row.setdefault('label', year)
+        row.setdefault('data', [[year, 0]])
+        row['data'][0][1] += 1
+        data[year] = row
 
 
+    obs = []
+    for dat in data:
+        obs.append(data[dat])
+    min_year = min(data.keys()) - 1
+    max_year = max(data.keys()) + 1
+    obs.insert(0, {'label': min_year, 'data':[[min_year, None]]})
+    obs.insert(-1, {'label': max_year, 'data':[[max_year, None]]})
+    json = {}
+    json['data'] = obs
+    json['options'] = options
+    print json
+    return json
 
 def to_stacked_bar_json(ds):
     '''
@@ -59,20 +111,10 @@ def to_stacked_bar_json(ds):
         xaxis: {ticks: [[1, 'One'], [2, 'Two'], [3, 'Three'], [4, 'Four'], [5, 'Five']]},
     };
     '''
-    options = {}
-    options['xaxis'] = {}
-    options['xaxis']['ticks'] = []
-    options['series'] = {}
-    options['series']['stack'] = 0
-    options['series']['lines'] = {}
-    options['series']['lines']['show'] = False
-    options['series']['lines']['steps'] = False
-    options['series']['bars'] = {}
-    options['series']['bars']['show'] = True
-    options['series']['bars']['barWidth'] = 0.9
-    options['series']['bars']['align'] = 'center'
+
 
     data = []
+    options = init_options()
     obs, all_keys = data_converter.convert_dataset_to_lists(ds, 'django')
 
     for ob in obs:

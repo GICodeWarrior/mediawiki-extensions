@@ -34,7 +34,7 @@ from utils import log
 import dataset
 
 
-def generate_chart_data(project, collection, language_code, func, **kwargs):
+def generate_chart_data(project, collection, language_code, func, encoder, **kwargs):
     '''
     This is the entry function to be called to generate data for creating charts.
     '''
@@ -51,7 +51,7 @@ def generate_chart_data(project, collection, language_code, func, **kwargs):
     print 'Project: %s' % dbname
     print 'Dataset: %s' % collection
 
-    ds = loop_editors(dbname, project, collection, language_code, func, **kwargs)
+    ds = loop_editors(dbname, project, collection, language_code, func, encoder, **kwargs)
     fn = '%s_%s.csv' % (dbname, func.func_name)
 
     print 'Storing dataset: %s' % os.path.join(settings.dataset_location, fn)
@@ -67,7 +67,7 @@ def generate_chart_data(project, collection, language_code, func, **kwargs):
     return res
 
 
-def loop_editors(dbname, project, collection, language_code, func, **kwargs):
+def loop_editors(dbname, project, collection, language_code, func, encoder, **kwargs):
     '''
     Generic loop function that loops over all the editors of a Wikipedia project
     and then calls the function that does the actual aggregation.
@@ -89,6 +89,7 @@ def loop_editors(dbname, project, collection, language_code, func, **kwargs):
                          project,
                          coll.name,
                          language_code,
+                         encoder,
                          variables,
                          format=fmt)
     var = dataset.Variable('count', **kwargs)
@@ -180,14 +181,14 @@ def create_windows(var, break_down_first_year=True):
 
 
 if __name__ == '__main__':
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', time_unit='year')
-    generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', time_unit='year')
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', time_unit='year')
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=50)
-    #generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_backward_bar, time_unit='year', cutoff=0, cum_cutoff=50, format='wide')
-    #generate_chart_data('wiki', 'editors_dataset', 'en', cohort_dataset_forward_bar, time_unit='year', cutoff=0, cum_cutoff=50, format='wide')
-    #generate_chart_data('wiki', 'editors_dataset','en', histogram_edits, time_unit='year', cutoff=0)
-    #generate_chart_data('wiki', 'editors_dataset','en', time_to_new_wikipedian, time_unit='year', cutoff=0)
-    #generate_chart_data('wiki', 'editors_dataset','en', new_editor_count, time_unit='month', cutoff=0)
+    #generate_chart_data('wiki', 'editors_dataset','en', 'total_number_of_new_wikipedians', time_unit='year')
+    #generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', time_unit='year')
+    #generate_chart_data('wiki', 'editors_dataset','en', 'total_cumulative_edits', time_unit='year')
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', 'to_bar_json', time_unit='month', cutoff=5, cum_cutoff=0)
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_backward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=10, cum_cutoff=0, format='wide')
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
+    #generate_chart_data('wiki', 'editors_dataset','en', 'histogram_edits', time_unit='year', cutoff=0)
+    #generate_chart_data('wiki', 'editors_dataset','en', 'time_to_new_wikipedian', time_unit='year', cutoff=0)
+    #generate_chart_data('wiki', 'editors_dataset','en', 'new_editor_count', time_unit='month', cutoff=0)
 
     #available_analyses()

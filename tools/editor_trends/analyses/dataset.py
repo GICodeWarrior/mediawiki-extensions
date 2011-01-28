@@ -32,6 +32,7 @@ settings = configuration.Settings()
 from utils import file_utils
 from utils import data_converter
 from database import db
+import json_encoders
 
 class Transform(SONManipulator):
     '''
@@ -276,7 +277,12 @@ class Dataset:
     to output the dataset to a csv file, mongodb and display statistics. 
     '''
 
-    def __init__(self, name, project, collection, language_code, vars=None, **kwargs):
+    def __init__(self, name, project, collection, language_code, encoder, vars=None, **kwargs):
+        encoders = json_encoders.available_json_encoders()
+        if encoder not in encoders:
+            raise exception.UnknownJSONEncoderError(encoder)
+        else:
+            self.encoder = encoder
         self.name = name
         self.project = project
         self.collection = collection
@@ -341,12 +347,11 @@ class Dataset:
             props[prop] = getattr(self, prop)
         return props
 
-    def min(self):
-        return min([obs for obs in self])
-        #return min([self.obs[date].data[k]  for date in self.obs.keys() for k in self.obs[date].data.keys()])
-
-    def max(self):
-        return max([self.obs[date].data[k] for date in self.obs.keys() for k in self.obs[date].data.keys()])
+#    def min(self):
+#        return min([obs for obs in self])
+#
+#    def max(self):
+#        return max([self.obs[date].data[k] for date in self.obs.keys() for k in self.obs[date].data.keys()])
 
     def get_standard_deviation(self, number_list):
         mean = self.get_mean(number_list)
@@ -358,7 +363,6 @@ class Dataset:
 
 
     def get_median(self, number_list):
-        #print number_list
         if number_list == []: return '.'
         data = sorted(number_list)
         data = [float(x) for x in data]
@@ -367,12 +371,10 @@ class Dataset:
         else:
             lower = data[len(data) / 2 - 1]
             upper = data[len(data) / 2]
-            #print upper, lower
         return (lower + upper) / 2
 
 
     def get_mean(self, number_list):
-        #print number_list
         if number_list == []: return '.'
         float_nums = [float(x) for x in number_list]
         return sum(float_nums) / len(number_list)
@@ -409,7 +411,7 @@ def debug():
 
     d1 = datetime.datetime.today()
     d2 = datetime.datetime(2007, 6, 7)
-    ds = Dataset('test', 'wiki', 'editors_dataset', 'en', [
+    ds = Dataset('test', 'wiki', 'editors_dataset', 'en', 'to_bar_json', [
                                         {'name': 'count', 'time_unit': 'year'},
                                         {'name': 'testest', 'time_unit': 'year'}
                                         ])
