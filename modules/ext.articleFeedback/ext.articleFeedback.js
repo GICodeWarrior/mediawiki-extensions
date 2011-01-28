@@ -150,7 +150,7 @@ var survey = new ( function( mw ) {
 				// Display success/error message
 				that.alert( success ? 'success' : 'error' );
 				// Mute for 30 days
-				mutePitch( 'takesurvey', 30 );
+				mutePitch( 'survey', 30 );
 			},
 			'error': function( XMLHttpRequest, textStatus, errorThrown ) {
 				// Take the dialog out of "loading" state
@@ -195,11 +195,26 @@ var config = {
 		}
 	},
 	'pitches': {
-		'createaccount': {
+		'survey': {
 			'condition': function() {
-				// If user is logged in, return false
-				return ( isPitchMuted( 'createaccount' ) || !mediaWiki.user.anonymous() )
-					? false : lottery( 0.5 );
+				// If this pitch isn't muted, show this 1/3 of the time
+				return !isPitchMuted( 'survey' ) ? lottery( 0.333 ) : false;
+			},
+			'action': function() {
+				survey.load();
+				// Hide the pitch immediately
+				return true;
+			},
+			'title': 'articlefeedback-pitch-survey-title',
+			'message': 'articlefeedback-pitch-survey-message',
+			'accept': 'articlefeedback-pitch-survey-accept',
+			'reject': 'articlefeedback-pitch-reject'
+		},
+		'join': {
+			'condition': function() {
+				// If this pitch isn't muted and the user is anonymous, show this 1/2 of the time
+				return ( !isPitchMuted( 'join' ) && mediaWiki.user.anonymous() )
+					? lottery( 0.5 ) : false;
 			},
 			'action': function() {
 				// Go to account creation page
@@ -210,15 +225,15 @@ var config = {
 						'returnto': mediaWiki.config.get( 'wgPageName' )
 					} );
 				// Mute for 1 day
-				mutePitch( 'createaccount', 1 );
+				mutePitch( 'join', 1 );
 				return false;
 			},
-			'title': 'articlefeedback-pitch-createaccount-title',
-			'message': 'articlefeedback-pitch-createaccount-message',
-			'accept': 'articlefeedback-pitch-createaccount-accept',
+			'title': 'articlefeedback-pitch-join-title',
+			'message': 'articlefeedback-pitch-join-message',
+			'accept': 'articlefeedback-pitch-join-accept',
 			'reject': 'articlefeedback-pitch-reject',
 			// Special alternative action for going to login page
-			'altAccept': 'articlefeedback-pitch-createaccount-login',
+			'altAccept': 'articlefeedback-pitch-join-login',
 			'altAction': function() {
 				// Go to login page
 				window.location =
@@ -227,15 +242,14 @@ var config = {
 						'returnto': mediaWiki.config.get( 'wgPageName' )
 					} );
 				// Mute for 1 day
-				mutePitch( 'createaccount', 1 );
+				mutePitch( 'join', 1 );
 				return false;
 			}
 		},
-		'makefirstedit': {
+		'edit': {
 			'condition': function() {
-				// If user is not logged in, return false
-				return ( isPitchMuted( 'makefirstedit' ) || mediaWiki.user.anonymous() )
-					? false : lottery( 0.5 );
+				// If this pitch isn't muted, show this always
+				return !isPitchMuted( 'edit' );
 			},
 			'action': function() {
 				// Go to edit page
@@ -245,27 +259,12 @@ var config = {
 						'action': 'edit'
 					} );
 				// Mute for 7 days
-				mutePitch( 'makefirstedit', 7 );
+				mutePitch( 'edit', 7 );
 				return false;
 			},
-			'title': 'articlefeedback-pitch-makefirstedit-title',
-			'message': 'articlefeedback-pitch-makefirstedit-message',
-			'accept': 'articlefeedback-pitch-makefirstedit-accept',
-			'reject': 'articlefeedback-pitch-reject'
-		},
-		'takesurvey': {
-			'condition': function() {
-				// If already taken survey, return false
-				return !isPitchMuted( 'takesurvey' );
-			},
-			'action': function() {
-				survey.load();
-				// Hide the pitch immediately
-				return true;
-			},
-			'title': 'articlefeedback-pitch-takesurvey-title',
-			'message': 'articlefeedback-pitch-takesurvey-message',
-			'accept': 'articlefeedback-pitch-takesurvey-accept',
+			'title': 'articlefeedback-pitch-edit-title',
+			'message': 'articlefeedback-pitch-edit-message',
+			'accept': 'articlefeedback-pitch-edit-accept',
 			'reject': 'articlefeedback-pitch-reject'
 		}
 	}
