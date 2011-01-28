@@ -58,7 +58,9 @@ $messages['en'] = array(
     'articlefeedback-expert-assessment-level-1-label' => 'Marginal',
     'articlefeedback-expert-assessment-level-2-label' => 'Competent',
     'articlefeedback-expert-assessment-level-3-label' => 'Expert',
-
+	'articlefeedback-survey-message-success' => 'Thanks for filling out the survey.',
+    'articlefeedback-survey-message-error' => 'An error has occurred.
+Please try again later.',
 );
 
 /** Message documentation (Message documentation)
