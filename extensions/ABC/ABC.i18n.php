@@ -154,6 +154,13 @@ $messages['bn'] = array(
 	'abcdownload' => 'ডাউনলোড:',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Freeyak
+ */
+$messages['bo'] = array(
+	'abcdownload' => 'མར་ཕབ་པ།',
+);
+
 /** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
  * @author Usingha
  */

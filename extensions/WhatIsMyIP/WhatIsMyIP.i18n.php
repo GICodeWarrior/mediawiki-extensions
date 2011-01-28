@@ -574,6 +574,14 @@ $messages['ml'] = array(
 	'right-whatismyip' => '[[Special:WhatIsMyIP|സ്വന്തം ഐ.പി. വിലാസം]] കാണുക',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'whatismyip-desc' => 'ယခုအသုံးပြုနေသူ၏ [[Special:WhatIsMyIP|IP address]]',
+	'whatismyip-out' => 'သင်၏ IP လိပ်စာ',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  * @author Ricardo gs

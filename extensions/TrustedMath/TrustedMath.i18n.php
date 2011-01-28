@@ -28,6 +28,7 @@ $messages['be-tarask'] = array(
 	'trustedmath-permission-error' => 'Небясьпечныя матэматычныя формулы забароненыя ў {{GRAMMAR:месны|{{SITENAME}}}}',
 	'trustedmath-path-error' => 'Памылка стварэньня матэматычнай дырэкторыі',
 	'trustedmath-convert-error' => 'Памылка стварэньня матэматычнай выявы. «$1» вярнула <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Старонка [[:$1]] не існуе',
 );
 
 /** German (Deutsch)
@@ -73,6 +74,13 @@ $messages['ia'] = array(
 	'trustedmath-path-error' => 'Error durante le creation del directorio "math"',
 	'trustedmath-convert-error' => 'Error durante le creation del imagine a mathematica. "$1" retornava <tt><nowiki>$2</nowiki></tt>.',
 	'trustedmath-not-found' => 'Le pagina [[:$1]] non existe',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'trustedmath-not-found' => "D'Säit [[:$1]] gëtt et net",
 );
 
 /** Macedonian (Македонски)

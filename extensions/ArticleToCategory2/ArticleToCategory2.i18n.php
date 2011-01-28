@@ -558,6 +558,7 @@ $messages['uk'] = array(
  * @author Steven0127
  */
 $messages['zh-hans'] = array(
+	'articletocategory2-desc' => '把一个 inputbox 放允许直接到该类别的新的一页创建的每个类别页',
 	'articletocategory2-create-article-under-category-text' => '将页面添加到此类别',
 	'articletocategory2-create-article-under-category-button' => '创建',
 	'articletocategory2-create-category-under-category-text' => '此类别中添加类别',

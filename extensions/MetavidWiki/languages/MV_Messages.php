@@ -8105,6 +8105,7 @@ Skocz do widoku strumienia $2',
  */
 $messages['pms'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor ëd metadàit filmà e arserca ëd mojen]',
+	'mvadmin' => "Funsion d'aministrador për MetavidWiki",
 	'metavid' => 'Pàgina MetaVid',
 	'mv_missing_stream' => 'Fluss mancant: $1',
 	'specialpages-group-mv_group' => 'Pàgina special MetaVidWiki',

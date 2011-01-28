@@ -91,6 +91,7 @@ $messages['qqq'] = array(
 	'wikisync_remote_login_button' => '{{Identical|Log in}}',
 	'wikisync_apply_button' => '{{Identical|Apply}}',
 	'wikisync_api_result_WrongPluginPass' => 'Same as WrongPass, returned when an authentication plugin rather than MediaWiki itself rejected the password',
+	'wikisync_js_revision' => '{{Identical|Revision}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -137,9 +138,10 @@ $messages['be-tarask'] = array(
 	'wikisync_apply_button' => 'Ужыць',
 	'wikisync_log_imported_by' => 'Імпартаванае [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Загружанае [[Special:WikiSync|WikiSync]]',
+	'wikisync_unsupported_user' => 'Толькі спэцыяльны робат $1 можа выканаць сынхранізацыю вікі-сайтаў. Калі ласка, увайдзіце як $1. Не зьмяняйце імя $1 паміж сынхранізацыямі, у адваротным выпадку нулявыя вэрсіі ня будуць слушна прапушчаныя (глядзіце [http://www.mediawiki.org/wiki/Extension:WikiSync] для дадатковай інфармацыі).',
 	'wikisync_api_result_unknown_action' => 'Невядомае дзеяньне API',
 	'wikisync_api_result_exception' => 'Адбылося выключэньне падчас лякальнага выкліку API',
-	'wikisync_api_result_noaccess' => 'Гэтае дзеяньне могуць выконваць толькі ўдзельнікі наступных групаў: $1',
+	'wikisync_api_result_noaccess' => 'Гэтае дзеяньне могуць выконваць удзельнікі толькі {{PLURAL:$2|наступнай групы|наступных групаў}}: $1',
 	'wikisync_api_result_invalid_parameter' => 'Няслушнае значэньне парамэтра',
 	'wikisync_api_result_http' => 'Адбылася памылка HTTP падчас запыту зьвестак праз аддаленае API',
 	'wikisync_api_result_Unsupported' => 'Вашая вэрсія MediaWiki не падтрымліваецца (меней 1.15)',
@@ -174,6 +176,8 @@ $messages['be-tarask'] = array(
 	'wikisync_js_already_synchronized' => 'Крынічная і мэтавая вікі выглядаюць ужо сынхранізаванымі',
 	'wikisync_js_sync_to_itself' => 'Немагчыма сынхранізаваць вікі з самой сябе',
 	'wikisync_js_diff_search' => 'Пошук адрозьненьняў у мэтавых вэрсіях',
+	'wikisync_js_revision' => 'Вэрсія $1',
+	'wikisync_js_scheduler_countdown' => 'Засталася $1 {{PLURAL:$1|хвіліна|хвіліны|хвілінаў}}',
 );
 
 /** Breton (Brezhoneg)
@@ -1245,7 +1249,7 @@ $messages['ru'] = array(
 	'wikisync_unsupported_user' => 'Только специальный бот под именем $1 может синхронизировать вики сайты. Пожалуйста зайдите как пользователь $1. Не изменяйте имя учетной записи $1 между синхронизациями, в противном случае информационные нулевые ревизии не будут правильно пропущены (см. [http://www.mediawiki.org/wiki/Extension:WikiSync] для более подробной информации).',
 	'wikisync_api_result_unknown_action' => 'Неизвестное действие (action) API',
 	'wikisync_api_result_exception' => 'Произошло исключение в местном API-вызове',
-	'wikisync_api_result_noaccess' => 'Только пользователи, входящие в нижеперечисленные группы, могут выполнять указанное действие: ($1)',
+	'wikisync_api_result_noaccess' => 'Только пользователи из {{PLURAL:$2|следующей группы|следующих групп}} могут выполнять указанное действие: $1',
 	'wikisync_api_result_invalid_parameter' => 'Недопустимое значение параметра',
 	'wikisync_api_result_http' => 'Ошибка HTTP при запросе данных из отдаленного API',
 	'wikisync_api_result_Unsupported' => 'Ваша версия MediaWiki не поддерживается (менее 1.15)',

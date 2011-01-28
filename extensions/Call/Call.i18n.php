@@ -1344,10 +1344,24 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  */
 $messages['zh-hans'] = array(
 	'call' => '呼叫',
 	'call-desc' => '创建一个超链接到模板（或一般页面）的参数传递。可用于在浏览器的命令行或在维基文本中使用。',
+	'call-text' => '作为参数，调用扩展预计 wiki 页面，该页面的可选参数。<br /><br />
+
+示例一： <tt>[[{{#special:call}}/My template,parm1=value1]]</tt><br />
+示例二： <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+示例三： <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+示例四（浏览器 URL）： <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+<i>调用扩展</i> 的将调用给定的页面，并传递参数。<br />
+您将看到所调用的页和它的标题的内容，但其 type 将的一个特殊的页面即此类的页面无法编辑。<br />您看到的内容取决于您所传递的参数的值。<br /><br />
+
+<i>调用扩展</i> 的可用于构建具有 MediaWiki 的交互式应用程序。<br />
+有关示例，请参见 <a href="http://semeb.com/dpldemo/Template:Catlist">DPL GUI</a>...<br />
+问题的情况下，您可以尝试 <b>{{#special:call}}/DebuG</b>',
 	'call-save' => '本呼叫的输出将保存至名为“$1”的页面内。',
 	'call-save-success' => '以下文字经已保存至页面<big>[[$1]]</big>。',
 	'call-save-failed' => '由于页面已存在，以下文字并未保存至页面<big>[[$1]]</big>。',

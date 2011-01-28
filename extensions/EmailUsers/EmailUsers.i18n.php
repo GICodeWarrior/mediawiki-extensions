@@ -23,6 +23,18 @@ $messages['en'] = array(
     'emailusers-toomanyrecipientsselected' => 'Too many recipients are selected ({{PLURAL:$1|maximum $1|maximum $1}}).',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'emailusers-desc' => 'Дазваляе ўдзельнікам дасылаць электронныя лісты адразу некалькім атрымальнікам',
+	'emailusers' => 'Даслаць электронныя ліст ўдзельнікам',
+	'emailusers-target-reverse' => 'Даслаць усім удзельнікам, за выключэньнем выбраных',
+	'emailusers-norecipient' => 'Няма нікога, каму Вы можаце даслаць электронны ліст.',
+	'emailusers-norecipientselected' => 'Атрымальнікі не выбраныя.',
+	'emailusers-toomanyrecipientsselected' => 'Выбрана зашмат атрымальнікаў.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -32,7 +44,7 @@ $messages['de'] = array(
 	'emailusers-target-reverse' => 'An alle Benutzer, mit Ausnahme der ausgewählten, versenden',
 	'emailusers-norecipient' => 'Es sind keine Benutzer vorhanden, denen eine E-Mail gesandt werden kann.',
 	'emailusers-norecipientselected' => 'Es wurde kein Empfänger ausgewählt.',
-	'emailusers-toomanyrecipientsselected' => 'Es wurden zu viele Empfänger ausgewählt.',
+	'emailusers-toomanyrecipientsselected' => 'Es wurden zu viele Empfänger ausgewählt (Es {{PLURAL:$1|ist maximal $1|sind maximal $1}} möglich.).',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -71,6 +83,25 @@ $messages['ia'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Troppo de destinatarios es seligite.',
 );
 
+/** Japanese (日本語)
+ * @author Whym
+ */
+$messages['ja'] = array(
+	'emailusers-desc' => '利用者が複数の受信者に電子メールを送ることを許可する',
+	'emailusers' => '利用者への電子メール送信',
+	'emailusers-target-reverse' => '選択した利用者以外のすべての利用者に送信する',
+	'emailusers-norecipient' => '電子メールを送信できる相手がいません。',
+	'emailusers-norecipientselected' => '受信者が選択されていません。',
+	'emailusers-toomanyrecipientsselected' => '選択されている受信者が多すぎます。',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'emailusers-desc' => 'Erméiglecht de Benotzer fir E-Mailen u méi Adressaten ze schécken',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -95,16 +126,39 @@ $messages['nl'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd.',
 );
 
-/** Chinese (Simplified)
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'emailusers-desc' => 'Permite que os utilizadores enviem correio electrónico a vários destinatários em simultâneo',
+	'emailusers' => 'Correio para vários destinatários',
+	'emailusers-target-reverse' => 'Enviar a todos os utilizadores, excepto os seleccionados',
+	'emailusers-norecipient' => 'Não há ninguém a quem possa enviar correio electrónico.',
+	'emailusers-norecipientselected' => 'Não está seleccionado nenhum destinatário.',
+	'emailusers-toomanyrecipientsselected' => 'Foram seleccionados demasiados destinatários.',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'emailusers-desc' => 'Позволяет участникам отправлять электронную почту нескольким получателям',
+	'emailusers' => 'Письмо участникам',
+	'emailusers-target-reverse' => 'Отправить всех участникам, кроме выбранных',
+	'emailusers-norecipient' => 'Вы некому не можете отправить сообщение.',
+	'emailusers-norecipientselected' => 'Получатель не выбран.',
+	'emailusers-toomanyrecipientsselected' => 'Выбрано слишком много получателей.',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  */
 $messages['zh-hans'] = array(
-    'emailusers-desc' => '允许用户给多个收件人发送电子邮件',
-    
-    'emailusers' => '给多个用户发送邮件',
-    'emailusers-target-reverse' => '发送给除了选定用户的所有用户',
-    
-    'emailusers-norecipient' => '没有用户可以接收电子邮件。',
-    'emailusers-norecipientselected' => '没有选择收件人。',
-    'emailusers-toomanyrecipientsselected' => '选择了太多收件人（最多$1个）。',
+	'emailusers-desc' => '允许用户给多个收件人发送电子邮件',
+	'emailusers' => '给多个用户发送邮件',
+	'emailusers-target-reverse' => '发送给除了选定用户的所有用户',
+	'emailusers-norecipient' => '没有用户可以接收电子邮件。',
+	'emailusers-norecipientselected' => '没有选择收件人。',
+	'emailusers-toomanyrecipientsselected' => '选择了太多收件人（最多$1个）。',
 );
+

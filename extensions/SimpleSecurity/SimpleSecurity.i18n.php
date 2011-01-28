@@ -908,6 +908,7 @@ $messages['pms'] = array(
 	'security-type-category' => 'categorìa',
 	'security-type-namespace' => 'spassi nominal',
 	'security-restricttogroup' => 'Vëdde contnù riservà ai mèmber ëd "$1"',
+	'restriction-read' => 'Les',
 );
 
 /** Pashto (پښتو)
@@ -942,6 +943,7 @@ $messages['pt'] = array(
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'domínio',
 	'security-restricttogroup' => 'Aceder a conteúdo restrito aos membros de "$1"',
+	'restriction-read' => 'Ler',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -997,6 +999,7 @@ $messages['ru'] = array(
 	'security-type-category' => 'категории',
 	'security-type-namespace' => 'пространстве имён',
 	'security-restricttogroup' => 'Доступ к содержимому ограничен членами «$1»',
+	'restriction-read' => 'Чтение',
 );
 
 /** Rusyn (Русиньскый)

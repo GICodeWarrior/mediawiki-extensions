@@ -53,6 +53,13 @@ $messages['nl'] = array(
 	'folktagcloud-desc' => "Voegt een eigenschap voor Semantic MediaWiki toe voor het labelen van pagina's met gebruikersgedefinieerde labels voor weergave in een woordwolk",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'folktagcloud-desc' => 'A gionta na proprietà ëd Semantic MediaWiki për marché pàgine con tichëtte definìe da utent e na tichëtta ëd parser për mosteje ant na nìvola ëd tichëtte',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

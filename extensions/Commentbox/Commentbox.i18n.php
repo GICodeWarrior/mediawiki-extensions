@@ -956,6 +956,7 @@ Imate pripombo na to stran? Dodajte jo tukaj <span class="plainlinks">[{{fullurl
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -967,7 +968,7 @@ $messages['sr-ec'] = array(
 	'commentbox-log' => 'Нови коментари',
 	'commentbox-first-comment-heading' => '== Коментари ==',
 	'commentbox-errorpage-title' => 'Грешка током прављења коментара',
-	'commentbox-error-page-nonexistent' => 'Ова страна не постоји!',
+	'commentbox-error-page-nonexistent' => 'Ова страница не постоји!',
 	'commentbox-error-namespace' => 'Коментари нису дозвољени у овом именском простору!',
 	'commentbox-error-empty-comment' => 'Празни коментари нису могући!',
 );

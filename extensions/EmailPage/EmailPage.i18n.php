@@ -700,6 +700,13 @@ $messages['mr'] = array(
 	'ea-selectcss' => 'सीएसएस स्टाइलशीट पाठवा',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'ea-heading' => 'ဤစာမျက်နှာအား email ပို့နေသည် "[[$1]]"',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
