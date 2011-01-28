@@ -106,7 +106,7 @@ class SpecialEmailUsers extends SpecialPage {
     }
     
     function validateTarget( $value, $alldata ) {
-        global $wgEmailUsersMaxRecipients;
+        global $wgLang, $wgEmailUsersMaxRecipients;
         
         if ( $alldata['target-reverse'] ) {
             $recipients = count( $this->userIds ) - count( $value );
@@ -117,7 +117,10 @@ class SpecialEmailUsers extends SpecialPage {
         if ( $recipients <= 0 ) {
             return wfMsgExt( 'emailusers-norecipientselected', 'parse' );
         } else if ( $wgEmailUsersMaxRecipients > 0 && $recipients > $wgEmailUsersMaxRecipients ) {
-            return wfMsgExt( 'emailusers-toomanyrecipientsselected', 'parse' );
+            return wfMsgExt(
+                'emailusers-toomanyrecipientsselected', 'parse',
+                $wgLang->formatNum( $wgEmailUsersMaxRecipients )
+            );
         }
         
         return true;

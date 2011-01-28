@@ -18,9 +18,9 @@ $messages['en'] = array(
     'emailusers' => 'E-mail users',
     'emailusers-target-reverse' => 'Send to all users except for selected ones',
     
-    'emailusers-norecipient' => 'There is no one you can send mail to.',
+    'emailusers-norecipient' => 'There is no one you can send e-mail to.',
     'emailusers-norecipientselected' => 'No recipient is selected.',
-    'emailusers-toomanyrecipientsselected' => 'Too many recipients are selected.',
+    'emailusers-toomanyrecipientsselected' => 'Too many recipients are selected (max. $1).',
 );
 
 /** German (Deutsch)
@@ -95,3 +95,16 @@ $messages['nl'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd.',
 );
 
+/** Chinese (Simplified)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+    'emailusers-desc' => '允许用户给多个收件人发送电子邮件',
+    
+    'emailusers' => '给多个用户发送邮件',
+    'emailusers-target-reverse' => '发送给除了选定用户的所有用户',
+    
+    'emailusers-norecipient' => '没有用户可以接收电子邮件。',
+    'emailusers-norecipientselected' => '没有选择收件人。',
+    'emailusers-toomanyrecipientsselected' => '选择了太多收件人（最多$1个）。',
+);
