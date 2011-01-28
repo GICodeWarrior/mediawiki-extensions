@@ -23,6 +23,7 @@ $mwParentClasses = array();
 if ( !extension_loaded( 'sockets' ) ) dl( 'sockets.so' );
 if ( !extension_loaded( 'PDO' ) ) dl( 'pdo.so' );
 if ( !extension_loaded( 'zip' ) ) dl( 'zip.so' );
+if ( !extension_loaded( 'intl' ) ) dl( 'intl.so' ); // Provides the Collator class, used in Collation.php
 
 $wgAutoloadLocalClasses += array(
 		'DBAccessError' => 'LBFactory',
@@ -170,6 +171,7 @@ class CheckVars {
 			'$stderr' => array( 'serialize.php' ),
 			'$col' => array( 'UtfNormalTest2.php' ),
 			'$lineNo' => array( 'UtfNormalTest2.php' ),
+			'$cliUpgrade' => array( 'CliInstaller.php' ),
 		);
 
 	function setGenerateDeprecatedList( $bool = true ) {
