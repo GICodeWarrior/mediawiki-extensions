@@ -61,3 +61,11 @@ class UnknownJSONEncoderError(Error):
     def __str__(self):
         return 'There is no JSON encoder called %s, please make sure that you \
             entered the right name' % self.func
+
+class NotYetImplementedError(Error):
+    def __init__(self, func):
+        self.func = func
+
+    def __str__(self):
+        return '''%s has not yet been implemented, update your installation from
+        subversion or contact diederik van liere.''' % self.func.func_name

@@ -54,8 +54,8 @@ class RunTimeSettings:
             self.hash = self.secs_since_epoch()
             self.base_location = self.settings.input_location if \
                 self.settings.input_location != None else self.get_value('location')
-            self.update_project_settings()
-            self.update_language_settings()
+            self.project = self.update_project_settings()
+            self.language = self.update_language_settings()
 
             self.targets = self.split_keywords(self.get_value('charts'))
             self.keywords = self.split_keywords(self.get_value('keywords'))
@@ -167,18 +167,23 @@ class RunTimeSettings:
         lnc = languages.LanguageContainer()
         default = lnc.languages[lnc.default]
         if lang != default.name:
-            lang = lnc.get_language(lang)
+            lang = lnc.get_language(lang, code=False)
             return lang
+        else:
+            return default
 
     def update_project_settings(self):
         '''
         Determine the project to be analyzed, default is Wikipedia
         '''
+        default = self.project
         proj = self.get_value('project')
         if proj != 'wiki':
             pc = projects.ProjectContainer()
             proj = pc.get_project(proj)
             return proj
+        else:
+            return default
 
     def get_projectname(self):
         '''

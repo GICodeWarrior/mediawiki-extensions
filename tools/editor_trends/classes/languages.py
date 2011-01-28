@@ -29,7 +29,7 @@ class Language:
         self.default = default
 
     def __repr__(self):
-        return '%s - %s' % (self.code, self.name)
+        return u'%s - %s' % (self.code, self.name)
 
     def show_languages(self, settings, project, startswith=None):
         if startswith != None:
@@ -642,8 +642,10 @@ class LanguageContainer:
     def __repr__(self):
         return 'contains %s languages' % (len(self.languages))
 
-    def get_language(self, code):
-        return self.languages.get(code, None)
+    def get_language(self, value, code=True):
+        if not code:
+            value = self.init_languages[value]
+        return self.languages.get(value, None)
 
     def determine_default_language(self):
         '''

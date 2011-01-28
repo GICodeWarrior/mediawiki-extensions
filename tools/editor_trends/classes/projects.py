@@ -40,7 +40,8 @@ class Project:
             lang = lnc.init_languages[lang]
             if lang in self.valid_languages:
                 if output == 'parser':
-                    choices.append(lnc.languages.get(lang, 'Unknown language'))
+                    lang = lnc.languages.get(lang, 'Unknown language')
+                    choices.append(lang.name)
                 elif output == 'django':
                     lang = lnc.languages.get(lang, languages.Language('Unknown language', lang, None))
                     choices.append((lang.code, lang.name))
