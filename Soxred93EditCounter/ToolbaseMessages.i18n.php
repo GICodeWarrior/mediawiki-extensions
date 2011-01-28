@@ -482,6 +482,7 @@ Jika Anda mengikuti tautan dari tempat lain, silahkan <a href="$1">laporkan bug<
  * @author Robby
  */
 $messages['lb'] = array(
+	'toolbase-header-bugs' => 'Softwarefeeler (Bugs)',
 	'toolbase-replag-years' => 'Joer',
 	'toolbase-replag-months' => 'Méint',
 	'toolbase-replag-weeks' => 'Wochen',
