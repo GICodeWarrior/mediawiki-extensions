@@ -17,6 +17,10 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
+import datetime
+from dateutil.relativedelta import relativedelta
+from utils import data_converter
+
 
 def cohort_dataset_backward_bar(var, editor, **kwargs):
     #first_edit = editor['first_edit']
@@ -30,7 +34,7 @@ def cohort_dataset_backward_bar(var, editor, **kwargs):
     n = editor['edit_count']
 
     if n >= var.cum_cutoff:
-        windows = create_windows(var, break_down_first_year=False)
+        windows = data_converter.create_windows(var, break_down_first_year=False)
         for year in xrange(new_wikipedian.year, var.max_year):
             year = str(year)
             if editor['edits_by_year'][year] >= var.cutoff:

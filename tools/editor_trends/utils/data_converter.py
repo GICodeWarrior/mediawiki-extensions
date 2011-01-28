@@ -20,6 +20,17 @@ __version__ = '0.1'
 
 import datetime
 
+def create_windows(var, break_down_first_year=True):
+    '''
+    This function creates a list of months. If break_down_first_year = True then
+    the first year will be split in 3, 6, 9 months as well.
+    '''
+    years = var.max_year - var.min_year
+    windows = [y * 12 for y in xrange(1, years)]
+    if break_down_first_year:
+        windows = [3, 6, 9] + windows
+    return windows
+
 def convert_seconds_to_date(secs):
     #return time.gmtime(secs)
     return datetime.datetime.fromtimestamp(secs)

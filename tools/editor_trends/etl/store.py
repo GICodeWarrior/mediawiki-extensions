@@ -17,7 +17,7 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-04'
 __version__ = '0.1'
 
-
+from Queue import Empty
 import multiprocessing
 import sys
 
@@ -41,11 +41,16 @@ def store_editors(tasks, dbname, collection, source):
     '''
     mongo = db.init_mongo_db(dbname)
     collection = mongo[collection]
+
     editor_cache = cache.EditorCache(collection)
     prev_contributor = -1
     edits = 0
     while True:
-        filename = tasks.get(block=False)
+        try:
+            filename = tasks.get(block=False)
+        except Empty:
+            break
+
         tasks.task_done()
         if filename == None:
             print 'Swallowing a poison pill.'
@@ -53,28 +58,29 @@ def store_editors(tasks, dbname, collection, source):
         print '%s files left in the queue.' % messages.show(tasks.qsize)
 
         fh = file_utils.create_txt_filehandle(source, filename, 'r', settings.encoding)
+        print fh
         for line in file_utils.read_raw_data(fh):
-            #print line
-            if len(line) == 0:
-                continue
-            contributor = line[0]
-            #print 'Parsing %s' % contributor
-            if prev_contributor != contributor:
-                if edits > 9:
-                    editor_cache.add(prev_contributor, 'NEXT')
-                    #print 'Stored %s' % prev_contributor
-                else:
-                    editor_cache.clear(prev_contributor)
-                edits = 0
-            edits += 1
-            date = text_utils.convert_timestamp_to_datetime_utc(line[1]) #+ datetime.timedelta(days=1)
-            article_id = int(line[2])
-            username = line[3].encode(settings.encoding)
-            value = {'date': date, 'article': article_id, 'username': username}
-            editor_cache.add(contributor, value)
-            prev_contributor = contributor
+            if len(line) > 1:
+                contributor = line[0]
+                #print 'Parsing %s' % contributor
+                if prev_contributor != contributor:
+                    if edits > 9:
+                        editor_cache.add(prev_contributor, 'NEXT')
+                        print 'Stored %s' % prev_contributor
+                    else:
+                        editor_cache.clear(prev_contributor)
+                    edits = 0
+                edits += 1
+                date = text_utils.convert_timestamp_to_datetime_utc(line[1])
+                article_id = int(line[2])
+                username = line[3].encode(settings.encoding)
+                value = {'date': date,
+                         'article': article_id,
+                         'username': username}
+                editor_cache.add(contributor, value)
+                prev_contributor = contributor
         fh.close()
-        print editor_cache.n
+        #print editor_cache.n
 
 
 def launcher(source, dbname, collection):
@@ -88,8 +94,8 @@ def launcher(source, dbname, collection):
     coll.create_index('editor')
 
     files = file_utils.retrieve_file_list(source, 'csv')
-    print files
-    print source
+
+    print 'Input directory is: %s ' % source
     tasks = multiprocessing.JoinableQueue()
     consumers = [multiprocessing.Process(target=store_editors,
                 args=(tasks, dbname, collection, source))
@@ -105,4 +111,5 @@ def launcher(source, dbname, collection):
         w.start()
 
     tasks.join()
+
 

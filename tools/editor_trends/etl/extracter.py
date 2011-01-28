@@ -22,6 +22,7 @@ import re
 import os
 import multiprocessing
 import progressbar
+from Queue import Empty
 
 sys.path.append('..')
 import configuration
@@ -204,7 +205,7 @@ def output_editor_information(revisions, page, bots):
             for function in tags[tag].keys():
                 f = tags[tag][function]
                 value = f(el, bots=bots)
-                if isinstance(value, list):
+                if isinstance(value, dict):
                 #if type(value) == type({}):
                     for kw in value:
                         vars[x][kw] = value[kw]
@@ -232,35 +233,51 @@ def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=
     location = os.path.join(settings.input_location, language_code, project)
     output = os.path.join(settings.input_location, language_code, project, 'txt')
     widgets = log.init_progressbar_widgets('Extracting data')
+    filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
+                settings.encoding) for fh in xrange(settings.max_filehandles)]
 
     while True:
         total, processed = 0.0, 0.0
-        filename = tasks.get(block=False)
-        tasks.task_done()
+        try:
+            filename = tasks.get(block=False)
+        except Empty:
+            break
+        finally:
+            print tasks.qsize()
+            tasks.task_done()
+
         if filename == None:
-            print 'There are no more jobs in the queue left.'
+            print '\nThere are no more jobs in the queue left.'
             break
 
         filesize = file_utils.determine_filesize(location, filename)
-        fh = file_utils.create_txt_filehandle(location, filename, 'r', settings.encoding)
-        ns, xml_namespace = wikitree.parser.extract_meta_information(fh)
+        print 'Opening %s...' % (os.path.join(location, filename))
+        print 'Filesize: %s' % filesize
+        fh1 = file_utils.create_txt_filehandle(location, filename, 'r', settings.encoding)
+        fh2 = file_utils.create_txt_filehandle(location, 'articles.csv', 'a', settings.encoding)
+        ns, xml_namespace = wikitree.parser.extract_meta_information(fh1)
         ns = build_namespaces_locale(ns, namespaces)
         settings.xml_namespace = xml_namespace
 
         pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
-        for page, article_size in wikitree.parser.read_input(fh):
+        for page, article_size in wikitree.parser.read_input(fh1):
             title = page.find('title')
             total += 1
             if verify_article_belongs_namespace(title, ns):
                 article_id = page.find('id').text
+                title = page.find('title').text
                 revisions = page.findall('revision')
                 revisions = parse_comments(revisions, remove_numeric_character_references)
                 output = output_editor_information(revisions, article_id, bot_ids)
                 write_output(output, filehandles, lock)
+                file_utils.write_list_to_csv([article_id, title], fh2)
                 processed += 1
             page.clear()
             pbar.update(pbar.currval + article_size)
-        fh.close()
+
+        fh1.close()
+        fh2.close()
+        print 'Closing %s...' % (os.path.join(location, filename))
         print 'Total pages: %s' % total
         print 'Pages processed: %s (%s)' % (processed, processed / total)
 
@@ -269,7 +286,8 @@ def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=
 
 def group_observations(obs):
     '''
-    mmm forgot the purpose of this function
+    This function groups observation by editor id, this way we have to make
+    fewer fileopening calls. 
     '''
     d = {}
     for o in obs:
@@ -283,15 +301,17 @@ def group_observations(obs):
 def write_output(observations, filehandles, lock):
     observations = group_observations(observations)
     for obs in observations:
-        for i, o in enumerate(observations[obs]):
-            if i == 0:
-                fh = filehandles[hash(obs)]
-            try:
-                lock.acquire()
+        lock.acquire() #lock the write around all edits of an editor for a particular page
+        try:
+            for i, o in enumerate(observations[obs]):
+                if i == 0:
+                    fh = filehandles[hash(obs)]
                 file_utils.write_list_to_csv(o, fh)
-                lock.releas()
-            except Exception, error:
-                print error
+
+        except Exception, error:
+            print 'Encountered the following error while writing data to %s: %s' % (error, fh)
+        finally:
+            lock.release()
 
 
 def hash(id):
@@ -307,8 +327,10 @@ def hash(id):
 
 
 def prepare(output):
-    file_utils.delete_file(output, None, directory=True)
-    file_utils.create_directory(output)
+    res = file_utils.delete_file(output, None, directory=True)
+    if res:
+        res = file_utils.create_directory(output)
+    return res
 
 
 def unzip(properties):
@@ -336,7 +358,7 @@ def unzip(properties):
             print 'There was an error while extracting %s, please make sure \
             that %s is valid archive.' % (fn, fn)
             return False
-
+    print tasks.qsize()
     return tasks
 
 def launcher(properties):
@@ -349,17 +371,22 @@ def launcher(properties):
     '''
     result = True
     tasks = unzip(properties)
-    prepare(properties.language_code, properties.project)
-    lock = multiprocessing.Lock()
-    filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
-                settings.encoding) for fh in xrange(settings.max_filehandles)]
-    output = os.path.join(settings.input_location, properties.language_code,
-                          properties.project, 'txt')
 
+    output = os.path.join(settings.input_location, properties.language.code,
+                          properties.project.name, 'txt')
+    result = prepare(output)
+    if not result:
+        return result
+
+    lock = multiprocessing.Lock()
+#    filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
+#                settings.encoding) for fh in xrange(settings.max_filehandles)]
+
+    filehandles = []
     consumers = [multiprocessing.Process(target=parse_dumpfile,
                                 args=(tasks,
-                                      properties.project,
-                                      properties.language_code,
+                                      properties.project.name,
+                                      properties.language.code,
                                       filehandles,
                                       lock,
                                       properties.namespaces))
@@ -369,14 +396,11 @@ def launcher(properties):
         tasks.put(None)
 
     for w in consumers:
+        print 'Launching process...'
         w.start()
 
     tasks.join()
     filehandles = [fh.close() for fh in filehandles]
-#    result = parse_dumpfile(properties.project, file_without_ext,
-#                       properties.language_code,
-#                       namespaces=['0'])
-
 
     result = all([consumer.exitcode for consumer in consumers])
     return result
@@ -386,8 +410,7 @@ def debug():
     project = 'wiki'
     language_code = 'sv'
     filename = 'svwiki-latest-stub-meta-history.xml'
-    #parse_dumpfile(project, filename, language_code)
-    launcher()
+    parse_dumpfile(project, filename, language_code)
 
 if __name__ == '__main__':
     debug()

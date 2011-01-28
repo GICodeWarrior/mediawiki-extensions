@@ -83,8 +83,8 @@ def merge_sorted_files(target, files, iteration):
     '''
     Merges smaller sorted files in one big file, no longer used. 
     '''
-    fh = file_utils.create_txt_filehandle(target, 'merged_%s.txt' % iteration, 'w',
-                                     settings.encoding)
+    fh = file_utils.create_txt_filehandle(target, 'merged_%s.txt' % iteration,
+                                          'w', settings.encoding)
     lines = 0
     for line in heapq.merge(*[readline(filename) for filename in files]):
         file_utils.write_list_to_csv(line, fh)
@@ -98,7 +98,8 @@ def write_sorted_file(sorted_data, filename, target):
     '''
     Writes the sorted file to target
     '''
-    fh = file_utils.create_txt_filehandle(target, filename, 'w', settings.encoding)
+    fh = file_utils.create_txt_filehandle(target, filename, 'w',
+                                          settings.encoding)
     file_utils.write_list_to_csv(sorted_data, fh)
     fh.close()
 
@@ -114,6 +115,7 @@ def mergesort_feeder(tasks, source, target):
             tasks.task_done()
             if filename == None:
                 print 'Swallowed a poison pill'
+                print tasks.qsize()
                 break
 
             fh = file_utils.create_txt_filehandle(source,
@@ -129,8 +131,8 @@ def mergesort_feeder(tasks, source, target):
             sorted_data = mergesort(data)
             write_sorted_file(sorted_data, filename, target)
             print filename, messages.show(tasks.qsize)
-        except UnicodeDecodeError:
-            continue
+        except UnicodeDecodeError, e:
+            print e
         except Empty:
             break
 

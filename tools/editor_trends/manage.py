@@ -173,13 +173,13 @@ def transformer_launcher(properties, settings, logger):
     print 'Start transforming dataset'
     stopwatch = timer.Timer()
     log.log_to_mongo(properties, 'dataset', 'transform', stopwatch, event='start')
-    db.cleanup_database(properties.project, logger, 'dataset')
+    db.cleanup_database(properties.project.name, logger, 'dataset')
 #    write_message_to_log(logger, settings,
 #                         message=None,
 #                         verb='Transforming',
 #                         project=properties.project,
 #                         collection=properties.collection)
-    transformer.transform_editors_single_launcher(properties.project,
+    transformer.transform_editors_single_launcher(properties.project.name,
                                                   properties.collection)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'transform', stopwatch,

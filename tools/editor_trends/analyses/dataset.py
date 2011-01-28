@@ -129,31 +129,24 @@ class Observation(Data):
     def __getitem__(self, key):
         return getattr(self, key, [])
 
-    def next(self):
-        try:
-            return len(self.data.keys()) + 1
-        except IndexError:
-            return 0
-
     def add(self, value, update):
         '''
         If update == True then data[i] will be incremented else data[i] will be
         created, in that case make sure that i is unique. Update is useful for
         tallying a variable. 
         '''
-        if hasattr(value, '__iter__') == False:
-            d = {}
-            d[0] = value
-            value = d
-        assert type(value) == type({})
-        x = self.next()
-        for i, v in value.iteritems():
-            self.data.setdefault(i, 0)
-            if update:
-                self.data[i] += v
-            else:
-                i += x
-                self.data[i] = v
+        assert isinstance(value, dict)
+        if update:
+            for k, v in value:
+                self.data.setdefault(k, 0)
+                self.data[k] += v
+        else:
+            try:
+                i = max(self.data.keys()) + 1
+            except ValueError:
+                i = 0
+            self.data[i] = value
+
 
 
 class Variable(Data):
@@ -337,8 +330,8 @@ class Dataset:
         data, all_keys = data_converter.convert_dataset_to_lists(self, 'manage')
         headers = data_converter.add_headers(self, all_keys)
         fh = file_utils.create_txt_filehandle(settings.dataset_location, self.filename, 'w', settings.encoding)
-        file_utils.write_list_to_csv(headers, fh, recursive=False, newline=True, format=self.format)
-        file_utils.write_list_to_csv(data, fh, recursive=False, newline=True, format=self.format)
+        file_utils.write_list_to_csv(headers, fh, recursive=False, newline=True)
+        file_utils.write_list_to_csv(data, fh, recursive=False, newline=True)
         fh.close()
 
     def encode(self):

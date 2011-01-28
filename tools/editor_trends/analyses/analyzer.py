@@ -94,8 +94,6 @@ def loop_editors(dbname, project, collection, language_code, func, encoder, **kw
                          format=fmt)
     var = dataset.Variable('count', **kwargs)
 
-
-
     for editor in editors:
         editor = coll.find_one({'editor': editor})
         var = func(var, editor, dbname=dbname)
@@ -168,25 +166,14 @@ def determine_project_year_range(dbname, collection, var):
     return min_year, max_year
 
 
-def create_windows(var, break_down_first_year=True):
-    '''
-    This function creates a list of months. If break_down_first_year = True then
-    the first year will be split in 3, 6, 9 months as well.
-    '''
-    years = var.max_year - var.min_year
-    windows = [y * 12 for y in xrange(1, years)]
-    if break_down_first_year:
-        windows = [3, 6, 9] + windows
-    return windows
-
-
 if __name__ == '__main__':
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'edit_patterns', 'to_bar_json', time_unit='year', cutoff=5)
     #generate_chart_data('wiki', 'editors_dataset','en', 'total_number_of_new_wikipedians', time_unit='year')
     #generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', time_unit='year')
     #generate_chart_data('wiki', 'editors_dataset','en', 'total_cumulative_edits', time_unit='year')
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', 'to_bar_json', time_unit='month', cutoff=5, cum_cutoff=0)
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_backward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=10, cum_cutoff=0, format='wide')
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', 'to_bar_json', time_unit='month', cutoff=5, cum_cutoff=0)
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_backward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=10, cum_cutoff=0, format='wide')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
     #generate_chart_data('wiki', 'editors_dataset','en', 'histogram_edits', time_unit='year', cutoff=0)
     #generate_chart_data('wiki', 'editors_dataset','en', 'time_to_new_wikipedian', time_unit='year', cutoff=0)
     #generate_chart_data('wiki', 'editors_dataset','en', 'new_editor_count', time_unit='month', cutoff=0)

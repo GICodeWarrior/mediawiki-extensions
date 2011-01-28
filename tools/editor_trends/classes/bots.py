@@ -87,7 +87,7 @@ class Bot(object):
         self.add_clock_data()
         self.active()
         self.data.append(self.dt)
-        file_utils.write_list_to_csv(self.data, fh, recursive=False, newline=True)
+        file_utils.write_list_to_csv(self.data, fh)
 
 
 
