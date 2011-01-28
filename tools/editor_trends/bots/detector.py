@@ -160,7 +160,7 @@ def create_bot_validation_dataset(xml_nodes, fh, bots):
             bot.id = contributor.find('id').text
             timestamp = revision.find('timestamp').text
             if timestamp != None:
-                timestamp = file_utils.convert_timestamp_to_datetime_naive(timestamp)
+                timestamp = file_utils.convert_timestamp_to_datetime_naive(timestamp, settings.timestamp_format)
                 bot.time[str(timestamp.year)].append(timestamp)
             bots[username] = bot
 
