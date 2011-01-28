@@ -230,7 +230,7 @@ $.articleFeedback = {
 					.end()
 				.each( function() {
 					for ( var key in context.options.pitches ) {
-						$( $.articleFeedback.tpl.pitch )
+						var $pitch = $( $.articleFeedback.tpl.pitch )
 							.attr( 'rel', key )
 							.find( '.articleFeedback-title' )
 								.text( mw.msg( context.options.pitches[key].title ) )
@@ -263,12 +263,12 @@ $.articleFeedback = {
 									$pitch.fadeOut();
 								} )
 								.end()
-						.appendTo( $(this) );
+								.appendTo( $(this) );
 						if (
 							typeof context.options.pitches[key].altAccept == 'string'
 							&& typeof context.options.pitches[key].altAction == 'function'
 						) {
-							$(this)
+							$pitch
 								.find( '.articleFeedback-accept' )
 									.after( '<button class="articleFeedback-altAccept"></button>' )
 									.after(
