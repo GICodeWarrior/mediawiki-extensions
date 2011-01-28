@@ -32,6 +32,8 @@ class ArticleFeedbackHooks {
 				'articlefeedback-pitch-makefirstedit-message',
 				'articlefeedback-pitch-makefirstedit-accept',
 				'articlefeedback-survey-title',
+				'articlefeedback-survey-message-success',
+			    'articlefeedback-survey-message-error',
 			),
 			'dependencies' => array(
 				'jquery.ui.dialog',
