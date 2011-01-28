@@ -103,6 +103,30 @@ $.articleFeedback = {
 				}
 			} );
 		},
+		'executePitch': function( action ) {
+			$(this)
+				.closest( '.articleFeedback-pitch' )
+					.find( '.articleFeedback-accept, .articleFeedback-altAccept' )
+						.button( { 'disabled': true } )
+						.end()
+					.find( '.articleFeedback-reject' )
+						.attr( 'disabled', true );
+			var $pitch = $(this).closest( '.articleFeedback-pitch' );
+			var key = $pitch.attr( 'rel' );
+			// If a pitch's action returns true, hide the pitch and
+			// re-enable the button
+			if ( action.call( $(this) ) ) {
+				$pitch.fadeOut();
+				$(this)
+					.closest( '.articleFeedback-pitch' )
+						.find( '.articleFeedback-accept, .articleFeedback-altAccept' )
+							.button( { 'disabled': false } )
+							.end()
+						.find( '.articleFeedback-reject' )
+							.attr( 'disabled', false );
+			}
+			return false;
+		},
 		'load': function() {
 			var context = this;
 			$.ajax( {
@@ -217,23 +241,11 @@ $.articleFeedback = {
 							.find( '.articleFeedback-accept' )
 								.text( mw.msg( context.options.pitches[key].accept ) )
 								.click( function() {
-									$(this)
-										.button( { 'disabled': true } )
-										.closest( '.articleFeedback-pitch' )
-											.find( '.articleFeedback-reject' )
-											.attr( 'disabled', true );
 									var $pitch = $(this).closest( '.articleFeedback-pitch' );
-									var key = $pitch.attr( 'rel' );
-									// If a pitch's action returns true, hide the pitch and
-									// re-enable the button
-									if ( context.options.pitches[key].action() ) {
-										$pitch.fadeOut();
-										$(this)
-											.button( { 'disabled': false } )
-											.closest( '.articleFeedback-pitch' )
-												.find( '.articleFeedback-reject' )
-												.attr( 'disabled', false );
-									}
+									return $.articleFeedback.fn.executePitch.call(
+										$(this),
+										context.options.pitches[$pitch.attr( 'rel' )].action
+									);
 								} )
 								.button()
 								.end()
@@ -252,6 +264,29 @@ $.articleFeedback = {
 								} )
 								.end()
 						.appendTo( $(this) );
+						if (
+							typeof context.options.pitches[key].altAccept == 'string'
+							&& typeof context.options.pitches[key].altAction == 'function'
+						) {
+							$(this)
+								.find( '.articleFeedback-accept' )
+									.after( '<button class="articleFeedback-altAccept"></button>' )
+									.after(
+										$( '<span class="articleFeedback-pitch-or"></span>' )
+											.text( mw.msg( 'articlefeedback-pitch-or' ) )
+									)
+									.end()
+								.find( '.articleFeedback-altAccept' )
+									.text( mw.msg( context.options.pitches[key].altAccept ) )
+									.click( function() {
+										var $pitch = $(this).closest( '.articleFeedback-pitch' );
+										return $.articleFeedback.fn.executePitch.call(
+											$(this),
+											context.options.pitches[$pitch.attr( 'rel' )].altAction
+										);
+									} )
+									.button();
+						}
 					}
 				} )
 				.localize( { 'prefix': 'articlefeedback-' } )
