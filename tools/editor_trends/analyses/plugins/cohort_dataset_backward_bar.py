@@ -20,6 +20,12 @@ __version__ = '0.1'
 
 def cohort_dataset_backward_bar(var, editor, **kwargs):
     #first_edit = editor['first_edit']
+    '''
+    The backward looking bar chart looks for every year that an editor
+    was part of the Wikimedia community whether this person made at least cutoff
+    value edits. If yes, then include this person in the analysis, else skip the
+    person. 
+    '''
     new_wikipedian = editor['new_wikipedian']
     n = editor['edit_count']
 

@@ -19,6 +19,12 @@ __version__ = '0.1'
 
 
 def cohort_dataset_forward_bar(var, editor, **kwargs):
+    '''
+    The forward looking bar charts looks for every month that an editor
+    was part of the Wikimedia community whether this person made at least cutoff
+    value edits. If yes, then include this person in the analysis, else skip the
+    person. 
+    '''
     new_wikipedian = editor['new_wikipedian']
     last_edit = editor['final_edit']
     monthly_edits = editor['monthly_edits']

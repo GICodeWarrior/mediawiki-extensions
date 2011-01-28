@@ -20,6 +20,13 @@ __version__ = '0.1'
 
 def cohort_dataset_forward_histogram(var, editor, **kwargs):
 #        headers = ['year', 'month', 'edits']
+    '''
+    The forward looking histogram looks for every month that an editor
+    was part of the Wikimedia community whether this person made at least cutoff
+    value edits. If yes, then include this person in the analysis, else skip the
+    person. 
+    '''
+
     new_wikipedian = editor['new_wikipedian']
     final_edit = editor['final_edit'].year + 1
     yearly_edits = editor['edits_by_year']
