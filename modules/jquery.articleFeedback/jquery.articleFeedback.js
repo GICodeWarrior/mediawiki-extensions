@@ -21,6 +21,15 @@ $.articleFeedback = {
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-ratings"></div>\
 		<div style="clear:both;"></div>\
+		<div class="articleFeedback-expertise articleFeedback-visibleWith-form" >\
+			<input type="checkbox" value="general" /><label><html:msg key="form-panel-expertise" /></label>\
+			<div class="articleFeedback-expertise-options">\
+				<input type="checkbox" value="studies" /><label><html:msg key="form-panel-expertise-studies" /></label>\
+				<input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label>\
+				<input type="checkbox" value="hobby" /><label><html:msg key="form-panel-expertise-hobby" /></label>\
+				<input type="checkbox" value="other" /><label><html:msg key="form-panel-expertise-other" /></label>\
+			</div>\
+		</div>\
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><html:msg key="form-panel-submit" /></button>\
 		<div style="clear:both;"></div>\
 	</div>\
@@ -80,6 +89,11 @@ $.articleFeedback = {
 				// Default to 0 if the radio set doesn't contain a checked element
 				data['r' + id] = context.$ui.find( 'input[name=r' + id + ']:checked' ).val() || 0;
 			}
+			var expertise = [];
+			context.$ui.find( '.articleFeedback-expertise input:checked' ).each( function() {
+				expertise.push( $(this).val() );
+			} );
+			data.expertise = expertise.join( '|' );
 			$.ajax( {
 				'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
 				'type': 'POST',
@@ -148,6 +162,17 @@ $.articleFeedback = {
 						// TODO: Something more clever, and useful, about this error
 						mw.log( '<loadReport success with bad data />' );
 						return;
+					}
+					if ( 'expertise' in data.query.articlefeedback[0] ) {
+						var $expertise = context.$ui.find( '.articleFeedback-expertise' );
+						var tags = data.query.articlefeedback[0].expertise.split( '|' );
+						for ( var i = 0; i < tags.length; i++ ) {
+							$expertise.find( 'input:checkbox[value=' + tags[i] + ']' )
+								.attr( 'checked', true );
+						}
+						if ( $expertise.find( 'input:checkbox[value=general]:checked' ).size() ) {
+							$expertise.find( '.articleFeedback-expertise-options' ).show();
+						}
 					}
 					context.$ui.find( '.articleFeedback-rating' ).each( function() {
 						var ratingData;
@@ -298,6 +323,26 @@ $.articleFeedback = {
 						'fade': true,
 						'delayIn': 300,
 						'delayOut': 100
+					} )
+					.end()
+				.find( '.articleFeedback-expertise > input:checkbox' )
+					.change( function() {
+						var $options = context.$ui.find( '.articleFeedback-expertise-options' );
+						if ( $(this).is( ':checked' ) ) {
+							$options.slideDown();
+						} else {
+							$options.slideUp();
+							$options.find( 'input:checkbox' ).attr( 'checked', false );
+						}
+					} )
+					.end()
+				.find( '.articleFeedback-expertise input:checkbox' )
+					.each( function() {
+						var id = 'articleFeedback-expertise-' + $(this).attr( 'value' );
+						$(this)
+							.attr( 'id', id )
+							.next()
+								.attr( 'for', id );
 					} )
 					.end()
 				// Buttonify the button

@@ -51,6 +51,11 @@ class ArticleFeedbackHooks {
 				'articlefeedback-form-switch-label',
 				'articlefeedback-form-panel-title',
 				'articlefeedback-form-panel-instructions',
+				'articlefeedback-form-panel-expertise',
+				'articlefeedback-form-panel-expertise-studies',
+				'articlefeedback-form-panel-expertise-profession',
+				'articlefeedback-form-panel-expertise-hobby',
+				'articlefeedback-form-panel-expertise-other',
 				'articlefeedback-form-panel-submit',
 				'articlefeedback-report-switch-label',
 				'articlefeedback-report-panel-title',
@@ -108,6 +113,15 @@ class ArticleFeedbackHooks {
 					'article_feedback',
 					'aa_design_bucket',
 					$dir . '/sql/AddRatingBucket.sql',
+					true
+				) );
+			}
+			if ( !$db->fieldExists( 'article_feedback_properties', 'afp_value_text', __METHOD__ ) ) {
+				$updater->addExtensionUpdate( array(
+					'addField',
+					'article_feedback_properties',
+					'afp_value_text',
+					$dir . '/sql/AddPropertiesValueText.sql',
 					true
 				) );
 			}

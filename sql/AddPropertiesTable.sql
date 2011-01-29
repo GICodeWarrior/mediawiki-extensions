@@ -7,6 +7,9 @@ CREATE TABLE /*_*/article_feedback_properties (
 
   -- Key/value pairs
   afp_key varbinary(255) NOT NULL,
-  afp_value integer signed NOT NULL
+  -- Integer value
+  afp_value integer signed NOT NULL,
+  -- Text value
+  afp_value_text varbinary(255) DEFAULT '' NOT NULL
 ) /*$wgDBTableOptions*/;
 CREATE UNIQUE INDEX /*i*/afp_rating_key ON /*_*/article_feedback_properties (afp_revision, afp_user_text, afp_user_anon_token, afp_key);
