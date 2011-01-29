@@ -175,6 +175,8 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'push-tab-text' => 'Bountañ',
 	'push-button-text' => 'Bountañ',
+	'push-remote-page-link' => '$1 war $2',
+	'push-remote-page-link-full' => 'Gwelet $1 war $2',
 );
 
 /** Bosnian (Bosanski)
