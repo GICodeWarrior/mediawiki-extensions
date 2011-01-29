@@ -1604,10 +1604,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'bookinfo-header' => 'Информације за књигу',
+	'bookinfo-header' => 'Подаци о књизи',
 	'bookinfo-result-title' => 'Наслов:',
 	'bookinfo-result-author' => 'Аутор:',
 	'bookinfo-result-publisher' => 'Издавач:',
