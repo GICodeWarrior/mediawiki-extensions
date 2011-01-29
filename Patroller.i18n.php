@@ -1846,6 +1846,13 @@ $messages['sl'] = array(
 	'right-patroller' => 'Nadziranje strani',
 );
 
+/** Albanian (Shqip)
+ * @author Mikullovci11
+ */
+$messages['sq'] = array(
+	'group-patroller-member' => 'inspektorues',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
