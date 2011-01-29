@@ -1347,6 +1347,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Silviubogan
  */
 $messages['ro'] = array(
@@ -1355,11 +1356,12 @@ $messages['ro'] = array(
 	'amazonplus-german' => 'germană',
 	'amazonplus-french' => 'franceză',
 	'amazonplus-japanese' => 'japoneză',
-	'amazonplus-amazon' => 'prețul amazon',
+	'amazonplus-amazon' => 'prețul de la Amazon',
 	'amazonplus-new' => 'nou',
+	'amazonplus-none' => 'Nu există spre vânzare copii ale acestui articol.',
 	'amazonplus-cp-none' => 'Nimic',
 	'amazonplus-more' => 'mai mult',
-	'amazonplus-less' => 'mai puţin',
+	'amazonplus-less' => 'mai puțin',
 );
 
 /** Tarandíne (Tarandíne)
