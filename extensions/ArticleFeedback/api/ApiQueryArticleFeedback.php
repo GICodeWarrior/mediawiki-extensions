@@ -27,10 +27,15 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		if ( $params['userrating'] ) {
 			global $wgUser;
 
-			$leftJoinConds = array(
+			$leftJoinCondsAF = array(
 					'aa_page_id=aap_page_id',
 					'aa_rating_id=aap_rating_id',
 					'aa_user_id=' . $wgUser->getId() );
+			$leftJoinCondsAFP = array(
+					'afp_revision=aa_revision',
+					'afp_user_text=aa_user_text',
+					'afp_user_anon_token=aa_user_anon_token',
+					'afp_key' => 'expertise' );
 
 			if ( $wgUser->isAnon() ) {
 				if ( !isset( $params['anontoken'] ) ) {
@@ -39,16 +44,19 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 					$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
 				}
 
-				$leftJoinConds['aa_user_anon_token'] = $params['anontoken'];
+				$leftJoinCondsAF['aa_user_anon_token'] = $params['anontoken'];
+			} else {
+				$leftJoinCondsAF['aa_user_anon_token'] = '';
 			}
 
-			$this->addTables( 'article_feedback' );
+			$this->addTables( array( 'article_feedback', 'article_feedback_properties' ) );
 			$this->addJoinConds( array( 
-					'article_feedback' => array( 'LEFT JOIN', $leftJoinConds ), 
+					'article_feedback' => array( 'LEFT JOIN', $leftJoinCondsAF ),
+					'article_feedback_properties' => array( 'LEFT JOIN', $leftJoinCondsAFP )
 				)
 			);
 
-			$this->addFields( array( 'aa_rating_value', 'aa_revision' ) );
+			$this->addFields( array( 'aa_rating_value', 'aa_revision', 'afp_value_text' ) );
 
 			$this->addOption( 'ORDER BY', 'aa_revision DESC' );
 		}
@@ -71,6 +79,9 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 
 				if ( $params['userrating'] ) {
 					$page['revid'] = $row->aa_revision;
+					if ( !is_null( $row->afp_value_text ) ) {
+						$page['expertise'] = $row->afp_value_text;
+					}
 				}
 
 				$ratings[$pageId] = $page;

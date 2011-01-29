@@ -182,7 +182,7 @@ class ApiArticleFeedback extends ApiBase {
 			);
 		}
 	}
-	
+
 	/**
 	 * Inserts or updates properties for a specific rating
 	 * @param $revisionId int Revision ID
@@ -191,6 +191,7 @@ class ApiArticleFeedback extends ApiBase {
 	 * @param $params array Request parameters
 	 */
 	private function insertProperties( $revisionId, $user, $token, $params ) {
+		// Expertise is given as a list of one or more tags, such as profession, hobby, etc.
 		$this->insertProperty( $revisionId, $user, $token, 'expertise', $params['expertise'] );
 	}
 
@@ -210,7 +211,8 @@ class ApiArticleFeedback extends ApiBase {
 				'afp_user_text' => $user->getName(),
 				'afp_user_anon_token' => $token,
 				'afp_key' => $key,
-				'afp_value' => $value
+				'afp_value' => is_int( $value ) ? $value : null,
+				'afp_value_text' => !is_int( $value ) ? strval( $value ) : null,
 			),
 			__METHOD__,
 			array( 'IGNORE' )
@@ -218,7 +220,10 @@ class ApiArticleFeedback extends ApiBase {
 		
 		if ( !$dbw->affectedRows() ) {
 			$dbw->update( 'article_feedback_properties',
-				array( 'afp_value' => $value ),
+				array( 
+					'afp_value' => is_int( $value ) ? $value : null,
+					'afp_value_text' => !is_int( $value ) ? strval( $value ) : null,
+				),
 				array(
 					'afp_revision' => $revisionId,
 					'afp_user_text' => $user->getName(),
@@ -250,8 +255,8 @@ class ApiArticleFeedback extends ApiBase {
 				ApiBase::PARAM_MIN => 1
 			),
 			'expertise' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-			)
+				ApiBase::PARAM_TYPE => 'string',
+			),
 		);
 
 		foreach( $wgArticleFeedbackRatings as $rating ) {
@@ -274,7 +279,7 @@ class ApiArticleFeedback extends ApiBase {
 			'revid' => 'Revision ID to submit feedback for',
 			'anontoken' => 'Token for anonymous users',
 			'bucket' => 'Which rating widget was shown to the user',
-			'expertise' => 'Which expertise level the user claimed to have',
+			'expertise' => 'What kinds of expertise does the user claim to have',
 		);
 		foreach( $wgArticleFeedbackRatings as $rating ) {
 		        $ret["r{$rating}"] = "Rating {$rating}";
