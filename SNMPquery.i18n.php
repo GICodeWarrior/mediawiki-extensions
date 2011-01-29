@@ -32,9 +32,10 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
-	'snmpquery-desc' => "Ouzhpennañ a ra an arc'hwelioù SNMPget ha SNMPwalk hag adkas ar ra ar roadennoù er wiki",
+	'snmpquery-desc' => "Ouzhpennañ a ra an arc'hwelioù SNMPget ha SNMPwalk ha diskwel a ra ar roadennoù er wiki",
 );
 
 /** Bosnian (Bosanski)
