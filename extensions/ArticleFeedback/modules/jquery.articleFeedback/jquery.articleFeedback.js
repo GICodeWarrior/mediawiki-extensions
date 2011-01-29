@@ -340,6 +340,11 @@ $.articleFeedback = {
 					.each( function() {
 						var id = 'articleFeedback-expertise-' + $(this).attr( 'value' );
 						$(this)
+							.click( function() {
+								context.$ui
+									.find( '.articleFeedback-submit' )
+										.button( { 'disabled': false } );
+							} )
 							.attr( 'id', id )
 							.next()
 								.attr( 'for', id );
