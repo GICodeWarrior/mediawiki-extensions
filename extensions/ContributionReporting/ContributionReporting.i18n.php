@@ -2107,6 +2107,10 @@ $messages['gsw'] = array(
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Kaländerjohr (USD)',
 	'fundraiserstats-instructions' => 'Go Statischtike fir irged e Dag aaluege gang mit em Cursor iber dr Balke fir dää Dag. Jedes Johr het e anderi Farb in dr Grafik.',
+	'fundraiserstats-customize' => 'Aapasse',
+	'fundraiserstats-show-years' => 'D Johr derno aazeige:',
+	'fundraiserstats-time-zone' => 'Zytzone:',
+	'fundraiserstats-utc' => '(vu UTC)',
 );
 
 /** Hebrew (עברית)

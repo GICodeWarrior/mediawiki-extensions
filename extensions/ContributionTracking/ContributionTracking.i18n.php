@@ -995,6 +995,7 @@ $messages['sah'] = array(
 	'contrib-tracking-error-text' => 'Форма сыыһа сигэнэр',
 	'contrib-tracking-submitting' => 'Төлөбүрү таҥастааччыга ыытыы...',
 	'contrib-tracking-continue' => 'Аптамаатынан наадалаах сиргэ тиийбэтэх буоллаххына, тимэҕи баттаан PayPal тиһилигин көмөтүнэн сиэртибэлээһиҥҥин түмүктээ.',
+	'contrib-tracking-redirect' => 'Сиэртибэлээһиҥҥин түмүктүүргэ аптамаатынан PayPal саайтыгар утаарыллыаҥ.',
 	'contrib-tracking-button' => 'Салгыы',
 	'contrib-tracking-item-name-onetime' => 'Биир төлөбүрүнэн',
 	'contrib-tracking-item-name-recurring' => 'Ый аайы төлөбүр',

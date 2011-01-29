@@ -80,10 +80,11 @@ $messages['ia'] = array(
 	'emailusers-target-reverse' => 'Inviar a tote le usatores excepte les seligite',
 	'emailusers-norecipient' => 'Il ha nulle persona a qui tu pote inviar e-mail.',
 	'emailusers-norecipientselected' => 'Nulle destinatario es seligite.',
-	'emailusers-toomanyrecipientsselected' => 'Troppo de destinatarios es seligite.',
+	'emailusers-toomanyrecipientsselected' => 'Troppo de destinatarios es seligite (le maximo es {{PLURAL:$1|$1 destinatario|$1 destinatarios}}).',
 );
 
 /** Japanese (日本語)
+ * @author Ohgi
  * @author Whym
  */
 $messages['ja'] = array(
@@ -92,7 +93,7 @@ $messages['ja'] = array(
 	'emailusers-target-reverse' => '選択した利用者以外のすべての利用者に送信する',
 	'emailusers-norecipient' => '電子メールを送信できる相手がいません。',
 	'emailusers-norecipientselected' => '受信者が選択されていません。',
-	'emailusers-toomanyrecipientsselected' => '選択されている受信者が多すぎます。',
+	'emailusers-toomanyrecipientsselected' => '選択されている受信者が多すぎます（{{PLURAL:$1|最大$1件|最大$1件}}）。',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -111,7 +112,7 @@ $messages['mk'] = array(
 	'emailusers-target-reverse' => 'Испрати на сите корисници освен избраните',
 	'emailusers-norecipient' => 'Нема на кого да му испратите е-пошта.',
 	'emailusers-norecipientselected' => 'Не е избран примач.',
-	'emailusers-toomanyrecipientsselected' => 'Избрани се премногу примачи.',
+	'emailusers-toomanyrecipientsselected' => 'Избрани се премногу примачи ({{PLURAL:$1|највеќе $1|највеќе $1}}).',
 );
 
 /** Dutch (Nederlands)
@@ -123,11 +124,12 @@ $messages['nl'] = array(
 	'emailusers-target-reverse' => 'Naar alle gebruikers verzenden behalve de geselecteerde gebruikers',
 	'emailusers-norecipient' => 'Er is niemand die u een e-mail kunt sturen.',
 	'emailusers-norecipientselected' => 'Er zijn geen ontvangers geselecteerd.',
-	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd.',
+	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd. U mag maximaal {{PLURAL:$1|$1 ontvanger|$1 ontvangers}} selecteren.',
 );
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'emailusers-desc' => 'Permite que os utilizadores enviem correio electrónico a vários destinatários em simultâneo',
@@ -135,7 +137,7 @@ $messages['pt'] = array(
 	'emailusers-target-reverse' => 'Enviar a todos os utilizadores, excepto os seleccionados',
 	'emailusers-norecipient' => 'Não há ninguém a quem possa enviar correio electrónico.',
 	'emailusers-norecipientselected' => 'Não está seleccionado nenhum destinatário.',
-	'emailusers-toomanyrecipientsselected' => 'Foram seleccionados demasiados destinatários.',
+	'emailusers-toomanyrecipientsselected' => 'Foram selecionados demasiados destinatários ({{PLURAL:$1|máximo $1|máximo $1}}).',
 );
 
 /** Russian (Русский)
