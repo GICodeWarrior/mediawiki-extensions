@@ -45,6 +45,7 @@ function efSubpageList3() {
  * Function called by the Hook, returns the wiki text
  */
 function efRenderSubpageList3( $input, $args, $parser ) {
+	global $wgVersion;
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
 	if ( version_compare( $wgVersion, '1.15', '<=' ) ) {
@@ -403,7 +404,7 @@ class SubpageList3 {
 
 		if (strlen($nsi)>0) $conditions['page_namespace'] = $nsi; // don't let list cross namespaces
 		$conditions['page_is_redirect'] = 0;
-		$conditions[] = '`page_title` LIKE ' . $dbr->addQuotes( $dbr->escapeLike($parent) . '/%' );
+		$conditions[] = '`page_title` ' . $dbr->buildLike( $parent . '/', $dbr->anyString() );
 
 		$fields = array();
 		$fields[] = 'page_title';
