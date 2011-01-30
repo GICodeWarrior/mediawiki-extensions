@@ -164,6 +164,7 @@ $messages['bn'] = array(
  */
 $messages['bo'] = array(
 	'languageselector' => 'སྐད་རིགས།',
+	'languageselector-desc' => 'ཤོག་ངོས་སོ་སོའི་སྐད་རིགས་འདེམས་ཚན་དང་། གཞན་ལྟ་ཀློག་བྱེད་མཁན་གྱི་ཆེད་དུའང་ཡིན།',
 );
 
 /** Breton (Brezhoneg)
