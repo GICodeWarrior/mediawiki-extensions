@@ -1,4 +1,4 @@
-﻿/*
+/*
 function embedded_svg_edit(frame){
   //initialize communication
   this.frame = frame;
@@ -78,7 +78,7 @@ function embedded_svg_edit(frame){
   for(var i = 0; i < functions.length; i++){
     this[functions[i]] = (function(d){
       return function(){
-        var t = this //new callback
+        var t = this; //new callback
         for(var g = 0, args = []; g < arguments.length; g++){
           args.push(arguments[g]);
         }
