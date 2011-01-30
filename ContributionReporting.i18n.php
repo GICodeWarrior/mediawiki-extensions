@@ -720,6 +720,9 @@ $messages['br'] = array(
 	'fundraiserstats-tab-maximums' => 'Sammadoù brasañ (dollaroù SUA)',
 	'fundraiserstats-tab-ytd' => 'Er bloavezh (USD)',
 	'fundraiserstats-instructions' => 'Evit diskwel ar stadegoù evit un deiz resis, lakait ar reti war ar varrenn evit an deiz-se. Ul liv disheñvel zo bet lakaet da bep bloaz war ar grafik.',
+	'fundraiserstats-customize' => 'Personelaat',
+	'fundraiserstats-time-zone' => 'Takad eur :',
+	'fundraiserstats-utc' => '(abaoe UTC)',
 );
 
 /** Bosnian (Bosanski)
@@ -2851,6 +2854,7 @@ $messages['ka'] = array(
 	'fundraiserstats-tab-totals' => 'სულ (USD)',
 	'fundraiserstats-tab-contributions' => 'წვლილის ნომერი',
 	'fundraiserstats-tab-maximums' => 'მაქსიმუმი (USD)',
+	'fundraiserstats-time-zone' => 'სასაათო სარტყელი:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
