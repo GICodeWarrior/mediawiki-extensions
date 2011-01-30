@@ -6,8 +6,8 @@ open-source SVG-edit widget:
 SVG-edit 2.5.1 is included at present.
 
 Current versions of most major browsers should work except for Internet Explorer
-(IE currently requires Chrome Frame plugin, though native IE9 support should come
-with upstream updates.)
+(IE currently requires Chrome Frame plugin, or using the development version of
+SVG-edit 2.6 with IE9.)
 
 While the master code for this extension lives in Wikimedia's SVN repository, I also
 have a git repo where I may have some experimental branches:
@@ -20,7 +20,6 @@ have a git repo where I may have some experimental branches:
 
 Known bugs:
 * Actual editor issues belong upstream: http://code.google.com/p/svg-edit/
-* open seems to have some race conditions (sometimes doesn't load the initial file)
 
 Todo:
 * add an editor trigger on SVG images visible in regular page views

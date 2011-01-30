@@ -84,6 +84,20 @@ $(document).ready(function() {
 				.attr('src', url);
 		};
 
+		var tab = mediaWiki.util.addPortletLink('p-cactions',
+			document.location + '#!action=svgedit',
+			mediaWiki.msg('svgedit-edit-tab'),
+			'ca-ext-svgedit',
+			mediaWiki.msg('svgedit-edit-tab-tooltip'),
+			'',
+			document.getElementById('ca-edit'));
+
+		$(tab).find('a').click(function(event) {
+			triggerSVGEdit(wgTitle);
+			event.preventDefault();
+			return false;
+		});
+
 		var button = $('<button></button>')
 			.text(mediaWiki.msg('svgedit-editbutton-edit'))
 			.click(function() {
@@ -91,5 +105,9 @@ $(document).ready(function() {
 			});
 
 		$('.fullMedia').append(button);
+
+		if (document.location.hash.indexOf('!action=svgedit') != -1) {
+			triggerSVGEdit(wgTitle);
+		}
 	}
 });
