@@ -177,6 +177,12 @@ $messages['br'] = array(
 	'push-button-text' => 'Bountañ',
 	'push-remote-page-link' => '$1 war $2',
 	'push-remote-page-link-full' => 'Gwelet $1 war $2',
+	'push-tab-not-created' => "N'eus ket eus ar bajenn-se c'hoazh.",
+	'push-tab-inc-templates' => 'Lakaat ar patromoù e-barzh ivez',
+	'push-tab-used-templates' => '({{PLURAL:$2|patrom|patromoù}}implijet : $1)',
+	'push-tab-embedded-files' => 'Restr enframmet :',
+	'push-tab-files-override' => 'Bez ez eus eus ar restroù-mañ dija : $1',
+	'push-tab-template-override' => 'Bez ez eus eus ar patromoù-mañ dija : $1',
 );
 
 /** Bosnian (Bosanski)
