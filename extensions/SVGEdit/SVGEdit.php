@@ -47,6 +47,8 @@ $wgResourceModules += array(
 			'svgedit-summary-default',
 			'svgedit-editor-save-close',
 			'svgedit-editor-close',
+			'svgedit-edit-tab',
+			'svgedit-edit-tab-tooltip'
 		),
 	),
 );
