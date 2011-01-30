@@ -33,7 +33,7 @@ $title = Title::newFromText( $prefix );
 $dumper->pages = array( $title->getPrefixedDBkey() );
 
 # Add the rest
-while ( $row = $dbr->fetchObject( $res ) ) {
+foreach ( $res as $row ) {
 	$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 	$dumper->pages[] = $title->getPrefixedDBkey();
 }
@@ -47,5 +47,3 @@ $dumper->dump( MW_EXPORT_FULL );
 
 # Import it into the destination wiki
 passthru( "php -n " . wfEscapeShellArg( "$scriptDir/_import.php", $destDB, $prefix ) );
-
-?>
