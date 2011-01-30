@@ -31,6 +31,13 @@ $messages['be-tarask'] = array(
 	'trustedmath-not-found' => 'Старонка [[:$1]] не існуе',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'trustedmath-not-found' => "N'eus ket eus ar bajenn [[:$1]]",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

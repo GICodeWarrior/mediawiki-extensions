@@ -394,6 +394,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'security' => 'Journal de sécurité',
@@ -412,6 +413,7 @@ $messages['fr'] = array(
 	'security-type-category' => 'catégorie',
 	'security-type-namespace' => 'espace de noms',
 	'security-restricttogroup' => 'Accès au contenu réservé aux membres de « $1 »',
+	'restriction-read' => 'Lire',
 );
 
 /** Franco-Provençal (Arpetan)

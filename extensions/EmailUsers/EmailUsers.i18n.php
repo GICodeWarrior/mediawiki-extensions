@@ -35,6 +35,13 @@ $messages['be-tarask'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Выбрана зашмат атрымальнікаў.',
 );
 
+/** Tibetan (བོད་ཡིག)
+ * @author Freeyak
+ */
+$messages['bo'] = array(
+	'emailusers' => 'གློག་འཕྲིན་སྤྱོད་མཁན།',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -59,6 +66,30 @@ $messages['dsb'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Pśewjele dostawarjow jo wubrane.',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'emailusers-desc' => 'اجازه دادن به کاربران برای ارسال پست الکترونیکی به چندین گیرنده',
+	'emailusers' => 'نامه به کاربران',
+	'emailusers-target-reverse' => 'ارسال به همه کاربران به جز آن‌هایی که انتخاب شده‌اند',
+	'emailusers-norecipient' => 'هیچ‌کس برای ارسال پست الکترونیکی وجود ندارد.',
+	'emailusers-norecipientselected' => 'هیچ دریافت کننده‌ای انتخاب نشده است.',
+	'emailusers-toomanyrecipientsselected' => 'دریافت کنندگان بیش از حد زیاد هستند ({{PLURAL:$1|حداکثر $1|حداکثر $1}}).',
+);
+
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'emailusers-desc' => "Permet aux utilisateurs d'envoyer des courriels à plusieurs destinataires",
+	'emailusers' => 'Utilisateurs du courriel',
+	'emailusers-target-reverse' => 'Envoyer à tous les utilisateurs sauf ceux qui sont sélectionnés',
+	'emailusers-norecipient' => "Il n'y a personne à qui vous pouvez envoyer un courriel.",
+	'emailusers-norecipientselected' => "Aucun destinataire n'est sélectionné.",
+	'emailusers-toomanyrecipientsselected' => 'Trop de récipiendaires sont choisis (maximum $1{{PLURAL:$1||}}).',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -68,7 +99,7 @@ $messages['hsb'] = array(
 	'emailusers-target-reverse' => 'Na wšěch wužiwarjow nimo wubranych pósłać',
 	'emailusers-norecipient' => 'Njeje nichtó, kotremuž móžeš e-mejlku pósłać.',
 	'emailusers-norecipientselected' => 'Žadyn přijimowar wubrany.',
-	'emailusers-toomanyrecipientsselected' => 'Přewjele přijimowarjow je wubrane.',
+	'emailusers-toomanyrecipientsselected' => 'Přewjele přijimowarjow je wubrane ({{PLURAL:$1|maksimalnje $1|maksimalnje $1|maksimalnje $1|maksimalnje $1}})..',
 );
 
 /** Interlingua (Interlingua)
@@ -141,6 +172,7 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -149,7 +181,7 @@ $messages['ru'] = array(
 	'emailusers-target-reverse' => 'Отправить всех участникам, кроме выбранных',
 	'emailusers-norecipient' => 'Вы некому не можете отправить сообщение.',
 	'emailusers-norecipientselected' => 'Получатель не выбран.',
-	'emailusers-toomanyrecipientsselected' => 'Выбрано слишком много получателей.',
+	'emailusers-toomanyrecipientsselected' => 'Выбрано слишком много получателей (максимум — $1).',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -32,6 +32,13 @@ $messages['de'] = array(
 	'folktagcloud-desc' => 'Stellt Semantic MediaWiki ein individuell definierbares Attribut zum Kennzeichen von Seiten zur Verfügung, das in einer Schlagwortwolke angezeigt werden kann',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'folktagcloud-desc' => "Ajoute une propriété ''Semantic MediaWiki'' pour le marquage des pages avec des étiquettes définies par l'utilisateur et une étiquette d'analyseur syntaxique dans le but de les afficher dans un nuage de tags",
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
