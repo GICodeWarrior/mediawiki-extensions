@@ -25,7 +25,7 @@ $dumper = new BackupDumper( array( '--output=file:transfer.xml' ) );
 # Get page list
 $dbr =& wfGetDB( DB_SLAVE );
 $res = $dbr->select( 'page', array( 'page_namespace', 'page_title' ), 
-	array( "page_title LIKE '" . $dbr->escapeLike( $prefix ) . "/%'" ),
+	array( "page_title " . $dbr->buildLike( $prefix, $dbr->anyString() ) ),
 	__METHOD__ );
 
 # Start the page list with a main page
