@@ -3,6 +3,8 @@
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionFunctions[] = 'wfSpecialTransaction';
+$wgSpecialPages[] = 'SpecialTransaction';
+
 require_once( "Wikidata.php" );
 require_once( "Utilities.php" );
 
@@ -90,8 +92,6 @@ function wfSpecialTransaction() {
 			$wgOut->addHTML( "<script language='javascript'>/* <![CDATA[ */\nexpandEditors();\n/* ]]> */</script>" );
 		}
 	}
-	
-	SpecialPage::addPage( new SpecialTransaction() );
 }
 
 function getFilterOptionsPanel( $fromTransactionId, $transactionCount, $userName, $showRollBackOptions ) {

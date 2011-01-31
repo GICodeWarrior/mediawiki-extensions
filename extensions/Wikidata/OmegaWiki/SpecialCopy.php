@@ -23,6 +23,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Alan Smithee',
 );
 
+$wgSpecialPages[] = 'SpecialCopy';
+
 function wfSpecialCopy() {
 	require_once( "Wikidata.php" );
 	require_once( "WikiDataAPI.php" );
@@ -170,7 +172,5 @@ function wfSpecialCopy() {
 
 		}
 	}
-	SpecialPage::addPage( new SpecialCopy );
-	
 }
 

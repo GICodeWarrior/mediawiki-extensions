@@ -3,6 +3,8 @@
 
 	$wgExtensionFunctions[] = 'wfSpecialOWStatistics';
 
+	$wgSpecialPages[] = 'SpecialOWStatistics';
+
 	require_once( "Wikidata.php" );
 	require_once( 'languages.php' );
 
@@ -255,6 +257,4 @@
 			}
 
 		}
-		SpecialPage::addPage( new SpecialOWStatistics );
-
 	}
