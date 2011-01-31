@@ -194,7 +194,7 @@ function removeTag(tagID, elem, tagValue) {
 
                 taggingBusy = false;
             }
-        }
+        };
         request.send(null);
 
         var removeTagMsg = gid(kMessageRemovingTag).getAttribute("value");
@@ -329,7 +329,7 @@ function getElemAbsPosition(elem) {
 		while (obj.offsetParent)
 		{
             curleft += obj.offsetLeft; 
-			curtop += obj.offsetTop
+			curtop += obj.offsetTop;
 			obj = obj.offsetParent;
 		}
 	}
