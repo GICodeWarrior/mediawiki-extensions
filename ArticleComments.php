@@ -116,12 +116,7 @@ $wgArticleCommentDefaults = array(
 $wgArticleCommentsNSDisplayList = array();
 
 # Sets up special page to handle comment submission
-$wgExtensionFunctions[] = 'setupSpecialProcessComment';
-
-// FIXME: Use of SpecialPage::addPage is deprecated.
-function setupSpecialProcessComment() {
-	SpecialPage::addPage( new SpecialPage( 'ProcessComment', '', true, 'specialProcessComment', false ) );
-}
+$wgSpecialPages[] = array( 'ProcessComment', '', true, 'specialProcessComment', false );
 
 # Sets up the ArticleComments Parser hook for <comments />
 function wfArticleCommentsParserSetup( &$parser ) {
