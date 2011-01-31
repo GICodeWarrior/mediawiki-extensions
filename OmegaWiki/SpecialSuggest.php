@@ -4,8 +4,6 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 
 $wgExtensionFunctions[] = 'wfSpecialSuggest';
-$wgSpecialPages[] = 'SpecialSuggest';
-
 function wfSpecialSuggest() {
 	class SpecialSuggest extends SpecialPage {
 		function SpecialSuggest() {
@@ -34,6 +32,8 @@ function wfSpecialSuggest() {
 			echo getSuggestions();
 		}
 	}
+
+	SpecialPage::addPage( new SpecialSuggest() );
 }
 
 /**

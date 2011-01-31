@@ -6,9 +6,6 @@
 	$wgAvailableRights[] = 'languagenames';
 
 	$wgExtensionFunctions[] = 'wfSpecialImportLangNames';
-
-	$wgSpecialPages[] = 'SpecialImportLangNames';
-
 	function wfSpecialImportLangNames() {
 		class SpecialImportLangNames extends SpecialPage {
 			function SpecialImportLangNames() {
@@ -160,5 +157,7 @@
 			}
 
 		}
+
+		SpecialPage::addPage( new SpecialImportLangNames );
 	}
 

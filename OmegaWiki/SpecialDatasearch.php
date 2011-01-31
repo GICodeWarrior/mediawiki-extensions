@@ -3,7 +3,6 @@
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionFunctions[] = 'wfSpecialDatasearch';
-$wgSpecialPages[] = 'SpecialDatasearch';
 
 require_once( "Wikidata.php" );
 require_once( "WikiDataGlobals.php" );
@@ -361,4 +360,6 @@ function wfSpecialDatasearch() {
 			return $editor;
 		}
 	}
+
+	SpecialPage::addPage( new SpecialDatasearch() );
 }

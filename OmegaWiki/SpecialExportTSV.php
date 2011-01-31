@@ -8,8 +8,6 @@
 	$wgAvailableRights[] = 'exporttsv';
 	$wgExtensionFunctions[] = 'wfSpecialExportTSV';
 
-	$wgSpecialPages[] = 'SpecialExportTSV';
-
 	function wfSpecialExportTSV() {
 		class SpecialExportTSV extends SpecialPage {
 			
@@ -268,5 +266,7 @@
 				return $fileName;
 			}
 		}
+
+		SpecialPage::addPage( new SpecialExportTSV );
 	}
 
