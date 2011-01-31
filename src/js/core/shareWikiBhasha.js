@@ -98,7 +98,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
             return message;
         }
     }
-}
+};
 
 wbShareOnExternSystem = wikiBhasha.windowManagement.shareOnExternSystemWindow;
 
