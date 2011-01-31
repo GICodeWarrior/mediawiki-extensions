@@ -31,28 +31,52 @@ $myResourceTemplate = array(
 	'group' => 'ext.svgedit',
 );
 $wgResourceModules += array(
-	'ext.svgedit.editButton' => $myResourceTemplate + array(
+	'ext.svgedit.editor' => $myResourceTemplate + array(
 		'scripts' => array(
 			'ext.svgedit.embedapi.js',
 			'ext.svgedit.formmultipart.js',
 			'ext.svgedit.io.js',
 			'ext.svgedit.editor.js',
-			'ext.svgedit.editButton.js',
 		),
 		'styles' => array(
 			'ext.svgedit.editButton.css',
 		),
 		'messages' => array(
-			'svgedit-editbutton-edit',
 			'svgedit-summary-label',
 			'svgedit-summary-default',
 			'svgedit-editor-save-close',
 			'svgedit-editor-close',
+		),
+		'dependencies' => array(
+			'jquery.ui.resizable'
+		)
+	),
+);
+$wgResourceModules += array(
+	'ext.svgedit.editButton' => $myResourceTemplate + array(
+		'scripts' => array(
+			'ext.svgedit.editButton.js',
+		),
+		'messages' => array(
+			'svgedit-editbutton-edit',
 			'svgedit-edit-tab',
 			'svgedit-edit-tab-tooltip'
 		),
 		'dependencies' => array(
-			'jquery.ui.resizable'
+			'ext.svgedit.editor'
+		)
+	),
+);
+$wgResourceModules += array(
+	'ext.svgedit.inline' => $myResourceTemplate + array(
+		'scripts' => array(
+			'ext.svgedit.inline.js',
+		),
+		'messages' => array(
+			'svgedit-editbutton-edit',
+		),
+		'dependencies' => array(
+			'ext.svgedit.editor'
 		)
 	),
 );
@@ -67,3 +91,7 @@ $wgResourceModules += array(
 // If left empty, the local copy will be used on the main MediaWiki domain.
 //
 $wgSVGEditEditor = false;
+
+// Set to enable experimental triggers for SVG editing within article views.
+// Not yet recommended.
+$wgSVGEditInline = false;
