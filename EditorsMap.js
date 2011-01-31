@@ -1093,7 +1093,7 @@ getKmlNode: function() {
                       }
                   }
 
-                  this.setType(type)
+                  this.setType(type);
 
                   for(i=0;i<map_types_orig.length;i++) {
                       if (!map_types_check[old_world+map_types_orig[i].getName()]) {
