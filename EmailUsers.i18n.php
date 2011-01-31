@@ -24,6 +24,7 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
@@ -32,7 +33,7 @@ $messages['be-tarask'] = array(
 	'emailusers-target-reverse' => 'Даслаць усім удзельнікам, за выключэньнем выбраных',
 	'emailusers-norecipient' => 'Няма нікога, каму Вы можаце даслаць электронны ліст.',
 	'emailusers-norecipientselected' => 'Атрымальнікі не выбраныя.',
-	'emailusers-toomanyrecipientsselected' => 'Выбрана зашмат атрымальнікаў.',
+	'emailusers-toomanyrecipientsselected' => 'Выбрана зашмат атрымальнікаў ({{PLURAL:$1|максымальна|максымальна}: $1}).',
 );
 
 /** Tibetan (བོད་ཡིག)
