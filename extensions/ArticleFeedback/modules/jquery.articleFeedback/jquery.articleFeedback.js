@@ -358,7 +358,7 @@ $.articleFeedback = {
 						for ( var key in context.options.pitches ) {
 							// Dont' bother checking the condition if there's a cookie that says
 							// the user has rejected this within 3 days of right now
-							var display = $.cookie( 'jquery.articleFeedback.pitch.' + key )
+							var display = $.cookie( 'jquery.articleFeedback.pitch.' + key );
 							if ( display !== 'hide' && context.options.pitches[key].condition() ) {
 								context.$ui
 									.find( '.articleFeedback-pitch[rel="' + key + '"]' )
