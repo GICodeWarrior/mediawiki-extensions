@@ -31,12 +31,9 @@ function wfAggregatorSetup() {
 		define( 'MAGPIE_OUTPUT_ENCODING', 'UTF-8' );
 	}
 	require_once 'rss_fetch.inc';
-
-	// Wiki pieces
-	require_once 'SpecialPage.php';
-	require_once 'Feed.php';
-	SpecialPage::addPage( new SpecialPage( 'Aggregator', /*perm*/false, /*listed*/ true, /*function*/ false, /*file*/ false ) );
 }
+
+$wgSpecialPages[] = array( 'Aggregator', /*perm*/false, /*listed*/ true, /*function*/ false, /*file*/ false );
 
 /**
  * Parser extension hook

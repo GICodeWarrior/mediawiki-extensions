@@ -99,11 +99,10 @@ $wgHooks['ArticleSaveComplete'][] = 'MwRdfOnArticleSaveComplete';
 $wgHooks['TitleMoveComplete'][] = 'MwRdfOnTitleMoveComplete';
 $wgHooks['ArticleDeleteComplete'][] = 'MwRdfOnArticleDeleteComplete';
 
+$wgSpecialPages[] = array( 'Rdf', '', true, 'wfSpecialRdf', 'extensions/MwRdf.php' );
+
 function setupMwRdf() {
 	global $wgRequest, $wgOut;
-
-	SpecialPage::AddPage(new SpecialPage('Rdf', '', true, 'wfSpecialRdf',
-										 'extensions/MwRdf.php'));
 
 	# Add an RDF metadata link if requested
 
