@@ -5,7 +5,7 @@
  *
  * @ingroup SpecialPage
  */
-class RandomPageInCategory extends SpecialPage {
+class RandomPageInCategory extends RandomPage {
 	private $category = null;
 
 	function __construct() {
@@ -48,7 +48,7 @@ class RandomPageInCategory extends SpecialPage {
 	}
 
 	public function getCategory ( ) {
-		return $this->namespace;
+		return $this->category;
 	}
 
 	public function setCategory ( $cat ) {
@@ -61,61 +61,33 @@ class RandomPageInCategory extends SpecialPage {
 		return true;
 	}
 
-	/**
-	 * Choose a random title. Based on Special:Random
-	 * @return Title object (or null if nothing to choose from)
-	 */
-	public function getRandomTitle ( ) {
-		$randstr = wfRandom();
-		$row = $this->selectRandomPageFromDB( $randstr );
+	protected function getQueryInfo( $randstr ) {
+		$query = parent::getQueryInfo( $randstr );
 
-		if( !$row ) {
-			$row = $this->selectRandomPageFromDB( "0" );
-		}
+		$query['tables'][] = 'categorylinks';
 
-		if( $row ) {
-			return Title::newFromText( $row->page_title, $row->page_namespace );
-		} else {
-			return null;
-		}
-	}
+		unset( $query['conds']['page_namespace'] );
 
-	private function selectRandomPageFromDB ( $randstr ) {
-		global $wgExtraRandompageSQL, $wgOut;
+		array_merge( $query['conds'], array( 'page_namespace != ' . NS_CATEGORY ) );
+		$query['conds']['cl_to'] = $this->category;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		unset( $query['options']['USE INDEX'] );
 
-		if ( $wgExtraRandompageSQL ) {
-			$this->extra[] = $wgExtraRandompageSQL;
-		}
-
-		$res = $dbr->select(
-			array( 'page', 'categorylinks' ),
-			array( 'page_title', 'page_namespace' ),
-			array_merge( array(
-				'page_namespace' != NS_CATEGORY,
-				'cl_to' => $category,
-				'page_random >= ' . $randstr
-			), $this->extra ),
-			__METHOD__,
-			array(
-				'ORDER BY' => 'page_random',
-				'USE INDEX' => 'page_random'
-			),
-			array(
+		$query['join_conds'] = array(
 				'categorylinks' => array(
-					'JOIN' => array( 'page_id=cl_from' )
+					'JOIN', array( 'page_id=cl_from' )
 				)
-			)
-		);
+			);
 
-		return $dbr->fetchObject( $res );
+		return $query;
 	}
 
 	public function getForm( $par = null ) {
 		global $wgScript, $wgRequest;
+		
+		$category = $par;
 
-		if( !( $category = $par ) ) {
+		if( !$category ) {
 			$category = $wgRequest->getVal( 'category' );
 		}
 

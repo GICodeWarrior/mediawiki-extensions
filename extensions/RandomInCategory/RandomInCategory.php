@@ -16,7 +16,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Random in category',
-	'author' => 'VasilievVV',
+	'author' => array( 'VasilievVV', 'Sam Reed' ),
+	'version' => '2.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomInCategory',
 	'descriptionmsg' => 'randomincategory-desc',
 );
