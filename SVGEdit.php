@@ -36,6 +36,7 @@ $wgResourceModules += array(
 			'ext.svgedit.embedapi.js',
 			'ext.svgedit.formmultipart.js',
 			'ext.svgedit.io.js',
+			'ext.svgedit.editor.js',
 			'ext.svgedit.editButton.js',
 		),
 		'styles' => array(
@@ -50,6 +51,9 @@ $wgResourceModules += array(
 			'svgedit-edit-tab',
 			'svgedit-edit-tab-tooltip'
 		),
+		'dependencies' => array(
+			'jquery.ui.resizable'
+		)
 	),
 );
 
