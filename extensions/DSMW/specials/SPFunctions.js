@@ -19,7 +19,7 @@ function process (id, title, wiki){
 //alert(xhr_object.responseText);
 	         eval(xhr_object.responseText);
 		  }
-	   }
+	   };
 
 	   xhr_object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	   // --- ICI TU PASSE TES ARGUMENTS AU SCRIPT :

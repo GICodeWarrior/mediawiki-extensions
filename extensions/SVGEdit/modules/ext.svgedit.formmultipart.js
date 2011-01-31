@@ -80,4 +80,4 @@ FormMultipart.prototype.contentType = function() {
 	// note: charset is needed in Safari 5 to workaround a webkit
 	// oddity where it otherwise tries to add it after the boundary.
 	return 'multipart/form-data; charset=utf-8; boundary=' + this.boundary;
-}
+};
