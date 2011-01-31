@@ -72,7 +72,7 @@ function embedded_svg_edit(frame){
   //Newer, well, it extracts things that aren't documented as well. All functions accessible through the normal thingy can now be accessed though the API
   //var l=[];for(var i in svgCanvas){if(typeof svgCanvas[i] == "function"){l.push(i)}};
   //run in svgedit itself
-  var functions = ["updateElementFromJson", "embedImage", "fixOperaXML", "clearSelection", "addToSelection", "removeFromSelection", "addNodeToSelection", "open", "save", "getSvgString", "setSvgString", "createLayer", "deleteCurrentLayer", "getNumLayers", "getLayer", "getCurrentLayer", "setCurrentLayer", "renameCurrentLayer", "setCurrentLayerPosition", "getLayerVisibility", "setLayerVisibility", "moveSelectedToLayer", "getLayerOpacity", "setLayerOpacity", "clear", "clearPath", "getNodePoint", "clonePathNode", "deletePathNode", "getResolution", "getImageTitle", "setImageTitle", "setResolution", "setBBoxZoom", "setZoom", "getMode", "setMode", "getStrokeColor", "setStrokeColor", "getFillColor", "setFillColor", "setStrokePaint", "setFillPaint", "getStrokeWidth", "setStrokeWidth", "getStrokeStyle", "setStrokeStyle", "getOpacity", "setOpacity", "getFillOpacity", "setFillOpacity", "getStrokeOpacity", "setStrokeOpacity", "getTransformList", "getBBox", "getRotationAngle", "setRotationAngle", "each", "bind", "setIdPrefix", "getBold", "setBold", "getItalic", "setItalic", "getFontFamily", "setFontFamily", "getFontSize", "setFontSize", "getText", "setTextContent", "setImageURL", "setRectRadius", "setSegType", "quickClone", "beginUndoableChange", "changeSelectedAttributeNoUndo", "finishUndoableChange", "changeSelectedAttribute", "deleteSelectedElements", "groupSelectedElements", "ungroupSelectedElement", "moveToTopSelectedElement", "moveToBottomSelectedElement", "moveSelectedElements", "getStrokedBBox", "getVisibleElements", "cycleElement", "getUndoStackSize", "getRedoStackSize", "getNextUndoCommandText", "getNextRedoCommandText", "undo", "redo", "cloneSelectedElements", "alignSelectedElements", "getZoom", "getVersion", "setIconSize", "setLang", "setCustomHandlers"]
+  var functions = ["updateElementFromJson", "embedImage", "fixOperaXML", "clearSelection", "addToSelection", "removeFromSelection", "addNodeToSelection", "open", "save", "getSvgString", "setSvgString", "createLayer", "deleteCurrentLayer", "getNumLayers", "getLayer", "getCurrentLayer", "setCurrentLayer", "renameCurrentLayer", "setCurrentLayerPosition", "getLayerVisibility", "setLayerVisibility", "moveSelectedToLayer", "getLayerOpacity", "setLayerOpacity", "clear", "clearPath", "getNodePoint", "clonePathNode", "deletePathNode", "getResolution", "getImageTitle", "setImageTitle", "setResolution", "setBBoxZoom", "setZoom", "getMode", "setMode", "getStrokeColor", "setStrokeColor", "getFillColor", "setFillColor", "setStrokePaint", "setFillPaint", "getStrokeWidth", "setStrokeWidth", "getStrokeStyle", "setStrokeStyle", "getOpacity", "setOpacity", "getFillOpacity", "setFillOpacity", "getStrokeOpacity", "setStrokeOpacity", "getTransformList", "getBBox", "getRotationAngle", "setRotationAngle", "each", "bind", "setIdPrefix", "getBold", "setBold", "getItalic", "setItalic", "getFontFamily", "setFontFamily", "getFontSize", "setFontSize", "getText", "setTextContent", "setImageURL", "setRectRadius", "setSegType", "quickClone", "beginUndoableChange", "changeSelectedAttributeNoUndo", "finishUndoableChange", "changeSelectedAttribute", "deleteSelectedElements", "groupSelectedElements", "ungroupSelectedElement", "moveToTopSelectedElement", "moveToBottomSelectedElement", "moveSelectedElements", "getStrokedBBox", "getVisibleElements", "cycleElement", "getUndoStackSize", "getRedoStackSize", "getNextUndoCommandText", "getNextRedoCommandText", "undo", "redo", "cloneSelectedElements", "alignSelectedElements", "getZoom", "getVersion", "setIconSize", "setLang", "setCustomHandlers"];
 
   //TODO: rewrite the following, it's pretty scary.
   for(var i = 0; i < functions.length; i++){
@@ -82,7 +82,7 @@ function embedded_svg_edit(frame){
         for(var g = 0, args = []; g < arguments.length; g++){
           args.push(arguments[g]);
         }
-        var cbid = t.send(d,args, function(){})  //the callback (currently it's nothing, but will be set later
+        var cbid = t.send(d,args, function(){});  //the callback (currently it's nothing, but will be set later
 
         return function(newcallback){
           t.callbacks[cbid] = newcallback; //set callback
@@ -136,7 +136,7 @@ embedded_svg_edit.encode = function(obj){
     }
     return "{"+pairs.join(",")+"}" //wrap in the braces
   }
-}
+};
 
 embedded_svg_edit.prototype.send = function(name, args, callback){
   var cbid = Math.floor(Math.random()*31776352877+993577).toString();
@@ -151,7 +151,7 @@ embedded_svg_edit.prototype.send = function(name, args, callback){
   }, 0);
   return cbid;
   //this.stack.shift()("svgCanvas['"+name+"']("+argstr.join(",")+")")
-}
+};
 
 
 
