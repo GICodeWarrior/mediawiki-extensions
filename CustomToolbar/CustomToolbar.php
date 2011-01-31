@@ -81,7 +81,7 @@ function CustomToolbar_addAssets(&$out) {
 $wgExtensionFunctions[] = 'wfCustomToolbarUploadForm';
 function wfCustomToolbarUploadForm() {
 	$file = "extensions/uniwiki/CustomToolbar/CustomToolbar.php";
-	SpecialPage::AddPage(
+	SpecialPage::addPage(
 		new UnlistedSpecialPage('CustomToolbarUpload', '', false, $file)
 	);
 }
