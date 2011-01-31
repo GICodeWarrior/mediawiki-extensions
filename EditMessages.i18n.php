@@ -1403,6 +1403,16 @@ $messages['sk'] = array(
 	'editmsg-patch-success' => 'Záplata úspešne použitá.',
 );
 
+/** Albanian (Shqip)
+ * @author Cradel
+ */
+$messages['sq'] = array(
+	'editmessages' => 'Redakto mesazhet',
+	'editmsg-target' => 'Mesazhi i synuar:',
+	'editmsg-search' => 'Kërko',
+	'editmsg-show-list' => 'Duke treguar vlerat për mesazhin me emër "$1"',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
