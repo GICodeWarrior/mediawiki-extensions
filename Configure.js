@@ -285,7 +285,7 @@ function doSearch( query ) {
 		return;
 	}
 
-	var isMatch = function(element) { return element.description.indexOf( query ) !== -1; }
+	var isMatch = function(element) { return element.description.indexOf( query ) !== -1; };
 	for( var i=0; i<allSettings.length; ++i ) {
 		var data = allSettings[i];
 		if ( isMatch( data ) ) {
@@ -365,7 +365,7 @@ function summariseSetting( div, summary ) {
 	// Based on class, do something.
 	var elementType = ' '+div.className+' ';
 
-	var isType = function(type) { return elementType.indexOf( ' '+type+' ' ) !== -1; }
+	var isType = function(type) { return elementType.indexOf( ' '+type+' ' ) !== -1; };
 
 	if ( isType('assoc') ) {
 		// If it's too big to display as an associative array, it's too big to display as a summary.
