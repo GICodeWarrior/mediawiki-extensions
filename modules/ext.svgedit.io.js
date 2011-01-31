@@ -17,6 +17,50 @@ var mwSVG = window.mwSVG = {
 	},
 
 	/**
+	 * Fetch an SVG file's imageinfo data from the MediaWiki system...
+	 *
+	 * @param {String} target
+	 * @param {function(imageinfo)} callback
+	 */
+	fetchInfo: function(target, callback) {
+		var params = {
+			format: 'json',
+			action: 'query',
+			prop: 'imageinfo',
+			titles: 'File:' + target,
+			iiprop: 'size|url|mime'
+		};
+		$.get(mwSVG.api(), params, function(data) {
+			var imageinfo = null;
+			$.each(data.query.pages, function(key, pageInfo) {
+				if (pageInfo.imageinfo.length) {
+					imageinfo = pageInfo.imageinfo[0];
+				}
+			});
+			callback(imageinfo);
+		});
+	},
+
+	/**
+	 * Fetch an SVG file from the MediaWiki system...
+	 * Requires same-origin, an allowed cross-origin policy,
+	 * or a (not yet implemented) JSONP proxy.
+	 *
+	 * @param {String} url as returned via fetchInfo previously
+	 * @param {function(xmlSource, textStatus, xhr)} callback
+	 * @param {function(xhr, textStatus, errorThrown)} onerror
+	 */
+	fetchFile: function(url, callback, onerror) {
+		// if proxy blah blah
+		$.ajax({
+			url: url,
+			success: callback,
+			error: onerror,
+			dataType: 'text'
+		});
+	},
+
+	/**
 	 * Fetch an SVG file from the MediaWiki system...
 	 * Requires ApiSVGProxy extension to be loaded.
 	 *
@@ -26,7 +70,8 @@ var mwSVG = window.mwSVG = {
 	fetchSVG: function(target, callback) {
 		var params = {
 			action: 'svgproxy',
-			file: 'File:' + target
+			file: 'File:' + target,
+			format: 'xml'
 		};
 		$.get(mwSVG.api(), params, callback, 'text');
 	},

@@ -16,7 +16,6 @@ mw.svgedit = {
 	 * Open the SVG editor.
 	 * Will have no effect if the editor is already open.
 	 *
-	 * @param filename: String
 	 * @param options: object
 	 *           filename: wiki name of existing file to initially load
 	 *           replace: selector or DOM node to replace the editor with while it runs
@@ -29,6 +28,20 @@ mw.svgedit = {
 		}
 		mw.svgedit.isOpen = true;
 
+		if ("filename" in options) {
+			// Get some basic info on the image before we go barrelling in...
+			mwSVG.fetchInfo(options.filename, function(imageinfo) {
+				mw.svgedit.openEditor(options, imageinfo);
+			});
+		} else {
+			mw.svgedit.openEditor(options, {});
+		}
+	},
+
+	/**
+	 * @access private
+	 */
+	openEditor: function(options, imageinfo) {
 		var url = wgSVGEditEditor ||
 			(wgScriptPath + '/extensions/SVGEdit/svg-edit/svg-editor.html');
 
@@ -40,15 +53,13 @@ mw.svgedit = {
 		var svgedit = null; // to be filled out when iframe is loaded
 		var saved = false;
 
-		// @fixme not a stable interface; use API instead?
-		var origWidth = parseInt($('#mw_metadata tr.svg-width td').text());
-		var origHeight = parseInt($('#mw_metadata tr.svg-height td').text());
+		var origWidth = parseInt(imageinfo.width) || 0;
+		var origHeight = parseInt(imageinfo.height) || 0;
 		if (origWidth && origHeight) {
 			// Initialize the canvas dimensions to the image's defined size...
 			url += '?dimensions=' + origWidth + ',' + origHeight;
 		}
 
-		var minHeight = 480;
 		var preferredHeight = origHeight + 180; // leave space for toolbars and UI inside the iframe
 		var windowHeight = $(window).height() - 40; // leave space for our toolbar outside the iframe
 		var minHeight = Math.min(windowHeight, preferredHeight);
@@ -158,11 +169,28 @@ mw.svgedit = {
 				svgedit = new embedded_svg_edit(this);
 
 				// Load up the original file!
-				if (filename) {
-					mwSVG.fetchSVG(filename, function(xmlSource, textStatus, xhr) {
+				if (filename && imageinfo && imageinfo.url) {
+					var open = function(xmlSource) {
 						svgedit.setSvgString(xmlSource)(function() {
 							spinnerOff();
 						});
+					};
+
+					var loadApiProxy = function() {
+						mwSVG.fetchSVG(filename, function(xmlSource, textStatus, xhr) {
+							open(xmlSource);
+						}, function() {
+							alert('failllll');
+						});
+					};
+
+					mwSVG.fetchFile(imageinfo.url, function(xmlSource, textStatus, xhr) {
+						if (xmlSource == '' && xhr.responseXML == null) {
+							loadApiProxy();
+						}
+						open(xmlSource);
+					}, function() {
+						loadApiProxy();
 					});
 				} else {
 					spinnerOff();

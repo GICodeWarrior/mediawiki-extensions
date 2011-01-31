@@ -16,9 +16,21 @@ class SVGEditHooks {
 	 * @param $skin Skin current skin
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
+		global $wgUser, $wgSVGEditInline;
 		$title = $out->getTitle();
+		$modules = array();
 		if( self::trigger( $title ) ) {
-			$out->addModules('ext.svgedit.editButton');
+			$modules[] = 'ext.svgedit.editButton';
+		}
+		if ($wgSVGEditInline) {
+			// Experimental inline edit trigger.
+			// Potentially expensive and tricky as far as UI on article pages!
+			if( $wgUser->isAllowed( 'upload' ) ) {
+				$modules[] = 'ext.svgedit.inline';
+			}
+		}
+		if ($modules) {
+			$out->addModules($modules);
 		}
 		return true;
 	}
@@ -32,9 +44,9 @@ class SVGEditHooks {
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgTitle, $wgSVGEditEditor;
-		if( self::trigger( $wgTitle ) ) {
+		#if( self::trigger( $wgTitle ) ) {
 			$vars['wgSVGEditEditor'] = $wgSVGEditEditor;
-		}
+		#}
 		return true;
 	}
 
