@@ -186,11 +186,13 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'ts-citegen-Send' => 'Krouiñ',
+	'ts-citegen-Input-title' => 'Moned',
 	'ts-citegen-Output-title' => "Disoc'h",
 	'ts-citegen-Parsers' => 'Parseroù',
 	'ts-citegen-Skins' => 'Ezvont',
 	'ts-citegen-Skin-skins' => 'Gwiskadurioù',
 	'ts-citegen-Skin-outputformat' => 'Furmad moned er-maez',
+	'ts-citegen-Template-lang' => 'Yezh ar patrom',
 	'ts-citegen-Sources-title' => 'Mammennoù',
 	'ts-citegen-Tools' => 'Ostilhoù',
 	'ts-citegen-Other-languages' => 'Yezhoù all',
