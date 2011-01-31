@@ -21,8 +21,8 @@ class RandomPageInCategory extends RandomPage {
 
 		$this->setHeaders();
 		if( is_null( $par ) ) {
-			$requestCategory = $wgRequest->getVal( 'category' )
-			if ( requestCategory ) {
+			$requestCategory = $wgRequest->getVal( 'category' );
+			if ( $requestCategory ) {
 				$par = $requestCategory;
 			} else {
 				$wgOut->addHTML( $this->getForm() );
