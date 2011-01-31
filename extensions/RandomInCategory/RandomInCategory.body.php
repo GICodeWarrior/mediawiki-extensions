@@ -21,7 +21,8 @@ class RandomPageInCategory extends RandomPage {
 
 		$this->setHeaders();
 		if( is_null( $par ) ) {
-			if ( $requestCategory = $wgRequest->getVal( 'category' ) ) {
+			$requestCategory = $wgRequest->getVal( 'category' )
+			if ( requestCategory ) {
 				$par = $requestCategory;
 			} else {
 				$wgOut->addHTML( $this->getForm() );
@@ -71,7 +72,7 @@ class RandomPageInCategory extends RandomPage {
 		array_merge( $query['conds'], array( 'page_namespace != ' . NS_CATEGORY ) );
 		$query['conds']['cl_to'] = $this->category;
 
-		unset( $query['options']['USE INDEX'] );
+		unset( $query['options']['USE INDEX'] ); //FIXME: FORCE INDEX gets added in wrong place, goes after table join, should be before
 
 		$query['join_conds'] = array(
 				'categorylinks' => array(
