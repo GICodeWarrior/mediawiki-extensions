@@ -16,7 +16,7 @@
       div.style.display= 'block';
       lnk.innerHTML= talkHereCollapseMsg;
       lnk.title= talkHereCollapseMsg;
-      lnk.onclick= function() { talkHereCollapseEditor(lnk, div, page, section, returnto) }
+      lnk.onclick= function() { talkHereCollapseEditor(lnk, div, page, section, returnto) };
         
       if (div.innerHTML.length < 200) {
         talkHereLoadEditor(lnk, div, page, section, returnto);
@@ -40,7 +40,7 @@
       div.style.display= 'block';
       lnk.innerHTML= talkHereCollapseMsg;
       lnk.title= talkHereCollapseMsg;
-      lnk.onclick= function() { talkHereCollapseEditor(lnk, div, page, section, returnto) }
+      lnk.onclick= function() { talkHereCollapseEditor(lnk, div, page, section, returnto) };
 
       talkHereLoadEditorHTML(div, page, section, returnto)
     }
