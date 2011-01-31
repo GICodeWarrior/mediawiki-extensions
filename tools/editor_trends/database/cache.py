@@ -76,8 +76,8 @@ class EditorCache(object):
 
     def insert(self, editor, values, username):
         '''
-        Adding the safe=True statement slows down the insert process but this assures that all data
-        will be written. 
+        Adding the safe=True statement slows down the insert process but this 
+        assures that all data will be written. 
         '''
         try:
             self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
