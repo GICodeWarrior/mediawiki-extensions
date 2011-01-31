@@ -7,6 +7,7 @@
 	$wgAvailableRights[] = 'addcollection';
 	$wgGroupPermissions['bureaucrat']['addcollection'] = true;
 	$wgExtensionFunctions[] = 'wfSpecialAddCollection';
+	$wgSpecialPages[] = 'SpecialAddCollection';
 
 	function wfSpecialAddCollection() {
 		class SpecialAddCollection extends SpecialPage {
@@ -54,7 +55,5 @@
 				) );
 			}
 		}
-
-		SpecialPage::addPage( new SpecialAddCollection );
 	}
 

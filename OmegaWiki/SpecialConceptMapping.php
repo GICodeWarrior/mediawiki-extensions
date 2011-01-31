@@ -18,6 +18,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Kim Bruning',
 );
 
+$wgSpecialPages[] = 'SpecialConceptMapping';
+
 function wfSpecialConceptMapping() {
 	require_once( "Wikidata.php" );
 	require_once( "WikiDataAPI.php" );
@@ -198,8 +200,5 @@ function wfSpecialConceptMapping() {
 		}
 
 	}
-
-	SpecialPage::addPage( new SpecialConceptMapping );
-	
 }
 
