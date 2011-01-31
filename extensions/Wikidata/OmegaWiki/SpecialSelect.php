@@ -6,7 +6,6 @@ $wgExtensionFunctions[] = 'wfSpecialSelect';
 require_once( "Wikidata.php" );
 require_once( "WikiDataGlobals.php" );
 
-$wgSpecialPages[] = 'SpecialSelect';
 
 function wfSpecialSelect() {
 	class SpecialSelect extends SpecialPage {
@@ -25,6 +24,8 @@ function wfSpecialSelect() {
 			echo getSelectOptions();
 		}
 	}
+
+	SpecialPage::addPage( new SpecialSelect() );
 }
 
 function getSelectOptions() {

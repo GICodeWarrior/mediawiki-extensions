@@ -3,8 +3,6 @@
 
 	$wgExtensionFunctions[] = 'wfSpecialNeedsTranslation';
 
-	$wgSpecialPages[] = 'SpecialNeedsTranslation';
-
 	require_once( "Wikidata.php" );
 
 	function wfSpecialNeedsTranslation() {
@@ -151,6 +149,8 @@
 				$wgOut->addHTML( $editor->view( new IdStack( "expression" ), $recordSet ) );
 			}
 		}
+
+		SpecialPage::addPage( new SpecialNeedsTranslation );
 	}
 
 

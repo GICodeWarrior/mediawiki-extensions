@@ -8,8 +8,6 @@
 	$wgAvailableRights[] = 'importtsv';
 	$wgExtensionFunctions[] = 'wfSpecialImportTSV';
 
-	$wgSpecialPages[] = 'SpecialImportTSV';
-
 	function wfSpecialImportTSV() {
 		class SpecialImportTSV extends SpecialPage {
 			
@@ -241,5 +239,7 @@
 			}
 			
 		}
+
+		SpecialPage::addPage( new SpecialImportTSV );
 	}
 
