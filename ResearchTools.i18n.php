@@ -98,8 +98,11 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'researchtools' => 'Speziell Sichfonctiounen',
+	'researchtools-desc' => "Eng Rei vu Fonctiounen déi nëtzlech si fir Etuden iwwer d'Benotzerverhalen ze maachen",
 	'researchtools-page-dashboard' => 'Iwwersiicht',
 	'researchtools-page-surveys' => 'Ëmfro-Resultater',
+	'researchtools-page-clicks' => 'Klicktracking',
 	'researchtools-page-prefs' => 'Statistike vun den Astellungen',
 );
 
