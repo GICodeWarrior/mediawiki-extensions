@@ -158,12 +158,12 @@ $.articleFeedback = {
 				},
 				'success': function( data ) {
 					var context = this;
-					if ( typeof data.query.articlefeedback == 'undefined' ) {
+					if ( !$.isArray( data.query.articlefeedback ) ) {
 						// TODO: Something more clever, and useful, about this error
 						mw.log( '<loadReport success with bad data />' );
 						return;
 					}
-					if ( 'expertise' in data.query.articlefeedback[0] ) {
+					if ( data.query.articlefeedback.length && 'expertise' in data.query.articlefeedback[0] ) {
 						var $expertise = context.$ui.find( '.articleFeedback-expertise' );
 						var tags = data.query.articlefeedback[0].expertise.split( '|' );
 						for ( var i = 0; i < tags.length; i++ ) {
