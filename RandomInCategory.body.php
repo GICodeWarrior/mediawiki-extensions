@@ -18,14 +18,12 @@ class RandomPageInCategory extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgOut, $wgRequest;
-		wfLoadExtensionMessages( 'RandomInCategory' );
 
 		$this->setHeaders();
 		if( is_null( $par ) ) {
 			if ( $requestCategory = $wgRequest->getVal( 'category' ) ) {
 				$par = $requestCategory;
-			}
-			else {
+			} else {
 				$wgOut->addHTML( $this->getForm() );
 				return;
 			}
@@ -52,6 +50,7 @@ class RandomPageInCategory extends SpecialPage {
 	public function getCategory ( ) {
 		return $this->namespace;
 	}
+
 	public function setCategory ( $cat ) {
 		$category = Title::makeTitleSafe( NS_CATEGORY, $cat );
 		//Invalid title
@@ -70,38 +69,46 @@ class RandomPageInCategory extends SpecialPage {
 		$randstr = wfRandom();
 		$row = $this->selectRandomPageFromDB( $randstr );
 
-		if( !$row )
+		if( !$row ) {
 			$row = $this->selectRandomPageFromDB( "0" );
+		}
 
-		if( $row )
+		if( $row ) {
 			return Title::newFromText( $row->page_title, $row->page_namespace );
-		else
+		} else {
 			return null;
+		}
 	}
 
 	private function selectRandomPageFromDB ( $randstr ) {
 		global $wgExtraRandompageSQL, $wgOut;
-		$fname = 'RandomPageInCategory::selectRandomPageFromDB';
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		$use_index = $dbr->useIndexClause( 'page_random' );
-		$page = $dbr->tableName( 'page' );
-		$categorylinks = $dbr->tableName( 'categorylinks' );
-		$category = $dbr->addQuotes( $this->category );
+		if ( $wgExtraRandompageSQL ) {
+			$this->extra[] = $wgExtraRandompageSQL;
+		}
 
-		$extra = $wgExtraRandompageSQL ? "AND ($wgExtraRandompageSQL)" : "";
-		$sql = "SELECT page_namespace, page_title
-			FROM $page $use_index JOIN $categorylinks ON page_id = cl_from
-			WHERE page_is_redirect = 0
-			AND page_random >= $randstr
-			AND page_namespace != " . NS_CATEGORY . "
-			AND cl_to = $category
-			$extra
-			ORDER BY page_random";
+		$res = $dbr->select(
+			array( 'page', 'categorylinks' ),
+			array( 'page_title', 'page_namespace' ),
+			array_merge( array(
+				'page_namespace' != NS_CATEGORY,
+				'cl_to' => $category,
+				'page_random >= ' . $randstr
+			), $this->extra ),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'page_random',
+				'USE INDEX' => 'page_random'
+			),
+			array(
+				'categorylinks' => array(
+					'JOIN' => array( 'page_id=cl_from' )
+				)
+			)
+		);
 
-		$sql = $dbr->limitResult( $sql, 1, 0 );
-		$res = $dbr->query( $sql, $fname );
 		return $dbr->fetchObject( $res );
 	}
 
