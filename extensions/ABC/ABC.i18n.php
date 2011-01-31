@@ -910,10 +910,11 @@ $messages['sl'] = array(
 );
 
 /** Albanian (Shqip)
+ * @author Cradel
  * @author Puntori
  */
 $messages['sq'] = array(
-	'abc-desc' => 'Vendosë kodin <code>&lt;abc&gt;</code> të formatojë muzikë ABC',
+	'abc-desc' => 'Vendosë kodin <code>&lt;abc&gt;</code> për të formatuar muzikë ABC',
 	'abcdownload' => 'Shkarko:',
 );
 

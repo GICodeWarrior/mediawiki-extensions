@@ -52,8 +52,11 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'svgedit-editbutton-edit' => 'Kemmañ an dresadenn',
+	'svgedit-summary-default' => '/* Kemmet gant svg-edit */',
 	'svgedit-editor-save-close' => 'Enrollañ ha serriñ',
 	'svgedit-editor-close' => 'Nullañ',
+	'svgedit-edit-tab' => 'Kemmañ an dresadenn',
 );
 
 /** Bosnian (Bosanski)
@@ -78,6 +81,8 @@ $messages['de'] = array(
 	'svgedit-editor-save-close' => 'Speichern und schließen',
 	'svgedit-editor-close' => 'Abbrechen',
 	'svgedit-desc' => 'Ermöglicht das Bearbeiten einer SVG-Datei mit [http://code.google.com/p/svg-edit/ SVG-edit]',
+	'svgedit-edit-tab' => 'Zeichnung bearbeiten',
+	'svgedit-edit-tab-tooltip' => 'Diese SVG-Zeichnung kann im Browser bearbeitet werden',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -90,6 +95,8 @@ $messages['dsb'] = array(
 	'svgedit-editor-save-close' => 'Składowaś a zacyniś',
 	'svgedit-editor-close' => 'Pśetergnuś',
 	'svgedit-desc' => 'Zmóžnja wobźěłowanje SVG-kreslankow z [http://code.google.com/p/svg-edit/ SVG-Edit] we wobglědowaku',
+	'svgedit-edit-tab' => 'Kreslanku wobźěłaś',
+	'svgedit-edit-tab-tooltip' => 'Móžoš toś tu SVG-kreslanku we swójom wobglědowaku wobźěłaś',
 );
 
 /** Esperanto (Esperanto)
@@ -124,12 +131,14 @@ $messages['fi'] = array(
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'svgedit-editbutton-edit' => 'Modifiez le dessin',
+	'svgedit-editbutton-edit' => 'Modifier le dessin',
 	'svgedit-summary-label' => 'Résumé de la modification',
 	'svgedit-summary-default' => '/* Modifiée avec svg-edit */',
 	'svgedit-editor-save-close' => 'Enregistrer et fermer',
 	'svgedit-editor-close' => 'Annuler',
 	'svgedit-desc' => 'Modification des dessins au format SVG dans votre navigateur en utilisant [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Modifier le dessin',
+	'svgedit-edit-tab-tooltip' => 'Vous pouvez modifier ce dessin SVG dans votre navigateur',
 );
 
 /** Galician (Galego)
@@ -166,6 +175,8 @@ $messages['hsb'] = array(
 	'svgedit-editor-save-close' => 'Składować a začinić',
 	'svgedit-editor-close' => 'Přetorhnyć',
 	'svgedit-desc' => 'Zmóžnja wobdźěłanje SVG-rysowanki z [http://code.google.com/p/svg-edit/ SVG-Edit] we wobhladowaku',
+	'svgedit-edit-tab' => 'Rysowanku wobdźěłać',
+	'svgedit-edit-tab-tooltip' => 'Móžeće tutu SVG-rysowanku w swojim wobhladowaku wobdźěłać',
 );
 
 /** Interlingua (Interlingua)
@@ -178,6 +189,8 @@ $messages['ia'] = array(
 	'svgedit-editor-save-close' => 'Salveguardar e clauder',
 	'svgedit-editor-close' => 'Cancellar',
 	'svgedit-desc' => 'Modification in le navigator de designos SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Modificar designo',
+	'svgedit-edit-tab-tooltip' => 'Iste designo SVG pote esser modificate in le navigator del web',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -231,6 +244,8 @@ $messages['mk'] = array(
 	'svgedit-editor-save-close' => 'Зачувај и затвори',
 	'svgedit-editor-close' => 'Откажи',
 	'svgedit-desc' => 'Уредување на SVG-цртежи во самиот прелистувач со [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Уреди цртеж',
+	'svgedit-edit-tab-tooltip' => 'Можете да го уредите овој SVG-цртеж во прелистувачот',
 );
 
 /** Dutch (Nederlands)
