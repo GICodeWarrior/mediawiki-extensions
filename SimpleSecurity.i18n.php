@@ -204,6 +204,7 @@ $messages['br'] = array(
 	'security-type-category' => 'rummad',
 	'security-type-namespace' => 'esaouenn anv',
 	'security-restricttogroup' => 'Mont d\'an endalc\'had evit izili "$1" hepken',
+	'restriction-read' => 'Lenn',
 );
 
 /** Bosnian (Bosanski)
