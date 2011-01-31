@@ -24,27 +24,27 @@ var runTests = function() {
   shouldIgnore("Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-us) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4");
   // Chrome on OS X
   shouldIgnore("Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.237 Safari/534.10");
-}
+};
 
 var doesMatch = function(user_agent) {
-  return regex.test(user_agent);
-}
+	return regex.test(user_agent);
+};
 
 var runTest = function(user_agent, should_be) {
   var result = doesMatch(user_agent);
   if(result == should_be) {
-    print("OK")
+    print("OK");
   } else {
-    print("FAIL: '" + user_agent + "'")
+    print("FAIL: '" + user_agent + "'");
   }
-}
+};
 
 var shouldRedirect = function(user_agent) {
-  runTest(user_agent, true);
-}
+	runTest(user_agent, true);
+};
 
 var shouldIgnore = function(user_agent) {
-  runTest(user_agent, false);
-}
+	runTest(user_agent, false);
+};
 
 runTests();
