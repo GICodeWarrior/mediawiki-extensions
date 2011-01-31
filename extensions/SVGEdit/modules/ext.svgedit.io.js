@@ -97,4 +97,4 @@ var mwSVG = window.mwSVG = {
 			$.ajax(ajaxSettings);
 		});
 	}
-}
+};
