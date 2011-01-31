@@ -39,7 +39,7 @@ class NewUserNotifier {
 	private function sendExternalMails() {
 		global $wgNewUserNotifEmailTargets, $wgSitename;
 		foreach( $wgNewUserNotifEmailTargets as $target ) {
-			userMailer(
+			UserMailer::send(
 				new MailAddress( $target ),
 				new MailAddress( $this->sender ),
 				wfMsgForContent( 'newusernotifsubj', $wgSitename ),
