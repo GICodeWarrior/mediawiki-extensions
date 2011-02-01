@@ -44,7 +44,7 @@ def store_editors(tasks, dbname, collection, source):
 
     editor_cache = cache.EditorCache(collection)
     prev_contributor = -1
-    edits = 0
+    #edits = 0
     while True:
         try:
             filename = tasks.get(block=False)
@@ -64,19 +64,21 @@ def store_editors(tasks, dbname, collection, source):
                 contributor = line[0]
                 #print 'Parsing %s' % contributor
                 if prev_contributor != contributor:
-                    if edits > 9:
-                        editor_cache.add(prev_contributor, 'NEXT')
-                        print 'Stored %s' % prev_contributor
-                    else:
-                        editor_cache.clear(prev_contributor)
-                    edits = 0
+                    #if edits > 9:
+                    editor_cache.add(prev_contributor, 'NEXT')
+                    print 'Stored %s' % prev_contributor
+                    #else:
+                    #    editor_cache.clear(prev_contributor)
+                    #edits = 0
                 edits += 1
                 date = text_utils.convert_timestamp_to_datetime_utc(line[1])
                 article_id = int(line[2])
                 username = line[3].encode(settings.encoding)
+                ns = int(line[4])
                 value = {'date': date,
                          'article': article_id,
-                         'username': username}
+                         'username': username,
+                         'ns': ns}
                 editor_cache.add(contributor, value)
                 prev_contributor = contributor
         fh.close()
