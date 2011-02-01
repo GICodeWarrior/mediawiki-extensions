@@ -280,7 +280,7 @@ $( '#p-tb ul' )
 		.text( mw.msg( 'articlefeedback-form-switch-label' ) )
 		.click( function() {
 			// Get the image, set the count and an interval.
-			var $box = $( '#mw-articlefeedback .articleFeedback' );
+			var $box = $( '#mw-articlefeedback' );
 			var count = 0;
 			var interval = setInterval( function() {
 				// Animate the opacity over .2 seconds
