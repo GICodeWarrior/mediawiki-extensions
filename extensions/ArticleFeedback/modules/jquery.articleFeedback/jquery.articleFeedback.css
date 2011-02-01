@@ -220,6 +220,10 @@
 	margin-bottom: 0.5em;
 }
 
+.articleFeedback-expertise-disabled {
+	color: silver;
+}
+
 .articleFeedback-expertise input {
 	float: left;
 	margin-bottom: 0.5em;

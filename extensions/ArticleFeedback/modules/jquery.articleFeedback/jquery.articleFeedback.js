@@ -22,7 +22,7 @@ $.articleFeedback = {
 		<div class="articleFeedback-ratings"></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-expertise articleFeedback-visibleWith-form" >\
-			<input type="checkbox" value="general" /><label><html:msg key="form-panel-expertise" /></label>\
+			<input type="checkbox" value="general" disabled="disabled" /><label class="articleFeedback-expertise-disabled"><html:msg key="form-panel-expertise" /></label>\
 			<div class="articleFeedback-expertise-options">\
 				<input type="checkbox" value="studies" /><label><html:msg key="form-panel-expertise-studies" /></label>\
 				<input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label>\
@@ -171,7 +171,15 @@ $.articleFeedback = {
 								.attr( 'checked', true );
 						}
 						if ( $expertise.find( 'input:checkbox[value=general]:checked' ).size() ) {
-							$expertise.find( '.articleFeedback-expertise-options' ).show();
+							$expertise
+								.find( 'input:checkbox[value=general]' )
+									.attr( 'disabled', false )
+									.end()
+								.find( '.articleFeedback-expertise-disabled' )
+									.removeClass( 'articleFeedback-expertise-disabled' )
+									.end()
+								.find( '.articleFeedback-expertise-options' )
+									.show();
 						}
 					}
 					context.$ui.find( '.articleFeedback-rating' ).each( function() {
@@ -434,7 +442,13 @@ $.articleFeedback = {
 					.mousedown( function() {
 						context.$ui
 							.find( '.articleFeedback-submit' )
-								.button( { 'disabled': false } );
+								.button( { 'disabled': false } )
+								.end()
+							.find( '.articleFeedback-expertise input:checkbox[value=general]' )
+								.attr( 'disabled', false )
+								.end()
+							.find( '.articleFeedback-expertise-disabled' )
+								.removeClass( 'articleFeedback-expertise-disabled' );
 						$(this)
 							.closest( '.articleFeedback-rating' )
 								.addClass( 'articleFeedback-rating-new' )
