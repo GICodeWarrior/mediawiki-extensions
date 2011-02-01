@@ -136,6 +136,11 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/FixAnonTokenSchema.sql',
 				true
 			) );
+			$updater->addExtensionUpdate( array(
+				'applyPatch',
+				$dir . '/sql/FixPropertiesAnonTokenSchema.sql',
+				true
+			) );
 		}
 		return true;
 	}
