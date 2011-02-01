@@ -36,6 +36,15 @@ function mutePitch( pitch, durration ) {
 	$.cookie( 'ext.articleFeedback.pitches.' + pitch, 'hide', { 'expires': durration } );
 }
 
+function trackClick( id ) {
+	// Track the click so we can figure out how useful this is
+	if ( typeof $.trackActionWithInfo == 'function' ) {
+		$.trackActionWithInfo(
+			'articlefeedback-' + id, mediaWiki.config.get( 'wgTitle' )
+		)
+	}
+}
+
 /**
  * Survey object
  * 
@@ -202,6 +211,8 @@ var config = {
 			},
 			'action': function() {
 				survey.load();
+				// Click tracking
+				trackClick( 'pitch-survey' );
 				// Hide the pitch immediately
 				return true;
 			},
@@ -217,6 +228,8 @@ var config = {
 					? lottery( 0.5 ) : false;
 			},
 			'action': function() {
+				// Click tracking
+				trackClick( 'pitch-join-signup' );
 				// Go to account creation page
 				window.location =
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
@@ -235,6 +248,8 @@ var config = {
 			// Special alternative action for going to login page
 			'altAccept': 'articlefeedback-pitch-join-login',
 			'altAction': function() {
+				// Click tracking
+				trackClick( 'pitch-join-login' );
 				// Go to login page
 				window.location =
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
@@ -263,6 +278,8 @@ var config = {
 				return !isPitchMuted( 'edit' );
 			},
 			'action': function() {
+				// Click tracking
+				trackClick( 'pitch-edit' );
 				// Go to edit page
 				window.location =
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
@@ -290,10 +307,8 @@ $( '#p-tb ul' )
 	.find( '#t-articlefeedback a' )
 		.text( mw.msg( 'articlefeedback-form-switch-label' ) )
 		.click( function() {
-			// Track the click so we can figure out how useful this is
-			if ( typeof $.trackActionWithInfo == 'function' ) {
-				$.trackActionWithInfo( 'articlefeedback-toolbox-link', mediaWiki.config.get( 'wgTitle' ) )
-			}
+			// Click tracking
+			trackClick( 'toolbox-link' );
 			// Get the image, set the count and an interval.
 			var $box = $( '#mw-articlefeedback' );
 			var count = 0;
