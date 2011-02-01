@@ -28,10 +28,18 @@ $messages['en'] = array (
 	'toolbase-navigation-homepage' => 'Homepage',
 	'toolbase-navigation-api' => 'API',
 	'toolbase-navigation-user_id' => 'Find user ID',
+	'toolbase-navigation-autoedits' => 'Automated edit counter',
 	
 	'toolbase-userid-submit' => 'Get user ID',
 	'toolbase-userid-title' => 'Find a user ID',
 	'toolbase-userid-result' => 'The user ID for <b>$1</b> on <a href="$3"><b>$3</b></a> is <b>$2</b>.',
+	
+	'toolbase-autoedits-title' => 'Automated edit calculator',
+	'toolbase-autoedits-submit' => 'Calculate',
+	'toolbase-autoedits-approximate' => '<b>Approximate</b> number of edits using....',
+	'toolbase-autoedits-totalauto' => 'Total number of automated edits',
+	'toolbase-autoedits-totalall' => 'Total edit count',
+	'toolbase-autoedits-pct' => 'Percentage of automated edits',
 
 	'toolbase-main-title' => 'Welcome!',
 	'toolbase-main-content' => 'Welcome to X!\'s tools! The tool suite is still in the process of being converted to the <a href="$1">Symfony</a> framework. This process will take a while, but it should be working now. 
@@ -49,6 +57,7 @@ If you followed a link from somewhere, please <a href="$1">report a bug</a>.
 	
 	'toolbase-error-nouser' => '$1 is not a valid user',	
 	'toolbase-error-nowiki' => '$1.$2.org is not a valid wiki',
+	'toolbase-error-toomanyedits' => '$1 has $2 edits. This tool has a maximum of $3 edits.',
 );
 
 /** Message documentation (Message documentation)
@@ -145,7 +154,7 @@ $messages['ar'] = array(
 	'toolbase-form-wiki' => 'ويكي',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -710,7 +719,7 @@ Nếu bạn theo một liên kết từ trang khác, xin vui lòng <a href="$1">
 	'toolbase-error-nowiki' => '“$1.$2.org” không phải là wiki hợp lệ',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (中文(简体))
  * @author Hydra
  */
 $messages['zh-hans'] = array(
@@ -724,7 +733,7 @@ $messages['zh-hans'] = array(
 	'toolbase-form-wiki' => '维基',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (中文(繁體))
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
