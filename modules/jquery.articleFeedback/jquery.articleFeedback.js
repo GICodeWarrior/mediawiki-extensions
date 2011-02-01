@@ -508,10 +508,10 @@ $.fn.articleFeedback = function() {
 		var context = $(this).data( 'articleFeedback-context' );
 		if ( !context ) {
 			// Create context
-			context = { '$ui': $(this), 'options': { 'ratings': {}, 'pitches': {},'bucket': 0 } };
+			context = { '$ui': $(this), 'options': { 'ratings': {}, 'pitches': {}, 'bucket': 0 } };
 			// Allow customization through an options argument
 			if ( typeof args[0] === 'object' ) {
-				context = $.extend( context, { 'options': args[0] } );
+				context = $.extend( true, context, { 'options': args[0] } );
 			}
 			// Build user interface
 			$.articleFeedback.fn.build.call( context );
