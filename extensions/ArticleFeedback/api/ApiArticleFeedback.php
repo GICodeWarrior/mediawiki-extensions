@@ -193,6 +193,29 @@ class ApiArticleFeedback extends ApiBase {
 	private function insertProperties( $revisionId, $user, $token, $params ) {
 		// Expertise is given as a list of one or more tags, such as profession, hobby, etc.
 		$this->insertProperty( $revisionId, $user, $token, 'expertise', $params['expertise'] );
+		// Capture edit counts as of right now for the past 1, 3 and 6 months as well as all time
+		// - These time distances match the default configuration for the ClickTracking extension
+		if ( $user->isLoggedIn() ) {
+			$this->insertProperty(
+				$revisionId, $user, $token, 'contribs-lifetime', (integer) $user->getEditCount()
+			);
+			// Take advantage of the UserDailyContribs extension if it's present
+			if ( function_exists( 'getUserEditCountSince' ) ) {
+				$now = time();
+				$this->insertProperty(
+					$revisionId, $user, $token, 'contribs-6-months',
+					getUserEditCountSince( $now - ( 60 * 60 * 24 * 365 / 2 ) )
+				);
+				$this->insertProperty(
+					$revisionId, $user, $token, 'contribs-3-months',
+					getUserEditCountSince( $now - ( 60 * 60 * 24 * 365 / 4 ) )
+				);
+				$this->insertProperty(
+					$revisionId, $user, $token, 'contribs-1-month',
+					getUserEditCountSince( $now - ( 60 * 60 * 24 * 30 ) )
+				);
+			}
+		}
 	}
 
 	/**
