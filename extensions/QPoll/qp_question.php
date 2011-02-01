@@ -562,10 +562,11 @@ class qp_Question extends qp_AbstractQuestion {
 	#
 	function parseBodyHeader( $input ) {
 		$this->raws = preg_split( '`\n`su', $input, -1, PREG_SPLIT_NO_EMPTY );
-		if ( array_key_exists( 1, $this->raws ) ) {
+		$categorySpans = false;
+		if ( isset( $this->raws[1] ) ) {
 			$categorySpans = preg_match( $this->mCategoryPattern, $this->raws[1]."\n", $matches );
 		}
-		if ( !$categorySpans && array_key_exists( 0, $this->raws ) ) {
+		if ( !$categorySpans && isset( $this->raws[0] ) ) {
 			preg_match( $this->mCategoryPattern, $this->raws[0]."\n", $matches );
 		}
 		# parse the header - spans and categories
@@ -582,6 +583,12 @@ class qp_Question extends qp_AbstractQuestion {
 			}
 			$this->addRow( $spansRow, array( 'class'=>'spans' ), 'th', array( 'count'=>$this->spanType, 'name'=>0 ) );
 		}
+		# do not render single empty category at all (on user's request)
+		if ( count( $this->mCategories ) == 1 &&
+				$this->mCategories[0]['name'] == '&#160;' ) {
+			return;
+		}
+		# render category table row
 		if ( $this->categoriesStyle != '' ) {
 			qp_Renderer::applyAttrsToRow( $catRow, array( 'style'=>$this->categoriesStyle ) );
 		}
