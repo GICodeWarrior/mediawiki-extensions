@@ -15,6 +15,8 @@ $messages = array();
 $messages['en'] = array(
     'emailusers-desc' => 'Allowing users to send e-mails to multiple recipients',
     
+    'right-sendbatchemail' => 'Send e-mail to multiple recipients at the same time',
+    
     'emailusers' => 'E-mail users',
     'emailusers-target-reverse' => 'Send to all users except for selected ones',
     
@@ -190,6 +192,7 @@ $messages['ru'] = array(
  */
 $messages['zh-hans'] = array(
 	'emailusers-desc' => '允许用户给多个收件人发送电子邮件',
+	'right-sendbatchemail' => '同时发电子邮件给多个收件人',
 	'emailusers' => '给多个用户发送邮件',
 	'emailusers-target-reverse' => '发送给除了选定用户的所有用户',
 	'emailusers-norecipient' => '没有用户可以接收电子邮件。',
