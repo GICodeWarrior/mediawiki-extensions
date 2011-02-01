@@ -25,6 +25,18 @@ $messages['en'] = array(
     'emailusers-toomanyrecipientsselected' => 'Too many recipients are selected ({{PLURAL:$1|maximum $1|maximum $1}}).',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'emailusers-desc' => "Laat gebruikers toe om e-pos aan 'n klomp ontvangers te stuur",
+	'emailusers' => 'Stuur e-pos aan gebruikers',
+	'emailusers-target-reverse' => 'Stuur aan alle gebruikers, behalwe die geselekteerdes',
+	'emailusers-norecipient' => 'Daar is niemand aan wie u e-pos kan stuur nie.',
+	'emailusers-norecipientselected' => 'Geen ontvanger gekies nie.',
+	'emailusers-toomanyrecipientsselected' => 'Te veel ontvangers gekies ({{plural: $1|maksimum is $1|maksimum is $1}}).',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -91,6 +103,19 @@ $messages['fr'] = array(
 	'emailusers-norecipient' => "Il n'y a personne à qui vous pouvez envoyer un courriel.",
 	'emailusers-norecipientselected' => "Aucun destinataire n'est sélectionné.",
 	'emailusers-toomanyrecipientsselected' => 'Trop de récipiendaires sont choisis (maximum $1{{PLURAL:$1||}}).',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'emailusers-desc' => 'Macht s Verschicke vu E-Mail an mehreri Empfänger megli',
+	'right-sendbatchemail' => 'E E-Mail an mehreri Empfänger glychzytig verschicke',
+	'emailusers' => 'E-Mail an Benutzer',
+	'emailusers-target-reverse' => 'An alli Benutzer verschicke, uußer di uusgwehlte',
+	'emailusers-norecipient' => 'S git kei Benutzer, wu ne E-Mail cha zuegschickt wäre.',
+	'emailusers-norecipientselected' => 'S isch kei Empfänger uusgwehlt wore.',
+	'emailusers-toomanyrecipientsselected' => 'S sin z vil Empfänger uusgwehlt wore (S {{PLURAL:$1|isch maximal $1|sin maximal $1}} megli.).',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -180,11 +205,12 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'emailusers-desc' => 'Позволяет участникам отправлять электронную почту нескольким получателям',
+	'right-sendbatchemail' => 'отправка электронной почты сразу нескольким адресатам',
 	'emailusers' => 'Письмо участникам',
 	'emailusers-target-reverse' => 'Отправить всех участникам, кроме выбранных',
 	'emailusers-norecipient' => 'Вы некому не можете отправить сообщение.',
 	'emailusers-norecipientselected' => 'Получатель не выбран.',
-	'emailusers-toomanyrecipientsselected' => 'Выбрано слишком много получателей (максимум — $1).',
+	'emailusers-toomanyrecipientsselected' => 'Выбрано слишком много получателей ({{PLURAL:$1|максимум — $1|максимум — $1}}).',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
