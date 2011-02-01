@@ -51,6 +51,7 @@ class ArticleFeedbackHooks {
 				'articlefeedback-form-switch-label',
 				'articlefeedback-form-panel-title',
 				'articlefeedback-form-panel-instructions',
+				'articlefeedback-form-panel-clear',
 				'articlefeedback-form-panel-expertise',
 				'articlefeedback-form-panel-expertise-studies',
 				'articlefeedback-form-panel-expertise-profession',

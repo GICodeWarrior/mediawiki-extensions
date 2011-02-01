@@ -264,6 +264,9 @@ $.articleFeedback = {
 									.attr( 'title', mw.msg( context.options.ratings[key].tip ) )
 									.text( mw.msg( context.options.ratings[key].label ) )
 									.end()
+								.find( '.articleFeedback-rating-clear' )
+									.attr( 'title', mw.msg( 'articlefeedback-form-panel-clear' ) )
+									.end()
 								.appendTo( $(this) );
 						}
 					} )
@@ -344,10 +347,11 @@ $.articleFeedback = {
 					.change( function() {
 						var $options = context.$ui.find( '.articleFeedback-expertise-options' );
 						if ( $(this).is( ':checked' ) ) {
-							$options.slideDown();
+							$options.slideDown( 'fast' );
 						} else {
-							$options.slideUp();
-							$options.find( 'input:checkbox' ).attr( 'checked', false );
+							$options.slideUp( 'fast', function() {
+								$options.find( 'input:checkbox' ).attr( 'checked', false );
+							} );
 						}
 					} )
 					.end()
