@@ -58,6 +58,18 @@ $messages['fr'] = array(
 	'researchtools-page-prefs' => 'Statistiques des préférences',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'researchtools' => 'Recherchewärchzyg',
+	'researchtools-desc' => 'Stellt e Bindel vu Recherchewärchzyyg z Verfiegig, wu hilfryych sin bi dr Untersuechig vum Benutzerverhalte',
+	'researchtools-page-dashboard' => 'Ibersichtssyte',
+	'researchtools-page-surveys' => 'Umfrogergebnis',
+	'researchtools-page-clicks' => 'Klicktracking',
+	'researchtools-page-prefs' => 'Yystelligs-Statischtike',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
