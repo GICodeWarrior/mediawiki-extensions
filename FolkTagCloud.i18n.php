@@ -39,6 +39,13 @@ $messages['fr'] = array(
 	'folktagcloud-desc' => "Ajoute une propriété ''Semantic MediaWiki'' pour le marquage des pages avec des étiquettes définies par l'utilisateur et une étiquette d'analyseur syntaxique dans le but de les afficher dans un nuage de tags",
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'folktagcloud-desc' => 'Stellt Semantic MediaWiki e individuäll definierbar Attribut zum Chännzeiche vu Syte z Verfiegig, wu in ere Schlagwortwulke cha aazeigt wäre',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
