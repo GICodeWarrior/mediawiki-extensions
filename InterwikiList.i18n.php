@@ -770,6 +770,18 @@ $messages['tr'] = array(
 	'interwikilist-prefix' => 'Vikilerarası öneki:',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'interwikilist' => 'Интервикилар исемлеге',
+	'interwikilist-desc' => 'Мөмкин булган интервики сылтамаларны карау өчен [[Special:Interwikilist|махсус]] бит өсти',
+	'interwikilist-linkname' => 'Интервики сылтамалар',
+	'interwikilist-target' => 'Төп URL',
+	'interwikilist-filter' => 'Фильтрлар исемлеге',
+	'interwikilist-prefix' => 'Интервики префикслары:',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Prima klasy4na
