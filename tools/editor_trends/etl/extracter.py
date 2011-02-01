@@ -66,11 +66,12 @@ def build_namespaces_locale(namespaces, include=['0']):
     @include is a list of namespace keys that should not be ignored, the default
     setting is to ignore all namespaces except the main namespace. 
     '''
-    ns = []
+    ns = {}
     for key, value in namespaces.iteritems():
-        if key not in include:
+        if key in include:
             #value = namespaces[namespace].get(u'*', None)
-            ns.append(value)
+            #ns.append(value)
+            ns[key] = value
     return ns
 
 
@@ -82,19 +83,28 @@ def parse_comments(revisions, function):
     return revisions
 
 
-def verify_article_belongs_namespace(elem, namespaces):
+def parse_article(elem, namespaces):
     '''
-    @namespaces is a list of namespaces that should be ignored, hence if the
-    title of article starts with the namespace then return False else return 
-    True
+    @namespaces is a list of valid namespaces that should be included in the analysis
+    if the article should be ignored then this function returns false, else it returns
+    the namespace identifier and namespace name. 
     '''
     title = elem.text
     if title == None:
         return False
-    for namespace in namespaces:
-        if title.startswith(namespace):
+    ns = title.split(':')
+    if len(ns) ==1 and '0' in namespaces:
+        return {'id': 0, 'name': 'main namespace'}
+    else:
+        if ns[0] in namespaces:
+            return {'id': ns[0], 'name': ns[1]}
+        else:
             return False
-    return True
+        
+#    for namespace in namespaces:
+#        if title.startswith(namespace):
+#            return False
+#    return True
 
 
 def validate_hostname(address):
@@ -263,12 +273,15 @@ def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=
         for page, article_size in wikitree.parser.read_input(fh1):
             title = page.find('title')
             total += 1
-            if verify_article_belongs_namespace(title, ns):
+            namespace = parse_article(title, ns)
+            if namespace != False:
+                #if verify_article_belongs_namespace(title, ns):
                 article_id = page.find('id').text
                 title = page.find('title').text
                 revisions = page.findall('revision')
                 revisions = parse_comments(revisions, remove_numeric_character_references)
                 output = output_editor_information(revisions, article_id, bot_ids)
+                output = [o.append(namespace['id'] for o in output)]
                 write_output(output, filehandles, lock)
                 file_utils.write_list_to_csv([article_id, title], fh2)
                 processed += 1

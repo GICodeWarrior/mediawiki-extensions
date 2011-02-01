@@ -216,4 +216,4 @@ class RunTimeSettings:
         if namespaces != None:
             return namespaces.split(',')
         else:
-            return namespaces
+            return ['0']  #Assume that the mainspace is of interest
