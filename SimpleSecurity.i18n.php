@@ -484,6 +484,7 @@ $messages['gsw'] = array(
 	'security-type-category' => 'Kategorii',
 	'security-type-namespace' => 'Namensruum',
 	'security-restricttogroup' => 'Zuegriff uf Inhalt bschränkt uf Mitgliider vu „$1“',
+	'restriction-read' => 'Läse',
 );
 
 /** Hausa (هَوُسَ) */
