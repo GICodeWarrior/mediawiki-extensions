@@ -30,11 +30,12 @@ def cohort_dataset_backward_bar(var, editor, **kwargs):
     value edits. If yes, then include this person in the analysis, else skip the
     person. 
     '''
+    break_down=kwargs.pop('break_down', False)
     new_wikipedian = editor['new_wikipedian']
     n = editor['edit_count']
 
     if n >= var.cum_cutoff:
-        windows = data_converter.create_windows(var, break_down_first_year=False)
+        windows = data_converter.create_windows(var, break_down_first_year=break_down)
         for year in xrange(new_wikipedian.year, var.max_year):
             year = str(year)
             if editor['edits_by_year'][year] >= var.cutoff:

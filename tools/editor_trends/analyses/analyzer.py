@@ -55,7 +55,7 @@ def generate_chart_data(project, collection, language_code, func, encoder, **kwa
     fn = '%s_%s.csv' % (dbname, func.func_name)
 
     print 'Storing dataset: %s' % os.path.join(settings.dataset_location, fn)
-    #ds.write(format='csv')
+    ds.write(format='csv')
 
     print 'Serializing dataset to %s_%s' % (dbname, 'charts')
     log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='start')

@@ -138,20 +138,32 @@ class Observation(Data):
         tallying a variable. 
         '''
         assert isinstance(value, dict), 'The observation that you are adding should be a dictionary.'
-        self.lock.acquire()
-        try:
-            if update:
-                for k, v in value.iteritems():
-                    self.data.setdefault(k, 0)
-                    self.data[k] += v
-            else:
-                try:
-                    i = max(self.data.keys()) + 1
-                except ValueError:
-                    i = 0
+
+        if update:
+            for k, v in value.iteritems():
+                if isinstance(v, dict):
+                    obs = self.data.get(k, Observation(self.date))
+                    obs.add(v, update)
+                    #key = self.__hash__(self.date)
+                    self.data[k] = obs
+                else:
+                    self.lock.acquire()
+                    try:
+                        self.data.setdefault(k, 0)
+                        self.data[k] += v
+                    finally:
+                        self.lock.release()
+        else:
+            self.lock.acquire()
+            try:
+                i = max(self.data.keys()) + 1
+            except ValueError:
+                i = 0
+
+            try:
                 self.data[i] = value
-        finally:
-            self.lock.release()
+            finally:
+                self.lock.release()
 
 
 
@@ -293,7 +305,7 @@ class Dataset:
         self.language_code = language_code
         self.hash = self.name
         self._type = 'dataset'
-        self.filename = '%s_%s.csv' % (self.project, self.name)
+        self.filename = '%s%s_%s.csv' % (self.language_code, self.project, self.name)
         self.created = datetime.datetime.now()
         self.format = 'long'
         for kw in kwargs:
@@ -313,6 +325,11 @@ class Dataset:
     def __iter__(self):
         for var in self.variables:
             yield getattr(self, var)
+
+    def update_filename(self, var):
+        attrs = '_'.join(['%s=%s' % (k,v) for k,v in var.iteritems()])
+        return attrs
+
 
     def add_variable(self, var):
         if isinstance(var, Variable):
@@ -417,27 +434,26 @@ def debug():
     d2 = datetime.datetime(2007, 6, 7)
     ds = Dataset('test', 'wiki', 'editors_dataset', 'en', 'to_bar_json', [
                                         {'name': 'count', 'time_unit': 'year'},
-                                        {'name': 'testest', 'time_unit': 'year'}
+                                       # {'name': 'testest', 'time_unit': 'year'}
                                         ])
-    ds.count.add(d1, {0:5})
-    ds.count.add(d1, {0:135})
-    ds.count.add(d2, 514)
-    ds.testest.add(d1, 135)
-    ds.testest.add(d2, 535)
+    ds.count.add(d1, {0:{1:10}})
+    ds.count.add(d1, {0:{1:135}})
+    ds.count.add(d2, {1: 514})
+    #ds.testest.add(d1, 135)
+    #ds.testest.add(d2, 535)
     #ds.summary()
     ds.write(format='csv')
-    v = Variable('test', 'year')
-    ds.summary()
+#    v = Variable('test', 'year')
     ds.encode()
     print ds
 
-    mongo.test.insert({'variables': ds})
+ #   mongo.test.insert({'variables': ds})
 
-    v.add(d2 , 5)
+  #  v.add(d2 , 5)
     #o = v.get_observation(d2)
-    ds = rawdata.find_one({'project': 'wiki',
-                           'language_code': 'en',
-                           'hash': 'cohort_dataset_backward_bar'})
+#    ds = rawdata.find_one({'project': 'wiki',
+#                           'language_code': 'en',
+#                           'hash': 'cohort_dataset_backward_bar'})
 
 
 if __name__ == '__main__':
