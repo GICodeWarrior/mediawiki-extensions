@@ -30,6 +30,7 @@ $messages['en'] = array(
 	'articlefeedback-form-switch-label' => 'Rate this page',
 	'articlefeedback-form-panel-title' => 'Rate this page',
 	'articlefeedback-form-panel-instructions' => 'Please take a moment to rate this page.',
+	'articlefeedback-form-panel-clear' => 'Remove this rating',
 	'articlefeedback-form-panel-expertise' => 'I have prior knowledge on this topic',
 	'articlefeedback-form-panel-expertise-studies' => 'I\'ve studied it',
 	'articlefeedback-form-panel-expertise-profession' => 'It\'s part of my profession',

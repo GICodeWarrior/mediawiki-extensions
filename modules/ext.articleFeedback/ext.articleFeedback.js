@@ -277,6 +277,23 @@ $( '#catlinks' ).before( $( '<div id="mw-articlefeedback"></div>' ).articleFeedb
 $( '#p-tb ul' )
 	.append( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>' )
 	.find( '#t-articlefeedback a' )
-		.text( mw.msg( 'articlefeedback-form-switch-label' ) );
+		.text( mw.msg( 'articlefeedback-form-switch-label' ) )
+		.click( function() {
+			// Get the image, set the count and an interval.
+			var $box = $( '#mw-articlefeedback .articleFeedback' );
+			var count = 0;
+			var interval = setInterval( function() {
+				// Animate the opacity over .2 seconds
+				$box.animate( { 'opacity': 0.5 }, 100, function() {
+					// When finished, animate it back to solid.
+					$box.animate( { 'opacity': 1.0 }, 100 );
+				} );
+				// Clear the interval once we've reached 3.
+				if ( ++count >= 3 ) {
+					clearInterval( interval );
+				}
+			}, 200 );
+			return true;
+		} );
 
 } )( jQuery, mediaWiki );
