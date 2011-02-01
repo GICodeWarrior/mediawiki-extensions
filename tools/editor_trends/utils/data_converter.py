@@ -54,7 +54,12 @@ def convert_dataset_to_lists(ds, caller):
 
             for obs in var['obs'][date]['data']:
                 if ds.format == 'long':
-                    o.append([datum, obs, var['obs'][date]['data'][obs]])
+                    if isinstance(var['obs'][date]['data'], dict):
+                        for subdata in var['obs'][date]['data']:
+                            for k,v in var['obs'][date]['data'][subdata]['data'].iteritems():
+                                o.append([datum, obs, k, v])
+                    else:
+                        o.append([datum, obs, var['obs'][date]['data'][obs]])
                     data.extend(o)
                     o = []
                 else:
