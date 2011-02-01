@@ -93,14 +93,14 @@ def parse_article(elem, namespaces):
     if title == None:
         return False
     ns = title.split(':')
-    if len(ns) ==1 and '0' in namespaces:
+    if len(ns) == 1 and '0' in namespaces:
         return {'id': 0, 'name': 'main namespace'}
     else:
         if ns[0] in namespaces:
             return {'id': ns[0], 'name': ns[1]}
         else:
             return False
-        
+
 #    for namespace in namespaces:
 #        if title.startswith(namespace):
 #            return False
@@ -237,6 +237,12 @@ def output_editor_information(revisions, page, bots):
             flat.append(f)
     return flat
 
+def add_namespace_to_output(output, namespace):
+    for x, o in enumerate(output):
+        o.append(namespace['id'])
+        output[x] = o
+    return output
+
 
 def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=['0']):
     bot_ids = detector.retrieve_bots(language_code)
@@ -281,7 +287,7 @@ def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=
                 revisions = page.findall('revision')
                 revisions = parse_comments(revisions, remove_numeric_character_references)
                 output = output_editor_information(revisions, article_id, bot_ids)
-                output = [o.append(namespace['id'] for o in output)]
+                output = add_namespace_to_output(output, namespace)
                 write_output(output, filehandles, lock)
                 file_utils.write_list_to_csv([article_id, title], fh2)
                 processed += 1
