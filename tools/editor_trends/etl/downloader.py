@@ -37,39 +37,42 @@ def download_wiki_file(task_queue, properties):
     '''
     success = True
     chunk = 1024 * 4
+
+
     while True:
         filename = task_queue.get(block=False)
         task_queue.task_done()
         if filename == None:
             print 'Swallowed a poison pill'
             break
+        widgets = log.init_progressbar_widgets(filename)
         extension = file_utils.determine_file_extension(filename)
         filemode = file_utils.determine_file_mode(extension)
         filesize = http_utils.determine_remote_filesize(properties.settings.wp_dump_location,
                                                         properties.dump_relative_path,
                                                         filename)
 
-#        mod_rem = http_utils.determine_modified_date(properties.settings.wp_dump_location,
-#                                                properties.dump_relative_path,
-#                                                filename)
+        mod_rem = http_utils.determine_modified_date(properties.settings.wp_dump_location,
+                                                properties.dump_relative_path,
+                                                filename)
 
         if file_utils.check_file_exists(properties.location, filename):
             #This can be activated as soon as bug 21575 is fixed. 
-            #mod_loc = file_utils.get_modified_date(properties.location, filename)
-            #if mod_loc != mod_rem:
-            print 'Swallowed a poison pill'
-            break
+            properties.force = True
+            mod_loc = file_utils.get_modified_date(properties.location, filename)
+            if mod_loc != mod_rem and properties.force == False:
+                print 'You already have downloaded the most recent %s%s dumpfile.' % (properties.language.code, properties.project.name)
+                break
 
         if filemode == 'w':
             fh = file_utils.create_txt_filehandle(properties.location, filename, filemode, properties.settings.encoding)
-
         else:
             fh = file_utils.create_binary_filehandle(properties.location, filename, 'wb')
 
         if filesize != -1:
-            widgets = log.init_progressbar_widgets(filename)
             pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
-
+        else:
+            pbar = progressbar.ProgressBar(widgets=widgets).start()
         try:
             path = '%s%s' % (properties.dump_absolute_path, filename)
             req = urllib2.Request(path)
@@ -94,8 +97,7 @@ def download_wiki_file(task_queue, properties):
             success = False
         finally:
             fh.close()
-
-    #file_utils.set_modified_data(mod_rem, properties.location, filename)
+            file_utils.set_modified_data(mod_rem, properties.location, filename)
 
     return success
 
@@ -109,9 +111,13 @@ def launcher(properties, settings, logger):
     #print tasks.qsize()
     #if tasks.qsize() < properties.settings.number_of_processes:
     #    properties.settings.number_of_processes = tasks.qsize()
-    consumers = [multiprocessing.Process(target=download_wiki_file,
-                args=(tasks, properties))
-                for i in xrange(properties.settings.number_of_processes + 1)]
+    if tasks.qsize() > 1:
+        consumers = [multiprocessing.Process(target=download_wiki_file,
+                    args=(tasks, properties))
+                    for i in xrange(properties.settings.number_of_processes)]
+    else: consumers = [multiprocessing.Process(target=download_wiki_file,
+                    args=(tasks, properties))
+                    for i in xrange(1)]
     print 'Starting consumers to download files...'
     for w in consumers:
         w.start()
