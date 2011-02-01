@@ -28,6 +28,7 @@ import sys
 
 from utils import file_utils
 from utils import http_utils
+from utils import text_utils
 from utils import log
 
 def download_wiki_file(task_queue, properties):
@@ -52,15 +53,15 @@ def download_wiki_file(task_queue, properties):
                                                         properties.dump_relative_path,
                                                         filename)
 
-        mod_rem = http_utils.determine_modified_date(properties.settings.wp_dump_location,
+        mod_date = http_utils.determine_modified_date(properties.settings.wp_dump_location,
                                                 properties.dump_relative_path,
                                                 filename)
-
+        mod_date = text_utils.convert_timestamp_to_datetime_naive(mod_date, properties.settings.timestamp_server)
         if file_utils.check_file_exists(properties.location, filename):
             #This can be activated as soon as bug 21575 is fixed. 
             properties.force = True
             mod_loc = file_utils.get_modified_date(properties.location, filename)
-            if mod_loc != mod_rem and properties.force == False:
+            if mod_loc != mod_date and properties.force == False:
                 print 'You already have downloaded the most recent %s%s dumpfile.' % (properties.language.code, properties.project.name)
                 break
 
@@ -97,7 +98,7 @@ def download_wiki_file(task_queue, properties):
             success = False
         finally:
             fh.close()
-            file_utils.set_modified_data(mod_rem, properties.location, filename)
+            file_utils.set_modified_data(mod_date, properties.location, filename)
 
     return success
 
@@ -124,7 +125,7 @@ def launcher(properties, settings, logger):
 
     tasks.join()
     for consumer in consumers:
-        if consumer.exitcode != 0 and consumer.exitcode != None:
+        if consumer.exitcode != 0:
             result = False
 
     return result

@@ -236,9 +236,9 @@ def set_modified_data(mod_rem, location, filename):
     '''
     path = os.path.join(location, filename)
     print mod_rem
-    mod_rem = text_utils.convert_timestamp_to_datetime_naive(mod_rem, settings.timestamp_format)
+    #smod_rem = text_utils.convert_timestamp_to_datetime_naive(mod_rem, settings.timestamp_format)
     os.utime(path, (mod_rem, mod_rem))
-    raise exceptions.NotYetImplementedError(set_modified_data)
+    #sraise exceptions.NotYetImplementedError(set_modified_data)
 
 def get_modified_date(location, filename):
     path = os.path.join(location, filename)
