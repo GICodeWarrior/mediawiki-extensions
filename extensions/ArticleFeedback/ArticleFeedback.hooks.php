@@ -48,6 +48,7 @@ class ArticleFeedbackHooks {
 			'scripts' => 'jquery.articleFeedback/jquery.articleFeedback.js',
 			'styles' => 'jquery.articleFeedback/jquery.articleFeedback.css',
 			'messages' => array(
+				'articlefeedback-error',
 				'articlefeedback-form-switch-label',
 				'articlefeedback-form-panel-title',
 				'articlefeedback-form-panel-instructions',

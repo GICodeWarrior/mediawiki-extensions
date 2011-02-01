@@ -27,6 +27,7 @@ $messages['en'] = array(
 	'articlefeedback-survey-title' => 'Please answer a few questions',
 	'articlefeedback-survey-thanks' => 'Thanks for filling out the survey.',
 	/* Beta Messages */
+	'articlefeedback-error' => 'An error has occured. Please try again later.',
 	'articlefeedback-form-switch-label' => 'Rate this page',
 	'articlefeedback-form-panel-title' => 'Rate this page',
 	'articlefeedback-form-panel-instructions' => 'Please take a moment to rate this page.',

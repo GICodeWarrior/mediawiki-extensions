@@ -33,6 +33,7 @@ $.articleFeedback = {
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><html:msg key="form-panel-submit" /></button>\
 		<div style="clear:both;"></div>\
 	</div>\
+	<div class="articleFeedback-error"><div class="articleFeedback-error-message"><html:msg key="error" /></div></div>\
 </div>\
 		',
 		'rating': '\
@@ -121,7 +122,8 @@ $.articleFeedback = {
 				},
 				'error': function() {
 					var context = this;
-					mw.log( '<submitForm error />' );
+					mw.log( 'Form submission error' );
+					context.$ui.find( '.articleFeedback-error' ).show();
 				}
 			} );
 		},
@@ -167,8 +169,8 @@ $.articleFeedback = {
 				'success': function( data ) {
 					var context = this;
 					if ( !$.isArray( data.query.articlefeedback ) ) {
-						// TODO: Something more clever, and useful, about this error
-						mw.log( '<loadReport success with bad data />' );
+						mw.log( 'Report response error' );
+						context.$ui.find( '.articleFeedback-error' ).show();
 						return;
 					}
 					if ( data.query.articlefeedback.length && 'expertise' in data.query.articlefeedback[0] ) {
@@ -245,7 +247,8 @@ $.articleFeedback = {
 				},
 				'error': function() {
 					var context = this;
-					mw.log( '<loadReport error />' );
+					mw.log( 'Report loading error' );
+					context.$ui.find( '.articleFeedback-error' ).show();
 				}
 			} );
 		},

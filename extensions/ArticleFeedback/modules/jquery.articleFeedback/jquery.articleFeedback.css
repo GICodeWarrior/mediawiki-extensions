@@ -13,7 +13,13 @@
 	padding-bottom: 1px;
 }
 
-.articleFeedback-pitch {
+.articleFeedback-error-message {
+	padding: 3em;
+	text-align: center;
+}
+
+.articleFeedback-pitch,
+.articleFeedback-error {
 	display: none;
 	position: absolute;
 	top: 0;
@@ -24,10 +30,12 @@
 	border: 1px solid #cccccc;
 	padding-bottom: 1px;
 }
+
 .articleFeedback-pitch-or {
 	margin-left: 0.75em;
 	margin-right: 0.25em;
 }
+
 .articleFeedback-reject {
 	border: none;
 	background-color: #f9f9f9;
