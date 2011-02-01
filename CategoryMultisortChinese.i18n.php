@@ -268,11 +268,12 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
 	'categorymultisortchinese-desc' => 'מתן האפשרות לצפייה בקטגוריות עם מפתחות מיון שונים המיועדים לצורות הכתב הסיניות',
-	'categorymultisort-sortkey-name-mandarin-pinyin' => 'מנדרינית: פינ־יין',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'מנדרינית: פין־יין',
 	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'מנדרינית: בופומופו',
 	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'מנדרינית: וייד-ג׳יילס',
 	'categorymultisort-sortkey-name-mandarin-mps2' => 'מנדרינית: MPS II',
