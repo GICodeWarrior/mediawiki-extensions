@@ -66,6 +66,20 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'qp_desc-sp',
 );
 
+if ( isset( $wgResourceModules ) ) {
+	$wgResourceModules['ext.qpoll'] = array(
+		'scripts' => 'qp_user.js',
+		'styles' => 'qp_user.css',
+		'localBasePath' => dirname( __FILE__ ),
+		'remoteExtPath' => 'QPoll'
+	);
+	$wgResourceModules['ext.qpoll.special.pollresults'] = array(
+		'styles' => 'qp_results.css',
+		'localBasePath' => dirname( __FILE__ ),
+		'remoteExtPath' => 'QPoll'
+	);
+}
+
 /**
  * Extension's global settings and initializiers
  * should be purely static and preferrably have no constructor
@@ -151,12 +165,10 @@ class qp_Setup {
 		$wgSpecialPages['PollResults'] = array('PollResults');
 		// TODO: Use the new technique for i18n of magic words
 		// instantiating fake instance for PHP < 5.2.3, which does not support 'Class::method' type of callbacks
-		$qp_Setup = new qp_Setup;
 		$wgHooks['LanguageGetMagic'][] =
 		$wgHooks['MediaWikiPerformAction'][] =
 		$wgHooks['ParserFirstCallInit'][] =
-		$wgHooks['LoadAllMessages'][] =
-		$wgHooks['ResourceLoaderRegisterModules'][] = $qp_Setup;
+		$wgHooks['LoadAllMessages'][] = new qp_Setup;
 	}
 
 	static function onLoadAllMessages() {
@@ -269,35 +281,6 @@ class qp_Setup {
 		$wgQPollFunctionsHook = new qp_FunctionsHook();
 		# setup function hook
 		$wgParser->setFunctionHook( 'qpuserchoice', array( &$wgQPollFunctionsHook, 'qpuserchoice' ), SFH_OBJECT_ARGS );
-		return true;
-	}
-
-	/**
-	 * MW 1.17+ ResourceLoader module hook (JS,CSS)
-	 */
-	static function onResourceLoaderRegisterModules( $resourceLoader ) {
-		global $wgExtensionAssetsPath;
-		$localpath = dirname( __FILE__ );
-		$remotepath = "$wgExtensionAssetsPath/QPoll";
-		$resourceLoader->register(
-			array(
-				'ext.qpoll' => new ResourceLoaderFileModule(
-					array(
-						'scripts' => 'qp_user.js',
-						'styles' => 'qp_user.css'
-					),
-					$localpath,
-					$remotepath
-				),
-				'ext.qpoll.special.pollresults' => new ResourceLoaderFileModule(
-					array(
-						'styles' => 'qp_results.css'
-					),
-					$localpath,
-					$remotepath
-				)
-			)
-		);
 		return true;
 	}
 
