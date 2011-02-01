@@ -249,10 +249,12 @@ var config = {
 		'edit': {
 			'condition': function() {
 				// An empty restrictions array means anyone can edit
-				if ( wgRestrictionEdit.length ) {
+				var restrictions =  mediaWiki.config.get( 'wgRestrictionEdit' );
+				var groups =  mediaWiki.config.get( 'wgUserGroups' );
+				if ( restrictions.length ) {
 					// Verify that each restriction exists in the user's groups
-					for ( var i = 0; i < wgRestrictionEdit.length; i++ ) {
-						if ( !$.inArray( wgRestrictionEdit[i], wgUserGroups ) ) {
+					for ( var i = 0; i < restrictions.length; i++ ) {
+						if ( !$.inArray( restrictions[i], groups ) ) {
 							return false;
 						}
 					}
@@ -288,6 +290,10 @@ $( '#p-tb ul' )
 	.find( '#t-articlefeedback a' )
 		.text( mw.msg( 'articlefeedback-form-switch-label' ) )
 		.click( function() {
+			// Track the click so we can figure out how useful this is
+			if ( typeof $.trackActionWithInfo == 'function' ) {
+				$.trackActionWithInfo( 'articlefeedback-toolbox-link', mediaWiki.config.get( 'wgTitle' ) )
+			}
 			// Get the image, set the count and an interval.
 			var $box = $( '#mw-articlefeedback' );
 			var count = 0;
