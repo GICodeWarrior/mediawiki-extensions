@@ -1,5 +1,5 @@
 -- Store mapping of i18n key of "rating" to an ID
-CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback_ratings (
+CREATE TABLE IF NOT EXISTS /*_*/article_feedback_ratings (
   -- Rating Id
   aar_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   -- Text (i18n key) for rating description
@@ -7,12 +7,12 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback_ratings (
 ) /*$wgDBTableOptions*/;
 
 -- Default article feedback ratings for the pilot
-INSERT INTO /*$wgDBprefix*/article_feedback_ratings (aar_rating) VALUES
+INSERT INTO /*_*/article_feedback_ratings (aar_rating) VALUES
 ('articlefeedback-rating-trustworthy'), ('articlefeedback-rating-objective'),
 ('articlefeedback-rating-complete'), ('articlefeedback-rating-wellwritten');
 
 -- Store article feedbacks (user rating per revision)
-CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback (
+CREATE TABLE IF NOT EXISTS /*_*/article_feedback (
   -- Foreign key to page.page_id
   aa_page_id integer unsigned NOT NULL,
   -- User Id (0 if anon)
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback (
 CREATE INDEX /*i*/aa_user_page_revision ON /*_*/article_feedback (aa_user_id, aa_page_id, aa_revision);
 
 -- Aggregate rating table for a page
-CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback_pages (
+CREATE TABLE IF NOT EXISTS /*_*/article_feedback_pages (
   -- Foreign key to page.page_id
   aap_page_id integer unsigned NOT NULL,
   -- Foreign key to article_feedback_ratings.aar_rating
@@ -49,3 +49,20 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_feedback_pages (
   -- One rating row per page
   PRIMARY KEY (aap_page_id, aap_rating_id)
 ) /*$wgDBTableOptions*/;
+
+-- Properties table for meta information
+CREATE TABLE  IF NOT EXISTS /*_*/article_feedback_properties (
+  -- Keys to the primary key fields in article_feedback, except aa_rating_id
+  -- article_feedback doesn't have a nice PK, blegh
+  afp_revision integer unsigned NOT NULL,
+  afp_user_text varbinary(255) NOT NULL,
+  afp_user_anon_token varbinary(32) NOT NULL DEFAULT '',
+
+  -- Key/value pairs
+  afp_key varbinary(255) NOT NULL,
+  -- Integer value
+  afp_value integer signed NOT NULL,
+  -- Text value
+  afp_value_text varbinary(255) DEFAULT '' NOT NULL
+) /*$wgDBTableOptions*/;
+CREATE UNIQUE INDEX /*i*/afp_rating_key ON /*_*/article_feedback_properties (afp_revision, afp_user_text, afp_user_anon_token, afp_key);
