@@ -78,6 +78,14 @@ $.articleFeedback = {
 				$rating.find( '.articleFeedback-rating-clear' ).hide();
 			}
 		},
+		'enableExpertise': function( $expertise ) {
+			$expertise
+				.find( 'input:checkbox[value=general]' )
+					.attr( 'disabled', false )
+					.end()
+				.find( '.articleFeedback-expertise-disabled' )
+					.removeClass( 'articleFeedback-expertise-disabled' );
+		},
 		'submit': function() {
 			var context = this;
 			// Lock the submit button -- TODO: lock the star inputs too
@@ -172,12 +180,9 @@ $.articleFeedback = {
 						}
 						if ( $expertise.find( 'input:checkbox[value=general]:checked' ).size() ) {
 							$expertise
-								.find( 'input:checkbox[value=general]' )
-									.attr( 'disabled', false )
-									.end()
-								.find( '.articleFeedback-expertise-disabled' )
-									.removeClass( 'articleFeedback-expertise-disabled' )
-									.end()
+								.each( function() {
+									$.articleFeedback.fn.enableExpertise( $(this) );
+								} )
 								.find( '.articleFeedback-expertise-options' )
 									.show();
 						}
@@ -229,6 +234,8 @@ $.articleFeedback = {
 									.end()
 								.find( 'input[value="' + ratingData.userrating + '"]' )
 									.attr( 'checked', true );
+							// If any ratings exist, make sure expertise is enabled so users can suppliment their ratings.
+							$.articleFeedback.fn.enableExpertise( context.$ui.find( '.articleFeedback-expertise' ) );
 						}
 						$.articleFeedback.fn.updateRating.call( $(this) );
 					} );
@@ -444,11 +451,10 @@ $.articleFeedback = {
 							.find( '.articleFeedback-submit' )
 								.button( { 'disabled': false } )
 								.end()
-							.find( '.articleFeedback-expertise input:checkbox[value=general]' )
-								.attr( 'disabled', false )
-								.end()
-							.find( '.articleFeedback-expertise-disabled' )
-								.removeClass( 'articleFeedback-expertise-disabled' );
+							.find( '.articleFeedback-expertise' )
+								.each( function() {
+									$.articleFeedback.fn.enableExpertise( $(this) );
+								} );
 						$(this)
 							.closest( '.articleFeedback-rating' )
 								.addClass( 'articleFeedback-rating-new' )
