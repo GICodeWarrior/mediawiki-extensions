@@ -269,8 +269,14 @@ var config = {
 		}
 	}
 };
-// Bucket 1 - load at the bottom of the article
-$( '#catlinks' )
-	.before( $( '<div></div>' ).articleFeedback( $.extend( config, { 'bucket': 1 } ) ) );
+
+/* Load at the bottom of the article */
+$( '#catlinks' ).before( $( '<div id="mw-articlefeedback"></div>' ).articleFeedback( config ) );
+
+/* Add link so users can navigate to the feedback tool from the toolbox */
+$( '#p-tb ul' )
+	.append( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>' )
+	.find( '#t-articlefeedback a' )
+		.text( mw.msg( 'articlefeedback-form-switch-label' ) );
 
 } )( jQuery, mediaWiki );
