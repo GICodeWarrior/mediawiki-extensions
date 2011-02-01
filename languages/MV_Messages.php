@@ -3668,6 +3668,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video-Metadata-Editor & Media-Search]',
+	'mvadmin' => 'Administratorfunktione vu MetavidWiki',
 	'metavid' => 'Metavid-Syte',
 	'mv_missing_stream' => 'Stream, wu fählt: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki-Spezialsyte',
