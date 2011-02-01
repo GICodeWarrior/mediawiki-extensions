@@ -117,6 +117,13 @@ $messages['he'] = array(
 	'groupssidebar-desc' => 'הרחבה זו מאפשרת למנהלי אתרים להוסיף רכיבי לסרגל הצד של קבוצות משתמשים מסוימות',
 );
 
+/** Hindi (हिन्दी)
+ * @author रोहित रावत
+ */
+$messages['hi'] = array(
+	'groupssidebar-desc' => 'यह विस्तार विशिष्ट प्रयोक्ता समूहों के लिए साइडबार सम्मिलित करने में स्थल प्रशासकों को सक्षम करता है।',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
