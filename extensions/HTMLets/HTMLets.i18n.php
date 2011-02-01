@@ -316,12 +316,13 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'htmlets-desc' => 'At përmëtt d\'anserì djë "snippet" HTML da file an dovrand ël tag <code>&lt;htmlet&gt;</code>',
-	'htmlets-filenotfound' => 'As peul pa trovess ël file HTML $1',
-	'htmlets-loadfailed' => 'Falì a carié ël file HTML $1',
+	'htmlets-filenotfound' => "As peul pa trovesse l'archivi HTML $1",
+	'htmlets-loadfailed' => "Falì a carié l'archivi HTML $1",
 );
 
 /** Portuguese (Português)

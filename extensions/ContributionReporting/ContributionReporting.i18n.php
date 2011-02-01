@@ -2190,6 +2190,10 @@ $messages['he'] = array(
 	'fundraiserstats-tab-maximums' => 'מקסימום (USD)',
 	'fundraiserstats-tab-ytd' => 'השנה (USD)',
 	'fundraiserstats-instructions' => 'כדי לצפות בסטטיסטיקה ליום כלשהו, יש לעבור עם סמן העכבר על הפס של אותו היום. לכל שנה יש צבע משלה בתרשים.',
+	'fundraiserstats-customize' => 'התאמה אישית',
+	'fundraiserstats-show-years' => 'הצג את השנים הבאות:',
+	'fundraiserstats-time-zone' => 'אזור זמן:',
+	'fundraiserstats-utc' => '(מ־UTC)',
 );
 
 /** Croatian (Hrvatski)
@@ -4216,6 +4220,10 @@ $messages['pt-br'] = array(
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Desde o início do ano (USD)',
 	'fundraiserstats-instructions' => 'Para ver as estatísticas de qualquer dia, passe o cursor sobre a barra desse dia. Cada ano tem uma cor diferente no gráfico.',
+	'fundraiserstats-customize' => 'Personalizar',
+	'fundraiserstats-show-years' => 'Mostrar os seguintes anos:',
+	'fundraiserstats-time-zone' => 'Fuso horário:',
+	'fundraiserstats-utc' => '(do UTC)',
 );
 
 /** Romanian (Română)

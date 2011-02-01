@@ -767,6 +767,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author AVRS
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -778,10 +779,10 @@ Klaku por vidi statistikojn pri ĝi.',
 	'prefstats-noprefs' => 'Neniuj preferoj estas nune sekvita.
 Konfiguru $wgPrefStatsTrackPrefs por sekvi preferojn.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|uzanto|uzantoj}} ŝaltis ĉi tiun preferon ekde statistikoj pri preferoj aktiviĝis
-** $2 {{PLURAL:$2|uzanto|uzantoj}} ŝaltis ĝin
+** $2 {{PLURAL:$2|uzanto|uzantoj}} plu havas ĝin ŝaltita
 ** $3 {{PLURAL:$3|uzanto|uzantoj}} malŝaltis ĝin',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|uzanto|uzantoj}} ŝaltis ĉi tiun preferon ekde statistikoj pri preferoj aktiviĝis
-** $2 {{PLURAL:$2|uzanto|uzantoj}} ŝaltis ĝin
+** $2 {{PLURAL:$2|uzanto|uzantoj}} plu havas ĝin ŝaltita
 ** $3 {{PLURAL:$3|uzanto|uzantoj}} malŝaltis ĝin
 * Sume, $4 {{PLURAL:$4|uzanto|uzantoj}} uzas ĉi tiun preferon.',
 	'prefstats-xaxis' => 'Daŭro (horoj)',

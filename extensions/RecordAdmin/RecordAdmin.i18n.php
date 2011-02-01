@@ -911,7 +911,7 @@ $messages['gsw'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Kei „$1“',
-	'recordadmin-edit-info' => 'In däre Syte het s Vorlage mit eigene Formular, wu Du iber die Regischtercharte chasch uusfille',
+	'recordadmin-edit-info' => 'In däre Syte het s Vorlage mit eigene Formular, wu Du iber die Regischtercharte chasch uusfille<br /><a href="$1">Do</a> drucke, zum dr regulär Bearbeitigsmodus vu MediaWiki ohni Formular z verwände.',
 	'recordadmin-properties' => 'Eigeschafte',
 );
 

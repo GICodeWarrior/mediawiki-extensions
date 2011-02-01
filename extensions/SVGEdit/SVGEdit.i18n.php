@@ -46,6 +46,8 @@ $messages['be-tarask'] = array(
 	'svgedit-editor-save-close' => 'Захаваць і зачыніць',
 	'svgedit-editor-close' => 'Скасаваць',
 	'svgedit-desc' => 'Рэдагаваньне SVG-малюнкаў у браўзэры з дапамогай [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Рэдагаваць малюнак',
+	'svgedit-edit-tab-tooltip' => 'Вы можаце рэдагаваць SVG-малюнак у Вашым браўзэры',
 );
 
 /** Breton (Brezhoneg)
@@ -163,6 +165,8 @@ $messages['gsw'] = array(
 	'svgedit-editor-save-close' => 'Spychere un zuemache',
 	'svgedit-editor-close' => 'Abbräche',
 	'svgedit-desc' => 'Macht a Bearbeite vun ere SVG-Datei mit [http://code.google.com/p/svg-edit/ SVG-edit] megli',
+	'svgedit-edit-tab' => 'Zeichnig bearbeite',
+	'svgedit-edit-tab-tooltip' => 'Du chasch die SVG-Zeichnig im Browser bearbeite',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -258,6 +262,8 @@ $messages['nl'] = array(
 	'svgedit-editor-save-close' => 'Opslaan en sluiten',
 	'svgedit-editor-close' => 'Annuleren',
 	'svgedit-desc' => 'In de browser bewerken van SVG-tekeningen met [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Tekening bewerken',
+	'svgedit-edit-tab-tooltip' => 'U kunt deze SVG-tekening bewerken in uw browser',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -296,6 +302,7 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'svgedit-editbutton-edit' => 'Editar desenho',
@@ -304,6 +311,8 @@ $messages['pt'] = array(
 	'svgedit-editor-save-close' => 'Gravar e fechar',
 	'svgedit-editor-close' => 'Cancelar',
 	'svgedit-desc' => 'Edição de desenhos SVG no próprio browser, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Editar desenho',
+	'svgedit-edit-tab-tooltip' => 'Você pode editar este desenho SVG no seu navegador',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -328,6 +337,8 @@ $messages['ru'] = array(
 	'svgedit-editor-save-close' => 'Сохранить и закрыть',
 	'svgedit-editor-close' => 'Отмена',
 	'svgedit-desc' => 'Редактирование SVG-изображений в браузере с помощью [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Править рисунок',
+	'svgedit-edit-tab-tooltip' => 'Вы можете редактировать этот SVG-рисунок в вашем браузере',
 );
 
 /** Slovenian (Slovenščina)

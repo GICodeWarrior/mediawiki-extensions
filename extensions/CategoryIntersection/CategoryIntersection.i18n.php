@@ -219,6 +219,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'categoryintersection' => 'Kategoria Intersekcio',
+	'categoryintersection-desc' => 'Subtenas tabulon kun haketvaloroj por [[Special:CategoryIntersection|intersekcoj de kategorio]] ene de paĝo',
 	'categoryintersection-doit' => 'Listigu paĝojn en ĉiuj ĉi tiuj kategorioj',
 	'categoryintersection-maxcategories' => 'La maksimuma permesita nombro de intersekciaj kategorioj estas $1.',
 	'categoryintersection-mincategories' => 'Vi devas inkluzivi almenaŭ du kategoriojn.',

@@ -346,6 +346,19 @@ $messages['ru'] = array(
 * [[{{MediaWiki:Mainpage}}|The Main page]]',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'special404-desc' => '404 хаталары өчен күчеш ясый',
+	'error404' => '404 : Табылмады',
+	'special404-body' => 'Соралган URL-юллама табылмады.
+
+Сез {{fullurl:$1}} дип язарга теләдегезме?
+Бәлки сез моны эзләгәндерсез:
+* [[{{MediaWiki:Mainpage}}|The Main page]]',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

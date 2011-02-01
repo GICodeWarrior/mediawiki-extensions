@@ -461,11 +461,12 @@ Przykłady:
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'flagpage' => 'Marca na pàgina',
-	'flagpage-desc' => 'Marca na pàgina con stamp predefinì',
+	'flagpage-desc' => 'Marché la pàgina con jë stamp predefinì',
 	'flagpage-templatelist' => "<!--
 Modìfica sta pàgina për configuré jë stamp da dovré.
 Esempi:
@@ -474,14 +475,14 @@ Esempi:
 * [[Template:Delete|La pàgina a dovrìa esse scanselà]]
 -->",
 	'flagpage-nopageselectedtitle' => 'Pa gnun-e pàgine selessionà',
-	'flagpage-nopageselected' => "It l'has pa specificà gnun-e pàgine",
+	'flagpage-nopageselected' => "A l'ha pa specificà dle pàgine",
 	'flagpage-emptylisttitle' => 'Pa gnun stamp configurà',
-	'flagpage-emptylist' => 'It deuve configuré toa lista dë stamp. Modìfica [[{{ns:8}}:flagpage-templatelist]] për fé parèj adess.',
+	'flagpage-emptylist' => "A dev configuré soe liste dë stamp. Ch'a modìfica [[{{ns:8}}:flagpage-templatelist]] për felo adess.",
 	'flagpage-preview' => 'Preuva dlë stamp selessionà:',
 	'flagpage-confirmsave' => 'Për piasì conferma ij tò cambi.',
-	'flagpage-submitbutton' => 'Salva pàgina con sto stamp',
-	'flagpage-nonexistent' => 'La pàgina "$1" a esist pa. Miraco a l\'é stàita [{{fullurl:Special:Log|page=$1}} tramudà o scanselà].',
-	'flagpage-summary' => 'Gionta stamp [[$1]] an dovrand FlagPage',
+	'flagpage-submitbutton' => 'Salvé la pàgina con së stamp',
+	'flagpage-nonexistent' => 'La pàgina "$1" a esist pa. Miraco a l\'é stàita [{{fullurl:Special:Log|page=$1}} tramudà o scancelà].',
+	'flagpage-summary' => 'Gionta ëd lë stamp [[$1]] an dovrand FlagPage',
 	'flagpage-success' => "[[$1]] a l'é stàit giontà a la pàgina [[$2]].",
 	'flagpage-tab' => 'Marca',
 );
