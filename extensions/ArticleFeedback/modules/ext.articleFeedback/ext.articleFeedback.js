@@ -248,6 +248,15 @@ var config = {
 		},
 		'edit': {
 			'condition': function() {
+				// An empty restrictions array means anyone can edit
+				if ( wgRestrictionEdit.length ) {
+					// Verify that each restriction exists in the user's groups
+					for ( var i = 0; i < wgRestrictionEdit.length; i++ ) {
+						if ( !$.inArray( wgRestrictionEdit[i], wgUserGroups ) ) {
+							return false;
+						}
+					}
+				}
 				// If this pitch isn't muted, show this always
 				return !isPitchMuted( 'edit' );
 			},
