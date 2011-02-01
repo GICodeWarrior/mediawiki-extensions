@@ -337,6 +337,20 @@ $messages['he'] = array(
 	'right-lastlogin' => 'צפייה בפעם האחרונה שבה נכנס המשתמש',
 );
 
+/** Hindi (हिन्दी)
+ * @author रोहित रावत
+ */
+$messages['hi'] = array(
+	'lastuserlogin' => 'अन्तिम प्रयोक्ता लॉगिन',
+	'lastuserlogin-desc' => 'किसी प्रयोक्ता के अन्तिम लॉगिन को दर्शाता है',
+	'lastuserlogin_userid' => 'प्रयोक्तानाम',
+	'lastuserlogin_username' => 'वास्तविक नाम',
+	'lastuserlogin_useremail' => 'प्रयोक्ता ईमेल',
+	'lastuserlogin_lastlogin' => 'अन्तिम लॉगिन',
+	'lastuserlogin_daysago' => 'दिन पहले',
+	'right-lastlogin' => 'किसी प्रयोक्ता के अन्तिम लॉगिन को देखें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
