@@ -8,12 +8,8 @@
 class RandomPageInCategory extends RandomPage {
 	private $category = null;
 
-	function __construct() {
-		parent::__construct( 'RandomInCategory' );
-	}
-
-	function getDescription() {
-		return wfMsg( 'randomincategory' );
+	function __construct( $name = 'RandomInCategory' ) {
+		parent::__construct( $name );
 	}
 
 	function execute( $par ) {
@@ -44,7 +40,6 @@ class RandomPageInCategory extends RandomPage {
 			return;
 		}
 
-		wfReportTime(); #FIXME: this does nothing?
 		$wgOut->redirect( $title->getFullUrl() );
 	}
 
@@ -68,11 +63,13 @@ class RandomPageInCategory extends RandomPage {
 		$query['tables'][] = 'categorylinks';
 
 		unset( $query['conds']['page_namespace'] );
-
 		array_merge( $query['conds'], array( 'page_namespace != ' . NS_CATEGORY ) );
+
 		$query['conds']['cl_to'] = $this->category;
 
-		unset( $query['options']['USE INDEX'] ); //FIXME: FORCE INDEX gets added in wrong place, goes after table join, should be before
+		// FIXME: FORCE INDEX gets added in wrong place, goes after table join, should be before
+		// bug 27081
+		unset( $query['options']['USE INDEX'] );
 
 		$query['join_conds'] = array(
 				'categorylinks' => array(
