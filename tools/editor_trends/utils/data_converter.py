@@ -36,7 +36,7 @@ def convert_seconds_to_date(secs):
     return datetime.datetime.fromtimestamp(secs)
 
 def convert_dataset_to_lists(ds, caller):
-    assert ds.format == 'long' or ds.format == 'wide'
+    assert ds.format == 'long' or ds.format == 'wide', 'Format should either be long or wide.'
     data, all_keys = [], []
     for var in ds.variables:
         if caller == 'django':
@@ -70,7 +70,7 @@ def convert_dataset_to_lists(ds, caller):
 
 
 def add_headers(ds, all_keys):
-    assert ds.format == 'long' or ds.format == 'wide'
+    assert ds.format == 'long' or ds.format == 'wide', 'Format should either be long or wide.'
     headers = []
     if ds.format == 'long':
         headers.append('date')

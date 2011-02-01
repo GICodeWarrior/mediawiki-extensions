@@ -23,6 +23,7 @@ import time
 import math
 import sys
 from pymongo.son_manipulator import SONManipulator
+from multiprocessing import Lock
 
 
 sys.path.append('..')
@@ -91,7 +92,7 @@ class Data:
 
     def convert_date_to_epoch(self, date):
         assert self.time_unit == 'year' or self.time_unit == 'month' \
-        or self.time_unit == 'day'
+        or self.time_unit == 'day', 'Time unit should either be year, month or day.'
 
         if self.time_unit == 'year':
             datum = datetime.datetime(date.year, 1, 1)
@@ -105,12 +106,13 @@ class Data:
             return date
 
 class Observation(Data):
+    lock = Lock()
     '''
     The smallest unit, here the actual data is being stored. 
     Time_unit should either be 'year', 'month' or 'day'. 
     '''
     def __init__(self, date):
-        assert isinstance(date, datetime.datetime)
+        assert isinstance(date, datetime.datetime), 'Dat variable should be a datetime.datetime instance.'
         self.date = date
         self.data = {}
         self._type = 'observation'
@@ -135,17 +137,21 @@ class Observation(Data):
         created, in that case make sure that i is unique. Update is useful for
         tallying a variable. 
         '''
-        assert isinstance(value, dict)
-        if update:
-            for k, v in value:
-                self.data.setdefault(k, 0)
-                self.data[k] += v
-        else:
-            try:
-                i = max(self.data.keys()) + 1
-            except ValueError:
-                i = 0
-            self.data[i] = value
+        assert isinstance(value, dict), 'The observation that you are adding should be a dictionary.'
+        self.lock.acquire()
+        try:
+            if update:
+                for k, v in value.iteritems():
+                    self.data.setdefault(k, 0)
+                    self.data[k] += v
+            else:
+                try:
+                    i = max(self.data.keys()) + 1
+                except ValueError:
+                    i = 0
+                self.data[i] = value
+        finally:
+            self.lock.release()
 
 
 
@@ -153,7 +159,7 @@ class Variable(Data):
     '''
     This class constructs a time-based variable. 
     '''
-
+    lock = Lock()
     def __init__(self, name, time_unit, **kwargs):
         self.name = name
         self.obs = {}
@@ -200,13 +206,18 @@ class Variable(Data):
         return [o for o in self.itervalues()]
 
     def get_observation(self, key, date):
-        return self.obs.get(key, Observation(date))
+        self.lock.acquire()
+        try:
+            obs = self.obs.get(key, Observation(date))
+        finally:
+            self.lock.release()
+        return obs
 
     def add(self, date, value, update=True):
         key = self.__hash__(self.set_date_range(date, start=False))
-        data = self.get_observation(key, date)
-        data.add(value, update)
-        self.obs[key] = data
+        obs = self.get_observation(key, date)
+        obs.add(value, update)
+        self.obs[key] = obs
 
     def encode(self):
         bson = {}
@@ -408,8 +419,8 @@ def debug():
                                         {'name': 'count', 'time_unit': 'year'},
                                         {'name': 'testest', 'time_unit': 'year'}
                                         ])
-    ds.count.add(d1, 5)
-    ds.count.add(d1, 135)
+    ds.count.add(d1, {0:5})
+    ds.count.add(d1, {0:135})
     ds.count.add(d2, 514)
     ds.testest.add(d1, 135)
     ds.testest.add(d2, 535)

@@ -157,7 +157,7 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
     lock.release()
 
 def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
-    assert format == 'long' or format == 'wide'
+    assert format == 'long' or format == 'wide',  'Format should either be long or wide.'
 
     if format == 'long':
         for key in keys:
@@ -315,7 +315,7 @@ def create_dict_from_csv_file(location, filename, encoding, keys=None):
         if len(values) == 1:
             d[key] = values
         else:
-            assert keys != None
+            assert keys != None, 'Keys cannot be an instance of None.'
             d[key] = {}
             for k, v in zip(keys, values):
                 d[key][k] = v

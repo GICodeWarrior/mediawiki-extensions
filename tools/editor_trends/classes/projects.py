@@ -32,7 +32,7 @@ class Project:
         '''
         Generate a list of tuples with currently supported languages. 
         '''
-        assert output == 'django' or output == 'parser'
+        assert output == 'django' or output == 'parser', 'Output should either be parser or django.'
         lnc = languages.LanguageContainer()
         choices = []
 
