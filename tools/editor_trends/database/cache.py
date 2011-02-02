@@ -82,7 +82,7 @@ class EditorCache(object):
         try:
             self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
         except bson.errors.InvalidDocument:
-            print 'BSON document too large'
+            print 'BSON document too large, unable to store %s' % (username)
 
     def store(self):
         file_utils.store_object(self, settings.binary_location, self.__repr__())
