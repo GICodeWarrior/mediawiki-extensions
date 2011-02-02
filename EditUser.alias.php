@@ -245,6 +245,11 @@ $specialPageAliases['tt-cyrl'] = array(
 	'EditUser' => array( 'Кулланучыны_үзгәртү' ),
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'EditUser' => array( '编辑用户' ),
+);
+
 /** Traditional Chinese (‪中文(繁體)‬) */
 $specialPageAliases['zh-hant'] = array(
 	'EditUser' => array( '編輯用戶' ),
