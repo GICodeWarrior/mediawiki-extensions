@@ -69,7 +69,6 @@ class Job(models.Model):
     def __unicode__(self):
         return u'%s%s' % (self.language_code, self.project)
 
-
     @permalink
     def get_absolute_url(self):
         if self.jobtype != 'dataset':

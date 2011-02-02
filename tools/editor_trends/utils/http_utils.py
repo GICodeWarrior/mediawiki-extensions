@@ -74,10 +74,12 @@ def create_list_dumpfiles(domain, path, filename):
         else:
             print 'Added chunk to download: %s' % f
             task_queue.put(f)
-#    if x < settings.number_of_processes:
-#        settings.number_of_processes = x
-    for x in xrange(settings.number_of_processes):
-        task_queue.put(None)
+    if x == 1:
+        for x in xrange(1):
+            task_queue.put(None)
+    else:
+        for x in xrange(settings.number_of_processes):
+            task_queue.put(None)
     return task_queue
 
 
@@ -106,7 +108,6 @@ def get_headers(domain, path, filename):
 
 def determine_modified_date(domain, path, filename):
     res = get_headers(domain, path, filename)
-    print res.__dict__
     if res != None and (res.status == 200 or res.status == 301):
         return res.getheader('last-modified', -1)
     else:
@@ -129,11 +130,6 @@ def debug():
     print mod_date
     mod_date = text_utils.convert_timestamp_to_datetime_naive(mod_date, '%a, %d %b %Y %H:%M:%S %Z')
     print mod_date
-    #check_remote_path_exists(domain, path, filename)
-    #read_directory_contents(domain, path)
-#    download_wp_dump('http://download.wikimedia.org/enwiki/latest',
-#                     'enwiki-latest-page_props.sql.gz',
-#                     settings.input_location)
 
 
 if __name__ == '__main__':

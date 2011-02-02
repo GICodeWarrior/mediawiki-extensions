@@ -167,15 +167,16 @@ def determine_project_year_range(dbname, collection, var):
 
 
 if __name__ == '__main__':
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'edit_patterns', 'to_bar_json', time_unit='year', cutoff=5)
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', time_unit='year')
-    generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', time_unit='year')
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', time_unit='year')
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', 'to_bar_json', time_unit='month', cutoff=5, cum_cutoff=0)
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_backward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=10, cum_cutoff=0, format='wide')
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_edits', time_unit='year', cutoff=0)
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'time_to_new_wikipedian', time_unit='year', cutoff=0)
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'new_editor_count', time_unit='month', cutoff=0)
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_by_backward_cohort', 'to_bar_json', time_unit='year', cutoff=0, cum_cutoff=50)
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'edit_patterns', 'to_bar_json', time_unit='year', cutoff=5)
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', time_unit='year')
+    #generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', time_unit='year')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', time_unit='year')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', 'to_bar_json', time_unit='month', cutoff=5, cum_cutoff=0)
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_backward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=10, cum_cutoff=0, format='wide')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_edits', time_unit='year', cutoff=0)
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'time_to_new_wikipedian', time_unit='year', cutoff=0)
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'new_editor_count', time_unit='month', cutoff=0)
 
     #available_analyses()

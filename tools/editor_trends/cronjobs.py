@@ -39,6 +39,9 @@ def launch_editor_trends_toolkit(task):
     project = pjc.get_project(task['project'])
     lnc = languages.LanguageContainer()
     language = lnc.get_language(task['language_code'])
+
+    args.language = language.name
+    args.project = project.name
     rts = runtime_settings.RunTimeSettings(project, language, settings, args)
     res = manager.all_launcher(rts, settings, None)
     return res
@@ -86,7 +89,6 @@ def launcher():
     tasks = []
     jobs = coll.find({'finished': False, 'in_progress': False, 'error': False})
     for job in jobs:
-        job['language_code'] = u'nl'
         tasks.append(job)
 
     for task in tasks:
@@ -113,8 +115,11 @@ def debug():
     launcher()
 
 
-
 if __name__ == '__main__':
+    x = 0
     while True:
         launcher()
-        time.sleep(5 * 60)
+        time.sleep(x * 60)
+        x = +1
+        if x > 30:
+            x = 0

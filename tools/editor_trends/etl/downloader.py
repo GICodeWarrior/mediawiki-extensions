@@ -39,7 +39,6 @@ def download_wiki_file(task_queue, properties):
     success = True
     chunk = 1024 * 4
 
-
     while True:
         filename = task_queue.get(block=False)
         task_queue.task_done()
@@ -58,15 +57,16 @@ def download_wiki_file(task_queue, properties):
                                                 filename)
         mod_date = text_utils.convert_timestamp_to_datetime_naive(mod_date, properties.settings.timestamp_server)
         if file_utils.check_file_exists(properties.location, filename):
-            #This can be activated as soon as bug 21575 is fixed. 
-            properties.force = True
             mod_loc = file_utils.get_modified_date(properties.location, filename)
-            if mod_loc != mod_date and properties.force == False:
+            if mod_loc == mod_date and (properties.force == False or properties.force == None):
                 print 'You already have downloaded the most recent %s%s dumpfile.' % (properties.language.code, properties.project.name)
-                break
+                continue
 
         if filemode == 'w':
-            fh = file_utils.create_txt_filehandle(properties.location, filename, filemode, properties.settings.encoding)
+            fh = file_utils.create_txt_filehandle(properties.location,
+                                                  filename,
+                                                  filemode,
+                                                  properties.settings.encoding)
         else:
             fh = file_utils.create_binary_filehandle(properties.location, filename, 'wb')
 
@@ -92,27 +92,23 @@ def download_wiki_file(task_queue, properties):
 
         except urllib2.URLError, error:
             print 'Reason: %s' % error
-            success = False
         except urllib2.HTTPError, error:
             print 'Error: %s' % error
-            success = False
         finally:
             fh.close()
             file_utils.set_modified_data(mod_date, properties.location, filename)
 
-    return success
 
 
 def launcher(properties, settings, logger):
     print 'Creating list of files to be downloaded...'
-    result = True
     tasks = http_utils.create_list_dumpfiles(properties.settings.wp_dump_location,
                                   properties.dump_relative_path,
                                   properties.dump_filename)
     #print tasks.qsize()
     #if tasks.qsize() < properties.settings.number_of_processes:
     #    properties.settings.number_of_processes = tasks.qsize()
-    if tasks.qsize() > 1:
+    if tasks.qsize() > 2:
         consumers = [multiprocessing.Process(target=download_wiki_file,
                     args=(tasks, properties))
                     for i in xrange(properties.settings.number_of_processes)]
@@ -124,8 +120,7 @@ def launcher(properties, settings, logger):
         w.start()
 
     tasks.join()
-    for consumer in consumers:
-        if consumer.exitcode != 0:
-            result = False
+#    for consumer in consumers:
+#        if consumer.exitcode != 0:
+#            result = False
 
-    return result

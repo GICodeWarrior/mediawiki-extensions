@@ -61,7 +61,11 @@ def create_namespace_dict(namespaces):
     for ns in namespaces:
         key = ns.get('key')
         d[key] = extract_text(ns)
-        print ns.get('key'), ns.text
+        text = ns.text if ns.text != None else ''
+        try:
+            print key, text.encode(settings.encoding)
+        except UnicodeEncodeError:
+            print key
     return d
 
 

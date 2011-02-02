@@ -104,7 +104,6 @@ def downloader_launcher(properties, settings, logger):
     '''
     print 'Start downloading'
     stopwatch = timer.Timer()
-    #project, language, jobtype, task, timer, event = 'start'
     log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='start')
     res = downloader.launcher(properties, settings, logger)
     stopwatch.elapsed()
@@ -153,7 +152,7 @@ def store_launcher(properties, settings, logger):
     print 'Start storing data in MongoDB'
     stopwatch = timer.Timer()
     log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='start')
-    db.cleanup_database(properties.project.name, logger)
+    db.cleanup_database(properties.dbname, logger)
 #    write_message_to_log(logger, settings,
 #                         message=None,
 #                         verb='Storing',
@@ -164,7 +163,8 @@ def store_launcher(properties, settings, logger):
 #                         collection=properties.collection)
 #    for key in properties:
 #        print key, getattr(properties, key)
-    store.launcher(properties.sorted, properties.project.name, properties.collection)
+    store.launcher(properties.sorted, properties.dbname, properties.collection)
+
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='finish')
 
@@ -173,13 +173,13 @@ def transformer_launcher(properties, settings, logger):
     print 'Start transforming dataset'
     stopwatch = timer.Timer()
     log.log_to_mongo(properties, 'dataset', 'transform', stopwatch, event='start')
-    db.cleanup_database(properties.project.name, logger, 'dataset')
+    db.cleanup_database(properties.dbname, logger, 'dataset')
 #    write_message_to_log(logger, settings,
 #                         message=None,
 #                         verb='Transforming',
 #                         project=properties.project,
 #                         collection=properties.collection)
-    transformer.transform_editors_single_launcher(properties.project.name,
+    transformer.transform_editors_single_launcher(properties.dbname,
                                                   properties.collection)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'transform', stopwatch,
@@ -200,7 +200,7 @@ def dataset_launcher(properties, settings, logger):
 #                             dbname=properties.full_project,
 #                             collection=properties.collection)
 
-        analyzer.generate_chart_data(properties.project.name,
+        analyzer.generate_chart_data(properties.dbname,
                                      collection,
                                      properties.language.code,
                                      target,

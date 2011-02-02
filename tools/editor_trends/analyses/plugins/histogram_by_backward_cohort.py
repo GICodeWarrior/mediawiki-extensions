@@ -17,9 +17,12 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-31'
 __version__ = '0.1'
 
+import datetime
+from dateutil.relativedelta import relativedelta
+from utils import data_converter
 
 def histogram_by_backward_cohort(var, editor, **kwargs):
-    break_down=kwargs.pop('break_down', False)
+    break_down = kwargs.pop('break_down', False)
     new_wikipedian = editor['new_wikipedian']
     n = editor['edit_count']
 
@@ -36,6 +39,10 @@ def histogram_by_backward_cohort(var, editor, **kwargs):
                         if w >= editor_dt:
                             datum = datetime.datetime(int(year), 12, 31)
                             freq = editor['edits_by_year'][year]
+                            if datum == datetime.datetime(2003, 12, 31):
+                                if w == 24:
+                                    if freq == 1.0:
+                                        print 'break'
                             var.add(datum, {w:{freq:1}})
                             break
     return var

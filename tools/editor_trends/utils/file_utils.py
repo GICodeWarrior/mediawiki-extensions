@@ -25,6 +25,8 @@ and track error messages.
 
 import re
 import htmlentitydefs
+import time
+import datetime
 import cPickle
 import codecs
 import os
@@ -157,7 +159,7 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
     lock.release()
 
 def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
-    assert format == 'long' or format == 'wide',  'Format should either be long or wide.'
+    assert format == 'long' or format == 'wide', 'Format should either be long or wide.'
 
     if format == 'long':
         for key in keys:
@@ -231,18 +233,22 @@ def determine_filesize(location, filename):
 
 def set_modified_data(mod_rem, location, filename):
     '''
-    Mod_rem is the modified date of the remote file (the Wikimedia dump file)
+    Mod_rem is the modified date of the remote file (the Wikimedia dump file),
     Mon, 15 Mar 2010 07:07:30 GMT Example server timestamp
     '''
+    assert isinstance(mod_rem, datetime.datetime), '''The mod_rem variable should 
+        be an instane of datetime.datetime.'''
     path = os.path.join(location, filename)
-    print mod_rem
-    #smod_rem = text_utils.convert_timestamp_to_datetime_naive(mod_rem, settings.timestamp_format)
+    mod_rem = mod_rem.timetuple()
+    mod_rem = int(time.mktime(mod_rem.timetuple()))
     os.utime(path, (mod_rem, mod_rem))
     #sraise exceptions.NotYetImplementedError(set_modified_data)
 
 def get_modified_date(location, filename):
     path = os.path.join(location, filename)
-    return os.stat(path).st_mtime
+    mod_date = os.stat(path).st_mtime
+    mod_date = datetime.datetime.fromtimestamp(mod_date)
+    return mod_date
 
 
 def check_file_exists(location, filename):
