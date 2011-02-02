@@ -41,10 +41,11 @@ class Project:
             if lang in self.valid_languages:
                 if output == 'parser':
                     lang = lnc.languages.get(lang, 'Unknown language')
-                    choices.append(lang.name)
+                    choices.append(lang.name.encode('utf-8'))
                 elif output == 'django':
                     lang = lnc.languages.get(lang, languages.Language('Unknown language', lang, None))
                     choices.append((lang.code, lang.name))
+        #choices = [choice.decode('utf-8') for choice in choices]
         return choices
 
 

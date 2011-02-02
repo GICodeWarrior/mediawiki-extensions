@@ -43,6 +43,7 @@ class Language:
                     print '%s' % language.decode(settings.encoding)
             except UnicodeEncodeError:
                 print '%s' % language
+                
 
 class LanguageContainer:
     def __init__(self):

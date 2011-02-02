@@ -287,6 +287,7 @@ def init_args_parser():
     settings = configuration.Settings()
     language = languages.init()
     project = projects.init()
+    pjc = projects.ProjectContainer()
     rts = runtime_settings.RunTimeSettings(project, language, settings)
 
     #Init Argument Parser
@@ -386,12 +387,13 @@ def init_args_parser():
         action='store',
         help='Example of valid languages.',
         choices=project.supported_languages(),
-        default=language.name)
+        default=unicode(language.name)
+        )
 
     parser.add_argument('-p', '--project',
         action='store',
         help='Specify the Wikimedia project that you would like to download',
-        choices=projects,
+        choices=pjc.supported_projects(),
         default='wiki')
 
     parser.add_argument('-c', '--collection',
