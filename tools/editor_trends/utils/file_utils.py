@@ -55,6 +55,18 @@ except ImportError:
 #RE_ERROR_LOCATION = re.compile('\d+')
 #RE_NUMERIC_CHARACTER = re.compile('&#?\w+;')
 
+def read_unicode_text(fh):
+    data = []
+    try:
+        for line in fh:
+            line = line.strip()
+            data.append(line)
+    except UnicodeDecodeError, e:
+        print e
+
+    return data
+
+
 def check_if_process_is_running(pid):
     try:
         if settings.OS == 'Windows':
@@ -240,7 +252,6 @@ def set_modified_data(mod_rem, location, filename):
     assert isinstance(mod_rem, datetime.datetime), '''The mod_rem variable should 
         be an instane of datetime.datetime.'''
     path = os.path.join(location, filename)
-    mod_rem = mod_rem.timetuple()
     mod_rem = int(time.mktime(mod_rem.timetuple()))
     os.utime(path, (mod_rem, mod_rem))
     #sraise exceptions.NotYetImplementedError(set_modified_data)
