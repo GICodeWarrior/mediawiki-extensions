@@ -97,9 +97,10 @@ class Settings:
         self.tab_width = 4 if self.platform == 'Windows' else 8
 
 
+        result = self.load_configuration()
+        if not result:
+            self.input_location = os.path.join(self.root, 'wikimedia')
 
-        self.input_location = os.path.join(self.root, 'wikimedia')
-        self.load_configuration()
         # Default Input file
         self.input_filename = os.path.join(self.input_location, 'en',
                                            'wiki',
@@ -128,6 +129,9 @@ class Settings:
             self.input_location = config.get('file_locations', 'input_location')
             self.default_project = config.get('wiki', 'project')
             self.default_language = config.get('wiki', 'language')
+            return True
+        else:
+            return False
 
     def determine_working_directory(self):
         cwd = os.getcwd()
