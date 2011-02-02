@@ -99,6 +99,8 @@ class SpecialEmailUsers extends SpecialPage {
         $htmlForm->setTitle( $wgTitle );
         $htmlForm->setSubmitCallback( array( $this, 'submit' ) );
         
+        $this->outputHeader();
+        
         if ( $htmlForm->show() ) {
             $wgOut->addWikiMsg( 'emailsenttext' );
             $htmlForm->displayForm( false );
