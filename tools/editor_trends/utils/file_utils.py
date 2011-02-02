@@ -226,6 +226,7 @@ def delete_file(location, filename, directory=False):
             print error
     return res
 
+
 def determine_filesize(location, filename):
     path = os.path.join(location, filename)
     return os.path.getsize(path)

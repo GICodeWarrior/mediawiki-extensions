@@ -63,7 +63,7 @@ class Editor(object):
         return '%s' % (self.id)
 
     def __call__(self):
-
+        cutoff = 9
         editor = self.input_db.find_one({'editor': self.id})
         if editor == None:
             return
@@ -74,7 +74,10 @@ class Editor(object):
         monthly_edits = db.stringify_keys(monthly_edits)
         edits = sort_edits(edits)
         edit_count = len(edits)
-        new_wikipedian = edits[9]['date']
+        if len(edits) > cutoff:
+            new_wikipedian = edits[cutoff]['date']
+        else:
+            new_wikipedian = False
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
         edits_by_year = determine_edits_by_year(edits, first_year, final_year)
@@ -83,7 +86,7 @@ class Editor(object):
         last_edit_by_year = db.stringify_keys(last_edit_by_year)
         articles_by_year = determine_articles_by_year(edits, first_year, final_year)
         articles_by_year = db.stringify_keys(articles_by_year)
-        edits = edits[:10]
+        edits = edits[:cutoff]
 
         self.output_db.insert({'editor': self.id,
                           'edits': edits,

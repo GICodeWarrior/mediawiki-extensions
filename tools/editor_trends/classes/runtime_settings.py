@@ -52,6 +52,8 @@ class RunTimeSettings:
         if args:
             self.args = args
             self.hash = self.secs_since_epoch()
+            print self.settings.input_location
+            print self.get_value('location')
             self.base_location = self.settings.input_location if \
                 self.settings.input_location != None else self.get_value('location')
             self.project = self.update_project_settings()
@@ -84,6 +86,7 @@ class RunTimeSettings:
             self.dump_filename = self.generate_wikidump_filename()
             self.dump_relative_path = self.set_dump_path()
             self.dump_absolute_path = self.set_dump_path(absolute=True)
+            print self.directories
             settings.verify_environment(self.directories)
 
     def __str__(self):
@@ -138,7 +141,7 @@ class RunTimeSettings:
         max_length_key = max([len(key) for key in about.keys()])
         print 'Final settings after parsing command line arguments:'
         for ab in about:
-            print '%s: %s' % (ab.rjust(max_length_key), about[ab])
+            print '%s: %s' % (ab.rjust(max_length_key), about[ab].encode(self.settings.encoding))
 
 
     def get_value(self, key):

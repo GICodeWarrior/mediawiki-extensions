@@ -56,7 +56,7 @@ def config_launcher(properties, settings, logger):
     Config launcher is used to reconfigure editor trends toolkit. 
     '''
 #    settings.load_configuration()
-#
+    pc = projects.ProjectContainer()
     if not os.path.exists('wiki.cfg') or properties.force:
         config = ConfigParser.RawConfigParser()
         project = None
@@ -65,17 +65,17 @@ def config_launcher(properties, settings, logger):
         working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
         input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.\n' % settings.input_location)
 
-        while project not in properties.projects.keys():
-            project = raw_input('Please indicate which project you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % properties.projects[properties.short_project].capitalize())
-            project = project if len(project) > 0 else properties.short_project
-            if project not in properties.projects.keys():
-                print 'Valid choices for a project are: %s' % ','.join(properties.projects.keys())
+        while project not in pc.projects.keys():
+            project = raw_input('Please indicate which project you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % pc.projects[properties.project.name])
+            project = project if len(project) > 0 else properties.project.name
+            if project not in pc.projects.keys():
+                print 'Valid choices for a project are: %s' % ','.join(pc.projects.keys())
 
-        while language not in properties.valid_languages:
-            language = raw_input('Please indicate which language of project %s you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % (properties.projects[project].capitalize(), properties.language))
+        while language not in properties.project.valid_languages:
+            language = raw_input('Please indicate which language of project %s you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % (pc.projects[project], properties.language))
             if len(language) == 0:
-                language = properties.language_code
-            language = language if language in properties.valid_languages else properties.language
+                language = properties.language.code
+            language = language if language in properties.project.valid_languages else properties.language
 
         input_location = input_location if len(input_location) > 0 else settings.input_location
         working_directory = working_directory if len(working_directory) > 0 else os.getcwd()

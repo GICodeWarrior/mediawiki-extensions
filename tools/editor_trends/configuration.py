@@ -92,7 +92,7 @@ class Settings:
         self.working_directory = self.determine_working_directory()
         self.update_python_path()
 
-        self.root = '/' if self.platform != 'Windows' else 'c:\\'
+        self.root = os.path.expanduser('~') if self.platform != 'Windows' else 'c:\\'
         self.max_filehandles = self.determine_max_filehandles_open()
         self.tab_width = 4 if self.platform == 'Windows' else 8
 
@@ -158,7 +158,7 @@ class Settings:
                 try:
                     os.makedirs(directory)
                 except IOError:
-                    raise 'Configuration Error, could not create directory.'
+                    print 'Configuration Error, could not create directory %s.' % directory
 
     def detect_windows_program(self, program):
         entry = self.windows_register.get(program, None)

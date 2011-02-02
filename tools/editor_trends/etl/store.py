@@ -20,6 +20,7 @@ __version__ = '0.1'
 from Queue import Empty
 import multiprocessing
 import sys
+import os
 
 sys.path.append('..')
 import configuration
@@ -29,6 +30,26 @@ from utils import text_utils
 from utils import messages
 from database import cache
 from database import db
+
+
+def store_articles(project, language_code):
+    location = os.path.join(settings.input_location, language_code, project)
+    fh = file_utils.create_txt_filehandle(location, 'articles.csv', 'r', settings.encoding)
+    headers = ['id', 'title']
+    data = fh.readlines()
+    fh.close()
+
+    dbname = '%s%s' % (language_code, project)
+    collection = '%s_%s' % (dbname, 'articles')
+    mongo = db.init_mongo_db(dbname)
+    collection = mongo[collection]
+
+    articles = {}
+    for d in data:
+      for header in headers:
+          articles[header] = d
+
+    collection.insert(articles)
 
 
 def store_editors(tasks, dbname, collection, source):

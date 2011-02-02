@@ -134,7 +134,7 @@ def mergesort_feeder(tasks, source, target):
         except UnicodeDecodeError, e:
             print e
         except Empty:
-            break
+            pass
 
 
 def mergesort_launcher(source, target):
