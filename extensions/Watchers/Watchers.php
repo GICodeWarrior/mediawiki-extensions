@@ -44,20 +44,26 @@ $wgWatchersLimit = null;
  * Display link in toolbox
 */
 function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL insertion attacks
-	global $wgTitle;
-	if( $wgTitle->isTalkPage() ) {
+	if ( method_exists( $tpl, 'getSkin' ) ) {
+		$title = $tpl->getSkin()->getTitle();
+	} else {
+		global $wgTitle;
+		$title = $wgTitle;
+	}
+	
+	if( $title->isTalkPage() ) {
 		# No talk pages please
 		return true;
 	}
 
-	if( $wgTitle->getNamespace() < 0 ) {
+	if( $title->getNamespace() < 0 ) {
 		# No special pages please
 		return true;
 	}
 
 	echo '<li id="t-watchers"><a href="' ;
 	$nt = SpecialPage::getTitleFor( 'Watchers' );
-	echo $nt->escapeLocalURL( 'page=' . $wgTitle->getPrefixedDBkey() );
+	echo $nt->escapeLocalURL( 'page=' . $title->getPrefixedDBkey() );
 	echo '">';
 	echo wfMsgHtml( 'watchers_link_title' );
 	echo "</a></li>\n";
