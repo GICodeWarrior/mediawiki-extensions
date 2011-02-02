@@ -122,4 +122,3 @@ class OLE_PPS_File extends OLE_PPS
         $this->ole->getStream($this);
     }
 }
-?>
