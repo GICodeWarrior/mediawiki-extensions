@@ -1,15 +1,6 @@
 <?php
-/* Shamelessly copied and modified from /includes/specials/SpecialPreferences.php v1.15 */
+/* Shamelessly copied and modified from /includes/specials/SpecialPreferences.php v1.16.1 */
 class EditUser extends SpecialPage {
-	var $mQuickbar, $mStubs;
-	var $mRows, $mCols, $mSkin, $mMath, $mDate, $mUserEmail, $mEmailFlag, $mNick;
-	var $mUserLanguage, $mUserVariant;
-	var $mSearch, $mRecent, $mRecentDays, $mTimeZone, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
-	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
-	var $mUnderline, $mWatchlistEdits;
-	# password changing was removed from prefs in 1.14, so we just add it back in now :)
-	var $mNewpass, $mRetypePass;
-	
 	function __construct() {
 		parent::__construct('EditUser', 'edituser');
 	}
@@ -34,6 +25,7 @@ class EditUser extends SpecialPage {
 			$wgOut->addWikiMsg( 'edituser-nouser', htmlspecialchars( $this->target ) );
 			return;
 		}
+		$this->targetuser = $targetuser;
 		#Allow editing self via this interface
 		if( $targetuser->isAllowed( 'edituser-exempt' ) && $targetuser->getName() != $wgUser->getName() ) {
 			$wgOut->addWikiMsg( 'edituser-exempt', $targetuser->getName() );
@@ -72,7 +64,7 @@ class EditUser extends SpecialPage {
 									'eauthentsent', $this->target );
 		}
 
-		$htmlForm = Preferences::getFormObject( $targetuser, 'EditUserPreferencesForm' );
+		$htmlForm = self::getFormObject( $targetuser );
 		$htmlForm->setSubmitCallback( array( $this, 'tryUISubmit' ) );
 		$htmlForm->setTitle( $this->getTitle() );
 		$htmlForm->addHiddenField( 'username', $this->target );
@@ -99,9 +91,9 @@ class EditUser extends SpecialPage {
 	}
 
 	function submitReset( $formData ) {
-		global $wgUser, $wgOut;
-		$wgUser->resetOptions();
-		$wgUser->saveSettings();
+		global $wgOut;
+		$this->targetuser->resetOptions();
+		$this->targetuser->saveSettings();
 
 		$url = $this->getTitle()->getFullURL( array( 'success' => 1, 'username'=>$this->target ) );
 
@@ -120,7 +112,7 @@ class EditUser extends SpecialPage {
 		
 		$realUser = $wgUser;
 		$wgUser = $targetuser;
-		$res = Preferences::tryFormSubmit( $formData, 'uiEditUser' );
+		$res = Preferences::tryFormSubmit( $formData, 'ui' );
 		$wgUser = $realUser;
 		
 		if ( $res ) {
@@ -148,11 +140,24 @@ class EditUser extends SpecialPage {
 		$fields['edituser-username'] = Html::input( 'username', $this->target );
 
 		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
-		$form = Html::openElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) ) .
+		$form = Html::rawElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ),
 			Xml::buildForm( $fields, 'edituser-dosearch' ) .
-			Html::hidden( 'issearch', '1' ) .
-			Html::closeElement( 'form' );
+			Html::hidden( 'issearch', '1' )
+		);
 		return $form;
+	}
+	
+	static function getFormObject( $user ) {
+		$formDescriptor = Preferences::getPreferences( $user );
+		if ( isset( $formDescriptor['password'] ) ) {
+			unset( $formDescriptor['password'] );
+		}
+		$htmlForm = new EditUserPreferencesForm( $formDescriptor, 'prefs' );
+
+		$htmlForm->setSubmitText( wfMsg( 'saveprefs' ) );
+		$htmlForm->setSubmitID( 'prefsubmit' );
+
+		return $htmlForm;
 	}
 }
 
