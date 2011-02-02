@@ -140,13 +140,23 @@ $wgAjaxExportList[] = 'ReaderFeedbackPage::AjaxReview';
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efReaderFeedbackSchemaUpdates';
 
-function efReaderFeedbackSchemaUpdates() {
-	global $wgDBtype, $wgExtNewTables;
-	$base = dirname(__FILE__);
-	if( $wgDBtype == 'mysql' ) {
-		$wgExtNewTables[] = array( 'reader_feedback', "$base/ReaderFeedback.sql" ); // Initial install tables
-	} elseif( $wgDBtype == 'postgres' ) {
-		$wgExtNewTables[] = array( 'reader_feedback', "$base/ReaderFeedback.pg.sql" ); // Initial install tables
+function efReaderFeedbackSchemaUpdates( $updater = null ) {
+	$base = dirname( __FILE__ );
+	if ( $updater === null ) {
+		global $wgDBtype, $wgExtNewTables;
+		if( $wgDBtype == 'mysql' ) {
+			$wgExtNewTables[] = array( 'reader_feedback', "$base/ReaderFeedback.sql" ); // Initial install tables
+		} elseif( $wgDBtype == 'postgres' ) {
+			$wgExtNewTables[] = array( 'reader_feedback', "$base/ReaderFeedback.pg.sql" ); // Initial install tables
+		}
+	} else {
+		if( $updater->getDB()->getType() == 'mysql' ) {
+			$updater->addExtensionUpdate( array( 'addTable', 'reader_feedback',
+				"$base/ReaderFeedback.sql", true ) ); // Initial install tables
+		} elseif( $updater->getDB()->getType() == 'postgres' ) {
+			$updater->addExtensionUpdate( array( 'addTable', 'reader_feedback',
+				"$base/ReaderFeedback.pg.sql", true ) ); // Initial install tables
+		}
 	}
 	return true;
 }
