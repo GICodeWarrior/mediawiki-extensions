@@ -154,7 +154,7 @@ $messages['ar'] = array(
 	'toolbase-form-wiki' => 'ويكي',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
@@ -177,9 +177,16 @@ $messages['be-tarask'] = array(
 	'toolbase-navigation' => 'Навігацыя',
 	'toolbase-navigation-homepage' => 'Хатняя старонка',
 	'toolbase-navigation-user_id' => 'Знайсьці ідэнтыфікатар удзельніка',
+	'toolbase-navigation-autoedits' => 'Лічыльнік аўтаматычных рэдагаваньняў',
 	'toolbase-userid-submit' => 'Атрымаць ідэнтыфікатар удзельніка',
 	'toolbase-userid-title' => 'Знайсьці ідэнтыфікатар удзельніка',
 	'toolbase-userid-result' => 'Ідэнтыфікатарам удзельніка <b>$1</b> на <a href="$3"><b>$3</b></a> зьяўляецца <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Лічыльнік аўтаматычных рэдагаваньняў',
+	'toolbase-autoedits-submit' => 'Лічыць',
+	'toolbase-autoedits-approximate' => '<b>Прыблізная</b> колькасьць рэдагаваньняў якія ўжываюць…',
+	'toolbase-autoedits-totalauto' => 'Агульная колькасьць аўтаматычных рэдагаваньняў',
+	'toolbase-autoedits-totalall' => 'Агульная колькасьць рэдагаваньняў',
+	'toolbase-autoedits-pct' => 'Адсотак аўтаматычных рэдагаваньняў',
 	'toolbase-main-title' => 'Вітаем!',
 	'toolbase-main-content' => 'Вітаем у інструмэнтах X!! Набор інструмэнтаў яшчэ знаходзіцца ў працэсе канвэртацыі на базу <a href="$1">Symfony</a>. Гэта працэс яшчэ працягнецца некаторы час, яле ўсё павінна працаваць ужо зараз. 
 
@@ -195,6 +202,7 @@ $messages['be-tarask'] = array(
 	'toolbase-form-wiki' => 'Вікі',
 	'toolbase-error-nouser' => '«$1» не зьяўляецца слушнай назвай рахунку удзельніка',
 	'toolbase-error-nowiki' => '$1.$2.org не зьяўляецца слушным адрасам вікі',
+	'toolbase-error-toomanyedits' => '$1 мае $2 рэдагаваньняў. Гэты інструмэнт мае абмежаваньне ў $3 рэдагаваньняў.',
 );
 
 /** Breton (Brezhoneg)
@@ -252,9 +260,16 @@ $messages['de'] = array(
 	'toolbase-navigation' => 'Navigation',
 	'toolbase-navigation-homepage' => 'Hauptseite',
 	'toolbase-navigation-user_id' => 'Benutzerkennung suchen',
+	'toolbase-navigation-autoedits' => 'Zähler automatisierter Bearbeitungen',
 	'toolbase-userid-submit' => 'Benutzerkennung beantragen',
 	'toolbase-userid-title' => 'Eine Benutzerkennung suchen',
 	'toolbase-userid-result' => 'Die Benutzerkennung von <b>$1</b> auf <a href="$3"><b>$3</b></a> lautet <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Berechner automatisierter Bearbeitungen',
+	'toolbase-autoedits-submit' => 'Berechnen',
+	'toolbase-autoedits-approximate' => '<b>Ungefähre</b> Anzahl der Bearbeitungen mit …',
+	'toolbase-autoedits-totalauto' => 'Gesamtzahl automatisierter Bearbeitung',
+	'toolbase-autoedits-totalall' => 'Gesamtzahl der Bearbeitungen',
+	'toolbase-autoedits-pct' => 'Prozentanteil automatisierter Bearbeitungen',
 	'toolbase-main-title' => 'Willkommen!',
 	'toolbase-main-content' => 'Willkommen bei X!s Tools!
 
@@ -270,7 +285,9 @@ Es muss sichergestellt sein, dass die URL richtig angegeben wurde.
 Sofern ein Link hierhergeführt hat, ist dies bitte <a href="$1">als Fehler zu melden</a>.
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
-	'toolbase-error-nouser' => '$1 ist kein Name eines Benutzers',
+	'toolbase-error-nouser' => 'Den Benutzer $1 gibt es nicht',
+	'toolbase-error-nowiki' => 'Das Wiki $1.$2.org gibt es nicht',
+	'toolbase-error-toomanyedits' => 'Benutzer $1 hat $2 Bearbeitungen gemacht. Dieses Hilfsprogramm hat ein Maximum von $3 Bearbeitungen.',
 );
 
 /** Finnish (Suomi)
@@ -426,9 +443,16 @@ $messages['ia'] = array(
 	'toolbase-navigation' => 'Navigation',
 	'toolbase-navigation-homepage' => 'Pagina initial',
 	'toolbase-navigation-user_id' => 'Cercar ID de usator',
+	'toolbase-navigation-autoedits' => 'Contator de modificationes automatisate',
 	'toolbase-userid-submit' => 'Obtener ID',
 	'toolbase-userid-title' => 'Cercar le ID de un usator',
 	'toolbase-userid-result' => 'Le ID del usator <b>$1</b> in <a href="$3"><b>$3</b></a> es <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Calculator de modificationes automatisate',
+	'toolbase-autoedits-submit' => 'Calcular',
+	'toolbase-autoedits-approximate' => 'Numero <b>approximative</b> de modificationes usante…',
+	'toolbase-autoedits-totalauto' => 'Numero total de modificationes automatisate',
+	'toolbase-autoedits-totalall' => 'Numero total de modificationes',
+	'toolbase-autoedits-pct' => 'Percentage de modificationes automatisate',
 	'toolbase-main-title' => 'Benvenite!',
 	'toolbase-main-content' => 'Benvenite al instrumentos de X!. Le instrumentario es ancora in le processo de conversion al quadro <a href="$1">Symfony</a>. Iste processo durara un tempore, ma deberea functionar ora.
 
@@ -443,10 +467,13 @@ Si un ligamine te ha ducite hic, per favor <a href="$1">reporta un falta</a>.
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '"$1" non es un usator valide',
+	'toolbase-error-nowiki' => '$1.$2.org non es un wiki valide',
+	'toolbase-error-toomanyedits' => '$1 ha $2 modificationes. Iste instrumento ha un maximo de $3 modificationes.',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'toolbase-header-title' => 'Alat X! (BETA)',
@@ -467,9 +494,16 @@ $messages['id'] = array(
 	'toolbase-navigation' => 'Navigasi',
 	'toolbase-navigation-homepage' => 'Beranda',
 	'toolbase-navigation-user_id' => 'Cari ID pengguna',
+	'toolbase-navigation-autoedits' => 'Penghitung suntingan otomatis',
 	'toolbase-userid-submit' => 'Cari ID pengguna',
 	'toolbase-userid-title' => 'Cari suatu ID pengguna',
 	'toolbase-userid-result' => 'ID pengguna untuk <b>$1</b> pada <a href="$3"><b>$3</b></a> adalah <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Kalkulator suntingan otomatis',
+	'toolbase-autoedits-submit' => 'Hitung',
+	'toolbase-autoedits-approximate' => '<b>Perkiraan</b> jumlah suntingan yang menggunakan ...',
+	'toolbase-autoedits-totalauto' => 'Jumlah suntingan otomatis',
+	'toolbase-autoedits-totalall' => 'Total suntingan',
+	'toolbase-autoedits-pct' => 'Persentase suntingan otomatis',
 	'toolbase-main-title' => 'Selamat datang!',
 	'toolbase-main-content' => 'Selamat datang di alat X! Perangkat alat ini masih dalam proses yang konversi ke kerangka kerja <a href="$1">Symfony</a>. Proses ini memerlukan waktu, tetapi sekarang telah dapat dipakai.
 
@@ -485,6 +519,7 @@ Jika Anda mengikuti tautan dari tempat lain, silahkan <a href="$1">laporkan bug<
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 bukan pengguna yang sah',
 	'toolbase-error-nowiki' => '$1.$2.org bukan wiki yang sah',
+	'toolbase-error-toomanyedits' => '$1 memiliki $2 suntingan. Peralatan ini memiliki batas maksimal $3 suntingan.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -531,9 +566,16 @@ $messages['mk'] = array(
 	'toolbase-navigation-homepage' => 'Домашна страница',
 	'toolbase-navigation-api' => 'API',
 	'toolbase-navigation-user_id' => 'Пронајди кориснички ID',
+	'toolbase-navigation-autoedits' => 'Бројач на автоматизирани уредувања',
 	'toolbase-userid-submit' => 'Дај кориснички ID',
 	'toolbase-userid-title' => 'Пронаоѓање на кориснички ID',
 	'toolbase-userid-result' => 'Корисничкиот ID за <b>$1</b> на <a href="$3"><b>$3</b></a> е <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Пресметувач на автоматизирани уредувања',
+	'toolbase-autoedits-submit' => 'Пресметај',
+	'toolbase-autoedits-approximate' => '<b>Приближен</b> број на уредувања со помош на....',
+	'toolbase-autoedits-totalauto' => 'Вкупно автоматизирани уредувања',
+	'toolbase-autoedits-totalall' => 'Вкупно уредувања',
+	'toolbase-autoedits-pct' => 'Постоток на автоматизирани уредувања',
 	'toolbase-main-title' => 'Добредојдовте!',
 	'toolbase-main-content' => 'Добредојдовте на Алатките на X!! Овој комплет алатки е сè уште во фаза на претворање во склопот на <a href="$1">Symfony</a>. Оваа постапка може да потрае, но веќе би требало да работи. 
 
@@ -549,6 +591,7 @@ $messages['mk'] = array(
 	'toolbase-form-wiki' => 'Вики',
 	'toolbase-error-nouser' => 'Нема корисник по име $1',
 	'toolbase-error-nowiki' => '$1.$2.org не претставува важечко вики',
+	'toolbase-error-toomanyedits' => '$1 има $2 уредувања. Оваа алатка има максимум од $3 уредувања.',
 );
 
 /** Dutch (Nederlands)
@@ -573,9 +616,16 @@ $messages['nl'] = array(
 	'toolbase-navigation' => 'Navigatie',
 	'toolbase-navigation-homepage' => 'Startpagina',
 	'toolbase-navigation-user_id' => 'Gebruikersnummer zoeken',
+	'toolbase-navigation-autoedits' => 'Geautomatiseerde bewerkingsteller',
 	'toolbase-userid-submit' => 'Gebruikersnummer ophalen',
 	'toolbase-userid-title' => 'Gebruikersnummer zoeken',
 	'toolbase-userid-result' => 'Het gebruikersnummer voor <b>$1</b> op <a href="$3"><b>$3</b></a> is <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Geautomatiseerde bewerkingsteller',
+	'toolbase-autoedits-submit' => 'Berekenen',
+	'toolbase-autoedits-approximate' => '<b>Benadering</b> van het aantal bewerkingen met...',
+	'toolbase-autoedits-totalauto' => 'Totaal aantal geautomatiseerde bewerkingen',
+	'toolbase-autoedits-totalall' => 'Totaal aantal bewerkingen',
+	'toolbase-autoedits-pct' => 'Percentage geautomatiseerde bewerkingen',
 	'toolbase-main-title' => 'Welkom!',
 	'toolbase-main-content' => 'Welkom bij de hulpprogramma\'s van X. Deze verzameling hulpprogramma\'s wordt nog steeds omgezet naar het framework <a href="$1">Symfony</a>. Dit gaat nog enige tijd duren, maar alle programma\'s zouden nu moeten werken.
 
@@ -591,6 +641,7 @@ Als u een verwijzing ergens anders vandaan hebt gevolgd, <a href="$1">meld dan a
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 is geen geldige gebruiker',
 	'toolbase-error-nowiki' => '$1.$2.org is geen geldige wiki',
+	'toolbase-error-toomanyedits' => '$1 heeft $2 bewerkingen gemaakt. Dit hulpprogramma heeft een maximum van $3 bewerkingen.',
 );
 
 /** Polish (Polski)
