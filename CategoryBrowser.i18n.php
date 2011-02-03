@@ -1558,8 +1558,12 @@ Prosimo, spremenite ali posodobite svoj brskalnik, če je le mogoče.',
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author Tobulos1
  */
 $messages['sv'] = array(
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|underkategori|underkategorier}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|sida|sidor}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|fil|filer}}',
 	'cb_previous_items_link' => 'Föregående',
 	'cb_next_items_link' => 'Nästa',
 	'cb_next_items_stats' => '(från $1)',
@@ -1732,5 +1736,12 @@ $messages['uk'] = array(
 	'cb_edit_clear_hint' => 'Очистити поточний вираз (виділити все)',
 	'cb_edit_paste_hint' => 'Вставити оператор у поточну позицію, якщо це можливо',
 	'cb_edit_paste_right_hint' => 'Вставити оператора в наступну позицію, якщо це можливо',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'categorybrowser' => '类别浏览器',
 );
 
