@@ -1823,6 +1823,7 @@ $messages['pt'] = array(
  * @author Eduardo.mps
  * @author Giro720
  * @author Luckas Blade
+ * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
 	'recordadmin' => 'Administração de registros',
@@ -1863,7 +1864,7 @@ $messages['pt-br'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Não {{PLURAL:$1|existe|existem}} "$1"',
-	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de separadores.',
+	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de abas.<br />Em alternativa, <a href="$1">pode usar a funcionalidade normal de edição do MediaWiki, sem formulários</a>.',
 	'recordadmin-properties' => 'Propriedades',
 );
 
