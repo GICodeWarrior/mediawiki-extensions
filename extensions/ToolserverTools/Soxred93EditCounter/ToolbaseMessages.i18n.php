@@ -36,7 +36,7 @@ $messages['en'] = array (
 	
 	'toolbase-autoedits-title' => 'Automated edit calculator',
 	'toolbase-autoedits-submit' => 'Calculate',
-	'toolbase-autoedits-approximate' => '<b>Approximate</b> number of edits using....',
+	'toolbase-autoedits-approximate' => '<b>Approximate</b> number of edits using...',
 	'toolbase-autoedits-totalauto' => 'Total number of automated edits',
 	'toolbase-autoedits-totalall' => 'Total edit count',
 	'toolbase-autoedits-pct' => 'Percentage of automated edits',
