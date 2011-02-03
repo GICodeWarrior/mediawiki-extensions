@@ -147,15 +147,18 @@ final class IncludeWP extends ParserHook {
 			$this->parser->getOutput()->addModules( 'ext.incwp' );
 		}
 		else {
-			global $egIncWPScriptPath;
+			global $egIncWPScriptPath, $wgStylePath, $wgStyleVersion;
 			
 			$this->addJSLocalisation();
-			
-			$this->parser->getOutput()->includeJQuery();
+
+			$this->parser->getOutput()->addHeadItem(
+				Html::linkedScript( "$wgStylePath/common/jquery.min.js?$wgStyleVersion" ),
+				'jQuery'
+			);			
 			
 			$this->parser->getOutput()->addHeadItem(
-				'ext.incwp',
-				Html::linkedScript( $egIncWPScriptPath . '/ext.incwp.js' )
+				Html::linkedScript( $egIncWPScriptPath . '/ext.incwp.js' ),
+				'ext.incwp'
 			);
 		}		
 	}	
