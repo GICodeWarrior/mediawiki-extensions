@@ -2501,7 +2501,7 @@ $messages['el'] = array(
 	'mwe-return-to-form' => 'Επιστροφή στη φόρμα',
 	'mwe-fileexists-thumb' => 'Υπάρχον αρχείο',
 	'mwe-go-to-resource' => 'Πήγαινε στη σελίδα πόρου',
-	'mwe-upload-misc-error' => 'Άγνωστο σφάλμα επιφόρτωσης',
+	'mwe-upload-misc-error' => 'Άγνωστο σφάλμα κατά την επιφόρτωση',
 	'mwe-thumbnail-more' => 'Μεγέθυνση',
 	'mwe-filesource' => 'Πηγή:',
 	'fogg-save_local_file' => 'Αποθήκευση Οgg',
@@ -2527,6 +2527,7 @@ $messages['el'] = array(
 	'rsd_box_layout' => 'Διαρρύθμιση κυτίου',
 	'rsd_list_layout' => 'Διαρρύθμιση λίστας',
 	'rsd_results_desc' => 'Αποτελέσματα',
+	'rsd_results_desc_total' => 'Αποτελέσματα $1 έως $2 του $3',
 	'rsd_results_next' => 'επομ',
 	'rsd_results_prev' => 'Προηγούμενος',
 	'rsd_no_results' => 'Κανένα αποτέλεσμα για <b>$1</b>',
@@ -7753,7 +7754,7 @@ Você pode $1 e depois $2',
 	'rsd_config_error' => 'Erro de configuração do assistente de carregamento de multimídia: $1',
 	'mwe-your-recent-uploads' => 'Os seus uploads recentes para $1',
 	'mwe-no_recent_uploads' => 'Nenhum carregamento recente',
-	'mwe-not-logged-in-uploads' => 'Você pode não estar autenticado e, portanto, nenhum carregamento recente pode ser apresentado. $1 autentique e $2',
+	'mwe-not-logged-in-uploads' => 'Você pode não estar autenticado, por isso os carregamentos recentes podem não ser exibidos. [$1 Por favor autentique-se] e [$2 tente novamente].',
 	'mwe-ie-eye-permision' => 'Se você está usando o Internet Explorer e está autenticado, talvez você deva ajustar as suas definições de privacidade',
 	'mwe-upload-a-file' => 'Carregar um novo arquivo',
 	'mwe-upload-a-file-to' => 'Carregar um arquivo novo para $1',
@@ -7925,6 +7926,7 @@ Odată ce aţi terminat upload-ul, $2',
 );
 
 /** Tarandíne (Tarandíne)
+ * @author Joetaras
  * @author Reder
  */
 $messages['roa-tara'] = array(
@@ -8068,8 +8070,7 @@ Tu pòte $1, poi $2',
 	'rsd_config_error' => 'Aggiunge errore de configurazione media wizard: $1',
 	'mwe-your-recent-uploads' => 'Le carecamènde recende a $1',
 	'mwe-no_recent_uploads' => 'Non ge stonne carecamènde recende',
-	'mwe-not-logged-in-uploads' => "L'utinde non ha da essere reggistrate accussì ca nisciune carecamènde recende pòte essere visualizzate.
-$1 tràse e $2",
+	'mwe-not-logged-in-uploads' => "L'utende addà essere reggistrate ce nò non ge vede nisciune de le carecaminde recende. [$1 pe piacere trase] e [$2 pruève arrete].",
 	'mwe-ie-eye-permision' => "Ce stè ause Internet Explorer e sì trasùte, tène abbesògne de cangià le 'mbostazziune de privacy",
 	'mwe-upload-a-file' => "Careche 'nu fail nuève",
 	'mwe-upload-a-file-to' => "Careche 'nu fail nuève a $1",
@@ -8093,8 +8094,13 @@ $1 tràse e $2",
 	'mwe-ftype-oga' => 'Fail audio Ogg',
 	'mwe-ftype-ogg' => 'Fail video Ogg',
 	'mwe-ftype-unk' => "Formate d'u fail scanosciute",
+	'rsd-this_wiki-title' => 'Sta uicchi',
+	'rsd-this_wiki-desc' => "'A uicchi locale",
 	'mwe-upload-transcoded-status' => 'Trascodifeche',
 	'mwe-upload-transcode-in-progress' => "Transcodifeche e carecamènde in curse (non g'achiudere quèste finestre)",
+	'fogg-select_file' => "Scacchie 'u file",
+	'fogg-select_new_file' => "Scacchie 'u file nuève",
+	'fogg-select_url' => "Scacchie 'a URL",
 	'mwe-upload-multi' => 'Careche {{PLURAL:$1|fail|fail}}',
 	'mwe-review-upload' => "Recenzione d'u fail {{PLURAL:$1|carecamènde|carecaminde}}",
 );
