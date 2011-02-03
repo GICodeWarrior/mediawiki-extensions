@@ -2511,6 +2511,7 @@ $messages['ia'] = array(
  * @author Irwangatot
  * @author IvanLanin
  * @author Kandar
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'contributionreporting-desc' => 'Laporan langsung pada penggalangan dana Wikimedia',
@@ -2580,6 +2581,8 @@ $messages['id'] = array(
 	'fundraiserstats-tab-maximums' => 'Tertinggi (USD)',
 	'fundraiserstats-tab-ytd' => 'Tahun berjalan (USD)',
 	'fundraiserstats-instructions' => 'Untuk melihat statistik hari tertentu, arahkan kursor ke bilah untuk hari itu. Setiap tahun memiliki warna yang berbeda pada tabel.',
+	'fundraiserstats-time-zone' => 'Zona waktu:',
+	'fundraiserstats-utc' => '(dari UTC)',
 );
 
 /** Igbo (Igbo)
@@ -4037,6 +4040,10 @@ $messages['pms'] = array(
 	'fundraiserstats-tab-maximums' => 'Màssim (USD)',
 	'fundraiserstats-tab-ytd' => 'Ann an cors (USD)',
 	'fundraiserstats-instructions' => "Për vëdde statìstiche për minca di, buta ël cursor an sla bara për col di. Minca agn a l'ha un color diferent an sël gràfich.",
+	'fundraiserstats-customize' => 'Përsonalisa',
+	'fundraiserstats-show-years' => "Mosta j'agn ch'a ven-o:",
+	'fundraiserstats-time-zone' => 'Fus orari:',
+	'fundraiserstats-utc' => '(da UTC)',
 );
 
 /** Pashto (پښتو)
@@ -4812,6 +4819,7 @@ $messages['sr-el'] = array(
  * @author Fluff
  * @author Najami
  * @author Per
+ * @author Tobulos1
  */
 $messages['sv'] = array(
 	'contributionreporting-desc' => 'Liverapportering av Wikimedias insamling',
@@ -4880,6 +4888,10 @@ $messages['sv'] = array(
 	'fundraiserstats-tab-averages' => 'Genomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'fundraiserstats-tab-ytd' => 'Total i år (USD)',
+	'fundraiserstats-customize' => 'Anpassa',
+	'fundraiserstats-show-years' => 'Visa de följande åren:',
+	'fundraiserstats-time-zone' => 'Tidszon:',
+	'fundraiserstats-utc' => '(från UTC)',
 );
 
 /** Swahili (Kiswahili) */
@@ -5429,6 +5441,7 @@ $messages['uk'] = array(
 	'fundraiserstats-tab-averages' => 'У середньому (долари США)',
 	'fundraiserstats-tab-maximums' => 'Максимуми (долари США)',
 	'fundraiserstats-tab-ytd' => 'З початку року (USD)',
+	'fundraiserstats-time-zone' => 'Часовий пояс:',
 );
 
 /** Vèneto (Vèneto)
