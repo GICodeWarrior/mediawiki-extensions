@@ -9011,6 +9011,7 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Danutz
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Minisarm
@@ -9113,7 +9114,7 @@ $messages['ro'] = array(
 	'right-viewconfig-all' => 'Vezi toată configurația wiki',
 	'right-viewconfig-interwiki' => 'Vezi toată configurația străină wiki',
 	'viewconfig' => 'Vizualizează configurația wiki',
-	'configure-throttle-action-edit' => 'Modifică',
+	'configure-throttle-action-edit' => 'Modificare',
 	'configure-throttle-action-move' => 'Redenumește',
 	'configure-throttle-action-rollback' => 'Revenire',
 	'configure-throttle-action-emailuser' => 'Trimite e-mail',
