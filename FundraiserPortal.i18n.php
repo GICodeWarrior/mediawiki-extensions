@@ -1003,7 +1003,7 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
-	'fundraiserportal-plain-button' => 'Підпорте Вікіпедю!',
+	'fundraiserportal-plain-button' => 'Підпорьте Вікіпедію!',
 	'fundraiserportal-rubytext-button' => 'Зробити пожертву зараз',
 	'fundraiserportal-rubytext-close' => 'Сховати тото одтеперь',
 	'fundraiserportal-sapphire-button' => 'Зробити пожертву зараз',
