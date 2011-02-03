@@ -1055,6 +1055,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Tobulos1
  */
 $messages['sv'] = array(
 	'contributiontracking-desc' => 'Bidragsspårning för Wikimedia-insamlingen',
@@ -1063,7 +1064,10 @@ $messages['sv'] = array(
 	'contrib-tracking-error-text' => 'Ogiltigt skickande av formulär',
 	'contrib-tracking-submitting' => 'Skickar till betalningshanterare...',
 	'contrib-tracking-continue' => 'Om du inte kommer vidare automatiskt, klicka på knappen för att slutföra din donation hos PayPal.',
+	'contrib-tracking-redirect' => 'Du kommer att omdirigeras automatiskt till PayPal för att slutföra din donation.',
 	'contrib-tracking-button' => 'Fortsätt',
+	'contrib-tracking-item-name-onetime' => 'Engångs-donation',
+	'contrib-tracking-item-name-recurring' => 'Återkommande månatlig donation',
 );
 
 /** Swahili (Kiswahili) */
