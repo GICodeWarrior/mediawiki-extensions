@@ -1,13 +1,17 @@
 <?php
 
 class RPEDHooks {
-	public static function RPEDCreateTable() {
-		global $wgExtNewTables;
-
-		$wgExtNewTables[] = array(
-			'rped_page',
-			dirname( __FILE__ ) . '/rpedtable.sql'
-		);
+	public static function RPEDCreateTable( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables;
+			$wgExtNewTables[] = array(
+				'rped_page',
+				dirname( __FILE__ ) . '/rpedtable.sql'
+			);
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'rped_page',
+				dirname( __FILE__ ) . '/rpedtable.sql', true ) );
+		}
 		return true;
 	}
 
