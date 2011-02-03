@@ -30,6 +30,7 @@ $messages['en'] = array(
  */
 $messages['af'] = array(
 	'emailusers-desc' => "Laat gebruikers toe om e-pos aan 'n klomp ontvangers te stuur",
+	'right-sendbatchemail' => 'Stuur e-pos aan verskeie ontvangers op dieselfde tyd',
 	'emailusers' => 'Stuur e-pos aan gebruikers',
 	'emailusers-target-reverse' => 'Stuur aan alle gebruikers, behalwe die geselekteerdes',
 	'emailusers-norecipient' => 'Daar is niemand aan wie u e-pos kan stuur nie.',
@@ -43,6 +44,7 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'emailusers-desc' => 'Дазваляе ўдзельнікам дасылаць электронныя лісты адразу некалькім атрымальнікам',
+	'right-sendbatchemail' => 'дасылка электронных лістоў некалькім атрымальнікаў адначасова',
 	'emailusers' => 'Даслаць электронныя ліст ўдзельнікам',
 	'emailusers-target-reverse' => 'Даслаць усім удзельнікам, за выключэньнем выбраных',
 	'emailusers-norecipient' => 'Няма нікога, каму Вы можаце даслаць электронны ліст.',
@@ -61,9 +63,10 @@ $messages['bo'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'emailusers-desc' => 'Ermöglicht das Versenden von E-Mails an mehrere Empfänger',
-	'emailusers' => 'E-Mails versenden',
-	'emailusers-target-reverse' => 'An alle Benutzer, mit Ausnahme der ausgewählten, versenden',
+	'emailusers-desc' => 'Ermöglicht das Senden von E-Mails an mehrere Empfänger',
+	'right-sendbatchemail' => 'E-Mails gleichzeitig an mehrere Empfänger senden',
+	'emailusers' => 'E-Mails senden',
+	'emailusers-target-reverse' => 'An alle Benutzer, mit Ausnahme der ausgewählten, senden',
 	'emailusers-norecipient' => 'Es sind keine Benutzer vorhanden, denen eine E-Mail gesandt werden kann.',
 	'emailusers-norecipientselected' => 'Es wurde kein Empfänger ausgewählt.',
 	'emailusers-toomanyrecipientsselected' => 'Es wurden zu viele Empfänger ausgewählt (Es {{PLURAL:$1|ist maximal $1|sind maximal $1}} möglich.).',
@@ -74,11 +77,12 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'emailusers-desc' => 'Zmóžnja wužywarjam e-maile na někotarych dostawarjow pósłaś',
+	'right-sendbatchemail' => 'E-mail na někotarych dostawarjow rownocasnje pósłaś',
 	'emailusers' => 'Wužywarjam e-mail pósłaś',
 	'emailusers-target-reverse' => 'Wšym wužywarjam mimo wubranych pósłaś',
 	'emailusers-norecipient' => 'Njejo nichten, kótaremuž móžoš e-mail pósłaś.',
 	'emailusers-norecipientselected' => 'Žeden dostawaŕ wubrany.',
-	'emailusers-toomanyrecipientsselected' => 'Pśewjele dostawarjow jo wubrane.',
+	'emailusers-toomanyrecipientsselected' => 'Pśewjele dostawarjow jo wubrane ({{PLURAL:$1|maksimalnje $1|maksimalnje $1|maksimalnje $1maksimalnje $1}}).',
 );
 
 /** Persian (فارسی)
@@ -123,6 +127,7 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'emailusers-desc' => 'Zmóžnja wužiwarjam, e-mejlki na wjacorych přijimowarjow pósłać',
+	'right-sendbatchemail' => 'E-mejl na wjacorych přijimowarjow zdobom pósłać',
 	'emailusers' => 'Wužiwarjam e-mejlku pósłać',
 	'emailusers-target-reverse' => 'Na wšěch wužiwarjow nimo wubranych pósłać',
 	'emailusers-norecipient' => 'Njeje nichtó, kotremuž móžeš e-mejlku pósłać.',
@@ -135,11 +140,25 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'emailusers-desc' => 'Permitte a usatores de inviar e-mails a multiple destinatarios',
+	'right-sendbatchemail' => 'Inviar e-mail a multiple destinatarios simultaneemente',
 	'emailusers' => 'Inviar e-mail a usatores',
 	'emailusers-target-reverse' => 'Inviar a tote le usatores excepte les seligite',
 	'emailusers-norecipient' => 'Il ha nulle persona a qui tu pote inviar e-mail.',
 	'emailusers-norecipientselected' => 'Nulle destinatario es seligite.',
 	'emailusers-toomanyrecipientsselected' => 'Troppo de destinatarios es seligite (le maximo es {{PLURAL:$1|$1 destinatario|$1 destinatarios}}).',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'emailusers-desc' => 'Memungkinkan pengguna untuk mengirim surel ke beberapa penerima',
+	'right-sendbatchemail' => 'Kirim surel ke beberapa penerima sekaligus',
+	'emailusers' => 'Surel pengguna',
+	'emailusers-target-reverse' => 'Kirim ke semua pengguna kecuali yang dipilih',
+	'emailusers-norecipient' => 'Tidak ada yang Anda dapat kirimi surel.',
+	'emailusers-norecipientselected' => 'Tidak ada penerima yang dipilih',
+	'emailusers-toomanyrecipientsselected' => 'Terlalu banyak penerima yang dipilih ({{PLURAL:$1|maksimum $1|maksimal $1}}).',
 );
 
 /** Japanese (日本語)
@@ -160,6 +179,8 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'emailusers-desc' => 'Erméiglecht de Benotzer fir E-Mailen u méi Adressaten ze schécken',
+	'emailusers' => 'E-Mail Benotzer',
+	'emailusers-norecipient' => 'Et gëtt keen deem Dir eng Mail schécke kënnt.',
 );
 
 /** Macedonian (Македонски)
@@ -167,6 +188,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'emailusers-desc' => 'Им дава можност на корисниците да испраќаат е-пошта до повеќе примачи наеднаш',
+	'right-sendbatchemail' => 'Испраќање на е-пошта на повеќе примачи наеднаш',
 	'emailusers' => 'Испрати е-пошта на корисниците',
 	'emailusers-target-reverse' => 'Испрати на сите корисници освен избраните',
 	'emailusers-norecipient' => 'Нема на кого да му испратите е-пошта.',
@@ -179,6 +201,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'emailusers-desc' => 'Maakt het mogelijk om e-mail te verzenden naar meerdere ontvangers',
+	'right-sendbatchemail' => 'E-mails sturen aan meerdere ontvangers',
 	'emailusers' => 'Gebruikers e-mailen',
 	'emailusers-target-reverse' => 'Naar alle gebruikers verzenden behalve de geselecteerde gebruikers',
 	'emailusers-norecipient' => 'Er is niemand die u een e-mail kunt sturen.',
@@ -192,6 +215,7 @@ $messages['nl'] = array(
  */
 $messages['pt'] = array(
 	'emailusers-desc' => 'Permite que os utilizadores enviem correio electrónico a vários destinatários em simultâneo',
+	'right-sendbatchemail' => 'Enviar correio electrónico para vários destinatários em simultâneo',
 	'emailusers' => 'Correio para vários destinatários',
 	'emailusers-target-reverse' => 'Enviar a todos os utilizadores, excepto os seleccionados',
 	'emailusers-norecipient' => 'Não há ninguém a quem possa enviar correio electrónico.',
