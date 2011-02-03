@@ -59,7 +59,8 @@ final class IncludeWP extends ParserHook {
 	protected function getParameterInfo( $type ) {
 		$params = array();
 		
-		$params[] = new Parameter( 'page' );
+		$params['page'] = new Parameter( 'page' );
+		$params['page']->setDescription( wfMsg( 'includewp-include-par-page' ) );
 		
 		return $params;
 	}
@@ -190,6 +191,15 @@ final class IncludeWP extends ParserHook {
 			'noparse' => true,
 			'isHTML' => true
 		);
-	}	
+	}
+	
+	/**
+	 * @see ParserHook::getDescription()
+	 * 
+	 * @since 0.1
+	 */
+	public function getDescription() {
+		return wfMsg( 'includewp-parserhook-desc' );
+	}		
 	
 }
