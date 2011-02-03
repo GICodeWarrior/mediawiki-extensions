@@ -856,8 +856,8 @@ $messages['ps'] = array(
 	'am-username' => 'کارن-نوم',
 	'am-email' => 'برېښليک',
 	'nss-save-changes' => 'بدلونونه خوندي کول',
-	'nss-create-account-header' => 'نوی کارن-حساب جوړول',
-	'nss-create-account' => 'کارن-حساب جوړول',
+	'nss-create-account-header' => 'نوی ګڼون جوړول',
+	'nss-create-account' => 'ګڼون جوړول',
 	'nss-no-mail' => 'برېښليک مه رالېږۍ',
 );
 
