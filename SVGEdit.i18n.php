@@ -199,6 +199,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'svgedit-editbutton-edit' => 'Sunting gambar',
@@ -207,6 +208,8 @@ $messages['id'] = array(
 	'svgedit-editor-save-close' => 'Simpan dan tutup',
 	'svgedit-editor-close' => 'Batalkan',
 	'svgedit-desc' => 'Penyuntingan gambar SVG via peramban dengan [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Sunting gambar',
+	'svgedit-edit-tab-tooltip' => 'Anda dapat menyunting gambar SVG ini di penjelajah web Anda',
 );
 
 /** Japanese (日本語)
@@ -298,6 +301,8 @@ $messages['pms'] = array(
 	'svgedit-editor-save-close' => 'Salva e sara',
 	'svgedit-editor-close' => 'Scancela',
 	'svgedit-desc' => 'Modìfica ant ël browser dij disegn SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Modìfica disegn',
+	'svgedit-edit-tab-tooltip' => 'It peule modifiché sto disegn SVG an tò browser',
 );
 
 /** Portuguese (Português)
