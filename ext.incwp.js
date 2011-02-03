@@ -37,7 +37,8 @@
 				'format': 'json',
 				'prop': 'revisions',
 				'rvprop':'timestamp|content',
-				'titles': sender.attr( 'page' )
+				'titles': sender.attr( 'page' ),
+				'redirects': 1
 			},
 			function( data ) {
 				if ( data.query ) {
