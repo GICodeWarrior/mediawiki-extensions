@@ -19,7 +19,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'includewp-desc' => 'IncludeWP is a lightweight extension for including Wikipedia contnet into your wiki.',
+	'includewp-desc' => 'IncludeWP is a lightweight extension for including Wikipedia content into your wiki.',
 
 	'includewp-loading-page' => 'Loading page...',
 	'includewp-show-full-page' => 'Show full page',
