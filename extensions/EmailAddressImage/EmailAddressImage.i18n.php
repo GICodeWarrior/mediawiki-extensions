@@ -494,6 +494,13 @@ $messages['tg-latn'] = array(
 	'emailaddressimage-desc' => 'Baroi namoi nişonai poctai elektronī cun aks <code>&lt;email&gt;</code>-ro ilova mekunad',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'emailaddressimage-desc' => 'เพิ่ม <code>&lt;email&gt;</code> เพื่อแสดงที่อยู่อีเมลเป็นรูปภาพ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

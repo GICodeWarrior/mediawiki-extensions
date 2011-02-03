@@ -166,6 +166,13 @@ $messages['pt'] = array(
 	'snmpquery-desc' => 'Acrescentar as funções SNMPget e SNMPwalk e permitir que os dados sejam apresentados na wiki',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Raylton P. Sousa
+ */
+$messages['pt-br'] = array(
+	'snmpquery-desc' => 'Acrescentar as funções SNMPget e SNMPwalk e permitir que os dados sejam apresentados na wiki',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

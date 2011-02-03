@@ -587,6 +587,7 @@ $messages['ia'] = array(
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author IvanLanin
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'security' => 'Log pengamanan',
@@ -605,6 +606,7 @@ $messages['id'] = array(
 	'security-type-category' => 'kategori',
 	'security-type-namespace' => 'ruang nama',
 	'security-restricttogroup' => 'Akses dibatasi untuk anggota "$1"',
+	'restriction-read' => 'Baca',
 );
 
 /** Igbo (Igbo)
@@ -952,6 +954,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
 	'security' => 'Registro de segurança',
@@ -970,6 +973,7 @@ $messages['pt-br'] = array(
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'domínio',
 	'security-restricttogroup' => 'Acessar conteúdo restrito a membros de "$1"',
+	'restriction-read' => 'Ler',
 );
 
 /** Romanian (Română)

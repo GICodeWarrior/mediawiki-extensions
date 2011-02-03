@@ -336,6 +336,13 @@ $messages['su'] = array(
 	'wikimediamobile-desc' => 'MediaWiki ngadukung fungsi proyék Wikimédia-balawiri nyayang di http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Swedish (Svenska)
+ * @author Tobulos1
+ */
+$messages['sv'] = array(
+	'wikimediamobile-desc' => 'MediaWiki support functions for the Wikimedia-mobile project hosted at http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Telugu (తెలుగు)
  * @author RanjithSutari
  */

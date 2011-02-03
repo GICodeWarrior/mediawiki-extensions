@@ -1464,6 +1464,7 @@ Na voljo so »plain«, »normal« in »wiki«.',
 
 /** Swedish (Svenska)
  * @author Cohan
+ * @author Tobulos1
  */
 $messages['sv'] = array(
 	'article-comments-desc' => 'Aktiverar kommentaravsnitt på innehållssidor',
@@ -1486,6 +1487,10 @@ $messages['sv'] = array(
 	'article-comments-commenter-said' => '$1 sa ...',
 	'article-comments-summary' => 'Kommentar från $1 - via ArticleComments-tillägg',
 	'article-comments-submission-succeeded' => 'Kommentarinlämning lyckades',
+	'article-comments-comment-missing-name-parameter' => 'Namn saknas',
+	'article-comments-comment-missing-date-parameter' => 'Datum för kommentar saknas',
+	'article-comments-no-spam' => 'Minst ett av de inlämnade fälten var flaggat som spam.',
+	'processcomment' => 'Bearbetar artikelkommentar',
 );
 
 /** Telugu (తెలుగు)

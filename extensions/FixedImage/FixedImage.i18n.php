@@ -526,6 +526,13 @@ $messages['te'] = array(
 	'fixedimage-desc' => '<code>&lt;fundraising&gt;</code> అనే టాగుని బొమ్మగా చేరుస్తుంది',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'fixedimage-desc' => 'เพิ่มแท็ก <code>&lt;fundraising&gt;</code> เป็นรูปภาพ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

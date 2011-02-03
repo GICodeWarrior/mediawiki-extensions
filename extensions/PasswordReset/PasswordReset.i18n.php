@@ -1372,7 +1372,7 @@ $messages['ps'] = array(
 	'passwordreset-newpass' => 'نوی پټنوم:',
 	'passwordreset-disableuser' => 'آيا په رښتيا دا کارن-حساب ناچارنول غواړۍ؟',
 	'passwordreset-disablesuccess' => 'کارن-حساب مو ناچارند شوی (د کارونکي پېژند: $1)',
-	'passwordreset-accountdisabled' => 'کارن-حساب مو ناچارن شوی',
+	'passwordreset-accountdisabled' => 'ګڼون مو ناچارن شوی',
 	'disabledusers' => 'ناچارن شوي کارنان',
 );
 

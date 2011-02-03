@@ -885,7 +885,7 @@ Contròla tò scrit.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'ajaxlogin-create' => 'يو کارن-حساب جوړول',
+	'ajaxlogin-create' => 'يو ګڼون جوړول',
 );
 
 /** Portuguese (Português)

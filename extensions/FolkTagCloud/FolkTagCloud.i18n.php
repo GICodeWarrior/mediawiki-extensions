@@ -81,6 +81,13 @@ $messages['pt'] = array(
 	'folktagcloud-desc' => 'Acrescenta uma propriedade ao MediaWiki Semântico para categorizar páginas com categorias definidas pelo utilizador e uma tag ao analisador sintáctico para mostrá-las numa nuvem de categorias',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Raylton P. Sousa
+ */
+$messages['pt-br'] = array(
+	'folktagcloud-desc' => 'Acrescenta uma propriedade ao MediaWiki Semântico para marcar páginas com  rótulos  definidas pelo usuário e uma tag ao analisador sintático para mostrá-las numa nuvem de categorias',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

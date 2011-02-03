@@ -373,6 +373,13 @@ $messages['te'] = array(
 	'autoincrement-desc' => 'దాని అంతట అదే పెరిగే వేరియబుల్ <nowiki>{{AUTOINCREMENT}}</nowiki> కి ఒక వేరియబుల్ కొక్కెం',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'autoincrement-desc' => 'ตัวเสริมตัวแปรที่เพิ่มเติม ตัวแปรเพิ่มค่าอัตโนมัติ <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

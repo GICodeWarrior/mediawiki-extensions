@@ -2113,6 +2113,7 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
  * @author Helder.wiki
  * @author Heldergeovane
  * @author Luckas Blade
+ * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
 	'pollresults' => "Resultados de enquetes neste ''site''",
@@ -2141,6 +2142,7 @@ $messages['pt-br'] = array(
 	'qp_results_line_qpl' => 'Página "$1" Sondagem "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Página "$2" Sondagem "$3" ]',
 	'qp_export_to_xls' => 'Exportar estatísticas para o formato XLS',
+	'qp_voices_to_xls' => 'Exportar vozes para o formato XLS',
 	'qp_users_answered_questions' => '{{PLURAL:$1|Um usuário respondeu|$1 usuários responderam}} às questões',
 	'qp_func_no_such_poll' => 'Sondagem inexistente ($1)',
 	'qp_func_missing_question_id' => 'Por favor, especifique o número de uma pergunta existente (começando a partir de 1) para a sondagem $1',
