@@ -666,10 +666,13 @@ $messages['tg-latn'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
-	'icon-badimage' => 'ภาพเสีย',
+	'icon-badimage' => 'รูปภาพเสีย',
+	'icon-badwidth' => 'ความกว้างไม่ถูกต้อง',
+	'icon-desc' => 'ช่วยให้คุณสามารถใช้รูปภาพเป็นไอคอนและลิงก์บนไอคอน',
 );
 
 /** Tagalog (Tagalog)
