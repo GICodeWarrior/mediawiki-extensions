@@ -83,6 +83,13 @@ $messages['ia'] = array(
 	'trustedmath-not-found' => 'Le pagina [[:$1]] non existe',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'trustedmath-not-found' => 'Halaman [[:$1]] tidak eksis',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -121,5 +128,23 @@ $messages['pt'] = array(
 	'trustedmath-path-error' => 'Ocorreu um erro na criação do directório math',
 	'trustedmath-convert-error' => 'Ocorreu um erro durante a criação da imagem. "$1" devolveu <tt><nowiki>$2</nowiki></tt>.',
 	'trustedmath-not-found' => 'A página [[:$1]] não existe',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'trustedmath-desc' => 'Позволяет встраивать выражения LaTeX на страницы по аналогии с рендерером math, но без зависимости от Ocaml',
+	'trustedmath-permission-error' => 'Ненадежный math отключён в этой вики',
+	'trustedmath-path-error' => 'Ошибка при создании директории math',
+	'trustedmath-convert-error' => 'Ошибка создания изображения math. «$1» вернул <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Страницы [[:$1]] не существует',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'trustedmath-not-found' => 'Сторінки [[:$1]] не існує',
 );
 
