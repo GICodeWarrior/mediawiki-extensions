@@ -37,5 +37,6 @@
 .qpoll .question { margin-left:2em; }
 .qpoll .margin { padding-left:20px; }
 .qpoll .header .questionId { font-size: 1.1em; font-weight: bold; float: left; }
+.qpoll .header .questionId { *padding-right: 0.5em; } /* applies to IE7 and below */
 .qpoll a.input em { color:black; background-color:#DFDFDF; margin-right:1px; }
 .qpoll a.input input { padding-left:2px; border:0; }

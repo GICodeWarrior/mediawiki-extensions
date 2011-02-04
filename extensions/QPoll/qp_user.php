@@ -682,7 +682,7 @@ class qp_PollStats extends qp_AbstractPoll {
 			0=>array( '__tag'=>'div', '__end'=>"\n", 'class'=>'header',
 				0=>array( '__tag'=>'span', 'class'=>'questionId', 0=>$question->mQuestionId )
 			),
-			1=>$this->parser->recursiveTagParse( $question->mCommonQuestion . "\n", $this->ppframe )
+			1=>array( '__tag'=>'div', 0=>$this->parser->recursiveTagParse( $question->mCommonQuestion, $this->ppframe ) )
 		);
 		$tags[] = &$output_table;
 		return qp_Renderer::renderHTMLobject( $tags );
@@ -1061,7 +1061,7 @@ class qp_Poll extends qp_AbstractPoll {
 			0=>array( '__tag'=>'div', '__end'=>"\n", 'class'=>'header',
 				0=>array( '__tag'=>'span', 'class'=>'questionId', 0=>$question->mQuestionId )
 			),
-			1=>$this->parser->recursiveTagParse( $question->mCommonQuestion . "\n", $this->ppframe )
+			1=>array( '__tag'=>'div', 0=>$this->parser->recursiveTagParse( $question->mCommonQuestion, $this->ppframe ) )
 		);
 		$tags[] = &$output_table;
 		return qp_Renderer::renderHTMLobject( $tags );
