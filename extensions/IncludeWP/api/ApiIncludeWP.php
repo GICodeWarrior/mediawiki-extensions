@@ -64,6 +64,7 @@ class ApiIncludeWP extends ApiBase {
 		
 		// Remove excess whitespace
 		$plaintext = preg_replace( '/\s\s+/', ' ', $plaintext );
+		$plaintext = str_replace( "<p><br />\n</p>", '', $plaintext );
 		
 		$this->getResult()->addValue(
 			null,
