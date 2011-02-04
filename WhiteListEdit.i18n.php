@@ -3037,6 +3037,7 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Danutz
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
@@ -3051,7 +3052,7 @@ $messages['ro'] = array(
 	'whitelisttableexpires' => 'Expiră la',
 	'whitelisttablemodby' => 'Ultima dată modificat de',
 	'whitelisttablemodon' => 'Ultima dată modificat la',
-	'whitelisttableedit' => 'Modifică',
+	'whitelisttableedit' => 'Modificare',
 	'whitelisttableview' => 'Afișează',
 	'whitelisttablenewdate' => 'Dată nouă:',
 	'whitelisttablechangedate' => 'Schimbare dată de expirare',
