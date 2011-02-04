@@ -8773,6 +8773,7 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Danutz
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Stelistcristi
@@ -8791,7 +8792,7 @@ $messages['ro'] = array(
 	'anno_en' => 'Adnotări și categorii',
 	'mv_data_page_title' => '$1 pentru $2 de la $3',
 	'mv_play' => 'Redați',
-	'mv_edit' => 'Modifică',
+	'mv_edit' => 'Modificare',
 	'mv_history' => 'Istoric',
 	'mv_edit_title' => 'Editare text',
 	'mv_remove' => 'elimină',
