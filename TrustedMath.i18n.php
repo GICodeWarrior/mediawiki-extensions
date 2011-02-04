@@ -148,3 +148,14 @@ $messages['uk'] = array(
 	'trustedmath-not-found' => 'Сторінки [[:$1]] не існує',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'trustedmath-desc' => 'Cho phép nhúng các biểu thức LaTeX vào trang, giống như phần kết xuất toán học mặc định nhưng không cần Ocaml',
+	'trustedmath-permission-error' => 'Toán học không tin cậy bị tắt trên wiki này',
+	'trustedmath-path-error' => 'Lỗi tạo thư mục toán học',
+	'trustedmath-convert-error' => 'Lỗi tạo hình toán học. “$1” cho ra <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Trang [[:$1]] không tồn tại',
+);
+
