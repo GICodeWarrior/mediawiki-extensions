@@ -315,6 +315,37 @@ $messages['gsw'] = array(
 	'livetranslate-importtms-param-miscmatch' => 'Missverhältnis zwische dr Aazahl vu Spycherplätz un Type',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'livetranslate-desc' => 'הפעלת תרגום חי של תוכן הדף באמצעות שירות התרגום של גוגל',
+	'livetranslate-translate-to' => 'לתרגם דף זה ל',
+	'livetranslate-button-translate' => 'תרגום',
+	'livetranslate-button-translating' => 'מתבצע תרגום...',
+	'livetranslate-button-revert' => 'הצגת המקור',
+	'livetranslate-dictionary-error' => 'לא ניתן להשיג את מילון התרגום החי. מילים לא יטופלו כמיוחדות במהלך התרגום.',
+	'livetranslate-dictionary-empty' => 'במילון עדיין אין מילים. להוספה יש ללחות על "עריכה".',
+	'livetranslate-dictionary-count' => 'יש {{PLURAL:$1|מילה אחת|$1 מילים}} ב־{{PLURAL:$2|שפה אחת|$2 שפות}}. להוספה יש ללחוץ על "עריכה".',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|השפה הזאת אינה מוגדרת|השפות האלה אינן מוגדרות}} כעת כיעד לתרגום: $1. שנו השפות המאופשרות בהגדרות הוויקי שלכם או הוציאו אותן מהמילון.',
+	'livetranslate-dictionary-goto-edit' => 'שינוי זיכרונות תרגום.',
+	'special-livetranslate' => 'תרגום חי',
+	'livetranslate-tmtype-ltf' => 'תסדיר תרגום חי',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'אין עדיין שום זיכרונות תרגום.',
+	'livetranslate-special-button' => 'שמירה ועדכון',
+	'livetranslate-special-type' => 'סוג',
+	'livetranslate-special-location' => 'מיקום',
+	'livetranslate-special-remove' => 'הסרה',
+	'livetranslate-special-local' => 'מקומי',
+	'livetranslate-special-add-tm' => 'הוסף זיכרון תרגום חדש',
+	'livetranslate-special-current-tms' => 'זיכרונות תרגום קיימים',
+	'livetranslate-special-tms-update' => 'עדכון זיכרונות תרגום',
+	'livetranslate-special-update' => 'עדכון זיכרונות תרגום',
+	'livetranslate-importtms-param-miscmatch' => 'מתאים בין מספר המיקומים למספר הסוגים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
