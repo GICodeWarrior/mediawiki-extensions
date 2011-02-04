@@ -13,12 +13,12 @@ $wgExtensionCredits['parserhooks'][] = array(
 $wgHooks['ParserBeforeTidy'][] = 'citation_hooker';
 $wgHooks['ParserClearState'][] = 'citation_clear_state';
 
-$wgExtensionFunctions[] = "wfCitation";
+$wgHooks['ParserFirstCallInit'][] = "wfCitation";
 
-function wfCitation() {
-	global $wgParser ;
-	$wgParser->setHook( "citation" , 'parse_citation' ) ;
-	$wgParser->isMainParser = true ;
+function wfCitation( $parser ) {
+	$parser->setHook( "citation" , 'parse_citation' ) ;
+	$parser->isMainParser = true ;
+	return true;
 }
 
 $wgCitationCache = array() ;

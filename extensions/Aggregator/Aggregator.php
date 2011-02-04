@@ -18,10 +18,14 @@ $wgAggregatorExpiry = 1800;
 
 $wgExtensionFunctions[] = 'wfAggregatorSetup';
 
-function wfAggregatorSetup() {
-	global $wgParser;
-	$wgParser->setHook( 'aggregator', 'wfAggregatorHook' );
+$wgHooks['ParserFirstCallInit'][] = 'wfAggregatorOnParserFirstCallInit';
 
+function wfAggregatorOnParserFirstCallInit( $parser ) {
+	$parser->setHook( 'aggregator', 'wfAggregatorHook' );
+	return true;
+}
+
+function wfAggregatorSetup() {
 	// Magpie
 	if ( defined( 'MAGPIE_OUTPUT_ENCODING' ) ) {
 		if ( stricmp( MAGPIE_OUTPUT_ENCODING, 'UTF-8' ) ) {

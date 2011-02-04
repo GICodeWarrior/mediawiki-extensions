@@ -83,9 +83,8 @@ define( 'AMAZONPLUS_NEW', 2 );
 define( 'AMAZONPLUS_USED', 3 );
 
 # Set up the tag extension
-function efAmazonPlusSetup() {
-	global $wgParser;
-	$wgParser->setHook( 'amazon', 'efAmazonPlusRender' );
+function efAmazonPlusSetup( $parser ) {
+	$parser->setHook( 'amazon', 'efAmazonPlusRender' );
 	wfLoadExtensionMessages( 'AmazonPlus' );
 	return true;
 }
