@@ -2508,6 +2508,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Kandar
@@ -2581,6 +2582,8 @@ $messages['id'] = array(
 	'fundraiserstats-tab-maximums' => 'Tertinggi (USD)',
 	'fundraiserstats-tab-ytd' => 'Tahun berjalan (USD)',
 	'fundraiserstats-instructions' => 'Untuk melihat statistik hari tertentu, arahkan kursor ke bilah untuk hari itu. Setiap tahun memiliki warna yang berbeda pada tabel.',
+	'fundraiserstats-customize' => 'Sesuaikan',
+	'fundraiserstats-show-years' => 'Tampilkan tahun-tahun berikut:',
 	'fundraiserstats-time-zone' => 'Zona waktu:',
 	'fundraiserstats-utc' => '(dari UTC)',
 );
