@@ -686,6 +686,56 @@ Jeśli dotarłeś tu klikając jakiś link <a href="$1">zgłoś błąd</a>.
 	'toolbase-error-nowiki' => '$1.$2.org nie jest poprawnym adresem wiki',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'toolbase-header-title' => "Ferramentas X!'s (BETA)",
+	'toolbase-header-bugs' => 'Defeitos',
+	'toolbase-header-sitenotice' => 'Anúncio Global do Servidor de Ferramentas: $1',
+	'toolbase-replag' => 'Servidor com atraso de $1',
+	'toolbase-replag-years' => 'anos',
+	'toolbase-replag-months' => 'meses',
+	'toolbase-replag-weeks' => 'semanas',
+	'toolbase-replag-days' => 'dias',
+	'toolbase-replag-hours' => 'horas',
+	'toolbase-replag-minutes' => 'minutos',
+	'toolbase-replag-seconds' => 'segundos',
+	'toolbase-footer-exectime' => 'Executado em $1 segundos',
+	'toolbase-footer-source' => 'Ver código fonte',
+	'toolbase-footer-language' => 'Alterar língua',
+	'toolbase-footer-translate' => 'Traduzir',
+	'toolbase-navigation' => 'Navegação',
+	'toolbase-navigation-homepage' => 'Início',
+	'toolbase-navigation-user_id' => 'Pesquisar ID de utilizador',
+	'toolbase-navigation-autoedits' => 'Contador de edições automatizadas',
+	'toolbase-userid-submit' => 'Obter ID de utilizador',
+	'toolbase-userid-title' => 'Pesquisar uma identificação de utilizador',
+	'toolbase-userid-result' => 'A identificação de utilizador para <b>$1</b> em <a href="$3"><b>$3</b></a> é <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Calculadora de edições automatizadas',
+	'toolbase-autoedits-submit' => 'Calcular',
+	'toolbase-autoedits-approximate' => 'Número <b>aproximado</b> de edições usando...',
+	'toolbase-autoedits-totalauto' => 'Número total de edições automatizadas',
+	'toolbase-autoedits-totalall' => 'Número total de edições',
+	'toolbase-autoedits-pct' => 'Percentagem de edições automatizadas',
+	'toolbase-main-title' => 'Bem-vindo(a)!',
+	'toolbase-main-content' => 'Bem-vindo às ferramentas X!\'s! Este conjunto de ferramentas ainda está a ser convertido para o modelo <a href="$1">Symfony</a>. O processo de conversão demorará algum tempo, mas já deve estar a funcionar.
+
+Na barra lateral à direita encontra uma lista das ferramentas que já se encontram operacionais neste modelo.
+
+Os defeitos podem ser reportados em <a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'O ficheiro não foi encontrado',
+	'toolbase-main-404-content' => 'A página não foi encontrada!
+
+Certifique-se de que a URL está correcta.
+Se chegou cá a partir de um link <a href="$1">reporte este defeito</a>, por favor.
+</ul>',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 não é um utilizador válido',
+	'toolbase-error-nowiki' => '$1.$2.org não é uma wiki válida',
+	'toolbase-error-toomanyedits' => '$1 tem $2 edições. Esta ferramenta tem um máximo de $3 edições.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -750,9 +800,16 @@ $messages['vi'] = array(
 	'toolbase-navigation' => 'Xem nhanh',
 	'toolbase-navigation-homepage' => 'Trang đầu',
 	'toolbase-navigation-user_id' => 'Tìm ID người dùng',
+	'toolbase-navigation-autoedits' => 'Trình đếm sửa đổi tự động',
 	'toolbase-userid-submit' => 'Tìm ID người dùng',
 	'toolbase-userid-title' => 'Tìm ID người dùng',
 	'toolbase-userid-result' => 'ID của người dùng <b>$1</b> tại <a href="$3"><b>$3</b></a> là <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Trình đếm sửa đổi tự động',
+	'toolbase-autoedits-submit' => 'Tính',
+	'toolbase-autoedits-approximate' => '<b>Ước tính</b> số lần sửa đổi dùng…',
+	'toolbase-autoedits-totalauto' => 'Tổng số sửa đổi tự động',
+	'toolbase-autoedits-totalall' => 'Tổng số sửa đổi',
+	'toolbase-autoedits-pct' => 'Tỷ lệ sửa đổi tự động',
 	'toolbase-main-title' => 'Hoan nghênh!',
 	'toolbase-main-content' => 'Hoan nghênh bạn đã đến với các công cụ của X! Bộ công cụ này vẫn đang được chuyển qua khuôn khổ <a href="$1">Symfony</a>. Quá trình này chưa xong nhưng có lẽ đã hoạt động.
 
@@ -768,6 +825,7 @@ Nếu bạn theo một liên kết từ trang khác, xin vui lòng <a href="$1">
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '“$1” không phải là người dùng hợp lệ',
 	'toolbase-error-nowiki' => '“$1.$2.org” không phải là wiki hợp lệ',
+	'toolbase-error-toomanyedits' => '$1 đã sửa đổi $2 lần. Công cụ này chỉ có xử lý được tối đa $3 sửa đổi.',
 );
 
 /** Simplified Chinese (中文(简体))
