@@ -38,7 +38,7 @@
 	 */
 	function loadPage( sender ) {
 		$.getJSON(
-			sender.attr( 'wiki' ) + '/api.php?callback=?',
+			window.wgIncWPWikis[sender.attr( 'wiki' )].path + '/api.php?callback=?',
 			{
 				'action': 'query',
 				'format': 'json',
@@ -162,14 +162,16 @@
 	 * @param integer pageId
 	 */
 	function showCopyright( pageName, pageId ) {
+		var wiki = window.wgIncWPWikis[$( '#includewp-loading-' + pageId ).attr( 'wiki' )];
+		
 		var licenceHtml = mediaWiki.msg( // TODO: make non WP-specific
 				'includewp-licence-notice',
-				'Wikipedia',
-				'http://en.wikipedia.org/wiki/' + pageName,
+				wiki.name,
+				wiki.url + '/' + pageName,
 				pageName,
-				'http://creativecommons.org/licenses/by-sa/3.0/',
-				'CC-BY-SA',
-				'http://en.wikipedia.org/wiki/' + pageName + '?action=history'
+				wiki.licenceurl,
+				wiki.licencename,
+				wiki.url + '/' + pageName + '?action=history'
 		);
 		
 		$( '#includewp-copyright-' + pageId ).html( licenceHtml );

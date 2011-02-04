@@ -57,10 +57,16 @@ final class IncludeWP extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
+		global $egIncWPWikis;
+		
 		$params = array();
 		
 		$params['page'] = new Parameter( 'page' );
 		$params['page']->setDescription( wfMsg( 'includewp-include-par-page' ) );
+		
+		$params['wiki'] = new Parameter( 'wiki' );
+		$params['wiki']->setDefault( array_shift( array_keys( $egIncWPWikis ) ) );
+		$params['wiki']->addCriteria( new CriterionInArray( array_keys( $egIncWPWikis ) ) );
 		
 		return $params;
 	}
@@ -74,7 +80,7 @@ final class IncludeWP extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return array( 'page' );
+		return array( 'page', 'wiki' );
 	}
 	
 	/**
@@ -100,7 +106,7 @@ final class IncludeWP extends ParserHook {
 				'pageid' => $nr,
 				'class' => 'includewp-loading',
 				'page' => $parameters['page'],
-				'wiki' => 'http://en.wikipedia.org/w' // TODO
+				'wiki' => $parameters['wiki']
 			),
 			wfMsgForContent( 'includewp-loading-page' )
 		);
@@ -142,6 +148,8 @@ final class IncludeWP extends ParserHook {
 		
 		$loadedJs = true;
 		
+		$this->addJSWikiData();
+		
 		// For backward compatibility with MW < 1.17.
 		if ( is_callable( array( $this->parser->getOutput(), 'addModules' ) ) ) {
 			$this->parser->getOutput()->addModules( 'ext.incwp' );
@@ -162,6 +170,21 @@ final class IncludeWP extends ParserHook {
 			);
 		}		
 	}	
+	
+	/**
+	 * Ouput the wiki data needed to display the licence links.
+	 * 
+	 * @since 0.1
+	 */
+	protected function addJSWikiData() {
+		global $egIncWPWikis;
+		
+		$this->parser->getOutput()->addHeadItem(
+			Html::inlineScript(
+				'var wgIncWPWikis =' . json_encode( $egIncWPWikis ) . ';'
+			)
+		);
+	}
 	
 	/**
 	 * Adds the needed JS messages to the page output.
