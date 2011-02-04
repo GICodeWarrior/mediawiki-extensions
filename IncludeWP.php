@@ -67,7 +67,8 @@ $wgAPIModules['includewp'] = 'ApiIncludeWP';
 $egIncWPJSMessages = array(
 	'includewp-show-full-page',
 	'includewp-loading-failed',
-	'includewp-licence-notice'
+	'includewp-licence-notice',
+	'includewp-show-fragment'
 );
 
 // For backward compatibility with MW < 1.17.

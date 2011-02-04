@@ -23,12 +23,19 @@
 		}
 	}
 	
+	// Variable to store the HTML of rendered pages in.
 	var pages = {};
 	
+	// Find all inclusion requests and obtain the wikitext from the remote wiki.
 	$.each($(".includewp-loading"), function(i,v) {
 		loadPage( $(v) );
 	});		
 	
+	/**
+	 * Make a JSONP call to the remote wiki to obtain the page wikitext.
+	 * 
+	 * @param jQuery sender
+	 */
 	function loadPage( sender ) {
 		$.getJSON(
 			sender.attr( 'wiki' ) + '/api.php?callback=?',
@@ -54,6 +61,14 @@
 		);		
 	}
 	
+	/**
+	 * Send the obtained wikitext to the local API to strip out stuff we
+	 * don't want (such as external links and infoboxes), and parse the
+	 * remainder to HTML. 
+	 * 
+	 * @param jQuery sender
+	 * @param string rawWikiText
+	 */
 	function getPlaintext( sender, rawWikiText ) {
 		var pageId = sender.attr( 'pageid' );
 		var pageName = sender.attr( 'page' );
@@ -82,17 +97,70 @@
 		);
 	}
 	
+	/**
+	 * Show a fragment (number of paragraphes) of the text, and display a link
+	 * that will show the full page.
+	 * 
+	 * @param string pageName
+	 * @param integer pageId
+	 */
 	function showPageFragment( pageName, pageId ) {
-		var paragraphEnd = pages[pageName].search( '</p>' );
-		$( '#includewp-article-' + pageId )
-			.html( pages[pageName].substr( 0, paragraphEnd ) + '</p>' )
-			.append( $( '<a />' ).text( mediaWiki.msg( 'includewp-show-full-page' ) ).addClass( 'incwp-more' ).attr( 'href', '#' ).click( function() { showFullPage( pageName, pageId ) } ) );
-	} 
-
-	function showFullPage( pageName, pageId ) {
-		$( '#includewp-article-' + pageId ).html( pages[pageName] );
+		var paragraphs = getPageParagraphs( pageName, 3 );
+		
+		$( '#includewp-article-' + pageId ).html( paragraphs === false ? pages[pageName] : paragraphs );
+		
+		// Remove any possible TOC, as we don't want it to show up for page fragments.
+		$('.toc').remove();
+		
+		if ( paragraphs !== false ) {
+			$( '#includewp-article-' + pageId ).append( $( '<a />' ).text( mediaWiki.msg( 'includewp-show-full-page' ) )
+				.addClass( 'incwp-more' ).attr( 'href', '#' ).click( function() { showFullPage( pageName, pageId ) } ) );
+		}
 	}
 	
+	/**
+	 * Returns the text of the first x paragraphes.
+	 * 
+	 * @param string pageName
+	 * @param integer paragraphAmount
+	 * 
+	 * @return string
+	 */
+	function getPageParagraphs( pageName, paragraphAmount ) {
+		var textSize = 0;
+		var pSize = 4;
+		
+		while ( paragraphAmount-- > 0 ) {
+			var paragraphEnd = pages[pageName].substr( textSize ).search( '</p>' );
+			
+			if ( paragraphEnd == -1 ) {
+				return false;
+			}
+			
+			textSize += paragraphEnd + pSize;
+		}
+
+		return pages[pageName].substr( 0, textSize );
+	}
+
+	/**
+	 * Show the full page, and a link to only show the fragment.
+	 * 
+	 * @param string pageName
+	 * @param integer pageId
+	 */	
+	function showFullPage( pageName, pageId ) {
+		$( '#includewp-article-' + pageId ).html( pages[pageName] )
+			.append( $( '<a />' ).text( mediaWiki.msg( 'includewp-show-fragment' ) )
+				.addClass( 'incwp-less' ).attr( 'href', '#' ).click( function() { showPageFragment( pageName, pageId ) } ) );		
+	}
+	
+	/**
+	 * Adds a copyright disclaimer underneat the actual article.
+	 * 
+	 * @param string pageName
+	 * @param integer pageId
+	 */
 	function showCopyright( pageName, pageId ) {
 		var licenceHtml = mediaWiki.msg( // TODO: make non WP-specific
 				'includewp-licence-notice',

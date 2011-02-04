@@ -23,6 +23,7 @@ $messages['en'] = array(
 
 	'includewp-loading-page' => 'Loading page...',
 	'includewp-show-full-page' => 'Show full page',                                 
+	'includewp-show-fragment' => 'Only show the first paragraph',
 	'includewp-loading-failed' => 'Failed to load page.',
 
 	'includewp-licence-notice' => 'The above content comes from the $1 page <a href="$2">$3</a> licenced under the <a href="$4">$5</a>. A full list of authors can be found <a href="$6">here</a>.',
