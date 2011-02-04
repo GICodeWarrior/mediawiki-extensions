@@ -9,5 +9,5 @@ Author URI: http://www.mediawiki.org/wiki/PhotoCommons
 License: GPL2
 */
 
-require 'inc/class-photocommons.php';
-new Photocommons();
+require_once 'inc/class-photocommons.php';
+new PhotoCommons();
