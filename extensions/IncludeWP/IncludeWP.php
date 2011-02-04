@@ -52,7 +52,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'includewp-desc'
 );
 
-$egIncWPScriptPath = $wgExtensionAssetsPath === false ? '/extensions/IncludeWP' : $wgExtensionAssetsPath . '/IncludeWP';
+$egIncWPScriptPath = $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions/IncludeWP' : $wgExtensionAssetsPath . '/IncludeWP';
 
 $wgExtensionMessagesFiles['IncludeWP'] = dirname( __FILE__ ) . '/IncludeWP.i18n.php';
 
