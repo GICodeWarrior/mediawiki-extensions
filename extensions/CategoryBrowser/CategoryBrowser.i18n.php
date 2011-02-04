@@ -741,17 +741,28 @@ Wänn megli, tue Dyy Browser aktualisiere oder wächsle.',
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
 	'categorybrowser' => 'סייר הקטגוריות',
+	'categorybrowser-desc' => 'יצירת [[[[Special:CategoryBrowser|דף מיוחד]] לסינון הקטגוריות הפופולריות ביותר ולניווט בהן באמצעות ממשק AJAX',
+	'cb_requires_javascript' => 'כדי שהרחבת הדפדפן לקטגוריות תעבוד, התמיכה ב־JavaScript צריכה להיות מופעלת.',
+	'cb_ie6_warning' => 'עורך התנים אינו עובר ב־Microsoft Internet Explorer 6.0 ובגרסאות ישנות יותר.
+עיון בתנאים מוגדרים מראש אמור לעבוד טוב.
+במית האפשר, החליפו או עדכנו את הדפדפן שלכם.',
+	'cb_show_no_parents_only' => 'להציג רק קטגוריות ללא הורים',
+	'cb_cat_name_filter' => 'חיפוש קטגוריה לפי שם:',
+	'cb_cat_name_filter_clear' => 'ניקוי מסנן שמות הקטגוריות',
 	'cb_cat_name_filter_ci' => 'ללא תלות ברישיות',
+	'cb_copy_line_hint' => 'השתמשו בכפתורים [+] ו־[>+] להעתקה והדבקה של אופרטורים לביטוי הנבחר',
 	'cb_has_subcategories' => '{{PLURAL:$1|תת־קטגוריה אחת|$1 תת־קטגוריות}}',
 	'cb_has_pages' => '{{PLURAL:$1|דף אחד|$1 דפים}}',
 	'cb_has_files' => '{{PLURAL:$1|קובץ אחד|$1 קבצים}}',
 	'cb_has_parentcategories' => 'קטגוריות אב (אם ישנן)',
 	'cb_previous_items_link' => 'הקודם',
 	'cb_next_items_link' => 'הבא',
+	'cb_next_items_stats' => '(מתוך $1)',
 	'cb_cat_subcats' => 'תת־קטגוריות',
 	'cb_cat_pages' => 'דפים',
 	'cb_cat_files' => 'קבצים',
@@ -762,6 +773,11 @@ $messages['he'] = array(
 	'cb_edit_left_hint' => 'הזזה שמאלה, אם ניתן',
 	'cb_edit_right_hint' => 'הזזה ימינה, אם ניתן',
 	'cb_edit_remove_hint' => 'מחיקה, אם ניתן',
+	'cb_edit_copy_hint' => 'העתקת האופרטור ללוח גזירה',
+	'cb_edit_append_hint' => 'להכניס את האופרטור למיקום האחרון',
+	'cb_edit_clear_hint' => 'לנקות את הביטוי הנוכחי (לבחור הכול)',
+	'cb_edit_paste_hint' => 'להדביק את האופרטור למיקום הנוכחי, אם אפשר',
+	'cb_edit_paste_right_hint' => 'להדביק את האופרטור למיקום הבא, אם אפשר',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

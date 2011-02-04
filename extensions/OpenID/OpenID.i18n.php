@@ -4270,9 +4270,9 @@ $messages['ps'] = array(
 	'openiddelete-button' => 'تاييد',
 	'openid-urls-action' => 'چاره',
 	'openid-urls-delete' => 'ړنګول',
-	'openidsigninorcreateaccount' => 'ننوتل او يا نوی کارن-حساب جوړول',
-	'openid-provider-label-google' => 'د Google د کارن-حساب په مرسته ننوتل',
-	'openid-provider-label-yahoo' => 'د Yahoo د کارن-حساب په مرسته ننوتل',
+	'openidsigninorcreateaccount' => 'ننوتل او يا نوی ګڼون جوړول',
+	'openid-provider-label-google' => 'د ګووګل د ګڼون په مرسته ننوتل',
+	'openid-provider-label-yahoo' => 'د ياهو د ګڼون په مرسته ننوتل',
 	'openid-provider-label-other-username' => 'تاسې خپل $1 کارن-نوم وليکۍ',
 );
 
