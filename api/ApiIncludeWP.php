@@ -68,7 +68,7 @@ class ApiIncludeWP extends ApiBase {
 		$this->getResult()->addValue(
 			null,
 			null,
-			strip_tags( $plaintext, '<p><b><h1><h2><h3><h4><h5><table><th><tr><td><li><ul><ol><a>' )
+			$plaintext
 		);
 	}
 	
