@@ -43,11 +43,11 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $wgExtensionMessagesFiles['ChemFunctions'] = dirname( __FILE__ ) . '/ChemFunctions.i18n.php';
 
-$wgExtensionFunctions[] = "wfChemFormExtension";
+$wgHooks['ParserFirstCallInit'][] = 'wfChemFormExtension';
 
-function wfChemFormExtension() {
-	global $wgParser;
-	$wgParser->setHook( "chemform", "RenderChemForm" );
+function wfChemFormExtension( $parser ) {
+	$parser->setHook( "chemform", "RenderChemForm" );
+	return true;
 }
 
 function RenderChemForm( $input, $argv ) {
