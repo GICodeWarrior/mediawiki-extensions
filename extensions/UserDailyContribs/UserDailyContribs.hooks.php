@@ -13,10 +13,14 @@ class UserDailyContribsHooks {
 	/**
 	 * LoadExtensionSchemaUpdates hook
 	 */
-	public static function loadExtensionSchemaUpdates() {
-		global $wgExtNewTables;
-		
-		$wgExtNewTables[] = array( 'user_daily_contribs', dirname( __FILE__ ) . '/patches/UserDailyContribs.sql' );
+	public static function loadExtensionSchemaUpdates( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables;
+			$wgExtNewTables[] = array( 'user_daily_contribs', dirname( __FILE__ ) . '/patches/UserDailyContribs.sql' );
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'user_daily_contribs',
+				dirname( __FILE__ ) . '/patches/UserDailyContribs.sql', true ) );
+		}
 		return true;
 	}
 	
