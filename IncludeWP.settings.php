@@ -20,3 +20,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$egIncWPWikis = array();
+
+$egIncWPWikis['wikipedia'] = array(
+	'name' => 'Wikipedia',
+	'path' => 'http://en.wikipedia.org/w',
+	'url' => 'http://en.wikipedia.org/wiki',
+	'licencename' => 'CC-BY-SA',
+	'licenceurl' => 'http://creativecommons.org/licenses/by-sa/3.0/'
+); 
