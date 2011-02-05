@@ -923,14 +923,15 @@ $messages['jv'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'passwordreset' => 'កំណត់​ពាក្យសំងាត់​សាឡើងវិញ',
 	'passwordreset-desc' => '[[Special:PasswordReset|ដើម្បី​កំណត់​ពាក្យសំងាត់​អ្នកប្រើប្រាស់​វិគី​សាឡើងវិញ]] ត្រូវ​ទាមទារ​ឱ្យ​មាន​សិទ្ធិ​លើ​ការកំណត់​ពាក្យសំងាត់',
-	'passwordreset-invalidusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ គ្មានសុពលភាព',
-	'passwordreset-emptyusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ ទទេ',
+	'passwordreset-invalidusername' => 'អត្តនាមគ្មានសុពលភាព',
+	'passwordreset-emptyusername' => 'អត្តនាមទទេ',
 	'passwordreset-nopassmatch' => 'ពាក់សំងាត់​មិន​ត្រឹមត្រូវ​ទេ',
-	'passwordreset-username' => 'ឈ្មោះអ្នកប្រើប្រាស់៖',
+	'passwordreset-username' => 'អត្តនាម៖',
 	'passwordreset-newpass' => 'ពាក្យសំងាត់​ថ្មី៖',
 	'passwordreset-confirmpass' => 'បញ្ជាក់​ទទួល​ស្គាល់​ពាក្យសំងាត់៖',
 	'passwordreset-submit' => 'កំណត់​ពាក្យសំងាត់​សាឡើងវិញ',
