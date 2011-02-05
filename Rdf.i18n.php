@@ -11,7 +11,8 @@ $messages = array();
  * English
  */
 $messages['en'] = array(
-	'rdf' => 'Rdf',
+	'rdf' => 'RDF',
+	'rdf-desc' => 'RDF framework for MediaWiki',
 	'rdf-inpage' => "Embedded In-page Turtle",
 	'rdf-dcmes' => "Dublin Core Metadata Element Set",
 	'rdf-cc' => "Creative Commons",
@@ -27,6 +28,7 @@ $messages['en'] = array(
 	'rdf-format' => "Output format",
 	'rdf-output-xml' => "XML",
 	'rdf-output-turtle' => "Turtle",
-	'rdf-output-ntriples' => "NTriples",
+	'rdf-output-ntriples' => 'N-Triples',
 	'rdf-instructions' => "Select the target page and RDF models you're interested in."
 );
+
