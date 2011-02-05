@@ -319,6 +319,13 @@ $messages['eo'] = array(
 	'ea-selectcss' => 'Selekti CSS-tiparŝablono',
 );
 
+/** Spanish (Español)
+ * @author Dferg
+ */
+$messages['es'] = array(
+	'ea-denied' => 'Acceso denegado',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */
@@ -608,6 +615,7 @@ $messages['lb'] = array(
 	'ea-heading' => '=== Säit [[$1]] peer E-Mail verschécken ===',
 	'ea-group-info' => "Zousätzlech kënnt Dir d'Säit de Membere vun engem Grupp schécken",
 	'ea-pagesend' => 'D\'Säit "$1" gouf verschéckt vum $2',
+	'ea-nopage' => "Et gouf keng Säit ugi fir ze verschécken, benotzt w.e.g. den E-Mail-Link aus der säitlecher Läischt oder d'Aktioune vun der Säit.",
 	'ea-norecipients' => 'Keng gëlteg E-Mailadress fonnt',
 	'ea-listrecipients' => '=== {{PLURAL:$1|Destinataire|Lëscht vun de(n) $1 Destinatairen}} ===',
 	'ea-error' => "'''Feeler beim Verschécke vun der Säit [[$1]]:''' ''$2''",
