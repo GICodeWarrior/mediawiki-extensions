@@ -2199,6 +2199,7 @@ $messages['km'] = array(
 	'voctrain_Omegawiki_vocabulary_trainer' => 'កម្មវិធីហ្វឹកហ្វឺនវាក្យស័ព្ទអូមេហ្គាវិគី(Omegawiki vocabulary trainer)',
 	'voctrain_Definitions' => 'និយមន័យ',
 	'voctrain_Could_not_create_new_user' => 'មិនអាចបង្កើតអ្នកប្រើប្រាស់ថ្មីបានទេ',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'វាយបញ្ចូលអត្តនាមនិងពាក្យសំងាត់ (ឬសាកប្រើអត្តនាមផ្សេង)',
 	'voctrain_Vocview' => 'កម្មវិធីមើលវាក្យស័ព្ទ',
 	'voctrain_Dictionary_definitions' => 'និយមន័យក្នុងវចនានុក្រម',
 	'voctrain_Translation' => 'បំណកប្រែ',
@@ -2207,6 +2208,7 @@ $messages['km'] = array(
 	'voctrain_hiding' => 'លាក់',
 	'voctrain_hide_definitions_in_question_language' => 'លាក់​អត្ថន័យ​ក្នុងភាសា​សំនួរ​',
 	'voctrain_hide_words_in_question_language' => 'លាក់ពាក្យក្នុង​ភាសាសំនួរ​',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'ខ័ណ្ឌតំលៃលេខដោយប្រើសញ្ញាក្បៀស​ដើម្បីប្រើច្រើនភាសា។',
 	'voctrain_other' => 'ផ្សេងទៀត',
 );
 
