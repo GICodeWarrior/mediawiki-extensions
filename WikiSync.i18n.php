@@ -366,6 +366,13 @@ ab Version $3 durchgeführt werden?',
 	'wikisync_js_sync_end_rtl' => 'Synchronisierung des lokalen Wikis mit dem fernen Wiki war um $1 fertig',
 );
 
+/** Spanish (Español)
+ * @author Dferg
+ */
+$messages['es'] = array(
+	'wikisync_api_result_Blocked' => 'El usuario está bloqueado',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
