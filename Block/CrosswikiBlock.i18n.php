@@ -1500,7 +1500,7 @@ $messages['ka'] = array(
 $messages['km'] = array(
 	'crosswikiblock-desc' => 'អនុញ្ញាត​ឱ្យរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​​វិគីផ្សេង​ដែលប្រើប្រាស់ [[Special:Crosswikiblock|ទំព័រពិសេស]]',
 	'crosswikiblock' => 'រាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​វិគីផ្សេង',
-	'crosswikiblock-target' => 'អាសយដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
+	'crosswikiblock-target' => 'អាសយដ្ឋាន IP ឬ អត្តនាម និង វិគីគោលដៅ ៖',
 	'crosswikiblock-expiry' => 'ផុតកំណត់ ៖',
 	'crosswikiblock-reason' => 'មូលហេតុ៖',
 	'crosswikiblock-submit' => 'រាំងខ្ទប់​អ្នកប្រើប្រាស់​នេះ',
@@ -1511,7 +1511,7 @@ $messages['km'] = array(
 	'crosswikiunblock-header' => 'ទំព័រនេះអនុញ្ញាតឱ្យហាមឃាត់អ្នកប្រើប្រាស់នៅលើវិគីដ៏ទៃផ្សេងទៀត។
 
 សូមត្រួតពិនិត្យមើលថាតើអ្នកត្រូវអនុញ្ញាតឱ្យធ្វើសកម្មភាពនៅលើវិគីនេះ និងសកម្មភាពរបស់អ្នកគោរពតាមរាល់គោលការណ៍។',
-	'crosswikiunblock-user' => 'ឈ្មោះអ្នកប្រើប្រាស់, អាសយដ្ឋាន IP ឬ រាំងខ្ទប់ ID និង វិគី គោលដៅ ៖',
+	'crosswikiunblock-user' => 'អត្តនាម, អាសយដ្ឋាន IP ឬ រាំងខ្ទប់ ID និង វិគី គោលដៅ ៖',
 	'crosswikiunblock-reason' => 'មូលហេតុ៖',
 	'crosswikiunblock-submit' => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
 	'crosswikiunblock-success' => "អ្នកប្រើប្រាស់ '''$1''' បានឈប់ហាមឃាត់ដោយជោគជ័យហើយ។
@@ -1520,9 +1520,9 @@ $messages['km'] = array(
 ត្រឡប់ទៅកាន់:
 * [[Special:CrosswikiBlock|ទម្រង់បែបបទសម្រាប់ការហាមឃាត់]]
 * [[$2]]",
-	'crosswikiblock-nousername' => 'គ្មានឈ្មោះអ្នកប្រើប្រាស់ បានត្រូវបញ្ចូល',
+	'crosswikiblock-nousername' => 'គ្មានអត្តនាមបានត្រូវបញ្ចូល',
 	'crosswikiblock-dbnotfound' => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន',
-	'crosswikiblock-noname' => 'ឈ្មោះអ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព ។',
+	'crosswikiblock-noname' => 'អត្តនាម "$1" គ្មានសុពលភាព ។',
 	'crosswikiblock-nouser' => 'រកមិនឃើញ អ្នកប្រើប្រាស់ "$3" ។',
 	'crosswikiblock-noreason' => 'គ្មានហេតុផល ត្រូវបានសំដៅ ។',
 	'crosswikiblock-alreadyblocked' => 'អ្នកប្រើប្រាស់ $3 ត្រូវបាន រាំងខ្ទប់ ហើយ ។',
