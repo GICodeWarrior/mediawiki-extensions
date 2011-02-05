@@ -84,9 +84,9 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'RDF',
 	'version' => MWRDF_VERSION,
-	'description' => 'RDF framework for MediaWiki',
+	'descriptionmsg' => 'rdf-desc',
 	'author' => 'Evan Prodromou',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RDF',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Rdf',
 );
 
 $wgExtensionFunctions[] = 'setupMwRdf';
