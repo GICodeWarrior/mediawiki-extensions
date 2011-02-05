@@ -977,6 +977,7 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Danutz
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
@@ -984,6 +985,7 @@ $messages['ro'] = array(
 	'security-logpage' => 'Jurnal securitate',
 	'security-type-category' => 'categorie',
 	'security-type-namespace' => 'spațiu de nume',
+	'restriction-read' => 'Lectură',
 );
 
 /** Russian (Русский)
