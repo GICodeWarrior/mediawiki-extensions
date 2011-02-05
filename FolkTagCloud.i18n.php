@@ -50,7 +50,7 @@ $messages['gsw'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'folktagcloud-desc' => 'Adde un proprietate de Semantic MediaWiki pro categorisar paginas con etiquettas definite per le usatores, e un function pro presentar istes in un nube de etiquettas.',
+	'folktagcloud-desc' => 'Adde un proprietate de Semantic MediaWiki pro categorisar paginas con etiquettas definite per le usatores, e un function pro presentar istes in un etiquettario (nube de etiquettas).',
 );
 
 /** Macedonian (Македонски)
