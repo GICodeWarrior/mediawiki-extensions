@@ -2736,6 +2736,7 @@ Bonvolu malŝalti <b>Firebug</b> por ĉi tiu paĝo.',
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Dferg
  * @author Locos epraix
  * @author McDutchie
  * @author Translationista
@@ -2882,7 +2883,7 @@ $messages['es'] = array(
 	'rsd_config_error' => 'Error de configuración del asistente para añadir elementos multimedia: $1',
 	'mwe-your-recent-uploads' => 'Tus cargas recientes a $1',
 	'mwe-no_recent_uploads' => 'Sin cargas recientes',
-	'mwe-not-logged-in-uploads' => 'Puedes no haber iniciado sesión en ese caso las cargas recientes no podrán ser mostradas. $1 iniciar sesión y $2',
+	'mwe-not-logged-in-uploads' => 'Puede que no hayas iniciado sesión, en ese caso las cargas recientes no podrán ser mostradas. [$1 Inicia sesión] e [$2 inténtalo de nuevo].',
 	'mwe-ie-eye-permision' => 'Si estás usando Internet Explorer y has iniciado sesión, puedes necesitar ajustar tu configuración de privacidad',
 	'mwe-upload-a-file' => 'Subir un nuevo archivo',
 	'mwe-upload-a-file-to' => 'Subir un nuevo archivo a $1',

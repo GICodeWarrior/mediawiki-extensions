@@ -1701,7 +1701,7 @@ $messages['km'] = array(
 	'ct_user_user' => 'អ្នកប្រើប្រាស់',
 	'ct_user_tip' => 'ដាក់​តំណ​ជាមួយ​ទំព័រ​អ្នកប្រើប្រាស់',
 	'ct_user_caption' => 'តំណ​អ្នកប្រើប្រាស់',
-	'ct_user_sample' => 'ឈ្មោះអ្នកប្រើប្រាស់',
+	'ct_user_sample' => 'អត្តនាម',
 );
 
 /** Kannada (ಕನ್ನಡ)

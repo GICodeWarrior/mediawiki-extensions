@@ -140,6 +140,13 @@ Beispiele:
 $messages['dsb'] = array(
 	'flagpage' => 'Bok wobznamjeniś',
 	'flagpage-desc' => 'Bok z pśeddefiněrowanymi pśedłogami wobznamjeniś',
+	'flagpage-templatelist' => '<!--
+Wobźěłaj toś ten bok, aby konfigurěrował pśedłogi, kótarež stoje k dispoziciji.
+Pšikłady:
+* [[Pśedłoga:Unsourced|Bok njecitěrujo žrědła]]
+* [[Pśedłoga:NPOV|Bok je stroniski]]
+* [[Pśedłoga:Delete|Bok ma se wulašowaś]]
+-->',
 	'flagpage-nopageselectedtitle' => 'Žeden bok wubrany',
 	'flagpage-nopageselected' => 'Njejsy žeden bok pódał',
 	'flagpage-emptylisttitle' => 'Žedne pśedłogi konfigurěrowane',

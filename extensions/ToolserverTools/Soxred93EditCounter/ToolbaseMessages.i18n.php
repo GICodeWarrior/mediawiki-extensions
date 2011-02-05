@@ -401,9 +401,16 @@ $messages['hsb'] = array(
 	'toolbase-navigation' => 'Nawigacija',
 	'toolbase-navigation-homepage' => 'Startowa strona',
 	'toolbase-navigation-user_id' => 'Wužiwarski ID pytać',
+	'toolbase-navigation-autoedits' => 'Ličak awtomatizowanych změnow',
 	'toolbase-userid-submit' => 'Wužiwarski ID wobstarać',
 	'toolbase-userid-title' => 'Wužiwarski ID pytać',
 	'toolbase-userid-result' => 'Wužiwarski ID za <b>$1</b> na <a href="$3"><b>$3</b></a> je <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Wobličowak awtomatizowanych změnow',
+	'toolbase-autoedits-submit' => 'Wobličić',
+	'toolbase-autoedits-approximate' => '<b>Přibližna</b> ličba změnow z...',
+	'toolbase-autoedits-totalauto' => 'Cyłkowna ličba awtomatizowanych změnow',
+	'toolbase-autoedits-totalall' => 'Cyłkowna ličba změnow',
+	'toolbase-autoedits-pct' => 'Procentowa sadźba awtomatizowanych změnow',
 	'toolbase-main-title' => 'Witaj!',
 	'toolbase-main-content' => 'Witaj k X!\'s tools! Gratowy pakćik so runje hišće do frameworka <a href="$1">Symfony</a> konwertuje. Tutón proces budźe chwilku trać, ale měł hižo nětko fungować.
 
@@ -419,6 +426,7 @@ Jeli wotkaz je će wot něhdźe sem wjedł, <a href="$1">zdźěl prošu programo
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '$1 płaćiwy wužiwar njeje.',
 	'toolbase-error-nowiki' => '$1.$2.org płaćiwy wiki njeje',
+	'toolbase-error-toomanyedits' => '$1 ma $2 změnow. Tutón nastroj ma maksimalnje $3 změnow.',
 );
 
 /** Interlingua (Interlingua)

@@ -467,10 +467,11 @@ Mangga pigunakaké kaca [[MediaWiki:Number_of_watching_users_pageview]] kanggo n
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'whoiswatching' => 'អ្នកដែលកំពុងតាមដាន ទំព័រវិគី',
-	'whoiswatching-desc' => 'ចូរ​ផ្ដល់​ការចុះបញ្ជី​នៃ​ឈ្មោះអ្នកប្រើប្រាស់ ដែល​បាន​កំពុង​តាមដាន​ទំព័រ​វិគី​នេះ',
+	'whoiswatching-desc' => 'ចូរ​ផ្ដល់​ការចុះបញ្ជី​នៃ​អត្តនាម ដែល​បាន​កំពុង​តាមដាន​ទំព័រ​វិគី​នេះ',
 	'specialwhoiswatchingthepage' => 'អ្នកដែលកំពុងតាមដាន %s',
 	'specialwhoiswatchingusage' => 'ទំព័រ​ពិសេស​នេះ​មិន​អាច​ត្រូវ​បាន​ប្រើប្រាស់​ដោយ​ខ្លួន​វា​បាន​ទេ​។
 សូម​ប្រើប្រាស់​ទំព័រ [[MediaWiki:Number_of_watching_users_pageview]] ដើម្បី​កំណត់​ធាតុ​ដែល​ចង្អុរ​បង្ហាញ​ទៅ​ទំព័រ​ពិសេស​នេះ​។',

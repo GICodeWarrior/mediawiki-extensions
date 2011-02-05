@@ -591,10 +591,11 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'accountmanager' => 'អ្នកគ្រប់គ្រង​គណនី',
-	'am-username' => 'ឈ្មោះអ្នកប្រើប្រាស់',
+	'am-username' => 'អត្តនាម',
 	'am-email' => 'អ៊ីមែល',
 	'am-active' => 'សកម្ម',
 	'am-updated' => 'បំលាស់ប្ដូរ​របស់​អ្នក ត្រូវ​បាន​រក្សាទុក​ដោយ​ជោគជ័យ​ហើយ',
