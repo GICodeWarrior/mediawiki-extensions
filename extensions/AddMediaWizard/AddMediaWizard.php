@@ -23,7 +23,7 @@
 $wgExtensionCredits['jsModule'][] = array(
 	'path' => __FILE__,
 	'name' => 'Add Media Wizard',
-	'author' => array( 'Michael Dale', 'others' ),
+	'author' => array( 'Michael Dale', '...' ),
 	'version' => '0.1.1',
 	'descriptionmsg' => 'addmediawizard-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Add_Media_Wizard'
