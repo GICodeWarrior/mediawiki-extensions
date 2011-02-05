@@ -594,13 +594,21 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 				fakePipeFound = true;
 				continue;
 			}
-			if ( parentNode->type == value_node ) {
-				closeNode( parentNode->type );
-				assert( parentNode->type == part_node );
-			}
-			assert( ( parentNode->type == found - 2 ) || ( parentNode->parent && ( parentNode->parent->type == found - 2 ) ) );
+			assert( ( parentNode->type == found - 2 ) || 
+				( parentNode->parent && 
+				( ( parentNode->parent->type == found - 2 ) || ( parentNode->type == value_node && 
+					parentNode->parent->parent && ( parentNode->parent->parent->type == found - 2 ) ) ) ) );
 			
-			int maxCount = found == closeBracket ? parentNode->count : parentNode->parent->count;
+			int maxCount;
+			if ( found == closeBracket ) {
+				maxCount = parentNode->count;
+			} else {
+			if ( parentNode->type == value_node ) {
+					maxCount = parentNode->parent->parent->count;
+				} else {
+					maxCount = parentNode->parent->count;
+			}
+			}
 			int count = chrspn( text, found, i, maxCount );
 
 			// check for maximum matching characters (if there are 5 closing
@@ -631,8 +639,12 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 				i += count;
 				continue;
 			}
+			if ( parentNode->type == value_node ) {
+				printf("%c in parent %c. Closing\n", found, parentNode->type);
+				closeNode( parentNode->type );
+				assert( parentNode->type == part_node );
+			}
 
-			
 			if ( found == closeBracket ) { /* Known rules */
 				// No element, just literal text
 				parentNode->count -= matchingCount;
@@ -743,18 +755,25 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 				nodeStringLen += NODE_LEN;
 				/* And the father, too */
 				parentNode->index += NODE_LEN;
-				closeNode( value_node );
 				
 				/* Place the name */
 				struct node tmpnode;
 				tmpnode.type = name_node;
-				tmpnode.flags = parentNode->flags = ++parentNode->parent->argIndex;
+				tmpnode.flags = parentNode->parent->flags = ++parentNode->parent->parent->argIndex;
 				tmpnode.nextSibling = 0;
 				tmpnode.contentLength = len;
 				assert( len == 0 );
 				
 				serializeNode(nodeString + oldindex, &tmpnode);
-				if ( !fakePipeFound ) closeNode( part_node );
+				
+				if ( !fakePipeFound ) {
+					// In a fake pipe run, we want to keep the value node 
+					// open in case there are literals to put inside left.
+					// The value node can be closed by the caller if needed.
+					closeNode( value_node );
+					
+					closeNode( part_node );
+				}
 			} else {
 				closeNode( value_node );
 				closeNode( part_node );
