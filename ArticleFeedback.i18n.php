@@ -660,6 +660,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Dferg
  * @author Locos epraix
  * @author Sanbec
  * @author Translationista
@@ -682,8 +683,27 @@ $messages['es'] = array(
 	'articlefeedback-survey-submit' => 'Enviar',
 	'articlefeedback-survey-title' => 'Por favor, contesta algunas preguntas',
 	'articlefeedback-survey-thanks' => 'Gracias por completar la encuesta.',
+	'articlefeedback-error' => 'Ha ocurrido un error. Por favor inténtalo de nuevo más tarde.',
+	'articlefeedback-form-switch-label' => 'Evalúa esta página',
+	'articlefeedback-form-panel-title' => 'Evalúa esta página',
+	'articlefeedback-form-panel-instructions' => 'Por favor tómate un tiempo para evaluar esta página.',
+	'articlefeedback-form-panel-clear' => 'Eliminar la evaluación',
+	'articlefeedback-form-panel-expertise' => 'Tengo conocimientos previos sobre este tema',
+	'articlefeedback-form-panel-expertise-studies' => 'Lo he estudiado en la universidad',
+	'articlefeedback-form-panel-expertise-profession' => 'Es parte de mi profesión',
+	'articlefeedback-form-panel-expertise-hobby' => 'Está relacionado con mis aficiones o intereses',
+	'articlefeedback-form-panel-expertise-other' => 'La fuente de mi conocimiento no está en esta lista',
 	'articlefeedback-form-panel-submit' => 'Enviar comentarios',
-	'articlefeedback-report-switch-label' => 'Mostrar los resultados',
+	'articlefeedback-report-switch-label' => 'Ver las calificaciones de la página',
+	'articlefeedback-report-panel-title' => 'Evaluaciones de la página',
+	'articlefeedback-report-panel-description' => 'Promedio actual de calificaciones.',
+	'articlefeedback-report-empty' => 'No hay valoraciones',
+	'articlefeedback-report-ratings' => '$1 valoraciones',
+	'articlefeedback-field-trustworthy-label' => 'Confiable',
+	'articlefeedback-field-trustworthy-tip' => '¿Posee esta página suficientes fuentes y éstas son fuentes de confianza?',
+	'articlefeedback-field-complete-label' => 'Completa',
+	'articlefeedback-field-complete-tip' => '¿Crees que esta página cubre las áreas esenciales del tópico que deberían estar cubiertas?',
+	'articlefeedback-field-objective-label' => 'Objetivo',
 );
 
 /** Estonian (Eesti)
@@ -1501,9 +1521,12 @@ $messages['lb'] = array(
 	'articlefeedback-survey-submit' => 'Späicheren',
 	'articlefeedback-survey-title' => 'Beäntwert w.e.g. e puer Froen',
 	'articlefeedback-survey-thanks' => 'Merci datt Dir eis Ëmfro ausgefëllt hutt.',
+	'articlefeedback-error' => 'Et ass e Feeler geschitt. Probéiert w.e.g. méi spéit nach emol.',
 	'articlefeedback-form-switch-label' => 'Dës Säit bewäerten',
 	'articlefeedback-form-panel-title' => 'Dës Säit bewäerten',
 	'articlefeedback-form-panel-instructions' => 'Huelt Iech w.e.g. een Ament fir d¨s Säit ze bewäerten.',
+	'articlefeedback-form-panel-clear' => 'Dës Bewäertung ewechhuelen',
+	'articlefeedback-form-panel-expertise-profession' => 'Et ass en Deel vu mengem Beruff',
 	'articlefeedback-form-panel-submit' => 'Feedback iwwerdroen',
 	'articlefeedback-report-switch-label' => 'Bewäertunge vun der Säit weisen',
 	'articlefeedback-report-panel-title' => 'Bewäertunge vun der Säit',
@@ -1519,6 +1542,7 @@ $messages['lb'] = array(
 	'articlefeedback-field-wellwritten-label' => 'Gutt geschriwwen',
 	'articlefeedback-field-wellwritten-tip' => 'Hutt Dir den Androck datt dës Säit gutt organiséiert a gutt geschriwwen ass?',
 	'articlefeedback-pitch-reject' => 'Vläicht méi spéit',
+	'articlefeedback-pitch-or' => 'oder',
 	'articlefeedback-pitch-survey-title' => 'Wëllt Dir bäi enger Ëmfro matmaachen?',
 	'articlefeedback-pitch-survey-accept' => 'Ëmfro ufänken',
 	'articlefeedback-pitch-join-title' => 'Wëllt Dir e Benotzerkont opmaachen?',
@@ -1529,6 +1553,8 @@ $messages['lb'] = array(
 	'articlefeedback-expert-assessment-level-1-label' => 'Marginal',
 	'articlefeedback-expert-assessment-level-2-label' => 'Kompetent',
 	'articlefeedback-expert-assessment-level-3-label' => 'Expert',
+	'articlefeedback-survey-message-error' => 'Et ass e Feeler geschitt.
+Probéiert w.e.g. méi spéit nach emol.',
 );
 
 /** Limburgish (Limburgs)
