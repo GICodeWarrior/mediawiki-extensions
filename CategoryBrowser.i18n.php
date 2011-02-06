@@ -746,7 +746,7 @@ Wänn megli, tue Dyy Browser aktualisiere oder wächsle.',
  */
 $messages['he'] = array(
 	'categorybrowser' => 'סייר הקטגוריות',
-	'categorybrowser-desc' => 'יצירת [[[[Special:CategoryBrowser|דף מיוחד]] לסינון הקטגוריות הפופולריות ביותר ולניווט בהן באמצעות ממשק AJAX',
+	'categorybrowser-desc' => 'יצירת [[Special:CategoryBrowser|דף מיוחד]] לסינון הקטגוריות הפופולריות ביותר ולניווט בהן באמצעות ממשק AJAX',
 	'cb_requires_javascript' => 'כדי שהרחבת הדפדפן לקטגוריות תעבוד, התמיכה ב־JavaScript צריכה להיות מופעלת.',
 	'cb_ie6_warning' => 'עורך התנים אינו עובר ב־Microsoft Internet Explorer 6.0 ובגרסאות ישנות יותר.
 עיון בתנאים מוגדרים מראש אמור לעבוד טוב.
