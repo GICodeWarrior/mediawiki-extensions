@@ -322,19 +322,32 @@ class WikilogHooks
 	 *
 	 * @todo Add support for PostgreSQL and SQLite databases.
 	 */
-	static function ExtensionSchemaUpdates() {
-		global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
-
+	static function ExtensionSchemaUpdates( $updater = null ) {
 		$dir = dirname( __FILE__ ) . '/';
 
-		if ( $wgDBtype == 'mysql' ) {
-			$wgExtNewTables[] = array( "wikilog_wikilogs", "{$dir}wikilog-tables.sql" );
-			$wgExtNewIndexes[] = array( "wikilog_comments", "wlc_timestamp", "{$dir}archives/patch-comments-indexes.sql" );
+		if ( $updater === null ) {
+			global $wgDBtype, $wgExtNewIndexes, $wgExtNewTables;
+			if ( $wgDBtype == 'mysql' ) {
+				$wgExtNewTables[] = array( "wikilog_wikilogs", "{$dir}wikilog-tables.sql" );
+				$wgExtNewIndexes[] = array( "wikilog_comments", "wlc_timestamp", "{$dir}archives/patch-comments-indexes.sql" );
+			} else {
+				// TODO: PostgreSQL, SQLite, etc...
+				print "\n" .
+					"Warning: There are no table structures for the Wikilog\n" .
+					"extension other than for MySQL at this moment.\n\n";
+			}
 		} else {
-			// TODO: PostgreSQL, SQLite, etc...
-			print "\n" .
-				"Warning: There are no table structures for the Wikilog\n" .
-				"extension other than for MySQL at this moment.\n\n";
+			if ( $updater->getDB()->getType() == 'mysql' ) {
+				$updater->addExtensionUpdate( array( 'addTable', "wikilog_wikilogs",
+					"{$dir}wikilog-tables.sql", true ) );
+				$updater->addExtensionUpdate( array( 'addIndex', "wikilog_comments",
+					"wlc_timestamp", "{$dir}archives/patch-comments-indexes.sql", true ) );
+			} else {
+				// TODO: PostgreSQL, SQLite, etc...
+				print "\n" .
+					"Warning: There are no table structures for the Wikilog\n" .
+					"extension other than for MySQL at this moment.\n\n";
+			}
 		}
 		return true;
 	}
