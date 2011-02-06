@@ -12442,7 +12442,7 @@ $messages['sr-ec'] = array(
 	'ow_exporttsv_languages' => 'Језици:',
 	'ow_exporttsv_export_failed' => 'Извоз неуспешан',
 	'ow_save' => 'Сачувај',
-	'ow_history' => 'Историјат',
+	'ow_history' => 'Историја',
 	'ow_datasets' => 'Одабир скупа података',
 	'ow_noedit_title' => 'Без дозволе за уређивање',
 	'ow_noedit' => 'Није ти дозвољено да мењаш стране у скупу података "$1". Види [[{{MediaWiki:Ow editing policy url}}|нашу уређивачку политику]].',
@@ -12561,7 +12561,7 @@ $messages['sr-ec'] = array(
 	'ow_needs_xlation_dest_lang' => 'Потребан језик:',
 	'ow_needs_xlation_no_dest_lang' => 'Молимо Вас да означите језик на који преводите.',
 	'ow_show' => 'Прикажи',
-	'ow_upload' => 'Отпреми',
+	'ow_upload' => 'Пошаљи',
 	'ow_create' => 'Направи',
 	'ow_collection_added' => '<strong>Колекција $1 је додата.</strong>',
 	'ow_suggest_previous' => 'Претходни',
@@ -12575,6 +12575,7 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'languages' => 'Vikipodaci: Menadžer za jezike',
@@ -12733,7 +12734,7 @@ Da li ste na ovu stranu došli direktno? Obično je u njenom linku naznačena i 
 	'ow_needs_xlation_dest_lang' => 'Potreban jezik:',
 	'ow_needs_xlation_no_dest_lang' => 'Molimo Vas da označite jezik na koji prevodite.',
 	'ow_show' => 'Prikaži',
-	'ow_upload' => 'Otpremi',
+	'ow_upload' => 'Pošalji',
 	'ow_create' => 'Napravi',
 	'ow_collection_added' => '<strong>Kolekcija $1 je dodata.</strong>',
 	'ow_suggest_previous' => 'Prethodni',
