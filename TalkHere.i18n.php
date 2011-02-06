@@ -723,6 +723,17 @@ $messages['mr'] = array(
 	'talkhere-collapse' => 'संपादनस्थळ लपवा',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'talkhere-talkpage' => 'ဆွေးနွေးရန် စာမျက်နှာ',
+	'talkhere-notalk' => "''(မှတ်ချက် မရှိသေးပါ)''",
+	'talkhere-addcomment' => 'မှတ်ချက် ပေးရန်',
+	'talkhere-beforeinput' => 'အောက်တွင် မှတ်ချက် ပေးနိုင်သည်။',
+	'talkhere-collapse' => 'editor အားဝှက်ရန်',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
