@@ -1838,7 +1838,7 @@ $messages['km'] = array(
 ដើម្បីបញ្ជូលវីដេអូរបស់អ្នកទៅក្នុងទំព័រមួយរបស់វិគី សូមចម្លងកូដខាងក្រោមបញ្ជូលទៅក្នុងទំព័រនោះ៖
 
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'ដើម្បីផ្ទុកវីដេអូឡើង អ្នកនឹងត្រូវឡុកអ៊ីនទៅក្នុងយូធ្យូប(YouTube)ជាមុនសិន។',
+	'youtubeauthsub_authsubinstructions' => 'ដើម្បីផ្ទុកវីដេអូឡើង អ្នកនឹងត្រូវកត់ឈ្មោះចូលទៅក្នុងយូធ្យូប(YouTube)ជាមុនសិន។',
 	'youtubeauthsub_uploadhere' => 'ផ្ទុកឡើងវីដេអូរបស់អ្នកពីទីនេះ៖',
 	'youtubeauthsub_uploadbutton' => 'ផ្ទុកឡើង',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}​។
