@@ -10216,6 +10216,7 @@ $messages['yo'] = array(
  * @author Chinalace
  * @author Hydra
  * @author Mark85296341
+ * @author PhiLiP
  * @author Shizhao
  */
 $messages['zh-hans'] = array(
@@ -10239,7 +10240,7 @@ $messages['zh-hans'] = array(
 	'mwe-filesource' => '来源：',
 	'mwe-filestatus' => '版权状态：',
 	'mwe-loading-add-media-wiz' => '正在加载添加媒体向导',
-	'fogg-wont-upload-to-server' => '注意：你的视频文件需要重新编码，无法上传到任何服务器。',
+	'fogg-wont-upload-to-server' => '注意：请在本地重新编码您的视频文件，否则无法上传到服务器。',
 	'fogg-save_local_file' => '编码到文件',
 	'fogg-help-sticky' => '帮助（点击粘贴）',
 	'fogg-cg-preset' => '预设：<strong>$1</strong>',
@@ -10249,7 +10250,7 @@ $messages['zh-hans'] = array(
 	'fogg-cg-advVideo' => '视频编码高级设置',
 	'fogg-cg-advAudio' => '音频编码高级设置',
 	'fogg-preset-custom' => '自定义设置',
-	'fogg-webvideo-desc' => '网络视频Theora或Vorbis编码400 kbit/s，最宽400相素',
+	'fogg-webvideo-desc' => 'Ogg网络视频Theora、Vorbis（600 kbit/s，最宽400像素）',
 	'fogg-savebandwidth-desc' => '低带宽Theora或Vorbis编码164 kbit/s，最宽200相素',
 	'fogg-highquality-desc' => '高质量Theora或Vorbis编辑，最宽1080相素',
 	'fogg-webvideo-webm-desc' => 'WebM网页视频 VP8 (600 kbit/s以及最大宽度480px)',
@@ -10371,7 +10372,7 @@ $messages['zh-hans'] = array(
 	'rsd_config_error' => '添加媒体文件向导配置错误：$1',
 	'mwe-your-recent-uploads' => '你最近上传到$1',
 	'mwe-no_recent_uploads' => '最近没有上传',
-	'mwe-not-logged-in-uploads' => '您可能无法登录中，因此可以显示没有最近的上载。[$1 请登录] 和 [$2 试]。',
+	'mwe-not-logged-in-uploads' => '您也许没有登录，因此没有最近上传的文件可供浏览。[$1 请登录]然后[$2 重试]。',
 	'mwe-ie-eye-permision' => '如果使用Internet Explorer并登录，你可能需要调整你的隐私设置',
 	'mwe-upload-a-file' => '上传一个新文件',
 	'mwe-upload-a-file-to' => '上传一个新文件到$1',
