@@ -712,7 +712,12 @@ $messages['mr'] = array(
  * @author Erikoo
  */
 $messages['my'] = array(
+	'e-mailpage' => 'အီမေးပို့ရန်စာမျက်နှာ',
 	'ea-heading' => 'ဤစာမျက်နှာအား email ပို့နေသည် "[[$1]]"',
+	'ea-from' => 'မှ',
+	'ea-to' => 'သို့',
+	'ea-subject' => 'အကြောင်းရာ/ခေါင်းစဉ်',
+	'ea-allusers' => 'အသုံးပြုသူအားလုံး',
 );
 
 /** Nahuatl (Nāhuatl)
