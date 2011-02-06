@@ -12271,6 +12271,7 @@ $messages['lb'] = array(
 	'configure-setting-wgEnableEmail' => 'E-Mail-Funktiounen aschalten',
 	'configure-setting-wgEnableUserEmail' => 'Benotzer-op-Benotzer E-Mail aschalten',
 	'configure-setting-wgPasswordSender' => 'Passwuert-Erënnerung E-Mailadress',
+	'configure-setting-wgPasswordSenderName' => "Numm fir d'Erënnere vum Passwuert",
 	'configure-setting-wgPasswordReminderResendTime' => 'Minimal Zäit, a Stonnen, déi tësche Passwuerterënnerungen vergoe muss',
 	'configure-setting-wgSMTP' => 'SMTP-Server',
 	'configure-setting-wgUserEmailUseReplyTo' => 'Reply-To aplaz vu From benotzen',
@@ -12451,6 +12452,7 @@ $messages['lb'] = array(
 	'configure-setting-wgEnotifMinorEdits' => 'E-Mail Noriichten och fir "kleng Ännerungen" (Benotzer-Astellung gëtt gewisen an de Benotzer muss d\'Optioun aktivéieren)',
 	'configure-setting-wgEnotifUseRealName' => 'De richtegen Numm aplaz vum Benotzernumm am E-Mail-Feld "Vun" bentzen',
 	'configure-setting-wgUsersNotifiedOnAllChanges' => 'Benotzernimm deenen eng Noriicht per Mail geschéckt gëtt bäi all Ännerung op engem Wiki',
+	'configure-setting-wgUDPProfilerPort' => 'Port fir den UDP-Profiler',
 );
 
 /** Latgalian (Latgaļu)
