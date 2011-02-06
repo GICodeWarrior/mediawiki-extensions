@@ -1900,6 +1900,7 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1909,7 +1910,7 @@ $messages['sr-ec'] = array(
 	'imagetagging-article' => 'Страна:',
 	'imagetagging-articletotag' => 'Чланак за таговање',
 	'imagetagging-canteditothermessage' => 'Не можете да мењате ову страну, због тога што немате потребна права приступа за то или због закључавања стране из других разлога.',
-	'imagetagging-imghistory' => 'Историјат',
+	'imagetagging-imghistory' => 'Историја',
 	'imagetagging-images' => 'слике',
 	'imagetagging-inthisimage' => 'На овој слици: $1',
 	'imagetagging-logentry' => 'Обрисан таг ка страни [[$1]], од $2',
