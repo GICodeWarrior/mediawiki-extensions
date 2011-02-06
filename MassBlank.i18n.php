@@ -269,11 +269,22 @@ $messages['ha'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'massblank' => 'רב־מרוקן',
+	'massblank-desc' => 'מתן אפשרות למפעילים [[Special:MassBlank|לרוקן דפים רבים]].',
+	'massblank-nopages' => 'אין דפים חדשים מאת [[Special:Contributions/$1|$1]] בשינויים אחרונים.',
+	'massblank-list' => 'הדפים הבאים נוצרו לאחרונה על ידי [[Special:Contributions/$1|$1]];
+הוספו הערה ולחצו על הכפתור כדי לרוקן אותם.',
+	'massblank-defaultreason' => 'ריקון של דפים שהוסיף $1.',
+	'massblank-tools' => 'הכלי הזה מאפשר ריקון בבת אחת של דפים רבים שיצר משתמש או כתובת IP.
+הכניסו את שם המשתמש את כתובת ה־IP כדי לקבל את רשימת הדפים לריקון.',
 	'massblank-submit-user' => 'מעבר',
+	'massblank-submit-blank' => 'לרוקן את הנבחרים',
 	'massblank-blankcomment' => 'סיבה:',
+	'right-massblank' => 'מרוקני דפים מרובים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
