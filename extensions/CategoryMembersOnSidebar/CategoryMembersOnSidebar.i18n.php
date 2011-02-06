@@ -92,6 +92,13 @@ $messages['gsw'] = array(
 	'categorymembersonsidebar-desc' => 'Macht d Aazeig vu dr Syte, wu in ere Kategori din sin, in dr Syteleischte megli',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'categorymembersonsidebar-desc' => 'הוספה של הדפים הכלולים בקטגוריה לסרגל הצד',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

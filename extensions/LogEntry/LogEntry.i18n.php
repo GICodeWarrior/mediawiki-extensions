@@ -248,12 +248,17 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'logentry-append' => 'הוספה',
+	'logentry-parserhook-desc' => 'הרחבת התג הזאת יוצרת טופס להוספה לדפי יומן',
+	'logentry-specialpage-desc' => 'הרחבת התג הזאת מאפשרת עיבוד להוספת לדפי יומן',
+	'logentry' => 'שורה ביומן',
 	'logentry-invalidpage' => 'דף בלתי תקין',
+	'logentry-invalidtoken' => 'אסימון בלתי תקין',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

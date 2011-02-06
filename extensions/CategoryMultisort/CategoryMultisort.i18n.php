@@ -263,11 +263,15 @@ $messages['ha'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'categorymultisort-desc' => 'הוספת אפשרות להציג קטגוריות עם מיון לפי מפתחות שונים',
 	'categorymultisort-defaultsortkey-name' => 'בררת המחדל',
+	'categorymultisort-sortkey' => 'מפתח מיון:',
 	'categorymultisort-go' => 'מעבר',
+	'categorymultisort-default-sortkey' => 'מפתח מיון לפי בררת מחדל:',
 	'prefs-category' => 'קטגוריה',
 );
 

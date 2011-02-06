@@ -144,10 +144,17 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'rdfio-desc' => 'יכולת מורחבת של יבוא ויצוא RDF, כולל צומת קצה של SPARQL, עבור מדיה־ויקי סמנטית',
 	'rdfimport' => 'יבוא RDF',
+	'rdfio-arc2admin-desc' => 'דף ניהול של מאגר ARC2 RDF עבור מדיה־ויקי סמנטית',
+	'rdfio-rdfimport-desc' => 'דף מיוחד ליבוא נתונים סמנטיים בתסדיר RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'צומת קצה מסופק על־ידי SMWRDFConnector',
+	'sparqlendpoint' => 'צומת קצה של SPARQL',
+	'specialarc2admin' => 'דף ניהול מאגר ARC2 RDF',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -9906,7 +9906,7 @@ $messages['sr-ec'] = array(
 	'configure-section-proxy' => 'Проксији',
 	'configure-section-cookie' => 'Колачићи',
 	'configure-section-performance' => 'Перформансе',
-	'configure-section-upload' => 'Отпреми',
+	'configure-section-upload' => 'Пошаљи',
 	'configure-section-sharedupload' => 'Заједничко слање',
 	'configure-section-mime' => 'MIME типови',
 	'configure-section-images' => 'Датотеке',
@@ -9990,6 +9990,7 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-el'] = array(
@@ -10073,7 +10074,7 @@ Molimo Vas da ga napravite ili ga promenite kako biste koristili ovu ekstenziju.
 	'configure-section-proxy' => 'Proksiji',
 	'configure-section-cookie' => 'Kolačići',
 	'configure-section-performance' => 'Performanse',
-	'configure-section-upload' => 'Otpremi',
+	'configure-section-upload' => 'Pošalji',
 	'configure-section-sharedupload' => 'Zajedničko slanje',
 	'configure-section-mime' => 'MIME tipovi',
 	'configure-section-images' => 'Datoteke',

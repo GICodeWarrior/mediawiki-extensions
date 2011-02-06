@@ -2992,21 +2992,27 @@ $messages['km'] = array(
 	'openidfullname' => 'ឈ្មោះពេញ',
 	'openidemail' => 'អាសយដ្ឋានអ៊ីមែល',
 	'openidlanguage' => 'ភាសា',
+	'openidtimezone' => 'ល្វែងម៉ោង',
+	'openidchooselegend' => 'ជំរើសអត្តនាម',
 	'openidchooseinstructions' => 'អ្នកប្រើប្រាស់ទាំងត្រូវការឈ្មោះហៅក្រៅ
 
 អ្នកអាចជ្រើសរើសពីក្នុងជម្រើសខាងក្រោម។',
+	'openidchoosenick' => 'ឈ្មោះហៅក្រៅរបស់អ្នក ($1)',
 	'openidchoosefull' => 'ឈ្មោះពេញ​របស់អ្នក ($1)',
-	'openidchoosemanual' => 'ឈ្មោះនៃជម្រើសរបស់អ្នក:',
+	'openidchooseurl' => 'ឈ្មោះដែលយកពី OpenID របស់អ្នក ($1)',
+	'openidchooseauto' => 'ឈ្មោះបង្កើតស្វ័យប្រវត្តិ ($1)',
+	'openidchoosemanual' => 'ឈ្មោះសំរាប់អោយអ្នកជ្រើយយក៖',
 	'openidchooseexisting' => 'គណនីដែលមានរួចហើយនៅក្នុងវិគីនេះ',
+	'openidchooseusername' => 'អត្តនាម៖',
 	'openidchoosepassword' => 'ពាក្យសំងាត់៖',
 	'openidconvertsuccess' => 'បានបម្លែងទៅ OpenID ដោយជោគជ័យ',
 	'openidconvertyourstext' => 'វាជាOpenIDរបស់អ្នករួចហើយ។',
 	'openidconvertothertext' => 'វាជាOpenIDរបស់អ្នកដទៃ។',
-	'openidalreadyloggedin' => "'''អ្នកបានឡុកអ៊ីនរួចហើយ $1!'''
-ប្រសិនបើអ្នកចង់់ប្រើ OpenID ដើម្បីឡុកអ៊ីននាពេលអនាគត អ្នកអាច[[Special:OpenIDConvert|បម្លែងគណនីរបស់អ្នកដើម្បីប្រើ OpenID]]។",
+	'openidalreadyloggedin' => "'''អ្នកបានកត់ឈ្មោះចូលរួចហើយ $1!'''
+ប្រសិនបើអ្នកចង់់ប្រើ OpenID ដើម្បីចុះឈ្មោះចូលនាពេលអនាគត អ្នកអាច[[Special:OpenIDConvert|បម្លែងគណនីរបស់អ្នកដើម្បីប្រើ OpenID]]។",
 	'openidnousername' => 'មិនមានអត្តនាមបានបញ្ជាក់ទេ។',
 	'openidbadusername' => 'ឈ្មោះមិនត្រឹមត្រូវត្រូវបានបញ្ជាក់',
-	'openid-pref-hide' => 'លាក់OpenIDរបស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់របស់អ្នក ប្រសិនបើអ្នកឡុកអ៊ីនដោយប្រើOpenID។',
+	'openid-pref-hide' => 'លាក់OpenIDរបស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់របស់អ្នក ប្រសិនបើអ្នកកត់ឈ្មោះចូលដោយប្រើOpenID។',
 );
 
 /** Kannada (ಕನ್ನಡ)
@@ -3191,18 +3197,18 @@ Wann De OpenID zom Enlogge bruche wells, spääder, dann kanns De
 Wann nit, donn dä "Continue" (Wigger) Knopp nemme.',
 	'openidclientonlytext' => 'Do kann de Aanmelldunge fun hee dämm Wiki nit als <span lang="en">OpenIDs</span> op annder Webßöövere nämme.',
 	'openidloginlabel' => 'OpenID URL',
-	'openidlogininstructions' => 'De {{SITENAME}} ongerstöz der <span lang="en">[http://openid.net/ OpenID]</span> Standat för et eijfache un eijmoolije Enlogge zwesche diverse Websigge.
+	'openidlogininstructions' => '{{ucfirst:{{GRAMMAR:Nominativ|{{SITENAME}}}}}} ongerstöz der <span lang="en">[http://openid.net/ OpenID]</span> Standat för et eijfache un eijmoolije Enlogge zwesche diverse Websigge.
 <span lang="en">OpenID</span> määd_et müjjesch, dat mer op ongerscheedlijje Websigge enlogge kann, oohne dat mer övverall en annder Paßwoot bruch.
 Loor Der [http://ksh.wikipedia.org/wiki/OpenID der Wikipedia ier Atikkel övver <span lang="en">OpenID</span>] aan, do steit noch mieh dren.
 
-Wann de alld aanjemeldt bes op de {{SITENAME}}, dann kanns De met Dingem Metmaacher-Name un Paßwoot [[Special:UserLogin|enlogge]] wi sönß och.
+Wann de {{GRAMMAR:em|{{SITENAME}}}} alld aanjemeldt bes, dann kanns De met Dingem Metmaacher-Name un Paßwoot [[Special:UserLogin|enlogge]] wi sönß och.
 Öm spääder och <span lang="en">OpenID</span> ze bruche, kann noh_m nomaale Enlogge Ding Aanmeldungsdate [[Special:OpenIDConvert|op <span lang="en">OpenID</span> ömstelle]].
 
 Et jitt en jruuße Zahl [http://wiki.openid.net/Public_OpenID_providers <span lang="en">OpenID Provider</span> för de Öffentleschkeit], un et künnt joot sin, dat De alld ene <span lang="en">OpenID</span>-fä\'ijje Zojang häß, op däm eine udder andere Server.
 <!--
 ; Annder Wikis : Wann De op enem Wiki aanjemelldt bes, wat <span lang="en">OpenID</span> ongerschtöz, zem Beispöll [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] udder [http://kei.ki/ Keiki], kanns de hee op de {{SITENAME}} enlogge, indämm dat De de komplätte URL fun Dinge Metmaacher-Sigg op däm aandere Wiki hee bovve endrähß. Zem Beispöll esu jät wi: \'\'<nowiki>http://kei.ki/en/User:Evan</nowiki>\'\'.
-; [http://openid.yahoo.com/ Yahoo!] : Wann De bei <span lang="en">Yahoo!</span> aanjemelldt bes, kanns de hee op de {{SITENAME}} enlogge, indämm dat De de Ding <span lang="en">OpenID URL</span> bovve aanjiß, di De fun <span lang="en">Yahoo!</span> bekumme häß. Di <span lang="en">OpenID URLs</span> sinn uß wi zem Beispöll: \'\'<nowiki>https://me.yahoo.com/DingeMetmaacherName</nowiki>\'\'.
-; [http://dev.aol.com/aol-and-63-million-openids AOL] : Wann de ene zohjang op [http://www.aol.com/ AOL] häß, esu jet wie ennen Zojang zom [http://www.aim.com/ AIM], do kanns de Desch hee op de {{SITENAME}} enlogge, indämm dat De de Ding <span lang="en">OpenID</span> bovve enjiß. De <span lang="en">OpenID URLs</span> fun AOL sen opjebout wi \'\'<nowiki>http://openid.aol.com/dingemetmaachername</nowiki>\'\'. Dinge Metmaacher-Name sullt uß luuter Kleinbochstave bestonn, kein Zwescheräum.
+; [http://openid.yahoo.com/ Yahoo!] : Wann De bei <span lang="en">Yahoo!</span> aanjemelldt bes, kanns de hee {{GRAMMAR:em|{{SITENAME}}}} enlogge, indämm dat De de Ding <span lang="en">OpenID URL</span> bovve aanjiß, di De fun <span lang="en">Yahoo!</span> bekumme häß. Di <span lang="en">OpenID URLs</span> sinn uß wi zem Beispöll: \'\'<nowiki>https://me.yahoo.com/DingeMetmaacherName</nowiki>\'\'.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Wann de ene zohjang op [http://www.aol.com/ AOL] häß, esu jet wie ennen Zojang zom [http://www.aim.com/ AIM], do kanns de Desch hee {{GRAMMAR:em|{{SITENAME}}}} enlogge, indämm dat De de Ding <span lang="en">OpenID</span> bovve enjiß. De <span lang="en">OpenID URLs</span> fun AOL sen opjebout wi \'\'<nowiki>http://openid.aol.com/dingemetmaachername</nowiki>\'\'. Dinge Metmaacher-Name sullt uß luuter Kleinbochstave bestonn, kein Zwescheräum.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Wann de e <span lang="en">Blog</span> op einem fun dä Söövere häß, dann draach der Url fu Dingem <span lang="en">Blog</span> bovve en. Zem Beispöll: \'\'<nowiki>http://dingeblogname.blogspot.com/</nowiki>\'\', \'\'<nowiki>http://dingeblogname.wordpress.com/</nowiki>\'\', \'\'<nowiki>http://dingeblogname.livejournal.com/</nowiki>\'\', udder \'\'<nowiki>http://dingeblogname.vox.com/</nowiki>\'\'.
 <!-- -->',
 	'openidupdateuserinfo' => 'Donn ming päsöönlijje Enstellunge op der neuste Stand bränge:',
@@ -3629,6 +3635,13 @@ Sekiranya anda inign menggunakan OpenID untuk log masuk pada masa hadapan, sila 
  */
 $messages['mt'] = array(
 	'openidlanguage' => 'Lingwa',
+);
+
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'openidemail' => 'အီးမေး လိပ်စာ',
 );
 
 /** Erzya (Эрзянь)

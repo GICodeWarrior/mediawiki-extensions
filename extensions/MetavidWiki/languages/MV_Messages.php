@@ -9407,6 +9407,7 @@ $messages['sl'] = array(
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -9463,7 +9464,7 @@ $messages['sr-ec'] = array(
 	'mvMVDFormat' => 'MVD наслов би требао да буде у фромату: mvd:type:stream_name/start_time/end_time',
 	'mv_play' => 'Пусти',
 	'mv_edit' => 'Уреди',
-	'mv_history' => 'Историјат',
+	'mv_history' => 'Историја',
 	'mv_history_title' => 'Историја измена и поравнања видеа',
 	'mv_edit_title' => 'Измени текст',
 	'mv_edit_adjust_title' => 'Измени текст и поравнање видеа',

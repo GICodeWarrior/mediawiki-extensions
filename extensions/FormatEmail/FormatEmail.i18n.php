@@ -431,7 +431,7 @@ $2',
 $messages['ksh'] = array(
 	'email-desc' => 'Määt et müjjelech, extra, sellfs-enstellba Reije am Aanfang un am Engk en de Metmaacher ier <i lang="en">e-mails</i> eren ze donn.',
 	'email_footer' => '----------------------------------------------------------------------------
-Di e-mail hee es fum $1 övver de {{SITENAME}} aan Desch jescheck woode.
+Di e-mail hee es fum $1 övver {{GRAMMAR:Akkusativ|{{SITENAME}}}} aan Desch jescheck woode.
 
 $2',
 );

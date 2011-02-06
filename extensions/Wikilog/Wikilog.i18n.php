@@ -6481,6 +6481,7 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -6558,7 +6559,7 @@ $messages['sr-ec'] = array(
 	'wikilog-approve-lc' => 'одобри',
 	'wikilog-reject-lc' => 'одбаци',
 	'wikilog-page-lc' => 'страна',
-	'wikilog-history-lc' => 'историјат',
+	'wikilog-history-lc' => 'историја',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬) */
