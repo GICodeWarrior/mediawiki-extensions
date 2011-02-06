@@ -46,11 +46,25 @@ $messages['gsw'] = array(
 	'folktagcloud-desc' => 'Stellt Semantic MediaWiki e individuäll definierbar Attribut zum Chännzeiche vu Syte z Verfiegig, wu in ere Schlagwortwulke cha aazeigt wäre',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'folktagcloud-desc' => 'הוספת מאפיין מדיה־ויקי סמנטית לתיוג דפים עם תוויות מותאמות אישית ותג מפענח לתצוגתן בענן תגים',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'folktagcloud-desc' => 'Adde un proprietate de Semantic MediaWiki pro categorisar paginas con etiquettas definite per le usatores, e un function pro presentar istes in un etiquettario (nube de etiquettas).',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'folktagcloud-desc' => 'Setzt eng semantesch MediaWiki Eegeschaft fir Säite mat benotzerdefinéierten Etiquetten ze markéieren an e Parser-Tag fir se an enger Wollek vun Taggen weisen ze kënnen',
 );
 
 /** Macedonian (Македонски)
