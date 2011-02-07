@@ -14,6 +14,8 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		3A113EC910CF3C5500C9DDCF /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A113EC810CF3C5500C9DDCF /* Entitlements.plist */; };
+		4935493F13008DA900A7A44E /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4935493E13008DA900A7A44E /* SFHFKeychainUtils.m */; };
+		49354963130096A000A7A44E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49354962130096A000A7A44E /* Security.framework */; };
 		494C81E212E8DBAD000931F2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 494C81E112E8DBAD000931F2 /* Default.png */; };
 		494C821212E8E385000931F2 /* SourcePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C821012E8E385000931F2 /* SourcePickerViewController.m */; };
 		494C821312E8E385000931F2 /* SourcePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494C821112E8E385000931F2 /* SourcePickerViewController.xib */; };
@@ -59,6 +61,9 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WikiSnaps_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiSnaps_Prefix.pch; sourceTree = "<group>"; };
 		3A113EC810CF3C5500C9DDCF /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		4935493D13008DA900A7A44E /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		4935493E13008DA900A7A44E /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		49354962130096A000A7A44E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		494C81E112E8DBAD000931F2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		494C820F12E8E385000931F2 /* SourcePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourcePickerViewController.h; sourceTree = "<group>"; };
 		494C821012E8E385000931F2 /* SourcePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourcePickerViewController.m; sourceTree = "<group>"; };
@@ -129,6 +134,7 @@
 				A159144112E0F6770003BBE2 /* CFNetwork.framework in Frameworks */,
 				A159144712E0F69C0003BBE2 /* MobileCoreServices.framework in Frameworks */,
 				A159144B12E0F6BE0003BBE2 /* SystemConfiguration.framework in Frameworks */,
+				49354963130096A000A7A44E /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +144,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4935493C13008DA900A7A44E /* security */,
 				A1338B7112E0EFFF00662B28 /* ASI */,
 				494C833E12ECE900000931F2 /* XMLtoDict */,
 				F130561D10CEDBAC00271CD6 /* Configuration.h */,
@@ -213,8 +220,18 @@
 				A159144012E0F6770003BBE2 /* CFNetwork.framework */,
 				A159144612E0F69C0003BBE2 /* MobileCoreServices.framework */,
 				A159144A12E0F6BE0003BBE2 /* SystemConfiguration.framework */,
+				49354962130096A000A7A44E /* Security.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4935493C13008DA900A7A44E /* security */ = {
+			isa = PBXGroup;
+			children = (
+				4935493D13008DA900A7A44E /* SFHFKeychainUtils.h */,
+				4935493E13008DA900A7A44E /* SFHFKeychainUtils.m */,
+			);
+			path = security;
 			sourceTree = "<group>";
 		};
 		494C82FA12ECDE94000931F2 /* Images */ = {
@@ -374,6 +391,7 @@
 				494C821212E8E385000931F2 /* SourcePickerViewController.m in Sources */,
 				494C82C812ECBEB6000931F2 /* ImageUploadViewController.m in Sources */,
 				494C834E12ECEAB3000931F2 /* XMLReader.m in Sources */,
+				4935493F13008DA900A7A44E /* SFHFKeychainUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

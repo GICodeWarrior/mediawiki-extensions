@@ -9,6 +9,7 @@
 
 #import "SettingsViewController.h"
 #import "ASIFormDataRequest.h"
+#import "SFHFKeychainUtils.h"
 
 
 @implementation SettingsViewController
@@ -38,9 +39,13 @@
     usernameLabel.text = NSLocalizedString( @"License", @"Label of the license textfield" );
     
     username.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY];
-    password.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_PASSWORD_KEY];
     license.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_LICENSE_KEY];
 
+    NSError *error = nil;
+    password.text = [SFHFKeychainUtils getPasswordForUsername:username.text andServiceName:COMMONS_KEYCHAIN_KEY error: &error];
+    if( error ) {
+        NSLog( @"pasword storage problem: %@", [error localizedDescription] );
+    }
 }
 
 /*
@@ -56,10 +61,29 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+
+    NSError *error = nil;
+    NSString *oldUsername = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY];
+    if( [username.text compare:oldUsername] != NSOrderedSame ) {
+        /* Delete password for previous username */
+        [SFHFKeychainUtils deleteItemForUsername:oldUsername andServiceName:COMMONS_KEYCHAIN_KEY error:&error];
+        if( error ) {
+            NSLog( @"pasword deletion problem: %@", [error localizedDescription] );
+            error = nil;
+        }
+    }
+
     /* Save the data */
     [[NSUserDefaults standardUserDefaults] setObject:username.text forKey:COMMONS_USERNAME_KEY];
-    // FIXME insecure
-    [[NSUserDefaults standardUserDefaults] setObject:password.text forKey:COMMONS_PASSWORD_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:license.text forKey:COMMONS_LICENSE_KEY];
+
+    /* Store the password in the keychain */
+    [SFHFKeychainUtils storeUsername: username.text andPassword: password.text forServiceName:COMMONS_KEYCHAIN_KEY updateExisting: YES error: &error];
+    
+    if( error ) {
+        NSLog( @"pasword storage problem: %@", [error localizedDescription] );
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 /*

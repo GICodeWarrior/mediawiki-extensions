@@ -11,6 +11,7 @@
 #import "Configuration.h"
 #import "ASIFormDataRequest.h"
 #import "XMLReader.h"
+#import "SFHFKeychainUtils.h"
 
 /* Private */
 @interface CommonsUpload (Internal)
@@ -51,9 +52,19 @@
     
     [request addPostValue:@"login" forKey:@"action"];
     [request addPostValue:@"xml" forKey: @"format"];
-    [request addPostValue:[[NSUserDefaults standardUserDefaults] valueForKey:COMMONS_USERNAME_KEY] forKey: @"lgname"];
-    [request addPostValue:[[NSUserDefaults standardUserDefaults] valueForKey:COMMONS_PASSWORD_KEY] forKey: @"lgpassword"];
-    
+    NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:COMMONS_USERNAME_KEY];
+    [request addPostValue:username forKey: @"lgname"];
+
+    NSError *error = nil;
+    NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:COMMONS_KEYCHAIN_KEY error:&error];
+    [request addPostValue:password forKey: @"lgpassword"];
+
+    if( error ) {
+        /* password retrieval error */
+        [delegate uploadFailed: [error localizedDescription]];
+        return;
+    }
+
     [request setDelegate:self];
     [request setDidFinishSelector:@selector(requestTokenFinished:)];
     [request setDidFailSelector:@selector(requestTokenFailed:)];
@@ -98,8 +109,17 @@
     [newRequest addPostValue:@"login" forKey:@"action"];
     [newRequest addPostValue:@"xml" forKey: @"format"];
     [newRequest addPostValue:token forKey:@"lgtoken"];
-    [newRequest addPostValue:[[NSUserDefaults standardUserDefaults] valueForKey:COMMONS_USERNAME_KEY] forKey: @"lgname"];
-    [newRequest addPostValue:[[NSUserDefaults standardUserDefaults] valueForKey:COMMONS_PASSWORD_KEY] forKey: @"lgpassword"];
+    NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:COMMONS_USERNAME_KEY];
+    [newRequest addPostValue:username forKey: @"lgname"];
+
+    NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:COMMONS_KEYCHAIN_KEY error:&error];
+    [newRequest addPostValue:password forKey: @"lgpassword"];
+    
+    if( error ) {
+        /* password retrieval error */
+        [delegate uploadFailed: [error localizedDescription]];
+        return;
+    }
     
     [newRequest setDelegate:self];
     [newRequest setDidFinishSelector:@selector(requestLoginFinished:)];
