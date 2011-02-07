@@ -1461,6 +1461,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
+ * @author Whym
  */
 $messages['ja'] = array(
 	'pollresults' => 'このサイトでの投票結果',
@@ -1489,6 +1490,7 @@ $messages['ja'] = array(
 	'qp_results_line_qpl' => 'ページ「$1」投票「$2」: $3、$4、$5、$6',
 	'qp_header_line_qpul' => '$1 [ ページ「$2」投票「$3」]',
 	'qp_export_to_xls' => '統計を XLS 形式でエクスポート',
+	'qp_voices_to_xls' => 'すべての投票をXLS形式でエクスポートする',
 	'qp_users_answered_questions' => '$1{{PLURAL:$1|人}}の利用者がこの質問に答えました',
 	'qp_func_no_such_poll' => 'そのような投票はありません ($1)',
 	'qp_func_missing_question_id' => '投票 $1 に存在する質問 ID を指定してください (1から始まります)',
