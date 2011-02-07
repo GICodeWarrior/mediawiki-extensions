@@ -60,6 +60,13 @@ $messages['ia'] = array(
 	'folktagcloud-desc' => 'Adde un proprietate de Semantic MediaWiki pro categorisar paginas con etiquettas definite per le usatores, e un function pro presentar istes in un etiquettario (nube de etiquettas).',
 );
 
+/** Japanese (日本語)
+ * @author Whym
+ */
+$messages['ja'] = array(
+	'folktagcloud-desc' => 'ユーザーが定義したラベルと構文解析器タグでページをタグ付けし、タグクラウドを表示させるためのSemantic MediaWikiプロパティを追加する',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
