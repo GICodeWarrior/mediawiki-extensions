@@ -1,6 +1,6 @@
 <?php
 
-class ResearchToolsPrefsPage extends ResearchToolsPage {
+class ResearchToolsPrefsPage implements ResearchToolsPage {
 
 	public function main() {
 		?>
