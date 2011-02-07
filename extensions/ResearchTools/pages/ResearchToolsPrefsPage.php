@@ -2,7 +2,7 @@
 
 class ResearchToolsPrefsPage implements ResearchToolsPage {
 
-	public function main() {
+	public function main( array $steps ) {
 		?>
 			Hello pref stats!
 		<?php

@@ -26,32 +26,33 @@ class SpecialResearchTools extends SpecialPage {
 
 		$this->setHeaders();
 
-		$current = current( explode( '/', $par ) );
-		if ( !isset( self::$pages[$current] ) ) {
-			$current = key( self::$pages );
+		$steps = explode( '/', $par );
+		$base = array_shift( $steps );
+		if ( !isset( self::$pages[$base] ) ) {
+			$base = key( self::$pages );
 		}
 
 		ob_start();
 
-		self::renderNavigation( $current );
+		self::renderNavigation( $base );
 
 		?><div class="researchTools-page"><?php
 
-		$page = new self::$pages[$current];
-		$page->main();
+		$page = new self::$pages[$base];
+		$page->main( $steps );
 
 		?></div><?php
 
 		$wgOut->addHtml( ob_get_clean() );
 	}
 
-	protected function renderNavigation( $current ) {
+	protected function renderNavigation( $base ) {
 		global $wgUser;
 
 		?>
 		<ul class="researchTools-navigation">
 			<?php foreach ( self::$pages as $page => $class ): ?>
-			<li class="researchTools-navigation-item <?php echo $page == $current ? 'researchTools-navigation-item-current' : '' ?>">
+			<li class="researchTools-navigation-item <?php echo $page == $base ? 'researchTools-navigation-item-current' : '' ?>">
 				<?php echo $wgUser->getSkin()->link( $this->getTitle( $page ), wfMsg( "researchtools-page-$page" ) ) ?>
 			</li>
 			<?php endforeach; ?>

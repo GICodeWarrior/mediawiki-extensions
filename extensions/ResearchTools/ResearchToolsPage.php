@@ -2,5 +2,5 @@
 
 interface ResearchToolsPage {
 
-	public function main();
+	public function main( array $steps );
 }

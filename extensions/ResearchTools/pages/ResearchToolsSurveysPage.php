@@ -2,7 +2,7 @@
 
 class ResearchToolsSurveysPage implements ResearchToolsPage {
 
-	public function main() {
+	public function main( array $steps ) {
 		?>
 			Hello surveys!
 		<?php
