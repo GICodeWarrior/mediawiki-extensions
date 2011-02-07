@@ -52,6 +52,21 @@ $messages['af'] = array(
 	'includewp-include-par-page' => 'Die naam van die (afgeleë) bladsy om te vertoon.',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'includewp-desc' => 'IncludeWP — невялікае пашырэньне для ўключэньня зьместу Вікіпэдыі',
+	'includewp-loading-page' => 'Загрузка старонкі…',
+	'includewp-show-full-page' => 'Паказаць старонку цалкам',
+	'includewp-show-fragment' => 'Паказаць толькі першы параграф',
+	'includewp-loading-failed' => 'Немагчыма загрузіць старонку.',
+	'includewp-licence-notice' => 'Пададзены вышэй зьмест паходзіць са старонкі $1 <a href="$2">$3</a> на ўмовах ліцэнзіі <a href="$4">$5</a>. Поўны сьпіс аўтараў можна знайсьці <a href="$6">тут</a>.',
+	'includewp-parserhook-desc' => 'Працэдура-перахопнік парсэру, які дазваляе паказваць зьмест старонкі Вікіпэдыі.',
+	'includewp-include-par-page' => 'Назва (аддаленай) старонкі, якую Вы жадаеце паказаць.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
