@@ -1,6 +1,6 @@
 <?php
 
-class ResearchToolsClicksPage extends ResearchToolsPage {
+class ResearchToolsClicksPage implements ResearchToolsPage {
 
 	public function main() {
 		?>

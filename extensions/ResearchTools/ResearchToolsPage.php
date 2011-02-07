@@ -1,10 +1,6 @@
 <?php
 
-class ResearchToolsPage {
+interface ResearchToolsPage {
 
-	public function main() {
-		?>
-			Hello research tools!
-		<?php
-	}
+	public function main();
 }
