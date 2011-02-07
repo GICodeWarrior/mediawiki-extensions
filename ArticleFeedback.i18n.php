@@ -638,7 +638,9 @@ $messages['el'] = array(
 	'articlefeedback-survey-thanks' => 'Dankon pro plenumante la enketon.',
 );
 
-/** Esperanto (Esperanto) */
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
 $messages['eo'] = array(
 	'articlefeedback' => 'Takso de artikolo',
 	'articlefeedback-desc' => 'Artikola takso (testa versio)',
@@ -657,6 +659,16 @@ $messages['eo'] = array(
 	'articlefeedback-survey-submit' => 'Enigi',
 	'articlefeedback-survey-title' => 'Bonvolu respondi al kelkaj demandoj',
 	'articlefeedback-survey-thanks' => 'Dankon pro plenumante la enketon.',
+	'articlefeedback-error' => 'Eraro okazis. Bonvolu reprovi baldaŭ.',
+	'articlefeedback-form-switch-label' => 'Taksu ĉi tiun paĝon',
+	'articlefeedback-form-panel-title' => 'Taksi ĉi tiun paĝon',
+	'articlefeedback-form-panel-instructions' => 'Bonvolu pasigi momenton por taksi ĉi tiun paĝon.',
+	'articlefeedback-form-panel-expertise-studies' => 'Mi studis ĝin en kolegio aŭ universitato',
+	'articlefeedback-report-ratings' => '$1 taksoj',
+	'articlefeedback-field-trustworthy-label' => 'Fidinda',
+	'articlefeedback-field-trustworthy-tip' => 'Ĉu vi opinias ke ĉi tiu paĝo havas sufiĉajn citaĵojn kaj tiuj citaĵoj venas de fidindaj fontoj?',
+	'articlefeedback-field-objective-tip' => 'Ĉu vi opinias ke ĉi tiu paĝo montras justan reprezentadon de ĉiuj perspektivoj pri la afero?',
+	'articlefeedback-pitch-join-login' => 'Ensaluti',
 );
 
 /** Spanish (Español)
