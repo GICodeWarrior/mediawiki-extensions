@@ -411,17 +411,25 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
+	'emergencydesysop' => 'הסרת הרשאות במצב חירום',
+	'emergencydesysop-desc' => 'הוספת האפשרות למפעילים להקריב את ההרשאות של עצמו כדי להסיר את ההרשאות של מפעיל אחר',
+	'emergencydesysop-title' => 'הסרת גישה להרשאות מפעיל מהמשתמש הנוכחי וממפעיל אחר',
+	'emergencydesysop-otheradmin' => 'המפעיל האחר שהרשאותיו תוסרנה',
 	'emergencydesysop-reason' => 'סיבת ההסרה',
 	'emergencydesysop-submit' => 'שליחה',
 	'emergencydesysop-incomplete' => 'כל שדות הטופס נדרשים, אנא נסו שוב.',
 	'emergencydesysop-notasysop' => 'משתמש היעד איננו בקבוצת מפעילי המערכת.',
 	'emergencydesysop-nogroups' => 'אין',
+	'emergencydesysop-done' => 'הפעולה בוצעה, החשבון שלכם והחשבון [[$1]] כבר אינם מפעילים.',
 	'emergencydesysop-invalidtarget' => 'משתמש היעד אינו קיים.',
 	'emergencydesysop-blocked' => 'לא ניתן לגשת לדף זה בעודכם חסומים',
+	'emergencydesysop-noright' => 'אין לכם הרשאות מספיקות לגשת לדף הזה',
+	'right-emergencydesysop' => 'יכול להסיר את הרשאותיו של משתמש אחר באופן הדדי',
 );
 
 /** Croatian (Hrvatski)
