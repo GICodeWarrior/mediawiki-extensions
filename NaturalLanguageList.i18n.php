@@ -208,6 +208,14 @@ $messages['ja'] = array(
 	'nll-lastseparator' => '&#32;と&#32;',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'nll-desc' => 'Kann eifach Leßte en nattöörlijje Shprooche maache.',
+	'nll-lastseparator' => '&#32;un&#32;',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
