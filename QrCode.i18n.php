@@ -212,6 +212,13 @@ $messages['ru'] = array(
 	'qrcode-desc' => 'Создаёт изображения с QR-кодами и добавляет их на страницы вики',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'qrcode-desc' => 'สร้างและเพิ่มรูป QR Code ไปยังหน้าวิกิ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
