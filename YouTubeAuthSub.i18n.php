@@ -3178,6 +3178,7 @@ Ju lutemi keni durim.',
  * @author Rancher
  * @author Sasa Stefanovic
  * @author Јованвб
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -3202,7 +3203,7 @@ $messages['sr-ec'] = array(
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Да бисте послали видео, прво морате да будете улоговани на Јутубу.',
 	'youtubeauthsub_uploadhere' => 'Пошаљите Ваш видео одавде:',
-	'youtubeauthsub_uploadbutton' => 'Отпремање',
+	'youtubeauthsub_uploadbutton' => 'Слање',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Погледајте овај видео]',
