@@ -9442,7 +9442,7 @@ $messages['sr-ec'] = array(
 	'mv_label_stream_type' => 'Тип стрима',
 	'mv_metavid_file' => 'Постојећи фајл на серверу',
 	'mv_metavid_live' => 'Подеси стрим уживо',
-	'mv_upload_file' => 'Отпреми датотеку',
+	'mv_upload_file' => 'Пошаљи датотеку',
 	'mv_external_file' => 'Спољашњи фајл',
 	'mv_tool_search' => 'Претрага',
 	'mv_tool_search_title' => 'Претражи у овом стриму',
@@ -9567,6 +9567,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'mv_error_stream_missing' => '<span class="error">Greška: Ne postoji video-fajl pridružen ovom strimu.</span><br />
@@ -9600,7 +9601,7 @@ Molimo Vas da prijavite ovo [[{{MediaWiki:Grouppage-sysop}}|administratoru sajta
 	'mv_label_stream_type' => 'Tip strima',
 	'mv_metavid_file' => 'Postojeći fajl na serveru',
 	'mv_metavid_live' => 'Podesi strim uživo',
-	'mv_upload_file' => 'Pošalji fajl',
+	'mv_upload_file' => 'Pošalji datoteku',
 	'mv_external_file' => 'Spoljašnji fajl',
 	'mv_tool_search' => 'Pretraga',
 	'mv_tool_search_title' => 'Pretraži u ovom strimu',
