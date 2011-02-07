@@ -818,6 +818,7 @@ mulai dari revisi $3?',
 /** Japanese (日本語)
  * @author Iwai.masaharu
  * @author Ohgi
+ * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -846,6 +847,7 @@ $messages['ja'] = array(
 	'wikisync_apply_button' => '適用',
 	'wikisync_log_imported_by' => '[[Special:WikiSync|ウィキ同期]]によりインポート',
 	'wikisync_log_uploaded_by' => '[[Special:WikiSync|ウィキ同期]]によりアップロード',
+	'wikisync_unsupported_user' => '$1という特殊なボットだけが同期を実行できます。$1としてログインしてください。$1という名前は同期のあいだ変更しないでください。変更した場合は空の変更が正常にスキップされません（詳細については[http://www.mediawiki.org/wiki/Extension:WikiSync]をご覧ください）。',
 	'wikisync_api_result_unknown_action' => '不明なAPI動作',
 	'wikisync_api_result_exception' => 'ローカルのAPI呼び出しで例外が発生しました',
 	'wikisync_api_result_noaccess' => '次のグループ{{PLURAL:$2|}}の利用者のみが、この操作を実行できます：$1',
