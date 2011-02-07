@@ -128,6 +128,16 @@ $messages['gsw'] = array(
 	'frontbackforced-forced' => '_(zwungeni_Wikilink)',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'frontbackforced-desc' => 'הוספת של דברי פתיחה ודברי סיום לדפים ויישום של קישורי ויקי כפויים',
+	'frontbackforced-front' => '_(דברי_פתיחה)',
+	'frontbackforced-back' => '_(דברי_סיום)',
+	'frontbackforced-forced' => '_(קישורי_ויקי_כפויים)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

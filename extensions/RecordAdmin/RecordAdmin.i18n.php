@@ -1201,6 +1201,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Whym
  * @author Yanajin66
  * @author 青子守歌
  */
@@ -1243,7 +1244,7 @@ $messages['ja'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1"なし',
-	'recordadmin-edit-info' => 'このページは、このタブから入力できる自身のフォームを持つテンプレートを含んでいます',
+	'recordadmin-edit-info' => 'このページは、このタブ集合から入力できる、独自のフォームを持つテンプレートを含んでいます。<br />テンプレートのフォームの代替手段としては、通常のMediaWiki編集機能を使ってください。',
 	'recordadmin-properties' => 'プロパティー',
 );
 

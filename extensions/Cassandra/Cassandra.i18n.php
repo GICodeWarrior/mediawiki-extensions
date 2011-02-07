@@ -367,6 +367,13 @@ $messages['sv'] = array(
 	'cassandra-desc' => 'Lagra versionstext i  [http://cassandra.apache.org/ Apache Cassandra] databas',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'cassandra-desc' => 'จัดเก็บข้อความการตรวจทานแก้ไขในฐานข้อมูล [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

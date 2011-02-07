@@ -8733,6 +8733,7 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -8778,7 +8779,7 @@ $messages['sr-ec'] = array(
 	'fogg-contact-title' => 'Контакт',
 	'fogg-contact-help' => 'Контакт-линк',
 	'mwe-select_file' => 'Избор датотеке',
-	'mwe-upload' => 'Отпреми датотеку',
+	'mwe-upload' => 'Пошаљи датотеку',
 	'mwe-destfilename' => 'Назив:',
 	'mwe-summary' => 'Сажетак',
 	'mwe-date-of-work' => 'Датум рада',
@@ -8793,7 +8794,7 @@ $messages['sr-ec'] = array(
 	'rsd_results_next' => 'следеће',
 	'rsd_results_prev' => 'претходно',
 	'rsd_no_results' => 'Нема резултата претраге за <b>$1</b>',
-	'mwe-upload_tab' => 'Отпреми датотеку',
+	'mwe-upload_tab' => 'Пошаљи датотеку',
 	'rsd_layout' => 'Изглед:',
 	'mwe-link' => 'веза',
 	'rsd_do_insert' => 'Убаци',
@@ -8812,6 +8813,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Rancher
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 od $2',
@@ -8856,7 +8858,7 @@ $messages['sr-el'] = array(
 	'fogg-contact-title' => 'Kontakt',
 	'fogg-contact-help' => 'Kontakt-link',
 	'mwe-select_file' => 'Izbor fajla',
-	'mwe-upload' => 'Pošalji fajl',
+	'mwe-upload' => 'Pošalji datoteku',
 	'mwe-destfilename' => 'Ciljano ime fajla:',
 	'mwe-summary' => 'Sažetak',
 	'mwe-date-of-work' => 'Datum rada',
@@ -8871,7 +8873,7 @@ $messages['sr-el'] = array(
 	'rsd_results_next' => 'sledeće',
 	'rsd_results_prev' => 'prethodno',
 	'rsd_no_results' => 'Nema rezultata pretrage za <b>$1</b>',
-	'mwe-upload_tab' => 'Pošalji fajl',
+	'mwe-upload_tab' => 'Pošalji datoteku',
 	'mwe-link' => 'veza',
 	'rsd_do_insert' => 'Ubaci',
 	'mwe-cc_pd_title' => 'Javno vlasništvo',

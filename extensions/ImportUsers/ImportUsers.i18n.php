@@ -1779,11 +1779,12 @@ Preskočeno.',
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'importusers' => 'Увези кориснике',
-	'importusers-uploadfile' => 'Отпреми датотеку',
+	'importusers-uploadfile' => 'Пошаљи датотеку',
 	'importusers-form-caption' => 'Унеси CSV-фајл (UTF-8)',
 	'importusers-form-file' => 'Кориснички формат фајла (CSV):',
 	'importusers-form-replace-present' => 'Пиши преко података постојећих корисника',
@@ -1805,10 +1806,11 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'importusers' => 'Uvezi korisnike',
-	'importusers-uploadfile' => 'Pošalji fajl',
+	'importusers-uploadfile' => 'Pošalji datoteku',
 	'importusers-form-caption' => 'Unesi CSV-fajl (UTF-8)',
 	'importusers-form-file' => 'Korisnički format fajla (CSV):',
 	'importusers-form-replace-present' => 'Piši preko podataka postojećih korisnika',

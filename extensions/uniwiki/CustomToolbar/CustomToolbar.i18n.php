@@ -2675,6 +2675,7 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2713,7 +2714,7 @@ $messages['sr-ec'] = array(
 	'ct_link' => 'Додај назив линка (необавезно):',
 	'ct_submit' => 'Пређи!',
 	'ct_close' => 'Затвори прозор',
-	'ct_success' => 'Отпремање датотеке је извршено!',
+	'ct_success' => 'Слање датотеке је извршено!',
 	'ct_user_user' => 'Корисник',
 	'ct_user_tip' => 'Убаци линк ка корисничкој страни',
 	'ct_user_caption' => 'Кориснички линк',
@@ -2722,6 +2723,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'ct-desc' => 'Dodaje proširiv bar sa alatkama',
@@ -2759,7 +2761,7 @@ $messages['sr-el'] = array(
 	'ct_link' => 'Dodaj naziv linka (neobavezno):',
 	'ct_submit' => 'Idi!',
 	'ct_close' => 'Zatvori prozor',
-	'ct_success' => 'Slanje fajla uspešno!',
+	'ct_success' => 'Slanje datoteke je izvršeno!',
 	'ct_user_user' => 'Korisnik',
 	'ct_user_tip' => 'Ubaci link ka korisničkoj strani',
 	'ct_user_caption' => 'Korisnički link',

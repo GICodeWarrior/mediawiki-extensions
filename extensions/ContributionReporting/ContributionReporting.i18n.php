@@ -1371,6 +1371,7 @@ $messages['eo'] = array(
 	'fundraiserstats-tab-averages' => 'Averaĝoj (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumoj (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaro ĝis nun (usonaj dolaroj)',
+	'fundraiserstats-instructions' => 'Por vidi statistikojn por iu tago, ŝvebu la kursoron super la tiutaga breto. Ĉiu jaro reprezentas propran koloron en la diagramo.',
 );
 
 /** Spanish (Español)

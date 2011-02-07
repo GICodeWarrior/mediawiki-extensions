@@ -234,6 +234,32 @@ Byschpel:
 	'flagpage-tab' => 'Markiere',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'flagpage' => 'הוספת דגל לדף',
+	'flagpage-desc' => 'דף דגל עם תבניות מוגדרות מראש',
+	'flagpage-templatelist' => '<!--
+נא לערוך את הדף הזה כדי להגדיר באילו תבניות להשתמש.
+דוגמאות:
+* [[תבנית:חסרים מקורות|הדף לא מפנה למקורות]]
+* [[תבנית:לא ניטרלי|הדף כתוב באופן מוטה]]
+* [[תבנית:למחוק|הדף הזה מועמד למחיקה]]
+-->',
+	'flagpage-nopageselectedtitle' => 'לא נבחר שום דף.',
+	'flagpage-nopageselected' => 'לא ציינתם שום דף.',
+	'flagpage-emptylisttitle' => 'לא הוגדרו תבניות.',
+	'flagpage-emptylist' => 'יש להגדיר את רשימות התבניות שלכם. נא לערוך את הדף [[{{ns:8}}:flagpage-templatelist]] כדי לעשות את זה עכשיו.',
+	'flagpage-preview' => 'תצוגה מקדימה של התבנית שנבחרה:',
+	'flagpage-confirmsave' => 'נא לאשר את השינויים.',
+	'flagpage-submitbutton' => 'לשמור את הדף עם התבנית הזאת.',
+	'flagpage-nonexistent' => 'הדף "$1" אינו קיים. אולי הוא [{{fullurl:Special:Log|page=$1}} הועבר או נמחק].',
+	'flagpage-summary' => 'התבנית נוספה [[$1]] באמצעות FlagPage.',
+	'flagpage-success' => 'הדגל [[$1]] נוסף לדף [[$2]].',
+	'flagpage-tab' => 'הוספת דגל',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

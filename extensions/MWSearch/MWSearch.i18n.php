@@ -590,6 +590,13 @@ $messages['tg-latn'] = array(
 	'mwsearch-desc' => 'Afzunai MWSearch',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'mwsearch-desc' => 'ปลั๊กอิน MWSearch',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */

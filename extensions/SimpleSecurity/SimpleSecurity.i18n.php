@@ -645,6 +645,7 @@ $messages['it'] = array(
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Whym
  */
 $messages['ja'] = array(
 	'security' => 'セキュリティ記録',
@@ -663,6 +664,7 @@ $messages['ja'] = array(
 	'security-type-category' => 'カテゴリ',
 	'security-type-namespace' => '名前空間',
 	'security-restricttogroup' => '「$1」の構成員に限定されているコンテンツにアクセスする',
+	'restriction-read' => '閲覧',
 );
 
 /** Khmer (ភាសាខ្មែរ)

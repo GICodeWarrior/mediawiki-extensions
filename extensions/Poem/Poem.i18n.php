@@ -591,6 +591,13 @@ $messages['tg-latn'] = array(
 	'poem-desc' => "Barcasbi <code>&lt;poem&gt;</code>-ro baroi qolabbandihoi şe'rho ilova mekunad",
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'poem-desc' => 'เพิ่มแท็ก <code>&lt;poem&gt;</code> สำหรับการจัดรูปแบบบทกวี',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
