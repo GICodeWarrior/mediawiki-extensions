@@ -2,7 +2,7 @@
 
 class ResearchToolsDashboardPage implements ResearchToolsPage {
 	
-	public function main() {
+	public function main( array $steps ) {
 		?>
 			Hello dashboard!
 		<?php
