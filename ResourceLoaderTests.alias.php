@@ -8,7 +8,7 @@
 $specialPageAliases = array();
 
 /** English
- * @author Nike
+ * @author Trevor Parscal
  */
 $specialPageAliases['en'] = array(
 	'ResourceLoaderTests' => array( 'ResourceLoaderTests' ),
