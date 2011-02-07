@@ -409,10 +409,11 @@ $messages['nds-nl'] = array(
 );
 
 /** Nepali (नेपाली)
+ * @author Bhawani Gautam Rhk
  * @author सरोज कुमार ढकाल
  */
 $messages['ne'] = array(
-	'antibot-desc' => 'साधारण भार सञ्चालन गर्ने र स्पामबोट  जाँच गर्ने फ्रेमवर्क',
+	'antibot-desc' => 'स्पामबोट  जाँच र पेलोडहरु संचालनको लागि सामान्य ढाँचा',
 );
 
 /** Dutch (Nederlands)
