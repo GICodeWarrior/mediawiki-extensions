@@ -18,7 +18,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => array( 'Brion Vibber' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimeZonePicker',
 );
-$wgExtensionMessagesFiles['SVGEdit'] =  dirname(__FILE__) . '/SVGEdit.i18n.php';
 
 $wgHooks['BeforePageDisplay'][] = 'TimeZonePickerHooks::beforePageDisplay';
 
