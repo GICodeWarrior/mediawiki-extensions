@@ -122,6 +122,19 @@ $messages['gsw'] = array(
 	'emailusers-toomanyrecipientsselected' => 'S sin z vil Empfänger uusgwehlt wore (S {{PLURAL:$1|isch maximal $1|sin maximal $1}} megli.).',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'emailusers-desc' => 'הוספת היכולת לשלוח דואר אלקטרוני לנמענים מרובים',
+	'right-sendbatchemail' => 'שליחת דואר אלקטרוני לנמענים מרובים בבת אחת',
+	'emailusers' => 'שליחת דוא״ל למשתמשים',
+	'emailusers-target-reverse' => 'לשלוח לכל המשתמשים למעט אלה שנבחרו',
+	'emailusers-norecipient' => 'אין אף משתמש אחד שתוכלו לשלוח לו דוא״ל.',
+	'emailusers-norecipientselected' => 'לא נבחר שום נמען.',
+	'emailusers-toomanyrecipientsselected' => 'נבחרו יותר מדי נמענים ({{PLURAL:$1|יכול להיות נמען אחד|יכולים להיות $1 נמענים}} לכל היותר).',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
