@@ -270,6 +270,13 @@ $messages['sv'] = array(
 	'hidens-desc' => 'Döljer namnrymden från sidrubriken och sidtiteln när en sida är i en specificerad namnrymd eller när <code><nowiki>{{#hidens:}}</nowiki></code>-funktionen används',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'hidens-desc' => 'ซ่อนเนมสเปซในหัวข้อและชื่อเรื่อง เมื่อหน้าอยู่ในเนมสเปซที่ระบุ หรือเมื่อเรียกด้วยฟังก์ชันแจงส่วน <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
