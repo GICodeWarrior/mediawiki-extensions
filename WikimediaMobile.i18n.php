@@ -202,6 +202,13 @@ $messages['ja'] = array(
 	'wikimediamobile-desc' => 'ウィキメディア・モバイルプロジェクト用の MediaWiki サポート機能。http://github.com/hcatlin/wikimedia-mobile でホストされています。',
 );
 
+/** Korean (한국어)
+ * @author Albamhandae
+ */
+$messages['ko'] = array(
+	'wikimediamobile-desc' => '미디어위키는 http://github.com/hcatlin/wikimedia-mobile 에서 호스트하고 있는 위키미디어 모바일 프로젝트 기능을 지원합니다.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
