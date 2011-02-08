@@ -19,12 +19,12 @@ class ReaderFeedbackHooks {
 		
 		$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFeedbackStylePath );
 
-		$encCssFile = htmlspecialchars( "$stylePath/readerfeedback.css?$wgFeedbackStyleVersion" );
-		$encJsFile = htmlspecialchars( "$stylePath/readerfeedback.js?$wgFeedbackStyleVersion" );
+		$cssFile = "$stylePath/readerfeedback.css?$wgFeedbackStyleVersion";
+		$jsFile = "$stylePath/readerfeedback.js?$wgFeedbackStyleVersion";
 		// Add CSS
-		$wgOut->addExtensionStyle( $encCssFile );
+		$wgOut->addExtensionStyle( $cssFile );
 		// Add JS
-		$wgOut->addScriptFile( "$stylepath/readerfeedback.js?$wgFeedbackStyleVersion" );
+		$wgOut->addScriptFile( $jsFile );
 
 		return true;
 	}
