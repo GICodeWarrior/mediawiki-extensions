@@ -33,14 +33,13 @@ class GoogleMapsKML extends SpecialPage {
 			$exporter = new GoogleMapsKmlExporter($wgContLang,
 			str_replace('{label}', $mapOptions['icon'], $mapOptions['icons']));
 
-			$wgParser->mOptions = ParserOptions::newFromUser( $wgUser );
-			$wgParser->mOptions->setEditSection( false );
-			$wgParser->mTitle = $wgTitle;
-                        $wgParser->clearState();
+			$popts = ParserOptions::newFromUser( $wgUser );
+			$popts->setEditSection( false );
+			
+			$wgParser->startExternalParse( $wgTitle, $popts, OT_WIKI, true );
 
-                        $localParser = new Parser();
-                        $localParser->mTitle = $title;
-                        $localParser->mOptions = $wgParser->mOptions;
+			$localParser = new Parser();
+			$localParser->startExternalParse( $wgTitle, $popts, OT_WIKI, true );
 
 			if (preg_match_all("/<googlemap( .*?|)>(.*?)<\/googlemap>/s", $revision->getText(), $matches)) {
 				$exporter->addFileHeader();
