@@ -2133,7 +2133,7 @@ class LqtView {
 	}
 
 	static function parseSignature( $sig ) {
-		global $wgParser, $wgOut, $wgTitle;
+		global $wgOut;
 
 		static $parseCache = array();
 		$sigKey = md5( $sig );
@@ -2141,11 +2141,6 @@ class LqtView {
 		if ( isset( $parseCache[$sigKey] ) ) {
 			return $parseCache[$sigKey];
 		}
-
-		// Parser gets antsy about parser options here if it hasn't parsed anything before.
-		$wgParser->clearState();
-		$wgParser->setTitle( $wgTitle );
-		$wgParser->mOptions = new ParserOptions;
 
 		$sig = $wgOut->parseInline( $sig );
 
@@ -2159,17 +2154,12 @@ class LqtView {
 
 		$title = $wgTitle ? $wgTitle : $user->getUserPage()->getTitle();
 
-		// Parser gets antsy about parser options here if it hasn't parsed anything before.
-		$wgParser->clearState();
-		$wgParser->setTitle( $title );
-		$wgParser->mOptions = new ParserOptions;
-
 		$sig = $wgParser->preSaveTransform(
 			$sig,
 			$title,
 			$user,
-			$wgParser->mOptions,
-			false
+			new ParserOptions,
+			true
 		);
 
 		return $sig;
