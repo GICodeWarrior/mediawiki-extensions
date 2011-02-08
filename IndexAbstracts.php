@@ -101,8 +101,8 @@ class IndexAbstracts {
 			// First, we use the system preprocessor to break down the text
 			// into text, templates, extensions, and comments:
 			global $wgParser;
-			$wgParser->clearState();
 			$wgParser->mOptions = new ParserOptions();
+			$wgParser->clearState();
 			$frame = $wgParser->getPreprocessor()->newFrame();
 			$dom = $wgParser->preprocessToDom( $text );
 			
