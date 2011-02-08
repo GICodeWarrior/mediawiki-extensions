@@ -831,12 +831,7 @@ class NewsFeedPage extends Article {
 		//      this would still save the cost of rendering if the data didn't change
 		global $wgParser; //evil global
 		
-		if (!$wgParser->mOptions) { //XXX: ugly hack :(
-			$wgParser->mOptions = new ParserOptions; 
-			$wgParser->setOutputType( OT_HTML );
-			$wgParser->clearState();
-			$wgParser->mTitle = $this->mTitle;
-		}
+		$wgParser->startExternalParse( $this->mTitle, new ParserOptions, OT_HTML, true );
 
 		//FIXME: an EXTREMELY ugly hack to force generation of absolute links.
 		//       this is needed because Title::getLocalUrl check wgRequest to see
