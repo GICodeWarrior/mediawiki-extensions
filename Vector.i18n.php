@@ -1225,11 +1225,12 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author Helder.wiki
  */
 $messages['pt'] = array(
 	'vector' => 'Melhorias da IU do Vector',
 	'vector-desc' => 'Melhora os elementos da interface do utilizador para o tema Vector',
-	'vector-collapsiblenav-preference' => 'Permitir o colapsamento dos elementos do menu de navegação no tema Vector',
+	'vector-collapsiblenav-preference' => 'Permitir o ocultamento dos elementos do menu de navegação no tema Vector',
 	'vector-collapsiblenav-more' => 'Mais línguas',
 	'vector-editwarning-warning' => 'Abandonar esta página pode fazer com que perca todas as suas alterações.
 Se estiver autenticado, pode desactivar este aviso na secção "Edição" das preferências.',
@@ -1242,11 +1243,12 @@ Se estiver autenticado, pode desactivar este aviso na secção "Edição" das pr
  * @author Daemorris
  * @author Everton137
  * @author Giro720
+ * @author Helder.wiki
  */
 $messages['pt-br'] = array(
 	'vector' => 'Melhorias da IU do Vector',
 	'vector-desc' => 'Melhora a interface do usuário do tema Vector',
-	'vector-collapsiblenav-preference' => 'Ativar colapsamento de itens no menu de navegação no tema Vector',
+	'vector-collapsiblenav-preference' => 'Ativar o ocultamento de itens no menu de navegação no tema Vector',
 	'vector-collapsiblenav-more' => 'Mais idiomas',
 	'vector-editwarning-warning' => 'Abandonar esta página pode fazer com que você perca todas as alterações que fez.
 Se você estiver autenticado, você pode desabilitar este aviso na seção "Opções de edição" de suas preferências.',
