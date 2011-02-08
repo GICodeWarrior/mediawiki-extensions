@@ -28,10 +28,8 @@ sure you also get a copy of Validator ([[Extension:Validator#Download|see here f
 Once you have downloaded the code, place the ''IncludeWP'' and ''Validator'' directories within your
 MediaWiki 'extensions' directory. Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php]] file:
 
-<source lang="php">
 # IncludeWP
-require_once( "$wgExtensionAssetsPath/IncludeWP/IncludeWP.php" );
-</source>
+require_once( "$IP/extensions/IncludeWP/IncludeWP.php" );
 
 == Configuration ==
 
