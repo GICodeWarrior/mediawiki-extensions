@@ -169,6 +169,15 @@ $messages['ja'] = array(
 	'ukgeocoding_couldNotGeocode' => '郵便番号のジオコードを認識できなかったため、地図から省略されています。',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'ukgeocoding_name' => 'Koodenate för Landkaate vun Jruußbretannije',
+	'ukgeocoding_desc' => 'Deiht för et Zohsazproramm för Landkaate ußzejävve en zohsäzlejje Paaserfunxjohn mem Name <code lang="en">display_uk_point</code>en et Wiki för met <i lang="en">Google maps</i> Pläz en Jruußbretannije ze makeeere.',
+	'ukgeocoding_couldNotGeocode' => 'Ein udder mieh Poßleizahle kunnte nit en de Kaat opjenumme wääde. Mer kunnte se nit en Koodenaate ömsäze.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
