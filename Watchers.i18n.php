@@ -656,10 +656,16 @@ $messages['ksh'] = array(
 	'watchers-desc' => 'Zeich de [[Special:Watchers|Metmaacher, di_j_en Sigg op ier Oppaßleß shtonn han]].',
 	'watchers_link_title' => 'Wä paß op di Sigg op?',
 	'watchers_error_article' => '<b>Fähler:</b> Di Sigg ham_mer nit.',
+	'watchers-error-invalid-page' => "'''Fähler:''' „$1“ es keine jölteje Name för en Sigg.",
 	'watchers_header' => '{{PLURAL:$2|Dä Metmaacher, dä op di Sigg „[[:$1]]“ oppaß|Metmaacher, die op di Sigg „[[:$1]]“ oppasse donn|Keine Metmaacher paß op di Sigg „[[:$1]]“ op}}.',
 	'watchers_noone_watches' => 'Keiner pass op di Sigg op.',
 	'watchers_x_or_more' => 'Mieh wi {{PLURAL:$1|eine Metmaacher paß|$1 Metmaacher passe|keine Metmaacher paß}} op hee di Sigg op.',
 	'watchers_less_than_x' => 'Winnijer wi {{PLURAL:$1|eine Metmaacher paß|$1 Metmaacher passe|keine Metmaacher paß}} op hee di Sigg op.',
+	'watchers-num' => '{{PLURAL:$1
+ |Eine Metmaacher hät di Sigg „[[:$2]]“ op singe
+ |$1 Metmaacher han di Sigg „[[:$2]]“ op iehre
+ |Keine Metmaacher hät di Sigg „[[:$2]]“ op singe}} Oppaßleß.',
+	'right-watchers-list' => '[[Special:Watchers|Zeich de Metmaacher, di op en beshtemmpte Sigg aam opasse sin]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
