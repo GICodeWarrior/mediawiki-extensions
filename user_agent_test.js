@@ -7,7 +7,7 @@
   Written by Hampton Catlin 
 */
 
-var regex = /(5.0[ ]?\(..[^a].*Mobile.*Safari|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii|BlackBerry)/;
+var regex = /(iPhone|iPod|Android.*Mobile|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii|BlackBerry)/;
 
 var runTests = function() {
   // iPhone
@@ -25,13 +25,17 @@ var runTests = function() {
   // Chrome on OS X
   shouldIgnore("Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.237 Safari/534.10");
   // iPad
-  shouldIgnore("Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10");
-  // iPad alt
   shouldIgnore("Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10");
   // iPhone 4
   shouldRedirect("Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.05 Mobile/8A293 Safari/6531.22.7");
   // Firefox
   shouldIgnore("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:2.0b9pre) Gecko/20101228 Firefox/4.0b9pre")
+  
+  // Fake test strings
+  
+  // Android, but only with Mobile
+  shouldIgnore("Android");
+  shouldRedirect("Mozilla/5.0 (Android; Mobile/5G77 Safari/525.20")
 };
 
 var doesMatch = function(user_agent) {
