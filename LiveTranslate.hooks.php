@@ -25,7 +25,7 @@ final class LiveTranslateHooks {
 	 */
 	public static function onArticleViewHeader( Article &$article, &$outputDone, &$useParserCache ) {
 		global $egGoogleApiKey, $egLiveTranslateLanguages;
-		
+
 		$title = $article->getTitle();
 		
 		$currentLang = LiveTranslateFunctions::getCurrentLang( $title );
@@ -40,13 +40,20 @@ final class LiveTranslateHooks {
 			&& $article->exists()
 			&& ( count( $egLiveTranslateLanguages ) > 1 || ( count( $egLiveTranslateLanguages ) == 1 && $egLiveTranslateLanguages[0] != $currentLang ) ) ) {
 			
-			global $egLTNSWithTranslationControl, $egLTUnknownNSShowControl;
-			$ns =  $title->getNamespace();
-			
-			if ( ( array_key_exists( $ns, $egLTNSWithTranslationControl ) && $egLTNSWithTranslationControl[$ns] )
-			 || ( !array_key_exists( $ns, $egLTNSWithTranslationControl ) && $egLTUnknownNSShowControl )
-			 ) {
-				self::displayTranslationControl( $currentLang );
+			global $wgParser;
+			$po = $wgParser->getOutput();
+			$magicWords = isset( $po->mLTMagicWords ) ? $po->mLTMagicWords : array();
+
+			if ( !in_array( 'LT_NOTRANSLATIONCONTROL', $magicWords ) ) {
+				global $egLTNSWithTranslationControl, $egLTUnknownNSShowControl;
+				$ns =  $title->getNamespace();
+				
+				if ( in_array( 'LT_SHOWTRANSLATIONCONTROL', $magicWords ) 
+					||	( array_key_exists( $ns, $egLTNSWithTranslationControl ) && $egLTNSWithTranslationControl[$ns] )
+					|| ( !array_key_exists( $ns, $egLTNSWithTranslationControl ) && $egLTUnknownNSShowControl )
+				 ) {
+					self::displayTranslationControl( $currentLang );
+				}				
 			}
 		}
 		
@@ -291,5 +298,61 @@ final class LiveTranslateHooks {
 		
 		return true;
 	}
+	
+	/**
+	 * Registers the magic words to show and hide the translation control.
+	 * 
+	 * TODO: apparently there is some new way of doing this for quite a while,
+	 * which is not linked in the docs. If someone cares to explain the new stuff,
+	 * I'll be happy to update this.
+	 * 
+	 * @since 0.6
+	 * 
+	 * @param array &$magicWords
+	 * @param string $langCode
+	 * 
+	 * @return true
+	 */
+	public static function addMagicWords( array &$magicWords, $langCode ) {
+		$magicWords['LT_NOTRANSLATIONCONTROL'] = array( 0, '__NOTRANSLATIONCONTROL__' );
+		$magicWords['LT_SHOWTRANSLATIONCONTROL'] =array( 0, '__SHOWTRANSLATIONCONTROL__' );	
 		
+		return true;
+	}
+	
+	/**
+	 * Strips the magic words added by Live Translate from the page text.
+	 * 
+	 * @since 0.6
+	 * 
+	 * @param Parser &$parser
+	 * @param string &$text
+	 * 
+	 * @return true
+	 */	
+	public static function stripMagicWords( Parser &$parser, &$text  ) {
+		global $egLiveTranslateMagicWords;
+
+		$mw = MagicWord::get( 'LT_NOTRANSLATIONCONTROL' );
+		if ( $mw->matchAndRemove( $text ) ) {
+			$egLiveTranslateMagicWords[] = 'LT_NOTRANSLATIONCONTROL';
+		}
+
+		$mw = MagicWord::get( 'LT_SHOWTRANSLATIONCONTROL' );
+		if ( $mw->matchAndRemove( $text ) ) {
+			$egLiveTranslateMagicWords[] = 'LT_SHOWTRANSLATIONCONTROL';
+		}
+
+		$po = $parser->getOutput();
+		$po->mLTMagicWords = $egLiveTranslateMagicWords;
+		
+		return true;
+	}
+	
+	public static function onOutputPageParserOutput( $outputpage, $parseroutput ) {
+			$magicWords = isset( $parseroutput->mLTMagicWords ) ? $parseroutput->mLTMagicWords : array();
+
+			return true;
+	}
+	
 }

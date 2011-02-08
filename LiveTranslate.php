@@ -25,7 +25,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'LiveTranslate_VERSION', '0.5.1' );
+define( 'LiveTranslate_VERSION', '0.6 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -44,6 +44,7 @@ $egLiveTranslateIP = dirname( __FILE__ );
 unset( $useExtensionPath );
 
 $wgExtensionMessagesFiles['LiveTranslate'] 			= $egLiveTranslateIP . '/LiveTranslate.i18n.php';
+$wgExtensionMessagesFiles['LiveTranslateMagic'] 	= $egLiveTranslateIP . '/LiveTranslate.i18n.magic.php';
 
 $wgAutoloadClasses['LiveTranslateHooks'] 			= $egLiveTranslateIP . '/LiveTranslate.hooks.php';
 $wgAutoloadClasses['ApiImportTranslationMemories']	= $egLiveTranslateIP . '/api/ApiImportTranslationMemories.php';
@@ -72,6 +73,9 @@ $wgAPIListModules['livetranslate'] = 'ApiQueryLiveTranslate';
 $wgHooks['ArticleViewHeader'][] = 'LiveTranslateHooks::onArticleViewHeader';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'LiveTranslateHooks::onSchemaUpdate';
 $wgHooks['ArticleSaveComplete'][] = 'LiveTranslateHooks::onArticleSaveComplete';
+$wgHooks['LanguageGetMagic'][] = 'LiveTranslateHooks::addMagicWords';
+$wgHooks['InternalParseBeforeLinks'][] = 'LiveTranslateHooks::stripMagicWords';
+$wgHooks['OutputPageParserOutput'][] = 'LiveTranslateHooks::onOutputPageParserOutput';
 
 $egLTJSMessages = array(
 	'livetranslate-button-translate',
@@ -102,5 +106,7 @@ if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
 define( 'TMT_LTF', 0 );
 define( 'TMT_TMX', 1 );
 define( 'TMT_GCSV', 2 );
+
+$egLiveTranslateMagicWords = array();
 
 require_once 'LiveTranslate_Settings.php';
