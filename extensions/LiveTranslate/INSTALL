@@ -29,19 +29,15 @@ You should NOT modify the settings file, but can have a look at it to get an ide
 To be able to actually use Google Translate, you need to [https://code.google.com/apis/console get an API key] and
 add it to your [[LocalSettings.php]] file AFTER the inclusion of the extension.
 
-<source lang="php">
 # Google API key
 $egGoogleApiKey = 'INSERT-YOUR-KEY-HERE';
-</source>
 
 === Available languages ===
 
 You have to specify which languages users should be able to translate to. This is done by adding language codes to <code>$egLiveTranslateLanguages</code>.
 By default it contains only your wikis main language (as specified by <code>$wgLanguageCode</code> in [[LocalSettings.php]]). You add languages as follows:
 
-<source lang="php">
 $egLiveTranslateLanguages[] = 'nl';
 $egLiveTranslateLanguages[] = 'de';
-</source>
 
 If there are no languages available other then the current language of the page, then the translation control will not show up.
