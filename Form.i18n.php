@@ -1030,6 +1030,13 @@ $messages['ms'] = array(
 	'formsave' => 'Simpan',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'formsave' => 'သိမ်းရန်',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
