@@ -25,10 +25,7 @@ if (!defined('MEDIAWIKI')) die();
 */
 
 class Parser {
-
-	public function initialiseVariables() {}
-
-	public function clearState() {}
+	public function startExternalParse( Title $title = null, ParserOptions $options, $outputType, $clearState = true ) {}
 
 	public function replaceVariables( $text ) {
 		return $text;

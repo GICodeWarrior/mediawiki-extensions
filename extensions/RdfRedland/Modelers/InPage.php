@@ -31,6 +31,7 @@ class MwRdf_InPage_Modeler extends MwRdf_Modeler {
 	public function getName() { return 'inpage'; }
 
 	public function build() {
+		global $wgParserConf;
 		$article = $this->Agent->getArticle();
 		$text = $article->getContent(true);
 		# Strip comments and <nowiki>
@@ -39,13 +40,8 @@ class MwRdf_InPage_Modeler extends MwRdf_Modeler {
 		# change template usage to substitution; note that this is WRONG
 		#$tchars = Title::legalChars();
 		#$text = preg_replace("/(?<!{){{([$tchars]+)(\|.*?)?}}(?!})/", "{{subst:$1$2}}", $text);
-		$parser = new Parser();
-		# so the magic variables work out right
-		$parser->mOptions = new ParserOptions();
-		$parser->mTitle = $this->Agent->getTitle();
-		$parser->mOutputType = OT_WIKI;
-		$parser->initialiseVariables();
-		$parser->clearState();
+		$parser = new Parser( $wgParserConf );
+		$parser->startExternalParse( $this->Agent->getTitle(), new ParserOptions, OT_WIKI, true );
 		$text = $parser->replaceVariables($text);
 		preg_match_all("@<rdf>(.*?)</rdf>@s", $text, $matches, PREG_PATTERN_ORDER);
 		$content = $matches[1];

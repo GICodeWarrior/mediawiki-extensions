@@ -31,7 +31,7 @@ class MwRdf_Interwiki_Modeler extends MwRdf_Modeler {
 	}
 
 	public function build() {
-		global $wgContLang;
+		global $wgContLang, $wgParserConf;
 
 		$dc = MwRdf::Vocabulary( 'dc' );
 		$dcterms = MwRdf::Vocabulary( 'dcterms' );
@@ -42,11 +42,8 @@ class MwRdf_Interwiki_Modeler extends MwRdf_Modeler {
 		$article = $this->Agent->getArticle();
 		$text = $article->getContent( true );
 
-		$parser = new Parser();
-		$parser->mOptions = new ParserOptions();
-		$parser->mTitle = $this;
-		$parser->initialiseVariables();
-		$parser->clearState();
+		$parser = new Parser( $wgParserConf );
+		$parser->startExternalParse( Title::newFromText( 'RedlandInterwiki' ), new ParserOptions, OT_HTML, true );
 		$tags = array( 'nowiki' );
 		$m = array();
 		$text = $parser->extractTagsAndParams( $tags, $text, $m );
