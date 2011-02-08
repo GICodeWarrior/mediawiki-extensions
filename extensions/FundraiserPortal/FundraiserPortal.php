@@ -92,7 +92,7 @@ function efFundraiserPortalLoader( $out, $skin ) {
 	$encFundraiserLoader = Xml::encodeJsVar( "$wgFundraiserPortalPath/$fundraiserLoader" );
 	$wgOut->addInlineScript(
 		"var wgFundraiserPortal='', wgFundraiserPortalCSS='';\n" .
-		"importScriptURI($encFundraiserLoader);\n"
+		"mediaWiki.loader.load($encFundraiserLoader);\n"
 	);
 
 	return true;
