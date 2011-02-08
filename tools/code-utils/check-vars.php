@@ -76,9 +76,24 @@ class CheckVars {
 	# Functions to be avoided. Insert in lowercase.
 	static $poisonedFunctions = array(
 		'addslashes' => 'Replace with Database::addQuotes/strencode',
+		'mysql_db_query' => 'Deprecated since PHP 5.3.0',
 		'mysql_escape_string' => 'Replace with Database::addQuotes/strencode',
 		'create_function' => 'create_function should be avoided. See http://www.mediawiki.org/wiki/Security_for_developers#Dynamic_code_generation',
 		'eval' => 'eval should be avoided. See r78046', # eval.php is magically not listed for not containing any function. Should get an exception if it starts being parsed.
+		'call_user_method' => 'Deprecated since PHP 4.1.0',
+		'call_user_method_array' => 'Deprecated since PHP 4.1.0',
+		'ereg' => 'Deprecated since PHP 5.3.0',
+		'ereg_replace' => 'Deprecated since PHP 5.3.0',
+		'eregi' => 'Deprecated since PHP 5.3.0',
+		'eregi_replace' => 'Deprecated since PHP 5.3.0',
+		'split' => 'Deprecated since PHP 5.3.0',
+		'spliti' => 'Deprecated since PHP 5.3.0',
+		'sql_regcase' => 'Deprecated since PHP 5.3.0',
+		'set_socket_blocking' => 'Deprecated since PHP 5.3.0. Use stream_set_blocking()',
+		'session_register' => 'Deprecated since PHP 5.3.0. Use $_SESSION directly',
+		'session_unregister' => 'Deprecated since PHP 5.3.0.',
+		'session_is_registered' => 'Deprecated since PHP 5.3.0.',
+		'set_magic_quotes_runtime' => 'Deprecated since PHP 5.3.0.',
 		);
 
 	protected $generateDeprecatedList = false;
