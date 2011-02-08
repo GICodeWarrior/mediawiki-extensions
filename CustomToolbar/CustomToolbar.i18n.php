@@ -1761,6 +1761,16 @@ Odder loor ens noh Dingem <i lang="en">Popup-Blocker</i>.',
 	'ct_user_sample' => 'Metmaachername',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'ct_italic_caption' => 'Xwar',
+	'ct_external_caption' => 'Lînka derve',
+	'ct_submit' => 'Biçe!',
+	'ct_user_sample' => 'Navê bikarhêner',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
