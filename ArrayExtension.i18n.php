@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  * Get translated magic words, if available
  *
@@ -8,7 +8,7 @@
  */
 function efArrayExtensionWords( $lang ) {
         $words = array();
- 
+
         /**
          * English
          */
@@ -19,7 +19,7 @@ function efArrayExtensionWords( $lang ) {
                 'arraysize'         => array( 0, 'arraysize' ),
                 'arrayindex'        => array( 0, 'arrayindex' ),
                 'arraysearch'       => array( 0, 'arraysearch' ),
-		
+
                 'arrayunique'       => array( 0, 'arrayunique' ),
                 'arraysort'         => array( 0, 'arraysort' ),
                 'arrayreset'        => array( 0, 'arrayreset' ),
@@ -32,7 +32,7 @@ function efArrayExtensionWords( $lang ) {
                 'arraydiff'         => array( 0, 'arraydiff' ),
                 'arraysearcharray'  => array( 0, 'arraysearcharray' ),
         );
- 
+
         # English is used as a fallback, and the English synonyms are
         # used if a translation has not been provided for a given word
         return ( $lang == 'en' || !isset( $words[$lang] ) )
