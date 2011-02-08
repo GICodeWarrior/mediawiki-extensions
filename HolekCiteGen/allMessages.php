@@ -489,6 +489,14 @@ $messages['ksh'] = array(
 	'ts-citegen-Skin-skins' => 'Ovverflääsche',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'ts-citegen-Output-title' => 'Encam',
+	'ts-citegen-Other-languages' => 'Zmanên din',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

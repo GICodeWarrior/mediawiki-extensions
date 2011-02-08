@@ -530,6 +530,13 @@ Jika Anda mengikuti tautan dari tempat lain, silahkan <a href="$1">laporkan bug<
 	'toolbase-error-toomanyedits' => '$1 memiliki $2 suntingan. Peralatan ini memiliki batas maksimal $3 suntingan.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'toolbase-footer-source' => 'Çavkanîyê bibîne',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

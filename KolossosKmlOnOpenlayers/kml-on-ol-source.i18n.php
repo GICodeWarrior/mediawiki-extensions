@@ -306,6 +306,14 @@ $messages['ja'] = array(
 	'ts-kml-on-ol-map-by' => '地図から',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'ts-kml-on-ol-help' => 'Alîkarî',
+	'ts-kml-on-ol-all' => 'Hemû',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
