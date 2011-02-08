@@ -32,6 +32,33 @@ $messages['en'] = array(
 	'rdf-instructions' => "Select the target page and RDF models you're interested in."
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'rdf-categories' => '{{Identical|Categories}}',
+);
+
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'rdf-desc' => 'Бібліятэка падтрымкі RDF для MediaWiki',
+	'rdf-inpage' => 'Убудаваны Turtle на старонцы',
+	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Убудаваныя выявы',
+	'rdf-linksto' => 'Спасылкі на старонку',
+	'rdf-linksfrom' => 'Спасылкі са старонкі',
+	'rdf-links' => 'Усе спасылкі',
+	'rdf-interwiki' => 'Інтэрвікі-спасылкі',
+	'rdf-categories' => 'Катэгорыі',
+	'rdf-target' => 'Мэтавая старонка',
+	'rdf-modelnames' => 'Мадэлі',
+	'rdf-format' => 'Фармат вываду',
+	'rdf-instructions' => 'Выберыце мэтавую старонку і RDF-мадэлі, якія жадаеце задзейнічаць.',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -60,5 +87,33 @@ $messages['de'] = array(
 	'rdf-modelnames' => 'Modell(e)',
 	'rdf-format' => 'Ausgabeformat',
 	'rdf-instructions' => 'Gewünschte Zielseite sowie RDF-Modelle auswählen',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'rdf-desc' => 'Quadro RDF pro MediaWiki',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'rdf-desc' => 'RDF-склопец за МедијаВики',
+	'rdf-inpage' => 'Turtle вметнат во страница',
+	'rdf-dcmes' => 'Збир на медатаподаточни елементи за Dublin Core',
+	'rdf-cc' => 'Криејтив комонс',
+	'rdf-image' => 'Вметнати слики',
+	'rdf-linksto' => 'Врски до страницата',
+	'rdf-linksfrom' => 'Врски од страницата',
+	'rdf-links' => 'Сите врски',
+	'rdf-history' => 'Историски верзии',
+	'rdf-interwiki' => 'Интервики-врски',
+	'rdf-categories' => 'Категории',
+	'rdf-target' => 'Целна страница',
+	'rdf-modelnames' => 'Модел(и)',
+	'rdf-format' => 'Формат на изводот',
+	'rdf-instructions' => 'Одберете целна страница и RDF-моделите за кои сте заинтересирани.',
 );
 
