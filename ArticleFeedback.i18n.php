@@ -2155,9 +2155,16 @@ $messages['ru'] = array(
 	'articlefeedback-survey-submit' => 'Отправить',
 	'articlefeedback-survey-title' => 'Пожалуйста, ответьте на несколько вопросов',
 	'articlefeedback-survey-thanks' => 'Спасибо за участие в опросе.',
+	'articlefeedback-error' => 'Произошла ошибка. Пожалуйста, повторите попытку позже.',
 	'articlefeedback-form-switch-label' => 'Оцените эту страницу',
 	'articlefeedback-form-panel-title' => 'Оцените эту страницу',
 	'articlefeedback-form-panel-instructions' => 'Пожалуйста, найдите время, чтобы оценить эту страницу.',
+	'articlefeedback-form-panel-clear' => 'Удалить эту оценку',
+	'articlefeedback-form-panel-expertise' => 'У меня есть предварительные знания по этой теме',
+	'articlefeedback-form-panel-expertise-studies' => 'Я изучал это в колледже / университете',
+	'articlefeedback-form-panel-expertise-profession' => 'Это часть моей профессии',
+	'articlefeedback-form-panel-expertise-hobby' => 'Это связано с моими увлечениями, хобби',
+	'articlefeedback-form-panel-expertise-other' => 'Источник моих знаний здесь не указан',
 	'articlefeedback-form-panel-submit' => 'Отправить отзыв',
 	'articlefeedback-report-switch-label' => 'Показать оценки страницы',
 	'articlefeedback-report-panel-title' => 'Оценки страницы',
@@ -2173,16 +2180,21 @@ $messages['ru'] = array(
 	'articlefeedback-field-wellwritten-label' => 'Стиль изложения',
 	'articlefeedback-field-wellwritten-tip' => 'Считаете ли вы, что эта страница хорошо организована и хорошо написана?',
 	'articlefeedback-pitch-reject' => 'Может быть, позже',
+	'articlefeedback-pitch-or' => 'или',
 	'articlefeedback-pitch-survey-title' => 'Хотели бы вы примите участие в опросе?',
 	'articlefeedback-pitch-survey-accept' => 'Начать опрос',
 	'articlefeedback-pitch-join-title' => 'Вы хотите создать учётную запись?',
 	'articlefeedback-pitch-join-accept' => 'Создать учётную запись',
+	'articlefeedback-pitch-join-login' => 'Представиться',
 	'articlefeedback-pitch-edit-title' => 'Вы хотели бы изменить эту статью?',
 	'articlefeedback-pitch-edit-accept' => 'Начать редактирование',
 	'articlefeedback-expert-assessment-question' => 'Имеются ли у вас знания по этой теме?',
 	'articlefeedback-expert-assessment-level-1-label' => 'Поверхностные',
 	'articlefeedback-expert-assessment-level-2-label' => 'Достаточные',
 	'articlefeedback-expert-assessment-level-3-label' => 'Экспертные',
+	'articlefeedback-survey-message-success' => 'Спасибо за участие в опросе.',
+	'articlefeedback-survey-message-error' => 'Произошла ошибка. 
+Пожалуйста, повторите попытку позже.',
 );
 
 /** Rusyn (Русиньскый)
@@ -2553,7 +2565,9 @@ $messages['uk'] = array(
 	'articlefeedback-survey-submit' => 'Відправити',
 	'articlefeedback-survey-title' => 'Будь ласка, дайте відповідь на кілька питань',
 	'articlefeedback-survey-thanks' => 'Дякуємо за заповнення опитування.',
+	'articlefeedback-error' => 'Сталася помилка. Будь ласка, повторіть спробу пізніше.',
 	'articlefeedback-report-switch-label' => 'Показати оцінки сторінки',
+	'articlefeedback-pitch-or' => 'або',
 	'articlefeedback-pitch-join-accept' => 'Створити обліковий запис',
 );
 
