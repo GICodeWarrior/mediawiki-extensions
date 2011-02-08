@@ -2043,6 +2043,7 @@ Prosimo, ponovite svojo zahtevo.
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2051,7 +2052,7 @@ $messages['sr-ec'] = array(
 	'changeauthor-title' => 'Промени аутора неке ревизије',
 	'changeauthor-search-box' => 'Претражи измене',
 	'changeauthor-pagename-or-revid' => 'Име странице или ИД ревизије:',
-	'changeauthor-pagenameform-go' => 'Пређи',
+	'changeauthor-pagenameform-go' => 'Иди',
 	'changeauthor-comment' => 'Коментар:',
 	'changeauthor-changeauthors-multi' => 'Промени {{PLURAL:$1|аутора|ауторе}}',
 	'changeauthor-changeauthors-single' => 'Промени аутора',

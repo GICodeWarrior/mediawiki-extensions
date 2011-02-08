@@ -2595,6 +2595,15 @@ $messages['mt'] = array(
 	'voctrain_Language' => 'Lingwa',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'voctrain_Hello_World' => 'ဟယ်လို ဝီကီ',
+	'voctrain_Permission_Denied' => 'ဝင်ရောက်၍ မရပါ',
+	'voctrain_try_again_' => 'ပြန်လုပ်ပါ',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

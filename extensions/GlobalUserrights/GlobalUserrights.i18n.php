@@ -397,6 +397,13 @@ $messages['ksh'] = array(
 	'right-userrights-global' => 'De jemeinsame Metmaacher_Rääschte verwallde',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'gur-rightslog-name' => 'Reşahîya mafên global',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

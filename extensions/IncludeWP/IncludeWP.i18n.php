@@ -81,6 +81,20 @@ $messages['de'] = array(
 	'includewp-include-par-page' => 'Der Name der Seite, die angezeigt werden soll.',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'includewp-desc' => 'IncludeWP היא הרחבה פשוטה להכללת תוכן של ויקיפדיה',
+	'includewp-loading-page' => 'הדף בטעינה...',
+	'includewp-show-full-page' => 'להציג דף מלא',
+	'includewp-show-fragment' => 'להציג רק את הפסקה הראשונה',
+	'includewp-loading-failed' => 'טעינת הדף נכשלה.',
+	'includewp-licence-notice' => 'התוכן לעיל מגיע מהדף <a href="$2">$3</a> באתר $1, והוא מתפרסם ברישיון <a href="$4">$5</a>. רשימה מלאה של מחבריו נמצאת <a href="$6">כאן</a>.',
+	'includewp-parserhook-desc' => 'וו מפענח שמאפשר הצגת תוכן של דף ויקיפדיה.',
+	'includewp-include-par-page' => 'שם הדף המרוחק שאתם רוצים להציג.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

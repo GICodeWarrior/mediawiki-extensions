@@ -363,6 +363,13 @@ $messages['ksh'] = array(
 	'right-userrights-shared' => 'Jemeinsam Rääschte för Metmaacher verwallde',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'gblrights-logpage' => 'Reşahîya mafên global',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

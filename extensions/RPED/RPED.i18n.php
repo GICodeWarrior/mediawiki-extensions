@@ -178,6 +178,15 @@ $messages['ja'] = array(
 	'rped-wikipedia-url' => 'http://ja.wikipedia.org/wiki/$1',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'rped' => 'Sigge en ander Webßaits fenge',
+	'rped-desc' => 'Lengk Wikilengks op de Wikipedija öm, wann et en passende Sigg heh em Wiki nit jitt.',
+	'rped-wikipedia-url' => 'http://ksh.wikipedia.org/wiki/$1',
+);
+
 /** Ladino (Ladino)
  * @author Universal Life
  */

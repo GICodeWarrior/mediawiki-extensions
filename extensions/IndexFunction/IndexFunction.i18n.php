@@ -551,23 +551,37 @@ $messages['ha'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
+	'indexfunc-desc' => 'פונקציית מפענח ליציר אוטומטית של הפניות ודפי פירושונים.',
 	'indexfunc-badtitle' => 'כותרת בלתי תקינה: "$1"',
+	'indexfunc-editwarning' => 'אזהרה:
+הכותרת הזאת היא כותרת אינדקס עבור {{PLURAL:$2|הדף הבא|הדפים הבאים}}:
+$1
+יש לוודא שהדף שאתם יוצרים לא קיים כבר בכותרת אחרת.
+אם אתם יוצרים את הדף הזה, הוציאו את שמו מה־<nowiki>{{#index:}}</nowiki> ב־{{PLURAL:$2|דף|דפים}} שלעיל.',
 	'indexfunc-index-exists' => 'הדף "$1" כבר קיים',
+	'indexfunc-movewarn' => 'אזהרה:
+"$1" הוא כותרת אינדקס עבור {{PLURAL:$3|הדף הבא|הדפים הבאים}}:
+$2
+אנא הוציאו את "$1" מה־<nowiki>{{#index:}}</nowiki> ב־{{PLURAL:$3|דף|דפים}} שלעיל.',
 	'index' => 'חיפוש באינדקס',
 	'index-legend' => 'חיפוש באינדקס',
 	'index-search' => 'חיפוש:',
 	'index-submit' => 'שליחה',
 	'index-disambig-start' => "המונח '''$1''' עשוי להתייחס למספר דפים:",
-	'index-emptylist' => '"$1"אין דפים המשוייכים ל־',
+	'index-emptylist' => '"$1"אין דפים המשויכים ל־',
+	'index-expand-detail' => 'להציג את הדפים באינדקס תחת הכותרת הזאת',
 	'index-hide-detail' => 'הסתרת רשימת הדפים',
 	'index-no-results' => 'החיפוש לא החזיר תוצאות',
 	'index-search-explain' => 'דף זה משתמש בחיפוש קידומות.
 
 יש להקליד את האותיות הראשונות וללחוץ על לחצן השליחה כדי לחפש אחר שמות דפים ורשומות באינדקס המתחילים במחרוזת החיפוש',
+	'index-details-explain' => 'רשומות עם חצים הן רשומות אינדקס.
+לחצו על החץ כדי להציג את כל הדפים תחת הכותרת.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -309,6 +309,13 @@ $messages['ko'] = array(
 	'nedits' => '편집 $1개',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'nedits' => '{{PLURAL:$1|Ein Änderung|$1 Änderunge|Nix jedonn}}',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

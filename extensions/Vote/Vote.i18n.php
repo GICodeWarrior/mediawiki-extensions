@@ -1309,6 +1309,13 @@ $messages['mt'] = array(
 	'right-voteadmin' => 'Ara r-riżultati tal-voti',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'vote' => 'ဆန္ဒမဲ',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

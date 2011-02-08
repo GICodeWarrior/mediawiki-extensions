@@ -1573,6 +1573,13 @@ $messages['ksh'] = array(
 	'readerfeedback-tt-review' => 'Ennschäzung afjävve',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'readerfeedback-finished' => 'Spas!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
