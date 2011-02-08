@@ -38,7 +38,6 @@ $wgExtensionCredits['parserhook'][] = array(
         'author' => array ( 'Li Ding', 'Jie Bao', 'Daniel Werner' ),
         'description' => 'Store and compute named arrays',
         'version' => ArrayExtension::VERSION,
-
 );
 
 $wgHooks['LanguageGetMagic'][] = 'efArrayExtensionLanguageGetMagic';
@@ -49,7 +48,7 @@ $wgHooks['LanguageGetMagic'][] = 'efArrayExtensionLanguageGetMagic';
  */
 class ArrayExtension {
 
-	const VERSION = '1.3.2';
+	const VERSION = '1.3.3';
 
     var $mArrayExtension = array();
 
@@ -77,20 +76,22 @@ class ArrayExtension {
 	* see also: http://us2.php.net/manual/en/function.preg-split.php
 	*/
     function arraydefine( &$parser, $arrayid, $value = '', $delimiter = '/\s*,\s*/', $options = '', $delimiter2 = ', ', $search = '@@@@', $subject = '@@@@', $frame = null ) {
-        if ( !isset( $arrayid ) )
-           return '';
+        if ( !isset( $arrayid ) ) {
+        	return '';
+        }
 
         // normalize
         $value = trim( $value );
         $delimiter = trim( $delimiter );
 
-        if ( !$this->is_non_empty ( $value ) ) {
+        if ( !$this->is_non_empty( $value ) ) {
             $this->mArrayExtension[$arrayid] = array();
         } else if ( !$this->is_non_empty( $delimiter ) ) {
             $this->mArrayExtension[$arrayid] = array( $value );
         } else {
-            if ( !$this->isValidRegEx( $delimiter ) )
-                $delimiter = '/\s*' . preg_quote( $delimiter, '/' ) . '\s*/'; // Anpassung von Daniel Werner (preg_quote)
+            if ( !$this->isValidRegEx( $delimiter ) ) {
+            	$delimiter = '/\s*' . preg_quote( $delimiter, '/' ) . '\s*/'; // Anpassung von Daniel Werner (preg_quote)
+            }
 
             $this->mArrayExtension[$arrayid] = preg_split( $delimiter, $value );
 
@@ -103,23 +104,32 @@ class ArrayExtension {
             // now parse the options, and do posterior process on the created array
             $ary_option = $this->parse_options( $options );
 
+            if ( !array_key_exists( 'empty', $ary_option ) ) {
+				foreach ( $this->mArrayExtension[$arrayid] as $key => $value ) {
+            		if ( trim( $value ) == '' ) {
+            			unset( $this->mArrayExtension[$arrayid][$key] );
+            		}
+            	}            	
+            }
+            
             // make it unique if option is set
-            if ( FALSE !== array_key_exists( 'unique', $ary_option ) ) {
-                   $this->arrayunique( $parser, $arrayid );
+            if ( array_key_exists( 'unique', $ary_option ) ) {
+				$this->arrayunique( $parser, $arrayid );
             }
 
             // sort array if the option is set
-            $this->arraysort( $parser, $arrayid, $this->get_array_value( $ary_option, "sort" ) );
+            $this->arraysort( $parser, $arrayid, $this->get_array_value( $ary_option, 'sort' ) );
 
 			// print the array upon request
-			if ( strcmp( "list", $this->get_array_value( $ary_option, "print" ) ) === 0 ) {
+			if ( strcmp( 'list', $this->get_array_value( $ary_option, 'print' ) ) === 0 ) {
 				return $this->arrayprint( $parser, $arrayid );
-			} else if ( strcmp( "full", $this->get_array_value( $ary_option, "print" ) ) === 0 ) {
+			}
+			else if ( strcmp( 'full', $this->get_array_value( $ary_option, 'print' ) ) === 0 ) {
 				return $this->arrayprint( $parser, $arrayid,  $delimiter2, $search, $subject, $frame );
 			}
-	}
+		}
 
-	return '';
+		return '';
     }
 
 
