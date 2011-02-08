@@ -67,6 +67,13 @@ $messages['ja'] = array(
 	'folktagcloud-desc' => 'ユーザーが定義したラベルと構文解析器タグでページをタグ付けし、タグクラウドを表示させるためのSemantic MediaWikiプロパティを追加する',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'folktagcloud-desc' => 'Deit en Eijeschaff em <i lang="en">Semantic MediaWiki</i> dobei, öm Schlagwööter en Sigge ze donn, di dann en en su jenannte Schlachwootwullk aanjezeich wääde künne.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
