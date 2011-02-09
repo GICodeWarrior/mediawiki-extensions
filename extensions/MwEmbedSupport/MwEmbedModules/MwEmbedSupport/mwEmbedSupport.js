@@ -3,7 +3,7 @@
 'video audio source track'.replace(/\w+/g,function( n ){ document.createElement( n ) } );
 
 /**
- * mwEmbedSupport includes shared mwEmbed utilities that either
+ * MwEmbedSupport includes shared mwEmbed utilities that either
  * wrap core mediawiki functionality or support legacy mwEmbed module code  
  * 
  * @license

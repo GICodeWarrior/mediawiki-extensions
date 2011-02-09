@@ -85,24 +85,25 @@ class MwEmbedResourceManager {
 	 * Adds any mwEmbedResources to the ResourceLoader
 	 */
 	public static function registerModules( &$resourceLoader ) {
-		global $IP;
+		global $IP, $wgStandAloneResourceLoaderMode;
 		// Register all the resources with the resource loader
 		foreach( self::$moduleSet as $path => $modules ) {
-			foreach ( $modules as $name => $resources ) {							
-				$resourceLoader->register(					
-					// Resource loader expects trailing slash: 
-					$name, new MwEmbedResourceLoaderFileModule( $resources, "$IP/$path", $path)
-				);
+			foreach ( $modules as $name => $resources ) {
+				// Register the resource with MwEmbed extended class if in standAlone resource loader mode:
+				if( $wgStandAloneResourceLoaderMode === true ){							
+					$resourceLoader->register(					
+						// Resource loader expects trailing slash: 
+						$name, new MwEmbedResourceLoaderFileModule( $resources, "$IP/$path", $path)
+					);
+				} else {
+					$resourceLoader->register(					
+						// Resource loader expects trailing slash: 
+						$name, new ResourceLoaderFileModule( $resources, "$IP/$path", $path)
+					);
+				}
 			}
 		}		
 		// Continue module processing
 		return true;
-	}
-	
-	// Add the mwEmbed module to the page: 
-	public static function addMwEmbedModule(  &$out, &$sk ){		
-		// Add the mwEmbed module to the output
-		$out->addModules( 'MwEmbedSupport' );
-		return true;	
 	}
 }
