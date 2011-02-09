@@ -3073,6 +3073,10 @@ $messages['ksh'] = array(
 	'fundraiserstats-tab-maximums' => 'de Deckste Spende (en Dollar us de USA)',
 	'fundraiserstats-tab-ytd' => 'En dissem Johr ald (en Dollar us de USA)',
 	'fundraiserstats-instructions' => 'Öm de Statistike för ene Daach aanzeloore, donn dä Köser övver dä Balke för dä Daach. Jeede Daach es met en ander Färv enjzeichent.',
+	'fundraiserstats-customize' => 'Aapasse',
+	'fundraiserstats-show-years' => 'Zeisch de Joher donoh:',
+	'fundraiserstats-time-zone' => 'Ziggzohn:',
+	'fundraiserstats-utc' => '(vun UTC)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
