@@ -2138,6 +2138,7 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -2150,7 +2151,7 @@ $messages['sr-ec'] = array(
 	'usagestatisticsinterval' => 'Интервал:',
 	'usagestatisticsnamespace' => 'Именски простор:',
 	'usagestatisticsexcluderedirects' => 'Избаци преусмерења',
-	'usagestatisticstype' => 'Тип',
+	'usagestatisticstype' => 'Врста:',
 	'usagestatisticsstart' => 'Почетни датум:',
 	'usagestatisticsend' => 'Завршни датум:',
 	'usagestatisticssubmit' => 'Генериши статистике',
