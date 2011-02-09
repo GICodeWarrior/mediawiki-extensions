@@ -1784,6 +1784,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
@@ -1795,7 +1796,7 @@ $messages['sr-ec'] = array(
 	'createsigndoc-address' => 'Кућна адреса:',
 	'createsigndoc-extaddress' => 'Град, држава:',
 	'createsigndoc-phone' => 'Телефонски број:',
-	'createsigndoc-bday' => 'Дан рођења:',
+	'createsigndoc-bday' => 'Датум рођења:',
 	'createsigndoc-minage' => 'Најмања старост:',
 	'createsigndoc-introtext' => 'Увод:',
 	'createsigndoc-hidden' => 'Сакривено',

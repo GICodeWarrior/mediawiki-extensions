@@ -2986,7 +2986,7 @@ $1',
 -->[[Special:Contributions/$1|придонеси]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
--->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBL-ови] • <!--
 -->[[Special:BlockIP/$1|блокирај]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} дневник на блокирања] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} провери])<!--
