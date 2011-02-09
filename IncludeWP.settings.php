@@ -29,3 +29,7 @@ $egIncWPWikis['wikipedia'] = array(
 	'licencename' => 'CC-BY-SA',
 	'licenceurl' => 'http://creativecommons.org/licenses/by-sa/3.0/'
 ); 
+
+$egIncWPParagraphs = 3;
+
+$egIncWPDivHeight = 0;
