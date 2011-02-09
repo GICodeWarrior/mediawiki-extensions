@@ -99,13 +99,13 @@ function wfLanguageSelectorExtension() {
 		$wgLanguageSelectorShowAll, $wgCommandLineMode;
 	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgHooks;
 
-	if ( $wgCommandLineMode ) {
-		return true;
-	}
-
 	if ( $wgLanguageSelectorLanguages === null ) {
 		$wgLanguageSelectorLanguages = array_keys( Language::getLanguageNames( !$wgLanguageSelectorShowAll ) );
 		sort( $wgLanguageSelectorLanguages );
+	}
+
+	if ( $wgCommandLineMode ) {
+		return true;
 	}
 
 	$setlang = $wgRequest->getVal( 'setlang' );
