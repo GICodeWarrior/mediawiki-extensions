@@ -57,7 +57,7 @@ final class IncludeWP extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egIncWPWikis;
+		global $egIncWPWikis, $egIncWPParagraphs, $egIncWPDivHeight;
 		
 		$params = array();
 		
@@ -67,6 +67,12 @@ final class IncludeWP extends ParserHook {
 		$params['wiki'] = new Parameter( 'wiki' );
 		$params['wiki']->setDefault( array_shift( array_keys( $egIncWPWikis ) ) );
 		$params['wiki']->addCriteria( new CriterionInArray( array_keys( $egIncWPWikis ) ) );
+		
+		$params['paragraphs'] = new Parameter( 'paragraphs', Parameter::TYPE_INTEGER );
+		$params['paragraphs']->setDefault( $egIncWPParagraphs );
+		
+		$params['height'] = new Parameter( 'height', Parameter::TYPE_INTEGER );
+		$params['height']->setDefault( $egIncWPDivHeight );		
 		
 		return $params;
 	}
@@ -106,7 +112,8 @@ final class IncludeWP extends ParserHook {
 				'pageid' => $nr,
 				'class' => 'includewp-loading',
 				'page' => $parameters['page'],
-				'wiki' => $parameters['wiki']
+				'wiki' => $parameters['wiki'],
+				'paragraphs' => $parameters['paragraphs']
 			),
 			wfMsgForContent( 'includewp-loading-page' )
 		);
@@ -116,6 +123,7 @@ final class IncludeWP extends ParserHook {
 			array(
 				'id' => 'includewp-article-' . $nr,
 				'class' => 'includewp-article',
+				'style' => $parameters['height'] > 0 ? 'width:100%; max-height: ' . $parameters['height'] . 'px; overflow: auto' : 'width:100%'
 			),
 			''
 		);	

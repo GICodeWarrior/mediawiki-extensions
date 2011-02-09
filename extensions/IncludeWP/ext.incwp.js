@@ -164,7 +164,7 @@
 	function showCopyright( pageName, pageId ) {
 		var wiki = window.wgIncWPWikis[$( '#includewp-loading-' + pageId ).attr( 'wiki' )];
 		
-		var licenceHtml = mediaWiki.msg( // TODO: make non WP-specific
+		var licenceHtml = mediaWiki.msg(
 				'includewp-licence-notice',
 				wiki.name,
 				wiki.url + '/' + pageName,
