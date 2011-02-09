@@ -306,6 +306,18 @@ $messages['ja'] = array(
 	'ts-kml-on-ol-map-by' => '地図から',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'ts-kml-on-ol-options' => 'Enstellunge',
+	'ts-kml-on-ol-languages' => 'Shprooch',
+	'ts-kml-on-ol-thumbnails' => 'Minni-Belldsche',
+	'ts-kml-on-ol-help' => 'Hölp',
+	'ts-kml-on-ol-all' => 'All',
+	'ts-kml-on-ol-map-by' => 'Kaat vum',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
  */
