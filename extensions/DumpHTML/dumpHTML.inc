@@ -784,7 +784,7 @@ class DumpHTML {
 
 	/** Reads the content of a title object, executes the skin and captures the result */
 	function getArticleHTML( $title ) {
-		global $wgOut, $wgTitle, $wgArticle, $wgUser;
+		global $wgOut, $wgTitle, $wgUser;
 
 		$linkCache =& LinkCache::singleton();
 		$linkCache->clear();
@@ -799,15 +799,15 @@ class DumpHTML {
 			$wgOut->parserOptions( new ParserOptions );
 			SpecialPage::executePath( $wgTitle );
 		} else {
-			$wgArticle = MediaWiki::articleFromTitle( $wgTitle );
-			$rt = $wgArticle->followRedirect();
+			$article = MediaWiki::articleFromTitle( $wgTitle );
+			$rt = $article->followRedirect();
 			if ( is_object( $rt ) ) {
 				return $this->getRedirect( $rt );
 			} else {
 				$wgOut = new OutputPage;
 				$wgOut->parserOptions( new ParserOptions );
 
-				$wgArticle->view();
+				$article->view();
 			}
 		}
 
