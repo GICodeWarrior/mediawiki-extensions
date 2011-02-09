@@ -19,7 +19,6 @@
  * 
  * @dependencies  
  */
-
 ( function( mw, $ ) {
 
 	/**
@@ -53,7 +52,10 @@
 	 * 
 	 * @param {Function}
 	 *            callback Function to run once DOM and jQuery are ready
-	 */	
+	 */
+	// mw.interfacesReadyFlag ( set to true once interfaces are ready )
+	mw.interfacesReadyFlag = false; 
+	
 	mw.ready = function( callback ) {						
 		if( mw.interfacesReadyFlag  === false ) {		
 			// Add the callbcak to the onLoad function stack
@@ -64,14 +66,12 @@
 		}		
 	};
 	
-	// mw.interfacesReadyFlag ( set to true once interfaces are ready )
-	mw.interfacesReadyFlag = false; 
 	
 	// Once interfaces are ready update the mwReadyFlag
 	$j( mw ).bind('InterfacesReady', function(){ mw.interfacesReadyFlag  = true } );	
 	
 	// Once the DOM is ready start setting up interfaces
-	$j( document ).ready(function(){
+	$j( document ).ready(function(){		
 		$j( mw ).triggerQueueCallback('SetupInterface', function(){
 			// All interfaces have been setup trigger InterfacesReady event
 			$j( mw ).trigger( 'InterfacesReady' );
