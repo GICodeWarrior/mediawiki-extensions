@@ -916,6 +916,7 @@ $messages['lb'] = array(
 	'wikisync_api_result_WrongPluginPass' => "D'Passwuert dat Dir uginn hutt ass net richteg",
 	'wikisync_api_result_Throttled' => 'Dir hutt Iech während kuerzer Zäit ze dacks ageloggt.',
 	'wikisync_api_result_Blocked' => 'Benotzer ass gespaart',
+	'wikisync_api_result_no_import_rights' => 'Dëse Benotzer däerf keng XML-Dump-Fichieren importéieren',
 	'wikisync_js_synchronization_success' => "D'Synchronisatioun ass komplett ofgeschloss",
 	'wikisync_js_already_synchronized' => 'Déi zwou Wikie schénge scho synchroniséiert ze sinn',
 	'wikisync_js_sync_to_itself' => "Dir kënnt d'Wiki net mat sech selwer synchroniséieren",
