@@ -763,7 +763,7 @@ function efSetupArrayExtension() {
 }
 
 function efArrayExtensionLanguageGetMagic( &$magicWords, $langCode ) {
-        require_once( dirname( __FILE__ ) . '/ArrayExtension.i18n.php' );
+        require_once( dirname( __FILE__ ) . '/ArrayExtension.i18n.magic.php' );
         foreach ( efArrayExtensionWords( $langCode ) as $word => $trans )
                 $magicWords[$word] = $trans;
         return true;
