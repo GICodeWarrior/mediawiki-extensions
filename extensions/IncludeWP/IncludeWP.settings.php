@@ -20,16 +20,21 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+# The needed info for the wikis that can be included.
 $egIncWPWikis = array();
-
 $egIncWPWikis['wikipedia'] = array(
 	'name' => 'Wikipedia',
 	'path' => 'http://en.wikipedia.org/w',
 	'url' => 'http://en.wikipedia.org/wiki',
 	'licencename' => 'CC-BY-SA',
 	'licenceurl' => 'http://creativecommons.org/licenses/by-sa/3.0/'
-); 
+);
 
+# Default wiki.
+$egIncWPDefaultWiki = 'wikipedia';
+
+# Default amount of paragraphs to initially show.
 $egIncWPParagraphs = 3;
 
+# Default max height of the included content div. Set to 0 for no limit.
 $egIncWPDivHeight = 0;
