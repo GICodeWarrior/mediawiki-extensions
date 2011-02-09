@@ -1,6 +1,7 @@
 <?php
 /**
- * MwEmbed extension, supports mwEmbed based modules
+ * MwEmbed Support Extension, Supports MwEmbed based modules, 
+ * and registers shared javascript resources. 
  * 
  * @file
  * @ingroup Extensions
@@ -18,25 +19,23 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'MwEmbedSupport',
 	'author' => array( 'Michael Dale' ),
-	'version' => '0.0.2',
+	'version' => '0.0.4',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MwEmbed',
 	'descriptionmsg' => 'mwembed-desc',
 );
 
 $wgAutoloadClasses['MwEmbedResourceManager'] = dirname( __FILE__ ) . '/MwEmbedResourceManager.php';
-$wgExtensionMessagesFiles['MwEmbed'] = dirname( __FILE__ ) . '/MwEmbed.i18n.php';
+$wgExtensionMessagesFiles['MwEmbedSupport'] = dirname( __FILE__ ) . '/MwEmbedSupport.i18n.php';
 
-// Register the core mwEmbed Module:
-MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedSupport' );
-// Register the mwEmbed 'mediaWiki' module
-// mediaWiki parts need to be separated from mwEmbed because mwEmbed when used stand alone
-// should have minimal mediaWiki specific code.  
-MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedSupport' );
-
-// Add module Registration
+// Add Global MwEmbed Registration hook
 $wgHooks['ResourceLoaderRegisterModules'][] = 'MwEmbedResourceManager::registerModules';
 // Add MwEmbed module configuration
 $wgHooks['ResourceLoaderGetConfigVars'][] =  'MwEmbedResourceManager::registerConfigVars';
 
-// The mwEmbed module is added to all pages if enabled: 
-$wgHooks['BeforePageDisplay'][] = 'MwEmbedResourceManager::addMwEmbedModule';
+
+// Register the core MwEmbed Support Module:
+MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport' );
+
+// Register the MwEmbed 'mediaWiki' Module:
+MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport' );
+
