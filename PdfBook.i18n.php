@@ -199,6 +199,15 @@ $messages['ja'] = array(
 	'pdfbook-desc' => 'カテゴリ内のページから本を構築し、PDFブックとしてエクスポートする',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'pdfbook-action' => 'Als PDF-Datei dröcke',
+	'pdfbook-log' => '$1 wood als en Aat Booch en en PDF-Dattei expoteet',
+	'pdfbook-desc' => 'Ställd e Booch zesamme us dä Sigge en ene Saachjropp un expoteed et als en Aat Booch en en PDF-Dattei.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
