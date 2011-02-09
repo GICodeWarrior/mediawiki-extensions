@@ -102,6 +102,7 @@ $messages['fa'] = array(
  */
 $messages['fr'] = array(
 	'emailusers-desc' => "Permet aux utilisateurs d'envoyer des courriels à plusieurs destinataires",
+	'right-sendbatchemail' => 'Envoyer un courriel à plusieurs destinataires en même temps',
 	'emailusers' => 'Utilisateurs du courriel',
 	'emailusers-target-reverse' => 'Envoyer à tous les utilisateurs sauf ceux qui sont sélectionnés',
 	'emailusers-norecipient' => "Il n'y a personne à qui vous pouvez envoyer un courriel.",
