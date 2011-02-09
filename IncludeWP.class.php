@@ -57,7 +57,7 @@ final class IncludeWP extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egIncWPWikis, $egIncWPParagraphs, $egIncWPDivHeight;
+		global $egIncWPWikis, $egIncWPDefaultWiki, $egIncWPParagraphs, $egIncWPDivHeight;
 		
 		$params = array();
 		
@@ -65,7 +65,12 @@ final class IncludeWP extends ParserHook {
 		$params['page']->setDescription( wfMsg( 'includewp-include-par-page' ) );
 		
 		$params['wiki'] = new Parameter( 'wiki' );
-		$params['wiki']->setDefault( array_shift( array_keys( $egIncWPWikis ) ) );
+		
+		if ( !array_key_exists( $egIncWPDefaultWiki, $egIncWPWikis  ) ) {
+			$egIncWPDefaultWiki = array_shift( array_keys( $egIncWPWikis ) );
+		}
+		
+		$params['wiki']->setDefault( $egIncWPDefaultWiki );
 		$params['wiki']->addCriteria( new CriterionInArray( array_keys( $egIncWPWikis ) ) );
 		
 		$params['paragraphs'] = new Parameter( 'paragraphs', Parameter::TYPE_INTEGER );
