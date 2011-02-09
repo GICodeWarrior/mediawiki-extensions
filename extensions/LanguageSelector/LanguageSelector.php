@@ -152,7 +152,7 @@ function wfLanguageSelectorBeforePageDisplay( &$out ) {
 	global $wgExtensionAssetsPath, $wgLanguageSelectorLocation, $wgLanguageSelectorFormUsed;
 
 	if ( $wgLanguageSelectorLocation == LANGUAGE_SELECTOR_AT_TOP_OF_TEXT ) {
-		$html = wfLanguageSelectorHTML();
+		$html = wfLanguageSelectorHTML( $out->getTitle() );
 		$out->mBodytext = $html . $out->mBodytext;
 	}
 
@@ -171,8 +171,8 @@ function wfLanguageSelectorGetCacheVaryCookies( $out, &$cookies ) {
 	return true;
 }
 
-function wfLanguageSelectorSkinHook( &$out ) {
-	$html = wfLanguageSelectorHTML();
+function wfLanguageSelectorSkinHook( &$skin ) {
+	$html = wfLanguageSelectorHTML( $skin->mTitle );
 	print $html;
 	return true;
 }
@@ -213,7 +213,7 @@ function wfLanguageSelectorTag( $input, $args, $parser ) {
 	# So that this also works with parser cache
 	$parser->getOutput()->addOutputHook( 'languageselector' );
 
-	return wfLanguageSelectorHTML( $style, $class, $selectorstyle, $buttonstyle, $showcode );
+	return wfLanguageSelectorHTML( $parser->getTitle(), $style, $class, $selectorstyle, $buttonstyle, $showcode );
 }
 
 function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
@@ -247,7 +247,7 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 	}
 	
 	if ($key) {
-		$html = wfLanguageSelectorHTML();
+		$html = wfLanguageSelectorHTML( $wgTitle );
 		$tpl->set( $key, $tpl->data[ $key ] . $html );
 	}
 
@@ -344,8 +344,8 @@ function wfLanguageSelectorAddJavascript( $outputPage, $parserOutput, $data ) {
 	$wgLanguageSelectorFormUsed = true;
 }
 
-function wfLanguageSelectorHTML( $style = null, $class = null, $selectorstyle = null, $buttonstyle = null, $showCode = null ) {
-	global $wgLanguageSelectorLanguages, $wgTitle, $wgLang, $wgContLang, $wgScript,
+function wfLanguageSelectorHTML( Title $title, $style = null, $class = null, $selectorstyle = null, $buttonstyle = null, $showCode = null ) {
+	global $wgLanguageSelectorLanguages, $wgLang, $wgContLang, $wgScript,
 		$wgLanguageSelectorShowCode, $wgLanguageSelectorFormUsed;
 
 	if ( $showCode === null ) {
@@ -371,7 +371,7 @@ function wfLanguageSelectorHTML( $style = null, $class = null, $selectorstyle = 
 		'action' => $wgScript,
 		'style' => 'display:inline;'
 	) );
-	$html .= Xml::hidden( 'title', $wgTitle->getPrefixedDBKey() );
+	$html .= Xml::hidden( 'title', $title->getPrefixedDBKey() );
 	$html .= Xml::openElement('select', array(
 		'name' => 'setlang',
 		'id' => 'languageselector-select-' . $id,
