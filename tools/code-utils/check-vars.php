@@ -94,6 +94,9 @@ class CheckVars {
 		'session_unregister' => 'Deprecated since PHP 5.3.0.',
 		'session_is_registered' => 'Deprecated since PHP 5.3.0.',
 		'set_magic_quotes_runtime' => 'Deprecated since PHP 5.3.0.',
+		
+		'var_dump' => 'Debugging function.', //r81671#c13996
+		//'print_r' => 'Debugging function if second parameter is not true.',
 		);
 
 	protected $generateDeprecatedList = false;
@@ -721,6 +724,10 @@ class CheckVars {
 			}
 
 			if ( isset( self::$poisonedFunctions[ strtolower($token[1]) ] ) ) {
+				if ( $token[1] == 'var_dump' && ( substr( $this->mFunction, 0, 4 ) == 'dump' ) || basename( $this->mFilename ) == 'ApiFormatDump.php' ) {
+					// Allow var_dump if the function purpose is really to dump contents
+					return;
+				}
 				$this->warning( "Poisoned function {$token[1]} called from {$this->mFunction} in line {$token[2]}: " . self::$poisonedFunctions[strtolower($token[1])] );
 				return;
 			}
