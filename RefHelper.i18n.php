@@ -611,16 +611,40 @@ $messages['ha'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'refhelper' => 'מסייע בהפניות למקורות',
+	'refsearch' => 'חיפוש הפניות למקורות',
+	'refhelper-desc' => 'מסייע ליצור דפים להפניות למקורות',
+	'refhelper-refsearch' => 'חיפוש הפניות למקורות',
+	'refhelper-refcreate_legend' => 'יצירת הפניה חדשה למקור',
+	'refhelper-refsearch_legend' => 'חיפוש הפניות למקורות ב־PubMed',
+	'refhelper-refcreate_another' => 'יצירת הפניה אחרת למקור',
+	'refhelper-refcreate_autocomment' => 'יצירה אוטומטית של דף',
+	'refhelper-refcreate_success' => 'הדף [[$1]] לא היה קיים ונוצר',
+	'refhelper-refcreate_failure' => 'הדף [[$1]] כבר קיים!',
+	'refhelper-label_workspace' => 'מרחב עבודה (מקום להעתקה והדבקה):',
+	'refhelper-label_authorforename' => 'השם הפרטי של המחבר $1:',
 	'refhelper-label_authorsurname' => 'שם משפחה:',
 	'refhelper-title' => 'כותרת:',
 	'refhelper-journal' => 'יומן:',
 	'refhelper-volume' => 'כרך:',
+	'refhelper-pages' => 'דפים:',
 	'refhelper-year' => 'שנה:',
+	'refhelper-refname' => 'שם ההפניה למקור:',
+	'refhelper-category' => 'קטגוריה $1:',
 	'refhelper-create' => 'יצירה',
 	'refhelper-search' => 'חיפוש',
+	'refhelper-toolbox_link_create' => 'ליצור הפניה למקור',
+	'refhelper-toolbox_link_search' => 'ליצור הפניה למקור באמצעות חיפוש',
+	'refhelper-newarticle_nocitation' => 'כעת אין ציטוט בשם כזה.',
+	'refhelper-newarticle_suggestions' => 'אם יש ציטוט מתאים להלן, אפשר ליצור את הדף הזה בלחיצה על כפתור "יצירה".
+
+<h2>הצעות</h2>',
+	'refhelper-newarticle_nosuggestions' => 'לצערנו, אין לנו הפניות למקורות להציע.
+אפשר [[Special:RefHelper|להוסיף את ההפניה למקור ידנית]] או [[Special:RefSearch|לחפש ציטוטים להוספה]].',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
