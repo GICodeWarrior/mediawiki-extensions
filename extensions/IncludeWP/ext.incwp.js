@@ -105,7 +105,7 @@
 	 * @param integer pageId
 	 */
 	function showPageFragment( pageName, pageId ) {
-		var paragraphs = getPageParagraphs( pageName, 3 );
+		var paragraphs = getPageParagraphs( pageName, $( '#includewp-loading-' + pageId ).attr( 'paragraphs' ) );
 		
 		$( '#includewp-article-' + pageId ).html( paragraphs === false ? pages[pageName] : paragraphs );
 		
