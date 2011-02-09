@@ -382,6 +382,7 @@ $messages['ksh'] = array(
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'categorymultisort-go' => 'Biçe',
 	'prefs-category' => 'Kategorî',
 );
 

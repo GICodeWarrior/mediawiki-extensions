@@ -658,11 +658,14 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'contributiontracking-desc' => 'Spende Verfollje för de Wikimedija Shtefftung iere Jeld-Sammel-Kampanje',
 	'contributiontracking' => 'Spende Verfollje',
-	'contrib-tracking-error' => 'Fahler',
+	'contrib-tracking-error' => 'Fähler',
 	'contrib-tracking-error-text' => 'Unjöltijje Date övverdraare för dat Fommulaa',
 	'contrib-tracking-submitting' => 'Övverjäve aan dä <i lang="en">Provider</i> för et Bezahle&nbsp;...',
 	'contrib-tracking-continue' => 'Wann De nit automattesch ömjelengk wees, donn op dä Knopp klecke, öm Ding Spend met <i lang="en">PayPal</i> fäädesch ze maache.',
+	'contrib-tracking-redirect' => 'Do küß automattesch pä Ömleidong noh <i lang="en">PayPal</i>, öm Ding Spänd fäädesch ze maache.',
 	'contrib-tracking-button' => 'Wigger',
+	'contrib-tracking-item-name-onetime' => 'Eimohl_Spänd',
+	'contrib-tracking-item-name-recurring' => 'Moonatlesch_Spänd',
 );
 
 /** Cornish (Kernowek)

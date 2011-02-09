@@ -90,6 +90,18 @@ $messages['id'] = array(
 	'trustedmath-not-found' => 'Halaman [[:$1]] tidak eksis',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'trustedmath-desc' => 'Määd et müjjelesch, mattemaatesch Jleischunge met LaTeX en Sigge enzebenge, esu ähnlesch, wi dat em MediaWiki ennjebute Projramm et deiht, ävver der ohne vum Ocaml afhängesch ze sin.',
+	'trustedmath-permission-error' => 'De „nit zohverläßesch“ ömjesaz mattemaatesch Jleischunge sen heh em Wiki ußjeschaldt.',
+	'trustedmath-path-error' => 'Ene Fähler es opjetrodde beim Versöhke, et Verzeischneß för mattemaatesch Belder eenzelääje.',
+	'trustedmath-convert-error' => 'Ene Fähler es opjetrodde beim Versöhke, e mattemaatesch Beld ze maache.
+„$1“ hät <tt><nowiki>$2</nowiki></tt> wider jejovve.',
+	'trustedmath-not-found' => 'En Sigg „[[:$1]]“ jidd_et nit.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

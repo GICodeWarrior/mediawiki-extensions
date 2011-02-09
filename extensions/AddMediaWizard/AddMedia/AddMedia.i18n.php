@@ -5749,8 +5749,10 @@ $messages['ksh'] = array(
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'mwe-filesource' => ' Çavkanî:',
 	'fogg-title-title' => 'Sernav',
 	'fogg-title-help' => 'Sernavekî ji bo klîba te',
+	'mwe-link' => 'lînk',
 	'mwe-results_from' => 'Encamên ji  $1',
 );
 

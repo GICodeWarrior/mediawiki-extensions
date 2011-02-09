@@ -781,7 +781,7 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
  */
 $messages['sr-ec'] = array(
 	'cooperationstatistics-tablearticle' => 'Број страница',
-	'cooperationstatistics-tablevalue' => 'Број уредника',
+	'cooperationstatistics-tablevalue' => 'Број уређивача',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|страна|стране|страна}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$2|има}} $1 {{PLURAL:$1|уредника}}',
 	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|има}} $1 {{PLURAL:$1|уредника|или мање уредника}}',

@@ -486,7 +486,24 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'ts-citegen-Parsers' => 'Paasere',
+	'ts-citegen-Skins' => 'Ußjaab',
 	'ts-citegen-Skin-skins' => 'Ovverflääsche',
+	'ts-citegen-Skin-outputformat' => 'Dat Fommaat för et Ußjävve:',
+	'ts-citegen-Template-lang' => 'Shprooch vun dä Schabloon',
+	'ts-citegen-Sources-title' => 'Quelle',
+	'ts-citegen-Sources-text' => 'Heh dronger shteiht de Leß met de jebruchte Quelle',
+	'ts-citegen-Sidebar-title' => 'Zitate zerääsch maache',
+	'ts-citegen-Sidebar-add-Firefox' => 'En de Leß aan de Sigg donn',
+	'ts-citegen-Sidebar-add-Opera' => 'Bei de Lesezeiche donn',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Bei de Favorite donn',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Wann di Sigg jelaade es, maach de Leß met Dinge Favoriten op, kleck donoh op „dobei donn“ un nemm donoh dä Knopp för de Favorite, öm se doh faß ze hallde.',
+	'ts-citegen-Tools' => 'Werkzüch',
+	'ts-citegen-Other-languages' => 'Ander Shprooche',
+	'ts-citegen-Save-it' => 'De aktoälle Frooch',
+	'ts-citegen-Errors-title' => 'Fähler',
+	'ts-citegen-Unavailable-SQL' => 'Fähler: Dem <i lang="en">toolserver</i> sing Datebank es nit zohjänglesch. MySQL hät jesaat: %s',
+	'ts-citegen-base-disabled' => 'Fähler: De Datebank %s es nit zohjänglesch',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))

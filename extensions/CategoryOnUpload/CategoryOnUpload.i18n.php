@@ -409,6 +409,13 @@ $messages['ksh'] = array(
 	'categoryonupload-none' => '-',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'categoryonupload-label' => 'Kategorî:',
+);
+
 /** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon

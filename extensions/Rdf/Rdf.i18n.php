@@ -94,6 +94,36 @@ $messages['de'] = array(
  */
 $messages['ia'] = array(
 	'rdf-desc' => 'Quadro RDF pro MediaWiki',
+	'rdf-inpage' => '"Turtle" incorporate in pagina',
+	'rdf-dcmes' => 'Collection de elementos de metadatos "Dublin Core"',
+	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Imagines incorporate',
+	'rdf-linksto' => 'Ligamines verso le pagina',
+	'rdf-linksfrom' => 'Ligamines ab le pagina',
+	'rdf-links' => 'Tote le ligamines',
+	'rdf-history' => 'Versiones historic',
+	'rdf-interwiki' => 'Ligamines interwiki',
+	'rdf-categories' => 'Categorias',
+	'rdf-target' => 'Pagina de destination',
+	'rdf-modelnames' => 'Modello(s)',
+	'rdf-format' => 'Formato de output',
+	'rdf-instructions' => 'Selige le pagina de destination e modellos RDF in que tu es interessate.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'rdf-image' => 'Agebonne Biller',
+	'rdf-linksto' => "Linken op d'Säit",
+	'rdf-linksfrom' => 'Linke vun der Säit',
+	'rdf-links' => 'All Linken',
+	'rdf-history' => 'Al Versiounen',
+	'rdf-interwiki' => 'Interwiki-Linken',
+	'rdf-categories' => 'Kategorien',
+	'rdf-target' => 'Zilsäit',
+	'rdf-modelnames' => 'Modell(en)',
+	'rdf-instructions' => "Sicht d'Zilsäit an déi gewënschten RDF-Modeller eraus.",
 );
 
 /** Macedonian (Македонски)
