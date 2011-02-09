@@ -185,6 +185,10 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                             // get the text from the wikipedia edit text area.
                             var composedContent = new String(wbPublishDisplayPane.getWikiTextareaElement().val());
 
+                            /*
+                            # the below code is to add an HTMl comment to the Wikipedia article edit box.
+                            # the HTML comment is used to track the usage of the tool and this will be replaced with a better implementation soon.
+
                             // get the version number which says number of times this document was edited using wikiBhasha
                             if (wbGlobalSettings.wbEditRevisionCount === null) {
                                 // getEditVersion returns the version number if exists, otherwise it returns null
@@ -204,6 +208,7 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                                     snippet = "<!--  WikiBhasha   v=" + (wbGlobalSettings.wbEditRevisionCount + 1) + "  time=" + wbUIHelper.getTimeStamp() + "-->";
                                 composedContent = composedContent.replace(regEx, snippet);
                             }
+                            */
 
                             // call the method to check and insert the interwiki link
                             composedContent = wbPublishDisplayPane.insertInterWikiLink(composedContent);
