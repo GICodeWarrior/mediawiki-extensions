@@ -3889,6 +3889,7 @@ $messages['ku-latn'] = array(
 	'viewapc-display-type' => 'Cure',
 	'viewapc-ls-submit' => 'Biçe!',
 	'viewapc-ls-header-name' => 'Nav',
+	'viewapc-ls-sort-name' => 'Nav',
 	'viewapc-ls-limit-none' => 'Hemû',
 );
 
