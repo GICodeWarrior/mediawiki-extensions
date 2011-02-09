@@ -12,22 +12,16 @@
 ### examples/config.ini and examples/index.html.tmpl in the Planet source.
 
 <head>
-
 <title><TMPL_VAR name></title>
-
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="generator" content="<TMPL_VAR generator ESCAPE="HTML">">
-
 <link rel="stylesheet" href="planet.css" type="text/css" title="Výchozí styl">
-
 <TMPL_IF feedtype>
 <link rel="alternate" href="<TMPL_VAR feed ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">" type="application/<TMPL_VAR feedtype>+xml">
 </TMPL_IF>
-
 </head>
 
 <body>
-
 <h1><TMPL_VAR name></h1>
 
 <TMPL_LOOP Items>
@@ -93,7 +87,6 @@
 
 
 <div class="sidebar">
-
 <img id="logo" src="images/logo.png" width="135" height="135" alt="logo Planeta Wikimedia">
 
 <div id="feeds">
@@ -155,7 +148,7 @@ Planeta Wikimedia je provozována neziskovou nadací <a href="http://wikimediafo
 <h2 id="v-jinych-jazycich">V&nbsp;jiných jazycích:</h2>
 <ul>
 	<li><a href="http://ar.planet.wikimedia.org" lang="ar" hreflang="ar">العربية</a></li>
-	<li><a href="http://ca.planet.wikimedia.org" lang="ca" hreflang="ca">Català</a></li>
+	<!-- <li><a href="http://ca.planet.wikimedia.org" lang="ca" hreflang="ca">Català</a></li> -->
 	<li><a href="http://de.planet.wikimedia.org" lang="de" hreflang="de">Deutsch</a></li>
 	<li><a href="http://en.planet.wikimedia.org" lang="en" hreflang="en">English</a></li>
 	<li><a href="http://es.planet.wikimedia.org" lang="es" hreflang="es">Español</a></li>
@@ -170,7 +163,7 @@ Planeta Wikimedia je provozována neziskovou nadací <a href="http://wikimediafo
 <li><a href="http://gmq.planet.wikimedia.org/index.sv.html" lang="sv" hreflang="sv">Svenska</a></li>
 </ul></li>
 	<li><a href="http://it.planet.wikimedia.org" lang="it" hreflang="it">Italiano</a></li>
-	<li><a href="http://ja.planet.wikimedia.org" lang="ja" hreflang="ja">日本語</a></li>
+	<!-- <li><a href="http://ja.planet.wikimedia.org" lang="ja" hreflang="ja">日本語</a></li> -->
 	<li><a href="http://pl.planet.wikimedia.org" lang="pl" hreflang="pl">Polski</a></li>
 	<li><a href="http://pt.planet.wikimedia.org" lang="pt" hreflang="pt">Português</a></li>
 	<li><a href="http://ro.planet.wikimedia.org" lang="ro" hreflang="ro">Română</a></li>
@@ -184,6 +177,7 @@ Planeta Wikimedia je provozována neziskovou nadací <a href="http://wikimediafo
 <h2>Planetárium:</h2>
 <ul>
 	<li><a href="http://wikiblogplanet.com/">Wiki Blog Planet</a></li>
+	<li><a href="http://planet.creativecommons.org/">Planet CC</a></li>
 	<li><a href="http://planet.laptop.org/">Planet OLPC</a></li>
 	<li><a href="http://planet.freedesktop.org/">Planet freedesktop.org</a></li>
 	<li><a href="http://planet.mozilla.org/">Planet Mozilla</a></li>
