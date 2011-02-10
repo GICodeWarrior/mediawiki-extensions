@@ -21,6 +21,7 @@
 	 * Master function to add mediaWiki support to embedPlayer 
 	 */
 	mw.addMediaWikiPlayerSupport = function( embedPlayer ){
+		
 		// Set some local variables: 
 		if( ! $( embedPlayer).attr( 'data-mwtitle') ){			
 			mw.log( 'Error MediaWikiSupportPlayer:: no mwtitle!');
@@ -148,8 +149,8 @@
 		 * Issues a request to populate the credits box
 		 */
 		var $creditsCache = false;
-		function getCredits( $target, callback ){
-			if( ! $creditsCache ){
+		function showCredits( $target, callback ){
+			if( $creditsCache ){
 				$target.html( $creditsCache );
 				callback( true );
 				return;
@@ -173,7 +174,7 @@
 						if( imageProps.imageinfo && imageProps.imageinfo[0] && imageProps.imageinfo[0].descriptionurl ){
 							$creditsCache = doCreditLine( imageProps.imageinfo[0].descriptionurl );
 							// Found page
-							$target.html($creditsCache);
+							$target.html( $creditsCache );
 							callback( true );
 							return ;
 						}
@@ -190,7 +191,7 @@
 		// Show credits when requested
 		$( embedPlayer ).bind('ShowCredits', function( event, $target, callback){
 			// Only request the credits once: 
-			getCredits( $target, callback);			
+			showCredits( $target, callback);			
 		});
 				
 		$( embedPlayer ).bind('CheckPlayerSourcesEvent', function(event, callback){
