@@ -1335,6 +1335,7 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'ratinghistory-period' => 'កំលុងពេល:',
@@ -1342,6 +1343,7 @@ $messages['km'] = array(
 	'ratinghistory-3months' => '៣ ខែ​ចុងក្រោយ',
 	'ratinghistory-year' => 'ឆ្នាំមុន',
 	'ratinghistory-3years' => '៣ឆ្នាំមុន',
+	'ratinghistory-ave' => 'មធ្យម៖ $1',
 	'ratinghistory-svg' => 'មើល​ជា SVG',
 );
 
