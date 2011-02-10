@@ -72,6 +72,7 @@ final class IncludeWP extends ParserHook {
 		
 		$params['wiki']->setDefault( $egIncWPDefaultWiki );
 		$params['wiki']->addCriteria( new CriterionInArray( array_keys( $egIncWPWikis ) ) );
+		$params['wiki']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
 		
 		$params['paragraphs'] = new Parameter( 'paragraphs', Parameter::TYPE_INTEGER );
 		$params['paragraphs']->setDefault( $egIncWPParagraphs );
@@ -128,7 +129,7 @@ final class IncludeWP extends ParserHook {
 			array(
 				'id' => 'includewp-article-' . $nr,
 				'class' => 'includewp-article',
-				'style' => $parameters['height'] > 0 ? 'width:100%; max-height: ' . $parameters['height'] . 'px; overflow: auto' : 'width:100%'
+				'style' => $parameters['height'] > 0 ? 'width:auto; max-height: ' . $parameters['height'] . 'px; overflow: auto' : 'width:auto'
 			),
 			''
 		);	

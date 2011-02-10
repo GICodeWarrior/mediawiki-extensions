@@ -8,7 +8,7 @@
  * Changing one of these settings can be done by copieng or cutting it,
  * and placing it in LocalSettings.php, AFTER the inclusion of this extension.
  *
- * @file IncludeWP_Settings.php
+ * @file IncludeWP.Settings.php
  * @ingroup IncludeWP
  *
  * @licence GNU GPL v3
