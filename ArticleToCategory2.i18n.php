@@ -314,6 +314,16 @@ $messages['ja'] = array(
 	'articletocategory2-create-category-under-category-button' => '作成',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'articletocategory2-create-article-under-category-text' => 'បន្ថែមទំព័រមួយទៅក្នុងចំណាត់ថ្នាក់ក្រុមនេះ',
+	'articletocategory2-create-article-under-category-button' => 'បង្កើត',
+	'articletocategory2-create-category-under-category-text' => 'បន្ថែមចំណាត់ថ្នាក់ក្រុមមួយទៅក្នុងចំណាត់ថ្នាក់ក្រុមនេះ',
+	'articletocategory2-create-category-under-category-button' => 'បង្កើត',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
