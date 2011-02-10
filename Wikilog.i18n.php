@@ -4290,6 +4290,21 @@ Se moß eets vun enem Moderator aanjenumme wääde.',
 	'wikilog-doc-import-comment' => 'Empoteet Handbooch för {{int:Wikilog-wikilog}}',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'wikilog-title' => 'Sernav',
+	'wikilog-view-summary' => 'Kurte',
+	'wikilog-form-category' => 'Kategorî:',
+	'wikilog-form-name' => 'Nav:',
+	'wikilog-form-status' => 'Rewş:',
+	'wikilog-edit-lc' => 'biguherîne',
+	'wikilog-delete-lc' => 'jê bibe',
+	'wikilog-page-lc' => 'rûpel',
+	'wikilog-history-lc' => 'dîrok',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -6562,7 +6577,9 @@ $messages['sr-ec'] = array(
 	'wikilog-history-lc' => 'историја',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'wikilog-new-item-go' => 'Napravi',
 	'wikilog-item-name' => 'Naslov članka:',
@@ -6573,7 +6590,7 @@ $messages['sr-el'] = array(
 	'wikilog-title' => 'Naslov',
 	'wikilog-actions' => 'Akcije',
 	'wikilog-comments' => 'Komentari',
-	'wikilog-replies' => 'Replike',
+	'wikilog-replies' => 'Odgovori',
 	'wikilog-view-archives' => 'Arhive',
 	'wikilog-view-summary' => 'Sažetak',
 	'wikilog-draft-title-mark' => '(nacrt)',
