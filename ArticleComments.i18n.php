@@ -890,6 +890,35 @@ $messages['ja'] = array(
 	'processcomment' => '記事コメントの処理',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'article-comments-title-string' => 'ចំណងជើង',
+	'article-comments-name-string' => 'ឈ្មោះ',
+	'article-comments-name-field' => 'ឈ្មោះ (ចាំបាច់)៖',
+	'article-comments-url-field' => 'វិបសាយ៖',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'យោបល់',
+	'article-comments-comment-field' => 'យោបល់៖',
+	'article-comments-submit-button' => 'ដាក់ស្នើ',
+	'article-comments-leave-comment-link' => 'បញ្ចេញយោបល់...',
+	'article-comments-required-field' => 'ផ្នែក "$1" ត្រូវការជាចាំបាច់។',
+	'article-comments-submission-failed' => 'ការដាក់ស្នើយោបល់មិនបានសំរេច',
+	'article-comments-failure-reasons' => 'សូមអភ័យទោស។ ការដាក់ស្នើយោបល់របស់អ្នកមិនបានសំរេចទេដោយសារមូលហេតុ៖',
+	'article-comments-no-comments' => 'សូមអភ័យទោស។ ទំព័រ "[[$1]]" មិនទទួលយកយោបល់ណាមួយនាពេលនេះទេ។',
+	'article-comments-talk-page-starter' => '<noinclude>យោបល់នៅលើ "[[$1]]"
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 មានយោបល់ថា ...',
+	'article-comments-submission-succeeded' => 'ការដាក់ស្នើយោបល់បានសំរេច',
+	'article-comments-submission-success' => 'អ្នកបានដាក់ស្នើយោបល់អំពី "[[$1]]" បានសំរេចហើយ',
+	'article-comments-submission-view-all' => 'អ្នកអាចមើល[[$1|យោបល់អំពីទំព័រនេះទាំងអស់]]',
+	'article-comments-user-is-blocked' => 'គណនីអ្នកប្រើប្រាស់របស់អ្នក​កំពុងស្ថិតក្រោមការរាំងខ្ទប់មិនអោយកែប្រែ "[[$1]]"។',
+	'article-comments-comment-missing-name-parameter' => 'ខ្វះឈ្មោះ',
+	'article-comments-comment-missing-date-parameter' => 'ខ្វះកាលបរិច្ឆេទ',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
