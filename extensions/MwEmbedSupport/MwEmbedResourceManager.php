@@ -85,7 +85,7 @@ class MwEmbedResourceManager {
 	 * Adds any mwEmbedResources to the ResourceLoader
 	 */
 	public static function registerModules( &$resourceLoader ) {
-		global $IP, $wgStandAloneResourceLoaderMode;
+		global $IP, $wgStandAloneResourceLoaderMode, $wgScriptPath;
 		// Register all the resources with the resource loader
 		foreach( self::$moduleSet as $path => $modules ) {
 			foreach ( $modules as $name => $resources ) {
@@ -98,7 +98,7 @@ class MwEmbedResourceManager {
 				} else {
 					$resourceLoader->register(					
 						// Resource loader expects trailing slash: 
-						$name, new ResourceLoaderFileModule( $resources, "$IP/$path", $path)
+						$name, new ResourceLoaderFileModule( $resources, "$IP/$path", $wgScriptPath .'/' . $path)
 					);
 				}
 			}
