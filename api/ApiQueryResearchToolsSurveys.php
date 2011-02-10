@@ -40,7 +40,7 @@ class ApiQueryResearchToolsSurveys extends ApiQueryBase {
 				__METHOD__
 			);
 			$survey['questions'] = array();
-			while ( $row = $dbr->fetchObject( $questionRows ) ) {
+			foreach ( $questionRows as $row ) {
 				$survey['questions'][] = $row;
 			}
 			$result->addValue( array( 'query', $this->getModuleName() ), null, $survey );
