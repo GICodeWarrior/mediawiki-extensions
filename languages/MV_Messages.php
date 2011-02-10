@@ -6051,9 +6051,14 @@ Jangk op di Aansech als Dahteshtrohm: $2',
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author George Animal
  */
 $messages['ku-latn'] = array(
 	'mv_tool_search' => 'Lêbigere',
+	'mv_history' => 'Dîrok',
+	'mv_search_and' => 'û',
+	'mv_search_or' => 'an',
+	'mv_search_not' => 'na',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
