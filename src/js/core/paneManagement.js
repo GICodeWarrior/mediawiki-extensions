@@ -183,36 +183,17 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                         saveButton.onclick = function() {
 
                             // get the text from the wikipedia edit text area.
-                            var composedContent = new String(wbPublishDisplayPane.getWikiTextareaElement().val());
-
-                            /*
-                            # the below code is to add an HTMl comment to the Wikipedia article edit box.
-                            # the HTML comment is used to track the usage of the tool and this will be replaced with a better implementation soon.
-
-                            // get the version number which says number of times this document was edited using wikiBhasha
-                            if (wbGlobalSettings.wbEditRevisionCount === null) {
-                                // getEditVersion returns the version number if exists, otherwise it returns null
-                                wbGlobalSettings.wbEditRevisionCount = wbPublishDisplayPane.getEditVersion(composedContent);
+                            var composedContent = new String(wbPublishDisplayPane.getWikiTextareaElement().val()); 
+                            var summeryContent = new String(wbPublishDisplayPane.getWikiSummeryFieldElement().val()); 
+                            
+                            if(summeryContent.length < (wbGlobalSettings.summeryFieldCutoffLength - wbGlobalSettings.snippet.length)){
+                                //insert the snippet to the summery field'.
+                                summeryContent = summeryContent + wbGlobalSettings.snippet;
+                                // update the summery field content with the snippet.
+                                wbPublishDisplayPane.getWikiSummeryFieldElement().val(summeryContent);
                             }
-
-                            //Check the number of times this document edited using WikiBhasha. 
-                            //If this count is zero, that means document is edited using WikiBhasha for the first time 
-                            //and so insert the snippet "<!--  WikiBhasha   v=1 time=[[timestamp]] -->" where v=1 says that this document is edited using WikiBhasha once at '[[timestamp]]'.
-                            if (wbGlobalSettings.wbEditRevisionCount === null) {
-                                var snippet = "\n<!--  WikiBhasha   v=1 time=" + wbUIHelper.getTimeStamp() + "-->";
-                                composedContent = composedContent + snippet;
-                            }
-                            //If the count is non zero, increment the versioning count and updated the current time into existing code snippet. 
-                            else {
-                                var regEx = /<!--\s*WikiBhasha\s*v=(\d*)\s*time=.*-->/ig,
-                                    snippet = "<!--  WikiBhasha   v=" + (wbGlobalSettings.wbEditRevisionCount + 1) + "  time=" + wbUIHelper.getTimeStamp() + "-->";
-                                composedContent = composedContent.replace(regEx, snippet);
-                            }
-                            */
-
                             // call the method to check and insert the interwiki link
                             composedContent = wbPublishDisplayPane.insertInterWikiLink(composedContent);
-
                             // update the text area content with the snippet.
                             wbPublishDisplayPane.getWikiTextareaElement().val(composedContent);
                             // returning true will allow the execution to continue on saving the content in wikipedia.
@@ -269,22 +250,12 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         //gets the textarea element available in wiki edit page
         getWikiTextareaElement: function() {
-            return $("#" + wbWikiSite.wikiComposeTextArea + ", textarea[name='" + wbWikiSite.wikiComposeTextArea + "']", wbPublishDisplayPane.wbChildWikipedia.document);
+            return $("#" + wbWikiSite.wikiComposeTextArea , wbPublishDisplayPane.wbChildWikipedia.document);
         },
 
-        //gets the number of times current document edited using WikiBhasha. 
-        //Receives the content of the page and looks for the snippet "<!--  WikiBhasha   v=[[editedCount]] time=[[timestamp]] -->”. If the snippet exists then it returns the count ‘[[editedCount]]’. Otherwise it returns null.
-        getEditVersion: function(wikiContent) {
-            if (wikiContent.search(/<!--\s*WikiBhasha\s*v=/ig) === -1) {
-                return null;
-            }
-            else {
-                var regEx = /<!--\s*WikiBhasha\s*v=(\d*)\s*time=/ig;
-                var temp = regEx.exec(wikiContent);
-                var verCount = parseInt(temp[1]);
-                return verCount;
-            }
-            return false;
+        //gets the Summery Field element available in wiki edit page
+        getWikiSummeryFieldElement: function() {
+            return $("#" + wbWikiSite.wikiSummeryField , wbPublishDisplayPane.wbChildWikipedia.document);
         },
 
         // checks the inverwiki link and creates if it does not exist.

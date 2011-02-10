@@ -86,6 +86,12 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
         
         //cutoff length to be used for pane titles
         paneTitleCutoffLength: 100,
+		
+        //cutoff length to be used for edit page summery field
+        summeryFieldCutoffLength: 200,
+
+        //WikiBhasha usage monitoring summery field snipet
+        snippet: "<<WB1.1>>",
 
         //max length of characters allowed by scratch pad window
         scratchpadTextMaxLength: 1600,        
