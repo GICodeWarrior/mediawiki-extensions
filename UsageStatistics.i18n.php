@@ -395,7 +395,7 @@ $messages['br'] = array(
 	'usagestatisticsincremental-text' => 'azvuiadel',
 	'usagestatisticscumulative' => 'Sammadel',
 	'usagestatisticscumulative-text' => 'sammadel',
-	'usagestatisticscalselect' => 'Dibab',
+	'usagestatisticscalselect' => 'Diuzañ',
 	'usagestatistics-editindividual' => 'Stadegoù savet $1 gant an implijer',
 	'usagestatistics-editpages' => 'Stadegoù $1 ar pajennoù gant an implijer e-unan',
 	'right-viewsystemstats' => 'Gwelet [[Special:UserStats|stadegoù implijout ar wiki]]',
@@ -1372,11 +1372,12 @@ $messages['km'] = array(
 	'usagestatistics-desc' => 'បង្ហាញ​ស្ថិតិ​អ្នកប្រើប្រាស់​ជាឯកត្តៈបុគ្គល និង ការប្រើប្រាស់វិគីទាំងមូល',
 	'usagestatisticsfor' => '<h2>ស្ថិតិ​នៃ​ការប្រើប្រាស់​របស់ [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>ស្ថិតិប្រើប្រាស់សម្រាប់គ្រប់អ្នកប្រើប្រាស់ទាំងអស់</h2>',
-	'usagestatisticsinterval' => 'ចន្លោះ',
+	'usagestatisticsinterval' => 'ចន្លោះ៖',
 	'usagestatisticsnamespace' => 'ប្រភេទ៖',
 	'usagestatisticstype' => 'ប្រភេទ',
-	'usagestatisticsstart' => 'កាលបរិច្ឆេទចាប់ផ្តើម',
-	'usagestatisticsend' => 'កាលបរិច្ឆេទបញ្ចប់',
+	'usagestatisticsstart' => 'កាលបរិច្ឆេទចាប់ផ្តើម៖',
+	'usagestatisticsend' => 'កាលបរិច្ឆេទបញ្ចប់៖',
+	'usagestatisticssubmit' => 'បង្កើតស្ថិតិ',
 	'usagestatisticsnostart' => 'សូម​ធ្វើការ​បញ្ជាក់​ដើម្បី​ចាប់ផ្ដើម​ទិន្នន័យ',
 	'usagestatisticsnoend' => 'សូម​ធ្វើការ​បញ្ជាក់​ដើម្បី​បញ្ចប់​ទិន្នន័យ',
 	'usagestatisticsintervalday' => 'ថ្ងៃ',
@@ -1389,6 +1390,7 @@ $messages['km'] = array(
 	'usagestatisticscalselect' => 'ជ្រើសយក',
 	'usagestatistics-editindividual' => 'អ្នកប្រើប្រាស់​បុគ្គល $1 ស្ថិតិ​កែប្រែ',
 	'usagestatistics-editpages' => 'អ្នកប្រើប្រាស់​បុគ្គល $1 ស្ថិតិ​ទំព័រ',
+	'right-viewsystemstats' => 'មើល [[Special:UserStats|ស្ថិតិបំរើបំរាស់វិគី]]',
 );
 
 /** Kannada (ಕನ್ನಡ)
