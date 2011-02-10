@@ -42,7 +42,7 @@ $wgHooks['ResourceLoaderGetConfigVars'][] =  'MwEmbedResourceManager::registerCo
 MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport' );
 
 // Register the MwEmbed 'mediaWiki' Module:
-MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport' );
+MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MediaWikiSupport' );
 
 // Add MwEmbedSupport to Startup:
 function MwUpdateStartupModules( &$modules ){	
