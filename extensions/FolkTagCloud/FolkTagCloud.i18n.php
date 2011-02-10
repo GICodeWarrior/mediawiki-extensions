@@ -53,6 +53,13 @@ $messages['he'] = array(
 	'folktagcloud-desc' => 'הוספת מאפיין מדיה־ויקי סמנטית לתיוג דפים עם תוויות מותאמות אישית ותג מפענח לתצוגתן בענן תגים',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'folktagcloud-desc' => 'Přidawa atribut Semantic MediaWiki za woznamjenjenje stronow ze swójskimi etiketami a parserowe woznamjenjace słowo, za zwobraznjenje w mróčeli woznamjenjaceho słowa',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

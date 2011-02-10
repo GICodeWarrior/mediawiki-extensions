@@ -163,6 +163,20 @@ $messages['pt'] = array(
 	'includewp-include-par-page' => 'O nome da página (remota) que pretende apresentar.',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'includewp-desc' => 'IncludeWP — это лёгкое расширение для включения содержания Википедии',
+	'includewp-loading-page' => 'Загрузка страницы…',
+	'includewp-show-full-page' => 'Показать полную страницу',
+	'includewp-show-fragment' => 'Показывать только первый абзац',
+	'includewp-loading-failed' => 'Ошибка загрузки страницы.',
+	'includewp-licence-notice' => 'Приведённый выше материал получен со страницы <a href="$2">$3</a> проекта $1, он доступен на условиях <a href="$4">$5</a>. Полный список авторов можно найти <a href="$6">здесь</a>.',
+	'includewp-parserhook-desc' => 'Обработчик парсера, позволяющий отображать содержание Википедии.',
+	'includewp-include-par-page' => 'Имя страницы (в другом проекте), которую вы хотите отобразить.',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

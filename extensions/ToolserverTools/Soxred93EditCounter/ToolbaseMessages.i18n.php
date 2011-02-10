@@ -305,6 +305,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Hashar
+ * @author IAlex
  * @author Sherbrooke
  * @author X!
  * @author Zetud
@@ -328,9 +329,16 @@ $messages['fr'] = array(
 	'toolbase-navigation' => 'Navigation',
 	'toolbase-navigation-homepage' => "Page d'accueil",
 	'toolbase-navigation-user_id' => "Trouver l'ID utilisateur",
+	'toolbase-navigation-autoedits' => 'Compteur de modifications automatisé',
 	'toolbase-userid-submit' => "Obtenir l'ID utilisateur",
 	'toolbase-userid-title' => 'Trouver un ID utilisateur',
 	'toolbase-userid-result' => 'L\'ID utilisateur pour <b>$1</b> sur <a href="$3"><b>$3</b></a> est <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Calculateur de modifications automatisé',
+	'toolbase-autoedits-submit' => 'Calculer',
+	'toolbase-autoedits-approximate' => 'Nombre <b>approximatif</b> de modifications en utilisant...',
+	'toolbase-autoedits-totalauto' => 'Nombre total de modifications automatisées',
+	'toolbase-autoedits-totalall' => 'Nombre total de modifications',
+	'toolbase-autoedits-pct' => 'Pourcentage de modifications automatisées',
 	'toolbase-main-title' => 'Bienvenue !',
 	'toolbase-main-content' => 'Bienvenue sur la page d\'outils X ! Cette suite d\'outils est présentement en conversion vers le framework <a href="$1">Symfony</a>. Ce processus prendra un certain temps, mais les outils devraient fonctionner correctement dès maintenant. 
 
@@ -346,6 +354,7 @@ Si vous avez suivi un lien, veuillez <a href="$1">rapporter le bug</a>.
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => "$1 n'est pas un utilisateur valide",
 	'toolbase-error-nowiki' => "$1.$2.org n'est pas un wiki valide",
+	'toolbase-error-toomanyedits' => '$1 a $2 modifications. Cet outil a un maximum de $3 modifications.',
 );
 
 /** Galician (Galego)

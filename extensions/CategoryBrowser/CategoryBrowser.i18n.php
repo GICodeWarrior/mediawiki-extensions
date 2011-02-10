@@ -982,6 +982,29 @@ $messages['ja'] = array(
 	'cb_edit_paste_right_hint' => '可能であれば、次の位置に演算子を貼付ける',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'cb_show_no_parents_only' => 'បង្ហាញតែចំណាត់ថ្នាក់ក្រុមណាដែលគ្មានមេ',
+	'cb_cat_name_filter' => 'ស្វែងរកចំណាត់ថ្នាក់ក្រុមដោយប្រើឈ្មោះ',
+	'cb_has_subcategories' => '$1 ចំណាត់ថ្នាក់ក្រុមរង',
+	'cb_has_pages' => '$1 ទំព័រ',
+	'cb_has_files' => '$1 ឯកសារ',
+	'cb_has_parentcategories' => 'ចំណាត់ថ្នាក់ក្រុមមេ (បើមាន)',
+	'cb_next_items_stats' => ' (ពី $1)',
+	'cb_cat_subcats' => 'ចំណាត់ថ្នាក់រង',
+	'cb_cat_pages' => 'ទំព័រ',
+	'cb_cat_files' => 'ឯកសារ',
+	'cb_apply_button' => 'អនុវត្ត',
+	'cb_all_op' => 'ទាំងអស់',
+	'cb_or_op' => 'ឬ',
+	'cb_and_op' => 'និង',
+	'cb_edit_left_hint' => 'រំកិលទៅឆ្វេង បើអាច',
+	'cb_edit_right_hint' => 'រំកិលទៅស្ដាំ បើអាច',
+	'cb_edit_remove_hint' => 'លុបចោល បើអាច',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */

@@ -1258,14 +1258,29 @@ $messages['ka'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'ct-event-name' => 'ឈ្មោះព្រឹត្តិការណ៍​',
+	'ct-expert-header' => 'ចំនួនការចុចរបស់ «អ្នកជំនាញ»',
+	'ct-intermediate-header' => 'ចំនួនការចុចរបស់ «អ្នកមធ្យម»',
+	'ct-beginner-header' => 'ចំនួនការចុចរបស់ «អ្នកដំបូង»',
 	'ct-total-header' => 'ចំនួនចុចសរុប​',
 	'ct-start-date' => 'កាលបរិច្ឆេទ​ចាប់ផ្ដើម (YYYYMMDD)',
 	'ct-end-date' => 'កាលបរិច្ឆេទ​បញ្ចប់ (YYYYMMDD)',
+	'ct-increment-by' => 'ចំនួនថ្ងៃដែលចំនុចទិន្នន័យនីមួយៗតំណាងអោយ',
+	'ct-change-graph' => 'ផ្លាស់ប្ដូរក្រាហ្វ',
+	'ct-beginner' => 'អ្នកដំបូង',
+	'ct-intermediate' => 'អ្នកមធ្យម',
+	'ct-expert' => 'អ្នកជំនាញ',
+	'ct-date-range' => 'ដែនកំណត់កាលបរិច្ឆេទ',
+	'ct-editing' => 'បច្ចុប្បន្នកំពុង​កែប្រែ៖',
+	'ct-anon-users' => 'អ្នកប្រើប្រាស់អនាមិក',
+	'ct-user-contribs' => 'ការរួមចំណែកសរុបរបស់អ្នកប្រើប្រាស់',
+	'ct-user-span' => 'ការរួមចំណែករបស់អ្នកប្រើប្រាស់ក្នុងរយៈកាលមួយ',
 	'ct-and' => 'និង​',
+	'ct-update-table' => 'អាប់ដេតតារាង',
 );
 
 /** Kannada (ಕನ್ನಡ)

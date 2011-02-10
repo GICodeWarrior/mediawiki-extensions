@@ -7534,6 +7534,7 @@ $messages['km'] = array(
 	'langman_iso639-3' => 'លេខកូដ ISO 639-3៖',
 	'langman_iso639-2' => 'លេខកូដ ISO 639-2៖',
 	'langman_wikimedia' => 'លេខកូដវិគីមីឌា៖',
+	'langman_field_optional' => '(ស្រេចចិត្ត)',
 	'langman_addlang' => 'បន្ថែមភាសា',
 	'importlangnames' => 'ទិន្នន័យវិគី៖ នាំចូល​ឈ្មោះ​​ភាសា',
 	'importlangnames_title' => 'នាំចូល​ឈ្មោះ​ភាសា​',
@@ -7588,6 +7589,7 @@ $messages['km'] = array(
 	'ow_AlternativeDefinitions' => 'និយមន័យ​ឆ្លាស់',
 	'ow_Annotation' => 'ចំណារពន្យល់',
 	'ow_ApproximateMeanings' => 'អត្ថន័យ​ប្រហាក់ប្រហែល',
+	'ow_Class' => 'ថ្នាក់',
 	'ow_ClassAttributeAttribute' => 'សេចក្តីកំណត់',
 	'ow_ClassAttributes' => 'ថ្នាក់​គុណលក្ខណៈ',
 	'ow_ClassAttributeLevel' => 'កម្រិត',
@@ -8049,10 +8051,22 @@ $messages['ku'] = array(
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'langman_langname' => 'Navê ziman:',
+	'datasearch_language' => 'Ziman:',
 	'ow_history' => 'Dîrok',
+	'ow_transaction_user' => 'Navê bikarhêner:',
+	'ow_dm_OK' => 'Temam',
+	'ow_ClassAttributeType' => 'Cure',
 	'ow_Source' => 'Çavkanî',
+	'ow_Text' => 'Nivîs',
+	'ow_TranslatedTextAttributeValue' => 'Nivîs',
+	'ow_Link' => 'Lînk',
+	'ow_User' => 'Bikarhêner',
+	'ow_class_attr_type_link' => 'Lînk',
+	'ow_show' => 'Nîşan bide',
 );
 
 /** Cornish (Kernowek)

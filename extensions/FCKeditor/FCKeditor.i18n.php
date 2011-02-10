@@ -112,10 +112,13 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author Borislav
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'fckeditor-desc' => 'Възможност за редактиране с помощта на разширения редактор FCKeditor',
 	'textrichditor' => 'Разширен редактор',
+	'prefs-fckeditor' => 'Разширен редактор',
 	'tog-riched_disable' => 'Изключване на разширения редактор',
 	'tog-riched_disable_ns_main' => 'Изключване на разширения редактор в основното именно пространство',
 	'tog-riched_disable_ns_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Talk}}“',
@@ -133,6 +136,11 @@ $messages['bg'] = array(
 	'tog-riched_disable_ns_help_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Help_talk}}“',
 	'tog-riched_disable_ns_category' => 'Изключване на разширения редактор в именно пространство „{{ns:Category}}“',
 	'tog-riched_disable_ns_category_talk' => 'Изключване на разширения редактор в именно пространство „{{ns:Category_talk}}“',
+	'rich_editor_new_window' => 'Разширен редактор в нов прозорец',
+	'tog-riched_start_disabled' => 'Без автоматично пускане на разширения редактор',
+	'tog-riched_use_popup' => 'Отваряне на разширения редактор в нов прозорец',
+	'tog-riched_use_toggle' => 'Възможност за превключване между уикитекст и разширен редактор (замества текстовото поле с разширения редактор)',
+	'tog-riched_toggle_remember_state' => 'Запомняне на текущото състояние',
 );
 
 /** Breton (Brezhoneg)

@@ -276,6 +276,14 @@ $messages['ja'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|チェックポイントの保存]])',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'checkpoint' => 'រក្សាទុករួចបន្តការកែប្រែ',
+	'checkpoint-desc' => 'អនុញ្ញាតអោយនរណាម្នាក់រក្សាទុកកំណែមួយ រួចបន្តការកែប្រែ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

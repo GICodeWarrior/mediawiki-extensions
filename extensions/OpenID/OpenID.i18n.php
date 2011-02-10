@@ -3641,7 +3641,16 @@ $messages['mt'] = array(
  * @author Erikoo
  */
 $messages['my'] = array(
+	'openidoptional' => 'ရွေးပိုင်ခွင့်',
+	'openidrequired' => 'လိုအပ်သည်',
+	'openidnickname' => 'Nickname အမည်',
+	'openidfullname' => 'အမည် အပြည့်အစုံ',
 	'openidemail' => 'အီးမေး လိပ်စာ',
+	'openidlanguage' => 'ဘာသာ',
+	'openid-provider-label-google' => 'Google အကောင့် အသုံးပြု၍ Login ဝင်ရန်',
+	'openid-provider-label-yahoo' => 'Yahoo အကောင့် အသုံးပြု၍ Login ဝင်ရန်',
+	'openid-provider-label-aol' => 'AOL အကောင့် အားရိုက်ပါ',
+	'openid-provider-label-other-username' => 'သင်၏ $1 မှ အသုံးပြုသူ အမည်အား ရိုက်ပါ',
 );
 
 /** Erzya (Эрзянь)

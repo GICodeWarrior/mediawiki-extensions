@@ -632,10 +632,15 @@ $messages['ka'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'contrib-tracking-error' => 'កំហុស',
+	'contrib-tracking-continue' => 'ប្រសិនបើអ្នកមិនត្រូវបានបញ្ជូនបន្តដោយស្វ័យប្រវត្តិទេ សូចចុចប៊ូតុងដើម្បីសំរេចការបរិច្ចាគរបស់អ្នកនៅ PayPal។',
+	'contrib-tracking-redirect' => 'អ្នកនឹងត្រូវបញ្ជូនបន្តដោយស្វ័យប្រវត្តិទៅកាន់ PayPal ដើម្បីសំរេចការបរិច្ចាគរបស់អ្នក។',
 	'contrib-tracking-button' => 'បន្ត',
+	'contrib-tracking-item-name-onetime' => 'ការបរិច្ចាគសំរាប់តែមួយលើក',
+	'contrib-tracking-item-name-recurring' => 'ការបរិច្ចាគប្រចាំខែ',
 );
 
 /** Korean (한국어)

@@ -274,6 +274,16 @@ $messages['ja'] = array(
 	'semanticformsinputs-today' => '今日',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'semanticformsinputs-close' => 'បិទ',
+	'semanticformsinputs-prev' => 'មុន',
+	'semanticformsinputs-next' => 'ក្រោយ',
+	'semanticformsinputs-today' => 'ថ្ងៃនេះ',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
  */

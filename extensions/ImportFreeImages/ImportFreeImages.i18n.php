@@ -797,6 +797,15 @@ $messages['ksh'] = array(
 	'importfreeimages_size_original' => 'Ojinahl',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'importfreeimages' => 'Wêneyên azad împort bike',
+	'importfreeimages_importthis' => 'vî împort bike',
+	'importfreeimages_size_small' => 'Biçûk',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

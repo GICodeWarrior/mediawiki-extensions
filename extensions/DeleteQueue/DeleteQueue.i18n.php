@@ -3705,6 +3705,7 @@ $messages['ja'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
@@ -3716,10 +3717,12 @@ $messages['km'] = array(
 	'deletequeue-speedy-title' => 'សម្គាល់ "$1" សម្រាប់​ការលុប​ឱ្យ​បាន​លឿន',
 	'deletequeue-delnom-otherreason' => 'មូលហេតុផ្សេងទៀត',
 	'deletequeue-delnom-extra' => 'ព័ត៌មានបន្ថែម៖',
+	'right-prod-nominate' => 'ការស្នើសុំលុបចោលទំព័រ',
 	'right-deletediscuss-nominate' => 'ចាប់ផ្ដើម​កិច្ចពិភាក្សា​អំពី​ការលុប',
 	'right-deletediscuss-review' => 'បិទ​កិច្ចពិភាក្សា​អំពី​ការលុប',
 	'right-deletequeue-vote' => 'យល់ស្រប ឬ ជំទាស់​ចំពោះ​ការលុប',
 	'deletequeue-queue-speedy' => 'លុប​ឱ្យ​បាន​លឿន',
+	'deletequeue-queue-prod' => 'ការលុបចោលដែលត្រូវបានស្នើ',
 	'deletequeue-queue-deletediscuss' => 'កិច្ចពិភាក្សា​អំពី​ការលុប',
 	'deletequeue-review-action' => 'សកម្មភាពត្រូវ​អនុវត្ត​៖',
 	'deletequeue-review-delete' => 'លុបទំព័រ។',

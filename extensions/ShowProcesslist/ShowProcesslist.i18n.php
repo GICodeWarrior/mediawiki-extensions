@@ -500,7 +500,7 @@ $messages['ia'] = array(
 	'showprocesslist-desc' => 'Monstra le resultato de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => 'Usator',
-	'showprocesslist-host' => 'Hospite',
+	'showprocesslist-host' => 'Host',
 	'showprocesslist-db' => 'BdD',
 	'showprocesslist-command' => 'Commando',
 	'showprocesslist-time' => 'Tempore',
@@ -588,11 +588,13 @@ $messages['ka'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'showprocesslist' => 'បង្ហាញ​បញ្ជី​ដំណើរការ',
 	'showprocesslist-user' => 'អ្នកប្រើប្រាស់',
 	'showprocesslist-host' => 'ម៉ាស៊ីន',
+	'showprocesslist-db' => 'មូលដ្ឋានទិន្នន័យ',
 	'showprocesslist-command' => 'ពាក្យបញ្ជា',
 	'showprocesslist-time' => 'ពេលវេលា',
 	'showprocesslist-state' => 'រដ្ឋ',

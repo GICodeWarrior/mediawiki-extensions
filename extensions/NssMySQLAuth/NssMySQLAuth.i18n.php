@@ -604,6 +604,7 @@ $messages['km'] = array(
 	'nss-create-account-header' => 'បង្កើត​គណនី​ថ្មី',
 	'nss-create-account' => 'បង្កើត​គណនី',
 	'nss-no-mail' => 'មិន​ផ្ញើ​អ៊ីមែល',
+	'nss-welcome-mail' => 'គណនីដែលមានអត្តនាម $1 និងពាក្យសំងាត់ $2 ត្រូវបានបង្កើតសំរាប់អ្នកហើយ។',
 	'nss-welcome-mail-subject' => 'ការបង្កើត​គណនី',
 );
 

@@ -706,6 +706,8 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'chemicalsources' => 'ប្រភពគីមី',
+	'chemicalsource-desc' => 'បន្ថែមស្លាក <nowiki><chemform></nowiki> សំរាប់រូបមន្តគីមី',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|ទំព័រពិសេស]]សំរាប់ប្រភពគីមី',
 	'chemFunctions_ListPage' => 'ប្រភពគីមី',
 	'chemFunctions_DataList' => 'ខាងក្រោមនេះ​ជាបញ្ជី​នៃតំណភ្ជាប់​ទៅសៃថ៍នានា​ដែលអាច​ផ្ដល់​ព័ត៌មាន​អំពី​សារធាតុ​គីមី​ដែលអ្នកកំពុង​ស្វែងរក។<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />

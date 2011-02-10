@@ -89,6 +89,47 @@ $messages['de'] = array(
 	'rdf-instructions' => 'Gewünschte Zielseite sowie RDF-Modelle auswählen',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'rdf-desc' => 'Système RDF pour MediaWiki',
+	'rdf-dcmes' => 'Élément de métadonnées Dublin Core',
+	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Images embarquées',
+	'rdf-linksto' => 'Liens vers cette page',
+	'rdf-linksfrom' => 'Liens à partir de la page',
+	'rdf-links' => 'Tous les liens',
+	'rdf-history' => 'Versions historiques',
+	'rdf-interwiki' => 'Liens interwiki',
+	'rdf-categories' => 'Catégories',
+	'rdf-target' => 'Page cible',
+	'rdf-modelnames' => 'Modèle(s)',
+	'rdf-format' => 'Format de sortie',
+	'rdf-instructions' => 'Sélectionnez la page cible et des modèles RDF qui vous intéressent.',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'rdf-desc' => 'RDF-framework za MediaWiki',
+	'rdf-inpage' => 'Turtle-syntaksa zasadźena do strony',
+	'rdf-dcmes' => 'Dublin Core Metadata Element Set',
+	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Zasadźene wobrazy',
+	'rdf-linksto' => 'Wotkaz k stronje',
+	'rdf-linksfrom' => 'Wotkazy ze strony',
+	'rdf-links' => 'Wšě wotkazy',
+	'rdf-history' => 'Stare wersije',
+	'rdf-interwiki' => 'Interwikijowe wotkazy',
+	'rdf-categories' => 'Kategorije',
+	'rdf-target' => 'Cilowa strona',
+	'rdf-modelnames' => 'Modele',
+	'rdf-format' => 'Wudatny format',
+	'rdf-instructions' => 'Cilowu stronu a RDF-modele wubrać, za kotrež zajimuješ.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

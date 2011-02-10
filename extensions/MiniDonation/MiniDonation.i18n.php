@@ -359,6 +359,13 @@ $messages['mr'] = array(
 	'donationform-submit' => 'पेपाल (paypal) द्वारा दान करा',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'donationform-submit' => 'PayPal အား အသုံးပြု၍ လှူဒါန်းရန်',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -1524,6 +1524,7 @@ $messages['km'] = array(
 	'crosswikiblock-dbnotfound' => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន',
 	'crosswikiblock-noname' => 'អត្តនាម "$1" គ្មានសុពលភាព ។',
 	'crosswikiblock-nouser' => 'រកមិនឃើញ អ្នកប្រើប្រាស់ "$3" ។',
+	'crosswikiblock-noexpiry' => 'កាលបរិច្ចេទផុតកំណត់គ្មានប្រសិទ្ធភាព៖ $1 ។',
 	'crosswikiblock-noreason' => 'គ្មានហេតុផល ត្រូវបានសំដៅ ។',
 	'crosswikiblock-alreadyblocked' => 'អ្នកប្រើប្រាស់ $3 ត្រូវបាន រាំងខ្ទប់ ហើយ ។',
 	'crosswikiblock-noblock' => 'អ្នកប្រើប្រាស់នេះ មិនត្រូវបាន​ រាំងខ្ទប់ ។',
