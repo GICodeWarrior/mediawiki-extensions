@@ -17,6 +17,32 @@ class ResearchToolsHooks {
 		),
 	);
 
+	/* Static Methods */
+
+	/**
+	 * LoadExtensionSchemaUpdates hook
+	 * @return Boolean: always true
+	 */
+	public static function loadExtensionSchemaUpdates( $updater = null ) {
+		$dir = dirname( __FILE__ ) . '/';
+		
+		// Survey tables
+		$updater->addExtensionTable(
+			'research_tools_surveys', $dir . 'patches/CreateSurveysTable.sql'
+		);
+		$updater->addExtensionTable(
+			'research_tools_survey_questions', $dir . 'patches/CreateSurveyQuestionsTable.sql'
+		);
+		$updater->addExtensionTable(
+			'research_tools_survey_responses', $dir . 'patches/CreateSurveyResponsesTable.sql'
+		);
+		$updater->addExtensionTable(
+			'research_tools_survey_answers', $dir . 'patches/CreateSurveyAnswersTable.sql'
+		);
+		
+		return true;
+	}
+
 	/*
 	 * ResourceLoaderRegisterModules hook
 	 */
