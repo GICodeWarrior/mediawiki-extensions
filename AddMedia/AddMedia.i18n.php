@@ -5472,6 +5472,7 @@ $messages['km'] = array(
 	'mwe-cancel-confim' => 'អ្នកប្រាកដហើយឬថាចង់ចាកចេញ?',
 	'mwe-successfulupload' => 'ផ្ទុកឡើងបានសំរេច',
 	'mwe-uploaderror' => 'បញ្ហាក្នុងការផ្ទុកឡើង',
+	'mwe-uploadwarning' => 'ការព្រមានស្ដីពីការផ្ទុកឡើង',
 	'mwe-unknown-error' => 'កំហុសមិនស្គាល់',
 	'mwe-return-to-form' => 'ត្រលប់ទៅកាន់បែបបទវិញ',
 	'mwe-file-exists-duplicate' => 'ឯកសារនេះដូចគ្នាបេះបិទនឹងឯកសារខាងក្រោមនេះ៖',
