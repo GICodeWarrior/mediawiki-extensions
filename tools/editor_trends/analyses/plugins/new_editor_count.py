@@ -27,5 +27,5 @@ def new_editor_count(var, editor, **kwargs):
     '''
 #   headers = ['year', 'month', 'count']
     new_wikipedian = editor['new_wikipedian']
-    var.add(new_wikipedian, {0:1})
+    var.add(new_wikipedian, 1)
     return var

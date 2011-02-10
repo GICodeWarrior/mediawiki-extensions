@@ -17,10 +17,9 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
-import datetime
 
 def total_cumulative_edits(var, editor, **kwargs):
     cnt = editor['edit_count']
-    today = datetime.datetime.today()
-    var.add(today, cnt, update=True)
+    last = editor['final_edit']
+    var.add(last, cnt, {'year': last.year})
     return var

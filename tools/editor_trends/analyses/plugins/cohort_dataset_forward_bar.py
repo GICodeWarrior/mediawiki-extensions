@@ -38,5 +38,5 @@ def cohort_dataset_forward_bar(var, editor, **kwargs):
                 continue
             else:
                 experience = (year - new_wikipedian.year) + 1
-                var.add(new_wikipedian, {experience: 1 })
+                var.add(new_wikipedian, 1, {'experience':experience})
     return var

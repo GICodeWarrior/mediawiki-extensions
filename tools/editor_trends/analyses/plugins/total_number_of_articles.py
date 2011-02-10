@@ -17,18 +17,12 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
-import datetime
 
 def total_number_of_articles(var, editor, **kwargs):
-    today = datetime.datetime.today()
-    obs = {}
     for year in editor['edits']:
-        years = editor['edits'][year]
-        for edit in years:
+        edits = editor['edits'][year]
+        for edit in edits:
             article = edit['article']
-            obs.setdefault(article, 0)
-            obs[article] += 1
-
-
-    var.add(today, obs, update=True)
+            date = edit['date']
+            var.add(date, 1, {'article':article})
     return var

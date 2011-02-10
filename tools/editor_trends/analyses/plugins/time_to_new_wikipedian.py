@@ -22,5 +22,5 @@ def time_to_new_wikipedian(var, editor, **kwargs):
     new_wikipedian = editor['new_wikipedian']
     first_edit = editor['first_edit']
     dt = new_wikipedian - first_edit
-    var.add(new_wikipedian, {0:dt.days}, update=False)
+    var.add(new_wikipedian, dt.days)
     return var

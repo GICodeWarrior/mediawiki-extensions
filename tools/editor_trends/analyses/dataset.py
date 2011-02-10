@@ -21,6 +21,7 @@ import calendar
 import datetime
 import time
 import math
+import operator
 import sys
 from pymongo.son_manipulator import SONManipulator
 from multiprocessing import Lock
@@ -78,15 +79,23 @@ class Data:
     Some generic functions that are required by the Observation, Variable, and
     Dataset classes. 
     '''
-    def __hash__(self, date):
-        #return hash(self.convert_date_to_epoch(date))
-        return int(self.convert_date_to_epoch(date))
+    def __hash__(self, vars):
+        id = ''.join([str(var) for var in vars])
+        return hash(id)
+        #return int(self.convert_date_to_epoch(date))
 
-    def encode_to_bson(self):
-        kwargs = dict([(str(key), value) for key, value in self.__dict__.iteritems()])
+    def encode_to_bson(self, data=None):
+        if data:
+            kwargs = dict([(str(key), value) for key, value in data.__dict__.iteritems()])
+        else:
+            kwargs = dict([(str(key), value) for key, value in self.__dict__.iteritems()])
         for key, value in kwargs.iteritems():
             if isinstance(value, dict):
-                d = dict([(str(k), v) for k, v in value.iteritems()])
+                d = {}
+                for k, v in value.iteritems():
+                    if isinstance(v, Observation):
+                        v = self.encode_to_bson(v)
+                    d[str(k)] = v
                 kwargs[key] = d
         return kwargs
 
@@ -96,14 +105,24 @@ class Data:
 
         if self.time_unit == 'year':
             datum = datetime.datetime(date.year, 1, 1)
-            return time.mktime(datum.timetuple())
+            return int(time.mktime(datum.timetuple()))
         elif self.time_unit == 'month':
             datum = datetime.datetime(date.year, date.month, 1)
-            return time.mktime(datum.timetuple())
+            return int(time.mktime(datum.timetuple()))
         elif self.time_unit == 'day':
-            return time.mktime(date.timetuple())
+            return int(time.mktime(date.timetuple()))
         else:
             return date
+
+    def set_date_range(self, date):
+        if self.time_unit == 'year':
+            return datetime.datetime(date.year, 12, 31), datetime.datetime(date.year, 1, 1)
+        elif self.time_unit == 'month':
+            day = calendar.monthrange(date.year, date.month)[1]
+            return datetime.datetime(date.year, date.month, day), datetime.datetime(date.year, date.month, 1)
+        else:
+            return datetime.datetime(date.year, date.month, date.day), datetime.datetime(date.year, date.month, date.day)
+
 
 class Observation(Data):
     lock = Lock()
@@ -111,18 +130,27 @@ class Observation(Data):
     The smallest unit, here the actual data is being stored. 
     Time_unit should either be 'year', 'month' or 'day'. 
     '''
-    def __init__(self, date):
-        assert isinstance(date, datetime.datetime), 'Dat variable should be a datetime.datetime instance.'
+    def __init__(self, date, time_unit, id, meta):
+        assert isinstance(date, datetime.datetime), 'Date variable should be a datetime.datetime instance.'
         self.date = date
-        self.data = {}
+        self.data = 0
+        self.time_unit = time_unit
+        self.t1, self.t0 = self.set_date_range(date)
+        self.id = id
+        self.props = []
+        for mt in meta:
+            if isinstance(mt, float):
+                raise Exception, 'Mongo does not allow a dot "." in the name of a key, please use an integer or string as key.'
+            elif not isinstance(mt, list):
+                setattr(self, mt, meta[mt])
+                self.props.append(mt)
         self._type = 'observation'
 
     def __repr__(self):
         return '%s' % self.date
 
     def __str__(self):
-        return '%s' % self.date
-        #return 'range: %s:%s' % (self.t0, self.t1)
+        return 'range: %s:%s' % (self.t0, self.t1)
 
     def __iter__(self):
         for obs in self.data:
@@ -131,41 +159,21 @@ class Observation(Data):
     def __getitem__(self, key):
         return getattr(self, key, [])
 
-    def add(self, value, update):
+    def add(self, value):
         '''
         If update == True then data[i] will be incremented else data[i] will be
         created, in that case make sure that i is unique. Update is useful for
         tallying a variable. 
         '''
-        assert isinstance(value, dict), 'The observation that you are adding should be a dictionary.'
+        self.lock.acquire()
+        try:
+            self.data += value
+        finally:
+            self.lock.release()
 
-        if update:
-            for k, v in value.iteritems():
-                if isinstance(v, dict):
-                    obs = self.data.get(k, Observation(self.date))
-                    obs.add(v, update)
-                    #key = self.__hash__(self.date)
-                    self.data[k] = obs
-                else:
-                    self.lock.acquire()
-                    try:
-                        self.data.setdefault(k, 0)
-                        self.data[k] += v
-                    finally:
-                        self.lock.release()
-        else:
-            self.lock.acquire()
-            try:
-                i = max(self.data.keys()) + 1
-            except ValueError:
-                i = 0
-
-            try:
-                self.data[i] = value
-            finally:
-                self.lock.release()
-
-
+    def get_date_range(self):
+        return '%s-%s-%s:%s-%s-%s' % (self.t0.month, self.t0.day, self.t0.year, \
+                                      self.t1.month, self.t1.day, self.t1.year)
 
 class Variable(Data):
     '''
@@ -176,6 +184,7 @@ class Variable(Data):
         self.name = name
         self.obs = {}
         self.time_unit = time_unit
+        self.groupbys = []
         self._type = 'variable'
         self.props = ['name', 'time_unit', '_type']
         for kw in kwargs:
@@ -192,10 +201,9 @@ class Variable(Data):
         return getattr(self, key, [])
 
     def __iter__(self):
-        dates = self.obs.keys()
-        dates.sort()
-        for date in dates:
-            yield date
+        keys = self.obs.keys()
+        for key in keys:
+            yield key
 
     def __len__(self):
         return [x for x in xrange(self.obs())]
@@ -205,31 +213,37 @@ class Variable(Data):
             yield key, getattr(self, key)
 
     def itervalues(self):
-        for date in self:
-            for key in self.obs[date].data.keys():
-                yield self.obs[date].data[key]
+        for key in self:
+            yield self.obs[key].data
 
     def iteritems(self):
-        for date in self:
-            for value in self.obs[date].data.keys():
-                yield (value, self.obs[date].data[value])
+        for key in self:
+            yield (key, self.obs[key])
+
 
     def get_data(self):
         return [o for o in self.itervalues()]
 
-    def get_observation(self, key, date):
+    def get_observation(self, id, date, meta):
         self.lock.acquire()
         try:
-            obs = self.obs.get(key, Observation(date))
+            obs = self.obs.get(id, Observation(date, self.time_unit, id, meta))
         finally:
             self.lock.release()
         return obs
 
-    def add(self, date, value, update=True):
-        key = self.__hash__(self.set_date_range(date, start=False))
-        obs = self.get_observation(key, date)
-        obs.add(value, update)
-        self.obs[key] = obs
+    def add(self, date, value, meta={}):
+        assert isinstance(meta, dict), 'The meta variable should be a dict (either empty or with variables to group by.'
+        #id = self.convert_date_to_epoch(date)
+        start, end = self.set_date_range(date)
+        values = meta.values()
+        values.insert(0, end)
+        values.insert(0, start)
+        id = self.__hash__(values)
+
+        obs = self.get_observation(id, date, meta)
+        obs.add(value)
+        self.obs[id] = obs
 
     def encode(self):
         bson = {}
@@ -256,36 +270,12 @@ class Variable(Data):
                     setattr(self, prop, values[varname][prop])
                     self.props.append(prop)
 
-    def set_date_range(self, date, start=True):
-        if self.time_unit == 'year':
-            day = 31
-            month = 12
-        elif start:
-            day = 1
-            month = 1
-        elif self.time_unit == 'month':
-            day = calendar.monthrange(date.year, date.month)[1]
-
-        if self.time_unit == 'year':
-            return datetime.datetime(date.year, month, day)
-        elif self.time_unit == 'month':
-            return datetime.datetime(date.year, date.month, day)
-        else:
-            return datetime.datetime(date.year, date.month, date.day)
-
-#    def set_end_date(self, date):
-#        if self.time_unit == 'year':
-#            return datetime.datetime(date.year, 12, 31)
-#        elif self.time_unit == 'month':
-#            return datetime.datetime(date.year, date.month, calendar.monthrange(date.year, date.month)[1])
-#        else:
-#            return datetime.datetime(date.year, date.month, date.day)
-
     def get_date_range(self):
-        dates = [date for date in self]
-        first = datetime.datetime.fromtimestamp(min(dates))
-        last = datetime.datetime.fromtimestamp(max(dates))
+        dates = [self.obs[key].date for key in self]
+        first = min(dates)
+        last = max(dates)
         return first, last
+
 
 class Dataset:
     '''
@@ -305,7 +295,6 @@ class Dataset:
         self.language_code = language_code
         self.hash = self.name
         self._type = 'dataset'
-        self.filename = '%s%s_%s.csv' % (self.language_code, self.project, self.name)
         self.created = datetime.datetime.now()
         self.format = 'long'
         for kw in kwargs:
@@ -318,6 +307,7 @@ class Dataset:
                 name = kwargs.pop('name')
                 setattr(self, name, Variable(name, **kwargs))
                 self.variables.append(name)
+        #self.filename = self.create_filename()
 
     def __repr__(self):
         return 'Dataset contains %s variables' % (len(self.variables))
@@ -326,20 +316,50 @@ class Dataset:
         for var in self.variables:
             yield getattr(self, var)
 
-    def update_filename(self, var):
-        attrs = '_'.join(['%s=%s' % (k,v) for k,v in var.iteritems()])
-        return attrs
+
+    def create_filename(self):
+        '''
+        This function creates a filename for the dataset by searching for shared
+        properties among the different variables in the dataset. All shared 
+        properties will be used in the filename to make sure that one analysis
+        that's run with different parameters gets stored in separate files.
+        '''
+        common = {}
+        props = set()
+        for var in self.variables:
+            s = set()
+            var = getattr(self, var)
+            for prop in var.props:
+                if prop not in ['name', 'time_unit', '_type']:
+                    s.add(prop)
+                    props.add(prop)
+            common[var.name] = s
+
+        keys = []
+        for prop in props:
+            attrs = []
+            for s in common.values():
+                attrs.append(prop)
+            if len(attrs) == len(common.values()):
+                keys.append(prop)
+        keys.sort()
+        attrs = '_'.join(['%s=%s' % (k, getattr(var, k)) for k in keys])
+        filename = '%s%s_%s_%s.csv' % (self.language_code,
+                                       self.project,
+                                       self.name,
+                                       attrs)
+        self.filename = filename
 
 
     def add_variable(self, var):
         if isinstance(var, Variable):
             self.variables.append(var.name)
             setattr(self, var.name, var)
-
         else:
             raise TypeError('You can only instance of Variable to a dataset.')
 
     def write(self, format='csv'):
+        self.create_filename()
         if format == 'csv':
             self.to_csv()
         elif format == 'mongo':
@@ -355,11 +375,11 @@ class Dataset:
         coll.insert({'variables': self})
 
     def to_csv(self):
-        data, all_keys = data_converter.convert_dataset_to_lists(self, 'manage')
-        headers = data_converter.add_headers(self, all_keys)
+        data = data_converter.convert_dataset_to_lists(self, 'manage')
+        headers = data_converter.add_headers(self)
         fh = file_utils.create_txt_filehandle(settings.dataset_location, self.filename, 'w', settings.encoding)
         file_utils.write_list_to_csv(headers, fh, recursive=False, newline=True)
-        file_utils.write_list_to_csv(data, fh, recursive=False, newline=True)
+        file_utils.write_list_to_csv(data, fh, recursive=False, newline=True, format=self.format)
         fh.close()
 
     def encode(self):
@@ -367,12 +387,6 @@ class Dataset:
         for prop in self.props:
             props[prop] = getattr(self, prop)
         return props
-
-#    def min(self):
-#        return min([obs for obs in self])
-#
-#    def max(self):
-#        return max([self.obs[date].data[k] for date in self.obs.keys() for k in self.obs[date].data.keys()])
 
     def get_standard_deviation(self, number_list):
         mean = self.get_mean(number_list)
@@ -382,9 +396,9 @@ class Dataset:
             std = std + (i - mean) ** 2
         return math.sqrt(std / float(n - 1))
 
-
     def get_median(self, number_list):
-        if number_list == []: return '.'
+        if number_list == []:
+            return '.'
         data = sorted(number_list)
         data = [float(x) for x in data]
         if len(data) % 2 == 1:
@@ -394,9 +408,9 @@ class Dataset:
             upper = data[len(data) / 2]
         return (lower + upper) / 2
 
-
     def get_mean(self, number_list):
-        if number_list == []: return '.'
+        if number_list == []:
+            return '.'
         float_nums = [float(x) for x in number_list]
         return sum(float_nums) / len(number_list)
 
@@ -411,18 +425,17 @@ class Dataset:
             variable.n = len(data)
             variable.first_obs, variable.last_obs = variable.get_date_range()
 
-
     def summary(self):
         self.descriptives()
-        print '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % ('Variable', 'Mean', 'Median', 'SD',
-                                          'Minimum', 'Maximum', 'Num Obs',
-                                          'First Obs', 'Final Obs')
+        print '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % ('Variable', 'Mean',
+                                        'Median', 'SD', 'Minimum', 'Maximum',
+                                        'Num Obs', 'First Obs', 'Final Obs')
         for variable in self:
-            print '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % (variable.name, variable.mean,
-                                              variable.median, variable.sds,
-                                              variable.min, variable.max,
-                                              variable.n, variable.first_obs,
-                                              variable.last_obs)
+            print '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % (variable.name,
+                                            variable.mean, variable.median,
+                                            variable.sds, variable.min,
+                                            variable.max, variable.n,
+                                            variable.first_obs, variable.last_obs)
 
 
 def debug():
@@ -436,12 +449,12 @@ def debug():
                                         {'name': 'count', 'time_unit': 'year'},
                                        # {'name': 'testest', 'time_unit': 'year'}
                                         ])
-    ds.count.add(d1, {0:{1:10}})
-    ds.count.add(d1, {0:{1:135}})
-    ds.count.add(d2, {1: 514})
+    ds.count.add(d1, 10, ['exp', 'window'])
+    ds.count.add(d1, 135, ['exp', 'window'])
+    ds.count.add(d2, 1, ['exp', 'window'])
     #ds.testest.add(d1, 135)
     #ds.testest.add(d2, 535)
-    #ds.summary()
+    ds.summary()
     ds.write(format='csv')
 #    v = Variable('test', 'year')
     ds.encode()

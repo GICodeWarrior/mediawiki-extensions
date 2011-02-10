@@ -36,12 +36,14 @@ def edit_patterns(var, editor, **kwargs):
             n = monthly[str(year)][str(month)]
             date = datetime.datetime(year, month, 1)
             if n >= var.cutoff:
-                obs[m] = True
+                var.add(date, True, {'month':m})
+                #obs[m] = True
             else:
-                obs[m] = False
+                var.add(date, False, {'month':m})
+                #obs[m] = False
             m += 1
             if m == 12:
                 break
-    if m == 12:
-        var.add(date, obs, update=False)
+#    if m == 12:
+#        var.add(date, obs)
     return var

@@ -17,9 +17,9 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
-import datetime
+
 
 def total_number_of_new_wikipedians(var, editor, **kwargs):
-    today = datetime.datetime.today()
-    var.add(today, 1, update=True)
+    new_wikipedian = editor['new_wikipedian']
+    var.add(new_wikipedian, 1, {'year':new_wikipedian.year})
     return var
