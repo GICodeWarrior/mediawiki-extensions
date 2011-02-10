@@ -360,11 +360,13 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'piwik-lastvisits' => 'ការចូលទស្សនាចុងក្រោយ',
 	'piwik-countries' => 'ប្រទេស',
 	'piwik-browsers' => 'កម្មវិធីរុករក',
+	'right-viewpiwik' => 'មើល [[Special:Piwik|ស្ថិតិ Piwik]]',
 );
 
 /** Colognian (Ripoarisch)
