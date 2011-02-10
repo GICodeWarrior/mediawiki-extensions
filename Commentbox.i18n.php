@@ -542,6 +542,23 @@ $messages['ja'] = array(
 	'commentbox-error-empty-comment' => '空の意見は受け付けていません！',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'commentbox-desc' => 'បន្ថែមប្រអប់យោបល់ទៅលើទំព័រមួយចំនួន',
+	'commentbox-intro' => '== បន្ថែមយោបល់... ==
+តើអ្នកមានយោបង់នៅលើទំព័រនេះទេ? សូមបញ្ចេញយោបល់នៅទីនេះ ឬក៏<span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} កែប្រែទំព័រនេះដោយផ្ទាល់]</span>។',
+	'commentbox-savebutton' => 'រក្សាទុកយោបល់',
+	'commentbox-name' => 'ឈ្មោះ៖',
+	'commentbox-name-explanation' => '<small>(ដំបូន្មាន៖ ប្រសិនបើអ្នក[[Special:UserLogin|កត់ឈ្មោះចូល]] នោះអ្នកនឹងមិនចាំបាច់បញ្ចូលឈ្មោះរបស់អ្នកដោយខ្លួនឯងនៅទីនេះទេ)</small>',
+	'commentbox-log' => 'យោបល់ថ្មី',
+	'commentbox-first-comment-heading' => '== យោបល់ ==',
+	'commentbox-errorpage-title' => 'មានបញ្ហាពេលកំពុងបង្កើតយោបល់',
+	'commentbox-error-page-nonexistent' => 'ទំព័រនេះមិនមានទេ!',
+	'commentbox-error-empty-comment' => 'មិនអនុញ្ញាតអោយមានយោបល់ទទេទេ!',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */
