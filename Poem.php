@@ -48,34 +48,12 @@ function PoemExtension( $in, $param=array(), $parser=null, $frame=false ) {
 	 */
 	$nl = isset( $param['compact'] ) ? '' : "\n";
   
-	if( method_exists( $parser, 'recursiveTagParse' ) ) {
-		//new methods in 1.8 allow nesting <nowiki> in <poem>.
-		$tag = $parser->insertStripItem( "<br />", $parser->mStripState );
-		$text = preg_replace(
-			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
-			array( "", "", "$tag\n", "str_replace(' ','&#160;','\\1')" ),
-			$in );
-			$text = $parser->recursiveTagParse( $text, $frame );
-	} else {
-		$text = preg_replace(
-			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
-			array( "", "", "<br />\n", "str_replace(' ','&#160;','\\1')" ),
-			$in );
-		$ret = $parser->parse(
-			$text,
-			$parser->getTitle(),
-			$parser->getOptions(),
-			// We begin at line start
-			true,
-			// Important, otherwise $this->clearState()
-			// would get run every time <ref> or
-			// <references> is called, fucking the whole
-			// thing up.
-			false
-		);
-
-		$text = $ret->getText();
-	}
+	$tag = $parser->insertStripItem( "<br />", $parser->mStripState );
+	$text = preg_replace(
+		array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
+		array( "", "", "$tag\n", "str_replace(' ','&#160;','\\1')" ),
+		$in );
+		$text = $parser->recursiveTagParse( $text, $frame );
 
 	$attribs = Sanitizer::validateTagAttributes( $param, 'div' );
 
