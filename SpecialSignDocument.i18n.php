@@ -2626,6 +2626,7 @@ $messages['km'] = array(
 	'sig-success' => 'អ្នក​បាន​ចុះហត្ថលេខា​លើ​អត្ថបទ ដោយជោគជ័យ​ហើយ​។',
 	'sign-view-selectfields' => "'''វាល​ត្រូវ​បង្ហាញ:'''",
 	'sign-viewfield-entryid' => 'អត្តលេខ​ធាតុបញ្ចូល',
+	'sign-viewfield-timestamp' => 'ត្រាពេលវេលា',
 	'sign-viewfield-realname' => 'ឈ្មោះ',
 	'sign-viewfield-address' => 'អាសយដ្ឋាន',
 	'sign-viewfield-city' => 'ក្រុង',
