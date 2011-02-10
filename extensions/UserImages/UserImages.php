@@ -18,7 +18,7 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'User Image Gallery',
-	'version' => '1.1',
+	'version' => '1.2',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'userimages-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:User_Image_Gallery',
