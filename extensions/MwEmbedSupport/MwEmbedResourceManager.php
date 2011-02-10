@@ -102,7 +102,7 @@ class MwEmbedResourceManager {
 					);
 				}
 			}
-		}		
+		}
 		// Continue module processing
 		return true;
 	}
