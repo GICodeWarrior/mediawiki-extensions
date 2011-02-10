@@ -1,3 +1,8 @@
+php5-apc (3.1.3p1-1wm2) hardy; urgency=low
+  * Double apc.shm_size
+
+ -- Tim Starling <tstarling@wikimedia.org>  Thu, 10 Feb 2011 11:20:14 +1100
+
 php5-apc (3.1.3p1-1wm1) hardy; urgency=medium
   * Rework shm patch a bit
   * Upstream 3.1.3p1
