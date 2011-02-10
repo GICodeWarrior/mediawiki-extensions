@@ -771,6 +771,7 @@ $messages['ka'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'player' => 'ឧបករណ៍លេង',
@@ -778,6 +779,7 @@ $messages['km'] = array(
 	'player-playertitle' => 'អ្នកលេង: $1',
 	'player-file' => 'ឈ្មោះឯកសារ',
 	'player-play' => 'លេង',
+	'player-not-allowed' => 'ទំរង់មិនអនុញ្ញាត',
 	'player-not-found' => 'ឯកសារមិនត្រូវបានរកឃើញទេ',
 	'player-invalid-title' => 'ចំណងជើងមិនត្រឹមត្រូវ',
 	'player-clicktoplay' => 'លេង $1',
