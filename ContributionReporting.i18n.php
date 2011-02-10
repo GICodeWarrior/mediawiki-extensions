@@ -2873,9 +2873,10 @@ $messages['ka'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'contributionreporting-desc' => 'ការរាយការណ៍បន្តផ្ទាល់ពីអ្នកប្រមូលមូលនិធិវិគីមេឌា',
 	'contributiontotal' => 'ការរួមចំណែក​សរុប',
 	'contributionhistory' => 'ប្រវត្តិ​នៃ​ការរួមចំណែក',
-	'contrib-hist-header' => 'វិចារទាន់ពេលវេលាពីអ្នកបរិច្ចាគពីលើពិភពលោក',
+	'contrib-hist-header' => '!វិចារពីអ្នកបរិច្ចាគលើពិភពលោក',
 	'contrib-hist-name' => 'ឈ្មោះ',
 	'contrib-hist-date' => 'ម៉ោង និង​កាលបរច្ឆេទ',
 	'contrib-hist-amount' => 'តម្លៃ',
@@ -2884,6 +2885,9 @@ $messages['km'] = array(
 	'contrib-hist-anonymous' => 'អនាមិក',
 	'contributionstatistics' => 'ស្ថិតិ​នៃ​ការរួមចំណែក',
 	'contribstats-desc' => 'បង្ហាញ​ស្ថិតិ​សម្រាប់​ការរួមចំណែក​បង្កើត​មូលនិធិ​វិគីមេឌា',
+	'contribstats-daily-totals' => '{{PLURAL:$1|ចំនួនសរុបសំរាប់ថ្ងៃនេះ|ចំនួនសរុបប្រចាំថ្ងៃសំរាប់ $1 ថ្ងៃចុងក្រោយនេះ}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|ចំនួនសរុបសំរាប់ខែនេះ|ចំនួនសរុបប្រចាំខែសំរាប់ $1 ខែចុងក្រោយនេះ}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|ចំនួនសរុបសំរាប់ខែ $1|ចំនួនសរុបប្រចាំខែសំរាប់ខែ $1}}',
 	'contribstats-currency-range-totals' => 'សរុប​រូបិយប័ណ្ណ (ពី $1 ដល់ $2)',
 	'contribstats-day' => 'ថ្ងៃ',
 	'contribstats-month' => 'ខែ',
@@ -2902,6 +2906,17 @@ $messages['km'] = array(
 	'contribstats-day-totals' => 'សរុបក្នុងថ្ងៃ',
 	'contribstats-week' => 'សប្តាហ៍',
 	'contribstats-payment-type' => 'របៀបបង់ប្រាក់',
+	'contribstats-banner' => 'បដា',
+	'contribstats-donations' => 'ការបរិច្ចាគ',
+	'contribstats-conversion' => 'អត្រាប្ដូរប្រាក់ (%)',
+	'contribstats-template' => 'ទំព័រគំរូ',
+	'contribstats-nodata' => 'គ្មានទិន្នន័យដែលត្រូវបានផ្ដល់មក',
+	'contribstats-donatepage' => 'ទំព័របរិច្ចាគ',
+	'contribstats-average' => 'មម្យម',
+	'contribstats-paypal-donations' => 'ការបរិច្ចាគតាម PayPal',
+	'contribstats-credit-card' => 'ក្រេឌីតកាត',
+	'contribstats-fraud-note' => 'មានការបរិច្ចាគក្លែងក្លាយខ្លះៗ។',
+	'contribstats-unaudited' => 'នេះជាទឹកប្រាក់សរុបដែលបានពិនិត្យរួចហើយ។',
 	'fundraiserstatistics' => 'ស្ថិតិ​គោល',
 	'fundraiserstats-date' => 'កាលបរិច្ឆេទ',
 	'fundraiserstats-day' => 'កាលបរិច្ឆេទ $1 នៃ $2',
@@ -2913,6 +2928,9 @@ $messages['km'] = array(
 	'fundraiserstats-tab-contributions' => 'ចំនួន​នៃ​ការ​រួមចំណែក',
 	'fundraiserstats-tab-averages' => 'មធ្យម (USD)',
 	'fundraiserstats-tab-maximums' => 'អតិបរមា (USD)',
+	'fundraiserstats-show-years' => 'បង្ហាញឆ្នាំដូចតទៅនេះ៖',
+	'fundraiserstats-time-zone' => 'ល្វែង​ម៉ោង​៖',
+	'fundraiserstats-utc' => '(ពី UTC)',
 );
 
 /** Kannada (ಕನ್ನಡ)
