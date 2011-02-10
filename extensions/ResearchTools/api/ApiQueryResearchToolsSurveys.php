@@ -87,6 +87,6 @@ class ApiQueryResearchToolsSurveys extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryResearchToolsSurveys.php 81180 2011-01-29 01:27:32Z tparscal $';
+		return __CLASS__ . ': $Id$';
 	}
 }

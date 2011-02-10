@@ -174,6 +174,6 @@ class ApiResearchToolsSurveyResponse extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiResearchToolsSurvey.php 81354 2011-02-01 23:26:48Z tparscal $';
+		return __CLASS__ . ': $Id$';
 	}
 }
