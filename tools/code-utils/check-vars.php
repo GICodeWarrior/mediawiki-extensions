@@ -13,7 +13,7 @@ if( ! $IP = getenv( 'MW_INSTALL_PATH' ) ) {
 require_once( "$IP/includes/Defines.php" ); # Faster than parsing
 require_once( "$IP/includes/AutoLoader.php" );
 $wgAutoloadClasses = &$wgAutoloadLocalClasses;
-require_once( "$IP/tests/TestsAutoLoader.php" );
+include_once( "$IP/tests/TestsAutoLoader.php" );
 
 $mwDeprecatedFunctions = false;
 @include( dirname( __FILE__ ) . "/deprecated.functions" );
@@ -201,7 +201,7 @@ class CheckVars {
 	function saveDeprecatedList( $filename ) {
 		$data = "<?php\n\$mwDeprecatedFunctions = array(\n";
 		foreach( $this->mDeprecatedFunctionList as $depre => $classes ) {
-			$data .= "\t'$depre' => array( " . implode( ", ", $classes ) . " ),\n";
+			$data .= "\t'$depre' => array( '" . implode( "', '", $classes ) . "' ),\n";
 		}
 		$data .= "\n);\n\n";
 		file_put_contents( $filename, $data );
@@ -217,7 +217,7 @@ class CheckVars {
 		global $mwParentClasses;
 		$data = "<?php\n\$mwParentClasses = array(\n";
 		foreach( $mwParentClasses as $class => $parent ) {
-			$data .= "\t'$class' => '$parent' ),\n";
+			$data .= "\t'$class' => '$parent' ,\n";
 		}
 		$data .= "\n);\n\n";
 		file_put_contents( $filename, $data );
@@ -348,6 +348,7 @@ class CheckVars {
 						$this->checkClassName( $token );
 						$this->mParent = $token[1];
 						if ( $this->getGenerateParentList() ) {
+							global $mwParentClasses;
 							$mwParentClasses[ $this->mClass ] = $this->mParent;
 						}
 					}
@@ -371,6 +372,8 @@ class CheckVars {
 						$this->mStatus = self::IN_FUNCTION;
 						$this->mBraces = 0;
 						$this->mInSwitch = 0;
+						$this->mInProfilingFunction = false;
+						$this->mAfterProfileOut = 0;
 						$this->mFunctionGlobals = array();
 						$currentToken[0] = self::FUNCTION_DEFINITION;
 						$this->mKnownFunctions[] = $this->mClass ? $this->mClass . "::" . $this->mFunction : $this->mFunction;
@@ -409,8 +412,21 @@ class CheckVars {
 
 						$this->purgeGlobals();
 						if ( ! $this->mBraces ) {
+							if ( $this->mInProfilingFunction && $this->mAfterProfileOut & 1 ) {
+								$this->warning( "Reached end of $this->mClass::$this->mFunction with last statement not being wfProfileOut" );
+							}
+								
 							$this->mStatus = self::WAITING_FUNCTION;
 							$this->mFunctionQualifiers = array();
+						}
+					} elseif ( $token == ';' && $this->mInProfilingFunction ) {
+						// Check that there's just a return after wfProfileOut.
+						if ( $this->mAfterProfileOut == 1 ) {
+							$this->mAfterProfileOut = 2;
+						} elseif ( $this->mAfterProfileOut == 2 ) {
+							// Set to 3 in order to bail out at the return.
+							// This way we don't complay about missing return in internal wfProfile sections.
+							$this->mAfterProfileOut = 3;
 						}
 					} elseif ( is_array ( $token ) ) {
 						if ( $token[0] == T_GLOBAL ) {
@@ -443,6 +459,12 @@ class CheckVars {
 									$this->warning( "{$token[1]} is used as local variable in line $token[2], function {$this->mFunction}" );
 								}
 							}
+						} elseif ( $token[0] == T_RETURN && $this->mInProfilingFunction ) {
+							if ( $this->mAfterProfileOut == 2 ) {
+								$this->mAfterProfileOut = 0;
+							} else {
+								$this->warning( "$token[1] in line $token[2] is not preceded by wfProfileOut" );
+							}
 						} elseif ( $token[0] == T_FUNCTION ) {
 							$this->warning( "Uh? Function inside function? A lamda function?" );
 							$this->error( $token );
@@ -472,7 +494,7 @@ class CheckVars {
 
 					if ( self::isMeaningfulToken( $token ) && ( $lastMeaningfulToken[0] == T_THROW ) ) {
 						if ( $token[0] == T_VARIABLE ) {
-							// Probbly rethrowing from a catch, skip
+							// Probably rethrowing from a catch, skip
 						} elseif ( $token[0] == T_NEW ) {
 							// Correct, a new class instance
 							// TODO: Verify it inherits from Exception
@@ -501,6 +523,19 @@ class CheckVars {
 							$lastMeaningfulToken[0] = self::FUNCTION_NAME;
 							$this->checkDeprecation( $lastMeaningfulToken );
 							$this->checkFunctionName( $lastMeaningfulToken );
+							if ( $lastMeaningfulToken[1] == 'wfProfileIn' ) {
+								$this->mInProfilingFunction = true;
+								$this->mAfterProfileOut = 0;
+							} elseif ( $lastMeaningfulToken[1] == 'wfProfileOut' ) {
+								global $mwParentClasses;//echo "wfProfileOut $this->mClass " . ( isset( $mwParentClasses[ $this->mClass ] ) ? $mwParentClasses[ $this->mClass ] : "" ). "\n";
+								if ( ( isset( $mwParentClasses[ $this->mClass ] ) && $mwParentClasses[ $this->mClass ] == 'ImageHandler') ||
+									( $this->mClass == 'Hooks' && $this->mFunction == 'run' ) ) {
+									// Do not treat as profiling any more. ImageHandler sons have profile sections just for their wfShellExec(). wfRunHooks profiles each hook.
+									$this->mInProfilingFunction = false;
+								} else {
+									$this->mAfterProfileOut = 1;
+								}
+							}
 						} else if ( $lastMeaningfulToken[0] == self::CLASS_MEMBER ) {
 							$this->checkDeprecation( $lastMeaningfulToken );
 						}
@@ -701,7 +736,7 @@ class CheckVars {
 					if ( !isset( $mwParentClasses[ $class ] ) ) {
 						return;
 					}
-					$class = $parentClasses[ $class ];
+					$class = $mwParentClasses[ $class ];
 				} while( true );
 			} else if ( isset( $token['base'] ) ) { # Avoid false positives for local functions, see maintenance/rebuildInterwiki.inc
 				$this->warning( "Non deprecated function $this->mFunction may be calling deprecated function " .
