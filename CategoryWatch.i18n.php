@@ -446,6 +446,7 @@ $messages['ja'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
@@ -454,6 +455,7 @@ $messages['km'] = array(
 	'categorywatch-catmoveout' => '$1 បានផ្លាស់ប្តូរ​ទីតាំងពី $2 ទៅកាន់ $3',
 	'categorywatch-catadd' => '$1 ត្រូវបាន​បន្ថែមទៅក្នុង​ $2',
 	'categorywatch-catsub' => '$1 ត្រូវ​បាន​ដក​ចេញ​ពី​ $2',
+	'categorywatch-autocat' => 'ត្រូវបានតាមដានដោយស្វ័យប្រវត្តិដោយ $1',
 );
 
 /** Korean (한국어)
