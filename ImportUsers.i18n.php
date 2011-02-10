@@ -1154,7 +1154,9 @@ $messages['ksh'] = array(
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'importusers-log-summary' => 'Kurte',
 	'importusers-log-summary-all' => 'Hemû',
+	'importusers-password' => 'şîfre',
 );
 
 /** Latin (Latina)
