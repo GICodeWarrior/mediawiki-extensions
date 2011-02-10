@@ -328,6 +328,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -339,7 +340,7 @@ $messages['he'] = array(
 	'lua_error_internal' => 'שגיאה פנימית',
 	'lua_overflow_recursion' => 'מגבלת הרקורסיה הושגה',
 	'lua_overflow_loc' => 'מגבלת מספר שורות הקוד המירבי הושגה',
-	'lua_overflow_time' => 'זמן הריצה המירבי הושג',
+	'lua_overflow_time' => 'זמן הריצה המרבי הושג',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
