@@ -1282,10 +1282,14 @@ $messages['km'] = array(
 	'changeauthor-changeauthors-single' => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
 	'changeauthor-invalid-username' => 'ឈ្មោះ​អ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព។',
 	'changeauthor-nosuchuser' => 'មិនមានអ្នកប្រើប្រាស់ឈ្មោះ "$1" ទេ។',
+	'changeauthor-revview' => 'កំណែ #$1 របស់ $2',
 	'changeauthor-nosuchtitle' => 'គ្មានទំព័រ​ដែលមាន​ឈ្មោះ "$1" ទេ។',
 	'changeauthor-weirderror' => 'បញ្ហា​ដ៏ចម្លែកមួយ​បានកើតឡើង។ សូម​ព្យាយាម​ស្នើសុំ​ម្ដងទៀត។ បើសិនជា​នៅតែមាន​បញ្ហា នោះមូលដ្ឋានទិន្នន័យ​ប្រហែលជាខូចហើយ។',
+	'changeauthor-invalidform' => 'សូមប្រើប្រាស់សំនុំបែបបទ​ដែលផ្ដល់ដោយ[[Special:ChangeAuthor|ទំព័រពិសេស]] ជាជាងសំនុំបែបបទបង្កើតដោយខ្លួនអ្នក។',
 	'changeauthor-success' => 'ការ​ស្នើសុំរបស់​អ្នក​បានឆ្លងកាត់​ដោយជោគជ័យ។',
+	'changeauthor-logentry' => 'បានប្ដូរអ្នកនិពន្ធរបស់ $2 របស់ $1 ពី $3 ទៅជា $4 ហើយ',
 	'changeauthor-logpagename' => 'កំណត់ហេតុនៃការផ្លាស់ប្តូរអ្នកនិពន្ធ',
+	'right-changeauthor' => 'ផ្លាស់ប្ដូរអ្នកនិពន្ធរបស់កំណែមួយ',
 );
 
 /** Kannada (ಕನ್ನಡ)
