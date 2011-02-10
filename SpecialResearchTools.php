@@ -22,7 +22,7 @@ class SpecialResearchTools extends SpecialPage {
 	public function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest;
 
-		$wgOut->addModules( 'ext.researchTools' );
+		$wgOut->addModules( array( 'ext.researchTools' ) );
 
 		$this->setHeaders();
 
