@@ -98,16 +98,6 @@ def extract_meta_information(fh):
     return namespaces, xml_namespace
 
 
-def read_unicode_text(fh):
-    data = []
-    try:
-        for line in fh:
-            line = line.strip()
-            data.append(line)
-    except UnicodeDecodeError, e:
-        print e
-
-    return data
 
 def read_input(fh):
     buffer = cStringIO.StringIO()

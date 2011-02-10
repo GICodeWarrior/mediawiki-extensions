@@ -30,7 +30,7 @@ settings = configuration.Settings()
 
 from utils import file_utils
 from utils import messages
-import wikitree.parser
+#import wikitree.parser
 
 def quick_sort(obs):
     '''
@@ -124,7 +124,7 @@ def mergesort_feeder(tasks, source, target):
                                              settings.encoding)
             #print fh
             #data = fh.readlines()
-            data = wikitree.parser.read_unicode_text(fh)
+            data = file_utils.read_unicode_text(fh)
             fh.close()
             data = [d.strip() for d in data]
             data = [d.split('\t') for d in data]

@@ -36,7 +36,7 @@ def store_articles(project, language_code):
     location = os.path.join(settings.input_location, language_code, project)
     fh = file_utils.create_txt_filehandle(location, 'articles.csv', 'r', settings.encoding)
     headers = ['id', 'title']
-    data = fh.readlines()
+    data = file_utils.read_unicode_text(fh)
     fh.close()
 
     dbname = '%s%s' % (language_code, project)
@@ -45,9 +45,12 @@ def store_articles(project, language_code):
     collection = mongo[collection]
 
     articles = {}
-    for d in data:
-      for header in headers:
-          articles[header] = d
+    for x, d in enumerate(data):
+        d = d.split('\t')
+        x = str(x)
+        articles[x] = {}
+        for k, v in zip(headers, d):
+            articles[x][k] = v
 
     collection.insert(articles)
 
@@ -128,3 +131,7 @@ def launcher(source, dbname, collection):
     tasks.join()
 
 
+def debug():
+    store_articles('wiki', 'cs')
+if __name__ == '__main__':
+    debug()

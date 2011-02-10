@@ -133,7 +133,7 @@ def determine_file_mode(extension):
         return 'wb'
 
 
-def write_list_to_csv(data, fh, recursive=False, newline=True):
+def write_list_to_csv(data, fh, recursive=False, newline=True, format='long'):
     '''
     @data is a list which can contain other lists that will be written as a
     single line to a textfile
@@ -158,7 +158,7 @@ def write_list_to_csv(data, fh, recursive=False, newline=True):
             if len(d) == len(data[x]):
                 fh.write('\n')
         elif isinstance(d, dict):
-            tab = write_dict_to_csv(d, fh, d.keys(), write_key=False, format=format)
+            tab = write_dict_to_csv(d, fh, d.keys(), write_key=True, format=format)
         else:
             fh.write('%s' % d)
             tab = True
@@ -182,8 +182,6 @@ def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
                     fh.write('%s\t%s\n' % (key, d))
             elif isinstance(data[key], dict):
                 write_dict_to_csv(data[key], fh, data[key].keys(), write_key=False, format=format)
-#                for d in data[key]:
-#                    fh.write('%s\t%s\t%s\n' % (key, d, data[key][d]))
             else:
                 fh.write('%s\n' % (data[key]))
     elif format == 'wide':
@@ -191,11 +189,9 @@ def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
             if write_key:
                 fh.write('%s\t' % key)
             if isinstance(data[key], list):
-            #if type(data[key]) == type([]):
                 for d in data[key]:
                     fh.write('%s\t')
             elif isinstance(data[key], list):
-            #elif type(data[key]) == type({}):
                 write_dict_to_csv(data[key], fh, data[key].keys(), write_key=False, format=format)
             else:
                 fh.write('%s\t' % (data[key]))

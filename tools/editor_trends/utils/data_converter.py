@@ -37,91 +37,97 @@ def convert_seconds_to_date(secs):
 
 def convert_dataset_to_lists(ds, caller):
     assert ds.format == 'long' or ds.format == 'wide', 'Format should either be long or wide.'
-    data, all_keys = [], []
+    data = []
     for var in ds.variables:
         if caller == 'django':
             var = ds.variables[var]
         else:
             var = getattr(ds, var)
 
-        for date in var['obs'].keys():
-            datum = convert_seconds_to_date(float(date))
-            if ds.format == 'long':
+        if ds.format == 'long':
+            for obs in var.obs.values():
                 o = []
-            else:
-                o = {}
-                o['date'] = datum
-
-            for obs in var['obs'][date]['data']:
-                if ds.format == 'long':
-                    if isinstance(var['obs'][date]['data'], dict):
-                        #for subdata in var['obs'][date]['data']:
-                        for k, v in var['obs'][date]['data'][obs]['data'].iteritems():
-                            o.append([datum, obs, k, v])
-                    else:
-                        o.append([datum, obs, var['obs'][date]['data'][obs]])
-                    data.extend(o)
-                    o = []
-                else:
-                    o[obs] = var['obs'][date]['data'][obs]
-            if ds.format == 'wide':
+                o.append(obs.get_date_range())
+                for prop in obs.props:
+                    o.append(getattr(obs, prop))
+                o.append(obs.data)
                 data.append(o)
-    if ds.format == 'wide':
-        #Make sure that each variable / observation combination exists.
-        all_keys = get_all_keys(data)
-        data = make_data_rectangular(data, all_keys)
-        data = sort(data, all_keys)
-    return data, all_keys
+        else:
+            '''
+            This only works for observations with one variable and time_unit==year
+            '''
+            props = get_all_props(var)
+            for year in xrange(var.min_year, var.max_year):
+                for prop in props:
+                    yaxis = get_all_keys(var, prop)
+                    o = [0 for y in yaxis]
+                    for x, y in enumerate(yaxis):
+                        for obs in var.obs.values():
+                            if obs.t1.year == year and getattr(obs, prop) == y:
+                                o[x] += obs.data
+                    o = [year] + o
+                    data.append(o)
+    return data
 
 
-def add_headers(ds, all_keys):
+def add_headers(ds):
     assert ds.format == 'long' or ds.format == 'wide', 'Format should either be long or wide.'
     headers = []
     if ds.format == 'long':
         headers.append('date')
     for var in ds:
         if ds.format == 'long':
-            headers.extend([var.time_unit, var.name])
+            headers.extend([var.name])
         else:
-            for key in all_keys:
-                header = '%s_%s' % (key, var.name)
-                headers.append(header)
+            props = get_all_props(var)
+            for prop in props:
+                all_keys = get_all_keys(var, prop)
+                for key in all_keys:
+                    header = '%s_%s' % (key, var.name)
+                    headers.append(header)
     return headers
 
 
-def make_data_rectangular(data, all_keys):
-    for i, d in enumerate(data):
-        for key in all_keys:
-            if key not in d:
-                d[key] = 0
-            data[i] = d
-    return data
+#def make_data_rectangular(data, all_keys):
+#    for i, d in enumerate(data):
+#        for key in all_keys:
+#            if key not in d:
+#                d[key] = 0
+#            data[i] = d
+#    return data
 
 
-def get_all_keys(data):
+def get_all_props(var):
     all_keys = []
-    for d in data:
-        for key in d:
-            if key not in all_keys:
-                all_keys.append(key)
-    all_keys.sort()
-    all_keys.insert(0, all_keys[-1])
-    del all_keys[-1]
+    for obs in var.obs.values():
+        for prop in obs.props:
+            if prop not in all_keys:
+                all_keys.append(prop)
     return all_keys
 
 
-def sort(data, all_keys):
-    dates = [date['date'] for date in data]
-    dates.sort()
-    cube = []
-    for date in dates:
-        for i, d in enumerate(data):
-            if d['date'] == date:
-                raw_data = d
-                del data[i]
-                break
-        obs = []
-        for key in all_keys:
-            obs.append(raw_data[key])
-        cube.append(obs)
-    return cube
+def get_all_keys(var, prop):
+    all_keys = []
+    for obs in var.obs.values():
+        v = getattr(obs, prop)
+        if v not in all_keys:
+            all_keys.append(v)
+    all_keys.sort()
+    return all_keys
+
+
+#def sort(data, all_keys):
+#    dates = [date['date'] for date in data]
+#    dates.sort()
+#    cube = []
+#    for date in dates:
+#        for i, d in enumerate(data):
+#            if d['date'] == date:
+#                raw_data = d
+#                del data[i]
+#                break
+#        obs = []
+#        for key in all_keys:
+#            obs.append(raw_data[key])
+#        cube.append(obs)
+#    return cube
