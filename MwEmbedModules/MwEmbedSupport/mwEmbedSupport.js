@@ -19,6 +19,7 @@
  * 
  * @dependencies  
  */
+
 ( function( mw, $ ) {
 
 	/**
