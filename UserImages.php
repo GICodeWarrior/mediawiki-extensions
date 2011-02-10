@@ -50,9 +50,10 @@ function efUserImages() {
  * @param $text Text inside <userimages> tags
  * @param $args Tag arguments
  * @param $parser Parent parser
+ * @param $frame PPFrame
  * @return string
  */
-function efUserImagesRender( $text, $args, &$parser ) {
+function efUserImagesRender( $text, $args, $parser, $frame ) {
 	global $wgUserImagesNoCache;
 	if( $wgUserImagesNoCache )
 		$parser->disableCache();
