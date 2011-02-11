@@ -3957,6 +3957,16 @@ Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odde
 	'deletequeue-case-needs-review' => 'Hee dä Fall moß [[$1|nohjeloort wääde]].',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'deletequeue-action-queued' => 'Jêbirin',
+	'deletequeue-review-newreason' => 'Sedema nû:',
+	'deletequeue-list-header-reason' => 'Sdema jêbirinê',
+	'deletequeue-case-reason' => 'Sedem:',
+);
+
 /** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
