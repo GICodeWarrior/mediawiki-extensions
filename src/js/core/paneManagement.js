@@ -186,10 +186,12 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                             var composedContent = new String(wbPublishDisplayPane.getWikiTextareaElement().val()); 
                             var summeryContent = new String(wbPublishDisplayPane.getWikiSummeryFieldElement().val()); 
                             
-                            //insert the snippet to the summery field'.
-                            summeryContent = wbGlobalSettings.snippet + " " + summeryContent;
-                            // update the summery field content with the snippet.
-                            wbPublishDisplayPane.getWikiSummeryFieldElement().val(summeryContent);
+                            if(summeryContent.length > 0 && !(summeryContent.indexOf(wbGlobalSettings.snippet) > -1) ){
+                                //insert the snippet to the summery field'.
+                                summeryContent = wbGlobalSettings.snippet + " " + summeryContent;
+                                // update the summery field content with the snippet.
+                                wbPublishDisplayPane.getWikiSummeryFieldElement().val(summeryContent);
+                            }
 
                             // call the method to check and insert the interwiki link
                             composedContent = wbPublishDisplayPane.insertInterWikiLink(composedContent);
