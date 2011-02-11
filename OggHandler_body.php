@@ -346,7 +346,7 @@ class OggHandler extends MediaHandler {
 		foreach ( $metadata['streams'] as $stream ) {
 			$streamTypes[] = $stream['type'];
 		}
-		return $streamTypes;
+		return array_unique( $streamTypes );
 	}
 
 	function getShortDesc( $file ) {
