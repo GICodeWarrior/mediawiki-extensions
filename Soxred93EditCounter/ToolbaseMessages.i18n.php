@@ -379,13 +379,16 @@ $messages['gl'] = array(
 	'toolbase-navigation' => 'Navegación',
 	'toolbase-navigation-homepage' => 'Inicio',
 	'toolbase-navigation-user_id' => 'Atopar o ID de usuario',
+	'toolbase-navigation-autoedits' => 'Contador de edicións automático',
 	'toolbase-userid-submit' => 'Obter o ID de usuario',
 	'toolbase-userid-title' => 'Atopar o ID de usuario',
 	'toolbase-userid-result' => 'O ID de usuario de <b>$1</b> en <a href="$3"><b>$3</b></a> é <b>$2</b>.',
+	'toolbase-autoedits-submit' => 'Calcular',
 	'toolbase-main-title' => 'Benvido!',
 	'toolbase-main-404' => 'Non se atopou o ficheiro',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '"$1" non é un usuario válido',
+	'toolbase-error-nowiki' => '$1.$2.org non é un wiki válido',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
