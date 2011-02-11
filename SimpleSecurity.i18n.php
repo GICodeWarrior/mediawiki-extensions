@@ -454,6 +454,7 @@ $messages['gl'] = array(
 	'security-type-category' => 'categoría',
 	'security-type-namespace' => 'espazo de nomes',
 	'security-restricttogroup' => 'Acceso ao contido restrinxido aos membros de "$1"',
+	'restriction-read' => 'Ler',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -894,6 +895,7 @@ $messages['pl'] = array(
 	'security-type-category' => 'kategoria',
 	'security-type-namespace' => 'przestrzeń nazw',
 	'security-restricttogroup' => 'Dostęp do zawartości ograniczony do członków „$1”',
+	'restriction-read' => 'Czytaj',
 );
 
 /** Piedmontese (Piemontèis)
