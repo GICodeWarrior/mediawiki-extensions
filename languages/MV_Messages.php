@@ -3383,6 +3383,7 @@ $messages['gan-hant'] = array(
  */
 $messages['gl'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de metadatos de vídeo e procura multimedia]',
+	'mvadmin' => 'Funcións de administrador para MetavidWiki',
 	'metavid' => 'Páxina Metavid',
 	'mv_missing_stream' => 'Fluxo perdido: $1',
 	'specialpages-group-mv_group' => 'Páxinas especiais de MetaVidWiki',
@@ -6264,7 +6265,7 @@ $messages['mk'] = array(
 	'mv_warning_wiki' => '<i>Напомена: MetaVid видео-стенограмите [[Help:FAQ#How_accurate_is_the_information.3F|може да содржат неточности]], помогнете ни да изградиме [[Help:Participation#Improving_Archive_Accuracy|поусовршен архив]]</i>',
 	'mv_ogg_low_quality' => 'Мрежно емитување - Ogg Theora 300 кбит/сек',
 	'mv_ogg_high_quality' => 'Висококвалитетно - Ogg Theora 900 Кбит/сек',
-	'mv_flash_low_quality' => 'Мрежно емитување - Флеш-видео',
+	'mv_flash_low_quality' => 'Мрежно емитување — Flash-видео',
 	'mv_archive_org_mp4' => 'Archive.org MP4, содржејќи H.264 емитување',
 	'mv_archive_org_link' => 'Врски до Archive.org MPEG-2 оригинали',
 	'ao_file_64Kb_MPEG4' => 'Archive.org - MPEG-4 64 кбит/сек',
