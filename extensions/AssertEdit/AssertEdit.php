@@ -37,14 +37,14 @@ function efAssertEditHook( $editpage ) {
 	$pass = true;
 
 	if ( $assertName != '' ) {
-		$pass = AssertEdit::callAssert( $assertName, false );
+		$pass = AssertEdit::callAssert( $editpage, $assertName, false );
 	}
 
 	// check for negative assert
 	if ( $pass ) {
 		$assertName = $wgRequest->getVal( 'nassert' );
 		if ( $assertName != '' ) {
-			$pass = AssertEdit::callAssert( $assertName, true );
+			$pass = AssertEdit::callAssert( $editpage, $assertName, true );
 		}
 	}
 
@@ -74,7 +74,7 @@ function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 	$pass = true;
 
 	if ( $assertName != '' ) {
-		$pass = AssertEdit::callAssert( $assertName, false );
+		$pass = AssertEdit::callAssert( $editPage, $assertName, false );
 		if ( !$pass ) {
 			$result['assert'] = $assertName;
 		}
@@ -84,7 +84,7 @@ function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 	if ( $pass ) {
 		$assertName = $wgRequest->getVal( 'nassert' );
 		if ( $assertName != '' ) {
-			$pass = AssertEdit::callAssert( $assertName, true );
+			$pass = AssertEdit::callAssert( $editPage, $assertName, true );
 		}
 		if ( !$pass ) {
 			$result['nassert'] = $assertName;

@@ -7,17 +7,16 @@ class AssertEdit
 	/**
 	 * methods for core assertions
 	 */
-	static function assert_user() {
+	static function assert_user( $editPage ) {
 		global $wgUser;
 		return $wgUser->isLoggedIn();
 	}
-	static function assert_bot() {
+	static function assert_bot( $editPage ) {
 		global $wgUser;
 		return $wgUser->isAllowed( 'bot' );
 	}
-	static function assert_exists() {
-		global $wgTitle;
-		return ( $wgTitle->getArticleID() != 0 );
+	static function assert_exists( $editPage ) {
+		return $editPage->mTitle->exists();
 	}
 
 	/*
@@ -56,12 +55,12 @@ class AssertEdit
 	}
 
 	// call the specified assertion
-	static function callAssert( $assertName, $negate ) {
+	static function callAssert( $editPage, $assertName, $negate ) {
 		if ( isset( self::$msAssert[$assertName] ) ) {
 			if ( is_bool( self::$msAssert[$assertName] ) ) {
 				$pass = self::$msAssert[$assertName];
 			} elseif ( is_callable( self::$msAssert[$assertName] ) ) {
-				$pass = call_user_func( self::$msAssert[$assertName] );
+				$pass = call_user_func( self::$msAssert[$assertName], $editPage );
 			}
 
 			if ( $negate && isset( $pass ) ) {
