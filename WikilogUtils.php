@@ -76,7 +76,7 @@ class WikilogUtils
 		$useParserCache = $wgEnableParserCache &&
 			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
 			$article->exists();
-		$parserCacheClass = "ParserCache";
+		$parserCache = ParserCache::singleton();
 
 		# Parser options.
 		$parserOpt = ParserOptions::newFromUser( $wgUser );
@@ -89,16 +89,13 @@ class WikilogUtils
 			if ( method_exists( $parserOpt, 'addExtraKey' ) ) {
 				$parserOpt->addExtraKey( "WikilogFeed" );
 			} else {
-				$parserCacheClass = "WikilogParserCache";
+				$parserCache = WikilogParserCache::singleton();
 			}
 		} else {
 			$parserOpt->enableLimitReport();
 		}
 
 		if ( $useParserCache ) {
-			# Get the parser cache instance.
-			$parserCache = $parserCacheClass::singleton();
-
 			# Look for the parsed article output in the parser cache.
 			$parserOutput = $parserCache->get( $article, $parserOpt );
 
