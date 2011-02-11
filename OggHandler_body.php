@@ -338,15 +338,15 @@ class OggHandler extends MediaHandler {
 	}
 
 	function getStreamTypes( $file ) {
-		$streamTypes = '';
+		$streamTypes = array();
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
 		foreach ( $metadata['streams'] as $stream ) {
-			$streamTypes[$stream['type']] = true;
+			$streamTypes[] = $stream['type'];
 		}
-		return array_keys( $streamTypes );
+		return $streamTypes;
 	}
 
 	function getShortDesc( $file ) {
