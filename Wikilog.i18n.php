@@ -76,9 +76,9 @@ In order to publish articles and enable other wikilog features, it has to be cre
 
 	# Wikilog article header and footer
 	'wikilog-summary-header' => '',
-	'wikilog-summary-footer' => 'Posted by $7 to [[$1|$2]] on $8 at $9, $10.',
+	'wikilog-summary-footer' => 'Posted by $7 to [[$1|$2]] on $8 at $9 ($15), $10.',
 	'wikilog-summary-header-single' => '',
-	'wikilog-summary-footer-single' => 'Posted by $7 on $8 at $9, $10.',
+	'wikilog-summary-footer-single' => 'Posted by $7 on $8 at $9 ($15), $10.',
 	'wikilog-summary-uncategorized' => 'Uncategorized',
 	'wikilog-summary-categories' => 'Filed under $2',
 	'wikilog-summary-more' => '[[$3|→ continue reading...]]',
@@ -98,7 +98,7 @@ Uncheck this box to keep the article as a draft.',
 	# Comments
 	'wikilog-comment-header' => '',
 	'wikilog-comment-footer' => '— $2 • $5 $6',
-	'wikilog-comment-permalink' => '$1 at $2',
+	'wikilog-comment-permalink' => '$1 at $2 ($3)',
 	'wikilog-comment-note-item' => 'posted to $1',
 	'wikilog-comment-note-edited' => 'last edited on $1 at $2',
 	'wikilog-comment-anonsig' => '$3 (anonymous)',
@@ -255,7 +255,8 @@ Parameters:
 * $7 is a list of authors of the article, each name formated with {{msg-mw|wikilog-author-signature}}
 * $8 is the publication date
 * $9 is the publication time
-* $10 is a link to the comments page, with either {{msg-mw|wikilog-no-comments}} or {{msg-mw|wikilog-has-comments}} as link text",
+* $10 is a link to the comments page, with either {{msg-mw|wikilog-no-comments}} or {{msg-mw|wikilog-has-comments}} as link text
+* $15 is the timezone information (optional)",
 	'wikilog-summary-footer-single' => "Identical to {{msg-mw|wikilog-summary-footer}}, but used when listing articles from a single wikilog, so it is not necessary to say where it was posted to. Parameters:
 * $1 is a URL formatted link to the article's parent wikilog (optional)
 * $2 is the article's parent wikilog name (optional)
@@ -266,7 +267,8 @@ Parameters:
 * $7 is a list of authors of the article, each name formated with {{msg-mw|wikilog-author-signature}}
 * $8 is the publication date
 * $9 is the publication time
-* $10 is a link to the comments page, with either {{msg-mw|wikilog-no-comments}} or {{msg-mw|wikilog-has-comments}} as link text",
+* $10 is a link to the comments page, with either {{msg-mw|wikilog-no-comments}} or {{msg-mw|wikilog-has-comments}} as link text
+* $15 is the timezone information (optional)",
 	'wikilog-summary-categories' => 'Parameters:
 * $1 is the number of categories listed in $2
 * $2 is a list of the categories the article is in',
@@ -291,14 +293,16 @@ Parameters:
 	'wikilog-comment-permalink' => 'A permanent link to the comment.
 Parameters:
 * $1 is the comment date
-* $2 is the comment time',
+* $2 is the comment time
+* $3 is the timezone information (optional)',
 	'wikilog-comment-note-item' => 'The title of the article that the comment was posted to.
 Parameters:
 * $1 is an article title.',
 	'wikilog-comment-note-edited' => 'The last time the comment was edited.
 Parameters:
 * $1 is the last modification date
-* $2 is the last modification time',
+* $2 is the last modification time
+* $3 is the timezone information (optional)',
 	'wikilog-comment-anonsig' => 'Signature used for anonymous users which post comments to articles.
 Parameters:
 * $1 is a link to the commenting user page (unused, it is an IP address)

@@ -399,6 +399,44 @@ class WikilogUtils
 
 		return array( 'date' => $date, 'user' => $user );
 	}
+
+	/**
+	 * Return the given timestamp as a tuple with date, time and timezone
+	 * in the local timezone (if defined). This is meant to be compatible
+	 * with signatures produced by Parser::pstPass2(). It was based on this
+	 * same function.
+	 *
+	 * @param $timestamp Timestamp.
+	 * @return Array(3) containing date, time and timezone.
+	 */
+	public static function getLocalDateTime( $timestamp ) {
+		global $wgContLang, $wgLocaltimezone;
+
+		$ts = wfTimestamp( TS_UNIX, $timestamp );
+
+		if ( isset( $wgLocaltimezone ) ) {
+			$oldtz = date_default_timezone_get();
+			date_default_timezone_set( $wgLocaltimezone );
+		}
+
+		$ts = date( 'YmdHis', $ts );
+		$tz = date( 'T', $ts );
+
+		if ( isset( $oldtz ) ) {
+			date_default_timezone_set( $oldtz );
+		}
+
+		$date = $wgContLang->date( $ts, false, false );
+		$time = $wgContLang->time( $ts, false, false );
+
+		# Check for translation of timezones.
+		$key = 'timezone-' . strtolower( trim( $tz ) );
+		$value = wfMsgForContent( $key );
+		if ( !wfEmptyMsg( $key, $value ) ) $tz = $value;
+
+		return array( $date, $time, $tz );
+	}
+
 }
 
 /**

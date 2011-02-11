@@ -11,6 +11,9 @@ are no longer supported in this release.
 
 === New features ===
 
+* Article and comment timestamps are now displayed in the wiki timezone
+  (as defined by $wgLocaltimezone).
+
 === Bug fixes ===
 
 
