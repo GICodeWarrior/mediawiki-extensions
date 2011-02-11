@@ -56,14 +56,12 @@ $wgCategoryStepper = array();
  */
 function efCategoryStepper( $out, $text ) {
 	// Get various variables needed for this extension.
-	global $wgCategoryStepper, $wgTitle, $wgArticlePath, $wgRequest, $IP,
-		$wgUser, $wgOut;
+	global $wgCategoryStepper, $wgArticlePath, $wgRequest, $IP, $wgUser;
 
 	// Only render on the actual view page; not edit, delete etc.
 	if ( $wgRequest->getBool( 'action' ) ) return true;
 
-	// Load messages into the message cache.
-	wfLoadExtensionMessages( 'CategoryStepper' );
+	$titleObj = $out->getTitle();
 
 	// Open a database connection.
 	$dbr = wfGetDB( DB_SLAVE );
@@ -84,7 +82,7 @@ function efCategoryStepper( $out, $text ) {
 	// Loop through all the categories.
 	foreach ( $wgCategoryStepper as $name => $title ) {
 		// Check if the current page is in this category and if so render the box.
-		if ( $dbr->fetchRow( $dbr->select( "categorylinks", "*", array( "cl_from" => $wgTitle->getArticleID(), "cl_to" => $name ) ) ) ) {
+		if ( $dbr->fetchRow( $dbr->select( "categorylinks", "*", array( "cl_from" => $titleObj->getArticleID(), "cl_to" => $name ) ) ) ) {
 			$prev = false;
 			$nextI = false;
 
@@ -94,7 +92,7 @@ function efCategoryStepper( $out, $text ) {
 				if ( isset( $donext ) ) {
 					$nextI = $row[ 'cl_from' ];
 					break;
-				} elseif ( $row[ 'cl_from' ] == $wgTitle->getArticleID() ) {
+				} elseif ( $row[ 'cl_from' ] == $titleObj->getArticleID() ) {
 					$prevI = $prev;
 					$donext = true;
 				}
@@ -128,7 +126,7 @@ function efCategoryStepper( $out, $text ) {
 					Xml::closeElement( "tr" ) .
 					Xml::openElement( "tr" ) .
 						Xml::tags( "td", array(), $previous ) .
-						Xml::tags( "td", array(), $wgTitle->getText() ) .
+						Xml::tags( "td", array(), $titleObj->getText() ) .
 						Xml::tags( "td", array(), $next ) .
 					Xml::closeElement( "tr" ) .
 				Xml::closeElement( "table" );
@@ -138,7 +136,7 @@ function efCategoryStepper( $out, $text ) {
 	}
 
 	// Add style file to the output headers if it exists.
-	if ( file_exists( "$IP/skins/CategoryStepper.css" ) ) $wgOut->addStyle( 'CategoryStepper.css' );
+	if ( file_exists( "$IP/skins/CategoryStepper.css" ) ) $out->addStyle( 'CategoryStepper.css' );
 
 	// Return true so things don't break.
 	return true;
