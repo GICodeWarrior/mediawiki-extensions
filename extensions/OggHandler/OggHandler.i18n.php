@@ -1774,6 +1774,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author David1010
  * @author Dawid Deutschland
  * @author ITshnik
  * @author Malafaya
@@ -1792,7 +1793,7 @@ $messages['ka'] = array(
 	'ogg-pause' => 'პაუზა',
 	'ogg-stop' => 'შეჩერება',
 	'ogg-play-video' => 'ვიდეოს ჩართვა',
-	'ogg-play-sound' => 'ხმის ტამაში',
+	'ogg-play-sound' => 'ხმის მოსმენა',
 	'ogg-player-videoElement' => 'მშობლიური ბრაუზერის მხარდაჭერა',
 	'ogg-player-oggPlugin' => 'ბრაუზერის მოდული',
 	'ogg-player-thumbnail' => 'მხოლოდ წინასწარი სურათი',

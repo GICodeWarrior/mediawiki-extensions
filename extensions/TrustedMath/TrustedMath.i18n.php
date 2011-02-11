@@ -131,6 +131,17 @@ $messages['nl'] = array(
 	'trustedmath-not-found' => 'Pagina [[:$1]] bestaat niet',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'trustedmath-desc' => "A përmëtt aj'equassion LaTeX antëgrà ant le pàgine, a la midema manera dël visualisator math antern, ma sensa dependense su Ocaml",
+	'trustedmath-permission-error' => "Math pa sigur a l'é disabilità su sta wiki",
+	'trustedmath-path-error' => 'Eror an crean la directory math',
+	'trustedmath-convert-error' => 'Eror an crean la figura math. "$1" a l\'ha artornà <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'La pàgina [[:$1]] a esist pa',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

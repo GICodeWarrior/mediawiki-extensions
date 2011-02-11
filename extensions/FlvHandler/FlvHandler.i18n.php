@@ -245,8 +245,8 @@ $messages['lv'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'flvhandler_desc' => 'Дозволи додавање на Флеш-vидео (.flv) податотеки како стандардни податотеки (на пр. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
-	'flv-long-desc' => 'Флеш-видео, $1 × $2 пиксели, големина на податотеката: $3',
+	'flvhandler_desc' => 'Дозволи додавање на Flash-vидео (.flv) податотеки како стандардни податотеки (на пр. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => 'Flash-видео, $1 × $2 пиксели, големина на податотеката: $3',
 );
 
 /** Dutch (Nederlands)

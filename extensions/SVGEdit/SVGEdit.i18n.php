@@ -289,6 +289,8 @@ $messages['pl'] = array(
 	'svgedit-editor-save-close' => 'Zapisz i zamknij',
 	'svgedit-editor-close' => 'Anuluj',
 	'svgedit-desc' => 'Edycja wewnątrz okna przeglądarki rysunków w formacie SVG z użyciem [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Edytuj rysunek',
+	'svgedit-edit-tab-tooltip' => 'Możesz edytować ten rysunek SVG bezpośrednio w przeglądarce',
 );
 
 /** Piedmontese (Piemontèis)

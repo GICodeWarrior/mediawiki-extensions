@@ -67,6 +67,13 @@ $messages['fr'] = array(
 	'snmpquery-desc' => 'Ajoute les fonctions SNMPget et SNMPwalk et affiche les données dans le wiki',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'snmpquery-desc' => 'Engade as funcións SNMPget e SNMPwalk e permite mostrar os resultados no wiki',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
