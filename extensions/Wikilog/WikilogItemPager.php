@@ -271,6 +271,7 @@ class WikilogSummaryPager
  * - 'published': empty (draft) or "*" (published)
  * - 'date': article publication date
  * - 'time': article publication time
+ * - 'tz': timezone information
  * - 'updatedDate': article last update date
  * - 'updatedTime': article last update time
  * - 'summary': article summary
@@ -313,7 +314,7 @@ class WikilogTemplatePager
 	}
 
 	function formatRow( $row ) {
-		global $wgParser, $wgContLang;
+		global $wgParser;
 
 		# Retrieve article parser output and other data.
 		$item = WikilogItem::newFromRow( $row );
@@ -333,14 +334,12 @@ class WikilogTemplatePager
 		$divclass = 'wl-entry' . ( $item->getIsPublished() ? '' : ' wl-draft' );
 
 		$itemPubdate = $item->getPublishDate();
-		$pubdate = $wgContLang->timeanddate( $itemPubdate, true );
-		$publishedDate = $wgContLang->date( $itemPubdate );
-		$publishedTime = $wgContLang->time( $itemPubdate );
+		list( $publishedDate, $publishedTime, $publishedTz ) =
+				WikilogUtils::getLocalDateTime( $itemPubdate );
 
 		$itemUpdated = $item->getUpdatedDate();
-		$updated = $wgContLang->timeanddate( $itemUpdated, true );
-		$updatedDate = $wgContLang->date( $itemUpdated );
-		$updatedTime = $wgContLang->time( $itemUpdated );
+		list( $updatedDate, $updatedTime, ) =
+				WikilogUtils::getLocalDateTime( $itemUpdated );
 
 		# Template parameters.
 		$vars = array(
@@ -354,6 +353,7 @@ class WikilogTemplatePager
 			'published'     => $item->getIsPublished() ? '*' : '',
 			'date'          => $publishedDate,
 			'time'          => $publishedTime,
+			'tz'            => $publishedTz,
 			'updatedDate'   => $updatedDate,
 			'updatedTime'   => $updatedTime,
 			'summary'       => $wgParser->insertStripItem( $summary ),

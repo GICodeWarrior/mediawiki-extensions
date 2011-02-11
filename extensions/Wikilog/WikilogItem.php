@@ -196,6 +196,8 @@ class WikilogItem
 			}
 		}
 
+		list( $date, $time, $tz ) = WikilogUtils::getLocalDateTime( $this->mPubDate );
+
 		/*
 		 * This is probably the largest amount of parameters to a
 		 * system message in MediaWiki. This is the price of allowing
@@ -209,13 +211,14 @@ class WikilogItem
 			/* $5  */ count( $authors ),
 			/* $6  */ ( count( $authors ) > 0 ? $authors[0] : '' ),
 			/* $7  */ $authorsFmt,
-			/* $8  */ $wgContLang->date( $this->mPubDate ),
-			/* $9  */ $wgContLang->time( $this->mPubDate ),
+			/* $8  */ $date,
+			/* $9  */ $time,
 			/* $10 */ $commentsFmt,
 			/* $11 */ count( $categories ),
 			/* $12 */ $categoriesFmt,
 			/* $13 */ count( $tags ),
-			/* $14 */ $tagsFmt
+			/* $14 */ $tagsFmt,
+			/* $15 */ $tz
 		);
 	}
 
