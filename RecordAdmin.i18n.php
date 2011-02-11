@@ -850,7 +850,7 @@ $messages['gl'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Non existe ningún "$1"',
-	'recordadmin-edit-info' => 'Esta páxina contén os modelos que teñen os seus propios formularios, cos que encher desde este conxunto de lapelas',
+	'recordadmin-edit-info' => 'Esta páxina contén os modelos que teñen os seus propios formularios que pode encher desde este grupo de lapelas.<br />Como alternativa, <a href="$1">empregue a funcionalidade de edición habitual de MediaWiki sen os formularios</a>.',
 	'recordadmin-properties' => 'Propiedades',
 );
 
