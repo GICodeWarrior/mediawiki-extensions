@@ -66,19 +66,19 @@ class HoneyPotCommentSpammer {
 
 	/**
 	 * Determines whether the specified IP address corresponds to a known active comment spammer.
-	 * @param string $ip_addr A IP address string like '87.101.244.10'
+	 * @param $title Title object
 	 * @return boolean True for spammer, false for non-spammer or if get unexpected results.
 	 */
-	public static function isCommentSpammer( $ip_addr = null ) {
+	public static function isCommentSpammer( $title ) {
 		// logged in users are assumed to not be comment spammers.
 		global $wgUser;
 		if( ! $wgUser->isAnon() ) {
 			//wfDebug( __METHOD__ . ": Assuming not spammer as logged in.\n" );
-			return false;
+			#return false;
 		}
 
 		// check whether this is a known comment spammer.
-		if( empty( $ip_addr ) ) $ip_addr = wfGetIp();
+		$ip_addr = wfGetIp();
 
 		$results = self::getDnsResults( $ip_addr );
 
@@ -88,7 +88,7 @@ class HoneyPotCommentSpammer {
 
 		// We record a diagnostic log in here, that will appear in Special:Log
 		// For high-volume or mid-volume sites, this should be commented out.
-		self::addLogEntry( $is_spammer, $params );
+		self::addLogEntry( $title, $is_spammer, $params );
 
 		return $is_spammer;
 	}
@@ -98,11 +98,12 @@ class HoneyPotCommentSpammer {
 	 * @todo Ideally there might a way to add a hook so that an extension could specify how to display its own log
 	 * line (e.g. using the 'log_params' field) in SpecialLog::logLine, but as a close-enough substitute we
 	 * can just put everything into the log_comment field.
+	 * @param $title Title object
 	 * @param boolean $is_spammer
 	 * @param array $params
 	 */
-	private static function addLogEntry( $is_spammer, $params ) {
-		global $wgTitle, $wgCommentSpammerLog;
+	private static function addLogEntry( $title, $is_spammer, $params ) {
+		global $wgCommentSpammerLog;
 
 		$log_action = $is_spammer ? 'denied' : 'allowed';
 
@@ -115,8 +116,8 @@ class HoneyPotCommentSpammer {
 	                'log_action'    => $log_action,
 	                'log_timestamp' => $dbw->timestamp( wfTimestampNow() ),
 	                'log_user'      => User::idFromName( 'MediaWiki default' ),  // recording log as coming from 'MediaWiki default', not sure if this makes sense or not.
-	                'log_namespace' => $wgTitle->getNamespace(),
-	                'log_title'     => $wgTitle->getDBkey(),
+	                'log_namespace' => $title->getNamespace(),
+	                'log_title'     => $title->getDBkey(),
 	                'log_params'    => implode( ', ', $params )
                 );
 		$dbw->insert( 'logging', $data, __METHOD__ );
@@ -162,8 +163,8 @@ class HoneyPotCommentSpammer {
 	 * // @param string $hookError Return value for error about why the edit was rejected, if applicable. (param not used)
 	 * @return boolean True for allowing the edit, false for denying the edit.
 	 */
-	public static function commentSpammerHook( /* $editPage = null, $textbox = '', $section = '', & $hookError = '' */ ) {
-		$spammer = self::isCommentSpammer( );
+	public static function commentSpammerHook( $editPage /*, $textbox = '', $section = '', & $hookError = '' */ ) {
+		$spammer = self::isCommentSpammer( $editPage->mTitle );
 		if( $spammer ) {
 			global $wgOut;
 			$wgOut->addWikiText( wfMsg( 'commentspammer-save-blocked' ) );
