@@ -25,7 +25,7 @@ abstract class CommunityVoiceRatings {
 		);
 		$categories = array();
 		foreach( $result as $row ) {
-			$categories[] = (string)$row['vot_category'];
+			$categories[] = $row->vot_category;
 		}
 		return $categories;
 	}
@@ -41,7 +41,7 @@ abstract class CommunityVoiceRatings {
 		);
 		$titles = array();
 		foreach ( $result as $row ) {
-			$titles[] = (string)$row['vot_title'];
+			$titles[] = $row->vot_title;
 		}
 		return $titles;
 	}
