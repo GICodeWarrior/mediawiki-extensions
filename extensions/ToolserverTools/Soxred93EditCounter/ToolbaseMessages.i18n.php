@@ -564,7 +564,16 @@ $messages['lb'] = array(
 	'toolbase-footer-language' => 'Sprooch wiesselen',
 	'toolbase-footer-translate' => 'Iwwersetzen',
 	'toolbase-navigation' => 'Navigatioun',
+	'toolbase-userid-submit' => 'Benotzer ID ufroen',
+	'toolbase-autoedits-title' => 'Automatesch Rechemaschinn vun den Ännerungen',
+	'toolbase-autoedits-submit' => 'Rechnen',
+	'toolbase-main-title' => 'Wëllkomm!',
 	'toolbase-main-404' => 'Fichier gouf net fonnt',
+	'toolbase-main-404-content' => 'Oups! Et gouf keng Säit fonnt!
+
+Vergewëssert Iech datt Dir déi richteg URL aginn hutt.
+Wann Dir op e Link geklickt hutt, da <a href="$1">mellt de Feeler</a> w.e.g.
+</ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '"$1" ass kee gültege Benotzernumm',
 );

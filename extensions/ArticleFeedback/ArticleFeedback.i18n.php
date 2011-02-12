@@ -1542,7 +1542,10 @@ $messages['lb'] = array(
 	'articlefeedback-form-panel-title' => 'Dës Säit bewäerten',
 	'articlefeedback-form-panel-instructions' => 'Huelt Iech w.e.g. een Ament fir d¨s Säit ze bewäerten.',
 	'articlefeedback-form-panel-clear' => 'Dës Bewäertung ewechhuelen',
+	'articlefeedback-form-panel-expertise' => 'Ech hu Sachkenntnisser zu dësem Thema',
 	'articlefeedback-form-panel-expertise-profession' => 'Et ass en Deel vu mengem Beruff',
+	'articlefeedback-form-panel-expertise-hobby' => 'Et hänkt mat mengen Hobbyen an Interessien zesummen',
+	'articlefeedback-form-panel-expertise-other' => "D'Quell vu mengem Wëssen ass hei net opgezielt",
 	'articlefeedback-form-panel-submit' => 'Feedback iwwerdroen',
 	'articlefeedback-report-switch-label' => 'Bewäertunge vun der Säit weisen',
 	'articlefeedback-report-panel-title' => 'Bewäertunge vun der Säit',
@@ -1570,6 +1573,7 @@ $messages['lb'] = array(
 	'articlefeedback-expert-assessment-level-1-label' => 'Marginal',
 	'articlefeedback-expert-assessment-level-2-label' => 'Kompetent',
 	'articlefeedback-expert-assessment-level-3-label' => 'Expert',
+	'articlefeedback-survey-message-success' => "Merci datt Dir d'Ëmfro ausgefëllt hutt.",
 	'articlefeedback-survey-message-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
 );
