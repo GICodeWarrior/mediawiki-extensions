@@ -1638,8 +1638,19 @@ $messages['hak'] = array(
 
 /** Hawaiian (Hawai`i)
  * @author Kalani
+ * @author Kolonahe
  */
 $messages['haw'] = array(
+	'voctrain_Hello_World' => 'ALOHA WIKI!',
+	'voctrain_Permission_Denied' => 'Pale ʻia ka ʻae',
+	'voctrain_try_again_' => 'hana hou?',
+	'voctrain_Action_unknown' => 'Hana ʻike ʻole',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "ʻAʻole maopopo iaʻu ka hana ʻana me '%action'.",
+	'voctrain_User_added' => 'Ua hoʻohui ʻia ka mea hoʻohana',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Aloha mai, %username, welina mai i ka polokalamu aʻo ʻōlelo omega',
+	'voctrain_continue' => 'holomua',
+	'voctrain_hello_place' => 'aloha %place',
+	'voctrain_bye' => 'A hui hou',
 	'voctrain_Login' => 'ʻEʻe',
 	'voctrain_Log_in' => 'ʻEʻe',
 );
@@ -2306,6 +2317,7 @@ $messages['ksh'] = array(
  */
 $messages['ku-latn'] = array(
 	'voctrain_Hello_World' => 'SILAV WIKI!',
+	'voctrain_User_added' => 'Bikarhêner hate zêdekirin',
 	'voctrain_bye' => 'oxir be',
 	'voctrain_Languages' => 'Zimanan',
 	'voctrain_Questions' => 'Pirsan',
@@ -2315,6 +2327,8 @@ $messages['ku-latn'] = array(
 	'voctrain_list_answers' => 'lîsteya bersivan',
 	'voctrain_Question' => 'Pirs',
 	'voctrain_Answer' => 'Bersiv',
+	'voctrain_one_of' => 'yek ji',
+	'voctrain_list_of_questions_and_answers' => 'lîsteya pirs û bersivan',
 	'voctrain_Answer_s_' => 'Pirs(an)',
 	'voctrain_User_name' => 'Navê bikarhêner',
 	'voctrain_Password' => 'Şîfre',
