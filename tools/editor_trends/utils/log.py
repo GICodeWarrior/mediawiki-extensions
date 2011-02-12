@@ -27,10 +27,10 @@ settings = configuration.Settings()
 
 from database import db
 
-def log_to_mongo(properties, jobtype, task, timer, event='start'):
-    conn = db.init_mongo_db('wikilytics')
+def log_to_mongo(rts, jobtype, task, timer, event='start'):
+    conn = db.init_mongo_db(rts.dbname)
     created = datetime.datetime.now()
-    hash = '%s_%s' % (properties.project, properties.hash)
+    hash = '%s_%s' % (rts.project, rts.hash)
     coll = conn['jobs']
 
     job = coll.find_one({'hash': hash})
@@ -38,8 +38,8 @@ def log_to_mongo(properties, jobtype, task, timer, event='start'):
     if job == None:
         if jobtype == 'dataset':
             _id = coll.save({'hash': hash, 'created': created, 'finished': False,
-                             'language_code': properties.language.code,
-                             'project': properties.project.name,
+                             'language_code': rts.language.code,
+                             'project': rts.project.name,
                              'in_progress': True, 'jobtype': jobtype,
                              'tasks': {}})
 
@@ -47,8 +47,8 @@ def log_to_mongo(properties, jobtype, task, timer, event='start'):
         elif jobtype == 'chart':
             _id = coll.save({'hash': hash, 'created': created,
                              'jobtype': jobtype,
-                             'project': properties.project,
-                             'language_code': properties.language_code,
+                             'project': rts.project,
+                             'language_code': rts.language_code,
                              'tasks': {}})
 
         job = coll.find_one({'_id': _id})

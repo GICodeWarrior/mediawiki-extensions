@@ -22,10 +22,12 @@ import subprocess
 import os
 sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
-import file_utils
+#import configuration
+#settings = configuration.Settings()
+from classes import settings
+settings = settings.Settings()
 from classes import exceptions
+import file_utils
 import timer
 import log
 
@@ -128,6 +130,7 @@ class Compressor(object):
                 self.name = p
                 self.program_installed = path
 
+
 def launch_zip_extractor(location, filename, properties):
     '''
     
@@ -141,6 +144,7 @@ def launch_zip_extractor(location, filename, properties):
     log.log_to_mongo(properties, 'dataset', 'unpack', stopwatch, event='finish')
     return retcode
 
+
 if __name__ == '__main__':
-    c = Compressor('C:\Users\diederik.vanliere\Documents', 'django.zip')
+    c = Compressor('C:\Users\diederik.vanliere\Documents', 'test.zip')
     c.extract()

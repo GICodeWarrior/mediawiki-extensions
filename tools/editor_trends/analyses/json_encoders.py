@@ -17,9 +17,13 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-01-27'
 __version__ = '0.1'
 
+import sys
 import types
-import analyzer
 
+if '..' not in sys.path:
+    sys.path.append('..')
+
+import inventory
 from classes import exceptions
 from utils import data_converter
 
@@ -67,6 +71,7 @@ def init_options():
     options['series']['bars']['align'] = 'center'
     return options
 
+
 def to_bar_json(ds):
     data = {}
 
@@ -94,6 +99,7 @@ def to_bar_json(ds):
     json['options'] = options
     print json
     return json
+
 
 def to_stacked_bar_json(ds):
     '''

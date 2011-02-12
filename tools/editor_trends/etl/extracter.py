@@ -24,10 +24,6 @@ import multiprocessing
 import progressbar
 from Queue import Empty
 
-sys.path.append('..')
-import configuration
-settings = configuration.Settings()
-
 import wikitree.parser
 from bots import detector
 from utils import file_utils
@@ -44,8 +40,8 @@ except ImportError:
 RE_NUMERIC_CHARACTER = re.compile('&#(\d+);')
 
 
-def remove_numeric_character_references(text):
-    return re.sub(RE_NUMERIC_CHARACTER, lenient_deccharref, text).encode(settings.encoding)
+def remove_numeric_character_references(rts, text):
+    return re.sub(RE_NUMERIC_CHARACTER, lenient_deccharref, text).encode(rts.encoding)
 
 
 def lenient_deccharref(m):
@@ -75,9 +71,9 @@ def build_namespaces_locale(namespaces, include=['0']):
     return ns
 
 
-def parse_comments(revisions, function):
+def parse_comments(rts, revisions, function):
     for revision in revisions:
-        comment = revision.find('{%s}comment' % settings.xml_namespace)
+        comment = revision.find('{%s}comment' % rts.xml_namespace)
         if comment != None and comment.text != None:
             comment.text = function(comment.text)
     return revisions
@@ -100,11 +96,6 @@ def parse_article(elem, namespaces):
             return {'id': ns[0], 'name': ns[1]}
         else:
             return False
-
-#    for namespace in namespaces:
-#        if title.startswith(namespace):
-#            return False
-#    return True
 
 
 def validate_hostname(address):
@@ -183,7 +174,7 @@ def extract_contributor_id(contributor, **kwargs):
             return None
 
 
-def output_editor_information(revisions, page, bots):
+def output_editor_information(revisions, page, bots, rts):
     '''
     @elem is an XML element containing 1 revision from a page
     @output is where to store the data,  a filehandle
@@ -237,6 +228,7 @@ def output_editor_information(revisions, page, bots):
             flat.append(f)
     return flat
 
+
 def add_namespace_to_output(output, namespace):
     for x, o in enumerate(output):
         o.append(namespace['id'])
@@ -244,13 +236,13 @@ def add_namespace_to_output(output, namespace):
     return output
 
 
-def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=['0']):
-    bot_ids = detector.retrieve_bots(language_code)
-    location = os.path.join(settings.input_location, language_code, project)
-    output = os.path.join(settings.input_location, language_code, project, 'txt')
+def parse_dumpfile(tasks, rts, filehandles, lock):
+    bot_ids = detector.retrieve_bots(rts.language.code)
+    location = os.path.join(rts.input_location, rts.language.code, rts.project.name)
+    output = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
     widgets = log.init_progressbar_widgets('Extracting data')
     filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
-                settings.encoding) for fh in xrange(settings.max_filehandles)]
+                rts.encoding) for fh in xrange(rts.max_filehandles)]
 
     while True:
         total, processed = 0.0, 0.0
@@ -269,11 +261,11 @@ def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=
         filesize = file_utils.determine_filesize(location, filename)
         print 'Opening %s...' % (os.path.join(location, filename))
         print 'Filesize: %s' % filesize
-        fh1 = file_utils.create_txt_filehandle(location, filename, 'r', settings.encoding)
-        fh2 = file_utils.create_txt_filehandle(location, 'articles.csv', 'a', settings.encoding)
+        fh1 = file_utils.create_txt_filehandle(location, filename, 'r', rts.encoding)
+        fh2 = file_utils.create_txt_filehandle(location, 'articles.csv', 'a', rts.encoding)
         ns, xml_namespace = wikitree.parser.extract_meta_information(fh1)
-        ns = build_namespaces_locale(ns, namespaces)
-        settings.xml_namespace = xml_namespace
+        ns = build_namespaces_locale(ns, rts.namespaces)
+        rts.xml_namespace = xml_namespace
 
         pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
         for page, article_size in wikitree.parser.read_input(fh1):
@@ -281,14 +273,13 @@ def parse_dumpfile(tasks, project, language_code, filehandles, lock, namespaces=
             total += 1
             namespace = parse_article(title, ns)
             if namespace != False:
-                #if verify_article_belongs_namespace(title, ns):
                 article_id = page.find('id').text
                 title = page.find('title').text
                 revisions = page.findall('revision')
-                revisions = parse_comments(revisions, remove_numeric_character_references)
-                output = output_editor_information(revisions, article_id, bot_ids)
+                revisions = parse_comments(rts, revisions, remove_numeric_character_references)
+                output = output_editor_information(revisions, article_id, bot_ids, rts)
                 output = add_namespace_to_output(output, namespace)
-                write_output(output, filehandles, lock)
+                write_output(output, filehandles, lock, rts)
                 file_utils.write_list_to_csv([article_id, title], fh2)
                 processed += 1
             page.clear()
@@ -317,14 +308,14 @@ def group_observations(obs):
     return d
 
 
-def write_output(observations, filehandles, lock):
+def write_output(observations, filehandles, lock, rts):
     observations = group_observations(observations)
     for obs in observations:
         lock.acquire() #lock the write around all edits of an editor for a particular page
         try:
             for i, o in enumerate(observations[obs]):
                 if i == 0:
-                    fh = filehandles[hash(obs)]
+                    fh = filehandles[hash(rts, obs)]
                 file_utils.write_list_to_csv(o, fh)
 
         except Exception, error:
@@ -333,16 +324,16 @@ def write_output(observations, filehandles, lock):
             lock.release()
 
 
-def hash(id):
+def hash(rts, id):
     '''
     A very simple hash function based on modulo. The except clause has been 
     added because there are instances where the username is stored in userid
     tag and hence that's a string and not an integer. 
     '''
     try:
-        return int(id) % settings.max_filehandles
+        return int(id) % rts.max_filehandles
     except ValueError:
-        return sum([ord(i) for i in id]) % settings.max_filehandles
+        return sum([ord(i) for i in id]) % rts.max_filehandles
 
 
 def prepare(output):
@@ -380,7 +371,8 @@ def unzip(properties):
     print tasks.qsize()
     return tasks
 
-def launcher(properties):
+
+def launcher(rts):
     '''
     This is the main entry point for the extact phase of the data processing
     chain. First, it will put a the files that need to be extracted in a queue
@@ -389,10 +381,10 @@ def launcher(properties):
     the variables from the different dump files. 
     '''
     result = True
-    tasks = unzip(properties)
+    tasks = unzip(rts)
 
-    output = os.path.join(settings.input_location, properties.language.code,
-                          properties.project.name, 'txt')
+    output = os.path.join(rts.input_location, rts.language.code,
+                          rts.project.name, 'txt')
     result = prepare(output)
     if not result:
         return result
@@ -404,14 +396,12 @@ def launcher(properties):
     filehandles = []
     consumers = [multiprocessing.Process(target=parse_dumpfile,
                                 args=(tasks,
-                                      properties.project.name,
-                                      properties.language.code,
+                                      rts,
                                       filehandles,
-                                      lock,
-                                      properties.namespaces))
-                                for x in xrange(settings.number_of_processes)]
+                                      lock))
+                                for x in xrange(rts.number_of_processes)]
 
-    for x in xrange(settings.number_of_processes):
+    for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
     for w in consumers:

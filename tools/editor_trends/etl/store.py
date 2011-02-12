@@ -22,27 +22,22 @@ import multiprocessing
 import sys
 import os
 
-sys.path.append('..')
-import configuration
-settings = configuration.Settings()
 from utils import file_utils
 from utils import text_utils
-from utils import messages
 from database import cache
+from utils import messages
 from database import db
 
 
-def store_articles(project, language_code):
-    location = os.path.join(settings.input_location, language_code, project)
-    fh = file_utils.create_txt_filehandle(location, 'articles.csv', 'r', settings.encoding)
+def store_articles(rts):
+    location = os.path.join(rts.input_location, rts.language.code, rts.project.name)
+    fh = file_utils.create_txt_filehandle(location, 'articles.csv', 'r', rts.encoding)
     headers = ['id', 'title']
     data = file_utils.read_unicode_text(fh)
     fh.close()
 
-    dbname = '%s%s' % (language_code, project)
-    collection = '%s_%s' % (dbname, 'articles')
-    mongo = db.init_mongo_db(dbname)
-    collection = mongo[collection]
+    mongo = db.init_mongo_db(rts.dbname)
+    collection = mongo[rts.articles_raw]
 
     articles = {}
     for x, d in enumerate(data):
@@ -55,7 +50,7 @@ def store_articles(project, language_code):
     collection.insert(articles)
 
 
-def store_editors(tasks, dbname, collection, source):
+def store_editors(tasks, rts):
     '''
     This function is called by multiple consumers who each take a sorted file 
     and create a cache object. If the number of edits made by an editor is above
@@ -63,8 +58,8 @@ def store_editors(tasks, dbname, collection, source):
     is discarded.
     The treshold is currently more than 9 edits and is not yet configurable. 
     '''
-    mongo = db.init_mongo_db(dbname)
-    collection = mongo[collection]
+    mongo = db.init_mongo_db(rts.dbname)
+    collection = mongo[rts.editors_raw]
 
     editor_cache = cache.EditorCache(collection)
     prev_contributor = -1
@@ -80,7 +75,7 @@ def store_editors(tasks, dbname, collection, source):
             break
         print '%s files left in the queue.' % messages.show(tasks.qsize)
 
-        fh = file_utils.create_txt_filehandle(source, filename, 'r', settings.encoding)
+        fh = file_utils.create_txt_filehandle(rts.sorted, filename, 'r', rts.encoding)
         for line in file_utils.read_raw_data(fh):
             if len(line) > 1:
                 contributor = line[0]
@@ -89,7 +84,7 @@ def store_editors(tasks, dbname, collection, source):
                     editor_cache.add(prev_contributor, 'NEXT')
                 date = text_utils.convert_timestamp_to_datetime_utc(line[1])
                 article_id = int(line[2])
-                username = line[3].encode(settings.encoding)
+                username = line[3].encode(rts.encoding)
                 ns = int(line[4])
                 value = {'date': date,
                          'article': article_id,
@@ -101,37 +96,41 @@ def store_editors(tasks, dbname, collection, source):
         #print editor_cache.n
 
 
-def launcher(source, dbname, collection):
+def launcher(rts):
     '''
     This is the main entry point and creates a number of workers and launches
     them. 
     '''
-    mongo = db.init_mongo_db(dbname)
-    coll = mongo[collection]
+    #rts.sorted, rts.dbname, rts.collection
+    mongo = db.init_mongo_db(rts.dbname)
+    coll = mongo[rts.editors_raw]
     coll.ensure_index('editor')
     coll.create_index('editor')
 
-    files = file_utils.retrieve_file_list(source, 'csv')
+    files = file_utils.retrieve_file_list(rts.sorted, 'csv')
 
-    print 'Input directory is: %s ' % source
+    print 'Input directory is: %s ' % rts.sorted
     tasks = multiprocessing.JoinableQueue()
     consumers = [multiprocessing.Process(target=store_editors,
-                args=(tasks, dbname, collection, source))
-                for i in xrange(settings.number_of_processes)]
+                args=(tasks, rts))
+                for i in xrange(rts.number_of_processes)]
 
     for filename in files:
         tasks.put(filename)
 
-    for x in xrange(settings.number_of_processes):
+    for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
     for w in consumers:
         w.start()
 
     tasks.join()
+    store_articles(rts)
 
 
 def debug():
     store_articles('wiki', 'cs')
+
+
 if __name__ == '__main__':
     debug()

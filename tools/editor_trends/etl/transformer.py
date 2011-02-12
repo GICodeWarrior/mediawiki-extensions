@@ -23,9 +23,6 @@ from operator import itemgetter
 import datetime
 import sys
 
-sys.path.append('..')
-import configuration
-settings = configuration.Settings()
 from database import db
 from utils import file_utils
 from utils import messages
@@ -101,6 +98,7 @@ class Editor(object):
                           'username': username
                           }, safe=True)
 
+
 def determine_year_range(edits):
     years = [year for year in edits if edits[year] != []]
     first_year = int(min(years))
@@ -117,8 +115,6 @@ def determine_last_edit_by_year(edits, first_year, final_year):
         elif dc[edit.year] < edit:
              dc[edit.year] = edit
     return dc
-
-
 
 
 def determine_edits_by_month(edits, first_year, final_year):
@@ -161,17 +157,17 @@ def sort_edits(edits):
     return sorted(edits, key=itemgetter('date'))
 
 
-def transform_editors_multi_launcher(dbname, collection):
-    ids = db.retrieve_distinct_keys(dbname, collection, 'editor')
-    kwargs = {'definition': 'traditional',
-              'pbar': True,
-              }
+def transform_editors_multi_launcher(rts):
+    ids = db.retrieve_distinct_keys(rts.dbname, rts.editors_raw, 'editor')
+#    kwargs = {'definition': 'traditional',
+#              'pbar': True,
+#              }
     tasks = multiprocessing.JoinableQueue()
-    consumers = [EditorConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
+    consumers = [EditorConsumer(tasks, None) for i in xrange(rts.number_of_processes)]
 
     for id in ids:
-        tasks.put(Editor(dbname, collection, id))
-    for x in xrange(settings.number_of_processes):
+        tasks.put(Editor(rts.dbname, rts.editors_raw, id))
+    for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
     print messages.show(tasks.qsize)
@@ -181,10 +177,10 @@ def transform_editors_multi_launcher(dbname, collection):
     tasks.join()
 
 
-def setup_database(dbname, collection):
-    mongo = db.init_mongo_db(dbname)
-    input_db = mongo[collection]
-    output_db = mongo['%s_dataset' % collection]
+def setup_database(rts):
+    mongo = db.init_mongo_db(rts.dbname)
+    input_db = mongo[rts.editors_raw]
+    output_db = mongo[rts.editors_dataset]
 
     output_db.ensure_index('editor')
     output_db.create_index('editor')
@@ -193,9 +189,9 @@ def setup_database(dbname, collection):
     return input_db, output_db
 
 
-def transform_editors_single_launcher(dbname, collection):
-    ids = db.retrieve_distinct_keys(dbname, collection, 'editor')
-    input_db, output_db = setup_database(dbname, collection)
+def transform_editors_single_launcher(rts):
+    ids = db.retrieve_distinct_keys(rts.dbname, rts.editors_raw, 'editor')
+    input_db, output_db = setup_database(rts)
     for x, id in enumerate(ids):
         print '%s editors to go...' % (len(ids) - x)
         editor = Editor(id, input_db, output_db)

@@ -24,13 +24,9 @@ import os
 import multiprocessing
 from Queue import Empty
 
-sys.path.append('..')
-import configuration
-settings = configuration.Settings()
-
 from utils import file_utils
 from utils import messages
-#import wikitree.parser
+
 
 def quick_sort(obs):
     '''
@@ -79,12 +75,15 @@ def merge(front, back):
 
 
 
-def merge_sorted_files(target, files, iteration):
+def merge_sorted_files(target, files, iteration, rts):
     '''
-    Merges smaller sorted files in one big file, no longer used. 
+    Merges smaller sorted files in one big file, Only used for creating 
+    data competition file.  
     '''
-    fh = file_utils.create_txt_filehandle(target, 'merged_%s.txt' % iteration,
-                                          'w', settings.encoding)
+    fh = file_utils.create_txt_filehandle(target,
+                                          'merged_%s.txt' % iteration,
+                                          'w',
+                                          rts.encoding)
     lines = 0
     for line in heapq.merge(*[readline(filename) for filename in files]):
         file_utils.write_list_to_csv(line, fh)
@@ -94,17 +93,19 @@ def merge_sorted_files(target, files, iteration):
     return fh.name
 
 
-def write_sorted_file(sorted_data, filename, target):
+def write_sorted_file(sorted_data, filename, rts):
     '''
     Writes the sorted file to target
     '''
-    fh = file_utils.create_txt_filehandle(target, filename, 'w',
-                                          settings.encoding)
+    fh = file_utils.create_txt_filehandle(rts.sorted,
+                                          filename,
+                                          'w',
+                                          rts.encoding)
     file_utils.write_list_to_csv(sorted_data, fh)
     fh.close()
 
 
-def mergesort_feeder(tasks, source, target):
+def mergesort_feeder(tasks, rts):
     '''
     The feeder function is called by the launcher and gives it a task to
     complete.
@@ -118,10 +119,10 @@ def mergesort_feeder(tasks, source, target):
                 print tasks.qsize()
                 break
 
-            fh = file_utils.create_txt_filehandle(source,
-                                             filename,
-                                             'r',
-                                             settings.encoding)
+            fh = file_utils.create_txt_filehandle(rts.txt,
+                                                  filename,
+                                                  'r',
+                                                  rts.encoding)
             #print fh
             #data = fh.readlines()
             data = file_utils.read_unicode_text(fh)
@@ -129,7 +130,7 @@ def mergesort_feeder(tasks, source, target):
             data = [d.strip() for d in data]
             data = [d.split('\t') for d in data]
             sorted_data = mergesort(data)
-            write_sorted_file(sorted_data, filename, target)
+            write_sorted_file(sorted_data, filename, rts)
             print filename, messages.show(tasks.qsize)
         except UnicodeDecodeError, e:
             print e
@@ -137,25 +138,26 @@ def mergesort_feeder(tasks, source, target):
             pass
 
 
-def mergesort_launcher(source, target):
-    settings.verify_environment([source, target])
-    files = file_utils.retrieve_file_list(source, 'csv')
-    #print files
-    print source
+def launcher(rts):
+    '''
+    rts is an instance of RunTimeSettings
+    '''
+    files = file_utils.retrieve_file_list(rts.txt, 'csv')
     tasks = multiprocessing.JoinableQueue()
     consumers = [multiprocessing.Process(target=mergesort_feeder,
-                                args=(tasks, source, target))
-                                for x in xrange(settings.number_of_processes)]
+                                args=(tasks, rts))
+                                for x in xrange(rts.number_of_processes)]
     for filename in files:
         tasks.put(filename)
 
-    for x in xrange(settings.number_of_processes):
+    for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
     for w in consumers:
         w.start()
 
     tasks.join()
+
 
 def debug():
     '''

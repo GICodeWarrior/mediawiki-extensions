@@ -21,17 +21,18 @@ __version__ = '0.1'
 import sys
 import os
 import progressbar
-import types
 import datetime
 
-sys.path.append('..')
+if '..' not in sys.path:
+    sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
+from classes import dataset
+from classes import settings
+settings = settings.Settings()
 from database import db
 from utils import timer
 from utils import log
-import dataset
+
 
 
 def generate_chart_data(project, collection, language_code, func, encoder, **kwargs):
@@ -102,54 +103,6 @@ def loop_editors(dbname, project, collection, language_code, func, encoder, **kw
     return ds
 
 
-def available_analyses(caller='manage'):
-    '''
-    Generates a dictionary:
-        key: name of analysis
-        value: function that generates the dataset
-        ignore: a list of functions that should never be called from manage.py,
-        they are not valid entry points. 
-    '''
-    assert caller == 'django' or caller == 'manage'
-    ignore = ['__init__']
-    functions = {}
-
-    fn = os.path.realpath(__file__)
-    pos = fn.rfind(os.sep)
-    loc = fn[:pos]
-    path = os.path.join(loc , 'plugins')
-    plugins = import_libs(path)
-
-    for plugin in plugins:
-        if isinstance(plugin, types.FunctionType) and plugin.func_name not in ignore:
-            functions[plugin.func_name] = plugin
-    if caller == 'manage':
-        return functions
-    elif caller == 'django':
-        django_functions = []
-        for function in functions:
-            fancy_name = function.replace('_', ' ').title()
-            django_functions.append((function, fancy_name))
-
-        return django_functions
-
-
-def import_libs(path):
-    '''
-    Dynamically importing functions from the plugins directory. 
-    '''
-    library_list = []
-    sys.path.append(path)
-    for f in os.listdir(os.path.abspath(path)):
-        module_name, ext = os.path.splitext(f)
-        if ext == '.py':
-            module = __import__(module_name)
-            func = getattr(module, module_name)
-            library_list.append(func)
-
-    return library_list
-
-
 def determine_project_year_range(dbname, collection, var):
     '''
     Determine the first and final year for the observed data
@@ -166,8 +119,8 @@ def determine_project_year_range(dbname, collection, var):
 
 
 if __name__ == '__main__':
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_by_backward_cohort', 'to_bar_json', time_unit='year', cutoff=0, cum_cutoff=50)
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'edit_patterns', 'to_bar_json', time_unit='year', cutoff=5)
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_by_backward_cohort', 'to_bar_json', time_unit='year', cutoff=0, cum_cutoff=50)
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'edit_patterns', 'to_bar_json', time_unit='year', cutoff=5)
     #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', 'to_bar_json', time_unit='year')
     #generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', 'to_bar_json', time_unit='year')
     #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', 'to_bar_json', time_unit='year')

@@ -26,7 +26,7 @@ from argparse import ArgumentParser
 from argparse import RawTextHelpFormatter
 import ConfigParser
 
-import configuration
+#import configuration
 from utils import file_utils
 from utils import ordered_dict
 from utils import log
@@ -40,7 +40,7 @@ from etl import extracter
 from etl import store
 from etl import sort
 from etl import transformer
-from analyses import analyzer
+from analyses import inventory
 
 
 def show_choices(settings, attr):
@@ -50,8 +50,7 @@ def show_choices(settings, attr):
     return choices
 
 
-
-def config_launcher(properties, settings, logger):
+def config_launcher(properties, logger):
     '''
     Config launcher is used to reconfigure editor trends toolkit. 
     '''
@@ -98,20 +97,20 @@ def config_launcher(properties, settings, logger):
 
 
 
-def downloader_launcher(properties, settings, logger):
+def downloader_launcher(properties, logger):
     '''
     This launcher calls the dump downloader to download a Wikimedia dump file.
     '''
     print 'Start downloading'
     stopwatch = timer.Timer()
     log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='start')
-    res = downloader.launcher(properties, settings, logger)
+    res = downloader.launcher(properties, logger)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='finish')
     return res
 
 
-def extract_launcher(properties, settings, logger):
+def extract_launcher(properties, logger):
     '''
     The extract launcher is used to extract the required variables from a dump
     file. If the zip file is a known archive then it will first launch the
@@ -125,34 +124,34 @@ def extract_launcher(properties, settings, logger):
     log.log_to_mongo(properties, 'dataset', 'extract', stopwatch, event='finish')
 
 
-def sort_launcher(properties, settings, logger):
+def sort_launcher(rts, logger):
     '''
     After the extracter has finished then the created output files need to be
     sorted. This function takes care of that. 
     '''
     print 'Start sorting data'
     stopwatch = timer.Timer()
-    log.log_to_mongo(properties, 'dataset', 'sort', stopwatch, event='start')
+    log.log_to_mongo(rts, 'dataset', 'sort', stopwatch, event='start')
 #    write_message_to_log(logger, settings,
 #                         message=None,
 #                         verb=None,
 #                         location=properties.location,
 #                         input=properties.txt,
 #                         output=properties.sorted)
-    sort.mergesort_launcher(properties.txt, properties.sorted)
+    sort.launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(properties, 'dataset', 'sort', stopwatch, event='finish')
+    log.log_to_mongo(rts, 'dataset', 'sort', stopwatch, event='finish')
 
 
-def store_launcher(properties, settings, logger):
+def store_launcher(rts, logger):
     '''
     The data is ready to be stored once the sorted function has completed. This
     function starts storing data in MongoDB.
     '''
     print 'Start storing data in MongoDB'
     stopwatch = timer.Timer()
-    log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='start')
-    db.cleanup_database(properties.dbname, logger)
+    log.log_to_mongo(rts, 'dataset', 'store', stopwatch, event='start')
+    db.cleanup_database(rts.dbname, logger)
 #    write_message_to_log(logger, settings,
 #                         message=None,
 #                         verb='Storing',
@@ -163,36 +162,34 @@ def store_launcher(properties, settings, logger):
 #                         collection=properties.collection)
 #    for key in properties:
 #        print key, getattr(properties, key)
-    store.launcher(properties.sorted, properties.dbname, properties.collection)
-
+    store.launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(properties, 'dataset', 'store', stopwatch, event='finish')
+    log.log_to_mongo(rts, 'dataset', 'store', stopwatch, event='finish')
 
 
-def transformer_launcher(properties, settings, logger):
+def transformer_launcher(rts, logger):
     print 'Start transforming dataset'
     stopwatch = timer.Timer()
-    log.log_to_mongo(properties, 'dataset', 'transform', stopwatch, event='start')
-    db.cleanup_database(properties.dbname, logger, 'dataset')
+    log.log_to_mongo(rts, 'dataset', 'transform', stopwatch, event='start')
+    db.cleanup_database(rts.dbname, logger, 'dataset')
 #    write_message_to_log(logger, settings,
 #                         message=None,
 #                         verb='Transforming',
 #                         project=properties.project,
 #                         collection=properties.collection)
-    transformer.transform_editors_single_launcher(properties.dbname,
-                                                  properties.collection)
+    transformer.transform_editors_single_launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(properties, 'dataset', 'transform', stopwatch,
+    log.log_to_mongo(rts, 'dataset', 'transform', stopwatch,
                      event='finish')
 
 
-def dataset_launcher(properties, settings, logger):
+def dataset_launcher(rts, logger):
     print 'Start exporting dataset'
     stopwatch = timer.Timer()
-    log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='start')
+    log.log_to_mongo(rts, 'dataset', 'export', stopwatch, event='start')
 
-    collection = '%s_%s' % (properties.collection, 'dataset')
-    for target in properties.targets:
+    #collection = '%s_%s' % (rts.collection, 'dataset')
+    for target in rts.targets:
 #        write_message_to_log(logger, settings,
 #                             message=None,
 #                             verb='Exporting',
@@ -200,16 +197,16 @@ def dataset_launcher(properties, settings, logger):
 #                             dbname=properties.full_project,
 #                             collection=properties.collection)
 
-        analyzer.generate_chart_data(properties.dbname,
-                                     collection,
-                                     properties.language.code,
+        analyzer.generate_chart_data(rts.dbname,
+                                     rts.editors_dataset,
+                                     rts.language.code,
                                      target,
-                                     **properties.keywords)
+                                     **rts.keywords)
     stopwatch.elapsed()
     log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='finish')
 
 
-def cleanup(properties, settings, logger):
+def cleanup(rts, logger):
     directories = properties.directories[1:]
     for directory in directories:
         write_message_to_log(logger, setting,
@@ -232,7 +229,7 @@ def cleanup(properties, settings, logger):
     file_utils.delete_file(settings.binary_location, filename)
 
 
-def all_launcher(properties, settings, logger):
+def all_launcher(properties, logger):
     print 'The entire data processing chain has been called, this will take a \
     couple of hours (at least) to complete.'
     stopwatch = timer.Timer()
@@ -258,7 +255,7 @@ def all_launcher(properties, settings, logger):
     for function, callname in functions.iteritems():
         if callname not in properties.ignore:
             print 'Starting %s' % function.func_name
-            res = function(properties, settings, logger)
+            res = function(properties, logger)
             if res == False:
                 sys.exit(False)
             elif res == None:
@@ -284,11 +281,11 @@ def init_args_parser():
     '''
     Entry point for parsing command line and launching the needed function(s).
     '''
-    settings = configuration.Settings()
+    #settings = configuration.Settings()
     language = languages.init()
     project = projects.init()
     pjc = projects.ProjectContainer()
-    rts = runtime_settings.RunTimeSettings(project, language, settings)
+    rts = runtime_settings.RunTimeSettings(project, language)
 
     #Init Argument Parser
     parser = ArgumentParser(prog='manage', formatter_class=RawTextHelpFormatter)
@@ -301,7 +298,7 @@ def init_args_parser():
         action='store',
         help='Enter the first letter of a language to see which languages are \
         available.')
-    parser_languages.set_defaults(func=language.show_languages, args=[settings, project])
+    parser_languages.set_defaults(func=language.show_languages, args=[project])
 
     #CONFIG 
     parser_config = subparsers.add_parser('config',
@@ -350,7 +347,7 @@ def init_args_parser():
     parser_dataset.add_argument('-c', '--charts',
                                 action='store',
                                 help='Should be a valid function name that matches one of the plugin functions',
-                                default=analyzer.available_analyses()['new_editor_count'])
+                                default=inventory.available_analyses()['new_editor_count'])
 
     parser_dataset.add_argument('-k', '--keywords',
                                 action='store',
@@ -399,12 +396,13 @@ def init_args_parser():
     parser.add_argument('-c', '--collection',
         action='store',
         help='Name of MongoDB collection',
-        default='editors')
+        default='editors_raw')
 
     parser.add_argument('-o', '--location',
         action='store',
         help='Indicate where you want to store the downloaded file.',
-        default=settings.input_location)
+        #default=settings.input_location)
+        default=rts.input_location)
 
     parser.add_argument('-ns', '--namespace',
         action='store',
@@ -413,41 +411,41 @@ def init_args_parser():
 
     parser.add_argument('-f', '--file',
         action='store',
-        choices=settings.file_choices,
+        choices=rts.file_choices,
         help='Indicate which dump you want to download. Valid choices are:\n \
-            %s' % ''.join([f + ',\n' for f in settings.file_choices]),
+            %s' % ''.join([f + ',\n' for f in rts.file_choices]),
         default='stub-meta-history.xml.gz')
 
 
-    return project, language, parser, settings
+    return project, language, parser
 
 def main():
-    project, language, parser, settings = init_args_parser()
+    project, language, parser, = init_args_parser()
     args = parser.parse_args()
-    properties = runtime_settings.RunTimeSettings(project, language, settings, args)
+    rts = runtime_settings.RunTimeSettings(project, language, args)
     #initialize logger
     logger = logging.getLogger('manager')
     logger.setLevel(logging.DEBUG)
 
     # Add the log message handler to the logger
     today = datetime.datetime.today()
-    log_filename = os.path.join(settings.log_location, '%s%s_%s-%s-%s.log' \
-        % (properties.language.code, properties.project.name,
+    log_filename = os.path.join(rts.log_location, '%s%s_%s-%s-%s.log' \
+        % (rts.language.code, rts.project.name,
            today.day, today.month, today.year))
     handler = logging.handlers.RotatingFileHandler(log_filename,
                                                    maxBytes=1024 * 1024,
                                                    backupCount=3)
 
     logger.addHandler(handler)
-    logger.debug('Chosen language: \t%s' % properties.language)
+    logger.debug('Chosen language: \t%s' % rts.language)
 
     #start manager
     #detect_python_version(logger)
     about_statement()
     #config.create_configuration(settings, args)
 
-    properties.show_settings()
-    args.func(properties, settings, logger)
+    rts.show_settings()
+    args.func(rts, logger)
 
 
 if __name__ == '__main__':

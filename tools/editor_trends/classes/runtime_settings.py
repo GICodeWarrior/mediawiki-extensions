@@ -29,14 +29,15 @@ import locale
 import datetime
 import time
 import re
-sys.path.append('..')
+#sys.path.append('..')
 
+from settings import Settings
 from utils import text_utils
 from utils import ordered_dict as odict
 from classes import languages
 
 
-class RunTimeSettings:
+class RunTimeSettings(Settings):
     '''
     This class keeps track of the commands issued by the user and is used to 
     feed the different etl functions. Difference with configuration class is
@@ -44,25 +45,26 @@ class RunTimeSettings:
     same for a user while these settings can change depending on the kind of
     analysis requested. 
     '''
-    def __init__(self, project, language, settings, args=None):
+    def __init__(self, project, language, args=None):
+        Settings.__init__(self)
         self.project = project
         self.language = language
-        self.settings = settings
+        self.dbname = 'wikilytics'
 
         if args:
             self.args = args
             self.hash = self.secs_since_epoch()
-            print self.settings.input_location
-            print self.get_value('location')
-            self.base_location = self.settings.input_location if \
-                self.settings.input_location != None else self.get_value('location')
+            #print self.settings.input_location
+            #print self.get_value('location')
+            self.input_location = self.input_location if \
+                self.input_location != None else self.get_value('location')
             self.project = self.update_project_settings()
             self.language = self.update_language_settings()
-            self.dbname = '%s%s' % (self.language.code, self.project.name)
+            #self.dbname = '%s%s' % (self.language.code, self.project.name)
             self.targets = self.split_keywords(self.get_value('charts'))
             self.keywords = self.split_keywords(self.get_value('keywords'))
             self.function = self.get_value('func')
-            self.collection = self.get_value('collection')
+
             self.ignore = self.get_value('except')
             self.clean = self.get_value('new')
             self.force = self.get_value('force')
@@ -70,9 +72,9 @@ class RunTimeSettings:
             self.filename = self.generate_wikidump_filename()
             self.namespaces = self.get_namespaces()
 
-            self.dataset = os.path.join(settings.dataset_location,
+            self.dataset = os.path.join(self.dataset_location,
                                         self.project.name)
-            self.charts = os.path.join(settings.chart_location,
+            self.charts = os.path.join(self.chart_location,
                                        self.project.name)
 
             self.txt = os.path.join(self.location, 'txt')
@@ -86,8 +88,11 @@ class RunTimeSettings:
             self.dump_filename = self.generate_wikidump_filename()
             self.dump_relative_path = self.set_dump_path()
             self.dump_absolute_path = self.set_dump_path(absolute=True)
-            print self.directories
-            settings.verify_environment(self.directories)
+            self.editors_raw = '%s%s_editors_raw' % (self.language.code, self.project.name)
+            self.editors_dataset = '%s%s_editors_dataset' % (self.language.code, self.project.name)
+            self.articles_raw = '%s%s_articles_raw' % (self.language.code, self.project.name)
+            self.analyzer_collection = self.get_value('collection')
+            self.verify_environment(self.directories)
 
     def __str__(self):
         return 'Runtime Settings for project %s%s' % (self.language.name,
@@ -126,7 +131,7 @@ class RunTimeSettings:
         '''
         Construct the full project location
         '''
-        return os.path.join(self.base_location, self.language.code, self.project.name)
+        return os.path.join(self.input_location, self.language.code, self.project.name)
 
     def show_settings(self):
         '''
@@ -141,7 +146,7 @@ class RunTimeSettings:
         max_length_key = max([len(key) for key in about.keys()])
         print 'Final settings after parsing command line arguments:'
         for ab in about:
-            print '%s: %s' % (ab.rjust(max_length_key), about[ab].encode(self.settings.encoding))
+            print '%s: %s' % (ab.rjust(max_length_key), about[ab].encode(self.encoding))
 
 
     def get_value(self, key):
@@ -152,7 +157,7 @@ class RunTimeSettings:
 
     def set_dump_path(self, absolute=False):
         if absolute:
-            return '%s/%s%s/latest/' % (self.settings.wp_dump_location, self.language.code, self.project.name)
+            return '%s/%s%s/latest/' % (self.wp_dump_location, self.language.code, self.project.name)
         else:
             return '/%s%s/latest/' % (self.language.code, self.project.name)
 

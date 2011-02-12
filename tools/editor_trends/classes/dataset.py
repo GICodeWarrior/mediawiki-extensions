@@ -34,7 +34,7 @@ settings = configuration.Settings()
 from utils import file_utils
 from utils import data_converter
 from database import db
-import json_encoders
+from analyses import json_encoders
 
 class Transform(SONManipulator):
     '''

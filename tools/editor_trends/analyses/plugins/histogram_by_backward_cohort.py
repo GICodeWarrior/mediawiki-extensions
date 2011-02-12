@@ -39,10 +39,10 @@ def histogram_by_backward_cohort(var, editor, **kwargs):
                         if w >= editor_dt:
                             datum = datetime.datetime(int(year), 12, 31)
                             freq = int(editor['edits_by_year'][year])
-                            if datum == datetime.datetime(2003, 12, 31):
+                            #if datum == datetime.datetime(2003, 12, 31):
 #                                if w == 24:
 #                                    if freq == 1.0:
 #                                        print 'break'
-                                var.add(datum, 1, {'window': w, 'frequency': freq}) #{w:{freq:1}})
-                                break
+                            var.add(datum, 1, {'window': w, 'frequency': freq}) #{w:{freq:1}})
+                            break
     return var

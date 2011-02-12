@@ -31,19 +31,19 @@ class Language:
     def __repr__(self):
         return u'%s - %s' % (self.code, self.name)
 
-    def show_languages(self, settings, project, startswith=None):
+    def show_languages(self, project, startswith=None):
         if startswith != None:
             startswith = startswith.title()
         project.valid_languages.sort()
         for language in project.valid_languages:
             try:
                 if startswith != None and language.startswith(first):
-                    print '%s' % language.decode(settings.encoding)
+                    print '%s' % language.decode('utf-8')
                 elif startswith == None:
-                    print '%s' % language.decode(settings.encoding)
+                    print '%s' % language.decode('utf-8')
             except UnicodeEncodeError:
                 print '%s' % language
-                
+
 
 class LanguageContainer:
     def __init__(self):

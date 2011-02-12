@@ -90,7 +90,9 @@ class Settings:
 
         self.architecture = platform.machine()
         self.working_directory = self.determine_working_directory()
+        print sys.path
         self.update_python_path()
+        print sys.path
 
         self.root = os.path.expanduser('~') if self.platform != 'Windows' else 'c:\\'
         self.max_filehandles = self.determine_max_filehandles_open()
