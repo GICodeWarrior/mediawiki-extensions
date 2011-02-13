@@ -30,6 +30,9 @@ $messages['en'] = array(
 	
 	'includewp-parserhook-desc' => 'Parser hook that allows displaying content of a Wikipedia page.',
 	'includewp-include-par-page' => 'The name of the (remote) page you want to display.',
+	'includewp-include-par-wiki' => 'The name of the wiki you want to pull content from. Needs to be one of the allowed wikis, by default only wikipedia.',
+	'includewp-include-par-paragraphs' => 'The number of paragraphs you want to initially display.',
+	'includewp-include-par-height' => 'The max height (in px) of the div into which the content is loaded. Set to 0 for no limit.',
 );
 
 /** Message documentation (Message documentation)
