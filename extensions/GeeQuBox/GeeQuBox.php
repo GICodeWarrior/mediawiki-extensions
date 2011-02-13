@@ -27,6 +27,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'geequbox-desc'
 );
 
+// defaults
+$wgGqbDefaultWidth = 640;
+
 $wgExtensionMessagesFiles['GeeQuBox'] = dirname(__FILE__) .'/GeeQuBox.i18n.php';
 $wgHooks['LanguageGetMagic'][] = 'wfGeeQuBoxLanguageGetMagic';
 
@@ -89,8 +92,17 @@ class GeeQuBox {
 				imageBtnClose:	"'. $eDir .'images/lightbox-btn-close.gif",
 				imageBtnPrev:	"'. $eDir .'images/lightbox-btn-prev.gif",
 				imageBtnNext:	"'. $eDir .'images/lightbox-btn-next.gif"
-				});
-			})');
+			});
+		})');
+		/* See _gqbreplaceHref()
+                	var boxWidth = ($j(window).width() - 20);
+                        var rxp = new RegExp(/([0-9]{2,})$/);	
+                        $j("div.gallerybox a.image").each(function(el){
+                                if(boxWidth < Number(this.search.match(rxp)[0])){
+                                        this.href = this.pathname+this.search.replace(rxp,boxWidth);
+                                }
+                        });
+		*/
 		return true;
 	}
 
@@ -102,7 +114,7 @@ class GeeQuBox {
 	 */
 	private function _gqbReplaceHref() {
 		$page = $this->_page->getHTML();
-		$pattern = '~href="/wiki/([^"]+)"~';
+		$pattern = '~href="/wiki/([^"]+)"\s*class="image"~';	
 		$replaced = preg_replace_callback($pattern,'self::_gqbReplaceMatches',$page);
 
 		$this->_page->clearHTML();
@@ -110,12 +122,14 @@ class GeeQuBox {
 	}
 
 	private static function _gqbReplaceMatches( $matches ) {
+		global $wgGqbDefaultWidth;
 		$titleObj = Title::newFromText( rawurldecode( $matches[1] ) );
 	        $image = wfFindFile( $titleObj, false, false, true );
-        	//$realwidth = (Integer) $image->getWidth();
-	        //$width = ( $realwidth > $defaultWidth ) ? $defaultWidth : $realwidth -1;
-		//$image->createThumb($width)
-		return 'href="'.$image->getURL().'"';
+        	$realwidth = (Integer) $image->getWidth();
+	        $width = ( $realwidth > $wgGqbDefaultWidth ) ? $wgGqbDefaultWidth : $realwidth;
+		// do not create a thumbnail when the image is smaller than the default width requested
+		$iPath = ( $realwidth < $wgGqbDefaultWidth ) ? $image->getURL() : $image->createThumb($width);
+		return 'href="'. $iPath .'" class="image"';	// $image->getURL()
 	}
 
 	/*
@@ -123,14 +137,6 @@ class GeeQuBox {
 	 * This can only be done in js where the window.width is known.
 		$out->addInlineScript( $jQ.'(document).ready(function(){
                 if('.$jQ.'("table.gallery").val() != undefined){
-                        var boxWidth = ('.$jQ.'(window).width() - 20);
-                        var rxp = new RegExp(/([0-9]{2,})$/);
-                        '.$jQ.'("a[rel=\'lightbox[gallery]\']").each(function(el){
-                                if(boxWidth < Number(this.search.match(rxp)[0])){
-                                        this.href = this.pathname+this.search.replace(rxp,boxWidth);
-                                }
-                        });
-                }
         })' );
 
 	*/
