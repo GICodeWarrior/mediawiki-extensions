@@ -22,7 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'GeeQuBox',
 	'version' => '0.01',
-	'author' => array( 'David Raison' ), 
+	'author' => array( '[http://www.mediawiki.org/wiki/User:Clausekwis David Raison]' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:GeeQuBox',
 	'descriptionmsg' => 'geequbox-desc'
 );
