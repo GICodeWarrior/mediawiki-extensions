@@ -331,7 +331,7 @@ $messages['br'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1" ebet',
-	'recordadmin-edit-info' => "Er bajenn-mañ ez eus patromoù dezho o furmskridoù o-unan a c'hallit leuniañ adalek an strobad ivinelloù-mañ.",
+	'recordadmin-edit-info' => 'Er bajenn-mañ ez eus patromoù dezho o furmskridoù o-unan a c\'hallit leuniañ adalek an strobad ivinelloù-mañ.<br />Gallout a rit ivez<a href="$1">ober gant arc\'hwelioù kemmañ boas MediaWiki hep furmskridoù ar patromoù</a>.',
 	'recordadmin-properties' => 'Perzhioù',
 );
 
