@@ -4,8 +4,8 @@ class ContributionHistory extends SpecialPage {
 		parent::__construct( 'ContributionHistory' );
 	}
 
-	function execute( $language = null ) {
-		global $wgRequest, $wgOut, $wgTitle, $wgLang;
+	function execute( $language ) {
+		global $wgRequest, $wgOut, $wgLang;
 
 		# Emergecny short cut until post donation comments are enabled
 		$wgOut->redirect( SpecialPage::getTitleFor( 'FundraiserStatistics' )->getFullURL() );
@@ -57,7 +57,7 @@ class ContributionHistory extends SpecialPage {
 			)
 		);
 		
-		$title = Title::newFromText( $wgTitle->getPrefixedText() . ( $language == 'en' ? '' : '/' . $language ) );
+		$title = $this->getTitle( $language == 'en' ? null : $language );
 		
 		$pagingLinks = array();
 		if( $offset !== null ) {
