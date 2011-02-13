@@ -599,6 +599,13 @@ $messages['lt'] = array(
 	'abcdownload' => 'Atsisiųsti:',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'abcdownload' => 'Atsasyuteit:',
+);
+
 /** Latvian (Latviešu)
  * @author Dark Eagle
  * @author FnTmLV
