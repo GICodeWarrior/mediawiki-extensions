@@ -21,11 +21,24 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'GeeQuBox',
-	'version' => '0.01',
+	'version' => '0.02',
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Clausekwis David Raison]' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:GeeQuBox',
 	'descriptionmsg' => 'geequbox-desc'
 );
+
+// see http://www.mediawiki.org/wiki/ResourceLoader/Documentation/Using_with_extensions
+$wgResourceModules['ext.GeeQuBox'] = array(
+	// JavaScript and CSS styles. To combine multiple file, just list them as an array.
+	'scripts' => 'js/jquery.lightbox-0.5.min.js',
+	'styles' => 'css/jquery.lightbox-0.5.css',
+ 
+	// ResourceLoader needs to know where your files are; specify your
+	// subdir relative to "extensions" or $wgExtensionAssetsPath
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'GeeQuBox'
+);
+
 
 // defaults
 $wgGqbDefaultWidth = 640;
@@ -83,11 +96,9 @@ class GeeQuBox {
 		global $wgExtensionAssetsPath;
 
 		$eDir = $wgExtensionAssetsPath .'/GeeQuBox/';
-		$this->_page->includeJQuery();
-		$this->_page->addScript( '<script type="text/javascript" src="'. $eDir .'js/jquery.lightbox-0.5.min.js"></script>' . PHP_EOL );
-		$this->_page->addExtensionStyle( $eDir . '/css/jquery.lightbox-0.5.css', 'screen' );
+		$this->_page->addModules( 'ext.GeeQuBox' );
 		$this->_page->addInlineScript('$j(document).ready(function(){
-			$j("div.gallerybox a.image").lightBox({
+			$j("li.gallerybox a.image").lightBox({
 				imageLoading: 	"'. $eDir .'images/lightbox-ico-loading.gif",
 				imageBtnClose:	"'. $eDir .'images/lightbox-btn-close.gif",
 				imageBtnPrev:	"'. $eDir .'images/lightbox-btn-prev.gif",
