@@ -7632,6 +7632,7 @@ $messages['km'] = array(
 	'ow_TranslatedText' => 'អត្ថបទ​ត្រូវបានប្រែសម្រួល',
 	'ow_TranslatedTextAttributeValue' => 'អត្ថបទ',
 	'ow_TranslatedTextAttributeValues' => 'អត្ថបទដែលអាចបកប្រែបាន',
+	'ow_Label' => 'ផ្លាកសំគាល់',
 	'ow_Link' => 'តំណ​ភ្ជាប់',
 	'ow_LinkAttribute' => 'លក្ខណៈ',
 	'ow_LinkAttributeValues' => 'តំណភ្ជាប់នានា',
@@ -12419,7 +12420,7 @@ $messages['sq'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'languages' => 'Википодаци: Менаџер за језике',
+	'languages' => 'Википодаци: Управљање језицима',
 	'langman-desc' => 'Додајте језике и подешавајте их на [[Special:Languages]]',
 	'langman_title' => 'Менаџер за језике',
 	'langman_not_allowed' => 'Немате потребна права приступа, да бисте подешавали језике.',
@@ -12466,7 +12467,7 @@ $messages['sr-ec'] = array(
 	'ow_transaction_count' => 'Број:',
 	'ow_transaction_user' => 'Корисничко име:',
 	'ow_transaction_show_rollback' => 'Приказ контрола за враћање:',
-	'ow_transaction_no_action' => 'Ништа не ради',
+	'ow_transaction_no_action' => 'не ради ништа',
 	'ow_transaction_previous_version' => 'Претходно издање',
 	'ow_transaction_restore' => 'Враћање',
 	'ow_transaction_remove' => 'Брисање',

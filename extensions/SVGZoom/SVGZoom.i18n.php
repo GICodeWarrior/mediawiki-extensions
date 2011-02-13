@@ -264,10 +264,11 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'svgzoom-desc' => 'Додаје МедијаВикију могућност скроловања по и увећавања SVG слика',
+	'svgzoom-desc' => 'Додаје могућност панорамирања и увећавања SVG датотека',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬) */

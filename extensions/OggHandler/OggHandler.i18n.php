@@ -1977,7 +1977,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'ogg-desc' => 'En Projamm (<i lang="en">handler</i>) för <i lang="en">Ogg Theora</i> un <i lang="en">Ogg Vorbis</i> Dateie, met enem Javaskrip Afspiller.',
+	'ogg-desc' => 'En Projamm (<i lang="en">handler</i>) för <i lang="en">Ogg Theora</i> un <i lang="en">Ogg Vorbis</i> Dateie, met enem Afspiller-Projramm en Javaskrip.',
 	'ogg-short-audio' => '<i lang="en">Ogg $1</i> Tondatei, $2',
 	'ogg-short-video' => '<i lang="en">Ogg $1</i> Viddejodatei, $2',
 	'ogg-short-general' => '<i lang="en">Ogg $1</i> Medijedatei, $2',

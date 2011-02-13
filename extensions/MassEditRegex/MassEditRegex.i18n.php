@@ -1391,6 +1391,7 @@ $messages['ru'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1406,7 +1407,7 @@ $messages['sr-ec'] = array(
 	'masseditregex-page-not-exists' => '$1 не постоји',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|страна|стране|страна}} измењено',
 	'masseditregex-view-full-summary' => 'Види потпун опис измене',
-	'masseditregex-hint-headmatch' => 'Нађи',
+	'masseditregex-hint-headmatch' => 'Поклапање',
 	'masseditregex-hint-headreplace' => 'Замени',
 	'masseditregex-hint-headeffect' => 'Ефекат',
 	'masseditregex-listtype-intro' => 'Ово је списак од:',

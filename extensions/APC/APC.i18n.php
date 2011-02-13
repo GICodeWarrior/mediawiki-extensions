@@ -5992,7 +5992,7 @@ $messages['sr-ec'] = array(
 ($3 меморија, $4 закључавање)',
 	'viewapc-start-time' => 'Почетно време',
 	'viewapc-uptime' => 'Време исправног рада',
-	'viewapc-upload-support' => 'Подршка за отпремање датотека',
+	'viewapc-upload-support' => 'Подршка за слање датотека',
 	'viewapc-filecache-info' => 'Подаци о међумеморији датотека',
 	'viewapc-usercache-info' => 'Подаци о корисничкој међумеморији',
 	'viewapc-cached-files' => 'Привремено меморисане датотеке',

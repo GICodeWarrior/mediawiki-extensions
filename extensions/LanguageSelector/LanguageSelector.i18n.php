@@ -661,6 +661,7 @@ $messages['lt'] = array(
  */
 $messages['ltg'] = array(
 	'languageselector' => 'Volūda',
+	'languageselector-setlang' => 'nūstateit',
 );
 
 /** Macedonian (Македонски)
