@@ -18,10 +18,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This is a MediaWiki extension, and must be run from within MediaWiki.' );
 }
 
+define('EXTPATH','GeeQuBox');
+
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'GeeQuBox',
-	'version' => '0.02',
+	'version' => '0.02.1',
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Clausekwis David Raison]' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:GeeQuBox',
 	'descriptionmsg' => 'geequbox-desc'
@@ -36,7 +38,7 @@ $wgResourceModules['ext.GeeQuBox'] = array(
 	// ResourceLoader needs to know where your files are; specify your
 	// subdir relative to "extensions" or $wgExtensionAssetsPath
 	'localBasePath' => dirname( __FILE__ ),
-	'remoteExtPath' => 'GeeQuBox'
+	'remoteExtPath' => EXTPATH 
 );
 
 
@@ -60,7 +62,7 @@ function wfGeeQuBoxLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
  */
 class GeeQuBox {
 
-	private $_page;
+	private static $_page;
 	private $_hasGallery;
 
 	public function gqbAddLightBox( $page ) { 
@@ -68,7 +70,7 @@ class GeeQuBox {
 			return false;
 
 		try {
-			$this->_page = $page;
+			self::$_page = $page;
 			$this->_gqbReplaceHref( $page );
 			$this->_gqbAddScripts( $page );
 			return true;
@@ -95,10 +97,18 @@ class GeeQuBox {
 	private function _gqbAddScripts() {
 		global $wgExtensionAssetsPath;
 
-		$eDir = $wgExtensionAssetsPath .'/GeeQuBox/';
-		$this->_page->addModules( 'ext.GeeQuBox' );
-		$this->_page->addInlineScript('$j(document).ready(function(){
+		$eDir = $wgExtensionAssetsPath .'/'.EXTPATH.'/';
+		self::$_page->addModules( 'ext.GeeQuBox' );
+		self::$_page->addInlineScript('$j(document).ready(function(){
+			$("li.gallerybox").each(function(el){
+				var _a = $("div.thumb a", this);
+				var title = _a.attr("title");
+				var caption = $("div.gallerytext >  p", this).text();
+				if ( caption != "" )
+					_a.attr("title", title + caption);
+			});
 			$j("li.gallerybox a.image").lightBox({
+				fixedNavigation:	true,
 				imageLoading: 	"'. $eDir .'images/lightbox-ico-loading.gif",
 				imageBtnClose:	"'. $eDir .'images/lightbox-btn-close.gif",
 				imageBtnPrev:	"'. $eDir .'images/lightbox-btn-prev.gif",
@@ -124,33 +134,28 @@ class GeeQuBox {
 	 * approach but there doesn't seem to be an alternative approach.)
 	 */
 	private function _gqbReplaceHref() {
-		$page = $this->_page->getHTML();
+		global $wgGqbDefaultWidth;
+
+		$page = self::$_page->getHTML();
 		$pattern = '~href="/wiki/([^"]+)"\s*class="image"~';	
 		$replaced = preg_replace_callback($pattern,'self::_gqbReplaceMatches',$page);
 
-		$this->_page->clearHTML();
-		$this->_page->addHTML( $replaced );
+		self::$_page->clearHTML();
+		self::$_page->addHTML( $replaced );
 	}
 
 	private static function _gqbReplaceMatches( $matches ) {
 		global $wgGqbDefaultWidth;
+
 		$titleObj = Title::newFromText( rawurldecode( $matches[1] ) );
 	        $image = wfFindFile( $titleObj, false, false, true );
         	$realwidth = (Integer) $image->getWidth();
 	        $width = ( $realwidth > $wgGqbDefaultWidth ) ? $wgGqbDefaultWidth : $realwidth;
-		// do not create a thumbnail when the image is smaller than the default width requested
 		$iPath = ( $realwidth < $wgGqbDefaultWidth ) ? $image->getURL() : $image->createThumb($width);
-		return 'href="'. $iPath .'" class="image"';	// $image->getURL()
+		$title = self::$_page->parse( "'''[[:" . $titleObj->getFullText() . "|" . $titleObj->getText() . "]]'''" );
+	
+		return 'href="'. $iPath .'" title="'. htmlspecialchars( $title )  .'" class="image"';
 	}
-
-	/*
-	 * Code used also in SlimboxThumbs to set the size of the displayed images
-	 * This can only be done in js where the window.width is known.
-		$out->addInlineScript( $jQ.'(document).ready(function(){
-                if('.$jQ.'("table.gallery").val() != undefined){
-        })' );
-
-	*/
 
 }
 
