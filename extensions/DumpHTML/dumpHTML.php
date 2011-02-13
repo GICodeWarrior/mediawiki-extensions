@@ -63,12 +63,6 @@ require_once( $IP."/maintenance/commandLine.inc" );
 require_once( dirname(__FILE__)."/dumpHTML.inc" );
 require_once( dirname(__FILE__)."/SkinOffline.php" );
 
-if ( version_compare( $wgVersion, '1.11.1', '<' ) ) {
-	echo "Error, the DumpHTML extension needs at least MediaWiki version 1.11.1 to work, you have version $wgVersion.\n";
-	echo "Try using maintenance/dumpHTML.php instead.\n";
-	exit;
-}
-
 error_reporting( E_ALL & (~E_NOTICE) );
 
 if( isset( $options['help'] ) || isset( $options['h'] ) ) {

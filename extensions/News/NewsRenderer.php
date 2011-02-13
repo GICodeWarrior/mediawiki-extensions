@@ -557,18 +557,6 @@ class NewsRenderer {
 
 		if ( $params === null ) $params = array();
 		$text = $parser->replaceVariables( $text, $params );
-
-		/*
-		if ( version_compare( $wgVersion, "1.12", '<' ) ) {
-		}
-		else {
-			$parser = $GLOBALS['wgParser'];
-
-			$frame = $parser->getPreprocessor()->newCustomFrame($params);
-			$text = $parser->replaceVariables( $text, $frame );
-		}
-		*/
-
 		return $text;
 	}
 

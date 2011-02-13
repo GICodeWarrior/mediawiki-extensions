@@ -187,11 +187,8 @@ function wfWikiArticleFeedsParserSetup() {
 
 # Attach Hooks
 $wgHooks['OutputPageBeforeHTML'][] = 'wfAddWikiFeedHeaders';
-if ( version_compare( $wgVersion, '1.13', '>=' ) ) {
-	$wgHooks['SkinTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks'; // introduced in 1.13
-} else {
-	$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks';
-}
+$wgHooks['SkinTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks'; // introduced in 1.13
+
 $wgHooks['UnknownAction'][] = 'wfWikiArticleFeedsAction';
 $wgHooks['ArticlePurge'][] = 'wfPurgeFeedsOnArticlePurge';
 
