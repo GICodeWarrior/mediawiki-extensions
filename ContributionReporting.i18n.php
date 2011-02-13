@@ -721,6 +721,7 @@ $messages['br'] = array(
 	'fundraiserstats-tab-ytd' => 'Er bloavezh (USD)',
 	'fundraiserstats-instructions' => 'Evit diskwel ar stadegoù evit un deiz resis, lakait ar reti war ar varrenn evit an deiz-se. Ul liv disheñvel zo bet lakaet da bep bloaz war ar grafik.',
 	'fundraiserstats-customize' => 'Personelaat',
+	'fundraiserstats-show-years' => 'Diskouez ar bloavezhioù da-heul :',
 	'fundraiserstats-time-zone' => 'Takad eur :',
 	'fundraiserstats-utc' => '(abaoe UTC)',
 );
