@@ -462,14 +462,14 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'livetranslate-desc' => 'Määt en „{{int:special-livetranslate}}“ müjjelesch met <span class="plainlinks">[http://translate.google.com/ Google Translate]</span>.',
-	'livetranslate-translate-to' => 'Don di Sigg hee övversäze noh',
+	'livetranslate-translate-to' => 'Donn di Sigg heh övversäze noh',
 	'livetranslate-button-translate' => 'Övversätze!',
 	'livetranslate-button-translating' => 'Am Övversätze&nbsp;…',
 	'livetranslate-button-revert' => 'Ojinaal Shprooch aanzeije',
 	'livetranslate-dictionary-error' => 'Mer kunnte kein Wööterbooch fenge. Kei Woot weet beim Övversäze extra behandelt.',
 	'livetranslate-dictionary-empty' => 'Mer han noch kei Woot em Wööterbooch.
-Övver dä „{{int:edit}}“-Knopp kam_mer Wööter enjävve.',
-	'livetranslate-dictionary-count' => 'Mer han {{PLURAL:$1|ei Woot|$1 Wööter|kei Woot}} en $2 {{PLURAL:$2|Shprooch|Shprooche|Shprooche}} em Wööterbooch. Övver dä „{{int:Edit}}“-Knopp kam_mer noch mieh enjävve.',
+Övver dä „{{int:edit}}“-Lengk kam_mer Wööter enjävve.',
+	'livetranslate-dictionary-count' => 'Mer han {{PLURAL:$1|ei Woot|$1 Wööter|kei Woot}} en $2 {{PLURAL:$2|Shprooch|Shprooche|Shprooche}} em Wööterbooch. Övver dä Lenk „{{int:Edit}}“ kam_mer noch mieh enjävve.',
 	'livetranslate-dictionary-unallowed-langs' => 'Di {{PLURAL:$2|Shprooch es|Shprooche sin|X}} em Momang nit zohjelohße för et Övversäze: $1. Donn jäz de zohjelohße Shprooche em Wiki ändere udder heh di {{PLURAL:$2|Shprooch|Shprooche|X}} uss_em Wööterbooch schmieße.',
 	'livetranslate-dictionary-goto-edit' => 'De Speicher för Övversäzunge ändere.',
 	'special-livetranslate' => 'Lebändesch Övversäze',
