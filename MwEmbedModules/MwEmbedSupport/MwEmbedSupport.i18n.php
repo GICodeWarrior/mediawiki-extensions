@@ -736,11 +736,13 @@ $messages['sr-ec'] = array(
 	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'mwe-loading_txt' => 'Učitavanje ...',
 	'mwe-ok' => 'OK',
-	'mwe-cancel' => 'Poništi',
+	'mwe-cancel' => 'Otkaži',
 	'mwe-test-plural' => 'Pokrenuo/la sam {{PLURAL:$1|$1 test|$1 testova}}',
 );
 
@@ -867,3 +869,4 @@ $messages['zh-hant'] = array(
 	'mwe-must-login-gadget' => '要啟用小工具，你必須先<a target="_new" href="$1">登入</a>。',
 	'mwe-test-plural' => '我在執行 {{PLURAL:$1|$1 個|$1 個}}測試',
 );
+
