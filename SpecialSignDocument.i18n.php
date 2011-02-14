@@ -4442,6 +4442,7 @@ $1',
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'signdocument' => 'Potpiši dokument',
@@ -4490,7 +4491,7 @@ $1',
 	'sign-viewfield-ip' => 'IP adresa',
 	'sign-viewfield-agent' => 'Brauzer korisnika',
 	'sign-viewfield-phone' => 'Telefon',
-	'sign-viewfield-email' => 'Imejl',
+	'sign-viewfield-email' => 'E-pošta',
 	'sign-viewfield-age' => 'Starost',
 	'sign-viewfield-options' => 'Opcije',
 	'sign-viewsigs-intro' => 'Ispod su prikazani potpisi snimljeni za <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
