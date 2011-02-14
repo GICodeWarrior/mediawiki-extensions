@@ -453,6 +453,14 @@ $messages['sl'] = array(
 	'dontswitchmeover-pref' => 'Ne dovoli spremembe moje kože, ko se spremeni privzeta koža',
 );
 
+/** Albanian (Shqip)
+ * @author Olsi
+ */
+$messages['sq'] = array(
+	'dontswitchmeover-desc' => 'Preferencë për përdoruesit për të specifikuar nëse ata duantë ruajnë vendosjen e pamjes së tyre kur pamja kryesore është ndryshuar.',
+	'dontswitchmeover-pref' => 'Mos lejo pamjen time të ndryshojë kur ndryshon pamja kryesore',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */
