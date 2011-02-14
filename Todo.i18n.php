@@ -1883,6 +1883,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'todo' => 'Spisak stvari za uraditi',
@@ -1895,7 +1896,7 @@ $messages['sr-el'] = array(
 	'todo-move-queue' => 'Premesti u red…',
 	'todo-list-for' => 'Spisak stvari za uraditi, za $1',
 	'todo-list-change' => 'Promeni',
-	'todo-list-cancel' => 'Poništi',
+	'todo-list-cancel' => 'Otkaži',
 	'todo-form-details' => 'Detalji:',
 	'todo-form-submit' => 'Pošanji upit',
 );
