@@ -4151,8 +4151,10 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'tasks_noone' => 'קיינער',
 	'tasks_delete' => 'אויסמעקן',
+	'tasks_here' => 'דאָ',
 	'tasks_table_header_page' => 'בלאַט',
 	'tasks_search_form_title' => 'זוכן',
+	'tasks_status_open' => 'אפֿן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
