@@ -1119,10 +1119,11 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 	}
 
 	public function add( IdStack $idPath ) {
-		if ( $this->isAddField )
+		if ( $this->isAddField ) {
 			return getTextArea( $this->addId( $idPath->getId() ), "", 3 );
-		else
+		} else {
 			return $this->addText;
+		}
 	}
 
 	public function getInputValue( $id ) {
@@ -1164,7 +1165,14 @@ class TextEditor extends ScalarEditor {
 	}
 
 	public function getEditHTML( IdStack $idPath, $value ) {
-		return getTextArea( $this->updateId( $idPath->getId() ), $value, 3 );
+		global $wgUser;
+		$dc = wdGetDataSetContext();
+		if ( ($dc == "uw") and (! $wgUser->isAllowed( 'deletewikidata-uw' ) ) ) {
+		// disable
+			return getTextArea( $this->updateId( $idPath->getId() ), $value, 3, 80 , true );
+		} else {
+			return getTextArea( $this->updateId( $idPath->getId() ), $value, 3 );
+		}	
 	}
 
 	public function add( IdStack $idPath ) {
@@ -1260,7 +1268,13 @@ class BooleanEditor extends ScalarEditor {
 	}
 
 	public function getEditHTML( IdStack $idPath, $value ) {
-		return getCheckBox( $this->updateId( $idPath->getId() ), $value );
+		global $wgUser;
+		$dc = wdGetDataSetContext();
+		if ( ($dc == "uw") and (! $wgUser->isAllowed( 'deletewikidata-uw' ) ) ) {
+			return getCheckBox( $this->updateId( $idPath->getId() ), $value, true );
+		} else {
+			return getCheckBox( $this->updateId( $idPath->getId() ), $value );
+		}
 	}
 
 	public function add( IdStack $idPath ) {
@@ -1271,8 +1285,7 @@ class BooleanEditor extends ScalarEditor {
 	}
 
 	public function getInputValue( $id ) {
-		global
-			$wgRequest;
+		global $wgRequest;
 
 		return $wgRequest->getCheck( $id );
 	}

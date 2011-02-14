@@ -43,8 +43,10 @@ $wgAutoloadClasses['Search'] = $dir . 'OmegaWiki/Search.php';
 
 # FIXME: These should be modified to make Wikidata more reusable.
 $wgAvailableRights[] = 'editwikidata-uw';
+$wgAvailableRights[] = 'deletewikidata-uw';
 $wgAvailableRights[] = 'wikidata-copy';
 $wgGroupPermissions['wikidata-omega']['editwikidata-uw'] = true;
+$wgGroupPermissions['wikidata-omega']['deletewikidata-uw'] = true;
 $wgGroupPermissions['wikidata-copy']['wikidata-copy'] = true;
 $wgGroupPermissions['wikidata-omega']['wikidata-copy'] = true;
 
