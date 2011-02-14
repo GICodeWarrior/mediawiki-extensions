@@ -439,12 +439,13 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'spl3-desc' => 'Аутоматски прави списак подстрана неке стране преко тага <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Непозната вредност за опцију $1.',
-	'spl3_nosubpages' => '$1 нема подстрана.',
+	'spl3_nosubpages' => '$1 нема подстраница.',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
