@@ -413,7 +413,7 @@ oFCKeditor.BasePath = wgScriptPath + "/" + wgFCKEditorDir;
 oFCKeditor.Config["CustomConfigurationsPath"] = wgScriptPath + "/" + wgFCKEditorExtDir + "/fckeditor_config.js";';
 		// Load fckeditor-rtl.css for right-to-left languages, but only fckeditor.css for other languages
 		if( $wgContLang->isRTL() ) {
-			$script .= 'oFCKeditor.Config["EditorAreaCSS"] = wgScriptPath + "/" + wgFCKEditorExtDir + "/css/fckeditor.css, wgScriptPath + "/" + wgFCKEditorExtDir + "/css/fckeditor-rtl.css";';
+			$script .= 'oFCKeditor.Config["EditorAreaCSS"] = wgScriptPath + "/" + wgFCKEditorExtDir + "/css/fckeditor.css + wgScriptPath + "/" + wgFCKEditorExtDir + "/css/fckeditor-rtl.css";';
 		} else {
 			$script .= 'oFCKeditor.Config["EditorAreaCSS"] = wgScriptPath + "/" + wgFCKEditorExtDir + "/css/fckeditor.css";';
 		}
