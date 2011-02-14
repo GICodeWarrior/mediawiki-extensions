@@ -1807,6 +1807,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'createsigndoc-pagename' => 'Strana:',
@@ -1815,7 +1816,7 @@ $messages['sr-el'] = array(
 	'createsigndoc-address' => 'Kućna adresa:',
 	'createsigndoc-extaddress' => 'Grad, država:',
 	'createsigndoc-phone' => 'Telefonski broj:',
-	'createsigndoc-bday' => 'Dan rođenja:',
+	'createsigndoc-bday' => 'Datum rođenja:',
 	'createsigndoc-minage' => 'Najmanja starost:',
 	'createsigndoc-introtext' => 'Uvod:',
 	'createsigndoc-hidden' => 'Sakriveno',

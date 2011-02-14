@@ -2177,12 +2177,13 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'povwatch_invalid_title' => 'Наведени наслов је неисправан',
-	'povwatch_unknown_subpage' => 'Непозната подстрана.',
+	'povwatch_unknown_subpage' => 'Непозната подстраница.',
 	'povwatch_title' => 'Наслов:',
 	'povwatch_added' => 'додато',
 );

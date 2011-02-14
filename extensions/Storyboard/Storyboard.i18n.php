@@ -2490,6 +2490,14 @@ $messages['uk'] = array(
 	'storyboard-deletestory' => 'Вилучити',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'storyboard-authorname' => 'מחבר נאָמען',
+	'storyboard-language' => 'שפראַך',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'storyboard-hidden' => '隐藏',

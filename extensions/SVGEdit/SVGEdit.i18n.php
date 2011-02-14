@@ -25,13 +25,16 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Brion Vibber <brion@pobox.com>
  * @author EugeneZelenko
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'svgedit-editbutton-edit' => 'Text label on edit button on SVG File: pages',
+	'svgedit-summary-default' => 'The pieces <code>/*</code> and <code>*/</code> must mot be modified.',
 	'svgedit-editor-save-close' => 'Editor button to save the SVG file and close the editor',
 	'svgedit-editor-close' => 'Editor button to close the editor without saving
 {{Identical|Cancel}}',
-	'svgedit-desc' => 'Extension description displayed on [[Special:Version]]',
+	'svgedit-desc' => 'Extension description displayed on [[Special:Version]]
+Do not alter the link target URL: <code lang="en">http://code.google.com/p/svg-edit/</code>',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -75,11 +78,12 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
 	'svgedit-editbutton-edit' => 'Datei bearbeiten',
 	'svgedit-summary-label' => 'Zusammenfassung',
-	'svgedit-summary-default' => '/ * Mit SVG-edit geändert * /',
+	'svgedit-summary-default' => '/* Mit SVG-edit geändert */',
 	'svgedit-editor-save-close' => 'Speichern und schließen',
 	'svgedit-editor-close' => 'Abbrechen',
 	'svgedit-desc' => 'Ermöglicht das Bearbeiten einer SVG-Datei mit [http://code.google.com/p/svg-edit/ SVG-edit]',
@@ -157,11 +161,12 @@ $messages['gl'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Purodha
  */
 $messages['gsw'] = array(
 	'svgedit-editbutton-edit' => 'Datei bearbeite',
 	'svgedit-summary-label' => 'Zämmefassig',
-	'svgedit-summary-default' => '/ * Mit SVG-edit gänderet * /',
+	'svgedit-summary-default' => '/* Mit SVG-edit gänderet */',
 	'svgedit-editor-save-close' => 'Spychere un zuemache',
 	'svgedit-editor-close' => 'Abbräche',
 	'svgedit-desc' => 'Macht a Bearbeite vun ere SVG-Datei mit [http://code.google.com/p/svg-edit/ SVG-edit] megli',
@@ -228,6 +233,20 @@ $messages['km'] = array(
 	'svgedit-editor-save-close' => 'រក្សាទុករួចបិទ',
 	'svgedit-editor-close' => 'បោះបង់',
 	'svgedit-desc' => 'ការកែសំរួលគំនូរប្រភេទ SVG ជាមួយ [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'svgedit-editbutton-edit' => 'Zeichnung ändere',
+	'svgedit-summary-label' => 'Zosammefaßung',
+	'svgedit-summary-default' => '/* Met SVG-edit jeändert * /',
+	'svgedit-editor-save-close' => 'Afspeishere un zoh maache',
+	'svgedit-editor-close' => 'Ophüre',
+	'svgedit-desc' => 'Määd et müjjelesch, Datteije em SVG-Fommaat met <i lang="en">[http://code.google.com/p/svg-edit/ SVG-edit]</i> ze beärbeide.',
+	'svgedit-edit-tab' => 'Zeichnung ändere',
+	'svgedit-edit-tab-tooltip' => 'He di Dattei med en Zeishnung em SVG-Fommaat kam_mer em Brauser ändere.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -332,15 +351,18 @@ $messages['pt-br'] = array(
 	'svgedit-editor-save-close' => 'Salvar e fechar',
 	'svgedit-editor-close' => 'Cancelar',
 	'svgedit-desc' => 'Edição de desenhos SVG no próprio navegador, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Editar desenho',
+	'svgedit-edit-tab-tooltip' => 'Você pode editar este desenho SVG no seu navegador',
 );
 
 /** Russian (Русский)
+ * @author Purodha
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'svgedit-editbutton-edit' => 'Редактировать рисунок',
 	'svgedit-summary-label' => 'Описание изменений',
-	'svgedit-summary-default' => '/ * Изменено в svg-edit * /',
+	'svgedit-summary-default' => '/* Изменено в svg-edit */',
 	'svgedit-editor-save-close' => 'Сохранить и закрыть',
 	'svgedit-editor-close' => 'Отмена',
 	'svgedit-desc' => 'Редактирование SVG-изображений в браузере с помощью [http://code.google.com/p/svg-edit/ SVG-Edit]',

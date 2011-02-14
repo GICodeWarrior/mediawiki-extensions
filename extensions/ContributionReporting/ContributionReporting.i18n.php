@@ -5687,7 +5687,12 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'contrib-hist-name' => 'נאָמען',
+	'contrib-hist-date' => 'צײַט און דאַטע',
+	'contrib-hist-anonymous' => 'אַנאנים',
 	'contribstats-day' => 'טאָג',
+	'contribstats-month' => 'מאנאַט',
+	'contribstats-currency' => 'וואַלוטע:',
+	'contribstats-week' => 'וואך',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

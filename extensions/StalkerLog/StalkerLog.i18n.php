@@ -614,6 +614,13 @@ $messages['vo'] = array(
 	'stalkerlog-log-text' => 'Is palisedons nunädams e sänunädams gebanas.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'stalkerlog-log-logout' => 'אַרויסלאגירט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

@@ -25,6 +25,13 @@ $messages['en'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Traditional',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'categorymultisortchinese-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -379,6 +386,25 @@ $messages['ja'] = array(
 	'categorymultisort-sortkey-name-radical' => '部首',
 	'categorymultisort-sortkey-name-radical-simplified' => '部首：簡体字',
 	'categorymultisort-sortkey-name-radical-traditional' => '部首：繁体字',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categorymultisortchinese-desc' => 'Määd et müjjelesch, Saachjroppe en ongerscheidlijje Zotteerunge aanzekike, di_j_et bloß bei de schinesesche Schreffte jitt.',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarijn: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: <i lang="en">Wade-Giles</i>',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong Pinyin',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonesisch: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Noh Stresche',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Noh Stresche: eifacher jemaat',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Noh Streche: noh de Tradizjohn',
+	'categorymultisort-sortkey-name-radical' => 'Radikal',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikal: eifacher jemaat',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: noh de Tradizjohn',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

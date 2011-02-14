@@ -1432,6 +1432,13 @@ $messages['vi'] = array(
 	'refhelper-search' => 'Tìm kiếm',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'refhelper-category' => 'קאַטעגאָריע $1:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Mark85296341
  */

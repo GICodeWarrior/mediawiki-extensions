@@ -11041,8 +11041,11 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'mv_tool_search' => 'זוכן',
+	'mv_tool_export' => 'עקספארטירן',
 	'mv_edit' => 'רעדאַקטירן',
 	'mv_history' => 'היסטאריע',
+	'mv_search_and' => 'און',
+	'mv_search_or' => 'אָדער',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

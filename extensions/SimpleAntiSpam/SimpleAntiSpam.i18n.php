@@ -716,6 +716,16 @@ $messages['sl'] = array(
 	'simpleantispam-desc' => 'Doda preprosto preverjanje smetja/botov v obrazce',
 );
 
+/** Albanian (Shqip)
+ * @author Olsi
+ */
+$messages['sq'] = array(
+	'simpleantispam' => 'Redaktimi juaj shkaktoi mekanizmin anti-spam',
+	'simpleantispam-label' => "Kontroll anti-spam.
+'''MOS''' e plotësoni këtë!",
+	'simpleantispam-desc' => 'Shton një kontroll spam/bot të thjeshtë tek format',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  */

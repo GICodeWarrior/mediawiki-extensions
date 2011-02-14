@@ -3060,23 +3060,39 @@ Prosimo, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_down
 
 /** Albanian (Shqip)
  * @author Dori
+ * @author Olsi
  */
 $messages['sq'] = array(
+	'ogg-desc' => 'Mbajtës për Ogg Theora dhe skeda Vorbis, me luajtës JavaScript',
 	'ogg-short-audio' => 'Skedë zanore Ogg $1, $2',
 	'ogg-short-video' => 'Skedë pamore Ogg $1, $2',
 	'ogg-short-general' => 'Skedë mediatike Ogg $1, $2',
 	'ogg-long-audio' => '(Skedë zanore Ogg $1, kohëzgjatja $2, $3)',
 	'ogg-long-video' => '(Skedë pamore Ogg $1, kohëzgjatja $2, $4×$5 pixel, $3)',
+	'ogg-long-multiplexed' => 'Skedë ogg audio/video, $1, gjatësia $2, $4×$5 piksel, $3 gjithsej',
+	'ogg-long-general' => 'Skedë Ogg, kohëzgjatja $2, $3',
+	'ogg-long-error' => 'Skedë ogg e pavlefshme: $1',
 	'ogg-play' => 'Fillo',
 	'ogg-pause' => 'Pusho',
 	'ogg-stop' => 'Ndalo',
 	'ogg-play-video' => 'Fillo videon',
 	'ogg-play-sound' => 'Fillo zërin',
 	'ogg-no-player' => 'Ju kërkojmë ndjesë por sistemi juaj nuk ka mundësi për të kryer këtë veprim. Mund të <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">shkarkoni një mjet</a> tjetër.',
+	'ogg-no-xiphqt' => 'Ju nuk duket të keni komponentin XiphQT për QuickTime.
+QuickTime nuk mund të luajë skeda Ogg pa këtë komponent.
+Ju lutemi <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">shkarkoni XiphQT</a> ose zgjidhni një luajtës tjetër.',
+	'ogg-player-videoElement' => 'Mbështetje amtare shfletuesi',
+	'ogg-player-oggPlugin' => 'Plugin shfletuesi',
+	'ogg-player-thumbnail' => 'Ende vetëm figurë',
+	'ogg-player-soundthumb' => 'Nuk ka luajtës',
+	'ogg-player-selected' => '(përzgjedhur)',
+	'ogg-use-player' => 'Përdorni luajtës:',
 	'ogg-more' => 'Më shumë...',
 	'ogg-dismiss' => 'Mbylle',
 	'ogg-download' => 'Shkarko skedën',
 	'ogg-desc-link' => 'Rreth kësaj skede',
+	'ogg-oggThumb-version' => 'OggHandler kërkon versionin oggThumb $1 ose më të vonshëm.',
+	'ogg-oggThumb-failed' => 'oggThumb dështoi të krijojë parapamjen.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

@@ -945,6 +945,14 @@ $messages['vi'] = array(
 	'mostrevisors-viewcontributors' => 'Xem các người đóng góp chính',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'mostrevisors-limitlinks' => 'ווײַזן ביז $1 בלעטער',
+	'mostrevisors-namespace' => 'נאָמענטייל:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  */

@@ -1278,6 +1278,7 @@ Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
@@ -1294,7 +1295,7 @@ $messages['sr-ec'] = array(
 	'refreshspecial-no-page' => 'Нема такве специјалне стране',
 	'refreshspecial-reconnected' => 'Реконектован.',
 	'refreshspecial-reconnecting' => 'Конекција није успела, реконекција за 10 секунди...',
-	'refreshspecial-page-result' => '{{PLURAL:$1|добијен|добијено}} $1 {{PLURAL:$1|ред|редова}} у',
+	'refreshspecial-page-result' => '{{PLURAL:$1|добијен је|добијена су|добијено је}} $1 {{PLURAL:$1|ред|реда|редова}} у',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

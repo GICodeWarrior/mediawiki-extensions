@@ -703,6 +703,7 @@ dat mer och et Sigge-Aanloore ennschrängke kann.',
 	'security-type-category' => 'dä Saachjropp',
 	'security-type-namespace' => 'dämm Appachtemang',
 	'security-restricttogroup' => 'Aan de Saache draan dörve, di op de Metmaacher en dä Jropp „$1“ beschrängk sin',
+	'restriction-read' => 'Lässe',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

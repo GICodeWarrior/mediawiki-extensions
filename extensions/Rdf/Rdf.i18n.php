@@ -34,8 +34,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'rdf-desc' => '{{desc}}',
+	'rdf-inpage' => '[[:wikipedia:Turtle (syntax)|Turtle]] is a specific [[:wikipedia:Resource Description Framework|RDF]]-Syntax.',
 	'rdf-categories' => '{{Identical|Categories}}',
 );
 
@@ -151,6 +154,27 @@ $messages['ia'] = array(
 	'rdf-instructions' => 'Selige le pagina de destination e modellos RDF in que tu es interessate.',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'rdf-desc' => '<i lang="en">RDF</i>-Ußjaabe för MediaWiki',
+	'rdf-inpage' => 'En de Sigg enthallde em <i lang="en">Turtle</i>-Fommaat',
+	'rdf-dcmes' => 'Ene Saz Ellemänte us dä <i lang="en">Dublin Core Metadata</i>',
+	'rdf-cc' => '<i lang="en">Creative Commons</i>',
+	'rdf-image' => 'Enjebout Belder',
+	'rdf-linksto' => 'Lengks op de Sigg',
+	'rdf-linksfrom' => 'Lengks vun dä Sigg',
+	'rdf-links' => 'All de Lenks',
+	'rdf-history' => 'Fröjer Versione',
+	'rdf-interwiki' => 'Ėngerwikki Lėngks',
+	'rdf-categories' => 'Saachjroppe',
+	'rdf-target' => 'Zielsigg',
+	'rdf-modelnames' => 'Modäll ov Modälle',
+	'rdf-format' => 'Fommaat för et Ußjävve',
+	'rdf-instructions' => 'Sök de Zielsigg uß, un de Modälle udder dat Modäll vun <i lang="en">RDF</i>, wat de han wells',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -186,5 +210,47 @@ $messages['mk'] = array(
 	'rdf-modelnames' => 'Модел(и)',
 	'rdf-format' => 'Формат на изводот',
 	'rdf-instructions' => 'Одберете целна страница и RDF-моделите за кои сте заинтересирани.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'rdf-desc' => 'RDF-framework voor MediaWiki',
+	'rdf-inpage' => 'Ingebedde in-pagina Turtle',
+	'rdf-dcmes' => 'Dublin Core Metadata Elementset',
+	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Ingebedde afbeeldingen',
+	'rdf-linksto' => 'Verwijzingen naar de pagina',
+	'rdf-linksfrom' => 'Verwijzingen van de pagina',
+	'rdf-links' => 'Alle verwijzingen',
+	'rdf-history' => 'Historische versies',
+	'rdf-interwiki' => 'lnterwikiverwijzingen',
+	'rdf-categories' => 'Categorieën',
+	'rdf-target' => 'Doelpagina',
+	'rdf-modelnames' => 'Model(len)',
+	'rdf-format' => 'Uitvoeropmaak',
+	'rdf-instructions' => 'Selecteer de doelpagina en de RDF-modellen waarin u geïnteresseerd bent',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'rdf-desc' => 'Modelo RDF para o MediaWiki',
+	'rdf-inpage' => 'Incorporada na Página',
+	'rdf-dcmes' => 'Conjunto de Elementos de Metadados Dublin Core',
+	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Imagens incorporadas',
+	'rdf-linksto' => 'Links para a página',
+	'rdf-linksfrom' => 'Links a partir da página',
+	'rdf-links' => 'Todos os links',
+	'rdf-history' => 'Versões históricas',
+	'rdf-interwiki' => 'Links interwikis',
+	'rdf-categories' => 'Categorias',
+	'rdf-target' => 'Página de destino',
+	'rdf-modelnames' => 'Modelo(s)',
+	'rdf-format' => 'Formato de saída',
+	'rdf-instructions' => 'Escolha a página de destino e os modelos RDF em que está interessado.',
 );
 

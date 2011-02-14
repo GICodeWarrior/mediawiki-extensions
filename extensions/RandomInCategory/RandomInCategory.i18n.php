@@ -1105,6 +1105,13 @@ $messages['vo'] = array(
 	'randomincategory-label' => 'Klad:',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'randomincategory-label' => 'קאַטעגאריע:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

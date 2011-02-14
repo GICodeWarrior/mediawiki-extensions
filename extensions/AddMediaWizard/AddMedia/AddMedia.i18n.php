@@ -10163,6 +10163,7 @@ $messages['yi'] = array(
 	'mwe-thumbnail-more' => 'פאַרגרעסערן',
 	'mwe-filesource' => 'מקור:',
 	'fogg-copyright-title' => 'קאפירעכט',
+	'fogg-license-title' => 'ליצענץ',
 	'mwe-upload' => 'אַרױפֿלאָדן טעקע',
 	'mwe-link-login' => 'אַרײַנלאגירן',
 	'rsd_results_next' => 'נעקסטער',

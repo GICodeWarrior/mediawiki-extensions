@@ -5006,6 +5006,7 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Ex13
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'openidserver' => 'OpenID server',
@@ -5052,7 +5053,7 @@ Možete da izaberete jednu od opcija ispod.',
 	'openid-prefstext' => '[<a href="http://openid.net/">http://openid.net/</a> OpenID] podešavanja',
 	'openid-pref-hide' => 'Sakrijte svoj OpenID URL sa korisničke strane, ako se sa njim logujete.',
 	'openid-pref-update-userinfo-on-login' => 'Aktualizuj sledeće informacije OpenID identiteta svaki put kad se ulogujem:',
-	'openid-urls-action' => 'Akcija',
+	'openid-urls-action' => 'Radnja',
 	'openid-urls-delete' => 'Obriši',
 );
 

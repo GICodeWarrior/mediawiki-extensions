@@ -68,6 +68,9 @@ $messages['be-tarask'] = array(
 	'includewp-licence-notice' => 'Пададзены вышэй зьмест паходзіць са старонкі $1 <a href="$2">$3</a> на ўмовах ліцэнзіі <a href="$4">$5</a>. Поўны сьпіс аўтараў можна знайсьці <a href="$6">тут</a>.',
 	'includewp-parserhook-desc' => 'Працэдура-перахопнік парсэру, які дазваляе паказваць зьмест старонкі Вікіпэдыі.',
 	'includewp-include-par-page' => 'Назва (аддаленай) старонкі, якую Вы жадаеце паказаць.',
+	'includewp-include-par-wiki' => 'Назва вікі, з якой Вы жадаеце ўзяць зьмест. Трэба, каб гэта была адна з дазволеных вікі, па змоўчваньні толькі Вікіпэдыя.',
+	'includewp-include-par-paragraphs' => 'Колькасьць параграфаў, якія Вы жадаеце каб паказваліся пачаткова.',
+	'includewp-include-par-height' => 'Максымальная вышыня (у піксэлях) разьдзела, у які загружаецца зьмест. Пастаўце 0, каб яна была неабмежаваная.',
 );
 
 /** German (Deutsch)
@@ -82,6 +85,9 @@ $messages['de'] = array(
 	'includewp-licence-notice' => 'Der obige Inhalt stammt vom $1-Artikel <a href="$2">„$3“</a>, der gemäß <a href="$4">$5</a> lizenziert wurde. Eine vollständige Liste der Autoren ist <a href="$6">hier</a> verfügbar.',
 	'includewp-parserhook-desc' => 'Parserhook der das Anzeigen von Inhalten eines Wikipedia-Artikels ermöglicht.',
 	'includewp-include-par-page' => 'Der Name der Seite, die angezeigt werden soll.',
+	'includewp-include-par-wiki' => 'Der Name des Wikis aus dem die Inhalte einbezogen werden sollen. Es muss sich dabei um ein freigegebenes Wiki handeln, was standardmäßig nur auf Wikipedia zutrifft.',
+	'includewp-include-par-paragraphs' => 'Die Anzahl der Absätze, die zunächst angezeigt werden sollen.',
+	'includewp-include-par-height' => 'Die maximale Höhe des Bereichs in Pixeln (px) in dem die Inhalte angezeigt werden soll. Keine Höhenbeschränkung wird mit Null (0) angegeben.',
 );
 
 /** Hebrew (עברית)
@@ -150,6 +156,26 @@ $messages['mk'] = array(
 	'includewp-licence-notice' => 'Горенаведената содржина е преземена од страницата $1 <a href="$2">$3</a> која е под лиценцата <a href="$4">$5</a>. Целосен список на автори ќе најдете <a href="$6">тука</a>.',
 	'includewp-parserhook-desc' => 'Парсерската кука што овозможува секогаш да се прикажува содржина на страница од Википедија.',
 	'includewp-include-par-page' => 'Името на онаа (далечинска) страница што сакате да се прикаже.',
+	'includewp-include-par-wiki' => 'Името на викито од кајшто сакате да извлечете содржини. Треба да е од дозволените викија (по основно: само Википедија)',
+	'includewp-include-par-paragraphs' => 'Број на пасуси што сакате првично да се прикажат.',
+	'includewp-include-par-height' => 'Максимална височина во пиксели (п) на полето кајшто ќе се прикажува содржината. Ако сакате да нема ограничување, ставете нула (0).',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'includewp-desc' => 'IncludeWP is een lichtgewicht uitbreiding voor het opnemen van inhoud vanuit Wikipedia',
+	'includewp-loading-page' => 'Bezig met het laden van de pagina...',
+	'includewp-show-full-page' => 'Volledige pagina weergeven',
+	'includewp-show-fragment' => 'Alleen de eerste paragraaf weergeven',
+	'includewp-loading-failed' => 'Fout bij het laden van de pagina.',
+	'includewp-licence-notice' => 'De bovenstaande tekst is overgenomen van de pagina <a href="$2">$3</a> van $1 en heeft de licentie <a href="$4">$5</a>. Een volledige lijst van auteurs is <a href="$6">hier</a> te vinden.',
+	'includewp-parserhook-desc' => 'Parserhook die het weergeven van de inhoud van een pagina van Wikipedia mogelijk maakt.',
+	'includewp-include-par-page' => 'De naam van de pagina op de andere wiki die moet worden weergegeven.',
+	'includewp-include-par-wiki' => "De naam van de wiki waar u inhoud van wilt weergeven. Dit moet een van de toegestane wiki's zijn; standaard is dit alleen Wikipedia.",
+	'includewp-include-par-paragraphs' => 'Het aantal paragrafen dat u aanvankelijk wilt weergeven.',
+	'includewp-include-par-height' => 'De maximale hooghte (in pixels) voor de "div" waarin de inhoud wordt gelaten. Stel dit in op 0 voor geen limiet.',
 );
 
 /** Portuguese (Português)
@@ -164,6 +190,9 @@ $messages['pt'] = array(
 	'includewp-licence-notice' => 'O conteúdo acima provém da página <a href="$2">$3</a> da $1, licenciada com a <a href="$4">$5</a>. Pode encontrar uma lista completa dos autores <a href="$6">aqui</a>.',
 	'includewp-parserhook-desc' => 'Hook do analisador sintáctico para apresentar o conteúdo de uma página da Wikipédia.',
 	'includewp-include-par-page' => 'O nome da página (remota) que pretende apresentar.',
+	'includewp-include-par-wiki' => 'O nome da wiki de onde deseja importar conteúdo. Tem de ser uma das wikis permitidas; por padrão, só a Wikipédia.',
+	'includewp-include-par-paragraphs' => 'O número de parágrafos que pretende mostrar inicialmente.',
+	'includewp-include-par-height' => 'A altura máxima (em pixels) da secção div na qual o conteúdo é carregado. Defina como 0 para ilimitado.',
 );
 
 /** Russian (Русский)

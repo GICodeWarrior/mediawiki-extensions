@@ -2555,14 +2555,34 @@ Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
 
 /** Albanian (Shqip)
  * @author Mikullovci11
+ * @author Olsi
  */
 $messages['sq'] = array(
+	'prefstats' => 'Statistikat e preferencave',
+	'prefstats-desc' => 'Ndiqni statistikat se sa përdorues kanë të aktivizuara preferenca të caktuara',
+	'prefstats-title' => 'Statistikat e preferencave',
+	'prefstats-list-intro' => 'Aktualisht, preferencat e mëposhtmë po ndiqen.
+Klikoni mbi një për të parë statistikat në lidhje me të.',
+	'prefstats-noprefs' => 'Asnjë preferencë nuk po ndiqet.
+Konfiguroni $wgPrefStatsTrackPrefs për të ndjekur preferencat.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|përdoruesi ka|përdoruesit kanë}} aktivizuar këtë preferencë që kur statistikat e preferencave u aktivizuan
+** $2  {{PLURAL:$2|përdoruesi e ka akoma|përdoruesit e kanë akoma}} të aktivizuar
+** $3 {{PLURAL:$3|përdoruesi e ka|përdoruesit e kanë}} e kanë çaktivizuar që',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|përdoruesi ka|përdoruesit kanë}} aktivizuar këtë preferencë që kur statistikat e preferencave u aktivizuan
+** $2  {{PLURAL:$2|përdoruesi e ka akoma|përdoruesit e kanë akoma}} të aktivizuar
+** $3 {{PLURAL:$3|përdoruesi e ka|përdoruesit e kanë}} e kanë çaktivizuar që
+* Në total, $4 {{PLURAL:$4|përdoruesi e ka|përdoruesit e kanë}} të vendosur këtë preferencë',
+	'prefstats-xaxis' => 'Kohëzgjatja (orë)',
+	'prefstats-factors' => 'Shikoni për: $1',
 	'prefstats-factor-hour' => 'Orë',
 	'prefstats-factor-sixhours' => 'gjashtë orë',
 	'prefstats-factor-day' => 'ditë',
 	'prefstats-factor-week' => 'javë',
 	'prefstats-factor-twoweeks' => 'dy javë',
 	'prefstats-factor-fourweeks' => 'katër javë',
+	'prefstats-factor-default' => 'kthehuni tek shkalla kryesore',
+	'prefstats-legend-out' => 'Vendosur jashtë',
+	'prefstats-legend-in' => 'Vendosur brenda',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
