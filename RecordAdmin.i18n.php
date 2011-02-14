@@ -2047,6 +2047,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'recordadmin-select' => 'Izaberi',
@@ -2055,7 +2056,7 @@ $messages['sr-el'] = array(
 	'recordadmin-createsuccess' => '$1 napravljen',
 	'recordadmin-badtitle' => 'Loš naslov!',
 	'recordadmin-buttoncreate' => 'Napravi',
-	'recordadmin-buttonreset' => 'Resetuj',
+	'recordadmin-buttonreset' => 'Poništi',
 	'recordadmin-buttonsave' => 'Snimi',
 	'recordadmin-newcreated' => 'Novi $1 napravljen sa javne forme',
 	'recordadmin-summary-typecreated' => 'Novi $1 napravljen',
@@ -2063,7 +2064,7 @@ $messages['sr-el'] = array(
 	'recordadmin-editlink' => 'izmeni',
 	'recordadmin-created' => 'Napravljeno',
 	'recordadmin-modified' => 'Izmenjeno',
-	'recordadmin-actions' => 'Akcije',
+	'recordadmin-actions' => 'Uredi',
 	'recordadmin-needscontent' => 'Dodaj sadržaj...',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
