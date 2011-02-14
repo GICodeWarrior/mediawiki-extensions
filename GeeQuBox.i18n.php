@@ -14,6 +14,6 @@ $messages = array();
  * @author David Raison
  */
 $messages['en'] = array(
-	'geequbox-desc' => 'Generates lightbox effects using the jquery lightbox plugin'
+	'geequbox-desc' => 'Generates lightbox effects using the jQuery lightbox plugin'
 );
 
