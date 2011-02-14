@@ -189,6 +189,19 @@ $messages['ja'] = array(
 	'emailusers-toomanyrecipientsselected' => '選択されている受信者が多すぎます（{{PLURAL:$1|最大$1件|最大$1件}}）。',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'emailusers-desc' => 'Määt et müjjelesch, dat Metmaacher <i lang="en">e-mail</i> aan vill Ämfänger verschecke.',
+	'right-sendbatchemail' => 'Scheck <i lang="en">e-mail</i> aan vill Ämfänger op eijmohl',
+	'emailusers' => 'Scheck <i lang="en">e-mail</i> aan Metmacher',
+	'emailusers-target-reverse' => 'Aan alle Metmaachr schecke, ußer aan de ußjewählte',
+	'emailusers-norecipient' => 'Mer han kein Metmaacher, aan di mer en <i lang="en">e-mail</i> verschecke künnte.',
+	'emailusers-norecipientselected' => 'Et es keine Ämfänger ußjesoht',
+	'emailusers-toomanyrecipientsselected' => 'Et sin zoh vill Ämfänger ußjesoht. Nit mieh wi ({{PLURAL:$1|eine|$1|keine}}) sin müjjelesch.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
