@@ -2123,22 +2123,45 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author David1010
  * @author Malafaya
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'voctrain_Hello_World' => 'გამარჯობა ვიკი!',
+	'voctrain_Permission_Denied' => 'ნებართვა აკრძალულია',
+	'voctrain_try_again_' => 'კიდევ სცდით?',
+	'voctrain_Action_unknown' => 'უცნობი მოქმედება',
+	'voctrain_User_added' => 'მომხმარებელი დამატებულია',
+	'voctrain_continue' => 'გაგრძელება',
 	'voctrain_bye' => 'ნახვამდის',
+	'voctrain_Set_up_your_exercise' => 'თქვენი სავარჯიშოს დაყენება',
+	'voctrain_Number_of_questions' => 'კითხვების რაოდენობა',
 	'voctrain_Languages' => 'ენები',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(მაგალითად, eng ინგლისურისათვის, deu გერმანულისათვის).',
 	'voctrain_Questions' => 'კითხვები',
 	'voctrain_Answers' => 'პასუხები',
+	'voctrain_start_exercise' => 'სავარჯიშოს დაწყება',
+	'voctrain_collection' => 'კოლექცია',
+	'voctrain_ISO_639_3_format' => 'ISO-639-3 ფორმატი',
+	'voctrain_Definition' => 'განსაზღვრება',
 	'voctrain_Word' => 'სიტყვა',
+	'voctrain_submit_answer' => 'პასუხის გაგზავნა',
+	'voctrain_skip' => 'გამოტოვება',
+	'voctrain_abort_exercise' => 'სავარჯიშოს შეწყვეტა',
+	'voctrain_list_answers' => 'პასუხების სია',
 	'voctrain_Question' => 'კითხვა',
 	'voctrain_Answer' => 'პასუხი',
 	'voctrain_Answer_s_' => 'პასუხ(ებ)ი',
+	'voctrain_logout' => 'გასვლა',
 	'voctrain_User_name' => 'მომხმარებელი',
 	'voctrain_Password' => 'პაროლი',
+	'voctrain_Login' => 'შესვლა',
 	'voctrain_Language' => 'ენა',
+	'voctrain_Log_in' => 'შესვლა',
+	'voctrain_Definitions' => 'განსაზღვრებები',
 	'voctrain_Translation' => 'თარგმანი',
+	'voctrain_other' => 'სხვა',
 );
 
 /** Kirmanjki (Kırmancki)
