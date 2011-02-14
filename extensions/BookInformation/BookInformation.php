@@ -32,7 +32,7 @@ $wgAutoloadClasses['BookInformationAmazon'] = dirname( __FILE__ ) . '/drivers/Am
 $wgAutoloadClasses['BookInformationIsbnDb'] = dirname( __FILE__ ) . '/drivers/IsbnDb.php';
 
 $wgHooks['BookInformation'][] = 'efBookInformation';
-$wgHooks['SkinTemplateSetupPageCss'][] = 'efBookInformationCss';
+$wgHooks['BeforePageDisplay'][] = 'efBookInformationAddCss';
 
 /**
  * Enables caching of results when the "bookinfo" table is available
@@ -68,11 +68,11 @@ function efBookInformation( $isbn, $output ) {
  * @param string $css Additional CSS
  * @return mixed
  */
-function efBookInformationCss( &$css ) {
-	global $wgTitle;
-	if ( $wgTitle->isSpecial( 'Booksources' ) ) {
-		$file = dirname( __FILE__ ) . '/BookInformation.css';
-		$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
+function efBookInformationAddCss( $out, &$sk ) {
+	global $wgScriptPath;
+
+	if ( $out->getTitle()->isSpecial( 'Booksources' ) ) {
+		$out->addExtensionStyle( "$wgScriptPath/extensions/BookInformation/BookInformation.css" );
 	}
 	return true;
 }
