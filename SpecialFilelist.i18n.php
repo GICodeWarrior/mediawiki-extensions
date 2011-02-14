@@ -993,6 +993,13 @@ $messages['vro'] = array(
 	'filelist-image-desc' => 'seletüs',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'filelist-show-list' => 'ווייַזן רשימה',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent
