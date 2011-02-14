@@ -11,8 +11,12 @@ function getTextBox( $name, $value = "", $onChangeHandler = "", $maximumLength =
 	return '<input type="text" id="' . $name . '" name="' . $name . '" value="' . htmlspecialchars( $value ) . '" maxlength="' . $maximumLength . '"' . $onChangeAttribute . ' style="width: 100%; padding: 0px; margin: 0px;"/>';
 }
  
-function getTextArea( $name, $text = "", $rows = 5, $columns = 80 ) {
-	return '<textarea name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '">' . htmlspecialchars( $text ) . '</textarea>';
+function getTextArea( $name, $text = "", $rows = 5, $columns = 80, $disabled = false ) {
+	if ( $disabled ) {
+		return '<textarea disabled="disabled" name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '">' . htmlspecialchars( $text ) . '</textarea>';
+	} else {
+		return '<textarea name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '">' . htmlspecialchars( $text ) . '</textarea>';
+	}
 }
 
 function checkBoxCheckAttribute( $isChecked ) {
@@ -22,18 +26,35 @@ function checkBoxCheckAttribute( $isChecked ) {
 		return '';
 }
  
-function getCheckBox( $name, $isChecked ) {
-	return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . '/>';
+function getCheckBox( $name, $isChecked, $disabled = false ) {
+// FIXME: if disabled is activated, then the page cannot be saved... why?
+// this affects identical_meaning checkboxes, but not delete_checkboxes
+// workaround : disable the checkbox with java instead of html "disabled"
+	if ( $disabled ) {
+		return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . ' onClick="this.checked = ! this.checked ;"/>';
+	} else {
+		return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . '/>';
+	}
 }
 
-function getCheckBoxWithOnClick( $name, $isChecked, $onClick ) {
-	return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . ' onclick="' . $onClick . '"/>';
+function getCheckBoxWithOnClick( $name, $isChecked, $onClick, $disabled = false ) {
+	if ( $disabled ) {
+		return '<input disabled="disabled" type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . ' onclick="' . $onClick . '"/>';
+	} else {
+		return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . ' onclick="' . $onClick . '"/>';
+	}
 }
 
 function getRemoveCheckBox( $name ) {
-	return getCheckBoxWithOnClick( $name, false, "removeClicked(this);" );
+	global $wgUser;
+	$dc = wdGetDataSetContext();
+	if ( ($dc == "uw") and (! $wgUser->isAllowed( 'deletewikidata-uw' ) ) ) {
+		return getCheckBoxWithOnClick( $name, false, "removeClicked(this);", true );
+	} else {
+		return getCheckBoxWithOnClick( $name, false, "removeClicked(this);" );
+	}
 }
-  
+
 # $options is an array of [value => text] pairs
 function getSelect( $name, $options, $selectedValue = "", $onChangeHandler = "" ) {
 	if ( $onChangeHandler != "" )
