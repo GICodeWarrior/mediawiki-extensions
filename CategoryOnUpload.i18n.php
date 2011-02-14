@@ -784,6 +784,13 @@ $messages['vo'] = array(
 	'categoryonupload-label' => 'Klad:',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'categoryonupload-label' => 'קאַטעגאריע:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */
