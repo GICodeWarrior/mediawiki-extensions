@@ -259,7 +259,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'emailaddressimage-desc' => '<tt> &lt;email&gt; </tt> määt et müjjelesch, <i lang="en">e-mail</i> Addresse als e Belldsche ußzejävve.',
+	'emailaddressimage-desc' => 'Brängk dä Befähl <tt> &lt;email&gt; </tt> un määt et müjjelesch, <i lang="en">e-mail</i> Addresse als e Belldsche ußzejävve.',
 );
 
 /** Cornish (Kernowek)
