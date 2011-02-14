@@ -19400,7 +19400,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'configure-setting-wgSitename' => 'Ime sajta',
-	'configure-setting-wgActionPaths-key' => 'Akcija',
+	'configure-setting-wgActionPaths-key' => 'Radnja',
 	'configure-setting-wgActionPaths-value' => 'URL šablon',
 	'configure-setting-wgAllDBsAreLocalhost' => 'Tiho prepiši sve povezane baze podataka na lokalni host',
 	'configure-setting-wgDBAvgStatusPoll' => 'Prosećno vreme između SHOW STATUS zahteva i uslova pretovarenja',
@@ -21533,6 +21533,7 @@ $messages['yi'] = array(
 	'configure-setting-wgVersion' => 'מעדיעוויקי ווערסיע',
 	'configure-setting-wgSpecialPageGroups-key' => 'גרופע',
 	'configure-setting-wgDebugLogGroups-value' => 'טעקע',
+	'configure-setting-wgAllowRealName' => 'דערלויבן עכטע נעמען',
 	'configure-setting-wgXhtmlNamespaces-key' => 'נאָמענטייל',
 );
 
