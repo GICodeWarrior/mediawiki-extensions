@@ -1554,6 +1554,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'passwordreset' => 'Obnavljanje lozinke',
@@ -1562,7 +1563,7 @@ $messages['sr-el'] = array(
 	'passwordreset-nopassmatch' => 'Lozinke se ne poklapaju',
 	'passwordreset-username' => 'Korisničko ime:',
 	'passwordreset-newpass' => 'Nova lozinka:',
-	'passwordreset-confirmpass' => 'Potvrdi lozinku:',
+	'passwordreset-confirmpass' => 'Potvrdite lozinku:',
 	'passwordreset-submit' => 'Obnovi lozinku',
 	'passwordreset-success' => 'Lozinka je obnovljena za korisnički ID: $1',
 	'passwordreset-disableuser' => 'Onemogućiti korisnički nalog?',
