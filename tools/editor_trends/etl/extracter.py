@@ -382,6 +382,8 @@ def launcher(rts):
     '''
     result = True
     tasks = unzip(rts)
+    if not tasks:
+        return False
 
     output = os.path.join(rts.input_location, rts.language.code,
                           rts.project.name, 'txt')

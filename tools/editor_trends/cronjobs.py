@@ -29,11 +29,8 @@ from classes import runtime_settings
 from analyses import analyzer
 
 
-def launch_editor_trends_toolkit(task):
-    '''
-    This function should only be called as a cronjob and not directly.
-    '''
-    project, language, parser, settings = manager.init_args_parser()
+def init_environment(task):
+    project, language, parser = manager.init_args_parser()
     args = parser.parse_args(['django'])
     pjc = projects.ProjectContainer()
     project = pjc.get_project(task['project'])
@@ -42,8 +39,16 @@ def launch_editor_trends_toolkit(task):
 
     args.language = language.name
     args.project = project.name
-    rts = runtime_settings.RunTimeSettings(project, language, settings, args)
-    res = manager.all_launcher(rts, settings, None)
+    rts = runtime_settings.RunTimeSettings(project, language, args)
+    return rts
+
+
+def launch_editor_trends_toolkit(task):
+    '''
+    This function should only be called as a cronjob and not directly.
+    '''
+    rts = init_environment(task)
+    res = manager.all_launcher(rts, None)
     return res
 
 
@@ -53,22 +58,19 @@ def launch_chart(task):
     '''
     res = True
     try:
-        project = task['project']
-        language_code = task['language_code']
+        rts = init_environment(task)
         func = task['jobtype']
-
-        collection = 'editors_dataset'  #FIXME hardcoded string
         time_unit = 'month'  #FIXME hardcoded string
         cutoff = 1  #FIXME hardcoded string
         cum_cutoff = 50  #FIXME hardcoded string
 
-        analyzer.generate_chart_data(project,
-                                          collection,
-                                          language_code,
-                                          func,
-                                          time_unit=time_unit,
-                                          cutoff=cutoff,
-                                          cum_cutoff=cum_cutoff)
+        analyzer.generate_chart_data(rts.project.name,
+                                     rts.collection,
+                                     rts.language.code,
+                                     func,
+                                     time_unit=time_unit,
+                                     cutoff=cutoff,
+                                     cum_cutoff=cum_cutoff)
     except AttributeError, e:
         res = False
         print e #need to capture more fine grained errors but not quite what errors are going to happen.

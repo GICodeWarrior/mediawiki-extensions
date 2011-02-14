@@ -19,7 +19,7 @@ class Dataset(models.Model):
     variables = DictField()
 
     class Meta:
-        db_table = 'enwiki_charts'
+        db_table = 'charts'
 
     def __iter__(self):
         for key, value in self.variables.items():
@@ -34,23 +34,23 @@ class Dataset(models.Model):
         return reverse('chart_generator', args=[self.project, self.language_code, self.name])
 
 
-class Editor(models.Model):
-    username = models.CharField(max_length=64)
-    editor = models.IntegerField()
-    first_edit = models.DateField()
-    final_edit = models.DateField()
-    new_wikipedian = models.DateField()
-    monthly_edits = DictField()
-    edit_count = models.IntegerField()
-    articles_by_year = DictField()
-    edits_by_year = DictField()
-    edits = ListField()
-
-    class Meta:
-        db_table = 'editors_dataset'
-
-    def __unicode__(self):
-        return u'%s, total edits: %s' % (self.username, self.edit_count)
+#class Editor(models.Model, language_code, project):
+#    username = models.CharField(max_length=64)
+#    editor = models.IntegerField()
+#    first_edit = models.DateField()
+#    final_edit = models.DateField()
+#    new_wikipedian = models.DateField()
+#    monthly_edits = DictField()
+#    edit_count = models.IntegerField()
+#    articles_by_year = DictField()
+#    edits_by_year = DictField()
+#    edits = ListField()
+#
+#    class Meta:
+#        db_table = '%s%s_editors_dataset' % (language_code, project)
+#
+#    def __unicode__(self):
+#        return u'%s, total edits: %s' % (self.username, self.edit_count)
 
 class EditorAdmin(admin.ModelAdmin):
     pass

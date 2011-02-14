@@ -26,6 +26,7 @@ import datetime
 if '..' not in sys.path:
     sys.path.append('..')
 
+import inventory
 from classes import dataset
 from classes import settings
 settings = settings.Settings()
@@ -42,7 +43,7 @@ def generate_chart_data(project, collection, language_code, func, encoder, **kwa
     stopwatch = timer.Timer()
     res = True
     dbname = '%s%s' % (language_code, project)
-    functions = available_analyses()
+    functions = inventory.available_analyses()
     try:
         func = functions[func]
     except KeyError:
@@ -119,8 +120,8 @@ def determine_project_year_range(dbname, collection, var):
 
 
 if __name__ == '__main__':
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_by_backward_cohort', 'to_bar_json', time_unit='year', cutoff=0, cum_cutoff=50)
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'edit_patterns', 'to_bar_json', time_unit='year', cutoff=5)
+    generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_by_backward_cohort', 'to_bar_json', time_unit='year', cutoff=0, cum_cutoff=50)
+    #generate_chart_data('wiki', 'editors_dataset', 'en', 'edit_patterns', 'to_bar_json', time_unit='year', cutoff=5)
     #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', 'to_bar_json', time_unit='year')
     #generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', 'to_bar_json', time_unit='year')
     #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', 'to_bar_json', time_unit='year')

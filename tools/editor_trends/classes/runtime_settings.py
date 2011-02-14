@@ -29,7 +29,6 @@ import locale
 import datetime
 import time
 import re
-#sys.path.append('..')
 
 from settings import Settings
 from utils import text_utils
@@ -60,7 +59,6 @@ class RunTimeSettings(Settings):
                 self.input_location != None else self.get_value('location')
             self.project = self.update_project_settings()
             self.language = self.update_language_settings()
-            #self.dbname = '%s%s' % (self.language.code, self.project.name)
             self.targets = self.split_keywords(self.get_value('charts'))
             self.keywords = self.split_keywords(self.get_value('keywords'))
             self.function = self.get_value('func')

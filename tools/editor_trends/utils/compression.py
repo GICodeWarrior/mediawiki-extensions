@@ -89,8 +89,8 @@ class Compressor(object):
         if self.program_installed == None:
             raise exceptions.CompressionNotSupportedError
 
-        print self.location
-        print self.file
+        #print self.location
+        #print self.file
         if not file_utils.check_file_exists(self.location, self.file):
             raise exceptions.FileNotFoundException(self.location, self.file)
 
@@ -103,7 +103,7 @@ class Compressor(object):
         commands = args.get(self.name, None)
         #print commands
         if commands != None:
-            p = subprocess.call(commands)
+            p = subprocess.call(commands, shell=True)
             #p = subprocess.Popen(commands, shell=True).wait()
         else:
             raise exceptions.CompressionNotSupportedError

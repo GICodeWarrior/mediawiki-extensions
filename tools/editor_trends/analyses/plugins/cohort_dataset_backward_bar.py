@@ -23,7 +23,6 @@ from utils import data_converter
 
 
 def cohort_dataset_backward_bar(var, editor, **kwargs):
-    #first_edit = editor['first_edit']
     '''
     The backward looking bar chart looks for every year that an editor
     was part of the Wikimedia community whether this person made at least cutoff

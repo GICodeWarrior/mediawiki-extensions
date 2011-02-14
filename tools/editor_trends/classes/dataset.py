@@ -25,7 +25,7 @@ import operator
 import sys
 from pymongo.son_manipulator import SONManipulator
 from multiprocessing import Lock
-
+from texttable import Texttable
 
 sys.path.append('..')
 import configuration
@@ -80,11 +80,18 @@ class Data:
     Dataset classes. 
     '''
     def __hash__(self, vars):
+        '''
+        This is a generic hash function that expects a list of variables, used
+        to lookup an observation or Variable. 
+        '''
         id = ''.join([str(var) for var in vars])
         return hash(id)
-        #return int(self.convert_date_to_epoch(date))
 
     def encode_to_bson(self, data=None):
+        '''
+        This function converts a Variable or Observation to a dictionary that 
+        can be stored in Mongo.
+        '''
         if data:
             kwargs = dict([(str(key), value) for key, value in data.__dict__.iteritems()])
         else:
@@ -100,6 +107,10 @@ class Data:
         return kwargs
 
     def convert_date_to_epoch(self, date):
+        '''
+        Calculate the number of seconds since epoch depending on the time_unit
+        of the date
+        '''
         assert self.time_unit == 'year' or self.time_unit == 'month' \
         or self.time_unit == 'day', 'Time unit should either be year, month or day.'
 
@@ -115,6 +126,9 @@ class Data:
             return date
 
     def set_date_range(self, date):
+        '''
+        Determine the width of a date range for an observation. 
+        '''
         if self.time_unit == 'year':
             return datetime.datetime(date.year, 12, 31), datetime.datetime(date.year, 1, 1)
         elif self.time_unit == 'month':
@@ -213,7 +227,7 @@ class Variable(Data):
             yield key
 
     def __len__(self):
-        return [x for x in xrange(self.obs())]
+        return len(self.obs.keys())
 
     def items(self):
         for key in self.__dict__.keys():
@@ -240,8 +254,25 @@ class Variable(Data):
         return obs
 
     def add(self, date, value, meta={}):
+        '''
+        The add function is used to add an observation to a variable. An
+        observation is always grouped by the combination of the date and time_unit.
+        Time_unit is a property of a Variable and indicates how granular the 
+        observations should be grouped. For example, if time_unit == year then
+        all observations in a given year will be grouped. 
+        When calling add you should supply at least two variables:
+        1) date: when did the observation happen
+        2) value: an integer or float that was observed on that date
+        Optionally you can supply a dictionary for extra groupings. The key is
+        the name of the extra grouping.
+        For example, if you add {'experience': 3} as the meta dict when calling
+        add then you will create an extra grouping called experience and all
+        future observations who fall in the same date range and the same 
+        exerience level will be grouped by that particular observation. You 
+        can use as many extra groupings as you want but usually one extra grouping
+        should be enough. 
+        '''
         assert isinstance(meta, dict), 'The meta variable should be a dict (either empty or with variables to group by.'
-        #id = self.convert_date_to_epoch(date)
         start, end = self.set_date_range(date)
         values = meta.values()
         values.insert(0, end)
@@ -251,6 +282,12 @@ class Variable(Data):
         obs = self.get_observation(id, date, meta)
         obs.add(value)
         self.obs[id] = obs
+
+    def number_of_obs(self):
+        n = 0
+        for obs in self.obs:
+            n += self.obs[obs].count
+        return n
 
     def encode(self):
         bson = {}
@@ -323,6 +360,12 @@ class Dataset:
         for var in self.variables:
             yield getattr(self, var)
 
+    def details(self):
+        print 'Project: %s%s' % (self.language_code, self.project)
+        print 'JSON encoder: %s' % self.encoder
+        print 'Raw data was retrieved from: %s%s/%s' % (self.language_code,
+                                                      self.project,
+                                                      self.collection)
 
     def create_filename(self):
         '''
@@ -359,6 +402,9 @@ class Dataset:
 
 
     def add_variable(self, var):
+        '''
+        Call this function to add a Variable to a dataset. 
+        '''
         if isinstance(var, Variable):
             self.variables.append(var.name)
             setattr(self, var.name, var)
@@ -366,6 +412,9 @@ class Dataset:
             raise TypeError('You can only instance of Variable to a dataset.')
 
     def write(self, format='csv'):
+        '''
+        This is the entry point for outputting data, either to csv or mongo.
+        '''
         self.create_filename()
         if format == 'csv':
             self.to_csv()
@@ -429,20 +478,27 @@ class Dataset:
             variable.sds = self.get_standard_deviation(data)
             variable.min = min(data)
             variable.max = max(data)
-            variable.n = len(data)
+            variable.num_obs = variable.number_of_obs()
+            variable.num_dates = len(variable)
             variable.first_obs, variable.last_obs = variable.get_date_range()
 
     def summary(self):
         self.descriptives()
-        print '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % ('Variable', 'Mean',
-                                        'Median', 'SD', 'Minimum', 'Maximum',
-                                        'Num Obs', 'First Obs', 'Final Obs')
-        for variable in self:
-            print '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s' % (variable.name,
-                                            variable.mean, variable.median,
-                                            variable.sds, variable.min,
-                                            variable.max, variable.n,
-                                            variable.first_obs, variable.last_obs)
+        table = Texttable(max_width=0)
+        vars = ['Variable', 'Mean', 'Median', 'SD', 'Minimum', 'Maximum',
+                'Num Obs', 'Num of\nUnique Dates', 'First Obs', 'Final Obs']
+        table.add_row([var for var in vars])
+        table.set_cols_align(['r' for v in vars])
+        table.set_cols_valign(['m' for v in vars])
+
+        for x, variable in enumerate(self):
+            table.add_row([variable.name, variable.mean, variable.median,
+                            variable.sds, variable.min, variable.max,
+                            variable.num_obs, variable.num_dates,
+                            variable.first_obs, variable.last_obs])
+        print table.draw()
+        print self
+        print self.details()
 
 
 def debug():
@@ -456,16 +512,16 @@ def debug():
                                         {'name': 'count', 'time_unit': 'year'},
                                        # {'name': 'testest', 'time_unit': 'year'}
                                         ])
-    ds.count.add(d1, 10, ['exp', 'window'])
-    ds.count.add(d1, 135, ['exp', 'window'])
-    ds.count.add(d2, 1, ['exp', 'window'])
+    ds.count.add(d1, 10, {'exp': 3})
+    ds.count.add(d1, 135, {'exp': 3})
+    ds.count.add(d2, 1, {'exp': 4})
     #ds.testest.add(d1, 135)
     #ds.testest.add(d2, 535)
     ds.summary()
     ds.write(format='csv')
 #    v = Variable('test', 'year')
     ds.encode()
-    print ds
+
 
  #   mongo.test.insert({'variables': ds})
 

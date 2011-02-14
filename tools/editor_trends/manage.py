@@ -229,12 +229,12 @@ def cleanup(rts, logger):
     file_utils.delete_file(settings.binary_location, filename)
 
 
-def all_launcher(properties, logger):
+def all_launcher(rts, logger):
     print 'The entire data processing chain has been called, this will take a \
     couple of hours (at least) to complete.'
     stopwatch = timer.Timer()
-    log.log_to_mongo(properties, 'dataset', 'all', stopwatch, event='start')
-    print 'Start of building %s %s dataset.' % (properties.language.name, properties.project)
+    log.log_to_mongo(rts, 'dataset', 'all', stopwatch, event='start')
+    print 'Start of building %s %s dataset.' % (rts.language.name, rts.project)
 
 #    write_message_to_log(logger, settings,
 #                         message=message,
@@ -242,8 +242,8 @@ def all_launcher(properties, logger):
 #                         full_project=properties.full_project,
 #                         ignore=properties.ignore,
 #                         clean=properties.clean)
-    if properties.clean:
-        cleanup(properties, settings, logger)
+    if rts.clean:
+        cleanup(rts, logger)
 
     functions = ordered_dict.OrderedDict(((downloader_launcher, 'download'),
                                           (extract_launcher, 'extract'),
@@ -253,16 +253,16 @@ def all_launcher(properties, logger):
                                           (dataset_launcher, 'dataset')))
 
     for function, callname in functions.iteritems():
-        if callname not in properties.ignore:
+        if callname not in rts.ignore:
             print 'Starting %s' % function.func_name
-            res = function(properties, logger)
+            res = function(rts, logger)
             if res == False:
                 sys.exit(False)
             elif res == None:
                 print 'Function %s does not return a status, \
                 implement NOW' % function.func_name
     stopwatch.elapsed()
-    log.log_to_mongo(properties, 'dataset', 'all', stopwatch, event='finish')
+    log.log_to_mongo(rts, 'dataset', 'all', stopwatch, event='finish')
 
 
 

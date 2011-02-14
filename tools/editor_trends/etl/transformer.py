@@ -17,6 +17,7 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-02'
 __version__ = '0.1'
 
+import progressbar
 import multiprocessing
 from Queue import Empty
 from operator import itemgetter
@@ -192,10 +193,11 @@ def setup_database(rts):
 def transform_editors_single_launcher(rts):
     ids = db.retrieve_distinct_keys(rts.dbname, rts.editors_raw, 'editor')
     input_db, output_db = setup_database(rts)
+    pbar = progressbar.ProgressBar(maxval=len(ids)).start()
     for x, id in enumerate(ids):
-        print '%s editors to go...' % (len(ids) - x)
         editor = Editor(id, input_db, output_db)
         editor()
+        pbar.update(pbar.currval + 1)
 
 
 if __name__ == '__main__':

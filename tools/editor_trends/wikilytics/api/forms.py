@@ -3,7 +3,7 @@ from django import forms
 
 from wikilytics.api.widgets import MonthYearWidget
 from editor_trends.classes import projects
-from editor_trends.analyses.analyzer import available_analyses
+from editor_trends.analyses.inventory import available_analyses
 
 
 

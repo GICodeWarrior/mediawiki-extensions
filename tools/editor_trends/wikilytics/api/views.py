@@ -42,7 +42,7 @@ def dataset_dispatcher(request, project, language):
     if created:
         job.save()
     jobs = Job.objects.filter(jobtype='dataset', finished=False, in_progress=False)
-    ds = Dataset.objects.using('enwiki').filter(project=project, language_code=language)
+    ds = Dataset.objects.filter(project=project, language_code=language)
     print ds
     return render_to_response('datasets.html', {'datasets': ds, 'jobs': jobs})
 
@@ -59,7 +59,7 @@ def chart_generator(request, project, language, chart):
     c = {}
     print project, language, chart
     try:
-        ds = Dataset.objects.using('enwiki').get(project=project, language_code=language, name=chart)
+        ds = Dataset.objects.get(project=project, language_code=language, name=chart)
         print ds
     except:
         hash = helpers.create_hash(project, language)
