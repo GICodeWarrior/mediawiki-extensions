@@ -43,10 +43,17 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Jon Harald Søby
+ * @author Purodha
  * @author Whym
  */
 $messages['qqq'] = array(
 	'e-mailpage' => 'The first heading text shown in a sending form of Special:EmailPage.',
+	'ea-pagesend' => 'This message is used in the e-mail header as content of the "Subject: "-field.
+
+Parameters:
+* $1 - page title
+* $2 - name of the wiki, same as <code lang="en"><nowiki>{{SITENAME}}
+</nowiki></code>',
 	'ea-denied' => '{{Identical|Permission denied}}',
 	'ea-from' => '{{Identical|From}}',
 	'ea-to' => '{{Identical|To}}',
@@ -595,6 +602,38 @@ $messages['km'] = array(
 	'e-mailpage' => 'ទំព័រអ៊ីមែល',
 	'ea-pagesend' => 'ទំព័រ"$1"ត្រូវបានបញ្ជូនពី$2',
 	'ea-send' => 'ផ្ញើ!',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'e-mailpage' => 'Sigg pä <i lang="en">e-mail</i> verschecke',
+	'ea-desc' => 'Scheck Sigge uss_em Wiki em fäädejje HTML-Fommaat met de <i lang="en">e-mail</i> aan ein udder mieh Adräße met däm Projramm <i lang="en">[http://phpmailer.sourceforge.net phpmailer]</i>.',
+	'ea-heading' => 'De Sigg „[[$1]]“ met de <i lang="en">e-mail</i> verschecke.',
+	'ea-group-info' => 'Do kanns di Sigg och noch aan de Metjleeder vun ene Metmaacherjropp verschecke.',
+	'ea-pagesend' => 'De Sigg "$1" us {{GRAMMAR:Dativ|$2}}',
+	'ea-nopage' => 'Kein Sigg zom Verschecke woor aanjejovve, bes esu joot, un donn dä Lengk aam Rand op dä Sigg nämme, di De veschecke wells.',
+	'ea-norecipients' => 'Kein jölteje Adräß för de <i lang="en">e-mail</i> zom Verschecke jefonge!',
+	'ea-listrecipients' => '{{PLURAL:$1|Ämfänger|De Leß met de Ämfänger|Kein Leß}}',
+	'ea-error' => "'''Ene Fähler es opjetrodde beim Verschecke vun dä Sigg „[[$1]]“''' — ''$2''",
+	'ea-denied' => 'Kein Rääsch, för <i lang="en">e-mail</i> ze verschecke',
+	'ea-sent' => 'De Sigg „[[$1]]“ es {{GENDER:vum|vum|vum Metmaacher|vun dä|vum}} [[User:$3|$3]] aan {{PLURAL:$2|eine Emfänger|$2 Emfänger|keine}} verscheck woode.',
+	'ea-compose' => 'Nohreesch schriive',
+	'ea-show' => 'Ämfänger aanzeije',
+	'ea-from' => 'Vum:',
+	'ea-to' => 'Aan:',
+	'ea-to-info' => 'Zwesche de Adräß för de <i lang="en">e-mail</i> künne Strechpunkte, Kommas, Stääncher, un Reije-Ende shtonn, esu vill wi mer well.',
+	'ea-cc' => 'Koppije aan:',
+	'ea-send' => 'Affschecke!',
+	'ea-subject' => 'Theema:',
+	'ea-message' => 'Dä Täx en dä Nohreesch:',
+	'ea-message-info' => 'Donn heh dä Täx udder Wikicode vür dä Siggetext en de <i lang="en">e-mail</i>, kanns De ävver och läddesch lohße.',
+	'ea-style' => 'Ußsinn noh:',
+	'ea-selectcss' => 'För et Ußsinn kanns Do en CSS-Dattei ußwähle',
+	'ea-data' => 'Daate',
+	'ea-selectrecord' => 'Heh di Schabloone künne jebruch wääde, öm Felder en dä <i lang="en">e-mail</i> enzefölle.',
+	'ea-allusers' => 'Alle Metmaacher',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
