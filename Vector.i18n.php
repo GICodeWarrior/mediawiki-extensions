@@ -1412,21 +1412,30 @@ To opozorilo lahko onemogočite v razdelku »Urejanje« svojih nastavitev.',
 
 /** Albanian (Shqip)
  * @author Mikullovci11
+ * @author Olsi
  */
 $messages['sq'] = array(
+	'vector' => 'Përmirësime UI për Vector',
+	'vector-desc' => 'Përmirësime në elementet e ndërfaqes së përdoruesit të pamjes Vector.',
+	'vector-collapsiblenav-preference' => 'Aktivizoni mbylljen e artikujve në menunë e navigimit në pamjen Vector',
 	'vector-collapsiblenav-more' => 'Gjuhët tjera',
+	'vector-editwarning-warning' => 'Lënia e kësaj faqeje mund t\'ju shkaktojë humbjen e çdo ndryshimi që keni bërë.
+Nëse keni hyrë brenda, ju mund ta hiqni këtë paralajmërim në seksionin "Redaktimi" tek preferencat tuaja.',
+	'vector-editwarning-preference' => 'Më paralajmëro kur unë lë një redaktim faqeje me ndryshime të paruajtura',
 	'vector-simplesearch-search' => 'Kërko',
 	'vector-simplesearch-containing' => 'përmban ...',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Helios13
+ * @author Rancher
  * @author Жељко Тодоровић
  */
 $messages['sr-ec'] = array(
 	'vector' => 'Побољшања корисничког интерфејса за вектор',
+	'vector-collapsiblenav-preference' => 'Скупљање ставки навигационог менија у Vector пресвлаци',
 	'vector-collapsiblenav-more' => 'Још језика:',
-	'vector-editwarning-preference' => 'Упозори ме када напустим страницу са несачуваним променама',
+	'vector-editwarning-preference' => 'Упозори ме када напустим страницу која није сачувана',
 	'vector-simplesearch-search' => 'Претрага',
 	'vector-simplesearch-containing' => 'садржи...',
 );
