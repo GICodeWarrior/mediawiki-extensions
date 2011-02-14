@@ -950,6 +950,7 @@ $wgGoogleMapsMessages['ca'] = array(
  * @author Sasan700
  */
 $wgGoogleMapsMessages['ce'] = array(
+	'gm-yes' => 'Хlаъ',
 	'gm-search' => 'Лаха',
 );
 
