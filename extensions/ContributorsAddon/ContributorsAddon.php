@@ -17,7 +17,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-$wgExtensionFunctions[] = 'efContributorsAddon';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ContributorsAddon',
@@ -30,18 +29,14 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['ContributorsAddon'] = $dir . 'ContributorsAddon.i18n.php';
 $wgAutoloadClasses['SpecialContributorsAddon'] = $dir . 'ContributorsAddonClass.php';
 
-function efContributorsAddon() {
-	global $wgHooks;
-	$wgHooks['OutputPageParserOutput'][] = 'efContributorsAddonSetup';
-	return true;
-}
+$wgHooks['OutputPageParserOutput'][] = 'efContributorsAddonSetup';
 
-function efContributorsAddonSetup(&$out, $parseroutput) {
+function efContributorsAddonSetup( &$out, $parseroutput ) {
 	global $wgScriptPath;
 	$out->addScript( '<link rel="stylesheet" type="text/css" href="' . $wgScriptPath . '/extensions/ContributorsAddon/ContributorsAddon.css" />' );
 	$out->addScript( '<script type="text/javascript" src="' . $wgScriptPath . '/extensions/ContributorsAddon/ContributorsAddon.js"><!-- ContributorsAddon js --></script>' );
 	$spContribAddon = new SpecialContributorsAddon;
-	$out->addScript( "\n<script type=\"text/javascript\">\nvar contributorsText = \"".  $spContribAddon->getContributorsText() . "\";\n</script>\n" );
+	$out->addScript( "\n<script type=\"text/javascript\">\nvar contributorsText = \"".  $spContribAddon->getContributorsText( $out->getTitle() ) . "\";\n</script>\n" );
 	return true;
 }
 
