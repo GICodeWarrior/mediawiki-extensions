@@ -14,9 +14,6 @@
 	padding: .1em;
 }
 
-ul#SelectCategoryList {
-  list-style-image: none;
-  list-style-type: none;
+ul#SelectCategoryList, #SelectCategoryList ul {
+  list-style: none outside none !important;
 }
-
-
