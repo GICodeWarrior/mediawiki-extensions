@@ -217,6 +217,13 @@ $messages['ksh'] = array(
 	'pdfbook-desc' => 'Ställd e Booch zesamme us dä Sigge en ene Saachjropp un expoteed et als en Aat Booch en en PDF-Dattei.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'pdfbook-action' => 'Weka PDF çap bike',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
