@@ -88,7 +88,9 @@ class MultipleUpload extends SpecialUpload {
 				$_FILES['wpUploadFile'] = $_FILES['wpUploadFile' . $i];
 				wfRestoreWarnings();
 				$up = UploadBase::createFromRequest( $request );
-				$this->mUploads[$i] = $up;
+				if ($up) {
+					$this->mUploads[] = $up;
+				}
 			}
 		}
 		$this->mDesiredDestName = $this->mDesiredDestNames[0];
