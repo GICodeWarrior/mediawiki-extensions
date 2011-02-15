@@ -1413,6 +1413,14 @@ Lejend fun de Enschäzunge: '''(1)''' = {{int:readerfeedback-level-0}}, '''(2)''
 	'right-feedback' => 'Enschäzunge afjevve un Note för Sigge verdeile',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'ratinghistory-month' => 'meha dawî',
+	'ratinghistory-year' => 'sala dawî',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

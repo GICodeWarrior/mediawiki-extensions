@@ -1577,6 +1577,7 @@ $messages['ksh'] = array(
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'readerfeedback-level-3' => 'Bilind',
 	'readerfeedback-finished' => 'Spas!',
 );
 
