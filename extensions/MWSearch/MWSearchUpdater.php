@@ -136,7 +136,7 @@ class MWSearchUpdater {
 				array(
 					'Namespace' => new XML_RPC_Value( $param->getNamespace(), 'int' ),
 					'Text'      => new XML_RPC_Value( $param->getText(), 'string' ) ),
-				'struct' );
+					'struct' );
 		} elseif( is_string( $param ) ) {
 			return new XML_RPC_Value( $param, 'string' );
 		} elseif( is_array( $param ) ) {
@@ -158,7 +158,7 @@ class MWSearchUpdater {
 	 * @access private
 	 * @static
 	 */
-	static function sendRPC( $method, $params=array() ) {
+	static function sendRPC( $method, $params = array() ) {
 		global $mwSearchUpdateHost, $mwSearchUpdatePort, $mwSearchUpdateDebug;
 		$client = new XML_RPC_Client( '/SearchUpdater', $mwSearchUpdateHost, $mwSearchUpdatePort );
 		if( $mwSearchUpdateDebug ) {
