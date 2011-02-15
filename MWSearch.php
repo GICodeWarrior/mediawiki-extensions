@@ -76,6 +76,7 @@ $wgAutoloadClasses['LuceneSearchSet'] = $dir . 'MWSearch_body.php';
 
 function efLucenePrefixSetup() {
 	global $wgHooks, $wgLuceneSearchVersion, $wgEnableLucenePrefixSearch;
-	if($wgLuceneSearchVersion >= 2.1 && $wgEnableLucenePrefixSearch)
+	if( $wgLuceneSearchVersion >= 2.1 && $wgEnableLucenePrefixSearch ) {
 		$wgHooks['PrefixSearchBackend'][] = 'LuceneSearch::prefixSearch';
+	}
 }
