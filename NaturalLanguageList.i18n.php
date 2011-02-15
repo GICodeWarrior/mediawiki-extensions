@@ -216,6 +216,13 @@ $messages['ksh'] = array(
 	'nll-lastseparator' => '&#32;un&#32;',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'nll-lastseparator' => '&#32;û&#32;',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
