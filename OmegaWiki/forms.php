@@ -13,7 +13,7 @@ function getTextBox( $name, $value = "", $onChangeHandler = "", $maximumLength =
  
 function getTextArea( $name, $text = "", $rows = 5, $columns = 80, $disabled = false ) {
 	if ( $disabled ) {
-		return '<textarea disabled="disabled" name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '">' . htmlspecialchars( $text ) . '</textarea>';
+		return '<textarea name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '" READONLY>' . htmlspecialchars( $text ) . '</textarea>';
 	} else {
 		return '<textarea name="' . $name . '" rows="' . $rows . '" cols="' . $columns . '">' . htmlspecialchars( $text ) . '</textarea>';
 	}
@@ -27,11 +27,10 @@ function checkBoxCheckAttribute( $isChecked ) {
 }
  
 function getCheckBox( $name, $isChecked, $disabled = false ) {
-// FIXME: if disabled is activated, then the page cannot be saved... why?
-// this affects identical_meaning checkboxes, but not delete_checkboxes
-// workaround : disable the checkbox with java instead of html "disabled"
+	// a disabled checkbox returns no value, as if unchecked
+	// therefore the value of a disabled, but checked, checkbox must be sent with a hidden input
 	if ( $disabled ) {
-		return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . ' onClick="this.checked = ! this.checked ;"/>';
+		return '<input disabled="disabled" type="checkbox" name="' . $name . checkBoxCheckAttribute( $isChecked ) . '/><input type="hidden" name="' . $name . '" value="' . $isChecked . '"/>';
 	} else {
 		return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . '/>';
 	}
@@ -39,7 +38,7 @@ function getCheckBox( $name, $isChecked, $disabled = false ) {
 
 function getCheckBoxWithOnClick( $name, $isChecked, $onClick, $disabled = false ) {
 	if ( $disabled ) {
-		return '<input disabled="disabled" type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . ' onclick="' . $onClick . '"/>';
+		return '<input disabled="disabled" type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . '"/><input type="hidden" name="' . $name . '" value="' . $isChecked . '"/>';
 	} else {
 		return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . ' onclick="' . $onClick . '"/>';
 	}
