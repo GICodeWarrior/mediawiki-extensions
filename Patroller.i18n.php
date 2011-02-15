@@ -1848,8 +1848,10 @@ $messages['sl'] = array(
 
 /** Albanian (Shqip)
  * @author Mikullovci11
+ * @author Olsi
  */
 $messages['sq'] = array(
+	'group-patroller' => 'Patrolluesit',
 	'group-patroller-member' => 'inspektorues',
 );
 
