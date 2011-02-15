@@ -31,9 +31,9 @@ function getCheckBox( $name, $isChecked, $disabled = false ) {
 	// therefore the value of a disabled, but checked, checkbox must be sent with a hidden input
 	if ( $disabled ) {
 		if ( $isChecked ) {
-			return '<input disabled="disabled" type="checkbox" name="' . $name . checkBoxCheckAttribute( $isChecked ) . '/><input type="hidden" name="' . $name . '" value="1"/>';
+			return '<input disabled="disabled" type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . '/><input type="hidden" name="' . $name . '" value="1"/>';
 		} else {
-			return '<input disabled="disabled" type="checkbox" name="' . $name . checkBoxCheckAttribute( $isChecked ) . '/>';
+			return '<input disabled="disabled" type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . '/>';
 		}
 	} else {
 		return '<input type="checkbox" name="' . $name . '"' . checkBoxCheckAttribute( $isChecked ) . '/>';
