@@ -187,6 +187,13 @@ $messages['ksh'] = array(
 	'rped-wikipedia-url' => 'http://ksh.wikipedia.org/wiki/$1',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'rped-wikipedia-url' => 'http://ku.wikipedia.org/wiki/$1',
+);
+
 /** Ladino (Ladino)
  * @author Universal Life
  */
