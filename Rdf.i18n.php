@@ -238,7 +238,7 @@ $messages['nl'] = array(
  */
 $messages['pt'] = array(
 	'rdf-desc' => 'Modelo RDF para o MediaWiki',
-	'rdf-inpage' => 'Incorporada na Página',
+	'rdf-inpage' => 'Sintaxe Turtle Incorporada',
 	'rdf-dcmes' => 'Conjunto de Elementos de Metadados Dublin Core',
 	'rdf-cc' => 'Creative Commons',
 	'rdf-image' => 'Imagens incorporadas',
