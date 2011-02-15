@@ -415,6 +415,15 @@ Ene neue Metmaacher mem Name "$2"
 es aam $5 öm $6 Uhr en de $3 neu aanjemeldt woode.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'newusernotifbody' => 'Silav $1,
+
+Hesabekî nû, $2, li ser $3 di $4 de çêbû.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

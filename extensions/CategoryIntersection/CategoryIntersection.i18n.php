@@ -715,13 +715,14 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'categoryintersection' => 'Пресек категорија',
 	'categoryintersection-desc' => 'Одржава табелу са хеш вредностима за [[Special:CategoryIntersection|пресеке категорија]] унутар стране',
 	'categoryintersection-doit' => 'Сврстава стране у свим овим категоријама',
-	'categoryintersection-maxcategories' => 'Максималан дозвољен број категорија у пресеку је $1.',
+	'categoryintersection-maxcategories' => 'Највећи могући број категорија у пресеку је $1.',
 	'categoryintersection-mincategories' => 'Морате да укључите најмање две категорије.',
 	'categoryintersection-results' => 'Претрага је вратила $1 {{PLURAL:$1|резултат|резултата}}.',
 );

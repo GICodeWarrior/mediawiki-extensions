@@ -1867,7 +1867,7 @@ $4',
  */
 $messages['sr-ec'] = array(
 	'todo' => 'Списак ствари за урадити',
-	'todo-desc' => 'Екстензија за експерименталан лични [[Special:Todo|списак ствари за урадити]]',
+	'todo-desc' => 'Експериментално [[Special:Todo|todo list]] проширење',
 	'todo-tab' => 'за урадити',
 	'todo-new-queue' => 'ново',
 	'todo-unrecognize-type' => 'Непознат тип',

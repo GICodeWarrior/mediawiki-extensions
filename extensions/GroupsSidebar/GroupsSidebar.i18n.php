@@ -258,10 +258,11 @@ $messages['ru'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'groupssidebar-desc' => 'Ова екстензија омогућава администраторима сајта да укључе сајдбар елементе за одређене корисничке групе',
+	'groupssidebar-desc' => 'Ово проширење омогућава администраторима да унесу елементе у бочну палету за одређене корисничке групе',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬) */

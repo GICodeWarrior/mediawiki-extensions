@@ -362,10 +362,11 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'javascript-desc' => 'Додаје uniwiki.js на сваку страну која садржи јаваскрипт код који се користи између више Унивики екстензија',
+	'javascript-desc' => 'Додаје uniwiki.js на сваку страницу која садржи јаваскрипту и користи се између више Унивики проширења',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

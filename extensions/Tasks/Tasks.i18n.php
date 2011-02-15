@@ -3468,7 +3468,7 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'tasks' => 'Задаци',
-	'tasks_desc' => 'Екстензија за руковање задацима',
+	'tasks_desc' => 'Проширење за управљање задацима',
 	'tasks_tab' => 'Задаци',
 	'tasks_title' => 'Задаци за "$1"',
 	'tasks_form_new' => 'Направи нови задатак',

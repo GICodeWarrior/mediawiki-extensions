@@ -2483,6 +2483,8 @@ $messages['te'] = array(
 	'articlefeedback-survey-submit' => 'దాఖలుచెయ్యి',
 	'articlefeedback-survey-title' => 'దయచేసి కొన్ని ప్రశ్నలకి సమాధానమివ్వండి',
 	'articlefeedback-survey-thanks' => 'ఈ సర్వేని పూరించినందుకు కృతజ్ఞతలు.',
+	'articlefeedback-report-panel-title' => 'పుట మూల్యాంకన',
+	'articlefeedback-report-ratings' => '$1 మూల్యాంకనలు',
 );
 
 /** Turkmen (Türkmençe)

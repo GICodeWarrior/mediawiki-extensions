@@ -597,6 +597,7 @@ $messages['ksh'] = array(
  */
 $messages['ku-latn'] = array(
 	'profiling-ok' => 'Temam',
+	'profiling-data-process' => 'Pêvajo',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

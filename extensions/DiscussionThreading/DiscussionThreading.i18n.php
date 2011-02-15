@@ -645,10 +645,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'discussionthreading-replysection' => 'одговори',
+	'discussionthreading-replysectionhint' => 'Одговори на ову поруку',
 	'discussionthreading-threadnewsection' => 'ново',
 	'discussionthreading-threadnewsectionhint' => 'Започни нову тему',
 );

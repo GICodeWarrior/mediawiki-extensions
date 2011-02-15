@@ -73,6 +73,18 @@ $messages['be-tarask'] = array(
 	'includewp-include-par-height' => 'Максымальная вышыня (у піксэлях) разьдзела, у які загружаецца зьмест. Пастаўце 0, каб яна была неабмежаваная.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'includewp-loading-page' => 'O kargañ ar bajenn...',
+	'includewp-show-full-page' => 'Diskouez ar bajenn en he hed',
+	'includewp-show-fragment' => 'Diskouez ar rannbennad kentañ nemetken',
+	'includewp-loading-failed' => "N'eus ket bet gallet kargañ ar bajenn",
+	'includewp-include-par-page' => "Anv ar bajenn (a-bell) a fell deoc'h diskwel.",
+	'includewp-include-par-paragraphs' => "An niver a rannbennadoù a fell deoc'h diskwel e penn-kentañ.",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

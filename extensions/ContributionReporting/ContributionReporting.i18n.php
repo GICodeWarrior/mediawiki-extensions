@@ -5024,6 +5024,8 @@ $messages['te'] = array(
 	'fundraiserstats-tab-averages' => 'సగటులు (USD)',
 	'fundraiserstats-tab-maximums' => 'గరిష్ఠాలు (USD)',
 	'fundraiserstats-tab-ytd' => 'సంవత్సరంలో-ఇప్పటివరకు (USD)',
+	'fundraiserstats-show-years' => 'ఈ సంవత్సరాలను చూపించు:',
+	'fundraiserstats-time-zone' => 'కాల మండలం:',
 );
 
 /** Tetum (Tetun)
