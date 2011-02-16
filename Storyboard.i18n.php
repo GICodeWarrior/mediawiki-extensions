@@ -2216,6 +2216,7 @@ $messages['rue'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2261,7 +2262,7 @@ $messages['sr-ec'] = array(
 	'storyboard-done' => 'Урађено',
 	'storyboard-working' => 'Обрада у току...',
 	'storyboard-imagedeleted' => 'Слика обрисана',
-	'storyboard-showimage' => 'Покажи слику',
+	'storyboard-showimage' => 'Прикажи слику',
 	'storyboard-hideimage' => 'Сакриј слику',
 	'storyboard-deletestory' => 'Обриши',
 );
