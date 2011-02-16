@@ -860,6 +860,9 @@ $messages['ca'] = array(
  * @author Sasan700
  */
 $messages['ce'] = array(
+	'contrib-hist-name' => 'Цlе',
+	'contribstats-day' => 'Де',
+	'contribstats-month' => 'Бутт',
 	'contribstats-template' => 'Куцкеп',
 );
 
