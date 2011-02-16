@@ -1651,8 +1651,20 @@ $messages['haw'] = array(
 	'voctrain_continue' => 'holomua',
 	'voctrain_hello_place' => 'aloha %place',
 	'voctrain_bye' => 'A hui hou',
+	'voctrain_Languages' => 'ʻŌlelo',
+	'voctrain_Questions' => 'Nīnau',
+	'voctrain_Answers' => 'Pane',
+	'voctrain_Word' => 'Huaʻōlelo',
+	'voctrain_skip' => 'lele',
+	'voctrain_Question' => 'Nīnau',
+	'voctrain_Answer' => 'Pane',
+	'voctrain_logout' => 'haʻalele',
 	'voctrain_Login' => 'ʻEʻe',
+	'voctrain_Language' => 'ʻŌlelo',
 	'voctrain_Log_in' => 'ʻEʻe',
+	'voctrain_Definitions' => 'Wehewehena',
+	'voctrain_hiding' => 'Ke hoʻohūnā nei',
+	'voctrain_other' => 'mau mea ʻē aʻe',
 );
 
 /** Hebrew (עברית)
@@ -2313,7 +2325,7 @@ $messages['ksh'] = array(
 	'voctrain_Exercise_terminated' => ' De Übong ess_am_Ëng',
 	'voctrain_Start_a_new_exercise' => ' En nöü Übong aanfange',
 	'voctrain_User_name' => 'Medmaacher_Name',
-	'voctrain_Password' => ' Passwoot',
+	'voctrain_Password' => 'Paßwoot',
 	'voctrain_Login' => ' Ennlogge',
 	'voctrain_Create_new_user' => ' Ene nöüje Medmaacher aanlääje',
 	'voctrain_Switch_language' => ' De Shprooch wäähßelle',
@@ -4276,10 +4288,30 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  * @author PhiLiP
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
-	'voctrain_Hello_World' => '维基，您好！',
-	'voctrain_Permission_Denied' => '你的要求被拒绝',
+	'voctrain_Hello_World' => 'HELLO WIKI!',
+	'voctrain_Permission_Denied' => '权限被拒绝',
+	'voctrain_try_again_' => '再试一次？',
+	'voctrain_Action_unknown' => '未知动作',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "我不知道如何'%action'。",
+	'voctrain_User_added' => '添加用户',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => '你好，%username，欢迎使用omega language trainer。',
+	'voctrain_continue' => '继续',
+	'voctrain_hello_place' => '你好 %place',
+	'voctrain_bye' => '再见',
+	'voctrain_Set_up_your_exercise' => '安装您的练习',
+	'voctrain_Number_of_questions' => '若干问题',
+	'voctrain_Languages' => '语言',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => '请指定测试语言',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '（如，eng代表英语，deu代表德语）。',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => '因试题集不同，某些组合可能会比其他组合更好地工作。',
+	'voctrain_Questions' => '问题',
+	'voctrain_Answers' => '回答',
+	'voctrain_start_exercise' => '开始练习',
+	'voctrain_collection' => '集合',
+	'voctrain_ISO_639_3_format' => 'ISO-639-3 格式',
 	'voctrain_other' => '其他',
 );
 
