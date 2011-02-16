@@ -2525,6 +2525,13 @@ $messages['uk'] = array(
 	'qp_users_answered_questions' => 'На питання {{PLURAL:$1|відповів $1 користувач|відповіли $1 користувачі|відповіли $1 користувачів}}',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'qp_source_link' => 'מקור',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'qp_source_link' => '来源',
