@@ -31,6 +31,13 @@ $messages['de'] = array(
 	'geequbox-desc' => 'Ermöglicht unter Verwendung von jQuery lightBox die Nutzung von Lightbox-Funktionen',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'geequbox-desc' => 'Génère des effets de lightbox en utilisant le plugin lightbox de jQuery',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -57,5 +64,12 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'geequbox-desc' => 'Voegt lightboxeffecten toe met behulp van de jQuery lightboxplug-in',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'geequbox-desc' => 'Создает эффекты lightbox с помощью jQuery плагина Lightbox',
 );
 
