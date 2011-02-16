@@ -41,7 +41,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		}
 		return $printer;
 	}
-	
+
 	protected function validateFormat() {
 		$params = $this->extractRequestParams();
 		$format = $params['format'];
@@ -63,19 +63,19 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			// Pass back to the JSON defaults
 			return parent::execute();
 		}
-		
+
 		$params = $this->extractRequestParams();
 		$search = $params['search'];
 		$limit = $params['limit'];
 		$namespaces = $params['namespace'];
-		
+
 		// Open search results may be stored for a very long time
 		$this->getMain()->setCacheMaxAge(1200);
 
 		$srchres = PrefixSearch::titleSearch( $search, $limit, $namespaces );
 
 		$items = array_filter( array_map( array( $this, 'formatItem' ), $srchres ) );
-		
+
 		$result = $this->getResult();
 		$result->addValue( null, 'version', '2.0' );
 		$result->addValue( null, 'xmlns', 'http://opensearch.org/searchsuggest2' );
@@ -83,13 +83,13 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		$result->setIndexedTagName( $items, 'Item' );
 		$result->addValue( null, 'Section', $items );
 	}
-	
+
 	public function getAllowedParams() {
 		$params = parent::getAllowedParams();
 		$params['format'] = null;
 		return $params;
 	}
-	
+
 	protected function formatItem( $name ) {
 		$title = Title::newFromText( $name );
 		if( $title ) {
@@ -97,7 +97,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			if( $this->_seen( $title ) ) {
 				return false;
 			}
-			
+
 			list( $extract, $badge ) = $this->getExtract( $title );
 			$image = $this->getBadge( $title, $badge );
 
@@ -118,7 +118,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		}
 		return $item;
 	}
-	
+
 	protected function _checkRedirect( $title ) {
 		$art = new Article( $title );
 		$target = $art->getRedirectTarget();
@@ -150,12 +150,12 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	 */
 	function _stripMarkup( $text ) {
 		$text = substr( $text, 0, 4096 ); // don't bother with long text...
-		
+
 		$text = str_replace( "'''", "", $text );
 		$text = str_replace( "''", "", $text );
-		
+
 		$text = preg_replace( '#__[a-z0-9_]+__#i', '', $text ); // magic words
-		
+
 		$cleanChar = "[^|\[\]]";
 		$subLink = "\[\[$cleanChar*(?:\|$cleanChar*)*\]\]";
 		$pipeContents = "(?:$cleanChar|$subLink)*";
@@ -175,7 +175,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		$text = Sanitizer::decodeCharReferences( $text );
 		return trim( $text );
 	}
-	
+
 	function _stripLink( $matches ) {
 		$target = trim( $matches[1] );
 		if( isset( $matches[2] ) ) {
@@ -183,7 +183,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		} else {
 			$text = $target;
 		}
-		
+
 		$title = Title::newFromText( $target );
 		if( $title ) {
 			$ns = $title->getNamespace();
@@ -196,7 +196,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			return $matches[0];
 		}
 	}
-	
+
 	/**
 	 * Extract the first two sentences, if detectable, from the text.
 	 * @param string $text
@@ -210,7 +210,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			'．', '！', '？', // double-width roman forms
 			'｡', // half-width ideographic full stop
 			);
-		
+
 		$endgroup = implode( '|', $endchars );
 		$end = "(?:$endgroup)";
 		$sentence = ".*?$end+";
@@ -224,7 +224,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			return trim( $lines[0] );
 		}
 	}
-	
+
 	/**
 	 * Grab the first thing that looks like an image link from the body text.
 	 * This will exclude any templates, including infoboxes...
@@ -239,13 +239,13 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			return false;
 		}
 	}
-	
+
 	function _validateBadge( $arg ) {
 		// Some templates want an entire [[Image:Foo.jpg|250px]]
 		if( substr( $arg, 0, 2 ) == '[[' ) {
 			return $this->_extractBadge( $arg );
 		}
-		
+
 		// Others will take Image:Foo.jpg or Foo.jpg
 		$title = Title::newFromText( $arg, NS_IMAGE );
 		if( $title && $title->getNamespace() == NS_IMAGE ) {
@@ -253,12 +253,12 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		}
 		return false;
 	}
-	
+
 	protected function getExtract( $title, $chars=50 ) {
 		$rev = Revision::newFromTitle( $title );
 		if( $rev ) {
 			$text = substr( $rev->getText(), 0, 16384 );
-			
+
 			// Ok, first note this is a TERRIBLE HACK. :D
 			//
 			// First, we use the system preprocessor to break down the text
@@ -268,14 +268,14 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			$wgParser->clearState();
 			$frame = $wgParser->getPreprocessor()->newFrame();
 			$dom = $wgParser->preprocessToDom( $text );
-			
+
 			$imageArgs = array(
 				'image',
 				'image_skyline',
 				'img',
 				'Img',
 			);
-			
+
 			// Now, we strip out everything that's not text.
 			// This works with both DOM and Hash parsers, but feels fragile.
 			$node = $dom->getFirstChild();
@@ -306,7 +306,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 				}
 				$node = $node->getNextSibling();
 			}
-			
+
 			if( !$badge ) {
 				// Look for the first image in the body text if there wasn't
 				// one in an infobox.
@@ -317,7 +317,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			// We'll use our shitty hand parser to strip most of those from
 			// the beginning of the text.
 			$stripped = $this->_stripMarkup( $out );
-			
+
 			// And now, we'll grab just the first sentence as text, and
 			// also try to rip out a badge image.
 			return array(
