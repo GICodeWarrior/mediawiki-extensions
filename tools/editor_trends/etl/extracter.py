@@ -380,7 +380,6 @@ def launcher(rts):
     no data pollution and finally it will start the parser to actually extract
     the variables from the different dump files. 
     '''
-    result = True
     tasks = unzip(rts)
     if not tasks:
         return False
@@ -413,8 +412,12 @@ def launcher(rts):
     tasks.join()
     filehandles = [fh.close() for fh in filehandles]
 
-    result = all([consumer.exitcode for consumer in consumers])
-    return result
+    result = sum([consumer.exitcode for consumer in consumers])
+
+    if restult == 0:
+        return True
+    else:
+        return False
 
 
 def debug():

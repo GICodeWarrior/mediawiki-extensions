@@ -33,6 +33,7 @@ class Timer(object):
         self.stop()
         print 'Processing time: %s' % (self.t1 - self.t0)
 
+
 def humanize_time_difference(seconds_elapsed):
     """
     Returns a humanized string representing time difference.

@@ -23,10 +23,11 @@ import codecs
 import xml.etree.cElementTree as cElementTree
 import sys
 
-sys.path.append('..')
+if '..' not in sys.path:
+    sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
+from classes import settings
+settings = settings.Settings()
 from utils import file_utils
 
 def convert_html_entities(text):

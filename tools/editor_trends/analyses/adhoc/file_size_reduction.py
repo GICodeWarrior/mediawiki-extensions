@@ -17,15 +17,18 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-15'
 __version__ = '0.1'
 
-import sys
-sys.path.append('..')
 
 import os
 import xml.etree.cElementTree as cElementTree
 
-import configuration
+if '..' not in sys.path:
+    sys.path.append('..')
+
+from classes import settings
+settings = settings.Settings()
+
 from utils import file_utils
-settings = configuration.Settings()
+
 
 
 class DumpStatistics(object):

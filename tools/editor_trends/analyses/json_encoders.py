@@ -19,6 +19,7 @@ __version__ = '0.1'
 
 import sys
 import types
+import re
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -27,34 +28,45 @@ import inventory
 from classes import exceptions
 from utils import data_converter
 
+HISTOGRAM = re.compile('histogram')
+#BAR = re.compile('bar')
+STACKED_BAR = re.compile('stacked_bar')
+RES = [HISTOGRAM, STACKED_BAR]
 
-def available_json_encoders():
+def determine_chart_type(chart):
+    for res in RES:
+        match = re.findall(res, chart)
+        if len(match) > 0:
+            return match[0]
+    #Bar charts is the default chart, 
+    return 'bar'
+
+def get_json_encoder(chart):
+    chart = determine_chart_type(chart)
     functions = globals()
-    d = {}
-    ignore = ['transform_to_json']
+    ignore = ['transform_to_json', 'available_charts', 'init_options']
     for func in functions:
-        if func.endswith('json') \
-            and func not in ignore:
-                d[func] = func
-
-    return d
+        if func.endswith('json'):
+            if func not in ignore:
+                encoder = func.replace('to_', '')
+                encoder = encoder.replace('_json', '')
+                if encoder == chart:
+                    return func, chart, RES
+    return None, chart, RES
 
 
 def transform_to_json(ds):
     analyses = analyzer.available_analyses()
-    json_encoders = available_json_encoders()
-    analysis = '%s_%s_%s' % ('transform_to', ds.encoder, 'json')
-    print analysis
+    encoder = get_json_encoder(ds.chart)
+    #analysis = '%s_%s_%s' % ('transform_to', ds.encoder, 'json')
+    #print analysis
     encoder = getattr(locals(), analysis, None)
     if encoder == None:
         encoder = to_bar_json
 
     data = encoder(ds)
-#    except Exception, e:
-#        print e
-#        raise exceptions.UnknownJSONEncoderError(analysis)
-
     return data
+
 
 def init_options():
     options = {}
@@ -99,6 +111,10 @@ def to_bar_json(ds):
     json['options'] = options
     print json
     return json
+
+
+def to_histogram_json(ds):
+    pass
 
 
 def to_stacked_bar_json(ds):

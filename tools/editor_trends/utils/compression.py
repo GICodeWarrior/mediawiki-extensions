@@ -20,10 +20,9 @@ __version__ = '0.1'
 import sys
 import subprocess
 import os
-sys.path.append('..')
+if '..' not in sys.path:
+    sys.path.append('..')
 
-#import configuration
-#settings = configuration.Settings()
 from classes import settings
 settings = settings.Settings()
 from classes import exceptions

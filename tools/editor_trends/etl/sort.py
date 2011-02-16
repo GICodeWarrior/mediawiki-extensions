@@ -22,10 +22,43 @@ import heapq
 import sys
 import os
 import multiprocessing
+import progressbar
 from Queue import Empty
 
 from utils import file_utils
 from utils import messages
+from classes import consumers
+
+
+class Sorter(consumers.BaseConsumer):
+    def run(self):
+        '''
+        The feeder function is called by the launcher and gives it a task to
+        complete.
+        '''
+        while True:
+            try:
+                filename = self.tasks.get(block=False)
+                self.tasks.task_done()
+                if filename == None:
+                    self.result.put(None)
+                    break
+
+                fh = file_utils.create_txt_filehandle(self.rts.txt,
+                                                      filename,
+                                                      'r',
+                                                      self.rts.encoding)
+                data = file_utils.read_unicode_text(fh)
+                fh.close()
+                data = [d.strip() for d in data]
+                data = [d.split('\t') for d in data]
+                sorted_data = mergesort(data)
+                write_sorted_file(sorted_data, filename, self.rts)
+                self.result.put(True)
+            except UnicodeDecodeError, e:
+                print e
+            except Empty:
+                pass
 
 
 def quick_sort(obs):
@@ -74,7 +107,6 @@ def merge(front, back):
     return result
 
 
-
 def merge_sorted_files(target, files, iteration, rts):
     '''
     Merges smaller sorted files in one big file, Only used for creating 
@@ -105,48 +137,20 @@ def write_sorted_file(sorted_data, filename, rts):
     fh.close()
 
 
-def mergesort_feeder(tasks, rts):
-    '''
-    The feeder function is called by the launcher and gives it a task to
-    complete.
-    '''
-    while True:
-        try:
-            filename = tasks.get(block=False)
-            tasks.task_done()
-            if filename == None:
-                print 'Swallowed a poison pill'
-                print tasks.qsize()
-                break
-
-            fh = file_utils.create_txt_filehandle(rts.txt,
-                                                  filename,
-                                                  'r',
-                                                  rts.encoding)
-            #print fh
-            #data = fh.readlines()
-            data = file_utils.read_unicode_text(fh)
-            fh.close()
-            data = [d.strip() for d in data]
-            data = [d.split('\t') for d in data]
-            sorted_data = mergesort(data)
-            write_sorted_file(sorted_data, filename, rts)
-            print filename, messages.show(tasks.qsize)
-        except UnicodeDecodeError, e:
-            print e
-        except Empty:
-            pass
-
-
 def launcher(rts):
     '''
     rts is an instance of RunTimeSettings
     '''
     files = file_utils.retrieve_file_list(rts.txt, 'csv')
+    #files = files[0:6]
+
+    pbar = progressbar.ProgressBar(maxval=len(files)).start()
     tasks = multiprocessing.JoinableQueue()
-    consumers = [multiprocessing.Process(target=mergesort_feeder,
-                                args=(tasks, rts))
-                                for x in xrange(rts.number_of_processes)]
+    result = multiprocessing.JoinableQueue()
+
+    consumers = [Sorter(rts, tasks, result) for
+                 x in xrange(rts.number_of_processes)]
+
     for filename in files:
         tasks.put(filename)
 
@@ -156,17 +160,17 @@ def launcher(rts):
     for w in consumers:
         w.start()
 
+    ppills = rts.number_of_processes
+    while True:
+        while ppills > 0:
+            try:
+                res = result.get(block=True)
+                if res == True:
+                    pbar.update(pbar.currval + 1)
+                else:
+                    ppills -= 1
+            except Empty:
+                pass
+        break
+
     tasks.join()
-
-
-def debug():
-    '''
-    Simple test function
-    '''
-    source = os.path.join(settings.input_location, 'en', 'wiki', 'txt')
-    target = os.path.join(settings.input_location, 'en', 'wiki', 'sorted')
-    mergesort_launcher(source, target)
-
-
-if __name__ == '__main__':
-    debug()

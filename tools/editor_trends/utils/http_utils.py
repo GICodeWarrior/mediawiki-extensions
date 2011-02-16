@@ -23,10 +23,11 @@ import urllib2
 import httplib
 import multiprocessing
 
+if '..' not in sys.path:
+    sys.path.append('..')
 
-sys.path.append('..')
-import configuration
-settings = configuration.Settings()
+from classes import settings
+settings = settings.Settings()
 import file_utils
 import text_utils
 import log

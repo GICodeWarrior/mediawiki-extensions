@@ -19,11 +19,11 @@ __version__ = '0.1'
 
 import sys
 import os
-sys.path.append('..')
+if '..' not in sys.path:
+    sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
-
+from classes import settings
+settings = settings.Settings()
 from etl import extracter
 from utils import file_utils
 import wikitree

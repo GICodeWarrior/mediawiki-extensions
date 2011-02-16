@@ -20,10 +20,11 @@ __version__ = '0.1'
 import datetime
 import sys
 import progressbar
-sys.path.append('..')
+if '..' not in sys.path:
+    sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
+from classes import settings
+settings = settings.Settings()
 
 from database import db
 
@@ -47,8 +48,10 @@ def log_to_mongo(rts, jobtype, task, timer, event='start'):
         elif jobtype == 'chart':
             _id = coll.save({'hash': hash, 'created': created,
                              'jobtype': jobtype,
-                             'project': rts.project,
-                             'language_code': rts.language_code,
+                             'finished': True,
+                             'in_progress': True,
+                             'project': rts.project.name,
+                             'language_code': rts.language.code,
                              'tasks': {}})
 
         job = coll.find_one({'_id': _id})

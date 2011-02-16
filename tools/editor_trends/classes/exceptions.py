@@ -62,6 +62,15 @@ class UnknownJSONEncoderError(Error):
         return 'There is no JSON encoder called %s, please make sure that you \
             entered the right name' % self.func
 
+class UnknownChartError(Error):
+    def __init__(self, chart, charts):
+        self.chart = chart
+        self.charts = charts
+
+    def  __str__(self):
+        return 'Currently, chart type %s is not supported. Please choose one of \
+            the following charts: %s' % (self.chart, self.charts)
+
 class NotYetImplementedError(Error):
     def __init__(self, func):
         self.func = func

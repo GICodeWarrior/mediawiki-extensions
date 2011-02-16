@@ -17,14 +17,17 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
+import sys
 import pymongo
 from bson.code import Code
-import sys
-sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
+if '..' not in sys.path:
+    sys.path.append('..')
+
+from classes import settings
+settings = settings.Settings()
 import file_utils
+
 
 def init_mongo_db(dbname):
     connection = pymongo.Connection()

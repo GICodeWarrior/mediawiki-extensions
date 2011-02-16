@@ -26,7 +26,6 @@ from argparse import ArgumentParser
 from argparse import RawTextHelpFormatter
 import ConfigParser
 
-#import configuration
 from utils import file_utils
 from utils import ordered_dict
 from utils import log
@@ -268,9 +267,9 @@ def all_launcher(rts, logger):
 
 def about_statement():
     print ''
-    print 'Editor Trends Software is (c) 2010-2011 by the Wikimedia Foundation.'
+    print 'Wikilytics is (c) 2010-2011 by the Wikimedia Foundation.'
     print 'Written by Diederik van Liere (dvanliere@gmail.com).'
-    print '''This software comes with ABSOLUTELY NO WARRANTY.\nThis is 
+    print '''This software comes with ABSOLUTELY NO WARRANTY. This is 
     free software, and you are welcome to distribute it under certain 
     conditions.'''
     print 'See the README.1ST file for more information.'
@@ -281,7 +280,6 @@ def init_args_parser():
     '''
     Entry point for parsing command line and launching the needed function(s).
     '''
-    #settings = configuration.Settings()
     language = languages.init()
     project = projects.init()
     pjc = projects.ProjectContainer()

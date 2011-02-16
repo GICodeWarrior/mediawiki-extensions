@@ -22,14 +22,11 @@ import progressbar
 import multiprocessing
 import sys
 
-#sys.path.append('..')
-#import configuration
-#settings = configuration.Settings()
-
 from utils import file_utils
 from utils import http_utils
 from utils import text_utils
 from utils import log
+
 
 def download_wiki_file(task_queue, properties):
     '''

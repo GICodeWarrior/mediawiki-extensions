@@ -20,7 +20,6 @@ __version__ = '0.1'
 '''
 This file provides mapper between language name and locale language name and
 Wikipedia acronym.
-Gothic and Birmese are not yet supported, see rows 450 and 554.
 '''
 
 import os
@@ -33,7 +32,8 @@ import re
 from settings import Settings
 from utils import text_utils
 from utils import ordered_dict as odict
-from classes import languages
+import languages
+import projects
 
 
 class RunTimeSettings(Settings):
@@ -129,7 +129,8 @@ class RunTimeSettings(Settings):
         '''
         Construct the full project location
         '''
-        return os.path.join(self.input_location, self.language.code, self.project.name)
+        return os.path.join(self.input_location, self.language.code,
+                            self.project.name)
 
     def show_settings(self):
         '''
@@ -137,7 +138,9 @@ class RunTimeSettings(Settings):
         '''
         about = {}
         about['Project'] = '%s' % self.project.full_name.title()
-        about['Language'] = '%s / %s / %s' % (self.language.name, self.language.locale, self.language.code)
+        about['Language'] = '%s / %s / %s' % (self.language.name,
+                                              self.language.locale,
+                                              self.language.code)
         about['Input directory'] = '%s' % self.location
         about['Output directory'] = '%s and subdirectories' % self.location
 
@@ -155,7 +158,9 @@ class RunTimeSettings(Settings):
 
     def set_dump_path(self, absolute=False):
         if absolute:
-            return '%s/%s%s/latest/' % (self.wp_dump_location, self.language.code, self.project.name)
+            return '%s/%s%s/latest/' % (self.wp_dump_location,
+                                        self.language.code,
+                                        self.project.name)
         else:
             return '/%s%s/latest/' % (self.language.code, self.project.name)
 
@@ -163,7 +168,8 @@ class RunTimeSettings(Settings):
         '''
         Generate the main name of the wikidump file to be downloaded.
         '''
-        return '%s%s-latest-%s' % (self.language.code, self.project.name, self.get_value('file'))
+        return '%s%s-latest-%s' % (self.language.code, self.project.name,
+                                   self.get_value('file'))
 
     def update_language_settings(self):
         '''
@@ -193,7 +199,8 @@ class RunTimeSettings(Settings):
 
     def get_projectname(self):
         '''
-        Determine the full project name based on the project acronym and language.
+        Determine the full project name based on the project acronym 
+        and language.
         '''
         #language_code = self.get_language()
         print self.language.code, self.project.name
@@ -223,3 +230,15 @@ class RunTimeSettings(Settings):
             return namespaces.split(',')
         else:
             return ['0']  #Assume that the mainspace is of interest
+
+
+def init_environment(project, language_code, args):
+    pjc = projects.ProjectContainer()
+    project = pjc.get_project(project)
+    lnc = languages.LanguageContainer()
+    language = lnc.get_language(language_code)
+
+    args.language = language.name
+    args.project = project.name
+    rts = RunTimeSettings(project, language, args)
+    return rts

@@ -143,7 +143,8 @@ class Settings:
                 try:
                     os.makedirs(directory)
                 except IOError:
-                    print 'Configuration Error, could not create directory %s.' % directory
+                    print 'Configuration Error, could not create directory %s.'\
+                        % directory
 
     def detect_windows_program(self, program):
         entry = self.windows_register.get(program, None)
@@ -154,7 +155,8 @@ class Settings:
             return None
 
     def detect_linux_program(self, program):
-        path = subprocess.Popen(['which', '%s' % program], stdout=subprocess.PIPE).communicate()[0]
+        path = subprocess.Popen(['which', '%s' % program],
+                                stdout=subprocess.PIPE).communicate()[0]
         return path.strip()
 
     def detect_installed_program(self, program):

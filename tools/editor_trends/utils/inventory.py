@@ -21,10 +21,11 @@ import re
 import sys
 from threading import Thread
 from HTMLParser import HTMLParser
-sys.path.append('..')
+if '..' not in sys.path:
+    sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
+from classes import settings
+settings = settings.Settings()
 
 from database import db
 from utils import http_utils

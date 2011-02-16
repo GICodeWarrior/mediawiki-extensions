@@ -24,10 +24,14 @@ import multiprocessing
 import xml.etree.cElementTree as cElementTree
 import sys
 from Queue import Empty
-sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
+if '..' not in sys.path:
+    sys.path.append('..')
+
+from classes import settings
+settings = settings.Settings()
+
+
 import wikitree
 from database import db
 from utils import file_utils

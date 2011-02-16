@@ -16,6 +16,8 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-01-26'
 __version__ = '0.1'
 
+'Gothic and Birmese are not yet supported, see rows 450 and 554.'
+
 import locale
 import sys
 sys.path.append('..')

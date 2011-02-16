@@ -21,9 +21,11 @@ import datetime
 import time
 import sys
 
-sys.path.append('..')
-import configuration
-settings = configuration.Settings()
+if '..' not in sys.path:
+    sys.path.append('..')
+
+from classes import settings
+settings = settings.Settings()
 
 
 def convert_timestamp_to_date(timestamp):

@@ -43,22 +43,22 @@ def init_environment(task):
     return rts
 
 
-def launch_editor_trends_toolkit(task):
+def launch_editor_trends_toolkit(task, args):
     '''
     This function should only be called as a cronjob and not directly.
     '''
-    rts = init_environment(task)
+    rts = runtime_settings.init_environment(task['project'], task['language_code'], args)
     res = manager.all_launcher(rts, None)
     return res
 
 
-def launch_chart(task):
+def launch_chart(task, args):
     '''
     This function should only be called as a cronjob and not directly. 
     '''
     res = True
     try:
-        rts = init_environment(task)
+        rts = runtime_settings.init_environment(task['project'], task['language_code'], args)
         func = task['jobtype']
         time_unit = 'month'  #FIXME hardcoded string
         cutoff = 1  #FIXME hardcoded string
@@ -89,6 +89,8 @@ def launcher():
     mongo = db.init_mongo_db('wikilytics')
     coll = mongo['jobs']
     tasks = []
+    project, language, parser = manager.init_args_parser()
+    args = parser.parse_args(['django'])
     jobs = coll.find({'finished': False, 'in_progress': False, 'error': False})
     for job in jobs:
         tasks.append(job)
@@ -96,11 +98,11 @@ def launcher():
     for task in tasks:
         if task['jobtype'] == 'dataset':
             print 'Launching the Editor Trends Analytics Toolkit.'
-            res = launch_editor_trends_toolkit(task)
+            res = launch_editor_trends_toolkit(task, args)
             #res = False
         else:
             print 'Launching %s.' % task['jobtype']
-            res = launch_chart(task)
+            res = launch_chart(task, args)
 
         if res:
             coll.update({'_id': task['_id']}, {'$set': {'finished': True}})

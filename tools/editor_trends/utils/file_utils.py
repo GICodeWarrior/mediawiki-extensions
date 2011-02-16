@@ -35,11 +35,11 @@ import sys
 import shutil
 import multiprocessing
 
-sys.path.append('..')
+if '..' not in sys.path:
+    sys.path.append('..')
 
-
-import configuration
-settings = configuration.Settings()
+from classes import settings
+settings = settings.Settings()
 
 from classes import exceptions
 import messages

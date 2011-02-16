@@ -20,11 +20,13 @@ __version__ = '0.1'
 
 import datetime
 import sys
-sys.path.append('..')
 import bson
 
-import configuration
-settings = configuration.Settings()
+if '..' not in sys.path:
+    sys.path.append('..')
+
+from classes import settings
+settings = settings.Settings()
 
 import db
 from utils import file_utils

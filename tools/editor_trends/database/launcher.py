@@ -21,8 +21,9 @@ __version__ = '0.1'
 import subprocess
 import os
 
-import configuration
-settings = configuration.Settings()
+
+from classes import settings
+settings = settings.Settings()
 from classes import exceptions
 from utils import file_utils
 

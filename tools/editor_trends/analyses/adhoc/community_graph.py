@@ -18,11 +18,11 @@ __date__ = '2011-01-10'
 __version__ = '0.1'
 
 import sys
-sys.path.append('..')
+if '..' not in sys.path:
+    sys.path.append('..')
 
-import configuration
-settings = configuration.Settings()
-
+from classes import settings
+settings = settings.Settings()
 from database import db
 from utils import file_utils
 

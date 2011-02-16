@@ -23,18 +23,23 @@ import time
 import math
 import operator
 import sys
+import hashlib
 from pymongo.son_manipulator import SONManipulator
 from multiprocessing import Lock
 from texttable import Texttable
 
-sys.path.append('..')
-import configuration
-settings = configuration.Settings()
+
+if '..' not in sys.path:
+    sys.path.append('..')
+
+from classes import settings
+settings = settings.Settings()
 
 from utils import file_utils
 from utils import data_converter
 from database import db
 from analyses import json_encoders
+from classes import exceptions
 
 class Transform(SONManipulator):
     '''
@@ -82,10 +87,14 @@ class Data:
     def __hash__(self, vars):
         '''
         This is a generic hash function that expects a list of variables, used
-        to lookup an observation or Variable. 
+        to lookup an Observation or Variable. 
         '''
-        id = ''.join([str(var) for var in vars])
-        return hash(id)
+        id = '_'.join([str(var) for var in vars])
+        m = hashlib.md5()
+        m.update(id)
+        #print id, m.hexdigest()
+        return m.hexdigest()
+        #return ''.join([str(var) for var in vars])
 
     def encode_to_bson(self, data=None):
         '''
@@ -176,9 +185,6 @@ class Observation(Data):
 
     def add(self, value):
         '''
-        If update == True then data[i] will be incremented else data[i] will be
-        created, in that case make sure that i is unique. Update is useful for
-        tallying a variable. 
         '''
         self.lock.acquire()
         try:
@@ -192,6 +198,7 @@ class Observation(Data):
             self.count += 1
             self.lock.release()
 
+
     def get_date_range(self):
         return '%s-%s-%s:%s-%s-%s' % (self.t0.month, self.t0.day, self.t0.year, \
                                       self.t1.month, self.t1.day, self.t1.year)
@@ -200,9 +207,10 @@ class Variable(Data):
     '''
     This class constructs a time-based variable. 
     '''
-    lock = Lock()
+
     def __init__(self, name, time_unit, **kwargs):
         self.name = name
+        self.lock = Lock()
         self.obs = {}
         self.time_unit = time_unit
         self.groupbys = []
@@ -278,10 +286,15 @@ class Variable(Data):
         values.insert(0, end)
         values.insert(0, start)
         id = self.__hash__(values)
-
-        obs = self.get_observation(id, date, meta)
-        obs.add(value)
-        self.obs[id] = obs
+#        print values
+        self.lock.acquire()
+        try:
+            obs = self.get_observation(id, date, meta)
+            obs.add(value)
+            self.obs[id] = obs
+        finally:
+            self.lock.release()
+        print len(self.obs)
 
     def number_of_obs(self):
         n = 0
@@ -327,19 +340,19 @@ class Dataset:
     to output the dataset to a csv file, mongodb and display statistics. 
     '''
 
-    def __init__(self, name, project, collection, language_code, encoder, vars=None, **kwargs):
-        encoders = json_encoders.available_json_encoders()
-        if encoder not in encoders:
-            raise exception.UnknownJSONEncoderError(encoder)
-        else:
-            self.encoder = encoder
-        self.name = name
-        self.project = project
-        self.collection = collection
-        self.language_code = language_code
+    def __init__(self, chart, rts, vars=None, **kwargs):
+        #project, collection, language_code
+        self.encoder, chart, charts = json_encoders.get_json_encoder(chart)
+        if self.encoder == None:
+            raise exceptions.UnknownChartError(chart, charts)
+        self.chart = chart
+        self.name = 'Dataset to construct %s' % self.chart
+        self.project = rts.project.name
+        self.collection = rts.editors_dataset
+        self.language_code = rts.language.code
         self.hash = self.name
         self._type = 'dataset'
-        self.created = datetime.datetime.now()
+        self.created = datetime.datetime.today()
         self.format = 'long'
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
