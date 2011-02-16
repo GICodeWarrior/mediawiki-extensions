@@ -91,7 +91,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	}
 	
 	protected function formatItem( $name ) {
-		$title = TItle::newFromText( $name );
+		$title = Title::newFromText( $name );
 		if( $title ) {
 			$title = $this->_checkRedirect( $title );
 			if( $this->_seen( $title ) ) {
