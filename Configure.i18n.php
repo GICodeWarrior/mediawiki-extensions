@@ -9969,7 +9969,7 @@ $messages['sr-ec'] = array(
 	'configure-throttle-count' => 'Дозвољене акције:',
 	'configure-throttle-period' => 'Преиод ресета (секунде):',
 	'configure-throttle-summary' => '$1 акција у $2 секунди.',
-	'configure-throttle-group' => 'Тип',
+	'configure-throttle-group' => 'Врста',
 	'configure-throttle-limit' => 'Ограничење',
 	'configure-throttle-none' => 'Без ограничења',
 	'configure-condition-operator' => 'Оператор:',
@@ -11609,6 +11609,7 @@ $messages['yi'] = array(
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'configure' => '站务设置',
@@ -11733,7 +11734,7 @@ $messages['zh-hans'] = array(
 	'configure-select-wiki-view-specific' => '指定wiki：',
 	'configure-select-wiki-submit' => '选择',
 	'configure-setting-not-available' => '这个设置在这个版本的MediaWiki中不可用',
-	'configure-transwiki-not-in-range' => '请求的wiki，$1，不在允许的值中：$2。',
+	'configure-transwiki-not-in-range' => '请求的wiki：$1，不在{{PLURAL:$3|value|values}}个$2中。',
 	'configure-view' => '查看',
 	'configure-view-all-versions' => '完整版本列表',
 	'configure-view-default' => '默认设置',
