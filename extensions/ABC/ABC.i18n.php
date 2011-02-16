@@ -380,6 +380,13 @@ $messages['gv'] = array(
 	'abcdownload' => 'Laadey neose:',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kolonahe
+ */
+$messages['haw'] = array(
+	'abcdownload' => 'Hoʻoili:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

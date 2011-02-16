@@ -1256,6 +1256,13 @@ Danga bëgg a soppi xët wi fi nekk ?',
 	'createpage-badtitle' => '« $1 » manoo koo jëfandikoo niki kojuw xët',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'createpage_submitbutton' => 'אײַנגעבן',
+);
+
 /** Cantonese (粵語) */
 $messages['yue'] = array(
 	'createpage' => '開新版',

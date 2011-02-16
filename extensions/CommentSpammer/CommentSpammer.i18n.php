@@ -736,3 +736,11 @@ $messages['vo'] = array(
 	'cspammer-log-page' => 'Jenotalised tefü küpetaspamans',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author 阿pp
+ */
+$messages['zh-hans'] = array(
+	'commentspammer-save-blocked' => '您的 IP 地址疑为评论垃圾制造者，该页面未保存。
+[[Special:UserLogin|登录或创建帐户]]可避免这种情况。',
+);
+

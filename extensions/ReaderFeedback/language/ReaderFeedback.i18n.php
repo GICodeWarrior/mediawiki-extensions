@@ -2850,6 +2850,8 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'readerfeedback-level-3' => 'הויך',
+	'readerfeedback-submit' => 'אײַנגעבן',
+	'readerfeedback-main' => 'נאר אינהאַלט־בלעטער קען מען אָפשאַצן.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

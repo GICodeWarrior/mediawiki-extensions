@@ -848,3 +848,10 @@ $messages['vi'] = array(
 	'ts-citegen-base-disabled' => 'Lỗi: Cơ sở dữ liệu %s không có sẵn',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ts-citegen-Sources-title' => 'מקורות',
+);
+

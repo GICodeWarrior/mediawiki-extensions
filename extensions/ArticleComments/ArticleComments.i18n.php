@@ -1603,6 +1603,13 @@ $messages['uk'] = array(
 	'processcomment' => 'Переглянути коментарі до матеріалу',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'article-comments-title-string' => 'קעפל',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */

@@ -1779,8 +1779,41 @@ $messages['uk'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'categorybrowser' => '类别浏览器',
+	'categorybrowser-desc' => '提供了[[Special:CategoryBrowser|特殊页面]]以筛选最受欢迎的类别，并使用AJAX界面浏览。',
+	'cb_requires_javascript' => '类别浏览器扩展需要在浏览器中启用的 JavaScript。',
+	'cb_ie6_warning' => '条件编辑器无法在Internet Explorer 6.0 或更早版本上正常工作。
+然而，浏览预定义的条件应当正常。
+如有可能请更换或升级您的浏览器。',
+	'cb_show_no_parents_only' => '仅显示没有上级的类别',
+	'cb_cat_name_filter' => '按名称搜索类别：',
+	'cb_cat_name_filter_clear' => '按此清除类别名称筛选器',
+	'cb_cat_name_filter_ci' => '区分大小写',
+	'cb_copy_line_hint' => '使用[+]和[>+] 按钮，复制并粘贴运算符到选定的表达式中。',
+	'cb_has_subcategories' => '$1个 {{PLURAL:$1|subcategory|subcategories}}',
+	'cb_has_pages' => '$1个 {{PLURAL:$1|page|pages}}',
+	'cb_has_files' => '$1个 {{PLURAL:$1|file|files}}',
+	'cb_has_parentcategories' => '上级类别(如果存在)',
+	'cb_previous_items_link' => '上一页',
+	'cb_next_items_link' => '下一页',
+	'cb_next_items_stats' => '（从 $1)',
+	'cb_cat_subcats' => '子类别',
+	'cb_cat_pages' => '页',
+	'cb_cat_files' => '文件',
+	'cb_apply_button' => '应用',
+	'cb_all_op' => '全部',
+	'cb_or_op' => '或',
+	'cb_and_op' => '和',
+	'cb_edit_left_hint' => '如有可能移至左侧',
+	'cb_edit_right_hint' => '如有可能移至右侧',
+	'cb_edit_remove_hint' => '如果可能则删除',
+	'cb_edit_copy_hint' => '复制运算符到剪贴板',
+	'cb_edit_append_hint' => '在最后一个位置插入运算符',
+	'cb_edit_clear_hint' => '清除当前表达式 (选择全部)',
+	'cb_edit_paste_hint' => '如有可能，将运算符粘贴到当前的位置',
+	'cb_edit_paste_right_hint' => '如有可能，将运算符粘贴到下一个位置',
 );
 

@@ -849,6 +849,22 @@ $messages['ca'] = array(
 	'sign-review-comment' => 'Comentari',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|дийцаре]] • <!--
+-->[[Special:Contributions/$1|къинхьегам]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|сацаве декъашхо]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} сацораш долу тéптар] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} хьажа])<!--
+--></span>',
+);
+
 /** Czech (Česky) */
 $messages['cs'] = array(
 	'sign-realname' => 'Jméno:',

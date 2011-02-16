@@ -2506,7 +2506,7 @@ Gebruik * of % als wildcard",
 	'whitelistnowhitelistedusers' => 'Er zijn geen gebruikers die lid zijn van de groep "{{MediaWiki:Group-restricted}}".
 U moet [[Special:UserRights|gebruikers aan de groep toevoegen]] voordat u pagina\'s kunt toevoegen aan de witte lijst voor een gebruiker.',
 	'whitelistnewtableprocess' => 'Bewerken',
-	'whitelistnewtablereview' => 'Controleren',
+	'whitelistnewtablereview' => 'Beoordelen',
 	'whitelistselectrestricted' => '== Gebruiker met beperkingen selecteren ==',
 	'whitelistpagelist' => "{{SITENAME}} pagina's voor $1",
 	'whitelistnocalendar' => '<span class="error">[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], een voorwaarde voor deze uitbreiding, lijkt niet juist geïnstalleerd!</span>',
