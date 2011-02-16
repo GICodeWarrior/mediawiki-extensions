@@ -1162,6 +1162,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Sweeite012f
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'commentbox-intro' => '添加评论
@@ -1169,6 +1170,11 @@ $messages['zh-hans'] = array(
 直接修改此页',
 	'commentbox-name' => '名称：',
 	'commentbox-log' => '新评论',
+	'commentbox-first-comment-heading' => '== 注释 ==',
+	'commentbox-errorpage-title' => '创建注释时出错',
+	'commentbox-error-page-nonexistent' => '此页面不存在 ！',
+	'commentbox-error-namespace' => '此命名空间不允许使用注释！',
+	'commentbox-error-empty-comment' => '不允许使用空注释 ！',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
