@@ -292,7 +292,7 @@ Si teniu un compte d'usuari, podeu eliminar aquest avís a la secció «Caixa d'
  * @author Sasan700
  */
 $messages['ce'] = array(
-	'vector-simplesearch-search' => 'Laha',
+	'vector-simplesearch-search' => 'Лаха',
 );
 
 /** Sorani (کوردی)
