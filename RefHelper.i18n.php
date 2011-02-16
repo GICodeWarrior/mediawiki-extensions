@@ -1436,6 +1436,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'refhelper-title' => 'קעפל:',
 	'refhelper-category' => 'קאַטעגאָריע $1:',
 );
 
