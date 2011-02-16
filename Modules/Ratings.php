@@ -140,7 +140,7 @@ abstract class CommunityVoiceRatings {
 		$args,
 		$parser
 	) {
-		global $wgUser, $wgTitle, $wgLang;
+		global $wgUser, $wgLang;
 		global $egCommunityVoiceResourcesPath;
 		// Disable caching
 		$parser->disableCache();
@@ -194,6 +194,9 @@ abstract class CommunityVoiceRatings {
 			// Adds content of tag as parsed wiki-text
 			$htmlOut .= $parser->recursiveTagParse( $input );
 		}
+
+		$title = $parser->getTitle();
+
 		// Checks if...
 		if (
 			// User has not voted yet
@@ -232,7 +235,7 @@ abstract class CommunityVoiceRatings {
 									)
 								)
 							),
-							CsJs::toScalar( $wgTitle->getPrefixedText() )
+							CsJs::toScalar( $title->getPrefixedText() )
 						)
 					)
 				)
@@ -256,7 +259,7 @@ abstract class CommunityVoiceRatings {
 				'token' => $wgUser->editToken(),
 				'module' => 'Ratings',
 				'action' => 'ScaleVoteSubmission',
-				'scale[article]' => $wgTitle->getPrefixedText(),
+				'scale[article]' => $title->getPrefixedText(),
 				'scale[category]' => $args['category'],
 				'scale[title]' => $args['title'],
 			);
