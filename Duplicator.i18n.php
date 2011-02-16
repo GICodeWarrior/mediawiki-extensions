@@ -1793,6 +1793,13 @@ Pöl nesevädik ejenon.',
 	'duplicator-toomanyrevisions' => 'Pad: [[$1]] labon revidis tu mödikis ($1) e no kanon pakopiedön. Mied anuik binon $3.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'duplicator-source' => 'מקור:',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */
