@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'InlineEditor',
-	'author' => array( 'Jan Paul Posma' ),
+	'author' => array( 'Jan Paul Posma', 'Dimitris Meimaris', 'Dimitris Mitropoulos' ),
 	'version' => '0.1.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:InlineEditor',
 	'descriptionmsg' => 'inline-editor-desc',

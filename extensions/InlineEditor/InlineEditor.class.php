@@ -4,12 +4,16 @@
  * It handles hooks through static functions, and they can spawn an InlineEditor object using
  * an article object, and then render like a normal page, or as JSON. Reason for this is to be
  * able to pass this object to different hook functions.
+ *
+ * This file was modified by Dimitris Mitropoulos and Dimitris Meimaris (GRNET)
+ * 
  */
 class InlineEditor {
 	private static $fallbackReason; /// < reason for not using the editor, used for showing a message
 	const REASON_BROWSER  = 1;      /// < reason is an incompatible browser
 	const REASON_ADVANCED = 2;      /// < reason is editing an 'advanced' page, whatever that may be
 
+	private $section;				/// < Section number to scroll to if the user chooses to edit a specific section
 	private $article;               /// < Article object to edit
 	private $extendedEditPage;      /// < ExtendedEditPage object we're using to handle editor logic
 
@@ -17,15 +21,9 @@ class InlineEditor {
 	 * Main entry point, hooks into MediaWikiPerformAction.
 	 * Checks whether or not to spawn the editor, and does so if necessary.
 	 */
-	public static function mediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
+	public static function mediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki) {
 		global $wgHooks;
 
-		// check if the editor could be used on this page, and if so, hide the [edit] links
-		if ( self::isValidBrowser() && !self::isAdvancedPage( $article, $title ) ) {
-			self::hideEditSection( $output );
-		}
-
-		
 		// return if the action is not 'edit' or if it's disabled
 		// @todo: FIXME: we don't want to break with older versions just yet,
 		// but do remove this when the time is there!
@@ -47,11 +45,6 @@ class InlineEditor {
 			$wgHooks['EditPage::showEditForm:fields'][] = 'InlineEditor::showEditFormFields';
 			return true;
 		}
-		
-		// for now, ignore section edits and just edit the whole page
-		unset( $_GET['section'] );
-		unset( $_POST['section'] );
-		$request->setVal( 'section', null );
 
 		// terminate if the browser is not supported
 		if ( !self::isValidBrowser() ) {
@@ -72,6 +65,20 @@ class InlineEditor {
 		
 		// try to spawn the editor and render the page
 		$editor = new InlineEditor( $article );
+
+		// set the section to scroll to		
+		if( isset( $_GET['section'] ) ) {
+			$editor->setSection( $_GET['section'] );
+		}
+		elseif( isset( $_POST['section'] ) ) {
+			$editor->setSection( $_POST['section'] );
+		}
+		
+		// unset the section variables so the entire page will be edited
+		unset( $_GET['section'] );
+		unset( $_POST['section'] );
+		$request->setVal( 'section', null );
+
 		if ( $editor->render( $output ) ) {
 			return false;
 		}
@@ -167,15 +174,6 @@ class InlineEditor {
 	}
 
 	/**
-	 * Hide the [edit] links on the page by enabling a piece of CSS (instead of screwing with the parser cache).
-	 * @param $output OutputPage
-	 */
-	public static function hideEditSection( &$output ) {
-		global $wgExtensionAssetsPath;
-		$output->addExtensionStyle( $wgExtensionAssetsPath . "/InlineEditor/HideEditSection.css?0" );
-	}
-
-	/**
 	 * Add a 'fulleditor' hidden input field to the normal edit page
 	 * @param $editpage EditPage
 	 * @param $output OutputPage
@@ -204,7 +202,7 @@ class InlineEditor {
 	 * @param $output OutputPage
 	 */
 	public function render( &$output ) {
-		global $wgHooks, $wgRequest, $wgExtensionAssetsPath, $wgDisableOutputCompression;
+		global $wgHooks, $wgRequest, $wgExtensionAssetsPath;
 
 		// if the page is being saved, retrieve the wikitext from the JSON
 		if ( $wgRequest->wasPosted() ) {
@@ -229,6 +227,10 @@ class InlineEditor {
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.basicEditor.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery-ui-effects-1.8.4.min.js?0" );
+			
+			// include the required JS files for scrolling
+			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.sectionScroller.js?0" );
+			
 			$output->addExtensionStyle( $wgExtensionAssetsPath . "/InlineEditor/InlineEditor.css?0" );
 			$output->addExtensionStyle( $wgExtensionAssetsPath . "/InlineEditor/BasicEditor.css?0" );
 
@@ -241,13 +243,10 @@ class InlineEditor {
 			// add a large <div> around the marked wikitext to denote the editing position
 			$parserOutput = $text->getFullParserOutput();
 			$parserOutput->setText( '<div id="editContent">' . $parserOutput->getText() . '</div>' );
-			
+
 			// put the marked output into the page
 			$output->addParserOutput( $parserOutput );
 			$output->setPageTitle( $parserOutput->getTitleText() );
-			
-			// make sure that no compression is used, or the page might be corrupted
-			$wgDisableOutputCompression = false;
 			
 			// convert the text object into an initial state to send
 			$initial = InlineEditorText::initialState( $text );
@@ -266,6 +265,16 @@ class InlineEditor {
 					jQuery.inlineEditor.init();
 				} );'
 			);
+			
+			// scroll to a section if needed
+			$scrollAnchor = $this->getScrollAnchor( $parserOutput );
+			if( $scrollAnchor !== null ) {
+				$output->addInlineScript(
+					'jQuery( document ).ready( function() {
+						jQuery.sectionScroller.scrollToSection( "' . $scrollAnchor . '" );
+					} );'
+				);
+			}
 
 			// hook into SiteNoticeBefore to display the two boxes above the title
 			// @todo: fix this in core, make sure that anything can be inserted above the title, outside #siteNotice
@@ -284,13 +293,41 @@ class InlineEditor {
 	public function getArticle() {
 		return $this->article;
 	}
+	
+	/**
+	 * Set the section number to scroll to
+	 * @param $section
+	 */
+	public function setSection( $section ) {
+		$this->section = $section;
+	}
+	
+	/**
+	 * Get an anchor to scroll to, or null
+	 * @param $parserOutput ParserOutput
+	 * @return string or null
+	 */
+	private function getScrollAnchor( $parserOutput ) {
+		if( isset( $this->section ) ) {
+			// retrieve the sections from the original wikimedia parser
+			$sections = $parserOutput->getSections();
+
+			// find the corresponding name of the section to scroll to
+			foreach( $sections as $section ) {
+				if( $section['index'] == $this->section ){
+					return $section['anchor'];
+				}
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Pass JSON into an InlineEditorText object and return combined JSON (HTML + sentence representation)
 	 * @param $json string
 	 * @return string
 	 */
-	public function preview ( $json ) {
+	public function preview( $json ) {
 		// decode the JSON
 		$request = FormatJson::decode( $json, true );
 		
