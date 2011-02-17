@@ -85,11 +85,6 @@ abstract class WikilogCommentPager
 		# This is too expensive, limit listing.
 		if ( $this->mLimit > $wgWikilogExpensiveLimit )
 			$this->mLimit = $wgWikilogExpensiveLimit;
-
-		# We will need a clean parser if not including.
-		if ( !$this->mIncluding ) {
-			$wgParser->clearState();
-		}
 	}
 
 	/**
