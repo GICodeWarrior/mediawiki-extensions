@@ -26,5 +26,3 @@ class BaseConsumer(multiprocessing.Process):
         self.rts = rts
         self.tasks = tasks
         self.result = result
-
-

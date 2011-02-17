@@ -25,8 +25,9 @@ import operator
 import sys
 import hashlib
 from pymongo.son_manipulator import SONManipulator
-from multiprocessing import Lock
+from multiprocessing import RLock, Array, Value
 from texttable import Texttable
+from datetime import timedelta
 
 
 if '..' not in sys.path:
@@ -90,6 +91,7 @@ class Data:
         to lookup an Observation or Variable. 
         '''
         id = '_'.join([str(var) for var in vars])
+        #return id
         m = hashlib.md5()
         m.update(id)
         #print id, m.hexdigest()
@@ -121,7 +123,8 @@ class Data:
         of the date
         '''
         assert self.time_unit == 'year' or self.time_unit == 'month' \
-        or self.time_unit == 'day', 'Time unit should either be year, month or day.'
+        or self.time_unit == 'day', \
+            'Time unit should either be year, month or day.'
 
         if self.time_unit == 'year':
             datum = datetime.datetime(date.year, 1, 1)
@@ -139,24 +142,29 @@ class Data:
         Determine the width of a date range for an observation. 
         '''
         if self.time_unit == 'year':
-            return datetime.datetime(date.year, 12, 31), datetime.datetime(date.year, 1, 1)
+            return datetime.datetime(date.year, 12, 31), \
+                datetime.datetime(date.year, 1, 1)
         elif self.time_unit == 'month':
             day = calendar.monthrange(date.year, date.month)[1]
-            return datetime.datetime(date.year, date.month, day), datetime.datetime(date.year, date.month, 1)
+            return datetime.datetime(date.year, date.month, day), \
+                datetime.datetime(date.year, date.month, 1)
         else:
-            return datetime.datetime(date.year, date.month, date.day), datetime.datetime(date.year, date.month, date.day)
+            return datetime.datetime(date.year, date.month, date.day), \
+                datetime.datetime(date.year, date.month, date.day)
 
 
 class Observation(Data):
-    lock = Lock()
     '''
     The smallest unit, here the actual data is being stored. 
     Time_unit should either be 'year', 'month' or 'day'. 
     '''
     def __init__(self, date, time_unit, id, meta):
-        assert isinstance(date, datetime.datetime), 'Date variable should be a datetime.datetime instance.'
+        assert isinstance(date, datetime.datetime), '''Date variable should be 
+            a datetime.datetime instance.'''
+        #self.lock = lock #Lock()
         self.date = date
         self.data = 0
+        #self.data = Value('i', 0)
         self.time_unit = time_unit
         self.t1, self.t0 = self.set_date_range(date)
         self.id = id
@@ -164,7 +172,8 @@ class Observation(Data):
         self.count = 0
         for mt in meta:
             if isinstance(mt, float):
-                raise Exception, 'Mongo does not allow a dot "." in the name of a key, please use an integer or string as key.'
+                raise Exception, '''Mongo does not allow a dot "." in the name 
+                    of a key, please use an integer or string as key.'''
             elif not isinstance(mt, list):
                 setattr(self, mt, meta[mt])
                 self.props.append(mt)
@@ -174,7 +183,9 @@ class Observation(Data):
         return '%s' % self.date
 
     def __str__(self):
-        return 'range: %s:%s' % (self.t0, self.t1)
+        return 'range: %s-%s-%s : %s-%s-%s' % (self.t0.month, self.t0.day, \
+                                               self.t0.year, self.t1.month, \
+                                               self.t1.day, self.t1.year)
 
     def __iter__(self):
         for obs in self.data:
@@ -186,17 +197,19 @@ class Observation(Data):
     def add(self, value):
         '''
         '''
-        self.lock.acquire()
-        try:
-            if isinstance(value, list):
-                if self.count == 0:
-                    self.data = []
-                self.data.append(value)
-            else:
-                self.data += value
-        finally:
-            self.count += 1
-            self.lock.release()
+        #self.lock.acquire()
+        #try:
+        if isinstance(value, list):
+            if self.count == 0:
+                self.data = []
+                #self.data = Array('i', 0)
+            self.data.append(value)
+        else:
+            self.data += value
+            #self.data.value += value
+        #finally:
+        self.count += 1
+        #self.lock.release()
 
 
     def get_date_range(self):
@@ -207,10 +220,9 @@ class Variable(Data):
     '''
     This class constructs a time-based variable. 
     '''
-
-    def __init__(self, name, time_unit, **kwargs):
+    def __init__(self, name, time_unit, lock, **kwargs):
         self.name = name
-        self.lock = Lock()
+        self.lock = lock
         self.obs = {}
         self.time_unit = time_unit
         self.groupbys = []
@@ -249,7 +261,6 @@ class Variable(Data):
         for key in self:
             yield (key, self.obs[key])
 
-
     def get_data(self):
         return [o for o in self.itervalues()]
 
@@ -257,6 +268,8 @@ class Variable(Data):
         self.lock.acquire()
         try:
             obs = self.obs.get(id, Observation(date, self.time_unit, id, meta))
+            #self.obs[id] = obs
+            x = len(self.obs)
         finally:
             self.lock.release()
         return obs
@@ -264,10 +277,10 @@ class Variable(Data):
     def add(self, date, value, meta={}):
         '''
         The add function is used to add an observation to a variable. An
-        observation is always grouped by the combination of the date and time_unit.
-        Time_unit is a property of a Variable and indicates how granular the 
-        observations should be grouped. For example, if time_unit == year then
-        all observations in a given year will be grouped. 
+        observation is always grouped by the combination of the date and 
+        time_unit. Time_unit is a property of a Variable and indicates how 
+        granular the observations should be grouped. For example, if 
+        time_unit == year then all observations in a given year will be grouped. 
         When calling add you should supply at least two variables:
         1) date: when did the observation happen
         2) value: an integer or float that was observed on that date
@@ -276,25 +289,25 @@ class Variable(Data):
         For example, if you add {'experience': 3} as the meta dict when calling
         add then you will create an extra grouping called experience and all
         future observations who fall in the same date range and the same 
-        exerience level will be grouped by that particular observation. You 
-        can use as many extra groupings as you want but usually one extra grouping
-        should be enough. 
+        exerience level, in this case 3, will be grouped by that particular 
+        observation. You can use as many extra groupings as you want but 
+        usually one extra grouping should be enough. 
         '''
-        assert isinstance(meta, dict), 'The meta variable should be a dict (either empty or with variables to group by.'
+        assert isinstance(meta, dict), '''The meta variable should be a dict 
+            (either empty or with variables to group by.'''
         start, end = self.set_date_range(date)
         values = meta.values()
         values.insert(0, end)
         values.insert(0, start)
         id = self.__hash__(values)
-#        print values
-        self.lock.acquire()
+        obs = self.get_observation(id, date, meta)
+        obs.add(value)
         try:
-            obs = self.get_observation(id, date, meta)
-            obs.add(value)
+            self.lock.acquire()
             self.obs[id] = obs
         finally:
             self.lock.release()
-        print len(self.obs)
+        #print date, id, meta.values(), obs.count, len(self.obs)
 
     def number_of_obs(self):
         n = 0
@@ -341,7 +354,6 @@ class Dataset:
     '''
 
     def __init__(self, chart, rts, vars=None, **kwargs):
-        #project, collection, language_code
         self.encoder, chart, charts = json_encoders.get_json_encoder(chart)
         if self.encoder == None:
             raise exceptions.UnknownChartError(chart, charts)
@@ -377,8 +389,8 @@ class Dataset:
         print 'Project: %s%s' % (self.language_code, self.project)
         print 'JSON encoder: %s' % self.encoder
         print 'Raw data was retrieved from: %s%s/%s' % (self.language_code,
-                                                      self.project,
-                                                      self.collection)
+                                                        self.project,
+                                                        self.collection)
 
     def create_filename(self):
         '''
@@ -422,7 +434,7 @@ class Dataset:
             self.variables.append(var.name)
             setattr(self, var.name, var)
         else:
-            raise TypeError('You can only instance of Variable to a dataset.')
+            raise TypeError('You can only add an instance of Variable to a dataset.')
 
     def write(self, format='csv'):
         '''
@@ -483,14 +495,26 @@ class Dataset:
         float_nums = [float(x) for x in number_list]
         return sum(float_nums) / len(number_list)
 
+    def get_min(self, number_list):
+        if number_list == []:
+            return '.'
+        else:
+            return min(number_list)
+
+    def get_max(self, number_list):
+        if number_list == []:
+            return '.'
+        else:
+            return max(number_list)
+
     def descriptives(self):
         for variable in self:
             data = variable.get_data()
             variable.mean = self.get_mean(data)
             variable.median = self.get_median(data)
             variable.sds = self.get_standard_deviation(data)
-            variable.min = min(data)
-            variable.max = max(data)
+            variable.min = self.get_min(data)
+            variable.max = self.get_max(data)
             variable.num_obs = variable.number_of_obs()
             variable.num_dates = len(variable)
             variable.first_obs, variable.last_obs = variable.get_date_range()
@@ -499,7 +523,7 @@ class Dataset:
         self.descriptives()
         table = Texttable(max_width=0)
         vars = ['Variable', 'Mean', 'Median', 'SD', 'Minimum', 'Maximum',
-                'Num Obs', 'Num of\nUnique Dates', 'First Obs', 'Final Obs']
+                'Num Obs', 'Num of\nUnique Groups', 'First Obs', 'Final Obs']
         table.add_row([var for var in vars])
         table.set_cols_align(['r' for v in vars])
         table.set_cols_valign(['m' for v in vars])
@@ -521,29 +545,41 @@ def debug():
 
     d1 = datetime.datetime.today()
     d2 = datetime.datetime(2007, 6, 7)
-    ds = Dataset('test', 'wiki', 'editors_dataset', 'en', 'to_bar_json', [
-                                        {'name': 'count', 'time_unit': 'year'},
-                                       # {'name': 'testest', 'time_unit': 'year'}
-                                        ])
-    ds.count.add(d1, 10, {'exp': 3})
-    ds.count.add(d1, 135, {'exp': 3})
-    ds.count.add(d2, 1, {'exp': 4})
-    #ds.testest.add(d1, 135)
-    #ds.testest.add(d2, 535)
-    ds.summary()
-    ds.write(format='csv')
-#    v = Variable('test', 'year')
-    ds.encode()
+#    ds = Dataset('histogram', rts, [{'name': 'count', 'time_unit': 'year'},
+#                                   #{'name': 'testest', 'time_unit': 'year'}
+#                                   ])
+#    ds.count.add(d1, 10, {'exp': 3})
+#    ds.count.add(d1, 135, {'exp': 3})
+#    ds.count.add(d2, 1, {'exp': 4})
+#    #ds.testest.add(d1, 135)
+#    #ds.testest.add(d2, 535)
+#    ds.summary()
+#    ds.write(format='csv')
+#
+#    ds.encode()
+    #name, time_unit, lock, **kwargs
+    lock = RLock()
+    v = Variable('test', 'year', lock)
+    v.add(d1, 10, {'exp': 3, 'test': 10})
+    v.add(d1, 135, {'exp': 3, 'test': 10})
+    v.add(d2, 1, {'exp': 4, 'test': 10})
+    v.add(d2, 1, {'exp': 4, 'test': 10})
+    v.add(d2 , 1, {'exp': 3, 'test': 8})
+    v.add(d2 , 1, {'exp': 2, 'test': 10})
+    v.add(d2 , 1, {'exp': 4, 'test': 11})
+    v.add(d2 , 1, {'exp': 8, 'test': 13})
+    v.add(d2 , 1, {'exp': 9, 'test': 12})
 
+
+#    v.add(d2 + timedelta(days=400), 1, {'exp': 4, 'test': 10})
+#    v.add(d2 + timedelta(days=900), 1, {'exp': 3, 'test': 8})
+#    v.add(d2 + timedelta(days=1200), 1, {'exp': 2, 'test': 10})
+#    v.add(d2 + timedelta(days=1600), 1, {'exp': 4, 'test': 11})
+#    v.add(d2 + timedelta(days=2000), 1, {'exp': 8, 'test': 13})
+#    v.add(d2 + timedelta(days=2400), 1, {'exp': 9, 'test': 12})
+
+    print len(v), v.number_of_obs()
 
  #   mongo.test.insert({'variables': ds})
-
-  #  v.add(d2 , 5)
-    #o = v.get_observation(d2)
-#    ds = rawdata.find_one({'project': 'wiki',
-#                           'language_code': 'en',
-#                           'hash': 'cohort_dataset_backward_bar'})
-
-
 if __name__ == '__main__':
     debug()

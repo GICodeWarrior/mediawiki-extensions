@@ -17,8 +17,10 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-12-10'
 __version__ = '0.1'
 
-
+from multiprocessing import JoinableQueue, Lock, Manager, RLock
+from Queue import Empty
 import sys
+import cPickle
 import os
 import progressbar
 import datetime
@@ -27,81 +29,149 @@ if '..' not in sys.path:
     sys.path.append('..')
 
 import inventory
+import manage as manager
 from classes import dataset
-from classes import settings
-settings = settings.Settings()
+from classes import runtime_settings
+from classes import consumers
 from database import db
 from utils import timer
 from utils import log
 
+class Analyzer(consumers.BaseConsumer):
+
+    def __init__(self, rts, tasks, result, var):
+        super(Analyzer, self).__init__(rts, tasks, result)
+        self.var = var
+
+    def convert_synchronized_objects(self):
+        for obs in self.var:
+            obs = self.var[obs]
+            obs.data = obs.data.value
+
+    def store(self):
+        #self.convert_synchronized_objects()
+        location = os.path.join(self.rts.binary_location, '%s_%s.bin' % (self.var.name, self.name))
+        fh = open(location, 'wb')
+        cPickle.dump(self.var, fh)
+        fh.close()
+
+    def run(self):
+        '''
+        Generic loop function that loops over all the editors of a Wikipedia 
+        project and then calls the function that does the actual aggregation.
+        '''
+        mongo = db.init_mongo_db(self.rts.dbname)
+        coll = mongo[self.rts.editors_dataset]
+        while True:
+            try:
+                task = self.tasks.get(block=False)
+                self.tasks.task_done()
+                if task == None:
+                    #print self.var.number_of_obs(), len(self.var.obs)
+                    #self.store()
+                    self.result.put(self.var)
+                    break
+                editor = coll.find_one({'editor': task.editor})
+
+                task.plugin(self.var, editor, dbname=self.rts.dbname)
+                self.result.put(True)
+            except Empty:
+                pass
+
+class Task:
+    def __init__(self, plugin, editor):
+        self.plugin = plugin
+        self.editor = editor
 
 
-def generate_chart_data(project, collection, language_code, func, encoder, **kwargs):
-    '''
-    This is the entry function to be called to generate data for creating charts.
-    '''
-    stopwatch = timer.Timer()
-    res = True
-    dbname = '%s%s' % (language_code, project)
+def retrieve_plugin(func):
     functions = inventory.available_analyses()
     try:
-        func = functions[func]
+        return functions[func]
     except KeyError:
         return False
 
-    print 'Exporting data for chart: %s' % func.func_name
-    print 'Project: %s' % dbname
-    print 'Dataset: %s' % collection
 
-    ds = loop_editors(dbname, project, collection, language_code, func, encoder, **kwargs)
+def feedback(plugin, rts):
+    print 'Exporting data for chart: %s' % plugin.func_name
+    print 'Project: %s' % rts.dbname
+    print 'Dataset: %s' % rts.editors_dataset
+
+
+def write_output(ds, rts, stopwatch):
     ds.create_filename()
-    print 'Storing dataset: %s' % os.path.join(settings.dataset_location, ds.filename)
+    print 'Storing dataset: %s' % os.path.join(rts.dataset_location,
+                                               ds.filename)
     ds.write(format='csv')
-
-    print 'Serializing dataset to %s_%s' % (dbname, 'charts')
-    log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='start')
+    print 'Serializing dataset to %s_%s' % (rts.dbname, 'charts')
+    log.log_to_mongo(rts, 'chart', 'storing', stopwatch, event='start')
     ds.write(format='mongo')
-    stopwatch.elapsed()
-    log.log_to_mongo(ds, 'chart', 'storing', stopwatch, event='finish')
-
-    ds.summary()
-    return res
+    log.log_to_mongo(rts, 'chart', 'storing', stopwatch, event='finish')
 
 
-def loop_editors(dbname, project, collection, language_code, func, encoder, **kwargs):
+def generate_chart_data(rts, func, **kwargs):
     '''
-    Generic loop function that loops over all the editors of a Wikipedia project
-    and then calls the function that does the actual aggregation.
+    This is the entry function to be called to generate data for creating 
+    charts.
     '''
-    mongo = db.init_mongo_db(dbname)
-    coll = mongo[collection]
-    editors = db.retrieve_distinct_keys(dbname, collection, 'editor')
+    stopwatch = timer.Timer()
+    plugin = retrieve_plugin(func)
+    feedback(plugin, rts)
 
 
-    min_year, max_year = determine_project_year_range(dbname, collection, 'new_wikipedian')
-    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
-    print 'Number of editors: %s' % len(editors)
-
+    tasks = JoinableQueue()
+    result = JoinableQueue()
+    mgr = Manager()
+    lock = mgr.RLock()
+    editors = db.retrieve_distinct_keys(rts.dbname, rts.editors_dataset, 'editor')
+    min_year, max_year = determine_project_year_range(rts.dbname,
+                                                      rts.editors_dataset,
+                                                      'new_wikipedian')
     fmt = kwargs.pop('format', 'long')
+    time_unit = kwargs.pop('time_unit', 'year')
     kwargs['min_year'] = min_year
     kwargs['max_year'] = max_year
-    variables = []
-    ds = dataset.Dataset(func.func_name,
-                         project,
-                         coll.name,
-                         language_code,
-                         encoder,
-                         variables,
-                         format=fmt)
-    var = dataset.Variable('count', **kwargs)
+
+    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
+    var = dataset.Variable('count', time_unit, lock, **kwargs)
 
     for editor in editors:
-        editor = coll.find_one({'editor': editor})
-        var = func(var, editor, dbname=dbname)
-        pbar.update(pbar.currval + 1)
+        tasks.put(Task(plugin, editor))
 
+    consumers = [Analyzer(rts, tasks, result, var) for
+                 x in xrange(rts.number_of_processes)]
+
+    for x in xrange(rts.number_of_processes):
+        tasks.put(None)
+
+    for w in consumers:
+        w.start()
+
+    ppills = rts.number_of_processes
+    while True:
+        while ppills > 0:
+            try:
+                res = result.get(block=True)
+                if res == True:
+                    pbar.update(pbar.currval + 1)
+                else:
+                    ppills -= 1
+                    var = res
+            except Empty:
+                pass
+        break
+
+
+    tasks.join()
+    ds = dataset.Dataset(plugin.func_name, rts, format=fmt)
+    #var = consumers[0].var
     ds.add_variable(var)
-    return ds
+
+    stopwatch.elapsed()
+    write_output(ds, rts, stopwatch)
+
+    ds.summary()
+    return True
 
 
 def determine_project_year_range(dbname, collection, var):
@@ -120,16 +190,24 @@ def determine_project_year_range(dbname, collection, var):
 
 
 if __name__ == '__main__':
-    generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_by_backward_cohort', 'to_bar_json', time_unit='year', cutoff=0, cum_cutoff=50)
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'edit_patterns', 'to_bar_json', time_unit='year', cutoff=5)
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_number_of_new_wikipedians', 'to_bar_json', time_unit='year')
-    #generate_chart_data('wiki', 'editors', 'en', 'total_number_of_articles', 'to_bar_json', time_unit='year')
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'total_cumulative_edits', 'to_bar_json', time_unit='year')
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_histogram', 'to_bar_json', time_unit='month', cutoff=5, cum_cutoff=0)
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_backward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=10, cum_cutoff=0, format='wide')
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'cohort_dataset_forward_bar', 'to_stacked_bar_json', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'histogram_edits', 'to_bar_json', time_unit='year', cutoff=0)
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'time_to_new_wikipedian', 'to_bar_json', time_unit='year', cutoff=0)
-    #generate_chart_data('wiki', 'editors_dataset', 'en', 'new_editor_count', 'to_bar_json', time_unit='month', cutoff=0)
+    project, language, parser = manager.init_args_parser()
+    args = parser.parse_args(['django'])
+    rts = runtime_settings.init_environment('wiki', 'en', args)
 
-    #available_analyses()
+    #TEMP FIX, REMOVE 
+    rts.dbname = 'enwiki'
+    rts.editors_dataset = 'editors_dataset'
+    #END TEMP FIX
+
+    generate_chart_data(rts, 'histogram_by_backward_cohort', time_unit='year', cutoff=1, cum_cutoff=10)
+#    generate_chart_data(rts, 'edit_patterns', time_unit='year', cutoff=5)
+#    generate_chart_data(rts, 'total_number_of_new_wikipedians', time_unit='year')
+#    generate_chart_data(rts, 'total_number_of_articles', time_unit='year')
+#    generate_chart_data(rts, 'total_cumulative_edits', time_unit='year')
+#    generate_chart_data(rts, 'cohort_dataset_forward_histogram', time_unit='month', cutoff=5, cum_cutoff=0)
+#    generate_chart_data(rts, 'cohort_dataset_backward_bar', time_unit='year', cutoff=10, cum_cutoff=0, format='wide')
+#    generate_chart_data(rts, 'cohort_dataset_forward_bar', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
+#    generate_chart_data(rts, 'histogram_edits', time_unit='year', cutoff=0)
+#    generate_chart_data(rts, 'time_to_new_wikipedian', time_unit='year', cutoff=0)
+#    generate_chart_data(rts, 'new_editor_count', time_unit='month', cutoff=0)
+#    #available_analyses()
