@@ -2388,6 +2388,7 @@ $messages['ca'] = array(
 $messages['ce'] = array(
 	'datasearch_search_text' => 'Йоза лахар:',
 	'ow_history' => 'Исторе',
+	'ow_ClassAttributeLevel' => 'Локхалла',
 	'ow_User' => 'Декъашхо',
 );
 
@@ -9015,13 +9016,14 @@ $messages['myv'] = array(
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  * @author Ricardo gs
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'ow_save' => 'Ticpiyāz',
 	'ow_history' => 'Tlahcuilōlloh',
 	'ow_uiprefs' => 'Huiquidatah',
 	'ow_dm_OK' => 'Cualli',
-	'ow_Language' => 'Tlahtōlli',
+	'ow_Language' => 'Tlâtòlli',
 	'ow_Synonyms' => 'Neneuhtlahtōl',
 	'ow_SynonymsAndTranslations' => 'Neneuhtlahtōl īhuān tlahtōlcuepaliztli',
 	'ow_Source' => 'Īhuīcpa:',
