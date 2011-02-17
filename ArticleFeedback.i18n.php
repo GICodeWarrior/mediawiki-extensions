@@ -1513,6 +1513,13 @@ $messages['ko'] = array(
 	'articlefeedback-survey-thanks' => '설문에 응해 주셔서 감사합니다.',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'articlefeedback-expert-assessment-question' => 'Häs De Ahnung vun däm Theemekreis?',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
  */
@@ -2391,6 +2398,29 @@ $messages['sl'] = array(
 	'articlefeedback-survey-message-success' => 'Zahvaljujemo se vam za izpolnitev vprašalnika.',
 	'articlefeedback-survey-message-error' => 'Prišlo je do napake.
 Prosimo, poskusite znova pozneje.',
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Sasa Stefanovic
+ */
+$messages['sr-ec'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'Остало',
+	'articlefeedback-survey-question-useful-iffalse' => 'Зашто ?',
+	'articlefeedback-survey-question-comments' => 'Да ли имате додатних коментара ?',
+	'articlefeedback-survey-submit' => 'Пошаљи',
+	'articlefeedback-survey-title' => 'Молимо вас да одговорите на неколико питања',
+	'articlefeedback-survey-thanks' => 'Хвала што сте попунили овај упитник.',
+	'articlefeedback-form-switch-label' => 'Оцени ову страницу',
+	'articlefeedback-form-panel-title' => 'Оцени ову страницу',
+	'articlefeedback-form-panel-clear' => 'Уклони ову оцену',
+	'articlefeedback-pitch-reject' => 'Можда касније',
+	'articlefeedback-pitch-or' => 'или',
+	'articlefeedback-pitch-survey-accept' => 'Почни упитник',
+	'articlefeedback-pitch-join-title' => 'Желите ли да направите налог ?',
+	'articlefeedback-pitch-join-login' => 'Пријави се',
+	'articlefeedback-pitch-edit-title' => 'Желите ли да измените ову страницу ?',
+	'articlefeedback-pitch-edit-accept' => 'Почните уређивање',
+	'articlefeedback-expert-assessment-level-3-label' => 'Експерт',
 );
 
 /** Swedish (Svenska)
