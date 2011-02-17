@@ -2692,6 +2692,7 @@ $messages['it'] = array(
 	'fundraiserstats-tab-contributions' => 'Numero di contributi',
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Massimi (USD)',
+	'fundraiserstats-time-zone' => 'Fuso orario:',
 );
 
 /** Japanese (日本語)
