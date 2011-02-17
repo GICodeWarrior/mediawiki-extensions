@@ -7257,6 +7257,7 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'configure-desc-group' => 'Olōlli',
@@ -7266,9 +7267,9 @@ $messages['nah'] = array(
 	'configure-old-changes' => 'tlapatlaliztli',
 	'configure-section-paths' => 'Ohtli',
 	'configure-section-email' => 'E-mail',
-	'configure-section-namespaces' => 'Tōcātzin',
-	'configure-section-category' => 'Neneuhcāyōtl',
-	'configure-section-groups' => 'Olōlli',
+	'configure-section-namespaces' => 'Tòcâyeyàntìn',
+	'configure-section-category' => 'Tlaìxmatkàtlàlilòtl',
+	'configure-section-groups' => 'Olòltìn',
 	'configure-section-specialpages' => 'Nōncuahquīzqui āmatl',
 	'configure-throttle-action-edit' => 'Ticpatlāz',
 	'configure-condition-operator-or' => 'Nozo',

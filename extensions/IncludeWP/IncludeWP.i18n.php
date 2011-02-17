@@ -142,6 +142,9 @@ $messages['ia'] = array(
 	'includewp-licence-notice' => 'Le contento hic supra proveni del pagina <a href="$2">$3</a> de $1, e es disponibile sub licentia <a href="$4">$5</a>. Un lista complete de autores se trova <a href="$6">hic</a>.',
 	'includewp-parserhook-desc' => 'Uncino del analysator syntactic que permitte presentar contento de un pagina de Wikipedia.',
 	'includewp-include-par-page' => 'Le nomine del pagina (remote) a presentar.',
+	'includewp-include-par-wiki' => 'Le nomine del wiki ex le qual importar contento. Debe esser un del wikis permittite; per predefinition, solo Wikipedia.',
+	'includewp-include-par-paragraphs' => 'Le numero de paragraphos a presentar initialmente.',
+	'includewp-include-par-height' => 'Le altitude maxime (in pixels) del div in le qual le contento es cargate. Defini como 0 pro non haber un limite.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

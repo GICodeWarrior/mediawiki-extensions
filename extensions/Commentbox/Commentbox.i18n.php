@@ -1165,12 +1165,16 @@ $messages['yi'] = array(
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
+	'commentbox-desc' => '于特定页面添加注释框',
 	'commentbox-intro' => '添加评论
 是否对此页内容有意见？请将意见添加在此或
 直接修改此页',
+	'commentbox-savebutton' => '保存注释',
 	'commentbox-name' => '名称：',
+	'commentbox-name-explanation' => '<small>(提示：[[Special:UserLogin|登入]]后不需要手动填写姓名)</small>',
 	'commentbox-log' => '新评论',
 	'commentbox-first-comment-heading' => '== 注释 ==',
+	'commentbox-regex' => '/\\n==\\s*注释\\s*==\\s*\\n/i',
 	'commentbox-errorpage-title' => '创建注释时出错',
 	'commentbox-error-page-nonexistent' => '此页面不存在 ！',
 	'commentbox-error-namespace' => '此命名空间不允许使用注释！',

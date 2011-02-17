@@ -86,6 +86,13 @@ $messages['cs'] = array(
 	'pnghandler-desc' => 'Mění velikost PNG obrázků pomocí pngds',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'pnghandler-desc' => 'Ændr størrelsen på PNG-billeder ved hjælp af pngds',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender
