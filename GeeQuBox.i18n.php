@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'geequbox-desc' => 'Generates lightbox effects using the jQuery lightbox plugin'
 );
 
+/** Message documentation (Message documentation)
+ * @author McDutchie
+ */
+$messages['qqq'] = array(
+	'geequbox-desc' => 'See http://www.mediawiki.org/wiki/Extension:GeeQuBox',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
@@ -43,6 +50,13 @@ $messages['fr'] = array(
  */
 $messages['hsb'] = array(
 	'geequbox-desc' => 'Wutworja efekty swětłoweho kašćika (Lightbox) z pomocu tykača jQuery lightbox',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'geequbox-desc' => 'Superimpone imagines con effecto de cassa luminose usante le plug-in Lightbox pro jQuery',
 );
 
 /** Colognian (Ripoarisch)
