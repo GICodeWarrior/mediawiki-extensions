@@ -92,7 +92,8 @@ def parse_article(elem, namespaces):
     if len(ns) == 1 and '0' in namespaces:
         return {'id': 0, 'name': 'main namespace'}
     else:
-        if ns[0] in namespaces:
+        if ns[0] in namespaces.values():
+            #print namespaces, title.decode('utf-8'), ns
             return {'id': ns[0], 'name': ns[1]}
         else:
             return False
