@@ -55,16 +55,17 @@ function wfEditSimilarCheck( $article ) {
 
 // view message depending on settings and the relevancy of the results
 function wfEditSimilarViewMesg( &$out ) {
-	global $wgTitle, $wgUser, $wgEditSimilarAlwaysShowThanks;
+	global $wgUser, $wgEditSimilarAlwaysShowThanks;
 
 	wfLoadExtensionMessages( 'EditSimilar' );
 
 	if ( !empty( $_SESSION['ES_saved'] ) && ( 1 == $wgUser->getOption( 'edit-similar', 1 ) ) && $out->isArticle() ) {
 		if ( EditSimilar::checkCounter() ) {
 			$message_text = '';
-			$article_title = $wgTitle->getText();
+			$title = $out->getTitle();
+			$article_title = $title->getText();
 			// here we'll populate the similar articles and links
-			$instance = new EditSimilar( $wgTitle->getArticleId(), 'category' );
+			$instance = new EditSimilar( $title->getArticleId(), 'category' );
 			$similarities = $instance->getSimilarArticles();
 
 			if ( !empty( $similarities ) ) {
