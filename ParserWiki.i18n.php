@@ -247,3 +247,10 @@ $messages['tl'] = array(
 	'parserwiki-desc' => 'Nagpapahintulot na bigyang kahulugang ang isang balarila sa loob ng isang wiki at pagkaraan ay gamitin ang balarilang iyon upang magpasok ng kabatiran sa wiking iyon din',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author 阿pp
+ */
+$messages['zh-hans'] = array(
+	'parserwiki-desc' => '允许在wiki中定义语法，并在wiki中使用该语法输入信息',
+);
+
