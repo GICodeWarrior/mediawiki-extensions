@@ -251,7 +251,7 @@ function renderFolkTagCloud( $input, $args, $parser ) {
 			}
 			# appending tag
 			$currentRow = "<a style=\"{$style}\" {$url}>" . $label . $append .
-				"</a>&nbsp; ";
+				"</a>&#160; ";
 			$htmlOut = $htmlOut . $currentRow;
 		}
 	}
