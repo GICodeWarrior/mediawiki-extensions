@@ -119,13 +119,22 @@
 			});
 			return ;
 		}
-		if( !mediaWiki.config.get( name )){
+		var existingValue = mediaWiki.config.get( name );
+		if( !existingValue || typeof existingValue == 'string'){
 			mw.setConfig( name, value );
 			return ;
 		}
 		if( typeof mediaWiki.config.get( name ) == 'object' ){
-			mw.setConfig( name, $.extend( mediaWiki.config.get( name ), value ) );
-		}		
+			if( $.isArray( existingValue) && $.isArray( value ) ){
+				for( var i =0; i <  value.length ; i ++ ){
+					existingValue.push( value[i] );
+				}
+				mw.setConfig( name, $.unique( existingValue ) );
+			} else {
+				mw.setConfig( name, $.extend( {}, existingValue, value) );
+			}
+			return ;
+		}
 	};
 
 	/**

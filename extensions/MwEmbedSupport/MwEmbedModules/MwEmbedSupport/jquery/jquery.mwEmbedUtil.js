@@ -8,13 +8,11 @@
 	 * Extend Unique to work with strings and number values
 	 * http://paulirish.com/2010/duck-punching-with-jquery/ 
 	 */
-	var _old = $.unique;
-	 
+	var _oldUnique = $.unique;	 
     $.unique = function(arr){
- 
-        // do the default behavior only if we got an array of elements
+        // Do the default behavior only if we got an array of elements
         if (!!arr[0].nodeType){
-            return _old.apply(this,arguments);
+            return _oldUnique.apply(this,arguments);
         } else {
             // reduce the array to contain no dupes via grep/inArray
             return $.grep(arr,function(v,k){
