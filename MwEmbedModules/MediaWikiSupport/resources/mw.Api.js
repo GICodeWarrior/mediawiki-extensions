@@ -190,7 +190,7 @@
 				ranCallback = true;
 
 				// Load the proxy and issue the request
-				mw.load( 'ApiProxy', function( ) {
+				mw.load( 'ApiProxy', function(){
 					mw.ApiProxy.doRequest( url, data, callback, timeoutCallback);
 				} );
 
@@ -220,7 +220,7 @@
 	* 	false if the request does not
 	*/
 	mw.checkRequestPost = function ( data ) {
-		if( $j.inArray( data['action'], mw.getConfig( 'apiPostActions' ) ) != -1 ) {
+		if( $j.inArray( data['action'], mw.getConfig( 'MediaWiki.ApiPostActions' ) ) != -1 ) {
 			return true;
 		}
 		if( data['prop'] == 'info' && data['intoken'] ) {
