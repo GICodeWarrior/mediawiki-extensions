@@ -4461,17 +4461,18 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
-	'viewapc-display-filename' => 'Tlahcuilōlli ītōcā',
+	'viewapc-display-filename' => 'Èwaltòkâtli',
 	'viewapc-display-info' => 'Tōcāitl',
-	'viewapc-display-deletion_time' => 'Ōmopolo',
+	'viewapc-display-deletion_time' => 'Tlatlaìxpôpolòlli',
 	'viewapc-ls-submit' => '¡Yāuh!',
 	'viewapc-ls-header-name' => 'Tōcāitl',
-	'viewapc-ls-header-deleted' => 'Ōmopolo',
-	'viewapc-ls-scope-deleted' => 'Ōmopolo',
+	'viewapc-ls-header-deleted' => 'Tlatlaìxpôpolòlli',
+	'viewapc-ls-scope-deleted' => 'Tlatlaìxpôpolòlli',
 	'viewapc-ls-sort-name' => 'Tōcāitl',
-	'viewapc-ls-sort-deleted' => 'Ōmopolo',
+	'viewapc-ls-sort-deleted' => 'Tlatlaìxpôpolòlli',
 	'viewapc-ls-limit-none' => 'Mochīntīn',
 );
 
