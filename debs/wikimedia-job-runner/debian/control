@@ -1,9 +1,9 @@
 Source: wikimedia-job-runner
 Maintainer: Tim Starling <tstarling@wikimedia.org>
+Build-Depends: debhelper (>= 6.0.0)
 
 Package: wikimedia-job-runner
 Architecture: all
 Depends: wikimedia-task-appserver
 Description: MediaWiki job queue runner
-Build-Depends: debhelper (>= 6.0.0)
 
