@@ -80,6 +80,13 @@ $messages['nl'] = array(
 	'geequbox-desc' => 'Voegt lightboxeffecten toe met behulp van de jQuery lightboxplug-in',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'geequbox-desc' => "A génera dj'efet d'àuta luminosità an dovrand ël jQuery lightbox plugin",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
