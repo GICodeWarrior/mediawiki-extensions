@@ -13,4 +13,9 @@ return array(
 			'url' => 'http://commons.wikimedia.org/w/api.php'
 		)
 	),
+	
+	"MediaWiki.ApiPostActions" => array( 'login', 'purge', 'rollback', 'delete', 'undelete',
+		'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser',
+		'import', 'userrights' ),
+		
 );

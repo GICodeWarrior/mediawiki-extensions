@@ -23,11 +23,12 @@
 	mw.addMediaWikiPlayerSupport = function( embedPlayer ){
 		
 		// Set some local variables: 
-		if( ! $( embedPlayer).attr( 'data-mwtitle') ){			
-			mw.log( 'Error MediaWikiSupportPlayer:: no mwtitle!');
+		if( ! $( embedPlayer).attr( 'data-mwtitle' ) ){			
 			return false;
 		} else {
 			var apiTitleKey = $( embedPlayer).attr( 'data-mwtitle');
+			// legacy support ( set as attribute ) 
+			embedPlayer.apiTitleKey = apiTitleKey;
 		}
 		// Set local apiProvider via config if not defined
 		var apiProvider = $( embedPlayer ).attr('data-mwprovider');
