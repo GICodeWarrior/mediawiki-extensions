@@ -2401,26 +2401,40 @@ Prosimo, poskusite znova pozneje.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
 	'articlefeedback-survey-answer-whyrated-other' => 'Остало',
-	'articlefeedback-survey-question-useful-iffalse' => 'Зашто ?',
-	'articlefeedback-survey-question-comments' => 'Да ли имате додатних коментара ?',
+	'articlefeedback-survey-question-useful-iffalse' => 'Зашто?',
+	'articlefeedback-survey-question-comments' => 'Имате ли још коментара?',
 	'articlefeedback-survey-submit' => 'Пошаљи',
 	'articlefeedback-survey-title' => 'Молимо вас да одговорите на неколико питања',
-	'articlefeedback-survey-thanks' => 'Хвала што сте попунили овај упитник.',
+	'articlefeedback-survey-thanks' => 'Хвала вам што сте попунили упитник.',
+	'articlefeedback-error' => 'Дошло је до грешке. Покушајте поново.',
 	'articlefeedback-form-switch-label' => 'Оцени ову страницу',
-	'articlefeedback-form-panel-title' => 'Оцени ову страницу',
+	'articlefeedback-form-panel-title' => 'Оцењивање странице',
+	'articlefeedback-form-panel-instructions' => 'Издвојте тренутак да оцените ову страницу.',
 	'articlefeedback-form-panel-clear' => 'Уклони ову оцену',
+	'articlefeedback-form-panel-expertise-profession' => 'То је део моје струке',
+	'articlefeedback-form-panel-expertise-hobby' => 'То је везано за моје хобије или занимања',
+	'articlefeedback-form-panel-submit' => 'Пошаљи повратну информацију',
+	'articlefeedback-report-empty' => 'Нема оцена.',
+	'articlefeedback-field-trustworthy-label' => 'Поуздано',
+	'articlefeedback-field-wellwritten-label' => 'Лепо написано',
 	'articlefeedback-pitch-reject' => 'Можда касније',
 	'articlefeedback-pitch-or' => 'или',
+	'articlefeedback-pitch-survey-title' => 'Желите ли да попуните упитник?',
 	'articlefeedback-pitch-survey-accept' => 'Почни упитник',
-	'articlefeedback-pitch-join-title' => 'Желите ли да направите налог ?',
-	'articlefeedback-pitch-join-login' => 'Пријави се',
-	'articlefeedback-pitch-edit-title' => 'Желите ли да измените ову страницу ?',
+	'articlefeedback-pitch-join-title' => 'Желите ли да отворите налог?',
+	'articlefeedback-pitch-join-accept' => 'Отвори налог',
+	'articlefeedback-pitch-join-login' => 'Пријави ме',
+	'articlefeedback-pitch-edit-title' => 'Желите ли да измените ову страницу?',
 	'articlefeedback-pitch-edit-accept' => 'Почните уређивање',
-	'articlefeedback-expert-assessment-level-3-label' => 'Експерт',
+	'articlefeedback-expert-assessment-level-3-label' => 'Стручњак',
+	'articlefeedback-survey-message-success' => 'Хвала вам што сте попунили упитник.',
+	'articlefeedback-survey-message-error' => 'Дошло је до грешке.
+Покушајте касније.',
 );
 
 /** Swedish (Svenska)
