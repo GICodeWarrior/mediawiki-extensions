@@ -205,7 +205,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configholder' ) ) );
 		$wgOut->addHTML( $years );
 		$wgOut->addHTML( wfMsg( 'fundraiserstats-time-zone' ).'<br/>' );
-		$wgOut->addHTML( '&nbsp;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' '.wfMsg( 'fundraiserstats-utc' ) );
+		$wgOut->addHTML( '&#160;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' '.wfMsg( 'fundraiserstats-utc' ) );
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );
 		
 		$wgOut->addHTML( Xml::closeElement( 'form' ) );
