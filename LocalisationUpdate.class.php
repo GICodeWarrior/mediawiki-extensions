@@ -303,9 +303,6 @@ class LocalisationUpdate {
 	 * @return array
 	 */
 	public static function compareFiles( $basefile, $comparefile, $verbose, array $forbiddenKeys = array(), $alwaysGetResult = true, $saveResults = false ) {
-		$compare_messages = array();
-		$base_messages = array();
-
 		// Get the languagecode.
 		$langcode = Language::getCodeFromFileName( $basefile, 'Messages' );
 
@@ -472,8 +469,6 @@ class LocalisationUpdate {
 	 */
 	public static function compareExtensionFiles( $extension, $basefile, $comparefile, $verbose, $alwaysGetResult = true, $saveResults = false ) {
 		// FIXME: Factor out duplicated code?
-		$compare_messages = array();
-		$base_messages = array();
 
 		$basefilecontents = self::getFileContents( $basefile );
 		
