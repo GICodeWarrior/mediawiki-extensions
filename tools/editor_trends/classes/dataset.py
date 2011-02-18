@@ -23,9 +23,10 @@ import time
 import math
 import operator
 import sys
+import cPickle
 import hashlib
 from pymongo.son_manipulator import SONManipulator
-from multiprocessing import RLock, Array, Value
+from multiprocessing import Manager
 from texttable import Texttable
 from datetime import timedelta
 
@@ -161,10 +162,8 @@ class Observation(Data):
     def __init__(self, date, time_unit, id, meta):
         assert isinstance(date, datetime.datetime), '''Date variable should be 
             a datetime.datetime instance.'''
-        #self.lock = lock #Lock()
         self.date = date
         self.data = 0
-        #self.data = Value('i', 0)
         self.time_unit = time_unit
         self.t1, self.t0 = self.set_date_range(date)
         self.id = id
@@ -194,22 +193,34 @@ class Observation(Data):
     def __getitem__(self, key):
         return getattr(self, key, [])
 
+    def serialize(self):
+        return cPickle.dumps(self)
+
+    def deserialize(self):
+        return cPickle.loads(self)
+
     def add(self, value):
         '''
         '''
-        #self.lock.acquire()
-        #try:
         if isinstance(value, list):
             if self.count == 0:
                 self.data = []
-                #self.data = Array('i', 0)
             self.data.append(value)
         else:
             self.data += value
-            #self.data.value += value
-        #finally:
         self.count += 1
-        #self.lock.release()
+#        self.lock.acquire()
+#        try:
+#            if isinstance(value, list):
+#                if self.count == 0:
+#                    self.data = []
+#                self.data.append(value)
+#            else:
+#                self.data += value
+#        finally:
+#            self.count += 1
+#            self.lock.release()
+
 
 
     def get_date_range(self):
@@ -220,10 +231,10 @@ class Variable(Data):
     '''
     This class constructs a time-based variable. 
     '''
-    def __init__(self, name, time_unit, lock, **kwargs):
+    def __init__(self, name, time_unit, lock, obs, **kwargs):
         self.name = name
         self.lock = lock
-        self.obs = {}
+        self.obs = obs
         self.time_unit = time_unit
         self.groupbys = []
         self._type = 'variable'
@@ -265,14 +276,7 @@ class Variable(Data):
         return [o for o in self.itervalues()]
 
     def get_observation(self, id, date, meta):
-        self.lock.acquire()
-        try:
-            obs = self.obs.get(id, Observation(date, self.time_unit, id, meta))
-            #self.obs[id] = obs
-            x = len(self.obs)
-        finally:
-            self.lock.release()
-        return obs
+        return self.obs.get(id, Observation(date, self.time_unit, id, meta).serialize())
 
     def add(self, date, value, meta={}):
         '''
@@ -300,10 +304,13 @@ class Variable(Data):
         values.insert(0, end)
         values.insert(0, start)
         id = self.__hash__(values)
-        obs = self.get_observation(id, date, meta)
-        obs.add(value)
+
+        self.lock.acquire()
         try:
-            self.lock.acquire()
+            obs = self.get_observation(id, date, meta)
+            obs = cPickle.loads(obs)
+            obs.add(value)
+            obs = obs.serialize()
             self.obs[id] = obs
         finally:
             self.lock.release()
@@ -376,7 +383,6 @@ class Dataset:
                 name = kwargs.pop('name')
                 setattr(self, name, Variable(name, **kwargs))
                 self.variables.append(name)
-        #self.filename = self.create_filename()
 
     def __repr__(self):
         return 'Dataset contains %s variables' % (len(self.variables))
@@ -426,15 +432,18 @@ class Dataset:
         self.filename = filename
 
 
-    def add_variable(self, var):
+    def add_variable(self, vars):
         '''
         Call this function to add a Variable to a dataset. 
         '''
-        if isinstance(var, Variable):
-            self.variables.append(var.name)
-            setattr(self, var.name, var)
-        else:
-            raise TypeError('You can only add an instance of Variable to a dataset.')
+        if not isinstance(vars, list):
+            vars = [vars]
+        for var in vars:
+            if isinstance(var, Variable):
+                self.variables.append(var.name)
+                setattr(self, var.name, var)
+            else:
+                raise TypeError('You can only add an instance of Variable to a dataset.')
 
     def write(self, format='csv'):
         '''

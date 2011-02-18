@@ -17,7 +17,8 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-12-10'
 __version__ = '0.1'
 
-from multiprocessing import JoinableQueue, Lock, Manager, RLock
+from multiprocessing import JoinableQueue, Manager, RLock, Process
+from multiprocessing.managers import BaseManager
 from Queue import Empty
 import sys
 import cPickle
@@ -37,28 +38,16 @@ from database import db
 from utils import timer
 from utils import log
 
-class Analyzer(consumers.BaseConsumer):
 
+class Analyzer(consumers.BaseConsumer):
     def __init__(self, rts, tasks, result, var):
         super(Analyzer, self).__init__(rts, tasks, result)
         self.var = var
 
-    def convert_synchronized_objects(self):
-        for obs in self.var:
-            obs = self.var[obs]
-            obs.data = obs.data.value
-
-    def store(self):
-        #self.convert_synchronized_objects()
-        location = os.path.join(self.rts.binary_location, '%s_%s.bin' % (self.var.name, self.name))
-        fh = open(location, 'wb')
-        cPickle.dump(self.var, fh)
-        fh.close()
-
     def run(self):
         '''
         Generic loop function that loops over all the editors of a Wikipedia 
-        project and then calls the function that does the actual aggregation.
+        project and then calls the plugin that does the actual mapping.
         '''
         mongo = db.init_mongo_db(self.rts.dbname)
         coll = mongo[self.rts.editors_dataset]
@@ -67,8 +56,6 @@ class Analyzer(consumers.BaseConsumer):
                 task = self.tasks.get(block=False)
                 self.tasks.task_done()
                 if task == None:
-                    #print self.var.number_of_obs(), len(self.var.obs)
-                    #self.store()
                     self.result.put(self.var)
                     break
                 editor = coll.find_one({'editor': task.editor})
@@ -82,6 +69,24 @@ class Task:
     def __init__(self, plugin, editor):
         self.plugin = plugin
         self.editor = editor
+
+
+def reconstruct_observations(var):
+    '''
+    When the Task queue is empty then the Variable instance is returned. However,
+    the observations in var.obs are still pickled. This function does two things:
+    a) it uses an ordinary dictionary instead of a shared dictionary
+    b) it reconstructs the serialized observations to instances of Observation
+    '''
+    if not isinstance(var, dataset.Variable):
+        raise 'var should be an instance of Variable.'
+
+    keys = var.obs.keys()
+    d = {}
+    for key in keys:
+        d[key] = cPickle.loads(var.obs[key])
+    var.obs = d
+    return var
 
 
 def retrieve_plugin(func):
@@ -118,11 +123,14 @@ def generate_chart_data(rts, func, **kwargs):
     plugin = retrieve_plugin(func)
     feedback(plugin, rts)
 
-
+    obs = dict()
     tasks = JoinableQueue()
     result = JoinableQueue()
+
     mgr = Manager()
     lock = mgr.RLock()
+    obs_proxy = mgr.dict(obs)
+
     editors = db.retrieve_distinct_keys(rts.dbname, rts.editors_dataset, 'editor')
     min_year, max_year = determine_project_year_range(rts.dbname,
                                                       rts.editors_dataset,
@@ -133,7 +141,7 @@ def generate_chart_data(rts, func, **kwargs):
     kwargs['max_year'] = max_year
 
     pbar = progressbar.ProgressBar(maxval=len(editors)).start()
-    var = dataset.Variable('count', time_unit, lock, **kwargs)
+    var = dataset.Variable('count', time_unit, lock, obs_proxy, **kwargs)
 
     for editor in editors:
         tasks.put(Task(plugin, editor))
@@ -141,13 +149,16 @@ def generate_chart_data(rts, func, **kwargs):
     consumers = [Analyzer(rts, tasks, result, var) for
                  x in xrange(rts.number_of_processes)]
 
+
     for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
     for w in consumers:
         w.start()
 
+
     ppills = rts.number_of_processes
+    vars = []
     while True:
         while ppills > 0:
             try:
@@ -157,21 +168,23 @@ def generate_chart_data(rts, func, **kwargs):
                 else:
                     ppills -= 1
                     var = res
+                    #if res.number_of_obs() > var.number_of_obs():
+                    #vars.append(res)
             except Empty:
                 pass
         break
 
-
     tasks.join()
+
+    reconstruct_observations(var)
     ds = dataset.Dataset(plugin.func_name, rts, format=fmt)
-    #var = consumers[0].var
     ds.add_variable(var)
 
     stopwatch.elapsed()
-    write_output(ds, rts, stopwatch)
+    #write_output(ds, rts, stopwatch)
 
     ds.summary()
-    return True
+    #return True
 
 
 def determine_project_year_range(dbname, collection, var):
@@ -204,8 +217,8 @@ if __name__ == '__main__':
 #    generate_chart_data(rts, 'total_number_of_new_wikipedians', time_unit='year')
 #    generate_chart_data(rts, 'total_number_of_articles', time_unit='year')
 #    generate_chart_data(rts, 'total_cumulative_edits', time_unit='year')
-#    generate_chart_data(rts, 'cohort_dataset_forward_histogram', time_unit='month', cutoff=5, cum_cutoff=0)
-#    generate_chart_data(rts, 'cohort_dataset_backward_bar', time_unit='year', cutoff=10, cum_cutoff=0, format='wide')
+#    generate_chart_data(rts, 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=10)
+    generate_chart_data(rts, 'cohort_dataset_backward_bar', time_unit='year', cutoff=1, cum_cutoff=10, format='wide')
 #    generate_chart_data(rts, 'cohort_dataset_forward_bar', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
 #    generate_chart_data(rts, 'histogram_edits', time_unit='year', cutoff=0)
 #    generate_chart_data(rts, 'time_to_new_wikipedian', time_unit='year', cutoff=0)
