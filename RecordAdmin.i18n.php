@@ -377,7 +377,7 @@ $messages['bs'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Bez "$1"',
-	'recordadmin-edit-info' => 'Ova stranica sadrži šablone sa vlastitim obrascima koje možete popuniti iz ovog seta jezičaka',
+	'recordadmin-edit-info' => 'Ova stranica sadrži šablone sa vlastitim obrascima koje možete popuniti iz ovog seta jezičaka.<br />Alternativno <a href="$1">koristite normalni MediaWiki uređivač koji radi bez šablonskih obrazaca</a>.',
 	'recordadmin-properties' => 'Svojstva',
 );
 
