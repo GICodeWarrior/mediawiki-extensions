@@ -3425,6 +3425,14 @@ $wgGoogleMapsMessages['li'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Lingala (Lingála)
+ * @author Eruedin
+ */
+$wgGoogleMapsMessages['ln'] = array(
+	'gm-zoom-control' => 'Botamboli',
+	'gm-search' => 'Boluki',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  */
