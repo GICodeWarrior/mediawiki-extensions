@@ -787,6 +787,16 @@ $messages['sq'] = array(
 	'right-whatismyip' => 'Shiko [[Special:WhatIsMyIP|own IP address]]',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'whatismyip' => 'Која је моја IP адреса',
+	'whatismyip-desc' => 'Приказује тренутну [[Special:WhatIsMyIP|IP адресу]] корисника',
+	'whatismyip-out' => 'Ваша IP адреса:',
+	'right-whatismyip' => 'приказ [[Special:WhatIsMyIP|сопствене IP адресе]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
