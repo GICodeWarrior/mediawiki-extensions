@@ -482,6 +482,16 @@ $messages['sl'] = array(
 	'nedits' => '$1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}}',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'activestrategy' => 'Активна стратегија',
+	'active-strategy-desc' => 'Приказује број измена за стратешко планиране странице',
+	'active-strategy-intro' => 'Број измена задатих страница {{PLURAL:$1|последњи $1 дан|у последња $1 дана|у последњих $1 дана}}.',
+	'nedits' => '$1 {{PLURAL:$1|измена|измене|измена}}',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Cohan
