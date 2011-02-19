@@ -102,6 +102,30 @@ $messages['de'] = array(
 	'includewp-include-par-height' => 'Die maximale Höhe des Bereichs in Pixeln (px) in dem die Inhalte angezeigt werden soll. Keine Höhenbeschränkung wird mit Null (0) angegeben.',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'includewp-desc' => 'IncludeWP est une extension légère pour inclure le contenu de Wikipedia',
+	'includewp-loading-page' => 'Chargement de la page ...',
+	'includewp-show-full-page' => 'Afficher la page entière',
+	'includewp-show-fragment' => 'Afficher uniquement le premier paragraphe',
+	'includewp-loading-failed' => 'Échec du chargement de page.',
+	'includewp-licence-notice' => 'Le contenu ci-dessus vient de la page $1 <a href="$2">$3</a> sous licence <a href="$4">$5</a>. Une liste complète des auteurs peut être trouvée <a href="$6">ici</a> .',
+	'includewp-parserhook-desc' => "Crochet de l'analyseur qui permet d'afficher le contenu d'une page de Wikipédia.",
+	'includewp-include-par-page' => 'Le nom de la page (à distance) que vous souhaitez afficher.',
+	'includewp-include-par-wiki' => 'Le nom du wiki duquel vous voulez extraire le contenu. Doit être un des wikis autorisés, par défaut seulement wikipedia.',
+	'includewp-include-par-paragraphs' => 'Le nombre de paragraphes que vous souhaitez afficher initialement.',
+	'includewp-include-par-height' => 'La hauteur maximum (en px) de la balise div dans lequel le contenu est chargé. Mettre à 0 pour aucune limite.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'includewp-loading-page' => 'Cargando a páxina...',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
