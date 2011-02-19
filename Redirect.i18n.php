@@ -319,6 +319,13 @@ $messages['sq'] = array(
 	'redirect-desc' => 'Lejon konfigurimin e lehtë të ridrejtimeve në [[MediaWiki:Redirect-addnewaccount|hapjen e llogarive]] dhe në [[MediaWiki:Redirect-userlogoutcomplete|dalje]]',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'redirect-desc' => 'Омогућава једноставно подешавање преусмерења при [[MediaWiki:Redirect-addnewaccount|стварању налога]] и [[MediaWiki:Redirect-userlogoutcomplete|одјављивању]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
