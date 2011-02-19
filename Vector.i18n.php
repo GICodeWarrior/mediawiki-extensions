@@ -1433,8 +1433,11 @@ Nëse keni hyrë brenda, ju mund ta hiqni këtë paralajmërim në seksionin "Re
  */
 $messages['sr-ec'] = array(
 	'vector' => 'Побољшања корисничког интерфејса за вектор',
+	'vector-desc' => 'Побољшава корисничке елементе сучеља за пресвлаку Вектор.',
 	'vector-collapsiblenav-preference' => 'Скупљање ставки навигационог менија у Vector пресвлаци',
 	'vector-collapsiblenav-more' => 'Још језика:',
+	'vector-editwarning-warning' => 'Ако напустите ову страницу, изгубићете све измене које сте направили.
+Ако сте пријављени, можете онемогућити ово упозорење у својим подешавањима, у одељку „Уређивање“.',
 	'vector-editwarning-preference' => 'Упозори ме када напустим страницу која није сачувана',
 	'vector-simplesearch-search' => 'Претрага',
 	'vector-simplesearch-containing' => 'садржи...',
