@@ -158,7 +158,8 @@
 			}
 		};
 		// Else use normal mediaWiki string based gM
-		return mediaWiki.msg( key, paramaters);
+		
+		return mediaWiki.msg.apply( this, $.makeArray( arguments ) );
 	};
 	
 	/**

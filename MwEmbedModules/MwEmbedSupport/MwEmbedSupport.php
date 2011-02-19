@@ -32,5 +32,10 @@ return array(
 		'styles' => 'jquery.menu/jquery.menu.css'
 	),			
 	"jquery.triggerQueueCallback"	=> array( 'scripts'=> "jquery/jquery.triggerQueueCallback.js" ),
-	"jquery.mwEmbedUtil" => array( 'scripts' => "jquery/jquery.mwEmbedUtil.js" ),
+	"jquery.mwEmbedUtil" => array( 
+		'scripts' => "jquery/jquery.mwEmbedUtil.js",
+		'dependencies' => array(
+			'jquery.ui.dialog'
+		)
+	),
 );
