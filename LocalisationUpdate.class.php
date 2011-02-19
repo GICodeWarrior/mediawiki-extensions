@@ -553,6 +553,9 @@ class LocalisationUpdate {
 				continue;
 			}
 
+			if ( !isset( $compare_messages[$language] ) ) {
+				$compare_messages[$language] = array();
+			}
 			// Add the already known messages to the array so we will only find new changes.
 			$compare_messages[$language] = array_merge(
 				$compare_messages[$language],
