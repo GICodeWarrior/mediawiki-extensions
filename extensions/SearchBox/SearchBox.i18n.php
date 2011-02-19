@@ -808,6 +808,7 @@ $messages['sq'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'searchbox-desc' => 'Омогућава укључивање образаца претраге',
 	'searchbox-search' => 'Претрага',
 	'searchbox-go' => 'Пређи',
 	'searchbox-namespaces' => 'Именски простори:',

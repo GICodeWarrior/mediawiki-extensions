@@ -336,6 +336,13 @@ $messages['sl'] = array(
 	'wikimediamobile-desc' => 'Podpora funkcijam MediaWiki za projekt Wikimedia-mobile, gostovan na http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'wikimediamobile-desc' => 'Подршку за мобилну Википедију покреће http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

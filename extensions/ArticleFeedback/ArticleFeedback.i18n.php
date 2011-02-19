@@ -917,12 +917,19 @@ $messages['gl'] = array(
 	'articlefeedback-survey-submit' => 'Enviar',
 	'articlefeedback-survey-title' => 'Responda algunhas preguntas',
 	'articlefeedback-survey-thanks' => 'Grazas por encher a enquisa.',
-	'articlefeedback-form-switch-label' => 'Deixar un comentario',
-	'articlefeedback-form-panel-title' => 'Os seus comentarios',
+	'articlefeedback-error' => 'Houbo un erro. Inténteo de novo máis tarde.',
+	'articlefeedback-form-switch-label' => 'Avaliar esta páxina',
+	'articlefeedback-form-panel-title' => 'Avaliar esta páxina',
 	'articlefeedback-form-panel-instructions' => 'Por favor, tome uns intres para avaliar esta páxina.',
+	'articlefeedback-form-panel-clear' => 'Eliminar a avaliación',
+	'articlefeedback-form-panel-expertise' => 'Teño coñecementos previos sobre o tema',
+	'articlefeedback-form-panel-expertise-studies' => 'Estudeino no instituto ou na universidade',
+	'articlefeedback-form-panel-expertise-profession' => 'É parte da miña profesión',
+	'articlefeedback-form-panel-expertise-hobby' => 'Está relacionado coas miñas afeccións ou intereses',
+	'articlefeedback-form-panel-expertise-other' => 'A fonte do meu coñecemento non está nesta lista',
 	'articlefeedback-form-panel-submit' => 'Enviar os comentarios',
-	'articlefeedback-report-switch-label' => 'Mostrar os resultados',
-	'articlefeedback-report-panel-title' => 'Resultados dos comentarios',
+	'articlefeedback-report-switch-label' => 'Ollar as avaliacións da páxina',
+	'articlefeedback-report-panel-title' => 'Avaliacións da páxina',
 	'articlefeedback-report-panel-description' => 'Avaliacións medias.',
 	'articlefeedback-report-empty' => 'Sen avaliacións',
 	'articlefeedback-report-ratings' => '$1 avaliacións',
@@ -934,13 +941,22 @@ $messages['gl'] = array(
 	'articlefeedback-field-objective-tip' => 'Cre que esta páxina mostra unha representación xusta de todas as perspectivas do tema?',
 	'articlefeedback-field-wellwritten-label' => 'Ben escrito',
 	'articlefeedback-field-wellwritten-tip' => 'Cre que esta páxina está ben organizada e escrita?',
-	'articlefeedback-pitch-reject' => 'Non, grazas',
+	'articlefeedback-pitch-reject' => 'Talvez logo',
+	'articlefeedback-pitch-or' => 'ou',
 	'articlefeedback-pitch-survey-title' => 'Gustaríalle participar nunha enquisa?',
 	'articlefeedback-pitch-survey-accept' => 'Comezar a enquisa',
 	'articlefeedback-pitch-join-title' => 'Gustaríalle crear unha conta?',
 	'articlefeedback-pitch-join-accept' => 'Crear unha conta',
+	'articlefeedback-pitch-join-login' => 'Rexistro',
 	'articlefeedback-pitch-edit-title' => 'Gustaríalle editar este artigo?',
 	'articlefeedback-pitch-edit-accept' => 'Comezar a editar',
+	'articlefeedback-expert-assessment-question' => 'Ten coñecementos sobre o tema?',
+	'articlefeedback-expert-assessment-level-1-label' => 'Pouco',
+	'articlefeedback-expert-assessment-level-2-label' => 'Competente',
+	'articlefeedback-expert-assessment-level-3-label' => 'Experto',
+	'articlefeedback-survey-message-success' => 'Grazas por encher a enquisa.',
+	'articlefeedback-survey-message-error' => 'Houbo un erro.
+Inténteo de novo máis tarde.',
 );
 
 /** Swiss German (Alemannisch)
@@ -2272,6 +2288,12 @@ $messages['sah'] = array(
 	'articlefeedback-form-switch-label' => 'Бу сирэйи сыаналаа',
 	'articlefeedback-form-panel-title' => 'Бу сирэйи сыаналаа',
 	'articlefeedback-form-panel-instructions' => 'Бука диэн бу сирэйгэ сыанабылла туруор эрэ.',
+	'articlefeedback-form-panel-clear' => 'Бу сыананы сот',
+	'articlefeedback-form-panel-expertise' => 'Бу тиэмэни удумуҕалатабын',
+	'articlefeedback-form-panel-expertise-studies' => 'Маны колледжка/университекка үөрэппитим',
+	'articlefeedback-form-panel-expertise-profession' => 'Идэм сорҕото',
+	'articlefeedback-form-panel-expertise-hobby' => 'Мин үлүһүйүүбэр, дьулҕаммар сыһыаннаах',
+	'articlefeedback-form-panel-expertise-other' => 'Туох сыһыаннааҕым туһунан манна ыйыллыбатах',
 	'articlefeedback-form-panel-submit' => 'Санаа этиитэ',
 	'articlefeedback-report-switch-label' => 'Сирэй сыанабылларын көрдөр',
 	'articlefeedback-report-panel-title' => 'Сирэйи сыаналааһын',
@@ -2807,9 +2829,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Hydra
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'articlefeedback' => '條目評級',
+	'articlefeedback-desc' => '條目評級',
+	'articlefeedback-survey-question-whyrated' => '請讓我們知道你為什麼額定此頁今日（檢查所有適用）：',
+	'articlefeedback-survey-question-useful-iffalse' => '為什麼？',
+	'articlefeedback-survey-submit' => '提交',
 	'articlefeedback-report-switch-label' => '顯示結果',
 );
 

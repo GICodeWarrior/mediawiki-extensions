@@ -953,6 +953,7 @@ Prevádzkovatelia tejto stránky nepreberajú zodpovednosť za obsah takýchto k
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -965,7 +966,7 @@ $messages['sr-ec'] = array(
 	'talkhere-addcomment' => 'додајте коментар',
 	'talkhere-beforeinput' => 'Можете да додате коментар испод',
 	'talkhere-loading' => 'учитавање едитора…',
-	'talkhere-collapse' => 'сакриј едитор',
+	'talkhere-collapse' => 'сакриј уређивач',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

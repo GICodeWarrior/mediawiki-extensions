@@ -20,6 +20,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author McDutchie
+ * @author Purodha
  * @author Umherirrender
  */
 $messages['qqq'] = array(
@@ -28,6 +29,7 @@ $messages['qqq'] = array(
 This extension extends various API classes to allow revisions to be added with arbitrary user names (and, in a later version, timestamps). This aids in mirroring of another wiki's content.",
 	'mirrortools-desc' => '{{desc}}',
 	'right-mirroredit' => '{{doc-right|mirroredit}}',
+	'grouppage-MirrorTools' => 'Do not translate the <code>{{ns:project}}:</code> part.',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -195,6 +197,18 @@ $messages['ja'] = array(
 	'group-MirrorTools' => 'ミラーツール利用者',
 	'group-MirrorTools-member' => 'ミラーツール利用者',
 	'grouppage-MirrorTools' => '{{ns:project}}:ミラーツール利用者',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mirrortools' => 'Speejelwärkzüsh',
+	'mirrortools-desc' => 'Määd et müjjelesch, Änderonge aam Wiki över de Projrammschnetshtäll (<i lang="en">API</i>) onger jeedem Metmaacher-Name ze maache.',
+	'right-mirroredit' => 'Sigge över de Projrammschnetshtäll (<i lang="en">API</i>) onger jeedem Name ändere',
+	'group-MirrorTools' => 'Aanwänder vum Speejelwärkzüsh',
+	'group-MirrorTools-member' => 'Aanwänder vum Speejelwärkzüsh',
+	'grouppage-MirrorTools' => '{{ns:project}}:Aanwänder vum Speejelwärkzüsh',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

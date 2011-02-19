@@ -4696,7 +4696,7 @@ $messages['ml'] = array(
 	'wikilog-reply-lc' => 'മറുപടി',
 	'wikilog-delete-lc' => 'മായ്ക്കുക',
 	'wikilog-approve-lc' => 'അംഗീകരിക്കുക',
-	'wikilog-reject-lc' => 'നിരാകരിക്കുക',
+	'wikilog-reject-lc' => 'നിരസിക്കുക',
 	'wikilog-page-lc' => 'താൾ',
 	'wikilog-history-lc' => 'നാൾവഴി',
 );

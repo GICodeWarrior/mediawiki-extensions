@@ -4347,6 +4347,7 @@ $messages['zh-hans'] = array(
 	'voctrain_list_of_questions_and_answers' => '列表中的问题与解答',
 	'voctrain_Answer_s_' => '答案',
 	'voctrain_logout' => '注销',
+	'voctrain_Powered_by' => '技术支持',
 	'voctrain_Exercise_complete' => '工作完成',
 	'voctrain_Exercise_terminated' => '行使终止',
 	'voctrain_Start_a_new_exercise' => '开始一项新的工作',

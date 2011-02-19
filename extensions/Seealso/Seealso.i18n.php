@@ -595,6 +595,14 @@ $messages['sl'] = array(
 	'seealso-desc' => 'Lokalizirani naslovi »See also« z uporabo etikete <code><nowiki><seealso></nowiki></code>',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'seealso' => 'Такође погледајте',
+	'seealso-desc' => "Преведени наслови ''See also'' користећи ознаку <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

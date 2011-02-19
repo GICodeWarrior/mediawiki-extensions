@@ -311,6 +311,14 @@ $messages['ru'] = array(
 	'templateinfo-header' => 'XML-определение этого шаблона:',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'templateinfo-desc' => 'Подршка шаблонима који дефинишу структуру података преко XML означавања',
+	'templateinfo-header' => 'XML дефиниција овог шаблона:',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

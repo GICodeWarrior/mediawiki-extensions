@@ -120,6 +120,13 @@ $messages['fr'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Trop de récipiendaires sont choisis (maximum $1{{PLURAL:$1||}}).',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'emailusers' => 'Enviar un correo electrónico aos usuarios',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

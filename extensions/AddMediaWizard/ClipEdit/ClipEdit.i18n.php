@@ -1442,6 +1442,7 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
+ * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'mwe-clipedit-crop' => 'Исеци слику',
@@ -1466,7 +1467,7 @@ $messages['sr-ec'] = array(
 	'mwe-clipedit-end_time' => 'Завршно време',
 	'mwe-clipedit-preview_inout' => 'Прегледај у-ван тачке',
 	'mwe-clipedit-edit-tools' => 'Уреди алатке',
-	'mwe-clipedit-inline-description' => 'Наслов',
+	'mwe-clipedit-inline-description' => 'Натпис',
 	'mwe-clipedit-edit-video-tools' => 'Уреди видео алатке:',
 	'mwe-clipedit-duration' => 'Трајање:',
 	'mwe-clipedit-layout' => 'Изглед',

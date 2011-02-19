@@ -218,6 +218,19 @@ $messages['ja'] = array(
 	'embedvideo-illegal-width' => '埋め込みビデオは不正な幅のパラメーター"$1"を受け取った。',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'embedvideo-desc' => 'Deit en Paaserfunxjohn en et Wiki, öm Viddejos us divärse öff jebruchte Quälle enzeboue.',
+	'embedvideo-missing-params' => 'EmbedVideo: Ene Parrameeter fählt, dä mer ävver han möße.',
+	'embedvideo-bad-params' => 'EmbedVideo: Mer han ene kapodde Parrameeter bekumme.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo: Met däm Parrameeterwäät „<code lang="en">$1</code>“ künne mer net ömjonn.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo: Met däm Videjo-Deens „<code lang="en">$1</code>“ künne mer net ömjonn.',
+	'embedvideo-bad-id' => 'EmbedVideo: Dä Parameter „$1“ för dä Deens „$2“ es nit ze bruche.',
+	'embedvideo-illegal-width' => 'EmbedVideo: Dä Parameter „$1“ för de Breede (<code lang="en">width</code>) es nit ze bruche.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
