@@ -157,6 +157,8 @@ $messages['gl'] = array(
 	'svgedit-editor-save-close' => 'Gardar e pechar',
 	'svgedit-editor-close' => 'Cancelar',
 	'svgedit-desc' => 'Edición de debuxos en formato SVG no propio navegador co [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Editar o debuxo',
+	'svgedit-edit-tab-tooltip' => 'Pode editar este debuxo SVG no seu navegador',
 );
 
 /** Swiss German (Alemannisch)
@@ -380,6 +382,20 @@ $messages['sl'] = array(
 	'svgedit-editor-save-close' => 'Shrani in zapri',
 	'svgedit-editor-close' => 'Prekliči',
 	'svgedit-desc' => 'Urejanje risb SVG v brskalniku s [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'svgedit-editbutton-edit' => 'Уреди цртеж',
+	'svgedit-summary-label' => 'Сажетак измене',
+	'svgedit-summary-default' => '/* Измењено SVG уређивачем */',
+	'svgedit-editor-save-close' => 'Сачувај и затвори',
+	'svgedit-editor-close' => 'Откажи',
+	'svgedit-desc' => 'Уређивање SVG цртежа преко прегледача уз [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Уређивање цртежа',
+	'svgedit-edit-tab-tooltip' => 'Можете уредити SVG цртеж у свом прегледачу',
 );
 
 /** Telugu (తెలుగు)
