@@ -418,6 +418,15 @@ $messages['sk'] = array(
 	'untidy' => 'Zrušiť upratanie',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'tidy-desc' => 'Додаје језичак „Уредно“ или „Неуредно“ (зависно од $wgUseTidy) на обичним страницама који омогућава превазилажење глобалне HTML Тајди поставке за приказ',
+	'tidy' => 'Уредно',
+	'untidy' => 'Неуредно',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
