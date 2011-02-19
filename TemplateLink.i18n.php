@@ -535,6 +535,16 @@ $messages['sk'] = array(
 	'templatelink_newtitle' => '$1 (transkludovaná)',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'templatelink' => 'Веза шаблона',
+	'templatelink_desc' => 'Ово проширење може приказати шаблон као нову страницу',
+	'templatelink_empty' => 'Морате унети параметар.',
+	'templatelink_newtitle' => '$1 (укључено)',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
