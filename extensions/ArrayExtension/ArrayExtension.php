@@ -1,16 +1,29 @@
 <?php
-/*
- Defines a subset of parser functions that operate with arrays.
- verion: 1.3.2
- authors: Li Ding (lidingpku@gmail.com) and Jie Bao, Daniel Werner (since version 1.3)
- update: 24th January 2011
 
- homepage: http://www.mediawiki.org/wiki/Extension:ArrayExtension
+/**
+ * Initialization file for the ArrayExtension extension.
+ * 
+ * Documentation:	 		http://www.mediawiki.org/wiki/Extension:ArrayExtension
+ * Support					http://www.mediawiki.org/wiki/Extension_talk:ArrayExtension
+ * Source code:             http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ArrayExtension
+ *
+ * @file ArrayExtension.php
+ * @ingroup ArrayExtension
+ *
+ * @licence MIT License
+ *
+ * @author Li Ding (lidingpku@gmail.com)
+ * @author Jie Bao
+ * @author Daniel Werner (since version 1.3)
+ */
 
+/**
+ * This documenation group collects source code files belonging to ArrayExtension.
+ *
+ * @defgroup ArrayExtension ArrayExtension
+ */
 
-ToDo:
-=====
-
+/* TODO:
     - add experimental table (2 dimension array)  data structure
        * table  = header, row+  (1,1....)
        * sort_table_by_header (header)
@@ -23,7 +36,6 @@ ToDo:
        * get_table_header () to an array
        * get_total_row
        * get_total_col
-
 */
 
 if ( ! defined( 'MEDIAWIKI' ) ) {
@@ -36,9 +48,11 @@ $wgExtensionCredits['parserhook'][] = array(
         'name' => 'ArrayExtension',
         'url' => 'http://www.mediawiki.org/wiki/Extension:ArrayExtension',
         'author' => array ( 'Li Ding', 'Jie Bao', 'Daniel Werner' ),
-        'description' => 'Store and compute named arrays',
+		'descriptionmsg' => 'arrayext-desc',
         'version' => ArrayExtension::VERSION,
+		'path' => __FILE__
 );
+$wgExtensionMessagesFiles['ArrayExtension'] = dirname( __FILE__ ) . '/ArrayExtension.i18n.php';
 
 $wgHooks['LanguageGetMagic'][] = 'efArrayExtensionLanguageGetMagic';
 
@@ -48,7 +62,7 @@ $wgHooks['LanguageGetMagic'][] = 'efArrayExtensionLanguageGetMagic';
  */
 class ArrayExtension {
 
-	const VERSION = '1.3.3';
+	const VERSION = '1.3.4 alpha';
 
     var $mArrayExtension = array();
 
@@ -173,7 +187,7 @@ class ArrayExtension {
     }
 
     function arrayprintObj(  &$parser, $frame, $args ) {
-                // Set variables
+        // Set variables
         $arrayid = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
         $delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
         $search = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
@@ -764,7 +778,10 @@ function efSetupArrayExtension() {
 
 function efArrayExtensionLanguageGetMagic( &$magicWords, $langCode ) {
         require_once( dirname( __FILE__ ) . '/ArrayExtension.i18n.magic.php' );
-        foreach ( efArrayExtensionWords( $langCode ) as $word => $trans )
-                $magicWords[$word] = $trans;
+        
+        foreach ( efArrayExtensionWords( $langCode ) as $word => $trans ) {
+        	$magicWords[$word] = $trans;
+        }
+                
         return true;
 }

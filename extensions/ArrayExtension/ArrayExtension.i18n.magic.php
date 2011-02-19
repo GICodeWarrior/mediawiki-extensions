@@ -1,9 +1,19 @@
 <?php
 
 /**
+ * Internationalization file for magic words in the ArrayExtension extension.
+ *
+ * @file ArrayExtension.i18n.magic.php
+ * @ingroup ArrayExtension
+ *
+ * @licence MIT License
+ */
+
+/**
  * Get translated magic words, if available
  *
  * @param string $lang Language code
+ * 
  * @return array
  */
 function efArrayExtensionWords( $lang ) {
