@@ -44,7 +44,7 @@ $.getLineItem = function( string, icon , callback) {
 		);
 	}		
 	$li.find( 'a' ).append( $('<span>').text( string ) );
-	//mw.log(' li html: ' + $('<div>').append( $li ).html() );
+//	mw.log(string + "\n" + ' li html: ' + $('<div>').append( $li ).html() );
 	return $li;
 };
 	
@@ -127,6 +127,7 @@ function Menu(caller, options) {
 		},
 		showSpeed: 200, // show/hide speed in milliseconds
 		createMenuCallback: null,
+		closeMenuCallback: null,
 		callerOnState: 'ui-state-active', // class to change the appearance of the link/button when the menu is showing
 		loadingState: 'ui-state-loading', // class added to the link/button while the menu is created
 		linkHover: 'ui-state-hover', // class for menu option hover state
@@ -173,6 +174,10 @@ function Menu(caller, options) {
 			container.hide();
 		}
 		menu.menuOpen = false;
+		if( typeof options.closeMenuCallback == 'function'){
+			options.closeMenuCallback();
+		}
+		
 		$(document).unbind('click', killAllMenus);
 		$(document).unbind('keydown');
 	};
@@ -382,7 +387,6 @@ Menu.prototype.flyout = function(container, options) {
 		var allSubLists = $(this).find('ul');		
 		
 		allSubLists.css({ left: linkWidth, width: linkWidth }).hide();
-			
 		$(this).find('a:eq(0)').addClass('fg-menu-indicator').html(
 			'<span>' + $(this).find('a:eq(0)').html() + 
 			'</span><span class="ui-icon '+options.nextMenuLink+'"></span>')
@@ -479,11 +483,18 @@ Menu.prototype.drilldown = function(container, options) {
 	checkMenuHeight(topList);	
 	
 	topList.find('a').each(function() {
-		// if the link opens a child menu:
+
 		if ($(this).next().is('ul')) {
 			$(this)
 				.addClass('fg-menu-indicator')
-				.each(function() { $(this).html('<span>' + $(this).html() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>'); })
+				.each(function() { 
+					// if the link opens a child menu:
+					if( !$(this).hasClass('fg-menu-link') ){
+						$(this)
+						.addClass('fg-menu-link')
+						.html( nextMenuLink = '<span>' + $(this).html() + '</span><span class="ui-icon '+options.nextMenuLink+'"></span>' )
+					}
+				})
 				.click(function() { // ----- show the next menu			
 					var nextList = $(this).next();
 		    		var parentUl = $(this).parents('ul:eq(0)');   		

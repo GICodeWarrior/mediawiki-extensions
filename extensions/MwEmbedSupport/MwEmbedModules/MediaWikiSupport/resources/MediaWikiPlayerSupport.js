@@ -204,6 +204,12 @@
 				callback();
 			}
 		});
+		
+		$( embedPlayer ).bind('GetShareIframeCode', function(event, callback){
+			if( data-mwprovider )
+			// Check the embedPlayer title key: 
+			iframeSrc =  $( embedPlayer).attr( 'data-mwtitle')
+		});
 	};
 		
 } )( window.mediaWiki, window.jQuery );
