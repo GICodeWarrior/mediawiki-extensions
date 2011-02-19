@@ -709,13 +709,16 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'securepasswords-desc' => 'Ствара безбедније дисперзије лозинки и додаје проверу снаге лозинке',
 	'securepasswords-valid' => 'Ваша лозинка је неисправна или прекратка.
 Она мора: $1.',
 	'securepasswords-minlength' => 'бити дугачка најмање $1 {{PLURAL:$1|знак|знакова}}.',
-	'securepasswords-uppercase' => 'садржати најмање 1 велико слово',
+	'securepasswords-lowercase' => 'садржи најмање једно мало слово',
+	'securepasswords-uppercase' => 'садржи најмање једно велико слово',
 	'securepasswords-digit' => 'садржати најмање 1 цифру',
 	'securepasswords-special' => 'садржати најмање 1 специјални знак (специјални знаци су: $1)',
 	'securepasswords-username' => 'да се разликује од корисничког имена',
