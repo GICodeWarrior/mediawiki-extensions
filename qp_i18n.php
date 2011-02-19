@@ -1561,6 +1561,7 @@ $messages['ksh'] = array(
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
 	'qp_results_line_qucl' => '$1: $2 $3',
 	'qp_export_to_xls' => 'Donn de Schtatistike em <i lang="en">XLS</i> Fommaat äxpotteere',
+	'qp_voices_to_xls' => 'Donn de Shtemme em <i lang="en">XLS</i> Fommaat äxpotteere',
 	'qp_users_answered_questions' => '{{PLURAL:$1|Eine|$1|Keine}} Metmaacher {{PLURAL:$1|hät|han|hät}} op di Froore jeantwoot \\',
 	'qp_func_no_such_poll' => 'Esu en Affschtemmung ham_mer nit ($1)',
 	'qp_func_missing_question_id' => 'Bes esu joot, un jif en Kännong aan, di et jitt,för en Frooch (vun 1 aan jezallt) för de Affschtemmung $1',
@@ -1569,6 +1570,7 @@ $messages['ksh'] = array(
 	'qp_func_invalid_proposal_id' => 'Dat es en onjöltijje Kännong för ene Vörschlaach (<code lang="en">id=$3</code>), nämmlesch kein Nommer, för de Affschtemmung $1 un de Frooch $2',
 	'qp_error_no_such_poll' => 'Mer hann kein esu en Affschtemmung ($1).
 Bes sescher, dat di Affschtemmung wennjerescht es un affjeschpeijschert, un bes sescher, dat De dat Bejränzungszeijsche # en dä Addräß bruche deihß.',
+	'qp_error_in_question_header' => 'Dat es en onjöltijje Övverschreff vun en Frooch: $1',
 	'qp_error_id_in_stats_mode' => 'Mer künne kein Kännung (<code lang="en">id=</code>) fö di Affschtemmung en de Enschtellung för de Schtatistike faßlääje',
 	'qp_error_dependance_in_stats_mode' => 'Mer künne kein Kett vun Affhängeschkeite fö di Affschtemmung en de Enschtellung för de Schtatistike faßlääje',
 	'qp_error_no_stats' => 'Ner han kein schtatistesche Daate, weil noch keiner för heh di Affjeschtemmung affjeschtemmp hät. (<code>address=$1</code>)',
@@ -1587,13 +1589,13 @@ Entweder donn die Eijeschaff met dä Affhängeschkeit fott, udder holl di Sigg �
 Entweder donn die Eijeschaff met dä Affhängeschkeit fott, udder donn en Affschtemmung met dä Kännung (<code>id=$3</code>) op di Sigg „$2“ un donn se afschpeijschere.
 Öm en Afschtemmung reschtesch ze schpeijschere, donn dat, der ohne op en Frooch jeantwoot ze han.',
 	'qp_error_vote_dependance_poll' => 'Bes esu joot un donn övver „$1“ et eets affschtemme',
-	'qp_error_too_many_spans' => 'Et sinn_er zoh vill Zoote för de Ongerknubbelle aanjejovve',
+	'qp_error_too_many_spans' => 'Et sinn_er zoh vill Zoote-Jroppe för de Ongerknubbelle aanjejovve',
 	'qp_error_unanswered_span' => 'Ongerknubbel oohne Antwoot',
 	'qp_error_non_unique_choice' => 'Di Frooch bruch ene einzelne Vörschlaach för en Antwoot',
 	'qp_error_category_name_empty' => 'Dä Name för dä Knubbel es läddesch',
 	'qp_error_proposal_text_empty' => 'En däm Täx för dä Vörschlaach schteiht nix dren',
 	'qp_error_too_few_categories' => 'Winnischsdens zweij Knubbelle möße doh sin',
-	'qp_error_too_few_spans' => 'För jeede Zoot Knubbel möte winnischsdens zweij müjjelesche Antwoote doh sin',
+	'qp_error_too_few_spans' => 'För jeede Zoote-Knubbel möte winnischsdens zweij müjjelesche Ongerzoote doh sin',
 	'qp_error_no_answer' => 'Ene Vörschlaach ohne Antwoot',
 	'qp_error_unique' => 'En Frooch vun dä Zoot <code>unique()</code> hät mieh Vörschlääsch, wi müjjelesche Antwoote aanjejovve: Dat kam_mer nit ußfölle.',
 );
