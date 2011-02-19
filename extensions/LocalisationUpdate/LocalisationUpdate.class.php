@@ -160,7 +160,7 @@ class LocalisationUpdate {
 		closedir( $dir );
 
 		// Find the changed English strings (as these messages won't be updated in ANY language).
-		$changedEnglishStrings = self::compareFiles( $localdir . '/MessagesEn.php', $svndir . '/MessagesEn.php', $verbose, true );
+		$changedEnglishStrings = self::compareFiles( $localdir . '/MessagesEn.php', $svndir . '/MessagesEn.php', $verbose );
 
 		// Count the changes.
 		$changedCount = 0;
