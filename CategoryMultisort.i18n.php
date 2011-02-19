@@ -188,6 +188,15 @@ $messages['es'] = array(
 	'prefs-category' => 'Categoría',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Lehenetsia',
+	'categorymultisort-go' => 'Joan',
+	'prefs-category' => 'Kategoria',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */
