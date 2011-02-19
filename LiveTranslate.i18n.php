@@ -513,6 +513,7 @@ $messages['lb'] = array(
 	'livetranslate-tmtype-ltf' => 'Live Translate Format',
 	'livetranslate-tmtype-gcsv' => 'Google-CSV',
 	'livetranslate-special-button' => 'Späicheren an aktualiséieren',
+	'livetranslate-special-type' => 'Typ',
 	'livetranslate-special-remove' => 'Ewechhuelen',
 );
 
