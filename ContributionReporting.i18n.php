@@ -2021,6 +2021,10 @@ $messages['gl'] = array(
 	'fundraiserstats-tab-maximums' => 'Máximas (dólar estadounidense)',
 	'fundraiserstats-tab-ytd' => 'Total anual ata o de agora (USD)',
 	'fundraiserstats-instructions' => 'Para ver as estatísticas dun día, só hai que pasar o rato por riba da barra dese día. Cada ano ten unha cor diferente no cadro.',
+	'fundraiserstats-customize' => 'Personalizar',
+	'fundraiserstats-show-years' => 'Mostrar os seguintes anos:',
+	'fundraiserstats-time-zone' => 'Zona horaria:',
+	'fundraiserstats-utc' => '(en UTC)',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
