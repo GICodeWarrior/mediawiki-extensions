@@ -899,6 +899,7 @@ $messages['el'] = array(
 	'ogg-dismiss' => 'Κλείσιμο',
 	'ogg-download' => 'Κατεβάστε το αρχείο',
 	'ogg-desc-link' => 'Σχετικά με αυτό το αρχείο',
+	'ogg-oggThumb-version' => 'Ο OggHandler απαιτεί την έκδοση oggThumb $1 ή μεταγενέστερη',
 	'ogg-oggThumb-failed' => 'το oggThumb απέτυχε να δημιουργήσει τη μικρογραφία.',
 );
 
