@@ -109,7 +109,7 @@ class SpecialConfigure extends SpecialPage {
 		$wgOut->addHTML( "<ul>\n" );
 		$groups = $wgConfigure->getGroupPermissions( $wiki );
 		foreach( array_keys( $groups ) as $group ) {
-			$url = htmlspecialchars( $wgRequest->appendQueryValue( 'group', $group ) );
+			$url = htmlspecialchars( $this->getTitle()->getLocalURL( "wiki={$wiki}&config={$config}&group={$group}" ) );
 			$wgOut->addHTML( "<li><a href=\"{$url}\">{$group}</a></li>\n" );
 		}
 		$wgOut->addHTML( "</ul></fieldset>\n" );
