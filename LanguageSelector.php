@@ -218,14 +218,14 @@ function wfLanguageSelectorTag( $input, $args, $parser ) {
 
 function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 	global $wgLanguageSelectorLocation, $wgLanguageSelectorLanguages;
-	global $wgLang, $wgContLang, $wgTitle;
+	global $wgLang, $wgContLang;
 
 	if ($wgLanguageSelectorLocation == LANGUAGE_SELECTOR_AS_PORTLET) {
 		$code = $wgLang->getCode();
 		$lines = array();
 		foreach ($wgLanguageSelectorLanguages as $ln) {
 			$lines[] = array(
-				$href = $wgTitle->getFullURL( 'setlang=' . $ln ),
+				$href = $skin->getTitle()->getFullURL( 'setlang=' . $ln ),
 				'text' => $wgContLang->getLanguageName($ln),
 				'href' => $href,
 				'id' => 'n-languageselector',
@@ -247,7 +247,7 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 	}
 	
 	if ($key) {
-		$html = wfLanguageSelectorHTML( $wgTitle );
+		$html = wfLanguageSelectorHTML( $skin->getTitle() );
 		$tpl->set( $key, $tpl->data[ $key ] . $html );
 	}
 
