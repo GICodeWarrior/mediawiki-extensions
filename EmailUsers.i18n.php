@@ -61,12 +61,16 @@ $messages['bo'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  */
 $messages['br'] = array(
 	'emailusers-desc' => 'Lezel an implijerien da gas posteloù da meur a resever',
 	'right-sendbatchemail' => 'Kas ur postel da meur a resever war un dro',
+	'emailusers' => 'Implijerien ar postel',
 	'emailusers-target-reverse' => "Kas d'an holl implijerien nemet d'ar re zo diuzet",
+	'emailusers-norecipient' => "N'hallit kas postel ebet da zen ebet.",
 	'emailusers-norecipientselected' => "N'eus bet diuzet resever ebet.",
+	'emailusers-toomanyrecipientsselected' => "Merket ez eus bet kalz re a reseverien ({{PLURAL:$1|$1 d'ar muiañ|$1 d'ar muiañ}}).",
 );
 
 /** German (Deutsch)
