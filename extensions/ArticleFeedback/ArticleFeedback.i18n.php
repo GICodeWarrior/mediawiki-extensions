@@ -1572,6 +1572,7 @@ $messages['lb'] = array(
 	'articlefeedback-form-panel-instructions' => 'Huelt Iech w.e.g. een Ament fir d¨s Säit ze bewäerten.',
 	'articlefeedback-form-panel-clear' => 'Dës Bewäertung ewechhuelen',
 	'articlefeedback-form-panel-expertise' => 'Ech hu Sachkenntnisser zu dësem Thema',
+	'articlefeedback-form-panel-expertise-studies' => 'Ech hunn et an der Schoul/op der Universitéit studéiert',
 	'articlefeedback-form-panel-expertise-profession' => 'Et ass en Deel vu mengem Beruff',
 	'articlefeedback-form-panel-expertise-hobby' => 'Et hänkt mat mengen Hobbyen an Interessien zesummen',
 	'articlefeedback-form-panel-expertise-other' => "D'Quell vu mengem Wëssen ass hei net opgezielt",

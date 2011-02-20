@@ -53,9 +53,15 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Jeroen De Dauw
+ * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
+	'livetranslate-desc' => '{{desc}}',
+	'livetranslate-translate-to' => 'There is an [https://secure.wikimedia.org/wikipedia/mediawiki/wiki/File:Lte-article.png example screenshot of use].
+Look at the right side in the line below the ruler under the "Main Page" header.',
+	'livetranslate-button-translate' => 'There is an [https://secure.wikimedia.org/wikipedia/mediawiki/wiki/File:Lte-article.png example screenshot of use].
+Look at the right edge in the line below the ruler under the "Main Page" header.',
 	'livetranslate-special-type' => 'Table column header on Special:LiveTranslate
 
 {{Identical|Type}}',
@@ -462,7 +468,7 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'livetranslate-desc' => 'Määt en „{{int:special-livetranslate}}“ müjjelesch met <span class="plainlinks">[http://translate.google.com/ Google Translate]</span>.',
-	'livetranslate-translate-to' => 'Donn di Sigg heh övversäze noh',
+	'livetranslate-translate-to' => 'Donn di Sigg heh op&nbsp;',
 	'livetranslate-button-translate' => 'Övversätze!',
 	'livetranslate-button-translating' => 'Am Övversätze&nbsp;…',
 	'livetranslate-button-revert' => 'Ojinaal Shprooch aanzeije',
@@ -509,12 +515,17 @@ $messages['lb'] = array(
 	'livetranslate-dictionary-empty' => 'Et gëtt nach keng Wierder am Dictionnaire. Klickt op den "Änneren"-Tab fir der derbäizesetzen.',
 	'livetranslate-dictionary-count' => 'Et gëtt {{PLURAL:$1|ee Wuert|$1 Wierder}} a(n) {{PLURAL:$2|enger Sprooch|$2 Sproochen}}. Klickt den "Änneren"-Tab fir der derbäizesetzen.',
 	'livetranslate-dictionary-unallowed-langs' => "Dës {{PLURAL:$2|Sprooch ass|Sprooche si}} momentan net fir d'Iwwersetzen zougelooss: $1. Entweder ännert d'Astellung vun den  erlaabte Sproochen an Ärer Wiki-Konfiguratioun oder huelt se aus dem Dictionnaire eraus.",
+	'livetranslate-dictionary-goto-edit' => 'Den Iwwersetzungsspäicher änneren.',
 	'special-livetranslate' => 'Live iwwersetzen',
 	'livetranslate-tmtype-ltf' => 'Live Translate Format',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
 	'livetranslate-tmtype-gcsv' => 'Google-CSV',
+	'livetranslate-special-no-tms-yet' => 'Et gëtt elo nach keen Iwwersetzungsspäicher.',
 	'livetranslate-special-button' => 'Späicheren an aktualiséieren',
 	'livetranslate-special-type' => 'Typ',
+	'livetranslate-special-location' => 'Plaz',
 	'livetranslate-special-remove' => 'Ewechhuelen',
+	'livetranslate-special-local' => 'Lokal',
 );
 
 /** Macedonian (Македонски)

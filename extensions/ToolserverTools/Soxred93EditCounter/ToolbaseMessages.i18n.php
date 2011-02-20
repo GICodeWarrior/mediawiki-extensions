@@ -553,7 +553,9 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'toolbase-header-title' => 'Dem X! seng Tools (BETA)',
 	'toolbase-header-bugs' => 'Softwarefeeler (Bugs)',
+	'toolbase-replag' => 'De Retard vum Server ass $1',
 	'toolbase-replag-years' => 'Joer',
 	'toolbase-replag-months' => 'Méint',
 	'toolbase-replag-weeks' => 'Wochen',
@@ -564,9 +566,15 @@ $messages['lb'] = array(
 	'toolbase-footer-language' => 'Sprooch wiesselen',
 	'toolbase-footer-translate' => 'Iwwersetzen',
 	'toolbase-navigation' => 'Navigatioun',
+	'toolbase-navigation-homepage' => 'Haaptsäit',
+	'toolbase-navigation-autoedits' => 'Automatesche Compteur vun Ännerungen',
 	'toolbase-userid-submit' => 'Benotzer ID ufroen',
 	'toolbase-autoedits-title' => 'Automatesch Rechemaschinn vun den Ännerungen',
 	'toolbase-autoedits-submit' => 'Rechnen',
+	'toolbase-autoedits-approximate' => '<b>Ongeféier</b> Zuel vun Ännerunge mat …',
+	'toolbase-autoedits-totalauto' => 'Total vun den automateschen Ännerungen',
+	'toolbase-autoedits-totalall' => 'Total vun den Ännerungen',
+	'toolbase-autoedits-pct' => 'Prozentsaz vun den automateschen Ännerungen',
 	'toolbase-main-title' => 'Wëllkomm!',
 	'toolbase-main-404' => 'Fichier gouf net fonnt',
 	'toolbase-main-404-content' => 'Oups! Et gouf keng Säit fonnt!
@@ -576,6 +584,8 @@ Wann Dir op e Link geklickt hutt, da <a href="$1">mellt de Feeler</a> w.e.g.
 </ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '"$1" ass kee gültege Benotzernumm',
+	'toolbase-error-nowiki' => '$1.$2.org ass keng valabel Wiki',
+	'toolbase-error-toomanyedits' => 'De Benotzer $1 huet $2 Ännerungen. Dësen Tool huet maximal $3 Ännerungen.',
 );
 
 /** Macedonian (Македонски)

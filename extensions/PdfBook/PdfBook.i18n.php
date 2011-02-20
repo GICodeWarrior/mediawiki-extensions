@@ -63,6 +63,15 @@ $messages['bs'] = array(
 	'pdfbook-desc' => 'Sastavlja knjigu od stranica u kategoriji i izvozi ih kao PDF knjigu',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'pdfbook-action' => 'Imprimeix com a PDF',
+	'pdfbook-log' => '$1 exportat com a llibre PDF',
+	'pdfbook-desc' => 'Compon un llibre a partir de pàgines en una categoria i ho exporta com a llibre PDF',
+);
+
 /** Chechen (Нохчийн)
  * @author Sasan700
  */
