@@ -727,3 +727,14 @@ $messages['uk'] = array(
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> не існує.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'datatransclusion-desc' => '导入和呈现从外部数据源的数据记录',
+	'datatransclusion-missing-source' => '未指定数据源。
+第二次或"源"参数是必需的。',
+	'datatransclusion-unknown-source' => '指定错误的数据源。
+"$1"未知的。',
+);
+
