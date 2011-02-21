@@ -398,7 +398,7 @@
 	 */
 	mw.addDialog = function ( options ) {
 		// Remove any other dialog
-		$j( '#mwTempLoaderDialog' ).remove();			
+		$j( '#mweDialog' ).remove();			
 		
 		if( !options){
 			options = {};
@@ -421,7 +421,7 @@
 		$j( 'body' ).append( 
 			$j('<div />') 
 			.attr( {
-				'id' : "mwTempLoaderDialog",
+				'id' : "mweDialog",
 				'title' : options.title
 			})
 			.css({
@@ -455,16 +455,16 @@
 			],
 			uiRequest
 		], function() {
-			$j( '#mwTempLoaderDialog' ).dialog( options );
+			$j( '#mweDialog' ).dialog( options );
 		} );
-		return $j( '#mwTempLoaderDialog' );
+		return $j( '#mweDialog' );
 	};
 	
 	/**
 	 * Close the loader dialog created with addLoaderDialog
 	 */
 	mw.closeLoaderDialog = function() {		
-		$j( '#mwTempLoaderDialog' ).dialog( 'destroy' ).remove();
+		$j( '#mweDialog' ).dialog( 'destroy' ).remove();
 	};
 	
 	// MOVE TO jquery.client

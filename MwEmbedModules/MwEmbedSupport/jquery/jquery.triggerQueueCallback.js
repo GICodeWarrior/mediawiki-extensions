@@ -10,8 +10,8 @@
  * With triggerQueueCallback() master callback is not called until all the
  * binded events have run their local callbacks.
  * 
- * This is useful in cases where you have multiple modules that need to asyncrusly load
- * something at a given binded time. 
+ * This is useful in cases where you have multiple modules that need to do asynchronous loads
+ * before issuing the a callback. 
  * 
  * @param {string}
  *            triggerName Name of trigger to be run
