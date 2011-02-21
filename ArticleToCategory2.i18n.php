@@ -493,9 +493,13 @@ $messages['rue'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Створити',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
 $messages['sr-ec'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Додај страницу у ову категорију',
 	'articletocategory2-create-article-under-category-button' => 'Направи',
+	'articletocategory2-create-category-under-category-text' => 'Додај категорију у ову категорију',
 	'articletocategory2-create-category-under-category-button' => 'Направи',
 );
 
