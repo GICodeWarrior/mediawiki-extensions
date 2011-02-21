@@ -407,7 +407,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'newusernotifsubj' => 'Nohresch övver Ding neu Aanmeldung op $1',
+	'newusernotifsubj' => 'Nohreesch övver Ding neu Aanmeldung op $1',
 	'newusernotif-desc' => 'Scheck en <i lang="en">e-mail</i> eruß, wann en neu Aanmeldung för ene neue Metmaacher kütt.',
 	'newusernotifbody' => 'Jooden Daach $1,
 
@@ -626,12 +626,13 @@ $3 na $4 bol vytvorený nový používateľský účet $2.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'newusernotifsubj' => 'Нови корисник за $1',
-	'newusernotif-desc' => 'Шаље мејл обавештења када се нови налог направи',
+	'newusernotif-desc' => 'Шаље обавештења путем е-поште када се нови налог направи',
 	'newusernotifbody' => 'Здраво $1
 Нови кориснички налог, $2, је направљен на $3 у $4.',
 );
