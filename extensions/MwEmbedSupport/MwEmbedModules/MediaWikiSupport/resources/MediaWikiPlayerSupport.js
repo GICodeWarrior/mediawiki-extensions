@@ -205,10 +205,21 @@
 			}
 		});
 		
-		$( embedPlayer ).bind('GetShareIframeCode', function(event, callback){
-			if( data-mwprovider )
+		$( embedPlayer ).bind('GetShareIframeSrc', function(event, callback){
 			// Check the embedPlayer title key: 
-			iframeSrc =  $( embedPlayer).attr( 'data-mwtitle')
+			var title =  $( embedPlayer).attr( 'data-mwtitle');
+			// TODO Check the provider key and use that hosts title page entry point!
+			var provider =  $( embedPlayer).attr( 'data-mwprovider');
+			
+			var iframeUrl = false;
+			if( mw.getConfig('wgServer') && mw.getConfig('wgArticlePath') ){
+				iframeUrl =  mw.getConfig('wgServer') + 
+					mw.getConfig('wgArticlePath').replace( /\$1/, 'File:' + 
+						unescape( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/ , '' ) ) +
+					'?' + mw.getConfig( 'Mw.AppendWithJS' ) + '&embedplayer=yes';
+			}
+			
+			callback( iframeUrl );
 		});
 	};
 		
