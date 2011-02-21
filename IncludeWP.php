@@ -39,7 +39,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:SubPageList">SubPageList</a>.<br />' );
 }
 
-define( 'IncludeWP_VERSION', '0.1' );
+define( 'IncludeWP_VERSION', '0.2 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -72,7 +72,7 @@ $egIncWPJSMessages = array(
 );
 
 // For backward compatibility with MW < 1.17.
-if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
+if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 	$moduleTemplate = array(
 		'localBasePath' => dirname( __FILE__ ),
 		'remoteBasePath' => $egIncWPScriptPath
