@@ -685,6 +685,13 @@ OpenID позволява влизането в много различни са
 	'openid-provider-label-other-username' => 'Въведете вашето $1 потребителско име',
 );
 
+/** Bengali (বাংলা)
+ * @author Ehsanulhb
+ */
+$messages['bn'] = array(
+	'openiddelete-button' => 'নিশ্চিত করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
