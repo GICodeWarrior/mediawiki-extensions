@@ -7,8 +7,11 @@
  * Normal jQuery tirgger calls will run the callback directly
  * multiple times for every binded function.
  * 
- * With triggerQueueCallback() callback is not called until all the
- * binded events have been run.
+ * With triggerQueueCallback() master callback is not called until all the
+ * binded events have run their local callbacks.
+ * 
+ * This is useful in cases where you have multiple modules that need to asyncrusly load
+ * something at a given binded time. 
  * 
  * @param {string}
  *            triggerName Name of trigger to be run
