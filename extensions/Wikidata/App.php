@@ -127,6 +127,7 @@ require_once( "{$IP}/extensions/Wikidata/LocalApp.php" );
 function addWikidataHeader( &$out, &$skin ) {
 	global $wgScriptPath;
 	$out->addScript( "<script type='text/javascript' src='$wgScriptPath/extensions/Wikidata/OmegaWiki/suggest.js'></script>" );
+	$out->addScript( "<script type='text/javascript' src='$wgScriptPath/extensions/Wikidata/OmegaWiki/omegawiki-ajax.js'></script>" );
 	
 	global $wgLang;
 	if ( $wgLang->isRTL() ) {
