@@ -983,7 +983,7 @@ abstract class ScalarEditor extends DefaultEditor {
 	}
 
 	// tries to get multiple "add" values e.g. adding multiple translations at once
-	// the "X-" corresponds to what is in suggest.js, function recursiveChangeId
+	// the "X-" corresponds to what is in omegawiki-ajax.js, function recursiveChangeId
 	public function getAddValues( IdStack $idPath ) {
 		$addValues = array();
 		$prefix = "add-" ;
