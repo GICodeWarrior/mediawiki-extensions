@@ -84,7 +84,7 @@ $egLTJSMessages = array(
 );
 
 // For backward compatibility with MW < 1.17.
-if ( is_callable( array( 'OutputPage', 'addModules' ) ) ) {
+if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 	$moduleTemplate = array(
 		'localBasePath' => dirname( __FILE__ ),
 		'remoteBasePath' => $egLiveTranslateScriptPath,
