@@ -49,6 +49,17 @@ $messages['de'] = array(
 	'trustedmath-not-found' => 'Seite [[:$1]] ist nicht vorhanden',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'trustedmath-desc' => 'Zmóžnja zasajźenje LaTeX-rownicow na bokach bźez wótwisnosći wót Ocaml',
+	'trustedmath-permission-error' => 'Dowěry njegódny math jo znjemóžnjony na toś tom wikiju',
+	'trustedmath-path-error' => 'Zmólka pśi napóranju zapisa math',
+	'trustedmath-convert-error' => 'Zmólka pśi napóranju wobraza math. "$1" jo wrośił <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Bok [[:$1]] njeeksistěrujo',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Zetud

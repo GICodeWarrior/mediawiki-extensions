@@ -1755,6 +1755,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'ct-beginner' => 'Aafaenger',
 	'ct-and' => 'unn',
 );
 

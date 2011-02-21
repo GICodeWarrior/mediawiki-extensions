@@ -196,6 +196,15 @@ $messages['id'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Terlalu banyak penerima yang dipilih ({{PLURAL:$1|maksimum $1|maksimal $1}}).',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'emailusers-norecipient' => 'Non è presente nessuno a cui è possibile inviare messaggi di posta elettronica.',
+	'emailusers-norecipientselected' => 'Nessun destinatario selezionato.',
+	'emailusers-toomanyrecipientsselected' => 'Sono stati selezionati troppi destinatari, ({{PLURAL:$1|massimo $1|massimo $1}}).',
+);
+
 /** Japanese (日本語)
  * @author Ohgi
  * @author Whym

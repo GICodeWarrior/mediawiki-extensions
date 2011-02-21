@@ -152,6 +152,9 @@ $messages['hsb'] = array(
 	'includewp-licence-notice' => 'Wyši wobsah pochadźa ze strony $1 <a href="$2">$3</a> steji pod licencu <a href="$4">$5</a>. Dospołna lisćina awtorow je <a href="$6">tu</a> k dispoziciji.',
 	'includewp-parserhook-desc' => 'Parserowa hóčka, kotraž zwobraznjenje wobsaha strony Wikipedije zmóžnja.',
 	'includewp-include-par-page' => 'Mjeno strony, kotraž ma so zwobraznić.',
+	'includewp-include-par-wiki' => 'Mjeno wikija, z kotrež chceš wobsah brać. To dyrbi jedyn z dowolenych wikijow być, po standardźe je to jenož Wikipedija.',
+	'includewp-include-par-paragraphs' => 'Ličba wotstawkow, kotrež maja so zwobraznić na spočatku.',
+	'includewp-include-par-height' => 'Maksimalna wysokosć (w px) wobwoda, do kotrehož so wobsah začituje. Staj hódnotu na 0 za njewobmjezowanu wysokosć.',
 );
 
 /** Interlingua (Interlingua)

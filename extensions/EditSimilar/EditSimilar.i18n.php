@@ -206,12 +206,14 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'editsimilar-desc' => 'Instigas uzantojn redakti similan paĝon post konservante paĝon',
 	'editsimilar-thanks' => 'Dankon pro via kontribuo.
 Kontrolu {{PLURAL:$2|ĉi tiun rilatan paĝon|ĉi tiujn rilatajn paĝojn}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Dankon pro via kontribuo.
 {{PLURAL:$2|Ĉi tiu paĝo|Ĉi tiuj paĝoj}} ankaŭ povus bezoni vian helpon: $1.',
 	'editsimilar-thankyou' => 'Dankon pro via kontribuo, $1!',
 	'editsimilar-link-disable' => 'fari preferojn',
+	'tog-edit-similar' => 'Ŝaktu sugestojn por similaj paĝoj',
 );
 
 /** Spanish (Español)
