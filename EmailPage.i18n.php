@@ -193,6 +193,13 @@ $messages['bg'] = array(
 	'ea-allusers' => 'Всички потребители',
 );
 
+/** Bengali (বাংলা)
+ * @author Ehsanulhb
+ */
+$messages['bn'] = array(
+	'ea-data' => 'তথ্য',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -560,6 +567,24 @@ $messages['id'] = array(
 	'ea-data' => 'Data',
 	'ea-selectrecord' => 'Template ini dapat digunakan untuk mengisi kolom isi pesan',
 	'ea-allusers' => 'Semua pengguna',
+);
+
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'ea-norecipients' => 'Nessun indirizzo e-mail valido trovato!',
+	'ea-denied' => 'Permesso negato',
+	'ea-show' => 'Vedi elenco destinatari',
+	'ea-from' => 'Da:',
+	'ea-to' => 'A:',
+	'ea-send' => 'Invia',
+	'ea-subject' => 'Oggetto:',
+	'ea-message' => 'Messaggio:',
+	'ea-style' => 'Stile:',
+	'ea-selectcss' => 'Puoi selezionare un foglio di stile',
+	'ea-data' => 'Data',
+	'ea-allusers' => 'Tutti gli utenti',
 );
 
 /** Japanese (日本語)
