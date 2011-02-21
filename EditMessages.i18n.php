@@ -892,9 +892,9 @@ $messages['krj'] = array(
 $messages['ksh'] = array(
 	'editmessages-desc' => 'Määt et müjjelesch, <code lang="en">Messages*.php</code> Dateie en jrußer Zahl [[Special:EditMessages|övver et Web ze beärbeide]].',
 	'editmessages' => 'Nohreschte fum System beärbeide.',
-	'editmsg-target' => 'De Ziel-Nohresch:',
+	'editmsg-target' => 'De Ziel-Nohreesch:',
 	'editmsg-search' => 'Sööke',
-	'editmsg-show-list' => 'De Enhallde fun de Nohresch met däm Name „$1“',
+	'editmsg-show-list' => 'De Enhallde fun de Nohreesch met däm Name „$1“',
 	'editmsg-get-patch' => 'Maach ene „Flecke“ (<i lang="en">patch</i>)',
 	'editmsg-new-search' => 'Neu Söhke',
 	'editmsg-warning-parse1' => '* di <i lang="en">regular expression</i> paß op kein Name fun System-Nohreschte: <code>$1</code>',
