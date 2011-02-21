@@ -737,10 +737,15 @@ $messages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'commentspammer-save-blocked' => '您的 IP 地址疑为评论垃圾制造者，该页面未保存。
 [[Special:UserLogin|登录或创建帐户]]可避免这种情况。',
+	'commentspammer-desc' => '拒绝从怀疑的评论垃圾邮件制造者在黑名单上的编辑',
+	'commentspammer-log-msg' => '编辑从 [[Special:Contributions/$1|$1]] 至 [[:$2]]。',
+	'cspammerlogpagetext' => '记录的编辑将被允许或拒绝基于源是否是一个已知的评论垃圾邮件制造者。',
+	'cspammer-log-page' => '注释垃圾邮件制造者日志',
 );
 
