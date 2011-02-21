@@ -66,9 +66,18 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'rdf-desc' => 'Reizhiad RDF evit MediaWiki',
+	'rdf-image' => 'Skeudennoù enframmet',
+	'rdf-linksto' => 'Liammoù davet ar bajenn',
+	'rdf-linksfrom' => 'Liammoù adal ar bajenn',
 	'rdf-links' => 'An holl liammoù',
+	'rdf-history' => 'Istor ar stummoù',
 	'rdf-interwiki' => 'Liammoù etrewiki',
 	'rdf-categories' => 'Rummadoù',
+	'rdf-target' => 'Pajenn dal',
+	'rdf-modelnames' => 'Patrom(où)',
+	'rdf-format' => 'Furmad ezvont',
+	'rdf-instructions' => "Diuzit ar bajenn dal hag ar patroù RDF oc'h dedennet ganto.",
 );
 
 /** German (Deutsch)
