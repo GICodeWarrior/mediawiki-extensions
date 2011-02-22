@@ -15,8 +15,8 @@ class SpecialEmailUsers extends SpecialPage {
         $this->setHeaders();
         
         if ( !$this->userCanExecute( $wgUser ) ) {
-            #$this->displayRestrictionError();
-            #return;
+            $this->displayRestrictionError();
+            return;
         }
         
         $error = SpecialEmailUser::getPermissionsError( $wgUser, $wgUser->editToken() );
