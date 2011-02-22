@@ -170,11 +170,13 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'push-tab-text' => 'Bountañ',
 	'push-button-text' => 'Bountañ',
+	'push-remote-pages' => 'Pajennoù a-bell',
 	'push-remote-page-link' => '$1 war $2',
 	'push-remote-page-link-full' => 'Gwelet $1 war $2',
 	'push-tab-not-created' => "N'eus ket eus ar bajenn-se c'hoazh.",
