@@ -28,6 +28,24 @@ $messages['en'] = array(
     'narayam-bn-nkb' => 'Bengali NKB',
 );
 
+/** Message documentation (Message documentation)
+ *
+ */
+$messages['qqq'] = array(
+	'narayam-desc' => '',
+    'narayam-toggle-ime' => '',
+    'narayam-help-page' => '',
+    'narayam-checkbox-tooltip' => '',
+    'narayam-ml' => '',
+    'narayam-ml-inscript' => '',
+    'narayam-sa' => '',
+    'narayam-ta99' => '',
+    'narayam-ta' => '',
+    'narayam-bn-avro' => '',
+    'narayam-bn-inscript' => '',
+    'narayam-bn-nkb' => '',
+);
+
 /** Malayalam
  * @author Junaid P V
  */
