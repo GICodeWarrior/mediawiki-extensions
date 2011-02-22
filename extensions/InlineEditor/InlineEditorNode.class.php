@@ -12,7 +12,7 @@ class InlineEditorNode extends InlineEditorRoot {
 	 * @param $marking InlineEditorMarking Marking to wrap in the tree
 	 */
 	public function __construct( &$wiki, InlineEditorMarking $marking ) {
-		parent::__construct( &$wiki );
+		parent::__construct( $wiki );
 		$this->marking  = $marking;
 	}
 	

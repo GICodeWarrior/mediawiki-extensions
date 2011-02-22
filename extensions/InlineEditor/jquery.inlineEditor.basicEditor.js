@@ -82,6 +82,11 @@
 			// create the edit field and build the edit bar
 			var $newField = $.inlineEditor.basicEditor.newField( $field, $.inlineEditor.basicEditor.click );
 			$.inlineEditor.basicEditor.addEditBar( $newField, wiki );
+			
+			// add the wikiEditor toolbar
+			if ( $.fn.wikiEditor && $.wikiEditor.isSupported( $j.wikiEditor.modules.toolbar ) ) {
+				$.inlineEditor.configWikiEditor.configToolbar( );
+			}
 		}
 	},
 	

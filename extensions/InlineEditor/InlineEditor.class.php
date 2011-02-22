@@ -22,7 +22,11 @@ class InlineEditor {
 	 * Checks whether or not to spawn the editor, and does so if necessary.
 	 */
 	public static function mediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki) {
-		global $wgHooks;
+		global $wgHooks, $wgInlineEditorEnableGlobal;
+		
+		if ( $user->getOption( 'inline-editor-enabled' ) != true && !$wgInlineEditorEnableGlobal ) {
+			return true;
+		}
 
 		// return if the action is not 'edit' or if it's disabled
 		// @todo: FIXME: we don't want to break with older versions just yet,
@@ -228,6 +232,10 @@ class InlineEditor {
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.basicEditor.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery-ui-effects-1.8.4.min.js?0" );
 			
+			// include the JS file needed for the WikiEditor toolbar
+			// @todo: FIXME: get the configuration from the WikiEditor extension
+			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.configWikiEditor.js?0" );
+
 			// include the required JS files for scrolling
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.sectionScroller.js?0" );
 			
@@ -300,6 +308,21 @@ class InlineEditor {
 	 */
 	public function setSection( $section ) {
 		$this->section = $section;
+	}
+	
+	/**
+	 * Add the preference in the user preferences
+	 * @param $user
+	 * @param $preferences
+	 */
+	
+	public static function getPreferences( $user, &$preferences ) {
+		$preferences['inline-editor-enabled'] = array(
+			'type' => 'check',
+			'section' => 'editing/labs',
+			'label-message' => 'inline-editor-enable-preference',
+		);
+		return true;
 	}
 	
 	/**
