@@ -43,7 +43,7 @@ $wgExtensionCredits['other'][] = array(
     'version' => 0.1,
     'author' => 'Junaid P V (http://junaidpv.in)',
     'url' => 'http://www.mediawiki.org/wiki/Extension:Narayam',
-    'description' => 'Allows to add custom input methods for input fields.'
+    'description' => 'narayam-desc'
 );
 
 $wgNarayamConfig['shortcut_controlkey'] = true;
