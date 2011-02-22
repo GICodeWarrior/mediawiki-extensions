@@ -16,6 +16,8 @@ class ArticleEmblemsHooks {
 
 	/**
 	 * LoadExtensionSchemaUpdates hook
+	 *
+	 * @param $updater DatabaseUpdater
 	 */
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
 		if ( $updater === null ) {
@@ -35,24 +37,33 @@ class ArticleEmblemsHooks {
 		return true;
 	}
 
-	/*
+	/**
 	 * ParserInit hook
+	 *
+	 * @param $parser Parser
 	 */
 	public static function parserInit( &$parser ) {
 		$parser->setHook( 'emblem', 'ArticleEmblemsHooks::render' );
 		return true;
 	}
 	
-	/*
+	/**
 	 * Renderer for <emblem> parser tag hook
+	 *
+	 * @param $input
+	 * @param $args Array
+	 * @param $parser Parser
+	 * @param $frame
 	 */
 	public static function render( $input, $args, $parser, $frame ) {
 		self::$emblems[] = $parser->recursiveTagParse( $input, $frame );
 		return null;
 	}
 	
-	/*
+	/**
 	 * ArticleSaveComplete hook
+	 *
+	 * @param $article Article
 	 */
 	public static function articleSaveComplete( &$article ) {
 		$articleId = $article->getId();
@@ -66,8 +77,12 @@ class ArticleEmblemsHooks {
 		return true;
 	}
 	
-	/*
+	/**
 	 * ArticleViewHeader hook
+	 *
+	 * @param $article Article
+	 * @param $outputDone
+	 * @param $pcache
 	 */
 	public static function articleViewHeader( &$article, &$outputDone, &$pcache ) {
 		global $wgOut;
@@ -78,7 +93,7 @@ class ArticleEmblemsHooks {
 		$dbr = wfGetDB( DB_SLAVE );
 		$results = $dbr->select( 'articleemblems', 'ae_value', array( 'ae_article' => $articleId ), __METHOD__ );
 		$emblems = array();
-		while ( $emblem = $dbr->fetchRow( $results ) ) {
+		foreach ( $results as $emblem ) {
 			$emblems[] = '<li class="articleEmblem">' . $emblem['ae_value'] . '</li>';
 		}
 		$wgOut->addHtml( '<ul id="articleEmblems">' . implode( $emblems ) . '</ul>' );
