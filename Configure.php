@@ -3,7 +3,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /**
  * Special page to allow users to configure the wiki via a web based interface
- * Require MediaWiki version 1.16.0 or greater
+ * Require MediaWiki version 1.17.0 or greater
  *
  * @file
  * @ingroup Extensions
@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => array( 'Alexandre Emsenhuber', 'Andrew Garrett' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.15.38',
+	'version' => '0.16.0',
 );
 
 # Configuration part
@@ -175,13 +175,6 @@ $wgConfigureUpdateCacheEpoch = false;
  */
 $wgConfigureStyleVersion = '21';
 
-/**
- * Whether to add JS variables to the output
- * THIS IS *NOT* A CONFIGURATION OPTION AND MUST *NOT* BE CHANGED IN
- * LocalSetting.php
- */
-$wgConfigureAddJsVariables = false;
-
 # Adding new rights...
 $wgAvailableRights[] = 'configure';
 $wgAvailableRights[] = 'configure-all';
@@ -284,10 +277,31 @@ $wgAutoloadClasses['ConfigurationPagerFiles'] = $dir . 'pager/PagerFiles.php';
 
 # API module
 $wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';
-$wgExtensionFunctions[] = 'efConfigureSetupAPI';
+$wgAPIModules['configure'] = 'ApiConfigure';
 
-# Adding the ajax function
-$wgAjaxExportList[] = 'efConfigureAjax';
+# Ressource loader
+$wgResourceModules['ext.configure'] = array(
+	'scripts' => 'configure.js',
+	'styles'  => 'configure.css',
+ 
+	'messages' => array(
+		'configure-js-add',
+		'configure-js-remove',
+		'configure-js-remove-row',
+		'configure-js-prompt-group',
+		'configure-js-group-exists',
+		'configure-js-get-image-url',
+		'configure-js-image-error',
+		'configure-js-biglist-shown',
+		'configure-js-biglist-hidden',
+		'configure-js-biglist-show',
+		'configure-js-biglist-hide',
+		'configure-js-summary-none',
+		'configure-throttle-summary',
+	),
 
-# JS stuff
-$wgHooks['MakeGlobalVariablesScript'][] = 'efConfigureMakeGlobalVariablesScript';
+	'dependencies' => 'mediawiki.legacy.wikibits',
+
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'Configure'
+);

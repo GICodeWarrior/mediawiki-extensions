@@ -1,6 +1,11 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.16.0 - 22 February 2010
+  Rewrote the extension to use the ressource loader and jQuery.
+  THIS VERSION NOW REQUIRES MediaWiki 1.17 TO WORK.
+
+
 0.15.38 - 2 December 2010
   Updated CentralNotice, CodeReview, Collection, FlaggedRevs, GroupsSidebar and
   SemanticForms extensions.

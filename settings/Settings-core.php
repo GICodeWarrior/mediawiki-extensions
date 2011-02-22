@@ -1217,38 +1217,4 @@ $notEditableSettings = array(
 /**
  * Array of settings depending of the Core version
  */
-$settingsVersion = array(
-	# Removed in 1.17
-	'wgSQLiteDataDirMode' => array( array( '1.17alpha', '<' ) ),
-	'wgCategoryPrefixedDefaultSortkey' => array( array( '1.17alpha', '<' ) ),
-	'wgServerName' => array( array( '1.17alpha', '<' ) ),
-	'wgExternalAuthConfig' => array( array( '1.17alpha', '<' ) ),
-
-	# Added in 1.17
-	'wgAllowUserCssPrefs' => array( array( '1.17alpha', '>=' ) ),
-	'wgGalleryOptions' => array( array( '1.17alpha', '>=' ) ),
-	'wgAllowImageTag' => array( array( '1.17alpha', '>=' ) ),
-	'wgLogAutocreatedAccounts' => array( array( '1.17alpha', '>=' ) ),
-	'wgLocalStylePath' => array( array( '1.17alpha', '>=' ) ),
-	'wgVectorShowVariantName' => array( array( '1.17alpha', '>=' ) ),
-	'wgSQLMode' => array( array( '1.17alpha', '>=' ) ),
-	'wgAdaptiveMessageCache' => array( array( '1.17alpha', '>=' ) ),
-	'wgAdditionalMailParams' => array( array( '1.17alpha', '>=' ) ),
-	'wgAllUnicodeFixes' => array( array( '1.17alpha', '>=' ) ),
-	'wgAllowAsyncCopyUploads' => array( array( '1.17alpha', '>=' ) ),
-	'wgBetterDirectionality' => array( array( '1.17alpha', '>=' ) ),
-	'wgCanonicalLanguageLinks' => array( array( '1.17alpha', '>=' ) ),
-	'wgCategoryCollation' => array( array( '1.17alpha', '>=' ) ),
-	'wgExternalAuthConf' => array( array( '1.17alpha', '>=' ) ),
-	'wgLicenseTerms' => array( array( '1.17alpha', '>=' ) ),
-	'wgLoadScript' => array( array( '1.17alpha', '>=' ) ),
-	'wgPasswordSenderName' => array( array( '1.17alpha', '>=' ) ),
-	'wgResourceLoaderDebug' => array( array( '1.17alpha', '>=' ) ),
-	'wgResourceLoaderInlinePrivateModules' => array( array( '1.17alpha', '>=' ) ),
-	'wgResourceLoaderMaxage' => array( array( '1.17alpha', '>=' ) ),
-	'wgResourceLoaderUseESI' => array( array( '1.17alpha', '>=' ) ),
-	'wgSecureLogin' => array( array( '1.17alpha', '>=' ) ),
-	'wgSecureLoginStickHTTPS' => array( array( '1.17alpha', '>=' ) ),
-	'wgUpgradeKey' => array( array( '1.17alpha', '>=' ) ),
-	'wgUploadMissingFileUrl' => array( array( '1.17alpha', '>=' ) ),
-);
+$settingsVersion = array();
