@@ -100,10 +100,10 @@ class GeeQuBox {
 		$eDir = $wgExtensionAssetsPath .'/'.EXTPATH.'/';
 		self::$_page->addModules( 'ext.GeeQuBox' );
 		self::$_page->addInlineScript('$j(document).ready(function(){
-			$("li.gallerybox").each(function(el){
-				var _a = $("div.thumb a", this);
+			$j("li.gallerybox").each(function(el){
+				var _a = $j("div.thumb a", this);
 				var title = _a.attr("title");
-				var caption = $("div.gallerytext >  p", this).text();
+				var caption = $j("div.gallerytext >  p", this).text();
 				if ( caption != "" )
 					_a.attr("title", title + caption);
 			});
@@ -112,7 +112,8 @@ class GeeQuBox {
 				imageLoading: 	"'. $eDir .'images/lightbox-ico-loading.gif",
 				imageBtnClose:	"'. $eDir .'images/lightbox-btn-close.gif",
 				imageBtnPrev:	"'. $eDir .'images/lightbox-btn-prev.gif",
-				imageBtnNext:	"'. $eDir .'images/lightbox-btn-next.gif"
+				imageBtnNext:	"'. $eDir .'images/lightbox-btn-next.gif",
+				imageBlank:	"'. $eDir .'images/lightbox-blank.gif"
 			});
 		})');
 		/* See _gqbreplaceHref()
