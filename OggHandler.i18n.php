@@ -2024,6 +2024,13 @@ udder sök Der en annder Affspellprojramm uß.',
 	'ogg-oggThumb-failed' => '<code lang="en">oggThumb</code> kunnt kei MiniBelldsche maache.',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'ogg-more' => 'Zav...',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */
