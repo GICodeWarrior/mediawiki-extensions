@@ -1,5 +1,5 @@
 <?php
-require_once '../../wp-load.php';
+require_once '../../../wp-load.php';
 
 $path = dirname( $_SERVER['PHP_SELF'] );
 // Standalone is used to debug/test this page directly,

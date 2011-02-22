@@ -1,23 +1,12 @@
-// usage: log('inside coolFunc',this,arguments);
-// paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
-window.log = function(){
-	log.history = log.history || [];   // store logs to an array for reference
-	log.history.push(arguments);
-	if(this.console){
-		console.log( Array.prototype.slice.call(arguments) );
-	}
-};
-
 if ( !window.PhotoCommons ) {
 	window.PhotoCommons = {};
 }
 
 (function($){
-
 	$.extend( PhotoCommons, {
-
 		getQueryUrl: function( type, args ) {
 			var queries = {
+				// Used for the suggestions
 				'pagesearch' : function(q) {
 					return {
 						'action' : 'opensearch',
@@ -56,7 +45,7 @@ if ( !window.PhotoCommons ) {
 
 			return PhotoCommons.makeUrl(queries[type](args));
 		},
-		
+
 		makeUrl: function( args ) {
 			// default arguments
 			args = $.extend({
@@ -84,9 +73,9 @@ if ( !window.PhotoCommons ) {
 			}
 			return url;
 		},
-		
+
 		init: function() {
-			
+
 			/* jQuery suggestions */
 			$( '#wp-photocommons-search' ).suggestions( {
 				fetch: function( query ) {
@@ -110,9 +99,9 @@ if ( !window.PhotoCommons ) {
 							});
 
 						$( '#wp-photocommons-images' ).empty();
-						$( '#wp-photocommons-loading' ).show();						
+						$( '#wp-photocommons-loading' ).show();
 						$.getJSON( url, function( data ) {
-						
+
 							if ( !data.query.pageids.length ) {
 								$( '#wp-photocommons-images' ).html( 'No images found :(' );
 							} else {
@@ -127,17 +116,17 @@ if ( !window.PhotoCommons ) {
 											'style': "background-image:url('" + img.imageinfo[0].thumburl + "');",
 											'data-filename': pagetitle
 										}).appendTo('#wp-photocommons-images');
-						
+
 									}
 								});
-						
+
 							}
-						
+
 							$( '#wp-photocommons-loading' ).hide();
 						});
 					}
 				}
-				
+
 			} );
 		}
 	});
