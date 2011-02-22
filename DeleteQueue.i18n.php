@@ -939,6 +939,10 @@ Bezit sur emañ ho tiviz diouzh ar c'henasant deuet war wel da-heul ar gaozeaden
 	'deletequeue-role-vote-object' => "enebour d'an dilemel",
 	'deletequeue-vote-tab' => 'Votiñ diwar-benn an dilammadenn',
 	'deletequeue-vote-title' => 'Aprouiñ pe enebiñ ouzh dilammadenn "$1"',
+	'deletequeue-vote-text' => "Gallout a rit ober gant ar furmskrid-mañ da aprouiñ pe da sevel a-enep diverkañ \"'''\$1'''\".
+Flastrañ a raio an oberiadenn-mañ kement aprouadenn pe enebadenn embannet ganeoc'h a-raok war ar fed da ziverkañ ar bajenn-mañ.
+Gallout a rit [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} gwelet] an aprouadennoù hag enebadennoù bet embannet c'hoazh.
+''\$2'' a oa an abeg lakaet evit an anvadenn pe an diverkadenn.",
 	'deletequeue-vote-legend' => 'Aprouiñ pe enebiñ ouzh an diverkañ',
 	'deletequeue-vote-action' => 'Kuzulioù :',
 	'deletequeue-vote-endorse' => 'Aprouiñ a ra an diverkañ.',
