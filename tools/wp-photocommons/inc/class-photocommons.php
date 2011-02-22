@@ -18,6 +18,7 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 class PhotoCommons {
+	const PLUGIN = "wp-photocommons";
 	const PLUGIN_PATH = '/wp-photocommons/';
 	const FILEPATH_PATTERN = 'http://commons.wikimedia.org/w/index.php?title=Special:FilePath&file=%s&width=%s';
 	const FILEPAGE_PATTERN = 'http://commons.wikimedia.org/w/index.php?title=File:%s';
@@ -61,6 +62,7 @@ class PhotoCommons {
 
 	private function enqueue_scripts() {
 		// Register some of our own scripts
+		wp_register_script( 'translations', plugins_url() . self::PLUGIN_PATH . 'js/translations.php' );
 		wp_register_script( 'admin', plugins_url() . self::PLUGIN_PATH . 'js/admin.js' );
 		wp_register_script( 'search', plugins_url() . self::PLUGIN_PATH . 'js/search.js' );
 		wp_register_script( 'suggestions', plugins_url() . self::PLUGIN_PATH . 'js/jquery.suggestions.js' );
@@ -71,6 +73,7 @@ class PhotoCommons {
 		wp_enqueue_script( 'jquery-ui-dialog' );
 
 		// Enqueue our own scripts
+		wp_enqueue_script( 'translations' );
 		wp_enqueue_script( 'admin' );
 		wp_enqueue_script( 'search' );
 		wp_enqueue_script( 'suggestions' );

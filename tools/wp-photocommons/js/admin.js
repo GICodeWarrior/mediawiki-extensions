@@ -1,9 +1,13 @@
 (function($) {
     var PATH = '../wp-content/plugins/wp-photocommons';
 
+    function _(msg) {
+        return window.PhotoCommons.translations[msg];
+    }
+
     function addButtons() {
         $('#media-buttons').append(''.concat(
-            '<a id="photocommons-add" title="Afbeeldingen invoegen van Wikimedia Commons" style="padding-left:4px;">',
+            '<a id="photocommons-add" title="' + _("Insert images from Wikimedia Commons") + '" style="padding-left:4px;">',
             '<img src="' + PATH + '/img/button.png"/>',
             '</a>'
         ));
@@ -18,7 +22,7 @@
                 var $self = $('#photocommons-dialog');
 
                 $self.dialog({
-                	title : 'PhotoCommons - Afbeelingen invoegen van Wikimedia Commons',
+                	title : _('PhotoCommons') + ' - ' + _("Insert images from Wikimedia Commons"),
                     width : 800,
                     height : 500
                 });
