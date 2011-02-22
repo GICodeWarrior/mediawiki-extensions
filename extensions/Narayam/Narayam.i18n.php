@@ -14,18 +14,18 @@ $messages = array();
  * @author Junaid P V
  */
 $messages['en'] = array(
-	'narayam-desc' => 'Allows to add custom input methods for input fields.',
-    'narayam-toggle-ime' => 'To toggle IM',
-    'narayam-help-page' => 'Help:Typing',
-    'narayam-checkbox-tooltip' => 'To toggle input method On and Off',
-    'narayam-ml' => 'Malayalam Transliteration',
-    'narayam-ml-inscript' => 'Malayalam InScript',
-    'narayam-sa' => 'Sanskrit Transliteration',
-    'narayam-ta99' => 'Tamil99',
-    'narayam-ta' => 'Tamil Transliteration',
-    'narayam-bn-avro' => 'Bengali Avro',
-    'narayam-bn-inscript' => 'Bengali InScript',
-    'narayam-bn-nkb' => 'Bengali NKB',
+	'narayam-desc' => 'Allows to add custom input methods for input fields',
+	'narayam-toggle-ime' => 'To toggle IM',
+	'narayam-help-page' => 'Help:Typing',
+	'narayam-checkbox-tooltip' => 'To toggle input method On and Off',
+	'narayam-ml' => 'Malayalam transliteration',
+	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-sa' => 'Sanskrit transliteration',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Tamil transliteration',
+	'narayam-bn-avro' => 'Bengali Avro',
+	'narayam-bn-inscript' => 'Bengali InScript',
+	'narayam-bn-nkb' => 'Bengali NKB',
 );
 
 /** Message documentation (Message documentation)
@@ -62,3 +62,4 @@ $messages['ml'] = array(
     'narayam-bn-inscript' => 'ബംഗാളി ഇൻസ്ക്രിപ്റ്റ്',
     'narayam-bn-nkb' => 'ബംഗാളി നാഷണൽ കീബോർഡ്',
 );
+
