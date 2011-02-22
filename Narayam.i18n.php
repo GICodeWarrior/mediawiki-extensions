@@ -14,6 +14,7 @@ $messages = array();
  * @author Junaid P V
  */
 $messages['en'] = array(
+	'narayam-desc' => 'Allows to add custom input methods for input fields.',
     'narayam-toggle-ime' => 'To toggle IM',
     'narayam-help-page' => 'Help:Typing',
     'narayam-checkbox-tooltip' => 'To toggle input method On and Off',
