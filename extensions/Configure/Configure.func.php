@@ -11,41 +11,6 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 
 /**
- * Ajax function to create row for a new group in $wgGroupPermissions or
- * $wgAutopromote
- *
- * @param $setting String: setting name
- * @param $group String: new group name
- * @return either <err#> on error or html fragment
- */
-function efConfigureAjax( $setting, $group ) {
-	global $wgUser;
-
-	$settings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH );
-	if ( $settings->getSettingType( $setting ) != 'array' )
-		return '<err#>';
-
-	$type = $settings->getArrayType( $setting );
-	switch( $type ) {
-	case 'group-bool':
-		if ( isset( $GLOBALS[$setting] ) && isset( $GLOBALS[$setting][$group] ) )
-			return '<err#>';
-
-		$row = ConfigurationPage::buildGroupSettingRow( $setting, $type, User::getAllRights(), true, $group, array() );
-
-		// Firefox seems to not like that :(
-		return str_replace( '&#160;', ' ', $row );
-	case 'promotion-conds':
-		if ( isset( $GLOBALS[$setting] ) && isset( $GLOBALS[$setting][$group] ) )
-			return '<err#>';
-
-		return ConfigurationPage::buildPromotionCondsSettingRow( $setting, true, $group, array() );
-	default:
-		return '<err#>';
-	}
-}
-
-/**
  * Initalize the settings stored in a serialized file.
  * This have to be done before the end of LocalSettings.php but is in a function
  * because administrators might configure some settings between the moment where
@@ -95,48 +60,12 @@ function efConfigureInitialise() {
 }
 
 /**
- * Declare the API module only if $wgConfigureAPI is true
- */
-function efConfigureSetupAPI() {
-	global $wgConfigureAPI, $wgAPIModules;
-	if ( $wgConfigureAPI === true ) {
-		$wgAPIModules['configure'] = 'ApiConfigure';
-	}
-}
-
-/**
  * Add custom rights defined in $wgRestrictionLevels
  */
 function efConfigureGetAllRights( &$rights ) {
 	global $wgRestrictionLevels;
 	$newrights = array_diff( $wgRestrictionLevels, array( '', 'sysop' ) ); // Pseudo rights
 	$rights = array_unique( array_merge( $rights, $newrights ) );
-	return true;
-}
-
-/**
- * Add JS variable to the output, for use in Configure.js
- */
-function efConfigureMakeGlobalVariablesScript( &$vars ) {
-	global $wgConfigureAddJsVariables, $wgUseAjax;
-
-	if ( !$wgConfigureAddJsVariables )
-		return true;
-
-	$vars['wgConfigureAdd'] = wfMsg( 'configure-js-add' );
-	$vars['wgConfigureRemove'] = wfMsg( 'configure-js-remove' );
-	$vars['wgConfigureRemoveRow'] = wfMsg( 'configure-js-remove-row' );
-	$vars['wgConfigurePromptGroup'] = wfMsg( 'configure-js-prompt-group' );
-	$vars['wgConfigureGroupExists'] = wfMsg( 'configure-js-group-exists' );
-	$vars['wgConfigureUseAjax'] = (bool)$wgUseAjax;
-	$vars['wgConfigureGetImageUrl'] = wfMsg( 'configure-js-get-image-url' );
-	$vars['wgConfigureImageError'] = wfMsg( 'configure-js-image-error' );
-	$vars['wgConfigureBiglistShown'] = wfMsg( 'configure-js-biglist-shown' );
-	$vars['wgConfigureBiglistHidden'] = wfMsg( 'configure-js-biglist-hidden' );
-	$vars['wgConfigureBiglistShow'] = wfMsg( 'configure-js-biglist-show' );
-	$vars['wgConfigureBiglistHide'] = wfMsg( 'configure-js-biglist-hide' );
-	$vars['wgConfigureSummaryNone'] = wfMsg( 'configure-js-summary-none' );
-	$vars['wgConfigureThrottleSummary'] = wfMsg( 'configure-throttle-summary' );
 	return true;
 }
 
@@ -157,7 +86,7 @@ function efConfigureFarmerAdminPermissions( $farmer ) {
  * Avoid displaying anything :)
  */
 function efConfigureFarmerAdminSkin( $farmer ) {
-	return false;	
+	return false;
 }
 
 /**
