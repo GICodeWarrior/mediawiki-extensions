@@ -226,6 +226,7 @@ $messages['br'] = array(
 	'toolbase-navigation-homepage' => 'Pajenn degemer',
 	'toolbase-navigation-user_id' => 'Kavout ID an implijer',
 	'toolbase-userid-title' => 'Kavout ID un implijer',
+	'toolbase-autoedits-submit' => 'Jediñ',
 	'toolbase-main-title' => 'Degemer mat !',
 	'toolbase-main-404' => "N'eo ket bet kavet ar restr",
 	'toolbase-main-404-content' => "Opala ! N'eus bet kavet pajenn ebet !
