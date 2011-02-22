@@ -10,16 +10,16 @@ class SpecialEmailUsers extends SpecialPage {
     }
     
     function execute( $par ) {
-        global $wgOut, $wgUser, $wgTitle, $wgEmailAuthentication;
+        global $wgOut, $wgUser, $wgEmailAuthentication;
         
         $this->setHeaders();
         
         if ( !$this->userCanExecute( $wgUser ) ) {
-            $this->displayRestrictionError();
-            return;
+            #$this->displayRestrictionError();
+            #return;
         }
         
-        $error = EmailUserForm::getPermissionsError( $wgUser, $wgUser->editToken() );
+        $error = SpecialEmailUser::getPermissionsError( $wgUser, $wgUser->editToken() );
         
         if ( $error ) {
             switch ( $error ) {
@@ -96,7 +96,7 @@ class SpecialEmailUsers extends SpecialPage {
         );
         
         $htmlForm = new HTMLForm( $form );
-        $htmlForm->setTitle( $wgTitle );
+        $htmlForm->setTitle( $this->getTitle( $par ) );
         $htmlForm->setSubmitCallback( array( $this, 'submit' ) );
         
         $this->outputHeader();
