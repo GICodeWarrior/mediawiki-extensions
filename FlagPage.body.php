@@ -20,7 +20,7 @@ class FlagPage extends SpecialPage {
 	 * @param $par String: pagetitle in Special:FlagPage/pagetitle
 	 */
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgTitle;
+		global $wgRequest, $wgOut;
 		$this->setHeaders();
 		$page = $wgRequest->getText( 'page' );
 		# $page is set via subtitle (Special:FlagPage/pagetitle)
