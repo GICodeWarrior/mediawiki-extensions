@@ -97,6 +97,7 @@ class CheckVars {
 		
 		'var_dump' => 'Debugging function.', //r81671#c13996
 		//'print_r' => 'Debugging function if second parameter is not true.',
+		'wfVarDump' => 'Debugging function.', //var_export() wrapper
 		);
 
 	protected $generateDeprecatedList = false;
