@@ -6,42 +6,20 @@
  *  You can turn off the redirect by setting the cookie "stopMobileRedirect=true"
  */
 if ( /(iPhone|iPod|Android.*Mobile|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii|BlackBerry)/
-	.test( navigator.userAgent ) )
+  .test( navigator.userAgent ) )
 {
-	(function () {
-		function haveStopCookie() {
-			return (document.cookie.indexOf("stopMobileRedirect=true") >= 0);
-		}
+  
+  if (    (document.cookie.indexOf("eRedirect=t") < 0)  // Don't redirect if we have the stop cookie ... only testing a subportion of the cookie. Should be REALLY unique!
+       && (wgNamespaceNumber >= 0)                 // Don't redirect special pages
+       && (wgAction == "view"))                    // Don't redirect URLs that aren't simple page views 
+  {
+    // If we've made it here, then we are going ahead with the redirect
+    var url = wgWikimediaMobileUrl;
+    // If we are NOT on the main page, then set the pageName!
+    if (wgPageName != wgMainPageTitle.replace(/ /g, '_')) {
+      url += '/' + encodeURI(wgPageName);
+    }
 
-		function getMobileUrl() {
-			var mainPage = wgMainPageTitle.replace(/ /g, '_');
-			var url = wgWikimediaMobileUrl + '/';
-			if (wgPageName == mainPage) {
-				url += '::Home'; // Special case
-			} else {
-				url += encodeURI(wgPageName);
-			}
-			url += '?wasRedirected=true';
-			return url;
-		}
-
-		// Don't redirect if we have the stop cookie
-		if (haveStopCookie()) return;
-
-		// Don't redirect special pages
-		if (wgNamespaceNumber < 0) return;
-
-		// Don't redirect URLs that aren't simple page views
-		if (document.location.search && document.location.search.length > 0) {
-			var params = document.location.search.substr(1).split('&');
-			for (var i = 0; i < params.length; i++) {
-				var paramParts = params[i].split('=');
-				if (paramParts.length && paramParts[0] != 'title') {
-					return;
-				}
-			}
-		}
-
-		document.location = getMobileUrl();
-	})();
+    document.location = url;
+  }
 }
