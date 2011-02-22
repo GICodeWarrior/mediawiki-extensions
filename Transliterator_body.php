@@ -65,10 +65,11 @@ class ExtTransliterator  {
 	/**
 	 * Handle the {{#transliterate: $mapname | $word | $format? | $answer? }} call.
 	 *
-	 * $mapname is the name of the transliteration map to find.
-	 * $word    is the string to transliterate (if the map was found)
-	 * $format  is a string containing $1 to be replaced by the transliteration if the map exists
-	 * $answer  allows for a user-specified transliteration to override the automatic one
+	 * @param $parser Parser
+	 * @param $mapname String is the name of the transliteration map to find.
+	 * @param $word String is the string to transliterate (if the map was found)
+	 * @param $format String is a string containing $1 to be replaced by the transliteration if the map exists
+	 * @param $answer String allows for a user-specified transliteration to override the automatic one
 	 */
 	function render( $parser, $mapname = '', $word = '', $format = '$1', $answer = '' ) {
 		// Handle the case when people use {{#transliterate:<>|<>||<>}}
@@ -403,6 +404,8 @@ class ExtTransliterator  {
 		ksort( $attrs );
 		$wasPrefixed = false;
 		$naturalCased = false;
+		$naturalCasedFrom = '';
+		$prefixedFrom = '';
 		foreach ( $attrs as $from => $attr ) {
 
 			// If the current rule has been auto-upcased, but a prefix of this rule wasn't,
@@ -511,7 +514,7 @@ class ExtTransliterator  {
 	/**
 	 * Decide whether the title represents a Transliterator map.
 	 *
-	 * @param Title
+	 * @param $title Title
 	 * @return Boolean
 	 */
 	static function isMapPage( &$title ) {
@@ -526,6 +529,8 @@ class ExtTransliterator  {
 	/**
 	 * Remove the article from the Transliterator caches.
 	 * (ArticlePurge, ArticleDeleteComplete)
+	 *
+	 * @param $article Article
 	 */
 	static function purgeArticle( &$article ) {
 		$title = $article->getTitle();
@@ -535,6 +540,8 @@ class ExtTransliterator  {
 	/**
 	 * Remove the article from the Transliterator caches.
 	 * (NewRevisionFromEditComplete)
+	 *
+	 * @param $article Article
 	 */
 	static function purgeArticleNewRevision( $article ) {
 		$title = $article->getTitle();
@@ -552,6 +559,8 @@ class ExtTransliterator  {
 	/**
 	 * Remove the title from the Transliterator caches.
 	 * (ArticleUndelete hook)
+	 *
+	 * @param $title Title
 	 */
 	static function purgeTitle( &$title ) {
 		global $wgMemc;
@@ -568,6 +577,11 @@ class ExtTransliterator  {
          * Does not follow redirects.
          *
 	 * (EditFilter hook)
+	 *
+	 * @param $editPage EditPage
+	 * @param $text String
+	 * @param $section
+	 * @param $hookError
 	 */
 	static function validate( $editPage, $text, $section, &$hookError ) {
 		// FIXME: Should not access private variables
@@ -596,6 +610,8 @@ class ExtTransliterator  {
 	/**
 	 * Called on first use to create singleton
 	 * (ParserFirstCallInit hook)
+	 *
+	 * @param $parser Parser
 	 */
 	static function setup( &$parser ) {
 		$trans = new ExtTransliterator;
