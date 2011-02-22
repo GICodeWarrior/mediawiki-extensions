@@ -46,14 +46,14 @@ class EvaluateForm {
 	}
 
 	public function execute() {
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgScript;
 
 		$wgOut->addHTML(
 			Xml::openElement( 'form',
 				array(
 					'id' => 'specialeval',
 					'method' => 'get',
-					'action' => $wgTitle->escapeLocalUrl()
+					'action' => $wgScript
 				)
 			) .
 				# Gotta use open and close here to
@@ -95,7 +95,7 @@ class EvaluateForm {
 					array(
 						'type' => 'hidden',
 						'name' => 'title',
-						'value' => 'Special:Eval'
+						'value' => SpecialPage::getTitleFor( 'Eval' )->getPrefixedDBkey()
 					),
 					''
 				) .
