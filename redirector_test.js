@@ -134,7 +134,7 @@ var testUserAgents = function() {
 
   // Android Nexus One Phone
   shouldRedirect({user_agent: "Mozilla/5.0 (Linux; U; Android 2.2.1; en-us; Nexus One Build/FRG83) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"});
-  // Android Table
+  // Android Tablet
   shouldIgnore({user_agent: "Mozilla/5.0 (Linux; U; Android 2.2.1; en-us; device Build/FRG83) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Safari/533.1"});
 
   // Fake test strings
