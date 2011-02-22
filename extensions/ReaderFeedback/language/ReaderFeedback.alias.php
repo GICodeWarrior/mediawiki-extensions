@@ -12,8 +12,7 @@ $specialPageAliases = array();
  * @author Aaron Schulz
  */
 $specialPageAliases['en'] = array(
-	'LikedPages' => array( 'LikedPages' ),
-	'ProblemPages' => array( 'ProblemPages' ),
+	'RatedPages' => array( 'RatedPages' ),
 	'RatingHistory' => array( 'RatingHistory' ),
 	'ReaderFeedback' => array( 'ReaderFeedback' ),
 );
