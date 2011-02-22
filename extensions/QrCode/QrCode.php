@@ -93,6 +93,8 @@ class MWQrCode {
 
 	/**
 	 * Set qrcode properties
+	 *
+	 * @param $parser Parser
 	 */
 	public function __construct( $parser, $ecc = false, $size = false, $margin = false ) {
 		global $wgQrCodeECC, $wgQrCodeSize, $wgQrCodeBoundary, $wgQrCodeBot;
@@ -131,6 +133,9 @@ class MWQrCode {
 	
 	/**
 	 * This only creates the wikitext to display an image.
+	 *
+	 * @param $file File
+	 *
 	 * @return wikitext for image display
 	 */
 	private function _displayImage( $file ){
