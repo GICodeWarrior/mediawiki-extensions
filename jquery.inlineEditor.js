@@ -176,6 +176,15 @@
 		//$( '#undo' ).click( $.inlineEditor.undo );
 		//$( '#redo' ).click( $.inlineEditor.redo );
 		
+        // load the wikiEditor toolbar
+        // @todo: FIXME: move this to a resourceloader definition on the server side
+		if ( typeof mediaWiki.loader != 'undefined' && mediaWiki.loader ) {
+			mediaWiki.loader.using(
+			[ 'ext.wikiEditor', 'ext.wikiEditor.toolbar.i18n',
+			  'jquery.wikiEditor.toolbar',
+			  'jquery.async', 'jquery.cookie' ], null );
+		}
+		
 		// reload the current editor
 		$.inlineEditor.reload();
 	}

@@ -42,6 +42,7 @@ $wgAutoloadClasses['ExtendedEditPage']            = $dir . 'ExtendedEditPage.cla
 // register hooks
 $wgHooks['MediaWikiPerformAction'][]              = 'InlineEditor::mediaWikiPerformAction';
 $wgHooks['EditPage::showEditForm:initial'][]      = 'InlineEditor::showEditForm';
+$wgHooks['GetPreferences'][]                      = 'InlineEditor::getPreferences';
 
 $wgHooks['InlineEditorPartialBeforeParse']        = array();
 $wgHooks['InlineEditorPartialAfterParse']         = array();
@@ -54,5 +55,9 @@ $wgExtensionMessagesFiles['InlineEditor']         = $dir . 'InlineEditor.i18n.ph
 $wgAjaxExportList[]                               = 'InlineEditor::ajaxPreview';
 
 // default options
+$wgInlineEditorEnableGlobal                       = false;
 $wgInlineEditorBrowserBlacklist                   = $wgBrowserBlackList;
 $wgInlineEditorAllowedNamespaces                  = array( NS_MAIN, NS_TALK, NS_USER, NS_USER_TALK );
+
+// default user options
+$wgDefaultUserOptions['inline-editor-enabled']    = 1;
