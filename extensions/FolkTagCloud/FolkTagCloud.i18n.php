@@ -32,6 +32,13 @@ $messages['de'] = array(
 	'folktagcloud-desc' => 'Stellt Semantic MediaWiki ein individuell definierbares Attribut zum Kennzeichen von Seiten zur Verfügung, das in einer Schlagwortwolke angezeigt werden kann',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'folktagcloud-desc' => 'Pśidawa atribut Semantic MediaWiki za wobznamjenjenje bokow ze swójskimi etiketami a parserowe wobznamjenjujuce słowo, za zwobraznjenje w mrokawje wobznamjenjujucego słowa',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */
