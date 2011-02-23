@@ -227,7 +227,6 @@ class UploadQrCodeJob extends Job {
 	 * */
 	private function _getBot(){
 
-		wfDebug('QrCode::_getBot: Botname: '.QRCODEBOT."\n");
 		$bot = User::createNew( QRCODEBOT );
 		if( $bot != null ){
 			wfDebug( 'QrCode::_getBot: Created new user '.QRCODEBOT."\n" );
