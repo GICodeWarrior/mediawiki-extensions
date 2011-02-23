@@ -6767,6 +6767,13 @@ $messages['lv'] = array(
 	'configure-throttle-group-anon' => 'Visi anonīmie lietotāji',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'configure-throttle-action-move' => 'Fanoloana anarana',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
