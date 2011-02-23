@@ -45,9 +45,10 @@ class EditUser extends SpecialPage {
 			$this->showResetForm();
 			return;
 		}
-		
-		$wgOut->addScriptFile( 'prefs.js' );
-		
+
+		$wgOut->addModules( 'mediawiki.legacy.prefs' );
+		$wgOut->addModules( 'mediawiki.special.preferences' );
+
 		//$this->loadGlobals( $this->target );
 		$wgOut->addHtml( $this->makeSearchForm() . '<br />' );
 		#End EditUser additions
