@@ -363,6 +363,19 @@ $messages['ja'] = array(
 	'flagpage-tab' => 'フラグ',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'flagpage-nopageselectedtitle' => 'Kein Sigg usjesöhk',
+	'flagpage-nopageselected' => 'Et es kein Sigg ußjesöhk woode.',
+	'flagpage-emptylisttitle' => 'Et sin_er kein Schabloone enjeresht.',
+	'flagpage-preview' => 'Vöraf_Aanseesh vun dä ußjesöhk Schabloone',
+	'flagpage-confirmsave' => 'Donn de Änderunge beshtääteje',
+	'flagpage-submitbutton' => 'Donn de Sigg met dä Schabloon faßhalde',
+	'flagpage-nonexistent' => 'En Digg „$1“ di jidd_et nit. Künnt sin, se es [{{fullurl:Special:Log|page=$1}} ömjenannt udder fottjeschmeße] woode.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

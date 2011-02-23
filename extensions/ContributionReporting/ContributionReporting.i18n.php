@@ -797,6 +797,10 @@ $messages['bs'] = array(
 	'fundraiserstats-tab-maximums' => 'Najviše (USD)',
 	'fundraiserstats-tab-ytd' => 'Od početka godine (USD)',
 	'fundraiserstats-instructions' => 'Da biste pogledali statistiku za neki dan, pređite kursorom preko prikaza za taj dan. Svaka godina je prikazana drugom bojom na prikazu.',
+	'fundraiserstats-customize' => 'Prilagodi',
+	'fundraiserstats-show-years' => 'Pokaži slijedeće godine:',
+	'fundraiserstats-time-zone' => 'Vremenska zona:',
+	'fundraiserstats-utc' => '(od UTC)',
 );
 
 /** Catalan (Català)

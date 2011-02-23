@@ -227,6 +227,7 @@ $messages['bs'] = array(
 	'security-type-category' => 'kategorija',
 	'security-type-namespace' => 'imenski prostor',
 	'security-restricttogroup' => 'Pristup sadržaju onemogućen članovima "$1"',
+	'restriction-read' => 'Čitanje',
 );
 
 /** Catalan (Català)

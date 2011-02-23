@@ -31,12 +31,39 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author McDutchie
  * @author Purodha
+ * @author Shijualex
  */
 $messages['qqq'] = array(
 	'narayam-desc' => '{{desc}}',
 	'narayam-toggle-ime' => 'Switch input method',
 	'narayam-help-page' => '{{doc-important|Do not translate "Help:".}}',
 	'narayam-checkbox-tooltip' => 'Toggle the input method, that is, the interpretation of keystrokes, between "standard" and "interpreted by Narayam".',
+	'narayam-ml' => '',
+	'narayam-ml-inscript' => '',
+	'narayam-sa' => 'Transliteration scheme in Sanskrit.',
+	'narayam-ta99' => 'Tamil 99 keyboard layout of Tamil language.',
+	'narayam-ta' => 'Transliteration scheme in Tamil language.',
+	'narayam-bn-avro' => 'Avro keyboard layout of Bengali language.',
+	'narayam-bn-inscript' => 'InScript keyboard layout of Bengali language.',
+	'narayam-bn-nkb' => 'National keyboard layout of Bengali language.',
+);
+
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'narayam-desc' => 'Дазваляе дадаваць нестандартныя мэтады ўводу для палёў уводу.',
+	'narayam-toggle-ime' => 'Для пераключэньня мэтаду ўводу',
+	'narayam-help-page' => 'Help:Увод',
+	'narayam-checkbox-tooltip' => 'Для пераключэньня мэтаду уводу «Ўключыць» і «Выключыць»',
+	'narayam-ml' => 'Малайская трансьлітарацыя',
+	'narayam-ml-inscript' => 'Малайскі надпіс',
+	'narayam-sa' => 'Санскрыцкая трансьлітарацыя',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Тамільская трансьлітарацыя',
+	'narayam-bn-avro' => 'Bengali Avro',
+	'narayam-bn-inscript' => 'Bengali InScript',
 );
 
 /** Breton (Brezhoneg)
@@ -115,6 +142,14 @@ $messages['ksh'] = array(
 	'narayam-checkbox-tooltip' => 'Et Tippe zwesche jewöhnlesch un besönders ömschallde',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Tamil-Transliteratioun',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -154,8 +189,13 @@ $messages['ml'] = array(
 
 /** Dutch (Nederlands)
  * @author GerardM
+ * @author Siebrand
  */
 $messages['nl'] = array(
+	'narayam-desc' => 'Maakt het mogelijk om aangepaste invoermethoden toe te voegen voor invoervelden',
+	'narayam-toggle-ime' => 'IM in- of uitschakelen',
+	'narayam-help-page' => 'Help:Invoermethoden',
+	'narayam-checkbox-tooltip' => 'De invoermethode in- of uitschakelen',
 	'narayam-ml' => 'Malayalam transliteratie',
 	'narayam-ml-inscript' => 'Malayalam InScript',
 	'narayam-sa' => 'Sanskriet transliteratie',
@@ -164,6 +204,16 @@ $messages['nl'] = array(
 	'narayam-bn-avro' => 'Bengaals Avro',
 	'narayam-bn-inscript' => 'Bengaals InScript',
 	'narayam-bn-nkb' => 'Bengaals NKB',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'narayam-ml' => 'మలయాళం లిప్యంతరీకరణ',
+	'narayam-ml-inscript' => 'మలయాళం ఇన్‌స్క్రిప్ట్',
+	'narayam-ta' => 'తమిళం లిప్యంతరీకరణ',
+	'narayam-bn-inscript' => 'బెంగాలీ ఇన్‌స్క్రిప్ట్',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
