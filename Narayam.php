@@ -39,11 +39,12 @@ if (!defined('MEDIAWIKI')) {
 
 // register extension credits
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
     'name' => 'Narayam',
     'version' => 0.1,
     'author' => 'Junaid P V (http://junaidpv.in)',
     'url' => 'http://www.mediawiki.org/wiki/Extension:Narayam',
-    'description' => 'narayam-desc'
+    'descriptionmsg' => 'narayam-desc'
 );
 
 $wgNarayamConfig['shortcut_controlkey'] = true;
