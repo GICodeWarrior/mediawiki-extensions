@@ -14,18 +14,18 @@ $messages = array();
  * @author Junaid P V
  */
 $messages['en'] = array(
-	'narayam-desc' => 'Allows to add custom input methods for input fields.',
-    'narayam-toggle-ime' => 'To toggle IM',
-    'narayam-help-page' => 'Help:Typing',
-    'narayam-checkbox-tooltip' => 'To toggle input method On and Off',
-    'narayam-ml' => 'Malayalam Transliteration',
-    'narayam-ml-inscript' => 'Malayalam InScript',
-    'narayam-sa' => 'Sanskrit Transliteration',
-    'narayam-ta99' => 'Tamil99',
-    'narayam-ta' => 'Tamil Transliteration',
-    'narayam-bn-avro' => 'Bengali Avro',
-    'narayam-bn-inscript' => 'Bengali InScript',
-    'narayam-bn-nkb' => 'Bengali NKB',
+	'narayam-desc' => 'Allows to add custom input methods for input fields',
+	'narayam-toggle-ime' => 'To toggle IM',
+	'narayam-help-page' => 'Help:Typing',
+	'narayam-checkbox-tooltip' => 'To toggle input method On and Off',
+	'narayam-ml' => 'Malayalam Transliteration',
+	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-sa' => 'Sanskrit Transliteration',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Tamil Transliteration',
+	'narayam-bn-avro' => 'Bengali Avro',
+	'narayam-bn-inscript' => 'Bengali InScript',
+	'narayam-bn-nkb' => 'Bengali NKB',
 );
 
 /** Message documentation (Message documentation)
@@ -33,19 +33,10 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'narayam-desc' => 'Allows to implement custom typing solutions for your language wiki.
-{{desc}}',
+	'narayam-desc' => '{{desc}}',
 	'narayam-toggle-ime' => 'Switch input method',
 	'narayam-help-page' => '{{doc-important|Do not translate "Help:".}}',
 	'narayam-checkbox-tooltip' => 'Toggle the input method, that is, the interpretation of keystrokes, between "standard" and "interpreted by Narayam".',
-	'narayam-ml' => '',
-	'narayam-ml-inscript' => '',
-	'narayam-sa' => '',
-	'narayam-ta99' => '',
-	'narayam-ta' => '',
-	'narayam-bn-avro' => '',
-	'narayam-bn-inscript' => '',
-	'narayam-bn-nkb' => '',
 );
 
 /** Breton (Brezhoneg)
