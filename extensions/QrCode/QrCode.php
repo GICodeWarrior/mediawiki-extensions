@@ -186,7 +186,7 @@ class UploadQrCodeJob extends Job {
 		$this->_dstFileName = $params['dstName'];
 		$this->_tmpName = $params['tmpName'];
 		$this->_uploadComment = $params['comment'];
-		$this->_title = $title;
+		$this->title = $title;
 		parent::__construct( 'uploadQrCode', $title, $params, $id );
 	}
 
