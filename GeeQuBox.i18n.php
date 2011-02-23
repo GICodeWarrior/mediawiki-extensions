@@ -87,6 +87,13 @@ $messages['pms'] = array(
 	'geequbox-desc' => "A génera dj'efet d'àuta luminosità an dovrand ël jQuery lightbox plugin",
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'geequbox-desc' => 'Gera efeitos lightbox usando o plugin lightbox do jQuery',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
