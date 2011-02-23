@@ -287,16 +287,15 @@ class EditConflict {
 	# (if there are any such messages)
 	static function checkNotification( &$out, &$sk = null ) {
 		global $wgUser;
-		global $wgTitle;
 		# show the notifications only in main namespace and only for action=view
 		# (to be less annoying and to don't conflict with special pages)
-		if ( $wgTitle->getNamespace() == NS_MAIN && self::isViewAction() ) {
+		if ( $out->getTitle()->getNamespace() == NS_MAIN && self::isViewAction() ) {
 			$db = wfGetDB( DB_MASTER );
 			self::deleteExpiredData( $db );
 			# set current user's conflict notifications (if any)
-			self::processConflictNotifications( $db, $wgUser, $wgTitle );
+			self::processConflictNotifications( $db, $wgUser, $out->getTitle() );
 			# set edit link button handler, in case user of higher weight already edits this page
-			self::processEditButton( $db, $wgUser, $wgTitle );
+			self::processEditButton( $db, $wgUser, $out->getTitle() );
 		}
 		self::generateHeader( $out );
 		return true;
@@ -547,7 +546,8 @@ class EditConflict {
 		}
 		// static properties initialization (various paths)
 		self::$ExtDir = str_replace( "\\", "/", dirname(__FILE__) ); // filesys path with windows path fix
-		$top_dir = array_pop( explode( '/', self::$ExtDir ) );
+		$dir_parts = explode( '/', self::$ExtDir );
+		$top_dir = array_pop( $dir_parts );
 		# currently two separate editings of the same page by the same user are considered a single edit
 		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir ); // apache virtual path
 		self::$alwaysEditClickEvent = false;
