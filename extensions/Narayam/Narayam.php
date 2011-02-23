@@ -12,17 +12,6 @@
  *
  * 		require_once("$IP/extensions/Narayam.php");
  *
- *      After above line configure its working using these settings
- *
- *              $wgNarayamConfig['shortcut_controlkey'] = true;
- *              $wgNarayamConfig['shortcut_altkey'] = false;
- *              $wgNarayamConfig['shortcut_shiftkey'] = false;
- *              $wgNarayamConfig['shortcut_metakey'] = false;
- *              $wgNarayamConfig['shortcut_key'] = 'M';
- *              $wgNarayamConfig['schemes'] = array('ml', 'ml_inscript');
- *              $wgNarayamConfig['default_scheme_index'] = 0;
- *              $wgNarayamConfig['enabled'] = true;
- *
  *      Currently Vector and Monobook skins are supported
  *
  * AUTHOR
@@ -47,6 +36,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'narayam-desc'
 );
 
+/// @todo Document all settings
 $wgNarayamConfig['shortcut_controlkey'] = true;
 $wgNarayamConfig['shortcut_altkey'] = false;
 $wgNarayamConfig['shortcut_shiftkey'] = false;
@@ -60,13 +50,19 @@ $wgNarayamConfig['enabled'] = true;
 // localization
 $wgExtensionMessagesFiles['Narayam'] = dirname( __FILE__ ) . '/Narayam.i18n.php';
 
+// register hook function
+$wgHooks['BeforePageDisplay'][] = Narayam::getInstance();
+
 /**
  * Narayam class
  *
- * (implements singleten pattern)
+ * (implements singleton pattern)
  * 
- * @authorJunaid P V
+ * @author Junaid P V
  * @since 0.1
+ * @todo Move to different file
+ * @todo No need for _-prefix for member variables
+ * @todo Support resource loader
  */
 class Narayam {
 
@@ -92,11 +88,9 @@ class Narayam {
 	private $_supportedSkins = array( 'vector', 'monobook' );
 
 	/**
-	 * implemtns singleten pattern so direct object creation is prevented.
+	 * This class uses singleton pattern.
 	 */
-	private function __construct() {
-
-	}
+	protected function __construct() {}
 
 	/**
 	 * Returns one and only object of the class
@@ -119,20 +113,19 @@ class Narayam {
 		if ( !in_array( $sk->getSkinName(), $this->_supportedSkins ) ) {
 			return true;
 		}
-		global $wgJsMimeType, $wgScriptPath, $wgNarayamConfig;
+		global $wgExtensionAssetsPath, $wgNarayamConfig;
 		$this->_out = $out;
 		$this->_sk = $sk;
 		// add script tag for each scheme
 		foreach ( $wgNarayamConfig['schemes'] as $scheme ) {
-			$out->addScript( "<script type=\"{$wgJsMimeType}\" src=\"" . $wgScriptPath . "/extensions/Narayam/{$scheme}_rules.js\"></script>\n" );
+			$out->addScriptFile( "$wgExtensionAssetsPath/Nayaram/{$scheme}_rules.js" );
 		}
 
 		// Load Narayam.js file
-		$out->addScript( "<script type=\"{$wgJsMimeType}\" src=\"" . $wgScriptPath . "/extensions/Narayam/Narayam.js\"></script>\n" );
+		$out->addScriptFile( "$wgExtensionAssetsPath/Nayaram/Narayam.js" );
 
 		// Place generated JS code according to configuration settings
-		$scriptTag = '<script type="' . $wgJsMimeType . '">' . $this->getInitJSCode() . '</script>';
-		$out->addScript( $scriptTag );
+		$out->addInlineScript( $this->getInitJSCode() );
 		return true;
 	}
 
@@ -142,6 +135,7 @@ class Narayam {
 	 * @global array $wgNarayamConfig
 	 * @param Skin $skinName
 	 * @return string Generated JS code
+	 * @todo Nees rewriting
 	 */
 	private function getInitJSCode() {
 		global $wgNarayamConfig;
@@ -199,6 +193,3 @@ class Narayam {
 	}
 
 }
-
-// register hook function
-$wgHooks['BeforePageDisplay'][] = Narayam::getInstance();

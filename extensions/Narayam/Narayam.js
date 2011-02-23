@@ -1,6 +1,6 @@
 /**
  * Narayam
- * Input field rewrioter tool for web pages
+ * Input field rewriter tool for web pages
  * @author Junaid P V ([[user:Junaidpv]])(http://junaidpv.in)
  * @date 2010-12-18 (Based on naaraayam transliteration tool I first wrote on 2010-05-19)
  * @version 3.0
