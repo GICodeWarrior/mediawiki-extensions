@@ -62,14 +62,22 @@ function newQrCode() {
 	$parser = array_shift($params);	// we'll need the parser later
 
 	// Handling "Undefined variable" notices
-	$margin = $ecc = $size = $boundary = $label = false;
+	$margin = $ecc = $size = $label = false;
 
 	foreach( $params as $pair ) {
 		$rpms = explode( '=', $pair );
-		if( $rpms[0] == 'ecc' ) $ecc = $rpms[1];
-		if( $rpms[0] == 'size' ) $size = $rpms[1];
-		if( $rpms[0] == 'boundary' ) $margin = $rpms[1];
-		if( $rpms[0] == 'label' ) $label = $rpms[1];
+		if( $rpms[0] == 'ecc' ) {
+			$ecc = $rpms[1];
+		}
+		if( $rpms[0] == 'size' ) {
+			$size = $rpms[1];
+		}
+		if( $rpms[0] == 'boundary' ) {
+			$margin = $rpms[1];
+		}
+		if( $rpms[0] == 'label' ) {
+			$label = $rpms[1];
+		}
 	}
 
 	$newQrCode = new MWQrCode( $parser, $ecc, $size, $margin );
@@ -82,7 +90,14 @@ function newQrCode() {
  */
 class MWQrCode {
 
+	/**
+	 * @var Parser
+	 */
 	private $_parser;	// simply a link to the parser object
+
+	/**
+	 * @var Title
+	 */
 	private $_title;	// the current page's title object
 	private $_label;	// contents of the qrcode
 	private $_dstFileName;	// what the file will be named?
@@ -186,7 +201,7 @@ class UploadQrCodeJob extends Job {
 		$mUpload->initialize( $this->_dstFileName, $this->_tmpName, null );	// we don't know the filesize, how could we?
 
 		$pageText = 'QrCode '.$this->_dstFileName.', generated on '.date( "r" )
-                        .' by the QrCode Extension for page [['.$this->_title->getFullText().']].';
+                        .' by the QrCode Extension for page [['.$this->title->getFullText().']].';
 
 		wfDebug( 'UploadQrCodeJob::run: Uploading qrcode, c: '.$this->_uploadComment . ' t: ' . $pageText."\n" );
 		$status = $mUpload->performUpload( $this->_uploadComment, $pageText, false, $this->_getBot() );
