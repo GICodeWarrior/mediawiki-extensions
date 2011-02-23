@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
-	'version' => '0.08',
+	'version' => '0.09',
 	'author' => array( 'David Raison' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
@@ -49,7 +49,10 @@ function wfQrCodeLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
 $wgQrCodeECC = 'L';	// L,M,Q,H
 $wgQrCodeSize = 4;	// pixel size of black squares
 $wgQrCodeBoundary = 2;	// margin around qrcode
-$wgQrCodeBot = 'QrCodeBot'; // Name of the 'uploading' user/bot
+
+// not changeable 
+define('QRCODEBOT','QrCode generator');	// if a user changes this, the name won't be protected anymore
+$wgReservedUsernames[] = QRCODEBOT;	// Unless we removed the var from his influence
 
 /**
  * Create a new QrCode instance every time we need one,
@@ -112,7 +115,7 @@ class MWQrCode {
 	 * @param $parser Parser
 	 */
 	public function __construct( $parser, $ecc = false, $size = false, $margin = false ) {
-		global $wgQrCodeECC, $wgQrCodeSize, $wgQrCodeBoundary, $wgQrCodeBot;
+		global $wgQrCodeECC, $wgQrCodeSize, $wgQrCodeBoundary;
 		$this->_parser = $parser;
 		$this->_title = $parser->getTitle();
 		$this->_ecc = ( $ecc ) ? $ecc : $wgQrCodeECC;
@@ -128,7 +131,8 @@ class MWQrCode {
 		// Check for a provided label and use the page URL as default.
 		// Also strip all non-alphanumeric characters
 		if ( $label ) {
-			$this->_label = preg_replace("/[^0-9a-zA-Z_]+/", "", $label);
+			$this->_label = $label;	// cannot remember why sanitizing this would make sense
+			//$this->_label = preg_replace("/[^0-9a-zA-Z_]+/", "", $label);
 			$this->_uploadComment = $label;	// should we sanitize this?
 		} else {
 			$this->_label = $this->_title->getFullURL();
@@ -140,8 +144,10 @@ class MWQrCode {
 		$file = wfFindFile( $this->_dstFileName );	// Shortcut for RepoGroup::singleton()->findFile() 
 
 		if( $file && $file->isVisible() ){
+			wfDebug( "QrCode::showCode: Requested file ".$this->_dstFileName." already exists. Displaying image.\n");
 			return $this->_displayImage( $file );
 		} else {
+			wfDebug( "QrCode::showCode: Requested file ".$this->_dstFileName." is new and needs to be generated.\n");
 			return $this->_generate();
 		}
 	}
@@ -203,7 +209,7 @@ class UploadQrCodeJob extends Job {
 		$pageText = 'QrCode '.$this->_dstFileName.', generated on '.date( "r" )
                         .' by the QrCode Extension for page [['.$this->title->getFullText().']].';
 
-		wfDebug( 'UploadQrCodeJob::run: Uploading qrcode, c: '.$this->_uploadComment . ' t: ' . $pageText."\n" );
+		wfDebug( 'QrCodeJob::run: Uploading qrcode, c: '.$this->_uploadComment . ' t: ' . $pageText."\n" );
 		$status = $mUpload->performUpload( $this->_uploadComment, $pageText, false, $this->_getBot() );
 		
 		if ( $status->isGood() ) {
@@ -220,19 +226,19 @@ class UploadQrCodeJob extends Job {
 	 * @note there doesn't seem to be a decent method for checking if a user already exists
 	 * */
 	private function _getBot(){
-		global $wgQrCodeBot;
 
-		$bot = User::createNew( $wgQrCodeBot );
+		wfDebug('QrCode::_getBot: Botname: '.QRCODEBOT."\n");
+		$bot = User::createNew( QRCODEBOT );
 		if( $bot != null ){
-			wfDebug( 'UploadQrCode::_getBot: Created new user '.$wgQrCodeBot."\n" );
+			wfDebug( 'QrCode::_getBot: Created new user '.QRCODEBOT."\n" );
 			//$bot->setPassword( '' );   // doc says empty password disables, but this triggers an exception
 		} else {
-			$bot = User::newFromName( $wgQrCodeBot );
+			$bot = User::newFromName( QRCODEBOT );
 		}   
 
 		if( !$bot->isAllowed( 'bot' ) ) {	// User::isBot() has been deprecated
 			$bot->addGroup( 'bot' );
-			wfDebug( 'UploadQrCode::_getBot: Added user '.$wgQrCodeBot.' to the Bot group'."\n" );
+			wfDebug( 'QrCode::_getBot: Added user '.QRCODEBOT.' to the Bot group'."\n" );
 		}
 
 		return $bot;
