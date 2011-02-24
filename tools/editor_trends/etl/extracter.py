@@ -153,6 +153,13 @@ def extract_username(contributor, **kwargs):
         return None
 
 
+def extract_revision_id(revision_id, **kwargs):
+    if revision_id != None:
+        return revision_id.text
+    else:
+        return None
+
+
 def extract_contributor_id(contributor, **kwargs):
     '''
     @contributor is the xml contributor node containing a number of attributes
@@ -184,18 +191,19 @@ def output_editor_information(revisions, page, bots, rts):
     the variable tags determines which attributes are being parsed, the values 
     in this dictionary are the functions used to extract the data. 
     '''
-    headers = ['id', 'date', 'article', 'username']
+    headers = ['id', 'date', 'article', 'username', 'revision_id']
     tags = {'contributor': {'id': extract_contributor_id,
                             'bot': determine_username_is_bot,
                             'username': extract_username,
                             },
             'timestamp': {'date': wikitree.parser.extract_text},
+            'id': {'revision_id': extract_revision_id,
+                   }
             }
     vars = {}
     flat = []
 
     for x, revision in enumerate(revisions):
-        #print len(revision.getchildren())
         vars[x] = {}
         vars[x]['article'] = page
         for tag in tags:
@@ -208,7 +216,6 @@ def output_editor_information(revisions, page, bots, rts):
                 f = tags[tag][function]
                 value = f(el, bots=bots)
                 if isinstance(value, dict):
-                #if type(value) == type({}):
                     for kw in value:
                         vars[x][kw] = value[kw]
                 else:
@@ -237,7 +244,7 @@ def add_namespace_to_output(output, namespace):
     return output
 
 
-def parse_dumpfile(tasks, rts, filehandles, lock):
+def parse_dumpfile(tasks, rts, lock):
     bot_ids = detector.retrieve_bots(rts.language.code)
     location = os.path.join(rts.input_location, rts.language.code, rts.project.name)
     output = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
@@ -351,6 +358,7 @@ def unzip(properties):
     files = file_utils.retrieve_file_list(properties.location,
                                      extension,
                                      mask=canonical_filename)
+    print properties.location
     print 'Checking if dump file has been extracted...'
     for fn in files:
         file_without_ext = fn.replace('%s%s' % ('.', extension), '')
@@ -369,7 +377,6 @@ def unzip(properties):
             print 'There was an error while extracting %s, please make sure \
             that %s is valid archive.' % (fn, fn)
             return False
-    print tasks.qsize()
     return tasks
 
 
@@ -392,14 +399,10 @@ def launcher(rts):
         return result
 
     lock = multiprocessing.Lock()
-#    filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
-#                settings.encoding) for fh in xrange(settings.max_filehandles)]
 
-    filehandles = []
     consumers = [multiprocessing.Process(target=parse_dumpfile,
                                 args=(tasks,
                                       rts,
-                                      filehandles,
                                       lock))
                                 for x in xrange(rts.number_of_processes)]
 
@@ -411,11 +414,11 @@ def launcher(rts):
         w.start()
 
     tasks.join()
-    filehandles = [fh.close() for fh in filehandles]
 
-    result = sum([consumer.exitcode for consumer in consumers])
+    result = sum([consumer.exitcode for consumer in consumers
+                  if consumer.exitcode != None])
 
-    if restult == 0:
+    if result == 0:
         return True
     else:
         return False
@@ -426,6 +429,7 @@ def debug():
     language_code = 'sv'
     filename = 'svwiki-latest-stub-meta-history.xml'
     parse_dumpfile(project, filename, language_code)
+
 
 if __name__ == '__main__':
     debug()
