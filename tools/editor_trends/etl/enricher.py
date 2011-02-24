@@ -70,6 +70,7 @@ class Buffer:
         self.revisions.append(revision)
         if len(self.revisions) == 100:
             self.store()
+            self.revisions = []
 
     def empty(self):
         self.store()
