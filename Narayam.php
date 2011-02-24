@@ -153,7 +153,7 @@ class Narayam {
 
 		$target = '';
 
-		if ( $title ) {
+		if ( $title && $title->exists() ) {
 			$target = $title->getFullURL();
 		}
 
