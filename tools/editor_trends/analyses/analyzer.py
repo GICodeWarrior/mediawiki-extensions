@@ -38,6 +38,30 @@ from database import db
 from utils import timer
 from utils import log
 
+class Replicator:
+    def __init__(self, rts, plugin, time_unit, cutoff=None, cum_cutoff=None, **kwargs):
+        self.plugin = plugin
+        self.rts = rts
+        self.time_unit = time_unit
+        if cutoff == None:
+            self.cutoff = [1, 10, 50]
+        else:
+            self.cutoff = cutoff
+
+        if cutoff == None:
+            self.cum_cutoff = [10]
+        else:
+            self.cum_cutoff = cum_cutoff
+        self.kwargs = kwargs
+
+    def __call__(self):
+        for cum_cutoff in self.cum_cutoff:
+            for cutoff in self.cutoff:
+                generate_chart_data(self.rts, self.plugin,
+                                    time_unit=self.time_unit,
+                                    cutoff=cutoff, cum_cutoff=cum_cutoff,
+                                    **self.kwargs)
+
 
 class Analyzer(consumers.BaseConsumer):
     def __init__(self, rts, tasks, result, var):
@@ -109,9 +133,9 @@ def write_output(ds, rts, stopwatch):
                                                ds.filename)
     ds.write(format='csv')
     print 'Serializing dataset to %s_%s' % (rts.dbname, 'charts')
-    log.log_to_mongo(rts, 'chart', 'storing', stopwatch, event='start')
-    ds.write(format='mongo')
-    log.log_to_mongo(rts, 'chart', 'storing', stopwatch, event='finish')
+    #log.log_to_mongo(rts, 'chart', 'storing', stopwatch, event='start')
+    #ds.write(format='mongo')
+    #log.log_to_mongo(rts, 'chart', 'storing', stopwatch, event='finish')
 
 
 def generate_chart_data(rts, func, **kwargs):
@@ -121,6 +145,8 @@ def generate_chart_data(rts, func, **kwargs):
     '''
     stopwatch = timer.Timer()
     plugin = retrieve_plugin(func)
+    if not plugin:
+        raise 'Plugin function %s is unknown, please make sure that you specify an existing plugin function.' % func
     feedback(plugin, rts)
 
     obs = dict()
@@ -177,11 +203,11 @@ def generate_chart_data(rts, func, **kwargs):
     tasks.join()
 
     reconstruct_observations(var)
-    ds = dataset.Dataset(plugin.func_name, rts, format=fmt)
+    ds = dataset.Dataset(plugin.func_name, rts, format=fmt, **kwargs)
     ds.add_variable(var)
 
     stopwatch.elapsed()
-    #write_output(ds, rts, stopwatch)
+    write_output(ds, rts, stopwatch)
 
     ds.summary()
     #return True
@@ -202,7 +228,7 @@ def determine_project_year_range(dbname, collection, var):
     return min_year, max_year
 
 
-if __name__ == '__main__':
+def launcher():
     project, language, parser = manager.init_args_parser()
     args = parser.parse_args(['django'])
     rts = runtime_settings.init_environment('wiki', 'en', args)
@@ -212,15 +238,25 @@ if __name__ == '__main__':
     rts.editors_dataset = 'editors_dataset'
     #END TEMP FIX
 
-    generate_chart_data(rts, 'histogram_by_backward_cohort', time_unit='year', cutoff=1, cum_cutoff=10)
+#    replicator = Replicator(rts, 'histogram_by_backward_cohort', time_unit='year')
+#    replicator()
+#    replicator = Replicator(rts, 'cohort_dataset_backward_bar', time_unit='year', format='wide')
+#    replicator()
+
+#    generate_chart_data(rts, 'histogram_by_backward_cohort', time_unit='year', cutoff=1, cum_cutoff=10)
 #    generate_chart_data(rts, 'edit_patterns', time_unit='year', cutoff=5)
 #    generate_chart_data(rts, 'total_number_of_new_wikipedians', time_unit='year')
 #    generate_chart_data(rts, 'total_number_of_articles', time_unit='year')
 #    generate_chart_data(rts, 'total_cumulative_edits', time_unit='year')
-#    generate_chart_data(rts, 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=10)
-    generate_chart_data(rts, 'cohort_dataset_backward_bar', time_unit='year', cutoff=1, cum_cutoff=10, format='wide')
+    generate_chart_data(rts, 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=10)
+#    generate_chart_data(rts, 'cohort_dataset_backward_bar', time_unit='year', cutoff=1, cum_cutoff=10, format='wide')
 #    generate_chart_data(rts, 'cohort_dataset_forward_bar', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
 #    generate_chart_data(rts, 'histogram_edits', time_unit='year', cutoff=0)
 #    generate_chart_data(rts, 'time_to_new_wikipedian', time_unit='year', cutoff=0)
 #    generate_chart_data(rts, 'new_editor_count', time_unit='month', cutoff=0)
 #    #available_analyses()
+
+
+
+if __name__ == '__main__':
+    launcher()

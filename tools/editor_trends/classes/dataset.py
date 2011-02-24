@@ -26,7 +26,7 @@ import sys
 import cPickle
 import hashlib
 from pymongo.son_manipulator import SONManipulator
-from multiprocessing import Manager
+from multiprocessing import Manager, RLock
 from texttable import Texttable
 from datetime import timedelta
 
@@ -91,13 +91,12 @@ class Data:
         This is a generic hash function that expects a list of variables, used
         to lookup an Observation or Variable. 
         '''
-        id = '_'.join([str(var) for var in vars])
+        return hash('_'.join([str(var) for var in vars]))
         #return id
-        m = hashlib.md5()
-        m.update(id)
+        #m = hashlib.md5()
+        #m.update(id)
         #print id, m.hexdigest()
-        return m.hexdigest()
-        #return ''.join([str(var) for var in vars])
+        #return m.hexdigest()
 
     def encode_to_bson(self, data=None):
         '''
@@ -209,18 +208,6 @@ class Observation(Data):
         else:
             self.data += value
         self.count += 1
-#        self.lock.acquire()
-#        try:
-#            if isinstance(value, list):
-#                if self.count == 0:
-#                    self.data = []
-#                self.data.append(value)
-#            else:
-#                self.data += value
-#        finally:
-#            self.count += 1
-#            self.lock.release()
-
 
 
     def get_date_range(self):
@@ -361,9 +348,9 @@ class Dataset:
     '''
 
     def __init__(self, chart, rts, vars=None, **kwargs):
-        self.encoder, chart, charts = json_encoders.get_json_encoder(chart)
+        self.encoder, chart_type, charts = json_encoders.get_json_encoder(chart)
         if self.encoder == None:
-            raise exceptions.UnknownChartError(chart, charts)
+            raise exceptions.UnknownChartError(chart_type, charts)
         self.chart = chart
         self.name = 'Dataset to construct %s' % self.chart
         self.project = rts.project.name
@@ -427,7 +414,7 @@ class Dataset:
         attrs = '_'.join(['%s=%s' % (k, getattr(var, k)) for k in keys])
         filename = '%s%s_%s_%s.csv' % (self.language_code,
                                        self.project,
-                                       self.name,
+                                       self.chart,
                                        attrs)
         self.filename = filename
 
@@ -467,9 +454,15 @@ class Dataset:
     def to_csv(self):
         data = data_converter.convert_dataset_to_lists(self, 'manage')
         headers = data_converter.add_headers(self)
-        fh = file_utils.create_txt_filehandle(settings.dataset_location, self.filename, 'w', settings.encoding)
+        lock = RLock()
+        fh = file_utils.create_txt_filehandle(settings.dataset_location,
+                                              self.filename,
+                                              'w',
+                                              settings.encoding)
         file_utils.write_list_to_csv(headers, fh, recursive=False, newline=True)
-        file_utils.write_list_to_csv(data, fh, recursive=False, newline=True, format=self.format)
+        file_utils.write_list_to_csv(data, fh, recursive=False, newline=True,
+                                     format=self.format,
+                                     lock=lock)
         fh.close()
 
     def encode(self):
