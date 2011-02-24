@@ -37,14 +37,21 @@ $wgExtensionCredits['other'][] = array(
 );
 
 /// @todo Document all settings
+// control key included in short key combination??
 $wgNarayamConfig['shortcut_controlkey'] = true;
+// alt key included in short key combination??
 $wgNarayamConfig['shortcut_altkey'] = false;
+// shift key included in short key combination??
 $wgNarayamConfig['shortcut_shiftkey'] = false;
+// meta key included in short key combination?? (only effects mac clients)
 $wgNarayamConfig['shortcut_metakey'] = false;
+// short key in short key combination
 $wgNarayamConfig['shortcut_key'] = 'M';
-// $wgNarayamConfig['default_state'] = true;
+// list of schemes to be loaded when no one specified
 $wgNarayamConfig['schemes'] = array( 'ml', 'ta99', 'ml_inscript' );
+// which scheme should come as default in the list box
 $wgNarayamConfig['default_scheme_index'] = 0;
+// whether the input method should be active as default or not
 $wgNarayamConfig['enabled'] = true;
 
 // localization
@@ -80,7 +87,7 @@ class Narayam {
 	 *
 	 * @var Skin
 	 */
-	private $_sk;
+	private $_skin;
 	/**
 	 * Only skins listed here are supported
 	 * @var array
@@ -115,8 +122,8 @@ class Narayam {
 		}
 		global $wgExtensionAssetsPath, $wgNarayamConfig;
 		$this->_out = $out;
-		$this->_sk = $sk;
-		// add script tag for each scheme
+		$this->_skin = $sk;
+		// add script tag for each scheme to be loaded
 		foreach ( $wgNarayamConfig['schemes'] as $scheme ) {
 			$out->addScriptFile( "$wgExtensionAssetsPath/Narayam/{$scheme}_rules.js" );
 		}
@@ -183,8 +190,8 @@ class Narayam {
 		$str .= "elements = document.getElementsByTagName('textarea');";
 		$str .= "inputRewrite(elements);\n";
 		// $str .= sprintf("Narayam.init(%d);\n", $wgNarayamConfig['default_scheme_index']);
-		if ( in_array( $this->_sk->getSkinName(), $this->_supportedSkins ) ) {
-			$str .= 'setupNarayamFor' . $this->_sk->getSkinName() . "();\n";
+		if ( in_array( $this->_skin->getSkinName(), $this->_supportedSkins ) ) {
+			$str .= 'setupNarayamFor' . $this->_skin->getSkinName() . "();\n";
 		}
 		$str .= "}\n";
 		$str .= "if (window.addEventListener){\n";
