@@ -95,7 +95,7 @@ class ReaderFeedback {
 		$row = $db->selectRow( 'reader_feedback_history', 
 			array('SUM(rfh_total)/SUM(rfh_count) AS ave, SUM(rfh_count) AS count'),
 			array( 'rfh_page_id' => $article->getId(), 'rfh_tag' => $tag,
-				"rfh_date >= {$cutoff_unixtime}" ),
+				"rfh_date >= {$encCutoff}" ),
 			__METHOD__ );
 		$data = $row && $row->count ?
 			array($row->ave,$row->count) : array(0,0);
