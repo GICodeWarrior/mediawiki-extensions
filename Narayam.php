@@ -129,6 +129,10 @@ class Narayam {
 		return true;
 	}
 
+	function formatSchemes( $str ) {
+		return sprintf( 'tr_%s', $str );
+	}
+
 	/**
 	 * Generate JavaScript code according to configuration settings
 	 *
@@ -153,12 +157,12 @@ class Narayam {
 		// $str .= 'Narayam.default_state = ' . Narayam::boolToString($wgNarayamConfig['default_state']) . ";\n";
 		$str .= "Narayam.schemes = [\n";
 		$schemeCount = count( $wgNarayamConfig['schemes'] );
-		for ( $i = 0; $i < $schemeCount; $i++ ) {
-			$str .= sprintf( 'tr_%s', $wgNarayamConfig['schemes'][$i] );
-			if ( $i < ( $schemeCount - 1 ) ) {
-				$str .= ', ';
-			}
+
+		if ( $schemeCount > 0 ) {
+			$transformed = array_map( array( $this, 'formatSchemes' ) , $wgNarayamConfig['schemes'] );
+			$str .= implode( ',', $transformed );
 		}
+
 		$str .= "];\n";
 		$str .= sprintf( "Narayam.default_scheme_index = %d;", $wgNarayamConfig['default_scheme_index'] );
 		for ( $i = 0; $i < $schemeCount; $i++ ) {
