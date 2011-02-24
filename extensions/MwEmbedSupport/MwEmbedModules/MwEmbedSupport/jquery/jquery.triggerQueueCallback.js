@@ -35,7 +35,6 @@
 		// Support namespaced event segmentation
 		var triggerBaseName = triggerName.split(".")[0]; 
 		var triggerNamespace = triggerName.split(".")[1];
-		
 		// Get the callback set
 		var callbackSet = [];
 		if( !$( targetObject ).data( 'events' ) ){
@@ -43,6 +42,7 @@
 			callback();
 			return ;
 		}
+		
 		if( ! triggerNamespace ){
 			callbackSet = $( targetObject ).data( 'events' )[ triggerBaseName ];
 		} else{		

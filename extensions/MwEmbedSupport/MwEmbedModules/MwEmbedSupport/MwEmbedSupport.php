@@ -9,6 +9,7 @@ return array(
 			// jQuery dependencies:
 			'jquery.triggerQueueCallback',
 			'jquery.mwEmbedUtil',
+			'mediawiki.language.parser'
 		),				
 		'messageFile' => 'MwEmbedSupport.i18n.php',
 	),	
@@ -27,6 +28,7 @@ return array(
 			'sunny' => 'skins/jquery.ui.themes/sunny/jquery-ui-1.7.2.css',	
 		)
 	),
+	'mediawiki.language.parser' => array( 'scripts'=> 'mediawiki.language.parser.js' ),
 	'jquery.menu' => array(
 		'scripts' => 'jquery.menu/jquery.menu.js',
 		'styles' => 'jquery.menu/jquery.menu.css'
