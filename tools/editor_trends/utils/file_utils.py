@@ -133,7 +133,7 @@ def determine_file_mode(extension):
         return 'wb'
 
 
-def write_list_to_csv(data, fh, recursive=False, newline=True, format='long'):
+def write_list_to_csv(data, fh, recursive=False, newline=True, format='long', lock=None):
     '''
     @data is a list which can contain other lists that will be written as a
     single line to a textfile
@@ -142,12 +142,14 @@ def write_list_to_csv(data, fh, recursive=False, newline=True, format='long'):
     The calling function is responsible for:
         1) closing the filehandle
     '''
-    lock = multiprocessing.Lock()
+
+
     tab = False
     wrote_newline = None
     if recursive:
         recursive = False
-    lock.acquire()
+    if lock:
+        lock.acquire()
     for x, d in enumerate(data):
         if tab:
             fh.write('\t')
@@ -168,7 +170,8 @@ def write_list_to_csv(data, fh, recursive=False, newline=True, format='long'):
         return True
     if newline:
         fh.write('\n')
-    lock.release()
+    if lock:
+        lock.release()
 
 def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
     assert format == 'long' or format == 'wide', 'Format should either be long or wide.'
