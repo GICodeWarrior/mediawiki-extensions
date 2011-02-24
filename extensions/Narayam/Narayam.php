@@ -150,9 +150,15 @@ class Narayam {
 		$str .= sprintf( "Narayam.shortcut.key= '%s';\n", $wgNarayamConfig['shortcut_key'] );
 		$str .= sprintf( "Narayam.checkbox.text= '%s ('+Narayam.shortcut.toString()+')';\n", wfMsgForContent( 'narayam-toggle-ime' ) /* $wgNarayamConfig['checkbox']['text'] */ );
 		$title = Title::newFromText( wfMsgForContent( 'narayam-help-page' ) );
+
+		$target = '';
+
 		if ( $title ) {
-			$str .= sprintf( "Narayam.checkbox.href= '%s';\n", $title->getFullURL() );
+			$target = $title->getFullURL();
 		}
+
+		$str .= sprintf( "Narayam.checkbox.href= '%s';\n", $target );
+
 		$str .= sprintf( "Narayam.checkbox.tooltip= '%s';\n", wfMsgForContent( 'narayam-checkbox-tooltip' ) );
 		// $str .= 'Narayam.default_state = ' . Narayam::boolToString($wgNarayamConfig['default_state']) . ";\n";
 		$str .= "Narayam.schemes = [\n";
