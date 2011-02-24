@@ -696,6 +696,7 @@ $messages['lb'] = array(
 	'ea-style' => 'Style:',
 	'ea-selectcss' => "Dir kënnt een ''CSS Stylesheet'' eraussichen",
 	'ea-data' => 'Donnéeën',
+	'ea-selectrecord' => 'Dës Schabloune kënne benotzt gi fir Felder am Inhalt vu Messagen auszefëllen',
 	'ea-allusers' => 'All Benotzer',
 );
 

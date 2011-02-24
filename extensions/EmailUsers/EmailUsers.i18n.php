@@ -238,6 +238,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'emailusers-desc' => 'Erméiglecht de Benotzer fir E-Mailen u méi Adressaten ze schécken',
 	'emailusers' => 'E-Mail Benotzer',
+	'emailusers-target-reverse' => 'Un all Benotzer schécken, ausser deenen déi erausgesicht sinn',
 	'emailusers-norecipient' => 'Et gëtt keen deem Dir eng Mail schécke kënnt.',
 );
 

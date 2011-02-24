@@ -526,6 +526,7 @@ $messages['lb'] = array(
 	'livetranslate-special-location' => 'Plaz',
 	'livetranslate-special-remove' => 'Ewechhuelen',
 	'livetranslate-special-local' => 'Lokal',
+	'livetranslate-special-add-tm' => 'En neien Iwwersetzungsspäicher derbäisetzen',
 );
 
 /** Macedonian (Македонски)
