@@ -159,9 +159,6 @@ class ReaderFeedback {
 		$page, $period, $add = array(), $cache = 'useCache'
 	) {
 		global $wgLang, $wgMemc;
-		if( $period > 93 ) {
-			return ''; // too big
-		}
 		$votes = null;
 		$now = time();
 		$key = wfMemcKey( 'feedback', 'ratingtally', $page->getArticleId(), $period );
