@@ -89,6 +89,8 @@ class ReaderFeedback {
 	public static function getAverageRating( $article, $tag, $forUpdate=false ) {
 		global $wgFeedbackAge;
 		$cutoff_unixtime = time() - $wgFeedbackAge;
+		// rfh_date is always MW format on all dbms
+		$encCutoff = $db->addQuotes( wfTimestamp( TS_MW, $cutoff_unixtime ) );
 		$db = $forUpdate ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
 		$row = $db->selectRow( 'reader_feedback_history', 
 			array('SUM(rfh_total)/SUM(rfh_count) AS ave, SUM(rfh_count) AS count'),
