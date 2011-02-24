@@ -3469,6 +3469,56 @@ $wgGoogleMapsMessages['lv'] = array(
 	'gm-kml-loading' => 'ielādējas...',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$wgGoogleMapsMessages['mg'] = array(
+	'gm-desc' => "Fanamboarana sarintany tsotra amin'ny alàlan'ny baiko wiki",
+	'gm-incompatible-browser' => "Mba hijerena ny sarintany tokony ao amin'io toerana io, hila hampiasa mpitety tranonkala mahazaka ianao.",
+	'gm-balloon-title' => 'Lohateny:',
+	'gm-remove' => 'Esorina',
+	'gm-trace-area' => 'hanipika velarana iray',
+	'gm-no-results' => 'Miala tsiny fa tsy nahitana valiny',
+	'gm-searching' => 'ampikarohana…',
+	'gm-map' => 'Sarintany',
+	'gm-instructions' => 'Eo ambany, ny marika Wiki amoronana ny sarintany eo ambony.',
+	'gm-are-you-sure' => 'Marina ny ataonao ?',
+	'gm-clear-all-points' => 'Hanala ny teboka rehetra',
+	'gm-overview-control' => 'Fijery ankapobe',
+	'gm-selector-control' => 'Mpisafidy sarintany/zanabolana',
+	'gm-zoom-control' => 'Fitetezana',
+	'gm-large' => 'Lehibe',
+	'gm-medium' => 'Antonontonony',
+	'gm-small' => 'Kely',
+	'gm-no-zoom-control' => 'Tsia',
+	'gm-yes' => 'Eny',
+	'gm-no' => 'Tsia',
+	'gm-search-preface' => "Tsindrio eo amin'ny sarintany mba hanampy teboka iray na rehefa hankany amina tanana, firenena, adiresy na orinasa iray :",
+	'gm-geocode-preface' => "Tsindrio eo amin'ny sarintany mba hanampy teboka iray, na rehefa hankany amina tanana, firenena na adiresy iray :",
+	'gm-no-search-preface' => "Tsindrio eo amin'ny sarintany mba hanampy teboka iray.",
+	'gm-meters' => 'metatra',
+	'gm-miles' => 'mily',
+	'gm-editing-path' => "Tsindrio eo amin'ny sarintany mba hanampy teboka hafa amin'io lalana io.",
+	'gm-save-path' => 'Tehirizina',
+	'gm-edit-path' => 'Hanampy teboka',
+	'gm-show-path' => 'haneho ny teboka',
+	'gm-color-path' => 'Hanolo ny loko',
+	'gm-color-fill' => 'hanolo ny loko famenoana',
+	'gm-add-fill' => 'hameno velarana',
+	'gm-remove-fill' => 'hanala ny famenoana',
+	'gm-line-color' => 'Lokon-tsipika',
+	'gm-line-width' => 'Halalaka',
+	'gm-make-map' => 'Hamorona sarintany',
+	'gm-hide-map' => 'Hanitrika sarintany',
+	'gm-back' => 'taloha',
+	'gm-kml-include-link' => "ampiana amin'ny sarintany",
+	'gm-kml-loading' => 'ampamahana…',
+	'gm-kml-export' => "Hamoaka ity sarintany amin'ny KML",
+	'gm-earth' => 'Tany',
+	'gm-moon' => 'Volana',
+	'gm-mars' => 'Marsa',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
