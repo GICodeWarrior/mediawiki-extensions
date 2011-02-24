@@ -227,7 +227,9 @@ class RatingHistory extends UnlistedSpecialPage
 			$year = intval( substr( $row->rfh_date, 0, 4 ) );
 			$month = intval( substr( $row->rfh_date, 4, 2 ) );
 			$day = intval( substr( $row->rfh_date, 6, 2 ) );
-			$date = ($this->period > 31) ? "{$month}/{$day}/".substr( $year, 2, 2 ) : "{$month}/{$day}";
+			$date = ($this->period > 31)
+				? "{$month}/{$day}/".substr( $year, 2, 2 )
+				: "{$month}/{$day}";
 			$dates .= "<th>$date</th>";
 			$drating .= "<td>$dayAve</td>";
 			$arating .= "<td>$cumAve</td>";
