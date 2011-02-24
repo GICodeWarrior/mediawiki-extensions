@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => array( 'Alexandre Emsenhuber', 'Andrew Garrett' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.16.0',
+	'version' => '0.16.1',
 );
 
 # Configuration part
@@ -281,8 +281,8 @@ $wgAPIModules['configure'] = 'ApiConfigure';
 
 # Ressource loader
 $wgResourceModules['ext.configure'] = array(
-	'scripts' => 'configure.js',
-	'styles'  => 'configure.css',
+	'scripts' => 'Configure.js',
+	'styles'  => 'Configure.css',
  
 	'messages' => array(
 		'configure-js-add',

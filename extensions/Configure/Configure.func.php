@@ -39,8 +39,8 @@ function efConfigureSetup( $wiki = 'default' ) {
 
 	if ( $wgConfigureAllowDeferSetup && $wgConfigureHandler == 'db' ) {
 		// Defer to after caches and database are set up.
-		global $wgHooks;
-		$wgHooks['SetupAfterCache'][] = array( 'efConfigureInitialise' );
+		global $wgExtensionFunctions;
+		$wgExtensionFunctions[] = 'efConfigureInitialise';
 	} else {
 		efConfigureInitialise();
 	}
