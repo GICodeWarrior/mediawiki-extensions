@@ -39,9 +39,6 @@
 	/**
 	 * Enables javascript modules and pages to target a "interfaces ready" state. 
 	 * 
-	 * mw.ready is equivalent to calling:  
-	 * $j(mw).bind( 'InterfacesReady', callback );
-	 * 
 	 * This is different from jQuery(document).ready() ( jQuery ready is not
 	 * friendly with dynamic includes and not friendly with core interface
 	 * asynchronous build out. ) This allows core interface components to do async conditional
@@ -72,7 +69,7 @@
 	$j( mw ).bind('InterfacesReady', function(){ mw.interfacesReadyFlag  = true } );	
 	
 	// Once the DOM is ready start setting up interfaces
-	$j( document ).ready(function(){		
+	$j( document ).ready(function(){
 		$j( mw ).triggerQueueCallback('SetupInterface', function(){
 			// All interfaces have been setup trigger InterfacesReady event
 			$j( mw ).trigger( 'InterfacesReady' );
@@ -139,7 +136,10 @@
 
 	/**
 	 * gM ( get Message ) in js2 conflated jQuery return type with string return type
-	 * Do a legacy check for input parameters and 'do the right thing' 
+	 * Do a legacy check for input paramaters this should be 	 in favor 
+	 * of calling the correct function. 
+	 * 
+	 * TODO Replace with new Neil's new parser functions 
 	 */
 	window.gM = function( key, args ){
 		var paramaters = [];
@@ -147,19 +147,88 @@
 			paramaters = args;
 		} else {
 			paramaters = $.makeArray( arguments ).slice(1);
+		}	
+		
+		var needsSpecialSwap = function( o ) {
+			return ( typeof o === 'function' || o instanceof jQuery );
+		};
+
+		var getSwapId = function( index ) {
+			return 'mw_message_swap_index_' + key + '_' + index;
+		};
+
+		var doSpecialSwap = false;
+	
+
+		
+		
+		var	text = mediaWiki.messages.get( key )
+		
+		// replace links: 		
+		text = text.replace( /\[(\S+)\s+([^\]]*)\]/g, function( matched, link, linkText ) {
+			var indexIdAttribute = '';
+			// Check if the link is a swap index or just a string
+			if( link[0] == '$' ){
+				var index = parseInt( link.replace(/\$/,''), 10 ) - 1;		    		
+				// If the parameter is a text string directly replace it 
+				if( typeof paramaters[ index ] == 'string' ){
+					link =  paramaters[ index ];
+				} else if ( needsSpecialSwap( paramaters[ index ] ) ) {
+					link = '#';
+					indexIdAttribute = ' id="' + getSwapId( index ) + '" ';
+					doSpecialSwap = true;
+				} else {
+					throw new Error( 'Cannot substitute parameter with unrecognized type ' + typeof paramaters[index] );
+				}
+			}
+			
+			return '<a href="' + link + '" ' + indexIdAttribute + '>' + linkText + '</a>';
+		});
+		
+		// Swap $1 replacements (not in a link):
+		text = text.replace( /\$(\d+)/g, function( matched, indexString ) {
+			var index = parseInt( indexString, 10 ) - 1;
+			// Check the paramaters type
+			if( paramaters[index] && needsSpecialSwap( paramaters[index] ) ) {
+				doSpecialSwap = true;
+				return '<span id="' + getSwapId( index ) + '></span>';
+			} else {
+				// directly swap in the index or a missing index indicator ( $1{int}
+				return index in paramaters ? paramaters[index] : '$' + match;
+			}
+		} );
+		
+		// Create a parser object with default set of options:
+		var parsedText = new mediaWiki.language.parser( text, {} );
+		// Get the html representation of wikitext ( all that messages deal with right now ) 
+		text = parsedText.getHTML();
+		
+		// If the paramaters are jQuery objects or functions, we should now "swap" those objects in.
+		if( doSpecialSwap ) {			
+			// Add bindings to swap index and return binded html jQuery objects
+			for( var index=0; index < paramaters.length; index++ ) {
+				var parameter = paramaters[index];
+				var $swapTarget = this.find( '#' + getSwapId( index ) );
+				if ( ! $swapTarget.length ) {
+					continue;
+				}
+
+				// if parameter was a function, simply add it to the click handler
+				if( typeof parameter == 'function' ){
+					$swapTarget.click( parameter );
+				}
+		
+				// if parameter was a jQuery object, make it "wrap around" the text we have
+				if( parameter instanceof jQuery ){			
+					// make the jQuery parameter contain the same text as the swap target
+					parameter.text( $swapTarget.text() );
+					// replace the swap target with the jQuery parameter
+					$swapTarget.replaceWith( parameter );
+				}
+			}
 		}
 		
-		// Check if we have to use the jquery method or can use the native get msg support
-		for(var i=0;i < paramaters.length; i++){
-			var param = paramaters[i];
-			if( typeof param == 'function' || param instanceof jQuery ){
-				// TODO use mwMessage response
-				return $j( '<span />').text( mediaWiki.msg( key, paramaters) );
-			}
-		};
-		// Else use normal mediaWiki string based gM
-		
-		return mediaWiki.msg.apply( this, $.makeArray( arguments ) );
+		return text;
 	};
 	
 	/**
