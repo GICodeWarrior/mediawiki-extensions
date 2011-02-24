@@ -3,9 +3,9 @@
 /**
  * NAME
  * 	Narayam
- * 
+ *
  * SYNOPSIS
- * 	
+ *
  * INSTALL
  * 	Put this whole directory under your Mediawiki extensions directory
  * 	Then add this line to LocalSettings.php to load the extension
@@ -16,7 +16,7 @@
  *
  * AUTHOR
  * 	Junaid P V <http://junaidpv.in>
- * 
+ *
  * @package extensions
  * @version 0.1
  * @copyright Copyright 2010 Junaid P V
@@ -118,11 +118,11 @@ class Narayam {
 		$this->_sk = $sk;
 		// add script tag for each scheme
 		foreach ( $wgNarayamConfig['schemes'] as $scheme ) {
-			$out->addScriptFile( "$wgExtensionAssetsPath/Nayaram/{$scheme}_rules.js" );
+			$out->addScriptFile( "$wgExtensionAssetsPath/Narayam/{$scheme}_rules.js" );
 		}
 
 		// Load Narayam.js file
-		$out->addScriptFile( "$wgExtensionAssetsPath/Nayaram/Narayam.js" );
+		$out->addScriptFile( "$wgExtensionAssetsPath/Narayam/Narayam.js" );
 
 		// Place generated JS code according to configuration settings
 		$out->addInlineScript( $this->getInitJSCode() );
@@ -139,7 +139,7 @@ class Narayam {
 	 * @global array $wgNarayamConfig
 	 * @param Skin $skinName
 	 * @return string Generated JS code
-	 * @todo Nees rewriting
+	 * @todo Needs rewriting
 	 */
 	private function getInitJSCode() {
 		global $wgNarayamConfig;
