@@ -4,3 +4,4 @@ pywin32==214
 pymongo==1.9
 argparse
 python-dateutil
+texttable

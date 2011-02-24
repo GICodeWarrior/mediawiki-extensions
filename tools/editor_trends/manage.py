@@ -49,33 +49,33 @@ def show_choices(settings, attr):
     return choices
 
 
-def config_launcher(properties, logger):
+def config_launcher(rts, logger):
     '''
     Config launcher is used to reconfigure editor trends toolkit. 
     '''
 #    settings.load_configuration()
     pc = projects.ProjectContainer()
-    if not os.path.exists('wiki.cfg') or properties.force:
+    if not os.path.exists('wiki.cfg') or rts.force:
         config = ConfigParser.RawConfigParser()
         project = None
         language = None
         #language_map = languages.language_map()
         working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
-        input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.\n' % settings.input_location)
+        input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.\n' % rts.input_location)
 
         while project not in pc.projects.keys():
-            project = raw_input('Please indicate which project you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % pc.projects[properties.project.name])
-            project = project if len(project) > 0 else properties.project.name
+            project = raw_input('Please indicate which project you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % rts.project.full_name)
+            project = project if len(project) > 0 else rts.project.name
             if project not in pc.projects.keys():
                 print 'Valid choices for a project are: %s' % ','.join(pc.projects.keys())
 
-        while language not in properties.project.valid_languages:
-            language = raw_input('Please indicate which language of project %s you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % (pc.projects[project], properties.language))
+        while language not in rts.project.valid_languages:
+            language = raw_input('Please indicate which language of project %s you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % (rts.project.full_name, rts.language))
             if len(language) == 0:
-                language = properties.language.code
-            language = language if language in properties.project.valid_languages else properties.language
+                language = rts.language.code
+            language = language if language in rts.project.valid_languages else rts.language.default
 
-        input_location = input_location if len(input_location) > 0 else settings.input_location
+        input_location = input_location if len(input_location) > 0 else rts.input_location
         working_directory = working_directory if len(working_directory) > 0 else os.getcwd()
 
         config = ConfigParser.RawConfigParser()
@@ -90,8 +90,8 @@ def config_launcher(properties, logger):
         config.write(fh)
         fh.close()
 
-        settings.working_directory = config.get('file_locations', 'working_directory')
-        settings.input_location = config.get('file_locations', 'input_location')
+        rts.working_directory = config.get('file_locations', 'working_directory')
+        rts.input_location = config.get('file_locations', 'input_location')
 
 
 
