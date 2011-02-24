@@ -1,7 +1,11 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
-0.16.0 - 22 February 2010
+0.16.1 - 24 Februara 2011
+  Use an extension function rather than SetupAfterCache hook when delaying
+  settings extraction.
+
+0.16.0 - 22 February 2011
   Rewrote the extension to use the ressource loader and jQuery.
   THIS VERSION NOW REQUIRES MediaWiki 1.17 TO WORK.
 
