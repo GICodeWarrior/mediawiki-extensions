@@ -381,7 +381,9 @@ $messages['sl'] = array(
 	'svgedit-summary-default' => '/* Spremenjeno v svg-edit */',
 	'svgedit-editor-save-close' => 'Shrani in zapri',
 	'svgedit-editor-close' => 'Prekliči',
-	'svgedit-desc' => 'Urejanje risb SVG v brskalniku s [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-desc' => 'Urejanje risb SVG v brskalniku z [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Uredi risbo',
+	'svgedit-edit-tab-tooltip' => 'Risbo SVG lahko uredite v svojem brskalniku',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

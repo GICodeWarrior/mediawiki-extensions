@@ -588,7 +588,11 @@ $messages['sl'] = array(
 	'massblank' => 'Praznjenje strani',
 	'massblank-desc' => 'Skrbnikom omogoča [[Special:MassBlank|množično praznjenje]] strani',
 	'massblank-nopages' => 'V zadnjih spremembah ni novih strani [[Special:Contributions/$1|$1]]',
+	'massblank-list' => 'Naslednje strani je nedavno ustvaril [[Special:Contributions/$1|$1]];
+vnesite komentar in pritisnite gumb za njihovo izpraznitev.',
 	'massblank-defaultreason' => 'Množično praznjenje strani, ki jih je dodal $1',
+	'massblank-tools' => 'To orodje omogoča množično izpraznitev strani, ki jih je nedavno ustvaril določen uporabnik ali IP.
+Vnesite uporabniško ime ali IP, da pridobite seznam strani za izpraznitev.',
 	'massblank-submit-user' => 'Pojdi',
 	'massblank-submit-blank' => 'Izprazni izbrane',
 	'massblank-blankcomment' => 'Razlog:',

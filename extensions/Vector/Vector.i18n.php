@@ -128,6 +128,13 @@ $messages['arz'] = array(
 	'vector-simplesearch-containing' => 'جوّاه...',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author PPerviz
+ */
+$messages['az'] = array(
+	'vector-simplesearch-search' => 'Axtar',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

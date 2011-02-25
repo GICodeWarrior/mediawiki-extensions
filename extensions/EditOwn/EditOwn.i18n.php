@@ -285,6 +285,13 @@ $messages['lb'] = array(
 	'editown-desc' => 'Benotzer ouni "editall"-Rechter kënnen nëmme Säiten ànneren déi si ugeluecht hunn',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'editown-desc' => "Ny pejy noforoniny ihany no afaka ovain'ny mpikambana tsy mahazo manova na inona na inona.",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -141,6 +141,13 @@ $messages['lb'] = array(
 	'categorymembersonsidebar-desc' => "Setzt d'Membere vun der Kategorie an d'Säiteläischt",
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'categorymembersonsidebar-desc' => "Manampy mpikamban'ny sokajy eo amin'ny anja antsisiny",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

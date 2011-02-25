@@ -1011,6 +1011,38 @@ $messages['lv'] = array(
 	'article-comments-leave-comment-link' => 'Atstāt komentāru ...',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'article-comments-desc' => "Mampandeha ny fizarana misy ny resaka eny amin'ny pejin-dahatsoratra",
+	'article-comments-title-string' => 'lohateny',
+	'article-comments-name-string' => 'Anarana',
+	'article-comments-name-field' => 'Anarana (ilaina) :',
+	'article-comments-url-field' => 'Sehatra antranonkala :',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Resaka',
+	'article-comments-comment-field' => 'Resaka :',
+	'article-comments-submit-button' => 'Alefa',
+	'article-comments-leave-comment-link' => 'Asiana resaka...',
+	'article-comments-required-field' => 'Iliana fenoina ny fanatsofohan-teny $1.',
+	'article-comments-submission-failed' => 'Tsy tafalefa ny fandefasana ilay resaka',
+	'article-comments-no-comments' => "Miala tsiny fa tsy mandray resaka ny lahatsoratra « [[$1]] » amin'izao fotoana izao.",
+	'article-comments-talk-page-starter' => "<noinclude>Resaka mikasikan'i [[$1]]
+<comments />
+----- __NOEDITSECTION__</noinclude>",
+	'article-comments-commenter-said' => 'Hoy i $1 ...',
+	'article-comments-summary' => "Resaka nasian'i $1 — tamin'ny alàlan'ny fanitarana ArticleComments",
+	'article-comments-submission-succeeded' => 'Nandeha soa aman-tsara ny fandefasana ilay resaka',
+	'article-comments-submission-success' => "Nanisy resaka momban'i « [[$1]] » soa aman-tsara ianao",
+	'article-comments-submission-view-all' => 'Azonao jerena [[$1|eto]] ny resaka rehetra mahakasika io lahatsoratra io',
+	'article-comments-user-is-blocked' => "Voasakana tsy mahazo manoratra ny kantim-pikambanao eo amin'i « [[$1]] ».",
+	'article-comments-comment-missing-name-parameter' => 'Tsy ampy ny anarana',
+	'article-comments-comment-missing-date-parameter' => "Tsy ampy ny datin'ny resaka",
+	'article-comments-no-spam' => "Voamarika ho spam ny iraika amin'ny fanatsofohan-teny nalefa.",
+	'processcomment' => "Fikarakarana ny resaka mikasikan'ny lahatsoratra",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author 青子守歌

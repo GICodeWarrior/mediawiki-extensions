@@ -251,6 +251,18 @@ $messages['gsw'] = array(
 	'ts-kml-on-ol-map-by' => 'Charte vu',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'ts-kml-on-ol-options' => 'אפשרויות',
+	'ts-kml-on-ol-languages' => 'שפות',
+	'ts-kml-on-ol-thumbnails' => 'תמונות ממוזערות',
+	'ts-kml-on-ol-help' => 'עזרה',
+	'ts-kml-on-ol-all' => 'הכול',
+	'ts-kml-on-ol-map-by' => 'למפות לפי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

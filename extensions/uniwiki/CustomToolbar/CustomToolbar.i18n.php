@@ -3325,6 +3325,7 @@ $messages['yi'] = array(
  * @author Gaoxuewei
  * @author Gzdavidwong
  * @author Liangent
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'ct-desc' => '增加了可扩展工具栏',
@@ -3359,8 +3360,8 @@ $messages['zh-hans'] = array(
 	'ct_horizontal_caption' => '水平线',
 	'ct_upload' => '上传 $1',
 	'ct_select' => '选择要上传的$1：',
-	'ct_caption' => '添加标题（可选）',
-	'ct_link' => '添加链接名称（可选）',
+	'ct_caption' => '添加标题 （可选）：',
+	'ct_link' => '添加链接名称 （可选）：',
 	'ct_submit' => '确定！',
 	'ct_close' => '关闭窗口',
 	'ct_success' => '文件上传成功！',
