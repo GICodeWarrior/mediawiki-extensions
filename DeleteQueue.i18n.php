@@ -2698,6 +2698,7 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -2750,15 +2751,15 @@ $messages['he'] = array(
 	'deletequeue-role-vote-endorse' => 'בעד המחיקה',
 	'deletequeue-role-vote-object' => 'נגד המחיקה',
 	'deletequeue-vote-tab' => 'הצבעה על המחיקה',
-	'deletequeue-vote-legend' => 'תמיכה/התנגדות למחיקה',
+	'deletequeue-vote-legend' => 'לתמוך במחיקה/להתנגד למחיקה',
 	'deletequeue-vote-action' => 'המלצה:',
 	'deletequeue-vote-endorse' => 'תמיכה במחיקה.',
-	'deletequeue-vote-object' => 'פריט למחיקה.',
+	'deletequeue-vote-object' => 'התנגדות למחיקה.',
 	'deletequeue-vote-reason' => 'הערות:',
 	'deletequeue-vote-submit' => 'שליחה',
 	'deletequeue-vote-success-object' => 'התנגדתם בהצלחה למחיקת דף זה.',
 	'deletequeue-showvotes-restrict-object' => 'הצגת התנגדויות בלבד',
-	'deletequeue-showvotes-vote-object' => "'''מתנגדים''' למחיקה ב־$1 $2",
+	'deletequeue-showvotes-vote-object' => "'''התנגד''' למחיקה ב־$1 $2",
 	'deletequeue-showvotes-showingonly-object' => 'מוצגות רק ההתנגדויות',
 	'deletequeue-showvotes-none-object' => 'אין התנגדויות למחיקת דף זה.',
 	'deletequeue' => 'תור המחיקות',
@@ -2768,16 +2769,17 @@ $messages['he'] = array(
 	'deletequeue-list-status' => 'מצב:',
 	'deletequeue-list-expired' => 'הצגת מועמדויות הדורשות סגירה בלבד.',
 	'deletequeue-list-search' => 'חיפוש',
+	'deletequeue-list-anyqueue' => '(כלשהו)',
 	'deletequeue-list-votes' => 'רשימת ההצבעות',
-	'deletequeue-list-votecount' => '{{PLURAL:$1|הסכמה אחת|$1 הסכמות}}, {{PLURAL:$2|התנגדות אחת|$2 התנגדויות}}',
+	'deletequeue-list-votecount' => '{{PLURAL:$1|תמיכה אחת|$1 תמיכות}}, {{PLURAL:$2|התנגדות אחת|$2 התנגדויות}}',
 	'deletequeue-list-header-page' => 'דף',
 	'deletequeue-list-header-queue' => 'תור',
-	'deletequeue-list-header-votes' => 'הסכמות והתנגדויות',
+	'deletequeue-list-header-votes' => 'תמיכות והתנגדויות',
 	'deletequeue-list-header-expiry' => 'תפוגה',
 	'deletequeue-list-header-discusspage' => 'דף השיחה',
 	'deletequeue-case-intro' => 'דף זה מציג מידע אודות מקרה מחיקה מסוים.',
 	'deletequeue-list-header-reason' => 'סיבת המחיקה',
-	'deletequeue-case-votes' => 'הסכמות/התנגדויות:',
+	'deletequeue-case-votes' => 'תמיכות/התנגדויות:',
 	'deletequeue-case-title' => 'פרטי מקרה המחיקה',
 	'deletequeue-case-details' => 'פרטים בסיסיים',
 	'deletequeue-case-page' => 'דף:',
