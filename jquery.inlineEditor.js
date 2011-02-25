@@ -151,12 +151,9 @@
 	},
 	
 	/**
-	 * Publishes the document in its current state.
+	 * Submit event, adds the json to the hidden field
 	 */
-	publish: function( event ) {
-		event.stopPropagation();
-		event.preventDefault();
-		
+	submit: function( event ) {		
 		// get the wikitext from the state as it's currently on the screen
 		var data = {
 				'object': $.inlineEditor.states[$.inlineEditor.currentState].object
@@ -165,6 +162,12 @@
 		
 		// set and send the form
 		$( '#json' ).val( json );
+	},
+	
+	/**
+	 * Publishes the document
+	 */
+	publish: function() {
 		$( '#editForm' ).submit();
 	},
 	
@@ -172,6 +175,7 @@
 	 * Initializes the editor.
 	 */
 	init : function() {
+		$( '#editForm' ).submit( $.inlineEditor.submit );
 		$( '#publish' ).click( $.inlineEditor.publish );
 		//$( '#undo' ).click( $.inlineEditor.undo );
 		//$( '#redo' ).click( $.inlineEditor.redo );

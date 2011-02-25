@@ -28,6 +28,8 @@ You can only use the '''full editor''' for this page.",
 	'inline-editor-editmodes-undo' => 'Undo',
 	'inline-editor-editmodes-redo' => 'Redo',
 	'inline-editor-enable-preference' => 'Enable inline editing',
+	'inline-editor-preview' => 'Preview',
+	'inline-editor-cancel' => 'Cancel',
 );
 
 /** Language descriptions
@@ -62,4 +64,6 @@ it be saved into some kind of database, waiting for approval?" "Publish" is
 unambiguous: it will be shown to the world. On the other hand, using the word "Publish" may have legal
 consequences in some countries, which should be looked into.',
 	'inline-editor-enable-preference' => '',
+	'inline-editor-preview' => '',
+	'inline-editor-cancel' => '',
 );

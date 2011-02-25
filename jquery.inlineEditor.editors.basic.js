@@ -35,9 +35,12 @@
 		$input.text( wiki );
 		
 		// build preview and cancel buttons and add click events
-		var $preview = $( '<input type="button" value="Preview" class="preview"/>' );
-		var $cancel = $( '<input type="button" value="Cancel" class="cancel"/>' );
+		var $preview = $( '<input type="button" class="preview"/>' );
+		$preview.attr( 'value', mediaWiki.msg( 'inline-editor-preview' ) );
 		$preview.click( $.inlineEditor.editors.basic.clickPreview );
+		
+		var $cancel = $( '<input type="button" class="cancel"/>' );
+		$cancel.attr( 'value', mediaWiki.msg( 'inline-editor-cancel' ) );
 		$cancel.click( $.inlineEditor.editors.basic.clickCancel );
 		
 		// build a div for the buttons
@@ -156,7 +159,7 @@
 	 * Reload the editor.
 	 */
 	reload: function() {
-		$.inlineEditor.editors.basic.bindEvents( $( '.inlineEditorElement .inlineEditorBasic' ) );
+		$.inlineEditor.editors.basic.bindEvents( $( '.inlineEditorBasic' ) );
 	},
 	
 	/**
