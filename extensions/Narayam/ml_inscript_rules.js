@@ -4,12 +4,7 @@
  * @date 2010-09-08
  * License: GPLv3
  */
-if(tr_ml_inscript== undefined) var tr_ml_inscript = {};
-else tr_ml_inscript = {};
-tr_ml_inscript.text = "InScript";
-tr_ml_inscript.description = "Malayalam InScript";
- // Normal rules
-tr_ml_inscript.rules = [
+var rules = [
 ['`', '','ൊ'],
 ['~', '','ഓ'],
 ['_', '','ഃ'],
@@ -78,3 +73,10 @@ tr_ml_inscript.rules = [
 ['<', '','ഷ'],
 ['/', '','യ']
 ];
+
+jQuery.narayam.addScheme( 'ml-inscript', {
+	'namemsg': 'narayam-ml-inscript',
+	'extended_keyboard': false,
+	'lookbackLength': 0,
+	'rules': rules
+} );
