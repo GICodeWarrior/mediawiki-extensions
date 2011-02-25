@@ -705,6 +705,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Hosiryuhosi
  * @author JtFuruhata
+ * @author W.CC
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -715,7 +716,7 @@ $messages['ja'] = array(
 	'edituser-nouser' => '利用者「$1」は存在しません。',
 	'edituser-exempt' => '利用者"$1"は編集できません',
 	'right-edituser' => '他の利用者の個人設定を編集する',
-	'right-edituser-exempt' => '他人が利用者の個人設定を編集することはできません。',
+	'right-edituser-exempt' => '他の利用者による個人設定編集を回避',
 );
 
 /** Javanese (Basa Jawa)
