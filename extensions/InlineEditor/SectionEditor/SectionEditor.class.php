@@ -23,7 +23,7 @@ class SectionEditor {
 			$end     = $match[1]-1;
 			$prevPos = $match[1];
 
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'sectionEditorElement', true, true, 2 ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'sectionEditorElement inlineEditorBasic', true, true, 2 ) );
 		}
 
 		return true;

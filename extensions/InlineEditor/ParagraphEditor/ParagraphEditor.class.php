@@ -22,7 +22,7 @@ class ParagraphEditor {
 			// do not include the trailing newline
 			if ( substr( $match[0], -1 ) == "\n" ) $end--;
 
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'paragraphEditorElement', true, true, 1 ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'paragraphEditorElement inlineEditorBasic', true, true, 1 ) );
 		}
 
 		return true;

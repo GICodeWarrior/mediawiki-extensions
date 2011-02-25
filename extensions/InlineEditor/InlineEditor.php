@@ -61,3 +61,32 @@ $wgInlineEditorAllowedNamespaces                  = array( NS_MAIN, NS_TALK, NS_
 
 // default user options
 $wgDefaultUserOptions['inline-editor-enabled']    = 1;
+
+// resources
+$inlineEditorTpl = array(
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'InlineEditor',
+	'group'         => 'ext.inlineEditor',
+);
+
+$wgResourceModules += array(
+	'jquery.inlineEditor' => $inlineEditorTpl + array(
+        'scripts'      => 'jquery.inlineEditor.js',
+        'styles'       => 'jquery.inlineEditor.css',
+    ),
+    'jquery.inlineEditor.editors.basic' => $inlineEditorTpl + array(
+        'scripts'      => 'jquery.inlineEditor.editors.basic.js',
+        'styles'       => 'jquery.inlineEditor.editors.basic.css',
+        'messages'     => array(
+        	'inline-editor-preview',
+        	'inline-editor-cancel'
+        ),
+        'dependencies' => array(
+        	'jquery.inlineEditor',
+        	'jquery.elastic'
+        ),
+    ),
+    'jquery.elastic' => $inlineEditorTpl + array(
+        'scripts'      => 'jquery.elastic.js',
+    ),
+);

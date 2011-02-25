@@ -22,7 +22,7 @@ class ListEditor {
 			// do not include the trailing newline
 			if ( substr( $match[0], -1 ) == "\n" ) $end--;
 
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'listEditorElement', true, false ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'listEditorElement inlineEditorBasic', true, false ) );
 		}
 
 		return true;

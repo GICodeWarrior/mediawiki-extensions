@@ -13,7 +13,7 @@ class FullEditor {
 		$text = $inlineEditorText->getWikiOriginal();
 
 		// match everything
-		$inlineEditorText->addMarking( new InlineEditorMarking( 0, strlen( $text ), 'fullEditorElement', true, true, 100 ) );
+		$inlineEditorText->addMarking( new InlineEditorMarking( 0, strlen( $text ), 'fullEditorElement inlineEditorBasic', true, true, 100 ) );
 
 		return true;
 	}

@@ -38,7 +38,7 @@ class SentenceEditor {
 
 		// have the detection class add the markings to the InlineEditorText object,
 		// class 'sentenceEditorElement', inline elements
-		$detection->addMarkingsToText( $inlineEditorText, 'sentenceEditorElement', false, false );
+		$detection->addMarkingsToText( $inlineEditorText, 'sentenceEditorElement inlineEditorBasic', false, false );
 
 		return true;
 	}
