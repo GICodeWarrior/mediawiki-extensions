@@ -345,6 +345,41 @@ $messages['gsw'] = array(
 	'ts-citegen-base-disabled' => 'Fähler: %s-Datebank isch nit verfiegbar.',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'ts-citegen-Title' => 'מחולל תבניות ציטוט',
+	'ts-citegen-Send' => 'לחולל',
+	'ts-citegen-Input-title' => 'קלט',
+	'ts-citegen-Input-text' => 'זהו מחולל תבניות ציטוט. על־ידי המחולל הזה תוכלו למלא תבניות ציטוט בשפות השונות של ויקיפדיה. מלאו את הנתונים (%s) בשדות להלן והתכנית תנסה למלא את התבניות. זִכרו: אין זה משנה באילו שדות אתם שמים את הנתונים. התכנית תתאים באופן אוטומטי את התבנית לקלט.',
+	'ts-citegen-Option-append-author-link' => 'להוסיף את קישורי הוויקי של המחבר לתבנית',
+	'ts-citegen-Option-append-newlines' => 'להוסיף שורות חדשות אחרי כל פרמטר',
+	'ts-citegen-Option-add-references' => 'להוסיף תגי <ref> סביב תבניות הציטוט',
+	'ts-citegen-Option-add-list' => 'ליצור רשימת ויקי של תבניות ציטוט',
+	'ts-citegen-Output-title' => 'תוצאה',
+	'ts-citegen-Output-select-disclaimer' => 'בחירת שפת התבנית אינה מבטיחה שהתבנית המסוימת תהיה זמינה בשפתכם. בשדה הזה קיימת רשימה של כל התבניות הנתמכות, כלומר היא יכולה לכלול את השפה הצרפתית אם יש שם תמיכה ב־{{Cite book}}.',
+	'ts-citegen-Wrong-input' => '%s: לא זוהה לקלט נכון.',
+	'ts-citegen-Parsers' => 'מפענחים',
+	'ts-citegen-Skins' => 'פלט',
+	'ts-citegen-Skin-skins' => 'עיצובים',
+	'ts-citegen-Skin-outputformat' => 'תבנית פלט',
+	'ts-citegen-Template-lang' => 'שפת התבנית',
+	'ts-citegen-Sources-title' => 'מקורות',
+	'ts-citegen-Sources-text' => 'להלן רשימת המקורות הזמינים',
+	'ts-citegen-Sidebar-title' => 'מחולל ציטוטים',
+	'ts-citegen-Sidebar-add-Firefox' => 'להוסיף לסרגל הצד',
+	'ts-citegen-Sidebar-add-Opera' => 'להוסיף לרשימה החמה',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'להוסיף למחזיק הדפים',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'לאחר שהדף נטען, פתחו את מחזיק הדפים שלכם, לחצו "הוספה" והשתמשו בכפתור ה"מועדפים" שם כדי לשמור את הדף כמועדף במחזיק הדפים',
+	'ts-citegen-Tools' => 'כלים',
+	'ts-citegen-Other-languages' => 'שפות אחרות',
+	'ts-citegen-Save-it' => 'השאילתה הנוכחית',
+	'ts-citegen-Errors-title' => 'שגיאות',
+	'ts-citegen-Unavailable-SQL' => 'שגיאה: מסג הנתונים של Toolserver אינו זמין. MySQL החזיר: %s',
+	'ts-citegen-base-disabled' => 'שגיאה: מסד הנתונים %s אינו זמין',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

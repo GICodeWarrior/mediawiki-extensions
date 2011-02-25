@@ -384,12 +384,73 @@ $messages['gl'] = array(
 	'toolbase-userid-submit' => 'Obter o ID de usuario',
 	'toolbase-userid-title' => 'Atopar o ID de usuario',
 	'toolbase-userid-result' => 'O ID de usuario de <b>$1</b> en <a href="$3"><b>$3</b></a> é <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Contador de edicións automático',
 	'toolbase-autoedits-submit' => 'Calcular',
+	'toolbase-autoedits-approximate' => 'Número <b>aproximado</b> de edicións usando...',
+	'toolbase-autoedits-totalauto' => 'Número total de edicións automáticas',
+	'toolbase-autoedits-totalall' => 'Número total de edicións',
+	'toolbase-autoedits-pct' => 'Porcentaxe de edicións automáticas',
 	'toolbase-main-title' => 'Benvido!',
 	'toolbase-main-404' => 'Non se atopou o ficheiro',
+	'toolbase-main-404-content' => 'Vaites! Non se atopou ningunha páxina!
+
+Comprobe que escribiu o enderezo URL correctamente.
+Se seguiu unha ligazón, <a href="$1">informe do erro</a>.
+</ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '"$1" non é un usuario válido',
 	'toolbase-error-nowiki' => '$1.$2.org non é un wiki válido',
+	'toolbase-error-toomanyedits' => '$1 fixo $2 edicións. Esta ferramenta ten un máximo de $3 edicións.',
+);
+
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'toolbase-header-title' => 'הכלים של <span dir="ltr">X!</span> (בטא)',
+	'toolbase-header-bugs' => 'באגים',
+	'toolbase-header-sitenotice' => 'הודעה כללית ב־Toolserver&rlm;: $1',
+	'toolbase-replag' => 'השרת פיגר ב־$1',
+	'toolbase-replag-years' => 'שנים',
+	'toolbase-replag-months' => 'חודשים',
+	'toolbase-replag-weeks' => 'שבועות',
+	'toolbase-replag-days' => 'ימים',
+	'toolbase-replag-hours' => 'שעות',
+	'toolbase-replag-minutes' => 'דקות',
+	'toolbase-replag-seconds' => 'שניות',
+	'toolbase-footer-exectime' => 'בוצע ב־$1 שניות',
+	'toolbase-footer-source' => 'הצגת המקור',
+	'toolbase-footer-language' => 'החלפת שפה',
+	'toolbase-footer-translate' => 'תרגום',
+	'toolbase-navigation' => 'ניווט',
+	'toolbase-navigation-homepage' => 'דף הבית',
+	'toolbase-navigation-user_id' => 'מציאת מזהה משתמש',
+	'toolbase-navigation-autoedits' => 'מונה עריכות אוטומטיות',
+	'toolbase-userid-submit' => 'לקבל מזהה משתמש',
+	'toolbase-userid-title' => 'למצוא מזהה משתמש',
+	'toolbase-userid-result' => 'מזהה המשתמש עבור <b>$1</b> ב־<a href="$3"><b>$3</b></a> הוא <b>$2</b>.',
+	'toolbase-autoedits-title' => 'מחשבון עריכות אוטומטי',
+	'toolbase-autoedits-submit' => 'לחשב',
+	'toolbase-autoedits-approximate' => 'מספר <b>מקורב</b> של עריכות באמצעות...',
+	'toolbase-autoedits-totalauto' => 'סך הכול עריכות אוטומטיות',
+	'toolbase-autoedits-totalall' => 'מספר עריכות כולל:',
+	'toolbase-autoedits-pct' => 'אחוז העריכות האוטומטיות',
+	'toolbase-main-title' => 'ברוכים הבאים!',
+	'toolbase-main-content' => 'ברוכים הבאים לכלים של <span dir="ltr">X!</span>! ערכת הכלים עדיין בתהליך המרה ל־<a href="$1">Symfony</a>. התהליך הזה עשוי לקחת זמן, אבל עכשיו היא אמורה לעבוד.
+
+לרשימת כלים שכעת עובדים ב־Symphony, ר׳ את סרגל הצד.
+
+אפשר לדווח באגים ב־<a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'הקובץ לא נמצא',
+	'toolbase-main-404-content' => 'אוי! הדף לא נמצא!
+
+נא לוודא שההקלדתם כתובת נכונה.
+אם הגעתם הנה על־ידי לחיצה על קישור, אנא <a href="$1">דווחו באג</a>.
+</ul>',
+	'toolbase-form-wiki' => 'ויקי',
+	'toolbase-error-nouser' => '$1 אינו משתמש תקין',
+	'toolbase-error-nowiki' => '$1.$2.org אינו ויקי תקין',
+	'toolbase-error-toomanyedits' => 'ל־$1 יש $2 עריכות. הכלי הזה יכול לטפל לכל היותר ב־$3 עריכות.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
