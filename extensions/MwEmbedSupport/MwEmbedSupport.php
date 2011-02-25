@@ -28,7 +28,6 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgAutoloadClasses['MwEmbedResourceManager'] = dirname( __FILE__ ) . '/MwEmbedResourceManager.php';
-$wgExtensionMessagesFiles['MwEmbedSupport'] = dirname( __FILE__ ) . '/MwEmbedSupport.i18n.php';
 
 // Add Global MwEmbed Registration hook
 $wgHooks['ResourceLoaderRegisterModules'][] = 'MwEmbedResourceManager::registerModules';
