@@ -157,12 +157,12 @@
 			return 'mw_message_swap_index_' + key + '_' + index;
 		};
 
-		var doSpecialSwap = false;
-	
-
+		var doSpecialSwap = false;	
 		
-		
-		var	text = mediaWiki.messages.get( key )
+		var	text = mediaWiki.messages.get( key );
+		if( !text){
+			return '<' + key + '>';
+		}
 		
 		// replace links: 		
 		text = text.replace( /\[(\S+)\s+([^\]]*)\]/g, function( matched, link, linkText ) {
