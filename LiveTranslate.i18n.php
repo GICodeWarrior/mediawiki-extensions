@@ -289,6 +289,22 @@ $messages['gl'] = array(
 	'livetranslate-button-translate' => 'Traducir',
 	'livetranslate-button-translating' => 'Traducindo...',
 	'livetranslate-button-revert' => 'Mostrar o orixinal',
+	'livetranslate-dictionary-goto-edit' => 'Modificar as memorias de tradución.',
+	'special-livetranslate' => 'Tradución en vivo',
+	'livetranslate-tmtype-ltf' => 'Formato da tradución en vivo',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-no-tms-yet' => 'Aínda non hai memorias de tradución.',
+	'livetranslate-special-button' => 'Gardar e actualizar',
+	'livetranslate-special-type' => 'Tipo',
+	'livetranslate-special-location' => 'Localización',
+	'livetranslate-special-remove' => 'Eliminar',
+	'livetranslate-special-local' => 'Local',
+	'livetranslate-special-add-tm' => 'Engadir unha nova memoria de tradución',
+	'livetranslate-special-current-tms' => 'Memorias de tradución existentes',
+	'livetranslate-special-tms-update' => 'Actualizar as memorias de tradución',
+	'livetranslate-special-update' => 'Actualizar as memorias de tradución',
+	'livetranslate-importtms-param-miscmatch' => 'Discordancia entre a cantidade de localizacións e os tipos',
 );
 
 /** Swiss German (Alemannisch)
