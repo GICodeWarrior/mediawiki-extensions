@@ -15,11 +15,11 @@ $messages['en'] = array(
 	'inline-editor-desc' => 'Provides an alternative editor which is easier to use',
 
 	'inline-editor-editbox-top' => "'''Awesome, you are editing {{SITENAME}}!'''<br />You can edit the article below, by clicking on <span class=\"highlightExample\">blue elements</span> in the page.",
-	'inline-editor-editbox-changes-question' => "Can you briefly describe the changes you're making?",
+	'inline-editor-editbox-changes-question' => 'Can you briefly describe the changes you are making?',
 	'inline-editor-editbox-changes-example' => 'For example: "Fixed spelling mistake", "Corrected facts", "Wrote a new paragraph", etc.',
 	'inline-editor-editbox-publish-notice' => "When you are done, do not forget to publish the page!",
 	// 'inline-editor-editbox-publish-terms' => 'When you click "Publish", you agree to the [http://wikimediafoundation.org/wiki/Terms_of_Use Terms of Use]. This means that you agree to share your contributions under a free license.',
-	'inline-editor-editbox-publish-terms' => 'When you click "Publish", you agree with our copyright policy.
+	'inline-editor-editbox-publish-terms' => 'When you click "{{int:inline-editor-editbox-publish-caption}}", you agree with our copyright policy.
 See $1 for more information.',
 	'inline-editor-editbox-publish-caption' => 'Publish',
 	'inline-editor-redirect-browser' => 'The new editing interface is not supported by your browser.',
@@ -55,7 +55,6 @@ When users haven\'t already found this button, they will now. The second
 purpose is telling that anything you do is not final until the page is
 published. This way the user is invited to try some things out, as it will not
 be published before hitting the button.',
-	'inline-editor-editbox-publish-terms' => '',
 	'inline-editor-editbox-publish-caption' => 'Below the edit summary is the most important button on the page: the
 "Publish" button. On the original edit-page, there are some problems with the
 "Save" button. The first problem is the caption. "Save" can mean different
@@ -63,7 +62,5 @@ things: "Will it be visible for everyone or just saved for myself?", "Will
 it be saved into some kind of database, waiting for approval?" "Publish" is
 unambiguous: it will be shown to the world. On the other hand, using the word "Publish" may have legal
 consequences in some countries, which should be looked into.',
-	'inline-editor-enable-preference' => '',
-	'inline-editor-preview' => '',
-	'inline-editor-cancel' => '',
 );
+
