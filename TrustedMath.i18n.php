@@ -72,6 +72,17 @@ $messages['fr'] = array(
 	'trustedmath-not-found' => "La page [[:$1]] n'existe pas",
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'trustedmath-desc' => 'מאפשרת הוספת נוסחאות LaTeX לדפים, בדומה למציג המתמטיקה המובנה, אבל ללא תלות ב־Ocaml',
+	'trustedmath-permission-error' => 'שימוש במתמטיקה לא אמינה כבוי בוויקי הזה',
+	'trustedmath-path-error' => 'שגיאה ביצירת התיקייה למתמטיקה',
+	'trustedmath-convert-error' => 'שגיאה ביצירת תמונה למתמטיקה. מ־"$1" הוחזרה ההודעה הבאה: <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'הדף [[:$1]] אינו קיים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
