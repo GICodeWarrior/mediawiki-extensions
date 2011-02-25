@@ -87,7 +87,10 @@
         shareMessage: "edited {0} in {1} Wikipedia using WikiBhasha http://www.wikibhasha.org.",
         shareMesgTitle: "Share Message",
         shareToolTip: "Share On",
+        newWindowMessage: "<center><h2>Your edited content has been loaded into a Wikipedia edit page in the new window. <br>Please use that new window to save the content. Once you save the content to Wikipedia, you will be redirected back here.</h2></center>",
+        transleteButton: "Translate {0} to {1}",
         copyToClipboard: "(Copy to clipboard)",
+        pasteMessage: "To use the WikiBhasha Copy/Paste feature in mozilla/firefox you need to use scratchpad.\nDo you want to invoke scratchpad?",
 
         //tooptip strings
         searchInputTooltip: "Search",
@@ -116,7 +119,7 @@
         waitUntilTranslationComplete: "Please wait till the translation completes.",
         thanksMessage: "Thank you for your contribution to Wikipedia. Would you like to give feedback?",
         nonEditableMessage: "WikiBhasha may be invoked only on editable articles; this article is protected in Wikipedia."
-    };
+    }
 
     //short cut to call local strings
     wbLocal = wikiBhasha.localStrings;

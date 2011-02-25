@@ -86,7 +86,7 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
         
         //cutoff length to be used for pane titles
         paneTitleCutoffLength: 100,
-		
+
         //cutoff length to be used for edit page summery field
         summeryFieldCutoffLength: 200,
 
@@ -136,6 +136,7 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
 
         //array of microsoft translator supported languages. [language name, language code, display text]
         mtlLanguages: [ ['Arabic', 'ar', 'العربية'],
+                        ['Bangala', 'bn', 'বাংলা'],
                         ['Bulgarian', 'bg', 'български'],
                         ['Czech', 'cs', 'čeština'],
                         ['Danish', 'da', 'Dansk'],
@@ -165,6 +166,7 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
                         ['Slovenian', 'sl', 'Slovenščina'],
                         ['Finnish', 'fi', 'Suomi'],
                         ['Swedish', 'sv', 'Svenska'],
+                        ['Tamil', 'ta', 'தமிழ்'],
                         ['Thai', 'th', 'ไทย'],
                         ['Turkish', 'tr', 'Türkçe'],
                         ['Ukrainian', 'uk', 'Українська'],
@@ -736,8 +738,8 @@ noSourceArticleInfoWindowHTML:'<div class="wbEmptyContentMessage">\
 </div>',
 
 
-scratchpadWindowHTML:'<div id="wbWrapperContextMenu" >\
-<table height="100%" border="0" cellspacing="0" cellpadding="0" id="scratchPadTable" class="wbTableBackground">\
+scratchpadWindowHTML:'<div id="wbWrapperScratchPad" >\
+<table height="100%" border="0" cellspacing="0" cellpadding="0" id="scratchPadTable" width="100%">\
 <tr>\
 <td class="wbWindowTopLeft"><img src="../images/trans.gif" width="4" height="4" alt="" /></td>\
 <td class="wbWindowTopCenter"><img src="../images/trans.gif" width="4" height="3" alt="" /></td>\
@@ -759,48 +761,34 @@ scratchpadWindowHTML:'<div id="wbWrapperContextMenu" >\
 <td class="wbWindowContentLeft"><img src="../images/trans.gif" width="3" height="3" alt="" /></td>\
 <td class="wbWindowContentCenter">\
 <div class="wbScratchPadSection">\
-<div class="wbScratchPadSectionContent">\
-<table border="0" cellspacing="0" cellpadding="0" class="wbAddAletnateTable">\
-<tr valign="top">\
-<td width="100%">\
-<textarea id="wbSourceText" rows="5" cols="25" tabindex="0"  style="resize:none;">\
+<form><div class="wbTranslatedAreaHead" id="wbHeaderRow"><div class="scratchTopLayout" id="wbScratchpadHeadLabelLeft"><h4>Source Text</h4></div>\
+<div class="scratchTopButtonLayout"><div style="float:left;width:75px;display:none;text-align:center" id="wbTranslationLoading">\
+<img src="../images/loading.gif" alt="Translating"/>\
+</div></div>\
+<div class="scratchTopLayout" id="wbScratchpadHeadLabelRight"><h4>Translated Text</h4></div><div class="scratchTopButtonLayout">&nbsp;</div></div>\
+<div><div class="scratchTopLayout">\
+<textarea id="wbSourceText" rows="5" tabindex="0">\
 </textarea>\
-</td>\
-</tr>\
-<tr valign="top">\
-<td width="100%">\
+</div><div class="scratchTopButtonLayout">\
+<input id="wbSourceToTargetBtn" type="button" value=">>" /><br />\
+<input id="wbTargetToSourceBtn"  type="button" value="<<" />\
+</div><div class="scratchTopLayout">\
+<textarea id="wbTargetText" rows="5" tabindex="0">\
+</textarea>\
+</div>\
+<div class="scratchTopButtonLayout">\
+<input id="wbSaveScratchPadContentBtn" type="button" value="Save" tabindex="0"/><br/>\
+<input type="reset" value="Reset" tabindex="0"/><br/>\
+<input id="wbClearAllBtn" type="button" value="Clear All" tabindex="0" />\
+</div>\
+</div></form>\
 <div id="scratchPadLimitNoteHolder">\
 <span class="scratchPadLimitNotePrefix">Note:&nbsp;</span><span id="scratchPadLimitNoteText"></span>\
 </div>\
-</td>\
-</tr>\
-</table>\
-</div>\
-</div>\
-<div class="wbScratchPadSection">\
-<div>\
-<div>\
-<div style="float:left;padding-right:6px;"><input  id="wbSourceToTargetBtn" type="button" value="English to German" class="wbTranslateButton" tabindex="0"/></div>\
-<div style="float:left;padding-right:6px;"><input id="wbTargetToSourceBtn"  type="button" value="German to English" class="wbTranslateButton" tabindex="0"/></div>\
-<div style="float:left;padding-right:6px;"><input  id="wbClearAllBtn" type="button" value="Clear All" class="wbClearButton" tabindex="0" /></div>\
-<div style="float:left;" id="wbTranslationLoading" class="wbLoadingDiv">\
-<img src="../images/loading.gif" alt="Translating"/>\
-</div>\
-</div>\
-</div>\
 </div>\
 <div class="wbScratchPadSectionContent">\
-<table width="100%" border="0" cellspacing="0" cellpadding="0" >\
-<tr valign="top"><td width="50%" ></td></tr>\
-</table>\
-<div id="wbTranslatedArea" style="height:155px; overflow-x: auto; overflow-y: auto;">\
-<table id="wbTargetTable" width="98%" border="0" cellspacing="0" cellpadding="0"  style="margin-left:3px">\
-<tr id="wbHeaderRow" style="visibility:visible;height:3px" class="wbWindowToolbarCenter">\
-<td style="border-right:1px solid #dde1e3;width:45%"><h4 id="wbSourceTextHeader" style="text-align:center">Source Text</h4></td>\
-<td style="border-right:1px solid #dde1e3;width:45%"><h4 id="wbTranslatedTextHeader" style="text-align:center">Translated Text</h4></td>\
-<td style="width:10%"></td>\
-</tr>\
-</table>\
+<div id="wbTranslatedArea" style="clear:both;overflow-x: auto; overflow-y: auto; height:150px">\
+</div>\
 </div>\
 </div>\
 </td>\

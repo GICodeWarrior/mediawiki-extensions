@@ -52,9 +52,11 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
             wbUIHelper.hideScroll();
 
             wbUIHelper.createWindow(this.windowId, wbGlobalSettings.applicationWindowHTML);
+            
             this.adjustWindowPosition();
             wbMainWindow.applyLocalization();
-
+            
+            
             //initialize various UI components
             wikiBhasha.windowManagement.resizeManager.initialize();
             wikiBhasha.windowManagement.splitterManager.initialize();
@@ -109,7 +111,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 });
 
                 //restrict user from selecting text from UI elements as IE doesn't have any predefined HTML attribute to do the same.
-                $(".wbWindowToolbarCenter, .wbHeader, .wbLeftWindowCollapsed, .wbRightWindowCollapsed, .wbLogoContainer, .wbTopButtonsDiv, .workflowNavigationBtns, .wbWindowContentLeft, .wbWindowContentRight").each(function() {
+                $("#wbSPDraggableHandle, #wbTranslationTable, #wbWrapperScratchPad, #wbScratchPadWindow, #scratchPadTable, .scratchContentLayoutRow, .scratchTopButtonLayout, .wbScratchPadSection, .scratchContentLayout, .scratchTopLayout, .wbWindowToolbarCenter, .wbHeader, .wbLeftWindowCollapsed, .wbRightWindowCollapsed, .wbLogoContainer, .wbTopButtonsDiv, .workflowNavigationBtns, .wbWindowContentLeft, .wbWindowContentRight").each(function() {
                     this.onselectstart = function() { return false; };
                 });
             }
@@ -435,7 +437,23 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
             $documentBodyElement.bind("paste", function(event) {
                 //if cut/copy events are not registered earlier from this window or user trying to paste the content other than scratch pad text area then prevent this action.
                 if (!isCopyFromCurrentApp) {
-                    return (wbScratchPad.$sourceTextBox) ? (event.target.id === wbScratchPad.$sourceTextBox.attr("id")) : false;
+                    if((wbScratchPad.$sourceTextBox && event.target.id === wbScratchPad.$sourceTextBox.attr("id")) || (wbScratchPad.$targetTextBox && event.target.id === wbScratchPad.$targetTextBox.attr("id"))){
+                        return true;
+                    }else{
+                        var paneDivID = wbDisplayPaneManager.getPaneForId(wbDisplayPaneHelper.getElementsPaneDivId(event.target));
+                        if(paneDivID.paneConfigInfo.isContentEditable){
+                            if ($.browser.msie) {
+                                var copiedtext=window.clipboardData.getData("Text");
+                                window.clipboardData.setData("Text", wbUtil.stripTags(copiedtext)); 
+                                return true;
+                            }else{
+                                if(confirm(wbLocal.pasteMessage)){
+                                    wbScratchPad.show();  
+                                }
+                            }
+                        }
+                        return false;
+                    }
                 }
                 return true;
             });
@@ -461,7 +479,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
 
         //removes cloned HTML elements(during Drag-Drop or Copy-Paste) from the element"#wbRightWindowContentDiv"
         removeNonContentElements: function() {
-            var $elementsToBeRemoved = $("#wbTranslationTable, .wbExit, .wbLeftWindowContent, .wbLogoContainer, .wbContentContainer, #wbTwoPaneOuterWrapper, #wbLeftWindow, .wbTableBackground, .wbTopButtonsDiv, #wbTopIcons, #wbHistoryInfo, .workflowNavigationBtns, #workFlowStepBtns, .wbTable, .wbHeader, #wbWorkingArticleLabel, .tabs_li, .wbWikiMarkupEditBottomLinks, .tab_content", $("#wbRightWindowContentDiv"));
+            var $elementsToBeRemoved = $("#wbTranslationTable, #wbScratchPadWindow, #scratchPadTable, .scratchContentLayoutRow, .scratchTopButtonLayout, .wbScratchPadSection, .scratchContentLayout, .scratchTopLayout, .wbExit, .wbLeftWindowContent, .wbLogoContainer, .wbContentContainer, #wbTwoPaneOuterWrapper, #wbLeftWindow, .wbTableBackground, .wbTopButtonsDiv, #wbTopIcons, #wbHistoryInfo, .workflowNavigationBtns, #workFlowStepBtns, .wbTable, .wbHeader, #wbWorkingArticleLabel, .tabs_li, .wbWikiMarkupEditBottomLinks, .tab_content", $("#wbRightWindowContentDiv"));
             var removeCloneNodes = function() {
                 //jQuery '.remove()' method actually removes the events on original elements
                 //to avoid this we need to use native DOM method to remove only the cloned elements
