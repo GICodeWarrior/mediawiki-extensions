@@ -8,579 +8,328 @@
  * License: GPLv3, CC-BY-SA 3.0
  */
 
-var Narayam = {};
-
-/**
- * from: http://stackoverflow.com/questions/3053542/how-to-get-the-start-and-end-points-of-selection-in-text-area/3053640#3053640
- */
-function GetCaretPosition(el) {
-    var start = 0, end = 0, normalizedValue, range,
-    textInputRange, len, endRange;
-
-    if (typeof el.selectionStart == "number" && typeof el.selectionEnd == "number") {
-        start = el.selectionStart;
-        end = el.selectionEnd;
-    } else {
-        range = document.selection.createRange();
-        if (range && range.parentElement() == el) {
-            len = el.value.length;
-            normalizedValue = el.value.replace(/\r\n/g, "\n");
-
-            // Create a working TextRange that lives only in the input
-            textInputRange = el.createTextRange();
-            textInputRange.moveToBookmark(range.getBookmark());
-
-            // Check if the start and end of the selection are at the very end
-            // of the input, since moveStart/moveEnd doesn't return what we want
-            // in those cases
-            endRange = el.createTextRange();
-            endRange.collapse(false);
-
-            if (textInputRange.compareEndPoints("StartToEnd", endRange) > -1) {
-                start = end = len;
-            } else {
-                start = -textInputRange.moveStart("character", -len);
-                start += normalizedValue.slice(0, start).split("\n").length - 1;
-
-                if (textInputRange.compareEndPoints("EndToEnd", endRange) > -1) {
-                    end = len;
-                } else {
-                    end = -textInputRange.moveEnd("character", -len);
-                    end += normalizedValue.slice(0, end).split("\n").length - 1;
-                }
-            }
-        }
-    }
-    return {
-        start: start,
-        end: end
-    };
-}
-
-/**
- * from: http://stackoverflow.com/questions/3274843/get-caret-position-in-textarea-ie
- */
-function offsetToRangeCharacterMove(el, offset) {
-    return offset - (el.value.slice(0, offset).split("\r\n").length - 1);
-}
-/**
- * IE part from: http://stackoverflow.com/questions/3274843/get-caret-position-in-textarea-ie
- */
-function setCaretPosition (el, iCaretPos)
-{
-    if (document.selection) // IE
-    {
-        endOffset = startOffset=iCaretPos;
-        var range = el.createTextRange();
-        var startCharMove = offsetToRangeCharacterMove(el, startOffset);
-        range.collapse(true);
-        if (startOffset == endOffset) {
-            range.move("character", startCharMove);
-        } else {
-            range.moveEnd("character", offsetToRangeCharacterMove(el, endOffset));
-            range.moveStart("character", startCharMove);
-        }
-        range.select();
-    }
-    else if (el.selectionStart || el.selectionStart == '0') // Firefox
-    {
-        el.setSelectionRange(iCaretPos, iCaretPos)
-    }
-}
-
-function getAllTextInputs() {
-    var inputs = document.getElementsByTagName('input');
-    var textInputs = [];
-    var count = inputs.length;
-    for(var i=0; i < count; i++) {
-        element = inputs[i];
-        if(element.getAttribute('type')==='text' || element.getAttribute('type')==='search' || element.getAttribute('type')==='' || element.getAttribute('type')== undefined) {
-            textInputs.push(element);
-        }
-    }
-    return textInputs;
-}
-
-function getLastNChars(str, caretPosition, numberOfChars)
-{
-    if(caretPosition <= numberOfChars ) return str.substring(0,caretPosition);
-    else return str.substring(caretPosition-numberOfChars,caretPosition);
-}
-
-function replaceTransStringAtCaret(control, oldStringLength, newString, selectionRange)
-{
-    var text = control.value;
-    var newCaretPosition;
-    // firefox always scrolls to topmost position,
-    // to scroll manually we keep original scroll postion.
-    if(control.scrollTop || control.scrollTop=='0') {
-        var scrollTop = control.scrollTop;
-    }
-    if(text.length  >= 1) {
-        var firstStr = text.substring(0, selectionRange['start'] - oldStringLength + 1);
-        var lastStr = text.substring(selectionRange['end'], text.length);
-        control.value = firstStr+newString+ lastStr;
-        newCaretPosition = firstStr.length+newString.length;
-        setCaretPosition(control,newCaretPosition);
-    }
-    else {
-        control.value = newString;
-        newCaretPosition = newString.length;
-        setCaretPosition(control,newCaretPosition);
-    }
-    // Manually scrolling in firefox, few tweeks or re-writing may require
-    if (navigator.userAgent.indexOf("Firefox")!=-1) {
-        var textLength = control.value.length;
-        var cols = control.cols;
-        if(newCaretPosition > (textLength-cols)) {
-            //var height = parseInt(window.getComputedStyle(control,null).getPropertyValue('height'));
-            var fontsize = parseInt(window.getComputedStyle(control,null).getPropertyValue('font-size'));
-            //var lineheight = height/fontsize;
-            control.scrollTop = scrollTop+fontsize;
-        } else control.scrollTop = scrollTop;
-    }
-}
-
-/**
- * This function will take a string to check against regular expression rules in the rules array.
- * It will return a two memeber array, having given string as first member and replacement string as
- * second memeber. If corresponding replacement could not be found then second string will be too given string
-*/
-function transli(lastpart,e, tr_rules)
-{
-    var rulesCount = tr_rules.length;
-    var part1 = lastpart;
-    var part2 = lastpart;
-    var triple;
-    for(var i=0 ; i < rulesCount; i++)
-    {
-        triple = tr_rules[i];
-        var previousKeysMatch = true;
-        var presentSeq = '(.*)'+triple[0]+'$';
-        var replaceSeq = '$1'+triple[2];
-        if(triple[1].length > 0) {
-            previousKeysMatch = (new RegExp('.*'+triple[1]+'$')).test(Narayam.previous_sequence[(e.currentTarget || e.srcElement).id ]);
-        }
-        if((new RegExp(presentSeq)).test(lastpart) && previousKeysMatch)
-        {
-            part1 = lastpart;
-            part2 = lastpart.replace(RegExp(presentSeq), replaceSeq);
-            break;
-        }
-    }
-    var pair = new Array(part1, part2);
-    return pair;
-}
-/**
- * from: http://www.javascripter.net/faq/settinga.htm
- */
-function setCookie(cookieName,cookieValue,nDays) {
-    var today = new Date();
-    var expire = new Date();
-    if (nDays==null || nDays==0) nDays=1;
-    expire.setTime(today.getTime() + 3600000*24*nDays);
-    document.cookie = cookieName+"="+escape(cookieValue)+ ";expires="+expire.toGMTString()+";path=/";
-}
-/**
- * from: http://www.javascripter.net/faq/readinga.htm
- */
-function readCookie(cookieName) {
-    var theCookie=""+document.cookie;
-    var ind=theCookie.indexOf(cookieName);
-    if (ind==-1 || cookieName=="") return "";
-    var ind1=theCookie.indexOf(';',ind);
-    if (ind1==-1) ind1=theCookie.length;
-    return unescape(theCookie.substring(ind+cookieName.length+1,ind1));
-}
-
-Narayam.enableTrasliteration = function(enable) {
-    if(enable==undefined) {
-        enable = true;
-    }
-    var cookieValue;
-    Narayam.enabled  = enable;
-    var count= Narayam.elements.length;
-    for(var i=0; i < count; i++) {
-        var element = Narayam.elements[i];
-        if(!element.style) {
-            element.style = new CSS2Properties();
-        }
-        if(Narayam.enabled) {
-            //Narayam.elementBorders[element.id] = element.style.border;
-            element.style.border = Narayam.border;
-            //Narayam.elementBackColors[element.id] = element.style.backgroundColor;
-            element.style.backgroundColor = Narayam.back_color;
-        }
-        if(element.style && !Narayam.enabled) {
-            //Narayam.elementBorders[element.id] = element.style.border;
-            element.style.border = Narayam.elementBorders[element.id];
-            //Narayam.elementBackColors[element.id] = element.style.backgroundColor;
-            element.style.backgroundColor = Narayam.elementBackColors[element.id];
-        }
-    }    
-    if(enable) {
+( function( $ ) {
+$.narayam = new ( function() {
+	/* Private members */
+	
+	// Reference to this object
+	var that = this;
+	// jQuery array holding all text inputs Narayam applies to
+	var $inputs = $( [] );
+	// Input method dropdown
+	var $select = $( [] );
+	// Whether Narayam is enabled
+	var enabled = false;
+	// Registered schemes
+	var schemes = {};
+	// List of scheme names, ordered for presentation purposes
+	// Schemes not in this list won't be allowed to register
+	// This object is formatted as { 'schemename': '', 'schemename2': '', ... }
+	// for easy searching
+	var availableSchemes = mw.config.get( 'wgNarayamAvailableSchemes' ) || {};
+	// Currently selected scheme
+	var currentScheme = null;
+	// Shortcut key
+	var shortcutKey = mw.config.get( 'wgNarayamShortcutKey' ) || {
+		altKey: false,
+		ctrlKey: false,
+		shiftKey: false,
+		key: null
+	};
+	
+	/* Private functions */
+	
+	/**
+	 * Transliterate a string using the current scheme
+	 * @param str String to transliterate
+	 * @param lookback The lookback buffer
+	 * @param useExtended Whether to use the extended part of the scheme
+	 * @return Transliterated string, or str if no applicable transliteration found.
+	 */
+	function transliterate( str, lookback, useExtended ) {
+		var rules = currentScheme.extended_keyboard && useExtended ?
+			currentScheme.rules_x : currentScheme.rules;
+		for ( var i = 0;  i < rules.length; i++ ) {
+			var lookbackMatch = true;
+			if ( rules[i][1].length > 0 && rules[i][1].length <= lookback.length ) {
+				// Try to match rules[i][1] at the end of the lookback buffer
+				lookbackMatch = new RegExp( rules[i][1] + '$' ).test( lookback );
+			}
+			var regex = new RegExp( rules[i][0] + '$' );
+			if ( lookbackMatch && regex.test( str ) ) {
+				return str.replace( regex, rules[i][2] );
+			}
+		}
+		// No matches, return the input
+		return str;
+	}
+	
+	/**
+	 * Get the n characters in str that immediately precede pos
+	 * Example: lastNChars( "foobarbaz", 5, 2 ) == "ba"
+	 * @param str String to search in
+	 * @param pos Position in str
+	 * @param n Number of characters to go back from pos
+	 * @return Substring of str, at most n characters long, immediately preceding pos
+	 */
+	function lastNChars( str, pos, n ) {
+		if ( n == 0 ) {
+			return '';
+		}
+		if ( pos <= n ) {
+			return str.substr( 0, pos );
+		} else {
+			return str.substr( pos - n, n);
+		}
+	}
+	
+	/**
+	 * Find the point at which a and b diverge, i.e. the first position
+	 * at which they don't have matching characters.
+	 * @param a String
+	 * @param b String
+	 * @return Position at which a and b diverge, or -1 if a == b
+	 */
+	function firstDivergence( a, b ) {
+		var minLength = a.length < b.length ? a.length : b.length;
+		for ( var i = 0; i < minLength; i++ ) {
+			if ( a.charCodeAt( i ) !== b.charCodeAt( i ) ) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	function isShortcutKey( e ) {
+		return e.altKey == shortcutKey.altKey &&
+			e.ctrlKey == shortcutKey.ctrlKey &&
+			e.shiftKey == shortcutKey.shiftKey &&
+			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase()
+	}
+	
+	function shortcutText() {
+		var text = '';
+		// TODO: Localize these things (in core, too)
+		if ( shortcutKey.ctrlKey ) {
+			text += 'Ctrl-';
+		}
+		if ( shortcutKey.shiftKey ) {
+			text += 'Shift-';
+		}
+		if ( shortcutKey.altKey ) {
+			text += 'Alt-';
+		}
+		text += shortcutKey.key.toUpperCase();
+		return text;
+	}
+	
+	function onkeydown( e ) {
+		// If the current scheme uses the alt key, ignore keydown for Alt+? combinations
+		if ( enabled && currentScheme.extended_keyboard && e.altKey && !e.ctrlKey ) {
+			e.stopPropagation();
+			return false; // Not in original code -- does this belong here?
+		} else if ( isShortcutKey( e ) ) {
+			that.toggle();
+			e.stopPropagation();
+			return false;
+		}
+		return true;
+	}
+	
+	function onkeypress( e ) {
+		if ( !enabled ) {
+			return true;
+		}
 		
-        //Narayam.temp_disable = false;
-        cookieValue = 1;
-    }
-    else {
-        cookieValue = 0;
-    }
-    if(Narayam.checkboxElement) {
-        Narayam.checkboxElement.checked = enable;
-    }
-    setCookie(Narayam.prefix+'enabled', cookieValue);
-}
+		if ( e.which == 8 ) { // Backspace
+			// Blank the lookback buffer
+			$( this ).data( 'narayam-lookback', '' );
+			return true;
+		}
+		
+		// Leave non-ASCII stuff alone, as well as anything involving
+		// Alt (except for extended keymaps), Ctrl and Meta
+		if ( e.which < 32 || ( e.altKey && !currentScheme.extended_keyboard ) || e.ctrlKey ) {
+			return true;
+		}
+		
+		var $this = $( this );
+		var c = String.fromCharCode( e.which );
+		var pos = $this.textSelection( 'getCaretPosition' );
+		// Get the last few characters before the one the user just typed,
+		// to provide context for the transliteration regexes.
+		// We need to append c because it hasn't been added to $this.val() yet
+		var input = lastNChars( $this.val(), pos, currentScheme.lookbackLength ) + c;
+		var lookback = $this.data( 'narayam-lookback' );
+		var replacement = transliterate( input, lookback, e.altKey );
+		
+		// Update the lookback buffer
+		lookback += c;
+		if ( lookback.length > currentScheme.lookbackLength ) {
+			// The buffer is longer than needed, truncate it at the front
+			lookback = lookback.substring( lookback.length - currentScheme.lookbackLength );
+		}
+		$this.data( 'narayam-lookback', lookback );
+		
+		// textSelection() magic is expensive, so we avoid it as much as we can
+		if ( replacement == input ) {
+			return true;
+		}
+		// Drop a common prefix, if any
+		// TODO: Profile this, see if it's any faster
+		var divergingPos = firstDivergence( input, replacement );
+		input = input.substring( divergingPos );
+		replacement = replacement.substring( divergingPos );
+		
+		// Select and replace the text
+		$this.textSelection( 'setSelection', {
+			'start': pos - input.length + 1,
+			'end': pos
+		} );
+		$this.textSelection( 'encapsulateSelection', {
+			'peri': replacement,
+			'replace': true,
+			'selectPeri': false
+		} );
+		
+		e.stopPropagation();
+		return false;
+	}
+	
+	function updateSchemeFromSelect() {
+		var scheme = $( this ).val();
+		that.setScheme( scheme );
+		$.cookie( 'narayam-scheme', scheme, { 'path': '/', 'expires': 30 } );
+	}
+	
+	/* Public functions */
 
-// stop propagation of given event
-function stopPropagation(event) {
-    event.cancelBubble = true;
-    event.returnValue = false;
-    //event.stopPropagation works in Firefox.
-    if (event.stopPropagation) event.stopPropagation();
-    if(event.preventDefault) event.preventDefault();
-}
+	/**
+	 * Add more inputs to apply Narayam to
+	 * @param inputs A jQuery object holding one or more input or textarea elements,
+	 *               or an array of DOM elements, or a single DOM element, or a selector
+	 */
+	this.addInputs = function( inputs ) {
+		var $newInputs = $( inputs );
+		$inputs = $inputs.add( $newInputs );
+		$newInputs
+			.bind( 'keydown.narayam', onkeydown )
+			.bind( 'keypress.narayam', onkeypress )
+			.data( 'narayam-lookback', '' );
+		if ( enabled ) {
+			$newInputs.addClass( 'narayam-input' );
+		}
+	};
+	
+	this.enable = function() {
+		if ( !enabled && currentScheme !== null ) {
+			$inputs.addClass( 'narayam-input' );
+			$.cookie( 'narayam-enabled', '1', { 'path': '/', 'expires': 30 } );
+			$( '#narayam-toggle' ).attr( 'checked', true );
+			enabled = true;
+		}
+	};
+	
+	this.disable = function() {
+		if ( enabled ) {
+			$inputs.removeClass( 'narayam-input' );
+			$.cookie( 'narayam-enabled', '0', { 'path': '/', 'expires': 30 } );
+			$( '#narayam-toggle' ).attr( 'checked', false );
+			enabled = false;
+		}
+	};
+	
+	this.toggle = function() {
+		if ( enabled ) {
+			that.disable();
+		} else {
+			that.enable();
+		}
+	};
+	
+	/**
+	 * Add a transliteration scheme. Schemes whose name is not in
+	 * wgNarayamAvailableSchemes will be ignored.
+	 * @param name Name of the scheme, must be unique
+	 * @param data Object with scheme data
+	 * @return True if added, false if not
+	 */
+	this.addScheme = function( name, data ) {
+		if ( name in availableSchemes ) {
+			schemes[name] = data;
+			return true;
+		} else {
+			return false;
+		}
+	};
+	
+	this.setScheme = function( name ) {
+		if ( name in schemes ) {
+			currentScheme = schemes[name];
+			$select.val( name );
+		}
+	};
+	
+	this.setup = function() {
+		// Build scheme dropdown
+		$select = $( '<select />' );
+		var haveSchemes = false;
+		for ( var scheme in schemes ) {
+			$( '<option />' )
+				.val( scheme )
+				.text( mw.msg( schemes[scheme].namemsg ) )
+				.appendTo( $select );
+			haveSchemes = true;
+		}
+		$select.change( updateSchemeFromSelect );
+		
+		if ( !haveSchemes ) {
+			// No schemes available, don't show the tool
+			return;
+		}
+		
+		// Build enable/disable checkbox and label
+		var $checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
+		$checkbox
+			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) )
+			.click( that.toggle );
+			
+		var helppage = mw.msg( 'narayam-help-page' );
+		var $label = $( '<label for="narayam-toggle" />' );
+		$label
+			.text( mw.msg( 'narayam-toggle-ime', shortcutText() ) )
+			.attr( 'title', mw.msg( 'narayam-checkbox-tooltip' ) );
+		if ( helppage ) {
+			// Link to the help page
+			$label.wrapInner( $( '<a />' ).attr( 'href', mw.util.wikiGetlink( helppage ) ) );
+		}
+		
+		var $checkboxAndLabel = $( '<span />' )
+			.addClass( 'narayam-toggle-wrapper' )
+			.append( $checkbox )
+			.append( $label );
+		var $spanWithEverything = $( '<span />' )
+			.addClass( 'narayam-wrapper' )
+			.append( $select )
+			.append( $checkboxAndLabel );
+		
+		// Put the dropdown and the checkbox at the beginning of the
+		// search form. This seems to be the most reliable way across skins.
+		$( '#searchform' ).prepend( $spanWithEverything );
+		
+		// Restore state from cookies
+		var savedScheme = $.cookie( 'narayam-scheme' );
+		if ( savedScheme && savedScheme in schemes ) {
+			that.setScheme( savedScheme );
+		} else {
+			$select.change();
+		}
+		var enabledCookie = $.cookie( 'narayam-enabled' );
+		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnableByDefault' ) && enabledCookie !== '0' ) ) {
+			that.enable();
+		}
+	};
+	
+} )();
 
-function shortKeyPressed(event) {
-    var e = event || window.event;
-    var targetElement;
-    if(e.target) targetElement=e.target;
-    else if(e.srcElement) targetElement=e.srcElement;
-    var code;
-    if (e.keyCode) code = e.keyCode;
-    else if (e.which) code = e.which;
-
-    var controlKey = false;
-    var shiftKey = false;
-    var altKey = false;
-    var metaKey = false;
-    if(e.ctrlKey)	controlKey = true;
-    if(e.shiftKey)	shiftKey = true;
-    if(e.altKey)	altKey = true;
-    if(e.metaKey)   metaKey = true;
-    var shortcut = Narayam.shortcut;
-    // If shortkey has been specified
-    if((shortcut.controlkey || shortcut.shiftkey || shortcut.altkey || shortcut.metakey) &&
-        (shortcut.controlkey==controlKey && shortcut.shiftkey==shiftKey && shortcut.altkey==altKey && shortcut.metakey==metaKey) &&
-        String.fromCharCode(code).toLowerCase()==shortcut.key.toLowerCase())
-        {
-        Narayam.enableTrasliteration(!Narayam.enabled );
-        stopPropagation(e);
-        return false;
-    }
-    return true;
-}
-// event listener for trasliterattion textfield
-// also listen for Ctrl+M combination to disable and enable trasliteration
-function tiKeyPressed(event) {
-    var e = event || window.event;
-    var keyCode;
-    if (e.keyCode) keyCode = e.keyCode;
-    else if (e.which) keyCode = e.which;
-
-    //var charCode = e.charCode || e.keyCode;
-    var charCode;
-    if (e.keyCode) charCode = e.keyCode;
-    else if (e.which) charCode = e.which;
-
-    var targetElement = (e.currentTarget || e.srcElement);
-
-    if (keyCode == 8 ) {
-        Narayam.previous_sequence[targetElement.id] = '';
-        return true;
-    } // Backspace
-    // If this keystroke is a function key of any kind, do not filter it
-    if (e.charCode == 0 || e.which ==0 ) return true;       // Function key (Firefox and Opera), e.charCode for Firefox and e.which for Opera
-    // If control or alt or meta key pressed
-    if(e.ctrlKey || (e.altKey && !Narayam.current_scheme.extended_keyboard) || e.metaKey) {
-        //if (navigator.userAgent.indexOf("Firefox")!=-1) {
-        //	return shortKeyPressed(event);
-        //}
-        return true;
-    }
-    if (charCode < 32) return true;             // ASCII control character
-    if(Narayam.enabled )
-    {
-
-        var c = String.fromCharCode(charCode);
-        var selectionRange = GetCaretPosition(targetElement);
-        var lastSevenChars = getLastNChars(targetElement.value, selectionRange['start'], Narayam.check_str_length);
-        var oldString;
-        var newString;
-        /*
-		if(charCode ==62 && Narayam.previous_sequence[targetElement.id ].substring(Narayam.previous_sequence[targetElement.id ].length-1)=="<")
-		{
-			oldString = "<>";
-			newString = "";
-			Narayam.temp_disable = !Narayam.temp_disable;
-		}*/
-        //else {
-        //if(!Narayam.temp_disable)
-        //{
-        var transPair;
-        if(Narayam.current_scheme.extended_keyboard && e.altKey) {
-            transPair = transli(lastSevenChars+c, e, Narayam.current_scheme.rules_x);
-        }
-        else transPair = transli(lastSevenChars+c, e, Narayam.current_scheme.rules);
-        oldString = transPair[0];
-        newString = transPair[1];
-        //}
-        /*
-			else
-			{
-				oldString = c;
-				newString = c;
-			}*/
-        //}
-        replaceTransStringAtCaret(targetElement, oldString.length, newString , selectionRange);
-        Narayam.previous_sequence[targetElement.id ] += c;
-        if(Narayam.previous_sequence[targetElement.id ].length > Narayam.check_str_length ) Narayam.previous_sequence[targetElement.id ] = Narayam.previous_sequence[targetElement.id ].substring(Narayam.previous_sequence[targetElement.id ].length-Narayam.check_str_length);
-        stopPropagation(e);
-        return false;
-    }
-    return true;
-}
-
-function tiKeyDown(event) {
-    var e = event || window.event;
-    var targetElement;
-    if(e.target) targetElement=e.target;
-    else if(e.srcElement) targetElement=e.srcElement;
-    if(Narayam.current_scheme.extended_keyboard && e.altKey && !e.ctrlKey && !e.metaKey /*&& Narayam.temp_disable*/) stopPropagation(e);
-    else if(e.ctrlKey || e.altKey || e.metaKey) {
-        return shortKeyPressed(event);
-    }
-    return true;
-}
-/**
- * This is the function to which call during window load event for trasliterating textfields.
- * The funtion will accept any number of HTML tag IDs of textfields.
-*/
-function inputRewrite(elements) {
-    var len = elements.length;
-    for(var i=0;i<len; i++)
-    {
-        var element = elements[i];
-        // if given element has no id set
-        // we assing a temporary value
-        if(element.id ==undefined || element.id.length == 0) {
-            element.id = 'irtempid-'+Narayam.id;
-            Narayam.id = Narayam.id + 1;
-        }
-        if(element)
-        {
-            Narayam.elements.push(element);
-            Narayam.previous_sequence[element.id] = '';
-            if(element.style) {
-                Narayam.elementBorders[element.id] = element.style.border;
-                Narayam.elementBackColors[element.id] = element.style.backgroundColor;
-                
-            }
-            if(Narayam.enabled) {
-                element.style.border = Narayam.border;
-                element.style.backgroundColor = Narayam.back_color
-            }
-            if (element.addEventListener){
-                element.addEventListener('keydown', tiKeyDown, false);
-                element.addEventListener('keypress', tiKeyPressed, false);
-            } else if (element.attachEvent){
-                element.attachEvent('onkeydown', tiKeyDown);
-                element.attachEvent("onkeypress", tiKeyPressed);
-            }
-        }
-    }
-}
-
-function transOptionOnClick(event)
-{
-    var e = event || window.event;
-    var checkbox =  (e.currentTarget || e.srcElement);
-    if(checkbox.checked)
-    {
-        Narayam.enableTrasliteration(true);
-    }
-    else
-    {
-        Narayam.enableTrasliteration(false);
-    }
-}
-
-
-function writingStyleLBChanged(event) {
-    var e = event || window.event;
-    var listBox =  (e.currentTarget || e.srcElement);
-    Narayam.current_scheme = Narayam.schemes[listBox.selectedIndex];
-    setCookie(Narayam.prefix+'default-index', listBox.selectedIndex);
-}
-
-// Narayam setup and initialization code
-Narayam.shortcut = {};
-Narayam.checkbox = {};
-// memory for previus key sequence
-Narayam.previous_sequence = {};
-Narayam.elements = [];
-Narayam.elementBorders = {};
-Narayam.elementBackColors = {};
-// To generate ids for elements that have no id assigned
-Narayam.id = 0;
-
-// shortcut key settings
-Narayam.shortcut.toString = function() {
-    var parts= [];
-    if(this.controlkey) parts.push('Ctrl');
-    if(this.shiftkey) parts.push('Shift');
-    if(this.altkey) parts.push('Alt');
-    if(this.metakey) parts.push('Meta');
-    parts.push(this.key.toUpperCase());
-    return parts.join('+');
-}
-
-/**
- * This functions is to synchronize Narayam state from cookie
- */
-Narayam.translitStateSynWithCookie = function() {
-    var state = parseInt(readCookie(Narayam.prefix+'enabled' ));
-    var enable = Narayam.enabled;
-    if(state == 1)  enable=true;
-    else if(state==0) enable =false;
-    Narayam.enableTrasliteration(enable);
-    var schemeIndex = parseInt(readCookie(Narayam.prefix+'default-index'));
-    if(schemeIndex > 0 && schemeIndex < Narayam.schemes.length) {
-        Narayam.listBox.selectedIndex = schemeIndex;
-    }
-    else Narayam.listBox.selectedIndex = Narayam.default_scheme_index;
-    Narayam.current_scheme = Narayam.schemes[Narayam.listBox.selectedIndex];
-}
-/* Settings */
-Narayam.shortcut = {
-    controlkey: false,
-    altkey: false,
-    shiftkey: false,
-    metakey: false,
-    key: '',	// eg: 'M'
-    toString: function() {
-        var parts= [];
-        if(Narayam.shortcut.controlkey) parts.push('Ctrl');
-        if(Narayam.shortcut.shiftkey) parts.push('Shift');
-        if(Narayam.shortcut.altkey) parts.push('Alt');
-        if(Narayam.shortcut.metakey) parts.push('Meta');
-        parts.push(Narayam.shortcut.key.toUpperCase());
-        return parts.join('+');
-    }
-};
-Narayam.checkbox = {
-    text: '', // eg: 'To toggle ('+ Narayam.shortcut.toString()+ ')'
-    href: '', // eg: 'http://ml.wikipedia.org/wiki/Help:Typing'
-    tooltip: '' // eg: 'To write Malayalam use this tool, shortcut: ('+ Narayam.shortcut.toString()+ ')'
-};
-//Narayam.default_state = true;
-Narayam.schemes =  []; // eg: [tr_ml, tr_ml_inscript]
-Narayam.default_scheme_index = 0; // eg: 0
-Narayam.enabled = true;
-Narayam.prefix = 'narayam-';
-Narayam.check_str_length = 6;
-Narayam.back_color = '#FDFDCD';
-Narayam.border = '2px inset #FDBBBB';
-
-Narayam.init = function() {
-    Narayam.current_scheme = Narayam.schemes[Narayam.default_scheme_index];
-    this.translitStateSynWithCookie();
-}
-
-Narayam.prepareMultiSchemeListBox = function() {
-    this.listBox = document.createElement("select");
-    if (this.listBox.addEventListener)
-        this.listBox.addEventListener("change", writingStyleLBChanged, false);
-    else if (this.listBox.attachEvent)
-        this.listBox.attachEvent("onchange", writingStyleLBChanged);
-    var numOfSchemes = Narayam.schemes.length;
-    for(var i=0; i < numOfSchemes; i++) {
-        var schemeOption = document.createElement("option");
-        schemeOption.appendChild( document.createTextNode(Narayam.schemes[i].text) );
-        schemeOption.value = Narayam.schemes[i].text;
-        if(Narayam.default_scheme_index==i) schemeOption.selected=true;
-        this.listBox.appendChild( schemeOption );
-    }
-}
-
-Narayam.prepareCheckBoxWithLabel = function() {
-    var checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = this.prefix+'cb';
-    checkbox.value = 'searchInput'; // specifying curresponding input filed.
-    checkbox.checked = Narayam.enabled;
-    this.checkboxElement = checkbox;
-
-    if (checkbox.addEventListener)
-        checkbox.addEventListener("click", transOptionOnClick, false);
-    else if (checkbox.attachEvent)
-        checkbox.attachEvent("onclick", transOptionOnClick);
-
-    var label = document.createElement('label');
-    var linktohelp = document.createElement ('a');
-    linktohelp.href= this.checkbox.href;
-    linktohelp.title= this.checkbox.tooltip;
-    linktohelp.appendChild( document.createTextNode(this.checkbox.text) );
-    label.appendChild(linktohelp);
-
-    this.checkboxWL = document.createElement('span');
-    this.checkboxWL.style.padding = 0;
-    this.checkboxWL.id = this.prefix+'cbwl';
-    this.checkboxWL.style.margin = 0;
-    this.checkboxWL.appendChild(checkbox);
-    this.checkboxWL.appendChild(label);
-}
-
-function setupNarayamForvector() {
-    Narayam.prepareMultiSchemeListBox();
-    Narayam.prepareCheckBoxWithLabel();
-    //Narayam.listBox.style.width = '10em';
-    Narayam.checkboxWL.style.fontSize = '80%';
-    var span = document.createElement("span");
-    span.style.position = 'absolute';
-    span.style.top = '1.4em';
-    span.style.right = '0.5em';
-    //span.style.right = '0em';
-    span.appendChild(Narayam.listBox);
-    span.appendChild(Narayam.checkboxWL);
-    var container = document.getElementById('p-search');
-    var searchform = document.getElementById('searchform');
-    container.insertBefore(span,searchform);
-    //var searchInput = document.getElementById('searchInput');
-    Narayam.init();
-}
-/*
-function setupNarayamForvector() {
-    Narayam.prepareMultiSchemeListBox();
-    Narayam.prepareCheckBoxWithLabel();
-    Narayam.listBox.style.width = '9em';
-    var mwPanel = document.getElementById('mw-panel');
-    var pNavigation = document.getElementById('p-navigation');
-    var h5 = document.createElement('h5');
-    h5.appendChild(document.createTextNode('Narayam'));
-    var bodyDiv = document.createElement('div');
-    var label = document.createElement('label');
-    label.appendChild(document.createTextNode('Input method:'));
-    bodyDiv.appendChild(label);
-    bodyDiv.appendChild(document.createElement('br'));
-    bodyDiv.appendChild(Narayam.listBox);
-    bodyDiv.appendChild(document.createElement('br'));
-    bodyDiv.appendChild(Narayam.checkboxWL);
-    bodyDiv.className = 'body';
-    var portalDiv = document.createElement('div');
-    portalDiv.className = 'portal';
-    portalDiv.appendChild(h5);
-    portalDiv.appendChild(bodyDiv);
-    mwPanel.insertBefore(portalDiv, pNavigation)
-}*/
-
-function setupNarayamFormonobook() {
-    Narayam.prepareMultiSchemeListBox();
-    Narayam.prepareCheckBoxWithLabel();
-    Narayam.listBox.style.width = '9em';
-    var searchform = document.getElementById('searchform');
-    var searchInput = document.getElementById('searchInput');
-    searchform.insertBefore(Narayam.listBox, searchInput);
-    searchform.insertBefore(Narayam.checkboxWL, searchInput);
-    Narayam.init();
-}
+} )( jQuery );

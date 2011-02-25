@@ -6,12 +6,9 @@
  * Ministry of Science and Information & Communication Technology, Govt. of Bangladesh
  * License: GPLv3, CC-BY-SA 3.0
  */
-if(tr_bn_nkb== undefined) var tr_bn_nkb = {};
-else tr_bn_nkb = {};
-tr_bn_nkb.text = "NKB";
-tr_bn_nkb.description = "Bengali National Keyboard";
+
 // Normal rules
-tr_bn_nkb.rules = [
+var rules = [
 ['1', '', '১'],
 ['2', '', '২'],
 ['3', '', '৩'],
@@ -83,8 +80,7 @@ tr_bn_nkb.rules = [
 ];
 
 // Extended layout for National Keyboard. Works in Firefox only
-tr_bn_nkb.extended_keyboard = true;
-tr_bn_nkb.rules_x = [
+var rules_x = [
 ['1', '', '৴'],
 ['2', '', '৵'],
 ['3', '', '৶'],
@@ -131,3 +127,11 @@ tr_bn_nkb.rules_x = [
 ['X', '', 'ঔ'],
 ['C', '', 'ঐ']
 ];
+
+jQuery.narayam.addScheme( 'bn-nkb', {
+	'namemsg': 'narayam-bn-nkb',
+	'extended_keyboard': true,
+	'lookbackLength': 0,
+	'rules': rules,
+	'rules_x': rules_x
+} );

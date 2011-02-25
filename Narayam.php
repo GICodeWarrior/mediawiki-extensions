@@ -17,8 +17,9 @@
  * AUTHOR
  * 	Junaid P V <http://junaidpv.in>
  *
- * @package extensions
- * @version 0.1
+ * @file
+ * @ingroup extensions
+ * @version 0.2
  * @copyright Copyright 2010 Junaid P V
  * @license GPLv3
  */
@@ -26,189 +27,125 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-// register extension credits
+
+/* Configuration */
+
+// Whether the input method should be active as default or not
+$wgNarayamEnabledByDefault = true;
+
+// Shortcut key for enabling and disabling Narayam
+// Defaults to Ctrl+M
+$wgNarayamShortcutKey = array(
+	'altKey' => false,
+	'ctrlKey' => true,
+	'shiftKey' => false,
+	'key' => 'm'
+);
+
+// Array mapping language codes and scheme names to module names
+// Custom schemes can be added here
+$wgNarayamSchemes = array(
+	'bn' => array(
+		'bn-avro' => 'ext.narayam.rules.bn-avro',
+		'bn-inscript' => 'ext.narayam.rules.bn-inscript',
+		'bn-nkb' => 'ext.narayam.rules.bn-nkb',
+	),
+	'ml' => array(
+		'ml' => 'ext.narayam.rules.ml',
+		'ml-inscript' => 'ext.narayam.rules.ml-inscript',
+	),
+	'sa' => array(
+		'sa' => 'ext.narayam.rules.sa',
+	),
+	'ta' => array(
+		'ta' => 'ext.narayam.rules.ta',
+		'ta99' => 'ext.narayam.rules.ta99',
+	),
+);
+
+/* Setup */
+
+// Register extension credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Narayam',
 	'version' => 0.1,
-	'author' => 'Junaid P V (http://junaidpv.in)',
+	'author' => array( 'Junaid P V (http://junaidpv.in)', 'Roan Kattouw' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Narayam',
 	'descriptionmsg' => 'narayam-desc'
 );
 
-/// @todo Document all settings
-// control key included in short key combination??
-$wgNarayamConfig['shortcut_controlkey'] = true;
-// alt key included in short key combination??
-$wgNarayamConfig['shortcut_altkey'] = false;
-// shift key included in short key combination??
-$wgNarayamConfig['shortcut_shiftkey'] = false;
-// meta key included in short key combination?? (only effects mac clients)
-$wgNarayamConfig['shortcut_metakey'] = false;
-// short key in short key combination
-$wgNarayamConfig['shortcut_key'] = 'M';
-// list of schemes to be loaded when no one specified
-$wgNarayamConfig['schemes'] = array( 'ml', 'ta99', 'ml_inscript' );
-// which scheme should come as default in the list box
-$wgNarayamConfig['default_scheme_index'] = 0;
-// whether the input method should be active as default or not
-$wgNarayamConfig['enabled'] = true;
-
-// localization
+// Localization
 $wgExtensionMessagesFiles['Narayam'] = dirname( __FILE__ ) . '/Narayam.i18n.php';
 
-// register hook function
-$wgHooks['BeforePageDisplay'][] = Narayam::getInstance();
+// Register hook function
+$wgHooks['BeforePageDisplay'][] = 'NarayamHooks::addModules';
+$wgHooks['ResourceLoaderGetConfigVars'][] = 'NarayamHooks::addConfig';
+$wgHooks['MakeGlobalVariablesScript'][] = 'NarayamHooks::addVariables';
 
-/**
- * Narayam class
- *
- * (implements singleton pattern)
- * 
- * @author Junaid P V
- * @since 0.1
- * @todo Move to different file
- * @todo No need for _-prefix for member variables
- * @todo Support resource loader
- */
-class Narayam {
+// Autoloader
+$wgAutoloadClasses['NarayamHooks'] = dirname( __FILE__ ) . '/Narayam.hooks.php';
 
-	/**
-	 * One and only one instance of this class
-	 * @var Narayam
-	 */
-	private static $_instance;
-	/**
-	 *
-	 * @var OutputPage
-	 */
-	private $_out;
-	/**
-	 *
-	 * @var Skin
-	 */
-	private $_skin;
-	/**
-	 * Only skins listed here are supported
-	 * @var array
-	 */
-	private $_supportedSkins = array( 'vector', 'monobook' );
-
-	/**
-	 * This class uses singleton pattern.
-	 */
-	protected function __construct() {}
-
-	/**
-	 * Returns one and only object of the class
-	 * @return Narayam
-	 */
-	public static function getInstance() {
-		if ( !( self::$_instance instanceof self ) ) {
-			self::$_instance = new self();
-		}
-		return self::$_instance;
-	}
-
-	/**
-	 * Hook function for the event 'BeforePageDisplay'
-	 * @param OutputPage $out
-	 * @param Skin $sk
-	 */
-	public function onBeforePageDisplay( &$out, &$sk ) {
-		// If current skin is not supported do nothing
-		if ( !in_array( $sk->getSkinName(), $this->_supportedSkins ) ) {
-			return true;
-		}
-		global $wgExtensionAssetsPath, $wgNarayamConfig;
-		$this->_out = $out;
-		$this->_skin = $sk;
-		// add script tag for each scheme to be loaded
-		foreach ( $wgNarayamConfig['schemes'] as $scheme ) {
-			$out->addScriptFile( "$wgExtensionAssetsPath/Narayam/{$scheme}_rules.js" );
-		}
-
-		// Load Narayam.js file
-		$out->addScriptFile( "$wgExtensionAssetsPath/Narayam/Narayam.js" );
-
-		// Place generated JS code according to configuration settings
-		$out->addInlineScript( $this->getInitJSCode() );
-		return true;
-	}
-
-	function formatSchemes( $str ) {
-		return sprintf( 'tr_%s', $str );
-	}
-
-	/**
-	 * Generate JavaScript code according to configuration settings
-	 *
-	 * @global array $wgNarayamConfig
-	 * @param Skin $skinName
-	 * @return string Generated JS code
-	 * @todo Needs rewriting
-	 */
-	private function getInitJSCode() {
-		global $wgNarayamConfig;
-		$str = "Narayam.shortcut.controlkey= " . Narayam::boolToString( $wgNarayamConfig['shortcut_controlkey'] ) . ";\n";
-		$str .= "Narayam.shortcut.altkey= " . Narayam::boolToString( $wgNarayamConfig['shortcut_altkey'] ) . ";\n";
-		$str .= "Narayam.shortcut.shiftkey= " . Narayam::boolToString( $wgNarayamConfig['shortcut_shiftkey'] ) . ";\n";
-		$str .= "Narayam.shortcut.metakey= " . Narayam::boolToString( $wgNarayamConfig['shortcut_metakey'] ) . ";\n";
-		$str .= sprintf( "Narayam.shortcut.key= '%s';\n", $wgNarayamConfig['shortcut_key'] );
-		$str .= sprintf( "Narayam.checkbox.text= '%s ('+Narayam.shortcut.toString()+')';\n", wfMsgForContent( 'narayam-toggle-ime' ) /* $wgNarayamConfig['checkbox']['text'] */ );
-		$title = Title::newFromText( wfMsgForContent( 'narayam-help-page' ) );
-
-		$target = '';
-
-		if ( $title && $title->exists() ) {
-			$target = $title->getFullURL();
-		}
-
-		$str .= sprintf( "Narayam.checkbox.href= '%s';\n", $target );
-
-		$str .= sprintf( "Narayam.checkbox.tooltip= '%s';\n", wfMsgForContent( 'narayam-checkbox-tooltip' ) );
-		// $str .= 'Narayam.default_state = ' . Narayam::boolToString($wgNarayamConfig['default_state']) . ";\n";
-		$str .= "Narayam.schemes = [\n";
-		$schemeCount = count( $wgNarayamConfig['schemes'] );
-
-		if ( $schemeCount > 0 ) {
-			$transformed = array_map( array( $this, 'formatSchemes' ) , $wgNarayamConfig['schemes'] );
-			$str .= implode( ',', $transformed );
-		}
-
-		$str .= "];\n";
-		$str .= sprintf( "Narayam.default_scheme_index = %d;", $wgNarayamConfig['default_scheme_index'] );
-		for ( $i = 0; $i < $schemeCount; $i++ ) {
-			$str .= sprintf( "tr_%s.text = '%s';\n", $wgNarayamConfig['schemes'][$i], wfMsg( 'narayam-' . str_replace( '_', '-', $wgNarayamConfig['schemes'][$i] ) ) );
-		}
-
-		$str .= 'Narayam.enabled = ' . Narayam::boolToString( $wgNarayamConfig['enabled'] ) . ";\n";
-
-		$str .= "function irSetup() {\n";
-		$str .= "var elements = getAllTextInputs();\n";
-		$str .= "inputRewrite(elements);\n";
-		$str .= "elements = document.getElementsByTagName('textarea');";
-		$str .= "inputRewrite(elements);\n";
-		// $str .= sprintf("Narayam.init(%d);\n", $wgNarayamConfig['default_scheme_index']);
-		if ( in_array( $this->_skin->getSkinName(), $this->_supportedSkins ) ) {
-			$str .= 'setupNarayamFor' . $this->_skin->getSkinName() . "();\n";
-		}
-		$str .= "}\n";
-		$str .= "if (window.addEventListener){\n";
-		$str .= "window.addEventListener('load', irSetup, false);\n";
-		$str .= "} else if (window.attachEvent){\n";
-		$str .= "window.attachEvent('onload', irSetup);\n";
-		$str .= "}";
-		return $str;
-	}
-
-	/**
-	 * Convert return string representation of give bool value
-	 * @param bool $value
-	 * @return string
-	 */
-	public static function boolToString( $value ) {
-		return ( $value ) ? 'true' : 'false';
-	}
-
-}
+// ResourceLoader module registration
+$narayamTpl = array(
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'Narayam',
+);
+$wgResourceModules['ext.narayam'] = $narayamTpl + array(
+	'scripts' => 'ext.narayam.js',
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
+	'scripts' => 'Narayam.js', // TODO: Rename files
+	'styles' => 'ext.narayam.core.css',
+	'skinStyles' => array(
+		'monobook' => 'ext.narayam.core-monobook.css',
+		'vector' => 'ext.narayam.core-vector.css',
+	),
+	'messages' => array(
+		'narayam-checkbox-tooltip',
+		'narayam-help-page',
+		'narayam-toggle-ime',
+	),
+	'dependencies' => array( 'mediawiki.util', 'jquery.textSelection' ),
+);
+$wgResourceModules['ext.narayam.rules.bn-avro'] = $narayamTpl + array(
+	'scripts' => 'bn_avro_rules.js',
+	'messages' => array( 'narayam-bn-avro' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.bn-inscript'] = $narayamTpl + array(
+	'scripts' => 'bn_inscript_rules.js',
+	'messages' => array( 'narayam-bn-inscript' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.bn-nkb'] = $narayamTpl + array(
+	'scripts' => 'bn_nkb_rules.js',
+	'messages' => array( 'narayam-bn-nkb' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.ml-inscript'] = $narayamTpl + array(
+	'scripts' => 'ml_inscript_rules.js',
+	'messages' => array( 'narayam-ml-inscript' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.ml'] = $narayamTpl + array(
+	'scripts' => 'ml_rules.js',
+	'messages' => array( 'narayam-ml' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.sa'] = $narayamTpl + array(
+	'scripts' => 'sa_rules.js',
+	'messages' => array( 'narayam-sa' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.ta99'] = $narayamTpl + array(
+	'scripts' => 'ta99_rules.js',
+	'messages' => array( 'narayam-ta99' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.ta'] = $narayamTpl + array(
+	'scripts' => 'ta_rules.js',
+	'messages' => array( 'narayam-ta' ),
+	'dependencies' => 'ext.narayam.core',
+);

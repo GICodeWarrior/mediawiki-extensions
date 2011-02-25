@@ -5,12 +5,9 @@
  * @date 2010-12-12
  * License: GPLv3, CC-BY-SA 3.0
  */
-if(tr_bn_inscript== undefined) var tr_bn_inscript = {};
-else tr_bn_inscript = {};
-tr_bn_inscript.text = "InScript";
-tr_bn_inscript.description = "InScript layout for Bengali";
+
 // Normal rules
-tr_bn_inscript.rules = [
+var rules = [
 ['X', '', 'ঁ'],
 ['x', '', 'ং'],
 ['_', '', 'ঃ'],
@@ -95,8 +92,7 @@ tr_bn_inscript.rules = [
 ];
 
 // Extended layout for InScript. Works in Firefox only
-tr_bn_inscript.extended_keyboard = true;
-tr_bn_inscript.rules_x = [
+var rules_x = [
 ['F', '', 'ঌ'],
 ['\\>', '', 'ঽ'],
 ['\\=', '', 'ৠ'],
@@ -120,3 +116,11 @@ tr_bn_inscript.rules_x = [
 ['\\?', '', '৻'],
 ['4', '', '₹']
 ];
+
+jQuery.narayam.addScheme( 'bn-inscript', {
+	'namemsg': 'narayam-bn-inscript',
+	'extended_keyboard': true,
+	'lookbackLength': 0,
+	'rules': rules,
+	'rules_x': rules_x
+} );
