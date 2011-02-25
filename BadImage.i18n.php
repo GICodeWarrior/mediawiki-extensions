@@ -1609,6 +1609,30 @@ $messages['lv'] = array(
 	'badimages-reason' => 'Iemesls:',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'badimages' => 'Lisitry ny sary tsy ilaina',
+	'badimages-add-btn' => 'Ampiana',
+	'badimages-added' => 'Nampiana tao anaty lisitra $1',
+	'badimages-name' => 'Anarana :',
+	'badimages-not-added' => 'Tsy afaka nampiana ilay sary.',
+	'badimages-not-removed' => 'Tsy afaka nesorina ilay sary.',
+	'badimages-reason' => 'Antony :',
+	'badimages-remove' => '(esorina)',
+	'badimages-remove-btn' => 'Esorina',
+	'badimages-removed' => "Afka tamin'ilay lisitra $1.",
+	'badimages-subheading' => 'Lisitra ankehitriny',
+	'badimages-unprivileged' => '(Tsy azonao ovaina ity lisitra ity)',
+	'badimages-log-name' => 'Lisitry ny sary tsy ilaina',
+	'badimages-log-header' => "Laogin'ny fanovana [[{{MediaWiki:Badimages-page}}|ny lisitry ny sary tsy ilaina]]",
+	'badimages-log-add' => "nanampy [[$1]] tamin'ny lisitry ny sary tsy ilaina",
+	'badimages-log-remove' => "nanala [[$1]] tamin'ny lisitry ny sary tsy ilaina",
+	'badimages-page' => '{{ns:help}}:Lisitry ny sary tsy ilaina',
+	'right-badimages' => 'Manova ny lisitry ny sary tsy ilaina',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
