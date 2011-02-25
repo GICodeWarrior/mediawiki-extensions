@@ -298,6 +298,7 @@ $messages['ru'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'emailusers-desc' => '允许用户给多个收件人发送电子邮件',
@@ -306,6 +307,6 @@ $messages['zh-hans'] = array(
 	'emailusers-target-reverse' => '发送给除了选定用户的所有用户',
 	'emailusers-norecipient' => '没有用户可以接收电子邮件。',
 	'emailusers-norecipientselected' => '没有选择收件人。',
-	'emailusers-toomanyrecipientsselected' => '选择了太多收件人（最多$1个）。',
+	'emailusers-toomanyrecipientsselected' => '选择了太多收件人（{{PLURAL:$1|最多$1个|最多$1个}}）。',
 );
 
