@@ -73,7 +73,7 @@ $.narayam = new ( function() {
 	 * @return Substring of str, at most n characters long, immediately preceding pos
 	 */
 	function lastNChars( str, pos, n ) {
-		if ( n == 0 ) {
+		if ( n === 0 ) {
 			return '';
 		}
 		if ( pos <= n ) {
@@ -104,7 +104,7 @@ $.narayam = new ( function() {
 		return e.altKey == shortcutKey.altKey &&
 			e.ctrlKey == shortcutKey.ctrlKey &&
 			e.shiftKey == shortcutKey.shiftKey &&
-			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase()
+			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase();
 	}
 	
 	function shortcutText() {
