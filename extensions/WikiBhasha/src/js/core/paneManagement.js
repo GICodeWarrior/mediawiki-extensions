@@ -136,12 +136,12 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
         },
         loadWikiEditPage : function () {
             wbDisplayPaneHelper.setPaneTitleFromConfig(wbPublishDisplayPane.$contentElem, wbPublishDisplayPane.paneConfigInfo);
-            wbPublishDisplayPane.$contentElem.html("<center><h2>Your edited content has been loaded into a Wikipedia edit page in the new window. <br>Please use that new window to save the content. Once you save the content to Wikipedia, you will be redirected back here.</h2></center>");
-            // get the existance of the text area in the iFrame.
+            wbPublishDisplayPane.$contentElem.html(wbLocal.newWindowMessage);
+            // get the existance of the text area in the child window.
             var noOfTextAreas = wbPublishDisplayPane.getWikiTextareaElement().length;
 
             // Check the state of the content and the text area. If the content is already moved to 
-            // Wikipedia and there is no text area present in the iFrame, then close the application 
+            // Wikipedia and there is no text area present in the window, then close the application 
             // and load the updated Wikipedia page. 
             if (wbPublishDisplayPane.isContentMovedToWikipedia && (noOfTextAreas === 0)) {
                 var currentPageUrl = window.location.href;
@@ -149,8 +149,6 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
                 wbPublishDisplayPane.wbChildWikipedia.close();
                 clearTimeout(wbPublishDisplayPane.timeoutObj);
                 wbPublishDisplayPane.$contentElem.html(" ");
-                //window.location.href = currentPageUrl;
-                //wbMainWindow.hide();
                 //show WikiBhasha share exit popup.
                 wbShareOnExternSystem.show();
                 return;
@@ -174,10 +172,10 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
         // into wikipedia article content when user clicks the save button.
         addSnippetInjectCodeToSaveButton : function () {
 
-                    // get the iFrame which contains the wikipedia text area and the save button
-                    var iFrameDoc = wbPublishDisplayPane.wbChildWikipedia.document,
-                    // get the save button from the iFrame
-                        saveButton = iFrameDoc.getElementById(wbWikiSite.wikiSaveButton);
+                    // get the child window which contains the wikipedia text area and the save button
+                    var childWindowDoc = wbPublishDisplayPane.wbChildWikipedia.document,
+                    // get the save button from the childWindowDoc
+                        saveButton = childWindowDoc.getElementById(wbWikiSite.wikiSaveButton);
                     if (saveButton) {
                         // bind the click event to the save button
                         saveButton.onclick = function() {
@@ -1042,15 +1040,15 @@ if (typeof (wikiBhasha.paneManagement) === "undefined") {
 
         //configures the compose area for wikipedia edit page pane
         configureComposeArea: function() {
-            //iframe document object
-            var iframeDoc = wbPublishDisplayPane.wbChildWikipedia.document;
+            //child window document object
+            var childWindowDoc = wbPublishDisplayPane.wbChildWikipedia.document;
 
             //removing unwanted divs from compose area
-            $(wbWikiSite.wikiEditPageNonCriticalDivs, iframeDoc).hide();
+            $(wbWikiSite.wikiEditPageNonCriticalDivs, childWindowDoc).hide();
             //set margin
-            $(wbWikiSite.wikiComposeDiv, iframeDoc).css("margin-left", 0).css("margin-right", 0);
+            $(wbWikiSite.wikiComposeDiv, childWindowDoc).css("margin-left", 0).css("margin-right", 0);
             //disable links inside compose area
-            $(wbWikiSite.wikiComposeLinks, iframeDoc).click(function() { return false; });
+            $(wbWikiSite.wikiComposeLinks, childWindowDoc).click(function() { return false; });
         },
 
         //checks the translateion status and returns true if it was done otherwise it returns false.

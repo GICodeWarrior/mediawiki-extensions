@@ -136,6 +136,16 @@
             } else {
                 return false;
             }
+        },
+
+        //remove html tags from the target object content
+        stripTags: function (htmlContent) {
+            $("body").append("<div id='tmpData'></div>");
+            $('#tmpData').hide();
+            $('#tmpData').html(htmlContent);
+            var text = $('#tmpData').text();
+            $('#tmpData').remove();
+            return text
         }
     };
 

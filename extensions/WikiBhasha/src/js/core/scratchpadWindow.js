@@ -45,6 +45,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
 
         $clearAllButton: null,
         $sourceTextBox: null,
+        $targetTextBox: null,
 
         //initializes scratchpad window
         initialize: function() {
@@ -70,9 +71,13 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 $scratchPadWindowElement = $("#" + this.windowId);
                 this.$clearAllButton = $("#wbClearAllBtn");
                 this.$sourceTextBox = $("#wbSourceText");
+                this.$targetTextBox = $("#wbTargetText");
 
                 $("#scratchPadLimitNoteText").html(wbUtil.stringFormat(wbLocal.scratchPadTextLimitNote, wbGlobalSettings.scratchpadTextMaxLength));
-
+                $("#wbScratchpadHeadLabelLeft").html(wbUtil.stringFormat("<h4>{0} Text</h4>", wbLocal.english));
+                $("#wbScratchpadHeadLabelRight").html(wbUtil.stringFormat("<h4>{0} Text</h4>", wbGlobalSettings.targetLanguageDisplayName));
+                $('#wbSourceToTargetBtn').val(wbUtil.stringFormat("{0} >> {1}", wbGlobalSettings.sourceLanguageCode, wbGlobalSettings.mtTargetLanguageCode));
+                $('#wbTargetToSourceBtn').val(wbUtil.stringFormat("{0} << {1}", wbGlobalSettings.sourceLanguageCode, wbGlobalSettings.mtTargetLanguageCode));
                 wbUIHelper.makeDraggable(this.windowId, "wbSPDraggableHandle");
 
                 //set focus on text area
@@ -84,6 +89,10 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                     wbScratchPad.hide();
                 });
 
+                $("#wbSaveScratchPadContentBtn").click(function() {
+                    wbScratchPad.saveScratchPadText(wbGlobalSettings.sourceLanguageCode, wbGlobalSettings.mtTargetLanguageCode);
+                });
+                
                 //clear the text area when user clicks on 'clearAll' button
                 this.$clearAllButton.click(function() {
                     wbScratchPad.clearAll();
@@ -99,14 +108,18 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 $("#wbSourceToTargetBtn").click(function() {
                     wbScratchPad.translateScratchPadText("wbSourceText", wbGlobalSettings.sourceLanguageCode, wbGlobalSettings.mtTargetLanguageCode);
                 });
-
+                //set title for the button
+                $("#wbSourceToTargetBtn").attr("Title", wbUtil.stringFormat(wbLocal.transleteButton, wbLocal.english, wbGlobalSettings.targetLanguageDisplayName));
                 //when user clicks, translates the given string from target to source language
+
                 $("#wbTargetToSourceBtn").click(function() {
-                    wbScratchPad.translateScratchPadText("wbSourceText", wbGlobalSettings.mtTargetLanguageCode, wbGlobalSettings.sourceLanguageCode);
+                    wbScratchPad.translateScratchPadText("wbTargetText", wbGlobalSettings.mtTargetLanguageCode, wbGlobalSettings.sourceLanguageCode);
                 });
+                //set title for the button
+                $("#wbTargetToSourceBtn").attr("Title", wbUtil.stringFormat(wbLocal.transleteButton, wbGlobalSettings.targetLanguageDisplayName, wbLocal.english));
 
                 //handle the resizing for scratchpad window
-                var scratchPad = $("#wbWrapperContextMenu"),
+                var scratchPad = $("#wbWrapperScratchPad"),
                     $scratchPadTableElement = $("#scratchPadTable");
                 //assign the width and height.
                 scratchPad.css("width", $scratchPadTableElement.width());
@@ -133,6 +146,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                     resize: function() {
                         var $translateArea = $("#wbTranslatedArea"),
                             sourceTextArea = wbScratchPad.$sourceTextBox,
+                            targetTextArea = wbScratchPad.$targetTextBox,
                             offset = $translateArea.offset(),
                             $scratchPadTableElement = $("#scratchPadTable"),
 
@@ -140,12 +154,12 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                             contentMargin = 32,
                             contentHeightMargin = 136;
 
-                        // resize the text area width
-                        sourceTextArea.css("width", $scratchPadTableElement.width() - contentMargin);
-                        // resize the translated table height and width
-                        $translateArea.css({ "width": $scratchPadTableElement.width() - contentMargin,
-                            "height": ($("#wbWrapperContextMenu").height() - sourceTextArea.height() - contentHeightMargin)
-                        });
+                        // resize the textarea and listint div width
+                        $(".scratchTopLayout").css({"width": ($scratchPadTableElement.width()/2)-120,"display":"block"});
+                        $(".scratchContentLayout").css({"width": ($scratchPadTableElement.width()/2)-120,"display":"block"});
+                      
+                        // resize the translated div height
+                        $translateArea.css({"height": ($("#wbWrapperScratchPad").height() - sourceTextArea.height() - contentHeightMargin)});
                     },
                     // this event is fired while resizing of the scratchpad is stopped
                     stop: function() {
@@ -178,19 +192,28 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
 
         //deletes given row from the translation history
         deleteRow: function(rowId) {
-            $(rowId).remove();
+            $('#wbTargetRow'+rowId).remove();
             this.rowCount = this.rowCount - 1;
             if (this.rowCount === 1) {
                 this.$clearAllButton.attr("disabled", "true");
             }
+            return true;
+        },
+
+        //loads given row from the translation history to the edit/add form
+        editRow: function(rowId) {
+            this.$sourceTextBox.val($('#wbSourceCol'+rowId).text());
+            this.$targetTextBox.val($('#wbTargetCol'+rowId).text());
+            return true;
         },
 
         //clears text from the scratchpad text area and translation history
         clearAll: function() {
             this.$sourceTextBox.val("");
+            this.$targetTextBox.val("");
             //disable clear button 
             this.$clearAllButton.attr("disabled", "true");
-            $("#wbTargetTable tr:gt(0)").remove();
+            $('#wbTranslatedArea').html("");
             this.rowCount = 1;
             this.currentRowId = 1;
         },
@@ -221,16 +244,14 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 //call the translate function to translate the given text
                 wbLanguageServices.translate($sourceText, sourceCode, targetCode, function(translatedText) {
                     if (translatedText && translatedText.length) {
-                        //add new row with source text and translated text
-                        wbScratchPad.addRow($sourceText, translatedText, sourceCode, targetCode);
-                        wbScratchPad.$clearAllButton.removeAttr("disabled");
-                        wbUIHelper.hideElement("wbTranslationLoading");
-                        return;
+                        if(sourceCode!='en'){
+                            $('#wbSourceText').val(translatedText);
+                        }else{
+                            $('#wbTargetText').val(translatedText);
+                        }
                     }
-                    else {
-                        wbUIHelper.hideElement("wbTranslationLoading");
-                        return;
-                    }
+                    wbUIHelper.hideElement("wbTranslationLoading");
+                    return;
                 });
             }
             else {
@@ -238,6 +259,20 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 wbUIHelper.hideElement("wbTranslationLoading");
                 return;
             }
+        },
+
+        //saves the scratchpad text for future use
+        saveScratchPadText: function(sourceCode, targetCode){
+            //add new row with source text and translated text
+            if($.trim($('#wbSourceText').val()).length === 0 && $.trim($('#wbTargetText').val()).length === 0){
+                window.alert(wbLocal.emptyInputText, wbGlobalSettings.applicationName);
+            }else{
+                wbScratchPad.addRow($('#wbSourceText').val(), $('#wbTargetText').val(), sourceCode, targetCode);
+                $('#wbSourceText').val("");
+                $('#wbTargetText').val("")
+                wbScratchPad.$clearAllButton.removeAttr("disabled");
+            }
+            return;
         },
 
         //adds row in to the scratchpad's translation history table
@@ -250,25 +285,27 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 targetColId = "wbTargetCol" + this.currentRowId,
             //delete image row element id
                 deleteRowBtn = "wbDeleteRowBtn" + this.currentRowId,
-
+            //load image row element id
+                editRowBtn = "wbEditRowBtn" + this.currentRowId,
+            //scratchpad content box element
+                $scratchPadTableElement = $("#scratchPadTable"),
             //create new translation history row
-                newRow = wbUtil.stringFormat("<tr id={0} class='wbScratchPadTarget'><td class='wbScratchPadRow'" +
-                                    "id={1}></td><td class='wbScratchPadRow' id={2} style='vertical-align:top;'></td>" +
-                                    "<td class='wbScratchPadRowDeleteRow' style='vertical-align:top;'>" +
-                                    "<a id={3} class='wbDelete' href='#' name='{0}' title='Delete this row' >" +
-                                    "</a></td></tr>", targetRowId, sourceColId, targetColId, deleteRowBtn);
+                newRow = wbUtil.stringFormat("<div id={0} class='scratchContentLayoutRow'><div class='scratchContentLayout' id={1}></div>"+
+                                    "<div class='scratchTopButtonLayout'>&nbsp;</div>"+
+                                    "<div class='scratchContentLayout' id={2} ></div>" +
+                                    "<div class='scratchTopButtonLayout'>" +
+                                    "<a id={3} class='wbDelete' href='#' name='{5}' title='Delete this row' class='scratchContentLayout'></a>" +
+                                    "<a id={4} class='wbEdit' href='#' name='{5}' title='Load this row' class='scratchContentLayout'></a>" +
+                                    "</div></div>", targetRowId, sourceColId, targetColId, deleteRowBtn, editRowBtn, this.currentRowId);
 
-            //show scratchpad target area header
-            $("#wbHeaderRow").css({ 'visibility': 'visible' });
+            
             //append row if the row contained in scratchpad is equal to 1 
             if (this.rowCount === 1) {
-                $("#wbTargetTable").append(newRow);
+                $("#wbTranslatedArea").append(newRow);
             }
             else if (this.rowCount > 1) {
-                // find the second TR (1st TR is for header of the table)                
-                var $targetTable = $("#wbTargetTable"),
-                    $secondRow = $targetTable.get(0).getElementsByTagName("tr")[1];
-                $(newRow).insertBefore("#" + $secondRow.id);
+                // find the second TR (1st TR is for header of the table) 
+                $(newRow).insertBefore("#" + $("#wbTranslatedArea").get(0).getElementsByTagName("div")[0].id);
             }
 
             // Warning! Do not use html() or innerHTML, which could cause script injection. 
@@ -288,9 +325,17 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
             this.$sourceTextBox.val("");
             //delete the row when user clicks on delete image
             $("#" + deleteRowBtn).bind('click', function() {
-                wbScratchPad.deleteRow("#" + this.name);
+                wbScratchPad.deleteRow(this.name);
             });
 
+            //Load the row when user clicks on load image
+            $("#" + editRowBtn).bind('click', function() {
+                wbScratchPad.editRow(this.name);
+            });
+            // resize the textarea and listint div width
+            $(".scratchTopLayout").css({"width": ($scratchPadTableElement.width()/2)-120,"display":"block"});
+            $(".scratchContentLayout").css({"width": ($scratchPadTableElement.width()/2)-120,"display":"block"});
+                      
             this.rowCount = this.rowCount + 1;
             this.currentRowId = this.currentRowId + 1;
             this.$clearAllButton.removeAttr("disabled");
@@ -299,8 +344,6 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
 
         //applies localization on scratchpad window
         applyLocalization: function() {
-            $("#wbSourceToTargetBtn").attr("value", wbUtil.stringFormat("{1}{0}{2}{0}{3}", wbLocal.space, wbLocal.english, wbLocal.toText, wbGlobalSettings.$targetLanguageName));
-            $("#wbTargetToSourceBtn").attr("value", wbUtil.stringFormat("{1}{0}{2}{0}{3}", wbLocal.space, wbGlobalSettings.$targetLanguageName, wbLocal.toText, wbLocal.english));
             $("#wbScratchPadHeader").html(wbLocal.scratchPad);
             wbScratchPad.$clearAllButton.attr("value", wbLocal.clearAll);
             $("#wbSourceTextHeader").html(wbLocal.sourceTextHeader);

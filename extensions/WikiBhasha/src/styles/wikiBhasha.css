@@ -449,7 +449,6 @@ a.wbExit {
 	display:none;
 	float:left;
 	height: 25px;
-	
 	font-size:12px;
 	font-weight :bold;
 }
@@ -783,4 +782,59 @@ ul.tabs li.active, ul.tabs li:hover  {
     padding-left:4px;
     float:left;
     text-align:left;
+}
+
+/* scratchpad */
+
+#wbScratchPadWindow {
+	visibility: visible;
+	z-index: 100000;
+    position: absolute;
+    width:700px;   
+    direction:ltr; 
+}
+.scratchTopLayout
+{
+    float:left;
+    width:250px;
+    min-width:250px;
+}
+.scratchTopButtonLayout
+{
+    text-align:center;
+    float:left;
+    margin:5px;
+    width:75px;
+    display:block;
+}
+.scratchContentLayout{
+    float:left;
+    width:240px;
+    min-width:240px;
+    border:1px solid #DDE1E3;
+    height:50px;
+    overflow:auto;
+}
+#scratchPadLimitNoteHolder
+{
+    clear:both;
+}
+.wbScratchPadSection {
+	margin:10px 5px 10px 5px;
+}
+.wbScratchPadSectionContent {
+	padding:0px;
+	width:100%;
+	float:left;
+	clear:left;
+	margin-bottom:2px;
+}
+.scratchContentLayoutRow
+{
+    margin:5px;
+    overflow:hidden;
+}
+.scratchTopButtonLayout INPUT
+{
+    width: 75px !important;
 }
