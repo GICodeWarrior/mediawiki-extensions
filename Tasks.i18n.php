@@ -116,7 +116,8 @@ Don't change '|' character.",
 	'tasks_search_status' => '{{Identical|Status}}',
 	'tasks_previous' => '{{Identical|Previous}}',
 	'tasks_next' => '{{Identical|Next}}',
-	'tasks_status_open' => 'This is an adjective.',
+	'tasks_status_open' => 'This is an adjective.
+{{Identical|Open}}',
 	'tasks_status_closed' => '{{Identical|Closed}}',
 );
 
