@@ -1,7 +1,7 @@
 /**
  * Provides a basic editor with preview and cancel functionality.
  */
-( function( $ ) { $.inlineEditor.basicEditor = {
+( function( $ ) { $.inlineEditor.editors.basic = {
 	
 	/**
 	 * Creates a new hovering edit field.
@@ -37,8 +37,8 @@
 		// build preview and cancel buttons and add click events
 		var $preview = $( '<input type="button" value="Preview" class="preview"/>' );
 		var $cancel = $( '<input type="button" value="Cancel" class="cancel"/>' );
-		$preview.click( $.inlineEditor.basicEditor.preview );
-		$cancel.click( $.inlineEditor.basicEditor.cancel );
+		$preview.click( $.inlineEditor.editors.basic.clickPreview );
+		$cancel.click( $.inlineEditor.editors.basic.clickCancel );
 		
 		// build a div for the buttons
 		var $buttons = $( '<div class="buttons"></div> ');
@@ -74,18 +74,27 @@
 			event.preventDefault();
 		
 			// disable the existing editing field if necessary
-			$.inlineEditor.basicEditor.cancelAll();
+			$.inlineEditor.editors.basic.cancel();
 			
 			// find the element and retrieve the corresponding wikitext
 			var wiki = $.inlineEditor.getTextById( $field.attr( 'id' ) );
 			
 			// create the edit field and build the edit bar
-			var $newField = $.inlineEditor.basicEditor.newField( $field, $.inlineEditor.basicEditor.click );
-			$.inlineEditor.basicEditor.addEditBar( $newField, wiki );
+			var $newField = $.inlineEditor.editors.basic.newField( $field, $.inlineEditor.editors.basic.click );
+			$.inlineEditor.editors.basic.addEditBar( $newField, wiki );
 			
 			// add the wikiEditor toolbar
-			if ( $.fn.wikiEditor && $.wikiEditor.isSupported( $j.wikiEditor.modules.toolbar ) ) {
-				$.inlineEditor.configWikiEditor.configToolbar( );
+			if( $.fn.wikiEditor ) {
+				$textarea = $newField.find( 'textarea' );
+				
+				if( $.wikiEditor.modules.toolbar && $.wikiEditor.modules.toolbar.config && $.wikiEditor.isSupported( $.wikiEditor.modules.toolbar ) ) {
+					$textarea.wikiEditor( 'addModule', $.wikiEditor.modules.toolbar.config.getDefaultConfig() );
+				}
+				
+				if( $.wikiEditor.modules.dialogs && $.wikiEditor.modules.dialogs.config && $.wikiEditor.isSupported( $.wikiEditor.modules.dialogs ) ) {
+					$.wikiEditor.modules.dialogs.config.replaceIcons( $textarea );
+					$textarea.wikiEditor( 'addModule', $.wikiEditor.modules.dialogs.config.getDefaultConfig() );
+				}
 			}
 		}
 	},
@@ -93,7 +102,7 @@
 	/**
 	 * Cancels the current edit operation.
 	 */
-	cancel: function( event ) {
+	clickCancel: function( event ) {
 		// prevent clicks from reaching other elements
 		event.stopPropagation();
 		event.preventDefault();
@@ -119,13 +128,13 @@
 	/**
 	 * Previews the current edit operation.
 	 */
-	preview: function( event ) {
+	clickPreview: function( event ) {
 		// prevent clicks from reaching other elements
 		event.stopPropagation();
 		event.preventDefault();
 		
-		// find the span with class 'editbar', two parent above the buttons
-		var $editbar = $(this).parent().parent();
+		// find the span with class 'editbar'
+		var $editbar = $(this).closest( '.editbar' );
 		
 		// the element is one level above the editbar
 		var $element = $editbar.parent(); 
@@ -136,7 +145,7 @@
 		$editbar.after( $overlay );
 		
 		// get the edited text and the id to save it to
-		var text = $editbar.children( 'textarea' ).val();
+		var text = $editbar.find( 'textarea' ).val();
 		var id   = $element.data( 'orig' ).attr( 'id' );
 		
 		// let the inlineEditor framework handle the preview
@@ -144,9 +153,16 @@
 	},
 	
 	/**
+	 * Reload the editor.
+	 */
+	reload: function() {
+		$.inlineEditor.editors.basic.bindEvents( $( '.inlineEditorElement .inlineEditorBasic' ) );
+	},
+	
+	/**
 	 * Cancel all basic editors.
 	 */
-	cancelAll: function() {
+	cancel: function() {
 		$('.editing').find('.cancel').click();
 	},
 	
@@ -155,9 +171,9 @@
 	 */
 	bindEvents: function( $elements ) {
 		$elements.unbind();
-		$elements.click( $.inlineEditor.basicEditor.click );
-		$elements.mousemove( $.inlineEditor.basicEditor.mouseMove );
-		$elements.mouseleave( $.inlineEditor.basicEditor.mouseLeave );
+		$elements.click( $.inlineEditor.editors.basic.click );
+		$elements.mousemove( $.inlineEditor.editors.basic.mouseMove );
+		$elements.mouseleave( $.inlineEditor.editors.basic.mouseLeave );
 	},
 	
 	/**

@@ -5,8 +5,6 @@
  * an article object, and then render like a normal page, or as JSON. Reason for this is to be
  * able to pass this object to different hook functions.
  *
- * This file was modified by Dimitris Mitropoulos and Dimitris Meimaris (GRNET)
- * 
  */
 class InlineEditor {
 	private static $fallbackReason; /// < reason for not using the editor, used for showing a message
@@ -29,18 +27,8 @@ class InlineEditor {
 		}
 
 		// return if the action is not 'edit' or if it's disabled
-		// @todo: FIXME: we don't want to break with older versions just yet,
-		// but do remove this when the time is there!
-		if( method_exists( $wiki, 'getAction' ) ) {
-			if( $wiki->getAction( $request ) != 'edit' ) {
-				return true;
-			}
-		}
-		else {
-			$action = $request->getVal( 'action', 'view' );
-			if ( $action != 'edit' || in_array( $action, $wiki->getVal( 'DisabledActions', array() ) ) ) {
-				return true;
-		 	}
+		if( $wiki->getAction( $request ) != 'edit' ) {
+			return true;
 		}
 
 		// check if the 'fulleditor' parameter is set either in GET or POST
@@ -205,13 +193,12 @@ class InlineEditor {
 	 * the editing interface will show as usual.
 	 * @param $output OutputPage
 	 */
-	public function render( &$output ) {
+	public function render( $output ) {
 		global $wgHooks, $wgRequest, $wgExtensionAssetsPath;
 
 		// if the page is being saved, retrieve the wikitext from the JSON
 		if ( $wgRequest->wasPosted() ) {
 			$request = FormatJson::decode( $wgRequest->getVal( 'json' ), true );
-			$request['object'] = $_SESSION['inline-editor-object-' . $request['object']];
 			$text = InlineEditorText::restoreObject( $request, $this->article );
 			$wgRequest->setVal( 'wpTextbox1', $text->getWikiOriginal() );
 		}
@@ -224,24 +211,7 @@ class InlineEditor {
 		$this->extendedEditPage = new ExtendedEditPage( $this->article );
 		if ( $this->extendedEditPage->initInlineEditor() ) {
 			// IMPORTANT: if the page was being saved, the script has been terminated by now!!
-
-			// include the required JS and CSS files
-			$output->includeJQuery();
-			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.elastic.js?0" );
-			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.js?0" );
-			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.basicEditor.js?0" );
-			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery-ui-effects-1.8.4.min.js?0" );
 			
-			// include the JS file needed for the WikiEditor toolbar
-			// @todo: FIXME: get the configuration from the WikiEditor extension
-			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.configWikiEditor.js?0" );
-
-			// include the required JS files for scrolling
-			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.sectionScroller.js?0" );
-			
-			$output->addExtensionStyle( $wgExtensionAssetsPath . "/InlineEditor/InlineEditor.css?0" );
-			$output->addExtensionStyle( $wgExtensionAssetsPath . "/InlineEditor/BasicEditor.css?0" );
-
 			// have the different kind of editors register themselves
 			wfRunHooks( 'InlineEditorDefineEditors', array( &$this, &$output ) );
 
@@ -256,34 +226,11 @@ class InlineEditor {
 			$output->addParserOutput( $parserOutput );
 			$output->setPageTitle( $parserOutput->getTitleText() );
 			
-			// convert the text object into an initial state to send
-			$initial = InlineEditorText::initialState( $text );
+			// render all the javascript, styles, etc.
+			$this->renderScripts( $output );
+			$this->renderInitialState( $output, $text );
+			$this->renderScroll( $output, $parserOutput );
 			
-			// store the actual object in the session, as it can be quite large 
-			$objectID = (isset($_SESSION['inline-editor-id']) ? $_SESSION['inline-editor-id'] + 1 : 0);
-			$_SESSION['inline-editor-id'] = $objectID;
-			$_SESSION['inline-editor-object-' . $objectID] = $initial['object'];
-			$initial['object'] = $objectID;
-			
-			// add the initial JSON state in Javascript, and then initialise the editor
-			$initialJSON = FormatJson::encode( $initial );
-			$output->addInlineScript(
-				'jQuery( document ).ready( function() {
-					jQuery.inlineEditor.addInitialState( ' . $initialJSON . ' );
-					jQuery.inlineEditor.init();
-				} );'
-			);
-			
-			// scroll to a section if needed
-			$scrollAnchor = $this->getScrollAnchor( $parserOutput );
-			if( $scrollAnchor !== null ) {
-				$output->addInlineScript(
-					'jQuery( document ).ready( function() {
-						jQuery.sectionScroller.scrollToSection( "' . $scrollAnchor . '" );
-					} );'
-				);
-			}
-
 			// hook into SiteNoticeBefore to display the two boxes above the title
 			// @todo: fix this in core, make sure that anything can be inserted above the title, outside #siteNotice
 			$wgHooks['SiteNoticeBefore'][]  = array( $this, 'siteNoticeBefore' );
@@ -326,6 +273,65 @@ class InlineEditor {
 	}
 	
 	/**
+	 * Render the basic javascript, styles, etc.
+	 *
+	 * @param $output OutputPage
+	 */
+	private function renderScripts( $output ) {
+		// include the required JS and CSS files
+		$output->addModules( array( 'jquery.inlineEditor', 'jquery.inlineEditor.editors.basic' ) );
+		
+		if( class_exists( 'WikiEditorHooks' ) ) {
+			$output->addModules( array( 'jquery.wikiEditor' ) );
+			
+			if( WikiEditorHooks::isEnabled( 'toolbar' ) ) {
+				$output->addModules( array( 'jquery.wikiEditor.toolbar', 'jquery.wikiEditor.toolbar.config' ) );
+			}
+			
+			if( WikiEditorHooks::isEnabled( 'dialogs' ) ) {
+				$output->addModules( array( 'jquery.wikiEditor.dialogs', 'jquery.wikiEditor.dialogs.config' ) );
+			}
+		}
+	}
+	
+	/**
+	 * Render the javascript for the initial state
+	 *
+	 * @param $output OutputPage
+	 * @param $text InlineEditorText Use this text object to generate the initial state
+	 */
+	private function renderInitialState( $output, $text ) {
+		// convert the text object into an initial state to send
+		$initial = InlineEditorText::initialState( $text );
+		
+		// add the initial JSON state in Javascript, and then initialise the editor
+		$initialJSON = FormatJson::encode( $initial );
+		$output->addInlineScript(
+			'jQuery( document ).ready( function() {
+				jQuery.inlineEditor.addInitialState( ' . $initialJSON . ' );
+				jQuery.inlineEditor.init();
+			} );'
+		);
+	}
+	
+	/**
+	 * Render the scroll javascript if needed
+	 *
+	 * @param $output OutputPage
+	 * @param $parserOutput ParserOutput
+	 */
+	private function renderScroll( $output, $parserOutput ) {
+		$scrollAnchor = $this->getScrollAnchor( $parserOutput );
+		if( $scrollAnchor !== null ) {
+			$output->addInlineScript(
+				'jQuery( document ).ready( function() {
+					$( "html,body" ).animate( { scrollTop: $( "#' . $scrollAnchor .'" ).offset().top}, "slow" ); }
+				} );'
+			);
+		}
+	}
+	
+	/**
 	 * Get an anchor to scroll to, or null
 	 * @param $parserOutput ParserOutput
 	 * @return string or null
@@ -354,21 +360,12 @@ class InlineEditor {
 		// decode the JSON
 		$request = FormatJson::decode( $json, true );
 		
-		// add the actual object from session, as it's quite big
-		$request['object'] = $_SESSION['inline-editor-object-' . $request['object']];
-		
 		// load the JSON to a text object and perform the edit
 		$text = InlineEditorText::restoreObject( $request, $this->article );
 		$text->doEdit( $request['lastEdit']['id'], $request['lastEdit']['text'] );
 		
 		// get the next state
 		$subseq = InlineEditorText::subsequentState( $text );
-		
-		// save the object to a new unique key in the session
-		$objectID = (isset($_SESSION['inline-editor-id']) ? $_SESSION['inline-editor-id'] + 1 : 0);
-		$_SESSION['inline-editor-id'] = $objectID;
-		$_SESSION['inline-editor-object-' . $objectID] = $subseq['object'];
-		$subseq['object'] = $objectID;
 		
 		// send back the JSON
 		return FormatJson::encode( $subseq );

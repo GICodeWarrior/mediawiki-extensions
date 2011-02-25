@@ -416,7 +416,7 @@ class InlineEditorText implements Serializable {
 	public function serialize() {
 		return base64_encode( serialize( array( 
 			'wikiOriginal'  => $this->wikiOriginal,
-			'markings'        => $this->markings,
+			'markings'      => $this->markings,
 			'uniqueIdState' => InlineEditorMarking::getUniqueIdState()
 		) ) );
 	}
@@ -437,7 +437,7 @@ class InlineEditorText implements Serializable {
 	 * @return array Array containing the serialized object and an array of texts
 	 */
 	public static function initialState( InlineEditorText $text ) {
-		return array( 'texts' => $text->getTexts(), 'object' => serialize( $text ) );
+		return array( 'texts' => $text->getTexts(), 'object' => self::toSession( $text ) );
 	}
 	
 	/**
@@ -450,7 +450,7 @@ class InlineEditorText implements Serializable {
 		return array(
 			'texts' => $text->getTexts(), 
 			'partialHtml' => $text->getPartialParserOutput(),
-			'object' => serialize( $text )
+			'object' => self::toSession( $text )
 		);
 	}
 	
@@ -461,8 +461,29 @@ class InlineEditorText implements Serializable {
 	 * @return InlineEditorText
 	 */
 	public static function restoreObject( array $request, Article $article ) {
-		$text = unserialize( $request['object'] );
+		$text = self::fromSession( $request['object'] );
 		$text->article = $article;
 		return $text;
+	}
+	
+	/**
+	 * Store the actual object in the session, as it can be quite large.
+	 * @param $text InlineEditorText
+	 * @return int Object identifier
+	 */
+	protected static function toSession( $text ) {
+		$objectID = (isset($_SESSION['inline-editor-id']) ? $_SESSION['inline-editor-id'] + 1 : 0);
+		$_SESSION['inline-editor-id'] = $objectID;
+		$_SESSION['inline-editor-object-' . $objectID] = serialize( $text );
+		return $objectID;
+	}
+	
+	/**
+	 * Retrieve the object from the session.
+	 * @param $object int Object identifier
+	 * @return InlineEditorText
+	 */
+	protected static function fromSession( $object ) {
+		return unserialize( $_SESSION['inline-editor-object-' . $object] );
 	}
 }
