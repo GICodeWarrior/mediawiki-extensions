@@ -9,7 +9,7 @@ if (!defined('MEDIAWIKI')) die('Not an entry point.');
 define('SEARCHLOG_VERSION','1.0.8, 2008-2-08');
  
 $wgSearchLogPath          = dirname(__FILE__);
-$wgSearchLogFile          = "$wgSearchLogPath/logs/".ereg_replace('^www.','',$_SERVER['SERVER_NAME']);
+$wgSearchLogFile = "$wgSearchLogPath/logs/".preg_replace('/^www./',,$_SERVER['SERVER_NAME']);
 $wgSearchLogEntireLog     = 'Entire log'; # Should be a message
 $wgSearchLogDateFormat    = '%b %Y';
 $wgSearchLogReportHeading = "Search keywords used over '''\$1''' period"; # Should be a message
@@ -44,13 +44,13 @@ class SpecialSearchLog extends SpecialPage {
  
 		# Get the dates of the first and last entries for the dropdown list range
 		if ($fh = fopen($wgSearchLogFile,'r')) {
-			if (ereg('^([0-9]{4})([0-9]{2})[0-9]{2},',fread($fh,16),$match)) list(,$y1,$m1) = $match;
+			if (preg_match('/^([0-9]{4})([0-9]{2})[0-9]{2},/',fread($fh,16),$match)) list(,$y1,$m1) = $match;
 			$len = fstat($fh);
 			$len = $len['size'] % 1024;
 			fseek($fh,-$len,SEEK_END);
 			$end = explode("\n",fread($fh,$len));
 			$end = $end[count($end)-2];
-			if (ereg('^([0-9]{4})([0-9]{2})[0-9]{2},',$end,$match)) list(,$y2,$m2) = $match;
+			if (preg_match('/^([0-9]{4})([0-9]{2})[0-9]{2},/',$end,$match)) list(,$y2,$m2) = $match;
 			fclose($fh);
 			}
  
