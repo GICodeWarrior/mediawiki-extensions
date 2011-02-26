@@ -9,7 +9,7 @@
 $specialPageAliases = array();
 
 /** English
- * @author Brion Vibber
+ * @author Chad Horohoe
  */
 $specialPageAliases['en'] = array(
 	'SearchLog' => array( 'SearchLog' ),
