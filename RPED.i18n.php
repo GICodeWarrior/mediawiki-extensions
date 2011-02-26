@@ -121,6 +121,15 @@ $messages['gsw'] = array(
 	'rped-wikipedia-url' => 'http://gsw.wikipedia.org/wiki/$1',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'rped' => 'זיהוי קיום של דף מרוחק',
+	'rped-desc' => 'מקשר קישורים פנימיים לוויקיפדיה אם הדף אינו קיים בוויקי המקומי, אבל כן קיים בוויקיפדיה',
+	'rped-wikipedia-url' => 'http://he.wikipedia.org/wiki/$1',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
