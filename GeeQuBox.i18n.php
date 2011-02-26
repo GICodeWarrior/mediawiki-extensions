@@ -45,6 +45,20 @@ $messages['fr'] = array(
 	'geequbox-desc' => 'Génère des effets de lightbox en utilisant le plugin lightbox de jQuery',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'geequbox-desc' => 'Macht d Nutzig vu Lightbox-Funktione megli unter Verwändig vu jQuery lightBox',
+);
+
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'geequbox-desc' => 'יצירת אפקט הצללה באמצעות תוסף lightbox של jQuery',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
