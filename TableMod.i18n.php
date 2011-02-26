@@ -256,12 +256,19 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'עיבוד עם טבלאות ויקי',
 	'tablemod-msg-remove' => 'הסרה',
+	'tablemod-error-format' => 'התג הזה תומך רק בטבלה פשוטה לכל תג, ללא שום טקסט לפניו או אחריו.',
+	'tablemod-error-colcount' => 'התג הזה תומך רק בטבלאות עם מספר שווה של עמודות לכל שורה בעת המחיקה.',
+	'tablemod-error-headcount' => 'התג הזה תומך בטבלאות עם כותרת עמודה אחת בעת מיון.',
 	'tablemod-error-invalidsort' => 'הפרמטרים למיון בלתי תקינים.',
 	'tablemod-error-invalidaction' => 'פעולה בלתי תקינה.',
+	'tablemod-error-missingid' => 'מאפיין ident חסר בתג.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
