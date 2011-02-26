@@ -9,7 +9,7 @@ if (!defined('MEDIAWIKI')) die('Not an entry point.');
 define('SEARCHLOG_VERSION','1.0.8, 2008-2-08');
  
 $wgSearchLogPath          = dirname(__FILE__);
-$wgSearchLogFile = "$wgSearchLogPath/logs/".preg_replace('/^www./',,$_SERVER['SERVER_NAME']);
+$wgSearchLogFile = "$wgSearchLogPath/logs/".preg_replace('/^www./','',$_SERVER['SERVER_NAME']);
 $wgSearchLogEntireLog     = 'Entire log'; # Should be a message
 $wgSearchLogDateFormat    = '%b %Y';
 $wgSearchLogReportHeading = "Search keywords used over '''\$1''' period"; # Should be a message
