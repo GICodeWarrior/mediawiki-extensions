@@ -176,6 +176,20 @@ $messages['gsw'] = array(
 	'svgedit-edit-tab-tooltip' => 'Du chasch die SVG-Zeichnig im Browser bearbeite',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'svgedit-editbutton-edit' => 'עריכה ציור',
+	'svgedit-summary-label' => 'תקציר העריכה',
+	'svgedit-summary-default' => '/* נערך ב־svg-edit */',
+	'svgedit-editor-save-close' => 'שמירה וסגירה',
+	'svgedit-editor-close' => 'ביטול',
+	'svgedit-desc' => 'עריכה בתוך הדפדפן של ציורי SVG באמצעות [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'עריכה ציור',
+	'svgedit-edit-tab-tooltip' => 'אפשר לערוך את ציור ה־SVG הזה בדפדפן',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
