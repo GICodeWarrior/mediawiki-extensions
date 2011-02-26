@@ -122,7 +122,7 @@ $messages['de'] = array(
  */
 $messages['he'] = array(
 	'narayam-desc' => 'הוספת שיטות קלט מותאמות אישית לשדות קלט.',
-	'narayam-toggle-ime' => 'הפעלת שיטת קלט',
+	'narayam-toggle-ime' => 'הפעלת שיטת קלט ($1)',
 	'narayam-help-page' => 'Help:הקלדה',
 	'narayam-checkbox-tooltip' => 'הפעלה וכיבוי של שיטת קלט',
 	'narayam-ml' => 'מליאלם תעתיק',
@@ -243,6 +243,24 @@ $messages['nl'] = array(
 	'narayam-bn-avro' => 'Bengaals Avro',
 	'narayam-bn-inscript' => 'Bengaals InScript',
 	'narayam-bn-nkb' => 'Bengaals NKB',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'narayam-desc' => 'Позволяет добавлять пользовательские методы ввода для полей ввода',
+	'narayam-toggle-ime' => 'Для переключения метода ввода ($1)',
+	'narayam-help-page' => 'Help:Ввод',
+	'narayam-checkbox-tooltip' => 'Для включения и выключения метода ввода',
+	'narayam-ml' => 'Малайская транслитерация',
+	'narayam-ml-inscript' => 'Малайский инскрипт',
+	'narayam-sa' => 'Санскритская транслитерация',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Тамильская транслитерация',
+	'narayam-bn-avro' => 'Бенгальский Avro',
+	'narayam-bn-inscript' => 'Бенгальский инскрипт',
+	'narayam-bn-nkb' => 'Бенгальский NKB',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
