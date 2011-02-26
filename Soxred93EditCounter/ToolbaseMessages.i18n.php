@@ -625,6 +625,7 @@ $messages['lb'] = array(
 	'toolbase-replag-hours' => 'Stonnen',
 	'toolbase-replag-minutes' => 'Minutten',
 	'toolbase-replag-seconds' => 'Sekonnen',
+	'toolbase-footer-exectime' => 'A(n) $1 {{PLURAL:$1|Sekonn|Sekonnen}} ofgeschloss',
 	'toolbase-footer-source' => 'Quellcode weisen',
 	'toolbase-footer-language' => 'Sprooch wiesselen',
 	'toolbase-footer-translate' => 'Iwwersetzen',
