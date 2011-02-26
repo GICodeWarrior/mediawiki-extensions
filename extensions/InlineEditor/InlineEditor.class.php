@@ -325,7 +325,7 @@ class InlineEditor {
 		if( $scrollAnchor !== null ) {
 			$output->addInlineScript(
 				'jQuery( document ).ready( function() {
-					$( "html,body" ).animate( { scrollTop: $( "#' . $scrollAnchor .'" ).offset().top}, "slow" ); }
+					$( "html,body" ).animate( { scrollTop: $( "#' . $scrollAnchor .'" ).offset().top }, "slow" );
 				} );'
 			);
 		}
