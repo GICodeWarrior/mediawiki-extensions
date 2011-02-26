@@ -1981,7 +1981,7 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
 	'ow_OptionAttribute' => 'Perzh',
 	'ow_OptionAttributeHeader' => 'Perzh an dibarzh',
 	'ow_OptionAttributeOption' => 'Dibarzh',
-	'ow_OptionAttributeOptions' => 'Dibaboù',
+	'ow_OptionAttributeOptions' => 'Dibarzhioù',
 	'ow_OptionAttributeValues' => 'Talvoudegezh an dibarzhioù',
 	'ow_OtherDefinedMeaning' => 'Ster termenet all',
 	'ow_PopupAnnotation' => 'Notennadur',

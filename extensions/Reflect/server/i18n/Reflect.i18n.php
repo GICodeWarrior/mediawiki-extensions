@@ -277,6 +277,32 @@ Ruef <$4> uf, wänn Du d Antwort im däm Zämmehang witt läse.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 het uf Dyy Zämmefassig vun ere Uussag reagiert.',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'reflect-desc' => 'הרחבה של תגובות משורשרות',
+	'reflect-bulleted' => 'שלום $1,
+
+$2 סיכם נקודה שהעלית בשרשור "$3".
+
+תוכן הסיכום: "$5".
+
+אפשר לוודא שהסיכום של $2 מציג את נקודתך כראוי על־ידי ביקור ב־<$4>.
+
+שם אפשר להבהיר הנקודה אם חלה אי־הבנה.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] הדעה שלך סוכמה על־ידי $2',
+	'reflect-responded' => 'שלום $1,
+
+$2 השיב לסיכום דעתו.
+
+הסיכום שלך: "$6".
+ההודעה של $2: "$5".
+
+לקריאת התשובה בהקשר, ר\' <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] התקבלה תשובה מ{{GRAMMAR:תחילית|$2}} לנקודה בסיכום שלך',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

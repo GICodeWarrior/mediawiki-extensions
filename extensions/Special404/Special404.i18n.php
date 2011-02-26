@@ -79,6 +79,20 @@ $messages['ce'] = array(
 * [[{{MediaWiki:Mainpage}}|The Main page]]',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'special404-desc' => "Yn darparu cyrchfan i wallau '404 Heb ddod o hyd iddo'",
+	'error404' => '404 Heb ddod o hyd iddo',
+	'special404-body' => "Ni ddaethpwyd o hyd i'r URL yr oeddech yn chwilio amdano.
+
+Oeddech chi'n bwriadu teipio {{fullurl:$1}}?
+
+Efallai yr hoffech fynd at:
+* [[{{MediaWiki:Mainpage}}|Yr hafan]]",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -344,6 +358,19 @@ $messages['ru'] = array(
 
 Может быть, вы бы хотели посмотреть:
 * [[{{MediaWiki:Mainpage}}|The Main page]]',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'error404' => '404 Haikupatikana',
+	'special404-body' => 'URL uliyotafuta haikupatikana.
+
+Ulikusudia kuandika {{fullurl:$1}}?
+
+Huenda ungependa kutazama:
+* [[{{MediaWiki:Mainpage}}|Ukurasa wa kwanza]]',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

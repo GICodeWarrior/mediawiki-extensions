@@ -153,6 +153,15 @@ $messages['gsw'] = array(
 	'pdfbook-desc' => 'Stellt e Buech vu Syte us ere Kategori zämme un exportiert s as PDF-Buech',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'pdfbook-action' => 'הדפסה כקובץ PDF',
+	'pdfbook-log' => '$1 יוּצָא כספר PDF',
+	'pdfbook-desc' => 'לערוך ספר מדפים בקטגוריה וייצא אותו כ־PDF',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

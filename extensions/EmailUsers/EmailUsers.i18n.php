@@ -73,6 +73,13 @@ $messages['br'] = array(
 	'emailusers-toomanyrecipientsselected' => "Merket ez eus bet kalz re a reseverien ({{PLURAL:$1|$1 d'ar muiañ|$1 d'ar muiañ}}).",
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'emailusers' => 'Anfon e-bost at mwy nag un ddefnyddiwr',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -294,6 +301,13 @@ $messages['ru'] = array(
 	'emailusers-norecipient' => 'Вы некому не можете отправить сообщение.',
 	'emailusers-norecipientselected' => 'Получатель не выбран.',
 	'emailusers-toomanyrecipientsselected' => 'Выбрано слишком много получателей ({{PLURAL:$1|максимум — $1|максимум — $1}}).',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'emailusers' => 'Kutuma barua pepe kwa watumiaji wengi',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

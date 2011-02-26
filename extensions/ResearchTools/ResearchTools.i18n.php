@@ -70,6 +70,18 @@ $messages['gsw'] = array(
 	'researchtools-page-prefs' => 'Yystelligs-Statischtike',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'researchtools' => 'כלי מחקר',
+	'researchtools-desc' => 'ערכת כלים שימושיים למחקרים',
+	'researchtools-page-dashboard' => 'לוח בקרה',
+	'researchtools-page-surveys' => 'תשובות לסקרים',
+	'researchtools-page-clicks' => 'מעקב לחיצות',
+	'researchtools-page-prefs' => 'סטטיסטיקת העדפות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -2707,6 +2707,14 @@ $messages['he'] = array(
 	'deletequeue-action-queued' => 'מחיקה',
 	'deletequeue-action' => 'הצעת מחיקה',
 	'deletequeue-action-title' => 'הצעת מחיקה של "$1"',
+	'deletequeue-action-text' => "בוויקי הזה יש מספר תהליכים למחיקת דפים:
+* אם נראה לכם שצריך לעשות את זה, אתם יכולים [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} להציע '''מחיקה מהירה''' שלו].
+* אם הדף הזה אינו אמור להימחק במחיקה מהירה, אבל '''מחיקת הדף אינה צפויה לעורר מחלוקת''', כדאי [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} להציע מחיקה ללא דיון].
+* אם אפשר לצפות להתנגדות למחיקת הדף הזה, כדאי [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} לפתוח דיון מחיקה].",
+	'deletequeue-action-text-queued' => 'ניתן לצפות בדפים הבאים הנוגעים למחיקה הזאת:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} לצפות בתמיכות ובהתנגדויות הנוכחיות].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} להביע את דעתכם בעד או נגד המחיקה].',
+	'deletequeue-permissions-noedit' => 'רק משתמש שיכול לערוך דף, יכול להשפיע על מצב המחיקה שלו',
 	'deletequeue-generic-reasons' => '* סיבות כלליות
   ** השחתה
   ** ספאם
@@ -2714,53 +2722,108 @@ $messages['he'] = array(
   ** מחוץ לטווח המיזם',
 	'deletequeue-nom-alreadyqueued' => 'דף זה נמצא כבר בתור המחיקה.',
 	'deletequeue-speedy-title' => 'סימון "$1" למחיקה מהירה',
+	'deletequeue-speedy-text' => "אפשר להשתמש בטופס הזה כדי לסמן את הדף \"'''\$1'''\" למחיקה מהירה.
+
+מפעיל יסקור את הבקשה הזאת ואם היא יש לה יסוד, ימחק אותו.
+יש לבחור סיבה למחיקה מהרשימה להלן ולהוסיף כל מידע מועיל נוסף.",
 	'deletequeue-prod-title' => 'הצעת מחיקה של "$1"',
+	'deletequeue-prod-text' => "אפשר להשתמש בטופס הזה כדי להציע מחיקה של \"'''\$1'''\".
+
+אם אחרי חמישה ימים איש לא יתנגד למחיקת הדף הזה, ,הוא יימחק לאחר סקירה סופית על־ידי מפעיל.",
 	'deletequeue-delnom-reason' => 'הסיבה להצעת המחיקה:',
 	'deletequeue-delnom-otherreason' => 'סיבה אחרת',
 	'deletequeue-delnom-extra' => 'מידע נוסף:',
 	'deletequeue-delnom-submit' => 'הגשת הצעה',
+	'deletequeue-log-nominate' => "הציע מחיקה של [[$1]] בתור '$2'",
+	'deletequeue-log-rmspeedy' => 'סירב למחיקה מהירה של [[$1]]',
+	'deletequeue-log-requeue' => "העביר את [[$1]] מתור '$2' לתור '$3'",
+	'deletequeue-log-dequeue' => "הסיר את [[$1]] מתור המחיקה '$2'",
 	'right-speedy-nominate' => 'הצעת דפים למחיקה מהירה',
+	'right-speedy-review' => 'לסקור מועמדויות למחיקה מהירה',
 	'right-prod-nominate' => 'הצעת מחיקה של דף',
+	'right-prod-review' => 'לסקור הצעות מחיקה שלא הובעה להן התנגדות',
 	'right-deletediscuss-nominate' => 'פתיחת דיוני מחיקה',
 	'right-deletediscuss-review' => 'סגירת דיוני מחיקה',
+	'right-deletequeue-vote' => 'לתמוך במחיקות ולהתנגד להן',
 	'deletequeue-queue-speedy' => 'מחיקה מהירה',
 	'deletequeue-queue-prod' => 'מחיקה מוצעת',
 	'deletequeue-queue-deletediscuss' => 'דיון מחיקה',
+	'deletequeue-page-speedy' => "הדף הזה מועמד למחיקה מהירה.
+הסיבה שניתנה לכך היא '''$1'''.",
+	'deletequeue-page-prod' => "הוצע למחוק את הדף הזה.
+הסיבה שניתנה לכך היא '''$1'''.
+אם לא תובע התנגדות למחיקתו עד '''$2''', הדף הזה יימחק.
+אפשר [{{fullurl:{{FULLPAGENAME}}|action=delvote}} להתנגד למחיקת הדף הזה].",
+	'deletequeue-page-deletediscuss' => "הדף הזה הוצע למחיקה וההצעה נתקלה בהתנגדויות.
+הסיבה לכך היא '''$1'''.
+מתקיים דיון בדף [[$5]], והוא צפוי להסתיים ב־'''$2'''.",
 	'deletequeue-notqueued' => 'הדף שבחרתם אינו מועמד למחיקה',
 	'deletequeue-review-action' => 'פעולה בה יש לנקוט:',
 	'deletequeue-review-delete' => 'מחיקת הדף.',
+	'deletequeue-review-change' => 'למחוק את הדף, אבל עם הסבר אחר.',
 	'deletequeue-review-requeue' => 'העברת דף זה לתור הבא:',
+	'deletequeue-review-dequeue' => 'לא לעשות דבר, ולהוציא את הדף מתור המחיקה.',
 	'deletequeue-review-reason' => 'הערות:',
 	'deletequeue-review-newreason' => 'סיבה חדשה:',
 	'deletequeue-review-newextra' => 'מידע נוסף:',
 	'deletequeue-review-submit' => 'שמירת הסקירה',
 	'deletequeue-review-original' => 'הסיבה להצעת המחיקה',
+	'deletequeue-actiondisabled-involved' => 'הפעולה הבאה אינה פעילה כי השתתפתם במחיקה הזאת בתור $1:',
+	'deletequeue-actiondisabled-notexpired' => 'הפעולה הבאה אינה פעילה כי המועמדות למחיקה טרם פגה:',
 	'deletequeue-review-badaction' => 'ציינתם פעולה בלתי חוקית',
 	'deletequeue-review-actiondenied' => 'ציינתם פעולה שאינה פעילה עבור דף זה',
+	'deletequeue-review-objections' => "'''אזהרה''': יש [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} התנגדויות] למחיקת הדף הזה.
+נא לוודא שההתנגדויות האלו נשקלו כראוי לפני מחיקת הדף הזה.",
 	'deletequeue-reviewspeedy-tab' => 'בדיקת המחיקה המהירה',
 	'deletequeue-reviewspeedy-title' => 'בדיקת המועמדות של "$1" למחיקה מהירה',
+	'deletequeue-reviewspeedy-text' => "אפשר להשתמש בטופס הזה כדי לסקור את העמדת הדף \"'''\$1'''\" למחיקה מהירה.
+נא לוודא שהדף הזה יכול להימחק במחיקה מהירה בהתאם למדיניות.",
 	'deletequeue-reviewprod-tab' => 'בדיקת הצעות מחיקה',
 	'deletequeue-reviewprod-title' => 'בדיקת ההצעה למחיקת "$1"',
+	'deletequeue-reviewprod-text' => "אפשר להשתמש בטופס הזה כדי לסקור את ההצעה למחוק את הדף \"'''\$1'''\".",
 	'deletequeue-reviewdeletediscuss-tab' => 'סקירת המחיקה',
 	'deletequeue-reviewdeletediscuss-title' => 'סקירת דיון המחיקה עבור "$1"',
+	'deletequeue-reviewdeletediscuss-text' => "אפשר להשתמש הטופס הזה כדי לסקור את דיון המחיקה של \"'''\$1'''\".
+
+ניתן לצפות ב[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} רשימה] של תמיכות במחיקה והתנגדויות לה, והדיון המלא נמצא בדף [[\$2]]. יש לקבל את ההחלטה רק אם יש בדיון הסכמה רחבה.",
 	'deletequeue-review-success' => 'סקרתם בהצלחה את מחיקת דף זה',
 	'deletequeue-review-success-title' => 'הסקירה הושלמה',
+	'deletequeue-deletediscuss-discussionpage' => 'זהו דף הדיון למחיקה של [[$1]].
+כעת {{PLURAL:$2|משתמש אחד תומך|$2 משתמשים תומכים}} במחיקה ו{{PLURAL:$3|משתמש אחד מתנגד|־$3 משתמשים מתנגדים}} למחיקה.
+אפשר [{{fullurl:$1|action=delvote}} להביע דעה בעד או נגד המחיקה] או [{{fullurl:$1|action=delviewvotes}} להציע את כל התמיכות וההתנגדויות].',
 	'deletequeue-discusscreate-summary' => 'יצירת דיון למחיקת [[$1]].',
 	'deletequeue-discusscreate-text' => 'המחיקה הוצעה מהסיבה הבאה: $2',
 	'deletequeue-role-nominator' => 'המציע המקורי למחיקה',
 	'deletequeue-role-vote-endorse' => 'בעד המחיקה',
 	'deletequeue-role-vote-object' => 'נגד המחיקה',
 	'deletequeue-vote-tab' => 'הצבעה על המחיקה',
+	'deletequeue-vote-title' => 'לתמוך במחיקה או להתנגד למחיקה של "$1"',
+	'deletequeue-vote-text' => "בטופס הזה אפשר להביע דעה בעד או נגד המחיקה של \"'''\$1'''\".
+הפעולה הזאת תדרוס כל הבעה קודמת של דעתכם על מחיקת הדף הזה.
+אפשר [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} להציג] תמיכות והתנגדויות נוכחיות.
+הסיבה שניתנה להצעת המחיקה היא '''\$2'''.",
 	'deletequeue-vote-legend' => 'לתמוך במחיקה/להתנגד למחיקה',
 	'deletequeue-vote-action' => 'המלצה:',
 	'deletequeue-vote-endorse' => 'תמיכה במחיקה.',
 	'deletequeue-vote-object' => 'התנגדות למחיקה.',
 	'deletequeue-vote-reason' => 'הערות:',
 	'deletequeue-vote-submit' => 'שליחה',
+	'deletequeue-vote-success-endorse' => 'תמכתם בהצלחה במחיקת דף זה.',
 	'deletequeue-vote-success-object' => 'התנגדתם בהצלחה למחיקת דף זה.',
+	'deletequeue-vote-requeued' => 'התנגדתם בהצלחה למחיקת הדף הזה.
+בשל התנגדותכם, הדף הועבר לתור $1.',
+	'deletequeue-showvotes' => 'דעות בעד ונגד המחיקה של "$1"',
+	'deletequeue-showvotes-text' => "להלן הדעות בעד ונגד המחיקה של הדף \"'''\$1'''\".
+אפשר [{{fullurl:{{FULLPAGENAME}}|action=delvote}} להביע את דעתכם בעד או נגד] המחיקה הזאת.",
+	'deletequeue-showvotes-restrict-endorse' => 'להציג רק תמיכות',
 	'deletequeue-showvotes-restrict-object' => 'הצגת התנגדויות בלבד',
+	'deletequeue-showvotes-restrict-none' => 'הצגת כל התמיכות וההתנגדויות',
+	'deletequeue-showvotes-vote-endorse' => "'''בעד''' המחיקה ב־$1 $2",
 	'deletequeue-showvotes-vote-object' => "'''התנגד''' למחיקה ב־$1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'מוצגות רק התמיכות',
 	'deletequeue-showvotes-showingonly-object' => 'מוצגות רק ההתנגדויות',
+	'deletequeue-showvotes-none' => 'אין תמיכות במחיקת דף זה או התנגדויות לה.',
+	'deletequeue-showvotes-none-endorse' => 'אין תמיכות במחיקת דף זה.',
 	'deletequeue-showvotes-none-object' => 'אין התנגדויות למחיקת דף זה.',
 	'deletequeue' => 'תור המחיקות',
 	'deletequeue-list-text' => 'דף זה מציג את כל הדפים שנמצאים במערכת המחיקה.',

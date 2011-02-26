@@ -279,10 +279,17 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'multiboilerplate-desc' => 'הוספת תמליל חוזר לבחירה מתפריט נפתח מעל תיבת העריכה',
+	'multiboilerplate-legend' => 'בחירת תמליל חוזר',
 	'multiboilerplate-submit' => 'טעינה',
+	'boilerplates' => 'תמלילים חוזרים זמינים',
+	'multiboilerplate-special-pagetext' => 'אפשר לטעון את התבניות הבאות מראש בזמן יצירת הדף. (<span class=plainlinks>[{{fullurl:הדף הזה אינו קיים|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'תמלילים חוזרים מוגדרים ב־LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'תמלילים חוזרים מוגדרים ב־[[MediaWiki:Multiboilerplate]].',
 );
 
 /** Hindi (हिन्दी)

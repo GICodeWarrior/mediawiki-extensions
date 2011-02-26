@@ -443,7 +443,8 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'oai-desc' => 'Предоставляет к хранилищу интерфейс [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oai-desc' => 'Обеспечивает интерфейс к хранилищу [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => 'Хранилище OAI',
 );
 
 /** Yakut (Саха тыла)

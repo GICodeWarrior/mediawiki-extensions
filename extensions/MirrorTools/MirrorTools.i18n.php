@@ -144,6 +144,18 @@ $messages['gsw'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Benutzer',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'mirrortools' => 'כלי מראה (MirrorTools)',
+	'mirrortools-desc' => 'אפשור עריכות API בכל שם משתמש',
+	'right-mirroredit' => 'לערוך ב־API מכל שם משתמש',
+	'group-MirrorTools' => 'משתמשי כלי מראה',
+	'group-MirrorTools-member' => 'משתמש כלי מראה',
+	'grouppage-MirrorTools' => '{{ns:project}}:משתמשי כלי מראה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

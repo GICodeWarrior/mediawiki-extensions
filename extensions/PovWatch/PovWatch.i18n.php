@@ -876,7 +876,7 @@ $messages['gv'] = array(
  */
 $messages['he'] = array(
 	'povwatch' => 'מערכת PovWatch',
-	'povwatch_desc' => '[[Special:PovWatch|דחיפת דפים לרשימת המעקב]] של משתמשים אחרים',
+	'povwatch_desc' => '[[Special:PovWatch|דחיפת דפים לרשימות המעקב]] של משתמשים אחרים',
 	'povwatch_no_session' => 'שגיאה: לא ניתן לשלוח את הטופס עקב אובדן מידע הכניסה.',
 	'povwatch_not_allowed_push' => 'אינכם מנהלי PovWatch, לא תוכלו לדחוף דפים לרשימות מעקב.',
 	'povwatch_already_subscribed' => 'אתם כבר רשומים ל־PovWatch',
@@ -885,7 +885,7 @@ $messages['he'] = array(
 	'povwatch_unsubscribed' => 'הרשמתכם ל־PovWatch בוטלה כעת',
 	'povwatch_invalid_title' => 'הכותרת שצוינה אינה תקינה',
 	'povwatch_pushed' => '[[$1]] נדחף בהצלחה ל{{PLURAL:$2|רשימת המעקב של משתמש אחד|רשימות המעקב של $2 משתמשים}}',
-	'povwatch_intro' => 'PovWatch הוא שירות המאפשר דחיפה חסויה דפי תוכן לרשימות המעקב של המנהלים שנרשמו לשירות.
+	'povwatch_intro' => 'PovWatch הוא שירות המאפשר דחיפה חסויה של דפים מעוררי מחלוקת לרשימות המעקב של המנהלים שנרשמו לשירות.
 
 יומן הדחיפות האחרונות לרשימות המעקב זמין בדף [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'ניתן לצפות ב[[Special:PovWatch/subscribers|רשימת הנרשמים]].',
@@ -894,7 +894,7 @@ $messages['he'] = array(
 	'povwatch_unknown_subpage' => 'דף משנה בלתי ידוע.',
 	'povwatch_push' => 'דחיפה',
 	'povwatch_push_intro' => 'השתמשו בטופס שלהלן כדי לדחוף דפים לרשימות המעקב של המשתמשים המנויים.
-אנא הזהרו בעת הקלדת הכותרת: ניתן להוסיף אפילו כותרות שאינן קיימות, ואין כל דרך להסיר כותרת לאחר שנדחפה.',
+אנא היזהרו בעת הקלדת הכותרת: ניתן להוסיף אפילו כותרות שאינן קיימות, ואין כל דרך להסיר כותרת לאחר שנדחפה.',
 	'povwatch_title' => 'כותרת:',
 	'povwatch_comment' => 'הערה ליומן:',
 	'povwatch_no_log' => 'אין רשומות ביומן.',
