@@ -56,6 +56,7 @@ $wgNarayamSchemes = array(
 	),
 	'sa' => array(
 		'sa' => 'ext.narayam.rules.sa',
+                'sa-inscript' => 'ext.narayam.rules.sa-inscript',
 	),
 	'ta' => array(
 		'ta' => 'ext.narayam.rules.ta',
@@ -137,6 +138,11 @@ $wgResourceModules['ext.narayam.rules.ml'] = $narayamTpl + array(
 $wgResourceModules['ext.narayam.rules.sa'] = $narayamTpl + array(
 	'scripts' => 'ext.narayam.rules.sa.js',
 	'messages' => array( 'narayam-sa' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.sa-inscript'] = $narayamTpl + array(
+	'scripts' => 'ext.narayam.rules.sa-inscript.js',
+	'messages' => array( 'narayam-sa-inscript' ),
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ta99'] = $narayamTpl + array(

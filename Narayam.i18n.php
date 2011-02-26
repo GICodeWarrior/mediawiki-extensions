@@ -21,6 +21,7 @@ $messages['en'] = array(
 	'narayam-ml' => 'Malayalam Transliteration',
 	'narayam-ml-inscript' => 'Malayalam InScript',
 	'narayam-sa' => 'Sanskrit Transliteration',
+        'narayam-sa-inscript' => 'Sanskrit InScript',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Tamil Transliteration',
 	'narayam-bn-avro' => 'Bengali Avro',
