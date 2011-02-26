@@ -26,7 +26,8 @@ return array(
 			'redmond' => 'skins/jquery.ui.themes/redmond/jquery-ui-1.7.2.css',
 			'start' => 'skins/jquery.ui.themes/start/jquery-ui-1.7.2.css',
 			'sunny' => 'skins/jquery.ui.themes/sunny/jquery-ui-1.7.2.css',	
-		)
+		),
+		'messageFile' => 'MwEmbedSupport.i18n.php',
 	),
 	'mediawiki.language.parser' => array( 'scripts'=> 'mediawiki.language.parser.js' ),
 	'jquery.menu' => array(

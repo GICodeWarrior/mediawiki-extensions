@@ -536,6 +536,10 @@
 		$j( '#mweDialog' ).dialog( 'destroy' ).remove();
 	};
 	
+	mw.isMobileDevice = function(){
+		return ( mw.isIphone() || mw.isIpod() || mw.isIpad() || mw.isAndroid2() )
+	},
+	
 	// MOVE TO jquery.client
 	// move to jquery.client
 	mw.isIphone = function(){
