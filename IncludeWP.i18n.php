@@ -138,6 +138,9 @@ $messages['he'] = array(
 	'includewp-licence-notice' => 'התוכן לעיל מגיע מהדף <a href="$2">$3</a> באתר $1, והוא מתפרסם ברישיון <a href="$4">$5</a>. רשימה מלאה של מחבריו נמצאת <a href="$6">כאן</a>.',
 	'includewp-parserhook-desc' => 'וו מפענח שמאפשר הצגת תוכן של דף ויקיפדיה.',
 	'includewp-include-par-page' => 'שם הדף המרוחק שאתם רוצים להציג.',
+	'includewp-include-par-wiki' => 'שם הוויקי שממנו רתם רוצים למשוף תוכן. צריך להיות אחד מאתרי הוויקי המורשים, לפי בררת המחדל – רק ויקיפדיה.',
+	'includewp-include-par-paragraphs' => 'מספר הפסקאות שאתם רוצים להציג בתחילה.',
+	'includewp-include-par-height' => 'הגובה המרבי (בפיקסלים) של ה־div שאליו אתם רוצים לטעון את התוכן. הערך 0 מציין גודל לא מוגבל.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
