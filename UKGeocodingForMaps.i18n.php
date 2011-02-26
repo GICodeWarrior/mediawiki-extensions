@@ -65,8 +65,8 @@ $messages['bs'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'ukgeocoding_name' => 'Geokodierung für Maps (UK)',
-	'ukgeocoding_desc' => 'Erweitert die Softwareerweiterung Maps um die Parserfunktion „display_uk_point“ und ermöglicht so die Geokodierung von Postleitzahlen des Vereinigten Königreichs (UK)',
+	'ukgeocoding_name' => 'Georeferenzierung für Karten (UK)',
+	'ukgeocoding_desc' => 'Erweitert die Softwareerweiterung Maps um die Parserfunktion „display_uk_point“ und ermöglicht so die Georeferenzierung von Postleitzahlen des Vereinigten Königreichs (UK)',
 	'ukgeocoding_couldNotGeocode' => 'Eine oder mehrere Postleitzahlen konnte nicht geokodiert werden und wurden nicht in die Karte aufgenommen.',
 );
 
