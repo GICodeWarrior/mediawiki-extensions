@@ -330,6 +330,6 @@ var rules = [
 jQuery.narayam.addScheme( 'ml', {
 	'namemsg': 'narayam-ml',
 	'extended_keyboard': false,
-	'lookbackLength': 2,
+	'lookbackLength': 4,
 	'rules': rules
 } );
