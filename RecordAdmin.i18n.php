@@ -929,12 +929,15 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'recordadmin' => 'ניהול רשומות',
-	'recordadmin-desc' => '[[Special:RecordAdmin|דף מיוחד]] למציאה ועריכה של דפי רשומות באמצעות טופס',
+	'recordadmin-desc' => 'חיפוש, שאילתות, טפסים ודיווח של מידע ויקי שנגזר מפרמטרים של תבניות',
+	'recordadmin-specialdesc' => '[[Special:RecordAdmin|דף מיוחד]] למציאה ויצירה של דפים על־ידי טפסים משויכים',
+	'recordadmin-noforms' => 'אין כעת טפסים שמוגדרים לחיפוש ויצירה',
 	'recordadmin-select' => 'בחירת סוג הרשומות לניהול',
 	'recordadmin-createtype' => 'כתבו את סוג הרשומה החדש ליצירה',
 	'recordadmin-recordtype' => 'סוג הרשומה',
@@ -947,7 +950,7 @@ $messages['he'] = array(
 	'recordadmin-createerror' => 'אירעה שגיאה בעת הנסיון ליצור את $1!',
 	'recordadmin-badtitle' => 'כותרת בלתי תקינה!',
 	'recordadmin-recordid' => 'שם/מספר הרשומה:',
-	'recordadmin-invert' => 'הפיכת הבחירה',
+	'recordadmin-invert' => 'היפוך הבחירה',
 	'recordadmin-buttonsearch' => 'חיפוש',
 	'recordadmin-buttoncreate' => 'יצירה',
 	'recordadmin-buttonreset' => 'איפוס',
@@ -955,7 +958,7 @@ $messages['he'] = array(
 	'recordadmin-nomatch' => 'לא נמצאו רשומות תואמות!',
 	'recordadmin-typeupdated' => 'עודכנו $1 מאפיינים',
 	'recordadmin-buttonsave' => 'שמירה',
-	'recordadmin-noform' => 'אין טופס המשוייך לרשומות "$1"!',
+	'recordadmin-noform' => 'אין טופס המשויך לרשומות "$1"!',
 	'recordadmin-createlink' => 'יצירת אחת כזו',
 	'recordadmin-newcreated' => 'נוצרה $1 חדשה מטופס ציבורי',
 	'recordadmin-summary-typecreated' => 'נוצרה $1 חדשה',
@@ -966,6 +969,10 @@ $messages['he'] = array(
 	'recordadmin-actions' => 'פעולות',
 	'recordadmin-needscontent' => 'הוספת תוכן...',
 	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'ללא "$1"',
+	'recordadmin-edit-info' => 'הדף הזה מכיל תבניות עם טפסים משלהן שאפשר למלא מערכת הלשוניות הזאת<br />לחלופין <a href="$1">השתמשו בעריכה רגילה של מדיה־ויקי ללא טופסי תבניות</a>.',
 	'recordadmin-properties' => 'מאפיינים',
 );
 
