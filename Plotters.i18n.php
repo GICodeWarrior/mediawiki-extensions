@@ -351,16 +351,30 @@ Die Ibersicht isch e eifach Zuegang zue dr Syschtemnochrichte, wu d Bschrybig un
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'plotters-desc' => 'מתן אפשרות לשימוש ב־JavaScript מותאם אישית בתגיות jsplot',
+	'plotters-desc' => 'מתן אפשרות לשימוש ב־JavaScript מותאם אישית בתגי jsplot',
+	'plotters' => 'תוויינים',
+	'plotters-title' => 'תוויינים',
+	'plotters-pagetext' => 'להלן רשימת תוויינים מיוחדים שהמשתמשים יכולים להשתמש בהם בתגי jsplot שלהם, כפי שמוגר ב־[[MediaWiki:Plotters-definition]].
+הסקירה הכללית הזאת נותנת גישה קלה לדפי הודעות מערכת שמגדירים את התיאור ואת הקוד של כל תוויין.',
+	'plotters-uses' => 'שימושים',
 	'plotters-missing-script' => 'לא הוגדר סקריפט.',
 	'plotters-missing-arguments' => 'לא צוינו ארגומנטים.',
 	'plotters-excessively-long-scriptname' => 'שם הסקריפט ארוך מדי.
 אנא הגדירו שם לסקריפט באורך 255 תווים לכל היותר.',
+	'plotters-excessively-long-preprocessorname' => 'שם מעבד הקדם ארוך מדי.
+נא להגדיר מעבד קדם שאורך שמו – 255 תווים לכל היותר.',
+	'plotters-excessively-long-name' => 'שם התרשים ארוך מדי.
+נא להגדיר שם תרשים באורך של 255 לכל היותר.',
+	'plotters-excessively-long-tableclass' => 'שם מחלקת טבלאות ארוך מדי.
+נא להגדיר שם מחלקת טבלאות באורך של 255 תווים לכל היותר.',
 	'plotters-no-data' => 'לא סופקו נתונים.',
+	'plotters-invalid-renderer' => 'נבחר מעבד תמונה לא תקין.',
+	'plotters-errors' => '{{PLURAL:$1|שגיאת|שגיאות}} תוויינים:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
