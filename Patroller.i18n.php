@@ -841,20 +841,34 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
+	'patrol' => 'ניטור עריכות',
+	'patrol-desc' => 'ממשק ניטור מורחב עם שיתוף עומס עבודה',
+	'patrol-endorse' => 'לאשר',
+	'patrol-revert' => 'לשחזר',
 	'patrol-revert-reason' => 'סיבה:',
 	'patrol-skip' => 'דילוג',
-	'patrol-skipped-ok' => 'התעלמות מהעריכה.',
+	'patrol-reverting' => 'שחזור: $1',
+	'patrol-nonefound' => 'לא נמצאו עריכות שאפשר לנטר.',
+	'patrol-endorsed-ok' => 'העריכה סומנה כמנוטרת.',
+	'patrol-endorsed-failed' => 'לא ניתן לסמן את העריכה כמנוטרת.',
+	'patrol-reverted-ok' => 'העריכה שוחזרה.',
+	'patrol-reverted-failed' => 'לא ניתן לשחזר את העריכה.',
+	'patrol-skipped-ok' => 'דילוג על עריכה.',
 	'patrol-reasons' => '* השחתה פשוטה
-* נסיון של חדשים
+* ניסיון של חדשים
 * ראו בדף השיחה',
 	'patrol-another' => 'הצגת עריכה נוספת, אם ניתן.',
+	'patrol-stopped' => 'בחרתם לא לנטר עוד עריכה. $1',
 	'patrol-resume' => 'לחצו כאן להמשך.',
-	'group-patroller' => 'בודקי עריכות',
-	'group-patroller-member' => 'בודק עריכות',
+	'group-patroller' => 'מנטרי עריכות',
+	'group-patroller-member' => 'מנטר עריכות',
+	'grouppage-patroller' => '{{ns:project}}:מנטר',
+	'right-patroller' => 'לנטר דפים',
 );
 
 /** Hindi (हिन्दी)
