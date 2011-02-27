@@ -53,6 +53,10 @@ $wgNarayamSchemes = array(
         'hi' => array(
                 'hi-inscript' => 'ext.narayam.rules.hi-inscript',
         ),
+        'kn' => array(
+                'kn' => 'ext.narayam.rules.kn',
+                'kn-inscript' => 'ext.narayam.rules.kn-inscript',
+        ),
 	'ml' => array(
 		'ml' => 'ext.narayam.rules.ml',
 		'ml-inscript' => 'ext.narayam.rules.ml-inscript',
@@ -131,6 +135,16 @@ $wgResourceModules['ext.narayam.rules.bn-nkb'] = $narayamTpl + array(
 $wgResourceModules['ext.narayam.rules.hi-inscript'] = $narayamTpl + array(
 	'scripts' => 'ext.narayam.rules.hi-inscript.js',
 	'messages' => array( 'narayam-hi-inscript' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.kn'] = $narayamTpl + array(
+	'scripts' => 'ext.narayam.rules.kn.js',
+	'messages' => array( 'narayam-kn' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.kn-inscript'] = $narayamTpl + array(
+	'scripts' => 'ext.narayam.rules.kn-inscript.js',
+	'messages' => array( 'narayam-kn-inscript' ),
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ml-inscript'] = $narayamTpl + array(
