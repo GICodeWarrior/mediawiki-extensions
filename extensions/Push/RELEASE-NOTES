@@ -5,9 +5,9 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.8 ===
-2011-0x-xx
+2011-02-27
 
-* Fixed issue with pushing files from private wikis.
+* Added ability to directly upload files using cURL.
 
 === Version 0.7 ===
 2011-01-14
