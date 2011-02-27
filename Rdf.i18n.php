@@ -38,7 +38,9 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'rdf-desc' => '{{desc}}',
-	'rdf-inpage' => '[[:wikipedia:Turtle (syntax)|Turtle]] is a specific [[:wikipedia:Resource Description Framework|RDF]]-Syntax.',
+	'rdf-inpage' => '[[:wikipedia:Turtle (syntax)|Turtle]] is a specific [[:wikipedia:Resource Description Framework|RDF]]-Syntax.
+"Embedded RDF" is a term describing some RDF data embedded into a page, usually a web page, as opposed to stand-alone in a page or data set on its own.
+"In-page Turtle" means about the same, only specifically for the Turtle syntax.',
 	'rdf-categories' => '{{Identical|Categories}}',
 );
 
