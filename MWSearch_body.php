@@ -64,15 +64,15 @@ class LuceneSearch extends SearchEngine {
 		global $wgContLang, $wgLuceneUseRelated;
 		$fname = 'LuceneSearch::replacePrefixes';
 		wfProfileIn($fname);
-
-		// "search everything" keyword
-		$allkeyword = wfMsgForContent('searchall');			
 		
 		// quick check, most of the time we don't need any rewriting
 		if(strpos($query,':')===false){ 
 			wfProfileOut($fname);
 			return $query;
 		}
+
+		// "search everything" keyword
+		$allkeyword = wfMsgForContent('searchall');
 
 		// check if this is query for related articles
 		$relatedkey = wfMsgForContent('searchrelated').':';
