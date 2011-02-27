@@ -60,7 +60,7 @@ void print_diff(std::vector<std::string> &text1, std::vector<std::string> &text2
 		case del:
 			// deleted text
 			ret += "<tr>"
-				"<td>-</td>"
+				"<td>−</td>"
 				"<td class=\"diff-deletedline\">" + *linediff[i].from + "</td>"
 				"<td colspan=\"2\">&nbsp;</td>"
 				"</tr>";
@@ -117,7 +117,7 @@ void print_worddiff(const char * const text1, const char * const text2, std::str
 	
 	// print twice; first for left side, then for right side
 	ret += "<tr>"
-		"<td>-</td>"
+		"<td>−</td>"
 		"<td class=\"diff-deletedline\">";
 	print_worddiff_side(worddiff, false, ret);
 	ret += "</td>"
