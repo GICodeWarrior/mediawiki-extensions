@@ -258,7 +258,7 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
-	'lastuserlogin_userid' => 'Lankide izena',
+	'lastuserlogin_userid' => 'Erabiltzaile izena',
 	'lastuserlogin_username' => 'Benetako izena',
 	'lastuserlogin_useremail' => 'Lankide eposta',
 	'lastuserlogin_lastlogin' => 'Azken Saio-hasiera',
