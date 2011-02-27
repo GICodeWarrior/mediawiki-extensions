@@ -62,12 +62,11 @@ class LuceneSearch extends SearchEngine {
 	 */
 	function replacePrefixes( $query ) {
 		global $wgContLang, $wgLuceneUseRelated;
-		$fname = 'LuceneSearch::replacePrefixes';
-		wfProfileIn($fname);
+		wfProfileIn( __METHOD__ );
 		
 		// quick check, most of the time we don't need any rewriting
 		if(strpos($query,':')===false){ 
-			wfProfileOut($fname);
+			wfProfileOut( __METHOD__ );
 			return $query;
 		}
 
@@ -79,7 +78,7 @@ class LuceneSearch extends SearchEngine {
 		if($wgLuceneUseRelated && strncmp($query, $relatedkey, strlen($relatedkey)) == 0){
 			$this->related = true;
 			list($dummy,$ret) = explode(":",$query,2);
-			wfProfileOut($fname);
+			wfProfileOut( __METHOD__ );
 			return trim($ret);
 		}
 		
@@ -115,7 +114,7 @@ class LuceneSearch extends SearchEngine {
 				$rewritten .= str_replace($allkeyword.':', 'all:', $r);
 			}
 		}		
-		wfProfileOut($fname);
+		wfProfileOut( __METHOD__ );
 		return $rewritten;
 	}
 	
@@ -429,7 +428,7 @@ class LuceneSearchSet extends SearchResultSet {
 	    $limit = 20, $offset = 0, $searchAll = False ) {
 	    	
 		$fname = 'LuceneSearchSet::newFromQuery';
-		wfProfileIn( $fname );
+		wfProfileIn( __METHOD__ );
 		
 		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
 		global $wgLuceneSearchVersion, $wgLuceneSearchCacheExpiry;
@@ -465,8 +464,8 @@ class LuceneSearchSet extends SearchResultSet {
 			$key = "$wgDBname:lucene:" . md5( $searchUrl );
 			$resultSet = $wgMemc->get( $key );
 			if( is_object( $resultSet ) ) {
-				wfDebug( "$fname: got cached lucene results for key $key\n" );
-				wfProfileOut( $fname );
+				wfDebug( __METHOD__ . ": got cached lucene results for key $key\n" );
+				wfProfileOut( __METHOD__ );
 				return $resultSet;
 			}
 		}
@@ -477,13 +476,14 @@ class LuceneSearchSet extends SearchResultSet {
 		
 		wfDebug( "Fetching search data from $searchUrl\n" ); 
 		wfSuppressWarnings();
-		wfProfileIn( $fname.'-contact-'.$host );
+		$httpProfile = __METHOD__ . '-contact-' . $host;
+		wfProfileIn( $httpProfile );
 		$data = Http::get( $searchUrl, $wgLuceneSearchTimeout, $httpOpts); 
-		wfProfileOut( $fname.'-contact-'.$host );
+		wfProfileOut( $httpProfile );
 		wfRestoreWarnings();
 		if( $data === false ) {
 			// Network error or server error
-			wfProfileOut( $fname );
+			wfProfileOut( __METHOD__ );
 			return null;
 		} else {
 			$inputLines = explode( "\n", trim( $data ) );
@@ -535,11 +535,11 @@ class LuceneSearchSet extends SearchResultSet {
 		             $suggestion, $info, $interwiki );
 		
 		if($wgLuceneSearchCacheExpiry > 0){
-			wfDebug( "$fname: caching lucene results for key $key\n" );
+			wfDebug( __METHOD__ . ": caching lucene results for key $key\n" );
 			$wgMemc->add( $key, $resultSet, $wgLuceneSearchCacheExpiry );
 		}
 		
-		wfProfileOut( $fname );
+		wfProfileOut( __METHOD__ );
 		return $resultSet;
 	}
 	
