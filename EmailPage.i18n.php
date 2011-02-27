@@ -733,6 +733,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Junaidpv
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -749,6 +750,7 @@ $messages['ml'] = array(
 	'ea-show' => 'സ്വീകര്‍ത്താക്കളെ പ്രദര്‍ശിപ്പിക്കുക',
 	'ea-send' => 'അയക്കൂ!',
 	'ea-subject' => 'ഇമെയിലിനു ഒരു വിഷയം/ശീര്‍ഷകം ചേര്‍ക്കുക',
+	'ea-message' => 'സന്ദേശം:',
 );
 
 /** Marathi (मराठी)
