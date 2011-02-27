@@ -602,10 +602,11 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'pageby-contributors' => 'Доприноси:',
+	'pageby-contributors' => 'Прилози:',
 	'pageby-anon' => '<i>анонимно</i>',
 );
 
