@@ -245,12 +245,11 @@ class LuceneBuilder {
 	}
 	
 	function rebuildAll() {
-		$fname = 'LuceneBuilder::rebuildAll';
 		global $wgDBname;
 		
 		$lastError = true;
 		
-		$maxId = $this->db->selectField( 'page', 'MAX(page_id)', '', $fname );
+		$maxId = $this->db->selectField( 'page', 'MAX(page_id)', '', __METHOD__ );
 		$maxId -= $this->offset; // hack for percentages
 		$this->init( $maxId );
 		if( $maxId < 1 ) {
@@ -266,7 +265,7 @@ class LuceneBuilder {
 		$result = $this->dbstream->select( array( 'page' ),
 			array( 'page_namespace', 'page_title', 'page_latest' ),
 			'',
-			$fname,
+			__METHOD__,
 			$limit );
 		
 		$errorCount = 0;
@@ -306,7 +305,6 @@ class LuceneBuilder {
 	 */
 	function rebuildDeleted( $since = null ) {
 		global $wgDBname;
-		$fname   = 'LuceneBuilder::rebuildDeleted';
 		
 		if( is_null( $since ) ) {
 			$since = '20010115000000';
@@ -325,7 +323,7 @@ class LuceneBuilder {
 			 ON log_namespace=page_namespace AND log_title=page_title
 			 WHERE log_type='delete'
 			 AND log_timestamp > $cutoff
-			 AND page_namespace IS NULL", $fname );
+			 AND page_namespace IS NULL", __METHOD__ );
 		
 		$max = $this->dbstream->numRows( $result );
 		if( $max == 0 ) {
@@ -359,8 +357,7 @@ class LuceneBuilder {
 	 */
 	function rebuildRecent( $since = null ) {
 		global $wgDBname;
-		$fname   = 'LuceneBuilder::rebuildDeleted';
-		
+
 		if( is_null( $since ) ) {
 			$since = '20010115000000';
 		}
@@ -379,7 +376,7 @@ class LuceneBuilder {
 			 AND rc_title=page_title
 			 AND rc_this_oldid=page_latest
 			 AND page_latest=rev_id
-			 AND rc_timestamp > $cutoff", $fname );
+			 AND rc_timestamp > $cutoff", __METHOD__ );
 		
 		#$max = $this->dbstream->numRows( $result );
 		$max = 10000; // wacky estimate
