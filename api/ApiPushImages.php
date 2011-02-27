@@ -243,24 +243,45 @@ class ApiPushImages extends ApiBase {
 	 * @param string $token
 	 */		
 	protected function pushToTarget( Title $title, $target, $token ) {
-		$imagePage = new ImagePage( $title );
+		global $egPushDirectFileUploads;
 		
+		$imagePage = new ImagePage( $title );
+
 		$requestData = array(
 			'action' => 'upload',
 			'format' => 'json',
 			'token' => $token,
-			'url' => $imagePage->getDisplayedFile()->getFullUrl(),
 			'filename' => $title->getText(),
 			'ignorewarnings' => '1'
 		);
-
-		$req = PushFunctions::getHttpRequest( $target, 
-			array(
-				'method' => 'POST',
-				'timeout' => 'default',
-				'postData' => $requestData,
-			)
+		
+		if ( $egPushDirectFileUploads ) {
+			$requestData['file'] = '@' . $imagePage->getFile()->getFullPath();
+		}
+		else {
+			$requestData['url'] = $imagePage->getDisplayedFile()->getFullUrl();
+		}
+		
+		$reqArgs = array(
+			'method' => 'POST',
+			'timeout' => 'default',
+			'postData' => $requestData
 		);
+		
+		if ( $egPushDirectFileUploads ) {
+			if ( !function_exists( 'curl_init' ) ) {
+				$this->dieUsage( wfMsg( 'push-api-err-nocurl' ), 'image-push-nocurl' );
+			}
+			else if ( !defined( 'CurlHttpRequest::SUPPORTS_FILE_POSTS' ) || !CurlHttpRequest::SUPPORTS_FILE_POSTS ) {
+				$this->dieUsage( wfMsg( 'push-api-err-nofilesupport' ), 'image-push-nofilesupport' );
+			}
+			else {
+				$req = new CurlHttpRequest( $target, $reqArgs );
+			}
+		}
+		else {
+			$req = PushFunctions::getHttpRequest( $target, $reqArgs );
+		}
 		
 		if ( array_key_exists( $target, $this->cookieJars ) ) {
 			$req->setCookieJar( $this->cookieJars[$target] );

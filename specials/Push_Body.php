@@ -81,7 +81,7 @@ class SpecialPush extends SpecialPage {
 					if ( $catpages ) $pages .= "\n" . implode( "\n", $catpages );
 				}
 			}
-		}		
+		}
 		else if( $wgRequest->getCheck( 'addns' ) ) {
 			$pages = $wgRequest->getText( 'pages' );
 			$nsindex = $wgRequest->getText( 'nsindex', '' );

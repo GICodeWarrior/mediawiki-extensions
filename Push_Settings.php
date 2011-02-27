@@ -65,3 +65,8 @@ $egPushBulkWorkers = 3;
 
 # The maximum amount of targets to push a page to in one go.
 $egPushBatchSize = 3;
+
+# Use direct file uploads (requires patch to MW 1.16 and 1.17).
+# This is needed when pushing to a wiki that cannot access the source file
+# (for example from a private wiki to a wiki on the internet).
+$egPushDirectFileUploads = !$wgAllowCopyUploads;
