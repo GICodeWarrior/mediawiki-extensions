@@ -941,7 +941,7 @@ $messages['eu'] = array(
 	'ct_external_tip_wrap' => 'Testu hau kanpo loturan bihurtu',
 	'ct_external_caption' => 'Kanpo lotura',
 	'ct_image_tip' => 'Irudia txertatu',
-	'ct_image_caption' => 'Irudia txertatu',
+	'ct_image_caption' => 'Irudia gehitu',
 	'ct_attachment_tip' => 'Eranskin bat txertatu',
 	'ct_attachment_caption' => 'Eranskina gehitu',
 	'ct_math_sample' => 'Txertatu LaTeX formula hemen',
@@ -958,7 +958,7 @@ $messages['eu'] = array(
 	'ct_success' => 'Fitxategi igoera arrakastatsua!',
 	'ct_user_user' => 'Lankide',
 	'ct_user_caption' => 'Lankide lotura',
-	'ct_user_sample' => 'Lankide izena',
+	'ct_user_sample' => 'Erabiltzaile izena',
 );
 
 /** Finnish (Suomi)
