@@ -3017,7 +3017,7 @@ $messages['eu'] = array(
 	'mwe-upload-misc-error' => 'Igoera arazo ezezaguna',
 	'mwe-wgfogg_warning_bad_extension' => 'Aukeratu duzun fitxategiak baliagarria ez den luzapena du (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">informazio gehiago</a>).',
 	'mwe-thumbnail-more' => 'Luzatu',
-	'mwe-filesource' => 'Iturria:',
+	'mwe-filesource' => 'Jatorria:',
 	'mwe-filestatus' => 'Copyright egoera:',
 	'mwe-loading-add-media-wiz' => 'Add Media Wizard kargatzen',
 	'fogg-wont-upload-to-server' => 'Oharra: Zure fitxategia lokalki kodetuko da eta ez da igoko inongo zerbitzarira.',
@@ -6180,6 +6180,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Junaidpv
  * @author Praveenp
  */
 $messages['ml'] = array(
@@ -6225,6 +6226,7 @@ $messages['ml'] = array(
 	'fogg-width-help' => 'തന്നിരിക്കുന്ന വീതിയിലേയ്ക്ക് പുനഃക്രമീകരിക്കുക',
 	'fogg-height-title' => 'ചലച്ചിത്രത്തിന്റെ ഉയരം',
 	'fogg-height-help' => 'നൽകുന്ന പൊക്കത്തിനനുസരിച്ച് വലിപ്പം ക്രമീകരിക്കുക.',
+	'fogg-videoBitrate-title' => 'വീഡിയോ ബിറ്റ്നിരക്ക്',
 	'fogg-novideo-title' => 'ചലച്ചിത്രം ലഭ്യമല്ല',
 	'fogg-novideo-help' => 'ഔട്ട്പുട്ടിൽ ചലച്ചിത്രം നിഷേധിക്കുക',
 	'fogg-noaudio-title' => 'ശബ്ദം ലഭ്യമല്ല',
@@ -6282,6 +6284,7 @@ $messages['ml'] = array(
 	'mwe-unknown_license' => 'അപരിചിതമായ അനുമതി',
 	'mwe-results_from' => '$1 മുതലുള്ള ഫലങ്ങൾ',
 	'mwe-no_recent_uploads' => 'സമീപകാലത്ത് അപ്‌ലോഡുകൾ നടന്നിട്ടില്ല',
+	'mwe-upload-a-file' => 'ഒരു പുതിയ പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'mwe-resource_page_desc' => 'സ്രോതസ്സ് താളിന്റെ വിവരണം:',
 	'mwe-edit_resource_desc' => 'വിക്കി എഴുത്തിലുള്ള സ്രോതസ്സ് വിവരണം തിരുത്തുക:',
 	'mwe-local_resource_title' => 'പ്രാദേശിക സ്രോതസ്സ് തലക്കെട്ട്:',
