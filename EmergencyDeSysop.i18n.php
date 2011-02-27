@@ -656,6 +656,13 @@ $messages['mk'] = array(
 	'right-emergencydesysop' => 'Одземање на администраторски права заедно со своите',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Junaidpv
+ */
+$messages['ml'] = array(
+	'emergencydesysop-submit' => 'സമർപ്പിക്കുക',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
