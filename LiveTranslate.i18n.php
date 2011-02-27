@@ -543,6 +543,8 @@ $messages['lb'] = array(
 	'livetranslate-special-remove' => 'Ewechhuelen',
 	'livetranslate-special-local' => 'Lokal',
 	'livetranslate-special-add-tm' => 'En neien Iwwersetzungsspäicher derbäisetzen',
+	'livetranslate-special-tms-update' => 'Den Iwwersetzungsspäicher aktualiséieren.',
+	'livetranslate-special-update' => 'Den Iwwersetzungsspäicher aktualiséieren.',
 );
 
 /** Macedonian (Македонски)
