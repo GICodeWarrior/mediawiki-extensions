@@ -131,7 +131,7 @@ final class PushFunctions {
 					$flipped[$egPushTargets[$key]] = $value;
 				}
 			}
-			
+
 			$arr = $flipped;			
 		}
 	}

@@ -107,6 +107,8 @@ class ApiPush extends ApiBase {
 			'lgpassword' => $password
 		);
 		
+		//static $fail = 0;$fail++;
+		
 		if ( !is_null( $token ) ) {
 			$requestData['lgtoken'] = $token;
 		}

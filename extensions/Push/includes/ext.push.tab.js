@@ -301,19 +301,26 @@
 			function( data ) {
 				var fail = false;
 				
-				for ( i in data ) {
-					if ( data[i].error ) {
-						data[i].error.info = mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info );
-						handleError( sender, targetUrl, data[i].error );
-						fail = true;
-						break;
-					}
-					else if ( !data[i].upload ) {
-						data[i].error.info = mediaWiki.msg( 'push-tab-err-filepush-unknown' );
-						handleError( sender, targetUrl, data[i].error );
-						fail = true;
-						break;						
-					}
+				if ( data.error ) {
+					data.error.info = mediaWiki.msg( 'push-tab-err-filepush', data.error.info );
+					handleError( sender, targetUrl, data.error );
+					fail = true;					
+				}
+				else {
+					for ( i in data ) {
+						if ( data[i].error ) {
+							data[i].error.info = mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info );
+							handleError( sender, targetUrl, data[i].error );
+							fail = true;
+							break;
+						}
+						else if ( !data[i].upload ) {
+							data[i].error.info = mediaWiki.msg( 'push-tab-err-filepush-unknown' );
+							handleError( sender, targetUrl, data[i].error );
+							fail = true;
+							break;						
+						}
+					}					
 				}
 
 				if ( !fail ) {

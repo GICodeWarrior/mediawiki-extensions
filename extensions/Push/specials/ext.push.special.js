@@ -173,17 +173,23 @@
 				function( data ) {
 					var fail = false;
 					
-					for ( i in data ) {
-						if ( data[i].error ) {
-							handleError( listItem, pageName, { info: mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info ) } );
-							fail = true;
-							break;
-						}
-						else if ( !data[i].upload ) {
-							handleError( listItem, pageName, { info: mediaWiki.msg( 'push-tab-err-filepush-unknown' ) } );
-							fail = true;
-							break;						
-						}
+					if ( data.error ) {
+						handleError( listItem, pageName, { info: mediaWiki.msg( 'push-tab-err-filepush', data.error.info ) } );
+						fail = true;						
+					}
+					else {
+						for ( i in data ) {
+							if ( data[i].error ) {
+								handleError( listItem, pageName, { info: mediaWiki.msg( 'push-tab-err-filepush', data[i].error.info ) } );
+								fail = true;
+								break;
+							}
+							else if ( !data[i].upload ) {
+								handleError( listItem, pageName, { info: mediaWiki.msg( 'push-tab-err-filepush-unknown' ) } );
+								fail = true;
+								break;						
+							}
+						}						
 					}
 					
 					if ( !fail ) {
