@@ -46,7 +46,6 @@ $wgHooks['GetPreferences'][]                      = 'InlineEditor::getPreference
 
 $wgHooks['InlineEditorPartialBeforeParse']        = array();
 $wgHooks['InlineEditorPartialAfterParse']         = array();
-$wgHooks['InlineEditorPartialBeforeParse'][]      = 'InlineEditor::partialRenderCite';
 
 // i18n messages
 $wgExtensionMessagesFiles['InlineEditor']         = $dir . 'InlineEditor.i18n.php';

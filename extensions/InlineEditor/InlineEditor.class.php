@@ -430,18 +430,4 @@ class InlineEditor {
 
 		return Html::rawElement( 'div', array( 'class' => 'editbox' ), $form );
 	}
-
-	/**
-	 * Make sure the entire page rerenders when rendering a reference.
-	 * 
-	 * @todo: FIXME: This should be moved over to the Cite extension, and something like this should
-	 * be included in other extensions as well. In the future, something smarter should be
-	 * implemented, to be able to only rerender the dependencies and not the entire page.
-	 *  
-	 * @param $markedWiki string
-	 * @return bool
-	 */
-	public static function partialRenderCite( $markedWiki ) {
-		return ( preg_match( '/<ref[^\/]*?>.*?<\/ref>|<ref.*?\/>/is', $markedWiki) <= 0) ;
-	}
 }
