@@ -467,6 +467,13 @@ $messages['mk'] = array(
 	'tog-edit-similar' => 'Овозможи предлози за уредување на слични страници',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Junaidpv
+ */
+$messages['ml'] = array(
+	'editsimilar-link-disable' => 'ക്രമീകരണങ്ങൾ നടത്തുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
