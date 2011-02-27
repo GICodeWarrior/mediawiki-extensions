@@ -3963,7 +3963,11 @@ $messages['br'] = array(
 	'configure-setting-wgTmpDirectory' => "URL ar c'havlec'h amzeriat",
 	'configure-setting-wgUploadBaseUrl' => "URL diazez ar restroù pellgarget ma ne vez ket implijet ar c'havlec'h pellgargañ rannet",
 	'configure-setting-wgUsePathInfo' => 'Implijout URLoù « koant »',
+	'configure-setting-wgUploadDirectory' => "Hent reizhiad restroù ar c'havlec'h enporzhiañ",
+	'configure-setting-wgUploadNavigationUrl' => 'URL al liamm war-zu an enporzhiañ restroù',
+	'configure-setting-wgUploadMissingFileUrl' => "Chomlec'h URL diavaez evit al liamm enporzhiañ restroù a vank",
 	'configure-setting-wgUploadPath' => "URL ar c'havlec'h kargañ",
+	'configure-setting-wgVariantArticlePath' => 'Hent pajennoù an adstummoù yezh',
 	'configure-setting-wgPutIPinRC' => "Lakaat chomlec'h IP ar c'henlabourer e taolenn ar c'hemmoù nevez",
 	'configure-setting-wgRCFilterByAge' => 'Silañ $wgRCLinkDays evit kuzhat an talvoudoù brasoc\'h eget $wgRCMaxAge',
 	'configure-setting-wgRCLinkLimits' => "Bevenn an niver a gemmoù da ziskouez er c'hemmoù ziwezhañ",
@@ -13199,6 +13203,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Junaidpv
  * @author Praveenp
  */
 $messages['ml'] = array(
@@ -13274,6 +13279,8 @@ $messages['ml'] = array(
 	'configure-setting-wgFileStore' => 'മായ്ക്കപ്പെട്ട പ്രമാണങ്ങൾ എവിടെയാണ് ശേഖരിക്കേണ്ടത്',
 	'configure-setting-wgLocalFileRepo' => 'പ്രാദേശിക പ്രമാണ ശേഖരണയിടം',
 	'configure-setting-wgVersion' => 'മീഡിയവിക്കി പതിപ്പ്',
+	'configure-setting-wgLogRestrictions-value' => 'വായിക്കുവാൻ അവകാശം ആവശ്യമാണ്',
+	'configure-setting-wgSecureLoginStickHTTPS' => 'സ്വതേ സുരക്ഷിത ലോഗിൻ ഉപയോഗിക്കുക',
 	'configure-setting-wgSpecialPageGroups' => 'പ്രത്യേക താൾ സംഘങ്ങൾ',
 	'configure-setting-wgSpecialPageGroups-key' => 'സംഘം',
 	'configure-setting-wgAutopromote-value' => 'ഉപാധികൾ',
@@ -13287,6 +13294,7 @@ $messages['ml'] = array(
 	'configure-setting-wgSMTP' => 'എസ്.എം.റ്റി.പി. സെർവർ',
 	'configure-setting-wgDebugLogGroups-value' => 'പ്രമാണം',
 	'configure-setting-wgHooks' => 'കൊളുത്തുകൾ',
+	'configure-setting-wgRevokePermissions-value' => 'പിൻവലിക്കപ്പെട്ട അവകാശങ്ങൾ',
 	'configure-setting-wgDefaultSkin' => 'സ്വതേയുള്ള ദൃശ്യരൂപത്തിന്റെ പേര്',
 	'configure-setting-wgSkipSkin' => 'അനുവദനീയമല്ലാത്ത ദൃശ്യരൂപ നാമം',
 	'configure-setting-wgSkipSkins' => 'അനുവദനീയമല്ലാത്ത ദൃശ്യരൂപനാമങ്ങൾ',
@@ -13306,6 +13314,7 @@ $messages['ml'] = array(
 	'configure-setting-wgNamespaceRobotPolicies' => 'നാമമേഖലയ്ക്കനുസരിച്ചുള്ള റോബോട്ട് നയങ്ങൾ',
 	'configure-setting-wgNamespaceRobotPolicies-value' => 'റോബോട്ട് നയങ്ങൾ',
 	'configure-setting-wgNamespacesWithSubpages' => 'ഉപതാളുകൾ ഉള്ള നാമമേഖലകൾ',
+	'configure-setting-wgRightsIcon' => 'പകർപ്പാവകാശ മുദ്ര',
 	'configure-setting-wgAllowRealName' => 'യഥാർത്ഥ പേരുകൾ അനുവദിക്കുക',
 	'configure-setting-wgAllowUserSkin' => 'ഉപയോക്താക്കളെ അവരുടെ ദൃശ്യരൂപം മാറ്റാൻ അനുവദിക്കുക',
 	'configure-setting-wgAllowPrefChange-key' => 'ഉപയോക്തൃ ക്രമീകരണങ്ങൾ',
@@ -13315,6 +13324,7 @@ $messages['ml'] = array(
 	'configure-setting-wgMaxNameChars' => 'ഉപയോക്തൃനാമത്തിൽ അനുവദനീയമായ പരമാവധി ബൈറ്റ്സ്',
 	'configure-setting-wgMaxSigChars' => 'മാറ്റം വരുത്തിയ ഒപ്പിന് പരമാവധി പാടുള്ള നീളം',
 	'configure-setting-wgMinimalPasswordLength' => 'രഹസ്യവാക്കിന്റെ ഏറ്റവും കുറഞ്ഞ നീളം',
+	'configure-setting-wgWeakPasswords' => 'അനുവദനീയമല്ലാത്ത രഹസ്യവാക്കുകളുടെ പട്ടിക',
 	'configure-setting-wgNewUserLog' => 'പുതിയ ഉപയോക്താക്കൾ രേഖ പരിപാലിക്കുക',
 	'configure-setting-wgShowIPinHeader' => 'ഉപയോക്തൃ പട്ടയിൽ ഐ.പി. വിലാസം പ്രദർശിപ്പിക്കുക',
 	'configure-setting-wgLocalInterwiki' => 'പ്രാദേശിക അന്തർവിക്കി പൂർവ്വപദം',
@@ -13328,6 +13338,11 @@ $messages['ml'] = array(
 	'configure-setting-wgXhtmlNamespaces-key' => 'നാമമേഖല',
 	'configure-setting-wgLocaltimezone' => 'പ്രാദേശിക സമയമേഖല',
 	'configure-setting-wgLivePreview' => 'തത്സമയം എങ്ങനെയുണ്ടെന്ന് കാണൽ സജ്ജമാക്കുക',
+	'configure-setting-wgRCLinkDays' => 'സമീപകാലമാറ്റങ്ങളിൽ ദിനങ്ങളുടെ പരിധി',
+	'configure-setting-wgBlockAllowsUTEdit' => 'തടയപ്പെട്ട ഉപയോക്താക്കളെ സ്വന്തം സംവാദം താൾ തിരുത്തുന്നതിന് അനുവദിക്കുക',
+	'configure-setting-wgBlockDisablesLogin' => 'തടയപ്പെട്ട ഉപയോക്താക്കളെ ലോഗിൻ ചെയ്യുന്നതിൽ നിന്നും വിലക്കുക',
+	'configure-setting-wgSysopRangeBans' => 'ഐ.പി. ശ്രേണി തടയുന്നതിന് കാര്യനിർവ്വാഹകരെ അനുവദിക്കുക',
+	'configure-setting-wgSysopUserBans' => 'പ്രവേശിച്ചവരെ തടയുന്നതിന് കാര്യനിർവ്വാഹകരെ അനുവദിക്കുക',
 );
 
 /** Mongolian (Монгол)

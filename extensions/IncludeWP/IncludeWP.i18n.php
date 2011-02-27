@@ -186,7 +186,12 @@ $messages['lb'] = array(
 	'includewp-show-full-page' => 'Säit ganz weisen',
 	'includewp-show-fragment' => 'Nëmmen den éischte Abschnitt weisen',
 	'includewp-loading-failed' => "D'Säit konnt net geluede ginn.",
+	'includewp-licence-notice' => 'Den Inhalt hei driwwer kënnt vun der Säit $1 <a href="$2">$3</a> déi ënnert der <a href="$4">$5</a> lizenzéiert ass. Eng komplett Lëscht vun den Auteure fannt Dir <a href="$6">hei</a>.',
+	'includewp-parserhook-desc' => 'Parserhook deen et erlaabt den Inhalt vun enger Wikipedia-Säit ze weisen.',
 	'includewp-include-par-page' => 'Den Numm vun der Säit (vun der anerer Wiki), déi Dir wëllt gewise kréien.',
+	'includewp-include-par-wiki' => 'Den Numm vun der Wiki aus där Dir den Inhalt iwwerhuele wëllt muss eng vun den zougeloossene Wikie sinn, standardméisseg nëmme Wikipedia.',
+	'includewp-include-par-paragraphs' => "D'Zuel vun den Abschnitter déi Dir am Ufank weise wëllt.",
+	'includewp-include-par-height' => 'Déi maximal Héicht (px) vum Beräich an deen den Inhalt geluede gëtt. Setzt op 0 fir datt keng Limit gëllt.',
 );
 
 /** Macedonian (Македонски)

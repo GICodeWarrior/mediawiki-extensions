@@ -4218,6 +4218,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Junaidpv
  * @author Praveenp
  * @author Shijualex
  */
@@ -4238,6 +4239,7 @@ $messages['ml'] = array(
 	'viewapc-requests' => 'അഭ്യർത്ഥനയുടെ തോത്',
 	'viewapc-hitrate' => 'ഹിറ്റിന്റെ തോത്',
 	'viewapc-rps' => 'സെക്കന്റിൽ $1 അഭ്യർത്ഥനകൾ',
+	'viewapc-memory-usage' => 'മെമ്മറി ഉപയോഗം',
 	'viewapc-memory-free' => 'ലഭ്യമായത്: $1 ($2)',
 	'viewapc-memory-used' => 'ഉപയോഗിക്കപ്പെട്ടത്: $1 ($2)',
 	'viewapc-display-attribute' => 'കടപ്പാട്',

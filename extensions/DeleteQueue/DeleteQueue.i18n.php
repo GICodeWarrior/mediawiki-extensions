@@ -1361,7 +1361,7 @@ Der Löschantragsgrund war ''$2''.",
 	'deletequeue-vote-endorse' => 'Löschung befürworten.',
 	'deletequeue-vote-object' => 'Löschung ablehnen.',
 	'deletequeue-vote-reason' => 'Kommentare:',
-	'deletequeue-vote-submit' => 'Abschicken',
+	'deletequeue-vote-submit' => 'Speichern',
 	'deletequeue-vote-success-endorse' => 'Du hast erfolgreich die Löschung dieser Seite befürwortet.',
 	'deletequeue-vote-success-object' => 'Du hast erfolgreich die Löschung dieser Seite abgelehnt.',
 	'deletequeue-vote-requeued' => 'Du hast erfolgreich die Löschung dieser Seite abgelehnt.
@@ -4299,11 +4299,14 @@ You may [{{fullurl:$1|action=delvote}} endorse or object] to deletion, or [{{ful
 );
 
 /** Malayalam (മലയാളം)
+ * @author Junaidpv
  * @author Praveenp
  */
 $messages['ml'] = array(
 	'deletequeue-action-queued' => 'മായ്ക്കൽ',
 	'deletequeue-action' => 'മായ്ക്കൽ നിർദ്ദേശിക്കുക',
+	'deletequeue-action-title' => '"$1" മായ്ക്കാൻ ശുപാർശ ചെയ്യുക',
+	'deletequeue-nom-alreadyqueued' => 'ഈ താൾ നിലവിൽ മായ്ക്കപ്പെടാനുള്ള താളുകളുടെ ക്യൂവിലുണ്ട്',
 	'deletequeue-delnom-reason' => 'നിർദ്ദേശിക്കാനുള്ള കാരണം:',
 	'deletequeue-delnom-otherreason' => 'മറ്റ് കാരണം',
 	'deletequeue-delnom-extra' => 'കൂടുതൽ വിവരങ്ങൾ:',
@@ -4319,6 +4322,14 @@ $messages['ml'] = array(
 	'deletequeue-review-success-title' => 'സംശോധനം സമ്പൂർണ്ണം',
 	'deletequeue-vote-reason' => 'അഭിപ്രായങ്ങൾ:',
 	'deletequeue-vote-submit' => 'സമർപ്പിക്കുക',
+	'deletequeue-list-header-page' => 'താൾ',
+	'deletequeue-list-header-expiry' => 'കാലാവധി',
+	'deletequeue-list-header-discusspage' => 'സംവാദം താൾ',
+	'deletequeue-list-header-reason' => 'മായ്ക്കാനുള്ള കാരണം',
+	'deletequeue-case-details' => 'അടിസ്ഥാന വിവരങ്ങൾ',
+	'deletequeue-case-page' => 'താൾ:',
+	'deletequeue-case-reason' => 'കാരണം:',
+	'deletequeue-case-expiry' => 'കാലാവധി:',
 );
 
 /** Mongolian (Монгол)

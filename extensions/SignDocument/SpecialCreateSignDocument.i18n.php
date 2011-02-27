@@ -585,7 +585,7 @@ Esto puede no ser hecho por segunda vez.',
 $messages['eu'] = array(
 	'createsigndoc-pagename' => 'Orri:',
 	'createsigndoc-allowedgroup' => 'Baimendutako taldea:',
-	'createsigndoc-email' => 'Email helbidea:',
+	'createsigndoc-email' => 'E-posta helbidea:',
 	'createsigndoc-address' => 'Helbidea:',
 	'createsigndoc-extaddress' => 'Udalerria, estatua, herrialdea:',
 	'createsigndoc-phone' => 'Telefono zenbakia:',

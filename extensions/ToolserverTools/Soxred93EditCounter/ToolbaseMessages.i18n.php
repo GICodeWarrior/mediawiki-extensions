@@ -846,6 +846,40 @@ Se chegou cá a partir de um link <a href="$1">reporte este defeito</a>, por fav
 	'toolbase-error-toomanyedits' => '$1 tem $2 edições. Esta ferramenta tem um máximo de $3 edições.',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'toolbase-header-title' => 'X!s verktyg (BETA)',
+	'toolbase-header-bugs' => 'Buggar',
+	'toolbase-replag-years' => 'år',
+	'toolbase-replag-months' => 'månader',
+	'toolbase-replag-weeks' => 'veckor',
+	'toolbase-replag-days' => 'dagar',
+	'toolbase-replag-hours' => 'timmar',
+	'toolbase-replag-minutes' => 'minuter',
+	'toolbase-replag-seconds' => 'sekunder',
+	'toolbase-footer-source' => 'Visa källa',
+	'toolbase-footer-language' => 'Ändra språk',
+	'toolbase-footer-translate' => 'Översätt',
+	'toolbase-navigation-homepage' => 'Hemsida',
+	'toolbase-navigation-user_id' => 'Hitta användar-ID',
+	'toolbase-navigation-autoedits' => 'Automatiserad redigeringsräknare',
+	'toolbase-userid-submit' => 'Skaffa användar-ID',
+	'toolbase-userid-title' => 'Hitta ett användar-ID',
+	'toolbase-autoedits-title' => 'Automatiserad redigeringskalkylator',
+	'toolbase-autoedits-submit' => 'Beräkna',
+	'toolbase-main-title' => 'Välkommen!',
+	'toolbase-main-404' => 'Filen hittades inte',
+	'toolbase-main-404-content' => 'Hoppsan! Ingen sida hittades!
+
+Kontrollera att du skrivit in adressen korrekt.
+Om du följde en länk från någonstans, var god <a href="$1">skicka en buggrapport</a>.',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 är inte ett giltigt användarnamn',
+	'toolbase-error-nowiki' => '$1.$2.org är inte en giltig wiki',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

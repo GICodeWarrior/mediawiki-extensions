@@ -625,6 +625,8 @@ $messages['dsb'] = array(
 	'articlefeedback-form-panel-expertise' => 'Mam pśedznaśa k toś tej temje',
 	'articlefeedback-form-panel-expertise-studies' => 'Som na wušej šuli/uniwersiśe studěrował',
 	'articlefeedback-form-panel-expertise-profession' => 'Jo źěl mójogo pówołanja',
+	'articlefeedback-form-panel-expertise-hobby' => 'Zwisujo z mójimi hobbyjami abo zajmami',
+	'articlefeedback-form-panel-expertise-other' => 'Žrědło mójich znajobnosćow njejo how pódane',
 	'articlefeedback-report-switch-label' => 'Pogódnośenja boka pokazaś',
 	'articlefeedback-report-empty' => 'Žedne pogódnośenja',
 	'articlefeedback-report-ratings' => '$1 pogódnosénjow',
@@ -636,7 +638,9 @@ $messages['dsb'] = array(
 	'articlefeedback-pitch-join-title' => 'Coš konto załožyś?',
 	'articlefeedback-pitch-join-accept' => 'Konto załožyś',
 	'articlefeedback-pitch-join-login' => 'Pśizjawiś',
+	'articlefeedback-pitch-edit-title' => 'Coš toś ten bok wobźěłaś?',
 	'articlefeedback-pitch-edit-accept' => 'Wobźěłaś',
+	'articlefeedback-expert-assessment-question' => 'Maš znajobnosći k toś tej temje?',
 	'articlefeedback-survey-message-error' => 'Zmólka jo nastała. Pšosym wopytaj pózdźej hyšći raz.',
 );
 

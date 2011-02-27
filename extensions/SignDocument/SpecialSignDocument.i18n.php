@@ -1378,7 +1378,7 @@ $messages['eu'] = array(
 	'sign-country' => 'Herrialdea:',
 	'sign-phone' => 'Telefono zenbakia:',
 	'sign-bday' => 'Adina:',
-	'sign-email' => 'Email helbidea:',
+	'sign-email' => 'E-posta helbidea:',
 	'sign-submit' => 'Dokumentua sinatu',
 	'sig-success' => 'Dokumentua arrakastatsuki sinatu duzu.',
 	'sign-viewfield-entryid' => 'NAN zenbakia:',
@@ -4436,10 +4436,10 @@ $1',
 	'sign-sigdetails' => 'Детаљи о потпису',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|разговор]] • <!--
--->[[Special:Contributions/$1|доприноси]] • <!--
+-->[[Special:Contributions/$1|прилози]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
--->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBL] • <!--
 -->[[Special:BlockIP/$1|блокирај корисника]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} историја блокирања] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--

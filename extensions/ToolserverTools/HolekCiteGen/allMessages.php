@@ -798,10 +798,17 @@ $messages['ru'] = array(
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
+	'ts-citegen-Option-append-newlines' => 'Lägg till nya rader efter varje parameter',
+	'ts-citegen-Option-add-references' => 'Lägg till <ref>-taggar runt citatmallar',
+	'ts-citegen-Option-add-list' => 'Skapa en wiki-lista över citatmallar',
 	'ts-citegen-Output-title' => 'Resultat',
+	'ts-citegen-Template-lang' => 'Mallspråk',
 	'ts-citegen-Sources-title' => 'Källor',
+	'ts-citegen-Tools' => 'Verktyg',
+	'ts-citegen-Other-languages' => 'Andra språk',
 	'ts-citegen-Errors-title' => 'Fel',
 );
 

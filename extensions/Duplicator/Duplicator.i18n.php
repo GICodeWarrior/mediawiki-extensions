@@ -487,13 +487,14 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
 	'duplicator' => 'Orrialde bat bikoiztu',
 	'duplicator-toolbox' => 'Orrialde hau bikoiztu',
 	'duplicator-options' => 'Aukerak',
-	'duplicator-source' => 'Iturburua:',
+	'duplicator-source' => 'Jatorria:',
 	'duplicator-dest' => 'Helburua:',
 	'duplicator-dotalk' => 'Eztabaida orrialdea bikoiztu (egokia bada)',
 	'duplicator-submit' => 'Bikoiztu',
@@ -1026,6 +1027,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Junaidpv
  * @author Praveenp
  * @author Shijualex
  */
@@ -1033,6 +1035,7 @@ $messages['ml'] = array(
 	'duplicator' => 'താളിന്റെ പകർപ്പ് ഉണ്ടാക്കുക',
 	'duplicator-desc' => 'നാൾവഴി പൂർണ്ണമായി ഉൾപ്പെടുത്തിയ, [[Special:Duplicate|താളിന്റെ സ്വതന്ത്ര പകർപ്പുകൾ]] സൃഷ്ടിക്കുന്നു',
 	'duplicator-toolbox' => 'ഈ താളിന്റെ പകർപ്പ് ഉണ്ടാക്കുക',
+	'duplicator-options' => 'ഐച്ഛികങ്ങൾ',
 	'duplicator-source' => 'സ്രോതസ്സ്:',
 	'duplicator-dest' => 'ലക്ഷ്യം:',
 	'duplicator-dotalk' => 'രണ്ടാമതൊരു സം‌വാദം താൾ (ആവശ്യമുണ്ടെങ്കിൽ)‌',

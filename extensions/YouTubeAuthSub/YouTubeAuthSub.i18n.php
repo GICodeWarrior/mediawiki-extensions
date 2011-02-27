@@ -1977,7 +1977,7 @@ donn dat wat hee follesch en en Sigg erenn schriive:
  <code>{{&#35;ev:youtube|$1}}</code>',
 	'youtubeauthsub_authsubinstructions' => 'Öm ene Viddejo huhzelade, moß De eets op <i lang="en">YouTube</i> enjelogg han.',
 	'youtubeauthsub_uploadhere' => 'Don Dinge Viddejo fun huhlade fun:',
-	'youtubeauthsub_uploadbutton' => 'Huhlade',
+	'youtubeauthsub_uploadbutton' => 'Huhlaade',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Dä Viddeje kam_mer hee beloore]',

@@ -3106,6 +3106,7 @@ Ju lutemi <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -3131,7 +3132,7 @@ $messages['sr-ec'] = array(
 	'ogg-use-player' => 'Користи плејер:',
 	'ogg-more' => 'Више...',
 	'ogg-dismiss' => 'Затвори',
-	'ogg-download' => 'Преузми фајл',
+	'ogg-download' => 'Преузми датотеку',
 	'ogg-desc-link' => 'О овом фајлу',
 );
 
