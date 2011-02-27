@@ -155,11 +155,17 @@ $.narayam = new ( function() {
 		
 		var $this = $( this );
 		var c = String.fromCharCode( e.which );
-		var pos = $this.textSelection( 'getCaretPosition' );
+                // Get current caret position
+                // User may select text to overwrite
+                // Get start and end position of selection
+                // In case if user do no selection, both startPos and endPos will be same
+		var pos = $this.textSelection( 'getCaretPosition', { 'startAndEnd': true } );
+                var startPos = pos[0];
+                var endPos = pos[1];
 		// Get the last few characters before the one the user just typed,
 		// to provide context for the transliteration regexes.
 		// We need to append c because it hasn't been added to $this.val() yet
-		var input = lastNChars( $this.val(), pos, currentScheme.lookbackLength ) + c;
+		var input = lastNChars( $this.val(), startPos, currentScheme.lookbackLength ) + c;
 		var lookback = $this.data( 'narayam-lookback' );
 		var replacement = transliterate( input, lookback, e.altKey );
 		
@@ -183,8 +189,8 @@ $.narayam = new ( function() {
 		
 		// Select and replace the text
 		$this.textSelection( 'setSelection', {
-			'start': pos - input.length + 1,
-			'end': pos
+			'start': startPos - input.length + 1,
+			'end': endPos
 		} );
 		$this.textSelection( 'encapsulateSelection', {
 			'peri': replacement,
