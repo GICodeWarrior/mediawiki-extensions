@@ -69,8 +69,19 @@ import org.wikimedia.lsearch.util.Localization;
 public class SearchEngine {
 	static org.apache.log4j.Logger log = Logger.getLogger(SearchEngine.class);
 
+	/**
+	 * Maximum number of search results at once.
+	 */
 	protected static int maxlimit = 1000;
+	
+	/**
+	 * Largest search result offset.
+	 */
 	protected static int maxoffset = 100000;
+	
+	/**
+	 * Maximum number of search results for prefix query.
+	 */
 	protected final int MAXPREFIX = 50;	
 	protected static GlobalConfiguration global = null;
 	protected static Configuration config = null;
@@ -518,7 +529,7 @@ public class SearchEngine {
 		return res;
 	}
 	
-	/** Strip key using PrefixIndexBuilder stip function */
+	/** Strip key using PrefixIndexBuilder strip function */
 	private String stripKey(String key){
 		return PrefixIndexBuilder.stripKey(key);
 	}

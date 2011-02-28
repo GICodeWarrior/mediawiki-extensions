@@ -3,18 +3,18 @@ package org.wikimedia.lsearch.analyzers;
 import org.wikimedia.lsearch.config.IndexId;
 
 /**
- * Agregate class for FilterFactory and FieldNameFactory. This class
- * contains methods used to build various fields of the index, 
- * it contains field names to be used, filter that are to be applied...  
+ * Aggregate class for FilterFactory and FieldNameFactory. This class contains
+ * methods used to build various fields of the index, it contains field names to
+ * be used, filter that are to be applied...
  * 
  * @author rainman
- *
+ * 
  */
 public class FieldBuilder {
 	public class BuilderSet{
 		FilterFactory filters;
 		FieldNameFactory fields;
-		boolean addKeywords; // wether to add keywords from beginning of article
+		boolean addKeywords; // whether to add keywords from beginning of article
 		
 		public BuilderSet(FilterFactory filters, FieldNameFactory fields) {
 			this.filters = filters;

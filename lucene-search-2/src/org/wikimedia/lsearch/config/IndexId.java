@@ -83,7 +83,7 @@ public class IndexId {
 	
 	/** Type of index, enumeration */
 	protected IndexType type;
-	/** Part number in split repestnation, e.g. 1..N */
+	/** Part number in split representation, e.g. 1..N */
 	protected int partNum;
 	
 	/** Namespace -> part (for nssplit indexes) */
@@ -137,10 +137,10 @@ public class IndexId {
 	/** Namespaces that are searched by default */
 	protected NamespaceFilter defaultNs = null;
 	
-	/** filter set to true for namespaces with subpages */
+	/** Filter set to true for namespaces with subpages */
 	protected NamespaceFilter nsWithSubpages = null;
 	
-	/** namespaces with content (from initialise settings) */
+	/** Namespaces with content (from initialise settings) */
 	protected NamespaceFilter contentNamespaces = null;
 	
 	/** If we should be using additional global rank for scores */
@@ -683,7 +683,6 @@ public class IndexId {
 	/** 
 	 * Get all indexes parts for this iid except for logical names.
 	 * I.e. for db of kind mainsplit, it will return db.mainpart, db.restpart
-	 * @return
 	 */
 	public HashSet<String> getPhysicalIndexes() {
 		HashSet<String> ret = new HashSet<String>();
@@ -712,8 +711,6 @@ public class IndexId {
 	
 	/**
 	 * Wrapper for getPhysicalIndexes to get iid objects
-	 * 
-	 * @return
 	 */
 	public ArrayList<IndexId> getPhysicalIndexIds(){
 		HashSet<String> physical = getPhysicalIndexes();

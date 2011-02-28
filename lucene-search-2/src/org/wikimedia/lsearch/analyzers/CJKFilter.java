@@ -72,8 +72,8 @@ public final class CJKFilter extends TokenFilter {
 		(c >= 0x3300 && c <= 0x337f) ||
 		(c >= 0x3400 && c <= 0x3d2d) ||
 		(c >= 0x4e00 && c <= 0x9fff) ||
-      (c >= 0xf900 && c <= 0xfaff) ||
-      (c >= 0xac00 && c <= 0xd7af);
+		(c >= 0xf900 && c <= 0xfaff) ||
+		(c >= 0xac00 && c <= 0xd7af);
 	}
 
 }

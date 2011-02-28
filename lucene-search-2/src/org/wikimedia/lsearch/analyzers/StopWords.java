@@ -90,7 +90,7 @@ public class StopWords {
 		return ret;
 	}
 	
-	/** Get a brand new hash set of predifined stop words (i.e. not those generated from lucene indexes) */
+	/** Get a brand new hash set of predefined stop words (i.e. not those generated from lucene indexes) */
 	public static HashSet<String> getPredefinedSet(String langCode){
 		loadPredefined();
 		HashSet<String> ret = new HashSet<String>();

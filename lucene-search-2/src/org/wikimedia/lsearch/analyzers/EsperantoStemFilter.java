@@ -32,7 +32,7 @@ import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.TokenFilter;
 
-/** Stem filter for esperanto */
+/** Stem filter for Esperanto */
 public class EsperantoStemFilter extends TokenFilter {
 	public EsperantoStemFilter(TokenStream tokenizer) {
 		super(tokenizer);

@@ -19,7 +19,7 @@ public class HyphenFilter extends TokenFilter {
 
 	@Override
 	public Token next() throws IOException {
-		// return buferred
+		// return buffered
 		if(inx < buffer.size())
 			return buffer.get(inx++);
 		

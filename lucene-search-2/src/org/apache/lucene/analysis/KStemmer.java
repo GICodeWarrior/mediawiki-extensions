@@ -44,13 +44,14 @@ import java.util.*;
 import java.io.*;
 
 /**
-   This class implements the Kstem algorithm
+ * This class implements the Kstem algorithm
  */
 public class KStemmer {
-	/** Default size of the cache that stores <code>(word,stem)</code> pairs.
-	<p>This speeds up processing since Kstem works by
-	sucessive "transformations" to the input word until a
-	suitable stem is found.
+	/**
+	 * Default size of the cache that stores <code>(word,stem)</code> pairs.
+	 * 
+	 * This speeds up processing since Kstem works by successive
+	 * "transformations" to the input word until a suitable stem is found.
 	 */
 	static public int DEFAULT_CACHE_SIZE = 20000;
 	static private final int MaxWordLen = 100;
@@ -203,9 +204,9 @@ public class KStemmer {
 		}
 	}
 
-	private static Hashtable dict_ht  = null;
+	private static Hashtable<String, DictEntry> dict_ht = null;
 	private int MaxCacheSize;
-	private Hashtable stem_ht = null;
+	private Hashtable<String, String> stem_ht = null;
 	private StringBuffer word;
 	private int j; /* index of final letter in stem (within word) */
 	private int k; /* INDEX of final letter in word.
@@ -214,7 +215,7 @@ public class KStemmer {
 		      wordLength, which returns (k+1). */
 
 	private void initializeStemHash() {
-		stem_ht = new Hashtable();
+		stem_ht = new Hashtable<String, String>();
 	}
 
 	private char finalChar() {
@@ -249,7 +250,7 @@ public class KStemmer {
 		if (dict_ht != null)
 			return;
 
-		dict_ht = new Hashtable();
+		dict_ht = new Hashtable<String, DictEntry>();
 		for (int i=0;i<exceptionWords.length;i++) {
 			if (!dict_ht.containsKey(exceptionWords[i])) {
 				entry = new DictEntry(exceptionWords[i],true);
@@ -282,108 +283,26 @@ public class KStemmer {
 		}
 
 		defaultEntry = new DictEntry(null,false);
-
-		String[] array;
-		array = KStemData1.data;
-
-		for (int i=0;i<array.length;i++) {
-			if (!dict_ht.containsKey(array[i])) {
-				dict_ht.put(array[i],defaultEntry);
+		
+		appendStems( dict_ht, defaultEntry, KStemData1.data, "4" );
+		appendStems( dict_ht, defaultEntry, KStemData2.data, "4" );
+		appendStems( dict_ht, defaultEntry, KStemData3.data, "4" );
+		appendStems( dict_ht, defaultEntry, KStemData4.data, "4" );
+		appendStems( dict_ht, defaultEntry, KStemData5.data, "4" );
+		appendStems( dict_ht, defaultEntry, KStemData6.data, "4" );
+		appendStems( dict_ht, defaultEntry, KStemData7.data, "4" );
+		appendStems( dict_ht, defaultEntry, KStemData8.data, "4" );
+		appendStems( dict_ht, defaultEntry, supplementDict, "5" );
+		appendStems( dict_ht, defaultEntry, properNouns, "6" );
+	}
+	
+	private static void appendStems( Hashtable<String, DictEntry> stems, DictEntry defaultEntry, String[] array, String dict  ) {
+		for (int i=0; i < array.length; i++) {
+			if (!stems.containsKey(array[i])) {
+				stems.put(array[i],defaultEntry);
 			} else {
 				System.out.println("Warning: Entry ["+array[i]+
-				"] already in dictionary 4");
-			}
-		}
-
-
-		array = KStemData2.data;
-		for (int i=0;i<array.length;i++) {
-			if (!dict_ht.containsKey(array[i])) {
-				dict_ht.put(array[i],defaultEntry);
-			} else {
-				System.out.println("Warning: Entry ["+array[i]+
-				"] already in dictionary 4");
-			}
-		}
-
-		array = KStemData3.data;
-		for (int i=0;i<array.length;i++) {
-			if (!dict_ht.containsKey(array[i])) {
-				dict_ht.put(array[i],defaultEntry);
-			} else {
-				System.out.println("Warning: Entry ["+array[i]+
-				"] already in dictionary 4");
-			}
-		}
-
-		array = KStemData4.data;
-		for (int i=0;i<array.length;i++) {
-			if (!dict_ht.containsKey(array[i])) {
-				dict_ht.put(array[i],defaultEntry);
-			} else {
-				System.out.println("Warning: Entry ["+array[i]+
-				"] already in dictionary 4");
-			}
-		}
-
-
-		array = KStemData5.data;
-		for (int i=0;i<array.length;i++) {
-			if (!dict_ht.containsKey(array[i])) {
-				dict_ht.put(array[i],defaultEntry);
-			} else {
-				System.out.println("Warning: Entry ["+array[i]+
-				"] already in dictionary 4");
-			}
-		}
-
-
-		array = KStemData6.data;
-		for (int i=0;i<array.length;i++) {
-			if (!dict_ht.containsKey(array[i])) {
-				dict_ht.put(array[i],defaultEntry);
-			} else {
-				System.out.println("Warning: Entry ["+array[i]+
-				"] already in dictionary 4");
-			}
-		}
-
-		array = KStemData7.data;
-		for (int i=0;i<array.length;i++) {
-			if (!dict_ht.containsKey(array[i])) {
-				dict_ht.put(array[i],defaultEntry);
-			} else {
-				System.out.println("Warning: Entry ["+array[i]+
-				"] already in dictionary 4");
-			}
-		}
-
-		for (int i=0;i<KStemData8.data.length;i++) {
-			if (!dict_ht.containsKey(KStemData8.data[i])) {
-				dict_ht.put(KStemData8.data[i],defaultEntry);
-			} else {
-				System.out.println("Warning: Entry ["+KStemData8.data[i]+
-				"] already in dictionary 4");
-			}
-		}
-
-		for (int i=0;i<supplementDict.length;i++) {
-			if (!dict_ht.containsKey(supplementDict[i])) {
-				dict_ht.put(supplementDict[i],defaultEntry);
-			} else {
-				System.out.println("Warning: Entry ["+
-						supplementDict[i]+
-				"] already in dictionary 5");
-			}
-		}
-
-		for (int i=0;i<properNouns.length;i++) {
-			if (!dict_ht.containsKey(properNouns[i])) {
-				dict_ht.put(properNouns[i],defaultEntry);
-			}  else {
-				System.out.println("Warning: Entry ["+
-						properNouns[i]+
-				"] already in dictionary 6");
+				"] already in dictionary " + dict);
 			}
 		}
 	}

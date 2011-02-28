@@ -1,28 +1,12 @@
 package org.wikimedia.lsearch.analyzers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.PerFieldAnalyzerWrapper;
-import org.apache.lucene.analysis.PorterStemFilter;
-import org.apache.lucene.analysis.SimpleAnalyzer;
-import org.apache.lucene.analysis.de.GermanStemFilter;
-import org.apache.lucene.analysis.fr.FrenchStemFilter;
-import org.apache.lucene.analysis.nl.DutchStemFilter;
-import org.apache.lucene.analysis.ru.RussianStemFilter;
-import org.apache.lucene.analysis.th.ThaiWordFilter;
-import org.apache.lucene.search.FieldSortedHitQueue;
-import org.wikimedia.lsearch.analyzers.FieldBuilder.BuilderSet;
-import org.wikimedia.lsearch.beans.Article;
-import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
-import org.wikimedia.lsearch.index.WikiIndexModifier;
-import org.wikimedia.lsearch.ranks.Links;
-import org.wikimedia.lsearch.related.RelatedTitle;
 
 /**
  * Global functions related to creation/usage of analyzers.

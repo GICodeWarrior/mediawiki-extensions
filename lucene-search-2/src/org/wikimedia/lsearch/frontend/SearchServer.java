@@ -72,7 +72,7 @@ public class SearchServer extends Thread {
 		if (max != null)
 			maxThreads = Integer.parseInt(max);
 		
-		// Initialise statistics
+		// Initialize statistics
 		stats = new Statistics(1000, statsPeriod);
 		if (config.getBoolean("Ganglia", "report")) {
 			log.info("Starting ganglia statistics thread...");

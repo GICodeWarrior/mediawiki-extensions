@@ -1,12 +1,9 @@
 package org.wikimedia.lsearch.analyzers;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Token;
-import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
 
 /**
@@ -30,7 +27,6 @@ public class AliasFilter extends TokenStream {
 	 * 2) stemmers should never change tokens, if the text needs to be
 	 * changed, return a new Token object
 	 * 
-	 * @param language
 	 */
 	public AliasFilter(FilterFactory filters, TokenStream input, TokenStream duplicate){
 		this.input = input;

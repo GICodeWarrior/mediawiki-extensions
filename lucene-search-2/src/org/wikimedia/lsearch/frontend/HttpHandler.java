@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 
 /**
  * Simple HTTP 1.1 handler, used for Index and Search daemons
- * for more info on protocole see handle() method
+ * for more info about the protocol see handle() method
  * 
  * @author Brion Vibber
  *
@@ -136,7 +136,7 @@ abstract public class HttpHandler extends Thread {
 	 *   URL path format: /operation/database/searchterm
 	 *   The path should be URL-encoded UTF-8 (standard IRI).
 	 * 
-	 *   Additional paramters may be specified in a query string:
+	 *   Additional parameters may be specified in a query string:
 	 *     namespaces: comma-separated list of namespace numeric keys to subset results
 	 *     limit: maximum number of results to return
 	 *     offset: number of matches to skip before returning results
@@ -271,7 +271,7 @@ abstract public class HttpHandler extends Thread {
 		return null;
 	}
 
-	/** This method is to be used for header reads only (which is utf-8 free!) */
+	/** This method is to be used for header reads only (which is UTF-8 free!) */
 	@SuppressWarnings("deprecation")
 	protected String readInputLine() {
 		String sin="";

@@ -6,6 +6,9 @@ import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
 
+/**
+ * Removes dots from acronyms?
+ */
 public class AcronymFilter extends TokenFilter {
 	Token buffered = null;
 	

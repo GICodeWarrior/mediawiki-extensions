@@ -38,7 +38,7 @@ public class PhraseFilter extends TokenFilter {
 	protected Token phrase1 = null, phrase2 = null;
 	protected boolean phraseReady = false;
 	protected String gap = "_";
-	/** pairs of words, two adjecent words */
+	/** pairs of words, two adjacent words */
 	protected Token pair1 = null, pair2 = null;
 	protected boolean pairReady = false;
 	protected Token nextToken = null;

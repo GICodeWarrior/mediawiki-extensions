@@ -1,9 +1,11 @@
 package org.wikimedia.lsearch.analyzers;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
- * Porter-based singular filter for english
+ * Porter-based singular filter for English
  * 
  * @author rainman
  *
@@ -18,10 +20,11 @@ public class EnglishSingular implements Singular {
 		if(w.length() <= 3 || w.charAt(w.length()-1) != 's')
 			return null;
 		// exceptions (from porter2)
-		if("news".equals(w) || "atlas".equals(w) || "cosmos".equals(w) 
-				|| "bias".equals(w) || "andes".equals(w) || "aries".equals(w))
+		String[] exceptions = { "news", "atlas", "cosmos", "bias", "andes", "aries" };
+		HashSet<String> set = new HashSet<String>(Arrays.asList(exceptions));
+		if( set.contains(w) )
 			return null;
-		// don't strip posssesive form
+		// don't strip possessive form
 		if(w.endsWith("'s")){
 			//if(w.length() > 2)
 			//	return w.substring(0,w.length()-2);

@@ -67,7 +67,7 @@ public class KeywordsAnalyzer extends Analyzer{
 		for(int i=0;i<levels;i++)
 			keywordsBySize.add(new ArrayList<String>());
 		TokenizerOptions options = new TokenizerOptions(exactCase);
-		// arange keywords into a list by token number 
+		// arrange keywords into a list by token number 
 		for(String k : keywords){
 			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k,iid,options).parse();
 			if(parsed.size() == 0)

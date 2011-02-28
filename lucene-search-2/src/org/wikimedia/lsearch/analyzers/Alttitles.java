@@ -58,7 +58,7 @@ public class Alttitles {
 		
 	}
 	/**
-	 * Serialize alttitle for highlighting, serializies titles, redirects, sections.
+	 * Serialize alttitle for highlighting, serializes titles, redirects, sections.
 	 * Writes original names + highlight tokens. 
 	 * 
 	 * @param article  

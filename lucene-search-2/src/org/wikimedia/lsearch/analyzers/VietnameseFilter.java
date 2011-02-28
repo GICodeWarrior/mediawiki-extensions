@@ -7,8 +7,8 @@ import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
 
 /**
- * Vietnamese standard transliterations to ascii. Most of the stuff is done by unicode decomposed,
- * we just additionaly convert Đ/đ -> D/d
+ * Vietnamese standard transliterations to ascii. Most of the stuff is done by Unicode decomposition.
+ * Additional conversions here are: Đ/đ -> D/d
  * 
  * @author rainman
  *

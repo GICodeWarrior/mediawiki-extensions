@@ -436,7 +436,7 @@ public class SearchDaemon extends HttpHandler {
 			log.error("Error sending result line ("+score + " " + namespace + " " + title +"): "+e.getMessage(),e);
 		}
 	}
-	
+	/** Unused? */
 	private void sendResultLine(String namespace, String title) {
 		try{
 			sendOutputLine(namespace + " " +	encodeTitle(title));

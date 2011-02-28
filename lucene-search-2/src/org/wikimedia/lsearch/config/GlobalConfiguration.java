@@ -119,13 +119,13 @@ public class GlobalConfiguration {
 
 	protected static GlobalConfiguration instance = null;
 
-	/** All the lang codes we encountered, used for "smart interwiki" */
+	/** All the language codes we encountered, used for "smart interwiki" */
 	protected HashSet<String> smartInterwikiCodes = new HashSet<String>();
 	protected boolean useSmartInterwiki = false;
 	protected int maxSearchLimit = 1000;
 	protected int maxSearchOffset = 1000000;
 
-	/** Wether to report warnings and info */
+	/** Whether to report warnings and info */
 	protected static boolean verbose = true;
 
 	/** Sections in lsearch-config.conf */
@@ -145,14 +145,12 @@ public class GlobalConfiguration {
 	}
 
 	protected GlobalConfiguration(){
-		// try to determin this hosts IP address
+		// try to determine this hosts IP address
 		determineInetAddress();
 	}
 
 	/**
 	 * Get singleton instance of this class
-	 *
-	 * @return
 	 */
 	synchronized public static GlobalConfiguration getInstance() {
 		if (instance == null)
@@ -382,7 +380,7 @@ public class GlobalConfiguration {
 	}
 
 	/**
-	 * Reads a config file from a bufferedreader, will
+	 * Reads a config file from a BufferedReader, will
 	 * close the reader when done.
 	 *
 	 * @param in   opened reader
@@ -423,7 +421,7 @@ public class GlobalConfiguration {
 						prop.append("\n");
 					}
 					globalProperties.load(new ByteArrayInputStream(prop.toString().getBytes("utf-8")));
-					// get some predifined global properties
+					// get some predefined global properties
 					this.databaseSuffixes = getArrayProperty("Database.suffix");
 					this.keywordScoringSuffixes = getArrayProperty("KeywordScoring.suffix");
 					this.exactCaseSuffix = getArrayProperty("ExactCase.suffix");

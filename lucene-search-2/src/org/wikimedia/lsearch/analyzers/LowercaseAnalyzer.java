@@ -7,7 +7,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 /**
- * Analyzer that just lowecases the text, doesn't split up anything, etc..
+ * Analyzer that just lowercases the text, doesn't split up anything, etc..
  *  
  * @author rainman
  *

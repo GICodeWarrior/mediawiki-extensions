@@ -8,7 +8,7 @@ import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
 
 /**
- * Add english singular forms of words as aliases of
+ * Add English singular forms of words as aliases of
  * type "singular"
  * 
  * @author rainman
@@ -17,7 +17,7 @@ import org.apache.lucene.analysis.TokenStream;
 public class EnglishSingularFilter extends TokenFilter{
 	Singular singular = new EnglishKStemSingular();
 	
-	Token next = null, next2=null;
+	Token next = null, next2=  null;
 	public EnglishSingularFilter(TokenStream input) {
 		super(input);
 	}
@@ -53,7 +53,7 @@ public class EnglishSingularFilter extends TokenFilter{
 		return t;
 	}
 	
-	/** Return token with sigular form of the noun, or null if none found */
+	/** Return token with singular form of the noun, or null if none found */
 	protected final Token singular(Token t){
 		String w = singular.getSingular(t.termText());
 		if(w != null){

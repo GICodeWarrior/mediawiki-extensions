@@ -1,16 +1,11 @@
 package org.wikimedia.lsearch.util;
 
-import java.net.URL;
-
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Localization;
 
 public class LocalizationTest {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		Configuration.open();
 		String text = "#redirect [[mw]]";

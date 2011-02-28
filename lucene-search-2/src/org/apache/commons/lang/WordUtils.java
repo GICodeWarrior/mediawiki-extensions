@@ -21,7 +21,7 @@ package org.apache.commons.lang;
  * 
  * <p>This class tries to handle <code>null</code> input gracefully.
  * An exception will not be thrown for a <code>null</code> input.
- * Each method documents its behaviour in more detail.</p>
+ * Each method documents its behavior in more detail.</p>
  * 
  * @author Apache Jakarta Velocity
  * @author Stephen Colebourne

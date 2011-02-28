@@ -18,10 +18,10 @@ import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
 /**
  * Wiki Tokenizer. Tokens are words and numbers. All letters are
- * lowercased and diacritics deleted using unicode compatibility
+ * lowercased and diacritics deleted using Unicode compatibility
  * decomposition (i.e. č -> c). Parses some basic wiki syntax,
  * template names are skipped, from images captions are extracted,
- * categories and interwiki links are extracted ... 
+ * categories and interwiki links are extracted... 
  * 
  * Tokenizer will not take a Reader as input, but a String (for
  * optimal performance)
@@ -172,7 +172,7 @@ public class FastWikiTokenizerEngine {
 	 * This function is called at word boundaries, it is used to 
 	 * make a new token and add it to token stream
 	 * 
-	 * Does unicode decomposition, and will make alias token with 
+	 * Does Unicode decomposition, and will make alias token with 
 	 * alternative transliterations (e.g. ö -> oe)
 	 */
 	private final void addToken(){
@@ -203,7 +203,7 @@ public class FastWikiTokenizerEngine {
 			boolean addDecomposed = false;
 			boolean allUpperCase = true;
 			boolean titleCase = true;			
-			boolean split = false; // if more tokens shold be produced, e.g. joe's -> joe + s
+			boolean split = false; // if more tokens should be produced, e.g. joe's -> joe + s
 			for(int i=0;i<length;i++){
 				if(decomposer.isCombiningChar(buffer[i])){
 					addDecomposed = true;
@@ -328,7 +328,7 @@ public class FastWikiTokenizerEngine {
 				else if(titleCase)
 					exact.setType("titlecase");
 			}
-			// detect hyphenation (takes presedence over case detection)
+			// detect hyphenation (takes precedence over case detection)
 			if(cur+1<textLength && text[cur]=='-' && (Character.isLetterOrDigit(text[cur+1]) || decomposer.isCombiningChar(text[cur+1])))
 				exact.setType("with_hyphen");
 			
@@ -347,14 +347,14 @@ public class FastWikiTokenizerEngine {
 				if(decompLength!=0 && addDecomposed){
 					Token t = makeToken(new String(decompBuffer, 0, decompLength), start, start + length, false);
 					t.setPositionIncrement(0);
-					t.setType(exact.type());
+					t.setType(exact.type() + "-decomposed");
 					addToTokens(t);
 				}
 				// add alias (if any) token to stream
 				if(aliasLength>0){
 					Token t = makeToken(new String(aliasBuffer, 0, aliasLength), start, start + length, false);
 					t.setPositionIncrement(0);
-					t.setType(exact.type());
+					t.setType(exact.type() + "-aliased");
 					addToTokens(t);
 				}
 			}
@@ -796,7 +796,7 @@ public class FastWikiTokenizerEngine {
 				if(lc == '\n' || lc =='\r')
 					break;
 			}
-			int start=0, end=0; // number of ='s at begining and end of line
+			int start=0, end=0; // number of ='s at beginning and end of line
 			// find first sequence of =
 			for(lookup = cur ; lookup < textLength && lookup < endOfLine ; lookup++ ){
 				if(text[lookup] == '=')
@@ -804,7 +804,7 @@ public class FastWikiTokenizerEngine {
 				else
 					break;
 			}
-			// find the last squence of =
+			// find the last sequence of =
 			for(lookup = endOfLine-1 ; lookup > cur ; lookup-- ){
 				if(text[lookup] == '=')
 					end++;
@@ -843,6 +843,7 @@ public class FastWikiTokenizerEngine {
 		}
 		return true;
 	}
+	
 	/** Check if it's a reference tag starting at cur */
 	protected boolean checkRefStart(){
 		if(matchesString("<ref")){
@@ -894,7 +895,7 @@ public class FastWikiTokenizerEngine {
 			return tokens;
 		}
 		
-		// strip comments so we don't neded to complicate syntax parsing even more
+		// strip comments so we don't need to complicate syntax parsing even more
 		stripComments();				
 			
 		// start parsing
@@ -974,7 +975,7 @@ public class FastWikiTokenizerEngine {
 								}
 							} 
 						} else if(cur > 0 && text[cur-1]=='\n' && text[cur+1] == '-'){
-							// explicitely put '-' into the glue buffer
+							// Explicitly put '-' into the glue buffer
 							if(options.highlightParsing){		
 								if(glueLength == 0)
 									glueStart = cur+1;
@@ -1276,7 +1277,7 @@ public class FastWikiTokenizerEngine {
 				continue;
 			case LINK_FETCH:
 				if(length == 0 && c ==' ')
-					continue; // ignore leading whitespaces
+					continue; // ignore leading whitespace
 				if(c == ']'){
 					state = ParserState.LINK_END;
 					continue;
@@ -1333,7 +1334,7 @@ public class FastWikiTokenizerEngine {
 								cur = fetchStart;
 							state = ParserState.CATEGORY_WORDS;
 						} else
-							System.err.print("ERROR: Inconsistent parser state, attepmted category backtrace for uninitalized fetchStart.");
+							System.err.print("ERROR: Inconsistent parser state, attempted category backtrace for uninitalized fetchStart.");
 						fetchStart = -1;
 						continue;
 					case INTERWIKI:
@@ -1375,7 +1376,7 @@ public class FastWikiTokenizerEngine {
 				continue;
 			case TABLE_BEGIN:
 				tableLevel++;
-				// ignore everything up to the newspace, since they are table display params
+				// ignore everything up to the newline, since they are table display params
 				while(cur < textLength && (text[cur]!='\r' && text[cur]!='\n'))
 					cur++;
 				state = ParserState.WORD;
@@ -1422,7 +1423,7 @@ public class FastWikiTokenizerEngine {
 		flushGlue();
 		if(nonContentTokens.size() != 0){
 			boolean first = true;
-			// flush any remaning tokens from initial templates, etc..
+			// flush any remaining tokens from initial templates, etc..
 			for(Token tt : nonContentTokens){
 				if(first){
 					tt.setPositionIncrement(FIRST_SECTION_GAP);
@@ -1595,7 +1596,11 @@ public class FastWikiTokenizerEngine {
 		return new String(buf,0,len).trim();
 	}
 	
-	/** Delete all vowels from a word or phrase */
+	/**
+	 * Delete all vowels from a word or phrase
+	 * 
+	 * Unused (except test)?
+	 */
 	public static String deleteVowels(String title){
 		char[] buf = new char[256];
 		

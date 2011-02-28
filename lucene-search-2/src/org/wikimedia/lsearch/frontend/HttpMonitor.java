@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 
 public class HttpMonitor extends Thread {
 	static Logger log = Logger.getLogger(HttpMonitor.class);
-	protected static HttpMonitor instance=null;
+	protected static HttpMonitor instance;
 	/** times when http request have been started */
 	protected Hashtable<HttpHandler,Long> startTimes = new Hashtable<HttpHandler,Long>();
 	
-	/** threshold for reporting 10s */
+	/** threshold in milliseconds for reporting */
 	protected long threshold = 10000;
 	
 	private HttpMonitor(){}

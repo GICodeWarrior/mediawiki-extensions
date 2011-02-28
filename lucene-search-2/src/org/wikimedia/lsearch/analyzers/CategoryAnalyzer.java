@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.LowerCaseFilter;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 
 /** Produces a token stream for category field in the lucene index.
- *  Each token is a single category (category names themself are
+ *  Each token is a single category (category names themselves are
  *  not tokenized) */
 public class CategoryAnalyzer extends Analyzer {
 	public class ArrayTokenStream extends TokenStream {
