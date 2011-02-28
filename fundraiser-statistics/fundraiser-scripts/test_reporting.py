@@ -22,7 +22,7 @@ import miner_help as mh
 
 import query_store as qs
 
-
+	
 def build_html_table_from_list(db, cur, header, sql_path, html_path, query_type, start_time, end_time):
 
 	query_obj = qs.query_store()
@@ -88,12 +88,52 @@ def build_html_table_from_list(db, cur, header, sql_path, html_path, query_type,
 	
 	return htmlcode
 
-# workaround for issue with tuple objects in HTML.py 
-# MySQLdb returns unfamiliar tuple elements from its fetchall method
-# this is probably a version problem since the issue popped up in 2.5 but not 2.6
-def listify(row):
-	l = []
-	for i in row:
-		l.append(i)
-	return l
+
+
+class data_handler(object):
+	
+	_db = None
+	_cur = None
+	
+	def __init__(self):
+		pass
+	
+	"""
+	
+	INITIALIZE DB ACCESS
+	
+	"""
+	def init_db(self):
+		
+		""" Establish connection """
+		# self._db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		# self._db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		self._db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		
+		""" Create cursor """
+		self._cur = self._db.cursor()
+		
+	
+	"""
+	
+	Close the db connection
+	
+	"""
+	def close_db(self):
+		self._cur.close()
+		self._db.close()
+		
+	"""
+	
+	workaround for issue with tuple objects in HTML.py 
+	MySQLdb returns unfamiliar tuple elements from its fetchall method
+	this is probably a version problem since the issue popped up in 2.5 but not 2.6
+	
+	"""
+	def listify(self, row):
+		l = []
+		for i in row:
+			l.append(i)
+		return l
+
 

@@ -25,43 +25,12 @@ import HTML
 import query_store as qs
 import miner_help as mh
 
-"""
 
-CLASS :: ^FundraiserReporting^
-
-Base class for reporting fundraiser analytics.  Methods that are intended to be extended in derived classes include:
-
-run_query()
-run()
-gen_plot()
-publish_google_sheet()
-write_to_html_table()
-
-
-"""
-class FundraiserReporting:
-
-	# Database and Cursor objects
-	db = None
-	cur = None
-	
-	def init_db(self):
-		""" Establish connection """
-		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
-
-		""" Create cursor """
-		self.cur = self.db.cursor()
-	
-	def close_db(self):
-		self.cur.close()
-		self.db.close()
-	
+class TimestampProcesser(object):
 	
 	"""
 	
-		Takes as input and converts it to a set of hours counting back from 0
+		Takes a list of timestamps as input and converts it to a set of hours counting back from 0
 		
 		time_lists 		- a list of timestamp lists
 		time_norm 	- a dictionary of normalized times
@@ -205,6 +174,44 @@ class FundraiserReporting:
 		end_time = str(now.year) + month_e + day_e + '000000'
 	
 		return [start_time, end_time]
+	
+	
+	
+"""
+
+CLASS :: ^FundraiserReporting^
+
+Base class for reporting fundraiser analytics.  Methods that are intended to be extended in derived classes include:
+
+run_query()
+run()
+gen_plot()
+publish_google_sheet()
+write_to_html_table()
+
+
+"""
+class FundraiserReporting(TimestampProcesser):
+
+	# Database and Cursor objects
+	db = None
+	cur = None
+	
+	def init_db(self):
+		""" Establish connection """
+		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+
+		""" Create cursor """
+		self.cur = self.db.cursor()
+	
+	def close_db(self):
+		self.cur.close()
+		self.db.close()
+	
+	
+	
 	
 	"""
 
