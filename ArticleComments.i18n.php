@@ -39,7 +39,7 @@ Available ones are "plain", "normal" and "wiki".',
 	'article-comments-comment-missing-name-parameter' => 'Missing name',
 	'article-comments-comment-missing-date-parameter' => 'Missing comment date',
 	'article-comments-no-spam' => 'At least one of the submitted fields was flagged as spam.',
-	'processcomment' => 'Process article comment',
+	'processcomment' => 'Process page comment',
 );
 
 /** Message documentation (Message documentation)
