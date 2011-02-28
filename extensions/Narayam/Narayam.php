@@ -50,20 +50,20 @@ $wgNarayamSchemes = array(
 		'bn-inscript' => 'ext.narayam.rules.bn-inscript',
 		'bn-nkb' => 'ext.narayam.rules.bn-nkb',
 	),
-        'hi' => array(
-                'hi-inscript' => 'ext.narayam.rules.hi-inscript',
-        ),
-        'kn' => array(
-                'kn' => 'ext.narayam.rules.kn',
-                'kn-inscript' => 'ext.narayam.rules.kn-inscript',
-        ),
+	'hi' => array(
+		'hi-inscript' => 'ext.narayam.rules.hi-inscript',
+	),
+	'kn' => array(
+		'kn' => 'ext.narayam.rules.kn',
+		'kn-inscript' => 'ext.narayam.rules.kn-inscript',
+	),
 	'ml' => array(
 		'ml' => 'ext.narayam.rules.ml',
 		'ml-inscript' => 'ext.narayam.rules.ml-inscript',
 	),
 	'sa' => array(
 		'sa' => 'ext.narayam.rules.sa',
-                'sa-inscript' => 'ext.narayam.rules.sa-inscript',
+		'sa-inscript' => 'ext.narayam.rules.sa-inscript',
 	),
 	'ta' => array(
 		'ta' => 'ext.narayam.rules.ta',
