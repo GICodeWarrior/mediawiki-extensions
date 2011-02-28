@@ -111,6 +111,23 @@ class query_store:
 			campaign = args[3]
 			sql_stmnt = sql_stmnt % (start, end, campaign, lp, start, end, campaign, lp)
 		
+		elif query_name == 'report_bannerLP_confidence':
+			start = args[0]
+			end = args[1]
+			banner = args[2]
+			lp = args[3]
+			campaign = args[4]
+			sql_stmnt = sql_stmnt % (start, end, banner, start, end, banner, campaign, start, end, banner, lp, campaign, start, end, banner, lp, campaign)
+			
+		elif query_name == 'report_ecomm_by_amount':
+			start_time = args[0]
+			end_time = args[1]
+			sql_stmnt = sql_stmnt % ('%', '%',  '%',  '%', start_time, end_time)
+		
+		elif query_name == 'report_ecomm_by_contact':
+			where_str = args[0]
+			sql_stmnt = sql_stmnt % ('%', '%',  '%',  '%', where_str)
+			
 		else:
 			return 'no such table\n'
 
@@ -127,8 +144,10 @@ class query_store:
 	def get_query_header(self, query_name):
 		if query_name == 'report_contribution_tracking':
 			return ['Time','Banner','Landing Page','Campaign','Converted Amount', 'Suffix']
-		elif query_name == '':
-			return ''
+		elif query_name == 'report_ecomm_by_amount':
+			return ['Timestamp','First Name','Last Name','Country','ISO Code', 'Amount']
+		elif query_name == 'report_ecomm_by_contact':
+			return ['Timestamp','First Name','Last Name','Country','ISO Code', 'Amount']
 		else:
 			return 'no such table'
 
@@ -256,6 +275,10 @@ class query_store:
 				return 9
 			elif metric_name == 'amt_per_imp':
 				return 10
+			elif metric_name == 'amt50_per_imp':
+				return 14
+			elif metric_name == 'amt100_per_imp':
+				return 15
 			else:
 				return -1
 		elif query_name == 'report_LP_confidence':
@@ -267,6 +290,31 @@ class query_store:
 				return 7
 			elif metric_name == 'amt_per_donation':
 				return 8
+			elif metric_name == 'amt50_per_view':
+				return 9
+			elif metric_name == 'amt100_per_view':
+				return 10
+			else:
+				return -1
+		elif query_name == 'report_bannerLP_confidence':
+			if metric_name == 'click_rate':
+				return 7
+			elif metric_name == 'completion_rate':
+				return 8
+			elif metric_name == 'don_per_imp':
+				return 9
+			elif metric_name == 'amt_per_imp':
+				return 10
+			elif metric_name == 'don_per_view':
+				return 11
+			elif metric_name == 'amt_per_view':
+				return 12
+			elif metric_name == 'amt_per_donation':
+				return 13
+			elif metric_name == 'amt50_per_imp':
+				return 14
+			elif metric_name == 'amt100_per_imp':
+				return 15
 			else:
 				return -1
 		else:
