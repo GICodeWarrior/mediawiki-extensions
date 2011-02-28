@@ -38,6 +38,13 @@ $messages['de'] = array(
 	'geequbox-desc' => 'Ermöglicht unter Verwendung von jQuery lightBox die Nutzung von Lightbox-Funktionen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'geequbox-desc' => 'Napórajo efekty swětłowego kašćika (Lightbox) z pomocu tykaca jQuery lightbox',
+);
+
 /** French (Français)
  * @author IAlex
  */
