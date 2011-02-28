@@ -216,7 +216,7 @@ var config = {
 				// Hide the pitch immediately
 				return true;
 			},
-			'title': 'articlefeedback-pitch-survey-title',
+			'title': 'articlefeedback-pitch-thanks',
 			'message': 'articlefeedback-pitch-survey-message',
 			'accept': 'articlefeedback-pitch-survey-accept',
 			'reject': 'articlefeedback-pitch-reject'
@@ -241,7 +241,7 @@ var config = {
 				mutePitch( 'join', 1 );
 				return false;
 			},
-			'title': 'articlefeedback-pitch-join-title',
+			'title': 'articlefeedback-pitch-thanks',
 			'message': 'articlefeedback-pitch-join-message',
 			'accept': 'articlefeedback-pitch-join-accept',
 			'reject': 'articlefeedback-pitch-reject',
@@ -290,7 +290,7 @@ var config = {
 				mutePitch( 'edit', 7 );
 				return false;
 			},
-			'title': 'articlefeedback-pitch-edit-title',
+			'title': 'articlefeedback-pitch-thanks',
 			'message': 'articlefeedback-pitch-edit-message',
 			'accept': 'articlefeedback-pitch-edit-accept',
 			'reject': 'articlefeedback-pitch-reject'

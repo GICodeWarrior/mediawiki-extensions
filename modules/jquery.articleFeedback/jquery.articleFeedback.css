@@ -64,6 +64,22 @@
 	font-size: 1.4em;
 }
 
+.articleFeedback-pitch .articleFeedback-title {
+	padding-left: 60px;
+	padding-bottom: 0.5em;
+	line-height: 50px;
+	background-image: url(images/check.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	margin-bottom: 0.5em;
+	border-bottom: solid 1px #dddddd;
+}
+
+.articleFeedback-message {
+	margin: 0.5em;
+	font-size: larger;
+}
+
 .articleFeedback-switch {
 	cursor: pointer;
 	color: #0645AD;

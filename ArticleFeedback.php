@@ -48,11 +48,6 @@ $wgPrefSwitchSurveys['articlerating'] = array(
 			'type' => 'boolean',
 			'iffalse' => 'articlefeedback-survey-question-useful-iffalse',
 		),
-		'expert' => array(
-			'question' => 'articlefeedback-survey-question-expert',
-			'type' => 'boolean',
-			'iftrue' => 'articlefeedback-survey-question-expert-iftrue',
-		),
 		'comments' => array(
 			'question' => 'articlefeedback-survey-question-comments',
 			'type' => 'text',
