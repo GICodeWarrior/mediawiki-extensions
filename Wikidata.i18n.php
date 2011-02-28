@@ -2997,7 +2997,7 @@ Bitte kontaktiere den Serveradminstrator.',
 	'ow_nstab_definedmeaning' => 'Festgelegte Bedeutung',
 	'ow_nstab_edit_copy' => 'Kopie bearbeiten',
 	'right-addlanguage' => 'Spracheinstellungen hinzufügen und ändern',
-	'ow_shown_datasets' => 'Datasets zeigen',
+	'ow_shown_datasets' => 'Datensätze anzeigen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
