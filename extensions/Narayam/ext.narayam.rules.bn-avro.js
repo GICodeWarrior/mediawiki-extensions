@@ -191,6 +191,7 @@ var rules = [
 jQuery.narayam.addScheme( 'bn-avro', {
 	'namemsg': 'narayam-bn-avro',
 	'extended_keyboard': false,
-	'lookbackLength': 5,
+	'lookbackLength': 3,
+	'keyBufferLength': 5,
 	'rules': rules
 } );

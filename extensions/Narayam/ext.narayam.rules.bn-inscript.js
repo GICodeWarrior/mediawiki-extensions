@@ -121,6 +121,7 @@ jQuery.narayam.addScheme( 'bn-inscript', {
 	'namemsg': 'narayam-bn-inscript',
 	'extended_keyboard': true,
 	'lookbackLength': 0,
+	'keyBufferLength': 0,
 	'rules': rules,
 	'rules_x': rules_x
 } );

@@ -105,6 +105,7 @@ var rules = [
 jQuery.narayam.addScheme( 'ta', {
 	'namemsg': 'narayam-ta',
 	'extended_keyboard': false,
-	'lookbackLength': 1,
+	'lookbackLength': 4,
+	'keyBufferLength': 1,
 	'rules': rules
 } );

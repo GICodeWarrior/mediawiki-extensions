@@ -78,5 +78,6 @@ jQuery.narayam.addScheme( 'ml-inscript', {
 	'namemsg': 'narayam-ml-inscript',
 	'extended_keyboard': false,
 	'lookbackLength': 0,
+	'keyBufferLength': 0,
 	'rules': rules
 } );

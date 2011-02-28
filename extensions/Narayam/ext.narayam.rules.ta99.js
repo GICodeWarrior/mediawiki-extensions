@@ -186,5 +186,6 @@ jQuery.narayam.addScheme( 'ta99', {
 	'namemsg': 'narayam-ta99',
 	'extended_keyboard': false,
 	'lookbackLength': 1,
+	'keyBufferLength': 1,
 	'rules': rules
 } );

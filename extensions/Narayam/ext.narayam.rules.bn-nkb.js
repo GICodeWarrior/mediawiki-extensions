@@ -132,6 +132,7 @@ jQuery.narayam.addScheme( 'bn-nkb', {
 	'namemsg': 'narayam-bn-nkb',
 	'extended_keyboard': true,
 	'lookbackLength': 0,
+	'keyBufferLength': 0,
 	'rules': rules,
 	'rules_x': rules_x
 } );

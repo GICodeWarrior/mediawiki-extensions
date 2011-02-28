@@ -42,21 +42,21 @@ $.narayam = new ( function() {
 	/**
 	 * Transliterate a string using the current scheme
 	 * @param str String to transliterate
-	 * @param lookback The lookback buffer
+	 * @param keyBuffer The key buffer
 	 * @param useExtended Whether to use the extended part of the scheme
 	 * @return Transliterated string, or str if no applicable transliteration found.
 	 */
-	function transliterate( str, lookback, useExtended ) {
+	function transliterate( str, keyBuffer, useExtended ) {
 		var rules = currentScheme.extended_keyboard && useExtended ?
 			currentScheme.rules_x : currentScheme.rules;
 		for ( var i = 0;  i < rules.length; i++ ) {
-			var lookbackMatch = true;
-			if ( rules[i][1].length > 0 && rules[i][1].length <= lookback.length ) {
-				// Try to match rules[i][1] at the end of the lookback buffer
-				lookbackMatch = new RegExp( rules[i][1] + '$' ).test( lookback );
+			var keyBufferMatch = true;
+			if ( rules[i][1].length > 0 && rules[i][1].length <= keyBuffer.length ) {
+				// Try to match rules[i][1] at the end of the key buffer
+				keyBufferMatch = new RegExp( rules[i][1] + '$' ).test( keyBuffer );
 			}
 			var regex = new RegExp( rules[i][0] + '$' );
-			if ( lookbackMatch && regex.test( str ) ) {
+			if ( keyBufferMatch && regex.test( str ) ) {
 				return str.replace( regex, rules[i][2] );
 			}
 		}
@@ -142,8 +142,8 @@ $.narayam = new ( function() {
 		}
 		
 		if ( e.which == 8 ) { // Backspace
-			// Blank the lookback buffer
-			$( this ).data( 'narayam-lookback', '' );
+			// Blank the keybuffer
+			$( this ).data( 'narayam-keyBuffer', '' );
 			return true;
 		}
 		
@@ -166,16 +166,16 @@ $.narayam = new ( function() {
 		// to provide context for the transliteration regexes.
 		// We need to append c because it hasn't been added to $this.val() yet
 		var input = lastNChars( $this.val(), startPos, currentScheme.lookbackLength ) + c;
-		var lookback = $this.data( 'narayam-lookback' );
-		var replacement = transliterate( input, lookback, e.altKey );
+		var keyBuffer = $this.data( 'narayam-keyBuffer' );
+		var replacement = transliterate( input, keyBuffer, e.altKey );
 		
-		// Update the lookback buffer
-		lookback += c;
-		if ( lookback.length > currentScheme.lookbackLength ) {
+		// Update the key buffer
+		keyBuffer += c;
+		if ( keyBuffer.length > currentScheme.keyBufferLength ) {
 			// The buffer is longer than needed, truncate it at the front
-			lookback = lookback.substring( lookback.length - currentScheme.lookbackLength );
+			keyBuffer = keyBuffer.substring( keyBuffer.length - currentScheme.keyBufferLength );
 		}
-		$this.data( 'narayam-lookback', lookback );
+		$this.data( 'narayam-keyBuffer', keyBuffer );
 		
 		// textSelection() magic is expensive, so we avoid it as much as we can
 		if ( replacement == input ) {
@@ -221,7 +221,7 @@ $.narayam = new ( function() {
 		$newInputs
 			.bind( 'keydown.narayam', onkeydown )
 			.bind( 'keypress.narayam', onkeypress )
-			.data( 'narayam-lookback', '' );
+			.data( 'narayam-keyBuffer', '' );
 		if ( enabled ) {
 			$newInputs.addClass( 'narayam-input' );
 		}
