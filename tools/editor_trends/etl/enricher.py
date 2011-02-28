@@ -29,13 +29,16 @@ from multiprocessing import JoinableQueue, Process, cpu_count
 from xml.etree.cElementTree import fromstring, dump
 from collections import deque
 
+if '..' not in sys.path:
+    sys.path.append('..')
+
 try:
     import pycassa
+    from database import cassandra
 except ImportError:
     print 'I am not going to use Cassandra today, it\'s my off day.'
 
-if '..' not in sys.path:
-    sys.path.append('..')
+
 
 from database import db
 from bots import detector
@@ -61,7 +64,15 @@ class Buffer:
 
     def setup_db(self):
         if self.storage == 'cassandra':
-            pass
+            self.keyspace_name = 'enwiki'
+            try:
+                self.db = pycassa.connect(self.keyspace_name)
+                cassandra.install_schema(self.keyspace_name)
+                self.collection = pycassa.ColumnFamily(self.db, 'Standard1')
+
+            except NameError, e:
+                pass
+
         else:
             self.db = db.init_mongo_db('enwiki')
             self.collection = self.db['kaggle']
@@ -70,14 +81,19 @@ class Buffer:
         self.revisions.append(revision)
         if len(self.revisions) == 100:
             self.store()
-            self.revisions = []
+            self.clear()
 
     def empty(self):
         self.store()
+        self.clear()
+
+    def clear(self):
+        self.revisions = []
 
     def store(self):
         if self.storage == 'cassandra':
             print 'insert into cassandra'
+            self.collection.batch_insert(self.revisions)
         else:
             print 'insert into mongo'
 
@@ -230,6 +246,8 @@ def create_variables(result_queue, storage):
                     revision_id = extracter.extract_revision_id(revision_id)
                     row['revision_id'] = revision_id
 
+                    timestamp = revision.find('timestamp').text
+                    row['timestamp'] = timestamp
 
                     hash = create_md5hash(revision)
                     revert = is_revision_reverted(hash['hash'], hashes)
@@ -239,7 +257,7 @@ def create_variables(result_queue, storage):
                     row.update(hash)
                     row.update(size)
                     row.update(revert)
-                    print row
+                    #print row
     #                if row['username'] == None:
     #                    contributor = revision.find('contributor')
     #                    attrs = contributor.getchildren()
@@ -301,20 +319,22 @@ def launcher():
     input_queue = JoinableQueue()
     result_queue = JoinableQueue()
     storage = 'cassandra'
-    files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
+    #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
+    files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
+
     for file in files:
         input_queue.put(file)
 
-    for x in xrange(cpu_count):
+    for x in xrange(cpu_count()):
         input_queue.put(None)
 
     extracters = [Process(target=create_article, args=[input_queue, result_queue])
-                  for x in xrange(cpu_count)]
+                  for x in xrange(cpu_count())]
     for extracter in extracters:
         extracter.start()
 
     creators = [Process(target=create_variables, args=[result_queue, storage])
-                for x in xrange(cpu_count)]
+                for x in xrange(cpu_count())]
     for creator in creators:
         creator.start()
 
