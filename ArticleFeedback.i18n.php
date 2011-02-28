@@ -31,9 +31,9 @@ $messages['en'] = array(
 	'articlefeedback-form-panel-instructions' => 'Please take a moment to rate this page.',
 	'articlefeedback-form-panel-clear' => 'Remove this rating',
 	'articlefeedback-form-panel-expertise' => 'I have prior knowledge on this topic',
-	'articlefeedback-form-panel-expertise-studies' => 'I\'ve studied it in college/university',
-	'articlefeedback-form-panel-expertise-profession' => 'It\'s part of my profession',
-	'articlefeedback-form-panel-expertise-hobby' => 'It\'s related to my hobbies or interests',
+	'articlefeedback-form-panel-expertise-studies' => 'I have studied it in college/university',
+	'articlefeedback-form-panel-expertise-profession' => 'It is part of my profession',
+	'articlefeedback-form-panel-expertise-hobby' => 'It is related to my hobbies or interests',
 	'articlefeedback-form-panel-expertise-other' => 'The source of my knowledge is not listed here',
 	'articlefeedback-form-panel-submit' => 'Submit feedback',
 	'articlefeedback-report-switch-label' => 'View page ratings',
@@ -59,12 +59,12 @@ $messages['en'] = array(
 	'articlefeedback-pitch-join-login' => 'Log in',
 	'articlefeedback-pitch-edit-message' => 'Did you know that you can edit this page?',
 	'articlefeedback-pitch-edit-accept' => 'Edit this page',
-    'articlefeedback-expert-assessment-question' => 'Do you have knowledge in this topic?',
-    'articlefeedback-expert-assessment-level-1-label' => 'Marginal',
-    'articlefeedback-expert-assessment-level-2-label' => 'Competent',
-    'articlefeedback-expert-assessment-level-3-label' => 'Expert',
+	'articlefeedback-expert-assessment-question' => 'Do you have knowledge in this topic?',
+	'articlefeedback-expert-assessment-level-1-label' => 'Marginal',
+	'articlefeedback-expert-assessment-level-2-label' => 'Competent',
+	'articlefeedback-expert-assessment-level-3-label' => 'Expert',
 	'articlefeedback-survey-message-success' => 'Thanks for filling out the survey.',
-    'articlefeedback-survey-message-error' => 'An error has occurred.
+	'articlefeedback-survey-message-error' => 'An error has occurred.
 Please try again later.',
 );
 
