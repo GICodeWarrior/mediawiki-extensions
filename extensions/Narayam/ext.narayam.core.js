@@ -155,13 +155,12 @@ $.narayam = new ( function() {
 		
 		var $this = $( this );
 		var c = String.fromCharCode( e.which );
-                // Get current caret position
-                // User may select text to overwrite
-                // Get start and end position of selection
-                // In case if user do no selection, both startPos and endPos will be same
+		// Get the current caret position. The user may have selected text to overwrite,
+		// so get both the start and end position of the selection. If there is no selection,
+		// startPos and endPos will be equal.
 		var pos = $this.textSelection( 'getCaretPosition', { 'startAndEnd': true } );
-                var startPos = pos[0];
-                var endPos = pos[1];
+		var startPos = pos[0];
+		var endPos = pos[1];
 		// Get the last few characters before the one the user just typed,
 		// to provide context for the transliteration regexes.
 		// We need to append c because it hasn't been added to $this.val() yet
