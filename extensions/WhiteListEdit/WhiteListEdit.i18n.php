@@ -3958,6 +3958,7 @@ $messages['yi'] = array(
 	'whitelisttablemodifynone' => 'גארנישט',
 	'whitelisttablepage' => 'וויקי בלאַט',
 	'whitelisttableedit' => 'רעדאַקטירן',
+	'whitelisttablenewdate' => 'נײַע דאַטע',
 	'whitelistnever' => 'קיינמאָל',
 );
 

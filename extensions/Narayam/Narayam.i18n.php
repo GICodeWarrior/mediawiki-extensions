@@ -109,14 +109,18 @@ $messages['de'] = array(
 	'narayam-toggle-ime' => 'Eingabemethode umschalten ($1)',
 	'narayam-help-page' => 'Help:Eingabe',
 	'narayam-checkbox-tooltip' => 'Eingabemethode ein- und ausschalten',
+	'narayam-hi-inscript' => 'Hindi (InScript)',
+	'narayam-kn' => 'Kannada-Transliteration',
+	'narayam-kn-inscript' => 'Kannada (InScript)',
 	'narayam-ml' => 'Malayalam-Transliteration',
-	'narayam-ml-inscript' => 'Malayalam-InScript',
+	'narayam-ml-inscript' => 'Malayalam (InScript)',
 	'narayam-sa' => 'Sanskrit-Transliteration',
-	'narayam-ta99' => 'Tamil99',
+	'narayam-sa-inscript' => 'Sanskrit (InScript)',
+	'narayam-ta99' => 'Tamil 99',
 	'narayam-ta' => 'Tamil-Transliteration',
-	'narayam-bn-avro' => 'Bengali-Avro',
-	'narayam-bn-inscript' => 'Bengali-InScript',
-	'narayam-bn-nkb' => 'Bengali-NKB',
+	'narayam-bn-avro' => 'Bengali (Avro)',
+	'narayam-bn-inscript' => 'Bengali (InScript)',
+	'narayam-bn-nkb' => 'Bengali (NKB)',
 );
 
 /** Hebrew (עברית)
@@ -164,9 +168,13 @@ $messages['ia'] = array(
 	'narayam-toggle-ime' => 'Pro alternar MI ($1)',
 	'narayam-help-page' => 'Help:Dactylographia',
 	'narayam-checkbox-tooltip' => 'Activar e disactivar le methodo de entrata',
+	'narayam-hi-inscript' => 'InScript hindi',
+	'narayam-kn' => 'Translitteration kannada',
+	'narayam-kn-inscript' => 'InScript kannada',
 	'narayam-ml' => 'Translitteration malayalam',
 	'narayam-ml-inscript' => 'InScript malayalam',
 	'narayam-sa' => 'Translitteration sanscrite',
+	'narayam-sa-inscript' => 'InScript sanscrite',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Translitteration tamil',
 	'narayam-bn-avro' => 'Avro bengalese',
@@ -188,6 +196,8 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'narayam-help-page' => 'Help:Tippen',
+	'narayam-ml' => 'Malayalam-Transliteratioun',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Tamil-Transliteratioun',
 );
@@ -200,9 +210,13 @@ $messages['mk'] = array(
 	'narayam-toggle-ime' => 'За префрлање на вносен метод ($1)',
 	'narayam-help-page' => 'Help:Внос',
 	'narayam-checkbox-tooltip' => 'За вкл/искл на метод на внос',
+	'narayam-hi-inscript' => 'Хинди - InScript',
+	'narayam-kn' => 'Транслитерација на Канада',
+	'narayam-kn-inscript' => 'Канада - InScript',
 	'narayam-ml' => 'Транслитерација на Малајалам',
-	'narayam-ml-inscript' => 'Малајаламски - InScript',
+	'narayam-ml-inscript' => 'Малајалам - InScript',
 	'narayam-sa' => 'Транслитерација на Санскрит',
+	'narayam-sa-inscript' => 'Санскрит - InScript',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Транслитерација на тамилски',
 	'narayam-bn-avro' => 'Бенгалски - Avro',
@@ -238,11 +252,15 @@ $messages['nl'] = array(
 	'narayam-toggle-ime' => 'IM in- of uitschakelen ($1)',
 	'narayam-help-page' => 'Help:Invoermethoden',
 	'narayam-checkbox-tooltip' => 'De invoermethode in- of uitschakelen',
-	'narayam-ml' => 'Malayalam transliteratie',
+	'narayam-hi-inscript' => 'Hindi InScript',
+	'narayam-kn' => 'Transliteratie in Kannada',
+	'narayam-kn-inscript' => 'Kannada InScript',
+	'narayam-ml' => 'Transliteratie in Malayalam',
 	'narayam-ml-inscript' => 'Malayalam InScript',
-	'narayam-sa' => 'Sanskriet transliteratie',
+	'narayam-sa' => 'Transliteratie in Sanskriet',
+	'narayam-sa-inscript' => 'Sanskrit InScript',
 	'narayam-ta99' => 'Tamil99',
-	'narayam-ta' => 'Tamil transliteratie',
+	'narayam-ta' => 'Transliteratie in Tamil',
 	'narayam-bn-avro' => 'Bengaals Avro',
 	'narayam-bn-inscript' => 'Bengaals InScript',
 	'narayam-bn-nkb' => 'Bengaals NKB',
@@ -316,10 +334,11 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'narayam-desc' => '允许添加自定义输入的方法的输入字段。',
-	'narayam-toggle-ime' => '要切换 IM',
+	'narayam-toggle-ime' => '切换 IM ($1)',
 	'narayam-help-page' => 'Help:打字',
 	'narayam-checkbox-tooltip' => '要打开和关闭切换输入的法',
 	'narayam-ml' => '马拉雅拉姆语音译',

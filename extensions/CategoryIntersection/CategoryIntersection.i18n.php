@@ -176,7 +176,7 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'categoryintersection' => 'Kategorien-Schnittmenge',
+	'categoryintersection' => 'Kategorienschnittmenge',
 	'categoryintersection-desc' => 'Pflege einer Tabelle mit Hashwerten für die [[Special:CategoryIntersection|Kategorien-Schnittmengensuche]]',
 	'categoryintersection-doit' => 'Alle Seiten in dieser Schnittmenge anzeigen',
 	'categoryintersection-maxcategories' => 'Die maximale Anzahl von Kategorien für Schnittmengen ist $1.',

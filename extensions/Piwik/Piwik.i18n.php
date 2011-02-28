@@ -711,6 +711,14 @@ $messages['vo'] = array(
 	'piwik-countries' => 'Läns',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'piwik-countries' => 'לענדער',
+	'piwik-browsers' => 'בלעטערערט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

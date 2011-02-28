@@ -277,6 +277,11 @@ Um Seiten zu transferieren, sind deren Titel im Eingabefeld unten anzugeben (ein
 	'push-special-obtaining-fileinfo' => '$1: Dateiinformationen werden abrufen …',
 	'push-special-pushing-file' => '$1: Transferiere Datei $2 …',
 	'push-special-return' => 'Weitere Seiten transferieren',
+	'push-api-err-nocurl' => 'cURL ist nicht installiert.
+Der Parameter $egPushDirectFileUploads muss daher für alle öffentlichen Wikis auf false gesetzt werden. Alternativ cURL für alle nichtöffentlichen Wikis installieren.',
+	'push-api-err-nofilesupport' => 'Die lokale MediaWiki-Installation unterstützt nicht das Hochladen von Dateien.
+Auf öffentlichen Wikis muss der Parameter $egPushDirectFileUploads auf false gesetzt werden.
+Auf nichtöffentlichen Wikis muss der über die Dokumentationsseite zu dieser Softwareerweiterung erhältliche Patch angewendet oder die MediaWiki-Installation selbst aktualisiert werden.',
 );
 
 /** Finnish (Suomi)
@@ -548,6 +553,11 @@ Pro transferer paginas, entra le titulos in le quadro de texto hic infra, un tit
 	'push-special-obtaining-fileinfo' => '$1: Obtene informationes de file...',
 	'push-special-pushing-file' => '$1: Transfere file $2...',
 	'push-special-return' => 'Transferer plus paginas',
+	'push-api-err-nocurl' => 'cURL non es installate.
+Mitte $egPushDirectFileUploads a false in wikis public, o installa cURL pro wikis private',
+	'push-api-err-nofilesupport' => 'Le MediaWiki local non ha supporto pro le incargamento de files.
+In wikis public, mitte $egPushDirectFileUploads a false.
+In wikis private, applica le patch ligate ab le documentation de Push o actualisa MediaWiki mesme.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -727,6 +737,11 @@ $messages['mk'] = array(
 	'push-special-obtaining-fileinfo' => '$1: Преземам податотечни податоци...',
 	'push-special-pushing-file' => '$1: Ја пренесувам податотеката $2...',
 	'push-special-return' => 'Пренеси уште страници',
+	'push-api-err-nocurl' => 'cURL не е инсталиран.
+Наместете го $egPushDirectFileUploads на „false“ на јавните викија, или пак инсталирајте го cURL на приватните викија',
+	'push-api-err-nofilesupport' => 'Локалниот МедијаВики нема поддршка за објавување на податотеки.
+На јавни викија, наместете го $egPushDirectFileUploads на „false“.
+На приватни викија, ставете ја поправката linkd од документацијата на Push или подновете го самиот МедијаВики.',
 );
 
 /** Dutch (Nederlands)
@@ -797,6 +812,11 @@ Het verzenden kan enige tijd kosten.",
 	'push-special-obtaining-fileinfo' => '$1: bestandsgegevens aan het ophalen...',
 	'push-special-pushing-file' => '$1: bestand $2 aan het verzenden...',
 	'push-special-return' => "Meer pagina's verzenden",
+	'push-api-err-nocurl' => 'cURL is niet geïnstalleerd.
+Stel op publieke wiki\'s $egPushDirectFileUploads in op "false" of installeer cURL in een besloten wiki.',
+	'push-api-err-nofilesupport' => 'De lokale MediaWiki heeft geen ondersteuning voor het doorsturen van bestanden. 
+Stel op openbare wiki\'s $egPushDirectFileUploads in op "false".
+Voer de patch waarnaar wordt verwezen in de documentatie van Push uit op besloten wiki\'s of werk MediaWiki zelf bij.',
 );
 
 /** Portuguese (Português)
