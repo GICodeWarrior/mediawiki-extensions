@@ -110,6 +110,7 @@ jQuery.narayam.addScheme( 'kn-inscript', {
     'namemsg': 'narayam-kn-inscript',
     'extended_keyboard': true,
     'lookbackLength': 0,
+    'keyBufferLength': 0,
     'rules': rules,
     'rules_x': rules_x
 } ); 

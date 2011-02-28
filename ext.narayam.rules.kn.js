@@ -144,5 +144,6 @@ jQuery.narayam.addScheme( 'kn', {
     'namemsg': 'narayam-kn',
     'extended_keyboard': false,
     'lookbackLength': 3,
+    'keyBufferLength': 1,
     'rules': rules
 } ); 

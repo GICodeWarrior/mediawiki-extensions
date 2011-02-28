@@ -118,6 +118,7 @@ jQuery.narayam.addScheme( 'hi-inscript', {
     'namemsg': 'narayam-hi-inscript',
     'extended_keyboard': true,
     'lookbackLength': 0,
+    'keyBufferLength': 0,
     'rules': rules,
     'rules_x': rules_x
 } ); 

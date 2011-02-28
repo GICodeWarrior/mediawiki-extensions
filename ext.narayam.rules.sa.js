@@ -158,6 +158,7 @@ var rules = [
 jQuery.narayam.addScheme( 'sa', {
 	'namemsg': 'narayam-sa',
 	'extended_keyboard': false,
-	'lookbackLength': 2,
+	'lookbackLength': 4,
+	'keyBufferLength': 1,
 	'rules': rules
 } );
