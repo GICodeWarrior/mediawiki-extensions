@@ -270,6 +270,13 @@ $messages['ja'] = array(
 	'addmediawizard-desc' => 'ウィキメディア財団と Kaltura のパートナーシップにより開発された、メディア追加ウィザード',
 );
 
+/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+ * @author Beco1977
+ */
+$messages['kbd-cyrl'] = array(
+	'addmediawizard-desc' => 'медиэ хэпгъэхъуэну 1эзэт, кэлтурэрэ уикимедиэрэ зэдэлажэху къык1ырахэгъы',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */
