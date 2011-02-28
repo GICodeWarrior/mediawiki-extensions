@@ -887,6 +887,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -896,7 +897,7 @@ $messages['pms'] = array(
 	'contrib-tracking-error-text' => 'Spedission ëd forma nen bon-a',
 	'contrib-tracking-submitting' => 'Spedission al motor ëd pagament ...',
 	'contrib-tracking-continue' => "S'it ses pa rediressionà automaticament, sgnaca ël boton për completé toa donassion a PayPal.",
-	'contrib-tracking-redirect' => 'It saras rediressionà automaticament su PayPal për completé toa donassion.',
+	'contrib-tracking-redirect' => 'A sarà anviarà automaticament su PayPal për completé soa donassion.',
 	'contrib-tracking-button' => 'Continua',
 	'contrib-tracking-item-name-onetime' => 'Donassion sìngola',
 	'contrib-tracking-item-name-recurring' => 'Donassion recorenta mensil',
