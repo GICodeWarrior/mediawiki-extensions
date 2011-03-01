@@ -7,7 +7,7 @@ import config
 from extractprofile import SocketProfile
 import rrdtool
 
-profId = 'stats/1.17-phase1'
+profId = 'stats/all'
 rrdFileName = '/var/lib/profile-stats-logger/stats.rrd'
 
 if not os.path.exists( rrdFileName ):
@@ -34,6 +34,15 @@ while True:
 	if not ( profId in fullProfile ):
 		continue
 	profile = fullProfile[profId]['-']
+	if 'pcache_hit' not in profile:
+		profile['pcache_hit'] = {'count':0}
+	if 'pcache_miss_absent' not in profile:
+		profile['pcache_miss_absent'] = {'count':0}
+	if 'pcache_miss_expired' not in profile:
+		profile['pcache_miss_expired'] = {'count':0}
+	if 'pcache_miss_invalid' not in profile:
+		profile['pcache_miss_invalid'] = {'count':0}
+
 
 	rrdtool.update(
 		rrdFileName,
