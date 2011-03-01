@@ -905,3 +905,11 @@ $messages['zh-hant'] = array(
 	'block_title_error' => '抱歉，這篇文章的標題不允許保存。',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'block_title_error_page_title' => '已封鎖的標題',
+	'block_title_error' => '很抱欺，這個頁面的標題不准許儲存。',
+);
+
