@@ -127,7 +127,7 @@ function wfArticleCommentsParserSetup( &$parser ) {
 
 function wfArticleCommentsParserHook( $text, $params = array(), $parser ) {
 	# Generate a comment form for display
-	return  wfArticleCommentForm( $parser->mTitle, $params );
+	return wfArticleCommentForm( $parser->mTitle, $params, $parser );
 }
 
 function wfArticleCommentsParserHookComment( $text, $args, $parser, $frame ) {
@@ -205,7 +205,7 @@ function wfArticleCommentsParserHookComment( $text, $args, $parser, $frame ) {
  * @param $skin Object: Skin object
  */
 function wfArticleCommentsAfterContent( $data, $skin ) {
-	global $wgRequest, $wgArticleCommentsNSDisplayList;
+	global $wgRequest, $wgArticleCommentsNSDisplayList, $wgParser;
 
 	# Short-circuit for anything other than action=view or action=purge
 	if ( $wgRequest->getVal( 'action' ) &&
@@ -234,7 +234,7 @@ function wfArticleCommentsAfterContent( $data, $skin ) {
 
 	# Display the form
 	if ( in_array( $title->getNamespace(), $nsList ) ) {
-		$data .= wfArticleCommentForm( $title );
+		$data .= wfArticleCommentForm( $title, array(), $wgParser );
 	}
 
 	return true;
@@ -245,9 +245,13 @@ function wfArticleCommentsAfterContent( $data, $skin ) {
  * @param $title Object: the title of the article on which the form will appear.
  * @param $params Array: a hash of parameters containing rendering options.
  */
-function wfArticleCommentForm( $title, $params = array() ) {
-	global $wgArticleCommentDefaults, $wgOut;
+function wfArticleCommentForm( $title, $params = array(), $parser ) {
+	global $wgArticleCommentDefaults, $wgOut, $wgParser, $wgParserConf;
 
+	if ( $parser === $wgParser ) { # Needed since r82645. Workaround the 'Invalid marker' problem by giving a new parser to wfMsgExt().
+		$wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
+	}
+	
 	# Merge in global defaults if specified
 	$tmp = $wgArticleCommentDefaults;
 	foreach ( $params as $k => $v ) {
