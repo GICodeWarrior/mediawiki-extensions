@@ -1,5 +1,5 @@
 Source: wikimedia-task-appserver
-Section: unknown
+Section: web
 Priority: optional
 Maintainer: Mark Bergsma <mark@wikimedia.org>
 Standards-Version: 3.6.2
