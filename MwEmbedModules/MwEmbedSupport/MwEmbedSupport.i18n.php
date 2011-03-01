@@ -71,10 +71,15 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
 	'mwe-loading_txt' => 'يحمل...',
+	'mwe-size-gigabytes' => '$1 جيجابايت',
+	'mwe-size-megabytes' => '$1 ميجا بايت',
+	'mwe-size-kilobytes' => '$1 كيلوبايت',
+	'mwe-size-bytes' => '$1 بايت',
 	'mwe-cancel' => 'ألغِ',
 );
 
