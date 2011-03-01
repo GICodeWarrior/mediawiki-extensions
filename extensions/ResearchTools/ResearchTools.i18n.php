@@ -45,6 +45,18 @@ $messages['br'] = array(
 	'researchtools-page-prefs' => 'Stadegoù war ar penndibaboù',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'researchtools' => 'Recherchewerkzeuge',
+	'researchtools-desc' => 'Stellt ein Bündel an Recherchewerkzeugen bereit, die bei der Untersuchung des Benutzerverhaltens hilfreich sind',
+	'researchtools-page-dashboard' => 'Übersichtsseite',
+	'researchtools-page-surveys' => 'Umfrageergebnisse',
+	'researchtools-page-clicks' => 'Klicktracking',
+	'researchtools-page-prefs' => 'Statistiken zu Benutzereinstellungen',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Sherbrooke
@@ -92,6 +104,18 @@ $messages['hsb'] = array(
 	'researchtools-page-surveys' => 'Naprašowanske wotmołwy',
 	'researchtools-page-clicks' => 'Slědowanje kliknjenjow',
 	'researchtools-page-prefs' => 'Statistika nastajenjow',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'researchtools' => 'Instrumentos de investigation',
+	'researchtools-desc' => 'Instrumentario utile pro conducer studios de investigation de usatores',
+	'researchtools-page-dashboard' => 'Pannello de instrumentos',
+	'researchtools-page-surveys' => 'Responsas al questionario',
+	'researchtools-page-clicks' => 'Traciamento de clics',
+	'researchtools-page-prefs' => 'Statisticas de preferentias',
 );
 
 /** Indonesian (Bahasa Indonesia)

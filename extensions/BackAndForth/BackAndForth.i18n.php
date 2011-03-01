@@ -1078,3 +1078,11 @@ $messages['zh-hant'] = array(
 	'backforth-prev' => '上一條 （$1）',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'backforth-next' => '下一個（$1）',
+	'backforth-prev' => '上一個（$1）',
+);
+

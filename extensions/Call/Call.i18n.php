@@ -1381,3 +1381,10 @@ $messages['zh-hant'] = array(
 	'call-save-failed' => '由於頁面已存在，以下文字並未儲存至頁面<big>[[$1]]</big>。',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'call' => '呼叫',
+);
+

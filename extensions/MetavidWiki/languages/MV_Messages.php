@@ -2111,6 +2111,7 @@ Zur Stream-Ansicht springen: $2',
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
+ * @author Kghbln
  * @author Pill
  * @author Revolus
  * @author Umherirrender
@@ -2126,7 +2127,7 @@ oder <a href="$3">fügen Sie den Stream hinzu</a>.',
 	'add_stream_permission' => 'Sie haben keine Erlaubnis, einen neuen Stream hinzuzufügen',
 	'mvd_default_mismatch_text' => 'Ihre Einstellungsdatei ist fehlerhaft.
 <code>$mvMVDTypeDefaultDisp</code> sollte eine Teilmenge von <code>$mvMVDTypeAllAvailable</code> sein',
-	'mv_adjust_old_title_missing' => 'Die Seite, die Sie von ($1) verschieben wollen, existiert nicht',
+	'mv_adjust_old_title_missing' => 'Die Seite, die Sie von ($1) verschieben wollen, ist nicht vorhanden',
 );
 
 /** Lower Sorbian (Dolnoserbski)

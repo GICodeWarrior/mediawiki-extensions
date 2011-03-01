@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'mwembed-desc' => 'Provides support for mwEmbed modules and extensions',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'mwembed-desc' => '{{desc}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -154,6 +161,13 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'mwembed-desc' => 'mwEmbed拡張機能は、mwEmbedモジュールと拡張機能のサポートを提供します',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mwembed-desc' => 'Ongerstöz der Jebruch vun de <i lang="en">mwEmbed</i>-Module un dänne ier Zohsäz.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

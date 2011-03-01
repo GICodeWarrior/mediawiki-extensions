@@ -362,12 +362,13 @@ $messages['de'] = array(
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Imre
+ * @author Kghbln
  */
 $messages['de-formal'] = array(
 	'duplicator-source-invalid' => 'Bitte geben Sie eine gültige Quell-Seite an.',
-	'duplicator-source-notexist' => 'Die Seite [[$1]] existiert nicht. Bitte geben Sie eine existierende Seite an.',
+	'duplicator-source-notexist' => 'Die Seite [[$1]] ist nicht vorhanden. Bitte geben Sie eine vorhandene Seite an.',
 	'duplicator-dest-invalid' => 'Bitte geben Sie eine gültige Ziel-Seite an.',
-	'duplicator-dest-exists' => 'Die Seite [[$1]] existiert bereits. Bitte geben Sie eine nicht existierende Seite an.',
+	'duplicator-dest-exists' => 'Die Seite [[$1]] ist bereits vorhanden. Bitte geben Sie eine Zielseite an, die nicht vorhanden ist.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

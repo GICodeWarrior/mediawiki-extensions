@@ -195,13 +195,14 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'badimages' => "Llista d'imáxenes non válides",
 	'badimage-desc' => "Esparde les capacidaes de la llista d'imáxenes non válides de MediaWiki",
 	'badimages-add-btn' => 'Añader',
 	'badimages-added' => 'Añadióse $1 a la llista.',
-	'badimages-count' => "Hai '''$1''' imáxenes na llista d'imáxenes non válides.",
+	'badimages-count' => "Hai '''$1''' {{PLURAL:$1|imaxe|imaxes}} na llista d'imaxes non válides.",
 	'badimages-name' => 'Nome:',
 	'badimages-not-added' => 'Nun se pudo añader la imaxe.',
 	'badimages-not-removed' => 'Nun se pudo eliminar la imaxe.',
@@ -217,6 +218,7 @@ $messages['ast'] = array(
 	'badimages-log-add' => "añadió [[$1]] a la llista d'imáxenes non válides",
 	'badimages-log-remove' => "eliminó [[$1]] de la llista d'imáxenes non válides",
 	'badimages-page' => "{{ns:help}}:Llista d'imáxenes non válides",
+	'right-badimages' => "Anovar la llista d'imaxes non válides",
 );
 
 /** Kotava (Kotava)
@@ -2923,5 +2925,21 @@ $messages['zh-hant'] = array(
 	'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
 	'badimages-page' => '{{ns:help}}:壞圖像列表',
 	'right-badimages' => '更新不雅圖像列表',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'badimages-add-btn' => '加入',
+	'badimages-added' => '$1 已被加入到列表裏。',
+	'badimages-name' => '名稱：',
+	'badimages-not-added' => '圖像不能加入。',
+	'badimages-not-removed' => '圖像不能移除。',
+	'badimages-reason' => '原因：',
+	'badimages-remove' => '（移除）',
+	'badimages-remove-btn' => '移除',
+	'badimages-remove-confirm' => '請確定你要從列表中移除 $1：',
+	'badimages-removed' => '$1 已從列表中移除。',
 );
 
