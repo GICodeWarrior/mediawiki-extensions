@@ -954,6 +954,11 @@ $messages['ru'] = array(
 	'push-special-obtaining-fileinfo' => '$1: Получение сведений о файлах…',
 	'push-special-pushing-file' => '$1: Размещение файла $2…',
 	'push-special-return' => 'Разместить другие страницы',
+	'push-api-err-nocurl' => 'cURL не установлен.
+На общедоступной вики установите параметр $egPushDirectFileUploads в значение false, или установите cURL на частной вики.',
+	'push-api-err-nofilesupport' => 'Локальная MediaWiki не поддерживает отправку файлов. 
+На общедоступной вики установите параметр $egPushDirectFileUploads в значение false.
+На частной вики примените патч linkd из документации Push или обновите саму MediaWiki.',
 );
 
 /** Telugu (తెలుగు)
