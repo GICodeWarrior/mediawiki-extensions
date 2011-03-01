@@ -906,6 +906,13 @@ Ma ne gav den ebet abeg ebet er goulenn goude pemp devezh e vo diverket gant ur 
 	'deletequeue-queue-deletediscuss' => 'Kaozeadenn war an diverkañ',
 	'deletequeue-page-speedy' => "Kinniget ez eus bet diverkañ ar bajenn-mañ raktal.
 Setu an abeg roet ''$1''.",
+	'deletequeue-page-prod' => "Kinniget ez eus bet diverkañ ar bajenn-mañ. 
+Ha setu perak ''$1''.
+Ma ne vez ket dizarbennet ar c'hinnig-mañ a-benn an ''$2'', e vo diverket ar bajenn.
+Gallout a rit dizarbenn ar c'hinnig diverkañ en ur [{{fullurl:{{FULLPAGENAME}}|action=delvote}} sevel a-enep d'an diverkañ].",
+	'deletequeue-page-deletediscuss' => "Kinniget e oa bet diverkañ ar bajenn-mañ ha tud zo zo savet a-enep.
+Abalamour da gement-mañ ''$1''.
+Boulc'het ez eus bet ur gaoz war an divoud war [[$5]]; klozet e vo d'an ''$2''.",
 	'deletequeue-notqueued' => "Ar bajenn hoc'h eus diuzet n'emañ ket en ul lostennad dilemel evit bremañ",
 	'deletequeue-review-action' => 'Ober da seveniñ :',
 	'deletequeue-review-delete' => 'Dilemel ar bajenn.',

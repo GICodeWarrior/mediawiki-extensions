@@ -1859,7 +1859,8 @@ Hned jak dokončíte nahrávání, $2',
 	'fogg-please-install' => '$1. Více $2',
 	'fogg-please-install-install-linktext' => 'Nainstalovat Firefogg',
 	'fogg-please-install-about-linktext' => 'informací o Firefoggu',
-	'fogg-use_latest_firefox' => 'Nejprve si nainstalujte <a href="http://www.mozilla-europe.org/cs/firefox/?from=firefogg">Firefox 3.5</a> (nebo novější). <i>Poté se vraťte na tuto stránku, abyste si mohli nainstalovat rozšíření <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'Nejprve si nainstalujte $1.
+<i>Poté se vraťte na tuto stránku, abyste si mohli nainstalovat rozšíření <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'nejnovější Firefox',
 	'fogg-passthrough_mode' => 'Vybraný soubor už je ogg nebo není video',
 	'fogg-encoding-done' => 'Kódování dokončeno',
@@ -2270,7 +2271,8 @@ $messages['diq'] = array(
 	'fogg-check_for_firefogg' => 'Firefogg kontrol beno...',
 	'fogg-installed' => 'Firefogg bar bı',
 	'fogg-for_improved_uploads' => 'qey barkerdışê dewlemend biyayeyani:',
-	'fogg-use_latest_firefox' => 'kerem kerê ewwil <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a>\'i barkerê. <i>u hema parçeyê <b>Firefogg</b> i bar kerê, qey barkerdışi no pel ziyaret bıkerê</i>',
+	'fogg-use_latest_firefox' => 'kerem kerê ewwil $1.
+<i>u hema parçeyê <b>Firefogg</b> i bar kerê, qey barkerdışi no pel ziyaret bıkerê</i>',
 	'fogg-passthrough_mode' => 'dosyaya ke şıma weçina ca ra yew dosyaya Oggi ya zi videoyi niyo',
 	'fogg-encoding-done' => 'kodkerdış temam bı',
 	'fogg-badtoken' => 'nişan qebul nêbı',
@@ -2472,7 +2474,8 @@ $messages['dsb'] = array(
 	'fogg-please-install' => '$1. Dalšne $2',
 	'fogg-please-install-install-linktext' => 'Firefogg instalěrowaś',
 	'fogg-please-install-about-linktext' => 'wó Firefogg',
-	'fogg-use_latest_firefox' => 'Pšosym instalěruj njepjerwjej <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (abo wuši). <i>Woglědaj pótom k toś tomu bokoju zasego, aby rozšyrjenje <b>Firefogg</b> instalěrował.</i>',
+	'fogg-use_latest_firefox' => 'Pšosym instalěruj njepjerwjej $1.
+<i>Woglědaj pótom k toś tomu bokoju zasego, aby rozšyrjenje <b>Firefogg</b> instalěrował.</i>',
 	'fogg-latest-firefox' => 'nejnowšy Firefox',
 	'fogg-passthrough_mode' => 'Twója wubrana dataja jo južo dataja Ogg abo njejo wideojowa dataja',
 	'fogg-encoding-done' => 'Koděrowanje skóńcone',
@@ -2720,7 +2723,8 @@ Bonvolu kontroli la [$1 fonto] kaj helpu priskribi ĝin.',
 	'fogg-please-install' => '$1, Pli $2',
 	'fogg-please-install-install-linktext' => 'Instali Firefogg',
 	'fogg-please-install-about-linktext' => 'pri Firefogg',
-	'fogg-use_latest_firefox' => 'Bonvolu antaŭe instali <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox (Fajrvulpo) 3.5</a> (or later). <i>Poste revenu al ĉi tiu paĝo por instali la  kromprogramon <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'Bonvolu antaŭe instali $1.
+<i>Poste revenu al ĉi tiu paĝo por instali la  kromprogramon <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'lasta versio de Firefox',
 	'fogg-passthrough_mode' => 'Via elektita dosiero estas jam ogg aŭ ne estas video-dosiero',
 	'fogg-encoding-done' => 'Enĉifrado kompletiĝis',
@@ -2929,7 +2933,8 @@ $messages['es'] = array(
 	'fogg-please-install' => '$1. Más $2',
 	'fogg-please-install-install-linktext' => 'Instalar Firefogg',
 	'fogg-please-install-about-linktext' => 'acerca de Firefogg',
-	'fogg-use_latest_firefox' => 'Por favor primero instala <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (o posterior). <i>Luego vuelve a visitar esta página para instalar la extensión <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'Por favor primero instala $1.
+<i>Luego vuelve a visitar esta página para instalar la extensión <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'Última versión de Firefox',
 	'fogg-passthrough_mode' => 'Tu archivo seleccionado ya es Ogg o no es un archivo de video',
 	'fogg-encoding-done' => 'Codificación completa',
@@ -4058,7 +4063,8 @@ $messages['gsw'] = array(
 	'fogg-please-install' => '$1. Meh $2',
 	'fogg-please-install-install-linktext' => 'Firefogg inschtalliere',
 	'fogg-please-install-about-linktext' => 'iber Firefogg',
-	'fogg-use_latest_firefox' => 'Bitte ischtallier zerscht <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (oder e nejeri Version). <i>DErno gang wider uf die Syte go d <b>Firefogg</b>-Erwyterig inschtalliere.</i>',
+	'fogg-use_latest_firefox' => 'Bitte ischtallier zerscht $1.
+<i>DErno gang wider uf die Syte go d <b>Firefogg</b>-Erwyterig inschtalliere.</i>',
 	'fogg-latest-firefox' => 'di nejscht Version vu Firefox',
 	'fogg-passthrough_mode' => 'D Datei, wu Du uusgwehlt hesch, isch schon im Ogg-Format oder s het kei Video din',
 	'fogg-encoding-done' => 'Umwandlig fertig',
@@ -4924,7 +4930,8 @@ $messages['ia'] = array(
 	'fogg-please-install' => '$1. Plus $2',
 	'fogg-please-install-install-linktext' => 'Installar Firefogg',
 	'fogg-please-install-about-linktext' => 'a proposito de Firefogg',
-	'fogg-use_latest_firefox' => 'Per favor primo installa <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (o plus recente). <i>Alora revisita iste pagina pro installar le extension <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'Per favor primo installa $1.
+<i>Postea revisita iste pagina pro installar le extension <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'ultime Firefox',
 	'fogg-passthrough_mode' => 'Le file que tu seligeva ja es in Ogg, o non es un file video',
 	'fogg-encoding-done' => 'Codification complete',
@@ -6544,7 +6551,7 @@ $messages['nl'] = array(
 	'fogg-please-install' => '$1. Meer $2',
 	'fogg-please-install-install-linktext' => 'Firefogg installeren',
 	'fogg-please-install-about-linktext' => 'over Firefogg',
-	'fogg-use_latest_firefox' => 'Installeer alstublieft eerst <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (of een latere versie).
+	'fogg-use_latest_firefox' => 'Installeer alstublieft eerst $1
 <i>Kom daarna terug naar deze pagina om de uitbreiding <b>Firefogg</b> te installeren.</i>',
 	'fogg-latest-firefox' => 'nieuwste Firefox',
 	'fogg-passthrough_mode' => 'Het geselecteerde bestand is al een Ogg-bestand of geen videobestand',
@@ -8332,7 +8339,8 @@ $messages['ru'] = array(
 	'fogg-please-install' => '$1. Подробнее $2',
 	'fogg-please-install-install-linktext' => 'Установить Firefogg',
 	'fogg-please-install-about-linktext' => 'о Firefogg',
-	'fogg-use_latest_firefox' => 'Пожалуйста, сначала установите <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (или выше). <i>Затем повторно обратитесь к этой странице, чтобы установить расширение <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'Пожалуйста, сначала установите $1.
+<i>Затем повторно обратитесь к этой странице, чтобы установить расширение <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'последний Firefox',
 	'fogg-passthrough_mode' => 'Выбранный файл уже Ogg или не является видео-файлом',
 	'fogg-encoding-done' => 'Перекодирование завершено',
