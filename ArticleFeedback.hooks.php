@@ -9,6 +9,12 @@
 class ArticleFeedbackHooks {
 	
 	protected static $modules = array(
+		'ext.articleFeedback.startup' => array(
+			'scripts' => 'ext.articleFeedback/ext.articleFeedback.startup.js',
+			'dependencies' => array(
+				'mediawiki.util',
+			),
+		),
 		'ext.articleFeedback' => array(
 			'scripts' => 'ext.articleFeedback/ext.articleFeedback.js',
 			'styles' => 'ext.articleFeedback/ext.articleFeedback.css',
@@ -159,25 +165,7 @@ class ArticleFeedbackHooks {
 	 * BeforePageDisplay hook
 	 */
 	public static function beforePageDisplay( $out ) {
-		global $wgRequest, $wgArticleFeedbackCategories;
-		
-		$title = $out->getTitle();
-		
-		// Restrict ratings to... 
-		if (
-			// Main namespace articles
-			$title->getNamespace() == NS_MAIN
-			// View pages
-			&& $wgRequest->getVal( 'action', 'view' ) == 'view'
-			// Current revision
-			&& !$wgRequest->getCheck( 'diff' )
-			&& !$wgRequest->getCheck( 'oldid' )
-			// Articles in valid categories
-			&& count( $wgArticleFeedbackCategories )
-			&& self::isInCategories( $title->getArticleId(), $wgArticleFeedbackCategories )
-		) {
-			$out->addModules( 'ext.articleFeedback' );
-		}
+		$out->addModules( 'ext.articleFeedback.startup' );
 		return true;
 	}
 	
@@ -196,24 +184,13 @@ class ArticleFeedbackHooks {
 		return true;
 	}
 	
-	/* Protected Static Methods */
-	
-	/**
-	 * Returns whether an article is in the specified categories
-	 * 
-	 * @param $articleId Integer: Article ID
-	 * @param $categories Array: List of category names (without Category: prefix, with underscores)
-	 * 
-	 * @return Boolean: True if article is in one of the values of $categories 
+	/*
+	 * ResourceLoaderGetConfigVars hook
 	 */
-	protected static function isInCategories( $articleId, $categories ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		return (bool)$dbr->selectRow( 'categorylinks', '1',
-			array(
-				'cl_from' => $articleId,
-				'cl_to' => $categories,
-			),
-			__METHOD__
-		);
+	public static function resourceLoaderGetConfigVars( &$vars ) {
+		global $wgArticleFeedbackCategories, $wgArticleFeedbackLotteryOdds;
+		$vars['wgArticleFeedbackCategories'] = $wgArticleFeedbackCategories;
+		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
+		return true;
 	}
 }
