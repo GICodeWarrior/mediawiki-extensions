@@ -4189,9 +4189,10 @@ $wgGoogleMapsMessages['oc'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Psubhashish
  */
 $wgGoogleMapsMessages['or'] = array(
-	'gm-zoom-control' => 'ଦିଗ୍ଦର୍ଶକ',
+	'gm-zoom-control' => 'ଦିଗବାରେଣି (ନାଭିଗେସନ)',
 	'gm-search' => 'ସନ୍ଧାନ',
 );
 
