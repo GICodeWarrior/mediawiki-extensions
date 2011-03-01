@@ -34,4 +34,6 @@ function SFI_DTP_init ( input_id, params ) {
 			})
 		}
 	}
+
+	jQuery( "#" + input_id ).attr("value", jQuery( "#" + input_id ).attr("value") + " " + tp.attr( "value" ) );
 }
