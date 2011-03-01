@@ -668,3 +668,10 @@ $messages['zh-hant'] = array(
 	'mwsearch-desc' => 'MWSearch 增益集',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'mwsearch-desc' => 'MWSearch 外掛程式',
+);
+
