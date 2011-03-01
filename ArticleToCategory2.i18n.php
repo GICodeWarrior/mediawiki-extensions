@@ -579,3 +579,13 @@ $messages['zh-hans'] = array(
 	'articletocategory2-create-category-under-category-button' => '创建',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'articletocategory2-create-article-under-category-text' => '在此類別加入一個頁面',
+	'articletocategory2-create-article-under-category-button' => '建立',
+	'articletocategory2-create-category-under-category-text' => '在此類別加入另一個類別',
+	'articletocategory2-create-category-under-category-button' => '建立',
+);
+
