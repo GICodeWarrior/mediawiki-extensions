@@ -487,6 +487,8 @@ Zo by strony přenjesł, zapodaj titule do slědowaceho tekstoweho pola, jedyn t
 	'push-special-obtaining-fileinfo' => '$1: Datajowe informacije so wobstaruja...',
 	'push-special-pushing-file' => '$1: Dataja $2 so přenošuje...',
 	'push-special-return' => 'Dalše strony přenjesć',
+	'push-api-err-nocurl' => 'cURL njeje instalowany.
+Staj $egPushDirectFileUploads na false na zjawnych wikijach abo instaluj cURL za priwatne wikije',
 );
 
 /** Interlingua (Interlingua)
