@@ -133,6 +133,6 @@ if ( !window.PhotoCommons ) {
 
 	// Init
 	// FIXME
-	$( document ).ready( PhotoCommons.init );
+	//$( document ).ready( PhotoCommons.init );
 
 })(jQuery);
