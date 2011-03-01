@@ -377,3 +377,10 @@ $messages['vi'] = array(
 	'magicnonumberedheadings-desc' => 'Thêm từ thần chú “<nowiki>__NONUMBEREDHEADINGS__</nowiki>”',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'magicnonumberedheadings-desc' => '加入魔法語句「<nowiki>__NONUMBEREDHEADINGS__</nowiki>」',
+);
+
