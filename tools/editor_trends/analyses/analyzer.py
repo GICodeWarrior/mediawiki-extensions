@@ -39,10 +39,15 @@ from utils import timer
 from utils import log
 
 class Replicator:
-    def __init__(self, rts, plugin, time_unit, cutoff=None, cum_cutoff=None, **kwargs):
+    def __init__(self, args, plugin, time_unit, cutoff=None, cum_cutoff=None, **kwargs):
+        self.args = args
         self.plugin = plugin
-        self.rts = rts
         self.time_unit = time_unit
+        languages = kwargs.pop('languages', False)
+        if languages:
+            self.languages = ['de', 'fr', 'es', 'ja', 'ru']
+        else:
+            self.languages = ['en']
         if cutoff == None:
             self.cutoff = [1, 10, 50]
         else:
@@ -55,12 +60,20 @@ class Replicator:
         self.kwargs = kwargs
 
     def __call__(self):
-        for cum_cutoff in self.cum_cutoff:
-            for cutoff in self.cutoff:
-                generate_chart_data(self.rts, self.plugin,
-                                    time_unit=self.time_unit,
-                                    cutoff=cutoff, cum_cutoff=cum_cutoff,
-                                    **self.kwargs)
+        project = 'wiki'
+        for lang in self.languages:
+            self.rts = runtime_settings.init_environment(project, lang, self.args)
+            #TEMP FIX, REMOVE 
+            #rts.dbname = 'enwiki'
+            self.rts.editors_dataset = 'editors_dataset'
+
+            self.rts.dbname = '%s%s' % (lang, project)
+            for cum_cutoff in self.cum_cutoff:
+                for cutoff in self.cutoff:
+                    generate_chart_data(self.rts, self.plugin,
+                                        time_unit=self.time_unit,
+                                        cutoff=cutoff, cum_cutoff=cum_cutoff,
+                                        **self.kwargs)
 
 
 class Analyzer(consumers.BaseConsumer):
@@ -194,8 +207,6 @@ def generate_chart_data(rts, func, **kwargs):
                 else:
                     ppills -= 1
                     var = res
-                    #if res.number_of_obs() > var.number_of_obs():
-                    #vars.append(res)
             except Empty:
                 pass
         break
@@ -240,15 +251,15 @@ def launcher():
 
 #    replicator = Replicator(rts, 'histogram_by_backward_cohort', time_unit='year')
 #    replicator()
-#    replicator = Replicator(rts, 'cohort_dataset_backward_bar', time_unit='year', format='wide')
-#    replicator()
+    replicator = Replicator(args, 'cohort_dataset_backward_bar', time_unit='year', format='wide', languages=True)
+    replicator()
 
 #    generate_chart_data(rts, 'histogram_by_backward_cohort', time_unit='year', cutoff=1, cum_cutoff=10)
 #    generate_chart_data(rts, 'edit_patterns', time_unit='year', cutoff=5)
 #    generate_chart_data(rts, 'total_number_of_new_wikipedians', time_unit='year')
 #    generate_chart_data(rts, 'total_number_of_articles', time_unit='year')
 #    generate_chart_data(rts, 'total_cumulative_edits', time_unit='year')
-    generate_chart_data(rts, 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=10)
+#    generate_chart_data(rts, 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=10)
 #    generate_chart_data(rts, 'cohort_dataset_backward_bar', time_unit='year', cutoff=1, cum_cutoff=10, format='wide')
 #    generate_chart_data(rts, 'cohort_dataset_forward_bar', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
 #    generate_chart_data(rts, 'histogram_edits', time_unit='year', cutoff=0)

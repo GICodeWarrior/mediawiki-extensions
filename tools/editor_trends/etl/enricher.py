@@ -25,16 +25,17 @@ import codecs
 import re
 import sys
 import progressbar
-from multiprocessing import JoinableQueue, Process, cpu_count
-from xml.etree.cElementTree import fromstring, dump
+from multiprocessing import JoinableQueue, Process, cpu_count, current_process
+from xml.etree.cElementTree import fromstring
 from collections import deque
 
 if '..' not in sys.path:
     sys.path.append('..')
 
 try:
-    import pycassa
     from database import cassandra
+    import pycassa
+
 except ImportError:
     print 'I am not going to use Cassandra today, it\'s my off day.'
 
@@ -45,57 +46,86 @@ from bots import detector
 from utils import file_utils
 import extracter
 
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    print 'and psyco is having an off day as well...'
-
 RE_CATEGORY = re.compile('\(.*\`\,\.\-\:\'\)')
 
 
 class Buffer:
-    def __init__(self, storage):
-        assert storage == 'cassandra' or storage == 'mongo', \
+    def __init__(self, storage, id):
+        assert storage == 'cassandra' or storage == 'mongo' or storage == 'csv', \
             'Valid storage options are cassandra and mongo.'
         self.storage = storage
-        self.revisions = []
-        self.setup_db()
+        self.revisions = {}
+        self.comments = {}
+        self.id = id
+        self.keyspace_name = 'enwiki'
+        self.keys = ['revision_id', 'article_id', 'id', 'namespace',
+                     'title', 'timestamp', 'hash', 'revert', 'bot', 'prev_size',
+                     'cur_size', 'delta']
+        self.setup_storage()
 
-    def setup_db(self):
+    def setup_storage(self):
         if self.storage == 'cassandra':
-            self.keyspace_name = 'enwiki'
-            try:
-                self.db = pycassa.connect(self.keyspace_name)
-                cassandra.install_schema(self.keyspace_name)
-                self.collection = pycassa.ColumnFamily(self.db, 'Standard1')
+            self.db = pycassa.connect(self.keyspace_name)
+            self.collection = pycassa.ColumnFamily(self.db, 'revisions')
 
-            except NameError, e:
-                pass
-
-        else:
-            self.db = db.init_mongo_db('enwiki')
+        elif self.storage == 'mongo':
+            self.db = db.init_mongo_db(self.keyspace_name)
             self.collection = self.db['kaggle']
 
+        else:
+            kaggle_file = 'kaggle_%s.csv' % self.id
+            comment_file = 'kaggle_comments_%s.csv' % self.id
+            file_utils.delete_file('', kaggle_file, directory=False)
+            file_utils.delete_file('', comment_file, directory=False)
+            self.fh_main = codecs.open(kaggle_file, 'a', 'utf-8')
+            self.fh_extra = codecs.open(comment_file, 'a', 'utf-8')
+
     def add(self, revision):
-        self.revisions.append(revision)
-        if len(self.revisions) == 100:
+        self.stringify(revision)
+        id = revision['revision_id']
+        self.revisions[id] = revision
+        if len(self.revisions) == 1000:
             self.store()
             self.clear()
+
+    def stringify(self, revision):
+        for key, value in revision.iteritems():
+            try:
+                value = str(value)
+            except UnicodeEncodeError:
+                value = value.encode('utf-8')
+            revision[key] = value
 
     def empty(self):
         self.store()
         self.clear()
+        if self.storage == 'csv':
+            self.fh_main.close()
+            self.fh_extra.close()
 
     def clear(self):
-        self.revisions = []
+        self.revisions = {}
+        self.comments = {}
 
     def store(self):
         if self.storage == 'cassandra':
-            print 'insert into cassandra'
             self.collection.batch_insert(self.revisions)
-        else:
+        elif self.storage == 'mongo':
             print 'insert into mongo'
+        else:
+            for revision in self.revisions.itervalues():
+                values = []
+                for key in self.keys:
+                    values.append(revision[key].decode('utf-8'))
+
+                value = '\t'.join(values) + '\n'
+                row = '\t'.join([key, value])
+                self.fh_main.write(row)
+
+            for revision_id, comment in self.comments.iteritems():
+                comment = comment.decode('utf-8')
+                row = '\t'.join([revision_id, comment]) + '\n'
+                self.fh_extra.write(row)
 
 
 def extract_categories():
@@ -129,17 +159,24 @@ def extract_categories():
 def extract_revision_text(revision):
     rev = revision.find('text')
     if rev != None:
+        if rev.text == None:
+            rev = fix_revision_text(revision)
         return rev.text.encode('utf-8')
     else:
-        return None
+        return ''
 
 
-def create_md5hash(revision):
-    rev = extract_revision_text(revision)
+def fix_revision_text(revision):
+    if revision.text == None:
+        revision.text = ''
+    return revision
+
+
+def create_md5hash(text):
     hash = {}
-    if rev != None:
+    if text != None:
         m = hashlib.md5()
-        m.update(rev)
+        m.update(text)
         #echo m.digest()
         hash['hash'] = m.hexdigest()
     else:
@@ -147,17 +184,16 @@ def create_md5hash(revision):
     return hash
 
 
-def calculate_delta_article_size(prev_size, revision):
-    rev = extract_revision_text(revision)
-    size = {}
-    if prev_size == None:
+def calculate_delta_article_size(size, text):
+    if 'prev_size' not in size:
         size['prev_size'] = 0
-        size['cur_size'] = len(rev)
+        size['cur_size'] = len(text)
+        size['delta'] = len(text)
     else:
-        size['prev_size'] = prev_size
-        delta = len(rev) - prev_size
-        prev_size = len(rev)
-        size['cur_size'] = delta
+        size['prev_size'] = size['cur_size']
+        delta = len(text) - size['prev_size']
+        size['cur_size'] = len(text)
+        size['delta'] = delta
     return size
 
 
@@ -171,7 +207,7 @@ def parse_contributor(contributor, bots):
     if user_id != None:
         contributor.update(user_id)
     else:
-        contribuor = False
+        contributor = False
     return contributor
 
 
@@ -213,65 +249,75 @@ def is_revision_reverted(hash_cur, hashes):
     return revert
 
 
-def create_variables(result_queue, storage):
+def create_variables(result_queue, storage, id):
     bots = detector.retrieve_bots('en')
-    buffer = Buffer(storage)
+    buffer = Buffer(storage, id)
+    i = 0
     while True:
-        try:
-            article = result_queue.get(block=True)
-            result_queue.task_done()
-            if article == None:
-                break
-            article = fromstring(article)
-            title = article.find('title')
-            namespace = determine_namespace(title)
-            if namespace != False:
-                prev_size = None
-                revisions = article.findall('revision')
-                article_id = article.find('id').text
-                hashes = deque(maxlen=100)
-                for revision in revisions:
-                    row = prefill_row(title, article_id, namespace)
-                    if revision == None:
-                        continue
+        article = result_queue.get(block=True)
+        result_queue.task_done()
+        if article == None:
+            break
+        i += 1
+        article = fromstring(article)
+        title = article.find('title')
+        namespace = determine_namespace(title)
+        if namespace != False:
+            revisions = article.findall('revision')
+            article_id = article.find('id').text
+            hashes = deque(maxlen=1000)
+            size = {}
+            for revision in revisions:
+                if revision == None:
+                    #the entire revision is empty, weird. 
+                    continue
 
-                    contributor = revision.find('contributor')
-                    contributor = parse_contributor(contributor, bots)
-                    if not contributor:
-                        #editor is anonymous, ignore
-                        continue
+                contributor = revision.find('contributor')
+                contributor = parse_contributor(contributor, bots)
+                if not contributor:
+                    #editor is anonymous, ignore
+                    continue
 
-                    row.update(contributor)
-                    revision_id = revision.find('id')
-                    revision_id = extracter.extract_revision_id(revision_id)
-                    row['revision_id'] = revision_id
+                revision_id = revision.find('id')
+                revision_id = extracter.extract_revision_id(revision_id)
+                if revision_id == None:
+                    #revision_id is missing, which is weird
+                    continue
 
-                    timestamp = revision.find('timestamp').text
-                    row['timestamp'] = timestamp
+                row = prefill_row(title, article_id, namespace)
+                row['revision_id'] = revision_id
+                text = extract_revision_text(revision)
+                row.update(contributor)
 
-                    hash = create_md5hash(revision)
-                    revert = is_revision_reverted(hash['hash'], hashes)
-                    hashes.append(hash['hash'])
-                    size = calculate_delta_article_size(prev_size, revision)
 
-                    row.update(hash)
-                    row.update(size)
-                    row.update(revert)
-                    #print row
-    #                if row['username'] == None:
-    #                    contributor = revision.find('contributor')
-    #                    attrs = contributor.getchildren()
-    #                    for attr in attrs:
-    #                        print attr.text
-                    #print revision_id, hash, delta, prev_size\
+                timestamp = revision.find('timestamp').text
+                row['timestamp'] = timestamp
 
-                    buffer.add(row)
+                hash = create_md5hash(text)
+                revert = is_revision_reverted(hash['hash'], hashes)
+                hashes.append(hash['hash'])
+                size = calculate_delta_article_size(size, text)
 
-        except ValueError, e:
-            print e
-        except UnicodeDecodeError, e:
-            print e
+                row.update(hash)
+                row.update(size)
+                row.update(revert)
+    #           print row
+    #           if row['username'] == None:
+    #               contributor = revision.find('contributor')
+    #               attrs = contributor.getchildren()
+    #               for attr in attrs:
+    #                   print attr.text
+                #print revision_id, hash, delta, prev_size\
+
+                buffer.add(row)
+        if i % 10000 == 0:
+            print 'Parsed %s articles' % i
+#        except ValueError, e:
+#            print e
+#        except UnicodeDecodeError, e:
+#            print e
     buffer.empty()
+    print 'Buffer is empty'
 
 
 def create_article(input_queue, result_queue):
@@ -282,8 +328,8 @@ def create_article(input_queue, result_queue):
         input_queue.task_done()
         if filename == None:
             break
-        filesize = file_utils.determine_filesize('', filename)
-        pbar = progressbar.ProgressBar(maxval=filesize).start()
+        #filesize = file_utils.determine_filesize('', filename)
+        #pbar = progressbar.ProgressBar().start()
         for data in unzip(filename):
             if data.startswith('<page>'):
                 parsing = True
@@ -294,9 +340,10 @@ def create_article(input_queue, result_queue):
                     if xml_string != None:
                         result_queue.put(xml_string)
                     buffer = cStringIO.StringIO()
-                pbar.update(pbar.currval + len(data)) #is inaccurate!!!
+                #pbar.update(pbar.currval + len(data)) #is inaccurate!!!
 
 
+    #for x in xrange(cpu_count()):
     result_queue.put(None)
     print 'Finished parsing bz2 archives'
 
@@ -309,18 +356,25 @@ def unzip(filename):
     '''
     fh = bz2.BZ2File(filename, 'r')
     for line in fh:
-        #line = line.decode('utf-8')
         line = line.strip()
         yield line
     fh.close()
 
 
+def setup(storage):
+    keyspace_name = 'enwiki'
+    if storage == 'cassandra':
+        cassandra.install_schema(keyspace_name, drop_first=True)
+
+
 def launcher():
+
+    storage = 'csv'
+    setup(storage)
     input_queue = JoinableQueue()
     result_queue = JoinableQueue()
-    storage = 'cassandra'
-    #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
-    files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
+    files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
+    #files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
 
     for file in files:
         input_queue.put(file)
@@ -333,7 +387,7 @@ def launcher():
     for extracter in extracters:
         extracter.start()
 
-    creators = [Process(target=create_variables, args=[result_queue, storage])
+    creators = [Process(target=create_variables, args=[result_queue, storage, x])
                 for x in xrange(cpu_count())]
     for creator in creators:
         creator.start()

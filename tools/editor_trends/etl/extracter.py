@@ -139,7 +139,7 @@ def determine_username_is_bot(contributor, **kwargs):
     if username == None:
         return 0
     else:
-        if username in bots:
+        if username.text in bots:
             return 1
         else:
             return 0

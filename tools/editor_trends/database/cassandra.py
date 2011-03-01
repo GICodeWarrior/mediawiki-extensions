@@ -17,11 +17,15 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-02-25'
 __version__ = '0.1'
 
+import pycassa
+
 def install_schema(keyspace_name, drop_first=False):
 
     sm = pycassa.system_manager.SystemManager('127.0.0.1:9160')
+    if drop_first:
+        sm.drop_keyspace(keyspace_name)
 
-    sm.create_keyspace(keyspace_name, replication_factor=1)  # TODO: Change
+    sm.create_keyspace(keyspace_name, replication_factor=1)
 
     sm.create_column_family(keyspace_name, 'revisions',
                             comparator_type=pycassa.system_manager.UTF8_TYPE,

@@ -78,13 +78,13 @@ def retrieve_bots(language_code):
     '''
     Loader function to retrieve list of id's of known Wikipedia bots. 
     '''
-    ids = {}
+    ids = []
     mongo = db.init_mongo_db('bots')
     bots = mongo['ids']
     cursor = bots.find()
     for bot in cursor:
         if bot['verified'] == 'True' and language_code in bot['projects']:
-            ids[bot['id']] = bot['name']
+            ids.append(bot['name'])
     return ids
 
 
