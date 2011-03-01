@@ -835,6 +835,7 @@ $messages['arc'] = array(
 	'mv_history' => 'ܬܫܥܝܬܐ',
 	'mv_start_desc' => 'ܥܕܢܐ ܕܫܘܪܝܐ',
 	'mv_end_desc' => 'ܥܕܢܐ ܕܫܘܠܡܐ',
+	'mv_advanced_edit' => 'ܫܘܚܠܦܐ ܡܬܩܕܡܢܐ',
 	'mv_existing_categories' => '{{PLURAL:$1|ܣܕܪܐ|ܣܕܪ̈ܐ}}:',
 	'mv_viewnext' => 'ܚܙܝ ($1)',
 	'mv_viewprevnext' => 'ܚܙܝ ($1) ($2)',
