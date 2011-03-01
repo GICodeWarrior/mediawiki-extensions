@@ -1678,3 +1678,17 @@ $messages['zh-hans'] = array(
 	'processcomment' => '进程文章注释',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'article-comments-title-string' => '標題',
+	'article-comments-name-string' => '姓名',
+	'article-comments-name-field' => '姓名（必須）：',
+	'article-comments-url-field' => '網站：',
+	'article-comments-url-string' => '網址',
+	'article-comments-submit-button' => '提交',
+	'article-comments-commenter-said' => '$1 說...',
+	'article-comments-no-spam' => '至少有一個提交了的欄位已被標記為垃圾。',
+);
+
