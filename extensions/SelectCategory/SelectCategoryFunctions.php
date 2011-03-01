@@ -22,100 +22,100 @@ function fnSelectCategoryShowHook( $m_isUpload = false, $m_pageObj ) {
 
   # check if we should do anything or sleep
   if ( fnSelectCategoryCheckConditions( $m_isUpload, $m_pageObj ) ) {
-    # Register CSS file for our select box:
-    global $wgOut, $wgScriptPath, $wgUser, $wgTitle;
-    global $wgSelectCategoryMaxLevel;
-    
-    $wgOut->addLink(
-      array(
-        'rel'  => 'stylesheet',
-        'type' => 'text/css',
-        'href' => $wgScriptPath.'/extensions/SelectCategory/SelectCategory.css'
-      )
-    );
-    $wgOut->addLink(
-      array(
-        'rel'  => 'stylesheet',
-        'type' => 'text/css',
-        'href' => $wgScriptPath.'/extensions/SelectCategory/jquery.treeview.css'
-      )
-    );
-    $wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/jquery.treeview.js" type="text/javascript"></script>' );
-    $wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/SelectCategory.js" type="text/javascript"></script>' );
-    
-    $m_skin =& $wgUser->getSkin();
-              
-    # Get all categories from wiki:
-    $m_allCats = fnSelectCategoryGetAllCategories();
-    # Load system messages:
-    wfLoadExtensionMessages( 'SelectCategory' );
-    # Get the right member variables, depending on if we're on an upload form or not:
-    if( !$m_isUpload ) {
-      # Extract all categorylinks from page:
-      $m_pageCats = fnSelectCategoryGetPageCategories( $m_pageObj );
+	# Register CSS file for our select box:
+	global $wgOut, $wgScriptPath, $wgUser, $wgTitle;
+	global $wgSelectCategoryMaxLevel;
 
-      # Never ever use editFormTextTop here as it resides outside the <form> so we will never get contents
-      $m_place = 'editFormTextAfterWarn';
-      # Print the localised title for the select box:
-      $m_textBefore = '<b>'. wfMsg( 'selectcategory-title' ) . '</b>:';
-    } else {
-      # No need to get categories:
-      $m_pageCats = array();
+	$wgOut->addLink(
+	  array(
+		'rel'  => 'stylesheet',
+		'type' => 'text/css',
+		'href' => $wgScriptPath.'/extensions/SelectCategory/SelectCategory.css'
+	  )
+	);
+	$wgOut->addLink(
+	  array(
+		'rel'  => 'stylesheet',
+		'type' => 'text/css',
+		'href' => $wgScriptPath.'/extensions/SelectCategory/jquery.treeview.css'
+	  )
+	);
+	$wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/jquery.treeview.js" type="text/javascript"></script>' );
+	$wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/SelectCategory.js" type="text/javascript"></script>' );
 
-      # Place output at the right place:
-      $m_place = 'uploadFormTextAfterSummary';
-      # Print the part of the table including the localised title for the select box:
-      $m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsg( 'selectcategory-title' ) .":</label></td><td align='left'>";
-    }
-    # Introduce the output:
-    $m_pageObj->$m_place .= "<!-- SelectCategory begin -->\n";
-    # Print the select box:
-    $m_pageObj->$m_place .= "\n$m_textBefore";
+	$m_skin =& $wgUser->getSkin();
 
-    # Begin list output, use <div> to enable custom formatting
-    $m_level = 0;
-    $m_pageObj->$m_place .= '<ul id="SelectCategoryList">';
-    foreach( $m_allCats as $m_cat => $m_depth ) {
-      $checked = '';
-      # See if the category was already added, so check it
-      if( isset( $m_pageCats[$m_cat] ) ) {
-        $checked = 'checked="checked"';
-      }
-      # Clean HTML Output:
-      $category =  htmlspecialchars( $m_cat );
+	# Get all categories from wiki:
+	$m_allCats = fnSelectCategoryGetAllCategories();
+	# Load system messages:
+	wfLoadExtensionMessages( 'SelectCategory' );
+	# Get the right member variables, depending on if we're on an upload form or not:
+	if( !$m_isUpload ) {
+	  # Extract all categorylinks from page:
+	  $m_pageCats = fnSelectCategoryGetPageCategories( $m_pageObj );
 
-      # iterate through levels and adjust divs accordingly
-      while( $m_level < $m_depth ) {
-        # Collapse subcategories after reaching the configured MaxLevel
-        if( $m_level >= ( $wgSelectCategoryMaxLevel - 1 ) ) {
-          $m_class = 'display:none;';
-        } else {
-          $m_class = 'display:block;';
-        }
-        $m_pageObj->$m_place .= '<ul style="'.$m_class.'">'."\n";
-        $m_level++;
-      }
-      if( $m_level == $m_depth ) $m_pageObj->$m_place .= '</li>'."\n";
-      while( $m_level > $m_depth ) {
-        $m_pageObj->$m_place .= '</ul></li>'."\n";
-        $m_level--;
-      }
-      # Clean names for text output
-      $title = str_replace( '_', ' ', $category );
-      $m_title = $wgTitle->newFromText( $category, NS_CATEGORY );
-      # Output the actual checkboxes, indented
-      $m_pageObj->$m_place .= '<li><input type="checkbox" name="SelectCategoryList[]" value="'.$category.'" class="checkbox" '.$checked.' />'.$m_skin->link( $m_title, $title )."\n";
-      # set id for next level
-      $m_level_id = 'sc_'.$m_cat;
-    } # End walking through cats (foreach)
-    # End of list output - close all remaining divs
-    while( $m_level > -1 ) {
-      $m_pageObj->$m_place .= '</li></ul>'."\n";
-      $m_level--;
-    }
+	  # Never ever use editFormTextTop here as it resides outside the <form> so we will never get contents
+	  $m_place = 'editFormTextAfterWarn';
+	  # Print the localised title for the select box:
+	  $m_textBefore = '<b>'. wfMsg( 'selectcategory-title' ) . '</b>:';
+	} else {
+	  # No need to get categories:
+	  $m_pageCats = array();
 
-    # Print localised help string:
-    $m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
+	  # Place output at the right place:
+	  $m_place = 'uploadFormTextAfterSummary';
+	  # Print the part of the table including the localised title for the select box:
+	  $m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsg( 'selectcategory-title' ) .":</label></td><td align='left'>";
+	}
+	# Introduce the output:
+	$m_pageObj->$m_place .= "<!-- SelectCategory begin -->\n";
+	# Print the select box:
+	$m_pageObj->$m_place .= "\n$m_textBefore";
+
+	# Begin list output, use <div> to enable custom formatting
+	$m_level = 0;
+	$m_pageObj->$m_place .= '<ul id="SelectCategoryList">';
+	foreach( $m_allCats as $m_cat => $m_depth ) {
+	  $checked = '';
+	  # See if the category was already added, so check it
+	  if( isset( $m_pageCats[$m_cat] ) ) {
+		$checked = 'checked="checked"';
+	  }
+	  # Clean HTML Output:
+	  $category =  htmlspecialchars( $m_cat );
+
+	  # iterate through levels and adjust divs accordingly
+	  while( $m_level < $m_depth ) {
+		# Collapse subcategories after reaching the configured MaxLevel
+		if( $m_level >= ( $wgSelectCategoryMaxLevel - 1 ) ) {
+		  $m_class = 'display:none;';
+		} else {
+		  $m_class = 'display:block;';
+		}
+		$m_pageObj->$m_place .= '<ul style="'.$m_class.'">'."\n";
+		$m_level++;
+	  }
+	  if( $m_level == $m_depth ) $m_pageObj->$m_place .= '</li>'."\n";
+	  while( $m_level > $m_depth ) {
+		$m_pageObj->$m_place .= '</ul></li>'."\n";
+		$m_level--;
+	  }
+	  # Clean names for text output
+	  $title = str_replace( '_', ' ', $category );
+	  $m_title = $wgTitle->newFromText( $category, NS_CATEGORY );
+	  # Output the actual checkboxes, indented
+	  $m_pageObj->$m_place .= '<li><input type="checkbox" name="SelectCategoryList[]" value="'.$category.'" class="checkbox" '.$checked.' />'.$m_skin->link( $m_title, $title )."\n";
+	  # set id for next level
+	  $m_level_id = 'sc_'.$m_cat;
+	} # End walking through cats (foreach)
+	# End of list output - close all remaining divs
+	while( $m_level > -1 ) {
+	  $m_pageObj->$m_place .= '</li></ul>'."\n";
+	  $m_level--;
+	}
+
+	# Print localised help string:
+	$m_pageObj->$m_place .= "<!-- SelectCategory end -->\n";
   }
 
   # Return true to let the rest work:
@@ -130,32 +130,32 @@ function fnSelectCategorySaveHook( $m_isUpload, $m_pageObj ) {
   # check if we should do anything or sleep
   if ( fnSelectCategoryCheckConditions( $m_isUpload, $m_pageObj ) ) {
 
-    # Get localised namespace string:
-    $m_catString = $wgContLang->getNsText( NS_CATEGORY );
+	# Get localised namespace string:
+	$m_catString = $wgContLang->getNsText( NS_CATEGORY );
 
-    # default sort key is page name with stripped namespace name,
-    # otherwise sorting is ugly.
-    if( $wgTitle->getNamespace() == NS_MAIN ) {
-      $default_sortkey = "";
-    } else {
-      $default_sortkey = "|{{PAGENAME}}";
-    }
+	# default sort key is page name with stripped namespace name,
+	# otherwise sorting is ugly.
+	if( $wgTitle->getNamespace() == NS_MAIN ) {
+	  $default_sortkey = "";
+	} else {
+	  $default_sortkey = "|{{PAGENAME}}";
+	}
 
-    # Get some distance from the rest of the content:
-    $m_text = "\n";
+	# Get some distance from the rest of the content:
+	$m_text = "\n";
 
-    # Iterate through all selected category entries:
-    if (array_key_exists('SelectCategoryList', $_POST)) {
-      foreach( $_POST['SelectCategoryList'] as $m_cat ) {
-        $m_text .= "\n[[$m_catString:$m_cat$default_sortkey]]";
-      }
-    }
-    # If it is an upload we have to call a different method:
-    if ( $m_isUpload ) {
-      $m_pageObj->mUploadDescription .= $m_text;
-    } else{
-      $m_pageObj->textbox1 .= $m_text;
-    }
+	# Iterate through all selected category entries:
+	if (array_key_exists('SelectCategoryList', $_POST)) {
+	  foreach( $_POST['SelectCategoryList'] as $m_cat ) {
+		$m_text .= "\n[[$m_catString:$m_cat$default_sortkey]]";
+	  }
+	}
+	# If it is an upload we have to call a different method:
+	if ( $m_isUpload ) {
+	  $m_pageObj->mUploadDescription .= $m_text;
+	} else{
+	  $m_pageObj->textbox1 .= $m_text;
+	}
   }
 
   # Return to the let MediaWiki do the rest of the work:
@@ -175,33 +175,33 @@ function fnSelectCategoryGetAllCategories() {
   # Get current namespace (save duplicate call of method):
   $m_namespace = $wgTitle->getNamespace();
   if( $m_namespace >= 0 && $wgSelectCategoryRoot[$m_namespace] ) {
-    # Include root and step into the recursion:
-    $m_allCats = array_merge( array( $wgSelectCategoryRoot[$m_namespace] => 0 ), fnSelectCategoryGetChildren( $wgSelectCategoryRoot[$m_namespace] ) );
+	# Include root and step into the recursion:
+	$m_allCats = array_merge( array( $wgSelectCategoryRoot[$m_namespace] => 0 ), fnSelectCategoryGetChildren( $wgSelectCategoryRoot[$m_namespace] ) );
   } else {
-    # Initialize return value:
-    $m_allCats = array();
+	# Initialize return value:
+	$m_allCats = array();
 
-    # Get a database object:
-    $m_dbObj = wfGetDB( DB_SLAVE );
-    # Get table names to access them in SQL query:
-    $m_tblCatLink = $m_dbObj->tableName( 'categorylinks' );
-    $m_tblPage = $m_dbObj->tableName( 'page' );
+	# Get a database object:
+	$m_dbObj = wfGetDB( DB_SLAVE );
+	# Get table names to access them in SQL query:
+	$m_tblCatLink = $m_dbObj->tableName( 'categorylinks' );
+	$m_tblPage = $m_dbObj->tableName( 'page' );
 
-    # Automagically detect root categories:
-    $m_sql = "  SELECT tmpSelectCat1.cl_to AS title
-        FROM $m_tblCatLink AS tmpSelectCat1
-        LEFT JOIN $m_tblPage AS tmpSelectCatPage ON (tmpSelectCat1.cl_to = tmpSelectCatPage.page_title AND tmpSelectCatPage.page_namespace = 14)
-        LEFT JOIN $m_tblCatLink AS tmpSelectCat2 ON tmpSelectCatPage.page_id = tmpSelectCat2.cl_from
-        WHERE tmpSelectCat2.cl_from IS NULL GROUP BY tmpSelectCat1.cl_to";
-    # Run the query:
-    $m_res = $m_dbObj->query( $m_sql, __METHOD__ );
-    # Process the resulting rows:
-    while ( $m_row = $m_dbObj->fetchRow( $m_res ) ) {
-      $m_allCats += array( $m_row['title'] => 0 );
-      $m_allCats += fnSelectCategoryGetChildren( $m_row['title'] );
-    }
-    # Free result:
-    $m_dbObj->freeResult( $m_res );
+	# Automagically detect root categories:
+	$m_sql = "  SELECT tmpSelectCat1.cl_to AS title
+		FROM $m_tblCatLink AS tmpSelectCat1
+		LEFT JOIN $m_tblPage AS tmpSelectCatPage ON (tmpSelectCat1.cl_to = tmpSelectCatPage.page_title AND tmpSelectCatPage.page_namespace = 14)
+		LEFT JOIN $m_tblCatLink AS tmpSelectCat2 ON tmpSelectCatPage.page_id = tmpSelectCat2.cl_from
+		WHERE tmpSelectCat2.cl_from IS NULL GROUP BY tmpSelectCat1.cl_to";
+	# Run the query:
+	$m_res = $m_dbObj->query( $m_sql, __METHOD__ );
+	# Process the resulting rows:
+	while ( $m_row = $m_dbObj->fetchRow( $m_res ) ) {
+	  $m_allCats += array( $m_row['title'] => 0 );
+	  $m_allCats += fnSelectCategoryGetChildren( $m_row['title'] );
+	}
+	# Free result:
+	$m_dbObj->freeResult( $m_res );
   }
 
   # Afterwards return the array to the caller:
@@ -220,24 +220,24 @@ function fnSelectCategoryGetChildren( $m_root, $m_depth = 1 ) {
 
   # The normal query to get all children of a given root category:
   $m_sql = '
-    SELECT tmpSelectCatPage.page_title AS title
-    FROM '.$m_tblCatLink.' AS tmpSelectCat
-    LEFT JOIN '.$m_tblPage.' AS tmpSelectCatPage 
-      ON tmpSelectCat.cl_from = tmpSelectCatPage.page_id
-    WHERE tmpSelectCat.cl_to LIKE '.$m_dbObj->addQuotes( $m_root ).' 
-      AND tmpSelectCatPage.page_namespace = 14
-    ORDER BY tmpSelectCatPage.page_title ASC;';
+	SELECT tmpSelectCatPage.page_title AS title
+	FROM '.$m_tblCatLink.' AS tmpSelectCat
+	LEFT JOIN '.$m_tblPage.' AS tmpSelectCatPage
+	  ON tmpSelectCat.cl_from = tmpSelectCatPage.page_id
+	WHERE tmpSelectCat.cl_to LIKE '.$m_dbObj->addQuotes( $m_root ).'
+	  AND tmpSelectCatPage.page_namespace = 14
+	ORDER BY tmpSelectCatPage.page_title ASC;';
   # Run the query:
   $m_res = $m_dbObj->query( $m_sql, __METHOD__ );
   # Process the resulting rows:
   while ( $m_row = $m_dbObj->fetchRow( $m_res ) ) {
-    # Survive category link loops:
-    if( $m_root == $m_row['title'] ) {
-      continue;
-    }
-    # Add current entry to array:
-    $m_allCats += array( $m_row['title'] => $m_depth );
-    $m_allCats += fnSelectCategoryGetChildren( $m_row['title'], $m_depth + 1 );
+	# Survive category link loops:
+	if( $m_root == $m_row['title'] ) {
+	  continue;
+	}
+	# Add current entry to array:
+	$m_allCats += array( $m_row['title'] => $m_depth );
+	$m_allCats += fnSelectCategoryGetChildren( $m_row['title'], $m_depth + 1 );
   }
   # Free result:
   $m_dbObj->freeResult( $m_res );
@@ -251,13 +251,13 @@ function fnSelectCategoryGetChildren( $m_root, $m_depth = 1 ) {
 function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 
   if (array_key_exists('SelectCategoryList', $_POST)) {
-    # We have already extracted the categories, return them instead
-    # of extracting zero categories from the page text.
-    $m_catLinks = array();
-    foreach( $_POST['SelectCategoryList'] as $m_cat ) {
-      $m_catLinks[ $m_cat ] = true;
-    }
-    return $m_catLinks;
+	# We have already extracted the categories, return them instead
+	# of extracting zero categories from the page text.
+	$m_catLinks = array();
+	foreach( $_POST['SelectCategoryList'] as $m_cat ) {
+	  $m_catLinks[ $m_cat ] = true;
+	}
+	return $m_catLinks;
   }
 
   global $wgContLang;
@@ -276,12 +276,12 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 
   # Check linewise for category links:
   foreach( explode( "\n", $m_pageText ) as $m_textLine ) {
-    # Filter line through pattern and store the result:
-    $m_cleanText .= preg_replace( "/{$m_pattern}/i", "", $m_textLine ) . "\n";
-    # Check if we have found a category, else proceed with next line:
-                if( !preg_match( "/{$m_pattern}/i", $m_textLine) ) continue;
-    # Get the category link from the original text and store it in our list:
-    $m_catLinks[ str_replace( ' ', '_', preg_replace( "/.*{$m_pattern}/i", $m_replace, $m_textLine ) ) ] = true;
+	# Filter line through pattern and store the result:
+	$m_cleanText .= preg_replace( "/{$m_pattern}/i", "", $m_textLine ) . "\n";
+	# Check if we have found a category, else proceed with next line:
+				if( !preg_match( "/{$m_pattern}/i", $m_textLine) ) continue;
+	# Get the category link from the original text and store it in our list:
+	$m_catLinks[ str_replace( ' ', '_', preg_replace( "/.*{$m_pattern}/i", $m_replace, $m_textLine ) ) ] = true;
   }
   # Place the cleaned text into the text box:
   $m_pageObj->textbox1 = trim( $m_cleanText );
@@ -302,23 +302,23 @@ function fnSelectCategoryCheckConditions ($m_isUpload, $m_pageObj ) {
   # implication in PHP) but not if we do a sectionedit:
 
   if ($m_isUpload == true) {
-    return true;
+	return true;
   }
 
   $ns = $wgTitle->getNamespace();
   if( array_key_exists( $ns, $wgSelectCategoryNamespaces ) ) {
-    $enabledForNamespace = $wgSelectCategoryNamespaces[$ns];
+	$enabledForNamespace = $wgSelectCategoryNamespaces[$ns];
   } else {
-    $enabledForNamespace = false;
+	$enabledForNamespace = false;
   }
 
   # Check if page is subpage once to save method calls below:
   $m_isSubpage = $wgTitle->isSubpage();
 
   if ($enabledForNamespace
-    && (!$m_isSubpage
-      || $m_isSubpage && $wgSelectCategoryEnableSubpage)
-    && $m_pageObj->section == false) {
-    return true;
+	&& (!$m_isSubpage
+	  || $m_isSubpage && $wgSelectCategoryEnableSubpage)
+	&& $m_pageObj->section == false) {
+	return true;
   }
 }
