@@ -1104,13 +1104,21 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 	}
 
 	public function getViewHTML( IdStack $idPath, $value ) {
+		global $wgOut;
 		$definition = getDefinedMeaningDefinition( $value );
 		$definedMeaningAsLink = definedMeaningAsLink( $value );
 		$escapedDefinition = htmlspecialchars( $definition );
 
 		if ( $this->truncate && strlen( $definition ) > $this->truncateAt )
 			$escapedDefinition = '<span title="' . $escapedDefinition . '">' . htmlspecialchars( mb_substr( $definition, 0, $this->truncateAt ) ) . wfMsg( 'ellipsis' ) . '</span>' . EOL;
-			
+
+		static $isMetaDescSet = 0 ;
+		if ( $isMetaDescSet == 0 ) {
+			$expression = definedMeaningExpression ( $value ) ;
+			$wgOut->addMeta( 'Description', $expression . ": " . $definition );
+			$isMetaDescSet = 1 ;
+		}
+ 
 		return $definedMeaningAsLink . ": " . $escapedDefinition;
 	}
 
