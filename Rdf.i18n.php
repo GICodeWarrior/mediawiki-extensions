@@ -265,3 +265,10 @@ $messages['pt'] = array(
 	'rdf-instructions' => 'Escolha a página de destino e os modelos RDF em que está interessado.',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'rdf-links' => 'Всі посилання',
+);
+
