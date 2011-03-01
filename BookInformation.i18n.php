@@ -1987,3 +1987,18 @@ $messages['zh-hant'] = array(
 	'bookinfo-provider' => '資料提供者: $1',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'bookinfo-header' => '書籍資訊',
+	'bookinfo-result-title' => '標題：',
+	'bookinfo-result-author' => '作者：',
+	'bookinfo-result-publisher' => '出版商：',
+	'bookinfo-result-year' => '年份：',
+	'bookinfo-error-invalidisbn' => '不正確的 ISBN 輸入。',
+	'bookinfo-error-noresponse' => '沒有回應或請求逾時。',
+	'bookinfo-purchase' => '從 $1 購買這本書',
+	'bookinfo-provider' => '資料提供者：$1',
+);
+
