@@ -1,24 +1,24 @@
 ﻿/*
-*
-*   Copyright (c) Microsoft. 
-*
-*	This code is licensed under the Apache License, Version 2.0.
-*   THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
-*   ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
-*   IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
-*   PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
-*
-*   The apache license details from 
-*   ‘http://www.apache.org/licenses/’ are reproduced 
-*   in ‘Apache2_license.txt’ 
-*
-*/
+ *
+ *   Copyright (c) Microsoft.
+ *
+ *	This code is licensed under the Apache License, Version 2.0.
+ *   THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+ *   ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+ *   IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+ *   PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+ *
+ *   The apache license details from
+ *   ‘http://www.apache.org/licenses/’ are reproduced
+ *   in ‘Apache2_license.txt’
+ *
+ */
 
 /*
-* wikiBhasha.strings.js
-* Date: 2009-10-20 17:34:21 -0500 (Mon, 20 Oct 2009)
-* wikiBhasha class with english localizedStrings.
-*/
+ * wikiBhasha.strings.js
+ * Date: 2009-10-20 17:34:21 -0500 (Mon, 20 Oct 2009)
+ * wikiBhasha class with english localizedStrings.
+ */
 (function() {
 
     wikiBhasha.localStrings = {
@@ -120,8 +120,8 @@
         thanksMessage:              "Thank you for your contribution to Wikipedia. Would you like to give feedback?",
         nonEditableMessage:         "WikiBhasha may be invoked only on editable articles; this article is protected in Wikipedia."
     }
-    
+
     //short cut to call local strings
     wbLocal = wikiBhasha.localStrings;
-    
+
 })();
