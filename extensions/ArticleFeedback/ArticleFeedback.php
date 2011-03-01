@@ -26,6 +26,12 @@ $wgArticleFeedbackRatings = array( 1, 2, 3, 4 );
 // Extension is "disabled" if this field is an empty array (as per default configuration)
 $wgArticleFeedbackCategories = array();
 
+// Articles not categorized as on of the values in $wgArticleFeedbackCategories can still have the
+// tool psudo-randomly activated by applying the following odds to a lottery based on $wgArticleId.
+// The value can be a floating point number (percentage) in range of 0 - 100. Tenths of a percent
+// are the smallest increments used.
+$wgArticleFeedbackLotteryOdds = 0;
+
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,
@@ -84,6 +90,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackHooks::loadExtensionS
 $wgHooks['ParserTestTables'][] = 'ArticleFeedbackHooks::parserTestTables';
 $wgHooks['BeforePageDisplay'][] = 'ArticleFeedbackHooks::beforePageDisplay';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleFeedbackHooks::resourceLoaderRegisterModules';
+$wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackHooks::resourceLoaderGetConfigVars';
 // API Registration
 $wgAPIListModules['articlefeedback'] = 'ApiQueryArticleFeedback';
 $wgAPIModules['articlefeedback'] = 'ApiArticleFeedback';
