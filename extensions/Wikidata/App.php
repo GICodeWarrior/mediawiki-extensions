@@ -256,25 +256,8 @@ function efWikidataGetPreferences( $user, &$preferences ) {
 
 function efWikidataOverrideArticle( &$title, &$article ) {
 	global $wgLang, $wgRequest, $wgOut ;
-	if ( wdIsWikidataNs() ) {
-		$article = new WikidataArticle( $title );
-		return true ;
-	}
-
-	if ($wgRequest->getVal( 'redirect' ) == 'no') {
-		return true;
-	}
-
-	// finds if there is a translation of the page in the user language
-	$lang = $wgLang->getCode();
-	$n = $title->getDBkey();
-	$ns = $title->getNamespace();
-	$t = Title::makeTitle( $ns, $n . '/' . $lang );
-
-	if ( $t->exists() ) {
-		$title = $t ;
-	}
-	return true;
+	if ( wdIsWikidataNs() ) $article = new WikidataArticle( $title );
+	return true ;
 }
 
 function efWikidataOverrideEditPage( $article, $user ) {
