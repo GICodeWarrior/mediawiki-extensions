@@ -332,14 +332,25 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
+	'pf-desc' => "[[Special:PackageForce|הורדת חבילות]] של תבניות שימושיות וכו'.",
+	'pf-only-admins-allowed' => "הדף הזה מיועד רק למשתמשים בקבוצת 'packageforce-admin'.",
 	'pf-admin-menu-default' => 'בררת המחדל',
+	'pf-admin-menu-unsortedtemplates' => 'תבניות שטרם מוינו',
 	'pf-admin-link-view-documentation' => 'צפייה בתיעוד הקשור לדפים.',
 	'pf-admin-link-editlink-page' => 'עריכת דף',
+	'pf-admin-link-approve' => 'לאשר דף',
 	'pf-header-documentation' => 'תיעוד',
 	'pf-header-in_packages' => 'חבילות',
+	'pf-header-edit' => 'עריכת קישור',
+	'pf-header-type' => 'סוג הדף',
+	'pf-header-page_title' => 'כותרת',
+	'pf-header-approve' => 'לאשר',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
