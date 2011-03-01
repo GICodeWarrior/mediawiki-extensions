@@ -1,0 +1,13 @@
+span.vector-editLink {
+	float: none;
+	display: inline-block;
+}
+span.vector-editLink a {
+	padding-left: 18px;
+	background-image: url(images/edit-faded.png);
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+span.vector-editLink a:hover {
+	background-image: url(images/edit.png);
+}

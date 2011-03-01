@@ -22,6 +22,7 @@ $wgVectorFeatures = array(
 	'editwarning' => array( 'global' => false, 'user' => true ),
 	'expandablesearch' => array( 'global' => false, 'user' => false ),
 	'footercleanup' => array( 'global' => false, 'user' => false ),
+	'sectioneditlinks' => array( 'global' => false, 'user' => false ),
 	'simplesearch' => array( 'global' => false, 'user' => true ),
 );
 
@@ -32,6 +33,12 @@ $wgDefaultUserOptions['vector-simplesearch'] = 1;
 $wgCollapsibleNavBucketTest = false;
 // Force the new version
 $wgCollapsibleNavForceNewVersion = false;
+
+// Enable bucket testing for new version of section edit links
+$wgVectorSectionEditLinksBucketTest = false;
+// Percentage of users who's use of section edit links will be tracked - half of which will see the
+// new section edit links - default 5%
+$wgVectorSectionEditLinksLotteryOdds = 5;
 
 /* Setup */
 
@@ -92,6 +99,13 @@ $wgResourceModules += array(
 	'ext.vector.footerCleanup' => $vectorResourceTemplate + array(
 		'scripts' => 'ext.vector.footerCleanup.js',
 		'styles' => 'ext.vector.footerCleanup.css',
+	),
+	'ext.vector.sectionEditLinks' => $vectorResourceTemplate + array(
+		'scripts' => 'ext.vector.sectionEditLinks.js',
+		'styles' => 'ext.vector.sectionEditLinks.css',
+		'dependencies' => array(
+			'jquery.cookie',
+		),
 	),
 	'ext.vector.simpleSearch' => $vectorResourceTemplate + array(
 		'scripts' => 'ext.vector.simpleSearch.js',

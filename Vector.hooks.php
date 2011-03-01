@@ -52,6 +52,13 @@ class VectorHooks {
 		'footercleanup' => array(
 			'modules' => array( 'ext.vector.footerCleanup' ),
 		),
+		'sectioneditlinks' => array(
+			'modules' => array( 'ext.vector.sectionEditLinks' ),
+			'configurations' => array(
+				'wgVectorSectionEditLinksBucketTest',
+				'wgVectorSectionEditLinksLotteryOdds',
+			),
+		),
 		'simplesearch' => array(
 			'requirements' => array( 'vector-simplesearch' => true, 'disablesuggest' => false ),
 			'modules' => array( 'ext.vector.simpleSearch' ),
