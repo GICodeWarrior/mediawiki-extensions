@@ -22,95 +22,100 @@ function fnSelectCategoryShowHook( $m_isUpload = false, $m_pageObj ) {
 
 	# check if we should do anything or sleep
 	if ( fnSelectCategoryCheckConditions( $m_isUpload, $m_pageObj ) ) {
-	# Register CSS file for our select box:
-	global $wgOut, $wgScriptPath, $wgUser, $wgTitle;
-	global $wgSelectCategoryMaxLevel;
+		# Register CSS file for our select box:
+		global $wgOut, $wgScriptPath, $wgUser, $wgTitle;
+		global $wgSelectCategoryMaxLevel;
 
-	$wgOut->addLink(
-		array(
-			'rel'  => 'stylesheet',
-			'type' => 'text/css',
-			'href' => $wgScriptPath.'/extensions/SelectCategory/SelectCategory.css'
-		)
-	);
-	$wgOut->addLink(
-		array(
-			'rel'  => 'stylesheet',
-			'type' => 'text/css',
-			'href' => $wgScriptPath.'/extensions/SelectCategory/jquery.treeview.css'
-		)
-	);
-	$wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/jquery.treeview.js" type="text/javascript"></script>' );
-	$wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/SelectCategory.js" type="text/javascript"></script>' );
+		$wgOut->addLink(
+			array(
+				'rel'  => 'stylesheet',
+				'type' => 'text/css',
+				'href' => $wgScriptPath.'/extensions/SelectCategory/SelectCategory.css'
+			)
+		);
+		$wgOut->addLink(
+			array(
+				'rel'  => 'stylesheet',
+				'type' => 'text/css',
+				'href' => $wgScriptPath.'/extensions/SelectCategory/jquery.treeview.css'
+			)
+		);
+		$wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/jquery.treeview.js" type="text/javascript"></script>' );
+		$wgOut->addScript( '<script src="'.$wgScriptPath.'/extensions/SelectCategory/SelectCategory.js" type="text/javascript"></script>' );
 
-	$m_skin =& $wgUser->getSkin();
+		$m_skin =& $wgUser->getSkin();
 
-	# Get all categories from wiki:
-	$m_allCats = fnSelectCategoryGetAllCategories();
-	# Load system messages:
-	wfLoadExtensionMessages( 'SelectCategory' );
-	# Get the right member variables, depending on if we're on an upload form or not:
-	if( !$m_isUpload ) {
-		# Extract all categorylinks from page:
-		$m_pageCats = fnSelectCategoryGetPageCategories( $m_pageObj );
+		# Get all categories from wiki:
+		$m_allCats = fnSelectCategoryGetAllCategories();
+		# Load system messages:
+		wfLoadExtensionMessages( 'SelectCategory' );
+		# Get the right member variables, depending on if we're on an upload form or not:
+		if( !$m_isUpload ) {
+			# Extract all categorylinks from page:
+			$m_pageCats = fnSelectCategoryGetPageCategories( $m_pageObj );
 
-		# Never ever use editFormTextTop here as it resides outside
-		# the <form> so we will never get contents
-		$m_place = 'editFormTextAfterWarn';
-		# Print the localised title for the select box:
-		$m_textBefore = '<b>'. wfMsg( 'selectcategory-title' ) . '</b>:';
-	} else {
-		# No need to get categories:
-		$m_pageCats = array();
+			# Never ever use editFormTextTop here as it resides outside
+			# the <form> so we will never get contents
+			$m_place = 'editFormTextAfterWarn';
+			# Print the localised title for the select box:
+			$m_textBefore = '<b>'. wfMsg( 'selectcategory-title' ) . '</b>:';
+		} else {
+			# No need to get categories:
+			$m_pageCats = array();
 
-		# Place output at the right place:
-		$m_place = 'uploadFormTextAfterSummary';
-		# Print the part of the table including the localised title for the select box:
-		$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsg( 'selectcategory-title' ) .":</label></td><td align='left'>";
-	}
-	# Introduce the output:
-	$m_pageObj->$m_place .= "<!-- SelectCategory begin -->\n";
-	# Print the select box:
-	$m_pageObj->$m_place .= "\n$m_textBefore";
-
-	# Begin list output, use <div> to enable custom formatting
-	$m_level = 0;
-	$m_pageObj->$m_place .= '<ul id="SelectCategoryList">';
-
-	foreach( $m_allCats as $m_cat => $m_depth ) {
-		$checked = '';
-
-		# See if the category was already added, so check it
-		if( isset( $m_pageCats[$m_cat] ) ) {
-			$checked = 'checked="checked"';
+			# Place output at the right place:
+			$m_place = 'uploadFormTextAfterSummary';
+			# Print the part of the table including the localised title for the select box:
+			$m_textBefore = "\n</td></tr><tr><td align='right'><label for='wpSelectCategory'>" . wfMsg( 'selectcategory-title' ) .":</label></td><td align='left'>";
 		}
-      # Clean HTML Output:
-      $category =  htmlspecialchars( $m_cat );
+		# Introduce the output:
+		$m_pageObj->$m_place .= "<!-- SelectCategory begin -->\n";
+		# Print the select box:
+		$m_pageObj->$m_place .= "\n$m_textBefore";
 
-      # iterate through levels and adjust divs accordingly
-      while( $m_level < $m_depth ) {
-        # Collapse subcategories after reaching the configured MaxLevel
-        if( $m_level >= ( $wgSelectCategoryMaxLevel - 1 ) ) {
-          $m_class = 'display:none;';
-        } else {
-          $m_class = 'display:block;';
-        }
-        $m_pageObj->$m_place .= '<ul style="'.$m_class.'">'."\n";
-        $m_level++;
-		}
-		if( $m_level == $m_depth ) $m_pageObj->$m_place .= '</li>'."\n";
-		while( $m_level > $m_depth ) {
-			$m_pageObj->$m_place .= '</ul></li>'."\n";
-			$m_level--;
-		}
-		# Clean names for text output
-      $title = str_replace( '_', ' ', $category );
-      $m_title = $wgTitle->newFromText( $category, NS_CATEGORY );
-      # Output the actual checkboxes, indented
-      $m_pageObj->$m_place .= '<li><input type="checkbox" name="SelectCategoryList[]" value="'.$category.'" class="checkbox" '.$checked.' />'.$m_skin->link( $m_title, $title )."\n";
-      # set id for next level
-      $m_level_id = 'sc_'.$m_cat;
-    } # End walking through cats (foreach)
+		# Begin list output, use <div> to enable custom formatting
+		$m_level = 0;
+		$m_pageObj->$m_place .= '<ul id="SelectCategoryList">';
+
+		foreach( $m_allCats as $m_cat => $m_depth ) {
+			$checked = '';
+
+			# See if the category was already added, so check it
+			if( isset( $m_pageCats[$m_cat] ) ) {
+				$checked = 'checked="checked"';
+			}
+			# Clean HTML Output:
+			$category =  htmlspecialchars( $m_cat );
+
+			# default for root category - otherwise it will always be closed
+			$m_open = " class='open' ";
+
+			# iterate through levels and adjust divs accordingly
+			while( $m_level < $m_depth ) {
+				# Collapse subcategories after reaching the configured MaxLevel
+				if( $m_level >= ( $wgSelectCategoryMaxLevel - 1 ) ) {
+					$m_class = 'display:none;';
+					$m_open = " class='closed' ";
+				} else {
+					$m_class = 'display:block;';
+					$m_open = " class='open' ";
+				}
+				$m_pageObj->$m_place .= '<ul style="'.$m_class.'">'."\n";
+				$m_level++;
+			}
+			if( $m_level == $m_depth ) $m_pageObj->$m_place .= '</li>'."\n";
+			while( $m_level > $m_depth ) {
+				$m_pageObj->$m_place .= '</ul></li>'."\n";
+				$m_level--;
+			}
+			# Clean names for text output
+			$title = str_replace( '_', ' ', $category );
+			$m_title = $wgTitle->newFromText( $category, NS_CATEGORY );
+			# Output the actual checkboxes, indented
+			$m_pageObj->$m_place .= '<li' . $m_open . '><input type="checkbox" name="SelectCategoryList[]" value="'.$category.'" class="checkbox" '.$checked.' />'.$m_skin->link( $m_title, $title )."\n";
+			# set id for next level
+			$m_level_id = 'sc_'.$m_cat;
+		} # End walking through cats (foreach)
 		# End of list output - close all remaining divs
 		while( $m_level > -1 ) {
 			$m_pageObj->$m_place .= '</li></ul>'."\n";
