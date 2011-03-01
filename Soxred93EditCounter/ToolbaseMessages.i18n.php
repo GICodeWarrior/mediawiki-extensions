@@ -972,7 +972,7 @@ Nếu bạn theo một liên kết từ trang khác, xin vui lòng <a href="$1">
 	'toolbase-error-toomanyedits' => '$1 đã sửa đổi $2 lần. Công cụ này chỉ có xử lý được tối đa $3 sửa đổi.',
 );
 
-/** Simplified Chinese (中文(简体))
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */
 $messages['zh-hans'] = array(
@@ -986,7 +986,7 @@ $messages['zh-hans'] = array(
 	'toolbase-form-wiki' => '维基',
 );
 
-/** Traditional Chinese (中文(繁體))
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
