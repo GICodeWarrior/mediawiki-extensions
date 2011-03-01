@@ -77,13 +77,20 @@
 	},
 	
 	/**
+	 * Cancels any open editor.
+	 */
+	cancel: function() {
+		for( var optionNr in $.inlineEditor.editors ) {
+			$.inlineEditor.editors[optionNr].cancel();
+		}
+	},
+	
+	/**
 	 * Reloads the current editor and finish some things in the HTML.
 	 */
 	reload: function() {
 		// cancel all editing
-		for( var optionNr in $.inlineEditor.editors ) {
-			$.inlineEditor.editors[optionNr].cancel();
-		}
+		$.inlineEditor.cancel();
 		
 		// reload the editors
 		for( var optionNr in $.inlineEditor.editors ) {
