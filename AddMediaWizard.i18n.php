@@ -271,10 +271,11 @@ $messages['ja'] = array(
 );
 
 /** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+ * @author Amire80
  * @author Beco1977
  */
 $messages['kbd-cyrl'] = array(
-	'addmediawizard-desc' => 'медиэ хэпгъэхъуэну 1эзэт, кэлтурэрэ уикимедиэрэ зэдэлажэху къык1ырахэгъы',
+	'addmediawizard-desc' => 'Медиэ хэпгъэхъуэну Ӏэзэт, Кэлтурэрэ Уикимедиэрэ зэдэлажэху къыкӀырахэгъы',
 );
 
 /** Kannada (ಕನ್ನಡ)
