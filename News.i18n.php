@@ -433,3 +433,10 @@ $messages['vi'] = array(
 	'newsextension-desc' => 'Hiển thị các thay đổi gần đây đã tinh chỉnh trên các trang của một wiki hoặc bằng feed RSS hoặc Atom',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Oapbtommy
+ */
+$messages['zh-hk'] = array(
+	'newsextension-desc' => '在 wiki 頁面顯示自訂的最近修改，或 RSS 或 Atom 動態消息',
+);
+
