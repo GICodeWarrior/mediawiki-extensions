@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.47) hardy-wikimedia; urgency=low
+
+  * Updated sync scripts for MW 11.17
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 01 Mar 2011 13:13:43 +1100
+
 wikimedia-task-appserver (1.46-2~hardy1) hardy-wikimedia; urgency=low
 
   * Build for hardy-wikimedia

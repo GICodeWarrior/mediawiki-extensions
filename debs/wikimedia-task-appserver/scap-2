@@ -2,8 +2,8 @@
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin:
 
-echo -n Updating php-1.5...
-rsync -a 10.0.5.8::common/php-1.5/ /usr/local/apache/common-local/php-1.5 && echo ok || echo failed
+echo -n Updating php-1.17...
+rsync -a 10.0.5.8::common/php-1.17/ /usr/local/apache/common-local/php-1.17 && echo ok || echo failed
 
 # Install compiled executables
 /usr/sbin/install-common
