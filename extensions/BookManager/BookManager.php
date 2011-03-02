@@ -47,7 +47,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'		=>  BookManagerFunctions::VERSION,
 	'author'		=> 'Raylton P. Sousa & Helder.wiki',
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
-	'description'		=> 'Tools for books',
+	'description'	=> 'Tools for books',
 );
 
 /**** Register magic words ****/
@@ -62,12 +62,12 @@ define( 'MAG_ROOTPAGENAMEE',	'magicbookmanagercustomvar5' );
 define( 'MAG_CHAPTERNAME',	'magicbookmanagercustomvar6' );
 define( 'MAG_CHAPTERNAMEE',	'magicbookmanagercustomvar7' );
 $wgResourceModules['ext.BookManager'] = array(
-        'scripts' => 'bookmanager.js',
-        'styles' => 'bookmanager.css',
-        'messages' => array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
-	'dependencies' => array( 'jquery', 'mediawiki.util'),
-        'localBasePath' => $dir,
-        'remoteExtPath' => 'BookManager'
+		'scripts' => 'bookmanager.js',
+		'styles' => 'bookmanager.css',
+		'messages' => array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
+		'dependencies' => array( 'jquery', 'mediawiki.util'),
+		'localBasePath' => $dir,
+		'remoteExtPath' => 'BookManager'
 );
 $wgHooks['LanguageGetMagic'][] = 'BookManagerFunctions::LanguageGetMagic';
 
