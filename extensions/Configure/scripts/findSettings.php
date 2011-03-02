@@ -138,17 +138,61 @@ class FindSettings extends Maintenance {
 				preg_match_all( '/\[\[[Mm]anual:\$(wg[A-Za-z0-9]+)\|/', $cont, $m );
 				$allSettings = array_unique( $m[1] );
 				$ignoreList = array(
-					'wgEnableNewpagesUserFilter', 'wgOldChangeTagsIndex', 'wgVectorExtraStyles'
+					'wgEnableNewpagesUserFilter',
+					'wgOldChangeTagsIndex',
 				);
 			} else {
 				$allSettings = array_keys( $coreSettings->getAllSettings() );
 				$ignoreList = array(
-					'wgAuth', 'wgCommandLineMode', 'wgCheckSerialized', 'wgConf',
-					'wgDBconnection', 'wgDummyLanguageCodes', 'wgEnableNewpagesUserFilter',
-					'wgEnableSerializedMessages', 'wgEnableSorbs', 'wgExperimentalHtmlIds',
-					'wgLegacySchemaConversion', 'wgMaintenanceScripts', 'wgMemCachedDebug',
-					'wgOldChangeTagsIndex', 'wgProxyKey', 'wgSorbsUrl', 'wgValidSkinNames',
-					'wgVectorExtraStyles', 'wgVersion',
+					'wgAPIListModules',            // Extensions only
+					'wgAPIMetaModules',            // Extensions only
+					'wgAPIModules',                // Extensions only
+					'wgAPIPropModules',            // Extensions only
+					'wgAjaxExportList',            // Extensions only
+					'wgAuth',                      // Object
+					'wgAutoloadClasses',           // Extensions only
+					'wgAvailableRights',           // Extensions only
+					'wgCommandLineMode',           // Internal use
+					'wgConf',                      // Object
+					'wgDBmysql4',                  // Deprecated
+					'wgDummyLanguageCodes',        // Internal use
+					'wgEditEncoding',              // Deprecated
+					'wgEnableNewpagesUserFilter',  // Temporary
+					'wgEnableSorbs',               // Deprecated
+					'wgExceptionHooks',            // Extensions only
+					'wgExperimentalHtmlIds',       // Temporary
+					'wgExtensionAliasesFiles',     // Extensions only
+					'wgExtensionCredits',          // Extensions only
+					'wgExtensionFunctions',        // Extensions only
+					'wgExtensionMessagesFiles',    // Extensions only
+					'wgFilterCallback',            // Needs PHP code
+					'wgHooks',                     // Extensions only
+					'wgInputEncoding',             // Deprecated
+					'wgJobClasses',                // Extensions only
+					'wgLegacySchemaConversion',    // Deprecated
+					'wgLogActions',                // Extensions only
+					'wgLogActionsHandlers',        // Extensions only
+					'wgLogHeaders',                // Extensions only
+					'wgLogNames',                  // Extensions only
+					'wgLogTypes',                  // Extensions only
+					'wgMaintenanceScripts',        // Extensions only
+					'wgMemCachedDebug',            // Internal use
+					'wgOldChangeTagsIndex',        // Temporary
+					'wgOutputEncoding',            // Deprecated
+					'wgPagePropLinkInvalidations', // Extensions only
+					'wgParserOutputHooks',         // Extensions only
+					'wgParserTestFiles',           // Extensions only
+					'wgProxyKey',                  // Deprecated
+					'wgResourceModules',           // Extensions only
+					'wgSeleniumTestConfigs',       // Needs PHP code
+					'wgSkinExtensionFunctions',    // Extensions only
+					'wgSpecialPageCacheUpdates',   // Extensions only
+					'wgSpecialPages',              // Extensions only
+					'wgSorbsUrl',                  // Deprecated
+					'wgStyleSheetPath',            // Deprecated
+					'wgTrivialMimeDetection',      // Internal use
+					'wgValidSkinNames',            // Extensions only
+					'wgVersion',                   // Internal use
 				);
 			}
 
@@ -160,6 +204,9 @@ class FindSettings extends Maintenance {
 
 			$missing = array_diff( $definedSettings, $allSettings );
 			$remain = array_diff( $allSettings, $definedSettings );
+
+			$reallyMissing = array_diff( $missing, $ignoreList );
+
 			$obsolete = array();
 			foreach ( $remain as $setting ) {
 				if ( $coreSettings->isSettingAvailable( $setting ) )
@@ -167,10 +214,10 @@ class FindSettings extends Maintenance {
 			}
 
 			// let's show the results:
-			$this->printArray( 'missing', array_diff( $missing, $ignoreList ) );
+			$this->printArray( 'missing', $reallyMissing );
 			$this->printArray( 'obsolete', $obsolete );
 
-			if ( count( $missing ) == 0 && count( $obsolete ) == 0 )
+			if ( count( $reallyMissing ) == 0 && count( $obsolete ) == 0 )
 				$this->output( "Looks good!\n" );
 		}
 	}

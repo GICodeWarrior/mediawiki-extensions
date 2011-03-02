@@ -18,7 +18,6 @@ $settings = array(
 			'wgLogo' => 'image-url',
 			'wgSiteNotice' => 'text',
 			'wgExtraSubtitle' => 'text',
-			'wgBreakFrames' => 'bool',
 			'wgSiteSupportPage' => 'text',
 			'wgStyleVersion' => 'int',
 		),
@@ -37,6 +36,7 @@ $settings = array(
 			'wgEnableAPI' => 'bool',
 			'wgEnableWriteAPI' => 'bool',
 			'wgUseAutomaticEditSummaries' => 'bool',
+			'wgUseCombinedLoginLink' => 'bool',
 			'wgUseTagFilter' => 'bool',
 			'wgUseTrackbacks' => 'bool',
 			'wgCommandLineDarkBg' => 'bool',
@@ -44,12 +44,11 @@ $settings = array(
 		),
 		'ajax' => array(
 			'wgUseAjax' => 'bool',
-			'wgAjaxExportList' => 'array',
 			'wgAjaxUploadDestCheck' => 'bool',
 			'wgAjaxWatch' => 'bool',
 			'wgCrossSiteAJAXdomains' => 'array',
 			'wgCrossSiteAJAXdomainExceptions' => 'array',
-#			'wgLivePreview' => 'bool', // Maybe this'll be back in a moment
+			#'wgLivePreview' => 'bool', // Maybe this'll be back in a moment
 		),
 		'css-js' => array(
 			'wgAllowUserCss' => 'bool',
@@ -64,6 +63,7 @@ $settings = array(
 			'wgResourceLoaderInlinePrivateModules' => 'bool',
 			'wgResourceLoaderMaxage' => 'array',
 			'wgResourceLoaderUseESI' => 'bool',
+			'wgResourceLoaderMinifyJSVerticalSpace' => 'bool',
 		),
 		'performance' => array(
 			'wgAPICacheHelp' => 'bool',
@@ -81,6 +81,12 @@ $settings = array(
 			'wgCompressRevisions' => 'bool',
 			'wgUpdateRowsPerQuery' => 'int',
 			'wgPoolCounterConf' => 'array',
+		),
+		'test' => array(
+			'wgEnableSelenium' => 'bool',
+			'wgSeleniumConfigFile' => 'text',
+			'wgDBtestuser' => 'text',
+			'wgDBtestpassword' => 'text',
 		),
 	),
 	'pages' => array(
@@ -137,6 +143,7 @@ $settings = array(
 			'wgArticlePath' => 'text',
 			'wgDeletedDirectory' => 'text',
 			'wgFavicon' => 'text',
+			'wgFooterIcons' => 'array',
 			'wgMathDirectory' => 'text',
 			'wgMathPath' => 'text',
 			'wgLoadScript' => 'text',
@@ -146,11 +153,9 @@ $settings = array(
 			'wgScriptExtension' => 'text',
 			'wgScriptPath' => 'text',
 			'wgServer' => 'text',
-			'wgServerName' => 'text',
 			'wgStyleDirectory' => 'text',
 			'wgStylePath' => 'text',
 			'wgLocalStylePath' => 'text',
-			'wgStyleSheetPath' => 'text',
 			'wgTmpDirectory' => 'text',
 			'wgUploadBaseUrl' => 'text',
 			'wgUploadDirectory' => 'text',
@@ -159,6 +164,8 @@ $settings = array(
 			'wgUploadPath' => 'text',
 			'wgUsePathInfo' => 'bool',
 			'wgVariantArticlePath' => 'text',
+			'wgUploadStashScalerBaseUrl' => 'text',
+			'wgExtensionAssetsPath' => 'text',
 		),
 		'external-tools' => array(
 			'wgDiff' => 'text',
@@ -169,7 +176,6 @@ $settings = array(
 		),
 		'filesystem' => array(
 			'wgDirectoryMode' => 'int',
-			'wgSQLiteDataDirMode' => 'int',
 			'wgMaxShellFileSize' => 'int',
 			'wgMaxShellMemory' => 'int',
 			'wgMaxShellTime' => 'int',
@@ -210,7 +216,6 @@ $settings = array(
 			'wgSlaveLagWarning' => 'int',
 		),
 		'mysql' => array(
-			'wgDBmysql4' => 'bool',
 			'wgDBmysql5' => 'bool',
 			'wgDBprefix' => 'text',
 			'wgDBTableOptions' => 'text',
@@ -237,6 +242,7 @@ $settings = array(
 			'wgAdditionalMailParams' => 'text',
 			'wgSMTP' => 'array',
 			'wgUserEmailUseReplyTo' => 'bool',
+			'wgUserEmailConfirmationTokenExpiry' => 'int',
 		),
 		'enotif' => array(
 			'wgEnotifFromEditor' => 'bool',
@@ -264,10 +270,7 @@ $settings = array(
 			'wgUseDatabaseMessages' => 'bool',
 			'wgForceUIMsgAsContentMsg' => 'array',
 			'wgLoginLanguageSelector' => 'bool',
-			'wgInputEncoding' => 'text',
 			'wgLegacyEncoding' => 'text',
-			'wgEditEncoding' => 'text',
-			'wgOutputEncoding' => 'text',
 			'wgTranslateNumerals' => 'bool',
 			'wgUseDynamicDates' => 'bool',
 			'wgAmericanDates' => 'bool',
@@ -350,7 +353,6 @@ $settings = array(
 		'category' => array(
 			'wgCategoryMagicGallery' => 'bool',
 			'wgCategoryPagingLimit' => 'int',
-			'wgCategoryPrefixedDefaultSortkey' => 'bool',
 			'wgUseCategoryBrowser' => 'bool',
 			'wgCategoryCollation' => array( 'uppercase' => 'Uppercase' ),
 		),
@@ -365,7 +367,9 @@ $settings = array(
 			'wgCacheEpoch' => 'text',
 			'wgCachePages' => 'bool',
 			'wgClockSkewFudge' => 'int',
+			'wgInvalidateCacheOnLocalSettingsChange' => 'bool',
 			'wgFileCacheDirectory' => 'text',
+			'wgFileCacheDepth' => 'int',
 			'wgForcedRawSMaxage' => 'int',
 			'wgQueryCacheLimit' => 'int',
 			'wgRevisionCacheExpiry' => 'int',
@@ -430,6 +434,12 @@ $settings = array(
 			'wgRestrictionTypes' => 'array',
 			'wgRestrictionLevels' => 'array',
 			'wgWhitelistRead' => 'array',
+			'wgBreakFrames' => 'bool',
+			'wgEditPageFrameOptions' => array(
+				'DENY' => 'Deny',
+				'SAMEORIGIN' => 'Same origin',
+				0 => 'Allow',
+			),
 		),
 		'block' => array(
 			'wgBlockAllowsUTEdit' => 'bool',
@@ -443,7 +453,6 @@ $settings = array(
 		'filter' => array(
 			'wgSpamRegex' => 'array',
 			'wgSummarySpamRegex' => 'array',
-			'wgFilterCallback' => 'text',
 			'wgDeleteRevisionsLimit' => 'int',
 			'wgPasswordAttemptThrottle' => 'array',
 		),
@@ -462,6 +471,7 @@ $settings = array(
 			'wgAllowCopyUploads' => 'bool',
 			'wgAllowAsyncCopyUploads' => 'bool',
 			'wgCheckFileExtensions' => 'bool',
+			'wgAllowJavaUploads' => 'bool',
 			'wgFileBlacklist' => 'array',
 			'wgFileExtensions' => 'array',
 			'wgFileStore' => 'array',
@@ -494,7 +504,6 @@ $settings = array(
 			'wgMimeDetectorCommand' => 'text',
 			'wgMimeInfoFile' => 'text',
 			'wgMimeTypeFile' => 'text',
-			'wgTrivialMimeDetection' => 'bool',
 			'wgJsMimeType' => 'text',
 			'wgMimeTypeBlacklist' => 'array',
 			'wgXMLMimeTypes' => 'array',
@@ -574,7 +583,6 @@ $settings = array(
 			'wgMaxTocLevel' => 'int',
 			'wgParserConf' => 'array',
 			'wgParserCacheExpireTime' => 'int',
-			'wgParserTestFiles' => 'array',
 			'wgParserTestRemote' => 'array',
 			'wgPreprocessorCacheThreshold' => 'int',
 			'wgRegisterInternalExternals' => 'bool',
@@ -610,15 +618,9 @@ $settings = array(
 			'wgExtraRandompageSQL' => 'text',
 			'wgFilterLogTypes' => 'array',
 			'wgImportTargetNamespace' => 'text',
-			'wgLogActions' => 'array',
-			'wgLogActionsHandlers' => 'array',
-			'wgLogHeaders' => 'array',
-			'wgLogNames' => 'array',
 			'wgLogRestrictions' => 'array',
-			'wgLogTypes' => 'array',
 			'wgMaxRedirectLinksRetrieved' => 'int',
 			'wgSecureLogin' => 'bool',
-			'wgSecureLoginStickHTTPS' => 'bool',
 			'wgRedirectOnLogin' => 'text',
 			'wgSortSpecialPages' => 'bool',
 			'wgSpecialPageGroups' => 'array',
@@ -659,7 +661,7 @@ $settings = array(
 			'wgMaxNameChars' => 'int',
 			'wgMaxSigChars' => 'int',
 			'wgMinimalPasswordLength' => 'int',
-			'wgWeakPasswords' => 'array',
+			'wgLivePasswordStrengthChecks' => 'bool',
 			'wgNewUserLog' => 'bool',
 			'wgLogAutocreatedAccounts' => 'bool',
 			'wgReservedUsernames' => 'array',
@@ -669,7 +671,6 @@ $settings = array(
 		'externalauth' => array(
 			'wgExternalAuthType' => 'text',
 			'wgExternalAuthConf' => 'array',
-			'wgExternalAuthConfig' => 'array',
 			'wgAutocreatePolicy' => array(
 				'never' => 'Never',
 				'login' => 'Login',
@@ -771,30 +772,7 @@ $settings = array(
 	'job' => array(
 		'job' => array(
 			'wgJobRunRate' => 'int',
-			'wgJobClasses' => 'array',
 			'wgUpdateRowsPerJob' => 'int',
-		),
-	),
-	'extension' => array(
-		'extension' => array(
-			'wgAPIListModules' => 'array',
-			'wgAPIMetaModules' => 'array',
-			'wgAPIModules' => 'array',
-			'wgAPIPropModules' => 'array',
-			'wgAutoloadClasses' => 'array',
-			'wgAvailableRights' => 'array',
-			'wgExceptionHooks' => 'array',
-			'wgExtensionAliasesFiles' => 'array',
-			'wgExtensionAssetsPath' => 'text',
-			'wgExtensionCredits' => 'array',
-			'wgExtensionFunctions' => 'array',
-			'wgExtensionMessagesFiles' => 'array',
-			'wgHooks' => 'array',
-			'wgPagePropLinkInvalidations' => 'array',
-			'wgParserOutputHooks' => 'array',
-			'wgSpecialPageCacheUpdates' => 'array',
-			'wgSpecialPages' => 'array',
-			'wgSkinExtensionFunctions' => 'array',
 		),
 	),
 );
@@ -817,7 +795,6 @@ $settings = array(
  */
 $arrayDefs = array(
 # Features
-	'wgAjaxExportList' => 'simple',
 	'wgResourceLoaderInlinePrivateModules' => 'array',
 	'wgCrossSiteAJAXdomains' => 'simple',
 	'wgCrossSiteAJAXdomainExceptions' => 'simple',
@@ -853,6 +830,7 @@ $arrayDefs = array(
 	'wgGroupsRemoveFromSelf' => 'group-array',
 # Paths
 	'wgActionPaths' => 'assoc',
+	'wgFooterIcons' => 'array',
 # Db
 	'wgLocalDatabases' => 'simple',
 	'wgSharedTables'  => 'simple',
@@ -909,27 +887,19 @@ $arrayDefs = array(
 	'wgGalleryOptions' => 'assoc',
 	'wgGrammarForms' => 'array',
 	'wgParserConf' => 'assoc',
-	'wgParserTestFiles' => 'simple',
 	'wgParserTestRemote' => 'assoc',
 	'wgUrlProtocols' => 'simple',
 # Special pages
 	'wgFilterLogTypes' => 'assoc',
-	'wgLogActions' => 'assoc',
-	'wgLogActionsHandlers' => 'assoc',
-	'wgLogHeaders' => 'assoc',
-	'wgLogNames' => 'assoc',
 	'wgLogRestrictions' => 'assoc',
-	'wgLogTypes' => 'simple',
 	'wgSpecialPageGroups' => 'assoc',
 	'wgRCLinkLimits' => 'simple',
 	'wgRCLinkDays' => 'simple',
 # Users
 	'wgDefaultUserOptions' => 'assoc',
 	'wgReservedUsernames' => 'simple',
-	'wgWeakPasswords' => 'simple',
 	'wgBrowserBlackList' => 'simple',
 	'wgExternalAuthConf' => 'array',
-	'wgExternalAuthConfig' => 'array',
 	'wgAllowPrefChange' => 'assoc',
 	'wgHiddenPrefs' => 'simple',
 # Feed
@@ -949,22 +919,8 @@ $arrayDefs = array(
 	'wgHttpOnlyBlacklist' => 'simple',
 # Feed
 	'wgAdvertisedFeedTypes' => 'simple',
-# Job
-	'wgJobClasses' => 'assoc',
 # Extensions
-	'wgAPIListModules' => 'assoc',
-	'wgAPIMetaModules' => 'assoc',
-	'wgAPIModules' => 'assoc',
-	'wgAPIPropModules' => 'assoc',
-	'wgAvailableRights' => 'simple',
-	'wgExceptionHooks' => 'array',
-	'wgExtensionAliasesFiles' => 'array',
-	'wgExtensionCredits' => 'array',
-	'wgExtensionFunctions' => 'simple',
-	'wgExtensionMessagesFiles' => 'assoc',
 	'wgExternalStores' => 'simple',
-	'wgSpecialPageCacheUpdates' => 'array',
-	'wgSpecialPages' => 'assoc',
 );
 
 /**
@@ -974,6 +930,7 @@ $emptyValues = array(
 	'wgAppleTouchIcon' => false,
 	'wgLoadScript' => false,
 	'wgVariantArticlePath' => false,
+	'wgUploadStashScalerBaseUrl' => false,
 	'wgAdditionalMailParams' => false,
 	'wgDeletedDirectory' => false,
 	'wgDBerrorLog' => null,
@@ -1035,6 +992,7 @@ $emptyValues = array(
  */
 $editRestricted = array(
 	'wgUpgradeKey',
+	'wgSeleniumConfigFile',
 # General
 	'wgActionPaths',
 	'wgAppleTouchIcon',
@@ -1053,10 +1011,8 @@ $editRestricted = array(
 	'wgScriptExtension',
 	'wgScriptPath',
 	'wgServer',
-	'wgServerName',
 	'wgStyleDirectory',
 	'wgStylePath',
-	'wgStyleSheetPath',
 	'wgTmpDirectory',
 	'wgUsePathInfo',
 	'wgUploadBaseUrl',
@@ -1065,6 +1021,7 @@ $editRestricted = array(
 	'wgUploadMissingFileUrl',
 	'wgUploadPath',
 	'wgVariantArticlePath',
+	'wgUploadStashScalerBaseUrl',
 # Db
 	'wgAllDBsAreLocalhost',
 	'wgDBAvgStatusPoll',
@@ -1089,7 +1046,6 @@ $editRestricted = array(
 	'wgDefaultExternalStore',
 	'wgExternalStores',
 	'wgLBFactoryConf',
-#	'wgLegacySchemaConversion',
 	'wgLocalDatabases',
 	'wgMasterWaitTimeout',
 	'wgSearchType',
@@ -1123,7 +1079,6 @@ $editRestricted = array(
 # Rate limits
 	'wgRateLimitLog',
 # Proxies
-#	'wgProxyKey', # Deprecated
 	'wgProxyScriptPath',
 	'wgSecretKey',
 # Squid
@@ -1157,6 +1112,7 @@ $editRestricted = array(
 $viewRestricted = array(
 #
 	'wgUpgradeKey',
+	'wgDBtestpassword',
 # Db
 	'wgDBpassword',
 	'wgDBadminpassword',
@@ -1166,7 +1122,6 @@ $viewRestricted = array(
 # Emal
 	'wgSMTP',
 # Proxy
-	'wgProxyKey', # Deprecated
 	'wgSecretKey',
 );
 
@@ -1175,46 +1130,21 @@ $viewRestricted = array(
  * be set by extensions, ...
  */
 $notEditableSettings = array(
-	'wgAPIListModules',
-	'wgAPIMetaModules',
-	'wgAPIModules',
-	'wgAPIPropModules',
-	'wgAjaxExportList',
-	'wgAuth',
-	'wgAutoloadClasses',
-	'wgAvailableRights',
-	'wgCommandLineMode',
-	'wgConf',
-	'wgDBmysql4', // Too old
-	'wgEditEncoding', // Too old
-	'wgExceptionHooks',
-	'wgExtensionAliasesFiles',
-	'wgExtensionCredits',
-	'wgExtensionFunctions',
-	'wgExtensionMessagesFiles',
-	'wgFilterCallback',
-	'wgHooks',
-	'wgInputEncoding', // Too old
-	'wgJobClasses',
-	'wgLogActions',
-	'wgLogActionsHandlers',
-	'wgLogHeaders',
-	'wgLogNames',
-	'wgLogTypes',
-	'wgOutputEncoding', // Too old
-	'wgPagePropLinkInvalidations',
-	'wgParserOutputHooks',
-	'wgParserTestFiles',
-	'wgSkinExtensionFunctions',
-	'wgSpecialPageCacheUpdates',
-	'wgSpecialPages',
-	'wgStyleSheetPath',
 	'wgStyleVersion',
-	'wgTrivialMimeDetection',
-	'wgVersion',
 );
 
 /**
  * Array of settings depending of the Core version
  */
-$settingsVersion = array();
+$settingsVersion = array(
+	# Added in 1.18
+	'wgAllowJavaUploads' => array( array( '1.18alpha', '>=' ) ),
+	'wgDBtestuser' => array( array( '1.18alpha', '>=' ) ),
+	'wgDBtestpassword' => array( array( '1.18alpha', '>=' ) ),
+	'wgUseCombinedLoginLink' => array( array( '1.18alpha', '>=' ) ),
+	'wgUserEmailConfirmationTokenExpiry' => array( array( '1.18alpha', '>=' ) ),
+
+	# Removed in 1.18
+	'wgAPICacheHelp' => array( array( '1.18alpha', '<' ) ),
+	'wgDBts2schema' => array( array( '1.18alpha', '<' ) ),
+);

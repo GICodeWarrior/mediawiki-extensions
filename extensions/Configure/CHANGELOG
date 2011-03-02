@@ -1,7 +1,17 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
-0.16.1 - 24 Februara 2011
+0.16.2 - 2 March 2011
+  * Added $wgUseCombinedLoginLink, $wgResourceLoaderMinifyJSVerticalSpace,
+    $wgEnableSelenium, $wgSeleniumConfigFile, $wgDBtestuser, $wgDBtestpassword,
+    $wgUploadStashScalerBaseUrl, $wgSQLiteDataDirMode, $wgAllowJavaUploads,
+    $wgUserEmailConfirmationTokenExpiry, $wgFileCacheDepth,
+    $wgInvalidateCacheOnLocalSettingsChange, wgEditPageFrameOptions and
+    $wgLivePasswordStrengthChecks
+  * Removed $wgServerName, $wgCategoryPrefixedDefaultSortkey, $wgWeakPasswords,
+    $wgSecureLoginStickHTTPS and $wgExternalAuthConfig
+
+0.16.1 - 24 February 2011
   Use an extension function rather than SetupAfterCache hook when delaying
   settings extraction.
 
