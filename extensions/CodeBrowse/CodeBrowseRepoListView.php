@@ -29,10 +29,3 @@ class CodeBrowseRepoListView extends CodeBrowseView {
 		return $text;
 	}
 }
-
-class CodeRepoListView {
-	function execute() {
-		global $wgOut;
-		$wgOut->addWikiText( CodeBrowseRepoListView::reallyGetContent() );
-	}
-}
