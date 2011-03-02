@@ -160,10 +160,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'snmpquery-desc' => "Gionta le funsion SNMPget e SNMPwalk e përmëtt ëd mosté j'arzultà ant la wiki",
+	'snmpquery-desc' => "A gionta le funsion SNMPget e SNMPwalk e a smon j'arzultà ant la wiki",
 );
 
 /** Portuguese (Português)
