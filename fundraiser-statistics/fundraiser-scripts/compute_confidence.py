@@ -78,8 +78,6 @@ class ConfidenceTest:
 			formatted_sql_stmnt_1 = query_obj.format_query(query_name, sql_stmnt, [t1, t2, item_1, campaign])
 			formatted_sql_stmnt_2 = query_obj.format_query(query_name, sql_stmnt, [t1, t2, item_2, campaign])
 			
-			# print formatted_sql_stmnt_1
-			
 			try:
 				err_msg = formatted_sql_stmnt_1
 				
@@ -336,7 +334,7 @@ class ConfidenceTest:
 		else:
 			winner = labels[1]
 			
-		win_str =  "\nThe winner " + winner + " had a %.2f%s."
+		win_str =  "\nThe winner " + winner + " had a %.2f%s increase."
 		win_str = win_str % (percent_increase, '%')
 		
 		print  '\n\n' +  metric_name 
