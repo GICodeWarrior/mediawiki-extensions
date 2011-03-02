@@ -204,7 +204,25 @@ Exemples :
  * @author Toliño
  */
 $messages['gl'] = array(
+	'flagpage' => 'Marcar unha páxina',
+	'flagpage-desc' => 'Marcar unha páxina con algúns modelos predeterminados',
+	'flagpage-templatelist' => '<!--
+Editar esta páxina para configurar os modelos a empregar.
+Exemplos:
+* [[Modelo:Sen referencias|A páxina non ten referencias]]
+* [[Modelo:Non neutral|A páxina non respecta o punto de vista neutral]]
+* [[Modelo:Lixo|Cómpre borrar a páxina]]
+-->',
 	'flagpage-nopageselectedtitle' => 'Non se seleccionou ningunha páxina',
+	'flagpage-nopageselected' => 'Non especificou ningunha páxina',
+	'flagpage-emptylisttitle' => 'Non hai ningún modelo configurado',
+	'flagpage-emptylist' => 'Debe configurar as súas listas de modelos. Edite [[{{ns:8}}:flagpage-templatelist]] para facelo agora.',
+	'flagpage-preview' => 'Vista previa do modelo seleccionado:',
+	'flagpage-confirmsave' => 'Por favor, confirme os cambios.',
+	'flagpage-submitbutton' => 'Gardar a páxina con este modelo',
+	'flagpage-nonexistent' => 'A páxina "$1" non existe. Seica foi [{{fullurl:Special:Log|page=$1}} movida ou borrada].',
+	'flagpage-summary' => 'Engadiu o modelo "[[$1]]" empregando o marcado de páxinas',
+	'flagpage-success' => '"[[$1]]" engadiuse á páxina "[[$2]]".',
 	'flagpage-tab' => 'Marcar',
 );
 
