@@ -7437,6 +7437,7 @@ $messages['ps'] = array(
  * @author Lijealso
  * @author Luckas Blade
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
@@ -7626,7 +7627,8 @@ $messages['pt'] = array(
 	'fogg-please-install' => '$1. Mais $2',
 	'fogg-please-install-install-linktext' => 'Instalar Firefogg',
 	'fogg-please-install-about-linktext' => 'sobre o Firefogg',
-	'fogg-use_latest_firefox' => 'Por favor, instale primeiro o <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (ou versão mais recente). <i>Depois volte a esta página para instalar a extensão <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'Por favor, instale primeiro o $1.
+<i>Depois volte a esta página para instalar a extensão <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'Firefox mais recente',
 	'fogg-passthrough_mode' => 'O ficheiro seleccionado já é de formato Ogg ou não é um ficheiro de vídeo',
 	'fogg-encoding-done' => 'Codificação finalizada',
