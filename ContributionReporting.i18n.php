@@ -4082,7 +4082,7 @@ $messages['pms'] = array(
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Màssim (USD)',
 	'fundraiserstats-tab-ytd' => 'Ann an cors (USD)',
-	'fundraiserstats-instructions' => "Për vëdde statìstiche për minca di, buta ël cursor an sla bara për col di. Minca agn a l'ha un color diferent an sël gràfich.",
+	'fundraiserstats-instructions' => "Për vëdde le statìstiche për minca di, ch'a buta ël cursor an sla bara për col di. Minca ann a l'é d'un color diferent an sël gràfich.",
 	'fundraiserstats-customize' => 'Përsonalisa',
 	'fundraiserstats-show-years' => "Mosta j'agn ch'a ven-o:",
 	'fundraiserstats-time-zone' => 'Fus orari:',
@@ -5486,6 +5486,7 @@ $messages['uk'] = array(
 	'fundraiserstats-tab-averages' => 'У середньому (долари США)',
 	'fundraiserstats-tab-maximums' => 'Максимуми (долари США)',
 	'fundraiserstats-tab-ytd' => 'З початку року (USD)',
+	'fundraiserstats-show-years' => 'Показати наступні роки:',
 	'fundraiserstats-time-zone' => 'Часовий пояс:',
 );
 
