@@ -47,6 +47,33 @@ from utils import file_utils
 import extracter
 
 RE_CATEGORY = re.compile('\(.*\`\,\.\-\:\'\)')
+ 
+NAMESPACE ={
+    #0:'Main',    
+    #1:'Talk',
+    #2:'User',
+    #3:'User talk',
+    4:'Wikipedia',
+    #5:'Wikipedia talk',
+    6:'File',
+    #7:'File talk',
+    8:'MediaWiki',
+    #9:'MediaWiki talk',
+    10:'Template',
+    #11:'Template talk',
+    12:'Help',
+    #13:'Help talk',
+    14:'Category',
+    #15:'Category talk',
+    90:'Thread',
+    #91:'Thread talk',
+    92:'Summary',
+    #93:'Summary talk',
+    100:'Portal',
+    #101:'Portal talk',
+    108:'Book',            
+    #109:'Book talk'
+}
 
 
 class Buffer:
@@ -219,14 +246,15 @@ def determine_namespace(title):
     ns = {}
     if title.text != None:
         title = title.text
-        title = title.split(':')
-        if len(title) == 1:
-           ns['namespace'] = 0
-        elif len(title) == 2:
-            if title[0] in namespaces:
-                ns['namespace'] = namespaces[title[0]]
-            else:
-                ns = False #article does not belong to either the main namespace, user, talk or user talk namespace.
+        for namespace in namespaces:
+            if title.startswith(namespace):
+                ns['namespace'] = namespaces[namespace]
+        if ns == {}:
+            for namespace in NAMESPACE:
+                if title.startswith(namespace):
+                    ns = False #article does not belong to either the main namespace, user, talk or user talk namespace.
+                    break
+            ns['namespace'] = 0
     else:
         ns = False
     return ns
@@ -373,8 +401,8 @@ def launcher():
     setup(storage)
     input_queue = JoinableQueue()
     result_queue = JoinableQueue()
-    files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
-    #files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
+    #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
+    files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
 
     for file in files:
         input_queue.put(file)
