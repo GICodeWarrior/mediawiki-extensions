@@ -321,6 +321,13 @@ $messages['jv'] = array(
 	'antibot-desc' => 'Krangka kerja prasaja kanggo mriksa spambot lan lat pamicu',
 );
 
+/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+ * @author Amire80
+ */
+$messages['kbd-cyrl'] = array(
+	'antibot-desc' => 'Спамхэмэ я бутхэр рибуплъэкӀуну Ӏэзэт Ӏщэх',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772
