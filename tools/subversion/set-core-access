@@ -7,8 +7,7 @@ if ( $#ARGV < 2 || ( $ARGV[0] ne "add" && $ARGV[0] ne "delete" ) ) {
 my $action = $ARGV[0];
 my $user = $ARGV[1];
 my $group = $ARGV[2];
-#my $fileName = "/svnroot/mediawiki/conf/authz";
-my $fileName = "authz";
+my $fileName = "/svnroot/mediawiki/conf/authz";
 if ( !open( AUTHZ, "<", $fileName ) ) {
 	print "Unable to open authz\n";
 	exit 1;
