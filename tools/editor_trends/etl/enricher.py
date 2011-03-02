@@ -47,8 +47,8 @@ from utils import file_utils
 import extracter
 
 RE_CATEGORY = re.compile('\(.*\`\,\.\-\:\'\)')
- 
-NAMESPACE ={
+
+NAMESPACE = {
     #0:'Main',    
     #1:'Talk',
     #2:'User',
@@ -71,7 +71,7 @@ NAMESPACE ={
     #93:'Summary talk',
     100:'Portal',
     #101:'Portal talk',
-    108:'Book',            
+    108:'Book',
     #109:'Book talk'
 }
 
