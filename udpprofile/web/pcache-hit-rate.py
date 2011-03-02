@@ -5,15 +5,21 @@ cgitb.enable()
 
 form = cgi.SvFormContentDict()
 if 'period' in form:
-	period = int( form['period'] )
+	if form['period'].endswith( 'h' ):
+		period = int( form['period'][0:-1] ) * 60
+	elif form['period'].endswith( 'd' ):
+		period = int( form['period'][0:-1] ) * 60 * 24
+	else:
+		period = int( form['period'] )
 else:
 	period = 30
 
 print 'Content-Type: image/png'
+print 'Cache-Control: no-cache'
 print
 
 rrdFileName = '/var/lib/profile-stats-logger/stats.rrd'
-rrdtool.graph(
+graph = [
 	'-',
 	'--start', '-' + str( period ) + 'm',
 	'--width', '800',
@@ -37,6 +43,8 @@ rrdtool.graph(
 	'AREA:pcache_miss_absent_percent#ffff00:Miss (absent) %:STACK',
 	'AREA:pcache_miss_expired_percent#ff8888:Miss (expired) %:STACK',
 	'AREA:pcache_miss_invalid_percent#ff0000:Miss (invalid) %:STACK',
-	'LINE:pcache_hit_avg#000080:Hit % (2 min. avg)',
-)
+]
+if period < 1440:
+	graph.append('LINE:pcache_hit_avg#000080:Hit % (2 min. avg)')
 
+rrdtool.graph(*graph)
