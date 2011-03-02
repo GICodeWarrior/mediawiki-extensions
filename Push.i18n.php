@@ -885,6 +885,11 @@ Para fazer a replicação externa de páginas, introduza os respectivos títulos
 	'push-special-obtaining-fileinfo' => '$1: A obter as informações do ficheiro...',
 	'push-special-pushing-file' => '$1: A replicar o ficheiro $2...',
 	'push-special-return' => 'Replicar mais páginas',
+	'push-api-err-nocurl' => 'O cURL não está instalado.
+Defina $egPushDirectFileUploads como "false" nas wikis públicas, ou instale o cURL para wikis privadas',
+	'push-api-err-nofilesupport' => 'O MediaWiki local não tem suporte para a publicação de ficheiros.
+Nas wikis públicas, defina $egPushDirectFileUploads como "false".
+Nas wikis privadas, aplique o patch referido na documentação do Push, ou actualize o próprio MediaWiki.',
 );
 
 /** Russian (Русский)
