@@ -193,6 +193,18 @@ $messages['et'] = array(
 	'ts-kml-on-ol-map-by' => 'Kaart:',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'ts-kml-on-ol-options' => 'Aukerak',
+	'ts-kml-on-ol-languages' => 'Hizkuntzak',
+	'ts-kml-on-ol-thumbnails' => 'Iruditxoak',
+	'ts-kml-on-ol-help' => 'Laguntza',
+	'ts-kml-on-ol-all' => 'Guztiak',
+	'ts-kml-on-ol-map-by' => 'Maparen egilea',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */

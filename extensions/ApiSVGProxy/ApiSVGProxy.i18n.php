@@ -199,6 +199,13 @@ $messages['ja'] = array(
 	'apisvgproxy-desc' => 'SVGファイルを（リモート含む）ファイル・リポジトリからローカルのドメインにプロキシする',
 );
 
+/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+ * @author Amire80
+ */
+$messages['kbd-cyrl'] = array(
+	'apisvgproxy-desc' => 'SVG хэ уынэ кӀыжэм къехыи благъэм къехьых',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

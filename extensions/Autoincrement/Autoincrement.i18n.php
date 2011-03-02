@@ -211,6 +211,13 @@ $messages['ja'] = array(
 	'autoincrement-desc' => '自動インクリメント変数 <nowiki>{{AUTOINCREMENT}}</nowiki> を追加する変数フック',
 );
 
+/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+ * @author Amire80
+ */
+$messages['kbd-cyrl'] = array(
+	'autoincrement-desc' => 'ЗэхъуэкӀыхэрэ хэзгъахъуэрэ зигъэпсырэм изакъу зэгъахъу <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

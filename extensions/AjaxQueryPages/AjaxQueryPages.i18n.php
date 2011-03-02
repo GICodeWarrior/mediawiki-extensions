@@ -334,6 +334,13 @@ $messages['jv'] = array(
 	'ajaxquerypages-desc' => 'Nambahaké sawetara AJAX ing QueryPages kayata [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
+ * @author Amire80
+ */
+$messages['kbd-cyrl'] = array(
+	'ajaxquerypages-desc' => 'Хэгъахъуэ тэкуы AJAX мыш фэдэ уыпкӀэ тхьапэхэмкӀэ [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */

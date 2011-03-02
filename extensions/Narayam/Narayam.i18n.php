@@ -130,6 +130,13 @@ $messages['de'] = array(
 	'narayam-bn-nkb' => 'Bengali (NKB)',
 );
 
+/** French (Français)
+ * @author Coyau
+ */
+$messages['fr'] = array(
+	'narayam-desc' => "Permet d'ajouter des méthodes de saisie personnalisés pour les champs de saisie",
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author McDutchie
@@ -170,6 +177,8 @@ $messages['hsb'] = array(
 	'narayam-ml-inscript' => 'Malajalam InScript',
 	'narayam-sa' => 'Transliteracija sanskrita',
 	'narayam-sa-inscript' => 'Sanskrit InScript',
+	'narayam-si-singlish' => 'Sinhala (Singlsih)',
+	'narayam-si-wijesekara' => 'Sinhala (Wijesekara)',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Transliteracija tamilšćiny',
 	'narayam-bn-avro' => 'Bengali-Avro',
@@ -236,6 +245,8 @@ $messages['mk'] = array(
 	'narayam-ml-inscript' => 'Малајалам - InScript',
 	'narayam-sa' => 'Транслитерација на Санскрит',
 	'narayam-sa-inscript' => 'Санскрит - InScript',
+	'narayam-si-singlish' => 'синхалски - Синглсих',
+	'narayam-si-wijesekara' => 'синхалски - Виџесекара',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Транслитерација на тамилски',
 	'narayam-bn-avro' => 'Бенгалски - Avro',
@@ -295,9 +306,15 @@ $messages['ru'] = array(
 	'narayam-toggle-ime' => 'Для переключения метода ввода ($1)',
 	'narayam-help-page' => 'Help:Ввод',
 	'narayam-checkbox-tooltip' => 'Для включения и выключения метода ввода',
+	'narayam-hi-inscript' => 'Хинди инскрипт',
+	'narayam-kn' => 'Транслитерация каннада',
+	'narayam-kn-inscript' => 'Каннада инскрипт',
 	'narayam-ml' => 'Малайская транслитерация',
 	'narayam-ml-inscript' => 'Малайский инскрипт',
 	'narayam-sa' => 'Санскритская транслитерация',
+	'narayam-sa-inscript' => 'Санскрит инскрипт',
+	'narayam-si-singlish' => 'Сингальский Синглсих',
+	'narayam-si-wijesekara' => 'Сингальский Виджесекера',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Тамильская транслитерация',
 	'narayam-bn-avro' => 'Бенгальский Avro',

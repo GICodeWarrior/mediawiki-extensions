@@ -330,11 +330,12 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'flvhandler_desc' => 'Разрешает использование файлов флеш-видео (.flv) как обычных файлов (например, <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
-	'flv-long-desc' => 'флеш-видео, $1 × $2 пикселей, размер файла: $3',
+	'flv-long-desc' => 'флеш-видео, $1 × $2 {{PLURAL:$2|пиксел|пиксела|пикселов}}, размер файла: $3',
 );
 
 /** Slovak (Slovenčina)

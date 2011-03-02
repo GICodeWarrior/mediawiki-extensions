@@ -642,6 +642,13 @@ $messages['as'] = array(
 	'deletequeue-list-search' => 'সন্ধান কৰক',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'deletequeue-delnom-otherreason' => 'Otru motivu',
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */
