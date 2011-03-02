@@ -1,14 +1,14 @@
 .book-navigation{
-        -moz-border-radius:4px; /* Firefox, etc */
-        -khtml-border-radius:4px; /* Konqueror, etc */
-        -webkit-border-radius:4px; /* Safari, Google Chrome, etc */
-        -opera-border-radius:4px; /* Opera */
-        border-radius:4px;
+	-moz-border-radius:4px; /* Firefox, etc */
+	-khtml-border-radius:4px; /* Konqueror, etc */
+	-webkit-border-radius:4px; /* Safari, Google Chrome, etc */
+	-opera-border-radius:4px; /* Opera */
+	border-radius:4px;
 	padding:8px;
-        border: 1px solid #a7d7f9;
+	border: 1px solid #a7d7f9;
 	background-color:#eaf2f8;
-        margin:5px auto;
-        font-size:95%;
+	margin:5px auto;
+	font-size:95%;
 	display:table;
 	clear:both;
 }
@@ -18,10 +18,10 @@
 	display:table-cell;
 	}
 .book-navigation .prev, .book-navigation .next{
-        white-space:nowrap;
+	white-space:nowrap;
 }
 .book-navigation .index{
-        padding:0 5em;
+	padding:0 5em;
 }
 .book-navigation .prev a{
 	background:url("images/18px-1leftarrow.png") no-repeat scroll left center transparent;
