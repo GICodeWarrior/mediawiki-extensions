@@ -29,6 +29,7 @@ $wgGroupPermissions['*']['searchlog-read'];
 
 // Credits
 $wgExtensionCredits['specialpage'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'Special:SearchLog',
 	'author'         => '[http://www.organicdesign.co.nz/nad User:Nad]',
 	'descriptionmsg' => 'searchlog-desc',
