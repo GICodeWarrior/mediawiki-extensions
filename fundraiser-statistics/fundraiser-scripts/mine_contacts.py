@@ -186,7 +186,7 @@ class contact_handler(tr.data_handler, fr.TimestampProcesser):
 		
 		# Formats the statement according to query type
 		select_stmnt = self.__query_obj.format_query(self.__query_handle_amount, sql_stmnt, [start_time, end_time])
-		print select_stmnt
+		
 		# initialize the db and execute the query
 		self.init_db()
 		
