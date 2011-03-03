@@ -797,6 +797,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
+ * @author Kghbln
  * @author Liam Rosen
  * @author Melancholie
  * @author Pill
@@ -818,7 +819,7 @@ $messages['de'] = array(
 	'whitelisttablemodby' => 'Zuletzt modifiziert von',
 	'whitelisttablemodon' => 'Zuletzt modifiziert am',
 	'whitelisttableedit' => 'Bearbeiten',
-	'whitelisttableview' => 'Anschauen',
+	'whitelisttableview' => 'Ansehen',
 	'whitelisttablenewdate' => 'Neues Datum:',
 	'whitelisttablechangedate' => 'Ablaufsdatum ändern',
 	'whitelisttablesetedit' => 'Bearbeiten',
