@@ -2,19 +2,33 @@
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
 
-class AssertEdit
-{
+class AssertEdit {
 	/**
 	 * methods for core assertions
+	 *
+	 * @param $editPage
+	 * @return bool
 	 */
 	static function assert_user( $editPage ) {
 		global $wgUser;
 		return $wgUser->isLoggedIn();
 	}
+
+	/**
+	 * @static
+	 * @param $editPage EditPage
+	 * @return bool
+	 */
 	static function assert_bot( $editPage ) {
 		global $wgUser;
 		return $wgUser->isAllowed( 'bot' );
 	}
+
+	/**
+	 * @static
+	 * @param $editPage EditPage
+	 * @return bool
+	 */
 	static function assert_exists( $editPage ) {
 		return $editPage->mTitle->exists();
 	}
@@ -22,7 +36,7 @@ class AssertEdit
 	/*
 	 * List of assertions; can be modified with setAssert
 	 */
-	static private $msAssert = array(
+	public static $msAssert = array(
 		// simple constants, i.e. to test if the extension is installed.
 		'true' => true,
 		'false' => false,
