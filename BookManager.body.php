@@ -64,7 +64,16 @@ class BookManagerFunctions {
 		return true;
 	}	
 /**** All the BookManager values functions ****/
-
+	private static function isViewAction() {
+		global $wgRequest;
+		$action = $wgRequest->getVal( 'action', 'view' );
+		if( $action == 'view' || $action == 'purge'){			
+			return true;
+		}
+		else{		
+			return false;
+		}	
+	}
 	private static function newTitleObject( &$parser, $text = null ) {
 		$t = Title::newFromText( $text );
 		if ( is_null( $t ) ) {
@@ -282,7 +291,7 @@ class BookManagerFunctions {
 		$prevtext = ( $prev !== '' ) ? Title::newFromText( $prev )->getSubpageText(): '' ; 
 		$nexttext = ( $next !== '' ) ? Title::newFromText( $next )->getSubpageText(): '' ; 
 
-		if ( $ns === 0 ) {
+		if ( $ns === 0 && self::isViewAction() ) {
 		 	$BookManager = wfMsgExt( "BookManager", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
 			$BookManagerTop = wfMsgExt( "BookManager-top", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
 			$BookManagerBottom = wfMsgExt( "BookManager-bottom", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );

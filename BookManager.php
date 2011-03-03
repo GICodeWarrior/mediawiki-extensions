@@ -35,20 +35,32 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
+$dir = dirname( __FILE__ ); 
+
+$wgAutoloadClasses['BookManagerFunctions'] = $dir . '/BookManager.body.php';
+
+/**** extension basics ****/
+$wgExtensionCredits['parserhook'][] = array(
+	'path'			=> __FILE__,
+	'name'			=> 'BookManager',
+	'version'		=>  BookManagerFunctions::VERSION,
+	'author'		=>  array('Raylton P. Sousa', 'Helder.wiki'),
+	'url'			=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
+	'description'		=> 'Tools for books',
+);
+/* Add CSS and JS */
+$wgResourceModules['ext.BookManager'] = array(
+        'scripts' => 'bookmanager.js',
+        'styles' => 'bookmanager.css',
+        'messages' => array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
+	'dependencies' => array( 'jquery', 'mediawiki.util'),
+        'localBasePath' => $dir,
+        'remoteExtPath' => 'BookManager'
+);
 
 /* Copyied from extensions/Collection/Collection.php */
 /** Namespace for "community books" */
-$dir = dirname( __FILE__ ); 
 $wgCommunityCollectionNamespace = NS_PROJECT;
-$wgAutoloadClasses['BookManagerFunctions'] = $dir . '/BookManager.body.php';
-/**** extension basics ****/
-$wgExtensionCredits['parserhook'][] = array(
-	'name'			=> 'BookManager',
-	'version'		=>  BookManagerFunctions::VERSION,
-	'author'		=> 'Raylton P. Sousa & Helder.wiki',
-	'url'			=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
-	'description'	=> 'Tools for books',
-);
 
 /**** Register magic words ****/
 $wgExtensionFunctions[] = 'BookManagerFunctions::register';
@@ -61,14 +73,7 @@ define( 'MAG_ROOTPAGENAME',	'magicbookmanagercustomvar4' );
 define( 'MAG_ROOTPAGENAMEE',	'magicbookmanagercustomvar5' );
 define( 'MAG_CHAPTERNAME',	'magicbookmanagercustomvar6' );
 define( 'MAG_CHAPTERNAMEE',	'magicbookmanagercustomvar7' );
-$wgResourceModules['ext.BookManager'] = array(
-		'scripts' => 'bookmanager.js',
-		'styles' => 'bookmanager.css',
-		'messages' => array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
-		'dependencies' => array( 'jquery', 'mediawiki.util'),
-		'localBasePath' => $dir,
-		'remoteExtPath' => 'BookManager'
-);
+
 $wgHooks['LanguageGetMagic'][] = 'BookManagerFunctions::LanguageGetMagic';
 
 $wgHooks['MagicWordwgVariableIDs'][] = 'BookManagerFunctions::DeclareVarIds';
