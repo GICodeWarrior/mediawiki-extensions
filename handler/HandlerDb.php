@@ -15,7 +15,9 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	public function __construct() {
 		global $IP, $wgConfigureDatabase;
 		require_once( "$IP/includes/GlobalFunctions.php" );
-		require_once( "$IP/includes/ObjectCache.php" );
+		if ( file_exists( "$IP/includes/ObjectCache.php" ) ) {
+			require_once( "$IP/includes/ObjectCache.php" );
+		}
 		$this->mDb = $wgConfigureDatabase;
 	}
 
