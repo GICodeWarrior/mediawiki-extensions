@@ -41,21 +41,21 @@ $wgAutoloadClasses['BookManagerFunctions'] = $dir . '/BookManager.body.php';
 
 /**** extension basics ****/
 $wgExtensionCredits['parserhook'][] = array(
-	'path'			=> __FILE__,
-	'name'			=> 'BookManager',
-	'version'		=>  BookManagerFunctions::VERSION,
-	'author'		=>  array('Raylton P. Sousa', 'Helder.wiki'),
-	'url'			=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
-	'description'		=> 'Tools for books',
+	'path'		=> __FILE__,
+	'name'		=> 'BookManager',
+	'version'	=>  BookManagerFunctions::VERSION,
+	'author'	=>  array('Raylton P. Sousa', 'Helder.wiki'),
+	'url'		=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
+	'description'	=> 'Tools for books',
 );
 /* Add CSS and JS */
 $wgResourceModules['ext.BookManager'] = array(
-        'scripts' => 'bookmanager.js',
-        'styles' => 'bookmanager.css',
-        'messages' => array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
-	'dependencies' => array( 'jquery', 'mediawiki.util'),
-        'localBasePath' => $dir,
-        'remoteExtPath' => 'BookManager'
+	'scripts'	=> 'bookmanager.js',
+	'styles'	=> 'bookmanager.css',
+	'messages'	=> array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
+	'dependencies'	=> array( 'jquery', 'mediawiki.util'),
+	'localBasePath'	=> $dir,
+	'remoteExtPath'	=> 'BookManager'
 );
 $wgBookManagerNamespaces = array( NS_MAIN ); 		
 /* Copyied from extensions/Collection/Collection.php */
