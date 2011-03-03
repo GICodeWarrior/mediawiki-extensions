@@ -37,18 +37,18 @@ function efNewUserNotifSetupExtension() {
  * This function creates additional parameters which can be used in the email notification Subject Line for new users
  *
  * @param $callobj NewUserNotifier object (this).
- * @param $SubjectLine String: Returns the message subject line
- * @param $SiteName Site Name of the Wiki
+ * @param $subjectLine String: Returns the message subject line
+ * @param $siteName Site Name of the Wiki
  * @param $recipient Email/User Name of the Message Recipient.
  * @param $user User name of the added user
  * @return  true
  */
 
-function efNewUserNotifSubject ( $callobj , $SubjectLine , $SiteName , $recipient , $user )
+function efNewUserNotifSubject ( $callobj , $subjectLine , $siteName , $recipient , $user )
 {
-	$SubjectLine = wfMsgForContent(
+	$subjectLine = wfMsgForContent(
 				'newusernotifsubj',
-				$SiteName,										// $1 Site Name
+				$siteName,										// $1 Site Name
 				$user->getName()								// $2 User Name
 	);
 	return ( true );
@@ -58,26 +58,26 @@ function efNewUserNotifSubject ( $callobj , $SubjectLine , $SiteName , $recipien
  * This function creates additional parameters which can be used in the email notification message body for new users
  *
  * @param $callobj NewUserNotifier object (this).
- * @param $MessageBody String: Returns the message body.
- * @param $SiteName Site Name of the Wiki
+ * @param $messageBody String: Returns the message body.
+ * @param $siteName Site Name of the Wiki
  * @param $recipient Email/User Name of the Message Recipient.
  * @param $user User name of the added user
  * @return  true
  */
 
-function efNewUserNotifBody ( $callobj , $MessageBody , $SiteName , $recipient , $user )
+function efNewUserNotifBody ( $callobj , $messageBody , $siteName , $recipient , $user )
 {
 	global $wgContLang;
-	$MessageBody = wfMsgForContent(
+	$messageBody = wfMsgForContent(
 				'newusernotifbody',
 				$recipient,										// $1 Recipient (of notification message) 
 				$user->getName(),								// $2 User Name
-				$SiteName,										// $3 Site Name
+				$siteName,										// $3 Site Name
 				$wgContLang->timeAndDate( wfTimestampNow() ),	// $4 Time and date stamp
 				$wgContLang->date( wfTimestampNow() ),			// $5 Date Stamp
 				$wgContLang->time( wfTimestampNow() ),			// $6 Time Stamp
 				$user->getEmail(),			                    // $7 email
-				rawurlencode($SiteName),						// $8 Site name encoded for email message link
+				rawurlencode($siteName),						// $8 Site name encoded for email message link
 				wfGetIP(),										// $9 Submitter's IP Address
 				rawurlencode($user->getName())					// $10 User Name encoded for email message link
 	);
