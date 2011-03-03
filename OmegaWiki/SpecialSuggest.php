@@ -42,7 +42,7 @@ function wfSpecialSuggest() {
  */
 function getSuggestions() {
 	$o = OmegaWikiAttributes::getInstance();
-	global $wgUser;
+	global $wgLang;
 	global
 		$wgDefinedMeaning,
 		$wgDefinedMeaningAttributes,
@@ -58,6 +58,7 @@ function getSuggestions() {
 	@$attributesLevel = $_GET['attributesLevel'];
 	@$annotationAttributeId = $_GET['annotationAttributeId'];
 	$syntransId = $_GET["syntransId"];
+	$langCode = $wgLang->getCode();
 
 	$sql = '';
 
@@ -65,14 +66,14 @@ function getSuggestions() {
 	$rowText = 'spelling';
 	switch ( $query ) {
 		case 'relation-type':
-			$sqlActual = getSQLForCollectionOfType( 'RELT', $wgUser->getOption( 'language' ) );
+			$sqlActual = getSQLForCollectionOfType( 'RELT', $langCode );
 			$sqlFallback = getSQLForCollectionOfType( 'RELT', 'en' );
 			$sql = constructSQLWithFallback( $sqlActual, $sqlFallback, array( "member_mid", "spelling", "collection_mid" ) );
 			break;
 		case 'class':
 			// constructSQLWithFallback is a bit broken in this case, showing several time the same lines
 			// so : not using it. The English fall back has been included in the SQL query
-			$sql = getSQLForClasses( $wgUser->getOption( 'language' ) );
+			$sql = getSQLForClasses( $langCode );
 			break;
 		case "$wgDefinedMeaningAttributes":
 			$sql = getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $syntransId, $annotationAttributeId, 'DM' );
@@ -91,7 +92,7 @@ function getSuggestions() {
 			break;
 		case 'language':
 			require_once( 'languages.php' );
-			$sql = getSQLForLanguageNames( $wgUser->getOption( 'language' ) );
+			$sql = getSQLForLanguageNames( $langCode );
 			$rowText = 'language_name';
 			break;
 		case "$wgDefinedMeaning":
@@ -104,10 +105,10 @@ function getSuggestions() {
 	            " AND " . getLatestTransactionRestriction( "{$dc}_expression" );
 	        break;
 	    case 'class-attributes-level':
-	    	$sql = getSQLForLevels( $wgUser->getOption( 'language' ) );
+	    	$sql = getSQLForLevels( $langCode );
 	    	break;
 	    case 'collection':
-	 	$sqlActual = getSQLForCollection( $wgUser->getOption( 'language' ) );
+	 	$sqlActual = getSQLForCollection( $langCode );
 	 	$sqlFallback = getSQLForCollection( 'en' );
 		$sql = constructSQLWithFallback( $sqlActual, $sqlFallback, array( "collection_id", "spelling" ) );
 	    	break;
@@ -256,12 +257,12 @@ function constructSQLWithFallback( $actual_query, $fallback_query, $fields ) {
 
 function getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, $syntransId, $annotationAttributeId, $attributesType ) {
 
-	global $wgDefaultClassMids, $wgUser;
+	global $wgDefaultClassMids, $wgLang;
 
 	$dc = wdGetDataSetContext();
 	$dbr = wfGetDB( DB_SLAVE );
 
-	$language = $wgUser->getOption( 'language' ) ;
+	$language = $wgLang->getCode() ;
 	$lng = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' ) ';
 
 	$classMids = $wgDefaultClassMids ;

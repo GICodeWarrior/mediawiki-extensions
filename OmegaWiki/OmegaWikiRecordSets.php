@@ -165,9 +165,9 @@ function getNullDefinedMeaningReferenceRecord() {
 }
 
 function getDefinedMeaningReferenceRecords( array $definedMeaningIds, $usedAs ) {
-	global
-		$wgUser;
-	
+	global $wgLang ;
+	$userLanguageId = getLanguageIdForCode( $wgLang->getCode() ) ;
+
 //	$startTime = microtime(true);
 
 	$result = array();
@@ -180,7 +180,7 @@ function getDefinedMeaningReferenceRecords( array $definedMeaningIds, $usedAs ) 
 			$userLanguage = $wgRecordSetLanguage;
 		}
 		else {
-			$userLanguage = getLanguageIdForCode( $wgUser->getOption( 'language' ) );
+			$userLanguage = getLanguageIdForCode( $wgLang->getCode() );
 		}
 		
 		if ( $userLanguage > 0 )

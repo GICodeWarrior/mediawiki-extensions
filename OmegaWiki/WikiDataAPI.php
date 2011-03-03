@@ -1084,10 +1084,8 @@ function getDefinedMeaningDefinitionForAnyLanguage( $definedMeaningId ) {
  * @param $definedMeaningId
  */
 function getDefinedMeaningDefinition( $definedMeaningId ) {
-	global
-		$wgUser;
-		
-	$userLanguageId = getLanguageIdForCode( $wgUser->getOption( 'language' ) );
+	global $wgLang;
+	$userLanguageId = getLanguageIdForCode( $wgLang->getCode() ) ;
 	
 	if ( $userLanguageId > 0 )
 		$result = getDefinedMeaningDefinitionForLanguage( $definedMeaningId, $userLanguageId );
@@ -1100,7 +1098,6 @@ function getDefinedMeaningDefinition( $definedMeaningId ) {
 		if ( $result == "" )
 			$result = getDefinedMeaningDefinitionForAnyLanguage( $definedMeaningId );
 	}
-	
 	return $result;
 }
 
@@ -1521,11 +1518,11 @@ function definingExpression( $definedMeaningId, $dc = null ) {
 	}
 	$dbr = wfGetDB( DB_SLAVE );
 	$queryResult = $dbr->query( "SELECT spelling " .
-								" FROM {$dc}_defined_meaning, {$dc}_expression " .
-								" WHERE {$dc}_defined_meaning.defined_meaning_id=$definedMeaningId " .
-								" AND {$dc}_expression.expression_id={$dc}_defined_meaning.expression_id" .
-								" AND " . getLatestTransactionRestriction( "{$dc}_defined_meaning" ) .
-								" AND " . getLatestTransactionRestriction( "{$dc}_expression" ) );
+		" FROM {$dc}_defined_meaning, {$dc}_expression " .
+		" WHERE {$dc}_defined_meaning.defined_meaning_id=$definedMeaningId " .
+		" AND {$dc}_expression.expression_id={$dc}_defined_meaning.expression_id" .
+		" AND " . getLatestTransactionRestriction( "{$dc}_defined_meaning" ) .
+		" AND " . getLatestTransactionRestriction( "{$dc}_expression" ) );
 	$expression = $dbr->fetchObject( $queryResult );
 	if ( $expression ) {
 		return $expression->spelling;
@@ -1591,17 +1588,17 @@ function definedMeaningExpressionForAnyLanguage( $definedMeaningId ) {
  * @param $definedMeaningId
  */
 function definedMeaningExpression( $definedMeaningId ) {
-	global $wgUser;
-	
-	$userLanguage = getLanguageIdForCode( $wgUser->getOption( 'language' ) );
+	global $wgLang;
+
+	$userLanguageId = getLanguageIdForCode( $wgLang->getCode() ) ;
 	
 	list( $definingExpressionId, $definingExpression, $definingExpressionLanguage ) = definingExpressionRow( $definedMeaningId );
 	
-	if ( $definingExpressionLanguage == $userLanguage && expressionIsBoundToDefinedMeaning( $definedMeaningId, $definingExpressionId ) )
+	if ( $definingExpressionLanguage == $userLanguageId && expressionIsBoundToDefinedMeaning( $definedMeaningId, $definingExpressionId ) )
 		return $definingExpression;
 	else {
-		if ( $userLanguage > 0 )
-			$result = definedMeaningExpressionForLanguage( $definedMeaningId, $userLanguage );
+		if ( $userLanguageId > 0 )
+			$result = definedMeaningExpressionForLanguage( $definedMeaningId, $userLanguageId );
 		else
 			$result = "";
 		

@@ -1,5 +1,10 @@
 <?php
 
+/**
+  * What is this PHP file for?
+  * The software seems to work fine even if we delete this file
+  */
+
 require_once( 'Wikidata.php' );
 require_once( 'Transaction.php' );
 require_once( 'WikiDataAPI.php' );
@@ -19,8 +24,7 @@ require_once( 'WikiDataGlobals.php' );
 */
 class ExpressionPage extends DefaultWikidataApplication {
 	public function view() {
-		global
-			$wgOut, $wgTitle;
+		global $wgOut, $wgTitle;
 
 		parent::view();
 		$expressionAsPageTitle = $wgTitle->getText();
@@ -83,8 +87,7 @@ HTML;
 	}
 
 	public function history() {
-		global
-			$wgOut, $wgTitle;
+		global $wgOut, $wgTitle;
 
 		parent::history();
 
@@ -102,8 +105,7 @@ HTML;
 	}
 
 	protected function save( $referenceQueryTransactionInformation ) {
-		global
-			$wgTitle;
+		global $wgTitle;
 
 		parent::save( $referenceQueryTransactionInformation );
 
@@ -116,8 +118,7 @@ HTML;
 	}
 
 	public function edit() {
-		global
-			$wgOut, $wgTitle, $wgUser;
+		global $wgOut, $wgTitle, $wgUser;
 
 		if ( !parent::edit() ) return false;
 		$this->outputEditHeader();
@@ -135,8 +136,7 @@ HTML;
 	}
 	
 	public function getTitle() {
-		global
-			$wgTitle, $wgUseExpressionPageTitlePrefix;
+		global $wgTitle, $wgUseExpressionPageTitlePrefix;
 	
 		if ( $wgUseExpressionPageTitlePrefix )
 			$title = wfMsg( 'ow_Multiple_meanings', $wgTitle->getText() );

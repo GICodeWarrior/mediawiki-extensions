@@ -29,13 +29,12 @@ function wfSpecialSelect() {
 }
 
 function getSelectOptions() {
-	global $wgUser;
-	global $wgOptionAttribute;
+	global $wgLang, $wgOptionAttribute;
 
 	$dc = wdGetDataSetContext();
 	$optionAttribute = $_GET[$wgOptionAttribute];
 	$attributeObject = $_GET['attribute-object'];
-	$lang_code = $wgUser->getOption( 'language' );
+	$lang_code = $wgLang->getCode();
 
 	$dbr = wfGetDB( DB_SLAVE );
 	$sql = 'SELECT language_id' .
