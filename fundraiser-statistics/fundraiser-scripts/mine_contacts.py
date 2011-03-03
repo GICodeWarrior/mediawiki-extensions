@@ -173,8 +173,10 @@ class contact_handler(tr.data_handler, fr.TimestampProcesser):
 		now = datetime.datetime.now()
 		hours_back = 24 * 7
 		
-		start_time, end_time = self.gen_date_strings_hr(now, hours_back)
+		# start_time, end_time = self.gen_date_strings_hr(now, hours_back)
+		start_time, end_time = self.gen_date_strings(now, hours_back, 2, 3)
 		
+
 		# Prepare SQL statements and tables
 		table_data = []
 		sql_stmnt = mh.read_sql(self.__sql_path + self.__query_handle_amount + '.sql');
@@ -184,7 +186,7 @@ class contact_handler(tr.data_handler, fr.TimestampProcesser):
 		
 		# Formats the statement according to query type
 		select_stmnt = self.__query_obj.format_query(self.__query_handle_amount, sql_stmnt, [start_time, end_time])
-
+		print select_stmnt
 		# initialize the db and execute the query
 		self.init_db()
 		

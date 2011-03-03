@@ -13,13 +13,13 @@ converted_amount as amount
 from 
 (
 select 
-DATE_FORMAT(ts, '%sY-%sm-%sd %sH') as stamp,
-contribution_tracking.contribution_id,
+DATE_FORMAT(receive_date, '%sY-%sm-%sd %sH') as stamp,
+civicrm.civicrm_contribution.id,
 converted_amount, 
-contact_id
+civicrm.public_reporting.contact_id
 
-from drupal.contribution_tracking left join civicrm.public_reporting on contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id
-where ts > '%s' and ts <= '%s'
+from civicrm.civicrm_contribution left join civicrm.public_reporting on civicrm.civicrm_contribution.id = civicrm.public_reporting.contribution_id
+where receive_date > '%s' and receive_date <= '%s'
 ) as ecomm
 
 join civicrm.civicrm_contact on ecomm.contact_id = civicrm.civicrm_contact.id
@@ -28,3 +28,4 @@ join civicrm.civicrm_country on civicrm.civicrm_address.country_id = civicrm.civ
 
 where ecomm.converted_amount >= 100 
 group by 1;
+

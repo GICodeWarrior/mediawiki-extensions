@@ -177,6 +177,106 @@ class TimestampProcesser(object):
 	
 	
 	
+	"""
+	
+	Formats date string to match the form of civicrm.civicrm_contribution.recieve_date
+	
+	format 1 - 20080101000606
+	format 2 - 2008-01-01 00:06:06
+	
+	input:
+	
+	now  - python datetime object
+	hours_back - the amount of time the 
+	format - the format of the returned timestamp strings 
+	resolution - the 
+	
+	
+	returns - formatted datetime strings
+	
+	"""
+	def gen_date_strings(self, now, hours_back, format, resolution):
+		
+		delta = datetime.timedelta(hours=-hours_back)
+
+		time_obj = now + delta
+		now = now + datetime.timedelta(hours=-1) # Move an hour back to terminate at 55 minute
+		
+		# Cast the start and end time strings in the proper format
+		start_time = self.timestamp_from_obj(time_obj, format, resolution)
+		end_time = self.timestamp_from_obj(now, format, resolution)
+
+		return [start_time, end_time]
+	
+	
+	
+	"""
+	
+	Formats date string to match the form of civicrm.civicrm_contribution.recieve_date
+	
+	format 1 - 20080101000606
+	format 2 - 2008-01-01 00:06:06
+	
+	input:
+	
+	time_obj  - python datetime object
+	hours_back - the amount of time the 
+	format - the format of the returned timestamp strings 
+	resolution - 
+	
+	
+	returns - formatted datetime strings
+	
+	"""
+	def timestamp_from_obj(self, time_obj, format, resolution):
+		
+		if time_obj.month < 10:
+			month = '0' + str(time_obj.month)
+		else:
+			month = str(time_obj.month)
+
+		if time_obj.day < 10:
+			day = '0' + str(time_obj.day)
+		else:
+			day = str(time_obj.day)
+
+		if time_obj.hour < 10:
+			hour = '0' + str(time_obj.hour)
+		else:
+			hour = str(time_obj.hour)
+			
+		if time_obj.minute < 10:
+			minute = '0' + str(time_obj.minute)
+		else:
+			minute = str(time_obj.minute)
+			
+		if time_obj.second < 10:
+			second = '0' + str(time_obj.second)
+		else:
+			second = str(time_obj.second)
+			
+		# Cast the start and end time strings in the proper format
+		if format == 1:
+			
+			if resoution == 1:
+				timestamp = str(time_obj.year) + month + day + hour + '0000'
+			elif resoution == 2:
+				timestamp = str(time_obj.year) + month + day + hour + minute + '00'
+			elif resoution == 3:
+				timestamp = str(time_obj.year) + month + day + hour + minute + second
+		
+		elif format == 2:
+		
+			if resolution == 1:
+				timestamp = str(time_obj.year) + '-' +  month + '-' +  day + ' ' +  hour + ':00:00'
+			elif resolution == 2:
+				timestamp = str(time_obj.year) + '-' +  month + '-' +  day + ' ' +  hour + ':' + minute + ':00'
+			elif resolution == 3:
+				timestamp = str(time_obj.year) + '-' +  month + '-' +  day + ' ' +  hour + ':' + minute + ':' + second
+				
+		return timestamp
+	
+	
 """
 
 CLASS :: ^FundraiserReporting^
