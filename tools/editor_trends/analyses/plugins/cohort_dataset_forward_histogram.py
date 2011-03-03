@@ -44,12 +44,8 @@ def cohort_dataset_forward_histogram(var, editor, **kwargs):
 
             for month in xrange(start, 13):
                 if edits.get(str(month), 0) >= var.cutoff:
-                    dt = datetime.date(year, month, 1)
+                    dt = datetime.datetime(year, month, 1)
                     experience = relativedelta(dt - new_wikipedian)
                     experience = experience.years * 12 + experience.months
-#                    if year == new_wikipedian.year:
-#                        experience = month - new_wikipedian.month
-#                    else:
-#                        experience = (i * 12) + month 
                     var.add(new_wikipedian, 1, {'experience': experience})
     return var
