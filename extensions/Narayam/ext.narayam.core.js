@@ -8,6 +8,11 @@
  * License: GPLv3, CC-BY-SA 3.0
  */
 
+/**
+ * NOTE: For documentation on writing schemes and rulesets, see the
+ * documentation for addScheme().
+ */
+
 ( function( $ ) {
 $.narayam = new ( function() {
 	/* Private members */
@@ -284,8 +289,41 @@ $.narayam = new ( function() {
 	/**
 	 * Add a transliteration scheme. Schemes whose name is not in
 	 * wgNarayamAvailableSchemes will be ignored.
+	 *
+	 * A scheme consists of rules used for transliteration. A rule is an
+	 * array of three strings. The first string is a regex that is matched
+	 * against the input string (the last few characters before the cursor
+	 * followed by the character the user entered), the second string is a
+	 * regex that is matched against the end of the key buffer (the last
+	 * few keys the user pressed), and the third string is the replacement
+	 * string (may contain placeholders like $1 for subexpressions). You do
+	 * not need to add $ to the end of either of the regexes so they match
+	 * at the end, this is done automagically.
+	 *
+	 * The transliteration algorithm processes the rules in the order they
+	 * are specified, and applies the first rule that matches. For a rule
+	 * to match, both the first and second regex have to match (the first
+	 * for the input, the second for the key buffer). Most rules do not use
+	 * the keybuffer and specify an empty string as the second regex.
+	 *
+	 * The scheme data object must have the following keys:
+	 * namemsg: Message key for the name of the scheme
+	 * extended_keyboard: Whether this scheme has an extended ruleset (bool)
+	 * lookbackLength: Number of characters before the cursor to include
+	 *                 when matching the first regex of each rule. This is
+	 *                 usually the maximum number of characters a rule
+	 *                 regex can match minus one.
+	 * keyBufferLength: Length of the key buffer. May be zero if not needed
+	 * rules: Array of rules, which themselves are arrays of three strings.
+	 * rules_x: Extended ruleset. This is used instead of the normal
+	 *          ruleset when Alt is held. This key is only required if
+	 *          extended_keyboard is true
+	 *
+	 * NOTE: All keys are REQUIRED (except rules_x when not used). Missing
+	 *       keys may result in JS errors.
+	 *
 	 * @param name Name of the scheme, must be unique
-	 * @param data Object with scheme data
+	 * @param data Object with scheme data.
 	 * @return True if added, false if not
 	 */
 	this.addScheme = function( name, data ) {
