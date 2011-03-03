@@ -29,7 +29,7 @@ $.narayam = new ( function() {
 	var availableSchemes = mw.config.get( 'wgNarayamAvailableSchemes' ) || {};
 	// Currently selected scheme
 	var currentScheme = null;
-	// Shortcut key
+	// Shortcut key for turning Narayam on and off
 	var shortcutKey = mw.config.get( 'wgNarayamShortcutKey' ) || {
 		altKey: false,
 		ctrlKey: false,
@@ -100,6 +100,11 @@ $.narayam = new ( function() {
 		return -1;
 	}
 	
+	/**
+	 * Check whether a keypress event corresponds to the shortcut key
+	 * @param e Event object
+	 * @return bool
+	 */
 	function isShortcutKey( e ) {
 		return e.altKey == shortcutKey.altKey &&
 			e.ctrlKey == shortcutKey.ctrlKey &&
@@ -107,6 +112,10 @@ $.narayam = new ( function() {
 			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase();
 	}
 	
+	/**
+	 * Get a description of the shortcut key, e.g. "Ctrl-M"
+	 * @return string
+	 */
 	function shortcutText() {
 		var text = '';
 		// TODO: Localize these things (in core, too)
@@ -123,6 +132,10 @@ $.narayam = new ( function() {
 		return text;
 	}
 	
+	/**
+	 * Keydown event handler. Handles shortcut key presses
+	 * @param e Event object
+	 */
 	function onkeydown( e ) {
 		// If the current scheme uses the alt key, ignore keydown for Alt+? combinations
 		if ( enabled && currentScheme.extended_keyboard && e.altKey && !e.ctrlKey ) {
@@ -136,6 +149,10 @@ $.narayam = new ( function() {
 		return true;
 	}
 	
+	/**
+	 * Keypress event handler. This is where the real work happens
+	 * @param e Event object
+	 */
 	function onkeypress( e ) {
 		if ( !enabled ) {
 			return true;
@@ -201,6 +218,10 @@ $.narayam = new ( function() {
 		return false;
 	}
 	
+	/**
+	 * Change handler for the scheme dropdown. Updates the current scheme
+	 * based on the new selection in the dropdown.
+	 */
 	function updateSchemeFromSelect() {
 		var scheme = $( this ).val();
 		that.setScheme( scheme );
@@ -226,6 +247,9 @@ $.narayam = new ( function() {
 		}
 	};
 	
+	/**
+	 * Enable Narayam
+	 */
 	this.enable = function() {
 		if ( !enabled && currentScheme !== null ) {
 			$inputs.addClass( 'narayam-input' );
@@ -235,6 +259,9 @@ $.narayam = new ( function() {
 		}
 	};
 	
+	/**
+	 * Disable Narayam
+	 */
 	this.disable = function() {
 		if ( enabled ) {
 			$inputs.removeClass( 'narayam-input' );
@@ -244,6 +271,9 @@ $.narayam = new ( function() {
 		}
 	};
 	
+	/**
+	 * Toggle the enabled/disabled state
+	 */
 	this.toggle = function() {
 		if ( enabled ) {
 			that.disable();
@@ -268,6 +298,10 @@ $.narayam = new ( function() {
 		}
 	};
 	
+	/**
+	 * Change the current transliteration scheme
+	 * @param name String
+	 */
 	this.setScheme = function( name ) {
 		if ( name in schemes ) {
 			currentScheme = schemes[name];
@@ -275,6 +309,11 @@ $.narayam = new ( function() {
 		}
 	};
 	
+	/**
+	 * Set up Narayam. This adds the scheme dropdown, binds the handlers
+	 * and initializes the enabled/disabled state and selected scheme
+	 * from a cookie or wgNarayamEnableByDefault
+	 */
 	this.setup = function() {
 		// Build scheme dropdown
 		$select = $( '<select />' );
