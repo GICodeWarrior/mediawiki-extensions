@@ -741,9 +741,10 @@ Binibigyan ang hindi nakikilalang mga tagagamit ng isang kusang nalikha, subalit
 
 /** Turkish (Türkçe)
  * @author Emperyan
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'webchat' => 'Veb sohbet',
+	'webchat' => 'Web sohbet',
 );
 
 /** Ukrainian (Українська)
