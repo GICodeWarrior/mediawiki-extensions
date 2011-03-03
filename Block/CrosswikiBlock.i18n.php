@@ -1955,7 +1955,7 @@ Sjekk at du har løyve til gjera det på denne wikien, og at du følgjer alle re
 	'crosswikiblock-submit' => 'Blokker denne brukaren',
 	'crosswikiblock-anononly' => 'Blokker berre anonyme brukarar',
 	'crosswikiblock-nocreate' => 'Hindre kontooppretting',
-	'crosswikiblock-autoblock' => 'Blokker den førre IP-adressa som vart brukt av denne brukaren automatisk, og alle andre IP-adresser brukaren prøvar å endre sider med i framtida',
+	'crosswikiblock-autoblock' => 'Blokker den førre IP-adressa som vart brukt av denne brukaren automatisk, og alle andre IP-adresser brukaren prøver å endre sider med i framtida',
 	'crosswikiblock-noemail' => 'Hindre sending av e-post til andre brukarar',
 	'crosswikiunblock' => 'Avblokker brukaren på andre wikiar',
 	'crosswikiunblock-header' => 'Denne sida lèt deg avblokkera brukarar på andre wikiar.
