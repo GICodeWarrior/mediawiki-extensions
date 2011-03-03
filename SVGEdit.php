@@ -80,6 +80,19 @@ $wgResourceModules += array(
 		)
 	),
 );
+$wgResourceModules += array(
+	'ext.svgedit.toolbar' => $myResourceTemplate + array(
+		'scripts' => array(
+			'ext.svgedit.toolbar.js',
+		),
+		'messages' => array(
+			'svgedit-toolbar-insert',
+		),
+		'dependencies' => array(
+			'ext.svgedit.editor'
+		)
+	),
+);
 
 // Can set to alternate SVGEdit URL to pull the editor's HTML/CSS/JS/SVG
 // resources from another domain; will still need to have the MediaWiki

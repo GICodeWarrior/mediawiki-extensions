@@ -53,8 +53,8 @@ mw.svgedit = {
 		var svgedit = null; // to be filled out when iframe is loaded
 		var saved = false;
 
-		var origWidth = parseInt(imageinfo.width) || 0;
-		var origHeight = parseInt(imageinfo.height) || 0;
+		var origWidth = parseInt(imageinfo.width) || 640;
+		var origHeight = parseInt(imageinfo.height) || 480;
 		if (origWidth && origHeight) {
 			// Initialize the canvas dimensions to the image's defined size...
 			url += '?dimensions=' + origWidth + ',' + origHeight;
