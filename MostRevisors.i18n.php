@@ -375,14 +375,18 @@ $messages['ha'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'mostrevisors' => 'הדפים בעלי מספר הבודקים הגבוה ביותר',
+	'mostrevisors' => 'דפים שנערכו על־ידי מספר גבוה ביותר של עורכים ייחודיים',
+	'mostrevisors-desc' => 'רשימת [[Special:MostRevisors|דפים עם מספר העורכים הייחודיים הגבוה ביותר]]',
+	'mostrevisors-header' => "'''בדף הזה {{PLURAL:$1|רשום הדף|רשומים $1 הדפים}} עם יותר עורכים ייחודיים מכל דף אחר בוויקי הזה.'''",
 	'mostrevisors-limitlinks' => 'הצגת עד $1 דפים',
 	'mostrevisors-namespace' => 'מרחב שם:',
 	'mostrevisors-none' => 'לא נמצאו רשומות.',
+	'mostrevisors-ns-header' => "'''בדף הזה {{PLURAL:$1|מופיע הדף|מופיעים $1 הדפים}} בעלי המספר הגבוה ביותר של עורכים ייחודיים במרחב השם $2.'''",
 	'mostrevisors-showing' => 'הצגת {{PLURAL:$1|דף אחד|$1 דפים}}:',
 	'mostrevisors-submit' => 'מעבר',
 	'mostrevisors-showredir' => 'הצגת דפי הפניה',
@@ -908,7 +912,7 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'mostrevisors-namespace' => 'Ad boşluğu:',
+	'mostrevisors-namespace' => 'İsim alanı:',
 	'mostrevisors-none' => 'Girdi bulunamadı.',
 	'mostrevisors-submit' => 'Git',
 	'mostrevisors-showredir' => 'Yönlendirme sayfalarını göster',
