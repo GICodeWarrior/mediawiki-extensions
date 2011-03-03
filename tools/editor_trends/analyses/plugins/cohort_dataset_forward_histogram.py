@@ -17,6 +17,8 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
+import datetime
+from dateutil.relativedelta import *
 
 def cohort_dataset_forward_histogram(var, editor, **kwargs):
 #        headers = ['year', 'month', 'edits']
@@ -39,8 +41,15 @@ def cohort_dataset_forward_histogram(var, editor, **kwargs):
                 start = new_wikipedian.month
             else:
                 start = 1
+
             for month in xrange(start, 13):
                 if edits.get(str(month), 0) >= var.cutoff:
-                    experience = i * 12 + (month - new_wikipedian.month)
+                    dt = datetime.date(year, month, 1)
+                    experience = relativedelta(dt - new_wikipedian)
+                    experience = experience.years * 12 + experience.months
+#                    if year == new_wikipedian.year:
+#                        experience = month - new_wikipedian.month
+#                    else:
+#                        experience = (i * 12) + month 
                     var.add(new_wikipedian, 1, {'experience': experience})
     return var
