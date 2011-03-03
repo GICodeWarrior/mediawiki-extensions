@@ -42,7 +42,7 @@ class NewUserNotifier {
 			UserMailer::send(
 				new MailAddress( $target ),
 				new MailAddress( $this->sender ),
-				wfMsgForContent( 'newusernotifsubj', $wgSitename ),
+				$this->makeSubject( $target, $this->user ),
 				$this->makeMessage( $target, $this->user )
 			);
 		}
@@ -57,7 +57,7 @@ class NewUserNotifier {
 			$user = $this->makeUser( $userSpec );
 			if( $user instanceof User && $user->isEmailConfirmed() ) {
 				$user->sendMail(
-					wfMsgForContent( 'newusernotifsubj', $wgSitename ),
+					$this->makeSubject( $user->getName(), $this->user ),
 					$this->makeMessage( $user->getName(), $this->user ),
 					$this->sender
 				);
@@ -80,22 +80,41 @@ class NewUserNotifier {
 	}
 
 	/**
-	 * Build a notification email
+	 * Build a notification email subject line
+	 *
+	 * @param string $recipient Name of the recipient
+	 * @param User $user User that was created
+	 */
+	private function makeSubject( $recipient, $user ) {
+		global $wgSitename;
+		$SubjectLine = "";
+		wfRunHooks( 'NewUserNotifSubject', array( &$this, &$SubjectLine, $wgSitename, $recipient, $user ) );
+		if (!strlen($SubjectLine) )
+			return wfMsgForContent( 'newusernotifsubj', $wgSitename );
+		return $SubjectLine;
+	}
+
+	/**
+	 * Build a notification email message body
 	 *
 	 * @param string $recipient Name of the recipient
 	 * @param User $user User that was created
 	 */
 	private function makeMessage( $recipient, $user ) {
 		global $wgSitename, $wgContLang;
-		return wfMsgForContent(
-			'newusernotifbody',
-			$recipient,
-			$user->getName(),
-			$wgSitename,
-			$wgContLang->timeAndDate( wfTimestampNow() ),
-			$wgContLang->date( wfTimestampNow() ),
-			$wgContLang->time( wfTimestampNow() )
-		);
+		$MessageBody = "";
+		wfRunHooks( 'NewUserNotifBody', array( &$this, &$MessageBody, $wgSitename, $recipient, $user ) );
+		if (!strlen($MessageBody) )
+			return wfMsgForContent(
+				'newusernotifbody',
+				$recipient,
+				$user->getName(),
+				$wgSitename,
+				$wgContLang->timeAndDate( wfTimestampNow() ),
+				$wgContLang->date( wfTimestampNow() ),
+				$wgContLang->time( wfTimestampNow() )
+			);
+		return $MessageBody;
 	}
 
 	/**
