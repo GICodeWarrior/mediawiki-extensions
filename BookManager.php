@@ -57,7 +57,7 @@ $wgResourceModules['ext.BookManager'] = array(
         'localBasePath' => $dir,
         'remoteExtPath' => 'BookManager'
 );
-
+$wgBookManagerNamespaces = array( NS_MAIN ); 		
 /* Copyied from extensions/Collection/Collection.php */
 /** Namespace for "community books" */
 $wgCommunityCollectionNamespace = NS_PROJECT;
