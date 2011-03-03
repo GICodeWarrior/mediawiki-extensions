@@ -46,6 +46,13 @@ $messages['fr'] = array(
 	'folktagcloud-desc' => "Ajoute une propriété ''Semantic MediaWiki'' pour le marquage des pages avec des étiquettes définies par l'utilisateur et une étiquette d'analyseur syntaxique dans le but de les afficher dans un nuage de tags",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'folktagcloud-desc' => 'Engade unha propiedade MediaWiki semántica para marcar páxinas con etiquetas definidas polo usuario e unha etiqueta analítica para mostralas nunha nube de etiquetas',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

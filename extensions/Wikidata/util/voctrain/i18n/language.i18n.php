@@ -3172,6 +3172,7 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'voctrain_continue' => 'weiter',
 	'voctrain_Languages' => 'Schprooche',
+	'voctrain_Word' => 'Watt',
 	'voctrain_User_name' => 'Yuuser-Naame',
 	'voctrain_Login' => 'Kumm nei',
 	'voctrain_Language' => 'Schprooch',

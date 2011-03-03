@@ -76,6 +76,7 @@ $messages['af'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'narayam-desc' => 'Дазваляе дадаваць нестандартныя мэтады ўводу для палёў уводу.',
@@ -88,6 +89,9 @@ $messages['be-tarask'] = array(
 	'narayam-ml' => 'Малайская трансьлітарацыя',
 	'narayam-ml-inscript' => 'Малайскі надпіс',
 	'narayam-sa' => 'Санскрыцкая трансьлітарацыя',
+	'narayam-sa-inscript' => 'Санскрыт інскрыпт',
+	'narayam-si-singlish' => 'Сынгальскі Сынглсіх',
+	'narayam-si-wijesekara' => 'Сынгальскі Віджэсэкера',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Тамільская трансьлітарацыя',
 	'narayam-bn-avro' => 'Bengali Avro',

@@ -901,12 +901,13 @@ $messages['tpi'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'searchbox-desc' => 'Arama formları eklenmesine izin verir',
 	'searchbox-search' => 'Ara',
 	'searchbox-go' => 'Git',
-	'searchbox-namespaces' => 'Alan adları:',
+	'searchbox-namespaces' => 'İsim alanları:',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

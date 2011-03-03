@@ -1132,6 +1132,7 @@ Go ne Abstimmig spychere due si ibertrage ohni ne Antwort gee uf irged e Vorschl
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -1144,6 +1145,8 @@ $messages['he'] = array(
 	'qp_vote_again_button' => 'שינוי הצבעתכם',
 	'qp_polls_list' => 'הצגת כל הסקרים',
 	'qp_users_list' => 'הצגת כל המשתמשים',
+	'qp_browse_to_poll' => 'עיון בסקר $1',
+	'qp_browse_to_user' => 'עיון בחשבון $1',
 	'qp_votes_count' => '{{PLURAL:$1|הצבעה אחת|$1 הצבעות}}',
 	'qp_source_link' => 'מקור',
 	'qp_stats_link' => 'סטטיסטיקה',
@@ -1157,6 +1160,7 @@ $messages['he'] = array(
 	'qp_order_by_polls_count' => 'מיון לפי מספר הסקרים',
 	'qp_header_line_qpul' => '$1 [ דף "$2" סקר "$3" ]',
 	'qp_export_to_xls' => 'ייצוא הסטטיסטיקה לקובץ מסוג XLS',
+	'qp_voices_to_xls' => 'ייצוא קולות לתסדיר XLS',
 	'qp_users_answered_questions' => '{{PLURAL:$1|משתמש אחד ענה|$1 משתמשים ענו}} על השאלות',
 	'qp_func_no_such_poll' => 'אין כזה סקר ($1)',
 	'qp_func_missing_question_id' => "יש לציין מס' שאלה קיים (החל מ־1) עבור הסקר $1",
@@ -1166,6 +1170,9 @@ $messages['he'] = array(
 	'qp_error_invalid_question_type' => 'סוג השאלה שגוי: $1',
 	'qp_error_type_in_stats_mode' => 'סוג השאלה לא ניתן להגדרה במצב תצוגה סטטיסטית: $1',
 	'qp_error_vote_dependance_poll' => 'יש להצביע עבור הסקר $1 תחילה.',
+	'qp_error_too_many_spans' => 'הוגדרו קבוצות קטגוריות רבות מדי עבור המספר הכולל של קטגוריות משנה',
+	'qp_error_unanswered_span' => 'קטגוריית משנה ללא מענה',
+	'qp_error_non_unique_choice' => 'שאלה זו מחייבת תשובה הצעה ייחודית',
 	'qp_error_category_name_empty' => 'שם הקטגוריה ריק',
 	'qp_error_proposal_text_empty' => 'טקסט ההצעה ריק',
 	'qp_error_too_few_categories' => 'יש להגדיר לפחות שתי קטגוריות',

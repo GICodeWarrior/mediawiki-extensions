@@ -2271,8 +2271,8 @@ $messages['diq'] = array(
 	'fogg-check_for_firefogg' => 'Firefogg kontrol beno...',
 	'fogg-installed' => 'Firefogg bar bı',
 	'fogg-for_improved_uploads' => 'qey barkerdışê dewlemend biyayeyani:',
-	'fogg-use_latest_firefox' => 'kerem kerê ewwil $1.
-<i>u hema parçeyê <b>Firefogg</b> i bar kerê, qey barkerdışi no pel ziyaret bıkerê</i>',
+	'fogg-use_latest_firefox' => 'Kerem kerên, raver $1 bar kerên.
+<i>Seba barkerdışê ilawey <b>Firefogg</b>i dıma na pele bıvênên.</i>',
 	'fogg-passthrough_mode' => 'dosyaya ke şıma weçina ca ra yew dosyaya Oggi ya zi videoyi niyo',
 	'fogg-encoding-done' => 'kodkerdış temam bı',
 	'fogg-badtoken' => 'nişan qebul nêbı',
@@ -5918,7 +5918,8 @@ $messages['lb'] = array(
 	'fogg-please-install' => '$1. Méi $2',
 	'fogg-please-install-install-linktext' => 'Firefogg installéieren',
 	'fogg-please-install-about-linktext' => 'iwwer Firefogg',
-	'fogg-use_latest_firefox' => "Installéiert w.e.g. fir d'éischt <a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg\">Firefox 3.5</a> (oder méi eng nei Versioun). <i>Kommt duerno zréck op dës Säit fir d'<b>Firefogg</b>-Erweiderung z'installéieren.</i>",
+	'fogg-use_latest_firefox' => "Installéiert w.e.g. fir d'éischt $1.
+<i>Kommt duerno zréck op dës Säit fir d'<b>Firefogg</b>-Erweiderung z'installéieren.</i>",
 	'fogg-latest-firefox' => 'lescht Versioun vu Firefox',
 	'fogg-encoding-done' => 'Codéierung ofgeschloss',
 	'fogg-badtoken' => 'Token net valabel',
@@ -6179,7 +6180,7 @@ $messages['mk'] = array(
 	'fogg-passthrough_mode' => 'Избраната податотека е веќе Ogg, или пак не е видео-податотека',
 	'fogg-encoding-done' => 'Кодирањето е готово',
 	'fogg-badtoken' => 'Жетонот е неважечки',
-	'fogg-preview' => 'Преглед на видеоснимката',
+	'fogg-preview' => 'Преглед на снимката',
 	'fogg-hidepreview' => 'Скриј преглед',
 	'fogg-warning-firebug' => '<b>Firebug</b> може да предизвика конфликти со <i>Firefogg</i>. Пневозможете го <b>Firebug</b> за оваа страница.',
 	'mwe-upload-multi' => 'Подигање на {{PLURAL:$1|податотека|податотеки}}',

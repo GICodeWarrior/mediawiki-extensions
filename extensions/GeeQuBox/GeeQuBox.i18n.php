@@ -52,6 +52,13 @@ $messages['fr'] = array(
 	'geequbox-desc' => 'Génère des effets de lightbox en utilisant le plugin lightbox de jQuery',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'geequbox-desc' => 'Xera efectos de lightbox utilizando o complemento lightbox de jQuery',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

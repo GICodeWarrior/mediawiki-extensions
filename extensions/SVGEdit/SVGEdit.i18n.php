@@ -52,6 +52,7 @@ $messages['be-tarask'] = array(
 	'svgedit-desc' => 'Рэдагаваньне SVG-малюнкаў у браўзэры з дапамогай [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Рэдагаваць малюнак',
 	'svgedit-edit-tab-tooltip' => 'Вы можаце рэдагаваць SVG-малюнак у Вашым браўзэры',
+	'svgedit-toolbar-insert' => 'SVG-малюнак',
 );
 
 /** Breton (Brezhoneg)
@@ -90,6 +91,7 @@ $messages['de'] = array(
 	'svgedit-desc' => 'Ermöglicht das Bearbeiten einer SVG-Datei mit [http://code.google.com/p/svg-edit/ SVG-edit]',
 	'svgedit-edit-tab' => 'Zeichnung bearbeiten',
 	'svgedit-edit-tab-tooltip' => 'Diese SVG-Zeichnung kann im Browser bearbeitet werden',
+	'svgedit-toolbar-insert' => 'SVG-Zeichnung',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -217,6 +219,7 @@ $messages['ia'] = array(
 	'svgedit-desc' => 'Modification in le navigator de designos SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Modificar designo',
 	'svgedit-edit-tab-tooltip' => 'Iste designo SVG pote esser modificate in le navigator del web',
+	'svgedit-toolbar-insert' => 'Designo SVG',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -303,6 +306,7 @@ $messages['nl'] = array(
 	'svgedit-desc' => 'In de browser bewerken van SVG-tekeningen met [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Tekening bewerken',
 	'svgedit-edit-tab-tooltip' => 'U kunt deze SVG-tekening bewerken in uw browser',
+	'svgedit-toolbar-insert' => 'SVG-tekening',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -399,6 +403,7 @@ $messages['sl'] = array(
 	'svgedit-desc' => 'Urejanje risb SVG v brskalniku z [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Uredi risbo',
 	'svgedit-edit-tab-tooltip' => 'Risbo SVG lahko uredite v svojem brskalniku',
+	'svgedit-toolbar-insert' => 'Risba SVG',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

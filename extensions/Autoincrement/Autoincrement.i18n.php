@@ -111,6 +111,13 @@ $messages['eu'] = array(
 	'autoincrement-desc' => '<nowiki>{{AUTOINCREMENT}}</nowiki> autogehiketa aldagaia txertatzen duen estensio aldagai bat',
 );
 
+/** Persian (فارسی)
+ * @author Reza1615
+ */
+$messages['fa'] = array(
+	'autoincrement-desc' => 'یک قلاب متغیر است که متغیر افزاینده<nowiki>{{AUTOINCREMENT}}</nowiki>اضافه می کند',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author ZeiP

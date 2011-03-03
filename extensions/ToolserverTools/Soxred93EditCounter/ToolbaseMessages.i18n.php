@@ -391,6 +391,11 @@ $messages['gl'] = array(
 	'toolbase-autoedits-totalall' => 'Número total de edicións',
 	'toolbase-autoedits-pct' => 'Porcentaxe de edicións automáticas',
 	'toolbase-main-title' => 'Benvido!',
+	'toolbase-main-content' => 'Benvido ás ferramentas de X! Este conxunto de ferramentas está aínda en proceso de conversión á estrutura <a href="$1">Symfony</a>. Este proceso tardará un tempo, pero as ferramentas debería funcionar.
+
+Para ollar unha lista coas ferramentas executadas nestes intres, véxase a barra lateral dereita.
+
+Pódese informar dos erros en <a href="$2">Google Code</a>.',
 	'toolbase-main-404' => 'Non se atopou o ficheiro',
 	'toolbase-main-404-content' => 'Vaites! Non se atopou ningunha páxina!
 
