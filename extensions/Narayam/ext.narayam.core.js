@@ -225,7 +225,6 @@ $.narayam = new ( function() {
 	function updateSchemeFromSelect() {
 		var scheme = $( this ).val();
 		that.setScheme( scheme );
-		$.cookie( 'narayam-scheme', scheme, { 'path': '/', 'expires': 30 } );
 	}
 	
 	/* Public functions */
@@ -305,6 +304,7 @@ $.narayam = new ( function() {
 	this.setScheme = function( name ) {
 		if ( name in schemes ) {
 			currentScheme = schemes[name];
+			$.cookie( 'narayam-scheme', scheme, { 'path': '/', 'expires': 30 } );
 			$select.val( name );
 		}
 	};
@@ -372,6 +372,11 @@ $.narayam = new ( function() {
 		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnableByDefault' ) && enabledCookie !== '0' ) ) {
 			that.enable();
 		}
+		// Renew the narayam-enabled cookie. naraym-scheme is renewed by setScheme()
+		if ( enabledCookie ) {
+			$.cookie( 'narayam-enabled', enabledCookie, { 'path': '/', 'expires': 30 } );
+		}
+			
 	};
 	
 } )();
