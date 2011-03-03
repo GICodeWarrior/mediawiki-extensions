@@ -194,10 +194,9 @@ function getStaticSuggest( $name, $suggestions, $idColumns = 1, $value = 0, $lab
 }
 
 function getLanguageOptions( $languageIdsToExclude = array() ) {
-	global
-		$wgUser;
+	global $wgLang ;
 		
-	$userLanguage = $wgUser->getOption( 'language' );
+	$userLanguage = $wgLang->getCode();
 	$idNameIndex = getLangNames( $userLanguage );
 	
 	$result = array();
@@ -210,11 +209,8 @@ function getLanguageOptions( $languageIdsToExclude = array() ) {
 }
 	
 function getLanguageSelect( $name, $languageIdsToExclude = array() ) {
-	global
-		$wgUser;
-		
-	$userLanguage = $wgUser->getOption( 'language' );
-	$userLanguageId = getLanguageIdForCode( $userLanguage );
+	global $wgLang ;
+	$userLanguageId = getLanguageIdForCode( $wgLang->getCode() ) ;
 
 	return getSelect( $name, getLanguageOptions( $languageIdsToExclude ), $userLanguageId );
 }

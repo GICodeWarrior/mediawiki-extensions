@@ -5,10 +5,10 @@
  * @return array of language names for the user's language preference
  **/
 function getOwLanguageNames( $purge = false ) {
-	global $wgUser;
+	global $wgLang ;
 	static $owLanguageNames = null;
 	if ( is_null( $owLanguageNames ) && !$purge ) {
-		$owLanguageNames = getLangNames( $wgUser->getOption( 'language' ) );
+		$owLanguageNames = getLangNames( $wgLang->getCode() );
 	}
 	return $owLanguageNames;
 

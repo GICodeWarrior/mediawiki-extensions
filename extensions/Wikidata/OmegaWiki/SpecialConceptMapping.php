@@ -59,8 +59,8 @@ function wfSpecialConceptMapping() {
 
 		protected function ui() {
 
-			global $wgOut, $wgRequest, $wgUser, $wgDefinedMeaning;
-			$lang = $wgUser->getOption( "language" );
+			global $wgOut, $wgRequest, $wgLang, $wgDefinedMeaning;
+			$lang = $wgLang->getCode();
 			require_once( "forms.php" );
 			$wgOut->addHTML( wfMsgSc( "conceptmapping_uitext" ) );
 			$sets = wdGetDataSets();

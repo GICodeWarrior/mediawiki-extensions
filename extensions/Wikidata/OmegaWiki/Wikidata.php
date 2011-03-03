@@ -397,9 +397,9 @@ class DataSet {
 
 	// Fetch!
 	function fetchName() {
-		global $wgUser, $wdTermDBDataSet;
+		global $wgLang, $wdTermDBDataSet;
 		if ( $wdTermDBDataSet ) {
-			$userLanguage = $wgUser->getOption( 'language' );
+			$userLanguageId = $wgLang->getCode() ;
 			$spelling = getSpellingForLanguage( $this->dmId, $userLanguage, 'en', $wdTermDBDataSet );
 			if ( $spelling ) return $spelling;
 		}
