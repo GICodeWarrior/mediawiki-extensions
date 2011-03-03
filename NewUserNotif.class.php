@@ -87,11 +87,11 @@ class NewUserNotifier {
 	 */
 	private function makeSubject( $recipient, $user ) {
 		global $wgSitename;
-		$SubjectLine = "";
-		wfRunHooks( 'NewUserNotifSubject', array( &$this, &$SubjectLine, $wgSitename, $recipient, $user ) );
-		if (!strlen($SubjectLine) )
+		$subjectLine = "";
+		wfRunHooks( 'NewUserNotifSubject', array( &$this, &$subjectLine, $wgSitename, $recipient, $user ) );
+		if (!strlen($subjectLine) )
 			return wfMsgForContent( 'newusernotifsubj', $wgSitename );
-		return $SubjectLine;
+		return $subjectLine;
 	}
 
 	/**
@@ -102,9 +102,9 @@ class NewUserNotifier {
 	 */
 	private function makeMessage( $recipient, $user ) {
 		global $wgSitename, $wgContLang;
-		$MessageBody = "";
-		wfRunHooks( 'NewUserNotifBody', array( &$this, &$MessageBody, $wgSitename, $recipient, $user ) );
-		if (!strlen($MessageBody) )
+		$messageBody = "";
+		wfRunHooks( 'NewUserNotifBody', array( &$this, &$messageBody, $wgSitename, $recipient, $user ) );
+		if (!strlen($messageBody) )
 			return wfMsgForContent(
 				'newusernotifbody',
 				$recipient,
@@ -114,7 +114,7 @@ class NewUserNotifier {
 				$wgContLang->date( wfTimestampNow() ),
 				$wgContLang->time( wfTimestampNow() )
 			);
-		return $MessageBody;
+		return $messageBody;
 	}
 
 	/**
