@@ -773,22 +773,6 @@ function trim(value){
   return value;
 }
 
-function urlFieldChanged(urlField) {
-	var labelField = document.getElementById(stripSuffix(urlField.id, "url") + "label");
-	var url = urlField.value;
-
-	if (startsWith(url, "http://www.ncbi.nlm.nih.gov")  ) {
-		pubMedIdRec = ExtractText( url, "TermToSearch=", 0, "&ordinalpos", 0 );
-		if ( pubMedIdRec != null ){
-			labelField.value = getPubMedTitle(pubMedIdRec[1]);
-		}
-	}
-	else if ( IsNumeric( url ) ){
-		labelField.value = getPubMedTitle(trim(url));
-		urlField.value = "http://www.ncbi.nlm.nih.gov/sites/entrez?Db=pubmed&Cmd=ShowDetailView&TermToSearch=" + trim(url) + "&ordinalpos=1&itool=EntrezSystem2.PEntrez.Pubmed.Pubmed_ResultsPanel.Pubmed_RVDocSum";
-	}
-}
-
 // Knewco specific Javascript
 
 function GetOffset( text, Pattern, inclusive ){

@@ -662,7 +662,7 @@ function getLinkAttributeValuesEditor( ViewInformation $viewInformation, UpdateC
 		$linkEditor = new LinkEditor( $o->link, new SimplePermissionController( true ), true );
 	else {
 		$linkEditor = new RecordTableCellEditor( $o->link );
-		$linkEditor->addEditor( new ShortTextEditor( $o->linkURL, new SimplePermissionController( true ), true, "urlFieldChanged(this);" ) );
+		$linkEditor->addEditor( new ShortTextEditor( $o->linkURL, new SimplePermissionController( true ), true ) );
 		$linkEditor->addEditor( new ShortTextEditor( $o->linkLabel, new SimplePermissionController( true ), true ) );
 	}
 		
