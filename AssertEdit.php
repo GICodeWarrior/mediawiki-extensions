@@ -27,8 +27,11 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AssertEdit'] = $dir . 'AssertEdit.i18n.php';
 $wgAutoloadClasses['AssertEdit'] = $dir . 'AssertEdit_body.php';
+
 $wgHooks['AlternateEdit'][] = 'efAssertEditHook';
 $wgHooks['APIEditBeforeSave'][] = 'efAssertApiEditHook';
+$wgHooks['APIGetAllowedParams'][] = 'efAssertApiEditGetAllowedParams';
+$wgHooks['APIGetParamDescription'][] = 'efAssertApiEditGetParamDescription';
 
 function efAssertEditHook( $editpage ) {
 	global $wgOut, $wgRequest;
@@ -92,4 +95,35 @@ function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 	}
 	
 	return $pass;
+}
+ 
+function efAssertApiEditGetAllowedParams( &$module, &$params ) {
+	if ( !$module instanceof ApiEditPage ) {
+		return true;
+	}
+
+	$options = array_keys( AssertEdit::$msAssert );
+	$params['assert'][ApiBase::PARAM_TYPE] = $options;
+	$params['nassert'][ApiBase::PARAM_TYPE] = $options;
+
+	return true;
+}
+ 
+function efAssertApiEditGetParamDescription( &$module, &$desc ) {
+	if ( !$module instanceof ApiEditPage ) {
+		return true;
+	}
+
+	$options = array(
+		' true   - Always true; nassert=true will fail if the extension is installed.',
+		' false  - Always false; assert=false will fail if the extension is installed.',
+		' user   - Verify that bot is logged in, to prevent anonymous edits.',
+		' bot    - Verify that bot is logged in and has a bot flag.',
+		' exists - Verify that page exists. Could be useful from other extensions, i.e. adding nassert=exists to the inputbox extension.',
+		' test   - Verify that this wiki allows random testing. Defaults to false, but can be overridden in LocalSettings.php.'
+	);
+	$desc['assert'] = array_merge( array( 'Allows bots to make assertions.' ), $options );
+	$desc['nassert'] = array_merge( array( 'Allows bots to make negative assertions.' ), $options );
+
+	return true;
 }
