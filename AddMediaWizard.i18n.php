@@ -163,6 +163,13 @@ $messages['eu'] = array(
 	'addmediawizard-desc' => 'Gehitu media magoa, Kaltura eta Wikipedia Fundazioak lankidetzan garatua',
 );
 
+/** Persian (فارسی)
+ * @author Reza1615
+ */
+$messages['fa'] = array(
+	'addmediawizard-desc' => 'افزودن سهل آموز رسانه توسعه همکاری  کالتورا و بنیاد ویکی مدیا',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
