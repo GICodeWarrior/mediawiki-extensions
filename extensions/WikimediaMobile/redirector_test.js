@@ -48,7 +48,7 @@ var runTest = function(options, shouldRedirect) {
 
   if(((document.location != null) && (document.location.length > 0)) == shouldRedirect) {
     if(options.should_redirect_to && (document.location != options.should_redirect_to)) {
-      print("Should have been redirect to " + options.should_redirect_to)
+      print("Should have been redirected to " + options.should_redirect_to)
       print("Instead was sent to " + document.location)
       for(key in options)
       {
@@ -136,6 +136,9 @@ var testUserAgents = function() {
   shouldRedirect({user_agent: "Mozilla/5.0 (Linux; U; Android 2.2.1; en-us; Nexus One Build/FRG83) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"});
   // Android Tablet
   shouldIgnore({user_agent: "Mozilla/5.0 (Linux; U; Android 2.2.1; en-us; device Build/FRG83) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Safari/533.1"});
+
+  shouldIgnore({user_agent: "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; Media Center PC 6.0; InfoPath.3; MS-RTC LM 8; Zune 4.7"});
+  shouldIgnore({user_agent: "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0"})
 
   // Fake test strings
 
