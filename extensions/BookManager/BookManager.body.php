@@ -290,8 +290,8 @@ class BookManagerFunctions {
 		$basetext = ( $base !== '' ) ? Title::newFromText( $base )->getSubpageText(): '' ;
 		$prevtext = ( $prev !== '' ) ? Title::newFromText( $prev )->getSubpageText(): '' ; 
 		$nexttext = ( $next !== '' ) ? Title::newFromText( $next )->getSubpageText(): '' ; 
-
-		if ( $ns === 0 && self::isViewAction() ) {
+		$wgFeedbackNamespaces = array( NS_MAIN ); 
+		if ( $ns === $wgFeedbackNamespaces && self::isViewAction() ) {
 		 	$BookManager = wfMsgExt( "BookManager", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
 			$BookManagerTop = wfMsgExt( "BookManager-top", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
 			$BookManagerBottom = wfMsgExt( "BookManager-bottom", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
