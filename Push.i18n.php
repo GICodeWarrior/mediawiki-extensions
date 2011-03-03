@@ -112,6 +112,7 @@ $messages['qqq'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'push-desc' => 'Невялікае пашырэньне для распаўсюджваньня зьместу ў іншыя вікі',
@@ -174,6 +175,11 @@ $messages['be-tarask'] = array(
 	'push-special-obtaining-fileinfo' => '$1: Атрыманьне інфармацыі пра файл…',
 	'push-special-pushing-file' => '$1: Распаўсюджваньне файла $2…',
 	'push-special-return' => 'Распаўсюдзіць болей старонак',
+	'push-api-err-nocurl' => 'cURL не ўсталяваны.
+Усталюйце парамэтар $egPushDirectFileUploads у false на публічнай вікі, ці ўсталюйце cURL на прыватнай вікі.',
+	'push-api-err-nofilesupport' => 'Лякальная MediaWiki не падтрымлівае адпраўку файлаў.
+Для публічных вікі ўсталюйце парамэтар $egPushDirectFileUploads у значэньне false.
+На прыватныя вікі трэба накласьці заплату linkd з дакумэнтацыі Push, ці наўпрост абнавіць MediaWiki.',
 );
 
 /** Breton (Brezhoneg)
