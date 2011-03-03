@@ -89,9 +89,10 @@ var rules_x = [
 ];
 
 jQuery.narayam.addScheme( 'si-wijesekara', {
-    'namemsg': 'narayam-si-wijesekara',
-    'extended_keyboard': true,
-    'lookbackLength': 0,
-    'rules': rules,
-    'rules_x': rules_x
+	'namemsg': 'narayam-si-wijesekara',
+	'extended_keyboard': true,
+	'lookbackLength': 0,
+	'keyBufferLength': 0,
+	'rules': rules,
+	'rules_x': rules_x
 } ); 
