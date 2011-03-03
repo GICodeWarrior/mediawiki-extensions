@@ -89,8 +89,9 @@ var rules = [
 ];
 
 jQuery.narayam.addScheme( 'si-singlish', {
-    'namemsg': 'narayam-si-singlish',
-    'extended_keyboard': false,
-    'lookbackLength': 2,
-    'rules': rules
+	'namemsg': 'narayam-si-singlish',
+	'extended_keyboard': false,
+	'lookbackLength': 2,
+	'keyBufferLength': 0,
+	'rules': rules
 } ); 
