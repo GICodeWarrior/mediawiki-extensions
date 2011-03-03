@@ -417,6 +417,7 @@ $messages['bjn'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Ehsanulhb
  * @author Prometheus.pyrphoros
  */
 $messages['bn'] = array(
@@ -424,7 +425,7 @@ $messages['bn'] = array(
 	'youtubeauthsub-desc' => 'ব্যবহারকারীকে সরাসরি ইউটিউবে [[Special:YouTubeAuthSub|ভিডিও আপলোড]] করার অনুমতি দেয়',
 	'youtubeauthsub_info' => 'পাতায় যোগের জন্য কোন ভিডিও ইউটিউবে আপলোড করতে চাইলে, এই তথ্যগুলো প্রদান করুন:',
 	'youtubeauthsub_title' => 'শিরোনাম',
-	'youtubeauthsub_description' => 'বর্ণনা',
+	'youtubeauthsub_description' => 'বিবরণ',
 	'youtubeauthsub_password' => 'ইউটিউব শব্দচাবি',
 	'youtubeauthsub_username' => 'ইউটিউব ব্যবহারকারী নাম',
 	'youtubeauthsub_keywords' => 'মূলশব্দসমূহ',
