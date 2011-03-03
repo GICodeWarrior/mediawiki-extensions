@@ -25,4 +25,4 @@ Todo:
 * add an editor trigger on SVG images visible in regular page views
 * allow saving without closing the editor
 * autosave & recover drafts
-* editor toolbar button to open the editor with a fresh canvas and insert the saved file
+* allow choosing the filename before saving

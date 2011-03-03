@@ -19,7 +19,8 @@ $messages['en'] = array(
 	'svgedit-editor-close' => 'Cancel',
 	'svgedit-desc' => 'In-browser editing of SVG drawings with [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Edit drawing',
-	'svgedit-edit-tab-tooltip' => 'You can edit this SVG drawing in your browser'
+	'svgedit-edit-tab-tooltip' => 'You can edit this SVG drawing in your browser',
+	'svgedit-toolbar-insert' => 'SVG drawing'
 );
 
 /** Message documentation (Message documentation)
