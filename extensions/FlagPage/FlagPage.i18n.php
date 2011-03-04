@@ -27,6 +27,13 @@ Examples:
 	'flagpage-tab' => 'Flag'
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'flagpage-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -385,13 +392,26 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'flagpage' => 'Donn en Sigg makeere',
+	'flagpage-desc' => 'Määd et müjjelesch, Sigge met förjejovve Schabloone ze makeere.',
+	'flagpage-templatelist' => '<!--
+Donn heh den dä Sigg enndraare, wat för en Schabloone för et Makeere jebruch wääde künne.
+Beishpel:
+* [[Template:Quälle fähle|En dä Sigg sin nit jenooch Zitaate un Quelle jenannt.]]
+* [[Template:Unjerääsch|Di Sigg es wall nit jerääsch jenooch jeschrevve.]]
+* [[Template:Schmieß fott|Di Sigg sullt wall fott jeschmeße wääde.]]
+-->',
 	'flagpage-nopageselectedtitle' => 'Kein Sigg usjesöhk',
 	'flagpage-nopageselected' => 'Et es kein Sigg ußjesöhk woode.',
 	'flagpage-emptylisttitle' => 'Et sin_er kein Schabloone enjeresht.',
+	'flagpage-emptylist' => 'Do moss_en Leß met Schabloone enreeschte. Donn de Sigg [[{{ns:8}}:flagpage-templatelist]] dohdoför ändere..',
 	'flagpage-preview' => 'Vöraf_Aanseesh vun dä ußjesöhk Schabloone',
 	'flagpage-confirmsave' => 'Donn de Änderunge beshtääteje',
 	'flagpage-submitbutton' => 'Donn de Sigg met dä Schabloon faßhalde',
 	'flagpage-nonexistent' => 'En Digg „$1“ di jidd_et nit. Künnt sin, se es [{{fullurl:Special:Log|page=$1}} ömjenannt udder fottjeschmeße] woode.',
+	'flagpage-summary' => 'De Schabloon [[$1]] wood dobei jedonn met <i lang="en">FlagPage</i>.',
+	'flagpage-success' => '[[$1]] es op dä Sigg [[$2]] dobei jedonn woode.',
+	'flagpage-tab' => 'Makeere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

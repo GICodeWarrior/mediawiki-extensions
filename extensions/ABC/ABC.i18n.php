@@ -37,6 +37,13 @@ $messages['qqq'] = array(
 	'abcvorbis' => '{{optional}}',
 );
 
+/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+ * @author FRANELYA
+ */
+$messages['dtp'] = array(
+	'abcdownload' => 'Potuhuno manganu:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

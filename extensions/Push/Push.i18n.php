@@ -176,10 +176,24 @@ $messages['be-tarask'] = array(
 	'push-special-pushing-file' => '$1: Распаўсюджваньне файла $2…',
 	'push-special-return' => 'Распаўсюдзіць болей старонак',
 	'push-api-err-nocurl' => 'cURL не ўсталяваны.
-Усталюйце парамэтар $egPushDirectFileUploads у false на публічнай вікі, ці ўсталюйце cURL на прыватнай вікі.',
+Устанавіце парамэтар $egPushDirectFileUploads у false ў публічнай вікі, ці ўсталюйце cURL на прыватнай вікі.',
 	'push-api-err-nofilesupport' => 'Лякальная MediaWiki не падтрымлівае адпраўку файлаў.
-Для публічных вікі ўсталюйце парамэтар $egPushDirectFileUploads у значэньне false.
-На прыватныя вікі трэба накласьці заплату linkd з дакумэнтацыі Push, ці наўпрост абнавіць MediaWiki.',
+Для публічных вікі ўстанавіце парамэтар $egPushDirectFileUploads у значэньне false.
+У прыватных вікі трэба ўжыць выпраўленьне linkd з дакумэнтацыі Push, ці наўпрост абнавіць MediaWiki.',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'push-add-target' => 'Добавяне на цел',
+	'push-remote-pages' => 'Отдалечени страници',
+	'push-tab-last-edit' => 'Последна редакция от $1 на $2 в $3.',
+	'push-tab-inc-templates' => 'Включване на шаблоните',
+	'push-tab-inc-files' => 'Включване на вградените файлове',
+	'push-tab-files-override' => 'Следните файлове вече съществуват: $1',
+	'push-special-target-is' => 'Целево уики: $1',
+	'push-special-select-targets' => 'Целеви уикита:',
 );
 
 /** Breton (Brezhoneg)

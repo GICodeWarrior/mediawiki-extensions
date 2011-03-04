@@ -4213,6 +4213,7 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -4314,6 +4315,7 @@ $messages['he'] = array(
 	'configure-section-squid' => 'Squids',
 	'configure-section-cookie' => 'עוגיות',
 	'configure-section-performance' => 'ביצועים',
+	'configure-section-test' => 'בדיקות',
 	'configure-section-upload' => 'העלאה',
 	'configure-section-sharedupload' => 'העלאת קבצים משותפים',
 	'configure-section-mime' => 'סוגי MIME',
@@ -4331,7 +4333,6 @@ $messages['he'] = array(
 	'configure-section-externalauth' => 'אימות חיצוני',
 	'configure-section-feed' => 'הזנה',
 	'configure-section-job' => 'משימות',
-	'configure-section-extension' => 'הרחבות',
 	'configure-section-search' => 'חיפוש',
 	'configure-section-copyright' => 'זכויות יוצרים',
 	'configure-section-htcp' => 'שידור מרובב HTCP',
@@ -5591,6 +5592,7 @@ Assegnare a PHP il diritto di scrittura su di essa per utilizzare questa estensi
  * @author Broad-Sky
  * @author Fievarsty
  * @author Fryed-peach
+ * @author Ohgi
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -5685,6 +5687,7 @@ $messages['ja'] = array(
 	'configure-section-squid' => 'Squid',
 	'configure-section-cookie' => 'クッキー',
 	'configure-section-performance' => 'パフォーマンス',
+	'configure-section-test' => 'テスト',
 	'configure-section-upload' => 'アップロード',
 	'configure-section-sharedupload' => '共有アップロード',
 	'configure-section-mime' => 'MIMEタイプ',
@@ -5697,7 +5700,6 @@ $messages['ja'] = array(
 	'configure-section-externalauth' => '外部認証',
 	'configure-section-feed' => 'フィード',
 	'configure-section-job' => 'ジョブ',
-	'configure-section-extension' => '拡張機能',
 	'configure-section-search' => '検索',
 	'configure-section-copyright' => '著作権',
 	'configure-section-htcp' => 'HTCPマルチキャスト',
@@ -6159,6 +6161,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-section-proxy' => 'Zweschespheisher',
 	'configure-section-cookie' => '<i lang="en">Cookies</i>',
 	'configure-section-performance' => 'Dem System sing Leistung',
+	'configure-section-test' => 'Pröfunge',
 	'configure-section-upload' => 'Huhlaade',
 	'configure-section-sharedupload' => 'Gemeinsam Repositorijum',
 	'configure-section-mime' => 'MIME-Zoote',
@@ -6171,7 +6174,6 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-section-externalauth' => 'Zohjangßdaate prööfe vun ußerhallef',
 	'configure-section-feed' => 'Kanaal',
 	'configure-section-job' => 'Aufjabe',
-	'configure-section-extension' => 'Projramm-Zosätz',
 	'configure-section-search' => '{{int:search}}',
 	'configure-section-copyright' => 'Urhävver-Rääsch',
 	'configure-section-htcp' => '<i lang="en">HTCP multicast</i>',
@@ -9301,6 +9303,7 @@ $messages['ru'] = array(
 	'configure-section-proxy' => 'Прокси',
 	'configure-section-cookie' => 'Куки',
 	'configure-section-performance' => 'Производительность',
+	'configure-section-test' => 'Проверки',
 	'configure-section-upload' => 'Загрузка',
 	'configure-section-sharedupload' => 'Общие загрузки',
 	'configure-section-mime' => 'MIME-типы',
@@ -9313,7 +9316,6 @@ $messages['ru'] = array(
 	'configure-section-externalauth' => 'Внешняя аутентификация',
 	'configure-section-feed' => 'Канал',
 	'configure-section-job' => 'Работы',
-	'configure-section-extension' => 'Расширения',
 	'configure-section-search' => 'Поиск',
 	'configure-section-copyright' => 'Авторские права',
 	'configure-section-htcp' => 'HTCP-мультикаст',

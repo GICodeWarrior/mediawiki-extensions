@@ -23,15 +23,16 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'searchlog' => 'Журнал пошуку',
-	'searchlog-timeperiod' => 'Пазначце пэрыяд:',
-	'searchlog-entire' => 'Увесь журнал',
+	'searchlog' => 'Журнал пошукаў',
+	'searchlog-timeperiod' => 'Выберыце пэрыяд:',
+	'searchlog-entire' => 'Журнал цалкам',
 	'searchlog-phrase' => 'Шукаць фразу',
 	'searchlog-occurences' => 'Колькасьць трапленьняў за пэрыяд',
-	'right-searchlog-read' => 'Журнал пошуку',
+	'right-searchlog-read' => 'прагляд журнала пошукаў',
 );
 
 /** German (Deutsch)
@@ -108,12 +109,13 @@ $messages['nl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
 	'searchlog' => 'Registo de Pesquisas',
-	'searchlog-desc' => 'Regista a utilização da caixa de pesquisa e permite criar relatórios de totais de termos usados durante períodos de tempo especificados',
-	'searchlog-cantopen' => 'Não foi possível abrir ficheiro de registo <tt>$1</tt>',
+	'searchlog-desc' => 'Regista a utilização da caixa de pesquisa e permite criar relatórios de totais dos termos usados durante períodos de tempo especificados',
+	'searchlog-cantopen' => 'Não foi possível abrir o ficheiro de registo <tt>$1</tt>',
 	'searchlog-heading' => 'Termos de pesquisa usados durante o período $1',
 	'searchlog-unicode' => 'Mostrar unicode puro',
 	'searchlog-timeperiod' => 'Selecione o período de tempo:',
