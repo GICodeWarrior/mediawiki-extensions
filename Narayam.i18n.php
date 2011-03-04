@@ -41,20 +41,29 @@ $messages['en'] = array(
  * @author Purodha
  * @author Raymond
  * @author Shijualex
+ * @author Waldir
  */
 $messages['qqq'] = array(
 	'narayam-desc' => '{{desc}}',
 	'narayam-toggle-ime' => 'Switch input method ($1)',
 	'narayam-help-page' => '{{doc-important|Do not translate "Help:".}}',
-	'narayam-checkbox-tooltip' => 'Toggle the input method, that is, the interpretation of keystrokes, between "standard" and "interpreted by Narayam".',
-	'narayam-ml' => '',
-	'narayam-ml-inscript' => '',
-	'narayam-sa' => 'Transliteration scheme in Sanskrit.',
-	'narayam-ta99' => 'Tamil 99 keyboard layout of Tamil language.',
-	'narayam-ta' => 'Transliteration scheme in Tamil language.',
-	'narayam-bn-avro' => 'Avro keyboard layout of Bengali language.',
-	'narayam-bn-inscript' => 'InScript keyboard layout of Bengali language.',
-	'narayam-bn-nkb' => 'National keyboard layout of Bengali language.',
+	'narayam-checkbox-tooltip' => 'Toggle the input method —that is, the interpretation of keystrokes— between "standard" and "interpreted by Narayam".',
+	'narayam-hi-inscript' => '[[w:InScript|InScript]] keyboard layout for the Standard Hindi language.',
+	'narayam-kn' => 'Transliteration scheme for the Kannada language.',
+	'narayam-kn-inscript' => '[[w:InScript|InScript]] keyboard layout for the Kannada language.',
+	'narayam-ml' => 'Transliteration scheme for the Malayalam language.',
+	'narayam-ml-inscript' => '[[w:InScript|InScript]] keyboard layout for the Malayalam language.',
+	'narayam-or' => 'Transliteration scheme for the Oriya language.',
+	'narayam-or-inscript' => '[[w:InScript|InScript]] keyboard layout for the Oriya language.',
+	'narayam-sa' => 'Transliteration scheme for the Sanskrit language.',
+	'narayam-sa-inscript' => '[[w:InScript|InScript]] keyboard layout for the Sanskrit language.',
+	'narayam-si-singlish' => 'Singlish keyboard layout for the Sinhala language.',
+	'narayam-si-wijesekara' => 'Wijesekara keyboard layout for the Sinhala language.',
+	'narayam-ta99' => 'Tamil 99 keyboard layout for the Tamil language.',
+	'narayam-ta' => 'Transliteration scheme for the Tamil language.',
+	'narayam-bn-avro' => 'Avro keyboard layout for the Bengali language.',
+	'narayam-bn-inscript' => '[[w:InScript|InScript]] keyboard layout for the Bengali language.',
+	'narayam-bn-nkb' => 'National (Jatiyo) keyboard layout for the Bengali language.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -125,15 +134,17 @@ $messages['de'] = array(
 	'narayam-kn-inscript' => 'Kannada (InScript)',
 	'narayam-ml' => 'Malayalam (Transliteration)',
 	'narayam-ml-inscript' => 'Malayalam (InScript)',
+	'narayam-or' => 'Oriya (Transliteration)',
+	'narayam-or-inscript' => 'Oriya (InScript)',
 	'narayam-sa' => 'Sanskrit (Transliteration)',
 	'narayam-sa-inscript' => 'Sanskrit (InScript)',
-	'narayam-si-singlish' => 'Sinhala (Singlsih)',
-	'narayam-si-wijesekara' => 'Sinhala (Wijesekara)',
+	'narayam-si-singlish' => 'Singhalesisch (Singlish)',
+	'narayam-si-wijesekara' => 'Singhalesisch (Wijesekara)',
 	'narayam-ta99' => 'Tamil (Tamil 99)',
 	'narayam-ta' => 'Tamil (Transliteration)',
-	'narayam-bn-avro' => 'Bengali (Avro)',
-	'narayam-bn-inscript' => 'Bengali (InScript)',
-	'narayam-bn-nkb' => 'Bengali (NKB)',
+	'narayam-bn-avro' => 'Bengalisch (Avro)',
+	'narayam-bn-inscript' => 'Bengalisch (InScript)',
+	'narayam-bn-nkb' => 'Bengalisch (NKB)',
 );
 
 /** French (Français)
@@ -169,12 +180,13 @@ $messages['he'] = array(
 );
 
 /** Upper Sorbian (Hornjoserbsce)
+ * @author McDutchie
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'narayam-desc' => 'Zmóžnja swójske zapodawanske metody za zapodawanske pola přidać',
 	'narayam-toggle-ime' => 'Zapodawansku metodu přepinać ($1)',
-	'narayam-help-page' => 'Help: Zapodaće',
+	'narayam-help-page' => 'Help:Zapodaće',
 	'narayam-checkbox-tooltip' => 'Zapodawansku metodu za- a wupinać',
 	'narayam-hi-inscript' => 'Hindi InScript',
 	'narayam-kn' => 'Transliteracija kannady',
@@ -200,20 +212,22 @@ $messages['ia'] = array(
 	'narayam-toggle-ime' => 'Pro alternar MI ($1)',
 	'narayam-help-page' => 'Help:Dactylographia',
 	'narayam-checkbox-tooltip' => 'Activar e disactivar le methodo de entrata',
-	'narayam-hi-inscript' => 'InScript hindi',
-	'narayam-kn' => 'Translitteration kannada',
-	'narayam-kn-inscript' => 'InScript kannada',
-	'narayam-ml' => 'Translitteration malayalam',
-	'narayam-ml-inscript' => 'InScript malayalam',
-	'narayam-sa' => 'Translitteration sanscrite',
-	'narayam-sa-inscript' => 'InScript sanscrite',
-	'narayam-si-singlish' => 'Sinhala Singlsih',
-	'narayam-si-wijesekara' => 'Sinhala Wijesekara',
+	'narayam-hi-inscript' => 'Hindi (InScript)',
+	'narayam-kn' => 'Translitteration in kannada',
+	'narayam-kn-inscript' => 'Kannada (InScript)',
+	'narayam-ml' => 'Translitteration in malayalam',
+	'narayam-ml-inscript' => 'Malayalam (InScript)',
+	'narayam-or' => 'Translitteration in oriya',
+	'narayam-or-inscript' => 'Oriya (InScript)',
+	'narayam-sa' => 'Translitteration in sanscrito',
+	'narayam-sa-inscript' => 'Sanscrito (InScript)',
+	'narayam-si-singlish' => 'Cingalese (Singlish)',
+	'narayam-si-wijesekara' => 'Cingalese (Wijesekara)',
 	'narayam-ta99' => 'Tamil99',
-	'narayam-ta' => 'Translitteration tamil',
-	'narayam-bn-avro' => 'Avro bengalese',
-	'narayam-bn-inscript' => 'InScript bengalese',
-	'narayam-bn-nkb' => 'NKB bengalese',
+	'narayam-ta' => 'Translitteration in tamil',
+	'narayam-bn-avro' => 'Bengalese (Avro)',
+	'narayam-bn-inscript' => 'Bengalese (InScript)',
+	'narayam-bn-nkb' => 'Bengalese (NKB)',
 );
 
 /** Colognian (Ripoarisch)
@@ -262,6 +276,7 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Junaid P V
+ * @author Junaidpv
  * @author Vssun
  */
 $messages['ml'] = array(
@@ -269,6 +284,8 @@ $messages['ml'] = array(
 	'narayam-toggle-ime' => 'ഇൻപുട്ട് മെത്തേഡ് ($1)',
 	'narayam-help-page' => 'Help:എഴുത്ത്',
 	'narayam-checkbox-tooltip' => 'ഇൻപുട്ട് മെത്തേഡ് നിയന്ത്രിക്കാൻ ഇതുപയോഗിക്കുക',
+	'narayam-hi-inscript' => 'ഹിന്ദി ഇൻസ്ക്രിപ്റ്റ്',
+	'narayam-kn' => 'കന്നഡ ലിപ്യന്തരണം',
 	'narayam-ml' => 'മലയാളം ലിപ്യന്തരണം',
 	'narayam-ml-inscript' => 'മലയാളം ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-sa' => 'സംസ്കൃതം ലിപ്യന്തരണം',
@@ -293,9 +310,11 @@ $messages['nl'] = array(
 	'narayam-kn-inscript' => 'Kannada InScript',
 	'narayam-ml' => 'Transliteratie in Malayalam',
 	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-or' => 'Transliteratie in Oriya',
+	'narayam-or-inscript' => 'Oriya InScript',
 	'narayam-sa' => 'Transliteratie in Sanskriet',
 	'narayam-sa-inscript' => 'Sanskrit InScript',
-	'narayam-si-singlish' => 'Singalees Singlsih',
+	'narayam-si-singlish' => 'Singalees Singlish',
 	'narayam-si-wijesekara' => 'Singalees Wijesekara',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Transliteratie in Tamil',
@@ -304,7 +323,32 @@ $messages['nl'] = array(
 	'narayam-bn-nkb' => 'Bengaals NKB',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'narayam-help-page' => 'Help:Digitação',
+	'narayam-hi-inscript' => 'InScript para hindi',
+	'narayam-kn' => 'Transliteração do canarim',
+	'narayam-kn-inscript' => 'InScript para canarês',
+	'narayam-ml' => 'Transliteração do malaiala',
+	'narayam-ml-inscript' => 'InScript para malaiala',
+	'narayam-or' => 'Transliteração do oriá',
+	'narayam-or-inscript' => 'InScript para oriá',
+	'narayam-sa' => 'Transliteração do sânscrito',
+	'narayam-sa-inscript' => 'InScript para sânscrito',
+	'narayam-si-singlish' => 'Singlish para cingalês',
+	'narayam-si-wijesekara' => 'Wijesekara para cingalês',
+	'narayam-ta99' => 'Tamil99 para tâmil',
+	'narayam-ta' => 'Transliteração do tâmil',
+	'narayam-bn-avro' => 'Avro para bengali',
+	'narayam-bn-inscript' => 'InScript para bengali',
+	'narayam-bn-nkb' => 'NKB para bengali',
+);
+
 /** Russian (Русский)
+ * @author McDutchie
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
