@@ -8,11 +8,16 @@ if ( mw.config.get( 'wgVectorSectionEditLinksBucketTest', false ) ) {
 	if ( bucket === null ) {
 		// Percentage chance of being tracked
 		var odds = Math.min( 100, Math.max( 0,
-				Number( mw.config.get( 'wgVectorSectionEditLinksLotteryOdds', 0 ) )
+			Number( mw.config.get( 'wgVectorSectionEditLinksLotteryOdds', 0 ) )
 		) );
 		// 0 = not tracked, 1 = tracked with old version, 2 = tracked with new version
 		bucket = ( Math.random() * 100 ) < odds ? Number( Math.random() < 0.5 ) + 1 : 0;
 		$.cookie( 'ext.vector.sectionEditLinks-bucket', bucket );
+		// If we are going to track this person from now on, let's also track which bucket we put
+		// them into and when
+		if ( bucket > 0 && 'trackActionWithInfo' in $ ) {
+			$.trackActionWithInfo( 'ext.vector.sectionEditLinks-bucket', bucket );
+		}
 	}
 }
 if ( bucket ) {
