@@ -267,6 +267,7 @@ $messages['ksh'] = array(
 	'svgedit-desc' => 'Määd et müjjelesch, Datteije em SVG-Fommaat met <i lang="en">[http://code.google.com/p/svg-edit/ SVG-edit]</i> ze beärbeide.',
 	'svgedit-edit-tab' => 'Zeichnung ändere',
 	'svgedit-edit-tab-tooltip' => 'He di Dattei med en Zeishnung em SVG-Fommaat kam_mer em Brauser ändere.',
+	'svgedit-toolbar-insert' => 'En Zeishnong em SVG-Fommaat',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -292,6 +293,7 @@ $messages['mk'] = array(
 	'svgedit-desc' => 'Уредување на SVG-цртежи во самиот прелистувач со [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Уреди цртеж',
 	'svgedit-edit-tab-tooltip' => 'Можете да го уредите овој SVG-цртеж во прелистувачот',
+	'svgedit-toolbar-insert' => 'SVG-цртеж',
 );
 
 /** Dutch (Nederlands)
@@ -360,6 +362,7 @@ $messages['pt'] = array(
 	'svgedit-desc' => 'Edição de desenhos SVG no próprio browser, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Editar desenho',
 	'svgedit-edit-tab-tooltip' => 'Você pode editar este desenho SVG no seu navegador',
+	'svgedit-toolbar-insert' => 'Desenho SVG',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -389,6 +392,7 @@ $messages['ru'] = array(
 	'svgedit-desc' => 'Редактирование SVG-изображений в браузере с помощью [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Править рисунок',
 	'svgedit-edit-tab-tooltip' => 'Вы можете редактировать этот SVG-рисунок в вашем браузере',
+	'svgedit-toolbar-insert' => 'Рисование SVG',
 );
 
 /** Slovenian (Slovenščina)
