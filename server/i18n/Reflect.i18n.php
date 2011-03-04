@@ -424,6 +424,16 @@ De Zusammenfassung es: „$5“.
 Do kanns nohloore, of dat esu reschtesch es, indämm dat De <$4> oprööfs.
 
 Falls dat e Meßverschtändnes wohr, kanns De dat kloh schtelle.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Dinge Beidraach wood {{GENDER:$2|vum|vum|vun däm Metmaacher|vun der|vum}} $2 zosammejefaß',
+	'reflect-responded' => 'Dach $1,
+
+{{GENDER:$2|Dä|Et|Dä Metmaacher|De|Dat}} $2 hät op Ding Zosammefassong en {{GENDER:$2|singem|singem|däm singem|ierem|singem}} Beidraach jeschrevve:
+„$5“
+
+Ding Zosammefassong wohr: „$6“
+
+Jangk op di Sigg <$4> wann De di Antwoot em Zosammehang lässe wells.',
+	'reflect-responded-subject' => '[{{SITENAME}}] {{GENDER:$2|Dä|Et|Dä Metmaacher|De|Dat}} $2 hät op Ding Zosammefassong jeantwoot.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
