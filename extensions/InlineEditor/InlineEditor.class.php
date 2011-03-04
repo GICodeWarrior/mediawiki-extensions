@@ -15,6 +15,7 @@ class InlineEditor {
 	private $editWarning;           /// < boolean that shows if the editWarning message of the Vector Extension is enabled
 	private $article;               /// < Article object to edit
 	private $extendedEditPage;      /// < ExtendedEditPage object we're using to handle editor logic
+	private $intro;                 /// < Intro message(s) that should be displayed on top
 
 	/**
 	 * Main entry point, hooks into MediaWikiPerformAction.
@@ -163,7 +164,7 @@ class InlineEditor {
 	 */
 	public static function ajaxPreview( $json, $pageName ) {
 		$title   = Title::newFromText( $pageName );
-		$article = Article::newFromId( $title->getArticleId() );
+		$article = new Article( $title );
 
 		$editor = new InlineEditor( $article );
 		return $editor->preview( $json );
@@ -213,7 +214,7 @@ class InlineEditor {
 
 		// try to initialise, or else return false, which will spawn an 'advanced page' notice
 		$this->extendedEditPage = new ExtendedEditPage( $this->article );
-		if ( $this->extendedEditPage->initInlineEditor() ) {
+		if ( $this->extendedEditPage->initInlineEditor( $this ) ) {
 			// IMPORTANT: if the page was being saved, the script has been terminated by now!!
 			
 			// have the different kind of editors register themselves
@@ -235,6 +236,7 @@ class InlineEditor {
 			$this->renderInitialState( $output, $text );
 			$this->renderScroll( $output, $parserOutput );
 			$this->renderEditWarning( $output );
+			$this->renderOpenFullEditor( $output );
 			
 			// hook into SiteNoticeBefore to display the two boxes above the title
 			// @todo: fix this in core, make sure that anything can be inserted above the title, outside #siteNotice
@@ -271,6 +273,14 @@ class InlineEditor {
 	}
 	
 	/**
+	 * Set the intro message(s) that should be displayed on top of the page.
+	 * @param $intro String
+	 */
+	public function setIntro( $intro ) {
+		$this->intro = $intro;
+	}
+	
+	/**
 	 * Add the preference in the user preferences
 	 * @param $user
 	 * @param $preferences
@@ -290,7 +300,7 @@ class InlineEditor {
 	 *
 	 * @param $output OutputPage
 	 */
-	private function renderScripts( $output ) {
+	private function renderScripts( OutputPage $output ) {
 		// include the required JS and CSS files
 		$output->addModules( array( 'jquery.inlineEditor', 'jquery.inlineEditor.editors.basic' ) );
 		
@@ -313,7 +323,7 @@ class InlineEditor {
 	 * @param $output OutputPage
 	 * @param $text InlineEditorText Use this text object to generate the initial state
 	 */
-	private function renderInitialState( $output, $text ) {
+	private function renderInitialState( OutputPage $output, InlineEditorText $text ) {
 		// convert the text object into an initial state to send
 		$initial = InlineEditorText::initialState( $text );
 		
@@ -333,7 +343,7 @@ class InlineEditor {
 	 * @param $output OutputPage
 	 * @param $parserOutput ParserOutput
 	 */
-	private function renderScroll( $output, $parserOutput ) {
+	private function renderScroll( OutputPage $output, ParserOutput $parserOutput ) {
 		$scrollAnchor = $this->getScrollAnchor( $parserOutput );
 		if( $scrollAnchor !== null ) {
 			$output->addInlineScript(
@@ -350,11 +360,24 @@ class InlineEditor {
 	 * @param $output OutputPage
 	 * @param $parserOutput ParserOutput
 	 */
-	private function renderEditWarning( $output ) {
+	private function renderEditWarning( OutputPage $output ) {
 	  	if ( $this->editWarning ) {
 			$output->addInlineScript(
 				'jQuery( document ).ready( function() {
 					jQuery.inlineEditor.enableEditWarning();
+				} );'
+			);	
+		}
+	}
+	
+	/**
+	 * On new pages, open the editor right away.
+	 */
+	private function renderOpenFullEditor( OutputPage $output ) {
+		if ( !$this->article->exists() ) {
+			$output->addInlineScript(
+				'jQuery( document ).ready( function() {
+					jQuery.inlineEditor.show( "inline-editor-root" );
 				} );'
 			);	
 		}
@@ -405,7 +428,7 @@ class InlineEditor {
 	 * @param $siteNotice string
 	 */
 	public function siteNoticeBefore( &$siteNotice ) {
-		$siteNotice = $this->renderEditBox();
+		$siteNotice = $this->renderIntroBox() . $this->renderEditBox();
 		return false;
 	}
 
@@ -431,7 +454,12 @@ class InlineEditor {
 	 * @return string HTML
 	 */
 	private function renderEditBox() {
-		$top  = wfMsgExt( 'inline-editor-editbox-top', 'parseinline' );
+		if( $this->article->exists() ) {
+			$top  = wfMsgExt( 'inline-editor-editbox-top', 'parseinline' );
+		}
+		else {
+			$top  = wfMsgExt( 'inline-editor-editbox-top-new', 'parseinline' );
+		}
 		$top .= '<hr/>';
 
 		$summary  = wfMsgExt( 'inline-editor-editbox-changes-question', 'parseinline' );
@@ -458,5 +486,11 @@ class InlineEditor {
 
 
 		return Html::rawElement( 'div', array( 'class' => 'editbox' ), $form );
+	}
+	
+	private function renderIntroBox() {
+		if( strlen( $this->intro ) <= 0 ) return '';
+		
+		return Html::rawElement( 'div', array( 'class' => 'introbox' ), $this->intro );
 	}
 }

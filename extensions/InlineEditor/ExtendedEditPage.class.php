@@ -10,7 +10,7 @@ class ExtendedEditPage extends EditPage {
 	 * Inits the edit page for the InlineEditor.
 	 * This is largely a copy-paste from EditPage::edit(), with some specific changes.
 	 */
-	public function initInlineEditor() {
+	public function initInlineEditor( $inlineEditor ) {
 		global $wgRequest, $wgOut;
 		$this->importFormData( $wgRequest );
 
@@ -65,10 +65,8 @@ class ExtendedEditPage extends EditPage {
 		$wgOut->clearHTML();
 		if ( $this->formtype == 'initial' || $this->firsttime ) {
 			$this->showIntro();
-			if ( $wgOut->getHTML() != '' ) {
-				$wgOut->clearHTML();
-				return false;
-			}
+			$inlineEditor->setIntro( $wgOut->getHTML() );
+			$wgOut->clearHTML();
 		}
 		
 		if ( 'initial' == $this->formtype || 'preview' == $this->formtype || $this->firsttime ) {

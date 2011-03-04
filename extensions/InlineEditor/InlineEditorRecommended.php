@@ -23,4 +23,3 @@ require_once( dirname(__FILE__) . "/MediaEditor/MediaEditor.php" );
 require_once( dirname(__FILE__) . "/TemplateEditor/TemplateEditor.php" );
 require_once( dirname(__FILE__) . "/ParagraphEditor/ParagraphEditor.php" );
 require_once( dirname(__FILE__) . "/SectionEditor/SectionEditor.php" );
-require_once( dirname(__FILE__) . "/FullEditor/FullEditor.php" );

@@ -27,6 +27,7 @@ class InlineEditorText implements Serializable {
 	 */
 	public function __construct( Article $article ) {
 		$this->article = $article;
+		$this->wikiOriginal = '';
 	}
 	
 	/**
@@ -57,7 +58,7 @@ class InlineEditorText implements Serializable {
 	public function getPartialParserOutput() {
 		$this->process();
 		
-		if( $this->changedNode != $this->root ) {
+		if( isset( $this->previous ) && $this->changedNode != $this->root ) {
 			$markedWiki = $this->changedNode->render();
 			if( wfRunHooks( 'InlineEditorPartialBeforeParse', array( &$markedWiki ) ) ) {
 				$output = $this->parse( $markedWiki );
@@ -67,7 +68,7 @@ class InlineEditorText implements Serializable {
 			}
 		}
 		
-		return array( 'id' => $this->root->getId(), 'html' => $this->parse( $this->root->render() )->getText() );
+		return array( 'id' => $this->root->getId(), 'html' => $this->parseRoot()->getText() );
 	}
 	
 	/**
@@ -80,7 +81,7 @@ class InlineEditorText implements Serializable {
 	 */
 	public function getFullParserOutput() {
 		$this->process();
-		return $this->parse( $this->root->render() );
+		return $this->parseRoot();
 	}
 	
 	/**
@@ -90,10 +91,13 @@ class InlineEditorText implements Serializable {
 	public function getTexts() {
 		$this->process();
 		
-		$texts = array();
-		foreach( $this->markings as $marking ) {
-			$texts[$marking->getId()] = substr( $this->wikiOriginal, $marking->getStart(), $marking->getLength() );
+		foreach( $this->markings as $id => $marking ) {
+			$texts[$id] = substr( $this->wikiOriginal, $marking->getStart(), $marking->getLength() );
+			
+			// force an empty string, as substr returns 'false'
+			if( !$texts[$id] ) $texts[$id] = '';
 		}
+		
 		return $texts;
 	}
 	
@@ -129,7 +133,7 @@ class InlineEditorText implements Serializable {
 		if( $offset != 0) {
 			foreach( $this->markings as $id => $marking ) {
 				// if the marking is strictly after the edited marking, shift both start and end positions
-				if( $marking->getStart() >= $end ) {
+				if( $marking->getStart() > $end ) {
 					$marking->setStart( $marking->getStart() + $offset );
 					$marking->setEnd( $marking->getEnd() + $offset );
 				}
@@ -163,6 +167,16 @@ class InlineEditorText implements Serializable {
 	}
 	
 	/**
+	 * Give special treatment to parsing the root. Add the root divs only after parsing
+	 * to make sure they survive the parsing.
+	 */
+	protected function parseRoot() {
+		$output = $this->parse( $this->root->renderInside() );
+		$output->setText( $this->root->renderStartTag() . $output->getText() . $this->root->renderEndTag() );
+		return $output;
+	}
+	
+	/**
 	 * Have the wikitext marked by different extensions by calling the 'InlineEditorMark' hook.
 	 * After that, tries to match previous markings against the new markings, and tries to preserve
 	 * the previous markings, while growing $this->editedPiece if needed.
@@ -176,7 +190,7 @@ class InlineEditorText implements Serializable {
 		wfRunHooks( 'InlineEditorMark', array( &$this ) );
 		
 		// sort the markings while preserving the keys (ids)
-		uasort( $this->markings, 'InlineEditorText::sortByStartAndLength' );
+		uasort( $this->markings, 'InlineEditorText::sortByStartLengthLevel' );
 		
 		// collapse markings
 		$this->collapseMarkings();
@@ -193,7 +207,14 @@ class InlineEditorText implements Serializable {
 		if( isset( $this->root ) ) return; 
 		
 		$this->mark();
-		$this->root = $this->buildTree( $this->markings );
+		
+		// add the root marking to the list after building the tree,
+		// so it will get in the list of markings, but isn't duplicated in the
+		// tree
+		$rootMarking = new InlineEditorRoot( $this->wikiOriginal );
+		$this->root = $this->buildTree( $this->markings, $rootMarking );
+		$this->markings[$rootMarking->getId()] = $rootMarking;
+		
 		$this->changedNode = $this->findChangedNode();
 		$this->applyLastEditHighlight();
 	}
@@ -249,11 +270,14 @@ class InlineEditorText implements Serializable {
 	 */
 	protected function matchPreviousMarkings() {
 		// abort if there is nothing to match
-		if( empty( $this->previous ) ) return;
+		if( !isset( $this->previous ) ) return;
+		
+		// don't use the root of the previous markings
+		unset( $this->previous['inline-editor-root'] );
 		
 		// sort the previous markings, while *re-keying* to natural numbers (0, 1, 2, ...)
 		// this is necessary to be able to run through the array using an integer pointer
-		usort( $this->previous, 'InlineEditorText::sortByStartAndLength' );
+		usort( $this->previous, 'InlineEditorText::sortByStartLengthLevel' );
 		
 		// point to the start of the previous markings list
 		$indexPrevious = 0;
@@ -267,7 +291,7 @@ class InlineEditorText implements Serializable {
 			while( isset( $this->previous[$indexPrevious] ) ) {
 				$previous = $this->previous[$indexPrevious];
 				
-				switch( self::sortByStartAndLength( $previous, $marking ) ) {
+				switch( self::sortByStartLengthLevel( $previous, $marking ) ) {
 					case 1:
 						// if we've moved past the current marking, break, mismatch, and go to the next current marking
 						break(2);
@@ -304,11 +328,12 @@ class InlineEditorText implements Serializable {
 	 * Build a tree from an array of sorted (!) markings.
 	 * 
 	 * @param $markingsSorted array A sorted array of InlineEditorMarking objects.
-	 * @return InlineEditorRoot
+	 * @param $rootMarking InlineEditorRoot A root marking, not included in the list of sorted markings
+	 * @return InlineEditorNode
 	 */
-	protected function buildTree( array $markingsSorted ) {
+	protected function buildTree( array $markingsSorted, InlineEditorRoot $rootMarking ) {
 		// create the root
-		$root = new InlineEditorRoot( $this->wikiOriginal );
+		$root = new InlineEditorNode( $this->wikiOriginal, $rootMarking );
 		
 		// $workingNode is the node we're trying to add children to
 		// initialise it to the root node
@@ -373,10 +398,7 @@ class InlineEditorText implements Serializable {
 		// find the markings contained in $this->editedPiece and mark them
 		$children = $this->root->findBestChildren( $this->editedPiece );
 		foreach( $children as $child ) {
-			// don't mark if somehow root appears, as it has no marking attached
-			if( $child != $this->root ) {
-				$child->getMarking()->addClasses( 'lastEdit edited' );
-			}
+			$child->getMarking()->addClasses( 'lastEdit edited' );
 		}
 	}
 	
@@ -389,7 +411,7 @@ class InlineEditorText implements Serializable {
 	 * @param $b InlineEditorMarking
 	 * @return int
 	 */
-	private static function sortByStartAndLength( $a, $b ) {
+	private static function sortByStartLengthLevel( $a, $b ) {
 		if( $a->getStart() == $b->getStart() ) {
 			if( $a->getLength() == $b->getLength() ) {
 				if( $a->getLevel() == $b->getLevel() ) {

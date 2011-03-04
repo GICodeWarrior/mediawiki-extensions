@@ -159,6 +159,21 @@
 	},
 	
 	/**
+	 * Show the interface for a particular element.
+	 * @return Boolean Whether or not showing the interface was successful.
+	 */
+	show: function( id ) {
+		// disable the existing editing field if necessary
+		$.inlineEditor.editors.basic.cancel();
+		
+		// try the show function of all editors
+		for( var optionNr in $.inlineEditor.editors ) {
+			if( $.inlineEditor.editors[optionNr].show( id ) ) return true;
+		}
+		return false;
+	},
+	
+	/**
 	 * Submit event, adds the json to the hidden field
 	 */
 	submit: function( event ) {

@@ -41,8 +41,7 @@ class InlineEditorMarking extends InlineEditorPiece {
 		$this->id          = self::uniqueId();
 		
 		$this->classes     = array();
-		$this->addClasses( $classes );
-		
+		$this->addClasses( $classes );	
 	}
 	
 	/**
