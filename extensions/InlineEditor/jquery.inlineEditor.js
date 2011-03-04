@@ -5,9 +5,10 @@
 ( function( $ ) { $.inlineEditor = {
 	editors: {},
 	
-	states: [],
-	currentState: 0,
-	lastState: 0,
+	states: [], // history of all the states (HTML and original wikitexts)
+	currentState: 0, // state that is currently viewed
+	lastState: 0, // last state in the history
+	publishing: false, // whether or not currently publishing
 	
 	/**
 	 * Adds the initial state from the current HTML and a wiki string.
@@ -160,7 +161,9 @@
 	/**
 	 * Submit event, adds the json to the hidden field
 	 */
-	submit: function( event ) {		
+	submit: function( event ) {
+		$.inlineEditor.publishing = true;
+		
 		// get the wikitext from the state as it's currently on the screen
 		var data = {
 				'object': $.inlineEditor.states[$.inlineEditor.currentState].object
@@ -176,6 +179,16 @@
 	 */
 	publish: function() {
 		$( '#editForm' ).submit();
+	},
+	
+	warningMessage: function( ) {	
+		if ( $.inlineEditor.lastState > 0 && !$.inlineEditor.publishing ) {
+			return mediaWiki.msg( 'vector-editwarning-warning' );
+		}
+	},
+	
+	enableEditWarning: function( ) {
+		window.onbeforeunload = $.inlineEditor.warningMessage;
 	},
 	
 	/**

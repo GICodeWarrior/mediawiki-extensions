@@ -59,9 +59,9 @@ class InlineEditorText implements Serializable {
 		
 		if( $this->changedNode != $this->root ) {
 			$markedWiki = $this->changedNode->render();
-			if( wfRunHooks( 'InlineEditorPartialBeforeParse', array( $markedWiki ) ) ) {
+			if( wfRunHooks( 'InlineEditorPartialBeforeParse', array( &$markedWiki ) ) ) {
 				$output = $this->parse( $markedWiki );
-				if( wfRunHooks( 'InlineEditorPartialAfterParse', array( $output ) ) ) {
+				if( wfRunHooks( 'InlineEditorPartialAfterParse', array( &$output ) ) ) {
 					return array( 'id' => $this->changedNode->getId(), 'html' => $output->getText() );
 				}
 			}
