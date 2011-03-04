@@ -45,13 +45,7 @@ class InlineEditor {
 			self::$fallbackReason = self::REASON_BROWSER;
 			return true;
 		}
-
-		// terminate if we consider this page 'advanced'
-		if ( self::isAdvancedPage( $article, $title ) ) {
-			self::$fallbackReason = self::REASON_ADVANCED;
-			return true;
-		}
-
+		
 		// start the session if needed
 		if ( session_id() == '' ) {
 			wfSetupSession();
@@ -82,6 +76,10 @@ class InlineEditor {
 		else {
 			// if rendering fails for some reason, terminate and show the advanced page notice
 			self::$fallbackReason = self::REASON_ADVANCED;
+			
+			// don't leave traces of HTML behind
+			$output->clearHTML();
+			
 			return true;
 		}
 	}
@@ -139,22 +137,21 @@ class InlineEditor {
 		}
 		return true;
 	}
-
+	
 	/**
-	 * Check if the page is 'advanced'. For now, that means it has to be in an allowed namespace.
-	 * @param $article Article
-	 * @param $title Title
-	 * @return bool
+	 * Add the preference in the user preferences with the GetPreferences hook.
+	 * @param $user
+	 * @param $preferences
 	 */
-	private static function isAdvancedPage( &$article, &$title ) {
-		global $wgInlineEditorAllowedNamespaces;
-		if ( !empty( $wgInlineEditorAllowedNamespaces )
-			&& !in_array( $title->getNamespace(), $wgInlineEditorAllowedNamespaces ) ) {
-				return true;
-		}
-		return false;
+	public static function getPreferences( $user, &$preferences ) {
+		$preferences['inline-editor-enabled'] = array(
+			'type' => 'check',
+			'section' => 'editing/labs',
+			'label-message' => 'inline-editor-enable-preference',
+		);
+		return true;
 	}
-
+	
 	/**
 	 * Entry point for the 'Preview' function through ajax.
 	 * No real point in securing this, as nothing is actually saved.
@@ -219,6 +216,9 @@ class InlineEditor {
 			
 			// have the different kind of editors register themselves
 			wfRunHooks( 'InlineEditorDefineEditors', array( &$this, &$output ) );
+			
+			// don't do any marking if this is an advanced page
+			if( $this->isAdvancedPage() ) $text->setDisableMarking( true );
 
 			// load the wikitext into the InlineEditorText object
 			$text->loadFromWikiText( $this->extendedEditPage->getWikiText() );
@@ -281,18 +281,16 @@ class InlineEditor {
 	}
 	
 	/**
-	 * Add the preference in the user preferences
-	 * @param $user
-	 * @param $preferences
+	 * Check if the page is 'advanced'. For now, that means it has to be in an allowed namespace.
+	 * @return bool
 	 */
-	
-	public static function getPreferences( $user, &$preferences ) {
-		$preferences['inline-editor-enabled'] = array(
-			'type' => 'check',
-			'section' => 'editing/labs',
-			'label-message' => 'inline-editor-enable-preference',
-		);
-		return true;
+	private function isAdvancedPage() {
+		global $wgInlineEditorAllowedNamespaces;
+		if ( !empty( $wgInlineEditorAllowedNamespaces )
+			&& !in_array( $this->article->getTitle()->getNamespace(), $wgInlineEditorAllowedNamespaces ) ) {
+				return true;
+		}
+		return false;
 	}
 	
 	/**

@@ -14,13 +14,14 @@
  *   in the text), the entire page is re-rendered
  */
 class InlineEditorText implements Serializable {
-	private $wikiOriginal; /// < original wikitext of the article
-	private $article;      /// < article object for parsing
-	private $markings;     /// < array of InlineEditorMarking objects
-	private $previous;     /// < array of InlineEditorMarking objects before this edit
-	private $editedPiece;  /// < InlineEditorMarking object to describe the range where edits occurred
-	private $changedNode;  /// < Node which should be rendered when doing a partial rendering
-	private $root;         /// < Root of the tree where the markings are arranged in
+	private $wikiOriginal;     /// < original wikitext of the article
+	private $article;          /// < article object for parsing
+	private $markings;         /// < array of InlineEditorMarking objects
+	private $previous;         /// < array of InlineEditorMarking objects before this edit
+	private $editedPiece;      /// < InlineEditorMarking object to describe the range where edits occurred
+	private $changedNode;      /// < Node which should be rendered when doing a partial rendering
+	private $root;             /// < Root of the tree where the markings are arranged in
+	private $disableMarking;   /// < Disable the marking process entirely, e.g. for dealing with complex pages
 	
 	/**
 	 * @param $article Article The article to work with.
@@ -28,6 +29,7 @@ class InlineEditorText implements Serializable {
 	public function __construct( Article $article ) {
 		$this->article = $article;
 		$this->wikiOriginal = '';
+		$this->disableMarking = false;
 	}
 	
 	/**
@@ -44,6 +46,13 @@ class InlineEditorText implements Serializable {
 	 */
 	public function getWikiOriginal() {
 		return $this->wikiOriginal;
+	}
+	
+	/**
+	 * Set or unset the disabling of marking
+	 */
+	public function setDisableMarking( $value ) {
+		$this->disableMarking = $value;
 	}
 	
 	/**
@@ -185,8 +194,13 @@ class InlineEditorText implements Serializable {
 		// abort if we already did markings
 		if( isset( $this->markings ) ) return;
 		
-		// have the extensions mark the wikitext
+		// initialise markings array
 		$this->markings = array();
+		
+		// if marking is disabled, we want to terminate here
+		if( $this->disableMarking ) return;
+		
+		// have the extensions mark the wikitext
 		wfRunHooks( 'InlineEditorMark', array( &$this ) );
 		
 		// sort the markings while preserving the keys (ids)
@@ -437,9 +451,10 @@ class InlineEditorText implements Serializable {
 	 */
 	public function serialize() {
 		return base64_encode( serialize( array( 
-			'wikiOriginal'  => $this->wikiOriginal,
-			'markings'      => $this->markings,
-			'uniqueIdState' => InlineEditorMarking::getUniqueIdState()
+			'disableMarking' => $this->disableMarking,
+			'wikiOriginal'   => $this->wikiOriginal,
+			'markings'       => $this->markings,
+			'uniqueIdState'  => InlineEditorMarking::getUniqueIdState()
 		) ) );
 	}
 
@@ -448,8 +463,9 @@ class InlineEditorText implements Serializable {
 	 */
 	public function unserialize( $string ) {
 		$data = unserialize( base64_decode( $string ) );
-		$this->wikiOriginal = $data['wikiOriginal'];
-		$this->markings     = $data['markings'];
+		$this->disableMarking = $data['disableMarking'];
+		$this->wikiOriginal   = $data['wikiOriginal'];
+		$this->markings       = $data['markings'];
 		InlineEditorMarking::setUniqueIdState( $data['uniqueIdState'] );
 	}
 	
