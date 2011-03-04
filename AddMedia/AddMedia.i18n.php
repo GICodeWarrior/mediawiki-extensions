@@ -5428,7 +5428,8 @@ $messages['ja'] = array(
 	'fogg-please-install' => '$1。詳細は$2',
 	'fogg-please-install-install-linktext' => 'Firefoggをインストール',
 	'fogg-please-install-about-linktext' => 'Firefoggについて',
-	'fogg-use_latest_firefox' => 'はじめに <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5 (以降)</a>をインストールしてください。<i>次にこのページを再読み込みし、 <b>Firefogg</b> 拡張機能をインストールしてください。</i>',
+	'fogg-use_latest_firefox' => 'はじめに $1 をインストールしてください。
+<i>次にこのページを再読み込みし、 <b>Firefogg</b> 拡張機能をインストールしてください。</i>',
 	'fogg-latest-firefox' => '最新のFirefox',
 	'fogg-passthrough_mode' => '選択したファイルはすでに Ogg 形式であるか、動画ファイルではありません',
 	'fogg-encoding-done' => '形式変換終了',
