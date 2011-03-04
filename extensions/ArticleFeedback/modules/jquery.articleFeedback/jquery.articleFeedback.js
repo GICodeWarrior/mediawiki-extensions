@@ -11,7 +11,7 @@ $.articleFeedback = {
 	'tpl': {
 		'ui': '\
 <div class="articleFeedback-panel">\
-	<div class="articleFeedback-buffer">\
+	<div class="articleFeedback-buffer articleFeedback-ui">\
 		<div class="articleFeedback-switch articleFeedback-switch-report articleFeedback-visibleWith-form" rel="report"><html:msg key="report-switch-label" /></div>\
 		<div class="articleFeedback-switch articleFeedback-switch-form articleFeedback-visibleWith-report" rel="form"><html:msg key="form-switch-label" /></div>\
 		<div class="articleFeedback-title articleFeedback-visibleWith-form"><html:msg key="form-panel-title" /></div>\
@@ -31,10 +31,14 @@ $.articleFeedback = {
 			</div>\
 		</div>\
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><html:msg key="form-panel-submit" /></button>\
+		<div class="articleFeedback-success articleFeedback-visibleWith-form"><span><html:msg key="form-panel-success" /></span></div>\
 		<div style="clear:both;"></div>\
 	</div>\
 	<div class="articleFeedback-error"><div class="articleFeedback-error-message"><html:msg key="error" /></div></div>\
+	<div class="articleFeedback-pitches"></div>\
+	<div style="clear:both;"></div>\
 </div>\
+<div class="articleFeedback-lock"></div>\
 		',
 		'rating': '\
 <div class="articleFeedback-rating">\
@@ -51,14 +55,29 @@ $.articleFeedback = {
 <div class="articleFeedback-pitch">\
 	<div class="articleFeedback-buffer">\
 		<div class="articleFeedback-title"></div>\
-		<div class="articleFeedback-message"></div>\
-		<button class="articleFeedback-accept"></button>\
-		<button class="articleFeedback-reject"></button>\
+		<div class="articleFeedback-pop">\
+			<div class="articleFeedback-message"></div>\
+			<button class="articleFeedback-accept"></button>\
+			<button class="articleFeedback-reject"></button>\
+		</div>\
 	</div>\
 </div>\
 		'
 	},
 	'fn': {
+		'enableSubmission': function( state ) {
+			var context = this;
+			if ( state ) {
+				// Reset and remove success message
+				clearTimeout( context.successTimeout );
+				context.$ui.find( '.articleFeedback-success span' ).fadeOut( 'fast' );
+				// Enable
+				context.$ui.find( '.articleFeedback-submit' ).button( { 'disabled': false } );
+			} else {
+				// Disable
+				context.$ui.find( '.articleFeedback-submit' ).button( { 'disabled': true } );
+			}
+		},
 		'updateRating': function() {
 			var $rating = $(this);
 			$rating.find( 'label' ).removeClass( 'articleFeedback-rating-label-full' );
@@ -89,8 +108,8 @@ $.articleFeedback = {
 		},
 		'submit': function() {
 			var context = this;
-			// Lock the submit button -- TODO: lock the star inputs too
-			context.$ui.find( '.articleFeedback-submit' ).button( { 'disabled': true } );
+			$.articleFeedback.fn.enableSubmission.call( context, false );
+			context.$ui.find( '.articleFeedback-lock' ).show();
 			// Build data from form values
 			var data = {};
 			for ( var key in context.options.ratings ) {
@@ -119,6 +138,7 @@ $.articleFeedback = {
 				'success': function( data ) {
 					var context = this;
 					$.articleFeedback.fn.load.call( context );
+					context.$ui.find( '.articleFeedback-lock' ).hide();
 				},
 				'error': function() {
 					var context = this;
@@ -128,26 +148,28 @@ $.articleFeedback = {
 			} );
 		},
 		'executePitch': function( action ) {
-			$(this)
-				.closest( '.articleFeedback-pitch' )
-					.find( '.articleFeedback-accept, .articleFeedback-altAccept' )
-						.button( { 'disabled': true } )
-						.end()
-					.find( '.articleFeedback-reject' )
-						.attr( 'disabled', true );
 			var $pitch = $(this).closest( '.articleFeedback-pitch' );
+			$pitch
+				.find( '.articleFeedback-accept, .articleFeedback-altAccept' )
+					.button( { 'disabled': true } )
+					.end()
+				.find( '.articleFeedback-reject' )
+					.attr( 'disabled', true );
 			var key = $pitch.attr( 'rel' );
 			// If a pitch's action returns true, hide the pitch and
 			// re-enable the button
 			if ( action.call( $(this) ) ) {
-				$pitch.fadeOut();
-				$(this)
-					.closest( '.articleFeedback-pitch' )
-						.find( '.articleFeedback-accept, .articleFeedback-altAccept' )
-							.button( { 'disabled': false } )
-							.end()
-						.find( '.articleFeedback-reject' )
-							.attr( 'disabled', false );
+				$pitch
+					.fadeOut()
+					.find( '.articleFeedback-accept, .articleFeedback-altAccept' )
+						.button( { 'disabled': false } )
+						.end()
+					.find( '.articleFeedback-reject' )
+						.attr( 'disabled', false )
+						.end()
+					.closest( '.articleFeedback-panel' )
+						.find( '.articleFeedback-ui' )
+							.show();
 			}
 			return false;
 		},
@@ -274,72 +296,76 @@ $.articleFeedback = {
 						}
 					} )
 					.end()
-				.each( function() {
-					for ( var key in context.options.pitches ) {
-						var $pitch = $( $.articleFeedback.tpl.pitch )
-							.attr( 'rel', key )
-							.find( '.articleFeedback-title' )
-								.text( mw.msg( context.options.pitches[key].title ) )
-								.end()
-							.find( '.articleFeedback-message' )
-								.text( mw.msg( context.options.pitches[key].message ) )
-								.end()
-							.find( '.articleFeedback-accept' )
-								.text( mw.msg( context.options.pitches[key].accept ) )
-								.click( function() {
-									var $pitch = $(this).closest( '.articleFeedback-pitch' );
-									return $.articleFeedback.fn.executePitch.call(
-										$(this),
-										context.options.pitches[$pitch.attr( 'rel' )].action
-									);
-								} )
-								.button()
-								.end()
-							.find( '.articleFeedback-reject' )
-								.text( mw.msg( context.options.pitches[key].reject ) )
-								.click( function() {
-									var $pitch = $(this).closest( '.articleFeedback-pitch' );
-									// Remember that the users rejected this, set a cookie to not
-									// show this for 3 days
-									$.cookie(
-										'jquery.articleFeedback.pitch.' + $pitch.attr( 'rel' ),
-										'hide',
-										{ 'expires': 3 }
-									);
-									$pitch.fadeOut();
-								} )
-								.end()
-								.appendTo( $(this) );
-						if (
-							typeof context.options.pitches[key].altAccept == 'string'
-							&& typeof context.options.pitches[key].altAction == 'function'
-						) {
-							$pitch
-								.find( '.articleFeedback-accept' )
-									.after( '<button class="articleFeedback-altAccept"></button>' )
-									.after(
-										$( '<span class="articleFeedback-pitch-or"></span>' )
-											.text( mw.msg( 'articlefeedback-pitch-or' ) )
-									)
+				.find( '.articleFeedback-pitches' )
+					.each( function() {
+						for ( var key in context.options.pitches ) {
+							var $pitch = $( $.articleFeedback.tpl.pitch )
+								.attr( 'rel', key )
+								.find( '.articleFeedback-title' )
+									.text( mw.msg( context.options.pitches[key].title ) )
 									.end()
-								.find( '.articleFeedback-altAccept' )
-									.text( mw.msg( context.options.pitches[key].altAccept ) )
+								.find( '.articleFeedback-message' )
+									.text( mw.msg( context.options.pitches[key].message ) )
+									.end()
+								.find( '.articleFeedback-accept' )
+									.text( mw.msg( context.options.pitches[key].accept ) )
 									.click( function() {
 										var $pitch = $(this).closest( '.articleFeedback-pitch' );
 										return $.articleFeedback.fn.executePitch.call(
 											$(this),
-											context.options.pitches[$pitch.attr( 'rel' )].altAction
+											context.options.pitches[$pitch.attr( 'rel' )].action
 										);
 									} )
-									.button();
+									.button()
+									.end()
+								.find( '.articleFeedback-reject' )
+									.text( mw.msg( context.options.pitches[key].reject ) )
+									.click( function() {
+										var $pitch = $(this).closest( '.articleFeedback-pitch' );
+										// Remember that the users rejected this, set a cookie to not
+										// show this for 3 days
+										$.cookie(
+											'jquery.articleFeedback-pitch.' + $pitch.attr( 'rel' ),
+											'hide',
+											{ 'expires': 3 }
+										);
+										$pitch.fadeOut( 'fast', function() {
+											context.$ui.find( '.articleFeedback-ui' ).show();
+										} );
+									} )
+									.end()
+									.appendTo( $(this) );
+							if (
+								typeof context.options.pitches[key].altAccept == 'string'
+								&& typeof context.options.pitches[key].altAction == 'function'
+							) {
+								$pitch
+									.find( '.articleFeedback-accept' )
+										.after( '<button class="articleFeedback-altAccept"></button>' )
+										.after(
+											$( '<span class="articleFeedback-pitch-or"></span>' )
+												.text( mw.msg( 'articlefeedback-pitch-or' ) )
+										)
+										.end()
+									.find( '.articleFeedback-altAccept' )
+										.text( mw.msg( context.options.pitches[key].altAccept ) )
+										.click( function() {
+											var $pitch = $(this).closest( '.articleFeedback-pitch' );
+											return $.articleFeedback.fn.executePitch.call(
+												$(this),
+												context.options.pitches[$pitch.attr( 'rel' )].altAction
+											);
+										} )
+										.button();
+							}
 						}
-					}
-				} )
+					} )
+					.end()
 				.localize( { 'prefix': 'articlefeedback-' } )
 				// Activate tooltips
 				.find( '[title]' )
 					.tipsy( {
-						'gravity': 'nw',
+						'gravity': 'sw',
 						'center': false,
 						'fade': true,
 						'delayIn': 300,
@@ -363,9 +389,7 @@ $.articleFeedback = {
 						var id = 'articleFeedback-expertise-' + $(this).attr( 'value' );
 						$(this)
 							.click( function() {
-								context.$ui
-									.find( '.articleFeedback-submit' )
-										.button( { 'disabled': false } );
+								$.articleFeedback.fn.enableSubmission.call( context, true );
 							} )
 							.attr( 'id', id )
 							.next()
@@ -377,16 +401,34 @@ $.articleFeedback = {
 					.button()
 					.click( function() {
 						$.articleFeedback.fn.submit.call( context );
+						var pitches = [];
 						for ( var key in context.options.pitches ) {
 							// Dont' bother checking the condition if there's a cookie that says
 							// the user has rejected this within 3 days of right now
-							var display = $.cookie( 'jquery.articleFeedback.pitch.' + key );
+							var display = $.cookie( 'jquery.articleFeedback-pitch.' + key );
 							if ( display !== 'hide' && context.options.pitches[key].condition() ) {
-								context.$ui
-									.find( '.articleFeedback-pitch[rel="' + key + '"]' )
-										.show();
-								break;
+								pitches.push( key );
 							}
+						}
+						if ( pitches.length ) {
+							// Select randomly using equal distribution of available pitches
+							var key = pitches[Math.round( Math.random() * ( pitches.length - 1 ) )];
+							context.$ui.find( '.articleFeedback-pitches' )
+								.css( 'width', context.$ui.width() )
+								.find( '.articleFeedback-pitch[rel="' + key + '"]' )
+									.fadeIn( 'fast' );
+							context.$ui.find( '.articleFeedback-ui' ).hide();
+							// Track that a pitch was presented
+							if ( typeof $.trackActionWithInfo == 'function' ) {
+								$.trackActionWithInfo( 'jquery.articlefeedback-pitch', key );
+							}
+						} else {
+							// Give user some feedback that a save occured
+							context.$ui.find( '.articleFeedback-success span' ).fadeIn( 'fast' );
+							context.successTimeout = setTimeout( function() {
+								context.$ui.find( '.articleFeedback-success span' )
+									.fadeOut( 'slow' );
+							}, 5000 );
 						}
 					} )
 					.end()
@@ -454,10 +496,8 @@ $.articleFeedback = {
 						}
 					)
 					.mousedown( function() {
+						$.articleFeedback.fn.enableSubmission.call( context, true );
 						context.$ui
-							.find( '.articleFeedback-submit' )
-								.button( { 'disabled': false } )
-								.end()
 							.find( '.articleFeedback-expertise' )
 								.each( function() {
 									$.articleFeedback.fn.enableExpertise( $(this) );
@@ -480,9 +520,7 @@ $.articleFeedback = {
 					.end()
 				.find( '.articleFeedback-rating-clear' )
 					.click( function() {
-						context.$ui
-							.find( '.articleFeedback-submit' )
-								.button( { 'disabled': false } );
+						$.articleFeedback.fn.enableSubmission.call( context, true );
 						$(this).hide();
 						var $rating = $(this).closest( '.articleFeedback-rating' );
 						$rating.find( 'input:radio' ).attr( 'checked', false );

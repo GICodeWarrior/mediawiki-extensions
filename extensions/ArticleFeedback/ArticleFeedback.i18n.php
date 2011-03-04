@@ -36,6 +36,7 @@ $messages['en'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'It is related to my hobbies or interests',
 	'articlefeedback-form-panel-expertise-other' => 'The source of my knowledge is not listed here',
 	'articlefeedback-form-panel-submit' => 'Submit feedback',
+	'articlefeedback-form-panel-success' => 'Saved successfully',
 	'articlefeedback-report-switch-label' => 'View page ratings',
 	'articlefeedback-report-panel-title' => 'Page ratings',
 	'articlefeedback-report-panel-description' => 'Current average ratings.',
