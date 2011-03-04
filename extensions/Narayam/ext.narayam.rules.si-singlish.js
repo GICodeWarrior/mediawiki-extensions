@@ -6,21 +6,29 @@
  * License: GPLv3
  */
  
- // Normal rules
+// Normal rules
 var rules = [
+['ඬ්හ්a', '', 'ඳ'],	// nndha
+['න්න්d', '', 'ඬ්'], 	// nnd
+['න්න්g', '', 'ඟ්'],	// nng
+['ශ්‍රිi', '', 'ශ්‍රී'],	// shrii
+['ශ්‍රi', '', 'ශ්‍රි'],	// shri
+['ශ්r', '', 'ශ්‍ර'],	// shr
+
 ['([\\u0D9A-\\u0DC6])්a', '', '$1'],    // <consonant>a
 ['([\\u0D9A-\\u0DC6])a', '', '$1ා'],    // <consonant>aa
 ['([\\u0D9A-\\u0DC6])්A', '', '$1ැ'],    // <consonant>A
 ['([\\u0D9A-\\u0DC6])ැa', '', '$1ෑ'],    // <consonant>Aa
 ['([\\u0D9A-\\u0DC6])්i', '', '$1ි'],    // <consonant>i
-['([\\u0D9A-\\u0DC6])ිe', '', '$1ී'],    // <consonant>ie
+['([\\u0D9A-\\u0DC6])ි[ei]', '', '$1ී'],    // <consonant>ie
 ['([\\u0D9A-\\u0DC6])්u', '', '$1ු'],    // <consonant>u
 ['([\\u0D9A-\\u0DC6])ුu', '', '$1ූ'],    // <consonant>u
 ['([\\u0D9A-\\u0DC6])්e', '', '$1ෙ'],    // <consonant>e
-['([\\u0D9A-\\u0DC6])ෙi', '', '$1ේ'],    // <consonant>ei
+['([\\u0D9A-\\u0DC6])ෙ[ai]', '', '$1ේ'],    // <consonant>ei
 ['([\\u0D9A-\\u0DC6])්o', '', '$1ො'],    // <consonant>o
 ['([\\u0D9A-\\u0DC6])ොe', '', '$1ෝ'],    // <consonant>oe
 ['([\\u0D9A-\\u0DC6])u', '', '$1ෞ'],    // <consonant>au
+['([\\u0D9A-\\u0DC6])්I', '', '$1ෛ'],    // <consonant>I
 
 ['ළුu', '', 'ළුු'], // Luu
 
@@ -78,7 +86,7 @@ var rules = [
 ['l', '', 'ල්'],
 ['D', '', 'ඪ්'],
 ['d', '', 'ඩ්'],
-['(w|V)', '', 'ව්'],
+['(w|v)', '', 'ව්'],
 ['s', '', 'ස්'],
 ['q', '', 'ඣ්'],
 ['h', '', 'හ්'],
@@ -91,7 +99,7 @@ var rules = [
 jQuery.narayam.addScheme( 'si-singlish', {
 	'namemsg': 'narayam-si-singlish',
 	'extended_keyboard': false,
-	'lookbackLength': 2,
+	'lookbackLength': 5,
 	'keyBufferLength': 0,
 	'rules': rules
 } ); 
