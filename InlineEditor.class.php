@@ -12,6 +12,7 @@ class InlineEditor {
 	const REASON_ADVANCED = 2;      /// < reason is editing an 'advanced' page, whatever that may be
 
 	private $section;				/// < Section number to scroll to if the user chooses to edit a specific section
+	private $editWarning;           /// < boolean that shows if the editWarning message of the Vector Extension is enabled
 	private $article;               /// < Article object to edit
 	private $extendedEditPage;      /// < ExtendedEditPage object we're using to handle editor logic
 
@@ -70,6 +71,9 @@ class InlineEditor {
 		unset( $_GET['section'] );
 		unset( $_POST['section'] );
 		$request->setVal( 'section', null );
+		
+		// set a warning when leaving the page if necessary
+		$editor->setEditWarning( $user->getOption( 'useeditwarning' ) == 1 );
 
 		if ( $editor->render( $output ) ) {
 			return false;
@@ -230,6 +234,7 @@ class InlineEditor {
 			$this->renderScripts( $output );
 			$this->renderInitialState( $output, $text );
 			$this->renderScroll( $output, $parserOutput );
+			$this->renderEditWarning( $output );
 			
 			// hook into SiteNoticeBefore to display the two boxes above the title
 			// @todo: fix this in core, make sure that anything can be inserted above the title, outside #siteNotice
@@ -255,6 +260,14 @@ class InlineEditor {
 	 */
 	public function setSection( $section ) {
 		$this->section = $section;
+	}
+	
+	/**
+	 * Set whether or not to use the editWarning utility of the Vector Extension
+	 * @param $value Boolean
+	 */
+	public function setEditWarning( $value ) {
+		$this->editWarning = $value;
 	}
 	
 	/**
@@ -328,6 +341,22 @@ class InlineEditor {
 					$( "html,body" ).animate( { scrollTop: $( "#' . $scrollAnchor .'" ).offset().top }, "slow" );
 				} );'
 			);
+		}
+	}
+	
+	/**
+	 * Render the edit warning script
+	 *
+	 * @param $output OutputPage
+	 * @param $parserOutput ParserOutput
+	 */
+	private function renderEditWarning( $output ) {
+	  	if ( $this->editWarning ) {
+			$output->addInlineScript(
+				'jQuery( document ).ready( function() {
+					jQuery.inlineEditor.enableEditWarning();
+				} );'
+			);	
 		}
 	}
 	
