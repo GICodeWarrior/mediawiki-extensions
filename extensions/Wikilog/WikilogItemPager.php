@@ -93,14 +93,14 @@ class WikilogSummaryPager
 			$this->mLimit = $wgWikilogExpensiveLimit;
 
 		# Check parser state, setup edit links.
-		global $wgOut, $wgParser;
+		global $wgOut, $wgParser, $wgTitle;
 		if ( $this->mIncluding ) {
 			$popt = $wgParser->getOptions();
 		} else {
 			$popt = $wgOut->parserOptions();
 
 			# We will need a clean parser if not including.
-			$wgParser->clearState();
+			$wgParser->startExternalParse( $wgTitle, $popt, Parser::OT_HTML );
 		}
 		$this->mShowEditLink = $popt->getEditSection();
 	}
