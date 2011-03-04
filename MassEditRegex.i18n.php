@@ -662,11 +662,15 @@ Bim Text, wu yygsetzt wird, isch d Richtig nit relevant.',
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
 	'masseditregex' => 'עריכה המונית באמצעות ביטויים רגולאריים',
 	'masseditregex-desc' => 'שימוש בביטויים רגלואריים כדי [[Special:MassEditRegex|לערוך דפים רבים בבת אחת]]',
+	'masseditregextext' => 'הכניסו ביטוי רגולרי אחד או יותר (אחד בכל שורה) לחיפוש התאמות, וביטוי אחד או יותר שבו יוחלפו המחרוזות המתאימות שתימצאנה.
+,ביטוי החיפוש הראשון, אם יימצא, יוחלף בביטוי ההחלפה הראשון וכולי.
+ר\' [http://php.net/manual/en/function.preg-replace.php את תיעוד הפונקציה <span dir="ltr">preg_replace()</span> של PHP] למידע נוסף.',
 	'masseditregex-pagelisttxt' => 'דפים לעריכה (אין להשתמש בקידומת שם המרחב:):',
 	'masseditregex-matchtxt' => 'חיפוש אחר:',
 	'masseditregex-replacetxt' => 'החלפה ב־:',
@@ -685,9 +689,13 @@ $messages['he'] = array(
 	'masseditregex-hint-headeffect' => 'אפקט',
 	'masseditregex-hint-toappend' => 'הוספת טקסט כלשהו לסוף הדף - מעולה לצורך הוספת דפים לקטגוריות',
 	'masseditregex-hint-remove' => 'הסרת טקסט כלשהו מכל הדפים שברשימה',
+	'masseditregex-hint-removecat' => 'להסיר את כל הקטגוריות מהדף (שימו לב לחילוף הסוגריים המרובעים בקוד ויקי).
+אין להוסיף תווי חילוף לערכים להחלפה.',
 	'masseditregex-listtype-intro' => 'זוהי רשימה של:',
 	'masseditregex-listtype-pagenames' => 'שמות הדפים (עריכת דפים אלה)',
 	'masseditregex-listtype-pagename-prefixes' => 'קידומות שמות הדפים (עריכת דפים ששמם מתחיל בטקסט זה)',
+	'masseditregex-listtype-categories' => 'שמות קטגוריות (עריכת כל הדפים בקטגוריות האלו; אין חשיבות לבחירה לפי מרחב שמות)',
+	'masseditregex-listtype-backlinks' => 'דפים המקשרים אל הדף (עריכת דפים שמקשרים לדפים האלה)',
 	'masseditregex-namespace-intro' => 'כל דפים אלו הם במרחב שם זה:',
 	'masseditregex-exprnomatch' => 'הביטוי "$1" אינו תואם לאף דף.',
 	'masseditregex-badregex' => 'ביטוי רגולארי שגוי:',
