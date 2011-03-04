@@ -2722,12 +2722,13 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'voctrain_Hello_World' => '¡NILTZE HUIQUI!',
 	'voctrain_logout' => 'tiquīzāz',
 	'voctrain_User_name' => 'Tlatequitiltilīltōcāitl',
-	'voctrain_Language' => 'Tlahtōlli',
+	'voctrain_Language' => 'Tlâtòlli',
 );
 
 /** Neapolitan (Nnapulitano)
