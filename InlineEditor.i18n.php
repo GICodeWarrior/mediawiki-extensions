@@ -14,7 +14,8 @@ $messages = array();
 $messages['en'] = array(
 	'inline-editor-desc' => 'Provides an alternative editor which is easier to use',
 
-	'inline-editor-editbox-top' => "'''Awesome, you are editing {{SITENAME}}!'''<br />You can edit the article below, by clicking on <span class=\"highlightExample\">blue elements</span> in the page.",
+	'inline-editor-editbox-top' => "'''Awesome, you are editing {{SITENAME}}!'''<br />You can edit the page below, by clicking on <span class=\"highlightExample\">blue elements</span> in the page.",
+	'inline-editor-editbox-top-new' => "'''Cool, you are creating a new page on {{SITENAME}}!'''<br />You can start typing in the <span class=\"highlightExample\">textbox</span> below.",
 	'inline-editor-editbox-changes-question' => 'Can you briefly describe the changes you are making?',
 	'inline-editor-editbox-changes-example' => 'For example: "Fixed spelling mistake", "Corrected facts", "Wrote a new paragraph", etc.',
 	'inline-editor-editbox-publish-notice' => "When you are done, do not forget to publish the page!",
@@ -37,6 +38,7 @@ You can only use the '''full editor''' for this page.",
  */
 $messages['qqq'] = array(
 	'inline-editor-editbox-top' => 'The "edit box" should be as small as possible. It should present the most essential information, and nothing more. It should ask for nothing more but the bare minimum. I chose to include a few basic guidelines, starting with some positive reinforcement: "Awesome, you\'re editing Wikipedia!". This invites novice users to actually edit the article. After all, what they are doing is "awesome"!',
+	'inline-editor-editbox-top-new' => 'The welcoming message when creating a new page is similar, but slightly different than the usual message. First, you can use another encouraging word, in this case "Cool", and then tell the user to start typing in the textbox. The word textbox is given a blue highlight, as the textbox below also looks blue on the borders.',
 	'inline-editor-editbox-changes-question' => "The line above the edit summary is chosen very carefully: \"Can you briefly describe the changes you're making?\"
 Asking for \"changes you ''have'' made\" looks strange when first encountering this page. 
 Asking for \"changes you ''will be'' making\" looks strange when
@@ -63,4 +65,3 @@ it be saved into some kind of database, waiting for approval?" "Publish" is
 unambiguous: it will be shown to the world. On the other hand, using the word "Publish" may have legal
 consequences in some countries, which should be looked into.',
 );
-

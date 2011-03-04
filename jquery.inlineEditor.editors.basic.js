@@ -66,7 +66,7 @@
 	},
 	
 	/**
-	 * Default click handler for simple editors. Recommended to override.
+	 * Default click handler for simple editors.
 	 */
 	click: function( event ) {
 		var $field = $(this);
@@ -75,31 +75,45 @@
 			// prevent clicks from reaching other elements
 			event.stopPropagation();
 			event.preventDefault();
-		
+			
 			// disable the existing editing field if necessary
 			$.inlineEditor.editors.basic.cancel();
 			
-			// find the element and retrieve the corresponding wikitext
-			var wiki = $.inlineEditor.getTextById( $field.attr( 'id' ) );
+			$.inlineEditor.editors.basic.show( $field.attr( 'id' ) );
+		}
+	},
+	
+	/**
+	 * Actually handles showing the editing interface. Recommended to override.
+	 * @return Boolean Whether or not showing the interface was successful.
+	 */
+	show: function( id ) {
+		$field = $( '#' + id );
+		
+		// if the class is incorrect, terminate
+		if( !$field.hasClass( 'inlineEditorBasic' ) ) return false;
+		
+		// find the element and retrieve the corresponding wikitext
+		var wiki = $.inlineEditor.getTextById( $field.attr( 'id' ) );
+		
+		// create the edit field and build the edit bar
+		var $newField = $.inlineEditor.editors.basic.newField( $field, $.inlineEditor.editors.basic.click );
+		$.inlineEditor.editors.basic.addEditBar( $newField, wiki );
+		
+		// add the wikiEditor toolbar
+		if( $.fn.wikiEditor ) {
+			$textarea = $newField.find( 'textarea' );
 			
-			// create the edit field and build the edit bar
-			var $newField = $.inlineEditor.editors.basic.newField( $field, $.inlineEditor.editors.basic.click );
-			$.inlineEditor.editors.basic.addEditBar( $newField, wiki );
+			if( $.wikiEditor.modules.toolbar && $.wikiEditor.modules.toolbar.config && $.wikiEditor.isSupported( $.wikiEditor.modules.toolbar ) ) {
+				$textarea.wikiEditor( 'addModule', $.wikiEditor.modules.toolbar.config.getDefaultConfig() );
+			}
 			
-			// add the wikiEditor toolbar
-			if( $.fn.wikiEditor ) {
-				$textarea = $newField.find( 'textarea' );
-				
-				if( $.wikiEditor.modules.toolbar && $.wikiEditor.modules.toolbar.config && $.wikiEditor.isSupported( $.wikiEditor.modules.toolbar ) ) {
-					$textarea.wikiEditor( 'addModule', $.wikiEditor.modules.toolbar.config.getDefaultConfig() );
-				}
-				
-				if( $.wikiEditor.modules.dialogs && $.wikiEditor.modules.dialogs.config && $.wikiEditor.isSupported( $.wikiEditor.modules.dialogs ) ) {
-					$.wikiEditor.modules.dialogs.config.replaceIcons( $textarea );
-					$textarea.wikiEditor( 'addModule', $.wikiEditor.modules.dialogs.config.getDefaultConfig() );
-				}
+			if( $.wikiEditor.modules.dialogs && $.wikiEditor.modules.dialogs.config && $.wikiEditor.isSupported( $.wikiEditor.modules.dialogs ) ) {
+				$.wikiEditor.modules.dialogs.config.replaceIcons( $textarea );
+				$textarea.wikiEditor( 'addModule', $.wikiEditor.modules.dialogs.config.getDefaultConfig() );
 			}
 		}
+		return true;
 	},
 	
 	/**
