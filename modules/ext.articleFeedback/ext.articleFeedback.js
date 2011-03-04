@@ -5,25 +5,13 @@
 ( function( $, mw ) {
 
 /**
- * Tries to win the lottery based on set odds.
- * 
- * Odds are clamped to the range of 0-1.
- * 
- * @param odds Float: Probability of winning in range of 0 (never) to 1 (always)
- * @return Boolean: Whether you are a winner
- */
-function lottery( odds ) {
-	return Math.random() <= Math.min( 1, Math.max( 0, odds ) );
-};
-
-/**
  * Checks if a pitch is currently muted
  * 
  * @param pitch String: Name of pitch to check
  * @return Boolean: Whether the pitch is muted
  */
-function isPitchMuted( pitch ) {
-	return $.cookie( 'ext.articleFeedback.pitches.' + pitch ) == 'hide' ? true : false;
+function isPitchVisible( pitch ) {
+	return $.cookie( 'ext.articleFeedback-pitches.' + pitch ) == 'hide' ? false : true;
 }
 
 /**
@@ -33,14 +21,14 @@ function isPitchMuted( pitch ) {
  * @param durration Integer: Number of days to mute the pitch for
  */
 function mutePitch( pitch, durration ) {
-	$.cookie( 'ext.articleFeedback.pitches.' + pitch, 'hide', { 'expires': durration } );
+	$.cookie( 'ext.articleFeedback-pitches.' + pitch, 'hide', { 'expires': durration } );
 }
 
 function trackClick( id ) {
 	// Track the click so we can figure out how useful this is
 	if ( typeof $.trackActionWithInfo == 'function' ) {
 		$.trackActionWithInfo(
-			'articlefeedback-' + id, mediaWiki.config.get( 'wgTitle' )
+			'ext.articleFeedback-' + id, mediaWiki.config.get( 'wgTitle' )
 		)
 	}
 }
@@ -206,8 +194,7 @@ var config = {
 	'pitches': {
 		'survey': {
 			'condition': function() {
-				// If this pitch isn't muted, show this 1/3 of the time
-				return !isPitchMuted( 'survey' ) ? lottery( 0.333 ) : false;
+				return isPitchVisible( 'survey' );
 			},
 			'action': function() {
 				survey.load();
@@ -223,9 +210,7 @@ var config = {
 		},
 		'join': {
 			'condition': function() {
-				// If this pitch isn't muted and the user is anonymous, show this 1/2 of the time
-				return ( !isPitchMuted( 'join' ) && mediaWiki.user.anonymous() )
-					? lottery( 0.5 ) : false;
+				return isPitchVisible( 'join' ) && !mediaWiki.user.anonymous();
 			},
 			'action': function() {
 				// Click tracking
@@ -265,8 +250,8 @@ var config = {
 			'condition': function() {
 				// An empty restrictions array means anyone can edit
 				var restrictions =  mediaWiki.config.get( 'wgRestrictionEdit' );
-				var groups =  mediaWiki.config.get( 'wgUserGroups' );
 				if ( restrictions.length ) {
+					var groups =  mediaWiki.config.get( 'wgUserGroups' );
 					// Verify that each restriction exists in the user's groups
 					for ( var i = 0; i < restrictions.length; i++ ) {
 						if ( !$.inArray( restrictions[i], groups ) ) {
@@ -274,8 +259,7 @@ var config = {
 						}
 					}
 				}
-				// If this pitch isn't muted, show this always
-				return !isPitchMuted( 'edit' );
+				return isPitchVisible( 'edit' );
 			},
 			'action': function() {
 				// Click tracking

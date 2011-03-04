@@ -63,6 +63,7 @@ class ArticleFeedbackHooks {
 				'articlefeedback-form-panel-expertise-hobby',
 				'articlefeedback-form-panel-expertise-other',
 				'articlefeedback-form-panel-submit',
+				'articlefeedback-form-panel-success',
 				'articlefeedback-report-switch-label',
 				'articlefeedback-report-panel-title',
 				'articlefeedback-report-panel-description',
