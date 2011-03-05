@@ -21,6 +21,8 @@ You may lose your changes to this page if you leave this page now.',
 	'al-nosuchuser' => 'There is no user by the name "$1".
 User names are case sensitive.
 Check your spelling.',
+	'al-createblocked' => 'Your IP address is blocked from account creation.',
+	'al-throttled' => 'You have had too many recent password attempts. Please wait $1 {{PLURAL:$1|second|seconds}} before trying again.',
 );
 
 /** Message documentation (Message documentation)
