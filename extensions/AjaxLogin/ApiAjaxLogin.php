@@ -91,9 +91,9 @@ class ApiAjaxLogin extends ApiBase {
 					$result['text'] = wfMsg( 'al-createblocked' );
 					break;
 				case LoginForm::THROTTLED:
-					global $wgPasswordAttemptThrottle;
+					global $wgPasswordAttemptThrottle, $wgLang;
 					$result['result'] = 'Throttled';
-					$result['text'] = wfMsg( 'al-throttled', intval( $wgPasswordAttemptThrottle['seconds'] ) );
+					$result['text'] = wfMsgExt( 'al-throttled', 'parsemag', $wgLang->formatNum( intval( $wgPasswordAttemptThrottle['seconds'] ) ) );
 					break;
 				case LoginForm::USER_BLOCKED:
 					$result['result'] = 'Blocked';
