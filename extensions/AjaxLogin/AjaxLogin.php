@@ -4,9 +4,10 @@
  *
  * @file
  * @ingroup Extensions
- * @version 2.1.0
+ * @version 2.2.0
  * @author Inez Korczyński <korczynski(at)gmail(dot)com>
  * @author Jack Phoenix <jack@countervandalism.net>
+ * @author Ryan Schmidt <skizzerz@shoutwiki.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -18,8 +19,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'AjaxLogin',
-	'version' => '2.1.0',
-	'author' => array( 'Inez Korczyński', 'Jack Phoenix' ),
+	'version' => '2.2.0',
+	'author' => array( 'Inez Korczyński', 'Jack Phoenix', 'Ryan Schmidt' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxLogin',
 	'descriptionmsg' => 'ajaxlogin-desc',
 );
@@ -94,13 +95,16 @@ function efAddAjaxLoginVariables( $vars ) {
  * @param $data The data, AjaxLogin form in this case, to be added to the HTML output of a page
  * @return true
  */
-function GetAjaxLoginForm( &$data, $skin ) {
+function GetAjaxLoginForm( &$data, $skin = null ) {
 	global $wgAuth, $wgEnableEmail, $wgOut, $wgUser;
 	global $wgEnableAjaxLogin;
-	if (
-		isset( $wgEnableAjaxLogin ) && $wgUser->isAnon() &&
-		$skin->getTitle()->getNamespace() != 8 && !$skin->getTitle()->isSpecial( 'Userlogin' )
-	) {
+	if( is_null( $skin ) ) {
+		global $wgTitle;
+		$userlogincheck = $wgTitle->getNamespace() != 8 && $wgTitle->getDBkey() != 'Userlogin';
+	} else {
+		$userlogincheck = $skin->getTitle()->getNamespace() != 8 && !$skin->getTitle()->isSpecial( 'Userlogin' );
+	}
+	if( isset( $wgEnableAjaxLogin ) && $wgUser->isAnon() && $userlogincheck ) {
 		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
 		$link = $titleObj->getLocalURL( 'type=signup' );
 		$wgOut->addHTML( '<!--[if lt IE 9]><style type="text/css">#userloginRound { width: 350px !important; }</style><![endif]-->
