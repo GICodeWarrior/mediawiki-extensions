@@ -24,7 +24,7 @@ class InlineEditor {
 	public static function mediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki) {
 		global $wgHooks, $wgInlineEditorEnableGlobal;
 		
-		if ( $user->getOption( 'inline-editor-enabled' ) != true && !$wgInlineEditorEnableGlobal ) {
+		if ( !$user->getOption( 'inline-editor-enabled' ) && !$wgInlineEditorEnableGlobal ) {
 			return true;
 		}
 
@@ -144,11 +144,21 @@ class InlineEditor {
 	 * @param $preferences
 	 */
 	public static function getPreferences( $user, &$preferences ) {
-		$preferences['inline-editor-enabled'] = array(
-			'type' => 'check',
-			'section' => 'editing/labs',
-			'label-message' => 'inline-editor-enable-preference',
-		);
+		global $wgInlineEditorEnableGlobal, $wgInlineEditorAdvancedGlobal;
+		if( !$wgInlineEditorEnableGlobal ) {
+			$preferences['inline-editor-enabled'] = array(
+				'type' => 'check',
+				'section' => 'editing/labs',
+				'label-message' => 'inline-editor-enable-preference',
+			);
+		}
+		if( !$wgInlineEditorAdvancedGlobal ) {
+			$preferences['inline-editor-advanced'] = array(
+				'type' => 'check',
+				'section' => 'editing/labs',
+				'label-message' => 'inline-editor-advanced-preference',
+			);
+		}
 		return true;
 	}
 	
@@ -426,32 +436,32 @@ class InlineEditor {
 	 * @param $siteNotice string
 	 */
 	public function siteNoticeBefore( &$siteNotice ) {
-		$siteNotice = $this->renderIntroBox() . $this->renderEditBox();
+		$form = Html::rawElement( 'form', array(
+			'id' => 'editForm',
+			'method' => 'POST',
+			'action' => $this->extendedEditPage->getSubmitUrl() ), $this->renderEditBox() . $this->renderAdvancedBox());
+		
+		$siteNotice = Html::rawElement( 'div', array( 'id' => 'inlineEditorBox' ), $this->renderIntroBox() . $form );
 		return false;
 	}
 
 	/**
-	 * Generates "Edit box" (the first one)
-	 * This looks like this:
-	 * <div class="editbox">
-	 *   inline-editor-editbox-top
-	 *   <hr/>
-	 *
-	 *   inline-editor-editbox-changes-question
-	 *   <input class="summary" name="summary" />
-	 *   <div class="example">inline-editor-editbox-changes-example</div>
-	 *   <hr/>
-	 *
-	 *   <div class="side">
-	 *     inline-editor-editbox-publish-notice
-	 *     <div class="terms">inline-editor-editbox-publish-terms</div>
-	 *   </div>
-	 *   <a id="publish">inline-editor-editbox-publish-caption</a>
-	 * </div>
-	 *   
+	 * Renders a simple box with a message, if needed.
+	 * @return string HTML
+	 */
+	private function renderIntroBox() {
+		if( strlen( $this->intro ) <= 0 ) return '';
+		
+		return Html::rawElement( 'div', array( 'id' => 'introbox' ), $this->intro );
+	}
+
+	/**
+	 * Renders the edit box, which is the main box with the publish button.
 	 * @return string HTML
 	 */
 	private function renderEditBox() {
+		global $wgUser;
+		
 		if( $this->article->exists() ) {
 			$top  = wfMsgExt( 'inline-editor-editbox-top', 'parseinline' );
 		}
@@ -461,8 +471,12 @@ class InlineEditor {
 		$top .= '<hr/>';
 
 		$summary  = wfMsgExt( 'inline-editor-editbox-changes-question', 'parseinline' );
-		$summary .= Html::input( 'wpSummary', $this->extendedEditPage->getSummary(),
-			'text', array( 'class' => 'summary', 'maxlength' => 250 ) );
+		$summary .= Html::input( 'wpSummary', $this->extendedEditPage->getSummary(), 'text', array(
+			'class' => 'summary',
+			'maxlength' => 250,
+			'spellcheck' => 'true',
+			'tabindex' => 1,
+			) );
 		$summary .= Html::rawElement( 'div', array( 'class' => 'example' ),
 			wfMsgExt( 'inline-editor-editbox-changes-example', 'parseinline' ) );
 		$summary .= '<hr/>';
@@ -473,22 +487,85 @@ class InlineEditor {
 			wfMsgExt( 'inline-editor-editbox-publish-terms', 'parseinline', '[[' . wfMsgForContent( 'copyrightpage' ) . ']]' ) );
 		$publish  = Html::rawElement( 'div', array( 'class' => 'side' ),
 			wfMsgExt( 'inline-editor-editbox-publish-notice', 'parseinline' ) . $terms );
-		$publish .= Html::rawElement( 'a', array( 'id' => 'publish', 'href' => '#' ),
-			wfMsgExt( 'inline-editor-editbox-publish-caption', 'parseinline' ) );
+		$publish .= Html::rawElement( 'a', array( 
+			'id'        => 'publish', 
+			'href'      => '#',
+			'accesskey' => wfMsg( 'accesskey-save' ),
+			'title'     => $wgUser->getSkin()->titleAttrib( 'save', 'withaccess' ),
+			), wfMsgExt( 'inline-editor-editbox-publish-caption', 'parseinline' ) );
 		$publish .= HTML::rawElement( 'input', array( 'id' => 'json', 'name' => 'json', 'type' => 'hidden' ) );
 
-		$form = Html::rawElement( 'form', array(
-			'id' => 'editForm',
-			'method' => 'POST',
-			'action' => $this->extendedEditPage->getSubmitUrl() ), $top . $summary . $publish );
-
-
-		return Html::rawElement( 'div', array( 'class' => 'editbox' ), $form );
+		return Html::rawElement( 'div', array( 'id' => 'editbox' ), $top . $summary . $publish );
 	}
 	
-	private function renderIntroBox() {
-		if( strlen( $this->intro ) <= 0 ) return '';
+	/**
+	 * Renders the advanced edit box if needed, or else some hidden form fields.
+	 * @return string HTML
+	 */
+	private function renderAdvancedBox() {
+		global $wgUser, $wgInlineEditorAdvancedGlobal;
 		
-		return Html::rawElement( 'div', array( 'class' => 'introbox' ), $this->intro );
+		if( $wgUser->getOption( 'inline-editor-advanced' ) || $wgInlineEditorAdvancedGlobal ) {
+			$box = '';
+			
+			$minorLabel = wfMsgExt( 'minoredit', array( 'parseinline' ) );
+			if ( $wgUser->isAllowed( 'minoredit' ) ) {
+				$attribs = array(
+					//'tabindex'  => ++$tabindex,
+					'accesskey' => wfMsg( 'accesskey-minoredit' ),
+					'id'        => 'wpMinoredit',
+				);
+				$minorCheckbox =
+					Xml::check( 'wpMinoredit', $this->extendedEditPage->getMinorEdit(), $attribs ) .
+					"&#160;<label for='wpMinoredit' id='mw-editpage-minoredit'" .
+					Xml::expandAttributes( array( 'title' => $wgUser->getSkin()->titleAttrib( 'minoredit', 'withaccess' ) ) ) .
+					">{$minorLabel}</label>";
+					
+				$box .= Html::rawElement( 'div', array( 'class' => 'boxelement' ), $minorCheckbox );
+			}
+			
+			$watchLabel = wfMsgExt( 'watchthis', array( 'parseinline' ) );
+			if ( $wgUser->isLoggedIn() ) {
+				$attribs = array(
+					//'tabindex'  => ++$tabindex,
+					'accesskey' => wfMsg( 'accesskey-watch' ),
+					'id'        => 'wpWatchthis',
+				);
+				$watchCheckbox =
+					Xml::check( 'wpWatchthis', $this->extendedEditPage->getWatchThis() , $attribs ) .
+					"&#160;<label for='wpWatchthis' id='mw-editpage-watch'" .
+					Xml::expandAttributes( array( 'title' => $wgUser->getSkin()->titleAttrib( 'watch', 'withaccess' ) ) ) .
+					">{$watchLabel}</label>";
+				
+				$box .= Html::rawElement( 'div', array( 'class' => 'boxelement' ), $watchCheckbox );
+			}
+			
+			$box .= Html::rawElement( 'div', array( 'class' => 'boxelement' ), '<span id="editCounter">#0</span>' );
+			
+			$box .= Html::rawElement( 'div', array( 'class' => 'boxelement' ), Html::rawElement( 'a', array( 
+					'id'        => 'undo',
+					'href'      => '#',
+					'accesskey' => wfMsg( 'accesskey-inline-editor-undo' ),
+					'title'     => $wgUser->getSkin()->titleAttrib( 'inline-editor-undo', 'withaccess' ),
+				), wfMsgExt( 'inline-editor-undo', array( 'parseinline' ) ) ) );
+			
+			$box .= Html::rawElement( 'div', array( 'class' => 'boxelement' ), Html::rawElement( 'a', array( 
+					'id'        => 'redo',
+					'href'      => '#',
+					'accesskey' => wfMsg( 'accesskey-inline-editor-redo' ),
+					'title'     => $wgUser->getSkin()->titleAttrib( 'inline-editor-redo', 'withaccess' ),
+				), wfMsgExt( 'inline-editor-redo', array( 'parseinline' ) ) ) );
+			
+			// have other extensions add elements
+			wfRunHooks( 'InlineEditorRenderAdvancedBox', array( &$this, &$box ) );
+			
+			return Html::rawElement( 'div', array( 'id' => 'advancedbox' ), $box );
+		}
+		else {
+			$hidden = '';
+			$hidden .= Html::input( 'wpMinoredit', $this->extendedEditPage->getMinorEdit(), 'hidden');
+			$hidden .= Html::input( 'wpWatchthis', $this->extendedEditPage->getWatchThis(), 'hidden');
+			return $hidden;
+		}
 	}
 }

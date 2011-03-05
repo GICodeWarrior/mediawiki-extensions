@@ -55,11 +55,13 @@ $wgAjaxExportList[]                               = 'InlineEditor::ajaxPreview';
 
 // default options
 $wgInlineEditorEnableGlobal                       = false;
+$wgInlineEditorAdvancedGlobal                     = false;
 $wgInlineEditorBrowserBlacklist                   = $wgBrowserBlackList;
 $wgInlineEditorAllowedNamespaces                  = array( NS_MAIN, NS_TALK, NS_USER, NS_USER_TALK );
 
 // default user options
 $wgDefaultUserOptions['inline-editor-enabled']    = 1;
+$wgDefaultUserOptions['inline-editor-advanced']   = 0;
 
 // resources
 $inlineEditorTpl = array(
@@ -70,22 +72,31 @@ $inlineEditorTpl = array(
 
 $wgResourceModules += array(
 	'jquery.inlineEditor' => $inlineEditorTpl + array(
-        'scripts'      => 'jquery.inlineEditor.js',
-        'styles'       => 'jquery.inlineEditor.css',
-    ),
-    'jquery.inlineEditor.editors.basic' => $inlineEditorTpl + array(
-        'scripts'      => 'jquery.inlineEditor.editors.basic.js',
-        'styles'       => 'jquery.inlineEditor.editors.basic.css',
-        'messages'     => array(
-        	'inline-editor-preview',
-        	'inline-editor-cancel'
-        ),
-        'dependencies' => array(
-        	'jquery.inlineEditor',
-        	'jquery.elastic'
-        ),
-    ),
-    'jquery.elastic' => $inlineEditorTpl + array(
-        'scripts'      => 'jquery.elastic.js',
-    ),
+		'scripts'      => 'jquery.inlineEditor.js',
+		'styles'       => 'jquery.inlineEditor.css',
+		'dependencies' => array(
+			'jquery.color',
+			'mediawiki.util',
+		),
+	),
+	'jquery.inlineEditor.editors.basic' => $inlineEditorTpl + array(
+		'scripts'      => 'jquery.inlineEditor.editors.basic.js',
+		'styles'       => 'jquery.inlineEditor.editors.basic.css',
+		'messages'     => array(
+			'inline-editor-preview',
+			'tooltip-inline-editor-preview',
+			'accesskey-inline-editor-preview',
+			'inline-editor-cancel',
+			'tooltip-inline-editor-cancel',
+			'accesskey-inline-editor-cancel',
+		),
+		'dependencies' => array(
+			'jquery.inlineEditor',
+			'jquery.elastic',
+			'mediawiki.util',
+		),
+	),
+	'jquery.elastic' => $inlineEditorTpl + array(
+		'scripts'      => 'jquery.elastic.js',
+	),
 );

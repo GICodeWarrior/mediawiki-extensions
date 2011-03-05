@@ -26,11 +26,20 @@ See $1 for more information.',
 	'inline-editor-redirect-browser' => 'The new editing interface is not supported by your browser.',
 	'inline-editor-redirect-advanced' => "Editing this page is considered '''advanced''' use of {{SITENAME}}.
 You can only use the '''full editor''' for this page.",
-	'inline-editor-editmodes-undo' => 'Undo',
-	'inline-editor-editmodes-redo' => 'Redo',
-	'inline-editor-enable-preference' => 'Enable inline editing',
+	'inline-editor-undo' => 'Undo',
+	'tooltip-inline-editor-undo' => 'Undo changes',
+	'accesskey-inline-editor-undo' => '[',
+	'inline-editor-redo' => 'Redo',
+	'tooltip-inline-editor-redo' => 'Redo changes',
+	'accesskey-inline-editor-redo' => ']',
 	'inline-editor-preview' => 'Preview',
+	'tooltip-inline-editor-preview' => 'View your changes',
+	'accesskey-inline-editor-preview' => 'p',
 	'inline-editor-cancel' => 'Cancel',
+	'tooltip-inline-editor-cancel' => 'Cancel editing',
+	'accesskey-inline-editor-cancel' => ';',
+	'inline-editor-enable-preference' => 'Enable inline editing',
+	'inline-editor-advanced-preference' => 'Advanced inline editing options',
 );
 
 /** Language descriptions
@@ -64,4 +73,5 @@ things: "Will it be visible for everyone or just saved for myself?", "Will
 it be saved into some kind of database, waiting for approval?" "Publish" is
 unambiguous: it will be shown to the world. On the other hand, using the word "Publish" may have legal
 consequences in some countries, which should be looked into.',
+	'accesskey-inline-editor-preview' => 'Please keep this the same as accesskey-preview',
 );

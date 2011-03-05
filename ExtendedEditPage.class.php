@@ -12,6 +12,9 @@ class ExtendedEditPage extends EditPage {
 	 */
 	public function initInlineEditor( $inlineEditor ) {
 		global $wgRequest, $wgOut;
+		
+		$intro = '';
+		
 		$this->importFormData( $wgRequest );
 
 		if ( !empty( $this->section ) ) return false;
@@ -65,13 +68,13 @@ class ExtendedEditPage extends EditPage {
 		$wgOut->clearHTML();
 		if ( $this->formtype == 'initial' || $this->firsttime ) {
 			$this->showIntro();
-			$inlineEditor->setIntro( $wgOut->getHTML() );
+			$intro .= $wgOut->getHTML();
 			$wgOut->clearHTML();
 		}
 		
 		if ( 'initial' == $this->formtype || 'preview' == $this->formtype || $this->firsttime ) {
 			if ( $this->initialiseForm() !== false ) {
-				return true;
+				// first init some other stuff (below)
 			}
 			else {
 				return false;
@@ -84,12 +87,27 @@ class ExtendedEditPage extends EditPage {
 				return false;
 			}
 			else {
-				return true;
+				// first init some other stuff (below)
 			}
 		}
 		else {
 			return false;
 		}
+		
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->setArticleRelated( true );
+
+		if ( $this->showHeader() === false ) {
+			$wgOut->clearHTML();
+			return false;
+		}
+		
+		$intro .= $wgOut->getHTML();
+		$wgOut->clearHTML();
+		
+		$inlineEditor->setIntro( $intro );
+		
+		return true;
 	}
 
 	/**
@@ -107,6 +125,14 @@ class ExtendedEditPage extends EditPage {
 	public function getSummary() {
 		return $this->summary;
 	}
+	
+	public function getMinorEdit() {
+		return $this->minoredit;
+	}
+	
+	public function getWatchThis() {
+		return $this->watchthis;
+	}
 
 	/**
 	 * Get the URL to submit to, with some options in the URL that are usually hidden fields
@@ -122,8 +148,6 @@ class ExtendedEditPage extends EditPage {
 		);
 
 		if ( $this->scrolltop ) $options['wpScrolltop'] = 1;
-		if ( $this->minoredit ) $options['wpMinorEdit'] = 1;
-		if ( $this->watchthis ) $options['wpWatchthis'] = 1;
 
 		return $this->mTitle->getLocalURL( $options );
 	}

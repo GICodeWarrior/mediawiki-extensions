@@ -37,11 +37,21 @@
 		// build preview and cancel buttons and add click events
 		var $preview = $( '<input type="button" class="preview"/>' );
 		$preview.attr( 'value', mediaWiki.msg( 'inline-editor-preview' ) );
+		$preview.attr( 'accesskey', mediaWiki.msg( 'accesskey-inline-editor-preview' ) );
+		$preview.attr( 'title', mediaWiki.msg( 'tooltip-inline-editor-preview' ) + 
+			' [' + mediaWiki.msg( 'accesskey-inline-editor-preview' ) + ']' );
 		$preview.click( $.inlineEditor.editors.basic.clickPreview );
 		
 		var $cancel = $( '<input type="button" class="cancel"/>' );
 		$cancel.attr( 'value', mediaWiki.msg( 'inline-editor-cancel' ) );
+		$cancel.attr( 'accesskey', mediaWiki.msg( 'accesskey-inline-editor-cancel' ) );
+		$cancel.attr( 'title', mediaWiki.msg( 'tooltip-inline-editor-cancel' ) + 
+			' [' + mediaWiki.msg( 'accesskey-inline-editor-cancel' ) + ']' );
 		$cancel.click( $.inlineEditor.editors.basic.clickCancel );
+		
+		// fix access key tooltips
+		mw.util.updateTooltipAccessKeys( $preview );
+		mw.util.updateTooltipAccessKeys( $cancel );
 		
 		// build a div for the buttons
 		var $buttons = $( '<div class="buttons"></div> ');
