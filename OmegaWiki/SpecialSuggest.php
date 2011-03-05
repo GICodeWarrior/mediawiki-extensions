@@ -108,9 +108,7 @@ function getSuggestions() {
 	    	$sql = getSQLForLevels( $langCode );
 	    	break;
 	    case 'collection':
-	 	$sqlActual = getSQLForCollection( $langCode );
-	 	$sqlFallback = getSQLForCollection( 'en' );
-		$sql = constructSQLWithFallback( $sqlActual, $sqlFallback, array( "collection_id", "spelling" ) );
+	 	$sql = getSQLForCollection( $langCode );
 	    	break;
 	    case 'transaction':
 	    	$sql =
@@ -137,8 +135,7 @@ function getSuggestions() {
 			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "$search%" );
 		else if ( $query == 'language' )
 			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "%$search%" );
-		else if ( $query == 'relation-type' or // not sure in which case 'relation-type' happens...
-			$query == 'collection' )
+		else if ( $query == 'relation-type' ) // not sure in which case 'relation-type' happens...
 			$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes( "$search%" );
 		else
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "$search%" );
@@ -463,34 +460,37 @@ function getSQLForCollectionOfType( $collectionType, $language = "<ANY>" ) {
 	return $sql;
 }
 
-function getSQLForCollection( $language = "<ANY>" ) {
+function getSQLForCollection( $language ) {
 	$dc = wdGetDataSetContext();
-	$sql =
-		"SELECT collection_id, spelling " .
-		" FROM {$dc}_expression, {$dc}_collection, {$dc}_syntrans " .
-		" WHERE {$dc}_expression.expression_id={$dc}_syntrans.expression_id" .
-		" AND {$dc}_syntrans.defined_meaning_id={$dc}_collection.collection_mid " .
-		" AND {$dc}_syntrans.identical_meaning=1" .
-		" AND " . getLatestTransactionRestriction( "{$dc}_syntrans" ) .
-		" AND " . getLatestTransactionRestriction( "{$dc}_expression" ) .
-		" AND " . getLatestTransactionRestriction( "{$dc}_collection" );
-	
-	if ( $language != "<ANY>" ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$sql .=
-			' AND language_id=( ' .
-				' SELECT language_id' .
-				' FROM language' .
-				' WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) .
-				' )';
-	}
+	$dbr = wfGetDB( DB_SLAVE );
+	$lng = '( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' )';
+
+	$sql = "SELECT collection_id, spelling " .
+		" FROM {$dc}_expression exp, {$dc}_collection col, {$dc}_syntrans synt, {$dc}_defined_meaning dm " .
+		" WHERE exp.expression_id=synt.expression_id " .
+		" AND synt.defined_meaning_id=col.collection_mid " .
+		" AND dm.defined_meaning_id = synt.defined_meaning_id " .
+//		" AND synt.identical_meaning=1" .
+		" AND ( " .
+			" exp.language_id=$lng " .
+			" OR (" .
+				" exp.language_id=85 " .
+				" AND dm.defined_meaning_id NOT IN " .
+					" ( SELECT defined_meaning_id FROM {$dc}_syntrans synt_bis, {$dc}_expression exp_bis " .
+					" WHERE exp_bis.expression_id = synt_bis.expression_id AND exp_bis.language_id=$lng " .
+					" AND synt_bis.remove_transaction_id IS NULL AND exp_bis.remove_transaction_id IS NULL ) " .
+				" ) " .
+			" ) " .
+		" AND " . getLatestTransactionRestriction( "synt" ) .
+		" AND " . getLatestTransactionRestriction( "exp" ) .
+		" AND " . getLatestTransactionRestriction( "col" ) .
+		" AND " . getLatestTransactionRestriction( "dm" );
 
 	return $sql;
 }
 
 function getSQLForLevels( $language = "<ANY>" ) {
-	global
-		$classAttributeLevels, $dataSet;
+	global $classAttributeLevels, $dataSet;
 	
 	$o = OmegaWikiAttributes::getInstance();
 	// TO DO: Add support for multiple languages here
