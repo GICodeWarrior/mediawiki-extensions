@@ -152,10 +152,7 @@
 		$editCounter.text( '#' + $.inlineEditor.currentState );
 		
 		// remove everything from the editcounter, and have it fade again
-		$editCounter.removeClass( 'changeHighlight' );
-		$editCounter.attr( 'style', '' );
-		$editCounter.addClass( 'changeHighlight' );
-		$editCounter.removeClass( 'changeHighlight', 200 );
+		$editCounter.stop(true, true).hide().fadeIn('fast');
 	},
 	
 	/**
@@ -212,8 +209,15 @@
 	init : function() {
 		$( '#editForm' ).submit( $.inlineEditor.submit );
 		$( '#publish' ).click( $.inlineEditor.publish );
-		//$( '#undo' ).click( $.inlineEditor.undo );
-		//$( '#redo' ).click( $.inlineEditor.redo );
+		mw.util.updateTooltipAccessKeys( $( '#publish' ) );
+		
+		if( $( '#advancedbox' ).size() > 0 ) {
+			$( '#undo' ).click( $.inlineEditor.undo );
+			mw.util.updateTooltipAccessKeys( $( '#undo' ) );
+			
+			$( '#redo' ).click( $.inlineEditor.redo );
+			mw.util.updateTooltipAccessKeys( $( '#redo' ) );
+		}
 		
 		// reload the current editor
 		$.inlineEditor.reload();

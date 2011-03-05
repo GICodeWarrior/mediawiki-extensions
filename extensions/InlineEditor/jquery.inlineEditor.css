@@ -1,39 +1,60 @@
 /* 
- * Right now everything has #siteNotice in front as there's no better way, really, to include the
+ * Right now everything has in front as there's no better way, really, to include the
  * top boxes to the page.
  */
-
 #siteNotice {
-	text-align: inherit;
-	font-size: inherit;
+	/* fix the siteNotice div */
+	padding: 0px;
+	margin: 0px;
+	border: none;
 }
 
-#siteNotice div,
-#siteNotice p {
-	/* make these elements behave normal again */
+/* some skin-specific fixes */
+.skin-monobook #siteNotice, .skin-simple #siteNotice {
+	margin-top: 10px;
+}
+
+.skin-modern #siteNotice {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#inlineEditorBox {
+	/* basic fixes for our box */
+	text-align: left;
 	margin: 0px;
 	padding: 0px;
 }
 
-#siteNotice div.editbox {
+#introbox {
+	/* basic grey box */
+	background-color: #f3f3f3;
+	border: 1px solid #aaa;
+	margin-bottom: 10px;
+	padding: 10px 10px 5px;
+	position: relative;
+	max-width: 720px;
+}
+
+#editbox {
 	/* box on top of the page, colors are the same as the surrounding colors */
 	/* it scales with the display size */
-	font-size: 1.0em;
+	font-size: 1.3em;
 	background-color: #eaf3f8;
 	border: 1px solid #A7D7F9;
 	margin-bottom: 10px;
 	padding: 10px 10px 5px;
-	max-width: 700px;
+	max-width: 720px;
 	position: relative;
 }
 
-#siteNotice div.editbox .highlightExample {
+#editbox .highlightExample {
 	/* example in the text to show how the highlights look like */
 	background-color: #a7d7f9;
 	padding: 1px 3px;
 }
 
-#siteNotice div.editbox input.summary {
+#editbox /*input*/.summary {
 	/* summary box, scales with the editbox to a certain point */
 	display: block;
 	width: 500px;
@@ -43,18 +64,18 @@
 	font-size: 0.8em;
 }
 
-#siteNotice div.editbox .example, .editbox .terms {
+#editbox .example, #editbox .terms {
 	/* smaller font and lighter color for less important items */
 	font-size: 0.8em;
 	color: #555;
 }
 
-#siteNotice div.editbox .side {
+#editbox .side {
 	/* text besides the publish button */
 	margin-right: 150px;
 }
 
-/*#siteNotice div.editbox*/ #publish {
+/* #editbox */ #publish {
 	/* style the publish button to be eye-catching using a bright green color */
 	background-color: #008C00;
 	color: #fff;
@@ -72,10 +93,30 @@
 	-webkit-border-radius: 10px;
 }
 
-#siteNotice div.introbox {
-	background-color: #f3f3f3;
-	border: 1px solid #aaa;
-	margin-bottom: 10px;
-	padding: 10px 10px 5px;
+#advancedbox {
+	/* box with tab-like elements */
+	margin: 0px;
+	padding: 0px;
 	position: relative;
+	max-width: 720px;
+	font-size: 1.1em;
+	
+	/* make sure the header resizes due to the floated elements */
+	overflow: hidden;
+}
+
+#advancedbox .boxelement {
+	/* margin fix for old IE versions, see http://www.positioniseverything.net/explorer/doubled-margin.html */
+	display: inline;
+	float: left;
+	
+	/* basic tabs coloured like the edit box */
+	background-color: #eaf3f8;
+	border: 1px solid #A7D7F9;
+	padding: 2px 4px;
+	height: 22px;
+	margin-bottom: 10px;
+	
+	/* collapse the top border */
+	margin-right: -1px;
 }
