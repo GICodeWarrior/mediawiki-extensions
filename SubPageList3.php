@@ -16,7 +16,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionFunctions[] = 'efSubpageList3';
+$wgHooks['ParserFirstCallInit'][] = 'efSubpageList3';
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Subpage List 3',
@@ -36,9 +36,9 @@ $wgExtensionMessagesFiles['SubPageList3'] = $dir . 'SubPageList3.i18n.php';
 /**
  * Hook in function
  */
-function efSubpageList3() {
-	global $wgParser;
-	$wgParser->setHook( 'splist', 'efRenderSubpageList3' );
+function efSubpageList3( &$parser ) {
+	$parser->setHook( 'splist', 'efRenderSubpageList3' );
+	return true;
 }
 
 /**
