@@ -48,7 +48,7 @@ function wfExtensionCommentbox_Add( &$op, &$text ) {
 	if ( !array_key_exists( $title->getNamespace(), $wgCommentboxNamespaces )
 	|| !$wgCommentboxNamespaces[ $title->getNamespace() ] )
 		return true;
-	if ( !( $action == 'view' || $action == 'purge' || $action == 'submit' ) )
+	if ( !( $action == 'view' || $action == 'purge' || $action == 'submit' || $action == '' ) )
 		return true;
 	if (  $wgRequest->getCheck( 'wpPreview' )
 	  || $wgRequest->getCheck( 'wpLivePreview' )
