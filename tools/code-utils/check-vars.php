@@ -168,7 +168,6 @@ class CheckVars {
 	}
 
 	protected static $mGlobalsPerFile = array( # Variables which are OK, but only on a few files
-			'$wgCaches' => array( 'ObjectCache.php', 'phpunit', 'ForkController.php' ),
 			'$wgDatabase' => array( 'updaters.inc', 'Installer.php', 'install-utils.inc', 'update.php', 'SqliteInstaller.php' ), # For update scripts
 			'$wgHtmlEntities' => array( 'Sanitizer.php' ),
 			'$wgHtmlEntityAliases' => array( 'Sanitizer.php' ),
@@ -178,8 +177,6 @@ class CheckVars {
 			'$wgDatabase' => array( 'DatabaseUpdater.php' ),
 			'$wgExtPGNewFields' => array( 'DatabaseUpdater.php', 'PostgresUpdater.php' ),
 			'$wgExtPGAlteredFields' => array( 'DatabaseUpdater.php', 'PostgresUpdater.php' ),
-			'$errs' => array( 'Installer.php' ),
-			'$mainListOpened' => array( 'Installer.php' ),
 			'$optionsWithArgs' => array( 'commandLine.inc' ),
 			'$args' => array( 'commandLine.inc' ),
 			'$options' => array( 'commandLine.inc', 'upgrade1_5.php' ),
