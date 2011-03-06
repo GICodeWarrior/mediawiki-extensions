@@ -86,6 +86,7 @@ EOT;
 		global $wgLogo;
 		$msgText = htmlspecialchars( wfMsgReal( $msgName, $msgParams ) );
 		$encMsgName = htmlspecialchars( $msgName );
+		wfDebug( "WebStore failed with '$encMsgName: $msgText; additional info: $extra'\n" );
 		$info = self::$httpErrors[$code];
 		$logo = htmlspecialchars( $wgLogo );
 		header( "HTTP/1.1 $code $info" );
