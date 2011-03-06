@@ -16,6 +16,9 @@ are no longer supported in this release.
 
 === Bug fixes ===
 
+* (mw:bug 27904) Fixed method signature compatibility with Mw1.16 for
+  WikilogParserCache.
+
 
 == Wikilog 1.1.0 ==
 

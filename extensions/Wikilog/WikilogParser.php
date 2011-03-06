@@ -620,12 +620,18 @@ class WikilogParserOutput
  * purpose.
  *
  * @deprecated In MediaWiki 1.17, in favor of $parserOpt->addExtraKey().
- * @todo (In Wikilog 1.3.x) Remove this class.
+ * @note MediaWiki 1.17 completely breaks this hack (in r70783). getKey() has
+ *   different parameters and very different implementation. Current version
+ *   is compatible with 1.16 and should only be used in that version, but may
+ *   issue warnings when used in 1.17. In 1.17, this class should never be
+ *   used due to the branch in WikilogUtils::parsedArticle(). It will be
+ *   removed anyways, as soon as we drop support for 1.16.
+ * @todo (In Wikilog 1.3.x) Remove this class (see also WikilogUtils::parsedArticle()).
  */
 class WikilogParserCache
 	extends ParserCache
 {
-	public static function &singleton() {
+	public static function singleton() {
 		static $instance;
 		if ( !isset( $instance ) ) {
 			global $parserMemc;
@@ -634,7 +640,7 @@ class WikilogParserCache
 		return $instance;
 	}
 
-	public function getKey( &$article, $popts ) {
+	public function getKey( $article, $popts ) {
 		if ( $popts instanceof User )	// API change in MediaWiki 1.15.
 			$popts = ParserOptions::newFromUser( $popts );
 
