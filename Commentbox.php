@@ -35,7 +35,7 @@ $wgAutoloadClasses['SpecialAddComment'] = dirname( __FILE__ ) . '/SpecialAddComm
 $wgHooks['OutputPageBeforeHTML'][] = 'wfExtensionCommentbox_Add';
 
 function wfExtensionCommentbox_Add( &$op, &$text ) {
-	global $wgUser, $wgRequest, $action,
+	global $wgUser, $wgRequest,
 	       $wgCommentboxNamespaces, $wgCommentboxRows,
 	       $wgCommentboxColumns;
 
@@ -48,7 +48,9 @@ function wfExtensionCommentbox_Add( &$op, &$text ) {
 	if ( !array_key_exists( $title->getNamespace(), $wgCommentboxNamespaces )
 	|| !$wgCommentboxNamespaces[ $title->getNamespace() ] )
 		return true;
-	if ( !( $action == 'view' || $action == 'purge' || $action == 'submit' || $action == '' ) )
+
+	$action = $wgRequest->getVal( 'action', 'view' );
+	if ( !( $action == 'view' || $action == 'purge' || $action == 'submit' ) )
 		return true;
 	if (  $wgRequest->getCheck( 'wpPreview' )
 	  || $wgRequest->getCheck( 'wpLivePreview' )
@@ -79,7 +81,7 @@ function wfExtensionCommentbox_Add( &$op, &$text ) {
               action="$newaction" enctype="multipart/form-data">
 	$intro
 	<textarea tabindex='1' accesskey="," name="wpComment" id="wpComment"
-	          rows='$wgCommentboxRows' cols='$wpCommentboxColumns'
+	          rows='$wgCommentboxRows' cols='$wgCommentboxColumns'
 		  >$inhalt</textarea>
 	$name
 	<br />
