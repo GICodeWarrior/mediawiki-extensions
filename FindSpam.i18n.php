@@ -571,6 +571,16 @@ $messages['ksh'] = array(
 	'right-findspam' => 'Noh fresch erinjekumme <i lang="en">SPAM</i> söke',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'findspam' => 'Spam an bibîne',
+	'findspam-ip' => "Adresê IP'ê:",
+	'findspam-ok' => 'Temam',
+	'findspam-notextfound' => 'Tevkarî nehatin dîtin',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
