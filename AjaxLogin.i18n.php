@@ -142,6 +142,7 @@ Koll ar cheñchamantoù hoc'h eus graet d'ar bajenn-mañ a c'hallit ober ma kuit
 	'al-nosuchuser' => 'N\'eus implijer ebet anvet "$1".
 E kont eo kemeret ar pennlizherennù en anvioù an implijerien.
 Gwiriit ho reizhskrivadur.',
+	'al-createblocked' => "Miret ez eus bet ouzh ho chomlec'h IP krouiñ kontoù.",
 );
 
 /** Bosnian (Bosanski)
@@ -247,19 +248,22 @@ Kontrollér stavemåden.',
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Kghbln
  * @author Tim 'Avatar' Bartel
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'ajaxlogin-desc' => 'Dynamische Box, welche es Benutzern erlaubt sich anzumelden und ein neues Passwort zuzusenden',
-	'ajaxLogin1' => 'Du musst ein neues Passwort eingeben um die Anmeldung durchzuführen.
+	'ajaxlogin-desc' => 'Stellt ein dynamisches Fenster bereit, das es Benutzern erlaubt sich anzumelden und sich ein neues Passwort zuzusenden',
+	'ajaxLogin1' => 'Du musst ein neues Passwort eingeben, um die Anmeldung durchzuführen.
 Dies geschieht auf einer anderen Seite, so dass du deine aktuellen Änderungen auf dieser Seite möglicherweise verlieren wirst.',
 	'ajaxLogin2' => 'Bist du sicher?
-Möglicherweise gehen deine aktuellen Änderungen verloren, wenn du diese Seite verlässt.',
+Möglicherweise gehen deine aktuellen Änderungen an dieser Seite verloren, sofern du sie verlässt.',
 	'ajaxlogin-create' => 'Erstelle ein Benutzerkonto',
-	'al-nosuchuser' => 'Es gibt keinen Benutzer mit dem Namen „$1“.
+	'al-nosuchuser' => 'Es gibt keinen Benutzer namens „$1“.
 Benutzernamen können sich in der Groß- und Kleinschreibung unterscheiden.
-Bitte Schreibweise überprüfen.',
+Bitte überprüfe die Schreibweise.',
+	'al-createblocked' => 'Deine IP-Adresse wurde für die Erstellung von Benutzerkonten gesperrt.',
+	'al-throttled' => 'Du hast zu häufig versucht dein Passwort anzugeben. Bitte warte $1 {{PLURAL:$1|Sekunde|Sekunden}} bis zum nächsten Versuch.',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
