@@ -910,8 +910,10 @@ $messages['ksh'] = array(
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'editmessages' => 'Mesajan biguherîne',
 	'editmsg-search' => 'Lêbigere',
 );
 
