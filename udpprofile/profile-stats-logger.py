@@ -26,8 +26,10 @@ if not os.path.exists( rrdFileName ):
 nextTime = math.floor(time.time() / 10) * 10 + 10
 
 while True:
-	while time.time() < nextTime:
-		time.sleep(nextTime - time.time())
+	t = time.time()
+	while t < nextTime:
+		time.sleep(nextTime - t)
+		t = time.time()
 	nextTime += 10
 
 	fullProfile = SocketProfile(config.host,config.port).extract()
