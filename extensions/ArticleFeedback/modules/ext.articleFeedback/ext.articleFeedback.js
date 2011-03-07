@@ -210,7 +210,7 @@ var config = {
 		},
 		'join': {
 			'condition': function() {
-				return isPitchVisible( 'join' ) && !mediaWiki.user.anonymous();
+				return isPitchVisible( 'join' ) && mediaWiki.user.anonymous();
 			},
 			'action': function() {
 				// Click tracking
