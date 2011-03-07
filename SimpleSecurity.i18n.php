@@ -496,6 +496,7 @@ $messages['ha'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -516,6 +517,7 @@ $messages['he'] = array(
 	'security-type-category' => 'קטגוריה',
 	'security-type-namespace' => 'מרחב השם',
 	'security-restricttogroup' => 'הגישה לתוכן מוגבלת לחברים בקבוצה "$1"',
+	'restriction-read' => 'קריאה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
