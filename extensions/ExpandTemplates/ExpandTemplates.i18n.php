@@ -1205,7 +1205,9 @@ $messages['ksh'] = array(
  * @author George Animal
  */
 $messages['ku-latn'] = array(
+	'expand_templates_output' => 'Encam',
 	'expand_templates_ok' => 'Temam',
+	'expand_templates_preview' => 'Pêşdîtin',
 );
 
 /** Latin (Latina)

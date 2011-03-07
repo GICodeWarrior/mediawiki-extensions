@@ -163,6 +163,20 @@ Villicht hesch au die Syte welle ufruefe:
 * [[{{MediaWiki:Mainpage}}|Houptsyte]]',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'special404-desc' => 'יצירת יעד לכל שגיאות ה־404',
+	'error404' => '404 – לא נמצא',
+	'special404-body' => 'הכתובת שביקשתם לא נמצאה.
+
+האם התכוונתם ל־{{fullurl:$1}}?
+
+אולי תרצו להסתכל על:
+* [[{{MediaWiki:Mainpage}}|הדף הראשי]]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

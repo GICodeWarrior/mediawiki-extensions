@@ -970,6 +970,13 @@ künne mer em Momang nit koppeere.',
 	'right-duplicate' => 'Sigge verdubbelle',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'duplicator-source' => 'Çavkanî:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
