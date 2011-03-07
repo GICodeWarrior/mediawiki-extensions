@@ -1161,6 +1161,8 @@ JAVASCRIPT;
 			if ( array_key_exists( 'mintime', $other_args )
 					&& ( preg_match( '/^\d+:\d\d$/', trim( $other_args['mintime'] ) ) == 1 ) ) {
 					$minTime = trim( $other_args[ 'mintime' ] );
+			} elseif ( $sfigSettings->timePickerMinTime != null ) {
+				$minTime = $sfigSettings->timePickerMinTime	;
 			} else {
 				$minTime = '00:00';
 			}
@@ -1169,6 +1171,8 @@ JAVASCRIPT;
 			if ( array_key_exists( 'maxtime', $other_args )
 					&& ( preg_match( '/^\d+:\d\d$/', trim( $other_args['maxtime'] ) ) == 1 ) ) {
 					$maxTime = trim( $other_args[ 'maxtime' ] );
+			} elseif ( $sfigSettings->timePickerMaxTime != null ) {
+				$maxTime = $sfigSettings->timePickerMaxTime	;
 			} else {
 				$maxTime = '23:59';
 			}
