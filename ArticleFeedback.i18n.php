@@ -60,10 +60,6 @@ $messages['en'] = array(
 	'articlefeedback-pitch-join-login' => 'Log in',
 	'articlefeedback-pitch-edit-message' => 'Did you know that you can edit this page?',
 	'articlefeedback-pitch-edit-accept' => 'Edit this page',
-	'articlefeedback-expert-assessment-question' => 'Do you have knowledge in this topic?',
-	'articlefeedback-expert-assessment-level-1-label' => 'Marginal',
-	'articlefeedback-expert-assessment-level-2-label' => 'Competent',
-	'articlefeedback-expert-assessment-level-3-label' => 'Expert',
 	'articlefeedback-survey-message-success' => 'Thanks for filling out the survey.',
 	'articlefeedback-survey-message-error' => 'An error has occurred.
 Please try again later.',
