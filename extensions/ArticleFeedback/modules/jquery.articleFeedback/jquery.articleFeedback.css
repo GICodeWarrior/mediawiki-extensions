@@ -87,6 +87,7 @@
 }
 
 .articleFeedback-pitch .articleFeedback-title {
+	font-size: 1em;
 	padding-left: 28px;
 	line-height: 32px;
 	background-image: url(images/check.png);
@@ -98,7 +99,10 @@
 .articleFeedback-pitch .articleFeedback-pop {
 	padding: 1em;
 	margin: 0;
-	background-color: #CCFFCC;
+	background-color: #b2d6f6;
+	background-image: url(images/pop.png);
+	background-position: center center;
+	background-repeat: no-repeat;
 	text-align: center;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -107,7 +111,7 @@
 
 .articleFeedback-message {
 	margin: 0.5em;
-	font-size: larger;
+	font-size: 1.5em;
 }
 
 .articleFeedback-switch {
