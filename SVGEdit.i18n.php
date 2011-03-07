@@ -162,6 +162,7 @@ $messages['gl'] = array(
 	'svgedit-desc' => 'Edición de debuxos en formato SVG no propio navegador co [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Editar o debuxo',
 	'svgedit-edit-tab-tooltip' => 'Pode editar este debuxo SVG no seu navegador',
+	'svgedit-toolbar-insert' => 'Debuxo SVG',
 );
 
 /** Swiss German (Alemannisch)
@@ -205,6 +206,7 @@ $messages['hsb'] = array(
 	'svgedit-desc' => 'Zmóžnja wobdźěłanje SVG-rysowanki z [http://code.google.com/p/svg-edit/ SVG-Edit] we wobhladowaku',
 	'svgedit-edit-tab' => 'Rysowanku wobdźěłać',
 	'svgedit-edit-tab-tooltip' => 'Móžeće tutu SVG-rysowanku w swojim wobhladowaku wobdźěłać',
+	'svgedit-toolbar-insert' => 'SVG-rysowanje',
 );
 
 /** Interlingua (Interlingua)
