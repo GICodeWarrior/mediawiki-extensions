@@ -50,6 +50,10 @@ $wgHooks['BeforePageDisplay'][] = 'ClickTrackingHooks::beforePageDisplay';
 $wgHooks['MakeGlobalVariablesScript'][] = 'ClickTrackingHooks::makeGlobalVariablesScript';
 $wgHooks['ParserTestTables'][] = 'ClickTrackingHooks::parserTestTables';
 
+$wgHooks['EditPage::showEditForm:fields'][] = 'ClickTrackingHooks::editPageShowEditFormFields';
+$wgHooks['ArticleSave'][] = 'ClickTrackingHooks::articleSave';
+$wgHooks['ArticleSaveComplete'][] = 'ClickTrackingHooks::articleSaveComplete';
+
 // API modules
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
 $wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';

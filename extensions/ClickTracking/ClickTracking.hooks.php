@@ -152,4 +152,48 @@ class ClickTrackingHooks {
 		$dbw->commit();
 		return $db_status;
 	}
+	
+	public static function editPageShowEditFormFields( $editPage, $output ) {
+		global $wgRequest;
+		
+		// Add clicktracking fields to form, if given
+		$session = $wgRequest->getVal( 'clicktrackingsession' );
+		$event = $wgRequest->getVal( 'clicktrackingevent' );
+		if ( $session !== null && $event !== null ) {
+			$editPage->editFormTextAfterContent .= Html::hidden( 'clicktrackingsession', $session );
+			$editPage->editFormTextAfterContent .= Html::hidden( 'clicktrackingevent', $event );
+		}
+		
+		return true;
+	}
+	
+	public static function articleSave( $editpage ) {
+		self::trackRequest( 'save-attempt' );
+		return true;
+	}
+	
+	public static function articleSaveComplete( $article, $user, $text, $summary, $minoredit,
+			$watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId, $redirect ) {
+		self::trackRequest( 'save-complete' );
+		return true;
+	}
+	
+	protected static function trackRequest( $info ) {
+		global $wgRequest;
+		
+		$session = $wgRequest->getVal( 'clicktrackingsession' );
+		$event = $wgRequest->getVal( 'clicktrackingevent' );
+		if ( $session !== null && $event !== null ) {
+			$params = new FauxRequest( array(
+				'action' => 'clicktracking',
+				'eventid' => $event,
+				'token' => $session,
+				'additional' => $info,
+			) );
+			$api = new ApiMain( $params, true );
+			$api->execute();
+		}
+		
+		return true;
+	}
 }
