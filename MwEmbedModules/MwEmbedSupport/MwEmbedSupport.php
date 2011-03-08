@@ -29,7 +29,11 @@ return array(
 		),
 		'messageFile' => 'MwEmbedSupport.i18n.php',
 	),
-	'mediawiki.language.parser' => array( 'scripts'=> 'mediawiki.language.parser.js' ),
+	'mediawiki.UtilitiesTime' => array( 'scripts' => 'mediawiki/mediawiki.UtilitiesTime.js' ),
+	'mediawiki.client' => array( 'scripts' => 'mediawiki/mediawiki.client.js' ),
+	'mediawiki.Uri' => array( 'scripts' => 'mediawiki/mediawiki.Uri.js' ),
+	
+	'mediawiki.language.parser' => array( 'scripts'=> 'mediawiki/mediawiki.language.parser.js' ),
 	'jquery.menu' => array(
 		'scripts' => 'jquery.menu/jquery.menu.js',
 		'styles' => 'jquery.menu/jquery.menu.css'

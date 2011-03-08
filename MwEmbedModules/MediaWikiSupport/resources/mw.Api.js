@@ -241,7 +241,7 @@
 	* 	false if the domain is
 	*/
 	mw.isLocalDomain = function( url ) {
-		if( mw.parseUri( document.URL ).host == mw.parseUri( url ).host
+		if( new mw.Uri( document.URL ).host == new mw.Uri( url ).host
 			|| url.indexOf( '://' ) == -1 )
 		{
 			return true;
