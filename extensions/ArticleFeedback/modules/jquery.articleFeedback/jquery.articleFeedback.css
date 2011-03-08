@@ -90,7 +90,7 @@
 	font-size: 1em;
 	padding-left: 28px;
 	line-height: 32px;
-	background-image: url(images/check.png);
+	background-image: url(images/success.png);
 	background-repeat: no-repeat;
 	background-position: left center;
 	margin-bottom: 0.5em;
@@ -99,19 +99,26 @@
 .articleFeedback-pitch .articleFeedback-pop {
 	padding: 1em;
 	margin: 0;
-	background-color: #b2d6f6;
+	background-color: white;
+	border: solid 1px silver;
+	/*
 	background-image: url(images/pop.png);
 	background-position: center center;
 	background-repeat: no-repeat;
-	text-align: center;
+	*/
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
 
 .articleFeedback-message {
-	margin: 0.5em;
+	margin: 0.33em;
 	font-size: 1.5em;
+}
+
+.articleFeedback-body {
+	margin: 0.5em;
+	color: #333333;
 }
 
 .articleFeedback-switch {
@@ -312,7 +319,7 @@
 }
 .articleFeedback-success span {
 	display: none;
-	background-image: url(images/check.png);
+	background-image: url(images/success.png);
 	background-repeat: no-repeat;
 	background-position: center left;
 	padding-left: 28px;

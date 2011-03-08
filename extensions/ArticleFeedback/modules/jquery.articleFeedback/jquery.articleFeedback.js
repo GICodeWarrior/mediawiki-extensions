@@ -57,6 +57,7 @@ $.articleFeedback = {
 		<div class="articleFeedback-title"></div>\
 		<div class="articleFeedback-pop">\
 			<div class="articleFeedback-message"></div>\
+			<div class="articleFeedback-body"></div>\
 			<button class="articleFeedback-accept"></button>\
 			<button class="articleFeedback-reject"></button>\
 		</div>\
@@ -307,6 +308,9 @@ $.articleFeedback = {
 								.find( '.articleFeedback-message' )
 									.text( mw.msg( context.options.pitches[key].message ) )
 									.end()
+								.find( '.articleFeedback-body' )
+									.text( mw.msg( context.options.pitches[key].body ) )
+									.end()
 								.find( '.articleFeedback-accept' )
 									.text( mw.msg( context.options.pitches[key].accept ) )
 									.click( function() {
@@ -317,6 +321,7 @@ $.articleFeedback = {
 										);
 									} )
 									.button()
+									.addClass( 'ui-button-green' )
 									.end()
 								.find( '.articleFeedback-reject' )
 									.text( mw.msg( context.options.pitches[key].reject ) )
@@ -356,7 +361,8 @@ $.articleFeedback = {
 												context.options.pitches[$pitch.attr( 'rel' )].altAction
 											);
 										} )
-										.button();
+										.button()
+										.addClass( 'ui-button-green' );
 							}
 						}
 					} )
@@ -365,7 +371,7 @@ $.articleFeedback = {
 				// Activate tooltips
 				.find( '[title]' )
 					.tipsy( {
-						'gravity': 'sw',
+						'gravity': 'se',
 						'center': false,
 						'fade': true,
 						'delayIn': 300,
@@ -399,6 +405,7 @@ $.articleFeedback = {
 				// Buttonify the button
 				.find( '.articleFeedback-submit' )
 					.button()
+					.addClass( 'ui-button-blue' )
 					.click( function() {
 						$.articleFeedback.fn.submit.call( context );
 						var pitches = [];
