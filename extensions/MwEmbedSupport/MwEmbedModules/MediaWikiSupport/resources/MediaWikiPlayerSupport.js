@@ -18,7 +18,7 @@
 	});
 	
 	/**
-	 * Master function to add mediaWiki support to embedPlayer 
+	 * Closure function wraps mediaWiki embedPlayer bindings
 	 */
 	mw.addMediaWikiPlayerSupport = function( embedPlayer ){
 		
@@ -108,13 +108,13 @@
 		*
 		* TODO parse the resource page template
 		*
-		* @parm {String} wikiText Resource wiki text page contents
+		* @parm {String} resourceHTML Resource wiki text page contents
 		*/
-		function doCreditLine( articleUrl ){
-			// Get the title str			
-			var titleStr = apiTitleKey.replace(/_/g, ' ');
+		function doCreditLine( resourceHTML, articleUrl ){
+			// Get the title string ( again a "Title" like js object could help out here. ) 		
+			var titleStr = embedPlayer.apiTitleKey.replace(/_/g, ' ');
 
-			var imgWidth = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 )? 45 : 90;
+			var imgWidth = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 )? 45 : 120;
 
 			return $( '<div/>' ).addClass( 'creditline' )
 				.append(
@@ -160,26 +160,22 @@
 			var apiUrl = mw.getApiProviderURL( apiProvider );
 			var fileTitle = 'File:' + unescape( apiTitleKey).replace(/File:|Image:/, '');
 			
-			// Get the image info
+			// Get the image page ( cache for 1 hour )
 			var request = {
-				'prop' : 'imageinfo',
-				'titles' : fileTitle,
-				'iiprop' : 'url'
+				'action': 'parse',
+				'page': fileTitle,
+				'smaxage' : 3600,
+				'maxage' : 3600
 			};
 			var articleUrl = '';
 			mw.getJSON( apiUrl, request, function( data ){
-				if ( data.query.pages ) {
-					for ( var i in data.query.pages ) {
-						var imageProps = data.query.pages[i];						
-						// Check properties for "missing"
-						if( imageProps.imageinfo && imageProps.imageinfo[0] && imageProps.imageinfo[0].descriptionurl ){
-							$creditsCache = doCreditLine( imageProps.imageinfo[0].descriptionurl );
-							// Found page
-							$target.html( $creditsCache );
-							callback( true );
-							return ;
-						}
-					}
+				descUrl = apiUrl.replace( 'api.php', 'index.php');
+				descUrl+= '?title=' + fileTitle;
+				if ( data && data.parse && data.parse.text && data.parse.text['*'] ) {
+					// TODO improve provider 'concept' to support page title link genneration
+					$creditsCache = doCreditLine( data.parse.text['*'], descUrl );
+				} else {
+					$creditsCache = doCreditLine( false, descUrl)
 				}
 				// failed
 				callback( false );
