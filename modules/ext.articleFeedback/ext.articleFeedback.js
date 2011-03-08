@@ -205,6 +205,7 @@ var config = {
 			},
 			'title': 'articlefeedback-pitch-thanks',
 			'message': 'articlefeedback-pitch-survey-message',
+			'body': 'articlefeedback-pitch-survey-body',
 			'accept': 'articlefeedback-pitch-survey-accept',
 			'reject': 'articlefeedback-pitch-reject'
 		},
@@ -228,6 +229,7 @@ var config = {
 			},
 			'title': 'articlefeedback-pitch-thanks',
 			'message': 'articlefeedback-pitch-join-message',
+			'body': 'articlefeedback-pitch-join-body',
 			'accept': 'articlefeedback-pitch-join-accept',
 			'reject': 'articlefeedback-pitch-reject',
 			// Special alternative action for going to login page
@@ -276,6 +278,7 @@ var config = {
 			},
 			'title': 'articlefeedback-pitch-thanks',
 			'message': 'articlefeedback-pitch-edit-message',
+			'body': 'articlefeedback-pitch-join-body',
 			'accept': 'articlefeedback-pitch-edit-accept',
 			'reject': 'articlefeedback-pitch-reject'
 		}
