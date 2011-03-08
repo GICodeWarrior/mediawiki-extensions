@@ -23,11 +23,17 @@ if ( mw.config.get( 'wgVectorSectionEditLinksBucketTest', false ) ) {
 if ( bucket ) {
 	// Transform the targets of section edit links to route through the click tracking API
 	$( 'span.editsection a' ).each( function() {
+		var session = $.cookie( 'clicktracking-session' );
+		var editUrl = $( this ).attr( 'href' );
+		editUrl += ( editUrl.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( {
+			'clicktrackingsession': session,
+			'clicktrackinginfo': 'ext.vector.sectionEditLinks-bucket' + bucket + '-save'
+		} );
 		$(this).attr( 'href', mediaWiki.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
 			'action': 'clicktracking',
 			'eventid': 'ext.vector.sectionEditLinks-bucket' + bucket + '-click',
-			'token': $.cookie( 'clicktracking-session' ),
-			'redirectto': $( this ).attr( 'href' )
+			'token': session,
+			'redirectto': editUrl
 		} ) );
 	} );
 	if ( bucket == 2 ) {
