@@ -27,7 +27,7 @@ if ( bucket ) {
 		var editUrl = $( this ).attr( 'href' );
 		editUrl += ( editUrl.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( {
 			'clicktrackingsession': session,
-			'clicktrackinginfo': 'ext.vector.sectionEditLinks-bucket' + bucket + '-save'
+			'clicktrackingevent': 'ext.vector.sectionEditLinks-bucket' + bucket + '-save'
 		} );
 		$(this).attr( 'href', mediaWiki.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
 			'action': 'clicktracking',
