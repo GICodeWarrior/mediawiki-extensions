@@ -900,7 +900,7 @@ $messages['pms'] = array(
 	'contrib-tracking-redirect' => 'A sarà anviarà automaticament su PayPal për completé soa donassion.',
 	'contrib-tracking-button' => 'Continua',
 	'contrib-tracking-item-name-onetime' => 'Donassion sìngola',
-	'contrib-tracking-item-name-recurring' => 'Donassion recorenta mensil',
+	'contrib-tracking-item-name-recurring' => 'Donassion arcorenta mensil',
 );
 
 /** Pashto (پښتو)
@@ -1153,6 +1153,8 @@ $messages['tl'] = array(
 	'contrib-tracking-continue' => 'Kapag hindi ka kusang naituro/awtomatikong naihatid, pindutin ang pindutan upang mabuo ang iyong ambag/abuloy doon sa PayPal.',
 	'contrib-tracking-redirect' => 'Automatiko kang ikakarga sa PayPal upang makumpleto ang iyong pagkakaloob.',
 	'contrib-tracking-button' => 'Magpatuloy',
+	'contrib-tracking-item-name-onetime' => 'Abuloy na pang-isang pagkakataon',
+	'contrib-tracking-item-name-recurring' => 'Umuulit na buwanang ambag',
 );
 
 /** Turkish (Türkçe)
