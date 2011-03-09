@@ -331,17 +331,18 @@ Może chcesz zobaczyć
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'special404-desc' => "A dà na destinassion për j'eror 404 Pa trovà",
 	'error404' => '404 Pa trovà',
-	'special404-body' => "L'URL ch'it l'has ciamà a l'é pa stàita trovà
+	'special404-body' => "L'adrëssa dl'aragnà ch'a l'ha ciamà a l'é pa stàita trovà
 
-Vorìës-to scrive {{fullurl:$1}}?
+A vorìa scrive {{fullurl:$1}}?
 
-A peul esse ch'it veubie vardé:
-* [[{{MediaWiki:Mainpage}}|La pàgina prinsipal]]",
+A peul esse ch'a veula vardé:
+* [[{{MediaWiki:Mainpage}}|La pàgina d'intrada]]",
 );
 
 /** Portuguese (Português)
