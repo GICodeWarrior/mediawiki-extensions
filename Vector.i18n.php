@@ -21,6 +21,7 @@ If you are logged in, you can disable this warning in the "Editing" section of y
 	'vector-editwarning-preference' => 'Warn me when I leave an edit page with unsaved changes',
 	'vector-simplesearch-search' => 'Search',
 	'vector-simplesearch-containing' => 'containing...',
+	'vector-noexperiments-preference' => 'Exclude me from feature experiments',
 );
 
 /** Message documentation (Message documentation)
