@@ -70,6 +70,18 @@ $messages['fr'] = array(
 	'researchtools-page-prefs' => 'Statistiques des préférences',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'researchtools' => 'Ferramentas de investigación',
+	'researchtools-desc' => 'Conxunto de ferramentas útiles para a realización de estudos de investigación sobre os usuarios',
+	'researchtools-page-dashboard' => 'Panel de control',
+	'researchtools-page-surveys' => 'Respostas á enquisa',
+	'researchtools-page-clicks' => 'Seguimento dos clics',
+	'researchtools-page-prefs' => 'Estatísticas das preferencias',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
