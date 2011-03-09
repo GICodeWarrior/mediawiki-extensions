@@ -221,8 +221,8 @@ $messages['br'] = array(
 	'refreshspecial-desc' => 'Aotreañ a ra ar [[Special:RefreshSpecial|freskadur gant an dorn]] eus ar bajennoù ispisial',
 	'refreshspecial-title' => 'Freskaat ar pajennoù arbennik',
 	'refreshspecial-help' => "Ar bajenn ispisial-mañ a ro an tro da freskaat pajennoù ispisial gant an dorn.
-P'ho peus dibabet an holl pajennoù ho peus c'hoant freskaat klikit war \"Freskaat\" amañ dindan evit diskouez ar bajennoù dibabet.
-'''Diwallit :''' war ar wikioù bras e c'hell padout an traoù un tamm.",
+Ur wezh dibabet an holl bajennoù hoc'h eus c'hoant da freskaat klikit war \"Freskaat\" amañ dindan evit diskouez ar pajennoù dibabet.
+'''Diwallit :''' war ar wikioù bras e c'hall padout an traoù un tamm.",
 	'refreshspecial-button' => 'Freskaat ar re ziuzet',
 	'refreshspecial-fail' => "Mar plij gevaskit ur bajenn ispisial da freskaat d'an nebeutañ.",
 	'refreshspecial-refreshing' => 'o freskaat ar pajennoù arbennik',
