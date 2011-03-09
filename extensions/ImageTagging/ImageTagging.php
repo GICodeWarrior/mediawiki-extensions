@@ -410,8 +410,8 @@ function wfImageTagPageSetup() {
 
 			$this->modifiedImagePageOpenShowImage();
 
-			if ( $this->img->exists() ) {
-				$tagList = wfGetImageTags($this->img, $imgName);
+			if ( $this->getFile()->exists() ) {
+				$tagList = wfGetImageTags($this->getFile(), $imgName);
 
 				#if ( $tagList )
 				$wgOut->addHTML("<div id='tagListDiv'><span id='tagList'>$tagList</span></div>");
@@ -425,7 +425,7 @@ function wfImageTagPageSetup() {
 
 			wfProfileIn( __METHOD__ );
 
-			$full_url  = $this->img->getURL();
+			$full_url  = $this->getFile()->getURL();
 			$anchoropen = '';
 			$anchorclose = '';
 
@@ -444,17 +444,17 @@ function wfImageTagPageSetup() {
 			$maxHeight = 460;
 			$sk = $wgUser->getSkin();
 
-			if ( $this->img->exists() ) {
+			if ( $this->getFile()->exists() ) {
 				# image
-				$width = $this->img->getWidth();
-				$height = $this->img->getHeight();
+				$width = $this->getFile()->getWidth();
+				$height = $this->getFile()->getHeight();
 				$showLink = false;
 
-				if ( $this->img->allowInlineDisplay() and $width and $height) {
+				if ( $this->getFile()->allowInlineDisplay() and $width and $height) {
 					# image
 
 					# "Download high res version" link below the image
-					$msg = wfMsgHtml('show-big-image', $width, $height, intval( $this->img->getSize()/1024 ) );
+					$msg = wfMsgHtml('show-big-image', $width, $height, intval( $this->getFile()->getSize()/1024 ) );
 
 					# We'll show a thumbnail of this image
 					if ( $width > $maxWidth || $height > $maxHeight ) {
@@ -472,22 +472,22 @@ function wfImageTagPageSetup() {
 							# because of rounding.
 						}
 
-						$thumbnail = $this->img->getThumbnail( $width );
+						$thumbnail = $this->getFile()->getThumbnail( $width );
 						if ( $thumbnail == null ) {
-							$url = $this->img->getViewURL();
+							$url = $this->getFile()->getViewURL();
 						} else {
 							$url = $thumbnail->getURL();
 						}
 
 						$anchoropen  = "<a href=\"{$full_url}\">";
 						$anchorclose = "</a><br />";
-						if( $this->img->mustRender() ) {
+						if( $this->getFile()->mustRender() ) {
 							$showLink = true;
 						} else {
 							$anchorclose .= "\n$anchoropen{$msg}</a>";
 						}
 					} else {
-						$url = $this->img->getViewURL();
+						$url = $this->getFile()->getViewURL();
 						$showLink = true;
 					}
 
@@ -501,8 +501,8 @@ function wfImageTagPageSetup() {
 					      $anchoropen . $anchorclose . '</div>' );
 				} else {
 					#if direct link is allowed but it's not a renderable image, show an icon.
-					if ($this->img->isSafeFile()) {
-						$icon= $this->img->iconThumb();
+					if ($this->getFile()->isSafeFile()) {
+						$icon= $this->getFile()->iconThumb();
 
 						$wgOut->addHTML( '<div class="fullImageLink" id="file"><a href="' . $full_url . '">' .
 						$icon->toHtml() .
@@ -513,12 +513,12 @@ function wfImageTagPageSetup() {
 				}
 
 				if ($showLink) {
-					$filename = wfEscapeWikiText( $this->img->getName() );
+					$filename = wfEscapeWikiText( $this->getFile()->getName() );
 					$info = wfMsg( 'file-info',
-						$sk->formatSize( $this->img->getSize() ),
-						$this->img->getMimeType() );
+						$sk->formatSize( $this->getFile()->getSize() ),
+						$this->getFile()->getMimeType() );
 
-					if (!$this->img->isSafeFile()) {
+					if (!$this->getFile()->isSafeFile()) {
 						$warning = wfMsg( 'mediawarning' );
 						$wgOut->addWikiText( <<<END
 <div class="fullMedia">
@@ -539,7 +539,7 @@ END
 					}
 				}
 
-				if($this->img->fromSharedDirectory) {
+				if($this->getFile()->fromSharedDirectory) {
 					$this->printSharedImageText();
 				}
 			} else {
