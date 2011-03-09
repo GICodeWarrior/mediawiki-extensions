@@ -8,6 +8,8 @@
  
 // Normal rules
 var rules = [
+['\\\\([A-Za-z\\>_~\\.0-9])', '\\\\','$1'],
+
 ['ඬ්හ්a', '', 'ඳ'],	// nndha
 ['න්න්d', '', 'ඬ්'], 	// nnd
 ['න්න්g', '', 'ඟ්'],	// nng
@@ -100,6 +102,6 @@ jQuery.narayam.addScheme( 'si-singlish', {
 	'namemsg': 'narayam-si-singlish',
 	'extended_keyboard': false,
 	'lookbackLength': 5,
-	'keyBufferLength': 0,
+	'keyBufferLength': 2,
 	'rules': rules
 } ); 

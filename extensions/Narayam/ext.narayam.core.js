@@ -342,7 +342,7 @@ $.narayam = new ( function() {
 	this.setScheme = function( name ) {
 		if ( name in schemes ) {
 			currentScheme = schemes[name];
-			$.cookie( 'narayam-scheme', scheme, { 'path': '/', 'expires': 30 } );
+			$.cookie( 'narayam-scheme', name, { 'path': '/', 'expires': 30 } );
 			$select.val( name );
 		}
 	};
