@@ -191,6 +191,7 @@ $messages['be-tarask'] = array(
 	'vector-editwarning-preference' => 'Папярэджваць мяне, калі я буду пакідаць старонку рэдагаваньня зь незахаванымі зьменамі',
 	'vector-simplesearch-search' => 'Пошук',
 	'vector-simplesearch-containing' => 'утрымлівае...',
+	'vector-noexperiments-preference' => 'Не прапанаваць экспэрымэнтальныя магчымасьці',
 );
 
 /** Bulgarian (Български)
@@ -409,6 +410,7 @@ Denne advarsel kan slås fra under Redigering i dine indstillinger.',
  * @author SVG
  * @author The Evil IP address
  * @author Tischbeinahe
+ * @author ✓
  */
 $messages['de'] = array(
 	'vector' => 'Verbesserungen für die Vector-Benutzeroberfläche',
@@ -420,6 +422,7 @@ Als angemeldeter Benutzer kann das Anzeigen dieser Warnung im „Bearbeiten“-B
 	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gespeicherte Änderungen enthält',
 	'vector-simplesearch-search' => 'Suche',
 	'vector-simplesearch-containing' => 'Volltextsuche nach …',
+	'vector-noexperiments-preference' => 'Mich von der Teilnahme an Feature-Experimenten ausschließen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬) */
@@ -717,6 +720,7 @@ $messages['hsb'] = array(
 	'vector-editwarning-preference' => 'Warnować, hdyž so wobdźěłowanska strona z njeskładowanymi změnami wopušća',
 	'vector-simplesearch-search' => 'Pytać',
 	'vector-simplesearch-containing' => 'wobsahuje...',
+	'vector-noexperiments-preference' => 'Mje z funkciskich eksperimentow wuzamknyć',
 );
 
 /** Hungarian (Magyar)
@@ -759,6 +763,7 @@ Si tu ha aperite un session, tu pote disactivar iste aviso in le section "Modifi
 	'vector-editwarning-preference' => 'Advertir me quando io quita un pagina de modification sin publicar le cambiamentos',
 	'vector-simplesearch-search' => 'Cercar',
 	'vector-simplesearch-containing' => 'continente...',
+	'vector-noexperiments-preference' => 'Excluder me de functionalitate experimental',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -823,6 +828,7 @@ Se sei loggato, puoi disattivare questo avviso nella sezione "Casella di modific
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -834,6 +840,7 @@ $messages['ja'] = array(
 	'vector-editwarning-preference' => '変更を保存せずに編集画面から離れようとした際に警告する',
 	'vector-simplesearch-search' => '検索',
 	'vector-simplesearch-containing' => 'この語句を全文検索',
+	'vector-noexperiments-preference' => '機能についての実験から自分を除外する',
 );
 
 /** Javanese (Basa Jawa) */
@@ -961,6 +968,15 @@ Wann Dir ageloggt sidd, kënnt Dir dës Warnung an der Sektioun "Änneren" vun �
 	'vector-editwarning-preference' => "Mech warne wann ech d'Ännerung vun enger Säit verloosen, ouni Ännerunge gespäichert ze hunn",
 	'vector-simplesearch-search' => 'Sich',
 	'vector-simplesearch-containing' => 'mat ...',
+);
+
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'vector-editwarning-warning' => 'Bw\'ova ku lupapula luno kiyinza okuleetera enkyukakyuka z\'olukozeko okuvawo.<br />
+Bw\'oba nga okola oyingidde mu sisitemu, okulabula kuno oyinza okukusirisa nga weyambisa<br />
+ebiri mu kitundu ekya "Kukyusa" eky\'omu "Nteekateeka yange".',
 );
 
 /** Limburgish (Limburgs)
@@ -1135,6 +1151,7 @@ Als u bent aangemeld, kunt u deze waarschuwing uitschakelen in het tabblad "Bewe
 	'vector-editwarning-preference' => 'Waarschuw mij als ik een bewerkte pagina die nog niet is opgeslagen wil verlaten',
 	'vector-simplesearch-search' => 'Zoeken',
 	'vector-simplesearch-containing' => 'bevat...',
+	'vector-noexperiments-preference' => 'Mij in de toekomst niet laten deelnemen aan experimenten',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1201,10 +1218,12 @@ Jeśli jesteś zalogowany możesz wyłączyć wyświetlanie tego ostrzeżenia w 
 	'vector-editwarning-preference' => 'Ostrzegaj mnie, gdy opuszczam stronę edycji bez zapisania zmian',
 	'vector-simplesearch-search' => 'Szukaj',
 	'vector-simplesearch-containing' => 'zawierające...',
+	'vector-noexperiments-preference' => 'Nie chcę w przyszłości brać udziału w testach',
 );
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'vector' => 'Ameliorament UI për Vector',
@@ -1216,6 +1235,7 @@ S'it ses logà, it peule disabilité st'avis-sì ant la session \"Quàder ëd mo
 	'vector-editwarning-preference' => 'Avisme quand che i lasso na pàgina ëd modìfiche con modìfiche nen salvà',
 	'vector-simplesearch-search' => 'Arserca',
 	'vector-simplesearch-containing' => 'contenent ...',
+	'vector-noexperiments-preference' => "Gav-me da j'esperiment ëd le funsion",
 );
 
 /** Pontic (Ποντιακά) */
@@ -1416,6 +1436,7 @@ To opozorilo lahko onemogočite v razdelku »Urejanje« svojih nastavitev.',
 	'vector-editwarning-preference' => 'Opozori me, ko skušam zapreti urejevalno polje z neshranjenimi spremembami',
 	'vector-simplesearch-search' => 'Iskanje',
 	'vector-simplesearch-containing' => 'vsebujoč ...',
+	'vector-noexperiments-preference' => 'Izključi me iz prihodnjih preizkusov',
 );
 
 /** Albanian (Shqip)
@@ -1647,6 +1668,7 @@ Nếu đã đăng nhập, bạn có thể tắt cảnh báo này tại mục “
 	'vector-editwarning-preference' => 'Cảnh báo khi tôi thoát trang sửa đổi mà chưa lưu trang',
 	'vector-simplesearch-search' => 'Tìm kiếm',
 	'vector-simplesearch-containing' => 'có chứa…',
+	'vector-noexperiments-preference' => 'Loại trừ tôi khỏi các thí nghiệm tính năng',
 );
 
 /** Volapük (Volapük)
