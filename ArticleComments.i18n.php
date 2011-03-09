@@ -1576,6 +1576,13 @@ $messages['te'] = array(
 	'article-comments-submission-view-all' => '[[$1|ఆ పుటపై అన్ని వ్యాఖ్యలని]] మీరు చూడవచ్చు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'article-comments-comment-field' => 'Puna:',
+);
+
 /** Turkish (Türkçe)
  * @author Emperyan
  * @author Karduelis
