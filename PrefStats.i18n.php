@@ -1062,7 +1062,7 @@ Deasaich $wgPrefStatsTrackPrefs gus sùil a chumail air roghainnean.',
  * @author Toliño
  */
 $messages['gl'] = array(
-	'prefstats' => 'Preferencia de estatísticas',
+	'prefstats' => 'Estatísticas das preferencias',
 	'prefstats-desc' => 'Segue as estatísticas sobre cantos usuarios teñen determinadas preferencias activadas',
 	'prefstats-title' => 'Estatísticas das preferencias',
 	'prefstats-list-intro' => 'Actualmente as seguintes preferencias están sendo seguidas.
