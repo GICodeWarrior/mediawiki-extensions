@@ -257,6 +257,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -278,7 +279,7 @@ $messages['br'] = array(
 	'storyboard-viewstories' => 'Gwelet an istorioù',
 	'storyboard-nosuchstory' => "N'eus ket eus an istor hoc'h eus goulennet. Marteze eo bet dilamet.",
 	'storyboard-storyunpublished' => "N'eo ket bet embannet c'hoazh an istor hoc'h eus goulennet.",
-	'storyboard-nostorytitle' => "Rankout a rit reiñ titl hag ID an istor hoc'h eus c'hoant diskwel.",
+	'storyboard-nostorytitle' => "Rankout a rit merkañ titl hag ID an istor hoc'h eus c'hoant da welet.",
 	'storyboard-cantedit' => "N'ho peus ket ar gwirioù ret evit kemmañ istorioù.",
 	'storyboard-canedit' => 'Gellout a rit [$1 kemmañ] hag embann an istor-mañ.',
 	'storyboard-createdandmodified' => "Krouet d'an $1, $2 ha kemm diwezhañ d'an $3, $4",
@@ -324,12 +325,12 @@ Gellout a rit [$2 lenn an istorioù embannet].',
 	'storyboard-deleteimage' => 'Dilemel ar skeudenn',
 	'storyboard-done' => 'Graet',
 	'storyboard-working' => "Oc'h ober...",
-	'storyboard-imagedeletionconfirm' => "Ha sur oc'h hoc'h eus c'hoant dilemel ar skeudenn-mañ eus an istor da vat ?",
+	'storyboard-imagedeletionconfirm' => "Ha sur oc'h hoc'h eus c'hoant da zilemel ar skeudenn-mañ eus an istor da vat ?",
 	'storyboard-imagedeleted' => 'Skeudenn dilamet',
 	'storyboard-showimage' => 'Gwelet ar skeudenn',
 	'storyboard-hideimage' => 'Kuzhat ar skeudenn',
 	'storyboard-deletestory' => 'Dilemel',
-	'storyboard-storydeletionconfirm' => "Ha sur oc'h hoc'h eus c'hoant dilemel an istor-mañ da vat ?",
+	'storyboard-storydeletionconfirm' => "Ha sur oc'h hoc'h eus c'hoant da zilemel an istor-mañ da vat ?",
 );
 
 /** Bosnian (Bosanski)
@@ -978,20 +979,81 @@ Du chasch [$1 vereffentligti Botschafte] läse.',
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'storyboard-name' => 'סיפורים',
+	'storyboard-desc' => 'יצירת [[Special:Story|דף נחיתה לתורמים]], שבו אפשר [[Special:StorySubmission|לשלוח]] את סיפוריהם ו[[Special:StoryReview|ממשק סינון לסיפורים]]',
+	'right-storyreview' => 'לסקור, לערוך, לפרסם ולהחביא סיפורים',
+	'storyboard-anerroroccured' => 'אירעה שגיאה: $1',
+	'storyboard-unpublished' => 'לא פורסם',
+	'storyboard-published' => 'פורסם',
+	'storyboard-hidden' => 'חבוי',
+	'storyboard-unpublish' => 'לבטל פרסום',
+	'storyboard-publish' => 'לפרסם',
+	'storyboard-hide' => 'להחביא',
+	'storyboard-option-unpublished' => 'לא פורסם',
+	'storyboard-option-published' => 'פורסם',
+	'storyboard-option-hidden' => 'חבוי',
+	'story' => 'סיפור',
+	'storyboard-submittedbyon' => 'נשלח על־ידי $1 ב־$2, $3',
+	'storyboard-viewstories' => 'הצגת סיפורים',
+	'storyboard-nosuchstory' => 'הסיפור שביקשתם אינו קיים.
+ייתכן שהוא נמחק.',
+	'storyboard-storyunpublished' => 'הסיפור שביקשתם טרם פורסם.',
+	'storyboard-nostorytitle' => 'יש לציין את הכותרת או המזהה של הסיפור שאתם רוצים לראות.',
+	'storyboard-cantedit' => 'אינכם מורשים לערוך סיפורים.',
+	'storyboard-canedit' => 'אתם יכולים [$1 לערוך] ולפרסם את הסיפור הזה.',
+	'storyboard-createdandmodified' => 'נוצר ב־$1, $2 ושונה בפעם האחרונה ב־$3, $4',
+	'storyboard-authorname' => 'שם המחבר',
+	'storyboard-authorlocation' => 'מיקום המחבר',
 	'storyboard-authoroccupation' => 'עיסוק המחבר',
+	'storyboard-authoremail' => 'כתובת הדואר האלקטרוני של המחבר',
+	'storyboard-thestory' => 'הסיפור',
 	'storyboard-storystate' => 'מצב',
+	'storyboard-language' => 'שפה',
+	'storyboard-storymetadata' => 'נשלח על־ידי $1 ב־2$, $3.',
+	'storyboard-storymetadatafrom' => 'נשלח על־ידי $1 מ{{GRAMMAR:תחילית|$2}} ב־2$, $3.',
 	'storyboard-yourname' => 'שמך (נדרש)',
 	'storyboard-location' => 'המיקום שלך',
+	'storyboard-occupation' => 'העיסוק שלך',
+	'storyboard-story' => 'הסיפור שלך',
 	'storyboard-photo' => 'יש לך תמונה של עצמך?
 למה לא לשתף אותה?',
+	'storyboard-email' => 'כתובת הדואר האלקטרוני שלך (נדרש)',
+	'storyboard-storytitle' => 'כותרת קצרה שמתארת את הסיפור (נדרש)',
+	'storyboard-agreement' => 'אני מסכים שהסיפור יפורסם ושייעשה בו שימוש לפי התמאים של [http://creativecommons.org/licenses/by-sa/3.0/ רישיון קריאייטיב קומונז–ייחוס–שיתוף זהה].',
 	'storyboard-charsleft' => '({{PLURAL:$1|תו אחד נותר|$1 תווים נותרו}})',
+	'storyboard-cannotbelonger' => 'הסיפור שלך ארוך ב{{PLURAL:$1|<b>תו אחד|־<b>$1 תווים}}</b> מהנדרש!',
+	'storyboard-charsneeded' => '({{PLURAL:$1|נדרש עוד תו אחד|נדרשים עוד $1 תווים}} לפחות)',
+	'storyboard-needtoagree' => 'יש להסכים לפרסום הסיפור לפני שליחתו.',
+	'storyboard-submissioncomplete' => 'השליחה הושלמה',
+	'storyboard-submissionincomplete' => 'השליחה נכשלה',
+	'storyboard-alreadyexists' => '"$1" כבר תפוס.',
+	'storyboard-alreadyexistschange' => '"{0}" כבר תפוס, נא לבחור כותרת אחרת.',
+	'storyboard-changetitle' => 'שינוי הכותרת.',
+	'storyboard-notsubmitted' => 'האימות נכשל, הסיפור לא נשמר.',
+	'storyboard-charstomany' => '{{PLURAL:$1|תו אחד|$1 תווים}} יותר מדי!',
+	'storyboard-morecharsneeded' => '{{PLURAL:$1|נדרש עוד תו אחד|נדרשים עוד $1 תווים}}',
+	'storyboard-charactersleft' => '{{PLURAL:$1|נותר תו אחד|נותרו $1 תווים}}',
+	'storyboard-createdsuccessfully' => 'תודה על שיתוף הסיפור שלך אתנו!
+אנחנו נסקור אותו בקרוב.
+אפשר [$1 לקרוא את הסיפורים שכבר פורסמו].',
+	'storyboard-emailtitle' => 'שליחת הסיפור הצליחה',
+	'storyboard-emailbody' => 'הסיפור שלכם "$1" השלח בהצלחה.
+אנחנו נסקור אותו בקרוב.
+אפשר [$2 לקרוא את הסיפורים שכבר פורסמו].',
+	'storyreview' => 'סקירת סיפור',
+	'storyboard-deleteimage' => 'מחיקת תמונה',
+	'storyboard-done' => 'בוצע',
+	'storyboard-working' => 'בעבודה...',
+	'storyboard-imagedeletionconfirm' => 'האם אתם בטוחים שאתם רוצים למחוק את התמונה של הסיפור הזה?',
 	'storyboard-imagedeleted' => 'התמונה נמחקה',
 	'storyboard-showimage' => 'הצגת תמונה',
 	'storyboard-hideimage' => 'הסתרת התמונה',
 	'storyboard-deletestory' => 'הסרה',
+	'storyboard-storydeletionconfirm' => 'האם אתם בטוחים שאתם רוצים למחוק את הסיפור הזה?',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2495,6 +2557,7 @@ $messages['uk'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'storyboard-hidden' => 'פֿאַרבאָרגן',
 	'storyboard-authorname' => 'מחבר נאָמען',
 	'storyboard-language' => 'שפראַך',
 );

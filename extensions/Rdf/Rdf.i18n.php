@@ -125,6 +125,13 @@ $messages['fr'] = array(
 	'rdf-instructions' => 'Sélectionnez la page cible et des modèles RDF qui vous intéressent.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'rdf-cc' => 'Creative Commons',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

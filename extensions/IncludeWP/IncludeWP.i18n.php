@@ -124,6 +124,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'includewp-loading-page' => 'Cargando a páxina...',
+	'includewp-show-full-page' => 'Mostrar a páxina ao completo',
 );
 
 /** Hebrew (עברית)

@@ -710,6 +710,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -717,7 +718,7 @@ $messages['pt'] = array(
 	'searchbox-desc' => 'Permite a inclusão de formulários de pesquisa',
 	'searchbox-search' => 'Pesquisar',
 	'searchbox-go' => 'Ir',
-	'searchbox-namespaces' => 'Domínios:',
+	'searchbox-namespaces' => 'Espaços nominais:',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

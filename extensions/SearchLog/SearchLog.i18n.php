@@ -51,6 +51,38 @@ $messages['de'] = array(
 	'right-searchlog-read' => 'Suchprotokoll ansehen',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'searchlog' => 'Rexistro de procuras',
+	'searchlog-desc' => 'Rexistra o uso da caixa de procuras e permite crear un informe dos termos empregados durante períodos de tempo determinados',
+	'searchlog-cantopen' => 'Non se puido abrir o ficheiro de rexistro <tt>$1</tt>',
+	'searchlog-heading' => 'Termos a procurar durante o período $1',
+	'searchlog-unicode' => 'Mostrar unicode sen depurar',
+	'searchlog-timeperiod' => 'Seleccione o período de tempo:',
+	'searchlog-entire' => 'Rexistro ao completo',
+	'searchlog-phrase' => 'Frase de procura',
+	'searchlog-occurences' => 'Número de coincidencias durante o período',
+	'right-searchlog-read' => 'Ollar o rexistro de procuras',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'searchlog' => 'Pytanski protokol',
+	'searchlog-desc' => 'Protokoluje wužiwanje pytanskeho pola a zmóžnja zdźělenje častoty klučowych słowow za wěstu dobu',
+	'searchlog-cantopen' => 'Protokolowa dataja <tt>$1</tt> njeda so wočinić',
+	'searchlog-heading' => 'Klučowe słowa pytać, kotrež so w dobje $1 wužiwaja',
+	'searchlog-unicode' => 'Hruby unicode zwobraznić',
+	'searchlog-timeperiod' => 'Dobu wubrać:',
+	'searchlog-entire' => 'Cyły protokol',
+	'searchlog-phrase' => 'Pytanski wuraz',
+	'searchlog-occurences' => 'Častota za dobu',
+	'right-searchlog-read' => 'Pytanski protokol sej wobhladać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

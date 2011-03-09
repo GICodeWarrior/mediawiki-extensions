@@ -1215,6 +1215,14 @@ $messages['mr'] = array(
 	'bookinfo-provider' => 'विदा दाता: $1',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'bookinfo-result-title' => 'ခေါင်းစဉ် :',
+	'bookinfo-result-author' => 'ဖန်တီးသူ:',
+);
+
 /** Erzya (Эрзянь)
  * @author Amdf
  * @author Botuzhaleny-sodamo

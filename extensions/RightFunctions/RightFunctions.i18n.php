@@ -489,7 +489,7 @@ $messages['tr'] = array(
 	'rightfunctions-desc' => 'İzin temelli ayrıştırıcı fonksiyonlar',
 	'rightfunctions-casc' => '(kademeli kaynaklardan)',
 	'rightfunctions-local' => '(yerel sayfadan)',
-	'rightfunctions-ns' => '(isim alanı korumasından)',
+	'rightfunctions-ns' => '(ad alanı korumasından)',
 );
 
 /** Vietnamese (Tiếng Việt)

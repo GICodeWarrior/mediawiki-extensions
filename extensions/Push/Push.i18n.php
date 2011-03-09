@@ -189,11 +189,17 @@ $messages['bg'] = array(
 	'push-add-target' => 'Добавяне на цел',
 	'push-remote-pages' => 'Отдалечени страници',
 	'push-tab-last-edit' => 'Последна редакция от $1 на $2 в $3.',
+	'push-tab-not-created' => 'Тази страница все още не съществува.',
 	'push-tab-inc-templates' => 'Включване на шаблоните',
+	'push-tab-used-templates' => '({{PLURAL:$2|Използван шаблон|Използвани шаблони}}: $1)',
+	'push-tab-no-used-templates' => '(На тази страница не са използвани шаблони.)',
 	'push-tab-inc-files' => 'Включване на вградените файлове',
 	'push-tab-files-override' => 'Следните файлове вече съществуват: $1',
+	'push-tab-template-override' => 'Следните шаблони вече съществуват: $1',
 	'push-special-target-is' => 'Целево уики: $1',
 	'push-special-select-targets' => 'Целеви уикита:',
+	'push-special-err-pageget-failed' => 'Не може да се извлече съдържанието на локалната страница.',
+	'push-special-obtaining-fileinfo' => '$1: Получаване на информация за файла...',
 );
 
 /** Breton (Brezhoneg)
@@ -377,6 +383,14 @@ Pour pousser les pages, entrez les titres dans la zone de texte ci-dessous, un t
 	'push-special-return' => 'Pousser plus de pages',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'push-remote-page-link' => '"$1" en $2',
+	'push-remote-page-link-full' => 'Ollar "$1" en $2',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -509,6 +523,9 @@ Zo by strony přenjesł, zapodaj titule do slědowaceho tekstoweho pola, jedyn t
 	'push-special-return' => 'Dalše strony přenjesć',
 	'push-api-err-nocurl' => 'cURL njeje instalowany.
 Staj $egPushDirectFileUploads na false na zjawnych wikijach abo instaluj cURL za priwatne wikije',
+	'push-api-err-nofilesupport' => 'Lokalna instalacija MediaWiki njepodpěruje nahrawanje datajow.
+Staj na zjawnych wikijach parameter $egPushDirectFileUploads na "false".
+Na priwatnych wikijach nałož patch linkd z dokumentacije Push abo zaktualizuj MediaWiki.',
 );
 
 /** Interlingua (Interlingua)

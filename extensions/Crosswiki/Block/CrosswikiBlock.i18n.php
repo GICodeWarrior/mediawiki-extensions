@@ -366,18 +366,18 @@ $messages['br'] = array(
 	'crosswikiblock' => 'Stankañ an implijer war ur wiki all',
 	'crosswikiblock-header' => "Ar bajenn-mañ a aotre stankañ un implijer war ur wiki all.
 Gwiriekait ez oc'h aotreet oberañ war ar wiki-se hag e touj ho oberoù gant an holl reolennoù.",
-	'crosswikiblock-target' => "Chomlec'h IP pe anv an implijer hag ar wiki ho peus c'hoant tizhout :",
+	'crosswikiblock-target' => "Chomlec'h IP pe anv an implijer hag ar wiki a fell deoc'h tizhout :",
 	'crosswikiblock-expiry' => 'Termen :',
 	'crosswikiblock-reason' => 'Abeg :',
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
 	'crosswikiblock-anononly' => 'Stankañ an implijerien dizanv hepken',
 	'crosswikiblock-nocreate' => "Nac'hañ a ra krouidigezh ur gont",
-	'crosswikiblock-autoblock' => "Stankañ a ra emgefre ar chomlec'h IP ziwezhañ bet implijet gant an implijer-mañ, hag an holl IPoù da heul ho defe c'hoant kemmañ",
+	'crosswikiblock-autoblock' => "Stankañ war-eeun ar chomlec'h IP diwezhañ implijet gant an den-mañ hag an holl chomlec'hioù en deus klasket degas kemmoù drezo war-lerc'h",
 	'crosswikiblock-noemail' => "Nac'hañ d'an implijer kas posteloù",
 	'crosswikiunblock' => 'Distankañ un implijer war ur wiki all',
 	'crosswikiunblock-header' => "Ar bajenn-mañ a aotre da zistankañ un implijer war wikioù all.
 Gwiriekait ez oc'h aotreet oberañ war ar wiki-se hag e touj ho oberoù ouzh an holl reolennoù.",
-	'crosswikiunblock-user' => "Anv an implijer, chomlec'h IP pe an ID da stankañ hag ar wiki hoc'h eus c'hoant tizhout :",
+	'crosswikiunblock-user' => "Anv an implijer, chomlec'h IP pe an ID da stankañ hag ar wiki hoc'h eus c'hoant da dizhout :",
 	'crosswikiunblock-reason' => 'Abeg :',
 	'crosswikiunblock-submit' => 'Distankañ an implijer-mañ',
 	'crosswikiunblock-success' => "Distanket eo bet an implijer '''$1'''.

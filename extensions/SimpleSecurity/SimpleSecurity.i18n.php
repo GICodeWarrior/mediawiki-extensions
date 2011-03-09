@@ -729,6 +729,7 @@ $messages['lb'] = array(
 	'security-type-category' => 'Kategorie',
 	'security-type-namespace' => 'Nummraum',
 	'security-restricttogroup' => 'Zougang zum Inhalt limitéiert fir Membere vu(n) "$1"',
+	'restriction-read' => 'Liesen',
 );
 
 /** Ganda (Luganda)
@@ -955,7 +956,7 @@ $messages['pt'] = array(
 	'security-manygroups' => 'grupos $1 e $2',
 	'security-unchain' => 'Modificar ações individualmente',
 	'security-type-category' => 'categoria',
-	'security-type-namespace' => 'domínio',
+	'security-type-namespace' => 'espaço nominal',
 	'security-restricttogroup' => 'Aceder a conteúdo restrito aos membros de "$1"',
 	'restriction-read' => 'Ler',
 );
@@ -1145,7 +1146,7 @@ $messages['tr'] = array(
 	'security-info-toggle' => 'güvenlik kısıtlamaları',
 	'security-desc-PR' => '("koruma" sekmesinden ayarla)',
 	'security-unchain' => 'İşlemleri ayrı ayrı değiştir',
-	'security-type-namespace' => 'isim alanı',
+	'security-type-namespace' => 'ad alanı',
 );
 
 /** Ukrainian (Українська)

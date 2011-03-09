@@ -1174,6 +1174,13 @@ Guvans bevüresodatopäda at no gididons demü ninäd küpetas at.',
 	'talkhere-collapse' => 'klänedön redakömi',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'talkhere-talkpage' => 'רעדן בלאַט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent

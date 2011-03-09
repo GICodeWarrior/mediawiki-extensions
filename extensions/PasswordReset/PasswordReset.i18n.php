@@ -342,6 +342,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -355,10 +356,10 @@ $messages['de'] = array(
 	'passwordreset-newpass' => 'Neues Passwort:',
 	'passwordreset-confirmpass' => 'Passwort bestätigen:',
 	'passwordreset-submit' => 'Passwort zurücksetzen',
-	'passwordreset-success' => 'Passwort für Benutzer-ID $1 wurde zurückgesetzt.',
+	'passwordreset-success' => 'Passwort für Benutzerkennung $1 wurde zurückgesetzt.',
 	'passwordreset-disableuser' => 'Benutzerkonto deaktivieren?',
 	'passwordreset-disableuserexplain' => '(setzen eines ungültigen Passwort-Hashs - Anmelden unmöglich)',
-	'passwordreset-disablesuccess' => 'Benutzerkonto für Benutzer-ID $1 wurde deaktiviert.',
+	'passwordreset-disablesuccess' => 'Benutzerkonto für Benutzerkennung $1 wurde deaktiviert.',
 	'passwordreset-accountdisabled' => 'Benutzerkonto ist deaktiviert',
 	'disabledusers' => 'Deaktivierte Benutzerkonten',
 	'disabledusers-summary' => 'Dies ist die Liste der deaktivierten Benutzerkonten (via PasswordReset).',

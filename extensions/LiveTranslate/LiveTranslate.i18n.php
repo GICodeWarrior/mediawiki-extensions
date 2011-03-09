@@ -543,8 +543,10 @@ $messages['lb'] = array(
 	'livetranslate-special-remove' => 'Ewechhuelen',
 	'livetranslate-special-local' => 'Lokal',
 	'livetranslate-special-add-tm' => 'En neien Iwwersetzungsspäicher derbäisetzen',
+	'livetranslate-special-current-tms' => 'Aktuell Iwwersetzungsspäicheren',
 	'livetranslate-special-tms-update' => 'Den Iwwersetzungsspäicher aktualiséieren.',
 	'livetranslate-special-update' => 'Den Iwwersetzungsspäicher aktualiséieren.',
+	'livetranslate-importtms-param-miscmatch' => 'Duercherneen tëschent der Zuel vu Plazen an Typen',
 );
 
 /** Macedonian (Македонски)
@@ -643,18 +645,19 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'livetranslate-desc' => 'A abìlita viragi dal viv ëd contnù ëd pàgine an dovrand ël sërvissi Google Translate',
+	'livetranslate-desc' => 'A abìlita la tradussion imedià dël contnù ëd la pàgina an dovrand ël sërvissi ëd tradussion ëd Google',
 	'livetranslate-translate-to' => 'Vòlta sta pàgina an',
 	'livetranslate-button-translate' => 'Traduv',
 	'livetranslate-button-translating' => 'Volté...',
-	'livetranslate-button-revert' => 'Mosta original',
-	'livetranslate-dictionary-error' => 'As peul pa avèj ël dissionari ëd viragi viv. Pa gnun-e paròle a saran tratà com speciaj an mente dël process ëd viragi.',
+	'livetranslate-button-revert' => "Mostré l'original",
+	'livetranslate-dictionary-error' => 'As peul pa avèisse la tradussion imedià dël dissionari. Gnun-e paròle a saran tratà com speciaj durant ël process ëd tradussion.',
 	'livetranslate-dictionary-empty' => 'A-i é pa anco\' gnun-e paròle ant ël dissionari. Sgnaca ël boton "modìfica" për giuntene quaidun-e.',
 	'livetranslate-dictionary-count' => 'A-i {{PLURAL:$1|é $1 paròla|son $1 paròle}} an $2 {{PLURAL:$2|lenga|lenghe}}. Sgnaca ël boton "modìfica" për giontene ëd pi.',
-	'livetranslate-dictionary-unallowed-langs' => "{{PLURAL:$2|Sta lenga a l'é|Ste lenghe a son}} al moment pa ampostà com obietiv përmëttù ed viragi: $1. Modìfica le lenghe përmëttùe ant la configurassion ëd toe wiki, o gav-je dal dissionari.",
+	'livetranslate-dictionary-unallowed-langs' => "{{PLURAL:$2|Costa lenga a l'é|Coste lenghe a son}} al moment pa ampostà com obietiv përmëttù ed tradussion: $1. Ch'a modìfica le lenghe përmëttùe ant soa configurassion ëd wiki, o ch'a-j gava dal dissionari.",
 );
 
 /** Portuguese (Português)

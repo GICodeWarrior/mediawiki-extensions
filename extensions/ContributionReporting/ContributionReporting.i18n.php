@@ -3183,6 +3183,7 @@ $messages['lb'] = array(
 	'fundraiserstats-tab-maximums' => 'Maximumen (USD)',
 	'fundraiserstats-tab-ytd' => 'Joer-bis-Datum (USD)',
 	'fundraiserstats-instructions' => "Fir d'Statistike fir iergendeen Dag ze gesinn, setzt de Curseur iwwert d'Colonne fir deen Dag. All Joer ass eng aner Faarf am Grafik.",
+	'fundraiserstats-customize' => 'Upassen',
 	'fundraiserstats-time-zone' => 'Zäitzone:',
 	'fundraiserstats-utc' => '(vun UTC)',
 );
@@ -5324,6 +5325,11 @@ $messages['tl'] = array(
 	'fundraiserstats-tab-averages' => 'Pinatakang mga halaga (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-maximums' => 'Mga pinakamatataas (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-ytd' => 'Taon-sa-petsa (USD)',
+	'fundraiserstats-instructions' => 'Upang matanaw ang mga estadistika para sa anumang araw, palutangin ang panturo sa ibabaw ng bareta para sa araw na iyon.  Ang bawat taon ay isang ibang kulay sa ibabaw ng talangguhit.',
+	'fundraiserstats-customize' => 'Ipasadya',
+	'fundraiserstats-show-years' => 'Ipakita ang sumusunod na mga taon:',
+	'fundraiserstats-time-zone' => 'Sona ng oras:',
+	'fundraiserstats-utc' => '(mula sa UTC)',
 );
 
 /** Tok Pisin (Tok Pisin)

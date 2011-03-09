@@ -21,3 +21,17 @@ $messages['en'] = array(
 	'arrayext-desc' => 'Store and compute named arrays',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'arrayext-desc' => 'Ermöglicht das Speichern und Nutzen definierter Datenreihen',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'arrayext-desc' => 'Pomjenowane polowe wariable składować a wobličić',
+);
+
