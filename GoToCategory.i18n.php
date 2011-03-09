@@ -347,7 +347,7 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'gotocategory-desc' => "Git 'sayfaya atla' işlevi için Kategori: isim alanı ile aranan kelimeleri karşılaştırır",
+	'gotocategory-desc' => "Git 'sayfaya atla' işlevi için Kategori: ad alanı ile aranan kelimeleri karşılaştırır",
 );
 
 /** Ukrainian (Українська)
