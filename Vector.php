@@ -105,6 +105,7 @@ $wgResourceModules += array(
 		'styles' => 'ext.vector.sectionEditLinks.css',
 		'dependencies' => array(
 			'jquery.cookie',
+			'jquery.clickTracking',
 		),
 	),
 	'ext.vector.simpleSearch' => $vectorResourceTemplate + array(
