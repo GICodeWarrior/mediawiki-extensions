@@ -198,7 +198,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|Kemm diazezet war internet]] eus un niver bras a restroù Messages*.php',
 	'editmessages' => 'Aozañ kemennadennoù',
-	'editmsg-target' => "Kemenadenn a vez c'hoant tizhout :",
+	'editmsg-target' => "Kemennadenn a vez c'hoant da dizhout :",
 	'editmsg-search' => 'Klask',
 	'editmsg-show-list' => 'Diskouez talvoudoù evit anv ar gemenadenn "$1"',
 	'editmsg-get-patch' => 'Krouiñ ur patch',
@@ -1073,6 +1073,13 @@ $messages['ms'] = array(
 	'editmsg-warning-parse1' => '* Nama mesej regex tidak tepat: $1',
 	'editmsg-no-patch' => 'Tidak dapat menjalankan perintah "tampal"',
 	'editmsg-patch-success' => 'Tampalan berjaya.',
+);
+
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'editmsg-search' => 'ရှာ​ဖွေ​ရန်​',
 );
 
 /** Erzya (Эрзянь)
