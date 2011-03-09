@@ -95,6 +95,8 @@ Cтаронка рэдагаваньня будзе пакінутая, што �
 	'al-nosuchuser' => 'Не існуе ўдзельніка з іменем «$1».
 Імя ўдзельніка зьяўляецца адчувальным да велічыні літар.
 Праверце правапіс.',
+	'al-createblocked' => 'Ваш IP-адрас заблякаваны ад стварэньня рахункаў.',
+	'al-throttled' => 'Вы занадта часта спрабавалі ўвесьці пароль. Калі ласка, пачакайце $1 {{PLURAL:$1|сэкунду|сэкунды|сэкундаў}} і паспрабуйце зноў.',
 );
 
 /** Bulgarian (Български)
@@ -143,6 +145,7 @@ Koll ar cheñchamantoù hoc'h eus graet d'ar bajenn-mañ a c'hallit ober ma kuit
 E kont eo kemeret ar pennlizherennù en anvioù an implijerien.
 Gwiriit ho reizhskrivadur.',
 	'al-createblocked' => "Miret ez eus bet ouzh ho chomlec'h IP krouiñ kontoù.",
+	'al-throttled' => "Graet hoc'h eus re a daolioù-esae gant ho ker-tremen diouzhtu. Gortozit $1 {{PLURAL:$1|eilenn|eilenn}} a-raok klask en-dro.",
 );
 
 /** Bosnian (Bosanski)
@@ -410,6 +413,7 @@ Tarkista kirjoititko nimen oikein.',
  * @author IAlex
  * @author PieRRoMaN
  * @author Polytherion
+ * @author Sherbrooke
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -422,6 +426,8 @@ Vous pourriez perdre vos modifications en cours sur cette page si vous la quitte
 	'al-nosuchuser' => "Il n'existe pas d'utilisateur nommé « $1 ».
 Les noms d'utilisateur sont sensibles à la casse.
 Vérifiez l'orthographe.",
+	'al-createblocked' => 'Votre adresse IP est interdite de créer un compte.',
+	'al-throttled' => "Récemment, vous avez saisi trop de mots de passe. Veuillez patienter $1 {{PLURAL:$1|second|seconds}} avant d'essayer à nouveau.",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -475,6 +481,7 @@ Iberprief d Schrybwyys.',
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -488,6 +495,8 @@ $messages['he'] = array(
 	'al-nosuchuser' => 'אין משתמש בשם "$1".
 שמות משתמש הם תלויי רישיות.
 אנא בדקו את האיות.',
+	'al-createblocked' => 'כתובת ה־IP הזאת חסומה ליצירת חשבון.',
+	'al-throttled' => 'הכנסתם סיסמה שגויה יותר מדי פעמים לאחרונה. נא לנסות {{PLURAL:$1|שנייה אחת|$1 שניות}} לפני שאתם מנסים שוב.',
 );
 
 /** Hindi (हिन्दी)
@@ -545,6 +554,8 @@ To budźe će k druhej stronje wjesć a ty móhł swoju aktualnu změnu zhubić.
 	'al-nosuchuser' => 'Wužiwar z mjenom "$1" njeje.
 Wužiwarske mjena wobkedźbuja wulkopisanje.
 Skontroluj swój prawopis.',
+	'al-createblocked' => 'Twoja IP-adresa je za załoženje kontow zablokowana.',
+	'al-throttled' => 'Sy přehusto spytał, swoje hesło zapodać. Prošu čakaj $1 {{PLURAL:$1|sekundu|sedkundźe|sekundy|sekundow}}, prjedy hač to znowa spytaš.',
 );
 
 /** Hungarian (Magyar)
@@ -577,6 +588,8 @@ Tu pote perder tu modificationes a iste pagina si tu quita iste pagina ora.',
 	'al-nosuchuser' => 'Il non ha un usator con le nomine "$1".
 Le nomines de usator distingue inter majusculas e minusculas.
 Verifica le orthographia.',
+	'al-createblocked' => 'Tu adresse IP es blocate pro le creation de contos.',
+	'al-throttled' => 'Tu ha tentate un contrasigno troppo de vices. Per favor attende $1 {{PLURAL:$1|secunda|secundas}} ante de reprobar.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -626,6 +639,7 @@ Ciò vi porterà via da questa pagina di modifica e si rischia di perdere la mod
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Tommy6
+ * @author Vigorous action
  */
 $messages['ja'] = array(
 	'ajaxlogin-desc' => '利用者がログインして、パスワードを記憶しておけるようにする動的なボックス',
@@ -635,6 +649,7 @@ $messages['ja'] = array(
 今このページを離れると保存されていない編集は失われることになります。',
 	'ajaxlogin-create' => 'アカウント作成',
 	'al-nosuchuser' => '「$1」という名前の利用者はいません。利用者名では大文字・小文字が区別されます。綴りを確かめてください。',
+	'al-createblocked' => 'あなたのIPアドレスは、アカウント作成がブロックされています。',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -677,6 +692,8 @@ dä Sigg zom Ändere fott, un Ding neu jetippte Änderunge künnte verschött jo
 	'al-nosuchuser' => 'Mer han keine Metmaacher met dämm Naame „$1“.
 Jruuß- un Kleinboochshtabe shpelle en Roll en de Metmaacher iere Name.
 Donn noh Ding Schriefwiiß kike.',
+	'al-createblocked' => 'Övver Ding <i lang="en">IP</i>-Addräß Neu Metmaacher Aanmälde es jesperrt.',
+	'al-throttled' => 'Et woore zoh vill verkehte Paßwööter en de läzde Zigg. Donn jäz ens {{PLURAL:$1|en Sekund|$1 Sekündshe|jaa nit}} waade, ih dat De et norr-ens probeers.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -693,6 +710,8 @@ Dir kënnt Är Ännerunge vun dëser Säit verléieren, wann Dir elo vun dëser 
 	'al-nosuchuser' => 'Et gëtt kee Benotzer mam Numm "$1".
 Bei Benotzernimm gëtt en Ënnerscheed tëschent klengen a grousse Buschtawe gemaach.
 Kuckt no, ob Dir den Numm richteg geschriwwen hutt.',
+	'al-createblocked' => "Är IP-Adress ass fir d'Opmaache vu Benotzerkonte gespaart.",
+	'al-throttled' => 'Dir hutt rezent ze vill dacks probéiert Ärt Passwuert anzeginn. Waart w.e.g. $1 {{PLURAL:$1|Sekonn|Sekonnen}} ier dir nach eng Kéier probéiert.',
 );
 
 /** Limburgish (Limburgs)
@@ -751,6 +770,8 @@ $messages['mk'] = array(
 	'al-nosuchuser' => 'Не постои корисник по име „$1“.
 Корисничките имиња разликуваат големи и мали букви.
 Проверете дали сте напишале праивлно.',
+	'al-createblocked' => 'На вашата IP-адреса ѝ е забрането да создава сметки.',
+	'al-throttled' => 'Направивте премногу обиди за лозинката во краток период. Почекајте $1 {{PLURAL:$1|секунда|секунди}}, па обидете се повторно.',
 );
 
 /** Malayalam (മലയാളം)
@@ -812,6 +833,8 @@ U verliest mogelijk uw huidige bewerkingen als u deze pagina nu verlaat.',
 	'al-nosuchuser' => 'De gebruiker "$1" bestaat niet.
 Gebruikernamen zijn hoofdlettergevoelig.
 Controleer de schrijfwijze.',
+	'al-createblocked' => 'Vanaf uw IP-adres mogen geen gebruikers aangemaakt worden.',
+	'al-throttled' => 'U hebt teveel niet-geslaagde aanmeldpogingen uitgevoerd in een korte tijd. Wacht $1 {{PLURAL:$1|seconde|seconden}} voordat u het opnieuw probeert.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -913,6 +936,8 @@ Pode perder as suas alterações a esta página se abandonar a página agora.',
 	'al-nosuchuser' => 'Não existe nenhum utilizador com o nome "$1".
 Nos nomes de utilizador distingue-se maiúsculas de minúsculas.
 Verifique se soletrou o nome correctamente.',
+	'al-createblocked' => 'O seu endereço IP está bloqueado e foi impedido de criar contas.',
+	'al-throttled' => 'Tem demasiadas tentativas recentes de fornecer a palavra-chave. Aguarde $1 {{PLURAL:$1|segundo|segundos}} antes de tentar novamente, por favor.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1025,6 +1050,8 @@ Morda boste izgubili spremembe te strani, če jo sedaj zapustite.',
 	'al-nosuchuser' => 'Uporabnik z imenom »$1« ne obstaja.
 Uporabniška imena so občutljiva na velikost črk.
 Preverite črkovanje.',
+	'al-createblocked' => 'Vašemu IP-naslovu je preprečeno ustvarjanje računov.',
+	'al-throttled' => 'Nedavno ste prevečkrat poskusili vnesti geslo. Prosimo, počakajte $1 {{PLURAL:$1|sekundo|sekundi|sekunde|sekund}} preden poskusite znova.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
