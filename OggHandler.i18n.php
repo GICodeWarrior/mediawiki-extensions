@@ -1800,10 +1800,12 @@ $messages['ka'] = array(
 	'ogg-player-thumbnail' => 'მხოლოდ წინასწარი სურათი',
 	'ogg-player-soundthumb' => 'No player',
 	'ogg-player-selected' => '(არჩეულია)',
+	'ogg-use-player' => 'დამკვრელის გამოყენება:',
 	'ogg-more' => 'მეტი...',
 	'ogg-dismiss' => 'დახურვა',
 	'ogg-download' => 'ფაილის ჩამოტვირთვა',
 	'ogg-desc-link' => 'ამ ფაილის შესახებ',
+	'ogg-oggThumb-version' => 'OggHandler-ს სჭირდება oggThumb ვერსია $1 ან უფრო გვიანდელი.',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
