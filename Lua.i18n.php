@@ -473,6 +473,13 @@ $messages['mk'] = array(
 	'lua_overflow_time' => 'Достигнато е максималното време за извршување',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'lua_error_internal' => 'အတွင်းပိုင်းအမှား',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
