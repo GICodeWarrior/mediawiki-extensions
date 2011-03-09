@@ -1452,11 +1452,13 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author Dawid Deutschland
  * @author ITshnik
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'readerfeedback' => 'რას ფიქრობთ ამ გვერდის შესახებ?',
+	'readerfeedback-text' => "''გთხოვთ, გამონახეთ დრო ამ გვერდის შეფასებისათვის. თქვენი პასუხი მნიშვნელოვანია და ჩვენ დაგვეხმარება შემოთავაზების გაუმჯობესებაში.''",
 	'readerfeedback-reliability' => 'სისწორე',
 	'readerfeedback-completeness' => 'სისრულე',
 	'readerfeedback-npov' => 'ნეიტრალობა',
@@ -1465,10 +1467,14 @@ $messages['ka'] = array(
 	'readerfeedback-level-none' => '(არაა არჩეული)',
 	'readerfeedback-level-0' => 'დაბალი',
 	'readerfeedback-level-1' => 'დაბალი',
+	'readerfeedback-level-2' => 'საშუალო',
 	'readerfeedback-level-3' => 'მაღალი',
 	'readerfeedback-level-4' => 'ჩინებულია',
 	'readerfeedback-submit' => 'გაგზავნა',
+	'readerfeedback-main' => 'მხოლოდ შინაარსიანი გვერდები შეიძლება შეფასდეს.',
 	'readerfeedback-success' => "'''გმადლობთ ამ გვერდის მიმოხილვისთვის!''' ([$2 შედეგების ჩვენება]) ([$3 კომენტარები ან შეკითხვები]).",
+	'readerfeedback-voted' => "'''სავარაუდოდ თქვენ ამ გვერდს შეფასება უკვე მიეცით.''' ([$2 შედეგების ხილვა]) ([$3 კომენტარები ან კითხვები?])",
+	'readerfeedback-error' => "'''ამ გვერდის შეფასებისას მოხდა რაღაც შეცდომა''' ([$2 შედეგების ხილვა]) ([$3 კომენტარები ან კითხვები?]).",
 	'readerfeedback-submitting' => 'ინახება …',
 	'readerfeedback-finished' => 'გმადლობთ!',
 	'readerfeedback-tagfilter' => 'მინიშნება:',
@@ -1476,6 +1482,7 @@ $messages['ka'] = array(
 	'readerfeedback-tier-high' => 'მაღალი',
 	'readerfeedback-tier-medium' => 'საშუალო',
 	'readerfeedback-tier-poor' => 'დაბალი',
+	'tooltip-ca-ratinghist' => 'ამ გვერდის მკითხველთა შეფასებები',
 	'specialpages-group-feedback' => 'მკიტხველის მოსაზრება!',
 	'readerfeedback-tt-review' => 'გაგზავნეთ შემოწმება',
 );
