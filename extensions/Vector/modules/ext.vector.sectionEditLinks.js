@@ -20,7 +20,7 @@ if ( mw.config.get( 'wgVectorSectionEditLinksBucketTest', false ) ) {
 		}
 	}
 }
-if ( bucket ) {
+if ( bucket > 0 ) {
 	// Transform the targets of section edit links to route through the click tracking API
 	$( 'span.editsection a' ).each( function() {
 		var session = $.cookie( 'clicktracking-session' );
