@@ -20,7 +20,7 @@ class WOMLinkParser extends WikiObjectModelParser {
 		if ( $r && !preg_match( '/^(?:' . wfUrlProtocols() . ')/', $m[1] ) ) {
 			return array( 'len' => strlen( $m[0] ), 'obj' => new WOMLinkModel( $m[1], isset( $m[3] ) ? $m[3] : '' ) );
 		}
-		$r = preg_match( '/^\[([^ \[\]]+)(\s+([^\]]+))?\]/', $text, $m );
+		$r = preg_match( '/^\[((?:' . wfUrlProtocols() . ')[^ \[\]]+)(\s+([^\]]+))?\]/', $text, $m );
 		if ( $r ) {
 			return array( 'len' => strlen( $m[0] ), 'obj' => new WOMLinkModel( $m[1], isset( $m[3] ) ? $m[3] : '' ) );
 		}
