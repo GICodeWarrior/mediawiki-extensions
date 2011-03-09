@@ -58,10 +58,22 @@ class VectorHooks {
 				'wgVectorSectionEditLinksBucketTest',
 				'wgVectorSectionEditLinksLotteryOdds',
 			),
+			'requirements' => array(
+				'vector-noexperiments' => false,
+			),
 		),
 		'simplesearch' => array(
 			'requirements' => array( 'vector-simplesearch' => true, 'disablesuggest' => false ),
 			'modules' => array( 'ext.vector.simpleSearch' ),
+		),
+		'experiments' => array(
+			'preferences' => array(
+				'vector-noexperiments' => array(
+					'type' => 'toggle',
+					'label-message' => 'vector-noexperiments-preference',
+					'section' => 'rendering/advancedrendering',
+				),
+			),
 		),
 	);
 	
