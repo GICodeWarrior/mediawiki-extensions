@@ -67,7 +67,7 @@ class WOMProcessor {
 
 		$root = new WOMPageModel();
 		WOMProcessor::parseNext( $text, $root, $root );
-//		WOMProcessor::parseSentences($root);
+		WOMProcessor::parseSentences($root);
 		WOMProcessor::applyObjID( $root, $root );
 		wfProfileOut( $fname );
 		return $root;
