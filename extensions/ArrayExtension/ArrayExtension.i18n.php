@@ -20,3 +20,4 @@ $messages = array();
 $messages['en'] = array(
 	'arrayext-desc' => 'Store and compute named arrays',
 );
+
