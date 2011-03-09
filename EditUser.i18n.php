@@ -922,6 +922,15 @@ $messages['mt'] = array(
 	'edituser-exempt' => 'L-utent speċifikat ma jistax jiġi modifikat',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'edituser-username' => 'အသုံးပြုသူအမည်:',
+	'edituser-dosearch' => 'ရှာ​ဖွေ​ရန်​',
+	'edituser-nouser' => 'အသုံးပြုသူအကောင့် "$1" မတည်ရှိပါ။',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
