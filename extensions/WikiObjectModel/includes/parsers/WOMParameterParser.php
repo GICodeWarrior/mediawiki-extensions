@@ -34,7 +34,7 @@ class WOMParameterParser extends WikiObjectModelParser {
 			return array( 'len' => $len, 'obj' => new WOMTemplateFieldModel( $key ) );
 		} else {
 			// parser function, unknown parameter containers, etc
-			return array( 'len' => $len, 'obj' => new WOMParameterModel() );
+			return array( 'len' => $len, 'obj' => new WOMParameterModel( $key ) );
 		}
 	}
 	
