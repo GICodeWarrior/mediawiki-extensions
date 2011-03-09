@@ -338,17 +338,19 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'svgedit-editbutton-edit' => 'Modìfica disegn',
+	'svgedit-editbutton-edit' => 'Modifiché ël disegn',
 	'svgedit-summary-label' => 'Resumé dla modìfica',
 	'svgedit-summary-default' => '/* Modificà an svg-edit */',
 	'svgedit-editor-save-close' => 'Salva e sara',
 	'svgedit-editor-close' => 'Scancela',
-	'svgedit-desc' => 'Modìfica ant ël browser dij disegn SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-desc' => 'Modìfica ant ël navigador dij disegn SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Modìfica disegn',
 	'svgedit-edit-tab-tooltip' => 'It peule modifiché sto disegn SVG an tò browser',
+	'svgedit-toolbar-insert' => 'Disegné SVG',
 );
 
 /** Portuguese (Português)
@@ -444,6 +446,16 @@ $messages['uk'] = array(
 	'svgedit-editor-save-close' => 'Зберегти і закрити',
 	'svgedit-editor-close' => 'Скасувати',
 	'svgedit-desc' => 'Редагування у браузері SVG-малюнків за допомогою [http://code.google.com/p/svg-edit/ SVG-Edit]',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'svgedit-editor-close' => 'אַנולירן',
+	'svgedit-edit-tab' => 'רעדאַקטירן צייכענונג',
+	'svgedit-edit-tab-tooltip' => 'איר קענט ענדערן די SVG־צייכענונג אין אייער בלעטערער',
+	'svgedit-toolbar-insert' => 'SVG צייכענונג',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
