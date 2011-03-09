@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'apisvgproxy-desc' => 'يُمرّر ملفات SVG من مستودع ملفات (يمكن أن يكون بعيدًا) إلى النطاق المحلي',
 );
 
+/** Bashkir (Башҡортса)
+ * @author Comp1089
+ */
+$messages['ba'] = array(
+	'apisvgproxy-desc' => 'Бер файл һаҡлағысындағы SVG-файлдар (алыҫтағы һаҡлағыс та булырға мөмкин) локаль домендағы файлдарҙа үҙгәрәсәк.',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
