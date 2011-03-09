@@ -26,6 +26,17 @@
 	padding: 0px;
 }
 
+/* more skin-specific fixes */
+.skin-chick #inlineEditorBox,
+.skin-standard #inlineEditorBox,
+.skin-cologneblue #inlineEditorBox,
+.skin-myskin #inlineEditorBox,
+.skin-nostalgia #inlineEditorBox,
+.skin-simple #inlineEditorBox {
+	line-height: 1.5em;
+	font-size: 0.9em;
+}
+
 #introbox {
 	/* basic grey box */
 	background-color: #f3f3f3;
