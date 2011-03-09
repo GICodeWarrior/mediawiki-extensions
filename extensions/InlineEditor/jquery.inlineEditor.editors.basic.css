@@ -98,6 +98,15 @@
 	resize: none;
 }
 
+/* some skin-specific fixes */
+.skin-chick #editContent .editbar textarea,
+.skin-standard #editContent .editbar textarea,
+.skin-myskin #editContent .editbar textarea,
+.skin-nostalgia #editContent .editbar textarea,
+.skin-simple #editContent .editbar textarea {
+	font-size: 0.8em;
+}
+
 #editContent .saving {
 	/* have a cross-browser alpha overlay, see http://www.quirksmode.org/css/opacity.html */
 	opacity: 0.95;
