@@ -27,6 +27,13 @@ $messages['ar'] = array(
 	'autoincrement-desc' => 'خطاف متغير يضيف المتغير الزائد تلقائيا <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Bashkir (Башҡортса)
+ * @author Comp1089
+ */
+$messages['ba'] = array(
+	'autoincrement-desc' => 'Үҙгәреүсән перехватчик (variable hook), <nowiki>{{AUTOINCREMENT}}</nowiki> үҙгәреүсәнде өҫтә.',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
