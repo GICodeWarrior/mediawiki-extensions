@@ -2389,6 +2389,7 @@ Ang mga sumusunod ay ang mga kaantasan:
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'ratinghistory' => 'Sayfa derecelendirme geçmişi',
@@ -2406,7 +2407,7 @@ $messages['tr'] = array(
 	'ratinghistory-purge' => 'önbelleği boşalt',
 	'ratinghistory-table' => 'Kullanıcı değerlendirmelerine genel bakış',
 	'ratinghistory-users' => 'Derecelendirme veren kullanıcılar',
-	'ratinghistory-graph' => '"$3" de $2 ($1 {{PLURAL:$1|gözden geçirme|gözden geçirme}})',
+	'ratinghistory-graph' => '"$3" sayfası için $2 ($1 inceleme)',
 	'ratinghistory-svg' => 'SVG olarak görüntüle',
 	'ratinghistory-table-rating' => 'Derecelendirme',
 	'ratinghistory-table-votes' => 'Oylar',
