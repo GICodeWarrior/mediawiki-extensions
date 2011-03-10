@@ -17,7 +17,7 @@ class ApiAjaxLogin extends ApiBase {
 	}
 
 	public function execute() {
-		session_start();
+		wfSetupSession();
 		$Name = $Password = $Remember = $Loginattempt = $Mailmypassword = $Token = null;
 		extract( $this->extractRequestParams() );
 
