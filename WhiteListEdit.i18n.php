@@ -3965,6 +3965,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Hydra
  * @author Liangent
  * @author Wmr89502270
  */
