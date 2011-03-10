@@ -6,6 +6,7 @@ logname="Server admin log"
 
 import mwclient
 import datetime
+import re
 
 months=["January","February","March","April","May","June","July","August","September","October","November","December"]
 
@@ -22,6 +23,10 @@ def log(message,author):
 		if line.startswith("=="):
 			undef,month,day,undef=line.split(" ",3)
 			break
+
+	# Add some formatting to the message to link revision and bug numbers
+	message = re.sub( r'\b[rR](\d+)\b', r'[[rev:\1|r\1]]', message )
+	message = re.sub( r'\bbug ?(\d+)\b', r'[[bugzilla:\1|bug \1]]', message )
 
 	# Um, check the date
 	now=datetime.datetime.utcnow()
