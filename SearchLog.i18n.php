@@ -157,3 +157,17 @@ $messages['pt'] = array(
 	'right-searchlog-read' => 'Mostrar o registo de pesquisas',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'searchlog' => 'Söklogg',
+	'searchlog-cantopen' => 'Kunde inte öppna loggfilen <tt>$1</tt>',
+	'searchlog-unicode' => 'Visa rå unicode',
+	'searchlog-timeperiod' => 'Välj tidsperiod:',
+	'searchlog-entire' => 'Hela loggen',
+	'searchlog-phrase' => 'Sökfras',
+	'searchlog-occurences' => 'Antal händelser under perioden',
+	'right-searchlog-read' => 'Visa sökloggen',
+);
+
