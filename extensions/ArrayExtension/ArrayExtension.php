@@ -45,12 +45,12 @@ if ( ! defined( 'MEDIAWIKI' ) ) {
 $wgExtensionFunctions[] = 'efSetupArrayExtension';
 
 $wgExtensionCredits['parserhook'][] = array(
-	'path' => __FILE__
+	'path' => __FILE__,
 	'name' => 'ArrayExtension',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArrayExtension',
 	'author' => array ( 'Li Ding', 'Jie Bao', 'Daniel Werner' ),
 	'descriptionmsg' => 'arrayext-desc',
-        'version' => ArrayExtension::VERSION,
+	'version' => ArrayExtension::VERSION
 );
 
 $wgExtensionMessagesFiles['ArrayExtension'] = dirname( __FILE__ ) . '/ArrayExtension.i18n.php';
