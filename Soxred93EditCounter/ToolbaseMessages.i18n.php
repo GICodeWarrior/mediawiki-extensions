@@ -990,6 +990,8 @@ $messages['zh-hans'] = array(
 	'toolbase-replag-hours' => '小时',
 	'toolbase-replag-minutes' => '分钟',
 	'toolbase-replag-seconds' => '秒',
+	'toolbase-navigation-homepage' => '首页',
+	'toolbase-main-title' => '欢迎！',
 	'toolbase-form-wiki' => '维基',
 );
 
