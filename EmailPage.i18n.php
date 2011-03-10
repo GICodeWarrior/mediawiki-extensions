@@ -1102,6 +1102,16 @@ $messages['vi'] = array(
 	'ea-data' => 'Dữ liệu',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'ea-from' => '从：',
+	'ea-to' => '至：',
+	'ea-send' => '发送',
+	'ea-message' => '性息：',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */
