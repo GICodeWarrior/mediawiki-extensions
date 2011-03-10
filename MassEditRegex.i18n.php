@@ -1558,10 +1558,14 @@ $messages['vep'] = array(
 	'masseditregex-hint-headeffect' => 'Effekt',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
 $messages['zh-hans'] = array(
 	'masseditregex-matchtxt' => '查找：',
 	'masseditregex-executebtn' => '执行',
+	'masseditregex-before' => '前',
+	'masseditregex-after' => '后',
 	'masseditregex-hint-headreplace' => '替换',
 );
 
