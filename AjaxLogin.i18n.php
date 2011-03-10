@@ -911,6 +911,8 @@ It peule perdi toe modìfiche a sta pàgina-sì s'it lasse sta pàgina-sì or.",
 	'al-nosuchuser' => 'A-i é pa gnun utent con ël nòm "$1".
 Ij nòm utent a fan cas a minùscol/maiùscol.
 Contròla tò scrit.',
+	'al-createblocked' => "Toa adrëssa IP a l'é blocà për creé ëd cont.",
+	'al-throttled' => "It l'has avù tròpi tentativ recent ëd ciav. Për piasì speta $1 {{PLURAL:$1|second|second}} prima ëd torna prové.",
 );
 
 /** Pashto (پښتو)
@@ -1269,6 +1271,7 @@ $messages['zh-cn'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bbqyee
+ * @author Hydra
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
@@ -1281,6 +1284,7 @@ $messages['zh-hans'] = array(
 	'ajaxLogin2' => '确定这样做吗？如果您现在离开本页面，您可能会丢失您对本页面作出的修改。',
 	'ajaxlogin-create' => '创建账户',
 	'al-nosuchuser' => '用户名"$1"不存在. 用户名区分大小写,请重新检查你的拼写.',
+	'al-createblocked' => '您的 IP 地址被阻止创建帐户。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
