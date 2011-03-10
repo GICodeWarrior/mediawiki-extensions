@@ -3532,6 +3532,7 @@ $messages['br'] = array(
 	'configure-setting-wgUpdateRowsPerJob' => 'Niver a linennoù da hizivaat dre drevell',
 	'configure-setting-wgPoolCounterConf' => 'Kefluniañ kontrol ar strollad argerzhiñ, evit e impjout er wikioù dezho kalz a zremenerezh',
 	'configure-setting-wgSeleniumConfigFile' => 'Restr kefluniañ Selenium',
+	'configure-setting-wgDBtestpassword' => 'Ger-tremen evit $wgDBtestuser',
 	'configure-setting-wgAPICacheHelp' => 'Kuzhat testenn skoazell an API',
 	'configure-setting-wgAPICacheHelpTimeout' => 'Amzer dermen evit krubuilh testenn skoazell an API',
 	'configure-setting-wgAPIMaxDBRows' => "Niver brasañ a linennoù da vezañ skannet pa vez savet ur reked d'ar bank roadennoù API",
