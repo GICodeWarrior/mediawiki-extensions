@@ -5211,6 +5211,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  * @author Liangent
  * @author Wmr89502270
  */
@@ -5240,6 +5241,7 @@ $messages['zh-hans'] = array(
 	'sign-viewfield-email' => '电子邮件',
 	'sign-viewfield-age' => '年龄',
 	'sign-viewfield-options' => '选项',
+	'sign-signatures' => '签名',
 	'sign-closed' => '已关闭',
 	'sign-viewfield-reviewcomment' => '评论',
 	'sign-review-comment' => '评论',
