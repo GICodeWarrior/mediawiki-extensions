@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Internationalization file for the Include WP extension.
+ * Internationalization file for the ArrayExtension extension.
  *
  * @since 1.3.4
  *
