@@ -57,6 +57,7 @@ class VectorHooks {
 			'configurations' => array(
 				'wgVectorSectionEditLinksBucketTest',
 				'wgVectorSectionEditLinksLotteryOdds',
+				'wgVectorSectionEditLinksExperiment',
 			),
 			'requirements' => array(
 				'vector-noexperiments' => false,
