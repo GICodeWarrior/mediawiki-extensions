@@ -39,6 +39,10 @@ $wgVectorSectionEditLinksBucketTest = false;
 // Percentage of users who's use of section edit links will be tracked - half of which will see the
 // new section edit links - default 5%
 $wgVectorSectionEditLinksLotteryOdds = 5;
+// Version number of the current experiment - Buckets from previous experiments will be overwritten
+// with new values when this is incremented, so as to allow accurate re-distribution. When changing
+// the lottery odds, this needs to change too, or you will have inaccurate data.
+$wgVectorSectionEditLinksExperiment = 0;
 
 /* Setup */
 

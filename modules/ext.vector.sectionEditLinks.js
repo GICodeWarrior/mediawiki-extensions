@@ -4,7 +4,16 @@
 ( function( $, mw ) {
 
 if ( mw.config.get( 'wgVectorSectionEditLinksBucketTest', false ) ) {
-	var bucket = $.cookie( 'ext.vector.sectionEditLinks-bucket' );
+	// If the version in the client's cookie doesn't match wgVectorSectionEditLinksExperiment, then
+	// we need to disregard the bucket they may already be in to ensure accurate redistribution
+	var currentExperiment = $.cookie( 'ext.vector.sectionEditLinks-experiment' );
+	var experiment = Number( mw.config.get( 'wgVectorSectionEditLinksExperiment', 0 ) );
+	var bucket = null;
+	if ( currentExperiment === null || Number( currentExperiment ) != experiment ) {
+		$.cookie( 'ext.vector.sectionEditLinks-experiment', experiment );
+	} else {
+		bucket = $.cookie( 'ext.vector.sectionEditLinks-bucket' );
+	}
 	if ( bucket === null ) {
 		// Percentage chance of being tracked
 		var odds = Math.min( 100, Math.max( 0,
@@ -15,8 +24,8 @@ if ( mw.config.get( 'wgVectorSectionEditLinksBucketTest', false ) ) {
 		$.cookie( 'ext.vector.sectionEditLinks-bucket', bucket, { 'path': '/', 'expires': 30 } );
 		// If we are going to track this person from now on, let's also track which bucket we put
 		// them into and when
-		if ( bucket > 0 && 'trackActionWithInfo' in $ ) {
-			$.trackActionWithInfo( 'ext.vector.sectionEditLinks-bucket', bucket );
+		if ( bucket > 0 && 'trackAction' in $ ) {
+			$.trackAction( 'ext.vector.sectionEditLinks-bucket:' + bucket + '@' + experiment );
 		}
 	}
 }
@@ -27,11 +36,12 @@ if ( bucket > 0 ) {
 		var editUrl = $( this ).attr( 'href' );
 		editUrl += ( editUrl.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( {
 			'clicktrackingsession': session,
-			'clicktrackingevent': 'ext.vector.sectionEditLinks-bucket' + bucket + '-save'
+			'clicktrackingevent':
+				'ext.vector.sectionEditLinks-bucket:' + bucket + '@' + experiment + '-save'
 		} );
 		$(this).attr( 'href', mediaWiki.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
 			'action': 'clicktracking',
-			'eventid': 'ext.vector.sectionEditLinks-bucket' + bucket + '-click',
+			'eventid': 'ext.vector.sectionEditLinks-bucket:' + bucket + '@' + experiment + '-click',
 			'token': session,
 			'redirectto': editUrl
 		} ) );
