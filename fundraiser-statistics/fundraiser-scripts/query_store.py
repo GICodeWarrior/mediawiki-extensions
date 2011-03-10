@@ -122,7 +122,7 @@ class query_store:
 		elif query_name == 'report_ecomm_by_amount':
 			start_time = args[0]
 			end_time = args[1]
-			sql_stmnt = sql_stmnt % ('%', '%',  '%',  '%', start_time, end_time)
+			sql_stmnt = sql_stmnt % ('%', '%',  '%',  '%', start_time, end_time, end_time)
 		
 		elif query_name == 'report_ecomm_by_contact':
 			where_str = args[0]
@@ -145,7 +145,7 @@ class query_store:
 		if query_name == 'report_contribution_tracking':
 			return ['Time','Banner','Landing Page','Campaign','Converted Amount', 'Suffix']
 		elif query_name == 'report_ecomm_by_amount':
-			return ['Timestamp','First Name','Last Name','Country','ISO Code', 'Amount']
+			return ['Timestamp','First Name','Last Name','Country','ISO Code', 'Amount', 'First Donation?', 'Date of First']
 		elif query_name == 'report_ecomm_by_contact':
 			return ['Timestamp','First Name','Last Name','Country','ISO Code', 'Amount']
 		else:
