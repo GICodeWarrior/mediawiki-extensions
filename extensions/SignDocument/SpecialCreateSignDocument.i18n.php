@@ -2106,6 +2106,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  * @author Liangent
  * @author Wmr89502270
  */
@@ -2113,10 +2114,12 @@ $messages['zh-hans'] = array(
 	'createsigndocument' => '启用文档签名',
 	'createsigndoc-pagename' => '页面：',
 	'createsigndoc-email' => '电邮地址：',
+	'createsigndoc-address' => '家的地址',
 	'createsigndoc-phone' => '电话号码：',
 	'createsigndoc-bday' => '出生日期：',
 	'createsigndoc-hidden' => '隐藏',
 	'createsigndoc-optional' => '可选',
+	'createsigndoc-create' => '创造',
 	'createsigndoc-error-generic' => '错误：$1',
 );
 

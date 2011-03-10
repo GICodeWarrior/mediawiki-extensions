@@ -2320,6 +2320,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  * @author Liangent
  * @author PhiLiP
  */
@@ -2338,6 +2339,7 @@ $messages['zh-hans'] = array(
 	'recordadmin-created' => '已发起',
 	'recordadmin-modified' => '曾修改',
 	'recordadmin-actions' => '操作',
+	'recordadmin-needscontent' => '添加内容。。。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

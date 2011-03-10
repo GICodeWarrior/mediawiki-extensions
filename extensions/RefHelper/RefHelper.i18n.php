@@ -1441,9 +1441,11 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author Mark85296341
  */
 $messages['zh-hans'] = array(
+	'refhelper-label_authorsurname' => '姓名：',
 	'refhelper-title' => '标题：',
 	'refhelper-pages' => '页面:',
 	'refhelper-year' => '年份:',

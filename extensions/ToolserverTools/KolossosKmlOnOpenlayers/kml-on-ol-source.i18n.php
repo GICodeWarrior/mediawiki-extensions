@@ -559,3 +559,10 @@ $messages['vi'] = array(
 	'ts-kml-on-ol-map-by' => 'Bản đồ',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'ts-kml-on-ol-wikipedia' => '维基百科',
+);
+

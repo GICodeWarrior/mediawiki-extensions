@@ -734,6 +734,28 @@ $messages['ru'] = array(
 	'livetranslate-importtms-param-miscmatch' => 'Несоответствие количества расположений и типов',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'livetranslate-translate-to' => 'Översätt den här sidan till',
+	'livetranslate-button-translate' => 'Översätt',
+	'livetranslate-button-translating' => 'Översätter...',
+	'livetranslate-button-revert' => 'Visa originaltexten',
+	'livetranslate-dictionary-empty' => 'Det finns inga ord i ordboken ännu. Klicka på fliken "redigera" för att lägga till.',
+	'livetranslate-dictionary-count' => 'Det finns {{PLURAL:$1|$1 ord|$1 ord}} i $2 {{PLURAL:$2|språk|olika språk}}. Klicka på fliken "redigera" för att lägga till mer.',
+	'livetranslate-dictionary-goto-edit' => 'Ändra översättningsminnena.',
+	'livetranslate-special-no-tms-yet' => 'Det finns inga översättningsminnen ännu.',
+	'livetranslate-special-button' => 'Spara och uppdatera',
+	'livetranslate-special-type' => 'Typ',
+	'livetranslate-special-location' => 'Plats',
+	'livetranslate-special-remove' => 'Ta bort',
+	'livetranslate-special-local' => 'Lokal',
+	'livetranslate-special-add-tm' => 'Lägg till ett nytt översättningsminne',
+	'livetranslate-special-tms-update' => 'Uppdatera översättningsminnen',
+	'livetranslate-special-update' => 'Uppdatera översättningsminnen',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -756,6 +778,18 @@ $messages['uk'] = array(
 	'livetranslate-special-type' => 'Тип',
 	'livetranslate-special-location' => 'Розташування',
 	'livetranslate-special-remove' => 'Вилучити',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'livetranslate-button-translate' => '翻译',
+	'livetranslate-button-translating' => '翻译中。。。',
+	'livetranslate-button-revert' => '显示原文',
+	'livetranslate-special-button' => '保存与更新',
+	'livetranslate-special-type' => '类型',
+	'livetranslate-special-location' => '位置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

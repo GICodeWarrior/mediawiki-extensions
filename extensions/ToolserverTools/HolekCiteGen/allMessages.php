@@ -897,3 +897,10 @@ $messages['yi'] = array(
 	'ts-citegen-Sources-title' => 'מקורות',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'ts-citegen-Other-languages' => '其他语言',
+);
+

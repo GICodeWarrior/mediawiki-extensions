@@ -1002,3 +1002,10 @@ $messages['vi'] = array(
 	'framedvideo-desc' => 'Cho phép nhúng video từ nhiều website khác nhau bằng cách dùng thẻ <code>&lt;video&gt;</code>',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'framedvideo_position' => '对',
+);
+

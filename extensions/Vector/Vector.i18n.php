@@ -279,6 +279,7 @@ Ako ste prijavljeni, možete isključiti ovo upozorenje u "Veličine tekstualnog
 	'vector-editwarning-preference' => 'Upozori me kada napustim stranicu za izmjene bez spašenih promjena',
 	'vector-simplesearch-search' => 'Traži',
 	'vector-simplesearch-containing' => 'sadrži...',
+	'vector-noexperiments-preference' => 'Isključi me iz funkcijskih probi',
 );
 
 /** Catalan (Català)
@@ -676,6 +677,7 @@ My t'ou uss loggalt stiagh, foddee oo lhiettal y raaue shoh 'sy tosheeaghtyn ayd
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  * @author Yonidebest
@@ -690,6 +692,7 @@ $messages['he'] = array(
 	'vector-editwarning-preference' => 'הצגת אזהרה אם אני עומד לעזוב דף עריכה עם שינויים שטרם נשמרו',
 	'vector-simplesearch-search' => 'חיפוש',
 	'vector-simplesearch-containing' => 'כולל...',
+	'vector-noexperiments-preference' => 'אל תכללו אותי בניסויים בעתיד',
 );
 
 /** Croatian (Hrvatski)
@@ -1048,6 +1051,7 @@ $messages['mk'] = array(
 	'vector-editwarning-preference' => 'Предупреди ме кога сакам да напуштам страница за уредување без да ги имам зачувано промените',
 	'vector-simplesearch-search' => 'Пребарување',
 	'vector-simplesearch-containing' => 'содржи...',
+	'vector-noexperiments-preference' => 'Изземиме од експерименти на функции',
 );
 
 /** Malayalam (മലയാളം)
@@ -1064,6 +1068,7 @@ $messages['ml'] = array(
 	'vector-editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തൽ താളിൽ നിന്നും പോകുമ്പോൾ എന്നെ അറിയിക്കുക',
 	'vector-simplesearch-search' => 'തിരയുക',
 	'vector-simplesearch-containing' => 'ഉൾപ്പെടുത്തുന്നു...',
+	'vector-noexperiments-preference' => 'സവിശേഷഗുണങ്ങൾ പരീക്ഷിക്കുന്നതിൽ നിന്നും എന്നെ ഒഴിവാക്കുക',
 );
 
 /** Mongolian (Монгол) */
@@ -1733,6 +1738,7 @@ $messages['yue'] = array(
  * @author Bencmq
  * @author Liangent
  * @author Onecountry
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'vector' => 'Vector用户界面改进',
@@ -1744,6 +1750,7 @@ $messages['zh-hans'] = array(
 	'vector-editwarning-preference' => '如在更改未保存时离开页面，则发出警告',
 	'vector-simplesearch-search' => '搜索',
 	'vector-simplesearch-containing' => '含有...',
+	'vector-noexperiments-preference' => '功能实验中排除我',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

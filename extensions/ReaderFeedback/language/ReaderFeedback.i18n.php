@@ -2316,6 +2316,7 @@ $messages['sah'] = array(
 	'readerfeedback-tier-poor' => 'Мөлтөх',
 	'tooltip-ca-ratinghist' => 'Ааҕааччы бу сирэйи сыанабыла',
 	'specialpages-group-feedback' => 'Ааҕааччылар санаалара',
+	'readerfeedback-tt-review' => 'Тургутууну ыыт',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

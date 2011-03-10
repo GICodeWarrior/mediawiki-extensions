@@ -1196,11 +1196,13 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
  * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'security-type-category' => '分类',
 	'security-type-namespace' => '名字空间',
+	'restriction-read' => '读',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

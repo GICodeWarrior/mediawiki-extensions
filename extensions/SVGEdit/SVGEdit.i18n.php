@@ -428,6 +428,21 @@ $messages['sr-ec'] = array(
 	'svgedit-edit-tab-tooltip' => 'Можете уредити SVG цртеж у свом прегледачу',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'svgedit-editbutton-edit' => 'Redigera teckning',
+	'svgedit-summary-label' => 'Redigeringssammanfattning',
+	'svgedit-summary-default' => '/* Redigerad i svg-edit */',
+	'svgedit-editor-save-close' => 'Spara och stäng',
+	'svgedit-editor-close' => 'Avbryt',
+	'svgedit-desc' => 'Redigera SVG-teckningar i webbläsaren med [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Redigera teckning',
+	'svgedit-edit-tab-tooltip' => 'Du kan redigera den här SVG-teckningen i din webbläsare',
+	'svgedit-toolbar-insert' => 'SVG-teckning',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -456,6 +471,14 @@ $messages['yi'] = array(
 	'svgedit-edit-tab' => 'רעדאַקטירן צייכענונג',
 	'svgedit-edit-tab-tooltip' => 'איר קענט ענדערן די SVG־צייכענונג אין אייער בלעטערער',
 	'svgedit-toolbar-insert' => 'SVG צייכענונג',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'svgedit-editor-save-close' => '保存和关闭',
+	'svgedit-editor-close' => '取消',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

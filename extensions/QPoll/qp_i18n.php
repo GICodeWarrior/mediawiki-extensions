@@ -2541,8 +2541,12 @@ $messages['yi'] = array(
 	'qp_source_link' => 'מקור',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
 $messages['zh-hans'] = array(
+	'qp_vote_button' => '投票',
+	'qp_vote_again_button' => '改变您的投票',
 	'qp_source_link' => '来源',
 	'qp_stats_link' => '统计',
 	'qp_users_link' => '用户',
