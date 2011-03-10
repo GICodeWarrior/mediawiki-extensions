@@ -57,12 +57,14 @@ class SkinOffline extends SkinTemplate {
 			$nskey,
 			!$this->mTitle->isTalkPage() );
 
-		$content_actions['talk'] = $this->tabAction(
-			$this->mTitle->getTalkPage(),
-			'talk',
-			$this->mTitle->isTalkPage(),
-			'',
-			true);
+		if( $this->mTitle->canTalk() ) {
+			$content_actions['talk'] = $this->tabAction(
+				$this->mTitle->getTalkPage(),
+				'talk',
+				$this->mTitle->isTalkPage(),
+				'',
+				true);
+		}
 
 		if ( isset( $wgHTMLDump ) ) {
 			$content_actions['current'] = array(
