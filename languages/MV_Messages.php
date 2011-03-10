@@ -11052,6 +11052,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hydra
  * @author Liangent
  * @author PhiLiP
  * @author Wrightbus
@@ -11090,6 +11091,7 @@ $messages['zh-hans'] = array(
 	'mv_end_desc' => '结束时间',
 	'mv_search_match' => '搜索文字',
 	'mv_search_categories' => '分类',
+	'mv_search_and' => '和',
 	'mv_search_or' => '或',
 	'mv_search_stream_name' => '流名称',
 	'mv_stream_name' => '流名称',
