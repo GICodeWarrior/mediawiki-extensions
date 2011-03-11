@@ -1,8 +1,7 @@
 <?php
 /**** All the BookManager Variables Functions ****/
 class BookManagerFunctions {
-
-	const VERSION = "0.1.5 - unstable";
+	const VERSION = "0.1.6 - unstable";
 
 	static function register( ) {
 		global $wgParser;
@@ -18,7 +17,7 @@ class BookManagerFunctions {
 		$wgParser->setFunctionHook( 'chaptername',	array( __CLASS__, 'chaptername' ),		SFH_NO_HASH );
 		$wgParser->setFunctionHook( 'chapternamee',	array( __CLASS__, 'chapternamee' ),		SFH_NO_HASH );
 	}
-	
+	/**** All the BookManager functions to declare magicword id ****/
 	static function DeclareVarIds( &$aCustomVariableIds ) {
 		# aCustomVariableIds is where MediaWiki wants to store its
 		# list of custom variable ids. We oblige by adding ours:
@@ -32,7 +31,7 @@ class BookManagerFunctions {
 		$aCustomVariableIds[] = MAG_CHAPTERNAMEE;
 		return true;
 	}
- 	
+ 	/**** All the BookManager functions to declare magicwords ****/
 	static function LanguageGetMagic( &$magicWords, $langCode = "en" ) {
 		switch ( $langCode ) {
 			default:
@@ -63,17 +62,27 @@ class BookManagerFunctions {
 		}
 		return true;
 	}	
-/**** All the BookManager values functions ****/
+/**** All the BookManager private functions ****/
+	
+
+	/*
+	 * Check if action is suported 
+	 * @return Bool
+	 */
 	private static function isViewAction() {
 		global $wgRequest;
 		$action = $wgRequest->getVal( 'action', 'view' );
-		if( $action == 'view' || $action == 'purge'){			
+		if( $action == 'view' || $action == 'purge' ){			
 			return true;
 		}
 		else{		
 			return false;
 		}	
 	}
+
+	/*
+	 * Get Title
+	 */
 	private static function newTitleObject( &$parser, $text = null ) {
 		$t = Title::newFromText( $text );
 		if ( is_null( $t ) ) {
@@ -84,7 +93,7 @@ class BookManagerFunctions {
 
 
 	/*
-	 * Cópia da função "getBookPagePrefixes" da extensão Collection
+	 * Adaptation of the function "getBookPagePrefixes" from collection extension
 	 * (http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Collection/Collection.body.php?revision=79895&view=markup#l440)
 	 */
 	private static function getBookPagePrefixes() {
@@ -117,7 +126,7 @@ class BookManagerFunctions {
 	}
 
 	/*
-	 * Simplificação da função "parseCollectionLine" da extensão Collection
+	 * Simplification of the function "parseCollectionLine" from collection extension
 	 * (http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Collection/Collection.body.php?revision=79895&view=markup#l709)
 	 */
 	private static function parseCollectionLine( /* Sem uso por enquanto: &$collection, */ $line ) {
@@ -144,7 +153,7 @@ class BookManagerFunctions {
 	}
 
 	/*
-	 * Adaptação da função "loadCollection" da extensão Collection
+	 * Adaptation of the function "loadCollection" from collection extension
 	 * (http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Collection/Collection.body.php?revision=79895&view=markup#l780)
 	 */
 	private static function loadListFromCollection( $collectiontitle ) {
@@ -164,7 +173,7 @@ class BookManagerFunctions {
 		return $caps;
 	}
 
-	
+	#Get the book or chapter name	
 	private static function bookparts( &$parser, $text = null, $part = 1) {
 		$t = self::newTitleObject( $parser, $text );
 		// No book should have '/' in it's name, so...
@@ -183,12 +192,14 @@ class BookManagerFunctions {
 	 * @param $n Integer Position of wanted page. Next page is +1; Previous page is -1
 	 * @return String The prefixed title or empty string if not found or found but not valid
 	 */
+
 	private static function pageText( &$parser, $text = null, $n = 0 ) {
 		$pagetitle = self::newTitleObject( $parser, $text );
 		$prefixes = self::getBookPagePrefixes();
 		$booktitle = Title::newFromText( $prefixes['community-prefix'] . self::bookparts( $parser, $text, 0) ); // ...the book name will be 'Foo'.
+
 		$cap = self::loadListFromCollection( $booktitle );
-		if ( $cap === false ) {
+		if ( $cap ===false ) {
 			return '';
 		}
 		$current = array_search( $pagetitle, $cap );
@@ -202,6 +213,10 @@ class BookManagerFunctions {
 		return wfEscapeWikiText( $otherpagetitle->getText() );
 	}
 
+
+/**** All the BookManager values functions ****/
+
+
 	static function prevpagename( &$parser, $text = null ) {
 		$t = self::pageText( $parser, $text, - 1 );
 		return $t;
@@ -213,6 +228,7 @@ class BookManagerFunctions {
 	}
 
 	static function nextpagename( &$parser, $text = null ) {
+		
 		$t = self::pageText( $parser, $text, + 1 );
 		return $t;
 	}
@@ -273,7 +289,7 @@ class BookManagerFunctions {
 	
 /**
 * Function that adds navigation bar
-* inspired by extension PageNotice
+* inspired by PageNotice extension
 * (http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/PageNotice/PageNotice.php)
 */
 
@@ -285,11 +301,27 @@ class BookManagerFunctions {
 		);
 		$currenttitletext = $wgTitle->getText();
 		$prev = self::pageText( $wgParser, $currenttitletext, - 1 );
-		$next = self::pageText( $wgParser, $currenttitletext, + 1 );
 		$base = Title::newFromText( $currenttitletext )->getBaseText();
-		$basetext = ( $base !== '' ) ? Title::newFromText( $base )->getSubpageText(): '' ;
+		$next = self::pageText( $wgParser, $currenttitletext, + 1 );
 		$prevtext = ( $prev !== '' ) ? Title::newFromText( $prev )->getSubpageText(): '' ; 
+		$basetext = ( $base !== '' ) ? Title::newFromText( $base )->getSubpageText(): '' ;
 		$nexttext = ( $next !== '' ) ? Title::newFromText( $next )->getSubpageText(): '' ; 
+		$prevlink = ( $prev !== '' ) ? Title::newFromText( $prev )->getLocalURL(): '' ;
+		$baselink = ( $base !== '' ) ? Title::newFromText( $base )->getLocalURL(): '' ; 
+		$nextlink = ( $next !== '' ) ? Title::newFromText( $next )->getLocalURL(): '' ; 
+		$bar  = Xml::openElement('ul',array('class'=>'mw-book-navigation') );	
+		$bar .= Xml::openElement('li',array('class'=>'mw-prev') );
+		$bar .= Xml::element('a',array('href'=>$prevlink,'title'=>$prev ),$prevtext);
+		$bar .= Xml::closeElement('li');
+		$bar .= Xml::openElement('li',array('class'=>'mw-index') );
+		$bar .= Xml::element('a',array('href'=>$baselink,'title'=>$base ),$basetext);
+		$bar .= Xml::closeElement('li');
+		$bar .= Xml::openElement('li',array('class'=>'mw-next') );
+		$bar .= Xml::element('a',array('href'=>$nextlink,'title'=>$next ),$nexttext);
+		$bar .= Xml::closeElement('li');
+		$bar .= Xml::closeElement('ul');
+	
+		#adds system messages or html
 		if ( in_array($ns,$wgBookManagerNamespaces) && self::isViewAction() ) {
 		 	$BookManager = wfMsgExt( "BookManager", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
 			$BookManagerTop = wfMsgExt( "BookManager-top", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
@@ -300,18 +332,26 @@ class BookManagerFunctions {
 			elseif ( !wfEmptyMsg( "BookManager", $BookManager ) ) {
 					$text = "<div>$BookManager</div>\n$text";
 			}
+			#This part adds directly to the html by default when the messages are not defined ...
+			else {
+					$text = "$bar\n$text";
+			}
 			if ( !wfEmptyMsg( "BookManager-bottom", $BookManagerBottom ) ) {
 				$text = "$text\n<div>$BookManagerBottom</div>";
 			}
 			elseif ( !wfEmptyMsg( "BookManager", $BookManager ) ) {
 					$text = "$text\n<div>$BookManager</div>";
 			}
+			#This part adds directly to the html by default when the messages are not defined ...
+			else {
+					$text = "$text\n$bar";
+			}
 		 }
 		return true;
 	}
-
+	#adds CSS and JS to navigation bar 
 	static function injectStyleAndJS( &$out, &$sk ) {
-		global $wgOut ;
+		global $wgOut;
 		$wgOut->addModuleStyles('ext.BookManager'); 
 		$wgOut->addModules( 'ext.BookManager'); 
 		return true;
