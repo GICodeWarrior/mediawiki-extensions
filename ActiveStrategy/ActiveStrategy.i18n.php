@@ -461,6 +461,15 @@ $messages['ru'] = array(
 	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'activestrategy' => 'Көхтөөх стратегия',
+	'active-strategy-desc' => 'Былааннааһын сирэйигэр хас көннөрүү оҥоһуллубутун көрдөрөр',
+	'nedits' => '{{PLURAL:$1|Соҕотох көннөрүү|$1 көннөрүү}}',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Jkjk
