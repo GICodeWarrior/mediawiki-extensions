@@ -569,6 +569,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  * @author Revolus
  * @author Umherirrender
@@ -576,7 +577,7 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'badimages' => 'Liste unerwünschter Bilder',
 	'badimage-desc' => 'Erweitert die Einsatzmöglichkeiten der Liste unerwünschter Bilder in MediaWiki',
-	'badimages-add-btn' => 'Füge hinzu',
+	'badimages-add-btn' => 'Hinzufügen',
 	'badimages-added' => '$1 wurde der Liste hinzugefügt',
 	'badimages-count' => "Die Liste unerwünschter Bilder enthält '''$1''' {{PLURAL:$1|Eintrag|Einträge}}",
 	'badimages-name' => 'Name:',
