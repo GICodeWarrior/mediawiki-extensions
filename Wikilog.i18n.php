@@ -1858,7 +1858,7 @@ Der Kommentar wird erst erscheinen, nachdem er von einem Moderator geprüft wurd
 	'wikilog-show-published' => 'Veröffentlicht',
 	'wikilog-show-drafts' => 'Entwürfe',
 	'wikilog-submit' => 'Speichern',
-	'wikilog-preview' => 'Vorher betrachten',
+	'wikilog-preview' => 'Vorschau',
 	'wikilog-edit-lc' => 'bearbeiten',
 	'wikilog-reply-lc' => 'antworten',
 	'wikilog-delete-lc' => 'löschen',
