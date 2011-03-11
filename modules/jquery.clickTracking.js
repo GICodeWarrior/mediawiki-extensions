@@ -17,7 +17,7 @@
 		while ( token.length <= 32 ) {
 		    token += dict.charAt( ( ( Math.random() * date ) + token.length + date ) % dict.length );
 		}
-		$.cookie( 'clicktracking-session', token );
+		$.cookie( 'clicktracking-session', token, { 'path': '/' } );
 	}
 	/**
 	 * Performs click tracking API call
