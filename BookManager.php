@@ -84,4 +84,3 @@ $wgHooks['OutputPageBeforeHTML'][] = 'BookManagerFunctions::addText';
 
 $wgHooks['BeforePageDisplay'][] = 'BookManagerFunctions::injectStyleAndJS';
 
-//$wgExtensionMessagesFiles['BookManager'] = $dir . '/BookManager.i18n.php';
