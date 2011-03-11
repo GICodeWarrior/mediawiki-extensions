@@ -219,13 +219,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'showprocesslist' => 'Zeige Prozessliste',
 	'showprocesslist-desc' => 'Zeige die Ausgabe von [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
-	'showprocesslist-id' => 'ID',
+	'showprocesslist-id' => 'Kennung',
 	'showprocesslist-user' => 'Benutzer',
 	'showprocesslist-host' => 'Host',
 	'showprocesslist-db' => 'db',
