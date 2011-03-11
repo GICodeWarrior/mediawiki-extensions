@@ -32,6 +32,13 @@ $messages['anp'] = array(
 	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense] कॆ साइड बार मॆ जोङॊ',
 );
 
+/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+ * @author FRANCIS5091
+ */
+$messages['dtp'] = array(
+	'googleadsense-desc' => 'Poruhango [http://www.google.com/adsense Guugol RungangPurimon] hilo id barsisi',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
