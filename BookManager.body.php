@@ -199,7 +199,7 @@ class BookManagerFunctions {
 		$booktitle = Title::newFromText( $prefixes['community-prefix'] . self::bookparts( $parser, $text, 0) ); // ...the book name will be 'Foo'.
 
 		$cap = self::loadListFromCollection( $booktitle );
-		if ( $cap ===false ) {
+		if ( $cap === false ) {
 			return '';
 		}
 		$current = array_search( $pagetitle, $cap );
