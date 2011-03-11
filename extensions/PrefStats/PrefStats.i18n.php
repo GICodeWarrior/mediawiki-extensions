@@ -2866,6 +2866,8 @@ Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
+	'prefstats' => 'Көйләүләр хисапнамәсе',
+	'prefstats-title' => 'Көйләүләр хисапнамәсе',
 	'prefstats-factor-hour' => 'сәгать',
 	'prefstats-factor-sixhours' => 'алты сәгать',
 	'prefstats-factor-day' => 'көн',

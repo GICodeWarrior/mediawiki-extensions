@@ -63,6 +63,13 @@ $messages['ia'] = array(
 	'arrayext-desc' => 'Immagazinar e computar arrays nominate',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'arrayext-desc' => 'Späicheren a Benotze vun definéierten Tabellen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

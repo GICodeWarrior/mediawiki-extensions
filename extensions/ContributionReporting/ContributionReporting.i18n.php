@@ -612,6 +612,8 @@ $messages['bg'] = array(
 	'fundraiserstats-total' => 'Общо (USD)',
 	'fundraiserstats-max' => 'Максимум (USD)',
 	'fundraiserstats-tab-contributions' => 'Брой приноси',
+	'fundraiserstats-time-zone' => 'Часова зона:',
+	'fundraiserstats-utc' => '(от UTC)',
 );
 
 /** Bengali (বাংলা)

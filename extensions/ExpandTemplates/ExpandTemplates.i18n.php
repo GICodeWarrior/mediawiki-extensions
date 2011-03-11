@@ -2162,6 +2162,7 @@ $messages['ts'] = array(
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
+	'expandtemplates' => 'Үрнәкләрне ачу',
 	'expand_templates_ok' => 'OK',
 );
 

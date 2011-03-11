@@ -333,6 +333,7 @@ Pomocí nástrojů napravo je můžete přidat.',
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Kghbln
  * @author MF-Warburg
  * @author Melancholie
  */
@@ -344,13 +345,13 @@ $messages['de'] = array(
 	'gep-emailsuccess' => 'Danke für den Vorschlag der Kategorie: $1.',
 	'gep-categories' => 'Kategorien',
 	'gep-addcategory' => 'Eine Kategorie einfügen',
-	'gep-addcategorybutton' => 'Einfügen',
+	'gep-addcategorybutton' => 'Hinzufügen',
 	'gep-suggestcategory' => 'Eine Kategorie vorschlagen',
 	'gep-suggestcategorybutton' => 'Senden',
 	'gep-sections' => 'Abschnitte',
 	'gep-sectionnotdisabled' => 'Dieser Abschnitt kann nicht aufgehoben werden',
 	'gep-addsection' => 'Einen Abschnitt einfügen',
-	'gep-addsectionbutton' => 'Einfügen',
+	'gep-addsectionbutton' => 'Hinzufügen',
 	'gep-classicmode' => 'Normaler Modus',
 	'gep-genericmode' => 'Genereller Modus',
 	'gep-nosectioninstructions' => 'Diese Seite hat keine Abschnitte.
