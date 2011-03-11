@@ -195,18 +195,20 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Spiritia
  * @author Turin
  */
 $messages['bg'] = array(
 	'vector' => 'Подобрения на потребителския интерфейс за облик Вектор',
 	'vector-desc' => 'Подобрява елементите от потребителския интерфейс на облик Вектор.',
-	'vector-collapsiblenav-preference' => 'Включване на сгъваемо/разгъваемо меню за навигация вляво',
+	'vector-collapsiblenav-preference' => 'Включване на сгъваемо/разгъваемо меню за навигация в облика Vector',
 	'vector-collapsiblenav-more' => 'Още езици',
 	'vector-editwarning-warning' => 'Ако излезете от тази страница, може да загубите всички незапазени промени, които сте направили. 
 Ако сте влезли в системата, можете да изключите това предупреждение през меню "Редактиране" във вашите лични настройки.',
 	'vector-editwarning-preference' => 'Предупреждаване при опит за напускане на страница, отворена в режим на редактиране, без да са запазени промените',
 	'vector-simplesearch-search' => 'Търсене',
+	'vector-noexperiments-preference' => 'Не желая да участвам в бъдещи експерименти',
 );
 
 /** Bahasa Banjar (Bahasa Banjar)
@@ -348,6 +350,7 @@ Pokud jste přihlášeni, můžete si toto varování vypnout na záložce „Ed
 	'vector-editwarning-preference' => 'Upozornit, když budu opouštět editaci bez uložení změn',
 	'vector-simplesearch-search' => 'Hledat',
 	'vector-simplesearch-containing' => 'obsahující…',
+	'vector-noexperiments-preference' => 'Neúčastnit se experimentů s novými funkcemi',
 );
 
 /** Kashubian (Kaszëbsczi)
@@ -662,6 +665,7 @@ Wänn Du aagmäldet bisch, chasch s Anzeige vu däre Warnig im „Tekscht-Ygab�
 	'vector-editwarning-preference' => 'Warn mi, wänn I ne Syte verloss mit Bearbeitige, wu nonig gspycheret sin',
 	'vector-simplesearch-search' => 'Suechi',
 	'vector-simplesearch-containing' => 'din het s …',
+	'vector-noexperiments-preference' => 'Mi uusschließe vu dr Dailnahm Feature-Experimänt',
 );
 
 /** Manx (Gaelg)
@@ -1051,7 +1055,7 @@ $messages['mk'] = array(
 	'vector-editwarning-preference' => 'Предупреди ме кога сакам да напуштам страница за уредување без да ги имам зачувано промените',
 	'vector-simplesearch-search' => 'Пребарување',
 	'vector-simplesearch-containing' => 'содржи...',
-	'vector-noexperiments-preference' => 'Изземиме од експерименти на функции',
+	'vector-noexperiments-preference' => 'Изземиме од експерименти so функции',
 );
 
 /** Malayalam (മലയാളം)
@@ -1351,6 +1355,7 @@ $messages['ru'] = array(
 	'vector-editwarning-preference' => 'Предупреждать, когда я покидаю страницу с несохранёнными изменениями',
 	'vector-simplesearch-search' => 'Поиск',
 	'vector-simplesearch-containing' => 'содержащие…',
+	'vector-noexperiments-preference' => 'Не предлагать экспериментальные возможности',
 );
 
 /** Rusyn (Русиньскый)
@@ -1588,6 +1593,7 @@ Kung nakalagda ka, maaari mong huwag paganahin ang babalang ito sa loob ng seksy
 	'vector-editwarning-preference' => 'Magbabala sa akin kapag umalis ako sa isang pahina ng pampatnugot na hindi pa nasasagip ang mga pagbabago',
 	'vector-simplesearch-search' => 'Maghanap',
 	'vector-simplesearch-containing' => 'naglalaman ng ...',
+	'vector-noexperiments-preference' => 'Huwag akong isali sa tampok na mga eksperimento',
 );
 
 /** Turkish (Türkçe)
