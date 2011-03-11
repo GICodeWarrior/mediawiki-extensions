@@ -10,7 +10,11 @@
 // Authenticate form
 $pwd_key=$_POST["pwd"];
 
-if ($pwd_key != "angelface") {
+// extract the private the passkey
+$key_string = file_get_contents ("keys.txt");
+$key_string = trim($key_string);
+
+if ($pwd_key != $key_string) {
 	$message  = "Invalid Key.\n";
 	die($message);
 }

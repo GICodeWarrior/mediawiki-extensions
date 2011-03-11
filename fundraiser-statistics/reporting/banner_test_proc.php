@@ -9,7 +9,11 @@
 // Authenticate form
 $pwd_key=$_POST["pwd"];
 
-if ($pwd_key != "angelface") {
+// extract the private the passkey
+$key_string = file_get_contents ("keys.txt");
+$key_string = trim($key_string);
+
+if ($pwd_key != $key_string) {
 	$message  = "Invalid Key.\n";
 	die($message);
 }
@@ -49,7 +53,7 @@ if ($sql_file == "banner_test.sql" || $sql_file == "banner_test_banners.sql") {
 	$query = sprintf($query, $start, $end, $cmpgn, $start, $end, $cmpgn);
 } elseif ($sql_file == "landing_page_test_by_hour.sql") {
 	$query = sprintf($query, "%", "%", "%", "%",  $start, $end, $cmpgn, "%", "%", "%", "%",  $start, $end, $cmpgn);
-} elseif ($sql_file == "ecomm_test.sql") {
+} elseif ($sql_file == "ecomm_test.sql" || $sql_file == "ecomm_test_by_banner.sql" || $sql_file == "ecomm_test_by_lp.sql") {
 	$query = sprintf($query, $start, $end, $cmpgn);
 } elseif ($sql_file == "ecomm_test_by_hour.sql") {
 	$query = sprintf($query, "%", "%", "%", "%", $start, $end, $cmpgn);
