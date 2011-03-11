@@ -6,55 +6,45 @@
  * @ingroup Extensions
  *
  * This file contains the include file for the Add Media Wizard support
- * The addMediaWizard is dependent on JS2Support and
- * the core "AddMedia" module
- *
- * Usage: Include the following line in your LocalSettings.php
- * require_once( "$IP/extensions/JS2Support/AddMediaWizard/AddMediaWizard.php" );
+ * The addMediaWizard is dependent on MwEmbedSupport extension
  *
  * @author Michael Dale <mdale@wikimedia.org> and others
  * @license GPL v2 or later
  * @version 0.1.1
  */
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "This is the AddMediaWizard extension. Please see the README file for installation instructions.\n";
+	exit( 1 );
+}
+
+if( !class_exists( 'MwEmbedResourceManager' ) ){
+	echo "AddMediaWizard requires the MwEmbedSupport extension.\n";
+	exit( 1 );
+}
 
 /* Configuration */
 
 // Credits
-$wgExtensionCredits['jsModule'][] = array(
+$wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Add Media Wizard',
-	'author' => array( 'Michael Dale', '...' ),
-	'version' => '0.1.1',
+	'author' => array( 'Michael Dale' ),
+	'version' => '0.2',
 	'descriptionmsg' => 'addmediawizard-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Add_Media_Wizard'
 );
 
 $AMWdir = dirname(__FILE__) . '/';
+
+$wgAutoloadClasses['AddMediaWizardHooks'] = "$AMWdir/AddMediaWizard.hooks.php";
+
 $wgExtensionMessagesFiles['AddMediaWizard'] = $AMWdir . 'AddMediaWizard.i18n.php';
 
-// Check for JS2 support
-if( ! isset( $wgEnableJS2system ) ){
-	throw new MWException( 'AddMediaWizard requires JS2 Support. Please include the JS2Support extension.');
-}
+// Register all AddMediaWizard hooks: 
+AddMediaWizardHooks::register();
 
-// Add the Named path for JS2 AddMediaWizard "activator" for easy addition to EditPageBeforeEditToolbar
-$wgResourceLoaderNamedPaths[ 'AMWEditPage' ] = 'extensions/AddMediaWizard/AddMediaWizardEditPage.js';
+// Register the MwEmbed AddMedia Module:
+MwEmbedResourceManager::register( 'extensions/AddMediaWizard/MwEmbedModules/AddMedia' );
 
-// Add the addMediaWizard binding on pages that include the Edit Toolbar:
-$wgHooks['EditPageBeforeEditToolbar'][] = 'AddMediaWizard::addJS';
-
-
-// Add the javascript loader for "AddMedia module"
-$wgExtensionJavascriptModules['AddMedia'] = 'extensions/AddMediaWizard/AddMedia';
-
-// Add the javascript loader for "ClipEdit module"
-$wgExtensionJavascriptModules['ClipEdit'] = 'extensions/AddMediaWizard/ClipEdit';
-
-class AddMediaWizard {
-	public static function addJS( $toolbar) {
-		global $wgOut;
-		// Add the AMWEditPage activator to the edit page in the "page" script bucket
-		$wgOut->addNamedResource( 'AMWEditPage', 'page' );
-		return true;
-	}
-}
+// Register the MwEmbed ClipEdit Module
+MwEmbedResourceManager::register( 'extensions/AddMediaWizard/MwEmbedModules/ClipEdit' );
