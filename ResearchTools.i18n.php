@@ -190,6 +190,18 @@ $messages['nl'] = array(
 	'researchtools-page-prefs' => 'Voorkeurenstatistieken',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'researchtools' => "Utiss d'Arserca",
+	'researchtools-desc' => "Ansema d'utiss ch'a van bin për fé dë studi d'arserca dj'utent",
+	'researchtools-page-dashboard' => 'Cruscòt',
+	'researchtools-page-surveys' => "Arspòsta a l'Anterogassion",
+	'researchtools-page-clicks' => 'Sgnaca Trassé',
+	'researchtools-page-prefs' => 'Statìstiche dle Preferense',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -219,5 +231,12 @@ $messages['ru'] = array(
  */
 $messages['te'] = array(
 	'researchtools' => 'పరిశోధన పనిముట్లు',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'researchtools-page-prefs' => 'Көйләүләр хисапнамәсе',
 );
 
