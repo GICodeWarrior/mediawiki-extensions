@@ -150,11 +150,11 @@ class VectorHooks {
 	}
 	
 	/**
-	 * MakeGlobalVariablesScript hook
+	 * ResourceLoaderGetConfigVars hook
 	 * 
 	 * Adds enabled/disabled switches for Vector modules
 	 */
-	public static function makeGlobalVariablesScript( &$vars ) {
+	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global $wgVectorFeatures;
 		
 		$configurations = array();
