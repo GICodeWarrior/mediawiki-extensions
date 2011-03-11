@@ -1,7 +1,7 @@
 <?php
 /**** All the BookManager Variables Functions ****/
 class BookManagerFunctions {
-	const VERSION = "0.1.6 - unstable";
+	const VERSION = "0.1.6";
 
 	static function register( ) {
 		global $wgParser;
