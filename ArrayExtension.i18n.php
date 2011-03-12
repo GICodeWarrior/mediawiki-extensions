@@ -98,3 +98,10 @@ $messages['sv'] = array(
 	'arrayext-desc' => 'Lagra och beräkna namngivna arrayer',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'arrayext-desc' => 'Itabi at tuusin ang pinangalanang mga hanay',
+);
+
