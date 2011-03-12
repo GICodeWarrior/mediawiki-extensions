@@ -11,17 +11,17 @@ mw.addMessages( {
 	$.fn.dragDropFile = function () {
 		mw.log( "drag drop: " + this.selector );
 		// setup drag binding and highlight
-		var dC = $j( this.selector ).get( 0 );
+		var dC = $( this.selector ).get( 0 );
 		dC.addEventListener( "dragenter",
 			function( event ) {
-				$j( dC ).css( 'border', 'solid red' );
+				$( dC ).css( 'border', 'solid red' );
 				event.stopPropagation();
 				event.preventDefault();
 			}, false );
 		dC.addEventListener( "dragleave",
 			function( event ) {
 				// default textbox css (should be an easy way to do this)
-				$j( dC ).css( 'border', '' );
+				$( dC ).css( 'border', '' );
 				event.stopPropagation();
 				event.preventDefault();
 			}, false );
@@ -43,10 +43,10 @@ mw.addMessages( {
 			event.stopPropagation();
 			event.preventDefault();
 
-			$j( '#multiple_file_input' ).remove();
+			$( '#multiple_file_input' ).remove();
 
-			$j( 'body' ).append(
-				$j('<div />')
+			$( 'body' ).append(
+				$('<div />')
 				.attr( {
 					'title' : gM( 'mwe-upload-multi', fileCount ),
 					'id' : 'multiple_file_input'
@@ -63,13 +63,13 @@ mw.addMessages( {
 
 			var buttons = { };
 			buttons[ gM( 'mwe-cancel' ) ] = function() {
-				$j( this ).dialog( 'close' );
+				$( this ).dialog( 'close' );
 			}
 			buttons[ gM( 'mwe-upload-multi', fileCount ) ] = function() {
 				alert( 'do multiple file upload' );
 			}
 			// open up the dialog
-			$j( '#multiple_file_input' ).dialog( {
+			$( '#multiple_file_input' ).dialog( {
 				bgiframe: true,
 				autoOpen: true,
 				modal: true,
@@ -77,16 +77,16 @@ mw.addMessages( {
 				resizable:false,
 				buttons : buttons
 			} );
-			$j( '#multiple_file_input' ).dialogFitWindow();
-			$j( window ).resize( function() {
-				$j( '#multiple_file_input' ).dialogFitWindow();
+			$( '#multiple_file_input' ).dialogFitWindow();
+			$( window ).resize( function() {
+				$( '#multiple_file_input' ).dialogFitWindow();
 			} );
 			// add the inital table / title:
-			$j( '#multiple_file_input' ).empty().html(
-				$j('<h3 />')
+			$( '#multiple_file_input' ).empty().html(
+				$('<h3 />')
 				.text( gM( 'mwe-review-upload' ) ),
 
-				$j( '<table />' )
+				$( '<table />' )
 				.attr({
 					'width' : "100%",
 					'border' : "1",
@@ -95,21 +95,21 @@ mw.addMessages( {
 				.addClass( 'table_list' )
 			);
 
-			$j.each( files, function( i, file ) {
+			$.each( files, function( i, file ) {
 				if ( file.fileSize < 64048576 ) {
-					$j( '#multiple_file_input .table_list' ).append(
-						$j('<tr />').append(
-							$j('<td />').css({
+					$( '#multiple_file_input .table_list' ).append(
+						$('<tr />').append(
+							$('<td />').css({
 								'width': '300px',
 								'padding' : '5px'
 							}).append(
-								$j('<img />').attr( {
+								$('<img />').attr( {
 									'width' : '250',
 									'src' : file.getAsDataURL()
 								} )
 							),
 
-							$j('<td />')
+							$('<td />')
 							.attr('valign', 'top')
 							.append(
 								'File Name: <input name="file[' + i + '][title]" value="' + file.name + '"><br>' +

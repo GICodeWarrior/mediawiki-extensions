@@ -6,7 +6,9 @@
 			'styles' => "resources/css/addMedia.css",
 			'messageFile' => 'AddMedia.i18n.php',
 			'dependencies' => array(
-				'mw.RemoteSearchDriver'
+				'mw.RemoteSearchDriver',
+				'mediawiki.Uri',
+				'mw.Api'
 			),
 		),
 		'mw.RemoteSearchDriver' => array(

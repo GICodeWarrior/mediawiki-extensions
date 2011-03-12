@@ -38,7 +38,7 @@ metavidSearch.prototype = {
 
 		// Process all options
 		var url = this.provider.apiUrl;
-		var request = $j.extend( {}, this.defaultReq );
+		var request = $.extend( {}, this.defaultReq );
 		request[ 'f[0][t]' ] = 'match';
 		request[ 'f[0][v]' ] = search_query;
 
@@ -46,7 +46,7 @@ metavidSearch.prototype = {
 		request[ 'limit' ] = this.provider.limit;
 		request[ 'offset' ] = this.provider.offset;
 		mw.log("getJSON: " + url + '&cb=?' );
-		$j.getJSON( url + '&cb=?&cb_inx=1', request, function( data ) {
+		$.getJSON( url + '&cb=?&cb_inx=1', request, function( data ) {
 			mw.log( 'mvSearch: got data response::' );
 			var xmldata = ( data && data['pay_load'] ) ? mw.parseXML( data['pay_load'] ) : false;
 			if( !xmldata ) {
@@ -128,7 +128,7 @@ metavidSearch.prototype = {
 			o += '* part of longer [' + resource.parent_clip + ' video clip]' + "\n";
 
 		if ( resource.person && resource.person['url'] && resource.person['label'] )
-			o += '* also see speeches by [' + $j.trim( resource.person.url ) + ' ' + resource.person['label'] + ']' + "\n";
+			o += '* also see speeches by [' + $.trim( resource.person.url ) + ' ' + resource.person['label'] + ']' + "\n";
 
 		// check for bill:
 		if ( resource.bill && resource.bill['label'] && resource.bill['url'] )
@@ -145,7 +145,7 @@ metavidSearch.prototype = {
 		var o = this.parent_getInlineDescWiki( resource );
 		// add in person if found
 		if ( resource.person && resource.person['label'] ) {
-			o = $j.trim( o.replace( resource.person['label'], '' ) );
+			o = $.trim( o.replace( resource.person['label'], '' ) );
 			// trim leading :
 			if ( o.substr( 0, 1 ) == ':' )
 				o = o.substr( 1 );
@@ -154,7 +154,7 @@ metavidSearch.prototype = {
 			o = '"' + o + '" [[' + resource.person['label'] + ']] on ' + d.toDateString();
 		}
 		// could do ref or direct link:
-		o += ' \'\'[' + $j.trim( resource.link ) + ' source clip]\'\' ';
+		o += ' \'\'[' + $.trim( resource.link ) + ' source clip]\'\' ';
 
 		// var o= '"' + o + '" by [[' + resource.person['label'] + ']] '+
 		//		'<ref>[' + resource.link + ' Metavid Source Page] for ' + resource.title +'</ref>';
@@ -177,11 +177,11 @@ metavidSearch.prototype = {
 
 		// update the interface:
 		mw.log( 'update title to: ' + resource['title'] );
-		$j( '#rsd_resource_title' ).html( gM( 'mwe-am-resource_edit', resource['title'] ) );
+		$( '#rsd_resource_title' ).html( gM( 'mwe-am-resource_edit', resource['title'] ) );
 
 		// if the video is "roe" based select the ogg stream
 		if ( resource.roe_url && resource.pSobj.provider.stream_import_key ) {
-			var source = $j( '#embed_vid' ).get( 0 ).mediaElement.getSourceById( resource.pSobj.provider.stream_import_key );
+			var source = $( '#embed_vid' ).get( 0 ).mediaElement.getSourceById( resource.pSobj.provider.stream_import_key );
 			if ( !source ) {
 				mw.log( 'Error::could not find source: ' + resource.pSobj.provider.stream_import_key );
 			} else {
@@ -235,7 +235,7 @@ metavidSearch.prototype = {
 	* @param {Object} resource Resource to transform
 	*/
 	addEmbedInfo : function( resource, embed_id ) {
-		var sources = $j( '#' + embed_id ).get( 0 ).mediaElement.getSources();
+		var sources = $( '#' + embed_id ).get( 0 ).mediaElement.getSources();
 		resource.other_versions = '*[' + resource['roe_url'] + ' XML of all Video Formats and Timed Text]' + "\n";
 		for ( var i in sources ) {
 			var cur_source = sources[i];
@@ -268,7 +268,7 @@ metavidSearch.prototype = {
 * Takes in a string returns an xml dom object
 *
 * NOTE: this should be deprecated in favor of jquery xml parsing
-* $j( xml_string )
+* $( xml_string )
 *
 * @param {String} str String of XML content to be parsed
 * @return
@@ -277,7 +277,7 @@ metavidSearch.prototype = {
 *
 */
 mw.parseXML = function ( str ) {
-	if ( $j.browser.msie ) {
+	if ( $.browser.msie ) {
 		// Attempt to parse as XML for IE
 		var xmldata = new ActiveXObject( "Microsoft.XMLDOM" );
 		xmldata.async = "false";

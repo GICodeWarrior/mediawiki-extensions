@@ -98,7 +98,7 @@ kalturaFilters.prototype = {
 			var _this = this;
 			mw.log( 'f: populateFilterContainer ' );
 			
-			$filtersContainer = $j( '<div />' );
+			$filtersContainer = $( '<div />' );
 			
 			for (filter in this.filterList) {
 				$filtersContainer.append(
@@ -107,12 +107,12 @@ kalturaFilters.prototype = {
 						  this.filterList[ filter ].options ));
 			}
 			
-			$selectAll = $j( '<div />' ).text('Select All').addClass('mwe-am-clickable')
+			$selectAll = $( '<div />' ).text('Select All').addClass('mwe-am-clickable')
 				.attr( {
 					id: 'mwe-am-select_all'
 				} )
 				.click( function() {
-					$j('input[type=checkbox]', $filtersContainer).attr('checked',true);
+					$('input[type=checkbox]', $filtersContainer).attr('checked',true);
 					// TODO: avoid code duplication (with individual click event).
 
 					_this.resetFilters();
@@ -140,17 +140,17 @@ kalturaFilters.prototype = {
 		getFilterBox: function( id, title, filterOptions ) {
 			_this = this;
 			
-			$box = $j( '<div />' ).addClass( 'ui-filter-box' ).attr({
+			$box = $( '<div />' ).addClass( 'ui-filter-box' ).attr({
 				'id': id
 			});
 			
-			$title = $j( '<div />' ).addClass( 'ui-filter-title' ).text( title );
+			$title = $( '<div />' ).addClass( 'ui-filter-title' ).text( title );
 			$box.append( $title );
 			
 			for (optionID in filterOptions) {
-				$option = $j( '<div />' ).addClass( 'ui-filter-option' ).text( filterOptions[ optionID ].text );
+				$option = $( '<div />' ).addClass( 'ui-filter-option' ).text( filterOptions[ optionID ].text );
 				
-				$checkbox = $j( '<input />' )
+				$checkbox = $( '<input />' )
 					.attr( {
 						type: 'checkbox',
 						name: id + '_' + title + '_' + optionID,

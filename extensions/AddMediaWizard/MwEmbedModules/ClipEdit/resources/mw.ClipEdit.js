@@ -3,11 +3,11 @@
 */
 
 // include all module messages
-mw.includeAllModuleMessages();
 
 /**
 * The default clipEdit values
 */
+( function( mw, $ ) {
 var default_clipedit_values = {
 
 	// Resource object for editing
@@ -148,20 +148,20 @@ mw.ClipEdit.prototype = {
 			'media' : ['image', 'mwtemplate'],
 			'doEdit':function( _this, target ) {
 				function doUpdateDur( inputElm ) {
-					mw.log( "update duration:" + $j( inputElm ).val() );
+					mw.log( "update duration:" + $( inputElm ).val() );
 					// update the parent sequence object:
-					_this.resource.dur = smilParseTime( $j( inputElm ).val() );
+					_this.resource.dur = smilParseTime( $( inputElm ).val() );
 					// update the playlist:
 					_this.parentSequence.do_refresh_timeline( true );
 				}
 
-				$j( target ).empty().html(
+				$( target ).empty().html(
 
-					$j('<label />')
+					$('<label />')
 					.attr('for','ce_dur')
 					.text( gM( 'mwe-clipedit-duration' ) ),
 
-					$j('<input />')
+					$('<input />')
 					.attr({
 						'name' : "ce_dur",
 						'tabindex' : "1",
@@ -174,7 +174,7 @@ mw.ClipEdit.prototype = {
 					 doUpdateDur( this );
 				} );
 				// Strange can't chain this binding for some reason...
-				$j( target ).find( "input[name='ce_dur']" ).upDownTimeInputBind( doUpdateDur );
+				$( target ).find( "input[name='ce_dur']" ).upDownTimeInputBind( doUpdateDur );
 			}
 		},
 
@@ -197,7 +197,7 @@ mw.ClipEdit.prototype = {
 					mw.seconds2npt( 0 );
 				// make sure we have an end time
 				if ( end_ntp ) {
-					$j( target ).html(
+					$( target ).html(
 						_this.getStartEndHtml( {
 							'start_ntp'	: start_ntp,
 							'end_ntp'	: end_ntp
@@ -221,7 +221,7 @@ mw.ClipEdit.prototype = {
 			'doEdit':function( _this, target ) {
 				// if media type is template we have to query to get its URI to get its parameters
 				if ( _this.getMediaType() == 'template' && !_this.resource.tVars ) {
-					$j( '#sub_cliplib_ic' ).loadingSpinner()
+					$( '#sub_cliplib_ic' ).loadingSpinner()
 					var request = {
 						'action':'query',
 						'prop':'revisions',
@@ -262,7 +262,7 @@ mw.ClipEdit.prototype = {
 			'media':['image', 'video'],
 			'doEdit':function( _this, target ) {
 				// do clock mouse scroll duration editor
-				$j( target ).html( '<h3>Current Overlays:</h3>Add,Remove,Modify' );
+				$( target ).html( '<h3>Current Overlays:</h3>Add,Remove,Modify' );
 			}
 		},
 		*/
@@ -276,7 +276,7 @@ mw.ClipEdit.prototype = {
 			'media':['image', 'video', 'template'],
 			'doEdit':function( _this, target ) {
 				// do clock mouse scroll duration editor
-				$j( target ).html( '<h3>Audio Volume:</h3>' );
+				$( target ).html( '<h3>Audio Volume:</h3>' );
 			}
 		}
 		*/
@@ -353,13 +353,13 @@ mw.ClipEdit.prototype = {
 			'</tr>' +
 			'</table>';
 
-		$j( target ).html ( o );
+		$( target ).html ( o );
 
 		// Add update bindings
-		$j( target + ' .ic_tparam' ).change( function() {
-			mw.log( "updated tparam::" + $j( this ).attr( "name" ) );
+		$( target + ' .ic_tparam' ).change( function() {
+			mw.log( "updated tparam::" + $( this ).attr( "name" ) );
 			// Update param value:
-			_this.resource.params[ $j( this ).attr( "name" ) ] = $j( this ).val();
+			_this.resource.params[ $( this ).attr( "name" ) ] = $( this ).val();
 			// Re-parse & update template
 			var template_wiki_text = '{{' + _this.resource.uri;
 			for ( var i = 0; i < _this.resource.tVars.length; i++ ) {
@@ -372,13 +372,13 @@ mw.ClipEdit.prototype = {
 				'title'	: _this.parentSequence.plObj.mTitle,
 				'text'	:	template_wiki_text
 			};
-			$j( _this.resource.embed ).loadingSpinner();
+			$( _this.resource.embed ).loadingSpinner();
 
 			var apiUrl = _this.parentSequence.plObj.interface_url;
 			mw.getJSON( apiUrl, request, function( data ) {
 				if ( data.parse.text['*'] ) {
 					// update the target
-					$j( _this.resource.embed ).html( data.parse.text['*'] );
+					$( _this.resource.embed ).html( data.parse.text['*'] );
 				}
 			} );
 		} )
@@ -400,7 +400,7 @@ mw.ClipEdit.prototype = {
 		o += '<div id="mv_submenu_clipedit">';
 		o += '<ul>';
 		var first_tab = false;
-		$j.each( this.edit_types, function( sInx, editType ) {
+		$.each( this.edit_types, function( sInx, editType ) {
 			// check if the given editType is valid for our given media type
 			var include = false;
 			for ( var i = 0; i < editType.media.length; i++ ) {
@@ -421,18 +421,18 @@ mw.ClipEdit.prototype = {
 		o += '</div>';
 
 		// Add sub menu container with menu html:
-		$j( '#' + this.target_control_display ).html( o );
+		$( '#' + this.target_control_display ).html( o );
 
 		// Do clip edit bindings:
-		$j( '#mv_submenu_clipedit' ).tabs( {
+		$( '#mv_submenu_clipedit' ).tabs( {
 			selected: 0,
 			select: function( event, ui ) {
-				_this.showEditUI( $j( ui.tab ).attr( 'id' ).replace( 'mv_smi_', '' ) );
+				_this.showEditUI( $( ui.tab ).attr( 'id' ).replace( 'mv_smi_', '' ) );
 			}
 		} ).addClass( 'ui-tabs-vertical ui-helper-clearfix' );
 
 		// Close left:
-		$j( "#mv_submenu_clipedit li" ).removeClass( 'ui-corner-top' ).addClass( 'ui-corner-left' );
+		$( "#mv_submenu_clipedit li" ).removeClass( 'ui-corner-top' ).addClass( 'ui-corner-left' );
 		// update the default edit display:
 		_this.showEditUI( first_tab );
 	},
@@ -456,13 +456,13 @@ mw.ClipEdit.prototype = {
 	showVideoControls: function() {
 		mw.log( 'showVideoControls:f' );
 		var _this = this;
-		var eb = $j( '#embed_vid' ).get( 0 );
+		var eb = $( '#embed_vid' ).get( 0 );
 		// turn on preview to avoid onDone actions
 		eb.preview_mode = true;
-		$j( '#' + this.target_control_display ).html( '<h3>' + gM( 'mwe-clipedit-edit-video-tools' ) + '</h3>' );
+		$( '#' + this.target_control_display ).html( '<h3>' + gM( 'mwe-clipedit-edit-video-tools' ) + '</h3>' );
 		if ( eb.supportsURLTimeEncoding() ) {
 			if ( eb.end_ntp ) {
-				$j( '#' + this.target_control_display ).append(
+				$( '#' + this.target_control_display ).append(
 					_this.getStartEndHtml( {
 						'start_ntp'	: eb.start_ntp,
 						'end_ntp'	: eb.end_ntp
@@ -473,7 +473,7 @@ mw.ClipEdit.prototype = {
 		}
 		// If in a Sequence we have no need for insertDesc
 		if ( !_this.parentSequence ) {
-			$j( '#' + this.target_control_display ).append(	_this.getInsertHtml() );
+			$( '#' + this.target_control_display ).append(	_this.getInsertHtml() );
 		}
 		// update control actions
 		this.updateInsertControlActions();
@@ -485,7 +485,7 @@ mw.ClipEdit.prototype = {
 	bindStartEndControls:function() {
 		var _this = this;
 		// Setup a top level shortcut:
-		var $target = $j( '#' + this.target_control_display );
+		var $target = $( '#' + this.target_control_display );
 
 		var start_sec = mw.npt2seconds( $target.find( '.startInOut' ).val() );
 		var end_sec   = mw.npt2seconds( $target.find( '.endInOut' ).val() );
@@ -516,10 +516,10 @@ mw.ClipEdit.prototype = {
 
 		// Bind up and down press when focus on start or end
 		$target.find( '.startInOut' ).upDownTimeInputBind( function( inputElm ) {
-			var s_sec = mw.npt2seconds( $j( inputElm ).val() );
+			var s_sec = mw.npt2seconds( $( inputElm ).val() );
 			var e_sec = mw.npt2seconds( $target.find( '.endInOut' ).val() )
 			if ( s_sec > e_sec )
-				$j( inputElm ).val( mw.seconds2npt( e_sec - 1 ) );
+				$( inputElm ).val( mw.seconds2npt( e_sec - 1 ) );
 
 			// Update the slider:
 			var values = $target.find( '.inOutSlider' ).slider( 'option', 'values' );
@@ -533,17 +533,17 @@ mw.ClipEdit.prototype = {
 
 		$target.find( '.endInOut' ).upDownTimeInputBind( function( inputElm ) {
 			var s_sec = mw.npt2seconds( $target.find( '.startInOut' ).val() );
-			var e_sec = mw.npt2seconds( $j( inputElm ).val() );
+			var e_sec = mw.npt2seconds( $( inputElm ).val() );
 			if ( e_sec < s_sec )
-				$j( inputElm ).val( mw.seconds2npt( s_sec + 1 ) );
+				$( inputElm ).val( mw.seconds2npt( s_sec + 1 ) );
 			// update the slider:
 			$target.find( '.inOutSlider' ).slider( 'option', 'values', [ s_sec, e_sec ] );
 		} );
 
 		// Preview button:
-		$j( '#' + this.target_control_display + ' .inOutPreviewClip' ).buttonHover().click( function() {
-			$j( '#embed_vid' ).get( 0 ).stop();
-			$j( '#embed_vid' ).get( 0 ).play();
+		$( '#' + this.target_control_display + ' .inOutPreviewClip' ).buttonHover().click( function() {
+			$( '#embed_vid' ).get( 0 ).stop();
+			$( '#embed_vid' ).get( 0 ).play();
 		} );
 	},
 
@@ -556,7 +556,7 @@ mw.ClipEdit.prototype = {
 	*/
 	updateVideoTime : function ( start_npt, end_npt )	{
 		// Update the video title:
-		var ebvid = $j( '#embed_vid' ).get( 0 );
+		var ebvid = $( '#embed_vid' ).get( 0 );
 		if ( ebvid ) {
 			ebvid.stop();
 			ebvid.updateVideoTime( start_time, end_time );
@@ -589,7 +589,7 @@ mw.ClipEdit.prototype = {
 			'</td>' +
 			'</tr>' +
 			'</table>' +
-			$j.btnHtml( gM( 'mwe-clipedit-preview_inout' ), 'inOutPreviewClip', 'video' );
+			$.btnHtml( gM( 'mwe-clipedit-preview_inout' ), 'inOutPreviewClip', 'video' );
 	},
 
 	/**
@@ -616,11 +616,11 @@ mw.ClipEdit.prototype = {
 		var _this = this;
 		var b_target = _this.parentRemoteSearchDriver.target_container + '~ .ui-dialog-buttonpane';
 		// Empty the ui-dialog-buttonpane bar:
-		$j( b_target ).empty();
+		$( b_target ).empty();
 		for ( var callbackType in _this.controlActionsCallback ) {
 			switch( callbackType ) {
 				case 'insert_seq':
-					$j( b_target ).append( $j.btnHtml( gM( 'mwe-clipedit-insert_into_sequence' ), 'mv_insert_sequence', 'check' ) + ' ' )
+					$( b_target ).append( $.btnHtml( gM( 'mwe-clipedit-insert_into_sequence' ), 'mv_insert_sequence', 'check' ) + ' ' )
 						.children( '.mv_insert_sequence' )
 						.buttonHover()
 						.click( function() {
@@ -629,7 +629,7 @@ mw.ClipEdit.prototype = {
 						} );
 				break;
 				case 'insert':
-					$j( b_target ).append( $j.btnHtml( gM( 'mwe-clipedit-insert_image_page' ), 'mv_insert_image_page', 'check' ) + ' ' )
+					$( b_target ).append( $.btnHtml( gM( 'mwe-clipedit-insert_image_page' ), 'mv_insert_image_page', 'check' ) + ' ' )
 						.children( '.mv_insert_image_page' )
 						.buttonHover()
 						.click( function() {
@@ -638,7 +638,7 @@ mw.ClipEdit.prototype = {
 						} ).show( 'slow' );
 				break;
 				case 'preview':
-					$j( b_target ).append( $j.btnHtml( gM( 'mwe-clipedit-preview_insert' ), 'mv_preview_insert', 'refresh' ) + ' ' )
+					$( b_target ).append( $.btnHtml( gM( 'mwe-clipedit-preview_insert' ), 'mv_preview_insert', 'refresh' ) + ' ' )
 						.children( '.mv_preview_insert' )
 						.buttonHover()
 						.click( function() {
@@ -647,7 +647,7 @@ mw.ClipEdit.prototype = {
 						} ).show( 'slow' );
 				break;
 				case 'cancel':
-					$j( b_target ).append( $j.btnHtml( gM( 'mwe-clipedit-cancel_image_insert' ), 'mv_cancel_img_edit', 'close' ) + ' ' )
+					$( b_target ).append( $.btnHtml( gM( 'mwe-clipedit-cancel_image_insert' ), 'mv_cancel_img_edit', 'close' ) + ' ' )
 						.children( '.mv_cancel_img_edit' )
 						.buttonHover()
 						.click( function() {
@@ -672,7 +672,7 @@ mw.ClipEdit.prototype = {
 			this.applyVideoStartEnd();
 		}
 		// copy over the description text to the resource object
-		_this.resource['inlineDesc'] = $j( '#mv_inline_img_desc' ).val();
+		_this.resource['inlineDesc'] = $( '#mv_inline_img_desc' ).val();
 	},
 
 	/**
@@ -687,14 +687,14 @@ mw.ClipEdit.prototype = {
 			case 'layout':
 
 				$target.append(
-					$j( '<span />' )
+					$( '<span />' )
 					.css({
 						"float" : "left"
 					})
 					.text( gM( 'mwe-clipedit-layout' ) ),
 
 					// Left layout
-					$j('<input />')
+					$('<input />')
 					.attr({
 						"type" : "radio",
 						"name" : "mw_layout",
@@ -703,14 +703,14 @@ mw.ClipEdit.prototype = {
 					.css({
 						'float' : 'left'
 					}),
-					$j( '<div /> ')
+					$( '<div /> ')
 					.attr({
 						'id' : 'mw_layout_left_img',
 						'title': gM( 'mwe-clipedit-layout_left' )
 					}),
 
 					// Right Layout
-					$j('<input />')
+					$('<input />')
 					.attr({
 						"type" : "radio",
 						"name" : "mw_layout",
@@ -719,13 +719,13 @@ mw.ClipEdit.prototype = {
 					.css({
 						'float' : 'left'
 					}),
-					$j( '<div /> ')
+					$( '<div /> ')
 					.attr({
 						'id' : 'mw_layout_right_img',
 						'title': gM( 'mwe-clipedit-layout_right' )
 					}),
 
-					$j('<hr />')
+					$('<hr />')
 					.css({
 						"clear" : "both"
 					})
@@ -736,27 +736,27 @@ mw.ClipEdit.prototype = {
 					_this.resource.layout = 'right';
 				}
 
-				$j( '#mw_layout_' + _this.resource.layout )[0].checked = true;
+				$( '#mw_layout_' + _this.resource.layout )[0].checked = true;
 
 				// Left radio click
-				$j( '#mw_layout_left,#mw_layout_left_img' ).click( function() {
-					$j( '#mw_layout_right' )[0].checked = false;
-					$j( '#mw_layout_left' )[0].checked = true;
+				$( '#mw_layout_left,#mw_layout_left_img' ).unbind().click( function() {
+					$( '#mw_layout_right' )[0].checked = false;
+					$( '#mw_layout_left' )[0].checked = true;
 					_this.resource.layout = 'left';
 					return true;
 				} );
 
 				// Right radio click
-				$j( '#mw_layout_right,#mw_layout_right_img' ).click( function() {
-					$j( '#mw_layout_left' )[0].checked = false;
-					$j( '#mw_layout_right' )[0].checked = true;
+				$( '#mw_layout_right,#mw_layout_right_img' ).click( function() {
+					$( '#mw_layout_left' )[0].checked = false;
+					$( '#mw_layout_right' )[0].checked = true;
 					_this.resource.layout = 'right';
 					return true;
 				} );
 			break;
 			case 'crop':
 				$target.append(
-					$j( '<div /> ')
+					$( '<div /> ')
 					.addClass( 'mw_edit_button mw_crop_button_base' )
 					.attr({
 						'id' : 'mw_crop_button',
@@ -764,19 +764,19 @@ mw.ClipEdit.prototype = {
 						'title' : gM( 'mwe-clipedit-crop' )
 					}),
 
-					$j( '<a />')
+					$( '<a />')
 					.attr({
 						'href': '#'
 					})
 					.addClass( 'mw_crop_msg' )
 					.text( gM( 'mwe-clipedit-crop' ) ),
 
-					$j( '<span />' )
+					$( '<span />' )
 					.addClass( 'mw_crop_msg_load')
-					.text( gM( 'mwe-loading_txt' ) )
+					.text( gM( 'mwe-loading' ) )
 					.hide(),
 
-					$j( '<a />' )
+					$( '<a />' )
 					.attr({
 						'href': '#'
 					})
@@ -788,11 +788,11 @@ mw.ClipEdit.prototype = {
 					.hide(),
 
 					// some space between apply and rest
-					$j('<span />')
+					$('<span />')
 					.css('display','inline')
 					.text(' '),
 
-					$j( '<a />' )
+					$( '<a />' )
 					.attr( 'href','#' )
 					.css({
 						'display': 'inline'
@@ -801,28 +801,28 @@ mw.ClipEdit.prototype = {
 					.text( gM( 'mwe-clipedit-reset_crop' ) )
 					.hide(),
 
-					$j( '<hr />' )
+					$( '<hr />' )
 					.css('clear', 'both'),
 
-					$j( '<br />' )
+					$( '<br />' )
 
 				);
 				// Add binding:
-				$j( '#mw_crop_button,.mw_crop_msg,.mw_apply_crop' ).click( function() {
+				$( '#mw_crop_button,.mw_crop_msg,.mw_apply_crop' ).click( function() {
 					mw.log( 'click:mv_crop_button: base width: ' + _this.resource.width + ' bh: ' + _this.resource.height );
-					if ( $j( '#mw_crop_button' ).hasClass( 'mw_crop_button_selected' ) ) {
+					if ( $( '#mw_crop_button' ).hasClass( 'mw_crop_button_selected' ) ) {
 						_this.applyCrop();
 					} else {
 						_this.doCropInterface();
 					}
 				} );
-				$j( '.mw_reset_crop' ).click( function() {
-					$j( '.mw_apply_crop,.mw_reset_crop' ).hide();
-					$j( '.mw_crop_msg' ).show();
-					$j( '#mw_crop_button' ).removeClass( 'mw_crop_button_selected' ).addClass( 'mw_crop_button_base' ).attr( 'title', gM( 'mwe-clipedit-crop' ) );
+				$( '.mw_reset_crop' ).click( function() {
+					$( '.mw_apply_crop,.mw_reset_crop' ).hide();
+					$( '.mw_crop_msg' ).show();
+					$( '#mw_crop_button' ).removeClass( 'mw_crop_button_selected' ).addClass( 'mw_crop_button_base' ).attr( 'title', gM( 'mwe-clipedit-crop' ) );
 					_this.resource.crop = null;
-					$j( '#' + _this.target_clip_display ).empty().html(
-						$j('<img />')
+					$( '#' + _this.target_clip_display ).empty().html(
+						$('<img />')
 						.attr({
 							'src' : _this.resource.edit_url,
 							'id' : 'mwe-am-edit_img'
@@ -843,17 +843,17 @@ mw.ClipEdit.prototype = {
 	*/
 	showImageControls: function() {
 		var _this = this;
-		var $tool_target = $j( '#' + this.target_control_display );
+		var $tool_target = $( '#' + this.target_control_display );
 		mw.log( 'tool target len: ' + $tool_target.length );
 		// By default apply Crop tool
 		if ( _this.enabled_tools == 'all' || _this.enabled_tools.length > 0 ) {
 			$tool_target.html(
-				$j( '<h3 />' )
+				$( '<h3 />' )
 				.text( gM( 'mwe-clipedit-edit-tools' ) )
 			);
 			for ( var i in _this.toolset ) {
 				var toolid = _this.toolset[i];
-				if ( $j.inArray( toolid, _this.enabled_tools ) != -1 || _this.enabled_tools == 'all' )
+				if ( $.inArray( toolid, _this.enabled_tools ) != -1 || _this.enabled_tools == 'all' )
 					_this.addTool( $tool_target, toolid );
 			}
 		}
@@ -870,21 +870,21 @@ mw.ClipEdit.prototype = {
 	*/
 	applyCrop: function() {
 		var _this = this;
-		$j( '.mw_apply_crop' ).hide();
-		$j( '.mw_crop_msg' ).show();
+		$( '.mw_apply_crop' ).hide();
+		$( '.mw_crop_msg' ).show();
 
 		// Update the crop button:
-		$j( '#mw_crop_button' )
+		$( '#mw_crop_button' )
 			.removeClass( 'mw_crop_button_selected' )
 			.addClass( 'mw_crop_button_base' )
 			.attr( 'title', gM( 'mwe-clipedit-crop' ) );
 
 		if ( _this.resource.crop ) {
 			// Empty out and display cropped:
-			$j( '#' + _this.target_clip_display )
+			$( '#' + _this.target_clip_display )
 				.empty()
 				.append(
-					$j('<div />')
+					$('<div />')
 					.css({
 						'overflow' : 'hidden',
 						'position' : 'absolute',
@@ -892,14 +892,14 @@ mw.ClipEdit.prototype = {
 						'height' : parseInt( _this.resource.crop.h ) + 'px'
 					})
 					.append(
-						$j( '<div />' )
+						$( '<div />' )
 						.css({
 							'position' : 'absolute',
 							'top' : '-' + parseInt( _this.resource.crop.y ) + 'px',
 							'left' : '-' + parseInt( _this.resource.crop.x ) + 'px'
 						})
 						.append(
-							$j('<img />')
+							$('<img />')
 							.attr( 'src', _this.resource.edit_url )
 						)
 					)
@@ -913,10 +913,10 @@ mw.ClipEdit.prototype = {
 	*/
 	applyVideoStartEnd:function() {
 		mw.log( 'apply Video StartEnd updates::' );
-		$target = $j( '#' + this.target_control_display );
+		$target = $( '#' + this.target_control_display );
 
 		// Be sure to "stop the video (some plugins can't have DOM elements on top of them)
-		$j( '#embed_vid' ).get( 0 ).stop();
+		$( '#embed_vid' ).get( 0 ).stop();
 
 		// Update video related keys
 		this.resource['start_time'] = $target.find( '.startInOut' ).val();
@@ -933,11 +933,11 @@ mw.ClipEdit.prototype = {
 	*/
 	doCropInterface: function() {
 		var _this = this;
-		$j( '.mw_crop_msg' ).hide();
-		$j( '.mw_crop_msg_load' ).show();
+		$( '.mw_crop_msg' ).hide();
+		$( '.mw_crop_msg_load' ).show();
 		// load the jcrop library if needed:
 		mw.load( [
-			'$j.Jcrop',
+			'$.Jcrop',
 			'mw.style.Jcrop'
 		], function() {
 			_this.bindCrop();
@@ -945,14 +945,14 @@ mw.ClipEdit.prototype = {
 	},
 
 	/**
-	* Bind the Crop once the library $j.Jcrop is ready:
+	* Bind the Crop once the library $.Jcrop is ready:
 	*/
 	bindCrop: function() {
 		var _this = this;
-		$j( '.mw_crop_msg_load' ).hide();
-		$j( '.mw_reset_crop,.mw_apply_crop' ).show();
-		$j( '#mw_crop_button' ).removeClass( 'mw_crop_button_base' ).addClass( 'mw_crop_button_selected' ).attr( 'title', gM( 'mwe-clipedit-crop_done' ) );
-		$j( '#' + _this.target_clip_display + ' img' ).Jcrop( {
+		$( '.mw_crop_msg_load' ).hide();
+		$( '.mw_reset_crop,.mw_apply_crop' ).show();
+		$( '#mw_crop_button' ).removeClass( 'mw_crop_button_base' ).addClass( 'mw_crop_button_selected' ).attr( 'title', gM( 'mwe-clipedit-crop_done' ) );
+		$( '#' + _this.target_clip_display + ' img' ).Jcrop( {
 			 onSelect: function( c ) {
 				 mw.log( 'on select:' + c.x + ',' + c.y + ',' + c.x2 + ',' + c.y2 + ',' + c.w + ',' + c.h );
 				 _this.resource.crop = c;
@@ -961,14 +961,13 @@ mw.ClipEdit.prototype = {
 			 }
 		} );
 		// Temporary hack (@@todo need to debug why rsd_res_item gets moved )
-		$j( '#clip_edit_disp .rsd_res_item' ).css( {
+		$( '#clip_edit_disp .rsd_res_item' ).css( {
 			'top' : '0px',
 			'left' : '0px'
 		} );
 	}
 };
 
-( function( $ ) {
 	// jQuery Binding for upDownTimeInputBind
 	$.fn.upDownTimeInputBind = function( inputCB ) {
 		$( this.selector ).unbind( 'focus' ).focus( function() {
@@ -976,7 +975,7 @@ mw.ClipEdit.prototype = {
 			$( this ).addClass( 'ui-state-focus' );
 			// Bind up down keys
 			$( this ).unbind( 'keydown' ).keydown( function ( e ) {
-				var sec = mw.npt2seconds( $j( this ).val() );
+				var sec = mw.npt2seconds( $( this ).val() );
 				var k = e.which;
 				if ( k == 38 ) {// up
 					$( this ).val( mw.seconds2npt( sec + 1 ) );
@@ -1000,4 +999,5 @@ mw.ClipEdit.prototype = {
 			$( this ).removeClass( 'ui-state-focus' );
 		} );
 	}
-} )( jQuery );
+
+} )( window.mediaWiki, jQuery );

@@ -35,11 +35,15 @@
 			// Add the search library dependency 
 			addMediaDependencies.push( lib );
 		} );
+		var loadingTxt = ( mw.messages.exists( 'addmediawizard-loading' ) )? 
+							mw.messages.get( 'addmediawizard-loading' ) : null;
+		// Add a loader:
+		mw.addDialog( {'title' : loadingTxt, 'content' : $('<div />').loadingSpinner().html() });
 		
 		mw.loader.using( 'AddMedia', function(){
 			var amwObj = new mw.RemoteSearchDriver( options );
 			amwObj.createUI();
-		})
+		})		
 	}
 	
 } )( window.mediaWiki, jQuery );

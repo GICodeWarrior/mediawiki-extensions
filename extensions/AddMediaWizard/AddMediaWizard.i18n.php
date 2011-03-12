@@ -13,6 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'addmediawizard-desc' => 'Add media wizard, developed in partnership by Kaltura and Wikimedia Foundation',
+	'addmediawizard-loading' => 'Loading add media wizard',
 );
 
 /** Message documentation (Message documentation)

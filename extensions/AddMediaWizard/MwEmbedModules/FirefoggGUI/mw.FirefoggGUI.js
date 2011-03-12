@@ -18,7 +18,7 @@
 
 		if ( myFogg ) {
 			myFogg.setupForm( );
-			var selectorElement = $j( options.selector ).get( 0 );
+			var selectorElement = $( options.selector ).get( 0 );
 			selectorElement['firefogg'] = myFogg;
 		}
 	}
@@ -284,12 +284,12 @@ mw.FirefoggGUI.prototype = {
 	*/
 	setupForm: function() {
 		//empty out the selector:
-		$j( this.selector ).empty();
+		$( this.selector ).empty();
 		// Check for firefogg:
 		if ( ! this.getFirefogg() ) {
 			// Show install firefogg msg
 			this.showInstallFirefog();
-			$j('.target_please_install').css( { 'width': 400, 'margin':'auto' } );
+			$('.target_please_install').css( { 'width': 400, 'margin':'auto' } );
 			return;
 		}
 		this.createControls();
@@ -307,13 +307,13 @@ mw.FirefoggGUI.prototype = {
 
 		// Build the config group output
 		var gdout = '';
-		$j.each( this.config_groups, function( inx, group_key ) {
+		$.each( this.config_groups, function( inx, group_key ) {
 			gdout += '<div> ' +
 				'<h3><a href="#" class="gd_' + group_key + '" >' +
 				gM( 'fogg-cg-' + group_key ) + '</a></h3>' +
 				'<div>';
 			// Output this group's control options:
-			gdout += '<table width="' + ( $j( _this.selector ).width() - 60 ) + '" >' +
+			gdout += '<table width="' + ( $( _this.selector ).width() - 60 ) + '" >' +
 				'<tr><td width="35%"></td><td width="65%"></td></tr>';
 			// If this is the preset group, output the preset control
 			if ( group_key == 'preset' ) {
@@ -331,11 +331,11 @@ mw.FirefoggGUI.prototype = {
 		// Add the control container
 		if( !this.target_control_container ) {
 			this.target_control_container = this.selector + ' .control_container';
-			$j( this.selector ).append( '<p><div class="control_container"></div>' );
+			$( this.selector ).append( '<p><div class="control_container"></div>' );
 		}
 		// Hide the container and add the output
-		$j( this.target_control_container ).hide();
-		$j( this.target_control_container ).html( gdout );
+		$( this.target_control_container ).hide();
+		$( this.target_control_container ).html( gdout );
 	},
 
 	// Custom advanced target rewrites
@@ -356,7 +356,7 @@ mw.FirefoggGUI.prototype = {
 							linkText +
 						'</a>';
 			case 'target_btn_select_url':
-				return $j.btnHtml( gM( 'fogg-select_url' ), target, 'link' );
+				return $.btnHtml( gM( 'fogg-select_url' ), target, 'link' );
 			case 'target_use_latest_firefox':
 			case 'target_please_install':
 			case 'target_passthrough_mode':
@@ -388,7 +388,7 @@ mw.FirefoggGUI.prototype = {
 		mw.log( 'getPresetControlHtml::' );
 		if ( typeof this.local_settings.presets != 'undefined' ) {
 			out += '<select class="_preset_select">';
-			$j.each( this.local_settings.presets, function( presetKey, preset ) {
+			$.each( this.local_settings.presets, function( presetKey, preset ) {
 				var presetDesc = preset.descKey ? gM( preset.descKey ) : preset.desc;
 				var sel = ( _this.local_settings['default'] == presetKey ) ? ' selected' : '';
 				out += '<option value="' + presetKey + '" ' + sel + '>' + presetDesc + '</option>';
@@ -483,7 +483,7 @@ mw.FirefoggGUI.prototype = {
 		_this.basefogg_bindControls();
 
 		// Show the select by URL if present
-		/*$j( this.target_btn_select_url ).unbind()
+		/*$( this.target_btn_select_url ).unbind()
 			.attr( 'disabled', false )
 			.css( { 'display': 'inline' } )
 			.click( function() {
@@ -492,20 +492,20 @@ mw.FirefoggGUI.prototype = {
 		*/
 
 		// Hide the base advanced controls until a file is selected:
-		$j( this.target_control_container ).hide();
+		$( this.target_control_container ).hide();
 
 		var helpState = {};
 		// Do some display tweaks
-		mw.log( 'tw:' + $j( this.selector ).width() +
-			' ssf:' + $j( this.target_btn_select_new_file ).width() +
-			' sf:' + $j( this.target_btn_save_local_file ).width() );
+		mw.log( 'tw:' + $( this.selector ).width() +
+			' ssf:' + $( this.target_btn_select_new_file ).width() +
+			' sf:' + $( this.target_btn_save_local_file ).width() );
 
 		// Set width to 250
-		$j( this.target_input_file_name ).width( 250 );
+		$( this.target_input_file_name ).width( 250 );
 
 		// Special preset action
-		$j( this.selector + ' ._preset_select' ).change( function() {
-			_this.updatePresetSelection( $j( this ).val() );
+		$( this.selector + ' ._preset_select' ).change( function() {
+			_this.updatePresetSelection( $( this ).val() );
 		});
 
 		// Bind control actions
@@ -513,19 +513,19 @@ mw.FirefoggGUI.prototype = {
 			var confEntry = this.default_encoder_config[configKey];
 
 			// Initial state is hidden
-			$j( this.selector + ' .helpRow_' + configKey ).hide();
+			$( this.selector + ' .helpRow_' + configKey ).hide();
 
-			$j( this.selector + ' .help_' + configKey )
+			$( this.selector + ' .help_' + configKey )
 				.click(
 					function() {
 						// Get the config key (assume it's the last class)
 						var configKey = _this.getClassId( this, 'help_' );
 
 						if ( helpState[configKey] ) {
-							$j( _this.selector + ' .helpRow_' + configKey ).hide( 'slow' );
+							$( _this.selector + ' .helpRow_' + configKey ).hide( 'slow' );
 							helpState[configKey] = false;
 						} else {
-							$j( _this.selector + ' .helpRow_' + configKey ).show( 'slow' );
+							$( _this.selector + ' .helpRow_' + configKey ).show( 'slow' );
 							helpState[configKey] = true;
 						}
 						return false;
@@ -535,22 +535,22 @@ mw.FirefoggGUI.prototype = {
 					function() {
 						// get the config key ( assume it's the last class )
 						var configKey = _this.getClassId( this, 'help_' );
-						$j( _this.selector + ' .helpRow_' + configKey ).show( 'slow' );
+						$( _this.selector + ' .helpRow_' + configKey ).show( 'slow' );
 					},
 					function() {
 						var configKey = _this.getClassId( this, 'help_' );
 						if( !helpState[configKey] )
-							$j( _this.selector + ' .helpRow_' + configKey ).hide( 'slow' );
+							$( _this.selector + ' .helpRow_' + configKey ).hide( 'slow' );
 					}
 				);
 
-			$j( this.selector + ' .helpClose_' + configKey )
+			$( this.selector + ' .helpClose_' + configKey )
 				.click(
 					function() {
 						mw.log( "close help: " + configKey );
 						// get the config key (assume it's the last class)
 						var configKey = _this.getClassId( this, 'helpClose_' );
-						$j( _this.selector + ' .helpRow_' + configKey ).hide( 'slow' );
+						$( _this.selector + ' .helpRow_' + configKey ).hide( 'slow' );
 						helpState[configKey] = false;
 						return false;
 					}
@@ -561,10 +561,10 @@ mw.FirefoggGUI.prototype = {
 
 			switch ( confEntry.type ) {
 				case 'boolean':
-					$j( this.selector + ' ._' + configKey)
+					$( this.selector + ' ._' + configKey)
 						.click( function() {
 							_this.updateLocalValue( _this.getClassId( this ),
-							$j( this ).is( ":checked" ) );
+							$( this ).is( ":checked" ) );
 							_this.updatePresetSelection( 'custom' );
 						});
 					break;
@@ -573,16 +573,16 @@ mw.FirefoggGUI.prototype = {
 				case 'int':
 				case 'float':
 					// Check if we have a validate function on the string
-					$j( this.selector + ' ._' + configKey ).change( function() {
-						$j( this ).val( _this.updateLocalValue(
+					$( this.selector + ' ._' + configKey ).change( function() {
+						$( this ).val( _this.updateLocalValue(
 							_this.getClassId( this ),
-							$j( this ).val() )
+							$( this ).val() )
 						);
 						_this.updatePresetSelection( 'custom' );
 					});
 					break;
 				case 'date':
-					$j( this.selector + ' ._' + configKey ).datepicker({
+					$( this.selector + ' ._' + configKey ).datepicker({
 							changeMonth: true,
 							changeYear: true,
 							dateFormat: 'd MM, yy',
@@ -615,16 +615,16 @@ mw.FirefoggGUI.prototype = {
 						}
 					};
 
-					$j( this.selector + ' .slider_' + configKey ).slider({
+					$( this.selector + ' .slider_' + configKey ).slider({
 						range: "min",
 						animate: true,
 						step: confEntry.step ? confEntry.step : 1,
-						value: $j( this.selector + ' ._' + configKey ).val(),
+						value: $( this.selector + ' ._' + configKey ).val(),
 						min: this.default_encoder_config[ configKey ].range.min,
 						max: this.default_encoder_config[ configKey ].range.max,
 						slide: function( event, ui ) {
 							var sliderId = _this.getClassId( this, 'slider_' );
-							$j( _this.selector + ' ._' + sliderId ).val( ui.value );
+							$( _this.selector + ' ._' + sliderId ).val( ui.value );
 
 							keepAspectRatio( sliderId, ui.value );
 						},
@@ -635,17 +635,17 @@ mw.FirefoggGUI.prototype = {
 						}
 					});
 
-					$j( this.selector + ' ._' + configKey ).change( function() {
+					$( this.selector + ' ._' + configKey ).change( function() {
 						var classId = _this.getClassId( this );
 						var validValue = _this.updateLocalValue( classId,
-							$j( this ).val()
+							$( this ).val()
 						);
 						_this.updatePresetSelection( 'custom' );
 						// Change it to the validated value
-						$j( this ).val( validValue );
+						$( this ).val( validValue );
 						// update the slider
 						//mw.log( "update: " + _this.selector + ' .slider' + classId );
-						$j( _this.selector + ' .slider_' + classId )
+						$( _this.selector + ' .slider_' + classId )
 							.slider('value', validValue );
 						// Keep aspect ratio:
 						keepAspectRatio( classId, validValue );
@@ -654,7 +654,7 @@ mw.FirefoggGUI.prototype = {
 			}
 		}
 
-		$j( this.target_control_container ).accordion({
+		$( this.target_control_container ).accordion({
 			header: "h3",
 			collapsible: true,
 			active: false,
@@ -681,21 +681,21 @@ mw.FirefoggGUI.prototype = {
 		}
 		if( presetKey != 'custom' ){
 			// Copy the preset into custom settings
-			this.local_settings.presets['custom']['conf'] = $j.extend( {}, this.local_settings.presets[presetKey]['conf'] );
+			this.local_settings.presets['custom']['conf'] = $.extend( {}, this.local_settings.presets[presetKey]['conf'] );
 
 		    // Set the actual HTML & widgets based on any local settings values:
-		    $j.each( _this.local_settings.presets['custom']['conf'], function( inx, val ) {
-			    if ( $j( _this.selector + ' ._' + inx ).length != 0 ) {
-				    $j( _this.selector + ' ._' + inx ).val( val );
+		    $.each( _this.local_settings.presets['custom']['conf'], function( inx, val ) {
+			    if ( $( _this.selector + ' ._' + inx ).length != 0 ) {
+				    $( _this.selector + ' ._' + inx ).val( val );
 			    }
 		    } );
 
 		}
 		// Update the preset title
-		$j( this.selector + ' .gd_preset' )
+		$( this.selector + ' .gd_preset' )
 			.html( gM( 'fogg-cg-preset', presetDesc ) );
 		// update the selector
-		$j( this.selector + ' ._preset_select' ).val( presetKey );
+		$( this.selector + ' ._preset_select' ).val( presetKey );
 	},
 
 	/**
@@ -717,12 +717,12 @@ mw.FirefoggGUI.prototype = {
 			val = this.updateLocalValue( confKey, val );
 		}
 		// Update the text field
-		$j( _this.selector + ' ._' + confKey ).val( val );
+		$( _this.selector + ' ._' + confKey ).val( val );
 		// Update the interface widget
 		switch ( this.default_encoder_config[confKey].type ) {
 			case 'slider':
-				$j( _this.selector + ' .slider_' + confKey )
-					.slider( 'option', 'value', $j( _this.selector + ' ._' + confKey ).val() );
+				$( _this.selector + ' .slider_' + confKey )
+					.slider( 'option', 'value', $( _this.selector + ' ._' + confKey ).val() );
 				break;
 		}
 		return val;
@@ -780,7 +780,7 @@ mw.FirefoggGUI.prototype = {
 	 */
 	getClassId: function( element, prefix ) {
 
-		var eltClass = $j( element ).attr( "class" ).split( ' ' ).slice( 0, 1 ).toString();
+		var eltClass = $( element ).attr( "class" ).split( ' ' ).slice( 0, 1 ).toString();
 		if ( !prefix ) {
 			prefix = '_';
 		}
@@ -828,14 +828,14 @@ mw.FirefoggGUI.prototype = {
 		// In passthrough mode, hide encoder controls
 		if ( settings['passthrough'] ) {
 			mw.log( "in passthrough mode (hide control)" );
-			$j( this.target_control_container ).hide( 'slow' );
-			$j( this.target_passthrough_mode ).show( 'slow' );
+			$( this.target_control_container ).hide( 'slow' );
+			$( this.target_passthrough_mode ).show( 'slow' );
 			return;
 		}
 
 		// Show encoder controls
-		$j( this.target_control_container ).show( 'slow' );
-		$j( this.target_passthrough_mode ).hide( 'slow' );
+		$( this.target_control_container ).show( 'slow' );
+		$( this.target_passthrough_mode ).hide( 'slow' );
 
 		// do set up settings based on local_settings /default_encoder_config with sourceFileInfo
 		// see: http://firefogg.org/dev/sourceInfo_example.html
@@ -908,12 +908,12 @@ mw.FirefoggGUI.prototype = {
 		}
 
 		// set all values to new default ranges & update slider:
-		$j.each( this.default_encoder_config, function( inx, val ) {
-			if ( $j( _this.selector + ' ._' + inx ).length != 0 ) {
+		$.each( this.default_encoder_config, function( inx, val ) {
+			if ( $( _this.selector + ' ._' + inx ).length != 0 ) {
 				if ( typeof val.range != 'undefined' ) {
 					// update slider range
 					var new_max = (val.range.local_max) ? val.range.local_max : val.range.max
-					$j( _this.selector + ' .slider_' + inx ).slider( 'option', 'max', new_max );
+					$( _this.selector + ' .slider_' + inx ).slider( 'option', 'max', new_max );
 
 					// update slider/input value:
 					_this.updateInterfaceValue( inx,
@@ -939,9 +939,9 @@ mw.FirefoggGUI.prototype = {
 		this.updatePresetSelection( pKey );
 
 		// Set the actual HTML & widgets based on any local settings values:
-		$j.each( _this.local_settings.presets['custom']['conf'], function( inx, val ) {
-			if ( $j( _this.selector + ' ._' + inx ).length != 0 ) {
-				$j( _this.selector + ' ._' + inx ).val( val );
+		$.each( _this.local_settings.presets['custom']['conf'], function( inx, val ) {
+			if ( $( _this.selector + ' ._' + inx ).length != 0 ) {
+				$( _this.selector + ' ._' + inx ).val( val );
 			}
 		} );
 	},
@@ -950,9 +950,9 @@ mw.FirefoggGUI.prototype = {
 	 * Restore settings from a cookie (if available)
 	 */
 	loadEncSettings: function( ) {
-		if ( $j.cookie( 'fogg_encoder_config' ) ) {
+		if ( $.cookie( 'fogg_encoder_config' ) ) {
 			mw.log( "load:fogg_encoder_config from cookie " );
-			this.local_settings = JSON.parse( $j.cookie( 'fogg_settings' ) );
+			this.local_settings = JSON.parse( $.cookie( 'fogg_settings' ) );
 		}
 		// set to default if not loaded yet:
 		if ( this.local_settings && this.local_settings.presets
@@ -976,6 +976,6 @@ mw.FirefoggGUI.prototype = {
 	 * Save the current encoder settings to a cookie.
 	 */
 	saveEncSettings: function() {
-		$j.cookie( 'fogg_settings', JSON.stringify( this.local_settings ) );
+		$.cookie( 'fogg_settings', JSON.stringify( this.local_settings ) );
 	}
 };

@@ -20,7 +20,8 @@ class AddMediaWizardHooks {
 				
 		$wgResourceModules+= array(
 			'AddMediaWizardEditPage' => $baseExtensionResource + array(
-				'scripts' => 'resources/AddMediaWizardEditPage.js'
+				'scripts' => 'resources/AddMediaWizardEditPage.js',
+				'messages' => array( 'addmediawizard-loading' )
 			)
 		);
 	}
