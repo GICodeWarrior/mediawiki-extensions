@@ -6,7 +6,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'mwe-loading_txt' => 'Loading ...',
+	'mwe-loading' => 'Loading ...',
 	'mwe-size-gigabytes' => '$1 GB',
 	'mwe-size-megabytes' => '$1 MB',
 	'mwe-size-kilobytes' => '$1 K',
@@ -28,7 +28,7 @@ $messages['en'] = array(
  * @author Nike
  */
 $messages['qqq'] = array(
-	'mwe-loading_txt' => '{{Identical|Loading}}',
+	'mwe-loading' => '{{Identical|Loading}}',
 	'mwe-size-gigabytes' => 'Size (of a file, typically) in gibibytes (1 gibibyte = 1024×1024×1024 bytes).',
 	'mwe-error_load_lib' => 'Parameters:
 * $1 Corresponds to the JavaScript file that was not retrievable or does not define its class name.
@@ -41,7 +41,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'mwe-loading_txt' => 'laai ...',
+	'mwe-loading' => 'laai ...',
 	'mwe-error_load_lib' => 'Fout: JavaScript $1 kon nie gevind word of definieer nie $2 nie',
 	'mwe-apiproxy-setup' => "Besig met die opstel van 'n API-proxy",
 	'mwe-ok' => 'OK',
@@ -53,7 +53,7 @@ $messages['af'] = array(
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'mwe-loading_txt' => 'Loading ...',
+	'mwe-loading' => 'Loading ...',
 	'mwe-error_load_lib' => 'Gabim: $1 JavaScript nuk ishte shikohen ose nuk define $2',
 	'mwe-apiproxy-setup' => 'Ngritja proxy API',
 	'mwe-load-drag-item' => 'Loading zvarritur artikull',
@@ -75,7 +75,7 @@ $messages['an'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'mwe-loading_txt' => 'يحمل...',
+	'mwe-loading' => 'يحمل...',
 	'mwe-size-gigabytes' => '$1 جيجابايت',
 	'mwe-size-megabytes' => '$1 ميجا بايت',
 	'mwe-size-kilobytes' => '$1 كيلوبايت',
@@ -96,7 +96,7 @@ $messages['arc'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'mwe-loading_txt' => 'загрузка …',
+	'mwe-loading' => 'загрузка …',
 	'mwe-error_load_lib' => 'Памылка: JavaScript $1 не даступны альбо не вызначае $2',
 	'mwe-apiproxy-setup' => 'Устаноўка API-проксі',
 	'mwe-load-drag-item' => 'Загрузка перанесенага элемэнту',
@@ -112,7 +112,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'mwe-loading_txt' => 'Зареждане ...',
+	'mwe-loading' => 'Зареждане ...',
 );
 
 /** Breton (Brezhoneg)
@@ -121,7 +121,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'mwe-loading_txt' => 'o kargañ...',
+	'mwe-loading' => 'o kargañ...',
 	'mwe-error_load_lib' => "Fazi : n'eo ket bet kavet JavaScript $1 pe n'eo ket termenet gant $2",
 	'mwe-apiproxy-setup' => 'Kefluniadur ar proksi API',
 	'mwe-load-drag-item' => 'O kargañ an elfenn digargañ',
@@ -137,7 +137,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'mwe-loading_txt' => 'učitavam ...',
+	'mwe-loading' => 'učitavam ...',
 	'mwe-error_load_lib' => 'Greška: JavaScript $1 se ne može učitati ili nije definiran $2',
 	'mwe-apiproxy-setup' => 'Postavljanje API proksija',
 	'mwe-load-drag-item' => 'Učitavam povučenu stavku',
@@ -153,7 +153,7 @@ $messages['bs'] = array(
  * @author Toniher
  */
 $messages['ca'] = array(
-	'mwe-loading_txt' => "S'està carregant...",
+	'mwe-loading' => "S'està carregant...",
 	'mwe-error_load_lib' => "Error: no s'ha pogut recuperar el JavaScript $1 o no defineix $2",
 	'mwe-apiproxy-setup' => "S'està configurant l'intermediari de l'API",
 	'mwe-load-drag-item' => "S'està carregant l'element arrossegat",
@@ -169,13 +169,13 @@ $messages['ca'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
-	'mwe-loading_txt' => 'Načítá se …',
+	'mwe-loading' => 'Načítá se …',
 	'mwe-cancel' => 'Storno',
 );
 
 /** Welsh (Cymraeg) */
 $messages['cy'] = array(
-	'mwe-loading_txt' => "wrthi'n llwytho ...",
+	'mwe-loading' => "wrthi'n llwytho ...",
 );
 
 /** German (Deutsch)
@@ -183,7 +183,7 @@ $messages['cy'] = array(
  * @author Metalhead64
  */
 $messages['de'] = array(
-	'mwe-loading_txt' => 'lade …',
+	'mwe-loading' => 'lade …',
 	'mwe-error_load_lib' => 'Fehler: JavaScript $1 war nicht abrufbar oder lässt $2 nicht zu',
 	'mwe-apiproxy-setup' => 'API-Proxy-Konfiguration',
 	'mwe-load-drag-item' => 'Lade eingebettetes Element',
@@ -199,7 +199,7 @@ $messages['de'] = array(
  * @author Aspar
  */
 $messages['diq'] = array(
-	'mwe-loading_txt' => 'bar beno...',
+	'mwe-loading' => 'bar beno...',
 	'mwe-error_load_lib' => 'xeta: $1 JavaScript re nêresiyeno ya zi pê $2yi şınasnaye niyo.',
 	'mwe-apiproxy-setup' => 'proxyê APIyi eyar beno',
 	'mwe-load-drag-item' => 'unsur bar beno',
@@ -211,7 +211,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'mwe-loading_txt' => 'zacytujo se ...',
+	'mwe-loading' => 'zacytujo se ...',
 	'mwe-error_load_lib' => 'Zmólka: JavaScript $1 njejo wótwołujobny był abo njedefiněrujo $2',
 	'mwe-apiproxy-setup' => 'Proksy API zarědowaś',
 	'mwe-load-drag-item' => 'Wlecony zapisk se zacytujo',
@@ -228,7 +228,7 @@ $messages['dsb'] = array(
  * @author Evropi
  */
 $messages['el'] = array(
-	'mwe-loading_txt' => 'φόρτωση ...',
+	'mwe-loading' => 'φόρτωση ...',
 	'mwe-apiproxy-setup' => 'Ρύθμιση του μεσολαβητή ΔΠΕ (API)',
 	'mwe-load-drag-item' => 'Φόρτωση συρόμενου στοιχείου',
 	'mwe-ok' => 'Εντάξει',
@@ -243,7 +243,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'mwe-loading_txt' => 'ŝarĝante ...',
+	'mwe-loading' => 'ŝarĝante ...',
 	'mwe-cancel' => 'Nuligi',
 );
 
@@ -251,7 +251,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'mwe-loading_txt' => 'cargando ...',
+	'mwe-loading' => 'cargando ...',
 	'mwe-error_load_lib' => 'Error: JavaScript $1 no ha podido ser recuperado o no define $2',
 	'mwe-apiproxy-setup' => 'Configurando proxi de la API',
 	'mwe-load-drag-item' => 'Cargando el objeto arrastrado',
@@ -267,7 +267,7 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
-	'mwe-loading_txt' => 'Kargatzen ...',
+	'mwe-loading' => 'Kargatzen ...',
 	'mwe-ok' => 'Ados',
 	'mwe-cancel' => 'Ezeztatu',
 );
@@ -277,7 +277,7 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'mwe-loading_txt' => 'Ladataan...',
+	'mwe-loading' => 'Ladataan...',
 	'mwe-error_load_lib' => 'Virhe: JavaScript $1 ei ollut haettavissa tai se ei määrittele luokkaa $2',
 	'mwe-apiproxy-setup' => 'Pystytetään API-välityspalvelinta',
 	'mwe-ok' => 'OK',
@@ -292,7 +292,7 @@ $messages['fi'] = array(
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'mwe-loading_txt' => 'chargement ...',
+	'mwe-loading' => 'chargement ...',
 	'mwe-error_load_lib' => "Erreur : JavaScript $1 n'a pas pu être trouvé ou ne définit pas $2",
 	'mwe-apiproxy-setup' => 'Configuration du proxy API',
 	'mwe-load-drag-item' => 'Chargement de l’élément dépose',
@@ -308,7 +308,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'mwe-loading_txt' => 'cargando...',
+	'mwe-loading' => 'cargando...',
 	'mwe-error_load_lib' => 'Erro: o JavaScript $1 non se puido atopar ou non definía $2',
 	'mwe-apiproxy-setup' => 'Configurando o proxy API',
 	'mwe-load-drag-item' => 'Cargando o elemento arrastrado',
@@ -324,7 +324,7 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'mwe-loading_txt' => 'Am Lade ...',
+	'mwe-loading' => 'Am Lade ...',
 	'mwe-error_load_lib' => 'Fähler: s JavaScript $1 het nit chenne glade wäre oder s losst $2 nit zue',
 	'mwe-apiproxy-setup' => 'API-Proxy-Konfiguration',
 	'mwe-load-drag-item' => 'Am Lade vu mitgschleipfte Poschte',
@@ -347,7 +347,7 @@ $messages['ha'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'mwe-loading_txt' => 'בטעינה ...',
+	'mwe-loading' => 'בטעינה ...',
 	'mwe-error_load_lib' => 'שגיאה: לא ניתן היה לטעון את ספריית ה־JavaScript בשם $1 או שהיא אינה מגדירה את $2',
 	'mwe-apiproxy-setup' => 'הגדרה של API proxy',
 	'mwe-load-drag-item' => 'טעינה של פריט שנגרר',
@@ -363,7 +363,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'mwe-loading_txt' => 'začituje so ...',
+	'mwe-loading' => 'začituje so ...',
 	'mwe-size-gigabytes' => '$1 GB',
 	'mwe-size-megabytes' => '$1 MB',
 	'mwe-size-kilobytes' => '$1 KB',
@@ -384,7 +384,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'mwe-loading_txt' => 'betöltés…',
+	'mwe-loading' => 'betöltés…',
 	'mwe-error_load_lib' => 'Hiba: a(z) $1 JavaScript-fájl nem elérhető, vagy nem definiálja a(z) $2 osztályt.',
 	'mwe-apiproxy-setup' => 'API proxy beállítása',
 	'mwe-load-drag-item' => 'Vonszolt elem betöltése',
@@ -400,7 +400,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'mwe-loading_txt' => 'cargamento ...',
+	'mwe-loading' => 'cargamento ...',
 	'mwe-error_load_lib' => 'Error: JavaScript $1 non esseva recuperabile o non defini $2',
 	'mwe-apiproxy-setup' => 'Configuration del proxy pro le API',
 	'mwe-load-drag-item' => 'Cargamento del file trahite',
@@ -418,7 +418,7 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'mwe-loading_txt' => 'memuat...',
+	'mwe-loading' => 'memuat...',
 	'mwe-error_load_lib' => 'Kesalahan: JavaScript $1 tidak dapat diambil atau tidak mendefinisikan $2',
 	'mwe-apiproxy-setup' => 'Menyiapkan proksi API',
 	'mwe-load-drag-item' => 'Memuat butir terseret',
@@ -448,7 +448,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'mwe-loading_txt' => '読み込み中 …',
+	'mwe-loading' => '読み込み中 …',
 	'mwe-error_load_lib' => 'エラー：JavaScript $1 は参照不能か、$2 を定義していません。',
 	'mwe-apiproxy-setup' => 'API プロキシーをセットアップ中',
 	'mwe-load-drag-item' => 'ドラッグされた項目を読み込み中',
@@ -471,7 +471,7 @@ $messages['kn'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'mwe-loading_txt' => '불러오는 중...',
+	'mwe-loading' => '불러오는 중...',
 	'mwe-cancel' => '취소',
 );
 
@@ -479,7 +479,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'mwe-loading_txt' => 'aam Laade …',
+	'mwe-loading' => 'aam Laade …',
 	'mwe-size-gigabytes' => '$1&nbsp;GB',
 	'mwe-size-megabytes' => '$1&nbsp;MB',
 	'mwe-size-kilobytes' => '$1&nbsp;KB',
@@ -492,7 +492,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'mwe-loading_txt' => 'lueden ...',
+	'mwe-loading' => 'lueden ...',
 	'mwe-error_load_lib' => 'Feeler: JavaScript $1 konnt net ofgeruf ginn oder definéiert $2 net',
 	'mwe-apiproxy-setup' => 'API-Proxy astellen',
 	'mwe-load-drag-item' => 'Den agebonnen Objet gëtt gelueden',
@@ -508,7 +508,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'mwe-loading_txt' => 'Вчитувам...',
+	'mwe-loading' => 'Вчитувам...',
 	'mwe-size-gigabytes' => '$1 ГБ',
 	'mwe-size-megabytes' => '$1 МБ',
 	'mwe-size-kilobytes' => '$1 К',
@@ -528,7 +528,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'mwe-loading_txt' => 'ശേഖരിക്കുന്നു ...',
+	'mwe-loading' => 'ശേഖരിക്കുന്നു ...',
 	'mwe-error_load_lib' => 'പിഴവ്: ജാവാസ്ക്രിപ്റ്റ് $1 ശേഖരിക്കാൻ കഴിഞ്ഞില്ല അല്ലെങ്കിൽ $2 നിർവചിച്ചിട്ടില്ല',
 	'mwe-apiproxy-setup' => 'എ.പി.ഐ. പ്രോക്സി സജ്ജീകരിക്കുക',
 	'mwe-load-drag-item' => 'വലിച്ചിട്ടത് ശേഖരിക്കുന്നു',
@@ -547,14 +547,14 @@ $messages['mn'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'mwe-loading_txt' => 'Йовкстамозо моли…',
+	'mwe-loading' => 'Йовкстамозо моли…',
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'mwe-loading_txt' => 'bezig met laden ...',
+	'mwe-loading' => 'bezig met laden ...',
 	'mwe-error_load_lib' => 'Fout: JavaScript $1 kon niet opgehaald worden of definieert $2 niet',
 	'mwe-apiproxy-setup' => 'Bezig met het opzetten van een API-proxy',
 	'mwe-load-drag-item' => 'Bezig met het laden van het gesleepte bestand',
@@ -570,7 +570,7 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['nn'] = array(
-	'mwe-loading_txt' => 'Lastar …',
+	'mwe-loading' => 'Lastar …',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Avbryt',
 );
@@ -579,7 +579,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'mwe-loading_txt' => 'Laster ...',
+	'mwe-loading' => 'Laster ...',
 	'mwe-error_load_lib' => 'Feil: JavaScript $1 kunne ikke gjenhentes eller definerer ikke $2',
 	'mwe-apiproxy-setup' => 'Setter opp API-mellomtjener',
 	'mwe-load-drag-item' => 'Laster dratt element',
@@ -595,7 +595,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'mwe-loading_txt' => 'cargament ...',
+	'mwe-loading' => 'cargament ...',
 	'mwe-error_load_lib' => 'Error : JavaScript $1 a pas pogut èsser trobat o definís pas $2',
 	'mwe-apiproxy-setup' => 'Configuracion del proxy API',
 	'mwe-load-drag-item' => 'Cargament de l’element depausat',
@@ -614,7 +614,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'mwe-loading_txt' => 'ładowanie ...',
+	'mwe-loading' => 'ładowanie ...',
 	'mwe-error_load_lib' => 'Błąd – W plik JavaScript $1 brak jest możliwości pobrania oraz definicji $2',
 	'mwe-apiproxy-setup' => 'Konfiguracja proxy dla API',
 	'mwe-load-drag-item' => 'Ładowanie przeciągniętego elementu',
@@ -631,7 +631,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'mwe-loading_txt' => 'A caria ...',
+	'mwe-loading' => 'A caria ...',
 	'mwe-error_load_lib' => 'Eror: JavaScript $1 as peul pa trovesse o a definiss pa $2',
 	'mwe-apiproxy-setup' => 'Amposté ël proxy API',
 	'mwe-load-drag-item' => "carié l'element tirà",
@@ -658,7 +658,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'mwe-loading_txt' => 'A carregar ...',
+	'mwe-loading' => 'A carregar ...',
 	'mwe-error_load_lib' => 'Erro: O JavaScript $1 não pode ser importado ou não define $2',
 	'mwe-apiproxy-setup' => "A preparar o ''proxy'' da API",
 	'mwe-load-drag-item' => 'A carregar o objecto arrastado',
@@ -677,7 +677,7 @@ $messages['pt'] = array(
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
-	'mwe-loading_txt' => 'Carregando ...',
+	'mwe-loading' => 'Carregando ...',
 	'mwe-error_load_lib' => 'Erro: O JavaScript $1 não pode ser importado ou não define $2',
 	'mwe-apiproxy-setup' => 'Configurando proxy da API',
 	'mwe-load-drag-item' => 'Carregando o objeto arrastado',
@@ -693,7 +693,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'mwe-loading_txt' => 'Se încarcă ...',
+	'mwe-loading' => 'Se încarcă ...',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Renunţă',
 );
@@ -702,7 +702,7 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'mwe-loading_txt' => 'загрузка …',
+	'mwe-loading' => 'загрузка …',
 	'mwe-error_load_lib' => 'Ошибка. JavaScript $1 не доступен или не определяет $2',
 	'mwe-apiproxy-setup' => 'Настройка API-прокси',
 	'mwe-load-drag-item' => 'Загрузка перетащенного элемента',
@@ -726,7 +726,7 @@ $messages['rue'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'mwe-loading_txt' => 'načítava sa ...',
+	'mwe-loading' => 'načítava sa ...',
 	'mwe-error_load_lib' => 'Error: JavaScript $1 nebolo možné získať alebo neobsahuje definíciu $2',
 );
 
@@ -735,7 +735,7 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'mwe-loading_txt' => 'Учитавање ...',
+	'mwe-loading' => 'Учитавање ...',
 	'mwe-ok' => 'У реду',
 	'mwe-cancel' => 'Поништи',
 	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',
@@ -745,7 +745,7 @@ $messages['sr-ec'] = array(
  * @author Rancher
  */
 $messages['sr-el'] = array(
-	'mwe-loading_txt' => 'Učitavanje ...',
+	'mwe-loading' => 'Učitavanje ...',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Otkaži',
 	'mwe-test-plural' => 'Pokrenuo/la sam {{PLURAL:$1|$1 test|$1 testova}}',
@@ -757,7 +757,7 @@ $messages['sr-el'] = array(
  * @author GameOn
  */
 $messages['sv'] = array(
-	'mwe-loading_txt' => 'Laddar…',
+	'mwe-loading' => 'Laddar…',
 	'mwe-error_load_lib' => 'Fel: JavaScript $1 var inte tillgänglig eller definierade inte $2',
 	'mwe-apiproxy-setup' => 'Konfigurerar API-proxy',
 	'mwe-load-drag-item' => 'Laddar draget objekt',
@@ -773,7 +773,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'mwe-loading_txt' => 'లోడవుతోంది...',
+	'mwe-loading' => 'లోడవుతోంది...',
 	'mwe-ok' => 'సరే',
 	'mwe-cancel' => 'రద్దుచేయి',
 );
@@ -782,7 +782,7 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'mwe-loading_txt' => 'Ikinakarga...',
+	'mwe-loading' => 'Ikinakarga...',
 	'mwe-error_load_lib' => 'Kamalian: hindi makukuha ang JavaScript na $1 o hindi nagbigay kahulugan sa $2',
 	'mwe-apiproxy-setup' => 'Nagtatalaga ng pamalit na API',
 	'mwe-load-drag-item' => 'Ikinakarga ang hinilang bagay',
@@ -798,7 +798,7 @@ $messages['tl'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
-	'mwe-loading_txt' => 'yükleniyor ...',
+	'mwe-loading' => 'yükleniyor ...',
 	'mwe-error_load_lib' => 'Hata: $1 JavaScripti erişilebilir değil ya da $2 tanımlı değil',
 	'mwe-apiproxy-setup' => 'API vekili ayarlanıyor',
 	'mwe-load-drag-item' => 'Sürüklenen öğe yükleniyor',
@@ -810,7 +810,7 @@ $messages['tr'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
-	'mwe-loading_txt' => 'Завантаження ...',
+	'mwe-loading' => 'Завантаження ...',
 	'mwe-cancel' => 'Скасувати',
 );
 
@@ -823,7 +823,7 @@ $messages['ur'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'mwe-loading_txt' => "so' drio cargar ...",
+	'mwe-loading' => "so' drio cargar ...",
 	'mwe-ok' => 'Va ben',
 	'mwe-cancel' => 'Anula',
 );
@@ -833,7 +833,7 @@ $messages['vec'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'mwe-loading_txt' => 'đang tải …',
+	'mwe-loading' => 'đang tải …',
 	'mwe-size-kilobytes' => '$1 kB',
 	'mwe-error_load_lib' => 'Lỗi: JavaScript $1 không truy xuất được hoặc không định nghĩa $2',
 	'mwe-apiproxy-setup' => 'Đang thiết lập proxy API',
@@ -853,7 +853,7 @@ $messages['wuu'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
-	'mwe-loading_txt' => '载入中……',
+	'mwe-loading' => '载入中……',
 	'mwe-ok' => '确定',
 	'mwe-cancel' => '取消',
 );
@@ -863,7 +863,7 @@ $messages['zh-hans'] = array(
  * @author Waihorace
  */
 $messages['zh-hant'] = array(
-	'mwe-loading_txt' => '載入中...',
+	'mwe-loading' => '載入中...',
 	'mwe-error_load_lib' => '錯誤：JavaScript $1 是不可檢索或未定義 $2',
 	'mwe-apiproxy-setup' => 'API 的代理設定',
 	'mwe-load-drag-item' => '拖動項載入中',

@@ -328,7 +328,10 @@
 	 *            dialogHtml text Html of the loader msg
 	 */
 	mw.addLoaderDialog = function( dialogHtml ) {
-		$dialog = mw.addDialog( {
+		if( !dialogHtml ){
+			dialogHtml = gM('mwe-loading');
+		}
+		$dialog = mw.addDialog({
 			'title' : dialogHtml, 
 			'content' : dialogHtml + '<br>' + 
 				$('<div />')
@@ -341,7 +344,7 @@
 	
 	
 	/**
-	 * Add a (temporary) dialog window:
+	 * Add a dialog window:
 	 * 
 	 * @param {Object} with following keys: 
 	 *            title: {String} Title string for the dialog
@@ -385,12 +388,12 @@
 		);
 	
 		// Build the uiRequest
-		var uiRequest = [ '$j.ui.dialog' ];
+		var uiRequest = [ 'jquery.ui.dialog' ];
 		if( options.draggable ){
-			uiRequest.push( '$j.ui.draggable' );
+			uiRequest.push( 'jquery.ui.draggable' );
 		}
 		if( options.resizable ){
-			uiRequest.push( '$j.ui.resizable' );
+			uiRequest.push( 'jquery.ui.resizable' );
 		}
 		
 		// Special button string 
@@ -403,12 +406,7 @@
 		}				
 		
 		// Load the dialog resources
-		mw.load([
-			[
-				'$j.ui'
-			],
-			uiRequest
-		], function() {
+		mw.load(uiRequest, function() {
 			$( '#mweDialog' ).dialog( options );
 		} );
 		return $( '#mweDialog' );

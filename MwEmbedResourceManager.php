@@ -13,37 +13,42 @@ class MwEmbedResourceManager {
 	protected static $moduleConfig = array();
 	
 	/**
-	 * Register mwEmbeed resource set 
+	 * Register mwEmbeed resource set based on the 
 	 * 
 	 * Adds modules to ResourceLoader
 	 */
 	public static function register( $mwEmbedResourcePath ) {
-		global $IP, $wgExtensionMessagesFiles;
-		$fullResourcePath = $IP .'/'. $mwEmbedResourcePath;
-		
+		global $IP, $wgExtensionMessagesFiles, $wgExtensionAssetsPath;
+		$localResourcePath = $IP .'/' . $mwEmbedResourcePath;
 		// Get the module name from the end of the path: 
 		$modulePathParts = explode( '/', $mwEmbedResourcePath );
 		$moduleName =  array_pop ( $modulePathParts );
-		if( !is_dir( $fullResourcePath ) ){
-			throw new MWException( __METHOD__ . " not given readable path: "  . htmlspecialchars( $mwEmbedResourcePath ) );
+		if( !is_dir( $localResourcePath ) ){
+			throw new MWException( __METHOD__ . " not given readable path: "  . htmlspecialchars( $localResourcePath ) );
 		}
 		
 		if( substr( $mwEmbedResourcePath, -1 ) == '/' ){
-			throw new MWException(  __METHOD__ . " path has trailing slash: " . htmlspecialchars( $mwEmbedResourcePath) );
+			throw new MWException(  __METHOD__ . " path has trailing slash: " . htmlspecialchars( $localResourcePath) );
 		}
 		
 		// Add module messages if present: 
-		if( is_file( $fullResourcePath . '/' . $moduleName . '.i18n.php' ) ){
-			$wgExtensionMessagesFiles[ 'MwEmbed.' . $moduleName ] = $fullResourcePath . '/' . $moduleName . '.i18n.php';				
+		if( is_file( $localResourcePath . '/' . $moduleName . '.i18n.php' ) ){
+			$wgExtensionMessagesFiles[ 'MwEmbed.' . $moduleName ] = $localResourcePath . '/' . $moduleName . '.i18n.php';				
 		}		
+		
+		// Check that resource file is present:
+		$resourceListFilePath = $localResourcePath . '/' . $moduleName . '.php'; 
+		if( !is_file( $resourceListFilePath ) ){
+			throw new MWException( __METHOD__ . " mwEmbed Module is missing resource list: "  . htmlspecialchars( $resourceListFilePath ) );
+		}
 		// Get the mwEmbed module resource registration: 		
-		$resourceList = include( $fullResourcePath . '/' . $moduleName . '.php' );
+		$resourceList = include( $resourceListFilePath );
 		
 		// Look for special 'messages' => 'moduleFile' key and load all modules file messages:
 		foreach( $resourceList as $name => $resources ){
-			if( isset( $resources['messageFile'] ) && is_file( $fullResourcePath . '/' .$resources['messageFile'] ) ){
+			if( isset( $resources['messageFile'] ) && is_file( $localResourcePath . '/' .$resources['messageFile'] ) ){
 				$resourceList[ $name ][ 'messages' ] = array();
-				include( $fullResourcePath . '/' .$resources['messageFile'] );
+				include( $localResourcePath . '/' .$resources['messageFile'] );
 				foreach( $messages['en'] as $msgKey => $na ){		
 					 $resourceList[ $name ][ 'messages' ][] = $msgKey;
 				}
@@ -51,14 +56,14 @@ class MwEmbedResourceManager {
 		};
 		
 		// Check for module loader:
-		if( is_file( $fullResourcePath . '/' . $moduleName . '.loader.js' )){
+		if( is_file( $localResourcePath . '/' . $moduleName . '.loader.js' )){
 			$resourceList[ $moduleName . '.loader' ] = array(
 				'loaderScripts' => $moduleName . '.loader.js'
 			);
 		}
 		
 		// Check for module config ( @@TODO support per-module config )		
-		$configPath =  $fullResourcePath . '/' . $moduleName . '.config.php';  
+		$configPath =  $localResourcePath . '/' . $moduleName . '.config.php';  
 		if( is_file( $configPath ) ){
 			self::$moduleConfig = array_merge( self::$moduleConfig, include( $configPath ) );
 		}
@@ -85,12 +90,12 @@ class MwEmbedResourceManager {
 	 * Adds any mwEmbedResources to the ResourceLoader
 	 */
 	public static function registerModules( &$resourceLoader ) {
-		global $IP, $wgStandAloneResourceLoaderMode, $wgScriptPath;
+		global $IP, $wgEnableMwEmbedStandAlone, $wgScriptPath;
 		// Register all the resources with the resource loader
 		foreach( self::$moduleSet as $path => $modules ) {
 			foreach ( $modules as $name => $resources ) {
 				// Register the resource with MwEmbed extended class if in standAlone resource loader mode:
-				if( $wgStandAloneResourceLoaderMode === true ){							
+				if( $wgEnableMwEmbedStandAlone === true ){							
 					$resourceLoader->register(					
 						// Resource loader expects trailing slash: 
 						$name, new MwEmbedResourceLoaderFileModule( $resources, "$IP/$path", $path)

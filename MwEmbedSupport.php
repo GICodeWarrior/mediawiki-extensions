@@ -9,12 +9,17 @@
  * @author Michael Dale ( michael.dale@kaltura.com )
  * @license GPL v2 or later
  * @version 0.3.0
- */   
+ */
+   
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "This is the TimedMediaHandler extension. Please see the README file for installation instructions.\n";
+	exit( 1 );
+}
 
 /* Configuration */
 
-// When used as an extension we are not in StandAloneResourceLoaderMode:
-$wgStandAloneResourceLoaderMode = false; 
+// When used as a MediaWiki extension we are not in $wgEnableMwEmbedStandAlone mode:
+$wgEnableMwEmbedStandAlone = false; 
 
 
 /* Setup */
@@ -22,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'MwEmbedSupport',
 	'author' => array( 'Michael Dale' ),
-	'version' => '0.0.4',
+	'version' => '0.2',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MwEmbed',
 	'descriptionmsg' => 'mwembed-desc',
 );
@@ -52,3 +57,11 @@ function MwUpdateStartupModules( &$modules ){
 }
 $wgHooks['ResourceLoaderGetStartupModules'][] = 'MwUpdateStartupModules';
 
+
+
+// Add mwEmbed Support ( style sheets and messages post page ready ) 
+$wgHooks['BeforePageDisplay'][] = 'MwUpdatePageModules';
+function MwUpdatePageModules( &$out ){
+	$out->addModules( 'MwEmbedCommonStyle' );
+	return true;
+}
