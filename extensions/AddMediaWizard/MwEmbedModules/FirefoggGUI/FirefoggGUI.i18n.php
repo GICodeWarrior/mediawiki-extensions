@@ -3783,10 +3783,6 @@ Cchiù \'mbormazziune sus <a href="http://en.wikipedia.org/wiki/Video_denoising"
 	'fogg-contact-help' => 'Link de condatte',
 	'fogg-missing-webm-support' => "Se preghe de ausà 'nu [$1 WebM browser] combatibbele pè le resultate n'andeprime de WebM videos",
 	'fogg-gui-title' => "Fàce 'nu video web",
-	'Na vote combletate 'u carecamènde, $2",
-	<p>Tène abbesògne de trasè?</p>
-<p>Jè permesse carecà da url 'nu set de autorizzazione?
-'A wiki tène $1 abbilitate?</p>",
 	'fogg-select_file' => "Scacchie 'u file",
 	'fogg-select_new_file' => "Scacchie 'u file nuève",
 	'fogg-select_url' => "Scacchie 'a URL",
