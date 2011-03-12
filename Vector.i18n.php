@@ -975,6 +975,7 @@ Wann Dir ageloggt sidd, kënnt Dir dës Warnung an der Sektioun "Änneren" vun �
 	'vector-editwarning-preference' => "Mech warne wann ech d'Ännerung vun enger Säit verloosen, ouni Ännerunge gespäichert ze hunn",
 	'vector-simplesearch-search' => 'Sich',
 	'vector-simplesearch-containing' => 'mat ...',
+	'vector-noexperiments-preference' => 'Mech vun Experimenter mat neie Fonctiounen eraushuelen',
 );
 
 /** Ganda (Luganda)
