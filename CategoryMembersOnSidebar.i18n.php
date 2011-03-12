@@ -218,6 +218,13 @@ $messages['sl'] = array(
 	'categorymembersonsidebar-desc' => 'Doda člane kategorije v stransko vrstico',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categorymembersonsidebar-desc' => 'Nagdaragdag ng mga kasapi sa kategorya sa ibabaw ng panggilid na halang',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */
