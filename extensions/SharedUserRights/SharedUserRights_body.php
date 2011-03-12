@@ -60,7 +60,7 @@ class SharedUserRights extends SpecialPage {
 		}
 
 		$this->outputHeader();
-
+		$wgOut->addModuleStyles( 'mediawiki.special' );
 		$this->setHeaders();
 
 		# show user selection form
