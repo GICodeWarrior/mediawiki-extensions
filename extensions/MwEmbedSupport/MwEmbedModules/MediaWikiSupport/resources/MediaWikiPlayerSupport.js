@@ -158,7 +158,7 @@
 			}
 			// Setup shortcuts:
 			var apiUrl = mw.getApiProviderURL( apiProvider );
-			var fileTitle = 'File:' + unescape( apiTitleKey).replace(/File:|Image:/, '');
+			var fileTitle = 'File:' + unescape( apiTitleKey).replace(/^File:|^Image:/, '');
 			
 			// Get the image page ( cache for 1 hour )
 			var request = {
@@ -172,13 +172,13 @@
 				descUrl = apiUrl.replace( 'api.php', 'index.php');
 				descUrl+= '?title=' + fileTitle;
 				if ( data && data.parse && data.parse.text && data.parse.text['*'] ) {
-					// TODO improve provider 'concept' to support page title link genneration
+					// TODO improve provider 'concept' to support page title link 
 					$creditsCache = doCreditLine( data.parse.text['*'], descUrl );
 				} else {
 					$creditsCache = doCreditLine( false, descUrl)
 				}
-				// failed
-				callback( false );
+				$target.html( $creditsCache );
+				callback( true );
 			} );
 		};
 		
