@@ -1068,6 +1068,33 @@ $messages['te'] = array(
 	'ea-send' => 'పంపించు!',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'e-mailpage' => 'Pahina ng e-liham',
+	'ea-heading' => 'Ipinapadala sa pamamagitan ng e-liham ang pahinang "[[$1]]"',
+	'ea-group-info' => 'Bilang karagdagan maipapadala mo ang pahina sa mga kasapi ng isang pangkat',
+	'ea-pagesend' => 'Pahinang "$1" ipinadala mula sa $2',
+	'ea-nopage' => 'Walang pahinang itinukoy na ipapadala, mangyaring gamitin ang kawing sa e-liham mula sa panggilid na halang o mga galaw na para sa pahina.',
+	'ea-norecipients' => 'Walang natagpuang katanggap-tanggap na mga tirahan ng e-liham!',
+	'ea-listrecipients' => 'Nagtatala ng {{PLURAL:$1|tatanggap|$1 mga tatanggap}}',
+	'ea-error' => "'''Kamalian sa pagpapadala ng [[$1]]:''' ''$2''",
+	'ea-denied' => 'Tinanggihan ang pahintulot',
+	'ea-compose' => 'Gumawa ng nilalaman',
+	'ea-show' => 'Tingnan ang talaan ng tatanggap',
+	'ea-from' => 'Mula kay:',
+	'ea-to' => 'Papunta kay:',
+	'ea-cc' => 'CC:',
+	'ea-send' => 'Ipadala',
+	'ea-subject' => 'Paksa:',
+	'ea-message' => 'Mensahe:',
+	'ea-style' => 'Estilo:',
+	'ea-selectcss' => 'Makakapili ka ng isang banig ng estilo',
+	'ea-data' => 'Dato',
+	'ea-allusers' => 'Lahat ng mga tagagamit',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */
