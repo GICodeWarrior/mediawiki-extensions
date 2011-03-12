@@ -249,7 +249,7 @@ mediaWikiSearch.prototype = {
 				// or better improve the wiki-text parsing and use above
 				var desc = resource.desc.match( /\|\s*description\s*=\s*(([^\n]*\n)*)\|\s*source=/i );
 				if ( desc && desc[1] ) {
-					resource.desc = $j.trim( desc[1] );
+					resource.desc = $.trim( desc[1] );
 					// attempt to get the user language if set:
 					if ( typeof wgUserLanguage != 'undefined' && wgUserLanguage ) {
 						// for some reason the RegExp object is not happy:

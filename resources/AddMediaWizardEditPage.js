@@ -11,7 +11,7 @@ $( function() {
 	};
 	var didWikiEditorBind = false;
 	
-    $j( '#wpTextbox1' ).bind( 'wikiEditor-toolbar-buildSection-main', function( event, section ) {
+    $( '#wpTextbox1' ).bind( 'wikiEditor-toolbar-buildSection-main', function( event, section ) {
         if ( typeof section.groups.insert.tools.file !== 'undefined' ) {
             section.groups.insert.tools.file.action = {
                 'type': 'callback',
