@@ -34,6 +34,27 @@
 
 <!-- <h3><a href="http://fundraising.wikimedia.org/stats/report_ecomm_by_amount.html">$100+ donors in the last 7 days</a></h3> -->
 <!-- <h3><a href="http://fundraising.wikimedia.org/stats/report_ecomm_by_contact.html">Major Donor History</a> -->
+
+<form action="major_gift_proc.php" method="post">
+<input type="hidden" name="query_type" value="report_ecomm_by_amount.html">
+<label for="pwd"> 
+<pre>$100+ donors in the last 7 days:</pre>		
+</label>
+<input type="password" name="pwd" size="20">
+<br/>
+<input type="submit" value="Generate">
+</form>
+
+<form action="major_gift_proc.php" method="post">
+<input type="hidden" name="query_type" value="report_ecomm_by_contact.html">
+<label for="pwd"> 
+<pre>Major Donor History:</pre>		
+</label>
+<input type="password" name="pwd" size="20">
+<br/>
+<input type="submit" value="Generate">
+</form>
+
 <h3><a href="http://fundraising.wikimedia.org/stats/donor_history.html">Donor History Form</a> - generate a history log for donors by name</a></h3>
 
 <br>
