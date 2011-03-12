@@ -67,6 +67,22 @@ $messages['gl'] = array(
 	'right-searchlog-read' => 'Ollar o rexistro de procuras',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'searchlog' => 'יומן חיפוש',
+	'searchlog-desc' => 'יצירת יומן של שימוש בתיבת החיפוש ומתן אפשרות ליצור דו"חות של חיפוש מילות מפתח לפי תקופות זמן נתונות',
+	'searchlog-cantopen' => 'לא ניתן לפתוח את קובץ היומן <tt>$1</tt>',
+	'searchlog-heading' => 'חיפוש מילות מפתח בתקופה $1',
+	'searchlog-unicode' => 'הצגת יוניקוד לא מעובד',
+	'searchlog-timeperiod' => 'נא לבחור את התקופה:',
+	'searchlog-entire' => 'כל היומן',
+	'searchlog-phrase' => 'משפט החיפוש',
+	'searchlog-occurences' => 'מספר המופעים בתקופה',
+	'right-searchlog-read' => 'הצגת יומן החיפוש',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

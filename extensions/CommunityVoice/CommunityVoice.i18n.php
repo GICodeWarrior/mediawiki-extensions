@@ -545,9 +545,11 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  */
 $messages['ka'] = array(
 	'communityvoice' => 'საზოგადოების არჩევანი',
+	'communityvoice-desc' => 'ხელსაწყოები საზოგადოების მონაწილეობისთვის',
 	'communityvoice-ratings' => 'რეიტინგი',
 	'communityvoice-ratings-scale-status-sending' => 'იგზავნება...',
 	'communityvoice-ratings-scale-status-error' => 'შეცდომა გაიგზავნა!',

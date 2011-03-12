@@ -409,6 +409,8 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'htmlets-desc' => 'Nagpapahintulot sa iyo na maihanay sa guhit ang maliliit na mga piraso ng HTML mula sa mga talaksan na ginagamit ang tatak na <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Hindi matagpuan ang talaksang HTML na $1',
+	'htmlets-loadfailed' => 'Nabigong ikarga ang talaksang HTML na $1',
 );
 
 /** Turkish (Türkçe)

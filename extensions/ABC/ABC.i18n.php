@@ -38,9 +38,11 @@ $messages['qqq'] = array(
 );
 
 /** Dusun Bundu-liwan (Dusun Bundu-liwan)
+ * @author FRANCIS5091
  * @author FRANELYA
  */
 $messages['dtp'] = array(
+	'abc-desc' => 'Ruhangai <code>&lt;abc&gt;</code> tag  do mongulud tongkouni ABC',
 	'abcdownload' => 'Potuhuno manganu:',
 );
 

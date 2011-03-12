@@ -263,6 +263,20 @@ $messages['ru'] = array(
 	'includewp-include-par-height' => 'Максимальная высота (в пикселях) элемента DIV, в который загружается содержание. Установите 0 для снятия ограничения.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'includewp-loading-page' => 'Ikinakarga ang pahina...',
+	'includewp-show-full-page' => 'Ipakita ang buong pahina',
+	'includewp-show-fragment' => 'Ipakita lamang ang unang talata',
+	'includewp-loading-failed' => 'Nabigong maikarga ang pahina.',
+	'includewp-parserhook-desc' => 'Kawit ng pambanghay na nagpapahintulot sa pagpapakita ng nilalaman ng isang pahina ng Wikipedia.',
+	'includewp-include-par-page' => 'Ang pangalan ng pahinang (malayo) nais mong ipakita.',
+	'includewp-include-par-wiki' => 'Ang pangalan ng wiki na nais mong paghilahan ng nilalaman.  Kailangang maging isa sa pinapahintulutang mga wiki, ayon sa wikipediang likas na nakatakda lamang.',
+	'includewp-include-par-paragraphs' => 'Ang bilang ng mga talatang nais mong unang maipakita.',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

@@ -2733,6 +2733,7 @@ $messages['lb'] = array(
 	'fogg-use_latest_firefox' => "Installéiert w.e.g. fir d'éischt $1.
 <i>Kommt duerno zréck op dës Säit fir d'<b>Firefogg</b>-Erweiderung z'installéieren.</i>",
 	'fogg-latest-firefox' => 'lescht Versioun vu Firefox',
+	'fogg-passthrough_mode' => 'Den erausgesichte Fichier ass schonn ogg oder kee Video-Fichier',
 	'fogg-encoding-done' => 'Codéierung ofgeschloss',
 	'fogg-badtoken' => 'Token net valabel',
 	'fogg-preview' => 'Video kucken ouni ze späicheren',
@@ -4373,7 +4374,14 @@ $messages['tl'] = array(
 	'fogg-audioQuality-title' => 'Kalidad ng naririnig',
 	'fogg-audioQuality-help' => 'Ginagamit upang itakda ang <i>kalidad ng akustiko</i> ng isinapanitik na tunog (hindi ginagamit kapag itinakda mo ang antas ng bit sa mas masulong na pangtaban na nasa ibaba).',
 	'fogg-videoCodec-title' => 'Kodek ng bidyo',
+	'fogg-videoCodec-help' => 'Piliin ang pangkodigo ng putol ng bidyo.  Mas marami pang patungkol sa <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Theora\\">pangkodigong Theora<\\/a>.  Mas marami pang patungkol sa <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Webm\\">pangkodigong VP8<\\/a>
+Select the clip video codec. More about the <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Theora\\">Theora codec<\\/a>. More about the <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Webm\\">VP8 codec<\\/a>
+
+
+Select the clip video codec. More about the <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Theora\\">Theora codec<\\/a>. More about the <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Webm\\">VP8 codec<\\/a>
+Select the clip video codec. More about the <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Theora\\">Theora codec<\\/a>. More about the <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Webm\\">VP8 codec<\\/a>',
 	'fogg-audioCodec-title' => 'Kodek ng naririnig',
+	'fogg-audioCodec-help' => 'Ginagamit upang itakda ang pangkodigo ng putol ng bidyo.  Sa kasalukuyan ang Vorbis lang ang tinatangkilik.  Mas marami pang patungkol sa <a target="_new" href="http://en.wikipedia.org/wiki/Vorbis">pangkodigong Vorbis</a>',
 	'fogg-width-title' => 'Lapad ng bidyo',
 	'fogg-width-help' => 'Palitan ang sukat ayon sa bigay na lapad.',
 	'fogg-height-title' => 'Taas ng bidyo',
@@ -4383,9 +4391,22 @@ $messages['tl'] = array(
 	'fogg-twopass-title' => 'Pagsasatitik na dalawa ang pagdaan',
 	'fogg-twopass-help' => 'Ang dalawahang pasadang pagsasatitik ay nagpapahintulot na mas panayang kalidad sa pamamagitan ng paggawa ng dalawang pasada sa ibabaw ng talaksan ng bidyo',
 	'fogg-framerate-title' => 'Antas ng kuwadro',
+	'fogg-framerate-help' => 'Ang antas ng bastagan ng bidyo.
+Mas marami pang patungkol sa <a target="_new" href="http://en.wikipedia.org/wiki/Frame_rate">antas ng tandayan</a>.
+
+Mas marami pang patungkol sa',
 	'fogg-aspect-title' => 'Aspeto ng ugnayan ng dami',
+	'fogg-aspect-help' => 'Ang tagwa ng aspeto ng bidyo ay maaaring 4:3 o 16:9.
+Mas marami pang patungkol sa <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">mga tagwa ng aspeto</a>.
+The video aspect ratio can be 4:3 or 16:9.
+More about <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratios</a>.',
 	'fogg-keyframeInterval-title' => 'Pagitan ng kuwadro ng susi',
+	'fogg-keyframeInterval-help' => 'Ang puwang ng susing-bastagan sa loob ng mga tandayan.
+Paunawa: Karamihan sa mga pangkodigo ang pumipilit sa mga susing-bastagan kung ang pagkakaiba sa pagitan ng mga bastagan ay mas mahigit kaysa sukat ng pagkokodigo ng susing-tandayan.
+Mas marami pang patungkol sa <a href="http://en.wikipedia.org/wiki/I-frame">mga susing-bastagan</a>.',
 	'fogg-denoise-title' => 'Pansalang pantanggal ng ingay',
+	'fogg-denoise-help' => 'Bidyong pampasok ng pambawas-ingay.
+Mas marami pang hinggil sa <a href="http://en.wikipedia.org/wiki/Video_denoising">pagbabawas ng ingay</a>.',
 	'fogg-novideo-title' => 'Walang bidyo',
 	'fogg-novideo-help' => 'huwag paganahin ang bidyo sa paglabas',
 	'fogg-audioBitrate-title' => 'Antas ng bit ng tunog',
@@ -4409,6 +4430,7 @@ $messages['tl'] = array(
 	'fogg-license-help' => 'Ang lisensiya ng putol (mas nais ang isang URL na Malikhaing mga Pangkaraniwan).',
 	'fogg-contact-title' => 'Makipag-ugnayan',
 	'fogg-contact-help' => 'Kawing sa kaugnayan',
+	'fogg-missing-webm-support' => 'Pakigamit ang isang pantingin-tinging [$1 kabagay na WebM] upang mapaunang tingnan ang mga bidyo ng WebM',
 	'fogg-gui-title' => 'Gumawa ng bidyo sa web',
 	'fogg-transcoding' => 'Isinasatitik ang bidyo',
 	'fogg-select_file' => 'Piliin ang talaksan',
@@ -4428,6 +4450,8 @@ $messages['tl'] = array(
 	'fogg-badtoken' => 'Hindi tanggap ang token',
 	'fogg-preview' => 'Paunang tingnan ang bidyo',
 	'fogg-hidepreview' => 'Itago ang paunang tanaw',
+	'fogg-warning-firebug' => 'Ang <b>Firebug</b> ay makapagdurulot ng pagsalungat sa <i>Firefogg</i>.
+Mangyaring huwag paganahin ang <b>Firebug</b> para sa pahinang ito.',
 );
 
 /** Turkish (Türkçe)

@@ -117,10 +117,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'folktagcloud-desc' => 'A gionta na proprietà ëd Semantic MediaWiki për marché pàgine con tichëtte definìe da utent e na tichëtta ëd parser për mosteje ant na nìvola ëd tichëtte',
+	'folktagcloud-desc' => "A gionta na proprietà ëd Semantic MediaWiki për marché dle pàgine con tichëtte definìe da l'utent e na tichëtta d'analisator sintàtich për smonje ant na nìvola ëd tichëtte",
 );
 
 /** Portuguese (Português)

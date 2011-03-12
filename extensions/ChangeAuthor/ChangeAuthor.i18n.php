@@ -1065,6 +1065,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Adam78
  * @author Dani
  * @author Dorgan
  */
@@ -1088,7 +1089,7 @@ $messages['hu'] = array(
 	'changeauthor-invalidform' => 'Kérlek saját űrlap helyett használd a [[Special:ChangeAuthor|speciális lapon]] található változatot.',
 	'changeauthor-success' => 'A kérésedet sikeresen végrehajtottam.',
 	'changeauthor-logentry' => '$1 $2 azonosítójú változatának szerzőjét $3 felhasználóról $4 felhasználóra cserélte',
-	'changeauthor-logpagename' => 'Szerző-változtatási napló',
+	'changeauthor-logpagename' => 'Szerzőváltoztatási napló',
 	'right-changeauthor' => 'A változat szerzőjének megváltoztatása',
 );
 

@@ -1752,7 +1752,7 @@ $messages['pms'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Pa gnun "$1"',
-	'recordadmin-edit-info' => 'Costa pàgina a conten djë stamp che a l\'han ij sò pròpi formolari ch\'a peul compilé da st\'ansem..<br />Dësnò <a href="$1">dòvra la funsionalità normal ëd modìfica MediaWiki sensa formolari dë stamp</a>.',
+	'recordadmin-edit-info' => "Costa pàgina a conten djë stamp che a l'han ij sò pròpi formolari ch'a peul compilé da st'ansem..<br />Dësnò <a href=\"\$1\">ch'a deuvra la funsionalità normal ëd modìfica MediaWiki sensa formolari dë stamp</a>.",
 	'recordadmin-properties' => 'Proprietà',
 );
 

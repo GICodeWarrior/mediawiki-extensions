@@ -662,3 +662,20 @@ $messages['sv'] = array(
 	'flagpage-tab' => 'Flagga',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'flagpage' => 'Ibandila ang isang pahina',
+	'flagpage-desc' => 'Magbandila ng isang pahinang may paunang natukoy na mga suleras',
+	'flagpage-nopageselectedtitle' => 'Walang napaling pahina',
+	'flagpage-nopageselected' => 'Hindi ka tumukoy ng isang pahina',
+	'flagpage-emptylisttitle' => 'Walang inayos na mga suleras',
+	'flagpage-preview' => 'Paunang-tanaw ng napiling suleras:',
+	'flagpage-confirmsave' => 'Pakitiyak ang mga pagbabago mo.',
+	'flagpage-submitbutton' => 'Sagipin ang pahina na may ganitong suleras',
+	'flagpage-summary' => 'Idinagdag ang suleras na [[$1]] na ginagamit ang FlagPage',
+	'flagpage-success' => 'Idinagdag ang [[$1]] sa pahinang [[$2]].',
+	'flagpage-tab' => 'Bandila',
+);
+

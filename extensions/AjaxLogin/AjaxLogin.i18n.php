@@ -1172,6 +1172,8 @@ Maaaring mawala ang mga pagbabago mo sa pahinang ito kapag nilisan mo ngayon ang
 	'al-nosuchuser' => 'Walang tagagamit na may pangalang "$1".
 Maramdamin sa pagtipa ang mga pangalan ng tagagamit.
 Suriin ang iyong pagbabaybay.',
+	'al-createblocked' => 'Hinaharangan ang tirahang IP mo mula sa paglikha ng akawnt.',
+	'al-throttled' => 'Nagkaroon ka ng napakarami kamakailang pagsubok ng hudyat.  Mangyaring maghintay ng {{PLURAL:$1|segundo|mga segundo}} bago sumubok uli.',
 );
 
 /** Turkish (Türkçe)

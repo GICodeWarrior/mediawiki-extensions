@@ -1421,6 +1421,7 @@ $messages['ja'] = array(
  * @author BRUTE
  * @author David1010
  * @author Dawid Deutschland
+ * @author ITshnik
  */
 $messages['ka'] = array(
 	'articlefeedback' => 'სტატიის შეფასება',
@@ -1448,6 +1449,7 @@ $messages['ka'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'ეს ჩემს ჰობისა და ინტერესებს მოიცავს',
 	'articlefeedback-form-panel-expertise-other' => 'ჩემი ცოდნის წყარო აქ მოცემული არაა',
 	'articlefeedback-form-panel-submit' => 'დაეთანხმე შეფასებას',
+	'articlefeedback-form-panel-success' => 'შენახულია წარმატებით',
 	'articlefeedback-report-switch-label' => 'გვერდის შეფასებების ხილვა',
 	'articlefeedback-report-panel-title' => 'ამ გვერდის შეფასებები',
 	'articlefeedback-report-panel-description' => 'შეფასების ამჟამინდელი შედეგები',

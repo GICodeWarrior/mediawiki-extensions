@@ -6402,7 +6402,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_edit_metadata' => 'Уреди метаподатоци',
 	'mv_advanced_edit' => 'Напредно уредување',
 	'mv_basic_edit' => 'Основно уредување',
-	'mv_remove_category' => 'Бриши категорија',
+	'mv_remove_category' => 'Избриши категорија',
 	'mv_existing_categories' => '{{PLURAL:$1|категорија|категории}}:',
 	'mv_add_category' => 'Додај категоризација',
 	'mv_basic_text_desc' => 'Текстуален опис (незадолжително)',
@@ -8114,7 +8114,7 @@ Skocz do widoku strumienia $2',
  */
 $messages['pms'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor ëd metadàit filmà e arserca ëd mojen]',
-	'mvadmin' => "Funsion d'aministrador për MetavidWiki",
+	'mvadmin' => "Funsion d'aministrator për MetavidWiki",
 	'metavid' => 'Pàgina MetaVid',
 	'mv_missing_stream' => 'Fluss mancant: $1',
 	'specialpages-group-mv_group' => 'Pàgina special MetaVidWiki',
