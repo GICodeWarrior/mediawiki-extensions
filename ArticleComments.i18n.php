@@ -1580,7 +1580,36 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'article-comments-desc' => 'Nagpapagana ng mga seksyon ng puna sa mga pahina ng nilalaman',
+	'article-comments-title-string' => 'pamagat',
+	'article-comments-name-string' => 'Pangalan',
+	'article-comments-name-field' => 'Pangalan (kailangan):',
+	'article-comments-url-field' => 'Websayt:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Puna',
 	'article-comments-comment-field' => 'Puna:',
+	'article-comments-submit-button' => 'Ipasa',
+	'article-comments-leave-comment-link' => 'Mag-iwan ng puna ...',
+	'article-comments-invalid-field' => 'Hindi katanggap-tanggap ang <nowiki>[$2]</nowiki> na ibinigay ng $1.',
+	'article-comments-required-field' => 'Ang hanay na "$1" ay kailangan.',
+	'article-comments-submission-failed' => 'Nabigo ang pagpapasa ng puna',
+	'article-comments-failure-reasons' => 'Paumahin, nabigo ang pagpapasa mo ng puna dahil sa sumusunod na {{PLURAL:$1|dahilan|mga dahilan}}:',
+	'article-comments-no-comments' => 'Paumanhin, ang pahinang "[[$1]]" ay hindi tumatanggap ng mga puna sa panahong ito.',
+	'article-comments-talk-page-starter' => '<noinclude>Mga puna tungkol sa "[[$1]]"
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => 'Nagsabi si $1 ng ...',
+	'article-comments-summary' => 'Punang ibinigay ni $1 - sa pamamagitan ng dugtong na ArticleComments',
+	'article-comments-submission-succeeded' => 'Nagtagumpay ang pagpapasa ng puna',
+	'article-comments-submission-success' => 'Matagumpay kang nakapagpasa ng isang puna para sa "[[$1]]"',
+	'article-comments-submission-view-all' => 'Maaari mong tingnan ang [[$1|ang lahat ng mga puna na nasa pahinang iyan]]',
+	'article-comments-user-is-blocked' => 'Pangkasalukuyang hinaharangan ang akawnt mo na pangtagagamit mula sa pamamatnugot ng "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'Hindi tanggap ang anyong ibinigay para sa puna.
+Ang makukuha ay "payak", "pangkaraniwan" at "wiki".',
+	'article-comments-comment-missing-name-parameter' => 'Nawawalang pangalan',
+	'article-comments-comment-missing-date-parameter' => 'Petsa ng nawawalang puna',
+	'article-comments-no-spam' => 'Hindi bababa sa isa ng ipinasang mga hanay ay ibinandila bilang basura.',
+	'processcomment' => 'Puna sa pahina ng proseso',
 );
 
 /** Turkish (Türkçe)
