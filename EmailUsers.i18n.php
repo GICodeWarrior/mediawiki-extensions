@@ -247,6 +247,7 @@ $messages['lb'] = array(
 	'emailusers' => 'E-Mail Benotzer',
 	'emailusers-target-reverse' => 'Un all Benotzer schécken, ausser deenen déi erausgesicht sinn',
 	'emailusers-norecipient' => 'Et gëtt keen deem Dir eng Mail schécke kënnt.',
+	'emailusers-norecipientselected' => 'Et ass keen Destinataire erausgesicht.',
 );
 
 /** Macedonian (Македонски)
@@ -308,6 +309,14 @@ $messages['ru'] = array(
  */
 $messages['sw'] = array(
 	'emailusers' => 'Kutuma barua pepe kwa watumiaji wengi',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'emailusers' => 'Mga tagagamit ng e-liham',
+	'emailusers-target-reverse' => 'Ipadala sa lahat ng mga tagagamit maliban sa mga napili',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
