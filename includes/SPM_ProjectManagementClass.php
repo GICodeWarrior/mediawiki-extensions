@@ -705,10 +705,7 @@ class ProjectManagementClass{
 				$startdate = $task->getGanttDate($task->getPlannedStartDate());
 	
 				//get task starttime as int
-				$time1 = explode("T",$task->parsedate($task->getPlannedStartDate()));
-				$time2 = explode("-",$time1[0]);
-				$time3 = explode(":",$time1[1]);
-				$starttime = date("U",mktime($time3[0],$time3[1],$time3[2],$time2[1],$time2[2],$time2[0]));
+				$starttime = $this->getTimeAsInt($task->parsedate($task->getPlannedStartDate()));
 	
 			}		
 			
@@ -716,11 +713,8 @@ class ProjectManagementClass{
 			if ($task->getPlannedFinishDate() != null){
 				
 				$enddate = $task->getGanttDate($task->getPlannedFinishDate());
-				//get task endtime as int
-				$time1 = explode("T",$task->parsedate($task->getPlannedFinishDate()));
-				$time2 = explode("-",$time1[0]);
-				$time3 = explode(":",$time1[1]);
-				$endtime = date("U",mktime($time3[0],$time3[1],$time3[2],$time2[1],$time2[2],$time2[0]));				
+				
+				$endtime = $this->getTimeAsInt($task->parsedate($task->getPlannedFinishDate()));				
 			}
 			
 			
@@ -772,10 +766,8 @@ class ProjectManagementClass{
 				$startdate = $task->getGanttDate($task->getStartDate());
 				
 				//get task starttime as int
-				$time1 = explode("T",$task->parsedate($task->getStartDate()));
-				$time2 = explode("-",$time1[0]);
-				$time3 = explode(":",$time1[1]);
-				$starttime = date("U",mktime($time3[0],$time3[1],$time3[2],$time2[1],$time2[2],$time2[0]));
+				
+				$starttime = $this->getTimeAsInt($task->parsedate($task->getStartDate()));
 			}
 
 			//if real finish date exists
@@ -783,10 +775,8 @@ class ProjectManagementClass{
 				$enddate = $task->getGanttDate($task->getFinishDate());
 				
 				//get task endtime as int
-				$time1 = explode("T",$task->parsedate($task->getFinishDate()));
-				$time2 = explode("-",$time1[0]);
-				$time3 = explode(":",$time1[1]);
-				$endtime = date("U",mktime($time3[0],$time3[1],$time3[2],$time2[1],$time2[2],$time2[0]));
+				
+				$endtime = $this->getTimeAsInt($task->parsedate($task->getFinishDate()));
 			}
 			
 			//calculate progress
@@ -829,6 +819,18 @@ class ProjectManagementClass{
 			}
 			
 		}
+	}
+	
+	private function getTimeAsInt($date){
+		//get task starttime as int
+				$time1 = explode("T",$date);
+				$time2 = explode("-",$time1[0]);
+				if (count($time1)>1){
+				$time3 = explode(":",$time1[1]);
+				} else {
+					$time3 = array(0,0,0);
+				}
+				return date("U",mktime($time3[0],$time3[1],$time3[2],$time2[1],$time2[2],$time2[0]));
 	}
 	
 	/**

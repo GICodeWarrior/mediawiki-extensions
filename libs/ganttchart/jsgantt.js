@@ -1455,7 +1455,8 @@ JSGantt.taskLink = function(pRef,pWidth,pHeight)
     if(pWidth)  vWidth =pWidth;  else vWidth =400;
     if(pHeight) vHeight=pHeight; else vHeight=400;
 
-    var OpenWindow=window.open(pRef, "newwin", "height="+vHeight+",width="+vWidth); 
+   // var OpenWindow=window.open(pRef, "newwin", "height="+vHeight+",width="+vWidth); 
+    window.location = pRef;
 
   }
 
