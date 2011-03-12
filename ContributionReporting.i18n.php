@@ -3186,6 +3186,7 @@ $messages['lb'] = array(
 	'fundraiserstats-tab-ytd' => 'Joer-bis-Datum (USD)',
 	'fundraiserstats-instructions' => "Fir d'Statistike fir iergendeen Dag ze gesinn, setzt de Curseur iwwert d'Colonne fir deen Dag. All Joer ass eng aner Faarf am Grafik.",
 	'fundraiserstats-customize' => 'Upassen',
+	'fundraiserstats-show-years' => 'Déi Joren duerno weisen:',
 	'fundraiserstats-time-zone' => 'Zäitzone:',
 	'fundraiserstats-utc' => '(vun UTC)',
 );
