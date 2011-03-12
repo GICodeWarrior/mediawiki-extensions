@@ -70,7 +70,7 @@ mediaWikiSearch.prototype = {
 	 * @return {String} The title in a form that should mirror wgPageName
 	 */
 	getTitleKeyFromMwUrl: function( url ){
-		// try for title key param
+		// Try for title key param 
 		var titleKey = new mw.Uri( url ).query['title'];
 		if( titleKey ){
 			return decodeURIComponent( titleKey ).replace( / /g, "_");
