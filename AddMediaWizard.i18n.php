@@ -126,7 +126,8 @@ $messages['da'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'addmediawizard-desc' => '„Medienassistent“ zum Einfügen von Mediendateien in Seiten. Entwickelt in Zusammenarbeit von Kaltura und der Wikimedia Foundation',
+	'addmediawizard-desc' => 'Stellt einen Medienassistenten zum Einfügen von Mediendateien in Seiten bereit. Entwickelt in Zusammenarbeit von Kaltura und der Wikimedia Foundation',
+	'addmediawizard-loading' => 'Der Medienassistent wird geladen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -248,6 +249,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'addmediawizard-desc' => 'Assistente de addition de multimedia, disveloppate in collaboration per Kaltura e le Fundation Wikimedia',
+	'addmediawizard-loading' => 'Carga le assistente de addition de multimedia',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -333,6 +335,7 @@ $messages['lad'] = array(
  */
 $messages['lb'] = array(
 	'addmediawizard-desc' => 'En Assistent fir Medien derbäisetzen, deen an engem Partenariat tëschent Kaltura a n der Wikimedia Foundatioun entwéckelt gouf',
+	'addmediawizard-loading' => 'Den Assistent fir Medien derbäizesetze gëtt gelueden',
 );
 
 /** Limburgish (Limburgs)
@@ -403,6 +406,7 @@ $messages['myv'] = array(
  */
 $messages['nl'] = array(
 	'addmediawizard-desc' => 'Wizard media toevoegen, ontwikkeld in een samenwerking tussen Kaltura en de Wikimedia Foundation',
+	'addmediawizard-loading' => 'Bezig met het laden van de Wizard media toevoegen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -487,6 +491,7 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'addmediawizard-desc' => 'Doda predstavnostni čarovnik, ki je nastal v sodelovanju Kalture in fundacije Wikimedia',
+	'addmediawizard-loading' => 'Nalaganje čarovnika za dodajanje predstavnosti',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
@@ -527,6 +532,7 @@ $messages['ta'] = array(
  */
 $messages['tl'] = array(
 	'addmediawizard-desc' => 'Idagdag ang media wizard, pinaunlad sa pakikipagtulungan ng Kaltura at Pundasyong Wikimedia',
+	'addmediawizard-loading' => 'Ikinakarga ang salamangkero ng midyang pangdagdag',
 );
 
 /** Turkish (Türkçe)
