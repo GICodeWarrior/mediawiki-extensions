@@ -135,7 +135,7 @@ class ProjectManagementClass{
 	}
 	
 	private function makeID($val){
-		return substr($val,-18);
+		return $val;
 	}
 
 	/**
