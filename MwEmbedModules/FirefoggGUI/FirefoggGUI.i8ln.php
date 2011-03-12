@@ -82,12 +82,6 @@ More about <a href="http://en.wikipedia.org/wiki/Video_denoising">denoise</a>.',
 	'fogg-contact-help' => 'Contact link',
 	'fogg-missing-webm-support' => 'Please use a [$1 WebM compatible] browser to preview results of WebM videos',
 	'fogg-gui-title' => 'Make web video',
-	
-	
-	
-	
-	
-	
 	'fogg-transcoding' => 'Encoding video',
 	'fogg-select_file' => 'Select file',
 	'fogg-select_new_file' => 'Select new file',
@@ -109,7 +103,7 @@ More about <a href="http://en.wikipedia.org/wiki/Video_denoising">denoise</a>.',
 	'fogg-hidepreview' => 'Hide preview',
 	'fogg-warning-firebug' => '<b>Firebug</b> can cause conflicts with <i>Firefogg</i>.
 Please disable <b>Firebug</b> for this page.',
-	);
+);
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
@@ -130,15 +124,10 @@ $messages['qqq'] = array(
 	'fogg-copyright-title' => '{{Identical|Copyright}}',
 	'fogg-license-title' => '{{Identical|License}}',
 	'fogg-contact-title' => '{{Identical|Contact}}',
-	
-	
-	
-	
-	
 	'fogg-please-install' => 'Message that shows that Firefogg should be installed. Parameters:
 * $1 is the install link. {{msg-mw|fogg-please-install-install-linktext}} is substituted as link text.
 * $2 is the about link. {{msg-mw|fogg-please-install-about-linktext}} is substituted as link text.',
-	);
+);
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
@@ -164,13 +153,7 @@ $messages['af'] = array(
 	'fogg-passthrough_mode' => "U gekose lêer is reeds 'n Ogg-lêer of nie 'n videolêer nie",
 	'fogg-encoding-done' => 'Enkodering is voltooi',
 	'fogg-hidepreview' => 'Versteek voorskou',
-	);
-
-/** Gheg Albanian (Gegë)
- * @author Mdupont
- */
-$messages['aln'] = array(
-	);
+);
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
@@ -255,7 +238,6 @@ $messages['ar'] = array(
 	'fogg-contact-help' => 'وصلة الاتصال',
 	'fogg-missing-webm-support' => 'يرجي استخدام متصفح [$1 يدعم WebM] لعرض النتائج المرمزة ب‍WebM',
 	'fogg-gui-title' => 'أنشئ فيديو للوِب',
-	
 	'fogg-transcoding' => 'ترميز الفيديو إلى Ogg',
 	'fogg-select_file' => 'اختر ملفًا',
 	'fogg-select_new_file' => 'اختر ملفًا جديدًا',
@@ -273,7 +255,7 @@ $messages['ar'] = array(
 	'fogg-preview' => 'معاينة الفيديو',
 	'fogg-hidepreview' => 'أخفِ المعاينة',
 	'fogg-warning-firebug' => 'يمكن أن تتعارض إضافة <b>Firebug</b> مع <i>Firefogg</i>. يرجى تعطيل <b>Firebug</b> لاستخدام هذه الصفحة.',
-	);
+);
 
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
@@ -367,9 +349,6 @@ $messages['ba'] = array(
 	'fogg-contact-help' => 'Бәйләнеш өсөн мәғлүмәт',
 	'fogg-missing-webm-support' => 'Зинһар, WebM видеоны ҡарап сығыу өсөн, [$1 WebM менән килгән браузер] ҡулланығыҙ',
 	'fogg-gui-title' => 'Веб-видео яһарға',
-	
-	
-	
 	'fogg-transcoding' => 'Видеоны кодлау',
 	'fogg-select_file' => 'Файл һайлағыҙ',
 	'fogg-select_new_file' => 'Яңы файл һайлағыҙ',
@@ -391,7 +370,7 @@ $messages['ba'] = array(
 	'fogg-hidepreview' => 'Ҡарап сығыуҙы йәшерергә',
 	'fogg-warning-firebug' => '<b>Firebug</b> менән <i>Firefogg</i> араһында ҡаршылыҡтар булыуы мөмкин.
 Зинһар, был бит өсөн <b>Firebug</b> һүндерегеҙ.',
-	);
+);
 
 /** Belarusian (Беларуская)
  * @author Тест
@@ -494,7 +473,7 @@ $messages['be-tarask'] = array(
 	'fogg-preview' => 'Папярэдні прагляд відэа',
 	'fogg-hidepreview' => 'Схаваць папярэдні прагляд',
 	'fogg-warning-firebug' => '<b>Firebug</b> можа выклікаць канфлікты з <i>Firefogg</i>. Калі ласка, адключыце <b>Firebug</b> для гэтай старонкі.',
-	);
+);
 
 /** Bulgarian (Български)
  * @author DCLXVI
@@ -605,7 +584,7 @@ $messages['br'] = array(
 	'fogg-preview' => 'Rakwelet ar video',
 	'fogg-hidepreview' => 'Kuzhat ar rakweladenn',
 	'fogg-warning-firebug' => "<b>Firebug</b> a c'hell krouiñ tabutoù gant <i>Firefogg</i>. Mar plij diweredekait <b>Firebug</b> evit ar bajenn-mañ.",
-	);
+);
 
 /** Bosnian (Bosanski)
  * @author CERminator
@@ -751,11 +730,6 @@ Més informació (en anglès) a <a href="http://en.wikipedia.org/wiki/Video_deno
 	'fogg-contact-help' => 'Enllaç de contacte',
 	'fogg-missing-webm-support' => 'Feu servir un navegador [compatible amb $1 WebM] per previsualitzar els resultats dels vídeos WebM \\',
 	'fogg-gui-title' => 'Crea un vídeo web',
-	
-	
-	
-	
-	
 	'fogg-transcoding' => "S'està codificant el vídeo",
 	'fogg-select_file' => 'Seleccioneu un fitxer',
 	'fogg-select_new_file' => 'Seleccioneu un fitxer nou',
@@ -775,17 +749,7 @@ Més informació (en anglès) a <a href="http://en.wikipedia.org/wiki/Video_deno
 	'fogg-preview' => 'Previsualitza el vídeo',
 	'fogg-hidepreview' => 'Amaga la previsialització',
 	'fogg-warning-firebug' => "El <b>Firebug</b> pot provocar problemes amb el <i>Firefogg</i>. Inhabiliteu el <b>Firebug</b> d'aquesta pàgina.",
-	);
-
-/** Chechen (Нохчийн)
- * @author Sasan700
- */
-$messages['ce'] = array(
-	);
-
-/** Sorani (کوردی) */
-$messages['ckb'] = array(
-	);
+);
 
 /** Czech (Česky)
  * @author Jkjk
@@ -849,8 +813,6 @@ Více inromací o <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_rat
 	'fogg-contact-help' => 'Odkaz na konakt',
 	'fogg-missing-webm-support' => 'Pro zobrazení náhledu WebM videí je nutno použít prohlížeč [$1 kompatibilní s WebM].',
 	'fogg-gui-title' => 'Vytvořit video pro web',
-	
-	
 	'fogg-transcoding' => 'Kóduje se video',
 	'fogg-select_file' => 'Výběr souboru',
 	'fogg-select_new_file' => 'Výběr jiného souboru',
@@ -871,7 +833,7 @@ Více inromací o <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_rat
 	'fogg-hidepreview' => 'Skrýt náhled',
 	'fogg-warning-firebug' => '<b>Firebug</b> může způsobit konflikt s <i>Firefogg</i>.
 Prosím vypněte <b>Firebug</b> pro tutu stránku.',
-	);
+);
 
 /** German (Deutsch)
  * @author F.trott
@@ -974,7 +936,7 @@ $messages['de'] = array(
 	'fogg-preview' => 'Videovorschau',
 	'fogg-hidepreview' => 'Vorschau verstecken',
 	'fogg-warning-firebug' => '<b>Firebug</b> kann Konflikte mit <i>Firefogg</i> verursachen. Bitte deaktiviere <b>Firebug</b> auf dieser Seite.',
-	);
+);
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author F.trott
@@ -1075,7 +1037,7 @@ $messages['diq'] = array(
 	'fogg-badtoken' => 'nişan qebul nêbı',
 	'fogg-preview' => 'video temaşa bıker',
 	'fogg-hidepreview' => 'temaşakerdışi bınımn',
-	);
+);
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
@@ -1169,7 +1131,7 @@ $messages['dsb'] = array(
 	'fogg-preview' => 'Pśeglěd wideo pokazaś',
 	'fogg-hidepreview' => 'Pśeglěd schowaś',
 	'fogg-warning-firebug' => '<b>Firebug</b> móžo konflikty z <i>Firefogg</i> zawinowaś. Pšosym znjemóžni <b>Firebug</b> za toś ten bok.',
-	);
+);
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
@@ -1263,9 +1225,7 @@ Pli pri <a target="_new" href="http://en.wikipedio.org/wiki/Frame_rate">filmer-r
 	'fogg-contact-title' => 'Kontakto',
 	'fogg-contact-help' => 'Ligilo de kontakto',
 	'fogg-missing-webm-support' => 'Bonvolu uzi [$1 WebM-kongrua] retumilo por antaŭvidi rezultojn de WebM-videoj',
-	'fogg-gui-title' => 'Fari TTT-an videon',
-	
-	
+	'fogg-gui-title' => 'Fari TTT-an videon',	
 	'fogg-transcoding' => 'Enĉifrante videon',
 	'fogg-select_file' => 'Elekti dosieron',
 	'fogg-select_new_file' => 'Elekti novan dosieron',
@@ -1287,7 +1247,7 @@ Pli pri <a target="_new" href="http://en.wikipedio.org/wiki/Frame_rate">filmer-r
 	'fogg-hidepreview' => 'Kaŝi antaŭvidon',
 	'fogg-warning-firebug' => '<b>Firebug</b> povas kaŭzi konfliktojn kun <i>Firefogg</i>.
 Bonvolu malŝalti <b>Firebug</b> por ĉi tiu paĝo.',
-	);
+);
 
 /** Spanish (Español)
  * @author Antur
@@ -1386,7 +1346,7 @@ $messages['es'] = array(
 	'fogg-preview' => 'Previsualizar video',
 	'fogg-hidepreview' => 'Esconder previsualización',
 	'fogg-warning-firebug' => '<b>Firebug</b> puede causar conflicto con <i>Firefogg</i>. Por favor desshabilitar <b>Firebug</b> fpara esta página.',
-	);
+);
 
 /** Estonian (Eesti)
  * @author Pikne
@@ -1418,7 +1378,7 @@ Lisateave <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28im
 	'fogg-copyright-help' => 'Klipi autoriõigus',
 	'fogg-license-title' => 'Litsents',
 	'fogg-license-help' => 'Klipi litsents (eelistatavalt üks Creative Commonsi internetiaadress)',
-	);
+);
 
 /** Basque (Euskara)
  * @author An13sa
@@ -1670,7 +1630,7 @@ $messages['fr'] = array(
 	'fogg-preview' => 'Prévisualiser la vidéo',
 	'fogg-hidepreview' => 'Masquer la prévisualisation',
 	'fogg-warning-firebug' => '<b>Firebug</b> peut provoquer des conflits avec <i>Firefogg.</i> veuillez désactiver <b>Firebug</b> pour cette page.',
-	);
+);
 
 /** Franco-Provençal (Arpetan)
  * @author ChrisPtDe
@@ -1743,7 +1703,7 @@ $messages['frp'] = array(
 	'fogg-badtoken' => 'Lo jeton est pas valido',
 	'fogg-preview' => 'Prèvisualisar la vidèô',
 	'fogg-hidepreview' => 'Cachiér la prèvisualisacion',
-	);
+);
 
 /** Galician (Galego)
  * @author Toliño
@@ -1836,7 +1796,7 @@ $messages['gl'] = array(
 	'fogg-preview' => 'Vista previa do vídeo',
 	'fogg-hidepreview' => 'Agochar a vista previa',
 	'fogg-warning-firebug' => 'O <b>Firebug</b> pode provocar conflitos co <i>Firefogg</i>. Desactive o <b>Firebug</b> nesta páxina.',
-	);
+);
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
@@ -1844,7 +1804,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'fogg-title-title' => 'Ἐπιγραφή',
-	);
+);
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
@@ -1938,11 +1898,7 @@ $messages['gsw'] = array(
 	'fogg-preview' => 'Videovorschau',
 	'fogg-hidepreview' => 'Vorschau uusblände',
 	'fogg-warning-firebug' => '<b>Firebug</b> cha Konflikt mit <i>Firefogg</i> verursache. Bitte deaktivier <b>Firebug</b> uf däre Syte.',
-	);
-
-/** Hausa (هَوُسَ) */
-$messages['ha'] = array(
-	);
+);
 
 /** Hebrew (עברית)
  * @author Amire80
@@ -2023,12 +1979,6 @@ $messages['he'] = array(
 	'fogg-contact-help' => 'קישור ליצירת קשר',
 	'fogg-missing-webm-support' => 'נא להשתמש בדפדפן [$1 תואם WebM] לתצוגה מקדימה של סרטי WebM',
 	'fogg-gui-title' => 'ליצור וידאו לרשת',
-	
-	
-	
-	
-	
-	
 	'fogg-transcoding' => 'קידוד הווידאו ל־Ogg',
 	'fogg-select_file' => 'בחירת קובץ',
 	'fogg-select_new_file' => 'בחירת קובץ חדש',
@@ -2050,13 +2000,7 @@ $messages['he'] = array(
 	'fogg-hidepreview' => 'להסתיר תצוגה מקדימה',
 	'fogg-warning-firebug' => '<b>Firebug</b> עלול לגרום להתנגשויות עם <i>Firefogg</i>.
 נא לבטל את <b>Firebug</b> עבור דף זה.',
-	);
-
-/** Hindi (हिन्दी)
- * @author Akansha
- */
-$messages['hi'] = array(
-	);
+);
 
 /** Croatian (Hrvatski)
  * @author Herr Mlinka
@@ -2164,7 +2108,7 @@ $messages['hsb'] = array(
 	'fogg-preview' => 'Přehlad wideja wobhladać',
 	'fogg-hidepreview' => 'Přehlad schować',
 	'fogg-warning-firebug' => '<b>Firebug</b> móže konflikty z <i>Firefogg</i> zawinować. Prošu znjemóžń <b>Firebug</b> za tutu stronu.',
-	);
+);
 
 /** Hungarian (Magyar)
  * @author BáthoryPéter
@@ -2258,7 +2202,7 @@ További információkat <a href="http://en.wikipedia.org/wiki/I-frame">itt</a> 
 	'fogg-preview' => 'Videó előnézete',
 	'fogg-hidepreview' => 'Előnézet elrejtése',
 	'fogg-warning-firebug' => 'A <b>Firebug</b> problémákat okozhat a <i>Firefogg</i>-gal. Tiltsd le a <b>Firebugot</b> ezen a lapon.',
-	);
+);
 
 /** Interlingua (Interlingua)
  * @author McDutchie
@@ -2352,7 +2296,7 @@ $messages['ia'] = array(
 	'fogg-preview' => 'Previsualisar video',
 	'fogg-hidepreview' => 'Celar previsualisation',
 	'fogg-warning-firebug' => '<b>Firebug</b> pote causar conflictos con <i>Firefogg</i>. Per favor disactiva <b>Firebug</b> pro iste pagina.',
-	);
+);
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
@@ -2448,7 +2392,7 @@ $messages['id'] = array(
 	'fogg-preview' => 'Pratilik video',
 	'fogg-hidepreview' => 'Sembunyikan pratilik',
 	'fogg-warning-firebug' => '<b>Firebug</b> dapat menyebabkan konflik dengan <i>Firefogg</i>. Silakan nonaktifkan <b>Firebug</b> untuk halaman ini.',
-	);
+);
 
 /** Igbo (Igbo)
  * @author Ukabia
@@ -2457,7 +2401,7 @@ $messages['ig'] = array(
 	'fogg-novideo-title' => 'Enyónyó-na-jé adíghì',
 	'fogg-title-title' => 'Ishi edemede',
 	'fogg-date-title' => 'Ubochi',
-	);
+);
 
 /** Ido (Ido)
  * @author Malafaya
@@ -2465,7 +2409,7 @@ $messages['ig'] = array(
 $messages['io'] = array(
 	'fogg-title-title' => 'Titulo',
 	'fogg-date-title' => 'Dato',
-	);
+);
 
 /** Italian (Italiano)
  * @author Beta16
@@ -2474,7 +2418,6 @@ $messages['io'] = array(
  * @author Minerva Titani
  */
 $messages['it'] = array(
-	
 	'fogg-preset-custom' => 'Impostazioni personalizzate',
 	'fogg-videoQuality-title' => 'Qualità video',
 	'fogg-audioQuality-title' => 'Qualità audio',
@@ -2587,7 +2530,7 @@ $messages['ja'] = array(
 	'fogg-preview' => 'ビデオをプレビュー',
 	'fogg-hidepreview' => 'プレビューを隠す',
 	'fogg-warning-firebug' => '<b>Firebug</b> は <i>Firefogg</i> とコンフリクトを生じる可能性があります。このページについては <b>Firebug</b> を無効化してください。',
-	);
+);
 
 /** Georgian (ქართული)
  * @author BRUTE
@@ -2632,7 +2575,7 @@ $messages['km'] = array(
 	'fogg-contact-title' => 'ទំនាក់ទំនង​',
 	'fogg-contact-help' => 'តំណភ្ជាប់ទំនាក់ទំនង',
 	'fogg-gui-title' => 'បង្កើតវីដេអូលើវិប',
-	);
+);
 
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
@@ -2641,7 +2584,7 @@ $messages['kn'] = array(
 	'fogg-title-title' => 'ಶೀರ್ಷಿಕೆ',
 	'fogg-date-title' => 'ದಿನಾಂಕ',
 	'fogg-contact-title' => 'ಸಂಪರ್ಕ',
-	);
+);
 
 /** Korean (한국어)
  * @author Gapo
@@ -2729,7 +2672,7 @@ $messages['ksh'] = array(
 	'fogg-hidepreview' => 'Vör-Aansesch verschteische',
 	'fogg-warning-firebug' => 'Der <b><i lang="en">Firebug</i></b> verdräht sesh nit met dem <i lang="en">Firefogg</i>.
 Bes esu joot, un donn der <b><i lang="en">Firebug</i></b> för heh di Sigg ußschallde.',
-	);
+);
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
@@ -2737,7 +2680,7 @@ Bes esu joot, un donn der <b><i lang="en">Firebug</i></b> för heh di Sigg ußsc
 $messages['ku-latn'] = array(
 	'fogg-title-title' => 'Sernav',
 	'fogg-title-help' => 'Sernavekî ji bo klîba te',
-	);
+);
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
@@ -2796,7 +2739,7 @@ $messages['lb'] = array(
 	'fogg-hidepreview' => 'Preview verstoppen',
 	'fogg-warning-firebug' => '<b>Firebug</b> ka Konflikter mat <i>Firefogg</i> ausléisen.
 Schalt w.e.g. <b>Firebug</b> fir dës Säit aus.',
-	);
+);
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
@@ -2819,13 +2762,7 @@ $messages['lv'] = array(
 	'fogg-noaudio-title' => 'Nav audio',
 	'fogg-title-title' => 'Nosaukums',
 	'fogg-title-help' => 'Tava klipa nosaukums',
-	);
-
-/** Malagasy (Malagasy)
- * @author Jagwar
- */
-$messages['mg'] = array(
-	);
+);
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
@@ -2919,7 +2856,7 @@ $messages['mk'] = array(
 	'fogg-preview' => 'Преглед на снимката',
 	'fogg-hidepreview' => 'Скриј преглед',
 	'fogg-warning-firebug' => '<b>Firebug</b> може да предизвика конфликти со <i>Firefogg</i>. Пневозможете го <b>Firebug</b> за оваа страница.',
-	);
+);
 
 /** Malayalam (മലയാളം)
  * @author Junaidpv
@@ -2983,7 +2920,7 @@ $messages['ml'] = array(
 	'fogg-badtoken' => 'ചീട്ട് അസാധുവാണ്',
 	'fogg-preview' => 'വീഡിയോയുടെ പ്രിവ്യൂ',
 	'fogg-hidepreview' => 'പ്രിവ്യൂ മറയ്ക്കുക',
-	);
+);
 
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
@@ -3094,7 +3031,7 @@ $messages['nl'] = array(
 	'fogg-preview' => 'Voorvertoning bekijken',
 	'fogg-hidepreview' => 'Voorvertoning verbergen',
 	'fogg-warning-firebug' => '<b>Firebug</b> kan conflicteren met <i>Firefogg</i>. Schakel <b>Firebug</b> uit voor deze pagina.',
-	);
+);
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Nghtwlkr
@@ -3200,13 +3137,6 @@ Mer om <a href="http://en.wikipedia.org/wiki/Video_denoising">avstøying</a>.',
 	'fogg-contact-help' => 'Kontaktlenke',
 	'fogg-missing-webm-support' => 'Bruk en [$1 WebM-kompatibel] nettleser for å forhåndsvise resultatene av WebM-videoer',
 	'fogg-gui-title' => 'Lag web-video',
-	
-	
-	
-	
-	
-	
-	
 	'fogg-transcoding' => 'Koding av video',
 	'fogg-select_file' => 'Velg fil',
 	'fogg-select_new_file' => 'Velg ny fil',
@@ -3228,7 +3158,7 @@ Mer om <a href="http://en.wikipedia.org/wiki/Video_denoising">avstøying</a>.',
 	'fogg-hidepreview' => 'Skjul forhåndsvisning',
 	'fogg-warning-firebug' => '<b>Firebug</b> kan føre til konflikter med <i>Firefogg</i>.
 Slå av <b>Firebug</b> for denne siden.',
-	);
+);
 
 /** Occitan (Occitan)
  * @author Cedric31
@@ -3310,7 +3240,7 @@ $messages['oc'] = array(
 	'fogg-badtoken' => 'Lo geton es pas valid',
 	'fogg-preview' => 'Previsualizar la vidèo',
 	'fogg-hidepreview' => 'Amagar la previsualizacion',
-	);
+);
 
 /** Deitsch (Deitsch)
  * @author Xqt
@@ -3318,7 +3248,7 @@ $messages['oc'] = array(
 $messages['pdc'] = array(
 	'fogg-title-title' => 'Titel',
 	'fogg-copyright-title' => 'Copyright',
-	);
+);
 
 /** Polish (Polski)
  * @author Sp5uhe
@@ -3411,7 +3341,7 @@ $messages['pl'] = array(
 	'fogg-preview' => 'Podgląd filmu',
 	'fogg-hidepreview' => 'Ukryj podgląd',
 	'fogg-warning-firebug' => '<b>Firebug</b> może powodować konflikty z <i>Firefogg</i>. Wyłącz <b>Firebug</b> dla tej strony.',
-	);
+);
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
@@ -3505,7 +3435,7 @@ $messages['pms'] = array(
 	'fogg-preview' => 'Preuva dël filmà',
 	'fogg-hidepreview' => 'Stërmé la previsualisassion',
 	'fogg-warning-firebug' => "<b>Firebug</b> a peul causé dij conflit con <i>Firefogg</i>. Për piasì, ch'a disabìlita <b>Firebug</b> për sta pàgina.",
-	);
+);
 
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
@@ -3617,7 +3547,7 @@ $messages['pt'] = array(
 	'fogg-preview' => 'Antever vídeo',
 	'fogg-hidepreview' => 'Esconder a antevisão',
 	'fogg-warning-firebug' => 'O <b>Firebug</b> pode originar conflitos com o <i>Firefogg</i>. Desactive o <b>Firebug</b> para esta página.',
-	);
+);
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
@@ -3700,8 +3630,6 @@ Mais informações sobre <a href="http://en.wikipedia.org/wiki/Video_denoising">
 	'fogg-contact-help' => 'Link de contato',
 	'fogg-missing-webm-support' => 'Para previsualizar o resultado de vídeos WebM, use navegadores [$1 compatíveis com WebM], por favor',
 	'fogg-gui-title' => 'Crie um vídeo para a internet',
-	
-	
 	'fogg-transcoding' => 'Codificar vídeo ao formato Ogg',
 	'fogg-select_file' => 'Selecionar arquivo',
 	'fogg-select_new_file' => 'Selecionar novo arquivo',
@@ -3723,7 +3651,7 @@ Mais informações sobre <a href="http://en.wikipedia.org/wiki/Video_denoising">
 	'fogg-hidepreview' => 'Esconder a previsualização',
 	'fogg-warning-firebug' => '<b>Firebug</b> pode causar conflito com <i>Firefogg</i>.
 Por favor, desabilite o <b>Firebug</b> para esta página.',
-	);
+);
 
 /** Romanian (Română)
  * @author Firilacroco
@@ -3766,8 +3694,6 @@ Mai multe despre <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_rati
 	'fogg-license-help' => 'Licenţa clipului (de preferinţă una Creative Commons URL).',
 	'fogg-contact-title' => 'Contactează',
 	'fogg-contact-help' => 'Legătură de contact',
-	
-	
 	'fogg-select_file' => 'Selectează fișier',
 	'fogg-select_new_file' => 'Selectaţi fişier nou',
 	'fogg-select_url' => 'Selectaţi URL-ul',
@@ -3857,17 +3783,14 @@ Cchiù \'mbormazziune sus <a href="http://en.wikipedia.org/wiki/Video_denoising"
 	'fogg-contact-help' => 'Link de condatte',
 	'fogg-missing-webm-support' => "Se preghe de ausà 'nu [$1 WebM browser] combatibbele pè le resultate n'andeprime de WebM videos",
 	'fogg-gui-title' => "Fàce 'nu video web",
-	
-	
 	'Na vote combletate 'u carecamènde, $2",
-	
 	<p>Tène abbesògne de trasè?</p>
 <p>Jè permesse carecà da url 'nu set de autorizzazione?
 'A wiki tène $1 abbilitate?</p>",
 	'fogg-select_file' => "Scacchie 'u file",
 	'fogg-select_new_file' => "Scacchie 'u file nuève",
 	'fogg-select_url' => "Scacchie 'a URL",
-	);
+);
 
 /** Russian (Русский)
  * @author Ferrer
@@ -3964,13 +3887,7 @@ $messages['ru'] = array(
 	'fogg-preview' => 'Предпросмотр видео',
 	'fogg-hidepreview' => 'Скрыть предпросмотр',
 	'fogg-warning-firebug' => '<b>Firebug</b> может вызвать конфликты с <i>Firefogg</i> .Пожалуйста, отключите <b>Firebug</b> для этой страницы.',
-	);
-
-/** Rusyn (Русиньскый)
- * @author Gazeb
- */
-$messages['rue'] = array(
-	);
+);
 
 /** Sicilian (Sicilianu)
  * @author Aushulz
@@ -3978,7 +3895,7 @@ $messages['rue'] = array(
 $messages['scn'] = array(
 	'fogg-title-title' => 'Tìtulu',
 	'fogg-license-title' => 'Licenza',
-	);
+);
 
 /** Sinhala (සිංහල)
  * @author Pasanbhathiya2
@@ -4082,12 +3999,6 @@ Poznámka: Väčšina kodekov vynucuje kľúčové snímky, ak je rozdiel medzi 
 	'fogg-contact-help' => 'Odkaz na kontakt',
 	'fogg-missing-webm-support' => 'Prosím, použite prehliadač [kompatibilný s $1 WebM] na zobrazenie ako bude vyzerať výsledné video WebM',
 	'fogg-gui-title' => 'Vytvoriť webové video',
-	
-	
-	
-	
-	
-	
 	'fogg-transcoding' => 'Prebieha prekódovanie videosúboru do Ogg',
 	'fogg-select_file' => 'Vybrať súbor',
 	'fogg-select_new_file' => 'Vybrať nový súbor',
@@ -4108,7 +4019,7 @@ Poznámka: Väčšina kodekov vynucuje kľúčové snímky, ak je rozdiel medzi 
 	'fogg-hidepreview' => 'Skryť náhľad',
 	'fogg-warning-firebug' => '<b>Firebug</b> môže spôsobiť konflikty s <i>Firefogg</i>.
 Prosím, vypnite pre túto stránku <b>Firebug</b>.',
-	);
+);
 
 /** Slovenian (Slovenščina)
  * @author Dbc334
@@ -4164,7 +4075,7 @@ $messages['sl'] = array(
 	'fogg-badtoken' => 'Žeton ni veljaven',
 	'fogg-preview' => 'Predogled videa',
 	'fogg-hidepreview' => 'Skrij predogled',
-	);
+);
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
@@ -4238,7 +4149,7 @@ $messages['sr-el'] = array(
 	'fogg-license-title' => 'Licenca',
 	'fogg-contact-title' => 'Kontakt',
 	'fogg-contact-help' => 'Kontakt-link',
-	);
+);
 
 /** Swedish (Svenska)
  * @author Ainali
@@ -4323,12 +4234,6 @@ Mer om <a href="http://en.wikipedia.org/wiki/Video_denoising">avbrusning</a>.',
 	'fogg-contact-help' => 'Kontaktlänk',
 	'fogg-missing-webm-support' => 'Använd en [$1 WebM kompatibel] webbläsare för att förhandsgranska resultatet av WebM videor',
 	'fogg-gui-title' => 'Gör webbvideo',
-	
-	
-	
-	
-	
-	
 	'fogg-transcoding' => 'Kodar om videon till Ogg...',
 	'fogg-select_file' => 'Välj fil',
 	'fogg-select_new_file' => 'Välj ny fil',
@@ -4349,7 +4254,7 @@ Mer om <a href="http://en.wikipedia.org/wiki/Video_denoising">avbrusning</a>.',
 	'fogg-hidepreview' => 'Göm förhandsgranskning',
 	'fogg-warning-firebug' => '<b>Firebug</b> kan orsaka konflikter med <i>Firefogg.</i> 
  Inaktivera <b>Firebug</b> för den här sidan.',
-	);
+);
 
 /** Tamil (தமிழ்)
  * @author TRYPPN
@@ -4367,7 +4272,7 @@ $messages['ta'] = array(
 	'fogg-select_file' => 'கோப்பைத் தேர்ந்தெடுக்கவும்',
 	'fogg-select_new_file' => 'புதிய கோப்பைத் தேர்ந்தெடுக்கவும்',
 	'fogg-hidepreview' => 'முன்தோற்றத்தை மறைக்கவும்',
-	);
+);
 
 /** Telugu (తెలుగు)
  * @author Veeven
@@ -4387,7 +4292,7 @@ $messages['te'] = array(
 	'fogg-license-title' => 'లైసెన్సు',
 	'fogg-contact-title' => 'సంప్రదింపులు',
 	'fogg-contact-help' => 'సంప్రదించు లంకె',
-	);
+);
 
 /** Thai (ไทย)
  * @author Woraponboonkerd
@@ -4443,12 +4348,6 @@ $messages['th'] = array(
 	'fogg-missing-webm-support' => 'โปรดใช้เบราว์เซอร์ที่ [$1 เข้ากันได้กับ WebM] เพื่อชมผลลัพธ์ที่ภาพตัวอย่างของวิดีโอ WebM',
 	'fogg-gui-title' => 'ทำเป็นเว็บวิดีโอ',
 );
-
-/** Turkmen (Türkmençe)
- * @author Hanberke
- */
-$messages['tk'] = array(
-	);
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
@@ -4533,7 +4432,7 @@ $messages['tl'] = array(
 	'fogg-badtoken' => 'Hindi tanggap ang token',
 	'fogg-preview' => 'Paunang tingnan ang bidyo',
 	'fogg-hidepreview' => 'Itago ang paunang tanaw',
-	);
+);
 
 /** Turkish (Türkçe)
  * @author CnkALTDS
@@ -4610,8 +4509,6 @@ $messages['tr'] = array(
 	'fogg-contact-help' => 'İletişim bağlantısı',
 	'fogg-missing-webm-support' => 'WebM videoları sonuçlarını önizlemek için lütfen [$1 WebM uyumlu] bir tarayıcı kullanın',
 	'fogg-gui-title' => 'Web videosu yapın',
-	
-	
 	'fogg-transcoding' => "Video Ogg'a kodlanıyor",
 	'fogg-select_file' => 'Dosyayı seç',
 	'fogg-select_new_file' => 'Yeni dosyayı seç',
@@ -4632,7 +4529,7 @@ $messages['tr'] = array(
 	'fogg-hidepreview' => 'Önizlemeyi gizle',
 	'fogg-warning-firebug' => "<b>Firebug</b>, <i>Firefogg</i> ile çakışmaya yol açabilir.
 Lütfen bu sayfa için <b>Firebug</b>'ı devre dışı bırakın.",
-	);
+);
 
 /** Ukrainian (Українська)
  * @author Hypers
@@ -4727,7 +4624,7 @@ $messages['uk'] = array(
 	'fogg-preview' => 'Попередній перегляд відео',
 	'fogg-hidepreview' => 'Сховати попередній перегляд',
 	'fogg-warning-firebug' => '<b>Firebug</b> може викликати конфлікти з <i>Firefogg</i>. Будь ласка, вимкніть <b>Firebug</b> для цієї сторінки.',
-	);
+);
 
 /** Vèneto (Vèneto)
  * @author Candalua
@@ -4766,7 +4663,7 @@ $messages['vec'] = array(
 	'fogg-badtoken' => 'Token mia valido',
 	'fogg-preview' => 'Anteprima del video',
 	'fogg-hidepreview' => 'Scondi anteprima',
-	);
+);
 
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
@@ -4820,13 +4717,7 @@ $messages['vi'] = array(
 	'fogg-preview' => 'Xem trước video',
 	'fogg-hidepreview' => 'Ẩn phần xem trước',
 	'fogg-warning-firebug' => '<b>Firebug</b> có thể xung đột với <i>Firefogg<i>. Xin hãy vô hiệu hóa <b>Firebug</b> trên trang này.',
-	);
-
-/** Volapük (Volapük)
- * @author Malafaya
- */
-$messages['vo'] = array(
-	);
+);
 
 /** Yiddish (ייִדיש)
  * @author פוילישער
@@ -4834,7 +4725,7 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'fogg-copyright-title' => 'קאפירעכט',
 	'fogg-license-title' => 'ליצענץ',
-	);
+);
 
 /** Yoruba (Yorùbá)
  * @author Demmy
@@ -4848,7 +4739,7 @@ $messages['yo'] = array(
 	'fogg-select_new_file' => 'Ẹ yan fáìlì tuntun',
 	'fogg-select_url' => 'Ẹ yan URL',
 	'fogg-latest-firefox' => 'Firefox tuntun',
-	);
+);
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chinalace
@@ -4929,12 +4820,6 @@ $messages['zh-hans'] = array(
 	'fogg-contact-help' => '联系人链接',
 	'fogg-missing-webm-support' => '请使用 [$1 WebM 兼容] 的浏览器预览WebM视频',
 	'fogg-gui-title' => '制作网页视频',
-	
-	
-	
-	
-	
-	
 	'fogg-transcoding' => '解码视频',
 	'fogg-select_file' => '选择文件',
 	'fogg-select_new_file' => '选择新文件',
@@ -4956,7 +4841,7 @@ $messages['zh-hans'] = array(
 	'fogg-hidepreview' => '隐藏预览',
 	'fogg-warning-firebug' => '<b>Firebug</b>可能与<i>Firefogg</i>发生冲突。
 请在本页禁用<b>Firebug</b>。',
-	);
+);
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
@@ -5000,7 +4885,6 @@ $messages['zh-hant'] = array(
 	'fogg-copyright-title' => '版權',
 	'fogg-license-title' => '授權',
 	'fogg-gui-title' => '製作網頁影片',
-	
 	'fogg-select_file' => '選擇檔案',
 	'fogg-select_new_file' => '選擇新的檔案',
 	'fogg-select_url' => '選擇URL',
