@@ -21,11 +21,14 @@
 	white-space:nowrap;
 }
 .mw-book-navigation .mw-index{
-	padding:0 5em;
+	padding:0 8px;
 }
 .mw-book-navigation .mw-prev a{
 	background:url("images/18px-1leftarrow.png") no-repeat scroll left center transparent;
-	padding:0 0 0 20px;
+	padding: 0 0 0 20px;
+}
+.mw-book-navigation .mw-prev{
+	padding: 0 50px 0 0;
 }
 .mw-book-navigation .mw-index a{
 	background:url("images/18px-1uparrow.png") no-repeat scroll left center transparent;
@@ -33,5 +36,8 @@
 }
 .mw-book-navigation .mw-next a{
 	background:url("images/18px-1rightarrow.png") no-repeat scroll right center transparent;
-	padding:0 20px 0 0;
+	padding:0  20px 0 0;
+}
+.mw-book-navigation .mw-next{
+	padding:0  0 0 50px;
 }

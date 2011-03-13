@@ -1,7 +1,7 @@
 <?php
 /**** All the BookManager Variables Functions ****/
 class BookManagerFunctions {
-	const VERSION = "0.1.6";
+	const VERSION = "0.1.6 ";
 
 	static function register( ) {
 		global $wgParser;
@@ -213,7 +213,6 @@ class BookManagerFunctions {
 		return wfEscapeWikiText( $otherpagetitle->getText() );
 	}
 
-
 /**** All the BookManager values functions ****/
 
 
@@ -294,37 +293,37 @@ class BookManagerFunctions {
 */
 
 	static function addText( &$out, &$text ) {
-		global $wgTitle, $wgParser, $wgBookManagerNamespaces;
+		global $wgTitle, $wgParser, $wgBookManagerNamespaces, $wgBookManagerNavbar;
 		$ns = $wgTitle->getNamespace();
 		$opt = array(
 			'parseinline',
 		);
 		$currenttitletext = $wgTitle->getText();
 		$prev = self::pageText( $wgParser, $currenttitletext, - 1 );
-		$base = Title::newFromText( $currenttitletext )->getBaseText();
+		$base = Title::newFromText($currenttitletext)->getBaseText();
 		$next = self::pageText( $wgParser, $currenttitletext, + 1 );
 		$prevtext = ( $prev !== '' ) ? Title::newFromText( $prev )->getSubpageText(): '' ; 
-		$basetext = ( $base !== '' ) ? Title::newFromText( $base )->getSubpageText(): '' ;
+		$basetext = Title::newFromText( $base )->getSubpageText();
 		$nexttext = ( $next !== '' ) ? Title::newFromText( $next )->getSubpageText(): '' ; 
 		$prevlink = ( $prev !== '' ) ? Title::newFromText( $prev )->getLocalURL(): '' ;
-		$baselink = ( $base !== '' ) ? Title::newFromText( $base )->getLocalURL(): '' ; 
+		$baselink = Title::newFromText( $base )->getLocalURL();
 		$nextlink = ( $next !== '' ) ? Title::newFromText( $next )->getLocalURL(): '' ; 
 		$bar  = Xml::openElement('ul',array('class'=>'mw-book-navigation') );	
-		$bar .= Xml::openElement('li',array('class'=>'mw-prev') );
-		$bar .= Xml::element('a',array('href'=>$prevlink,'title'=>$prev ),$prevtext);
-		$bar .= Xml::closeElement('li');
+		$bar .= ( $prev !== '' ) ? Xml::openElement('li',array('class'=>'mw-prev') ): '' ;
+		$bar .= ( $prev !== '' ) ? Xml::element('a',array('href'=>$prevlink,'title'=>$prev ),$prevtext): '' ;
+		$bar .= ( $prev !== '' ) ? Xml::closeElement('li'): '' ;
 		$bar .= Xml::openElement('li',array('class'=>'mw-index') );
 		$bar .= Xml::element('a',array('href'=>$baselink,'title'=>$base ),$basetext);
 		$bar .= Xml::closeElement('li');
-		$bar .= Xml::openElement('li',array('class'=>'mw-next') );
-		$bar .= Xml::element('a',array('href'=>$nextlink,'title'=>$next ),$nexttext);
-		$bar .= Xml::closeElement('li');
+		$bar .= ( $next !== '' ) ? Xml::openElement('li',array('class'=>'mw-next') ): '' ;
+		$bar .= ( $next !== '' ) ? Xml::element('a',array('href'=>$nextlink,'title'=>$next ),$nexttext): '' ;
+		$bar .= ( $next !== '' ) ? Xml::closeElement('li'): '' ;
 		$bar .= Xml::closeElement('ul');
 	
 		#adds system messages or html
-		if ( in_array($ns,$wgBookManagerNamespaces) && self::isViewAction() ) {
-		 	$BookManager = wfMsgExt( "BookManager", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
-			$BookManagerTop = wfMsgExt( "BookManager-top", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
+		if ( $wgBookManagerNavbar  && in_array($ns,$wgBookManagerNamespaces) && self::isViewAction() && $prev !== '' || $next !== '' ) {
+		 	$BookManager = wfMsgExt( "BookManager", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext);
+			$BookManagerTop = wfMsgExt( "BookManager-top", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext  );
 			$BookManagerBottom = wfMsgExt( "BookManager-bottom", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
 			if ( !wfEmptyMsg( "BookManager-top", $BookManagerTop ) ) {
 				$text = "<div>$BookManagerTop</div>\n$text";
@@ -351,9 +350,8 @@ class BookManagerFunctions {
 	}
 	#adds CSS and JS to navigation bar 
 	static function injectStyleAndJS( &$out, &$sk ) {
-		global $wgOut;
-		$wgOut->addModuleStyles('ext.BookManager'); 
-		$wgOut->addModules( 'ext.BookManager'); 
+		$out->addModuleStyles('ext.BookManager'); 
+		$out->addModules( 'ext.BookManager'); 
 		return true;
 	}
 }

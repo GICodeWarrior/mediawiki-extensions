@@ -36,7 +36,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 $dir = dirname( __FILE__ ); 
-
 $wgAutoloadClasses['BookManagerFunctions'] = $dir . '/BookManager.body.php';
 
 /**** extension basics ****/
@@ -57,7 +56,8 @@ $wgResourceModules['ext.BookManager'] = array(
 	'localBasePath'	=> $dir,
 	'remoteExtPath'	=> 'BookManager'
 );
-$wgBookManagerNamespaces = array( NS_MAIN ); 		
+$wgBookManagerNamespaces = array( NS_MAIN ); 
+$wgBookManagerNavbar = true;		
 /* Copyied from extensions/Collection/Collection.php */
 /** Namespace for "community books" */
 $wgCommunityCollectionNamespace = NS_PROJECT;
