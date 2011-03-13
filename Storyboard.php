@@ -70,7 +70,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efStoryboardSchemaUpdate';
 // as they should, since they are only getting called for content pages. There is no
 // good reason why they are not called on special pages, sho this should be changed in core.
 $wgHooks['SkinTemplateTabs'][] = 'efStoryboardAddStoryEditAction';
-$wgHooks['SkinTemplateNavigation'][] = 'efStoryboardAddStoryEditActionVector';
+$wgHooks['SkinTemplateNavigation::SpecialPage'][] = 'efStoryboardAddStoryEditActionVector';
 
 
 /**
@@ -125,15 +125,16 @@ function efStoryboardAddStoryEditActionVector( &$sktemplate, &$links ) {
 }
 
 function efStoryboardAddStoryEditAction( &$sktemplate, &$content_actions ) {
-	global $wgRequest, $wgRequest, $wgTitle;
+	global $wgRequest;
 
 	$action = $wgRequest->getText( 'action' );
+	$title = $sktemplate->getTitle();
 
-	if ( $wgTitle->equals( SpecialPage::getTitleFor( 'story' ) ) ) {
+	if ( $title->isSpecial( 'Story' ) ) {
 		$content_actions['edit'] = array(
 			'class' => $action == 'edit' ? 'selected' : false,
 			'text' => wfMsg( 'edit' ),
-			'href' => $wgTitle->getLocalUrl( 'action=edit' )
+			'href' => $title->getLocalUrl( 'action=edit' )
 		);
 	}
 
