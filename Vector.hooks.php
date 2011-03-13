@@ -174,4 +174,17 @@ class VectorHooks {
 		}
 		return true;
 	}
+	
+	public static function makeGlobalVariablesScript( &$vars ) {
+		global $wgVectorFeatures;
+		
+		// Build and export old-style wgVectorEnabledModules object for back compat
+		$enabledModules = array();
+		foreach ( self::$features as $name => $feature ) {
+			$enabledModules[$name] = self::isEnabled( $name );
+		}
+		
+		$vars['wgVectorEnabledModules'] = $enabledModules;
+		return true;
+	}
 }
