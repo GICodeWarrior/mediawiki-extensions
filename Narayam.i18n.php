@@ -149,9 +149,12 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Coyau
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'narayam-desc' => "Permet d'ajouter des méthodes de saisie personnalisés pour les champs de saisie",
+	'narayam-toggle-ime' => 'Pour basculer la méthode de saisie ($1)',
+	'narayam-help-page' => 'Aide: Saisie au clavier',
 );
 
 /** Hebrew (עברית)
@@ -423,6 +426,8 @@ $messages['te'] = array(
 	'narayam-kn-inscript' => 'కన్నడ ఇన్‌స్క్రిప్ట్',
 	'narayam-ml' => 'మలయాళం లిప్యంతరీకరణ',
 	'narayam-ml-inscript' => 'మలయాళం ఇన్‌స్క్రిప్ట్',
+	'narayam-or' => 'ఒరియా లిప్యంతరీకరణ',
+	'narayam-or-inscript' => 'ఒరియా ఇన్‌స్క్రిప్ట్',
 	'narayam-sa' => 'సంస్కృతం లిప్యంతరీకరణ',
 	'narayam-sa-inscript' => 'సంస్కృతం ఇన్‌స్క్రిప్ట్',
 	'narayam-ta99' => 'తమిళం99',
