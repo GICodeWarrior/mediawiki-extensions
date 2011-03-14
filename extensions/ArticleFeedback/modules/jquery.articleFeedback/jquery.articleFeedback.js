@@ -371,7 +371,7 @@ $.articleFeedback = {
 				// Activate tooltips
 				.find( '[title]' )
 					.tipsy( {
-						'gravity': 'se',
+						'gravity': 'sw',
 						'center': false,
 						'fade': true,
 						'delayIn': 300,
