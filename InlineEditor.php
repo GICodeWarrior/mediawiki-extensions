@@ -77,6 +77,7 @@ $wgResourceModules += array(
 		'dependencies' => array(
 			'jquery.color',
 			'mediawiki.util',
+			'jquery.json',
 		),
 	),
 	'jquery.inlineEditor.editors.basic' => $inlineEditorTpl + array(
@@ -98,5 +99,8 @@ $wgResourceModules += array(
 	),
 	'jquery.elastic' => $inlineEditorTpl + array(
 		'scripts'      => 'jquery.elastic.js',
+	),
+	'jquery.json' => $inlineEditorTpl + array(
+		'scripts'      => 'jquery.json.js',
 	),
 );

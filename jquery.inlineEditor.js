@@ -39,7 +39,7 @@
 				'lastEdit': { 'id': id, 'text': text }
 		};
 		
-		var args = [ JSON.stringify( data ), wgPageName ];
+		var args = [ $.toJSON( data ), wgPageName ];
 		sajax_request_type = 'POST';
 		sajax_do_call( 'InlineEditor::ajaxPreview', args, $.inlineEditor.addNewState );
 	},
@@ -48,7 +48,7 @@
 	 * Adds a new state from an AJAX request.
 	 */
 	addNewState: function( request ) {
-		var state = JSON.parse( request.responseText );
+		var state = $.parseJSON( request.responseText );
 		
 		// restore the html to the current state, instantly remove the lastEdit,
 		// and then add the new html
@@ -180,7 +180,7 @@
 		var data = {
 				'object': $.inlineEditor.states[$.inlineEditor.currentState].object
 		};
-		var json = JSON.stringify( data );
+		var json = $.toJSON( data );
 		
 		// set and send the form
 		$( '#json' ).val( json );
