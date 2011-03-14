@@ -313,6 +313,9 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'activestrategy' => 'Aktive Shtratejih',
+	'active-strategy-desc' => 'Zeish de Aanzahl Änderonge aan Sigge för de shtrateejesche Planung.',
+	'active-strategy-intro' => 'De Aanzahl aan Änderonge aan de Sigge vun Ärbeitsjroppe {{PLURAL:$1|vum lätzde Daach|en de lätzde $1 Dääsch|hück}}.',
 	'nedits' => '{{PLURAL:$1|Ein Änderung|$1 Änderunge|Nix jedonn}}',
 );
 
