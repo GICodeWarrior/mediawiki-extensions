@@ -382,7 +382,21 @@ $messages['kn'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'massblank' => 'Sigge ang Mass läddesch maache',
+	'massblank-desc' => 'Määd et müjjelesch, dat Wiki_Köbesse [[Special:MassBlank|Sigge ang Mass läddesch maache]] künne.',
+	'massblank-nopages' => 'Mer han kein neu Sigge {{GENDER:$1|vum|vum|vum Metmaacher|vun dä|vum}} [[Special:Contributions/$1|$1]] en de {{lcfirst:{{int:Recentchanges}}}}.',
+	'massblank-list' => 'Hee di Sigge sen {{GENDER:$1|vum|vum|vum Metmaacher|vun dä|vum}} [[Special:Contributions/$1|$1]] neu aanjelaat woode.
+Jiff enne Jrond för et läddesch Maache aan, un donn dann der Knopp doför klecke.',
+	'massblank-defaultreason' => 'Sigge ang Mass läddesch maache, di {{GENDER:$1|vum|vum|vum Metmaacher|vun dä|vum}} $1 aanjelaat woode sen',
+	'massblank-tools' => 'Di Sigg hee hellef Der, angmaß Sigge läddesch ze maache,
+di ene bestemmpte enjeloggte udder namelose Metmaacher
+köözlesch aanjalaat hät.
+Jif dä Metmaacher-Name udder de <i lang="en">IP</i>-Address fun däm Naameloose aan,
+öm en Leß met Sigge för läddesch ze maache ze krijje.',
+	'massblank-submit-user' => 'Lohß Jonn!',
+	'massblank-submit-blank' => 'Donn de ußjewählte Sigge läddesch maache',
 	'massblank-blankcomment' => 'Jrond:',
+	'right-massblank' => 'Sigge ang Mass läddesch maache',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
