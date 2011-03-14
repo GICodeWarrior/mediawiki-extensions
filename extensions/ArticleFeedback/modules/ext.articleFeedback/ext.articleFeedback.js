@@ -231,7 +231,7 @@ var config = {
 						'title': 'Special:UserLogin',
 						'type': 'signup',
 						'returnto': mediaWiki.config.get( 'wgPageName' )
-					}, 'pitch-join-signup' );
+					} ), 'pitch-join-signup' );
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',
@@ -250,7 +250,7 @@ var config = {
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': 'Special:UserLogin',
 						'returnto': mediaWiki.config.get( 'wgPageName' )
-					}, 'pitch-join-login' );
+					} ), 'pitch-join-login' );
 				return false;
 			}
 		},
@@ -278,7 +278,7 @@ var config = {
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': mediaWiki.config.get( 'wgPageName' ),
 						'action': 'edit'
-					}, 'pitch-edit' );
+					} ), 'pitch-edit' );
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',
