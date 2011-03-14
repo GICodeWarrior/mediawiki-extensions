@@ -1162,7 +1162,7 @@ Mer kann jetz dat [{{fullurl:{{#Special:SignDocument}}|doc=$2}} Ungerschriive oc
 $messages['ku-latn'] = array(
 	'createsigndoc-pagename' => 'Rûpel:',
 	'createsigndoc-extaddress' => 'Bajarr, dewlet, welat:',
-	'createsigndoc-bday' => 'Rojbûn:',
+	'createsigndoc-bday' => 'Jidayîkbûn:',
 );
 
 /** Cornish (Kernowek)
