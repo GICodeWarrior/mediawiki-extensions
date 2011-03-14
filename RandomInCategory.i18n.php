@@ -602,7 +602,7 @@ $messages['ksh'] = array(
 	'randomincategory-toolbox' => '{{int:randompage}} en de Saachjrupp',
 	'randomincategory-nocategory' => 'De Saachjrupp „$1“ jidd_et nit, udder_et sin_er kei Sigge dren',
 	'randomincategory-label' => 'Saachjrupp:',
-	'randomincategory-submit' => 'Loß Jonn!',
+	'randomincategory-submit' => 'Lohß Jonn!',
 );
 
 /** Cornish (Kernowek)
