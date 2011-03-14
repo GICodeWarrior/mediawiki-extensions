@@ -67,9 +67,11 @@ $messages['be'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'addmediawizard-desc' => 'Майстар даданьня мэдыя, распрацаваны ў супрацоўніцтве Kaltura і фундацыі «Вікімэдыя»',
+	'addmediawizard-loading' => 'Загрузка майстра даданьня файлаў',
 );
 
 /** Bulgarian (Български)
@@ -84,6 +86,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'addmediawizard-desc' => 'Ouzhpennañ un ameiler evit ar mediaoù, diorroet e kenlabour gant Kaltura ha Diazezadur Wikimedia',
+	'addmediawizard-loading' => 'O kargañ ar skoazeller ouzhpennañ restroù media',
 );
 
 /** Bosnian (Bosanski)
@@ -166,10 +169,11 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Reza1615
  */
 $messages['fa'] = array(
-	'addmediawizard-desc' => 'افزودن سهل آموز رسانه توسعه همکاری  کالتورا و بنیاد ویکی مدیا',
+	'addmediawizard-desc' => 'افزودن جادوگر رسانه، محصول همکاری  کالتورا و بنیاد ویکی مدیا',
 );
 
 /** Finnish (Suomi)
@@ -180,10 +184,12 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Peter17
  */
 $messages['fr'] = array(
 	'addmediawizard-desc' => 'Ajouter un assistant pour les média, développé dans un partenariat entre Kaltura et la Wikimedia Foundation',
+	'addmediawizard-loading' => "Chargement de l'assistant d'ajout de média",
 );
 
 /** Scottish Gaelic (Gàidhlig)
@@ -235,6 +241,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'addmediawizard-desc' => 'Medijowy asistent přidać, wuwity w zhromadnym dźěle wot Kaltury a załožby Wikimedia Foundation',
+	'addmediawizard-loading' => 'Zacituje so asistent za přidaće medijow',
 );
 
 /** Hungarian (Magyar)
@@ -314,6 +321,7 @@ $messages['koi'] = array(
  */
 $messages['ksh'] = array(
 	'addmediawizard-desc' => 'Donn dä Assistänt för Medije en et Wiki eren, dä zosamme vun Kaltura und de Mediawiki Shteftong äntweckelt woode es.',
+	'addmediawizard-loading' => 'Ben dä Assistänt för Medije aam laade.',
 );
 
 /** Kirghiz (Кыргызча)
@@ -371,6 +379,7 @@ $messages['mg'] = array(
  */
 $messages['mk'] = array(
 	'addmediawizard-desc' => 'Помошник за додавање мултимедијални содржини, изработен од Kaltura во соработка со Фондацијата Викимедија.',
+	'addmediawizard-loading' => 'Го вчитувам помошникот за додавање податотеки',
 );
 
 /** Malayalam (മലയാളം)
@@ -432,9 +441,11 @@ $messages['pap'] = array(
 
 /** Polish (Polski)
  * @author Marcin Łukasz Kiejzik
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'addmediawizard-desc' => 'Kreator dodawania mediów, opracowany wspólnie przez Kalturę i Fundację Wikimedia',
+	'addmediawizard-loading' => 'Ładowanie kreatora dodawania mediów',
 );
 
 /** Piedmontese (Piemontèis)

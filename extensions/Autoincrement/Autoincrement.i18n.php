@@ -119,10 +119,11 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Reza1615
  */
 $messages['fa'] = array(
-	'autoincrement-desc' => 'یک قلاب متغیر است که متغیر افزاینده<nowiki>{{AUTOINCREMENT}}</nowiki>اضافه می کند',
+	'autoincrement-desc' => 'یک قلاب متغیر است که متغیر افزاینده <nowiki>{{AUTOINCREMENT}}</nowiki> را اضافه می‌کند',
 );
 
 /** Finnish (Suomi)

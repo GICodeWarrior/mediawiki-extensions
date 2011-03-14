@@ -21,11 +21,25 @@ $messages['en'] = array(
 	'arrayext-desc' => 'Store and compute named arrays',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'arrayext-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
 	'arrayext-desc' => 'Захаваньне і вылічэньне масіваў з назвамі',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'arrayext-desc' => 'Enrollañ ha plediñ gant an taolennoù anvet',
 );
 
 /** Bosnian (Bosanski)
@@ -49,6 +63,13 @@ $messages['fr'] = array(
 	'arrayext-desc' => 'Enregistrer et traiter les tableaux nommés',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'arrayext-desc' => 'אחסון וחישוב של מערכים בעלי שמות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -61,6 +82,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'arrayext-desc' => 'Immagazinar e computar arrays nominate',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'arrayext-desc' => 'Felder met Name berääschne un faßhallde.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -82,6 +110,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'arrayext-desc' => 'Benoemde verzamelingen opslaan en berekenen',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'arrayext-desc' => 'Przechowywanie i przeliczanie nazwanych tabel',
 );
 
 /** Piedmontese (Piemontèis)

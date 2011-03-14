@@ -300,12 +300,13 @@ $messages['ext'] = array(
 
 /** Persian (فارسی)
  * @author BlueDevil
+ * @author Huji
  * @author Reza1615
  */
 $messages['fa'] = array(
 	'backforth-next' => ' بعدی ($1)',
-	'backandforth-desc' => 'لینک صفحه بندی الفبایی "بعدی" و "قبلی" به بالای صفحه می افزاید',
-	'backforth-prev' => ' قبلی($1)',
+	'backandforth-desc' => 'پیوندهای صفحه‌بندی الفبایی «بعدی» و «قبلی» را به بالای صفحه می‌افزاید',
+	'backforth-prev' => 'قبلی ($1)',
 );
 
 /** Finnish (Suomi)

@@ -108,6 +108,13 @@ $messages['nl'] = array(
 	'geequbox-desc' => 'Voegt lightboxeffecten toe met behulp van de jQuery lightboxplug-in',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'geequbox-desc' => 'Podgląd grafik lightbox korzystający z wtyczki jQuery lightbox',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

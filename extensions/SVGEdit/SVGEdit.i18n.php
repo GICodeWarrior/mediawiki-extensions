@@ -136,6 +136,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Otourly
  * @author Sherbrooke
  */
@@ -148,6 +149,7 @@ $messages['fr'] = array(
 	'svgedit-desc' => 'Modification des dessins au format SVG dans votre navigateur en utilisant [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Modifier le dessin',
 	'svgedit-edit-tab-tooltip' => 'Vous pouvez modifier ce dessin SVG dans votre navigateur',
+	'svgedit-toolbar-insert' => 'Dessin SVG',
 );
 
 /** Galician (Galego)

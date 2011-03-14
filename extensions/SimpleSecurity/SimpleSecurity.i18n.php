@@ -621,6 +621,7 @@ $messages['ig'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Marco 27
  * @author Nemo bis
@@ -642,6 +643,7 @@ $messages['it'] = array(
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'namespace',
 	'security-restricttogroup' => 'Accesso al contenuto riservato ai membri di "$1"',
+	'restriction-read' => 'Leggi',
 );
 
 /** Japanese (日本語)

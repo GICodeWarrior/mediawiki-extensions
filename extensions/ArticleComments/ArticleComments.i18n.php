@@ -424,6 +424,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Mihxil
+ * @author Tempodivalse
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -440,6 +441,7 @@ $messages['eo'] = array(
 	'article-comments-required-field' => '$1 kampo estas deviga.',
 	'article-comments-submission-failed' => 'Enmetado de komento malsukcesis',
 	'article-comments-failure-reasons' => 'Bedaŭrinde via komentado malsukcesis pro la {{PLURAL:$1|jena kialo|jenaj kialoj}}:',
+	'article-comments-no-comments' => 'Pardonu, la paĝo [[$1]] nuntempe ne akceptas komentojn.',
 	'article-comments-commenter-said' => '$1 diris ...',
 	'article-comments-comment-missing-name-parameter' => 'Nomo mankas',
 	'article-comments-comment-missing-date-parameter' => 'Mankas dato de komento',

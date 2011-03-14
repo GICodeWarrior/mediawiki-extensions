@@ -115,6 +115,17 @@ $messages['ia'] = array(
 	'right-searchlog-read' => 'Vider le registro de recercas',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'searchlog' => 'Cerca nei registri',
+	'searchlog-cantopen' => 'Impossibile aprire il file dei log <tt>$1</tt>',
+	'searchlog-timeperiod' => 'Seleziona il periodo:',
+	'searchlog-entire' => 'Tutto il log',
+	'searchlog-occurences' => 'Numero di occorrenze nel periodo',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

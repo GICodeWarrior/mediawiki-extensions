@@ -865,8 +865,8 @@ $messages['he'] = array(
 	'patrol-another' => 'הצגת עריכה נוספת, אם ניתן.',
 	'patrol-stopped' => 'בחרתם לא לנטר עוד עריכה. $1',
 	'patrol-resume' => 'לחצו כאן להמשך.',
-	'group-patroller' => 'מנטרי עריכות',
-	'group-patroller-member' => 'מנטר עריכות',
+	'group-patroller' => 'מנטרים',
+	'group-patroller-member' => 'מנטר',
 	'grouppage-patroller' => '{{ns:project}}:מנטר',
 	'right-patroller' => 'לנטר דפים',
 );
