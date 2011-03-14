@@ -260,7 +260,7 @@ class InlineEditorText implements Serializable {
 	protected function collapseMarkings() {
 		foreach( $this->markings as $id => $marking ) {
 			if( isset( $previous ) ) {
-				if( $previous->getCollapsible() && $marking->samePositionAs( $previous ) ) {
+				if( $marking->getCollapsible() && $marking->samePositionAs( $previous ) ) {
 					unset( $this->markings[$previousID] );
 				}
 			}
