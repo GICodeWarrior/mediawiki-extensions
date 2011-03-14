@@ -2222,7 +2222,8 @@ $messages['tl'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Walang "$1"',
-	'recordadmin-edit-info' => 'Ang pahinang ito ay naglalaman ng mga suleras na mayroong sarili nilang mga pormularyo na maaari mong punuin mula sa takdang-panglaylay na ito',
+	'recordadmin-edit-info' => 'Ang pahinang ito ay naglalaman ng mga suleras na may sarili nilang mga pormularyo na maaari mong punuin mula sa pangkat ng panglaylay na ito.<br />O kaya <a href="$1">gamitin ang pangkaraniwang tungkuling pambago ng MediaWiki na walang mga pormularyo ng suleras</a>.
+This page contains templates which have their own forms that you can fill in from this tab-set.<br />Alternatively <a href="$1">use the normal MediaWiki edit functionality without template forms</a>.',
 	'recordadmin-properties' => 'Mga katangiang-ari',
 );
 
