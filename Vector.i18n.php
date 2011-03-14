@@ -580,6 +580,7 @@ Jos olet kirjautuneena sisään, voit poistaa tämän varoituksen käytöstä as
  * @author IAlex
  * @author Jean-Frédéric
  * @author PieRRoMaN
+ * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -592,6 +593,7 @@ Si vous êtes connecté avec votre compte, vous pouvez retirer cet avertissement
 	'vector-editwarning-preference' => 'M’avertir quand je quitte une page de modification sans publier les changements',
 	'vector-simplesearch-search' => 'Rechercher',
 	'vector-simplesearch-containing' => 'contenant...',
+	'vector-noexperiments-preference' => "M'exclure des expériences de nouvelles fonctionnalités",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -934,6 +936,7 @@ Do kanns heh di Warnung affschallde, wann de aanjemelldt un enjelogg bes, dann k
 	'vector-editwarning-preference' => 'Donn mesch warne, wann esch vun en Sigg fott jonn, ih dat esch all ming Änderunge avjeschpeischert hann.',
 	'vector-simplesearch-search' => 'Söhke',
 	'vector-simplesearch-containing' => 'dren änthallde…',
+	'vector-noexperiments-preference' => 'Donn mesch nit met neue Saache zum Ußprobeere behällijje',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
