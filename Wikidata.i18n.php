@@ -4169,6 +4169,7 @@ Mesedez harremanetan ipini zerbitzari operadore edo administratzailearekin.',
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  * @author Mardetanha
  */
@@ -4217,6 +4218,7 @@ $messages['fa'] = array(
 	'ow_LinkAttributeValues' => 'پیوندها',
 	'ow_Property' => 'خاصیت',
 	'ow_Value' => 'ارزش',
+	'ow_upload' => 'بارگذاری',
 );
 
 /** Finnish (Suomi)
