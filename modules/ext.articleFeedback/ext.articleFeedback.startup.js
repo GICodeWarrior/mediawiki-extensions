@@ -28,7 +28,7 @@ $(document).ready( function() {
 		}
 		// Lottery activation
 		var wonLottery = ( Number( mw.config.get( 'wgArticleId', 0 ) ) % 1000 )
-				< Number( mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 ) ) * 100;
+				< Number( mw.config.get( 'wgArticleFeedbackLotteryOdds', 0 ) ) * 10;
 		
 		// Lazy loading
 		if ( wonLottery || inCategory ) {
