@@ -18,7 +18,7 @@ class TemplateEditor {
 		foreach ( $matches[0] as $match ) {
 			$start = $match[1];
 			$end   = $start + strlen( $match[0] );
-			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'templateEditorElement inlineEditorBasic', true, false ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'templateEditorElement inlineEditorBasic', true, false, 0, false ) );
 		}
 
 		return true;

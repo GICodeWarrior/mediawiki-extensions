@@ -15,7 +15,7 @@ class InlineEditorMarking extends InlineEditorPiece {
 	protected $block;       /// < whether the tag should be added as a block or inline
 	protected $bar;         /// < whether the text should carry a bar at the left, or be fully selectable
 	protected $level;       /// < nesting level, which is used to sort consistently when two markings are of same length
-	protected $collapsible; /// < whether or not the marking can be collapsed when only containing one nested element
+	protected $collapsible; /// < whether or not the marking can be collapsed by removing parent elements of the same size
 	
 	protected $id;          /// < id in the original text; this will be unique even when calculating new ids!
 	protected $matched;     /// < bool whether or not this marking has been matched with a previous marking (default: true)
@@ -27,7 +27,7 @@ class InlineEditorMarking extends InlineEditorPiece {
 	 * @param $block       bool Whether the tag should be added as a block or inline
 	 * @param $bar         bool Whether the text should carry a bar at the left, or be fully selectable
 	 * @param $level       int Nesting level, which is used to sort consistently when two markings are of same length, default: 0
-	 * @param $collapsible bool Whether or not the marking can be collapsed when only containing one nested element, default: true
+	 * @param $collapsible bool Whether or not the marking can be collapsed by removing parent elements of the same size
 	 */
 	function __construct( $start, $end, $classes, $block, $bar, $level = 0, $collapsible = true ) {
 		$this->start       = $start;
@@ -187,7 +187,7 @@ class InlineEditorMarking extends InlineEditorPiece {
 	}
 	
 	/**
-	 * Get whether or not the marking can be collapsed when only containing one nested element.
+	 * Get whether or not the marking can be collapsed by removing parent elements of the same size
 	 * @param $value int
 	 */
 	public function getCollapsible() {
