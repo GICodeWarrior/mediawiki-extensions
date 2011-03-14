@@ -90,6 +90,7 @@
 	font-size: 1em;
 	padding-left: 28px;
 	line-height: 32px;
+	/* @embed */
 	background-image: url(images/success.png);
 	background-repeat: no-repeat;
 	background-position: left center;
@@ -319,6 +320,7 @@
 }
 .articleFeedback-success span {
 	display: none;
+	/* @embed */
 	background-image: url(images/success.png);
 	background-repeat: no-repeat;
 	background-position: center left;
