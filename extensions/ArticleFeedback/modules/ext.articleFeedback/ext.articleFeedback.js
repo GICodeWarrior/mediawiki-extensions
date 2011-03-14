@@ -11,7 +11,7 @@
  * @return Boolean: Whether the pitch is muted
  */
 function isPitchVisible( pitch ) {
-	return $.cookie( 'ext.articleFeedback-pitches.' + pitch ) == 'hide' ? false : true;
+	return $.cookie( 'ext.articleFeedback-pitches.' + pitch ) != 'hide';
 }
 
 /**
@@ -20,8 +20,8 @@ function isPitchVisible( pitch ) {
  * @param pitch String: Name of pitch to mute
  * @param durration Integer: Number of days to mute the pitch for
  */
-function mutePitch( pitch, durration ) {
-	$.cookie( 'ext.articleFeedback-pitches.' + pitch, 'hide', { 'expires': durration } );
+function mutePitch( pitch, duration ) {
+	$.cookie( 'ext.articleFeedback-pitches.' + pitch, 'hide', { 'expires': duration } );
 }
 
 function trackClick( id ) {
@@ -30,6 +30,14 @@ function trackClick( id ) {
 		$.trackActionWithInfo(
 			'ext.articleFeedback-' + id, mediaWiki.config.get( 'wgTitle' )
 		)
+	}
+}
+
+function trackClickURL( url, id ) {
+	if ( typeof $.trackActionURL == 'function' ) {
+		return $.trackActionURL( url, 'ext.articleFeedback-' + id );
+	} else {
+		return url;
 	}
 }
 
@@ -44,9 +52,9 @@ var survey = new ( function( mw ) {
 	/* Private Members */
 	
 	var that = this;
-	var $dialog = null;
-	var $form = null;
-	var $message = null;
+	var $dialog;
+	var $form = $( [] );
+	var $message = $( [] );
 	// The form is rendered by loading the raw results of a special page into a div, this is the
 	// URL of that special page
 	var formSource = mw.config.get( 'wgScript' ) + '?' + $.param( {
@@ -73,7 +81,7 @@ var survey = new ( function( mw ) {
 					'title': mw.msg( 'articlefeedback-survey-title' ),
 					'close': function() {
 						// Return the survey to default state
-						$msg.remove();
+						$message.remove();
 						$form.show();
 						$dialog
 							.dialog( 'option', 'height', 400 )
@@ -99,7 +107,7 @@ var survey = new ( function( mw ) {
 		$dialog.dialog( 'open' );
 	};
 	this.submit = function() {
-		var $dialog = $( '#articleFeedback-dialog' );
+		$dialog = $( '#articleFeedback-dialog' );
 		// Put dialog into "loading" state
 		$dialog
 			.addClass( 'loading' )
@@ -214,17 +222,16 @@ var config = {
 				return isPitchVisible( 'join' ) && mediaWiki.user.anonymous();
 			},
 			'action': function() {
-				// Click tracking
-				trackClick( 'pitch-join-signup' );
+				// Mute for 1 day
+				mutePitch( 'join', 1 );
 				// Go to account creation page
-				window.location =
+				// Track the click through an API redirect
+				window.location = trackClickURL(
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': 'Special:UserLogin',
 						'type': 'signup',
 						'returnto': mediaWiki.config.get( 'wgPageName' )
-					} );
-				// Mute for 1 day
-				mutePitch( 'join', 1 );
+					}, 'pitch-join-signup' );
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',
@@ -235,16 +242,15 @@ var config = {
 			// Special alternative action for going to login page
 			'altAccept': 'articlefeedback-pitch-join-login',
 			'altAction': function() {
-				// Click tracking
-				trackClick( 'pitch-join-login' );
+				// Mute for 1 day
+				mutePitch( 'join', 1 );
 				// Go to login page
-				window.location =
+				// Track the click through an API redirect
+				window.location = trackClickURL(
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': 'Special:UserLogin',
 						'returnto': mediaWiki.config.get( 'wgPageName' )
-					} );
-				// Mute for 1 day
-				mutePitch( 'join', 1 );
+					}, 'pitch-join-login' );
 				return false;
 			}
 		},
@@ -264,16 +270,15 @@ var config = {
 				return isPitchVisible( 'edit' );
 			},
 			'action': function() {
-				// Click tracking
-				trackClick( 'pitch-edit' );
+				// Mute for 7 days
+				mutePitch( 'edit', 7 );
 				// Go to edit page
-				window.location =
+				// Track the click through an API redirect
+				window.location = trackClickURL(
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': mediaWiki.config.get( 'wgPageName' ),
 						'action': 'edit'
-					} );
-				// Mute for 7 days
-				mutePitch( 'edit', 7 );
+					}, 'pitch-edit' );
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',
