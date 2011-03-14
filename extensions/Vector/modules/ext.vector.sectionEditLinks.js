@@ -39,12 +39,9 @@ if ( bucket > 0 ) {
 			'clicktrackingevent':
 				'ext.vector.sectionEditLinks-bucket:' + bucket + '@' + experiment + '-save'
 		} );
-		$(this).attr( 'href', mediaWiki.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
-			'action': 'clicktracking',
-			'eventid': 'ext.vector.sectionEditLinks-bucket:' + bucket + '@' + experiment + '-click',
-			'token': session,
-			'redirectto': editUrl
-		} ) );
+		$(this).attr( 'href', $.trackActionURL( editUrl,
+			'ext.vector.sectionEditLinks-bucket: ' + bucket + '@' + experiment + '-click'
+		) );
 	} );
 	if ( bucket == 2 ) {
 		// Move the link over to be next to the heading text and style it with an icon
