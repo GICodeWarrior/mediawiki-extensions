@@ -319,9 +319,9 @@ class BookManagerFunctions {
 		$bar .= ( $next !== '' ) ? Xml::element('a',array('href'=>$nextlink,'title'=>$next ),$nexttext): '' ;
 		$bar .= ( $next !== '' ) ? Xml::closeElement('li'): '' ;
 		$bar .= Xml::closeElement('ul');
-	
+		$is_inBookList = ( $prev !== '' || $next !== '' ) ? true : false ;
 		#adds system messages or html
-		if ( $wgBookManagerNavbar  && in_array($ns,$wgBookManagerNamespaces) && self::isViewAction() && $prev !== '' || $next !== '' ) {
+		if ( $wgBookManagerNavbar  && in_array($ns,$wgBookManagerNamespaces) && self::isViewAction() && $is_inBookList ) {
 		 	$BookManager = wfMsgExt( "BookManager", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext);
 			$BookManagerTop = wfMsgExt( "BookManager-top", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext  );
 			$BookManagerBottom = wfMsgExt( "BookManager-bottom", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
