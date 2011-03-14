@@ -173,7 +173,7 @@ class ClickTrackingHooks {
 	}
 	
 	public static function articleSaveComplete( $article, $user, $text, $summary, $minoredit,
-			$watchthis, $sectionanchor, $flags, $revision, $status, $baseRevId, $redirect ) {
+			$watchthis, $sectionanchor, $flags, $revision, $baseRevId ) {
 		self::trackRequest( 'save-complete' );
 		return true;
 	}
