@@ -510,7 +510,7 @@ $messages['kn'] = array(
 $messages['ksh'] = array(
 	'searchbox-desc' => 'Maad_et müjjelesch, e Fommulaa zom Söke enzebernge.',
 	'searchbox-search' => 'Söke',
-	'searchbox-go' => 'Loß Jonn!',
+	'searchbox-go' => 'Lohß Jonn!',
 	'searchbox-namespaces' => 'Appachtemengs:',
 );
 
