@@ -315,8 +315,12 @@ $messages['sw'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'emailusers-desc' => 'Nagpapahintulot sa mga tagagamit na magpadala ng e-liham sa maramihang mga tagatanggap',
+	'right-sendbatchemail' => 'Sabay-sabay na magapadala ng e-liham sa maramihang mga tagatanggap',
 	'emailusers' => 'Mga tagagamit ng e-liham',
 	'emailusers-target-reverse' => 'Ipadala sa lahat ng mga tagagamit maliban sa mga napili',
+	'emailusers-norecipient' => 'Wala kang mapagpapadalahan ng e-liham.',
+	'emailusers-norecipientselected' => 'Walang napiling tatanggap.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
