@@ -63,6 +63,13 @@ $messages['fr'] = array(
 	'arrayext-desc' => 'Enregistrer et traiter les tableaux nommés',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'arrayext-desc' => 'Almacenar e calcular táboas con nomes',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
@@ -124,6 +131,13 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'arrayext-desc' => "Memorisa e càlcola j'array nominà",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'arrayext-desc' => 'Хранение и вычисление именованных массивов',
 );
 
 /** Swedish (Svenska)
