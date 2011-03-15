@@ -57,6 +57,7 @@ $.articleFeedback = {
 		<div class="articleFeedback-title"></div>\
 		<div class="articleFeedback-pop">\
 			<div class="articleFeedback-message"></div>\
+			<div class="articleFeedback-body"></div>\
 			<button class="articleFeedback-accept"></button>\
 			<button class="articleFeedback-reject"></button>\
 		</div>\
@@ -306,6 +307,9 @@ $.articleFeedback = {
 									.end()
 								.find( '.articleFeedback-message' )
 									.text( mw.msg( context.options.pitches[key].message ) )
+									.end()
+								.find( '.articleFeedback-body' )
+									.text( mw.msg( context.options.pitches[key].body ) )
 									.end()
 								.find( '.articleFeedback-accept' )
 									.text( mw.msg( context.options.pitches[key].accept ) )
