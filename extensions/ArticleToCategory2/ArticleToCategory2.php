@@ -3,7 +3,7 @@
  === MediaWiki Extension: Add Article to Category 2 ===
  * @file
  * @ingroup Extensions
- * @version 0.2
+ * @version 1.0
  * @author Liang Chen <anything@liang-chen.com> (original code)
  * @author Julien Devincre (exclude categories)
  * @author Cynthia Mattingly - Marketing Factory Consulting (i18n, adding category)
@@ -33,22 +33,26 @@ if ( !defined('MEDIAWIKI') ) {
 	echo <<<HEREDOC
 To install the ArticleToCategory2 extension, put the following line in LocalSettings.php:<P>
 require_once( "\$IP/extensions/ArticleToCategory2/ArticleToCategory2.php" );<br>
-\$wgarticletocategory2ConfigAddcat=false;<br>
 \$wgarticletocategory2ConfigBlacklist=false;<br>
+\$wgGroupPermissions['*']['ArticleToCategory2'] = true;<br>
+\$wgGroupPermissions['*']['ArticleToCategory2AddCat'] = false;<br>
+
 HEREDOC;
 	exit( 1 );
 }
 
-/* Set default values on configutation variables */
-$wgarticletocategory2ConfigAddcat=false;
+/** Set default values on configutation variables **/
 $wgarticletocategory2ConfigBlacklist=false;
-
+/* Set default 'true' for add article to category */
+$wgGroupPermissions['*']['ArticleToCategory2'] = true;
+/* Set default 'false' for add category to category */
+$wgGroupPermissions['*']['ArticleToCategory2AddCat'] = false;
  
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Add Article to Category 2',
 	'descriptionmsg' => 'articletocategory2-desc',
-	'version' => '0.2',
+	'version' => '1.0',
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:BiGreat Liang Chen \'BiGreat\'] (original code)',
 		'Julien Devincre (exclude categories)',
@@ -132,18 +136,12 @@ function getExcludedCategories() {
  ******************************/
 function wfCategoryChange( $catpage ) {
 	global $wgarticletocategory2ConfigBlacklist, $wgarticletocategory2ConfigAddcat,
-		$wgOut, $wgScript, $wgContLang;
+		$wgOut, $wgScript, $wgContLang, $wgUser;
 
-	wfLoadExtensionMessages( 'ArticleToCategory2' );
-
-	$boxtext  = wfMsg( 'articletocategory2-create-article-under-category-text' );
-        $btext =    wfMsg( 'articletocategory2-create-article-under-category-button' );
-        $boxtext2 = wfMsg( 'articletocategory2-create-category-under-category-text' );
-        $btext2 =   wfMsg( 'articletocategory2-create-category-under-category-button' );
- 
 	$action = htmlspecialchars( $wgScript );
 	if ( !$catpage->mTitle->quickUserCan( 'edit' )
-		|| !$catpage->mTitle->quickUserCan( 'create') )
+		|| !$catpage->mTitle->quickUserCan( 'create')
+		|| !$wgUser->isAllowed( 'ArticleToCategory2') )
 	{
 		return true;
 	}
@@ -155,6 +153,13 @@ function wfCategoryChange( $catpage ) {
 			}
 		}
 	}
+	wfLoadExtensionMessages( 'ArticleToCategory2' );
+
+	$boxtext  = wfMsg( 'articletocategory2-create-article-under-category-text' );
+	$btext =    wfMsg( 'articletocategory2-create-article-under-category-button' );
+	$boxtext2 = wfMsg( 'articletocategory2-create-category-under-category-text' );
+	$btext2 =   wfMsg( 'articletocategory2-create-category-under-category-button' );
+ 
 	$cattitle = $wgContLang->getNsText( NS_CATEGORY );
  
 	/*** javascript blocks ***/
@@ -217,7 +222,7 @@ FORMCATEGORY;
 FORMEND;
 	/*** javascript blocks end ***/
 	$wgOut->addHTML( $formstart );
-	if ( $wgarticletocategory2ConfigAddcat ) {
+	if ( $wgUser->isAllowed( 'ArticleToCategory2AddCat' ) ) {
 		$wgOut->addHTML( $formcategory );
 	}
 	$wgOut->addHTML( $formend );
