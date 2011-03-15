@@ -646,6 +646,7 @@ Se accedeu ao sistema, pode desactivar esta mensaxe de advertencia na sección "
 	'vector-editwarning-preference' => 'Avisádeme cando deixe unha páxina de edición cos cambios sen gardar',
 	'vector-simplesearch-search' => 'Procurar',
 	'vector-simplesearch-containing' => 'que conteña...',
+	'vector-noexperiments-preference' => 'Excluídeme das novas características',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
