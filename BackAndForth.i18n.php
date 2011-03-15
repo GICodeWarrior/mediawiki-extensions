@@ -382,6 +382,15 @@ $messages['gsw'] = array(
 	'backforth-prev' => 'Vorigi ($1)',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kolonahe
+ */
+$messages['haw'] = array(
+	'backforth-next' => 'Aʻe ($1)',
+	'backandforth-desc' => 'Hoʻohui i ka loulou ʻaoʻao o "Next" a me "Previous" ma luna pono o nā ʻaoʻao',
+	'backforth-prev' => 'Mua ($1)',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author דניאל ב.
