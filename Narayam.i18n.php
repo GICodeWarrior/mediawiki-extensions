@@ -436,6 +436,32 @@ $messages['te'] = array(
 	'narayam-bn-nkb' => 'బెంగాలీ NKB',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'narayam-desc' => 'Nagpapahintulot na makapagdagdag ng pasadyang mga metodo ng pagpapasok para sa mga hanay na pinagpapasukan',
+	'narayam-toggle-ime' => 'Upang mapagpalipat-lipat ang IM ($1)',
+	'narayam-help-page' => 'Help:Pagmamakinilya',
+	'narayam-checkbox-tooltip' => 'Upang mapagpalit-palit ang paraan ng pagpasok bilang buhay at nakapatay',
+	'narayam-hi-inscript' => 'Panitik na Hindi',
+	'narayam-kn' => 'Transliterasyong Kannada',
+	'narayam-kn-inscript' => 'Panitik na Kannada',
+	'narayam-ml' => 'Transliterasyong Malayalam',
+	'narayam-ml-inscript' => 'Panitik na Malayalam',
+	'narayam-or' => 'Transliterasyong Oriya',
+	'narayam-or-inscript' => 'Panitik na Oriya',
+	'narayam-sa' => 'Transliterasyong Sanskrit',
+	'narayam-sa-inscript' => 'Panitik na Sanskrit',
+	'narayam-si-singlish' => 'Singgles na Sinhala',
+	'narayam-si-wijesekara' => 'Wijesekara na Sinhala',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Transliterasyong Tamil',
+	'narayam-bn-avro' => 'Avro na Bengali',
+	'narayam-bn-inscript' => 'Panitik na Bengali',
+	'narayam-bn-nkb' => 'NKB na Bengali',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
