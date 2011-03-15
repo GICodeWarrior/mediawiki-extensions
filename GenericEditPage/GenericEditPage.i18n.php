@@ -1032,6 +1032,13 @@ $messages['myv'] = array(
 	'gep-addsectionbutton' => 'Поладомс',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'gep-categories' => 'رج‌ئون',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
