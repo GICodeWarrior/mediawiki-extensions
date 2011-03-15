@@ -4,7 +4,7 @@
  *
  * @author Stephan Gambke
  * @author Sanyam Goyal
- * @version 0.4
+ * @version 0.4.1 alpha
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -15,7 +15,7 @@ if ( !defined( 'SF_VERSION' ) ) {
 	die( 'This is a Semantic Forms extension. You need to install Semantic Forms first.' );
 }
 
-define( 'SFI_VERSION', '0.4' );
+define( 'SFI_VERSION', '0.4.1 alpha' );
 
 // create and initialize settings
 $sfigSettings = new SFISettings();
