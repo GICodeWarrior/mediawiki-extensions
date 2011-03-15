@@ -204,6 +204,7 @@ $messages['gd'] = array(
  */
 $messages['gl'] = array(
 	'addmediawizard-desc' => 'Engade un asistente para os ficheiros multimedia, desenvolvido por Kaltura e mais a Fundación Wikimedia',
+	'addmediawizard-loading' => 'Cargando o asistente de engadido de soportes',
 );
 
 /** Swiss German (Alemannisch)
@@ -450,9 +451,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'addmediawizard-desc' => "Gionté n'assistent për ij mojen, dësvlupà ansema da Kaltura e da la Fondassion Wikimedia",
+	'addmediawizard-loading' => "Cariament ëd l'assistent për gionté dj'archivi multimojen",
 );
 
 /** Pashto (پښتو)
@@ -488,6 +491,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'addmediawizard-desc' => 'Мастер добавления медиа-данных, разработанный при сотрудничестве Kaltura и Фонда Викимедиа',
+	'addmediawizard-loading' => 'Загрузка мастера добавления медиа',
 );
 
 /** Slovak (Slovenčina)
@@ -576,9 +580,11 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Shizhao
+ * @author 阿pp
  */
 $messages['zh-hans'] = array(
 	'addmediawizard-desc' => '媒体文件添加向导，由Kaltura与维基媒体基金会联合开发',
+	'addmediawizard-loading' => '正在加载添加媒体向导',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
