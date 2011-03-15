@@ -2,7 +2,6 @@
  * Javascript code to be used with input type datepicker.
  *
  * @author Stephan Gambke
- * @version 0.4
  *
  */
 

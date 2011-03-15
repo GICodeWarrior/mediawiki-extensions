@@ -3,7 +3,6 @@
  * Settings for the Semantic Forms Inputs extension.
  *
  * @author Stephan Gambke
- * @version 0.4
  *
  * To change the default settings you can uncomment (or copy) the
  * examples here and adjust them to your needs. You may as well
