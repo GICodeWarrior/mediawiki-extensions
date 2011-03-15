@@ -6772,6 +6772,13 @@ $messages['myv'] = array(
 	'mv_date_last_week' => 'Йутазь таргосто',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'mv_search_categories' => 'رج‌ئون',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -7802,9 +7809,10 @@ Aqueste tipe de presentacion es pel tèxte qu'es parlat amb lo flux vidèo. De l
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Psubhashish
  */
 $messages['or'] = array(
-	'mv_tool_search' => 'ସନ୍ଧାନ',
+	'mv_tool_search' => 'ଖୋଜିବା',
 	'mv_history' => 'ଇତିହାସ',
 );
 

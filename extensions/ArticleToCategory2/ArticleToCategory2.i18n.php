@@ -141,6 +141,8 @@ $messages['de'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Erstellen',
 	'articletocategory2-create-category-under-category-text' => 'Eine Kategorie zu dieser Kategorie hinzufügen',
 	'articletocategory2-create-category-under-category-button' => 'Erstellen',
+	'right-ArticleToCategory2' => 'Artikel zu einer Kategorie hinzufügen',
+	'right-ArticleToCategory2AddCat' => 'Kategorie zu einer Kategorie hinzufügen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -226,6 +228,8 @@ $messages['gl'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Crear',
 	'articletocategory2-create-category-under-category-text' => 'Engadirlle unha categoría a esta categoría',
 	'articletocategory2-create-category-under-category-button' => 'Crear',
+	'right-ArticleToCategory2' => 'Engadir o artigo á categoría',
+	'right-ArticleToCategory2AddCat' => 'Engadir a categoría á categoría',
 );
 
 /** Swiss German (Alemannisch)
@@ -369,6 +373,8 @@ $messages['mk'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Создај',
 	'articletocategory2-create-category-under-category-text' => 'Додај категорија во категоријава',
 	'articletocategory2-create-category-under-category-button' => 'Создај',
+	'right-ArticleToCategory2' => 'Ставање на статија во категорија',
+	'right-ArticleToCategory2AddCat' => 'Ставање на категорија во категорија',
 );
 
 /** Malayalam (മലയാളം)

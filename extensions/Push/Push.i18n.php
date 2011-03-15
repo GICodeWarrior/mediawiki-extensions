@@ -381,6 +381,11 @@ Pour pousser les pages, entrez les titres dans la zone de texte ci-dessous, un t
 	'push-special-obtaining-fileinfo' => "$1: Obtention d'informations sur le fichier...",
 	'push-special-pushing-file' => '$1: pousser le fichier $2...',
 	'push-special-return' => 'Pousser plus de pages',
+	'push-api-err-nocurl' => 'cURL n\'est pas installé.
+Mettre $​​egPushDirectFileUploads à <code>false</code> pour des wikis publics, ou installer cURL pour les wikis privés',
+	'push-api-err-nofilesupport' => "Le MediaWiki local ne supporte pas le téléchargement de fichiers. 
+Sur les wikis publics, mettre \$egPushDirectFileUploads à <code>false</code>.
+Sur les wikis privés, appliquer le patch <code>linkd</code> tel qu'expliqué dans la documentation de ''Push'' ou mettre à jour MediaWiki.",
 );
 
 /** Galician (Galego)

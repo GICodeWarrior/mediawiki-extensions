@@ -388,6 +388,7 @@ $messages['gl'] = array(
 	'e-mailpage' => 'Enviar a páxina por correo electrónico',
 	'ea-desc' => 'Enviar páxinas HTML renderizadas a un enderezo de correo electrónico (ou a varios correos) usando [http://phpmailer.sourceforge.net phpmailer].',
 	'ea-heading' => '=== Enviando a páxina "[[$1]]" ===',
+	'ea-group-info' => 'Ademais, pode enviar a páxina aos membros dun grupo',
 	'ea-pagesend' => 'A páxina "$1" foi enviada desde $2',
 	'ea-nopage' => 'Non especificou ningunha páxina para enviar; empregue a ligazón da caixa lateral para esta operación.',
 	'ea-norecipients' => 'Non foi atopado ningún enderezo de correo electrónico válido!',
@@ -399,13 +400,16 @@ $messages['gl'] = array(
 	'ea-show' => 'Amosar os destinatarios',
 	'ea-from' => 'De:',
 	'ea-to' => 'Para:',
+	'ea-to-info' => 'Os enderezos de correo electrónico pódense separar mediante un punto e coma, unha coma, un asterisco ou unha nova liña',
 	'ea-cc' => 'Copia:',
 	'ea-send' => 'Enviar!',
 	'ea-subject' => 'Asunto:',
 	'ea-message' => 'Mensaxe:',
+	'ea-message-info' => 'Inclúa unha mensaxe opcional con texto wiki antes do contido',
 	'ea-style' => 'Estilo:',
 	'ea-selectcss' => 'Pode seleccionar unha folla de estilo',
 	'ea-data' => 'Datos',
+	'ea-selectrecord' => 'Pódense empregar estes modelos para encher os campos no contido da mensaxe',
 	'ea-allusers' => 'Todos os usuarios',
 );
 
@@ -1085,6 +1089,7 @@ $messages['tl'] = array(
 	'ea-show' => 'Tingnan ang talaan ng tatanggap',
 	'ea-from' => 'Mula kay:',
 	'ea-to' => 'Papunta kay:',
+	'ea-to-info' => 'Ang mga tirahan ng e-liham ay maaaring paghiwa-hiwalayin ng isa or mas marami pang tuldukuwit, kuwit, bituin o mga panitik ng bagong-guhit',
 	'ea-cc' => 'CC:',
 	'ea-send' => 'Ipadala',
 	'ea-subject' => 'Paksa:',
@@ -1092,6 +1097,7 @@ $messages['tl'] = array(
 	'ea-style' => 'Estilo:',
 	'ea-selectcss' => 'Makakapili ka ng isang banig ng estilo',
 	'ea-data' => 'Dato',
+	'ea-selectrecord' => 'Magagamit ang mga suleras na ito upang punuin ang mga hanay sa loob ng nilalaman ng mensahe',
 	'ea-allusers' => 'Lahat ng mga tagagamit',
 );
 

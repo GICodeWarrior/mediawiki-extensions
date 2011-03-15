@@ -389,6 +389,13 @@ $messages['myv'] = array(
 	'catboxattop-categories' => 'Категорият',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'catboxattop-categories' => 'رج‌ئون',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

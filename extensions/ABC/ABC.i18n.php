@@ -393,6 +393,7 @@ $messages['gv'] = array(
  * @author Kolonahe
  */
 $messages['haw'] = array(
+	'abc-desc' => 'Hoʻohui i ka lepili <code>&lt;abc&gt;</code> no ka hulu ʻana o ka mele ABC',
 	'abcdownload' => 'Hoʻoili:',
 );
 

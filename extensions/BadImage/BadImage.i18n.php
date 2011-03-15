@@ -994,6 +994,7 @@ $messages['ha'] = array(
 );
 
 /** Hawaiian (Hawai`i)
+ * @author Kolonahe
  * @author Singularity
  */
 $messages['haw'] = array(
@@ -1017,6 +1018,7 @@ $messages['haw'] = array(
 	'badimages-log-add' => 'hō‘ulu‘ulu ‘ia ‘o [[$1]] i ka papa o nā ki‘i ‘ino',
 	'badimages-log-remove' => 'kāpae ‘ia ‘o [[$1]] mai ka papa o nā ki‘i ‘ino',
 	'badimages-page' => '{{ns:help}}:Papa o nā ki‘i ‘ino',
+	'right-badimages' => 'Hoʻohou i ka helu kiʻi ʻino',
 );
 
 /** Hebrew (עברית)

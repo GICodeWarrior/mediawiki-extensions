@@ -107,9 +107,11 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'rdf-desc' => 'Système RDF pour MediaWiki',
+	'rdf-inpage' => 'Format Turtle incorporé dans la page',
 	'rdf-dcmes' => 'Élément de métadonnées Dublin Core',
 	'rdf-cc' => 'Creative Commons',
 	'rdf-image' => 'Images embarquées',
@@ -230,6 +232,13 @@ $messages['mk'] = array(
 	'rdf-modelnames' => 'Модел(и)',
 	'rdf-format' => 'Формат на изводот',
 	'rdf-instructions' => 'Одберете целна страница и RDF-моделите за кои сте заинтересирани.',
+);
+
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'rdf-categories' => 'رج‌ئون',
 );
 
 /** Dutch (Nederlands)

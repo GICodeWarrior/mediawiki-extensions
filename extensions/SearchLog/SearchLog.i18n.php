@@ -51,6 +51,22 @@ $messages['de'] = array(
 	'right-searchlog-read' => 'Suchprotokoll ansehen',
 );
 
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'searchlog' => 'Historique des recherches',
+	'searchlog-desc' => "Note l'historique des recherches effectuées par le biais de la boîte de recherche et permet de rapporter différentes statistiques pour une période donnée",
+	'searchlog-cantopen' => "Ne peut ouvrir le fichier d'historique $1",
+	'searchlog-heading' => 'Mots recherchés sur la période $1',
+	'searchlog-unicode' => "Montrer tel quel l'unicode",
+	'searchlog-timeperiod' => 'Sélectionnez une période :',
+	'searchlog-entire' => "Tout l'historique",
+	'searchlog-phrase' => 'Rechercher phrase',
+	'searchlog-occurences' => "Nombre d'occurrences au cours de la période",
+	'right-searchlog-read' => "Voir l'historique de recherches",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
