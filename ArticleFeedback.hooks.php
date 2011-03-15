@@ -67,6 +67,8 @@ class ArticleFeedbackHooks {
 				'articlefeedback-form-panel-expertise-other',
 				'articlefeedback-form-panel-submit',
 				'articlefeedback-form-panel-success',
+				'articlefeedback-form-panel-expiry-title',
+				'articlefeedback-form-panel-expiry-message',
 				'articlefeedback-report-switch-label',
 				'articlefeedback-report-panel-title',
 				'articlefeedback-report-panel-description',
