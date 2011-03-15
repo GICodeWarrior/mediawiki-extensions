@@ -463,6 +463,8 @@ Pode perder os cambios feitos nesta páxina se sae dela agora.',
 	'al-nosuchuser' => 'Non hai ningún usuario co nome "$1".
 Os nomes de usuario distinguen entre maiúsculas e minúsculas.
 Comprobe a ortografía.',
+	'al-createblocked' => 'O seu enderezo IP está bloqueado fronte á creación de contas.',
+	'al-throttled' => 'Intentou inserir o contrasinal demasiadas veces. Agarde $1 {{PLURAL:$1|segundo|segundos}} antes de probar de novo.',
 );
 
 /** Swiss German (Alemannisch)
@@ -1005,6 +1007,8 @@ $messages['ru'] = array(
 	'al-nosuchuser' => 'Не существует участника с именем «$1».
 Имя участника чувствительно к регистру символов.
 Проверьте написание.',
+	'al-createblocked' => 'Для вашего IP-адреса запрещено создание учётных записей.',
+	'al-throttled' => 'Вы сделали слишком много попыток ввода пароля. Пожалуйста, подождите $1 {{PLURAL:$1|секунду|секунды|секунд}}, прежде чем повторить.',
 );
 
 /** Yakut (Саха тыла)
