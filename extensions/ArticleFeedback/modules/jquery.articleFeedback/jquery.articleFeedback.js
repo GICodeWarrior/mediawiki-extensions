@@ -33,6 +33,10 @@ $.articleFeedback = {
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><html:msg key="form-panel-submit" /></button>\
 		<div class="articleFeedback-success articleFeedback-visibleWith-form"><span><html:msg key="form-panel-success" /></span></div>\
 		<div style="clear:both;"></div>\
+		<div class="articleFeedback-expiry articleFeedback-visibleWith-form">\
+			<div class="articleFeedback-expiry-title"><html:msg key="form-panel-expiry-title" /></div>\
+			<div class="articleFeedback-expiry-message"><html:msg key="form-panel-expiry-message" /></div>\
+		</div>\
 	</div>\
 	<div class="articleFeedback-error"><div class="articleFeedback-error-message"><html:msg key="error" /></div></div>\
 	<div class="articleFeedback-pitches"></div>\
@@ -212,6 +216,7 @@ $.articleFeedback = {
 									.show();
 						}
 					}
+					var expired = false;
 					context.$ui.find( '.articleFeedback-rating' ).each( function() {
 						var ratingData;
 						// Try to get data provided for this rating
@@ -219,11 +224,18 @@ $.articleFeedback = {
 							data.query.articlefeedback.length &&
 							typeof data.query.articlefeedback[0].ratings !== 'undefined'
 						) {
-							var ratingsData = data.query.articlefeedback[0].ratings;
-							var id = context.options.ratings[$(this).attr( 'rel' )].id;
-							for ( var i = 0; i < ratingsData.length; i++ ) {
-								if ( ratingsData[i].ratingid == id ) {
-									ratingData = ratingsData[i];
+							if ( 'expired' in data.query.articlefeedback[0] ) {
+								if ( data.query.articlefeedback[0].expired == true ) {
+									expired = true;
+								}
+							}
+							if ( 'ratings' in data.query.articlefeedback[0] ) {
+								var ratingsData = data.query.articlefeedback[0].ratings;
+								var id = context.options.ratings[$(this).attr( 'rel' )].id;
+								for ( var i = 0; i < ratingsData.length; i++ ) {
+									if ( ratingsData[i].ratingid == id ) {
+										ratingData = ratingsData[i];
+									}
 								}
 							}
 						}
@@ -264,6 +276,17 @@ $.articleFeedback = {
 						}
 						$.articleFeedback.fn.updateRating.call( $(this) );
 					} );
+					if ( expired ) {
+						context.$ui
+							.addClass( 'articleFeedback-expired' )
+							.find( '.articleFeedback-expiry' )
+								.slideDown( 'fast' );
+					} else {
+						context.$ui
+							.removeClass( 'articleFeedback-expired' )
+							.find( '.articleFeedback-expiry' )
+								.slideUp( 'fast' );
+					}
 					// If being called just after a submit, we need to un-new the rating controls
 					context.$ui.find( '.articleFeedback-rating-new' )
 						.removeClass( 'articleFeedback-rating-new' );
@@ -504,6 +527,13 @@ $.articleFeedback = {
 					)
 					.mousedown( function() {
 						$.articleFeedback.fn.enableSubmission.call( context, true );
+						if ( context.$ui.hasClass( 'articleFeedback-expired' ) ) {
+							// Changing one means the rest will get submitted too
+							context.$ui
+								.removeClass( 'articleFeedback-expired' )
+								.find( '.articleFeedback-rating' )
+									.addClass( 'articleFeedback-rating-new' );
+						}
 						context.$ui
 							.find( '.articleFeedback-expertise' )
 								.each( function() {

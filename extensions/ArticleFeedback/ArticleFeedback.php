@@ -15,9 +15,8 @@ require_once( dirname( dirname( __FILE__ ) ) . '/SimpleSurvey/SimpleSurvey.php' 
 
 /* Configuration */
 
-// If the number of page revisions (since users last rating) is greater than this then consider the
-// last rating "stale"
-$wgArticleFeedbackStaleCount = 5;
+// Number of revisions to keep a rating alive for
+$wgArticleFeedbackRatingLifetime = 30;
 
 // Array of the "ratings" id's to store. Allows it to be a bit more dynamic
 $wgArticleFeedbackRatings = array( 1, 2, 3, 4 );

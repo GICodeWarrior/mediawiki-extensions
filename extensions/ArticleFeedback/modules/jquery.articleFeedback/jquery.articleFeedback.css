@@ -202,6 +202,11 @@
 	background-image: url(images/star-full.png);
 }
 
+.articleFeedback-expired .articleFeedback-rating-labels label.articleFeedback-rating-label-full {
+	/* @embed */
+	background-image: url(images/star-full-expired.png);
+}
+
 .articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-full,
 .articleFeedback-rating .articleFeedback-rating-labels label.articleFeedback-rating-label-hover-tail {
 	/* @embed */
@@ -319,6 +324,7 @@
 .articleFeedback-success {
 	float: right;
 }
+
 .articleFeedback-success span {
 	display: none;
 	/* @embed */
@@ -332,4 +338,23 @@
 	color: green;
 	font-size: 0.8em;
 	line-height: 3.6em;
+}
+
+.articleFeedback-expiry {
+	display: none;
+	border: solid 1px orange;
+	background-color: white;
+	padding: 0.5em;
+}
+.articleFeedback-expiry-title {
+	font-size: 1.2em;
+	padding-left: 28px;
+	/* @embed */
+	background-image: url(images/alert.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+.articleFeedback-expiry-message {
+	padding-left: 28px;
+	color: #777777;
 }
