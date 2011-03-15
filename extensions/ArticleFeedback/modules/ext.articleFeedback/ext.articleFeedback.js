@@ -283,7 +283,7 @@ var config = {
 			},
 			'title': 'articlefeedback-pitch-thanks',
 			'message': 'articlefeedback-pitch-edit-message',
-			'body': 'articlefeedback-pitch-join-body',
+			'body': 'articlefeedback-pitch-edit-body',
 			'accept': 'articlefeedback-pitch-edit-accept',
 			'reject': 'articlefeedback-pitch-reject'
 		}
