@@ -7265,6 +7265,13 @@ $messages['myv'] = array(
 	'configure-condition-operator-not' => 'Аволь',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'configure-section-category' => 'رج‌ئون',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  * @author Teòtlalili
@@ -8085,9 +8092,10 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Psubhashish
  */
 $messages['or'] = array(
-	'configure-section-search' => 'ସନ୍ଧାନ',
+	'configure-section-search' => 'ଖୋଜିବା',
 );
 
 /** Ossetic (Иронау)
