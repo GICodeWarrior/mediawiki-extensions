@@ -379,7 +379,7 @@ class SpecialOversight extends SpecialPage {
 	}
 
 	function showList( $page, $user, $offender ) {
-		global $wgOut, $wgScript, $wgTitle;
+		global $wgOut, $wgScript;
 		
 		$title = Title::newFromURL( $page );
 		$u = User::newFromName( $user );
@@ -388,7 +388,7 @@ class SpecialOversight extends SpecialPage {
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get', 'id' => 'mw-hiderevision-form' ) ) .
 			Xml::fieldset( wfMsg( 'oversight-legend' ) ) .
-			Html::hidden( 'title', $wgTitle->getPrefixedDbKey() ) .
+			Html::hidden( 'title', $this->getTitle()->getPrefixedDbKey() ) .
 			Xml::inputLabel( wfMsg( 'oversight-oversighter' ), 'user', 'mw-oversight-user', 20, $user ) . ' ' .
 			Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'mw-oversight-page', 25, $page ) . ' ' .
 			Xml::inputLabel( wfMsg( 'oversight-offender' ), 'author', 'mw-oversight-author', 20, $offender ) . ' ' .
