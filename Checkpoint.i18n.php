@@ -85,11 +85,13 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author El libre
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'checkpoint' => 'Desa i continua editant',
 	'checkpoint-desc' => 'Permet guardar una edició i continuar editant',
 	'checkpoint-tooltip' => 'Salva el teu progrés i continua editant la pàgina',
+	'checkpoint-notice' => '([[{{ns:project}}:Punt de control|punt de control guardat]])',
 );
 
 /** German (Deutsch)
