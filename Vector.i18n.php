@@ -286,6 +286,7 @@ Ako ste prijavljeni, možete isključiti ovo upozorenje u "Veličine tekstualnog
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  * @author Vriullop
  */
 $messages['ca'] = array(
@@ -298,6 +299,7 @@ Si teniu un compte d'usuari, podeu eliminar aquest avís a la secció «Caixa d'
 	'vector-editwarning-preference' => "Avisa'm quan surti d'una pàgina d'edició amb canvis sense desar",
 	'vector-simplesearch-search' => 'Cerca',
 	'vector-simplesearch-containing' => 'que conté ...',
+	'vector-noexperiments-preference' => 'Exclou-me dels experiments de funcionalitats',
 );
 
 /** Chechen (Нохчийн)
@@ -1391,6 +1393,7 @@ $messages['sah'] = array(
 	'vector-editwarning-preference' => 'Эрэдээксийэлиир сирэйтэн уларытыыларбын бигэргэппэккэ тахсаары гыннахпына сэрэтээр',
 	'vector-simplesearch-search' => 'Көрдөөһүн',
 	'vector-simplesearch-containing' => 'тыл баар ыстатыйалара...',
+	'vector-noexperiments-preference' => 'Эспэримиэн быһыытынан бэриллэр кыахтары туһаммат гын',
 );
 
 /** Sardinian (Sardu)
