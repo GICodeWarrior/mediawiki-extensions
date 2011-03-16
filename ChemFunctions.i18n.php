@@ -213,10 +213,12 @@ $messages['bs'] = array(
  * @author Aleator
  * @author El libre
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'chemicalsources' => 'Fonts per la química',
 	'chemicalsource-desc' => "Afegeix l'etiqueta <nowiki><chemform></nowiki>, per a fórmules químiques",
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pàgina especial]] per a fonts de química',
 	'chemFunctions_ListPage' => 'Fonts per la química',
 	'chemFunctions_DataList' => 'A continuació disposeu d\'una llista d\'enllaços a llocs que ofereixen informació sobre les substàncies químiques que esteu cercant.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
@@ -226,6 +228,7 @@ $messages['ca'] = array(
 	'chemFunctions_ECNumber' => 'Nombre EC',
 	'chemFunctions_Formula' => 'Fórmula',
 	'chemFunctions_Name' => 'Nom IUPAC',
+	'chemFunctions_ChemFormInputError' => "Chemform: Error de l'entrada!",
 );
 
 /** Czech (Česky)
