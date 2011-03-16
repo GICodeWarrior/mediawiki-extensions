@@ -24,10 +24,12 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'userdailycontribs-desc',
 );
 $wgAutoloadClasses['UserDailyContribsHooks'] = dirname( __FILE__ ) . '/UserDailyContribs.hooks.php';
+$wgAutoloadClasses['ApiUserDailyContribs'] = dirname( __FILE__ ) . '/api/ApiUserDailyContribs.php';
 $wgExtensionMessagesFiles['UserDailyContribs'] = dirname( __FILE__ ) . '/UserDailyContribs.i18n.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'UserDailyContribsHooks::loadExtensionSchemaUpdates';
 $wgHooks['ArticleSaveComplete'][] = 'UserDailyContribsHooks::articleSaveComplete';
 $wgHooks['ParserTestTables'][] = 'UserDailyContribsHooks::parserTestTables';
+$wgAPIModules['userdailycontribs'] = 'ApiUserDailyContribs';
 
 /**
  * Get the number of revisions a user has made since a given time
