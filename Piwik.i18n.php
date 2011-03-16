@@ -136,6 +136,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Isb1009
+ * @author SMP
  */
 $messages['ca'] = array(
 	'piwik-desc' => 'Insereix el codi de Piwik dins les pàgines del MediaWiki per al seguiment i hi afegeix [[Special:Piwik|algunes estadístiques]]',
@@ -143,6 +144,7 @@ $messages['ca'] = array(
 	'piwik-lastvisits' => 'Darreres visites',
 	'piwik-countries' => 'Països',
 	'piwik-browsers' => 'Navegadors',
+	'right-viewpiwik' => 'Veure [[Special:Piwik|estadístiques Piwik]]',
 );
 
 /** Czech (Česky)
