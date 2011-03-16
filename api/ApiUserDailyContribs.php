@@ -44,7 +44,7 @@ class ApiUserDailyContribs extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiUserDailyContrib.php 2 $';
+		return __CLASS__ . ': $Id$';
 	}
 	 //2009-05-01-18-35-35
 	 //YYYY-MM-DD-HH-MM-SS
