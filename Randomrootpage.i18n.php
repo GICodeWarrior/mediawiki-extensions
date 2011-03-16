@@ -258,6 +258,14 @@ $messages['myv'] = array(
 	'randomrootpage' => 'Кодама понгсь юрт лопа',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Teòtlalili
+ */
+$messages['nah'] = array(
+	'randomrootpage' => 'Sâsaìntlèn nelwatlaìxtlapalli',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Nonkuâkiski tlaìxtlapalli]] tewàlkuepilia sè saìntlèn nelwatlaìxtlapalli',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
