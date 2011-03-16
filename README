@@ -2,4 +2,4 @@
 
 # Example LocalSettings.php additions
 
-require_once( "$IP/extensions/UsabilityInitiative/UserDailyContribs/UserDailyContribs.php" );
+require_once( "$IP/extensions/UserDailyContribs/UserDailyContribs.php" );
