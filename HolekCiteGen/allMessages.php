@@ -521,6 +521,8 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'ts-citegen-Output-title' => 'Erus kütt',
+	'ts-citegen-Wrong-input' => '%s: Ham_mer nit als en akeraate Enjaab äkänne künne.',
 	'ts-citegen-Parsers' => 'Paasere',
 	'ts-citegen-Skins' => 'Ußjaab',
 	'ts-citegen-Skin-skins' => 'Ovverflääsche',
