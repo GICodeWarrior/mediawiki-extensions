@@ -80,6 +80,8 @@ $messages['be-tarask'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Стварыць',
 	'articletocategory2-create-category-under-category-text' => 'Дадаць катэгорыю ў гэтую старонку',
 	'articletocategory2-create-category-under-category-button' => 'Стварыць',
+	'right-ArticleToCategory2' => 'даданьне артыкулаў у катэгорыі',
+	'right-ArticleToCategory2AddCat' => 'даданьне катэгорыяў у катэгорыі',
 );
 
 /** Bulgarian (Български)
@@ -263,6 +265,8 @@ $messages['hsb'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Wutworić',
 	'articletocategory2-create-category-under-category-text' => 'Kategoriju k tutej kategoriji přidać',
 	'articletocategory2-create-category-under-category-button' => 'Wutworić',
+	'right-ArticleToCategory2' => 'Nastawk kategoriji přidać',
+	'right-ArticleToCategory2AddCat' => 'Kategoriju kategoriji přidać',
 );
 
 /** Hungarian (Magyar)
@@ -284,6 +288,8 @@ $messages['ia'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Crear',
 	'articletocategory2-create-category-under-category-text' => 'Adder un categoria a iste categoria',
 	'articletocategory2-create-category-under-category-button' => 'Crear',
+	'right-ArticleToCategory2' => 'Adder articulo a categoria',
+	'right-ArticleToCategory2AddCat' => 'Adder categoria a categoria',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -339,6 +345,8 @@ $messages['ksh'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Aanlääje',
 	'articletocategory2-create-category-under-category-text' => 'En Saachjropp en heh di Saachjropp eren donn',
 	'articletocategory2-create-category-under-category-button' => 'Aanläje',
+	'right-ArticleToCategory2' => 'Ene Atikel en en Saachjrop donn',
+	'right-ArticleToCategory2AddCat' => 'En Saachjropp en en Saachjrop donn',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -492,6 +500,8 @@ $messages['ru'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Создать',
 	'articletocategory2-create-category-under-category-text' => 'Добавить категорию в эту категорию',
 	'articletocategory2-create-category-under-category-button' => 'Создать',
+	'right-ArticleToCategory2' => 'Добавить статью в категорию',
+	'right-ArticleToCategory2AddCat' => 'Добавить категорию в категорию',
 );
 
 /** Rusyn (Русиньскый)
@@ -550,6 +560,8 @@ $messages['tl'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Likhain',
 	'articletocategory2-create-category-under-category-text' => 'Magdagdag ng isang kategorya sa kategoryang ito',
 	'articletocategory2-create-category-under-category-button' => 'Likhain',
+	'right-ArticleToCategory2' => 'Idagdag ang artikulo sa kategorya',
+	'right-ArticleToCategory2AddCat' => 'Idagdag ang kategorya sa kategorya',
 );
 
 /** Turkish (Türkçe)
