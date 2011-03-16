@@ -210,6 +210,8 @@ $messages['bs'] = array(
  * @author SMP
  */
 $messages['ca'] = array(
+	'onlinestatus-desc' => "Afegeix una preferència per a mostrar si l'usuari actualment està present al wiki o no ho està",
+	'onlinestatus-js-anon' => "Error: cal que tingueu un compte d'usuari per a utilitzar aquesta funció",
 	'onlinestatus-js-changed' => "El vostre estat s'ha canviat a «$1»",
 	'onlinestatus-js-error' => "Impossible canviar d'estat, el valor «$1» no és vàlid",
 	'onlinestatus-subtitle-offline' => 'Actualment aquest usuari no està connectat',

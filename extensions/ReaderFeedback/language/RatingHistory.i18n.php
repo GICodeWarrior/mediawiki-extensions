@@ -489,6 +489,7 @@ Bedømmelserne er:
  * @author Als-Holder
  * @author ChrisiPK
  * @author Pill
+ * @author Purodha
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -520,7 +521,7 @@ Der '''Durchschnitt im ausgewählten Zeitraum''' ist der Durchschnitt aller Tage
 
 Die Bewertung erfolgt nach:
 '''(1)''' - {{int:readerfeedback-level-0}}; '''(2)''' - {{int:readerfeedback-level-1}}; '''(3)''' - {{int:readerfeedback-level-2}}; '''(4)''' - {{int:readerfeedback-level-3}}; '''(5)''' - {{int:readerfeedback-level-4}};",
-	'ratinghistory-graph-scale' => "Die '''tägliche Zahl an Sichtungen''' <font color=\"red\">''(rot)''</font> werden im Maßstab ''1:\$1'' angezeigt.",
+	'ratinghistory-graph-scale' => "Die '''tägliche Zahl an Sichtungen''' <style=\"color:red\">''(rot)''</style> werden im Maßstab ''1:\$1'' angezeigt.",
 	'right-feedback' => 'Das Feedback-Formular zur Bewertung einer Seite benutzen',
 );
 
@@ -1416,7 +1417,7 @@ $messages['ksh'] = array(
 '''loufende Dorschnett vun de Enschäzunge''' <font color=\"blue\">''(en blou)''</font> sin unge opjemohlt, pro Dattum. Dä '''loufende Dorschnett''' es eijfach dä Dorschnett fun all dä dääschlesche Enschäzunge ''ennerhallef'' fun däm Zick_Afschnet för jeede Daach.
 
 Lejend fun de Enschäzunge: '''(1)''' = {{int:readerfeedback-level-0}}, '''(2)''' = {{int:readerfeedback-level-1}}, '''(3)''' = {{int:readerfeedback-level-2}}, '''(4)''' = {{int:readerfeedback-level-3}}, '''(5)''' = {{int:readerfeedback-level-4}}.",
-	'ratinghistory-graph-scale' => "'''Enschätzunge der Daach''', <font color=\"red\">''(rud)''</font> aanjezeisch em Maaßschtaab ''1 zoh \$1''.",
+	'ratinghistory-graph-scale' => "'''Enschätzunge der Daach''', <style=\"color:red\">''(rud)''</style> aanjezeisch em Maaßschtaab ''1 zoh \$1''.",
 	'right-feedback' => 'Enschäzunge afjevve un Note för Sigge verdeile',
 );
 

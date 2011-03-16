@@ -470,7 +470,7 @@ $messages['de'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Keine „$1“',
-	'recordadmin-edit-info' => 'Diese Seite enthält Vorlagen, die über eigene Formulare verfügen und über diese Registerkarte ausgefüllt werden können.<br /><a href="$1">Hier</a> klicken, um den regulären Bearbeitungsmodus von MediaWiki ohne Formulare zu verwenden.',
+	'recordadmin-edit-info' => 'Diese Seite enthält Vorlagen, die über eigene Bearbeitungsformulare verfügen.<br /><a href="$1">Hier</a> klicken, um den regulären Bearbeitungsmodus von MediaWiki zu verwenden.',
 	'recordadmin-properties' => 'Attribute',
 );
 
@@ -1305,6 +1305,8 @@ $messages['kn'] = array(
 $messages['ksh'] = array(
 	'recordadmin' => 'Datesätz verwallde',
 	'recordadmin-desc' => 'En [[Special:RecordAdmin|Söndersigg]] för Sigge met Datesätz ze fenge un övver e Fommulaa zo ändere.',
+	'recordadmin-specialdesc' => 'En [[Special:RecordAdmin|{{int:specialpage}}]] för övver zopaß Fommulaare Sigge ze söhke un Sigge aanzelääje.',
+	'recordadmin-noforms' => 'Em Momang sinn_er kein Fommulaare enjereschdt för Sigge drövver ze söhke un aanzelääje.',
 	'recordadmin-select' => 'Donn de Zoot Datesatz ußsöke, för die de jet verwallde wells',
 	'recordadmin-createtype' => 'Donn dä Name för ene neue Zoot Datesätz enjäve',
 	'recordadmin-recordtype' => 'Datesatz-Zoote',
@@ -1336,6 +1338,12 @@ $messages['ksh'] = array(
 	'recordadmin-actions' => 'Axjohne',
 	'recordadmin-needscontent' => 'Enhalld dobei donn&nbsp;...',
 	'right-recordadmin' => 'Datesätz fenge un ändere',
+	'recordadmin-export-csv' => '<i lang="en">CSV</i>',
+	'recordadmin-export-pdf' => '<i lang="en">PDF</i>',
+	'recordadmin-notset' => 'Keine „$1“',
+	'recordadmin-edit-info' => 'En heh dä Sigg sen Schabloone dren met eije Fommulaare för ußzefölle.<br />
+Söns donn de <a href="$1">jewöhnlijje Aat vum MediaWiki för et Ändere nämme</a>.',
+	'recordadmin-properties' => 'Eijeschaffte',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

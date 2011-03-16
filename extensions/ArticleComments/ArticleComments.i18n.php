@@ -262,6 +262,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author El libre
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -289,6 +290,8 @@ $messages['ca'] = array(
 	'article-comments-submission-success' => 'Has enviat correctament un comentari sobre "[[$1]]"',
 	'article-comments-submission-view-all' => 'Pots veure [[$1|tots els comentaris sobre aquesta pàgina]]',
 	'article-comments-user-is-blocked' => 'El teu compte d\'usuari està bloquejat per editar  "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'El mode donat per al comentari no és vàlid.
+Els disponibles són "plain", "normal" i "wiki".',
 	'article-comments-comment-missing-name-parameter' => 'Falta el nom',
 	'article-comments-comment-missing-date-parameter' => 'Falta la data del comentari',
 	'article-comments-no-spam' => "Com a mínim un dels camps enviats s'ha marcat com no desitjat.",

@@ -257,6 +257,16 @@ $messages['ca'] = array(
 	'multiupload-desc' => 'Permet als usuaris [[Special:MultipleUpload|carregar diversos fitxers de cop]]',
 	'multipleupload-ignoreallwarnings' => "Ignora '''tots els avisos''' i desa els fitxers igualment.",
 	'multipleupload-saveallfiles' => 'Desa tots els fitxers',
+	'multipleupload-addresswarnings' => 'Si us plau, arregleu els advertiments abans de tornar a carregar els fitxers.',
+	'multipleupload-page' => "{{ns:project}}:Política d'esborrament de fitxers",
+	'multipleupload-text' => "Carregueu múltiples fitxers aquí.
+
+Feu clic a «Navega» i seleccioneu cada fitxer que voleu carregar.
+Podeu carregar des de 1 fins a $1 fitxers cada vegada.
+
+Podeu introduir un '''nom de fitxer destinació''' (és opcional) i donar un '''Resum''' que descrigui el vostre fitxer.
+
+Els fitxers inapropiats seran immediatament esborrats, d'acord amb la [[{{MediaWiki:Multipleupload-page}}|política d'eliminació de fitxers]].",
 	'multiupload-fileuploaded' => "S'ha carregat el fitxer.",
 	'multiupload-toolbox' => 'Carrega múltiples fitxers',
 	'multiupload-no-files' => 'Si us plau, seleccioneu com a mínim un fitxer per a carregar',

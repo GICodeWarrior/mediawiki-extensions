@@ -93,8 +93,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author El libre
+ * @author SMP
  */
 $messages['ca'] = array(
+	'categorymultisortchinese-desc' => "Permet categories que es puguin ordenar amb diferents criteris de l'alfabet xinès",
 	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarí: Pinyin',
 	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarí: Bopomofo',
 	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarí: Wade-Giles',

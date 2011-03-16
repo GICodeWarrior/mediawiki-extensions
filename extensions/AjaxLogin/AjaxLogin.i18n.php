@@ -178,6 +178,8 @@ Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 	'al-nosuchuser' => 'No hi ha cap usuari/a amb el nom "$1". 
  Els noms d\'usuari/a distingeixen entre majúscules i minúscules. 
  Revisa la teva ortografia.',
+	'al-createblocked' => 'La vostra adreça IP té blocada la creació de comptes.',
+	'al-throttled' => 'Heu fet massa intents de contrasenya. Cal que espereu $1 {{PLURAL:$1|segon|segons}} abans de tornar-ho a intentar.',
 );
 
 /** Sorani (کوردی)

@@ -1520,6 +1520,7 @@ $1 inicieu una sessió i $2',
 
 /** Catalan (Català)
  * @author Martorell
+ * @author SMP
  * @author Toniher
  */
 $messages['ca'] = array(
@@ -1601,10 +1602,10 @@ Té el wiki $1 habilitat?</p>",
 	'mwe-missing_desc_see_source' => "A aquest actiu li manca una descripció.
 Comproveu-ne la [$1 font] i ajudeu a descriure'l.",
 	'mwe-am-config_error' => "Error de configuració de l'auxiliar d'addició multimèdia: $1",
+	'mwe-your-recent-uploads' => 'Les vostres càrregues',
 	'mwe-your-recent-uploads-to' => 'Les vostres càrregues recents a $1',
 	'mwe-no_recent_uploads' => 'No hi ha cap càrrega recent',
-	'mwe-not-logged-in-uploads' => 'Pot ser que no hàgiu iniciat una sessió i, per això, no es poden mostrar les pujades més recents.
-$1 inicieu una sessió i $2',
+	'mwe-not-logged-in-uploads' => 'Pot ser que no hàgiu iniciat una sessió i, per això, no es poden mostrar les pujades més recents. [$1 Inicieu una sessió] i [$2 proveu-ho de nou].',
 	'mwe-ie-eye-permision' => "Si feu servir l'Internet Exploreu i heu iniciat una sessió, pot caler que ajusteu els paràmetres de privadesa",
 	'mwe-upload-a-file' => 'Carrega un fitxer nou',
 	'mwe-upload-a-file-to' => 'Carrega un fitxer nou a $1',
@@ -5086,6 +5087,44 @@ $messages['nl'] = array(
 	
 	'mwe-upload-multi' => '{{PLURAL:$1|Bestand|Bestanden}} uploaden',
 	'mwe-review-upload' => '{{PLURAL:$1|Bestandsupload|Bestandsuploads}} controleren',
+);
+
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam Rhk
+ */
+$messages['ne'] = array(
+	'mwe-upload-stats-fileprogress' => '$2को $1',
+	'mwe-upload-unknown-size' => 'अज्ञात आकार',
+	'mwe-cancel-confim' => 'के तपाईंले साँच्चै रद्द गर्न चाहनु भएको हो?',
+	'mwe-successfulupload' => 'उर्ध्वभरण सफल भयो',
+	'mwe-uploaderror' => 'उर्ध्वभरण त्रुटि',
+	'mwe-uploadwarning' => 'उर्ध्वभरण चेतावनी',
+	'mwe-unknown-error' => 'अज्ञात त्रुटि:',
+	'mwe-return-to-form' => 'फार्मतिर फर्कने',
+	'mwe-file-exists-duplicate' => 'यो फाइल निम्न फाइलहरुको नकल प्रति हो:',
+	'mwe-fileexists' => 'यो नाम भएको फाइल पहिलेदेखि नैं छ। यदि तपाईं  परिवर्तन गर्न चाहेको कुरामा सुनिश्चित हुनुहुन्न भनें। कृपया जाँच्नुहोस् <b><code>$1</code></b> ।',
+	'mwe-thumbnail-more' => 'ठूलो बनाउने',
+	'mwe-filesource' => 'स्रोत:',
+	'mwe-filestatus' => 'लेखाधिकार स्थिति:',
+	'mwe-upload' => 'फाइल उर्ध्वभरण गर्ने',
+	'mwe-destfilename' => 'लक्षित फाइल नाम:',
+	'mwe-watch-this-file' => 'यो फाइलको निगरानी गर्ने',
+	'mwe-i-would-like-to' => 'म चाहन्छु',
+	'mwe-upload-in-progress' => 'उर्ध्वभरण प्रगतिमा (यस विण्डोलाई बन्द नगर्नुहोला)',
+	'mwe-uploaded-status' => 'उर्ध्वभरण भयो',
+	'mwe-media_search' => 'मीडियाको खोज',
+	'mwe-am-results_next' => 'अर्को',
+	'mwe-am-results_prev' => 'अघिल्लो',
+	'mwe-am-no_results' => '<b>$1</b>को निम्ति खोजको परिणाम आएन',
+	'mwe-upload_tab' => 'फाइल उर्ध्वभरण गर्ने',
+	'mwe-am-resource_edit' => 'स्रोतको सम्पादन गर्ने: $1',
+	'mwe-unknown_license' => 'अज्ञात अनुमति',
+	'mwe-results_from' => '$1का नतिजाहरु',
+	'mwe-watch_this_page' => 'यो पृष्ठको निगरानी गर्ने',
+	'mwe-do-more-modification' => 'अझ धेरै परिवर्तन गर्ने',
+	'mwe-am-this_wiki-title' => 'यो विकि',
+	'mwe-am-this_wiki-desc' => 'स्थानीय विकि',
+	'mwe-upload-multi' => '{{PLURAL:$1|फाइल|फाइलहरु}} उर्ध्वभरण गर्ने',
 );
 
 /** Dutch (Nederlands)

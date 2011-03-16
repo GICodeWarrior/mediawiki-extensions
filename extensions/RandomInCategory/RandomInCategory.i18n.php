@@ -725,10 +725,14 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
-	'randomincategory-toolbox' => 'Zāzozāzanilli',
-	'randomincategory-label' => 'Neneuhcāyōtl:',
+	'randomincategory' => 'Sâsaìntlèn tlaìxtlapalli ìpan tlaìxmatkàtlàlilòtl',
+	'randomincategory-desc' => '[[Special:Randomincategory|nonkuâkiski tlaìxtlapalli]] tlèn ìka mànas sè saìntlèn tlaìxtlapalli ìpan tlaìxmatkàtlàlilòtl',
+	'randomincategory-toolbox' => 'Sâsaìntlèn tlaìxtlapalli',
+	'randomincategory-nocategory' => 'Tlaìxmatkàtlàlilòtl $1 ayàk nòso ìyỏka kä',
+	'randomincategory-label' => 'Tlaìxmatkàtlàlilòtl:',
 	'randomincategory-submit' => 'Yāuh',
 );
 
