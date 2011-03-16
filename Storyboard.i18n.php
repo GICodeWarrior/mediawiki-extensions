@@ -322,7 +322,7 @@ Gellout a rit [$1 lenn istorioù embannet].',
 Adlennet e vo ganeomp a-benn nebeut.
 Gellout a rit [$2 lenn an istorioù embannet].',
 	'storyreview' => 'Barnadenn an istor',
-	'storyboard-deleteimage' => 'Dilemel ar skeudenn',
+	'storyboard-deleteimage' => 'Diverkañ ar skeudenn',
 	'storyboard-done' => 'Graet',
 	'storyboard-working' => "Oc'h ober...",
 	'storyboard-imagedeletionconfirm' => "Ha sur oc'h hoc'h eus c'hoant da zilemel ar skeudenn-mañ eus an istor da vat ?",
