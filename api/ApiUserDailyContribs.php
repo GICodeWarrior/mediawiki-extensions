@@ -8,7 +8,7 @@ class ApiUserDailyContribs extends ApiBase {
 	 $result = $this->getResult();
 
 	 $userName = $params['user'];
-	 $days = $params['daysAgo'];	
+	 $days = $params['daysago'];	
 	 $user = User::newFromName($userName);
 	 $now = time();
 	 $result->addValue( array( 'query', $this->getModuleName() ),
@@ -24,14 +24,14 @@ class ApiUserDailyContribs extends ApiBase {
 	 public function getAllowedParams() {
 		return array(
 			'user' => null,
-			'daysAgo' => null,
+			'daysago' => null,
 		);
 	 }
 	 
 	public function getParamDescription() {
 		return array(
 			'user' => 'Username to query',
-			'daysAgo' => 'Number of edits since this many days ago',
+			'daysago' => 'Number of edits since this many days ago',
 		);
 	}
 
@@ -40,11 +40,11 @@ class ApiUserDailyContribs extends ApiBase {
 	}
 
 	protected function getExamples() {
-		return 'api.php?action=userdailycontribs&user=WikiSysop&daysAgo=5';
+		return 'api.php?action=userdailycontribs&user=WikiSysop&daysago=5';
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiUserDailyContrib.php 1 $';
+		return __CLASS__ . ': $Id: ApiUserDailyContrib.php 2 $';
 	}
 	 //2009-05-01-18-35-35
 	 //YYYY-MM-DD-HH-MM-SS
