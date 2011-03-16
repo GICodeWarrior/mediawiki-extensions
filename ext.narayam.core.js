@@ -407,7 +407,7 @@ $.narayam = new ( function() {
 			$select.change();
 		}
 		var enabledCookie = $.cookie( 'narayam-enabled' );
-		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnableByDefault' ) && enabledCookie !== '0' ) ) {
+		if ( enabledCookie == '1' || ( mw.config.get( 'wgNarayamEnabledByDefault' ) && enabledCookie !== '0' ) ) {
 			that.enable();
 		}
 		// Renew the narayam-enabled cookie. naraym-scheme is renewed by setScheme()
