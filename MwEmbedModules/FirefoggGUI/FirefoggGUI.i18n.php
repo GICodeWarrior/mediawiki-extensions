@@ -2630,7 +2630,7 @@ $messages['ksh'] = array(
 	'fogg-height-title' => 'Dämm Viddejo sing Hühde',
 	'fogg-height-help' => 'Der Viddejo op de aanjejovve Hühde bränge.',
 	'fogg-videoBitrate-title' => 'Dämm Viddejo sing Bitraat',
-	'fogg-videoBitrate-help' => 'Dämm Viddejo sing Bitraat säz de Bitraat för et Koddeere för dä Viddejo en Killobits pro Sekund.',
+	'fogg-videoBitrate-help' => '„Dämm Viddejo sing Bitraat“ säz de Bitraat för et Koddeere fun däm Viddejo en Killobits pro Sekund.',
 	'fogg-twopass-title' => 'Kodeere en zweij Dorschjäng',
 	'fogg-twopass-help' => 'Kodeere en zweij Dorschjäng sorresch för en besser Qualliteit, endämm dat et zweijmohl övver dä Viddejo jeiht',
 	'fogg-denoise-title' => 'Felter jääje Ruusche',
@@ -2935,6 +2935,13 @@ $messages['myv'] = array(
 	'fogg-select_new_file' => 'Кочкамс од файла',
 	'fogg-latest-firefox' => 'весемеде од Толривезькесь (Firefox)',
 	'fogg-hidepreview' => 'Кекшемс васнянь невтевкс',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Teòtlalili
+ */
+$messages['nah'] = array(
+	'fogg-title-title' => 'Tòkâtli',
 );
 
 /** Dutch (Nederlands)
