@@ -3,16 +3,19 @@
  */
 ( function( $, mw ) {
 
+var eventBase = 'ext.vector.sectionEditLinks-bucket:';
+var cookieBase = 'ext.vector.sectionEditLinks-';
+
 if ( mw.config.get( 'wgVectorSectionEditLinksBucketTest', false ) ) {
 	// If the version in the client's cookie doesn't match wgVectorSectionEditLinksExperiment, then
 	// we need to disregard the bucket they may already be in to ensure accurate redistribution
-	var currentExperiment = $.cookie( 'ext.vector.sectionEditLinks-experiment' );
+	var currentExperiment = $.cookie( cookieBase + 'experiment' );
 	var experiment = Number( mw.config.get( 'wgVectorSectionEditLinksExperiment', 0 ) );
 	var bucket = null;
 	if ( currentExperiment === null || Number( currentExperiment ) != experiment ) {
-		$.cookie( 'ext.vector.sectionEditLinks-experiment', experiment );
+		$.cookie( cookieBase + 'experiment', experiment );
 	} else {
-		bucket = $.cookie( 'ext.vector.sectionEditLinks-bucket' );
+		bucket = $.cookie( cookieBase + 'bucket' );
 	}
 	if ( bucket === null ) {
 		// Percentage chance of being tracked
@@ -21,27 +24,28 @@ if ( mw.config.get( 'wgVectorSectionEditLinksBucketTest', false ) ) {
 		) );
 		// 0 = not tracked, 1 = tracked with old version, 2 = tracked with new version
 		bucket = ( Math.random() * 100 ) < odds ? Number( Math.random() < 0.5 ) + 1 : 0;
-		$.cookie( 'ext.vector.sectionEditLinks-bucket', bucket, { 'path': '/', 'expires': 30 } );
+		$.cookie( cookieBase + 'bucket', bucket, { 'path': '/', 'expires': 30 } );
 		// If we are going to track this person from now on, let's also track which bucket we put
 		// them into and when
 		if ( bucket > 0 && 'trackAction' in $ ) {
-			$.trackAction( 'ext.vector.sectionEditLinks-bucket:' + bucket + '@' + experiment );
+			$.trackAction( eventBase + bucket + '@' + experiment );
 		}
 	}
 }
 if ( bucket > 0 ) {
 	// Transform the targets of section edit links to route through the click tracking API
-	$( 'span.editsection a' ).each( function() {
-		var session = $.cookie( 'clicktracking-session' );
-		var editUrl = $( this ).attr( 'href' );
-		editUrl += ( editUrl.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( {
+	var session = $.cookie( 'clicktracking-session' );
+	$( 'span.editsection a, #ca-edit a' ).each( function() {
+		var event = eventBase + bucket + '@' + experiment;
+		if ( $(this).is( '#ca-edit a' ) ) {
+			event += '-tab';
+		}
+		var href = $( this ).attr( 'href' );
+		var editUrl = href + ( href.indexOf( '?' ) >= 0 ? '&' : '?' ) + $.param( {
 			'clicktrackingsession': session,
-			'clicktrackingevent':
-				'ext.vector.sectionEditLinks-bucket:' + bucket + '@' + experiment + '-save'
+			'clicktrackingevent': event + '-save'
 		} );
-		$(this).attr( 'href', $.trackActionURL( editUrl,
-			'ext.vector.sectionEditLinks-bucket: ' + bucket + '@' + experiment + '-click'
-		) );
+		$(this).attr( 'href', $.trackActionURL( editUrl, event + '-click' ) );
 	} );
 	if ( bucket == 2 ) {
 		// Move the link over to be next to the heading text and style it with an icon
