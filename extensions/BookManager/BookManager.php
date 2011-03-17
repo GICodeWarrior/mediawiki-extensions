@@ -63,16 +63,7 @@ $wgBookManagerNavbar = true;
 $wgCommunityCollectionNamespace = NS_PROJECT;
 
 /**** Register magic words ****/
-$wgExtensionFunctions[] = 'BookManagerFunctions::register';
-
-define( 'MAG_PREVPAGENAME',	'magicbookmanagercustomvar0' );
-define( 'MAG_PREVPAGENAMEE',	'magicbookmanagercustomvar1' );
-define( 'MAG_NEXTPAGENAME',	'magicbookmanagercustomvar2' );
-define( 'MAG_NEXTPAGENAMEE',	'magicbookmanagercustomvar3' );
-define( 'MAG_ROOTPAGENAME',	'magicbookmanagercustomvar4' );
-define( 'MAG_ROOTPAGENAMEE',	'magicbookmanagercustomvar5' );
-define( 'MAG_CHAPTERNAME',	'magicbookmanagercustomvar6' );
-define( 'MAG_CHAPTERNAMEE',	'magicbookmanagercustomvar7' );
+$wgHooks['ParserFirstCallInit'][] = 'BookManagerFunctions::register';
 
 $wgHooks['LanguageGetMagic'][] = 'BookManagerFunctions::LanguageGetMagic';
 
