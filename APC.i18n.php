@@ -4468,6 +4468,7 @@ $messages['myv'] = array(
 $messages['nah'] = array(
 	'viewapc-display-filename' => 'Èwaltòkâtli',
 	'viewapc-display-info' => 'Tōcāitl',
+	'viewapc-display-mtime' => 'Òmopảtlak',
 	'viewapc-display-deletion_time' => 'Tlatlaìxpôpolòlli',
 	'viewapc-ls-submit' => '¡Yāuh!',
 	'viewapc-ls-header-name' => 'Tōcāitl',
