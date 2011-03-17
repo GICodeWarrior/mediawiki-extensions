@@ -413,6 +413,8 @@ $messages['nl'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Aanmaken',
 	'articletocategory2-create-category-under-category-text' => 'Subcategorie aan deze categorie toevoegen',
 	'articletocategory2-create-category-under-category-button' => 'Aanmaken',
+	'right-ArticleToCategory2' => 'Pagina aan categorie toevoegen',
+	'right-ArticleToCategory2AddCat' => 'Categorie aan categorie toevoegen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
