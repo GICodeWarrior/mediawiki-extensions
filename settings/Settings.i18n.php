@@ -13136,12 +13136,13 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'configure-setting-wgActionPaths-value' => 'URL nemachiyōtīlli',
 	'configure-setting-wgExtraLanguageNames-value' => 'Tōcāitl',
 	'configure-setting-wgSpecialPageGroups-key' => 'Olōlli',
-	'configure-setting-wgDebugLogGroups-value' => 'Tlahcuilōlli',
+	'configure-setting-wgDebugLogGroups-value' => 'Èwalli',
 );
 
 /** Dutch (Nederlands)
