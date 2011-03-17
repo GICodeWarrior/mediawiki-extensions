@@ -29,8 +29,8 @@
      **/
     $.toJSON = function(o)
     {
-        if (typeof(JSON) == 'object' && JSON.stringify)
-            return JSON.stringify(o);
+        if (typeof window.JSON == 'object' && window.JSON.stringify)
+            return window.JSON.stringify(o);
         
         var type = typeof(o);
     
