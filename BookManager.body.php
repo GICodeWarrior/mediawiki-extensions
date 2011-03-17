@@ -3,65 +3,55 @@
 class BookManagerFunctions {
 	const VERSION = "0.1.6 ";
 
-	static function register( ) {
-		global $wgParser;
-
+	static function register( $parser ) {
 		# optional SFH_NO_HASH to omit the hash from calls (e.g. {{int:...}}
 		# instead of {{#int:...}})
-		$wgParser->setFunctionHook( 'prevpagename',	array( __CLASS__, 'prevpagename' ),		SFH_NO_HASH );
-		$wgParser->setFunctionHook( 'prevpagenamee',	array( __CLASS__, 'prevpagenamee' ),		SFH_NO_HASH );
-		$wgParser->setFunctionHook( 'nextpagename',	array( __CLASS__, 'nextpagename' ),		SFH_NO_HASH );
-		$wgParser->setFunctionHook( 'nextpagenamee',	array( __CLASS__, 'nextpagenamee' ),		SFH_NO_HASH );
-		$wgParser->setFunctionHook( 'rootpagename',	array( __CLASS__, 'rootpagename' ),		SFH_NO_HASH );
-		$wgParser->setFunctionHook( 'rootpagenamee',	array( __CLASS__, 'rootpagenamee' ),		SFH_NO_HASH );
-		$wgParser->setFunctionHook( 'chaptername',	array( __CLASS__, 'chaptername' ),		SFH_NO_HASH );
-		$wgParser->setFunctionHook( 'chapternamee',	array( __CLASS__, 'chapternamee' ),		SFH_NO_HASH );
+		$parser->setFunctionHook( 'prevpagename',   array( __CLASS__, 'prevpagename' ),  SFH_NO_HASH );
+		$parser->setFunctionHook( 'prevpagenamee',  array( __CLASS__, 'prevpagenamee' ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'nextpagename',   array( __CLASS__, 'nextpagename' ),  SFH_NO_HASH );
+		$parser->setFunctionHook( 'nextpagenamee',  array( __CLASS__, 'nextpagenamee' ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'rootpagename',   array( __CLASS__, 'rootpagename' ),  SFH_NO_HASH );
+		$parser->setFunctionHook( 'rootpagenamee',  array( __CLASS__, 'rootpagenamee' ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'chaptername',    array( __CLASS__, 'chaptername' ),   SFH_NO_HASH );
+		$parser->setFunctionHook( 'chapternamee',   array( __CLASS__, 'chapternamee' ),  SFH_NO_HASH );
+
+		return true;
 	}
 	/**** All the BookManager functions to declare magicword id ****/
 	static function DeclareVarIds( &$aCustomVariableIds ) {
 		# aCustomVariableIds is where MediaWiki wants to store its
 		# list of custom variable ids. We oblige by adding ours:
-		$aCustomVariableIds[] = MAG_PREVPAGENAME;
-		$aCustomVariableIds[] = MAG_PREVPAGENAMEE;
-		$aCustomVariableIds[] = MAG_NEXTPAGENAME;
-		$aCustomVariableIds[] = MAG_NEXTPAGENAMEE;
-		$aCustomVariableIds[] = MAG_ROOTPAGENAME;
-		$aCustomVariableIds[] = MAG_ROOTPAGENAMEE;
-		$aCustomVariableIds[] = MAG_CHAPTERNAME;
-		$aCustomVariableIds[] = MAG_CHAPTERNAMEE;
+		$aCustomVariableIds[] = 'prevpagename';
+		$aCustomVariableIds[] = 'prevpagenamee';
+		$aCustomVariableIds[] = 'nextpagename';
+		$aCustomVariableIds[] = 'nextpagenamee';
+		$aCustomVariableIds[] = 'rootpagename';
+		$aCustomVariableIds[] = 'rootpagenamee';
+		$aCustomVariableIds[] = 'chaptername';
+		$aCustomVariableIds[] = 'chapternamee';
 		return true;
 	}
- 	/**** All the BookManager functions to declare magicwords ****/
+	/**** All the BookManager functions to declare magicwords ****/
 	static function LanguageGetMagic( &$magicWords, $langCode = "en" ) {
-		switch ( $langCode ) {
-			default:
-			# PREVPAGENAME
-			$magicWords[MAG_PREVPAGENAME] = array ( 0, 'PREVPAGENAME' );
-			$magicWords['prevpagename'] = $magicWords[MAG_PREVPAGENAME];
-			# PREVPAGENAME
-			$magicWords[MAG_PREVPAGENAMEE] = array ( 0, 'PREVPAGENAMEE' );
-			$magicWords['prevpagenamee'] = $magicWords[MAG_PREVPAGENAMEE];
-			# NEXTPAGENAME
-			$magicWords[MAG_NEXTPAGENAME] = array ( 0, 'NEXTPAGENAME' );
-			$magicWords['nextpagename'] = $magicWords[MAG_NEXTPAGENAME];
- 			# NEXTPAGENAMEE
-			$magicWords[MAG_NEXTPAGENAMEE] = array ( 0, 'NEXTPAGENAMEE' );
-			$magicWords['nextpagenamee'] = $magicWords[MAG_NEXTPAGENAMEE];
-			# ROOTPAGENAME
-			$magicWords[MAG_ROOTPAGENAME] = array ( 0, 'ROOTPAGENAME' , 'BOOKNAME' );
-			$magicWords['rootpagename'] = $magicWords[MAG_ROOTPAGENAME];
-			# ROOTPAGENAMEE
-			$magicWords[MAG_ROOTPAGENAMEE] = array ( 0, 'ROOTPAGENAMEE' , 'BOOKNAMEE' );
-			$magicWords['rootpagenamee'] = $magicWords[MAG_ROOTPAGENAMEE];
-			# CHAPTERNAME
-			$magicWords[MAG_CHAPTERNAME] = array ( 0, 'CHAPTERNAME' );
-			$magicWords['chaptername'] = $magicWords[MAG_CHAPTERNAME];
-			# CHAPTERNAMEE
-			$magicWords[MAG_CHAPTERNAMEE] = array ( 0, 'CHAPTERNAMEE' );
-			$magicWords['chapternamee'] = $magicWords[MAG_CHAPTERNAMEE];
-		}
+		# PREVPAGENAME
+		$magicWords['prevpagename'] = array ( 0, 'PREVPAGENAME' );
+		# PREVPAGENAME
+		$magicWords['prevpagenamee'] = array ( 0, 'PREVPAGENAMEE' );
+		# NEXTPAGENAME
+		$magicWords['nextpagename'] = array ( 0, 'NEXTPAGENAME' );
+		# NEXTPAGENAMEE
+		$magicWords['nextpagenamee'] = array ( 0, 'NEXTPAGENAMEE' );
+		# ROOTPAGENAME
+		$magicWords['rootpagename'] = array ( 0, 'ROOTPAGENAME' , 'BOOKNAME' );
+		# ROOTPAGENAMEE
+		$magicWords['rootpagenamee'] = array ( 0, 'ROOTPAGENAMEE' , 'BOOKNAMEE' );
+		# CHAPTERNAME
+		$magicWords['chaptername'] = array ( 0, 'CHAPTERNAME' );
+		# CHAPTERNAMEE
+		$magicWords['chapternamee'] = array ( 0, 'CHAPTERNAMEE' );
+
 		return true;
-	}	
+	}
 /**** All the BookManager private functions ****/
 	
 
@@ -257,28 +247,28 @@ class BookManagerFunctions {
 
 	static function AssignAValue( &$parser, &$cache, &$magicWordId, &$ret ) {
 		switch( $magicWordId ) {
-		case MAG_PREVPAGENAME:
+		case 'prevpagename':
 			$ret = BookManagerFunctions::prevpagename( $parser );
 			return true;
-		case MAG_PREVPAGENAMEE:
+		case 'prevpagenamee':
 			$ret = BookManagerFunctions::prevpagenamee( $parser );
 			return true;
-		case MAG_NEXTPAGENAME:
+		case 'nextpagename':
 			$ret = BookManagerFunctions::nextpagename( $parser );
 			return true;
-		case MAG_NEXTPAGENAMEE:
+		case 'nextpagenamee':
 			$ret = BookManagerFunctions::nextpagenamee( $parser );
 			return true;
-		case MAG_ROOTPAGENAME:
+		case 'rootpagename':
 			$ret = BookManagerFunctions::rootpagename( $parser );
 			return true;
-		case MAG_ROOTPAGENAMEE:
+		case 'rootpagenamee':
 			$ret = BookManagerFunctions::rootpagenamee( $parser );
 			return true;
-		case MAG_CHAPTERNAME:
+		case 'chaptername':
 			$ret = BookManagerFunctions::chaptername( $parser );
 			return true;
-		case MAG_CHAPTERNAMEE:
+		case 'chapternamee':
 			$ret = BookManagerFunctions::chapternamee( $parser );
 			return true;
 		}
@@ -293,12 +283,12 @@ class BookManagerFunctions {
 */
 
 	static function addText( &$out, &$text ) {
-		global $wgTitle, $wgParser, $wgBookManagerNamespaces, $wgBookManagerNavbar;
-		$ns = $wgTitle->getNamespace();
+		global $wgParser, $wgBookManagerNamespaces, $wgBookManagerNavbar;
+		$ns = $out->getTitle()->getNamespace();
 		$opt = array(
 			'parseinline',
 		);
-		$currenttitletext = $wgTitle->getText();
+		$currenttitletext = $out->getTitle()->getText();
 		$prev = self::pageText( $wgParser, $currenttitletext, - 1 );
 		$base = Title::newFromText($currenttitletext)->getBaseText();
 		$next = self::pageText( $wgParser, $currenttitletext, + 1 );
