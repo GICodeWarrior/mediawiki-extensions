@@ -33,9 +33,7 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'wfWikimediaMobileVars';
 function wfWikimediaMobileAddJs( &$outputPage, &$skin ) {
 	global $wgOut, $wgExtensionAssetsPath, $wgWikimediaMobileVersion;
 
-	# Live hack to put mobile redirect script in <head> --catrope Mar 5, 2011
 	$wgOut->addHeadItem( 'mobileredirect', Html::linkedScript(
-	#$wgOut->addScript( Html::linkedScript( 
 		"$wgExtensionAssetsPath/WikimediaMobile/MobileRedirect.js?$wgWikimediaMobileVersion"
 	) );
 	return true;
