@@ -1193,6 +1193,33 @@ $messages['mn'] = array(
 	'cb_all_op' => 'Бүгдийг',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Teòtlalili
+ */
+$messages['nah'] = array(
+	'categorybrowser' => 'Tlatlaìxmatkàtlàlilòyàn nẻmini',
+	'cb_show_no_parents_only' => 'Monèxtìs san tlaìxmatkàtlalilòmë tlèn âmò kipiâkë tlapantlaìxmatkàtlàlilòmë',
+	'cb_cat_name_filter' => 'Motèmòs in tlaìxmatkàtlàlilòtl ìka ìtòka:',
+	'cb_cat_name_filter_clear' => 'Xikpàchilwi nikàn ìka tikìxpôpolòs in tlaìxmatkàtlàlilòtòkâtli',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|tlaìxmatkàtlàlilòpilli|tlaìxmatkàtlàlilòpiltìn}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|tlaìxtlapalli|tlaìxtlapaltin}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|èwalli|èwaltin}}',
+	'cb_has_parentcategories' => 'Tlapantlaìxmatkàtlàlilòmë (intlà katêkë)',
+	'cb_previous_items_link' => 'Achtỏpan',
+	'cb_next_items_link' => 'Oksèya',
+	'cb_next_items_stats' => '(ìpan $1)',
+	'cb_cat_subcats' => 'tlaìxmatkàtlàlilòpilòltin',
+	'cb_cat_pages' => 'tlaìxtlapaltin',
+	'cb_cat_files' => 'èwaltin',
+	'cb_apply_button' => 'Motlàlilìs',
+	'cb_all_op' => 'Mochtìn',
+	'cb_or_op' => 'nòso',
+	'cb_and_op' => 'wàn',
+	'cb_edit_left_hint' => 'opòchkan mòlinìs, intlà kualli',
+	'cb_edit_right_hint' => 'Yèuhkàn mòlinìs, intlà kualli',
+	'cb_edit_remove_hint' => 'Mìxpôpolòs, intlà kualli',
+);
+
 /** Dutch (Nederlands)
  * @author Kjell
  * @author SPQRobin
