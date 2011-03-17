@@ -42,7 +42,7 @@ if ( ! defined( 'MEDIAWIKI' ) ) {
     die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 
-$wgExtensionFunctions[] = 'efSetupArrayExtension';
+$wgHooks['ParserFirstCallInit'][] = 'efArrayExtensionParserFirstCallInit';
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
@@ -748,33 +748,35 @@ class ArrayExtension {
 	}
 }
 
-function efSetupArrayExtension() {
-    global $wgParser, $wgArrayExtension;
+function efArrayExtensionParserFirstCallInit( $parser ) {
+    global $wgArrayExtension;
 
     $wgArrayExtension = new ArrayExtension;
-    $wgParser->setFunctionHook( 'arraydefine', array( &$wgArrayExtension, 'arraydefine' ) );
+    $parser->setFunctionHook( 'arraydefine', array( &$wgArrayExtension, 'arraydefine' ) );
 
-    if ( defined( get_class( $wgParser ) . '::SFH_OBJECT_ARGS' ) ) {
-        $wgParser->setFunctionHook( 'arrayprint',  array( &$wgArrayExtension, 'arrayprintObj' ), SFH_OBJECT_ARGS );
+    if ( defined( get_class( $parser ) . '::SFH_OBJECT_ARGS' ) ) {
+        $parser->setFunctionHook( 'arrayprint',  array( &$wgArrayExtension, 'arrayprintObj' ), SFH_OBJECT_ARGS );
     } else {
-        $wgParser->setFunctionHook( 'arrayprint', array( &$wgArrayExtension, 'arrayprint' ) );
+        $parser->setFunctionHook( 'arrayprint', array( &$wgArrayExtension, 'arrayprint' ) );
     }
 
-    $wgParser->setFunctionHook( 'arraysize',        array( &$wgArrayExtension, 'arraysize' ) );
-    $wgParser->setFunctionHook( 'arrayindex',       array( &$wgArrayExtension, 'arrayindex' ) );
-    $wgParser->setFunctionHook( 'arraysearch',      array( &$wgArrayExtension, 'arraysearch' ) );
+    $parser->setFunctionHook( 'arraysize',        array( &$wgArrayExtension, 'arraysize' ) );
+    $parser->setFunctionHook( 'arrayindex',       array( &$wgArrayExtension, 'arrayindex' ) );
+    $parser->setFunctionHook( 'arraysearch',      array( &$wgArrayExtension, 'arraysearch' ) );
 
-    $wgParser->setFunctionHook( 'arraysort',        array( &$wgArrayExtension, 'arraysort' ) );
-    $wgParser->setFunctionHook( 'arrayunique',      array( &$wgArrayExtension, 'arrayunique' ) );
-    $wgParser->setFunctionHook( 'arrayreset',       array( &$wgArrayExtension, 'arrayreset' ) );
+    $parser->setFunctionHook( 'arraysort',        array( &$wgArrayExtension, 'arraysort' ) );
+    $parser->setFunctionHook( 'arrayunique',      array( &$wgArrayExtension, 'arrayunique' ) );
+    $parser->setFunctionHook( 'arrayreset',       array( &$wgArrayExtension, 'arrayreset' ) );
 
-    $wgParser->setFunctionHook( 'arraymerge',       array( &$wgArrayExtension, 'arraymerge' ) );
-    $wgParser->setFunctionHook( 'arrayslice',       array( &$wgArrayExtension, 'arrayslice' ) );
+    $parser->setFunctionHook( 'arraymerge',       array( &$wgArrayExtension, 'arraymerge' ) );
+    $parser->setFunctionHook( 'arrayslice',       array( &$wgArrayExtension, 'arrayslice' ) );
 
-    $wgParser->setFunctionHook( 'arrayunion',       array( &$wgArrayExtension, 'arrayunion' ) );
-    $wgParser->setFunctionHook( 'arrayintersect',   array( &$wgArrayExtension, 'arrayintersect' ) );
-    $wgParser->setFunctionHook( 'arraydiff',        array( &$wgArrayExtension, 'arraydiff' ) );
-    $wgParser->setFunctionHook( 'arraysearcharray', array( &$wgArrayExtension, 'arraysearcharray' ) );
+    $parser->setFunctionHook( 'arrayunion',       array( &$wgArrayExtension, 'arrayunion' ) );
+    $parser->setFunctionHook( 'arrayintersect',   array( &$wgArrayExtension, 'arrayintersect' ) );
+    $parser->setFunctionHook( 'arraydiff',        array( &$wgArrayExtension, 'arraydiff' ) );
+    $parser->setFunctionHook( 'arraysearcharray', array( &$wgArrayExtension, 'arraysearcharray' ) );
+
+	return true;
 }
 
 function efArrayExtensionLanguageGetMagic( &$magicWords, $langCode ) {
