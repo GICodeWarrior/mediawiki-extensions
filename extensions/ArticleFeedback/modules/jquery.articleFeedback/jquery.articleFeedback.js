@@ -224,8 +224,8 @@ $.articleFeedback = {
 							data.query.articlefeedback.length &&
 							typeof data.query.articlefeedback[0].ratings !== 'undefined'
 						) {
-							if ( 'expired' in data.query.articlefeedback[0] ) {
-								if ( data.query.articlefeedback[0].expired == true ) {
+							if ( 'status' in data.query.articlefeedback[0] ) {
+								if ( data.query.articlefeedback[0].status == 'expired' ) {
 									expired = true;
 								}
 							}

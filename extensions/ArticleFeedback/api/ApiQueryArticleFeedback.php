@@ -104,6 +104,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		}
 
 		// Ratings can only be expired if the user has rated before
+		$ratings[$params['pageid']]['status'] = 'current';
 		if ( $params['userrating'] && $userRatedArticle ) {
 			$dbr = wfGetDb( DB_SLAVE );
 
@@ -121,8 +122,8 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			);
 
 			if ( $res && $dbr->numRows( $res ) > $wgArticleFeedbackRatingLifetime ) {
-				// Include expired flag
-				$ratings[$params['pageid']]['expired'] = true;
+				// Expired status
+				$ratings[$params['pageid']]['status'] = 'expired';
 			}
 		}
 		
