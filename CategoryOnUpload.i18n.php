@@ -488,9 +488,10 @@ $messages['ms'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
-	'categoryonupload-label' => 'Neneuhcāyōtl:',
+	'categoryonupload-label' => 'Tlaìxmatkàtlàlilòtl:',
 );
 
 /** Low German (Plattdüütsch)
