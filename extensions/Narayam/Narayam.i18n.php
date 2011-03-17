@@ -157,6 +157,43 @@ $messages['fr'] = array(
 	'narayam-help-page' => 'Aide: Saisie au clavier',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'narayam-desc' => 'Permite engadir métodos de entrada personalizados para os campos de entrada',
+	'narayam-toggle-ime' => 'Para conmutar o método de entrada ($1)',
+	'narayam-help-page' => 'Help:Escritura',
+	'narayam-checkbox-tooltip' => 'Para activar e desactivar o método de entrada',
+	'narayam-ta99' => 'Tamil99',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'narayam-desc' => 'Macht benutzerdefinierti Yygabemethode fir Yygabefälder megli',
+	'narayam-toggle-ime' => 'Yygabemethode umschalte ($1)',
+	'narayam-help-page' => 'Help:Yygabe',
+	'narayam-checkbox-tooltip' => 'Yygabemethode aa- un abstelle',
+	'narayam-hi-inscript' => 'Hindi (InScript)',
+	'narayam-kn' => 'Kannada (Transliteration)',
+	'narayam-kn-inscript' => 'Kannada (InScript)',
+	'narayam-ml' => 'Malayalam (Transliteration)',
+	'narayam-ml-inscript' => 'Malayalam (InScript)',
+	'narayam-or' => 'Oriya (Transliteration)',
+	'narayam-or-inscript' => 'Oriya (InScript)',
+	'narayam-sa' => 'Sanskrit (Transliteration)',
+	'narayam-sa-inscript' => 'Sanskrit (InScript)',
+	'narayam-si-singlish' => 'Singhalesisch (Singlish)',
+	'narayam-si-wijesekara' => 'Singhalesisch (Wijesekara)',
+	'narayam-ta99' => 'Tamil (Tamil 99)',
+	'narayam-ta' => 'Tamil (Transliteration)',
+	'narayam-bn-avro' => 'Bengalisch (Avro)',
+	'narayam-bn-inscript' => 'Bengalisch (InScript)',
+	'narayam-bn-nkb' => 'Bengalisch (NKB)',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author McDutchie
@@ -302,6 +339,7 @@ $messages['mk'] = array(
 /** Malayalam (മലയാളം)
  * @author Junaid P V
  * @author Junaidpv
+ * @author Praveenp
  * @author Vssun
  */
 $messages['ml'] = array(
@@ -311,9 +349,15 @@ $messages['ml'] = array(
 	'narayam-checkbox-tooltip' => 'ഇൻപുട്ട് മെത്തേഡ് നിയന്ത്രിക്കാൻ ഇതുപയോഗിക്കുക',
 	'narayam-hi-inscript' => 'ഹിന്ദി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-kn' => 'കന്നഡ ലിപ്യന്തരണം',
+	'narayam-kn-inscript' => 'കന്നട ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-ml' => 'മലയാളം ലിപ്യന്തരണം',
 	'narayam-ml-inscript' => 'മലയാളം ഇൻസ്ക്രിപ്റ്റ്',
+	'narayam-or' => 'ഒറിയ ലിപ്യന്തരണം',
+	'narayam-or-inscript' => 'ഒറിയ ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-sa' => 'സംസ്കൃതം ലിപ്യന്തരണം',
+	'narayam-sa-inscript' => 'സംസ്കൃതം ഇൻസ്ക്രിപ്റ്റ്',
+	'narayam-si-singlish' => 'സിംഹള സിൻഗ്ലീഷ്',
+	'narayam-si-wijesekara' => 'സിംഹള വിജെശേഖര',
 	'narayam-ta99' => 'തമിഴ്99',
 	'narayam-ta' => 'തമിഴ് ലിപ്യന്തരണം',
 	'narayam-bn-avro' => 'ബംഗാളി അവ്രൊ',
@@ -399,6 +443,31 @@ $messages['ru'] = array(
 	'narayam-bn-nkb' => 'Бенгальский NKB',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'narayam-toggle-ime' => 'Киллэрии ньыматын уларытарга ($1)',
+	'narayam-help-page' => 'Help:Киллэрии',
+	'narayam-checkbox-tooltip' => 'Киллэрии ньыматын холбооһун уонна араарыы',
+	'narayam-hi-inscript' => 'Хиинди инскрипт',
+	'narayam-kn' => 'Каннадаа транслитерацията',
+	'narayam-kn-inscript' => 'Каннадаа инскрипт',
+	'narayam-ml' => 'Малаай транслитерацията',
+	'narayam-ml-inscript' => 'Малаай инскрипт',
+	'narayam-or' => 'Орийа транслитерацията',
+	'narayam-or-inscript' => 'Орийа инскрипт',
+	'narayam-sa' => 'Санскрит транслитерацията',
+	'narayam-sa-inscript' => 'Санскрит инскрипт',
+	'narayam-si-singlish' => 'Синһаала сиинглиш',
+	'narayam-si-wijesekara' => 'Видьэсэкээр синһаала',
+	'narayam-ta99' => 'Тамил99',
+	'narayam-ta' => 'Тамиил транслитерацията',
+	'narayam-bn-avro' => 'Бэнгээл Авро',
+	'narayam-bn-inscript' => 'Бэнгээл инскрипт',
+	'narayam-bn-nkb' => 'Бэнгээл NKB',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */
@@ -470,9 +539,17 @@ $messages['vi'] = array(
 	'narayam-toggle-ime' => 'Bật/tắt bộ gõ ($1)',
 	'narayam-help-page' => 'Help:Bộ gõ',
 	'narayam-checkbox-tooltip' => 'Bật/tắt bộ gõ',
+	'narayam-hi-inscript' => 'InScript Hindi',
+	'narayam-kn' => 'Chuyển tự tiếng Kannada',
+	'narayam-kn-inscript' => 'InScript Kannada',
 	'narayam-ml' => 'Chuyển tự tiếng Malayalam',
 	'narayam-ml-inscript' => 'InScript Malayalam',
+	'narayam-or' => 'Chuyển tự tiếng Oriya',
+	'narayam-or-inscript' => 'InScript Oriya',
 	'narayam-sa' => 'Chuyển tự tiếng Phạn',
+	'narayam-sa-inscript' => 'InScript Phạn',
+	'narayam-si-singlish' => 'Singlish Sinhala',
+	'narayam-si-wijesekara' => 'Wijesekara Sinhala',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Chuyển tự tiếng Tamil',
 	'narayam-bn-avro' => 'Avro Bengal',
@@ -489,9 +566,17 @@ $messages['zh-hans'] = array(
 	'narayam-toggle-ime' => '切换 IM ($1)',
 	'narayam-help-page' => 'Help:打字',
 	'narayam-checkbox-tooltip' => '要打开和关闭切换输入的法',
+	'narayam-hi-inscript' => '印地语 InScript',
+	'narayam-kn' => '卡纳达语音译',
+	'narayam-kn-inscript' => '卡纳达语 InScript',
 	'narayam-ml' => '马拉雅拉姆语音译',
 	'narayam-ml-inscript' => '马拉雅拉姆语 InScript',
+	'narayam-or' => '奥里亚文音译',
+	'narayam-or-inscript' => '奥里亚文 InScript',
 	'narayam-sa' => '梵语的音译',
+	'narayam-sa-inscript' => '梵语 InScript',
+	'narayam-si-singlish' => '僧伽罗语新式',
+	'narayam-si-wijesekara' => '僧伽罗语维杰塞克拉',
 	'narayam-ta99' => '泰米尔99',
 	'narayam-ta' => '泰米尔音译',
 	'narayam-bn-avro' => '孟加拉文阿夫罗',

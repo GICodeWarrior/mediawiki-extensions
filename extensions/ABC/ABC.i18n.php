@@ -700,10 +700,11 @@ $messages['mzn'] = array(
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  * @author Ricardo gs
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'abc-desc' => 'Ticcēntilīz <code>&lt;abc&gt;</code> ic tictequitiltīz ABC cuīcayōtlahtōliztli',
-	'abcdownload' => 'Tictemōz:',
+	'abcdownload' => 'Motẻmowìs:',
 );
 
 /** Low German (Plattdüütsch)

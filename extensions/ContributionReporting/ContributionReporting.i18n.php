@@ -2287,7 +2287,10 @@ $messages['hr'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimumi (USD)',
 	'fundraiserstats-tab-ytd' => 'Od početka godine (USD)',
 	'fundraiserstats-instructions' => 'Da biste pogledali statistiku za neki dan, pomaknite kursor iznad prikaza za taj dan. Na grafikonu je svaka godina prikazana drugom bojom.',
+	'fundraiserstats-customize' => 'Prilagodite',
+	'fundraiserstats-show-years' => 'Prikaži sljedeće godine:',
 	'fundraiserstats-time-zone' => 'Vremenska zona:',
+	'fundraiserstats-utc' => '(prema UTC-u)',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

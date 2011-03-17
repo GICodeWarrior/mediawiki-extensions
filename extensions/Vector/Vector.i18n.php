@@ -153,11 +153,13 @@ $messages['ba'] = array(
 
 /** Bavarian (Boarisch)
  * @author Mucalexx
+ * @author ✓
  */
 $messages['bar'] = array(
 	'vector-desc' => 'Vabessarungen ån da Vektor-Benutzerowerflächen',
 	'vector-simplesearch-search' => 'Suach',
 	'vector-simplesearch-containing' => 'Voitextsuach noch ...',
+	'vector-noexperiments-preference' => 'Ned an Funktions-Experimentn teilnemma',
 );
 
 /** Belarusian (Беларуская)
@@ -428,7 +430,7 @@ Als angemeldeter Benutzer kann das Anzeigen dieser Warnung im „Bearbeiten“-B
 	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gespeicherte Änderungen enthält',
 	'vector-simplesearch-search' => 'Suche',
 	'vector-simplesearch-containing' => 'Volltextsuche nach …',
-	'vector-noexperiments-preference' => 'Mich von der Teilnahme an Feature-Experimenten ausschließen',
+	'vector-noexperiments-preference' => 'Nicht an Funktions-Experimenten teilnehmen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬) */
@@ -549,6 +551,7 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "Aldatzen"
  * @author Ebraminio
  * @author Huji
  * @author Ladsgroup
+ * @author Sahim
  */
 $messages['fa'] = array(
 	'vector' => 'بهبودهای رابط کاربر برای پوستهٔ برداری',
@@ -560,6 +563,7 @@ $messages['fa'] = array(
 	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 	'vector-simplesearch-search' => 'جستجو',
 	'vector-simplesearch-containing' => 'صفحه‌های دربردارنده...',
+	'vector-noexperiments-preference' => 'مستثنی کردن من از آزمایش ویژگی',
 );
 
 /** Finnish (Suomi)

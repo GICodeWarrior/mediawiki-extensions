@@ -58,6 +58,16 @@ $messages['arz'] = array(
 $2',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Wertuose
+ */
+$messages['az'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Bu elektron məktub sizə $1 tərəfindən {{SITENAME}} elektron poçt sistemi vasitəsilə göndərilmişdir.
+
+$2',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

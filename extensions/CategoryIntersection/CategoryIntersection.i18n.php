@@ -534,6 +534,14 @@ $messages['mr'] = array(
 	'categoryintersection-results' => 'शोधामध्ये $1 निकाल {{PLURAL:$1|सापडला|सापडले}}.',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Teòtlalili
+ */
+$messages['nah'] = array(
+	'categoryintersection' => 'Tlaìxmatkàtlàlilònànàmikòyàn',
+	'categoryintersection-mincategories' => 'Maski san òme tlaìxmatkàtlàlilòmë xikintlàli.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

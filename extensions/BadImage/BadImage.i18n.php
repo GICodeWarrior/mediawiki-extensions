@@ -1788,11 +1788,14 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
 	'badimages-add-btn' => 'Ticcētilīz',
 	'badimages-name' => 'Tōcāitl',
 	'badimages-reason' => 'Īxtlamatiliztli:',
+	'badimages-remove' => '(mìxpôpolòs)',
+	'badimages-remove-btn' => 'Mìxpôpolòs',
 );
 
 /** Low German (Plattdüütsch)

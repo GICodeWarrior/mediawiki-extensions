@@ -489,6 +489,14 @@ $messages['mr'] = array(
 	'categorystepper-start' => '(वर्गाची शेवट)',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Teòtlalili
+ */
+$messages['nah'] = array(
+	'categorystepper-end' => '(Ìtlamilòyàn tlaìxmatkàtlàlilòtl)',
+	'categorystepper-start' => '(ìpèwalòyàn tlaìxmatkàtlàlilòtl)',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

@@ -7278,17 +7278,17 @@ $messages['mzn'] = array(
  */
 $messages['nah'] = array(
 	'configure-desc-group' => 'Olōlli',
-	'configure-desc-ns' => 'Tōcātzintli',
-	'configure-edit-core' => 'Huiquimedia',
-	'configure-js-remove' => 'Ticpolōz',
+	'configure-desc-ns' => 'Tòkâyeyàntli',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-js-remove' => 'Mìxpôpolòs',
 	'configure-old-changes' => 'tlapatlaliztli',
 	'configure-section-paths' => 'Ohtli',
 	'configure-section-email' => 'E-mail',
 	'configure-section-namespaces' => 'Tòcâyeyàntìn',
 	'configure-section-category' => 'Tlaìxmatkàtlàlilòtl',
 	'configure-section-groups' => 'Olòltìn',
-	'configure-section-specialpages' => 'Nōncuahquīzqui āmatl',
-	'configure-throttle-action-edit' => 'Ticpatlāz',
+	'configure-section-specialpages' => 'Nònkuâkiskàtlaìxtlapaltin',
+	'configure-throttle-action-edit' => 'Moyèktlàlìs',
 	'configure-condition-operator-or' => 'Nozo',
 );
 
