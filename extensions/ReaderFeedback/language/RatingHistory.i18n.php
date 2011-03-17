@@ -13,7 +13,7 @@ $messages['en'] = array(
 	'ratinghistory-leg'     => 'Rating history data for [[:$1|$1]]',
 	'ratinghistory-tab'     => 'rating',
 	'ratinghistory-link'    => 'Page rating',
-	'ratinghistory-thanks'  => '\'\'<font color="darkred">Thank you for taking a moment to review this page!</font>\'\'',
+	'ratinghistory-thanks'  => '\'\'<span style="color:darkred;">Thank you for taking a moment to review this page!</span>\'\'',
 	'ratinghistory-period'  => 'Time period:',
 	'ratinghistory-month'   => 'last month',
 	'ratinghistory-3months' => 'last 3 months',
@@ -30,13 +30,13 @@ $messages['en'] = array(
 	'ratinghistory-table-votes'  => 'Votes',
 	'ratinghistory-none'    => 'There is not enough reader feedback data available for graphs at this time.',
 	'ratinghistory-ratings' => '\'\'\'Legend:\'\'\' \'\'\'(1)\'\'\' - Poor; \'\'\'(2)\'\'\' - Low; \'\'\'(3)\'\'\' - Fair; \'\'\'(4)\'\'\' - High; \'\'\'(5)\'\'\' - Excellent;',
-	'ratinghistory-legend'  => 'The \'\'\'daily number of reviews\'\'\' <font color="red">\'\'(red)\'\'</font>, \'\'\'daily average rating\'\'\' <font color="blue">\'\'(blue)\'\'</font>,
+	'ratinghistory-legend'  => 'The \'\'\'daily number of reviews\'\'\' <span style="color:red;">\'\'(red)\'\'</span>, \'\'\'daily average rating\'\'\' <font color="blue">\'\'(blue)\'\'</font>,
 	and \'\'\'running average rating\'\'\' <font color="green">\'\'(green)\'\'</font> are graphed below, by date.
 	The \'\'\'running average rating\'\'\' is simply the average of all the daily ratings \'\'within\'\' this time frame for each day.
 	The ratings are as follows:
 	
 	\'\'\'(1)\'\'\' - Poor; \'\'\'(2)\'\'\' - Low; \'\'\'(3)\'\'\' - Fair; \'\'\'(4)\'\'\' - High; \'\'\'(5)\'\'\' - Excellent;',
-	'ratinghistory-graph-scale' => '\'\'\'Reviews per day\'\'\' <font color="red">\'\'(red)\'\'</font> shown on a \'\'1:$1\'\' scale.',
+	'ratinghistory-graph-scale' => '\'\'\'Reviews per day\'\'\' <span style="color:red;">\'\'(red)\'\'</span> shown on a \'\'1:$1\'\' scale.',
 	'right-feedback' => 'Use the feedback form to rate a page',
 );
 
