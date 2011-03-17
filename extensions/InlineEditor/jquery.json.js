@@ -13,7 +13,8 @@
  * It is also influenced heavily by MochiKit's serializeJSON, which is 
  * copyrighted 2005 by Bob Ippolito.
  *
- * The script has been modified by Jan Paul Posma to always use $.secureEvalJSON.
+ * The script has been modified by Jan Paul Posma by removing $.evalJSON, because jQuery
+ * already includes $.parseJSON, and moving variables into functions.
  */
  
 (function($) {
@@ -110,37 +111,7 @@
             return "{" + pairs.join(", ") + "}";
         }
     };
-
-    /** jQuery.evalJSON(src)
-        Evaluates a given piece of json source.
-     **/
-    $.evalJSON = function(src)
-    {
-    	return $.secureEvalJSON(src);
-        //if (typeof(JSON) == 'object' && JSON.parse)
-        //    return JSON.parse(src);
-        //return eval("(" + src + ")"); 
-    };
     
-    /** jQuery.secureEvalJSON(src)
-        Evals JSON in a way that is *more* secure.
-    **/
-    $.secureEvalJSON = function(src)
-    {
-        if (typeof(JSON) == 'object' && JSON.parse)
-            return JSON.parse(src);
-        
-        var filtered = src;
-        filtered = filtered.replace(/\\["\\\/bfnrtu]/g, '@');
-        filtered = filtered.replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']');
-        filtered = filtered.replace(/(?:^|:|,)(?:\s*\[)+/g, '');
-        
-        if (/^[\],:{}\s]*$/.test(filtered))
-            return eval("(" + src + ")");
-        else
-            throw new SyntaxError("Error parsing JSON, source is not valid.");
-    };
-
     /** jQuery.quoteString(string)
         Returns a string-repr of a string, escaping quotes intelligently.  
         Mostly a support function for toJSON.
@@ -154,6 +125,18 @@
      **/
     $.quoteString = function(string)
     {
+    	var _escapeable = /["\\\x00-\x1f\x7f-\x9f]/g;
+    
+		var _meta = {
+			'\b': '\\b',
+			'\t': '\\t',
+			'\n': '\\n',
+			'\f': '\\f',
+			'\r': '\\r',
+			'"' : '\\"',
+			'\\': '\\\\'
+		};
+		
         if (string.match(_escapeable))
         {
             return '"' + string.replace(_escapeable, function (a) 
@@ -165,17 +148,5 @@
             }) + '"';
         }
         return '"' + string + '"';
-    };
-    
-    var _escapeable = /["\\\x00-\x1f\x7f-\x9f]/g;
-    
-    var _meta = {
-        '\b': '\\b',
-        '\t': '\\t',
-        '\n': '\\n',
-        '\f': '\\f',
-        '\r': '\\r',
-        '"' : '\\"',
-        '\\': '\\\\'
     };
 })(jQuery);
