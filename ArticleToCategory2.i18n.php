@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Create',
 	'articletocategory2-create-category-under-category-text' => 'Add a category to this category',
 	'articletocategory2-create-category-under-category-button' => 'Create',
-	'right-ArticleToCategory2' => 'Add article to category',
+	'right-ArticleToCategory2' => 'Add page to category',
 	'right-ArticleToCategory2AddCat' => 'Add category to category',
 );
 
