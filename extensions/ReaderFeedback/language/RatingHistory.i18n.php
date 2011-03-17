@@ -30,8 +30,8 @@ $messages['en'] = array(
 	'ratinghistory-table-votes'  => 'Votes',
 	'ratinghistory-none'    => 'There is not enough reader feedback data available for graphs at this time.',
 	'ratinghistory-ratings' => '\'\'\'Legend:\'\'\' \'\'\'(1)\'\'\' - Poor; \'\'\'(2)\'\'\' - Low; \'\'\'(3)\'\'\' - Fair; \'\'\'(4)\'\'\' - High; \'\'\'(5)\'\'\' - Excellent;',
-	'ratinghistory-legend'  => 'The \'\'\'daily number of reviews\'\'\' <span style="color:red;">\'\'(red)\'\'</span>, \'\'\'daily average rating\'\'\' <font color="blue">\'\'(blue)\'\'</font>,
-	and \'\'\'running average rating\'\'\' <font color="green">\'\'(green)\'\'</font> are graphed below, by date.
+	'ratinghistory-legend'  => 'The \'\'\'daily number of reviews\'\'\' <span style="color:red;">\'\'(red)\'\'</span>, \'\'\'daily average rating\'\'\' <span style="color:blue;">\'\'(blue)\'\'</span>,
+	and \'\'\'running average rating\'\'\' <span style="color:green;">\'\'(green)\'\'</span> are graphed below, by date.
 	The \'\'\'running average rating\'\'\' is simply the average of all the daily ratings \'\'within\'\' this time frame for each day.
 	The ratings are as follows:
 	
