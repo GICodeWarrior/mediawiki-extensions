@@ -437,6 +437,13 @@ $messages['mn'] = array(
 	'categorymultisort-go' => 'Явах',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Teòtlalili
+ */
+$messages['nah'] = array(
+	'prefs-category' => 'Tlaìxmatkàtlàlilòtl',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
