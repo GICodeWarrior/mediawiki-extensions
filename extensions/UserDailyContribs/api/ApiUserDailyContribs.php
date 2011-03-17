@@ -9,20 +9,31 @@ class ApiUserDailyContribs extends ApiBase {
 		$userName = $params['user'];
 		$days = $params['daysago'];
 		$user = User::newFromName($userName);
+		if ( !$user ) {
+			$this->dieUsage( 'Specified user does not exist', 'bad_user' );
+		}
+		
 		$now = time();
-		$result->addValue( array( 'query', $this->getModuleName() ),
+		$result->addValue( $this->getModuleName() ,
 			'totalEdits',
 			($user->getEditCount() == NULL)?0:$user->getEditCount() );
-		$result->addValue( array( 'query', $this->getModuleName() ),
+		 //returns YYYY-MM-DD-HH-MM-SS format
+		$result->addValue( $this->getModuleName() ,
 			'registration', $user->getRegistration() );
-		$result->addValue( array( 'query', $this->getModuleName() ),
+		$result->addValue( $this->getModuleName() ,
 			'timeFrameEdits', getUserEditCountSince( $now - ($days * 60 *60 *24)  ));
 	}
 
 	public function getAllowedParams() {
 		return array(
-			'user' => null,
-			'daysago' => null,
+			'user' => array(
+				ApiBase::PARAM_TYPE => 'user',		
+		),
+			'daysago' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_MIN => 0,
+		),
+		
 		);
 	}
 
@@ -44,6 +55,5 @@ class ApiUserDailyContribs extends ApiBase {
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
-	 //2009-05-01-18-35-35
-	 //YYYY-MM-DD-HH-MM-SS
+	
 }
