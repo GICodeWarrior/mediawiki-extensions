@@ -414,7 +414,7 @@ function wfPurgeFeedsOnArticlePurge( $article ) {
  * @param Array $filterTags Tags to use in filtering out items.
  */
 function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null ) {
-	global $wgOut, $wgScript, $wgServer, $wgFeedClasses, $wgVersion, $wgSitename;
+	global $wgOut, $wgServer, $wgFeedClasses, $wgVersion, $wgSitename;
 
 	# Setup, handle redirects
 	if ( $article->isRedirect() ) {
