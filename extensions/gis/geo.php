@@ -41,16 +41,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 ) ;
 }
 
-$wgExtensionFunctions[] = "wfGeoExtension";
+$wgHooks['ArticleSaveComplete'][] = 'articleSaveGeo';
+$wgHooks['ArticleDelete'][] = 'articleDeleteGeo';
+$wgHooks['ParserFirstCallInit'][] = 'wfGeoSetHook';
 
 /**
  *  Installer
  */
-function wfGeoExtension () {
-	global $wgParser, $wgHooks ;
-	$wgParser->setHook ( 'geo' , 'parseGeo' ) ;
-	$wgHooks['ArticleSaveComplete'][] = 'articleSaveGeo';
-	$wgHooks['ArticleDelete'][] = 'articleDeleteGeo';
+function wfGeoSetHook( $parser ) {
+	$parser->setHook( 'geo', 'parseGeo' );
+	return true;
 }
 
 $wgExtensionCredits['specialpage'][] = array(

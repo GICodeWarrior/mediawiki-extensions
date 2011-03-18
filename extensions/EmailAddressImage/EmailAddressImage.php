@@ -22,15 +22,10 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgExtensionMessagesFiles['AdvancedRandom'] = dirname(__FILE__) . '/EmailAddressImage.i18n.php';
-$wgExtensionFunctions[] = 'emailAddressImage';
+$wgHooks['ParserFirstCallInit'][] = 'emailAddressImage';
 
-# Sets the hook to be executed once the parser has stripped HTML tags.
-$wgHooks['ParserAfterStrip'][] = 'emailAddressImage';
-
-function emailAddressImage() {
-	global $wgParser;
-
-	$wgParser->setHook( 'email', 'doAddressImage' );
+function emailAddressImage( $parser ) {
+	$parser->setHook( 'email', 'doAddressImage' );
 	return true;
 }
 

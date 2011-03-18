@@ -24,7 +24,7 @@
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['FramedVideo'] = $dir . 'FramedVideo.i18n.php';
-$wgExtensionFunctions[] = 'wfFramedVideo';
+$wgHooks['ParserFirstCallInit'][] = 'wfFramedVideoSetHook';
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
@@ -35,10 +35,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'        => '1.2.1',
 );
 
-function wfFramedVideo() {
-	global $wgParser;
-
-	$wgParser->setHook( 'video', 'renderFramedVideo' );
+function wfFramedVideoSetHook( $parser ) {
+	$parser->setHook( 'video', 'renderFramedVideo' );
+	return true;
 }
 
 function renderFramedVideo( $input, $args, $parser ) {

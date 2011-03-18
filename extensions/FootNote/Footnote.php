@@ -41,12 +41,12 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Footnote',
 );
 
-$wgExtensionFunctions[] = "wfFootnote";
+$wgHooks['ParserBeforeTidy'][] = 'insert_endnotes';
+$wgHooks['ParserFirstCallInit'][] = "wfFootnoteSetHook";
 
-function wfFootnote() {
-  global $wgParser, $wgHooks ;
-	$wgParser->setHook( "footnote" , 'parse_footnote' ) ;
-	$wgHooks['ParserBeforeTidy'][] = 'insert_endnotes' ;
+function wfFootnoteSetHook( $parser ) {
+	$parser->setHook( 'footnote', 'parse_footnote' );
+	return true;
 }
 
 $footnoteNotes = array() ;

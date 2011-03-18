@@ -32,13 +32,13 @@ $wgExtensionCredits['parserhook'][] = array (
 
 $wgExtensionMessagesFiles['FolkTagCloud'] = dirname( __FILE__ ) . '/FolkTagCloud.i18n.php';
 
-$wgExtensionFunctions[] = 'registerFolkTagCloudExtension';
+$wgHooks['ParserFirstCallInit'][] = 'registerFolkTagCloudExtension';
 $wgHooks['smwInitProperties'][] = 'initFolkTagProperty';
 
 # registering extension
-function registerFolkTagCloudExtension() {
-	global $wgParser;
-	$wgParser->setHook( 'folktagcloud', 'renderFolkTagCloud' );
+function registerFolkTagCloudExtension( $parser ) {
+	$parser->setHook( 'folktagcloud', 'renderFolkTagCloud' );
+	return true;
 }
 
 # initialising predefined property 'FolkTag'
