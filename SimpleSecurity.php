@@ -21,7 +21,6 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) )                     die( 'Not an entry point.' );
-if ( version_compare( $wgVersion, '1.12.0' ) < 0 ) die( 'Sorry, this extension requires at least MediaWiki version 1.12.0' );
 
 define( 'SIMPLESECURITY_VERSION', '4.5.1, 2010-10-16' );
 
