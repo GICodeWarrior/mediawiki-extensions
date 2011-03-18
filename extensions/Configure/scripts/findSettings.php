@@ -99,12 +99,12 @@ class FindSettings extends Maintenance {
 				'qp_enable_showresults',
 			);
 			foreach ( $exts as $ext ) {
+				$name = $ext->getName();
 				if( !$ext->isInstalled() ) {
 					$this->output( "Extension $name is not installed\n" );
 					continue;
 				}
 				$file = file_get_contents( $ext->getSettingsFile() );
-				$name = $ext->getName();
 				$m = array();
 				preg_match_all( '/\$((wg|eg|edg|sdg|sfg|smwg|srfg|abc|ce[^n]|ub|whoiswatching|wminc)[A-Za-z0-9_]+)\s*\=/', $file, $m );
 				$definedSettings = array_unique( $m[1] );
