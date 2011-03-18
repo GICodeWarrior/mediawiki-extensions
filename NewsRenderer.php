@@ -553,8 +553,6 @@ class NewsRenderer {
 	}
 
 	static function replaceVariables($parser, $text, $params = null, $title = null) {
-		global $wgVersion;
-
 		if ( $params === null ) $params = array();
 		$text = $parser->replaceVariables( $text, $params );
 		return $text;
