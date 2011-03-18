@@ -32,11 +32,11 @@ $wgGnuplotCommand = '/usr/bin/gnuplot';
 $wgGnuplotDefaultTerminal = 'set terminal png';
 $wgGnuplotDefaultSize = 'set size 0.5,0.5';
 
-$wgExtensionFunctions[] = "wfGnuplotExtension";
+$wgHooks['ParserFirstCallInit'][] = 'wfGnuplotSetHook';
 
-function wfGnuplotExtension() {
-	global $wgParser;
-	$wgParser->setHook( "gnuplot", "renderGnuplot" );
+function wfGnuplotSetHook( $parser ) {
+	$parser->setHook( "gnuplot", "renderGnuplot" );
+	return true;
 }
 
 function renderGnuplot( $gnuplotsrc ) {
