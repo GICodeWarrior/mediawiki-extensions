@@ -40,7 +40,7 @@ $wgGroupPermissions['*']['getfamily'] = true;
 // FIXME: split off into GetFamily_body.php
 function wfSpecialGetFamily() {
 	global $wgRequest, $wgLanguageNames;
-	global $wgScript, $wgDBname, $wgLanguageCode, $wgSitename, $wgServer, $wgArticlePath, $wgCanonicalNamespaceNames, $wgVersion;
+	global $wgScript, $wgDBname, $wgLanguageCode, $wgSitename, $wgServer, $wgArticlePath, $wgVersion;
 
 	$out = '';
 
