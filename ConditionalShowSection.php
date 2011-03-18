@@ -34,9 +34,8 @@ $wgExtensionMessagesFiles['ConditionalShowSection'] = $dir . 'ConditionalShowSec
 
 $wgHooks['ParserFirstCallInit'][] = 'wfConditionalShowSection';
 
-function wfConditionalShowSection() {
-    global $wgParser;
-    $wgParser->setHook( "cshow", "ConditionalShowSection" );
+function wfConditionalShowSection( $parser ) {
+    $parser->setHook( "cshow", "ConditionalShowSection" );
     return true;
 }
 
