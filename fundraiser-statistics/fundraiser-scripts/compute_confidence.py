@@ -202,18 +202,23 @@ class ConfidenceTest:
 		pylab.title(title)
 		pylab.savefig(fname, format='png')
 		
+	
+	"""
+		ConfidenceTesting :: run_test
 		
+		Executes the confidence test - prints and plots the results 
+	"""
 	def run_test(self, test_name, query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples):
 		
 		query_obj = qs.query_store()
 		
-		# Retrieve values from database
+		""" Retrieve values from database """
 		ret = self.query_tables(query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples)
 		metrics_1 = ret[0]
 		metrics_2 = ret[1]
 		times_indices = ret[2]
 		
-		# run the confidence test
+		""" run the confidence test """
 		ret = self.confidence_test(metrics_1, metrics_2, num_samples)
 		means_1 = ret[0]
 		means_2 = ret[1]
@@ -221,22 +226,22 @@ class ConfidenceTest:
 		std_devs_2 = ret[3]
 		confidence = ret[4]
 		
-		# Pad data with beginning and end points
-		times_indices.insert(len(times_indices), math.ceil(times_indices[-1]))
-		times_indices.insert(0, 0)
+		""" Pad data with beginning and end points """
+		# times_indices.insert(len(times_indices), math.ceil(times_indices[-1]))
+		# times_indices.insert(0, 0)
 		
-		means_1.insert(len(means_1),means_1[-1])
-		means_2.insert(len(means_2),means_2[-1])
-		means_1.insert(0,means_1[0])
-		means_2.insert(0,means_2[0])
+		# means_1.insert(len(means_1),means_1[-1])
+		# means_2.insert(len(means_2),means_2[-1])
+		# means_1.insert(0,means_1[0])
+		# means_2.insert(0,means_2[0])
 		
-		std_devs_1.insert(len(std_devs_1),0)
-		std_devs_2.insert(len(std_devs_2),0)
-		std_devs_1.insert(0,0)
-		std_devs_2.insert(0,0)
+		# std_devs_1.insert(len(std_devs_1),0)
+		# std_devs_2.insert(len(std_devs_2),0)
+		# std_devs_1.insert(0,0)
+		# std_devs_2.insert(0,0)
 	
 		
-		# plot the results
+		""" plot the results """
 		xlabel = 'Hours'
 		subplot_index = 111
 		fname = test_name + '.png'
@@ -344,7 +349,8 @@ class ConfidenceTest:
 		file.write('\n\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n\n')
 		file.write(win_str)
 		
-		for i in range(1,len(times_indices) - 1):
+		# for i in range(1,len(times_indices) - 1): -- REMOVED with the 
+		for i in range(len(times_indices)):
 			line_args = str(i) + '\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
 			line_str = line_args % (means_1[i], means_2[i], std_devs_1[i], std_devs_2[i])
 			print  line_str
@@ -456,7 +462,7 @@ class TTest(ConfidenceTest):
 	
 	def confidence_test(self, metrics_1, metrics_2, num_samples):
 		
-		# retrieve means and variances
+		""" retrieve means and variances """
 		ret = self.compute_parameters(metrics_1, metrics_2, num_samples)
 		num_trials = ret[0]
 		means_1 = ret[1]
@@ -475,9 +481,9 @@ class TTest(ConfidenceTest):
 		var_1_tot = 0
 		var_2_tot = 0
 		
-		# Compute the parameters for the Wald test
-		# The difference of the means and the sum of the variances is used to compose the random variable W = X1 - X2 for each trial
-		# where X{1,2} is the random variable corresponding to the group {1,2}
+		""" Compute the parameters for the student's t-test
+		 	The difference of the means and the sum of the variances is used to compose the random variable W = X1 - X2 for each trial
+			where X{1,2} is the random variable corresponding to the group {1,2} """
 		for i in range(num_trials): 
 		
 			m_tot  = m_tot + math.fabs(means_1[i] - means_2[i])
@@ -495,10 +501,6 @@ class TTest(ConfidenceTest):
 			
 		
 		""" lookup confidence """
-		
-		#print ''
-		#print t 
-		#print degrees_of_freedom
 		
 		# get t and df
 		degrees_of_freedom = math.ceil(degrees_of_freedom)
