@@ -85,7 +85,7 @@ class SpecialUpdate extends SpecialPage {
 	 * @param $status Mixed: false when there are no updates or a version number (string) when there is. 
 	 */
 	protected function showCoreStatus( $status ) {
-		global $wgOut, $wgVersion;
+		global $wgOut;
 		
 		if ( $status === false ) {
 			$wgOut->addHTML( '<h3>' . wfMsg( 'mediawiki-up-to-date' ) . '</h3>' );
