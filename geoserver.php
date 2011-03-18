@@ -13,17 +13,17 @@ $wgExtensionCredits['parserhook']['geoserver'] = array(
 	'description' => 'Allows geotagging using the <nowiki><geo></nowiki> tag. Saves geodata in a WFS-T server, e.g. geoserver.',
 );
 
-$wgExtensionFunctions[] = "wfGeoserverExtension";
+$wgHooks['ParserFirstCallInit'][] = 'wfGeoserverSetHook';
+$wgHooks['ArticleSaveComplete'][] = 'articleDeleteGeo';
+$wgHooks['ArticleDelete'][] = 'articleDeleteGeo';
+$wgHooks['ArticleEditUpdatesDeleteFromRecentchanges'][] = 'articleSaveGeo';
 
 /**
  *  Installer
  */
-function wfGeoServerExtension () {
-        global $wgParser, $wgHooks ;
-        $wgParser->setTransparentTagHook ( 'geo' , 'parseGeo' ) ;
-#        $wgHooks['ArticleSaveComplete'][] = 'articleDeleteGeo';
-        $wgHooks['ArticleDelete'][] = 'articleDeleteGeo';
-        $wgHooks['ArticleEditUpdatesDeleteFromRecentchanges'][] = 'articleSaveGeo';
+function wfGeoserverSetHook( $parser ) {
+	$parser->setTransparentTagHook( 'geo', 'parseGeo' );
+	return true;
 }
 
 global $wgAutoloadClasses;
