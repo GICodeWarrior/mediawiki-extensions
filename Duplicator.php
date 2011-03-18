@@ -23,7 +23,9 @@ $wgExtensionMessagesFiles['Duplicator'] = $dir . 'Duplicator.i18n.php';
 $wgExtensionAliasesFiles['Duplicator'] = $dir . 'Duplicator.alias.php';
 $wgAutoloadClasses['SpecialDuplicator'] = $dir . 'Duplicator.page.php';
 $wgSpecialPages['Duplicator'] = 'SpecialDuplicator';
-$wgExtensionFunctions[] = 'efDuplicator';
+
+$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efDuplicatorNavigation';
+$wgHooks['SkinTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
 
 /**
  * User permissions
@@ -35,15 +37,6 @@ $wgAvailableRights[] = 'duplicate';
  * Pages with more than this number of revisions can't be duplicated
  */
 $wgDuplicatorRevisionLimit = 250;
-
-/**
- * Extension setup function
- */
-function efDuplicator() {
-	global $wgHooks;
-	$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efDuplicatorNavigation';
-	$wgHooks['SkinTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
-}
 
 /**
  * Build the link to be shown in the toolbox if appropriate
