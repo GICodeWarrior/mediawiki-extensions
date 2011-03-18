@@ -176,11 +176,8 @@ class TableMod {
 
 	public function doParse($input) {
 		global $wgVersion;
-		$matches = array();
 
-		if (preg_match ('/([0-9]*)\.([0-9]*).*/', $wgVersion, $matches) == 1 &&
-		    $matches[1] == 1 &&
-		    $matches[2] > 15) {
+		if ( version_compare( $wgVersion, '1.15', '>' ) ) {
 			return $this->parser->recursiveTagParse($input, $this->frame);
 		} else {
 			return $this->parser->recursiveTagParse($input);
