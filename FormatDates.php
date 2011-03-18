@@ -17,7 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 $wgAutoloadClasses['DateParser'] = dirname( __FILE__ ) . '/DateParser.php';
 $wgAutoloadClasses['FormattableDate'] = dirname( __FILE__ ) . '/FormattableDate.php';
-$wgExtensionFunctions[] = 'efFormatDates';
+$wgHooks['ParserFirstCallInit'][] = 'efFormatDatesSetHook';
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
@@ -26,9 +26,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'description' => 'Supports refactoring of unlinked dates through the <code><nowiki><date></nowiki></code> tag',
 );
 
-function efFormatDates() {
-	global $wgParser;
-	$wgParser->setHook( 'date', 'efFormatDate' );
+function efFormatDatesSetHook( $parser ) {
+	$parser->setHook( 'date', 'efFormatDate' );
+	return true;
 }
 
 function efFormatDate( $text, $args, &$parser ) {
