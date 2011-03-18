@@ -201,12 +201,7 @@ function mvSetupExtension() {
  		}
 	}
 
-	if (version_compare($wgVersion,'1.13','>=')) {
-		$wgHooks['SkinTemplateToolboxEnd'][] = 'mvAddToolBoxLinks'; // introduced only in 1.13
-	} else {
-		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'mvAddToolBoxLinks';
-	}
-
+	$wgHooks['SkinTemplateToolboxEnd'][] = 'mvAddToolBoxLinks'; // introduced only in 1.13
 
 	// @@NOTE this hook is not avaliable by default in medaiwiki
 	// to use this hook you should add this function to moveTo()
