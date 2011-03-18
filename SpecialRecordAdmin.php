@@ -31,7 +31,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	}
 
 	function execute( $param ) {
-		global $wgVersion, $wgOut, $wgRequest, $wgLang, $wgRecordAdmin, $wgSecurityProtectRecords;
+		global $wgOut, $wgRequest, $wgRecordAdmin, $wgSecurityProtectRecords;
 		if ( !isset( $wgSecurityProtectRecords ) ) $wgSecurityProtectRecords = false;
 
 		$this->setHeaders();
