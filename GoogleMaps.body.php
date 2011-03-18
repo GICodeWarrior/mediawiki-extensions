@@ -553,7 +553,7 @@ JAVASCRIPT;
 
         static function addMarker(&$pExporter, &$pParser, &$pLocalParser, $pLat, $pLon, 
             $pIcon, $pTitle, $pTabs, $pCaption, $pLineColorSet) {
-            global $wgUser, $wgVersion;
+            global $wgUser;
             $parsed = self::parseWikiText($pParser, $pLocalParser, preg_replace('/\r\n/', '<br />', $pCaption), $pParser->mTitle, $pParser->mOptions);
             $title = Title::newFromText($pTitle);
             $revision = is_null($title) ? null :
