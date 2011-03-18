@@ -29,7 +29,6 @@ if (!defined('MEDIAWIKI')) {
 
 define('DESCRIPTION_VERSION', '0.1');
 
-$wgExtensionFunctions[] = 'DescriptionSetup';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Description',
@@ -38,12 +37,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Description',
 	'description' => 'Adds a description meta-tag to MW pages');
 
-function DescriptionSetup() {
-	
-	global $wgHooks;
-	
-	$wgHooks['ArticleViewHeader'][] = 'DescriptionArticleViewHeader';
-}
+$wgHooks['ArticleViewHeader'][] = 'DescriptionArticleViewHeader';
 
 function DescriptionArticleViewHeader(&$article, &$outputDone = null, &$pcache = null) {
 	global $wgOut;

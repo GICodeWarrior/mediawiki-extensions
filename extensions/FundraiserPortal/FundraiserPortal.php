@@ -66,15 +66,7 @@ $wgAutoloadClasses['DonateButton'] = dirname( __FILE__ ) . '/' . 'DonateButton.p
 $wgExtensionMessagesFiles['FundraiserPortal'] =
 	dirname( __FILE__ ) . "/FundraiserPortal.i18n.php";
 
-$wgExtensionFunctions[] = 'efFundraiserPortalSetup';
-
-
-// Register hooks
-function efFundraiserPortalSetup() {
-	global $wgHooks;
-
-	$wgHooks['BeforePageDisplay'][] = 'efFundraiserPortalLoader';
-}
+$wgHooks['BeforePageDisplay'][] = 'efFundraiserPortalLoader';
 
 // Load the js that will choose the button client side
 function efFundraiserPortalLoader( $out, $skin ) {
