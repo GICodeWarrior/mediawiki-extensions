@@ -180,11 +180,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 
 		$elements = array_unique( $elements );
 		$matches = array();
-		if( version_compare( "1.12", $wgVersion, ">" ) ) {
-			$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
-		} else {
-			$text = self::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
-		}
+		$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
 
 		foreach( $matches as $marker => $data ) {
 			list( $element, $content, $params, $tag ) = $data;
