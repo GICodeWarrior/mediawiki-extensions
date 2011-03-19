@@ -14,7 +14,6 @@ $messages = array();
 $messages['en'] = array(
 	'advancedsearch' => 'Advanced Search',
 	'advancedsearch-toptext' => 'This is the advanced search, see [[Help:Search]] for more information',
-	'advancedsearch-pagename' => 'AdvancedSearch',
 	'advancedsearch-title' => 'Advanced Search',
 	'advancedsearch-contentsearch' => 'Search in page content',
 	'advancedsearch-searchin' => 'Search in:',
