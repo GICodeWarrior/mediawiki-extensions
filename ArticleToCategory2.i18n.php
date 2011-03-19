@@ -201,6 +201,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author IAlex
  */
 $messages['fr'] = array(
@@ -209,6 +210,8 @@ $messages['fr'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Créer',
 	'articletocategory2-create-category-under-category-text' => 'Ajouter une catégorie à cette catégorie',
 	'articletocategory2-create-category-under-category-button' => 'Créer',
+	'right-ArticleToCategory2' => 'Ajouter la page à la catégorie',
+	'right-ArticleToCategory2AddCat' => 'Ajouter une catégorie à cette catégorie',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -243,6 +246,8 @@ $messages['gsw'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Aalege',
 	'articletocategory2-create-category-under-category-text' => 'E Kategori zue däre Kategori zuefiege',
 	'articletocategory2-create-category-under-category-button' => 'Aalege',
+	'right-ArticleToCategory2' => 'Syte zuen ere Kategori zuefiege',
+	'right-ArticleToCategory2AddCat' => 'E Kategori zuen ere Kategori zuefiege',
 );
 
 /** Hebrew (עברית)
@@ -459,6 +464,8 @@ $messages['pms'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Crea',
 	'articletocategory2-create-category-under-category-text' => 'Gionta na categorìa a sta categorìa',
 	'articletocategory2-create-category-under-category-button' => 'Crea',
+	'right-ArticleToCategory2' => 'Gionta pàgina a la categorìa',
+	'right-ArticleToCategory2AddCat' => 'Gionta categorìa a la categorìa',
 );
 
 /** Portuguese (Português)
@@ -470,6 +477,8 @@ $messages['pt'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Criar',
 	'articletocategory2-create-category-under-category-text' => 'Adicionar uma categoria a esta categoria',
 	'articletocategory2-create-category-under-category-button' => 'Criar',
+	'right-ArticleToCategory2' => 'Adicionar uma página à categoria',
+	'right-ArticleToCategory2AddCat' => 'Adicionar uma categoria à categoria',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
