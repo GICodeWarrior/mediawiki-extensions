@@ -1507,6 +1507,40 @@ $messages['sr-el'] = array(
 	'mwe-clipedit-layout_left' => 'Izgled s leve strane slike',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'mwe-clipedit-crop' => 'Bielde tousniede',
+	'mwe-clipedit-apply_crop' => 'Tousnit ap ju Bielde anweende',
+	'mwe-clipedit-reset_crop' => 'Tousnit touräächsätte',
+	'mwe-clipedit-insert_image_page' => 'In Siede ienföigje',
+	'mwe-clipedit-insert_into_sequence' => 'In Sequenz ienföigje',
+	'mwe-clipedit-preview_insert' => 'Foarbekiek',
+	'mwe-clipedit-cancel_image_insert' => 'Ienföigjen oubreeke',
+	'mwe-clipedit-sc_attributes' => 'Details fon dän Videoclip beoarbaidje',
+	'mwe-clipedit-sc_inoutpoints' => 'Ien-Uut-Punkte sätte',
+	'mwe-clipedit-sc_overlays' => 'Uurleegerengen',
+	'mwe-clipedit-sc_audio' => 'Audiostjuurenge',
+	'mwe-clipedit-sc_duration' => 'Duur',
+	'mwe-clipedit-template_properties' => 'Foarloagen-Oainskuppe',
+	'mwe-clipedit-custom_title' => 'Benutserdefinierden Tittel',
+	'mwe-clipedit-edit_properties' => 'Oainskuppe beoarbaidje',
+	'mwe-clipedit-other_properties' => 'Uur Oainskuppe',
+	'mwe-clipedit-resource_page' => 'Uursproangssiede:',
+	'mwe-clipedit-set_in_out_points' => 'Ien-Uut-Punkte sätte',
+	'mwe-clipedit-start_time' => 'Starttied',
+	'mwe-clipedit-end_time' => 'Eendetied',
+	'mwe-clipedit-preview_inout' => 'Foarbekiek fon do Ien-Uut-Punkte',
+	'mwe-clipedit-edit-tools' => 'Beoarbaidengsreewen',
+	'mwe-clipedit-inline-description' => 'Beschrieuwenge',
+	'mwe-clipedit-edit-video-tools' => 'Video-Tools beoarbaidje',
+	'mwe-clipedit-duration' => 'Duur',
+	'mwe-clipedit-layout' => 'Uutgjuchtenge',
+	'mwe-clipedit-layout_right' => 'uutgjuchtenge fon ju Bielde ap ju gjuchte Siede',
+	'mwe-clipedit-layout_left' => 'Uutgjuchtenge fon ju Bielde ap ju linker Siede',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Cohan
