@@ -443,9 +443,9 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 		for ( $i = 1; $i <= 7; $i++ )
 		{
 			if ( method_exists( $wgContLang, 'getWeekdayAbbreviation' ) )
-			$daynames .= "'" . $wgContLang->getWeekdayAbbreviation( $i ) . "',";
+				$daynames .= "'" . $wgContLang->getWeekdayAbbreviation( $i ) . "',";
 			else
-			$daynames .= "'" . $wgContLang->getWeekdayName( $i ) . "',";
+				$daynames .= "'" . $wgContLang->getWeekdayName( $i ) . "',";
 		}
 		$daynames = substr( $daynames, 0, - 1 );
 
