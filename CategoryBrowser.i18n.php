@@ -1198,6 +1198,7 @@ $messages['mn'] = array(
  */
 $messages['nah'] = array(
 	'categorybrowser' => 'Tlatlaìxmatkàtlàlilòyàn nẻmini',
+	'categorybrowser-desc' => 'Tèmàktia sè [[Special:CategoryBrowser|nònkuâkìski tlaìxtlapalli]] tlèn ìka mokintlapêpenia in tlaìxmatkàtlàlilòmë tlèn okachi mokintekìuhtia wàn tèkàwilia ìntech nènèmòwas ìka sè AJAX netzòwilìxtli',
 	'cb_show_no_parents_only' => 'Monèxtìs san tlaìxmatkàtlalilòmë tlèn âmò kipiâkë tlapantlaìxmatkàtlàlilòmë',
 	'cb_cat_name_filter' => 'Motèmòs in tlaìxmatkàtlàlilòtl ìka ìtòka:',
 	'cb_cat_name_filter_clear' => 'Xikpàchilwi nikàn ìka tikìxpôpolòs in tlaìxmatkàtlàlilòtòkâtli',
