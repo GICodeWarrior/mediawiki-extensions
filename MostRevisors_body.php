@@ -70,7 +70,7 @@ class MostRevisors extends IncludableSpecialPage {
 		if ( $count > 0 ) {
 			# Make list
 			if ( !$this->mIncluding )
-			$wgOut->addWikiMsg( 'mostrevisors-showing', $wgLang->formatNum( $count ) );
+				$wgOut->addWikiMsg( 'mostrevisors-showing', $wgLang->formatNum( $count ) );
 			$wgOut->addHTML( "<ol>" );
 			foreach ( $res as $row ) {
 				$wgOut->addHTML( $this->makeListItem( $row ) );
