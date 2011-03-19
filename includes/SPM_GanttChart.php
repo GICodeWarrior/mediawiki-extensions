@@ -181,7 +181,7 @@ class SPMGanttChart extends SMWResultPrinter {
 
 			$hasChildren = $allTempChildren;
 			if (count($hasChildren)>0)
-			$hasChild = true;
+				$hasChild = true;
 		}
 
 		$task->addWBS(1,0);

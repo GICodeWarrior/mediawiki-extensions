@@ -299,10 +299,10 @@ class ProjectManagementClass{
 	static function cmpDate($task1,$task2){
 		$date1 = $task1->getPlannedStartDate();
 		if ($date1!=null)
-		$res1 = strtotime($date1->getXMLSchemaDate());
+			$res1 = strtotime($date1->getXMLSchemaDate());
 		$date2 = $task2->getPlannedStartDate();
 		if ($date2!=null)
-		$res2 = strtotime($date2->getXMLSchemaDate());
+			$res2 = strtotime($date2->getXMLSchemaDate());
 		return ($res1<$res2);
 
 	}
@@ -826,7 +826,7 @@ class ProjectManagementClass{
 				$time1 = explode("T",$date);
 				$time2 = explode("-",$time1[0]);
 				if (count($time1)>1){
-				$time3 = explode(":",$time1[1]);
+					$time3 = explode(":",$time1[1]);
 				} else {
 					$time3 = array(0,0,0);
 				}
@@ -1746,7 +1746,7 @@ class ProjectManagementTask extends ProjectManagementElement{
 			$res .= "<Type>2</Type>\r\n";
 			$res .= "<IsNull>0</IsNull>\r\n";
 			if($this->m_timestamp!=null)
-			$res .= "<CreateDate>" . date("Y-m-d", $this->m_timestamp) . "T" . date("H:i:s", $this->m_timestamp) . "</CreateDate>\r\n";
+				$res .= "<CreateDate>" . date("Y-m-d", $this->m_timestamp) . "T" . date("H:i:s", $this->m_timestamp) . "</CreateDate>\r\n";
 			$res .= "<WBS>" . $this->WBStoSTring($this->m_WBS) . "</WBS>\r\n";
 			$res .= "<OutlineNumber>" . $this->WBStoSTring($this->m_WBS)  . "</OutlineNumber>\r\n";
 			$res .= "<OutlineLevel>" . $this->m_outlineLevel . "</OutlineLevel>\r\n";
@@ -1757,15 +1757,15 @@ class ProjectManagementTask extends ProjectManagementElement{
 				$res .= "<ConstraintDate>" . $this->parsedate($this->m_plannedStart) . "</ConstraintDate>\r\n";
 			}
 			if ($this->m_plannedFinish!=null)
-			$res .= "<Finish>" . $this->parsedate($this->m_plannedFinish) . "</Finish>\r\n";
+				$res .= "<Finish>" . $this->parsedate($this->m_plannedFinish) . "</Finish>\r\n";
 			if ($this->m_earlyStart!=null)
-			$res .= "<EarlyStart>" . $this->parsedate($this->m_earlyStart) . "</EarlyStart>\r\n";
+				$res .= "<EarlyStart>" . $this->parsedate($this->m_earlyStart) . "</EarlyStart>\r\n";
 			if ($this->m_earlyFinish!=null)
-			$res .= "<EarlyFinish>" . $this->parsedate($this->m_earlyFinish) . "</EarlyFinish>\r\n";
+				$res .= "<EarlyFinish>" . $this->parsedate($this->m_earlyFinish) . "</EarlyFinish>\r\n";
 			if ($this->m_lateStart!=null)
-			$res .= "<LateStart>" . $this->parsedate($this->m_lateStart) . "</LateStart>\r\n";
+				$res .= "<LateStart>" . $this->parsedate($this->m_lateStart) . "</LateStart>\r\n";
 			if ($this->m_lateFinish!=null)
-			$res .= "<LateFinish>" . $this->parsedate($this->m_lateFinish) . "</LateFinish>\r\n";
+				$res .= "<LateFinish>" . $this->parsedate($this->m_lateFinish) . "</LateFinish>\r\n";
 			$res .= "<Hyperlink>".$this->replaceLabelChars($this->getLabel())."</Hyperlink>\r\n";
 			$res .= "<HyperlinkAddress>". $this->m_hyperlink ."</HyperlinkAddress>\r\n";
 			foreach ($this->m_predecessors as $pred){
