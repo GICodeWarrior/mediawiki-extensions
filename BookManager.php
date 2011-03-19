@@ -35,7 +35,7 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
-$dir = dirname( __FILE__ ); 
+$dir = dirname( __FILE__ );
 $wgAutoloadClasses['BookManagerFunctions'] = $dir . '/BookManager.body.php';
 
 /**** extension basics ****/
@@ -43,7 +43,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'		=> __FILE__,
 	'name'		=> 'BookManager',
 	'version'	=>  BookManagerFunctions::VERSION,
-	'author'	=>  array('Raylton P. Sousa', 'Helder.wiki'),
+	'author'	=>  array( 'Raylton P. Sousa', 'Helder.wiki' ),
 	'url'		=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
 	'description'	=> 'Tools for books',
 );
@@ -52,12 +52,12 @@ $wgResourceModules['ext.BookManager'] = array(
 	'scripts'	=> 'bookmanager.js',
 	'styles'	=> 'bookmanager.css',
 	'messages'	=> array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
-	'dependencies'	=> array( 'jquery', 'mediawiki.util'),
+	'dependencies'	=> array( 'jquery', 'mediawiki.util' ),
 	'localBasePath'	=> $dir,
 	'remoteExtPath'	=> 'BookManager'
 );
-$wgBookManagerNamespaces = array( NS_MAIN ); 
-$wgBookManagerNavbar = true;		
+$wgBookManagerNamespaces = array( NS_MAIN );
+$wgBookManagerNavBar = true;
 /* Copyied from extensions/Collection/Collection.php */
 /** Namespace for "community books" */
 $wgCommunityCollectionNamespace = NS_PROJECT;
@@ -74,4 +74,5 @@ $wgHooks['ParserGetVariableValueSwitch'][] = 'BookManagerFunctions::AssignAValue
 $wgHooks['OutputPageBeforeHTML'][] = 'BookManagerFunctions::addText';
 
 $wgHooks['BeforePageDisplay'][] = 'BookManagerFunctions::injectStyleAndJS';
+
 
