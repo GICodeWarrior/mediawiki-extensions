@@ -30,14 +30,13 @@
 if( !defined( 'MEDIAWIKI' ) )
 	die( -1 );
 
-$wgExtensionFunctions[] = "wfMemorize";
+$wgHooks['ParserFirstCallInit'][] = 'wfMemorizeSetHook';
 $wgHooks['BeforePageDisplay'][] = 'addMemorizeJavascriptAndCSS';
 
 
-function wfMemorize() {
-	global $wgParser;
-
-	$wgParser->setHook( 'memorize', 'renderMemorize' );
+function wfMemorizeSetHook( $parser ) {
+	$parser->setHook( 'memorize', 'renderMemorize' );
+	return true;
 }
 
 function renderMemorize( $input, $argv, &$parser ) {
