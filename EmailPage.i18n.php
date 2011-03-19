@@ -1094,6 +1094,7 @@ $messages['tl'] = array(
 	'ea-send' => 'Ipadala',
 	'ea-subject' => 'Paksa:',
 	'ea-message' => 'Mensahe:',
+	'ea-message-info' => 'Dugtungan sa unahan ang nilalaman ng maaaring walang mensahe ng wikiteksto',
 	'ea-style' => 'Estilo:',
 	'ea-selectcss' => 'Makakapili ka ng isang banig ng estilo',
 	'ea-data' => 'Dato',
