@@ -180,6 +180,7 @@ $messages['gsw'] = array(
 	'svgedit-desc' => 'Macht a Bearbeite vun ere SVG-Datei mit [http://code.google.com/p/svg-edit/ SVG-edit] megli',
 	'svgedit-edit-tab' => 'Zeichnig bearbeite',
 	'svgedit-edit-tab-tooltip' => 'Du chasch die SVG-Zeichnig im Browser bearbeite',
+	'svgedit-toolbar-insert' => 'SVG-Zeichnig',
 );
 
 /** Hebrew (עברית)
