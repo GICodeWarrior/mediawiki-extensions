@@ -1624,9 +1624,10 @@ $messages['mt'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Ricardo gs
+ * @author Teòtlalili
  */
 $messages['nah'] = array(
-	'ct-and' => 'īhuān',
+	'ct-and' => 'wàn',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -1635,6 +1636,14 @@ $messages['nah'] = array(
 $messages['nds-nl'] = array(
 	'ct-event-name' => 'Gebeurtenisse',
 	'ct-expert-header' => '"Expert"-kliks',
+);
+
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam Rhk
+ */
+$messages['ne'] = array(
+	'ct-and' => 'अनि',
+	'ct-update-table' => 'तालिका अद्यतन गर्ने',
 );
 
 /** Dutch (Nederlands)
