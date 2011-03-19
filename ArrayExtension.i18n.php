@@ -70,6 +70,13 @@ $messages['gl'] = array(
 	'arrayext-desc' => 'Almacenar e calcular táboas con nomes',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'arrayext-desc' => 'Macht s Spychere un Nutze vu definierte Datezylete megli',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
