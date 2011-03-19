@@ -50,11 +50,11 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:JIRA',
 );
 
-$wgExtensionFunctions[] = 'efJIRASetup';
+$wgHooks['ParserFirstCallInit'][] = 'efJIRASetHook';
 
-function efJIRASetup() {
-global	$wgParser;
-	$wgParser->setHook( 'jiralist', 'efJIRARender' );
+function efJIRASetHook( $parser ) {
+	$parser->setHook( 'jiralist', 'efJIRARender' );
+	return true;
 }
  
 function efJIRARender( $input, $args, $parser ) {
