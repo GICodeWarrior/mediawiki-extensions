@@ -482,6 +482,8 @@ Viliicht gehn Dyyni aktuällen Änderige verlore, wänn du die Syte verlosch.',
 	'al-nosuchuser' => 'S git kei Benutzer mit em Name „$1“.
 Bi Benutzernäme chunnt s uf d Groß- un Chleischrybig aa.
 Iberprief d Schrybwyys.',
+	'al-createblocked' => 'Dyy IP-Adräss isch fir s Aalege vu Benutzerkontn gsperrt wore.',
+	'al-throttled' => 'Du hesch z vilmol versuecht dyy Passwort aazgee. Bitte warte $1 {{PLURAL:$1|Sekund|Sekunde}} bis zum negschte Versuech.',
 );
 
 /** Hebrew (עברית)
