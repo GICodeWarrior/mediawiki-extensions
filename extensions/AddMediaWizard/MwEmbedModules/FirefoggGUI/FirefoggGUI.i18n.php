@@ -4155,6 +4155,34 @@ $messages['sr-el'] = array(
 	'fogg-contact-help' => 'Kontakt-link',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'fogg-wont-upload-to-server' => 'Waiwiesenge: Dien Video-Doatäi wäd lokoal kodierd un ap naan Server hoochleeden.',
+	'fogg-save_local_file' => 'Ogg spiekerje',
+	'fogg-help-sticky' => 'Hälpe (klik toun Fäästsätten)',
+	'fogg-cg-preset' => 'Foarienstaalenge: <strong>$1</strong>',
+	'fogg-cg-quality' => 'Qualitäts- un Aplöösengs-Basisienstaalengen',
+	'fogg-cg-meta' => 'Metadoaten foar dän Clip',
+	'fogg-cg-range' => 'Kodierengsberäk',
+	'fogg-cg-advVideo' => 'Ärwiederde Videokodierengsienstaalengen',
+	'fogg-cg-advAudio' => 'Ärwiederde Autokodierengsienstaalnegn',
+	'fogg-preset-custom' => 'Benutserdefinierde Ienstaalengen',
+	'fogg-webvideo-desc' => 'Internetvideo Theora, Vorbis 400 kbit/s un 400px maximoale Grööte',
+	'fogg-savebandwidth-desc' => 'Läige Beendbratte Theora, Vorbis 164 kbit/s un 200px maximoale Grööte',
+	'fogg-highquality-desc' => 'Hooge Qualität Theora, Vorbis 1080px maximoale Grööte',
+	'fogg-webvideo-webm-desc' => 'WebM Web-Video mäd VP8 (600 kbit/s bei 480px maximoale Bratte)',
+	'fogg-highquality-webm-desc' => 'WebM Video (hoochwäidich) mäd VP8 (1080px maximoale Bratte)',
+	'fogg-videoQuality-title' => 'Videoqualität',
+	'fogg-videoQuality-help' => 'Wäd ferwoand, uum ju <i>visuelle Qualität</i> fon dät kodierde Video ienstoustaalen (Wäd nit ferwoand, sofier du ju Bitrate unner in do ärwiederde Ienstaalengen annerst).',
+	'fogg-starttime-title' => 'Startsekunde',
+	'fogg-starttime-help' => 'Bloot fon ju Tied ou (in Sekunden) kodierje',
+	'fogg-endtime-title' => 'Eendesekunde',
+	'fogg-endtime-help' => 'Bloot bit ju Tied (in Sekunden) kodierje',
+	'fogg-audioQuality-title' => 'Audioqualität',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Cohan

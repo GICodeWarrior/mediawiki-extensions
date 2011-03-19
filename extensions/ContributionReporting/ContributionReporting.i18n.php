@@ -3302,6 +3302,13 @@ $messages['lt'] = array(
 	'contribstats-contributions' => 'Aukojimai',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'contribstats-template' => 'Taiss',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  */

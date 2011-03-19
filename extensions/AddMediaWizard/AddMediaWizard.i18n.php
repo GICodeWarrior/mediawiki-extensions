@@ -212,6 +212,7 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'addmediawizard-desc' => '„Medienassischtänt“ zum Yyfiege vu Mediedateie in Syte. Entwicklet in Zämmearbet vu Kaltura un dr Wikimedia-Foundation',
+	'addmediawizard-loading' => 'Am Lade vum Medie-Wizard',
 );
 
 /** Hebrew (עברית)
@@ -469,7 +470,8 @@ $messages['ps'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'addmediawizard-desc' => 'Assistente para o carregamento de multimédia, desenvolvido em parceria pela Kagura e a Wikimedia Foundation',
+	'addmediawizard-desc' => 'Assistente de carregamentos multimédia, desenvolvido em parceria pela Kaltura e a Wikimedia Foundation',
+	'addmediawizard-loading' => 'A carregar o assistente de carregamentos multimédia',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -519,6 +521,14 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'addmediawizard-desc' => 'Dodaj medija vodič, razvijen u partnerstvu s Kalturom i Vikimedija Zadužbinom',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'addmediawizard-desc' => 'Föiget n Medienassistent toun Ienföigjen fon Mediendoatäie in Sieden tou. Äntwikkeld in Touhoope-Oarbaid fon Kaltura un ju Wikimedia Foundation',
+	'addmediawizard-loading' => 'Die Medienassistent wäd leeden',
 );
 
 /** Sundanese (Basa Sunda)

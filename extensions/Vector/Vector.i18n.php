@@ -111,6 +111,7 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'vector-simplesearch-search' => 'ܒܨܝ',
+	'vector-simplesearch-containing' => 'ܚܒܫ ܥܠ...',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1276,7 +1277,7 @@ $messages['ps'] = array(
  * @author Helder.wiki
  */
 $messages['pt'] = array(
-	'vector' => 'Melhorias da IU do Vector',
+	'vector' => 'Melhorias da interface do tema Vector',
 	'vector-desc' => 'Melhora os elementos da interface do utilizador para o tema Vector',
 	'vector-collapsiblenav-preference' => 'Permitir o ocultamento dos elementos do menu de navegação no tema Vector',
 	'vector-collapsiblenav-more' => 'Mais línguas',
@@ -1285,6 +1286,7 @@ Se estiver autenticado, pode desactivar este aviso na secção "Edição" das pr
 	'vector-editwarning-preference' => 'Avisar-me ao abandonar uma página editada sem gravar as alterações.',
 	'vector-simplesearch-search' => 'Pesquisa',
 	'vector-simplesearch-containing' => 'contendo...',
+	'vector-noexperiments-preference' => 'Excluir-me da experimentação de funcionalidades',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

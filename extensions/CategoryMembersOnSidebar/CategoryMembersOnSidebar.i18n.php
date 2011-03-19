@@ -155,6 +155,13 @@ $messages['mk'] = array(
 	'categorymembersonsidebar-desc' => 'Додава членови на категорија во страничната лента',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Teòtlalili
+ */
+$messages['nah'] = array(
+	'categorymembersonsidebar-desc' => 'Kintlàlia ìyànalòwàn in tlaìxmatkatlàlilòtl ìpan in nekochpalli',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

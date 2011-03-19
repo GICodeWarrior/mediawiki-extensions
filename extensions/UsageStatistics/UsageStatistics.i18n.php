@@ -1078,6 +1078,7 @@ $messages['hi'] = array(
  * @author Dalibor Bosits
  * @author Dnik
  * @author Ex13
+ * @author Herr Mlinka
  */
 $messages['hr'] = array(
 	'specialuserstats' => 'Statistika upotrebe',
@@ -1085,7 +1086,8 @@ $messages['hr'] = array(
 	'usagestatistics-desc' => 'Pokazuje statistku upotrebe za pojedinog suradnika i cijele wiki',
 	'usagestatisticsfor' => '<h2>Statistika upotrebe za suradnika [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statistika upotrebe za sve suradnike</h2>',
-	'usagestatisticsinterval' => 'Razdoblje',
+	'usagestatisticsinterval' => 'Razdoblje:',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Preusmjeravanja]] nisu uzeta u obzir.',
 	'usagestatisticstype' => 'Vrsta',
 	'usagestatisticsstart' => 'Početni datum',
 	'usagestatisticsend' => 'Završni datum',

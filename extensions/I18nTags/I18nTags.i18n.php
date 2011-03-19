@@ -86,6 +86,13 @@ $messages['cs'] = array(
 	'i18ntags-desc' => 'Přístup k i18n funkcím  pro formátování čísel, gramatiku a plurály v jakémkoliv z dostupných jazyků',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'i18ntags-desc' => 'Giver adgang til internationaliseringsfunktioner for talformatering, grammatik og flertalsformer i alle tilgængelige sprog',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Raimond Spekking

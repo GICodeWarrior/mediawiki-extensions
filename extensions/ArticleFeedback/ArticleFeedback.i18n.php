@@ -1408,13 +1408,15 @@ $messages['ja'] = array(
 	'articlefeedback-form-panel-title' => 'このページを評価',
 	'articlefeedback-form-panel-instructions' => 'このページの評価を算出していますので、少しお待ちください。',
 	'articlefeedback-form-panel-clear' => 'この評価を除去する',
-	'articlefeedback-form-panel-expertise' => 'この話題について事前知識がある',
-	'articlefeedback-form-panel-expertise-studies' => '大学で学んだ内容である',
+	'articlefeedback-form-panel-expertise' => 'この話題について、高度な知識を持っている',
+	'articlefeedback-form-panel-expertise-studies' => '関連する大学の学位を持っている',
 	'articlefeedback-form-panel-expertise-profession' => '自分の職業の一部である',
-	'articlefeedback-form-panel-expertise-hobby' => '自分の趣味や興味に関連している',
+	'articlefeedback-form-panel-expertise-hobby' => '個人的に深い情熱を注いでいる',
 	'articlefeedback-form-panel-expertise-other' => '自分の知識源はこの中にない',
 	'articlefeedback-form-panel-submit' => '評価を送信',
 	'articlefeedback-form-panel-success' => '保存に成功',
+	'articlefeedback-form-panel-expiry-title' => 'あなたの評価の有効期限が切れました',
+	'articlefeedback-form-panel-expiry-message' => 'このページを再評価して、新しい評価を送信してください。',
 	'articlefeedback-report-switch-label' => 'ページの評価を見る',
 	'articlefeedback-report-panel-title' => 'ページの評価',
 	'articlefeedback-report-panel-description' => '現在の評価の平均。',
@@ -1433,7 +1435,7 @@ $messages['ja'] = array(
 	'articlefeedback-pitch-thanks' => 'ありがとうございました。評価は保存されました。',
 	'articlefeedback-pitch-survey-message' => '短いアンケートにご協力ください。',
 	'articlefeedback-pitch-survey-accept' => '調査を開始',
-	'articlefeedback-pitch-join-message' => 'アカウントを作成できることをご存じですか。',
+	'articlefeedback-pitch-join-message' => 'アカウントを作成しませんか。',
 	'articlefeedback-pitch-join-body' => 'アカウントを作成することで、自分自身の編集を振り返ることが容易になり、議論に参加しやすくなり、コミュニティの一員にもなれます。',
 	'articlefeedback-pitch-join-accept' => 'アカウント作成',
 	'articlefeedback-pitch-join-login' => 'ログイン',
@@ -1830,6 +1832,13 @@ $messages['myv'] = array(
 	'articlefeedback-survey-submit' => 'Максомс',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Teòtlalili
+ */
+$messages['nah'] = array(
+	'articlefeedback-pitch-or' => 'nòso',
+);
+
 /** Nepali (नेपाली)
  * @author Bhawani Gautam Rhk
  */
@@ -1841,9 +1850,12 @@ $messages['ne'] = array(
 	'articlefeedback-form-panel-success' => 'सफलता पूर्वक संग्रह गरियो',
 	'articlefeedback-field-trustworthy-label' => 'विश्वस्त',
 	'articlefeedback-field-complete-label' => 'पूर्ण',
+	'articlefeedback-pitch-or' => 'अथवा',
 	'articlefeedback-pitch-survey-accept' => 'सर्वेक्षण सुरु गर्ने',
-	'articlefeedback-pitch-join-message' => 'के तपाईंलाई थाह छ कि तपाईं खाता बनाउन सक्नुहुन्छ?',
+	'articlefeedback-pitch-join-message' => 'के  तपाईं खाता बनाउन चाहनुहुन्थ्यो?',
+	'articlefeedback-pitch-join-accept' => 'खाता खोल्ने',
 	'articlefeedback-pitch-join-login' => 'प्रवेश गर्ने',
+	'articlefeedback-pitch-edit-message' => 'तपाईं यो पृष्ठलाई सम्पादन गर्न सक्नुहुन्छ भनेर  तपाईंलाई थाह थियो?',
 	'articlefeedback-pitch-edit-accept' => 'यो पृष्ट सम्पादन गर्ने',
 	'articlefeedback-survey-message-success' => 'सर्वेक्षण भर्नु भएकोमा धन्यवाद',
 	'articlefeedback-survey-message-error' => 'एउटा त्रुटि भएकोछ
@@ -1990,10 +2002,10 @@ $messages['pl'] = array(
 	'articlefeedback-form-panel-title' => 'Oceń tę stronę',
 	'articlefeedback-form-panel-instructions' => 'Poświeć chwilę, aby ocenić tę stronę.',
 	'articlefeedback-form-panel-clear' => 'Usuń ranking',
-	'articlefeedback-form-panel-expertise' => 'Posiadam lepszą wiedzę w tym temacie',
-	'articlefeedback-form-panel-expertise-studies' => 'Uczyłem się tego w szkole lub na studiach',
+	'articlefeedback-form-panel-expertise' => 'Posiadam szeroką wiedzę w tym temacie',
+	'articlefeedback-form-panel-expertise-studies' => 'Znam to ze szkoły średniej lub ze studiów',
 	'articlefeedback-form-panel-expertise-profession' => 'To element mojego zawodu',
-	'articlefeedback-form-panel-expertise-hobby' => 'Jest to związane z moimi hobby lub zainteresowaniami',
+	'articlefeedback-form-panel-expertise-hobby' => 'Bardzo wnikliwie interesuję się tym tematem',
 	'articlefeedback-form-panel-expertise-other' => 'Źródła mojej wiedzy nie ma na liście',
 	'articlefeedback-form-panel-submit' => 'Prześlij opinię',
 	'articlefeedback-form-panel-success' => 'Zapisano',
@@ -2015,7 +2027,7 @@ $messages['pl'] = array(
 	'articlefeedback-pitch-thanks' => 'Dziękujemy! Wystawione przez Ciebie oceny zostały zapisane.',
 	'articlefeedback-pitch-survey-message' => 'Poświęć chwilę na wypełnienie krótkiej ankiety.',
 	'articlefeedback-pitch-survey-accept' => 'Rozpocznij ankietę',
-	'articlefeedback-pitch-join-message' => 'Czy wiesz, że możesz utworzyć konto?',
+	'articlefeedback-pitch-join-message' => 'Czy chcesz utworzyć konto?',
 	'articlefeedback-pitch-join-body' => 'Posiadanie konta ułatwia śledzenie wprowadzanych zmian, udział w dyskusjach oraz integrację ze społecznością.',
 	'articlefeedback-pitch-join-accept' => 'Utwórz konto',
 	'articlefeedback-pitch-join-login' => 'Zaloguj się',

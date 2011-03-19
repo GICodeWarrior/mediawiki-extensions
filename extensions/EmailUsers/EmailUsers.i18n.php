@@ -321,6 +321,7 @@ $messages['tl'] = array(
 	'emailusers-target-reverse' => 'Ipadala sa lahat ng mga tagagamit maliban sa mga napili',
 	'emailusers-norecipient' => 'Wala kang mapagpapadalahan ng e-liham.',
 	'emailusers-norecipientselected' => 'Walang napiling tatanggap.',
+	'emailusers-toomanyrecipientsselected' => 'Napakaraming napiling mga tagatanggap ({{PLURAL:$1|pinakamataas ang $1|pinakamataas ang $1}}).',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

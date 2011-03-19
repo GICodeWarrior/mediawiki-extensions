@@ -300,8 +300,10 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author Herr Mlinka
  */
 $messages['hr'] = array(
+	'msfunc_desc' => 'Zbirka matematičkih i statističkih funkcija',
 	'msfunc_nan' => 'Vrijednost rezultata nije broj',
 	'msfunc_inf' => 'Vrijednost rezultata je beskonačna',
 	'msfunc_div_zero' => 'Dijeljenje nulom',

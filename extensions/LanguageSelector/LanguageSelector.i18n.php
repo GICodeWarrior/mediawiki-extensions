@@ -241,9 +241,12 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Jon Harald Søby
+ * @author Peter Alberti
  */
 $messages['da'] = array(
 	'languageselector' => 'Sprog',
+	'languageselector-desc' => 'Sprogvælger på alle sider, også for gæster',
+	'languageselector-setlang' => 'vælg',
 );
 
 /** German (Deutsch)
