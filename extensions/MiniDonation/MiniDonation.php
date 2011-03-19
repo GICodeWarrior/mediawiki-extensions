@@ -8,13 +8,12 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'donationform-desc',
 );
 
-$wgExtensionFunctions[] = 'wfSetupMiniDonation';
+$wgHooks['ParserFirstCallInit'][] = 'wfSetupMiniDonation';
 $wgExtensionMessagesFiles['MiniDonation'] = dirname(__FILE__) . '/MiniDonation.i18n.php';
 
-function wfSetupMiniDonation() {
-	global $wgParser;
-
-	$wgParser->setHook( 'donationform', 'wfMiniDonationHook' );
+function wfSetupMiniDonation( $parser ) {
+	$parser->setHook( 'donationform', 'wfMiniDonationHook' );
+	return true;
 }
 
 function wfMiniDonationHook( $text, $params, $parser ) {
