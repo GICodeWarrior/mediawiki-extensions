@@ -38,6 +38,7 @@ $wgExtensionCredits['specialpage'][] = array(
 // Autoload the new classes and set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AdvancedSearch'] = $dir . 'AdvancedSearch.i18n.php';
+$wgExtensionAliasesFiles['AdvancedSearch'] = $dir . 'AdvancedSearch.alias.php';
 $wgAutoloadClasses['AdvancedSearch'] = $dir . 'AdvancedSearch.body.php';
 $wgAutoloadClasses['AdvancedSearchPager'] = $dir . 'AdvancedSearchPager.php';
 $wgAutoloadClasses['AdvancedSearchCategoryIntersector'] = $dir . 'AdvancedSearchCategoryIntersector.php';
@@ -45,20 +46,10 @@ $wgAutoloadClasses['AdvancedSearchCategoryIntersector'] = $dir . 'AdvancedSearch
 $wgSpecialPages['AdvancedSearch'] = 'AdvancedSearch';
 
 // Hooked functions
-$wgHooks['LanguageGetSpecialPageAliases'][] = 'AdvancedSearchLocalizedPageName';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'AdvancedSearchSchemaUpdate';
 $wgHooks['LinksUpdate'][] = 'AdvancedSearchCategoryIntersector::LinksUpdate';
 $wgHooks['ArticleDeleteComplete'][] = 'AdvancedSearchCategoryIntersector::ArticleDeleteComplete';
 $wgHooks['ParserTestTables'][] = 'AdvancedSearchAddTable';
-
-function AdvancedSearchLocalizedPageName( &$specialPageArray, $code ) {
-	wfLoadExtensionMessages( 'AdvancedSearch' );
-	$text = wfMsg( 'advancedsearch-pagename' );
-
-	$title = Title::newFromText( $text );
-	$specialPageArray['AdvancedSearch'][] = $title->getDBkey();
-	return true;
-}
 
 function AdvancedSearchSchemaUpdate( $updater = null ) {
 	$dir = dirname( __FILE__ ) . '/';
