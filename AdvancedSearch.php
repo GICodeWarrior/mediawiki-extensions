@@ -5,14 +5,16 @@
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
+ * @file
+ * @ingroup Extensions
+ * @version 1.0
  * @author Roan Kattouw <roan.kattouw@home.nl>
- * @copyright Copyright (C) 2008 Roan Kattouw
+ * @copyright Copyright © 2008 Roan Kattouw
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  *
  * An extension that allows for searching inside categories
  * Written for MixesDB <http://mixesdb.com> by Roan Kattouw <roan.kattouw@home.nl>
  * For information how to install and use this extension, see the README file.
- *
  */
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the extension file directly.
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -23,6 +25,7 @@ EOT;
 	exit( 1 );
 }
 
+// Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'AdvancedSearch',
@@ -32,6 +35,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'advancedsearch-desc',
 );
 
+// Autoload the new classes and set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AdvancedSearch'] = $dir . 'AdvancedSearch.i18n.php';
 $wgAutoloadClasses['AdvancedSearch'] = $dir . 'AdvancedSearch.body.php';
@@ -39,6 +43,8 @@ $wgAutoloadClasses['AdvancedSearchPager'] = $dir . 'AdvancedSearchPager.php';
 $wgAutoloadClasses['AdvancedSearchCategoryIntersector'] = $dir . 'AdvancedSearchCategoryIntersector.php';
 
 $wgSpecialPages['AdvancedSearch'] = 'AdvancedSearch';
+
+// Hooked functions
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'AdvancedSearchLocalizedPageName';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'AdvancedSearchSchemaUpdate';
 $wgHooks['LinksUpdate'][] = 'AdvancedSearchCategoryIntersector::LinksUpdate';
