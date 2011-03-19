@@ -1,77 +1,13 @@
 <?php
-/**** All the BookManager Variables Functions ****/
 class BookManagerFunctions {
+/**
+* BookManager private functions [Core]
+*/
 	const VERSION = "0.1.6 ";
-
-	static function register( $parser ) {
-		# optional SFH_NO_HASH to omit the hash from calls (e.g. {{int:...}}
-		# instead of {{#int:...}})
-		$parser->setFunctionHook( 'prevpagename',   array( __CLASS__, 'prevpagename' ),  SFH_NO_HASH );
-		$parser->setFunctionHook( 'prevpagenamee',  array( __CLASS__, 'prevpagenamee' ), SFH_NO_HASH );
-		$parser->setFunctionHook( 'nextpagename',   array( __CLASS__, 'nextpagename' ),  SFH_NO_HASH );
-		$parser->setFunctionHook( 'nextpagenamee',  array( __CLASS__, 'nextpagenamee' ), SFH_NO_HASH );
-		$parser->setFunctionHook( 'rootpagename',   array( __CLASS__, 'rootpagename' ),  SFH_NO_HASH );
-		$parser->setFunctionHook( 'rootpagenamee',  array( __CLASS__, 'rootpagenamee' ), SFH_NO_HASH );
-		$parser->setFunctionHook( 'chaptername',    array( __CLASS__, 'chaptername' ),   SFH_NO_HASH );
-		$parser->setFunctionHook( 'chapternamee',   array( __CLASS__, 'chapternamee' ),  SFH_NO_HASH );
-
-		return true;
-	}
-	/**** All the BookManager functions to declare magicword id ****/
-	static function DeclareVarIds( &$aCustomVariableIds ) {
-		# aCustomVariableIds is where MediaWiki wants to store its
-		# list of custom variable ids. We oblige by adding ours:
-		$aCustomVariableIds[] = 'prevpagename';
-		$aCustomVariableIds[] = 'prevpagenamee';
-		$aCustomVariableIds[] = 'nextpagename';
-		$aCustomVariableIds[] = 'nextpagenamee';
-		$aCustomVariableIds[] = 'rootpagename';
-		$aCustomVariableIds[] = 'rootpagenamee';
-		$aCustomVariableIds[] = 'chaptername';
-		$aCustomVariableIds[] = 'chapternamee';
-		return true;
-	}
-	/**** All the BookManager functions to declare magicwords ****/
-	static function LanguageGetMagic( &$magicWords, $langCode = "en" ) {
-		# PREVPAGENAME
-		$magicWords['prevpagename'] = array ( 0, 'PREVPAGENAME' );
-		# PREVPAGENAME
-		$magicWords['prevpagenamee'] = array ( 0, 'PREVPAGENAMEE' );
-		# NEXTPAGENAME
-		$magicWords['nextpagename'] = array ( 0, 'NEXTPAGENAME' );
-		# NEXTPAGENAMEE
-		$magicWords['nextpagenamee'] = array ( 0, 'NEXTPAGENAMEE' );
-		# ROOTPAGENAME
-		$magicWords['rootpagename'] = array ( 0, 'ROOTPAGENAME' , 'BOOKNAME' );
-		# ROOTPAGENAMEE
-		$magicWords['rootpagenamee'] = array ( 0, 'ROOTPAGENAMEE' , 'BOOKNAMEE' );
-		# CHAPTERNAME
-		$magicWords['chaptername'] = array ( 0, 'CHAPTERNAME' );
-		# CHAPTERNAMEE
-		$magicWords['chapternamee'] = array ( 0, 'CHAPTERNAMEE' );
-
-		return true;
-	}
-/**** All the BookManager private functions ****/
-	
-
-	/*
-	 * Check if action is suported 
-	 * @return Bool
-	 */
-	private static function isViewAction() {
-		global $wgRequest;
-		$action = $wgRequest->getVal( 'action', 'view' );
-		if( $action == 'view' || $action == 'purge' ){			
-			return true;
-		}
-		else{		
-			return false;
-		}	
-	}
-
-	/*
+	private static $chapterList;
+	/**
 	 * Get Title
+	 * @return Object
 	 */
 	private static function newTitleObject( &$parser, $text = null ) {
 		$t = Title::newFromText( $text );
@@ -82,7 +18,7 @@ class BookManagerFunctions {
 	}
 
 
-	/*
+	/**
 	 * Adaptation of the function "getBookPagePrefixes" from collection extension
 	 * (http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Collection/Collection.body.php?revision=79895&view=markup#l440)
 	 */
@@ -115,7 +51,7 @@ class BookManagerFunctions {
 		return $result;
 	}
 
-	/*
+	/**
 	 * Simplification of the function "parseCollectionLine" from collection extension
 	 * (http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Collection/Collection.body.php?revision=79895&view=markup#l709)
 	 */
@@ -142,7 +78,7 @@ class BookManagerFunctions {
 		return null;
 	}
 
-	/*
+	/**
 	 * Adaptation of the function "loadCollection" from collection extension
 	 * (http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Collection/Collection.body.php?revision=79895&view=markup#l780)
 	 */
@@ -162,19 +98,20 @@ class BookManagerFunctions {
 		}
 		return $caps;
 	}
-
-	#Get the book or chapter name	
-	private static function bookparts( &$parser, $text = null, $part = 1) {
+	/**
+	* Get the book or chapter name
+	*/
+	private static function bookparts( &$parser, $text = null, $part = 1 ) {
 		$t = self::newTitleObject( $parser, $text );
 		// No book should have '/' in it's name, so...
 		$book = explode( "/", $t->getText(), 2 ); // ...given a page with title like 'Foo/Bar/Baz'...
-		if ( count($book) > 1 ) {		
-			return $book[$part];//... $book[0] is Foo, the book name, and $book[1] is Bar/Baz, the chapter name.
+		if ( count( $book ) > 1 ) {
+			return $book[$part];// ... $book[0] is Foo, the book name, and $book[1] is Bar/Baz, the chapter name.
 		}
-		else{
+		else {
 			return $t;
 		}
-		
+
 	}
 	/**
 	 * Get the prefixed title of a page near the given page.
@@ -186,26 +123,77 @@ class BookManagerFunctions {
 	private static function pageText( &$parser, $text = null, $n = 0 ) {
 		$pagetitle = self::newTitleObject( $parser, $text );
 		$prefixes = self::getBookPagePrefixes();
-		$booktitle = Title::newFromText( $prefixes['community-prefix'] . self::bookparts( $parser, $text, 0) ); // ...the book name will be 'Foo'.
+		$booktitle = Title::newFromText( $prefixes['community-prefix'] . self::bookparts( $parser, $text, 0 ) ); // ...the book name will be 'Foo'.
 
-		$cap = self::loadListFromCollection( $booktitle );
-		if ( $cap === false ) {
+		if ( !self::$chapterList ) {
+			self::$chapterList = self::loadListFromCollection( $booktitle );
+		}
+		if ( self::$chapterList === false ) {
 			return '';
 		}
-		$current = array_search( $pagetitle, $cap );
-		if ( $current === false || !isset( $cap[ $current + $n ] ) ) {
+		$current = array_search( $pagetitle, self::$chapterList );
+		if ( $current === false || !isset( self::$chapterList[ $current + $n ] ) ) {
 			return '';
 		}
-		$otherpagetitle = Title::newFromText( $cap[ $current + $n ] );
+		$otherpagetitle = Title::newFromText( self::$chapterList[ $current + $n ] );
 		if ( is_null( $otherpagetitle ) ) {
 			return '';
 		}
 		return wfEscapeWikiText( $otherpagetitle->getText() );
 	}
+/**
+* BookManager Functions [Variables]
+*/
+	static function register( $parser ) {
+		# optional SFH_NO_HASH to omit the hash from calls (e.g. {{int:...}}
+		# instead of {{#int:...}})
+		$parser->setFunctionHook( 'prevpagename',	array( __CLASS__, 'prevpagename' ),	SFH_NO_HASH );
+		$parser->setFunctionHook( 'prevpagenamee',	array( __CLASS__, 'prevpagenamee' ),	SFH_NO_HASH );
+		$parser->setFunctionHook( 'nextpagename',	array( __CLASS__, 'nextpagename' ),	SFH_NO_HASH );
+		$parser->setFunctionHook( 'nextpagenamee',	array( __CLASS__, 'nextpagenamee' ),	SFH_NO_HASH );
+		$parser->setFunctionHook( 'rootpagename',	array( __CLASS__, 'rootpagename' ),	SFH_NO_HASH );
+		$parser->setFunctionHook( 'rootpagenamee',	array( __CLASS__, 'rootpagenamee' ),	SFH_NO_HASH );
+		$parser->setFunctionHook( 'chaptername',	array( __CLASS__, 'chaptername' ),	SFH_NO_HASH );
+		$parser->setFunctionHook( 'chapternamee',	array( __CLASS__, 'chapternamee' ),	SFH_NO_HASH );
 
-/**** All the BookManager values functions ****/
+		return true;
+	}
+	# Function to declare magicword id
+	static function DeclareVarIds( &$aCustomVariableIds ) {
+		# aCustomVariableIds is where MediaWiki wants to store its
+		# list of custom variable ids. We oblige by adding ours:
+		$aCustomVariableIds[] = 'prevpagename';
+		$aCustomVariableIds[] = 'prevpagenamee';
+		$aCustomVariableIds[] = 'nextpagename';
+		$aCustomVariableIds[] = 'nextpagenamee';
+		$aCustomVariableIds[] = 'rootpagename';
+		$aCustomVariableIds[] = 'rootpagenamee';
+		$aCustomVariableIds[] = 'chaptername';
+		$aCustomVariableIds[] = 'chapternamee';
+		return true;
+	}
+	# Function to declare magicwords
+	static function LanguageGetMagic( &$magicWords, $langCode = "en" ) {
+		# PREVPAGENAME
+		$magicWords['prevpagename'] = array ( 0, 'PREVPAGENAME' );
+		# PREVPAGENAME
+		$magicWords['prevpagenamee'] = array ( 0, 'PREVPAGENAMEE' );
+		# NEXTPAGENAME
+		$magicWords['nextpagename'] = array ( 0, 'NEXTPAGENAME' );
+		# NEXTPAGENAMEE
+		$magicWords['nextpagenamee'] = array ( 0, 'NEXTPAGENAMEE' );
+		# ROOTPAGENAME
+		$magicWords['rootpagename'] = array ( 0, 'ROOTPAGENAME' , 'BOOKNAME' );
+		# ROOTPAGENAMEE
+		$magicWords['rootpagenamee'] = array ( 0, 'ROOTPAGENAMEE' , 'BOOKNAMEE' );
+		# CHAPTERNAME
+		$magicWords['chaptername'] = array ( 0, 'CHAPTERNAME' );
+		# CHAPTERNAMEE
+		$magicWords['chapternamee'] = array ( 0, 'CHAPTERNAMEE' );
 
-
+		return true;
+	}
+	# Values functions
 	static function prevpagename( &$parser, $text = null ) {
 		$t = self::pageText( $parser, $text, - 1 );
 		return $t;
@@ -217,7 +205,7 @@ class BookManagerFunctions {
 	}
 
 	static function nextpagename( &$parser, $text = null ) {
-		
+
 		$t = self::pageText( $parser, $text, + 1 );
 		return $t;
 	}
@@ -227,24 +215,23 @@ class BookManagerFunctions {
 		return wfUrlEncode( $t );
 	}
 	static function rootpagename( &$parser, $text = null ) {
-		$t = self::bookparts( $parser, $text, 0);
+		$t = self::bookparts( $parser, $text, 0 );
 		return $t;
 	}
 	static function rootpagenamee( &$parser, $text = null ) {
-		$t = self::bookparts( $parser, $text, 0);
+		$t = self::bookparts( $parser, $text, 0 );
 		return wfUrlEncode( $t );
 	}
 	static function chaptername( &$parser, $text = null ) {
-		$t = self::bookparts( $parser, $text, 1);
+		$t = self::bookparts( $parser, $text, 1 );
 		return $t;
 	}
 	static function chapternamee( &$parser, $text = null ) {
-		$t = self::bookparts( $parser, $text, 1);
+		$t = self::bookparts( $parser, $text, 1 );
 		return wfUrlEncode( $t );
 	}
 
-/**** All the BookManagerFunctions for use with MW Variables on the current page ****/
-
+	# Function for use with MW Variables on the current page
 	static function AssignAValue( &$parser, &$cache, &$magicWordId, &$ret ) {
 		switch( $magicWordId ) {
 		case 'prevpagename':
@@ -274,75 +261,91 @@ class BookManagerFunctions {
 		}
 		return false;
 	}
-	
-	
+
 /**
-* Function that adds navigation bar
+* BookManager Functions [Navigation Bar]
 * inspired by PageNotice extension
-* (http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/PageNotice/PageNotice.php)
+* (http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/PageNotice/PageNotice.php&view=markup)
 */
 
+
 	static function addText( &$out, &$text ) {
-		global $wgParser, $wgBookManagerNamespaces, $wgBookManagerNavbar;
+		global $wgRequest, $wgBookManagerNamespaces, $wgBookManagerNavBar;
 		$ns = $out->getTitle()->getNamespace();
+		# Return True if action is suported
+		$action = $wgRequest->getVal( 'action', 'view' );
+		$isViewAction = ( $action == 'view' || $action == 'purge' );
+		if ( !$wgBookManagerNavBar || !in_array( $ns, $wgBookManagerNamespaces ) || !$isViewAction ) {
+			return true;
+		}
 		$opt = array(
 			'parseinline',
 		);
+		# Get $out title
 		$currenttitletext = $out->getTitle()->getText();
-		$prev = self::pageText( $wgParser, $currenttitletext, - 1 );
-		$base = Title::newFromText($currenttitletext)->getBaseText();
-		$next = self::pageText( $wgParser, $currenttitletext, + 1 );
-		$prevtext = ( $prev !== '' ) ? Title::newFromText( $prev )->getSubpageText(): '' ; 
-		$basetext = Title::newFromText( $base )->getSubpageText();
-		$nexttext = ( $next !== '' ) ? Title::newFromText( $next )->getSubpageText(): '' ; 
-		$prevlink = ( $prev !== '' ) ? Title::newFromText( $prev )->getLocalURL(): '' ;
-		$baselink = Title::newFromText( $base )->getLocalURL();
-		$nextlink = ( $next !== '' ) ? Title::newFromText( $next )->getLocalURL(): '' ; 
-		$bar  = Xml::openElement('ul',array('class'=>'mw-book-navigation') );	
-		$bar .= ( $prev !== '' ) ? Xml::openElement('li',array('class'=>'mw-prev') ): '' ;
-		$bar .= ( $prev !== '' ) ? Xml::element('a',array('href'=>$prevlink,'title'=>$prev ),$prevtext): '' ;
-		$bar .= ( $prev !== '' ) ? Xml::closeElement('li'): '' ;
-		$bar .= Xml::openElement('li',array('class'=>'mw-index') );
-		$bar .= Xml::element('a',array('href'=>$baselink,'title'=>$base ),$basetext);
-		$bar .= Xml::closeElement('li');
-		$bar .= ( $next !== '' ) ? Xml::openElement('li',array('class'=>'mw-next') ): '' ;
-		$bar .= ( $next !== '' ) ? Xml::element('a',array('href'=>$nextlink,'title'=>$next ),$nexttext): '' ;
-		$bar .= ( $next !== '' ) ? Xml::closeElement('li'): '' ;
-		$bar .= Xml::closeElement('ul');
-		$is_inBookList = ( $prev !== '' || $next !== '' ) ? true : false ;
-		#adds system messages or html
-		if ( $wgBookManagerNavbar  && in_array($ns,$wgBookManagerNamespaces) && self::isViewAction() && $is_inBookList ) {
-		 	$BookManager = wfMsgExt( "BookManager", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext);
-			$BookManagerTop = wfMsgExt( "BookManager-top", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext  );
-			$BookManagerBottom = wfMsgExt( "BookManager-bottom", $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
-			if ( !wfEmptyMsg( "BookManager-top", $BookManagerTop ) ) {
-				$text = "<div>$BookManagerTop</div>\n$text";
+		# Get: prev, next and base chapter from the list
+		$prev = self::pageText( $parser, $currenttitletext, - 1 );
+
+		$next = self::pageText( $parser, $currenttitletext, + 1 );
+		if ( $prev === '' && $next === '' ) {
+			return true;
+		}
+		# Return True if page exists in the chapter list
+		$is_inChapterList = ( $prev !== '' || $next !== '' );
+		# Return True if Message is non empty
+		$MsgIsEmpty =	(  wfEmptyMsg( "BookManager" )
+				&& wfEmptyMsg( "BookManager-top" )
+				&& wfEmptyMsg( "BookManager-bottom" ));
+		# Generate HTML or system messages values( $1 for $prev, $2 for $prevtext, $3 for $base, $4 for $basetext, $5 for $next and $6 for $nexttext ).
+		$prevtext = ( $prev !== '' ) ? Title::newFromText( $prev )->getSubpageText(): '' ;
+		$nexttext = ( $next !== '' ) ? Title::newFromText( $next )->getSubpageText(): '' ;
+		if ( $MsgIsEmpty ) {
+			$defaultBar = Xml::openElement( 'ul', array( 'class' => 'mw-book-navigation' ) );
+			if ( $prev !== '' ) {
+				$prevlink = Title::newFromText( $prev )->getLocalURL();
+				$defaultBar .= Xml::openElement( 'li', array( 'class' => 'mw-prev' ) );
+				$defaultBar .= Xml::element( 'a', array( 'href' => $prevlink, 'title' => $prev ), $prevtext );
+				$defaultBar .= Xml::closeElement( 'li' );
 			}
-			elseif ( !wfEmptyMsg( "BookManager", $BookManager ) ) {
-					$text = "<div>$BookManager</div>\n$text";
+			$base = Title::newFromText( $currenttitletext )->getBaseText();
+			$basetext = Title::newFromText( $base )->getSubpageText();
+			$baselink = Title::newFromText( $base )->getLocalURL();
+			$defaultBar .= Xml::openElement( 'li', array( 'class' => 'mw-index' ) );
+			$defaultBar .= Xml::element( 'a', array( 'href' => $baselink, 'title' => $base ), $basetext );
+			$defaultBar .= Xml::closeElement( 'li' );
+			if ( $next !== '' ) {
+				$nextlink = Title::newFromText( $next )->getLocalURL();
+				$defaultBar .= Xml::openElement( 'li', array( 'class' => 'mw-next' ) );
+				$defaultBar .= Xml::element( 'a', array( 'href' => $nextlink, 'title' => $next ), $nexttext );
+				$defaultBar .= Xml::closeElement( 'li' );
 			}
-			#This part adds directly to the html by default when the messages are not defined ...
-			else {
-					$text = "$bar\n$text";
-			}
-			if ( !wfEmptyMsg( "BookManager-bottom", $BookManagerBottom ) ) {
-				$text = "$text\n<div>$BookManagerBottom</div>";
-			}
-			elseif ( !wfEmptyMsg( "BookManager", $BookManager ) ) {
-					$text = "$text\n<div>$BookManager</div>";
-			}
-			#This part adds directly to the html by default when the messages are not defined ...
-			else {
-					$text = "$text\n$bar";
-			}
-		 }
-		return true;
-	}
-	#adds CSS and JS to navigation bar 
+			$defaultBar .= Xml::closeElement( 'ul' );
+		}
+		# Gets navigation bar from custom system messages or from default defined above
+		$customBoth = wfEmptyMsg( 'BookManager' ) ? false : 'BookManager';
+		$customTop = wfEmptyMsg( 'BookManager-top' ) ? $customBoth : 'BookManager-top';
+		$customBottom = wfEmptyMsg( 'BookManager-bottom' ) ? $customBoth : 'BookManager-bottom';
+		$opt = array(
+			'parseinline',
+		);
+		if ( $customTop ) {
+			$top = wfMsgExt( $customTop, $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
+		} else {
+			$top = $defaultBar;
+		}
+		if ( $customBottom ) {
+			$bottom = wfMsgExt( $customBottom, $opt, $prev, $prevtext, $base, $basetext, $next, $nexttext );
+		} else {
+			$bottom = $defaultBar;
+		}
+		# Adds navigation before and after the page text
+		$text = "<div>$top</div>\n$text\n<div>$bottom</div>";
+ 		return true;
+ 	}
+	# adds CSS and JS to navigation bar
 	static function injectStyleAndJS( &$out, &$sk ) {
-		$out->addModuleStyles('ext.BookManager'); 
-		$out->addModules( 'ext.BookManager'); 
+		$out->addModuleStyles( 'ext.BookManager' );
+		$out->addModules( 'ext.BookManager' );
 		return true;
 	}
 }
-
