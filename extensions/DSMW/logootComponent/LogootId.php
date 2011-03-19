@@ -50,13 +50,13 @@ class LogootId {
         $val2 = new Math_BigInteger( $logid->mInt );
 
         if ( ( $val1->compare( $val2 ) ) < 0 )
-        return -1;
+            return -1;
         else if ( ( $val1->compare( $val2 ) ) > 0 )
-        return 1;
+            return 1;
         else if ( strcmp( $this->mSessionId, $logid->mSessionId ) < 0 )
-        return -1;
+            return -1;
         else if ( strcmp( $this->mSessionId, $logid->mSessionId ) > 0 )
-        return 1;
+            return 1;
         return 0;
     }
 

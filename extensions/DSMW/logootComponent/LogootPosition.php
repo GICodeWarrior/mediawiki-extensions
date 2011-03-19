@@ -24,7 +24,7 @@ class LogootPosition {
         while ( $i < $max ) {
 
             if ( $thisPos[$i]->compareTo( $position->mPosition[$i] ) != 0 )
-            break;
+                break;
             $i++;
         }
         if ( $i >= $this->size() && $i >= $position->size() )return 0;

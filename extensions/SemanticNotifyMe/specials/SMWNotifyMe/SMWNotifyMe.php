@@ -247,7 +247,7 @@ class SMWNotifyMe extends SpecialPage {
 					<td><a href="#" onclick="notifyhelper.showall(true)">' . wfMsg( 'smw_nm_special_all' ) . '</a>/<a href="#" onclick="notifyhelper.showall(false)">' . wfMsg( 'smw_nm_special_none' ) . '</a>&#160; <button class="btn" onclick="notifyhelper.updateShowAll()" onmouseover="this.className=\'btn btnhov\'; Tip(\'' . wfMsg( 'smw_nm_special_tt_showupdate' ) . '\')" onmouseout="this.className=\'btn\'">' . wfMsg( 'smw_nm_special_update' ) . '</button></td>
 					<td><a href="#" onclick="notifyhelper.enableall(true)">' . wfMsg( 'smw_nm_special_all' ) . '</a>/<a href="#" onclick="notifyhelper.enableall(false)">' . wfMsg( 'smw_nm_special_none' ) . '</a>&#160; <button class="btn" onclick="notifyhelper.updateStates()" onmouseover="this.className=\'btn btnhov\'; Tip(\'' . wfMsg( 'smw_nm_special_tt_enableupdate' ) . '\')" onmouseout="this.className=\'btn\'">' . wfMsg( 'smw_nm_special_update' ) . '</button></td>';
 		if ( $isSysop )
-		$html .= '<td><button class="btn" onclick="notifyhelper.updateDelegate()" onmouseover="this.className=\'btn btnhov\'; Tip(\'' . wfMsg( 'smw_nm_special_tt_delegateupdate' ) . '\')" onmouseout="this.className=\'btn\'">' . wfMsg( 'smw_nm_special_update' ) . '</button></td>';
+			$html .= '<td><button class="btn" onclick="notifyhelper.updateDelegate()" onmouseover="this.className=\'btn btnhov\'; Tip(\'' . wfMsg( 'smw_nm_special_tt_delegateupdate' ) . '\')" onmouseout="this.className=\'btn\'">' . wfMsg( 'smw_nm_special_update' ) . '</button></td>';
 		$html .= '</tr></table>';
 		return $html;
 	}

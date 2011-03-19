@@ -201,7 +201,7 @@ function tagSearch($action, $article) {
 
 	$numResults = ( $titleMatches ? $titleMatches->numRows() : 0 );
 	if ( $numResults > 0 )
-	$wgOut->addHTML(wfTagSearchShowMatches($titleMatches));
+		$wgOut->addHTML(wfTagSearchShowMatches($titleMatches));
 
 	#echo "numResults: " . $numResults . ", query: " . $query;
 
@@ -335,7 +335,7 @@ function wfGetImageTags($img, $imgName) {
 	$wgOut->addHTML("<!-- this many image tags: " . count($res) . " from img " . $img->name . " -->");
 	while ($o = $db->fetchObject($res)) {
 		if ( strlen($html) > 0 )
-		$html .= ', ';
+			$html .= ', ';
 
 		$wgOut->addHTML("<!-- tag rect: " . $o->tag_rect . ", tag title: " . $o->article_tag . ", unique_id: " . $o->unique_id . "-->");
 
@@ -358,7 +358,7 @@ function wfGetImageTags($img, $imgName) {
 	$db->freeResult($res);
 
 	if ( $html )
-	$html = wfMsg('imagetagging-inthisimage', $html);
+		$html = wfMsg('imagetagging-inthisimage', $html);
 
 	wfProfileOut( __METHOD__ );
 	return $html;

@@ -89,17 +89,17 @@ abstract class RdfQueryPage extends QueryPage implements RdfQueryPageInterface {
 		if ( $num > 0 ) {
 			$s = array();
 			if ( ! $this->listoutput )
-			$s[] = "<ol start='" . ( $offset + 1 ) . "' class='special'>";
+				$s[] = "<ol start='" . ( $offset + 1 ) . "' class='special'>";
 
 			# here's where we do the offset and limit
 			for ( $i = $offset; $i < $num && $i < $offset + $limit; $i++ ) {
 				$format = $this->formatResult( $sk, $res[$i] );
 				if ( $format )
-				$s[] = $this->listoutput ? $format : "<li>{$format}</li>\n";
+					$s[] = $this->listoutput ? $format : "<li>{$format}</li>\n";
 			}
 
 			if ( ! $this->listoutput )
-			$s[] = '</ol>';
+				$s[] = '</ol>';
 			$str = $this->listoutput ? $wgContLang->listToText( $s ) : implode( '', $s );
 			$wgOut->addHTML( $str );
 		}
