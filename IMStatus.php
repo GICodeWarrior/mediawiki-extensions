@@ -53,17 +53,16 @@ $wgAimKey_api = "re1DoqFLUFKW4_YE";		// get a Web AIM key for this
 //*********** MANDATORY parameters - end
 
 //Tag creation
-$wgExtensionFunctions[] = "wfIMStatusPCR";
-function wfIMStatusPCR()
-{
-	global $wgParser;
-	$wgParser->setHook( "aim", "RenderAIM" );
-	$wgParser->setHook( "gtalk", "RenderGTalk" );
-	$wgParser->setHook( "icq", "RenderICQ" );
-	$wgParser->setHook( "livemessenger", "RenderLiveMessenger" );
-	$wgParser->setHook( "skype", "RenderSkype" );
-	$wgParser->setHook( "xfire", "RenderXfire" );
-	$wgParser->setHook( "yahoo", "RenderYahoo" );
+$wgHooks['ParserFirstCallInit'][] = 'wfIMStatusPCR';
+function wfIMStatusPCR( $parser ) {
+	$parser->setHook( 'aim', 'RenderAIM' );
+	$parser->setHook( 'gtalk', 'RenderGTalk' );
+	$parser->setHook( 'icq', 'RenderICQ' );
+	$parser->setHook( 'livemessenger', 'RenderLiveMessenger' );
+	$parser->setHook( 'skype', 'RenderSkype' );
+	$parser->setHook( 'xfire', 'RenderXfire' );
+	$parser->setHook( 'yahoo', 'RenderYahoo' );
+	return true;
 }
 
 // FIXME: below should be put in its own class file and use PARSERFIRSTCALLINIT to optimise resource usage
