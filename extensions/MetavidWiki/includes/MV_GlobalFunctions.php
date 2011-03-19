@@ -54,7 +54,7 @@ function enableMetavid() {
 }
 function mvSetupExtension() {
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore,
-	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
+	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $markerList, $wgVersion,
 	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSMVDrewrite,
 	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers, $wgJSAutoloadClasses,
 	$wgAPIModules;
