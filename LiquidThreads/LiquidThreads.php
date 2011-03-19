@@ -146,13 +146,6 @@ $wgAutoloadClasses['SpecialHotTopics'] = "$dir/pages/SpecialHotTopics.php";
 // Job queue
 $wgJobClasses['synchroniseThreadArticleData'] = 'SynchroniseThreadArticleDataJob';
 
-// Backwards-compatibility
-$wgAutoloadClasses['Article_LQT_Compat'] = $dir . 'compat/LqtCompatArticle.php';
-if ( version_compare( $wgVersion, '1.16', '<' ) ) {
-	$wgAutoloadClasses['HTMLForm'] = "$dir/compat/HTMLForm.php";
-	$wgExtensionMessagesFiles['Lqt-Compat'] = "$dir/compat/Lqt-compat.i18n.php";
-}
-
 // Logging
 $wgLogTypes[] = 'liquidthreads';
 $wgLogNames['liquidthreads']          = 'lqt-log-name';
