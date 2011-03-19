@@ -494,11 +494,11 @@ class DumpHTML {
 		# Do raw pages
 		$this->mkdir( "{$this->dest}/raw", 0755 );
 		foreach( $this->rawPages as $record ) {
-			list( $file, $title, $params ) = $record;
+			list( $file, $ftitle, $params ) = $record;
 
 			$path = "{$this->dest}/raw/$file";
 			if ( !file_exists( $path ) ) {
-				$article = new Article( $title );
+				$article = new Article( $ftitle );
 				$request = new FauxRequest( $params );
 				$rp = new RawPage( $article, $request );
 				$text = $rp->getRawText();
@@ -797,6 +797,7 @@ class DumpHTML {
 		if ( $ns == NS_SPECIAL ) {
 			$wgOut = new OutputPage;
 			$wgOut->parserOptions( new ParserOptions );
+			$wgOut->setTitle( $title );
 			SpecialPage::executePath( $wgTitle );
 		} else {
 			$article = MediaWiki::articleFromTitle( $wgTitle );
@@ -806,6 +807,7 @@ class DumpHTML {
 			} else {
 				$wgOut = new OutputPage;
 				$wgOut->parserOptions( new ParserOptions );
+				$wgOut->setTitle( $title );
 
 				$article->view();
 			}
@@ -813,6 +815,7 @@ class DumpHTML {
 
 
 		$sk = $wgUser->getSkin();
+		$sk->setTitle( $title );
 		ob_start();
 		$sk->outputPage( $wgOut );
 		$text = ob_get_contents();
