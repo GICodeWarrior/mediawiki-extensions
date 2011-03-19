@@ -16,7 +16,6 @@
  *
  */
 
-$wgExtensionFunctions[] = 'createImageTabs_setup';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Imagetabs',
@@ -26,10 +25,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Imagetabs'
 );
 
-function createImageTabs_setup() {
-	global $wgHooks;
-	$wgHooks['SkinTemplateContentActions'][] = 'createImageTabs_hook';
-}
+$wgHooks['SkinTemplateContentActions'][] = 'createImageTabs_hook';
 
 function createImageTabs_hook(&$content_actions) {
 	global $wgEnableInterwikiImageTabs, $wgInterwikiImageTabs, $wgTitle, $wgLocalInterwiki;
