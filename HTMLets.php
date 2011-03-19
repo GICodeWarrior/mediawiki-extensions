@@ -51,11 +51,11 @@ $wgHTMLetsHack = HTMLETS_BYPASS_HACK; #hack to use to work around bug #8997. see
 
 $wgHTMLetsDirectory = null;
 
-$wgExtensionFunctions[] = "wfHTMLetsExtension";
+$wgHooks['ParserFirstCallInit'][] = 'wfHTMLetsSetHook';
 
-function wfHTMLetsExtension() {
-	global $wgParser;
-	$wgParser->setHook( "htmlet", "wfRenderHTMLet" );
+function wfHTMLetsSetHook( $parser ) {
+	$parser->setHook( 'htmlet', 'wfRenderHTMLet' );
+	return true;
 }
 
 # The callback function for converting the input text to HTML output
