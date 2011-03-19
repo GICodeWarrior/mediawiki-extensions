@@ -7,9 +7,9 @@ class ThreadProtectionFormView extends LqtView {
 		ThreadPermalinkView::customizeThreadTabs( $skintemplate, $content_actions, $this );
 
 		if ( array_key_exists( 'protect', $content_actions ) )
-		$content_actions['protect']['class'] = 'selected';
+			$content_actions['protect']['class'] = 'selected';
 		else if ( array_key_exists( 'unprotect', $content_actions ) )
-		$content_actions['unprotect']['class'] = 'selected';
+			$content_actions['unprotect']['class'] = 'selected';
 	}
 
 	function customizeNavigation( $skintemplate, &$links ) {
