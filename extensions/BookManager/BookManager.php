@@ -36,13 +36,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 $dir = dirname( __FILE__ );
-$wgAutoloadClasses['BookManagerFunctions'] = $dir . '/BookManager.body.php';
+$wgAutoloadClasses['BookManagerCore'] = $dir . '/BookManager.body.php';
+$wgAutoloadClasses['BookManagerVariables'] = $dir . '/BookManager.body.php';
+$wgAutoloadClasses['BookManagerNavBar'] = $dir . '/BookManager.body.php';
+$wgAutoloadClasses['PrintVersion'] = $dir . '/BookManager.body.php';
+$wgExtensionMessagesFiles['PrintVersion'] = $dir . '/PrintVersion.i18n.php';
+$wgExtensionAliasesFiles['PrintVersion'] = $dir . '/PrintVersion.alias.php';
+$wgSpecialPages['PrintVersion'] = 'PrintVersion';
+$wgSpecialPageGroups['PrintVersion'] = 'other';
+
+
 
 /**** extension basics ****/
 $wgExtensionCredits['parserhook'][] = array(
 	'path'		=> __FILE__,
 	'name'		=> 'BookManager',
-	'version'	=>  BookManagerFunctions::VERSION,
+	'version'	=>  BookManagerCore::VERSION,
 	'author'	=>  array( 'Raylton P. Sousa', 'Helder.wiki' ),
 	'url'		=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
 	'description'	=> 'Tools for books',
@@ -63,16 +72,16 @@ $wgBookManagerNavBar = true;
 $wgCommunityCollectionNamespace = NS_PROJECT;
 
 /**** Register magic words ****/
-$wgHooks['ParserFirstCallInit'][] = 'BookManagerFunctions::register';
+$wgHooks['ParserFirstCallInit'][] = 'BookManagerVariables::register';
 
-$wgHooks['LanguageGetMagic'][] = 'BookManagerFunctions::LanguageGetMagic';
+$wgHooks['LanguageGetMagic'][] = 'BookManagerVariables::LanguageGetMagic';
 
-$wgHooks['MagicWordwgVariableIDs'][] = 'BookManagerFunctions::DeclareVarIds';
+$wgHooks['MagicWordwgVariableIDs'][] = 'BookManagerVariables::DeclareVarIds';
 
-$wgHooks['ParserGetVariableValueSwitch'][] = 'BookManagerFunctions::AssignAValue';
+$wgHooks['ParserGetVariableValueSwitch'][] = 'BookManagerVariables::AssignAValue';
 
-$wgHooks['OutputPageBeforeHTML'][] = 'BookManagerFunctions::addText';
+$wgHooks['OutputPageBeforeHTML'][] = 'BookManagerNavBar::addText';
 
-$wgHooks['BeforePageDisplay'][] = 'BookManagerFunctions::injectStyleAndJS';
+$wgHooks['BeforePageDisplay'][] = 'BookManagerNavBar::injectStyleAndJS';
 
 
