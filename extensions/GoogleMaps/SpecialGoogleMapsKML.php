@@ -12,7 +12,7 @@ class GoogleMapsKML extends SpecialPage {
             parent::__construct('GoogleMapsKML', '', false /* listed */);
         }
 	function execute( $params ) {
-		global $wgRequest, $wgOut, $wgTitle, $wgUser;
+		global $wgRequest, $wgOut, $wgUser;
 		global $wgContLang, $wgProxyKey, $wgParser;
 		$article = $wgRequest->getText( 'article', $params );
 		$map     = $wgRequest->getText( 'map', $params );
@@ -36,10 +36,10 @@ class GoogleMapsKML extends SpecialPage {
 			$popts = ParserOptions::newFromUser( $wgUser );
 			$popts->setEditSection( false );
 			
-			$wgParser->startExternalParse( $wgTitle, $popts, OT_WIKI, true );
+			$wgParser->startExternalParse( $this->getTitle(), $popts, OT_WIKI, true );
 
 			$localParser = new Parser();
-			$localParser->startExternalParse( $wgTitle, $popts, OT_WIKI, true );
+			$localParser->startExternalParse( $this->getTitle(), $popts, OT_WIKI, true );
 
 			if (preg_match_all("/<googlemap( .*?|)>(.*?)<\/googlemap>/s", $revision->getText(), $matches)) {
 				$exporter->addFileHeader();
