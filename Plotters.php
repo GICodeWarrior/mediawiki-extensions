@@ -33,8 +33,7 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Plotters',
 );
 
-$wgExtensionFunctions[] = "efPlotters";
-
+$wgHooks['ParserFirstCallInit'][] = 'efPlottersSetHooks';
 $wgHooks['OutputPageParserOutput'][] = 'PlottersParserOutput';
 if( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
 	$wgHooks['LanguageGetMagic'][] = 'PlottersLanguageGetMagic';
@@ -165,11 +164,10 @@ function wfApplyPlotterCode( $code, $out, &$done ) {
 	}
 }
 
-function efPlotters() {
-	global $wgParser;
-
-	$wgParser->setHook( 'plot', 'initPlotters' );
-	$wgParser->setFunctionHook( 'plot', 'initPlottersPF' );
+function efPlottersSetHooks( $parser ) {
+	$parser->setHook( 'plot', 'initPlotters' );
+	$parser->setFunctionHook( 'plot', 'initPlottersPF' );
+	return true;
 }
 
 function initPlottersPF( $parser ) {
