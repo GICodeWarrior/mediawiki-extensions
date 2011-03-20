@@ -24,13 +24,13 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['PageBy'] = $dir . 'PageBy.i18n.php';
-$wgExtensionFunctions[] = "wfPageByExtension";
+$wgHooks['ParserFirstCallInit'][] = "wfPageBySetHooks";
 
 $wgAutoloadClasses['PageByRenderer'] = $dir. 'PageByRenderer.php';
 
-function wfPageByExtension() {
-    global $wgParser;
-    $wgParser->setHook( "pageby", "newsxRenderPageBy" );
+function wfPageBySetHooks( $parser ) {
+	$parser->setHook( 'pageby', 'newsxRenderPageBy' );
+	return true;
 }
 
 function newsxRenderPageBy( $page, $argv, $parser ) {

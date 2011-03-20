@@ -251,7 +251,7 @@ class qp_Setup {
 	/**
 	 * Register the extension with the WikiText parser.
 	 */
-	static function onParserFirstCallInit() {
+	static function onParserFirstCallInit( $parser ) {
 		global $wgOut, $wgTitle;
 		if ( !is_object( $wgTitle ) || $wgTitle->getNamespace() === NS_SPECIAL ) {
 			# special page will add it's proper module itself;
@@ -274,13 +274,12 @@ class qp_Setup {
 				$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user_rtl.css' );
 			}
 		}
-		global $wgParser;
 		global $wgQPollFunctionsHook;
 		# setup tag hook
-		$wgParser->setHook( 'qpoll', array( 'qp_Setup', 'renderPoll' ) );
+		$parser->setHook( 'qpoll', array( 'qp_Setup', 'renderPoll' ) );
 		$wgQPollFunctionsHook = new qp_FunctionsHook();
 		# setup function hook
-		$wgParser->setFunctionHook( 'qpuserchoice', array( &$wgQPollFunctionsHook, 'qpuserchoice' ), SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 'qpuserchoice', array( &$wgQPollFunctionsHook, 'qpuserchoice' ), SFH_OBJECT_ARGS );
 		return true;
 	}
 

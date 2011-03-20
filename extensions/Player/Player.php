@@ -23,7 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'player-desc',
 );
 
-$wgExtensionFunctions[] = "playerSetup";
+$wgHooks['ParserFirstCallInit'][] = 'playerSetup';
 $wgHooks['OutputPageParserOutput'][] = 'playerParserOutput';
 
 $dir = dirname(__FILE__) . '/';
@@ -44,10 +44,9 @@ $wgPlayerVideoResolutionDetector = null;
 
 require_once( dirname( __FILE__ ) . '/PlayerDefaultSettings.php' );
 
-function playerSetup() {
-	global $wgParser;
-
-	$wgParser->setHook( "player", "renderPlayerTag" );
+function playerSetup( $parser ) {
+	$parser->setHook( 'player', 'renderPlayerTag' );
+	return true;
 }
 
 function renderPlayerTag( $name, $args, &$parser ) {
@@ -123,7 +122,7 @@ function playerAjaxHandler( $file, $options ) {
 * Hook callback that injects messages and things into the <head> tag
 * Does nothing if $parserOutput->mPlayerTag is not set
 */
-function playerParserOutput( &$outputPage, &$parserOutput )  {
+function playerParserOutput( &$outputPage, $parserOutput )  {
 	if ( !empty( $parserOutput->mPlayerTag ) ) {
 		Player::setHeaders( $outputPage );
 	}
