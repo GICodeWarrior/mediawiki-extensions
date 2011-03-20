@@ -11,7 +11,6 @@ if (!defined('MEDIAWIKI')) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionFunctions[] = array( 'CssHook', 'setup' );
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Page CSS',
@@ -20,11 +19,13 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
+$wgHooks['ParserFirstCallInit'][] = 'CssHook::setup';
+
 class CssHook {
 
-	public static function setup() {
-		global $wgParser;
-		$wgParser->setHook( 'css', array( 'CssHook', 'parse' ) );
+	public static function setup( $parser ) {
+		$parser->setHook( 'css', array( 'CssHook', 'parse' ) );
+		return true;
 	}
 	
 	public static function parse( $content, array $args, Parser $parser ) {
