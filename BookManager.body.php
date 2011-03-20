@@ -270,7 +270,7 @@ class BookManagerVariables extends BookManagerCore {
 */
 class BookManagerNavBar extends BookManagerCore {
 	static function addText( &$out, &$text ) {
-		global $wgRequest, $wgBookManagerNamespaces, $wgBookManagerNavBar;
+		global $wgParser, $wgRequest, $wgBookManagerNamespaces, $wgBookManagerNavBar;
 		$ns = $out->getTitle()->getNamespace();
 		# Return True if action is suported
 		$action = $wgRequest->getVal( 'action', 'view' );
@@ -284,9 +284,9 @@ class BookManagerNavBar extends BookManagerCore {
 		# Get $out title
 		$currenttitletext = $out->getTitle()->getText();
 		# Get: prev, next and base chapter from the list
-		$prev = self::pageText( $parser, $currenttitletext, - 1 );
+		$prev = self::pageText( $wgParser, $currenttitletext, - 1 );
 
-		$next = self::pageText( $parser, $currenttitletext, + 1 );
+		$next = self::pageText( $wgParser, $currenttitletext, + 1 );
 		if ( $prev === '' && $next === '' ) {
 			return true;
 		}
