@@ -931,10 +931,16 @@ Boulc'het ez eus bet ur gaoz war an divoud war [[$5]]; klozet e vo d'an ''$2''."
 	'deletequeue-review-newextra' => 'Titouroù ouzhpenn :',
 	'deletequeue-review-submit' => 'Enrollañ an adweladenn',
 	'deletequeue-review-original' => 'Abeg da lakaat war ar renk',
+	'deletequeue-actiondisabled-involved' => "Diweredekaet eo an ober da-heul en degouezh-mañ peogwir hoc'h eus kemeret perzh en diverkadenn evel $1 :",
+	'deletequeue-actiondisabled-notexpired' => "Diweredekaet eo an ober da-heul peogwir n'eo ket aet d'he zermen an enskrivadenn d'an diverkadenn evit c'hoazh :",
 	'deletequeue-review-badaction' => "Un obererezh fall hoc'h eus dibabet",
 	'deletequeue-review-actiondenied' => "Meneget hoc'h eus un obererezh hag a zo diweredekaet evit ar bajenn-mañ.",
+	'deletequeue-review-objections' => "'''Diwallit''' : [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} Soñjoù a-enep] diverkañ ar bajenn-mañ zo.
+Bezit sur da vezañ priziet ar soñjoù-se a-raok kas an diverkadenn da benn.",
 	'deletequeue-reviewspeedy-tab' => 'Gwiriañ an dilamadenn brim',
 	'deletequeue-reviewspeedy-title' => 'Adwelet dilammadenn prim "$1"',
+	'deletequeue-reviewspeedy-text' => "Implijout ar furmskrid-mañ a c'hallit ober evit adwelet enskrivadur \"'''\$1'''\" en un diverkadenn brim.
+Gwiriit mat e c'hall ar bajenn-mañ bezañ diverket raktal hervez reolennoù ar raktres.",
 	'deletequeue-reviewprod-tab' => 'Adwelet an dilamadurioù kinniget',
 	'deletequeue-reviewprod-title' => 'Adwelet an dilammadenn kinniget evit "$1"',
 	'deletequeue-reviewprod-text' => "Gallout a rit implijout ar furmskrid-mañ evit adwelet ar c'hinnig diverkañ \"'''\$1'''\" n'eus bet savet den a-enep dezhañ.",
@@ -946,6 +952,9 @@ Ur [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} roll] eus ar soñjoù a-du 
 Bezit sur emañ ho tiviz diouzh ar c'henasant deuet war wel da-heul ar gaozeadenn.",
 	'deletequeue-review-success' => "Adwelet hoc'h eus dilammadenn ar bajenn",
 	'deletequeue-review-success-title' => 'Graet eo bet an adweladenn',
+	'deletequeue-deletediscuss-discussionpage' => 'Ur bajenn gaozeal diwar-benn diverkadenn [[$1]] eo ar bajenn-mañ.
+Evit ar poent ez eus $2 {{PLURAL:$2|implijer|implijer}} o sevel a-du gant an diverkañ ha $3 {{PLURAL:$3|implijer|implijer}} o sevel a-enep.
+Gallout a rit [{{fullurl:$1|action=delvote}} harpañ pe sevel a-enep] an diverkañ pe [{{fullurl:$1|action=delviewvotes}} sellet ouzh an holl aprouadennoù ha soñjoù kontrol].',
 	'deletequeue-discusscreate-summary' => 'Ho krouiñ ar gaozeadenn diwar-benn dilamadenn [[$1]].',
 	'deletequeue-discusscreate-text' => 'Dilammadenn kinniget evit an abeg-mañ : $2',
 	'deletequeue-role-nominator' => 'deraouer orin an dilammadenn',
