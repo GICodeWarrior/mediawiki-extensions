@@ -380,6 +380,7 @@ Orrialde honetan egindako aldaketak gal ditzakezu orrialde honetatik orain alde 
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Reza1615
  * @author Sahim
  */
 $messages['fa'] = array(
@@ -393,6 +394,8 @@ $messages['fa'] = array(
 	'al-nosuchuser' => 'هیچ کاربری با این نام وجود ندارد "$1".
 نام‌های کاربری به حروف حساس هستند.
 نوشتار را بررسی کنید.',
+	'al-createblocked' => 'آدرس آی پی شما از ایجاد حساب مسدود شده است.',
+	'al-throttled' => 'تا کنون شما رمزهای زیادی را امتحان کرده‌اید لطفا قبل از وارد کردن رمز بعدی به مدت {{PLURAL:$1|ثانیه|seconds}}   منتظر بمانید',
 );
 
 /** Finnish (Suomi)
@@ -1215,6 +1218,7 @@ $messages['ug-arab'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'ajaxlogin-desc' => 'Динамічна область, що дозволяє користувачам входити в систему та згадувати пароль',
@@ -1226,6 +1230,8 @@ $messages['uk'] = array(
 	'al-nosuchuser' => 'Не існує користувача з ім\'ям "$1".
 Імена користувачів чутливі до регістру.
 Перевірте правильність написання.',
+	'al-createblocked' => 'Вашу IP-адресу заблоковано, заборонено створювати облікові записи.',
+	'al-throttled' => 'Ви зробили занадто багато спроб введення пароля. Будь ласка, почекайте $1 {{PLURAL:$1|секунду|секунди|секунд}} і повторіть спробу.',
 );
 
 /** Vèneto (Vèneto)
