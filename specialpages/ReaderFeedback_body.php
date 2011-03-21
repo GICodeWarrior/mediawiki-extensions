@@ -348,9 +348,6 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		}
 		# Update recent averages
 		$dbw->replace( 'reader_feedback_pages', array( 'PRIMARY' ), $insertRows, __METHOD__ );
-		# Clear out any dead data
-		$dbw->delete( 'reader_feedback_pages', array('rfp_page_id' => $rev->getPage(), 
-			'rfp_tag' => 'overall'), __METHOD__ );
 		# For logged in users, box should disappear
 		if( $wgUser->getId() ) {
 			$this->page->invalidateCache();
