@@ -186,6 +186,14 @@ $messages['be-tarask'] = array(
 	'wikisync_js_sync_end_rtl' => 'Сканчэньне сынхранізацыі аддаленай і лякальнай вікі: $1',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'wikisync_remote_login_button' => 'Влизане',
+	'wikisync_synchronization_button' => 'Синхронизиране',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
