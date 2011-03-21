@@ -122,6 +122,13 @@ $messages['es'] = array(
 	'apisvgproxy-desc' => 'Traslada archivos SVG desde un repositorio de archivos (posiblemente remoto) hacia el dominio local.',
 );
 
+/** Persian (فارسی)
+ * @author Reza1615
+ */
+$messages['fa'] = array(
+	'apisvgproxy-desc' => 'پروکسی پرونده‌های SVG احتمالا از  پرونده کنترل از راه دور به دامنه محلی',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
