@@ -394,14 +394,20 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
 	'countedits' => 'Edizioak zenbatu',
 	'countedits-desc' => '[[Special:CountEdits|Edizio-kontadoreak]] erabiltzailearen edizioak zenbatzeaz gain, ekarpen gehien egin dituzten hamar lankideen zerrenda erakusten du.',
+	'countedits-warning' => "'''Adi:''' Ez ezazu liburua bere azalaren arabera epaitu.
+Ez itzazu lankideak euren aldaketa kopuruagatik epaitu.",
 	'countedits-username' => 'Lankide izena:',
 	'countedits-ok' => 'Ados',
+	'countedits-nosuchuser' => 'Ez dago erabiltzailerik $1 izenarekin.',
+	'countedits-resultheader' => '$1(e)rako emaitzak',
 	'countedits-resulttext' => '$1 lankideak {{PLURAL:$2|aldaketa bat egin du|$2 aldaketa egin ditu}}',
 	'countedits-mostactive' => 'Lankiderik langileenak',
+	'countedits-nocontribs' => 'Ez da egon ekarpenik wiki honetan.',
 );
 
 /** Extremaduran (Estremeñu)
