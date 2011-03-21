@@ -142,8 +142,14 @@ $.articleFeedback = {
 				} ),
 				'success': function( data ) {
 					var context = this;
-					$.articleFeedback.fn.load.call( context );
-					context.$ui.find( '.articleFeedback-lock' ).hide();
+					if ( 'error' in data ) {
+						mw.log( 'Form submission error' );
+						mw.log( data.error );
+						context.$ui.find( '.articleFeedback-error' ).show();
+					} else {
+						$.articleFeedback.fn.load.call( context );
+						context.$ui.find( '.articleFeedback-lock' ).hide();
+					}
 				},
 				'error': function() {
 					var context = this;
