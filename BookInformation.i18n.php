@@ -1168,12 +1168,12 @@ $messages['mk'] = array(
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издавач:',
 	'bookinfo-result-year' => 'Година:',
-	'bookinfo-error-invalidisbn' => 'Погрешно внесен ISBN код:',
+	'bookinfo-error-invalidisbn' => 'Погрешен ISBN.',
 	'bookinfo-error-nosuchitem' => 'Податокот не постои или не може да се најде.',
-	'bookinfo-error-nodriver' => 'Не може да се иницијализира соодветниот Book Information Driver.',
-	'bookinfo-error-noresponse' => 'Нема одговор или премногу се чека на одговор.',
-	'bookinfo-purchase' => 'Нарачај ја оваа книга од $1',
-	'bookinfo-provider' => 'Податок од: $1',
+	'bookinfo-error-nodriver' => 'Не можам да пуштам соодветен двигател за информации за книги.',
+	'bookinfo-error-noresponse' => 'Нема одговор или барањето е истечено.',
+	'bookinfo-purchase' => 'Нарачај ја книгава од $1',
+	'bookinfo-provider' => 'Добавувач на податоците: $1',
 );
 
 /** Malayalam (മലയാളം)
