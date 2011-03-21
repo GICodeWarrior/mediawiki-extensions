@@ -640,6 +640,7 @@ $messages['lb'] = array(
 	'toolbase-navigation-autoedits' => 'Automatesche Compteur vun Ännerungen',
 	'toolbase-userid-submit' => 'Benotzer ID ufroen',
 	'toolbase-userid-title' => 'Eng Benotzer ID fannen',
+	'toolbase-userid-result' => 'D\'Benotzer ID fir <b>$1</b> op <a href="$3"><b>$3</b></a> ass <b>$2</b>.',
 	'toolbase-autoedits-title' => 'Automatesch Rechemaschinn vun den Ännerungen',
 	'toolbase-autoedits-submit' => 'Rechnen',
 	'toolbase-autoedits-approximate' => '<b>Ongeféier</b> Zuel vun Ännerunge mat …',
@@ -851,6 +852,18 @@ Se chegou cá a partir de um link <a href="$1">reporte este defeito</a>, por fav
 	'toolbase-error-nouser' => '$1 não é um utilizador válido',
 	'toolbase-error-nowiki' => '$1.$2.org não é uma wiki válida',
 	'toolbase-error-toomanyedits' => '$1 tem $2 edições. Esta ferramenta tem um máximo de $3 edições.',
+);
+
+/** Russian (Русский)
+ * @author Haffman
+ */
+$messages['ru'] = array(
+	'toolbase-replag-years' => 'годы',
+	'toolbase-replag-months' => 'месяцы',
+	'toolbase-replag-weeks' => 'недели',
+	'toolbase-footer-language' => 'Изменить язык',
+	'toolbase-main-title' => 'Добро пожаловать!',
+	'toolbase-main-404' => 'Файл не найден',
 );
 
 /** Swedish (Svenska)

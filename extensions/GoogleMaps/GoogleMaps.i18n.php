@@ -1804,9 +1804,11 @@ $wgGoogleMapsMessages['ext'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  */
 $wgGoogleMapsMessages['fa'] = array(
+	'gm-desc' => 'ایجاد آسان نقشه‌ها با نشان‌گذارهای ویکی‌سازی‌شده',
 	'gm-incompatible-browser' => 'برای دیدن نقشه‌ای که در این قسمت نمایش داده می‌شود، شما باید از یک مرورگر مناسب استفاده کنید.',
 	'gm-incompatible-browser-link' => 'برای مشاهدهٔ فهرستی از مرورگرهای مناسب اینجا کلیک کنید.',
 	'gm-no-editor' => 'متاسفانه مرورگر شما از قابلیت‌های فعل و انفعالی ایجاد نقشه پشتیبانی نمی‌کند. از آخرین نسخهٔ <a href="http://www.microsoft.com/ie">Internet Explorer</a> (ویندوز) یا <a href="http://www.mozilla.org/products/firefox">Firefox</a> (ویندوز، مک، لینوکس) استفاده کنید.',

@@ -1063,6 +1063,15 @@ $messages['ml'] = array(
 	'mwe-clipedit-duration' => 'ദൈർഘ്യം:',
 );
 
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam Rhk
+ */
+$messages['ne'] = array(
+	'mwe-clipedit-sc_duration' => 'अवधि',
+	'mwe-clipedit-edit-tools' => 'सम्पादन औजार',
+	'mwe-clipedit-inline-description' => 'शीर्षक',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

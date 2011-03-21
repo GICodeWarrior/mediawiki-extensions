@@ -5000,17 +5000,26 @@ $messages['ne'] = array(
 	'mwe-upload-in-progress' => 'उर्ध्वभरण प्रगतिमा (यस विण्डोलाई बन्द नगर्नुहोला)',
 	'mwe-uploaded-status' => 'उर्ध्वभरण भयो',
 	'mwe-media_search' => 'मीडियाको खोज',
+	'mwe-am-results_desc' => '$2कोनिम्ति परिणामहरु $1',
+	'mwe-am-results_desc_total' => '$3को $2कोनिम्ति परिणामहरु $1',
 	'mwe-am-results_next' => 'अर्को',
 	'mwe-am-results_prev' => 'अघिल्लो',
 	'mwe-am-no_results' => '<b>$1</b>को निम्ति खोजको परिणाम आएन',
 	'mwe-upload_tab' => 'फाइल उर्ध्वभरण गर्ने',
 	'mwe-am-resource_edit' => 'स्रोतको सम्पादन गर्ने: $1',
+	'mwe-cc_by_title' => 'आवंटन',
 	'mwe-unknown_license' => 'अज्ञात अनुमति',
 	'mwe-results_from' => '$1का नतिजाहरु',
+	'mwe-your-recent-uploads' => 'तपाईंका उर्ध्वभरणहरु',
+	'mwe-your-recent-uploads-to' => '$1कोनिम्ति तपाईंका भर्खरका उर्ध्वभरणहरु',
 	'mwe-watch_this_page' => 'यो पृष्ठको निगरानी गर्ने',
 	'mwe-do-more-modification' => 'अझ धेरै परिवर्तन गर्ने',
+	'mwe-ftype-unk' => 'अज्ञात फाइल प्रारुप',
 	'mwe-am-this_wiki-title' => 'यो विकि',
 	'mwe-am-this_wiki-desc' => 'स्थानीय विकि',
+	'mwe-am-search-timeout' => 'तपाईंको खोज्नको निम्ति अनुरोध पूरा भएन।
+सर्वर भारी बजनको कारणले झरेकोछ।
+तपाईंले फेरि केहि समयपछि प्रयास गर्न सक्नुहुनेछ।',
 	'mwe-upload-multi' => '{{PLURAL:$1|फाइल|फाइलहरु}} उर्ध्वभरण गर्ने',
 );
 

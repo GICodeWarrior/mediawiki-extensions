@@ -1077,6 +1077,7 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'e-mailpage' => 'Pahina ng e-liham',
+	'ea-desc' => 'Ipadala ang iniharap na pahinang HTML sa isang tirahan ng e-liham o tala ng mga tirahan na ginagamit ang [http://phpmailer.sourceforge.net tagapagpadala ng PHP]',
 	'ea-heading' => 'Ipinapadala sa pamamagitan ng e-liham ang pahinang "[[$1]]"',
 	'ea-group-info' => 'Bilang karagdagan maipapadala mo ang pahina sa mga kasapi ng isang pangkat',
 	'ea-pagesend' => 'Pahinang "$1" ipinadala mula sa $2',
@@ -1085,6 +1086,7 @@ $messages['tl'] = array(
 	'ea-listrecipients' => 'Nagtatala ng {{PLURAL:$1|tatanggap|$1 mga tatanggap}}',
 	'ea-error' => "'''Kamalian sa pagpapadala ng [[$1]]:''' ''$2''",
 	'ea-denied' => 'Tinanggihan ang pahintulot',
+	'ea-sent' => "Matagumpay na naipadala ang pahinang [[$1]] SA '''$2''' {{PLURAL:$2|tagatanggap|mga tagatanggap}} ni [[User:$3|$3]].",
 	'ea-compose' => 'Gumawa ng nilalaman',
 	'ea-show' => 'Tingnan ang talaan ng tatanggap',
 	'ea-from' => 'Mula kay:',

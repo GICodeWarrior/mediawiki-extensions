@@ -153,18 +153,19 @@ Anonymní uživatelé dostanou automaticky vytvořenou přezdívku, ale je možn
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Merlissimo
  * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'webchat' => 'Web-Chat',
-	'webchat-desc' => 'Ergänzt eine [[Special:WebChat|Spezialseite]], um in Echtzeit mit anderen Benutzern zu chatten.',
-	'webchat-header' => 'Mit dieser Spezialseite kannst du in Echtzeit mit anderen Benutzern kommunizieren.
-Zum Verbinden klicke den „Connect“-Knopf.
-Solltest du angemeldet sein, wird standardmäßig dein Wiki-Benutzername als Chatname verwendet.
-Andernfalls wird der Chatname automatisch erzeugt. Dieser kann aber noch geändert werden.',
-	'right-webchat' => '[[Special:WebChat|Web-Chat]] benutzen',
+	'webchat-desc' => 'Ergänzt eine [[Special:WebChat|Spezialseite]], die es ermöglicht, in Echtzeit mit anderen Benutzern zu chatten',
+	'webchat-header' => 'Über diese Spezialseite kann man in Echtzeit mit anderen Benutzern kommunizieren.
+Zum Anmelden klicke auf die Schaltfläche „Verbinden“.
+Solltest du im Wiki angemeldet sein, wird standardmäßig dein Wiki-Benutzername als Chatname verwendet.
+Andernfalls wird automatisch ein Chatname erzeugt, der allerdings auch noch im Nachhinein geändert werden kann.',
+	'right-webchat' => 'Spezialseite [[Special:WebChat|Web-Chat]] nutzen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)

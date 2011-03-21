@@ -1179,6 +1179,13 @@ $messages['eu'] = array(
 	'tasks_status_closed' => 'Itxita',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'tasks_status_open' => 'گشودن',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

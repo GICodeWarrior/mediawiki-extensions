@@ -120,6 +120,32 @@ $messages['br'] = array(
 	'narayam-ta' => 'Treuzlizherennadur tamoul',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'narayam-desc' => 'Omogućava dodavanje proizvoljnog metoda unosa za polja unosa',
+	'narayam-toggle-ime' => 'Za prebacivanje IM ($1)',
+	'narayam-help-page' => 'Help:Tipkanje',
+	'narayam-checkbox-tooltip' => 'Za uključivanje i isključivanje načina unosa',
+	'narayam-hi-inscript' => 'InScript za hidni',
+	'narayam-kn' => 'Kannada transliteracija',
+	'narayam-kn-inscript' => 'InScript za Kannadu',
+	'narayam-ml' => 'Malayalam transliteracija',
+	'narayam-ml-inscript' => 'InScript za Malayalam',
+	'narayam-or' => 'Oriya transliteracija',
+	'narayam-or-inscript' => 'InScript za Oriya',
+	'narayam-sa' => 'Sanskrit transliteracija',
+	'narayam-sa-inscript' => 'InScript za sanskrit',
+	'narayam-si-singlish' => 'Sinhala singleski',
+	'narayam-si-wijesekara' => 'Sinhala Wijesekara',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Tamil transliteracija',
+	'narayam-bn-avro' => 'Bengali Avro',
+	'narayam-bn-inscript' => 'InScript za bengalski',
+	'narayam-bn-nkb' => 'Bengalski NKB',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author McDutchie
@@ -392,6 +418,32 @@ $messages['nl'] = array(
 	'narayam-bn-nkb' => 'Bengaals NKB',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'narayam-desc' => 'Pozwala dodać niestandardowe metody wprowadzania dla pól wejściowych',
+	'narayam-toggle-ime' => 'Aby przełączyć metodę wprowadzania ($1)',
+	'narayam-help-page' => 'Help:Wpisywanie',
+	'narayam-checkbox-tooltip' => 'Aby włączyć lub wyłączyć metodę wprowadzania',
+	'narayam-hi-inscript' => 'Hindi InScript',
+	'narayam-kn' => 'Kannada transliteracja',
+	'narayam-kn-inscript' => 'Kannada InScript',
+	'narayam-ml' => 'Malajalam transliteracja',
+	'narayam-ml-inscript' => 'Malajalam InScript',
+	'narayam-or' => 'Orija transliteracja',
+	'narayam-or-inscript' => 'Orija InScript',
+	'narayam-sa' => 'Sanskryt transliteracja',
+	'narayam-sa-inscript' => 'Sanskryt InScript',
+	'narayam-si-singlish' => 'Syngaleski singlish',
+	'narayam-si-wijesekara' => 'Syngaleski wijesekara',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Tamil transliteracja',
+	'narayam-bn-avro' => 'Bengalski avro',
+	'narayam-bn-inscript' => 'Bengalski InScript',
+	'narayam-bn-nkb' => 'Bengalski NKB',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Waldir
@@ -466,6 +518,32 @@ $messages['sah'] = array(
 	'narayam-bn-avro' => 'Бэнгээл Авро',
 	'narayam-bn-inscript' => 'Бэнгээл инскрипт',
 	'narayam-bn-nkb' => 'Бэнгээл NKB',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'narayam-desc' => 'Omogoča dodajanje načinov vnosa po meri za vnosna polja',
+	'narayam-toggle-ime' => 'Za preklop načina vnosa ($1)',
+	'narayam-help-page' => 'Help:Tipkanje',
+	'narayam-checkbox-tooltip' => 'Za vklop ali izklop načina vnosa',
+	'narayam-hi-inscript' => 'InScript za hindijščino',
+	'narayam-kn' => 'Prečrkovanje kannadščine',
+	'narayam-kn-inscript' => 'InScript za kannadščino',
+	'narayam-ml' => 'Prečrkovanje malajalščine',
+	'narayam-ml-inscript' => 'InScript za malajalščino',
+	'narayam-or' => 'Prečrkovanje orijščine',
+	'narayam-or-inscript' => 'InScript za orijščino',
+	'narayam-sa' => 'Prečkovanje sanskrta',
+	'narayam-sa-inscript' => 'InScript za sanskrt',
+	'narayam-si-singlish' => 'Singalska singleščina',
+	'narayam-si-wijesekara' => 'Singalska Wijesekara',
+	'narayam-ta99' => 'Tamil 99',
+	'narayam-ta' => 'Prečrkovanje tamilščine',
+	'narayam-bn-avro' => 'Bengalski Avro',
+	'narayam-bn-inscript' => 'InScript za bengalščino',
+	'narayam-bn-nkb' => 'Bengalski NKB',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)

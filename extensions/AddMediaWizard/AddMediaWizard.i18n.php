@@ -94,6 +94,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'addmediawizard-desc' => 'Dodavanje čarobnjaka za mediju, razvijenog u saradnji Kaltura i Wikimedia Fondacije',
+	'addmediawizard-loading' => 'Učitavam čarobnjak za dodavanje medija',
 );
 
 /** Catalan (Català)
@@ -174,6 +175,7 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'addmediawizard-desc' => 'افزودن جادوگر رسانه، محصول همکاری  کالتورا و بنیاد ویکی مدیا',
+	'addmediawizard-loading' => 'بارگذاری و ویزارد افزودن مدیا',
 );
 
 /** Finnish (Suomi)
@@ -576,9 +578,11 @@ $messages['tt-cyrl'] = array(
 
 /** Ukrainian (Українська)
  * @author Ytsukeng Fyvaprol
+ * @author Тест
  */
 $messages['uk'] = array(
 	'addmediawizard-desc' => 'Майстер додавання медіа-даних, розроблений у партнерстві Kaltura та Фонду Вікімедіа',
+	'addmediawizard-loading' => 'Завантаження майстра додавання медіа',
 );
 
 /** Vietnamese (Tiếng Việt)

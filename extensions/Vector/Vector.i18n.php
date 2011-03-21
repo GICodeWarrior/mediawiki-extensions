@@ -269,6 +269,7 @@ Ma'z oc'h kevreet e c'hallit diweredekaat ar c'hemenn-diwall-mañ e rann \"Prene
 	'vector-editwarning-preference' => 'Kas keloù din pa guitaan ur bajenn degaset kemmoù enni hep enrollañ',
 	'vector-simplesearch-search' => 'Klask',
 	'vector-simplesearch-containing' => 'ennañ...',
+	'vector-noexperiments-preference' => "Lezit-me er-maez eus al labour amprouiñ an arc'hwelioù nevez",
 );
 
 /** Bosnian (Bosanski)
@@ -506,6 +507,7 @@ Se vi ensalutas, vi povas malŝalti ĉi tiun averton en la sekcio "Grandeco de r
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Drini
+ * @author Fitoschido
  * @author Locos epraix
  * @author Translationista
  */
@@ -519,6 +521,7 @@ Si está "logueado", puede deshabilitar esta advertencia en la sección "Edició
 	'vector-editwarning-preference' => 'Advertirme cuando abandone una página editada con cambios sin grabar',
 	'vector-simplesearch-search' => 'Búsqueda',
 	'vector-simplesearch-containing' => 'conteniendo...',
+	'vector-noexperiments-preference' => 'Excluirme de características experimentales',
 );
 
 /** Estonian (Eesti)
