@@ -20,10 +20,11 @@ $wgVectorFeatures = array(
 	'collapsiblenav' => array( 'global' => true, 'user' => true ),
 	'collapsibletabs' => array( 'global' => true, 'user' => false ),
 	'editwarning' => array( 'global' => false, 'user' => true ),
+	'simplesearch' => array( 'global' => false, 'user' => true ),
+	// The follwing are experimental and likely unstable - use at your own risk
 	'expandablesearch' => array( 'global' => false, 'user' => false ),
 	'footercleanup' => array( 'global' => false, 'user' => false ),
 	'sectioneditlinks' => array( 'global' => false, 'user' => false ),
-	'simplesearch' => array( 'global' => false, 'user' => true ),
 );
 
 // The Vector skin has a basic version of simple search, which is a prerequisite for the enhanced one
