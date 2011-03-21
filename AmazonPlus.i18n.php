@@ -539,14 +539,21 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Mjbmr
+ * @author Reza1615
  */
 $messages['fa'] = array(
+	'amazonplus-desc' => 'افزودنی قابل خصوصی‌سازی برای نمایش اطلاعات سایت آمازون',
 	'amazonplus-nores' => 'خطا: هیچ نتیجه‌ای یافت نشد!',
+	'amazonplus-noidres' => 'خطا: قادر به یافتن شناسه محصول نبود!',
+	'amazonplus-fgcerr' => 'خطا : امکان بازیابی اطلاعات از آمازون نیست!',
+	'amazonplus-slserr' => 'خطا: قادر به تجزیه داده ها از آمازون نیست!',
 	'amazonplus-used' => 'استفاده شده',
 	'amazonplus-german' => 'آلمانی',
 	'amazonplus-french' => 'فرانسوی',
 	'amazonplus-japanese' => 'ژاپنی',
+	'amazonplus-amazon' => 'قیمت آمازون',
 	'amazonplus-new' => 'جدید',
+	'amazonplus-none' => 'هیچ نسخه هایی از این مورد برای فروش نیست.',
 	'amazonplus-cp-none' => 'هیچ کدام',
 	'amazonplus-more' => 'بیشتر',
 	'amazonplus-less' => 'کمتر',
