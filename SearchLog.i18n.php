@@ -200,6 +200,17 @@ $messages['pt'] = array(
 	'right-searchlog-read' => 'Mostrar o registo de pesquisas',
 );
 
+/** Russian (Русский)
+ * @author Haffman
+ */
+$messages['ru'] = array(
+	'searchlog' => 'Журнал поиска',
+	'searchlog-timeperiod' => 'Выберите период времени:',
+	'searchlog-entire' => 'Весь журнал',
+	'searchlog-phrase' => 'Поиск фразы',
+	'right-searchlog-read' => 'Просмотреть журнал поиска',
+);
+
 /** Swedish (Svenska)
  * @author WikiPhoenix
  */
