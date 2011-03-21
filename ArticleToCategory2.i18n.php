@@ -95,15 +95,18 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
-	'articletocategory2-desc' => "Ouzhpenn ur bouest ec'hank e pep pajenn rummad hag a ro ar gwir da grouiñ ur bajenn nevez er rummad-se",
+	'articletocategory2-desc' => 'Ouzhpennañ a ra ur voest enmont e pep pajenn rummad a aotre krouiñ ur bajenn nevez war-eeun er rummad-mañ',
 	'articletocategory2-create-article-under-category-text' => "Ouzhpennañ ur bajenn d'ar rummad-mañ",
 	'articletocategory2-create-article-under-category-button' => 'Krouiñ',
 	'articletocategory2-create-category-under-category-text' => "Ouzhpennañ ur rummad d'ar rummad-mañ",
 	'articletocategory2-create-category-under-category-button' => 'Krouiñ',
+	'right-ArticleToCategory2' => "Ouzhpennañ ar bajenn d'ar rummad",
+	'right-ArticleToCategory2AddCat' => "Ouzhpennañ ur rummad d'ar rummad-mañ",
 );
 
 /** Bosnian (Bosanski)
@@ -364,6 +367,8 @@ $messages['lb'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Uleeën',
 	'articletocategory2-create-category-under-category-text' => 'Eng Kategorie an dës Kategorie derbäisetzen',
 	'articletocategory2-create-category-under-category-button' => 'Uleeën',
+	'right-ArticleToCategory2' => "Säit bäi d'Kategorie derbäisetzen",
+	'right-ArticleToCategory2AddCat' => "Kategorie bäi d'Kategorie derbäisetzen",
 );
 
 /** Malagasy (Malagasy)
@@ -596,6 +601,8 @@ $messages['uk'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Створити',
 	'articletocategory2-create-category-under-category-text' => 'Додати категорію до цієї категорії',
 	'articletocategory2-create-category-under-category-button' => 'Створити',
+	'right-ArticleToCategory2' => 'Додати сторінку до категорії',
+	'right-ArticleToCategory2AddCat' => 'Додати категорію до категорії',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
