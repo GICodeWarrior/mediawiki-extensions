@@ -1304,7 +1304,7 @@ $messages['kn'] = array(
  */
 $messages['ksh'] = array(
 	'recordadmin' => 'Datesätz verwallde',
-	'recordadmin-desc' => 'En [[Special:RecordAdmin|Söndersigg]] för Sigge met Datesätz ze fenge un övver e Fommulaa zo ändere.',
+	'recordadmin-desc' => 'Söhke, Froore un Ußkönf, Fommulaare, un Ußwertunge vun Daate em Wiki ovver de Parammeetere vun Schabloone.',
 	'recordadmin-specialdesc' => 'En [[Special:RecordAdmin|{{int:specialpage}}]] för övver zopaß Fommulaare Sigge ze söhke un Sigge aanzelääje.',
 	'recordadmin-noforms' => 'Em Momang sinn_er kein Fommulaare enjereschdt för Sigge drövver ze söhke un aanzelääje.',
 	'recordadmin-select' => 'Donn de Zoot Datesatz ußsöke, för die de jet verwallde wells',
