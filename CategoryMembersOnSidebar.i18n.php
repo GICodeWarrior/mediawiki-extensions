@@ -120,6 +120,13 @@ $messages['id'] = array(
 	'categorymembersonsidebar-desc' => 'Menambahkan anggota kategori di bilah samping',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'categorymembersonsidebar-desc' => 'Aggiunge i membri della categoria nella barra laterale',
+);
+
 /** Japanese (日本語)
  * @author Ohgi
  */
