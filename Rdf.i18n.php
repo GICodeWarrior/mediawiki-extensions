@@ -283,6 +283,16 @@ $messages['pt'] = array(
 	'rdf-instructions' => 'Escolha a página de destino e os modelos RDF em que está interessado.',
 );
 
+/** Russian (Русский)
+ * @author Haffman
+ */
+$messages['ru'] = array(
+	'rdf-linksto' => 'Ссылки на страницу',
+	'rdf-links' => 'Все ссылки',
+	'rdf-categories' => 'Категории',
+	'rdf-format' => 'Формат вывода',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */
