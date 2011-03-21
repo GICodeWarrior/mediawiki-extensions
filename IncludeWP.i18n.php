@@ -38,9 +38,14 @@ There is a <a href="$6">full list of authors</a> available.',
 
 /** Message documentation (Message documentation)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['qqq'] = array(
-	'includewp-licence-notice' => '$1 stands for the sitename',
+	'includewp-desc' => '{{desc}}',
+	'includewp-licence-notice' => '* $1 - stands for the sitename (e.g. "Wikipedia")
+* $2 -
+* $3 - 
+* $4 -',
 );
 
 /** Afrikaans (Afrikaans)
@@ -179,6 +184,25 @@ $messages['ia'] = array(
 	'includewp-include-par-height' => 'Le altitude maxime (in pixels) del div in le qual le contento es cargate. Defini como 0 pro non haber un limite.',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'includewp-desc' => '<i lang="en">IncludeWP<i> es ene janz eijfache Projrammzohsaz för Sigge uß de Wikipedia em Wiki opzenämme.',
+	'includewp-loading-page' => 'Mer sen di Sigg aam laade&nbsp;…',
+	'includewp-show-full-page' => 'Donn de janze Sigg aanzeije',
+	'includewp-show-fragment' => 'Donn bloß der eetzde Afschnedd aanzeije',
+	'includewp-loading-failed' => 'Et Sigge_Laade es donävve jejange.',
+	'includewp-licence-notice' => 'Wat heh vör shteiht kütt vun dä Sigg <a href="$2">$3</a> uß {{GRAMMAR:Dativ|$1}}, di onger dä Lizänz <a href="$4">$5</a> veröffentlesch es. Dobei jehööd uch de kumplätte <a href="$6">Leß met alle Schriever dovun</a>.',
+	'includewp-parserhook-desc' => 'Dem Paaser singe Hooke, dä et Aanzeije vun Enhallde vun de Wikipedija müjjelesch määt.',
+	'includewp-include-par-page' => 'Dä Name vun dä Sigg, di De aanjzeish han wells.',
+	'includewp-include-par-wiki' => 'Dä Name vun däm Wiki, vun woh jät övvernumme wääde sull.
+Et moss_e doför freijejovve Wiki sin.
+Standattmääßsch eß dat bloß de Wikipeedija.',
+	'includewp-include-par-paragraphs' => 'De Aanzahl Afschnedde, di aanfänglesch aanjezeijsch wääde sulle.',
+	'includewp-include-par-height' => 'De Aanzahl Pixelle för de jrüüßte zohjelohße Hühde för dä Kaßte, woh de övvernumme Daate aanjezeijsch wääde. Jivv-en Noll (0) en, wann De kein Jränz han wells.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -268,14 +292,17 @@ $messages['ru'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'includewp-desc' => 'Ang IncludeWP ay isang dugtong na magaang ang timbang para pagsasama ng nilalaman ng Wikipedia',
 	'includewp-loading-page' => 'Ikinakarga ang pahina...',
 	'includewp-show-full-page' => 'Ipakita ang buong pahina',
 	'includewp-show-fragment' => 'Ipakita lamang ang unang talata',
 	'includewp-loading-failed' => 'Nabigong maikarga ang pahina.',
+	'includewp-licence-notice' => 'Ang nasa itaas na nilalaman ay nagmumula sa pahinang $1 <a href="$2">$3</a> na nilisensiyahan sa ilalim ng <a href="$4">$5</a>.  Isang buong tala ng mga may-akda ang matatagpuan <a href="$6">dito</a>.',
 	'includewp-parserhook-desc' => 'Kawit ng pambanghay na nagpapahintulot sa pagpapakita ng nilalaman ng isang pahina ng Wikipedia.',
 	'includewp-include-par-page' => 'Ang pangalan ng pahinang (malayo) nais mong ipakita.',
 	'includewp-include-par-wiki' => 'Ang pangalan ng wiki na nais mong paghilahan ng nilalaman.  Kailangang maging isa sa pinapahintulutang mga wiki, ayon sa wikipediang likas na nakatakda lamang.',
 	'includewp-include-par-paragraphs' => 'Ang bilang ng mga talatang nais mong unang maipakita.',
+	'includewp-include-par-height' => 'Ang pinakamataas na taas (nasa px) ng paghahati kung saan nakakarga ang nilalaman.  Itinakda sa 0 para sa walang halangganan.',
 );
 
 /** Ukrainian (Українська)
