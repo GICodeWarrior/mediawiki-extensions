@@ -136,3 +136,10 @@ $messages['ru'] = array(
 	'geequbox-desc' => 'Создает эффекты lightbox с помощью jQuery плагина Lightbox',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'geequbox-desc' => 'Lumilikha ng mga epekto ng kahon ng liwanag na ginagamit ang pampasak ng kahon ng liwanag ng jQuery',
+);
+
