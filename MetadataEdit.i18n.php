@@ -338,8 +338,10 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author Bengoa
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'metadataedit-desc' => 'Jarri kategoria, hizkuntza loturak eta baimendutako txantiloiak bereizitako testu kutxa batean orrialdeak editatzen zauden bitartean',
 	'metadata_help' => 'Metadatuak:',
 );
 
