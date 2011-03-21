@@ -145,3 +145,10 @@ $messages['ru'] = array(
 	'folktagcloud-desc' => 'Добавляет свойство семантической MediaWiki для пометки страниц пользовательскими метками и тег парсера для отображения облака меток',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'folktagcloud-desc' => 'Nagdaragdag ng katangiang ari ng Semantikong MediaWiki para sa pagtatatak ng mga pahina na may mga tatak na tinukoy ng tagagamit at isang tatak ng pambanghay para sa pagpapakita ng mga ito sa loob ng isang ulap ng tatak',
+);
+
