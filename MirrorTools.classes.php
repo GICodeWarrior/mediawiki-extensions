@@ -146,7 +146,7 @@ class MirrorEditPage extends EditPage {
 
 			$isComment = ( $this->section == 'new' );
 
-			# FIXME: paste contents from Article::insertNewArticle here and 
+			# FIXME: paste contents from Article::doEdit here and 
 			# actually handle errors it may return
 			$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $isminor ? EDIT_MINOR : 0 ) |
