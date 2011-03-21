@@ -26,13 +26,14 @@ $messages['en'] = array(
 	'includewp-show-fragment' => 'Only show the first paragraph',
 	'includewp-loading-failed' => 'Failed to load page.',
 
-	'includewp-licence-notice' => 'The above content comes from the $1 page <a href="$2">$3</a> licenced under the <a href="$4">$5</a>. A full list of authors can be found <a href="$6">here</a>.',
+	'includewp-licence-notice' => 'The above content comes from the $1 page <a href="$2">$3</a> licenced under the <a href="$4">$5</a>.
+There is a <a href="$6">full list of authors</a> available.',
 	
 	'includewp-parserhook-desc' => 'Parser hook that allows displaying content of a Wikipedia page.',
 	'includewp-include-par-page' => 'The name of the (remote) page you want to display.',
-	'includewp-include-par-wiki' => 'The name of the wiki you want to pull content from. Needs to be one of the allowed wikis, by default only wikipedia.',
-	'includewp-include-par-paragraphs' => 'The number of paragraphs you want to initially display.',
-	'includewp-include-par-height' => 'The max height (in px) of the div into which the content is loaded. Set to 0 for no limit.',
+	'includewp-include-par-wiki' => 'The name of the wiki you want to pull content from. Needs to be one of the allowed wikis, by default only Wikipedia.',
+	'includewp-include-par-paragraphs' => 'The number of paragraphs you want to display initially.',
+	'includewp-include-par-height' => 'The maximum height in pixels of the HTML div into which the content is loaded. Set to 0 for no limit.',
 );
 
 /** Message documentation (Message documentation)
