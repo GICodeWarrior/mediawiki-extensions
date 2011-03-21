@@ -787,6 +787,7 @@ Jos tämä virhe toistuu, tietokanta on luultavasti rikki.',
 /** French (Français)
  * @author Dereckson
  * @author Grondin
+ * @author Hashar
  * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
@@ -804,7 +805,7 @@ $messages['fr'] = array(
 	'changeauthor-changeauthors-single' => "Changer l'auteur",
 	'changeauthor-explanation-single' => "Avec ce formulaire, vous pouvez changer l'auteur d'une révision. Changez le nom d'auteur ci-dessous, ajoutez un commentaire (facultatif) et cliquez sur le bouton ''Changer l'auteur''.",
 	'changeauthor-invalid-username' => "Nom d'utilisateur « $1 » invalide",
-	'changeauthor-nosuchuser' => "Pas d'utilisateur « $1 »",
+	'changeauthor-nosuchuser' => 'Aucun utilisateur « $1 »',
 	'changeauthor-revview' => 'Révision #$1 de $2',
 	'changeauthor-nosuchtitle' => "Il n'existe aucune page intitulée « $1 »",
 	'changeauthor-weirderror' => "Une erreur s'est produite. Prière d'essayer à nouveau. Si cette erreur est apparue à plusieurs reprises, la base de données est probablement corrompue.",
