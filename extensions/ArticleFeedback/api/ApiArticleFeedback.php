@@ -45,7 +45,8 @@ class ApiArticleFeedback extends ApiBase {
 		$lastRatings = array();
 
 		foreach ( $res as $row ) {
-			$lastRatings[$row->aa_rating_id] = $row->aa_rating_value;
+			$lastRatings[$row->aa_rating_id]['value'] = $row->aa_rating_value;
+			$lastRatings[$row->aa_rating_id]['revision'] = $row->aa_revision;
 		}
 
 		$pageId = $params['pageid'];
@@ -54,7 +55,8 @@ class ApiArticleFeedback extends ApiBase {
 		foreach( $wgArticleFeedbackRatings as $rating ) {
 			$lastRating = false;
 			if ( isset( $lastRatings[$rating] ) ) {
-				$lastRating = intval( $lastRatings[$rating] );
+				$lastRating = intval( $lastRatings[$rating]['value'] );
+				$lastRevision = intval( $lastRatings[$rating]['revision'] );
 			}
 
 			$thisRating = false;
@@ -62,7 +64,7 @@ class ApiArticleFeedback extends ApiBase {
 				$thisRating = intval( $params["r{$rating}"] );
 			}
 
-			$this->insertPageRating( $pageId, $rating, ( $thisRating - $lastRating ),
+			$this->insertPageRating( $pageId, $revisionId, $lastRevision, $rating, ( $thisRating - $lastRating ),
 					$thisRating, $lastRating
 			);
 
@@ -79,31 +81,14 @@ class ApiArticleFeedback extends ApiBase {
 	 * Inserts (or Updates, where appropriate) the aggregate page rating
 	 * 
 	 * @param $pageId Integer: Page Id
+	 * @param $revisionId Integer: Revision Id
 	 * @param $ratingId Integer: Rating Id
 	 * @param $updateAddition Integer: Difference between user's last rating (if applicable)
 	 * @param $thisRating Integer|Boolean: Value of the Rating
 	 * @param $lastRating Integer|Boolean: Value of the last Rating
 	 */
-	private function insertPageRating( $pageId, $ratingId, $updateAddition, $thisRating, $lastRating ) {
+	private function insertPageRating( $pageId, $revisionId, $lastRevision, $ratingId, $updateAddition, $thisRating, $lastRating ) {
 		$dbw = wfGetDB( DB_MASTER );
-
-		// 0 == No change in rating count
-		// 1 == No rating last time (or new rating), and now there is
-		// -1 == Rating last time, but abstained this time
-		$countChange = 0;
-		if ( $lastRating === false || $lastRating === 0 ) {
-			if ( $thisRating === 0 ) {
-				$countChange = 0;
-			} else {
-				$countChange = 1;
-			}
-		} else { // Last rating was > 0
-			if ( $thisRating === 0 ) {
-				$countChange = -1;
-			} else {
-				$countChange = 0;
-			}
-		}
 
 		$dbw->insert(
 			'article_feedback_pages',
@@ -112,23 +97,73 @@ class ApiArticleFeedback extends ApiBase {
 				'aap_total' => 0,
 				'aap_count' => 0,
 				'aap_rating_id' => $ratingId,
+			 	'aap_revision' => $revisionId,
 			),
 			__METHOD__,
 			 array( 'IGNORE' )
 		);
 
-		$dbw->update(
-			'article_feedback_pages',
-			array(
-				'aap_total = aap_total + ' . $updateAddition,
-				'aap_count = aap_count + ' . $countChange,
-			),
-			array(
-				'aap_page_id' => $pageId,
-				'aap_rating_id' => $ratingId,
-			),
-			__METHOD__
-		);
+		if ( $dbw->affectedRows() ) {
+			if ( $lastRating ) {
+				$dbw->update(
+					'article_feedback_pages',
+					array(
+						'aap_total = aap_total - ' . intval( $lastRating ),
+						'aap_count = aap_count - 1',
+					),
+					array(
+						'aap_page_id' => $pageId,
+						'aap_rating_id' => $ratingId,
+						'aap_revision' => $lastRevision
+					),
+					__METHOD__
+				);
+			}
+			$dbw->update(
+				'article_feedback_pages',
+				array(
+					'aap_total' => $thisRating,
+					'aap_count' => 1,
+				),
+				array(
+					'aap_page_id' => $pageId,
+					'aap_rating_id' => $ratingId,
+				 	'aap_revision' => $revisionId,
+				),
+				__METHOD__
+			);
+		} else {
+			// 0 == No change in rating count
+			// 1 == No rating last time (or new rating), and now there is
+			// -1 == Rating last time, but abstained this time
+			$countChange = 0;
+			if ( $lastRating === false || $lastRating === 0 ) {
+				if ( $thisRating === 0 ) {
+					$countChange = 0;
+				} else {
+					$countChange = 1;
+				}
+			} else { // Last rating was > 0
+				if ( $thisRating === 0 ) {
+					$countChange = -1;
+				} else {
+					$countChange = 0;
+				}
+			}
+			$dbw->update(
+				'article_feedback_pages',
+				array(
+					'aap_total = aap_total + ' . $updateAddition,
+					'aap_count = aap_count + ' . $countChange,
+				),
+				array(
+					'aap_page_id' => $pageId,
+					'aap_rating_id' => $ratingId,
+				 	'aap_revision' => $revisionId,
+				),
+				__METHOD__
+			);
+		}
 	}
 
 	/**
@@ -153,12 +188,12 @@ class ApiArticleFeedback extends ApiBase {
 				'aa_page_id' => $pageId,
 				'aa_user_id' => $user->getId(),
 				'aa_user_text' => $user->getName(),
+				'aa_user_anon_token' => $token,
 				'aa_revision' => $revisionId,
 				'aa_timestamp' => $timestamp,
 				'aa_rating_id' => $ratingId,
 				'aa_rating_value' => $ratingValue,
 				'aa_design_bucket' => $bucket,
-				'aa_user_anon_token' => $token
 			),
 			__METHOD__,
 			 array( 'IGNORE' )
@@ -176,7 +211,7 @@ class ApiArticleFeedback extends ApiBase {
 					'aa_user_text' => $user->getName(),
 					'aa_revision' => $revisionId,
 					'aa_rating_id' => $ratingId,
-					'aa_user_anon_token' => $token
+					'aa_user_anon_token' => $token,
 				),
 				__METHOD__
 			);
