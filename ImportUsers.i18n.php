@@ -1,31 +1,34 @@
 <?php
-/** Internationalization messages file for Import User extension
-  *
-  * @addtogroup Extensions
-*/
+/**
+ * Internationalization messages file for Import Users extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
+/** English */
 $messages['en'] = array(
 	'importusers'                         => 'Import users',
-	'importusers-desc'                    => '[[Special:ImportUsers|Imports users]] in bulk from CSV-file; encoding: UTF-8',
+	'importusers-desc'                    => '[[Special:ImportUsers|Imports users]] in bulk from a CSV file; encoding: UTF-8',
 	'importusers-uploadfile'              => 'Upload file',
-	'importusers-form-caption'            => 'Input CSV-file (UTF-8)',
+	'importusers-form-caption'            => 'Input CSV-file (UTF-8):',
 	'importusers-form-file'               => 'User file format (CSV):',
 	'importusers-form-replace-present'    => 'Replace existing users',
 	'importusers-form-button'             => 'Import',
-	'importusers-user-added'              => 'User \'\'\'$1\'\'\' has been added.',
-	'importusers-user-present-update'     => 'User \'\'\'$1\'\'\' already exists.
-Updated.',
-	'importusers-user-present-not-update' => 'User \'\'\'$1\'\'\' already exists.
-Did not update.',
+	'importusers-user-added'              => "User '''$1''' has been added.",
+	'importusers-user-present-update'     => "User '''$1''' already exists.
+Updated.",
+	'importusers-user-present-not-update' => "User '''$1''' already exists.
+Did not update.",
 	'importusers-user-invalid-format'     => 'User data in the line #$1 has invalid format or is blank.
 Skipped.',
 	'importusers-log'                     => 'Import users log',
 	'importusers-log-summary'             => 'Summary',
-	'importusers-log-summary-all'         => 'All',
-	'importusers-log-summary-added'       => 'Added',
-	'importusers-log-summary-updated'     => 'Updated',
+	'importusers-log-summary-all'         => 'All: $1',
+	'importusers-log-summary-added'       => 'Added: $1',
+	'importusers-log-summary-updated'     => 'Updated: $1',
 	'importusers-login-name'              => 'Login name',
 	'importusers-password'                => 'password',
 	'importusers-email'                   => 'e-mail',
