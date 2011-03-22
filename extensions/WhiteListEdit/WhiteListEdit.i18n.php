@@ -2264,6 +2264,7 @@ Dës Säit ass nëmme valabel fir limitéiert Benotzer.",
  */
 $messages['ltg'] = array(
 	'whitelisttablemodifyall' => 'Vysi',
+	'whitelistnever' => 'nikod',
 );
 
 /** Lazuri (Lazuri)

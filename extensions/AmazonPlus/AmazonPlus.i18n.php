@@ -1750,11 +1750,21 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'amazonplus-desc' => 'Järgetadud ližaazeg miše ozutada Amazonan informacijad',
+	'amazonplus-nores' => "Petuz: Ei ole rezul'tatoid!",
+	'amazonplus-noidres' => 'Petuz: ei voi löuta produktan IDd!',
+	'amazonplus-fgcerr' => 'Petuz: ei voi sada informacijad Amazonalpäi!',
+	'amazonplus-slserr' => "Petuz: ei voi el'geta informacijad Amazonalpäi!",
 	'amazonplus-used' => 'kävutadud',
 	'amazonplus-german' => 'Germanijalaine',
 	'amazonplus-french' => 'Francijalaine',
 	'amazonplus-japanese' => 'Japonalaine',
+	'amazonplus-amazon' => 'Amazonan arv',
 	'amazonplus-new' => "uz'",
+	'amazonplus-none' => 'Ei ole ni üht egzemplärad möndan täht',
+	'amazonplus-cp-none' => 'Ei ole',
+	'amazonplus-more' => 'enamba',
+	'amazonplus-less' => 'vähemba',
 );
 
 /** Vietnamese (Tiếng Việt)

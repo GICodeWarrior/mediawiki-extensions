@@ -25,6 +25,13 @@ $messages['be-tarask'] = array(
 	'folktagcloud-desc' => 'Дадае ўласьцівасьці Semantic MediaWiki для метак старонак нестандартнымі пазнакамі і гэт парсэра для іх паказу ў хмары тэгаў',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'folktagcloud-desc' => 'Dodaje osobinu Semantic MediaWiki za označavanje stranica sa korisnički definiranim natpisima i oznakom parsera za njihovo prikazivanje u oblaku oznaka',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

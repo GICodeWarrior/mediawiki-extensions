@@ -161,3 +161,10 @@ $messages['tl'] = array(
 	'arrayext-desc' => 'Itabi at tuusin ang pinangalanang mga hanay',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'arrayext-desc' => 'Varata da lugeda nimitadud massivad',
+);
+

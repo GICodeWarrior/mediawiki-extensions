@@ -174,3 +174,10 @@ $messages['ru'] = array(
 	'proxyconnect-desc' => 'Реализует функциональность серверной части Proxy Connect',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'proxyconnect-desc' => 'Avaidab Proxy Connect-funkcijonaližust serveran poles',
+);
+

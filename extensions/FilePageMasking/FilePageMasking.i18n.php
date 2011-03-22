@@ -351,6 +351,13 @@ $messages['uk'] = array(
 	'filepagemasking-desc' => 'Перезаписує ".xxx" на "_xxx" в посиланнях на сторінки описів файлів',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'filepagemasking-desc' => 'Toižetab ".xxx"-n  "_xxx"-ks kosketusiš failoiden ümbrikirjutamižen lehtpolile',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

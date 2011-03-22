@@ -202,12 +202,16 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Haffman
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'searchlog' => 'Журнал поиска',
+	'searchlog-cantopen' => 'Не удалось открыть файл журнала <tt>$1</tt>',
+	'searchlog-unicode' => 'Показать «сырой» Юникод',
 	'searchlog-timeperiod' => 'Выберите период времени:',
 	'searchlog-entire' => 'Весь журнал',
 	'searchlog-phrase' => 'Поиск фразы',
+	'searchlog-occurences' => 'Количество вхождений в периоде',
 	'right-searchlog-read' => 'Просмотреть журнал поиска',
 );
 
