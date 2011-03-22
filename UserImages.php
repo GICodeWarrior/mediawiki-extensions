@@ -27,7 +27,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['UserImages'] = $dir . 'UserImages.i18n.php';
 $wgAutoloadClasses['UserImagesGallery'] = $dir . 'UserImages.class.php';
-$wgExtensionFunctions[] = 'efUserImages';
+$wgHooks['ParserFirstCallInit'][] = 'efUserImagesSetHook';
 
 /**
  * Set this to true to disable the parser cache for pages which
@@ -39,9 +39,9 @@ $wgUserImagesNoCache = false;
 /**
  * Extension initialisation function
  */
-function efUserImages() {
-	global $wgParser;
-	$wgParser->setHook( 'userimages', 'efUserImagesRender' );
+function efUserImagesSetHook( $parser ) {
+	$parser->setHook( 'userimages', 'efUserImagesRender' );
+	return true;
 }
 
 /**
