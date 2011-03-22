@@ -375,6 +375,13 @@ $messages['uk'] = array(
 	'redirect-desc' => 'Дозволяє зручне налаштування перенаправлень на [[MediaWiki:Redirect-addnewaccount|створення облікових записів]] та [[MediaWiki:Redirect-userlogoutcomplete|вихід з системи]]',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'redirect-desc' => 'Andab kebnas järgeta redirektad [[MediaWiki:Redirect-addnewaccount|akkauntan sämižele]] da [[MediaWiki:Redirect-userlogoutcomplete|lähtmižele sistemaspäi]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
