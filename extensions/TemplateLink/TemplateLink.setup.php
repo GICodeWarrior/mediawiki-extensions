@@ -43,11 +43,11 @@ $wgAutoloadClasses['TemplateLink'] = $dir . 'TemplateLink.body.php'; # Tell Medi
 $wgSpecialPages['TemplateLink'] = 'TemplateLink'; # Let MediaWiki know about your new special page.
 
 # The tag
-$wgExtensionFunctions[] = 'efTemplateLinkSetup';
+$wgHooks['ParserFirstCallInit'][] = 'efTemplateLinkSetHook';
 
-function efTemplateLinkSetup(){
-	global $wgParser;
-	$wgParser->setHook( 'templatelink', 'efTemplateLink' );
+function efTemplateLinkSetHook( $parser ){
+	$parser->setHook( 'templatelink', 'efTemplateLink' );
+	return true;
 }
 
 function efTemplateLink( $input, $args, $parser ){

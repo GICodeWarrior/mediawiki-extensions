@@ -10,11 +10,11 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:RSSNews',
 );
 
-$wgExtensionFunctions[] = "wfRSSFeedExtension";
+$wgHooks['ParserFirstCallInit'][] = 'wfRSSFeedSetHook';
 
-function wfRSSFeedExtension() {
-	global $wgParser;
-	$wgParser->setHook( "rss", "renderRSS" );
+function wfRSSFeedSetHook( $parser ) {
+	$parser->setHook( 'rss', 'renderRSS' );
+	return true;
 }
 
 function renderRSS( $paramstring ) {

@@ -19,30 +19,26 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'seealso-desc',
 );
 
-$wgExtensionFunctions[] = "wfSeealso";
+$wgHooks['ParserFirstCallInit'][] = 'wfSeealsoSetHooks';
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['seealso'] = $dir . 'Seealso.i18n.php';
 
-function wfSeealso () {
-	wfLoadExtensionMessages( 'seealso' );
-	global $wgParser ;
-	$wgParser->setHook ('seealso', 'parse_seealso' ) ;
+function wfSeealsoSetHooks( $parser ) {
+	$parser->setHook( 'seealso', 'parse_seealso' );
 	$l = trim ( 'seealso-local', "" ) ;
 	if ( $l != "" )
-		$wgParser->setHook ( $l , 'parse_seealso' ) ;
+		$parser->setHook( $l, 'parse_seealso' );
+	return true;
 }
 
-function parse_seealso ( $text, $params, &$parser ) {
-	$a = explode ( "\n" , $text ) ;
-	$ret = "== " . trim ( wfMsg('seealso')) . " ==\n" ;
+function parse_seealso( $text, $params, $parser ) {
+	$a = explode ( "\n" , $text );
+	$ret = "== " . trim ( wfMsg( 'seealso' ) ) . " ==\n";
 	foreach ( $a AS $x ) {
 		$x = trim ( $x ) ;
-		if ( $x == "" ) continue ;
-		$ret .= "* [[" . $x . "]]\n" ;
+		if ( $x == "" ) continue;
+		$ret .= "* [[" . $x . "]]\n";
 	}
-	$p = new Parser ;
-	$ret = $p->parse ( $ret , $parser->getTitle() , $parser->getOptions(), false ) ;
-	$ret = $ret->getText();
-	return $ret ;
+	return $parser->recursiveTagParse( $ret );
 }

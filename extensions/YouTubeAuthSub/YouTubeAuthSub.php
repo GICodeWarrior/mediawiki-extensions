@@ -15,8 +15,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionFunctions[] = 'wfYouTubeAuthSub';
-
 $wgYTAS_UseClientLogin = true;
 
 # Fill out if you are using $wgUseClientLogin
@@ -44,12 +42,8 @@ $wgExtensionMessagesFiles['YouTubeAuthSub'] = $dir . 'YouTubeAuthSub.i18n.php';
 $wgAutoloadClasses['SpecialYouTubeAuthSub'] = $dir . 'YouTubeAuthSub_body.php';
 $wgSpecialPages['YouTubeAuthSub'] = 'SpecialYouTubeAuthSub';
 
-function wfYouTubeAuthSub() {
-	global $wgYTAS_UseNamespace, $wgExtraNamespaces;
-
-	$wgExtraNamespaces[NS_YOUTUBE] = "YouTube";
-	$wgExtraNamespaces[NS_YOUTUBE_TALK] = "YouTube_talk";
-}
+$wgExtraNamespaces[NS_YOUTUBE] = "YouTube";
+$wgExtraNamespaces[NS_YOUTUBE_TALK] = "YouTube_talk";
 
 function wfSpecialYouTubePost ($url, $content, $headers = null) {
 	// Set the date of your post

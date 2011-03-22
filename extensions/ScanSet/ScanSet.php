@@ -21,12 +21,12 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgExtensionMessagesFiles['ScanSet'] = dirname(__FILE__) . '/ScanSet.i18n.php';
-$wgExtensionFunctions[] = 'wfScanSetSetup';
+$wgHooks['ParserFirstCallInit'][] = 'wfScanSetSetup';
 $wgScanSetSettings = array();
 
-function wfScanSetSetup() {
-	global $wgParser;
-	$wgParser->setHook( 'scanset', 'wfScanSetHook' );
+function wfScanSetSetup( $parser ) {
+	$parser->setHook( 'scanset', 'wfScanSetHook' );
+	return true;
 }
 
 function wfScanSetHook( $content, $params, &$parser ) {

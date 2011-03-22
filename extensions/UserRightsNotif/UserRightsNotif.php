@@ -16,7 +16,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgExtensionFunctions[] = 'efUserRightsNotifierSetup';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'User Rights Email Notification',
@@ -31,11 +30,7 @@ $wgExtensionMessagesFiles['UserRightsNotif'] = $dir . 'UserRightsNotif.i18n.php'
 # Change this to alter the email sender
 $wgUserRightsNotif['sender'] = $wgPasswordSender;
 
-function efUserRightsNotifierSetup() {
-	global $wgHooks;
-	wfLoadExtensionMessages( 'UserRightsNotif' );
-	$wgHooks['UserRights'][] = 'efUserRightsNotifier';
-}
+$wgHooks['UserRights'][] = 'efUserRightsNotifier';
 
 function efUserRightsNotifier( &$user, $added, $removed ) {
 	global $wgUserRightsNotif;

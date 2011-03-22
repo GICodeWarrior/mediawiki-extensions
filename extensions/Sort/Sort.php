@@ -16,7 +16,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgAutoloadClasses['Sorter'] = dirname( __FILE__ ) . '/Sort.class.php';
-$wgExtensionFunctions[] = 'efSort';
+$wgHooks['ParserFirstCallInit'][] = 'efSortSetHook';
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Sort',
@@ -28,9 +28,9 @@ $wgExtensionCredits['parserhook'][] = array(
 /**
  * Register hook function
  */
-function efSort() {
-	global $wgParser;
-	$wgParser->setHook( 'sort', 'efRenderSort' );
+function efSortSetHook( $parser ) {
+	$parser->setHook( 'sort', 'efRenderSort' );
+	return true;
 }
 
 /**
