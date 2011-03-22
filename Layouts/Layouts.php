@@ -43,10 +43,10 @@ $wgGroupPermissions['sysop']['editlayouts'] = true;
 
 /* ---- TAGS ---- */
 
-$wgExtensionFunctions[] = "UW_Layouts_EF";
-function UW_Layouts_EF() {
-	global $wgParser;
-	$wgParser->setHook ( "layout", "UW_Layouts_EF_Render" );
+$wgHooks['ParserFirstCallInit'][] = 'UW_Layouts_ParserFirstCallInit';
+function UW_Layouts_ParserFirstCallInit( $parser ) {
+	$parser->setHook( 'layout', 'UW_Layouts_EF_Render' );
+	return true;
 }
 
 /* render a note to display the name of the
