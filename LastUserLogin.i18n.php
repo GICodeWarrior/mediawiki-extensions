@@ -450,6 +450,20 @@ $messages['km'] = array(
 	'right-lastlogin' => 'មើលពេលវេលាដែលអ្នកប្រើប្រាស់បានកត់ឈ្មោះចូលចុងក្រោយ',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'lastuserlogin' => 'Et läzde Enlogge',
+	'lastuserlogin-desc' => 'Zeisch, wann ene Metmaacher sesch et läz enjelogg hät.',
+	'lastuserlogin_userid' => 'Däm Metmaacher singe Name',
+	'lastuserlogin_username' => 'Der reeschteje Name',
+	'lastuserlogin_useremail' => 'De Addräß för de <i lang="en">e-mail</i>',
+	'lastuserlogin_lastlogin' => 'Et läzde Enlogge',
+	'lastuserlogin_daysago' => 'Dääsch zerök',
+	'right-lastlogin' => 'Nohloore, wann ene Metmaacher sesch et läz enjelogg hät',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
  */
