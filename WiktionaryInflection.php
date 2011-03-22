@@ -7,11 +7,11 @@ $wgExtensionCredits['parserhooks'][] = array(
 	'author' => '',
 );
 
-$wgExtensionFunctions[] = "wfInflectionExtension";
+$wgHooks['ParserFirstCallInit'][] = 'wfInflectionSetHook';
 
-function wfInflectionExtension() {
-	global $wgParser;
-	$wgParser->setHook("infl", "renderInflection");
+function wfInflectionSetHook( $parser ) {
+	$parser->setHook( 'infl', 'renderInflection' );
+	return true;
 }
 
 class InflectionRule {
