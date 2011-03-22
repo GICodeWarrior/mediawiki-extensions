@@ -82,6 +82,7 @@ class ApiArticleFeedback extends ApiBase {
 	 * 
 	 * @param $pageId Integer: Page Id
 	 * @param $revisionId Integer: Revision Id
+	 * @param $lastRevision Integer: Revision Id of last rating
 	 * @param $ratingId Integer: Rating Id
 	 * @param $updateAddition Integer: Difference between user's last rating (if applicable)
 	 * @param $thisRating Integer|Boolean: Value of the Rating
