@@ -1,7 +1,6 @@
 <?php
 
 require_once( 'Transaction.php' );
-require_once( 'Wikidata.php' );
 
 class Expression {
 	public $id;
