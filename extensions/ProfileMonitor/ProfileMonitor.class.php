@@ -15,7 +15,7 @@ class ProfileMonitor extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgExtensionAssetsPath;
 
 		wfLoadExtensionMessages( 'ProfileMonitor' );
 
@@ -23,6 +23,8 @@ class ProfileMonitor extends SpecialPage {
 
 		$process = $wgRequest->getText( 'process' );
 		$wild = $wgRequest->getCheck( 'wildcard' );
+
+		$wgOut->addExtensionStyle( $wgExtensionAssetsPath . '/ProfileMonitor/ProfileMonitor.css' );
 		$wgOut->addHTML( $this->makeSearchForm( $process, $wild ) );
 
 		if( $wgRequest->getCheck( 'submit' ) ) {
