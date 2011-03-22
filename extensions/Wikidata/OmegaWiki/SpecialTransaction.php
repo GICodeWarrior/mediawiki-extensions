@@ -2,96 +2,89 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-$wgExtensionFunctions[] = 'wfSpecialTransaction';
 require_once( "Wikidata.php" );
 require_once( "Utilities.php" );
 
-
-function wfSpecialTransaction() {
-	class SpecialTransaction extends SpecialPage {
-		function SpecialTransaction() {
-			parent::__construct( 'Transaction' );
-		}
-		
-		function execute( $parameter ) {
-			global
-				$wgOut;
-			
-			require_once( "WikiDataTables.php" );
-			require_once( "OmegaWikiAttributes.php" );
-			require_once( "OmegaWikiRecordSets.php" );
-			require_once( "OmegaWikiEditors.php" );
-			require_once( "RecordSetQueries.php" );
-			require_once( "Transaction.php" );
-			require_once( "Editor.php" );
-			require_once( "Controller.php" );
-			require_once( "type.php" );
-			require_once( "ViewInformation.php" );
-			
-			initializeOmegaWikiAttributes( new ViewInformation() );
-			initializeAttributes();
-			
-			@$fromTransactionId = (int) $_GET['from-transaction']; # FIXME - check parameter
-			@$transactionCount = (int) $_GET['transaction-count']; # FIXME - check parameter
-			@$userName = "" . $_GET['user-name']; # FIXME - check parameter
-			@$showRollBackOptions = isset( $_GET['show-roll-back-options'] ); # FIXME - check parameter
-
-			if ( isset( $_POST['roll-back'] ) ) {
-				$fromTransactionId = (int) $_POST['from-transaction'];
-				$transactionCount = (int) $_POST['transaction-count'];
-				$userName = "" . $_POST['user-name'];
-				
-				if ( $fromTransactionId != 0 ) {
-					$recordSet = getTransactionRecordSet( $fromTransactionId, $transactionCount, $userName );
-					rollBackTransactions( $recordSet );
-					$fromTransactionId = 0;
-					$userName = "";
-				}
-			}
-
-			if ( $fromTransactionId == 0 )
-				$fromTransactionId = getLatestTransactionId();
-				
-			if ( $transactionCount == 0 )
-				$transactionCount = 10;
-			else
-				$transactionCount = min( $transactionCount, 20 );
-			
-			$wgOut->setPageTitle( wfMsg( 'recentchanges' ) );
-			$wgOut->addHTML( getFilterOptionsPanel( $fromTransactionId, $transactionCount, $userName, $showRollBackOptions ) );
-
-			if ( $showRollBackOptions )
-				$wgOut->addHTML(
-					'<form method="post" action="">' .
-					'<input type="hidden" name="from-transaction" value="' . $fromTransactionId . '"/>' .
-					'<input type="hidden" name="transaction-count" value="' . $transactionCount . '"/>' .
-					'<input type="hidden" name="user-name" value="' . $userName . '"/>'
-				);
-
-			$recordSet = getTransactionRecordSet( $fromTransactionId, $transactionCount, $userName );
-			
-			$wgOut->addHTML( getTransactionOverview( $recordSet, $showRollBackOptions ) );
-			
-			if ( $showRollBackOptions )
-				$wgOut->addHTML(
-					'<div class="option-panel">' .
-						'<table cellpadding="0" cellspacing="0">' .
-							'<tr>' .
-								'<th>' . wfMsg( "summary" ) . ': </th>' .
-								'<td class="option-field">' . getTextBox( "summary" ) . '</td>' .
-							'</tr>' .
-							'<tr><th/><td>' . getSubmitButton( "roll-back", wfMsg( 'ow_transaction_rollback_button' ) ) . '</td></tr>' .
-						'</table>' .
-					'</div>' .
-					'</form>'
-				);
-			
-			$wgOut->addHTML( DefaultEditor::getExpansionCss() );
-			$wgOut->addHTML( "<script language='javascript'>/* <![CDATA[ */\nexpandEditors();\n/* ]]> */</script>" );
-		}
+class SpecialTransaction extends SpecialPage {
+	function SpecialTransaction() {
+		parent::__construct( 'Transaction' );
 	}
-	
-	SpecialPage::addPage( new SpecialTransaction() );
+
+	function execute( $parameter ) {
+		global $wgOut;
+
+		require_once( "WikiDataTables.php" );
+		require_once( "OmegaWikiAttributes.php" );
+		require_once( "OmegaWikiRecordSets.php" );
+		require_once( "OmegaWikiEditors.php" );
+		require_once( "RecordSetQueries.php" );
+		require_once( "Transaction.php" );
+		require_once( "Editor.php" );
+		require_once( "Controller.php" );
+		require_once( "type.php" );
+		require_once( "ViewInformation.php" );
+
+		initializeOmegaWikiAttributes( new ViewInformation() );
+		initializeAttributes();
+
+		@$fromTransactionId = (int) $_GET['from-transaction']; # FIXME - check parameter
+		@$transactionCount = (int) $_GET['transaction-count']; # FIXME - check parameter
+		@$userName = "" . $_GET['user-name']; # FIXME - check parameter
+		@$showRollBackOptions = isset( $_GET['show-roll-back-options'] ); # FIXME - check parameter
+
+		if ( isset( $_POST['roll-back'] ) ) {
+			$fromTransactionId = (int) $_POST['from-transaction'];
+			$transactionCount = (int) $_POST['transaction-count'];
+			$userName = "" . $_POST['user-name'];
+
+			if ( $fromTransactionId != 0 ) {
+				$recordSet = getTransactionRecordSet( $fromTransactionId, $transactionCount, $userName );
+				rollBackTransactions( $recordSet );
+				$fromTransactionId = 0;
+				$userName = "";
+			}
+		}
+
+		if ( $fromTransactionId == 0 )
+			$fromTransactionId = getLatestTransactionId();
+
+		if ( $transactionCount == 0 )
+			$transactionCount = 10;
+		else
+			$transactionCount = min( $transactionCount, 20 );
+
+		$wgOut->setPageTitle( wfMsg( 'recentchanges' ) );
+		$wgOut->addHTML( getFilterOptionsPanel( $fromTransactionId, $transactionCount, $userName, $showRollBackOptions ) );
+
+		if ( $showRollBackOptions )
+			$wgOut->addHTML(
+				'<form method="post" action="">' .
+				'<input type="hidden" name="from-transaction" value="' . $fromTransactionId . '"/>' .
+				'<input type="hidden" name="transaction-count" value="' . $transactionCount . '"/>' .
+				'<input type="hidden" name="user-name" value="' . $userName . '"/>'
+			);
+
+		$recordSet = getTransactionRecordSet( $fromTransactionId, $transactionCount, $userName );
+
+		$wgOut->addHTML( getTransactionOverview( $recordSet, $showRollBackOptions ) );
+
+		if ( $showRollBackOptions )
+			$wgOut->addHTML(
+				'<div class="option-panel">' .
+					'<table cellpadding="0" cellspacing="0">' .
+						'<tr>' .
+							'<th>' . wfMsg( "summary" ) . ': </th>' .
+							'<td class="option-field">' . getTextBox( "summary" ) . '</td>' .
+						'</tr>' .
+						'<tr><th/><td>' . getSubmitButton( "roll-back", wfMsg( 'ow_transaction_rollback_button' ) ) . '</td></tr>' .
+					'</table>' .
+				'</div>' .
+				'</form>'
+			);
+
+		$wgOut->addHTML( DefaultEditor::getExpansionCss() );
+		$wgOut->addHTML( "<script language='javascript'>/* <![CDATA[ */\nexpandEditors();\n/* ]]> */</script>" );
+	}
 }
 
 function getFilterOptionsPanel( $fromTransactionId, $transactionCount, $userName, $showRollBackOptions ) {

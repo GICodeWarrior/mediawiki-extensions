@@ -13,14 +13,13 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgAvailableRights[] = 'addlanguage';
 $wgGroupPermissions['bureaucrat']['addlanguage'] = true;
 
-$wgExtensionFunctions[] = 'wfSpecialManageLanguages';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Language manager',
 	'author' => 'Erik Moeller',
 	'descmsg' => 'langman-desc',
 );
 
-$wgSpecialPages[] = 'SpecialLanguages';
+$wgSpecialPages['Languages'] = 'SpecialLanguages';
 
 class SpecialLanguages extends SpecialPage {
 	function SpecialLanguages() {
