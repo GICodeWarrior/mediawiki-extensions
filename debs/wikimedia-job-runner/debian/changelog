@@ -1,3 +1,9 @@
+wikimedia-job-runner (1.2-1) lucid-wikimedia; urgency=low
+
+  * Changing distro
+
+ -- Ryan Lane <rlane@wikimedia.org>  Thu, 10 Mar 2011 17:37:50 +0000
+
 wikimedia-job-runner (1.2) lucid; urgency=low
 
   * Fixed script location
