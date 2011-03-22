@@ -860,6 +860,7 @@ $messages['vep'] = array(
 	'ratedpages-list' => 'Lugijoil järgetud heiden arvsanoiden mödhe lehtpoled (nimikirjutez).',
 	'ratedpages-none' => 'Neciš nimikirjuteses ei ole lehtpolid',
 	'ratedpages-graphs' => 'andmused arvostelendas',
+	'ratedpages-count' => '$1 {{PLURAL:$1|arvoind|arvoindad}}',
 );
 
 /** Vietnamese (Tiếng Việt)
