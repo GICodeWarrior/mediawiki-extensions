@@ -764,6 +764,13 @@ $messages['oc'] = array(
 	'abcdownload' => 'Telecargar :',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'abcdownload' => 'ଡାଉନଲୋଡ:',
+);
+
 /** Papiamento (Papiamentu)
  * @author Sdm1985
  */
