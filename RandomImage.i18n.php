@@ -458,6 +458,13 @@ $messages['vec'] = array(
 	'randomimage-desc' => 'Fornisse un racoglitor de file casuali doparando el tag <code>&lt;randomimage /&gt;</code>',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'randomimage-desc' => 'Andab valita statjaližikš medijad <code>&lt;randomimage /&gt;</code>-kodan abul',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
