@@ -1417,6 +1417,13 @@ $messages['ja'] = array(
 	'storyboard-storydeletionconfirm' => 'このストーリーを永久に削除してもよろしいですか？',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'storyboard-desc' => 'Brängg en [[Special:Story|Aanloufsigg för Jävver]] en et Wiki, woh Jescheschte [[Special:StorySubmission|enjeshtallt]] wääde künne, un en [[Special:StoryReview|Schnettshtäll för Jescheeschte ze betreue]].',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
