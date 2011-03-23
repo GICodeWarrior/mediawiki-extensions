@@ -195,6 +195,7 @@ $messages['he'] = array(
 	'svgedit-desc' => 'עריכה בתוך הדפדפן של ציורי SVG באמצעות [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'עריכה ציור',
 	'svgedit-edit-tab-tooltip' => 'אפשר לערוך את ציור ה־SVG הזה בדפדפן',
+	'svgedit-toolbar-insert' => 'SVG ציור',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
