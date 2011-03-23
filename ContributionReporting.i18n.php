@@ -4418,6 +4418,7 @@ $messages['roa-tara'] = array(
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Massime (USD)',
 	'fundraiserstats-tab-ytd' => 'Anne-a-date (USD)',
+	'fundraiserstats-utc' => '(da UTC)',
 );
 
 /** Russian (Русский)
