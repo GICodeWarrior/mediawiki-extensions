@@ -44,6 +44,7 @@ $wgExtensionMessagesFiles['PrintVersion'] = $dir . '/PrintVersion.i18n.php';
 $wgExtensionAliasesFiles['PrintVersion'] = $dir . '/PrintVersion.alias.php';
 $wgSpecialPages['PrintVersion'] = 'PrintVersion';
 $wgSpecialPageGroups['PrintVersion'] = 'other';
+$wgExtensionMessagesFiles['BookManager'] = $dir . '/BookManager.i18n.php';
 
 
 
@@ -54,7 +55,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'	=>  BookManagerCore::VERSION,
 	'author'	=>  array( 'Raylton P. Sousa', 'Helder.wiki' ),
 	'url'		=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
-	'description'	=> 'Tools for books',
+	'descriptionmsg' => 'bookmanager-desc',
 );
 /* Add CSS and JS */
 $wgResourceModules['ext.BookManager'] = array(
