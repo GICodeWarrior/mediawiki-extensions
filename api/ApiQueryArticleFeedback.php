@@ -6,18 +6,20 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 
 	public function execute() {
 		global $wgArticleFeedbackRatings;
+		
 		$params = $this->extractRequestParams();
-
 		$result = $this->getResult();
-
-		$revisionLimit = self::getRevisionLimit( $params['pageid'] );
-
+		$revisionLimit = $this->getRevisionLimit( $params['pageid'] );
+		
 		$this->addTables( array( 'article_feedback_pages', 'article_feedback_ratings' ) );
-
 		$this->addFields( array(
-			'aap_page_id', 'SUM(aap_total) as aap_total', 'SUM(aap_count) as aap_count', 'aap_rating_id', 'aar_rating'
+			'aap_page_id',
+			'MAX(aap_revision) as aap_revision',
+			'SUM(aap_total) as aap_total',
+			'SUM(aap_count) as aap_count',
+			'aap_rating_id',
+			'aar_rating',
 		) );
-
 		$this->addJoinConds( array(
 				'article_feedback_ratings' => array( 'LEFT JOIN', array(
 					'aar_id=aap_rating_id',
@@ -25,67 +27,38 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				)
 			),
 		) );
-
 		$this->addWhereFld( 'aap_page_id', $params['pageid'] );
-		$this->addWhereFld( 'aap_revision > ' . $revisionLimit );
-
+		$this->addWhere( 'aap_revision >= ' . $revisionLimit );
 		$this->addOption( 'GROUP BY', 'aap_rating_id' );
 		$this->addOption( 'LIMIT', count( $wgArticleFeedbackRatings ) );
 
-		if ( $params['userrating'] ) {
-			global $wgUser;
-
-			$leftJoinCondsAF = array(
-					'aa_page_id=aap_page_id',
-					'aa_rating_id=aap_rating_id',
-					'aa_user_id=' . $wgUser->getId() );
-			$leftJoinCondsAFP = array(
-					'afp_revision=aa_revision',
-					'afp_user_text=aa_user_text',
-					'afp_user_anon_token=aa_user_anon_token',
-					'afp_key' => 'expertise' );
-
-			if ( $wgUser->isAnon() ) {
-				if ( !isset( $params['anontoken'] ) ) {
-					$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
-				} elseif ( strlen( $params['anontoken'] ) != 32 ) {
-					$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
-				}
-				$leftJoinCondsAF['aa_user_anon_token'] = $params['anontoken'];
-			} else {
-				$leftJoinCondsAF['aa_user_anon_token'] = '';
-			}
-
-			$this->addTables( array( 'article_feedback', 'article_feedback_properties' ) );
-			$this->addJoinConds( array( 
-					'article_feedback' => array( 'LEFT JOIN', $leftJoinCondsAF ),
-					'article_feedback_properties' => array( 'LEFT JOIN', $leftJoinCondsAFP )
-				)
-			);
-
-			$this->addFields( array( 'aa_rating_value', 'aa_revision', 'afp_value_text' ) );
-
-			$this->addOption( 'ORDER BY', 'aa_revision DESC' );
-		}
-
 		$res = $this->select( __METHOD__ );
+
+		if ( $params['userrating'] ) {
+			$userRatings = $this->getUserRatings( $params );
+		}
 
 		$ratings = array();
 
 		$userRatedArticle = false;
 
-		foreach ( $res as $row ) {
+		$rev = null;
+		foreach ( $res as $i => $row ) {
 			$pageId = $row->aap_page_id;
+
+			if ( is_null( $rev ) ) {
+				$rev = $row->aap_revision;
+			}
 
 			if ( !isset( $ratings[$pageId] ) ) {
 				$page = array(
 					'pageid' => $pageId,
+					'revid' => $rev,
 				);
 
 				if ( $params['userrating'] ) {
-					$page['revid'] = $row->aa_revision;
-					if ( !is_null( $row->afp_value_text ) ) {
-						$page['expertise'] = $row->afp_value_text;
+					if ( isset( $userRatings[$i]['expertise'] ) ) {
+						$page['expertise'] = $userRatings[$i]['expertise'];
 					}
 				}
 
@@ -99,8 +72,8 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				'count' => $row->aap_count,
 			);
 
-			if ( $params['userrating'] && !is_null( $row->aa_rating_value ) ) {
-				$thisRow['userrating'] = $row->aa_rating_value;
+			if ( $params['userrating'] && isset( $userRatings[$i]['value'] ) ) {
+				$thisRow['userrating'] = $userRatings[$i]['value'];
 
 				$userRatedArticle = true;
 			}
@@ -109,25 +82,8 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		}
 
 		// Ratings can only be expired if the user has rated before
-		$ratings[$params['pageid']]['status'] = 'current';
 		if ( $params['userrating'] && $userRatedArticle ) {
-			global $wgArticleFeedbackRatingLifetime;
-
-			$dbr = wfGetDb( DB_SLAVE );
-			$updates = $dbr->selectField(
-				'revision',
-				'COUNT(rev_id) as revisions',
-				array(
-					'rev_page' => $params['pageid'],
-					'rev_id > ' . $ratings[$pageId]['revid']
-				),
-				__METHOD__,
-				array ( 'LIMIT', $wgArticleFeedbackStaleCount + 1 )
-			);
-			if ( $updates > $wgArticleFeedbackRatingLifetime ) {
-				// Expired status
-				$ratings[$params['pageid']]['status'] = 'expired';
-			}
+			$ratings[$params['pageid']]['status'] = $rev >= $revisionLimit ? 'current' : 'expired';
 		}
 
 		foreach ( $ratings as $rat ) {
@@ -138,13 +94,61 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
 	}
 
+	protected function getUserRatings( $params ) {
+		global $wgUser, $wgArticleFeedbackRatings;
+
+		$pageId = $params['pageid'];
+		$token = '';
+		if ( $wgUser->isAnon() ) {
+			if ( !isset( $params['anontoken'] ) ) {
+				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
+			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
+				$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
+			}
+			$token = $params['anontoken'];
+		}
+
+		$dbr = wfGetDb( DB_SLAVE );
+		$res = $dbr->select(
+			array( 'article_feedback', 'article_feedback_properties' ),
+			array( 'aa_rating_id', 'aa_rating_value', 'afp_value_text' ),
+			array(
+				'aa_page_id' => $pageId,
+				'aa_rating_id' => $wgArticleFeedbackRatings,
+				'aa_user_id' => $wgUser->getId(),
+			),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'aa_revision DESC',
+				'LIMIT' => count( $wgArticleFeedbackRatings )
+			),
+			array( 'article_feedback_properties' => array(
+				'LEFT JOIN', array(
+					'afp_revision=aa_revision',
+					'afp_user_text=aa_user_text',
+					'afp_user_anon_token=aa_user_anon_token',
+					'aa_user_anon_token' => $token,
+					'afp_key' => 'expertise',
+				)
+			) )
+		);
+		$ratings = array();
+		foreach ( $res as $row ) {
+			$ratings[$row->aa_rating_id] = array(
+				'value' => $row->aa_rating_value,
+				'expertise' => $row->afp_value_text
+			);
+		}
+		return $ratings;
+	}
+
 	/**
 	 * Get the revision number of the oldest revision still being counted in totals.
 	 * 
 	 * @param $pageId Integer: ID of page to check revisions for
 	 * @return Integer: Oldest valid revision number or 0 of all revisions are valid
 	 */
-	protected static function getRevisionLimit( $pageId ) {
+	protected function getRevisionLimit( $pageId ) {
 		global $wgArticleFeedbackRatingLifetime;
 
 		$dbr = wfGetDb( DB_SLAVE );
