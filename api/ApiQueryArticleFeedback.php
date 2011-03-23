@@ -44,11 +44,10 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 
 		$rev = null;
 		foreach ( $res as $i => $row ) {
+			// All the revs and pageIds will be the same for all rows, these are shortcuts
 			$pageId = $row->aap_page_id;
-
-			if ( is_null( $rev ) ) {
-				$rev = $row->aap_revision;
-			}
+			// This is special however, because we need this data later for expired calculation
+			$rev = $row->aap_revision;
 
 			if ( !isset( $ratings[$pageId] ) ) {
 				$page = array(
