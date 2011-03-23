@@ -12,7 +12,7 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
-$wgExtensionFunctions[] = 'wfSpecialTalk';
+
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'SpecialTalk',
@@ -28,33 +28,22 @@ $dir = dirname( __FILE__ ) . '/';
 // Extension messages.
 $wgExtensionMessagesFiles['SpecialTalk'] =  $dir . 'SpecialTalk.i18n.php';
 
-function wfSpecialTalk() {
-	class SpecialTalk {
-		public function __construct() {
-			global $wgHooks;
+$wgHooks['SkinTemplateBuildContentActionUrlsAfterSpecialPage'][] = 'wfSpecialTalkHook';
 
-			$wgHooks['SkinTemplateBuildContentActionUrlsAfterSpecialPage'][] = array( &$this, 'SpecialTalkHook' );
-		}
+function wfSpecialTalkHook( SkinTemplate &$skin_template, array &$content_actions ) {
+	$title = Title::makeTitle( NS_PROJECT_TALK, $skin_template->mTitle->getText() );
 
-		public function SpecialTalkHook( SkinTemplate &$skin_template, array &$content_actions ) {
-			$title = Title::makeTitle( NS_PROJECT_TALK, $skin_template->mTitle->getText() );
+	$content_actions['talk'] = $skin_template->tabAction(
+		$title,
+		// msg
+		'talk',
+		// selected
+		false,
+		// &query=
+		'',
+		// check existance
+		true
+	);
 
-			$content_actions['talk'] = $skin_template->tabAction(
-				$title,
-				// msg
-				'talk',
-				// selected
-				false,
-				// &query=
-				'',
-				// check existance
-				true
-			);
-			
-			return true;
-		}
-	}
-
-	// Establish a singleton.
-	new SpecialTalk;
+	return true;
 }
