@@ -17,7 +17,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  *
  */
 
-$wgExtensionFunctions[] = 'efStockCharts';
+$wgHooks['ParserFirstCallInit'][] = 'efStockChartsSetHooks';
 $wgHooks['LanguageGetMagic'][] = 'efStockChartsMagic';
 
 $wgExtensionCredits['parserhook'][] = array(
@@ -34,11 +34,10 @@ $wgExtensionMessagesFiles['StockCharts'] =  dirname( __FILE__ ) . '/StockCharts.
 
 $wgAutoloadClasses['StockCharts'] = dirname( __FILE__ ) . '/StockCharts_body.php';
 
-// CHECKME: use $wgHooks['ParserFirstCallInit'] here?
-function efStockCharts() {
-	global $wgParser;
-	$wgParser->setHook( 'stockchart', array( 'StockCharts', 'renderTagExtension' ) ); // hook for <stockchart ../>
-	$wgParser->setFunctionHook( 'stockchart', array( 'StockCharts', 'renderParserFunction' ) ); // hook for {{#stockchart ..}}
+function efStockChartsSetHooks( $parser ) {
+	$parser->setHook( 'stockchart', array( 'StockCharts', 'renderTagExtension' ) ); // hook for <stockchart ../>
+	$parser->setFunctionHook( 'stockchart', array( 'StockCharts', 'renderParserFunction' ) ); // hook for {{#stockchart ..}}
+	return true;
 }
 
 function efStockChartsMagic( &$magicWords, $langCode ) {

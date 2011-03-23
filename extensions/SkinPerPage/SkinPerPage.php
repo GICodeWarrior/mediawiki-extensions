@@ -17,13 +17,13 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $wgExtensionMessagesFiles['SkinPerPage'] = dirname( __FILE__ ) . "/SkinPerPage.i18n.php";
 
-$wgExtensionFunctions[] = array( 'SkinPerPage', 'setup' );
+$wgHooks['ParserFirstCallInit'][] = 'SkinPerPage::setup';
 $wgHooks['OutputPageParserOutput'][] = 'SkinPerPage::outputHook';
 
 class SkinPerPage {
-	static function setup() {
-		global $wgParser;
-		$wgParser->setHook( 'skin', array( __CLASS__, 'parserHook' ) );
+	static function setup( $parser ) {
+		$parser->setHook( 'skin', array( __CLASS__, 'parserHook' ) );
+		return true;
 	}
 
 	static function parserHook( $text, $attribs, $parser ) {

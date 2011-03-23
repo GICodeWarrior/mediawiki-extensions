@@ -12,19 +12,13 @@ abstract class EmbedVideo {
 	/**
 	 * Sets up parser functions.
 	 */
-	public static function setup() {
+	public static function setup( $parser ) {
 		# Setup parser hooks. ev is the primary hook, evp is supported for
 		# legacy purposes
-		$prefix = '';
-		EmbedVideo::addMagicWord( $prefix, "ev", "EmbedVideo::parserFunction_ev" );
-		EmbedVideo::addMagicWord( $prefix, "evp", "EmbedVideo::parserFunction_evp" );
+		$parser->setFunctionHook( 'ev', 'EmbedVideo::parserFunction_ev' );
+		$parser->setFunctionHook( 'evp', 'EmbedVideo::parserFunction_evp' );
 
 		return true;
-	}
-
-	private static function addMagicWord( $prefix, $word, $function ) {
-		global $wgParser;
-		$wgParser->setFunctionHook( $prefix . $word, $function );
 	}
 
 	/**
