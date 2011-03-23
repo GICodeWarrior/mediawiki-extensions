@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'narayam-toggle-ime' => 'To toggle IM ($1)', // FIXME: better message
 	'narayam-help-page' => 'Help:Typing',
 	'narayam-checkbox-tooltip' => 'To toggle input method on and off', // FIXME: better message
+	'narayam-disable-preference' => 'Disable Narayam IME',
 	'narayam-hi-inscript' => 'Hindi InScript',
 	'narayam-kn' => 'Kannada Transliteration',
 	'narayam-kn-inscript' => 'Kannada InScript',

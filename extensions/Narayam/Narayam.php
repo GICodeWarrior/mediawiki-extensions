@@ -98,6 +98,7 @@ $wgExtensionMessagesFiles['Narayam'] = dirname( __FILE__ ) . '/Narayam.i18n.php'
 $wgHooks['BeforePageDisplay'][] = 'NarayamHooks::addModules';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'NarayamHooks::addConfig';
 $wgHooks['MakeGlobalVariablesScript'][] = 'NarayamHooks::addVariables';
+$wgHooks['GetPreferences'][] = 'NarayamHooks::addPreference';
 
 // Autoloader
 $wgAutoloadClasses['NarayamHooks'] = dirname( __FILE__ ) . '/Narayam.hooks.php';
