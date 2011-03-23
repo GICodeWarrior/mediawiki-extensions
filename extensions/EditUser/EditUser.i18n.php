@@ -270,9 +270,11 @@ $messages['ch'] = array(
 	'edituser-dosearch' => 'Aligao',
 );
 
-/** Sorani (کوردی) */
+/** Sorani (کوردی)
+ * @author Asoxor
+ */
 $messages['ckb'] = array(
-	'edituser-dosearch' => 'گەڕان',
+	'edituser-dosearch' => 'بگەڕێ',
 );
 
 /** Czech (Česky)

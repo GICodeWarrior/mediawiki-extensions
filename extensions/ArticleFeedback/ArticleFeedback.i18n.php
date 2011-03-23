@@ -746,12 +746,15 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author Abel2es
  * @author Joxemai
  */
 $messages['eu'] = array(
 	'articlefeedback-survey-answer-whyrated-other' => 'Beste bat',
 	'articlefeedback-survey-question-useful-iffalse' => 'Zergatik?',
 	'articlefeedback-survey-submit' => 'Bidali',
+	'articlefeedback-form-switch-label' => 'Kalifikatu orri hau',
+	'articlefeedback-form-panel-title' => 'Kalifikatu orri hau',
 	'articlefeedback-form-panel-instructions' => 'Har ezazu mesedez une bat orri hau baloratzeko.',
 	'articlefeedback-field-complete-label' => 'Osorik',
 	'articlefeedback-pitch-edit-accept' => 'Hasi editatzen',
@@ -2237,7 +2240,9 @@ $messages['roa-tara'] = array(
 	'articlefeedback-survey-title' => 'Se preghe de responnere a quacche dumanne',
 	'articlefeedback-survey-thanks' => "Grazzie pè avè combilate 'u sondagge.",
 	'articlefeedback-pitch-or' => 'o',
-	'articlefeedback-expert-assessment-level-3-label' => 'Esperte',
+	'articlefeedback-pitch-survey-accept' => "Accuminze 'u sondagge",
+	'articlefeedback-pitch-join-login' => 'Tràse',
+	'articlefeedback-pitch-edit-accept' => 'Cange sta pàgene',
 );
 
 /** Russian (Русский)

@@ -257,13 +257,14 @@ $messages['ca'] = array(
 );
 
 /** Sorani (کوردی)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb'] = array(
 	'watchers' => 'چاودێران',
 	'watchers_link_title' => 'کێ چاو له ئه‌‌م لاپه‌ڕه‌ ده‌کات؟',
 	'watchers_error_article' => "'''هه‌ڵه‌:''' ئه‌و لاپه‌ڕه‌ بوونی نیه‌.",
-	'watchers_noone_watches' => 'هیچ‌که‌س چاودێری ئه‌م لاپه‌ڕه‌یه‌ ناکات.',
+	'watchers_noone_watches' => 'ھیچ کەسێک چاودێریی پەڕەی [[:$1]] ناکات.',
 );
 
 /** Czech (Česky)

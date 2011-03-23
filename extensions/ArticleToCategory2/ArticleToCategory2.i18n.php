@@ -254,6 +254,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -262,6 +263,8 @@ $messages['he'] = array(
 	'articletocategory2-create-article-under-category-button' => 'יצירה',
 	'articletocategory2-create-category-under-category-text' => 'הוספת קטגוריה לקטגוריה זו',
 	'articletocategory2-create-category-under-category-button' => 'יצירה',
+	'right-ArticleToCategory2' => 'הוסף דף לקטגוריה',
+	'right-ArticleToCategory2AddCat' => 'הוסף קטגוריה לקטגוריה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

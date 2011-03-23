@@ -22,6 +22,13 @@ $messages['en'] = array(
 	'right-searchlog-read' => 'View the search log',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'searchlog-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
@@ -142,6 +149,13 @@ $messages['it'] = array(
 	'searchlog-occurences' => 'Numero di occorrenze nel periodo',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'searchlog-desc' => 'Hält der Jebruch vum Söhke em Wiki faß, un määd et müjjelesch, de Jesampzahle för beshtemppte jesohte Bejreffe för en aanjejovve Zick metzedeijle.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -206,7 +220,9 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'searchlog' => 'Журнал поиска',
+	'searchlog-desc' => 'Ведение журнала использования функции поиска, представление отчётов об использовании ключевых слов за заданный период времени.',
 	'searchlog-cantopen' => 'Не удалось открыть файл журнала <tt>$1</tt>',
+	'searchlog-heading' => 'Поисковые запросы за период $1',
 	'searchlog-unicode' => 'Показать «сырой» Юникод',
 	'searchlog-timeperiod' => 'Выберите период времени:',
 	'searchlog-entire' => 'Весь журнал',

@@ -974,10 +974,15 @@ $wgGoogleMapsMessages['ch'] = array(
 	'gm-search' => 'Aligao',
 );
 
-/** Sorani (کوردی) */
+/** Sorani (کوردی)
+ * @author Asoxor
+ */
 $wgGoogleMapsMessages['ckb'] = array(
 	'gm-search' => 'گەڕان',
 	'gm-save-path' => 'پاشەکەوت',
+	'gm-earth' => 'زەوی',
+	'gm-moon' => 'مانگ',
+	'gm-mars' => 'مەڕیخ',
 );
 
 /** Czech (Česky)

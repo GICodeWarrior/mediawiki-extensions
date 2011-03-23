@@ -284,6 +284,18 @@ $messages['km'] = array(
 	'semanticformsinputs-today' => 'ថ្ងៃនេះ',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'semanticformsinputs-desc' => 'Zohsäzlejje Zoote Einjabe för „[http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantesch Fommulaare]“.',
+	'semanticformsinputs-wrongformat' => 'Dat Fommaat es verkiehrt',
+	'semanticformsinputs-close' => 'Zohmaache',
+	'semanticformsinputs-prev' => 'Vörijje',
+	'semanticformsinputs-next' => 'Nächste',
+	'semanticformsinputs-today' => 'Hück',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
  */

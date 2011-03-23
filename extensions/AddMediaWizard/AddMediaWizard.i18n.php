@@ -224,6 +224,7 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'addmediawizard-desc' => 'אשף הוספת מדיה, שפותח בשיתוף פעולה בין קלטורה וקרן ויקימדיה',
+	'addmediawizard-loading' => 'טעינת אשף הוספת מדיה',
 );
 
 /** Hindi (हिन्दी)
@@ -308,9 +309,11 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Ryuch
  */
 $messages['ko'] = array(
 	'addmediawizard-desc' => 'Kaltura와 위키미디어 재단이 공동 개발한 미디어 추가 마법사',
+	'addmediawizard-loading' => '미디어 추가 마법사 로드',
 );
 
 /** Komi-Permyak (Перем Коми)

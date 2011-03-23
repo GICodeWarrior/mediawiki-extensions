@@ -154,6 +154,18 @@ $messages['ja'] = array(
 	'researchtools-page-prefs' => '個人設定の統計',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'researchtools' => 'Werkzüch för ze ongersöhke',
+	'researchtools-desc' => 'Brängg ene Saz Werkzüch en et Wiki, di joot sin för de Metmaacher un dänne ier Verhallde ze schtudeere.',
+	'researchtools-page-dashboard' => 'Et Amatuurebrätt',
+	'researchtools-page-surveys' => 'Antwoote op Ömfroore',
+	'researchtools-page-clicks' => 'Kleck_Reije_Verfollje',
+	'researchtools-page-prefs' => 'Shtatistike övver de Metmaacher ier Enshtellunge',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

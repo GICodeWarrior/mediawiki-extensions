@@ -94,10 +94,12 @@ On private wikis, apply the patch linkd from the Push documentation or update Me
  * @author EugeneZelenko
  * @author Jeroen De Dauw
  * @author Nike
+ * @author Purodha
  * @author Raymond
  * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'push-desc' => '{{desc}}',
 	'right-push' => '{{doc-right|push}}',
 	'right-bulkpush' => '{{doc-right|bulkpush}}',
 	'right-pushadmin' => '{{doc-right|pushadmin}}',
@@ -678,6 +680,13 @@ $messages['ja'] = array(
 	'push-tab-files-override' => 'これらのファイルはすでに存在しています： $1',
 	'push-tab-template-override' => 'これらのテンプレートはすでに存在しています： $1',
 	'push-special-target-is' => '対象のウィキ： $1',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'push-desc' => 'E eijfach Zohsazprojramm för Saache en ander Wikis erövver zo bränge.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

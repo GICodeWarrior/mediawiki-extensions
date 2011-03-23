@@ -4724,6 +4724,9 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'fogg-cg-meta' => 'Klipan metaandmused',
+	'fogg-cg-range' => 'Kodiruindan diapozon',
+	'fogg-preset-custom' => 'Kävutajan järgendused',
 	'fogg-select_file' => 'Valiče fail',
 	'fogg-select_new_file' => "Valiče uz' fail",
 	'fogg-select_url' => 'Valiče URL',

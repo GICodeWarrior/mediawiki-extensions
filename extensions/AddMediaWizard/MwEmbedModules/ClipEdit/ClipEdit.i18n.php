@@ -504,14 +504,18 @@ $messages['et'] = array(
 	'mwe-clipedit-duration' => 'Kestus:',
 );
 
-/** Basque (Euskara) */
+/** Basque (Euskara)
+ * @author Abel2es
+ */
 $messages['eu'] = array(
 	'mwe-clipedit-crop' => 'Irudia moztu',
 	'mwe-clipedit-sc_duration' => 'Iraupena',
+	'mwe-clipedit-edit_properties' => 'Editatu propietateak',
 	'mwe-clipedit-start_time' => 'Hasiera ordua',
 	'mwe-clipedit-end_time' => 'Amaiera ordua',
 	'mwe-clipedit-edit-tools' => 'Tresnak editatu',
 	'mwe-clipedit-duration' => 'Iraupena:',
+	'mwe-clipedit-layout' => 'Diseinua',
 );
 
 /** Persian (فارسی)
