@@ -545,6 +545,7 @@ $messages['ce'] = array(
 );
 
 /** Sorani (کوردی)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -556,7 +557,7 @@ $messages['ckb'] = array(
 	'ct_italic_tip_ins' => 'دەقی لار دابنێ',
 	'ct_italic_tip_wrap' => 'ئەم دەقە لار بکە',
 	'ct_italic_caption' => 'لار',
-	'ct_internal_sample' => 'ناوی لاپەڕە',
+	'ct_internal_sample' => 'ناوی پەڕە',
 	'ct_internal_tip_ins' => 'بەستەرەکی ناوەکی دابنێ',
 	'ct_internal_tip_wrap' => 'ئەم دەقە بکە بە بەستەرەکی ناوەکی',
 	'ct_internal_caption' => 'بەستەرەی ناوەکی',
@@ -1883,6 +1884,20 @@ $messages['mk'] = array(
 $messages['mn'] = array(
 	'ct_submit' => 'Явах',
 	'ct_user_sample' => 'Хэрэглэгчийн нэр',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'ct_bold_sample' => 'Teks tebal',
+	'ct_bold_tip_ins' => 'Isikan teks tebal',
+	'ct_bold_tip_wrap' => 'Tebalkan teks ini',
+	'ct_bold_caption' => 'Tebal',
+	'ct_italic_sample' => 'Teks condong',
+	'ct_italic_tip_ins' => 'Isikan teks condong',
+	'ct_italic_tip_wrap' => 'Condongkan teks ini',
+	'ct_italic_caption' => 'Condong',
 );
 
 /** Maltese (Malti)
