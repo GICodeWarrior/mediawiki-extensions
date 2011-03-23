@@ -1394,6 +1394,7 @@ $messages['vec'] = array(
 $messages['vep'] = array(
 	'chemicalsources' => 'Himižed purtked',
 	'chemicalsource-desc' => 'Ližadab <nowiki><chemform></nowiki>-virgan himižiden formuliden täht',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Special page]] himižiden purtkiden täht',
 	'chemFunctions_ListPage' => 'Himižed purtked',
 	'chemFunctions_DataList' => 'Alemba oma anttud kosketused saitoile, kudambišpäi voib löuta informacijad ectüd substancijas.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula-ühtnend NIST-saital</a><br />
