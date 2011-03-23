@@ -1829,8 +1829,16 @@ I file inapropriati i vegnarà scancelati de paca, lèzi le [[{{MediaWiki:Multip
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'multipleupload' => 'Jügutoitta äi failoid',
+	'multiupload-desc' => 'Laskeb kävutajid [[Special:MultipleUpload|jügutoitta äi failoid kerdalaz]]',
+	'multipleupload-ignoreallwarnings' => "Ignoriruida '''kaik varutandad''' i panda muštho kaik failad üks'kaik",
 	'multipleupload-saveallfiles' => 'Panda muštho kaik failad',
+	'multipleupload-addresswarnings' => 'Olgat hüväd, lugegat kaik varutandad edel ut failoiden jügutoitandad.',
+	'multipleupload-page' => '{{ns:project}}:Failoiden poiščutandan politik',
 	'multiupload-fileuploaded' => 'Fail om jügutoittud',
+	'multiupload-toolbox' => 'Jügutoitta äi failoid',
+	'multiupload-no-files' => "Olgat hüväd, valikat hot' üks' fail jügutoitandan täht",
+	'multiupload-blank' => 'Ei ole nimidä valitud',
 );
 
 /** Vietnamese (Tiếng Việt)
