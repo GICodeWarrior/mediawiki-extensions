@@ -765,6 +765,35 @@ $messages['te'] = array(
 	'livetranslate-button-translating' => 'అనువదిస్తున్నాం...',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'livetranslate-desc' => 'Nagpapagana ng buhay na pagsasalinwika ng nilalaman ng pahina na ginagamit ang palingkurang Google Translate',
+	'livetranslate-translate-to' => 'Isalinwika ang pahinang ito upang maging',
+	'livetranslate-button-translate' => 'Isalinwika',
+	'livetranslate-button-translating' => 'Isinasalinwika...',
+	'livetranslate-button-revert' => 'Ipakita ang orihinal',
+	'livetranslate-dictionary-error' => 'Hindi makamtan ang talahuluganan ng buhay na pagsasalinwika.  Walang mga salitang ituturing na natatangi habang isinasagawa ang pagsasalinwika.',
+	'livetranslate-dictionary-empty' => 'Walang mga salita sa loob ng talahuluganan.  Pindutin ang laylayan na "baguhin" upang makapagdagdag ng ilan.',
+	'livetranslate-dictionary-goto-edit' => 'Baguhin ang mga alaala ng pagsasalinwika.',
+	'special-livetranslate' => 'Buhay na isalinwika',
+	'livetranslate-tmtype-ltf' => 'Anyo ng Buhay na Pagsasalinwika',
+	'livetranslate-tmtype-tmx' => 'Pagpapalitan ng Alaala ng Pagsasalinwika',
+	'livetranslate-tmtype-gcsv' => 'CSV ng Google',
+	'livetranslate-special-no-tms-yet' => 'Wala pang mga alaala ng pagsasalinwika.',
+	'livetranslate-special-button' => 'Sagipin at isapanahon',
+	'livetranslate-special-type' => 'Uri',
+	'livetranslate-special-location' => 'Kinalalagyan',
+	'livetranslate-special-remove' => 'Alisin',
+	'livetranslate-special-local' => 'Katutubo',
+	'livetranslate-special-add-tm' => 'Magdagdag ng isang bagong alaala ng pagsasalinwika',
+	'livetranslate-special-current-tms' => 'Umiiral na mga alaala ng pagsasalinwika',
+	'livetranslate-special-tms-update' => 'Isapanahon ang mga alaala ng pagsasalinwika',
+	'livetranslate-special-update' => 'Isapanahon ang mga alaala ng pagsasalinwika',
+	'livetranslate-importtms-param-miscmatch' => 'Hindi pagtutugma sa pagitan ng halaga ng mga kinalalagyan at mga uri',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */
