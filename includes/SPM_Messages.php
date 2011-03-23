@@ -19,9 +19,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'semanticprojectmanagement-desc' => '{{desc}}',
 	'right-SPMsetup' => '{{doc-right|SPMsetup}}',
 );
 
@@ -161,6 +163,18 @@ $messages['ja'] = array(
 	'right-SPMsetup' => '基礎的なセマンティックなプロジェクト管理設定を編集',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'spm_wbs_link' => 'XML-Äxpoot noh <i lang="en">MS Project</i>',
+	'spm_printername_wbs' => 'Expoteere noh <i lang="en">MS Project</i>',
+	'spm-name' => 'Semantesch Projäkverwalldung',
+	'semanticprojectmanagement-desc' => 'Projäkverwalldungs_Fommaate för dem „Semantesch MediaWiki“ sing Froore em Täx vun Sigge.',
+	'semanticprojectmanagement' => 'Enshtellonge vun de Semantesche Projäkverwalldung',
+	'right-SPMsetup' => 'Jrondenshtellonge vun de Semantesche Projäkverwalldung ändere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -216,6 +230,15 @@ $messages['pl'] = array(
 	'semanticprojectmanagement-desc' => 'Formaty zarządzania projektami dla zapytań semantycznego MediaWiki',
 	'semanticprojectmanagement' => 'Ustawienia zarządzania projektem semantycznym',
 	'right-SPMsetup' => 'Edycja podstawowych ustawień zarządzania projektem semantycznym',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'spm_wbs_link' => 'Esporta XML ëd MS Project',
+	'spm_printername_wbs' => 'Esporta MS Project',
+	'spm-name' => 'Gestion ëd Proget Semàntich',
 );
 
 /** Portuguese (Português)
