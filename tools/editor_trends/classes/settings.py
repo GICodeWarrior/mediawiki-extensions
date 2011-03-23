@@ -118,16 +118,27 @@ class Settings:
         else:
             return False
 
+
     def determine_working_directory(self):
         cwd = os.getcwd()
-        if not cwd.endswith('editor_trends%s' % os.sep):
-            pos = cwd.find('editor_trends') + 14
+        slashes = cwd.count(os.sep)
+        paths = []
+        paths.append(cwd)
+        while slashes >0 :
+            pos = cwd.rfind(os.sep)
             cwd = cwd[:pos]
-        return cwd
+            if cwd != '':
+                paths.append(cwd)
+            slashes -=1
+        for cwd in paths:
+            for root, dirs, files in os.walk(cwd, topdown=True):
+                if os.path.exists(os.path.join(root, 'manage.py')):
+                    return root 
+        
+        raise 'I could not determine the location of manage.py, please reinstall Wikilytics.'
 
     def detect_python_version(self):
         version = sys.version_info[0:2]
-        #logger.debug('Python version: %s' % '.'.join(str(version)))
         if version < self.minimum_python_version:
             raise exceptions.OutDatedPythonVersionError
 
