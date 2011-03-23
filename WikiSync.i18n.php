@@ -903,6 +903,13 @@ $messages['ja'] = array(
 	'wikisync_js_sync_end_rtl' => '$1でリモートのウィキから、ローカルのウィキへの同期を完了',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikisync-desc' => 'Brängk en [[Special:WikiSync|{{int:specialpage}}]] in et Wiki eren, öm de {{lcfirst:{{int:recentchanges}}}} vum eije Wiki un vun enem andere Wiki zosamme ze bränge.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
