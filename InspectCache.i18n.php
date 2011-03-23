@@ -1124,6 +1124,7 @@ $messages['vep'] = array(
 	'inspectcache-delete' => 'Čuta poiš',
 	'inspectcache-deleted' => 'Keš om čutud poiš',
 	'inspectcache-list' => 'Kaik avadimed',
+	'right-inspectcache' => 'Kacta da čuta poiš kešan kirjutesed',
 );
 
 /** Vietnamese (Tiếng Việt)
