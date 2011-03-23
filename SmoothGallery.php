@@ -41,7 +41,7 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery',
 );
 
-$wgExtensionFunctions[] = "efSmoothGallery";
+$wgHooks['ParserFirstCallInit'][] = 'efSmoothGallerySetHooks';
 
 $wgHooks['OutputPageParserOutput'][] = 'smoothGalleryParserOutput';
 
@@ -62,13 +62,12 @@ $wgSmoothGalleryAllowExternal = false;
 $wgSmoothGalleryThumbHeight = "75px";
 $wgSmoothGalleryThumbWidth = "100px";
 
-function efSmoothGallery() {
-	global $wgParser;
+function efSmoothGallerySetHooks( $parser ) {
+	$parser->setHook( 'sgallery', 'initSmoothGalleryTag' );
+	$parser->setHook( 'sgalleryset', 'initSmoothGalleryTagSet' );
 
-	$wgParser->setHook( 'sgallery', 'initSmoothGalleryTag' );
-	$wgParser->setHook( 'sgalleryset', 'initSmoothGalleryTagSet' );
-
-	$wgParser->setFunctionHook( 'sgallery', 'initSmoothGalleryPF' );
+	$parser->setFunctionHook( 'sgallery', 'initSmoothGalleryPF' );
+	return true;
 }
 
 // FIXME: split off to a hook file and use $wgHooks['ParserFirstCallInit'] to init tags
