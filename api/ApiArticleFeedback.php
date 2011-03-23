@@ -91,6 +91,7 @@ class ApiArticleFeedback extends ApiBase {
 	private function insertPageRating( $pageId, $revisionId, $lastRevision, $ratingId, $updateAddition, $thisRating, $lastRating ) {
 		$dbw = wfGetDB( DB_MASTER );
 
+		// Try to insert a new "totals" row for this page,rev,rating set
 		$dbw->insert(
 			'article_feedback_pages',
 			 array(
@@ -104,8 +105,13 @@ class ApiArticleFeedback extends ApiBase {
 			 array( 'IGNORE' )
 		);
 
+		// If that succeded in inserting a row, then we are for sure rating a previously unrated
+		// revision, and we need to add more information about this rating to the new "totals" row,
+		// as well as remove the previous rating values from the previous "totals" row
 		if ( $dbw->affectedRows() ) {
+			// If there was a previous rating, there should be a "totals" row for it's revision
 			if ( $lastRating ) {
+				// Deduct the previous rating values from the previous "totals" row
 				$dbw->update(
 					'article_feedback_pages',
 					array(
@@ -120,6 +126,7 @@ class ApiArticleFeedback extends ApiBase {
 					__METHOD__
 				);
 			}
+			// Add this rating's values to the new "totals" row
 			$dbw->update(
 				'article_feedback_pages',
 				array(
@@ -134,9 +141,10 @@ class ApiArticleFeedback extends ApiBase {
 				__METHOD__
 			);
 		} else {
-			// 0 == No change in rating count
-			// 1 == No rating last time (or new rating), and now there is
-			// -1 == Rating last time, but abstained this time
+			// Calculate the difference between the previous rating and this one
+			// * -1 == Rating last time, but abstained this time
+			// *  0 == No change in rating count
+			// *  1 == No rating last time (or new rating), and now there is
 			$countChange = 0;
 			if ( $lastRating === false || $lastRating === 0 ) {
 				if ( $thisRating === 0 ) {
@@ -144,13 +152,15 @@ class ApiArticleFeedback extends ApiBase {
 				} else {
 					$countChange = 1;
 				}
-			} else { // Last rating was > 0
+			} else {
+				// Last rating was > 0
 				if ( $thisRating === 0 ) {
 					$countChange = -1;
 				} else {
 					$countChange = 0;
 				}
 			}
+			// Apply the difference between the previous and new ratings to the current "totals" row
 			$dbw->update(
 				'article_feedback_pages',
 				array(
