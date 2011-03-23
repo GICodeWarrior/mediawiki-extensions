@@ -679,6 +679,7 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'commentpages-desc' => 'Kommentarijoiden lehtpoled pänimiavarusen täht',
 	'nstab-comments' => 'Kommentarii',
 );
 
