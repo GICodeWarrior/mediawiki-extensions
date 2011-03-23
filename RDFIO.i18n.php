@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'specialarc2admin' => 'ARC2 RDF Store admin page',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'rdfio-desc' => '{{desc}}',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
@@ -215,6 +222,19 @@ $messages['ja'] = array(
 	'rdfio-sparqlendpoint-desc' => 'SMWRDFConnectorによって提供されるSPARQLエンドポイント',
 	'sparqlendpoint' => 'SPARQLエンドポイント',
 	'specialarc2admin' => 'ARC2のRDFストア管理ページ',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'rdfio-desc' => 'Brängk zohsäzlejje Müjjeleschkeite för der Empoot un Äxpoot vun <i title="Ressource Description Framework" lang="en">RDF</i>-Daate en et Wiki, och ene <i lang="en">SPARQL</i> Aanschloß_Pungk, för et Semantisch MeediajaWiki.',
+	'rdfimport' => '<i title="Ressource Description Framework" lang="en">RDF</i> Empoot',
+	'rdfio-arc2admin-desc' => 'Verwaldungs_Sigg för der <i lang="en">ARC2 RDF</i>-Speicher för et Semantesch MedijaWiki.',
+	'rdfio-rdfimport-desc' => 'En {{int:specialpage}} öm semantesche Daate em <i lang="en">RDF/XML</i>-Fommaat en et Wiki ze empoteere.',
+	'rdfio-sparqlendpoint-desc' => 'Ene <i lang="en">SPARQL</i> Aanschloß_Pungk, dä vum <i lang="en">SMWRDFConnector</i> jemaat weed, däm Verbender zwesche <i lang="en">RDF</i> un Semantisch MedijaWiki.',
+	'sparqlendpoint' => '<i lang="en">SPARQL</i> Aanschloß_Pungk',
+	'specialarc2admin' => 'Verwaldungs_Sigg för der <i lang="en">ARC2 RDF</i>-Speicher',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
