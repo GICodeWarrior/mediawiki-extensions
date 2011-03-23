@@ -483,6 +483,13 @@ $messages['ja'] = array(
 	'right-purewikideletion' => '白紙化されたページの一覧表を[[Special:PopulateBlankedPagesTable|読み込む]]',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'purewikideletion-desc' => 'Sorresch nävve ander Saache doför, dat op leddisch jemaate Sigge bloß ruude Lengks jonn.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
