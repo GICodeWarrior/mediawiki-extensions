@@ -869,6 +869,13 @@ $messages['ko'] = array(
 	'refsearch' => '참고 자료 찾기',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'refhelper-desc' => 'Helf beim Aanlääje vun Sigge met Quelle un Henwies op Bööscher.',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
  */
