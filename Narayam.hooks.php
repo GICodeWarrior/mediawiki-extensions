@@ -7,8 +7,6 @@
  */
 class NarayamHooks {
 
-	protected static $disabled = false;
-
 	public static function addModules( $out, $skin ) {
 		global $wgUser;
 		if ( $wgUser->getOption( 'narayamDisable' ) ) {
