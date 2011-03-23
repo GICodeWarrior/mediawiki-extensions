@@ -287,9 +287,12 @@ $messages['pt'] = array(
  * @author Haffman
  */
 $messages['ru'] = array(
+	'rdf-cc' => 'Creative Commons',
 	'rdf-linksto' => 'Ссылки на страницу',
+	'rdf-linksfrom' => 'Ссылки со страницы',
 	'rdf-links' => 'Все ссылки',
 	'rdf-categories' => 'Категории',
+	'rdf-target' => 'Целевая страница',
 	'rdf-format' => 'Формат вывода',
 );
 
