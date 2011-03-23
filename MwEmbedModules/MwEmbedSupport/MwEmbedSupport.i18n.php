@@ -186,7 +186,7 @@ $messages['de'] = array(
 	'mwe-loading' => 'lade …',
 	'mwe-error_load_lib' => 'Fehler: JavaScript $1 war nicht abrufbar oder lässt $2 nicht zu',
 	'mwe-apiproxy-setup' => 'API-Proxy-Konfiguration',
-	'mwe-load-drag-item' => 'Lade eingebettetes Element',
+	'mwe-load-drag-item' => 'Lade das verschobene Element',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Abbrechen',
 	'mwe-enable-gadget' => 'Aktiviere die Beta-Version des Multimedia-Helferleins (mwEmbed) für alle Seiten',
@@ -485,7 +485,14 @@ $messages['ksh'] = array(
 	'mwe-size-kilobytes' => '$1&nbsp;KB',
 	'mwe-size-bytes' => '$1&nbsp;Bytes',
 	'mwe-error_load_lib' => 'Fähler: Dat JavaSkrep „<code lang="en">$1</code>“ wohr nit ze laade udder et leiht „<code lang="en">$2</code>“ nit faß.',
+	'mwe-apiproxy-setup' => 'Ben de dä <i lang="en">proxy</i>-ẞööver för de <i title="Application Programmers Interface" lang="en">API</i> aam opsäzze.',
+	'mwe-load-drag-item' => 'Mer sen dat jetrocke Denge aam laade&nbsp;…',
+	'mwe-ok' => 'Jot!',
 	'mwe-cancel' => 'Affbräsche',
+	'mwe-enable-gadget' => 'Don de Beta_Version fun dä Verbäßerong (<code lang="en">mwEmbed</code>) för Mulitmeedija för alle Sigge aanschallde.',
+	'mwe-enable-gadget-done' => 'De Beta_Version fun dä Verbäßerong för Mulitmeedija es aanjeschalldt.',
+	'mwe-must-login-gadget' => 'Öm di Verbäßerong aanzeschallde, moß De <a target="_new" href="$1">enlogge</a>.',
+	'mwe-test-plural' => 'Mer han {{PLURAL:$1|ein Prööfong|$1 Prööfonge|kein Prööfong}} loufe lohße.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
