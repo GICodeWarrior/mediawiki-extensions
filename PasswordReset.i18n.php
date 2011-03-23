@@ -1804,7 +1804,7 @@ $messages['ur'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
-	'passwordreset-invalidusername' => 'Vär kävutajan nimi',
+	'passwordreset-invalidusername' => 'Vär kävutajannimi',
 	'passwordreset-emptyusername' => "Pall'az kävutajan nimi",
 );
 
