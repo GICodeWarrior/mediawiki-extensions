@@ -13,7 +13,6 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		
 		$this->addTables( array( 'article_feedback_pages', 'article_feedback_ratings' ) );
 		$this->addFields( array(
-			'aap_page_id',
 			'MAX(aap_revision) as aap_revision',
 			'SUM(aap_total) as aap_total',
 			'SUM(aap_count) as aap_count',
@@ -32,57 +31,72 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		$this->addOption( 'GROUP BY', 'aap_rating_id' );
 		$this->addOption( 'LIMIT', count( $wgArticleFeedbackRatings ) );
 
+		// Rating counts and totals
 		$res = $this->select( __METHOD__ );
-
-		if ( $params['userrating'] ) {
-			$userRatings = $this->getUserRatings( $params );
-		}
-
-		$ratings = array();
-
-		$userRatedArticle = false;
-
-		$rev = null;
+		$ratings = array( $params['pageid'] => array( 'pageid' => $params['pageid'] ) );
 		foreach ( $res as $i => $row ) {
-			// All the revs and pageIds will be the same for all rows, these are shortcuts
-			$pageId = $row->aap_page_id;
-			// This is special however, because we need this data later for expired calculation
-			$rev = $row->aap_revision;
-
-			if ( !isset( $ratings[$pageId] ) ) {
-				$page = array(
-					'pageid' => $pageId,
-					'revid' => $rev,
-				);
-
-				if ( $params['userrating'] ) {
-					if ( isset( $userRatings[$i]['expertise'] ) ) {
-						$page['expertise'] = $userRatings[$i]['expertise'];
-					}
-				}
-
-				$ratings[$pageId] = $page;
+			if ( !isset( $ratings[$params['pageid']] ) ) {
+				$ratings[$params['pageid']]['revid'] = $row->aap_revision;
 			}
-
-			$thisRow = array(
+			if ( !isset( $ratings[$params['pageid']]['ratings'] ) ) {
+				$ratings[$params['pageid']]['ratings'] = array();
+			}
+			$ratings[$params['pageid']]['ratings'][] = array(
 				'ratingid' => $row->aap_rating_id,
 				'ratingdesc' => $row->aar_rating,
 				'total' => $row->aap_total,
 				'count' => $row->aap_count,
 			);
-
-			if ( $params['userrating'] && isset( $userRatings[$i]['value'] ) ) {
-				$thisRow['userrating'] = $userRatings[$i]['value'];
-
-				$userRatedArticle = true;
-			}
-
-			$ratings[$pageId]['ratings'][] = $thisRow;
 		}
-
-		// Ratings can only be expired if the user has rated before
-		if ( $params['userrating'] && $userRatedArticle ) {
-			$ratings[$params['pageid']]['status'] = $rev >= $revisionLimit ? 'current' : 'expired';
+		
+		// User ratings
+		$ratings[$params['pageid']]['status'] = 'current';
+		if ( $params['userrating'] ) {
+			$userRatings = $this->getUserRatings( $params );
+			if ( isset( $ratings[$params['pageid']]['ratings'] ) ) {
+				// Valid ratings already exist
+				foreach ( $ratings[$params['pageid']]['ratings'] as $i => $rating ) {
+					// Rating value
+					$ratings[$params['pageid']]['ratings'][$i]['userrating'] =
+						$userRatings[$rating['ratingid']]['value'];
+					// Expertise
+					if ( !isset( $ratings[$params['pageid']]['expertise'] ) ) {
+						$ratings[$params['pageid']]['expertise'] =
+							$userRatings[$rating['ratingid']]['expertise'];
+					}
+					// Expiration
+					if ( $userRatings[$rating['ratingid']]['revision'] < $revisionLimit ) {
+						$ratings[$params['pageid']]['status'] = 'expired';
+					}
+				}
+			} else {
+				// No valid ratings exist
+				if ( count( $userRatings ) ) {
+					$ratings[$params['pageid']]['status'] = 'expired';
+				}
+				foreach ( $userRatings as $ratingId => $userRating ) {
+					// Revision
+					if ( !isset( $ratings[$params['pageid']]['revid'] ) ) {
+						$ratings[$params['pageid']]['revid'] = $userRating['revision'];
+					}
+					// Ratings
+					if ( !isset( $ratings[$params['pageid']]['ratings'] ) ) {
+						$ratings[$params['pageid']]['ratings'] = array();
+					}
+					// Rating value
+					$ratings[$params['pageid']]['ratings'][] = array(
+						'ratingid' => $ratingId,
+						'ratingdesc' => $userRating['text'],
+						'total' => 0,
+						'count' => 0,
+						'userrating' => $userRating['value'],
+					);
+					// Expertise
+					if ( !isset( $ratings[$params['pageid']]['expertise'] ) ) {
+						$ratings[$params['pageid']]['expertise'] = $userRating['expertise'];
+					}
+				}
+			}
 		}
 
 		foreach ( $ratings as $rat ) {
@@ -107,10 +121,15 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			$token = $params['anontoken'];
 		}
 
-		$dbr = wfGetDb( DB_SLAVE );
-		$res = $dbr->select(
-			array( 'article_feedback', 'article_feedback_properties' ),
-			array( 'aa_rating_id', 'aa_rating_value', 'afp_value_text' ),
+		$res = $this->getDB()->select(
+			array( 'article_feedback', 'article_feedback_properties', 'article_feedback_ratings' ),
+			array(
+				'aa_rating_id',
+				'aar_rating',
+				'aa_revision',
+				'aa_rating_value',
+				'afp_value_text'
+			),
 			array(
 				'aa_page_id' => $pageId,
 				'aa_rating_id' => $wgArticleFeedbackRatings,
@@ -121,21 +140,26 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				'ORDER BY' => 'aa_revision DESC',
 				'LIMIT' => count( $wgArticleFeedbackRatings )
 			),
-			array( 'article_feedback_properties' => array(
-				'LEFT JOIN', array(
-					'afp_revision=aa_revision',
-					'afp_user_text=aa_user_text',
-					'afp_user_anon_token=aa_user_anon_token',
-					'aa_user_anon_token' => $token,
-					'afp_key' => 'expertise',
-				)
-			) )
+			array(
+				'article_feedback_properties' => array(
+					'LEFT JOIN', array(
+						'afp_revision=aa_revision',
+						'afp_user_text=aa_user_text',
+						'afp_user_anon_token=aa_user_anon_token',
+						'aa_user_anon_token' => $token,
+						'afp_key' => 'expertise',
+					)
+				),
+				'article_feedback_ratings' => array( 'LEFT JOIN', array( 'aar_id=aa_rating_id' ) )
+			)
 		);
 		$ratings = array();
 		foreach ( $res as $row ) {
 			$ratings[$row->aa_rating_id] = array(
 				'value' => $row->aa_rating_value,
-				'expertise' => $row->afp_value_text
+				'expertise' => $row->afp_value_text,
+				'revision' => $row->aa_revision,
+				'text' => $row->aar_rating,
 			);
 		}
 		return $ratings;
@@ -150,8 +174,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 	protected function getRevisionLimit( $pageId ) {
 		global $wgArticleFeedbackRatingLifetime;
 
-		$dbr = wfGetDb( DB_SLAVE );
-		$revision = $dbr->selectField(
+		$revision = $this->getDB()->selectField(
 			'revision',
 			'rev_id',
 			array( 'rev_page' => $pageId ),
