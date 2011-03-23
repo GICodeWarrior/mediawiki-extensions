@@ -247,6 +247,7 @@ $.articleFeedback = {
 								}
 							}
 						}
+						// Report
 						if ( typeof ratingData === 'undefined' || ratingData.total == 0 ) {
 							// Setup in "no ratings" mode
 							$(this)
@@ -258,9 +259,7 @@ $.articleFeedback = {
 									.end()
 								.find( '.articleFeedback-rating-count' )
 									.text( mw.msg( 'articlefeedback-report-empty' ) )
-									.end()
-								.find( 'input' )
-									.attr( 'checked', false );
+									.end();
 						} else {
 							// Setup using ratingData
 							var average = ratingData.total / ratingData.count;
@@ -276,11 +275,24 @@ $.articleFeedback = {
 									.text( mw.msg(
 										'articlefeedback-report-ratings', ratingData.count
 									) )
-									.end()
-								.find( 'input[value="' + ratingData.userrating + '"]' )
+									.end();
+						}
+						// Form
+						if ( typeof ratingData.userrating !== 'undefined' ) {
+							if ( ratingData.userrating === 0 ) {
+								$(this)
+									.find( 'input' )
+									.attr( 'checked', false );
+							} else {
+								$(this)
+									.find( 'input[value="' + ratingData.userrating + '"]' )
 									.attr( 'checked', true );
-							// If any ratings exist, make sure expertise is enabled so users can suppliment their ratings.
-							$.articleFeedback.fn.enableExpertise( context.$ui.find( '.articleFeedback-expertise' ) );
+							}
+							// If any ratings exist, make sure expertise is enabled so users can
+							// suppliment their ratings.
+							$.articleFeedback.fn.enableExpertise(
+								context.$ui.find( '.articleFeedback-expertise' )
+							);
 						}
 						$.articleFeedback.fn.updateRating.call( $(this) );
 					} );
