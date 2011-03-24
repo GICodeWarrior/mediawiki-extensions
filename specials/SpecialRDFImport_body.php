@@ -22,7 +22,6 @@ class RDFImport extends SpecialPage {
 			$this->m_haswriteaccess = false;
 		}
 		parent::__construct( 'RDFImport' );
-		wfLoadExtensionMessages( 'RDFIO' );
     }
 
 	function execute( $par ) {
