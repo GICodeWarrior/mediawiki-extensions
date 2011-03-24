@@ -392,7 +392,7 @@ def stream_raw_xml(input_queue, storage, id):
                     buffer = cStringIO.StringIO()
 
                     if i % 10000 == 0:
-                        print 'Worker % parsed %s articles' % (id, i)
+                        print 'Worker %s parsed %s articles' % (id, i)
 
                
     cache.empty()
