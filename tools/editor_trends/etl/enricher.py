@@ -331,7 +331,7 @@ def create_variables(article, cache, bots):
             text = extract_revision_text(revision)
             row.update(contributor)
 
-            comment = add_comment(revision_id, revision)
+            comment = extract_comment_text(revision_id, revision)
             cache.comments.update(comment)
             
             timestamp = revision.find('timestamp').text
