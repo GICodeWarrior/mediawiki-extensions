@@ -24,8 +24,6 @@ if (!defined('MEDIAWIKI')) die();
  * @ingroup Extensions
  */
 
-require_once( 'includes/Parser.php' );
-
 class MwRdf_InPage_Modeler extends MwRdf_Modeler {
 
 	public function getName() { return 'inpage'; }

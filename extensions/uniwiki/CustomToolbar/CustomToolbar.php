@@ -78,13 +78,7 @@ function CustomToolbar_addAssets(&$out) {
 
 }
 
-$wgExtensionFunctions[] = 'wfCustomToolbarUploadForm';
-function wfCustomToolbarUploadForm() {
-	$file = "extensions/uniwiki/CustomToolbar/CustomToolbar.php";
-	SpecialPage::addPage(
-		new UnlistedSpecialPage('CustomToolbarUpload', '', false, $file)
-	);
-}
+$wgSpecialPages['CustomToolbarUpload'] = array( 'UnlistedSpecialPage', 'CustomToolbarUpload' );
 
 function wfSpecialCustomToolbarUpload() {
     global $wgRequest;
@@ -94,12 +88,9 @@ function wfSpecialCustomToolbarUpload() {
 $wgHooks['UploadComplete'][] = array('CustomToolbarUploadForm::showSuccess');
 //XX TODO investigate FileUpload hook for attachment purposes
 //$wgHooks['FileUpload'][] = array('CustomToolbarUploadForm::showSuccess', 'attachment');
-$wgSpecialRefactorVersion = '1.13.0';
-if (version_compare($wgVersion, $wgSpecialRefactorVersion, '<')) {
-    require_once('includes/SpecialUpload.php');
-} else {
-    require_once('includes/specials/SpecialUpload.php');
-}
+
+require_once('includes/specials/SpecialUpload.php');
+
 class CustomToolbarUploadForm extends UploadForm {
 	/* Some code poached from Travis Derouin's <travis@wikihow.com>
 	 * UploadPopup extension
