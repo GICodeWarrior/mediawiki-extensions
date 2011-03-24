@@ -171,18 +171,6 @@ class qp_Setup {
 		$wgHooks['LoadAllMessages'][] = new qp_Setup;
 	}
 
-	static function onLoadAllMessages() {
-		if ( !self::$messagesLoaded ) {
-			global $wgVersion;
-			self::$messagesLoaded = true;
-			# for MW 1.15 (still being used by many customers)
-			if ( version_compare( $wgVersion, '1.16', '<' ) ) {
-				
-			}
-		}
-		return true;
-	}
-
 	static function ParserFunctionsWords( $lang ) {
 		$words = array();
 		$words[ 'en' ] = array( 'qpuserchoice'=>array( 0, 'qpuserchoice' ) );
@@ -355,8 +343,6 @@ class qp_AbstractPoll {
 		$this->ppframe = $frame;
 		$this->mRequest = &$wgRequest;
 		$this->mResponse = $wgRequest->response();
-		# Determine which messages will be used, according to the language.
-		qp_Setup::onLoadAllMessages();
 		# load current skin
 		if ( self::$skin === null ) {
 			self::$skin = $wgUser->getSkin();
@@ -1265,7 +1251,6 @@ class qp_FunctionsHook {
 	var $error_message = 'no_such_poll';
 
 	function qpuserchoice( &$parser, $frame, $args ) {
-		qp_Setup::onLoadAllMessages();
 		$this->frame = &$frame;
 		$this->args = &$args;
 		if ( isset( $args[ 0 ] ) ) {
