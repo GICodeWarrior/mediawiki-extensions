@@ -18,7 +18,7 @@ class MwEmbedResourceManager {
 	 * Adds modules to ResourceLoader
 	 */
 	public static function register( $mwEmbedResourcePath ) {
-		global $IP, $wgExtensionMessagesFiles, $wgExtensionAssetsPath;
+		global $IP, $wgExtensionMessagesFiles;
 		$localResourcePath = $IP .'/' . $mwEmbedResourcePath;
 		// Get the module name from the end of the path: 
 		$modulePathParts = explode( '/', $mwEmbedResourcePath );
