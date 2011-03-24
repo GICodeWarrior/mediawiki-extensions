@@ -52,7 +52,7 @@ function efCategoryOnUploadForm( $uploadFormObj ) {
 	/* Load extension messages, currently only used for the label beside the
 	 * select box.
 	 */
-	wfLoadExtensionMessages( 'CategoryOnUpload' );
+	
 
 	/* Begin generation of the form, output the table row, label, open the
 	 * select box, and add the default option for not adding a category at all.
