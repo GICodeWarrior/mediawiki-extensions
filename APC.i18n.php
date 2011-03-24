@@ -6899,6 +6899,21 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'viewapc-info-general' => 'Ühthine informacii',
+	'viewapc-apc-version' => 'APC:n versii',
+	'viewapc-php-version' => 'PHP:n versii',
+	'viewapc-shared-memory' => 'Jagadud mušt',
+	'viewapc-start-time' => 'Augotišen aig',
+	'viewapc-uptime' => 'Radon aig',
+	'viewapc-upload-support' => "Failoiden jügedoitandan pid'oitelend",
+	'viewapc-filecache-info' => 'Andmused failoiden kešas',
+	'viewapc-usercache-info' => 'Andmused kävutajan kešas',
+	'viewapc-cached-files' => 'Keširuidud failad',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|fail|failad}} ($2)',
+	'viewapc-hits' => 'Ozaidused',
+	'viewapc-misses' => 'Petused',
+	'viewapc-requests' => 'Küzumižen intensivižuz',
+	'viewapc-hitrate' => 'Ozaidusiden intensivižuz',
 	'viewapc-display-info' => 'Nimi',
 	'viewapc-display-type' => 'Tip',
 	'viewapc-display-creation_time' => 'Sätud',
