@@ -59,7 +59,6 @@ class Threads {
 	public static function createTalkpageIfNeeded( $talkpage ) {
 		if ( ! $talkpage->exists() ) {
 			try {
-				wfLoadExtensionMessages( 'LiquidThreads' );
 				$talkpage->doEdit(
 					"",
 					wfMsgForContent( 'lqt_talkpage_autocreate_summary' ),
@@ -186,7 +185,6 @@ class Threads {
 	}
 
 	static function newThreadTitle( $subject, $article ) {
-		wfLoadExtensionMessages( 'LiquidThreads' );
 
 		$base = $article->getTitle()->getPrefixedText() . "/$subject";
 
@@ -198,7 +196,6 @@ class Threads {
 	}
 
 	static function newReplyTitle( $thread, $user ) {
-		wfLoadExtensionMessages( 'LiquidThreads' );
 		$topThread = $thread->topmostThread();
 
 		$base = $topThread->title()->getText() . '/'
