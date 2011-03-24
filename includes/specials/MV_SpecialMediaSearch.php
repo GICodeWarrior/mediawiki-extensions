@@ -675,12 +675,12 @@ class MV_SpecialMediaSearch {
 				continue;
 			}
 			-- $contextlines;
-			$pre = $wgContLang->truncate( $m[1], - $contextchars );
+			$pre = $wgContLang->truncate( $m[1], - $contextchars, '...', false );
 
 			if ( count( $m ) < 3 ) {
 				$post = '';
 			} else {
-				$post = $wgContLang->truncate( $m[3], $contextchars );
+				$post = $wgContLang->truncate( $m[3], $contextchars, '...', false );
 			}
 
 			$found = $m[2];
@@ -694,7 +694,7 @@ class MV_SpecialMediaSearch {
 		}
 		// if we found no matches just return the first line:
 		if ( $extract == '' )
-			return ' ' . $wgContLang->truncate( $text, ( $contextchars * 2 ) ) . '';
+			return ' ' . $wgContLang->truncate( $text, ( $contextchars * 2 ), '...', false ) . '';
 		// wfProfileOut( "$fname-extract" );
 		// wfProfileOut( $fname );
 		// return "<li>{$link} ({$size}){$extract}</li>\n";
