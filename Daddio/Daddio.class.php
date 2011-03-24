@@ -8,7 +8,6 @@
 if( !defined( 'MEDIAWIKI' ) )
 	die( -1 );
 
-global $IP;
 // @todo Fixme: autoload ModernTemplate
 require_once( "$IP/skins/Modern.php" );
 
