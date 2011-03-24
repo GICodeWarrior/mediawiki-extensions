@@ -25,21 +25,13 @@ if (!defined('MEDIAWIKI')) die();
  * @ingroup Extensions
  */
 
-require_once( 'includes/GlobalFunctions.php' );
-require_once( 'includes/SpecialPage.php' );
-require_once( 'includes/Title.php' );
-require_once( 'includes/Article.php' );
-require_once( 'includes/User.php' );
-require_once( 'includes/Hooks.php' );
-require_once( 'includes/QueryPage.php' );
-
 // To be redefined as needed in LocalSettings.php
 $wgRdfStoreType = 'hashes';
 $wgRdfStoreName = 'mwrdfstore';
 $wgRdfStoreOptions = "hash-type='bdb',dir='$IP/rdfdata',contexts='yes'";
 
 # Load our constituant classes
-$wgAutoloadClasses['MwRdf'] = "$IP/extensions/Rdf/Rdf.php";
+$wgAutoloadClasses['MwRdf'] = "$IP/extensions/RdfRedland/Rdf.php";
 
 // Add custom Model Maker classes to this list
 $wgRdfModelMakers = array( 'MwRdf_CreativeCommons_Modeler',
@@ -63,51 +55,43 @@ $wgRdfVocabularies = array(
 	'cc'       => 'MwRdf_Vocabulary_CreativeCommons'
 );
 
-$wgExtensionFunctions[] = 'setupMwRdf';
-
 $wgExtensionMessagesFiles['RdfRedland'] = dirname( __FILE__ ) . '/RdfRedland.i18n.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'wfRdfOnParserFirstCallInit';
-$wgHooks['ArticleSave'][]           = array( 'wfRdfOnArticleSave' );
-$wgHooks['ArticleSaveComplete'][]   = array( 'wfRdfOnArticleSaveComplete' );
-$wgHooks['TitleMoveComplete'][]     = array( 'wfRdfOnTitleMoveComplete' );
-$wgHooks['ArticleDeleteComplete'][] = array( 'wfRdfOnArticleDeleteComplete' );
+$wgHooks['ArticleSave'][]           = 'wfRdfOnArticleSave';
+$wgHooks['ArticleSaveComplete'][]   = 'wfRdfOnArticleSaveComplete';
+$wgHooks['TitleMoveComplete'][]     = 'wfRdfOnTitleMoveComplete';
+$wgHooks['ArticleDeleteComplete'][] = 'wfRdfOnArticleDeleteComplete';
+$wgHooks['BeforePageDisplay'][]     = 'wfRdfOnBeforePageDisplay';
 
-function setupMwRdf() {
-	global $wgRequest, $wgOut;
+$wgSpecialPages['Rdf'] = array( 'SpecialPage', 'Rdf', '', true, 'wfRdfSpecialPage' );
 
-	SpecialPage::addPage(new SpecialPage('Rdf', '', true, 'wfRdfSpecialPage',
-		'extensions/Rdf/Rdf.php'));
+// FIXME: function wfSpecialRdfQuery() does not exist
+//$wgSpecialPages['RdfQuery'] = array( 'SpecialPage', 'RdfQuery', '', true, 'wfSpecialRdfQuery' );
 
-	SpecialPage::addPage(new SpecialPage('RdfQuery', '', true, 'wfSpecialRdfQuery',
-		'extensions/Rdf/Rdf.php'));
+function wfRdfOnBeforePageDisplay( $out, $sk ) {
+	global $wgRequest;
 
 	# Add an RDF metadata link if requested
-	$action = $wgRequest->getText('action', 'view');
-
-	# Note: $wgTitle not yet set; have to get it from the request
-	$title = $wgRequest->getText('title');
-	if ( ! isset($title) || strlen($title) == 0 )
+	$action = $wgRequest->getVal( 'action', 'view' );
+	if ( $action != 'view' ) {
 		return true;
+	}
 
-	$nt = Title::newFromText($title);
-	if ( ! isset( $nt ) || $nt->getNamespace() == NS_SPECIAL )
+	$title = $out->getTitle();
+	if ( $title->getNamespace() == NS_SPECIAL ) {
 		return true;
-
-
-	# finally *if* this is a page view we need to add the link
-	if ( ! $action == 'view')
-		return true;
+	}
 
 	$rdft = SpecialPage::getTitleFor( 'Rdf' );
-	$target = $nt->getPrefixedDBkey();
+	$target = $title->getPrefixedDBkey();
 
 	$linkdata = array(
 		'title' => 'RDF Metadata',
 		'type' => 'application/rdf+xml',
 		'href' => $rdft->getLocalURL( array( 'target' => $target ) )
 	);
-	$wgOut->addMetadataLink($linkdata);
+	$out->addMetadataLink($linkdata);
 	return true;
 }
 
