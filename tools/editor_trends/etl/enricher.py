@@ -293,11 +293,8 @@ def is_revision_reverted(hash_cur, hashes):
 def extract_comment_text(revision_id, revision):
     comment = {}
     text = revision.find('comment')
-    if text != None:
-        if text.text == None:
-            comment[revision_id] = ''
-        else:
-            comment[revision_id] = text.text.encode('utf-8')
+    if text != None and text.text != None:
+        comment[revision_id] = text.text.encode('utf-8')
     comment[revision_id] = revision.find('comment').text
     return comment
     
