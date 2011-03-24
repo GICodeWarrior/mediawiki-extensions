@@ -51,8 +51,6 @@ if ($wgUseProjects) {
 	$wgAutoloadClasses['TaskListByProject'] = $dir . 'TodoTasks_body.php';
 	$wgSpecialPages['TaskListByProject']   = 'TaskListByProject';
 }
-$wgHooks['LoadAllMessages'][] = 'TaskList::loadMessages';
-$wgHooks['LoadAllMessages'][] = 'TaskListByProject::loadMessages';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efTodoTasksSchemaUpdates';
 
 require_once($dir . 'TodoTasks_body.php');
