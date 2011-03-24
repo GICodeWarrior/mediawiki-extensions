@@ -342,7 +342,7 @@ class CategoryMultisortHooks {
 	function onCategoryPageView( $categoryArticle ) {
 		global $wgRequest, $wgOut, $wgUser, $wgCategoryMultisortSortkeySettings;
 		
-		wfLoadExtensionMessages( 'CategoryMultisort' );
+		
 		
 		$title = $categoryArticle->getTitle();
 		
@@ -392,7 +392,7 @@ class CategoryMultisortHooks {
 		$html = '';
 		
 		if ( count( $wgCategoryMultisortSortkeySettings ) ) {
-			wfLoadExtensionMessages( 'CategoryMultisort' );
+			
 			$html = Html::element( 'option',
 				array_merge( array( 'value' => '' ), ( $current == '' ? array( 'selected' ) : array() ) ),
 				wfMsgNoTrans( 'categorymultisort-defaultsortkey-name' )
@@ -430,7 +430,7 @@ class CategoryMultisortHooks {
 	function onGetPreferences( $user, &$preferences ) {
 		global $wgCategoryMultisortSortkeySettings;
 		
-		wfLoadExtensionMessages( 'CategoryMultisort' );
+		
 		
 		$options = array(
 			wfMsgNoTrans( 'categorymultisort-defaultsortkey-name' ) => '',
