@@ -138,6 +138,13 @@ $messages['eu'] = array(
 	'cassandra-desc' => 'Denda berrikuspena [http://cassandra.apache.org/ Apache Cassandra] testu datu-basean',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'cassandra-desc' => 'ذخیره‌سازی متن نسخه در پایگاه دادهٔ [http://cassandra.apache.org/ آپاچی کاساندرا]',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
