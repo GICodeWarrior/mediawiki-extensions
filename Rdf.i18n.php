@@ -68,9 +68,11 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'rdf-desc' => 'Reizhiad RDF evit MediaWiki',
+	'rdf-cc' => 'Creative Commons',
 	'rdf-image' => 'Skeudennoù enframmet',
 	'rdf-linksto' => 'Liammoù davet ar bajenn',
 	'rdf-linksfrom' => 'Liammoù adal ar bajenn',
