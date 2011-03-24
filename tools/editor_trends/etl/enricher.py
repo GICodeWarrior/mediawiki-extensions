@@ -455,7 +455,7 @@ def setup(storage):
         cassandra.install_schema(keyspace_name, drop_first=True)
 
 
-def launcher(function, path, dataset, storage):
+def launcher(function, path, dataset, storage, processors):
     setup(storage)
     input_queue = JoinableQueue()
     #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
@@ -472,7 +472,7 @@ def launcher(function, path, dataset, storage):
         input_queue.put(None)
 
     extracters = [Process(target=stream_raw_xml, args=[input_queue, storage, id, function, dataset])
-                  for id in xrange(cpu_count())]
+                  for id in xrange(processors)]
     for extracter in extracters:
         extracter.start()
 
@@ -485,7 +485,8 @@ def launcher_training():
     function = create_variables
     storage = 'csv'
     dataset = 'training'
-    launcher(function1, path1, dataset1, storage)
+    processors = cpu_count()
+    launcher(function, path, dataset, storage, processors)
 
 
 def launcher_prediction():
@@ -494,7 +495,8 @@ def launcher_prediction():
     function = count_edits
     storage = 'csv'
     dataset = 'prediction'
-    launcher(function2, path2, dataset2, storage)
+    processors = 1
+    launcher(function, path, dataset, storage, processors)
 
 
 if __name__ == '__main__':
