@@ -167,8 +167,7 @@ class qp_Setup {
 		// instantiating fake instance for PHP < 5.2.3, which does not support 'Class::method' type of callbacks
 		$wgHooks['LanguageGetMagic'][] =
 		$wgHooks['MediaWikiPerformAction'][] =
-		$wgHooks['ParserFirstCallInit'][] =
-		$wgHooks['LoadAllMessages'][] = new qp_Setup;
+		$wgHooks['ParserFirstCallInit'][] =  new qp_Setup;
 	}
 
 	static function ParserFunctionsWords( $lang ) {
