@@ -42,7 +42,7 @@ function WhiteListUserFromId($id) {
 class WhiteListEdit extends SpecialPage
 {
 	function __construct() {
-		wfLoadExtensionMessages('WhiteListEdit');
+		
 		parent::__construct( 'WhiteListEdit', 'editwhitelist' );
 	}
 
@@ -615,23 +615,7 @@ if ($debug)  $wgOut->addWikiText("* Adding '$headertext'\n");
 class WhiteList extends SpecialPage
 {
 	function __construct() {
-		self::loadMessages();
 		parent::__construct( 'WhiteList', 'restricttowhitelist' );
-	}
-
-	function loadMessages() {
-		# the new method for loading extension messages is only available in MW versions > 1.12
-		# so let's keep the compatibility with older versions
-		if (function_exists('wfLoadExtensionMessages'))
-		{
-			wfLoadExtensionMessages('WhiteList');
-		}
-		else
-		{
-			WhiteListLoadMessages();
-		}
-		
-		return true;
 	}
 
 	function execute( $para ) {
