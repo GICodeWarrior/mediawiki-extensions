@@ -56,7 +56,7 @@ $wgGroupPermissions['sigadmin']['createsigndocument'] = true;
  * Create the Signature log.
  */
 function wfCreateSignatureLog() {
-	wfLoadExtensionMessages( 'SignDocument' );
+	
 
 	# Add a new log type
 	global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
