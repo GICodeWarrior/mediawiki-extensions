@@ -954,6 +954,7 @@ Verifique se soletrou o nome correctamente.',
 /** Brazilian Portuguese (Português do Brasil)
  * @author Brunoy Anastasiya Seryozhenko
  * @author Eduardo.mps
+ * @author Giro720
  * @author Hamilton Abreu
  */
 $messages['pt-br'] = array(
@@ -966,6 +967,7 @@ Você perderá as suas edições se abandonar a página agora.',
 	'al-nosuchuser' => 'Não existe usuário com o nome "$1".
 Nomes de usuário são sensíveis à maiúsculas.
 Cheque se você soletrou corretamente.',
+	'al-createblocked' => 'O seu endereço IP está bloqueado e foi impedido de criar contas.',
 );
 
 /** Romanian (Română)
