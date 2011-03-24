@@ -54,7 +54,7 @@ function UW_GenericEditPage_addJS( $out ) {
 function UW_GenericEditPage_emailSuggestion ( $category ) {
 	global $wgSuggestCategoryRecipient, $wgEmergencyContact, $wgSitename, $wgUser;
 
-	wfLoadExtensionMessages( 'GenericEditPage' );
+	
 
 	$from = new MailAddress ( $wgEmergencyContact );
 	$to   = new MailAddress ( $wgSuggestCategoryRecipient );
@@ -140,7 +140,7 @@ function UW_GenericEditPage_extractCategoriesIntoBox( &$text ) {
 		$wgEmergencyContact, $wgUseCategoryPage;
 	$out = "";
 
-	wfLoadExtensionMessages( 'GenericEditPage' );
+	
 
 	/* build an array of the categories, either from a page
 	 * or from all available categories in the wiki */
@@ -277,7 +277,7 @@ function UW_GenericEditPage_extractCategoriesIntoBox( &$text ) {
 function UW_GenericEditPage_renderSectionBox ( $sections ) {
 	global $wgAddSection;
 
-	wfLoadExtensionMessages( 'GenericEditPage' );
+	
 
 	$out = "
 		<div id='section-box'>
@@ -511,7 +511,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 	// this line is sort of outdated... may want to remove?
 	$gen_editor_class = $any_in_use ? "" : " show-instructions";
 
-	wfLoadExtensionMessages( 'GenericEditPage' );
+	
 
 	/* add the buttons to switch between editing modes
 	 * (only one is visible at a time, via css/js) and
