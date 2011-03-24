@@ -85,7 +85,6 @@ define( 'AMAZONPLUS_USED', 3 );
 # Set up the tag extension
 function efAmazonPlusSetup( $parser ) {
 	$parser->setHook( 'amazon', 'efAmazonPlusRender' );
-	wfLoadExtensionMessages( 'AmazonPlus' );
 	return true;
 }
 

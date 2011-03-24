@@ -19,7 +19,6 @@ class SpecialARC2Admin extends SpecialPage {
 		}
 
 		parent::__construct( 'SpecialARC2Admin' );
-		wfLoadExtensionMessages( 'RDFIO' );
     }
 
     function execute( $par ) {

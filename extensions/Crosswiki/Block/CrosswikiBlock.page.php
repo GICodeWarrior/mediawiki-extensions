@@ -26,7 +26,7 @@ class SpecialCrosswikiBlock extends SpecialPage {
 		global $wgOut, $wgUser, $wgRequest;
 
 		# Add messages
-		wfLoadExtensionMessages( 'CrosswikiBlock' );
+		
 
 		$this->setHeaders();
 
@@ -266,7 +266,7 @@ class SpecialCrosswikiUnblock extends SpecialPage {
 		global $wgVersion, $wgMaxNameChars, $wgCapitalLinks;
 
 		# Add messages
-		wfLoadExtensionMessages( 'CrosswikiBlock' );
+		
 
 		$this->setHeaders();
 

@@ -308,7 +308,6 @@ class WikiSyncSetup {
 		self::$user = is_object( $wgUser ) ? $wgUser : new User();
 		self::$response = $wgRequest->response();
 		self::$cookie_prefix = 'WikiSync_' . md5( self::$user->getName() ) . '_';
-		wfLoadExtensionMessages( 'WikiSync' );
 		if ( self::$user->getName() !== self::WIKISYNC_BOT_NAME ) {
 			return wfMsg( 'wikisync_unsupported_user', self::WIKISYNC_BOT_NAME );
 		}

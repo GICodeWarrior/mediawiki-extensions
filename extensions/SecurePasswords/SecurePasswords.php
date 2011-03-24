@@ -237,7 +237,6 @@ function efSecurePasswordsValidate( $password, &$result, $user ) {
 
 	global $wgValidPasswords, $wgContLang, $wgSecurePasswordsSpecialChars, $wgLang, $wgUser;
 	$lang = $wgContLang->getPreferredVariant( false );
-	wfLoadExtensionMessages( 'SecurePasswords' );
 	// check password length
 	if( strlen( $password ) < $wgValidPasswords['minlength'] ) {
 		$ok = false;

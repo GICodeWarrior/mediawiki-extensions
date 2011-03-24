@@ -427,7 +427,7 @@ function mvfInitUserLanguage( $langcode ) {
  * Function based on version in ContributionScores extension
  */
 function mvfInitMessages() {
-	wfLoadExtensionMessages( 'MetavidWiki' );
+	
 }
 
 /*

@@ -43,7 +43,7 @@ class PollResults extends SpecialPage {
 		parent::__construct( 'PollResults', 'delete' );
 		# for MW 1.15 (still being used by many customers)
 		if ( version_compare( $wgVersion, '1.16', '<' ) ) {
-			wfLoadExtensionMessages('QPoll');
+			
 		}
 	}
 

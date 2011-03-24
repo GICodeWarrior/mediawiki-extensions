@@ -87,7 +87,7 @@ class PackageForceAdminSpecial extends SpecialPage {
 	 */
 	public function __construct() {
 		parent::__construct( 'PackageForceAdmin' );
-		wfLoadExtensionMessages( 'PackageForceAdmin' );
+		
 	}
 
 	/**
@@ -163,7 +163,7 @@ class PackageForceSpecial extends SpecialPage {
 	 */
 	public function __construct() {
 		parent::__construct( 'PackageForce' );
-		wfLoadExtensionMessages( 'PackageForce' );
+		
 	}
 
 	/**

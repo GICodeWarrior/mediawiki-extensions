@@ -52,7 +52,7 @@ function wfChemFormExtension( $parser ) {
 
 function RenderChemForm( $input, $argv ) {
 	# add messages
-	wfLoadExtensionMessages( 'ChemFunctions' );
+	
 
 	$link = false;
 	$wikilink = false;

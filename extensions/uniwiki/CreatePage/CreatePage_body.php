@@ -11,7 +11,7 @@ class SpecialCreatePage extends SpecialPage {
 	public function execute( $params ) {
 		global $wgOut, $wgRequest, $wgUser;
 
-		wfLoadExtensionMessages( 'CreatePage' );
+		
 
 		$this->setHeaders();
 		

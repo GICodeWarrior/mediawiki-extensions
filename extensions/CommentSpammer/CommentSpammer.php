@@ -27,7 +27,7 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['CommentSpammer'] = $dir . 'CommentSpammer.i18n.php';
 
 function efCommentSpammer() {
-	wfLoadExtensionMessages( 'CommentSpammer' );
+	
 }
 
 /**

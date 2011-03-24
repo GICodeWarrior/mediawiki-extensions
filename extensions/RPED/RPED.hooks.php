@@ -20,7 +20,7 @@ class RPEDHooks {
 	) {
 		global $wgLocalStyle, $wgRemoteStyle, $wgPureWikiDeletionInEffect
 		, $wgTitle, $wgRequest, $wgRPEDBrokenLinkStyle, $wgRPEDExcludeNamespaced;
-		wfLoadExtensionMessages('RPED');
+		
 		if ( $wgTitle->getNamespace () == -1 ) {
 			return true;
 		}

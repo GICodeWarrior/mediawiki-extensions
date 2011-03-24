@@ -133,8 +133,6 @@ class WikiTrustBase {
 			( $wgRequest->getVal( 'action' ) != 'purge' ) ) ) )
 			return true;
 
-		wfLoadExtensionMessages( 'WikiTrust' );
-
 		self::color_addFileRefs( $out );
 		$rev_id = self::util_getRevFOut( $out );
 		$colored_text = self::$colored_text;
@@ -546,7 +544,6 @@ class WikiTrustBase {
 				$url = $url . $connector . 'trust';
 		}
 
-		wfLoadExtensionMessages( 'WikiTrust' );
 		$content_actions['trust'] = array (
 			'class' => '',
 			'text' => wfMsgNoTrans( "wgTrustTabText" ),
@@ -576,8 +573,6 @@ class WikiTrustBase {
 		global $wgTitle, $wgMemc;
 		wfWikiTrustDebug( __FILE__ . ":" . __LINE__
 			. ": ajax_getColoredText($page_title, $page_id, $rev_id)" );
-
-		wfLoadExtensionMessages( 'WikiTrust' );
 
 		list( $page_title, $page_id, $rev_id ) = self::util_ResolveRevSpec( $page_title, $page_id, $rev_id );
 

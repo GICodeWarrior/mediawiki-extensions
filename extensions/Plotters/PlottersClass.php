@@ -36,8 +36,6 @@ class Plotters {
 	}
 
 	function checkForErrors() {
-		wfLoadExtensionMessages( 'Plotters' );
-
 		$errors = '';
 		$errcnt = 0;
 

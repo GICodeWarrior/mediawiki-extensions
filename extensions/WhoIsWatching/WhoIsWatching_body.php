@@ -4,9 +4,6 @@ class WhoIsWatching extends SpecialPage
 {
 	function __construct() {
 		parent::__construct( 'WhoIsWatching' );
-
-		wfLoadExtensionMessages( 'WhoIsWatching' );
-
 		return true;
 	}
 

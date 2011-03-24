@@ -13,7 +13,7 @@ class SpecialAsksql extends SpecialPage {
 	function execute( $par ) {
 		global $wgAllowSysopQueries, $wgUser, $wgRequest, $wgOut;
 
-		wfLoadExtensionMessages( 'Asksql' );
+		
 
 		if ( !$wgAllowSysopQueries ) {
 			throw new ErrorPageError( 'nosuchspecialpage', 'nospecialpagetext' );

@@ -27,7 +27,7 @@ class SpecialSignDocument extends SpecialPage {
 	function execute( $par = null ) {
 		global $wgOut, $wgRequest, $wgUser;
 
-		wfLoadExtensionMessages( 'SpecialSignDocument' );
+		
 
 		$this->setHeaders();
 		if ( $wgUser->isAllowed( 'sigadmin' ) ) {

@@ -28,7 +28,6 @@ class NewUserNotifier {
 	 */
 	public function execute( $user ) {
 		$this->user = $user;
-		wfLoadExtensionMessages( 'NewUserNotifier' );
 		$this->sendExternalMails();
 		$this->sendInternalMails();
 	}

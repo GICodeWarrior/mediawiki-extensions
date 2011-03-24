@@ -11,7 +11,7 @@ class MostRevisors extends IncludableSpecialPage {
 
 	public function execute( $par ) {
 		global $wgOut, $wgRequest, $wgLang, $wgContLang;
-		wfLoadExtensionMessages( 'MostRevisors' );
+		
 
 		# Decipher input passed to the page
 		$this->decipherParams( $par );

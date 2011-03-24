@@ -17,7 +17,7 @@ class SpecialImportUsers extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgUser;
 
-		wfLoadExtensionMessages( 'ImportUsers' );
+		
 
 		if( !$wgUser->isAllowed( 'import_users' ) ) {
 			$wgOut->permissionRequired( 'import_users' );

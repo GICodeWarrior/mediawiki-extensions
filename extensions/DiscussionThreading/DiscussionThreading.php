@@ -43,7 +43,7 @@ $wgHooks['DoEditSectionLink'][] =  'efDoDiscussionLink';
  * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
 */
 function efDiscussionThreadSetup() {
-	wfLoadExtensionMessages( 'DiscussionThreading' );
+	
 }
 
 /**

@@ -25,7 +25,7 @@ class RefreshSpecial extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
 
-		wfLoadExtensionMessages( 'RefreshSpecial' );
+		
 
 		$wgOut->setPageTitle( wfMsg( 'refreshspecial-title' ) );
 

@@ -31,7 +31,7 @@
 class Call extends SpecialPage {
 	function __construct() {
 		parent::__construct( "Call" );
-		wfLoadExtensionMessages( 'Call' );
+		
 	}
 
 

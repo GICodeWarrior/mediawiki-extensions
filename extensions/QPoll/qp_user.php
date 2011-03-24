@@ -177,7 +177,7 @@ class qp_Setup {
 			self::$messagesLoaded = true;
 			# for MW 1.15 (still being used by many customers)
 			if ( version_compare( $wgVersion, '1.16', '<' ) ) {
-				wfLoadExtensionMessages('QPoll');
+				
 			}
 		}
 		return true;
