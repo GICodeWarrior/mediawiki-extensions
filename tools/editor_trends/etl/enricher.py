@@ -124,7 +124,7 @@ class Buffer:
         id = revision['revision_id']
         self.revisions[id] = revision
         if len(self.revisions) > 10000:
-            print '%s: Emptying buffer %s' % (datetime.datetime.now(), self.id)
+            print '%s: Emptying buffer %s - buffer size %s' % (datetime.datetime.now(), self.id, len(self.revisions))
             self.store()
             self.clear()
 
@@ -292,7 +292,7 @@ def is_revision_reverted(hash_cur, hashes):
 
 def add_comment(revision_id, revision):
     comment = {}
-    comment[revision_id] = revision.text
+    comment[revision_id] = revision.find('comment').text
     return comment
     
 
