@@ -277,7 +277,9 @@ var config = {
 				window.location = trackClickURL(
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': mediaWiki.config.get( 'wgPageName' ),
-						'action': 'edit'
+						'action': 'edit',
+						'clicktrackingsession': $.cookie( 'clicktracking-session' ),
+						'clicktrackingevent': 'ext.articleFeedback-pitch-edit-save'
 					} ), 'pitch-edit' );
 				return false;
 			},
