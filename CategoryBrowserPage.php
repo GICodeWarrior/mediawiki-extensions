@@ -41,7 +41,6 @@ class CategoryBrowserPage extends SpecialPage {
 
 	function __construct() {
 		parent::__construct( 'CategoryBrowser' );
-		wfLoadExtensionMessages( 'CategoryBrowser' );
 		CB_Setup::initUser();
 	}
 
