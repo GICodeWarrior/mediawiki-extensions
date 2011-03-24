@@ -17,11 +17,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 define('NEWS_HEAD_LENGTH', 1024 * 2);
 define('NEWS_HEAD_SCAN', 256);
 
-#no need to include, rely on autoloader
-#global $IP;
-#require_once( "$IP/includes/RecentChange.php" );
-#require_once( "$IP/includes/ChangeList.php" );
-
 class NewsRenderer {
 	var $parser;
 	var $skin;
