@@ -474,8 +474,8 @@ def launcher(function, path, dataset):
     for x in xrange(cpu_count()):
         input_queue.put(None)
 
-    extracters = [Process(target=stream_raw_xml, args=[input_queue, function, storage, x, dataset])
-                  for x in xrange(cpu_count())]
+    extracters = [Process(target=stream_raw_xml, args=[input_queue, storage, id, function, dataset])
+                  for id in xrange(cpu_count())]
     for extracter in extracters:
         extracter.start()
 
