@@ -3,8 +3,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
+global $IP;
 require_once( "$IP/extensions/OAI/OAIFunctions.php" );
-require_once( "$IP/includes/Export.php" );
 
 if( !function_exists( 'wfTimestamp2ISO8601' ) ) {
 	// Back compat; gone in 1.6
