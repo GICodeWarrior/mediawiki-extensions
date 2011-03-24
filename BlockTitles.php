@@ -35,7 +35,7 @@ $wgBlockTitlePatterns = array (
 $wgHooks['ArticleSave'][] = 'wfCheckBlockTitles';
 
 function wfBlockTitles() {
-	wfLoadExtensionMessages( 'BlockTitles' );
+	
 }
 
 function wfCheckBlockTitles ( &$article ) {
