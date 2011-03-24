@@ -14,7 +14,6 @@ if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
 # Internationalisation file
 $wgExtensionMessagesFiles['DiscussionThreading'] =  dirname( __FILE__ ) . '/DiscussionThreading.i18n.php';
-$wgExtensionFunctions[] = 'efDiscussionThreadSetup';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'DiscussionThreading',
@@ -38,13 +37,6 @@ $wgHooks['EditPage::showEditForm:initial'][] =  'efDiscussionThreadEdit';
 $wgHooks['EditSectionLinkForOther'][] =  'efDiscussionLink4other';
 $wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
 $wgHooks['DoEditSectionLink'][] =  'efDoDiscussionLink';
-
-/**
- * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
-*/
-function efDiscussionThreadSetup() {
-	
-}
 
 /**
  * This function creates a linkobject for the editSectionLinkForOther function in linker
