@@ -394,7 +394,7 @@ def parse_xml(buffer):
     return article
 
 
-def stream_raw_xml(input_queue, storage, id, dataset='training'):
+def stream_raw_xml(input_queue, storage, id, function, dataset='training'):
     buffer = cStringIO.StringIO()
     parsing = False
     i = 0
@@ -457,7 +457,7 @@ def setup(storage):
         cassandra.install_schema(keyspace_name, drop_first=True)
 
 
-def launcher(function, path):
+def launcher(function, path, dataset):
     storage = 'csv'
     setup(storage)
     input_queue = JoinableQueue()
@@ -474,7 +474,7 @@ def launcher(function, path):
     for x in xrange(cpu_count()):
         input_queue.put(None)
 
-    extracters = [Process(target=stream_raw_xml, args=[input_queue, function, storage, x])
+    extracters = [Process(target=stream_raw_xml, args=[input_queue, function, storage, x, dataset])
                   for x in xrange(cpu_count())]
     for extracter in extracters:
         extracter.start()
@@ -483,10 +483,12 @@ def launcher(function, path):
 
 
 if __name__ == '__main__':
-    path1 = '/media/wikipedia_dumps/batch1/'
-    path2 = '/media/wikipedia_dumps/batch2/'
+    path1 = '/media/wikipedia_dumps/batch2/'
+    path2 = '/media/wikipedia_dumps/batch1/'
     function1 = create_variables
     function2 = count_edits
 
-    launcher(function1, path1) # launcher for creating training data
-    launcher(function2, path2) # launcher for creating test data
+    dataset1 = 'training'
+    dataset2 = 'prediction'
+    #launcher(function1, path1, dataset1) # launcher for creating training data
+    launcher(function2, path2, dataset2) # launcher for creating test data
