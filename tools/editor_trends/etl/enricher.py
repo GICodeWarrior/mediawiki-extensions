@@ -34,7 +34,6 @@ from collections import deque
 if '..' not in sys.path:
     sys.path.append('..')
 
-from utils import file_utils
 
 try:
     from database import cassandra
@@ -44,13 +43,12 @@ except ImportError:
     print 'I am not going to use Cassandra today, it\'s my off day.'
 
 
-
 from database import db
 from bots import detector
 from utils import file_utils
 import extracter
 
-RE_CATEGORY = re.compile('\(.*\`\,\.\-\:\'\)')
+#RE_CATEGORY = re.compile('\(.*\`\,\.\-\:\'\)')
 
 NAMESPACE = {
     #0:'Main',    
@@ -304,7 +302,6 @@ def extract_comment_text(revision_id, revision):
     return comment
 
 
-
 def count_edits(article, counts, bots):
     title = article['title'].text
     namespace = determine_namespace(article['title'])
@@ -394,11 +391,11 @@ def parse_xml(buffer):
     return article
 
 
-def stream_raw_xml(input_queue, storage, id, function, dataset='training'):
+def stream_raw_xml(input_queue, storage, id, function, dataset):
+    bots = detector.retrieve_bots('en')
     buffer = cStringIO.StringIO()
     parsing = False
     i = 0
-    bots = detector.retrieve_bots('en')
 
     if dataset == 'training':
         cache = Buffer(storage, id)
@@ -431,11 +428,12 @@ def stream_raw_xml(input_queue, storage, id, function, dataset='training'):
 
     if dataset == 'training':
         cache.empty()
-        print 'Finished parsing bz2 archives'
         cache.stats.summary()
+        print 'Finished parsing bz2 archives'
     else:
         location = os.getcwd()
-        file_utils.store_object(counts, location, 'counts.bin')
+        filename = 'counts_%s.bin' % id
+        file_utils.store_object(counts, location, filename)
 
 
 def unzip(filename):
@@ -457,8 +455,7 @@ def setup(storage):
         cassandra.install_schema(keyspace_name, drop_first=True)
 
 
-def launcher(function, path, dataset):
-    storage = 'csv'
+def launcher(function, path, dataset, storage):
     setup(storage)
     input_queue = JoinableQueue()
     #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
@@ -482,13 +479,24 @@ def launcher(function, path, dataset):
     input_queue.join()
 
 
-if __name__ == '__main__':
-    path1 = '/media/wikipedia_dumps/batch2/'
-    path2 = '/media/wikipedia_dumps/batch1/'
-    function1 = create_variables
-    function2 = count_edits
+def launcher_training():
+    # launcher for creating training data
+    path = '/media/wikipedia_dumps/batch2/'
+    function = create_variables
+    storage = 'csv'
+    dataset = 'training'
+    launcher(function1, path1, dataset1, storage)
 
-    dataset1 = 'training'
-    dataset2 = 'prediction'
-    #launcher(function1, path1, dataset1) # launcher for creating training data
-    launcher(function2, path2, dataset2) # launcher for creating test data
+
+def launcher_prediction():
+    # launcher for creating test data
+    path = '/media/wikipedia_dumps/batch1/'
+    function = count_edits
+    storage = 'csv'
+    dataset = 'prediction'
+    launcher(function2, path2, dataset2, storage)
+
+
+if __name__ == '__main__':
+    #launcher_training()
+    launcher_prediction()
