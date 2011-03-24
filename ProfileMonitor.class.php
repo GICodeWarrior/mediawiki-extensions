@@ -17,7 +17,7 @@ class ProfileMonitor extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgRequest, $wgExtensionAssetsPath;
 
-		wfLoadExtensionMessages( 'ProfileMonitor' );
+		
 
 		$this->setHeaders();
 
