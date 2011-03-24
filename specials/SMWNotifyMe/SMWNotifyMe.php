@@ -5,8 +5,6 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-require_once( $IP . "/includes/SpecialPage.php" );
-
 /*
  * Standard class that is resopnsible for the creation of the Special Page
  */
