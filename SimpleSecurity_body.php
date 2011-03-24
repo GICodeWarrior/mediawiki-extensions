@@ -38,7 +38,7 @@ class SimpleSecurity {
 		$wgLogActions['security/deny'] = 'securitylogentry';
 
 		# Load messages
-		wfLoadExtensionMessages ( 'SimpleSecurity' );
+		
 
 		foreach ( $wgSecurityExtraActions as $k => $v ) {
 			$wgRestrictionTypes[] = $k;
