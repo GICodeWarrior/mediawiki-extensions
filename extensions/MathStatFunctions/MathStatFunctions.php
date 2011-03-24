@@ -420,7 +420,7 @@ class ExtMathStatFunctions {
 }
 
 function wfSetupMathStatFunctions( $parser ) {
-	global $wgParser, $wgExtMathStatFunctions;
+	global $wgExtMathStatFunctions;
 
 	try {
 		if ( $wgExtMathStatFunctions === null ) {
