@@ -257,8 +257,8 @@ def determine_namespace(title):
                   'User Talk': 3,
                   }
     ns = {}
-    if title.text != None:
-        title = title.text
+    if title != None:
+        #title = title.text
         for namespace in namespaces:
             if title.startswith(namespace):
                 ns['namespace'] = namespaces[namespace]
@@ -324,8 +324,8 @@ def count_edits(article, counts, bots):
 
 
 def create_variables(article, cache, bots):
-    title = article['title'].text
-    namespace = determine_namespace(article['title'])
+    title = article['title']
+    namespace = determine_namespace(title)
 
     if namespace != False:
         cache.stats.count_articles += 1
@@ -379,7 +379,7 @@ def parse_xml(buffer):
 
     article = {}
     id = False
-    article[root.tag] = root
+    article[root.tag] = root.text
     article['revisions'] = []
     for event, elem in context:
         if event == 'end' and elem.tag == 'revision':
@@ -388,6 +388,7 @@ def parse_xml(buffer):
             article[elem.tag] = elem
             id = True
 
+    root.clear()
     return article
 
 
