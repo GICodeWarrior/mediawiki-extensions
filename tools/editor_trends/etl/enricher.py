@@ -25,10 +25,10 @@ import hashlib
 import codecs
 import re
 import sys
+import datetime
 import progressbar
 from multiprocessing import JoinableQueue, Process, cpu_count, current_process
 from xml.etree.cElementTree import fromstring, iterparse
-from lxml import objectify
 from collections import deque
 
 if '..' not in sys.path:
@@ -123,8 +123,8 @@ class Buffer:
         self.stringify(revision)
         id = revision['revision_id']
         self.revisions[id] = revision
-        if len(self.revisions) > 1000:
-            print 'Emptying buffer'
+        if len(self.revisions) > 10000:
+            print '%s: Emptying buffer' % (datetime.datetime.now())
             self.store()
             self.clear()
 
@@ -296,8 +296,7 @@ def add_comment(revision_id, revision):
     return comment
     
 
-def create_variables(article, cache, cache_comments, bots):
-
+def create_variables(article, cache, bots):
     title = article['title'].text
     namespace = determine_namespace(article['title'])
     
@@ -323,12 +322,15 @@ def create_variables(article, cache, cache_comments, bots):
             if revision_id == None:
                 #revision_id is missing, which is weird
                 continue
-            comment = add_comment(revision_id, revision)
+            
             row = prefill_row(title, article_id, namespace)
             row['revision_id'] = revision_id
             text = extract_revision_text(revision)
             row.update(contributor)
 
+            comment = add_comment(revision_id, revision)
+            cache.comments.update(comment)
+            
             timestamp = revision.find('timestamp').text
             row['timestamp'] = timestamp
 
@@ -341,8 +343,6 @@ def create_variables(article, cache, cache_comments, bots):
             row.update(size)
             row.update(revert)
             cache.add(row)
-    
-
 
 
 def parse_xml(buffer):
@@ -369,7 +369,6 @@ def stream_raw_xml(input_queue, storage, id):
     parsing = False
     bots = detector.retrieve_bots('en')
     cache = Buffer(storage, id)
-    cache_comments = Buffer(storage, id)
     i = 0
     while True:
         filename = input_queue.get()
@@ -384,18 +383,17 @@ def stream_raw_xml(input_queue, storage, id):
                 buffer.write(data)
                 buffer.write('\n')
                 if data == '</page>':
+                    i += 1
                     buffer.seek(0)
                     article = parse_xml(buffer)
-                    create_variables(article, cache, cache_comments, bots)
+                    create_variables(article, cache, bots)
                     buffer = cStringIO.StringIO()
-                i += 1
+
                 if i % 10000 == 0:
                     print 'Parsed %s articles' % i
 
                
     cache.empty()
-    cache_comments.empty()
-    print 'Buffer is empty'
     print 'Finished parsing bz2 archives'
     cache.stats.summary()
 
