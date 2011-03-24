@@ -420,7 +420,7 @@ def unzip(filename):
         line = line.strip()
         yield line
     fh.close()
-
+    print 'Reached end of BZ2 file.'
 
 def setup(storage):
     keyspace_name = 'enwiki'
@@ -434,7 +434,7 @@ def launcher():
     input_queue = JoinableQueue()
     #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
     #files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
-    path = '/media/77fc623f-78c1-4f1e-be57-0f3043d778aa/wikipedia_dumps/batch1/'
+    path = '/media/wikipedia_dumps/batch1/'
     files = file_utils.retrieve_file_list(path, 'bz2', mask=None)
 
     for file in files:
