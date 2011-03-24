@@ -142,7 +142,7 @@ function efStoryboardAddStoryEditAction( &$sktemplate, &$content_actions ) {
 }
 
 function efStoryboardAddJSLocalisation( $parser = false ) {
-	wfLoadExtensionMessages( 'Storyboard' );
+	
 
 	$messages = array(
 		'storyboard-charstomany',
