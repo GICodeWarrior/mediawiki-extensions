@@ -262,11 +262,11 @@ $.articleFeedback = {
 									.end();
 						} else {
 							// Setup using ratingData
-							var average = ratingData.total / ratingData.count;
+							var average =
+								Math.round( ( ratingData.total / ratingData.count ) * 10 ) / 10;
 							$(this)
 								.find( '.articleFeedback-rating-average' )
-									.text( Math.floor( average ) + '.' +
-										Math.round( ( average % 1 ) * 10 ) )
+									.text( average + ( average % 1 === 0 ? '.0' : '' ) )
 									.end()
 								.find( '.articleFeedback-rating-meter div' )
 									.css( 'width', Math.round( average * 21 ) + 'px' )
