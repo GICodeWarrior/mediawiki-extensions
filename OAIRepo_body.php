@@ -3,7 +3,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
-global $IP;
 require_once( "$IP/extensions/OAI/OAIFunctions.php" );
 require_once( "$IP/includes/Export.php" );
 
