@@ -1,5 +1,6 @@
 <?php
 
+global $IP;
 require_once( "$IP/maintenance/tests/ApiSetup.php" );
 require_once( "$IP/maintenance/deleteArchivedFiles.inc" );
 require_once( "$IP/maintenance/deleteArchivedRevisions.inc" );

@@ -7,8 +7,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
   die( "This file is part of the Semantic NotifyMe Extension. It is not a valid entry point.\n" );
 }
 
-require_once( "$IP/includes/JobQueue.php" );
-
 class SMWNMRefreshJob extends Job {
 
 	function __construct( Title $title ) {
