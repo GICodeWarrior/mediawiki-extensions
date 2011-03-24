@@ -124,7 +124,7 @@ class Buffer:
         id = revision['revision_id']
         self.revisions[id] = revision
         if len(self.revisions) > 10000:
-            print '%s: Emptying buffer' % (datetime.datetime.now())
+            print '%s: Emptying buffer %s' % (datetime.datetime.now(), self.id)
             self.store()
             self.clear()
 
@@ -389,8 +389,8 @@ def stream_raw_xml(input_queue, storage, id):
                     create_variables(article, cache, bots)
                     buffer = cStringIO.StringIO()
 
-                if i % 10000 == 0:
-                    print 'Parsed %s articles' % i
+                    if i % 10000 == 0:
+                        print 'Parsed %s articles' % i
 
                
     cache.empty()
