@@ -21,6 +21,7 @@ import datetime
 import MySQLdb
 import pylab
 import HTML
+import math
 
 import query_store as qs
 import miner_help as mh
@@ -30,16 +31,67 @@ class TimestampProcesser(object):
 	
 	"""
 	
-		Takes a list of timestamps as input and converts it to a set of hours counting back from 0
+		Takes a list of timestamps as input and converts it to a set of days,hours, or minutes counting back from 0
 		
-		time_lists 		- a list of timestamp lists
-		time_norm 	- a dictionary of normalized times
+		time_lists 		- a list of datetime objects
+		
+		time_unit		- an integer indicating what unit to measure time in (0 = day, 1 = hour, 2 = minute)
+		
+		RETURN: 
+			time_norm 	- a dictionary of normalized times
+	"""
+	def normalize_timestamps(self, time_lists, count_back, time_unit):
+		
+		time_lists, isList = self.timestamps_to_dict(time_lists)
+		
+		
+		""" Depending on args set the start date """
+		if count_back:
+			start_date_obj = self.find_latest_date_in_list(time_lists)
+		else:
+			start_date_obj = self.find_earliest_date_in_list(time_lists)
+		
+		start_day = start_date_obj.day
+		start_hr  = start_date_obj.hour
+		start_mte = start_date_obj.minute
+		
+		# Normalize dates
+		time_norm = mh.AutoVivification()
+		for key in time_lists.keys():
+			for date_obj in time_lists[key]:
+				
+				day = date_obj.day
+				hr = date_obj.hour
+				mte = date_obj.minute
+				
+				if time_unit == 0:
+					elem = (day - start_day)
+				elif time_unit == 1:
+					elem = (day - start_day) * 24 + (hr - start_hr)
+				elif time_unit == 2:
+					elem = (day - start_day) * 24 * 60 + (hr - start_hr) * 60 + (mte - start_mte)
+					
+				try: 
+					time_norm[key].append(elem)
+				except:
+					time_norm[key] = list()
+					time_norm[key].append(elem)
+		
+		# If the original argument was a list put it back in that form 
+		if isList:
+			time_norm = time_norm[key]
+			
+		return time_norm
 		
 	"""
-	def normalize_timestamps(self, time_lists):
+	
+		HELPER METHOD for normalize_timestamps
 		
-		# Convert lists into dictionaries before processing
-		# it is assumed that lists are composed of only simple types
+		Convert lists into dictionaries before processing it is assumed that lists are composed of only simple types
+	
+	"""		
+	def timestamps_to_dict(self, time_lists):
+		
 		isList = 0
 		if type(time_lists) is list:
 			isList = 1
@@ -52,46 +104,52 @@ class TimestampProcesser(object):
 			
 			for i in range(len(old_list)):
 				time_lists[key].append(old_list[i])
-		
-		
-		# Find the earliest date
-		max_i = 0
-		
-		for key in time_lists.keys():
-			for date_str in time_lists[key]:
-				day_int = int(date_str[8:10])
-				hr_int = int(date_str[11:13])
-				date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
-				if date_int > max_i:
-					max_i = date_int
-					max_day = day_int
-					max_hr = hr_int 
-		
-		
-		# Normalize dates
-		time_norm = mh.AutoVivification()
-		for key in time_lists.keys():
-			for date_str in time_lists[key]:
-				day = int(date_str[8:10])
-				hr = int(date_str[11:13])
-				# date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
-				elem = (day - max_day) * 24 + (hr - max_hr)
-				try: 
-					time_norm[key].append(elem)
-				except:
-					time_norm[key] = list()
-					time_norm[key].append(elem)
-		
-		# If the original argument was a list put it back in that form 
-		if isList:
-			time_norm = time_norm[key]
-			
-		return time_norm
-				
+	
+		return [time_lists, isList]
+	
 	"""
 	
-	input - python datetime object
-	returns - formatted datetime strings
+		HELPER METHOD for normalize_timestamps
+		
+		Find the latest time stamp in a list
+	
+	"""		
+	def find_latest_date_in_list(self, time_lists):
+		
+		date_max = datetime.datetime(1000,1,1,0,0,0)
+		
+		for key in time_lists.keys():
+			for date_obj in time_lists[key]:
+				if date_int > date_min:
+					date_min = date_obj
+					
+		return date_max
+	
+	"""
+	
+		HELPER METHOD for normalize_timestamps
+		
+		Find the earliest time stamp in a list
+	
+	"""		
+	def find_earliest_date_in_list(self, time_lists):
+		
+		date_min = datetime.datetime(3000,1,1,0,0,0)
+		
+		for key in time_lists.keys():
+			for date_obj in time_lists[key]:
+				if date_obj < date_min:
+					date_min = date_obj
+					
+		return date_min
+	
+	"""
+	Takes datetime objects and converts them to a string format YYYYMMDDHHmmSS for SQL processing by the hour
+	
+	now - datetime object
+	hours_back - number of hours between start and end time
+	
+	returns formatted datetime start_time and end_time strings
 	
 	"""
 	def gen_date_strings_hr(self, now, hours_back):
@@ -138,9 +196,12 @@ class TimestampProcesser(object):
 		return [start_time, end_time]
 			
 	"""
+	Takes datetime objects and converts them to a string format YYYYMMDDHHmmSS for SQL processing by day
 	
-	input - python datetime object
-	returns - formatted datetime strings
+	now - datetime object
+	days_back - number of days between start and end time
+	
+	returns formatted datetime start_time and end_time strings
 	
 	"""
 	def gen_date_strings_day(self, now, days_back):
@@ -179,17 +240,17 @@ class TimestampProcesser(object):
 	
 	"""
 	
-	Formats date string to match the form of civicrm.civicrm_contribution.recieve_date
+	Given a datetime object produce a timestamp a number of hours in the past and according to a particular format
 	
 	format 1 - 20080101000606
 	format 2 - 2008-01-01 00:06:06
 	
 	input:
 	
-	now  - python datetime object
+	now  - datetime object
 	hours_back - the amount of time the 
 	format - the format of the returned timestamp strings 
-	resolution - the 
+	resolution - the resolution detail of the timestamp (e.g. down to the minute, down to the hour, ...)
 	
 	
 	returns - formatted datetime strings
@@ -212,20 +273,9 @@ class TimestampProcesser(object):
 	
 	"""
 	
-	Formats date string to match the form of civicrm.civicrm_contribution.recieve_date
-	
-	format 1 - 20080101000606
-	format 2 - 2008-01-01 00:06:06
-	
-	input:
-	
-	time_obj  - python datetime object
-	hours_back - the amount of time the 
-	format - the format of the returned timestamp strings 
-	resolution - 
-	
-	
-	returns - formatted datetime strings
+		Convert datetime objects to a timestamp of a given format
+		
+		HELPER METHOD for gen_date_strings
 	
 	"""
 	def timestamp_from_obj(self, time_obj, format, resolution):
@@ -277,18 +327,82 @@ class TimestampProcesser(object):
 		return timestamp
 	
 	
+	"""
+	
+		Convert timestamp to a datetime object of a given format
+	
+	"""
+	def timestamp_to_obj(self, timestamp, format):
+		
+		if format == 1:
+			time_obj = datetime.datetime(int(timestamp[0:4]), int(timestamp[4:6]), int(timestamp[6:8]), \
+										int(timestamp[8:10]), int(timestamp[10:12]), int(timestamp[12:14]))
+			
+		elif format == 2:
+			time_obj = datetime.datetime(int(timestamp[0:4]), int(timestamp[5:7]), int(timestamp[8:10]), \
+										int(timestamp[11:13]), int(timestamp[14:16]), int(timestamp[17:19]))
+	
+		return time_obj
+	
+	
+	"""
+	
+		Inserts missing interval points into the time and metric lists
+		
+		Assumptions: 
+			_metrics_ and _times_ are lists of the same length
+			there must be a data point at each interval 
+			Some data points may be missed
+			where there is no metric data the metric takes on the value 0.0
+		
+		e.g. when _interval_ = 10
+		times = [0 10 30 50], metrics = [1 1 1 1] ==> [0 10 30 40 50], [1 1 0 1 0 1]	
+		
+	"""
+	def normalize_intervals(self, times, metrics, interval):
+		
+		current_time = 0.0
+		index = 0
+		iterations = 0
+		max_elems = math.ceil((times[-1] - times[0]) / interval) # there should be no more elements in the list than this
+		
+		new_times = list()
+		new_metrics = list()
+		
+		""" Iterate through the time list """
+		while index < len(times):
+			
+			""" TEMPORARY SOLUTION: break out of the loop if more than the maximum number of elements is reached """
+			if iterations > max_elems:
+				break;
+			
+			new_times.append(current_time)
+			
+			""" If the current time is not in the current list then add it and a metric value of 0.0
+				otherwise add the existing elements to the new lists """
+			if current_time != times[index]:
+				new_metrics.append(0.0)
+			
+			else:
+				new_metrics.append(metrics[index])
+				index = index + 1
+			
+			current_time = current_time + interval
+			
+			iterations = iterations + 1
+			
+		return [new_times, new_metrics]
+
 """
 
 CLASS :: ^FundraiserReporting^
 
 Base class for reporting fundraiser analytics.  Methods that are intended to be extended in derived classes include:
 
-run_query()
+run_query() - format and execute the query to obtain data
+gen_plot() - plots the results of the report
+write_to_html_table() - writes the results to an HTML table
 run()
-gen_plot()
-publish_google_sheet()
-write_to_html_table()
-
 
 """
 class FundraiserReporting(TimestampProcesser):
@@ -300,8 +414,8 @@ class FundraiserReporting(TimestampProcesser):
 	def init_db(self):
 		""" Establish connection """
 		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		#self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
+		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
+		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
 		""" Create cursor """
 		self.cur = self.db.cursor()
@@ -1051,43 +1165,41 @@ class MinerReporting(FundraiserReporting):
 	
 """
 
-INCOMPLETE - 
-CLASS :: ^ConfidenceReporting^
+CLASS :: ^IntervalReporting^
 
-To be called primarily for reporting 
+Performs queries that take timestamps, query, and an interval as arguments.  Data for a single metric 
+is generated for each time interval in the time period defined by the start and end timestamps. 
+
+Types of queries supported:
+
+report_banner_metrics_minutely
+report_LP_metrics_minutely
 
 """
 
-class ConfidenceReporting(FundraiserReporting):
+class IntervalReporting(FundraiserReporting):
 	
-	def __init__(self, query_name, cmpgn_1, cmpgn_2, item_1, item_2, start_time , end_time, metric):
-		self.query_name = query_name
-		self.cmpgn_1 = cmpgn_1
-		self.cmpgn_2 = cmpgn_2
-		self.item_1 = item_1
-		self.item_2 = item_2
-		self.start_time = start_time
-		self.end_time = end_time
-		self.metric = metric
-
-	
-	def run_query(self):
+	def run_query(self, start_time, end_time, interval, query_name, metric_name, campaign):
 		
 		self.init_db()
-		query_obj = qs.query_store()
 		
-		metric_list_1 = mh.AutoVivification()
-		metric_list_2 = mh.AutoVivification()
-		time_list = mh.AutoVivification()
+		query_obj = qs.query_store()
+
+		metrics = mh.AutoVivification()
+		times = mh.AutoVivification()
+		times_norm = mh.AutoVivification()
 		
 		# Load the SQL File & Format
-		filename = './sql/' + self.query_name + '.sql'
+		filename = './sql/' + query_name + '.sql'
 		sql_stmnt = mh.read_sql(filename)
 		
-		sql_stmnt = query_obj.format_query(self.query_name, sql_stmnt, [self.start_time, self.end_time, self.cmpgn_1, self.item_1])
+		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval])
+		#print sql_stmnt
 		
-		time_index = query_obj.get_time_index(query_name)
+		# Get Indexes into Query
+		key_index = query_obj.get_banner_index(query_name)
 		metric_index = query_obj.get_metric_index(query_name, metric_name)
+		time_index = query_obj.get_time_index(query_name)
 		
 		# Composes the data for each banner
 		try:
@@ -1097,29 +1209,119 @@ class ConfidenceReporting(FundraiserReporting):
 			results = self.cur.fetchall()
 			
 			for row in results:
-
-				key_name = row[key_index]
 				
+				key_name = row[key_index]
+			 	time_obj = self.timestamp_to_obj(row[time_index], 1)  # format = 1, 14-digit TS 
+			 	
+				""" For each new dictionary index by key name start a new list if its not already there """	
 				try:
-					metric_lists[key_name].append(row[metric_index])
-					time_lists[key_name].append(row[time_index])
+					metrics[key_name].append(row[metric_index])
+					times[key_name].append(time_obj)
 				except:
-					metric_lists[key_name] = list()
-					time_lists[key_name] = list()
-
-					metric_lists[key_name].append(row[metric_index])
-					time_lists[key_name].append(row[time_index])
-
+					metrics[key_name] = list()
+					times[key_name] = list()
+					
+					metrics[key_name].append(row[metric_index])
+					times[key_name].append(time_obj)
+					
 		except:
 			self.db.rollback()
 			sys.exit("Database Interface Exception:\n" + err_msg)
 		
+		""" Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
+		for key in times.keys():
+			times_norm[key] = self.normalize_timestamps(times[key], False, 2)
+			times_norm[key], metrics[key] = self.normalize_intervals(times_norm[key], metrics[key], interval)
+			
 		self.close_db()
 		
-	def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
-		return
+		return [metrics, times_norm]
+	
 		
-	def run(self):
-		self.run_query()
+	def gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname):
+		
+		pylab.subplot(subplot_index)
+		pylab.figure(num=None,figsize=[26,14])	
+		
+		line_types = ['b-o','g-o','r-o','c-o','m-o','k-o','y-o','b--d','g--d','r--d','c--d','m--d','k--d','y--d','b-.s','g-.s','r-.s','c-.s','m-.s','k-.s','y-.s']
+		
+		count = 0
+		for key in metrics.keys():
+			pylab.plot(times[key], metrics[key], line_types[count])
+			count = count + 1
+		
+		pylab.grid()
+		pylab.xlim(ranges[0], ranges[1])
+		pylab.legend(metrics.keys(),loc=2)
+
+		pylab.xlabel(xlabel)
+		pylab.ylabel(ylabel)
+
+		pylab.title(title)
+		pylab.savefig(fname, format='png')
+
+
+
+	"""
+	
+		start_time, end_time -- start and end timestamps
+		
+	"""		
+	def run(self, start_time, end_time, interval, query_name, metric_name, campaign):
+		
+		query_obj = qs.query_store()
+		
+		print '\nGenerating ' + query_name +', start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
+		
+		# Run Query
+		return_val = self.run_query(start_time, end_time, interval, query_name, metric_name, campaign)
+		counts = return_val[0]
+		times = return_val[1]
+		
+		# Normalize times
+		min_time = min(times)
+		ranges = [min_time, 0]
+		
+		xlabel = 'Hours'
+		subplot_index = 111
+		fname = query_name + '.png'
+		
+		title = query_obj.get_plot_title(query_name)
+		title = title + ' -- ' + start_time + ' - ' + end_time
+		ylabel = query_obj.get_plot_ylabel(query_name)
+		
+		# Convert counts to float (from Decimal) to prevent exception when bar plotting
+		# Bbox::update_numerix_xy expected numerix array
+		for key in counts.keys():
+			counts_new = list()
+			for i in range(len(counts[key])):
+				counts_new.append(float(counts[key][i]))
+			counts[key] = counts_new
+		
+		""" Determine List maximums """
+		times_max = 0
+		metrics_max = 0
+		
+		for key in counts.keys():
+			list_max = max(counts[key])
+			if list_max > metrics_max:
+				metrics_max = list_max 
+		
+		for key in times.keys():
+			list_max = max(times[key])
+			if list_max > times_max:
+				times_max = list_max
+		
+		print times_max
+		print metrics_max
+		ranges = list()
+		ranges.append(0)
+		ranges.append(times_max * 1.1)
+		ranges.append(0)
+		ranges.append(metrics_max * 1.1)
+		
+		
+		# Generate Histogram
 		self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname)
 		
+

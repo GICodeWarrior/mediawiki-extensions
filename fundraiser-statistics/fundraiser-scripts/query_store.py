@@ -126,7 +126,22 @@ class query_store:
 		
 		elif query_name == 'report_ecomm_by_contact':
 			where_str = args[0]
-			sql_stmnt = sql_stmnt % ('%', '%',  '%',  '%', where_str)
+			sql_stmnt = sql_stmnt % ('%', '%', '%', '%', where_str)
+		
+		elif query_name == 'report_banner_metrics_minutely':
+			start_time = args[0]
+			end_time = args[1]
+			campaign = args[2]
+			interval = args[3]
+			sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, \
+									'%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
+		
+		elif query_name == 'report_LP_metrics_minutely':
+			start_time = args[0]
+			end_time = args[1]
+			campaign = args[2]
+			interval = args[3]
+			sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, start_time, end_time, campaign, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
 			
 		else:
 			return 'no such table\n'
@@ -151,6 +166,13 @@ class query_store:
 		else:
 			return 'no such table'
 
+	""" Returns the index of the key for the query data """
+	def get_key_index(self, query_name):
+		if query_name == 'report_banner_metrics_minutely':
+			return 1
+		elif query_name == 'report_LP_metrics_minutely':
+			return 1
+		
 	def get_count_index(self, query_name):
 		if query_name == 'report_lp_views_by_hour':
 			return 1
@@ -175,6 +197,10 @@ class query_store:
 		elif query_name == 'report_banner_impressions_by_hour':
 			return 0
 		elif query_name == 'report_lp_views_by_hour':
+			return 0
+		elif query_name == 'report_banner_metrics_minutely':
+			return 0
+		elif query_name == 'report_LP_metrics_minutely':
 			return 0
 		else:
 			return -1
@@ -202,6 +228,8 @@ class query_store:
 			return 1
 		elif query_name == 'report_bannerLP_metrics':
 			return 1
+		elif query_name == 'report_banner_metrics_minutely':
+			return 1
 		else:
 			return -1
 
@@ -215,6 +243,8 @@ class query_store:
 		elif query_name == 'report_contribution_tracking':
 			return 2
 		elif query_name == 'report_bannerLP_metrics':
+			return 1
+		elif query_name == 'report_LP_metrics_minutely':
 			return 1
 		else:
 			return -1
@@ -317,9 +347,24 @@ class query_store:
 				return 15
 			else:
 				return -1
+		elif query_name == 'report_LP_metrics_minutely':
+			if metric_name == 'don_per_view':
+				return 7
+			elif metric_name == 'amt50_per_view':
+				return 9
+			else:
+				return -1
+		elif query_name == 'report_banner_metrics_minutely':
+			if metric_name == 'don_per_imp':
+				return 10
+			elif metric_name == 'amt50_per_imp':
+				return 12
+			else:
+				return -1
 		else:
 			return 'no such table'
 	
+			
 	def get_plot_title(self, query_name):
 		if query_name == 'report_banner_impressions_by_hour':
 			return 'Banner Impressions Over the Past 24 Hours'
