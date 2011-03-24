@@ -1308,6 +1308,7 @@ Se você estiver autenticado, você pode desabilitar este aviso na seção "Opç
 	'vector-editwarning-preference' => 'Avisar-me quando eu deixar uma janela de edição sem ter salvo as alterações',
 	'vector-simplesearch-search' => 'Pesquisa',
 	'vector-simplesearch-containing' => 'contendo...',
+	'vector-noexperiments-preference' => 'Excluir-me da experimentação de funcionalidades',
 );
 
 /** Quechua (Runa Simi)
