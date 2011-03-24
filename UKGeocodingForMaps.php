@@ -45,7 +45,7 @@ $wgExtensionFunctions[] = 'ukgfSetup';
 function ukgfSetup() {
 	global $wgExtensionCredits;
 
-	wfLoadExtensionMessages( 'UKGeocodingForMaps' );
+	
 
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__,
