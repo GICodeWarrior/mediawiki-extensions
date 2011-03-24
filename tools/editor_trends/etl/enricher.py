@@ -34,6 +34,8 @@ from collections import deque
 if '..' not in sys.path:
     sys.path.append('..')
 
+from utils import file_utils
+
 try:
     from database import cassandra
     import pycassa
@@ -265,7 +267,11 @@ def determine_namespace(title):
         if ns == {}:
             for namespace in NAMESPACE.values():
                 if title.startswith(namespace):
-                    ns = False #article does not belong to either the main namespace, user, talk or user talk namespace.
+                    '''
+                    article does not belong to either the main namespace, user, 
+                    talk or user talk namespace.
+                    '''
+                    ns = False
                     return ns
             ns['namespace'] = 0
     else:
@@ -283,7 +289,7 @@ def prefill_row(title, article_id, namespace):
 
 def is_revision_reverted(hash_cur, hashes):
     revert = {}
-    if hash_cur in hashes:
+    if hash_cur in hashes and hash_cur != -1:
         revert['revert'] = 1
     else:
         revert['revert'] = 0
@@ -296,12 +302,34 @@ def extract_comment_text(revision_id, revision):
     if text != None and text.text != None:
         comment[revision_id] = text.text.encode('utf-8')
     return comment
-    
+
+
+
+def count_edits(article, counts, bots):
+    title = article['title'].text
+    namespace = determine_namespace(article['title'])
+
+    if namespace != False:
+        article_id = article['id'].text
+        revisions = article['revisions']
+        for revision in revisions:
+            if revision == None:
+                #the entire revision is empty, weird. 
+                continue
+            contributor = revision.find('contributor')
+            contributor = parse_contributor(contributor, bots)
+            if not contributor:
+                #editor is anonymous, ignore
+                continue
+            counts.setdefault(contributor['username'], 0)
+            counts[contributor['username']] += 1
+    return counts
+
 
 def create_variables(article, cache, bots):
     title = article['title'].text
     namespace = determine_namespace(article['title'])
-    
+
     if namespace != False:
         cache.stats.count_articles += 1
         article_id = article['id'].text
@@ -324,7 +352,7 @@ def create_variables(article, cache, bots):
             if revision_id == None:
                 #revision_id is missing, which is weird
                 continue
-            
+
             row = prefill_row(title, article_id, namespace)
             row['revision_id'] = revision_id
             text = extract_revision_text(revision)
@@ -332,7 +360,7 @@ def create_variables(article, cache, bots):
 
             comment = extract_comment_text(revision_id, revision)
             cache.comments.update(comment)
-            
+
             timestamp = revision.find('timestamp').text
             row['timestamp'] = timestamp
 
@@ -366,12 +394,17 @@ def parse_xml(buffer):
     return article
 
 
-def stream_raw_xml(input_queue, storage, id):
+def stream_raw_xml(input_queue, storage, id, dataset='training'):
     buffer = cStringIO.StringIO()
     parsing = False
-    bots = detector.retrieve_bots('en')
-    cache = Buffer(storage, id)
     i = 0
+    bots = detector.retrieve_bots('en')
+
+    if dataset == 'training':
+        cache = Buffer(storage, id)
+    else:
+        counts = {}
+
     while True:
         filename = input_queue.get()
         input_queue.task_done()
@@ -379,36 +412,30 @@ def stream_raw_xml(input_queue, storage, id):
             break
 
         for data in unzip(filename):
-            if data.startswith('<page>'):
+            if data.find('<page>') > -1:
                 parsing = True
             if parsing:
                 buffer.write(data)
-                buffer.write('\n')
-                if data == '</page>':
+                if data.find('</page>') > -1:
                     i += 1
                     buffer.seek(0)
                     article = parse_xml(buffer)
-                    create_variables(article, cache, bots)
+                    if dataset == 'training':
+                        function(article, cache, bots)
+                    else:
+                        counts = function(article, counts, bots)
                     buffer = cStringIO.StringIO()
 
                     if i % 10000 == 0:
                         print 'Worker %s parsed %s articles' % (id, i)
 
-               
-    cache.empty()
-    print 'Finished parsing bz2 archives'
-    cache.stats.summary()
-
-
-def debug():
-    input_queue = JoinableQueue()
-    result_queue = JoinableQueue()
-    files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
-
-    for file in files:
-        input_queue.put(file)
-
-    stream_raw_xml(input_queue, result_queue)
+    if dataset == 'training':
+        cache.empty()
+        print 'Finished parsing bz2 archives'
+        cache.stats.summary()
+    else:
+        location = os.getcwd()
+        file_utils.store_object(counts, location, 'counts.bin')
 
 
 def unzip(filename):
@@ -419,10 +446,10 @@ def unzip(filename):
     '''
     fh = bz2.BZ2File(filename, 'r')
     for line in fh:
-        line = line.strip()
         yield line
     fh.close()
     print 'Reached end of BZ2 file.'
+
 
 def setup(storage):
     keyspace_name = 'enwiki'
@@ -430,14 +457,14 @@ def setup(storage):
         cassandra.install_schema(keyspace_name, drop_first=True)
 
 
-def launcher():
+def launcher(function, path):
     storage = 'csv'
     setup(storage)
     input_queue = JoinableQueue()
     #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
     #files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
-    path = '/media/wikipedia_dumps/batch1/'
-    files = file_utils.retrieve_file_list(path, 'bz2', mask=None)
+
+    files = file_utils.retrieve_file_list(path, 'bz2')
 
     for file in files:
         filename = os.path.join(path, file)
@@ -447,20 +474,19 @@ def launcher():
     for x in xrange(cpu_count()):
         input_queue.put(None)
 
-    extracters = [Process(target=stream_raw_xml, args=[input_queue, storage, x])
+    extracters = [Process(target=stream_raw_xml, args=[input_queue, function, storage, x])
                   for x in xrange(cpu_count())]
     for extracter in extracters:
         extracter.start()
-
-    #creators = [Process(target=create_variables, args=[result_queue, storage, x])
-    #            for x in xrange(cpu_count())]
-    #for creator in creators:
-    #    creator.start()
-
 
     input_queue.join()
 
 
 if __name__ == '__main__':
-    #debug()
-    launcher()
+    path1 = '/media/wikipedia_dumps/batch1/'
+    path2 = '/media/wikipedia_dumps/batch2/'
+    function1 = create_variables
+    function2 = count_edits
+
+    launcher(function1, path1) # launcher for creating training data
+    launcher(function2, path2) # launcher for creating test data
