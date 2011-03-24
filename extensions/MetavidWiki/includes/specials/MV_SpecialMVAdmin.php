@@ -35,14 +35,14 @@ class MVAdmin extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $IP, $mvgIP;
+		//global $IP, $mvgIP;
 		// require_once($IP . '/includes/SpecialPage.php' );
 		// require_once($IP . '/includes/Title.php' );
 
 		global $wgOut, $wgRequest;
-		global $wgServer; // "http://www.yourserver.org"
+		//global $wgServer; // "http://www.yourserver.org"
 							// (should be equal to 'http://'.$_SERVER['SERVER_NAME'])
-		global $wgScript;   // "/subdirectory/of/wiki/index.php"
+		//global $wgScript;   // "/subdirectory/of/wiki/index.php"
 		global $wgUser;
 
 		if ( ! $wgUser->isAllowed( 'delete' ) ) {

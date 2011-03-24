@@ -15,7 +15,6 @@ class ParseEngine {
 	}
 
 	function parse($grammarName, &$text) {
-		global $IP;
 		wfDebugLog("ParseEngine", "==========Start Parse Engine==========\n");
 		$grammar = isset($this->mGrammars[$grammarName]) ? $this->mGrammars[$grammarName] : NULL;
 		if ($grammar == NULL) {

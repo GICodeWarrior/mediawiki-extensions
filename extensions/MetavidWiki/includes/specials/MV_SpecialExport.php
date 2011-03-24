@@ -20,7 +20,6 @@
  */
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-global $IP, $smwgIP;
 // all the special pages handled by this master Special Export (could reactor into individual classes if we want to)
 class MvVideoFeed extends SpecialPage {
 	function __construct() {

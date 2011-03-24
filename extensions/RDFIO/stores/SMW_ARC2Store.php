@@ -4,8 +4,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
     die( 'Not a valid entry point.' );
 }
 
-global $IP;
-
 require_once( "$IP/extensions/SemanticMediaWiki/includes/storage/SMW_SQLStore2.php" );
 
 /**
