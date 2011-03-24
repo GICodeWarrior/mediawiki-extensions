@@ -303,8 +303,8 @@ def extract_comment_text(revision_id, revision):
 
 
 def count_edits(article, counts, bots):
-    title = article['title'].text
-    namespace = determine_namespace(article['title'])
+    title = article['title']
+    namespace = determine_namespace(title)
 
     if namespace != False:
         article_id = article['id'].text
