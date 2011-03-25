@@ -321,10 +321,14 @@ def count_edits(article, counts, bots):
             counts.setdefault(contributor['username'], 0)
             counts[contributor['username']] += 1
 
-    for elem in article:
-        elem.clear()
-
+    clear_xml_elements(article)
     return counts
+
+
+def clear_xml_elements(article):
+    for elem in article:
+        if type(elem) != type('str'):
+            elem.clear()
 
 
 def create_variables(article, cache, bots):
