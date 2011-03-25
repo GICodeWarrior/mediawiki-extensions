@@ -102,6 +102,18 @@ $messages['fr'] = array(
 	'right-SPMsetup' => 'Modifier les paramètres basiques de gestion de projet sémantique',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'spm_wbs_link' => 'Exportación XML do MS Project',
+	'spm_printername_wbs' => 'Exportación do MS Project',
+	'spm-name' => 'Xestión do proxecto semántico',
+	'semanticprojectmanagement-desc' => 'Formatos de xestión do proxecto para as pescudas de Semantic MediaWik',
+	'semanticprojectmanagement' => 'Configuración da xestión do proxecto semántico',
+	'right-SPMsetup' => 'Editar as configuracións básicas da xestión do proxecto semántico',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -112,6 +124,18 @@ $messages['gsw'] = array(
 	'semanticprojectmanagement-desc' => 'Projäktmanagement-Format fir Semantic MediaWiki inline-Abfroge',
 	'semanticprojectmanagement' => 'Yystellige zum Semantische Projäktmanagement',
 	'right-SPMsetup' => 'Di grundlegende Yystellige vum Semantische Projäktmanagement bearneite',
+);
+
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'spm_wbs_link' => 'יצוא לקובץ MS Project XML',
+	'spm_printername_wbs' => 'יצוא MS Project',
+	'spm-name' => 'ניהול פרויקטים סמנטי',
+	'semanticprojectmanagement-desc' => 'תסדירים לניהול פרויקטים לשאילתות מובנות של מדיה ויקי סמנטית',
+	'semanticprojectmanagement' => 'הגדרות ניהול פרויקטים סמנטי',
+	'right-SPMsetup' => 'עריכה של הגדרות בסיסיות של ניהול פרויקטים סמנטי',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

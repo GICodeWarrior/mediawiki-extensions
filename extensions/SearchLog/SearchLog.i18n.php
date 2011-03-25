@@ -245,3 +245,19 @@ $messages['sv'] = array(
 	'right-searchlog-read' => 'Visa sökloggen',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'searchlog' => 'Talaan ng Paghahanap',
+	'searchlog-desc' => 'Nagtatala ng paggamit ng kahong panghanap at nagpapahintulot ng pag-uulat ng mga kabuuan ng susing-salita habang nasa loob ng mga kapanahunan ng oras.',
+	'searchlog-cantopen' => 'Hindi mabukasan ang talaksan ng talaan na <tt>$1</tt>',
+	'searchlog-heading' => 'Hanapin ang mga susing-salita na ginamit sa loob ng kapanahunang $1',
+	'searchlog-unicode' => 'Ipakita ang hilaw na pinag-isang kodigo',
+	'searchlog-timeperiod' => 'Piliin ang kapanahunan:',
+	'searchlog-entire' => 'Buong talaan',
+	'searchlog-phrase' => 'Parirala sa paghahanap',
+	'searchlog-occurences' => 'Bilang ng mga pagdatal habang nasa loob ng kapanahunan',
+	'right-searchlog-read' => 'Tingnan ang talaan ng paghahanap',
+);
+

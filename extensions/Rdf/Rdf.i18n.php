@@ -134,6 +134,16 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Imaxes incrustadas',
+	'rdf-linksto' => 'Ligazóns cara á páxina',
+	'rdf-linksfrom' => 'Ligazóns desde a páxina',
+	'rdf-links' => 'Todas as ligazóns',
+	'rdf-history' => 'Versións históricas',
+	'rdf-interwiki' => 'Ligazóns interwiki',
+	'rdf-categories' => 'Categorías',
+	'rdf-target' => 'Páxina de destino',
+	'rdf-modelnames' => 'Modelo(s)',
+	'rdf-format' => 'Formato de saída',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

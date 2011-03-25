@@ -131,6 +131,8 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'includewp-loading-page' => 'Cargando a páxina...',
 	'includewp-show-full-page' => 'Mostrar a páxina ao completo',
+	'includewp-show-fragment' => 'Mostrar só o primeiro parágrafo',
+	'includewp-loading-failed' => 'Erro ao cargar a páxina.',
 );
 
 /** Hebrew (עברית)

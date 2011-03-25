@@ -11297,6 +11297,15 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'configure-js-remove' => 'Čuta poiš',
+	'configure-js-remove-row' => 'Čuta poiš nece kirjutez',
+	'configure-js-get-image-url' => 'Tehta failannimespäi URL-adres',
+	'configure-js-biglist-hidden' => 'Järgendusiden detalid oma peittud',
+	'configure-js-biglist-show' => '[ozutada detalid]',
+	'configure-js-biglist-hide' => '[peitta detalid]',
+	'configure-js-summary-none' => 'Ei ole järgendusid',
+	'configure-js-search-legend' => 'Järgendusiden ecmine',
+	'configure-js-search-prompt' => 'Küzund:',
 	'configure-old' => 'Vanhad versijad',
 	'configure-old-changes' => 'toižetused',
 	'configure-section-pages' => 'Lehtpoled',
@@ -11307,7 +11316,6 @@ $messages['vep'] = array(
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-parser' => 'Parser',
 	'configure-section-users' => 'Kävutajad',
-	'configure-section-extension' => 'Ližad',
 	'configure-section-filter' => "Fil'truind",
 	'configure-section-external-tools' => 'Irdazeged',
 	'configure-select-wiki-view-all' => 'Kaik wikid',

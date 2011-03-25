@@ -684,16 +684,22 @@ Pokušajte koristiti komandu "$3{...}".',
  * @author Aleator
  * @author El libre
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'math_noblahtex' => 'No es pot executar blahtex, que hauria de ser a $1',
 	'blahtext-desc' => 'Sortida MathML per les etiquetes &lt;math&gt;',
+	'math_AmbiguousInfix' => "Coŀlocació ambigua de «$1».
+Proveu de fer servir claus addicionals { ... } per a evitar l'ambigüitat.",
 	'math_CannotChangeDirectory' => 'No es pot canviar el directori de treball',
 	'math_CannotCreateTexFile' => "No s'ha pogut crear el fitxer tex",
 	'math_CannotRunDvipng' => 'No pot executar dvipng',
 	'math_CannotRunLatex' => 'No es pot executar latex',
 	'math_CannotWritePngDirectory' => 'No es pot escriure al directori de sortida PNG',
 	'math_CannotWriteTexFile' => "No s'ha pogut escriure al fitxer tex",
+	'math_CasesRowTooBig' => "Només hi poden haver dues entrades a cada fila d'un bloc «cases»",
+	'math_DoubleSubscript' => "S'han trobat dos subíndexs associats a la mateixa base. Se'n permet un de sol.",
+	'math_DoubleSuperscript' => "S'han trobat dos superíndexs associats a la mateixa base. Se'n permet un de sol.",
 	'math_IllegalCharacter' => "Caràcter il.legal en l'entrada",
 	'math_IllegalCommandInMathMode' => 'La comanda "$1" és il·legal en mode matemàtic',
 	'math_IllegalDelimiter' => 'Delimitador il·legal a continuació de "$1"',

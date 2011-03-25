@@ -31,6 +31,16 @@ $messages['be-tarask'] = array(
 	'printversion-inexistent-book' => 'Кніга ня знойдзеная. Калі ласка, увядзіце назву існуючай кнігі, каб атрымаць яе вэрсію для друку.',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'printversion' => 'Versió per imprimir',
+	'printversion-desc' => "Genera una [[Special:PrintVersion|versió per imprimir]] d'un llibre",
+	'printversion-no-book' => "Introduïu el nom d'un llibre per a obtenir la seva versió impresa.",
+	'printversion-inexistent-book' => "No s'ha trobat el llibre. Introduïu el nom d'un llibre existent, per a obtenir-ne la versió per imprimir.",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Purodha
@@ -40,6 +50,36 @@ $messages['de'] = array(
 	'printversion-desc' => 'Ergänzt eine Spezialseite zum [[Special:PrintVersion|Erstellen einer Druckversion]] eines Buchs',
 	'printversion-no-book' => 'Bitte den Namen des Buchs angeben, für das eine Druckversion erstellt werden soll.',
 	'printversion-inexistent-book' => 'Das Buch wurde nicht gefunden. Bitte den Namen eines vorhandenen Buchs angeben, für das eine Druckversion erstellt werden soll.',
+);
+
+/** French (Français)
+ * @author Crochet.david
+ */
+$messages['fr'] = array(
+	'printversion' => 'Version imprimable',
+	'printversion-desc' => 'Génère une [[Special:PrintVersion|version imprimable]] d’un livre',
+	'printversion-no-book' => 'Veuillez entrer le nom d’un livre pour obtenir sa version imprimée.',
+	'printversion-inexistent-book' => 'Livre introuvable. Veuillez entrer le nom d’un livre existant pour obtenir sa version imprimée.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'printversion' => 'Versión para imprimir',
+	'printversion-desc' => 'Xera a [[Special:PrintVersion|versión para imprimir]] dun libro',
+	'printversion-no-book' => 'Introduza o nome dun libro para obter a súa versión para imprimir.',
+	'printversion-inexistent-book' => 'Non se atopou o libro. Introduza o nome dun libro que exista para obter a súa versión para imprimir.',
+);
+
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'printversion' => 'גרסת הדפסה',
+	'printversion-desc' => 'יצירת [[Special:PrintVersion|גרסת הדפסה]] מיוחדת של הספר',
+	'printversion-no-book' => 'נא להזין את שם הספר כדי לקבל את גרסת ההדפסה שלו.',
+	'printversion-inexistent-book' => 'הספר לא נמצא. נא להזין את שם הספר הקיים כדי לקבל את גרסת ההדפסה שלו.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -90,6 +130,16 @@ $messages['mk'] = array(
 	'printversion-desc' => 'Создава [[Special:PrintVersion|верзија за печатење]] на книга',
 	'printversion-no-book' => 'Внесете го името на книгата за да ја добиете верзијата за печатење',
 	'printversion-inexistent-book' => 'Не ја најдов книгата. Внесете име на постоечка книга за да ја добиете нејзината верзија за печатење.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'printversion' => 'Afdrukbare versie',
+	'printversion-desc' => 'Maakt een [[Special:PrintVersion|afdrukbare versie]] van een boek',
+	'printversion-no-book' => 'Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
+	'printversion-inexistent-book' => 'Het boek is niet aangetroffen. Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
 );
 
 /** Portuguese (Português)

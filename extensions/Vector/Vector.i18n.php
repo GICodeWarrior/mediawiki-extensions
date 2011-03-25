@@ -1449,6 +1449,7 @@ Ak ste prihlásený, toto upozornenie môžete vypnúť v sekcii „Úpravy“ s
 	'vector-editwarning-preference' => 'Upozorniť ma, keď opúšťam upravovaciu stránku s neuloženými zmenami',
 	'vector-simplesearch-search' => 'Hľadať',
 	'vector-simplesearch-containing' => 'obsahuje...',
+	'vector-noexperiments-preference' => 'Vylúčiť ma z budúcich experimentov',
 );
 
 /** Slovenian (Slovenščina)

@@ -211,6 +211,41 @@ $messages['bs'] = array(
 	'ts-citegen-Tools' => 'Alati',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'ts-citegen-Title' => 'Generador de plantilles de citacions',
+	'ts-citegen-Send' => 'Genera',
+	'ts-citegen-Input-title' => 'Entrada de dades',
+	'ts-citegen-Input-text' => 'Açò és un generador de plantilles de citacions. Utilitzant-lo podeu omplir ràpidament les plantilles de citació en diverses versions idiomàtiques de la Viquipèdia. Ompliu les dades (%s) a les caselles que apareixen a continuació, i el programa intentarà completar les plantilles. Recordeu que no importa en quines caselles introduïu les dades. El programa coŀlocarà automàticament la plantilla adequada a les dades donades.',
+	'ts-citegen-Option-append-author-link' => "Afegeix enllaços wiki de l'autor a la plantilla",
+	'ts-citegen-Option-append-newlines' => 'Afegeix noves línies després de cada paràmetre',
+	'ts-citegen-Option-add-references' => 'Envolta les plantilles de citació amb etiquetes <ref>',
+	'ts-citegen-Option-add-list' => 'Crea una wikillista de les plantilles de citació',
+	'ts-citegen-Output-title' => 'Resultat',
+	'ts-citegen-Output-select-disclaimer' => "Escollir l'idioma de la plantilla no garanteix que la plantilla específica estigui disponible en aquest idioma. La llista mostra tots els idiomes disponibles de qualsevol plantilla compatible, és a dir, pot mostrar l'idioma francès encara que només la plantilla {{Cite book}} estigui disponible.",
+	'ts-citegen-Wrong-input' => "%s: no s'identifica com a entrada correcta.",
+	'ts-citegen-Parsers' => 'Analitzadors',
+	'ts-citegen-Skins' => 'Sortida',
+	'ts-citegen-Skin-skins' => 'Aparences',
+	'ts-citegen-Skin-outputformat' => 'Format de sortida',
+	'ts-citegen-Template-lang' => 'Idioma de la plantilla',
+	'ts-citegen-Sources-title' => 'Fonts',
+	'ts-citegen-Sources-text' => 'A continuació hi ha la llista de les fonts utilitzades',
+	'ts-citegen-Sidebar-title' => 'Generador de citacions',
+	'ts-citegen-Sidebar-add-Firefox' => 'Afegeix a la barra lateral',
+	'ts-citegen-Sidebar-add-Opera' => 'Afegeix a la Hotlist',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Afegeix al Page Holder',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => "Quan la pàgina s'hagi carregat, obrir el Page Holder, feu clic a 'Add' i useu el botó de Favorits del Page Holder per a desar-lo com a favorit.",
+	'ts-citegen-Tools' => 'Eines',
+	'ts-citegen-Other-languages' => 'Altres idiomes',
+	'ts-citegen-Save-it' => 'Consulta actual',
+	'ts-citegen-Errors-title' => 'Errors',
+	'ts-citegen-Unavailable-SQL' => 'Error: La base de dades del toolserver no està disponible. MySQL retorna: %s',
+	'ts-citegen-base-disabled' => 'Error: La base de dades %s no està disponible',
+);
+
 /** German (Deutsch)
  * @author Holek
  * @author Kghbln
@@ -308,6 +343,30 @@ $messages['fr'] = array(
 	'ts-citegen-Errors-title' => 'Erreurs',
 	'ts-citegen-Unavailable-SQL' => "Erreur: le ''toolserver'' de la base de données n'est pas disponible. MySQL a retourné: %s",
 	'ts-citegen-base-disabled' => "Erreur: la base de données %s n'est pas disponible",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'ts-citegen-Title' => 'Xerador de modelos de citas',
+	'ts-citegen-Send' => 'Xerar',
+	'ts-citegen-Input-title' => 'Entrada',
+	'ts-citegen-Output-title' => 'Resultados',
+	'ts-citegen-Parsers' => 'Analizadores',
+	'ts-citegen-Skins' => 'Saída',
+	'ts-citegen-Skin-skins' => 'Temas',
+	'ts-citegen-Skin-outputformat' => 'Formato de saída',
+	'ts-citegen-Template-lang' => 'Lingua do modelo',
+	'ts-citegen-Sources-title' => 'Fontes',
+	'ts-citegen-Sidebar-title' => 'Xerador de citas',
+	'ts-citegen-Sidebar-add-Firefox' => 'Engadir á barra lateral',
+	'ts-citegen-Sidebar-add-Opera' => 'Engadir á lista de preferencia',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Engadir ao marcador de páxinas',
+	'ts-citegen-Tools' => 'Ferramentas',
+	'ts-citegen-Other-languages' => 'Outras linguas',
+	'ts-citegen-Save-it' => 'Pescuda actual',
+	'ts-citegen-Errors-title' => 'Erros',
 );
 
 /** Swiss German (Alemannisch)

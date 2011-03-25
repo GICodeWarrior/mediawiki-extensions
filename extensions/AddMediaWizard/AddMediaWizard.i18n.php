@@ -109,6 +109,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'addmediawizard-desc' => 'Průvodce vložením médií, vyvinutý ve spolupráci nadace Wikimedia se společností Kaltura',
+	'addmediawizard-loading' => 'Načítá se průvodce pro přidání médií',
 );
 
 /** Welsh (Cymraeg)
