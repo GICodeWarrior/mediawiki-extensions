@@ -348,14 +348,26 @@ class query_store:
 			else:
 				return -1
 		elif query_name == 'report_LP_metrics_minutely':
-			if metric_name == 'don_per_view':
+			if metric_name == 'views':
+				return 2
+			elif metric_name == 'donations':
+				return 4
+			elif metric_name == 'amount50':
+				return 5
+			elif metric_name == 'don_per_view':
 				return 7
 			elif metric_name == 'amt50_per_view':
 				return 9
 			else:
 				return -1
 		elif query_name == 'report_banner_metrics_minutely':
-			if metric_name == 'don_per_imp':
+			if metric_name == 'imp':
+				return 2
+			elif metric_name == 'donations':
+				return 5
+			elif metric_name == 'amount50':
+				return 7
+			elif metric_name == 'don_per_imp':
 				return 10
 			elif metric_name == 'amt50_per_imp':
 				return 12
@@ -378,5 +390,25 @@ class query_store:
 			return 'IMPRESSIONS'
 		elif query_name == 'report_lp_views_by_hour':
 			return 'VIEWS'
+		else:
+			return'no such table'
+		
+	def get_metric_full_name(self, metric_name):
+		if metric_name == 'imp':
+			return 'IMPRESSIONS'
+		elif metric_name == 'view':
+			return 'VIEWS'
+		elif metric_name == 'don_per_imp':
+			return 'DONATIONS PER IMPRESSION'
+		elif metric_name == 'don_per_view':
+			return 'DONATIONS PER VIEW'
+		elif metric_name == 'amt50_per_imp':
+			return 'AMOUNT50 PER IMPRESSION'
+		elif metric_name == 'amt50_per_view':
+			return 'AMOUNT50 PER VIEW'
+		elif metric_name == 'amount50':
+			return 'AMOUNT50'
+		elif metric_name == 'donations':
+			return 'DONATIONS'
 		else:
 			return'no such table'

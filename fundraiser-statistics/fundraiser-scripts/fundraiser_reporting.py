@@ -44,7 +44,6 @@ class TimestampProcesser(object):
 		
 		time_lists, isList = self.timestamps_to_dict(time_lists)
 		
-		
 		""" Depending on args set the start date """
 		if count_back:
 			start_date_obj = self.find_latest_date_in_list(time_lists)
@@ -308,11 +307,11 @@ class TimestampProcesser(object):
 		# Cast the start and end time strings in the proper format
 		if format == 1:
 			
-			if resoution == 1:
+			if resolution == 1:
 				timestamp = str(time_obj.year) + month + day + hour + '0000'
-			elif resoution == 2:
+			elif resolution == 2:
 				timestamp = str(time_obj.year) + month + day + hour + minute + '00'
-			elif resoution == 3:
+			elif resolution == 3:
 				timestamp = str(time_obj.year) + month + day + hour + minute + second
 		
 		elif format == 2:
@@ -393,6 +392,30 @@ class TimestampProcesser(object):
 			
 		return [new_times, new_metrics]
 
+	"""
+	
+		Converts from one timestamp format to another timestamp format
+		
+		format 1 - 20080101000606
+		format 2 - 2008-01-01 00:06:06	
+		
+	"""
+	def timestamp_convert_format(self, ts, format_from, format_to):
+		
+		if format_from == 1:
+			
+			if format_to == 2:
+				new_timestamp = ts[0:4] + '-' + ts[4:6] + '-' + ts[6:8] + ' ' + ts[8:10] + ':' + ts[10:12] + ':' + ts[12:14]
+				
+		elif format_from == 2:
+			if format_to == 1:
+				new_timestamp = ts[0:4] + ts[5:7] + ts[8:10] + ts[11:13] + ts[14:16] + ts[15:17]
+				
+		return new_timestamp
+	
+
+		
+		
 """
 
 CLASS :: ^FundraiserReporting^
@@ -1189,24 +1212,37 @@ class IntervalReporting(FundraiserReporting):
 		times = mh.AutoVivification()
 		times_norm = mh.AutoVivification()
 		
-		# Load the SQL File & Format
+		""" Load the SQL File & Format """
 		filename = './sql/' + query_name + '.sql'
 		sql_stmnt = mh.read_sql(filename)
 		
 		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval])
-		#print sql_stmnt
+		# print sql_stmnt
 		
-		# Get Indexes into Query
+		""" Get Indexes into Query """
 		key_index = query_obj.get_banner_index(query_name)
 		metric_index = query_obj.get_metric_index(query_name, metric_name)
 		time_index = query_obj.get_time_index(query_name)
 		
-		# Composes the data for each banner
+		""" Compose datetime objects to represent the first and last intervals """
+		start_time_obj = self.timestamp_to_obj(start_time, 1)
+		start_time_obj = start_time_obj.replace(minute=int(math.floor(start_time_obj.minute / interval) * interval))
+		start_time_obj_str = self.timestamp_from_obj(start_time_obj, 1, 2)
+		
+		end_time_obj = self.timestamp_to_obj(end_time, 1)
+		end_time_obj = end_time_obj + datetime.timedelta(seconds=-1)
+		end_time_obj = end_time_obj.replace(minute=int(math.floor(end_time_obj.minute / interval) * interval))			
+		end_time_obj_str = 	self.timestamp_from_obj(end_time_obj, 1, 2)
+		
+						
+		""" Compose the data for each separate donor pipeline artifact """
 		try:
 			err_msg = sql_stmnt
 			self.cur.execute(sql_stmnt)
 			
 			results = self.cur.fetchall()
+			final_time = dict() 									# stores the last timestamp seen
+			interval_obj = datetime.timedelta(minutes=interval)		# timedelta object used to shift times by _interval_ minutes
 			
 			for row in results:
 				
@@ -1216,26 +1252,46 @@ class IntervalReporting(FundraiserReporting):
 				""" For each new dictionary index by key name start a new list if its not already there """	
 				try:
 					metrics[key_name].append(row[metric_index])
-					times[key_name].append(time_obj)
+					times[key_name].append(time_obj + interval_obj)
+					final_time[key_name] = row[time_index]
 				except:
 					metrics[key_name] = list()
 					times[key_name] = list()
 					
-					metrics[key_name].append(row[metric_index])
-					times[key_name].append(time_obj)
-					
+					""" If the first element is not the start time add it 
+						this will be the case if there is no data for the first interval 
+						NOTE:   two datapoints are added at the beginning to define the first interval """
+					if start_time_obj_str != row[time_index]:
+						times[key_name].append(start_time_obj)
+						metrics[key_name].append(0.0)
+						
+						times[key_name].append(start_time_obj + interval_obj)
+						metrics[key_name].append(0.0)
+					else:
+						metrics[key_name].append(row[metric_index])
+						times[key_name].append(time_obj)
+						
+						metrics[key_name].append(row[metric_index])
+						times[key_name].append(time_obj + interval_obj)
+			
+			
 		except:
 			self.db.rollback()
 			sys.exit("Database Interface Exception:\n" + err_msg)
 		
-		""" Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
+		
+		""" Ensure that the last time in the list is the endtime less the interval """
+		
 		for key in times.keys():
-			times_norm[key] = self.normalize_timestamps(times[key], False, 2)
-			times_norm[key], metrics[key] = self.normalize_intervals(times_norm[key], metrics[key], interval)
+			if final_time[key_name] != end_time_obj_str:
+				times[key].append(end_time_obj)
+				metrics[key].append(0.0)
+		
+		# print times
 			
 		self.close_db()
 		
-		return [metrics, times_norm]
+		return [metrics, times]
 	
 		
 	def gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname):
@@ -1247,7 +1303,7 @@ class IntervalReporting(FundraiserReporting):
 		
 		count = 0
 		for key in metrics.keys():
-			pylab.plot(times[key], metrics[key], line_types[count])
+			pylab.step(times[key], metrics[key], line_types[count])
 			count = count + 1
 		
 		pylab.grid()
@@ -1278,17 +1334,22 @@ class IntervalReporting(FundraiserReporting):
 		counts = return_val[0]
 		times = return_val[1]
 		
+		""" Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
+		for key in times.keys():
+			times[key] = self.normalize_timestamps(times[key], False, 2)
+			times[key], counts[key] = self.normalize_intervals(times[key], counts[key], interval)
+		
 		# Normalize times
 		min_time = min(times)
 		ranges = [min_time, 0]
 		
-		xlabel = 'Hours'
+		xlabel = 'MINUTES'
 		subplot_index = 111
-		fname = query_name + '.png'
+		fname = campaign + ' ' + query_name + ' ' + metric_name + '.png'
 		
-		title = query_obj.get_plot_title(query_name)
-		title = title + ' -- ' + start_time + ' - ' + end_time
-		ylabel = query_obj.get_plot_ylabel(query_name)
+		metric_full_name = query_obj.get_metric_full_name(metric_name)
+		title = campaign + ':  ' + metric_full_name + ' -- ' + start_time + ' - ' + end_time
+		ylabel = metric_full_name
 		
 		# Convert counts to float (from Decimal) to prevent exception when bar plotting
 		# Bbox::update_numerix_xy expected numerix array
@@ -1312,8 +1373,6 @@ class IntervalReporting(FundraiserReporting):
 			if list_max > times_max:
 				times_max = list_max
 		
-		print times_max
-		print metrics_max
 		ranges = list()
 		ranges.append(0)
 		ranges.append(times_max * 1.1)

@@ -45,17 +45,17 @@ on imp.utm_source =  lp.utm_source and imp.dt_hr =  lp.dt_hr and imp.dt_min =  l
 join
 
 (select 
-DATE_FORMAT(ts,'%sY%sm%sd%sH') as hr,
-FLOOR(MINUTE(ts) / %s) * %s as dt_min,
+DATE_FORMAT(receive_date,'%sY%sm%sd%sH') as hr,
+FLOOR(MINUTE(receive_date) / %s) * %s as dt_min,
 SUBSTRING_index(substring_index(utm_source, '.', 2),'.',1) as banner,
 count(*) as total_clicks,
-sum(not isnull(contribution_tracking.contribution_id)) as donations,
-sum(converted_amount) as amount,
-sum(if(converted_amount > 50, 50, converted_amount)) as amount50
+sum(not isnull(drupal.contribution_tracking.contribution_id)) as donations,
+sum(total_amount) as amount,
+sum(if(total_amount > 50, 50, total_amount)) as amount50
 from
-drupal.contribution_tracking LEFT JOIN civicrm.public_reporting 
-ON (contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id)
-where ts >=  '%s' and ts < '%s'
+drupal.contribution_tracking LEFT JOIN civicrm.civicrm_contribution
+ON (drupal.contribution_tracking.contribution_id = civicrm.civicrm_contribution.id)
+where receive_date >=  '%s' and receive_date < '%s'
 and utm_campaign REGEXP '%s'
 group by 1,2,3) as ecomm
 
