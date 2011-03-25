@@ -1805,6 +1805,27 @@ $messages['uk'] = array(
 	'cb_edit_paste_right_hint' => 'Вставити оператора в наступну позицію, якщо це можливо',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'cb_previous_items_link' => 'Edeližed',
+	'cb_next_items_link' => "Jäl'geližed",
+	'cb_next_items_stats' => ' ($1-späi augotaden)',
+	'cb_cat_subcats' => 'alakategorijad',
+	'cb_cat_pages' => "lehtpol't",
+	'cb_cat_files' => 'failad',
+	'cb_apply_button' => 'Kävutada',
+	'cb_all_op' => 'Kaik',
+	'cb_or_op' => 'vai',
+	'cb_and_op' => 'da',
+	'cb_edit_left_hint' => 'Sirta hurale, ku voib',
+	'cb_edit_right_hint' => 'Sirta oiktale, ku voib',
+	'cb_edit_remove_hint' => 'Čuta poiš, ku voib',
+	'cb_edit_copy_hint' => 'Kopiruida operator vajehtamižbuferha',
+	'cb_edit_append_hint' => "Panda operator jäl'gmäižhe pozicijaha",
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  * @author 阿pp
