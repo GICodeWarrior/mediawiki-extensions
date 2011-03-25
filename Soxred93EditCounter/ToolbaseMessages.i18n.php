@@ -239,6 +239,56 @@ Mard oc'h deuet eus lec'h all dre ul liamm, kasit <a href=\"\$1\">ur c'hemenn ev
 	'toolbase-error-nowiki' => "N'eo ket $1.$2.org ur wiki reizh",
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'toolbase-header-title' => "Eines X!'s (BETA)",
+	'toolbase-header-bugs' => 'Errors',
+	'toolbase-header-sitenotice' => 'Anunci global del toolserver: $1',
+	'toolbase-replag' => 'Retard del servidor de $1',
+	'toolbase-replag-years' => 'anys',
+	'toolbase-replag-months' => 'mesos',
+	'toolbase-replag-weeks' => 'setmana',
+	'toolbase-replag-days' => 'dies',
+	'toolbase-replag-hours' => 'hores',
+	'toolbase-replag-minutes' => 'minuts',
+	'toolbase-replag-seconds' => 'segons',
+	'toolbase-footer-exectime' => 'Executat en $1 segons',
+	'toolbase-footer-source' => 'Mostra la font',
+	'toolbase-footer-language' => "Canvia d'idioma",
+	'toolbase-footer-translate' => 'Traducció',
+	'toolbase-navigation' => 'Navegació',
+	'toolbase-navigation-homepage' => "Pàgina d'inici",
+	'toolbase-navigation-user_id' => "Cerca ID d'usuari",
+	'toolbase-navigation-autoedits' => "Comptador automatitzat d'edicions",
+	'toolbase-userid-submit' => "Obtingues la ID d'usuari",
+	'toolbase-userid-title' => "Troba l'ID d'usuari",
+	'toolbase-userid-result' => 'La ID d\'usuari de <b>$1</b> a <a href="$3"><b>$3</b></a> és <b>$2</b>.',
+	'toolbase-autoedits-title' => "Calculadora d'edicions automatitzada",
+	'toolbase-autoedits-submit' => 'Calcula',
+	'toolbase-autoedits-approximate' => "Número <b>aproximat</b> d'edicions utilitzant...",
+	'toolbase-autoedits-totalauto' => "Número total d'edicions automàtiques",
+	'toolbase-autoedits-totalall' => "Recompte total d'edicions",
+	'toolbase-autoedits-pct' => "Percentatge d'edicions automatitzades",
+	'toolbase-main-title' => 'Benvingut!',
+	'toolbase-main-content' => 'Benvingut a les eines X! La família d\'eines encara es troba en procés de ser convertit al framework <a href="$1">Symfony</a>. Aquest procés encara portarà temps, però hauria de funcionar. 
+
+Per a una llista de les eines que actualment funcionen sota aquest framework, vegeu la llista de la barra dreta.
+
+Podeu informar de qualsevol error a <a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'Fitxer no trobat',
+	'toolbase-main-404-content' => "No s'ha trobat la pàgina.
+
+Assegureu-vos d'haver escrit correctament l'adreça URL.
+Si heu seguit un enllaç des d'algun lloc, si us plau <a href=\"\$1\">informeu aquest error</a>.
+</ul>",
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 no és un usuari vàlid',
+	'toolbase-error-nowiki' => '$1.$2.org no és un wiki vàlid',
+	'toolbase-error-toomanyedits' => '$1 té $2 edicions. Aquesta eina té un màxim de $3 edicions.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
