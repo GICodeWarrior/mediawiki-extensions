@@ -1,9 +1,9 @@
 <?php
 if ( !defined( 'MEDIAWIKI' ) )
-	die( 'StringFunctionsEscaped::This file is a MediaWiki extension, it is not a valid entry point' );
+	#die( 'StringFunctionsEscaped::This file is a MediaWiki extension, it is not a valid entry point' );
 if ( !class_exists('ExtStringFunctions',false) && 
 	 !(class_exists('ParserFunctions_HookStub',false) && isset($wgPFEnableStringFunctions) && $wgPFEnableStringFunctions))
-	die( 'StringFunctionsEscaped::You must have extension StringFunctions or extension ParserFunctions with string functions enabled' );
+	#die( 'StringFunctionsEscaped::You must have extension StringFunctions or extension ParserFunctions with string functions enabled' );
 /*
 
  Defines a superset of string parser functions that allow character escaping in the 'search for' and 'replace with' arguments.
@@ -67,40 +67,23 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
-# RFU
-# $wgExtensionMessagesFiles['StringFunctionsEscaped'] = $dir . 'StringFunctionsEscaped.i18n.php';
 
-$wgExtensionFunctions[] = 'wfStringFunctionsEscaped';
+$wgExtensionMessagesFiles['StringFunctionsEscaped'] = $dir . 'StringFunctionsEscaped.i18n.php';
 
-$wgHooks['LanguageGetMagic'][] = 'wfStringFunctionsEscapedLanguageGetMagic';
-
-function wfStringFunctionsEscaped ( ) {
-	global $wgParser, $wgExtStringFunctionsEscaped;
-
-	$wgExtStringFunctionsEscaped = new ExtStringFunctionsEscaped ( );
-
-	$wgParser->setFunctionHook('pos_e',         array( &$wgExtStringFunctionsEscaped, 'runPos_e' ));
-	$wgParser->setFunctionHook('rpos_e',        array( &$wgExtStringFunctionsEscaped, 'runRPos_e' ));
-	$wgParser->setFunctionHook('pad_e',         array( &$wgExtStringFunctionsEscaped, 'runPad_e' ));
-	$wgParser->setFunctionHook('replace_e',     array( &$wgExtStringFunctionsEscaped, 'runReplace_e' ));
-	$wgParser->setFunctionHook('explode_e',     array( &$wgExtStringFunctionsEscaped, 'runExplode_e' ));
-	$wgParser->setFunctionHook('stripnewlines', array( &$wgExtStringFunctionsEscaped, 'runStrip_nl' ));
-}
-
-function wfStringFunctionsEscapedLanguageGetMagic( &$magicWords, $langCode = "en" ) {
-	switch ( $langCode ) {
-		default:
-		$magicWords['pos_e']         = array ( 0, 'pos_e' );
-		$magicWords['rpos_e']        = array ( 0, 'rpos_e' );
-		$magicWords['pad_e']         = array ( 0, 'pad_e' );
-		$magicWords['replace_e']     = array ( 0, 'replace_e' );
-		$magicWords['explode_e']     = array ( 0, 'explode_e' );
-		$magicWords['stripnewlines'] = array ( 0, 'stripnewlines' );
-	}
-	return true;
-}
+$wgHooks['ParserFirstCallInit'][] = 'ExtStringFunctionsEscaped::onParserFirstCallInit';
 
 class ExtStringFunctionsEscaped {
+
+	public static function onParserFirstCallInit( $parser ) {
+		$parser->setFunctionHook( 'pos_e',         array( __CLASS__, 'runPos_e' ) );
+		$parser->setFunctionHook( 'rpos_e',        array( __CLASS__, 'runRPos_e' ) );
+		$parser->setFunctionHook( 'pad_e',         array( __CLASS__, 'runPad_e' ) );
+		$parser->setFunctionHook( 'replace_e',     array( __CLASS__, 'runReplace_e' ) );
+		$parser->setFunctionHook( 'explode_e',     array( __CLASS__, 'runExplode_e' ) );
+		$parser->setFunctionHook( 'stripnewlines', array( __CLASS__, 'runStrip_nl' ) );
+
+		return true;
+	}
 
 	/**
 	 * {{#pos_e:value|key|offset}}
@@ -108,9 +91,8 @@ class ExtStringFunctionsEscaped {
 	 * Note: If the needle is not found, empty string is returned.
 	 * Note: The needle is limited to specific length.
 	 */
-	function runPos_e ( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
-		global $wgParser;
-		list( $callback, $flags ) = $wgParser->mFunctionHooks['pos'];
+	public static function runPos_e ( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
+		list( $callback, $flags ) = $parser->mFunctionHooks['pos'];
 		return @call_user_func_array( $callback,
 			array_merge( array( $parser ), array( $inStr, stripcslashes( $inNeedle ), $inOffset ) ) );
 	}
@@ -121,9 +103,8 @@ class ExtStringFunctionsEscaped {
 	 * Note: If the needle is not found, -1 is returned.
 	 * Note: The needle is limited to specific length.
 	 */
-	function runRPos_e( &$parser , $inStr = '', $inNeedle = '' ) {
-		global $wgParser;
-		list( $callback, $flags ) = $wgParser->mFunctionHooks['rpos'];
+	public static function runRPos_e( &$parser , $inStr = '', $inNeedle = '' ) {
+		list( $callback, $flags ) = $parser->mFunctionHooks['rpos'];
 		return @call_user_func_array( $callback,
 			array_merge( array( $parser ), array( $inStr, stripcslashes( $inNeedle ) ) ) );
 	}
@@ -132,9 +113,8 @@ class ExtStringFunctionsEscaped {
 	 * {{#pad_e:value|length|with|direction}}
 	 * Note: Length of the resulting string is limited.
 	 */
-	function runPad_e( &$parser, $inStr = '', $inLen = 0, $inWith = '', $inDirection = '' ) {
-		global $wgParser;
-		list( $callback , $flags ) = $wgParser->mFunctionHooks['pad'];
+	public static function runPad_e( &$parser, $inStr = '', $inLen = 0, $inWith = '', $inDirection = '' ) {
+		list( $callback , $flags ) = $parser->mFunctionHooks['pad'];
 		return @call_user_func_array( $callback,
 			array_merge( array( $parser ), array( $inStr, $inLen, stripcslashes( $inWith ), $inDirection ) ) );
 	}
@@ -145,9 +125,8 @@ class ExtStringFunctionsEscaped {
 	 * Note: The needle is limited to specific length.
 	 * Note: The product is limited to specific length.
 	 */
-	function runReplace_e( &$parser, $inStr = '', $inReplaceFrom = '', $inReplaceTo = '' ) {
-		global $wgParser;
-		list( $callback, $flags ) = $wgParser->mFunctionHooks['replace'];
+	public static function runReplace_e( &$parser, $inStr = '', $inReplaceFrom = '', $inReplaceTo = '' ) {
+		list( $callback, $flags ) = $parser->mFunctionHooks['replace'];
 		return @call_user_func_array( $callback,
 			array_merge( array( $parser ), array( $inStr, stripcslashes( $inReplaceFrom ), stripcslashes( $inReplaceTo ) ) ) );
 	}
@@ -159,9 +138,8 @@ class ExtStringFunctionsEscaped {
 	 * Note: The divider is limited to specific length.
 	 * Note: Empty string is returned, if there is not enough exploded chunks.
 	 */
-	function runExplode_e( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
-		global $wgParser;
-		list( $callback, $flags ) = $wgParser->mFunctionHooks['explode'];
+	public static function runExplode_e( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
+		list( $callback, $flags ) = $parser->mFunctionHooks['explode'];
 		return @call_user_func_array( $callback,
 			array_merge(array( $parser ), array( $inStr, stripcslashes( $inDiv ), $inPos ) ));
 	}
@@ -169,7 +147,7 @@ class ExtStringFunctionsEscaped {
 	/**
 	 * {{#stripnewlines:value}}
 	 */
-	function runStrip_nl( &$parser , $inStr = '' ) {
+	public static function runStrip_nl( &$parser , $inStr = '' ) {
 		return preg_replace( stripcslashes( '/\n\n+/' ), stripcslashes( '\n' ), $inStr );
 	}
 
