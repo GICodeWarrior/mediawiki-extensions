@@ -25,7 +25,7 @@ class PNGHandler extends BitmapHandler
 			return new ThumbnailImage( $image, $image->getURL(), $clientWidth, $clientHeight, $srcPath );
 		}
 
-		wfDebug( __METHOD__.": creating {$physicalWidth}x{$physicalHeight} thumbnail at $dstPath\n" );
+		wfDebug( __METHOD__.": creating {$params['physicalWidth']}x{$params['physicalHeight']} thumbnail at $dstPath\n" );
 
 		$cmd = "{$egPngdsPath}pngds ".
 			"--width {$params['physicalWidth']} ".
