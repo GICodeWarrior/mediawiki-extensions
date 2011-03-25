@@ -394,8 +394,13 @@ Sur les wikis privés, appliquer le patch <code>linkd</code> tel qu'expliqué da
  * @author Toliño
  */
 $messages['gl'] = array(
+	'push-add-target' => 'Engadir un destino',
 	'push-remote-page-link' => '"$1" en $2',
 	'push-remote-page-link-full' => 'Ollar "$1" en $2',
+	'push-tab-inc-templates' => 'Incluír os modelos',
+	'push-tab-embedded-files' => 'Ficheiros embelecidos:',
+	'push-special-target-is' => 'Wiki de destino: $1',
+	'push-special-select-targets' => 'Wikis de destino:',
 );
 
 /** Swiss German (Alemannisch)
