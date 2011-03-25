@@ -3774,6 +3774,7 @@ $wgGoogleMapsMessages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  * @author Diagramma Della Verita
  * @author Zamwan
@@ -3838,7 +3839,7 @@ $wgGoogleMapsMessages['ms'] = array(
 	'gm-opacity' => 'Kelegapan',
 	'gm-line-width' => 'Panjang',
 	'gm-make-map' => 'buat peta',
-	'gm-hide-map' => 'sembunyi peta',
+	'gm-hide-map' => 'sorokkan peta',
 	'gm-back' => 'kembali',
 	'gm-kml-include' => 'KML/GeoRSS luar:',
 	'gm-kml-include-link' => 'tambah ke dalam peta',
