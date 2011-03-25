@@ -433,13 +433,13 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
 
                     if i % 1000 == 0:
                         print 'Worker %s parsed %s articles' % (id, i)
-                        print gc.get_count()
-                        gc.collect()
                         print '************************'
                         gc.DEBUG_COLLECTABLE
                         gc.DEBUG_UNCOLLECTABLE
                         gc.DEBUG_STATS
                         print '************************'
+                        gc.collect()
+                        print gc.get_count()
 
     if dataset == 'training':
         cache.empty()
@@ -494,6 +494,15 @@ def launcher(function, path, dataset, storage, processors):
     input_queue.join()
 
 
+
+def debug():
+    path = '/media/wikipedia_dumps/batch2/'
+    files = file_utils.retrieve_file_list(path, 'bz2')
+    for file in files:
+        filename = os.path.join(path, file)
+        unzip(filename)
+
+
 def launcher_training():
     # launcher for creating training data
     path = '/media/wikipedia_dumps/batch2/'
@@ -517,4 +526,5 @@ def launcher_prediction():
 if __name__ == '__main__':
     #launcher_training()
     gc.enable()
+    debug()
     launcher_prediction()
