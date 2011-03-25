@@ -320,15 +320,10 @@ def count_edits(article, counts, bots):
                 continue
             counts.setdefault(contributor['username'], 0)
             counts[contributor['username']] += 1
+            revision.clear()
 
-    clear_xml_elements(article)
+    article = None
     return counts
-
-
-def clear_xml_elements(article):
-    for elem in article:
-        if type(elem) != type('str'):
-            elem.clear()
 
 
 def create_variables(article, cache, bots):
@@ -338,6 +333,7 @@ def create_variables(article, cache, bots):
     if namespace != False:
         cache.stats.count_articles += 1
         article_id = article['id'].text
+        article['id'].clear()
         hashes = deque()
         size = {}
         revisions = article['revisions']
