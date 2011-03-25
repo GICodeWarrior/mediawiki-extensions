@@ -1738,7 +1738,7 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'wikilog-desc' => 'Fügt Blog-Funktionen hinzu, um einen Wiki-Blog Hybrid zu erzeugen',
+	'wikilog-desc' => 'Ermöglicht die Nutzung von Blogfunktionen auf dem Wiki',
 	'wikilog-auto' => 'Wikilog Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Kommentare zu Wikilog-Beiträgen posten',
@@ -1786,7 +1786,7 @@ Um Artikel zu veröffentlichen und andere Wikilog-Funktionen freizuschalten muss
 	'wikilog-pager-empty' => '(keine Beiträge)',
 	'wikilog-no-comments' => 'keine Kommentare',
 	'wikilog-has-comments' => '{{PLURAL:$1|ein Kommentar|$1 Kommentare}}',
-	'wikilog-summary-footer' => 'Von $7 zu [[$1|$2]] am $8 um $9 ($15) hinzugefügt, $10.',
+	'wikilog-summary-footer' => 'Von $7 am $8 um $9 ($15) zu [[$1|$2]] hinzugefügt, $10.',
 	'wikilog-summary-footer-single' => 'Von $7 am $8 um $9 ($15) hinzugefügt, $10.',
 	'wikilog-summary-uncategorized' => 'Unkategorisiert',
 	'wikilog-summary-categories' => 'Abgelegt unter $2',
@@ -1794,7 +1794,7 @@ Um Artikel zu veröffentlichen und andere Wikilog-Funktionen freizuschalten muss
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussion]])',
 	'wikilog-edit-hint' => '„Wikilog“-Artikel bearbeiten: $1',
 	'wikilog-edit-fieldset-legend' => 'Wikilog-Optionen:',
-	'wikilog-edit-signpub' => 'Diesen Artikel unterschreiben und veröffentlichen',
+	'wikilog-edit-signpub' => 'Diesen Artikel signieren und veröffentlichen',
 	'wikilog-edit-signpub-tooltip' => 'Signiert und veröffentlicht den Artikel in seinem Wikilog beim Speichern.
 Haken entfernen, um den Artikel als Entwurf zu speichern.',
 	'wikilog-comment-permalink' => '$1 um $2 Uhr',

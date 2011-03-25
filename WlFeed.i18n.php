@@ -80,10 +80,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author LWChris
  */
 $messages['de'] = array(
-	'wlfeed-desc' => 'Erweiterte Klassen zur Feed-Generierung',
+	'wlfeed-desc' => 'Stellt der Feed-Generierung erweiterte Klassen zur Verfügung',
 );
 
 /** Lower Sorbian (Dolnoserbski)
