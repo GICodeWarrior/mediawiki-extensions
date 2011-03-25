@@ -142,7 +142,7 @@ $messages['eu'] = array(
  * @author Ebraminio
  */
 $messages['fa'] = array(
-	'cassandra-desc' => 'ذخیره‌سازی متن نسخه در پایگاه دادهٔ [http://cassandra.apache.org/ آپاچی کاساندرا]',
+	'cassandra-desc' => 'ذخیره‌سازی متن نسخه در دادگان [http://cassandra.apache.org/ آپاچی کاساندرا]',
 );
 
 /** Finnish (Suomi)
