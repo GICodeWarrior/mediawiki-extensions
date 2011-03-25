@@ -2923,6 +2923,13 @@ $messages['ml'] = array(
 	'fogg-hidepreview' => 'പ്രിവ്യൂ മറയ്ക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'fogg-select_file' => 'Pilih fail',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
