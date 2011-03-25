@@ -473,7 +473,7 @@ def launcher(function, path, dataset, storage, processors):
         print filename
         input_queue.put(filename)
 
-    for x in xrange(cpu_count()):
+    for x in xrange(processors):
         input_queue.put(None)
 
     extracters = [Process(target=stream_raw_xml, args=[input_queue, storage, id, function, dataset])
