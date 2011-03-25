@@ -137,10 +137,11 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Metalhead64
  */
 $messages['de'] = array(
-	'userdailycontribs-desc' => 'Benutzertagesbeiträge für die Klickverfolgungs-Erweiterung',
+	'userdailycontribs-desc' => 'Speichert die täglichen Benutzerbeiträge zur Nachverfolgung von Klicks',
 );
 
 /** Zazaki (Zazaki)
