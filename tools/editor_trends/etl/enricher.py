@@ -320,6 +320,10 @@ def count_edits(article, counts, bots):
                 continue
             counts.setdefault(contributor['username'], 0)
             counts[contributor['username']] += 1
+
+    for elem in article:
+        elem.clear()
+
     return counts
 
 
