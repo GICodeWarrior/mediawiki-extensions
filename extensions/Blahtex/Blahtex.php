@@ -24,7 +24,6 @@ $wgBlahtexOptions = '--texvc-compatible-commands --mathml-version-1-fonts --disa
 
 /* Register the extension */
 
-$wgExtensionFunctions[] = 'efBlahtex';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Blahtex',
@@ -36,16 +35,9 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Blahtex'] = $dir . 'Blahtex.i18n.php';
 
-/**
- * Initialize Blahtex
- */
-function efBlahtex() {
-	global $wgHooks;
-	$wgHooks['MathAfterTexvc'][] = 'efBlahtexMathAfterTexvc';
-	$wgHooks['ParserBeforeTidy'][] = 'efBlahtexParserBeforeTidy';
-	$wgHooks['ParserAfterTidy'][] = 'efBlahtexParserAfterTidy';
-	
-}
+$wgHooks['MathAfterTexvc'][] = 'efBlahtexMathAfterTexvc';
+$wgHooks['ParserBeforeTidy'][] = 'efBlahtexParserBeforeTidy';
+$wgHooks['ParserAfterTidy'][] = 'efBlahtexParserAfterTidy';
 
 /**
  * Hook function for MathAfterTexvc

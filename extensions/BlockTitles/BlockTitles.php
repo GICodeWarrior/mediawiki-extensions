@@ -16,7 +16,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionFunctions[] = 'wfBlockTitles';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'BlockTitles',
@@ -33,10 +32,6 @@ $wgBlockTitlePatterns = array (
 	);
 
 $wgHooks['ArticleSave'][] = 'wfCheckBlockTitles';
-
-function wfBlockTitles() {
-	
-}
 
 function wfCheckBlockTitles ( &$article ) {
 	global $wgBlockTitlePatterns;
