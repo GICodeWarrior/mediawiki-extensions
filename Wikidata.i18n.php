@@ -8419,6 +8419,13 @@ $messages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'ow_show' => 'Paruodeit',
+);
+
 /** Latvian (Latviešu)
  * @author GreenZeb
  */
