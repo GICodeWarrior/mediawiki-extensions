@@ -1501,6 +1501,13 @@ Dir kënnt [$2 déi publizéiert Anekdote liesen].',
 	'storyboard-storydeletionconfirm' => 'Sidd Dir sécher datt Dir dës Anekdot definitiv läsche wëllt?',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'storyboard-hide' => 'Nūglobuot',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
