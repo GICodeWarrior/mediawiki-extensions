@@ -202,7 +202,7 @@ def dataset_launcher(rts, logger):
                                      target,
                                      **rts.keywords)
     stopwatch.elapsed()
-    log.log_to_mongo(properties, 'dataset', 'export', stopwatch, event='finish')
+    log.log_to_mongo(rts, 'dataset', 'export', stopwatch, event='finish')
 
 
 def cleanup(rts, logger):
@@ -350,7 +350,7 @@ def init_args_parser():
     parser_dataset.add_argument('-k', '--keywords',
                                 action='store',
                                 help='Add additional keywords in the format keyword1=value1,keyword2=value2',
-                                default={})
+                                default='')
 
     #ALL
     parser_all = subparsers.add_parser('all',
