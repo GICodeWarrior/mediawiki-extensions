@@ -322,6 +322,13 @@ def count_edits(article, counts, bots):
             counts.setdefault(contributor['username'], 0)
             counts[contributor['username']] += 1
             revision.clear()
+            print '************************'
+            gc.DEBUG_COLLECTABLE
+            gc.DEBUG_UNCOLLECTABLE
+            gc.DEBUG_STATS
+            print '************************'
+            gc.collect()
+            print gc.get_count()
 
     article = None
     return counts
@@ -394,7 +401,8 @@ def parse_xml(buffer):
         elif event == 'end' and elem.tag == 'id' and id == False:
             article[elem.tag] = elem
             id = True
-
+        else:
+            event.clear()
     root.clear()
     return article
 
@@ -433,13 +441,7 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
 
                     if i % 1000 == 0:
                         print 'Worker %s parsed %s articles' % (id, i)
-                        print '************************'
-                        gc.DEBUG_COLLECTABLE
-                        gc.DEBUG_UNCOLLECTABLE
-                        gc.DEBUG_STATS
-                        print '************************'
-                        gc.collect()
-                        print gc.get_count()
+
 
     if dataset == 'training':
         cache.empty()
