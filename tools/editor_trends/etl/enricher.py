@@ -26,6 +26,7 @@ import codecs
 import re
 import sys
 import datetime
+import gc
 import progressbar
 from multiprocessing import JoinableQueue, Process, cpu_count, current_process
 from xml.etree.cElementTree import fromstring, iterparse
@@ -430,8 +431,15 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
                         counts = function(article, counts, bots)
                     buffer = cStringIO.StringIO()
 
-                    if i % 10000 == 0:
+                    if i % 1000 == 0:
                         print 'Worker %s parsed %s articles' % (id, i)
+                        print gc.get_count()
+                        gc.collect()
+                        print '************************'
+                        gc.DEBUG_COLLECTABLE
+                        gc.DEBUG_UNCOLLECTABLE
+                        gc.DEBUG_STATS
+                        print '************************'
 
     if dataset == 'training':
         cache.empty()
@@ -508,4 +516,5 @@ def launcher_prediction():
 
 if __name__ == '__main__':
     #launcher_training()
+    gc.enable()
     launcher_prediction()
