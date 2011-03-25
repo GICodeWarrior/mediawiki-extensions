@@ -241,14 +241,15 @@ def parse_contributor(contributor, bots):
     username = extracter.extract_username(contributor)
     user_id = extracter.extract_contributor_id(contributor)
     bot = extracter.determine_username_is_bot(contributor, bots=bots)
-    contributor = {}
-    contributor['username'] = username
-    contributor['bot'] = bot
+    contributor.clear()
+    editor = {}
+    editor['username'] = username
+    editor['bot'] = bot
     if user_id != None:
-        contributor.update(user_id)
+        editor.update(user_id)
     else:
-        contributor = False
-    return contributor
+        editor = False
+    return editor
 
 
 def determine_namespace(title):
@@ -258,7 +259,6 @@ def determine_namespace(title):
                   }
     ns = {}
     if title != None:
-        #title = title.text
         for namespace in namespaces:
             if title.startswith(namespace):
                 ns['namespace'] = namespaces[namespace]
@@ -373,7 +373,9 @@ def create_variables(article, cache, bots):
             row.update(hash)
             row.update(size)
             row.update(revert)
+            revision.clear()
             cache.add(row)
+
 
 
 def parse_xml(buffer):
