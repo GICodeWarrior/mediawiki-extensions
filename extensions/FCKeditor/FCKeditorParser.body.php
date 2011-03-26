@@ -154,8 +154,6 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 
 		$uniq_prefix = $this->mUniqPrefix;
 		$commentState = new ReplacementArray;
-		$nowikiItems = array();
-		$generalItems = array();
 
 		$elements = array_merge( array( 'nowiki', 'gallery', 'math' ), array_keys( $this->mTagHooks ) );
 		if ( ( isset( $wgHooks['ParserFirstCallInit']) && in_array( 'efSyntaxHighlight_GeSHiSetup', $wgHooks['ParserFirstCallInit'] ) )
@@ -246,16 +244,11 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 			if( !$stripcomments && $element == '!--' ) {
 				$commentState->setPair( $marker, $output );
 			} elseif ( $element == 'html' || $element == 'nowiki' ) {
-				$nowikiItems[$marker] = $output;
+				$state->addNoWiki( $output );
 			} else {
-				$generalItems[$marker] = $output;
+				$state->addGeneral( $output );
 			}
 		}
-		# Add the new items to the state
-		# We do this after the loop instead of during it to avoid slowing
-		# down the recursive unstrip
-		$state->nowiki->mergeArray( $nowikiItems );
-		$state->general->mergeArray( $generalItems );
 
 		# Unstrip comments unless explicitly told otherwise.
 		# (The comments are always stripped prior to this point, so as to
