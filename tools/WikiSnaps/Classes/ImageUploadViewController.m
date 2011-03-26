@@ -99,7 +99,7 @@
 }
 
 - (void)uploadFailed:(NSString *)error {
-    NSLog(error);
+    NSLog(@"%@", error);
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

@@ -16,7 +16,7 @@
 /* Private */
 @interface CommonsUpload (Internal)
 
-- (void)checkXML: (NSDictionary *)dict forAPIError: (NSError **)error;
+- (BOOL)checkXML: (NSDictionary *)dict forAPIError: (NSError **)error;
 @end
 
 
@@ -33,7 +33,9 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString = [formatter stringFromDate:today];
-    NSLog(dateString);
+    [formatter release];
+
+    NSLog(@"%@", dateString);
     
     return [NSString stringWithFormat: @"{{Information\n|Description={{en|1=%@}}\n|Author=[[User:%@]]\n|Source={{own}}\n|Date=%@\n|Permission=\n|other_versions=\n}}\n\n== {{int:license}} ==\n%@\n\n[[Category:%@]]",
      description,
@@ -298,17 +300,23 @@ NSLog( @"%@", dict );
     return NO;
 }
 
-- (void)checkXML: (NSDictionary *)dict forAPIError: (NSError **)error {
+/**
+ * @return true if the XML was good, false if an error occured
+ */
+- (BOOL)checkXML: (NSDictionary *)dict forAPIError: (NSError **)error {
     NSDictionary *errorDict = [[dict objectForKey:@"api"] objectForKey: @"error"];
     if( errorDict ) {
         NSMutableDictionary *nsErrorDict = [NSMutableDictionary dictionaryWithCapacity:5];
         [nsErrorDict setObject: @"Communication failure with server" forKey: NSLocalizedDescriptionKey ];
         [nsErrorDict setObject: [errorDict objectForKey:@"info"] forKey: NSLocalizedFailureReasonErrorKey ];
-NSLog( [errorDict objectForKey:@"info"] );
+NSLog( @"%@", [errorDict objectForKey:@"info"] );
 
-        NSError *APIError = [NSError errorWithDomain: @"COMMONS_API_DOMAIN" code: 1 userInfo: nsErrorDict];
-        *error = APIError;
+        if (error != NULL) {
+            *error = [NSError errorWithDomain: @"COMMONS_API_DOMAIN" code: 1 userInfo: nsErrorDict];
+        }
+        return FALSE;
     }
+    return TRUE;
 }
 
 @end
