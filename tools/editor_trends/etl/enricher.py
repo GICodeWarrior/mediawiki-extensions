@@ -424,10 +424,10 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
             if parsing:
                 try:
                     buffer.write(data)
-                    buffer = cStringIO.StringIO()
                 except MemoryError, e:
                     print e
                     parsing = False
+                    buffer = cStringIO.StringIO()
 
                 if data.find('</page>') > -1:
                     i += 1
