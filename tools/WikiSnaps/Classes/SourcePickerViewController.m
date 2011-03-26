@@ -217,8 +217,12 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
 
     image = [image correctOrientation:image];
-    UIImageWriteToSavedPhotosAlbum( image, nil, nil, nil );
-
+    
+    // Store the image on the Camera Roll
+    if( picker.sourceType == UIImagePickerControllerSourceTypeCamera ) {
+        UIImageWriteToSavedPhotosAlbum( image, nil, nil, nil );
+    }
+    
     // Prepare upload
     CommonsUpload *ourUpload = [[CommonsUpload alloc] init];
     ourUpload.imageData = UIImageJPEGRepresentation(image, 0.85f);
