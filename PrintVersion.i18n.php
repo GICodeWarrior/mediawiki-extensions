@@ -162,3 +162,13 @@ $messages['ru'] = array(
 	'printversion-inexistent-book' => 'Книга не найдена. Пожалуйста, введите название существующей книги, чтобы получить её печатную версию.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'printversion' => 'Bersyong maililimbag',
+	'printversion-desc' => 'Gumagawa ng isang [[Special:PrintVersion|bersyong naililimbag]] ng isang aklat',
+	'printversion-no-book' => 'Pakipasok ang pangalan ng isang aklat upang makuha ang bersyong maililimbag.',
+	'printversion-inexistent-book' => 'Hindi natagpuan ang aklat.  Pakipasok ang pangalan ng umiiral na aklat upang makuha ang bersyong maililimbag nito.',
+);
+
