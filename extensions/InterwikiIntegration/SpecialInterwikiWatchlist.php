@@ -2,7 +2,7 @@
 /**
  * A watchlist with changes from multiple wikis
  */
-class InterwikiWatchlist extends SpecialPage {
+class InterwikiWatchlist extends SpecialWatchlist {
 	/**
 	 * Constructor
 	 *
@@ -282,19 +282,19 @@ class InterwikiWatchlist extends SpecialPage {
 				) . '<br />';
 		}
 	
-		$cutofflinks = "\n" . InterwikiWatchlist::wlCutoffLinks( $days, 'Watchlist', $nondefaults ) . "<br />\n";
+		$cutofflinks = "\n" . self::cutoffLinks( $days, 'Watchlist', $nondefaults ) . "<br />\n";
 	
 		$thisTitle = SpecialPage::getTitleFor( 'Watchlist' );
 	
 		# Spit out some control panel links
-		$links[] = InterwikiWatchlist::wlShowHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
-		$links[] = InterwikiWatchlist::wlShowHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
-		$links[] = InterwikiWatchlist::wlShowHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
-		$links[] = InterwikiWatchlist::wlShowHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
-		$links[] = InterwikiWatchlist::wlShowHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhideminor', 'hideMinor', $hideMinor );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhidebots', 'hideBots', $hideBots );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhideanons', 'hideAnons', $hideAnons );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhideliu', 'hideLiu', $hideLiu );
+		$links[] = self::showHideLink( $nondefaults, 'rcshowhidemine', 'hideOwn', $hideOwn );
 	
 		if( $wgUser->useRCPatrol() ) {
-			$links[] = InterwikiWatchlist::wlShowHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
+			$links[] = self::showHideLink( $nondefaults, 'rcshowhidepatr', 'hidePatrolled', $hidePatrolled );
 		}
 	
 		# Namespace filter and put the whole form together.
@@ -382,91 +382,18 @@ class InterwikiWatchlist extends SpecialPage {
 		$wgOut->addHTML( $s );
 	}
 	
-	function wlShowHideLink( $options, $message, $name, $value ) {
-		global $wgUser;
-	
-		$showLinktext = wfMsgHtml( 'show' );
-		$hideLinktext = wfMsgHtml( 'hide' );
-		$title = SpecialPage::getTitleFor( 'Watchlist' );
-		$skin = $wgUser->getSkin();
-	
-		$label = $value ? $showLinktext : $hideLinktext;
-		$options[$name] = 1 - (int) $value;
-	
-		return wfMsgHtml( $message, $skin->linkKnown( $title, $label, array(), $options ) );
-	}
-	
-	
-	function wlHoursLink( $h, $page, $options = array() ) {
-		global $wgUser, $wgLang, $wgContLang;
-	
-		$sk = $wgUser->getSkin();
-		$title = Title::newFromText( $wgContLang->specialPage( $page ) );
-		$options['days'] = ($h / 24.0);
-	
-		$s = $sk->linkKnown(
-			$title,
-			$wgLang->formatNum( $h ),
-			array(),
-			$options
-		);
-	
-		return $s;
-	}
-	
-	function wlDaysLink( $d, $page, $options = array() ) {
-		global $wgUser, $wgLang, $wgContLang;
-	
-		$sk = $wgUser->getSkin();
-		$title = Title::newFromText( $wgContLang->specialPage( $page ) );
-		$options['days'] = $d;
-		$message = ($d ? $wgLang->formatNum( $d ) : wfMsgHtml( 'watchlistall2' ) );
-	
-		$s = $sk->linkKnown(
-			$title,
-			$message,
-			array(),
-			$options
-		);
-	
-		return $s;
-	}
-	
-	/**
-	 * Returns html
-	 */
-	function wlCutoffLinks( $days, $page = 'Watchlist', $options = array() ) {
-		global $wgLang;
-	
-		$hours = array( 1, 2, 6, 12 );
-		$days = array( 1, 3, 7 );
-		$i = 0;
-		foreach( $hours as $h ) {
-			$hours[$i++] = InterwikiWatchlist::wlHoursLink( $h, $page, $options );
-		}
-		$i = 0;
-		foreach( $days as $d ) {
-			$days[$i++] = InterwikiWatchlist::wlDaysLink( $d, $page, $options );
-		}
-		return wfMsgExt('wlshowlast',
-			array('parseinline', 'replaceafter'),
-			$wgLang->pipeList( $hours ),
-			$wgLang->pipeList( $days ),
-			InterwikiWatchlist::wlDaysLink( 0, $page, $options ) );
-	}
-	
 	/**
 	 * Count the number of items on a user's watchlist
 	 *
 	 * @param $talk Include talk pages
 	 * @return integer
 	 */
-	function wlCountItems( &$user, $talk = true ) {
+	function countItems( &$user, $talk = true ) {
 		$dbr = wfGetDB( DB_SLAVE, 'integration_watchlist' );
 	
 		# Fetch the raw count
 		$res = $dbr->select( 'integration_watchlist', 'COUNT(*) AS count', 
-			array( 'integration_wl_user' => $user->mId ), 'wlCountItems' );
+			array( 'integration_wl_user' => $user->mId ), __METHOD__ );
 		$row = $dbr->fetchObject( $res );
 		$count = $row->count;
 		$dbr->freeResult( $res );
