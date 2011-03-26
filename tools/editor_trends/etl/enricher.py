@@ -382,7 +382,11 @@ def create_variables(article, cache, bots):
 def parse_xml(buffer):
     context = iterparse(buffer, events=('end',))
     context = iter(context)
-    event, root = context.next()
+    try:
+        event, root = context.next()
+    except SyntaxError, e:
+        print e
+        print buffer.getvalue()
 
     article = {}
     id = False
@@ -436,7 +440,8 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
                     if dataset == 'training':
                         function(article, cache, bots)
                     else:
-                        counts = function(article, counts, bots)
+                        #counts = function(article, counts, bots)
+                        pass
                     buffer = cStringIO.StringIO()
 
                     if i % 10000 == 0:
