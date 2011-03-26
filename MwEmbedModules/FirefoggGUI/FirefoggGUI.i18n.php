@@ -2007,14 +2007,21 @@ $messages['he'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'fogg-audioQuality-title' => 'Audio kvaliteta',
+	'fogg-width-title' => 'Širina videa',
+	'fogg-width-help' => 'Promijeni u danu širinu.',
+	'fogg-height-title' => 'Visina videa',
+	'fogg-height-help' => 'Promijeni u danu visinu.',
 	'fogg-date-title' => 'Datum',
 	'fogg-location-title' => 'Lokacija',
+	'fogg-license-title' => 'Licencija',
 	'fogg-select_file' => 'Odaberite datoteku',
 	'fogg-select_new_file' => 'Odaberite novu datoteku',
 	'fogg-select_url' => 'Odaberite URL',
 	'fogg-installed' => 'Firefogg je instaliran.',
 	'fogg-not-installed' => 'Firefogg nije instaliran ili nije osposobljen.',
 	'fogg-please-install-install-linktext' => 'Instalirajte Firefogg',
+	'fogg-please-install-about-linktext' => 'o programu Firefogg',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
