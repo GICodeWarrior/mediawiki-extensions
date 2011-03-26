@@ -704,6 +704,13 @@ $messages['lb'] = array(
 	'ea-allusers' => 'All Benotzer',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'ea-message' => 'Viestejums:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
