@@ -129,10 +129,18 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'includewp-desc' => 'IncludeWP é unha extensión lixeira para incluír contidos da Wikipedia',
 	'includewp-loading-page' => 'Cargando a páxina...',
 	'includewp-show-full-page' => 'Mostrar a páxina ao completo',
 	'includewp-show-fragment' => 'Mostrar só o primeiro parágrafo',
 	'includewp-loading-failed' => 'Erro ao cargar a páxina.',
+	'includewp-licence-notice' => 'O contido anterior vén da páxina "<a href="$2">$3</a>" de $1, licenciada baixo <a href="$4">$5</a>.
+Hai dispoñible unha <a href="$6">lista completa dos autores</a>.',
+	'includewp-parserhook-desc' => 'Asociador do analizador que permite mostrar contidos dunha páxina da Wikipedia.',
+	'includewp-include-par-page' => 'O nome da páxina (remota) que quere mostrar.',
+	'includewp-include-par-wiki' => 'O nome daquel wiki do quere tirar o contido. Debe ser un dos wikis permitidos; por defecto, só a Wikipedia.',
+	'includewp-include-par-paragraphs' => 'O número de parágrafos de querer mostrar inicialmente.',
+	'includewp-include-par-height' => 'A altura máxima, en píxeles, da etiqueta div na que cargar o contido. Estableza o valor en 0 para que non haxa límite.',
 );
 
 /** Hebrew (עברית)
