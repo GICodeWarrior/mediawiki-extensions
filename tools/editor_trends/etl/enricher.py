@@ -322,13 +322,6 @@ def count_edits(article, counts, bots):
             counts.setdefault(contributor['username'], 0)
             counts[contributor['username']] += 1
             revision.clear()
-            print '************************'
-            gc.DEBUG_COLLECTABLE
-            gc.DEBUG_UNCOLLECTABLE
-            gc.DEBUG_STATS
-            print '************************'
-            gc.collect()
-            print gc.get_count()
 
     article = None
     return counts
@@ -394,6 +387,7 @@ def parse_xml(buffer):
     article = {}
     id = False
     article[root.tag] = root.text
+    root.clear()
     article['revisions'] = []
     for event, elem in context:
         if event == 'end' and elem.tag == 'revision':
@@ -402,8 +396,7 @@ def parse_xml(buffer):
             article[elem.tag] = elem
             id = True
         else:
-            event.clear()
-    root.clear()
+            elem.clear()
     return article
 
 
@@ -427,8 +420,15 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         for data in unzip(filename):
             if data.find('<page>') > -1:
                 parsing = True
+
             if parsing:
-                buffer.write(data)
+                try:
+                    buffer.write(data)
+                    buffer = cStringIO.StringIO()
+                except MemoryError, e:
+                    print e
+                    parsing = False
+
                 if data.find('</page>') > -1:
                     i += 1
                     buffer.seek(0)
@@ -439,7 +439,7 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
                         counts = function(article, counts, bots)
                     buffer = cStringIO.StringIO()
 
-                    if i % 1000 == 0:
+                    if i % 10000 == 0:
                         print 'Worker %s parsed %s articles' % (id, i)
 
 
