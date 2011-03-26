@@ -135,7 +135,13 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'emailusers-desc' => 'Permite aos usuarios enviar correos electrónicos a varios destinatarios',
+	'right-sendbatchemail' => 'Enviar un correo electrónico a varios destinatarios ao mesmo tempo',
 	'emailusers' => 'Enviar un correo electrónico aos usuarios',
+	'emailusers-target-reverse' => 'Enviar a todos os usuarios agás aos que están seleccionados',
+	'emailusers-norecipient' => 'Non hai ninguén ao que poida enviar un correo electrónico.',
+	'emailusers-norecipientselected' => 'Non hai seleccionado ningún destinatario.',
+	'emailusers-toomanyrecipientsselected' => 'Seleccionáronse demasiados destinatarios ({{PLURAL:$1|o máximo é $1|o máximo son $1}}).',
 );
 
 /** Swiss German (Alemannisch)
