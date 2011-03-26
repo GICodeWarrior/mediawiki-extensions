@@ -720,6 +720,8 @@ $messages['he'] = array(
  * @author Herr Mlinka
  */
 $messages['hr'] = array(
+	'mwe-clipedit-sc_duration' => 'Trajanje',
+	'mwe-clipedit-edit-tools' => 'Uredi alate',
 	'mwe-clipedit-duration' => 'Trajanje:',
 );
 

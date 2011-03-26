@@ -341,7 +341,9 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'narayam-help-page' => 'Help:Tippen',
+	'narayam-kn' => 'Kannada (Transliteratioun)',
 	'narayam-ml' => 'Malayalam-Transliteratioun',
+	'narayam-sa-inscript' => 'Sanskrit (InScript)',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Tamil-Transliteratioun',
 );

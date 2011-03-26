@@ -702,21 +702,53 @@ Proveu de fer servir claus addicionals { ... } per a evitar l'ambigüitat.",
 	'math_DoubleSuperscript' => "S'han trobat dos superíndexs associats a la mateixa base. Se'n permet un de sol.",
 	'math_IllegalCharacter' => "Caràcter il.legal en l'entrada",
 	'math_IllegalCommandInMathMode' => 'La comanda "$1" és il·legal en mode matemàtic',
+	'math_IllegalCommandInMathModeWithHint' => "L'ordre «$1» no està permesa en mode matemàtic.
+Potser volíeu utilitzar «$2»?",
+	'math_IllegalCommandInTextMode' => "L'ordre «$1» està prohibida al mode de text",
+	'math_IllegalCommandInTextModeWithHint' => "L'ordre «$1» està prohibida en mode de text.
+Potser volíeu utilitzar «$2»?",
 	'math_IllegalDelimiter' => 'Delimitador il·legal a continuació de "$1"',
 	'math_IllegalFinalBackslash' => 'Barra invertida il·legal "\\" al final de l\'entrada',
+	'math_IllegalNestedFontEncodings' => 'Les ordres de codificació del tipus de lletra no es poden imbricar',
 	'math_IllegalRedefinition' => 'La comanda "$1" ja s\'ha definit, no la pots redefinir',
 	'math_InvalidColour' => 'El color "$1" és invàlid',
 	'math_InvalidUtf8Input' => "La cadena d'entrada no era UTF-8 vàlid",
 	'math_LatexFontNotSpecified' => 'No s\'ha especificat cap font LaTeX per "$1"',
+	'math_LatexPackageUnavailable' => 'No es pot crear el PNG perquè el paquet «$1» no està disponible',
+	'math_MismatchedBeginAndEnd' => 'Les ordres «$1» i «$2» no coincideixen',
+	'math_MisplacedLimits' => "L'ordre «$1» només pot aparèixer després d'un operador matemàtic.
+Considereu l'ús de «\\mathop».",
+	'math_MissingCommandAfterNewcommand' => 'El nom de la nova ordre de després de «\\newcommand» no és vàlid o és inexistent.
+Cal que hi hagi una sola ordre definida, i ha de començar amb una barra inversa "\\" i contenir només caràcters alfabètics.',
 	'math_MissingDelimiter' => 'Falta un delimitador després de "$1"',
 	'math_MissingOpenBraceAfter' => 'Falta obrir un claudàtor "{" després de "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Falta obrir un claudàtor "{" al final de l\'entrada',
 	'math_MissingOpenBraceBefore' => 'Falta obrir un claudàtor "{" abans de "$1"',
+	'math_MissingOrIllegalParameterCount' => 'El número de paràmetres de la definició de «$1» manca o és incorrecte.
+Ha de ser un únic dígit comprès entre 1 i 9, ambdós inclosos.',
+	'math_MissingOrIllegalParameterIndex' => 'Manca o no és vàlid un índex de paràmetre en la definició de «$1»',
+	'math_NonAsciiInMathMode' => "Els caràcters no ASCII només es poden utilitzar en mode de text.
+Proveu d'envoltar els caràcters problemàtics dins de «\\text{...}».",
 	'math_NotEnoughArguments' => 'No han estat subministrats arguments suficients per a "$1"',
 	'math_PngIncompatibleCharacter' => 'No es pot generar correctament el PNG que conté el caràcter $1',
 	'math_ReservedCommand' => 'La comanda "$1" és reservada a per a ús intern de blahtex',
+	'math_SubstackRowTooBig' => "Només hi pot haver una entrada a cada fila d'un bloc «substack»",
+	'math_TooManyMathmlNodes' => "Hi ha massa nodes en l'arbre de MathML",
 	'math_TooManyTokens' => "L'entrada és massa llarga",
 	'math_UnavailableSymbolFontCombination' => 'El símbol "$1" no està disponible a la font "$2"',
+	'math_UnexpectedNextCell' => 'L\'ordre "&" només pot aparèixer dins d\'un bloc «\\begin ... \\end»',
+	'math_UnexpectedNextRow' => 'L\'ordre "\\\\" només pot aparèixer dins d\'un bloc «\\begin ... \\end»',
+	'math_UnmatchedBegin' => "S'ha trobat un «\\begin» sense el «\\end» corresponent",
+	'math_UnmatchedCloseBrace' => 'S\'ha trobat una clau de tancament "}" sense la corresponent clau d\'obertura "{"',
+	'math_UnmatchedEnd' => "S'ha trobat un «\\end» sense el corresponent «\\begin»",
+	'math_UnmatchedLeft' => "S'ha trobat un «\\left» sense el corresponent «\\right»",
+	'math_UnmatchedOpenBrace' => 'S\'ha trobat una clau d\'obertura "{" sense la corresponent clau de tancament "}"',
+	'math_UnmatchedOpenBracket' => 'S\'ha trobat un claudàtor d\'obertura "[" sense el corresponent claudàtor de tancament "]"',
+	'math_UnmatchedRight' => "S'ha trobat un «\\right» sense el corresponent «\\left»",
+	'math_UnrecognisedCommand' => 'Ordre «$1» no reconeguda',
+	'math_WrongFontEncoding' => 'El símbol «$1» no pot aparèixer en la codificació «$2»',
+	'math_WrongFontEncodingWithHint' => "El símbol «$1» no pot aparèixer en la codificació «$2».
+Proveu d'utilitzar l'ordre «$3{...}».",
 );
 
 /** Czech (Česky)

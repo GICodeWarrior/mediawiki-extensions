@@ -133,6 +133,9 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'rdf-desc' => 'Sistema RDF para MediaWiki',
+	'rdf-inpage' => 'Formato Turtle incorporado na páxina',
+	'rdf-dcmes' => 'Elemento de metadatos Dublin Core',
 	'rdf-cc' => 'Creative Commons',
 	'rdf-image' => 'Imaxes incrustadas',
 	'rdf-linksto' => 'Ligazóns cara á páxina',
@@ -144,6 +147,7 @@ $messages['gl'] = array(
 	'rdf-target' => 'Páxina de destino',
 	'rdf-modelnames' => 'Modelo(s)',
 	'rdf-format' => 'Formato de saída',
+	'rdf-instructions' => 'Seleccione a páxina de destino e os modelos RDF nos que estea interesado.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

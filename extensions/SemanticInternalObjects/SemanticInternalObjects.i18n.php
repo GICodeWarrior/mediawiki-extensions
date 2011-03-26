@@ -202,7 +202,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'semanticinternalobjects-desc' => 'Поставање на внатрешни објекти во Semantic MediaWiki',
+	'semanticinternalobjects-desc' => 'Задавање на внатрешни објекти во Семантички МедијаВики',
 );
 
 /** Dutch (Nederlands)
