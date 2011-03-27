@@ -312,6 +312,27 @@ $messages['ru'] = array(
 	'rdf-format' => 'Формат вывода',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'rdf-desc' => 'Balangkas ng RDF para sa MediaWiki',
+	'rdf-inpage' => 'Naibaong Pagong na Nasa Loob ng Pahina',
+	'rdf-dcmes' => 'Pangkat ng Elemento ng Kaibuturan ng Metadato ng Dublin',
+	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Naibaong mga larawan',
+	'rdf-linksto' => 'Mga kawing sa pahina',
+	'rdf-linksfrom' => 'Mga kawing mula sa pahina',
+	'rdf-links' => 'Lahat ng mga kawing',
+	'rdf-history' => 'Mga bersyong makasaysayan',
+	'rdf-interwiki' => 'Mga kawing sa ugnayang-wiki',
+	'rdf-categories' => 'Mga kategorya',
+	'rdf-target' => 'Tinutumbok na pahina',
+	'rdf-modelnames' => '(Mga) huwaran',
+	'rdf-format' => 'Anyo ng nilalabas',
+	'rdf-instructions' => 'Piliin ang tinutumbok na pahina at mga huwarang RDF na nahihiligan mo.',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */
