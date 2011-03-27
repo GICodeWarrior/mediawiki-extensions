@@ -9,9 +9,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Configuration.h"
+#import "LicensePickerViewController.h"
 
 @interface SettingsViewController : UIViewController <UINavigationControllerDelegate,
-                                                        UITextFieldDelegate>{
+                                                        UITextFieldDelegate,
+                                                        LicensePickerDelegate>{
 
 	IBOutlet UILabel *usernameLabel;
 	IBOutlet UILabel *passwordLabel;
@@ -20,13 +22,8 @@
 	IBOutlet UITextField *username;
 	IBOutlet UITextField *password;
 	IBOutlet UITextField *license;
-	IBOutlet UIButton *save;
-        
-        IBOutlet UIView *pickerView;
-        IBOutlet UIBarButtonItem *dismissButton;
-        IBOutlet UINavigationItem *navItem;
-        IBOutlet UIPickerView *pickerControl;
-
+	IBOutlet UIButton    *save;
+        int                  selectedLicense;
 }
 
 @property (retain, nonatomic) UILabel *usernameLabel;
@@ -38,13 +35,15 @@
 @property (retain, nonatomic) UITextField *license;
 @property (retain, nonatomic) UIButton *save;
 
+@property (retain, nonatomic) NSArray       *licenses;
+@property (nonatomic) int selectedLicense;
+
+-(void)loadData;
+-(void)saveData;
+
 -(IBAction)textFieldDidEnd:(id)sender;
 -(IBAction)pickLicensePicker:(id)sender;
--(IBAction)dismissLicensePicker:(id)sender;
 
 -(IBAction)saveAction:(id)sender;
-
-- (void)popupView: (UIView*) popupView;
-- (void)popdownView: (UIView*) popupView;
 
 @end

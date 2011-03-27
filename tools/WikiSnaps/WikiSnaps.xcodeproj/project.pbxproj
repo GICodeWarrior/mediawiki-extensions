@@ -22,6 +22,9 @@
 		494C82C812ECBEB6000931F2 /* ImageUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C82C612ECBEB6000931F2 /* ImageUploadViewController.m */; };
 		494C82C912ECBEB6000931F2 /* ImageUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494C82C712ECBEB6000931F2 /* ImageUploadViewController.xib */; };
 		494C834E12ECEAB3000931F2 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C834D12ECEAB3000931F2 /* XMLReader.m */; };
+		4971EC87133E77FD0043DD67 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4971EC86133E77FD0043DD67 /* Licenses.plist */; };
+		4971ED31133E9DD90043DD67 /* LicensePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4971ED2F133E9DD90043DD67 /* LicensePickerViewController.m */; };
+		4971ED32133E9DD90043DD67 /* LicensePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4971ED30133E9DD90043DD67 /* LicensePickerViewController.xib */; };
 		A127DA4012E0DF9700149FC9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A127DA3E12E0DF9700149FC9 /* SettingsViewController.m */; };
 		A127DA4112E0DF9700149FC9 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A127DA3F12E0DF9700149FC9 /* SettingsViewController.xib */; };
 		A1338B8612E0F01700662B28 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A1338B7312E0F01700662B28 /* ASIAuthenticationDialog.m */; };
@@ -73,6 +76,10 @@
 		494C82C712ECBEB6000931F2 /* ImageUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageUploadViewController.xib; sourceTree = "<group>"; };
 		494C834C12ECEAB3000931F2 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = XMLtoDict/XMLReader.h; sourceTree = "<group>"; };
 		494C834D12ECEAB3000931F2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = XMLtoDict/XMLReader.m; sourceTree = "<group>"; };
+		4971EC86133E77FD0043DD67 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
+		4971ED2E133E9DD90043DD67 /* LicensePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicensePickerViewController.h; sourceTree = "<group>"; };
+		4971ED2F133E9DD90043DD67 /* LicensePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicensePickerViewController.m; sourceTree = "<group>"; };
+		4971ED30133E9DD90043DD67 /* LicensePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LicensePickerViewController.xib; path = Classes/LicensePickerViewController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WikiSnaps-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WikiSnaps-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A127DA3D12E0DF9700149FC9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		A127DA3E12E0DF9700149FC9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -165,6 +172,8 @@
 				A1FECB2A12E10DCA007CF08C /* ImageDetailsViewController.m */,
 				494C82C512ECBEB6000931F2 /* ImageUploadViewController.h */,
 				494C82C612ECBEB6000931F2 /* ImageUploadViewController.m */,
+				4971ED2E133E9DD90043DD67 /* LicensePickerViewController.h */,
+				4971ED2F133E9DD90043DD67 /* LicensePickerViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -206,6 +215,7 @@
 				494C82FA12ECDE94000931F2 /* Images */,
 				494C82FB12ECDEA6000931F2 /* Xibs */,
 				8D1107310486CEB800E47090 /* WikiSnaps-Info.plist */,
+				4971EC86133E77FD0043DD67 /* Licenses.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -255,6 +265,7 @@
 				A127DA3F12E0DF9700149FC9 /* SettingsViewController.xib */,
 				A1FECB2B12E10DCA007CF08C /* ImageDetailsViewController.xib */,
 				494C82C712ECBEB6000931F2 /* ImageUploadViewController.xib */,
+				4971ED30133E9DD90043DD67 /* LicensePickerViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -361,6 +372,8 @@
 				494C81E212E8DBAD000931F2 /* Default.png in Resources */,
 				494C821312E8E385000931F2 /* SourcePickerViewController.xib in Resources */,
 				494C82C912ECBEB6000931F2 /* ImageUploadViewController.xib in Resources */,
+				4971EC87133E77FD0043DD67 /* Licenses.plist in Resources */,
+				4971ED32133E9DD90043DD67 /* LicensePickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +405,7 @@
 				494C82C812ECBEB6000931F2 /* ImageUploadViewController.m in Sources */,
 				494C834E12ECEAB3000931F2 /* XMLReader.m in Sources */,
 				4935493F13008DA900A7A44E /* SFHFKeychainUtils.m in Sources */,
+				4971ED31133E9DD90043DD67 /* LicensePickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

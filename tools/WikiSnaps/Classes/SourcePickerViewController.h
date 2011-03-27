@@ -17,6 +17,8 @@
     BOOL cameraAvailable;
     BOOL fakeCameraAvailable;
     NSData *imageData;
+    
+    NSArray *licenses;
 }
 
 - (IBAction)settingsPressed:(id)sender;

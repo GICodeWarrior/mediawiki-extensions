@@ -12,6 +12,7 @@
 #import "ASIFormDataRequest.h"
 #import "XMLReader.h"
 #import "SFHFKeychainUtils.h"
+#import "PhotoPickerAppDelegate.h"
 
 /* Private */
 @interface CommonsUpload (Internal)
@@ -28,6 +29,28 @@
     return @"";
 }
 
+- (NSString *)getLicenseString {
+    PhotoPickerAppDelegate *appDelegate =
+            (PhotoPickerAppDelegate *) [UIApplication sharedApplication].delegate;
+            
+    NSString *licenseDefault = [[NSUserDefaults standardUserDefaults] stringForKey: COMMONS_LICENSE_KEY];
+    NSEnumerator *enumerator = [appDelegate.licenses objectEnumerator];
+    NSDictionary *aLicense = nil;
+    while( licenseDefault != nil && (aLicense = [enumerator nextObject]) ) {
+        if( [licenseDefault compare: [aLicense objectForKey:@"short"]] == NSOrderedSame ) {
+            break;
+        }
+    }
+    if( aLicense != nil ) {
+        NSString *licenseString = [aLicense objectForKey:@"template"];
+        licenseString = [licenseString stringByReplacingOccurrencesOfString:@"$author" withString: [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY]];
+        // TODO add attribution at some point
+        licenseString = [licenseString stringByReplacingOccurrencesOfString:@"$attribution" withString: @""];
+        return licenseString;
+    }
+    return DEFAULT_LICENSE;
+}
+
 - (NSString *)getUploadDescription {
     NSDate *today = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -41,7 +64,7 @@
      description,
      [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY],
      dateString,
-     DEFAULT_LICENSE,
+     [self getLicenseString],
      APPLICATION_CATEGORY,
      nil
      ];

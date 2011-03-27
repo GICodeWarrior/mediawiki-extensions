@@ -23,14 +23,21 @@
 @synthesize viewController;
 @synthesize navController;
 @synthesize window;
+@synthesize licenses;
 
 
 - (BOOL)application:(UIApplication *)application
         didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [self checkIfJustInstalled];
+
     self.defaultImageSource = -1;
 
-    [self checkIfJustInstalled];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Licenses" ofType:@"plist"];
+    licenses = [[NSMutableArray alloc] initWithContentsOfFile:path];
+    if( licenses == nil ) {
+        NSLog( @"Could not load the licenses information" );
+    }
 
     [window addSubview:navController.view];
     [window makeKeyAndVisible];
@@ -43,6 +50,7 @@
     self.viewController = nil;
     self.navController = nil;
     self.window = nil;
+    [licenses release];
 
     [super dealloc];
 }

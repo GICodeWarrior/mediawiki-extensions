@@ -16,12 +16,13 @@
 
 
 @interface PhotoPickerAppDelegate : NSObject <UIApplicationDelegate> {
-    int defaultImageSource;
-    BOOL justInstalled;
-    NSString *postContext;
-    UIWindow *window;
-    PhotoPickerViewController *viewController;
-	UINavigationController *navController;
+    int         defaultImageSource;
+    BOOL        justInstalled;
+    NSString    *postContext;
+    UIWindow    *window;
+    PhotoPickerViewController   *viewController;
+    UINavigationController      *navController;
+    NSArray     *licenses;
 }
 
 @property (nonatomic, assign) int defaultImageSource;
@@ -34,6 +35,7 @@
 @property (nonatomic, retain) IBOutlet PhotoPickerViewController *viewController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) NSArray  *licenses;
 
 @end
 

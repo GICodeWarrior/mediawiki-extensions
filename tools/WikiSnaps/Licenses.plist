@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Creative Commons Attribution Share-Alike 3.0</string>
+		<key>short</key>
+		<string>CC-BY-SA-3.0</string>
+		<key>template</key>
+		<string>{{self|1=cc-by-sa-3.0|author=$author|attribution=$attribution}}</string>
+		<key>description</key>
+		<string>&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h4&gt;You are free:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;to Share&lt;/b&gt; — to copy, distribute and transmit the work&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;to Remix&lt;/b&gt; — to adapt the work&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Under the following conditions:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Attribution&lt;/b&gt; — You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Share Alike&lt;/b&gt; — If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;With the understanding that:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Waiver&lt;/b&gt; — Any of the above conditions can be &lt;b&gt;&lt;u&gt;waived&lt;/u&gt;&lt;/b&gt; if you get permission from the copyright holder.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Public Domain&lt;/b&gt; — Where the work or any of its elements is in the &lt;b&gt;&lt;u&gt;public domain&lt;/u&gt;&lt;/b&gt; under applicable law, that status is in no way affected by the license.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Other Rights&lt;/b&gt; — In no way are any of the following rights affected by the license:
+&lt;ul&gt;
+&lt;li&gt;Your fair dealing or &lt;b&gt;&lt;u&gt;fair use&lt;/u&gt;&lt;/b&gt; rights, or other applicable copyright exceptions and limitations;
+&lt;li&gt;The author&apos;s &lt;b&gt;&lt;u&gt;moral&lt;/u&gt;&lt;/b&gt; rights;
+&lt;li&gt;Rights other persons may have either in the work itself or in how the work is used, such as &lt;b&gt;&lt;u&gt;publicity&lt;/u&gt;&lt;/b&gt; or privacy rights.
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Notice&lt;/b&gt; — For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+This is a human-readable summary of the &lt;a href=&quot;http://creativecommons.org/licenses/by-sa/3.0/legalcode&quot;&gt;Legal Code (the full license)&lt;/a&gt;.
+&lt;/body&gt;
+&lt;/html&gt;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Creative Commons Attribution 3.0</string>
+		<key>short</key>
+		<string>CC-BY-3.0</string>
+		<key>template</key>
+		<string>{{self|1=cc-by-3.0|author=$author|attribution=$attribution}}</string>
+		<key>description</key>
+		<string>&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h4&gt;You are free:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;to Share&lt;/b&gt; — to copy, distribute and transmit the work&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;to Remix&lt;/b&gt; — to adapt the work&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Under the following conditions:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Attribution&lt;/b&gt; — You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;With the understanding that:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Waiver&lt;/b&gt; — Any of the above conditions can be &lt;b&gt;&lt;u&gt;waived&lt;/u&gt;&lt;/b&gt; if you get permission from the copyright holder.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Public Domain&lt;/b&gt; — Where the work or any of its elements is in the &lt;b&gt;&lt;u&gt;public domain&lt;/u&gt;&lt;/b&gt; under applicable law, that status is in no way affected by the license.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Other Rights&lt;/b&gt; — In no way are any of the following rights affected by the license:
+&lt;ul&gt;
+&lt;li&gt;Your fair dealing or &lt;b&gt;&lt;u&gt;fair use&lt;/u&gt;&lt;/b&gt; rights, or other applicable copyright exceptions and limitations;
+&lt;li&gt;The author&apos;s &lt;b&gt;&lt;u&gt;moral&lt;/u&gt;&lt;/b&gt; rights;
+&lt;li&gt;Rights other persons may have either in the work itself or in how the work is used, such as &lt;b&gt;&lt;u&gt;publicity&lt;/u&gt;&lt;/b&gt; or privacy rights.
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Notice&lt;/b&gt; — For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+This is a human-readable summary of the &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0/legalcode&quot;&gt;Legal Code (the full license)&lt;/a&gt;.
+&lt;/body&gt;
+&lt;/html&gt;</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Universal Public Domain Dedication</string>
+		<key>short</key>
+		<string>CC-Zero</string>
+		<key>template</key>
+		<string>{{self|1=cc-zero|author=$author|attribution=$attribution}}</string>
+		<key>description</key>
+		<string>&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h4&gt;No Copyright&lt;/h4&gt;
+The person who associated a work with this deed has &lt;b&gt;dedicated&lt;/b&gt; the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.&lt;/p&gt;
+&lt;p&gt;You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. See &lt;b&gt;Other Information&lt;/b&gt; below.
+
+&lt;h4&gt;Other Information&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;In no way are the patent or trademark rights of any person affected by CC0, nor are the rights that other persons may have in the work or in how the work is used, such as publicity or privacy rights.
+&lt;li&gt;Unless expressly stated otherwise, the person who associated a work with this deed makes no warranties about the work, and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.
+&lt;/li&gt;When using or citing the work, you should not imply endorsement by the author or the affirmer.
+&lt;/ul&gt;
+
+&lt;p&gt;This is a human-readable summary of the &lt;a href=&quot;http://creativecommons.org/publicdomain/zero/1.0/legalcode&quot;&gt;Legal Code (read the full text)&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+	</dict>
+</array>
+</plist>
