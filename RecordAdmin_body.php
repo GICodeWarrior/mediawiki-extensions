@@ -382,7 +382,37 @@ class RecordAdmin {
 			$records = $tmp;
 		}
 
-		# Table rows
+		# Pass 1 - Loop through all the rows building a single string of wikitext to parse
+		$text = "";
+		foreach( $records as $r ) {
+			if( is_array( $r ) ) {
+				if( $text ) $text .= "^^^";
+				if( $template ) {
+					$text .= '{'.'{'."$template|select=%SELECT%|title=$col|created=$tsc|modified=$tsm";
+					foreach( array_keys( $this->types ) as $col ) {
+						$v = isset( $r[$col] ) ? $r[$col] : '';
+						$text .= "|$col=$v";
+					}
+					$text .= '}}';
+				} else {
+					$fcol = true;
+					foreach( $cols as $col ) {
+						if( !isset( $row[$col] ) ) {
+							if( isset( $r[$col] ) ) {
+								if( !$fcol ) $text .= "@@@";
+								$text .= $r[$col];
+								$fcol = false;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# Parse the wikitext block and split into rows
+		$prows = explode( "^^^", $wgParser->parse( $text, $wgTitle, $wgParser->mOptions, true, false )->getText() );
+
+		# Pass 2 - Render the table using the array of pre-parsed wikitext cells
 		$stripe = '';
 		foreach( $records as $r ) {
 			$stripe = $stripe ? '' : ' class="stripe"';
@@ -403,13 +433,7 @@ class RecordAdmin {
 
 				# Render this row
 				if( $template ) {
-					$text = '{'.'{'."$template|select=%SELECT%|title=$col|created=$tsc|modified=$tsm";
-					foreach( array_keys( $this->types ) as $col ) {
-						$v = isset( $r[$col] ) ? $r[$col] : '';
-						$text .= "|$col=$v";
-					}
-					$text .= '}}';
-					$text = $wgParser->parse( $text, $wgTitle, $wgParser->mOptions, true, false )->getText();
+					$text = array_shift( $prows );
 					$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
 					$text = str_replace( '%SELECT%', $sel, $text );
 					$table .= "$text\n";
@@ -422,9 +446,10 @@ class RecordAdmin {
 						'created'  => "<td class='col2 col-created'>$tsc</td>\n",
 						'modified' => "<td class='col3 col-modified'>$tsm</td>\n",
 					);
+					$pcols = explode( "@@@", array_shift( $prows ) );
 					foreach( $cols as $col ) {
 						if( !isset( $row[$col] ) ) {
-							$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&#160;';
+							$v = isset( $r[$col] ) ? array_shift( $pcols ) : '&#160;';
 							$class = 'col' . preg_replace( "|\W|", "-", $col );
 							$row[$col] = "<td class='$class'>$v</td>";
 						}
