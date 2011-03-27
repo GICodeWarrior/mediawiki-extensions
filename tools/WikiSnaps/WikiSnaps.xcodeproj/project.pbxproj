@@ -25,6 +25,9 @@
 		4971EC87133E77FD0043DD67 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4971EC86133E77FD0043DD67 /* Licenses.plist */; };
 		4971ED31133E9DD90043DD67 /* LicensePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4971ED2F133E9DD90043DD67 /* LicensePickerViewController.m */; };
 		4971ED32133E9DD90043DD67 /* LicensePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4971ED30133E9DD90043DD67 /* LicensePickerViewController.xib */; };
+		49E03406133F6C1300BFE247 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E03405133F6C1300BFE247 /* CoreLocation.framework */; };
+		49E0340A133F72A100BFE247 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E03409133F72A100BFE247 /* AssetsLibrary.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		49E03463133F814D00BFE247 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E03462133F814D00BFE247 /* ImageIO.framework */; };
 		A127DA4012E0DF9700149FC9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A127DA3E12E0DF9700149FC9 /* SettingsViewController.m */; };
 		A127DA4112E0DF9700149FC9 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A127DA3F12E0DF9700149FC9 /* SettingsViewController.xib */; };
 		A1338B8612E0F01700662B28 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A1338B7312E0F01700662B28 /* ASIAuthenticationDialog.m */; };
@@ -80,6 +83,9 @@
 		4971ED2E133E9DD90043DD67 /* LicensePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicensePickerViewController.h; sourceTree = "<group>"; };
 		4971ED2F133E9DD90043DD67 /* LicensePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicensePickerViewController.m; sourceTree = "<group>"; };
 		4971ED30133E9DD90043DD67 /* LicensePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LicensePickerViewController.xib; path = Classes/LicensePickerViewController.xib; sourceTree = "<group>"; };
+		49E03405133F6C1300BFE247 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		49E03409133F72A100BFE247 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		49E03462133F814D00BFE247 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* WikiSnaps-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WikiSnaps-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A127DA3D12E0DF9700149FC9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		A127DA3E12E0DF9700149FC9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -142,6 +148,9 @@
 				A159144712E0F69C0003BBE2 /* MobileCoreServices.framework in Frameworks */,
 				A159144B12E0F6BE0003BBE2 /* SystemConfiguration.framework in Frameworks */,
 				49354963130096A000A7A44E /* Security.framework in Frameworks */,
+				49E03406133F6C1300BFE247 /* CoreLocation.framework in Frameworks */,
+				49E0340A133F72A100BFE247 /* AssetsLibrary.framework in Frameworks */,
+				49E03463133F814D00BFE247 /* ImageIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +240,9 @@
 				A159144612E0F69C0003BBE2 /* MobileCoreServices.framework */,
 				A159144A12E0F6BE0003BBE2 /* SystemConfiguration.framework */,
 				49354962130096A000A7A44E /* Security.framework */,
+				49E03405133F6C1300BFE247 /* CoreLocation.framework */,
+				49E03409133F72A100BFE247 /* AssetsLibrary.framework */,
+				49E03462133F814D00BFE247 /* ImageIO.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

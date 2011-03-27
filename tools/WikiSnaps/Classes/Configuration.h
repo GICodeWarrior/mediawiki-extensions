@@ -13,6 +13,7 @@
 #define COMMONS_USERNAME_KEY @"CommonsUsernameKey"
 #define COMMONS_LICENSE_KEY @"CommonsLicenseKey"
 #define COMMONS_KEYCHAIN_KEY @"CommonsKey"
+#define GEOTAGGING_KEY @"GeoTaggingKey"
 
 // Constants
 #define COMMONS_DESTINATION_URL @"http://commons.wikimedia.org/wiki/File:%@"

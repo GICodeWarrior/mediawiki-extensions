@@ -43,8 +43,8 @@
     PhotoPickerAppDelegate *appDelegate =
             (PhotoPickerAppDelegate *) [UIApplication sharedApplication].delegate;
             
-    licenses = appDelegate.licenses;
-    selectedLicense = 0;
+    self.licenses = appDelegate.licenses;
+    self.selectedLicense = 0;
     
     [self loadData];
 
@@ -97,33 +97,36 @@
 
 
 - (void)dealloc {
-    [username release];
-    [password release];
-    [license release];
-    [save release];
+    self.username = nil;
+    self.password = nil;
+    self.license = nil;
+    self.save = nil;
+    
+    self.licenses = nil;
+
     [super dealloc];
 }
 
 #pragma mark Data loading and saving
 
 - (void)loadData {
-    username.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY];
+    self.username.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY];
 
     NSString *licenseDefault = [[NSUserDefaults standardUserDefaults] stringForKey: COMMONS_LICENSE_KEY];
-    NSEnumerator *enumerator = [licenses objectEnumerator];
+    NSEnumerator *enumerator = [self.licenses objectEnumerator];
     NSDictionary *aLicense;
     while( licenseDefault != nil && (aLicense = [enumerator nextObject]) ) {
         if( [licenseDefault compare: [aLicense objectForKey:@"short"]] == NSOrderedSame ) {
-            license.text = [aLicense objectForKey:@"name"];
+            self.license.text = [aLicense objectForKey:@"name"];
             break;
         }
-        selectedLicense++;
+        self.selectedLicense++;
     }
-    if( selectedLicense == [licenses count] )
-        selectedLicense = 0;
+    if( self.selectedLicense == [self.licenses count] )
+        self.selectedLicense = 0;
 
     NSError *error = nil;
-    password.text = [SFHFKeychainUtils getPasswordForUsername:username.text andServiceName:COMMONS_KEYCHAIN_KEY error: &error];
+    self.password.text = [SFHFKeychainUtils getPasswordForUsername:username.text andServiceName:COMMONS_KEYCHAIN_KEY error: &error];
     if( error ) {
         NSLog( @"pasword storage problem: %@", [error localizedDescription] );
     }
@@ -132,7 +135,7 @@
 - (void)saveData {
     NSError *error = nil;
     NSString *oldUsername = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY];
-    if( [username.text compare:oldUsername] != NSOrderedSame ) {
+    if( [self.username.text compare:oldUsername] != NSOrderedSame ) {
         /* Delete password for previous username */
         [SFHFKeychainUtils deleteItemForUsername:oldUsername andServiceName:COMMONS_KEYCHAIN_KEY error:&error];
         if( error ) {
@@ -142,13 +145,13 @@
     }
 
     /* Save the data */
-    [[NSUserDefaults standardUserDefaults] setObject:username.text forKey:COMMONS_USERNAME_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:self.username.text forKey:COMMONS_USERNAME_KEY];
 
-    NSDictionary *aLicense = [licenses objectAtIndex:selectedLicense];
+    NSDictionary *aLicense = [self.licenses objectAtIndex:self.selectedLicense];
     [[NSUserDefaults standardUserDefaults] setObject:[aLicense objectForKey:@"short"] forKey:COMMONS_LICENSE_KEY];
 
     /* Store the password in the keychain */
-    [SFHFKeychainUtils storeUsername: username.text andPassword: password.text forServiceName:COMMONS_KEYCHAIN_KEY updateExisting: YES error: &error];
+    [SFHFKeychainUtils storeUsername: self.username.text andPassword: self.password.text forServiceName:COMMONS_KEYCHAIN_KEY updateExisting: YES error: &error];
     
     if( error ) {
         NSLog( @"pasword storage problem: %@", [error localizedDescription] );
@@ -169,7 +172,7 @@
 
 - (IBAction)textFieldDidEnd:(id)sender {
     if(sender == username ) {
-        [password becomeFirstResponder];
+        [self.password becomeFirstResponder];
         return;
     }
     [sender resignFirstResponder];
@@ -186,8 +189,8 @@
 - (IBAction) pickLicensePicker:(id)sender{
     LicensePickerViewController *picker = [[LicensePickerViewController alloc] initWithNibName:@"LicensePickerViewController" bundle:nil];
     picker.delegate = self;
-    picker.licenses = licenses;
-    picker.selectedLicense = selectedLicense;
+    picker.licenses = self.licenses;
+    picker.selectedLicense = self.selectedLicense;
     [self presentModalViewController:picker animated:YES];
     [picker release];
 }
@@ -196,8 +199,8 @@
 
 -(void)licensePickerDidFinish:(int)theSelectedLicense {
     NSDictionary *licenseDict = [licenses objectAtIndex:theSelectedLicense];
-    license.text = [licenseDict objectForKey:@"name"];
-    selectedLicense = theSelectedLicense;
+    self.license.text = [licenseDict objectForKey:@"name"];
+    self.selectedLicense = theSelectedLicense;
     [self dismissModalViewControllerAnimated:YES];
 }
 

@@ -63,9 +63,9 @@
 
 
 - (void)dealloc {
-    [titleField release];
-    [descriptionText release];
-    [upload release];
+    self.titleField = nil;
+    self.descriptionText = nil;
+    self.upload = nil;
     [super dealloc];
 }
 
@@ -76,11 +76,11 @@
 -(void)textFieldDidEndEditing:(id)sender {
     if(sender == titleField ) {
         /* Verify name */
-        if( ![upload verifyTitle: titleField.text] ) {
-            titleField.textColor = [UIColor redColor];
+        if( ![self.upload verifyTitle: self.titleField.text] ) {
+            self.titleField.textColor = [UIColor redColor];
         } else {
-            titleField.textColor = [UIColor blackColor];
-            [descriptionText becomeFirstResponder];
+            self.titleField.textColor = [UIColor blackColor];
+            [self.descriptionText becomeFirstResponder];
         }
         return;
     }
@@ -94,12 +94,12 @@
 }
 
 - (void)doUpload:(id)sender {
-    upload.title = [NSString stringWithFormat: @"%@.jpg", titleField.text];
-    upload.description = descriptionText.text;
-    [descriptionText resignFirstResponder];
+    self.upload.imageTitle = [NSString stringWithFormat: @"%@.jpg", self.titleField.text];
+    self.upload.description = self.descriptionText.text;
+    [self.descriptionText resignFirstResponder];
     
     ImageUploadViewController *uploadViewController = [[ImageUploadViewController alloc] init];
-    uploadViewController.upload = upload;
+    uploadViewController.upload = self.upload;
     [self.navigationController pushViewController:uploadViewController animated:YES];
     [uploadViewController release];
 }

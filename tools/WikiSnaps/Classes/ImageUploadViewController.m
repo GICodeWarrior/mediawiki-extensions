@@ -33,16 +33,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    uploadOverlayImage.image = [UIImage imageWithData:upload.imageData];
+    uploadOverlayImage.image = self.upload.originalImage;
     uploadProgressMessage.text = NSLocalizedString( @"uploading", @"Upload progress message" );
     uploadProgress.progress = 0.0f;
 
     // view.frame = CGRectMake(0, 20, 320, 460);
-    // [[UIApplication sharedApplication].keyWindow addSubview:uploadPhotoOverlay];
+    // [[UIApplication sharedApplication].keyWindow addSubview:PhotoOverlay];
 
     // Start the actual upload
-    upload.delegate = self;
-    [upload uploadImage];
+    [self.upload setDelegate: self];
+    [self.upload uploadImage];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -77,7 +77,7 @@
 
 
 - (void)dealloc {
-    [upload release];
+    self.upload = nil;
     [super dealloc];
 }
 
@@ -92,8 +92,8 @@
     [[UIAlertView alloc] initWithTitle: NSLocalizedString( @"Upload succeeded", @"Title for upload succeeded alert" )
                                                         message: nil
                                                         delegate: self
-                                     cancelButtonTitle: NSLocalizedString( @"Show upload", @"Title for Show upload button in alert view after upload succeeded" )
-                                     otherButtonTitles: nil];
+                                     cancelButtonTitle: NSLocalizedString( @"Cancel", @"" )
+                                     otherButtonTitles: NSLocalizedString( @"Show upload", @"Title for Show upload button in alert view after upload succeeded" ),nil];
     [alert show];
     [alert release];
 }
@@ -104,8 +104,12 @@
 }
 
 - (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat: COMMONS_DESTINATION_URL, [upload.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
-	//[self.navigationController popToRootViewControllerAnimated:YES];
+    if( buttonIndex == 0 ) {
+        NSLog( @"Cancel" );
+    } else if ( buttonIndex == 1 ) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat: COMMONS_DESTINATION_URL, [self.upload.imageTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
+    }
+    [self.navigationController popToRootViewControllerAnimated:YES];
 } // clickedButtonAtIndex
 
 

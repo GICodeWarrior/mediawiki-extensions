@@ -34,9 +34,9 @@
     dismissButton.action = @selector( dismissLicensePicker: );
     
     [pickerControl selectRow:selectedLicense inComponent:0 animated: NO];
-    NSDictionary *aLicense = [licenses objectAtIndex:selectedLicense];
-    pickerLabel.text = [aLicense objectForKey:@"name"];
-    [descriptionText loadHTMLString: [aLicense objectForKey:@"description"] baseURL: nil];
+    NSDictionary *aLicense = [self.licenses objectAtIndex:selectedLicense];
+    self.pickerLabel.text = [aLicense objectForKey:@"name"];
+    [self.descriptionText loadHTMLString: [aLicense objectForKey:@"description"] baseURL: nil];
 }
 
 
@@ -63,13 +63,18 @@
 
 
 - (void)dealloc {
+    self.descriptionText = nil;
+    self.pickerLabel = nil;
+    self.licenses = nil;
+    self.delegate = nil;
+
     [super dealloc];
 }
 
 #pragma mark Actions
 - (IBAction) dismissLicensePicker: (id) sender
 {
-    [delegate licensePickerDidFinish: [pickerControl selectedRowInComponent:0]];
+    [self.delegate licensePickerDidFinish: [pickerControl selectedRowInComponent:0]];
 }
 
 #pragma mark UIPickerViewDelegate
@@ -78,7 +83,7 @@
 			 titleForRow: (NSInteger)row 
 			 forComponent: (NSInteger)component
 {
-    NSDictionary *dict = [licenses objectAtIndex:row];
+    NSDictionary *dict = [self.licenses objectAtIndex:row];
     if( dict != nil ) {
         return [dict objectForKey:@"short"];
     }
@@ -89,10 +94,10 @@
                     didSelectRow:(NSInteger)row
                     inComponent:(NSInteger)component
 {
-    NSDictionary *dict = [licenses objectAtIndex:row];
+    NSDictionary *dict = [self.licenses objectAtIndex:row];
     if( dict != nil ) {
-        pickerLabel.text = [dict objectForKey:@"name"];
-        [descriptionText loadHTMLString: [dict objectForKey:@"description"] baseURL: nil];
+        self.pickerLabel.text = [dict objectForKey:@"name"];
+        [self.descriptionText loadHTMLString: [dict objectForKey:@"description"] baseURL: nil];
     }
 }
 
@@ -106,7 +111,7 @@
 
 - (NSInteger)pickerView: (UIPickerView *)aPickerView numberOfRowsInComponent: (NSInteger)component
 {
-    NSInteger numberOfRows = [licenses count];
+    NSInteger numberOfRows = [self.licenses count];
     
     return numberOfRows;
 }

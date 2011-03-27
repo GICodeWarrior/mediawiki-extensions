@@ -20,8 +20,9 @@
 
 
 @interface CommonsUpload : NSObject {
-	NSData *imageData;
-	NSString *title;
+	UIImage *originalImage;
+        NSURL   *imageURL;
+	NSString *imageTitle;
 	NSString *description;
 	NSString *token;
 	NSString *editToken;
@@ -29,8 +30,9 @@
 	id <CommonsUploadDelegate> delegate;
 }
 
-@property (nonatomic, retain) NSData *imageData;
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) UIImage  *originalImage;
+@property (nonatomic, retain) NSURL    *imageURL;
+@property (nonatomic, retain) NSString *imageTitle;
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, assign) id <CommonsUploadDelegate> delegate;
 

@@ -9,6 +9,8 @@
 //  Based on Photopicker (MIT)
 
 #import "PhotoPickerAppDelegate.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <ImageIO/ImageIO.h>
 
 #import "SourcePickerViewController.h"
 #import "SettingsViewController.h"
@@ -24,13 +26,14 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
 
 /* Private */
 @interface SourcePickerViewController ()
-    @property (nonatomic, retain) NSData *imageData;
     - (void)pickPhoto:(UIImagePickerControllerSourceType)sourceType;
+    - (void)detailsForImageWithURL:(NSURL *)assetURL;
 @end
 
 @implementation SourcePickerViewController
 
-@synthesize imageData;
+@synthesize image;
+@synthesize imagePicker;
 
 #pragma mark -
 #pragma mark Actions
@@ -63,8 +66,8 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
 
 /* Open a photopicker */
 - (void)pickPhoto:(UIImagePickerControllerSourceType)sourceType {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.delegate = self;
+    self.imagePicker = [[[UIImagePickerController alloc] init] autorelease];
+    self.imagePicker.delegate = self;
 
     // If the camera is force enabled, show the library instead.
     #ifdef FORCE_ENABLE_CAMERA
@@ -73,11 +76,66 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
         }
     #endif
 
-    imagePickerController.sourceType = sourceType;
+    self.imagePicker.sourceType = sourceType;
     // imagePickerController.allowsImageEditing = YES;
-    
-    [self presentModalViewController:imagePickerController animated:YES];
-    [imagePickerController release];
+
+    [self presentModalViewController:self.imagePicker animated:YES];
+}
+
+- (NSMutableDictionary*)currentLocation {
+    NSMutableDictionary *locDict = [[NSMutableDictionary alloc] init];
+    PhotoPickerAppDelegate *appDelegate =
+        (PhotoPickerAppDelegate *) [UIApplication sharedApplication].delegate;
+    CLLocation *lastLocation = appDelegate.lastLocation;
+
+    if (lastLocation != nil) {
+        CLLocationDegrees exifLatitude = lastLocation.coordinate.latitude;
+        CLLocationDegrees exifLongitude = lastLocation.coordinate.longitude;
+        CLLocationDistance exifAltitude = lastLocation.altitude;
+
+        [locDict setObject:@"2.2.0.0" forKey:(NSString *)kCGImagePropertyGPSVersion];
+        [locDict setObject:lastLocation.timestamp forKey:(NSString*)kCGImagePropertyGPSTimeStamp];
+
+        if (exifLatitude < 0.0) {
+          exifLatitude = exifLatitude*(-1);
+          [locDict setObject:@"S" forKey:(NSString*)kCGImagePropertyGPSLatitudeRef];
+        } else {
+          [locDict setObject:@"N" forKey:(NSString*)kCGImagePropertyGPSLatitudeRef];
+        }
+        [locDict setObject:[NSNumber numberWithFloat:exifLatitude] forKey:(NSString*)kCGImagePropertyGPSLatitude];
+
+        if (exifLongitude < 0.0) {
+          exifLongitude=exifLongitude*(-1);
+          [locDict setObject:@"W" forKey:(NSString*)kCGImagePropertyGPSLongitudeRef];
+        } else {
+          [locDict setObject:@"E" forKey:(NSString*)kCGImagePropertyGPSLongitudeRef];
+        }
+        [locDict setObject:[NSNumber numberWithFloat:exifLongitude] forKey:(NSString*) kCGImagePropertyGPSLongitude];
+        
+        if (!isnan(exifAltitude)){
+            if (exifAltitude < 0) {
+                exifAltitude = -exifAltitude;
+                [locDict setObject:@"1" forKey:(NSString *)kCGImagePropertyGPSAltitudeRef];
+            } else {
+                [locDict setObject:@"0" forKey:(NSString *)kCGImagePropertyGPSAltitudeRef];
+            }
+            [locDict setObject:[NSNumber numberWithFloat:exifAltitude] forKey:(NSString *)kCGImagePropertyGPSAltitude];
+        }
+        
+        // Speed, must be converted from m/s to km/h
+        if (lastLocation.speed >= 0){
+            [locDict setObject:@"K" forKey:(NSString *)kCGImagePropertyGPSSpeedRef];
+            [locDict setObject:[NSNumber numberWithFloat:lastLocation.speed*3.6] forKey:(NSString *)kCGImagePropertyGPSSpeed];
+        }
+
+        // Heading
+        if (lastLocation.course >= 0){
+            [locDict setObject:@"T" forKey:(NSString *)kCGImagePropertyGPSTrackRef];
+            [locDict setObject:[NSNumber numberWithFloat:lastLocation.course] forKey:(NSString *)kCGImagePropertyGPSTrack];
+        }
+    }
+
+    return [locDict autorelease];
 }
 
 #pragma mark -
@@ -214,18 +272,42 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
         didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSLog(@"Image info: %@",info);
 
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    self.image  = [info valueForKey:UIImagePickerControllerOriginalImage];
+    NSURL *imageURL = [info valueForKey:UIImagePickerControllerMediaURL];
+    NSMutableDictionary *metaData = [NSMutableDictionary dictionaryWithDictionary:[info valueForKey:UIImagePickerControllerMediaMetadata]];
 
-    image = [image correctOrientation:image];
+    [metaData setObject:[self currentLocation] forKey: (NSString *)kCGImagePropertyGPSDictionary];
     
     // Store the image on the Camera Roll
     if( picker.sourceType == UIImagePickerControllerSourceTypeCamera ) {
-        UIImageWriteToSavedPhotosAlbum( image, nil, nil, nil );
+        Class assestsLibClass = (NSClassFromString(@"ALAssetsLibrary"));
+        if( assestsLibClass != nil ) {
+            ALAssetsLibrary *library = [[[ALAssetsLibrary alloc] init] autorelease];
+            
+            ALAssetsLibraryWriteImageCompletionBlock completionBlock = ^(NSURL *newURL, NSError *error) {
+                if (error) {
+                    NSLog( @"Could not write image to photoalbum: %@", error );
+                } else {
+                    [self detailsForImageWithURL: newURL];
+                }
+            };
+
+            [library writeImageToSavedPhotosAlbum:[self.image CGImage] metadata:metaData completionBlock:completionBlock];
+            return;
+        } else {
+            self.image = [self.image correctOrientation:self.image];
+            UIImageWriteToSavedPhotosAlbum( self.image, nil, nil, nil );
+        }
     }
+    [self detailsForImageWithURL: imageURL];
     
+}
+
+- (void)detailsForImageWithURL:(NSURL *)assetURL {
     // Prepare upload
     CommonsUpload *ourUpload = [[CommonsUpload alloc] init];
-    ourUpload.imageData = UIImageJPEGRepresentation(image, 0.85f);
+    ourUpload.originalImage = self.image;
+    ourUpload.imageURL = assetURL;
 
     ImageDetailsViewController *detailsController = [[ImageDetailsViewController alloc] init];
 
@@ -235,8 +317,8 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
     //to push the UIView.
     [self.navigationController pushViewController:detailsController animated:YES];
     [detailsController release];
-
-    [picker dismissModalViewControllerAnimated:YES];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -252,7 +334,7 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
     if (shouldCancelApp) {
         //[self cancelApp];
     } else {
-        [picker dismissModalViewControllerAnimated:YES];
+        [self dismissModalViewControllerAnimated:YES];
 
         //[self showPhotoSourceMenuOrPhotoSourceDirectly];
     }
@@ -275,6 +357,8 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
 
 
 - (void)dealloc {
+    self.image = nil;
+    self.imagePicker = nil;
     [super dealloc];
 }
 

@@ -13,13 +13,17 @@
 #import "Configuration.h"
 
 @interface SourcePickerViewController : UITableViewController <UINavigationControllerDelegate,
-                                                                UIImagePickerControllerDelegate> {
+                                                                UIImagePickerControllerDelegate>
+{
+    UIImagePickerController *imagePicker;
     BOOL cameraAvailable;
     BOOL fakeCameraAvailable;
-    NSData *imageData;
+    UIImage *image;
     
     NSArray *licenses;
 }
+@property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) UIImagePickerController *imagePicker;
 
 - (IBAction)settingsPressed:(id)sender;
 - (IBAction)infoPressed:(id)sender;

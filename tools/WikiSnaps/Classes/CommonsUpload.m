@@ -8,6 +8,8 @@
 //  Dual-licensed MIT and BSD
 
 #import "CommonsUpload.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 #import "Configuration.h"
 #import "ASIFormDataRequest.h"
 #import "XMLReader.h"
@@ -23,7 +25,21 @@
 
 @implementation CommonsUpload
 
-@synthesize imageData, title, description, delegate;
+@synthesize originalImage;
+@synthesize imageURL;
+@synthesize imageTitle;
+@synthesize description;
+@synthesize delegate;
+
+- (void)dealloc {
+    self.originalImage = nil;
+    self.imageURL = nil;
+    self.imageTitle = nil;
+    self.description = nil;
+    self.delegate = nil;
+
+    [super dealloc];
+}
 
 - (NSString *)getUploadText {
     return @"";
@@ -60,14 +76,15 @@
 
     NSLog(@"%@", dateString);
     
-    return [NSString stringWithFormat: @"{{Information\n|Description={{en|1=%@}}\n|Author=[[User:%@]]\n|Source={{own}}\n|Date=%@\n|Permission=\n|other_versions=\n}}\n\n== {{int:license}} ==\n%@\n\n[[Category:%@]]",
-     description,
-     [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY],
-     dateString,
-     [self getLicenseString],
-     APPLICATION_CATEGORY,
-     nil
+    NSString *result = [NSString stringWithFormat: @"{{Information\n|Description={{en|1=%@}}\n|Author=[[User:%@]]\n|Source={{own}}\n|Date=%@\n|Permission=\n|other_versions=\n}}\n\n== {{int:license}} ==\n%@\n\n[[Category:%@]]",
+         self.description,
+         [[NSUserDefaults standardUserDefaults] stringForKey: COMMONS_USERNAME_KEY],
+         dateString,
+         [self getLicenseString],
+         APPLICATION_CATEGORY
      ];
+     NSLog( @"%@", result );
+     return result;
 }
 
 - (void)uploadImage {
@@ -196,7 +213,7 @@
     [newRequest addPostValue:@"query" forKey:@"action"];
     [newRequest addPostValue:@"xml" forKey: @"format"];
     [newRequest addPostValue:@"edit" forKey:@"intoken"];
-    [newRequest addPostValue:title forKey:@"titles"];
+    [newRequest addPostValue:self.imageTitle forKey:@"titles"];
     [newRequest addPostValue:@"info" forKey:@"prop"];
     
     [newRequest setDelegate:self];
@@ -242,7 +259,7 @@
         return;
     }
  
-    editToken = [query objectForKey:@"edittoken"];
+    editToken  = [query objectForKey:@"edittoken"];
     if( !editToken ) {
         [delegate uploadFailed: [NSString stringWithFormat:@"could not find edittoken"]];
         return;
@@ -250,17 +267,42 @@
 
     //New request
     NSURL *url = [NSURL URLWithString:COMMONS_API_URL];
+    NSString *uploadDescription = [self getUploadDescription];
     ASIFormDataRequest *newRequest = [ASIFormDataRequest requestWithURL:url];
     [newRequest setPostFormat:ASIMultipartFormDataPostFormat];
     
     [newRequest addPostValue:@"upload" forKey:@"action"];
     [newRequest addPostValue:@"xml" forKey: @"format"];
     [newRequest addPostValue:editToken forKey:@"token"];
-    [newRequest addPostValue:title forKey:@"filename"];
-    [newRequest addPostValue:[self getUploadDescription] forKey:@"comment"];
-    [newRequest addPostValue:[self getUploadDescription] forKey:@"text"];
-    [newRequest addData:imageData forKey:@"file"];
-    
+    [newRequest addPostValue:self.imageTitle forKey:@"filename"];
+    [newRequest addPostValue:uploadDescription forKey:@"comment"];
+    [newRequest addPostValue:uploadDescription forKey:@"text"];
+    if( self.imageURL == nil && self.originalImage != nil ) {
+        [newRequest addData:UIImageJPEGRepresentation(self.originalImage, 0.85f) forKey:@"file"];
+    } else if ( self.imageURL ) {
+        ALAssetsLibrary *assetLib = [[[ALAssetsLibrary alloc] init] autorelease];
+        ALAssetsLibraryAssetForURLResultBlock resultBlock = 
+            ^(ALAsset *asset) {
+                ALAssetRepresentation *representation = [asset defaultRepresentation];
+                Byte *buf = malloc([representation size]);
+                NSError *err = nil;
+                NSUInteger bytes = [representation getBytes:buf fromOffset:0LL length:[representation size] error:&err];
+                if (err || bytes == 0) {
+                    NSLog( @"Could not read asset: %@", err );
+                } else {
+                    NSData *cumbersomeWayToGetNSData  = [NSData dataWithBytesNoCopy:buf length:[representation size] freeWhenDone:YES];
+                    [newRequest addData:cumbersomeWayToGetNSData forKey:@"file"];
+                }
+            };
+            
+        [assetLib assetForURL:self.imageURL resultBlock:resultBlock failureBlock:^(NSError *error) {
+            NSLog( @"Error finding asset: %@", error);
+        }];
+        /*
+        NSData *tempData = [NSData dataWithContentsOfURL:self.imageURL];
+        [newRequest addData:tempData forKey:@"file"];
+        */
+    }
     
     [newRequest setDelegate:self];
     [newRequest setDidFinishSelector:@selector(requestUploadFinished:)];
