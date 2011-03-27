@@ -193,13 +193,60 @@ def extract_categories():
 
 
 def extract_revision_text(revision):
-    rev = revision.find('text')
+    rev = revision.find('ns0:text')
     if rev != None:
         if rev.text == None:
             rev = fix_revision_text(revision)
         return rev.text.encode('utf-8')
     else:
         return ''
+
+
+def extract_username(contributor):
+    contributor = contributor.find('ns0:username')
+    if contributor != None:
+        return contributor.text
+    else:
+        return None
+
+
+def determine_username_is_bot(contributor, bots):
+    '''
+    #contributor is an xml element containing the id of the contributor
+    @bots should have a dict with all the bot ids and bot names
+    @Return False if username id is not in bot dict id or True if username id
+    is a bot id.
+    '''
+    username = contributor.find('ns0:username')
+    if username == None:
+        return 0
+    else:
+        if username.text in bots:
+            return 1
+        else:
+            return 0
+
+
+def extract_contributor_id(contributor):
+    '''
+    @contributor is the xml contributor node containing a number of attributes
+    Currently, we are only interested in registered contributors, hence we
+    ignore anonymous editors. 
+    '''
+    if contributor.get('deleted'):
+        # ASK: Not sure if this is the best way to code deleted contributors.
+        return None
+    elem = contributor.find('ns0:id')
+    if elem != None:
+        return {'id':elem.text}
+    else:
+        elem = contributor.find('ns0:ip')
+        if elem != None and elem.text != None \
+        and validate_ip(elem.text) == False \
+        and validate_hostname(elem.text) == False:
+            return {'username':elem.text, 'id': elem.text}
+        else:
+            return None
 
 
 def fix_revision_text(revision):
@@ -234,9 +281,9 @@ def calculate_delta_article_size(size, text):
 
 
 def parse_contributor(contributor, bots):
-    username = extracter.extract_username(contributor)
-    user_id = extracter.extract_contributor_id(contributor)
-    bot = extracter.determine_username_is_bot(contributor, bots=bots)
+    username = extract_username(contributor)
+    user_id = extract_contributor_id(contributor)
+    bot = determine_username_is_bot(contributor, bots)
     contributor.clear()
     editor = {}
     editor['username'] = username
@@ -310,7 +357,7 @@ def count_edits(article, counts, bots):
                 #the entire revision is empty, weird. 
                 continue
             dump(revision)
-            contributor = revision.find('contributor')
+            contributor = revision.find('ns0:contributor')
             contributor = parse_contributor(contributor, bots)
             if not contributor:
                 #editor is anonymous, ignore
