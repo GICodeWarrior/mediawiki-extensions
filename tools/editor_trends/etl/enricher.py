@@ -304,7 +304,7 @@ def extract_comment_text(revision_id, revision):
 
 
 def count_edits(article, counts, bots):
-    title = article['title']
+    title = article['title'].text
     namespace = determine_namespace(title)
 
     if namespace != False:
@@ -380,30 +380,27 @@ def create_variables(article, cache, bots):
 
 
 def parse_xml(fh):
-    context = iterparse(fh, events=('end',))
+    context = iterparse(fh, events=('start', 'end'))
     context = iter(context)
-    event, root = context.next()
-#    try:
-#        
-#    except SyntaxError, e:
-#        print e
-#        print buffer.getvalue()
+    x = 0
 
     article = {}
     article['revisions'] = []
     id = False
-#    article[root.tag] = root.text
-#    root.clear()
+    namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
 
     for event, elem in context:
-        if event == 'end' and elem.tag == 'revision':
+        if event == 'end' and elem.tag == '%s%s' % (namespace, 'title'):
+            article['title'] = elem
+        x += 1
+        if x == 100:
+            break
+        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'revision'):
             article['revisions'].append(elem)
-        elif event == 'end' and elem.tag == 'id' and id == False:
-            article[elem.tag] = elem
+        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'id') and id == False:
+            article['id'] = elem
             id = True
-        elif event == 'end' and elem.tag == 'title':
-            article[elem.tag] = elem
-        elif event == 'end' and elem.tag == 'page':
+        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'page'):
             print article
             yield article
             article = {}
@@ -411,13 +408,13 @@ def parse_xml(fh):
             id = False
         else:
             elem.clear()
-    #return article
+
 
 
 def stream_raw_xml(input_queue, storage, id, function, dataset):
     bots = detector.retrieve_bots('en')
     t0 = datetime.datetime.now()
-
+    i = 0
     if dataset == 'training':
         cache = Buffer(storage, id)
     else:
