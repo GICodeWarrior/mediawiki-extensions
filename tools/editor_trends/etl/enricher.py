@@ -408,6 +408,7 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
     bots = detector.retrieve_bots('en')
     buffer = cStringIO.StringIO()
     parsing = False
+    t0 = datetime.datetime.now()
     i = 0
 
     if dataset == 'training':
@@ -421,6 +422,9 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         if filename == None:
             break
 
+        t1 = datetime.datetime.now()
+        print 'Processing took %s' % (t1 - t0)
+        t0 = t1
         for data in unzip(filename):
             if data.find('<page>') > -1:
                 parsing = True
@@ -443,7 +447,7 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
                         #counts = function(article, counts, bots)
                         pass
                     buffer = cStringIO.StringIO()
-
+                    parsing = False
                     if i % 10000 == 0:
                         print 'Worker %s parsed %s articles' % (id, i)
 
