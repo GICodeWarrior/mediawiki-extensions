@@ -38,6 +38,17 @@ $messages['br'] = array(
 	'trustedmath-not-found' => "N'eus ket eus ar bajenn [[:$1]]",
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'trustedmath-desc' => "Permet incrustar equacions LaTeX a les pàgines, de manera similar a la del processador d'equacions incorporat per defecte, però sense la dependència de Ocaml",
+	'trustedmath-permission-error' => "En aquest wiki s'han desactivat les matemàtiques no fiables",
+	'trustedmath-path-error' => 'Error en crear el directori math',
+	'trustedmath-convert-error' => 'Error en crear la imatge matemàtica. «$1» ha retornar <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'La pàgina [[:$1]] no existeix',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
