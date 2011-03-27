@@ -19,6 +19,7 @@ __version__ = '0.1'
 
 import datetime
 from dateutil.relativedelta import *
+import calendar
 
 def cohort_dataset_forward_histogram(var, editor, **kwargs):
 #        headers = ['year', 'month', 'edits']
@@ -35,7 +36,7 @@ def cohort_dataset_forward_histogram(var, editor, **kwargs):
     n = editor['edit_count']
 
     if n >= var.cum_cutoff:
-        for i, year in enumerate(xrange(new_wikipedian.year, final_edit)):
+        for year in xrange(new_wikipedian.year, final_edit):
             edits = editor['monthly_edits'].get(str(year), {0:0})
             if year == new_wikipedian.year:
                 start = new_wikipedian.month
@@ -44,8 +45,9 @@ def cohort_dataset_forward_histogram(var, editor, **kwargs):
 
             for month in xrange(start, 13):
                 if edits.get(str(month), 0) >= var.cutoff:
-                    dt = datetime.datetime(year, month, 1)
-                    experience = relativedelta(dt - new_wikipedian)
+                    day = calendar.monthrange(year, month)[1]
+                    dt = datetime.datetime(year, month, day)
+                    experience = relativedelta(dt, new_wikipedian)
                     experience = experience.years * 12 + experience.months
                     var.add(new_wikipedian, 1, {'experience': experience})
     return var
