@@ -382,34 +382,41 @@ def create_variables(article, cache, bots):
 def parse_xml(fh):
     context = iterparse(fh, events=('end',))
     context = iter(context)
-    try:
-        event, root = context.next()
-    except SyntaxError, e:
-        print e
-        print buffer.getvalue()
+    event, root = context.next()
+#    try:
+#        
+#    except SyntaxError, e:
+#        print e
+#        print buffer.getvalue()
 
     article = {}
-    id = False
-    article[root.tag] = root.text
-    root.clear()
     article['revisions'] = []
+    id = False
+#    article[root.tag] = root.text
+#    root.clear()
+
     for event, elem in context:
         if event == 'end' and elem.tag == 'revision':
             article['revisions'].append(elem)
         elif event == 'end' and elem.tag == 'id' and id == False:
             article[elem.tag] = elem
             id = True
+        elif event == 'end' and elem.tag == 'title':
+            article[elem.tag] = elem
+        elif event == 'end' and elem.tag == 'page':
+            print article
+            yield article
+            article = {}
+            article['revisions'] = []
+            id = False
         else:
             elem.clear()
-    return article
+    #return article
 
 
 def stream_raw_xml(input_queue, storage, id, function, dataset):
     bots = detector.retrieve_bots('en')
-    buffer = cStringIO.StringIO()
-    parsing = False
     t0 = datetime.datetime.now()
-    i = 0
 
     if dataset == 'training':
         cache = Buffer(storage, id)
@@ -422,16 +429,20 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         if filename == None:
             break
 
+        fh = bz2.BZ2File(filename, 'rb')
+        for article in parse_xml(fh):
+            if dataset == 'training':
+                function(article, cache, bots)
+            else:
+                counts = function(article, counts, bots)
+            i += 1
+            if i % 10000 == 0:
+                print 'Worker %s parsed %s articles' % (id, i)
+        fh.close()
+
         t1 = datetime.datetime.now()
         print 'Processing took %s' % (t1 - t0)
         t0 = t1
-        fh = bz2.BZ2File(filename, 'rb')
-        article = parse_xml(fh)
-        if dataset == 'training':
-            function(article, cache, bots)
-        else:
-            counts = function(article, counts, bots)
-        fh.close()
 #        for data in unzip(filename):
 #            if data.find('<page>') > -1:
 #                parsing = True
@@ -454,8 +465,7 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
 #                        counts = function(article, counts, bots)
 #                    buffer = cStringIO.StringIO()
 #                    parsing = False
-#                    if i % 10000 == 0:
-#                        print 'Worker %s parsed %s articles' % (id, i)
+
 
 
     if dataset == 'training':
