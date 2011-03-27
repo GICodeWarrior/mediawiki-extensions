@@ -145,6 +145,7 @@ $messages['bg'] = array(
 	'contrib-tracking-submitting' => 'Изпращане за обработка на плащането...',
 	'contrib-tracking-continue' => 'Ако не бъдете пренасочени автоматично, натиснете бутона, за да завършите дарението през PayPal.',
 	'contrib-tracking-button' => 'Продължаване',
+	'contrib-tracking-item-name-onetime' => 'Еднократно дарение',
 );
 
 /** Bengali (বাংলা)
