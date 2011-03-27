@@ -348,7 +348,7 @@ def extract_comment_text(revision_id, revision):
 def count_edits(article, counts, bots):
     title = article['title'].text
     namespace = determine_namespace(title)
-    xml_namespace = 'http://www.mediawiki.org/xml/export-0.4/'
+    xml_namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
     if namespace != False:
         article_id = article['id'].text
         revisions = article['revisions']
@@ -356,8 +356,7 @@ def count_edits(article, counts, bots):
             if revision == None:
                 #the entire revision is empty, weird. 
                 continue
-            dump(revision)
-            contributor = revision.find('%s:contributor' % xml_namespace)
+            contributor = revision.find('%s%s' % (xml_namespace, 'contributor'))
             contributor = parse_contributor(contributor, bots)
             if not contributor:
                 #editor is anonymous, ignore
@@ -421,7 +420,6 @@ def create_variables(article, cache, bots):
             cache.add(row)
 
 
-
 def parse_xml(fh):
     context = iterparse(fh, events=('start', 'end'))
     context = iter(context)
@@ -441,11 +439,11 @@ def parse_xml(fh):
             id = True
         elif event == 'end' and elem.tag == '%s%s' % (namespace, 'page'):
             yield article
+            for elem in article.values():
+                elem.clear()
             article = {}
             article['revisions'] = []
             id = False
-
-
 
 
 def stream_raw_xml(input_queue, storage, id, function, dataset):
