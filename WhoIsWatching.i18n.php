@@ -68,9 +68,11 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'whoiswatching' => 'Quíen ta vixilando una páxina wiki',
+	'whoiswatching-desc' => "Ufre la llista d'usuarios que tan viendo una páxina wiki",
 	'specialwhoiswatchingthepage' => 'Quién ta vixilando %s',
 	'specialwhoiswatchingusage' => "Esta páxina especial nun pue ser usada por sí sola. Por favor usa la páxina [[MediaWiki:Number_of_watching_users_pageview]] pa definir un puntu d'entrada qu'empobine a esta páxina especial.",
 	'specialwhoiswatchingaddusers' => 'Añadi los usuarios pa vixilar la páxina',
