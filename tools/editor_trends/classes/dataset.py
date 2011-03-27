@@ -91,7 +91,8 @@ class Data:
         This is a generic hash function that expects a list of variables, used
         to lookup an Observation or Variable. 
         '''
-        return hash('_'.join([str(var) for var in vars]))
+        #return hash('_'.join([str(var) for var in vars]))
+        return '_'.join([str(var) for var in vars])
         #return id
         #m = hashlib.md5()
         #m.update(id)
