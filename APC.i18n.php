@@ -859,7 +859,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'apc' => 'Информация за APC',
-	'right-apc' => 'Използване на всички възможности на Special:APC',
+	'right-apc' => 'Използване на всички възможности в [[Special:APC]]',
 	'viewapc-clear-confirm' => 'Необходимо е потвърждение за изчистване на кеша.',
 	'viewapc-clear-user-cache' => 'Изчистване на потребителския кеш',
 	'viewapc-mode-version-check' => 'Проверка на версията',
