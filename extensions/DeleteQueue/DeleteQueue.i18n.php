@@ -5037,9 +5037,10 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Psubhashish
  */
 $messages['or'] = array(
-	'deletequeue-list-search' => 'ସନ୍ଧାନ',
+	'deletequeue-list-search' => 'ଖୋଜିବା',
 );
 
 /** Ossetic (Иронау)

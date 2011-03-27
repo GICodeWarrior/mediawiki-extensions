@@ -1021,9 +1021,10 @@ $messages['oc'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Psubhashish
  */
 $messages['or'] = array(
-	'edituser-dosearch' => 'ସନ୍ଧାନ',
+	'edituser-dosearch' => 'ଖୋଜିବା',
 );
 
 /** Ossetic (Иронау)

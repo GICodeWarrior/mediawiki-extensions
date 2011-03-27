@@ -397,7 +397,7 @@ $messages['cu'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
-	'importusers-log-summary-all' => 'Oll',
+	'importusers-log-summary-all' => 'Oll: $1',
 );
 
 /** Danish (Dansk)

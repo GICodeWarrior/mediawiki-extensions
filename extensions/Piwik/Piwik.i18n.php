@@ -81,12 +81,14 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'piwik-desc' => "Enxerta'l script Piwik nes páxines de MediaWiki pa facer seguimientu y añade [[Special:Piwik|dalgunes estadístiques]]",
 	'piwik-lastvisits' => 'Caberes visites',
 	'piwik-countries' => 'Países',
 	'piwik-browsers' => 'Navegadores',
+	'right-viewpiwik' => 'Ver [[Special:Piwik|Estadistiques Piwik]]',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)

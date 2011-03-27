@@ -114,6 +114,13 @@ $messages['bs'] = array(
 	'massblank-blankcomment' => 'Razlog:',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'massblank-blankcomment' => 'Motiu:',
+);
+
 /** Chechen (Нохчийн) */
 $messages['ce'] = array(
 	'massblank-blankcomment' => 'Бахьан:',
