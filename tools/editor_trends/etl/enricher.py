@@ -339,13 +339,13 @@ def create_variables(article, cache, bots):
             if revision == None:
                 #the entire revision is empty, weird. 
                 continue
-            contributor = revision.find('contributor')
+            contributor = revision.find('ns0:contributor')
             contributor = parse_contributor(contributor, bots)
             if not contributor:
                 #editor is anonymous, ignore
                 continue
 
-            revision_id = revision.find('id')
+            revision_id = revision.find('ns0:id')
             revision_id = extracter.extract_revision_id(revision_id)
             if revision_id == None:
                 #revision_id is missing, which is weird
@@ -359,7 +359,7 @@ def create_variables(article, cache, bots):
             comment = extract_comment_text(revision_id, revision)
             cache.comments.update(comment)
 
-            timestamp = revision.find('timestamp').text
+            timestamp = revision.find('ns0:timestamp').text
             row['timestamp'] = timestamp
 
             hash = create_md5hash(text)
@@ -502,5 +502,4 @@ def launcher_prediction():
 
 if __name__ == '__main__':
     #launcher_training()
-    debug()
     launcher_prediction()
