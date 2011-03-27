@@ -379,8 +379,8 @@ def create_variables(article, cache, bots):
 
 
 
-def parse_xml(buffer):
-    context = iterparse(buffer, events=('end',))
+def parse_xml(fh):
+    context = iterparse(fh, events=('end',))
     context = iter(context)
     try:
         event, root = context.next()
@@ -425,31 +425,36 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         t1 = datetime.datetime.now()
         print 'Processing took %s' % (t1 - t0)
         t0 = t1
-        for data in unzip(filename):
-            if data.find('<page>') > -1:
-                parsing = True
-
-            if parsing:
-                try:
-                    buffer.write(data)
-                except MemoryError, e:
-                    print e
-                    parsing = False
-                    buffer = cStringIO.StringIO()
-
-                if data.find('</page>') > -1:
-                    i += 1
-                    buffer.seek(0)
-                    article = parse_xml(buffer)
-                    if dataset == 'training':
-                        function(article, cache, bots)
-                    else:
-                        #counts = function(article, counts, bots)
-                        pass
-                    buffer = cStringIO.StringIO()
-                    parsing = False
-                    if i % 10000 == 0:
-                        print 'Worker %s parsed %s articles' % (id, i)
+        fh = bz2.BZ2File(filename, 'rb')
+        if dataset == 'training':
+            function(fh, cache, bots)
+        else:
+            counts = function(fh, counts, bots)
+        fh.close()
+#        for data in unzip(filename):
+#            if data.find('<page>') > -1:
+#                parsing = True
+#
+#            if parsing:
+#                try:
+#                    buffer.write(data)
+#                except MemoryError, e:
+#                    print e
+#                    parsing = False
+#                    buffer = cStringIO.StringIO()
+#
+#                if data.find('</page>') > -1:
+#                    i += 1
+#                    buffer.seek(0)
+#                    article = parse_xml(buffer)
+#                    if dataset == 'training':
+#                        function(article, cache, bots)
+#                    else:
+#                        counts = function(article, counts, bots)
+#                    buffer = cStringIO.StringIO()
+#                    parsing = False
+#                    if i % 10000 == 0:
+#                        print 'Worker %s parsed %s articles' % (id, i)
 
 
     if dataset == 'training':
