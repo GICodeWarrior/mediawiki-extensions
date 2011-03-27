@@ -319,7 +319,6 @@ def init_args_parser():
         information and stores it in a MongoDB.')
     parser_create.set_defaults(func=extract_launcher)
 
-
     #SORT
     parser_sort = subparsers.add_parser('sort',
         help='By presorting the data, significant processing time reductions \
