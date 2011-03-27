@@ -4212,8 +4212,8 @@ $wgGoogleMapsMessages['oc'] = array(
  * @author Psubhashish
  */
 $wgGoogleMapsMessages['or'] = array(
-	'gm-zoom-control' => 'ଦିଗବାରେଣି (ନାଭିଗେସନ)',
-	'gm-search' => 'ସନ୍ଧାନ',
+	'gm-zoom-control' => 'ଦିଗବାରେଣି',
+	'gm-search' => 'ଖୋଜିବା',
 );
 
 /** Ossetic (Иронау)
