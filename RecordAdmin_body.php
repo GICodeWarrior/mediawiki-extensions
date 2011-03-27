@@ -424,6 +424,7 @@ class RecordAdmin {
 				$table .= "<tr>$r</tr>"; # Just add as HTML content if not a row
 			} else {
 				$table .= "<tr$stripe>";
+				$sel    = "<input type='checkbox' name='{$name}[]' value='$col' checked />";
 				if( $template ) {
 					$text = array_shift( $prows );
 					$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
@@ -436,7 +437,6 @@ class RecordAdmin {
 					$u      = $t->getLocalURL();
 					$col    = $r['title'];
 					$ecol   = urlencode( $col );
-					$sel    = "<input type='checkbox' name='{$name}[]' value='$col' checked />";
 					$row = array(
 						'select'   => "<td class='col-select'>$sel</td>\n",
 						'title'    => "<td class='col0 col-title'><a href='$u'>$col</a></td>",
