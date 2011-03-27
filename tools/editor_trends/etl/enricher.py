@@ -20,16 +20,13 @@ __version__ = '0.1'
 
 import bz2
 import os
-import cStringIO
 import hashlib
 import codecs
-import re
 import sys
 import datetime
-import gc
 import progressbar
 from multiprocessing import JoinableQueue, Process, cpu_count, current_process
-from xml.etree.cElementTree import fromstring, iterparse
+from xml.etree.cElementTree import iterparse, dump
 from collections import deque
 
 if '..' not in sys.path:
@@ -48,8 +45,6 @@ from database import db
 from bots import detector
 from utils import file_utils
 import extracter
-
-#RE_CATEGORY = re.compile('\(.*\`\,\.\-\:\'\)')
 
 NAMESPACE = {
     #0:'Main',    
@@ -314,6 +309,7 @@ def count_edits(article, counts, bots):
             if revision == None:
                 #the entire revision is empty, weird. 
                 continue
+            dump(revision)
             contributor = revision.find('contributor')
             contributor = parse_contributor(contributor, bots)
             if not contributor:
@@ -382,7 +378,6 @@ def create_variables(article, cache, bots):
 def parse_xml(fh):
     context = iterparse(fh, events=('start', 'end'))
     context = iter(context)
-    x = 0
 
     article = {}
     article['revisions'] = []
@@ -392,22 +387,17 @@ def parse_xml(fh):
     for event, elem in context:
         if event == 'end' and elem.tag == '%s%s' % (namespace, 'title'):
             article['title'] = elem
-        x += 1
-        if x == 100:
-            break
         elif event == 'end' and elem.tag == '%s%s' % (namespace, 'revision'):
             article['revisions'].append(elem)
         elif event == 'end' and elem.tag == '%s%s' % (namespace, 'id') and id == False:
             article['id'] = elem
             id = True
         elif event == 'end' and elem.tag == '%s%s' % (namespace, 'page'):
-            print article
             yield article
             article = {}
             article['revisions'] = []
             id = False
-        else:
-            elem.clear()
+
 
 
 
@@ -440,30 +430,6 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         t1 = datetime.datetime.now()
         print 'Processing took %s' % (t1 - t0)
         t0 = t1
-#        for data in unzip(filename):
-#            if data.find('<page>') > -1:
-#                parsing = True
-#
-#            if parsing:
-#                try:
-#                    buffer.write(data)
-#                except MemoryError, e:
-#                    print e
-#                    parsing = False
-#                    buffer = cStringIO.StringIO()
-#
-#                if data.find('</page>') > -1:
-#                    i += 1
-#                    buffer.seek(0)
-#                    article = parse_xml(buffer)
-#                    if dataset == 'training':
-#                        function(article, cache, bots)
-#                    else:
-#                        counts = function(article, counts, bots)
-#                    buffer = cStringIO.StringIO()
-#                    parsing = False
-
-
 
     if dataset == 'training':
         cache.empty()
@@ -473,19 +439,6 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         location = os.getcwd()
         filename = 'counts_%s.bin' % id
         file_utils.store_object(counts, location, filename)
-
-
-def unzip(filename):
-    '''
-    Filename should be a fully qualified path to the bz2 file that will be 
-    decompressed. It will iterate line by line and yield this back to 
-    create_article
-    '''
-    fh = bz2.BZ2File(filename, 'r')
-    for line in fh:
-        yield line
-    fh.close()
-    print 'Reached end of BZ2 file.'
 
 
 def setup(storage):
@@ -549,6 +502,5 @@ def launcher_prediction():
 
 if __name__ == '__main__':
     #launcher_training()
-    gc.enable()
     debug()
     launcher_prediction()
