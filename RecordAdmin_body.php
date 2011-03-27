@@ -388,6 +388,8 @@ class RecordAdmin {
 			if( is_array( $r ) ) {
 				if( $text ) $text .= "^^^";
 				if( $template ) {
+					$tsc = $this->formatDate( $r['created'] );
+					$tsm = $this->formatDate( $r['modified'] );
 					$text .= '{'.'{'."$template|select=%SELECT%|title=$col|created=$tsc|modified=$tsm";
 					foreach( array_keys( $this->types ) as $col ) {
 						$v = isset( $r[$col] ) ? $r[$col] : '';
@@ -422,23 +424,19 @@ class RecordAdmin {
 				$table .= "<tr>$r</tr>"; # Just add as HTML content if not a row
 			} else {
 				$table .= "<tr$stripe>";
-
-				# Create special values for this row
-				$tsc    = $this->formatDate( $r['created'] );
-				$tsm    = $this->formatDate( $r['modified'] );
-				$t      = $r[0];
-				$u      = $t->getLocalURL();
-				$col    = $r['title'];
-				$ecol   = urlencode( $col );
-				$sel    = "<input type='checkbox' name='{$name}[]' value='$col' checked />";
-
-				# Render this row
 				if( $template ) {
 					$text = array_shift( $prows );
 					$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
 					$text = str_replace( '%SELECT%', $sel, $text );
 					$table .= "$text\n";
 				} else {
+					$tsc    = $this->formatDate( $r['created'] );
+					$tsm    = $this->formatDate( $r['modified'] );
+					$t      = $r[0];
+					$u      = $t->getLocalURL();
+					$col    = $r['title'];
+					$ecol   = urlencode( $col );
+					$sel    = "<input type='checkbox' name='{$name}[]' value='$col' checked />";
 					$row = array(
 						'select'   => "<td class='col-select'>$sel</td>\n",
 						'title'    => "<td class='col0 col-title'><a href='$u'>$col</a></td>",
