@@ -348,7 +348,7 @@ def extract_comment_text(revision_id, revision):
 def count_edits(article, counts, bots):
     title = article['title'].text
     namespace = determine_namespace(title)
-
+    xml_namespace = 'http://www.mediawiki.org/xml/export-0.4/'
     if namespace != False:
         article_id = article['id'].text
         revisions = article['revisions']
@@ -357,7 +357,7 @@ def count_edits(article, counts, bots):
                 #the entire revision is empty, weird. 
                 continue
             dump(revision)
-            contributor = revision.find('ns0:contributor')
+            contributor = revision.find('%s:contributor' % xml_namespace)
             contributor = parse_contributor(contributor, bots)
             if not contributor:
                 #editor is anonymous, ignore
