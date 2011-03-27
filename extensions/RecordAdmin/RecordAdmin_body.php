@@ -390,6 +390,7 @@ class RecordAdmin {
 				if( $template ) {
 					$tsc = $this->formatDate( $r['created'] );
 					$tsm = $this->formatDate( $r['modified'] );
+					$col = $r['title'];
 					$text .= '{'.'{'."$template|select=%SELECT%|title=$col|created=$tsc|modified=$tsm";
 					foreach( array_keys( $this->types ) as $col ) {
 						$v = isset( $r[$col] ) ? $r[$col] : '';
