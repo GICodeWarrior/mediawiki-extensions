@@ -426,10 +426,11 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         print 'Processing took %s' % (t1 - t0)
         t0 = t1
         fh = bz2.BZ2File(filename, 'rb')
+        article = parse_xml(fh)
         if dataset == 'training':
-            function(fh, cache, bots)
+            function(article, cache, bots)
         else:
-            counts = function(fh, counts, bots)
+            counts = function(article, counts, bots)
         fh.close()
 #        for data in unzip(filename):
 #            if data.find('<page>') > -1:
