@@ -25,7 +25,7 @@ def create_windows(var, break_down_first_year=True):
     This function creates a list of months. If break_down_first_year = True then
     the first year will be split in 3, 6, 9 months as well.
     '''
-    years = var.max_year - var.min_year
+    years = (var.max_year - var.min_year) +1 
     windows = [y * 12 for y in xrange(1, years)]
     if break_down_first_year:
         windows = [3, 6, 9] + windows
