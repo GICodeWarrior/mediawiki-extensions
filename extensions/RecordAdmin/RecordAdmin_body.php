@@ -396,8 +396,9 @@ class RecordAdmin {
 					$text .= '}}';
 				} else {
 					$fcol = true;
+					$row = array( 'select', 'title', 'actions', 'created', 'modified' );
 					foreach( $cols as $col ) {
-						if( !isset( $row[$col] ) ) {
+						if( !in_array( $col, $row ) ) {
 							if( isset( $r[$col] ) ) {
 								if( !$fcol ) $text .= "@@@";
 								$text .= $r[$col];
@@ -444,7 +445,7 @@ class RecordAdmin {
 						'actions'  => "<td class='col1 col-actions'><a href='" . $t->getLocalURL( "action=edit" ) . "'>"
 									  . wfMsg( 'recordadmin-editlink' ) . "</a></td>",
 						'created'  => "<td class='col2 col-created'>$tsc</td>\n",
-						'modified' => "<td class='col3 col-modified'>$tsm</td>\n",
+						'modified' => "<td class='col3 col-modified'>$tsm</td>\n"
 					);
 					$pcols = explode( "@@@", array_shift( $prows ) );
 					foreach( $cols as $col ) {
