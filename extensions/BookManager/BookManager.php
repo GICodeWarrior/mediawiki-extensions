@@ -13,6 +13,7 @@
  * - CHAPTERNAMEE		(get root page encode)
  * @addtogroup Extensions
  * @author Raylton P. Sousa <raylton.sousa@gmail.com>
+ * @author Helder.wiki
  * @license GNU General Public License 3.0 or later
 **
 **
@@ -40,8 +41,8 @@ $wgAutoloadClasses['BookManagerCore'] = $dir . '/BookManager.body.php';
 
 $wgAutoloadClasses['BookManagerNavBar'] = $dir . '/BookManager.body.php';
 $wgAutoloadClasses['PrintVersion'] = $dir . '/BookManager.body.php';
-$wgExtensionMessagesFiles['PrintVersion'] = $dir . '/PrintVersion.i18n.php';
-$wgExtensionAliasesFiles['PrintVersion'] = $dir . '/PrintVersion.alias.php';
+$wgExtensionMessagesFiles['BookManager'] = $dir . '/BookManager.i18n.php';
+$wgExtensionAliasesFiles['BookManager'] = $dir . '/BookManager.alias.php';
 $wgSpecialPages['PrintVersion'] = 'PrintVersion';
 $wgSpecialPageGroups['PrintVersion'] = 'other';
 
@@ -54,7 +55,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'	=>  BookManagerCore::VERSION,
 	'author'	=>  array( 'Raylton P. Sousa', 'Helder.wiki' ),
 	'url'		=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
-	'description'	=> 'Tools for books',
+	'descriptionmsg'=> 'bookmanager-desc'
 );
 /* Add CSS and JS */
 $wgResourceModules['ext.BookManager'] = array(

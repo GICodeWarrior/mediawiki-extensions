@@ -11,9 +11,11 @@ $messages = array();
 
 /** English
  * @author Raylton P. Sousa <raylton.sousa@gmail.com>
+ * @author Helder.wiki
  * @author Purodha
  */
 $messages['en'] = array(
+	'bookmanager-desc'             => 'Tools for books',
 	'printversion'                 => 'Print version',
 	'printversion-desc'            => 'Generates a [[Special:PrintVersion|print version]] of a book',
 	'printversion-no-book'         => 'Please enter the name of a book to get its print version.',
@@ -144,8 +146,10 @@ $messages['nl'] = array(
 
 /** Portuguese (Português)
  * @author Raylton P. Sousa <raylton.sousa@gmail.com>
+ * @author Helder.wiki
  */
 $messages['pt'] = array(
+	'bookmanager-desc' => 'Ferramentas para livros',
 	'printversion' => 'Versão para impressão',
 	'printversion-desc' => '[[Special:PrintVersion|Gera uma versão para impressão de um livro]]',
 	'printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
