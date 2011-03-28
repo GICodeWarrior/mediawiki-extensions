@@ -421,7 +421,7 @@ def create_variables(article, cache, bots):
 
 
 def parse_xml(fh):
-    context = iterparse(fh, events=('start', 'end'))
+    context = iterparse(fh, events=('end',))
     context = iter(context)
 
     article = {}
@@ -439,11 +439,14 @@ def parse_xml(fh):
             id = True
         elif event == 'end' and elem.tag == '%s%s' % (namespace, 'page'):
             yield article
+            elem.clear()
             for elem in article.values():
                 elem.clear()
             article = {}
             article['revisions'] = []
             id = False
+        elif event == 'end':
+            elem.clear()
 
 
 def stream_raw_xml(input_queue, storage, id, function, dataset):

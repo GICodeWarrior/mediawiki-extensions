@@ -26,6 +26,7 @@ def new_editor_count(var, editor, **kwargs):
     stats.download.org to make sure that we are using the same numbers. 
     '''
 #   headers = ['year', 'month', 'count']
-    new_wikipedian = editor['new_wikipedian']
-    var.add(new_wikipedian, 1)
+    if editor['new_wikipedian'] != False:
+        new_wikipedian = editor['new_wikipedian']
+        var.add(new_wikipedian, 1)
     return var

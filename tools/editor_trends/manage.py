@@ -22,23 +22,23 @@ import logging
 import logging.handlers
 import sys
 import datetime
-from argparse import ArgumentParser
-from argparse import RawTextHelpFormatter
 import ConfigParser
+from argparse import ArgumentParser, RawTextHelpFormatter
 
+from classes import languages
+from classes import projects
+from classes import runtime_settings
 from utils import file_utils
 from utils import ordered_dict
 from utils import log
 from utils import timer
-from classes import projects
-from classes import languages
-from classes import runtime_settings
 from database import db
 from etl import downloader
 from etl import extracter
 from etl import store
 from etl import sort
 from etl import transformer
+from analyses import analyzer
 from analyses import inventory
 
 
@@ -47,6 +47,148 @@ def show_choices(settings, attr):
     choices.sort()
     choices = ['%s\t%s' % (choice[0], choice[1]) for choice in choices]
     return choices
+
+
+def init_args_parser():
+    '''
+    Entry point for parsing command line and launching the needed function(s).
+    '''
+    language = languages.init()
+    project = projects.init()
+    pjc = projects.ProjectContainer()
+    rts = runtime_settings.RunTimeSettings(project, language)
+
+    #Init Argument Parser
+    parser = ArgumentParser(prog='manage', formatter_class=RawTextHelpFormatter)
+    subparsers = parser.add_subparsers(help='sub - command help')
+
+    #SHOW LANGUAGES
+    parser_languages = subparsers.add_parser('show_languages',
+        help='Overview of all valid languages.')
+    parser_languages.add_argument('-s', '--startswith',
+        action='store',
+        help='Enter the first letter of a language to see which languages are \
+        available.')
+    parser_languages.set_defaults(func=language.show_languages, args=[project])
+
+    #CONFIG 
+    parser_config = subparsers.add_parser('config',
+        help='The config sub command allows you set the data location of where \
+        to store files.')
+    parser_config.set_defaults(func=config_launcher)
+    parser_config.add_argument('-f', '--force',
+        action='store_true',
+        help='Reconfigure Editor Toolkit (this will replace wiki.cfg')
+
+    #DOWNLOAD
+    parser_download = subparsers.add_parser('download',
+        help='The download sub command allows you to download a Wikipedia dump\
+         file.')
+    parser_download.set_defaults(func=downloader_launcher)
+
+    #EXTRACT
+    parser_create = subparsers.add_parser('extract',
+        help='The store sub command parsers the XML chunk files, extracts the \
+        information and stores it in a MongoDB.')
+    parser_create.set_defaults(func=extract_launcher)
+
+
+    #SORT
+    parser_sort = subparsers.add_parser('sort',
+        help='By presorting the data, significant processing time reductions \
+        are achieved.')
+    parser_sort.set_defaults(func=sort_launcher)
+
+    #STORE
+    parser_store = subparsers.add_parser('store',
+        help='The store sub command parsers the XML chunk files, extracts the \
+        information and stores it in a MongoDB.')
+    parser_store.set_defaults(func=store_launcher)
+
+    #TRANSFORM
+    parser_transform = subparsers.add_parser('transform',
+        help='Transform the raw datatable to an enriched dataset that can be \
+        exported.')
+    parser_transform.set_defaults(func=transformer_launcher)
+
+    #DATASET
+    parser_dataset = subparsers.add_parser('dataset',
+        help='Create a dataset from the MongoDB and write it to a csv file.')
+    parser_dataset.set_defaults(func=dataset_launcher)
+    parser_dataset.add_argument('-c', '--charts',
+                                action='store',
+                                help='Should be a valid function name that matches one of the plugin functions',
+                                default=inventory.available_analyses()['new_editor_count'])
+
+    parser_dataset.add_argument('-k', '--keywords',
+                                action='store',
+                                help='Add additional keywords in the format keyword1=value1,keyword2=value2',
+                                default='')
+
+    #ALL
+    parser_all = subparsers.add_parser('all',
+        help='The all sub command runs the download, split, store and dataset \
+        commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE \
+        CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
+    parser_all.set_defaults(func=all_launcher)
+    parser_all.add_argument('-e', '--except',
+        action='store',
+        help='Should be a list of functions that are to be ignored when \
+        executing all.',
+        default=[])
+
+    parser_all.add_argument('-n', '--new',
+        action='store_true',
+        help='This will delete all previous output and starts from scratch. \
+        Mostly useful for debugging purposes.',
+        default=False)
+
+    #DJANGO
+    parser_django = subparsers.add_parser('django')
+    parser_django.add_argument('-e', '--except',
+        action='store',
+        help='Should be a list of functions that are to be ignored when \
+        executing all.',
+        default=[])
+
+    parser.add_argument('-l', '--language',
+        action='store',
+        help='Example of valid languages.',
+        choices=project.supported_languages(),
+        default=unicode(language.name)
+        )
+
+    parser.add_argument('-p', '--project',
+        action='store',
+        help='Specify the Wikimedia project that you would like to download',
+        choices=pjc.supported_projects(),
+        default='wiki')
+
+    parser.add_argument('-c', '--collection',
+        action='store',
+        help='Name of MongoDB collection',
+        default='editors_raw')
+
+    parser.add_argument('-o', '--location',
+        action='store',
+        help='Indicate where you want to store the downloaded file.',
+        #default=settings.input_location)
+        default=rts.input_location)
+
+    parser.add_argument('-ns', '--namespace',
+        action='store',
+        help='A list of namespaces to include for analysis.',
+        default='0')
+
+    parser.add_argument('-f', '--file',
+        action='store',
+        choices=rts.file_choices,
+        help='Indicate which dump you want to download. Valid choices are:\n \
+            %s' % ''.join([f + ',\n' for f in rts.file_choices]),
+        default='stub-meta-history.xml.gz')
+
+
+    return project, language, parser
 
 
 def config_launcher(rts, logger):
@@ -178,8 +320,7 @@ def transformer_launcher(rts, logger):
 #                         collection=properties.collection)
     transformer.transform_editors_single_launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(rts, 'dataset', 'transform', stopwatch,
-                     event='finish')
+    log.log_to_mongo(rts, 'dataset', 'transform', stopwatch, event='finish')
 
 
 def dataset_launcher(rts, logger):
@@ -187,20 +328,14 @@ def dataset_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.log_to_mongo(rts, 'dataset', 'export', stopwatch, event='start')
 
-    #collection = '%s_%s' % (rts.collection, 'dataset')
-    for target in rts.targets:
+    for chart in rts.charts:
+        analyzer.generate_chart_data(rts, chart, **rts.keywords)
 #        write_message_to_log(logger, settings,
 #                             message=None,
 #                             verb='Exporting',
 #                             target=target,
 #                             dbname=properties.full_project,
 #                             collection=properties.collection)
-
-        analyzer.generate_chart_data(rts.dbname,
-                                     rts.editors_dataset,
-                                     rts.language.code,
-                                     target,
-                                     **rts.keywords)
     stopwatch.elapsed()
     log.log_to_mongo(rts, 'dataset', 'export', stopwatch, event='finish')
 
@@ -413,8 +548,6 @@ def init_args_parser():
             %s' % ''.join([f + ',\n' for f in rts.file_choices]),
         default='stub-meta-history.xml.gz')
 
-
-    return project, language, parser
 
 def main():
     project, language, parser, = init_args_parser()

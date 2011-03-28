@@ -19,7 +19,7 @@ __version__ = '0.1'
 
 from multiprocessing import JoinableQueue, Manager, RLock, Process
 from multiprocessing.managers import BaseManager
-from Queue import Empty
+
 import sys
 import cPickle
 import os
@@ -30,82 +30,14 @@ if '..' not in sys.path:
     sys.path.append('..')
 
 import inventory
-import manage as manager
 from classes import dataset
 from classes import runtime_settings
 from classes import consumers
+from classes import exceptions
+from classes import analytics
 from database import db
 from utils import timer
 from utils import log
-
-class Replicator:
-    def __init__(self, args, plugin, time_unit, cutoff=None, cum_cutoff=None, **kwargs):
-        self.args = args
-        self.plugin = plugin
-        self.time_unit = time_unit
-        languages = kwargs.pop('languages', False)
-        if languages:
-            self.languages = ['de', 'fr', 'es', 'ja', 'ru']
-        else:
-            self.languages = ['en']
-        if cutoff == None:
-            self.cutoff = [1, 10, 50]
-        else:
-            self.cutoff = cutoff
-
-        if cutoff == None:
-            self.cum_cutoff = [10]
-        else:
-            self.cum_cutoff = cum_cutoff
-        self.kwargs = kwargs
-
-    def __call__(self):
-        project = 'wiki'
-        for lang in self.languages:
-            self.rts = runtime_settings.init_environment(project, lang, self.args)
-            #TEMP FIX, REMOVE 
-            #rts.dbname = 'enwiki'
-            self.rts.editors_dataset = 'editors_dataset'
-
-            self.rts.dbname = '%s%s' % (lang, project)
-            for cum_cutoff in self.cum_cutoff:
-                for cutoff in self.cutoff:
-                    generate_chart_data(self.rts, self.plugin,
-                                        time_unit=self.time_unit,
-                                        cutoff=cutoff, cum_cutoff=cum_cutoff,
-                                        **self.kwargs)
-
-
-class Analyzer(consumers.BaseConsumer):
-    def __init__(self, rts, tasks, result, var):
-        super(Analyzer, self).__init__(rts, tasks, result)
-        self.var = var
-
-    def run(self):
-        '''
-        Generic loop function that loops over all the editors of a Wikipedia 
-        project and then calls the plugin that does the actual mapping.
-        '''
-        mongo = db.init_mongo_db(self.rts.dbname)
-        coll = mongo[self.rts.editors_dataset]
-        while True:
-            try:
-                task = self.tasks.get(block=False)
-                self.tasks.task_done()
-                if task == None:
-                    self.result.put(self.var)
-                    break
-                editor = coll.find_one({'editor': task.editor})
-
-                task.plugin(self.var, editor, dbname=self.rts.dbname)
-                self.result.put(True)
-            except Empty:
-                pass
-
-class Task:
-    def __init__(self, plugin, editor):
-        self.plugin = plugin
-        self.editor = editor
 
 
 def reconstruct_observations(var):
@@ -158,8 +90,9 @@ def generate_chart_data(rts, func, **kwargs):
     '''
     stopwatch = timer.Timer()
     plugin = retrieve_plugin(func)
+    available_plugins = inventory.available_analyses()
     if not plugin:
-        raise 'Plugin function %s is unknown, please make sure that you specify an existing plugin function.' % func
+        raise exceptions.UnknownPluginError(plugin, available_plugins)
     feedback(plugin, rts)
 
     obs = dict()
@@ -183,9 +116,9 @@ def generate_chart_data(rts, func, **kwargs):
     var = dataset.Variable('count', time_unit, lock, obs_proxy, **kwargs)
 
     for editor in editors:
-        tasks.put(Task(plugin, editor))
+        tasks.put(analytics.Task(plugin, editor))
 
-    consumers = [Analyzer(rts, tasks, result, var) for
+    consumers = [analytics.Analyzer(rts, tasks, result, var) for
                  x in xrange(rts.number_of_processes)]
 
 
@@ -228,6 +161,7 @@ def determine_project_year_range(dbname, collection, var):
     '''
     Determine the first and final year for the observed data
     '''
+    print dbname, collection, var
     try:
         max_year = db.run_query(dbname, collection, var, 'max')
         max_year = max_year[var].year + 1
@@ -240,31 +174,31 @@ def determine_project_year_range(dbname, collection, var):
 
 
 def launcher():
-    project, language, parser = manager.init_args_parser()
-    args = parser.parse_args(['django'])
-    rts = runtime_settings.init_environment('wiki', 'en', args)
+#    project, language, parser = manage.init_args_parser()
+#    args = parser.parse_args(['django'])
+#    rts = runtime_settings.init_environment('wiki', 'en', args)
 
     #TEMP FIX, REMOVE 
-    rts.dbname = 'enwiki'
-    rts.editors_dataset = 'editors_dataset'
+#    rts.dbname = 'enwiki'
+#    rts.editors_dataset = 'editors_dataset'
     #END TEMP FIX
 
-#    replicator = Replicator(rts, 'histogram_by_backward_cohort', time_unit='year')
+#    replicator = analytics.Replicator('histogram_by_backward_cohort', time_unit='year')
 #    replicator()
-    replicator = Replicator(args, 'cohort_dataset_backward_bar', time_unit='year', format='wide', languages=True)
+    replicator = analytics.Replicator('cohort_dataset_backward_bar', time_unit='year', format='wide', languages=True)
     replicator()
 
-#    generate_chart_data(rts, 'histogram_by_backward_cohort', time_unit='year', cutoff=1, cum_cutoff=10)
-#    generate_chart_data(rts, 'edit_patterns', time_unit='year', cutoff=5)
-#    generate_chart_data(rts, 'total_number_of_new_wikipedians', time_unit='year')
-#    generate_chart_data(rts, 'total_number_of_articles', time_unit='year')
-#    generate_chart_data(rts, 'total_cumulative_edits', time_unit='year')
-#    generate_chart_data(rts, 'cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=10)
-#    generate_chart_data(rts, 'cohort_dataset_backward_bar', time_unit='year', cutoff=1, cum_cutoff=10, format='wide')
-#    generate_chart_data(rts, 'cohort_dataset_forward_bar', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
-#    generate_chart_data(rts, 'histogram_edits', time_unit='year', cutoff=0)
-#    generate_chart_data(rts, 'time_to_new_wikipedian', time_unit='year', cutoff=0)
-#    generate_chart_data(rts, 'new_editor_count', time_unit='month', cutoff=0)
+#    generate_chart_data('histogram_by_backward_cohort', time_unit='year', cutoff=1, cum_cutoff=10)
+#    generate_chart_data('edit_patterns', time_unit='year', cutoff=5)
+#    generate_chart_data('total_number_of_new_wikipedians', time_unit='year')
+#    generate_chart_data('total_number_of_articles', time_unit='year')
+#    generate_chart_data('total_cumulative_edits', time_unit='year')
+#    generate_chart_data('cohort_dataset_forward_histogram', time_unit='month', cutoff=1, cum_cutoff=10)
+#    generate_chart_data('cohort_dataset_backward_bar', time_unit='year', cutoff=1, cum_cutoff=10, format='wide')
+#    generate_chart_data('cohort_dataset_forward_bar', time_unit='year', cutoff=5, cum_cutoff=0, format='wide')
+#    generate_chart_data('histogram_edits', time_unit='year', cutoff=0)
+#    generate_chart_data('time_to_new_wikipedian', time_unit='year', cutoff=0)
+#    generate_chart_data('new_editor_count', time_unit='month', cutoff=0)
 #    #available_analyses()
 
 

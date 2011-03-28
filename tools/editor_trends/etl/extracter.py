@@ -345,6 +345,7 @@ def hash(rts, id):
 
 
 def prepare(output):
+    res = file_utils.delete_file(output, 'articles.csv')
     res = file_utils.delete_file(output, None, directory=True)
     if res:
         res = file_utils.create_directory(output)

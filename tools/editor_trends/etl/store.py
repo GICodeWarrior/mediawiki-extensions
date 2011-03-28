@@ -86,9 +86,13 @@ def store_articles(rts):
     location = os.path.join(rts.input_location, rts.language.code, rts.project.name)
     fh = file_utils.create_txt_filehandle(location, 'articles.csv', 'r', rts.encoding)
     print 'Storing article titles...'
+    print location
     for line in fh:
         line = line.strip()
-        id, title = line.split('\t')
+        try:
+            id, title = line.split('\t')
+        except ValueError:
+            print line.encode('utf-8')
         collection.insert({'id':id, 'title':title})
     fh.close()
     print 'Done...'

@@ -32,6 +32,7 @@ import re
 from settings import Settings
 from utils import text_utils
 from utils import ordered_dict as odict
+from analyses import inventory
 import languages
 import projects
 
@@ -59,7 +60,7 @@ class RunTimeSettings(Settings):
                 self.input_location != None else self.get_value('location')
             self.project = self.update_project_settings()
             self.language = self.update_language_settings()
-            self.targets = self.split_keywords(self.get_value('charts'))
+            self.charts = self.determine_chart(self.get_value('charts'))
             self.keywords = self.split_keywords(self.get_value('keywords'))
             self.function = self.get_value('func')
 
@@ -72,8 +73,6 @@ class RunTimeSettings(Settings):
 
             self.dataset = os.path.join(self.dataset_location,
                                         self.project.name)
-            self.charts = os.path.join(self.chart_location,
-                                       self.project.name)
 
             self.txt = os.path.join(self.location, 'txt')
             self.sorted = os.path.join(self.location, 'sorted')
@@ -81,8 +80,7 @@ class RunTimeSettings(Settings):
             self.directories = [self.location,
                                 self.txt,
                                 self.sorted,
-                                self.dataset,
-                                self.charts]
+                                self.dataset]
             self.dump_filename = self.generate_wikidump_filename()
             self.dump_relative_path = self.set_dump_path()
             self.dump_absolute_path = self.set_dump_path(absolute=True)
@@ -121,9 +119,20 @@ class RunTimeSettings(Settings):
                     except ValueError:
                         pass
                     d[key] = value
-            else:
-                return keywords
         return d
+
+    def determine_chart(self, chart):
+        requested_charts = []
+        if chart != None:
+            charts = chart.split(',')
+            available_charts = inventory.available_analyses()
+            for chart in charts:
+                if chart not in available_charts:
+                    raise exception.UnknownChartError(chart, available_charts)
+                    sys.exit(-1)
+                else:
+                    requested_charts.append(chart)
+        return requested_charts
 
     def get_project_location(self):
         '''

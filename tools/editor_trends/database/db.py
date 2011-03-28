@@ -80,9 +80,9 @@ def run_query(dbname, collection, var, qualifier=None):
     mongo = init_mongo_db(dbname)
     collection = mongo[collection]
     if qualifier == 'min':
-        return collection.find().sort(var, pymongo.ASCENDING).limit(1)[0]
+        return collection.find({var : {'$ne' : False}}).sort(var, pymongo.ASCENDING).limit(1)[0]
     elif qualifier == 'max':
-        return collection.find().sort(var, pymongo.DESCENDING).limit(1)[0]
+        return collection.find({var : {'$ne' : False}}).sort(var, pymongo.DESCENDING).limit(1)[0]
     else:
         return collection.find({var: 1})
 
@@ -120,9 +120,6 @@ def retrieve_min_value(dbname, collection, var):
     return data
 
 
-def retrieve_max_value(dbname, collection, var):
-    pass
-
 def retrieve_distinct_keys(dbname, collection, field, force_new=False):
     #mongo = init_mongo_db(dbname)
     #editors = mongo[collection]
@@ -132,8 +129,8 @@ def retrieve_distinct_keys(dbname, collection, field, force_new=False):
     < 4mb just do a distinct query, index > 4mb do a map reduce.
     '''
     if force_new == False and file_utils.check_file_exists(settings.binary_location,
-                                                '%s_%s.bin' % (dbname, field)):
-        ids = file_utils.load_object(settings.binary_location, '%s_%s.bin' % (dbname, field))
+                                                '%s_%s_%s.bin' % (dbname, collection, field)):
+        ids = file_utils.load_object(settings.binary_location, '%s_%s_%s.bin' % (dbname, collection, field))
     else:
         mongo = init_mongo_db(dbname)
         editors = mongo[collection]
@@ -145,7 +142,7 @@ def retrieve_distinct_keys(dbname, collection, field, force_new=False):
             #params['size'] = 'size'
             #size = editors.find_one({'size': 1})
             ids = retrieve_distinct_keys_mapreduce(editors, field)
-        file_utils.store_object(ids, settings.binary_location, '%s_%s.bin' % (dbname, field))
+        file_utils.store_object(ids, settings.binary_location, '%s_%s_%s.bin' % (dbname, collection, field))
     return ids
 
 

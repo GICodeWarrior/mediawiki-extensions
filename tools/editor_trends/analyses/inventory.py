@@ -32,7 +32,7 @@ def available_analyses(caller='manage'):
     '''
     assert caller == 'django' or caller == 'manage'
     ignore = ['__init__']
-    functions = {}
+    charts = {}
 
     fn = os.path.realpath(__file__)
     pos = fn.rfind(os.sep)
@@ -42,14 +42,14 @@ def available_analyses(caller='manage'):
 
     for plugin in plugins:
         if isinstance(plugin, types.FunctionType) and plugin.func_name not in ignore:
-            functions[plugin.func_name] = plugin
+            charts[plugin.func_name] = plugin
     if caller == 'manage':
-        return functions
+        return charts
     elif caller == 'django':
         django_functions = []
-        for function in functions:
-            fancy_name = function.replace('_', ' ').title()
-            django_functions.append((function, fancy_name))
+        for chart in charts:
+            fancy_name = chart.replace('_', ' ').title()
+            django_functions.append((chart, fancy_name))
 
         return django_functions
 

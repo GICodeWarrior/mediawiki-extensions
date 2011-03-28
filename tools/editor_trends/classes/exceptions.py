@@ -71,6 +71,16 @@ class UnknownChartError(Error):
         return 'Currently, chart type %s is not supported. Please choose one of \
             the following charts: %s' % (self.chart, self.charts)
 
+class UnknownPluginError(Error):
+    def __init__(self, plugin, plugins):
+        self.plugin = plugin
+        self.plugins = plugins
+
+    def __str__(self):
+        return 'Plugin %s is an unknown plugin. Please choose one of the \
+            the following plugins: %s' % (self.plugin, self.plugins)
+
+
 class NotYetImplementedError(Error):
     def __init__(self, func):
         self.func = func

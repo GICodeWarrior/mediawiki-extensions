@@ -191,7 +191,9 @@ def setup_database(rts):
 
 
 def transform_editors_single_launcher(rts):
+    print rts.dbname, rts.editors_raw
     ids = db.retrieve_distinct_keys(rts.dbname, rts.editors_raw, 'editor')
+    print len(ids)
     input_db, output_db = setup_database(rts)
     pbar = progressbar.ProgressBar(maxval=len(ids)).start()
     for x, id in enumerate(ids):
