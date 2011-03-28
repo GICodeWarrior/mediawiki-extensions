@@ -269,12 +269,12 @@ class BookManagerVariables extends BookManagerCore {
 * (http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/PageNotice/PageNotice.php&view=markup)
 */
 class BookManagerNavBar extends BookManagerCore {
-	static function addText( &$out, &$text ) {
+	static function addNavBar( &$out, &$sk ) {
 		global $wgParser, $wgRequest, $wgBookManagerNamespaces, $wgBookManagerNavBar;
 		$ns = $out->getTitle()->getNamespace();
 		# Return True if action is suported
 		$action = $wgRequest->getVal( 'action', 'view' );
-		$isViewAction = ( $action == 'view' || $action == 'purge' );
+		$isViewAction = ( $action == 'view' || $action == 'purge' || $action == 'submit' );
 		if ( !$wgBookManagerNavBar || !in_array( $ns, $wgBookManagerNamespaces ) || !$isViewAction ) {
 			return true;
 		}
@@ -339,15 +339,13 @@ class BookManagerNavBar extends BookManagerCore {
 			$bottom = $defaultBar;
 		}
 		# Adds navigation before and after the page text
-		$text = "<div>$top</div>\n$text\n<div>$bottom</div>";
- 		return true;
- 	}
-	# adds CSS and JS to navigation bar
-	static function injectStyleAndJS( &$out, &$sk ) {
+		$out->prependHTML( "<div>$top</div>" );
+		$out->addHTML( "<div>$bottom</div>" );
+		# adds CSS and JS to navigation bar
 		$out->addModuleStyles( 'ext.BookManager' );
 		$out->addModules( 'ext.BookManager' );
-		return true;
-	}
+ 		return true;
+ 	}
 }
 /**
 * BookManager Functions [PrintVersion]
