@@ -768,6 +768,7 @@ $messages['oc'] = array(
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'abc-desc' => 'ABC ଗିତକୁ ଫରମାଟ କରିବା ପାଇଁ <code>&lt;abc&gt;</code> ଟାଗ ଯୋଡ଼ିବା',
 	'abcdownload' => 'ଡାଉନଲୋଡ:',
 );
 
