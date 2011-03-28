@@ -290,8 +290,6 @@ class BookManagerNavBar extends BookManagerCore {
 		if ( $prev === '' && $next === '' ) {
 			return true;
 		}
-		# Return True if page exists in the chapter list
-		$is_inChapterList = ( $prev !== '' || $next !== '' );
 		# Return True if Message is non empty
 		$MsgIsEmpty =	(  wfEmptyMsg( "BookManager" )
 				&& wfEmptyMsg( "BookManager-top" )
