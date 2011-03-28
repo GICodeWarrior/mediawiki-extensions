@@ -48,7 +48,7 @@ def reconstruct_observations(var):
     b) it reconstructs the serialized observations to instances of Observation
     '''
     if not isinstance(var, dataset.Variable):
-        raise 'var should be an instance of Variable.'
+        raise exceptions.GenericMessage('only_variables')
 
     keys = var.obs.keys()
     d = {}

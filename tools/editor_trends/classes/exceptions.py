@@ -87,4 +87,19 @@ class NotYetImplementedError(Error):
 
     def __str__(self):
         return '''%s has not yet been implemented, update your installation from
-        subversion or contact diederik van liere.''' % self.func.func_name
+        subversion or contact Diederik van Liere.''' % self.func.func_name
+
+
+
+class GenericMessage(Error):
+    def __init__(self, caller):
+        self.caller = caller
+
+    def __str__(self):
+        if self.caller == 'only_variables':
+            return 'var should be an instance of Variable.'
+        elif self.caller == 'corrupted_install':
+            return 'I could not determine the location of manage.py, \
+                please reinstall Wikilytics.'
+
+
