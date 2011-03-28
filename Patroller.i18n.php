@@ -651,7 +651,7 @@ $messages['fa'] = array(
 * رجوع شود به صفحهٔ بحث',
 	'patrol-another' => 'ویرایشی دیگر را در صورت وجود نمایش بده.',
 	'patrol-stopped' => 'شما انتخاب کردید که ویرایشی دیگر را گشت نزنید. $1',
-	'patrol-resume' => 'برای ادامه این‌جا کلیک کنید.',
+	'patrol-resume' => 'برای ادامه اینجا کلیک کنید.',
 	'group-patroller' => 'گشت‌زنان',
 	'group-patroller-member' => 'گشت‌زن',
 	'grouppage-patroller' => '{{ns:project}}:گشت‌زن',
