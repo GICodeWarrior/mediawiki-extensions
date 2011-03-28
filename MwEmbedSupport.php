@@ -49,7 +49,7 @@ MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MwEm
 MwEmbedResourceManager::register( 'extensions/MwEmbedSupport/MwEmbedModules/MediaWikiSupport' );
 
 // Add MwEmbedSupport to Startup:
-function MwUpdateStartupModules( &$modules ){	
+function MwUpdateStartupModules( &$modules ){
 	// TODO parser will become part of core once Neil's parser patch gets in there. 
 	array_push($modules, 'mediawiki.language', 'mediawiki.language.parser', 'jquery.triggerQueueCallback', 
 				'jquery.mwEmbedUtil', 'mwEmbedStartup' );		

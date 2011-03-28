@@ -54,7 +54,7 @@
 		}
 
 		if( !callbackSet || callbackSet.length === 0 ){
-			mw.log( '"mwEmbed::jQuery.triggerQueueCallback: No events run the callback directly: ' + triggerName );
+			//mw.log( '"mwEmbed::jQuery.triggerQueueCallback: No events run the callback directly: ' + triggerName );
 			// No events run the callback directly
 			callback();
 			return ;
