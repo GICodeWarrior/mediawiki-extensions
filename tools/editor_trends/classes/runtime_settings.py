@@ -123,9 +123,7 @@ class RunTimeSettings(Settings):
 
     def determine_chart(self, chart):
         requested_charts = []
-        if getattr(chart, 'func_name') == True:
-            requested_charts.append(chart.func_name)
-        elif chart != None and getattr(chart, 'func_name') == False:
+        if chart != None and getattr(chart, 'func_name', None) == None:
             charts = chart.split(',')
             available_charts = inventory.available_analyses()
             for chart in charts:
@@ -134,7 +132,8 @@ class RunTimeSettings(Settings):
                     sys.exit(-1)
                 else:
                     requested_charts.append(chart)
-        print requsted_charts
+        elif getattr(chart, 'func_name', None) != None:
+            requested_charts.append(chart.func_name)
         return requested_charts
 
     def get_project_location(self):
