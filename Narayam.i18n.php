@@ -118,6 +118,7 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'narayam-desc' => 'Aotren a ra ouzhpennañ hentennoù bizskrivañ personelaet evit ar maeziennoù bizskrivañ',
 	'narayam-help-page' => 'Help:Bizskrivañ',
 	'narayam-ml' => 'Treuzlizherennadur Malayalam',
 	'narayam-sa' => 'Treuzlizherennadur sanskriteg',
