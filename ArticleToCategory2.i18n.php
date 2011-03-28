@@ -118,6 +118,8 @@ $messages['bs'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Napravi',
 	'articletocategory2-create-category-under-category-text' => 'Dodaj kategoriju u ovu kategoriju',
 	'articletocategory2-create-category-under-category-button' => 'Napravi',
+	'right-ArticleToCategory2' => 'Dodavanje stranice u kategoriju',
+	'right-ArticleToCategory2AddCat' => 'Dodavanje kategoriju u kategoriju',
 );
 
 /** Catalan (Català)
