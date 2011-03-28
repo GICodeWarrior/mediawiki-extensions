@@ -2370,6 +2370,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -2405,9 +2406,12 @@ $messages['ro'] = array(
 	'ct_horizontal_caption' => 'Linie orizontală',
 	'ct_upload' => 'Încarcă $1',
 	'ct_select' => 'Selectează $1 pentru încărcare:',
+	'ct_caption' => 'Adăugare descriere (opțional):',
+	'ct_link' => 'Adăugare titlu pentru link (opțional):',
 	'ct_submit' => 'Salt',
 	'ct_close' => 'Închide fereastra',
 	'ct_success' => 'Încărcare a fișierului cu succes!',
+	'ct_popupblocked' => 'Fereastra popup de încărcare a fost blocată la deschidere. Vă rugăm să vă verificați sistemul de blocare al ferestrelor popup.',
 	'ct_user_user' => 'Utilizator',
 	'ct_user_tip' => 'Inserează o legătură într-o pagină de utilizator.',
 	'ct_user_caption' => 'Legătură utilizator',
