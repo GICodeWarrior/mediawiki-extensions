@@ -21,7 +21,7 @@ class ApiUserDailyContribs extends ApiBase {
 		$result->addValue( $this->getModuleName() ,
 			'id', $user->getId() );
 		$result->addValue( $this->getModuleName() ,
-			'registration', $user->getRegistration() );
+			'registration', ($user->getRegistration() == NULL)?0:$user->getRegistration() );
 		$result->addValue( $this->getModuleName() ,
 			'timeFrameEdits', getUserEditCountSince( $now - ($days * 60 *60 *24)  ), $user );
 	}
