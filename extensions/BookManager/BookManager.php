@@ -59,7 +59,7 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 /* Add CSS and JS */
 $wgResourceModules['ext.BookManager'] = array(
-	'scripts'	=> 'bookmanager.js',
+	'scripts'	=> array( 'jquery.hotkeys.js', 'bookmanager.js' ),
 	'styles'	=> 'bookmanager.css',
 	'messages'	=> array( 'BookManager', 'BookManager-top', 'BookManager-bottom' ),
 	'dependencies'	=> array( 'jquery', 'mediawiki.util' ),
