@@ -548,6 +548,7 @@ def init_args_parser():
             %s' % ''.join([f + ',\n' for f in rts.file_choices]),
         default='stub-meta-history.xml.gz')
 
+    return project, language, parser
 
 def main():
     project, language, parser, = init_args_parser()
