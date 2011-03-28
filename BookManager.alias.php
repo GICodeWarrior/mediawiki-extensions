@@ -4,16 +4,23 @@
  *
  * @file
  * @ingroup Extensions
+ * @author Raylton P. Sousa <raylton.sousa@gmail.com>
  */
 
 $specialPageAliases = array();
 
-/** English */
+/** English 
+ * @author Raylton P. Sousa <raylton.sousa@gmail.com>
+ * @author Helder.wiki
+ */
 $specialPageAliases['en'] = array(
 	'PrintVersion' => array( 'PrintVersion' ),
 );
 
-/** Portuguese (Português) */
+/** Portuguese (Português)
+ * @author Raylton P. Sousa <raylton.sousa@gmail.com>
+ * @author Helder.wiki
+ */
 $specialPageAliases['pt'] = array(
 	'PrintVersion' => array( 'Versão para impressão' ),
 );
