@@ -151,7 +151,7 @@ $messages['nl'] = array(
 $messages['pt'] = array(
 	'bookmanager-desc' => 'Ferramentas para livros',
 	'printversion' => 'Versão para impressão',
-	'printversion-desc' => '[[Special:PrintVersion|Gera uma versão para impressão de um livro]]',
+	'printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
 	'printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
 	'printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
 );
