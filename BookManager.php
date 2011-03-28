@@ -55,7 +55,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'	=>  BookManagerCore::VERSION,
 	'author'	=>  array( 'Raylton P. Sousa', 'Helder.wiki' ),
 	'url'		=> 'http://www.mediawiki.org/wiki/Extension:BookManager',
-	'descriptionmsg'=> 'bookmanager-desc'
+	'descriptionmsg' => 'bookmanager-desc'
 );
 /* Add CSS and JS */
 $wgResourceModules['ext.BookManager'] = array(
@@ -85,7 +85,6 @@ $wgHooks['MagicWordwgVariableIDs'][] = 'BookManagerVariables::DeclareVarIds';
 $wgHooks['ParserGetVariableValueSwitch'][] = 'BookManagerVariables::AssignAValue';
 }
 /**** Navbar ****/
-$wgHooks['OutputPageBeforeHTML'][] = 'BookManagerNavBar::addText';
+$wgHooks['BeforePageDisplay'][] = 'BookManagerNavBar::addNavBar';
 
-$wgHooks['BeforePageDisplay'][] = 'BookManagerNavBar::injectStyleAndJS';
 
