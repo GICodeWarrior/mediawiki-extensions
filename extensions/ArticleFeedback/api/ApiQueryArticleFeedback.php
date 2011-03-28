@@ -56,17 +56,19 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			if ( isset( $ratings[$params['pageid']]['ratings'] ) ) {
 				// Valid ratings already exist
 				foreach ( $ratings[$params['pageid']]['ratings'] as $i => $rating ) {
-					// Rating value
-					$ratings[$params['pageid']]['ratings'][$i]['userrating'] =
-						$userRatings[$rating['ratingid']]['value'];
-					// Expertise
-					if ( !isset( $ratings[$params['pageid']]['expertise'] ) ) {
-						$ratings[$params['pageid']]['expertise'] =
-							$userRatings[$rating['ratingid']]['expertise'];
-					}
-					// Expiration
-					if ( $userRatings[$rating['ratingid']]['revision'] < $revisionLimit ) {
-						$ratings[$params['pageid']]['status'] = 'expired';
+					if ( isset( $userRatings[$rating['ratingid']] ) ) {
+						// Rating value
+						$ratings[$params['pageid']]['ratings'][$i]['userrating'] =
+							$userRatings[$rating['ratingid']]['value'];
+						// Expertise
+						if ( !isset( $ratings[$params['pageid']]['expertise'] ) ) {
+							$ratings[$params['pageid']]['expertise'] =
+								$userRatings[$rating['ratingid']]['expertise'];
+						}
+						// Expiration
+						if ( $userRatings[$rating['ratingid']]['revision'] < $revisionLimit ) {
+							$ratings[$params['pageid']]['status'] = 'expired';
+						}
 					}
 				}
 			} else {
@@ -154,13 +156,20 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			)
 		);
 		$ratings = array();
+		$revId = null;
 		foreach ( $res as $row ) {
-			$ratings[$row->aa_rating_id] = array(
-				'value' => $row->aa_rating_value,
-				'expertise' => $row->afp_value_text,
-				'revision' => $row->aa_revision,
-				'text' => $row->aar_rating,
-			);
+			if ( $revId === null ) {
+				$revId = $row->aa_revision;
+			}
+			// Prevent incomplete rating sets from making a mess
+			if ( $revId === $row->aa_revision ) {
+				$ratings[$row->aa_rating_id] = array(
+					'value' => $row->aa_rating_value,
+					'expertise' => $row->afp_value_text,
+					'revision' => $row->aa_revision,
+					'text' => $row->aar_rating,
+				);
+			}
 		}
 		return $ratings;
 	}
