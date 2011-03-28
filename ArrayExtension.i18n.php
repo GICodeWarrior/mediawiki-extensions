@@ -140,6 +140,13 @@ $messages['pms'] = array(
 	'arrayext-desc' => "Memorisa e càlcola j'array nominà",
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'arrayext-desc' => 'Armazenar e calcular matrizes designadas',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
