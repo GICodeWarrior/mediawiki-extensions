@@ -111,6 +111,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  * @author Ouda
  */
 $messages['ar'] = array(
@@ -135,7 +136,7 @@ $messages['ar'] = array(
 	'recordadmin-searchresult' => 'نتائج البحث',
 	'recordadmin-nomatch' => 'لا سجلات مطابقة تم العثور عليها!',
 	'recordadmin-typeupdated' => '$1 تم تحديث خصائص',
-	'recordadmin-buttonsave' => 'حفظ',
+	'recordadmin-buttonsave' => 'احفظ',
 	'recordadmin-noform' => 'لا توجد استمارة ملحقة بسجلات "$1"!',
 	'recordadmin-createlink' => 'إنشاء واحدة',
 	'recordadmin-newcreated' => '$1 جديد تم إنشاؤه من الاستمارة العامة',

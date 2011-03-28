@@ -86,6 +86,27 @@ $messages['br'] = array(
 	'rdf-instructions' => "Diuzit ar bajenn dal hag ar patroù RDF oc'h dedennet ganto.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'rdf-desc' => 'RDF okvir za MediaWiki',
+	'rdf-inpage' => 'Uklopljena Turtle na stranicu',
+	'rdf-dcmes' => 'Dublin Core set elemenata metapodataka',
+	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Uklopljene slike',
+	'rdf-linksto' => 'Linkovi na stranicu',
+	'rdf-linksfrom' => 'Linkovi sa stranice',
+	'rdf-links' => 'Svi linkovi',
+	'rdf-history' => 'Historijske verzije',
+	'rdf-interwiki' => 'Međuwiki linkovi',
+	'rdf-categories' => 'Kategorije',
+	'rdf-target' => 'Ciljna stranica',
+	'rdf-modelnames' => 'Model(i)',
+	'rdf-format' => 'Izlazni format',
+	'rdf-instructions' => 'Odaberi ciljnu stranicu i RDF modele koje vas zanimaju.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

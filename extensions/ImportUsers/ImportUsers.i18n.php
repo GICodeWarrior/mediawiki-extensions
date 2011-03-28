@@ -157,9 +157,9 @@ $messages['arc'] = array(
 	'importusers-uploadfile' => 'ܐܣܩ ܠܦܦܐ',
 	'importusers-form-button' => 'ܐܥܠ',
 	'importusers-log-summary' => 'ܦܣܝܩܬ̈ܐ',
-	'importusers-log-summary-all' => 'ܟܠ',
-	'importusers-log-summary-added' => 'ܐܬܬܘܣܦ',
-	'importusers-log-summary-updated' => 'ܐܬܚܕܬ',
+	'importusers-log-summary-all' => 'ܟܠ: $1',
+	'importusers-log-summary-added' => 'ܐܬܬܘܣܦܬ: $1',
+	'importusers-log-summary-updated' => 'ܐܬܚܕܬ: $1',
 	'importusers-login-name' => 'ܫܡܐ ܕܥܠܠܐ',
 	'importusers-password' => 'ܡܠܬܐ ܕܥܠܠܐ',
 	'importusers-email' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
@@ -2173,9 +2173,9 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'importusers-form-button' => 'אימפארט',
-	'importusers-log-summary-all' => 'אַלע',
-	'importusers-log-summary-added' => 'צוגעלייגט',
-	'importusers-log-summary-updated' => 'דערהײַנטיגט',
+	'importusers-log-summary-all' => 'אַלע: $1',
+	'importusers-log-summary-added' => 'צוגעלייגט: $1',
+	'importusers-log-summary-updated' => 'דערהייַנטיקט: $1',
 	'importusers-password' => 'פאַסווארט',
 );
 

@@ -282,15 +282,21 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
 	'sendmailtowiki-desc' => 'פרסום תוכן ויקי דרך כתובת דוא"ל דינמית ייעודית',
 	'prefs-sendmailtowiki' => 'פרסום תוכן באמצעות דוא״ל',
 	'sendmailtowiki-inemail' => 'כתובת דוא״ל ייעודית:',
+	'sendmailtowiki-inpin' => 'מספר סודי:',
+	'prefs-help-sendmailtowiki_pin' => 'שדה שחור למספר סודי מבטל את שליחת התוכן לוויקי עם החשבון שלך.',
+	'sendmailtowiki-err-pinlength' => 'המספר הסודי צריך להכיל בדיוק 5 ספרות.',
 	'sendmailtowiki-err-wrongprefix' => 'קידומת החשבון בוויקי שגויה. נא ליצור קשר עם המנהל שלך.',
 	'sendmailtowiki-err-invalidaccount' => 'החשבון שגוי. אנא בדקו שוב את כתובת הדוא"ל אליה אתם שולחים.',
 	'sendmailtowiki-err-invalidsender' => 'השולח שגוי. אנא בדקו את כתובת הדוא"ל ממנה אתם שולחים.',
+	'sendmailtowiki-err-invalidpin' => 'מספר סודי שגוי. הגישה נחסמה.',
+	'sendmailtowiki-err-onlyplain' => 'בגלל חוסר הבנה אפשרית, מתקבלות רק הודעות בטקסט טהור.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

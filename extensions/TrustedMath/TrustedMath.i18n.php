@@ -83,6 +83,17 @@ $messages['fr'] = array(
 	'trustedmath-not-found' => "La page [[:$1]] n'existe pas",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'trustedmath-desc' => 'Permite a incorporación de ecuacións LaTeX en páxinas, de xeito semellante ao motor de renderizado integrado de matemáticas, pero sen depender do Ocaml',
+	'trustedmath-permission-error' => 'As matemáticas non fiables están desactivadas neste wiki',
+	'trustedmath-path-error' => 'Erro ao crear o directorio de matemáticas',
+	'trustedmath-convert-error' => 'Erro ao crear a imaxe matemática. "$1" devolveu <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Non existe a páxina "[[:$1]]"',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

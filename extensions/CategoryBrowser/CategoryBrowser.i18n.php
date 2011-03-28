@@ -237,6 +237,9 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|подкатегория|подкатегории}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|страница|страници}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|файл|файла}}',
 	'cb_cat_subcats' => 'подкатегории',
 	'cb_cat_pages' => 'страници',
 	'cb_cat_files' => 'файлове',
