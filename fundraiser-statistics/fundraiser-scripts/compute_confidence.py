@@ -28,7 +28,7 @@ matplotlib.use('Agg')
 import miner_help as mh
 import query_store as qs
 
-class ConfidenceTest:
+class ConfidenceTest(object):
 
 	# Database and Cursor objects
 	db = None
@@ -125,13 +125,13 @@ class ConfidenceTest:
 		curr_datetime = start_datetime
 		curr_timestamp = start_time
 		curr_hour_index = 0.0
-
+		
 		# lists to store timestamps and indices
 		times = []
 		time_indices = []
 
-		sample_count = 0
-
+		sample_count = 1
+		
 		# build a list of timestamps and time indices for plotting
 		# increment the time
 		while curr_datetime < end_datetime:
@@ -155,9 +155,10 @@ class ConfidenceTest:
 			
 			# increment curr_hour_index if the 
 			if sample_count == num_samples: 
+				
 				time_indices.append(curr_hour_index + range / 2)
 				curr_hour_index = curr_hour_index + range
-				sample_count = 0
+				sample_count = 1
 			else:
 				sample_count = sample_count + 1 
 					
@@ -169,9 +170,9 @@ class ConfidenceTest:
 		# append the last items onto time lists
 		times.append(end_time)
 		# added_index = float(end_datetime.hour - curr_datetime.hour) + float(end_datetime.minute - curr_datetime.minute) / 60
-		curr_hour_index = float(curr_hour_index) + range / 2
-		time_indices.append(curr_hour_index)
-				
+		# curr_hour_index = float(curr_hour_index) + range / 2
+		# time_indices.append(curr_hour_index)
+			
 		return [times, time_indices]
 		# compute parameters for each sample range (mean, standard deviation)
 		
@@ -187,8 +188,8 @@ class ConfidenceTest:
 		pylab.subplot(subplot_index)
 		pylab.figure(num=None,figsize=[26,14])	
 		
-		e1 = pylab.errorbar(times_indices, means_1, yerr=std_devs_1, fmt='-xb')
-		e2 = pylab.errorbar(times_indices, means_2, yerr=std_devs_2, fmt='-dr')
+		e1 = pylab.errorbar(times_indices, means_1, yerr=std_devs_1, fmt='xb-')
+		e2 = pylab.errorbar(times_indices, means_2, yerr=std_devs_2, fmt='dr-')
 		# pylab.hist(counts, times)
 		
 		pylab.grid()
@@ -252,8 +253,8 @@ class ConfidenceTest:
 		max_sd = max(max(std_devs_1),max(std_devs_2))
 		max_y = float(max_mean) + float(max_sd) 
 		max_y = max_y + 0.1 * max_y
-		max_x = float(math.ceil(max(times_indices))) + 1.0
-		ranges = [-0.5, max_x, 0, max_y]
+		max_x = max(times_indices) + min(times_indices)
+		ranges = [0.0, max_x, 0, max_y]
 		
 		ylabel = metric_name
 		labels = [item_1, item_2]
