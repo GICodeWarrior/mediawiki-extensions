@@ -161,6 +161,8 @@ Možete izgubiti promjene koje ste napravili na ovoj stranicu ako sada napustite
 	'al-nosuchuser' => 'Ne postoji korisnik pod imenom "$1".
 Korisnička imena razlikuju velika i mala slova.
 Provjerite Vaš unos.',
+	'al-createblocked' => 'Vaša IP adresa je blokirana za pravljenje računa.',
+	'al-throttled' => 'Imali ste previše pokušaja pogađanja šifre. Molimo čekajte $1 {{PLURAL:$1|sekundu|sekunde|sekundi}} prije nego pokušate ponovo.',
 );
 
 /** Catalan (Català)
