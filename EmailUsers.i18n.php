@@ -73,6 +73,19 @@ $messages['br'] = array(
 	'emailusers-toomanyrecipientsselected' => "Merket ez eus bet kalz re a reseverien ({{PLURAL:$1|$1 d'ar muiañ|$1 d'ar muiañ}}).",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'emailusers-desc' => 'Omogućuje korisnicima da šalju e-mailove za više primalaca',
+	'right-sendbatchemail' => 'Slanje e-maila većem broju primalaca odjednom',
+	'emailusers' => 'Pošalji e-mail korisnicima',
+	'emailusers-target-reverse' => 'Pošalji svim korisnicima osim odabranim',
+	'emailusers-norecipient' => 'Ne postoji niko kome možete poslati e-mail.',
+	'emailusers-norecipientselected' => 'Nije odabran nijedan primalac.',
+	'emailusers-toomanyrecipientsselected' => 'Odabrano je previše primalaca ({{PLURAL:$1|najviše $1|najviše $1}}).',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
