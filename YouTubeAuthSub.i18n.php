@@ -1059,6 +1059,7 @@ Izan pazientzia, arren.',
 
 /** Persian (فارسی)
  * @author BlueDevil
+ * @author Ebraminio
  * @author Huji
  * @author Mardetanha
  */
@@ -1071,8 +1072,8 @@ $messages['fa'] = array(
 	'youtubeauthsub_keywords' => 'کلیدواژه‌ها',
 	'youtubeauthsub_category' => 'رده',
 	'youtubeauthsub_submit' => 'ارسال',
-	'youtubeauthsub_clickhere' => 'برای ورود به یوتیوب این‌جا کلیک کنید',
-	'youtubeauthsub_uploadhere' => 'کلیپ خود را از این‌جا بارگذاری کنید:',
+	'youtubeauthsub_clickhere' => 'برای ورود به یوتیوب اینجا کلیک کنید',
+	'youtubeauthsub_uploadhere' => 'کلیپ خود را از اینجا بارگذاری کنید:',
 	'youtubeauthsub_uploadbutton' => 'بارگذاری',
 	'youtubeauthsub_uploading' => 'کلیپ شما در حال بارگذاریست .
 لطفا صبور باشید.',
