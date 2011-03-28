@@ -2136,7 +2136,7 @@ Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivan
 	'ow_transaction_count' => 'Brojanje:',
 	'ow_transaction_user' => 'Ime korisnika:',
 	'ow_transaction_show_rollback' => 'Pokaži kontrole za vraćanje:',
-	'ow_transaction_rollback_button' => 'Vrati',
+	'ow_transaction_rollback_button' => 'Vraćanje',
 	'ow_transaction_rollback_header' => 'Vraćanje',
 	'ow_transaction_no_action' => 'Ne radi ništa',
 	'ow_transaction_previous_version' => 'Prethodna verzija',
