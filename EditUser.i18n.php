@@ -918,10 +918,10 @@ $messages['mr'] = array(
  */
 $messages['mt'] = array(
 	'edituser-desc' => "Tippermetti lill-utenti bil-privileġġi neċessarji biex jimmodifikaw il-preferenzi ta' utenti oħra",
-	'edituser-username' => 'Isem',
+	'edituser-username' => 'Isem tal-utent:',
 	'edituser-dosearch' => 'Fittex',
-	'edituser-nouser' => 'L-utent speċifikat ma jeżistix',
-	'edituser-exempt' => 'L-utent speċifikat ma jistax jiġi modifikat',
+	'edituser-nouser' => 'L-utent "$1" ma jeżistix.',
+	'edituser-exempt' => 'L-utent "$1" ma jistax jiġi modifikat.',
 );
 
 /** Burmese (မြန်မာဘာသာ)
