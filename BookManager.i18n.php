@@ -33,6 +33,26 @@ $messages['be-tarask'] = array(
 	'printversion-inexistent-book' => 'Кніга ня знойдзеная. Калі ласка, увядзіце назву існуючай кнігі, каб атрымаць яе вэрсію для друку.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'bookmanager-desc' => 'Ostilhoù evit levrioù',
+	'printversion' => 'Stumm da voullañ',
+	'printversion-desc' => 'Genel a ra ur [[Special:PrintVersion|stumm da voullañ]] evit ul levr',
+	'printversion-no-book' => 'Merkit anv ul levr da gaout e stumm moullet.',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'printversion' => 'Verzija za štampanje',
+	'printversion-desc' => 'Pravi [[Special:PrintVersion|verziju za štampanje]] knjige',
+	'printversion-no-book' => 'Molimo unesite ime knjige da dobijete njenu verziju za štampanje',
+	'printversion-inexistent-book' => 'Knjiga nije pronađena. Molimo unesite ime postojeće knjige da dobijete njenu verziju za štampanje.',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -48,10 +68,19 @@ $messages['ca'] = array(
  * @author Purodha
  */
 $messages['de'] = array(
+	'bookmanager-desc' => 'Hilfsprogramme für Bücher',
 	'printversion' => 'Druckversion',
 	'printversion-desc' => 'Ergänzt eine Spezialseite zum [[Special:PrintVersion|Erstellen einer Druckversion]] eines Buchs',
 	'printversion-no-book' => 'Bitte den Namen des Buchs angeben, für das eine Druckversion erstellt werden soll.',
 	'printversion-inexistent-book' => 'Das Buch wurde nicht gefunden. Bitte den Namen eines vorhandenen Buchs angeben, für das eine Druckversion erstellt werden soll.',
+);
+
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'printversion' => 'Inprimatzeko bertsioa',
+	'printversion-desc' => 'Liburu baten [[Special:PrintVersion|inprimatzeko bertsioa]] sortzen du',
 );
 
 /** French (Français)
@@ -78,6 +107,7 @@ $messages['gl'] = array(
  * @author Amire80
  */
 $messages['he'] = array(
+	'bookmanager-desc' => 'כלים לספרים',
 	'printversion' => 'גרסת הדפסה',
 	'printversion-desc' => 'יצירת [[Special:PrintVersion|גרסת הדפסה]] מיוחדת של הספר',
 	'printversion-no-book' => 'נא להזין את שם הספר כדי לקבל את גרסת ההדפסה שלו.',
@@ -118,6 +148,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'bookmanager-desc' => 'Fonctioune fir Bicher',
 	'printversion' => 'Drockversioun',
 	'printversion-desc' => 'Generéiert eng [[Special:PrintVersion|Drockversioun]] vun engem Buch',
 	'printversion-no-book' => 'Gitt w.e.g. den Numm vun engem Buch a fir seng Drockversioun ze kréien.',
@@ -145,8 +176,8 @@ $messages['nl'] = array(
 );
 
 /** Portuguese (Português)
- * @author Raylton P. Sousa <raylton.sousa@gmail.com>
  * @author Helder.wiki
+ * @author Raylton P. Sousa <raylton.sousa@gmail.com>
  */
 $messages['pt'] = array(
 	'bookmanager-desc' => 'Ferramentas para livros',
