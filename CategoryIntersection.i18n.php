@@ -109,6 +109,7 @@ $messages['bg'] = array(
 	'categoryintersection-desc' => 'Поддържа таблица с хеш стойности за [[Special:CategoryIntersection|сечения на категории]] в рамките на страница',
 	'categoryintersection-doit' => 'Показване на страниците в избраните категории',
 	'categoryintersection-maxcategories' => 'Максимално допустимият брой на пресечни категории е $1.',
+	'categoryintersection-mincategories' => 'Необходимо е да бъдат включени поне две категории.',
 	'categoryintersection-results' => 'Търсенето върна $1 {{PLURAL:$1|резултат|резултата}}.',
 );
 
