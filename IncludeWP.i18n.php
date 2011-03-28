@@ -91,6 +91,16 @@ $messages['br'] = array(
 	'includewp-include-par-paragraphs' => "An niver a rannbennadoù a fell deoc'h diskwel e penn-kentañ.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'includewp-loading-page' => 'Učitavam stranicu...',
+	'includewp-show-full-page' => 'Prikaži cijelu stranicu',
+	'includewp-show-fragment' => 'Pokaži samo prvi pasus',
+	'includewp-loading-failed' => 'Nije uspjelo učitavanje stranice.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
