@@ -24,7 +24,7 @@ class BookManagerCore extends SpecialPage {
 	 */
 	protected static function getBookPagePrefixes() {
 		// global $wgUser;
-		global $wgCommunityCollectionNamespace;
+		global $wgBookManagerPrefixNamespace;
 
 		$result = array();
 		/*
@@ -40,7 +40,7 @@ class BookManagerCore extends SpecialPage {
 		$t = wfMsgForContent( 'coll-community_book_prefix' );
 		if ( wfEmptyMsg( 'coll-community_book_prefix', $t ) || $t == '-' ) {
 			$title = Title::makeTitle(
-				$wgCommunityCollectionNamespace,
+				$wgBookManagerPrefixNamespace,
 				wfMsgForContent( 'coll-collections' )
 			);
 			$result['community-prefix'] = $title->getPrefixedText() . '/';
@@ -295,7 +295,7 @@ class BookManagerNavBar extends BookManagerCore {
 		# Return True if Message is non empty
 		$MsgIsEmpty =	(  wfEmptyMsg( "BookManager" )
 				&& wfEmptyMsg( "BookManager-top" )
-				&& wfEmptyMsg( "BookManager-bottom" ));
+				&& wfEmptyMsg( "BookManager-bottom" ) );
 		# Generate HTML or system messages values( $1 for $prev, $2 for $prevtext, $3 for $base, $4 for $basetext, $5 for $next and $6 for $nexttext ).
 		$prevtext = ( $prev !== '' ) ? Title::newFromText( $prev )->getSubpageText(): '' ;
 		$nexttext = ( $next !== '' ) ? Title::newFromText( $next )->getSubpageText(): '' ;
@@ -364,7 +364,7 @@ class PrintVersion extends BookManagerCore {
 		$this->outputHeader();
 
 		$book = !is_null( $book ) ? $book : $wgRequest->getVal( 'book' );
-		if( !isset( $book ) ){
+		if ( !isset( $book ) ) {
 			$wgOut->addWikiMsg( 'printversion-no-book' );
 			return;
 		}
@@ -384,4 +384,8 @@ class PrintVersion extends BookManagerCore {
 		}
 		$wgOut->addWikiText( $text );
 	}
+
 }
+
+
+
