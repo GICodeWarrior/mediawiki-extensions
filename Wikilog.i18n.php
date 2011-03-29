@@ -883,6 +883,7 @@ $messages['be'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'wikilog-desc' => 'Дадае магчымасьці блогаў для стварэньня гібрыду вікі-блогу',
@@ -940,7 +941,7 @@ $messages['be-tarask'] = array(
 	'wikilog-summary-more' => '[[$3|→ працягваць чытаньне…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|гутаркі]])',
 	'wikilog-edit-hint' => 'Рэдагаваць артыкул вікі-блогу: $1',
-	'wikilog-edit-fieldset-legend' => 'Устаноўкі вікі-блогу:',
+	'wikilog-edit-fieldset-legend' => 'Налады вікі-блогу:',
 	'wikilog-edit-signpub' => 'Падпісаць і апублікаваць гэты артыкул',
 	'wikilog-edit-signpub-tooltip' => 'Вядзе да таго, што гэты артыкул будзе падпісаны і апублікаваны ў гэтым вікі-блогу пад час захаваньня.
 Прыбярыце гэтае пазначэньне, каб пакінуць артыкул у стане чарнавіка.',
@@ -1407,6 +1408,7 @@ Ako otkačite ovu kutiju ostavićete članak kao radnu verziju.',
 	'wikilog-invalid-param' => 'Nevaljan parametar: $1.',
 	'wikilog-invalid-author' => 'Nevaljan autor: $1.',
 	'wikilog-invalid-date' => 'Nevaljan datum: $1.',
+	'wikilog-invalid-tag' => 'Nevaljana oznaka: $1.',
 	'wikilog-invalid-file' => 'Nevaljana datoteka: $1.',
 	'wikilog-file-not-found' => 'Nepostojeća datoteka: $1.',
 	'wikilog-not-an-image' => 'Datoteka nije slika: $1.',
