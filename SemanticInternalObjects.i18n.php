@@ -43,9 +43,10 @@ $messages['ar'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'semanticinternalobjects-desc' => "Устаноўкі ўнутраных аб'ектаў у Semantic MediaWiki",
+	'semanticinternalobjects-desc' => "Налады ўнутраных аб'ектаў у Semantic MediaWiki",
 );
 
 /** Breton (Brezhoneg)
