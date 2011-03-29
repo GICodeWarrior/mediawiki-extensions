@@ -12,32 +12,24 @@ See the GNU General Public License for more details, at
 http://www.fsf.org/licenses/gpl.html
 '''
 
-"""
-== List makers ==
-Any editor who makes more than 10 mainspace edits a month to articles with titles that begin with "List of..."
-"""
-
-import re   # regular expression parsing
-
-
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
 __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
-
-
-def burnout(var, editor, **kwargs):
-    
+def list_makers(var, editor, **kwargs):
+    """
+    == List makers ==
+    Any editor who makes more than 10 mainspace edits a month to articles with titles that begin with "List of..."
+    """    
     articles_by_year = editor['articles_by_year']
-    
     count = 0
     
     for year in xrange(new_wikipedian.year, var.max_year):
         for month in xrange(1, 13):
             for article in articles_by_year[year][month]:
                 """ locate article titles containing  "List of" """
-                if re.search('List of', article):
+                if article.find('List of') > -1:
                     count = count + 1
                     
     
