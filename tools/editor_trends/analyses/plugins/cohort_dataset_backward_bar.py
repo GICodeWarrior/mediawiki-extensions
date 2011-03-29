@@ -33,7 +33,7 @@ def cohort_dataset_backward_bar(var, editor, **kwargs):
     new_wikipedian = editor['new_wikipedian']
     n = editor['edit_count']
 
-    if n >= var.cum_cutoff:
+    if n >= var.cum_cutoff and new_wikipedian != False:
         windows = data_converter.create_windows(var, break_down_first_year=break_down)
         for year in xrange(new_wikipedian.year, var.max_year):
             year = str(year)

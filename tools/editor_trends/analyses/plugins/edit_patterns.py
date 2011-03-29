@@ -27,12 +27,13 @@ def edit_patterns(var, editor, **kwargs):
     if  dt.days < 366:
         return var
 
-    for year in xrange(new_wikipedian.year, new_wikipedian.year + 2):
-        obs = [False for x in xrange(13)]
-        for month in xrange(new_wikipedian.month, 13):
-            n = monthly[str(year)][str(month)]
-            date = datetime.datetime(year, month, 1)
-            if n >= var.cutoff:
-                obs[month] = True
-        var.add(date, obs)
+    if new_wikipedian != False:
+        for year in xrange(new_wikipedian.year, new_wikipedian.year + 2):
+            obs = [False for x in xrange(13)]
+            for month in xrange(new_wikipedian.month, 13):
+                n = monthly[str(year)][str(month)]
+                date = datetime.datetime(year, month, 1)
+                if n >= var.cutoff:
+                    obs[month] = True
+            var.add(date, obs)
     return var

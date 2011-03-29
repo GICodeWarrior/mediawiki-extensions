@@ -22,7 +22,6 @@ from dateutil.relativedelta import *
 import calendar
 
 def cohort_dataset_forward_histogram(var, editor, **kwargs):
-#        headers = ['year', 'month', 'edits']
     '''
     The forward looking histogram looks for every month that an editor
     was part of the Wikimedia community whether this person made at least cutoff
@@ -35,7 +34,7 @@ def cohort_dataset_forward_histogram(var, editor, **kwargs):
     yearly_edits = editor['edits_by_year']
     n = editor['edit_count']
 
-    if n >= var.cum_cutoff:
+    if n >= var.cum_cutoff and new_wikipedian != False:
         for year in xrange(new_wikipedian.year, final_edit):
             edits = editor['monthly_edits'].get(str(year), {0:0})
             if year == new_wikipedian.year:

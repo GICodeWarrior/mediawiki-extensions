@@ -18,9 +18,14 @@ __date__ = '2011-01-25'
 __version__ = '0.1'
 
 def time_to_new_wikipedian(var, editor, **kwargs):
-#    headers = ['year', 'time_to_new_wikipedian']
+    '''
+    This plugin calculates how long it takes for an editor to become a 
+    new wikipedian. A new wikipedian is defined as someone who has made 10 
+    edits
+    '''
     new_wikipedian = editor['new_wikipedian']
-    first_edit = editor['first_edit']
-    dt = new_wikipedian - first_edit
-    var.add(new_wikipedian, dt.days)
+    if new_wikipedian != False:
+        first_edit = editor['first_edit']
+        dt = new_wikipedian - first_edit
+        var.add(new_wikipedian, dt.days)
     return var

@@ -31,7 +31,7 @@ def cohort_dataset_forward_bar(var, editor, **kwargs):
     yearly_edits = editor['edits_by_year']
     n = editor['edit_count']
 
-    if n >= var.cum_cutoff:
+    if n >= var.cum_cutoff and new_wikipedian != False:
         for year in xrange(new_wikipedian.year, var.max_year):
             max_edits = max(monthly_edits.get(str(year), {0:0}).values())
             if yearly_edits.get(str(year), 0) == 0 or max_edits < var.cutoff:

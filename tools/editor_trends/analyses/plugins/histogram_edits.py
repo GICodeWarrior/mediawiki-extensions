@@ -22,5 +22,6 @@ def histogram_edits(var, editor, **kwargs):
 #        headers = ['year', 'num_edits', 'frequency']
     cnt = editor['edit_count']
     new_wikipedian = editor['new_wikipedian']
-    var.add(new_wikipedian, cnt)
+    if new_wikipedian != False:
+        var.add(new_wikipedian, cnt)
     return var

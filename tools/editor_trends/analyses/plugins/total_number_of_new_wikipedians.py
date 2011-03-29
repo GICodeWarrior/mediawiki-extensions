@@ -20,6 +20,8 @@ __version__ = '0.1'
 
 
 def total_number_of_new_wikipedians(var, editor, **kwargs):
+
     new_wikipedian = editor['new_wikipedian']
-    var.add(new_wikipedian, 1, {'year':new_wikipedian.year})
+    if new_wikipedian != False:
+        var.add(new_wikipedian, 1, {'year':new_wikipedian.year})
     return var
