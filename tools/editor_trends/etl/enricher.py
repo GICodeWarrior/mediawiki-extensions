@@ -295,11 +295,7 @@ def parse_contributor(contributor, bots):
     return editor
 
 
-def determine_namespace(title):
-    namespaces = {'User': 2,
-                  'Talk': 1,
-                  'User Talk': 3,
-                  }
+def determine_namespace(title, namespaces):
     ns = {}
     if title != None:
         for namespace in namespaces:
@@ -346,8 +342,9 @@ def extract_comment_text(revision_id, revision):
 
 
 def count_edits(article, counts, bots):
+    namespaces = {}
     title = article['title'].text
-    namespace = determine_namespace(title)
+    namespace = determine_namespace(title, namespaces)
     xml_namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
     if namespace != False:
         article_id = article['id'].text
@@ -370,8 +367,12 @@ def count_edits(article, counts, bots):
 
 
 def create_variables(article, cache, bots):
+    namespaces = {'User': 2,
+                  'Talk': 1,
+                  'User Talk': 3,
+                  }
     title = article['title']
-    namespace = determine_namespace(title)
+    namespace = determine_namespace(title, namespaces)
 
     if namespace != False:
         cache.stats.count_articles += 1
@@ -544,7 +545,7 @@ def launcher_prediction():
     function = count_edits
     storage = 'csv'
     dataset = 'prediction'
-    processors = 1
+    processors = 7
     launcher(function, path, dataset, storage, processors)
 
 

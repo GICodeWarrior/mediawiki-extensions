@@ -150,7 +150,7 @@ def determine_username_is_bot(contributor, **kwargs):
 
 def extract_username(contributor, **kwargs):
     contributor = contributor.find('username')
-    if contributor != None:
+    if contributor != None and contributor.text != None:
         contributor = contributor.text.encode('utf-8')
         return contributor.decode('utf-8')
     else:
@@ -187,11 +187,16 @@ def extract_contributor_id(contributor, **kwargs):
 
 
 def parse_title(title):
+    title_data = {}
     if type(title.text) == type('str'):
-        title = title.text.decode('utf-8')
+        title_data['title'] = title.text.decode('utf-8')
     else:
-        title = title.text
-    return title
+        title_data['title'] = title.text
+    if title_data['title'].startswith('List of'):
+        title_data['list'] = True
+    else:
+        title_data['list'] = False
+    return title_data
 
 
 def output_editor_information(revisions, page, bots, rts):
@@ -300,7 +305,7 @@ def parse_dumpfile(tasks, rts, lock):
                 output = output_editor_information(revisions, article_id, bot_ids, rts)
                 output = add_namespace_to_output(output, namespace)
                 write_output(output, filehandles, lock, rts)
-                file_utils.write_list_to_csv([article_id, title], fh2)
+                file_utils.write_list_to_csv([article_id, title.values()], fh2)
                 processed += 1
             page.clear()
             pbar.update(pbar.currval + article_size)

@@ -56,7 +56,7 @@ class Sorter(consumers.BaseConsumer):
                 write_sorted_file(sorted_data, filename, self.rts)
                 self.result.put(True)
             except UnicodeDecodeError, e:
-                print e
+                print 'Error: %s, (%s)' % (e, filename)
             except Empty:
                 pass
 
@@ -142,7 +142,6 @@ def launcher(rts):
     rts is an instance of RunTimeSettings
     '''
     files = file_utils.retrieve_file_list(rts.txt, 'csv')
-    #files = files[0:6]
 
     pbar = progressbar.ProgressBar(maxval=len(files)).start()
     tasks = multiprocessing.JoinableQueue()
