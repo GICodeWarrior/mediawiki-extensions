@@ -380,10 +380,11 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  * @author Reza1615
  */
 $messages['fa'] = array(
-	'fckeditor-desc' => 'اجازه ویرایش با استفاده از ویرایشگر WYSIWYG FCKeditor',
+	'fckeditor-desc' => 'اجازه ویرایش با استفاده از ویرایشگر WYSIWYG FCKeditor را می‌دهد',
 	'textrichditor' => 'ویرایشگر پیشرفته',
 	'prefs-fckeditor' => 'ویرایشگر پیشرفته',
 	'tog-riched_disable' => 'غیرفعال کردن ویرایشگر پیشرفته',
@@ -403,11 +404,11 @@ $messages['fa'] = array(
 	'tog-riched_disable_ns_help_talk' => 'غيرفعال کردن ويرايشگر پيشرفته در فضاي نام "{{ns:help_talk}}"',
 	'tog-riched_disable_ns_category' => 'غيرفعال کردن ويرايشگر پيشرفته در فضاي نام "{{ns:category}}"',
 	'tog-riched_disable_ns_category_talk' => 'غيرفعال کردن ويرايشگر پيشرفته در فضاي نام "{{ns:category_talk}}"',
-	'rich_editor_new_window' => ' ویرایشگر پیشرفته را در پنجره جدید باز کنید',
+	'rich_editor_new_window' => 'ویرایشگر پیشرفته را در پنجره جدید باز کن',
 	'tog-riched_start_disabled' => 'شروع با ویرایشگر پیشرفته غیر فعال شد',
-	'tog-riched_use_popup' => 'باز کردن ویرایشگر  پیشرفته در پاپاپ',
-	'tog-riched_use_toggle' => 'استفاده از تاگل برای سویچ کردن بین ویکی‌متن و ویرایشگر پیشرفته (جایگزینی منطقه های متن با ویرایشگر پیشرفته)',
-	'tog-riched_toggle_remember_state' => 'به یاد داشته باشید آخرین وضعیت تاگل',
+	'tog-riched_use_popup' => 'بازکردن ویرایشگر پیشرفته در یک پنجره',
+	'tog-riched_use_toggle' => 'استفاده از زبانهٔ انتخاب‌کردن بین ویکی‌متن و ویرایشگر پیشرفته (جایگزینی جعبه ویرایش با ویرایشگر پیشرفته)',
+	'tog-riched_toggle_remember_state' => 'آخرین وضعیت زبانه را به یاد داشته باش',
 );
 
 /** Finnish (Suomi)
