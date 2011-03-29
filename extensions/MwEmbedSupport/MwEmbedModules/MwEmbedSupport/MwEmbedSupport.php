@@ -37,6 +37,7 @@ return array(
 	'mediawiki.UtilitiesTime' => array( 'scripts' => 'mediawiki/mediawiki.UtilitiesTime.js' ),
 	'mediawiki.client' => array( 'scripts' => 'mediawiki/mediawiki.client.js' ),
 	'mediawiki.Uri' => array( 'scripts' => 'mediawiki/mediawiki.Uri.js' ),
+	'mediawiki.absoluteUrl' => array( 'scripts' => 'mediawiki/mediawiki.absoluteUrl.js' ),
 	
 	'mediawiki.language.parser' => array( 
 		'scripts'=> 'mediawiki/mediawiki.language.parser.js',

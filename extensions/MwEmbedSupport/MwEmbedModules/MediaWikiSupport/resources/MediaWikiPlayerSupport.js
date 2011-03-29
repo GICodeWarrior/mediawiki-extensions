@@ -113,9 +113,63 @@
 		function doCreditLine( resourceHTML, articleUrl ){
 			// Get the title string ( again a "Title" like js object could help out here. ) 		
 			var titleStr = embedPlayer.apiTitleKey.replace(/_/g, ' ');
+			
+			// Setup the initial credits line:
+			var $creditLine = $( '<div />');		
+			
+			// Add the title: 
+			$creditLine.append(
+				$('<span>').html(
+					gM( 'mwe-embedplayer-credit-title' ,
+						// We use a div container to easily get at the built out link
+						$('<div>').append(
+							$('<a/>').attr({
+								'href' : articleUrl,
+								'title' : titleStr
+							}).text( titleStr )
+						).html()
+					)
+				)
+			);
+			
+			// Parse some data from the page info template if possible: 			
+			var $page = $( resourceHTML );
+			
+			// Look for author:
+			var $author = $page.find('#fileinfotpl_aut');
+			if( $author.length ){
+				// Get the real author sibling of fileinfotpl_aut 
+				$author = $author.next().find('p');
+				// Remove white space:
+				$author.find('br').remove();
+				
+				// Update link to be absolute per page url context: 
+				var authUrl = $author.find('a').attr('href');
+				authUrl = mw.absoluteUrl( authUrl,  articleUrl );
+				$author.find('a').attr('href', 
+					authUrl
+				)
+				$creditLine.append( $( '<br />' ),
+					gM('mwe-embedplayer-credit-author', $author.html() )
+				)
+			}
+			
+			// Look for date:
+			var $date =$page.find('#fileinfotpl_date');
+			if( $date.length ){
+				// Get the real date sibling of fileinfotpl_date 
+				$date = $date.next().find('p');
+				
+				// remove white space:
+				$date.find('br').remove();
+				$creditLine.append(  $( '<br />' ),
+					gM('mwe-embedplayer-credit-date', $date.html() )
+				)
+			}
+			
 
+			// Build out the image and credit line
 			var imgWidth = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 )? 45 : 120;
-
 			return $( '<div/>' ).addClass( 'creditline' )
 				.append(
 					$('<a/>').attr({
@@ -132,17 +186,7 @@
 					)
 				)
 				.append(
-					$('<span>').html(
-						gM( 'mwe-embedplayer-credit-title' ,
-							// We use a div container to easily get at the built out link
-							$('<div>').html(
-								$('<a/>').attr({
-									'href' : articleUrl,
-									'title' : titleStr
-								}).text( titleStr )
-							).html()
-						)
-					)
+					$creditLine
 				);
 		};
 		

@@ -87,13 +87,17 @@
 		return mediaWiki.config.get( name, value );
 	};
 	mw.setDefaultConfig = function( name, value ){
-		if( ! mediaWiki.config.get( name ) ){
+		if( mediaWiki.config.get( name ) === null ){
 			mediaWiki.config.set( name, value );
 		}
 	};
+	/**
+	 * Aliased load function
+	 */
 	mw.load = function( resources, callback ){
 		mediaWiki.loader.using( resources, callback, function(){
 			// failed to load
+			mw.log("Failed to load resources:"  + resources );
 		});
 	};	
 	
@@ -193,7 +197,7 @@
 	
 	/**
 	 * gM ( get Message ) in js2 conflated jQuery return type with string return type
-	 * Do a legacy check for input paramaters and call the correct function. 
+	 * Do a legacy check for input parameters and call the correct function. 
 	 * 
 	 * TODO Replace with new Neil's new parser functions 
 	 */
@@ -409,6 +413,7 @@
 		mw.load(uiRequest, function() {
 			$( '#mweDialog' ).dialog( options );
 		} );
+		
 		return $( '#mweDialog' );
 	};
 	
