@@ -12,35 +12,32 @@
 	 * @return {=String} absolute url
 	 */
 	mw.absoluteUrl = function( source, contextUrl ) {
-		var isAlreadyAbsolute = true;
 		try{
 			var parsedSrc = new mw.Uri( source );
+			if( parsedSrc.protocol )
+				return source;
 		} catch(e){ 
-			isAlreadyAbsolute = false;
+			// not already absolute
 		};
-		// If source was parsed successfully return ( already absolute ) 
-		if( isAlreadyAbsolute ){			
-			return source;
-		}
-	
+
 		// Get parent Url location the context URL
 		if( !contextUrl ) {
 			contextUrl = document.URL;
 		}
-		var parsedUrl = new mw.Uri( contextUrl );
+		var contextUrl = new mw.Uri( contextUrl );
 	
 		// Check for local windows file that does not flip the slashes:
-		if( parsedUrl.directory == '' && parsedUrl.protocol == 'file' ){
+		if( contextUrl.directory == '' && contextUrl.protocol == 'file' ){
 			// pop off the file
 			var fileUrl = contextUrl.split( '\\');
 			fileUrl.pop();
-			return 	fileUrl.join('\\') + '\\' + src;
+			return fileUrl.join('\\') + '\\' + src;
 		}
 		// Check for leading slash:
-		if( src.indexOf( '/' ) === 0 ) {
-			return parsedUrl.protocol + '://' + parsedUrl.authority + src;
+		if( source.indexOf( '/' ) === 0 ) {
+			return contextUrl.protocol + '://' + contextUrl.getAuthority() + source;
 		}else{
-			return parsedUrl.protocol + '://' + parsedUrl.authority + parsedUrl.directory + src;
+			return contextUrl.protocol + '://' + contextUrl.getAuthority() + contextUrl.path + source;
 		}
 	};
 	
