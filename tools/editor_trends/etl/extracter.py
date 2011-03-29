@@ -24,6 +24,9 @@ import multiprocessing
 import progressbar
 from Queue import Empty
 
+if '..' not in sys.path:
+    sys.path.append('..')
+
 import wikitree.parser
 from bots import detector
 from utils import file_utils
@@ -148,7 +151,8 @@ def determine_username_is_bot(contributor, **kwargs):
 def extract_username(contributor, **kwargs):
     contributor = contributor.find('username')
     if contributor != None:
-        return contributor.text
+        contributor = contributor.text.encode('utf-8')
+        return contributor.decode('utf-8')
     else:
         return None
 
@@ -180,6 +184,14 @@ def extract_contributor_id(contributor, **kwargs):
             return {'username':elem.text, 'id': elem.text}
         else:
             return None
+
+
+def parse_title(title):
+    if type(title.text) == type('str'):
+        title = title.text.decode('utf-8')
+    else:
+        title = title.text
+    return title
 
 
 def output_editor_information(revisions, page, bots, rts):
@@ -282,7 +294,7 @@ def parse_dumpfile(tasks, rts, lock):
             namespace = parse_article(title, ns)
             if namespace != False:
                 article_id = page.find('id').text
-                title = page.find('title').text
+                title = parse_title(title)
                 revisions = page.findall('revision')
                 revisions = parse_comments(rts, revisions, remove_numeric_character_references)
                 output = output_editor_information(revisions, article_id, bot_ids, rts)
@@ -297,7 +309,10 @@ def parse_dumpfile(tasks, rts, lock):
         fh2.close()
         print 'Closing %s...' % (os.path.join(location, filename))
         print 'Total pages: %s' % total
-        print 'Pages processed: %s (%s)' % (processed, processed / total)
+        try:
+            print 'Pages processed: %s (%s)' % (processed, processed / total)
+        except ZeroDivisionError:
+            print 'Pages processed: %s' % processed
 
     return True
 
@@ -312,6 +327,7 @@ def group_observations(obs):
         id = o[0]
         if id not in d:
             d[id] = []
+        #if len(o) == 6:
         d[id].append(o)
     return d
 
@@ -319,7 +335,8 @@ def group_observations(obs):
 def write_output(observations, filehandles, lock, rts):
     observations = group_observations(observations)
     for obs in observations:
-        lock.acquire() #lock the write around all edits of an editor for a particular page
+        #lock the write around all edits of an editor for a particular page
+        lock.acquire()
         try:
             for i, o in enumerate(observations[obs]):
                 if i == 0:

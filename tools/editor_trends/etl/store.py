@@ -68,7 +68,7 @@ class Storer(consumers.BaseConsumer):
                     date = text_utils.convert_timestamp_to_datetime_utc(line[1])
                     article_id = int(line[2])
                     username = line[3].encode(self.rts.encoding)
-                    ns = int(line[4])
+                    ns = int(line[5])
                     value = {'date': date,
                              'article': article_id,
                              'username': username,
