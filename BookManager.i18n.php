@@ -22,11 +22,19 @@ $messages['en'] = array(
 	'printversion-inexistent-book' => 'Book not found. Please enter the name of an existing book to get its print version.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'bookmanager-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'bookmanager-desc' => 'Інструмэнты для кнігаў',
 	'printversion' => 'Вэрсія для друку',
 	'printversion-desc' => 'Стварае [[Special:PrintVersion|вэрсіі кніг для друку]]',
 	'printversion-no-book' => 'Калі ласка, увядзіце назву кнігі, каб атрымаць яе вэрсію для друку.',
@@ -47,6 +55,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'bookmanager-desc' => 'Alati za knjige',
 	'printversion' => 'Verzija za štampanje',
 	'printversion-desc' => 'Pravi [[Special:PrintVersion|verziju za štampanje]] knjige',
 	'printversion-no-book' => 'Molimo unesite ime knjige da dobijete njenu verziju za štampanje',
@@ -85,8 +94,10 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author IAlex
  */
 $messages['fr'] = array(
+	'bookmanager-desc' => 'Outils pour les livres',
 	'printversion' => 'Version imprimable',
 	'printversion-desc' => 'Génère une [[Special:PrintVersion|version imprimable]] d’un livre',
 	'printversion-no-book' => 'Veuillez entrer le nom d’un livre pour obtenir sa version imprimée.',
@@ -128,6 +139,7 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'bookmanager-desc' => 'Instrumentos pro libros',
 	'printversion' => 'Version pro impression',
 	'printversion-desc' => 'Genera un [[Special:PrintVersion|version pro impression]] de un libro',
 	'printversion-no-book' => 'Per favor entra le nomine de un libro pro obtener su version pro impression.',
@@ -138,6 +150,7 @@ $messages['ia'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'bookmanager-desc' => 'Wärkzüsh för Bööscher',
 	'printversion' => 'Dröck_Version',
 	'printversion-desc' => 'Määd en [[Special:PrintVersion|Dröck_Version]] vun enem Booch.',
 	'printversion-no-book' => 'Bes esu jood un donn dä  Name vun enem Booch aanjävve, öm aan däm sing Dröck_Version ze kumme.',
@@ -159,6 +172,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'bookmanager-desc' => 'Алатки за книги',
 	'printversion' => 'Верзија за печатење',
 	'printversion-desc' => 'Создава [[Special:PrintVersion|верзија за печатење]] на книга',
 	'printversion-no-book' => 'Внесете го името на книгата за да ја добиете верзијата за печатење',
@@ -169,10 +183,22 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'bookmanager-desc' => 'Hulpmiddelen voor boeken',
 	'printversion' => 'Afdrukbare versie',
 	'printversion-desc' => 'Maakt een [[Special:PrintVersion|afdrukbare versie]] van een boek',
 	'printversion-no-book' => 'Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
 	'printversion-inexistent-book' => 'Het boek is niet aangetroffen. Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'bookmanager-desc' => 'Utiss për lìber',
+	'printversion' => 'Version dë stampa',
+	'printversion-desc' => "A génera na [[Special:PrintVersion|vërsion dë stampa]] d'un lìber",
+	'printversion-no-book' => "Për piasì ansëriss ël nòm d'un lìber për pijé la soa vërsion dë stampa.",
+	'printversion-inexistent-book' => "Lìber pa trovà. Për piasì ansëriss ël nòm d'un lìber esistent për pijé soa vërsion dë stampa.",
 );
 
 /** Portuguese (Português)
@@ -187,10 +213,22 @@ $messages['pt'] = array(
 	'printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Raylton P. Sousa
+ */
+$messages['pt-br'] = array(
+	'bookmanager-desc' => 'Ferramentas para livros',
+	'printversion' => 'Versão para impressão',
+	'printversion-desc' => 'Gera uma [[Special:PrintVersion|versão para impressão]] de um livro',
+	'printversion-no-book' => 'Por favor informe o nome de um livro para obter sua versão para impressão.',
+	'printversion-inexistent-book' => 'Livro não encontrado. Por favor informe o nome de um livro existente para obter sua versão para impressão.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'bookmanager-desc' => 'Книжные инструменты',
 	'printversion' => 'Версия для печати',
 	'printversion-desc' => 'Создает [[Special:PrintVersion|печатную версию]] книги',
 	'printversion-no-book' => 'Пожалуйста, введите название книги, чтобы получить её печатную версию.',
@@ -201,6 +239,7 @@ $messages['ru'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'bookmanager-desc' => 'Mga kasangkapan para sa mga aklat',
 	'printversion' => 'Bersyong maililimbag',
 	'printversion-desc' => 'Gumagawa ng isang [[Special:PrintVersion|bersyong naililimbag]] ng isang aklat',
 	'printversion-no-book' => 'Pakipasok ang pangalan ng isang aklat upang makuha ang bersyong maililimbag.',
