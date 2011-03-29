@@ -580,16 +580,26 @@ Evit enrollañ ur sontadeg, kasit anezhi ha na respontit da goulenn kinnig ebet.
  * @author CERminator
  */
 $messages['bs'] = array(
+	'qp_desc' => 'Omogućuje pravljenje glasanja',
+	'qp_desc-sp' => '[[Special:PollResults|Posebna stranica]] za pregled rezultata glasanja',
 	'qp_result_NA' => 'Nije odgovoreno',
 	'qp_result_error' => 'Sintaksna greška',
 	'qp_vote_button' => 'Glasaj',
 	'qp_vote_again_button' => 'Promijeni svoj glas',
 	'qp_polls_list' => 'Prikaži sva glasanja',
 	'qp_users_list' => 'Prikaži sve korisnike',
+	'qp_browse_to_poll' => 'Pregledaj po $1',
+	'qp_browse_to_user' => 'Pregledaj po $1',
 	'qp_source_link' => 'Izvor',
 	'qp_stats_link' => 'Statistika',
 	'qp_users_link' => 'Korisnici',
+	'qp_voice_link' => 'Korisnički glas',
+	'qp_voice_link_inv' => 'Korisnički glas?',
+	'qp_user_polls_link' => 'Učestvovao u $1 {{PLURAL:$1|glasanju|glasanja}}',
+	'qp_user_missing_polls_link' => 'Bez učešća',
 	'qp_not_participated_link' => 'Nije učestvovao',
+	'qp_order_by_username' => 'Pregled po korisničkim imenima',
+	'qp_order_by_polls_count' => 'Pregled po broju glasova',
 );
 
 /** Czech (Česky) */
