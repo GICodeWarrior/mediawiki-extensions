@@ -142,10 +142,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  */
 $messages['he'] = array(
-	'conditionalshowsection-desc' => 'הוספת התגית cshow כדי להציג/להסתיר, לפי תנאים, פרק בטקסט ויקי',
+	'conditionalshowsection-desc' => 'הוספת התג cshow כדי להציג או להסתיר לפי תנאים פרק בטקסט ויקי',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
