@@ -506,13 +506,14 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author StuB
  * @author YaronSh
  */
 $messages['he'] = array(
 	'chemicalsources' => 'יסודות כימיים',
-	'chemicalsource-desc' => 'הוספת התגית <nowiki><chemform></nowiki> בשביל נוסחאות כימיות',
+	'chemicalsource-desc' => 'הוספת התג <nowiki><chemform></nowiki> בשביל נוסחאות כימיות',
 	'chemicalsources-desc' => '[[Special:ChemicalSources|דף מיוחד]] למקורות כימיים',
 	'chemFunctions_ListPage' => 'יסודות כימיים',
 	'chemFunctions_DataList' => 'להלן קישורים לאתרים (באנגלית) שעשויים לספק מידע על החומר הכימי שאתם מחפשים:<br /><br />
