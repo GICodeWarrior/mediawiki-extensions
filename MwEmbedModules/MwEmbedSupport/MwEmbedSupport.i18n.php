@@ -94,11 +94,12 @@ $messages['arc'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'mwe-loading' => 'загрузка …',
 	'mwe-error_load_lib' => 'Памылка: JavaScript $1 не даступны альбо не вызначае $2',
-	'mwe-apiproxy-setup' => 'Устаноўка API-проксі',
+	'mwe-apiproxy-setup' => 'Налада API-проксі',
 	'mwe-load-drag-item' => 'Загрузка перанесенага элемэнту',
 	'mwe-ok' => 'Добра',
 	'mwe-cancel' => 'Адмяніць',
