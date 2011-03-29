@@ -1209,6 +1209,9 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Martorell
+ * @author Solde
+ * @author Toniher
  */
 $messages['bs'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 od $2',
@@ -1231,13 +1234,16 @@ $messages['bs'] = array(
 	'mwe-filesource' => 'Izvor:',
 	'mwe-filestatus' => 'Status autorskih prava:',
 	'mwe-loading-add-media-wiz' => 'Učitavam čarobnjak za dodavanje medija',
-	
 	'mwe-imported_from' => '$1 uvezeno iz [$2 $3]. Pogledajte original ($4 stranica izvora) za više informacija.',
+	'mwe-import-description' => '$1, uvezeno iz $2',
 	'mwe-select_file' => 'Odaberite datoteku',
+	'mwe-select_ownwork' => 'Postavljam potpuno moje vlastito djelo, i licenciram ga pod:',
+	'mwe-license_cc-by-sa' => 'Creative Commons Dijeljenje pod istim uslovima (3.0)',
 	'mwe-upload' => 'Postavi datoteku',
 	'mwe-destfilename' => 'Ime odredišne datoteke:',
 	'mwe-summary' => 'Sažetak',
 	'mwe-date-of-work' => 'Datum rada',
+	'mwe-error_not_loggedin' => 'Izgleda da niste prijavljeni ili nemate prava za postavljanje.',
 	'mwe-link-login' => 'prijava',
 	'mwe-watch-this-file' => 'Prati ovu datoteku',
 	'mwe-ignore-any-warnings' => 'Zanemari sva upozorenja',
@@ -1277,135 +1283,6 @@ $messages['bs'] = array(
 	'mwe-ftype-unk' => 'Nepoznat format datoteke',
 	'mwe-am-kaltura-title' => 'Kaltura pretraga (svi izvori)',
 	'mwe-am-this_wiki-title' => 'Ovaj wiki',
-	);
-
-/** Catalan (Català)
- * @author Martorell
- * @author Solde
- * @author Toniher
- */
-$messages['ca'] = array(
-	'mwe-upload-stats-fileprogress' => '$1 de $2',
-	'mwe-upload-unknown-size' => 'Mida desconeguda',
-	'mwe-cancel-confim' => 'Esteu segur que ho voleu cancel·lar?',
-	'mwe-successfulupload' => "La càrrega s'ha realitzat amb èxit",
-	'mwe-uploaderror' => 'Error de càrrega',
-	'mwe-uploadwarning' => 'Avís de càrrega',
-	'mwe-unknown-error' => 'Error desconegut:',
-	'mwe-return-to-form' => 'Torna al formulari',
-	'mwe-file-exists-duplicate' => 'Aquest fitxer és un duplicat del fitxer següent:',
-	'mwe-fileexists' => 'Ja existeix un fitxer amb aquest nom. Comproveu <b><code>$1</code></b> si no esteu segur que voleu canviar-ho.',
-	'mwe-fileexists-thumb' => 'El fitxer ja existeix',
-	'mwe-ignorewarning' => "Ignora l'avís i desa el fitxer igualment",
-	'mwe-file-thumbnail-no' => 'El nom del fitxer comença amb <b><code>$1</code></b>',
-	'mwe-go-to-resource' => 'Vés a la pàgina de recursos',
-	'mwe-upload-misc-error' => 'Error de càrrega desconegut',
-	'mwe-wgfogg_warning_bad_extension' => 'Heu seleccionat un fitxer amb una extensió no implementada (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">més informació</a>).',
-	'mwe-thumbnail-more' => 'Augmenta',
-	'mwe-filesource' => 'Font:',
-	'mwe-filestatus' => 'Estat del copyright:',
-	'mwe-loading-add-media-wiz' => "S'està carregant l'auxiliar d'addició de fitxers multimèdia",
-	
-	
-	
-	'mwe-imported_from' => "S'ha importat $1 de [$2 $3].
-Vegeu la [$4 pàgina de recursos] original per a més informació.",
-	'mwe-import-description' => '$1, importat de $2',
-	'mwe-select_file' => 'Seleccioneu un fitxer',
-	'mwe-select_ownwork' => 'Estic penjat una obra pròpia, i ho faig sota la llicència:',
-	'mwe-license_cc-by-sa' => 'Creative Commons Compartir-Igual (3.0)',
-	'mwe-upload' => 'Carrega un fitxer',
-	'mwe-destfilename' => 'Nom del fitxer de destinació',
-	'mwe-summary' => 'Resum',
-	'mwe-date-of-work' => "Data de l'obra",
-	'mwe-error_not_loggedin' => 'No sembla que hàgiu iniciat una sessió, o bé no teniu privilegis de càrrega.',
-	'mwe-error-not-loggedin-file' => "No sembla que hàgiu iniciat una sessió, o bé s'ha produït un error en el programari. Podeu optar per un $1 i tornar-ho a provar",
-	'mwe-link-login' => 'inici de sessió',
-	'mwe-watch-this-file' => 'Vigila el fitxer',
-	'mwe-ignore-any-warnings' => 'Ignora tots els avisos',
-	'mwe-i-would-like-to' => "M'agradaria",
-	'mwe-upload-own-file' => 'Carrega el meu treball propi a $1',
-	'mwe-upload-not-my-file' => 'Carrega els fitxers multimèdia que no són obra pròpia a $1',
-	'mwe-upload-once-done' => "$1.
-Una vegada s'hagi acabat la pujada, $2",
-	'mwe-upload-in-new-win-link' => 'puja en la nova finestra o pestanya',
-	'mwe-upload-refresh' => 'actualitzeu la vostra llista de càrrega',
-	'mwe-ie-inline-upload' => "La pujada en línia està inhabilitada a l'Internet Explorer.
-Podeu $1, i llavors $2.",
-	'mwe-upload-in-progress' => "S'està realitzant la càrrega (no tanqueu aquesta finestra)",
-	'mwe-uploaded-status' => 'Carregat',
-	'mwe-transcoded-status' => 'Transcodificat',
-	'mwe-uploaded-time-remaining' => 'Temps restant: $1',
-	'mwe-upload-done' => 'La vostra càrrega ja <i>hauria de ser</i> accessible.',
-	'mwe-add_media_wizard' => 'Afegeix un auxiliar de mitjans',
-	'mwe-media_search' => 'Cerca de mitjans',
-	'mwe-am-box_layout' => 'Format de la caixa',
-	'mwe-am-list_layout' => 'Format de la llista',
-	'mwe-am-results_desc' => 'Resultats $1 a $2',
-	'mwe-am-results_desc_total' => 'Resultats $1 a $2 de $3',
-	'mwe-am-results_next' => 'següent',
-	'mwe-am-results_prev' => 'anterior',
-	'mwe-am-no_results' => 'No hi ha cap resultat de cerca de <b>$1</b>',
-	'mwe-upload_tab' => 'Carrega el fitxer',
-	'mwe-am-layout' => 'Format:',
-	'mwe-am-resource_edit' => 'Edita el recurs: $1',
-	'mwe-resource_description_page' => 'Pàgina de descripció del recurs',
-	'mwe-link' => 'enllaç',
-	'mwe-am-do_insert' => 'Fes un inserció',
-	'mwe-cc_by_title' => 'Atribució',
-	'mwe-cc_nc_title' => 'No comercial',
-	'mwe-cc_nd_title' => 'No obres derivades',
-	'mwe-cc_sa_title' => 'Comparteix igual',
-	'mwe-cc_pd_title' => 'Domini públic',
-	'mwe-unknown_license' => 'Llicència desconeguda',
-	'mwe-no-import-by-url' => "Aquest usuari o wiki <b>no pot</b> no pot importar actius d'URL remots.
-<p>Cal que inicieu una sessió?</p>
-<p>Teniu el permís upload_by_url definit?
-Té el wiki $1 habilitat?</p>",
-	'mwe-results_from' => 'Resultats de $1',
-	'mwe-missing_desc_see_source' => "A aquest actiu li manca una descripció.
-Comproveu-ne la [$1 font] i ajudeu a descriure'l.",
-	'mwe-am-config_error' => "Error de configuració de l'auxiliar d'addició multimèdia: $1",
-	'mwe-your-recent-uploads-to' => 'Les vostres càrregues recents a $1',
-	'mwe-no_recent_uploads' => 'No hi ha cap càrrega recent',
-	'mwe-not-logged-in-uploads' => 'Pot ser que no hàgiu iniciat una sessió i, per això, no es poden mostrar les pujades més recents.
-$1 inicieu una sessió i $2',
-	'mwe-ie-eye-permision' => "Si feu servir l'Internet Exploreu i heu iniciat una sessió, pot caler que ajusteu els paràmetres de privadesa",
-	'mwe-upload-a-file' => 'Carrega un fitxer nou',
-	'mwe-upload-a-file-to' => 'Carrega un fitxer nou a $1',
-	'mwe-resource_page_desc' => 'Descripció de la pàgina de recursos:',
-	'mwe-edit_resource_desc' => 'Edita el text wiki de la descripció del recurs:',
-	'mwe-local_resource_title' => 'Títol del recurs local:',
-	'mwe-watch_this_page' => 'Vigila la pàgina',
-	'mwe-do_import_resource' => 'Importa el recurs',
-	'mwe-update_preview' => 'Actualització de la pàgina de recursos',
-	'mwe-return-search-results' => 'Torna als resultats de la cerca',
-	'mwe-importing_asset' => "Importació de l'actiu",
-	'mwe-preview_insert_resource' => "Previsualitza l'inserció del recurs: $1",
-	'mwe-do-more-modification' => 'Fes més modificació',
-	'mwe-checking-resource' => "S'està comprovant el recurs",
-	'mwe-resource-needs-import' => 'Cal importar el recurs $1 a $2',
-	'mwe-warning-upload-to-commons' => "$1 us recomana que feu càrregues al Wikimedia Commons, només carregueu-ho localment després d'haver llegit $2",
-	'mwe-local-upload-policy-link' => 'política de càrrega local',
-	'mwe-ftype-svg' => 'Fitxer de vectors SVG',
-	'mwe-ftype-jpg' => "Fitxer d'imatge JPEG",
-	'mwe-ftype-png' => "Fitxer d'imatge PNG",
-	'mwe-ftype-oga' => "Fitxer d'àudio Ogg",
-	'mwe-ftype-ogg' => 'Fitxer de vídeo Ogg',
-	'mwe-ftype-unk' => 'Format de fitxer desconegut',
-	'mwe-am-commons' => 'Wikimedia Commons, un arxiu de contingut multimèdia (imatges, so i clips de vídeo) de llicència lliure',
-	'mwe-am-kaltura-title' => 'Cerca a Kaltura (totes les fonts)',
-	'mwe-am-kaltura' => 'Cerca agregada de Kaltura de diferents mitjans amb llicències lliure a través de diferents proveïdors de cerca',
-	'mwe-am-this_wiki-title' => 'Aquest wiki',
-	'mwe-am-this_wiki-desc' => 'Aquest wiki local',
-	'mwe-am-archive_org-desc' => "L'Internet Archive, una biblioteca digital d'artefactes culturals",
-	'mwe-am-flickr-desc' => 'Flickr.com, un espai en línia per a la compartició de fotos',
-	'mwe-am-metavid-desc' => 'Metavid.org, un arxiu comunitari dels procediments',
-	'mwe-am-search-timeout' => 'La sol·licitud de cerca no ha acabat. El servidor podria estar patint una alta càrrega. Podeu mirar de provar-ho de nou més tard.',
-	'mwe-upload-transcoded-status' => 'Transcodificat',
-	'mwe-upload-transcode-in-progress' => 'Transcodificació i càrrega en procés (no tanqueu aquesta finestra)',
-	'mwe-upload-multi' => 'Carrega {{PLURAL:$1|un fitxer|uns fitxers}}',
-	'mwe-review-upload' => 'Reviseu {{PLURAL:$1|la càrrega|les càrregues}} de fitxer',
 );
 
 /** Catalan (Català)

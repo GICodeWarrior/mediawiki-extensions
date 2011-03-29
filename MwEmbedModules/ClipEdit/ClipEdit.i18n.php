@@ -135,6 +135,7 @@ $messages['ba'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'mwe-clipedit-crop' => 'Выразаць частку выявы',
@@ -145,7 +146,7 @@ $messages['be-tarask'] = array(
 	'mwe-clipedit-preview_insert' => 'Папярэдні прагляд устаўкі',
 	'mwe-clipedit-cancel_image_insert' => 'Адмяніць устаўку',
 	'mwe-clipedit-sc_attributes' => 'Рэдагаваньне дэталяў кліпу',
-	'mwe-clipedit-sc_inoutpoints' => 'Устаноўка пунктаў увода-вываду',
+	'mwe-clipedit-sc_inoutpoints' => 'Налада пунктаў увода-вываду',
 	'mwe-clipedit-sc_overlays' => 'Накладаньні',
 	'mwe-clipedit-sc_audio' => 'Аўдыё-кантроль',
 	'mwe-clipedit-sc_duration' => 'Працягласьць',
@@ -154,7 +155,7 @@ $messages['be-tarask'] = array(
 	'mwe-clipedit-edit_properties' => 'Рэдагаваць уласьцівасьці',
 	'mwe-clipedit-other_properties' => 'Іншыя ўласьцівасьці',
 	'mwe-clipedit-resource_page' => 'Старонка рэсурсу:',
-	'mwe-clipedit-set_in_out_points' => 'Устанавіць пункты ўвода-вываду',
+	'mwe-clipedit-set_in_out_points' => 'Наладзіць пункты ўвода-вываду',
 	'mwe-clipedit-start_time' => 'Час пачатку',
 	'mwe-clipedit-end_time' => 'Час сканчэньня',
 	'mwe-clipedit-preview_inout' => 'Праглядзець пункты ўводу-вываду',
