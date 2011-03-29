@@ -178,6 +178,7 @@ $messages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'duplicator' => 'Капіяваць старонку',
@@ -185,7 +186,7 @@ $messages['be-tarask'] = array(
 	'duplicator-toolbox' => 'Капіяваць гэтую старонку',
 	'duplicator-header' => 'Гэтая старонка дазваляе скончыць капіяваньне старонкі і стварыць незалежную копію ўсёй гісторыі.
 Гэта карысна для разгалінаваньня старонкі, і г.д.',
-	'duplicator-options' => 'Устаноўкі',
+	'duplicator-options' => 'Налады',
 	'duplicator-source' => 'Крыніца:',
 	'duplicator-dest' => 'Мэтавая старонка:',
 	'duplicator-dotalk' => 'Капіяваць старонку абмеркаваньня (калі магчыма)',

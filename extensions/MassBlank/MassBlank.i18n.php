@@ -110,8 +110,17 @@ Merkañ ar c'homlec'h IP pe anv an implijer a-benn kaout roll ar pajennoù da we
  */
 $messages['bs'] = array(
 	'massblank' => 'Masovno pražnjenje',
+	'massblank-desc' => 'Daje administratorima mogućnost [[Special:MassBlank|masovnog pražnjenja]] stranica',
+	'massblank-nopages' => 'Nema novih stranica od korisnika [[Special:Contributions/$1|$1]] u nedavnim izmjenama.',
+	'massblank-list' => 'Prikazane stranice su nedavno napravljenje od strane [[Special:Contributions/$1|$1]];
+stavite komentar te kliknite na dugme da bi ste ih ispraznili.',
+	'massblank-defaultreason' => 'Masovno pražnjenje stranica koje je dodao $1',
+	'massblank-tools' => 'Ovaj alat omogućuje masovno pražnjenje stranica koje je nedavno dodao određeni korisnik ili IP adresa. 
+Unesite korisničko ime ili IP adresu za izlistavanje stranica koje se trebaju isprazniti.',
 	'massblank-submit-user' => 'Idi',
+	'massblank-submit-blank' => 'Isprazni odabrane',
 	'massblank-blankcomment' => 'Razlog:',
+	'right-massblank' => 'Masovno pražnjenje stranica',
 );
 
 /** Catalan (Català)

@@ -73,9 +73,10 @@ $messages['ar'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'ts-kml-on-ol-options' => 'Устаноўкі',
+	'ts-kml-on-ol-options' => 'Налады',
 	'ts-kml-on-ol-languages' => 'Мовы',
 	'ts-kml-on-ol-thumbnails' => 'Мініятуры',
 	'ts-kml-on-ol-help' => 'Дапамога',

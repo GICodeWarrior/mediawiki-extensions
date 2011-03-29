@@ -3306,7 +3306,14 @@ $messages['lt'] = array(
  * @author Dark Eagle
  */
 $messages['ltg'] = array(
+	'contribstats-day' => 'Dīna',
+	'contribstats-month' => 'Mieness',
+	'contribstats-contributions' => 'Pazīdu',
+	'contribstats-week' => 'Nedeļa',
+	'contribstats-donations' => 'Pazīdi',
 	'contribstats-template' => 'Taiss',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-time-zone' => 'Laika zona:',
 );
 
 /** Latvian (Latviešu)

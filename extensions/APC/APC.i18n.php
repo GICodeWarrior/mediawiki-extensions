@@ -747,6 +747,7 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'apc' => 'Інфармацыя пра APC',
@@ -816,7 +817,7 @@ $messages['be-tarask'] = array(
 	'viewapc-display-mem_size' => 'Памер',
 	'viewapc-display-stored-value' => 'Захаванае значэньне',
 	'viewapc-display-too-big' => "''Зьмест занадта вялікі для паказу.''",
-	'viewapc-ls-options-legend' => 'Устаноўкі',
+	'viewapc-ls-options-legend' => 'Налады',
 	'viewapc-ls-options' => 'Фільтар: $1 Сартыроўка: $2$3$4 Пошук: $5 $6',
 	'viewapc-ls-submit' => 'Выканаць!',
 	'viewapc-ls-header-name' => 'Назва',

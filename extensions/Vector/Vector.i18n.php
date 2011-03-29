@@ -194,7 +194,7 @@ $messages['be-tarask'] = array(
 	'vector-editwarning-preference' => 'Папярэджваць мяне, калі я буду пакідаць старонку рэдагаваньня зь незахаванымі зьменамі',
 	'vector-simplesearch-search' => 'Пошук',
 	'vector-simplesearch-containing' => 'утрымлівае...',
-	'vector-noexperiments-preference' => 'Не прапанаваць экспэрымэнтальныя магчымасьці',
+	'vector-noexperiments-preference' => 'Не прапаноўваць экспэрымэнтальныя магчымасьці',
 );
 
 /** Bulgarian (Български)

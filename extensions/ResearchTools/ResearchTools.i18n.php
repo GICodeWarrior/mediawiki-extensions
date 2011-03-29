@@ -45,6 +45,18 @@ $messages['br'] = array(
 	'researchtools-page-prefs' => 'Stadegoù war ar penndibaboù',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'researchtools' => 'Alati za istraživanje',
+	'researchtools-desc' => 'Skup alata koji su korisni za provođenje korisničkih istraživačkih studija',
+	'researchtools-page-dashboard' => 'Stranica za pregled',
+	'researchtools-page-surveys' => 'Odgovori iz anketa',
+	'researchtools-page-clicks' => 'Slijeđenje klikanja',
+	'researchtools-page-prefs' => 'Statistike Postavki',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

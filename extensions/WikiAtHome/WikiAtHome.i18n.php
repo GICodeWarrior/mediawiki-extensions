@@ -253,6 +253,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'wah-desc' => 'Дазваляе разьмяркаванньне працы перакадыроўкі відэа да кліентаў праз выкарыстаньне firefogg.',
@@ -272,7 +273,7 @@ $messages['be-tarask'] = array(
 	'wah-loading' => 'загрузка інтэрфэйсу Wiki@Home ...',
 	'wah-menu-jobs' => 'Заданьні',
 	'wah-menu-stats' => 'Статыстыка',
-	'wah-menu-pref' => 'Устаноўкі',
+	'wah-menu-pref' => 'Налады',
 	'wah-lookingforjob' => 'Пошук заданьняў ...',
 	'wah-start-on-visit' => 'Запускаць Wiki@Home у любы час, калі я наведваю гэты сайт.',
 	'wah-jobs-while-away' => 'Запускаць заданьні толькі пасьля таго, як я не карыстаюся браўзэрам болей 20 хвілінаў.',
