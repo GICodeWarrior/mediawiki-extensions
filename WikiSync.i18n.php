@@ -111,6 +111,7 @@ $messages['af'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'wikisync' => 'Сынхранізацыя вікі',
@@ -131,7 +132,7 @@ $messages['be-tarask'] = array(
 	'wikisync_storing_password_warning' => 'Захаваньне паролю аддаленай вікі небясьпечнае, таму не рэкамэндуецца',
 	'wikisync_synchronization_button' => 'Сынхранізаваць',
 	'wikisync_scheduler_log' => 'Журнал плянавальніка',
-	'wikisync_scheduler_setup' => 'Устаноўкі плянавальніка',
+	'wikisync_scheduler_setup' => 'Налады плянавальніка',
 	'wikisync_scheduler_turn_on' => 'Уключыць плянавальнік',
 	'wikisync_scheduler_switch_direction' => 'Аўтаматычна зьмяняць накірунак сынхранізацыі',
 	'wikisync_scheduler_time_interval' => 'Час між аўтаматычнымі сынхранізацыямі (у хвілінах)',
