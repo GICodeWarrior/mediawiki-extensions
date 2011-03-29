@@ -515,6 +515,7 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'openid-desc' => 'Уваход ў {{GRAMMAR:вінавальны|{{SITENAME}}}} з дапамогай [http://openid.net/ OpenID], а так сама ў іншыя сайты, якія падтрымліваюць OpenID з вікі-рахунка',
@@ -592,7 +593,7 @@ $messages['be-tarask'] = array(
 Вы ня зможаце ўвайсьці ў сыстэму без OpenID.',
 	'openiddelete-sucess' => 'OpenID быў пасьпяхова выдалены з Вашага рахунку.',
 	'openiddelete-error' => 'Адбылася памылка пад час выдаленьня OpenID з Вашага рахунку.',
-	'openid-prefstext' => 'Устаноўкі [http://openid.net/ OpenID]',
+	'openid-prefstext' => 'Налады [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Хаваць Ваш адрас OpenID на Вашай старонцы ўдзельніка, калі Вы ўвайшлі з дапамогай OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Абнаўляць наступную інфармацыю з OpenID кожны раз, калі я уваходжу ў сыстэму:',
 	'openid-urls-desc' => 'OpenID зьвязаныя з Вашым рахункам:',
