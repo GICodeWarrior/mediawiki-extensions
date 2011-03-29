@@ -19,7 +19,7 @@ __version__ = '0.1'
 
 
 
-def burnout(var, editor, **kwargs):
+def taxonomy_burnout(var, editor, **kwargs):
     new_wikipedian = editor['new_wikipedian']
     edits = editor['monthly_edits']
     

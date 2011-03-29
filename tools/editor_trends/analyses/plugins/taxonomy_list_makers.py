@@ -17,7 +17,7 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
-def list_makers(var, editor, **kwargs):
+def taxonomy_list_makers(var, editor, **kwargs):
     """
     == List makers ==
     Any editor who makes more than 10 mainspace edits a month to articles with titles that begin with "List of..."
