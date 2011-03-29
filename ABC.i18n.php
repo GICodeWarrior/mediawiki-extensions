@@ -398,11 +398,12 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'abc-desc' => 'הוספת תגית <code>&lt;abc&gt;</code> למוסיקה בפורמט ABC',
+	'abc-desc' => 'הוספת תג <code>&lt;abc&gt;</code> למוזיקה בתסדיר ABC',
 	'abcdownload' => 'הורדה:',
 );
 
