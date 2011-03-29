@@ -479,6 +479,7 @@ $messages['be'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'signdocument' => 'Падпісаньне дакумэнту',
@@ -528,7 +529,7 @@ $1',
 	'sign-viewfield-phone' => 'Тэлефон',
 	'sign-viewfield-email' => 'Электронная пошта',
 	'sign-viewfield-age' => 'Узрост',
-	'sign-viewfield-options' => 'Устаноўкі',
+	'sign-viewfield-options' => 'Налады',
 	'sign-viewsigs-intro' => 'Ніжэй паказаны подпісы сабраныя за <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen' => 'Цяпер падпісаньне ўключанае для гэтага дакумэнта.',
 	'sign-sigadmin-close' => 'Адключыць падпісаньне',
