@@ -252,14 +252,12 @@
 			var provider =  $( embedPlayer).attr( 'data-mwprovider');
 			
 			var iframeUrl = false;
-			var appendJs = ( mw.getConfig( 'Mw.AppendWithJS' ) )? mw.getConfig( 'Mw.AppendWithJS' ) + '&' : '';
 			if( mw.getConfig('wgServer') && mw.getConfig('wgArticlePath') ){
 				iframeUrl =  mw.getConfig('wgServer') + 
 					mw.getConfig('wgArticlePath').replace( /\$1/, 'File:' + 
 						unescape( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/ , '' ) ) +
-					'?' + appendJs + 'embedplayer=yes';
+					'?' + 'embedplayer=yes';
 			}
-			
 			callback( iframeUrl );
 		});
 	};
