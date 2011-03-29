@@ -441,8 +441,6 @@ def parse_xml(fh):
         elif event == 'end' and elem.tag == '%s%s' % (namespace, 'page'):
             yield article
             elem.clear()
-            for elem in article.values():
-                elem.clear()
             article = {}
             article['revisions'] = []
             id = False
@@ -522,7 +520,7 @@ def launcher(function, path, dataset, storage, processors):
 
 
 def debug():
-    path = '/media/wikipedia_dumps/batch2/'
+    path = '/mnt/wikipedia_dumps/batch2/'
     files = file_utils.retrieve_file_list(path, 'bz2')
     for file in files:
         filename = os.path.join(path, file)
@@ -531,7 +529,7 @@ def debug():
 
 def launcher_training():
     # launcher for creating training data
-    path = '/media/wikipedia_dumps/batch2/'
+    path = '/mnt/wikipedia_dumps/batch2/'
     function = create_variables
     storage = 'csv'
     dataset = 'training'
