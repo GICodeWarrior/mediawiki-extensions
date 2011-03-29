@@ -34,7 +34,7 @@ from utils import log
 from utils import timer
 from database import db
 from etl import downloader
-from etl import extracter
+from etl import enricher
 from etl import store
 from etl import sort
 from etl import transformer
@@ -187,7 +187,6 @@ def init_args_parser():
             %s' % ''.join([f + ',\n' for f in rts.file_choices]),
         default='stub-meta-history.xml.gz')
 
-
     return project, language, parser
 
 
@@ -236,22 +235,20 @@ def config_launcher(rts, logger):
         rts.input_location = config.get('file_locations', 'input_location')
 
 
-
-
-def downloader_launcher(properties, logger):
+def downloader_launcher(rts, logger):
     '''
     This launcher calls the dump downloader to download a Wikimedia dump file.
     '''
     print 'Start downloading'
     stopwatch = timer.Timer()
-    log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='start')
-    res = downloader.launcher(properties, logger)
+    log.log_to_mongo(rts, 'dataset', 'download', stopwatch, event='start')
+    res = downloader.launcher(rts, logger)
     stopwatch.elapsed()
-    log.log_to_mongo(properties, 'dataset', 'download', stopwatch, event='finish')
+    log.log_to_mongo(rts, 'dataset', 'download', stopwatch, event='finish')
     return res
 
 
-def extract_launcher(properties, logger):
+def extract_launcher(rts, logger):
     '''
     The extract launcher is used to extract the required variables from a dump
     file. If the zip file is a known archive then it will first launch the
@@ -259,10 +256,10 @@ def extract_launcher(properties, logger):
     '''
     print 'Extracting data from XML'
     stopwatch = timer.Timer()
-    log.log_to_mongo(properties, 'dataset', 'extract', stopwatch, event='start')
-    extracter.launcher(properties)
+    log.log_to_mongo(rts, 'dataset', 'extract', stopwatch, event='start')
+    enricher.launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(properties, 'dataset', 'extract', stopwatch, event='finish')
+    log.log_to_mongo(rts, 'dataset', 'extract', stopwatch, event='finish')
 
 
 def sort_launcher(rts, logger):

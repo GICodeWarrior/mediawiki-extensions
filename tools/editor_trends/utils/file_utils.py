@@ -23,6 +23,8 @@ It provides functions to read / write data to text and binary files, fix markup
 and track error messages.
 '''
 
+import bz2
+import gzip
 import re
 import htmlentitydefs
 import time
@@ -142,8 +144,6 @@ def write_list_to_csv(data, fh, recursive=False, newline=True, format='long', lo
     The calling function is responsible for:
         1) closing the filehandle
     '''
-
-
     tab = False
     wrote_newline = None
     if recursive:
@@ -206,6 +206,16 @@ def create_txt_filehandle(location, name, mode, encoding):
     path = os.path.join(location, filename)
     return codecs.open(path, mode, encoding=encoding)
 
+
+def create_streaming_buffer(path):
+    extension = determine_file_extension(path)
+    if extension == 'gz':
+        fh = gzip.GzipFile(path, 'rb')
+    elif extension == 'bz':
+        fh = bz2.BZ2File(path, 'rb')
+    else:
+        raise exceptions.CompressedFileNotSupported(extension)
+    return fh
 
 def create_binary_filehandle(location, filename, mode):
     path = os.path.join(location, filename)

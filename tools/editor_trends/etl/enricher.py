@@ -18,20 +18,19 @@ __date__ = '2011-02-06'
 __version__ = '0.1'
 
 
-import bz2
 import os
 import hashlib
 import codecs
 import sys
 import datetime
 import progressbar
-from multiprocessing import JoinableQueue, Process, cpu_count, current_process
+from multiprocessing import JoinableQueue, Process, cpu_count, current_process, RLock
 from xml.etree.cElementTree import iterparse, dump
 from collections import deque
 
+
 if '..' not in sys.path:
     sys.path.append('..')
-
 
 try:
     from database import cassandra
@@ -44,7 +43,6 @@ except ImportError:
 from database import db
 from bots import detector
 from utils import file_utils
-import extracter
 
 NAMESPACE = {
     #0:'Main',    
@@ -84,12 +82,13 @@ class Statistics:
 
 
 class Buffer:
-    def __init__(self, storage, id):
+    def __init__(self, storage, id, rts=None, filehandles=None, locks=None):
         assert storage == 'cassandra' or storage == 'mongo' or storage == 'csv', \
             'Valid storage options are cassandra and mongo.'
         self.storage = storage
         self.revisions = {}
         self.comments = {}
+        self.titles = {}
         self.id = id
         self.keyspace_name = 'enwiki'
         self.keys = ['revision_id', 'article_id', 'id', 'namespace',
@@ -97,6 +96,12 @@ class Buffer:
                      'cur_size', 'delta']
         self.setup_storage()
         self.stats = Statistics()
+        if storage == 'csv':
+            self.rts = rts
+            self.lock1 = locks[0] #lock for generic data
+            self.lock2 = locks[1] #lock for comment data
+            self.lock3 = locks[2] #lock for article titles
+            self.filehandles = filehandles
 
     def setup_storage(self):
         if self.storage == 'cassandra':
@@ -108,19 +113,43 @@ class Buffer:
             self.collection = self.db['kaggle']
 
         else:
-            kaggle_file = 'kaggle_%s.csv' % self.id
-            comment_file = 'kaggle_comments_%s.csv' % self.id
-            file_utils.delete_file('', kaggle_file, directory=False)
+            title_file = 'titles.csv'
+            comment_file = 'comments.csv'
+            file_utils.delete_file('', title_file, directory=False)
             file_utils.delete_file('', comment_file, directory=False)
-            self.fh_main = codecs.open(kaggle_file, 'a', 'utf-8')
-            self.fh_extra = codecs.open(comment_file, 'a', 'utf-8')
+            self.fh_titles = codecs.open(title_file, 'a', 'utf-8')
+            self.fh_comments = codecs.open(comment_file, 'a', 'utf-8')
+
+    def get_hash(self, id):
+        '''
+        A very simple hash function based on modulo. The except clause has been 
+        added because there are instances where the username is stored in userid
+        tag and hence that's a string and not an integer. 
+        '''
+        try:
+            return int(id) % self.rts.max_filehandles
+        except ValueError:
+            return sum([ord(i) for i in id]) % self.rts.max_filehandles
+
+    def group_observations(self, revisions):
+        '''
+        This function groups observation by editor id, this way we have to make
+        fewer fileopening calls. 
+        '''
+        data = {}
+        for revision in revisions:
+            id = revision[0]
+            if id not in data:
+                data[id] = []
+            data[id].append(revision)
+        self.revisions = data
 
     def add(self, revision):
         self.stringify(revision)
         id = revision['revision_id']
         self.revisions[id] = revision
         if len(self.revisions) > 10000:
-            print '%s: Emptying buffer %s - buffer size %s' % (datetime.datetime.now(), self.id, len(self.revisions))
+            #print '%s: Emptying buffer %s - buffer size %s' % (datetime.datetime.now(), self.id, len(self.revisions))
             self.store()
             self.clear()
 
@@ -142,6 +171,7 @@ class Buffer:
     def clear(self):
         self.revisions = {}
         self.comments = {}
+        self.titles = {}
 
     def store(self):
         if self.storage == 'cassandra':
@@ -149,19 +179,57 @@ class Buffer:
         elif self.storage == 'mongo':
             print 'insert into mongo'
         else:
-            for revision in self.revisions.itervalues():
+            rows = []
+            for id, revision in self.revisions.iteritems():
                 values = []
                 for key in self.keys:
                     values.append(revision[key].decode('utf-8'))
+                values.insert(0, id)
+                rows.append(values)
+            self.write_output(rows)
 
-                value = '\t'.join(values) + '\n'
-                row = '\t'.join([key, value])
-                self.fh_main.write(row)
+            if self.comments:
+                self.lock2.acquire()
+                try:
+                    for revision_id, comment in self.comments.iteritems():
+                        comment = comment.decode('utf-8')
+                        row = '\t'.join([revision_id, comment]) + '\n'
+                        file_utils.write_list_to_csv(row, fh_comments, lock=self.lock2)
+                except:
+                    pass
+                finally:
+                    self.lock2.release()
 
-            for revision_id, comment in self.comments.iteritems():
-                comment = comment.decode('utf-8')
-                row = '\t'.join([revision_id, comment]) + '\n'
-                self.fh_extra.write(row)
+            elif self.titles:
+                self.lock3.acquire()
+                try:
+                    for article_id, title in self.titles.iteritems():
+                        title = title.decode('utf-8')
+                        row = '\t'.join([article_id, title]) + '\n'
+                        file_utils.write_list_to_csv(row, fh_titles, lock=self.lock3)
+                except:
+                    pass
+                finally:
+                    self.lock3.release()
+
+
+    def write_output(self, data):
+        self.group_observations(data)
+        for editor in self.revisions:
+            #lock the write around all edits of an editor for a particular page
+            self.lock1.acquire()
+            try:
+                for i, revision in enumerate(self.revisions[editor]):
+                    if i == 0:
+                        id = self.get_hash(revision[2])
+                        fh = self.filehandles[id]
+                try:
+                    file_utils.write_list_to_csv(revision, fh, lock=self.lock1)
+                except Exception, error:
+                    print 'Encountered the following error while writing data to %s: %s' % (error, fh)
+            finally:
+                self.lock1.release()
+
 
 
 def extract_categories():
@@ -192,6 +260,34 @@ def extract_categories():
     fh.close()
 
 
+def validate_hostname(address):
+    '''
+    This is not a foolproof solution at all. The problem is that it's really 
+    hard to determine whether a string is a hostname or not **reliably**. This 
+    is a very fast rule of thumb. Will lead to false positives, 
+    but that's life :)
+    '''
+    parts = address.split(".")
+    if len(parts) > 2:
+        return True
+    else:
+        return False
+
+
+def validate_ip(address):
+    parts = address.split(".")
+    if len(parts) != 4:
+        return False
+    parts = parts[:3]
+    for item in parts:
+        try:
+            if not 0 <= int(item) <= 255:
+                return False
+        except ValueError:
+            return False
+    return True
+
+
 def extract_revision_text(revision):
     rev = revision.find('ns0:text')
     if rev != None:
@@ -202,22 +298,22 @@ def extract_revision_text(revision):
         return ''
 
 
-def extract_username(contributor):
-    contributor = contributor.find('ns0:username')
+def extract_username(contributor, xml_namespace):
+    contributor = contributor.find('%s%s' % (xml_namespace, 'username'))
     if contributor != None:
         return contributor.text
     else:
         return None
 
 
-def determine_username_is_bot(contributor, bots):
+def determine_username_is_bot(contributor, bots, xml_namespace):
     '''
     #contributor is an xml element containing the id of the contributor
     @bots should have a dict with all the bot ids and bot names
     @Return False if username id is not in bot dict id or True if username id
     is a bot id.
     '''
-    username = contributor.find('ns0:username')
+    username = contributor.find('%s%s' % (xml_namespace, 'username'))
     if username == None:
         return 0
     else:
@@ -227,23 +323,23 @@ def determine_username_is_bot(contributor, bots):
             return 0
 
 
-def extract_contributor_id(contributor):
+def extract_contributor_id(revision, xml_namespace):
     '''
     @contributor is the xml contributor node containing a number of attributes
     Currently, we are only interested in registered contributors, hence we
     ignore anonymous editors. 
     '''
-    if contributor.get('deleted'):
+    if revision.get('deleted'):
         # ASK: Not sure if this is the best way to code deleted contributors.
         return None
-    elem = contributor.find('ns0:id')
+    elem = revision.find('%s%s' % (xml_namespace, 'id'))
     if elem != None:
         return {'id':elem.text}
     else:
-        elem = contributor.find('ns0:ip')
-        if elem != None and elem.text != None \
-        and validate_ip(elem.text) == False \
-        and validate_hostname(elem.text) == False:
+        elem = revision.find('%s%s' % (xml_namespace, 'ip'))
+        if elem == None or elem.text == None:
+            return None
+        elif validate_ip(elem.text) == False and validate_hostname(elem.text) == False:
             return {'username':elem.text, 'id': elem.text}
         else:
             return None
@@ -280,11 +376,11 @@ def calculate_delta_article_size(size, text):
     return size
 
 
-def parse_contributor(contributor, bots):
-    username = extract_username(contributor)
-    user_id = extract_contributor_id(contributor)
-    bot = determine_username_is_bot(contributor, bots)
-    contributor.clear()
+def parse_contributor(revision, bots, xml_namespace):
+    username = extract_username(revision, xml_namespace)
+    user_id = extract_contributor_id(revision, xml_namespace)
+    bot = determine_username_is_bot(revision, bots, xml_namespace)
+    revision.clear()
     editor = {}
     editor['username'] = username
     editor['bot'] = bot
@@ -333,6 +429,13 @@ def is_revision_reverted(hash_cur, hashes):
     return revert
 
 
+def extract_revision_id(revision_id):
+    if revision_id != None:
+        return revision_id.text
+    else:
+        return None
+
+
 def extract_comment_text(revision_id, revision):
     comment = {}
     text = revision.find('comment')
@@ -341,11 +444,10 @@ def extract_comment_text(revision_id, revision):
     return comment
 
 
-def count_edits(article, counts, bots):
+def count_edits(article, counts, bots, xml_namespace):
     namespaces = {}
     title = article['title'].text
     namespace = determine_namespace(title, namespaces)
-    xml_namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
     if namespace != False:
         article_id = article['id'].text
         revisions = article['revisions']
@@ -353,6 +455,7 @@ def count_edits(article, counts, bots):
             if revision == None:
                 #the entire revision is empty, weird. 
                 continue
+
             contributor = revision.find('%s%s' % (xml_namespace, 'contributor'))
             contributor = parse_contributor(contributor, bots)
             if not contributor:
@@ -366,12 +469,12 @@ def count_edits(article, counts, bots):
     return counts
 
 
-def create_variables(article, cache, bots):
+def create_variables(article, cache, bots, xml_namespace):
     namespaces = {'User': 2,
                   'Talk': 1,
                   'User Talk': 3,
                   }
-    title = article['title']
+    title = article['title'].text
     namespace = determine_namespace(title, namespaces)
 
     if namespace != False:
@@ -386,14 +489,15 @@ def create_variables(article, cache, bots):
             if revision == None:
                 #the entire revision is empty, weird. 
                 continue
-            contributor = revision.find('ns0:contributor')
-            contributor = parse_contributor(contributor, bots)
+            #dump(revision)
+            contributor = revision.find('%s%s' % (xml_namespace, 'contributor'))
+            contributor = parse_contributor(contributor, bots, xml_namespace)
             if not contributor:
                 #editor is anonymous, ignore
                 continue
 
-            revision_id = revision.find('ns0:id')
-            revision_id = extracter.extract_revision_id(revision_id)
+            revision_id = revision.find('%s%s' % (xml_namespace, 'id'))
+            revision_id = extract_revision_id(revision_id)
             if revision_id == None:
                 #revision_id is missing, which is weird
                 continue
@@ -406,7 +510,7 @@ def create_variables(article, cache, bots):
             comment = extract_comment_text(revision_id, revision)
             cache.comments.update(comment)
 
-            timestamp = revision.find('ns0:timestamp').text
+            timestamp = revision.find('%s%s' % (xml_namespace, 'timestamp')).text
             row['timestamp'] = timestamp
 
             hash = create_md5hash(text)
@@ -417,43 +521,55 @@ def create_variables(article, cache, bots):
             row.update(hash)
             row.update(size)
             row.update(revert)
-            revision.clear()
             cache.add(row)
+            revision.clear()
 
 
-def parse_xml(fh):
+
+def parse_xml(fh, xml_namespace):
     context = iterparse(fh, events=('end',))
     context = iter(context)
 
     article = {}
     article['revisions'] = []
     id = False
-    namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
 
     for event, elem in context:
-        if event == 'end' and elem.tag == '%s%s' % (namespace, 'title'):
+        if event == 'end' and elem.tag == '%s%s' % (xml_namespace, 'title'):
             article['title'] = elem
-        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'revision'):
+        elif event == 'end' and elem.tag == '%s%s' % (xml_namespace, 'revision'):
             article['revisions'].append(elem)
-        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'id') and id == False:
+        elif event == 'end' and elem.tag == '%s%s' % (xml_namespace, 'id') and id == False:
             article['id'] = elem
             id = True
-        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'page'):
+        elif event == 'end' and elem.tag == '%s%s' % (xml_namespace, 'page'):
             yield article
             elem.clear()
             article = {}
             article['revisions'] = []
             id = False
-        elif event == 'end':
-            elem.clear()
+        #elif event == 'end':
+        #    elem.clear()
 
 
-def stream_raw_xml(input_queue, storage, id, function, dataset):
+def delayediter(iterable):
+    iterable = iter(iterable)
+    prev = iterable.next()
+    for item in iterable:
+        yield prev
+        prev = item
+    yield prev
+
+def stream_raw_xml(input_queue, storage, id, function, dataset, locks, rts):
     bots = detector.retrieve_bots('en')
+    xml_namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
+    path = os.path.join(rts.location, 'txt')
+    filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
+                rts.encoding) for fh in xrange(rts.max_filehandles)]
     t0 = datetime.datetime.now()
     i = 0
     if dataset == 'training':
-        cache = Buffer(storage, id)
+        cache = Buffer(storage, id, rts, filehandles, locks)
     else:
         counts = {}
 
@@ -463,12 +579,12 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         if filename == None:
             break
 
-        fh = bz2.BZ2File(filename, 'rb')
-        for article in parse_xml(fh):
+        fh = file_utils.create_streaming_buffer(filename)
+        for article in parse_xml(fh, xml_namespace):
             if dataset == 'training':
-                function(article, cache, bots)
-            else:
-                counts = function(article, counts, bots)
+                function(article, cache, bots, xml_namespace)
+            elif dataset == 'prediction':
+                counts = function(article, counts, bots, xml_namespace)
             i += 1
             if i % 10000 == 0:
                 print 'Worker %s parsed %s articles' % (id, i)
@@ -488,19 +604,27 @@ def stream_raw_xml(input_queue, storage, id, function, dataset):
         file_utils.store_object(counts, location, filename)
 
 
-def setup(storage):
+def setup(storage, rts=None):
     keyspace_name = 'enwiki'
     if storage == 'cassandra':
         cassandra.install_schema(keyspace_name, drop_first=True)
+    elif storage == 'csv':
+        output_articles = os.path.join(rts.input_location, rts.language.code,
+                                       rts.project.name)
+        output_txt = os.path.join(rts.input_location, rts.language.code,
+                                  rts.project.name, 'txt')
+        res = file_utils.delete_file(output_articles, 'articles.csv')
+        res = file_utils.delete_file(output_txt, None, directory=True)
+        if res:
+            res = file_utils.create_directory(output_txt)
 
 
-def launcher(function, path, dataset, storage, processors):
-    setup(storage)
+def multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks=None, rts=None):
     input_queue = JoinableQueue()
     #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
     #files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
 
-    files = file_utils.retrieve_file_list(path, 'bz2')
+    files = file_utils.retrieve_file_list(path, extension)
 
     for file in files:
         filename = os.path.join(path, file)
@@ -510,7 +634,7 @@ def launcher(function, path, dataset, storage, processors):
     for x in xrange(processors):
         input_queue.put(None)
 
-    extracters = [Process(target=stream_raw_xml, args=[input_queue, storage, id, function, dataset])
+    extracters = [Process(target=stream_raw_xml, args=[input_queue, storage, id, function, dataset, locks, rts])
                   for id in xrange(processors)]
     for extracter in extracters:
         extracter.start()
@@ -534,19 +658,40 @@ def launcher_training():
     storage = 'csv'
     dataset = 'training'
     processors = cpu_count()
-    launcher(function, path, dataset, storage, processors)
+    extension = 'bz2'
+    setup(storage)
+    multiprocessor_launcher(function, path, dataset, storage, processors, extension)
 
 
 def launcher_prediction():
     # launcher for creating test data
-    path = '/media/wikipedia_dumps/batch1/'
+    path = '/mnt/wikipedia_dumps/batch1/'
     function = count_edits
     storage = 'csv'
     dataset = 'prediction'
     processors = 7
-    launcher(function, path, dataset, storage, processors)
+    extension = 'bz2'
+    setup(storage)
+    multiprocessor_launcher(function, path, dataset, storage, processors, extension)
+
+
+def launcher(rts):
+    # launcher for creating regular mongo dataset
+    path = rts.location
+    function = create_variables
+    storage = 'csv'
+    dataset = 'training'
+    processors = 1
+    extension = 'gz'
+    lock1 = RLock()
+    lock2 = RLock()
+    lock3 = RLock()
+    locks = [lock1, lock2, lock3]
+    setup(storage, rts)
+    multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts)
 
 
 if __name__ == '__main__':
     #launcher_training()
-    launcher_prediction()
+    #launcher_prediction()
+    launcher()

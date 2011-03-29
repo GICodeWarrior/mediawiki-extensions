@@ -188,10 +188,21 @@ def extract_contributor_id(contributor, **kwargs):
 
 def parse_title(title):
     title_data = {}
-    if type(title.text) == type('str'):
-        title_data['title'] = title.text.decode('utf-8')
+    t1 = type(title.text)
+    if type(title.text) != type('str'):
+        print 'encodign'
+        print title.text.encode('utf-8')
+        title = title.text.encode('utf-8')
+        title = title.decode('utf-8', 'ignore')
+        print title
     else:
-        title_data['title'] = title.text
+        title = title.text
+
+    #title = title.encode('utf-8')
+    title_data['title'] = title #.decode('utf-8')
+    t2 = type(title_data['title'])
+    print t1, t2
+    #title_data['title'] = title
     if title_data['title'].startswith('List of'):
         title_data['list'] = True
     else:
@@ -268,7 +279,6 @@ def parse_dumpfile(tasks, rts, lock):
     widgets = log.init_progressbar_widgets('Extracting data')
     filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
                 rts.encoding) for fh in xrange(rts.max_filehandles)]
-
     while True:
         total, processed = 0.0, 0.0
         try:
@@ -286,7 +296,7 @@ def parse_dumpfile(tasks, rts, lock):
         filesize = file_utils.determine_filesize(location, filename)
         print 'Opening %s...' % (os.path.join(location, filename))
         print 'Filesize: %s' % filesize
-        fh1 = file_utils.create_txt_filehandle(location, filename, 'r', rts.encoding)
+        fh1 = file_utils.create_txt_filehandle(location, filename, 'r', 'ascii')
         fh2 = file_utils.create_txt_filehandle(location, 'articles.csv', 'a', rts.encoding)
         ns, xml_namespace = wikitree.parser.extract_meta_information(fh1)
         ns = build_namespaces_locale(ns, rts.namespaces)
@@ -305,7 +315,7 @@ def parse_dumpfile(tasks, rts, lock):
                 output = output_editor_information(revisions, article_id, bot_ids, rts)
                 output = add_namespace_to_output(output, namespace)
                 write_output(output, filehandles, lock, rts)
-                file_utils.write_list_to_csv([article_id, title.values()], fh2)
+                #file_utils.write_list_to_csv([article_id, title.values()], fh2, newline=False, lock=lock)
                 processed += 1
             page.clear()
             pbar.update(pbar.currval + article_size)
@@ -366,11 +376,15 @@ def hash(rts, id):
         return sum([ord(i) for i in id]) % rts.max_filehandles
 
 
-def prepare(output):
-    res = file_utils.delete_file(output, 'articles.csv')
-    res = file_utils.delete_file(output, None, directory=True)
+def prepare(rts):
+    output_articles = os.path.join(rts.input_location, rts.language.code,
+                                   rts.project.name)
+    output_txt = os.path.join(rts.input_location, rts.language.code,
+                              rts.project.name, 'txt')
+    res = file_utils.delete_file(output_articles, 'articles.csv')
+    res = file_utils.delete_file(output_txt, None, directory=True)
     if res:
-        res = file_utils.create_directory(output)
+        res = file_utils.create_directory(output_txt)
     return res
 
 
@@ -415,9 +429,7 @@ def launcher(rts):
     if not tasks:
         return False
 
-    output = os.path.join(rts.input_location, rts.language.code,
-                          rts.project.name, 'txt')
-    result = prepare(output)
+    result = prepare(rts)
     if not result:
         return result
 
@@ -448,10 +460,11 @@ def launcher(rts):
 
 
 def debug():
-    project = 'wiki'
-    language_code = 'sv'
-    filename = 'svwiki-latest-stub-meta-history.xml'
-    parse_dumpfile(project, filename, language_code)
+    pass
+    #project = 'wiki'
+    #language_code = 'sv'
+    #filename = 'svwiki-latest-stub-meta-history.xml'
+    #parse_dumpfile(project, filename, language_code)
 
 
 if __name__ == '__main__':
