@@ -263,6 +263,9 @@ $messages['pms'] = array(
 	'spm_wbs_link' => 'Esporta XML ëd MS Project',
 	'spm_printername_wbs' => 'Esporta MS Project',
 	'spm-name' => 'Gestion ëd Proget Semàntich',
+	'semanticprojectmanagement-desc' => 'Formà ëd Gestion dël Proget për anterogassion an linia ëd Semantic MediaWiki',
+	'semanticprojectmanagement' => 'Ampostassion ëd Gestion ëd Proget Semàntich',
+	'right-SPMsetup' => 'Modìfica ampostassion basaj ëd gestion ëd proget semàntich',
 );
 
 /** Portuguese (Português)
