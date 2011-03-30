@@ -196,6 +196,7 @@ $messages['bg'] = array(
 	'push-tab-used-templates' => '({{PLURAL:$2|Използван шаблон|Използвани шаблони}}: $1)',
 	'push-tab-no-used-templates' => '(На тази страница не са използвани шаблони.)',
 	'push-tab-inc-files' => 'Включване на вградените файлове',
+	'push-tab-no-embedded-files' => '(В тази страница не са включени файлове.)',
 	'push-tab-files-override' => 'Следните файлове вече съществуват: $1',
 	'push-tab-template-override' => 'Следните шаблони вече съществуват: $1',
 	'push-special-target-is' => 'Целево уики: $1',
