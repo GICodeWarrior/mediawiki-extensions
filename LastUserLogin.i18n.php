@@ -440,7 +440,7 @@ $messages['ja'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'lastuserlogin' => 'កាត់កត់ឈ្មោះចូលចុងក្រោយរបស់អ្នកប្រើប្រាស់',
+	'lastuserlogin' => 'ការកត់ឈ្មោះចូលចុងក្រោយរបស់អ្នកប្រើប្រាស់',
 	'lastuserlogin-desc' => 'បង្ហាញពេលវេលាដែលអ្នកប្រើប្រាស់បានកត់ឈ្មោះចូលចុងក្រោយ',
 	'lastuserlogin_userid' => 'អត្តនាម',
 	'lastuserlogin_username' => 'ឈ្មោះពិត',
