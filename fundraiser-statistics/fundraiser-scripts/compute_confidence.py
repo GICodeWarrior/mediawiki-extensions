@@ -262,7 +262,9 @@ class ConfidenceTest(object):
 		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
 		
 		""" Print out results """ 
-		self.print_metrics(test_name + '.txt', title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels)
+		test_call = "run_test('" + test_name + "', '" + query_name + "', '" + metric_name + "', '" + campaign + "', '" + \
+			item_1 + "', '" + item_2 + "', '" + start_time + "', '" + end_time + "', " + str(interval) + ", " + str(num_samples) + ")"
+		self.print_metrics(test_name + '.txt', title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
 		
 		return
 		
@@ -326,15 +328,27 @@ class ConfidenceTest(object):
 
 
 	""" Print in Tabular form the means and standard deviation of each group over each interval """
-	def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels):
+	def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call):
 		
 		file = open(filename, 'w')
 		
-		# Compute % increase and report
+		""" Compute % increase and report """
 		av_means_1 = sum(means_1) / len(means_1)
 		av_means_2 = sum(means_2) / len(means_2)
 		percent_increase = math.fabs(av_means_1 - av_means_2) / min(av_means_1,av_means_2) * 100.0
 		
+		""" Compute the average standard deviations """
+		av_std_dev_1 = 0
+		av_std_dev_2 = 0
+		
+		for i in range(len(std_devs_1)):
+			av_std_dev_1 = av_std_dev_1 + math.pow(std_devs_1[i], 2)
+			av_std_dev_2 = av_std_dev_2 + math.pow(std_devs_2[i], 2)
+		
+		av_std_dev_1 = math.pow(av_std_dev_1, 0.5) / len(std_devs_1)
+		av_std_dev_2 = math.pow(av_std_dev_2, 0.5) / len(std_devs_1)
+		
+		""" Assign the winner """	
 		if av_means_1 > av_means_2:
 			winner = labels[0]
 		else:
@@ -343,19 +357,37 @@ class ConfidenceTest(object):
 		win_str =  "\nThe winner " + winner + " had a %.2f%s increase."
 		win_str = win_str % (percent_increase, '%')
 		
+		print '\nCOMMAND = ' + test_call
+		file.write('\nCOMMAND = ' + test_call)
+				 
 		print  '\n\n' +  metric_name 
 		print win_str
 		print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
 		file.write('\n\n' +  metric_name)
-		file.write('\n\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n\n')
 		file.write(win_str)
+		file.write('\n\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n\n')
 		
-		# for i in range(1,len(times_indices) - 1): -- REMOVED with the 
+		
+		""" Print out the parameters for each interval """
+		
 		for i in range(len(times_indices)):
 			line_args = str(i) + '\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
 			line_str = line_args % (means_1[i], means_2[i], std_devs_1[i], std_devs_2[i])
 			print  line_str
 			file.write(line_str)
+		
+		""" Print out the averaged parameters """
+		line_args = '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
+		line_str = line_args % (av_means_1, av_means_2, av_std_dev_1, av_std_dev_2)
+		
+		print '\n\nOverall Parameters:\n'
+		print '\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
+		print line_str
+		
+		file.write('\n\nOverall Parameters:\n')
+		file.write('\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n')
+		file.write(line_str)
+			
 			
 		file.close()
 		
