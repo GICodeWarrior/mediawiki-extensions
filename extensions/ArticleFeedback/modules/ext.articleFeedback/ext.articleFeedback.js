@@ -5,13 +5,24 @@
 ( function( $, mw ) {
 
 /**
+ * Prefixes a key for cookies or events, with extension and version information
+ * 
+ * @param event String: Name of event to prefix
+ * @return String: Prefixed event name
+ */
+function prefix( key ) {
+	var version = mw.config.get( 'wgArticleFeedbackTrackingVersion' ) || 0;
+	return 'ext.articleFeedback@' + version + '-' + key;
+}
+
+/**
  * Checks if a pitch is currently muted
  * 
  * @param pitch String: Name of pitch to check
  * @return Boolean: Whether the pitch is muted
  */
 function isPitchVisible( pitch ) {
-	return $.cookie( 'ext.articleFeedback-pitches.' + pitch ) != 'hide';
+	return $.cookie( prefix( 'pitches-' + pitch ) ) != 'hide';
 }
 
 /**
@@ -21,21 +32,19 @@ function isPitchVisible( pitch ) {
  * @param durration Integer: Number of days to mute the pitch for
  */
 function mutePitch( pitch, duration ) {
-	$.cookie( 'ext.articleFeedback-pitches.' + pitch, 'hide', { 'expires': duration } );
+	$.cookie( prefix( 'pitches-' + pitch ), 'hide', { 'expires': duration } );
 }
 
 function trackClick( id ) {
 	// Track the click so we can figure out how useful this is
 	if ( typeof $.trackActionWithInfo == 'function' ) {
-		$.trackActionWithInfo(
-			'ext.articleFeedback-' + id, mediaWiki.config.get( 'wgTitle' )
-		)
+		$.trackActionWithInfo( prefix( id ), mediaWiki.config.get( 'wgTitle' ) )
 	}
 }
 
 function trackClickURL( url, id ) {
 	if ( typeof $.trackActionURL == 'function' ) {
-		return $.trackActionURL( url, 'ext.articleFeedback-' + id );
+		return $.trackActionURL( url, prefix( id ) );
 	} else {
 		return url;
 	}
@@ -80,12 +89,12 @@ var survey = new ( function( mw ) {
 					'modal': true,
 					'title': mw.msg( 'articlefeedback-survey-title' ),
 					'close': function() {
+						// Click tracking
+						trackClick( 'survey-cancel' );
 						// Return the survey to default state
-						$message.remove();
+						$dialog.dialog( 'option', 'height', 400 );
 						$form.show();
-						$dialog
-							.dialog( 'option', 'height', 400 )
-							.dialog( 'close' );
+						$message.remove();
 					}
 				} )
 				.load( formSource, function() {
@@ -140,6 +149,8 @@ var survey = new ( function( mw ) {
 						}
 					}
 				} );
+		// Click tracking
+		trackClick( 'survey-submit-attempt' );
 		// XXX: Not only are we submitting to a special page instead of an API request, but we are
 		// screen-scraping the result - this is evil and needs to be addressed later
 		$.ajax( {
@@ -156,6 +167,8 @@ var survey = new ( function( mw ) {
 				that.alert( success ? 'success' : 'error' );
 				// Mute for 30 days
 				mutePitch( 'survey', 30 );
+				// Click tracking
+				trackClick( 'survey-submit-complete' );
 			},
 			'error': function( XMLHttpRequest, textStatus, errorThrown ) {
 				// Take the dialog out of "loading" state
@@ -207,7 +220,7 @@ var config = {
 			'action': function() {
 				survey.load();
 				// Click tracking
-				trackClick( 'pitch-survey' );
+				trackClick( 'pitch-survey-accept' );
 				// Hide the pitch immediately
 				return true;
 			},
@@ -231,7 +244,7 @@ var config = {
 						'title': 'Special:UserLogin',
 						'type': 'signup',
 						'returnto': mediaWiki.config.get( 'wgPageName' )
-					} ), 'pitch-join-signup' );
+					} ), 'pitch-signup-accept' );
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',
@@ -250,7 +263,7 @@ var config = {
 					mediaWiki.config.get( 'wgScript' ) + '?' + $.param( {
 						'title': 'Special:UserLogin',
 						'returnto': mediaWiki.config.get( 'wgPageName' )
-					} ), 'pitch-join-login' );
+					} ), 'pitch-join-accept' );
 				return false;
 			}
 		},
@@ -279,8 +292,8 @@ var config = {
 						'title': mediaWiki.config.get( 'wgPageName' ),
 						'action': 'edit',
 						'clicktrackingsession': $.cookie( 'clicktracking-session' ),
-						'clicktrackingevent': 'ext.articleFeedback-pitch-edit-save'
-					} ), 'pitch-edit' );
+						'clicktrackingevent': prefix( 'pitch-edit-save' )
+					} ), 'pitch-edit-accept' );
 				return false;
 			},
 			'title': 'articlefeedback-pitch-thanks',

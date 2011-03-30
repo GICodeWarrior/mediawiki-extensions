@@ -5,6 +5,17 @@
 ( function( $, mw ) {
 
 /**
+ * Prefixes a key for cookies or events, with extension and version information
+ * 
+ * @param event String: Name of event to prefix
+ * @return String: Prefixed event name
+ */
+function prefix( key ) {
+	var version = mw.config.get( 'wgArticleFeedbackTrackingVersion' ) || 0;
+	return 'ext.articleFeedback@' + version + '-' + key;
+}
+
+/**
  * Article Feedback jQuery Plugin Support Code
  */
 $.articleFeedback = {
@@ -358,9 +369,9 @@ $.articleFeedback = {
 									.text( mw.msg( context.options.pitches[key].accept ) )
 									.click( function() {
 										var $pitch = $(this).closest( '.articleFeedback-pitch' );
+										var key = $pitch.attr( 'rel' );
 										return $.articleFeedback.fn.executePitch.call(
-											$(this),
-											context.options.pitches[$pitch.attr( 'rel' )].action
+											$(this), context.options.pitches[key].action
 										);
 									} )
 									.button()
@@ -370,13 +381,16 @@ $.articleFeedback = {
 									.text( mw.msg( context.options.pitches[key].reject ) )
 									.click( function() {
 										var $pitch = $(this).closest( '.articleFeedback-pitch' );
+										var key = $pitch.attr( 'rel' );
 										// Remember that the users rejected this, set a cookie to not
 										// show this for 3 days
 										$.cookie(
-											'jquery.articleFeedback-pitch.' + $pitch.attr( 'rel' ),
-											'hide',
-											{ 'expires': 3 }
+											prefix( 'pitch-' + key ), 'hide', { 'expires': 3 }
 										);
+										// Track that a pitch was dismissed
+										if ( typeof $.trackAction == 'function' ) {
+											$.trackAction( prefix( 'pitch-' + key + '-reject' ) );
+										}
 										$pitch.fadeOut( 'fast', function() {
 											context.$ui.find( '.articleFeedback-ui' ).show();
 										} );
@@ -399,9 +413,9 @@ $.articleFeedback = {
 										.text( mw.msg( context.options.pitches[key].altAccept ) )
 										.click( function() {
 											var $pitch = $(this).closest( '.articleFeedback-pitch' );
+											var key = $pitch.attr( 'rel' );
 											return $.articleFeedback.fn.executePitch.call(
-												$(this),
-												context.options.pitches[$pitch.attr( 'rel' )].altAction
+												$(this), context.options.pitches[key].altAction
 											);
 										} )
 										.button()
@@ -455,7 +469,7 @@ $.articleFeedback = {
 						for ( var key in context.options.pitches ) {
 							// Dont' bother checking the condition if there's a cookie that says
 							// the user has rejected this within 3 days of right now
-							var display = $.cookie( 'jquery.articleFeedback-pitch.' + key );
+							var display = $.cookie( prefix( 'pitch-' + key ) );
 							if ( display !== 'hide' && context.options.pitches[key].condition() ) {
 								pitches.push( key );
 							}
@@ -469,8 +483,8 @@ $.articleFeedback = {
 									.fadeIn( 'fast' );
 							context.$ui.find( '.articleFeedback-ui' ).hide();
 							// Track that a pitch was presented
-							if ( typeof $.trackActionWithInfo == 'function' ) {
-								$.trackActionWithInfo( 'jquery.articlefeedback-pitch', key );
+							if ( typeof $.trackAction == 'function' ) {
+								$.trackAction( prefix( 'pitch-' + key + '-show' ) );
 							}
 						} else {
 							// Give user some feedback that a save occured

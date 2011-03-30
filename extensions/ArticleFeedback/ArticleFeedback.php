@@ -31,6 +31,10 @@ $wgArticleFeedbackCategories = array();
 // are the smallest increments used.
 $wgArticleFeedbackLotteryOdds = 0;
 
+// This version number is added to all tracking event names, so that changes in the software don't
+// corrupt the data being collected. Bump this when you want to start a new "experiment".
+$wgArticleFeedbackTrackingVersion = 0;
+
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,
