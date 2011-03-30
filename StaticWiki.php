@@ -19,7 +19,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'StaticWiki',
-	'author'         => '',
+	'author'         => 'Magnus Manske',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:StaticWiki',
 );
 
