@@ -148,6 +148,7 @@ struct literalNode {
 		tmpnode->nextSibling = UNKNOWN_NODE_LEN; \
 		tmpnode->contentLength = charsToSkip; \
 		tmpnode->index = nodeStringLen; \
+		tmpnode->count = 0; \
 		tmpnode->parent = parentNode; \
 		tmpnode->commentEnd = -1; \
 		tmpnode->eqpos = -1; \

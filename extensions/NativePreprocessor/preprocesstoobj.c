@@ -603,11 +603,18 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 			if ( found == closeBracket ) {
 				maxCount = parentNode->count;
 			} else {
-			if ( parentNode->type == value_node ) {
+				if ( parentNode->type == value_node ) {
+					/* template\part\value */
 					maxCount = parentNode->parent->parent->count;
+					assert( parentNode->parent->parent->type == brace_node );
 				} else {
+					/* template\title */
+					assert( parentNode->type == title_node );
+
 					maxCount = parentNode->parent->count;
-			}
+					assert( parentNode->parent->type == brace_node );
+				}
+				assert( maxCount );
 			}
 			int count = chrspn( text, found, i, maxCount );
 
@@ -713,6 +720,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 					parentNode->index = oldindex + NODE_LEN;
 					parentNode->parent->index = oldindex;
 					parentNode->parent->flags = oldflags;
+					parentNode->parent->count = oldcount;
 				} else {
 					/* Prepend a literal node with the skipped braces */
 					int skippedBraces = 1 /* = parentNode->count */;
