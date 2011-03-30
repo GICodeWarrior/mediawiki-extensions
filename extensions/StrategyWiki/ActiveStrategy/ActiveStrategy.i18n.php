@@ -470,6 +470,7 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'activestrategy' => 'Көхтөөх стратегия',
 	'active-strategy-desc' => 'Былааннааһын сирэйигэр хас көннөрүү оҥоһуллубутун көрдөрөр',
+	'active-strategy-intro' => 'Бөлөх сирэйдэрин көннөрүүтүн бүтэһик $1 күҥҥэ ахсаана.',
 	'nedits' => '{{PLURAL:$1|Соҕотох көннөрүү|$1 көннөрүү}}',
 );
 

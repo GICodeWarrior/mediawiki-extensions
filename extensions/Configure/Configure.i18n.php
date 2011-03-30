@@ -1235,7 +1235,6 @@ $messages['bg'] = array(
 	'configure-section-recentchanges' => 'Последни промени',
 	'configure-section-users' => 'Потребители',
 	'configure-section-feed' => 'Емисии',
-	'configure-section-extension' => 'Разширения',
 	'configure-section-search' => 'Търсене',
 	'configure-section-copyright' => 'Авторско право',
 	'configure-section-misc' => 'Разни',
@@ -1278,6 +1277,7 @@ $messages['bg'] = array(
 	'configure-condition-name-2' => 'Минимална възраст',
 	'configure-condition-name-4' => 'В групи',
 	'configure-condition-name-5' => 'Потребителски IP адрес',
+	'configure-farmer-settings' => '[[Special:Configure|Конфигуриране на уикито]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Конфигуриране на разширенията за това уики]].',
 );
 

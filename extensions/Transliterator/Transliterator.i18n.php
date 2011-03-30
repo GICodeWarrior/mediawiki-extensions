@@ -84,6 +84,13 @@ $messages['be-tarask'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] павінен зьмяшчаць ня менш за $1 {{PLURAL:$1|сымбаль|сымбалі|сымбаляў}}.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'transliterator-error-syntax' => 'Невалиден синтаксис <code>$1</code> в [[MediaWiki:$2]]',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

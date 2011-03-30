@@ -41,6 +41,15 @@ $messages['be-tarask'] = array(
 	'printversion-inexistent-book' => 'Кніга ня знойдзеная. Калі ласка, увядзіце назву існуючай кнігі, каб атрымаць яе вэрсію для друку.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'bookmanager-desc' => 'Инструменти за книги',
+	'printversion' => 'Версия за печат',
+	'printversion-desc' => 'Създава [[Special:PrintVersion|версия за печат]] на книга',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -108,6 +117,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'bookmanager-desc' => 'Ferramentas para libros',
 	'printversion' => 'Versión para imprimir',
 	'printversion-desc' => 'Xera a [[Special:PrintVersion|versión para imprimir]] dun libro',
 	'printversion-no-book' => 'Introduza o nome dun libro para obter a súa versión para imprimir.',

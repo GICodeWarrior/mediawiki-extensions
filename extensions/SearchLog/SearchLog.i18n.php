@@ -26,6 +26,8 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
+	'searchlog' => '"Search" is an adjective,
+"Log" is a substantive.',
 	'searchlog-desc' => '{{desc}}',
 );
 
@@ -35,6 +37,7 @@ $messages['qqq'] = array(
  */
 $messages['be-tarask'] = array(
 	'searchlog' => 'Журнал пошукаў',
+	'searchlog-unicode' => 'Паказаць «сыры» Юнікод',
 	'searchlog-timeperiod' => 'Выберыце пэрыяд:',
 	'searchlog-entire' => 'Журнал цалкам',
 	'searchlog-phrase' => 'Шукаць фразу',
@@ -44,6 +47,7 @@ $messages['be-tarask'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
 	'searchlog' => 'Suchprotokoll',
@@ -54,7 +58,7 @@ $messages['de'] = array(
 	'searchlog-timeperiod' => 'Zeitraum auswählen:',
 	'searchlog-entire' => 'Gesamtes Suchprotokoll',
 	'searchlog-phrase' => 'Suchwort',
-	'searchlog-occurences' => 'Häufigkeit während eines Zeitraums',
+	'searchlog-occurences' => 'Häufigkeit während des Zeitraums',
 	'right-searchlog-read' => 'Suchprotokoll ansehen',
 );
 
@@ -153,7 +157,16 @@ $messages['it'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'searchlog-desc' => 'Hält der Jebruch vum Söhke em Wiki faß, un määd et müjjelesch, de Jesampzahle för beshtemppte jesohte Bejreffe för en aanjejovve Zick metzedeijle.',
+	'searchlog' => 'Logbooch vum Söhke',
+	'searchlog-desc' => 'Hält der Jebruch vum Söhke em Wiki faß, un määd et müjjelesch, de Jesampzahle för beshtempte jesohte Bejreffe för en aanjejovve Zick metzedeijle.',
+	'searchlog-cantopen' => 'Mer kunnte de Dattei mem Lobooch <span lang="en">$1</span> nit opmaache.',
+	'searchlog-heading' => 'De Wööter, noh dänne övver $1 jesöhk woode es',
+	'searchlog-unicode' => 'Dirägg em <i lang="en">Unicode</i> aanzeije',
+	'searchlog-timeperiod' => 'Der Zickroum:',
+	'searchlog-entire' => 'Et kumplätte Logbooch',
+	'searchlog-phrase' => 'Jesöhk noh',
+	'searchlog-occurences' => 'Opjetrodde en dä Zick',
+	'right-searchlog-read' => 'Et Logbooch vum Söhke aanloore',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -599,6 +599,7 @@ $wgGoogleMapsMessages['be-tarask'] = array(
  * @author DCLXVI
  */
 $wgGoogleMapsMessages['bg'] = array(
+	'gm-desc' => 'Лесно създаване карти с уикифицирани маркери',
 	'gm-incompatible-browser' => 'За правилното визуализиране на картата, която трябва да бъде показана на това място, е необходим съвместим уеб браузър.',
 	'gm-incompatible-browser-link' => 'Натискането на тази препратка ще покаже списък със съвместимите браузъри.',
 	'gm-no-editor' => 'Използваният браузър не поддържа показването на интерактивните карти. Опитайте с последните версии на <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac и Linux).',
