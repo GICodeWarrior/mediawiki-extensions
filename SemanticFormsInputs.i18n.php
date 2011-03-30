@@ -71,6 +71,15 @@ $messages['be-tarask'] = array(
 	'semanticformsinputs-today' => 'Сёньня',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'semanticformsinputs-wrongformat' => 'Грешен формат.',
+	'semanticformsinputs-close' => 'Затваряне',
+	'semanticformsinputs-today' => 'Днес',
+);
+
 /** Breton (Brezhoneg)
  * @author Gwendal
  * @author Y-M D
