@@ -666,7 +666,7 @@ class ApiSyncImport extends ApiImport {
 		if ( !$wgUser->matchEditToken( $params['token'] ) ) {
 			$this->dieUsageMsg( array('sessionfailure') );
 		}
-		$source = null;
+
 		if ( !$wgUser->isAllowed( 'importupload' ) ) {
 			$this->dieUsageMsg( array('cantimport-upload') );
 		}
