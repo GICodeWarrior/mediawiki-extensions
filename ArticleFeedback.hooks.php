@@ -203,9 +203,12 @@ class ArticleFeedbackHooks {
 	 * ResourceLoaderGetConfigVars hook
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
-		global $wgArticleFeedbackCategories, $wgArticleFeedbackLotteryOdds;
+		global $wgArticleFeedbackCategories,
+			$wgArticleFeedbackLotteryOdds,
+			$wgArticleFeedbackTrackingVersion;
 		$vars['wgArticleFeedbackCategories'] = $wgArticleFeedbackCategories;
 		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
+		$vars['wgArticleFeedbackTrackingVersion'] = $wgArticleFeedbackTrackingVersion;
 		return true;
 	}
 }
