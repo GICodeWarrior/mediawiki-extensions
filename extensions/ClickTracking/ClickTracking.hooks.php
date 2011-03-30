@@ -120,43 +120,7 @@ class ClickTrackingHooks {
 	}
 
 	
-	/*
-	 * Convenience function to unpackbuckets
-	 * 
-	 */
-	public static function unpackBuckets(){
-		$bucketInfo = self::unpackBucketInfo();
-		
-		if( $bucketInfo == NULL ) return NULL;
-		
-		$retval = array();
-		foreach($bucketInfo as $bucket){
-			$friendly_named_bucket = array();
-			$friendly_named_bucket["name"] = $bucket[0];
-			$friendly_named_bucket["value"] = $bucket[1];
-			$friendly_named_bucket["version"] = $bucket[2];
-			$retval[] = $friendly_named_bucket;
-		}
-		return $retval;
-	}
 	
-	/*
-	 * Convenience function to pack buckets
-	 * 
-	 */
-	public static function packBuckets( $buckets ){
-		if( $buckets == NULL ) return; //nothing to do
-		$packedBucketInfo = array();
-		
-		foreach($buckets as $bucket){
-			$bucketInfo = array();
-			$bucketInfo[0] = $bucket["name"];
-			$bucketInfo[1] = $bucket["value"];
-			$bucketInfo[2] = $bucket["version"];
-			$packedBucketInfo[] = $bucketInfo;
-		}
-		self::packBucketInfo($packedBucketInfo);
-	}
 	
 	/**
 	 * Returns bucket information
@@ -221,19 +185,18 @@ class ClickTrackingHooks {
 		);
 		$db_status_buckets = true;
 		$db_status = $dbw->insert( 'click_tracking', $data, __METHOD__ );
-		$bucket_id = $dbw->insertId();
 		
 		if( $recordBucketInfo && $db_status ){
 			$buckets = self::unpackBucketInfo();
 			if( $buckets ){
-				foreach( $buckets as $bucket ){
+				foreach( $buckets as $bucketName => $bucketValue ){
 					$db_status_buckets = $db_status_buckets &&
 						$dbw->insert( 'click_tracking_user_properties', 
 							array(
 								'session_id' => (string) $sessionId,
-								'property_id' => (string) $bucket[0],
-								'property_value' => (string) $bucket[1],
-								'property_version' => (int) $bucket[2]
+								'property_id' => (string) $bucketName,
+								'property_value' => (string) $bucketValue[0],
+								'property_version' => (int) $bucketValue[1]
 							),
 						 __METHOD__);
 				}
