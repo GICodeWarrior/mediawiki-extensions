@@ -20,7 +20,7 @@ USER="nobody"
 SCRIPTNAME=/etc/init.d/udpprofile
 
 # Exit if the package is not installed
-[ -x "$START" ] || exit 0
+[ -x "$DAEMON" ] || exit 0
 
 # Read configuration variable file if it is present
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
@@ -41,9 +41,9 @@ do_start()
 	#   0 if daemon has been started
 	#   1 if daemon was already running
 	#   2 if daemon could not be started
-	start-stop-daemon --start --quiet -m -d /tmp -c $USER --exec $START --test > /dev/null \
+	start-stop-daemon --start --quiet -m --pidfile /var/lock/collector -d /tmp -c $USER --exec $DAEMON --test > /dev/null \
 		|| return 1
-	start-stop-daemon --start --quiet -m -d /tmp -c $USER --exec $START \
+	start-stop-daemon --start --quiet -m --pidfile /var/lock/collector -d /tmp -c $USER --exec $DAEMON \
 		|| return 2
 	# Add code here, if necessary, that waits for the process to be ready
 	# to handle requests from services started subsequently which depend
@@ -60,7 +60,7 @@ do_stop()
 	#   1 if daemon was already stopped
 	#   2 if daemon could not be stopped
 	#   other if a failure occurred
-	start-stop-daemon --start --quiet -c $USER --exec $STOP
+	start-stop-daemon --stop --quiet -c $USER --exec $DAEMON
 	RETVAL="$?"
 	[ "$RETVAL" = 2 ] && return 2
 	return "$RETVAL"

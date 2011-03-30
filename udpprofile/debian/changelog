@@ -1,3 +1,15 @@
+udpprofile (1.0-2) lucid-wikimedia; urgency=low
+
+  * Fix init script agin
+
+ -- Ryan Lane <rlane@wikimedia.org>  Wed, 30 Mar 2011 23:07:00 +0000
+
+udpprofile (1.0-1) lucid-wikimedia; urgency=low
+
+  * Fix init script
+
+ -- Ryan Lane <rlane@wikimedia.org>  Wed, 30 Mar 2011 22:59:28 +0000
+
 udpprofile (1.0) lucid-wikimedia; urgency=low
 
   * Initial package
