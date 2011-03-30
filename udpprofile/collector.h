@@ -2,7 +2,7 @@
 /* $Id$ */
 
 #include <stdio.h>
-#include <db4/db.h>
+#include <db.h>
 
 DB *db;
 

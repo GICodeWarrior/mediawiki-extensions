@@ -21,7 +21,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <netinet/in.h>
-#include <db4/db.h>
+#include <db.h>
 #include "collector.h"
 
 void hup();
