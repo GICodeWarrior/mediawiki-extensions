@@ -36,10 +36,18 @@ See $2 for a record of recent blankings.',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Purodha
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'purewikideletion-desc' => '{{desc}}',
+	'purewikideletion-blanked' => 'Parameters:
+* $1 - a user name
+* $2 - date and time (duplicated in $5 and $6)
+* $3 - the summary text of the log entry of the blanking
+* $4 - the revision ID of the page contend before it was blanked
+* $5 - the date part from $2
+* $5 - the time part from $2',
 	'purewikideletion-blanknologin' => '{{Identical|Not logged in}}',
 	'right-purewikideletion' => '{{doc-right|purewikideletion}}',
 );
@@ -487,7 +495,29 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'randomexcludeblank' => 'Zohfälleje Sigg, ävver nit läddesch',
+	'populateblankedpagestable' => 'De Daatebangktabäll met de läddije Sigge fölle',
 	'purewikideletion-desc' => 'Sorresch nävve ander Saache doför, dat op leddisch jemaate Sigge bloß ruude Lengks jonn.',
+	'purewikideletion-pref-watchblank' => 'Dun de Sigge, die ich läddesch maachen, för ming Oppassliss vürschlage',
+	'purewikideletion-pref-watchunblank' => 'Dun de Sigge, di läddesch jemaat wohre, wo esch dat retuur nämmen, för ming Oppassliss vürschlage',
+	'purewikideletion-blanked' => "En älder Version vun heh dä Sigg hät {{GENDER:$1|dä|et|dä Metmaacher|de|dat}} [[User:$1|$1]] ([[User talk:$1|Klaaf]]) ([[Special:Contributions/$1|Beidrääsch]]) aam $5 om $6 Uhr läddesch jemaat.
+
+Der Jrond doför wohr: ''<nowiki>$3</nowiki>''.
+
+Do kanns [{{fullurl:{{FULLPAGENAMEE}}|action=history}} de Leß met de Version vun dä Sigg beloore], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} de läzde Version dovör ändere], udder en neu Sigg en dä läddejje Plaz onge schrieve.",
+	'blank-log' => 'läddesch Maache',
+	'blank-log-name' => 'Logbooch vum Sigge läddesch Maache',
+	'blank-log-header' => 'Heh küdd_en Leß met läddesch jemaate Sigg un met dovun  retuur jehollte Sigge.',
+	'blank-log-entry-blank' => 'hät de Sigg „$1“ läddesch jemaat',
+	'blank-log-entry-unblank' => 'hät de läddejje Sigg „$1“ widder retuur jehollt',
+	'blank-log-link' => 'Et [[{{#Special:Log}}/blank|{{int:blank-log-name}}]]',
+	'purewikideletion-blanknologin' => 'Nit enjelogg',
+	'purewikideletion-blanknologintext' => 'Do mööts ald aanjemeldt un [[Special:UserLogin|enjelogg]] sin, öm en Sigg läddesch ze maache.',
+	'purewikideletion-unblanknologintext' => 'Do mööts ald aanjemeldt un [[Special:UserLogin|enjelogg]] sin, öm en läddesch jemaate Sigg widder retuur ze holle.',
+	'purewikideletion-blankedtext' => '[[$1]] es läddesch jemaat.
+Loor op $2, doh es en Leß met de zoläz läddesch jemaate Sigge.',
+	'purewikideletion-population-done' => 'De Daatebangktabäll met de läddije Sigge es jäz jeföllt.',
+	'right-purewikideletion' => 'De [[Special:PopulateBlankedPagesTable|Daatebangktabäll met de läddije Sigge fölle]]',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
