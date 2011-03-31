@@ -52,8 +52,8 @@ $.setupActiveBuckets = function(){
 		// do the actual code in the campaign based on the bucket
 		if($.getBuckets()[campaign.name][0] != "none"){
 			campaign[$.getBuckets()[campaign.name][0]](); //function to execute
-			if(campaign.all){
-				campaign.all();
+			if(campaign.allActive){
+				campaign.allActive();
 			}
 		}
 		
