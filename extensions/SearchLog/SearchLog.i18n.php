@@ -38,7 +38,7 @@ $messages['qqq'] = array(
  */
 $messages['be-tarask'] = array(
 	'searchlog' => 'Журнал пошукаў',
-	'searchlog-unicode' => 'Паказаць «сыры» Юнікод',
+	'searchlog-unicode' => 'Паказаць неапрацаваны Unicode',
 	'searchlog-timeperiod' => 'Выберыце пэрыяд:',
 	'searchlog-entire' => 'Журнал цалкам',
 	'searchlog-phrase' => 'Шукаць фразу',

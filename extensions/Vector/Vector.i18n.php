@@ -713,6 +713,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Anton008
  * @author Excaliboor
  * @author SpeedyGonsales
  */
@@ -726,6 +727,7 @@ Možete onemogućiti ovo upozorenje u odjeljku "Širina okvira za uređivanje" V
 	'vector-editwarning-preference' => 'Upozori me kad napuštam stranicu za uređivanje bez spremanja izmjena',
 	'vector-simplesearch-search' => 'Traži',
 	'vector-simplesearch-containing' => 'sadrži....',
+	'vector-noexperiments-preference' => 'Isključi me iz daljnjih eksperimentiranja',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -139,6 +139,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'bookmanager-desc' => 'Nastroje za knihi',
 	'printversion' => 'Ćišćerska wersija',
 	'printversion-desc' => 'Twori [[Special:PrintVersion|ćišćersku wersiju]] knihi',
 	'printversion-no-book' => 'Prošu zapodaj mjeno knihi, za kotruž ma so ćišćerska wersija wutworić.',
