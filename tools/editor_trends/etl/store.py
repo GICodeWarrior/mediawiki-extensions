@@ -116,15 +116,15 @@ def store_articles(rts):
         line = line.strip()
         #print line.encode('utf-8')
         line = line.split('\t')
-        title = line[-1]
-        article_id = line[0]
-        ns = line[1]
-        if len(line) == 4:
-            category = line[2]
-            collection.insert({'id':article_id, 'title':title,
-                               'category': category, 'ns': ns})
-        else:
-            collection.insert({'id':article_id, 'title':title, 'ns': ns})
+        data = {}
+        for l in line:
+            #print l.encode('utf-8')
+            try:
+                key, value = l.split('=')
+            except ValueError, error:
+                print l.encode('utf-8')
+            data[key] = value
+        collection.insert(data)
     fh.close()
     print 'Done...'
 

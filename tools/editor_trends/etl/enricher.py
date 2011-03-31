@@ -216,12 +216,10 @@ class Buffer:
                         keys = dict.keys()
                         value = []
                         for key in keys:
-                            #obs = '%s=%s' % (key, dict[key])
+                            value.append(key)
                             value.append(dict[key])
-                            #if key != 'ns' and key != 'title':
-                            #    print dict['title'], obs
-                        #article_id = 'id=%s' % article_id
                         value.insert(0, article_id)
+                        value.insert(0, 'id')
                         #title = title.encode('ascii')
                         #row = '\t'.join([article_id, title]) + '\n'
                         rows.append(value)
@@ -462,7 +460,7 @@ def determine_namespace(title, include_ns, exclude_ns):
     ns = {}
     if title != None:
         for namespace in include_ns:
-            if title.startswith(ns):
+            if title.startswith(namespace):
                 ns['namespace'] = include_ns[namespace]
         if ns == {}:
             for namespace in exclude_ns.values():
