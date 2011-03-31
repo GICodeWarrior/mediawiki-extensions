@@ -367,6 +367,7 @@ $messages['gl'] = array(
 	'ts-citegen-Other-languages' => 'Outras linguas',
 	'ts-citegen-Save-it' => 'Pescuda actual',
 	'ts-citegen-Errors-title' => 'Erros',
+	'ts-citegen-base-disabled' => 'Error: A base de datos %s non está dispoñible',
 );
 
 /** Swiss German (Alemannisch)
