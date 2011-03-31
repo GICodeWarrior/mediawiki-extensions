@@ -100,6 +100,8 @@ def store_articles(rts):
     collection = mongo[rts.articles_raw]
     db.add_index_to_collection(rts.dbname, rts.articles_raw, 'id')
     db.add_index_to_collection(rts.dbname, rts.articles_raw, 'title')
+    db.add_index_to_collection(rts.dbname, rts.articles_raw, 'ns')
+    db.add_index_to_collection(rts.dbname, rts.articles_raw, 'category')
 
     location = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
     fh = file_utils.create_txt_filehandle(location, 'titles.csv', 'r', rts.encoding)
