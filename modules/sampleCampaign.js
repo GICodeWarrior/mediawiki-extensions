@@ -44,7 +44,8 @@ MW.activeCampaigns[MW.activeCampaigns.length] =
   "allActive": function(){
 	  //add click tracking to save
 	  $j("#wpSave").click(function(){ $j.trackAction('save'); });
-	  
+	  //add click tracking to preview
+	  $j("#wpPreview").click(function(){ $j.trackAction('preview'); });
   }
   
 };
