@@ -107,8 +107,15 @@ def store_articles(rts):
     for line in fh:
         line = line.strip()
         #print line.encode('utf-8')
-        id, title = line.split('\t')
-        collection.insert({'id':id, 'title':title})
+        line = line.split('\t')
+        title = line[-1]
+        id = line[0]
+        ns = line[1]
+        if len(line) == 4:
+            category = line[2]
+            collection.insert({'id':id, 'title':title, 'category': category, 'ns': ns})
+        else:
+            collection.insert({'id':id, 'title':title, 'ns': ns})
     fh.close()
     print 'Done...'
 

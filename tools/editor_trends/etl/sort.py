@@ -43,19 +43,25 @@ class Sorter(consumers.BaseConsumer):
                 if filename == None:
                     self.result.put(None)
                     break
-
+                elif filename.startswith('comments') or filename.startswith('title'):
+                    continue
                 fh = file_utils.create_txt_filehandle(self.rts.txt,
                                                       filename,
                                                       'r',
                                                       self.rts.encoding)
                 data = file_utils.read_unicode_text(fh)
                 fh.close()
-                data = [d.strip() for d in data]
-                data = [d.split('\t') for d in data]
+                for x, d in enumerate(data):
+                    d = d.strip().split('\t')
+                    data[x] = d
+                #data = [d.strip() for d in data]
+                #data = [d.split('\t') for d in data]
                 sorted_data = mergesort(data)
                 write_sorted_file(sorted_data, filename, self.rts)
                 self.result.put(True)
             except UnicodeDecodeError, e:
+                print 'Error: %s, (%s)' % (e, filename)
+            except MemoryError, e:
                 print 'Error: %s, (%s)' % (e, filename)
             except Empty:
                 pass
