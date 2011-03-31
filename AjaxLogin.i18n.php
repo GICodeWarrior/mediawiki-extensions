@@ -200,6 +200,7 @@ This will take you away from this edit page and you may lose your current edit.'
 
 /** Czech (Česky)
  * @author Kuvaly
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'ajaxlogin-desc' => 'Dynamické pole, umožňující uživatelům přihlásit se a připomenout heslo',
@@ -211,6 +212,8 @@ Pokud opustíte tuto stránku, můžete ztratit své neuložené úpravy.',
 	'al-nosuchuser' => 'Uživatel se jménem „$1“ neexistuje.
 V uživatelských jménech se dbá na velikost písmen!
 Zkontrolujte zda jste jméno napsali správně!',
+	'al-createblocked' => 'Vaší IP adrese byla zablokována možnost zakládat nové účty.',
+	'al-throttled' => 'Měli jste teď příliš mnoho neúspěšných pokusů o zadání hesla. Před dalším pokusem prosím počkejte $1 {{PLURAL:$1|sekundu|sekundy|sekund}}.',
 );
 
 /** Kashubian (Kaszëbsczi)
