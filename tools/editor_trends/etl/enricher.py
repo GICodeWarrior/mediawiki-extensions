@@ -37,19 +37,18 @@ try:
     import pycassa
 
 except ImportError:
-    print 'I am not going to use Cassandra today, it\'s my off day.'
-
+    pass
 
 from database import db
 from bots import detector
 from utils import file_utils
 
-NAMESPACE = {
+EXCLUDE_NAMESPACE = {
     #0:'Main',    
     #1:'Talk',
     #2:'User',
     #3:'User talk',
-    4:'Wikipedia',
+    #4:'Wikipedia',
     #5:'Wikipedia talk',
     6:'File',
     #7:'File talk',
@@ -71,6 +70,21 @@ NAMESPACE = {
     #109:'Book talk'
 }
 
+COUNT_EXCLUDE_NAMESPACE = {
+    1:'Talk',
+    2:'User',
+    4:'Wikipedia',
+    6:'File',
+    8:'MediaWiki',
+    10:'Template',
+    12:'Help',
+    14:'Category',
+    90:'Thread',
+    92:'Summary',
+    100:'Portal',
+    108:'Book',
+}
+
 class Statistics:
     def __init__(self):
         self.count_articles = 0
@@ -82,18 +96,18 @@ class Statistics:
 
 
 class Buffer:
-    def __init__(self, storage, id, rts=None, filehandles=None, locks=None):
+    def __init__(self, storage, processs_id, rts=None, filehandles=None, locks=None):
         assert storage == 'cassandra' or storage == 'mongo' or storage == 'csv', \
             'Valid storage options are cassandra and mongo.'
         self.storage = storage
         self.revisions = {}
         self.comments = {}
         self.titles = {}
-        self.id = id
+        self.processs_id = processs_id
         self.keyspace_name = 'enwiki'
-        self.keys = ['revision_id', 'article_id', 'id', 'namespace',
-                     'title', 'timestamp', 'hash', 'revert', 'bot', 'prev_size',
-                     'cur_size', 'delta']
+        self.keys = ['revision_id', 'article_id', 'id', 'username', 'namespace',
+                     'title', 'timestamp', 'hash', 'revert', 'bot', 'cur_size',
+                     'delta']
         self.setup_storage()
         self.stats = Statistics()
         if storage == 'csv':
@@ -101,7 +115,9 @@ class Buffer:
             self.lock1 = locks[0] #lock for generic data
             self.lock2 = locks[1] #lock for comment data
             self.lock3 = locks[2] #lock for article titles
-            self.filehandles = filehandles
+            self.filehandles = filehandles[0]
+            self.fh_titles = filehandles[1]
+            self.fh_comments = filehandles[2]
 
     def setup_storage(self):
         if self.storage == 'cassandra':
@@ -111,14 +127,6 @@ class Buffer:
         elif self.storage == 'mongo':
             self.db = db.init_mongo_db(self.keyspace_name)
             self.collection = self.db['kaggle']
-
-        else:
-            title_file = 'titles.csv'
-            comment_file = 'comments.csv'
-            file_utils.delete_file('', title_file, directory=False)
-            file_utils.delete_file('', comment_file, directory=False)
-            self.fh_titles = codecs.open(title_file, 'a', 'utf-8')
-            self.fh_comments = codecs.open(comment_file, 'a', 'utf-8')
 
     def get_hash(self, id):
         '''
@@ -164,9 +172,7 @@ class Buffer:
     def empty(self):
         self.store()
         self.clear()
-        if self.storage == 'csv':
-            self.fh_main.close()
-            self.fh_extra.close()
+
 
     def clear(self):
         self.revisions = {}
@@ -184,31 +190,44 @@ class Buffer:
                 values = []
                 for key in self.keys:
                     values.append(revision[key].decode('utf-8'))
-                values.insert(0, id)
+                #values.insert(0, id)
                 rows.append(values)
             self.write_output(rows)
 
             if self.comments:
                 self.lock2.acquire()
                 try:
+                    rows = []
                     for revision_id, comment in self.comments.iteritems():
-                        comment = comment.decode('utf-8')
-                        row = '\t'.join([revision_id, comment]) + '\n'
-                        file_utils.write_list_to_csv(row, fh_comments, lock=self.lock2)
-                except:
-                    pass
+                        #comment = comment.decode('utf-8')
+                        #row = '\t'.join([revision_id, comment]) + '\n'
+                        rows.append([revision_id, comment])
+                        file_utils.write_list_to_csv(row, self.fh_comments)
+                except Exception, error:
+                    print error
                 finally:
                     self.lock2.release()
 
             elif self.titles:
                 self.lock3.acquire()
                 try:
-                    for article_id, title in self.titles.iteritems():
-                        title = title.decode('utf-8')
-                        row = '\t'.join([article_id, title]) + '\n'
-                        file_utils.write_list_to_csv(row, fh_titles, lock=self.lock3)
-                except:
-                    pass
+                    rows = []
+                    for article_id, dict in self.titles.iteritems():
+                        keys = dict.keys()
+                        value = []
+                        for key in keys:
+                            #obs = '%s=%s' % (key, dict[key])
+                            value.append(dict[key])
+                            #if key != 'ns' and key != 'title':
+                            #    print dict['title'], obs
+                        #article_id = 'id=%s' % article_id
+                        value.insert(0, article_id)
+                        #title = title.encode('ascii')
+                        #row = '\t'.join([article_id, title]) + '\n'
+                        rows.append(value)
+                    file_utils.write_list_to_csv(rows, self.fh_titles, newline=False)
+                except Exception, error:
+                    print error
                 finally:
                     self.lock3.release()
 
@@ -298,6 +317,51 @@ def extract_revision_text(revision):
         return ''
 
 
+def parse_title(title):
+    return title.text
+
+
+def parse_title_meta_data(title, namespace):
+    '''
+    This function categorizes an article to assist the Wikimedia Taxonomy
+    project. See 
+    http://meta.wikimedia.org/wiki/Contribution_Taxonomy_Project/Research_Questions
+    '''
+    title_meta = {}
+    if not namespace:
+        return title_meta
+
+    title_meta['title'] = title
+    ns = namespace['namespace']
+    title_meta['ns'] = ns
+    if title.startswith('List of'):
+        title_meta['list'] = True
+    elif ns == 4 or ns == 5:
+        if title.find('Articles for deletion') > -1:
+            title_meta['category'] = 'Deletion'
+        elif title.find('Mediation Committee') > -1:
+            title_meta['category'] = 'Mediation'
+        elif title.find('Mediation Cabal') > -1:
+            title_meta['category'] = 'Mediation'
+        elif title.find('Arbitration') > -1:
+            title_meta['category'] = 'Arbitration'
+        elif title.find('Featured Articles') > -1:
+            title_meta['category'] = 'Featured Article'
+        elif title.find('Featured picture candidates') > -1:
+            title_meta['category'] = 'Featured Pictures'
+        elif title.find('Featured sound candidates') > -1:
+            title_meta['category'] = 'Featured Sounds'
+        elif title.find('Featured list candidates') > -1:
+            title_meta['category'] = 'Featured Lists'
+        elif title.find('Featured portal candidates') > -1:
+            title_meta['category'] = 'Featured Portal'
+        elif title.find('Featured topic candidates') > -1:
+            title_meta['category'] = 'Featured Topic'
+        elif title.find('Good Article') > -1:
+            title_meta['category'] = 'Good Article'
+    return title_meta
+
+
 def extract_username(contributor, xml_namespace):
     contributor = contributor.find('%s%s' % (xml_namespace, 'username'))
     if contributor != None:
@@ -380,7 +444,6 @@ def parse_contributor(revision, bots, xml_namespace):
     username = extract_username(revision, xml_namespace)
     user_id = extract_contributor_id(revision, xml_namespace)
     bot = determine_username_is_bot(revision, bots, xml_namespace)
-    revision.clear()
     editor = {}
     editor['username'] = username
     editor['bot'] = bot
@@ -391,19 +454,21 @@ def parse_contributor(revision, bots, xml_namespace):
     return editor
 
 
-def determine_namespace(title, namespaces):
+def determine_namespace(title, include_ns, exclude_ns):
+    '''
+    You can only determine whether an article belongs to the Main Namespace
+    by ruling out that it does not belong to any other namepace
+    '''
     ns = {}
     if title != None:
-        for namespace in namespaces:
-            if title.startswith(namespace):
-                ns['namespace'] = namespaces[namespace]
+        for namespace in include_ns:
+            if title.startswith(ns):
+                ns['namespace'] = include_ns[namespace]
         if ns == {}:
-            for namespace in NAMESPACE.values():
+            for namespace in exclude_ns.values():
                 if title.startswith(namespace):
-                    '''
-                    article does not belong to either the main namespace, user, 
-                    talk or user talk namespace.
-                    '''
+                    '''article does not belong to any of the include_ns
+                    namespaces'''
                     ns = False
                     return ns
             ns['namespace'] = 0
@@ -445,9 +510,8 @@ def extract_comment_text(revision_id, revision):
 
 
 def count_edits(article, counts, bots, xml_namespace):
-    namespaces = {}
-    title = article['title'].text
-    namespace = determine_namespace(title, namespaces)
+    title = parse_title(article['title'])
+    namespace = determine_namespace(title, {}, COUNT_EXCLUDE_NAMESPACE)
     if namespace != False:
         article_id = article['id'].text
         revisions = article['revisions']
@@ -469,18 +533,21 @@ def count_edits(article, counts, bots, xml_namespace):
     return counts
 
 
-def create_variables(article, cache, bots, xml_namespace):
-    namespaces = {'User': 2,
+def create_variables(article, cache, bots, xml_namespace, comments=False):
+    include_ns = {'User Talk': 3,
+                  'Wikipedia Talk': 5,
                   'Talk': 1,
-                  'User Talk': 3,
+                  'User': 2,
+                  'Wikipedia': 4,
                   }
-    title = article['title'].text
-    namespace = determine_namespace(title, namespaces)
-
+    title = parse_title(article['title'])
+    namespace = determine_namespace(title, include_ns, EXCLUDE_NAMESPACE)
+    title_meta = parse_title_meta_data(title, namespace)
     if namespace != False:
         cache.stats.count_articles += 1
         article_id = article['id'].text
         article['id'].clear()
+        cache.titles[article_id] = title_meta
         hashes = deque()
         size = {}
         revisions = article['revisions']
@@ -495,7 +562,6 @@ def create_variables(article, cache, bots, xml_namespace):
             if not contributor:
                 #editor is anonymous, ignore
                 continue
-
             revision_id = revision.find('%s%s' % (xml_namespace, 'id'))
             revision_id = extract_revision_id(revision_id)
             if revision_id == None:
@@ -507,8 +573,9 @@ def create_variables(article, cache, bots, xml_namespace):
             text = extract_revision_text(revision)
             row.update(contributor)
 
-            comment = extract_comment_text(revision_id, revision)
-            cache.comments.update(comment)
+            if comments:
+                comment = extract_comment_text(revision_id, revision)
+                cache.comments.update(comment)
 
             timestamp = revision.find('%s%s' % (xml_namespace, 'timestamp')).text
             row['timestamp'] = timestamp
@@ -525,8 +592,7 @@ def create_variables(article, cache, bots, xml_namespace):
             revision.clear()
 
 
-
-def parse_xml(fh, xml_namespace):
+def parse_xml(fh, xml_namespace, wikilytics=True):
     context = iterparse(fh, events=('end',))
     context = iter(context)
 
@@ -548,28 +614,31 @@ def parse_xml(fh, xml_namespace):
             article = {}
             article['revisions'] = []
             id = False
-        #elif event == 'end':
+        #elif wikilytics == True and event == 'end':
         #    elem.clear()
 
 
-def delayediter(iterable):
-    iterable = iter(iterable)
-    prev = iterable.next()
-    for item in iterable:
-        yield prev
-        prev = item
-    yield prev
-
-def stream_raw_xml(input_queue, storage, id, function, dataset, locks, rts):
+def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, rts):
     bots = detector.retrieve_bots('en')
     xml_namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
     path = os.path.join(rts.location, 'txt')
+
     filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
                 rts.encoding) for fh in xrange(rts.max_filehandles)]
+
+    title_file = os.path.join(path, 'titles.csv')
+    comment_file = os.path.join(path, 'comments.csv')
+    #file_utils.delete_file(path, title_file, directory=False)
+    #file_utils.delete_file(path, comment_file, directory=False)
+    fh_titles = codecs.open(title_file, 'a', 'utf-8')
+    fh_comments = codecs.open(comment_file, 'a', 'utf-8')
+    handles = [filehandles, fh_titles, fh_comments]
+    wikilytics = False
+
     t0 = datetime.datetime.now()
     i = 0
     if dataset == 'training':
-        cache = Buffer(storage, id, rts, filehandles, locks)
+        cache = Buffer(storage, process_id, rts, handles, locks)
     else:
         counts = {}
 
@@ -580,31 +649,45 @@ def stream_raw_xml(input_queue, storage, id, function, dataset, locks, rts):
             break
 
         fh = file_utils.create_streaming_buffer(filename)
+        filename = os.path.split(filename)[1]
+        filename = os.path.splitext(filename)[0]
         for article in parse_xml(fh, xml_namespace):
             if dataset == 'training':
-                function(article, cache, bots, xml_namespace)
+                function(article, cache, bots, xml_namespace, wikilytics)
             elif dataset == 'prediction':
                 counts = function(article, counts, bots, xml_namespace)
             i += 1
             if i % 10000 == 0:
-                print 'Worker %s parsed %s articles' % (id, i)
+                print 'Worker %s parsed %s articles' % (process_id, i)
         fh.close()
 
         t1 = datetime.datetime.now()
-        print 'Processing took %s' % (t1 - t0)
+        print 'Processing of %s took %s' % (filename, (t1 - t0))
         t0 = t1
 
     if dataset == 'training':
         cache.empty()
         cache.stats.summary()
-        print 'Finished parsing bz2 archives'
     else:
         location = os.getcwd()
-        filename = 'counts_%s.bin' % id
+        keys = counts.keys()
+        filename = 'counts_%s.csv' % filename
+        fh = file_utils.create_txt_filehandle(location, filename, 'w', 'utf-8')
+        file_utils.write_dict_to_csv(counts, fh, keys)
+        fh.close()
+
+        filename = 'counts_%s.bin' % filename
         file_utils.store_object(counts, location, filename)
+
+    print 'Finished parsing bz2 archives'
 
 
 def setup(storage, rts=None):
+    '''
+    Depending on the storage system selected (cassandra, csv or mongo) some
+    preparations are made including setting up namespaces and cleaning up old
+    files. 
+    '''
     keyspace_name = 'enwiki'
     if storage == 'cassandra':
         cassandra.install_schema(keyspace_name, drop_first=True)
@@ -624,35 +707,34 @@ def multiprocessor_launcher(function, path, dataset, storage, processors, extens
     #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
     #files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
 
-    files = file_utils.retrieve_file_list(path, extension)
+    files = file_utils.retrieve_file_list(rts.location, extension)
+    #files = files[0:1]
 
-    for file in files:
-        filename = os.path.join(path, file)
+    for filename in files:
+        filename = os.path.join(path, filename)
         print filename
         input_queue.put(filename)
 
     for x in xrange(processors):
         input_queue.put(None)
 
-    extracters = [Process(target=stream_raw_xml, args=[input_queue, storage, id, function, dataset, locks, rts])
-                  for id in xrange(processors)]
+    extracters = [Process(target=stream_raw_xml, args=[input_queue, storage,
+                                                       process_id, function,
+                                                       dataset, locks, rts])
+                  for process_id in xrange(processors)]
     for extracter in extracters:
         extracter.start()
 
     input_queue.join()
-
-
-
-def debug():
-    path = '/mnt/wikipedia_dumps/batch2/'
-    files = file_utils.retrieve_file_list(path, 'bz2')
-    for file in files:
-        filename = os.path.join(path, file)
-        unzip(filename)
+    #filehandles = [fh.close() for fh in filehandles]
+    #fh_titles.close()
+    #fh_comments.close()
 
 
 def launcher_training():
-    # launcher for creating training data
+    '''
+    Launcher for creating training dataset for data competition    
+    '''
     path = '/mnt/wikipedia_dumps/batch2/'
     function = create_variables
     storage = 'csv'
@@ -664,7 +746,9 @@ def launcher_training():
 
 
 def launcher_prediction():
-    # launcher for creating test data
+    '''
+    Launcher for creating prediction dataset for datacompetition
+    '''
     path = '/mnt/wikipedia_dumps/batch1/'
     function = count_edits
     storage = 'csv'
@@ -676,6 +760,9 @@ def launcher_prediction():
 
 
 def launcher(rts):
+    '''
+    This is the generic entry point for regular Wikilytics usage.
+    '''
     # launcher for creating regular mongo dataset
     path = rts.location
     function = create_variables
@@ -694,4 +781,4 @@ def launcher(rts):
 if __name__ == '__main__':
     #launcher_training()
     #launcher_prediction()
-    launcher()
+    launcher(rts)

@@ -60,19 +60,34 @@ class Storer(consumers.BaseConsumer):
             fh = file_utils.create_txt_filehandle(self.rts.sorted, filename,
                                                   'r', self.rts.encoding)
             for line in file_utils.read_raw_data(fh):
-                if len(line) > 1:
-                    contributor = line[0]
+                if len(line) == 12:
+                    article_id = int(line[1])
+                    contributor = line[2]
                     #print 'Parsing %s' % contributor
                     if prev_contributor != contributor and prev_contributor != -1:
                         editor_cache.add(prev_contributor, 'NEXT')
-                    date = text_utils.convert_timestamp_to_datetime_utc(line[1])
-                    article_id = int(line[2])
+
                     username = line[3].encode(self.rts.encoding)
-                    ns = int(line[5])
+
+                    ns = int(line[4])
+                    date = text_utils.convert_timestamp_to_datetime_utc(line[6])
+                    hash = line[7]
+                    revert = int(line[8])
+                    bot = int(line[9])
+                    cur_size = int(line[10])
+                    delta = int(line[11])
+
                     value = {'date': date,
                              'article': article_id,
                              'username': username,
-                             'ns': ns}
+                             'ns': ns,
+                             'hash':hash,
+                             'revert':revert,
+                             'cur_size':cur_size,
+                             'delta':delta,
+                             'bot':bot
+                             }
+
                     editor_cache.add(contributor, value)
                     prev_contributor = contributor
             fh.close()
@@ -81,18 +96,18 @@ class Storer(consumers.BaseConsumer):
 
 def store_articles(rts):
     mongo = db.init_mongo_db(rts.dbname)
+    db.drop_collection(rts.dbname, rts.articles_raw)
     collection = mongo[rts.articles_raw]
+    db.add_index_to_collection(rts.dbname, rts.articles_raw, 'id')
+    db.add_index_to_collection(rts.dbname, rts.articles_raw, 'title')
 
-    location = os.path.join(rts.input_location, rts.language.code, rts.project.name)
-    fh = file_utils.create_txt_filehandle(location, 'articles.csv', 'r', rts.encoding)
+    location = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
+    fh = file_utils.create_txt_filehandle(location, 'titles.csv', 'r', rts.encoding)
     print 'Storing article titles...'
-    print location
     for line in fh:
         line = line.strip()
-        try:
-            id, title = line.split('\t')
-        except ValueError:
-            print line.encode('utf-8')
+        #print line.encode('utf-8')
+        id, title = line.split('\t')
         collection.insert({'id':id, 'title':title})
     fh.close()
     print 'Done...'
@@ -105,6 +120,7 @@ def launcher(rts):
     '''
     store_articles(rts)
     print 'Input directory is: %s ' % rts.sorted
+    db.drop_collection(rts.dbname, rts.editors_dataset)
     mongo = db.init_mongo_db(rts.dbname)
     coll = mongo[rts.editors_raw]
     coll.ensure_index('editor')

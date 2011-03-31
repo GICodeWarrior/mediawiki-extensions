@@ -50,7 +50,7 @@ def create_datacontainer(first_year, final_year, datatype='dict'):
     '''
     data = {}
     for x in xrange(first_year, final_year):
-        data[x] = add_datatype(datatype)
+        data[str(x)] = add_datatype(datatype)
     return data
 
 def add_windows_to_datacontainer(datacontainer, windows):

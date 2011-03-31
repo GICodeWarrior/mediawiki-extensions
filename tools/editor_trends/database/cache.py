@@ -69,7 +69,7 @@ class EditorCache(object):
             else:
                 value.pop('username')
 
-            year = value['date'].year
+            year = str(value['date'].year)
             self.editors[key]['edits'][year].append(value)
             self.editors[key]['obs'] += 1
 
