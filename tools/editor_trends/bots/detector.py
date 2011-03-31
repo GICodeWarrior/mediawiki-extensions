@@ -32,15 +32,12 @@ from classes import settings
 settings = settings.Settings()
 
 
-import wikitree
 from database import db
 from utils import file_utils
 from utils import messages
 
 from classes import consumers
 from classes import bots
-
-import cProfile
 
 try:
     import psyco
@@ -76,7 +73,7 @@ def read_bots_csv_file(location, filename, encoding, manager=False):
 
 def retrieve_bots(language_code):
     '''
-    Loader function to retrieve list of id's of known Wikipedia bots. 
+    Loader function to retrieve list of id's of known Wikipedia bots.
     '''
     ids = []
     mongo = db.init_mongo_db('bots')
@@ -91,10 +88,13 @@ def retrieve_bots(language_code):
 def store_bots():
     '''
     This file reads the results from the lookup_bot_userid function and stores
-    it in a MongoDB collection. 
+    it in a MongoDB collection.
     '''
     keys = ['name', 'verified', 'projects']
-    bots = file_utils.create_dict_from_csv_file(settings.csv_location, 'bots_ids.csv', settings.encoding, keys)
+    bots = file_utils.create_dict_from_csv_file(settings.csv_location,
+                                                'bots_ids.csv',
+                                                settings.encoding,
+                                                keys)
     mongo = db.init_mongo_db('bots')
     collection = mongo['ids']
     db.remove_documents_from_mongo_db(collection, None)
@@ -103,7 +103,6 @@ def store_bots():
         bot = bots[id]
         data = dict([(k, bot[k]) for k in keys])
         data['id'] = id
-        #{'id': int(id), 'name': name, 'verified': verified, 'projects': projects}
         collection.insert(data)
 
     print 'Stored %s bots' % collection.count()
@@ -112,7 +111,7 @@ def store_bots():
 def convert_object_to_dict(obj, exclude=[]):
     '''
     @obj is an arbitray object where the properties need to be translated to
-    keys and values to ease writing to a csv file. 
+    keys and values to ease writing to a csv file.
     '''
     d = {}
     for kw in obj.__dict__.keys():
@@ -122,11 +121,13 @@ def convert_object_to_dict(obj, exclude=[]):
 
 
 def write_bot_list_to_csv(bots, keys):
-    fh = file_utils.create_txt_filehandle(settings.csv_location, 'bots_ids.csv', 'w', settings.encoding)
+    fh = file_utils.create_txt_filehandle(settings.csv_location, 'bots_ids.csv',
+                                          'w', settings.encoding)
     bot_dict = convert_object_to_dict(bots, exclude=['time', 'written'])
     for bot in bot_dict:
         bot = bot_dict[bot]
-        file_utils.write_dict_to_csv(bot, fh, keys, write_key=False, newline=True)
+        file_utils.write_dict_to_csv(bot, fh, keys, write_key=False,
+                                     newline=True)
     fh.close()
 
 
@@ -178,13 +179,12 @@ def create_bot_validation_dataset(xml_nodes, fh, bots):
 def bot_launcher(language_code, project, target, action, single=False, manager=False):
     '''
     This function sets the stage to launch bot id detection and collecting data
-    to discover new bots. 
+    to discover new bots.
     '''
     file_utils.delete_file(settings.csv_location, 'bots_ids.csv')
     location = os.path.join(settings.input_location, language_code, project)
     input_xml = os.path.join(location, 'chunks')
     input_txt = os.path.join(location, 'txt')
-
 
     tasks = multiprocessing.JoinableQueue()
     mgr = multiprocessing.Manager()
@@ -208,8 +208,6 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
     #lock = mgr.Lock()
     if manager:
         manager = mgr
-
-
 
     tracker = {}
     if single:
@@ -239,7 +237,6 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
         #write_bot_list_to_csv(bots, keys)
 
 
-
 def bot_training_dataset(bots):
     fh = file_utils.create_txt_filehandle(settings.csv_location, 'training_bots.csv', 'w', settings.encoding)
     keys = bots.keys()
@@ -254,7 +251,7 @@ def bot_training_dataset(bots):
 
 def bot_launcher_multi(tasks):
     '''
-    This is the launcher that uses multiprocesses. 
+    This is the launcher that uses multiprocesses.
     '''
     consumers = [consumers.XMLFileConsumer(tasks, None) for i in xrange(settings.number_of_processes)]
     for x in xrange(settings.number_of_processes):
@@ -265,6 +262,7 @@ def bot_launcher_multi(tasks):
 
     tasks.join()
 
+
 def debug_bots_dict():
     bots = file_utils.load_object(settings.binary_location, 'bots.bin')
     for bot in bots:
@@ -274,6 +272,7 @@ def debug_bots_dict():
     print 'done'
     return bots
 
+
 if __name__ == '__main__':
     language_code = 'en'
     project = 'wiki'
@@ -282,4 +281,3 @@ if __name__ == '__main__':
     #write_bot_list_to_csv(bots)
     #language_code, project, lookup_bot_userid, single = False, manager = False
     bot_launcher(language_code, project, create_bot_validation_dataset, action='training', single=True, manager=False)
-    #cProfile.run(bot_launcher(language_code, project, single=True), 'profile')
