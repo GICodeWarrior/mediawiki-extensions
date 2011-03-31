@@ -75,19 +75,19 @@ def log_to_mongo(rts, jobtype, task, timer, event='start'):
             coll.update({'hash': hash}, {'$set': {'tasks': tasks}})
 
 
-def log_to_csv(logger, settings, **kwargs):
+def log_to_csv(logger, settings, message, verb, function, **kwargs):
     '''
     Writes detailed log information to logs / projectname_date.csv
     '''
-    message = kwargs.pop('message')
-    verb = kwargs.pop('verb')
-    function = kwargs.pop('function')
     logger.debug('%s\tStarting %s' \
         % (datetime.datetime.now(), function.func_name))
     if message:
         logger.debug('%s\t%s' % (datetime.datetime.now(), message))
 
-    max_length = max([len(prop) for prop in kwargs if type(prop) != type(True)])
+    try:
+        max_length = max([len(prop) for prop in kwargs if type(prop) != type(True)])
+    except ValueError:
+        max_length = 0
     max_tabs = max_length // settings.tab_width
     res = max_length % settings.tab_width
     if res > 0:
