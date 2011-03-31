@@ -47,6 +47,15 @@ class CompressionNotSupportedError(Error):
         return 'You have not installed a program to extract %s archives.' \
             % self.extension
 
+class CompressedFileNotSupported(Error):
+    def __init__(self, extension):
+        self.extension = extension
+
+    def __str__(self):
+        return 'Wikilytics does not support %s files to extract directly from.' \
+            % self.extension
+
+
 class OutDatedPythonVersionError(Error):
     def __init__(self, version):
         self.version = version
