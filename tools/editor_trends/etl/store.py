@@ -19,7 +19,6 @@ __version__ = '0.1'
 
 from Queue import Empty
 import multiprocessing
-import sys
 import os
 import progressbar
 
@@ -28,24 +27,22 @@ from utils import text_utils
 from database import cache
 from database import db
 from classes import consumers
-from utils import messages
-
 
 
 class Storer(consumers.BaseConsumer):
+    '''
+    This function is called by multiple consumers who each take a sorted 
+    file and create a cache object. If the number of edits made by an 
+    editor is above the treshold then the cache object stores the data in 
+    Mongo, else the data is discarded.
+    The treshold is currently more than 9 edits and is not yet configurable. 
+    '''
     def run(self):
-        '''
-        This function is called by multiple consumers who each take a sorted 
-        file and create a cache object. If the number of edits made by an 
-        editor is above the treshold then the cache object stores the data in 
-        Mongo, else the data is discarded.
-        The treshold is currently more than 9 edits and is not yet configurable. 
-        '''
         mongo = db.init_mongo_db(self.rts.dbname)
         collection = mongo[self.rts.editors_raw]
 
         editor_cache = cache.EditorCache(collection)
-        prev_contributor = -1
+        prev_editor = -1
         while True:
             try:
                 filename = self.tasks.get(block=False)
@@ -61,40 +58,49 @@ class Storer(consumers.BaseConsumer):
                                                   'r', self.rts.encoding)
             for line in file_utils.read_raw_data(fh):
                 if len(line) == 12:
-                    article_id = int(line[1])
-                    contributor = line[2]
+                    editor = line[2]
                     #print 'Parsing %s' % contributor
-                    if prev_contributor != contributor and prev_contributor != -1:
-                        editor_cache.add(prev_contributor, 'NEXT')
+                    if prev_editor != editor and prev_editor != -1:
+                        editor_cache.add(prev_editor, 'NEXT')
 
-                    username = line[3].encode(self.rts.encoding)
+                    data = self.prepare_data(line)
 
-                    ns = int(line[4])
-                    date = text_utils.convert_timestamp_to_datetime_utc(line[6])
-                    hash = line[7]
-                    revert = int(line[8])
-                    bot = int(line[9])
-                    cur_size = int(line[10])
-                    delta = int(line[11])
-
-                    value = {'date': date,
-                             'article': article_id,
-                             'username': username,
-                             'ns': ns,
-                             'hash':hash,
-                             'revert':revert,
-                             'cur_size':cur_size,
-                             'delta':delta,
-                             'bot':bot
-                             }
-
-                    editor_cache.add(contributor, value)
-                    prev_contributor = contributor
+                    editor_cache.add(editor, data)
+                    prev_editor = editor
             fh.close()
             self.result.put(True)
 
+    def prepare_data(self, line):
+        article_id = int(line[1])
+        username = line[3].encode(self.rts.encoding)
+        ns = int(line[4])
+        date = text_utils.convert_timestamp_to_datetime_utc(line[6])
+        md5 = line[7]
+        revert = int(line[8])
+        bot = int(line[9])
+        cur_size = int(line[10])
+        delta = int(line[11])
+
+        data = {'date': date,
+                 'article': article_id,
+                 'username': username,
+                 'ns': ns,
+                 'hash': md5,
+                 'revert':revert,
+                 'cur_size':cur_size,
+                 'delta':delta,
+                 'bot':bot
+                }
+        return data
 
 def store_articles(rts):
+    '''
+    This function reads titles.csv and stores it in a separate collection.
+    Besides containing the title of an article, it also includes:
+    * namespace
+    * category (if any)
+    * article id
+    '''
     mongo = db.init_mongo_db(rts.dbname)
     db.drop_collection(rts.dbname, rts.articles_raw)
     collection = mongo[rts.articles_raw]
@@ -111,13 +117,14 @@ def store_articles(rts):
         #print line.encode('utf-8')
         line = line.split('\t')
         title = line[-1]
-        id = line[0]
+        article_id = line[0]
         ns = line[1]
         if len(line) == 4:
             category = line[2]
-            collection.insert({'id':id, 'title':title, 'category': category, 'ns': ns})
+            collection.insert({'id':article_id, 'title':title,
+                               'category': category, 'ns': ns})
         else:
-            collection.insert({'id':id, 'title':title, 'ns': ns})
+            collection.insert({'id':article_id, 'title':title, 'ns': ns})
     fh.close()
     print 'Done...'
 
@@ -169,9 +176,5 @@ def launcher(rts):
     tasks.join()
 
 
-def debug():
-    store_articles('wiki', 'cs')
-
-
 if __name__ == '__main__':
-    debug()
+    pass
