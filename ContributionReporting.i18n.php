@@ -945,6 +945,10 @@ $messages['cs'] = array(
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Od začátku roku (USD)',
 	'fundraiserstats-instructions' => 'Statistiky libovolného dne zobrazíte najetím myši nad příslušný sloupeček. Každý rok je na grafu vyznačen jinou barvou.',
+	'fundraiserstats-customize' => 'Přizpůsobit',
+	'fundraiserstats-show-years' => 'Zobrazit následující roky:',
+	'fundraiserstats-time-zone' => 'Časové pásmo:',
+	'fundraiserstats-utc' => '(od UTC)',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
