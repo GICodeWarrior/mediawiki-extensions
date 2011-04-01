@@ -285,6 +285,7 @@ $messages['lb'] = array(
 	'svgedit-editor-save-close' => 'Späicheren an zoumaachen',
 	'svgedit-editor-close' => 'Annulléieren',
 	'svgedit-desc' => 'Ännere vun SVG Zeechnungen am Browser mat [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Zeechnung änneren',
 );
 
 /** Macedonian (Македонски)

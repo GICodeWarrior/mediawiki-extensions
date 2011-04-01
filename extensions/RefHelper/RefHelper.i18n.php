@@ -924,6 +924,13 @@ $messages['lb'] = array(
 Dir kënnt [[Special:RefHelper|d'Referenz manuell derbäisetzen]] oder [[Special:RefSearch|no der Citatioun déi derbäi gesat soll ginn derbäisetzen]].",
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'refhelper-pages' => 'Puslopys:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

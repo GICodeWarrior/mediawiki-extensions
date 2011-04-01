@@ -4473,6 +4473,13 @@ $messages['li'] = array(
 	'wikilog-error-title' => 'Foutmeljing Wikilog',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'wikilog-history-lc' => 'viesture',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */

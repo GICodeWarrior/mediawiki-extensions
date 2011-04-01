@@ -741,6 +741,13 @@ $messages['lg'] = array(
 	'security-type-namespace' => 'kuŋaanyizo',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'security-type-namespace' => 'vuordu pluots',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -804,12 +804,13 @@ $messages['ml'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Zamwan
  */
 $messages['ms'] = array(
 	'ajaxLogin2' => 'Adakah anda pasti?
 Perubahan yang anda lakukan di laman ini mungkin hilang sekiranya anda tinggalkan laman ini sekarang.',
-	'ajaxlogin-create' => 'Cipta akaun',
+	'ajaxlogin-create' => 'Buka akaun',
 );
 
 /** Erzya (Эрзянь)

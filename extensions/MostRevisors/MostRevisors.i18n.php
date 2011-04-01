@@ -572,6 +572,13 @@ $messages['lg'] = array(
 	'mostrevisors-namespace' => 'Kuŋaanyizo:',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'mostrevisors-namespace' => 'Vuordu pluots:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

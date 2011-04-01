@@ -8423,6 +8423,7 @@ $messages['lt'] = array(
  * @author Dark Eagle
  */
 $messages['ltg'] = array(
+	'ow_history' => 'Viesture',
 	'ow_show' => 'Paruodeit',
 );
 

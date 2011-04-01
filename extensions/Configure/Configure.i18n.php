@@ -6745,6 +6745,15 @@ $messages['lt'] = array(
 	'configure-section-misc' => 'Įvairūs nustatymai',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'configure-desc-ns' => 'Vuordu pluots',
+	'configure-section-pages' => 'Puslopys',
+	'configure-section-namespaces' => 'Vuordu pluoti',
+);
+
 /** Latvian (Latviešu)
  * @author GreenZeb
  * @author Papuass

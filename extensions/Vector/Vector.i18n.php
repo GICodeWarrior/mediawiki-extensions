@@ -1342,6 +1342,7 @@ Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiune
 	'vector-editwarning-preference' => 'Avertizează-mă când părăsesc o pagină fără a salva modificările',
 	'vector-simplesearch-search' => 'Căutare',
 	'vector-simplesearch-containing' => 'conținând...',
+	'vector-noexperiments-preference' => 'Nu mai vreau să iau parte la experimente viitoare',
 );
 
 /** Tarandíne (Tarandíne)
