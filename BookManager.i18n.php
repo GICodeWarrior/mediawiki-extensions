@@ -58,6 +58,7 @@ $messages['br'] = array(
 	'printversion' => 'Stumm da voullañ',
 	'printversion-desc' => 'Genel a ra ur [[Special:PrintVersion|stumm da voullañ]] evit ul levr',
 	'printversion-no-book' => 'Merkit anv ul levr da gaout e stumm moullet.',
+	'printversion-inexistent-book' => "N'eo ket bet kavet al levr. Merkit anv ul levr zo anezhañ a-benn kaout ur stumm moullet.",
 );
 
 /** Bosnian (Bosanski)
