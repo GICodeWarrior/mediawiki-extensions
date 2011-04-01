@@ -12370,6 +12370,7 @@ $messages['lb'] = array(
 $messages['ltg'] = array(
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupa',
 	'configure-setting-wgDebugLogGroups-value' => 'Fails',
+	'configure-setting-wgXhtmlNamespaces-key' => 'Vuordu pluots',
 );
 
 /** Latvian (Latviešu)
