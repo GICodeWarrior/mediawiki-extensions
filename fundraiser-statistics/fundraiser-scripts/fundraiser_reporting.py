@@ -1212,11 +1212,26 @@ class IntervalReporting(FundraiserReporting):
 		times = mh.AutoVivification()
 		times_norm = mh.AutoVivification()
 		
+		""" Compose datetime objects to represent the first and last intervals """
+		start_time_obj = self.timestamp_to_obj(start_time, 1)
+		start_time_obj = start_time_obj.replace(minute=int(math.floor(start_time_obj.minute / interval) * interval))
+		start_time_obj_str = self.timestamp_from_obj(start_time_obj, 1, 3)
+		
+		end_time_obj = self.timestamp_to_obj(end_time, 1)
+		# end_time_obj = end_time_obj + datetime.timedelta(seconds=-1)
+		end_time_obj = end_time_obj.replace(minute=int(math.floor(end_time_obj.minute / interval) * interval))			
+		end_time_obj_str = 	self.timestamp_from_obj(end_time_obj, 1, 3)
+		
+		""" The start time for the impression portion of the query should be one second less"""
+		
+		imp_start_time_obj = start_time_obj + datetime.timedelta(seconds=-1)
+		imp_start_time_obj_str = self.timestamp_from_obj(imp_start_time_obj, 1, 3)
+		
 		""" Load the SQL File & Format """
 		filename = './sql/' + query_name + '.sql'
 		sql_stmnt = mh.read_sql(filename)
 		
-		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval])
+		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval, imp_start_time_obj_str])
 		# print sql_stmnt
 		
 		""" Get Indexes into Query """
@@ -1224,17 +1239,6 @@ class IntervalReporting(FundraiserReporting):
 		metric_index = query_obj.get_metric_index(query_name, metric_name)
 		time_index = query_obj.get_time_index(query_name)
 		
-		""" Compose datetime objects to represent the first and last intervals """
-		start_time_obj = self.timestamp_to_obj(start_time, 1)
-		start_time_obj = start_time_obj.replace(minute=int(math.floor(start_time_obj.minute / interval) * interval))
-		start_time_obj_str = self.timestamp_from_obj(start_time_obj, 1, 2)
-		
-		end_time_obj = self.timestamp_to_obj(end_time, 1)
-		end_time_obj = end_time_obj + datetime.timedelta(seconds=-1)
-		end_time_obj = end_time_obj.replace(minute=int(math.floor(end_time_obj.minute / interval) * interval))			
-		end_time_obj_str = 	self.timestamp_from_obj(end_time_obj, 1, 2)
-		
-						
 		""" Compose the data for each separate donor pipeline artifact """
 		try:
 			err_msg = sql_stmnt
@@ -1279,15 +1283,14 @@ class IntervalReporting(FundraiserReporting):
 			self.db.rollback()
 			sys.exit("Database Interface Exception:\n" + err_msg)
 		
-		
+
+
 		""" Ensure that the last time in the list is the endtime less the interval """
 		
 		for key in times.keys():
 			if final_time[key_name] != end_time_obj_str:
 				times[key].append(end_time_obj)
 				metrics[key].append(0.0)
-		
-		# print times
 			
 		self.close_db()
 		
@@ -1308,6 +1311,7 @@ class IntervalReporting(FundraiserReporting):
 		
 		pylab.grid()
 		pylab.xlim(ranges[0], ranges[1])
+		pylab.ylim(ranges[2], ranges[3])
 		pylab.legend(metrics.keys(),loc=2)
 
 		pylab.xlabel(xlabel)
@@ -1351,8 +1355,8 @@ class IntervalReporting(FundraiserReporting):
 		title = campaign + ':  ' + metric_full_name + ' -- ' + start_time + ' - ' + end_time
 		ylabel = metric_full_name
 		
-		# Convert counts to float (from Decimal) to prevent exception when bar plotting
-		# Bbox::update_numerix_xy expected numerix array
+		""" Convert counts to float (from Decimal) to prevent exception when bar plotting
+			Bbox::update_numerix_xy expected numerix array """
 		for key in counts.keys():
 			counts_new = list()
 			for i in range(len(counts[key])):
@@ -1374,9 +1378,9 @@ class IntervalReporting(FundraiserReporting):
 				times_max = list_max
 		
 		ranges = list()
-		ranges.append(0)
+		ranges.append(0.0)
 		ranges.append(times_max * 1.1)
-		ranges.append(0)
+		ranges.append(0.0)
 		ranges.append(metrics_max * 1.1)
 		
 		

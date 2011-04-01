@@ -133,14 +133,17 @@ class query_store:
 			end_time = args[1]
 			campaign = args[2]
 			interval = args[3]
-			sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, \
+			imp_start_time = args[4]
+			
+			sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, imp_start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, \
 									'%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
-		
+			
 		elif query_name == 'report_LP_metrics_minutely':
 			start_time = args[0]
 			end_time = args[1]
 			campaign = args[2]
 			interval = args[3]
+			
 			sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, start_time, end_time, campaign, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
 			
 		else:
