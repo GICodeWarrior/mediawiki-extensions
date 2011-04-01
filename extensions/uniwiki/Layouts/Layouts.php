@@ -61,7 +61,7 @@ function UW_Layouts_EF_Render ( $input, $args, $parser ) {
 /* ---- HOOKS ---- */
 $wgHooks['CustomEditor'][] = "UW_Layouts_maybeRedirectToLayout";
 $wgHooks['UnknownAction'][] = "UW_Layouts_checkActionIsLayout";
-$wgHooks['SkinTemplateSetupPageCss'][] = "UW_Layouts_Css";
+$wgHooks['BeforePageDisplay'][] = "UW_Layouts_Css";
 $wgHooks['EditFormPreloadText'][] = "UW_Layouts_preFillTextBox";
 
 function UW_Layouts_maybeRedirectToLayout( $article, $user ) {
@@ -232,9 +232,9 @@ function UW_Layouts_checkActionIsLayout( $action, $article ) {
 	return false;
 }
 
-function UW_Layouts_Css ( &$out ) {
-	global $wgScriptPath;
-	$out .= "@import '$wgScriptPath/extensions/uniwiki/Layouts/style.css';\n";
+function UW_Layouts_Css ( $out, $sk ) {
+	global $wgExtensionAssetsPath;
+	$out->addExtensionStyle( "$wgExtensionAssetsPath/uniwiki/Layouts/style.css" );
 	return true;
 }
 
