@@ -9,5 +9,5 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['DatabaseMssqlOld'] = $dir . 'DatabaseMssqlOld.php';
+$wgAutoloadClasses['DatabaseMssqlold'] = $dir . 'DatabaseMssqlOld.php';
 $wgAutoloadClasses['MSSQLOldField'] = $dir . 'DatabaseMssqlOld.php';
