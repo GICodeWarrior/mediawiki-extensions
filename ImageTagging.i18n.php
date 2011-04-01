@@ -1265,6 +1265,13 @@ $messages['li'] = array(
 	'imagetagging-article' => 'Pazjena:',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'imagetagging-imghistory' => 'Viesture',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
