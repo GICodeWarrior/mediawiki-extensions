@@ -41,17 +41,3 @@ $wgGroupPermissions['bureaucrat']['voteadmin'] = true;
 
 $wgAvailableRights[] = 'vote';
 $wgAvailableRights[] = 'voteadmin';
-
-$wgHooks['SkinTemplateSetupPageCss'][] = 'efVoteCss';
-
-/**
- * Add extra CSS to the skin
- */
-function efVoteCss( &$css ) {
-	global $wgTitle;
-	if ( $wgTitle->isSpecial( 'Vote' ) ) {
-		$file = dirname( __FILE__ ) . '/Vote.css';
-		$css .= "/*<![CDATA[*/\n" . htmlspecialchars( file_get_contents( $file ) ) . "\n/*]]>*/";
-	}
-	return true;
-}
