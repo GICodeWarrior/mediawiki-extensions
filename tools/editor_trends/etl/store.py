@@ -64,7 +64,7 @@ class Storer(consumers.BaseConsumer):
                         editor_cache.add(prev_editor, 'NEXT')
 
                     data = self.prepare_data(line)
-
+                    print editor, data['username']
                     editor_cache.add(editor, data)
                     prev_editor = editor
             fh.close()
@@ -93,6 +93,7 @@ class Storer(consumers.BaseConsumer):
                 }
         return data
 
+
 def store_articles(rts):
     '''
     This function reads titles.csv and stores it in a separate collection.
@@ -104,10 +105,14 @@ def store_articles(rts):
     mongo = db.init_mongo_db(rts.dbname)
     db.drop_collection(rts.dbname, rts.articles_raw)
     collection = mongo[rts.articles_raw]
-    db.add_index_to_collection(rts.dbname, rts.articles_raw, 'id')
-    db.add_index_to_collection(rts.dbname, rts.articles_raw, 'title')
-    db.add_index_to_collection(rts.dbname, rts.articles_raw, 'ns')
-    db.add_index_to_collection(rts.dbname, rts.articles_raw, 'category')
+    collection.create_index('id')
+    collection.create_index('title')
+    collection.create_index('ns')
+    collection.create_index('category')
+    collection.ensure_index('id')
+    collection.ensure_index('title')
+    collection.ensure_index('ns')
+    collection.ensure_index('category')
 
     location = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
     fh = file_utils.create_txt_filehandle(location, 'titles.csv', 'r', rts.encoding)

@@ -21,6 +21,7 @@ __version__ = '0.1'
 import datetime
 import sys
 import bson
+from pymongo.errors import OperationFailure
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -85,6 +86,10 @@ class EditorCache(object):
             self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
         except bson.errors.InvalidDocument:
             print 'BSON document too large, unable to store %s' % (username)
+        except OperationFailure, error:
+            print error
+            print 'It seems that you are running out of disk space.'
+            sys.exit(-1)
 
     def store(self):
         file_utils.store_object(self, settings.binary_location, self.__repr__())

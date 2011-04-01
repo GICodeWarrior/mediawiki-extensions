@@ -122,10 +122,10 @@ class Editor(object):
 
 def determine_number_edits(edits, first_year, final_year):
     count = 0
-    for year in edits:
-        for edit in edits[year]:
-            if edit['ns'] == 0:
-                count += 1
+    for edit in edits:
+        if edit['ns'] == 0:
+            print edit['ns']
+            count += 1
     return count
 
 

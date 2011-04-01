@@ -333,7 +333,7 @@ def parse_title_meta_data(title, namespace):
     ns = namespace['namespace']
     title_meta['ns'] = ns
     if title.startswith('List of'):
-        title_meta['list'] = True
+        title_meta['category'] = 'List'
     elif ns == 4 or ns == 5:
         if title.find('Articles for deletion') > -1:
             title_meta['category'] = 'Deletion'
@@ -549,6 +549,8 @@ def create_variables(article, cache, bots, xml_namespace, comments=False):
         hashes = deque()
         size = {}
         revisions = article['revisions']
+        if revisions:
+            return
         for revision in revisions:
             cache.stats.count_revisions += 1
             if revision == None:
@@ -772,7 +774,7 @@ def launcher(rts):
     lock2 = RLock()
     lock3 = RLock()
     locks = [lock1, lock2, lock3]
-    setup(storage, rts)
+    #setup(storage, rts)
     multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts)
 
 
