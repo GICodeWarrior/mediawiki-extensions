@@ -10,7 +10,7 @@
 /**
  * @ingroup Database
  */
-class DatabaseMssql extends DatabaseBase {
+class DatabaseMssqlOld extends DatabaseBase {
 
 	var $mAffectedRows;
 	var $mLastResult;
@@ -523,7 +523,7 @@ class DatabaseMssql extends DatabaseBase {
 		for( $i = 0; $i < $n; $i++ ) {
 			$meta = mssql_fetch_field( $res->result, $i );
 			if( $field == $meta->name ) {
-				return new MSSQLField($meta);
+				return new MSSQLOldField($meta);
 			}
 		}
 		return false;
@@ -952,16 +952,32 @@ class DatabaseMssql extends DatabaseBase {
 /**
  * @ingroup Database
  */
-class MSSQLField extends MySQLField {
+class MSSQLOldField implements Field {
 
 	function __construct() {
 	}
 
 	static function fromText($db, $table, $field) {
-		$n = new MSSQLField;
+		$n = new MSSQLOldField;
 		$n->name = $field;
 		$n->tablename = $table;
 		return $n;
+	}
+
+	function name() {
+		return $this->name;
+	}
+
+	function tableName() {
+		return $this->tableName;
+	}
+
+	function isNullable() {
+		return true;
+	}
+
+	function type() {
+		return '';
 	}
 
 } // end DatabaseMssql class
