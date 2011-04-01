@@ -185,13 +185,19 @@ class SIOSQLStore extends SMWSQLStore2 {
 					$valueNum = $value->getNumericValue();
 				}
 				
-				$upAtts2[] = array(
+				$upAttr = array(
 					's_id' => $ioID,
 					'p_id' => $this->makeSMWPropertyID( $property ),
-					'value_unit' => $value->getUnit(),
 					'value_xsd' => $keys[0],
 					'value_num' => $valueNum
 				);
+				
+				// getUnit got removed in SMW 1.6
+				if ( method_exists( $value, 'getUnit' ) ) {
+					$upAttr['value_unit'] = $value->getUnit();
+				}
+				
+				$upAtts2[] = $upAttr;
 			} elseif ( $isText ) {
 				$keys = $value->getDBkeys();
 				$upText2[] = array(
