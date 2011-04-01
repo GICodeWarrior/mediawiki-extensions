@@ -1108,6 +1108,7 @@ Wiesselt Äre Borwseroder maacht en Update, wa méiglech.",
  * @author Dark Eagle
  */
 $messages['ltg'] = array(
+	'cb_cat_pages' => 'puslopys',
 	'cb_all_op' => 'Vysi',
 );
 
