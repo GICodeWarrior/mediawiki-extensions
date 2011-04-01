@@ -3957,11 +3957,12 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software עורך נתוני וידאו וחיפוש מדיה]',
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software עורך מטא־נתונים של וידאו וחיפוש מדיה]',
 	'metavid' => 'דף MetaVid',
 	'mv_ogg_high_quality' => 'איכות גבוהה - Ogg Theora 900 קסל"ש',
 	'mv_archive_org_link' => 'קישורים אל מקור ה־MPEG-2 באתר Archive.org',
@@ -3973,13 +3974,16 @@ $messages['he'] = array(
 	'mv_save_changes' => 'שמירת השינויים',
 	'mv_media_path' => 'נתיב המדיה',
 	'mv_remove_reason' => 'סיבת המחיקה:',
+	'mv_stream_delete_warrning' => "'''הסרת השטף הזה תסיר גם {{PLURAL:$1|חלק|$1 חלקים}} של מטא־נתונים מיוחדים'''<br />",
 	'mv_metavid_file' => 'קובץ קיים בשרת',
 	'mv_upload_file' => 'העלאת קובץ',
 	'mv_external_file' => 'קובץ חיצוני',
 	'mv_tool_search' => 'חיפוש',
 	'mv_tool_navigate' => 'ניווט',
 	'mv_tool_export' => 'ייצוא',
+	'mv_tool_export_title' => 'יצוא מטא־נתונים של השטף',
 	'mv_tool_embed' => 'הטמעה',
+	'mv_tool_overlay_title' => 'רובדי מטא־נתונים מבוססי תבניות',
 	'mv_results_found' => 'תוצאות וידאו <b>$1</b> עד <b>$2</b> מתוך <b>$3</b>',
 	'mv_tool_mang_layers' => 'ניהול שכבות',
 	'mv_update_layers' => 'עדכון שכבות',
@@ -3992,6 +3996,8 @@ $messages['he'] = array(
 	'mvd_default_mismatch' => 'שגיאה בקובץ ההגדרות',
 	'mv_time_separator' => '$1 עד $2',
 	'video_feed_cat' => 'הזנת וידאו עבור הקטגוריה:',
+	'mv_cat_search_note' => 'לתשומת לבך: בדף קטגוריות רשומות רק הקטגוריות מהרמה העליונה.
+לכל המטא־נתונים בטווחי הקטגוריות חפשו את $1',
 	'mv_play' => 'ניגון',
 	'mv_edit' => 'עריכה',
 	'mv_history' => 'היסטוריה',
@@ -4010,7 +4016,7 @@ $messages['he'] = array(
 	'mv_adjust_ok_move' => 'הפעולה הושלמה בהצלחה. מכוונן...',
 	'mv_start_desc' => 'זמן ההתחלה',
 	'mv_end_desc' => 'זמן הסיום',
-	'mv_edit_metadata' => 'עריכת נתוני הקובץ',
+	'mv_edit_metadata' => 'עריכת מטא־נתונים',
 	'mv_advanced_edit' => 'עריכה מתקדמת',
 	'mv_basic_edit' => 'עריכה בסיסית',
 	'mv_remove_category' => 'הסרת קטגוריה',
@@ -4096,6 +4102,8 @@ $messages['he'] = array(
 	'mv_next_cat' => 'הקטגוריה הבאה: $1',
 	'mv_mang_layers' => 'ניהול השכבות',
 	'mv_protect_source_material' => 'חומר המקור מוגן מפני עריכה',
+	'right-mv_delete_mvd' => 'למחוק מטא־נתונים של מטא־ויד',
+	'action-mv_delete_mvd' => 'למחוק את המקטע הזה במטא־נתונים של מטא־ויד',
 );
 
 /** Hindi (हिन्दी)
@@ -6242,6 +6250,13 @@ $messages['lfn'] = array(
  */
 $messages['lt'] = array(
 	'mv_tool_search' => 'Paieška',
+);
+
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'mv_history' => 'Viesture',
 );
 
 /** Eastern Mari (Олык Марий)
