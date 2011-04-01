@@ -403,7 +403,7 @@ class DatabaseMssqlold extends DatabaseBase {
 	 *                        see Database::makeSelectOptions code for list of supported stuff
 	 * @return mixed Database result resource (feed to Database::fetchObject or whatever), or false on failure
 	 */
-	function select( $table, $vars, $conds='', $fname = 'Database::select', $options = array() )
+	function select( $table, $vars, $conds='', $fname = 'Database::select', $options = array(), $join_conds = array() )
 	{
 		if( is_array( $vars ) ) {
 			$vars = implode( ',', $vars );
@@ -413,7 +413,7 @@ class DatabaseMssqlold extends DatabaseBase {
 		}
 		if( is_array( $table ) ) {
 			if ( isset( $options['USE INDEX'] ) && is_array( $options['USE INDEX'] ) )
-				$from = ' FROM ' . $this->tableNamesWithUseIndex( $table, $options['USE INDEX'] );
+				$from = ' FROM ' . $this->tableNamesWithUseIndexOrJOIN( $table, $options['USE INDEX'], $join_conds );
 			else
 				$from = ' FROM ' . implode( ',', array_map( array( &$this, 'tableName' ), $table ) );
 		} elseif ($table!='') {
@@ -866,7 +866,7 @@ class DatabaseMssqlold extends DatabaseBase {
 	/**
 	 * @return string wikitext of a link to the server software's web site
 	 */
-	function getSoftwareLink() {
+	static function getSoftwareLink() {
 		return "[http://www.microsoft.com/sql/default.mspx Microsoft SQL Server 2005 Home]";
 	}
 
