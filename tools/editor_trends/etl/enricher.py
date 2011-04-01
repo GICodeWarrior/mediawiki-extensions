@@ -526,8 +526,6 @@ def count_edits(article, counts, bots, xml_namespace):
             counts.setdefault(contributor['username'], 0)
             counts[contributor['username']] += 1
             revision.clear()
-
-    article = None
     return counts
 
 
@@ -549,8 +547,6 @@ def create_variables(article, cache, bots, xml_namespace, comments=False):
         hashes = deque()
         size = {}
         revisions = article['revisions']
-        if revisions:
-            return
         for revision in revisions:
             cache.stats.count_revisions += 1
             if revision == None:
@@ -774,7 +770,7 @@ def launcher(rts):
     lock2 = RLock()
     lock3 = RLock()
     locks = [lock1, lock2, lock3]
-    #setup(storage, rts)
+    setup(storage, rts)
     multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts)
 
 
