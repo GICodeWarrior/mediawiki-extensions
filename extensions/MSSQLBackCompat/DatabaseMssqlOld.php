@@ -22,12 +22,11 @@ class DatabaseMssqlold extends DatabaseBase {
 	 * Constructor
 	 */
 	function __construct($server = false, $user = false, $password = false, $dbName = false,
-			$failFunction = false, $flags = 0, $tablePrefix = 'get from global') {
+			$flags = 0, $tablePrefix = 'get from global') {
 
 		global $wgOut, $wgDBprefix, $wgCommandLineMode;
 		if (!isset($wgOut)) $wgOut = null; # Can't get a reference if it hasn't been set yet
 		$this->mOut =& $wgOut;
-		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
 
 		if ( $this->mFlags & DBO_DEFAULT ) {
@@ -55,8 +54,8 @@ class DatabaseMssqlold extends DatabaseBase {
 	function implicitGroupby()   { return false; }
 	function implicitOrderby()   { return false; }
 
-	static function newFromParams($server, $user, $password, $dbName, $failFunction = false, $flags = 0) {
-		return new DatabaseMssql($server, $user, $password, $dbName, $failFunction, $flags);
+	static function newFromParams($server, $user, $password, $dbName, $flags = 0) {
+		return new DatabaseMssql($server, $user, $password, $dbName, $flags);
 	}
 
 	/** Open an MSSQL database and return a resource handle to it
