@@ -556,6 +556,13 @@ $messages['lg'] = array(
 	'searchbox-namespaces' => 'Makuŋaanyizo:',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'searchbox-namespaces' => 'Vuordu pluoti:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest
