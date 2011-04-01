@@ -25,10 +25,12 @@ class SpecialVote extends SpecialPage {
 	 * @param $mode Mixed: parameter passed to the page or null
 	 */
 	public function execute( $mode ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgExtensionAssetsPath;
 
 		$this->setHeaders();
 		$this->user = $wgUser;
+		$wgOut->addExtensionStyle( "$wgExtensionAssetsPath/Vote/Vote.css" );
+
 		if ( strtolower( $mode ) == 'results' ) {
 			if ( $wgUser->isAllowed( 'voteadmin' ) )
 				$this->showResults();
