@@ -35,7 +35,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 		$ratings = array( $params['pageid'] => array( 'pageid' => $params['pageid'] ) );
 		foreach ( $res as $i => $row ) {
-			if ( !isset( $ratings[$params['pageid']] ) ) {
+			if ( !isset( $ratings[$params['pageid']]['revid'] ) ) {
 				$ratings[$params['pageid']]['revid'] = $row->aap_revision;
 			}
 			if ( !isset( $ratings[$params['pageid']]['ratings'] ) ) {
