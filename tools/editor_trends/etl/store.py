@@ -117,13 +117,12 @@ def store_articles(rts):
         #print line.encode('utf-8')
         line = line.split('\t')
         data = {}
-        for l in line:
-            #print l.encode('utf-8')
-            try:
-                key, value = l.split('=')
-            except ValueError, error:
-                print l.encode('utf-8')
+        x, y = 0, 1
+        while y < len(line):
+            key, value = line[x], line[y]
             data[key] = value
+            x += 2
+            y += 2
         collection.insert(data)
     fh.close()
     print 'Done...'

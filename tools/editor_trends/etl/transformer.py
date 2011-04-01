@@ -173,12 +173,14 @@ def determine_edit_volume(edits, first_year, final_year):
     for year in edits:
         for edit in edits[year]:
             month = edit['date'].month
-            dc[year][month].setdefault('added', 0)
-            dc[year][month].setdefault('removed', 0)
+            ns = edit['ns']
+            dc[year][month].setdefault(ns, {})
+            dc[year][month][ns].setdefault('added', 0)
+            dc[year][month][ns].setdefault('removed', 0)
             if edit['delta'] < 0:
-                dc[year][month]['removed'] += edit['delta']
+                dc[year][month][ns]['removed'] += edit['delta']
             elif edit['delta'] > 0:
-                dc[year][month]['added'] += edit['delta']
+                dc[year][month][ns]['added'] += edit['delta']
     return dc
 
 
