@@ -3,7 +3,7 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'MSSQLBackCompat',
-	'url' => '',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:MSSQLBackCompat',
 	'author' => 'Sam Reed',
 	'descriptionmsg' => 'codereview-desc',
 );
