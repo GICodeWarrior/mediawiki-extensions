@@ -1490,6 +1490,13 @@ $messages['lg'] = array(
 	'usagestatisticsnamespace' => 'Kuŋaanyizo:',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'usagestatisticsnamespace' => 'Vuordu pluots:',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */
