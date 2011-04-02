@@ -9,10 +9,10 @@
 $messages = array();
 
 /** English
- @author Ryan Schmidt
+ * @author Ryan Schmidt
  */
 $messages['en'] = array(
-	'forcepreview'      => 'Save page (use preview first)',
+	'forcepreview' => 'Save page (use preview first)',
 	'forcepreview-desc' => 'Force preview for unprivileged users',
 	'right-forcepreviewexempt' => 'May save without using Show preview',
 );
