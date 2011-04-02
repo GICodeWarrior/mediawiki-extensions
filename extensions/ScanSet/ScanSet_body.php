@@ -35,7 +35,7 @@ class ScanSet {
 		$this->parser->disableCache();
 
 		// Add style to the head
-		$wgHooks['SkinTemplateSetupPageCss'][] = array( &$this, 'getCss' );
+		$wgHooks['BeforePageDisplay'][] = array( $this, 'addCss' );
 
 		$this->text = '';
 
@@ -109,38 +109,10 @@ class ScanSet {
 		return $text;
 	}
 
-	function getCss( &$css ) {
-		if ( $css === false ) {
-			$css = '';
-		}
-		$css .= '
-			/*<![CDATA[*/
-			.scanset_vollist {
-				border-color: #cccccc;
-				border-width: thin;
-				border-style: solid;
-				float: left;
-			}
-			.scanset_pagelist {
-				border-color: #cccccc;
-				border-width: thin;
-				border-style: solid;
-				float: left;
-			}
-			.scanset_index {
-				float: left;
-			}
-			.scanset_image {
-				clear: both;
-				text-align: center;
-			}
-			.scanset_next_right {
-				float: right;
-			}
-			.scanset_next_left {
-				float: left;
-			}
-			/*]]>*/';
+	function addCss( $out, &$sk ) {
+		global $wgExtensionAssetsPath;
+
+		$out->addExtensionStyle( "$wgExtensionAssetsPath/ScanSet/ScanSet.css" );
 		return true;
 	}
 

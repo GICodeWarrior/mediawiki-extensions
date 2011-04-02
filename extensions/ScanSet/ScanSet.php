@@ -29,7 +29,7 @@ function wfScanSetSetup( $parser ) {
 	return true;
 }
 
-function wfScanSetHook( $content, $params, &$parser ) {
+function wfScanSetHook( $content, $params, $parser ) {
 	global $wgScanSetSettings;
 
 	require_once( dirname( __FILE__ ) . '/ScanSet_body.php');
