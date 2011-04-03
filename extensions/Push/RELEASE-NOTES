@@ -4,6 +4,10 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Push
 Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Push/RELEASE-NOTES?view=co
 
 
+=== Version 0.9 ===
+
+* Fixed compatibility with MediaWiki 1.18.
+
 === Version 0.8 ===
 2011-02-27
 
