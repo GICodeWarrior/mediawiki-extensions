@@ -14,17 +14,12 @@ if( !defined( 'MEDIAWIKI' ) )
  */
 class SkinOffline extends SkinTemplate {
 	/** Using monobook. */
-	function initPage( &$out ) {
-		global $wgStylePath;
-		SkinTemplate::initPage( $out );
-		$this->template  = 'SkinOfflineTemplate';
-		$this->skinpath = "$wgStylePath/offline";
-	}
+	var $template  = 'SkinOfflineTemplate';
 
 	function setupTemplate( $className, $repository = false, $cache_dir = false ) {
-		global $wgFavicon;
+		global $wgFavicon, $wgStylePath;
 		$tpl = parent::setupTemplate( $className, $repository, $cache_dir );
-		$tpl->set( 'skinpath', $this->skinpath );
+		$tpl->set( 'skinpath', "$wgStylePath/offline" );
 		$tpl->set( 'favicon', $wgFavicon );
 		return $tpl;
 	}
