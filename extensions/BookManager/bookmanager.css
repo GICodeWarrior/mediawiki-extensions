@@ -20,24 +20,16 @@
 .mw-book-navigation .mw-prev, .mw-book-navigation .mw-next{
 	white-space:nowrap;
 }
-.mw-book-navigation .mw-index{
-	padding:0 8px;
-}
-.mw-book-navigation .mw-prev a{
+.mw-book-navigation .mw-prev a {
 	background:url("images/18px-1leftarrow.png") no-repeat scroll left center transparent;
-	padding: 0 0 0 20px;
+	padding: 0 50px 0 20px;
 }
-.mw-book-navigation .mw-prev{
-	padding: 0 50px 0 0;
-}
-.mw-book-navigation .mw-index a{
+.mw-book-navigation .mw-index a {
 	background:url("images/18px-1uparrow.png") no-repeat scroll left center transparent;
-	padding:0 0 0 20px;
+	padding: 0 0 0 20px;
+	margin: 0 8px;
 }
-.mw-book-navigation .mw-next a{
+.mw-book-navigation .mw-next a {
 	background:url("images/18px-1rightarrow.png") no-repeat scroll right center transparent;
-	padding:0  20px 0 0;
-}
-.mw-book-navigation .mw-next{
-	padding:0  0 0 50px;
+	padding: 0  20px 0 50px;
 }
