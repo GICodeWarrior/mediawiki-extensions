@@ -19,9 +19,10 @@ final class PushTab {
 		global $wgUser, $egPushTargets;
 		
 		// Make sure that this is not a special page, the page has contents, and the user can push.
-		if (isset( $obj->mTitle ) 
-			&& $obj->mTitle->getNamespace() != NS_SPECIAL
-			&& $obj->mTitle->exists()
+		$title = $obj->getTitle();
+		if (
+			$title->getNamespace() != NS_SPECIAL
+			&& $title->exists()
 			&& $wgUser->isAllowed( 'push' )
 			&& count( $egPushTargets ) > 0 ) {
 				
@@ -30,7 +31,7 @@ final class PushTab {
 			$content_actions['push'] = array(
 				'text' => wfMsg( 'push-tab-text' ),
 				'class' => $wgRequest->getVal( 'action' ) == 'push' ? 'selected' : '',
-				'href' => $obj->mTitle->getLocalURL( 'action=push' )
+				'href' => $title->getLocalURL( 'action=push' )
 			);
 		}
 		
