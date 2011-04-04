@@ -34,6 +34,7 @@ import codecs
 import os
 import ctypes
 import sys
+import subprocess
 import shutil
 import multiprocessing
 
@@ -211,11 +212,18 @@ def create_streaming_buffer(path):
     extension = determine_file_extension(path)
     if extension == 'gz':
         fh = gzip.GzipFile(path, 'rb')
-    elif extension == 'bz':
+    elif extension == 'bz2':
         fh = bz2.BZ2File(path, 'rb')
+    elif extension == '7z':
+        #TODO: might be too linux specific
+        fh = subprocess.Popen('7z e -bd -so %s 2>/dev/null' % path, shell=True,
+                              stdout=subprocess.PIPE, bufsize=65535).stdout
+    elif extension == 'xml':
+        fh = create_txt_filehandle(path, None, 'r', 'utf-8')
     else:
         raise exceptions.CompressedFileNotSupported(extension)
     return fh
+
 
 def create_binary_filehandle(location, filename, mode):
     path = os.path.join(location, filename)
