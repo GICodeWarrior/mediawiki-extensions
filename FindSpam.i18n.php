@@ -909,12 +909,13 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'findspam' => 'Пронађи спам',
-	'findspam-desc' => 'Додаје [[Special:FindSpam|специјалну страну]] која омогућава налажење скоро додатог спама',
+	'findspam-desc' => 'Додаје посебну страницу за [[Special:FindSpam|налажење скорашњих непожељних порука]]',
 	'findspam-ip' => 'ИП адреса:',
 	'findspam-ok' => 'У реду',
 	'findspam-notextfound' => 'Нису пронађени прилози',
