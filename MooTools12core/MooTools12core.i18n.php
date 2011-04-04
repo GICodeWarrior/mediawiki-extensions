@@ -375,10 +375,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'mootools12core-desc' => 'Додаје свакој страни [http://mootools.net mootools-1.2-core-yc.js], компактни јаваскрипт фрејмворк',
+	'mootools12core-desc' => 'На сваку страницу додаје [http://mootools.net mootools-1.2-core-yc.js], јаваскриптов радни оквир',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
