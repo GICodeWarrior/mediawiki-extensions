@@ -98,8 +98,9 @@ class Dummy:
         pass
 
 class DummyRTS:
-    def __init__(self, path):
-        self.input_location = path
+    def __init__(self, location, path):
+        self.input_location = location
+        self.location = path
         self.language = Dummy()
         self.project = Dummy()
         self.language.code = 'en'
@@ -121,7 +122,7 @@ class Buffer:
                      'delta']
         self.setup_storage()
         self.stats = Statistics()
-        if storage == 'csv':
+        if storage == 'csv' and locks != None:
             self.rts = rts
             self.lock1 = locks[0] #lock for generic data
             self.lock2 = locks[1] #lock for comment data
@@ -709,12 +710,12 @@ def setup(storage, rts=None):
             res = file_utils.create_directory(output_txt)
 
 
-def multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks=None, rts=None):
+def multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts):
     input_queue = JoinableQueue()
     #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
     #files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
 
-    files = file_utils.retrieve_file_list(rts.location, extension)
+    files = file_utils.retrieve_file_list(rts.input_location, extension)
     #files = files[0:1]
 
     for filename in files:
@@ -749,8 +750,8 @@ def launcher_training():
     processors = 7
     extension = 'bz2'
     rts = DummyRTS(path)
-    setup(storage, rts)
-    multiprocessor_launcher(function, path, dataset, storage, processors, extension)
+    locks = []
+    multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts)
 
 
 def launcher_prediction():
@@ -764,8 +765,8 @@ def launcher_prediction():
     processors = 7
     extension = 'bz2'
     rts = DummyRTS(path)
-    setup(storage, rts)
-    multiprocessor_launcher(function, path, dataset, storage, processors, extension)
+    locks = []
+    multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts)
 
 
 def launcher(rts):
