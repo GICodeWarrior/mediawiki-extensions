@@ -57,6 +57,8 @@ $messages['ba'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Яһарға',
 	'articletocategory2-create-category-under-category-text' => 'Был категорияға категория өҫтәргә',
 	'articletocategory2-create-category-under-category-button' => 'Яһарға',
+	'right-ArticleToCategory2' => 'Битте категорияға өҫтәргә',
+	'right-ArticleToCategory2AddCat' => 'Категорияны категорияға өҫтәргә',
 );
 
 /** Bavarian (Boarisch)

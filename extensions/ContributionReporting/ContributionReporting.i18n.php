@@ -469,6 +469,10 @@ $messages['ba'] = array(
 	'fundraiserstats-tab-maximums' => 'Иң күптәре (USD)',
 	'fundraiserstats-tab-ytd' => 'Йыл башынан (USD)',
 	'fundraiserstats-instructions' => 'Кәрәкле көн өсөн статистиканы ҡарау өсөн, курсорҙы ошо көндөң бағанаһына килтерегеҙ. Төрлө йылдар өсөн мәғлүмәт төрлө төҫ менән күрһәтелгән.',
+	'fundraiserstats-customize' => 'Көйләргә',
+	'fundraiserstats-show-years' => 'Түбәндәге йылдарҙы күрһәтергә;',
+	'fundraiserstats-time-zone' => 'Ваҡыт бүлкәте:',
+	'fundraiserstats-utc' => '(UTC-тан)',
 );
 
 /** Belarusian (Беларуская)

@@ -239,6 +239,40 @@ Mard oc'h deuet eus lec'h all dre ul liamm, kasit <a href=\"\$1\">ur c'hemenn ev
 	'toolbase-error-nowiki' => "N'eo ket $1.$2.org ur wiki reizh",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'toolbase-header-title' => 'Alati od X-a!',
+	'toolbase-header-bugs' => 'Greške',
+	'toolbase-replag' => 'Zastoj servera od $1',
+	'toolbase-replag-years' => 'godine',
+	'toolbase-replag-months' => 'mjeseci',
+	'toolbase-replag-weeks' => 'sedmice',
+	'toolbase-replag-days' => 'dani',
+	'toolbase-replag-hours' => 'sati',
+	'toolbase-replag-minutes' => 'minute',
+	'toolbase-replag-seconds' => 'sekunde',
+	'toolbase-footer-exectime' => 'Izvršeno za $1 sekundi',
+	'toolbase-footer-source' => 'Pogledaj izvor',
+	'toolbase-footer-language' => 'Promijeni jezik',
+	'toolbase-footer-translate' => 'Prevedi',
+	'toolbase-navigation' => 'Navigacija',
+	'toolbase-navigation-homepage' => 'Glavna stranica',
+	'toolbase-navigation-user_id' => 'Nađi korisnički ID',
+	'toolbase-navigation-autoedits' => 'Automatizirani brojač izmjena',
+	'toolbase-userid-submit' => 'Uzmi korisnički ID',
+	'toolbase-userid-title' => 'Traženje korisničkog ID',
+	'toolbase-userid-result' => 'Korisnički ID za <b>$1</b> na <a href="$3"><b>$3</b></a> je <b>$2</b>.',
+	'toolbase-autoedits-submit' => 'Izračunaj',
+	'toolbase-autoedits-pct' => 'Procenat automatskih izmjena',
+	'toolbase-main-title' => 'Dobrodošli!',
+	'toolbase-main-404' => 'Datoteka nije pronađena',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nowiki' => '$1.$2.org nije valjana wiki',
+	'toolbase-error-toomanyedits' => '$1 ima $2 izmjena. Ovaj alat ima najviše $3 izmjena.',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -339,6 +373,53 @@ Sofern ein Link hierhergeführt hat, ist dies bitte <a href="$1">als Fehler zu m
 	'toolbase-error-nouser' => 'Den Benutzer $1 gibt es nicht',
 	'toolbase-error-nowiki' => 'Das Wiki $1.$2.org gibt es nicht',
 	'toolbase-error-toomanyedits' => 'Benutzer $1 hat $2 Bearbeitungen gemacht. Dieses Hilfsprogramm hat ein Maximum von $3 Bearbeitungen.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Evropi
+ */
+$messages['el'] = array(
+	'toolbase-header-title' => "X!'s Tools (BETA)",
+	'toolbase-header-bugs' => 'Σφάλματα',
+	'toolbase-replag-years' => 'χρόνια',
+	'toolbase-replag-months' => 'μήνες',
+	'toolbase-replag-weeks' => 'εβδομάδες',
+	'toolbase-replag-days' => 'ημέρες',
+	'toolbase-replag-hours' => 'ώρες',
+	'toolbase-replag-minutes' => 'λεπτά',
+	'toolbase-replag-seconds' => 'δευτερόλεπτα',
+	'toolbase-footer-exectime' => 'Εκτελέθηκε σε $1 δευτερόλεπτα',
+	'toolbase-footer-source' => 'Εμφάνιση κώδικα',
+	'toolbase-footer-language' => 'Αλλαγή γλώσσας',
+	'toolbase-footer-translate' => 'Μετάφραση',
+	'toolbase-navigation' => 'Πλοήγηση',
+	'toolbase-navigation-homepage' => 'Αρχική σελίδα',
+	'toolbase-navigation-user_id' => 'Αναζήτηση λογαριασμού χρήστη',
+	'toolbase-navigation-autoedits' => 'Αυτοματοποιημένος μετρητής επεξεργασιών',
+	'toolbase-userid-submit' => 'Λήψη λογαριασμού χρήστη',
+	'toolbase-userid-title' => 'Αναζήτηση λογαριασμού χρήστη',
+	'toolbase-userid-result' => 'Ο λογαριασμός χρήστη για τον <b>$1</b> στο <a href="$3"><b>$3</b></a> είναι <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Αυτοματοποιημένη αριθμομηχανή επεξεργασιών',
+	'toolbase-autoedits-submit' => 'Υπολογισμός',
+	'toolbase-autoedits-approximate' => '<b>Προσέγγιση</b> αριθμού των επεξεργασιών που χρησιμοποιούν...',
+	'toolbase-autoedits-totalauto' => 'Συνολικός αριθμός αυτοματοποιημένων επεξεργασιών',
+	'toolbase-autoedits-totalall' => 'Συνολικός αριθμός επεξεργασιών',
+	'toolbase-autoedits-pct' => 'Ποσοστό των αυτοματοποιημένων επεξεργασιών',
+	'toolbase-main-title' => 'Καλός ήρθατε!',
+	'toolbase-main-content' => 'Καλώς ήρθατε στο X!\'s tools! Η σουίτα εργαλειών είναι ακόμη στη διαδικασία μετατροπής προς το πλαίσιο <a href="$1">Symfony</a>. Η διαδικασία αυτή θα πάρει λίγο καιρό, αλλά θα πρέπει να λειτουργεί τώρα.
+
+Για μια λίστα των εργαλείων που εκτελούνται αυτή τη στιγμή σε αυτό το πλαίσιο, κοιτάξτε τη πλευρική γραμμή στα δεξιά.
+
+Μπορείτε να αναφέρετε σφάλματα στο <a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'Το αρχείο δεν βρέθηκε',
+	'toolbase-main-404-content' => 'Ωχ! Η σελίδα δεν βρέθηκε!
+
+Βεβαιωθείτε ότι έχετε πληκτρολογήσει σωστά τη διεύθυνση URL.
+Εάν ήρθατε εδώ μέσω ενός συνδέσμου, παρακαλώ <a href="$1">αναφέρετε το σφάλμα</a>.
+</ul>',
+	'toolbase-form-wiki' => 'Βίκι',
+	'toolbase-error-nouser' => 'Ο $1 δεν είναι έγκυρος χρήστης',
+	'toolbase-error-nowiki' => 'Το $1.$2.org δεν είναι ένα έγκυρο βίκι',
 );
 
 /** Finnish (Suomi)

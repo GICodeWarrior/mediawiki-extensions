@@ -158,6 +158,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'framedvideo_position' => 'desno',
 	'framedvideo_errors' => 'Desilo se više poruke!',
 	'framedvideo_error' => 'Nastala je greška!',
 	'framedvideo_error_unknown_type' => 'Nepoznat id video usluge ("$1"): provjerite parametar "type".',

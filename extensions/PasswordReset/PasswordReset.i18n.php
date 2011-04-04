@@ -392,6 +392,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Evropi
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -403,7 +404,7 @@ $messages['el'] = array(
 	'passwordreset-badtoken' => 'Μη έγκυρο δείγμα επεξεργασίας',
 	'passwordreset-username' => 'Όνομα χρήστη:',
 	'passwordreset-newpass' => 'Νέος Κωδικός:',
-	'passwordreset-confirmpass' => 'Επιβεβαιώστε τον κωδικό πρόσβασης:',
+	'passwordreset-confirmpass' => 'Επιβεβαίωση κωδικού:',
 	'passwordreset-submit' => 'Επαναφορά κωδικού',
 	'passwordreset-success' => 'Ο κωδικός έχει επαναφερθεί για τον user_id: $1',
 	'passwordreset-accountdisabled' => 'Ο λογαριασμός έχει απενεργοποιηθεί',

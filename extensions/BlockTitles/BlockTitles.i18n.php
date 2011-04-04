@@ -69,9 +69,11 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'block_title_error_page_title' => 'Títulu bloquiáu',
+	'blocktitles-desc' => 'Ufre una manera básica de torgar que se creen o se guarden páxines con ciertos títulos',
 	'block_title_error' => "Sentímoslo, nun se permite guardar el títulu d'esta páxina.",
 );
 

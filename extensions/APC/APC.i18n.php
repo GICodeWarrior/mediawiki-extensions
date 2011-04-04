@@ -5978,7 +5978,7 @@ Novejša različica $2 je na voljo na http://pecl.php.net/package/APC/$2',
 $messages['sr-ec'] = array(
 	'apc' => 'APC подаци',
 	'apc-desc' => '[[Special:APC|Прегледај и управљај APC кешом]] преко МедијаВикија',
-	'right-apc' => 'Користи све опције у [[Special:APC|APC]]',
+	'right-apc' => 'коришћење свих могућности [[Special:APC|APC]]-а',
 	'viewapc-apc-not-available' => 'Нема информација о међумеморији.
 Изгледа да APC није покренут.',
 	'viewapc-clear-confirm' => 'Да ли желите да очистите међумеморију?',
@@ -6077,8 +6077,8 @@ $messages['sr-ec'] = array(
 	'viewapc-version-ok' => 'Користите последње издање APC-ја ($1)',
 	'viewapc-version-old' => 'Користите старије издање APC-ја ($1).
 Новије издање $2 је доступно на http://pecl.php.net/package/APC/$2',
-	'viewapc-filecache-cleared' => "'''''Међумеморија датотека је очишћена.'''''",
-	'viewapc-usercache-cleared' => "'''''Међумеморија програма је очишћена.'''''",
+	'viewapc-filecache-cleared' => "'''''Остава датотеке је очишћена.'''''",
+	'viewapc-usercache-cleared' => "'''''Остава програма је очишћена.'''''",
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

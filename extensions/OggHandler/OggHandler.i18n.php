@@ -3107,12 +3107,13 @@ Ju lutemi <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'ogg-desc' => 'Руковаоц ogg Теора и Ворбис фајловима са јаваскрипт плејером',
+	'ogg-desc' => 'Руководилац OGG теора и ворбис датотекама с јаваскрипт плејером',
 	'ogg-short-audio' => 'Ogg $1 звучни фајл, $2.',
 	'ogg-short-video' => 'Ogg $1 видео фајл, $2.',
 	'ogg-short-general' => 'Ogg $1 медијски фајл, $2.',

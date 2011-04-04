@@ -56,6 +56,7 @@ $messages['az'] = array(
  */
 $messages['ba'] = array(
 	'addmediawizard-desc' => 'Викимедиа Фонды менән Kaltura хеҙмәттәшлеге һөҙөмтәһендә булдырылған медиа өҫтәү ҡоралы.',
+	'addmediawizard-loading' => 'Медиа өҫтәү ҡоралын сығарыу',
 );
 
 /** Belarusian (Беларуская)
@@ -545,10 +546,12 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Dafer45
  */
 $messages['sv'] = array(
 	'addmediawizard-desc' => 'Guide för att lägga till media, utvecklad i samarbete mellan Kaltura och Wikimedia Foundation',
+	'addmediawizard-loading' => 'Laddar lägga till media guiden',
 );
 
 /** Tamil (தமிழ்)

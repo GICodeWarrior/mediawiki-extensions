@@ -757,10 +757,10 @@ $messages['ba'] = array(
 	'mwe-missing_desc_see_source' => 'Был есем өсөн тасуирлама юҡ.
 Зинһар, есмеде тасуирлар өсөн, [$1 сығанаҡты] ҡарағыҙ.',
 	'mwe-am-config_error' => 'Медиа өҫтәү ҡоралын көйләү хатаһы: $1',
+	'mwe-your-recent-uploads' => 'Һеҙҙең тейәүҙәрегеҙ',
 	'mwe-your-recent-uploads-to' => 'Һеҙҙең $1 проектында һуңғы тейәүҙәрегеҙ',
 	'mwe-no_recent_uploads' => 'Һуңғы тейәүҙәр юҡ',
-	'mwe-not-logged-in-uploads' => 'Һеҙ системала танылмағанһығыҙ, шикелле, шуға күрә һуңғы тейәүҙәр исемлеге күрһәтелә алмай.
-$1 танылырға һәм $2',
+	'mwe-not-logged-in-uploads' => 'Һеҙ системала танылмағанһығыҙ, шикелле, шуға күрә һуңғы тейәүҙәр исемлеге күрһәтелә алмай. [$1 Зинһар, танылығыҙ] һәм [$2 яңынан ҡабатлап ҡарағыҙ].',
 	'mwe-ie-eye-permision' => 'Әгәр һеҙ Internet Explorer ҡулланаһығыҙ һәм танылғанһығыҙ икән, һеҙгә, бәлки, серлелек көйләүҙәрен үҙгәртергә кәрәктер',
 	'mwe-upload-a-file' => 'Яңы файл тейәргә',
 	'mwe-upload-a-file-to' => '$1 проектына яңы файл тейәргә',
@@ -1165,7 +1165,7 @@ $messages['br'] = array(
 	'mwe-results_from' => "Disoc'hoù eus $1",
 	'mwe-missing_desc_see_source' => 'Mankout a ra un diskrivadenn evit an asset-mañ. Kit da welet ar [$1 vammenn] hag sikourit da ziskrivañ anezhi.',
 	'mwe-am-config_error' => 'Fazi kefluniadur eus ar skoazeller evit ouzhpennañ mediaoù : $1',
-	'mwe-your-recent-uploads' => "Hoc'h enpoezhiadennoù",
+	'mwe-your-recent-uploads' => "Hoc'h enporzhiadennoù",
 	'mwe-your-recent-uploads-to' => 'Ho kargadennoù nevez war $1',
 	'mwe-no_recent_uploads' => 'Kargadenn nevez ebet',
 	'mwe-not-logged-in-uploads' => "Evit doare n'oc'h ket kevreet, ha n'hall enporzhiadenn ebet bezañ diskwelet. [$1 Kevreañ] ha [$2 klask en-dro] mar plij.",
@@ -1254,6 +1254,7 @@ $messages['bs'] = array(
 	'mwe-uploaded-time-remaining' => 'Preostalo vrijeme: $1',
 	'mwe-add_media_wizard' => 'Dodaj media čarobnjak',
 	'mwe-media_search' => 'Pretraga medije',
+	'mwe-am-box_layout' => 'Izgled kutije',
 	'mwe-am-results_desc' => 'Rezultati $1 od $2',
 	'mwe-am-results_next' => 'slijedeći',
 	'mwe-am-results_prev' => 'prethodni',
@@ -1263,7 +1264,9 @@ $messages['bs'] = array(
 	'mwe-am-resource_edit' => 'Uredi izvor: $1',
 	'mwe-resource_description_page' => 'Stranica opisa izvora',
 	'mwe-link' => 'link',
+	'mwe-cc_by_title' => 'Pripisivanje',
 	'mwe-cc_nc_title' => 'Nije komercijalno',
+	'mwe-cc_sa_title' => 'dijeli pod istim uslovima',
 	'mwe-cc_pd_title' => 'Javno vlasništvo',
 	'mwe-unknown_license' => 'Nepoznata licenca',
 	'mwe-results_from' => 'Rezultati od $1',
@@ -1283,6 +1286,7 @@ $messages['bs'] = array(
 	'mwe-ftype-unk' => 'Nepoznat format datoteke',
 	'mwe-am-kaltura-title' => 'Kaltura pretraga (svi izvori)',
 	'mwe-am-this_wiki-title' => 'Ovaj wiki',
+	'mwe-upload-multi' => 'Postavljanje {{PLURAL:$1|datoteke|datoteka}}',
 );
 
 /** Catalan (Català)
@@ -3925,6 +3929,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'mwe-summary' => 'ಸಾರಾಂಶ',
+	'mwe-am-results_next' => 'ಮುಂದಿನ',
 );
 
 /** Korean (한국어)
@@ -6582,6 +6587,7 @@ Har wikin $1 aktiverat?</p>',
 	'mwe-missing_desc_see_source' => 'Denna tillgång saknar beskrivning.
 Kontrollera [$1 källa] och hjälp till att beskriva den.',
 	'mwe-am-config_error' => 'Lägg till media-guide konfigurationsfel: $1',
+	'mwe-your-recent-uploads' => 'Dina uppladdningar',
 	'mwe-your-recent-uploads-to' => 'Dina senaste uppladdningar till $1',
 	'mwe-no_recent_uploads' => 'Inga nya uppladdningar',
 	'mwe-not-logged-in-uploads' => 'Du är kanske inte inloggad så de senaste uppladdningarna kan inte visas. [$1 Logga in] och [$2 försök igen].',

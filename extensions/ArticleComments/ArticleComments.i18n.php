@@ -256,6 +256,7 @@ $messages['bs'] = array(
 	'article-comments-failure-reasons' => 'Žao nam je, vaše slanje komentara nije uspjelo iz {{PLURAL:$1|slijedećeg razloga|slijedećih razloga}}:',
 	'article-comments-no-comments' => 'Žao nam je, stranica "[[$1]]" trenutno ne prima komentare.',
 	'article-comments-commenter-said' => '$1 je napisao ...',
+	'article-comments-submission-succeeded' => 'Slanje komentara je uspjelo',
 	'article-comments-comment-missing-name-parameter' => 'Nedostaje ime',
 	'article-comments-comment-missing-date-parameter' => 'Nedostaje datum komentara',
 );

@@ -419,10 +419,11 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'contributorsaddon-desc' => 'Додаје јаваскрипт поп-апове везама ка "Главним ауторима"',
+	'contributorsaddon-desc' => 'Додаје искачуће прозоре на везе „Главни доприносиоци“',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)

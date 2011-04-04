@@ -29,6 +29,17 @@ $messages['qqq'] = array(
 	'bookmanager-desc' => '{{desc}}',
 );
 
+/** Bashkir (Башҡортса)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'bookmanager-desc' => 'Китаптар өсөн ҡоралдар',
+	'printversion' => 'Ҡағыҙға баҫыу өлгөһө',
+	'printversion-desc' => 'Китаптың [[Special:PrintVersion|ҡағыҙға баҫыу өлгөһөн]] булдыра',
+	'printversion-no-book' => 'Зинһар, ҡағыҙға баҫыу өлгөһөн алыр өсөн, китаптың исемен керетегеҙ.',
+	'printversion-inexistent-book' => 'Китап табылманы. Зинһар, ҡағыҙға баҫыу өлгөһөн алыр өсөн, булған китаптың исемен керетегеҙ.',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
