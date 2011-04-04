@@ -140,7 +140,7 @@ class RunTimeSettings(Settings):
         '''
         Construct the full project location
         '''
-        return os.path.join(self.input_location, self.language.code,
+        return os.path.join(self.output_location, self.language.code,
                             self.project.name)
 
     def show_settings(self):

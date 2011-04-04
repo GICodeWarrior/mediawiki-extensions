@@ -153,16 +153,19 @@ class Settings:
         for directory in directories:
             if not os.path.exists(directory):
                 try:
+                    error = False
                     os.makedirs(directory)
+
                 except IOError, error:
                     pass
                 except OSError, error:
                     pass
                 finally:
-                    print 'Configuration Error, could not create directory %s.'\
-                        % directory
-                    print 'The reason is: %s' % error
-                    sys.exit(-1)
+                    if error:
+                        print 'Configuration Error, could not create directory %s.'\
+                            % directory
+                        print 'The reason is: %s' % error
+                        sys.exit(-1)
 
     def detect_windows_program(self, program):
         entry = self.windows_register.get(program, None)
