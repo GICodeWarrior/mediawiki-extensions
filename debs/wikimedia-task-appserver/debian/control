@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 4.0.0)
 
 Package: wikimedia-task-appserver
 Architecture: all
-Depends: apache2-mpm-prefork, librsvg2-bin, dvipng, tetex-bin, tetex-extra, gsfonts, ocaml, ploticus, php5-mysql, php5-curl, php5-xmlrpc, php5-cli, php5-apc, php5-wikidiff2, php5-fss, php5-geoip, libapache2-mod-php5, file, djvulibre-bin, tidy (>= 20070821), libtidy-0.99-0 (>= 20070821), php-pear, rsync, make, xpdf-utils, libtiff-tools
+Depends: apache2-mpm-prefork, librsvg2-bin, dvipng, gsfonts, ocaml, ploticus, php5-mysql, php5-curl, php5-xmlrpc, php5-cli, php-apc, php-wikidiff2, php5-fss, php5-geoip, libapache2-mod-php5, file, djvulibre-bin, tidy (>= 20070821), libtidy-0.99-0 (>= 20070821), php-pear, rsync, make, xpdf-utils, libtiff-tools, texlive, texlive-bibtex-extra, texlive-font-utils, texlive-fonts-extra, texlive-lang-croatian, texlive-lang-cyrillic, texlive-lang-czechslovak, texlive-lang-danish, texlive-lang-dutch, texlive-lang-finnish, texlive-lang-french, texlive-lang-german, texlive-lang-greek, texlive-lang-hungarian, texlive-lang-italian, texlive-lang-latin, texlive-lang-mongolian, texlive-lang-norwegian, texlive-lang-other, texlive-lang-polish, texlive-lang-portuguese, texlive-lang-spanish, texlive-lang-swedish, texlive-lang-vietnamese, texlive-latex-extra, texlive-math-extra, texlive-pictures, texlive-pstricks, texlive-publishers
 Description: Wikimedia application server
  This package depends on all packages needed to setup a standard
  application server, and contains the necessary deployment scripts.

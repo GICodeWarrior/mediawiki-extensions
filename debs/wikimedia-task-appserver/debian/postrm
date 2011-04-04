@@ -23,9 +23,6 @@ case "$1" in
 		deluser apache || true
 		delgroup apache || true
 
-		# Remove PyBal check user account
-		deluser pybal-check
-		rm -rf /var/lib/pybal-check
 	;;
 	remove)
 	   	;;

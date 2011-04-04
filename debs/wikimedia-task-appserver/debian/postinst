@@ -55,8 +55,6 @@ case "$1" in
 
 	create_apache_user
 
-	chown -R pybal-check:pybal-check /var/lib/pybal-check/.ssh
-
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

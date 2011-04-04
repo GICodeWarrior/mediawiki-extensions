@@ -1,7 +1,40 @@
+wikimedia-task-appserver (2.1-3) lucid-wikimedia; urgency=low
+
+  * Removing pybal user install and remove from preinst and prerm
+
+ -- Ryan Lane <rlane@wikimedia.org>  Mon, 4 Feb 2011 22:29:00 +0000
+
+wikimedia-task-appserver (2.1-2) lucid-wikimedia; urgency=low
+
+  * Merging back in missing changes that Tim made in 1.47
+
+ -- Ryan Lane <rlane@wikimedia.org>  Mon, 4 Feb 2011 22:15:00 +0000
+
+wikimedia-task-appserver (2.1-1) lucid-wikimedia; urgency=low
+
+  * Fix sync-common; it previously deleted a directory it was still in,
+    causing the following rsync to die.
+
+ -- Ryan Lane <rlane@wikimedia.org>  Mon, 4 Feb 2011 19:34:00 +0000
+
+wikimedia-task-appserver (2.0-2) lucid-wikimedia; urgency=low
+
+  * Change section to net
+  * Change tetex packages to texlive packages
+
+ -- Ryan Lane <rlane@wikimedia.org>  Mon, 4 Feb 2011 19:34:00 +0000
+
+wikimedia-task-appserver (2.0-1) lucid-wikimedia; urgency=low
+
+  * Adapt to lucid
+  * Move pybal-check stuff to Puppet
+
+ -- Mark Bergsma <mark@wikimedia.org>  Fri, 25 Feb 2011 17:14:13 +0000
+
 wikimedia-task-appserver (1.47) hardy-wikimedia; urgency=low
-
+ 
   * Updated sync scripts for MW 11.17
-
+ 
  -- Tim Starling <tstarling@wikimedia.org>  Tue, 01 Mar 2011 13:13:43 +1100
 
 wikimedia-task-appserver (1.46-2~hardy1) hardy-wikimedia; urgency=low
