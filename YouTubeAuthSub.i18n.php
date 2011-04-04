@@ -2283,6 +2283,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Diagramma Della Verita
  * @author Izzudin
  */
@@ -2291,7 +2292,7 @@ $messages['ms'] = array(
 	'youtubeauthsub-desc' => 'Benarkan pengguna [[Special:YouTubeAuthSub|memuat naik video]] terus ke YouTube',
 	'youtubeauthsub_info' => 'Untuk muat naik video ke YouTube bagi disertakan dalam laman, isikan maklumat berikut:',
 	'youtubeauthsub_title' => 'Tajuk',
-	'youtubeauthsub_description' => 'Maklumat dan penerangan',
+	'youtubeauthsub_description' => 'Keterangan',
 	'youtubeauthsub_password' => 'Kata laluan YouTube',
 	'youtubeauthsub_username' => 'Nama pengguna YouTube',
 	'youtubeauthsub_keywords' => 'Kata kunci',
