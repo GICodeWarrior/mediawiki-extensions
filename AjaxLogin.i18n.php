@@ -79,6 +79,8 @@ $messages['ba'] = array(
 "$1" исемле ҡатнашыусы юҡ.
 Ҡатнашыусы исемдәрендә ҙур хәрефтәр менән бәләкәй хәрефтәр айырыла.
 Яҙылышын тикшерегеҙ.',
+	'al-createblocked' => 'Һеҙҙең IP адресығыҙҙан иҫәп яҙмаларын булдырыу тыйылған.',
+	'al-throttled' => 'Һеҙ артыҡ күп тапҡыр пароль керетеп ҡаранығыҙ. Зинһар, яңынан ҡабатлар алдынан $1 {{PLURAL:$1|секунд}} көтөгөҙ.',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -638,6 +640,7 @@ Lé otu I dètùrù ihe.',
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Civvì
  * @author Darth Kule
  */
@@ -648,6 +651,8 @@ Ciò vi porterà via da questa pagina di modifica e si rischia di perdere la mod
 	'ajaxLogin2' => 'Sicuro? Si potrebbero perdere le modifiche apportate a questa pagina se si lascia la pagina ora.',
 	'ajaxlogin-create' => 'Crealo ora',
 	'al-nosuchuser' => "L'utente \"\$1\" non esiste. I nomi utente sono ''case sensitive''. Controlla l'ortografia.",
+	'al-throttled' => 'Sono stati effettuati recentemente troppi tentativi di inserimento password.
+Attendi $1 {{PLURAL:$1|secondo|secondi}} prima di riprovare nuovamente.',
 );
 
 /** Japanese (日本語)
