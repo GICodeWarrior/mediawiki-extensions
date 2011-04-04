@@ -140,7 +140,7 @@ class RunTimeSettings(Settings):
         '''
         Construct the full project location
         '''
-        return os.path.join(self.output_location, self.language.code,
+        return os.path.join(self.input_location, self.language.code,
                             self.project.name)
 
     def show_settings(self):
@@ -152,7 +152,7 @@ class RunTimeSettings(Settings):
         about['Language'] = '%s / %s / %s' % (self.language.name,
                                               self.language.locale,
                                               self.language.code)
-        about['Input directory'] = '%s' % self.location
+        about['Input directory'] = '%s' % self.input_location
         about['Output directory'] = '%s and subdirectories' % self.location
 
         max_length_key = max([len(key) for key in about.keys()])
