@@ -848,6 +848,7 @@ Uistite sa, že {{PLURAL:$3|požadovaný obrázok existuje|všetky požadované 
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -865,7 +866,7 @@ $messages['sr-ec'] = array(
 {{PLURAL:$2|Следећа слика није нађена|Следеће слике нису нађене}}: $1',
 	'smoothgallery-invalid-images' => 'Тип {{PLURAL:$2|следеће захтеване слике|следећих захтеваних слика}} је био непознат: $1',
 	'smoothgallery-unexpected-error' => 'Десила се неочекивана грешка. Молимо обавестите администраторе.',
-	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан да би се галерија нормално приказала.',
+	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан за правилан приказ галерије.',
 );
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
