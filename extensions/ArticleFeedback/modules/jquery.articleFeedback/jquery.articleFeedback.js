@@ -35,10 +35,10 @@ $.articleFeedback = {
 		<div class="articleFeedback-expertise articleFeedback-visibleWith-form" >\
 			<input type="checkbox" value="general" disabled="disabled" /><label class="articleFeedback-expertise-disabled"><html:msg key="form-panel-expertise" /></label>\
 			<div class="articleFeedback-expertise-options">\
-				<input type="checkbox" value="studies" /><label><html:msg key="form-panel-expertise-studies" /></label>\
-				<input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label>\
-				<input type="checkbox" value="hobby" /><label><html:msg key="form-panel-expertise-hobby" /></label>\
-				<input type="checkbox" value="other" /><label><html:msg key="form-panel-expertise-other" /></label>\
+				<div><input type="checkbox" value="studies" /><label><html:msg key="form-panel-expertise-studies" /></label></div>\
+				<div><input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label></div>\
+				<div><input type="checkbox" value="hobby" /><label><html:msg key="form-panel-expertise-hobby" /></label></div>\
+				<div><input type="checkbox" value="other" /><label><html:msg key="form-panel-expertise-other" /></label></div>\
 			</div>\
 		</div>\
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><html:msg key="form-panel-submit" /></button>\
@@ -219,7 +219,10 @@ $.articleFeedback = {
 						context.$ui.find( '.articleFeedback-error' ).show();
 						return;
 					}
-					if ( data.query.articlefeedback.length && 'expertise' in data.query.articlefeedback[0] ) {
+					if (
+						data.query.articlefeedback.length
+						&& typeof data.query.articlefeedback[0].expertise === 'string'
+					) {
 						var $expertise = context.$ui.find( '.articleFeedback-expertise' );
 						var tags = data.query.articlefeedback[0].expertise.split( '|' );
 						for ( var i = 0; i < tags.length; i++ ) {
