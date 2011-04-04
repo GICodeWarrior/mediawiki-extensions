@@ -62,6 +62,7 @@ class RunTimeSettings(Settings):
             self.language = self.update_language_settings()
             self.charts = self.determine_chart(self.get_value('charts'))
             self.keywords = self.split_keywords(self.get_value('keywords'))
+            self.kaggle = self.get_value('kaggle')
             self.function = self.get_value('func')
 
             self.ignore = self.get_value('except')
@@ -140,7 +141,11 @@ class RunTimeSettings(Settings):
         '''
         Construct the full project location
         '''
-        return os.path.join(self.output_location, self.language.code,
+        if self.kaggle:
+            return os.path.join(self.input_location, self.language.code,
+                            self.project.name)
+        else:
+            return os.path.join(self.input_location, self.language.code,
                             self.project.name)
 
     def show_settings(self):

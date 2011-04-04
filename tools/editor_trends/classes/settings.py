@@ -52,7 +52,6 @@ class Settings:
     def __init__(self):
         self.minimum_python_version = (2, 6)
         self.detect_python_version()
-        self.encoding = 'utf-8'
 
         #Date format as used by Erik Zachte
         self.date_format = '%Y-%m-%d'
@@ -67,7 +66,6 @@ class Settings:
         self.number_of_processes = cpu_count()
 
         self.wp_dump_location = 'http://dumps.wikimedia.org'
-        self.xml_namespace = 'http://www.mediawiki.org/xml/export-0.4/'
         self.ascii_extensions = ['txt', 'csv', 'xml', 'sql', 'json']
         self.windows_register = {'7z.exe': 'Software\\7-Zip', }
         #Extensions of ascii files, this is used to determine the filemode to use

@@ -464,19 +464,21 @@ def parse_contributor(revision, bots, xml_namespace):
     return editor
 
 
-def determine_namespace(title, include_ns, exclude_ns):
+def determine_namespace(title, namespaces, include_ns, exclude_ns):
     '''
     You can only determine whether an article belongs to the Main Namespace
     by ruling out that it does not belong to any other namepace
     '''
     ns = {}
     if title != None:
-        for namespace in include_ns:
-            if title.startswith(namespace):
-                ns['namespace'] = include_ns[namespace]
+        for key in include_ns:
+            namespace = namespaces.get(key)
+            if namespace and title.startswith(namespace):
+                ns['namespace'] = key
         if ns == {}:
-            for namespace in exclude_ns.values():
-                if title.startswith(namespace):
+            for key in exclude_ns:
+                namespace = namespaces.get(key)
+                if namespace and title.startswith(namespace):
                     '''article does not belong to any of the include_ns
                     namespaces'''
                     ns = False
@@ -519,6 +521,37 @@ def extract_comment_text(revision_id, revision):
     return comment
 
 
+def create_namespace_dict(siteinfo, xml_namespace):
+    '''
+    This function determines the local names of the different namespaces.
+    '''
+    namespaces = {}
+    print 'Constructing namespace dictionary'
+
+    elements = siteinfo.find('%s%s' % (xml_namespace, 'namespaces'))
+    for elem in elements:
+        key = int(elem.get('key'))
+        namespaces[key] = elem.text #extract_text(ns)
+        text = elem.text if elem.text != None else ''
+        try:
+            print key, text.encode('utf-8')
+        except UnicodeEncodeError:
+            print key
+    return namespaces
+
+
+def determine_xml_namespace(siteinfo):
+    '''
+    This function determines the xml_namespace version
+    '''
+    for elem in siteinfo    :
+        if elem.tag.endswith('sitename'):
+            xml_namespace = elem.tag
+            pos = xml_namespace.find('sitename')
+            xml_namespace = xml_namespace[0:pos]
+            return xml_namespace
+
+
 def count_edits(article, counts, bots, xml_namespace):
     title = parse_title(article['title'])
     namespace = determine_namespace(title, {}, COUNT_EXCLUDE_NAMESPACE)
@@ -542,14 +575,15 @@ def count_edits(article, counts, bots, xml_namespace):
 
 
 def create_variables(article, cache, bots, xml_namespace, comments=False):
-    include_ns = {'User Talk': 3,
-                  'Wikipedia Talk': 5,
-                  'Talk': 1,
-                  'User': 2,
-                  'Wikipedia': 4,
+    include_ns = {3: 'User Talk',
+                  5: 'Wikipedia Talk',
+                  1: 'Talk',
+                  2: 'User',
+                  4: 'Wikipedia'
                   }
     title = parse_title(article['title'])
-    namespace = determine_namespace(title, include_ns, EXCLUDE_NAMESPACE)
+    namespaces = article['namespaces']
+    namespace = determine_namespace(title, namespaces, include_ns, EXCLUDE_NAMESPACE)
     title_meta = parse_title_meta_data(title, namespace)
     if namespace != False:
         cache.stats.count_articles += 1
@@ -600,39 +634,43 @@ def create_variables(article, cache, bots, xml_namespace, comments=False):
             revision.clear()
 
 
-def parse_xml(fh, xml_namespace, wikilytics=True):
+def parse_xml(fh, rts):
     context = iterparse(fh, events=('end',))
     context = iter(context)
 
     article = {}
     article['revisions'] = []
     id = False
-
     for event, elem in context:
-        if event == 'end' and elem.tag == '%s%s' % (xml_namespace, 'title'):
+        if event == 'end' and elem.tag.endswith('siteinfo'):
+            xml_namespace = determine_xml_namespace(elem)
+            namespaces = create_namespace_dict(elem, xml_namespace)
+            article['namespaces'] = namespaces
+        elif event == 'end' and elem.tag.endswith('title'):
             article['title'] = elem
-        elif event == 'end' and elem.tag == '%s%s' % (xml_namespace, 'revision'):
+        elif event == 'end' and elem.tag.endswith('revision'):
             article['revisions'].append(elem)
-        elif event == 'end' and elem.tag == '%s%s' % (xml_namespace, 'id') and id == False:
+        elif event == 'end' and elem.tag.endswith('id') and id == False:
             article['id'] = elem
             id = True
-        elif event == 'end' and elem.tag == '%s%s' % (xml_namespace, 'page'):
-            yield article
+        elif event == 'end' and elem.tag.endswith('page'):
+            yield article, xml_namespace
             elem.clear()
             article = {}
             article['revisions'] = []
+            article['namespaces'] = namespaces
             id = False
-        elif event == 'end':
+        elif rts.kaggle == True and event == 'end':
+            print 'I am cleaning up'
             elem.clear()
 
 
 def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, rts):
     bots = detector.retrieve_bots('en')
-    xml_namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
     path = os.path.join(rts.location, 'txt')
 
     filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
-                rts.encoding) for fh in xrange(rts.max_filehandles)]
+                'utf-8') for fh in xrange(rts.max_filehandles)]
 
     title_file = os.path.join(path, 'titles.csv')
     comment_file = os.path.join(path, 'comments.csv')
@@ -659,9 +697,9 @@ def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, r
         fh = file_utils.create_streaming_buffer(filename)
         filename = os.path.split(filename)[1]
         filename = os.path.splitext(filename)[0]
-        for article in parse_xml(fh, xml_namespace):
+        for article, xml_namespace in parse_xml(fh, rts):
             if dataset == 'training':
-                function(article, cache, bots, xml_namespace, wikilytics)
+                function(article, cache, bots, xml_namespace)
             elif dataset == 'prediction':
                 counts = function(article, counts, bots, xml_namespace)
             i += 1
@@ -710,16 +748,19 @@ def setup(storage, rts=None):
             res = file_utils.create_directory(output_txt)
 
 
-def multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts):
+def multiprocessor_launcher(function, dataset, storage, locks, rts):
     input_queue = JoinableQueue()
-    #files = ['C:\\Users\\diederik.vanliere\\Downloads\\enwiki-latest-pages-articles1.xml.bz2']
-    #files = ['/home/diederik/kaggle/enwiki-20100904-pages-meta-history2.xml.bz2']
 
-    files = file_utils.retrieve_file_list(rts.input_location, extension)
+    files = file_utils.retrieve_file_list(rts.location)
+    if len(files) > cpu_count():
+        processors = cpu_count() - 1
+    else:
+        processors = len(files)
+
     #files = files[0:1]
-
+    print rts.input_location, rts.location
     for filename in files:
-        filename = os.path.join(path, filename)
+        filename = os.path.join(rts.location, filename)
         print filename
         input_queue.put(filename)
 
@@ -747,11 +788,9 @@ def launcher_training():
     function = create_variables
     storage = 'csv'
     dataset = 'training'
-    processors = 7
-    extension = 'bz2'
     rts = DummyRTS(path)
     locks = []
-    multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts)
+    multiprocessor_launcher(function, dataset, storage, locks, rts)
 
 
 def launcher_prediction():
@@ -762,11 +801,9 @@ def launcher_prediction():
     function = count_edits
     storage = 'csv'
     dataset = 'prediction'
-    processors = 7
-    extension = 'bz2'
     rts = DummyRTS(path)
     locks = []
-    multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts)
+    multiprocessor_launcher(function, dataset, storage, locks, rts)
 
 
 def launcher(rts):
@@ -778,14 +815,12 @@ def launcher(rts):
     function = create_variables
     storage = 'csv'
     dataset = 'training'
-    processors = 1
-    extension = 'gz'
     lock1 = RLock()
     lock2 = RLock()
     lock3 = RLock()
     locks = [lock1, lock2, lock3]
     setup(storage, rts)
-    multiprocessor_launcher(function, path, dataset, storage, processors, extension, locks, rts)
+    multiprocessor_launcher(function, dataset, storage, locks, rts)
 
 
 if __name__ == '__main__':

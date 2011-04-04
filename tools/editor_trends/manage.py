@@ -155,6 +155,12 @@ def init_args_parser():
         executing all.',
         default=[])
 
+
+    parser.add_argument('-k', '--kaggle',
+                        action='store',
+                        help='Indicate whether the output is for Kaggle or not',
+                        default=False)
+
     parser.add_argument('-l', '--language',
         action='store',
         help='Example of valid languages.',

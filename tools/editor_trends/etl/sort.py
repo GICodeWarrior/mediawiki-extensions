@@ -50,7 +50,7 @@ class Sorter(consumers.BaseConsumer):
                 fh = file_utils.create_txt_filehandle(self.rts.txt,
                                                       filename,
                                                       'r',
-                                                      self.rts.encoding)
+                                                      'utf-8')
                 data = file_utils.read_unicode_text(fh)
                 fh.close()
                 for x, d in enumerate(data):
@@ -121,7 +121,7 @@ def merge_sorted_files(target, files, iteration, rts):
     fh = file_utils.create_txt_filehandle(target,
                                           'merged_%s.txt' % iteration,
                                           'w',
-                                          rts.encoding)
+                                          'utf-8')
     lines = 0
     for line in heapq.merge(*[readline(filename) for filename in files]):
         file_utils.write_list_to_csv(line, fh)
@@ -138,7 +138,7 @@ def write_sorted_file(sorted_data, filename, rts):
     fh = file_utils.create_txt_filehandle(rts.sorted,
                                           filename,
                                           'w',
-                                          rts.encoding)
+                                          'utf-8')
     file_utils.write_list_to_csv(sorted_data, fh)
     fh.close()
 

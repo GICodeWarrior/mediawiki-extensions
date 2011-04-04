@@ -44,7 +44,7 @@ RE_NUMERIC_CHARACTER = re.compile('&#(\d+);')
 
 
 def remove_numeric_character_references(rts, text):
-    return re.sub(RE_NUMERIC_CHARACTER, lenient_deccharref, text).encode(rts.encoding)
+    return re.sub(RE_NUMERIC_CHARACTER, lenient_deccharref, text).encode('utf-8')
 
 
 def lenient_deccharref(m):
@@ -278,7 +278,7 @@ def parse_dumpfile(tasks, rts, lock):
     output = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
     widgets = log.init_progressbar_widgets('Extracting data')
     filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
-                rts.encoding) for fh in xrange(rts.max_filehandles)]
+                'utf-8') for fh in xrange(rts.max_filehandles)]
     while True:
         total, processed = 0.0, 0.0
         try:
@@ -297,7 +297,7 @@ def parse_dumpfile(tasks, rts, lock):
         print 'Opening %s...' % (os.path.join(location, filename))
         print 'Filesize: %s' % filesize
         fh1 = file_utils.create_txt_filehandle(location, filename, 'r', 'ascii')
-        fh2 = file_utils.create_txt_filehandle(location, 'articles.csv', 'a', rts.encoding)
+        fh2 = file_utils.create_txt_filehandle(location, 'articles.csv', 'a', 'utf-8')
         ns, xml_namespace = wikitree.parser.extract_meta_information(fh1)
         ns = build_namespaces_locale(ns, rts.namespaces)
         rts.xml_namespace = xml_namespace

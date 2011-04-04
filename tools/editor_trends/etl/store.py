@@ -55,7 +55,7 @@ class Storer(consumers.BaseConsumer):
                 break
 
             fh = file_utils.create_txt_filehandle(self.rts.sorted, filename,
-                                                  'r', self.rts.encoding)
+                                                  'r', 'utf-8')
             for line in file_utils.read_raw_data(fh):
                 if len(line) == 12:
                     editor = line[2]
@@ -72,7 +72,7 @@ class Storer(consumers.BaseConsumer):
 
     def prepare_data(self, line):
         article_id = int(line[1])
-        username = line[3].encode(self.rts.encoding)
+        username = line[3].encode('utf-8')
         ns = int(line[4])
         date = text_utils.convert_timestamp_to_datetime_utc(line[6])
         md5 = line[7]
@@ -115,7 +115,7 @@ def store_articles(rts):
     collection.ensure_index('category')
 
     location = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
-    fh = file_utils.create_txt_filehandle(location, 'titles.csv', 'r', rts.encoding)
+    fh = file_utils.create_txt_filehandle(location, 'titles.csv', 'r', 'utf-8')
     print 'Storing article titles...'
     for line in fh:
         line = line.strip()
