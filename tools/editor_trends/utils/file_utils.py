@@ -360,7 +360,7 @@ def determine_canonical_name(filename):
     return filename
 
 
-def retrieve_file_list(location, extension, mask=None):
+def retrieve_file_list(location, extension=None, mask=None):
     '''
     Retrieve a list of files from a specified location.
     @location: either an absolute or relative path
@@ -380,8 +380,11 @@ def retrieve_file_list(location, extension, mask=None):
         file = file.split('.')
         if len(file) == 1:
             continue
-        if re.match(mask, file[0]) and file[-1].endswith(extension):
-            files.append('.'.join(file))
+        if extension:
+            if re.match(mask, file[0]) and file[-1].endswith(extension):
+                files.append('.'.join(file))
+            elif re.match(mask, file[0]):
+                files.append('.'.join(file))
     return files
 
 
