@@ -1,7 +1,8 @@
 Source: wikimedia-fonts
-Section: unknown
+Section: fonts
 Priority: optional
 Maintainer: River Tarnell <river@wikimedia.org>
+Build-Depends: debhelper, defoma
 Standards-Version: 3.6.2
 
 Package: wikimedia-fonts

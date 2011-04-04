@@ -1,3 +1,9 @@
+wikimedia-fonts (1.1-1) lucid-wikimedia; urgency=low
+
+  * Update for lucid
+
+ -- Ryan Lane <rlane@wikimedia.org>  Mon, 4 Apr 2011 17:29:00 +0000
+
 wikimedia-fonts (1.1) feisty; urgency=low
 
   * Set fontconfig to use bitmap fonts upon install.
