@@ -610,8 +610,8 @@ def parse_xml(fh, xml_namespace, wikilytics=True):
             article = {}
             article['revisions'] = []
             id = False
-        #elif wikilytics == True and event == 'end':
-        #    elem.clear()
+        elif event == 'end':
+            elem.clear()
 
 
 def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, rts):
@@ -735,7 +735,7 @@ def launcher_training():
     function = create_variables
     storage = 'csv'
     dataset = 'training'
-    processors = cpu_count()
+    processors = 6
     extension = 'bz2'
     setup(storage)
     multiprocessor_launcher(function, path, dataset, storage, processors, extension)
@@ -775,6 +775,6 @@ def launcher(rts):
 
 
 if __name__ == '__main__':
-    #launcher_training()
+    launcher_training()
     #launcher_prediction()
-    launcher(rts)
+    #launcher(rts)
