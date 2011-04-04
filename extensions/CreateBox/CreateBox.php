@@ -63,7 +63,7 @@ function actionCreate( $action, $article ) {
 		$title = Title::newFromText( $prefix . $text );
 		if( is_null( $title ) ) {
 			global $wgTitle;
-			$wgTitle = SpecialPage::getTitleFor( 'Badtitle' );
+			$wgTitle = new BadTitle;
 			throw new ErrorPageError( 'badtitle', 'badtitletext' );
 		} elseif( $title->getArticleID() == 0 ) {
 			acRedirect( $title, 'edit' );
