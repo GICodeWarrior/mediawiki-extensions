@@ -629,6 +629,7 @@ $messages['bs'] = array(
 	'fogg-framerate-help' => 'Brzina sličica videa.
 Više o <a target="_new" href="http://en.wikipedia.org/wiki/Frame_rate">brzini sličica</a>.',
 	'fogg-novideo-title' => 'Nema videa',
+	'fogg-audioBitrate-title' => 'Propusnost zvuka',
 	'fogg-noaudio-title' => 'Bez zvuka',
 	'fogg-title-title' => 'Naslov',
 	'fogg-title-help' => 'Naslov za vaš snimak',
@@ -4293,7 +4294,8 @@ Mer om <a href="http://en.wikipedia.org/wiki/Video_denoising">avbrusning</a>.',
 	'fogg-please-install' => '$1. Fler $2',
 	'fogg-please-install-install-linktext' => 'Installera Firefogg',
 	'fogg-please-install-about-linktext' => 'om Firefogg',
-	'fogg-use_latest_firefox' => 'Vänligen installera först <a href="http://www.mozilla.com/sv-SE/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (eller senare). <i>Gå sedan tillbaka till den här sidan för att installera tillägget <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'Installera först $1.
+<i>Återvänd sedan till denna sida för att installera <b>Firefogg</b>tillägget.</i>',
 	'fogg-latest-firefox' => 'senaste Firefox',
 	'fogg-passthrough_mode' => 'Den valda filen är redan i formatet Ogg eller också är den inte en videofil över huvud taget',
 	'fogg-encoding-done' => 'Kodningen har avslutats',
