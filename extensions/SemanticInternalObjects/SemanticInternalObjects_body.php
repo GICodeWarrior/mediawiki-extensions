@@ -154,9 +154,10 @@ class SIOSQLStore extends SMWSQLStore2 {
 		// set all the properties pointing from this internal object
 		foreach ( $internalObject->getPropertyValuePairs() as $propertyValuePair ) {
 			list( $property, $value ) = $propertyValuePair;
-			
+
 			// handling changed in SMW 1.5
-			if ( method_exists( 'SMWSQLStore2', 'findPropertyTableID' ) ) {
+			$realFunction = array( 'SMWSQLStore2', 'findPropertyTableID' );
+			if ( is_callable( $realFunction ) ) {
 				$tableid = SMWSQLStore2::findPropertyTableID( $property );
 				$isRelation = ( $tableid == 'smw_rels2' );
 				$isAttribute = ( $tableid == 'smw_atts2' );

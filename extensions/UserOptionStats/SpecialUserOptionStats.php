@@ -103,7 +103,8 @@ class SpecialUserOptionStats extends SpecialPage {
 		$plot->SetTitle( $title );
 
 		// Better fonts
-		if ( method_exists( 'FCFontFinder', 'find' ) ) {
+		$realFunction = array( 'FCFontFinder', 'find' );
+		if ( is_callable( $realFunction ) ) {
 			$font = FCFontFinder::find( $wgLang->getCode() );
 			if ( $font ) {
 				$plot->SetDefaultTTFont( $font );

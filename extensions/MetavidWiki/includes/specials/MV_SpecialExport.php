@@ -24,7 +24,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 class MvVideoFeed extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'MvVideoFeed' );
-		if ( method_exists( 'SpecialPage', 'setGroup' ) ) {
+		$realFunction = array( 'SpecialPage', 'setGroup' );
+		if ( is_callable( $realFunction ) ) {
 			parent::setGroup( 'MvVideoFeed', 'mv_group' );
 		}
 	}
@@ -44,7 +45,8 @@ class MvExportStream extends SpecialPage {
 class MvExportSequence extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'MvExportSequence' );
-		if ( method_exists( 'SpecialPage', 'setGroup' ) ) {
+		$realFunction = array( 'SpecialPage', 'setGroup' );
+		if ( is_callable( $realFunction ) ) {
 			parent::setGroup( 'MvExportSequence', 'mv_group' );
 		}
 	}
