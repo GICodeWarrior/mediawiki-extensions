@@ -383,8 +383,8 @@ def retrieve_file_list(location, extension=None, mask=None):
         if extension:
             if re.match(mask, file[0]) and file[-1].endswith(extension):
                 files.append('.'.join(file))
-            elif re.match(mask, file[0]):
-                files.append('.'.join(file))
+        elif re.match(mask, file[0]):
+            files.append('.'.join(file))
     return files
 
 
