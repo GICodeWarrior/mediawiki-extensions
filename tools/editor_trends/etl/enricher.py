@@ -94,6 +94,17 @@ class Statistics:
         print 'Number of articles: %s' % self.count_articles
         print 'Number of revisions: %s' % self.count_revisions
 
+class Dummy:
+        pass
+
+class DummyRTS:
+    def __init__(self, path):
+        self.input_location = path
+        self.language = Dummy()
+        self.project = Dummy()
+        self.language.code = 'en'
+        self.project.name = 'wiki'
+
 
 class Buffer:
     def __init__(self, storage, processs_id, rts=None, filehandles=None, locks=None):
@@ -737,12 +748,7 @@ def launcher_training():
     dataset = 'training'
     processors = 7
     extension = 'bz2'
-    rts = object()
-    rts.language = object()
-    rts.project = object()
-    rts.input_location = path
-    rts.language.code = 'en'
-    rts.project.name = 'wiki'
+    rts = DummyRTS(path)
     setup(storage, rts)
     multiprocessor_launcher(function, path, dataset, storage, processors, extension)
 
@@ -757,13 +763,8 @@ def launcher_prediction():
     dataset = 'prediction'
     processors = 7
     extension = 'bz2'
-    rts = object()
-    rts.language = object()
-    rts.project = object()
-    rts.input_location = path
-    rts.language.code = 'en'
-    rts.project.name = 'wiki'
-    setup(storage)
+    rts = DummyRTS(path)
+    setup(storage, rts)
     multiprocessor_launcher(function, path, dataset, storage, processors, extension)
 
 
