@@ -109,7 +109,8 @@ class EditConflict {
 
 	static function getGroupWeight( $user ) {
 		// check, whether we have an standard or a patched version of mediawiki
-		if ( method_exists( 'User', 'getGroupParameters' ) ) {
+		$realFunction = array( 'User', 'getGroupParameters' );
+		if ( is_callable( $realFunction ) ) {
 			return $user->getGroupParameters()->weight;
 		} else {
 			if ( !isset( self::$groupWeights['*'] ) ) {
