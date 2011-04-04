@@ -113,6 +113,7 @@ class Settings:
             config.read(os.path.join(self.working_directory, 'wiki.cfg'))
             self.working_directory = config.get('file_locations', 'working_directory')
             self.input_location = config.get('file_locations', 'input_location')
+            self.output_location = config.get('file_locations', 'output_location')
             self.default_project = config.get('wiki', 'project')
             self.default_language = config.get('wiki', 'language')
             return True
