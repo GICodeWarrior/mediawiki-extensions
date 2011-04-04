@@ -19,7 +19,8 @@ class MV_SpecialCRUDStream extends SpecialPage {
 		parent::__construct( 'Mv_Add_Stream' );
 		$this->mode = 'add';
 		// print_r(debug_backtrace());
-		if ( method_exists( 'SpecialPage', 'setGroup' ) ) {
+		$realFunction = array( 'SpecialPage', 'setGroup' );
+		if ( is_callable( $realFunction ) ) {
 			parent::setGroup( 'Mv_Add_Stream', 'mv_group' );
 		}
 
