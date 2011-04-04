@@ -6,22 +6,6 @@
  * PHP startup overhead.
  */
 
-if ( isset( $argv[1] ) ) {
-	$dir = $argv[1];
-	if ( !is_dir( $dir ) ) {
-		echo "Not a directory: $dir\n";
-		exit( 1 );
-	}
-} else {
-	$dir = '.';
-}
-
-if ( !check_dir( $dir ) ) {
-	exit( 1 );
-} else {
-	exit( 0 );
-}
-
 function check_dir( $dir ) {
 	$handle = opendir( $dir );
 	if ( !$handle ) {
@@ -65,4 +49,20 @@ function check_file( $file ) {
 		}
 	}
 	return $ret;
+}
+
+if ( isset( $argv[1] ) ) {
+	$dir = $argv[1];
+	if ( !is_dir( $dir ) ) {
+		echo "Not a directory: $dir\n";
+		exit( 1 );
+	}
+} else {
+	$dir = '.';
+}
+
+if ( !check_dir( $dir ) ) {
+	exit( 1 );
+} else {
+	exit( 0 );
 }
