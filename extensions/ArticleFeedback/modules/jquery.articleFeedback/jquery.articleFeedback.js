@@ -293,7 +293,7 @@ $.articleFeedback = {
 						}
 						// Form
 						if ( typeof ratingData.userrating !== 'undefined' ) {
-							if ( ratingData.userrating === 0 ) {
+							if ( ratingData.userrating == 0 ) {
 								$(this)
 									.find( 'input' )
 									.attr( 'checked', false );
