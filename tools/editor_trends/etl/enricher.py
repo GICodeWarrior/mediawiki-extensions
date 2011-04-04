@@ -735,9 +735,15 @@ def launcher_training():
     function = create_variables
     storage = 'csv'
     dataset = 'training'
-    processors = 6
+    processors = 7
     extension = 'bz2'
-    setup(storage)
+    rts = object()
+    rts.language = object()
+    rts.project = object()
+    rts.input_location = path
+    rts.language.code = 'en'
+    rts.project.name = 'wiki'
+    setup(storage, rts)
     multiprocessor_launcher(function, path, dataset, storage, processors, extension)
 
 
@@ -751,6 +757,12 @@ def launcher_prediction():
     dataset = 'prediction'
     processors = 7
     extension = 'bz2'
+    rts = object()
+    rts.language = object()
+    rts.project = object()
+    rts.input_location = path
+    rts.language.code = 'en'
+    rts.project.name = 'wiki'
     setup(storage)
     multiprocessor_launcher(function, path, dataset, storage, processors, extension)
 
