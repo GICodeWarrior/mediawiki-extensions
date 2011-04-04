@@ -399,6 +399,7 @@ Gallwch ddiddymu\'r rhybudd hwn yn yr adran "Golygu" yn eich dewisiadau.',
 
 /** Danish (Dansk)
  * @author Froztbyte
+ * @author Peter Alberti
  * @author Sarrus
  * @author Sir48
  */
@@ -412,6 +413,7 @@ Denne advarsel kan slås fra under Redigering i dine indstillinger.',
 	'vector-editwarning-preference' => 'Advar mig hvis jeg forlader en redigeringsside med ikke gemte ændringer.',
 	'vector-simplesearch-search' => 'Søg',
 	'vector-simplesearch-containing' => 'indeholder...',
+	'vector-noexperiments-preference' => 'Udeluk mig fra funktionseksperimenter',
 );
 
 /** German (Deutsch)
@@ -1525,6 +1527,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Boivie
  * @author MagnusA
  */
@@ -1538,6 +1541,7 @@ Om du är inloggad kan du slå av den här varningen under "Redigering" i dina i
 	'vector-editwarning-preference' => 'Varna mig om jag lämnar en redigeringssida där jag gjort ändringar men inte sparat.',
 	'vector-simplesearch-search' => 'Sök',
 	'vector-simplesearch-containing' => 'innehåller...',
+	'vector-noexperiments-preference' => 'Uteslut mig från funktionsexperiment',
 );
 
 /** Swahili (Kiswahili)
