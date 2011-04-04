@@ -23,6 +23,7 @@ from Queue import Empty
 from operator import itemgetter
 import datetime
 import sys
+from copy import deepcopy
 
 from database import db
 from utils import file_utils
@@ -67,33 +68,28 @@ class Editor(object):
             return
         edits = editor['edits']
         username = editor['username']
-        first_year, final_year = determine_year_range(edits)
-        monthly_edits = determine_edits_by_month(edits, first_year, final_year)
-        monthly_edits = db.stringify_keys(monthly_edits)
 
-        edits_by_year = determine_edits_by_year(edits, first_year, final_year)
-        edits_by_year = db.stringify_keys(edits_by_year)
+        first_year, final_year = determine_year_range(edits)
 
         last_edit_by_year = determine_last_edit_by_year(edits, first_year, final_year)
-        last_edit_by_year = db.stringify_keys(last_edit_by_year)
-
         articles_edited = determine_articles_workedon(edits, first_year, final_year)
+        article_count = determine_article_count(articles_edited, first_year, final_year)
         articles_edited = db.stringify_keys(articles_edited)
 
-        articles_by_year = determine_articles_by_year(articles_edited, first_year, final_year)
-        articles_by_year = db.stringify_keys(articles_by_year)
-
         namespaces_edited = determine_namespaces_workedon(edits, first_year, final_year)
-        namespaces_edited = db.stringify_keys(namespaces_edited)
-
-        character_counts = determine_edit_volume(edits, first_year, final_year)
-        character_counts = db.stringify_keys(character_counts)
-
-        count_reverts = determine_number_reverts(edits, first_year, final_year)
-        count_reverts = db.stringify_keys(count_reverts)
+        character_count = determine_edit_volume(edits, first_year, final_year)
+        revert_count = determine_number_reverts(edits, first_year, final_year)
 
         edits = sort_edits(edits)
         edit_count = determine_number_edits(edits, first_year, final_year)
+
+        totals = {}
+        counts = shaper.create_datacontainer(first_year, final_year)
+        totals = calculate_totals(totals, counts, character_count, 'character_count')
+        totals = calculate_totals(totals, counts, revert_count, 'revert_count')
+        totals = calculate_totals(totals, counts, article_count, 'article_count')
+        totals = calculate_totals(totals, counts, edit_count, 'edit_count')
+        totals = db.stringify_keys(totals)
 
         if len(edits) > cutoff:
             new_wikipedian = edits[cutoff]['date']
@@ -101,45 +97,84 @@ class Editor(object):
             new_wikipedian = False
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
-        edits = edits[:cutoff]
 
         self.output_db.insert({'editor': self.id,
-                          'edits': edits,
-                          'edits_by_year': edits_by_year,
-                          'new_wikipedian': new_wikipedian,
-                          'edit_count': edit_count,
-                          'final_edit': final_edit,
-                          'first_edit': first_edit,
-                          'articles_by_year': articles_by_year,
-                          'monthly_edits': monthly_edits,
-                          'last_edit_by_year': last_edit_by_year,
-                          'username': username,
-                          'articles_edited': articles_edited,
-                          'namespaces_edited': namespaces_edited,
-                          'character_counts': character_counts,
-                          }, safe=True)
+                               'username': username,
+                               'new_wikipedian': new_wikipedian,
+                               'final_edit': final_edit,
+                               'first_edit': first_edit,
+                               'last_edit_by_year': last_edit_by_year,
+                               'articles_edited': articles_edited,
+                               'edit_count': edit_count,
+                               'namespaces_edited': namespaces_edited,
+                               'article_count': article_count,
+                               'character_count': character_count,
+                               'revert_count': revert_count,
+                               'totals': totals,
+                               },
+                               safe=True)
+
+
+def cleanup_datacontainer(dc, variable_type):
+    '''
+    valid variable_type are either a {}, a [] or 0.
+    '''
+    years = dc.keys()
+    for year in years:
+        months = dc[year].keys()
+        for month in months:
+            if dc[year][month] == variable_type:
+                del dc[year][month]
+    return dc
+
+
+def calculate_totals(totals, counts, dc, var):
+    cnts = deepcopy(counts)
+    totals.setdefault(var, {})
+    for year in dc:
+        for month in dc[year]:
+            for ns in dc[year][month]:
+                if isinstance(dc[year][month][ns], dict):
+                    cnts[year].setdefault(ns, {})
+                    for key in dc[year][month][ns]:
+                        cnts[year][ns].setdefault(key, 0)
+                        cnts[year][ns][key] += dc[year][month][ns][key]
+                else:
+                    cnts[year].setdefault(ns, 0)
+                    #print year, ns, type(ns), dc[year][month][ns]
+                    cnts[year][ns] += dc[year][month][ns]
+    totals[var] = cnts
+    return totals
 
 
 def determine_number_edits(edits, first_year, final_year):
-    count = 0
+    dc = shaper.create_datacontainer(first_year, final_year)
+    dc = shaper.add_months_to_datacontainer(dc, 'dict')
     for edit in edits:
-        if edit['ns'] == 0:
-            print edit['ns']
-            count += 1
-    return count
+        ns = edit['ns']
+        year, month = str(edit['date'].year), edit['date'].month
+        dc[year][month].setdefault(ns, 0)
+        dc[year][month][ns] += 1
+    dc = cleanup_datacontainer(dc, {})
+    dc = db.stringify_keys(dc)
+    return dc
 
 
 def determine_articles_workedon(edits, first_year, final_year):
     dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 'set')
+    dc = shaper.add_months_to_datacontainer(dc, 'dict')
     for year in edits:
         for edit in edits[year]:
             month = edit['date'].month
-            dc[year][month].add(edit['article'])
+            ns = edit['ns']
+            dc[year][month].setdefault(ns, set())
+            dc[year][month][ns].add(edit['article'])
 
     for year in dc:
         for month in dc[year]:
-            dc[year][month] = list(dc[year][month])
+            for ns in dc[year][month]:
+                dc[year][month][ns] = list(dc[year][month][ns])
+    dc = cleanup_datacontainer(dc, {})
     return dc
 
 
@@ -153,21 +188,31 @@ def determine_namespaces_workedon(edits, first_year, final_year):
     for year in dc:
         for month in dc[year]:
             dc[year][month] = list(dc[year][month])
+    dc = cleanup_datacontainer(dc, [])
+    dc = db.stringify_keys(dc)
     return dc
 
 
 def determine_number_reverts(edits, first_year, final_year):
     dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 0)
+    dc = shaper.add_months_to_datacontainer(dc, 'dict')
     for year in edits:
         for edit in edits[year]:
             month = edit['date'].month
+            ns = edit['ns']
             if edit['revert']:
-                dc[year][month] += 1
+                dc[year][month].setdefault(ns, 0)
+                dc[year][month][ns] += 1
+    dc = cleanup_datacontainer(dc, {})
+    dc = db.stringify_keys(dc)
     return dc
 
 
 def determine_edit_volume(edits, first_year, final_year):
+    '''
+    This function counts the number of edits by year by month by namespace for 
+    a particular editor. 
+    '''
     dc = shaper.create_datacontainer(first_year, final_year)
     dc = shaper.add_months_to_datacontainer(dc, 'dict')
     for year in edits:
@@ -181,6 +226,8 @@ def determine_edit_volume(edits, first_year, final_year):
                 dc[year][month][ns]['removed'] += edit['delta']
             elif edit['delta'] > 0:
                 dc[year][month][ns]['added'] += edit['delta']
+    dc = cleanup_datacontainer(dc, {})
+    dc = db.stringify_keys(dc)
     return dc
 
 
@@ -200,42 +247,22 @@ def determine_last_edit_by_year(edits, first_year, final_year):
                 dc[date] = edit
             elif dc[date] < edit:
                 dc[date] = edit
+    dc = db.stringify_keys(dc)
     return dc
 
 
-def determine_edits_by_month(edits, first_year, final_year):
-    dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 0.0)
-    for year in edits:
-        for edit in edits[year]:
-            m = edit['date'].month
-            dc[year][m] += 1
-    return dc
-
-
-def determine_edits_by_year(edits, first_year, final_year):
-    '''
-    This function counts the number of edits by year made by a particular editor. 
-    '''
-    dc = shaper.create_datacontainer(first_year, final_year, 0)
-    for year in edits:
-        for edit in edits[year]:
-            year = str(edit['date'].year)
-            dc[year] += 1
-    return dc
-
-
-def determine_articles_by_year(articles_edited, first_year, final_year):
+def determine_article_count(articles_edited, first_year, final_year):
     '''
     This function counts the number of unique articles by year edited by a
     particular editor.
     '''
     dc = shaper.create_datacontainer(first_year, final_year)
+    dc = shaper.add_months_to_datacontainer(dc, 'dict')
     for year in articles_edited:
-        edits = set()
         for month in articles_edited[year]:
-            edits.update(articles_edited[year][month])
-        dc[year] = len(edits)
+            for ns in articles_edited[year][month]:
+                dc[year][month][ns] = len(articles_edited[year][month][ns])
+    dc = db.stringify_keys(dc)
     return dc
 
 

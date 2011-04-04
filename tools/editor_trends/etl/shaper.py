@@ -34,13 +34,6 @@ def add_datatype(datatype=0.0):
     return d
 
 
-def create_clock():
-    d = {}
-    for i in xrange(0, 24):
-        d[i] = 0.0
-    return d
-
-
 def create_datacontainer(first_year, final_year, datatype='dict'):
     '''
     This function initializes an empty dictionary with as key the year (starting
@@ -53,12 +46,14 @@ def create_datacontainer(first_year, final_year, datatype='dict'):
         data[str(x)] = add_datatype(datatype)
     return data
 
+
 def add_windows_to_datacontainer(datacontainer, windows):
     for dc in datacontainer:
         for w in windows:
             datacontainer[dc][w] = add_datatype()
 
     return datacontainer
+
 
 def add_months_to_datacontainer(datacontainer, datatype):
     for dc in datacontainer:
@@ -68,12 +63,10 @@ def add_months_to_datacontainer(datacontainer, datatype):
 
     return datacontainer
 
+
 def add_years_to_datacontainer(first_year, final_year, datacontainer, datatype):
     for dc in datacontainer:
         datacontainer[dc] = {}
         for x in range(first_year, final_year):
             datacontainer[dc][x] = datatype
     return datacontainer
-
-
-
