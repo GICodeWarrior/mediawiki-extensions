@@ -674,11 +674,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'interwikilist' => 'Списак међувикија',
-	'interwikilist-desc' => 'Додаје [[Special:Interwikilist|специјалну страну]] за преглед доступног међувикија',
+	'interwikilist-desc' => 'Додаје посебну страницу за преглед [[Special:Interwikilist|доступних веза међувикија]]',
 	'interwikilist-linkname' => 'Међувики веза',
 	'interwikilist-target' => 'Циљани URL',
 	'interwikilist-filter' => 'Списак филтера',
