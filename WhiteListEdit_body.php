@@ -29,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # older versions of MW did not have the NewFromId method, let's define our own
 function WhiteListUserFromId($id) {	
-	if (method_exists('User', 'newfromid')) {
+	$realFunction = array( 'User', 'newfromid' );
+	if ( is_callable( $realFunction ) ) {
 		return User::NewFromId($id);
 	} else {
 		$u = new User;
@@ -495,7 +496,8 @@ if ($debug)
 			$found['title'] = $matches[4];
 			$found['ns'] = '%';
 
-			if (method_exists('Language', 'Factory')) {
+			$realFunction = array( 'Language', 'Factory' );
+			if ( is_callable( $realFunction ) ) {
 				$ns = Language::Factory( $wgContLanguageCode );
 			} else {
 				$ns = $wgContLang;
