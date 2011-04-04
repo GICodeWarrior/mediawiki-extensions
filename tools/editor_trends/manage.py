@@ -205,7 +205,8 @@ def config_launcher(rts, logger):
         project = None
         language = None
         working_directory = raw_input('Please indicate where you installed Editor Trends Analytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
-        input_location = raw_input('Please indicate where to store the Wikipedia dump files.\nDefault is: %s\nPress Enter to accept default.\n' % rts.input_location)
+        input_location = raw_input('Please indicate where the Wikipedia dump files are or will be located.\nDefault is: %s\nPress Enter to accept default.\n' % rts.input_location)
+        output_location = raw_input('Please indicate where to store all Wikilytics project files.\nDefault is: %s\nPress Enter to accept default.\n' % rts.output_location)
 
         while project not in pc.projects.keys():
             project = raw_input('Please indicate which project you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % rts.project.full_name)
@@ -220,12 +221,14 @@ def config_launcher(rts, logger):
             language = language if language in rts.project.valid_languages else rts.language.default
 
         input_location = input_location if len(input_location) > 0 else rts.input_location
+        output_location = output_location if len(output_location) > 0 else rts.output_location
         working_directory = working_directory if len(working_directory) > 0 else os.getcwd()
 
         config = ConfigParser.RawConfigParser()
         config.add_section('file_locations')
         config.set('file_locations', 'working_directory', working_directory)
         config.set('file_locations', 'input_location', input_location)
+        config.set('file_locations', 'output_location', output_location)
         config.add_section('wiki')
         config.set('wiki', 'project', project)
         config.set('wiki', 'language', language)
@@ -236,11 +239,13 @@ def config_launcher(rts, logger):
 
         rts.working_directory = config.get('file_locations', 'working_directory')
         rts.input_location = config.get('file_locations', 'input_location')
+        rts.output_location = config.get('file_locations', 'output_location')
 
         log.log_to_csv(logger, rts, 'New configuration', 'Creating',
                        config_launcher,
                        working_directory=working_directory,
                        input_location=input_location,
+                       output_location=output_location,
                        project=project,
                        language=language,)
 

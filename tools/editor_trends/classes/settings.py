@@ -49,7 +49,7 @@ except ImportError:
 class Settings:
     #__metaclass__ = singleton.Singleton
 
-    def __init__(self, process_multiplier=1):
+    def __init__(self):
         self.minimum_python_version = (2, 6)
         self.detect_python_version()
         self.encoding = 'utf-8'
@@ -64,7 +64,7 @@ class Settings:
         self.max_xmlfile_size = 4096 * 1024
 
         #Change this to match your computers configuration (RAM / CPU)
-        self.number_of_processes = cpu_count() * process_multiplier
+        self.number_of_processes = cpu_count()
 
         self.wp_dump_location = 'http://dumps.wikimedia.org'
         self.xml_namespace = 'http://www.mediawiki.org/xml/export-0.4/'
@@ -85,6 +85,7 @@ class Settings:
         result = self.load_configuration()
         if not result:
             self.input_location = os.path.join(self.root, 'wikimedia')
+            self.output_location = os.path.join(self.root, 'wikimedia')
 
         # Default Input file
         self.input_filename = os.path.join(self.input_location, 'en',
@@ -152,9 +153,15 @@ class Settings:
             if not os.path.exists(directory):
                 try:
                     os.makedirs(directory)
-                except IOError:
+                except IOError, error:
+                    pass
+                except OSError, error:
+                    pass
+                finally:
                     print 'Configuration Error, could not create directory %s.'\
                         % directory
+                    print 'The reason is: %s' % error
+                    sys.exit(-1)
 
     def detect_windows_program(self, program):
         entry = self.windows_register.get(program, None)
