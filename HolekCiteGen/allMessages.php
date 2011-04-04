@@ -206,9 +206,14 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'ts-citegen-Input-title' => 'Unos',
+	'ts-citegen-Output-title' => 'Rezultat',
+	'ts-citegen-Skins' => 'Izlaz',
 	'ts-citegen-Skin-skins' => 'Kože',
+	'ts-citegen-Template-lang' => 'Jezik šablona',
 	'ts-citegen-Sources-title' => 'Izvori',
 	'ts-citegen-Tools' => 'Alati',
+	'ts-citegen-Errors-title' => 'Greške',
 );
 
 /** Catalan (Català)
