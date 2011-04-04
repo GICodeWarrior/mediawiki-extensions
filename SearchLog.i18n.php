@@ -46,6 +46,22 @@ $messages['be-tarask'] = array(
 	'right-searchlog-read' => 'прагляд журнала пошукаў',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'searchlog' => 'Zapisnik pretrage',
+	'searchlog-desc' => 'Korištenje zapisnika kutije za pretragu i omogućava izvještavanje o ukupnim ključnim riječima tokom datog vremenskog perioda',
+	'searchlog-cantopen' => 'Ne mogu otvoriti datoteku zapisnika <tt>$1</tt>',
+	'searchlog-heading' => 'Traži ključne riječi korištene tokom $1 perioda',
+	'searchlog-unicode' => 'Prikaži čisti Unicode',
+	'searchlog-timeperiod' => 'Odaberi vremenski period:',
+	'searchlog-entire' => 'Cijeli zapisnik',
+	'searchlog-phrase' => 'Traži frazu',
+	'searchlog-occurences' => 'Broj pojavljivanja tokom perioda',
+	'right-searchlog-read' => 'Pogledaj zapisnik pretrage',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Purodha
