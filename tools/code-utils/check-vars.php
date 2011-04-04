@@ -10,6 +10,8 @@ if( ! $IP = getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = dirname( __FILE__ ) . "/../../phase3/";
 }
 
+$IP = rtrim( $IP, "/" );
+
 require_once( "$IP/includes/Defines.php" ); # Faster than parsing
 require_once( "$IP/includes/AutoLoader.php" );
 $wgAutoloadClasses = &$wgAutoloadLocalClasses;
