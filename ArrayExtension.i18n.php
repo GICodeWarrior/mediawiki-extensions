@@ -28,6 +28,13 @@ $messages['qqq'] = array(
 	'arrayext-desc' => '{{desc}}',
 );
 
+/** Bashkir (Башҡортса)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'arrayext-desc' => 'Исемләнгән массивтарҙы һаҡлау һәм иҫәпләү',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
