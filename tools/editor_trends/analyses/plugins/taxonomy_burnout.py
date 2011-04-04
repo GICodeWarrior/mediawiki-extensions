@@ -12,7 +12,7 @@ See the GNU General Public License for more details, at
 http://www.fsf.org/licenses/gpl.html
 '''
 
-__author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
+__author__ = '''\n'''.join(['Ryan Faulkner (rfaulkner@wikimedia.org)', ])
 __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
@@ -29,10 +29,10 @@ def taxonomy_burnout(var, editor, **kwargs):
     
     for year in xrange(new_wikipedian.year, var.max_year):
         for month in xrange(1, 13):
-            if edits[year][month] > 249:
+            if edits[str(year)][str(month)] > 249:
                 burnout = True
             if burnout == True:
-              sum += edits[year][month]
+              sum += edits[str(year)][str(month)]
               count +=1.0
             
     if sum / count < 10 and burnout == True:
