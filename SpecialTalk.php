@@ -31,7 +31,7 @@ $wgExtensionMessagesFiles['SpecialTalk'] =  $dir . 'SpecialTalk.i18n.php';
 $wgHooks['SkinTemplateBuildContentActionUrlsAfterSpecialPage'][] = 'wfSpecialTalkHook';
 
 function wfSpecialTalkHook( SkinTemplate &$skin_template, array &$content_actions ) {
-	$title = Title::makeTitle( NS_PROJECT_TALK, $skin_template->mTitle->getText() );
+	$title = Title::makeTitle( NS_PROJECT_TALK, $skin_template->getTitle()->getText() );
 
 	$content_actions['talk'] = $skin_template->tabAction(
 		$title,
