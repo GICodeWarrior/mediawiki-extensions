@@ -119,7 +119,10 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'narayam-desc' => 'Aotren a ra ouzhpennañ hentennoù bizskrivañ personelaet evit ar maeziennoù bizskrivañ',
+	'narayam-toggle-ime' => 'Evit eilpennañ an hentenn enmont ($1)',
 	'narayam-help-page' => 'Help:Bizskrivañ',
+	'narayam-checkbox-tooltip' => 'Evit eilpennañ an hentenn enmont war enaou pe get',
+	'narayam-disable-preference' => 'Diweredekaat an embanner hentenn enmont evit an narayam',
 	'narayam-ml' => 'Treuzlizherennadur Malayalam',
 	'narayam-sa' => 'Treuzlizherennadur sanskriteg',
 	'narayam-ta' => 'Treuzlizherennadur tamoul',
