@@ -81,7 +81,7 @@ class P2wikiTemplate extends BaseTemplate {
 		}
 		
 		$isWide = false;
-		if ( $this->skin->mTitle->getNamespace() == NS_SPECIAL )
+		if ( $this->skin->getTitle()->getNamespace() == NS_SPECIAL )
 			$isWide = "extrawide";
 		else if ( $action == "edit" )
 			$isWide = "wide";
