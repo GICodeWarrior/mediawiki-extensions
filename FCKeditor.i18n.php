@@ -206,12 +206,15 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author BroOk
  * @author Solde
  */
 $messages['ca'] = array(
+	'fckeditor-desc' => "Permet l'edició amb l'editor WYSIWYG FCKeditor",
 	'textrichditor' => 'Editor enriquit',
 	'prefs-fckeditor' => 'Editor enriquit',
 	'tog-riched_disable' => "Deshabilita l'editor enriquit",
+	'tog-riched_disable_ns_main' => "Deshabilita l'editor enriquit dins de l'espai de noms",
 	'tog-riched_disable_ns_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:talk}}"',
 	'tog-riched_disable_ns_user' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:user}}"',
 	'tog-riched_disable_ns_user_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:user_talk}}"',
@@ -227,6 +230,11 @@ $messages['ca'] = array(
 	'tog-riched_disable_ns_help_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:help_talk}}"',
 	'tog-riched_disable_ns_category' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:category}}"',
 	'tog-riched_disable_ns_category_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:category_talk}}"',
+	'rich_editor_new_window' => "Obre l'editor enriquit en una nova finestra",
+	'tog-riched_start_disabled' => "Comença amb l'editor enriquit deshabilitat",
+	'tog-riched_use_popup' => "Obre l'editor enriquit en una finestra emergent",
+	'tog-riched_use_toggle' => "Usa la palanca per canviar entre wikitext i l'editor visual (reemplaça l'àrea de text amb l'editor enriquit)",
+	'tog-riched_toggle_remember_state' => "Recorda canviar l'estat passat",
 );
 
 /** Czech (Česky)
