@@ -95,10 +95,18 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'includewp-desc' => 'IncludeWP je jednostavno proširenje za uključivanje sadržaja Wikipedije',
 	'includewp-loading-page' => 'Učitavam stranicu...',
 	'includewp-show-full-page' => 'Prikaži cijelu stranicu',
 	'includewp-show-fragment' => 'Pokaži samo prvi pasus',
 	'includewp-loading-failed' => 'Nije uspjelo učitavanje stranice.',
+	'includewp-licence-notice' => 'Gornji sadržaj je preuzet sa $1 stranice <a href="$2">$3</a> licenciran pod licencom <a href="$4">$5</a>.
+Postoji <a href="$6">potpuni spisak autora</a>.',
+	'includewp-parserhook-desc' => 'Parserska kuka koja omogućava prikaz sadržaja stranice Wikipedije.',
+	'includewp-include-par-page' => 'Broj (udaljenih) stranica koje želite prikazati.',
+	'includewp-include-par-wiki' => 'Ime wikija čiji sadržaj želite da preuzmete. Mora biti neki od dopuštenih wikija, po postavkama je samo Wikipedija.',
+	'includewp-include-par-paragraphs' => 'Broj pasusa koje za početak želite da prikažete.',
+	'includewp-include-par-height' => 'Maksimalna visina u pikselima od HTML div oznake u koju je sadržaj učitan. Stavite 0 ako ne želite ograničenje.',
 );
 
 /** German (Deutsch)
