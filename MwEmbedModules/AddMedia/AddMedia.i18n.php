@@ -2960,6 +2960,7 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Herr Mlinka
  * @author Michawiki
+ * @author Roberta F.
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
@@ -2974,11 +2975,16 @@ $messages['hr'] = array(
 	'mwe-filesource' => 'Izvor:',
 	'mwe-select_file' => 'Odaberite datoteku',
 	'mwe-summary' => 'Sažetak',
+	'mwe-link-login' => 'prijavite se',
 	'mwe-watch-this-file' => 'Prati ovu datoteku',
 	'mwe-ignore-any-warnings' => 'Zanemari sva upozorenja',
 	'mwe-uploaded-time-remaining' => 'Preostalo vrijeme: $1',
 	'mwe-am-results_next' => 'sljedeći',
 	'mwe-am-results_prev' => 'prethodni',
+	'mwe-link' => 'poveznica',
+	'mwe-cc_by_title' => 'Imenovanje',
+	'mwe-cc_sa_title' => 'Dijeli pod istim uvjetima',
+	'mwe-cc_pd_title' => 'Javno dobro',
 	'mwe-watch_this_page' => 'Prati ovu stranicu',
 	'mwe-ftype-svg' => 'SVG vektor datoteka',
 	'mwe-ftype-jpg' => 'JPEG slikovna datoteka',
