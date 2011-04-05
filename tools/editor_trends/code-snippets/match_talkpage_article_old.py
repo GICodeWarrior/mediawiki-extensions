@@ -63,7 +63,7 @@ def map_article_talk_ids(language_code):
     articles = {}
     talks = {}
     for file in files:
-        fh = file_utils.create_txt_filehandle(input, file, 'r', settings.encoding)
+        fh = file_utils.create_txt_filehandle(input, file, 'r', 'utf-8')
         for line in fh:
             line = line.strip()
             id, article = line.split('\t')
@@ -118,7 +118,7 @@ def debug_map_article_talk_ids():
 def debug_article_to_talk():
     input = os.path.join(settings.input_location, 'en', 'wiki', 'chunks', '0.xml')
     output = os.path.join(settings.input_location, 'en', 'wiki', 'txt', 'test.txt')
-    f = codecs.open(output, 'w', encoding=settings.encoding)
+    f = codecs.open(output, 'w', encoding='utf-8')
     fh = open(input, 'r')
     data = xml.read_input(fh)
     for raw_data in data:

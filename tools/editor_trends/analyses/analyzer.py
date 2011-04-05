@@ -19,6 +19,7 @@ __version__ = '0.1'
 
 from multiprocessing import JoinableQueue, Manager, RLock, Process
 from multiprocessing.managers import BaseManager
+from Queue import Empty
 
 import sys
 import cPickle

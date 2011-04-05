@@ -32,7 +32,7 @@ from database import db
 #    mongo = db.init_mongo_db(dbname)
 #    editors = mongo['dataset']
 #    name = dbname + '_edits_by_month.csv'
-#    fh = file_utils.create_txt_filehandle(settings.dataset_location, name, 'w', settings.encoding)
+#    fh = file_utils.create_txt_filehandle(settings.dataset_location, name, 'w', 'utf-8')
 #    x = 0
 #    vars_to_expand = ['monthly_edits']
 #    while True:

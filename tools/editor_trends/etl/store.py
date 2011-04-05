@@ -64,7 +64,7 @@ class Storer(consumers.BaseConsumer):
                         editor_cache.add(prev_editor, 'NEXT')
 
                     data = self.prepare_data(line)
-                    print editor, data['username']
+                    #print editor, data['username']
                     editor_cache.add(editor, data)
                     prev_editor = editor
             fh.close()
@@ -168,7 +168,7 @@ def launcher(rts):
     while True:
         while ppills > 0:
             try:
-                res = result.get(block=True)
+                res = result.get(block=False)
                 if res == True:
                     pbar.update(pbar.currval + 1)
                 else:

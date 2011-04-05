@@ -28,7 +28,7 @@ from utils import file_utils
 def prepare_cohort_dataset(dbname, filename):
     dataset = file_utils.load_object(settings.binary_location, '%s_%s' % (dbname, filename))
     filename = filename.replace('.bin', '.txt')
-    fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_%s' % (dbname, filename), 'w', settings.encoding)
+    fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_%s' % (dbname, filename), 'w', 'utf-8')
 
     years = dataset.keys()
     years.sort()

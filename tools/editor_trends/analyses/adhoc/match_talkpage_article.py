@@ -50,7 +50,7 @@ def parse_dumpfile(project, language_code, namespaces=['0', '1']):
     location = os.path.join(settings.input_location, language_code, project)
     fh = file_utils.create_txt_filehandle(location,
                 '%s%s-latest-stub-meta-history.xml' % (language_code, project),
-                'r', settings.encoding)
+                'r', 'utf-8')
 
     for page, article_size in wikitree.parser.read_input(fh):
         title = page.find('title')

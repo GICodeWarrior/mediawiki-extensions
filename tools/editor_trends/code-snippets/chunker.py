@@ -71,7 +71,7 @@ def remove_namespace(element, namespace):
 
 #def load_namespace(language):
 #    file = '%s_ns.json' % language
-#    fh = file_utils.create_txt_filehandle(settings.namespace_location, file, 'r', settings.encoding)
+#    fh = file_utils.create_txt_filehandle(settings.namespace_location, file, 'r', 'utf-8')
 #    ns = json.load(fh)
 #    fh.close()
 #    ns = ns['query']['namespaces']
@@ -146,14 +146,14 @@ def create_file_handle(fh, output, counter, size, format):
     if not fh:
         counter = 0
         path = os.path.join(output, '%s.%s' % (counter, format))
-        fh = codecs.open(path, 'w', encoding=settings.encoding)
+        fh = codecs.open(path, 'w', encoding='utf-8')
         return fh, counter, False
     elif (fh.tell() + size) > settings.max_xmlfile_size:
         print 'Created chunk %s' % (counter + 1)
         fh.close
         counter += 1
         path = os.path.join(output, '%s.%s' % (counter, format))
-        fh = codecs.open(path, 'w', encoding=settings.encoding)
+        fh = codecs.open(path, 'w', encoding='utf-8')
         return fh, counter, True
     else:
         return fh, counter, False
@@ -248,7 +248,7 @@ def split_file(location, file, project, language_code, zip=False):
                     root.clear()  # when done parsing a section clear the tree to safe memory
 
     except SyntaxError:
-        f = file_utils.create_txt_filehandle(settings.log_location, 'split_xml', 'w', settings.encoding)
+        f = file_utils.create_txt_filehandle(settings.log_location, 'split_xml', 'w', 'utf-8')
         f.write(cElementTree.tostring(elem))
         f.close()
 

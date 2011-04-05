@@ -86,7 +86,7 @@ def generate_long_editor_dataset(tasks, dbname, collection, **kwargs):
     editors = mongo[collection + '_dataset']
     vars = ['monthly_edits']
     name = dbname + '_long_editors.csv'
-    #fh = file_utils.create_txt_filehandle(settings.dataset_location, name, 'w', settings.encoding)
+    #fh = file_utils.create_txt_filehandle(settings.dataset_location, name, 'w', 'utf-8')
     vars_to_expand = []
     keys = dict([(var, 1) for var in vars])
     ld = LongDataset(vars)
@@ -183,7 +183,7 @@ def generate_cohort_dataset_forward(tasks, dbname, collection):
     cohort_charts.prepare_cohort_dataset(dbname, filename)
 
     filename = '_cohort_data_forward_histogram.csv'
-    fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_%s' % (dbname, filename), 'w', settings.encoding)
+    fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_%s' % (dbname, filename), 'w', 'utf-8')
     for year in data:
         for month in data[year]:
             obs = data[year][month].keys()
@@ -260,7 +260,7 @@ def generate_wide_editor_dataset(tasks, dbname, collection, **kwargs):
     mongo = db.init_mongo_db(dbname)
     editors = mongo[collection + '_dataset']
     name = dbname + '_wide_editors.csv'
-    fh = file_utils.create_txt_filehandle(settings.dataset_location, name, 'a', settings.encoding)
+    fh = file_utils.create_txt_filehandle(settings.dataset_location, name, 'a', 'utf-8')
     x = 0
     vars_to_expand = ['edits', 'edits_by_year', 'articles_by_year']
     while True:

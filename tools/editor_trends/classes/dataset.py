@@ -459,7 +459,7 @@ class Dataset:
         fh = file_utils.create_txt_filehandle(settings.dataset_location,
                                               self.filename,
                                               'w',
-                                              settings.encoding)
+                                              'utf-8')
         file_utils.write_list_to_csv(headers, fh, recursive=False, newline=True)
         file_utils.write_list_to_csv(data, fh, recursive=False, newline=True,
                                      format=self.format,

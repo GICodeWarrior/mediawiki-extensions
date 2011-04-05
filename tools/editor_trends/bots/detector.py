@@ -93,7 +93,7 @@ def store_bots():
     keys = ['name', 'verified', 'projects']
     bots = file_utils.create_dict_from_csv_file(settings.csv_location,
                                                 'bots_ids.csv',
-                                                settings.encoding,
+                                                'utf-8',
                                                 keys)
     mongo = db.init_mongo_db('bots')
     collection = mongo['ids']
@@ -122,7 +122,7 @@ def convert_object_to_dict(obj, exclude=[]):
 
 def write_bot_list_to_csv(bots, keys):
     fh = file_utils.create_txt_filehandle(settings.csv_location, 'bots_ids.csv',
-                                          'w', settings.encoding)
+                                          'w', 'utf-8')
     bot_dict = convert_object_to_dict(bots, exclude=['time', 'written'])
     for bot in bot_dict:
         bot = bot_dict[bot]
@@ -194,7 +194,7 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
         output_file = 'bots_ids.csv'
         files = file_utils.retrieve_file_list(input_txt, 'txt', mask=None)
         input_queue = pc.load_queue(files, poison_pill=True)
-        bots = read_bots_csv_file(settings.csv_location, 'Bots.csv', settings.encoding, manager=manager)
+        bots = read_bots_csv_file(settings.csv_location, 'Bots.csv', 'utf-8', manager=manager)
         for file in files:
             tasks.put(consumers.TXTFile(file, input_txt, settings.csv_location, output_file, target, bots=bots, keys=keys))
 
@@ -229,7 +229,7 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
             keys = bots.keys()
             for key in keys:
                 try:
-                    print '%s' % key.encode(settings.encoding)
+                    print '%s' % key.encode('utf-8')
                 except:
                     pass
     else:
@@ -238,7 +238,7 @@ def bot_launcher(language_code, project, target, action, single=False, manager=F
 
 
 def bot_training_dataset(bots):
-    fh = file_utils.create_txt_filehandle(settings.csv_location, 'training_bots.csv', 'w', settings.encoding)
+    fh = file_utils.create_txt_filehandle(settings.csv_location, 'training_bots.csv', 'w', 'utf-8')
     keys = bots.keys()
     for key in keys:
         bot = bots.get(key)

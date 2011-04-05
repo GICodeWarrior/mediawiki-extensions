@@ -45,7 +45,7 @@ def create_edgelist(project, collection):
     ids = db.retrieve_distinct_keys(project, collection, 'editor')
     conn = db.init_mongo_db(project)
     ids.sort()
-    fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_edgelist.csv' % project, 'w', settings.encoding)
+    fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_edgelist.csv' % project, 'w', 'utf-8')
     for i in ids:
         author_i = conn[collection].find_one({'editor': i})
         article_i = create_articles_set(author_i['edits'])

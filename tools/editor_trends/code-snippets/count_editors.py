@@ -17,7 +17,7 @@ def main():
     files = file_utils.retrieve_file_list(input, 'txt', mask='merged_final')
     editors = {}
     for file in files:
-        fh = file_utils.create_txt_filehandle(input, file, 'r', settings.encoding)
+        fh = file_utils.create_txt_filehandle(input, file, 'r', 'utf-8')
         for line in fh:
             author = line.split('\t')[0]
             if author not in editors:

@@ -163,7 +163,7 @@ class RunTimeSettings(Settings):
         max_length_key = max([len(key) for key in about.keys()])
         print 'Final settings after parsing command line arguments:'
         for ab in about:
-            print '%s: %s' % (ab.rjust(max_length_key), about[ab].encode(self.encoding))
+            print '%s: %s' % (ab.rjust(max_length_key), about[ab].encode('utf-8'))
 
 
     def get_value(self, key):

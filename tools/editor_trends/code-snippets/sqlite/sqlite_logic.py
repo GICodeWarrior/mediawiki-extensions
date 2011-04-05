@@ -62,9 +62,9 @@ def store_data_db(data_queue, pids):
     while True:
         try:
             chunk = data_queue.get(block=False)
-            contributor = chunk['contributor'].encode(settings.encoding)
+            contributor = chunk['contributor'].encode('utf-8')
             article = chunk['article']
-            timestamp = chunk['timestamp'].encode(settings.encoding)
+            timestamp = chunk['timestamp'].encode('utf-8')
             bot = chunk['bot']
             values.append((contributor, article, timestamp, bot))
 
@@ -96,7 +96,7 @@ def create_bots_db(db_name):
     db.create_tables(cursor, db_settings.BOT_TABLE)
     values = []
     fields = [field[0] for field in db_settings.BOT_TABLE['bots']]
-    for line in file_utils.read_data_from_csv('data/csv/StatisticsBots.csv', settings.encoding):
+    for line in file_utils.read_data_from_csv('data/csv/StatisticsBots.csv', 'utf-8'):
         line = line.split(',')
         row = []
         for x, (field, value) in enumerate(zip(fields, line)):

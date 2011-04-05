@@ -237,7 +237,7 @@ def output_editor_information(revisions, page, bots, rts):
         for tag in tags:
             el = revision.find('%s' % tag)
             if el == None:
-                #print cElementTree.tostring(revision, settings.encoding)
+                #print cElementTree.tostring(revision, 'utf-8')
                 del vars[x]
                 break
             for function in tags[tag].keys():

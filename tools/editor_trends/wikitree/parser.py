@@ -21,7 +21,9 @@ import re
 import cStringIO
 import codecs
 import xml.etree.cElementTree as cElementTree
+from lxml import etree
 import sys
+import gzip
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -64,7 +66,7 @@ def create_namespace_dict(namespaces):
         d[key] = extract_text(ns)
         text = ns.text if ns.text != None else ''
         try:
-            print key, text.encode(settings.encoding)
+            print key, text.encode('utf-8')
         except UnicodeEncodeError:
             print key
     return d
@@ -77,7 +79,7 @@ def extract_meta_information(fh):
     2) Create a dictionary with the namespaces
     '''
     buffer = cStringIO.StringIO()
-    wrapper = codecs.getwriter(settings.encoding)(buffer)
+    wrapper = codecs.getwriter('utf-8')(buffer)
     wrapper.write("<?xml version='1.0' encoding='UTF-8' ?>\n")
     re_version = re.compile('\"\d\.\d\"')
     for x, raw_data in enumerate(fh):
@@ -99,42 +101,71 @@ def extract_meta_information(fh):
     return namespaces, xml_namespace
 
 
-
 def read_input(fh):
-    buffer = cStringIO.StringIO()
-    wrapper = codecs.getwriter(settings.encoding)(buffer)
-    wrapper.write("<?xml version='1.0' encoding='UTF-8' ?>\n")
-    start_parsing = False
+    context = cElementTree.iterparse(fh, events=('end',))
+    context = iter(context)
 
-    for raw_data in fh:
-        if raw_data == '\n':
-            continue
-        if start_parsing == False and raw_data.find('<page>') > -1:
-            start_parsing = True
-        if start_parsing:
-            raw_data = ''.join(raw_data.strip())
-            wrapper.write(raw_data)
-            if raw_data.find('</page>') > -1:
-                article = wrapper.getvalue()
-                size = len(article)
-                #article.encode(settings.encoding)
-                article = cElementTree.XML(article)
-                yield article, size
-                '''
-                #This looks counter intuitive but Python continues with this 
-                call after it has finished the yield statement
-                '''
-                buffer = cStringIO.StringIO()
-                wrapper = codecs.getwriter(settings.encoding)(buffer)
-                wrapper.write("<?xml version='1.0' encoding='UTF-8' ?>\n")
-    fh.close()
+    article = {}
+    article['revisions'] = []
+    id = False
+    namespace = '{http://www.mediawiki.org/xml/export-0.4/}'
+
+    for event, elem in context:
+        if event == 'end' and elem.tag == '%s%s' % (namespace, 'title'):
+            article['title'] = elem
+        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'revision'):
+            article['revisions'].append(elem)
+        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'id') and id == False:
+            article['id'] = elem
+            id = True
+        elif event == 'end' and elem.tag == '%s%s' % (namespace, 'page'):
+            yield article, 0
+            elem.clear()
+            article = {}
+            article['revisions'] = []
+            id = False
+        elif event == 'end':
+            elem.clear()
+
+#def read_input(fh):
+#    buffer = cStringIO.StringIO()
+#    wrapper = codecs.getwriter('utf-8')(buffer)
+#    wrapper.write("<?xml version='1.0' encoding='UTF-8' ?>\n")
+#    start_parsing = False
+#
+#    for raw_data in fh:
+#        if raw_data == '\n':
+#            continue
+#        if start_parsing == False and raw_data.find('<page>') > -1:
+#            start_parsing = True
+#        if start_parsing:
+#            raw_data = ''.join(raw_data.strip())
+#            wrapper.write(raw_data)
+#            if raw_data.find('</page>') > -1:
+#                article = wrapper.getvalue()
+#                size = len(article)
+#                #article.encode('utf-8')
+#                article = cElementTree.XML(article)
+#                yield article, size
+#                '''
+#                #This looks counter intuitive but Python continues with this 
+#                call after it has finished the yield statement
+#                '''
+#                buffer = cStringIO.StringIO()
+#                wrapper = codecs.getwriter('utf-8')(buffer)
+#                wrapper.write("<?xml version='1.0' encoding='UTF-8' ?>\n")
+#    fh.close()
 
 
 def debug():
-    fh = codecs.open('c:\\wikimedia\\en\\wiki\dewiki-latest-stub-meta-history.xml', 'r', 'utf-8')
-    for article in read_input(fh):
-        print article
-    extract_meta_information(fh)
+    #fh = codecs.open('c:\\wikimedia\\en\\wiki\dewiki-latest-stub-meta-history.xml', 'r', 'utf-8')
+    filename = 'c:\\wikimedia\\en\\wiki\\enwiki-latest-stub-meta-history10.xml.gz'
+    fh = gzip.GzipFile(filename, 'rb')
+
+    for raw_data in fh:
+        print raw_data
+
+
     fh.close()
 
 

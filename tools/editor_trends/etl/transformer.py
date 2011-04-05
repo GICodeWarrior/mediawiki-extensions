@@ -210,8 +210,8 @@ def determine_number_reverts(edits, first_year, final_year):
 
 def determine_edit_volume(edits, first_year, final_year):
     '''
-    This function counts the number of edits by year by month by namespace for 
-    a particular editor. 
+    This function counts the number of characters added and remove  by year 
+    by month by namespace for a particular editor. 
     '''
     dc = shaper.create_datacontainer(first_year, final_year)
     dc = shaper.add_months_to_datacontainer(dc, 'dict')
@@ -222,6 +222,7 @@ def determine_edit_volume(edits, first_year, final_year):
             dc[year][month].setdefault(ns, {})
             dc[year][month][ns].setdefault('added', 0)
             dc[year][month][ns].setdefault('removed', 0)
+            print edit
             if edit['delta'] < 0:
                 dc[year][month][ns]['removed'] += edit['delta']
             elif edit['delta'] > 0:
