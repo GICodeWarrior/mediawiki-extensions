@@ -150,6 +150,7 @@ $messages['ba'] = array(
 	'vector-editwarning-preference' => 'Мөхәррирләү битенән үҙгәртеүҙәрҙе һаҡламайынса сыҡҡан ваҡытта мине киҫәтергә',
 	'vector-simplesearch-search' => 'Эҙләү',
 	'vector-simplesearch-containing' => 'эстәлегендә...',
+	'vector-noexperiments-preference' => 'Һынау өсөн мөмкинлектәр тәҡдим итмәҫкә',
 );
 
 /** Bavarian (Boarisch)
@@ -476,6 +477,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Dead3y3
  * @author Geraki
+ * @author Glavkos
  * @author Απεργός
  */
 $messages['el'] = array(
@@ -488,6 +490,7 @@ $messages['el'] = array(
 	'vector-editwarning-preference' => 'Προειδοποίηση όταν εγκαταλείπω μία σελίδα επεξεργασίας χωρίς να έχω πρώτα αποθηκεύσει τις αλλαγές',
 	'vector-simplesearch-search' => 'Αναζήτηση',
 	'vector-simplesearch-containing' => 'περιέχει...',
+	'vector-noexperiments-preference' => 'Εξαιρέστε με από την λειτουργία πειραμάτων',
 );
 
 /** Esperanto (Esperanto)
@@ -1121,7 +1124,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'vector' => 'pembaikian untuk Vector',
-	'vector-desc' => '↓ Meningkatkan tetapan pengguna  pada halaman Vector',
+	'vector-desc' => 'Meningkatkan tetapan pengguna  pada halaman Vector',
 	'vector-collapsiblenav-preference' => 'Aktifkan menu navigasi pada laman',
 	'vector-collapsiblenav-more' => 'Bahasa lain',
 	'vector-editwarning-warning' => 'Meninggalkan laman ini mungkin akan menyebabkan anda kehilangan sebarang perubahan yang telah anda lakukan.
@@ -1186,7 +1189,7 @@ Als u bent aangemeld, kunt u deze waarschuwing uitschakelen in het tabblad "Bewe
  * @author Gunnernett
  */
 $messages['nn'] = array(
-	'vector-collapsiblenav-more' => '↓ Fleire språk',
+	'vector-collapsiblenav-more' => 'Fleire språk',
 	'vector-editwarning-warning' => 'Gjennom å navigera vekk frå denne sida vil du mista alle endringane du måtte ha gjort.
 Denne åtvaringa kan slåast av under Endring i instillingane dine.',
 	'vector-editwarning-preference' => 'Gje ei åtvaring om eg går ut av ei redigeringsside og ikkje alle endringar er lagra',
@@ -1256,8 +1259,8 @@ Jeśli jesteś zalogowany możesz wyłączyć wyświetlanie tego ostrzeżenia w 
 $messages['pms'] = array(
 	'vector' => 'Ameliorament UI për Vector',
 	'vector-desc' => "Ameliorament ëd j'element dl'antërfacia utent dla pel Vector.",
-	'vector-collapsiblenav-preference' => "↓ Abilité a stërmé j'element ant la bara ëd navigassion ant ël livel Vector",
-	'vector-collapsiblenav-more' => "↓ Pì 'd lenghe",
+	'vector-collapsiblenav-preference' => "Abilité a stërmé j'element ant la bara ëd navigassion ant ël livel Vector",
+	'vector-collapsiblenav-more' => "Pì 'd lenghe",
 	'vector-editwarning-warning' => "Lassé sta pàgina-sì a peul fé an manera che it perde tute le modìfiche ch'it l'has fàit.
 S'it ses logà, it peule disabilité st'avis-sì ant la session \"Quàder ëd modìfica dël test\" dij tò gust.",
 	'vector-editwarning-preference' => 'Avisme quand che i lasso na pàgina ëd modìfiche con modìfiche nen salvà',
@@ -1355,7 +1358,7 @@ $messages['roa-tara'] = array(
 	'vector-desc' => "Migliore l'elemende de l'inderfacce utende d'a schermate Vector.",
 	'vector-collapsiblenav-preference' => "Abbilete 'a chiusure de le artichele jndr'à 'u menu de navigazione sus a 'u skin Vector",
 	'vector-collapsiblenav-more' => 'Cchiù linguagge',
-	'vector-editwarning-warning' => '↓ Assenne da sta pàgene tu puè perdè tutte le date ca è cangiate.
+	'vector-editwarning-warning' => 'Assenne da sta pàgene tu puè perdè tutte le date ca è cangiate.
 Ce tu è trasute, tu puè disabbilità st\'avvertimende jndr\'à sezione "Cangiaminde..." de le preferenze tune.',
 	'vector-editwarning-preference' => "Avvisave quanne jie lasse 'na pàgene cangiate senze ca agghie sarvate le cangiaminde",
 	'vector-simplesearch-search' => 'Cirche',
