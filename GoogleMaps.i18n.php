@@ -211,8 +211,8 @@ $wgGoogleMapsMessages['anp'] = array(
 	'gm-incompatible-browser' => 'इ जग्घॊ पर नक्शा देखै  लेली , आपने कॆ सुयोग्य वेब ब्राउज़र के इस्तेमाल करना आवश्यक छै.',
 	'gm-incompatible-browser-link' => 'सुयोग्य ब्राउज़र के सूची देखै लेली यहां क्लिक करॊ.',
 	'gm-no-editor' => 'दुर्भाग्य, तोरॊ ब्राउझर नक्शा बनाबै वाला फीचर्स कॆ सपोर्ट नै करै छै. <a href="http://www.microsoft.com/ie">इंटरनेट एक्स्प्लोरर</a> (विंडोज) या <a href="http://www.mozilla.org/products/firefox">फायरफॉक्स</a> (विंडोज, मैक, या लिनक्स) केरॊ नवीनतम संस्करण उपयोग करॊ.',
-	'gm-balloon-title' => '↓ शीर्षक:',
-	'gm-balloon-link-article' => '↓ इ पन्ना कॆ कड़ी बनाबॊ (वैकल्पिक):',
+	'gm-balloon-title' => 'शीर्षक:',
+	'gm-balloon-link-article' => 'इ पन्ना कॆ कड़ी बनाबॊ (वैकल्पिक):',
 );
 
 /** Afrikaans (Afrikaans)
@@ -5079,18 +5079,18 @@ $wgGoogleMapsMessages['scn'] = array(
  * @author Dalinanir
  */
 $wgGoogleMapsMessages['shi'] = array(
-	'gm-small' => '↓ Amzyan',
-	'gm-no-zoom-control' => '↓ Uhu',
-	'gm-yes' => '↓ Iyyih',
-	'gm-no' => '↓ Uhu',
-	'gm-search-preface' => '↓ Klikki f lkarṭa bac ad tzaydt tanqqiṭ niɣ ad tmmattit s yan iɣrm yaḍn, tamurt, tansa , niɣd agmmaḍ',
-	'gm-geocode-preface' => '↓ Klikki f lkarṭa bac an tzaydt tanqqiṭ niɣ ad tmmattit s yan iɣrm yaḍn, tamurt, tansa , niɣd agmmaḍ',
-	'gm-no-search-preface' => '↓ Klikki f  lkarṭa bac an tzaydt tanqqiṭ.',
-	'gm-search' => '↓ Cabba (Sigl)',
-	'gm-clear-search' => '↓ Sɣus ma dak fan icnubcn',
-	'gm-meters' => '↓ Mitruwat',
-	'gm-editing-path' => '↓ Klikki f lkarṭa bac an tzaydt tinqqaḍ u ɣaras ad',
-	'gm-save-path' => '↓ Ḥbu',
+	'gm-small' => 'Amzyan',
+	'gm-no-zoom-control' => 'Uhu',
+	'gm-yes' => 'Iyyih',
+	'gm-no' => 'Uhu',
+	'gm-search-preface' => 'Klikki f lkarṭa bac ad tzaydt tanqqiṭ niɣ ad tmmattit s yan iɣrm yaḍn, tamurt, tansa , niɣd agmmaḍ',
+	'gm-geocode-preface' => 'Klikki f lkarṭa bac an tzaydt tanqqiṭ niɣ ad tmmattit s yan iɣrm yaḍn, tamurt, tansa , niɣd agmmaḍ',
+	'gm-no-search-preface' => 'Klikki f  lkarṭa bac an tzaydt tanqqiṭ.',
+	'gm-search' => 'Cabba (Sigl)',
+	'gm-clear-search' => 'Sɣus ma dak fan icnubcn',
+	'gm-meters' => 'Mitruwat',
+	'gm-editing-path' => 'Klikki f lkarṭa bac an tzaydt tinqqaḍ u ɣaras ad',
+	'gm-save-path' => 'Ḥbu',
 );
 
 /** Sinhala (සිංහල)
