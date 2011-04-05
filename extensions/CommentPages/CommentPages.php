@@ -23,12 +23,17 @@ $wgCommentPagesNS = 100;
 
 $wgCommentPagesContentNamespace = NS_MAIN;
 
-function wfCommentPagesSkinTemplateTabs ( $skin, &$content_actions )
-{
+/**
+ * @param $skin Skin
+ * @param  $content_actions
+ * @return bool
+ */
+function wfCommentPagesSkinTemplateTabs ( $skin, &$content_actions ) {
 	global $wgContLang, $wgCommentPagesNS, $wgCommentPagesContentNamespace;
 
-	$pagename = $skin->mTitle->getText();
-	$namespace = $skin->mTitle->getNamespace();
+	$title = $skin->getTitle();
+	$pagename = $title->getText();
+	$namespace = $title->getNamespace();
 	$class = '';
 	$page = '';
 	$query = '';
@@ -59,14 +64,14 @@ function wfCommentPagesSkinTemplateTabs ( $skin, &$content_actions )
 			'href'  => $comments->getFullURL($query),
 		);
 		
-		$insertAfter = $skin->mTitle->getNamespaceKey();
+		$insertAfter = $title->getNamespaceKey();
 		if ( isset($content_actions['talk']) ) {
 			$insertAfter = 'talk';
 		}
 		
 		$content_actions = efCommentPagesArrayInsertAfter( $content_actions,
 							$newcontent_actions, $insertAfter );
-	} elseif ($skin->mTitle->getNamespace() == $wgCommentPagesNS) {
+	} elseif ($namespace == $wgCommentPagesNS) {
 		$main = Title::makeTitleSafe( $wgCommentPagesContentNamespace, $pagename);
 		$talk = $main->getTalkPage();
 		$newcontent_actions = array();

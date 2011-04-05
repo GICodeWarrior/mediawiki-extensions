@@ -193,12 +193,17 @@ function wfLanguageSelectorBeforePageDisplay( &$out ) {
 }
 
 function wfLanguageSelectorGetCacheVaryCookies( $out, &$cookies ) {
+	global $wgCookiePrefix;
 	$cookies[] = $wgCookiePrefix.'LanguageSelectorLanguage';
 	return true;
 }
 
+/**
+ * @param $skin Skin
+ * @return bool
+ */
 function wfLanguageSelectorSkinHook( &$skin ) {
-	$html = wfLanguageSelectorHTML( $skin->mTitle );
+	$html = wfLanguageSelectorHTML( $skin->getTitle() );
 	print $html;
 	return true;
 }

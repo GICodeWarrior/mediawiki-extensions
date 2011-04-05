@@ -212,7 +212,7 @@ class P2wikiTemplate extends BaseTemplate {
 			<?php
 				$first = true;
 				foreach($this->data['content_actions'] as $key => $tab) {
-					if ( $key != $this->skin->mTitle->getNamespaceKey() && $key != "talk" ) {
+					if ( $key != $this->skin->getTitle()->getNamespaceKey() && $key != "talk" ) {
 						continue;
 					}
 					if ( !$first ) {
@@ -241,7 +241,7 @@ class P2wikiTemplate extends BaseTemplate {
 			<?php
 				$first = true;
 				foreach($this->data['content_actions'] as $key => $tab) {
-					if ( $key == $this->skin->mTitle->getNamespaceKey() || $key == "talk" ) {
+					if ( $key == $this->skin->getTitle()->getNamespaceKey() || $key == "talk" ) {
 						continue;
 					}
 					if ( !$first ) {
