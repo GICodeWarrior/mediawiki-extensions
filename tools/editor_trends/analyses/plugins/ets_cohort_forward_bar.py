@@ -17,36 +17,31 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
-import datetime
-from dateutil.relativedelta import *
-import calendar
 
-def cohort_dataset_forward_histogram(var, editor, **kwargs):
+def cohort_dataset_forward_bar(var, editor, **kwargs):
     '''
-    The forward looking histogram looks for every month that an editor
+    The forward looking bar charts looks for every month that an editor
     was part of the Wikimedia community whether this person made at least cutoff
     value edits. If yes, then include this person in the analysis, else skip the
     person. 
     '''
-
     new_wikipedian = editor['new_wikipedian']
-    final_edit = editor['final_edit'].year + 1
-    yearly_edits = editor['edits_by_year']
-    n = editor['edit_count']
+    last_edit = editor['final_edit']
+    #monthly_edits = editor['monthly_edits']
+    #yearly_edits = editor['edits_by_year']
+    totals = editors['totals']['edit_count']
+    edits = editors['edit_count']
+    n = editor['cum_edit_count']
 
     if n >= var.cum_cutoff and new_wikipedian != False:
-        for year in xrange(new_wikipedian.year, final_edit):
-            edits = editor['monthly_edits'].get(str(year), {0:0})
-            if year == new_wikipedian.year:
-                start = new_wikipedian.month
+        years = edits.keys()
+        for year in years:
+            months = edits[year].keys()
+            max_edits = max([edits[year][month]['0'] for month in months])
+            #max_edits = max(monthly_edits.get(year, {0:0}).values())
+            if totals.get(year, 0) == 0 or max_edits < var.cutoff:
+                continue
             else:
-                start = 1
-
-            for month in xrange(start, 13):
-                if edits.get(str(month), 0) >= var.cutoff:
-                    day = calendar.monthrange(year, month)[1]
-                    dt = datetime.datetime(year, month, day)
-                    experience = relativedelta(dt, new_wikipedian)
-                    experience = experience.years * 12 + experience.months
-                    var.add(new_wikipedian, 1, {'experience': experience})
+                experience = (year - new_wikipedian.year) + 1
+                var.add(new_wikipedian, 1, {'experience':experience})
     return var
