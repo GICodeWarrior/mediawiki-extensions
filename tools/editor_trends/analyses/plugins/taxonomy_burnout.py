@@ -24,18 +24,30 @@ def taxonomy_burnout(var, editor, **kwargs):
     edits = editor['monthly_edits']
     
     burnout = False
-    sum =0.0 
+    sum = 0.0 
     count = 0.0
     
-    for year in xrange(new_wikipedian.year, var.max_year):
+    for year in xrange(2001, var.max_year):
         for month in xrange(1, 13):
-            if edits[str(year)][str(month)] > 249:
-                burnout = True
-            if burnout == True:
-              sum += edits[str(year)][str(month)]
-              count +=1.0
+            str_year = str(year)
+            str_month = str(month) 
             
-    if sum / count < 10 and burnout == True:
-        var.add(editor['username'], 1)
-    
+            try:
+                if edits[str_year][str_month] > 149:
+                    burnout = True
+                if burnout == True:
+                  sum += edits[str_year][str_month]
+                  count += 1.0
+            except (AttributeError, KeyError):
+                # print 'Editor ' + editor['username'] + ' does not have data for year ' + str_year + ' and month  ' + str_month
+                pass
+            
+    if count > 0.0 and sum / count < 10 and burnout == True:    
+        
+        try:
+            var.add(editor['new_wikipedian'], 1, {'username' : editor['username']})
+        except:
+            print 'error: ' + editor['username']
+            pass
+            
     return var
