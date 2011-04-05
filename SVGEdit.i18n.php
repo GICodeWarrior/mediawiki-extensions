@@ -76,6 +76,24 @@ $messages['bs'] = array(
 	'svgedit-editor-save-close' => 'Sačuvaj i zatvori',
 	'svgedit-editor-close' => 'Odustani',
 	'svgedit-desc' => 'Uređivanje u pregledniku SVG crteža pomoću [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Uredi crtež',
+	'svgedit-edit-tab-tooltip' => 'Možete uređivati ovaj SVG crtež u vašem pregledniku',
+	'svgedit-toolbar-insert' => 'SVG crtež',
+);
+
+/** Catalan (Català)
+ * @author BroOk
+ */
+$messages['ca'] = array(
+	'svgedit-editbutton-edit' => 'Edició dibuixada',
+	'svgedit-summary-label' => "Resum de l'edició",
+	'svgedit-summary-default' => '/ * Modificat en svg-edit */',
+	'svgedit-editor-save-close' => 'Desa i tanca',
+	'svgedit-editor-close' => 'Canceŀla',
+	'svgedit-desc' => 'Edició en el navegador de dibuixos SVG amb [http://code.google.com/p/svg-edit/ Edició SVG]',
+	'svgedit-edit-tab' => 'Edició de dibuix',
+	'svgedit-edit-tab-tooltip' => 'Podeu editar aquest dibuix SVG al teu navegador',
+	'svgedit-toolbar-insert' => 'Dibuix SVG',
 );
 
 /** German (Deutsch)
