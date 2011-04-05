@@ -35,7 +35,6 @@ if '..' not in sys.path:
 try:
     from database import cassandra
     import pycassa
-
 except ImportError:
     pass
 
@@ -699,6 +698,7 @@ def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, r
         filename = input_queue.get()
         input_queue.task_done()
         if filename == None:
+            print '%s files left in the queue' % input_queue.qsize()
             break
 
         fh = file_utils.create_streaming_buffer(filename)
@@ -765,14 +765,13 @@ def multiprocessor_launcher(function, dataset, storage, locks, rts):
     else:
         processors = len(files)
 
-    #files = files[0:1]
-    print rts.input_location, rts.location
     for filename in files:
         filename = os.path.join(rts.location, filename)
         print filename
         input_queue.put(filename)
 
     for x in xrange(processors):
+        print 'Inserting poison pill %s...' % x
         input_queue.put(None)
 
     extracters = [Process(target=stream_raw_xml, args=[input_queue, storage,
