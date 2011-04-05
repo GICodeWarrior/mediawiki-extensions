@@ -24,6 +24,7 @@ def taxonomy_burnout(var, editor, **kwargs):
     edits = editor['edit_count']
     final_edit = editor['final_edit']
     cutoff = kwargs.get('cutoff', 149)
+    username = editor['username']
 
     burnout = False
     sum = 0.0
@@ -46,14 +47,14 @@ def taxonomy_burnout(var, editor, **kwargs):
                             count += 1.0
                 except (AttributeError, KeyError):
                     print 'Editor %s does not have data for year: %s and month %s. Data: %s' \
-                    % (editor['username'], year, month, edits[year])
+                    % (username, year, month, edits[year])
 
         if burnout and sum / count > 10:
             avg_edit = sum / count
 
             try:
-                var.add(new_wikipedian, avg_edit, {'username' : editor['username']})
+                var.add(new_wikipedian, avg_edit, {'username' : username})
             except Exception, error:
-                print 'user: %s error: %s' % (editor['username'].encode('utf-8'), error)
+                print 'user: %s error: %s' % (username, error)
 
     return var
