@@ -62,7 +62,11 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'mirrortools' => 'MirrorAlati',
+	'mirrortools-desc' => 'Omogućava uređivanje preko API da se vrši pod bilo kojim korisničkim imenom',
 	'right-mirroredit' => 'Uređivanje preko API pod bilo kojim korisničkim imenom',
+	'group-MirrorTools' => 'Korisnici mirror alata',
+	'group-MirrorTools-member' => 'korisnik mirror alata',
+	'grouppage-MirrorTools' => '{{ns:project}}:Korisnici mirror alata',
 );
 
 /** German (Deutsch)
