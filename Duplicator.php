@@ -40,10 +40,11 @@ $wgDuplicatorRevisionLimit = 250;
 
 /**
  * Build the link to be shown in the toolbox if appropriate
+ * @param $skin Skin
  */
 function efDuplicatorNavigation( &$skin, &$nav_urls, &$oldid, &$revid ) {
 	global $wgUser;
-	$ns = $skin->mTitle->getNamespace();
+	$ns = $skin->getTitle()->getNamespace();
 	if( ( $ns === NS_MAIN || $ns === NS_TALK ) && $wgUser->isAllowed( 'duplicate' ) ) {
 		
 		$nav_urls['duplicator'] = array(
