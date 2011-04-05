@@ -1,0 +1,3 @@
+ircecho /usr/ircecho/bin
+ircbot.py /usr/ircecho/lib
+irclib.py /usr/ircecho/lib

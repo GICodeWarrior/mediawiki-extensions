@@ -1,0 +1,11 @@
+ircecho (1.0-1) lucid-wikimedia; urgency=low
+
+  * Fix init script
+
+ -- Ryan Lane <rlane@wikimedia.org>  Mon, 4 Apr 2011 23:50:00 +0000
+
+ircecho (1.0) lucid-wikimedia; urgency=low
+
+  * Initial package
+
+ -- Ryan Lane <rlane@wikimedia.org>  Wed, 30 Mar 2011 21:35:28 +0000

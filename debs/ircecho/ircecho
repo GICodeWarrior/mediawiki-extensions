@@ -1,0 +1,83 @@
+#! /usr/bin/env python
+#
+# stdin -> IRC echo bot, with optional file input support.
+#
+# Written by Kate Turner <kate.turner@gmail.com>, source is in the public domain.
+# Modified by Ryan Lane <rlane@wikimedia.org> for watching and taking input for files.
+# Changes are also public domain.
+
+import sys
+import pyinotify
+from optparse import OptionParser
+
+sys.path.append('/usr/ircecho/lib')
+
+from ircbot import SingleServerIRCBot
+from irclib import nm_to_n
+
+import threading
+
+class EchoReader(threading.Thread):
+	def __init__(self, bot, chans, infile=''):
+		threading.Thread.__init__(self)
+		self.bot = bot
+		self.chans = chans
+		self.infile = infile
+
+	def run(self):
+		if self.infile:
+			print "Using infile"
+			wm = pyinotify.WatchManager()
+			mask = pyinotify.IN_MODIFY
+			f = open(self.infile)
+			# Seek to the end of the file
+			f.seek(0,2)
+			handler = EventHandler()
+			handler.infile = f
+			handler.bot = self.bot
+			handler.chans = self.chans
+			notifier = pyinotify.Notifier(wm, handler)
+			wdd = wm.add_watch(self.infile, mask)
+			notifier.loop()
+		else:
+			while True:
+				try:
+					s = raw_input()
+					# this throws an exception if not connected.
+					self.bot.connection.privmsg(self.chans, s)
+				except EOFError:
+					# Once the input is finished, the bot should exit
+					break;
+				except Exception:
+					pass
+
+class EchoBot(SingleServerIRCBot):
+	def __init__(self, chans, nickname, server):
+		print "*** Connecting to IRC server %s..." % server
+		SingleServerIRCBot.__init__(self, [(server, 6667)], nickname, "IRC echo bot")
+		self.chans = chans
+
+	def on_nicknameinuse(self, c, e):
+		c.nick(c.get_nickname() + "_")
+
+	def on_welcome(self, c, e):
+		print "*** Connected"
+		for chan in self.chans:
+			c.join(chan)
+
+class EventHandler(pyinotify.ProcessEvent):
+	def process_IN_MODIFY(self, event):
+		s = self.infile.read()
+		self.bot.connection.privmsg(self.chans, s)
+
+parser = OptionParser(conflict_handler="resolve")
+parser.set_usage("ircecho [--infile=<filename>] <channel> <nickname> <server>")
+parser.add_option("--infile", dest="infile", help="Read input from the specific file instead of from stdin")
+(options, args) = parser.parse_args()
+chans = args[0]
+nickname = args[1]
+server = args[2]
+bot = EchoBot([chans], nickname, server)
+sthr = EchoReader(bot, chans, options.infile)
+sthr.start()
+bot.start()
