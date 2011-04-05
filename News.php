@@ -112,7 +112,7 @@ function wfNewsSkinTemplateOutputPageBeforeExec( $skin, $tpl ) {
     $feeds = $tpl->data['feeds'];
     if (!$feeds) return true;
 
-    $title = $skin->mTitle; //hack...
+    $title = $skin->getTitle(); //hack...
 
     foreach ($feeds as $format => $e) {
         $e['href'] = NewsRenderer::getFeedURL( $title, $format );
