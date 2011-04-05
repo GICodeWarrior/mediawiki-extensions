@@ -21,7 +21,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 from utils import data_converter
 
-def histogram_by_backward_cohort(var, editor, **kwargs):
+def ets_cohort_backward_histogram(var, editor, **kwargs):
     break_down = kwargs.pop('break_down', False)
     new_wikipedian = editor['new_wikipedian']
     edits = editor['edit_count']

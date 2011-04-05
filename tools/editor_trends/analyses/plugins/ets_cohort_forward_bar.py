@@ -18,7 +18,7 @@ __date__ = '2011-01-25'
 __version__ = '0.1'
 
 
-def cohort_dataset_forward_bar(var, editor, **kwargs):
+def ets_cohort_forward_bar(var, editor, **kwargs):
     '''
     The forward looking bar charts looks for every month that an editor
     was part of the Wikimedia community whether this person made at least cutoff

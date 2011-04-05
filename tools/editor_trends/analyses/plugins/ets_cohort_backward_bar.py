@@ -22,7 +22,7 @@ from dateutil.relativedelta import relativedelta
 from utils import data_converter
 
 
-def cohort_dataset_backward_bar(var, editor, **kwargs):
+def ets_cohort_backward_bar(var, editor, **kwargs):
     '''
     The backward looking bar chart looks for every year that an editor
     was part of the Wikimedia community whether this person made at least cutoff
