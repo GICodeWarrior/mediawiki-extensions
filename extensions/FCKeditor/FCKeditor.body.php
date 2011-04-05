@@ -297,9 +297,9 @@ class FCKeditor_MediaWiki {
 	 */
 	public function onEditPageShowEditFormInitial( $form ) {
 		global $wgOut, $wgTitle, $wgScriptPath, $wgContLang, $wgUser;
-		global $wgStylePath, $wgStyleVersion, $wgDefaultSkin, $wgExtensionFunctions, $wgHooks, $wgDefaultUserOptions;
+		global $wgStylePath, $wgStyleVersion, $wgExtensionFunctions, $wgHooks, $wgDefaultUserOptions;
 		global $wgFCKWikiTextBeforeParse, $wgFCKEditorIsCompatible;
-		global $wgFCKEditorExtDir, $wgFCKEditorDir, $wgFCKEditorHeight, $wgFCKEditorToolbarSet;
+		global $wgFCKEditorDir;
 
 		if( !isset( $this->showFCKEditor ) ){
 			$this->showFCKEditor = 0;
@@ -352,7 +352,7 @@ class FCKeditor_MediaWiki {
 		// CSS trick,  we need to get user CSS stylesheets somehow... it must be done in a different way!
 		$skin = $wgUser->getSkin();
 		$skin->loggedin = $wgUser->isLoggedIn();
-		$skin->mTitle =& $wgTitle;
+		//$skin->mTitle =& $wgTitle; // FIXME: Am I still needed?
 		$skin->initPage( $wgOut );
 		$skin->userpage = $wgUser->getUserPage()->getPrefixedText();
 		$skin->setupUserCss( $wgOut );
