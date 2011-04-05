@@ -28,8 +28,9 @@ from copy import deepcopy
 from database import db
 from utils import file_utils
 from utils import messages
+from utils import data_converter
 from classes import consumers
-import shaper
+
 
 try:
     import psyco
@@ -84,7 +85,7 @@ class Editor(object):
         edit_count = determine_number_edits(edits, first_year, final_year)
 
         totals = {}
-        counts = shaper.create_datacontainer(first_year, final_year)
+        counts = data_converter.create_datacontainer(first_year, final_year)
         totals = calculate_totals(totals, counts, character_count, 'character_count')
         totals = calculate_totals(totals, counts, revert_count, 'revert_count')
         totals = calculate_totals(totals, counts, article_count, 'article_count')
@@ -95,12 +96,14 @@ class Editor(object):
             new_wikipedian = edits[cutoff]['date']
         else:
             new_wikipedian = False
+        cum_edit_count = len(edits)
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
 
         self.output_db.insert({'editor': self.id,
                                'username': username,
                                'new_wikipedian': new_wikipedian,
+                               'cum_edit_count': cum_edit_count,
                                'final_edit': final_edit,
                                'first_edit': first_edit,
                                'last_edit_by_year': last_edit_by_year,
@@ -148,8 +151,8 @@ def calculate_totals(totals, counts, dc, var):
 
 
 def determine_number_edits(edits, first_year, final_year):
-    dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 'dict')
+    dc = data_converter.create_datacontainer(first_year, final_year)
+    dc = data_converter.add_months_to_datacontainer(dc, 'dict')
     for edit in edits:
         ns = edit['ns']
         year, month = str(edit['date'].year), edit['date'].month
@@ -161,8 +164,8 @@ def determine_number_edits(edits, first_year, final_year):
 
 
 def determine_articles_workedon(edits, first_year, final_year):
-    dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 'dict')
+    dc = data_converter.create_datacontainer(first_year, final_year)
+    dc = data_converter.add_months_to_datacontainer(dc, 'dict')
     for year in edits:
         for edit in edits[year]:
             month = edit['date'].month
@@ -179,8 +182,8 @@ def determine_articles_workedon(edits, first_year, final_year):
 
 
 def determine_namespaces_workedon(edits, first_year, final_year):
-    dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 'set')
+    dc = data_converter.create_datacontainer(first_year, final_year)
+    dc = data_converter.add_months_to_datacontainer(dc, 'set')
     for year in edits:
         for edit in edits[year]:
             month = edit['date'].month
@@ -194,8 +197,8 @@ def determine_namespaces_workedon(edits, first_year, final_year):
 
 
 def determine_number_reverts(edits, first_year, final_year):
-    dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 'dict')
+    dc = data_converter.create_datacontainer(first_year, final_year)
+    dc = data_converter.add_months_to_datacontainer(dc, 'dict')
     for year in edits:
         for edit in edits[year]:
             month = edit['date'].month
@@ -213,8 +216,8 @@ def determine_edit_volume(edits, first_year, final_year):
     This function counts the number of characters added and remove  by year 
     by month by namespace for a particular editor. 
     '''
-    dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 'dict')
+    dc = data_converter.create_datacontainer(first_year, final_year)
+    dc = data_converter.add_months_to_datacontainer(dc, 'dict')
     for year in edits:
         for edit in edits[year]:
             month = edit['date'].month
@@ -240,7 +243,7 @@ def determine_year_range(edits):
 
 
 def determine_last_edit_by_year(edits, first_year, final_year):
-    dc = shaper.create_datacontainer(first_year, final_year, 0)
+    dc = data_converter.create_datacontainer(first_year, final_year, 0)
     for year in edits:
         for edit in edits[year]:
             date = str(edit['date'].year)
@@ -257,8 +260,8 @@ def determine_article_count(articles_edited, first_year, final_year):
     This function counts the number of unique articles by year edited by a
     particular editor.
     '''
-    dc = shaper.create_datacontainer(first_year, final_year)
-    dc = shaper.add_months_to_datacontainer(dc, 'dict')
+    dc = data_converter.create_datacontainer(first_year, final_year)
+    dc = data_converter.add_months_to_datacontainer(dc, 'dict')
     for year in articles_edited:
         for month in articles_edited[year]:
             for ns in articles_edited[year][month]:

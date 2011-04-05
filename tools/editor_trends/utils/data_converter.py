@@ -19,21 +19,76 @@ __date__ = '2011-01-24'
 __version__ = '0.1'
 
 import datetime
+import datetime
+import math
+
+
+def add_datatype(datatype=0.0):
+    if datatype == 'dict':
+        d = dict()
+    elif datatype == 'list':
+        d = list()
+    elif datatype == 'set':
+        d = set()
+    else:
+        d = 0.0
+    return d
+
+
+def create_datacontainer(first_year, final_year, datatype='dict'):
+    '''
+    This function initializes an empty dictionary with as key the year (starting
+    2001 and running through) and as value @datatype, in most cases this will
+    be zero so the dictionary will act as a running tally for a variable but
+    @datatype can also a list, [], or a dictionary, {}, or a set, set().  
+    '''
+    data = {}
+    for x in xrange(first_year, final_year):
+        data[str(x)] = add_datatype(datatype)
+    return data
+
+
+def add_windows_to_datacontainer(datacontainer, windows):
+    for dc in datacontainer:
+        for w in windows:
+            datacontainer[dc][w] = add_datatype()
+
+    return datacontainer
+
+
+def add_months_to_datacontainer(datacontainer, datatype):
+    for dc in datacontainer:
+        datacontainer[dc] = {}
+        for x in xrange(1, 13):
+            datacontainer[dc][x] = add_datatype(datatype)
+
+    return datacontainer
+
+
+def add_years_to_datacontainer(first_year, final_year, datacontainer, datatype):
+    for dc in datacontainer:
+        datacontainer[dc] = {}
+        for x in range(first_year, final_year):
+            datacontainer[dc][x] = datatype
+    return datacontainer
+
 
 def create_windows(var, break_down_first_year=True):
     '''
     This function creates a list of months. If break_down_first_year = True then
     the first year will be split in 3, 6, 9 months as well.
     '''
-    years = (var.max_year - var.min_year) +1 
+    years = (var.max_year - var.min_year) + 1
     windows = [y * 12 for y in xrange(1, years)]
     if break_down_first_year:
         windows = [3, 6, 9] + windows
     return windows
 
+
 def convert_seconds_to_date(secs):
     #return time.gmtime(secs)
     return datetime.datetime.fromtimestamp(secs)
+
 
 def convert_dataset_to_lists(ds, caller):
     assert ds.format == 'long' or ds.format == 'wide', 'Format should either be long or wide.'
@@ -86,15 +141,6 @@ def add_headers(ds):
                     header = '%s_%s' % (key, var.name)
                     headers.append(header)
     return headers
-
-
-#def make_data_rectangular(data, all_keys):
-#    for i, d in enumerate(data):
-#        for key in all_keys:
-#            if key not in d:
-#                d[key] = 0
-#            data[i] = d
-#    return data
 
 
 def get_all_props(var):

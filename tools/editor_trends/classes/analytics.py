@@ -28,7 +28,7 @@ from database import db
 
 class Replicator:
     def __init__(self, plugin, time_unit, cutoff=None, cum_cutoff=None, **kwargs):
-        #this is an ugly hack to prevent a circular import problem
+        #TODO this is an ugly hack to prevent a circular import problem
         #this needs a better fix. 
         import manage
 

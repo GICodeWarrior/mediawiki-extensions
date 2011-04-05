@@ -115,10 +115,13 @@ class RunTimeSettings(Settings):
             if [True for kw in keywords if kw.find('=') > -1] != []:
                 for kw in keywords:
                     key, value = kw.split('=')
-                    try:
-                        value = int(value)
-                    except ValueError:
-                        pass
+                    if value.find(';') > -1:
+                        value = value.split(';')
+                    else:
+                        try:
+                            value = int(value)
+                        except ValueError:
+                            pass
                     d[key] = value
         return d
 

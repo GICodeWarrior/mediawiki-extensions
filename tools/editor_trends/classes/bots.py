@@ -27,7 +27,7 @@ if '..' not in sys.path:
 from classes import settings
 settings = settings.Settings()
 
-from etl import shaper
+from utils import data_converter
 from utils import file_utils
 
 
@@ -36,7 +36,7 @@ class Bot(object):
     def __init__(self, name, **kwargs):
         self.name = name
         self.projects = []
-        self.time = shaper.create_datacontainer(datatype='list')
+        self.time = data_converter.create_datacontainer(datatype='list')
         self.verified = True
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
@@ -45,7 +45,7 @@ class Bot(object):
         return self.name
 
     def hours_active(self):
-        self.clock = shaper.create_clock()
+        self.clock = data_converter.create_clock()
         years = self.time.keys()
         for year in years:
             for obs in self.time[year]:

@@ -86,13 +86,14 @@ COUNT_EXCLUDE_NAMESPACE = {
 }
 
 class Statistics:
-    def __init__(self):
+    def __init__(self, process_id):
+        self.process_id = process_id
         self.count_articles = 0
         self.count_revisions = 0
 
     def summary(self):
-        print 'Number of articles: %s' % self.count_articles
-        print 'Number of revisions: %s' % self.count_revisions
+        print 'Worker %s: Number of articles: %s' % (self.process_id, self.count_articles)
+        print 'Worker %s: Number of revisions: %s' % (self.process_id, self.count_revisions)
 
 class Dummy:
         pass
@@ -108,20 +109,20 @@ class DummyRTS:
 
 
 class Buffer:
-    def __init__(self, storage, processs_id, rts=None, filehandles=None, locks=None):
+    def __init__(self, storage, process_id, rts=None, filehandles=None, locks=None):
         assert storage == 'cassandra' or storage == 'mongo' or storage == 'csv', \
             'Valid storage options are cassandra and mongo.'
         self.storage = storage
         self.revisions = {}
         self.comments = {}
         self.titles = {}
-        self.processs_id = processs_id
+        self.process_id = process_id
         self.keyspace_name = 'enwiki'
         self.keys = ['revision_id', 'article_id', 'id', 'username', 'namespace',
                      'title', 'timestamp', 'hash', 'revert', 'bot', 'cur_size',
                      'delta']
         self.setup_storage()
-        self.stats = Statistics()
+        self.stats = Statistics(self.process_id)
         if storage == 'csv' and locks != None:
             self.rts = rts
             self.lock1 = locks[0] #lock for generic data
@@ -579,8 +580,8 @@ def create_variables(article, cache, bots, xml_namespace, comments=False):
                   5: 'Wikipedia Talk',
                   1: 'Talk',
                   2: 'User',
-                  4: 'Wikipedia'
-                  }
+                  4: 'Wikipedia'}
+
     title = parse_title(article['title'])
     namespaces = article['namespaces']
     namespace = determine_namespace(title, namespaces, include_ns, EXCLUDE_NAMESPACE)
@@ -641,28 +642,34 @@ def parse_xml(fh, rts):
     article = {}
     article['revisions'] = []
     id = False
-    for event, elem in context:
-        if event == 'end' and elem.tag.endswith('siteinfo'):
-            xml_namespace = determine_xml_namespace(elem)
-            namespaces = create_namespace_dict(elem, xml_namespace)
-            article['namespaces'] = namespaces
-        elif event == 'end' and elem.tag.endswith('title'):
-            article['title'] = elem
-        elif event == 'end' and elem.tag.endswith('revision'):
-            article['revisions'].append(elem)
-        elif event == 'end' and elem.tag.endswith('id') and id == False:
-            article['id'] = elem
-            id = True
-        elif event == 'end' and elem.tag.endswith('page'):
-            yield article, xml_namespace
-            elem.clear()
-            article = {}
-            article['revisions'] = []
-            article['namespaces'] = namespaces
-            id = False
-        elif rts.kaggle == True and event == 'end':
-            print 'I am cleaning up'
-            elem.clear()
+
+    try:
+        for event, elem in context:
+            if event == 'end' and elem.tag.endswith('siteinfo'):
+                xml_namespace = determine_xml_namespace(elem)
+                namespaces = create_namespace_dict(elem, xml_namespace)
+                article['namespaces'] = namespaces
+            elif event == 'end' and elem.tag.endswith('title'):
+                article['title'] = elem
+            elif event == 'end' and elem.tag.endswith('revision'):
+                article['revisions'].append(elem)
+            elif event == 'end' and elem.tag.endswith('id') and id == False:
+                article['id'] = elem
+                id = True
+            elif event == 'end' and elem.tag.endswith('page'):
+                yield article, xml_namespace
+                elem.clear()
+                article = {}
+                article['revisions'] = []
+                article['namespaces'] = namespaces
+                id = False
+            elif rts.kaggle == True and event == 'end':
+                print 'I am cleaning up'
+                elem.clear()
+    except SyntaxError, error:
+        print 'Encountered invalid XML tag. Error message: %s' % error
+        dump(elem)
+        sys.exit(-1)
 
 
 def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, rts):
@@ -708,7 +715,8 @@ def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, r
         fh.close()
 
         t1 = datetime.datetime.now()
-        print 'Processing of %s took %s' % (filename, (t1 - t0))
+        print 'Worker %s: Processing of %s took %s' % (process_id, filename, (t1 - t0))
+        print 'There are %s files left in the queue' % (input_queue.qsize())
         t0 = t1
 
     if dataset == 'training':
@@ -725,7 +733,7 @@ def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, r
         filename = 'counts_%s.bin' % filename
         file_utils.store_object(counts, location, filename)
 
-    print 'Finished parsing bz2 archives'
+    print 'Finished parsing Wikipedia dump files.'
 
 
 def setup(storage, rts=None):

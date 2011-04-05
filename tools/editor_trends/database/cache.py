@@ -31,7 +31,7 @@ settings = settings.Settings()
 
 import db
 from utils import file_utils
-from etl import shaper
+from utils import data_converter
 
 class EditorCache(object):
     def __init__(self, collection):
@@ -65,7 +65,7 @@ class EditorCache(object):
             if key not in self.editors:
                 self.editors[key] = {}
                 self.editors[key]['obs'] = 0
-                self.editors[key]['edits'] = shaper.create_datacontainer(2001, self.final_year, 'list')
+                self.editors[key]['edits'] = data_converter.create_datacontainer(2001, self.final_year, 'list')
                 self.editors[key]['username'] = value.pop('username')
             else:
                 value.pop('username')
