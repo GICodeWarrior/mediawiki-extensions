@@ -33,9 +33,8 @@ $wgHooks['OutputPageBeforeHTML'][] = 'wfPageNoticeHook';
 
 
 function wfPageNoticeHook( &$out, &$text ) {
-	global $wgTitle;
-	$name = $wgTitle->getPrefixedDBKey();
-	$ns = $wgTitle->getNamespace();
+	$name = $out->getTitle()->getPrefixedDBKey();
+	$ns = $out->getTitle()->getNamespace();
 	
 	$opt = array(
 		'parseinline',
