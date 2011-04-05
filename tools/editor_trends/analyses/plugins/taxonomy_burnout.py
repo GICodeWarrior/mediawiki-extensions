@@ -33,10 +33,8 @@ def taxonomy_burnout(var, editor, **kwargs):
     if new_wikipedian:
         years = edits.keys()
         for year in years:
-            year = str(year)
             months = edits[year].keys()
             for month in months:
-                month = str(month)
                 try:
                     if edits[year][month].get('0', 0) > cutoff:
                         burnout = True
