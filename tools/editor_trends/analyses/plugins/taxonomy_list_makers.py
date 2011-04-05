@@ -20,23 +20,24 @@ __version__ = '0.1'
 def taxonomy_list_makers(var, editor, **kwargs):
     """
     == List makers ==
-    Any editor who makes more than 10 mainspace edits a month to articles with titles that begin with "List of..."
-    """    
+    Any editor who makes more than 10 mainspace edits a month to articles with 
+    titles that begin with "List of..."
+    """
     articles_by_year = editor['articles_by_year']
     count = 0
-    
+
     for year in xrange(new_wikipedian.year, var.max_year):
         for month in xrange(1, 13):
             for article in articles_by_year[year][month]:
                 """ locate article titles containing  "List of" """
                 if article.find('List of') > -1:
                     count = count + 1
-                    
-    
+
+
     """ Add all editors with an edit count of more than 10 """
 
     if count > 10:
         var.add(editor['username'], 1)
-    
-    
+
+
     return var

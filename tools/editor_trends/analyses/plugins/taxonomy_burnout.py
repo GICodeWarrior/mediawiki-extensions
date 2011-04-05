@@ -12,17 +12,20 @@ See the GNU General Public License for more details, at
 http://www.fsf.org/licenses/gpl.html
 '''
 
-__author__ = '''\n'''.join(['Diederik van Liere (dvanliere@wikimedia.org', 'Ryan Faulkner (rfaulkner@wikimedia.org)'])
+__author__ = '''\n'''.join(['Diederik van Liere (dvanliere@wikimedia.org',
+                            'Ryan Faulkner (rfaulkner@wikimedia.org)'])
 __email__ = 'dvanliere at wikimedia dot org'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
 
-
 def taxonomy_burnout(var, editor, **kwargs):
+    '''
+    If you have questions about how to use this plugin, please visit:
+    http://meta.wikimedia.org/wiki/Wikilytics_Plugins
+    '''
     new_wikipedian = editor['new_wikipedian']
     edits = editor['edit_count']
-    final_edit = editor['final_edit']
     cutoff = kwargs.get('cutoff', 149)
     username = editor['username']
 

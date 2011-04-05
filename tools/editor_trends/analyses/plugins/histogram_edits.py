@@ -17,11 +17,22 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
+from datetime import datetime
 
 def histogram_edits(var, editor, **kwargs):
-#        headers = ['year', 'num_edits', 'frequency']
-    cnt = editor['edit_count']
-    new_wikipedian = editor['new_wikipedian']
-    if new_wikipedian != False:
-        var.add(new_wikipedian, cnt)
+    '''
+    If you have questions about how to use this plugin, please visit:
+    http://meta.wikimedia.org/wiki/Wikilytics_Plugins
+    '''
+    namespace = kwargs.get('namespace', ['0'])
+    edits = editor['edit_count']
+    years = edits.keys()
+    for year in years:
+        months = edits[year].keys()
+        for month in months:
+            date = datetime(int(year), int(month), 1)
+            for ns in namespace:
+                count = edits[year][month].get(ns, 0)
+                if count > 0:
+                    var.add(date, 1, {'namespace': ns, 'number_of_edits': count})
     return var

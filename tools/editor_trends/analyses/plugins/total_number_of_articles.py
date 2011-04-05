@@ -17,8 +17,12 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
+import sys
 
 def total_number_of_articles(var, editor, **kwargs):
+    print 'This plugin is not yet functional, needs to be rewritten.'
+    sys.exit(-1)
+
     for year in editor['edits']:
         edits = editor['edits'][year]
         for edit in edits:

@@ -17,23 +17,31 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-01-28'
 __version__ = '0.1'
 
-import datetime
+from datetime import datetime
 
 def edit_patterns(var, editor, **kwargs):
-    monthly = editor['monthly_edits']
+    '''
+    If you have questions about how to use this plugin, please visit:
+    http://meta.wikimedia.org/wiki/Wikilytics_Plugins
+    '''
+    edits = editor['edit_count']
     new_wikipedian = editor['new_wikipedian']
     final_edit = editor['final_edit']
-    dt = final_edit - new_wikipedian
-    if  dt.days < 366:
-        return var
 
     if new_wikipedian != False:
-        for year in xrange(new_wikipedian.year, new_wikipedian.year + 2):
+        dt = final_edit - new_wikipedian
+        if dt.days < 366:
+            return var
+
+        years = edits.keys()
+        for year in years:
+        #for year in xrange(new_wikipedian.year, new_wikipedian.year + 2):
             obs = [False for x in xrange(13)]
-            for month in xrange(new_wikipedian.month, 13):
-                n = monthly[str(year)][str(month)]
-                date = datetime.datetime(year, month, 1)
-                if n >= var.cutoff:
+            months = edit[year].keys()
+            for month in xrange(13):
+                count = edits[year].get(month, {}).get('0', 0)
+                date = datetime(int(year), int(month), 1)
+                if count >= var.cutoff:
                     obs[month] = True
             var.add(date, obs)
     return var
