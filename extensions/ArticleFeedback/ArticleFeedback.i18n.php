@@ -443,6 +443,7 @@ Molimo pokušajte kasnije.',
 );
 
 /** Catalan (Català)
+ * @author BroOk
  * @author El libre
  * @author Solde
  */
@@ -478,6 +479,7 @@ $messages['ca'] = array(
 	'articlefeedback-field-objective-tip' => "Creus que aquesta pàgina representa, de forma equilibrada, tots els punts de vista sobre l'assumpte?",
 	'articlefeedback-field-wellwritten-label' => 'Ben escrit',
 	'articlefeedback-pitch-reject' => 'No, gràcies',
+	'articlefeedback-pitch-or' => 'o',
 	'articlefeedback-pitch-survey-accept' => "Comença l'enquesta",
 	'articlefeedback-pitch-join-accept' => 'Crea un compte',
 	'articlefeedback-pitch-edit-accept' => 'Comença a editar',
@@ -514,8 +516,10 @@ $messages['cs'] = array(
 	'articlefeedback-form-panel-title' => 'Ohodnoťte tuto stránku',
 	'articlefeedback-form-panel-instructions' => 'Věnujte prosím chvilku ohodnocení této stránky.',
 	'articlefeedback-form-panel-clear' => 'Odstranit hodnocení',
+	'articlefeedback-form-panel-expertise' => 'Mám značné znalosti tohoto tématu.',
 	'articlefeedback-form-panel-expertise-studies' => 'Mám příslušný vysokoškolský titul',
 	'articlefeedback-form-panel-expertise-profession' => 'Jde o součást mé profese',
+	'articlefeedback-form-panel-expertise-other' => 'Původ mých znalostí zde není uveden',
 	'articlefeedback-form-panel-submit' => 'Odeslat hodnocení',
 	'articlefeedback-form-panel-success' => 'Úspěšně uloženo',
 	'articlefeedback-form-panel-expiry-title' => 'Platnost vašeho hodnocení vypršela',

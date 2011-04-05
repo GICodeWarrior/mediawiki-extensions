@@ -2568,6 +2568,7 @@ $1',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2603,9 +2604,9 @@ $messages['sr-ec'] = array(
 	'webstore_invalid_zone' => 'Погрешна зона "$1".',
 	'webstore_no_deleted' => 'Није наведен архивски директоријум за обрисане фајлове.',
 	'webstore_curl' => 'Грешка од cURL: $1',
-	'webstore_404' => 'Фајл није пронађен.',
+	'webstore_404' => 'Датотека није пронађена.',
 	'webstore_php_warning' => 'PHP напомена: $1',
-	'webstore_metadata_not_found' => 'Фајл није пронађен: $1',
+	'webstore_metadata_not_found' => 'Датотека није пронађена: $1',
 	'webstore_postfile_not_found' => 'Није пронађен фајл за слање.',
 	'webstore_invalid_response' => 'Неадекватан одговор од сервера:
 

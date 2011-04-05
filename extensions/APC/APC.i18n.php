@@ -1460,7 +1460,7 @@ APC wird scheinbar nicht ausgeführt.',
 	'viewapc-delete-ok' => 'Cache-Eintrag <nowiki>$1</nowiki> wurde gelöscht.',
 	'viewapc-delete-failed' => 'Cache-Eintrag <nowiki>$1</nowiki> konnte nicht gelöscht werden.',
 	'viewapc-version-info' => 'Versionsinformationen',
-	'viewapc-version-changelog' => 'Changelog',
+	'viewapc-version-changelog' => 'Änderungslogbuch',
 	'viewapc-version-failed' => 'Kein Zugriff auf die Versionsinformationen möglich.',
 	'viewapc-version-ok' => 'Dies ist die neueste APC-Version ($1)',
 	'viewapc-version-old' => 'Dies ist eine veraltete Version von APC ($1).

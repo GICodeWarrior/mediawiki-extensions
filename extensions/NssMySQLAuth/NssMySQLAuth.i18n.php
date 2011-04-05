@@ -1014,6 +1014,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'accountmanager' => 'Menadžer za nalog',
@@ -1023,7 +1024,7 @@ $messages['sr-el'] = array(
 	'am-updated' => 'Baše izmene su uspešno snimljene',
 	'nss-save-changes' => 'Snimi promene',
 	'nss-create-account-header' => 'Napravi novi nalog',
-	'nss-create-account' => 'Napravi nalog',
+	'nss-create-account' => 'Otvori nalog',
 	'nss-no-mail' => 'Ne šalji imejl',
 	'nss-welcome-mail' => 'Za Vas je napravljen nalog sa korisničkim imenom $1 i lozinkom $2.',
 	'nss-welcome-mail-subject' => 'Pravljenje naloga',

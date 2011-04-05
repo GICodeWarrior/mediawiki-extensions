@@ -8519,12 +8519,15 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Anton008
  * @author Dalibor Bosits
  * @author Ex13
  * @author Herr Mlinka
  */
 $messages['hr'] = array(
 	'configure-setting-wgSitename' => 'Naziv projekta',
+	'configure-setting-wgActionPaths-key' => 'Radnja',
+	'configure-setting-wgActionPaths-value' => 'URL predloška',
 	'configure-setting-wgDBerrorLog' => 'Datoteka za ispisivanje evidencije grešaka u bazi podataka',
 	'configure-setting-wgDBname' => 'Naziv baze podataka za koristiti',
 	'configure-setting-wgDBpassword' => 'Lozinka za $wgDBuser',

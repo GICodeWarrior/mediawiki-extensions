@@ -2699,9 +2699,11 @@ Du chasch Dyy eige Stimm zue dr Leschig [{{fullurl:{{FULLPAGENAME}}|action=delvo
 
 /** Manx (Gaelg)
  * @author MacTire02
+ * @author Shimmin Beg
  */
 $messages['gv'] = array(
 	'deletequeue-list-header-discusspage' => 'Duillag resoonaght',
+	'deletequeue-case-reason' => 'Fa:',
 );
 
 /** Hausa (هَوُسَ) */

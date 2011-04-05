@@ -258,6 +258,14 @@ $messages['ru'] = array(
 	'printversion-inexistent-book' => 'Книга не найдена. Пожалуйста, введите название существующей книги, чтобы получить её печатную версию.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'bookmanager-desc' => 'పుస్తకాల కొరకు పనిముట్లు',
+	'printversion' => 'ముద్రణ కూర్పు',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

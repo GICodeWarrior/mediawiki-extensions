@@ -433,7 +433,7 @@ $messages['bn'] = array(
 	'youtubeauthsub_submit' => 'জমা দিন',
 	'youtubeauthsub_clickhere' => 'ইউটিউবে লগইন করার জন্য এখানে ক্লিক করুন',
 	'youtubeauthsub_tokenerror' => 'অথরাইজেশন টোকেন তৈরিতে ত্রুটি দেখাচ্ছে, রিফ্রেস করুন।',
-	'youtubeauthsub_success' => "↓ অভিনন্দন!
+	'youtubeauthsub_success' => "অভিনন্দন!
 আপনার ভিডিও আপলোড হয়েছে।
 <a href='http://www.youtube.com/watch?v=$1'>আপনার ভিডিওটি দেখুন</a>।
 ইউটিউবে ভিডিওটির প্রক্রিয়াকরণে সামান্য সময় লাগতে পারে, তাই এখনই হয়তো ভিডিওটি প্রস্তুত নয়।

@@ -300,9 +300,11 @@ Els disponibles són "plain", "normal" i "wiki".',
 );
 
 /** Czech (Česky)
+ * @author Achiles
  * @author Jkjk
  */
 $messages['cs'] = array(
+	'article-comments-desc' => 'Umožňuje přidat komentáře na obsahové stránky',
 	'article-comments-title-string' => 'název',
 	'article-comments-name-string' => 'Jméno',
 	'article-comments-name-field' => 'Jméno (nezbytné):',
@@ -312,7 +314,26 @@ $messages['cs'] = array(
 	'article-comments-comment-field' => 'Komentář:',
 	'article-comments-submit-button' => 'Odeslat',
 	'article-comments-leave-comment-link' => 'Zanechte komentář ...',
+	'article-comments-invalid-field' => 'Zadaný $1 <nowiki> [$2] </nowiki> je neplatný.',
 	'article-comments-required-field' => 'pole $1 je nezbytné.',
+	'article-comments-submission-failed' => 'Odeslání komentáře selhalo',
+	'article-comments-failure-reasons' => 'Omlouváme se, odeslání Vašeho komentáře selhalo z {{PLURAL:$1|následujícího důvodu|následujích důvodů}}',
+	'article-comments-no-comments' => 'Omlouváme se, na stránku "[[$1]]" není v tuto chvíli možné umístit komentář.',
+	'article-comments-talk-page-starter' => '<noinclude>Komentáře na "[[$1]]"
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 řekl ...',
+	'article-comments-summary' => 'Komentáře poskytované $1 - pomocí rozšíření ArticleComments',
+	'article-comments-submission-succeeded' => 'Odeslání komentáře proběhlo úspěšně',
+	'article-comments-submission-success' => 'Úspěšně jste odeslali komentář pro "[[$1]]."',
+	'article-comments-submission-view-all' => 'Můžete si prohlédnout [[$1|všechny komentáře na této stránce]].',
+	'article-comments-user-is-blocked' => 'Na Vašem uživatelském účtu je v současné době zablokována možnost editace "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'Neplatný formát komentáře.
+Dostupné jsou tyto "plain", "normal" a "wiki".',
+	'article-comments-comment-missing-name-parameter' => 'Chybějící jméno',
+	'article-comments-comment-missing-date-parameter' => 'Chybějící datum komentáře',
+	'article-comments-no-spam' => 'Nejméně jedna odeslaná položka je označena jako spam.',
+	'processcomment' => 'Zpracování komentáře',
 );
 
 /** German (Deutsch)
