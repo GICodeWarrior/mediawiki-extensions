@@ -279,6 +279,13 @@ gib e Kommentar yy un druck uf dr Chnopf zum Lääre vu dr Syte.',
 	'right-massblank' => 'Masseläärig vu Syte',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'massblank-blankcomment' => 'Fa:',
+);
+
 /** Hausa (هَوُسَ) */
 $messages['ha'] = array(
 	'massblank-blankcomment' => 'Dalili:',
