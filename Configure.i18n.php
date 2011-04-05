@@ -4214,9 +4214,11 @@ Bitte leg si aa fier configure.sql drin uus oder korrigier ihre Name.',
 
 /** Manx (Gaelg)
  * @author MacTire02
+ * @author Shimmin Beg
  */
 $messages['gv'] = array(
 	'configure-edit-core' => 'MediaWiki',
+	'configure-form-reason' => 'Fa:',
 );
 
 /** Hausa (هَوُسَ) */
