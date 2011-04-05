@@ -580,6 +580,7 @@ Evit enrollañ ur sontadeg, kasit anezhi ha na respontit da goulenn kinnig ebet.
  * @author CERminator
  */
 $messages['bs'] = array(
+	'pollresults' => 'Rezultati glasanja na ovoj stranici',
 	'qp_desc' => 'Omogućuje pravljenje glasanja',
 	'qp_desc-sp' => '[[Special:PollResults|Posebna stranica]] za pregled rezultata glasanja',
 	'qp_result_NA' => 'Nije odgovoreno',
@@ -590,6 +591,7 @@ $messages['bs'] = array(
 	'qp_users_list' => 'Prikaži sve korisnike',
 	'qp_browse_to_poll' => 'Pregledaj po $1',
 	'qp_browse_to_user' => 'Pregledaj po $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|glas|glasa|glasova}}',
 	'qp_source_link' => 'Izvor',
 	'qp_stats_link' => 'Statistika',
 	'qp_users_link' => 'Korisnici',
@@ -600,6 +602,10 @@ $messages['bs'] = array(
 	'qp_not_participated_link' => 'Nije učestvovao',
 	'qp_order_by_username' => 'Pregled po korisničkim imenima',
 	'qp_order_by_polls_count' => 'Pregled po broju glasova',
+	'qp_results_line_qupl' => 'Stranica "$1" Anketa "$2": $3',
+	'qp_results_line_qpl' => 'Stranica "$1" Anketa "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Stranica "$2" Anketa "$3" ]',
+	'qp_func_no_such_poll' => 'Nema takve ankete ($1)',
 );
 
 /** Czech (Česky) */
