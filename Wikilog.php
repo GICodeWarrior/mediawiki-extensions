@@ -353,7 +353,7 @@ class Wikilog
 	 * Suppresses the "add section" tab in comments pages.
 	 */
 	static function SkinTemplateTabs( $skin, &$contentActions ) {
-		$wi = self::getWikilogInfo( $skin->mTitle );
+		$wi = self::getWikilogInfo( $skin->getTitle() );
 		if ( $wi ) {
 			self::skinConfigViewsLinks( $wi, $skin, $contentActions );
 		}
@@ -366,7 +366,7 @@ class Wikilog
 	 * This is used with newer skins, like Vector.
 	 */
 	static function SkinTemplateNavigation( $skin, &$links ) {
-		$wi = self::getWikilogInfo( $skin->mTitle );
+		$wi = self::getWikilogInfo( $skin->getTitle() );
 		if ( $wi ) {
 			self::skinConfigViewsLinks( $wi, $skin, $links['views'] );
 		}
@@ -382,11 +382,11 @@ class Wikilog
 		global $wgRequest, $wgWikilogEnableComments;
 
 		$action = $wgRequest->getText( 'action' );
-		if ( $wi->isMain() && $skin->mTitle->quickUserCan( 'edit' ) ) {
+		if ( $wi->isMain() && $skin->getTitle()->quickUserCan( 'edit' ) ) {
 			$views['wikilog'] = array(
 				'class' => ( $action == 'wikilog' ) ? 'selected' : false,
 				'text' => wfMsg( 'wikilog-tab' ),
-				'href' => $skin->mTitle->getLocalUrl( 'action=wikilog' )
+				'href' => $skin->getTitle()->getLocalUrl( 'action=wikilog' )
 			);
 		}
 		if ( $wgWikilogEnableComments && $wi->isTalk() ) {
