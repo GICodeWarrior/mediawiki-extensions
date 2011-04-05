@@ -49,9 +49,15 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			);
 		}
 		
-		// User ratings
+		// User-specific data
 		$ratings[$params['pageid']]['status'] = 'current';
 		if ( $params['userrating'] ) {
+			// Expertise
+			$expertise = $this->getExpertise( $params );
+			if ( $expertise !== false ) {
+				$ratings[$params['pageid']]['expertise'] = $expertise;
+			}
+			// User ratings
 			$userRatings = $this->getUserRatings( $params );
 			if ( isset( $ratings[$params['pageid']]['ratings'] ) ) {
 				// Valid ratings already exist
@@ -60,11 +66,6 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 						// Rating value
 						$ratings[$params['pageid']]['ratings'][$i]['userrating'] =
 							$userRatings[$rating['ratingid']]['value'];
-						// Expertise
-						if ( !isset( $ratings[$params['pageid']]['expertise'] ) ) {
-							$ratings[$params['pageid']]['expertise'] =
-								$userRatings[$rating['ratingid']]['expertise'];
-						}
 						// Expiration
 						if ( $userRatings[$rating['ratingid']]['revision'] < $revisionLimit ) {
 							$ratings[$params['pageid']]['status'] = 'expired';
@@ -93,10 +94,6 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 						'count' => 0,
 						'userrating' => $userRating['value'],
 					);
-					// Expertise
-					if ( !isset( $ratings[$params['pageid']]['expertise'] ) ) {
-						$ratings[$params['pageid']]['expertise'] = $userRating['expertise'];
-					}
 				}
 			}
 		}
@@ -108,11 +105,10 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
 	}
-
-	protected function getUserRatings( $params ) {
-		global $wgUser, $wgArticleFeedbackRatings;
-
-		$pageId = $params['pageid'];
+	
+	protected function getAnonToken( $params ) {
+		global $wgUser;
+		
 		$token = '';
 		if ( $wgUser->isAnon() ) {
 			if ( !isset( $params['anontoken'] ) ) {
@@ -122,36 +118,49 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			}
 			$token = $params['anontoken'];
 		}
+		return $token;
+	}
+	
+	protected function getExpertise( $params ) {
+		global $wgUser;
+		
+		return $this->getDB()->selectField(
+			'article_feedback_properties',
+			'afp_value_text',
+			array(
+				'afp_key' => 'expertise',
+				'afp_user_text' => $wgUser->getName(),
+				'afp_user_anon_token' => $this->getAnonToken( $params ),
+			),
+			__METHOD__,
+			array( 'ORDER BY', 'afp_revision DESC' )
+		);
+	}
+	
+	protected function getUserRatings( $params ) {
+		global $wgUser, $wgArticleFeedbackRatings;
 
 		$res = $this->getDB()->select(
-			array( 'article_feedback', 'article_feedback_properties', 'article_feedback_ratings' ),
+			array( 'article_feedback', 'article_feedback_ratings' ),
 			array(
 				'aa_rating_id',
 				'aar_rating',
 				'aa_revision',
 				'aa_rating_value',
-				'afp_value_text'
 			),
 			array(
-				'aa_page_id' => $pageId,
+				'aa_page_id' => $params['pageid'],
 				'aa_rating_id' => $wgArticleFeedbackRatings,
 				'aa_user_id' => $wgUser->getId(),
+				'aa_user_text' => $wgUser->getName(),
+				'aa_user_anon_token' => $this->getAnonToken( $params ),
 			),
 			__METHOD__,
 			array(
-				'ORDER BY' => 'aa_revision DESC',
-				'LIMIT' => count( $wgArticleFeedbackRatings )
+				'LIMIT' => count( $wgArticleFeedbackRatings ),
+				'ORDER BY' => array( 'aa_rating_id', 'aa_revision DESC' ),
 			),
 			array(
-				'article_feedback_properties' => array(
-					'LEFT JOIN', array(
-						'afp_revision=aa_revision',
-						'afp_user_text=aa_user_text',
-						'afp_user_anon_token=aa_user_anon_token',
-						'aa_user_anon_token' => $token,
-						'afp_key' => 'expertise',
-					)
-				),
 				'article_feedback_ratings' => array( 'LEFT JOIN', array( 'aar_id=aa_rating_id' ) )
 			)
 		);
@@ -165,7 +174,6 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			if ( $revId === $row->aa_revision ) {
 				$ratings[$row->aa_rating_id] = array(
 					'value' => $row->aa_rating_value,
-					'expertise' => $row->afp_value_text,
 					'revision' => $row->aa_revision,
 					'text' => $row->aar_rating,
 				);
