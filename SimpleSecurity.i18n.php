@@ -141,6 +141,7 @@ $messages['ba'] = array(
 	'security-type-category' => 'категориялар',
 	'security-type-namespace' => 'исемдәр арауығы',
 	'security-restricttogroup' => 'Эстәлекте ҡарау "$1" ағазалары менән сикләнгән',
+	'restriction-read' => 'Уҡыу',
 );
 
 /** Belarusian (Беларуская)
