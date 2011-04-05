@@ -2272,7 +2272,7 @@ $messages['ta'] = array(
 	'ratinghistory-table-votes' => 'ஓட்டெடுப்புகள்',
 	'ratinghistory-none' => 'வரைபடம் வரைவதற்குத் தேவையான அளவு வாசகர்களின் கருத்துக்கள் தற்போது இல்லை.',
 	'ratinghistory-ratings' => "'''கதை:''' '''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
-	'ratinghistory-legend' => "↓ The '''daily number of reviews''' <span style=\"color:red;\">''(red)''</span>, '''daily average rating''' <span style=\"color:blue;\">''(blue)''</span>,
+	'ratinghistory-legend' => "The '''daily number of reviews''' <span style=\"color:red;\">''(red)''</span>, '''daily average rating''' <span style=\"color:blue;\">''(blue)''</span>,
 and '''running average rating''' <span style=\"color:green;\">''(green)''</span> are graphed below, by date.
 The '''running average rating''' is simply the average of all the daily ratings ''within'' this time frame for each day.
 The ratings are as follows:
