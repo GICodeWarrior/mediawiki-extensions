@@ -48,7 +48,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				'total' => (int) $row->aap_total,
 				'count' => (int) $row->aap_count,
 				'countall' => isset( $historicCounts[$row->aap_rating_id] )
-					? $historicCounts[$row->aap_rating_id] + 100 : 0
+					? $historicCounts[$row->aap_rating_id] : 0
 			);
 		}
 
