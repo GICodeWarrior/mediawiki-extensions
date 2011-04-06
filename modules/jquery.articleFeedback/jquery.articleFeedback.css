@@ -164,17 +164,11 @@
 	margin-bottom: 0.75em;
 }
 
-.articleFeedback-rating-fields {
-	width: 0px;
-	height: 0px;
-	overflow: hidden;
-}
-
 .articleFeedback-rating-labels {
 	margin-left: 10px;
 }
 
-.articleFeedback-rating-labels label, .articleFeedback-rating-clear {
+.articleFeedback-rating-label, .articleFeedback-rating-clear {
 	float: left;
 	height: 21px;
 	width: 21px;
@@ -182,7 +176,7 @@
 	background-position: center center;
 	cursor: pointer;
 }
-.articleFeedback-rating-labels label {
+.articleFeedback-rating-label {
 	/* @embed */
 	background-image: url(images/star-empty.png);
 }
@@ -198,28 +192,28 @@
 	background-image: url(images/trash-hover.png);
 }
 
-.articleFeedback-rating-labels label.articleFeedback-rating-label-full {
+.articleFeedback-rating-label.articleFeedback-rating-label-full {
 	/* @embed */
 	background-image: url(images/star-full.png);
 }
 
-.articleFeedback-expired .articleFeedback-rating-labels label.articleFeedback-rating-label-full {
+.articleFeedback-expired .articleFeedback-rating-label.articleFeedback-rating-label-full {
 	/* @embed */
 	background-image: url(images/star-full-expired.png);
 }
 
-.articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-full,
-.articleFeedback-rating .articleFeedback-rating-labels label.articleFeedback-rating-label-hover-tail {
+.articleFeedback-rating-new .articleFeedback-rating-label.articleFeedback-rating-label-full,
+.articleFeedback-rating .articleFeedback-rating-label.articleFeedback-rating-label-hover-tail {
 	/* @embed */
 	background-image: url(images/star-new.png);
 }
 
-.articleFeedback-rating .articleFeedback-rating-labels label.articleFeedback-rating-label-hover-head {
+.articleFeedback-rating .articleFeedback-rating-label.articleFeedback-rating-label-hover-head {
 	/* @embed */
 	background-image: url(images/star-new-hover.png);
 }
 
-.articleFeedback-rating-new .articleFeedback-rating-labels label.articleFeedback-rating-label-down {
+.articleFeedback-rating-new .articleFeedback-rating-label.articleFeedback-rating-label-down {
 	/* @embed */
 	background-image: url(images/star-new-down.png);
 }

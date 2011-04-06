@@ -60,8 +60,15 @@ $.articleFeedback = {
 		'rating': '\
 <div class="articleFeedback-rating">\
 	<div class="articleFeedback-label"></div>\
-	<div class="articleFeedback-rating-fields articleFeedback-visibleWith-form"><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /><input type="radio" /></div>\
-	<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form"><label></label><label></label><label></label><label></label><label></label><div class="articleFeedback-rating-clear"></div></div>\
+	<input type="hidden" />\
+	<div class="articleFeedback-rating-labels articleFeedback-visibleWith-form">\
+		<div class="articleFeedback-rating-label" rel="1"></div>\
+		<div class="articleFeedback-rating-label" rel="2"></div>\
+		<div class="articleFeedback-rating-label" rel="3"></div>\
+		<div class="articleFeedback-rating-label" rel="4"></div>\
+		<div class="articleFeedback-rating-label" rel="5"></div>\
+		<div class="articleFeedback-rating-clear"></div>\
+	</div>\
 	<div class="articleFeedback-rating-average articleFeedback-visibleWith-report"></div>\
 	<div class="articleFeedback-rating-meter articleFeedback-visibleWith-report"><div></div></div>\
 	<div class="articleFeedback-rating-count articleFeedback-visibleWith-report"></div>\
@@ -98,18 +105,18 @@ $.articleFeedback = {
 		},
 		'updateRating': function() {
 			var $rating = $(this);
-			$rating.find( 'label' ).removeClass( 'articleFeedback-rating-label-full' );
-			var $label = $rating
-				.find( 'label[for=' + $rating.find( 'input:radio:checked' )
-					.attr( 'id' ) + ']' );
+			$rating.find( '.articleFeedback-rating-label' )
+				.removeClass( 'articleFeedback-rating-label-full' );
+			var val = $rating.find( 'input:hidden' ).val();
+			var $label = $rating.find( '.articleFeedback-rating-label[rel="' + val + '"]' );
 			if ( $label.length ) {
 				$label
-					.prevAll( 'label' )
+					.prevAll( '.articleFeedback-rating-label' )
 						.add( $label )
 							.addClass( 'articleFeedback-rating-label-full' )
 							.end()
 						.end()
-					.nextAll( 'label' )
+					.nextAll( '.articleFeedback-rating-label' )
 						.removeClass( 'articleFeedback-rating-label-full' );
 				$rating.find( '.articleFeedback-rating-clear' ).show();
 			} else {
@@ -132,8 +139,7 @@ $.articleFeedback = {
 			var data = {};
 			for ( var key in context.options.ratings ) {
 				var id = context.options.ratings[key].id;
-				// Default to 0 if the radio set doesn't contain a checked element
-				data['r' + id] = context.$ui.find( 'input[name=r' + id + ']:checked' ).val() || 0;
+				data['r' + id] = context.$ui.find( 'input[name="r' + id + '"]' ).val();
 			}
 			var expertise = [];
 			context.$ui.find( '.articleFeedback-expertise input:checked' ).each( function() {
@@ -204,6 +210,7 @@ $.articleFeedback = {
 				'type': 'GET',
 				'dataType': 'json',
 				'context': context,
+				'cache': false,
 				'data': {
 					'action': 'query',
 					'format': 'json',
@@ -214,56 +221,74 @@ $.articleFeedback = {
 				},
 				'success': function( data ) {
 					var context = this;
-					if ( !$.isArray( data.query.articlefeedback ) ) {
-						mw.log( 'Report response error' );
+					if (
+						!$.isArray( data.query.articlefeedback )
+						|| !data.query.articlefeedback.length
+					) {
+						mw.log( 'ArticleFeedback invalid response error.' );
 						context.$ui.find( '.articleFeedback-error' ).show();
 						return;
 					}
-					if (
-						data.query.articlefeedback.length
-						&& typeof data.query.articlefeedback[0].expertise === 'string'
-					) {
-						var $expertise = context.$ui.find( '.articleFeedback-expertise' );
-						var tags = data.query.articlefeedback[0].expertise.split( '|' );
-						for ( var i = 0; i < tags.length; i++ ) {
-							$expertise.find( 'input:checkbox[value=' + tags[i] + ']' )
-								.attr( 'checked', true );
+					var feedback = data.query.articlefeedback[0];
+					
+					// Expertise
+					var $expertise = context.$ui.find( '.articleFeedback-expertise' );
+					if ( typeof feedback.expertise === 'string' ) {
+						var tags = feedback.expertise.split( '|' );
+						if ( $.inArray( 'general', tags ) !== -1 ) {
+							$expertise.find( 'input:checkbox' ).each( function() {
+								$(this).attr( 'checked', $.inArray( $(this).val(), tags ) !== -1 );
+							} );
+							// IE7 seriously has issues, and we have to hide, then show
+							$expertise.find( '.articleFeedback-expertise-options' )
+								.hide().show();
+							$.articleFeedback.fn.enableExpertise( $expertise );
 						}
-						if ( $expertise.find( 'input:checkbox[value=general]:checked' ).size() ) {
-							$expertise
-								.each( function() {
-									$.articleFeedback.fn.enableExpertise( $(this) );
-								} )
-								.find( '.articleFeedback-expertise-options' )
-									.show();
+					} else {
+						$expertise
+							.find( 'input:checkbox' )
+								.attr( 'checked', false )
+								.end()
+							.find( '.articleFeedback-expertise-options' )
+								.hide();
+					}
+
+					// Index rating data by rating ID
+					var ratings = {};
+					if ( typeof feedback.ratings === 'object' && feedback.ratings !== null ) {
+						for ( var i = 0; i < feedback.ratings.length; i++ ) {
+							ratings[feedback.ratings[i].ratingid] = feedback.ratings[i];
 						}
 					}
-					var expired = false;
+					
+					// Ratings
 					context.$ui.find( '.articleFeedback-rating' ).each( function() {
-						var ratingData;
-						// Try to get data provided for this rating
-						if (
-							data.query.articlefeedback.length &&
-							typeof data.query.articlefeedback[0].ratings !== 'undefined'
-						) {
-							if ( 'status' in data.query.articlefeedback[0] ) {
-								if ( data.query.articlefeedback[0].status == 'expired' ) {
-									expired = true;
-								}
-							}
-							if ( 'ratings' in data.query.articlefeedback[0] ) {
-								var ratingsData = data.query.articlefeedback[0].ratings;
-								var id = context.options.ratings[$(this).attr( 'rel' )].id;
-								for ( var i = 0; i < ratingsData.length; i++ ) {
-									if ( ratingsData[i].ratingid == id ) {
-										ratingData = ratingsData[i];
-									}
-								}
-							}
-						}
+						var name = $(this).attr( 'rel' );
+						var rating = name in context.options.ratings
+							&& context.options.ratings[name].id in ratings ?
+								ratings[context.options.ratings[name].id] : null;
 						// Report
-						if ( typeof ratingData === 'undefined' || ratingData.total == 0 ) {
-							// Setup in "no ratings" mode
+						if (
+							rating !== null
+							&& 'total' in rating
+							&& 'count' in rating
+							&& rating.total > 0
+						) {
+							var average = Math.round( ( rating.total / rating.count ) * 10 ) / 10;
+							$(this)
+								.find( '.articleFeedback-rating-average' )
+									.text( average + ( average % 1 === 0 ? '.0' : '' ) )
+									.end()
+								.find( '.articleFeedback-rating-meter div' )
+									.css( 'width', Math.round( average * 21 ) + 'px' )
+									.end()
+								.find( '.articleFeedback-rating-count' )
+									.text(
+										mw.msg( 'articlefeedback-report-ratings', rating.count )
+									)
+									.end();
+						} else {
+							// Special case for no ratings
 							$(this)
 								.find( '.articleFeedback-rating-average' )
 									.html( '&nbsp;' )
@@ -274,43 +299,23 @@ $.articleFeedback = {
 								.find( '.articleFeedback-rating-count' )
 									.text( mw.msg( 'articlefeedback-report-empty' ) )
 									.end();
-						} else {
-							// Setup using ratingData
-							var average =
-								Math.round( ( ratingData.total / ratingData.count ) * 10 ) / 10;
-							$(this)
-								.find( '.articleFeedback-rating-average' )
-									.text( average + ( average % 1 === 0 ? '.0' : '' ) )
-									.end()
-								.find( '.articleFeedback-rating-meter div' )
-									.css( 'width', Math.round( average * 21 ) + 'px' )
-									.end()
-								.find( '.articleFeedback-rating-count' )
-									.text( mw.msg(
-										'articlefeedback-report-ratings', ratingData.count
-									) )
-									.end();
 						}
 						// Form
-						if ( typeof ratingData.userrating !== 'undefined' ) {
-							if ( ratingData.userrating == 0 ) {
-								$(this)
-									.find( 'input' )
-									.attr( 'checked', false );
-							} else {
-								$(this)
-									.find( 'input[value="' + ratingData.userrating + '"]' )
-									.attr( 'checked', true );
+						if ( rating !== null && typeof rating.userrating !== 'undefined' ) {
+							$(this).find( 'input:hidden' ).val( rating.userrating );
+							if ( rating.userrating > 0 ) {
+								// If any ratings exist, make sure expertise is enabled so users can
+								// suppliment their ratings with expertise information
+								$.articleFeedback.fn.enableExpertise( $expertise );
 							}
-							// If any ratings exist, make sure expertise is enabled so users can
-							// suppliment their ratings.
-							$.articleFeedback.fn.enableExpertise(
-								context.$ui.find( '.articleFeedback-expertise' )
-							);
+						} else {
+							$(this).find( 'input:hidden' ).val( 0 );
 						}
+						// Update rating controls based on the form data
 						$.articleFeedback.fn.updateRating.call( $(this) );
 					} );
-					if ( expired ) {
+					// Expiration
+					if ( typeof feedback.status === 'string' && feedback.status === 'expired' ) {
 						context.$ui
 							.addClass( 'articleFeedback-expired' )
 							.find( '.articleFeedback-expiry' )
@@ -321,7 +326,7 @@ $.articleFeedback = {
 							.find( '.articleFeedback-expiry' )
 								.slideUp( 'fast' );
 					}
-					// If being called just after a submit, we need to un-new the rating controls
+					// Status change - un-new the rating controls
 					context.$ui.find( '.articleFeedback-rating-new' )
 						.removeClass( 'articleFeedback-rating-new' );
 				},
@@ -503,26 +508,10 @@ $.articleFeedback = {
 				.find( '.articleFeedback-visibleWith-report' )
 					.hide()
 					.end()
-				// Connect labels and fields
+				// Name the hidden fields
 				.find( '.articleFeedback-rating' )
 					.each( function( rating ) {
-						var rel = $(this).attr( 'rel' );
-						var id = 'articleFeedback-rating-field-' + rel + '-';
-						$(this)
-							.find( '.articleFeedback-rating-fields input' )
-								.attr( 'name', rel )
-								.each( function( field ) {
-									$(this).attr( {
-										'value': field + 1,
-										'name': 'r' + ( rating + 1 ),
-										'id': id + ( field + 1 )
-									} );
-								} )
-								.end()
-							.find( '.articleFeedback-rating-labels label' )
-								.each( function( i ) {
-									$(this).attr( 'for', id + ( i + 1 ) );
-								} );
+						$(this).find( 'input:hidden' ) .attr( 'name', 'r' + ( rating + 1 ) );
 					} )
 					.end()
 				// Setup switch behavior
@@ -544,18 +533,18 @@ $.articleFeedback = {
 					} )
 					.end()
 				// Setup rating behavior
-				.find( '.articleFeedback-rating-labels label' )
+				.find( '.articleFeedback-rating-label' )
 					.hover(
 						function() {
 							$(this)
 								.addClass( 'articleFeedback-rating-label-hover-head' )
-								.prevAll( 'label' )
+								.prevAll( '.articleFeedback-rating-label' )
 									.addClass( 'articleFeedback-rating-label-hover-tail' );
 						},
 						function() {
 							$(this)
 								.removeClass( 'articleFeedback-rating-label-hover-head' )
-								.prevAll( 'label' )
+								.prevAll( '.articleFeedback-rating-label' )
 									.removeClass( 'articleFeedback-rating-label-hover-tail' );
 							$.articleFeedback.fn.updateRating.call(
 								$(this).closest( '.articleFeedback-rating' )
@@ -564,6 +553,7 @@ $.articleFeedback = {
 					)
 					.mousedown( function() {
 						$.articleFeedback.fn.enableSubmission.call( context, true );
+						
 						if ( context.$ui.hasClass( 'articleFeedback-expired' ) ) {
 							// Changing one means the rest will get submitted too
 							context.$ui
@@ -579,6 +569,9 @@ $.articleFeedback = {
 						$(this)
 							.closest( '.articleFeedback-rating' )
 								.addClass( 'articleFeedback-rating-new' )
+								.find( 'input:hidden' )
+									.val( $(this).attr( 'rel' ) )
+									.end()
 								.end()
 							.addClass( 'articleFeedback-rating-label-down' )
 							.nextAll()
@@ -597,7 +590,7 @@ $.articleFeedback = {
 						$.articleFeedback.fn.enableSubmission.call( context, true );
 						$(this).hide();
 						var $rating = $(this).closest( '.articleFeedback-rating' );
-						$rating.find( 'input:radio' ).attr( 'checked', false );
+						$rating.find( 'input:hidden' ).val( 0 );
 						$.articleFeedback.fn.updateRating.call( $rating );
 					} );
 			// Show initial form and report values
