@@ -43,7 +43,7 @@ class UpgradeTest:
 
 		# Configure
 		settings = ['php', 'svnroot', 'dbUser', 'dbPassword', 'runUpdate', 
-				'runRebuildMessages', 'runOldUpdate']
+				'runRebuildMessages', 'runOldUpdate', 'minimumVersion']
 		booleans = ['runUpdate', 'runRebuildMessages', 'runOldUpdate']
 		confParser = SafeConfigParser()
 		confParser.read( [ self.baseDir + '/default.conf', self.baseDir + '/local.conf' ] )
@@ -123,7 +123,7 @@ password = %s
 			nameText = name.firstChild.data
 			if re.match( '^REL[0-9]+_[0-9]+$', nameText ):
 				version = self.branchToVersion( 'branches/' + nameText )
-				if versionCompare( version, '1.2' ) >= 0:
+				if versionCompare( version, self.conf['minimumVersion'] ) >= 0:
 					versions.append( version )
 		versions.sort( versionCompare )
 		print "OK: " + ', '.join( versions )
