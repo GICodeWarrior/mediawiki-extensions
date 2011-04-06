@@ -60,62 +60,47 @@ function efRenderSubpageList3( $input, $args, $parser ) {
 class SubpageList3 {
 
 	/**
-	 * parser object
-	 * @var object parser object
-	 * @private
+	 * @var Parser
 	 */
-	var $parser;
+	private $parser;
 
-
-	/**
-	 * title object
-	 * @var object title object
-	 * @private
-	 */
-	var $title;
 
 	/**
 	 * @var Title
-	 * @private
 	 */
-	var $ptitle;
+	private $title;
 
 	/**
-	 * namespace string
-	 * @var string namespace object
-	 * @private
+	 * @var Title
 	 */
-	var $namespace = '';
+	private $ptitle;
 
 	/**
-	 * token string
+	 * @var string
+	 */
+	private $namespace = '';
+
+	/**
 	 * @var string token object
-	 * @private
 	 */
-	var $token = '*';
+	private $token = '*';
 
 	/**
-	 * language object
-	 * @var object language object
-	 * @private
+	 * @var Language
 	 */
-	var $language;
+	private $language;
 
 	/**
-	 * error display on or off
-	 * @var mixed error display on or off
-	 * @private
+	 * @var int error display on or off
 	 * @default 0 hide errors
 	 */
-	var $debug = 0;
+	private $debug = 0;
 
 	/**
 	 * contain the error messages
 	 * @var array contain the errors messages
-	 * @private
 	 */
-	var $errors = array();
-
+	private $errors = array();
 
 	/**
 	 * order type
@@ -123,10 +108,8 @@ class SubpageList3 {
 	 *  - asc
 	 *  - desc
 	 * @var string order type
-	 * @private
-	 * @default asc
 	 */
-	var $order = 'asc';
+	private $order = 'asc';
 
 	/**
 	 * column thats used as order method
@@ -135,9 +118,8 @@ class SubpageList3 {
 	 *  - lastedit: Timestamp numeric order of the last edit of a page
 	 * @var string order method
 	 * @private
-	 * @default title
 	 */
-	var $ordermethod = 'title';
+	private $ordermethod = 'title';
 
 	/**
 	 * mode of the output
@@ -146,10 +128,9 @@ class SubpageList3 {
 	 *  - ordered: OL list as output
 	 *  - bar: uses · as a delimiter producing a horizontal bar menu
 	 * @var string mode of output
-	 * @private
 	 * @default unordered
 	 */
-	var $mode = 'unordered';
+	private $mode = 'unordered';
 
 	/**
 	 * parent of the listed pages
@@ -158,10 +139,9 @@ class SubpageList3 {
 	 *  - string: title of the specific title
 	 * e.g. if you are in Mainpage/ it will list all subpages of Mainpage/
 	 * @var mixed parent of listed pages
-	 * @private
 	 * @default -1 current
 	 */
-	var $parent = -1;
+	private $parent = -1;
 
 	/**
 	 * style of the path (title)
@@ -170,11 +150,10 @@ class SubpageList3 {
 	 *  - notparent: the path without the $parent item, e.g. Entry/Sub
 	 *  - no: no path, only the page title, e.g. Sub
 	 * @var string style of the path (title)
-	 * @private
 	 * @default normal
 	 * @see $parent
 	 */
-	var $showpath = 'no';
+	private $showpath = 'no';
 
 	/**
 	 * whether to show next sublevel only, or all sublevels
@@ -182,11 +161,10 @@ class SubpageList3 {
 	 *  - 0 / no / false
 	 *  - 1 / yes / true
 	 * @var mixed show one sublevel only
-	 * @private
 	 * @default 0
 	 * @see $parent
 	 */
-	var $kidsonly = 0;
+	private $kidsonly = 0;
 
 	/**
 	 * whether to show parent as the top item
@@ -194,11 +172,10 @@ class SubpageList3 {
 	 *  - 0 / no / false
 	 *  - 1 / yes / true
 	 * @var mixed show one sublevel only
-	 * @private
 	 * @default 0
 	 * @see $parent
 	 */
-	var $showparent = 0;
+	private $showparent = 0;
 
 	/**
 	 * Constructor function of the class
@@ -209,13 +186,6 @@ class SubpageList3 {
 	 */
 	function __construct( $parser ) {
 		global $wgContLang;
-
-		/**
-		 * assignment of the object to the classs vars
-		 * @see $parser
-		 * @see $title
-		 * @see $language
-		 */
 		$this->parser = $parser;
 		$this->title = $parser->mTitle;
 		$this->language = $wgContLang;
@@ -319,11 +289,7 @@ class SubpageList3 {
 		if( isset( $options['showpath'] ) ) {
 			switch( strtolower( $options['showpath'] ) ) {
 				case 'no':
-					$this->showpath = 'no';
-					break;
 				case '0':
-					$this->showpath = 'no';
-				    break;
 				case 'false':
 					$this->showpath = 'no';
 					break;
@@ -331,14 +297,8 @@ class SubpageList3 {
 					$this->showpath = 'notparent';
 					break;
 				case 'full':
-					$this->showpath = 'full';
-					break;
 				case 'yes':
-					$this->showpath = 'full';
-					break;
 				case '1':
-					$this->showpath = 'full';
-					break;
 				case 'true':
 					$this->showpath = 'full';
 					break;
@@ -374,7 +334,7 @@ class SubpageList3 {
 	function render() {
 		wfProfileIn( __METHOD__ );
 		$pages = $this->getTitles();
-		if($pages!=null && count( $pages ) > 0 ) {
+		if( $pages != null && count( $pages ) > 0 ) {
 			$list = $this->makeList( $pages );
 			$html = $this->parse( $list );
 		} else {
@@ -428,7 +388,7 @@ class SubpageList3 {
 		}
 
 		// don't let list cross namespaces
-		if (strlen($nsi)>0) {
+		if ( strlen( $nsi ) > 0 ) {
 			$conditions['page_namespace'] = $nsi;
 		}
 		$conditions['page_is_redirect'] = 0;
@@ -489,7 +449,9 @@ class SubpageList3 {
 		# add parent item
 		if ($this->showparent) {
 			$pn = '[[' . $this->ptitle->getPrefixedText() .'|'. $this->ptitle->getText() .']]';
-			if( $this->mode != 'bar' ) $pn = $this->token . $pn;
+			if( $this->mode != 'bar' ) {
+				$pn = $this->token . $pn;
+			}
 			$ss = trim($pn);
 			$list[] = $ss;
 			$c++; // flag for bar token to be added on next item
@@ -499,28 +461,33 @@ class SubpageList3 {
 		$list = array();
 		foreach( $titles as $title ) {
 			$lv = substr_count($title, '/') - $parlv;	
-			if ($this->kidsonly!=1 || $lv<2) {
-				if ($this->showparent) $lv++;
+			if ( $this->kidsonly!=1 || $lv < 2 ) {
+				if ($this->showparent) {
+					$lv++;
+				}
 				$ss = "";
 				if( $this->mode == 'bar' ) {
 					if( $c>0) {
 						$ss .= $this->token;
 					}
 				} else {
-					for ($i=0; $i<$lv; $i++) {
+					for ( $i = 0; $i < $lv; $i++ ) {
 						$ss .= $this->token;
 					}
 				}
 				$ss .= $this->makeListItem( $title );
-				$ss = trim($ss);  // make sure we don't get any <pre></pre> tags
+				$ss = trim( $ss );  // make sure we don't get any <pre></pre> tags
 				$list[] = $ss;
 			}
 			$c++;
-			if ($c>200) break; // safety
+			if ( $c > 200 ) {
+				break;
+			}
 		}
+		$retval = '';
 		if( count( $list ) > 0 ) {
 			$retval = implode( "\n", $list );
-			if ($this->mode == 'bar') {
+			if ( $this->mode == 'bar' ) {
 				$retval = implode( "", $list );
 			}
 		}
