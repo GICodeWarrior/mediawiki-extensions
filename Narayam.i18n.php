@@ -19,6 +19,7 @@ $messages['en'] = array(
 	'narayam-help-page' => 'Help:Typing',
 	'narayam-checkbox-tooltip' => 'To toggle input method on and off', // FIXME: better message
 	'narayam-disable-preference' => 'Disable Narayam Input Method Editor (IME)',
+	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'Hindi InScript',
 	'narayam-kn' => 'Kannada Transliteration',
 	'narayam-kn-inscript' => 'Kannada InScript',
@@ -181,6 +182,17 @@ $messages['de'] = array(
 	'narayam-bn-avro' => 'Bengalisch (Avro)',
 	'narayam-bn-inscript' => 'Bengalisch (InScript)',
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',
+);
+/** Esperanto
+ * @author Brion
+ */
+$messages['eo'] = array(
+	'narayam-desc' => 'Provizas agorditajn enigmetodojn por enigkampoj',
+	'narayam-toggle-ime' => 'Ŝalti enigmetodon ($1)',
+	'narayam-help-page' => 'Helpo:Tajpado',
+	'narayam-checkbox-tooltip' => 'En/elŝalti enigmetodon for specialaj literoj',
+	'narayam-disable-preference' => 'Elŝalti enigmetodon (IME) Narayam',
+	'narayam-eo' => 'Esperanto',
 );
 
 /** French (Français)
