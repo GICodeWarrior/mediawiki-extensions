@@ -1046,6 +1046,30 @@ $messages['te'] = array(
 	'toolbase-form-wiki' => 'వికీ',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'toolbase-header-bugs' => 'Mga sira',
+	'toolbase-replag-years' => 'mga taon',
+	'toolbase-replag-months' => 'mga buwan',
+	'toolbase-replag-weeks' => 'mga linggo',
+	'toolbase-replag-days' => 'mga araw',
+	'toolbase-replag-hours' => 'mga oras',
+	'toolbase-replag-minutes' => 'mga minuto',
+	'toolbase-replag-seconds' => 'mga segundo',
+	'toolbase-footer-exectime' => 'Naisakatuparan sa loob ng $1 mga segundo',
+	'toolbase-footer-source' => 'Tingnan ang pinagmulan',
+	'toolbase-footer-language' => 'Baguhin ang wika',
+	'toolbase-footer-translate' => 'Isalinwika',
+	'toolbase-navigation' => 'Paglilibot',
+	'toolbase-navigation-homepage' => 'Bahay-pahina',
+	'toolbase-navigation-user_id' => 'Hanapin ang ID ng tagagamit',
+	'toolbase-navigation-autoedits' => 'Kusang pambilang ng pamamatnugot',
+	'toolbase-userid-submit' => 'Kuhanin ang ID ng tagagamit',
+	'toolbase-userid-title' => 'Maghanap ng isang ID ng tagagamit',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

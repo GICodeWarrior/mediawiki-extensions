@@ -528,6 +528,18 @@ $messages['te'] = array(
 	'ts-kml-on-ol-map-by' => 'పటపు సౌజన్యం',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'ts-kml-on-ol-options' => 'Mga mapipili',
+	'ts-kml-on-ol-languages' => 'Mga wika',
+	'ts-kml-on-ol-thumbnails' => 'Mga kagyat',
+	'ts-kml-on-ol-help' => 'Saklolo',
+	'ts-kml-on-ol-all' => 'Lahat',
+	'ts-kml-on-ol-map-by' => 'Imapa ayon sa',
+);
+
 /** Turkish (Türkçe)
  * @author Katpatuka
  */
