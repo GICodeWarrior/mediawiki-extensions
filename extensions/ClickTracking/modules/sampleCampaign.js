@@ -1,6 +1,6 @@
 
 //checks
-if(!MW){ MW={};}
+if(typeof(MW) == "undefined"){ MW={};}
 if(!MW.activeCampaigns){ MW.activeCampaigns ={}; }
 
 //define new active campaign
@@ -46,6 +46,8 @@ MW.activeCampaigns[MW.activeCampaigns.length] =
 	  $j("#wpSave").click(function(){ $j.trackAction('save'); });
 	  //add click tracking to preview
 	  $j("#wpPreview").click(function(){ $j.trackAction('preview'); });
+	  $j("#editpage-copywarn").click(function(){ $j.trackAction('copywarn'); });
+	  
   }
   
 };

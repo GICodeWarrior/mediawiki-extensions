@@ -38,7 +38,7 @@ class ClickTrackingHooks {
 			$updater->addExtensionUpdate( array( 'addTable', 'click_tracking_events',
 				$dir . 'patches/ClickTrackingEvents.sql', true ) );
 			$updater->addExtensionUpdate( array( 'addTable', 'click_tracking_user_properties',
-				$dir . 'patches/ClickTrackingEvents.sql', true ) );
+				$dir . 'patches/ClickTrackingUserProperties.sql', true ) );
 			$updater->addExtensionUpdate( array( 'addIndex', 'click_tracking', 'click_tracking_action_time',
 				$dir . 'patches/patch-action_time.sql', true ) );
 			$updater->addExtensionUpdate( array( 'addField', 'click_tracking', 'additional_info',
@@ -70,6 +70,7 @@ class ClickTrackingHooks {
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
 		global $wgClickTrackThrottle;
+		$out->addModules( 'ext.UserBuckets' );
 
 		if ( $wgClickTrackThrottle >= 0 && rand() % $wgClickTrackThrottle == 0 ) {
 			$out->addModules( 'ext.clickTracking' );
@@ -130,8 +131,7 @@ class ClickTrackingHooks {
 		global $wgRequest;
 		
 		//JSON-encoded because it's simple, can be replaced with any other encoding scheme
-		return json_decode($wgRequest->getCookie('userbuckets'), true);
-		
+		return json_decode($wgRequest->getCookie('userbuckets',""), true);
 	}
 	
 	/**
@@ -140,11 +140,13 @@ class ClickTrackingHooks {
 	 * @return unknown_type
 	 */
 	public static function packBucketInfo( $buckets ){
+		global $wgRequest;
 		//Can be another encoding scheme, just needs to match unpackBucketInfo
 		$packedBuckets = json_encode( $buckets );
 		
-		$wgRequest->response()->setCookie( 'userbuckets' , $packedBuckets , 
-											time() + 60 * 60 * 24 * 365  ); //expire in 1 year
+		//NOTE: $wgRequest->response setCookie sets it with a prefix
+		setCookie( 'userbuckets' , $packedBuckets , 
+					time() + 60 * 60 * 24 * 365  ); //expire in 1 year
 	}
 	
 	/**
@@ -167,7 +169,7 @@ class ClickTrackingHooks {
 	 */
 	public static function trackEvent( $sessionId, $isLoggedIn, $namespace, $eventId, $contribs = 0,
 	$contribs_in_timespan1 = 0, $contribs_in_timespan2 = 0, $contribs_in_timespan3 = 0, $additional = null, $recordBucketInfo = true ) {
-		
+				
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
 		// Builds insert information
@@ -185,20 +187,22 @@ class ClickTrackingHooks {
 		);
 		$db_status_buckets = true;
 		$db_status = $dbw->insert( 'click_tracking', $data, __METHOD__ );
+		$dbw->commit();
 		
+
 		if( $recordBucketInfo && $db_status ){
 			$buckets = self::unpackBucketInfo();
 			if( $buckets ){
 				foreach( $buckets as $bucketName => $bucketValue ){
-					$db_status_buckets = $db_status_buckets &&
-						$dbw->insert( 'click_tracking_user_properties', 
+						$db_current_bucket_insert = $dbw->insert( 'click_tracking_user_properties', 
 							array(
 								'session_id' => (string) $sessionId,
-								'property_id' => (string) $bucketName,
+								'property_name' => (string) $bucketName,
 								'property_value' => (string) $bucketValue[0],
 								'property_version' => (int) $bucketValue[1]
 							),
 						 __METHOD__);
+					$db_status_buckets = $db_status_buckets && $db_current_bucket_insert;
 				}
 			}//ifbuckets
 		}//ifrecord
@@ -206,6 +210,8 @@ class ClickTrackingHooks {
 		
 		$dbw->commit();
 		return ($db_status && $db_status_buckets);
+		
+		
 	}
 	
 	public static function editPageShowEditFormFields( $editPage, $output ) {
