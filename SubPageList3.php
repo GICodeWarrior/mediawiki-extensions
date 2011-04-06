@@ -362,9 +362,9 @@ class SubpageList3 {
 		$order = strtoupper( $this->order );
 
 		if( $this->ordermethod == 'title' ) {
-			$options['ORDER BY'] = '`page_title`' . $order;
+			$options['ORDER BY'] = 'page_title' . $order;
 		} else if( $this->ordermethod == 'lastedit' ) {
-			$options['ORDER BY'] = '`page_touched` ' . $order;
+			$options['ORDER BY'] = 'page_touched ' . $order;
 		}
 		if( $this->parent !== -1) {
 			$this->ptitle = Title::newFromText( $this->parent );
@@ -392,7 +392,7 @@ class SubpageList3 {
 			$conditions['page_namespace'] = $nsi;
 		}
 		$conditions['page_is_redirect'] = 0;
-		$conditions[] = '`page_title` ' . $dbr->buildLike( $parent . '/', $dbr->anyString() );
+		$conditions[] = 'page_title ' . $dbr->buildLike( $parent . '/', $dbr->anyString() );
 
 		$fields = array();
 		$fields[] = 'page_title';
