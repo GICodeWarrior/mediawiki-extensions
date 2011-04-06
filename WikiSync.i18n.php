@@ -1328,6 +1328,42 @@ $messages['te'] = array(
 	'wikisync_remote_login_button' => 'ప్రవేశించండి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikisync_direction' => 'Mangyaring piliin ang kapupuntahan ng pagpapasabayan',
+	'wikisync_local_root' => 'Katutubong ugat ng lugar ng wiki',
+	'wikisync_remote_root' => 'Malayong ugat ng lugar ng wiki',
+	'wikisync_remote_log' => 'Malayong talaan ng mga pagsasagawa',
+	'wikisync_clear_log' => 'Hawiin ang talaan',
+	'wikisync_login_to_remote_wiki' => 'Lumagdang papasok sa malayong wiki',
+	'wikisync_remote_wiki_root' => 'Malayong ugat ng wiki',
+	'wikisync_remote_wiki_example' => 'Landas papunta sa api.php, halimbawa na: http://www.mediawiki.org/w',
+	'wikisync_remote_wiki_user' => 'Malayong pangalan ng tagagamit ng wiki',
+	'wikisync_remote_wiki_pass' => 'Malayong hudyat ng wiki',
+	'wikisync_remote_login_button' => 'Lumagdang papasok',
+	'wikisync_sync_files' => 'Pagsabay-sabayin ang mga talaksan',
+	'wikisync_store_password' => 'Iimbak ang malayong hudyat ng wiki',
+	'wikisync_storing_password_warning' => 'Hindi ligtas ang pag-iimbak ng malayong hudyat at hindi iminumungkahi',
+	'wikisync_scheduler_turn_on' => 'Buhayin ang pangtakda',
+	'wikisync_apply_button' => 'Ilapat',
+	'wikisync_api_result_unknown_action' => 'Hindi nalalamang galaw ng API',
+	'wikisync_api_result_exception' => 'Naganap ang hindi pagsasali sa loob ng katutubong pagtawag ng API',
+	'wikisync_api_result_noaccess' => 'Tanging mga kasapi lamang ng sumusunod na {{PLURAL:$2|pangkat|mga pangkat}} ang makapagsasagawa ng galaw na ito: $1',
+	'wikisync_api_result_invalid_parameter' => 'Hindi katanggap-tanggap na halaga ng parametro',
+	'wikisync_api_result_http' => 'Kamalian ng HTTP habang nagtatanong ng dato mula sa malayong API',
+	'wikisync_api_result_Unsupported' => 'Hindi tinatangkilik ang bersyon mo ng MediaWiki (mas mababa kaysa 1.15)',
+	'wikisync_api_result_NoName' => 'Hindi mo itinakda ang parametrong lgname',
+	'wikisync_api_result_Illegal' => 'Nagbigay ka ng isang hindi makabatas na pangalan ng tagagamit',
+	'wikisync_api_result_NotExists' => 'Hindi umiiral ang ibinigay mong pangalan ng tagagamit',
+	'wikisync_api_result_EmptyPass' => 'Hindi mo itinakda ang parametrong lgpassword o iniwan mo itong walang laman',
+	'wikisync_api_result_WrongPass' => 'Hindi tama ang ibinigay mong hudyat',
+	'wikisync_api_result_WrongPluginPass' => 'Hindi tama ang ibinigay mong hudyat',
+	'wikisync_api_result_Blocked' => 'Hinahadlangan ang tagagamit',
+	'wikisync_js_revision' => 'Rebisyong $1',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */
