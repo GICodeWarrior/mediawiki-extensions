@@ -48,7 +48,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				'total' => (int) $row->aap_total,
 				'count' => (int) $row->aap_count,
 				'countall' => isset( $historicCounts[$row->aap_rating_id] )
-					? $historicCounts[$row->aap_rating_id] : 0
+					? (int) $historicCounts[$row->aap_rating_id] : 0
 			);
 		}
 
@@ -68,7 +68,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 					if ( isset( $userRatings[$rating['ratingid']] ) ) {
 						// Rating value
 						$ratings[$params['pageid']]['ratings'][$i]['userrating'] =
-							$userRatings[$rating['ratingid']]['value'];
+							(int) $userRatings[$rating['ratingid']]['value'];
 						// Expiration
 						if ( $userRatings[$rating['ratingid']]['revision'] < $revisionLimit ) {
 							$ratings[$params['pageid']]['status'] = 'expired';
@@ -83,7 +83,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				foreach ( $userRatings as $ratingId => $userRating ) {
 					// Revision
 					if ( !isset( $ratings[$params['pageid']]['revid'] ) ) {
-						$ratings[$params['pageid']]['revid'] = $userRating['revision'];
+						$ratings[$params['pageid']]['revid'] = (int) $userRating['revision'];
 					}
 					// Ratings
 					if ( !isset( $ratings[$params['pageid']]['ratings'] ) ) {
@@ -95,7 +95,9 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 						'ratingdesc' => $userRating['text'],
 						'total' => 0,
 						'count' => 0,
-						'userrating' => $userRating['value'],
+						'countall' => isset( $historicCounts[$row->aap_rating_id] )
+							? (int) $historicCounts[$row->aap_rating_id] : 0,
+						'userrating' => (int) $userRating['value'],
 					);
 				}
 			}
@@ -184,7 +186,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			__METHOD__,
 			array(
 				'LIMIT' => count( $wgArticleFeedbackRatings ),
-				'ORDER BY' => array( 'aa_rating_id', 'aa_revision DESC' ),
+				'ORDER BY' => array( 'aa_revision DESC', 'aa_rating_id' ),
 			),
 			array(
 				'article_feedback_ratings' => array( 'LEFT JOIN', array( 'aar_id=aa_rating_id' ) )
