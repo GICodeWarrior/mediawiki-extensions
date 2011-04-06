@@ -166,7 +166,7 @@ class RunTimeSettings(Settings):
         print '''This software comes with ABSOLUTELY NO WARRANTY. This is free 
         software, and you are welcome to distribute it under certain conditions.'''
         print 'See the README.1ST file for more information.'
-        print '\nPlatform: %s' % self.platform
+        print '\nPlatform: %s:%s' % (self.platform, self.architecture)
 
         print 'Final settings after parsing command line arguments:'
         for ab in about:

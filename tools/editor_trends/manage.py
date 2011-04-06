@@ -157,7 +157,7 @@ def init_args_parser():
 
 
     parser.add_argument('-k', '--kaggle',
-                        action='store',
+                        action='store_true',
                         help='Indicate whether the output is for Kaggle or not',
                         default=False)
 
