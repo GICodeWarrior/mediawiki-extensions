@@ -34,21 +34,24 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		// Rating counts and totals
 		$res = $this->select( __METHOD__ );
 		$ratings = array( $params['pageid'] => array( 'pageid' => $params['pageid'] ) );
+		$historicCounts = $this->getHistoricCounts( $params );
 		foreach ( $res as $i => $row ) {
 			if ( !isset( $ratings[$params['pageid']]['revid'] ) ) {
-				$ratings[$params['pageid']]['revid'] = $row->aap_revision;
+				$ratings[$params['pageid']]['revid'] = (int) $row->aap_revision;
 			}
 			if ( !isset( $ratings[$params['pageid']]['ratings'] ) ) {
 				$ratings[$params['pageid']]['ratings'] = array();
 			}
 			$ratings[$params['pageid']]['ratings'][] = array(
-				'ratingid' => $row->aap_rating_id,
+				'ratingid' => (int) $row->aap_rating_id,
 				'ratingdesc' => $row->aar_rating,
-				'total' => $row->aap_total,
-				'count' => $row->aap_count,
+				'total' => (int) $row->aap_total,
+				'count' => (int) $row->aap_count,
+				'countall' => isset( $historicCounts[$row->aap_rating_id] )
+					? $historicCounts[$row->aap_rating_id] + 100 : 0
 			);
 		}
-		
+
 		// User-specific data
 		$ratings[$params['pageid']]['status'] = 'current';
 		if ( $params['userrating'] ) {
@@ -102,10 +105,33 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			$result->setIndexedTagName( $rat['ratings'], 'r' );
 			$result->addValue( array( 'query', $this->getModuleName() ), null, $rat );
 		}
-
+		
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
 	}
-	
+
+	protected function getHistoricCounts( $params ) {
+		global $wgArticleFeedbackRatings;
+		
+		$res = $this->getDB()->select(
+			'article_feedback_pages',
+			array(
+				'aap_rating_id',
+				'SUM(aap_count) as count',
+			),
+			array(
+				'aap_page_id' => $params['pageid'],
+				'aap_rating_id' => $wgArticleFeedbackRatings,
+			),
+			__METHOD__,
+			array( 'GROUP BY' => 'aap_rating_id')
+		);
+		$counts = array();
+		foreach ( $res as $row ) {
+			$counts[$row->aap_rating_id] = $row->count;
+		}
+		return $counts;
+	}
+
 	protected function getAnonToken( $params ) {
 		global $wgUser;
 		
