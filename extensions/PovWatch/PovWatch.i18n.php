@@ -1389,7 +1389,7 @@ Sidd w.e.g. virsichteg wann Dir den Titel tippt: esouguer Säiten déi et net g�
 	'povwatch_no_subscribers' => 'Et gëtt keng Benotzer déi sech ageschriwwen hunn.',
 	'povwatch_unsubscribe_intro' => "Dir sidd elo fir d'Iwwerwaache vun Ännerungskonflikter ageschriwwen.
 
-Klickt the Knäppchen hei ënnendrënner fir iech ofzemelden.",
+Klickt de Knäppchen hei ënnendrënner fir Iech ofzemellen.",
 	'povwatch_unsubscribe' => 'Ofmelden',
 	'povwatch_subscribe_intro' => "Dir sidd net ageschriwwen fir Ännerungskonflikter z'iwwerwaachen.
 
@@ -1559,6 +1559,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  * @author Izzudin
  */
@@ -1587,7 +1588,7 @@ Log untuk senarai pantau yang dimasukkan terkini boleh didapati di [[Special:Pov
 	'povwatch_no_log' => 'Tiada entri log.',
 	'povwatch_no_subscribers' => 'Tiada peserta.',
 	'povwatch_unsubscribe_intro' => 'Anda sedang menyertai PovWatch. Klik butang di bawah untuk berhenti menjadi peserta.',
-	'povwatch_unsubscribe' => 'Berhenti menyertai',
+	'povwatch_unsubscribe' => 'Berhenti melanggan',
 	'povwatch_subscribe_intro' => 'Anda tidak menyertai PovWatch. Klik butang di bawah untuk mendaftar sebagai peserta.',
 	'povwatch_subscribe' => 'Sertai',
 	'povwatch_added' => 'ditambah',

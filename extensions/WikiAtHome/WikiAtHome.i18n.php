@@ -253,6 +253,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  * @author Zedlik
  */
 $messages['be-tarask'] = array(
@@ -263,7 +264,7 @@ $messages['be-tarask'] = array(
 	'wah-short-general' => 'Мэдыя-файл у фармаце $1, $2',
 	'wah-long-audio' => 'Аўдыё-файл у фармаце $1, працягласьць $2, $3',
 	'wah-long-video' => 'Відэа-файл у фармаце $1, працягласьць $2, $4×$5 піксэляў, $3',
-	'wah-long-multiplexed' => 'Мультыплексны аўдыё/відэа-файл у фармаце $1, працягласьць $2, $4×$5 піксэляў, усяго $3',
+	'wah-long-multiplexed' => 'мультыплексны аўдыё/відэа-файл у фармаце $1, працягласьць $2, $4×$5 піксэлаў, усяго $3',
 	'wah-long-general' => 'Мэдыя-файл, працягласьць $2, $3',
 	'wah-long-error' => 'ffmpeg ня можа прачытаць гэты файл: $1',
 	'wah-transcode-working' => 'Гэты відэа-файл зараз апрацоoўваецца. Калі ласка, паспрабуйце ізноў пазьней',

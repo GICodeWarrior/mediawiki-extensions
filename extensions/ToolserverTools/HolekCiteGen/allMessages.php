@@ -689,7 +689,7 @@ $messages['nl'] = array(
 	'ts-citegen-Parsers' => 'Parsers',
 	'ts-citegen-Skins' => 'Uitvoer',
 	'ts-citegen-Skin-skins' => 'Vormgevingen',
-	'ts-citegen-Skin-outputformat' => 'Uitvoerformaat',
+	'ts-citegen-Skin-outputformat' => 'Uitvoeropmaak',
 	'ts-citegen-Template-lang' => 'Sjabloontaal',
 	'ts-citegen-Sources-title' => 'Bronnen',
 	'ts-citegen-Sources-text' => 'Hieronder staat een lijst met gebruikte bronnen.',
@@ -922,6 +922,29 @@ $messages['te'] = array(
 	'ts-citegen-Sources-title' => 'మూలాలు',
 	'ts-citegen-Tools' => 'పనిముట్లు',
 	'ts-citegen-Other-languages' => 'ఇతర భాషలు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'ts-citegen-Title' => 'Tagapaglikha ng suleras ng pagbanggit',
+	'ts-citegen-Send' => 'Likhain',
+	'ts-citegen-Input-title' => 'Ipinapasok',
+	'ts-citegen-Output-title' => 'Resulta',
+	'ts-citegen-Parsers' => 'Mga pambanghay',
+	'ts-citegen-Skins' => 'Kinalabasan',
+	'ts-citegen-Skin-skins' => 'Mga pabalat',
+	'ts-citegen-Skin-outputformat' => 'Anyo ng lumalabas',
+	'ts-citegen-Template-lang' => 'Wika ng suleras',
+	'ts-citegen-Sources-title' => 'Mga pinagmumulan',
+	'ts-citegen-Sidebar-title' => 'Tagapaglikha ng pagbanggit',
+	'ts-citegen-Sidebar-add-Firefox' => 'Idagdag sa panggilid na halang',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Idagdag sa Panghawak ng Pahina',
+	'ts-citegen-Tools' => 'Mga kasangkapan',
+	'ts-citegen-Other-languages' => 'Iba pang mga wika',
+	'ts-citegen-Save-it' => 'Pangkasalukuyang tanong',
+	'ts-citegen-Errors-title' => 'Mga kamalian',
 );
 
 /** Ukrainian (Українська)
