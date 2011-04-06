@@ -285,8 +285,7 @@ $.articleFeedback = {
 								.find( '.articleFeedback-rating-count' )
 									.text(
 										mw.msg( 'articlefeedback-report-ratings', rating.countall )
-									)
-									.end();
+									);
 						} else {
 							// Special case for no ratings
 							$(this)
@@ -298,7 +297,6 @@ $.articleFeedback = {
 									.end()
 								.find( '.articleFeedback-rating-count' )
 									.text( mw.msg( 'articlefeedback-report-empty' ) )
-									.end();
 						}
 						// Form
 						if ( rating !== null && typeof rating.userrating !== 'undefined' ) {
