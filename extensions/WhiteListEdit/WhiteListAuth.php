@@ -322,7 +322,7 @@ class WhiteListExec
 } /* End class */
 
 class WhiteListHooks {
-	function AddRestrictedPagesTab(&$personal_urls, $title )
+	static function AddRestrictedPagesTab(&$personal_urls, $title )
 	{
 	    global $wgUser, $wgWhiteListRestrictedGroup;
 
