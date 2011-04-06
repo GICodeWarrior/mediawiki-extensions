@@ -4,17 +4,17 @@ select
 
 if(imp.dt_min < 10, concat(imp.dt_hr, '0', imp.dt_min,'00'), concat(imp.dt_hr, imp.dt_min,'00')) as day_hr,
 lp.utm_source,
-impressions,
+impressions * (views / total_views) as impressions, 
 views,
 total_clicks,
 donations,
 amount,
 amount50,
-views / impressions as click_rate,
+(views / impressions) * (total_views / views) as click_rate,
 donations / total_clicks as completion_rate,
-round(donations / impressions, 6) as don_per_imp,
-amount / impressions as amt_per_imp,
-amount50 / impressions as amt50_per_imp
+round((donations / impressions) * (total_views / views), 6) as don_per_imp,
+(amount / impressions) * (total_views / views) as amt_per_imp,
+(amount50 / impressions) * (total_views / views) as amt50_per_imp
 	
 from
 
@@ -24,7 +24,7 @@ FLOOR(MINUTE(on_minute) / %s) * %s as dt_min,
 utm_source, 
 sum(counts) as impressions
 from impression 
-where on_minute >=  '%s' and on_minute < '%s' 
+where on_minute >  '%s' and on_minute < '%s' 
 group by 1,2,3) as imp
 
 join
@@ -41,6 +41,18 @@ group by 1,2,3) as lp
 
 on imp.utm_source =  lp.utm_source and imp.dt_hr =  lp.dt_hr and imp.dt_min =  lp.dt_min
 
+join 
+
+(select 
+DATE_FORMAT(request_time,'%sY%sm%sd%sH') as dt_hr,
+FLOOR(MINUTE(request_time) / %s) * %s as dt_min,
+utm_source, 
+count(*) as total_views
+from landing_page
+where request_time >= '%s' and request_time < '%s'
+group by 1,2,3) as lp_tot
+
+on imp.utm_source =  lp_tot.utm_source and imp.dt_hr =  lp_tot.dt_hr and imp.dt_min =  lp_tot.dt_min
 
 join
 

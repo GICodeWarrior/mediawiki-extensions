@@ -5,18 +5,20 @@ select
 
 lp.utm_source,
 impressions as total_impressions,
-impressions as impressions,
+impressions * (views / total_views) as impressions,
 views as views,
 total_clicks as clicks,
 donations as donations,
 amount as amount,
-views / impressions as click_rate,
+(views / impressions) * (total_views / views) as click_rate,
 donations / total_clicks as completion_rate,
-round(donations / impressions, 6) as don_per_imp,
-amount / impressions as amt_per_imp,
+round((donations / impressions) * (total_views / views), 6) as don_per_imp,
+(amount / impressions) * (total_views / views) as amt_per_imp,
 donations / views as don_per_view,
 amount / views as amt_per_view,
-amount / donations  as amt_per_donation
+amount / donations  as amt_per_donation,
+(amount50 / impressions) * (total_views / views) as amt50_per_imp,
+(amount100 / impressions) * (total_views / views) as amt100_per_imp
 
 from
 
@@ -40,6 +42,17 @@ group by 1) as lp
 
 on imp.utm_source =  lp.utm_source
 
+join
+
+(select 
+utm_source, 
+count(*) as total_views
+from landing_page
+where request_time >= '%s' and request_time < '%s'
+and utm_source REGEXP '%s'
+group by 1) as lp_tot
+
+on imp.utm_source =  lp_tot.utm_source
 
 join
 
@@ -47,7 +60,9 @@ join
 SUBSTRING_index(substring_index(utm_source, '.', 2),'.',1) as banner,
 count(*) as total_clicks,
 sum(not isnull(contribution_tracking.contribution_id)) as donations,
-sum(converted_amount) AS amount
+sum(converted_amount) AS amount,
+sum(if(converted_amount > 50, 50, converted_amount)) as amount50,
+sum(if(converted_amount > 100, 100, converted_amount)) as amount100
 from
 drupal.contribution_tracking LEFT JOIN civicrm.public_reporting 
 ON (contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id)

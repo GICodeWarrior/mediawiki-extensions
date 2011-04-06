@@ -360,10 +360,15 @@ class ConfidenceTest(object):
 		print '\nCOMMAND = ' + test_call
 		file.write('\nCOMMAND = ' + test_call)
 				 
+		 
 		print  '\n\n' +  metric_name 
+		print '\nitem 1  = ' + labels[0] 
+		print 'item 2  = ' + labels[1]
 		print win_str
 		print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
 		file.write('\n\n' +  metric_name)
+		file.write('\nitem 1  = ' + labels[0] + '\n')
+		file.write('\nitem 2  = ' + labels[1] + '\n')
 		file.write(win_str)
 		file.write('\n\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n\n')
 		
@@ -380,7 +385,7 @@ class ConfidenceTest(object):
 		line_args = '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
 		line_str = line_args % (av_means_1, av_means_2, av_std_dev_1, av_std_dev_2)
 		
-		print '\n\nOverall Parameters:\n'
+		print '\n\nOverall Parameters -- the confidence test was run with these parameters:\n'
 		print '\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
 		print line_str
 		

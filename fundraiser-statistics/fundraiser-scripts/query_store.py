@@ -102,7 +102,7 @@ class query_store:
 			end = args[1]
 			banner = args[2]
 			campaign = args[3]
-			sql_stmnt = sql_stmnt % (start, end, banner, start, end, campaign, start, end, campaign, banner)
+			sql_stmnt = sql_stmnt % (start, end, banner, start, end, campaign, start, end, banner, start, end, campaign, banner)
 		
 		elif query_name == 'report_LP_confidence':
 			start = args[0]
@@ -136,7 +136,7 @@ class query_store:
 			imp_start_time = args[4]
 			
 			sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, imp_start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, \
-									'%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
+									'%', '%',  '%',  '%', interval, interval, start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
 			
 		elif query_name == 'report_LP_metrics_minutely':
 			start_time = args[0]
