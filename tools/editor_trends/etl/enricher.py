@@ -657,7 +657,6 @@ def parse_xml(fh, rts):
                 article['namespaces'] = namespaces
                 id = False
             elif rts.kaggle == True and event == 'end':
-                print 'I am cleaning up'
                 elem.clear()
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
