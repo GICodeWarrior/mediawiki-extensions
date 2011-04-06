@@ -157,6 +157,7 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Brion
  * @author Kghbln
  * @author McDutchie
  */
@@ -166,6 +167,7 @@ $messages['de'] = array(
 	'narayam-help-page' => 'Help:Eingabe',
 	'narayam-checkbox-tooltip' => 'Eingabemethode ein- und ausschalten',
 	'narayam-disable-preference' => 'Narayameditor deaktivieren',
+	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'Hindi (InScript)',
 	'narayam-kn' => 'Kannada (Transliteration)',
 	'narayam-kn-inscript' => 'Kannada (InScript)',
@@ -183,9 +185,8 @@ $messages['de'] = array(
 	'narayam-bn-inscript' => 'Bengalisch (InScript)',
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',
 );
-/** Esperanto
- * @author Brion
- */
+
+/** Esperanto (Esperanto) */
 $messages['eo'] = array(
 	'narayam-desc' => 'Provizas agorditajn enigmetodojn por enigkampoj',
 	'narayam-toggle-ime' => 'Ŝalti enigmetodon ($1)',
@@ -323,6 +324,7 @@ $messages['ia'] = array(
 	'narayam-help-page' => 'Help:Dactylographia',
 	'narayam-checkbox-tooltip' => 'Activar e disactivar le methodo de entrata',
 	'narayam-disable-preference' => 'Disactivar le methodo de entrata pro Narayam',
+	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'Hindi (InScript)',
 	'narayam-kn' => 'Translitteration in kannada',
 	'narayam-kn-inscript' => 'Kannada (InScript)',
@@ -582,6 +584,7 @@ $messages['sl'] = array(
 	'narayam-help-page' => 'Help:Tipkanje',
 	'narayam-checkbox-tooltip' => 'Za vklop ali izklop načina vnosa',
 	'narayam-disable-preference' => 'Onemogoči urejevalnik načina vnosa (IME) Narayam',
+	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'InScript za hindijščino',
 	'narayam-kn' => 'Prečrkovanje kannadščine',
 	'narayam-kn-inscript' => 'InScript za kannadščino',
