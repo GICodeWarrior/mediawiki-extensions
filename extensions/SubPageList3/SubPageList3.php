@@ -35,6 +35,8 @@ $wgExtensionMessagesFiles['SubPageList3'] = $dir . 'SubPageList3.i18n.php';
 
 /**
  * Hook in function
+ *
+ * @param $parser Parser
  */
 function efSubpageList3( &$parser ) {
 	$parser->setHook( 'splist', 'efRenderSubpageList3' );
@@ -45,8 +47,6 @@ function efSubpageList3( &$parser ) {
  * Function called by the Hook, returns the wiki text
  */
 function efRenderSubpageList3( $input, $args, $parser ) {
-	global $wgVersion;
-	
 	$list = new SubpageList3( $parser );
 	$list->options( $args );
 	
@@ -75,8 +75,7 @@ class SubpageList3 {
 	var $title;
 
 	/**
-	 * ptitle object
-	 * @var object ptitle object
+	 * @var Title
 	 * @private
 	 */
 	var $ptitle;
@@ -203,8 +202,8 @@ class SubpageList3 {
 
 	/**
 	 * Constructor function of the class
-	 * @param object $parser the parser object
-	 * @global object $wgContLang
+	 * @param $parser Parser the parser object
+	 * @global $wgContLang
 	 * @see SubpageList
 	 * @private
 	 */
@@ -231,7 +230,7 @@ class SubpageList3 {
 	 * @private
 	 */
 	function error( $message ) {
-		if ( $this->debug /*|| $this->debug == 1*/ ) {
+		if ( $this->debug ) {
 			$this->errors[] = "<strong>Error [Subpage List 3]:</strong> $message";
 		}
 	}
@@ -280,17 +279,32 @@ class SubpageList3 {
 		}
 		if( isset( $options['sortby'] ) ) {
 			switch( strtolower( $options['sortby'] ) ) {
-				case 'title': $this->ordermethod = 'title'; break;
-				case 'lastedit': $this->ordermethod = 'lastedit'; break;
-				default: $this->error( wfMsg('spl3_debug','sortby') );
+				case 'title':
+					$this->ordermethod = 'title';
+					break;
+				case 'lastedit':
+					$this->ordermethod = 'lastedit';
+					break;
+				default:
+					$this->error( wfMsg('spl3_debug','sortby') );
 			}
 		}
 		if( isset( $options['liststyle'] ) ) {
 			switch( strtolower( $options['liststyle'] ) ) {
-				case 'ordered': $this->mode = 'ordered'; $this->token = '#'; break;
-				case 'unordered': $this->mode = 'unordered'; $this->token = '*'; break;
-				case 'bar': $this->mode = 'bar'; $this->token = '&#160;· '; break;
-				default: $this->error( wfMsg('spl3_debug','liststyle') );
+				case 'ordered':
+					$this->mode = 'ordered';
+					$this->token = '#';
+					break;
+				case 'unordered':
+					$this->mode = 'unordered';
+					$this->token = '*';
+					break;
+				case 'bar':
+					$this->mode = 'bar';
+					$this->token = '&#160;· ';
+					break;
+				default:
+					$this->error( wfMsg('spl3_debug','liststyle') );
 			}
 		}
 		if( isset( $options['parent'] ) ) {
@@ -304,15 +318,32 @@ class SubpageList3 {
 		}
 		if( isset( $options['showpath'] ) ) {
 			switch( strtolower( $options['showpath'] ) ) {
-				case 'no': $this->showpath = 'no'; break;
-				case '0': $this->showpath = 'no'; break;
-				case 'false': $this->showpath = 'no'; break;
-				case 'notparent': $this->showpath = 'notparent'; break;
-				case 'full': $this->showpath = 'full'; break;
-				case 'yes': $this->showpath = 'full'; break;
-				case '1': $this->showpath = 'full'; break;
-				case 'true': $this->showpath = 'full'; break;
-				default: $this->error( wfMsg('spl3_debug','showpath') );
+				case 'no':
+					$this->showpath = 'no';
+					break;
+				case '0':
+					$this->showpath = 'no';
+				    break;
+				case 'false':
+					$this->showpath = 'no';
+					break;
+				case 'notparent':
+					$this->showpath = 'notparent';
+					break;
+				case 'full':
+					$this->showpath = 'full';
+					break;
+				case 'yes':
+					$this->showpath = 'full';
+					break;
+				case '1':
+					$this->showpath = 'full';
+					break;
+				case 'true':
+					$this->showpath = 'full';
+					break;
+				default:
+					$this->error( wfMsg('spl3_debug','showpath') );
 			}
 		}
 		if( isset( $options['kidsonly'] ) ) {
@@ -369,7 +400,6 @@ class SubpageList3 {
 		$conditions = array();
 		$options = array();
 		$order = strtoupper( $this->order );
-		$parent = '';
 
 		if( $this->ordermethod == 'title' ) {
 			$options['ORDER BY'] = '`page_title`' . $order;
@@ -397,7 +427,10 @@ class SubpageList3 {
 			$nsi = $this->title->getNamespace();
 		}
 
-		if (strlen($nsi)>0) $conditions['page_namespace'] = $nsi; // don't let list cross namespaces
+		// don't let list cross namespaces
+		if (strlen($nsi)>0) {
+			$conditions['page_namespace'] = $nsi;
+		}
 		$conditions['page_is_redirect'] = 0;
 		$conditions[] = '`page_title` ' . $dbr->buildLike( $parent . '/', $dbr->anyString() );
 
@@ -407,13 +440,12 @@ class SubpageList3 {
 		$res = $dbr->select( 'page', $fields, $conditions, __METHOD__, $options );
 
 		$titles = array();
-		while( $row = $dbr->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
-			if( is_object( $title ) ) {
+			if( $title ) {
 				$titles[] = $title;
 			}
 		}
-		$dbr->freeResult( $res );
 		wfProfileOut( __METHOD__ );
 		return $titles;
 	}
@@ -424,23 +456,28 @@ class SubpageList3 {
 	 *  - full: full, e.g. Mainpage/Entry/Sub
 	 *  - notparent: the path without the $parent item, e.g. Entry/Sub
 	 *  - no: no path, only the page title, e.g. Sub
-	 * @param string $title the title of a page
+	 * @param $title Title the title of a page
 	 * @return string the prepared string
 	 * @see $showpath
 	 */
 	function makeListItem( $title ) {
 		switch( $this->showpath ) {
-			case 'no': $linktitle = substr( strrchr( $title->getText(), "/" ), 1 ); break;
-			case 'notparent': $linktitle = substr( strstr( $title->getText(), "/" ), 1 ); break;
-			case 'full': $linktitle = $title->getText();
+			case 'no':
+				$linktitle = substr( strrchr( $title->getText(), "/" ), 1 );
+				break;
+			case 'notparent':
+				$linktitle = substr( strstr( $title->getText(), "/" ), 1 );
+				break;
+			case 'full':
+				$linktitle = $title->getText();
 		}
 		return ' [[' . $title->getPrefixedText() . '|' . $linktitle . ']]';
 	}
 
 	/**
 	 * create whole list using makeListItem
-	 * @param string $titles all page titles
-	 * @param string $token the token symbol:
+	 * @param $titles Array all page titles
+	 * @param $token string the token symbol:
 	 *  - * for ul,
 	 *  - # for ol
 	 *  - · for horizontal lists
@@ -459,6 +496,7 @@ class SubpageList3 {
 		}
 		# add descendents
 		$parlv = substr_count($this->ptitle->getPrefixedText(), '/');
+		$list = array();
 		foreach( $titles as $title ) {
 			$lv = substr_count($title, '/') - $parlv;	
 			if ($this->kidsonly!=1 || $lv<2) {
