@@ -4,7 +4,7 @@ if( !JSON || !JSON.stringify ){
 	//include OpenSource JSON stringify from json.org
 }
 
-
+( function( $ ) {
 //lazy-load
 $.getBuckets = function (force){
 	if (typeof(this.userBuckets) == 'undefined' || force ){
@@ -14,9 +14,10 @@ $.getBuckets = function (force){
 };
 
 $.setBucket = function ( bucketName, bucketValue, bucketVersion ){
-	var bucketCookies = $.getBuckets();	
+	var bucketCookies = $.getBuckets();
+	if(!bucketCookies) { bucketCookies ={};}
 	bucketCookies[ bucketName ] = [ bucketValue, bucketVersion ];
-	$.cookie('userbuckets', JSON.stringify( bucketCookies ) );
+	$.cookie('userbuckets', JSON.stringify( bucketCookies ) , { expires: 365 }); //expires in 1 year
 	bucketCookies = $.getBuckets(true); //force it to rerun and update
 };
 
@@ -27,7 +28,7 @@ $.setupActiveBuckets = function(){
 		
 		// if bucket has been set, or bucket version is out of date,
 		// set up a user bucket
-		if( !buckets[campaign.name] || buckets[campaign.name][1] < campaign.version){
+		if(!buckets || !buckets[campaign.name] || buckets[campaign.name][1] < campaign.version){
 			//add up all rates
 			var bucketTotal = 0;
 			for ( var rate in campaign.rates ){
@@ -60,3 +61,11 @@ $.setupActiveBuckets = function(){
 	}
 	
 };
+
+//no need to do any of this if there are no active campaigns
+if( (typeof(MW) != "undefined") && MW.activeCampaigns){
+	$( document ).ready( jQuery.setupActiveBuckets );
+}
+
+
+} )( jQuery );
