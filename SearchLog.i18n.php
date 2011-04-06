@@ -38,6 +38,9 @@ $messages['qqq'] = array(
  */
 $messages['be-tarask'] = array(
 	'searchlog' => 'Журнал пошукаў',
+	'searchlog-desc' => 'Вядзеньне журналу выкарыстаньня пошуку, справаздачы па ключавых словах у вызначаны тэрмін.',
+	'searchlog-cantopen' => 'Немагчыма адкрыць файл журнала <tt>$1</tt>',
+	'searchlog-heading' => 'Пошукавыя запыты за тэрмін $1',
 	'searchlog-unicode' => 'Паказаць неапрацаваны Unicode',
 	'searchlog-timeperiod' => 'Выберыце пэрыяд:',
 	'searchlog-entire' => 'Журнал цалкам',
