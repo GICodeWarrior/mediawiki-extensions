@@ -284,7 +284,7 @@ $.articleFeedback = {
 									.end()
 								.find( '.articleFeedback-rating-count' )
 									.text(
-										mw.msg( 'articlefeedback-report-ratings', rating.count )
+										mw.msg( 'articlefeedback-report-ratings', rating.countall )
 									)
 									.end();
 						} else {
