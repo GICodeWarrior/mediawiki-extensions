@@ -27,7 +27,7 @@ if '..' not in sys.path:
 from classes import settings
 settings = settings.Settings()
 
-from database import db
+from classes import storage
 from utils import http_utils
 from classes import runtime_settings
 from classes import languages
@@ -65,10 +65,8 @@ class Dumper(Thread):
 
 
     def store_available_dumps(self):
-        mongo = db.init_mongo_db('wikilytics')
-        coll = mongo['available_dumps']
-
-        coll.save({'project': self.project, 'dumps': self.data})
+        db = storage.Database('mongo', 'wikilytics', 'available_dumps')
+        db.save({'project': self.project, 'dumps': self.data})
 
     def run(self):
         project = self.props.projects[self.project]

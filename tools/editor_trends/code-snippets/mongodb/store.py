@@ -6,7 +6,7 @@ __version__ = '0.1'
 import datetime
 import calendar
 import time
-from database import db
+from classes import storage
 
 
 def test_date():

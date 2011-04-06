@@ -136,11 +136,11 @@ def launch_zip_extractor(location, filename, properties):
     '''
     print 'Unzipping zip file'
     stopwatch = timer.Timer()
-    log.log_to_mongo(properties, 'dataset', 'unpack', stopwatch, event='start')
+    log.to_db(properties, 'dataset', 'unpack', stopwatch, event='start')
     compressor = Compressor(location, filename)
     retcode = compressor.extract()
     stopwatch.elapsed()
-    log.log_to_mongo(properties, 'dataset', 'unpack', stopwatch, event='finish')
+    log.to_db(properties, 'dataset', 'unpack', stopwatch, event='finish')
     return retcode
 
 

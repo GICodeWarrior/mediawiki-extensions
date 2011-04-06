@@ -39,7 +39,7 @@ settings = settings.Settings()
 
 from utils import file_utils
 from utils import data_converter
-from database import db
+from classes import storage
 from analyses import json_encoders
 from classes import exceptions
 
@@ -445,12 +445,11 @@ class Dataset:
 
     def to_mongo(self):
         dbname = '%s%s' % (self.language_code, self.project)
-        mongo = db.init_mongo_db(dbname)
-        coll = mongo['%s_%s' % (dbname, 'charts')]
-        mongo.add_son_manipulator(Transform())
-        coll.remove({'hash':self.hash, 'project':self.project,
+        db = storage.Database('mongo', dbname, 'charts')
+        db.add_son_manipulator(Transform())
+        db.remove({'hash':self.hash, 'project':self.project,
                     'language_code':self.language_code})
-        coll.insert({'variables': self})
+        db.insert({'variables': self})
 
     def to_csv(self):
         data = data_converter.convert_dataset_to_lists(self, 'manage')
@@ -542,8 +541,7 @@ class Dataset:
 
 
 def debug():
-    mongo = db.init_mongo_db('enwiki')
-    rawdata = mongo['enwiki_charts']
+    db = storage.Database('mongo', 'wikilytics', 'enwiki_charts')
     mongo.add_son_manipulator(Transform())
 
     d1 = datetime.datetime.today()

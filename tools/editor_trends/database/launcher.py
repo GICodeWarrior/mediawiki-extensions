@@ -28,15 +28,15 @@ from classes import exceptions
 from utils import file_utils
 
 
-def start_mongodb_server(x, path):
+def start_mongodb_server(port, path):
     default_port = 27017
-    port = default_port + x
+    port = default_port + port
     if settings.platform == 'Windows':
         p = subprocess.Popen([path, '--port', str(port), '--dbpath', 'c:\data\db', '--logpath', 'c:\mongodb\logs'])
     elif settings.platform == 'Linux':
         subprocess.Popen([path, '--port %s' % port])
     elif settings.platform == 'OSX':
-        raise NotImplementedError
+        raise exceptions.NotImplementedError
     else:
         raise exceptions.PlatformNotSupportedError(platform)
 

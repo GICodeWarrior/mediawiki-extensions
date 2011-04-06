@@ -25,7 +25,7 @@ import progressbar
 from utils import file_utils
 from utils import text_utils
 from database import cache
-from database import db
+from classes import storage
 from classes import consumers
 
 
@@ -38,10 +38,8 @@ class Storer(consumers.BaseConsumer):
     The treshold is currently more than 9 edits and is not yet configurable. 
     '''
     def run(self):
-        mongo = db.init_mongo_db(self.rts.dbname)
-        collection = mongo[self.rts.editors_raw]
-
-        editor_cache = cache.EditorCache(collection)
+        db = storage.Database('mongo', self.rts.dbname, self.rts.editors_raw)
+        editor_cache = cache.EditorCache(db)
         prev_editor = -1
         while True:
             try:
@@ -102,17 +100,12 @@ def store_articles(rts):
     * category (if any)
     * article id
     '''
-    mongo = db.init_mongo_db(rts.dbname)
-    db.drop_collection(rts.dbname, rts.articles_raw)
-    collection = mongo[rts.articles_raw]
-    collection.create_index('id')
-    collection.create_index('title')
-    collection.create_index('ns')
-    collection.create_index('category')
-    collection.ensure_index('id')
-    collection.ensure_index('title')
-    collection.ensure_index('ns')
-    collection.ensure_index('category')
+    db = storage.Database('mongo', rts.dbname, rts.articles_raw)
+    db.drop_collection()
+    db.add_index('id')
+    db.add_index('title')
+    db.add_index('ns')
+    db.add_index('category')
 
     location = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
     fh = file_utils.create_txt_filehandle(location, 'titles.csv', 'r', 'utf-8')
@@ -128,7 +121,7 @@ def store_articles(rts):
             data[key] = value
             x += 2
             y += 2
-        collection.insert(data)
+        db.insert(data)
     fh.close()
     print 'Done...'
 
@@ -140,11 +133,9 @@ def launcher(rts):
     '''
     store_articles(rts)
     print 'Input directory is: %s ' % rts.sorted
-    db.drop_collection(rts.dbname, rts.editors_dataset)
-    mongo = db.init_mongo_db(rts.dbname)
-    coll = mongo[rts.editors_raw]
-    coll.ensure_index('editor')
-    coll.create_index('editor')
+    db = storage.Database('mongo', rts.dbname, rts.editors_raw)
+    db.drop_collection()
+    db.add_index('editor')
 
     files = file_utils.retrieve_file_list(rts.sorted, 'csv')
     pbar = progressbar.ProgressBar(maxval=len(files)).start()

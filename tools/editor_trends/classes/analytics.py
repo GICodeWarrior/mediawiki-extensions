@@ -24,7 +24,7 @@ if '..' not in sys.path:
     sys.path.append('..')
 
 from classes import consumers
-from database import db
+from classes import storage
 
 class Replicator:
     def __init__(self, plugin, time_unit, cutoff=None, cum_cutoff=None, **kwargs):
@@ -56,13 +56,9 @@ class Replicator:
 
     def __call__(self):
         project = 'wiki'
-
         #rts = runtime_settings.init_environment('wiki', 'en', args)
-
         for lang in self.languages:
             self.rts = runtime_settings.init_environment(project, lang, self.args)
-            #TEMP FIX, REMOVE 
-            #rts.dbname = 'enwiki'
             self.rts.editors_dataset = 'editors_dataset'
 
             self.rts.dbname = '%s%s' % (lang, project)
@@ -70,7 +66,8 @@ class Replicator:
                 for cutoff in self.cutoff:
                     generate_chart_data(self.rts, self.plugin,
                                         time_unit=self.time_unit,
-                                        cutoff=cutoff, cum_cutoff=cum_cutoff,
+                                        cutoff=cutoff,
+                                        cum_cutoff=cum_cutoff,
                                         **self.kwargs)
 
 
@@ -84,8 +81,7 @@ class Analyzer(consumers.BaseConsumer):
         Generic loop function that loops over all the editors of a Wikipedia 
         project and then calls the plugin that does the actual mapping.
         '''
-        mongo = db.init_mongo_db(self.rts.dbname)
-        coll = mongo[self.rts.editors_dataset]
+        db = storage.Database('mongo', self.rts.dbname, self.rts.editors_dataset)
         while True:
             try:
                 task = self.tasks.get(block=False)
@@ -93,7 +89,7 @@ class Analyzer(consumers.BaseConsumer):
                 if task == None:
                     self.result.put(self.var)
                     break
-                editor = coll.find_one({'editor': task.editor})
+                editor = db.find_one('editor', task.editor)
 
                 task.plugin(self.var, editor, dbname=self.rts.dbname)
                 self.result.put(True)

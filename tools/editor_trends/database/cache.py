@@ -20,8 +20,6 @@ __version__ = '0.1'
 
 import datetime
 import sys
-import bson
-from pymongo.errors import OperationFailure
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -29,13 +27,12 @@ if '..' not in sys.path:
 from classes import settings
 settings = settings.Settings()
 
-import db
 from utils import file_utils
 from utils import data_converter
 
-class EditorCache(object):
-    def __init__(self, collection):
-        self.collection = collection
+class EditorCache:
+    def __init__(self, db):
+        self.db = db
         self.editors = {}
         self.final_year = datetime.datetime.now().year + 1
         self.n = 0
@@ -57,8 +54,7 @@ class EditorCache(object):
     def add(self, key, value):
         if value == 'NEXT':
             self.n += 1
-            edits = db.stringify_keys(self.editors[key]['edits'])
-            edits = self.drop_years_no_obs(edits)
+            edits = self.drop_years_no_obs(self.editors[key]['edits'])
             self.insert(key, edits, self.editors[key]['username'])
             del self.editors[key]
         else:
@@ -74,22 +70,21 @@ class EditorCache(object):
             self.editors[key]['edits'][year].append(value)
             self.editors[key]['obs'] += 1
 
-    def update(self, editor, values):
-        self.collection.update({'editor': editor}, {'$pushAll': {'edits': values}}, upsert=True)
-
     def insert(self, editor, values, username):
-        '''
-        Adding the safe=True statement slows down the insert process but this 
-        assures that all data will be written. 
-        '''
-        try:
-            self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
-        except bson.errors.InvalidDocument:
-            print 'BSON document too large, unable to store %s' % (username)
-        except OperationFailure, error:
-            print error
-            print 'It seems that you are running out of disk space.'
-            sys.exit(-1)
+        data = {'editor': editor, 'edits': values, 'username': username}
+        self.db.insert(data)
+#        '''
+#        Adding the safe=True statement slows down the insert process but this 
+#        assures that all data will be written. 
+#        '''
+#        try:
+#            self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
+#        except bson.errors.InvalidDocument:
+#            print 'BSON document too large, unable to store %s' % (username)
+#        except OperationFailure, error:
+#            print error
+#            print 'It seems that you are running out of disk space.'
+#            sys.exit(-1)
 
     def store(self):
         file_utils.store_object(self, settings.binary_location, self.__repr__())

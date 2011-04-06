@@ -36,7 +36,7 @@ from classes import runtime_settings
 from classes import consumers
 from classes import exceptions
 from classes import analytics
-from database import db
+from classes import storage
 from utils import timer
 from utils import log
 
@@ -104,10 +104,10 @@ def generate_chart_data(rts, func, **kwargs):
     lock = mgr.RLock()
     obs_proxy = mgr.dict(obs)
 
-    editors = db.retrieve_distinct_keys(rts.dbname, rts.editors_dataset, 'editor')
-    min_year, max_year = determine_project_year_range(rts.dbname,
-                                                      rts.editors_dataset,
-                                                      'new_wikipedian')
+    db = storage.Database('mongo', rts.dbname, rts.editors_dataset)
+    editors = db.retrieve_distinct_keys('editor')
+    min_year, max_year = determine_project_year_range(db, 'new_wikipedian')
+
     fmt = kwargs.pop('format', 'long')
     time_unit = kwargs.pop('time_unit', 'year')
     kwargs['min_year'] = min_year
@@ -155,19 +155,17 @@ def generate_chart_data(rts, func, **kwargs):
     write_output(ds, rts, stopwatch)
 
     ds.summary()
-    #return True
 
 
-def determine_project_year_range(dbname, collection, var):
+def determine_project_year_range(db, var):
     '''
     Determine the first and final year for the observed data
     '''
-    print dbname, collection, var
     try:
-        max_year = db.run_query(dbname, collection, var, 'max')
-        max_year = max_year[var].year + 1
-        min_year = db.run_query(dbname, collection, var, 'min')
-        min_year = min_year[var].year
+        obs = db.find(var, 'max')
+        max_year = obs[var].year + 1
+        obs = db.find(var, 'min')
+        min_year = obs[var].year
     except KeyError:
         min_year = 2001
         max_year = datetime.datetime.today().year + 1

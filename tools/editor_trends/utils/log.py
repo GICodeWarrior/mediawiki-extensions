@@ -26,35 +26,33 @@ if '..' not in sys.path:
 from classes import settings
 settings = settings.Settings()
 
-from database import db
+from classes import storage
 
-def log_to_mongo(rts, jobtype, task, timer, event='start'):
-    conn = db.init_mongo_db(rts.dbname)
+def to_db(rts, jobtype, task, timer, event='start'):
+    db = storage.Database('mongo', rts.dbname, 'jobs')
     created = datetime.datetime.now()
     hash = '%s_%s' % (rts.project, rts.hash)
-    coll = conn['jobs']
 
-    job = coll.find_one({'hash': hash})
+    job = db.find_one('hash', hash)
+
+    data = {'hash': hash,
+          'created': created,
+          'jobtype': jobtype,
+          'in_progress': True,
+          'language_code': rts.language.code,
+          'project': rts.project.name,
+          'tasks': {},
+          }
 
     if job == None:
         if jobtype == 'dataset':
-            _id = coll.save({'hash': hash, 'created': created, 'finished': False,
-                             'language_code': rts.language.code,
-                             'project': rts.project.name,
-                             'in_progress': True, 'jobtype': jobtype,
-                             'tasks': {}})
-
-
+            data['finished'] = False
+            _id = db.save(data)
         elif jobtype == 'chart':
-            _id = coll.save({'hash': hash, 'created': created,
-                             'jobtype': jobtype,
-                             'finished': True,
-                             'in_progress': True,
-                             'project': rts.project.name,
-                             'language_code': rts.language.code,
-                             'tasks': {}})
+            data['finished'] = True
+            _id = db.save(data)
 
-        job = coll.find_one({'_id': _id})
+        job = db.find_one('_id', _id)
 
     tasks = job['tasks']
     t = tasks.get(task, {})
@@ -62,20 +60,22 @@ def log_to_mongo(rts, jobtype, task, timer, event='start'):
         t['start'] = timer.t0
         t['in_progress'] = True
         tasks[task] = t
-        coll.update({'hash': hash}, {'$set': {'tasks': tasks}})
+        db.update('hash', hash, {'$set': {'tasks': tasks}})
+        #coll.update({'hash': hash}, {'$set': {'tasks': tasks}})
     elif event == 'finish':
         t['finish'] = timer.t1
         t['in_progress'] = False
         tasks[task] = t
-        if task == 'transform' or jobtype == 'chart': #final task, set entire task to finished
-            coll.update({'hash': hash}, {'$set': {'tasks': tasks,
-                                                  'in_progress': False,
-                                                  'finished': True}})
+        if task == 'transform' or jobtype == 'chart':
+            #final task, set entire task to finished
+            db.update('hash', hash, {'$set': {'tasks': tasks,
+                                                 'in_progress': False,
+                                                 'finished': True}})
         else:
-            coll.update({'hash': hash}, {'$set': {'tasks': tasks}})
+            db.update('hash', hash, {'$set': {'tasks': tasks}})
 
 
-def log_to_csv(logger, settings, message, verb, function, **kwargs):
+def to_csv(logger, settings, message, verb, function, **kwargs):
     '''
     Writes detailed log information to logs / projectname_date.csv
     '''

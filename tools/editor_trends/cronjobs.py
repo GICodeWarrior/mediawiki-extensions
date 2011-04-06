@@ -22,7 +22,7 @@ from multiprocessing import Process
 
 import manage as manager
 
-from database import db
+from classes import storage
 from classes import languages
 from classes import projects
 from classes import runtime_settings
@@ -86,12 +86,11 @@ def launcher():
     This is the main entry point, it creates a queue with jobs and determines
     the type of job and fires it off 
     '''
-    mongo = db.init_mongo_db('wikilytics')
-    coll = mongo['jobs']
+    db = storage.Database('mongo', 'wikilytics', 'jobs')
     tasks = []
     project, language, parser = manager.init_args_parser()
     args = parser.parse_args(['django'])
-    jobs = coll.find({'finished': False, 'in_progress': False, 'error': False})
+    jobs = db.find({'finished': False, 'in_progress': False, 'error': False})
     for job in jobs:
         tasks.append(job)
 
@@ -99,20 +98,19 @@ def launcher():
         if task['jobtype'] == 'dataset':
             print 'Launching the Editor Trends Analytics Toolkit.'
             res = launch_editor_trends_toolkit(task, args)
-            #res = False
         else:
             print 'Launching %s.' % task['jobtype']
             res = launch_chart(task, args)
 
         if res:
-            coll.update({'_id': task['_id']}, {'$set': {'finished': True}})
+            db.update({'_id': task['_id']}, {'$set': {'finished': True}})
         else:
             '''
             To prevent jobs from recurring non-stop, set error to True. These
             jobs will be excluded and need to be investigated to see what's
             happening. 
             '''
-            coll.update({'_id': task['_id']}, {'$set': {'error': True}})
+            db.update('_id', task['_id'], {'$set': {'error': True}})
 
 
 def debug():

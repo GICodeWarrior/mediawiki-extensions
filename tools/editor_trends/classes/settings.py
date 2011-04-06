@@ -97,13 +97,6 @@ class Settings:
         self.binary_location = os.path.join(self.working_directory,
                                             'data', 'objects')
 
-        self.chart_location = os.path.join(self.working_directory, 'statistics',
-                                           'charts')
-        self.file_choices = ('stub-meta-history.xml.gz',
-                             'stub-meta-current.xml.gz',
-                             'pages-meta-history.xml.7z',
-                             'pages-meta-current.xml.bz2',)
-
     def load_configuration(self):
         if os.path.exists(os.path.join(self.working_directory, 'wiki.cfg')):
             config = ConfigParser.RawConfigParser()
@@ -116,7 +109,6 @@ class Settings:
             return True
         else:
             return False
-
 
     def determine_working_directory(self):
         cwd = os.getcwd()

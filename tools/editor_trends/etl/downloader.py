@@ -117,7 +117,4 @@ def launcher(properties, logger):
         w.start()
 
     tasks.join()
-#    for consumer in consumers:
-#        if consumer.exitcode != 0:
-#            result = False
 

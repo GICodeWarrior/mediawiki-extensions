@@ -32,18 +32,12 @@ from classes import settings
 settings = settings.Settings()
 
 
-from database import db
+from classes import storage
 from utils import file_utils
 from utils import messages
 
 from classes import consumers
 from classes import bots
-
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    pass
 
 
 def read_bots_csv_file(location, filename, encoding, manager=False):
@@ -76,9 +70,8 @@ def retrieve_bots(language_code):
     Loader function to retrieve list of id's of known Wikipedia bots.
     '''
     ids = []
-    mongo = db.init_mongo_db('bots')
-    bots = mongo['ids']
-    cursor = bots.find()
+    db = storage.Database('mongo', 'bots', 'ids')
+    cursor = db.find()
     for bot in cursor:
         if bot['verified'] == 'True' and language_code in bot['projects']:
             ids.append(bot['name'])
@@ -95,17 +88,15 @@ def store_bots():
                                                 'bots_ids.csv',
                                                 'utf-8',
                                                 keys)
-    mongo = db.init_mongo_db('bots')
-    collection = mongo['ids']
-    db.remove_documents_from_mongo_db(collection, None)
-
+    db = storage.Database('mongo', 'wikilytics', 'bots')
+    db.drop_collection()
     for id in bots:
         bot = bots[id]
         data = dict([(k, bot[k]) for k in keys])
         data['id'] = id
-        collection.insert(data)
+        db.insert(data)
 
-    print 'Stored %s bots' % collection.count()
+    print 'Stored %s bots' % db.count()
 
 
 def convert_object_to_dict(obj, exclude=[]):

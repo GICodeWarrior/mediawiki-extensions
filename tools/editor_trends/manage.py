@@ -32,7 +32,7 @@ from utils import file_utils
 from utils import ordered_dict
 from utils import log
 from utils import timer
-from database import db
+from classes import storage
 from etl import downloader
 from etl import enricher
 from etl import store
@@ -61,6 +61,12 @@ def init_args_parser():
     project = projects.init()
     pjc = projects.ProjectContainer()
     rts = runtime_settings.RunTimeSettings(project, language)
+
+    file_choices = {'meta-full': 'stub-meta-history.xml.gz',
+                    'meta-current': 'stub-meta-current.xml.gz',
+                    'history-full': 'pages-meta-history.xml.7z',
+                    'history-current': 'pages-meta-current.xml.bz2'
+                    }
 
     #Init Argument Parser
     parser = ArgumentParser(prog='manage', formatter_class=RawTextHelpFormatter)
@@ -131,7 +137,7 @@ def init_args_parser():
 
     #ALL
     parser_all = subparsers.add_parser('all',
-        help='The all sub command runs the download, split, store and dataset \
+        help='The all sub command runs the download, extract, store and dataset \
         commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE \
         CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
     parser_all.set_defaults(func=all_launcher)
@@ -140,12 +146,6 @@ def init_args_parser():
         help='Should be a list of functions that are to be ignored when \
         executing all.',
         default=[])
-
-    parser_all.add_argument('-n', '--new',
-        action='store_true',
-        help='This will delete all previous output and starts from scratch. \
-        Mostly useful for debugging purposes.',
-        default=False)
 
     #DJANGO
     parser_django = subparsers.add_parser('django')
@@ -179,23 +179,23 @@ def init_args_parser():
         help='Name of MongoDB collection',
         default='editors_raw')
 
-    parser.add_argument('-o', '--location',
-        action='store',
-        help='Indicate where you want to store the downloaded file.',
-        #default=settings.input_location)
-        default=rts.input_location)
 
     parser.add_argument('-ns', '--namespace',
         action='store',
         help='A list of namespaces to include for analysis.',
         default='0')
 
+    parser.add_argument('-db', '--database',
+                        action='store',
+                        help='Specify the database that you want to use. Valid choices are mongo and cassandra.',
+                        default='mongo')
+
     parser.add_argument('-f', '--file',
         action='store',
-        choices=rts.file_choices,
+        choices=file_choices,
         help='Indicate which dump you want to download. Valid choices are:\n \
-            %s' % ''.join([f + ',\n' for f in rts.file_choices]),
-        default='stub-meta-history.xml.gz')
+            %s' % ''.join([f + ',\n' for f in file_choices]),
+        default=file_choices['meta-full'])
 
     return project, language, parser
 
@@ -247,7 +247,7 @@ def config_launcher(rts, logger):
         rts.input_location = config.get('file_locations', 'input_location')
         rts.output_location = config.get('file_locations', 'output_location')
 
-        log.log_to_csv(logger, rts, 'New configuration', 'Creating',
+        log.to_csv(logger, rts, 'New configuration', 'Creating',
                        config_launcher,
                        working_directory=working_directory,
                        input_location=input_location,
@@ -262,10 +262,10 @@ def downloader_launcher(rts, logger):
     '''
     print 'Start downloading'
     stopwatch = timer.Timer()
-    log.log_to_mongo(rts, 'dataset', 'download', stopwatch, event='start')
+    log.to_db(rts, 'dataset', 'download', stopwatch, event='start')
     downloader.launcher(rts, logger)
     stopwatch.elapsed()
-    log.log_to_mongo(rts, 'dataset', 'download', stopwatch, event='finish')
+    log.to_db(rts, 'dataset', 'download', stopwatch, event='finish')
 
 
 def extract_launcher(rts, logger):
@@ -276,12 +276,12 @@ def extract_launcher(rts, logger):
     '''
     print 'Extracting data from XML'
     stopwatch = timer.Timer()
-    log.log_to_mongo(rts, 'dataset', 'extract', stopwatch, event='start')
-    log.log_to_csv(logger, rts, 'Start', 'Extract', extract_launcher)
+    log.to_db(rts, 'dataset', 'extract', stopwatch, event='start')
+    log.to_csv(logger, rts, 'Start', 'Extract', extract_launcher)
     enricher.launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(rts, 'dataset', 'extract', stopwatch, event='finish')
-    log.log_to_csv(logger, rts, 'Finish', 'Extract', extract_launcher)
+    log.to_db(rts, 'dataset', 'extract', stopwatch, event='finish')
+    log.to_csv(logger, rts, 'Finish', 'Extract', extract_launcher)
 
 
 def sort_launcher(rts, logger):
@@ -291,12 +291,12 @@ def sort_launcher(rts, logger):
     '''
     print 'Start sorting data'
     stopwatch = timer.Timer()
-    log.log_to_mongo(rts, 'dataset', 'sort', stopwatch, event='start')
-    log.log_to_csv(logger, rts, 'Start', 'Sort', sort_launcher)
+    log.to_db(rts, 'dataset', 'sort', stopwatch, event='start')
+    log.to_csv(logger, rts, 'Start', 'Sort', sort_launcher)
     sort.launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(rts, 'dataset', 'sort', stopwatch, event='finish')
-    log.log_to_csv(logger, rts, 'Finish', 'Sort', sort_launcher)
+    log.to_db(rts, 'dataset', 'sort', stopwatch, event='finish')
+    log.to_csv(logger, rts, 'Finish', 'Sort', sort_launcher)
 
 
 def store_launcher(rts, logger):
@@ -306,13 +306,12 @@ def store_launcher(rts, logger):
     '''
     print 'Start storing data in MongoDB'
     stopwatch = timer.Timer()
-    log.log_to_mongo(rts, 'dataset', 'store', stopwatch, event='start')
-    log.log_to_csv(logger, rts, 'Start', 'Store', store_launcher)
-    db.cleanup_database(rts.dbname, logger)
+    log.to_db(rts, 'dataset', 'store', stopwatch, event='start')
+    log.to_csv(logger, rts, 'Start', 'Store', store_launcher)
     store.launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(rts, 'dataset', 'store', stopwatch, event='finish')
-    log.log_to_csv(logger, rts, 'Finish', 'Store', store_launcher)
+    log.to_db(rts, 'dataset', 'store', stopwatch, event='finish')
+    log.to_csv(logger, rts, 'Finish', 'Store', store_launcher)
 
 
 def transformer_launcher(rts, logger):
@@ -322,13 +321,12 @@ def transformer_launcher(rts, logger):
     '''
     print 'Start transforming dataset'
     stopwatch = timer.Timer()
-    log.log_to_mongo(rts, 'dataset', 'transform', stopwatch, event='start')
-    log.log_to_csv(logger, rts, 'Start', 'Transform', transformer_launcher)
-    db.cleanup_database(rts.dbname, logger, 'dataset')
+    log.to_db(rts, 'dataset', 'transform', stopwatch, event='start')
+    log.to_csv(logger, rts, 'Start', 'Transform', transformer_launcher)
     transformer.transform_editors_single_launcher(rts)
     stopwatch.elapsed()
-    log.log_to_mongo(rts, 'dataset', 'transform', stopwatch, event='finish')
-    log.log_to_csv(logger, rts, 'Finish', 'Transform', transformer_launcher)
+    log.to_db(rts, 'dataset', 'transform', stopwatch, event='finish')
+    log.to_csv(logger, rts, 'Finish', 'Transform', transformer_launcher)
 
 
 def dataset_launcher(rts, logger):
@@ -338,17 +336,17 @@ def dataset_launcher(rts, logger):
     '''
     print 'Start generating dataset'
     stopwatch = timer.Timer()
-    log.log_to_mongo(rts, 'dataset', 'export', stopwatch, event='start')
+    log.to_db(rts, 'dataset', 'export', stopwatch, event='start')
 
     for chart in rts.charts:
         analyzer.generate_chart_data(rts, chart, **rts.keywords)
-        log.log_to_csv(logger, rts, 'Start', 'Dataset', dataset_launcher,
+        log.to_csv(logger, rts, 'Start', 'Dataset', dataset_launcher,
                        chart=chart,
                        dbname=rts.dbname,
                        collection=rts.editors_dataset)
     stopwatch.elapsed()
-    log.log_to_mongo(rts, 'dataset', 'export', stopwatch, event='finish')
-    log.log_to_csv(logger, rts, 'Finish', 'Dataset', dataset_launcher)
+    log.to_db(rts, 'dataset', 'export', stopwatch, event='finish')
+    log.to_csv(logger, rts, 'Finish', 'Dataset', dataset_launcher)
 
 
 def cleanup(rts, logger):
@@ -360,20 +358,20 @@ def cleanup(rts, logger):
     #remove directories
     for directory in directories:
         file_utils.delete_file(directory, '', directory=True)
-        log.log_to_csv(logger, rts,
+        log.to_csv(logger, rts,
                        message='Deleting %s' % directory,
                        verb='Deleting',
                        function=cleanup)
 
     #create directories
     rts.verify_environment(directories)
-    log.log_to_csv(logger, rts, message='Deleting %s' % directory,
+    log.to_csv(logger, rts, message='Deleting %s' % directory,
                    verb='Creating', function=rts.verify_environment)
 
     #remove binary files
     filename = '%s%s' % (rts.full_project, '_editor.bin')
     file_utils.delete_file(rts.binary_location, filename)
-    log.log_to_csv(logger, rts, message='Deleting %s' % filename,
+    log.to_csv(logger, rts, message='Deleting %s' % filename,
                    verb='Deleting',
                    function=file_utils.delete_file)
 
@@ -386,12 +384,8 @@ def all_launcher(rts, logger):
     '''
 
     stopwatch = timer.Timer()
-    log.log_to_mongo(rts, 'dataset', 'all', stopwatch, event='start')
+    log.to_db(rts, 'dataset', 'all', stopwatch, event='start')
     print 'Start of building %s %s dataset.' % (rts.language.name, rts.project)
-
-    if rts.clean:
-        print 'Removing previous datasets...'
-        cleanup(rts, logger)
 
     functions = ordered_dict.OrderedDict(((downloader_launcher, 'download'),
                                           (extract_launcher, 'extract'),
@@ -408,21 +402,7 @@ def all_launcher(rts, logger):
             elif res == None:
                 pass
     stopwatch.elapsed()
-    log.log_to_mongo(rts, 'dataset', 'all', stopwatch, event='finish')
-
-
-
-def about_statement():
-    '''
-    prints generic version information.
-    '''
-    print ''
-    print 'Wikilytics is (c) 2010-2011 by the Wikimedia Foundation.'
-    print 'Written by Diederik van Liere (dvanliere@gmail.com).'
-    print '''This software comes with ABSOLUTELY NO WARRANTY. This is free 
-    software, and you are welcome to distribute it under certain conditions.'''
-    print 'See the README.1ST file for more information.'
-    print ''
+    log.to_db(rts, 'dataset', 'all', stopwatch, event='finish')
 
 
 def main():
@@ -449,10 +429,6 @@ def main():
     logger.debug('Chosen language: \t%s' % rts.language)
 
     #start manager
-    #detect_python_version(logger)
-    about_statement()
-    #config.create_configuration(settings, args)
-
     rts.show_settings()
     args.func(rts, logger)
 

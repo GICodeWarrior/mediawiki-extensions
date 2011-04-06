@@ -37,11 +37,11 @@ def edit_patterns(var, editor, **kwargs):
         for year in years:
         #for year in xrange(new_wikipedian.year, new_wikipedian.year + 2):
             obs = [False for x in xrange(13)]
-            months = edit[year].keys()
-            for month in xrange(13):
+            months = edits[year].keys()
+            for month in xrange(1, 13):
                 count = edits[year].get(month, {}).get('0', 0)
-                date = datetime(int(year), int(month), 1)
                 if count >= var.cutoff:
                     obs[month] = True
+            date = datetime(int(year), int(month), 1)
             var.add(date, obs)
     return var

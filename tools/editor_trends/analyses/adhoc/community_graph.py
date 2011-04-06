@@ -23,7 +23,7 @@ if '..' not in sys.path:
 
 from classes import settings
 settings = settings.Settings()
-from database import db
+from classes import storage
 from utils import file_utils
 
 try:
@@ -42,8 +42,8 @@ def create_articles_set(edits):
 
 
 def create_edgelist(project, collection):
-    ids = db.retrieve_distinct_keys(project, collection, 'editor')
-    conn = db.init_mongo_db(project)
+    db = storage.Database('mongo', project, collection)
+    ids = db.retrieve_distinct_keys('editor')
     ids.sort()
     fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_edgelist.csv' % project, 'w', 'utf-8')
     for i in ids:

@@ -66,7 +66,6 @@ class RunTimeSettings(Settings):
             self.function = self.get_value('func')
 
             self.ignore = self.get_value('except')
-            self.clean = self.get_value('new')
             self.force = self.get_value('force')
             self.location = self.get_project_location()
             self.filename = self.generate_wikidump_filename()
@@ -92,8 +91,8 @@ class RunTimeSettings(Settings):
             self.verify_environment(self.directories)
 
     def __str__(self):
-        return 'Runtime Settings for project %s%s' % (self.language.name,
-                                                      self.project.name)
+        return 'Runtime Settings for project %s %s' % (self.language.name,
+                                                      self.project.full_name)
 
     def __iter__(self):
         for item in self.__dict__:
@@ -144,11 +143,7 @@ class RunTimeSettings(Settings):
         '''
         Construct the full project location
         '''
-        if self.kaggle:
-            return os.path.join(self.input_location, self.language.code,
-                            self.project.name)
-        else:
-            return os.path.join(self.input_location, self.language.code,
+        return os.path.join(self.output_location, self.language.code,
                             self.project.name)
 
     def show_settings(self):
@@ -164,6 +159,15 @@ class RunTimeSettings(Settings):
         about['Output directory'] = '%s and subdirectories' % self.location
 
         max_length_key = max([len(key) for key in about.keys()])
+
+        print ''
+        print 'Wikilytics is (c) 2010-2011 by the Wikimedia Foundation.'
+        print 'Written by Diederik van Liere (dvanliere@gmail.com).'
+        print '''This software comes with ABSOLUTELY NO WARRANTY. This is free 
+        software, and you are welcome to distribute it under certain conditions.'''
+        print 'See the README.1ST file for more information.'
+        print '\nPlatform: %s' % self.platform
+
         print 'Final settings after parsing command line arguments:'
         for ab in about:
             print '%s: %s' % (ab.rjust(max_length_key), about[ab].encode('utf-8'))

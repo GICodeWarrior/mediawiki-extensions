@@ -24,7 +24,7 @@ import configuration
 settings = configuration.Settings()
 from utils import file_utils
 from utils import messages
-from database import db
+from classes import storage
 
 
 #def dataset_edits_by_month(dbname, **kwargs):

@@ -32,13 +32,7 @@ from collections import deque
 if '..' not in sys.path:
     sys.path.append('..')
 
-try:
-    from database import cassandra
-    import pycassa
-except ImportError:
-    pass
-
-from database import db
+from classes import storage
 from bots import detector
 from utils import file_utils
 
@@ -759,14 +753,14 @@ def setup(storage, rts=None):
 def multiprocessor_launcher(function, dataset, storage, locks, rts):
     input_queue = JoinableQueue()
 
-    files = file_utils.retrieve_file_list(rts.location)
+    files = file_utils.retrieve_file_list(rts.input_location)
     if len(files) > cpu_count():
         processors = cpu_count() - 1
     else:
         processors = len(files)
 
     for filename in files:
-        filename = os.path.join(rts.location, filename)
+        filename = os.path.join(rts.input_location, filename)
         print filename
         input_queue.put(filename)
 
@@ -818,7 +812,6 @@ def launcher(rts):
     This is the generic entry point for regular Wikilytics usage.
     '''
     # launcher for creating regular mongo dataset
-    path = rts.location
     function = create_variables
     storage = 'csv'
     dataset = 'training'

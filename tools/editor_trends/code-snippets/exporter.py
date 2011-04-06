@@ -31,7 +31,7 @@ import configuration
 settings = configuration.Settings()
 from utils import file_utils
 from utils import messages
-from database import db
+from classes import storage
 from etl import shaper
 from analyses import cohort_charts
 

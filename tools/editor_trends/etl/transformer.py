@@ -17,27 +17,19 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-02'
 __version__ = '0.1'
 
-import progressbar
+import sys
+import datetime
 import multiprocessing
 from Queue import Empty
 from operator import itemgetter
-import datetime
-import sys
 from copy import deepcopy
 
-from database import db
+import progressbar
+from classes import storage
 from utils import file_utils
 from utils import messages
 from utils import data_converter
 from classes import consumers
-
-
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    pass
-
 
 class EditorConsumer(consumers.BaseConsumer):
 
@@ -52,10 +44,10 @@ class EditorConsumer(consumers.BaseConsumer):
 
 
 class Editor(object):
-    def __init__(self, id, input_db, output_db, **kwargs):
+    def __init__(self, id, db_raw, db_dataset, **kwargs):
         self.id = id
-        self.input_db = input_db
-        self.output_db = output_db
+        self.db_raw = db_raw
+        self.db_dataset = db_dataset
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
 
@@ -64,7 +56,7 @@ class Editor(object):
 
     def __call__(self):
         cutoff = 9
-        editor = self.input_db.find_one({'editor': self.id})
+        editor = self.db_raw.find_one('editor', self.id)
         if editor == None:
             return
         edits = editor['edits']
@@ -75,7 +67,6 @@ class Editor(object):
         last_edit_by_year = determine_last_edit_by_year(edits, first_year, final_year)
         articles_edited = determine_articles_workedon(edits, first_year, final_year)
         article_count = determine_article_count(articles_edited, first_year, final_year)
-        articles_edited = db.stringify_keys(articles_edited)
 
         namespaces_edited = determine_namespaces_workedon(edits, first_year, final_year)
         character_count = determine_edit_volume(edits, first_year, final_year)
@@ -90,7 +81,6 @@ class Editor(object):
         totals = calculate_totals(totals, counts, revert_count, 'revert_count')
         totals = calculate_totals(totals, counts, article_count, 'article_count')
         totals = calculate_totals(totals, counts, edit_count, 'edit_count')
-        totals = db.stringify_keys(totals)
 
         if len(edits) > cutoff:
             new_wikipedian = edits[cutoff]['date']
@@ -100,23 +90,22 @@ class Editor(object):
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
 
-        self.output_db.insert({'editor': self.id,
-                               'username': username,
-                               'new_wikipedian': new_wikipedian,
-                               'cum_edit_count': cum_edit_count,
-                               'final_edit': final_edit,
-                               'first_edit': first_edit,
-                               'last_edit_by_year': last_edit_by_year,
-                               'articles_edited': articles_edited,
-                               'edit_count': edit_count,
-                               'namespaces_edited': namespaces_edited,
-                               'article_count': article_count,
-                               'character_count': character_count,
-                               'revert_count': revert_count,
-                               'totals': totals,
-                               },
-                               safe=True)
-
+        data = {'editor': self.id,
+                'username': username,
+                'new_wikipedian': new_wikipedian,
+                'cum_edit_count': cum_edit_count,
+                'final_edit': final_edit,
+                'first_edit': first_edit,
+                'last_edit_by_year': last_edit_by_year,
+                'articles_edited': articles_edited,
+                'edit_count': edit_count,
+                'namespaces_edited': namespaces_edited,
+                'article_count': article_count,
+                'character_count': character_count,
+                'revert_count': revert_count,
+                'totals': totals,
+                }
+        self.db_dataset.insert(data)
 
 def cleanup_datacontainer(dc, variable_type):
     '''
@@ -159,7 +148,6 @@ def determine_number_edits(edits, first_year, final_year):
         dc[year][month].setdefault(ns, 0)
         dc[year][month][ns] += 1
     dc = cleanup_datacontainer(dc, {})
-    dc = db.stringify_keys(dc)
     return dc
 
 
@@ -192,7 +180,6 @@ def determine_namespaces_workedon(edits, first_year, final_year):
         for month in dc[year]:
             dc[year][month] = list(dc[year][month])
     dc = cleanup_datacontainer(dc, [])
-    dc = db.stringify_keys(dc)
     return dc
 
 
@@ -207,7 +194,6 @@ def determine_number_reverts(edits, first_year, final_year):
                 dc[year][month].setdefault(ns, 0)
                 dc[year][month][ns] += 1
     dc = cleanup_datacontainer(dc, {})
-    dc = db.stringify_keys(dc)
     return dc
 
 
@@ -225,13 +211,11 @@ def determine_edit_volume(edits, first_year, final_year):
             dc[year][month].setdefault(ns, {})
             dc[year][month][ns].setdefault('added', 0)
             dc[year][month][ns].setdefault('removed', 0)
-            print edit
             if edit['delta'] < 0:
                 dc[year][month][ns]['removed'] += edit['delta']
             elif edit['delta'] > 0:
                 dc[year][month][ns]['added'] += edit['delta']
     dc = cleanup_datacontainer(dc, {})
-    dc = db.stringify_keys(dc)
     return dc
 
 
@@ -251,7 +235,6 @@ def determine_last_edit_by_year(edits, first_year, final_year):
                 dc[date] = edit
             elif dc[date] < edit:
                 dc[date] = edit
-    dc = db.stringify_keys(dc)
     return dc
 
 
@@ -266,7 +249,6 @@ def determine_article_count(articles_edited, first_year, final_year):
         for month in articles_edited[year]:
             for ns in articles_edited[year][month]:
                 dc[year][month][ns] = len(articles_edited[year][month][ns])
-    dc = db.stringify_keys(dc)
     return dc
 
 
@@ -276,7 +258,6 @@ def sort_edits(edits):
 
 
 def transform_editors_multi_launcher(rts):
-    ids = db.retrieve_distinct_keys(rts.dbname, rts.editors_raw, 'editor')
     tasks = multiprocessing.JoinableQueue()
     consumers = [EditorConsumer(tasks, None) for i in xrange(rts.number_of_processes)]
 
@@ -293,23 +274,19 @@ def transform_editors_multi_launcher(rts):
 
 
 def setup_database(rts):
-    mongo = db.init_mongo_db(rts.dbname)
-    input_db = mongo[rts.editors_raw]
-    db.drop_collection(rts.dbname, rts.editors_dataset)
-    output_db = mongo[rts.editors_dataset]
+    db_raw = storage.Database('mongo', rts.dbname, rts.editors_raw)
+    db_dataset = storage.Database('mongo', rts.dbname, rts.editors_dataset)
+    db_dataset.drop_collection()
+    ids = db_dataset.retrieve_distinct_keys('editor')
+    db_dataset.add_index('editor')
+    db_dataset.add_index('new_wikipedian')
 
-    output_db.ensure_index('editor')
-    output_db.create_index('editor')
-    output_db.ensure_index('new_wikipedian')
-    output_db.create_index('new_wikipedian')
-    return input_db, output_db
+    return db_raw, db_dataset, ids
 
 
 def transform_editors_single_launcher(rts):
     print rts.dbname, rts.editors_raw
-    ids = db.retrieve_distinct_keys(rts.dbname, rts.editors_raw, 'editor')
-    print len(ids)
-    input_db, output_db = setup_database(rts)
+    input_db, output_db, ids = setup_database(rts)
     pbar = progressbar.ProgressBar(maxval=len(ids)).start()
     for x, id in enumerate(ids):
         editor = Editor(id, input_db, output_db)
