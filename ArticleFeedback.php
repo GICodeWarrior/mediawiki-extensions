@@ -40,6 +40,11 @@ $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,
 	'submit-msg' => 'articlefeedback-survey-submit',
 	'questions' => array(
+		'origin' => array(
+			'visibility' => 'hidden',
+			'question' => 'articlefeedback-survey-question-origin',
+			'type' => 'text',
+		),
 		'whyrated' => array(
 			'question' => 'articlefeedback-survey-question-whyrated',
 			'type' => 'checks',

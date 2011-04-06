@@ -11,6 +11,7 @@ $messages['en'] = array(
 	'articlefeedback' => 'Article feedback',
 	'articlefeedback-desc' => 'Article feedback',
 	/* Survey Messages */
+	'articlefeedback-survey-question-origin' => 'What page were you on when you started this survey?',
 	'articlefeedback-survey-question-whyrated' => 'Please let us know why you rated this page today (check all that apply):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'I wanted to contribute to the overall rating of the page',
 	'articlefeedback-survey-answer-whyrated-development' => 'I hope that my rating would positively affect the development of the page',
