@@ -109,6 +109,7 @@ var survey = new ( function( mw ) {
 						.button()
 						.insertAfter( $input );
 					$input.remove();
+					$form.find( '#prefswitch-survey-origin' ).text( mw.config.get( 'wgTitle' ) );
 					// Take dialog out of loading state
 					$dialog.removeClass( 'loading' );
 				} );
