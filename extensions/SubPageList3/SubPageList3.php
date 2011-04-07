@@ -502,8 +502,7 @@ class SubpageList3 {
 	 */
 	function parse( $text ) {
 		wfProfileIn( __METHOD__ );
-		$options = $this->parser->mOptions;
-		$output = $this->parser->parse( $text, $this->title, $options, true, false );
+		$output = $this->parser->recursiveTagParse( $text );
 		wfProfileOut( __METHOD__ );
 		return $output->getText();
 	}
