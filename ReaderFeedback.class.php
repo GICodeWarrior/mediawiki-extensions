@@ -55,31 +55,6 @@ class ReaderFeedback {
 	################# Utility functions #################
 
 	/**
-	 * @param string $val
-	 * @return obj array
-	 * Get a memcache storage object
-	 */
-	public static function makeMemcObj( $val ) {
-		$data = (object) array();
-		$data->value = $val;
-		$data->time = wfTimestampNow();
-		return $data;
-	}
-	
-	/**
-	* @param mixed $data Memc data returned
-	* @param Article $article
-	* @return mixed
-	* Return memc value if not expired
-	*/		
-	public static function getMemcValue( $data, $article ) {
-		if( is_object($data) && $data->time >= $article->getTouched() ) {
-			return $data->value;
-		}
-		return false;
-	}
-	
-	/**
 	 * @param Article $article
 	 * @param string $tag
 	 * @param bool $forUpdate, use master?
