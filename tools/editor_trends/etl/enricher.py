@@ -28,7 +28,6 @@ from multiprocessing import JoinableQueue, Process, cpu_count, current_process, 
 from xml.etree.cElementTree import iterparse, dump
 from collections import deque
 
-
 if '..' not in sys.path:
     sys.path.append('..')
 
@@ -94,7 +93,7 @@ class Dummy:
 class DummyRTS:
     def __init__(self, location, path):
         self.input_location = location
-        self.location = path
+        self.output_location = path
         self.language = Dummy()
         self.project = Dummy()
         self.language.code = 'en'
@@ -520,10 +519,9 @@ def create_namespace_dict(siteinfo, xml_namespace):
     This function determines the local names of the different namespaces.
     '''
     namespaces = {}
+    print 'Detected xml namespace: %s' % xml_namespace
     print 'Constructing namespace dictionary'
-    print xml_namespace
     elements = siteinfo.find('%s%s' % (xml_namespace, 'namespaces'))
-    print elements
     for elem in elements.getchildren():
         key = int(elem.get('key'))
         namespaces[key] = elem.text #extract_text(ns)
@@ -677,7 +675,7 @@ def parse_xml(fh, rts):
 
 def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, rts):
     bots = bot_detector.retrieve_bots(rts.language.code)
-    path = os.path.join(rts.location, 'txt')
+    path = os.path.join(rts.output_location, 'txt')
 
     filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
                 'utf-8') for fh in xrange(rts.max_filehandles)]
@@ -746,18 +744,13 @@ def setup(storage, rts=None):
     preparations are made including setting up namespaces and cleaning up old
     files. 
     '''
-    keyspace_name = 'enwiki'
     if storage == 'cassandra':
+        keyspace_name = 'enwiki'
         cassandra.install_schema(keyspace_name, drop_first=True)
     elif storage == 'csv':
-        output_articles = os.path.join(rts.input_location, rts.language.code,
-                                       rts.project.name)
-        output_txt = os.path.join(rts.input_location, rts.language.code,
-                                  rts.project.name, 'txt')
-        res = file_utils.delete_file(output_articles, 'articles.csv')
-        res = file_utils.delete_file(output_txt, None, directory=True)
+        res = file_utils.delete_file(rts.txt, None, directory=True)
         if res:
-            res = file_utils.create_directory(output_txt)
+            res = file_utils.create_directory(rts.txt)
 
 
 def multiprocessor_launcher(function, dataset, storage, locks, rts):

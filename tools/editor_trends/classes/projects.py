@@ -17,7 +17,12 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-01-26'
 __version__ = '0.1'
 
+import sys
+if '..' not in sys.path:
+    sys.path.append('..')
+
 import languages
+from utils import text_utils
 
 class Project:
     def __init__(self, name, urlname, full_name):
@@ -81,8 +86,7 @@ class ProjectContainer:
         return self.projects.get(name, None)
 
     def supported_projects(self):
-        choices = ([(key, d['full_name']) for key, d in self.wikis.iteritems()])
-        return tuple(choices)
+        return ([(d['full_name'], key) for key, d in self.wikis.iteritems()])
 
     def project_supports_language(self, urlname):
         valid_languages_wiki = ['ace', 'af', 'als', 'an', 'roa-rup', 'ast', 'gn', 'av', 'ay', 'az', 'id', 'ms', 'bm', 'zh-min-nan', 'jv', 'map-bms', 'su', 'bug', 'bi', 'bar', 'bs', 'br', 'ca', 'cbk-zam', 'ch', 'cs', 'ny', 'sn', 'tum', 've', 'co', 'za', 'cy', 'da', 'pdc', 'de', 'nv', 'na', 'lad', 'et', 'ang', 'en', 'es', 'eo', 'ext', 'eu', 'to', 'fo', 'fr', 'frp', 'fy', 'ff', 'fur', 'ga', 'gv', 'sm', 'gd', 'gl', 'got', 'hak', 'haw', 'hsb', 'hr', 'io', 'ilo', 'ig', 'ia', 'ie', 'ik', 'xh', 'zu', 'is', 'it', 'mh', 'kl', 'pam', 'csb', 'kw', 'kg', 'ki', 'rw', 'ky', 'rn', 'sw', 'ht', 'ku', 'la', 'lv', 'lb', 'lt', 'lij', 'li', 'ln', 'jbo', 'lg', 'lmo', 'hu', 'mg', 'mt', 'mi', 'cdo', 'my', 'nah', 'fj', 'nl', 'cr', 'ne', 'nap', 'frr', 'pih', 'no', 'nn', 'nrm', 'oc', 'om', 'pag', 'pi', 'pap', 'pms', 'nds', 'pl', 'pt', 'ty', 'ksh', 'ro', 'rmy', 'rm', 'qu', 'se', 'sg', 'sc', 'sco', 'st', 'tn', 'sq', 'scn', 'simple', 'ceb', 'ss', 'sk', 'sl', 'so', 'sh', 'fi', 'sv', 'tl', 'tt', 'tet', 'vi', 'tpi', 'chy', 'tr', 'tk', 'tw', 'vec', 'vo', 'fiu-vro', 'wa', 'vls', 'war', 'wo', 'ts', 'yo', 'bat-smg', 'el', 'ab', 'ba', 'be', 'bg', 'bxr', 'cu', 'os', 'kk', 'kv', 'mk', 'mn', 'ce', 'ru', 'sr', 'tg', 'udm', 'uk', 'uz', 'xal', 'cv', 'hy', 'ka', 'he', 'yi', 'ar', 'fa', 'ha', 'ps', 'sd', 'ur', 'ug', 'arc', 'dv', 'as', 'bn', 'bpy', 'gu', 'bh', 'hi', 'ks', 'mr', 'kn', 'ne', 'new', 'sa', 'ml', 'or', 'pa', 'ta', 'te', 'bo', 'dz', 'si', 'km', 'lo', 'th', 'am', 'ti', 'iu', 'chr', 'ko', 'ja', 'zh', 'wuu', 'lzh', 'yue']
@@ -100,9 +104,13 @@ class ProjectContainer:
         except KeyError:
             return []
 
+def debug():
+    pc = ProjectContainer()
+    pc.supported_projects()
+
 def init():
     pc = ProjectContainer()
     return pc.get_project('wiki')
 
 if __name__ == '__main__':
-    init()
+    debug()

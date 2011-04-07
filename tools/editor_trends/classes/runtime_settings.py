@@ -56,39 +56,44 @@ class RunTimeSettings(Settings):
             self.hash = self.secs_since_epoch()
             #print self.settings.input_location
             #print self.get_value('location')
-            self.input_location = self.input_location if \
-                self.input_location != None else self.get_value('location')
             self.project = self.update_project_settings()
             self.language = self.update_language_settings()
-            self.charts = self.determine_chart(self.get_value('charts'))
-            self.keywords = self.split_keywords(self.get_value('keywords'))
-            self.kaggle = self.get_value('kaggle')
-            self.function = self.get_value('func')
 
-            self.ignore = self.get_value('except')
-            self.force = self.get_value('force')
-            self.location = self.get_project_location()
-            self.filename = self.generate_wikidump_filename()
+            self.input_location = self.set_input_location()
+            self.output_location = self.set_output_location()
+
+
+            self.charts = self.determine_chart()
+            self.keywords = self.split_keywords()
             self.namespaces = self.get_namespaces()
 
-            self.dataset = os.path.join(self.dataset_location,
-                                        self.project.name)
+            self.kaggle = self.get_value('kaggle')
+            self.function = self.get_value('func')
+            self.ignore = self.get_value('except')
+            self.force = self.get_value('force')
+            self.analyzer_collection = self.get_value('collection')
 
-            self.txt = os.path.join(self.location, 'txt')
-            self.sorted = os.path.join(self.location, 'sorted')
+            self.dataset = os.path.join(self.dataset_location, self.project.name)
+            self.txt = os.path.join(self.output_location, 'txt')
+            self.sorted = os.path.join(self.output_location, 'sorted')
 
-            self.directories = [self.location,
+            self.directories = [self.output_location,
                                 self.txt,
                                 self.sorted,
                                 self.dataset]
+            self.verify_environment(self.directories)
+
+            #Wikidump file related variables
             self.dump_filename = self.generate_wikidump_filename()
             self.dump_relative_path = self.set_dump_path()
             self.dump_absolute_path = self.set_dump_path(absolute=True)
+
+            #Collection names
             self.editors_raw = '%s%s_editors_raw' % (self.language.code, self.project.name)
             self.editors_dataset = '%s%s_editors_dataset' % (self.language.code, self.project.name)
             self.articles_raw = '%s%s_articles_raw' % (self.language.code, self.project.name)
-            self.analyzer_collection = self.get_value('collection')
-            self.verify_environment(self.directories)
+
+
 
     def __str__(self):
         return 'Runtime Settings for project %s %s' % (self.language.name,
@@ -107,7 +112,8 @@ class RunTimeSettings(Settings):
             props[prop] = getattr(self, prop)
         return props
 
-    def split_keywords(self, keywords):
+    def split_keywords(self):
+        keywords = self.get_value('keywords')
         d = {}
         if keywords != None:
             keywords = keywords.split(',')
@@ -124,10 +130,11 @@ class RunTimeSettings(Settings):
                     d[key] = value
         return d
 
-    def determine_chart(self, chart):
+    def determine_chart(self):
+        charts = self.get_value('charts')
         requested_charts = []
-        if chart != None and getattr(chart, 'func_name', None) == None:
-            charts = chart.split(',')
+        if charts != None and getattr(charts, 'func_name', None) == None:
+            charts = charts.split(',')
             available_charts = inventory.available_analyses()
             for chart in charts:
                 if chart not in available_charts:
@@ -135,11 +142,26 @@ class RunTimeSettings(Settings):
                     sys.exit(-1)
                 else:
                     requested_charts.append(chart)
-        elif getattr(chart, 'func_name', None) != None:
+        elif getattr(charts, 'func_name', None) != None:
             requested_charts.append(chart.func_name)
         return requested_charts
 
-    def get_project_location(self):
+
+    def set_input_location(self):
+        files = os.listdir(self.input_location)
+        extensions = ['gz', '7z', 'bz2']
+        valid = False
+        for ext in extensions:
+            if ext in files:
+                valid = True
+        if valid:
+            #ABS path case: check if files are stored here
+            return input_location
+        else:
+            return os.path.join(self.input_location, self.language.code,
+                                self.project.name)
+
+    def set_output_location(self):
         '''
         Construct the full project location
         '''
@@ -156,7 +178,7 @@ class RunTimeSettings(Settings):
                                               self.language.locale,
                                               self.language.code)
         about['Input directory'] = '%s' % self.input_location
-        about['Output directory'] = '%s and subdirectories' % self.location
+        about['Output directory'] = '%s and subdirectories' % self.output_location
 
         max_length_key = max([len(key) for key in about.keys()])
 

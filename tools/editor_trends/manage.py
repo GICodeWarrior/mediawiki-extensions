@@ -42,17 +42,6 @@ from analyses import analyzer
 from analyses import inventory
 
 
-def show_choices(settings, attr):
-    '''
-    Show possible choices in console, for example output valid languages or
-    valid projects.
-    '''
-    choices = getattr(settings, attr).items()
-    choices.sort()
-    choices = ['%s\t%s' % (choice[0], choice[1]) for choice in choices]
-    return choices
-
-
 def init_args_parser():
     '''
     Entry point for parsing command line and launching the needed function(s).
@@ -210,9 +199,17 @@ def config_launcher(rts, logger):
         config = ConfigParser.RawConfigParser()
         project = None
         language = None
+        valid_storage = ['mongo', 'cassandra']
         working_directory = raw_input('Please indicate where you installed Wikilytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
         input_location = raw_input('Please indicate where the Wikipedia dump files are or will be located.\nDefault is: %s\nPress Enter to accept default.\n' % rts.input_location)
         output_location = raw_input('Please indicate where to store all Wikilytics project files.\nDefault is: %s\nPress Enter to accept default.\n' % rts.output_location)
+
+
+        while db not in valid_storage:
+            db = raw_input('Please indicate what database you are using for storage. \nDefault is: Mongo\n')
+            db = 'mongo' if len(db) == 0 else db.lower()
+            if db not in valid_storage:
+                print 'Valid choices are: %s' % ','.join(valid_storage)
 
         while project not in pc.projects.keys():
             project = raw_input('Please indicate which project you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % rts.project.full_name)
@@ -238,14 +235,12 @@ def config_launcher(rts, logger):
         config.add_section('wiki')
         config.set('wiki', 'project', project)
         config.set('wiki', 'language', language)
+        config.add_section('storage')
+        config.set('db', 'type', db)
 
         fh = file_utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
         config.write(fh)
         fh.close()
-
-        rts.working_directory = config.get('file_locations', 'working_directory')
-        rts.input_location = config.get('file_locations', 'input_location')
-        rts.output_location = config.get('file_locations', 'output_location')
 
         log.to_csv(logger, rts, 'New configuration', 'Creating',
                        config_launcher,
