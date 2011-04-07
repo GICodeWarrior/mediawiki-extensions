@@ -151,7 +151,7 @@ class RunTimeSettings(Settings):
         extensions = ['gz', '7z', 'bz2']
         for file in files:
             basename, ext = os.path.splitext(file)
-            if ext in extension:
+            if ext in extensions:
                 #ABS path case: check if files are stored here
                 return self.input_location
         return os.path.join(self.input_location, self.language.code,
