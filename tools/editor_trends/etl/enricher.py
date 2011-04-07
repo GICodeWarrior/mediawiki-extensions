@@ -644,6 +644,7 @@ def parse_xml(fh, rts):
     article['revisions'] = []
     elements = []
     id = False
+    ns = False
 
     try:
         for event, elem in context:
@@ -651,6 +652,7 @@ def parse_xml(fh, rts):
                 xml_namespace = determine_xml_namespace(elem)
                 namespaces = create_namespace_dict(elem, xml_namespace)
                 article['namespaces'] = namespaces
+                ns = True
             elif event == 'end' and elem.tag.endswith('title'):
                 article['title'] = elem
             elif event == 'end' and elem.tag.endswith('revision'):
@@ -665,11 +667,8 @@ def parse_xml(fh, rts):
                 article['revisions'] = []
                 article['namespaces'] = namespaces
                 id = False
-                elements = [elem.clear() for elem in elements]
-                elements = []
-            elif event == 'end':
-                elements.append(elem)
-
+            elif event == 'end' and ns == True:
+                elem.clear()
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
         dump(elem)
