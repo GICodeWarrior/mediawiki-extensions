@@ -33,7 +33,7 @@ if '..' not in sys.path:
     sys.path.append('..')
 
 from classes import storage
-from bots import detector
+from analyses.adhoc import bot_detector
 from utils import file_utils
 
 EXCLUDE_NAMESPACE = {
@@ -676,7 +676,7 @@ def parse_xml(fh, rts):
 
 
 def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, rts):
-    bots = detector.retrieve_bots('en')
+    bots = bot_detector.retrieve_bots(rts.language.code)
     path = os.path.join(rts.location, 'txt')
 
     filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
