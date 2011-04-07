@@ -36,12 +36,12 @@ $wgHooks['ArticleSaveComplete'][] = 'wfMetaKeywordClearCache';
 
 //Adds customised keywords after the pagename of the <meta keywords> tag
 function wfMetaKeywordOutput( &$out ){
-	global $wgTitle, $wgMemc;
-	$ns = $wgTitle->getNamespace();
+	global $wgMemc;
+	$ns = $out->getTitle()->getNamespace();
 	
 	//Keywords
 	$opts = $wgMemc->get( "metakeywords-opts" );
-	if($opts === null ){ //Reload if not in cache
+	if ( !is_array( $opts ) ) { //Reload if not in cache
 		$opts = wfMetaKeywordInput( 'keywords' );
 	}
 	$pagename = array_shift( $out->mKeywords );
@@ -57,7 +57,7 @@ function wfMetaKeywordOutput( &$out ){
 	//Descriptions
 	$opts = $wgMemc->get( "metadescription-opts" );
 
-	if($opts === null ){ //Reload if not in cache
+	if ( !is_array( $opts ) ) { //Reload if not in cache
 		$opts = wfMetaKeywordInput( 'description' );
 	}
 	if( array_key_exists( $ns, $opts ) && $opts[$ns] ){ //Namespace specific descrption
