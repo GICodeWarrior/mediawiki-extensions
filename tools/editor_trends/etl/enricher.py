@@ -642,6 +642,7 @@ def parse_xml(fh, rts):
 
     article = {}
     article['revisions'] = []
+    elements = []
     id = False
 
     try:
@@ -664,8 +665,11 @@ def parse_xml(fh, rts):
                 article['revisions'] = []
                 article['namespaces'] = namespaces
                 id = False
-            #elif rts.kaggle == True and event == 'end':
-            #    elem.clear()
+                elements = [elem.clear() for elem in elements]
+                elements = []
+            elif event == 'end':
+                elements.append(elem)
+
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
         dump(elem)
