@@ -17,27 +17,35 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
+import sys
+
 def taxonomy_list_makers(var, editor, **kwargs):
     """
     == List makers ==
     Any editor who makes more than 10 mainspace edits a month to articles with 
     titles that begin with "List of..."
     """
-    articles_by_year = editor['articles_by_year']
+    db_articles = kwargs.get('articles', None)
+
+    if db_articles == None:
+        sys.exit(-1)
+
+    articles_edited = editor['articles_edited']
     count = 0
-
-    for year in xrange(new_wikipedian.year, var.max_year):
-        for month in xrange(1, 13):
-            for article in articles_by_year[year][month]:
-                """ locate article titles containing  "List of" """
-                if article.find('List of') > -1:
-                    count = count + 1
-
+    years = articles_edited.keys()
+    for year in years:
+        months = articles_edited[year].keys()
+        for month in months:
+            articles = articles_edited[year].get(month, [])
+            for article in articles:
+                article = db_articles.find('id', article)
+                print article
+                if article['category'] == 'List':
+                    count += 1
 
     """ Add all editors with an edit count of more than 10 """
 
     if count > 10:
         var.add(editor['username'], 1)
-
 
     return var

@@ -82,6 +82,7 @@ class Analyzer(consumers.BaseConsumer):
         project and then calls the plugin that does the actual mapping.
         '''
         db = storage.Database('mongo', self.rts.dbname, self.rts.editors_dataset)
+        articles = storage.Database('mongo', self.rts.dbname, self.rts.articles_raw)
         while True:
             try:
                 task = self.tasks.get(block=False)
@@ -91,7 +92,7 @@ class Analyzer(consumers.BaseConsumer):
                     break
                 editor = db.find_one('editor', task.editor)
 
-                task.plugin(self.var, editor, dbname=self.rts.dbname)
+                task.plugin(self.var, editor, dbname=self.rts.dbname, articles=articles)
                 self.result.put(True)
             except Empty:
                 pass
