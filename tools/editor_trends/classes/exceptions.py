@@ -97,7 +97,6 @@ class NotYetImplementedError(Error):
         subversion or contact Diederik van Liere.''' % self.func.func_name
 
 
-
 class GenericMessage(Error):
     def __init__(self, caller):
         self.caller = caller
@@ -108,5 +107,8 @@ class GenericMessage(Error):
         elif self.caller == 'corrupted_install':
             return 'I could not determine the location of manage.py, \
                 please reinstall Wikilytics.'
-
+        elif self.caller == 'corrupted_config':
+            return 'Please delete wiki.cfg and run python manage.py config'
+        elif self.caller == 'not_configured':
+            return 'Please run first python manage.py config'
 

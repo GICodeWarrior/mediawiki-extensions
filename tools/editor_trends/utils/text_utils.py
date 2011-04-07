@@ -43,8 +43,6 @@ def convert_timestamp_to_datetime_utc(timestamp):
     return d
 
 
-
-
 def invert_dict(dictionary):
     '''
     @dictionary is a simple dictionary containing simple values, ie. no lists,
@@ -54,3 +52,39 @@ def invert_dict(dictionary):
     return dict([[v, k] for k, v in dictionary.items()])
 
 
+def get_max_width(table, index):
+    '''
+    Get the maximum width of the given column index
+    Gracefully borrowed from: http://ginstrom.com/scribbles/2007/09/04/pretty-printing-a-table-in-python/
+    '''
+    return max([len(row[index]) for row in table])
+
+
+
+
+def pprint_table(table):
+    '''
+    Prints out a table of data, padded for alignment
+    @param out: Output stream (file-like object)
+    @param table: The table to print. A list of lists.
+    Each row must have the same number of columns.
+    Gracefully borrowed from: http://ginstrom.com/scribbles/2007/09/04/pretty-printing-a-table-in-python/
+    '''
+
+    col_paddings = []
+    text = ''
+    for i in range(len(table[0])):
+        col_paddings.append(get_max_width(table, i))
+
+    for row in table:
+        # left col
+        #print >> out, row[0].ljust(col_paddings[0] + 1),
+        # rest of the cols
+        for i in xrange(0, len(row)):
+            col = row[i].rjust(col_paddings[i] + 2)
+            text = text + col
+            if i == len(row) - 1:
+                text = text + '\n'
+            #print >> out, col,
+        #print >> out
+    return text

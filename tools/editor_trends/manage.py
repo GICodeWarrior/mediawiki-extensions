@@ -199,11 +199,11 @@ def config_launcher(rts, logger):
         config = ConfigParser.RawConfigParser()
         project = None
         language = None
+        db = None
         valid_storage = ['mongo', 'cassandra']
         working_directory = raw_input('Please indicate where you installed Wikilytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
         input_location = raw_input('Please indicate where the Wikipedia dump files are or will be located.\nDefault is: %s\nPress Enter to accept default.\n' % rts.input_location)
         output_location = raw_input('Please indicate where to store all Wikilytics project files.\nDefault is: %s\nPress Enter to accept default.\n' % rts.output_location)
-
 
         while db not in valid_storage:
             db = raw_input('Please indicate what database you are using for storage. \nDefault is: Mongo\n')
@@ -236,7 +236,7 @@ def config_launcher(rts, logger):
         config.set('wiki', 'project', project)
         config.set('wiki', 'language', language)
         config.add_section('storage')
-        config.set('db', 'type', db)
+        config.set('storage', 'db', db)
 
         fh = file_utils.create_binary_filehandle(working_directory, 'wiki.cfg', 'wb')
         config.write(fh)

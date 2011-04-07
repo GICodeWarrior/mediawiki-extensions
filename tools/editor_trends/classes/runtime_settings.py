@@ -146,20 +146,16 @@ class RunTimeSettings(Settings):
             requested_charts.append(chart.func_name)
         return requested_charts
 
-
     def set_input_location(self):
         files = os.listdir(self.input_location)
         extensions = ['gz', '7z', 'bz2']
-        valid = False
-        for ext in extensions:
-            if ext in files:
-                valid = True
-        if valid:
-            #ABS path case: check if files are stored here
-            return input_location
-        else:
-            return os.path.join(self.input_location, self.language.code,
-                                self.project.name)
+        for file in files:
+            basename, ext = os.path.splitext(file)
+            if ext in extension:
+                #ABS path case: check if files are stored here
+                return self.input_location
+        return os.path.join(self.input_location, self.language.code,
+                            self.project.name)
 
     def set_output_location(self):
         '''

@@ -89,37 +89,21 @@ class Statistics:
 
 
 class Buffer:
-    def __init__(self, storage, process_id, rts=None, filehandles=None, locks=None):
-        assert storage == 'cassandra' or storage == 'mongo' or storage == 'csv', \
-            'Valid storage options are cassandra and mongo.'
+    def __init__(self, storage, process_id, rts=None, locks=None):
         self.storage = storage
         self.revisions = {}
         self.comments = {}
         self.titles = {}
         self.process_id = process_id
-        self.keyspace_name = 'enwiki'
         self.keys = ['revision_id', 'article_id', 'id', 'username', 'namespace',
                      'title', 'timestamp', 'hash', 'revert', 'bot', 'cur_size',
                      'delta']
-        self.setup_storage()
         self.stats = Statistics(self.process_id)
-        if storage == 'csv' and locks != None:
+        if locks != None:
             self.rts = rts
             self.lock1 = locks[0] #lock for generic data
             self.lock2 = locks[1] #lock for comment data
             self.lock3 = locks[2] #lock for article titles
-            self.filehandles = filehandles[0]
-            self.fh_titles = filehandles[1]
-            self.fh_comments = filehandles[2]
-
-    def setup_storage(self):
-        if self.storage == 'cassandra':
-            self.db = pycassa.connect(self.keyspace_name)
-            self.collection = pycassa.ColumnFamily(self.db, 'revisions')
-
-        elif self.storage == 'mongo':
-            self.db = db.init_mongo_db(self.keyspace_name)
-            self.collection = self.db['kaggle']
 
     def get_hash(self, id):
         '''
@@ -166,61 +150,60 @@ class Buffer:
         self.store()
         self.clear()
 
-
     def clear(self):
         self.revisions = {}
         self.comments = {}
         self.titles = {}
 
     def store(self):
-        if self.storage == 'cassandra':
-            self.collection.batch_insert(self.revisions)
-        elif self.storage == 'mongo':
-            print 'insert into mongo'
-        else:
-            rows = []
-            for id, revision in self.revisions.iteritems():
-                values = []
-                for key in self.keys:
-                    values.append(revision[key].decode('utf-8'))
-                #values.insert(0, id)
-                rows.append(values)
-            self.write_output(rows)
+        rows = []
+        for id, revision in self.revisions.iteritems():
+            values = []
+            for key in self.keys:
+                values.append(revision[key].decode('utf-8'))
+            rows.append(values)
+        self.write_output(rows)
 
-            if self.comments:
-                self.lock2.acquire()
-                try:
-                    rows = []
-                    for revision_id, comment in self.comments.iteritems():
-                        #comment = comment.decode('utf-8')
-                        #row = '\t'.join([revision_id, comment]) + '\n'
-                        rows.append([revision_id, comment])
-                        file_utils.write_list_to_csv(row, self.fh_comments)
-                except Exception, error:
-                    print error
-                finally:
-                    self.lock2.release()
+        if self.comments:
+            self.lock2.acquire()
+            try:
+                fh = file_utils.create_txt_filehandle(self.rts.txt,
+                                                'comments.csv', 'a', 'utf-8')
+                rows = []
+                for revision_id, comment in self.comments.iteritems():
+                    #comment = comment.decode('utf-8')
+                    #row = '\t'.join([revision_id, comment]) + '\n'
+                    rows.append([revision_id, comment])
+                    file_utils.write_list_to_csv(row, fh)
+            except Exception, error:
+                print 'Encountered the following error while writing data to %s: %s' % (fh, error)
+            finally:
+                fh.close()
+                self.lock2.release()
 
-            elif self.titles:
-                self.lock3.acquire()
-                try:
-                    rows = []
-                    for article_id, dict in self.titles.iteritems():
-                        keys = dict.keys()
-                        value = []
-                        for key in keys:
-                            value.append(key)
-                            value.append(dict[key])
-                        value.insert(0, article_id)
-                        value.insert(0, 'id')
-                        #title = title.encode('ascii')
-                        #row = '\t'.join([article_id, title]) + '\n'
-                        rows.append(value)
-                    file_utils.write_list_to_csv(rows, self.fh_titles, newline=False)
-                except Exception, error:
-                    print error
-                finally:
-                    self.lock3.release()
+        elif self.titles:
+            self.lock3.acquire()
+            try:
+                fh = file_utils.create_txt_filehandle(self.rts.txt,
+                                                'titles.csv', 'a', 'utf-8')
+                rows = []
+                for article_id, dict in self.titles.iteritems():
+                    keys = dict.keys()
+                    value = []
+                    for key in keys:
+                        value.append(key)
+                        value.append(dict[key])
+                    value.insert(0, article_id)
+                    value.insert(0, 'id')
+                    #title = title.encode('ascii')
+                    #row = '\t'.join([article_id, title]) + '\n'
+                    rows.append(value)
+                    file_utils.write_list_to_csv(rows, fh, newline=False)
+            except Exception, error:
+                print 'Encountered the following error while writing data to %s: %s' % (fh, error)
+            finally:
+                fh.close()
+                self.lock3.release()
 
 
     def write_output(self, data):
@@ -232,12 +215,14 @@ class Buffer:
                 for i, revision in enumerate(self.revisions[editor]):
                     if i == 0:
                         id = self.get_hash(revision[2])
-                        fh = self.filehandles[id]
+                        fh = file_utils.create_txt_filehandle(self.rts.txt,
+                                                    '%s.csv' % id, 'a', 'utf-8')
                 try:
                     file_utils.write_list_to_csv(revision, fh, lock=self.lock1)
                 except Exception, error:
-                    print 'Encountered the following error while writing data to %s: %s' % (error, fh)
+                    print 'Encountered the following error while writing data to %s: %s' % (fh, error)
             finally:
+                fh.close()
                 self.lock1.release()
 
 
@@ -663,24 +648,11 @@ def parse_xml(fh, rts):
 
 def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, rts):
     bots = bot_detector.retrieve_bots(rts.language.code)
-    path = os.path.join(rts.output_location, 'txt')
-
-    filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
-                'utf-8') for fh in xrange(rts.max_filehandles)]
-
-    title_file = os.path.join(path, 'titles.csv')
-    comment_file = os.path.join(path, 'comments.csv')
-    #file_utils.delete_file(path, title_file, directory=False)
-    #file_utils.delete_file(path, comment_file, directory=False)
-    fh_titles = codecs.open(title_file, 'a', 'utf-8')
-    fh_comments = codecs.open(comment_file, 'a', 'utf-8')
-    handles = [filehandles, fh_titles, fh_comments]
-    wikilytics = False
 
     t0 = datetime.datetime.now()
     i = 0
     if dataset == 'training':
-        cache = Buffer(storage, process_id, rts, handles, locks)
+        cache = Buffer(storage, process_id, rts, locks)
     else:
         counts = {}
 
@@ -732,10 +704,7 @@ def setup(storage, rts=None):
     preparations are made including setting up namespaces and cleaning up old
     files. 
     '''
-    if storage == 'cassandra':
-        keyspace_name = 'enwiki'
-        cassandra.install_schema(keyspace_name, drop_first=True)
-    elif storage == 'csv':
+    if storage == 'csv':
         res = file_utils.delete_file(rts.txt, None, directory=True)
         if res:
             res = file_utils.create_directory(rts.txt)
@@ -743,7 +712,6 @@ def setup(storage, rts=None):
 
 def multiprocessor_launcher(function, dataset, storage, locks, rts):
     input_queue = JoinableQueue()
-
     files = file_utils.retrieve_file_list(rts.input_location)
     if len(files) > cpu_count():
         processors = cpu_count() - 1
@@ -767,9 +735,6 @@ def multiprocessor_launcher(function, dataset, storage, locks, rts):
         extracter.start()
 
     input_queue.join()
-    #filehandles = [fh.close() for fh in filehandles]
-    #fh_titles.close()
-    #fh_comments.close()
 
 
 def launcher_training():

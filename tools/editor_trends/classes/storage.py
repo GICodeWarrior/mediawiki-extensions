@@ -193,9 +193,8 @@ class Mongo(AbstractDatabase):
 
     def start_server(self, port, path):
         default_port = 27017
-        port = default_port + port
         if settings.platform == 'Windows':
-            p = subprocess.Popen([path, '--port %s', port, '--dbpath',
+            p = subprocess.Popen([path, '--port %s', self.port, '--dbpath',
                                   'c:\data\db', '--logpath', 'c:\mongodb\logs'])
         elif settings.platform == 'Linux':
             subprocess.Popen([path, '--port %s' % port])
@@ -207,11 +206,15 @@ class Mongo(AbstractDatabase):
 
 class Cassandra(AbstractDatabase):
     @classmethod
+    def __init__(self):
+        self.port = 9160
+        self.host = '127.0.0.1'
+
     def is_registrar_for(cls, storage):
         return storage == 'cassandra'
 
     def install_schema(self, drop_first=False):
-        sm = pycassa.system_manager.SystemManager('127.0.0.1:9160')
+        sm = pycassa.system_manager.SystemManager('%s:%s' % (sef.host, self.port))
         if drop_first:
             sm.drop_keyspace(keyspace_name)
 
@@ -225,6 +228,30 @@ class Cassandra(AbstractDatabase):
         sm.create_index(self.dbname, self.collection, 'username', pycassa.system_manager.UTF8_TYPE)
         sm.create_index(self.dbname, self.collection, 'user_id', pycassa.system_manager.LONG_TYPE)
 
+    def connect(self):
+        self.db = pycassa.connect(self.dbname)
+        self.collection = pycassa.ColumnFamily(self.dbname, self.collection)
+
+    def drop_collection(self):
+        return
+
+    def add_index(self, key):
+        return
+
+    def insert(self, data):
+        return
+
+    def update(self, key, data):
+        return
+
+    def find(self, key, qualifier=None):
+        return
+
+    def save(self, data):
+        return
+
+    def count(self):
+        return
 
 
 def Database(storage, dbname, collection):
