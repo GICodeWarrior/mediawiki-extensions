@@ -213,6 +213,13 @@ $messages['nl'] = array(
 	'printversion-inexistent-book' => 'Het boek is niet aangetroffen. Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'bookmanager-desc' => 'Verktøy for bøker',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
