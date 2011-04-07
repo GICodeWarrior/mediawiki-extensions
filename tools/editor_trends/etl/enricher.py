@@ -521,8 +521,9 @@ def create_namespace_dict(siteinfo, xml_namespace):
     '''
     namespaces = {}
     print 'Constructing namespace dictionary'
-
+    print xml_namespace
     elements = siteinfo.find('%s%s' % (xml_namespace, 'namespaces'))
+    print elements
     for elem in elements:
         key = int(elem.get('key'))
         namespaces[key] = elem.text #extract_text(ns)
@@ -531,6 +532,8 @@ def create_namespace_dict(siteinfo, xml_namespace):
             print key, text.encode('utf-8')
         except UnicodeEncodeError:
             print key
+    if namespaces == {}:
+        sys.exit(-1)
     return namespaces
 
 
