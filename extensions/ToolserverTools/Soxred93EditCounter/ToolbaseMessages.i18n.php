@@ -339,7 +339,7 @@ $messages['de'] = array(
 	'toolbase-replag-minutes' => 'Minuten',
 	'toolbase-replag-seconds' => 'Sekunden',
 	'toolbase-footer-exectime' => 'Binnen $1 Sekunden ausgeführt',
-	'toolbase-footer-source' => 'Quellcode ansehen',
+	'toolbase-footer-source' => 'Quelltext anzeigen',
 	'toolbase-footer-language' => 'Sprache wechseln',
 	'toolbase-footer-translate' => 'Übersetzen',
 	'toolbase-navigation' => 'Navigation',
@@ -808,7 +808,7 @@ $messages['mk'] = array(
 	'toolbase-replag-minutes' => 'минути',
 	'toolbase-replag-seconds' => 'секунди',
 	'toolbase-footer-exectime' => 'Извршено за $1 секунди',
-	'toolbase-footer-source' => 'Види извор',
+	'toolbase-footer-source' => 'Извор',
 	'toolbase-footer-language' => 'Смени јазик',
 	'toolbase-footer-translate' => 'Преведи',
 	'toolbase-navigation' => 'Навигација',
@@ -987,8 +987,10 @@ Se chegou cá a partir de um link <a href="$1">reporte este defeito</a>, por fav
 
 /** Russian (Русский)
  * @author Haffman
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'toolbase-header-bugs' => 'Ошибки',
 	'toolbase-replag-years' => 'годы',
 	'toolbase-replag-months' => 'месяцы',
 	'toolbase-replag-weeks' => 'недели',

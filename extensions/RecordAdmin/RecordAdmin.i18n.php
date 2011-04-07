@@ -1436,10 +1436,11 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
-	'recordadmin-actions' => 'Tindakan',
+	'recordadmin-actions' => 'Sunting',
 );
 
 /** Erzya (Эрзянь)

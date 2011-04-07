@@ -403,12 +403,13 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['da'] = array(
 	'importusers-uploadfile' => 'Læg en fil op',
 	'importusers-form-button' => 'Importer',
 	'importusers-log' => 'Brugerimportlog',
-	'importusers-log-summary-updated' => 'Opdateret',
+	'importusers-log-summary-updated' => 'Opdateret: $1',
 	'importusers-password' => 'adgangskode',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'virkeligt navn',
@@ -1376,12 +1377,13 @@ $messages['nl'] = array(
  * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'importusers' => 'Importer brukarar',
 	'importusers-desc' => '[[Special:ImportUsers|Importer brukarar]] frå ei CSV-fil; teiknkoding: UTF-8',
 	'importusers-uploadfile' => 'Last opp fil',
-	'importusers-form-caption' => 'CSV-fil for inntekst (UTF-8)',
+	'importusers-form-caption' => 'CSV-fil for inntekst (UTF-8):',
 	'importusers-form-file' => 'Brukarfilformat (CSV):',
 	'importusers-form-replace-present' => 'Erstatt brukarar som finst frå før',
 	'importusers-form-button' => 'Importer',
@@ -1391,9 +1393,9 @@ $messages['nn'] = array(
 	'importusers-user-invalid-format' => 'Brukerdataa på linja #$1 har ugyldig format eller er blank. Hoppa over.',
 	'importusers-log' => 'Loggføring for importering av brukarar',
 	'importusers-log-summary' => 'Samandrag',
-	'importusers-log-summary-all' => 'Alle',
-	'importusers-log-summary-added' => 'Lagt til',
-	'importusers-log-summary-updated' => 'Oppdatert',
+	'importusers-log-summary-all' => 'Alle: $1',
+	'importusers-log-summary-added' => 'Lagt til: $1',
+	'importusers-log-summary-updated' => 'Oppdatert: $1',
 	'importusers-login-name' => 'Inloggingsnamn',
 	'importusers-password' => 'passord',
 	'importusers-email' => 'e-post',
@@ -1410,7 +1412,7 @@ $messages['no'] = array(
 	'importusers' => 'Importer brukere',
 	'importusers-desc' => '[[Special:ImportUsers|Importer brukere]] fra CSV-fil; tegnkoding: UTF-8',
 	'importusers-uploadfile' => 'Last opp fil',
-	'importusers-form-caption' => 'Sett inn CSV-fil (UTF-8)',
+	'importusers-form-caption' => 'Sett inn CSV-fil (UTF-8):',
 	'importusers-form-file' => 'Brukerfilformat (CSV):',
 	'importusers-form-replace-present' => 'Erstatt eksisterende brukere',
 	'importusers-form-button' => 'Importer',
@@ -1420,9 +1422,9 @@ $messages['no'] = array(
 	'importusers-user-invalid-format' => 'Brukerdataene på linje #$1 har ugyldig format eller er blank. Hoppet over.',
 	'importusers-log' => 'Brukerimporteringslogg',
 	'importusers-log-summary' => 'Sammendrag',
-	'importusers-log-summary-all' => 'Alle',
-	'importusers-log-summary-added' => 'Lagt til',
-	'importusers-log-summary-updated' => 'Oppdatert',
+	'importusers-log-summary-all' => 'Alle: $1',
+	'importusers-log-summary-added' => 'Lagt til: $1',
+	'importusers-log-summary-updated' => 'Oppdatert: $1',
 	'importusers-login-name' => 'Innloggingsnavn',
 	'importusers-password' => 'passord',
 	'importusers-email' => 'e-post',
@@ -1881,12 +1883,13 @@ $messages['su'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Nghtwlkr
  */
 $messages['sv'] = array(
 	'importusers' => 'Importera användare',
 	'importusers-desc' => '[[Special:ImportUsers|Importera användare]] från en CSV-fil; teckenkodning: UTF-8',
 	'importusers-uploadfile' => 'Ladda upp fil',
-	'importusers-form-caption' => 'Sätt in CSV-fil (UTF-8)',
+	'importusers-form-caption' => 'Sätt in CSV-fil (UTF-8):',
 	'importusers-form-file' => 'Användarfilsformat (CSV):',
 	'importusers-form-replace-present' => 'Ersätt existerande användare',
 	'importusers-form-button' => 'Importera',
@@ -1896,9 +1899,9 @@ $messages['sv'] = array(
 	'importusers-user-invalid-format' => 'Användardatan på linje #$1 har ogiltigt format eller är blank. Överhoppad.',
 	'importusers-log' => 'Användarimporteringslogg',
 	'importusers-log-summary' => 'Sammanfattning',
-	'importusers-log-summary-all' => 'Alla',
-	'importusers-log-summary-added' => 'Tillagd',
-	'importusers-log-summary-updated' => 'Uppdaterad',
+	'importusers-log-summary-all' => 'Alla: $1',
+	'importusers-log-summary-added' => 'Tillagd: $1',
+	'importusers-log-summary-updated' => 'Uppdaterad: $1',
 	'importusers-login-name' => 'Inloggningsnamn',
 	'importusers-password' => 'lösenord',
 	'importusers-email' => 'e-post',

@@ -628,10 +628,11 @@ $messages['hu'] = array(
 );
 
 /** Armenian (Հայերեն)
+ * @author Chaojoker
  * @author Togaed
  */
 $messages['hy'] = array(
-	'edituser-username' => 'Անուն',
+	'edituser-username' => 'Մասնակցի անուն՝',
 	'edituser-dosearch' => 'Որոնել',
 );
 
