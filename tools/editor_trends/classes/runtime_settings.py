@@ -148,7 +148,7 @@ class RunTimeSettings(Settings):
 
     def set_input_location(self):
         files = os.listdir(self.input_location)
-        extensions = ['gz', '7z', 'bz2']
+        extensions = ['.gz', '.7z', '.bz2']
         for file in files:
             basename, ext = os.path.splitext(file)
             if ext in extensions:
