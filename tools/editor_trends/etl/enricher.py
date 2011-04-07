@@ -524,7 +524,7 @@ def create_namespace_dict(siteinfo, xml_namespace):
     print xml_namespace
     elements = siteinfo.find('%s%s' % (xml_namespace, 'namespaces'))
     print elements
-    for elem in elements:
+    for elem in elements.getchildren():
         key = int(elem.get('key'))
         namespaces[key] = elem.text #extract_text(ns)
         text = elem.text if elem.text != None else ''
@@ -532,6 +532,8 @@ def create_namespace_dict(siteinfo, xml_namespace):
             print key, text.encode('utf-8')
         except UnicodeEncodeError:
             print key
+        elem.clear()
+    siteinfo.clear()
     if namespaces == {}:
         sys.exit(-1)
     return namespaces
@@ -546,7 +548,10 @@ def determine_xml_namespace(siteinfo):
             xml_namespace = elem.tag
             pos = xml_namespace.find('sitename')
             xml_namespace = xml_namespace[0:pos]
+            elem.clear()
             return xml_namespace
+        else:
+            elem.clear()
 
 
 def count_edits(article, counts, bots, xml_namespace):
@@ -659,8 +664,8 @@ def parse_xml(fh, rts):
                 article['revisions'] = []
                 article['namespaces'] = namespaces
                 id = False
-            elif rts.kaggle == True and event == 'end':
-                elem.clear()
+            #elif rts.kaggle == True and event == 'end':
+            #    elem.clear()
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
         dump(elem)
