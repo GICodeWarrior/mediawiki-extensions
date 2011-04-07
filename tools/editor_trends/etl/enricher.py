@@ -35,9 +35,6 @@ from classes import storage
 from analyses.adhoc import bot_detector
 from utils import file_utils
 
-filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
-                'utf-8') for fh in xrange(rts.max_filehandles)]
-
 EXCLUDE_NAMESPACE = {
     #0:'Main',    
     #1:'Talk',
@@ -656,8 +653,8 @@ def parse_xml(fh, rts):
                 article['revisions'] = []
                 article['namespaces'] = namespaces
                 id = False
-            elif event == 'end' and ns == True:
-                elem.clear()
+            #elif event == 'end' and ns == True:
+            #   elem.clear()
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
         dump(elem)
@@ -668,8 +665,8 @@ def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, r
     bots = bot_detector.retrieve_bots(rts.language.code)
     path = os.path.join(rts.output_location, 'txt')
 
-    #filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
-    #            'utf-8') for fh in xrange(rts.max_filehandles)]
+    filehandles = [file_utils.create_txt_filehandle(path, '%s.csv' % fh, 'a',
+                'utf-8') for fh in xrange(rts.max_filehandles)]
 
     title_file = os.path.join(path, 'titles.csv')
     comment_file = os.path.join(path, 'comments.csv')
