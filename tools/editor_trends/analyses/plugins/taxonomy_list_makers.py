@@ -31,6 +31,8 @@ def taxonomy_list_makers(var, editor, **kwargs):
         sys.exit(-1)
 
     articles_edited = editor['articles_edited']
+    list_articles = db_articles.find('category', 'List')
+    print list_articles
     count = 0
     years = articles_edited.keys()
     for year in years:
@@ -38,9 +40,7 @@ def taxonomy_list_makers(var, editor, **kwargs):
         for month in months:
             articles = articles_edited[year].get(month, [])
             for article in articles:
-                article = db_articles.find('id', article)
-                print article
-                if article['category'] == 'List':
+                if article in list_articles:
                     count += 1
 
     """ Add all editors with an edit count of more than 10 """
