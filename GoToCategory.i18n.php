@@ -199,7 +199,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'gotocategory-desc' => "Iwwerpréift Sichbegreffer géint den Nummraum-Kategorien fir d'fonctioun 'Op d'Säit sprangen'",
+	'gotocategory-desc' => "Iwwerpréift Sichbegrëffer géint d'Kategorie: Nummraum fir d'Fonctioun 'Op d'Säit sprangen'",
 );
 
 /** Limburgish (Limburgs)
