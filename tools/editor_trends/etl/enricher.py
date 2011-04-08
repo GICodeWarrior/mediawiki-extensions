@@ -778,7 +778,7 @@ def multiprocessor_launcher(function, dataset, lock, rts):
         extracter.start()
 
     input_queue.join()
-    filehandles = [fh.close() for fh in filehandles]
+    #filehandles = [fh.close() for fh in filehandles]
 
 def launcher_training():
     '''
