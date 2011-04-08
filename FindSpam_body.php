@@ -21,7 +21,7 @@ class FindSpamPage extends SpecialPage {
 	 */
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgLocalDatabases, $wgUser;
-		global $wgConf, $wgCanonicalNamespaceNames, $wgLang;
+		global $wgConf, $wgLang;
 
 		$this->setHeaders();
 
@@ -34,8 +34,7 @@ class FindSpamPage extends SpecialPage {
 		$ip = $wgRequest->getText( 'ip' );
 
 		# Show form
-		$self = SpecialPage::getTitleFor( 'FindSpam' );
-		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalUrl() ) );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'findspam-ip' ) . '</td>';
 		$form .= '<td>' . Xml::input( 'ip', 50, $ip ) . '</td></tr>';
 		$form .= '<tr><td></td><td>' . Xml::submitButton( wfMsg( 'findspam-ok' ) ) . '</td></tr></table></form>';
@@ -63,7 +62,7 @@ class FindSpamPage extends SpecialPage {
 						if ( $row->rc_namespace == 0 ){
 							$title = $row->rc_title;
 						} else {
-							$title = $wgCanonicalNamespaceNames[$row->rc_namespace] . ':' .$row->rc_title;
+							$title = MWNamespace::getCanonicalName( $row->rc_namespace ) . ':' .$row->rc_title;
 						}
 						$encTitle = urlencode( $title );
 						$url = "$baseUrl/wiki/$encTitle";
