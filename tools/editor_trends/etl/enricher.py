@@ -151,7 +151,7 @@ class Buffer:
         editors = {}
         #first, we group all revisions by editor 
 
-        for revision in self.revisions:
+        for revision in self.revisions.values():
             row = []
             #strip away the keys and make sure that the values are always in the same sequence
             for key in self.keys:
@@ -164,7 +164,7 @@ class Buffer:
         #now, we are going to group all editors by file_id
         file_ids = self.invert_dictionary(editors)
         self.revisions = {}
-        for file_id, editors in file_ids:
+        for file_id, editors in file_ids.iteritems():
             for editor in editors:
                 self.revisions.setdefault(file_id, [])
                 self.revisions[file_id].extend(data[editor])
@@ -254,11 +254,11 @@ class Buffer:
                             break
                     try:
                         file_utils.write_list_to_csv(revision, fh)
-                        self.lock.release(file_id)
-                        del self.revisions[file_id]
                     except Exception, error:
                         print '''Encountered the following error while writing 
                             revision data to %s: %s''' % (fh, error)
+                self.lock.release(file_id)
+                del self.revisions[file_id]
         #t1 = datetime.datetime.now()
         #print '%s revisions took %s' % (len(self.revisions), (t1 - t0))
 
