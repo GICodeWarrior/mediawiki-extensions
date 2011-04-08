@@ -2393,6 +2393,7 @@ $messages['ce'] = array(
 );
 
 /** Sorani (کوردی)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -2405,7 +2406,7 @@ $messages['ckb'] = array(
 	'langman_langname' => 'ناوی زمان:',
 	'langman_iso639-3' => 'کۆدی ISO 639-3:',
 	'langman_iso639-2' => 'کۆدی ISO 639-2:',
-	'langman_wikimedia' => 'کۆدی ویکی‌مێدیا:',
+	'langman_wikimedia' => 'کۆدی ویکیمدیا:',
 	'langman_field_optional' => '(دڵخوازانه‌)',
 	'langman_addlang' => 'زمان زیاد بکە',
 	'importlangnames_not_allowed' => 'ڕێگەت پێ‌نەدراوە بۆ گۆڕانی هەڵبژاردەکانی زمان.',
