@@ -378,6 +378,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'narayam-help-page' => 'Help:Tippen',
+	'narayam-eo' => 'Esperanto',
 	'narayam-kn' => 'Kannada (Transliteratioun)',
 	'narayam-ml' => 'Malayalam-Transliteratioun',
 	'narayam-sa-inscript' => 'Sanskrit (InScript)',
@@ -683,6 +684,7 @@ $messages['vi'] = array(
 	'narayam-help-page' => 'Help:Bộ gõ',
 	'narayam-checkbox-tooltip' => 'Bật/tắt bộ gõ',
 	'narayam-disable-preference' => 'Tắt bộ gõ Narayam',
+	'narayam-eo' => 'Quốc tế ngữ',
 	'narayam-hi-inscript' => 'InScript Hindi',
 	'narayam-kn' => 'Chuyển tự tiếng Kannada',
 	'narayam-kn-inscript' => 'InScript Kannada',
