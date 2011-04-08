@@ -141,7 +141,7 @@ class Buffer:
             hashes[file_id].append(editor)
         return hashes
 
-    def group_revisions_by_fileid(self, revisions):
+    def group_revisions_by_fileid(self):
         '''
         This function groups observation by editor id and then by file_id, 
         this way we have to make fewer file opening calls and should reduce
@@ -151,7 +151,7 @@ class Buffer:
         editors = {}
         #first, we group all revisions by editor 
 
-        for revision in revisions:
+        for revision in self.revisions:
             row = []
             #strip away the keys and make sure that the values are always in the same sequence
             for key in self.keys:
@@ -163,12 +163,11 @@ class Buffer:
 
         #now, we are going to group all editors by file_id
         file_ids = self.invert_dictionary(editors)
-        revisions = {}
+        self.revisions = {}
         for file_id, editors in file_ids:
             for editor in editors:
-                revisions.setdefault(file_id, [])
-                revisions[file_id].extend(data[editor])
-        return revisions
+                self.revisions.setdefault(file_id, [])
+                self.revisions[file_id].extend(data[editor])
 
     def add(self, revision):
         self.stringify(revision)
@@ -240,7 +239,7 @@ class Buffer:
 
     def write_revisions(self):
         #t0 = datetime.datetime.now()
-        revisions = self.group_revisions_by_fileid()
+        self.group_revisions_by_fileid()
         file_ids = self.revisions.keys()
         while len(self.revisions.keys()) > 0:
             print len(self.revisions.keys())
