@@ -150,21 +150,25 @@ class Buffer:
         data = {}
         editors = {}
         #first, we group all revisions by editor 
+
         for revision in revisions:
-            id = revision[0]
-            if id not in data:
-                data[id] = []
-                editors[id] = self.get_hash(id)
-            data[id].append(revision)
+            row = []
+            #strip away the keys and make sure that the values are always in the same sequence
+            for key in self.keys:
+                row.append(revision[key].decode('utf-8'))
+            editor_id = row[0]
+            data.setdefault(editor_id, [])
+            data[editor_id].append(row)
+            editors.setdefault(editor_id, self.get_hash(editor_id))
 
         #now, we are going to group all editors by file_id
         file_ids = self.invert_dictionary(editors)
         revisions = {}
-        for editors in file_ids.values():
+        for file_id, editors in file_ids:
             for editor in editors:
-                revisions.setdefault(editor, [])
-                revisions[editor].extend(data[editor])
-        self.revisions = revisions
+                revisions.setdefault(file_id, [])
+                revisions[file_id].extend(data[editor])
+        return revisions
 
     def add(self, revision):
         self.stringify(revision)
@@ -189,13 +193,7 @@ class Buffer:
         print 'Worker %s: Number of revisions: %s' % (self.process_id, self.count_revisions)
 
     def store(self):
-        rows = []
-        for id, revision in self.revisions.iteritems():
-            values = []
-            for key in self.keys:
-                values.append(revision[key].decode('utf-8'))
-            rows.append(values)
-        self.write_revisions(rows)
+        self.write_revisions()
         self.write_articles()
         self.write_comments()
 
@@ -230,7 +228,6 @@ class Buffer:
 
                     row = zip(keys, values)
                     row = list(itertools.chain(*row))
-                    #title = title.encode('ascii')
                     #row = '\t'.join([article_id, title]) + '\n'
                     rows.append(row)
                 file_utils.write_list_to_csv(rows, self.fh_articles, newline=False)
@@ -241,17 +238,16 @@ class Buffer:
         #t1 = datetime.datetime.now()
         #print '%s articles took %s' % (len(self.articles.keys()), (t1 - t0))
 
-    def write_revisions(self, data):
+    def write_revisions(self):
         #t0 = datetime.datetime.now()
-        self.group_revisions_by_fileid(data)
-        editors = self.revisions.keys()
-        while len(self.revision.keys()) > 0:
-            print len(self.revision.keys())
-            for editor in editors:
-                #lock the write around all edits of an editor for a particular page
-                for i, revision in enumerate(self.revisions[editor]):
+        revisions = self.group_revisions_by_fileid()
+        file_ids = self.revisions.keys()
+        while len(self.revisions.keys()) > 0:
+            print len(self.revisions.keys())
+            for file_id in file_ids:
+                for i, revision in enumerate(self.revisions[file_id]):
                     if i == 0:
-                        file_id = self.get_hash(revision[2])
+                        #file_id = self.get_hash(revision[2])
                         if self.lock.available(file_id):
                             fh = self.filehandles[file_id]
                             #print editor, file_id, fh
@@ -260,7 +256,7 @@ class Buffer:
                     try:
                         file_utils.write_list_to_csv(revision, fh)
                         self.lock.release(file_id)
-                        del self.revisions[editor]
+                        del self.revisions[file_id]
                     except Exception, error:
                         print '''Encountered the following error while writing 
                             revision data to %s: %s''' % (fh, error)
