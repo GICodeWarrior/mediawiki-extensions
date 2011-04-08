@@ -2,7 +2,7 @@
 
 return array(
 	"MediaWikiPlayerSupport" => array(
-		'scripts' => 'resources/MediaWikiPlayerSupport.js',
+		'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
 		'dependencies'=> array( 
 			'mw.Api' 
 		)
