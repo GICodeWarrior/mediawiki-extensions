@@ -23,6 +23,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'eval-desc' => 'Extension description displayed on [[Special:Version]].',
+	'eval_out' => '{{Identical|Output}}',
 	'eval_code' => '{{Identical|Code}}',
 );
 
