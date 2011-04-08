@@ -88,14 +88,17 @@
 			// Build font dropdown
 			$select = $( '<ul />' );
 			for ( var scheme in config ) {
-				$fontlink = $( '<a />' )
-					.css( { "font-size": "1.2em" } )
-					.text( config[scheme] );
-					
+				$fontlink = $( '<input>' )
+					.attr("type","radio")
+					.attr("name","font")
+					.attr("id","webfont-"+config[scheme])
+					.attr("value",config[scheme] );
+						
 				$fontItem = $( '<li />' )
 					.val( config[scheme] )
-					.append( $fontlink );
-					
+					.append( $fontlink )
+					.append( config[scheme] );
+						
 				haveSchemes = true;
 				//some closure trick :)
 				(function (font) {
@@ -106,15 +109,17 @@
 
 				$select.append($fontItem);
 			}
-			$fontlink = $( '<a />' )
-				.text( 'Reset' )
-				.css( { "font-size": "1.2em" } )
-				.click( function( event ) {
-					$.webfonts.set( 'none');
-				});	
+			$fontlink = $( '<input >' )
+					.attr("type","radio")
+					.attr("name","font")
+					.attr("name","webfont-none")
+					.click( function( event ) {
+						$.webfonts.set( 'none');
+					});	
 			$fontItem = $( '<li />' )
 				.val( 'none')
-				.append( $fontlink );
+				.append( $fontlink )	
+				.append( "Reset");
 				
 			$select.append($fontItem);
 
@@ -144,10 +149,14 @@
 			
 			if(cookie_font == null){
 				$.webfonts.set( config[0]);
+				//mark it as checked
+				$('#webfont-'+config[0]).attr('checked', 'checked');
 			}
 			else{
 				if (cookie_font !=='none'){
 					$.webfonts.set( cookie_font);
+					//mark it as checked
+					$('#webfont-'+cookie_font).attr('checked', 'checked');
 				}
 			}
 			
