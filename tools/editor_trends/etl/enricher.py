@@ -238,29 +238,30 @@ class Buffer:
         #print '%s articles took %s' % (len(self.articles.keys()), (t1 - t0))
 
     def write_revisions(self):
-        #t0 = datetime.datetime.now()
+        t0 = datetime.datetime.now()
         self.group_revisions_by_fileid()
         file_ids = self.revisions.keys()
-        while len(self.revisions.keys()) > 0:
-            print len(self.revisions.keys())
-            for file_id in file_ids:
-                for i, revision in enumerate(self.revisions[file_id]):
-                    if i == 0:
-                        #file_id = self.get_hash(revision[2])
+        for file_id in file_ids:
+            wait = True
+            for i, revision in enumerate(self.revisions[file_id]):
+                if i == 0:
+                    while wait:
+                        print file_id, self.lock
                         if self.lock.available(file_id):
                             fh = self.filehandles[file_id]
-                            #print editor, file_id, fh
-                        else:
-                            break
-                    try:
-                        file_utils.write_list_to_csv(revision, fh)
-                    except Exception, error:
-                        print '''Encountered the following error while writing 
+                            wait = False
+                try:
+                    file_utils.write_list_to_csv(revision, fh)
+                except Exception, error:
+                    print '''Encountered the following error while writing 
                             revision data to %s: %s''' % (fh, error)
-                self.lock.release(file_id)
-                del self.revisions[file_id]
-        #t1 = datetime.datetime.now()
-        #print '%s revisions took %s' % (len(self.revisions), (t1 - t0))
+            self.lock.release(file_id)
+            del self.revisions[file_id]
+            wait = True
+        t1 = datetime.datetime.now()
+        print 'Worker %s: %s revisions took %s' % (self.process_id,
+                                                   len(self.revisions),
+                                                   (t1 - t0))
 
 def extract_categories():
     '''
