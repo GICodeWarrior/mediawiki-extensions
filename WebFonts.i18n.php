@@ -13,12 +13,10 @@ $messages = array();
 */
 $messages['en'] = array(
 	'webfonts'         => 'WebFonts',
-	'webfonts-desc'    => 'Embed fonts on mediawiki pages',
+	'webfonts-desc'    => 'Embed fonts on pages',
 	'webfonts-load'    => 'Select font',
-	'webfonts-disable-preference' => 'Disable Font Embedding(WebFonts)',
-
+	'webfonts-disable-preference' => 'Disable font embedding (WebFonts)',
 );
-
 
 /** Malayalam 
  * @author Santhosh
