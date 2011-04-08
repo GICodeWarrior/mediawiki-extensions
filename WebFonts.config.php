@@ -89,10 +89,22 @@ $wgWebFonts = array(
 				"ന്‍റെ" => "ന്റെ"
 			)
 		),
+		'Lohit Oriya' => array(
+			'eot' => "$fontsPath/or/Lohit-Oriya.eot",
+			'ttf' => "$fontsPath/or/Lohit-Oriya.ttf",
+			'woff' => "$fontsPath/or/Lohit-Oriya.woff",
+		),
+		'Lohit Tamil' => array(
+			'eot' => "$fontsPath/or/Lohit-Tamil.eot",
+			'ttf' => "$fontsPath/or/Lohit-Tamil.ttf",
+			'woff' => "$fontsPath/or/Lohit-Tamil.woff",
+		),
 	),
 
 	'languages' => array(
 		'en' => array( 'RufScript', 'Perizia', 'Ubuntu' ),
 		'ml' => array( 'Meera', 'Rachana' , 'Dyuthi', 'RaghuMalayalam'),
+		'or' => array( 'Lohit Oriya'),
+		'ta' => array( 'Lohit Tamil'),
 	),
 );
