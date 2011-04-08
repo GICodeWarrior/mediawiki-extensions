@@ -199,6 +199,9 @@ class Buffer:
         self.write_articles()
         self.write_comments()
 
+    def close(self):
+        self.store()
+        self.filehandles = [fh.close() for fh in self.filehandles]
 
     def write_comments(self):
         rows = []
@@ -242,23 +245,25 @@ class Buffer:
         #t0 = datetime.datetime.now()
         self.group_revisions_by_fileid(data)
         editors = self.revisions.keys()
-        for editor in editors:
-            #lock the write around all edits of an editor for a particular page
-            for i, revision in enumerate(self.revisions[editor]):
-                if i == 0:
-                    file_id = self.get_hash(revision[2])
-                    if self.lock.available(file_id):
-                        fh = self.filehandles[file_id]
-                        #print editor, file_id, fh
-                    else:
-                        break
-                try:
-                    file_utils.write_list_to_csv(revision, fh)
-                    self.lock.release(file_id)
-                    del self.revisions[editor]
-                except Exception, error:
-                    print '''Encountered the following error while writing 
-                        revision data to %s: %s''' % (fh, error)
+        while len(self.revision.keys()) > 0:
+            print len(self.revision.keys())
+            for editor in editors:
+                #lock the write around all edits of an editor for a particular page
+                for i, revision in enumerate(self.revisions[editor]):
+                    if i == 0:
+                        file_id = self.get_hash(revision[2])
+                        if self.lock.available(file_id):
+                            fh = self.filehandles[file_id]
+                            #print editor, file_id, fh
+                        else:
+                            break
+                    try:
+                        file_utils.write_list_to_csv(revision, fh)
+                        self.lock.release(file_id)
+                        del self.revisions[editor]
+                    except Exception, error:
+                        print '''Encountered the following error while writing 
+                            revision data to %s: %s''' % (fh, error)
         #t1 = datetime.datetime.now()
         #print '%s revisions took %s' % (len(self.revisions), (t1 - t0))
 
@@ -720,7 +725,7 @@ def stream_raw_xml(input_queue, process_id, function, dataset, lock, rts):
         t0 = t1
 
     if dataset == 'training':
-        cache.store()
+        cache.close()
         cache.summary()
     else:
         location = os.getcwd()
@@ -778,7 +783,7 @@ def multiprocessor_launcher(function, dataset, lock, rts):
         extracter.start()
 
     input_queue.join()
-    #filehandles = [fh.close() for fh in filehandles]
+
 
 def launcher_training():
     '''
