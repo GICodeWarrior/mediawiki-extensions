@@ -102,6 +102,13 @@ $messages['dsb'] = array(
 	'variablepage-desc' => 'Zmóžnja wariabelne dalejpósrědnjenja, kótarež šonuju resurse',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'variablepage-navlink_text' => 'Δωρεά',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

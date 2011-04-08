@@ -18771,6 +18771,7 @@ $messages['sl'] = array(
 	'configure-setting-wgDebugRawPage' => 'Zahteve strani CSS/JS ne vključi v dnevnik popravljanja napak',
 	'configure-setting-wgShowSQLErrors' => 'Prikaži strani napake zbirke podatkov',
 	'configure-setting-wgStatsMethod' => 'Cilj podatkov wfIncrStats()',
+	'configure-setting-wgSeleniumConfigFile' => 'Konfiguracijska datoteka Selenium',
 	'configure-setting-wgDBtestpassword' => 'Geslo za $wgDBtestuser',
 	'configure-setting-wgAPICacheHelp' => 'Predpomni besedilo pomoči API',
 	'configure-setting-wgAPICacheHelpTimeout' => 'Časovna omejitev predpomnjenja besedila pomoči API',
