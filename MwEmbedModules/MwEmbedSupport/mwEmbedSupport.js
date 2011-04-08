@@ -263,7 +263,7 @@
 		// Get the html representation of wikitext ( all that messages deal with right now ) 
 		text = parsedText.getHTML();
 		
-		// If the paramaters are jQuery objects or functions, we should now "swap" those objects in.
+		// If the parameters are jQuery objects or functions, we should now "swap" those objects in.
 		if( doSpecialSwap ) {			
 			// Add bindings to swap index and return binded html jQuery objects
 			for( var index=0; index < paramaters.length; index++ ) {

@@ -126,7 +126,8 @@
 							$('<a/>').attr({
 								'href' : articleUrl,
 								'title' : titleStr
-							}).text( titleStr )
+							})
+							.text( titleStr )							
 						).html()
 					)
 				)
