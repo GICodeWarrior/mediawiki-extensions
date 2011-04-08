@@ -234,7 +234,7 @@ def construct_filename(name, extension):
     if hasattr(name, '__call__'):
         return '%s%s' % (name.func_name, extension)
     else:
-        return name
+        return '%s%s' % (name, extension)
 
 
 def delete_file(location, filename, directory=False):

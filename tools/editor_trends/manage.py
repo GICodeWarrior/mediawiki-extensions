@@ -203,7 +203,7 @@ def config_launcher(rts, logger):
         valid_storage = ['mongo', 'cassandra']
         working_directory = raw_input('Please indicate where you installed Wikilytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
         input_location = raw_input('Please indicate where the Wikipedia dump files are or will be located.\nDefault is: %s\nPress Enter to accept default.\n' % rts.input_location)
-        output_location = raw_input('Please indicate where to store all Wikilytics project files.\nDefault is: %s\nPress Enter to accept default.\n' % rts.output_location)
+        base_location = raw_input('Please indicate where to store all Wikilytics project files.\nDefault is: %s\nPress Enter to accept default.\n' % rts.base_location)
 
         while db not in valid_storage:
             db = raw_input('Please indicate what database you are using for storage. \nDefault is: Mongo\n')
@@ -224,14 +224,14 @@ def config_launcher(rts, logger):
             language = language if language in rts.project.valid_languages else rts.language.default
 
         input_location = input_location if len(input_location) > 0 else rts.input_location
-        output_location = output_location if len(output_location) > 0 else rts.output_location
+        base_location = base_location if len(base_location) > 0 else rts.base_location
         working_directory = working_directory if len(working_directory) > 0 else os.getcwd()
 
         config = ConfigParser.RawConfigParser()
         config.add_section('file_locations')
         config.set('file_locations', 'working_directory', working_directory)
         config.set('file_locations', 'input_location', input_location)
-        config.set('file_locations', 'output_location', output_location)
+        config.set('file_locations', 'base_location', base_location)
         config.add_section('wiki')
         config.set('wiki', 'project', project)
         config.set('wiki', 'language', language)
@@ -246,7 +246,7 @@ def config_launcher(rts, logger):
                        config_launcher,
                        working_directory=working_directory,
                        input_location=input_location,
-                       output_location=output_location,
+                       base_location=base_location,
                        project=project,
                        language=language,)
 

@@ -22,9 +22,10 @@ import os
 import hashlib
 import codecs
 import sys
+import itertools
 import datetime
 import progressbar
-from multiprocessing import JoinableQueue, Process, cpu_count, current_process, RLock
+from multiprocessing import JoinableQueue, Process, cpu_count, RLock, Manager
 from xml.etree.cElementTree import iterparse, dump
 from collections import deque
 
@@ -77,33 +78,50 @@ COUNT_EXCLUDE_NAMESPACE = {
     108:'Book',
 }
 
-class Statistics:
-    def __init__(self, process_id):
-        self.process_id = process_id
-        self.count_articles = 0
-        self.count_revisions = 0
 
-    def summary(self):
-        print 'Worker %s: Number of articles: %s' % (self.process_id, self.count_articles)
-        print 'Worker %s: Number of revisions: %s' % (self.process_id, self.count_revisions)
+class CustomLock:
+    def __init__(self, lock, open_handles):
+        self.lock = lock
+        self.open_handles = open_handles
+
+    def available(self, handle):
+        self.lock.acquire()
+        try:
+            self.open_handles.index(handle)
+            #print 'RETRIEVED FILEHANDLE %s' % handle
+            return False
+        except (ValueError, Exception), error:
+            self.open_handles.append(handle)
+            #print 'ADDED FILEHANDLE %s' % handle
+            return True
+        finally:
+            #print 'FIles locked: %s' % len(self.open_handles)
+            self.lock.release()
+
+    def release(self, handle):
+        #print 'RELEASED FILEHANDLE %s' % handle
+        self.open_handles.remove(handle)
 
 
 class Buffer:
-    def __init__(self, storage, process_id, rts=None, locks=None):
-        self.storage = storage
+    def __init__(self, process_id, rts, lock):
+        self.rts = rts
+        self.lock = lock
         self.revisions = {}
         self.comments = {}
-        self.titles = {}
+        self.articles = {}
         self.process_id = process_id
+        self.count_articles = 0
+        self.count_revisions = 0
+        self.filehandles = [file_utils.create_txt_filehandle(self.rts.txt,
+        file_id, 'a', 'utf-8') for file_id in xrange(self.rts.max_filehandles)]
         self.keys = ['revision_id', 'article_id', 'id', 'username', 'namespace',
                      'title', 'timestamp', 'hash', 'revert', 'bot', 'cur_size',
                      'delta']
-        self.stats = Statistics(self.process_id)
-        if locks != None:
-            self.rts = rts
-            self.lock1 = locks[0] #lock for generic data
-            self.lock2 = locks[1] #lock for comment data
-            self.lock3 = locks[2] #lock for article titles
+        self.fh_articles = file_utils.create_txt_filehandle(self.rts.txt,
+                            'articles_%s' % self.process_id, 'w', 'utf-8')
+        self.fh_comments = file_utils.create_txt_filehandle(self.rts.txt,
+                            'comments_%s' % self.process_id, 'w', 'utf-8')
 
     def get_hash(self, id):
         '''
@@ -116,18 +134,37 @@ class Buffer:
         except ValueError:
             return sum([ord(i) for i in id]) % self.rts.max_filehandles
 
-    def group_observations(self, revisions):
+    def invert_dictionary(self, editors):
+        hashes = {}
+        for editor, file_id in editors.iteritems():
+            hashes.setdefault(file_id, [])
+            hashes[file_id].append(editor)
+        return hashes
+
+    def group_revisions_by_fileid(self, revisions):
         '''
-        This function groups observation by editor id, this way we have to make
-        fewer fileopening calls. 
+        This function groups observation by editor id and then by file_id, 
+        this way we have to make fewer file opening calls and should reduce
+        processing time.
         '''
         data = {}
+        editors = {}
+        #first, we group all revisions by editor 
         for revision in revisions:
             id = revision[0]
             if id not in data:
                 data[id] = []
+                editors[id] = self.get_hash(id)
             data[id].append(revision)
-        self.revisions = data
+
+        #now, we are going to group all editors by file_id
+        file_ids = self.invert_dictionary(editors)
+        revisions = {}
+        for editors in file_ids.values():
+            for editor in editors:
+                revisions.setdefault(editor, [])
+                revisions[editor].extend(data[editor])
+        self.revisions = revisions
 
     def add(self, revision):
         self.stringify(revision)
@@ -136,7 +173,7 @@ class Buffer:
         if len(self.revisions) > 10000:
             #print '%s: Emptying buffer %s - buffer size %s' % (datetime.datetime.now(), self.id, len(self.revisions))
             self.store()
-            self.clear()
+
 
     def stringify(self, revision):
         for key, value in revision.iteritems():
@@ -146,14 +183,10 @@ class Buffer:
                 value = value.encode('utf-8')
             revision[key] = value
 
-    def empty(self):
-        self.store()
-        self.clear()
 
-    def clear(self):
-        self.revisions = {}
-        self.comments = {}
-        self.titles = {}
+    def summary(self):
+        print 'Worker %s: Number of articles: %s' % (self.process_id, self.count_articles)
+        print 'Worker %s: Number of revisions: %s' % (self.process_id, self.count_revisions)
 
     def store(self):
         rows = []
@@ -162,70 +195,72 @@ class Buffer:
             for key in self.keys:
                 values.append(revision[key].decode('utf-8'))
             rows.append(values)
-        self.write_output(rows)
+        self.write_revisions(rows)
+        self.write_articles()
+        self.write_comments()
 
-        if self.comments:
-            self.lock2.acquire()
-            try:
-                fh = file_utils.create_txt_filehandle(self.rts.txt,
-                                                'comments.csv', 'a', 'utf-8')
-                rows = []
-                for revision_id, comment in self.comments.iteritems():
-                    #comment = comment.decode('utf-8')
-                    #row = '\t'.join([revision_id, comment]) + '\n'
-                    rows.append([revision_id, comment])
-                    file_utils.write_list_to_csv(row, fh)
-            except Exception, error:
-                print 'Encountered the following error while writing data to %s: %s' % (fh, error)
-            finally:
-                fh.close()
-                self.lock2.release()
 
-        elif self.titles:
-            self.lock3.acquire()
+    def write_comments(self):
+        rows = []
+        try:
+            for revision_id, comment in self.comments.iteritems():
+                #comment = comment.decode('utf-8')
+                #row = '\t'.join([revision_id, comment]) + '\n'
+                rows.append([revision_id, comment])
+            file_utils.write_list_to_csv(rows, self.fh_comments)
+            self.comments = {}
+        except Exception, error:
+            print '''Encountered the following error while writing comment data 
+                to %s: %s''' % (self.fh_comments, error)
+
+    def write_articles(self):
+        #t0 = datetime.datetime.now()
+        if len(self.articles.keys()) > 10000:
+            rows = []
             try:
-                fh = file_utils.create_txt_filehandle(self.rts.txt,
-                                                'titles.csv', 'a', 'utf-8')
-                rows = []
-                for article_id, dict in self.titles.iteritems():
-                    keys = dict.keys()
-                    value = []
-                    for key in keys:
-                        value.append(key)
-                        value.append(dict[key])
-                    value.insert(0, article_id)
-                    value.insert(0, 'id')
+                for article_id, data in self.articles.iteritems():
+                    keys = data.keys()
+                    keys.insert(0, 'id')
+
+                    values = data.values()
+                    values.insert(0, article_id)
+
+                    row = zip(keys, values)
+                    row = list(itertools.chain(*row))
                     #title = title.encode('ascii')
                     #row = '\t'.join([article_id, title]) + '\n'
-                    rows.append(value)
-                    file_utils.write_list_to_csv(rows, fh, newline=False)
+                    rows.append(row)
+                file_utils.write_list_to_csv(rows, self.fh_articles, newline=False)
+                self.articles = {}
             except Exception, error:
-                print 'Encountered the following error while writing data to %s: %s' % (fh, error)
-            finally:
-                fh.close()
-                self.lock3.release()
+                print '''Encountered the following error while writing article 
+                    data to %s: %s''' % (self.fh_articles, error)
+        #t1 = datetime.datetime.now()
+        #print '%s articles took %s' % (len(self.articles.keys()), (t1 - t0))
 
-
-    def write_output(self, data):
-        self.group_observations(data)
-        for editor in self.revisions:
+    def write_revisions(self, data):
+        #t0 = datetime.datetime.now()
+        self.group_revisions_by_fileid(data)
+        editors = self.revisions.keys()
+        for editor in editors:
             #lock the write around all edits of an editor for a particular page
-            self.lock1.acquire()
-            try:
-                for i, revision in enumerate(self.revisions[editor]):
-                    if i == 0:
-                        id = self.get_hash(revision[2])
-                        fh = file_utils.create_txt_filehandle(self.rts.txt,
-                                                    '%s.csv' % id, 'a', 'utf-8')
+            for i, revision in enumerate(self.revisions[editor]):
+                if i == 0:
+                    file_id = self.get_hash(revision[2])
+                    if self.lock.available(file_id):
+                        fh = self.filehandles[file_id]
+                        #print editor, file_id, fh
+                    else:
+                        break
                 try:
-                    file_utils.write_list_to_csv(revision, fh, lock=self.lock1)
+                    file_utils.write_list_to_csv(revision, fh)
+                    self.lock.release(file_id)
+                    del self.revisions[editor]
                 except Exception, error:
-                    print 'Encountered the following error while writing data to %s: %s' % (fh, error)
-            finally:
-                fh.close()
-                self.lock1.release()
-
-
+                    print '''Encountered the following error while writing 
+                        revision data to %s: %s''' % (fh, error)
+        #t1 = datetime.datetime.now()
+        #print '%s revisions took %s' % (len(self.revisions), (t1 - t0))
 
 def extract_categories():
     '''
@@ -559,15 +594,15 @@ def create_variables(article, cache, bots, xml_namespace, comments=False):
     namespace = determine_namespace(title, namespaces, include_ns, EXCLUDE_NAMESPACE)
     title_meta = parse_title_meta_data(title, namespace)
     if namespace != False:
-        cache.stats.count_articles += 1
+        cache.count_articles += 1
         article_id = article['id'].text
         article['id'].clear()
-        cache.titles[article_id] = title_meta
+        cache.articles[article_id] = title_meta
         hashes = deque()
         size = {}
         revisions = article['revisions']
         for revision in revisions:
-            cache.stats.count_revisions += 1
+            cache.count_revisions += 1
             if revision == None:
                 #the entire revision is empty, weird. 
                 continue
@@ -639,20 +674,23 @@ def parse_xml(fh, rts):
                 article['namespaces'] = namespaces
                 id = False
             #elif event == 'end' and ns == True:
-            #   elem.clear()
+            #    elem.clear()
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
         dump(elem)
         sys.exit(-1)
+    except IOError, error:
+        print '''Archive file is possibly corrupted. Please delete this archive 
+            and retry downloading. Error message: %s''' % error
+        sys.exit(-1)
 
-
-def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, rts):
+def stream_raw_xml(input_queue, process_id, function, dataset, lock, rts):
     bots = bot_detector.retrieve_bots(rts.language.code)
 
     t0 = datetime.datetime.now()
     i = 0
     if dataset == 'training':
-        cache = Buffer(storage, process_id, rts, locks)
+        cache = Buffer(process_id, rts, lock)
     else:
         counts = {}
 
@@ -682,8 +720,8 @@ def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, r
         t0 = t1
 
     if dataset == 'training':
-        cache.empty()
-        cache.stats.summary()
+        cache.store()
+        cache.summary()
     else:
         location = os.getcwd()
         keys = counts.keys()
@@ -698,21 +736,26 @@ def stream_raw_xml(input_queue, storage, process_id, function, dataset, locks, r
     print 'Finished parsing Wikipedia dump files.'
 
 
-def setup(storage, rts=None):
+def setup(rts):
     '''
     Depending on the storage system selected (cassandra, csv or mongo) some
     preparations are made including setting up namespaces and cleaning up old
     files. 
     '''
-    if storage == 'csv':
-        res = file_utils.delete_file(rts.txt, None, directory=True)
-        if res:
-            res = file_utils.create_directory(rts.txt)
+    res = file_utils.delete_file(rts.txt, None, directory=True)
+    if res:
+        res = file_utils.create_directory(rts.txt)
 
 
-def multiprocessor_launcher(function, dataset, storage, locks, rts):
+def multiprocessor_launcher(function, dataset, lock, rts):
+    mgr = Manager()
+    open_handles = []
+    open_handles = mgr.list(open_handles)
+    clock = CustomLock(lock, open_handles)
     input_queue = JoinableQueue()
+
     files = file_utils.retrieve_file_list(rts.input_location)
+
     if len(files) > cpu_count():
         processors = cpu_count() - 1
     else:
@@ -727,15 +770,15 @@ def multiprocessor_launcher(function, dataset, storage, locks, rts):
         print 'Inserting poison pill %s...' % x
         input_queue.put(None)
 
-    extracters = [Process(target=stream_raw_xml, args=[input_queue, storage,
+    extracters = [Process(target=stream_raw_xml, args=[input_queue,
                                                        process_id, function,
-                                                       dataset, locks, rts])
+                                                       dataset, clock, rts])
                   for process_id in xrange(processors)]
     for extracter in extracters:
         extracter.start()
 
     input_queue.join()
-
+    filehandles = [fh.close() for fh in filehandles]
 
 def launcher_training():
     '''
@@ -743,11 +786,10 @@ def launcher_training():
     '''
     path = '/mnt/wikipedia_dumps/batch2/'
     function = create_variables
-    storage = 'csv'
     dataset = 'training'
     rts = DummyRTS(path)
     locks = []
-    multiprocessor_launcher(function, dataset, storage, locks, rts)
+    multiprocessor_launcher(function, dataset, locks, rts)
 
 
 def launcher_prediction():
@@ -756,11 +798,10 @@ def launcher_prediction():
     '''
     path = '/mnt/wikipedia_dumps/batch1/'
     function = count_edits
-    storage = 'csv'
     dataset = 'prediction'
     rts = DummyRTS(path)
     locks = []
-    multiprocessor_launcher(function, dataset, storage, locks, rts)
+    multiprocessor_launcher(function, dataset, locks, rts)
 
 
 def launcher(rts):
@@ -769,14 +810,10 @@ def launcher(rts):
     '''
     # launcher for creating regular mongo dataset
     function = create_variables
-    storage = 'csv'
     dataset = 'training'
-    lock1 = RLock()
-    lock2 = RLock()
-    lock3 = RLock()
-    locks = [lock1, lock2, lock3]
-    setup(storage, rts)
-    multiprocessor_launcher(function, dataset, storage, locks, rts)
+    lock = RLock()
+    setup(rts)
+    multiprocessor_launcher(function, dataset, lock, rts)
 
 
 if __name__ == '__main__':

@@ -61,7 +61,7 @@ class Settings:
         result = self.load_configuration()
         if not result:
             self.input_location = os.path.join(self.root, 'wikimedia')
-            self.output_location = os.path.join(self.root, 'wikimedia')
+            self.base_location = os.path.join(self.root, 'wikimedia')
 
         #Date format as used by Erik Zachte
         self.date_format = '%Y-%m-%d'
@@ -79,10 +79,8 @@ class Settings:
 
         self.wp_dump_location = 'http://dumps.wikimedia.org'
 
-
         self.architecture = platform.machine()
         self.tab_width = 4 if self.platform == 'Windows' else 8
-
 
         self.update_python_path()
 
@@ -105,7 +103,7 @@ class Settings:
             config.read(os.path.join(self.working_directory, 'wiki.cfg'))
             self.working_directory = config.get('file_locations', 'working_directory')
             self.input_location = config.get('file_locations', 'input_location')
-            self.output_location = config.get('file_locations', 'output_location')
+            self.base_location = config.get('file_locations', 'base_location')
             self.default_project = config.get('wiki', 'project')
             self.default_language = config.get('wiki', 'language')
             self.storage = config.get('storage', 'db')

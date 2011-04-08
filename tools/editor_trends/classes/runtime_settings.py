@@ -62,7 +62,6 @@ class RunTimeSettings(Settings):
             self.input_location = self.set_input_location()
             self.output_location = self.set_output_location()
 
-
             self.charts = self.determine_chart()
             self.keywords = self.split_keywords()
             self.namespaces = self.get_namespaces()
@@ -149,19 +148,20 @@ class RunTimeSettings(Settings):
     def set_input_location(self):
         files = os.listdir(self.input_location)
         extensions = ['.gz', '.7z', '.bz2']
+        project = '%s%s' % (self.language.code, self.project.name)
         for file in files:
             basename, ext = os.path.splitext(file)
-            if ext in extensions:
+            if ext in extensions and file.startswith(project):
                 #ABS path case: check if files are stored here
                 return self.input_location
-        return os.path.join(self.input_location, self.language.code,
+        return os.path.join(self.base_location, self.language.code,
                             self.project.name)
 
     def set_output_location(self):
         '''
         Construct the full project location
         '''
-        return os.path.join(self.output_location, self.language.code,
+        return os.path.join(self.base_location, self.language.code,
                             self.project.name)
 
     def show_settings(self):
@@ -221,6 +221,7 @@ class RunTimeSettings(Settings):
         default = lnc.languages[lnc.default]
         if lang != default.name:
             lang = lnc.get_language(lang, code=False)
+            language = lang
             return lang
         else:
             return default
@@ -234,6 +235,7 @@ class RunTimeSettings(Settings):
         if proj != 'wiki':
             pc = projects.ProjectContainer()
             proj = pc.get_project(proj)
+            project = proj
             return proj
         else:
             return default
