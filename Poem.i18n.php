@@ -124,6 +124,13 @@ $messages['ca'] = array(
 	'poem-desc' => "Afegeix l'etiqueta <code>&lt;poem&gt;</code> per al formatatge  de poemes",
 );
 
+/** Sorani (کوردی)
+ * @author Asoxor
+ */
+$messages['ckb'] = array(
+	'poem-desc' => 'تاگی <code>&lt;poem&gt;</code> زێدەدەکات بۆ ڕێکخستنی ھۆنراوەکان',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
