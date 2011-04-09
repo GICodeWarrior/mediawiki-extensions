@@ -34,6 +34,18 @@ matplotlib.use('Agg')
     databases.  This includes mapping among timestamp formats and converting those formats to indexed
     lists and dictionaries.
     
+    Examples of format definitions:
+    
+        format 1 - 20080101000606
+        format 2 - 2008-01-01 00:06:06   
+        
+    Examples of resolution definitions:
+    
+        resolution 0 - xxxx-xx-xx 00:00:00
+        resolution 1 - xxxx-xx-xx xx:00:00
+        resolution 2 - xxxx-xx-xx xx:xx:00
+        resolution 3 - xxxx-xx-xx xx:xx:xx
+    
     METHODS:
     
         normalize_timestamps          - Takes a list of timestamps as input and converts it to a set of days, hours, or minutes counting back from 0

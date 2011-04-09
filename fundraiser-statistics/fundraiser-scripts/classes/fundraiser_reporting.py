@@ -272,9 +272,9 @@ class TotalAmountsReporting(FundraiserReporting):
 		#now = now + delta
 
 
-		# ESTABLISH THE START TIME TO PULL ANALYTICS
+		""" ESTABLISH THE START TIME TO PULL ANALYTICS - TS format=1, TS resolution=1 """
 		hours_back = 24
-		times = self.gen_date_strings_hr(now, hours_back)
+		times = self.gen_date_strings(now, hours_back,1,1)
 		
 		start_time = times[0]
 		end_time = times[1]
@@ -322,9 +322,9 @@ class TotalAmountsReporting(FundraiserReporting):
 		#now = now + delta
 
 
-		# ESTABLISH THE START TIME TO PULL ANALYTICS
-		days_back = 7
-		times = self.gen_date_strings_day(now, days_back)
+		""" ESTABLISH THE START TIME TO PULL ANALYTICS - TS format=1, TS resolution=0 """
+		hours_back = 7 * 24 		# 7 days back
+		times = self.gen_date_strings(now, hours_back,1,0)
 		
 		start_time = times[0]
 		end_time = times[1]
@@ -539,9 +539,9 @@ class BannerLPReporting(FundraiserReporting):
 		#delta = datetime.timedelta(hours=UTC)
 		#now = now + delta
 		
-		# ESTABLISH THE START TIME TO PULL ANALYTICS
+		""" ESTABLISH THE START TIME TO PULL ANALYTICS - TS format=1, TS resolution=1 """
 		hours_back = 24
-		times = self.gen_date_strings_hr(now, hours_back)
+		times = self.gen_date_strings(now, hours_back,1,1)
 		
 		start_time = times[0]
 		end_time = times[1]
@@ -628,10 +628,10 @@ class BannerLPReporting(FundraiserReporting):
 		query_name = 'report_latest_campaign'
 		self.init_db()
 		
-		# Look at campaigns over the past 24 hours
+		""" Look at campaigns over the past 24 hours - TS format=1, TS resolution=1 """
 		now = datetime.datetime.now()
 		hours_back = 72
-		times = self.gen_date_strings_hr(now, hours_back)
+		times = self.gen_date_strings(now, hours_back,1,1)
 		
 		query_obj = qs.QueryStore()
 		sql_stmnt = mh.read_sql('./sql/report_latest_campaign.sql')
@@ -779,9 +779,9 @@ class MinerReporting(FundraiserReporting):
 		#delta = datetime.timedelta(hours=UTC)
 		#now = now + delta
 		
-		# ESTABLISH THE START TIME TO PULL ANALYTICS
+		""" ESTABLISH THE START TIME TO PULL ANALYTICS - TS format=1, TS resolution=1 """
 		hours_back = 24
-		times = self.gen_date_strings_hr(now, hours_back)
+		times = self.gen_date_strings_hr(now, hours_back,1,1)
 		
 		start_time = times[0]
 		end_time = times[1]
