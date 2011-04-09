@@ -34,3 +34,14 @@ class DataLoader(object):
     def close_db(self):
         self.cur.close()
         self.db.close()
+        
+        
+class IntervalReportingLoader(DataLoader):
+    
+    def run_query(self):
+        return
+    
+class BannerLPReportingLoader(DataLoader):
+    
+    def run_query(self):
+        return
