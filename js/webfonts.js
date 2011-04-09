@@ -46,11 +46,10 @@
 				}
 			}
 			// Do we want to restrict font to only text marked in given language?
-			$("body").css('font-family', "'"+ font +"'");
+			$("body").css('font-family',  font +", Helvetica, Arial, sans-serif");
 			if ( 'size' in config ) {
 				$("body").css('font-size', config.size);
 			}
-			
 			if ( 'normalization' in config ) {
 					$(document).ready(function() {
 						$.webfonts.normalize(config.normalization);
