@@ -2,13 +2,6 @@
 
 """
 
-fundraiser_reporting.py
-
-wikimediafoundation.org
-Ryan Faulkner
-December 16th, 2010
-
-
 Pulls data from storage3.faulkner and generates plots.
 
 
@@ -32,6 +25,7 @@ import math
 import query_store as qs
 import miner_help as mh
 import TimestampProcesser as TP
+import DataLoader as DL
 
 matplotlib.use('Agg')
 
@@ -39,46 +33,33 @@ matplotlib.use('Agg')
 		
 """
 
-CLASS :: ^FundraiserReporting^
-
-Base class for reporting fundraiser analytics.  Methods that are intended to be extended in derived classes include:
-
-run_query() - format and execute the query to obtain data
-gen_plot() - plots the results of the report
-write_to_html_table() - writes the results to an HTML table
-run()
+	CLASS :: FundraiserReporting
+	
+	Base class for reporting fundraiser analytics.  Methods that are intended to be extended in derived classes include:
+	
+	METHODS:
+	
+		run_query 				- format and execute the query to obtain data
+		gen_plot 				- plots the results of the report
+		write_to_html_table 	- writes the results to an HTML table
+		run
 
 """
-class FundraiserReporting(TP.TimestampProcesser):
-
-	# Database and Cursor objects
-	db = None
-	cur = None
-	
-	def init_db(self):
-		""" Establish connection """
-		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
-
-		""" Create cursor """
-		self.cur = self.db.cursor()
-	
-	def close_db(self):
-		self.cur.close()
-		self.db.close()
-	
-	
-	
+class FundraiserReporting(TP.TimestampProcesser, DL.DataLoader):	
 	
 	"""
 
-	def smooth::
-
-	Smooths a list of values
+		Smooths a list of values
+		
+		INPUT:
+	            values       		- a list of datetime objects
+	            window_length       - indicate whether the list counts back from the end
+	        
+	    RETURN: 
+	            new_values        - list of smoothed values
 
 	"""
-	def smooth(values, window_length):
+	def smooth(self, values, window_length):
 
 		window_length = int(math.floor(window_length / 2))
 
@@ -101,12 +82,18 @@ class FundraiserReporting(TP.TimestampProcesser):
 	
 	"""
 	
-	workaround for issue with tuple objects in HTML.py 
-	MySQLdb returns unfamiliar tuple elements from its fetchall method
-	this is probably a version problem since the issue popped up in 2.5 but not 2.6
+		workaround for issue with tuple objects in HTML.py 
+		MySQLdb returns unfamiliar tuple elements from its fetchall() method
+		this is probably a version problem since the issue popped up in 2.5 but not 2.6
+		
+		INPUT:
+	            row       		- row object returned from MySQLdb.fetchall()
+	            
+	    RETURN: 
+	            l        		- a list of tuple objects from the db
 	
 	"""
-	def listify(row):
+	def listify(self, row):
 		l = []
 		for i in row:
 			l.append(i)
@@ -115,36 +102,62 @@ class FundraiserReporting(TP.TimestampProcesser):
 
 	"""
 	
-	To be overloaded by subclasses for specific types of queries
+		To be overloaded by subclasses for specific types of queries
+		
+		INPUT:
+	            values       		- a list of datetime objects
+	            window_length       - indicate whether the list counts back from the end
+	        
+	    RETURN: 
+	            return_status        - integer, 0 indicates un-exceptional execution
 	
 	"""
 	def run_query(self, start_time, end_time, query_name, metric_name):
-		return
+		return 0
 		
 	
 	"""
 	
-	To be overloaded by subclasses for different plotting behaviour
+		To be overloaded by subclasses for different plotting behaviour
+		
+		INPUT:
+	            values       		- a list of datetime objects
+	            window_length       - indicate whether the list counts back from the end
+	        
+	    RETURN: 
+	            return_status        - integer, 0 indicates un-exceptional execution
 	
 	"""
 	def gen_plot(self,x, y_lists, labels, title, xlabel, ylabel, subplot_index, fname):
-		return
+		return 0
 
 	"""
 	
-	To be overloaded by subclasses for writing tables - this functionality currently exists outside of this class structure (test_reporting.py)
+		To be overloaded by subclasses for writing tables - this functionality currently exists outside of this class structure (test_reporting.py)
+		
+		INPUT:
+	            values       		- a list of datetime objects
+	            window_length       - indicate whether the list counts back from the end
+	        
+	    RETURN: 
+	            return_status        - integer, 0 indicates un-exceptional execution
 	
 	"""
 	def write_to_html_table(self):
-		return
+		return 0
 	
 	
 	
 	"""
 	
-	The access point of FundraiserReporting and derived objects.  Will be used for executing and orchestrating the creation of plots, tables etc.
-	To be overloaded by subclasses 
-	
+		The access point of FundraiserReporting and derived objects.  Will be used for executing and orchestrating the creation of plots, tables etc.
+		To be overloaded by subclasses 
+		
+		INPUT:
+	         
+	    RETURN: 
+	            return_status        - integer, 0 indicates un-exceptional execution
+	            
 	"""
 	def run(self):
 		return
@@ -168,7 +181,7 @@ class TotalAmountsReporting(FundraiserReporting):
 		
 		self.init_db()
 		
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 
 		# Load the SQL File & Format
 		filename = './sql/' + query_name + '.sql'
@@ -404,7 +417,7 @@ class BannerLPReporting(FundraiserReporting):
 		
 		self.init_db()
 		
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 
 		metric_lists = mh.AutoVivification()
 		time_lists = mh.AutoVivification()
@@ -620,7 +633,7 @@ class BannerLPReporting(FundraiserReporting):
 		hours_back = 72
 		times = self.gen_date_strings_hr(now, hours_back)
 		
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 		sql_stmnt = mh.read_sql('./sql/report_latest_campaign.sql')
 		sql_stmnt = query_obj.format_query(query_name, sql_stmnt, [times[0]])
 		
@@ -696,7 +709,7 @@ class MinerReporting(FundraiserReporting):
 		
 		self.init_db()
 		
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 
 		counts = list()
 		times = list()
@@ -754,10 +767,11 @@ class MinerReporting(FundraiserReporting):
 		pylab.ylabel(ylabel)
 
 		pylab.title(title)
-		pylab.savefig(fname, format='png'		
+		pylab.savefig(fname, format='png')
+		
 	def run(self, query_name):
 		
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 		
 		# Current date & time
 		now = datetime.datetime.now()
@@ -822,7 +836,7 @@ class IntervalReporting(FundraiserReporting):
 		
 		self.init_db()
 		
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 
 		metrics = mh.AutoVivification()
 		times = mh.AutoVivification()
@@ -948,7 +962,7 @@ class IntervalReporting(FundraiserReporting):
 	"""		
 	def run(self, start_time, end_time, interval, query_name, metric_name, campaign):
 		
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 		
 		print '\nGenerating ' + query_name +', start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
 		

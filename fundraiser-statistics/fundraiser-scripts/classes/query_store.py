@@ -1,19 +1,40 @@
 
 """
 
-query_store.py
+Class that contains and organizes query info.  Depends on the contents of ../sql/ where filenames are 
+coupled with query_name parameters
 
-wikimediafoundation.org
-Ryan Faulkner
-November 28th, 2010
+"""
 
-
-Class that contains and organizes query info
+__author__ = "Ryan Faulkner"
+__revision__ = "$Rev$"
+__date__ = "November 28th, 2010"
 
 
 """
 
-class query_store:
+	CLASS :: QueryStore
+	
+	
+	
+	METHODS:
+	
+		format_query 		
+		get_query 			
+		get_query_header 	
+		get_key_index
+		get_count_index
+		get_time_index
+		get_campaign_index
+		get_banner_index
+		get_landing_page_index
+		get_metric_index
+		get_plot_title
+		get_plot_ylabel
+		get_metric_full_name
+		
+"""
+class QueryStore:
 
 	def format_query(self, query_name, sql_stmnt, args):
 		
@@ -378,7 +399,6 @@ class query_store:
 				return -1
 		else:
 			return 'no such table'
-	
 			
 	def get_plot_title(self, query_name):
 		if query_name == 'report_banner_impressions_by_hour':

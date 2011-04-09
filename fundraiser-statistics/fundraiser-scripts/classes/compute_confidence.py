@@ -2,57 +2,47 @@
 
 """
 
-compute_confidence.py
-
-wikimediafoundation.org
-Ryan Faulkner
-January 11th, 2011
-
-
 Generates confidence estimate for a test
 
 
-class ConfidenceTesting
-
 """
 
+__author__ = "Ryan Faulkner"
+__revision__ = "$Rev$"
+__date__ = "January 11th, 2011"
+
 import sys
+sys.path.append('../')
+
 import math
 import datetime as dt
 import MySQLdb
 import pylab
-
 import matplotlib
-matplotlib.use('Agg')
 
 import miner_help as mh
 import query_store as qs
+import DataLoader as DL
 
-class ConfidenceTest(object):
+matplotlib.use('Agg')
 
-	# Database and Cursor objects
-	db = None
-	cur = None
-		
-	def init_db(self):
-		""" Establish connection """
-		#db = MySQLdb.connect(host='db10.pmtpa.wmnet', user='rfaulk', db='faulkner')
-		self.db = MySQLdb.connect(host='127.0.0.1', user='rfaulk', db='faulkner', port=3307)
-		#self.db = MySQLdb.connect(host='storage3.pmtpa.wmnet', user='rfaulk', db='faulkner')
 
-		""" Create cursor """
-		self.cur = self.db.cursor()
+"""
 
-	def close_db(self):
-		self.cur.close()
-		self.db.close()
-		
+	CLASS :: ConfidenceTest
+	
+	
+	METHODS:
+	
+	
+
+"""
+class ConfidenceTest(DataLoader):
+
 
 	"""
 		ConfidenceTesting :: query_tables
 	"""
-	# query_name = 'report_banner_confidence'
-	# metric_name = 'don_per_imp'
 	def query_tables(self, query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples):
 		
 		ret = self.get_time_lists(start_time, end_time, interval, num_samples)
@@ -60,7 +50,7 @@ class ConfidenceTest(object):
 		times_indices = ret[1]
 		
 		self.init_db()
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 		
 		filename = './sql/' + query_name + '.sql'
 		sql_stmnt = mh.read_sql(filename)
@@ -211,7 +201,7 @@ class ConfidenceTest(object):
 	"""
 	def run_test(self, test_name, query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples):
 		
-		query_obj = qs.query_store()
+		query_obj = qs.QueryStore()
 		
 		""" Retrieve values from database """
 		ret = self.query_tables(query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples)
@@ -226,22 +216,7 @@ class ConfidenceTest(object):
 		std_devs_1 = ret[2]
 		std_devs_2 = ret[3]
 		confidence = ret[4]
-		
-		""" Pad data with beginning and end points """
-		# times_indices.insert(len(times_indices), math.ceil(times_indices[-1]))
-		# times_indices.insert(0, 0)
-		
-		# means_1.insert(len(means_1),means_1[-1])
-		# means_2.insert(len(means_2),means_2[-1])
-		# means_1.insert(0,means_1[0])
-		# means_2.insert(0,means_2[0])
-		
-		# std_devs_1.insert(len(std_devs_1),0)
-		# std_devs_2.insert(len(std_devs_2),0)
-		# std_devs_1.insert(0,0)
-		# std_devs_2.insert(0,0)
 	
-		
 		""" plot the results """
 		xlabel = 'Hours'
 		subplot_index = 111

@@ -22,7 +22,6 @@ import pylab
 import HTML
 import math
 
-import query_store as qs
 import miner_help as mh
 
 matplotlib.use('Agg')
@@ -115,7 +114,7 @@ class TimestampProcesser(object):
             time_lists    - a list of datetime objects
             
         RETURN: 
-            time_lists    -
+            time_lists    - dictionary with a single key 'key' that stores the list
             isList        - a dictionary of normalized times
             
     """
@@ -184,23 +183,23 @@ class TimestampProcesser(object):
     
     """
     
-    Given a datetime object produce a timestamp a number of hours in the past and according to a particular format
-    
-    format 1 - 20080101000606
-    format 2 - 2008-01-01 00:06:06
-    
-    INPUT:
-    
-        now              - datetime object
-        hours_back       - the amount of time the 
-        format           - the format of the returned timestamp strings 
-        resolution       - the resolution detail of the timestamp (e.g. down to the minute, down to the hour, ...)
-    
-    
-    RETURN:
-         start_time     - formatted datetime string
-         end_time       - formatted datetime string
-    
+        Given a datetime object produce a timestamp a number of hours in the past and according to a particular format
+        
+        format 1 - 20080101000606
+        format 2 - 2008-01-01 00:06:06
+        
+        INPUT:
+        
+            now              - datetime object
+            hours_back       - the amount of time the 
+            format           - the format of the returned timestamp strings 
+            resolution       - the resolution detail of the timestamp (e.g. down to the minute, down to the hour, ...)
+        
+        
+        RETURN:
+             start_time     - formatted datetime string
+             end_time       - formatted datetime string
+        
     """
     def gen_date_strings(self, time_ref, hours_back, format, resolution):
         
@@ -219,18 +218,18 @@ class TimestampProcesser(object):
     
     """
     
-    Convert datetime objects to a timestamp of a given format.  HELPER METHOD for gen_date_strings.
+        Convert datetime objects to a timestamp of a given format.  HELPER METHOD for gen_date_strings.
+            
+        INPUT:
         
-    INPUT:
-    
-        time_obj         - datetime object
-        format           - the format of the returned timestamp strings 
-        resolution       - the resolution detail of the timestamp (e.g. down to the minute, down to the hour, ...)
-    
-    
-    RETURN:
-         start_time     - formatted datetime string
-         end_time       - formatted datetime string
+            time_obj         - datetime object
+            format           - the format of the returned timestamp strings 
+            resolution       - the resolution detail of the timestamp (e.g. down to the minute, down to the hour, ...)
+        
+        
+        RETURN:
+             start_time     - formatted datetime string
+             end_time       - formatted datetime string
     
     """
     def timestamp_from_obj(self, time_obj, format, resolution):
@@ -288,16 +287,16 @@ class TimestampProcesser(object):
     
     """
     
-    Convert timestamp to a datetime object of a given format
-    
-    INPUT:
-    
-        timestamp        - timestamp string
-        format           - the format of the returned timestamp strings 
-    
-    
-    RETURN:
-         time_obj     - datetime conversion of timestamp string
+        Convert timestamp to a datetime object of a given format
+        
+        INPUT:
+        
+            timestamp        - timestamp string
+            format           - the format of the returned timestamp strings 
+        
+        
+        RETURN:
+             time_obj     - datetime conversion of timestamp string
          
     """
     def timestamp_to_obj(self, timestamp, format):
@@ -315,26 +314,26 @@ class TimestampProcesser(object):
     
     """
     
-    Inserts missing interval points into the time and metric lists
-    
-    Assumptions: 
-        _metrics_ and _times_ are lists of the same length
-        there must be a data point at each interval 
-        Some data points may be missed
-        where there is no metric data the metric takes on the value 0.0
-    
-    e.g. when _interval_ = 10
-    times = [0 10 30 50], metrics = [1 1 1 1] ==> [0 10 30 40 50], [1 1 0 1 0 1]    
-    
-    INPUT:
-    
-        times           - 
-        metrics         -  
-        interval        -
-    
-    RETURN:
-         new_times     - 
-         new_metrics   -
+        Inserts missing interval points into the time and metric lists
+        
+        Assumptions: 
+            _metrics_ and _times_ are lists of the same length
+            there must be a data point at each interval 
+            Some data points may be missed
+            where there is no metric data the metric takes on the value 0.0
+        
+        e.g. when _interval_ = 10
+        times = [0 10 30 50], metrics = [1 1 1 1] ==> [0 10 30 40 50], [1 1 0 1 0 1]    
+        
+        INPUT:
+        
+            times           - 
+            metrics         -  
+            interval        -
+        
+        RETURN:
+             new_times     - 
+             new_metrics   -
         
     """
     def normalize_intervals(self, times, metrics, interval):
@@ -373,20 +372,20 @@ class TimestampProcesser(object):
 
     """
     
-    Converts from one timestamp format to another timestamp format
+        Converts from one timestamp format to another timestamp format
+            
+        format 1 - 20080101000606
+        format 2 - 2008-01-01 00:06:06    
+            
+        INPUT:
         
-    format 1 - 20080101000606
-    format 2 - 2008-01-01 00:06:06    
+            ts           - timestamp string
+            format_from  - input format
+            format_to    - output format
         
-    INPUT:
-    
-        ts           - timestamp string
-        format_from  - input format
-        format_to    - output format
-    
-    RETURN:
-    
-         new_timestamp     - new timestamp string
+        RETURN:
+        
+             new_timestamp     - new timestamp string
          
     
     """
