@@ -95,9 +95,49 @@ $wgWebFonts = array(
 			'woff' => "$fontsPath/or/Lohit-Oriya.woff",
 		),
 		'Lohit Tamil' => array(
-			'eot' => "$fontsPath/or/Lohit-Tamil.eot",
-			'ttf' => "$fontsPath/or/Lohit-Tamil.ttf",
-			'woff' => "$fontsPath/or/Lohit-Tamil.woff",
+			'eot' => "$fontsPath/ta/Lohit-Tamil.eot",
+			'ttf' => "$fontsPath/ta/Lohit-Tamil.ttf",
+			'woff' => "$fontsPath/ta/Lohit-Tamil.woff",
+		),
+		'Lohit Telugu' => array(
+			'eot' => "$fontsPath/te/LohitTelugu.eot",
+			'ttf' => "$fontsPath/te/LohitTelugu.ttf",
+			'woff' => "$fontsPath/te/LohitTelugu.woff",
+		),
+		'Lohit Bengali' => array(
+			'eot' => "$fontsPath/bn/LohitBengali.eot",
+			'ttf' => "$fontsPath/bn/LohitBengali.ttf",
+			'woff' => "$fontsPath/bn/LohitBengali.woff",
+		),
+		'Samyak Gujarati' => array(
+			'eot' => "$fontsPath/gu/SamyakGujarati.eot",
+			'ttf' => "$fontsPath/gu/SamyakGujarati.ttf",
+			'woff' => "$fontsPath/gu/SamyakGujarati.woff",
+		),
+		'Lohit Hindi' => array(
+			'eot' => "$fontsPath/hi/LohitHindi.eot",
+			'ttf' => "$fontsPath/hi/LohitHindi.ttf",
+			'woff' => "$fontsPath/hi/LohitHindi.woff",
+		),
+		'Samyak Devanagari' => array(
+			'eot' => "$fontsPath/hi/SamyakDevanagari.eot",
+			'ttf' => "$fontsPath/hi/SamyakDevanagari.ttf",
+			'woff' => "$fontsPath/hi/SamyakDevanagari.woff",
+		),
+		'David CLM' => array(
+			'eot' => "$fontsPath/he/DavidCLM-Medium.eot",
+			'ttf' => "$fontsPath/he/DavidCLM-Medium.ttf",
+			'woff' => "$fontsPath/he/DavidCLM-Medium.woff",
+		),
+		'Hadasim CLM' => array(
+			'eot' => "$fontsPath/he/HadasimCLM-Regular.eot",
+			'ttf' => "$fontsPath/he/HadasimCLM-Regular.ttf",
+			'woff' => "$fontsPath/he/HadasimCLM-Regular.woff",
+		),
+		'Ezra SIL' => array(
+			'eot' => "$fontsPath/he/EzraSILSR.eot",
+			'ttf' => "$fontsPath/he/EzraSILSR.ttf",
+			'woff' => "$fontsPath/he/EzraSILSR.woff",
 		),
 	),
 
@@ -106,5 +146,10 @@ $wgWebFonts = array(
 		'ml' => array( 'Meera', 'Rachana' , 'Dyuthi', 'RaghuMalayalam'),
 		'or' => array( 'Lohit Oriya'),
 		'ta' => array( 'Lohit Tamil'),
+		'te' => array( 'Lohit Telugu'),
+		'bn' => array( 'Lohit Bengali'),
+		'gu' => array( 'Samyak Gujarati'),
+		'hi' => array( 'Samyak Devanagari', 'Lohit Hindi'),
+		'he' => array( 'Ezra SIL', 'David CLM','Hadasim CLM'),
 	),
 );
