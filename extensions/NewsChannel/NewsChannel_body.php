@@ -69,7 +69,7 @@ class NewsChannel extends SpecialPage
 	 * outputChannelMarkup( $newsItems ) function.
 	 */
 	function showChannel() {
-		global $wgContLang, $wgCanonicalNamespaceNames, $wgServer, $wgStylePath, $wgRequest, $wgOut;
+		global $wgContLang, $wgServer, $wgStylePath, $wgRequest, $wgOut;
 		global $wgNewsChannelDefaultItems, $wgNewsChannelMaxItems, $wgNewsChannelAuthorizedEditors;
 		global $wgNewsChannelCategory, $wgNewsChannelExcludeCategory, $wgNewsChannelRemoveArticlePrefix;
 
@@ -94,7 +94,7 @@ class NewsChannel extends SpecialPage
 
 		$categoryPrefixesRegex = '/^(' .
 			preg_quote( $wgContLang->getNsText( NS_CATEGORY ), "/" ) . '|' .
-			preg_quote( $wgCanonicalNamespaceNames[ NS_CATEGORY ] ) . '):/i';
+			preg_quote( MWNamespace::getCanonicalName( NS_CATEGORY ) ) . '):/i';
 
 		$inCategoriesStr = $dbr->addQuotes( str_replace( ' ', '_', $wgNewsChannelCategory ) ) . ',';
 		$inCategoriesCount = 1;
