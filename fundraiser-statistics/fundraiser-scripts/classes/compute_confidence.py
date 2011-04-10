@@ -2,8 +2,13 @@
 
 """
 
-Generates confidence estimate for a test
+This module defines reporting and analysis for determining the statistical confidence
+of of choice metrics over time.
 
+!!MODIFY!!
+
+- This should extend DataReporting.DataReporting
+- The querying functionality should be exported to DataLoader
 
 """
 
@@ -33,9 +38,13 @@ matplotlib.use('Agg')
 	
 	
 	METHODS:
-	
-	
-
+		query_tables
+		get_time_lists
+		gen_plot
+		run_test
+		compute_parameters
+		print_metrics
+		
 """
 class ConfidenceTest(DataLoader):
 
