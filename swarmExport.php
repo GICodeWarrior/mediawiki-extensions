@@ -84,7 +84,7 @@ printf( "Writing data for %s rows\n", $res->numRows() );
 
 while ( $row = $res->fetchObject() ) {
 	$time = wfTimestamp( TS_UNIX, $row->rev_timestamp );
-	$title = $prefix . $wgCanonicalNamespaceNames[$row->page_namespace] . ':' . $row->page_title;
+	$title = $prefix . MWNamespace::getCanonicalName( $row->page_namespace ) . ':' . $row->page_title;
 	fwrite( $f, "{$row->rev_id}|{$title}|{$row->rev_user_text}|{$time}\n" );
 }
 
