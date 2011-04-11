@@ -81,10 +81,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'getfamily-desc' => 'Genera un arxiu de família per a pywikipediabot',
-	'right-getfamily' => 'Crea un arxiu de família per pywikipediabot',
+	'right-getfamily' => 'Crear un fitxer de família per pywikipediabot',
 );
 
 /** German (Deutsch)
