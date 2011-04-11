@@ -110,11 +110,12 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author SMP
  */
 $messages['ca'] = array(
 	'forcepreview' => 'Desar la pàgina (usar abans la previsualització)',
 	'forcepreview-desc' => 'Força la previsualització als usuaris sense permisos',
-	'right-forcepreviewexempt' => 'Pot desar sense utilitzar la Vista prèvia',
+	'right-forcepreviewexempt' => 'Poder desar sense haver de previsualitzar',
 );
 
 /** Czech (Česky)
