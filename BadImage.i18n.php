@@ -445,6 +445,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -468,7 +469,7 @@ $messages['ca'] = array(
 	'badimages-log-add' => "s'ha afegit [[$1]] a la llista d'imatges defectuoses",
 	'badimages-log-remove' => "s'ha eliminat [[$1]] de la llista d'imatges defectuoses",
 	'badimages-page' => "{{ns:help}}:Llista d'imatges defectuoses",
-	'right-badimages' => "Actualitza la llista d'imatges defectuoses",
+	'right-badimages' => "Actualitzar la llista d'imatges defectuoses",
 );
 
 /** Chechen (Нохчийн) */
