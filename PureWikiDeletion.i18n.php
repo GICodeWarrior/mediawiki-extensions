@@ -156,9 +156,15 @@ Sellit ouzh $2 evit ur roll eus ar gwennadurioù nevez.',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'purewikideletion' => 'Pražnjenje wiki stranica',
 	'randomexcludeblank' => 'Slučajna stranica (neuključujući prazne)',
 	'populateblankedpagestable' => 'Popuni tabele ispražnjenih stranica',
+	'purewikideletion-desc' => 'Između drugih stvari, stvara od praznih stranica da izgledaju kao crveni linkovi',
+	'purewikideletion-pref-watchblank' => 'Dodaj stranice koje ja ispraznim na moj spisak praćenih članaka',
+	'purewikideletion-pref-watchunblank' => 'Dodaj prazne stranice koje ja vratim na moj spisak praćenih članaka',
 	'blank-log' => 'prazno',
+	'blank-log-name' => 'Zapisnik pražnjenja',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|zapisnik pražnjenja]]',
 	'purewikideletion-blanknologin' => 'Niste prijavljeni',
 );
 
