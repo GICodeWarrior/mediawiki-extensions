@@ -274,8 +274,8 @@ def transform_editors_multi_launcher(rts):
 
 
 def setup_database(rts):
-    db_raw = storage.Database('mongo', rts.dbname, rts.editors_raw)
-    db_dataset = storage.Database('mongo', rts.dbname, rts.editors_dataset)
+    db_raw = storage.Database(rts.storage, rts.dbname, rts.editors_raw)
+    db_dataset = storage.Database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
     ids = db_dataset.retrieve_distinct_keys('editor')
     db_dataset.add_index('editor')

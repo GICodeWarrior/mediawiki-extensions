@@ -126,9 +126,9 @@ def init_args_parser():
 
     #ALL
     parser_all = subparsers.add_parser('all',
-        help='The all sub command runs the download, extract, store and dataset \
-        commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE \
-        CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.')
+        help='''The all sub command runs the download, extract, store and dataset 
+        commands.\n\nWARNING: THIS COULD TAKE DAYS DEPENDING ON THE 
+        CONFIGURATION OF YOUR MACHINE AND THE SIZE OF THE WIKIMEDIA DUMP FILE.''')
     parser_all.set_defaults(func=all_launcher)
     parser_all.add_argument('-e', '--except',
         action='store',
@@ -201,9 +201,16 @@ def config_launcher(rts, logger):
         language = None
         db = None
         valid_storage = ['mongo', 'cassandra']
-        working_directory = raw_input('Please indicate where you installed Wikilytics.\nCurrent location is %s\nPress Enter to accept default.\n' % os.getcwd())
-        input_location = raw_input('Please indicate where the Wikipedia dump files are or will be located.\nDefault is: %s\nPress Enter to accept default.\n' % rts.input_location)
-        base_location = raw_input('Please indicate where to store all Wikilytics project files.\nDefault is: %s\nPress Enter to accept default.\n' % rts.base_location)
+        working_directory = raw_input('''Please indicate where you installed 
+        Wikilytics.\nCurrent location is %s\nPress Enter to accept default.\n''' % os.getcwd())
+
+        input_location = raw_input('''Please indicate where the Wikipedia dump 
+        files are or will be located.\nDefault is: %s\nPress Enter to 
+        accept default.\n''' % rts.input_location)
+
+        base_location = raw_input('''Please indicate where to store all 
+        Wikilytics project files.\nDefault is: %s\nPress Enter to accept 
+        default.\n''' % rts.base_location)
 
         while db not in valid_storage:
             db = raw_input('Please indicate what database you are using for storage. \nDefault is: Mongo\n')
@@ -212,20 +219,27 @@ def config_launcher(rts, logger):
                 print 'Valid choices are: %s' % ','.join(valid_storage)
 
         while project not in pc.projects.keys():
-            project = raw_input('Please indicate which project you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % rts.project.full_name)
+            project = raw_input('''Please indicate which project you would like 
+            to analyze.\nDefault is: %s\nPress Enter to accept default.\n''' % rts.project.full_name)
             project = project if len(project) > 0 else rts.project.name
             if project not in pc.projects.keys():
                 print 'Valid choices for a project are: %s' % ','.join(pc.projects.keys())
 
         while language not in rts.project.valid_languages:
-            language = raw_input('Please indicate which language of project %s you would like to analyze.\nDefault is: %s\nPress Enter to accept default.\n' % (rts.project.full_name, rts.language))
+            language = raw_input('''Please indicate which language of project 
+            %s you would like to analyze.\nDefault is: %s\nPress Enter to accept 
+            default.\n''' % (rts.project.full_name, rts.language))
             if len(language) == 0:
                 language = rts.language.code
-            language = language if language in rts.project.valid_languages else rts.language.default
+            language = language if language in rts.project.valid_languages \
+                else rts.language.default
 
-        input_location = input_location if len(input_location) > 0 else rts.input_location
-        base_location = base_location if len(base_location) > 0 else rts.base_location
-        working_directory = working_directory if len(working_directory) > 0 else os.getcwd()
+        input_location = input_location if len(input_location) > 0 else \
+            rts.input_location
+        base_location = base_location if len(base_location) > 0 else \
+            rts.base_location
+        working_directory = working_directory if len(working_directory) > 0 \
+            else os.getcwd()
 
         config = ConfigParser.RawConfigParser()
         config.add_section('file_locations')
@@ -273,9 +287,11 @@ def extract_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'extract', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Extract', extract_launcher)
-    res = file_utils.delete_file(rts.txt, None, directory=True)
-    if res:
-        res = file_utils.create_directory(rts.txt)
+
+    #remove output from previous run.
+    file_utils.delete_file(rts.txt, None, directory=True)
+    file_utils.create_directory(rts.txt)
+
     extracter.launcher(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'extract', stopwatch, event='finish')

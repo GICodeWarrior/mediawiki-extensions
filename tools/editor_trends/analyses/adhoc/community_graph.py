@@ -42,7 +42,7 @@ def create_articles_set(edits):
 
 
 def create_edgelist(project, collection):
-    db = storage.Database('mongo', project, collection)
+    db = storage.Database(rts.storage, project, collection)
     ids = db.retrieve_distinct_keys('editor')
     ids.sort()
     fh = file_utils.create_txt_filehandle(settings.dataset_location, '%s_edgelist.csv' % project, 'w', 'utf-8')

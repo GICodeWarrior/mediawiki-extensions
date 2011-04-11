@@ -65,7 +65,7 @@ class Dumper(Thread):
 
 
     def store_available_dumps(self):
-        db = storage.Database('mongo', 'wikilytics', 'available_dumps')
+        db = storage.Database(rts.storage, 'wikilytics', 'available_dumps')
         db.save({'project': self.project, 'dumps': self.data})
 
     def run(self):

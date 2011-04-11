@@ -86,7 +86,7 @@ def launcher():
     This is the main entry point, it creates a queue with jobs and determines
     the type of job and fires it off 
     '''
-    db = storage.Database('mongo', 'wikilytics', 'jobs')
+    db = storage.Database(rts.storage, 'wikilytics', 'jobs')
     tasks = []
     project, language, parser = manager.init_args_parser()
     args = parser.parse_args(['django'])

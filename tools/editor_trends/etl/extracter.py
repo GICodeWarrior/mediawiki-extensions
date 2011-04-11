@@ -149,7 +149,7 @@ def datacompetition_count_edits(fh, rts, file_id):
     file_utils.store_object(counts, location, filename)
 
 
-def parse_xml(fh, rts, cache, file_id):
+def parse_xml(fh, rts, cache, process_id, file_id):
     bots, include_ns = setup_parser(rts)
 
     start = 'start'; end = 'end'
@@ -180,7 +180,7 @@ def parse_xml(fh, rts, cache, file_id):
                     article['namespace'] = current_namespace
                     cache.count_articles += 1
                     if cache.count_articles % 10000 == 0:
-                        print 'Worker %s parsed %s articles' % (file_id, cache.count_articles)
+                        print 'Worker %s parsed %s articles' % (process_id, cache.count_articles)
                     md5hashes = deque()
                 elem.clear()
 
@@ -239,9 +239,9 @@ def stream_raw_xml(input_queue, process_id, lock, rts):
         fh = file_utils.create_streaming_buffer(filename)
 
         if rts.kaggle:
-            datacompetition_count_edits(fh, rts, file_id)
+            datacompetition_count_edits(fh, rts, process_id, file_id)
         else:
-            parse_xml(fh, rts, cache, file_id)
+            parse_xml(fh, rts, cache, process_id, file_id)
 
         fh.close()
 

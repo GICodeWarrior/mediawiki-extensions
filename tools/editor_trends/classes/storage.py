@@ -120,7 +120,7 @@ class Mongo(AbstractDatabase):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'
         self.db[self.collection].update({key: value}, data, upsert=True)
 
-    def find(self, key=None, qualifier=None):
+    def find(self, key=None, value=1, qualifier=None):
         if qualifier == 'min':
             return self.db[self.collection].find({
                 key : {'$ne' : False}}).sort(key, pymongo.ASCENDING).limit(1)[0]
@@ -128,7 +128,7 @@ class Mongo(AbstractDatabase):
             return self.db[self.collection].find({
                 key : {'$ne' : False}}).sort(key, pymongo.DESCENDING).limit(1)[0]
         elif key != None:
-            return self.db[self.collection].find({key: 1})
+            return self.db[self.collection].find({key: value})
         else:
             return self.db[self.collection].find()
 
@@ -262,7 +262,7 @@ def Database(storage, dbname, collection):
 
 
 if __name__ == '__main__':
-    db = Database('mongo', 'wikilytics', 'zhwiki_editors_raw')
+    db = Database(rts.storage, 'wikilytics', 'zhwiki_editors_raw')
     ids = db.retrieve_distinct_keys('editor', force_new=True)
     #db.insert({'foo':'bar'})
     #db.update('foo', 'bar', {})

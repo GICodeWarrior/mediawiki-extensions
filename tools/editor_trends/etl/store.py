@@ -38,7 +38,7 @@ class Storer(consumers.BaseConsumer):
     The treshold is currently more than 9 edits and is not yet configurable. 
     '''
     def run(self):
-        db = storage.Database('mongo', self.rts.dbname, self.rts.editors_raw)
+        db = storage.Database(rts.storage, self.rts.dbname, self.rts.editors_raw)
         editor_cache = cache.EditorCache(db)
         prev_editor = -1
         while True:
@@ -100,7 +100,7 @@ def store_articles(rts):
     * category (if any)
     * article id
     '''
-    db = storage.Database('mongo', rts.dbname, rts.articles_raw)
+    db = storage.Database(rts.storage, rts.dbname, rts.articles_raw)
     db.drop_collection()
     db.add_index('id')
     db.add_index('title')
@@ -108,11 +108,11 @@ def store_articles(rts):
     db.add_index('category')
 
     location = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
-    files = file_utils.retrieve_file_list(rts.txt, extension='csv', mask='article')
+    files = file_utils.retrieve_file_list(rts.txt, extension='csv', mask='titles')
 
-    print 'Storing article...'
+    print 'Storing articles...'
     for file in files:
-        print file
+        print 'Processing %s...' % file
         fh = file_utils.create_txt_filehandle(rts.txt, file, 'r', 'utf-8')
         for line in fh:
             line = line.strip()
@@ -124,6 +124,11 @@ def store_articles(rts):
                 data[key] = value
                 x += 2
                 y += 2
+            for key, value in data.iteritems():
+                try:
+                    data[key] = int(value)
+                except ValueError:
+                    pass
             db.insert(data)
         fh.close()
     print 'Done storing articles...'
@@ -136,7 +141,7 @@ def launcher(rts):
     '''
     store_articles(rts)
     print 'Input directory is: %s ' % rts.sorted
-    db = storage.Database('mongo', rts.dbname, rts.editors_raw)
+    db = storage.Database(rts.storage, rts.dbname, rts.editors_raw)
     db.drop_collection()
     db.add_index('editor')
 

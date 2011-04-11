@@ -179,12 +179,12 @@ class RunTimeSettings(Settings):
         max_length_key = max([len(key) for key in about.keys()])
 
         print ''
-        print 'Wikilytics is (c) 2010-2011 by the Wikimedia Foundation.'
-        print 'Written by Diederik van Liere (dvanliere@gmail.com).'
-        print '''This software comes with ABSOLUTELY NO WARRANTY. This is free 
-        software, and you are welcome to distribute it under certain conditions.'''
-        print 'See the README.1ST file for more information.'
-        print '\nPlatform: %s:%s' % (self.platform, self.architecture)
+        print '''Wikilytics is (c) 2010-2011 by the Wikimedia Foundation.
+        Written by Diederik van Liere (dvanliere@gmail.com).
+        This software comes with ABSOLUTELY NO WARRANTY. This is free 
+        software, and you are welcome to distribute it under certain conditions.
+        See the README.1ST file for more information.'''
+        print '\nPlatform: %s:%s\n' % (self.platform, self.architecture)
 
         print 'Final settings after parsing command line arguments:'
         for ab in about:

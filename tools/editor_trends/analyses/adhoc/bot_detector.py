@@ -70,7 +70,7 @@ def retrieve_bots(language_code):
     Loader function to retrieve list of id's of known Wikipedia bots.
     '''
     ids = []
-    db = storage.Database('mongo', 'bots', 'ids')
+    db = storage.Database(rts.storage, 'bots', 'ids')
     cursor = db.find()
     for bot in cursor:
         if bot['verified'] == 'True' and language_code in bot['projects']:
@@ -88,7 +88,7 @@ def store_bots():
                                                 'bots_ids.csv',
                                                 'utf-8',
                                                 keys)
-    db = storage.Database('mongo', 'wikilytics', 'bots')
+    db = storage.Database(rts.storage, 'wikilytics', 'bots')
     db.drop_collection()
     for id in bots:
         bot = bots[id]
