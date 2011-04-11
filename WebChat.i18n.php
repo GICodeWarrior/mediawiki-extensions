@@ -133,9 +133,11 @@ Anonimnim korisnicima će biti automatski dodijeljen nadimak, ali može biti nak
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'webchat' => 'Xat web',
+	'right-webchat' => "Tenir permès l'ús del [[Special:WebChat|xat web]]",
 );
 
 /** Czech (Česky)
