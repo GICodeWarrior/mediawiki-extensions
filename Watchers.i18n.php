@@ -244,16 +244,20 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'watchers' => 'Vigilants',
 	'watchers-desc' => 'Mostra [[Special:Watchers|quins usuaris tenen una pàgina a la seva llista de seguiment]]',
 	'watchers_link_title' => 'Qui vigila aquesta pàgina?',
 	'watchers_error_article' => "'''Error:''' La pàgina no existeix.",
-	'watchers_header' => '{{PLURAL:$2|usuari està|usuaris estan}} vigilant "[[:$1]]"',
-	'watchers_noone_watches' => 'Ningú vigila la pàgina [[:$1]].',
+	'watchers-error-invalid-page' => "'''Error:''' «$1» és un títol de pàgina invàlid.",
+	'watchers_header' => '{{PLURAL:$2|Usuari que està|Usuaris que estan}} vigilant «[[:$1]]»',
+	'watchers_noone_watches' => 'Ningú no vigila la pàgina [[:$1]].',
 	'watchers_x_or_more' => '$1 o més {{PLURAL:$1|usuaris|usuaris}} tenen la pàgina [[:$2]] a la seva llista de seguiment.',
-	'watchers_less_than_x' => 'Menys de $1 {{PLURAL:$1|usuaris|usuaris}} tenen aquesta pàgina a la seva llista de seguiment.',
+	'watchers_less_than_x' => 'Menys de $1 {{PLURAL:$1|usuaris|usuaris}} tenen la pàgina [[:$2]] a la seva llista de seguiment.',
+	'watchers-num' => '$1 {{PLURAL:$1|usuari té|usuaris tenen}} la pàgina [[:$2]] a la seva llista de seguiment.',
+	'right-watchers-list' => '[[Special:Watchers|Fer la llista dels usuaris que vigilen una pàgina específica]]',
 );
 
 /** Sorani (کوردی)
