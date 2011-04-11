@@ -38,18 +38,20 @@ def available_analyses(caller='manage'):
     pos = fn.rfind(os.sep)
     loc = fn[:pos]
     path = os.path.join(loc , 'plugins')
-    plugins = import_libs(path)
+    modules = import_libs(path)
 
-    for plugin in plugins:
-        if isinstance(plugin, types.FunctionType) and plugin.func_name not in ignore:
-            charts[plugin.func_name] = plugin
+#    for module_name, module in modules.iteritems():
+#        func = getattr(module, module_name)
+#        plugin = module()
+#        if isinstance(plugin, types.FunctionType) and plugin.func_name not in ignore:
+#            charts[plugin.func_name] = plugin
     if caller == 'manage':
-        return charts
+        return modules
     elif caller == 'django':
         django_functions = []
-        for chart in charts:
-            fancy_name = chart.replace('_', ' ').title()
-            django_functions.append((chart, fancy_name))
+        for module in modules:
+            fancy_name = module.replace('_', ' ').title()
+            django_functions.append((module, fancy_name))
 
         return django_functions
 
@@ -58,13 +60,12 @@ def import_libs(path):
     '''
     Dynamically importing functions from the plugins directory. 
     '''
-    library_list = []
+    plugins = {}
     sys.path.append(path)
     for f in os.listdir(os.path.abspath(path)):
         module_name, ext = os.path.splitext(f)
         if ext == '.py':
             module = __import__(module_name)
-            func = getattr(module, module_name)
-            library_list.append(func)
+            plugins[module_name] = module
 
-    return library_list
+    return plugins

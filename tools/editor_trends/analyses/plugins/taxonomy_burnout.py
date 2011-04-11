@@ -18,16 +18,18 @@ __email__ = 'dvanliere at wikimedia dot org'
 __date__ = '2011-01-25'
 __version__ = '0.1'
 
+
 from datetime import date
+
 
 '''
     taxonomy_burnout
     ================
     
-    This is a Taxonomy project metric.  The "Editor Burnout" metric is intended to measure 
-    editors that make a large number of edits in a single month and then make relatively few
-    in the following months.  The exact number of edits and months are defined by the 
-    following gloabal variables:
+    This is a Taxonomy project metric.  The "Editor Burnout" metric is intended 
+    to measure editors that make a large number of edits in a single month and 
+    then make relatively few in the following months.  The exact number of 
+    edits and months are defined by the following global variables:
     
     ONE_MONTH_EDIT_COUNT_CUTOFF
     MONTHS_AFTER_CUTOFF_TO_RECORD_BURNOUT
@@ -46,17 +48,32 @@ from datetime import date
     
 '''
 def taxonomy_burnout(var, editor, **kwargs):
-    
+
     """ These parameters can be used to tune the burnout analyses """
+    '''
     global MONTHS_AFTER_CUTOFF_TO_RECORD_BURNOUT
     global CUTOFF_RATE_FOR_BURNOUT_EDITORS
     global ONE_MONTH_EDIT_COUNT_CUTOFF
     
+    DIEDERIK: This is not necessary as the variables are only available in
+    the local scope. It's better to request these 3 variables from kwargs, like
+    
+    months_after_cutoff = kwargs.get('months_after_cutoff', 6)
+    cutoff = kwargs.get('cutoff_rate_for_burnout_editors', 10)
+    treshold = kwargs.get('one_month_edit_count_cutoff', 149)
+    and then specify these three variables on the command line like:
+    python manage.py dataset -c taxonomy_burnout -k months_after_cutoff=6,cutoff=10,treshold=10
+    
+    this way you don't have the change the code to run a different replication. All keyword 
+    arguments from the command line are available in **kwargs and if you don't specify
+    the keywords then it will fall back to the defaults. 
+    '''
+
     MONTHS_AFTER_CUTOFF_TO_RECORD_BURNOUT = 6
     CUTOFF_RATE_FOR_BURNOUT_EDITORS = 10
     ONE_MONTH_EDIT_COUNT_CUTOFF = 149
-    
-    
+
+
     """ Record editor properties """
     new_wikipedian = editor['new_wikipedian']
     edits = editor['edit_count']
@@ -65,10 +82,10 @@ def taxonomy_burnout(var, editor, **kwargs):
 
     made_cutoff = False
     burnout = False
-    
+
     total_edits_since_cutoff = 0.0
     total_months_since_cutoff = 0.0
-    
+
     zero_edit_months = dict()
 
     """ 
@@ -78,43 +95,43 @@ def taxonomy_burnout(var, editor, **kwargs):
         In that case iterate through the months to present trying to find:
             (1) If they meet ONE_MONTH_EDIT_COUNT_CUTOFF 
             (2) If the fall into the burnout category thereafter
-    """ 
-            
+    """
+
     if new_wikipedian:
         years = edits.keys()
-        
+
         for year in years:
             months = edits[year].keys()
-            
+
             for month in months:
-                
+
                 if edits[year][month].get('0', 0) > cutoff:
                     made_cutoff = True
                 if made_cutoff == True:
-                    
+
                     """ Count every month after the cutoff is made """
                     total_months_since_cutoff += 1.0
-                    
+
                     """ Handle cases where no edits were recorded for a given month """
                     try:
                         edit_count_month = edits[year][month].get('0', 0)
                     except (AttributeError, KeyError):
                         edit_count_month = 0
-                        
+
                         """ Record that this editor had no edits on this month """
                         try:
                             zero_edit_months[username].append(date(year, month, 1))
                         except KeyError:
                             zero_edit_months[username] = list()
                             zero_edit_months[username].append(date(year, month, 1))
-                            
+
                     total_edits_since_cutoff = total_edits_since_cutoff + edit_count_month
-                            
+
                     if total_edits_since_cutoff / total_months_since_cutoff < CUTOFF_RATE_FOR_BURNOUT_EDITORS and \
                     total_months_since_cutoff > MONTHS_AFTER_CUTOFF_TO_RECORD_BURNOUT and burnout == False:
                          burnout = True
                          burnout_date = date(year, month, 1)
-                             
+
         if burnout:
             avg_edit = total_edits_since_cutoff / total_months_since_cutoff
 

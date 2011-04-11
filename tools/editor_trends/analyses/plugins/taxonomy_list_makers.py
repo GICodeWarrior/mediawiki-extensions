@@ -18,6 +18,11 @@ __date__ = '2011-01-25'
 __version__ = '0.1'
 
 import sys
+from datetime import datetime
+if '..' not in sys.path:
+    sys.path.append('..')
+
+from classes import storage
 
 def taxonomy_list_makers(var, editor, **kwargs):
     """
@@ -25,14 +30,16 @@ def taxonomy_list_makers(var, editor, **kwargs):
     Any editor who makes more than 10 mainspace edits a month to articles with 
     titles that begin with "List of..."
     """
-    db_articles = kwargs.get('articles', None)
+    data = kwargs.get('data', None)
+    today = datetime.today()
 
-    if db_articles == None:
+    if data == None:
+        print 'Ooooopppsssss.....'
         sys.exit(-1)
 
     articles_edited = editor['articles_edited']
-    list_articles = db_articles.find('category', 'List')
-    print list_articles
+    print articles_edited
+    #print data
     count = 0
     years = articles_edited.keys()
     for year in years:
@@ -40,12 +47,24 @@ def taxonomy_list_makers(var, editor, **kwargs):
         for month in months:
             articles = articles_edited[year].get(month, [])
             for article in articles:
-                if article in list_articles:
-                    count += 1
+                try:
+                    count += data[article]
+                except KeyError:
+                    pass
 
     """ Add all editors with an edit count of more than 10 """
 
     if count > 10:
-        var.add(editor['username'], 1)
+        var.add(today, count, {'username': editor['username']})
 
     return var
+
+
+def preload(rts):
+    collection = '%s%s_articles_raw' % (rts.language.code, rts.project.name)
+    db = storage.Database(rts.storage, rts.dbname, collection)
+    data = {}
+    cursor = db.find('category', 'List')
+    for c in cursor:
+        data[c['id']] = 1
+    return data

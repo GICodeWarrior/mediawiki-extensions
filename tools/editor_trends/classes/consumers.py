@@ -17,12 +17,12 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-09'
 __version__ = '0.1'
 
-import multiprocessing
+from multiprocessing import Process
 
-class BaseConsumer(multiprocessing.Process):
+class BaseConsumer(Process):
 
     def __init__(self, rts, tasks, result=None):
-        multiprocessing.Process.__init__(self)
+        Process.__init__(self)
         self.rts = rts
         self.tasks = tasks
         self.result = result

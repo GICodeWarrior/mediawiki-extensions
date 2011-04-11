@@ -445,7 +445,7 @@ class Dataset:
 
     def to_mongo(self):
         dbname = '%s%s' % (self.language_code, self.project)
-        db = storage.Database('mongo', dbname, 'charts')
+        db = storage.Database(rts.storage, dbname, 'charts')
         db.add_son_manipulator(Transform())
         db.remove({'hash':self.hash, 'project':self.project,
                     'language_code':self.language_code})
@@ -541,7 +541,7 @@ class Dataset:
 
 
 def debug():
-    db = storage.Database('mongo', 'wikilytics', 'enwiki_charts')
+    db = storage.Database(rts.storage, 'wikilytics', 'enwiki_charts')
     mongo.add_son_manipulator(Transform())
 
     d1 = datetime.datetime.today()

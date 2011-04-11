@@ -72,17 +72,17 @@ class Replicator:
 
 
 class Analyzer(consumers.BaseConsumer):
-    def __init__(self, rts, tasks, result, var):
+    def __init__(self, rts, tasks, result, var, data):
         super(Analyzer, self).__init__(rts, tasks, result)
         self.var = var
+        self.data = data
 
     def run(self):
         '''
         Generic loop function that loops over all the editors of a Wikipedia 
         project and then calls the plugin that does the actual mapping.
         '''
-        db = storage.Database('mongo', self.rts.dbname, self.rts.editors_dataset)
-        articles = storage.Database('mongo', self.rts.dbname, self.rts.articles_raw)
+        db = storage.Database(rts.storage, self.rts.dbname, self.rts.editors_dataset)
         while True:
             try:
                 task = self.tasks.get(block=False)
@@ -92,7 +92,7 @@ class Analyzer(consumers.BaseConsumer):
                     break
                 editor = db.find_one('editor', task.editor)
 
-                task.plugin(self.var, editor, dbname=self.rts.dbname, articles=articles)
+                task.plugin(self.var, editor, dbname=self.rts.dbname, data=self.data)
                 self.result.put(True)
             except Empty:
                 pass

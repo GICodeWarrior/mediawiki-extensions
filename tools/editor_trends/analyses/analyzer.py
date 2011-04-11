@@ -68,7 +68,7 @@ def retrieve_plugin(func):
 
 
 def feedback(plugin, rts):
-    print 'Exporting data for chart: %s' % plugin.func_name
+    print 'Exporting data for chart: %s' % plugin
     print 'Project: %s' % rts.dbname
     print 'Dataset: %s' % rts.editors_dataset
 
@@ -94,7 +94,8 @@ def generate_chart_data(rts, func, **kwargs):
     available_plugins = inventory.available_analyses()
     if not plugin:
         raise exceptions.UnknownPluginError(plugin, available_plugins)
-    feedback(plugin, rts)
+
+    feedback(func, rts)
 
     obs = dict()
     tasks = JoinableQueue()
@@ -104,7 +105,7 @@ def generate_chart_data(rts, func, **kwargs):
     lock = mgr.RLock()
     obs_proxy = mgr.dict(obs)
 
-    db = storage.Database('mongo', rts.dbname, rts.editors_dataset)
+    db = storage.Database(rts.storage, rts.dbname, rts.editors_dataset)
     editors = db.retrieve_distinct_keys('editor')
     min_year, max_year = determine_project_year_range(db, 'new_wikipedian')
 
@@ -113,19 +114,31 @@ def generate_chart_data(rts, func, **kwargs):
     kwargs['min_year'] = min_year
     kwargs['max_year'] = max_year
 
-    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
+
     var = dataset.Variable('count', time_unit, lock, obs_proxy, **kwargs)
 
+    try:
+        print 'Preloading data...'
+        preloader = getattr(plugin, 'preload')
+        data = preloader(rts)
+    except Exception, error:
+        print error
+        data = None
+    finally:
+        print 'Finished preloading data.'
+
+    plugin = getattr(plugin, func)
     for editor in editors:
         tasks.put(analytics.Task(plugin, editor))
 
-    consumers = [analytics.Analyzer(rts, tasks, result, var) for
+    consumers = [analytics.Analyzer(rts, tasks, result, var, data) for
                  x in xrange(rts.number_of_processes)]
 
 
     for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
+    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
     for w in consumers:
         w.start()
 
@@ -162,9 +175,9 @@ def determine_project_year_range(db, var):
     Determine the first and final year for the observed data
     '''
     try:
-        obs = db.find(var, 'max')
+        obs = db.find(var, qualifier='max')
         max_year = obs[var].year + 1
-        obs = db.find(var, 'min')
+        obs = db.find(var, qualifier='min')
         min_year = obs[var].year
     except KeyError:
         min_year = 2001
@@ -173,10 +186,10 @@ def determine_project_year_range(db, var):
 
 
 def launcher():
-#    project, language, parser = manage.init_args_parser()
-#    args = parser.parse_args(['django'])
-#    rts = runtime_settings.init_environment('wiki', 'en', args)
-
+    project, language, parser = manage.init_args_parser()
+    args = parser.parse_args(['django'])
+    rts = runtime_settings.init_environment('wiki', 'en', args)
+    generate_chart_data(rts, 'taxonomy_burnout', time_unit='month')
     #TEMP FIX, REMOVE 
 #    rts.dbname = 'enwiki'
 #    rts.editors_dataset = 'editors_dataset'
@@ -184,8 +197,8 @@ def launcher():
 
 #    replicator = analytics.Replicator('histogram_by_backward_cohort', time_unit='year')
 #    replicator()
-    replicator = analytics.Replicator('cohort_dataset_backward_bar', time_unit='year', format='wide', languages=True)
-    replicator()
+    #replicator = analytics.Replicator('cohort_dataset_backward_bar', time_unit='year', format='wide', languages=True)
+    #replicator()
 
 #    generate_chart_data('histogram_by_backward_cohort', time_unit='year', cutoff=1, cum_cutoff=10)
 #    generate_chart_data('edit_patterns', time_unit='year', cutoff=5)
