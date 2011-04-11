@@ -1774,6 +1774,7 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
@@ -1789,7 +1790,7 @@ $messages['ms'] = array(
 	'readerfeedback-level-2' => 'Sederhana',
 	'readerfeedback-level-3' => 'Tinggi',
 	'readerfeedback-level-4' => 'Cemerlang',
-	'readerfeedback-submit' => 'Serah',
+	'readerfeedback-submit' => 'Hantar',
 	'readerfeedback-main' => 'Hanya laman kandungan boleh diberi penilaian.',
 	'readerfeedback-success' => "'''Terima kasih kerana memeriksa laman ini!''' Keputusan maklum balas pembaca bagi laman '''$1''' boleh dilihat di $2.",
 	'readerfeedback-voted' => "'''Anda telah pun memberi penilaian untuk laman ini.'''

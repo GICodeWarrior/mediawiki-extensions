@@ -405,6 +405,7 @@ $messages['ca'] = array(
 	'ratinghistory-ave' => 'Mit: $1',
 	'ratinghistory-table-rating' => 'Valoració',
 	'ratinghistory-table-votes' => 'Vots',
+	'right-feedback' => 'Utilitzar el formulari de comentaris per a valorar una pàgina',
 );
 
 /** Chechen (Нохчийн)
