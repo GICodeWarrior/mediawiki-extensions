@@ -12,459 +12,276 @@ See the GNU General Public License for more details, at
 http://www.fsf.org/licenses/gpl.html
 '''
 
+
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__email__ = 'dvanliere at gmail dot com'
-__date__ = '2010-12-13'
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2011-04-10'
 __version__ = '0.1'
 
+
+from collections import deque
 import sys
-import re
-import os
-import multiprocessing
-import progressbar
-from Queue import Empty
+from xml.etree.cElementTree import iterparse, dump
+from multiprocessing import JoinableQueue, Process, cpu_count, RLock, Manager
 
 if '..' not in sys.path:
     sys.path.append('..')
 
-import wikitree.parser
-from bots import detector
-from utils import file_utils
-from utils import compression
-from utils import log
+from etl import variables
+from classes import buffer
+from analyses.adhoc import bot_detector
 
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    pass
+def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, size):
+    if revision == None:
+    #the entire revision is empty, weird. 
+        #dump(revision)
+        return md5hashes, size
+
+    contributor = revision.find('%s%s' % (xml_namespace, 'contributor'))
+    contributor = variables.parse_contributor(contributor, bots, xml_namespace)
+    if not contributor:
+        #editor is anonymous, ignore
+        return md5hashes, size
+
+    revision_id = revision.find('%s%s' % (xml_namespace, 'id'))
+    revision_id = variables.extract_revision_id(revision_id)
+    if revision_id == None:
+        #revision_id is missing, which is weird
+        return md5hashes, size
+
+    article['revision_id'] = revision_id
+    text = variables.extract_revision_text(revision)
+    article.update(contributor)
+
+    comment = variables.extract_comment_text(revision_id, revision)
+    cache.comments.update(comment)
+
+    timestamp = revision.find('%s%s' % (xml_namespace, 'timestamp')).text
+    article['timestamp'] = timestamp
+
+    hash = variables.create_md5hash(text)
+    revert = variables.is_revision_reverted(hash['hash'], md5hashes)
+    md5hashes.append(hash['hash'])
+    size = variables.calculate_delta_article_size(size, text)
+
+    article.update(hash)
+    article.update(size)
+    article.update(revert)
+    cache.add(article)
+    return md5hashes, size
+
+def setup_parser(rts):
+    bots = ''   #bot_detector.retrieve_bots(rts.language.code) 
+    start = 'start'; end = 'end'
+    context = iterparse(fh, events=(start, end))
+    context = iter(context)
+
+    include_ns = {3: 'User Talk',
+                  5: 'Wikipedia Talk',
+                  1: 'Talk',
+                  2: 'User',
+                  4: 'Wikipedia'}
+
+    return bots, context, include_ns
 
 
-RE_NUMERIC_CHARACTER = re.compile('&#(\d+);')
+def datacompetition_count_edits(rts, file_id):
+    bots, context, include_ns = setup_parser(rts)
+    counts = {}
+    id = False
+    ns = False
+    parse = False
 
-
-def remove_numeric_character_references(rts, text):
-    return re.sub(RE_NUMERIC_CHARACTER, lenient_deccharref, text).encode('utf-8')
-
-
-def lenient_deccharref(m):
     try:
-        return unichr(int(m.group(1)))
-    except ValueError:
-        '''
-        There are a few articles that raise a Value Error here, the reason is
-        that I am using a narrow Python build (UCS2) instead of a wide build
-        (UCS4). The quick fix is to return an empty string...
-        Real solution is to rebuild Python with UCS4 support.....
-        '''
-        return ''
+        for event, elem in context:
+            if event is end and elem.tag.endswith('siteinfo'):
+                xml_namespace = variables.determine_xml_namespace(elem)
+                namespaces = variables.create_namespace_dict(elem, xml_namespace)
+                ns = True
+                elem.clear()
 
+            elif event is end and elem.tag.endswith('title'):
+                title = variables.parse_title(elem)
+                article['title'] = title
+                current_namespace = variables.determine_namespace(title, namespaces, include_ns)
+                if current_namespace != False:
+                    parse = True
+                    article['namespace'] = current_namespace
+                    cache.count_articles += 1
+                elem.clear()
 
-def build_namespaces_locale(namespaces, include=['0']):
-    '''
-    @include is a list of namespace keys that should not be ignored, the default
-    setting is to ignore all namespaces except the main namespace. 
-    '''
-    ns = {}
-    for key, value in namespaces.iteritems():
-        if key in include:
-            #value = namespaces[namespace].get(u'*', None)
-            #ns.append(value)
-            ns[key] = value
-    return ns
-
-
-def parse_comments(rts, revisions, function):
-    for revision in revisions:
-        comment = revision.find('{%s}comment' % rts.xml_namespace)
-        if comment != None and comment.text != None:
-            comment.text = function(comment.text)
-    return revisions
-
-
-def parse_article(elem, namespaces):
-    '''
-    @namespaces is a list of valid namespaces that should be included in the analysis
-    if the article should be ignored then this function returns false, else it returns
-    the namespace identifier and namespace name. 
-    '''
-    title = elem.text
-    if title == None:
-        return False
-    ns = title.split(':')
-    if len(ns) == 1 and '0' in namespaces:
-        return {'id': 0, 'name': 'main namespace'}
-    else:
-        if ns[0] in namespaces.values():
-            #print namespaces, title.decode('utf-8'), ns
-            return {'id': ns[0], 'name': ns[1]}
-        else:
-            return False
-
-
-def validate_hostname(address):
-    '''
-    This is not a foolproof solution at all. The problem is that it's really 
-    hard to determine whether a string is a hostname or not **reliably**. This 
-    is a very fast rule of thumb. Will lead to false positives, 
-    but that's life :)
-    '''
-    parts = address.split(".")
-    if len(parts) > 2:
-        return True
-    else:
-        return False
-
-
-def validate_ip(address):
-    parts = address.split(".")
-    if len(parts) != 4:
-        return False
-    parts = parts[:3]
-    for item in parts:
-        try:
-            if not 0 <= int(item) <= 255:
-                return False
-        except ValueError:
-            return False
-    return True
-
-
-def determine_username_is_bot(contributor, **kwargs):
-    '''
-    #contributor is an xml element containing the id of the contributor
-    @bots should have a dict with all the bot ids and bot names
-    @Return False if username id is not in bot dict id or True if username id
-    is a bot id.
-    '''
-    bots = kwargs.get('bots')
-    username = contributor.find('username')
-    if username == None:
-        return 0
-    else:
-        if username.text in bots:
-            return 1
-        else:
-            return 0
-
-
-def extract_username(contributor, **kwargs):
-    contributor = contributor.find('username')
-    if contributor != None and contributor.text != None:
-        contributor = contributor.text.encode('utf-8')
-        return contributor.decode('utf-8')
-    else:
-        return None
-
-
-def extract_revision_id(revision_id, **kwargs):
-    if revision_id != None:
-        return revision_id.text
-    else:
-        return None
-
-
-def extract_contributor_id(contributor, **kwargs):
-    '''
-    @contributor is the xml contributor node containing a number of attributes
-    Currently, we are only interested in registered contributors, hence we
-    ignore anonymous editors. 
-    '''
-    if contributor.get('deleted'):
-        # ASK: Not sure if this is the best way to code deleted contributors.
-        return None
-    elem = contributor.find('id')
-    if elem != None:
-        return {'id':elem.text}
-    else:
-        elem = contributor.find('ip')
-        if elem != None and elem.text != None \
-        and validate_ip(elem.text) == False \
-        and validate_hostname(elem.text) == False:
-            return {'username':elem.text, 'id': elem.text}
-        else:
-            return None
-
-
-def parse_title(title):
-    title_data = {}
-    t1 = type(title.text)
-    if type(title.text) != type('str'):
-        print 'encodign'
-        print title.text.encode('utf-8')
-        title = title.text.encode('utf-8')
-        title = title.decode('utf-8', 'ignore')
-        print title
-    else:
-        title = title.text
-
-    #title = title.encode('utf-8')
-    title_data['title'] = title #.decode('utf-8')
-    t2 = type(title_data['title'])
-    print t1, t2
-    #title_data['title'] = title
-    if title_data['title'].startswith('List of'):
-        title_data['list'] = True
-    else:
-        title_data['list'] = False
-    return title_data
-
-
-def output_editor_information(revisions, page, bots, rts):
-    '''
-    @elem is an XML element containing 1 revision from a page
-    @output is where to store the data,  a filehandle
-    @**kwargs contains extra information 
-    
-    the variable tags determines which attributes are being parsed, the values 
-    in this dictionary are the functions used to extract the data. 
-    '''
-    headers = ['id', 'date', 'article', 'username', 'revision_id']
-    tags = {'contributor': {'id': extract_contributor_id,
-                            'bot': determine_username_is_bot,
-                            'username': extract_username,
-                            },
-            'timestamp': {'date': wikitree.parser.extract_text},
-            'id': {'revision_id': extract_revision_id,
-                   }
-            }
-    vars = {}
-    flat = []
-
-    for x, revision in enumerate(revisions):
-        vars[x] = {}
-        vars[x]['article'] = page
-        for tag in tags:
-            el = revision.find('%s' % tag)
-            if el == None:
-                #print cElementTree.tostring(revision, 'utf-8')
-                del vars[x]
-                break
-            for function in tags[tag].keys():
-                f = tags[tag][function]
-                value = f(el, bots=bots)
-                if isinstance(value, dict):
-                    for kw in value:
-                        vars[x][kw] = value[kw]
+            elif elem.tag.endswith('revision') and parse == True:
+                if event is start:
+                    clear = False
                 else:
-                    vars[x][function] = value
+                    print 'IMPLEMENT'
+                    #md5hashes, size = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size)
+                    cache.count_revisions += 1
+                    clear = True
+                if clear:
+                    elem.clear()
 
-    '''
-    This loop determines for each observation whether it should be stored 
-    or not. 
-    '''
-    for x in vars:
-        if vars[x]['bot'] == 1 or vars[x]['id'] == None \
-        or vars[x]['username'] == None:
-            continue
-        else:
-            f = []
-            for head in headers:
-                f.append(vars[x][head])
-            flat.append(f)
-    return flat
+            elif event is end and elem.tag.endswith('page'):
+                elem.clear()
+                #Reset all variables for next article
+                id = False
+                parse = False
 
+    except SyntaxError, error:
+        print 'Encountered invalid XML tag. Error message: %s' % error
+        dump(elem)
+        sys.exit(-1)
+    except IOError, error:
+        print '''Archive file is possibly corrupted. Please delete this archive 
+            and retry downloading. Error message: %s''' % error
+        sys.exit(-1)
 
-def add_namespace_to_output(output, namespace):
-    for x, o in enumerate(output):
-        o.append(namespace['id'])
-        output[x] = o
-    return output
+    filename = 'counts_kaggle_%s.csv' % file_id
+    fh = file_utils.create_txt_filehandle(rts.txt, filename, 'w', 'utf-8')
+    file_utils.write_dict_to_csv(counts, fh, keys)
+    fh.close()
 
-
-def parse_dumpfile(tasks, rts, lock):
-    bot_ids = detector.retrieve_bots(rts.language.code)
-    location = os.path.join(rts.input_location, rts.language.code, rts.project.name)
-    output = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
-    widgets = log.init_progressbar_widgets('Extracting data')
-    filehandles = [file_utils.create_txt_filehandle(output, '%s.csv' % fh, 'a',
-                'utf-8') for fh in xrange(rts.max_filehandles)]
-    while True:
-        total, processed = 0.0, 0.0
-        try:
-            filename = tasks.get(block=False)
-        except Empty:
-            break
-        finally:
-            print tasks.qsize()
-            tasks.task_done()
-
-        if filename == None:
-            print '\nThere are no more jobs in the queue left.'
-            break
-
-        filesize = file_utils.determine_filesize(location, filename)
-        print 'Opening %s...' % (os.path.join(location, filename))
-        print 'Filesize: %s' % filesize
-        fh1 = file_utils.create_txt_filehandle(location, filename, 'r', 'ascii')
-        fh2 = file_utils.create_txt_filehandle(location, 'articles.csv', 'a', 'utf-8')
-        ns, xml_namespace = wikitree.parser.extract_meta_information(fh1)
-        ns = build_namespaces_locale(ns, rts.namespaces)
-        rts.xml_namespace = xml_namespace
-
-        pbar = progressbar.ProgressBar(widgets=widgets, maxval=filesize).start()
-        for page, article_size in wikitree.parser.read_input(fh1):
-            title = page.find('title')
-            total += 1
-            namespace = parse_article(title, ns)
-            if namespace != False:
-                article_id = page.find('id').text
-                title = parse_title(title)
-                revisions = page.findall('revision')
-                revisions = parse_comments(rts, revisions, remove_numeric_character_references)
-                output = output_editor_information(revisions, article_id, bot_ids, rts)
-                output = add_namespace_to_output(output, namespace)
-                write_output(output, filehandles, lock, rts)
-                #file_utils.write_list_to_csv([article_id, title.values()], fh2, newline=False, lock=lock)
-                processed += 1
-            page.clear()
-            pbar.update(pbar.currval + article_size)
-
-        fh1.close()
-        fh2.close()
-        print 'Closing %s...' % (os.path.join(location, filename))
-        print 'Total pages: %s' % total
-        try:
-            print 'Pages processed: %s (%s)' % (processed, processed / total)
-        except ZeroDivisionError:
-            print 'Pages processed: %s' % processed
-
-    return True
+    filename = 'counts_kaggle_%s.bin' % file_id
+    file_utils.store_object(counts, location, filename)
 
 
-def group_observations(obs):
-    '''
-    This function groups observation by editor id, this way we have to make
-    fewer fileopening calls. 
-    '''
-    d = {}
-    for o in obs:
-        id = o[0]
-        if id not in d:
-            d[id] = []
-        #if len(o) == 6:
-        d[id].append(o)
-    return d
+def parse_xml(fh, cache, rts):
+    bots, context, include_ns = setup_parser(rts)
+    article = {}
+    size = {}
+    id = False
+    ns = False
+    parse = False
 
-
-def write_output(observations, filehandles, lock, rts):
-    observations = group_observations(observations)
-    for obs in observations:
-        #lock the write around all edits of an editor for a particular page
-        lock.acquire()
-        try:
-            for i, o in enumerate(observations[obs]):
-                if i == 0:
-                    fh = filehandles[hash(rts, obs)]
-                file_utils.write_list_to_csv(o, fh)
-
-        except Exception, error:
-            print 'Encountered the following error while writing data to %s: %s' % (error, fh)
-        finally:
-            lock.release()
-
-
-def hash(rts, id):
-    '''
-    A very simple hash function based on modulo. The except clause has been 
-    added because there are instances where the username is stored in userid
-    tag and hence that's a string and not an integer. 
-    '''
     try:
-        return int(id) % rts.max_filehandles
-    except ValueError:
-        return sum([ord(i) for i in id]) % rts.max_filehandles
+        for event, elem in context:
+            if event is end and elem.tag.endswith('siteinfo'):
+                xml_namespace = variables.determine_xml_namespace(elem)
+                namespaces = variables.create_namespace_dict(elem, xml_namespace)
+                ns = True
+                elem.clear()
+
+            elif event is end and elem.tag.endswith('title'):
+                title = variables.parse_title(elem)
+                article['title'] = title
+                current_namespace = variables.determine_namespace(title, namespaces, include_ns)
+                title_meta = variables.parse_title_meta_data(title, current_namespace)
+                if current_namespace != False:
+                    parse = True
+                    article['namespace'] = current_namespace
+                    cache.count_articles += 1
+                    md5hashes = deque()
+                elem.clear()
+
+            elif elem.tag.endswith('revision') and parse == True:
+                if event is start:
+                    clear = False
+                else:
+                    md5hashes, size = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size)
+                    cache.count_revisions += 1
+                    clear = True
+                if clear:
+                    elem.clear()
+
+            elif event is end and elem.tag.endswith('id') and id == False:
+                article['article_id'] = elem.text
+                if current_namespace:
+                    cache.articles[article['article_id']] = title_meta
+                id = True
+                elem.clear()
+
+            elif event is end and elem.tag.endswith('page'):
+                elem.clear()
+                #Reset all variables for next article
+                article = {}
+                size = {}
+                md5hashes = deque()
+                id = False
+                parse = False
 
 
-def prepare(rts):
-    output_articles = os.path.join(rts.input_location, rts.language.code,
-                                   rts.project.name)
-    output_txt = os.path.join(rts.input_location, rts.language.code,
-                              rts.project.name, 'txt')
-    res = file_utils.delete_file(output_articles, 'articles.csv')
-    res = file_utils.delete_file(output_txt, None, directory=True)
-    if res:
-        res = file_utils.create_directory(output_txt)
-    return res
+    except SyntaxError, error:
+        print 'Encountered invalid XML tag. Error message: %s' % error
+        dump(elem)
+        sys.exit(-1)
+    except IOError, error:
+        print '''Archive file is possibly corrupted. Please delete this archive 
+            and retry downloading. Error message: %s''' % error
+        sys.exit(-1)
 
 
-def unzip(properties):
-    tasks = multiprocessing.JoinableQueue()
-    canonical_filename = file_utils.determine_canonical_name(properties.filename)
-    extension = file_utils.determine_file_extension(properties.filename)
-    files = file_utils.retrieve_file_list(properties.location,
-                                     extension,
-                                     mask=canonical_filename)
-    print properties.location
-    print 'Checking if dump file has been extracted...'
-    for fn in files:
-        file_without_ext = fn.replace('%s%s' % ('.', extension), '')
-        result = file_utils.check_file_exists(properties.location, file_without_ext)
-        if not result:
-            print 'Dump file %s has not yet been extracted...' % fn
-            retcode = compression.launch_zip_extractor(properties.location,
-                                                       fn,
-                                                       properties)
+def stream_raw_xml(input_queue, process_id, lock, rts):
+    t0 = datetime.datetime.now()
+    i = 0
+    file_id = 0
+    cache = buffer.CSVBuffer(process_id, rts, lock)
+
+    while True:
+        filename = input_queue.get()
+        input_queue.task_done()
+        file_id += 1
+        if filename == None:
+            print '%s files left in the queue' % input_queue.qsize()
+            break
+
+        fh = file_utils.create_streaming_buffer(filename)
+
+        if rts.kaggle:
+            datacompetition_count_edits(rts, file_id)
         else:
-            print 'Dump file has already been extracted...'
-            retcode = 0
-        if retcode == 0:
-            tasks.put(file_without_ext)
-        elif retcode != 0:
-            print 'There was an error while extracting %s, please make sure \
-            that %s is valid archive.' % (fn, fn)
-            return False
-    return tasks
+            parse_xml(fh, cache, rts)
 
+        i += 1
+        if i % 10000 == 0:
+            print 'Worker %s parsed %s articles' % (process_id, i)
+        fh.close()
 
-def launcher(rts):
-    '''
-    This is the main entry point for the extact phase of the data processing
-    chain. First, it will put a the files that need to be extracted in a queue
-    called tasks, then it will remove some old files to make sure that there is
-    no data pollution and finally it will start the parser to actually extract
-    the variables from the different dump files. 
-    '''
-    tasks = unzip(rts)
-    if not tasks:
-        return False
+        t1 = datetime.datetime.now()
+        print 'Worker %s: Processing of %s took %s' % (process_id, filename, (t1 - t0))
+        print 'There are %s files left in the queue' % (input_queue.qsize())
+        t0 = t1
 
-    result = prepare(rts)
-    if not result:
-        return result
-
-    lock = multiprocessing.Lock()
-
-    consumers = [multiprocessing.Process(target=parse_dumpfile,
-                                args=(tasks,
-                                      rts,
-                                      lock))
-                                for x in xrange(rts.number_of_processes)]
-
-    for x in xrange(rts.number_of_processes):
-        tasks.put(None)
-
-    for w in consumers:
-        print 'Launching process...'
-        w.start()
-
-    tasks.join()
-
-    result = sum([consumer.exitcode for consumer in consumers
-                  if consumer.exitcode != None])
-
-    if result == 0:
-        return True
-    else:
-        return False
+    if rts.kaggle:
+        cache.close()
+        cache.summary()
 
 
 def debug():
-    pass
-    #project = 'wiki'
-    #language_code = 'sv'
-    #filename = 'svwiki-latest-stub-meta-history.xml'
-    #parse_dumpfile(project, filename, language_code)
+    fh = 'c:\\wikimedia\sv\wiki\svwiki-latest-stub-meta-history.xml'
+
+
+def launcher(rts):
+    lock = RLock()
+    mgr = Manager()
+    open_handles = []
+    open_handles = mgr.list(open_handles)
+    clock = CustomLock(lock, open_handles)
+    input_queue = JoinableQueue()
+
+    files = file_utils.retrieve_file_list(rts.input_location)
+
+    if len(files) > cpu_count():
+        processors = cpu_count() - 1
+    else:
+        processors = len(files)
+
+    for filename in files:
+        filename = os.path.join(rts.input_location, filename)
+        print filename
+        input_queue.put(filename)
+
+    for x in xrange(processors):
+        print 'Inserting poison pill %s...' % x
+        input_queue.put(None)
+
+    extracters = [Process(target=stream_raw_xml, args=[input_queue, process_id,
+                                                       clock, rts])
+                  for process_id in xrange(processors)]
+    for extracter in extracters:
+        extracter.start()
+
+    input_queue.join()
+    print 'Finished parsing Wikipedia dump files.'
 
 
 if __name__ == '__main__':

@@ -45,7 +45,7 @@ class Sorter(consumers.BaseConsumer):
                     self.result.put(None)
                     break
                 elif filename.startswith('comments') or \
-                    filename.startswith('title'):
+                    filename.startswith('article'):
                     continue
                 fh = file_utils.create_txt_filehandle(self.rts.txt,
                                                       filename,
@@ -148,7 +148,6 @@ def launcher(rts):
     rts is an instance of RunTimeSettings
     '''
     files = file_utils.retrieve_file_list(rts.txt, 'csv')
-
     pbar = progressbar.ProgressBar(maxval=len(files)).start()
     tasks = multiprocessing.JoinableQueue()
     result = multiprocessing.JoinableQueue()

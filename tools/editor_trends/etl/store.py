@@ -108,22 +108,25 @@ def store_articles(rts):
     db.add_index('category')
 
     location = os.path.join(rts.input_location, rts.language.code, rts.project.name, 'txt')
-    fh = file_utils.create_txt_filehandle(location, 'titles.csv', 'r', 'utf-8')
-    print 'Storing article titles...'
-    for line in fh:
-        line = line.strip()
-        #print line.encode('utf-8')
-        line = line.split('\t')
-        data = {}
-        x, y = 0, 1
-        while y < len(line):
-            key, value = line[x], line[y]
-            data[key] = value
-            x += 2
-            y += 2
-        db.insert(data)
-    fh.close()
-    print 'Done...'
+    files = file_utils.retrieve_file_list(rts.txt, extension='csv', mask='article')
+
+    print 'Storing article...'
+    for file in files:
+        print file
+        fh = file_utils.create_txt_filehandle(rts.txt, file, 'r', 'utf-8')
+        for line in fh:
+            line = line.strip()
+            line = line.split('\t')
+            data = {}
+            x, y = 0, 1
+            while y < len(line):
+                key, value = line[x], line[y]
+                data[key] = value
+                x += 2
+                y += 2
+            db.insert(data)
+        fh.close()
+    print 'Done storing articles...'
 
 
 def launcher(rts):
