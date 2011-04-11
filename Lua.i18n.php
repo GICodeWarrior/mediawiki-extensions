@@ -664,10 +664,11 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'lua_error_internal' => 'Интерна грешка',
+	'lua_error_internal' => 'Унутрашња грешка',
 	'lua_overflow_recursion' => 'Достигнут лимит за рекурзију',
 	'lua_overflow_loc' => 'Достигнут максимални број линија кода',
 	'lua_overflow_time' => 'Достигнуто максимално време извршења',
