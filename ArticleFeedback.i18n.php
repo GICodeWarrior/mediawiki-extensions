@@ -326,6 +326,7 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'articlefeedback' => 'Priziadenn pennadoù',
 	'articlefeedback-desc' => 'Priziadenn pennadoù (stumm stur)',
+	'articlefeedback-survey-question-origin' => "E peseurt pajenn e oac'h p'hoc'h eus kroget gant an enselladenn-mañ ?",
 	'articlefeedback-survey-question-whyrated' => "Roit deomp an abeg d'ar perak ho peus priziet ar bajenn-mañ hiziv (kevaskit an abegoù gwirion) :",
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => "C'hoant em boa da reiñ sikour evit priziañ ar bajenn en ur mod hollek",
 	'articlefeedback-survey-answer-whyrated-development' => "Spi am eus e servijo d'un doare pozitivel ma friziadenn evit dioreiñ ar bajenn",
@@ -446,6 +447,7 @@ Molimo pokušajte kasnije.',
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author BroOk
  * @author El libre
  * @author Solde
@@ -470,6 +472,7 @@ $messages['ca'] = array(
 	'articlefeedback-form-panel-title' => 'Els teus comentaris',
 	'articlefeedback-form-panel-instructions' => 'Si us plau dedica un moment per valorar aquesta pàgina.',
 	'articlefeedback-form-panel-submit' => 'Envia comentaris',
+	'articlefeedback-form-panel-success' => 'Desat correctament',
 	'articlefeedback-report-switch-label' => 'Mostra els resultats',
 	'articlefeedback-report-panel-title' => 'Resultats dels comentaris',
 	'articlefeedback-report-panel-description' => 'Actual mitjana de qualificacions.',
@@ -481,7 +484,7 @@ $messages['ca'] = array(
 	'articlefeedback-field-objective-label' => 'Imparcial',
 	'articlefeedback-field-objective-tip' => "Creus que aquesta pàgina representa, de forma equilibrada, tots els punts de vista sobre l'assumpte?",
 	'articlefeedback-field-wellwritten-label' => 'Ben escrit',
-	'articlefeedback-pitch-reject' => 'No, gràcies',
+	'articlefeedback-pitch-reject' => 'Potser més tard',
 	'articlefeedback-pitch-or' => 'o',
 	'articlefeedback-pitch-survey-accept' => "Comença l'enquesta",
 	'articlefeedback-pitch-join-accept' => 'Crea un compte',
@@ -497,10 +500,12 @@ $messages['ce'] = array(
 
 /** Czech (Česky)
  * @author Mormegil
+ * @author Mr. Richard Bolla
  */
 $messages['cs'] = array(
 	'articlefeedback' => 'Hodnocení článku',
 	'articlefeedback-desc' => 'Hodnocení článků (pilotní verze)',
+	'articlefeedback-survey-question-origin' => 'Ze které stránky jste {{gender:|přišel|přišla|přišli}} na tento průzkum?',
 	'articlefeedback-survey-question-whyrated' => 'Proč jste dnes hodnotili tuto stránku (zaškrtněte všechny platné možnosti)?',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Chtěl jsem ovlivnit výsledné ohodnocení stránky',
 	'articlefeedback-survey-answer-whyrated-development' => 'Doufám, že mé hodnocení pozitivně ovlivní budoucí vývoj stránky',
@@ -519,7 +524,7 @@ $messages['cs'] = array(
 	'articlefeedback-form-panel-title' => 'Ohodnoťte tuto stránku',
 	'articlefeedback-form-panel-instructions' => 'Věnujte prosím chvilku ohodnocení této stránky.',
 	'articlefeedback-form-panel-clear' => 'Odstranit hodnocení',
-	'articlefeedback-form-panel-expertise' => 'Mám značné znalosti tohoto tématu.',
+	'articlefeedback-form-panel-expertise' => 'Mám rozsáhlé znalosti tohoto tématu.',
 	'articlefeedback-form-panel-expertise-studies' => 'Mám příslušný vysokoškolský titul',
 	'articlefeedback-form-panel-expertise-profession' => 'Jde o součást mé profese',
 	'articlefeedback-form-panel-expertise-hobby' => 'Je to můj velký koníček',
@@ -732,7 +737,7 @@ $messages['eo'] = array(
 	'articlefeedback-form-switch-label' => 'Taksu ĉi tiun paĝon',
 	'articlefeedback-form-panel-title' => 'Taksi ĉi tiun paĝon',
 	'articlefeedback-form-panel-instructions' => 'Bonvolu pasigi momenton por taksi ĉi tiun paĝon.',
-	'articlefeedback-form-panel-expertise-studies' => 'Mi studis ĝin en kolegio aŭ universitato',
+	'articlefeedback-form-panel-expertise-studies' => 'Mi havas ĉi-teman diplomon de kolegio aŭ universitato',
 	'articlefeedback-report-ratings' => '$1 taksoj',
 	'articlefeedback-field-trustworthy-label' => 'Fidinda',
 	'articlefeedback-field-trustworthy-tip' => 'Ĉu vi opinias ke ĉi tiu paĝo havas sufiĉajn citaĵojn kaj tiuj citaĵoj venas de fidindaj fontoj?',
@@ -1632,6 +1637,7 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'articlefeedback' => 'Enschäzonge för Sigge',
 	'articlefeedback-desc' => 'Enschäzonge för Sigge',
+	'articlefeedback-survey-question-origin' => 'Op wat för en Sigg bes De jewääse, wi De aanjefange häs, op heh di Froore ze antwoote?',
 	'articlefeedback-survey-question-whyrated' => 'Bes esu joot, un lohß ons weße, woröm De hück för heh di Sigg en Enschäzong affjejovve häs, un maach e Krüzje övverall, woh_t paß:',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Esch wullt jät beidraare zo all dä Enschäzonge för heh di Sigg',
 	'articlefeedback-survey-answer-whyrated-development' => 'Esch hoffen, dat ming Enschäzong för di Sigg dozoh beidrääht, dat se bäßer jemaat weed',
@@ -1916,6 +1922,7 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
@@ -1923,7 +1930,7 @@ $messages['ms'] = array(
 	'articlefeedback-desc' => 'Pentaksiran rencana (versi percubaan)',
 	'articlefeedback-survey-answer-whyrated-other' => 'Лия',
 	'articlefeedback-survey-question-useful-iffalse' => 'Мезекс?',
-	'articlefeedback-survey-submit' => 'Максомс',
+	'articlefeedback-survey-submit' => 'Serahkan',
 );
 
 /** Erzya (Эрзянь) */
@@ -1971,6 +1978,7 @@ $messages['ne'] = array(
 $messages['nl'] = array(
 	'articlefeedback' => 'Paginabeoordeling',
 	'articlefeedback-desc' => 'Paginabeoordeling (testversie)',
+	'articlefeedback-survey-question-origin' => 'Op welke pagina was u toen u aan deze vragenlijst bent begonnen?',
 	'articlefeedback-survey-question-whyrated' => 'Laat ons weten waarom u deze pagina vandaag hebt beoordeeld (kies alle redenen die van toepassing zijn):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Ik wil bijdragen aan de beoordelingen van de pagina',
 	'articlefeedback-survey-answer-whyrated-development' => 'Ik hoop dat mijn beoordeling een positief effect heeft op de ontwikkeling van de pagina',
@@ -2652,7 +2660,7 @@ $messages['sr-ec'] = array(
 	'articlefeedback-pitch-survey-accept' => 'Почни упитник',
 	'articlefeedback-pitch-join-accept' => 'Отвори налог',
 	'articlefeedback-pitch-join-login' => 'Пријави ме',
-	'articlefeedback-pitch-edit-accept' => 'Почните уређивање',
+	'articlefeedback-pitch-edit-accept' => 'Уреди ову страницу',
 	'articlefeedback-survey-message-success' => 'Хвала вам што сте попунили упитник.',
 	'articlefeedback-survey-message-error' => 'Дошло је до грешке.
 Покушајте касније.',
