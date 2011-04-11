@@ -467,6 +467,7 @@ $messages['ca'] = array(
 	'crosswikiblock-nouser' => 'No s\'ha trobat l\'usuari "$3".',
 	'crosswikiblock-noreason' => "No s'ha especificat cap motiu.",
 	'crosswikiblock-alreadyblocked' => "L'usuari $3 ja està blocat.",
+	'right-crosswikiblock' => 'Blocar i desblocar usuaris en altres wikis',
 );
 
 /** Chechen (Нохчийн) */
