@@ -3326,14 +3326,14 @@ Táto stránka sa týka iba obmedzneých používateľov.",
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'mywhitelistpages' => 'Моје стране',
+	'mywhitelistpages' => 'Моје странице',
 	'whitelisttablemodifyall' => 'Све',
 	'whitelisttablemodifynone' => 'Нема',
 	'whitelisttablepage' => 'Вики чланак',
 	'whitelisttabletype' => 'Тип приступа',
 	'whitelisttableexpires' => 'Истиче на',
-	'whitelisttablemodby' => 'Последњу измену направио',
-	'whitelisttablemodon' => 'Последња измена на',
+	'whitelisttablemodby' => 'Последња измена',
+	'whitelisttablemodon' => 'Последња измена',
 	'whitelisttableedit' => 'Уреди',
 	'whitelisttableview' => 'Преглед',
 	'whitelisttablenewdate' => 'Нови датум:',
@@ -3357,6 +3357,7 @@ $2',
 
 /** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'mywhitelistpages' => 'Moje strane',
@@ -3365,7 +3366,7 @@ $messages['sr-el'] = array(
 	'whitelisttablepage' => 'Viki članak',
 	'whitelisttabletype' => 'Tip pristupa',
 	'whitelisttableexpires' => 'Ističe na',
-	'whitelisttablemodby' => 'Poslednju izmenu napravio',
+	'whitelisttablemodby' => 'Poslednja izmena',
 	'whitelisttablemodon' => 'Poslednja izmena na',
 	'whitelisttableedit' => 'Uredi',
 	'whitelisttableview' => 'Pregled',
