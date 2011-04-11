@@ -231,6 +231,7 @@ $messages['qqq'] = array(
 {{Identical|Log in}}',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'login: header',
 	'voctrain_Definitions' => '{{Identical|Definition}}',
+	'voctrain_Translation' => '{{Identical|Translation}}',
 	'voctrain_other' => "Selectable item to be chosen when the desired number of questions is not in the list
 i.e.:
 
@@ -2824,7 +2825,14 @@ $messages['ms'] = array(
 	'voctrain_Could_not_create_new_user' => 'Pengguna baru tidak dapat dicipta',
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Taipkan pengguna dan kata laluan (tidak wajib), (atau cuba nama pengguna lain)',
 	'voctrain_Vocview' => 'Alat baca kosa kata',
+	'voctrain_Dictionary_definitions' => 'takrifan_kamus',
 	'voctrain_Translation' => 'Terjemahan',
+	'voctrain_unhide_definition' => 'dedahkan takrifan',
+	'voctrain_unhide_words' => 'dedahkan perkataan',
+	'voctrain_hiding' => 'Menyorok',
+	'voctrain_hide_definitions_in_question_language' => 'Sorokkan takrifan dalam bahasa soalan',
+	'voctrain_hide_words_in_question_language' => 'Sorokkan perkataan dalam bahasa soalan',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Pisahkan nilai dengan tanda koma untuk menggunakan berbilang bahasa.',
 	'voctrain_other' => 'lain-lain',
 );
 

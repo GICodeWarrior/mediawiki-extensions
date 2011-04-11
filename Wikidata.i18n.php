@@ -2380,6 +2380,7 @@ $messages['ca'] = array(
 	'ow_create' => 'Crea',
 	'ow_suggest_previous' => 'Anterior',
 	'ow_suggest_next' => 'Següent',
+	'right-addlanguage' => "Afegir i canviar la configuració d'idioma",
 );
 
 /** Chechen (Нохчийн)
