@@ -265,6 +265,17 @@ $messages['ru'] = array(
 	'printversion-inexistent-book' => 'Книга не найдена. Пожалуйста, введите название существующей книги, чтобы получить её печатную версию.',
 );
 
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'bookmanager-desc' => 'Алатке за књиге',
+	'printversion' => 'Издање за штампу',
+	'printversion-desc' => 'Ствара [[Special:PrintVersion|издање за штампу]] књиге',
+	'printversion-no-book' => 'Унесите назив књиге да бисте добили њено издање за штампу.',
+	'printversion-inexistent-book' => 'Књига није пронађена. Унесите назив постојеће књиге да бисте добили њено издање за штампу.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
