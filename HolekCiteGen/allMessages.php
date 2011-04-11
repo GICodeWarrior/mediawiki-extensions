@@ -186,7 +186,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'ts-citegen-Send' => 'Krouiñ',
-	'ts-citegen-Input-title' => 'Moned',
+	'ts-citegen-Input-title' => 'Enmont',
 	'ts-citegen-Output-title' => "Disoc'h",
 	'ts-citegen-Parsers' => 'Parseroù',
 	'ts-citegen-Skins' => 'Ezvont',
