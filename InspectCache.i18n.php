@@ -165,15 +165,20 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
 	'inspectcache' => 'Inspecciona la memòria cau',
+	'inspectcache-desc' => 'Una senzilla eina de depuració per inspeccionar el contingut de la memòria cau compartida',
 	'inspectcache-general' => 'Memòria cau general',
+	'inspectcache-parser' => 'Analitzador de memòria cau',
+	'inspectcache-message' => 'Memòria cau de missatges',
 	'inspectcache-get' => 'Obté',
 	'inspectcache-delete' => 'Elimina',
 	'inspectcache-deleted' => 'Memòria cau eliminada',
 	'inspectcache-list' => 'Llista',
+	'right-inspectcache' => 'Veure i eliminar entrades de la memòria cau',
 );
 
 /** Sorani (کوردی) */
