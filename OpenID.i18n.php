@@ -3596,6 +3596,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  * @author Aviator
  * @author Diagramma Della Verita
@@ -3615,7 +3616,7 @@ Sila hubungi [[Special:ListUsers/sysop|pentadbir]].',
 	'openidcanceltext' => 'Pengesahan URL OpenID telah dibatalkan.',
 	'openidoptional' => 'Pilihan',
 	'openidrequired' => 'Wajib',
-	'openidnickname' => 'Nama ringkas',
+	'openidnickname' => 'Nama timangan',
 	'openidfullname' => 'Nama penuh',
 	'openidemail' => 'Alamat e-mel',
 	'openidlanguage' => 'Bahasa',
