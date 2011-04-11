@@ -82,6 +82,14 @@ $messages['bs'] = array(
 	'right-editalluserpages' => 'Uređivanje korisničkih stranica',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'userpageeditprotection-desc' => "Restringeix l'edició de pàgines d'usuari a l'usuari i als editors amb permisos",
+	'right-editalluserpages' => "Editar pàgines d'usuari",
+);
+
 /** German (Deutsch)
  * @author The Evil IP address
  */
