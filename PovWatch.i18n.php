@@ -346,14 +346,15 @@ Kliknite na dugme ispod da se prijavite.',
  * @author Aleator
  * @author Jordi Roqué
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
 	'povwatch_invalid_title' => 'El títol especificat no és vàlid',
 	'povwatch_unknown_subpage' => 'Subpàgina desconeguda.',
 	'povwatch_title' => 'Títol:',
 	'povwatch_added' => 'Afegit',
-	'right-povwatch_admin' => "Administra els drets d'usuari per afegir pàgines a les llistes de seguiment d'altres usuaris",
-	'right-povwatch_user' => "Afegeix pàgines a les llistes de seguiment d'altres usuaris",
+	'right-povwatch_admin' => "Administrar els drets d'usuari d'afegir pàgines a les llistes de seguiment d'altres usuaris",
+	'right-povwatch_user' => "Afegir pàgines a la llista de seguiment d'altres usuaris",
 );
 
 /** Czech (Česky)
