@@ -255,7 +255,7 @@ Això pot carregar considerablement el servidor, per tant, si us plau useu aques
 	'querybtn' => 'Tramet una consulta',
 	'selectonly' => 'Solament estan permeses les consultes de només lectura.',
 	'querysuccessful' => 'Consulta correcta',
-	'right-asksql' => 'Fes consultes SQL',
+	'right-asksql' => 'Fer consultes SQL',
 );
 
 /** Czech (Česky)
