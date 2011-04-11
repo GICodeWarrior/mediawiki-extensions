@@ -108,12 +108,14 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author SMP
  */
 $messages['ca'] = array(
 	'protectsection_desc' => "Permet als usuaris autoritzats protegir parts d'una pàgina mitjançant l'etiqueta <code>&lt;protect&gt;</code>",
 	'protectsection_add_remove' => 'Heu intentat afegir o eliminar una secció protegida',
 	'protectsection_modify' => 'Heu intentat modificar text protegit',
 	'protectsection_forbidden' => 'Prohibit',
+	'right-protectsection' => 'Protegir seccions de pàgina',
 );
 
 /** German (Deutsch)
