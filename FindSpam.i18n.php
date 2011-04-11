@@ -162,6 +162,7 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -170,7 +171,7 @@ $messages['ca'] = array(
 	'findspam-ip' => 'Adreça IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => "No s'han trobat contribucions",
-	'right-findspam' => 'Cerca el correu brossa recent',
+	'right-findspam' => 'Cercar el correu brossa afegit recentment',
 );
 
 /** Czech (Česky)
