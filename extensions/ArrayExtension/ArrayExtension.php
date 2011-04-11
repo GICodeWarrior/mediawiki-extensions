@@ -53,10 +53,10 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => ArrayExtension::VERSION
 );
 
-$wgExtensionMessagesFiles['ArrayExtension'] = dirname( __FILE__ ) . '/ArrayExtension.i18n.php';
+$dir = dirname( __FILE__ );
 
-$wgHooks['LanguageGetMagic'][] = 'efArrayExtensionLanguageGetMagic';
-
+$wgExtensionMessagesFiles['ArrayExtension'] = $dir . '/ArrayExtension.i18n.php';
+$wgExtensionMessagesFiles['ArrayExtensionMagic'] = $dir . '/ArrayExtension.i18n.magic.php';
 
 /**
  *  named arrays - an array has a list of values, and could be set to a SET
@@ -777,14 +777,4 @@ function efArrayExtensionParserFirstCallInit( $parser ) {
     $parser->setFunctionHook( 'arraysearcharray', array( &$wgArrayExtension, 'arraysearcharray' ) );
 
 	return true;
-}
-
-function efArrayExtensionLanguageGetMagic( &$magicWords, $langCode ) {
-        require_once( dirname( __FILE__ ) . '/ArrayExtension.i18n.magic.php' );
-        
-        foreach ( efArrayExtensionWords( $langCode ) as $word => $trans ) {
-        	$magicWords[$word] = $trans;
-        }
-                
-        return true;
 }
