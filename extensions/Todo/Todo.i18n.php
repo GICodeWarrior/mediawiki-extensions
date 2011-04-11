@@ -348,6 +348,7 @@ $4',
 /** Catalan (Català)
  * @author Aleator
  * @author Paucabot
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -363,6 +364,8 @@ $messages['ca'] = array(
 	'todo-list-cancel' => 'Cancel·la',
 	'todo-new-item' => 'Nou ítem',
 	'todo-form-submit' => 'Tramet una consulta',
+	'right-todo' => 'Tenir una llista de coses a fer',
+	'right-todosubmit' => 'Restringir els drets de la llista pròpia de coses a fer',
 );
 
 /** Chechen (Нохчийн)

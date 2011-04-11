@@ -126,6 +126,7 @@ $messages['ca'] = array(
 	'purgecache-warning' => "D'aquesta manera actualitzareu les taules de la memòria cau (''caché'').",
 	'purgecache-purged' => 'Heu purgat la memòria cau.',
 	'purgecache-button' => 'Purga',
+	'right-purgecache' => 'Netejar la taula OBJECTCACHE',
 );
 
 /** Czech (Česky) */

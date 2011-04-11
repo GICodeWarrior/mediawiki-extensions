@@ -1456,10 +1456,13 @@ Komentar će se pojaviti samo nakon što bude pregledan od strane moderatora.',
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Solde
  * @author Ssola
  */
 $messages['ca'] = array(
+	'right-wl-postcomment' => 'Escriure comentaris als articles wikilog',
+	'right-wl-moderation' => 'Moderar comentaris als articles de wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogs',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Accions de Wikilog',

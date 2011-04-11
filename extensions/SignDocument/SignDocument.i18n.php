@@ -108,12 +108,15 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author SMP
  */
 $messages['ca'] = array(
 	'signaturelogpage' => 'Registre de signatura',
 	'signature-desc' => 'Permet la [[Special:SignDocument|signatura]] de documents',
 	'signaturelogpagetext' => 'Això és un registre de [[Special:SignDocument|totes les signatures afegides als douments]].',
 	'signaturelogentry' => 'ha signat el document $1',
+	'right-sigadmin' => 'Administrar la signatura de documents',
+	'right-createsigndocument' => 'Crear documents que es poden signar',
 );
 
 /** German (Deutsch)

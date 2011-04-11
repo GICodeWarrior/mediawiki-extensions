@@ -19,13 +19,14 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Дазваляе ўбудоўваць шрыфты на старонкі',
 	'webfonts-load' => 'Выбраць шрыфт',
-	'webfonts-disable-preference' => 'Адключыць убудаваньне шрыфтоў (WebFonts)',
+	'webfonts-disable-preference' => 'Забараніць убудаваньне шрыфтоў (WebFonts)',
 );
 
 /** Breton (Brezhoneg)
@@ -33,6 +34,16 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'webfonts-load' => 'Diuzañ ar font',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Ugradnja fontova na stranice',
+	'webfonts-load' => 'Odaberi font',
+	'webfonts-disable-preference' => 'Onemogući ugradnju fontova (WebFonts)',
 );
 
 /** German (Deutsch)
@@ -65,6 +76,26 @@ $messages['ia'] = array(
 	'webfonts-disable-preference' => 'Disactivar le incorporation de typos de litteras (WebFonts)',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'webfonts' => 'Schreff_Aate em Web',
+	'webfonts-desc' => 'Schreff_Aate en Sigge enboue',
+	'webfonts-load' => 'Schreff_Aat ußsöke',
+	'webfonts-disable-preference' => 'Schreff_Aate en de Sigge enboue afschallde ({{int:webfonts}})',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Вградување на фонтови во страници',
+	'webfonts-load' => 'Изберете фонт',
+	'webfonts-disable-preference' => 'Оневозможи вградување фонтови (WebFonts)',
+);
+
 /** Malayalam (മലയാളം)
  * @author Santhosh
  */
@@ -77,10 +108,11 @@ $messages['ml'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'webfonts' => 'WebFonts',
-	'webfonts-desc' => "Insluiten van lettertypen op pagina's",
+	'webfonts-desc' => "Lettertypen op pagina's insluiten",
 	'webfonts-load' => 'Lettertype selecteren',
 	'webfonts-disable-preference' => 'Lettertypen insluiten (WebFonts) uitschakelen',
 );
@@ -93,6 +125,16 @@ $messages['ru'] = array(
 	'webfonts-desc' => 'Позволяет встраивать шрифты на страницы',
 	'webfonts-load' => 'Выбрать шрифт',
 	'webfonts-disable-preference' => 'Отключить встраивание шрифтов (WebFonts)',
+);
+
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'webfonts' => 'Веб фонтови',
+	'webfonts-desc' => 'Угради фонтове на страницама',
+	'webfonts-load' => 'Изабери фонт',
+	'webfonts-disable-preference' => 'Онемогући уграђивање фонта',
 );
 
 /** Tagalog (Tagalog)

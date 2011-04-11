@@ -242,6 +242,7 @@ $messages['bug'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -251,8 +252,8 @@ $messages['ca'] = array(
 	'edituser-dosearch' => 'Cerca',
 	'edituser-nouser' => "L'usuari especificat no existeix",
 	'edituser-exempt' => "L'usuari especificat no es pot editar",
-	'right-edituser' => "Edita les preferències d'altres usuaris",
-	'right-edituser-exempt' => "Altres usuaris no poden editar les preferències d'aquest usuari",
+	'right-edituser' => "Editar les preferències d'altres usuaris",
+	'right-edituser-exempt' => "Que els altres usuaris no puguin canviar les preferències d'aquest usuari",
 );
 
 /** Chechen (Нохчийн)

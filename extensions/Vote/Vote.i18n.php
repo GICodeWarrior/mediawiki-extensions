@@ -317,6 +317,7 @@ riddler|Zagonetka',
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  * @author Solde
  */
 $messages['ca'] = array(
@@ -324,6 +325,8 @@ $messages['ca'] = array(
 	'vote-submit' => 'Vota',
 	'vote-registered' => 'El vostre vot ha estat registrat.',
 	'vote-view-results' => 'Visualitza resultats',
+	'right-vote' => 'Votar',
+	'right-voteadmin' => 'Veure els resultats de la votació',
 );
 
 /** Sorani (کوردی)
@@ -1269,6 +1272,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  * @author Diagramma Della Verita
  * @author Zamwan
@@ -1280,7 +1284,7 @@ $messages['ms'] = array(
 	'vote-caption' => 'Pilihan anda:',
 	'vote-submit' => 'Undi',
 	'vote-registered' => 'Undian anda telah didaftar',
-	'vote-view-results' => 'Lihat keputusan',
+	'vote-view-results' => 'Lihat hasil',
 	'vote-results' => 'Keputusan undian',
 	'vote-results-choice' => 'Pilihan',
 	'vote-results-count' => 'Kira',

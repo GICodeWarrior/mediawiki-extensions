@@ -1884,7 +1884,7 @@ $messages['ps'] = array(
 	'usagestatisticsnoend' => 'لطفاً د پای يوه نېټه وټاکۍ',
 	'usagestatisticsbadstartend' => '<b>بد <i>پيل</i> او/يا <i>پای </i> نېټه!</b>',
 	'usagestatisticsintervalday' => 'ورځ',
-	'usagestatisticsintervalweek' => 'اوونۍ',
+	'usagestatisticsintervalweek' => 'اونۍ',
 	'usagestatisticsintervalmonth' => 'مياشت',
 	'usagestatisticscalselect' => 'ټاکل',
 );

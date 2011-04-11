@@ -866,11 +866,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'framedvideo_errors' => 'Дошло је до неколико грешака!',
-	'framedvideo_error' => 'Дошло је до грешке!',
+	'framedvideo_error' => 'Дошло је до грешке.',
 	'framedvideo_error_height_required' => 'Видео типу "$1" је потребан параметар "height".',
 	'framedvideo_error_height_required_not_only_width' => 'Видео типу "$1" је потребан и "height" параметар, не само "width" параметар.',
 	'framedvideo_error_width_too_big' => 'Задата вредност за параметар "width" је превелика.',

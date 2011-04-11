@@ -157,8 +157,8 @@ $messages['ca'] = array(
 	'gur-desc' => "Administració senzilla dels [[Special:GlobalUserRights|drets globals d'usuari]]",
 	'gur-rightslog-name' => 'Registre de drets globals',
 	'gur-rightslog-header' => "Aquest és un registre dels canvis de permisos d'usuari globals.",
-	'gur-rightslog-entry' => "s'han canviat els grups globals de $1 des de $2 a $3",
-	'right-userrights-global' => "Gestiona els permisos globals d'usuari",
+	'gur-rightslog-entry' => 'ha canviat els drets globals de $1 del grup $2 a $3',
+	'right-userrights-global' => "Gestionar els permisos globals d'usuari",
 );
 
 /** German (Deutsch)

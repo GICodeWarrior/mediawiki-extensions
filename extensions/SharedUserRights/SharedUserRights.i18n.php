@@ -117,7 +117,7 @@ $messages['ca'] = array(
 	'gblrights-desc' => "Administració senzilla dels [[Special:SharedUserRights|drets globals d'usuari]]",
 	'gblrights-logpage' => 'Registre de drets globals',
 	'gblrights-pagetext' => 'Aquest és un registre dels canvis que es fan a la taula de drets globals de la família de wikis',
-	'gblrights-rights-entry' => "s'han canviat els grups globals de $1 des de $2 a $3",
+	'gblrights-rights-entry' => 'ha canviat els drets globals de $1 del grup $2 a $3',
 	'right-userrights-shared' => "Administrar els permisos d'usuari compartits",
 );
 
