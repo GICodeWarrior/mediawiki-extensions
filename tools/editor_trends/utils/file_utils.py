@@ -202,8 +202,10 @@ def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
         fh.write('\n')
 
 
-def create_txt_filehandle(location, name, mode, encoding):
-    filename = construct_filename(name, '.csv')
+def create_txt_filehandle(location, filename, mode, encoding):
+    filename = str(filename)
+    if not filename.endswith('.csv'):
+        filename = construct_filename(filename, '.csv')
     path = os.path.join(location, filename)
     return codecs.open(path, mode, encoding=encoding)
 

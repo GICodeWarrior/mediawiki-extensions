@@ -21,6 +21,8 @@ __version__ = '0.1'
 
 from collections import deque
 import sys
+import os
+from datetime import datetime
 from xml.etree.cElementTree import iterparse, dump
 from multiprocessing import JoinableQueue, Process, cpu_count, RLock, Manager
 
@@ -28,6 +30,7 @@ if '..' not in sys.path:
     sys.path.append('..')
 
 from etl import variables
+from utils import file_utils
 from classes import buffer
 from analyses.adhoc import bot_detector
 
@@ -71,22 +74,23 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
     return md5hashes, size
 
 def setup_parser(rts):
-    bots = ''   #bot_detector.retrieve_bots(rts.language.code) 
-    start = 'start'; end = 'end'
-    context = iterparse(fh, events=(start, end))
-    context = iter(context)
-
+    bots = bot_detector.retrieve_bots(rts.language.code)
     include_ns = {3: 'User Talk',
                   5: 'Wikipedia Talk',
                   1: 'Talk',
                   2: 'User',
                   4: 'Wikipedia'}
 
-    return bots, context, include_ns
+    return bots, include_ns
 
 
-def datacompetition_count_edits(rts, file_id):
-    bots, context, include_ns = setup_parser(rts)
+def datacompetition_count_edits(fh, rts, file_id):
+    bots, include_ns = setup_parser(rts)
+
+    start = 'start'; end = 'end'
+    context = iterparse(fh, events=(start, end))
+    context = iter(context)
+
     counts = {}
     id = False
     ns = False
@@ -145,8 +149,13 @@ def datacompetition_count_edits(rts, file_id):
     file_utils.store_object(counts, location, filename)
 
 
-def parse_xml(fh, cache, rts):
-    bots, context, include_ns = setup_parser(rts)
+def parse_xml(fh, rts, cache, file_id):
+    bots, include_ns = setup_parser(rts)
+
+    start = 'start'; end = 'end'
+    context = iterparse(fh, events=(start, end))
+    context = iter(context)
+
     article = {}
     size = {}
     id = False
@@ -166,10 +175,12 @@ def parse_xml(fh, cache, rts):
                 article['title'] = title
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
                 title_meta = variables.parse_title_meta_data(title, current_namespace)
-                if current_namespace != False:
+                if isinstance(current_namespace, int):
                     parse = True
                     article['namespace'] = current_namespace
                     cache.count_articles += 1
+                    if cache.count_articles % 10000 == 0:
+                        print 'Worker %s parsed %s articles' % (file_id, cache.count_articles)
                     md5hashes = deque()
                 elem.clear()
 
@@ -208,11 +219,11 @@ def parse_xml(fh, cache, rts):
         print '''Archive file is possibly corrupted. Please delete this archive 
             and retry downloading. Error message: %s''' % error
         sys.exit(-1)
+    print 'Finished parsing Wikipedia dump file.'
 
 
 def stream_raw_xml(input_queue, process_id, lock, rts):
-    t0 = datetime.datetime.now()
-    i = 0
+    t0 = datetime.now()
     file_id = 0
     cache = buffer.CSVBuffer(process_id, rts, lock)
 
@@ -224,19 +235,17 @@ def stream_raw_xml(input_queue, process_id, lock, rts):
             print '%s files left in the queue' % input_queue.qsize()
             break
 
+        print filename
         fh = file_utils.create_streaming_buffer(filename)
 
         if rts.kaggle:
-            datacompetition_count_edits(rts, file_id)
+            datacompetition_count_edits(fh, rts, file_id)
         else:
-            parse_xml(fh, cache, rts)
+            parse_xml(fh, rts, cache, file_id)
 
-        i += 1
-        if i % 10000 == 0:
-            print 'Worker %s parsed %s articles' % (process_id, i)
         fh.close()
 
-        t1 = datetime.datetime.now()
+        t1 = datetime.now()
         print 'Worker %s: Processing of %s took %s' % (process_id, filename, (t1 - t0))
         print 'There are %s files left in the queue' % (input_queue.qsize())
         t0 = t1
@@ -255,7 +264,7 @@ def launcher(rts):
     mgr = Manager()
     open_handles = []
     open_handles = mgr.list(open_handles)
-    clock = CustomLock(lock, open_handles)
+    clock = buffer.CustomLock(lock, open_handles)
     input_queue = JoinableQueue()
 
     files = file_utils.retrieve_file_list(rts.input_location)
@@ -281,7 +290,7 @@ def launcher(rts):
         extracter.start()
 
     input_queue.join()
-    print 'Finished parsing Wikipedia dump files.'
+
 
 
 if __name__ == '__main__':

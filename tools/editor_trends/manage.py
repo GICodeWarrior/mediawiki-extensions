@@ -34,7 +34,7 @@ from utils import log
 from utils import timer
 from classes import storage
 from etl import downloader
-from etl import enricher
+from etl import extracter
 from etl import store
 from etl import sort
 from etl import transformer
@@ -273,7 +273,10 @@ def extract_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'extract', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Extract', extract_launcher)
-    enricher.launcher(rts)
+    res = file_utils.delete_file(rts.txt, None, directory=True)
+    if res:
+        res = file_utils.create_directory(rts.txt)
+    extracter.launcher(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'extract', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Extract', extract_launcher)
