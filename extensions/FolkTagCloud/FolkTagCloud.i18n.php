@@ -25,6 +25,13 @@ $messages['be-tarask'] = array(
 	'folktagcloud-desc' => 'Дадае ўласьцівасьці Semantic MediaWiki для метак старонак нестандартнымі пазнакамі і гэт парсэра для іх паказу ў хмары тэгаў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'folktagcloud-desc' => "Ouzhpennañ a ra ur perzh ''Semantic MediaWiki'' evit merkañ pajennoù gant tikedennoù termenet gant an implijer hag un dikedenn dielfenner ereadurel evit o embann dre un nivlennad tikedennoù.",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

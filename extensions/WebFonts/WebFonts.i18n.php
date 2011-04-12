@@ -127,6 +127,16 @@ $messages['ru'] = array(
 	'webfonts-disable-preference' => 'Отключить встраивание шрифтов (WebFonts)',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'webfonts' => 'SpletnePisave',
+	'webfonts-desc' => 'Vdelaj pisave na strani',
+	'webfonts-load' => 'Izberite pisavo',
+	'webfonts-disable-preference' => 'Onemogoči vdelavo pisav (SpletnePisave)',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */

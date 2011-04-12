@@ -364,6 +364,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -371,7 +372,7 @@ $messages['bn'] = array(
 	'badimage-desc' => 'মিডিয়াউইকির অচল ছবির তালিকা তৈরির ক্ষমতা সম্প্রসারণ করা হবে',
 	'badimages-add-btn' => 'যোগ করা হোক',
 	'badimages-added' => '$1-কে তালিকাতে যোগ করা হয়েছে।',
-	'badimages-count' => "অচল ছবির তালিকায় '''$1'''টি ছবি আছে।",
+	'badimages-count' => "খারাও চিত্রের তালিকায় '''$1''' {{PLURAL:$1|টি চিত্র|টি চিত্র}} রয়েছে।",
 	'badimages-name' => 'নাম:',
 	'badimages-not-added' => 'ছবিটি যোগ করা সম্ভব হয়নি।',
 	'badimages-not-removed' => 'ছবিটা মুছে ফেলা সম্ভব হয়নি।',

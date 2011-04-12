@@ -4007,7 +4007,7 @@ Als der Jrond för de Sigg fottzeschmiiße wood ''$2'' aanjejovve.",
 	'deletequeue-vote-endorse' => 'Zoshtimme zom Fottschmiiße.',
 	'deletequeue-vote-object' => 'Jäje et Fottschmiiße.',
 	'deletequeue-vote-reason' => 'Kommäntaare:',
-	'deletequeue-vote-submit' => 'Loß Jonn!',
+	'deletequeue-vote-submit' => 'Lohß Jonn!',
 	'deletequeue-vote-success-endorse' => 'Dö häs doför jeshtimmp, di Sigg hee fottzeschmiiße.',
 	'deletequeue-vote-success-object' => 'Dö häs dojääje jeshtimmp, di Sigg hee fottzeschmiiße.',
 	'deletequeue-vote-requeued' => 'Dö häs dojääje jeshtimmp, di Sigg hee fottzeschmiiße.

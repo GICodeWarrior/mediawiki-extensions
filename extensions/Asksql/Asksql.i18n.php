@@ -99,6 +99,7 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'asksql' => 'Consulta SQL',
@@ -113,6 +114,7 @@ favor usa esta función con xacíu.",
 	'querybtn' => 'Unviar consulta',
 	'selectonly' => 'Namái se permiten consultes de solo llectura.',
 	'querysuccessful' => 'Consulta efeutuada correutamente',
+	'right-asksql' => 'Facer consultes SQL',
 );
 
 /** Kotava (Kotava)
@@ -770,7 +772,7 @@ Dat kann unsere ẞööver ööndlesh beschäfftijje, also bes e besje fürsesch
 $messages['lb'] = array(
 	'asksql' => 'SQL Offro',
 	'asksql-desc' => 'SQL-Offroen iwwer eng [[Special:Asksql|Spezialsäit]] maachen.',
-	'asksqltext' => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze riichten.
+	'asksqltext' => "Benotzt de Formulaire hei ënnendrënner fir eng Ufro un d'Datebank ze riichten.
 Benotzt dëst Zeechen' ('esou wéi hei') fir Wäerter an der Ufro ofzegrenzen.
 Esou Ufroe kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir gitt spuersam mat dëser Fonctioun ëm.",
 	'sqlislogged' => 'Zu Ärer Informatioun: All Ufroe ginn an e Logbuch agedroen',

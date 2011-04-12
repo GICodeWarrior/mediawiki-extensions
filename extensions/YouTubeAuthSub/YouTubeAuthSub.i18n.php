@@ -1961,7 +1961,7 @@ $messages['ksh'] = array(
 	'youtubeauthsub_username' => 'Dinge Metmaacher-Name op <i lang="en">YouTube</i>',
 	'youtubeauthsub_keywords' => 'Steschwööter op <i lang="en">YouTube</i>',
 	'youtubeauthsub_category' => 'Kattejori op <i lang="en">YouTube</i>',
-	'youtubeauthsub_submit' => 'Loß Jonn!',
+	'youtubeauthsub_submit' => 'Lohß Jonn!',
 	'youtubeauthsub_clickhere' => 'Kleck för et Enlogge op <i lang="en">YouTube</i>',
 	'youtubeauthsub_tokenerror' => 'Mer hatte ene Fähler, un kunnte keine Eimohl-Zohjangsschlößel krijje, dröm versök et ens domet, die Sigg neu opzeroofe udder neu ze laade.',
 	'youtubeauthsub_success' => 'Jrattoleere!

@@ -857,7 +857,7 @@ $messages['ksh'] = array(
 	'countedits-warning' => "'''Opjepaß:''' Donn Böscher nit noh ierem Ömschlaach enstufe!
 Donn ene Metmaache nit doh de Aanzahl fun singe Änderunge aam Wiki enstufe!",
 	'countedits-username' => 'Metmaacher Name:',
-	'countedits-ok' => 'Loß Jonn!',
+	'countedits-ok' => 'Lohß Jonn!',
 	'countedits-nosuchuser' => 'Mer han keine Metmaacher met dämm Name „$1“.',
 	'countedits-resultheader' => 'Zähler för dä Metmaacher „$1“',
 	'countedits-resulttext' => 'Unse Metmaacher „$1“ hät {{PLURAL:$1|ein Änderung|$2 Änderunge|noch kei Änderung}} hee aam Wiki jemaat.',

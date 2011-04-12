@@ -582,7 +582,7 @@ $messages['br'] = array(
 	'fogg-encoding-done' => 'Enkodañ echu',
 	'fogg-badtoken' => "N'eo ket reizh ar jedouer",
 	'fogg-preview' => 'Rakwelet ar video',
-	'fogg-hidepreview' => 'Kuzhat ar rakweladenn',
+	'fogg-hidepreview' => 'Kuzhat ar rakweled',
 	'fogg-warning-firebug' => "<b>Firebug</b> a c'hell krouiñ tabutoù gant <i>Firefogg</i>. Mar plij diweredekait <b>Firebug</b> evit ar bajenn-mañ.",
 );
 
@@ -937,7 +937,7 @@ $messages['de'] = array(
 	'fogg-encoding-done' => 'Codierung abgeschlossen',
 	'fogg-badtoken' => 'Token nicht gültig',
 	'fogg-preview' => 'Videovorschau',
-	'fogg-hidepreview' => 'Vorschau verstecken',
+	'fogg-hidepreview' => 'Vorschau ausblenden',
 	'fogg-warning-firebug' => '<b>Firebug</b> kann Konflikte mit <i>Firefogg</i> verursachen. Bitte deaktiviere <b>Firebug</b> auf dieser Seite.',
 );
 
@@ -4786,7 +4786,8 @@ $messages['vi'] = array(
 	'fogg-please-install' => '$1. Thêm $2',
 	'fogg-please-install-install-linktext' => 'Cài đặt Firefogg',
 	'fogg-please-install-about-linktext' => 'giới thiệu về Firefogg',
-	'fogg-use_latest_firefox' => 'Xin hãy cài đặt <a href="http://vi.www.mozilla.com/vi/?from=firefogg">Firefox 3.5</a> (trở lên) trước tiên. <i>Sau đó, hãy trở lại trang này để cài đặt phần mở rộng <b>Firefogg</b>.</i>',
+	'fogg-use_latest_firefox' => 'Xin hãy cài đặt $1 trước tiên.
+<i>Sau đó, hãy trở lại trang này để cài đặt phần mở rộng <b>Firefogg</b>.</i>',
 	'fogg-latest-firefox' => 'Firefox gần đây nhất',
 	'fogg-passthrough_mode' => 'Tập tin được chọn đã là tập tin Ogg hoặc không phải là tập tin video',
 	'fogg-badtoken' => 'Dấu hiệu không hợp lệ',

@@ -316,7 +316,10 @@ $messages['id'] = array(
  * @author Beta16
  */
 $messages['it'] = array(
+	'ts-kml-on-ol-options' => 'Opzioni',
+	'ts-kml-on-ol-languages' => 'Lingue',
 	'ts-kml-on-ol-thumbnails' => 'Miniature',
+	'ts-kml-on-ol-help' => 'Aiuto',
 );
 
 /** Japanese (日本語)

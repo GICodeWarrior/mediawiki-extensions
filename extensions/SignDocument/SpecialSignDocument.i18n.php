@@ -2854,7 +2854,7 @@ $messages['lb'] = array(
 	'signdocument' => 'Dokument ënnerschreiwen',
 	'sign-nodocselected' => 'Wielt w.e.g dat Dokument aus dat Dir ënenrschreiwe wëllt.',
 	'sign-selectdoc' => 'Dokument:',
-	'sign-docheader' => "Benotzt w.e.g. dëse Formulair, fir d'Dokument „[[$1]]“, dat hei ënnedrënner gewisen ass, z'ënnerschreiwen.
+	'sign-docheader' => "Benotzt w.e.g. dëse Formulaire, fir d'Dokument „[[$1]]“, dat hei ënnendrënner gewisen ass, z'ënnerschreiwen.
 Liest dat ganzt Dokument duerch a wann Dir dozou Är Ënnerstëtzung gi wëllt da fëllt déi néideg Felder aus fir et z'ënnerschreiwen.",
 	'sign-error-nosuchdoc' => 'Dat Dokument, dat Dir ugefrot hutt ($1), gëtt et net.',
 	'sign-realname' => 'Numm:',

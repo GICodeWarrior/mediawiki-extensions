@@ -36,6 +36,7 @@ $messages['qqq'] = array(
  * @author Rachitrali
  */
 $messages['khw'] = array(
+	'webchat' => 'کھوار چیٹنگ',
 	'webchat-desc' => 'تان ملگیریان سوم گپ شپو بچے خاص صفحہ [[Special:WebChat|کھوارا گپ شپ]]',
 );
 
