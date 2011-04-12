@@ -111,7 +111,7 @@
 			$fontlink = $( '<input >' )
 					.attr("type","radio")
 					.attr("name","font")
-					.attr("name","webfont-none")
+					.attr("value","webfont-none")
 					.click( function( event ) {
 						$.webfonts.set( 'none');
 					});	
