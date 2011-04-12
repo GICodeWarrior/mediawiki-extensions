@@ -31,11 +31,12 @@ def taxonomy_list_makers(var, editor, **kwargs):
     titles that begin with "List of..."
     """
     data = kwargs.get('data', None)
-    treshold = kwargs.get('treshold', 10)
+    cutoff = kwargs.get('cutoff', 10)
     today = datetime.today()
 
     if data == None:
-        print 'Ooooopppsssss.....'
+        print '''For this plugin to function, it needs to preload data from the 
+        articles collection.'''
         sys.exit(-1)
 
     articles_edited = editor['articles_edited']
@@ -45,21 +46,21 @@ def taxonomy_list_makers(var, editor, **kwargs):
     for year in years:
         months = articles_edited[year].keys()
         for month in months:
-            namespaces = articles_edited[year][month].keys()
-            for ns in namespaces:
-                articles = articles_edited[year][month].get(ns, [])
-                for article in articles:
-                    #print article, data.get(article, None)
-                    try:
-                        count += data[article]
-                    except KeyError:
-                        pass
+            #namespaces = articles_edited[year][month].keys()
+            #for ns in namespaces:
+            articles = articles_edited[year][month].get(0, [])
+            for article in articles:
+                #print article, data.get(article, None)
+                try:
+                    count += data[article]
+                except KeyError:
+                    pass
 
-    """ Add all editors with an edit count of more than 10 """
+    """Add all editors with an edit count of more than the treshold, default 10 """
 
-    if count > treshold:
+    if count > cutoff:
         var.add(today, count, {'username': editor['username']})
-        print editor['username'], count
+        #print editor['username'], count
     return var
 
 
