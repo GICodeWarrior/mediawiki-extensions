@@ -113,6 +113,14 @@ $messages['arz'] = array(
 	'abcdownload' => 'تنزيل:',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'abc-desc' => 'Amiesta la etiqueta <code>&lt;abc&gt;</code> pa da-y formatu de música ABC',
+	'abcdownload' => 'Descargar:',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  * @author Comp1089
