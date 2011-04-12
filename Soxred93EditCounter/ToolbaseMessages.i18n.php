@@ -740,6 +740,24 @@ Jika Anda mengikuti tautan dari tempat lain, silahkan <a href="$1">laporkan bug<
 	'toolbase-error-toomanyedits' => '$1 memiliki $2 suntingan. Peralatan ini memiliki batas maksimal $3 suntingan.',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'toolbase-replag-years' => 'anni',
+	'toolbase-replag-months' => 'mesi',
+	'toolbase-replag-weeks' => 'settimane',
+	'toolbase-replag-days' => 'giorni',
+	'toolbase-replag-hours' => 'ore',
+	'toolbase-replag-minutes' => 'minuti',
+	'toolbase-replag-seconds' => 'secondi',
+	'toolbase-footer-exectime' => 'Eseguito in $1 secondi',
+	'toolbase-footer-source' => 'Visualizza sorgente',
+	'toolbase-footer-language' => 'Cambia lingua',
+	'toolbase-autoedits-totalall' => 'Totale delle modifiche',
+	'toolbase-main-404' => 'File non trovato',
+);
+
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author George Animal
  */
