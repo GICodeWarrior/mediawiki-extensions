@@ -55,11 +55,6 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		// User-specific data
 		$ratings[$params['pageid']]['status'] = 'current';
 		if ( $params['userrating'] ) {
-			// Expertise
-			$expertise = $this->getExpertise( $params );
-			if ( $expertise !== false ) {
-				$ratings[$params['pageid']]['expertise'] = $expertise;
-			}
 			// User ratings
 			$userRatings = $this->getUserRatings( $params );
 			if ( isset( $ratings[$params['pageid']]['ratings'] ) ) {
@@ -99,6 +94,13 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 							? (int) $historicCounts[$row->aap_rating_id] : 0,
 						'userrating' => (int) $userRating['value'],
 					);
+				}
+			}
+			// Expertise
+			if ( isset( $ratings[$params['pageid']]['revid'] ) ) {
+				$expertise = $this->getExpertise( $params, $ratings[$params['pageid']]['revid'] );
+				if ( $expertise !== false ) {
+					$ratings[$params['pageid']]['expertise'] = $expertise;
 				}
 			}
 		}
@@ -149,7 +151,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		return $token;
 	}
 	
-	protected function getExpertise( $params ) {
+	protected function getExpertise( $params, $revid ) {
 		global $wgUser;
 		
 		return $this->getDB()->selectField(
@@ -159,9 +161,9 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				'afp_key' => 'expertise',
 				'afp_user_text' => $wgUser->getName(),
 				'afp_user_anon_token' => $this->getAnonToken( $params ),
+				'afp_revision' => $revid,
 			),
-			__METHOD__,
-			array( 'ORDER BY', 'afp_revision DESC' )
+			__METHOD__
 		);
 	}
 	
