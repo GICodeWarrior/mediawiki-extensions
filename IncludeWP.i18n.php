@@ -83,11 +83,13 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'includewp-desc' => 'Un astenn skañv eo IncludeWP evit degas boued diwar Wikipedia',
 	'includewp-loading-page' => 'O kargañ ar bajenn...',
 	'includewp-show-full-page' => 'Diskouez ar bajenn en he hed',
 	'includewp-show-fragment' => 'Diskouez ar rannbennad kentañ nemetken',
 	'includewp-loading-failed' => "N'eus ket bet gallet kargañ ar bajenn",
 	'includewp-include-par-page' => "Anv ar bajenn (a-bell) a fell deoc'h diskwel.",
+	'includewp-include-par-wiki' => "Anv ar wiki a fell deoc'h tennañ danvez dioutañ. A zle bezañ unan eus ar wikioù aotreet, dre ziouer Wikipedia nemetken.",
 	'includewp-include-par-paragraphs' => "An niver a rannbennadoù a fell deoc'h diskwel e penn-kentañ.",
 );
 
