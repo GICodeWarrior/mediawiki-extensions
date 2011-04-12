@@ -115,6 +115,11 @@ class Mongo(AbstractDatabase):
             print 'It seems that you are running out of disk space. \
             Error message: %s' % error
             sys.exit(-1)
+        except OverflowError, error:
+            print '''It seems that you are trying to store an integer that is 
+            too long. Error message: %s''' % error
+            print 'Offending data: %s' % data
+            sys.exit(-1)
 
     def update(self, key, value, data):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'

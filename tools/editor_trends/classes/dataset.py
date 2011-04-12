@@ -477,7 +477,10 @@ class Dataset:
         n = len(number_list)
         for i in number_list:
             std = std + (i - mean) ** 2
-        return math.sqrt(std / float(n - 1))
+        try:
+            return math.sqrt(std / float(n - 1))
+        except ZeroDivisionError:
+            return '.'
 
     def get_median(self, number_list):
         if number_list == []:

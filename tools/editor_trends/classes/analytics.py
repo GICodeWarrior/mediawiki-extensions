@@ -82,7 +82,7 @@ class Analyzer(consumers.BaseConsumer):
         Generic loop function that loops over all the editors of a Wikipedia 
         project and then calls the plugin that does the actual mapping.
         '''
-        db = storage.Database(rts.storage, self.rts.dbname, self.rts.editors_dataset)
+        db = storage.Database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
         while True:
             try:
                 task = self.tasks.get(block=False)

@@ -175,10 +175,10 @@ class CSVBuffer:
                     #row = '\t'.join([article_id, title]) + '\n'
                     rows.append(row)
                 file_utils.write_list_to_csv(rows, self.fh_articles, newline=False)
-                self.articles = {}
             except Exception, error:
                 print '''Encountered the following error while writing article 
                     data to %s: %s''' % (self.fh_articles, error)
+            self.articles = {}
         #t1 = datetime.datetime.now()
         #print '%s articles took %s' % (len(self.articles.keys()), (t1 - t0))
 
