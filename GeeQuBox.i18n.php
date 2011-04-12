@@ -31,6 +31,13 @@ $messages['be-tarask'] = array(
 	'geequbox-desc' => 'Стварае эфэкты падсьветкі з выкарыстаньнем дапаўненьня падсьветкі jQuery',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'geequbox-desc' => 'Genel a ra efedoù lightbox en ur ober gant adveziant lightbox jQuery',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
