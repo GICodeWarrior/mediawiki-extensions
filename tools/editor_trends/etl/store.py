@@ -38,7 +38,7 @@ class Storer(consumers.BaseConsumer):
     The treshold is currently more than 9 edits and is not yet configurable. 
     '''
     def run(self):
-        db = storage.Database(rts.storage, self.rts.dbname, self.rts.editors_raw)
+        db = storage.Database(self.rts.storage, self.rts.dbname, self.rts.editors_raw)
         editor_cache = cache.EditorCache(db)
         prev_editor = -1
         while True:
@@ -121,14 +121,12 @@ def store_articles(rts):
             x, y = 0, 1
             while y < len(line):
                 key, value = line[x], line[y]
-                data[key] = value
+                if key == 'ns' or key == 'id':
+                    data[key] = int(value)
+                else:
+                    data[key] = value
                 x += 2
                 y += 2
-            for key, value in data.iteritems():
-                try:
-                    data[key] = int(value)
-                except ValueError:
-                    pass
             db.insert(data)
         fh.close()
     print 'Done storing articles...'

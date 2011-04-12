@@ -35,6 +35,13 @@ from classes import buffer
 from analyses.adhoc import bot_detector
 
 def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, size):
+    '''
+    This function has as input a single revision from a Wikipedia dump file, 
+    article information it belongs to, the xml_namespace of the Wikipedia dump
+    file, the cache object that collects parsed revisions, a list of md5hashes
+    to determine whether an edit was reverted and a size dictionary to determine
+    how many characters were added and removed compared to the previous revision. 
+    '''
     if revision == None:
     #the entire revision is empty, weird. 
         #dump(revision)
@@ -85,6 +92,13 @@ def setup_parser(rts):
 
 
 def datacompetition_count_edits(fh, rts, file_id):
+    '''
+    This function counts for every editor the total number of edits that person
+    made. It follows the same logic as the parse_xml function although it
+    skips a bunch of extraction phases that are not relevant for counting 
+    edits. This function is only to be used to create the prediction dataset 
+    for the datacompetition.
+    '''
     bots, include_ns = setup_parser(rts)
 
     start = 'start'; end = 'end'
@@ -196,7 +210,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
 
             elif event is end and elem.tag.endswith('id') and id == False:
                 article['article_id'] = elem.text
-                if current_namespace:
+                if isinstance(current_namespace, int):
                     cache.articles[article['article_id']] = title_meta
                 id = True
                 elem.clear()
