@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 
 ### Fancy Planet HTML template.
@@ -19,29 +19,10 @@
 <TMPL_IF feedtype>
 <link rel="alternate" href="<TMPL_VAR feed ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">" type="application/<TMPL_VAR feedtype>+xml">
 </TMPL_IF>
-<script type="text/javascript">
-<!--
-function acceptlang(o) {
-    var al = o.query.userinfo.acceptlang;
-    for (var i = 0; i < al.length; i++) {
-        var l = al[i].*.replace('_', '-').toLowerCase();
-        if ('zh-hans|zh-cn|zh-my|zh-sg'.indexOf(l) != -1) {
-            window.location.href = 'index.zh-hans.html';
-            break;
-        } else if ('zh-hant|zh-hk|zh-mo|zh-tw'.indexOf(l) != -1) {
-            window.location.href = 'index.zh-hant.html';
-            break;
-        }
-    }
-}
-//-->
-</script>
-<script src="http://prototype.wikimedia.org/en-wp/api.php?action=query&meta=userinfo&uiprop=acceptlang&format=json&callback=acceptlang"></script>
+<script src="langconv.js" type="text/javascript"></script>
 </head>
 
 <body>
-
-<div class="zh-langlinks"><a href="index.zh-hans.html">中文 (简体)</a> · <a href="index.zh-hant.html">中文 (繁體)</a></div>
 
 <h1><TMPL_VAR name></h1>
 
@@ -109,19 +90,22 @@ function acceptlang(o) {
 
 <div class="sidebar">
 <img src="images/logo.png" width="135" height="135" alt="">
-<h2>订阅 / 訂閱</h2>
+<script type="text/javascript">
+var hant="<h2>訂閱</h2>";
+var hans="<h2>订阅</h2>";
+langconv(hans,hant);
+</script>
+
 <ul><li>
 <a href="/atom.xml">atom feed</a></li>
 <li><a href="/rss10.xml">rss 1.0</a></li>
 <li><a href="/rss20.xml">rss 2.0</a></li>
 </ul>
-
-<h2>关于</h2>
-Planet Wikimedia 是一个维基媒体计划参与者于他们的网志中发表的有关wiki的文章的内容聚合。<a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/zh">更多细节 ..</a>
-
-<h2>關於</h2>
-Planet Wikimedia 是一個維基媒體計劃參與者於他們的網誌中發表的有關wiki的文章的内容聚合。<a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/zh">更多細節 ..</a>
-
+<script type="text/javascript">
+var hant="<h2>關於</h2>\nPlanet Wikimedia 是一個維基媒體計劃參與者於他們的網誌中發表的有關wiki的文章的内容聚合。<a href='http://meta.wikimedia.org/wiki/Planet_Wikimedia/zh'>更多細節 ..</a>";
+var hans="<h2>关于</h2>\nPlanet Wikimedia 是一个维基媒体计划参与者于他们的网志中发表的有关wiki的文章的内容聚合。<a href='http://meta.wikimedia.org/wiki/Planet_Wikimedia/zh'>更多细节 ..</a>";
+langconv(hans,hant);
+</script>
 <h2>Bloggers</h2>
 <ul>
 <TMPL_LOOP Channels>
@@ -131,22 +115,29 @@ Planet Wikimedia 是一個維基媒體計劃參與者於他們的網誌中發表
 </TMPL_LOOP>
 </ul>
 <p>
-<strong><a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/zh">加入您的网志 / 加入您的網誌</a> &ndash; <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language">请求新语言 / 請求新語言</a></strong>
+<script type="text/javascript">
+var hant="<b><a href='http://meta.wikimedia.org/wiki/Planet_Wikimedia/zh'>加入您的網誌</a> &ndash; <a href='http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language'>請求新語言</a></b>";
+var hans="<b><a href='http://meta.wikimedia.org/wiki/Planet_Wikimedia/zh'>加入您的网志</a> &ndash; <a href='http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language'>请求新语言</a></b>";
+langconv(hans,hant);
+</script>
 </p>
 <p>
-<strong>上次更新:</strong><br>
+<b>上次更新:</b><br>
 <TMPL_VAR date><br>
-所有时间为UTC时间。<br />所有時間為UTC時間。<br>
+<script type="text/javascript">
+var hant="所有時間為UTC時間。";
+var hans="所有时间为UTC时间。";
+langconv(hans,hant);
+</script>
 <br>
 Powered by:<br>
 <a href="http://www.planetplanet.org/"><img src="images/planet.png" width="80" height="15" alt="Planet" border="0"></a>
 </p>
-<h2>声明</h2>
-<p>Planet Wikimedia 是由非牟利的<a href="http://wikimediafoundation.org/">维基媒体基金会</a>操作，促进维基媒体社群的会员以便分享信息和意见。除非有额外表明，所有的贴文只会反映作者个人的意见。由网志中收集来的聚集是一个由电脑控制的程序，维基媒体基金会不会为这个联机社群的参与者所递交的任何材料而负责。
-</p>
-<h2>聲明</h2>
-<p>Planet Wikimedia 是由非牟利的<a href="http://wikimediafoundation.org/">維基媒體基金會</a>操作，促進維基媒體社群的會員以便分享資訊和意見。除非有額外表明，所有的貼文只會反映作者個人的意見。由網誌中收集來的聚集是一個由電腦控制的程序，維基媒體基金會不會為這個線上社群的參與者所遞交的任何材料而負責。
-</p>
+<script type="text/javascript">
+var hant="<h2>聲明</h2>\n<p>Planet Wikimedia 是由非牟利的<a href='http://wikimediafoundation.org/'>維基媒體基金會</a>操作，促進維基媒體社群的會員以便分享資訊和意見。除非有額外表明，所有的貼文只會反映作者個人的意見。由網誌中收集來的聚集是一個由電腦控制的程序，維基媒體基金會不會為這個線上社群的參與者所遞交的任何材料而負責。\n</p>";
+var hans="<h2>声明</h2>\n<p>Planet Wikimedia 是由非牟利的<a href='http://wikimediafoundation.org/'>维基媒体基金会</a>操作，促进维基媒体社群的会员以便分享信息和意见。除非有额外表明，所有的贴文只会反映作者个人的意见。由网志中收集来的聚集是一个由电脑控制的程序，维基媒体基金会不会为这个联机社群的参与者所递交的任何材料而负责。\n</p>";
+langconv(hans,hant);
+</script>
 <h2>Planetarium</h2>
 <ul>
 <li><a href="http://wikiblogplanet.com/">Wiki Blog Planet</a></li>
@@ -160,7 +151,11 @@ Powered by:<br>
 <li><a href="http://planet.fedoraproject.org/">Planet Fedora</a></li>
 <li><a href="http://intelligentdesigns.net/Planet_tracker">more...</a></li>
 </ul>
-<h2>其它语言 / 其它語言</h2>
+<script type="text/javascript">
+var hant="<h2>其它语言</h2>";
+var hans="<h2>其它語言</h2>";
+langconv(hans,hant);
+</script>
 <ul>
 <li><a href="http://ar.planet.wikimedia.org">العربية</a></li>
 <!-- <li><a href="http://ca.planet.wikimedia.org">Català</a></li> -->
