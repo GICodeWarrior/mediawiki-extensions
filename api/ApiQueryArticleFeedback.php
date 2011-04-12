@@ -186,7 +186,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 			__METHOD__,
 			array(
 				'LIMIT' => count( $wgArticleFeedbackRatings ),
-				'ORDER BY' => array( 'aa_revision DESC', 'aa_rating_id' ),
+				'ORDER BY' => array( 'aa_revision DESC' ),
 			),
 			array(
 				'article_feedback_ratings' => array( 'LEFT JOIN', array( 'aar_id=aa_rating_id' ) )
