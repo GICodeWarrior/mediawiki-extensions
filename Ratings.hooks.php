@@ -39,7 +39,21 @@ final class RatingsHooks {
 					'votes_props',
 					dirname( __FILE__ ) . '/Ratings.sql',
 					true
-				);		
+				);
+
+				$wgExtNewIndexes[] = array(
+					'votes',
+					'vote',
+					dirname( __FILE__ ) . '/sql/Ratings_addVotesIndex.sql',
+					true
+				);
+
+				$wgExtNewIndexes[] = array(
+					'vote_props',
+					'prop_name',
+					dirname( __FILE__ ) . '/sql/Ratings_addPropsIndex.sql',
+					true
+				);				
 			}
 			else {
 				$updater->addExtensionUpdate( array( 
@@ -53,7 +67,21 @@ final class RatingsHooks {
 					'votes_props',
 					dirname( __FILE__ ) . '/Ratings.sql',
 					true
-				) );	
+				) );
+				$updater->addExtensionUpdate( array(
+					'addIndex',
+					'votes',
+					'vote',
+					dirname( __FILE__ ) . '/sql/Ratings_addVotesIndex.sql',
+					true
+				) );
+				$updater->addExtensionUpdate( array(
+					'addIndex',
+					'vote_props',
+					'prop_name',
+					dirname( __FILE__ ) . '/sql/Ratings_addPropsIndex.sql',
+					true
+				) );
 			}		
 		}
 		

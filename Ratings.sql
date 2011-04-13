@@ -10,12 +10,8 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/votes (
   vote_time               CHAR(14) binary     NOT NULL default ''
 ) /*$wgDBTableOptions*/; 
 
-CREATE UNIQUE INDEX vote ON /*$wgDBprefix*/votes (vote_user_text, vote_page_id, vote_prop_id);
-
 -- Table to keep track of translation memories for the special words.
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/vote_props (
   prop_id                 INT(5) unsigned     NOT NULL auto_increment PRIMARY KEY,
   prop_name               VARCHAR(255)        NOT NULL
 ) /*$wgDBTableOptions*/;
-
-CREATE UNIQUE INDEX prop_name ON /*$wgDBprefix*/vote_props (prop_name);
