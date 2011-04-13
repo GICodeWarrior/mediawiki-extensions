@@ -137,15 +137,6 @@ class ArticleFeedbackHooks {
 					true
 				) );
 			}
-			if ( !$db->fieldExists( 'article_feedback_pages', 'aap_revision', __METHOD__ ) ) {
-				$updater->addExtensionUpdate( array(
-					'addField',
-					'article_feedback_pages',
-					'aap_revision',
-					$dir . '/sql/AddPageRevisionColumn.sql',
-					true
-				) );
-			}
 			$updater->addExtensionUpdate( array(
 				'addTable',
 				'article_feedback_properties',
@@ -165,7 +156,7 @@ class ArticleFeedbackHooks {
 		}
 		return true;
 	}
-
+	
 	/**
 	 * ParserTestTables hook
 	 */
