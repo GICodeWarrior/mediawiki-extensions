@@ -70,7 +70,7 @@ $wgHooks['OAIFetchRecordQuery'][] = 'LqtHooks::modifyOAIQuery';
 $wgHooks['ArticleDeleteComplete'][] = 'LqtDeletionController::onArticleDeleteComplete';
 $wgHooks['ArticleRevisionUndeleted'][] = 'LqtDeletionController::onArticleRevisionUndeleted';
 $wgHooks['ArticleUndelete'][] = 'LqtDeletionController::onArticleUndelete';
-$wgHooks['ArticleConfirmDelete'][] = 'LqtDeletionController::onArticleConfirmDelete';
+$wgHooks['ActionBeforeFormDisplay'][] = 'LqtDeletionController::onActionBeforeFormDisplay';
 $wgHooks['ArticleDelete'][] = 'LqtDeletionController::onArticleDelete';
 
 // Moving
