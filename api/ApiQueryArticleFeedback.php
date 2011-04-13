@@ -117,21 +117,20 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		global $wgArticleFeedbackRatings;
 		
 		$res = $this->getDB()->select(
-			'article_feedback_revisions',
+			'article_feedback_pages',
 			array(
-				'afr_rating_id',
-				'SUM(afr_count) as count',
+				'aap_rating_id',
+				'aap_count',
 			),
 			array(
-				'afr_page_id' => $params['pageid'],
-				'afr_rating_id' => $wgArticleFeedbackRatings,
+				'aap_page_id' => $params['pageid'],
+				'aap_rating_id' => $wgArticleFeedbackRatings,
 			),
-			__METHOD__,
-			array( 'GROUP BY' => 'afr_rating_id')
+			__METHOD__
 		);
 		$counts = array();
 		foreach ( $res as $row ) {
-			$counts[$row->afr_rating_id] = $row->count;
+			$counts[$row->aap_rating_id] = $row->aap_count;
 		}
 		return $counts;
 	}
