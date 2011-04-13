@@ -93,13 +93,13 @@ class ApiArticleFeedback extends ApiBase {
 
 		// Try to insert a new "totals" row for this page,rev,rating set
 		$dbw->insert(
-			'article_feedback_pages',
+			'article_feedback_revisions',
 			 array(
-				'aap_page_id' => $pageId,
-				'aap_total' => 0,
-				'aap_count' => 0,
-				'aap_rating_id' => $ratingId,
-			 	'aap_revision' => $revisionId,
+				'afr_page_id' => $pageId,
+				'afr_total' => 0,
+				'afr_count' => 0,
+				'afr_rating_id' => $ratingId,
+			 	'afr_revision' => $revisionId,
 			),
 			__METHOD__,
 			 array( 'IGNORE' )
@@ -113,30 +113,30 @@ class ApiArticleFeedback extends ApiBase {
 			if ( $lastRating ) {
 				// Deduct the previous rating values from the previous "totals" row
 				$dbw->update(
-					'article_feedback_pages',
+					'article_feedback_revisions',
 					array(
-						'aap_total = aap_total - ' . intval( $lastRating ),
-						'aap_count = aap_count - 1',
+						'afr_total = afr_total - ' . intval( $lastRating ),
+						'afr_count = afr_count - 1',
 					),
 					array(
-						'aap_page_id' => $pageId,
-						'aap_rating_id' => $ratingId,
-						'aap_revision' => $lastRevision
+						'afr_page_id' => $pageId,
+						'afr_rating_id' => $ratingId,
+						'afr_revision' => $lastRevision
 					),
 					__METHOD__
 				);
 			}
 			// Add this rating's values to the new "totals" row
 			$dbw->update(
-				'article_feedback_pages',
+				'article_feedback_revisions',
 				array(
-					'aap_total' => $thisRating,
-					'aap_count' => 1,
+					'afr_total' => $thisRating,
+					'afr_count' => 1,
 				),
 				array(
-					'aap_page_id' => $pageId,
-					'aap_rating_id' => $ratingId,
-				 	'aap_revision' => $revisionId,
+					'afr_page_id' => $pageId,
+					'afr_rating_id' => $ratingId,
+				 	'afr_revision' => $revisionId,
 				),
 				__METHOD__
 			);
@@ -162,15 +162,15 @@ class ApiArticleFeedback extends ApiBase {
 			}
 			// Apply the difference between the previous and new ratings to the current "totals" row
 			$dbw->update(
-				'article_feedback_pages',
+				'article_feedback_revisions',
 				array(
-					'aap_total = aap_total + ' . $updateAddition,
-					'aap_count = aap_count + ' . $countChange,
+					'afr_total = afr_total + ' . $updateAddition,
+					'afr_count = afr_count + ' . $countChange,
 				),
 				array(
-					'aap_page_id' => $pageId,
-					'aap_rating_id' => $ratingId,
-				 	'aap_revision' => $revisionId,
+					'afr_page_id' => $pageId,
+					'afr_rating_id' => $ratingId,
+				 	'afr_revision' => $revisionId,
 				),
 				__METHOD__
 			);
