@@ -34,15 +34,12 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback (
   -- 1 vote per user per revision
   PRIMARY KEY (aa_revision, aa_user_text, aa_rating_id, aa_user_anon_token)
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/aa_user_page_revision ON /*_*/article_feedback
-	(aa_user_id, aa_page_id, aa_revision);
+CREATE INDEX /*i*/aa_user_page_revision ON /*_*/article_feedback (aa_user_id, aa_page_id, aa_revision);
 
 -- Aggregate rating table for a page
 CREATE TABLE IF NOT EXISTS /*_*/article_feedback_pages (
   -- Foreign key to page.page_id
   aap_page_id integer unsigned NOT NULL,
-  -- Revision that totals are relevant to
-  aap_revision integer unsigned NOT NULL,
   -- Foreign key to article_feedback_ratings.aar_rating
   aap_rating_id integer unsigned NOT NULL,
   -- Sum (total) of all the ratings for this article revision
@@ -50,7 +47,7 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback_pages (
   -- Number of ratings
   aap_count integer unsigned NOT NULL,
   -- One rating row per page
-  PRIMARY KEY (aap_page_id, aap_rating_id, aap_revision)
+  PRIMARY KEY (aap_page_id, aap_rating_id)
 ) /*$wgDBTableOptions*/;
 
 -- Aggregate rating table for a revision
@@ -76,6 +73,7 @@ CREATE TABLE  IF NOT EXISTS /*_*/article_feedback_properties (
   afp_revision integer unsigned NOT NULL,
   afp_user_text varbinary(255) NOT NULL,
   afp_user_anon_token varbinary(32) NOT NULL DEFAULT '',
+
   -- Key/value pairs
   afp_key varbinary(255) NOT NULL,
   -- Integer value
@@ -83,5 +81,4 @@ CREATE TABLE  IF NOT EXISTS /*_*/article_feedback_properties (
   -- Text value
   afp_value_text varbinary(255) DEFAULT '' NOT NULL
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/afp_rating_key ON /*_*/article_feedback_properties
-	(afp_revision, afp_user_text, afp_user_anon_token, afp_key);
+CREATE UNIQUE INDEX /*i*/afp_rating_key ON /*_*/article_feedback_properties (afp_revision, afp_user_text, afp_user_anon_token, afp_key);
