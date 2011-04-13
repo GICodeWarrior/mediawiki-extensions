@@ -884,6 +884,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'articlefeedback' => 'Évaluation d’article',
 	'articlefeedback-desc' => 'Évaluation d’article (version pilote)',
+	'articlefeedback-survey-question-origin' => 'À quelle page étiez-vous lorsque vous avez commencé cette évaluation ?',
 	'articlefeedback-survey-question-whyrated' => 'Veuillez nous indiquer pourquoi vous avez évalué cette page aujourd’hui (cochez tout ce qui s’applique) :',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Je voulais contribuer à l’évaluation globale de la page',
 	'articlefeedback-survey-answer-whyrated-development' => 'J’espère que mon évaluation aura une incidence positive sur le développement de la page',

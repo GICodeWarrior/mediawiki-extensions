@@ -162,11 +162,12 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'piwik-desc' => 'Fügt ein Piwik-Skript zum Tracking in MediaWiki-Seiten ein und ergänzt eine [[Special:Piwik|Spezialseite]] mit einigen Statistiken',
+	'piwik-desc' => 'Ermöglicht das Einfügen eines Trackingskripts von Piwik und ergänzt eine Spezialseite mit ein paar [[Special:Piwik|Statistiken]]',
 	'piwik' => 'Piwik',
 	'piwik-lastvisits' => 'Letzte Besuche',
 	'piwik-countries' => 'Länder',

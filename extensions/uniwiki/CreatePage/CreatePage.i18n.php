@@ -874,12 +874,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'createpage' => 'Criar uma página',
 	'uwcreatepage-desc' => 'Adiciona uma [[Special:CreatePage|página especial]] para criar novas páginas',
-	'createpage_submitbutton' => 'Submeter',
+	'createpage_submitbutton' => 'Enviar',
 	'createpage_instructions' => 'Introduza o título da página que pretende criar:',
 	'createpage_entertitle' => 'Por favor, introduza um título para a sua página.',
 	'createpage_titleexists' => 'Um página com o título [[$1]] já existe.

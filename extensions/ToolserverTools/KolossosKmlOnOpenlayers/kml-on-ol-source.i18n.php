@@ -366,6 +366,17 @@ $messages['lb'] = array(
 	'ts-kml-on-ol-map-by' => 'Kaart vum',
 );
 
+/** Lingala (Lingála)
+ * @author Eruedin
+ */
+$messages['ln'] = array(
+	'ts-kml-on-ol-languages' => 'Na nkótá isúsu',
+	'ts-kml-on-ol-thumbnails' => 'Miniátilɛ',
+	'ts-kml-on-ol-help' => 'Bosálisi',
+	'ts-kml-on-ol-all' => 'Nyɔ́nsɔ',
+	'ts-kml-on-ol-map-by' => 'Carte créée par',
+);
+
 /** Latgalian (Latgaļu)
  * @author Dark Eagle
  */

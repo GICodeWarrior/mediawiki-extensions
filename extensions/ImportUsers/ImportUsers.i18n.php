@@ -251,7 +251,7 @@ $messages['br'] = array(
 	'importusers' => 'Enporzhiañ implijerien',
 	'importusers-desc' => '[[Special:ImportUsers|Enporzhiañ a ran implijerien]] dre vern adalek ur restr CVS ; enkoderezh : UTF-8.',
 	'importusers-uploadfile' => 'Kargañ ar restr',
-	'importusers-form-caption' => 'Merkañ ur restr CSV (UTF-8)',
+	'importusers-form-caption' => 'Enmont ur restr CSV (UTF-8) :',
 	'importusers-form-file' => 'Furmad ar restr implijer (CSV) :',
 	'importusers-form-replace-present' => "Erlec'hiañ an implijerien zo anezho",
 	'importusers-form-button' => 'Enporzhiañ',
@@ -605,13 +605,14 @@ $messages['fi'] = array(
 /** French (Français)
  * @author IAlex
  * @author PieRRoMaN
+ * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'importusers' => 'Importer des utilisateurs',
 	'importusers-desc' => 'Importe des utilisateurs en bloc depuis un fichier CVS ; encodage : UTF-8.',
 	'importusers-uploadfile' => 'Téléverser le fichier',
-	'importusers-form-caption' => 'Entrez un fichier CVS (UTF-8)',
+	'importusers-form-caption' => 'Entrez un fichier CVS (UTF-8) :',
 	'importusers-form-file' => 'Format du fichier utilisateur (CSV) :',
 	'importusers-form-replace-present' => 'Remplacer les utilisateurs existants',
 	'importusers-form-button' => 'Importer',
@@ -622,9 +623,9 @@ Mise à jour effectuée.",
 	'importusers-user-invalid-format' => 'Les données utilisateur dans la ligne #$1 sont dans un mauvais format ou bien sont inexistantes. Aucune action.',
 	'importusers-log' => "Journal des importations d'utilisateurs",
 	'importusers-log-summary' => 'Résumé',
-	'importusers-log-summary-all' => 'Total',
-	'importusers-log-summary-added' => 'Ajouté',
-	'importusers-log-summary-updated' => 'Mis à jour',
+	'importusers-log-summary-all' => 'Tous : $1',
+	'importusers-log-summary-added' => 'Ajouté : $1',
+	'importusers-log-summary-updated' => 'Mis à jour : $1',
 	'importusers-login-name' => 'Nom d’utilisateur',
 	'importusers-password' => 'mot de passe',
 	'importusers-email' => 'adresse courriel',

@@ -748,7 +748,7 @@ QuickTime kan ikke afspille Ogg-file uden denne komponent.
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'ogg-desc' => 'Steuerungsprogramm für Ogg Theora- und Vorbis-Dateien, inklusive einer JavaScript-Abspielsoftware',
+	'ogg-desc' => 'Stellt ein Steuerungsprogramm, einschließlich einer JavaScript-gestützten Abspielsoftware, für Ogg Theora- und Ogg Vorbis-Dateien bereit',
 	'ogg-short-audio' => 'Ogg-$1-Audiodatei, $2',
 	'ogg-short-video' => 'Ogg-$1-Videodatei, $2',
 	'ogg-short-general' => 'Ogg-$1-Mediadatei, $2',
@@ -762,8 +762,8 @@ $messages['de'] = array(
 	'ogg-stop' => 'Stopp',
 	'ogg-play-video' => 'Video abspielen',
 	'ogg-play-sound' => 'Audio abspielen',
-	'ogg-no-player' => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a>.',
-	'ogg-no-xiphqt' => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder wähle eine andere Abspielsoftware.',
+	'ogg-no-player' => 'Das System scheint über keine Abspielsoftware zu verfügen. Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware</a> installieren.',
+	'ogg-no-xiphqt' => 'Das System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen. Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> installieren oder eine andere Abspielsoftware wählen.',
 	'ogg-player-videoElement' => 'Vorhandene Browserunterstützung',
 	'ogg-player-oggPlugin' => 'Browser-Plugin',
 	'ogg-player-thumbnail' => 'nur Vorschaubild',

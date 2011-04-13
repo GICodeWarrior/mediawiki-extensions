@@ -17460,6 +17460,7 @@ $messages['roa-tara'] = array(
  * @author Kaganer
  * @author Kv75
  * @author Lockal
+ * @author MaxSem
  * @author Putnik
  * @author Rubin
  * @author Александр Сигачёв
@@ -17655,7 +17656,7 @@ $messages['ru'] = array(
 	'configure-setting-wgAdditionalMailParams' => 'Дополнительные параметры электронной почты, будут переданы в качестве последнего аргумента PHP-функции mail().',
 	'configure-setting-wgSMTP' => 'Сервер SMTP',
 	'configure-setting-wgUserEmailUseReplyTo' => 'Использовать Reply-To вместо From',
-	'configure-setting-wgUserEmailConfirmationTokenExpiry' => 'Время до истечения срока действия кода, посланного на e-mail, в секундах',
+	'configure-setting-wgUserEmailConfirmationTokenExpiry' => 'Время в секундах до истечения срока действия высланного на e-mail кода подтверждения',
 	'configure-setting-wgAPIRequestLog' => 'Файл журнала для запросов к API',
 	'configure-setting-wgDebugComments' => 'Включать части журнала вывода на страницы в виде HTML-комментариев',
 	'configure-setting-wgDebugDumpSql' => 'Дамп SQL-запросов для отладки',

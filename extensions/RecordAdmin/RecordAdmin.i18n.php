@@ -1804,7 +1804,7 @@ $messages['pt'] = array(
 	'recordadmin-recordtype' => 'Tipo de registo',
 	'recordadmin-newsearch' => 'Nova pesquisa $1',
 	'recordadmin-newrecord' => 'Seleccionar outro tipo de registo',
-	'recordadmin-submit' => 'Submeter',
+	'recordadmin-submit' => 'Enviar',
 	'recordadmin-create' => 'Procurar ou criar registos "$1"',
 	'recordadmin-alreadyexist' => 'Desculpe, "$1" já existe!',
 	'recordadmin-createsuccess' => '$1 criado',
@@ -2167,7 +2167,7 @@ $messages['te'] = array(
 	'recordadmin-buttonsave' => 'భద్రపరచు',
 	'recordadmin-viewlink' => 'చూడు',
 	'recordadmin-editlink' => 'మార్చు',
-	'recordadmin-actions' => 'చర్యలు',
+	'recordadmin-actions' => 'మార్చు',
 	'recordadmin-properties' => 'లక్షణాలు',
 );
 

@@ -60,6 +60,14 @@ $messages['qqq'] = array(
 	'ct-and' => '{{Identical|And}}',
 );
 
+/** کھوار (کھوار)
+ * @author Rachitrali
+ */
+$messages['khw'] = array(
+	'ct-beginner' => 'شروع کوراک',
+	'ct-and' => 'وا',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Naudefj

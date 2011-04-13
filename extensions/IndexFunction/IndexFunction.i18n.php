@@ -1083,7 +1083,7 @@ Por favor, elimine "$1" da função <nowiki>{{#index:}}</nowiki> {{PLURAL:$1|nes
 	'index' => 'Pesquisa do índice',
 	'index-legend' => 'Pesquisar o índice de títulos',
 	'index-search' => 'Pesquisar:',
-	'index-submit' => 'Submeter',
+	'index-submit' => 'Enviar',
 	'index-disambig-start' => "'''$1''' pode referir-se a várias páginas:",
 	'index-emptylist' => 'Não há páginas relacionadas com "$1"',
 	'index-expand-detail' => 'Mostrar páginas indexadas sob este título',
