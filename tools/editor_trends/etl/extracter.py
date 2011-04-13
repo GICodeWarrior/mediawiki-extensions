@@ -258,7 +258,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
 def stream_raw_xml(input_queue, process_id, lock, rts):
     t0 = datetime.now()
     file_id = 0
-    if rts.kaggle:
+    if not rts.kaggle:
         cache = buffer.CSVBuffer(process_id, rts, lock)
 
     while True:
@@ -284,7 +284,7 @@ def stream_raw_xml(input_queue, process_id, lock, rts):
         print 'There are %s files left in the queue' % (input_queue.qsize())
         t0 = t1
 
-    if rts.kaggle:
+    if not rts.kaggle:
         cache.close()
         cache.summary()
 
