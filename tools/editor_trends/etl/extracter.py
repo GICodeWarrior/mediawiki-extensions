@@ -105,7 +105,7 @@ def datacompetition_parse_revision(revision, xml_namespace, bots, counts):
         return counts
 
 
-def datacompetition_count_edits(fh, rts, file_id):
+def datacompetition_count_edits(fh, rts, process_id, file_id):
     '''
     This function counts for every editor the total number of edits that person
     made. It follows the same logic as the parse_xml function although it
@@ -172,9 +172,6 @@ def datacompetition_count_edits(fh, rts, file_id):
     fh = file_utils.create_txt_filehandle(rts.txt, filename, 'w', 'utf-8')
     file_utils.write_dict_to_csv(counts, fh, keys)
     fh.close()
-
-    #filename = 'counts_kaggle_%s.bin' % file_id
-    #file_utils.store_object(counts, location, filename)
 
 
 def parse_xml(fh, rts, cache, process_id, file_id):
