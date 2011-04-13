@@ -64,9 +64,11 @@ class ApiArticleFeedback extends ApiBase {
 				$thisRating = intval( $params["r{$rating}"] );
 			}
 
-			$this->insertPageRating( $pageId, $revisionId, $lastRevision, $rating, ( $thisRating - $lastRating ),
+			$this->insertRevisionRating( $pageId, $revisionId, $lastRevision, $rating, ( $thisRating - $lastRating ),
 					$thisRating, $lastRating
 			);
+			
+			$this->insertPageRating( $pageId, $rating, ( $thisRating - $lastRating ), $thisRating, $lastRating );
 
 			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $rating, $thisRating, $params['bucket'] );
 		}
@@ -76,9 +78,68 @@ class ApiArticleFeedback extends ApiBase {
 		$r = array( 'result' => 'Success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
-
+	
 	/**
 	 * Inserts (or Updates, where appropriate) the aggregate page rating
+	 * 
+	 * @param $pageId Integer: Page Id
+	 * @param $ratingId Integer: Rating Id
+	 * @param $updateAddition Integer: Difference between user's last rating (if applicable)
+	 * @param $thisRating Integer|Boolean: Value of the Rating
+	 * @param $lastRating Integer|Boolean: Value of the last Rating
+	 */
+	private function insertPageRating( $pageId, $ratingId, $updateAddition, $thisRating, $lastRating ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		// 0 == No change in rating count
+		// 1 == No rating last time (or new rating), and now there is
+		// -1 == Rating last time, but abstained this time
+		$countChange = 0;
+		if ( $lastRating === false || $lastRating === 0 ) {
+			if ( $thisRating === 0 ) {
+				$countChange = 0;
+			} else {
+				$countChange = 1;
+			}
+		} else { // Last rating was > 0
+			if ( $thisRating === 0 ) {
+				$countChange = -1;
+			} else {
+				$countChange = 0;
+			}
+		}
+
+		// Try to insert a new afp row for this page with zeroes in it
+		// Try will silently fail if the row already exists
+		$dbw->insert(
+			'article_feedback_pages',
+			 array(
+				'aap_page_id' => $pageId,
+				'aap_total' => 0,
+				'aap_count' => 0,
+				'aap_rating_id' => $ratingId,
+			),
+			__METHOD__,
+			 array( 'IGNORE' )
+		);
+
+		// We now know the row exists, so increment it
+		$dbw->update(
+			'article_feedback_pages',
+			array(
+				'aap_total = aap_total + ' . $updateAddition,
+				'aap_count = aap_count + ' . $countChange,
+			),
+			array(
+				'aap_page_id' => $pageId,
+				'aap_rating_id' => $ratingId,
+			),
+			__METHOD__
+		);
+	}
+
+	/**
+	 * Inserts (or Updates, where appropriate) the aggregate revision rating
 	 * 
 	 * @param $pageId Integer: Page Id
 	 * @param $revisionId Integer: Revision Id
@@ -88,7 +149,7 @@ class ApiArticleFeedback extends ApiBase {
 	 * @param $thisRating Integer|Boolean: Value of the Rating
 	 * @param $lastRating Integer|Boolean: Value of the last Rating
 	 */
-	private function insertPageRating( $pageId, $revisionId, $lastRevision, $ratingId, $updateAddition, $thisRating, $lastRating ) {
+	private function insertRevisionRating( $pageId, $revisionId, $lastRevision, $ratingId, $updateAddition, $thisRating, $lastRating ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		// Try to insert a new "totals" row for this page,rev,rating set
