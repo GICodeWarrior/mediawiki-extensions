@@ -80,15 +80,29 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
     cache.add(article)
     return md5hashes, size
 
-def setup_parser(rts):
-    bots = bot_detector.retrieve_bots(rts.language.code)
-    include_ns = {3: 'User Talk',
-                  5: 'Wikipedia Talk',
-                  1: 'Talk',
-                  2: 'User',
-                  4: 'Wikipedia'}
 
-    return bots, include_ns
+def datacompetition_parse_revision(revision, xml_namespace, bots, counts):
+    '''
+    This function has as input a single revision from a Wikipedia dump file, 
+    article information it belongs to, the xml_namespace of the Wikipedia dump
+    file, the cache object that collects parsed revisions, a list of md5hashes
+    to determine whether an edit was reverted and a size dictionary to determine
+    how many characters were added and removed compared to the previous revision. 
+    '''
+    if revision == None:
+    #the entire revision is empty, weird. 
+        #dump(revision)
+        return counts
+
+    contributor = revision.find('%s%s' % (xml_namespace, 'contributor'))
+    contributor = variables.parse_contributor(contributor, bots, xml_namespace)
+    if not contributor:
+        #editor is anonymous, ignore
+        return counts
+    else:
+        counts.setdefault(contributor['id'], 0)
+        counts[contributor['id']] += 1
+        return counts
 
 
 def datacompetition_count_edits(fh, rts, file_id):
@@ -99,7 +113,8 @@ def datacompetition_count_edits(fh, rts, file_id):
     edits. This function is only to be used to create the prediction dataset 
     for the datacompetition.
     '''
-    bots, include_ns = setup_parser(rts)
+    bots = bot_detector.retrieve_bots(rts.language.code)
+    include_ns = {}
 
     start = 'start'; end = 'end'
     context = iterparse(fh, events=(start, end))
@@ -132,8 +147,7 @@ def datacompetition_count_edits(fh, rts, file_id):
                 if event is start:
                     clear = False
                 else:
-                    print 'IMPLEMENT'
-                    #md5hashes, size = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size)
+                    counts = datacompetition_parse_revision(revision, xml_namespace, bots, counts)
                     cache.count_revisions += 1
                     clear = True
                 if clear:
@@ -159,12 +173,17 @@ def datacompetition_count_edits(fh, rts, file_id):
     file_utils.write_dict_to_csv(counts, fh, keys)
     fh.close()
 
-    filename = 'counts_kaggle_%s.bin' % file_id
-    file_utils.store_object(counts, location, filename)
+    #filename = 'counts_kaggle_%s.bin' % file_id
+    #file_utils.store_object(counts, location, filename)
 
 
 def parse_xml(fh, rts, cache, process_id, file_id):
-    bots, include_ns = setup_parser(rts)
+    bots = bot_detector.retrieve_bots(rts.language.code)
+    include_ns = {3: 'User Talk',
+                  5: 'Wikipedia Talk',
+                  1: 'Talk',
+                  2: 'User',
+                  4: 'Wikipedia'}
 
     start = 'start'; end = 'end'
     context = iterparse(fh, events=(start, end))
@@ -239,7 +258,8 @@ def parse_xml(fh, rts, cache, process_id, file_id):
 def stream_raw_xml(input_queue, process_id, lock, rts):
     t0 = datetime.now()
     file_id = 0
-    cache = buffer.CSVBuffer(process_id, rts, lock)
+    if rts.kaggle:
+        cache = buffer.CSVBuffer(process_id, rts, lock)
 
     while True:
         filename = input_queue.get()
