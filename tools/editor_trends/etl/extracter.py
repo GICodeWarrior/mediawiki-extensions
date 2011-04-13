@@ -141,7 +141,7 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
                     parse = True
                     count_articles += 1
                     if count_articles % 10000 == 0:
-                        print 'Worker %s parsed %s articles' % (process_id, cache.count_articles)
+                        print 'Worker %s parsed %s articles' % (process_id, count_articles)
 
                 elem.clear()
 
