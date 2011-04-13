@@ -296,7 +296,7 @@ $.articleFeedback = {
 									.css( 'width', 0 )
 									.end()
 								.find( '.articleFeedback-rating-count' )
-									.text( mw.msg( 'articlefeedback-report-empty' ) )
+									.text( mw.msg( 'articlefeedback-report-empty' ) );
 						}
 						// Form
 						if ( rating !== null && typeof rating.userrating !== 'undefined' ) {
