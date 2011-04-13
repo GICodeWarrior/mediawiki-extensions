@@ -55,7 +55,8 @@ class PureWikiDeletionHooks {
 		$blankRevId = $revision->getId();
 		if ( $text == "" ) {
 			if ( $summary == wfMsgForContent( 'autosumm-blank' ) ) {
-				$summary = DeleteAction::getAutoReason( $article );
+				$hasHistory = false;
+				$summary = $article->generateReason( $hasHistory );
 			}
 			$dbw = wfGetDB( DB_MASTER );
 			$blank_row = array(
