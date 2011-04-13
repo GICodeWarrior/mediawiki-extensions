@@ -69,13 +69,13 @@ def retrieve_bots(db_type, language_code):
     '''
     Loader function to retrieve list of id's of known Wikipedia bots.
     '''
-    ids = []
-    db = storage.Database(db_type, language_code, 'bots', 'ids')
+    bots = []
+    db = storage.Database(db_type, 'bots', 'ids')
     cursor = db.find()
     for bot in cursor:
         if bot['verified'] == 'True' and language_code in bot['projects']:
-            ids.append(bot['name'])
-    return ids
+            bots.append(bot['name'])
+    return bots
 
 
 def store_bots():

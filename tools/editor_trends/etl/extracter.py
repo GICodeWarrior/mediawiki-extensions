@@ -287,7 +287,7 @@ def stream_raw_xml(input_queue, process_id, lock, rts):
 
 
 def debug():
-    fh = 'c:\\wikimedia\sv\wiki\svwiki-latest-stub-meta-history.xml'
+    bots = bot_detector.retrieve_bots('mongo', 'en')
 
 
 def launcher(rts):
