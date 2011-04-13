@@ -124,6 +124,7 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
     id = False
     ns = False
     parse = False
+    count_articles = 0
 
     try:
         for event, elem in context:
@@ -138,8 +139,8 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
                 if current_namespace != False:
                     parse = True
-                    cache.count_articles += 1
-                    if cache.count_articles % 10000 == 0:
+                    count_articles += 1
+                    if count_articles % 10000 == 0:
                         print 'Worker %s parsed %s articles' % (process_id, cache.count_articles)
 
                 elem.clear()
@@ -149,7 +150,6 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
                     clear = False
                 else:
                     counts = datacompetition_parse_revision(revision, xml_namespace, bots, counts)
-                    cache.count_revisions += 1
                     clear = True
                 if clear:
                     elem.clear()
