@@ -169,7 +169,9 @@ class ArticleFeedbackHooks {
 	public static function parserTestTables( &$tables ) {
 		$tables[] = 'article_feedback';
 		$tables[] = 'article_feedback_pages';
+		$tables[] = 'article_feedback_revisions';
 		$tables[] = 'article_feedback_ratings';
+		$tables[] = 'article_feedback_properties';
 		return true;
 	}
 	
