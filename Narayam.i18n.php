@@ -346,6 +346,34 @@ $messages['ia'] = array(
 	'narayam-bn-nkb' => 'Bengalese (NKB)',
 );
 
+/** Japanese (日本語)
+ * @author Whym
+ */
+$messages['ja'] = array(
+	'narayam-desc' => '入力欄にカスタム入力メソッドを追加できるようにする',
+	'narayam-toggle-ime' => '入力メソッドを切り替える ($1)',
+	'narayam-help-page' => 'Help:タイピング',
+	'narayam-checkbox-tooltip' => '入力メソッドの入・切を反転させる',
+	'narayam-disable-preference' => 'Narayam入力メソッドエディタ (IME) を無効にする',
+	'narayam-eo' => 'エスペラント',
+	'narayam-hi-inscript' => 'ヒンディー語InScript',
+	'narayam-kn' => 'カンナダ語翻字',
+	'narayam-kn-inscript' => 'カンナダ語InScript',
+	'narayam-ml' => 'マラヤラム語翻字',
+	'narayam-ml-inscript' => 'マラヤラム語InScript',
+	'narayam-or' => 'オリヤ語翻字',
+	'narayam-or-inscript' => 'オリヤ語InScript',
+	'narayam-sa' => 'サンスクリット語翻字',
+	'narayam-sa-inscript' => 'サンスクリット語InScript',
+	'narayam-si-singlish' => 'シンハラ語シングリッシュ',
+	'narayam-si-wijesekara' => 'シンハラ語Wijesekara',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'タミル語翻字',
+	'narayam-bn-avro' => 'ベンガル語Avro',
+	'narayam-bn-inscript' => 'ベンガル語InScript',
+	'narayam-bn-nkb' => 'ベンガル語NKB',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
