@@ -135,11 +135,9 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
 
             elif event is end and elem.tag.endswith('title'):
                 title = variables.parse_title(elem)
-                article['title'] = title
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
                 if current_namespace != False:
                     parse = True
-                    article['namespace'] = current_namespace
                     cache.count_articles += 1
                 elem.clear()
 
