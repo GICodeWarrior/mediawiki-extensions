@@ -103,7 +103,9 @@ class PopulateAFRevisions extends Maintenance {
 					if ( !isset( $data2[$userData['revid']]['ratings'][$id] ) ) {
 						$data2[$userData['revid']]['ratings'][$id] = array( 'count' => 0, 'total' => 0 );
 					}
-					$data2[$userData['revid']]['ratings'][$id]['count']++;
+					if ( $value > 0 ) {
+						$data2[$userData['revid']]['ratings'][$id]['count']++;
+					}
 					$data2[$userData['revid']]['ratings'][$id]['total'] += $value;
 				}
 			}
