@@ -91,24 +91,6 @@ class ApiArticleFeedback extends ApiBase {
 	private function insertPageRating( $pageId, $ratingId, $updateAddition, $thisRating, $lastRating ) {
 		$dbw = wfGetDB( DB_MASTER );
 
-		// 0 == No change in rating count
-		// 1 == No rating last time (or new rating), and now there is
-		// -1 == Rating last time, but abstained this time
-		$countChange = 0;
-		if ( $lastRating === false || $lastRating === 0 ) {
-			if ( $thisRating === 0 ) {
-				$countChange = 0;
-			} else {
-				$countChange = 1;
-			}
-		} else { // Last rating was > 0
-			if ( $thisRating === 0 ) {
-				$countChange = -1;
-			} else {
-				$countChange = 0;
-			}
-		}
-
 		// Try to insert a new afp row for this page with zeroes in it
 		// Try will silently fail if the row already exists
 		$dbw->insert(
@@ -128,7 +110,7 @@ class ApiArticleFeedback extends ApiBase {
 			'article_feedback_pages',
 			array(
 				'aap_total = aap_total + ' . $updateAddition,
-				'aap_count = aap_count + ' . $countChange,
+				'aap_count = aap_count + ' . $this->getCountChange( $lastRating, $thisRating ),
 			),
 			array(
 				'aap_page_id' => $pageId,
@@ -192,7 +174,7 @@ class ApiArticleFeedback extends ApiBase {
 				'article_feedback_revisions',
 				array(
 					'afr_total' => $thisRating,
-					'afr_count' => 1,
+					'afr_count' => $thisRating ? 1 : 0,
 				),
 				array(
 					'afr_page_id' => $pageId,
@@ -202,31 +184,12 @@ class ApiArticleFeedback extends ApiBase {
 				__METHOD__
 			);
 		} else {
-			// Calculate the difference between the previous rating and this one
-			// * -1 == Rating last time, but abstained this time
-			// *  0 == No change in rating count
-			// *  1 == No rating last time (or new rating), and now there is
-			$countChange = 0;
-			if ( $lastRating === false || $lastRating === 0 ) {
-				if ( $thisRating === 0 ) {
-					$countChange = 0;
-				} else {
-					$countChange = 1;
-				}
-			} else {
-				// Last rating was > 0
-				if ( $thisRating === 0 ) {
-					$countChange = -1;
-				} else {
-					$countChange = 0;
-				}
-			}
 			// Apply the difference between the previous and new ratings to the current "totals" row
 			$dbw->update(
 				'article_feedback_revisions',
 				array(
 					'afr_total = afr_total + ' . $updateAddition,
-					'afr_count = afr_count + ' . $countChange,
+					'afr_count = afr_count + ' . $this->getCountChange( $lastRating, $thisRating ),
 				),
 				array(
 					'afr_page_id' => $pageId,
@@ -236,6 +199,19 @@ class ApiArticleFeedback extends ApiBase {
 				__METHOD__
 			);
 		}
+	}
+	/**
+	 * Calculate the difference between the previous rating and this one
+	 *    -1 == Rating last time, but abstained this time
+	 *     0 == No change in rating count
+	 *     1 == No rating last time (or new rating), and now there is
+	 */
+	protected function getCountChange( $lastRating, $thisRating ) {
+		if ( $lastRating === false || $lastRating === 0 ) {
+			return $thisRating === 0 ? 0 : 1;
+		}
+		// Last rating was > 0
+		return $thisRating === 0 ? -1 : 0;
 	}
 
 	/**
