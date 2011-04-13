@@ -222,7 +222,9 @@ $.articleFeedback = {
 				'success': function( data ) {
 					var context = this;
 					if (
-						!$.isArray( data.query.articlefeedback )
+						!( 'query' in data )
+						|| !( 'articlefeedback' in data.query )
+						|| !$.isArray( data.query.articlefeedback )
 						|| !data.query.articlefeedback.length
 					) {
 						mw.log( 'ArticleFeedback invalid response error.' );
