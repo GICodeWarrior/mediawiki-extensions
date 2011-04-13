@@ -153,6 +153,12 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/FixPropertiesAnonTokenSchema.sql',
 				true
 			) );
+			$updater->addExtensionUpdate( array(
+				'addTable',
+				'article_feedback_revisions',
+				$dir . '/sql/AddRevisionsTable.sql',
+				true
+			) );
 		}
 		return true;
 	}
