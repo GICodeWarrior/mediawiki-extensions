@@ -322,15 +322,24 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Haffman
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'rdf-desc' => 'Программная библиотека RDF для MediaWiki',
+	'rdf-inpage' => 'Встроенная в страницы Turtle',
+	'rdf-dcmes' => 'Набор Dublin Core Metadata Element',
 	'rdf-cc' => 'Creative Commons',
+	'rdf-image' => 'Встроенные изображения',
 	'rdf-linksto' => 'Ссылки на страницу',
 	'rdf-linksfrom' => 'Ссылки со страницы',
 	'rdf-links' => 'Все ссылки',
+	'rdf-history' => 'Исторические версии',
+	'rdf-interwiki' => 'Интервики-ссылки',
 	'rdf-categories' => 'Категории',
 	'rdf-target' => 'Целевая страница',
+	'rdf-modelnames' => 'Модели',
 	'rdf-format' => 'Формат вывода',
+	'rdf-instructions' => 'Выберите целевую страницу и модели RDF, которые вас интересуют.',
 );
 
 /** Tagalog (Tagalog)
