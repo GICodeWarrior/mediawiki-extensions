@@ -53,6 +53,22 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback_pages (
   PRIMARY KEY (aap_page_id, aap_rating_id, aap_revision)
 ) /*$wgDBTableOptions*/;
 
+-- Aggregate rating table for a revision
+CREATE TABLE IF NOT EXISTS /*_*/article_feedback_revisions (
+  -- Foreign key to page.page_id
+  afr_page_id integer unsigned NOT NULL,
+  -- Revision that totals are relevant to
+  afr_revision integer unsigned NOT NULL,
+  -- Foreign key to article_feedback_ratings.aar_rating
+  afr_rating_id integer unsigned NOT NULL,
+  -- Sum (total) of all the ratings for this article revision
+  afr_total integer unsigned NOT NULL,
+  -- Number of ratings
+  afr_count integer unsigned NOT NULL,
+  -- One rating row per page
+  PRIMARY KEY (afr_page_id, afr_rating_id, afr_revision)
+) /*$wgDBTableOptions*/;
+
 -- Properties table for meta information
 CREATE TABLE  IF NOT EXISTS /*_*/article_feedback_properties (
   -- Keys to the primary key fields in article_feedback, except aa_rating_id
