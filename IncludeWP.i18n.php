@@ -88,9 +88,13 @@ $messages['br'] = array(
 	'includewp-show-full-page' => 'Diskouez ar bajenn en he hed',
 	'includewp-show-fragment' => 'Diskouez ar rannbennad kentañ nemetken',
 	'includewp-loading-failed' => "N'eus ket bet gallet kargañ ar bajenn",
+	'includewp-licence-notice' => 'Dont a ra an danvez a-us eus ar bajenn $1 <a href="$2">$3</a> dindan an aotre-implijout <a href="$4">$5</a>.
+Ur <a href="$6">roll klok eus an aozerien</a> a c\'haller da gaout.',
+	'includewp-parserhook-desc' => 'Krog an dielfenner a dalvez da zispakañ danvez pajennoù Wikipedia.',
 	'includewp-include-par-page' => "Anv ar bajenn (a-bell) a fell deoc'h diskwel.",
 	'includewp-include-par-wiki' => "Anv ar wiki a fell deoc'h tennañ danvez dioutañ. A zle bezañ unan eus ar wikioù aotreet, dre ziouer Wikipedia nemetken.",
 	'includewp-include-par-paragraphs' => "An niver a rannbennadoù a fell deoc'h diskwel e penn-kentañ.",
+	'includewp-include-par-height' => "Uhelder brasañ (e px) ar valizenn HTML ''div'' m'emañ karget an danvez. Lakaat da 0 evit ma vefe diharz.",
 );
 
 /** Bosnian (Bosanski)
