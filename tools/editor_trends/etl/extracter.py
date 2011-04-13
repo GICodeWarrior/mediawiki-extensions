@@ -137,7 +137,7 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
             elif event is end and elem.tag.endswith('title'):
                 title = variables.parse_title(elem)
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
-                if current_namespace != False:
+                if isinstance(current_namespace, int):
                     parse = True
                     count_articles += 1
                     if count_articles % 10000 == 0:
@@ -160,6 +160,9 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
                 id = False
                 parse = False
 
+            else:
+                elem.clear()
+
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
         dump(elem)
@@ -175,6 +178,7 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
     fh = file_utils.create_txt_filehandle(rts.txt, filename, 'w', 'utf-8')
     file_utils.write_dict_to_csv(counts, fh, keys)
     fh.close()
+    counts = {}
 
 
 def parse_xml(fh, rts, cache, process_id, file_id):
@@ -304,7 +308,7 @@ def launcher(rts):
     files = file_utils.retrieve_file_list(rts.input_location)
 
     if rts.kaggle:
-        processors = 2
+        processors = 4
     elif len(files) > cpu_count():
         processors = cpu_count() - 1
     else:
