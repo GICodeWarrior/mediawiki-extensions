@@ -61,18 +61,18 @@
 		}
 
 		if ( $confirm ) {
-			$this->doDeleteArticle( $reason );
+			$this->doDelete( $reason );
 			if ( $wgRequest->getCheck( 'wpWatch' ) ) {
-				Action::factory( 'watch', $this )->execute();
+				$this->doWatch();
 			} elseif ( $this->mTitle->userIsWatching() ) {
-				Action::factory( 'watch', $this )->execute();
+				$this->doUnwatch();
 			}
 			return;
 		}
 
 		// Generate deletion reason
 		$hasHistory = false;
-		$reason = DeleteAction::getAutoReason( $this );
+		$reason = $this->generateReason( $hasHistory );
 
 		// If the page has a history, insert a warning
 		if ( $hasHistory && !$confirm ) {
