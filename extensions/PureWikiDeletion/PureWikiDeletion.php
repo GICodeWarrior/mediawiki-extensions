@@ -104,7 +104,8 @@ function PureWikiDeletionSaveHook( &$article, &$user, &$text, &$summary,
 			return false;
 		}
 		if ( $summary == wfMsgForContent( 'autosumm-blank' ) ) {
-			$summary = DeleteAction::getAutoReason( $article );
+			$hasHistory = false;
+			$summary = $article->generateReason( $hasHistory );
 		}
 	} else {
 		$dbr = wfGetDB( DB_SLAVE );
