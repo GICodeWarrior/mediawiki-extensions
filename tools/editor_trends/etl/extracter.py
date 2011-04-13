@@ -139,6 +139,9 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
                 if current_namespace != False:
                     parse = True
                     cache.count_articles += 1
+                    if cache.count_articles % 10000 == 0:
+                        print 'Worker %s parsed %s articles' % (process_id, cache.count_articles)
+
                 elem.clear()
 
             elif elem.tag.endswith('revision') and parse == True:
@@ -298,7 +301,9 @@ def launcher(rts):
 
     files = file_utils.retrieve_file_list(rts.input_location)
 
-    if len(files) > cpu_count():
+    if rts.kaggle:
+        processors = 2
+    elif len(files) > cpu_count():
         processors = cpu_count() - 1
     else:
         processors = len(files)
