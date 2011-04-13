@@ -588,13 +588,14 @@ Si us plau, tingues paciència.",
 );
 
 /** Sorani (کوردی)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb'] = array(
 	'youtubeauthsub' => 'بارکردنی ڤیدیۆ لە یووتیوب',
 	'youtubeauthsub_info' => 'بۆ بارکردنی ڤیدیۆیەک بۆ سەر یووتیوب کە لە لاپەرەیەکدا پیشان بدرێت، ئەو زانیاریانەی خوارەوە پڕ کەوە:',
 	'youtubeauthsub_title' => 'سەردێڕ',
-	'youtubeauthsub_description' => 'پێناسە',
+	'youtubeauthsub_description' => 'وەسف',
 	'youtubeauthsub_password' => 'وشەی‌نهێنی یووتیوب',
 	'youtubeauthsub_username' => 'ناوی بەکارهێنەری یووتیوب',
 	'youtubeauthsub_keywords' => 'گرنگ‌وشەکان',
@@ -2739,7 +2740,7 @@ $messages['pt'] = array(
 	'youtubeauthsub_username' => 'Nome de utilizador no YouTube',
 	'youtubeauthsub_keywords' => 'Palavras-chave',
 	'youtubeauthsub_category' => 'Categoria',
-	'youtubeauthsub_submit' => 'Submeter',
+	'youtubeauthsub_submit' => 'Enviar',
 	'youtubeauthsub_clickhere' => 'Carregue aqui para se ligar ao YouTube',
 	'youtubeauthsub_tokenerror' => 'Erro ao gerar o token de autorização. Tente refrescar a página.',
 	'youtubeauthsub_success' => "Parabéns!
