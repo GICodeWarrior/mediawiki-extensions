@@ -168,6 +168,8 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
         print '''Archive file is possibly corrupted. Please delete this archive 
             and retry downloading. Error message: %s''' % error
         sys.exit(-1)
+    except Exception, error:
+        print error
 
     filename = 'counts_kaggle_%s.csv' % file_id
     fh = file_utils.create_txt_filehandle(rts.txt, filename, 'w', 'utf-8')
