@@ -65,12 +65,12 @@ def read_bots_csv_file(location, filename, encoding, manager=False):
     return bot_dict
 
 
-def retrieve_bots(language_code):
+def retrieve_bots(storage, language_code):
     '''
     Loader function to retrieve list of id's of known Wikipedia bots.
     '''
     ids = []
-    db = storage.Database(rts.storage, 'bots', 'ids')
+    db = storage.Database(storage, language_code, 'bots', 'ids')
     cursor = db.find()
     for bot in cursor:
         if bot['verified'] == 'True' and language_code in bot['projects']:

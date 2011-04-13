@@ -113,7 +113,7 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
     edits. This function is only to be used to create the prediction dataset 
     for the datacompetition.
     '''
-    bots = bot_detector.retrieve_bots(rts.language.code)
+    bots = bot_detector.retrieve_bots(rts.storage, rts.language.code)
     include_ns = {}
 
     start = 'start'; end = 'end'
@@ -175,7 +175,7 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
 
 
 def parse_xml(fh, rts, cache, process_id, file_id):
-    bots = bot_detector.retrieve_bots(rts.language.code)
+    bots = bot_detector.retrieve_bots(rts.storage, rts.language.code)
     include_ns = {3: 'User Talk',
                   5: 'Wikipedia Talk',
                   1: 'Talk',
