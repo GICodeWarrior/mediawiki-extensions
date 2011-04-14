@@ -98,13 +98,14 @@ class CSVBuffer:
         if self.n > 10000:
             #print '%s: Emptying buffer %s - buffer size %s' % (datetime.datetime.now(), self.id, len(self.revisions))
             self.store()
+            self.n = 0
         else:
             self.n += 1
 
     def simplify(self, revision):
         row = []
         for key in self.keys:
-            row.append(value.decode('utf-8'))
+            row.append(revision[key].decode('utf-8'))
         return row
 
     def stringify(self, revision):
@@ -189,6 +190,7 @@ class CSVBuffer:
             self.lock.release(file_id)
             del self.revisions[file_id]
             wait = True
+        print 'Buffer size: %s' % len(self.revisions.keys())
 #        t1 = datetime.datetime.now()
 #        print 'Worker %s: %s revisions took %s' % (self.process_id,
 #                                                   len([1]),
