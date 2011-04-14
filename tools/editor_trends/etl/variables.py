@@ -19,6 +19,8 @@ __date__ = '2011-04-10'
 __version__ = '0.1'
 
 import hashlib
+from xml.etree.cElementTree import dump
+
 
 def validate_hostname(address):
     '''
@@ -49,6 +51,9 @@ def validate_ip(address):
 
 
 def extract_revision_text(revision):
+    dump(revision)
+    if revision.text == None:
+        revision.text = fix_revision_text(revision)
     return revision.text
 #    rev = revision.find('ns0:text')
 #    if rev != None:
