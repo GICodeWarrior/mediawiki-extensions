@@ -9,8 +9,9 @@
 class CustomUserSignupHooks {
 
 	public static function userCreateForm( &$template ) {
-		if( isset( $_GET['campaign'] ) ) {
-			$campaign = $_GET['campaign'];
+		global $wgRequest;
+		if( isset( $wgRequest->getVal( 'campaign' ) ) ) {
+			$campaign = $wgRequest->getVal( 'campaign' );
 			$newTemplate;
 			if( get_class( $template ) == 'UserloginTemplate' ) {
 				$newTemplate = new CustomUserloginTemplate();
@@ -43,8 +44,9 @@ class CustomUserSignupHooks {
 	}
 
 	public static function welcomeScreen( &$welcomeCreationMsg, &$injected_html ) {
-		if( isset( $_GET['campaign'] ) ) {
-			$campaign = $_GET['campaign'];
+		global $wgRequest;
+		if( isset( $wgRequest->getVal( 'campaign' ) ) ) {
+			$campaign = $wgRequest->getVal( 'campaign' );
 
 			if( wfMsg( "customusertemplate-$campaign-welcomecreation" ) != "&lt;customusertemplate-$campaign-welcomecreation&gt;" ) {
 				$welcomeCreationMsg = "customusertemplate-$campaign-welcomecreation";

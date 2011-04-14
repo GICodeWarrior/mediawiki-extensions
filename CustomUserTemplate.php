@@ -5,9 +5,10 @@ class CustomUserloginTemplate extends UserloginTemplate {
 	protected $campaign = null;
 
 	function __construct() {
+		global $wgRequest;
 		parent::__construct();
-		if( isset( $_GET['campaign'] ) ) {
-			preg_match( '/[A-Za-z0-9]+/', $_GET['campaign'], $matches );
+		if( isset( $wgRequest->getVal( 'campaign' ) ) ) {
+			preg_match( '/[A-Za-z0-9]+/', $wgRequest->getVal( 'campaign' ), $matches );
 			$this->campaign = $matches[0];
 		}
 	}
@@ -45,9 +46,10 @@ class CustomUsercreateTemplate extends UsercreateTemplate {
 	protected $campaign = null;
 
 	function __construct() {
+		global $wgRequest;
 		parent::__construct();
-		if( isset( $_GET['campaign'] ) ) {
-			preg_match( '/[A-Za-z0-9]+/', $_GET['campaign'], $matches );
+		if( isset( $wgRequest->getVal( 'campaign' ) ) ) {
+			preg_match( '/[A-Za-z0-9]+/', $wgRequest->getVal( 'campaign' ), $matches );
 			$this->campaign = $matches[0];
 		}
 	}
