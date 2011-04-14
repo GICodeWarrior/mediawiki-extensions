@@ -171,25 +171,28 @@ class CSVBuffer:
 
     def write_revisions(self):
         #t0 = datetime.datetime.now()
-        #self.group_revisions_by_fileid()
         file_ids = self.revisions.keys()
-        for file_id in file_ids:
-            wait = True
-            for i, revision in enumerate(self.revisions[file_id]):
-                if i == 0:
-                    while wait:
-                        #print file_id, self.lock
+        while len(self.revisions.keys()) != 0:
+            for file_id in file_ids:
+                #wait = True
+                for i, revision in enumerate(self.revisions[file_id]):
+                    if i == 0:
+                        #while wait:
+                            #print file_id, self.lock
                         if self.lock.available(file_id):
                             fh = self.filehandles[file_id]
-                            wait = False
-                try:
-                    file_utils.write_list_to_csv(revision, fh)
-                except Exception, error:
-                    print '''Encountered the following error while writing 
-                            revision data to %s: %s''' % (fh, error)
-            self.lock.release(file_id)
-            del self.revisions[file_id]
-            wait = True
+                                #wait = False
+                    else:
+                        break
+                    try:
+                        file_utils.write_list_to_csv(revision, fh)
+                    except Exception, error:
+                        print '''Encountered the following error while writing 
+                                revision data to %s: %s''' % (fh, error)
+
+                self.lock.release(file_id)
+                del self.revisions[file_id]
+                #wait = True
         print 'Buffer size: %s' % len(self.revisions.keys())
 #        t1 = datetime.datetime.now()
 #        print 'Worker %s: %s revisions took %s' % (self.process_id,
