@@ -116,7 +116,7 @@ $wgArticleCommentDefaults = array(
 $wgArticleCommentsNSDisplayList = array();
 
 # Sets up special page to handle comment submission
-$wgSpecialPages[] = array( 'ProcessComment', '', true, 'specialProcessComment', false );
+$wgSpecialPages['ProcessComment'] = 'SpecialProcessComment';
 
 # Sets up the ArticleComments Parser hook for <comments />
 function wfArticleCommentsParserSetup( &$parser ) {
@@ -358,161 +358,167 @@ function wfArticleCommentForm( $title, $params = array(), $parser ) {
 /**
  * Special page for comment processing.
  */
-function specialProcessComment() {
-	global $wgOut, $wgParser, $wgUser, $wgContLang, $wgRequest;
-
-	# Retrieve submitted values
-	$titleText = $wgRequest->getVal( 'commentArticle' );
-	$commenterName = $wgRequest->getVal( 'commenterName' );
-	$commenterURL = trim( $wgRequest->getVal( 'commenterURL' ) );
-	$comment = $wgRequest->getVal( 'comment' );
-
-	// The default value is the same as not providing a URL
-	if ( $commenterURL == 'http://' ) {
-		$commenterURL = '';
+class SpecialProcessComment extends SpecialPage {
+	function __construct(){
+		parent::__construct( 'ProcessComment' );
 	}
 
-	$title = Title::newFromText( $titleText );
+	function execute() {
+		global $wgOut, $wgParser, $wgUser, $wgContLang, $wgRequest;
 
-	# Perform validation checks on supplied fields
-	$messages = array();
+		# Retrieve submitted values
+		$titleText = $wgRequest->getVal( 'commentArticle' );
+		$commenterName = $wgRequest->getVal( 'commenterName' );
+		$commenterURL = trim( $wgRequest->getVal( 'commenterURL' ) );
+		$comment = $wgRequest->getVal( 'comment' );
 
-	if ( !$wgRequest->wasPosted() ) {
-		$messages[] = wfMsg( 'article-comments-not-posted' );
-	}
-
-	if ( $titleText === '' || !$title ) {
-		$messages[] = wfMsg( 'article-comments-invalid-field', wfMsgForContent( 'article-comments-title-string' ), $titleText );
-	}
-
-	if ( !$commenterName || strpos( $commenterName, "\n" ) !== false ) {
-		$messages[] = wfMsg( 'article-comments-required-field', wfMsgForContent( 'article-comments-name-string' ) );
-	}
-
-	if ( ( $commenterURL != '' ) && !preg_match( "/^(" . wfUrlProtocols() . ')' . Parser::EXT_LINK_URL_CLASS . '+$/', $commenterURL ) ) {
-		$messages[] = wfMsg( 'article-comments-invalid-field', wfMsgForContent( 'article-comments-url-string' ), $commenterURL );
-	}
-
-	if ( !$comment ) {
-		$messages[] = wfMsg( 'article-comments-required-field', wfMsg( 'article-comments-comment-string' ) );
-	}
-
-	if ( !empty( $messages ) ) {
-		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
-		$wikiText = "<div class='errorbox'>\n";
-		$wikiText .= wfMsgExt( 'article-comments-failure-reasons', 'parsemag', count( $messages ) ) . "\n\n";
-		foreach ( $messages as $message ) {
-			$wikiText .= "* $message\n";
+		// The default value is the same as not providing a URL
+		if ( $commenterURL == 'http://' ) {
+			$commenterURL = '';
 		}
-		$wgOut->addWikiText( $wikiText . '</div>' );
-		return;
-	}
 
-	# Setup title and talkTitle object
-	$article = new Article( $title );
+		$title = Title::newFromText( $titleText );
 
-	$talkTitle = $title->getTalkPage();
-	$talkArticle = new Article( $talkTitle );
+		# Perform validation checks on supplied fields
+		$messages = array();
 
-	# Check whether user is blocked from editing the talk page
-	if ( $wgUser->isBlockedFrom( $talkTitle ) ) {
-		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
-		$wikiText = "<div class='errorbox'>\n";
-		# 1 error only but message is used above for n errors too
-		$wikiText .= wfMsgExt( 'article-comments-failure-reasons', 'parsemag', 1 ) . "\n\n";
-		$wikiText .= '* ' . wfMsg( 'article-comments-user-is-blocked', $talkTitle->getPrefixedText() ) . "\n";
-		$wgOut->addWikiText( $wikiText . '</div>' );
-		return;
-	}
+		if ( !$wgRequest->wasPosted() ) {
+			$messages[] = wfMsg( 'article-comments-not-posted' );
+		}
 
-	# Retrieve article content
-	$articleContent = '';
-	if ( $title->exists() ) {
-		$articleContent = $article->getContent();
-	}
+		if ( $titleText === '' || !$title ) {
+			$messages[] = wfMsg( 'article-comments-invalid-field', wfMsgForContent( 'article-comments-title-string' ), $titleText );
+		}
 
-	# Retrieve existing talk content
-	$talkContent = '';
-	if ( $talkTitle->exists() ) {
-		$talkContent = $talkArticle->getContent();
-	}
+		if ( !$commenterName || strpos( $commenterName, "\n" ) !== false ) {
+			$messages[] = wfMsg( 'article-comments-required-field', wfMsgForContent( 'article-comments-name-string' ) );
+		}
 
-	# Check if talk NS is in the namespace display list
-	# Note: if so, then there's no need to confirm that <comments /> appears in the article or talk page.
-	global $wgArticleCommentsNSDisplayList;
-	$skipCheck = (
-		is_array( $wgArticleCommentsNSDisplayList ) ?
-		in_array( $talkTitle->getNamespace(), $wgArticleCommentsNSDisplayList ):
-		false
-	);
+		if ( ( $commenterURL != '' ) && !preg_match( "/^(" . wfUrlProtocols() . ')' . Parser::EXT_LINK_URL_CLASS . '+$/', $commenterURL ) ) {
+			$messages[] = wfMsg( 'article-comments-invalid-field', wfMsgForContent( 'article-comments-url-string' ), $commenterURL );
+		}
 
-	# Check whether the article or its talk page contains a <comments /> flag
-	if ( !$skipCheck &&
-		preg_match( '/<comments( +[^>]*)?\\/>/', $articleContent ) === 0 &&
-		preg_match( '/<comments( +[^>]*)?\\/>/', $talkContent ) === 0
-	) {
-		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
-		$wgOut->addWikiText(
-			'<div class="errorbox">' .
-			wfMsg( 'article-comments-no-comments', $title->getPrefixedText() ) .
-			'</div>'
+		if ( !$comment ) {
+			$messages[] = wfMsg( 'article-comments-required-field', wfMsg( 'article-comments-comment-string' ) );
+		}
+
+		if ( !empty( $messages ) ) {
+			$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
+			$wikiText = "<div class='errorbox'>\n";
+			$wikiText .= wfMsgExt( 'article-comments-failure-reasons', 'parsemag', count( $messages ) ) . "\n\n";
+			foreach ( $messages as $message ) {
+				$wikiText .= "* $message\n";
+			}
+			$wgOut->addWikiText( $wikiText . '</div>' );
+			return;
+		}
+
+		# Setup title and talkTitle object
+		$article = new Article( $title );
+
+		$talkTitle = $title->getTalkPage();
+		$talkArticle = new Article( $talkTitle );
+
+		# Check whether user is blocked from editing the talk page
+		if ( $wgUser->isBlockedFrom( $talkTitle ) ) {
+			$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
+			$wikiText = "<div class='errorbox'>\n";
+			# 1 error only but message is used above for n errors too
+			$wikiText .= wfMsgExt( 'article-comments-failure-reasons', 'parsemag', 1 ) . "\n\n";
+			$wikiText .= '* ' . wfMsg( 'article-comments-user-is-blocked', $talkTitle->getPrefixedText() ) . "\n";
+			$wgOut->addWikiText( $wikiText . '</div>' );
+			return;
+		}
+
+		# Retrieve article content
+		$articleContent = '';
+		if ( $title->exists() ) {
+			$articleContent = $article->getContent();
+		}
+
+		# Retrieve existing talk content
+		$talkContent = '';
+		if ( $talkTitle->exists() ) {
+			$talkContent = $talkArticle->getContent();
+		}
+
+		# Check if talk NS is in the namespace display list
+		# Note: if so, then there's no need to confirm that <comments /> appears in the article or talk page.
+		global $wgArticleCommentsNSDisplayList;
+		$skipCheck = (
+			is_array( $wgArticleCommentsNSDisplayList ) ?
+			in_array( $talkTitle->getNamespace(), $wgArticleCommentsNSDisplayList ):
+			false
 		);
-		return;
-	}
 
-	# Run spam checks
-	$isSpam = false;
-	wfRunHooks( 'ArticleCommentsSpamCheck', array( $comment, $commenterName, $commenterURL, &$isSpam ) );
+		# Check whether the article or its talk page contains a <comments /> flag
+		if ( !$skipCheck &&
+			preg_match( '/<comments( +[^>]*)?\\/>/', $articleContent ) === 0 &&
+			preg_match( '/<comments( +[^>]*)?\\/>/', $talkContent ) === 0
+		) {
+			$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
+			$wgOut->addWikiText(
+				'<div class="errorbox">' .
+				wfMsg( 'article-comments-no-comments', $title->getPrefixedText() ) .
+				'</div>'
+			);
+			return;
+		}
 
-	# If it's spam - it's gone!
-	if ( $isSpam ) {
-		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
-		$wgOut->addWikiText(
-			'<div class="errorbox">' .
-			wfMsg( 'article-comments-no-spam' ) .
-			'</div>'
-		);
-		return;
-	}
+		# Run spam checks
+		$isSpam = false;
+		wfRunHooks( 'ArticleCommentsSpamCheck', array( $comment, $commenterName, $commenterURL, &$isSpam ) );
 
-	# Initialize the talk page's content.
-	if ( $talkContent == '' ) {
-		$talkContent = wfMsgForContent( 'article-comments-talk-page-starter', $title->getPrefixedText() );
-	}
+		# If it's spam - it's gone!
+		if ( $isSpam ) {
+			$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
+			$wgOut->addWikiText(
+				'<div class="errorbox">' .
+				wfMsg( 'article-comments-no-spam' ) .
+				'</div>'
+			);
+			return;
+		}
 
-	# Search for insertion point, or append most recent comment.
-	$commentText = wfMsgForContent( 'article-comments-new-comment-heading', $commenterName, $commenterURL, '~~~~', $comment );
-	$commentText .= '<comment date="' . htmlspecialchars( wfTimestamp( TS_ISO_8601 ) ) . '" name="' . htmlspecialchars( $commenterName ) . '"';
-	if ( $commenterURL != '' ) {
-		$commentText .= ' url="' . htmlspecialchars( $commenterURL ) . '"';
-	}
-	if ( $wgUser->isLoggedIn() ) {
-		$commentText .= ' signature="' . htmlspecialchars( $wgParser->getUserSig( $wgUser ) ) . '"';
-	}
-	$commentText .= ">\n" . str_replace( '</comment', '&lt;/comment', $comment ) . "\n</comment>";
+		# Initialize the talk page's content.
+		if ( $talkContent == '' ) {
+			$talkContent = wfMsgForContent( 'article-comments-talk-page-starter', $title->getPrefixedText() );
+		}
 
-	$posAbove = stripos( $talkContent, '<!--COMMENTS_ABOVE-->' );
-	if ( $posAbove === false ) {
-		$posBelow = stripos( $talkContent, '<!--COMMENTS_BELOW-->' );
-	}
-	if ( $posAbove !== false ) {
-		# Insert comments above HTML marker
-		$talkContent = substr( $talkContent, 0, $posAbove ) . $commentText . substr( $talkContent, $posAbove );
-	} elseif ( $posBelow !== false ) {
-		# Insert comments below HTML marker
-		$talkContent = substr( $talkContent, 0, $posBelow + 21 ) . $commentText . substr( $talkContent, $posBelow + 21 );
-	} else {
-		# No marker found, append to bottom (default)
-		$talkContent .= $commentText;
-	}
+		# Search for insertion point, or append most recent comment.
+		$commentText = wfMsgForContent( 'article-comments-new-comment-heading', $commenterName, $commenterURL, '~~~~', $comment );
+		$commentText .= '<comment date="' . htmlspecialchars( wfTimestamp( TS_ISO_8601 ) ) . '" name="' . htmlspecialchars( $commenterName ) . '"';
+		if ( $commenterURL != '' ) {
+			$commentText .= ' url="' . htmlspecialchars( $commenterURL ) . '"';
+		}
+		if ( $wgUser->isLoggedIn() ) {
+			$commentText .= ' signature="' . htmlspecialchars( $wgParser->getUserSig( $wgUser ) ) . '"';
+		}
+		$commentText .= ">\n" . str_replace( '</comment', '&lt;/comment', $comment ) . "\n</comment>";
 
-	# Update the talkArticle with the new comment
-	$summary = wfMsgForContent( 'article-comments-summary', $commenterName );
-	$talkArticle->doEdit( $talkContent, $summary );
+		$posAbove = stripos( $talkContent, '<!--COMMENTS_ABOVE-->' );
+		if ( $posAbove === false ) {
+			$posBelow = stripos( $talkContent, '<!--COMMENTS_BELOW-->' );
+		}
+		if ( $posAbove !== false ) {
+			# Insert comments above HTML marker
+			$talkContent = substr( $talkContent, 0, $posAbove ) . $commentText . substr( $talkContent, $posAbove );
+		} elseif ( $posBelow !== false ) {
+			# Insert comments below HTML marker
+			$talkContent = substr( $talkContent, 0, $posBelow + 21 ) . $commentText . substr( $talkContent, $posBelow + 21 );
+		} else {
+			# No marker found, append to bottom (default)
+			$talkContent .= $commentText;
+		}
 
-	$wgOut->setPageTitle( wfMsg( 'article-comments-submission-succeeded' ) );
-	$wgOut->addWikiMsg( 'article-comments-submission-success', $title->getPrefixedText() );
-	$wgOut->addWikiMsg( 'article-comments-submission-view-all', $talkTitle->getPrefixedText() );
+		# Update the talkArticle with the new comment
+		$summary = wfMsgForContent( 'article-comments-summary', $commenterName );
+		$talkArticle->doEdit( $talkContent, $summary );
+
+		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-succeeded' ) );
+		$wgOut->addWikiMsg( 'article-comments-submission-success', $title->getPrefixedText() );
+		$wgOut->addWikiMsg( 'article-comments-submission-view-all', $talkTitle->getPrefixedText() );
+	}
 }
 
 /**
