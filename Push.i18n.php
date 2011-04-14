@@ -1059,6 +1059,14 @@ $messages['te'] = array(
 	'push-special-select-targets' => 'లక్ష్యిత వికీలు:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'push-special-button-text' => 'Itulak ang mga pahina',
+	'push-special-target-is' => 'Pinupukol na wiki: $1',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */
