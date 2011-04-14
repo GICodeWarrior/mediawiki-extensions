@@ -18,6 +18,8 @@ $wgExtensionCredits['specialpage'][] = array(
 
 /**
  * Entry point
+ * FIXME: this isn't actually called from anywhere?!?  The wfSpecialFoo() function method
+ * is deprecated unofficially since forever, officially sinc e1.18
  */
 function wfSpecialUploadMogile() {
 	global $wgRequest;
