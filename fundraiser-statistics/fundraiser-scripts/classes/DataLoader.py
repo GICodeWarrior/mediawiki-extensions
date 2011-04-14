@@ -117,19 +117,19 @@ class IntervalReportingLoader(DataLoader):
         end_time_obj = end_time_obj.replace(minute=int(math.floor(end_time_obj.minute / interval) * interval))            
         end_time_obj_str = TP.timestamp_from_obj(end_time_obj, 1, 3)
         
-        """ The start time for the impression portion of the query should be one second less"""
-        
-        imp_start_time_obj = start_time_obj + datetime.timedelta(seconds=-1)
-        imp_start_time_obj_str = TP.timestamp_from_obj(imp_start_time_obj, 1, 3)
         
         """ Load the SQL File & Format """
         filename = self._sql_path_+ query_name + '.sql'
         sql_stmnt = mh.read_sql(filename)
         
-        sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval, imp_start_time_obj_str])
+        sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval])
         
         """ Get Indexes into Query """
-        key_index = QD.get_banner_index(query_name)
+        if query_type == 'banner':
+            key_index = QD.get_banner_index(query_name)
+        if query_type == 'LP':
+            key_index = QD.get_landing_page_index(query_name)
+            
         metric_index = QD.get_metric_index(query_name, metric_name)
         time_index = QD.get_time_index(query_name)
         
@@ -146,7 +146,7 @@ class IntervalReportingLoader(DataLoader):
                 
                 key_name = row[key_index]
                 time_obj = TP.timestamp_to_obj(row[time_index], 1)  # format = 1, 14-digit TS 
-                 
+                
                 """ For each new dictionary index by key name start a new list if its not already there """    
                 try:
                     metrics[key_name].append(row[metric_index])
@@ -181,15 +181,14 @@ class IntervalReportingLoader(DataLoader):
             self._db_.rollback()
             sys.exit(0)
         
-
-
-        """ Ensure that the last time in the list is the endtime less the interval """
         
+
+        """ Ensure that the last time in the list is the endtime less the interval """        
         for key in times.keys():
-            if final_time[key_name] != end_time_obj_str:
+            if final_time[key] != end_time_obj_str:
                 times[key].append(end_time_obj)
                 metrics[key].append(0.0)
-            
+        
         self.close_db()
         
         """ Convert counts to float (from Decimal) to prevent exception when bar plotting
@@ -199,7 +198,7 @@ class IntervalReportingLoader(DataLoader):
             for i in range(len(metrics[key])):
                 metrics_new.append(float(metrics[key][i]))
             metrics[key] = metrics_new
-            
+        
         return [metrics, times]
     
     

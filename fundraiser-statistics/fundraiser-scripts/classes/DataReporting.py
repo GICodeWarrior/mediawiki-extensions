@@ -920,7 +920,9 @@ class IntervalReporting(DataReporting):
     """
         Execute reporting query and generate plots        
     """        
-    def gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname):
+    def gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels):
+        
+        file_format = 'png'
         
         pylab.subplot(subplot_index)
         pylab.figure(num=None,figsize=[26,14])    
@@ -932,22 +934,45 @@ class IntervalReporting(DataReporting):
             pylab.step(times[key], metrics[key], line_types[count])
             count = count + 1
         
+        """ Set the figure and font size """
+        fig_width_pt = 246.0  # Get this from LaTeX using \showthe\columnwidth
+        inches_per_pt = 1.0/72.27               # Convert pt to inch
+        golden_mean = (math.sqrt(5)-1.0)/2.0         # Aesthetic ratio
+        fig_width = fig_width_pt*inches_per_pt  # width in inches
+        fig_height = fig_width*golden_mean      # height in inches
+        fig_size =  [fig_width,fig_height]
+
+        font_size = 24
+
+        params = {'axes.labelsize': font_size,
+          'text.fontsize': font_size,
+          'xtick.labelsize': font_size,
+          'ytick.labelsize': font_size,
+          'legend.pad': 0.1,     # empty space around the legend box
+          'legend.fontsize': font_size,
+          'font.size': font_size,
+          'text.usetex': False,
+          'figure.figsize': fig_size}
+
+        pylab.rcParams.update(params)
+
         pylab.grid()
         pylab.xlim(ranges[0], ranges[1])
         pylab.ylim(ranges[2], ranges[3])
-        pylab.legend(metrics.keys(),loc=2)
+        #pylab.legend(metrics.keys(),loc=2)
+        pylab.legend(labels,loc=2)
 
         pylab.xlabel(xlabel)
         pylab.ylabel(ylabel)
 
         pylab.title(title)
-        pylab.savefig(fname, format='png')
+        pylab.savefig('./tests/' + fname + '.' + file_format, format=file_format)
 
 
     """
         Execute reporting query and generate plots        
     """        
-    def run(self, start_time, end_time, interval, query_type, metric_name, campaign):
+    def run(self, start_time, end_time, interval, query_type, metric_name, campaign, labels):
         
         print '\nGenerating ' + query_type +', start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
         
@@ -967,10 +992,10 @@ class IntervalReporting(DataReporting):
         
         xlabel = 'MINUTES'
         subplot_index = 111
-        fname = campaign + ' ' + query_type + ' ' + metric_name + '.png'
+        fname = campaign + '_' + metric_name
         
         metric_full_name = QD.get_metric_full_name(metric_name)
-        title = campaign + ':  ' + metric_full_name + ' -- ' + start_time + ' - ' + end_time
+        title = campaign + ':  ' + metric_full_name + ' -- ' + TP.timestamp_convert_format(start_time,1,2) + ' - ' + TP.timestamp_convert_format(end_time,1,2)
         ylabel = metric_full_name
         
         """ Determine List maximums """
@@ -994,6 +1019,6 @@ class IntervalReporting(DataReporting):
         ranges.append(metrics_max * 1.1)
         
         """ Generate plots given data """
-        self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname)
+        self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels)
         
 

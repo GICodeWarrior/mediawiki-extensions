@@ -26,8 +26,9 @@ import pylab
 import matplotlib
 
 import miner_help as mh
-import query_store as qs
+import QueryData as QD
 import DataLoader as DL
+import TimestampProcessor as TP
 
 matplotlib.use('Agg')
 
@@ -46,9 +47,15 @@ matplotlib.use('Agg')
 		print_metrics
 		
 """
-class ConfidenceTest(DataLoader):
+class ConfidenceTest(object):
 
-
+	_data_loader_ = None
+	
+	"""
+    """
+	def __init__(self):
+		self._data_loader_ = DL.DataLoader()
+        
 	"""
 		ConfidenceTesting :: query_tables
 	"""
@@ -58,37 +65,41 @@ class ConfidenceTest(DataLoader):
 		times = ret[0]
 		times_indices = ret[1]
 		
-		self.init_db()
-		query_obj = qs.QueryStore()
+		self._data_loader_.init_db()
 		
-		filename = './sql/' + query_name + '.sql'
+		filename = '../sql/' + query_name + '.sql'
 		sql_stmnt = mh.read_sql(filename)
 		
-		metric_index = query_obj.get_metric_index(query_name, metric_name)
+		metric_index = QD.get_metric_index(query_name, metric_name)
 		metrics_1 = []
 		metrics_2 = []
 		
 		for i in range(len(times) - 1):
 			
-			print '\nExecuting number ' + str(i) + ' batch of of data.'
+			# print '\nExecuting number ' + str(i) + ' batch of of data.'
 			t1 = times[i]
 			t2 = times[i+1]
 			
-			formatted_sql_stmnt_1 = query_obj.format_query(query_name, sql_stmnt, [t1, t2, item_1, campaign])
-			formatted_sql_stmnt_2 = query_obj.format_query(query_name, sql_stmnt, [t1, t2, item_2, campaign])
+			formatted_sql_stmnt_1 = QD.format_query(query_name, sql_stmnt, [t1, t2, item_1, campaign])
+			formatted_sql_stmnt_2 = QD.format_query(query_name, sql_stmnt, [t1, t2, item_2, campaign])
 			
 			try:
 				err_msg = formatted_sql_stmnt_1
 				
-				self.cur.execute(formatted_sql_stmnt_1)
-				results_1 = self.cur.fetchone()  # there should only be a single row
+				self._data_loader_._cur_.execute(formatted_sql_stmnt_1)
+				results_1 = self._data_loader_._cur_.fetchone()  # there should only be a single row
 				
 				err_msg = formatted_sql_stmnt_2
 				
-				self.cur.execute(formatted_sql_stmnt_2)
-				results_2 = self.cur.fetchone()  # there should only be a single row
-			except:
-				self.db.rollback()
+				self._data_loader_._cur_.execute(formatted_sql_stmnt_2)
+				results_2 = self._data_loader_._cur_.fetchone()  # there should only be a single row
+			
+			except Exception as inst:
+				print type(inst)	 # the exception instance
+				print inst.args	  # arguments stored in .args
+				print inst		   # __str__ allows args to printed directly
+					
+				self._data_loader_._db_.rollback()
 				sys.exit("Database Interface Exception:\n" + err_msg)
 			
 			metrics_1.append(results_1[metric_index])
@@ -96,8 +107,8 @@ class ConfidenceTest(DataLoader):
 		
 		#print metrics_1
 		#print metrics_2
-		
-		self.close_db()
+
+		self._data_loader_.close_db()
 		
 		# return the metric values at each time
 		return [metrics_1, metrics_2, times_indices]
@@ -183,7 +194,9 @@ class ConfidenceTest(DataLoader):
 		plot the test results with errorbars
 	"""
 	def gen_plot(self,means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname):
-		
+	
+		file_format = 'png'
+				
 		pylab.subplot(subplot_index)
 		pylab.figure(num=None,figsize=[26,14])	
 		
@@ -191,6 +204,28 @@ class ConfidenceTest(DataLoader):
 		e2 = pylab.errorbar(times_indices, means_2, yerr=std_devs_2, fmt='dr-')
 		# pylab.hist(counts, times)
 		
+		""" Set the figure and font size """
+		fig_width_pt = 246.0  # Get this from LaTeX using \showthe\columnwidth
+		inches_per_pt = 1.0/72.27               # Convert pt to inch
+		golden_mean = (math.sqrt(5)-1.0)/2.0         # Aesthetic ratio
+		fig_width = fig_width_pt*inches_per_pt  # width in inches
+		fig_height = fig_width*golden_mean      # height in inches
+		fig_size =  [fig_width,fig_height]
+		
+		font_size = 20
+		
+		params = { 'axes.labelsize': font_size,
+	      'text.fontsize': font_size,
+	      'xtick.labelsize': font_size,
+	      'ytick.labelsize': font_size,
+	      'legend.pad': 0.1,     # empty space around the legend box
+	      'legend.fontsize': font_size,
+	      'font.size': font_size,
+	      'text.usetex': False,
+	      'figure.figsize': fig_size}
+		
+		pylab.rcParams.update(params)
+	    
 		pylab.grid()
 		pylab.ylim(ranges[2], ranges[3])
 		pylab.xlim(ranges[0], ranges[1])
@@ -198,9 +233,9 @@ class ConfidenceTest(DataLoader):
 		
 		pylab.xlabel(xlabel)
 		pylab.ylabel(ylabel)
-
+		
 		pylab.title(title)
-		pylab.savefig(fname, format='png')
+		pylab.savefig(fname + '.' + file_format, format=file_format)
 		
 	
 	"""
@@ -208,10 +243,19 @@ class ConfidenceTest(DataLoader):
 		
 		Executes the confidence test - prints and plots the results 
 	"""
-	def run_test(self, test_name, query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples):
+	def run_test(self, test_name, query_name, metric_name, campaign, items, start_time, end_time, interval, num_samples):
 		
-		query_obj = qs.QueryStore()
-		
+		""" TEMPORARY - map items and labels, this should be more generalized """
+		counter = 1
+		for key in items.keys():
+			if counter == 1:
+				item_1 = items[key]
+				label_1 = key
+			elif counter == 2:
+				item_2 = items[key]
+				label_2 = key
+			counter += 1
+				
 		""" Retrieve values from database """
 		ret = self.query_tables(query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples)
 		metrics_1 = ret[0]
@@ -229,9 +273,9 @@ class ConfidenceTest(DataLoader):
 		""" plot the results """
 		xlabel = 'Hours'
 		subplot_index = 111
-		fname = test_name + '.png'
+		fname = './tests/' + campaign + '_conf_' + metric_name
 		
-		title = confidence + '\n\n' + test_name + ' -- ' + start_time + ' - ' + end_time
+		title = confidence + '\n\n' + test_name + ' -- ' + TP.timestamp_convert_format(start_time,1,2) + ' - ' + TP.timestamp_convert_format(end_time,1,2)
 		
 		max_mean = max(max(means_1),max(means_2))
 		max_sd = max(max(std_devs_1),max(std_devs_2))
@@ -241,14 +285,14 @@ class ConfidenceTest(DataLoader):
 		ranges = [0.0, max_x, 0, max_y]
 		
 		ylabel = metric_name
-		labels = [item_1, item_2]
+		labels = [label_1, label_2]
 		
 		self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
 		
 		""" Print out results """ 
 		test_call = "run_test('" + test_name + "', '" + query_name + "', '" + metric_name + "', '" + campaign + "', '" + \
 			item_1 + "', '" + item_2 + "', '" + start_time + "', '" + end_time + "', " + str(interval) + ", " + str(num_samples) + ")"
-		self.print_metrics(test_name + '.txt', title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
+		self.print_metrics(fname, title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
 		
 		return
 		
@@ -275,7 +319,6 @@ class ConfidenceTest(DataLoader):
 		
 		m_tot = 0
 		sd_tot = 0
-		
 		
 		# Compute the mean and variance for each group across all trials
 		for i in range(num_trials):
@@ -306,14 +349,14 @@ class ConfidenceTest(DataLoader):
 			means_2.append(float(m2))
 			vars_1.append(var1 / num_samples)
 			vars_2.append(var2 / num_samples)
-			
-			
+		
 		return [num_trials, means_1, means_2, vars_1, vars_2]
 
 
 	""" Print in Tabular form the means and standard deviation of each group over each interval """
 	def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call):
 		
+		filename += '.txt'
 		file = open(filename, 'w')
 		
 		""" Compute % increase and report """
@@ -531,23 +574,23 @@ class TTest(ConfidenceTest):
 			
 		select_stmnt = 'select max(p) from t_test where degrees_of_freedom = ' + str(degrees_of_freedom) + ' and t >= ' + str(t)
 		
-		self.init_db()
+		self._data_loader_.init_db()
 		
 		try:
-			self.cur.execute(select_stmnt)
-			results = self.cur.fetchone()
+			self._data_loader_._cur_.execute(select_stmnt)
+			results = self._data_loader_._cur_.fetchone()
 				
 			if results[0] != None:
 				p = float(results[0])
 			else:
 				p = .0005
 		except:
-			self.db.rollback()
-			self.db.close()
+			self._data_loader_._db_.rollback()
+			self._data_loader_._db_.close()
 			sys.exit('Could not execute: ' + select_stmnt)
 			
 		#print p 
-		self.db.close()
+		self._data_loader_._db_.close()
 		
 		conf_str =  str((1 - p) * 100) + '% confident about the winner.'
 		

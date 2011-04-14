@@ -28,7 +28,8 @@ __author__ = "Ryan Faulkner"
 __revision__ = "$Rev$"
 __date__ = "November 28th, 2010"
 
-
+import TimestampProcessor as TP
+import datetime
 
 def format_query(query_name, sql_stmnt, args):
     
@@ -117,7 +118,13 @@ def format_query(query_name, sql_stmnt, args):
         end = args[1]
         banner = args[2]
         campaign = args[3]
-        sql_stmnt = sql_stmnt % (start, end, banner, start, end, campaign, start, end, banner, start, end, campaign, banner)
+        
+        """ The start time for the impression portion of the query should be one second less"""
+        start_time_obj = TP.timestamp_to_obj(start,1)
+        imp_start_time_obj = start_time_obj + datetime.timedelta(seconds=-1)
+        imp_start_time_obj_str = TP.timestamp_from_obj(imp_start_time_obj, 1, 3)
+        
+        sql_stmnt = sql_stmnt % (imp_start_time_obj_str, end, banner, start, end, campaign, start, end, banner, start, end, campaign, banner)
     
     elif query_name == 'report_LP_confidence':
         start = args[0]
@@ -148,9 +155,13 @@ def format_query(query_name, sql_stmnt, args):
         end_time = args[1]
         campaign = args[2]
         interval = args[3]
-        imp_start_time = args[4]
         
-        sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, imp_start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, \
+        """ The start time for the impression portion of the query should be one second less"""
+        start_time_obj = TP.timestamp_to_obj(start_time,1)
+        imp_start_time_obj = start_time_obj + datetime.timedelta(seconds=-1)
+        imp_start_time_obj_str = TP.timestamp_from_obj(imp_start_time_obj, 1, 3)
+        
+        sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, imp_start_time_obj_str, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign, \
                                 '%', '%',  '%',  '%', interval, interval, start_time, end_time, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
         
     elif query_name == 'report_LP_metrics_minutely':
@@ -413,7 +424,7 @@ def get_plot_ylabel(query_name):
 def get_metric_full_name(metric_name):
     if metric_name == 'imp':
         return 'IMPRESSIONS'
-    elif metric_name == 'view':
+    elif metric_name == 'views':
         return 'VIEWS'
     elif metric_name == 'don_per_imp':
         return 'DONATIONS PER IMPRESSION'
