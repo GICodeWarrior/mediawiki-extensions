@@ -24,14 +24,14 @@ from landing_page
 
 where request_time >=  '%s' and request_time < '%s'
 and utm_campaign REGEXP '%s'
-group by 1,2) as lp
+group by 1,2,3) as lp
 
 join
 
 (select 
 DATE_FORMAT(receive_date,'%sY%sm%sd%sH') as hr,
 FLOOR(MINUTE(receive_date) / %s) * %s as dt_min,
-SUBSTRING_index(substring_index(utm_source, '.', 2),'.',1) as banner,
+SUBSTRING_index(substring_index(utm_source, '.', 2),'.',-1) as landing_page,
 count(*) as total_clicks,
 sum(not isnull(drupal.contribution_tracking.contribution_id)) as donations,
 sum(total_amount) as amount,

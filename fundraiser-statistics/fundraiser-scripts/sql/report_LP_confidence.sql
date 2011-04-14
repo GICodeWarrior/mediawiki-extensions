@@ -11,7 +11,8 @@ amount as amount,
 donations / total_clicks as completion_rate,
 donations / views as don_per_view,
 amount / views as amt_per_view,
-amount / donations  as amt_per_donation
+amount / donations  as amt_per_donation,
+amount50 / views as amt50_per_view
 
 from
 
@@ -32,11 +33,12 @@ SUBSTRING_index(substring_index(utm_source, '.', 2),'.',-1) as landing_page,
 utm_campaign,
 count(*) as total_clicks,
 sum(not isnull(contribution_tracking.contribution_id)) as donations,
-sum(converted_amount) AS amount
+sum(total_amount) AS amount,
+sum(if(total_amount > 50, 50, total_amount)) as amount50
 from
-drupal.contribution_tracking LEFT JOIN civicrm.public_reporting 
-ON (contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id)
-where ts >= '%s' and ts < '%s'
+drupal.contribution_tracking LEFT JOIN civicrm.civicrm_contribution 
+ON (contribution_tracking.contribution_id = civicrm.civicrm_contribution.id)
+where receive_date >= '%s' and receive_date < '%s'
 and utm_campaign REGEXP '%s'
 and SUBSTRING_index(substring_index(utm_source, '.', 2),'.',-1) REGEXP '%s'
 group by 1,2) as ecomm

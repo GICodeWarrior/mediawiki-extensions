@@ -24,7 +24,7 @@ FLOOR(MINUTE(on_minute) / %s) * %s as dt_min,
 utm_source, 
 sum(counts) as impressions
 from impression 
-where on_minute >  '%s' and on_minute < '%s' 
+where on_minute > '%s' and on_minute < '%s' 
 group by 1,2,3) as imp
 
 join

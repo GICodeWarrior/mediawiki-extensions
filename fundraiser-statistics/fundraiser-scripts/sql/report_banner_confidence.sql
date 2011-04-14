@@ -26,7 +26,7 @@ from
 utm_source, 
 sum(counts) as impressions
 from impression 
-where on_minute >= '%s' and on_minute < '%s' 
+where on_minute > '%s' and on_minute < '%s' 
 and utm_source REGEXP '%s'
 group by 1) as imp
 
@@ -60,13 +60,13 @@ join
 SUBSTRING_index(substring_index(utm_source, '.', 2),'.',1) as banner,
 count(*) as total_clicks,
 sum(not isnull(contribution_tracking.contribution_id)) as donations,
-sum(converted_amount) AS amount,
-sum(if(converted_amount > 50, 50, converted_amount)) as amount50,
-sum(if(converted_amount > 100, 100, converted_amount)) as amount100
+sum(total_amount) AS amount,
+sum(if(total_amount > 50, 50, total_amount)) as amount50,
+sum(if(total_amount > 100, 100, total_amount)) as amount100
 from
-drupal.contribution_tracking LEFT JOIN civicrm.public_reporting 
-ON (contribution_tracking.contribution_id = civicrm.public_reporting.contribution_id)
-where ts >= '%s' and ts < '%s'
+drupal.contribution_tracking LEFT JOIN civicrm.civicrm_contribution 
+ON (contribution_tracking.contribution_id = civicrm.civicrm_contribution.id)
+where receive_date >= '%s' and receive_date < '%s'
 and utm_campaign REGEXP '%s'
 and utm_source REGEXP '%s'
 group by 1) as ecomm
