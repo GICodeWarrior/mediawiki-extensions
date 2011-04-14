@@ -162,7 +162,7 @@ class qp_Setup {
 		$wgAutoloadClasses['qp_QuestionData'] = self::$ExtDir . '/qp_pollstore.php';
 		$wgAutoloadClasses['qp_QueryPage'] = self::$ExtDir . '/qp_results.php';
 		// TODO: Use the new technique for i18n of special page aliases
-		$wgSpecialPages['PollResults'] = array('PollResults');
+		$wgSpecialPages['PollResults'] = 'PollResults';
 		// TODO: Use the new technique for i18n of magic words
 		// instantiating fake instance for PHP < 5.2.3, which does not support 'Class::method' type of callbacks
 		$wgHooks['LanguageGetMagic'][] =

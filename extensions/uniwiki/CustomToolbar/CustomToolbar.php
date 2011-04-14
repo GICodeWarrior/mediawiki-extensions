@@ -78,12 +78,19 @@ function CustomToolbar_addAssets(&$out) {
 
 }
 
-$wgSpecialPages['CustomToolbarUpload'] = array( 'UnlistedSpecialPage', 'CustomToolbarUpload' );
+$wgSpecialPages['CustomToolbarUpload'] = 'SpecialCustomToolbarUpload';
 
-function wfSpecialCustomToolbarUpload() {
-    global $wgRequest;
-    $form = new CustomToolbarUploadForm($wgRequest);
-    $form->execute();
+class SpecialCustomToolbarUpload extends SpecialPage {
+
+	public function __construct(){
+		parent::__construct( 'CustomToolbarUpload' );
+	}
+
+	function execute() {
+		global $wgRequest;
+		$form = new CustomToolbarUploadForm($wgRequest);
+		$form->execute();
+	}
 }
 $wgHooks['UploadComplete'][] = array('CustomToolbarUploadForm::showSuccess');
 //XX TODO investigate FileUpload hook for attachment purposes

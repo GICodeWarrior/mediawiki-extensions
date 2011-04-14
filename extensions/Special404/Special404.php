@@ -27,7 +27,7 @@ $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['Special404'] = $dir . '/Special404.i18n.php';
 $wgExtensionAliasesFiles['Special404'] = $dir . '/Special404.alias.php';
 
-$wgSpecialPages['Error404'] = array( 'Special404' );
+$wgSpecialPages['Error404'] = 'Special404';
 $wgAutoloadClasses['Special404'] = $dir . '/Special404_body.php';
 
 // Enable this to force an automatic 301 Moved Permanently redirect if a matching title exists

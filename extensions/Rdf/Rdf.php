@@ -99,7 +99,7 @@ $wgHooks['ArticleSaveComplete'][] = 'MwRdfOnArticleSaveComplete';
 $wgHooks['TitleMoveComplete'][] = 'MwRdfOnTitleMoveComplete';
 $wgHooks['ArticleDeleteComplete'][] = 'MwRdfOnArticleDeleteComplete';
 
-$wgSpecialPages[] = array( 'Rdf', '', true, 'wfSpecialRdf', 'extensions/MwRdf.php' );
+$wgSpecialPages['Rdf'] = 'SpecialRdf';
 
 function setupMwRdf() {
 	global $wgRequest, $wgOut;
@@ -153,43 +153,49 @@ function MwRdfOnParserFirstCallInit( $parser ) {
 	return true;
 }
 
-function wfSpecialRdf($par) {
-	global $wgRequest, $wgRdfDefaultModels, $wgRdfOutputFunctions;
+class SpecialRdf extends SpecialPage {
+	public function __construct(){
+		parent::__construct( 'Rdf' );
+	}
 
-	$target = $wgRequest->getVal('target');
+	function execute( $par ) {
+		global $wgRequest, $wgRdfDefaultModels, $wgRdfOutputFunctions;
 
-	if (!isset($target)) { # no target parameter
-		MwRdfShowForm();
-	} else if (strlen($target) == 0) { # no target contents
-		MwRdfShowForm(wfMsg('badtitle'));
-	} else {
-		$nt = Title::newFromText($target);
-		if ($nt->getArticleID() == 0) { # not an article
+		$target = $wgRequest->getVal('target');
+
+		if (!isset($target)) { # no target parameter
+			MwRdfShowForm();
+		} else if (strlen($target) == 0) { # no target contents
 			MwRdfShowForm(wfMsg('badtitle'));
 		} else {
-			$article = new Article($nt);
+			$nt = Title::newFromText($target);
+			if ($nt->getArticleID() == 0) { # not an article
+				MwRdfShowForm(wfMsg('badtitle'));
+			} else {
+				$article = new Article($nt);
 
-			# Note: WebRequest chokes on arrays here
-			$modelnames = $_REQUEST['modelnames'];
-			if (is_null($modelnames)) {
-				$modelnames = $wgRdfDefaultModels;
+				# Note: WebRequest chokes on arrays here
+				$modelnames = $_REQUEST['modelnames'];
+				if (is_null($modelnames)) {
+					$modelnames = $wgRdfDefaultModels;
+				}
+
+				if (is_string($modelnames)) {
+					$modelnames = explode(',', $modelnames);
+				}
+
+				$format = $wgRequest->getVal('format', 'xml');
+
+				$outfun = $wgRdfOutputFunctions[$format];
+
+				if (!isset($outfun)) {
+					wfDebugDieBacktrace("No output function for format '$format'.");
+				}
+
+				$fullModel = MwRdfGetModel($article, $modelnames);
+
+				$outfun($fullModel);
 			}
-
-			if (is_string($modelnames)) {
-				$modelnames = explode(',', $modelnames);
-			}
-
-			$format = $wgRequest->getVal('format', 'xml');
-
-			$outfun = $wgRdfOutputFunctions[$format];
-
-			if (!isset($outfun)) {
-				wfDebugDieBacktrace("No output function for format '$format'.");
-			}
-
-			$fullModel = MwRdfGetModel($article, $modelnames);
-
-			$outfun($fullModel);
 		}
 	}
 }

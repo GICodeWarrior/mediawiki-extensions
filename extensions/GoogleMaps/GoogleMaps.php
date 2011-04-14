@@ -142,7 +142,7 @@ function wfGoogleMaps_Install() {
 	$wgParser->setHook( 'googlemapkml', array( $wgGoogleMaps, 'renderKmlLink' ) );
 
 	// Set up the special page
-	$wgSpecialPages['GoogleMapsKML'] = array('GoogleMapsKML', 'GoogleMapsKML');
+	$wgSpecialPages['GoogleMapsKML'] = 'GoogleMapsKML';
 }
 
 // add the install extension function
