@@ -96,6 +96,15 @@ final class Ratings {
 		return self::getAndCalcPageRatings( $page );
 	}
 	
+	/**
+	 * Gets the summary data for all ratings on the specified page.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Title $page
+	 * 
+	 * @return array
+	 */
 	protected static function getAndCalcPageRatings( Title $page ) {
 		$tags = array();
 		
@@ -128,10 +137,28 @@ final class Ratings {
 		return $tags;
 	}
 	
+	/**
+	 * Gets the ratings summary data for the specified page
+	 * by querying a table that contains the already calculated data.
+	 * Returns false when this is not available.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Title $page
+	 * 
+	 * @return array or false
+	 */	
 	protected static function getCachedPageRatings( Title $page ) {
 		return false;
 	}
 	
+	/**
+	 * Gets a list of tag names from the database.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
 	public static function getTagNames() {
 		$dbr = wfGetDb( DB_SLAVE );
 		
