@@ -22,7 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Filelist'] = $dir . 'SpecialFilelist.i18n.php';
 
-$wgSpecialPages[] = 'SpecialFilelist';
+$wgSpecialPages['Filelist'] = 'SpecialFilelist';
 
 class SpecialFilelist extends SpecialPage {
 
