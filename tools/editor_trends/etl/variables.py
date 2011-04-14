@@ -50,18 +50,11 @@ def validate_ip(address):
     return True
 
 
-def extract_revision_text(revision):
-    dump(revision)
-    if revision.text == None:
-        revision.text = fix_revision_text(revision)
-    return revision.text
-#    rev = revision.find('ns0:text')
-#    if rev != None:
-#        if rev.text == None:
-#            rev = fix_revision_text(revision)
-#        return rev.text.encode('utf-8')
-#    else:
-#        return ''
+def extract_revision_text(revision, xml_namespace):
+    rev_text = revision.find('%s%s' % (xml_namespace, 'text'))
+    if rev_text.text == None:
+        rev_text.text = fix_revision_text(revision)
+    return rev_text.text
 
 
 def parse_title(title):
@@ -158,15 +151,14 @@ def extract_contributor_id(revision, xml_namespace):
 
 def fix_revision_text(revision):
     if revision.text == None:
-        revision.text = ''
-    return revision
+        return ''
 
 
 def create_md5hash(text):
     hash = {}
     if text != None:
         m = hashlib.md5()
-        m.update(text)
+        m.update(text.encode('utf-8'))
         #echo m.digest()
         hash['hash'] = m.hexdigest()
     else:

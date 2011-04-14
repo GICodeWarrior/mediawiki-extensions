@@ -54,14 +54,13 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
         return md5hashes, size
 
     revision_id = revision.find('%s%s' % (xml_namespace, 'id'))
-    print revision_id
     revision_id = variables.extract_revision_id(revision_id)
     if revision_id == None:
         #revision_id is missing, which is weird
         return md5hashes, size
 
     article['revision_id'] = revision_id
-    text = variables.extract_revision_text(revision)
+    text = variables.extract_revision_text(revision, xml_namespace)
     article.update(contributor)
 
     comment = variables.extract_comment_text(revision_id, revision)
