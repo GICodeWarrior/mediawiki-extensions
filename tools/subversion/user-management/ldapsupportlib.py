@@ -2,10 +2,10 @@
 import os, traceback, getpass, sys
 
 try:
-        import ldap
+	import ldap
 except ImportError:
-        sys.stderr.write("Unable to import LDAP library.\n")
-        sys.exit(1)
+	sys.stderr.write("Unable to import LDAP library.\n")
+	sys.exit(1)
 
 class LDAPSupportLib:
 
