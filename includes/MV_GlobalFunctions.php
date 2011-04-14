@@ -144,10 +144,10 @@ function mvSetupExtension() {
 	/***** register special pages hooks       *****/
 	/**********************************************/
 	$wgAutoloadClasses['MV_SpecialCRUDStream'] 	= dirname( __FILE__ ) . '/specials/MV_SpecialCRUDStream.php';
-	$wgSpecialPages['Mv_Add_Stream']		   	=  array( 'MV_SpecialCRUDStream' );
+	$wgSpecialPages['Mv_Add_Stream']			= 'MV_SpecialCRUDStream';
 
 	$wgAutoloadClasses['MV_SpecialListStreams']	= dirname( __FILE__ ) . '/specials/MV_SpecialListStreams.php';
-	$wgSpecialPages['Mv_List_Streams']		   	= array( 'MV_SpecialListStreams' );
+	$wgSpecialPages['Mv_List_Streams']			= 'MV_SpecialListStreams';
 
 	/* special export views */
 	$wgAutoloadClasses['MV_SpecialExport']		= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
@@ -158,21 +158,21 @@ function mvSetupExtension() {
 	$wgAutoloadClasses['MvExportSearch']		= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
 	$wgAutoloadClasses['MvExportAsk']			= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
 
-	$wgSpecialPages['MvVideoFeed']				= array( 'MvVideoFeed' );
-	$wgSpecialPages['MvExportStream']			= array( 'MvExportStream' );
-	$wgSpecialPages['MvExportSequence']			= array( 'MvExportSequence' );
-	$wgSpecialPages['MvExportSearch']			= array( 'MvExportSearch' );
-	$wgSpecialPages['MvExportAsk']				= array( 'MvExportAsk' );
+	$wgSpecialPages['MvVideoFeed']				= 'MvVideoFeed';
+	$wgSpecialPages['MvExportStream']			= 'MvExportStream';
+	$wgSpecialPages['MvExportSequence']			= 'MvExportSequence';
+	$wgSpecialPages['MvExportSearch']			= 'MvExportSearch';
+	$wgSpecialPages['MvExportAsk']				= 'MvExportAsk';
 
 	$wgAutoloadClasses['MV_SpecialMediaSearch']	= dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php';
-	$wgSpecialPages['Mv_List_Streams']		   	= array( 'MV_SpecialListStreams' );
+	$wgSpecialPages['Mv_List_Streams']			= 'MV_SpecialListStreams';
 
 	$wgAutoloadClasses['MediaSearch'] =			 dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php';
-	$wgSpecialPages['MediaSearch']				= array( 'MediaSearch' );
-	$wgSpecialPages['MV_SpecialSearch']			= array( 'MV_SpecialSearch' );
+	$wgSpecialPages['MediaSearch']				= 'MediaSearch';
+	$wgSpecialPages['MV_SpecialSearch']			= 'MV_SpecialSearch';
 
 	$wgAutoloadClasses['MVAdmin']				= dirname( __FILE__ ) . '/specials/MV_SpecialMVAdmin.php';
-	$wgSpecialPages['MVAdmin']					= array( 'MVAdmin' );
+	$wgSpecialPages['MVAdmin']				= 'MVAdmin';
 	// require_once( dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php');
 	// require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
 	// require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
