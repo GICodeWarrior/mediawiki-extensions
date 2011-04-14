@@ -54,7 +54,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname(__FILE__);
 $wgExtensionMessagesFiles['CategoryBrowser'] = $dir . '/CategoryBrowser.i18n.php';
 $wgExtensionAliasesFiles['CategoryBrowser'] = $dir . '/CategoryBrowser.alias.php';
-$wgSpecialPages['CategoryBrowser'] = array( 'CategoryBrowserPage' );
+$wgSpecialPages['CategoryBrowser'] = 'CategoryBrowserPage';
 $wgSpecialPageGroups['CategoryBrowser'] = 'pages';
 		
 CB_Setup::init();
