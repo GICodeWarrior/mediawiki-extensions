@@ -57,7 +57,7 @@ EditConflict::startup();
 
 $wgExtensionMessagesFiles['EditConflict'] = EditConflict::$ExtDir . '/EditConflict_i18n.php';
 $wgAutoloadClasses['ec_CurrentEdits'] = EditConflict::$ExtDir . '/CurrentEdits.php';
-$wgSpecialPages['CurrentEdits'] = array( 'ec_CurrentEdits' );
+$wgSpecialPages['CurrentEdits'] = 'ec_CurrentEdits';
 
 $wgHooks['EditPageMergeChanges'][] = 'EditConflict::doEditConflict';
 $wgHooks['MakeGlobalVariablesScript'][] = 'EditConflict::jsWikiMessages';
