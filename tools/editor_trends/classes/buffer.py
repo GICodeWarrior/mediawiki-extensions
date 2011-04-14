@@ -19,6 +19,7 @@ __date__ = '2011-04-11'
 __version__ = '0.1'
 
 import sys
+import itertools
 if '..' not in sys.path:
     sys.path.append('..')
 
@@ -107,12 +108,15 @@ class CSVBuffer:
             editors.setdefault(editor_id, self.get_hash(editor_id))
 
         #now, we are going to group all editors by file_id
+        print editors
         file_ids = self.invert_dictionary(editors)
+        print file_ids
         self.revisions = {}
         for file_id, editors in file_ids.iteritems():
             for editor in editors:
                 self.revisions.setdefault(file_id, [])
                 self.revisions[file_id].extend(data[editor])
+                print file_id, data[editor]
 
     def add(self, revision):
         self.stringify(revision)
