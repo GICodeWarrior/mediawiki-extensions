@@ -167,6 +167,8 @@ def create_md5hash(text):
 
 
 def calculate_delta_article_size(size, text):
+    if text == None:
+        text = ''
     if 'prev_size' not in size:
         size['prev_size'] = 0
         size['cur_size'] = len(text)
