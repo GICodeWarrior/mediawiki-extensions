@@ -112,11 +112,10 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgParserTestFiles[] = $dir . "/strFunctionsParserTests.txt";
 $wgExtensionMessagesFiles['StringFunctions'] = $dir . 'StringFunctions.i18n.php';
+$wgExtensionMessagesFiles['StringFunctionsMagic'] = $dir . 'StringFunctions.i18n.magic.php';
 $wgAutoloadClasses['ExtStringFunctions']     = $dir . 'StringFunctions_body.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'wfStringFunctions';
-
-$wgHooks['LanguageGetMagic'][] = 'wfStringFunctionsLanguageGetMagic';
 
 $wgStringFunctionsLimitSearch  = 30;
 $wgStringFunctionsLimitReplace = 30;
@@ -132,21 +131,6 @@ function wfStringFunctions( &$parser ) {
 	$parser->setFunctionHook( 'explode', array( 'ExtStringFunctions', 'runExplode' ) );
 	$parser->setFunctionHook( 'urldecode', array( 'ExtStringFunctions', 'runUrlDecode' ) );
 
-	return true;
-}
-
-function wfStringFunctionsLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
-	switch ( $langCode ) {
-		default:
-		$magicWords['len']          = array( 0, 'len' );
-		$magicWords['pos']          = array( 0, 'pos' );
-		$magicWords['rpos']         = array( 0, 'rpos' );
-		$magicWords['sub']          = array( 0, 'sub' );
-		$magicWords['pad']          = array( 0, 'pad' );
-		$magicWords['replace']      = array( 0, 'replace' );
-		$magicWords['explode']      = array( 0, 'explode' );
-		$magicWords['urldecode']    = array( 0, 'urldecode' );
-	}
 	return true;
 }
 
