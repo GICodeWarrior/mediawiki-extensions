@@ -116,7 +116,7 @@ final class Ratings {
 			)
 		);	
 		
-		while ( $vote = $votes->fetchObject() ) {
+		foreach( $votes as $vote ) {
 			$tags[$vote->vote_prop_id]['count']++;
 			$tags[$vote->vote_prop_id]['total'] += $vote->vote_value;
 		}
