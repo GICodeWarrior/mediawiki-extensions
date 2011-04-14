@@ -1,4 +1,11 @@
 <?php
+/**
+ * Internationalization file for the CustomUserSignup extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
+
 $messages = array();
 
 /** English
