@@ -37,7 +37,7 @@ function wfAggregatorSetup() {
 	require_once 'rss_fetch.inc';
 }
 
-$wgSpecialPages[] = array( 'Aggregator', /*perm*/false, /*listed*/ true, /*function*/ false, /*file*/ false );
+$wgSpecialPages['Aggregator'] = 'SpecialAggregator';
 
 /**
  * Parser extension hook
@@ -93,7 +93,7 @@ class AggregatorOutput {
 	}
 
 	function _feedLink( $type, $mime ) {
-		$special = wfAggregatorFeedPage( $this->mName, $type );
+		$special = SpecialPage::getTitleFor( 'Aggregator', "$type/{$this->mName}" );
 		$link = Xml::element( 'link', array(
 			'rel' => 'alternate',
 			'type' => $mime,
@@ -102,40 +102,29 @@ class AggregatorOutput {
 	}
 }
 
-function wfAggregatorFeedPage( $name, $type ) {
-	return SpecialPage::getTitleFor( 'Aggregator', "$type/$name" );
-}
-
-
 /**
  * Special page management interface
  */
-function wfSpecialAggregator( $par = null ) {
-	$bits = explode( '/', $par, 2 );
-	if ( count( $bits ) < 2 ) {
-		// editor form not yet implemented
-	} else {
-		list( $type, $target ) = $bits;
-		return wfAggregatorFeed( $target, $type );
+class SpecialAggregator extends SpecialPage {
+
+	function __construct(){
+		parent::__construct( 'Aggregator' );
+	}
+
+	function execute( $par = null ) {
+		$bits = explode( '/', $par, 2 );
+		if ( count( $bits ) < 2 ) {
+			// editor form not yet implemented
+		} else {
+			list( $type, $target ) = $bits;
+			global $wgFeedClasses, $wgOut;
+			$wgOut->disable();
+
+			$aggro = new Aggregator( $target );
+			$aggro->outputFeed( $type, 10 );
+		}
 	}
 }
-
-/**
- * Spit out a re-exported feed
- */
-function wfAggregatorFeed( $target, $type ) {
-	global $wgFeedClasses, $wgOut;
-	$wgOut->disable();
-
-	$aggro = new Aggregator( $target );
-	$aggro->outputFeed( $type, 10 );
-}
-
-function wfAggregatorFeedError( $message ) {
-	wfHttpError( 400, "Bad request", $message );
-}
-
-
 
 class Aggregator {
 	public function __construct( $target ) {
@@ -177,10 +166,10 @@ class Aggregator {
 	public function outputFeed( $type, $count ) {
 		global $wgFeedClasses;
 		if ( !isset( $wgFeedClasses[$type] ) ) {
-			return wfAggregatorFeedError( "Requested feed type \"$type\" not recognized." );
+			return wfHttpError( 400, "Bad request", "Requested feed type \"$type\" not recognized." );
 		}
 
-		$special = wfAggregatorFeedPage( $this->mName, $type );
+		$special = SpecialPage::getTitleFor( 'Aggregator', "$type/{$this->mName}" );
 		$feed = new $wgFeedClasses[$type]( 'my cool feed', 'my feed rocks',
 			$special->getFullUrl() );
 
