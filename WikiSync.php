@@ -49,7 +49,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname(__FILE__);
 $wgExtensionMessagesFiles['WikiSync'] = $dir . '/WikiSync.i18n.php';
 $wgExtensionAliasesFiles['WikiSync'] = $dir . '/WikiSync.alias.php';
-$wgSpecialPages['WikiSync'] = array( 'WikiSyncPage' );
+$wgSpecialPages['WikiSync'] = 'WikiSyncPage';
 $wgSpecialPageGroups['WikiSync'] = 'pagetools';
 
 if ( !isset( $wgAutoloadClasses['FormatJson'] ) ) {
