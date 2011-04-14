@@ -80,10 +80,8 @@ $wgExtensionFunctions[] = 'wfLanguageSelectorExtension';
 
 $wgParserOutputHooks['languageselector'] = 'wfLanguageSelectorAddJavascript';
 
-# Ressource loader
 $wgResourceModules['ext.languageSelector'] = array(
 	'scripts' => 'LanguageSelector.js',
-
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'LanguageSelector'
 );
@@ -91,7 +89,6 @@ $wgResourceModules['ext.languageSelector'] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['LanguageSelector'] = $dir . 'LanguageSelector.i18n.php';
 $wgJSAutoloadClasses['LanguageSelector'] = 'extensions/LanguageSelector/LanguageSelector.js';
-$wgAutoloadClasses['StubAutoLang'] = $dir . 'StubAutoLang.php';
 
 function wfLanguageSelectorSetHook( $parser ) {
 	$parser->setHook( 'languageselector', 'wfLanguageSelectorTag' );
