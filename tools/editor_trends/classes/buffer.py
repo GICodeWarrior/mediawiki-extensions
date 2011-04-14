@@ -59,6 +59,7 @@ class CSVBuffer:
         self.process_id = process_id
         self.count_articles = 0
         self.count_revisions = 0
+        self.n = 0
         self.filehandles = [file_utils.create_txt_filehandle(self.rts.txt,
         file_id, 'a', 'utf-8') for file_id in xrange(self.rts.max_filehandles)]
         self.keys = ['revision_id', 'article_id', 'id', 'username', 'namespace',
@@ -87,53 +88,34 @@ class CSVBuffer:
             hashes[file_id].append(editor)
         return hashes
 
-    def group_revisions_by_fileid(self):
-        '''
-        This function groups observation by editor id and then by file_id, 
-        this way we have to make fewer file opening calls and should reduce
-        processing time.
-        '''
-        data = {}
-        editors = {}
-        #first, we group all revisions by editor 
-
-        for revision in self.revisions.values():
-            row = []
-            #strip away the keys and make sure that the values are always in the same sequence
-            for key in self.keys:
-                row.append(revision[key].decode('utf-8'))
-            editor_id = row[0]
-            data.setdefault(editor_id, [])
-            data[editor_id].append(row)
-            editors.setdefault(editor_id, self.get_hash(editor_id))
-
-        #now, we are going to group all editors by file_id
-        print editors
-        file_ids = self.invert_dictionary(editors)
-        print file_ids
-        self.revisions = {}
-        for file_id, editors in file_ids.iteritems():
-            for editor in editors:
-                self.revisions.setdefault(file_id, [])
-                self.revisions[file_id].extend(data[editor])
-                print file_id, data[editor]
-
     def add(self, revision):
-        self.stringify(revision)
-        id = revision['revision_id']
-        self.revisions[id] = revision
-        if len(self.revisions) > 10000:
+        revision = self.stringify(revision)
+        id = revision['id']
+        file_id = self.get_hash(id)
+        revision = self.simplify(revision)
+        self.revisions.setdefault(file_id, [])
+        self.revisions[file_id].append(revision)
+        if self.n > 10000:
             #print '%s: Emptying buffer %s - buffer size %s' % (datetime.datetime.now(), self.id, len(self.revisions))
             self.store()
+        else:
+            self.n += 1
 
+    def simplify(self, revision):
+        row = []
+        for key in self.keys:
+            row.append(value.decode('utf-8'))
+        return row
 
     def stringify(self, revision):
         for key, value in revision.iteritems():
+            value = revision[key]
             try:
                 value = str(value)
             except UnicodeEncodeError:
                 value = value.encode('utf-8')
             revision[key] = value
+        return revision
 
 
     def summary(self):
@@ -188,7 +170,7 @@ class CSVBuffer:
 
     def write_revisions(self):
         #t0 = datetime.datetime.now()
-        self.group_revisions_by_fileid()
+        #self.group_revisions_by_fileid()
         file_ids = self.revisions.keys()
         for file_id in file_ids:
             wait = True
