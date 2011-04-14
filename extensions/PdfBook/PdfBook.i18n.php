@@ -333,3 +333,11 @@ $messages['sw'] = array(
 	'pdfbook-desc' => 'Inaunda kurasa za jamii fulani katika kitabu, na kukipeleka nje kwa mtindo wa PDF',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'pdfbook-action' => 'Ilimbag bilang PDF',
+	'pdfbook-log' => 'Iniluwas ang $1 bilang isang aklat na PDF',
+);
+

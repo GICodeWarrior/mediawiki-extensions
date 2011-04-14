@@ -218,6 +218,7 @@ $messages['gl'] = array(
 	'narayam-help-page' => 'Help:Escritura',
 	'narayam-checkbox-tooltip' => 'Para activar e desactivar o método de entrada',
 	'narayam-disable-preference' => 'Desactivar o editor de método de entrada do narayam',
+	'narayam-eo' => 'Esperanto',
 	'narayam-hi-inscript' => 'InScript para hindi',
 	'narayam-kn' => 'Transliteración para kannada',
 	'narayam-kn-inscript' => 'InScript para kannada',

@@ -2214,6 +2214,7 @@ $messages['lb'] = array(
 	'blahtext-desc' => 'MathML Resultat fir &lt;math&gt; Taggen',
 	'math_CannotChangeDirectory' => 'Den Aarbechtsrepertoire kann net geännert ginn',
 	'math_CannotCreateTexFile' => 'tex-Fichier kann net ugeluecht ginn',
+	'math_CannotRunDvipng' => 'dvipng kann net gestart ginn',
 	'math_CannotWritePngDirectory' => 'Kann net an de PNG-Repertoire schreiwen',
 	'math_CannotWriteTexFile' => 'Kann net an den tex-Fichier schreiwen',
 	'math_IllegalCharacter' => 'Ongëltegt Zeechen an der Donnée',

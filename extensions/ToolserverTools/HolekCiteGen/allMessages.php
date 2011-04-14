@@ -940,6 +940,7 @@ $messages['tl'] = array(
 	'ts-citegen-Sources-title' => 'Mga pinagmumulan',
 	'ts-citegen-Sidebar-title' => 'Tagapaglikha ng pagbanggit',
 	'ts-citegen-Sidebar-add-Firefox' => 'Idagdag sa panggilid na halang',
+	'ts-citegen-Sidebar-add-Opera' => 'Idagdag sa Mainit na talaan',
 	'ts-citegen-Sidebar-add-IE-Mac' => 'Idagdag sa Panghawak ng Pahina',
 	'ts-citegen-Tools' => 'Mga kasangkapan',
 	'ts-citegen-Other-languages' => 'Iba pang mga wika',
