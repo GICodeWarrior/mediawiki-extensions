@@ -49,13 +49,14 @@ def validate_ip(address):
 
 
 def extract_revision_text(revision):
-    rev = revision.find('ns0:text')
-    if rev != None:
-        if rev.text == None:
-            rev = fix_revision_text(revision)
-        return rev.text.encode('utf-8')
-    else:
-        return ''
+    return revision.text
+#    rev = revision.find('ns0:text')
+#    if rev != None:
+#        if rev.text == None:
+#            rev = fix_revision_text(revision)
+#        return rev.text.encode('utf-8')
+#    else:
+#        return ''
 
 
 def parse_title(title):

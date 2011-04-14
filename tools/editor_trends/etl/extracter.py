@@ -18,7 +18,7 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-04-10'
 __version__ = '0.1'
 
-
+import itertools
 from collections import deque
 import sys
 import os
@@ -54,6 +54,7 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
         return md5hashes, size
 
     revision_id = revision.find('%s%s' % (xml_namespace, 'id'))
+    print revision_id
     revision_id = variables.extract_revision_id(revision_id)
     if revision_id == None:
         #revision_id is missing, which is weird
@@ -149,7 +150,7 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
                 if event is start:
                     clear = False
                 else:
-                    counts = datacompetition_parse_revision(revision, xml_namespace, bots, counts)
+                    counts = datacompetition_parse_revision(elem, xml_namespace, bots, counts)
                     clear = True
                 if clear:
                     elem.clear()
@@ -159,9 +160,6 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
                 #Reset all variables for next article
                 id = False
                 parse = False
-
-            else:
-                elem.clear()
 
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
@@ -175,6 +173,7 @@ def datacompetition_count_edits(fh, rts, process_id, file_id):
         print error
 
     filename = 'counts_kaggle_%s.csv' % file_id
+    keys = counts.keys()
     fh = file_utils.create_txt_filehandle(rts.txt, filename, 'w', 'utf-8')
     file_utils.write_dict_to_csv(counts, fh, keys)
     fh.close()
