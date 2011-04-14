@@ -1,13 +1,28 @@
 <?php
 
+/**
+ * Redirect classes to hijack the core UserLogin and CreateAccount facilities, because
+ * they're so badly written as to be impossible to extend
+ */
+class SpecialOpenIDCreateAccount extends SpecialRedirectToSpecial {
+	function __construct(){
+		parent::__construct( 'SpecialOpenIDCreateAccount', 'OpenIDLogin' );
+	}
+}
+class SpecialOpenIDUserLogin extends SpecialRedirectToSpecial {
+	function __construct(){
+		parent::__construct( 'SpecialOpenIDUserLogin', 'OpenIDLogin', false, array( 'returnto', 'returntoquery' ) );
+	}
+}
+
 class OpenIDHooks {
 	public static function onSpecialPage_initList( &$list ) {
 		global $wgOpenIDOnly, $wgOpenIDClientOnly;
 
 		if ( $wgOpenIDOnly ) {
-			$list['Userlogin'] = array( 'SpecialRedirectToSpecial', 'Userlogin', 'OpenIDLogin', false, array( 'returnto', 'returntoquery' ) );
+			$list['Userlogin'] = 'SpecialOpenIDUserLogin';
 			# Used in 1.12.x and above
-			$list['CreateAccount'] = array( 'SpecialRedirectToSpecial', 'CreateAccount', 'OpenIDLogin' );
+			$list['CreateAccount'] = 'SpecialOpenIDCreateAccount';
 		}
 
 		# Special pages are added at global scope; remove server-related ones
