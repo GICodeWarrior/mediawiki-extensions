@@ -1071,6 +1071,7 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'toolbase-header-bugs' => 'Mga sira',
+	'toolbase-replag' => 'Pagkaiwan ng tagapaghain sa pamamagitan ng $1',
 	'toolbase-replag-years' => 'mga taon',
 	'toolbase-replag-months' => 'mga buwan',
 	'toolbase-replag-weeks' => 'mga linggo',
@@ -1088,6 +1089,16 @@ $messages['tl'] = array(
 	'toolbase-navigation-autoedits' => 'Kusang pambilang ng pamamatnugot',
 	'toolbase-userid-submit' => 'Kuhanin ang ID ng tagagamit',
 	'toolbase-userid-title' => 'Maghanap ng isang ID ng tagagamit',
+	'toolbase-autoedits-title' => 'Kusang tagapagtuos ng pamamatnugot',
+	'toolbase-autoedits-submit' => 'Tuusin',
+	'toolbase-autoedits-totalall' => 'Kabuuang bilang ng pamamatnugot',
+	'toolbase-autoedits-pct' => 'Bahagdan ng awtomatikong mga pamamatnugot',
+	'toolbase-main-title' => 'Maligayang pagdating!',
+	'toolbase-main-404' => 'Hindi natagpuan ang talaksan',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => 'Hindi isang katanggap-tanggap na tagagamit si $1',
+	'toolbase-error-nowiki' => 'Hindi katanggap-tanggap na wiki ang $1.$2.org',
+	'toolbase-error-toomanyedits' => 'Si $1 ay may $2 mga pamamatnugot. Ang kasangkapang ito ay may pinakamataas na $3 ng mga pamamatnugot.',
 );
 
 /** Ukrainian (Українська)
