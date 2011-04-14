@@ -38,8 +38,9 @@ class HomeDirectoryManager:
 		self.dryRun = False
 		self.debugStatus = False
 
-		os.system('nscd -i passwd')
-		os.system('nscd -i group')
+		if (os.path.exists('/usr/sbin/nscd')):
+			os.system('nscd -i passwd')
+			os.system('nscd -i group')
 
 	def run(self):
 		parser = OptionParser(conflict_handler="resolve")
@@ -114,30 +115,34 @@ class HomeDirectoryManager:
 		alreadyCreated = []
 
 		for user in users.keys():
-			if user not in self.excludedFromCreation:
-				if os.path.exists(self.savedir + user):
-					# User's home directory already exists
-					alreadyCreated.append(user)
-					continue
-				if not os.path.exists(self.basedir + user):
-					self.log( "Creating a home directory for %s at %s%s" % (user, self.basedir, user) )
-					if not self.dryRun:
-						os.mkdir(self.basedir + user, 0700)
-						os.mkdir(self.basedir + user + '/.ssh', 0700)
-						self.writeKeys(user, users[user]['sshPublicKey'])
-						os.chmod(self.basedir + user + '/.ssh/authorized_keys', 0600)
-						for skeldir,skels in self.skelFiles.iteritems():
-							for skel in skels:
-								shutil.copy(skeldir + skel, self.basedir + user + "/")
-								os.chmod(self.basedir + user + "/" + skel, 0600)
-						newGid = users[user]['gidNumber']
-						newUid = users[user]['uidNumber']
-						os.chown(self.basedir + user, newUid, newGid)
-						for root, dirs, files in os.walk(self.basedir + user):
-							for name in files:
-								os.chown(os.path.join(root, name), newUid, newGid)
-							for name in dirs:
-								os.chown(os.path.join(root, name), newUid, newGid)
+			if user in self.excludedFromCreation:
+				continue
+
+			if os.path.exists(self.savedir + user):
+				# User's home directory already exists
+				alreadyCreated.append(user)
+				continue
+
+			if os.path.exists(self.basedir + user):
+				continue
+
+			self.log( "Creating a home directory for %s at %s%s" % (user, self.basedir, user) )
+			self.mkdir(self.basedir + user, 0700)
+			self.mkdir(self.basedir + user + '/.ssh', 0700)
+			self.writeKeys(user, users[user]['sshPublicKey'])
+			self.chmod(self.basedir + user + '/.ssh/authorized_keys', 0600)
+			for skeldir,skels in self.skelFiles.iteritems():
+				for skel in skels:
+					shutil.copy(skeldir + skel, self.basedir + user + "/")
+					self.chmod(self.basedir + user + "/" + skel, 0600)
+			newGid = users[user]['gidNumber']
+			newUid = users[user]['uidNumber']
+			self.chown(self.basedir + user, newUid, newGid)
+			for root, dirs, files in self.walk(self.basedir + user):
+				for name in files:
+					self.chown(os.path.join(root, name), newUid, newGid)
+				for name in dirs:
+					self.chown(os.path.join(root, name), newUid, newGid)
 
 		if alreadyCreated != []:
 			self.log( "The following users already have a home directory in the SAVE directory: " + ", ".join(alreadyCreated) )
@@ -169,9 +174,7 @@ class HomeDirectoryManager:
 
 	# Write a list of keys to the user's authorized_keys file
 	def writeKeys(self, user, keys):
-		f = open(self.basedir + user + '/.ssh/authorized_keys', 'w')
-		f.writelines(keys)
-		f.close()
+		self.writeFile(self.basedir + user + '/.ssh/authorized_keys', ''.join(keys))
 
 	# Moved deleted users to SAVE
 	def moveUsers(self, users):
@@ -196,57 +199,60 @@ class HomeDirectoryManager:
 						self.deleteUser(userdir)
 
 	def renameUser(self, olduserdir, newuserdir):
-		self.log( "Moving " + self.basedir + olduserdir + " to " + self.basedir + newuserdir )
-		if not self.dryRun:
-			os.rename(self.basedir + olduserdir, self.basedir + newuserdir)
+		self.rename(self.basedir + olduserdir, self.basedir + newuserdir)
 
 	def deleteUser(self, userdir):
 		# User has been deleted, move user's home directory to SAVE
 		if os.path.isdir(self.savedir + userdir):
 			self.log( userdir + " exists at both " + self.basedir + userdir + " and " + self.savedir + userdir )
 		else:
-			self.log( "Moving " + self.basedir + userdir + " to " + self.savedir + userdir )
-			if not self.dryRun:
-				os.rename(self.basedir + userdir, self.savedir + userdir)
+			self.rename(self.basedir + userdir, self.savedir + userdir)
 
 	# Changes the group ownership of a directory when a user's gid changes
 	def changeGid(self, users):
 		for userdir in os.listdir(self.basedir):
-			if os.path.isdir(self.basedir + userdir) and userdir not in self.excludedFromModification:
-				stat = os.stat(self.basedir + userdir)
-				gid = stat.st_gid
-				if userdir in users.keys() and users[userdir]["gidNumber"] != gid:
-					newGid = users[userdir]["gidNumber"]
-					self.log( "Changing group ownership of %s%s to %s; was set to %s" % (self.basedir, userdir, newGid, gid) )
-					if not self.dryRun:
-						# Python doesn't have a recursive chown, so we have to walk the directory
-						# and change everything manually
-						self.logDebug("Doing chgrp for: " + self.basedir + userdir + " with gid: " + str(gid))
-						os.chown(self.basedir + userdir, -1, newGid)
-						for root, dirs, files in os.walk(self.basedir + userdir):
-							for name in files:
-								os.chown(os.path.join(root, name), -1, newGid)
-							for name in dirs:
-								os.chown(os.path.join(root, name), -1, newGid)
+			if not os.path.isdir(self.basedir + userdir) or userdir in self.excludedFromModification:
+				continue
+
+			stat = os.stat(self.basedir + userdir)
+			gid = stat.st_gid
+			if userdir not in users.keys() or users[userdir]["gidNumber"] == gid:
+				continue
+
+			newGid = users[userdir]["gidNumber"]
+			self.log( "Changing group ownership of %s%s to %s; was set to %s" % (self.basedir, userdir, newGid, gid) )
+
+			# Python doesn't have a recursive chown, so we have to walk the directory
+			# and change everything manually
+			self.logDebug("Doing chgrp for: " + self.basedir + userdir + " with gid: " + str(gid))
+			self.chown(self.basedir + userdir, -1, newGid)
+			for root, dirs, files in os.walk(self.basedir + userdir):
+				for name in files:
+					self.chown(os.path.join(root, name), -1, newGid)
+				for name in dirs:
+					self.chown(os.path.join(root, name), -1, newGid)
 
 	# Changes the ownership of a directory when a user's uid changes
 	def changeUid(self, users):
 		for userdir in os.listdir(self.basedir):
-			if os.path.isdir(self.basedir + userdir) and userdir not in self.excludedFromModification:
-				stat = os.stat(self.basedir + userdir)
-				uid = stat.st_uid
-				if userdir in users.keys() and users[userdir]["uidNumber"] != uid:
-					newUid = users[userdir]["uidNumber"]
-					self.log( "Changing ownership of %s%s to %s; was set to %s" % (self.basedir, userdir, newUid, uid) )
-					if not self.dryRun:
-						# Python doesn't have a recursive chown, so we have to walk the directory
-						# and change everything manually
-						os.chown(self.basedir + userdir, newUid, -1)
-						for root, dirs, files in os.walk(self.basedir + userdir):
-							for name in files:
-								os.chown(os.path.join(root, name), newUid, -1)
-							for name in dirs:
-								os.chown(os.path.join(root, name), newUid, -1)
+			if not os.path.isdir(self.basedir + userdir) or userdir in self.excludedFromModification:
+				continue
+
+			stat = os.stat(self.basedir + userdir)
+			uid = stat.st_uid
+			if userdir not in users.keys() or users[userdir]["uidNumber"] == uid:
+				continue
+
+			newUid = users[userdir]["uidNumber"]
+			self.log( "Changing ownership of %s%s to %s; was set to %s" % (self.basedir, userdir, newUid, uid) )
+			# Python doesn't have a recursive chown, so we have to walk the directory
+			# and change everything manually
+			self.chown(self.basedir + userdir, newUid, -1)
+			for root, dirs, files in os.walk(self.basedir + userdir):
+				for name in files:
+					self.chown(os.path.join(root, name), newUid, -1)
+				for name in dirs:
+					self.chown(os.path.join(root, name), newUid, -1)
 
 	def log(self, logstring):
 		print datetime.datetime.now().strftime("%m/%d/%Y - %H:%M:%S - ")  + logstring
@@ -254,6 +260,38 @@ class HomeDirectoryManager:
 	def logDebug(self, logstring):
 		if self.debugStatus  == True:
 			sys.stderr.write("Debug: " + logstring + "\n")
+
+	def chown(self, path, user, group):
+		if not self.dryRun:
+			os.chown(self.basedir + userdir, -1, newGid)
+		if self.dryRun or self.debugStatus:
+			self.log('chown %s %d %d' % (path, user, group))
+	
+	def mkdir(self, path):
+		if not self.dryRun:
+			os.mkdir(path)
+		if self.dryRun or self.debugStatus:
+			self.log('mkdir %s' % (path))
+	
+	def chmod(self, path, mode):
+		if not self.dryRun:
+			os.chmod(path)
+		if self.dryRun or self.debugStatus:
+			self.log('chmod %s %o' % (path, mode))
+	
+	def writeFile(self, path, contents):
+		if not self.dryRun:
+			f = open(path, 'w')
+			f.write(contents)
+			f.close()
+		if self.dryRun or self.debugStatus:
+			self.log("\nwrite file %s:\n%s" % (path, contents))
+
+	def rename(self, oldPath, newPath):
+		if not self.dryRun:
+			os.rename(oldPath, newPath)
+		if self.dryRun or self.debugStatus:
+			self.log('rename %s %s' % (oldPath, newPath))
 
 def main():
 	homeDirectoryManager = HomeDirectoryManager()
