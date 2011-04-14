@@ -133,12 +133,12 @@ class HomeDirectoryManager:
 			self.chmod(self.basedir + user + '/.ssh/authorized_keys', 0600)
 			for skeldir,skels in self.skelFiles.iteritems():
 				for skel in skels:
-					shutil.copy(skeldir + skel, self.basedir + user + "/")
+					self.copy(skeldir + skel, self.basedir + user + "/")
 					self.chmod(self.basedir + user + "/" + skel, 0600)
 			newGid = users[user]['gidNumber']
 			newUid = users[user]['uidNumber']
 			self.chown(self.basedir + user, newUid, newGid)
-			for root, dirs, files in self.walk(self.basedir + user):
+			for root, dirs, files in os.walk(self.basedir + user):
 				for name in files:
 					self.chown(os.path.join(root, name), newUid, newGid)
 				for name in dirs:
@@ -174,7 +174,7 @@ class HomeDirectoryManager:
 
 	# Write a list of keys to the user's authorized_keys file
 	def writeKeys(self, user, keys):
-		self.writeFile(self.basedir + user + '/.ssh/authorized_keys', ''.join(keys))
+		self.writeFile(self.basedir + user + '/.ssh/authorized_keys', "\n".join(keys) + "\n")
 
 	# Moved deleted users to SAVE
 	def moveUsers(self, users):
@@ -263,19 +263,19 @@ class HomeDirectoryManager:
 
 	def chown(self, path, user, group):
 		if not self.dryRun:
-			os.chown(self.basedir + userdir, -1, newGid)
+			os.chown(path, user, group)
 		if self.dryRun or self.debugStatus:
 			self.log('chown %s %d %d' % (path, user, group))
 	
-	def mkdir(self, path):
+	def mkdir(self, path, mode):
 		if not self.dryRun:
-			os.mkdir(path)
+			os.mkdir(path, mode)
 		if self.dryRun or self.debugStatus:
-			self.log('mkdir %s' % (path))
+			self.log('mkdir %s %o' % (path, mode))
 	
 	def chmod(self, path, mode):
 		if not self.dryRun:
-			os.chmod(path)
+			os.chmod(path, mode)
 		if self.dryRun or self.debugStatus:
 			self.log('chmod %s %o' % (path, mode))
 	
@@ -285,13 +285,19 @@ class HomeDirectoryManager:
 			f.write(contents)
 			f.close()
 		if self.dryRun or self.debugStatus:
-			self.log("\nwrite file %s:\n%s" % (path, contents))
+			self.log("write file %s:\n%s" % (path, contents))
 
 	def rename(self, oldPath, newPath):
 		if not self.dryRun:
 			os.rename(oldPath, newPath)
 		if self.dryRun or self.debugStatus:
 			self.log('rename %s %s' % (oldPath, newPath))
+
+	def copy(self, srcPath, dstPath):
+		if not self.dryRun:
+			shutil.copy(srcPath, dstPath)
+		if self.dryRun or self.debugStatus:
+			self.log('copy %s %s' % (srcPath, dstPath))
 
 def main():
 	homeDirectoryManager = HomeDirectoryManager()

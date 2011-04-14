@@ -31,7 +31,7 @@ def main():
 	if len(args) != 2:
 		parser.error("add-ldap-user expects exactly two arguments.")
 	
-	dryRun = parser.options.dryRun
+	dryRun = options.dryRun
 
 	ldapSupportLib.setBindInfoByOptions(options, parser)
 
@@ -130,7 +130,7 @@ def main():
 
 		userdict = {uid: {"uidNumber": int(uidNumber), "gidNumber": int(gidNumber), "sshPublicKey": keys}}
 		hdm = homedirectorymanager.HomeDirectoryManager()
-		hdm.dryRun = self.dryRun
+		hdm.dryRun = dryRun
 		hdm.createHomeDir(userdict)
 	except ldap.UNWILLING_TO_PERFORM, msg:
 		sys.stderr.write("LDAP was unwilling to create the user. Error was: %s\n" % msg[0]["info"])
