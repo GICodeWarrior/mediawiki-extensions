@@ -37,7 +37,7 @@ class MV_SpecialSearch extends SpecialPage {
 						)
 					)
 				);
-			SpecialPage :: SpecialPage( 'Search' );
+			parent::__construct( 'Search' );
 		}
 	}
 }
