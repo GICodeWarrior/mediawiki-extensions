@@ -4,7 +4,7 @@ if(typeof(MW) == "undefined"){ MW={};}
 if(!MW.activeCampaigns){ MW.activeCampaigns ={}; }
 
 //define new active campaign
-MW.activeCampaigns[MW.activeCampaigns.length] =
+MW.activeCampaigns.ArticleSave =
 
 { 
   //Treatment name
