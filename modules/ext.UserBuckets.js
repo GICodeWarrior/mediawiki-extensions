@@ -40,13 +40,15 @@ $.setupActiveBuckets = function(){
 			
 			// recurse through the rates until we get into the range the user falls in,
 			// assign them to that range
-			var runningTotal = 0;
+			var prev_val = -1;
+			var next_val = 0;
 			for( rate in campaign.rates ){
-				runningTotal += campaign.rates[rate];
-				if(currentUser <= runningTotal){
+				next_val += campaign.rates[rate];
+				if(prev_val <= currentUser && currentUser < next_val){
 					$.setBucket(campaign.name, rate, campaign.version);
+					break;
 				}
-				break;
+				prev_val = next_val;
 			}
 		}
 		
