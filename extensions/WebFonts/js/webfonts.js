@@ -72,13 +72,26 @@
 			});
 		},
 
-		_replace: function(string1, string2) {
-			$("*").each(function() { 
-				if($(this).children().length==0) { 
-					$(this).text($(this).text().replace(string1, string2)); 
-				} 
-				//FIXME does not work on all nodes
-			});
+		_replace: function(search, replace) {
+			var search_pattern = new RegExp(search,"g");
+			return $("*").each(function(){  
+			var node = this.firstChild,  
+			  val,  
+			  new_val,  
+			  remove = [];  
+			if ( node ) {  
+			  do {  
+				if ( node.nodeType === 3 ) {  
+				  val = node.nodeValue;  
+				  new_val = val.replace(search_pattern, replace );  
+				  if ( new_val !== val ) {  
+					  node.nodeValue = new_val;  
+				  }  
+				}  
+			  } while ( node = node.nextSibling );  
+			}  
+			remove.length && $(remove).remove();  
+		  });  
 		},
 		
 		setup: function() {
@@ -145,7 +158,7 @@
 			
 			//see if there is a font in cookie
 			cookie_font = $.cookie('webfonts-font');
-			
+			console.log( "Font from cookie:", cookie_font);
 			if(cookie_font == null){
 				$.webfonts.set( config[0]);
 				//mark it as checked
@@ -158,9 +171,7 @@
 					$('#webfont-'+cookie_font).attr('checked', 'checked');
 				}
 			}
-			
 		}
-
 
 	}
 	
