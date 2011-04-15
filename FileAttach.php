@@ -112,7 +112,6 @@ class FileAttach {
 
 	/*
 	 * Change the redirection after upload to the page the file attached to
-	 * - see line 435 of SpecialUpload.php
 	 */
 	function onSpecialUploadComplete( $upload ) {
 		global $wgOut;
@@ -150,6 +149,13 @@ class FileAttach {
 
 }
 
+/**
+ * Dummy class to hack upload form to redirect back to the page the file is attached to
+ * - the redirect property of $wgOut is protected so a hack is required
+ * - I did this by temporarily replacing the $wgOut object with an instance of a dummy class
+ * - this instance puts the original instance back and changes the redirect
+ * - the upload hook and redirect are on line 434,435 of SpecialUpload.php
+ */
 class FileAttachDummyOutput {
 	function redirect( $url ) {
 		global $wgFileAttach, $wgOut;
