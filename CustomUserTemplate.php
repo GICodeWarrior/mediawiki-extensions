@@ -7,27 +7,27 @@ class CustomUserloginTemplate extends UserloginTemplate {
 	function __construct() {
 		global $wgRequest;
 		parent::__construct();
-		if( isset( $wgRequest->getVal( 'campaign' ) ) ) {
+		if( $wgRequest->getVal( 'campaign' ) ) {
 			preg_match( '/[A-Za-z0-9]+/', $wgRequest->getVal( 'campaign' ), $matches );
 			$this->campaign = $matches[0];
 		}
 	}
 
 	function msg( $str ) {
-		// doesn't exist
-		if( $this->campaign && ( wfMsg( "customusertemplate-{$this->campaign}-$str" ) == "&lt;customusertemplate-{$this->campaign}-$str&gt;" ) ) {
-			parent::msg( $str );
-		} else {
+		// exists
+		if( $this->campaign && wfMessage( "customusertemplate-{$this->campaign}-$str" )->exists() ) {
 			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str" );
+		} else {
+			parent::msg( $str );
 		}
 	}
 
 	function msgWiki( $str ) {
-		// doesn't exist
-		if( $this->campaign && ( wfMsg( "customusertemplate-{$this->campaign}-$str" ) == "&lt;customusertemplate-{$this->campaign}-$str&gt;" ) ) {
-			parent::msgWiki( $str );
-		} else {
+		// exists
+		if( $this->campaign && wfMessage( "customusertemplate-{$this->campaign}-$str" )->exists() ) {
 			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str" );
+		} else {
+			parent::msgWiki( $str );
 		}
 	}
 
@@ -48,27 +48,27 @@ class CustomUsercreateTemplate extends UsercreateTemplate {
 	function __construct() {
 		global $wgRequest;
 		parent::__construct();
-		if( isset( $wgRequest->getVal( 'campaign' ) ) ) {
+		if( $wgRequest->getVal( 'campaign' ) ) {
 			preg_match( '/[A-Za-z0-9]+/', $wgRequest->getVal( 'campaign' ), $matches );
 			$this->campaign = $matches[0];
 		}
 	}
 
 	function msg( $str ) {
-		// doesn't exist
-		if( $this->campaign && ( wfMsg( "customusertemplate-{$this->campaign}-$str" ) == "&lt;customusertemplate-{$this->campaign}-$str&gt;" ) ) {
-			parent::msg( $str );
-		} else {
+		// exists
+		if( $this->campaign && wfMessage( "customusertemplate-{$this->campaign}-$str" )->exists() ) {
 			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str" );
+		} else {
+			parent::msg( $str );
 		}
 	}
 
 	function msgWiki( $str ) {
-		// doesn't exist
-		if( $this->campaign && (wfMsg( "customusertemplate-{$this->campaign}-$str" ) == "&lt;customusertemplate-{$this->campaign}-$str&gt;" ) ) {
-			parent::msgWiki( $str );
-		} else {
+		// exists
+		if( $this->campaign && wfMessage( "customusertemplate-{$this->campaign}-$str" )->exists() ) {
 			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str" );
+		} else {
+			parent::msgWiki( $str );
 		}
 	}
 
