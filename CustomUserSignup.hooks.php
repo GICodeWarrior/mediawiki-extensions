@@ -89,5 +89,9 @@ class CustomUserSignupHooks {
 		}
 		return true;
 	}
-
+	
+		public static function beforePageDisplay( $out, $skin ) {
+			$out->addModules( 'ext.UserBuckets' );
+			return true;
+		}
 }

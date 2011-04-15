@@ -39,7 +39,9 @@ class CustomUserloginTemplate extends UserloginTemplate {
 			$wgOut->parserOptions(), true );
 		$parsedText = $parserOutput->getText();
 		if( $checkifplain &&  
-			( strlen(strip_tags($parsedText)) == (strlen($parsedText)-7) )) {
+			( strlen(strip_tags($parsedText)) == (strlen($parsedText)-7) )) { 
+				// the parser encapsulates text in <p></p> (7 chars)  If these
+				// were the only chars added to the text, then it was plaintext
 				echo htmlspecialchars( $text );
 		} else {
 			echo $parsedText;
@@ -87,6 +89,8 @@ class CustomUsercreateTemplate extends UsercreateTemplate {
 		$parsedText = $parserOutput->getText();
 		if( $checkifplain &&  
 			( strlen(strip_tags($parsedText)) == (strlen($parsedText)-7) )) {
+				// the parser encapsulates text in <p></p> (7 chars)  If these
+				// were the only chars added to the text, then it was plaintext
 				echo htmlspecialchars( $text );
 		} else {
 			echo $parsedText;

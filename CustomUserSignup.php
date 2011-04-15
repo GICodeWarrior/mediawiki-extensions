@@ -35,3 +35,21 @@ $wgExtensionMessagesFiles['CustomUserSignup'] = $dir . 'CustomUserSignup.i18n.ph
 $wgHooks['UserCreateForm'][] = 'CustomUserSignupHooks::userCreateForm';
 $wgHooks['UserLoginForm'][] = 'CustomUserSignupHooks::userCreateForm';
 $wgHooks['BeforeWelcomeCreation'][] = 'CustomUserSignupHooks::welcomeScreen';
+
+// NOTE: This hook includes JS for the account creation project
+//$wgHooks['BeforePageDisplay'][] = 'CustomUserSignupHooks::beforePageDisplay';
+
+
+// For Account Creation Project
+$cusResourceTemplate = array(
+	'localBasePath' => $dir . 'modules',
+	'remoteExtPath' => 'CustomUserSignup/modules',
+);
+$wgResourceModules['ext.AccountCreationUserBucket'] = array(
+	'scripts' => 'AccountCreationUserBucket.js',
+	'dependencies' => 'jquery.clickTracking',
+) + $cusResourceTemplate;
+$wgResourceModules['ext.UserBuckets']['dependencies'] = array_merge( 
+								  ( array ) $wgResourceModules['ext.UserBuckets']['dependencies'],
+					                array('ext.AccountCreationUserBucket'));
+
