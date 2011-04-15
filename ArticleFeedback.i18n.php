@@ -1712,6 +1712,7 @@ $messages['ku-latn'] = array(
 $messages['lb'] = array(
 	'articlefeedback' => 'Artikelaschätzung',
 	'articlefeedback-desc' => 'Artikelaschätzung Pilotversioun',
+	'articlefeedback-survey-question-origin' => 'Op wat fir enger Säit war Dir wéi Dir mat der Ëmfro ugefaang huet?',
 	'articlefeedback-survey-question-whyrated' => 'Sot eis w.e.g. firwat datt Dir dës säit bewäert hutt (klickt alles u wat zoutrëfft):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Ech wollt zur allgemenger Bewäertung vun der Säit bedroen',
 	'articlefeedback-survey-answer-whyrated-development' => "Ech hoffen datt meng Bewäertung d'Entwécklung vun der Säit positiv beaflosst",
