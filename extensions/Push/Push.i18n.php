@@ -1063,8 +1063,24 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'special-push' => 'Itulak ang mga pahina',
 	'push-special-button-text' => 'Itulak ang mga pahina',
 	'push-special-target-is' => 'Pinupukol na wiki: $1',
+	'push-special-select-targets' => 'Pinupukol na mga wiki:',
+	'push-special-item-pushing' => '$1: Itinutulak',
+	'push-special-item-completed' => '$1: Nabuo ang pagtulak',
+	'push-special-item-failed' => '$1: Nabigo ang pagtulak: $2',
+	'push-special-push-done' => 'Nabuo na ang pagtulak',
+	'push-special-err-token-failed' => 'Hindi makakuha ng isang kahalip ng pamamatnugot sa ibabaw ng pinupukol na wiki.',
+	'push-special-err-pageget-failed' => 'Hindi makuha ang katutubong nilalaman ng pahina.',
+	'push-special-err-push-failed' => 'Tinanggihan ng pinupukol na wiki ang itinulak na pahina.',
+	'push-special-inc-files' => 'Isama ang ibinaong mga talaksan',
+	'push-special-err-imginfo-failed' => 'Hindi matukoy kung may anumang mga talaksan na kailangang itulak.',
+	'push-special-obtaining-fileinfo' => '$1: Kinukuha ang kabatiran ng talaksan...',
+	'push-special-pushing-file' => '$1: Itinutulak ang talaksang $2...',
+	'push-special-return' => 'Magtulak ng marami pang mga pahina',
+	'push-api-err-nocurl' => 'Hindi naitalaga ang cURL.
+Itakda ang $egPushDirectFileUploads upang maging mali sa pangmadlang mga wiki, o italaga ang cURL para sa pribadong mga wiki',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -257,6 +257,17 @@ $messages['te'] = array(
 	'researchtools' => 'పరిశోధన పనిముట్లు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'researchtools' => 'Mga Kasangkapang Pangpananaliksik',
+	'researchtools-page-dashboard' => 'Kabitang-pisara',
+	'researchtools-page-surveys' => 'Mga Tugon sa Pagtatanung-tanong',
+	'researchtools-page-clicks' => 'Pindutin ang Pagbabakas',
+	'researchtools-page-prefs' => 'Estadistika ng Nais',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ильнар
  */

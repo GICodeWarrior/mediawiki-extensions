@@ -155,17 +155,21 @@ You can try again later',
 $messages['qqq'] = array(
 	'mwe-filesource' => '{{Identical|Source}}',
 	'mwe-imported_from' => 'Parameters:
-* $1 is The title of the resource that has been imported
-* $2 is is a URL to the site the resource was imported from.
-* $3 is The name of the site that the resource was imported from.  
-* $4 is a URL to the original resource page.',
+* $1 is the title of the resource that has been imported
+* $2 is an URL to the site the resource was imported from.
+* $3 is the name of the site that the resource was imported from.  
+* $4 is an URL to the original resource page.',
 	'mwe-import-description' => 'Parameters:
-* $1 is A link to the specific resource
-* $2 is The site that the resource was imported from',
+* $1 is a link to the specific resource
+* $2 is the site that the resource was imported from',
 	'mwe-select_file' => '{{Identical|Select file}}',
 	'mwe-upload' => '{{Identical|Upload file}}',
 	'mwe-summary' => '{{Identical|Summary}}',
-	'mwe-link-login' => '{{Identical|Login}}',
+	'mwe-error-not-loggedin-file' => 'Parameters:
+* $1 is a link to the page [[Special:Userlogin]], the anchor of which is {{msg-mw|mwe-link-login}}.',
+	'mwe-link-login' => 'This is being used as a link anchor in message {{msg-mw|mwe-error-not-loggedin-file}}.
+
+{{Identical|Login}}',
 	'mwe-upload-once-done' => '{{MediaWiki:Mwe-upload-in-new-win-link/qqq}}',
 	'mwe-upload-in-new-win-link' => "'''Lego Warning''': The following messages:
 *{{msg-mw|mwe-upload-once-done}}
@@ -193,9 +197,8 @@ appear to be combined to produce:
 * $1 is an action to log into your account
 * $2 is an action to try the request again',
 	'mwe-preview_insert_resource' => 'Parameters:
-* $1 is The title of the resource to be previewed.',
+* $1 is the title of the resource to be previewed.',
 	'mwe-am-commons-title' => '{{optional}}',
-	
 	'mwe-upload-multi' => '{{Identical|Upload file}}',
 );
 
@@ -1534,6 +1537,7 @@ Hned jak dokončíte nahrávání, $2',
  * @author Mdale
  * @author Metalhead64
  * @author Pill
+ * @author Purodha
  * @author Tbleher
  * @author The Evil IP address
  * @author ✓
@@ -1584,7 +1588,7 @@ $messages['de'] = array(
 	'mwe-uploaded-status' => 'Hochgeladen',
 	'mwe-transcoded-status' => 'Umgeschlüsselt',
 	'mwe-uploaded-time-remaining' => 'Verbleibende Zeit: $1',
-	'mwe-upload-done' => 'Dein Upload <i>sollte</i> zugänglich sein.',
+	'mwe-upload-done' => 'Deine hochgeladenen Dateien <i>sollte</i> zugänglich sein.',
 	'mwe-add_media_wizard' => 'Assistent zum Hinzufügen von Mediendateien',
 	'mwe-media_search' => 'Mediensuche',
 	'mwe-am-box_layout' => 'Boxlayout',
@@ -1642,7 +1646,7 @@ $messages['de'] = array(
 	'mwe-am-kaltura' => 'Gebündelte Suche nach frei lizenzierten Medien bei mehreren Suchprovidern mit Hilfe von Kaltura',
 	'mwe-am-this_wiki-title' => 'Dieses Wiki',
 	'mwe-am-this_wiki-desc' => 'Das lokale Wiki',
-	'mwe-am-archive_org-desc' => 'Das Internet Archive, eine digitale Bibliothek von Kulturgütern',
+	'mwe-am-archive_org-desc' => 'Das „<i lang="en">Internet Archive</i>“, eine digitale Bibliothek von Kulturgütern',
 	'mwe-am-flickr-desc' => 'Flickr.com, eine Online-Foto-Sharing-Site',
 	'mwe-am-metavid-desc' => 'Metavid.org, ein Archiv des US-Repräsentantenhauses und US-Senates bezüglich deren Aktivitäten',
 	'mwe-am-search-timeout' => 'Die Suchanfrage konnte nicht abgeschlossen werden. Der Server könnte ausgefallen oder ausgelastet sein. Du kannst es später noch einmal versuchen',
@@ -4056,6 +4060,123 @@ $messages['ksh'] = array(
 	'mwe-upload-transcoded-status' => 'Ömjesaz',
 	'mwe-upload-transcode-in-progress' => 'Et Huhlaade un Ömsäze es ungerwähß (Donn heh dat Finster nit zohmaache)',
 	
+	'mwe-upload-multi' => '{{PLURAL:$1|Ein Datei|$1 Dateie|Kein Datteije}} huhlaade',
+	'mwe-review-upload' => 'Donn de huhjelaade {{PLURAL:$1|Dattei|Datteije|nix}} nohloore',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 vun $2',
+	'mwe-upload-unknown-size' => 'Dä Datteiömfang es unbikannt',
+	'mwe-cancel-confim' => 'Wells De werklesch ophüüre?',
+	'mwe-successfulupload' => 'Huhjelaade',
+	'mwe-uploaderror' => 'Fähler beim Huhlade',
+	'mwe-uploadwarning' => 'Warnung beim Huhlade',
+	'mwe-unknown-error' => 'Ene Fähler, dä mer nit kenne:',
+	'mwe-return-to-form' => 'Jangk retuur op dat Fommulaa',
+	'mwe-file-exists-duplicate' => 'Di Dattei es dubbeld met:',
+	'mwe-fileexists' => 'En Dattei met dämm Name jidd_et ald. Beß esu joot un donn <b><tt>$1</tt></b> prööfe, wann De Der nit sescher beß, of De jät ändere wells.',
+	'mwe-fileexists-thumb' => 'Datei ald doh',
+	'mwe-ignorewarning' => '{{int:ignorewarning}}',
+	'mwe-file-thumbnail-no' => 'Dä Dattei iere Name fängk met <b><tt>$1</tt></b> aan.',
+	'mwe-go-to-resource' => 'Jank op di Sigg doh drövver',
+	'mwe-upload-misc-error' => 'Dat Huhlaade jing donevve, woröm es nit kloh.',
+	'mwe-wgfogg_warning_bad_extension' => 'Do häss_en Dattei med enem onbikannte Datteinamesengk ußjsöhk (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types"> mieh doh drövver</a>).',
+	'mwe-thumbnail-more' => 'Jrüüßer maache',
+	'mwe-filesource' => 'Quell:',
+	'mwe-filestatus' => 'Urhevverrääch:',
+	'mwe-loading-add-media-wiz' => 'Ben dat Projramm för de Medije aam laade&nbsp;…',
+	'mwe-imported_from' => '$1 es vun [$2 $3] empotteet woode. Op dä [$4 Ojinaal-Sigg] künnt mieh doh drövver ze lässe sin.',
+	'mwe-import-description' => '$1 wood empotteert uß dä Webßait $2',
+	'mwe-select_file' => 'Dattei ußsöhke',
+	'mwe-select_ownwork' => 'Esch ben bloß ming eije Werk aam huhlaade, un et darf jebruch wääde onger dä Lizänz:',
+	'mwe-upload' => 'Datei huhlaade',
+	'mwe-destfilename' => 'Dä Name för di neu Dattei:',
+	'mwe-summary' => '{{int:Summary}}',
+	'mwe-date-of-work' => 'Et Datum vun däm Wärk',
+	'mwe-error_not_loggedin' => 'Do bes nit enjelogg udder häs nit dat Rääsch för jät huhzelaade.',
+	'mwe-error-not-loggedin-file' => 'Do schingks nit enlologg ze sin udder et Projramm had ene Fähler.
+Donn $1 un et norr_ens versöhke.',
+	'mwe-link-login' => 'enlogge',
+	'mwe-watch-this-file' => 'Op heh di Dattei oppaße',
+	'mwe-ignore-any-warnings' => 'All de Warnunge övverjonn',
+	'mwe-i-would-like-to' => 'Esch möösch',
+	'mwe-upload-own-file' => 'en eije Wärk noh {{GRAMMAR:Akkusativ|$1}} huh laade',
+	'mwe-upload-not-my-file' => 'enem Andere sing Wärk noh {{GRAMMAR:Akkusativ|$1}} huh laade',
+	'mwe-upload-in-new-win-link' => 'en enem neue Finster udder enem zohsäzlejje Ongerfinster huh laade
+',
+	'mwe-upload-refresh' => 'Ding Leß met de Dateije zom Huhlaade op ene neue Shtand bränge
+',
+	'mwe-upload-in-progress' => 'Et Huhlaade es em Jang (Donn heh dat Finster nit zohmaache)',
+	'mwe-uploaded-status' => 'Huhjelaade',
+	'mwe-transcoded-status' => 'Ömjesaz',
+	'mwe-uploaded-time-remaining' => 'Noch $1.',
+	'mwe-upload-done' => 'Ding huhjelade Daate sullte jez doh sin,',
+	'mwe-add_media_wizard' => 'Der Hexemeister för Meedije dobeidonn',
+	'mwe-media_search' => 'Meedijje Söhke',
+	'mwe-am-box_layout' => 'Als ene Kaßte',
+	'mwe-am-list_layout' => 'Als en Leß',
+	'mwe-am-results_desc' => 'Eruß kohme $1 beß $2',
+	'mwe-am-results_desc_total' => 'Eruß kohme $1 beß $2 vun Schtöcker $3',
+	'mwe-am-results_next' => 'näx',
+	'mwe-am-results_prev' => 'vörijje',
+	'mwe-am-no_results' => 'Beim Söhke noh <b>$1</b> kohm nix erus',
+	'mwe-upload_tab' => 'Datei huhlaade',
+	'mwe-am-layout' => 'Forrem:',
+	'mwe-am-resource_edit' => 'Beärbeide: $1',
+	'mwe-resource_description_page' => 'Sigg, woh dat beschrevve es',
+	'mwe-link' => 'Lengk',
+	'mwe-am-do_insert' => 'Ennfööje',
+	'mwe-cc_title' => '<i lang="en">Creative Commons</i>',
+	'mwe-cc_by_title' => 'De Schriiver möße jenannt wääde',
+	'mwe-cc_nc_title' => 'Kein Jeldverdeene met zohjelohße',
+	'mwe-cc_nd_title' => 'Kein afjeleidt Werke zohjelohße',
+	'mwe-cc_sa_title' => 'Afjeleidt Werke onger desellve Bedenunge wigger jävve',
+	'mwe-cc_pd_title' => 'Allmende (jemeinfrei, <i lang="en">public domain</i>)',
+	'mwe-unknown_license' => 'En onbikannte Lizänz',
+	'mwe-results_from' => 'Wat eruß kohm bei $1',
+	'mwe-missing_desc_see_source' => 'Dat Denge hee es unbeschrevve. Loor op dä [$1 Ojinaal-Sigg] noh, un hellf met, dat mer dat beschrevve krijje.',
+	'mwe-am-config_error' => 'Dä Hexemeister för Meedije hädd_enne Fähler en singe Enshtällunge: $1',
+	'mwe-your-recent-uploads' => 'Ding huhjelaade Dateije',
+	'mwe-your-recent-uploads-to' => 'Ding beß jez noh {{GRAMMAR:Akkusativ|$1}} huhjelaade Dateije
+',
+	'mwe-no_recent_uploads' => 'Nix es köözlesch huhjelaade woode.',
+	'mwe-upload-a-file' => 'En neu Dattei huh laade',
+	'mwe-upload-a-file-to' => 'Donn en Dattei noh {{GRAMMAR:Akkusativ|$1}} huh laade.
+',
+	'mwe-resource_page_desc' => 'Beschrevve:
+',
+	'mwe-edit_resource_desc' => 'Donn dä Wiki_Kood ändere, woh dat Denge met beschrevve es:',
+	'mwe-local_resource_title' => 'Dä Tittel heh em Wiki:',
+	'mwe-watch_this_page' => 'Op di Sigg hee oppasse',
+	'mwe-do_import_resource' => 'Empotteere',
+	'mwe-update_preview' => 'De Vör_Aansesch op der neuste Shtand bränge',
+	'mwe-return-search-results' => 'Jangk retuur noh däm, wat bei em Söhke eruß kohm',
+	'mwe-importing_asset' => 'Ben aam Empotteere',
+	'mwe-preview_insert_resource' => 'Vör_Aansesch övver et Ennfööje vun „$1“',
+	'mwe-resource-needs-import' => 'De Quäll $1 moß noh $2 empotteet wääde
+',
+	'mwe-local-upload-policy-link' => 'de Rääjel, wi mer heh em Wiki jät huhläädt
+',
+	'mwe-ftype-svg' => 'Ene <i lang="en">SVG</i> Dattei met Väktoore',
+	'mwe-ftype-jpg' => 'Ene <i lang="en">JPEG</i> Dattei met enem Beld',
+	'mwe-ftype-png' => 'En <i lang="en">PNG</i> Dattei met enem Beld',
+	'mwe-ftype-oga' => 'Ene <i lang="en">OGG</i> Dattei met Tön',
+	'mwe-ftype-ogg' => 'Ene <i lang="en">Ogg</i> Dattei med enem Viddejo',
+	'mwe-ftype-unk' => 'E nit bekannt Datteifommaat',
+	'mwe-am-commons-title' => '<i lang="en">Wikimedia Commons</i>',
+	'mwe-am-commons' => '<i lang="en">Wikimedia Commons</i>, en A\'schiif met Medije för jät vun ze liehre unger freije Lizänze, met Beld-, Ton-, un Viddejo-Datteije',
+	'mwe-am-this_wiki-title' => 'Heh dat Wiki',
+	'mwe-am-this_wiki-desc' => 'Heh dat Wiki',
+	'mwe-am-archive_org-title' => '<i lang="en">Archive.org</i>',
+	'mwe-am-archive_org-desc' => 'Et „<i lang="en">Internet Archive</i>“, en dijitale Biplijoteek met kulturälle Jööder',
+	'mwe-am-flickr-title' => '<i lang="en">Flickr.com</i>',
+	'mwe-am-flickr-desc' => '<i lang="en">Flickr.com</i>, en Websigg för Fottos öffentlesch ze maache',
+	'mwe-am-metavid-title' => '<i lang="en">Metavid.org</i>',
+	'mwe-upload-transcoded-status' => 'Ömjesaz',
+	'mwe-upload-transcode-in-progress' => 'Et Huhlaade un Ömsäze es ungerwähß (Donn heh dat Finster nit zohmaache)',
 	'mwe-upload-multi' => '{{PLURAL:$1|Ein Datei|$1 Dateie|Kein Datteije}} huhlaade',
 	'mwe-review-upload' => 'Donn de huhjelaade {{PLURAL:$1|Dattei|Datteije|nix}} nohloore',
 );

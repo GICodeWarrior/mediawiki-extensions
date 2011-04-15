@@ -390,7 +390,7 @@ $messages['lv'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'mwsearch-desc' => 'MWSearch приклучок',
+	'mwsearch-desc' => 'Приклучок MWSearch',
 );
 
 /** Malayalam (മലയാളം)
