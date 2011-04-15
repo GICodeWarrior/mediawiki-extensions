@@ -2441,6 +2441,7 @@ $messages['tl'] = array(
 	'qp_results_line_qpl' => 'Pahina "$1" Botohan "$2": $3, $4, $5, $6',
 	'qp_header_line_qpul' => '$1 [ Pahina "$2" Botohan "$3" ]',
 	'qp_export_to_xls' => 'Iluwas ang estadistika sa anyong XLS',
+	'qp_voices_to_xls' => 'Iluwas ang mga tinig papaloob sa anyong XLS',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|tagagamit|mga tagagamit}} sumagot sa mga tanong',
 	'qp_func_no_such_poll' => 'Walang ganyang botohan ($1)',
 	'qp_func_missing_question_id' => 'Mangyaring tukuyin ang isang umiiral na id ng tanong (simula sa 1) para sa botohang $1',
