@@ -19,8 +19,8 @@ $wgExtensionFunctions[] = 'wfSetupFileAttach';
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'FileAttach',
 	'author'      => '[http://www.mediawiki.org/wiki/User:Milan Milan Holzapfel]',
-	'description' => 'Adds class attributes to links based on their category',
-	'url'         => 'http://www.mediawiki.org/wiki/FileAttach',
+	'description' => 'Allows files to be uploaded to the current article',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:FileAttach',
 	'version'     => FILEATTCH_VERSION
 );
 
