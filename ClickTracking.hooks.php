@@ -220,36 +220,39 @@ class ClickTrackingHooks {
 		// Add clicktracking fields to form, if given
 		$session = $wgRequest->getVal( 'clicktrackingsession' );
 		$event = $wgRequest->getVal( 'clicktrackingevent' );
+		$info = $wgRequest->getVal( 'clicktrackinginfo' );
 		if ( $session !== null && $event !== null ) {
 			$editPage->editFormTextAfterContent .= Html::hidden( 'clicktrackingsession', $session );
 			$editPage->editFormTextAfterContent .= Html::hidden( 'clicktrackingevent', $event );
+			$editPage->editFormTextAfterContent .= Html::hidden( 'clicktrackinginfo', $info );
 		}
 		
 		return true;
 	}
 	
 	public static function articleSave( $editpage ) {
-		self::trackRequest( 'save-attempt' );
+		self::trackRequest( '-save-attempt' );
 		return true;
 	}
 	
 	public static function articleSaveComplete( $article, $user, $text, $summary, $minoredit,
 			$watchthis, $sectionanchor, $flags, $revision, $baseRevId ) {
-		self::trackRequest( 'save-complete' );
+		self::trackRequest( '-save-complete' );
 		return true;
 	}
 	
-	protected static function trackRequest( $info ) {
+	protected static function trackRequest( $suffix ) {
 		global $wgRequest;
 		
 		$session = $wgRequest->getVal( 'clicktrackingsession' );
 		$event = $wgRequest->getVal( 'clicktrackingevent' );
+		$info = $wgRequest->getVal( 'clicktrackinginfo' );
 		if ( $session !== null && $event !== null ) {
 			$params = new FauxRequest( array(
 				'action' => 'clicktracking',
-				'eventid' => $event,
+				'eventid' => $event + $suffix,
 				'token' => $session,
-				'additional' => $info,
+				'info' => $info,
 			) );
 			$api = new ApiMain( $params, true );
 			$api->execute();
