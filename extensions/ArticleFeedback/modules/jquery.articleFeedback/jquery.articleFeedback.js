@@ -4,6 +4,9 @@
 
 ( function( $, mw ) {
 
+// Only track users who have been assigned to the tracking group
+var tracked = Number( $.cookie( 'ext.articleFeedback-tracking' ) );
+
 /**
  * Prefixes a key for cookies or events, with extension and version information
  * 
@@ -396,7 +399,7 @@ $.articleFeedback = {
 											prefix( 'pitch-' + key ), 'hide', { 'expires': 3 }
 										);
 										// Track that a pitch was dismissed
-										if ( typeof $.trackAction == 'function' ) {
+										if ( tracked && typeof $.trackAction == 'function' ) {
 											$.trackAction( prefix( 'pitch-' + key + '-reject' ) );
 										}
 										$pitch.fadeOut( 'fast', function() {
@@ -491,7 +494,7 @@ $.articleFeedback = {
 									.fadeIn( 'fast' );
 							context.$ui.find( '.articleFeedback-ui' ).hide();
 							// Track that a pitch was presented
-							if ( typeof $.trackAction == 'function' ) {
+							if ( tracked && typeof $.trackAction == 'function' ) {
 								$.trackAction( prefix( 'pitch-' + key + '-show' ) );
 							}
 						} else {

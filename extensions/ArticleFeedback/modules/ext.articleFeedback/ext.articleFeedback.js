@@ -4,6 +4,9 @@
 
 ( function( $, mw ) {
 
+// Only track users who have been assigned to the tracking group
+var tracked = Number( $.cookie( 'ext.articleFeedback-tracking' ) );
+
 /**
  * Prefixes a key for cookies or events, with extension and version information
  * 
@@ -37,13 +40,13 @@ function mutePitch( pitch, duration ) {
 
 function trackClick( id ) {
 	// Track the click so we can figure out how useful this is
-	if ( typeof $.trackActionWithInfo == 'function' ) {
+	if ( tracked && typeof $.trackActionWithInfo == 'function' ) {
 		$.trackActionWithInfo( prefix( id ), mediaWiki.config.get( 'wgTitle' ) )
 	}
 }
 
 function trackClickURL( url, id ) {
-	if ( typeof $.trackActionURL == 'function' ) {
+	if ( tracked && typeof $.trackActionURL == 'function' ) {
 		return $.trackActionURL( url, prefix( id ) );
 	} else {
 		return url;
