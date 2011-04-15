@@ -16,7 +16,7 @@ class CustomUserloginTemplate extends UserloginTemplate {
 	function msg( $str ) {
 		// exists
 		if( $this->campaign && wfMessage( "customusertemplate-{$this->campaign}-$str" )->exists() ) {
-			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str" );
+			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str", true );
 		} else {
 			parent::msg( $str );
 		}
@@ -25,21 +25,27 @@ class CustomUserloginTemplate extends UserloginTemplate {
 	function msgWiki( $str ) {
 		// exists
 		if( $this->campaign && wfMessage( "customusertemplate-{$this->campaign}-$str" )->exists() ) {
-			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str" );
+			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str", false );
 		} else {
 			parent::msgWiki( $str );
 		}
 	}
 
-	function msgWikiCustom( $str ) {
+	function msgWikiCustom( $str, $checkifplain ) {
 		global $wgParser, $wgOut;
 
 		$text = $this->translator->translate( $str );
 		$parserOutput = $wgParser->parse( $text, $wgOut->getTitle(),
 			$wgOut->parserOptions(), true );
-		echo $parserOutput->getText();
+		$parsedText = $parserOutput->getText();
+		if( $checkifplain &&  
+			( strlen(strip_tags($parsedText)) == (strlen($parsedText)-7) )) {
+				echo htmlspecialchars( $text );
+		} else {
+			echo $parsedText;
+		}
 	}
-
+	
 }
 
 class CustomUsercreateTemplate extends UsercreateTemplate {
@@ -57,7 +63,7 @@ class CustomUsercreateTemplate extends UsercreateTemplate {
 	function msg( $str ) {
 		// exists
 		if( $this->campaign && wfMessage( "customusertemplate-{$this->campaign}-$str" )->exists() ) {
-			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str" );
+			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str", true );
 		} else {
 			parent::msg( $str );
 		}
@@ -66,18 +72,25 @@ class CustomUsercreateTemplate extends UsercreateTemplate {
 	function msgWiki( $str ) {
 		// exists
 		if( $this->campaign && wfMessage( "customusertemplate-{$this->campaign}-$str" )->exists() ) {
-			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str" );
+			$this->msgWikiCustom( "customusertemplate-{$this->campaign}-$str", false );
 		} else {
 			parent::msgWiki( $str );
 		}
 	}
 
-	function msgWikiCustom( $str ) {
+	function msgWikiCustom( $str, $checkifplain ) {
 		global $wgParser, $wgOut;
 
 		$text = $this->translator->translate( $str );
 		$parserOutput = $wgParser->parse( $text, $wgOut->getTitle(),
 			$wgOut->parserOptions(), true );
-		echo $parserOutput->getText();
+		$parsedText = $parserOutput->getText();
+		if( $checkifplain &&  
+			( strlen(strip_tags($parsedText)) == (strlen($parsedText)-7) )) {
+				echo htmlspecialchars( $text );
+		} else {
+			echo $parsedText;
+		}
 	}
+	
 }
