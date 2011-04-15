@@ -35,6 +35,13 @@ $wgArticleFeedbackLotteryOdds = 0;
 // corrupt the data being collected. Bump this when you want to start a new "experiment".
 $wgArticleFeedbackTrackingVersion = 0;
 
+// Not all users need to be tracked, but we do want to track some users over time - this value is
+// used when deciding to track someone or not, placing them in one of two buckets: tracked and not.
+// When $wgArticleFeedbackTrackingVersion changes, users will be re-bucketed, so you should always
+// increment $wgArticleFeedbackTrackingVersion when changing this number to ensure the new odds
+// are applied to everyone, not just people who have yet to be placed in a bucket.
+$wgArticleFeedbackTrackingOdds = 100;
+
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,
