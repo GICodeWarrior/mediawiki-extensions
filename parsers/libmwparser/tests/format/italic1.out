@@ -1,7 +1,0 @@
-BEGIN ARTICLE
-    BEGIN PARAGRAPH
-        BEGIN ITALIC
-            WORD[italic]
-        END ITALIC
-    END PARAGRAPH
-END ARTICLE

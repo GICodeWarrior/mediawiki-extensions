@@ -1,2 +1,0 @@
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-0 0 9 * * php /home/tstarling/src/mediawiki/trunk/tools/invoice-generator/invoice.php
