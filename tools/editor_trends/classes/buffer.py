@@ -19,40 +19,58 @@ __date__ = '2011-04-11'
 __version__ = '0.1'
 
 import sys
+from collections import deque
 import itertools
 if '..' not in sys.path:
     sys.path.append('..')
 
 from utils import file_utils
 
-class CustomLock:
-    def __init__(self, lock, open_handles):
-        self.lock = lock
-        self.open_handles = open_handles
 
-    def available(self, handle):
-        self.lock.acquire()
-        try:
-            self.open_handles.index(handle)
-            #print 'RETRIEVED FILEHANDLE %s' % handle
-            return False
-        except (ValueError, Exception), error:
-            self.open_handles.append(handle)
-            #print 'ADDED FILEHANDLE %s' % handle
-            return True
-        finally:
-            #print 'FIles locked: %s' % len(self.open_handles)
-            self.lock.release()
+class FileHandleDistributor:
+    '''
+    Locking a file object is an expensive operation. This class is a lockless
+    lock that is very fast and still makes sure that only one process is
+    accessing a file object at a time. The logic is as follows: create a deque 
+    object with the same number of items as you have open filehandles. When a 
+    process wants to write something to a file then the FileHandleDistributor 
+    pops and id from the deque. It sees whether it has already issued this id 
+    to the calling process. If not then it returns this id and the process can 
+    use the matching file object to this id to write stuff. When finished, 
+    the process returns the id and it's inserted in the deque again. 
+    If the id has already been assigned to a process then it puts it straight 
+    back into the deque and gets the next id.
+    '''
+    def __init__(self, nr_filehandles, nr_processors):
+        self.nr_filehandles = nr_filehandles
+        self.nr_processors = nr_processors
+        self.x = [i for i in xrange(self.nr_filehandles)]
+        self.deque = deque(self.x)
+        self.tracker = {}
+        for process_id in xrange(self.nr_processors):
+            self.tracker[process_id] = {}
 
-    def release(self, handle):
-        #print 'RELEASED FILEHANDLE %s' % handle
-        self.open_handles.remove(handle)
+    def assign_filehandle(self, process_id):
+        while True:
+            fh = self.deque.popleft()
+            processed = self.tracker[process_id].get(fh)
+            if processed:
+                self.return_filehandle(fh)
+            else:
+                self.tracker[process_id][fh] = 1
+                return fh
+
+    def return_filehandle(self, fh):
+        self.deque.append(fh)
+
+    def reset_tracker(self, process_id):
+        self.tracker[process_id] = {}
 
 
 class CSVBuffer:
-    def __init__(self, process_id, rts, lock):
+    def __init__(self, process_id, rts, fhd):
         self.rts = rts
-        self.lock = lock
+        self.fhd = fhd
         self.revisions = {}
         self.comments = {}
         self.articles = {}
@@ -140,10 +158,11 @@ class CSVBuffer:
                 #row = '\t'.join([revision_id, comment]) + '\n'
                 rows.append([revision_id, comment])
             file_utils.write_list_to_csv(rows, self.fh_comments)
-            self.comments = {}
         except Exception, error:
             print '''Encountered the following error while writing comment data 
                 to %s: %s''' % (self.fh_comments, error)
+        self.comments = {}
+        self.fh_comments.flush()
 
     def write_articles(self):
         #t0 = datetime.datetime.now()
@@ -166,34 +185,33 @@ class CSVBuffer:
                 print '''Encountered the following error while writing article 
                     data to %s: %s''' % (self.fh_articles, error)
             self.articles = {}
+            self.fh_articles.flush()
         #t1 = datetime.datetime.now()
         #print '%s articles took %s' % (len(self.articles.keys()), (t1 - t0))
 
     def write_revisions(self):
         #t0 = datetime.datetime.now()
         file_ids = self.revisions.keys()
-        while len(self.revisions.keys()) != 0:
-            for file_id in file_ids:
-                #wait = True
-                for i, revision in enumerate(self.revisions[file_id]):
-                    if i == 0:
-                        #while wait:
-                            #print file_id, self.lock
-                        if self.lock.available(file_id):
-                            fh = self.filehandles[file_id]
-                                #wait = False
-                    else:
-                        break
-                    try:
-                        file_utils.write_list_to_csv(revision, fh)
-                    except Exception, error:
-                        print '''Encountered the following error while writing 
-                                revision data to %s: %s''' % (fh, error)
+        while len(file_ids) > 0:
+            fh_id = self.fhd.assign_filehandle(self.process_id)
+            revisions = self.revisions.get(fh_id, [])
+            fh = self.filehandles[fh_id]
+            for revision in revisions:
+                try:
+                    file_utils.write_list_to_csv(revision, fh)
+                except Exception, error:
+                    print '''Encountered the following error while writing 
+                            revision data to %s: %s''' % (fh, error)
+            fh.flush()
+            self.fhd.return_filehandle(fh_id)
+            try:
+                del self.revisions[fh_id]
+                file_ids.remove(fh_id)
+            except KeyError:
+                pass
 
-                self.lock.release(file_id)
-                del self.revisions[file_id]
-                #wait = True
-        print 'Buffer size: %s' % len(self.revisions.keys())
+        self.fhd.reset_tracker(self.process_id)
+
 #        t1 = datetime.datetime.now()
 #        print 'Worker %s: %s revisions took %s' % (self.process_id,
 #                                                   len([1]),
