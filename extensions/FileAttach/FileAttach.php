@@ -9,7 +9,7 @@
  * 
  */
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
-define( 'FILEATTCH_VERSION', '1.0.0, 2010-04-14' );
+define( 'FILEATTCH_VERSION', '1.0.1, 2010-04-16' );
 
 $wgAttachmentHeading = 'Attachments';
 
@@ -50,7 +50,7 @@ class FileAttach {
 		if( is_array( $sections ) && count( $sections ) > 0 ) {
 			$last = $sections[count( $sections ) - 1];
 			if( $last['level'] == 2 && $last['anchor'] == $wgAttachmentHeading ) {
-				preg_match( "|<h2>.+?$wgAttachmentHeading.+?</h2>\s*<ul>(.+?)</ul>|s", $out->mBodytext, $files );
+				preg_match( "|.+<h2>.+?$wgAttachmentHeading.+?</h2>\s*<ul>(.+?)</ul>|s", $out->mBodytext, $files );
 				preg_match_all( "|<li>\s*<a.+?>(.+?)</a>\s*</li>|", $files[1], $files );
 				$html = "\n\n<!-- files attachments rendered by Extension:FileAttach -->\n<div class=\"file-attachments\" style=\"width:85%\">\n";
 				foreach( $files[1] as $file ) {
