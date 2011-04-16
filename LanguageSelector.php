@@ -44,7 +44,7 @@ $wgLanguageSelectorDetectLanguage = LANGUAGE_SELECTOR_PREFER_CLIENT_LANG;
 
 /**
 * Languages to offer in the language selector. Per default, this includes all languages MediaWiki knows
-* about by virtue of $wgLanguageNames. A shorter list may be more usable, though.
+* about by virtue of languages/Names.php. A shorter list may be more usable, though.
 */
 $wgLanguageSelectorLanguages = null;
 
