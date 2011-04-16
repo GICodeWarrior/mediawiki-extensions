@@ -42,6 +42,7 @@ $wgAutoloadClasses['BookManagerCore'] = $dir . '/BookManager.body.php';
 $wgAutoloadClasses['BookManagerNavBar'] = $dir . '/BookManager.body.php';
 $wgAutoloadClasses['PrintVersion'] = $dir . '/BookManager.body.php';
 $wgExtensionMessagesFiles['BookManager'] = $dir . '/BookManager.i18n.php';
+$wgExtensionMessagesFiles['BookManagerMagic'] = $dir . '/BookManager.i18n.magic.php';
 $wgExtensionAliasesFiles['BookManager'] = $dir . '/BookManager.alias.php';
 $wgSpecialPages['PrintVersion'] = 'PrintVersion';
 $wgSpecialPageGroups['PrintVersion'] = 'other';
@@ -77,8 +78,6 @@ if ( $wgBookManagerVariables ) {
 $wgAutoloadClasses['BookManagerVariables'] = $dir . '/BookManager.body.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'BookManagerVariables::register';
-
-$wgHooks['LanguageGetMagic'][] = 'BookManagerVariables::LanguageGetMagic';
 
 $wgHooks['MagicWordwgVariableIDs'][] = 'BookManagerVariables::DeclareVarIds';
 
