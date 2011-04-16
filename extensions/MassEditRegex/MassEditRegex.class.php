@@ -100,7 +100,7 @@ class MassEditRegex extends SpecialPage {
 		}
 
 		$wgOut->addWikiMsg( 'masseditregextext' );
-		$titleObj = SpecialPage::getTitle( 'MassEditRegex' );
+		$titleObj = SpecialPage::getTitleFor( 'MassEditRegex' );
 
 		$wgOut->addHTML(
 			Xml::openElement('form', array(
