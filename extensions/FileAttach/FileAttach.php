@@ -86,7 +86,7 @@ class FileAttach {
 	}
 
 	/*
-	 * Note if this is the upload form so that we can modify it before page display
+	 * Note if this is the upload form or warning form so that we can modify it before page display
 	 */
 	function onUploadFormInitial( $form ) {
 		$this->uploadForm = true;
@@ -97,26 +97,28 @@ class FileAttach {
 	 * Check if the upload should attach to an article
 	 */
 	function onUploadFormBeforeProcessing( $form ) {
-		global $wgRequest, $wgAttachmentHeading, $wgHooks;
+		global $wgRequest, $wgHooks;
 		if( $attachto = $wgRequest->getText( 'attachto', '' ) ) {
-			$filename = $wgRequest->getText( 'wpDestFile' );
+			$this->uploadForm = true;
 			$title = Title::newFromText( $attachto );
-			$this->attachto = $article = new Article( $title );
-			$text = preg_replace( "|(\s+==\s*$wgAttachmentHeading\s*==)\s+|s", "$1\n*[[:File:$filename]]\n", $article->getContent(), 1, $count );
-			if( $count == 0 ) $text .= "\n\n== $wgAttachmentHeading ==\n*[[:File:$filename]]\n";
-			$article->doEdit( $text, wfMsg( 'fileattach-editcomment', $filename ), EDIT_UPDATE );
+			$this->attachto = new Article( $title );
 			$wgHooks['SpecialUploadComplete'][] = $this;
 		}
 		return true;
 	}
 
 	/*
-	 * Change the redirection after upload to the page the file attached to
+	 * Change the redirection after upload to the page the file attached to,
+	 * and attach the file to the article
 	 */
 	function onSpecialUploadComplete( $upload ) {
-		global $wgOut;
+		global $wgOut, $wgRequest, $wgAttachmentHeading;
 		$this->wgOut = $wgOut;
 		$wgOut = new FileAttachDummyOutput;
+		$filename = $wgRequest->getText( 'wpDestFile' );
+		$text = preg_replace( "|(\s+==\s*$wgAttachmentHeading\s*==)\s+|s", "$1\n*[[:File:$filename]]\n", $this->attachto->getContent(), 1, $count );
+		if( $count == 0 ) $text .= "\n\n== $wgAttachmentHeading ==\n*[[:File:$filename]]\n";
+		$this->attachto->doEdit( $text, wfMsg( 'fileattach-editcomment', $filename ), EDIT_UPDATE );
 		return true;
 	}
 
