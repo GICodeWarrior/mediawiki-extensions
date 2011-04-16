@@ -44,7 +44,7 @@ class SpecialGetFamily extends SpecialPage {
 	}
 
 	function execute() {
-		global $wgRequest, $wgLanguageNames, $wgUser, $wgOut;
+		global $wgRequest, $wgUser, $wgOut;
 		global $wgScript, $wgDBname, $wgLanguageCode, $wgSitename, $wgServer, $wgArticlePath, $wgVersion;
 
 		if( !$wgUser->isAllowed( 'getfamily' ) ){
@@ -87,7 +87,8 @@ class SpecialGetFamily extends SpecialPage {
 		} else {
 			header( 'Content-Type: text/plain' );
 
-			$langcodes = array_keys( $wgLanguageNames );
+			$langNames = Language::getLanguageNames();
+			$langcodes = array_keys( $langNames );
 
 			$dbr = wfGetDB( DB_SLAVE );
 			foreach ( $langcodes as $lang_code ) {

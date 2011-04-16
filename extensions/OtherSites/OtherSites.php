@@ -50,6 +50,7 @@ function setupOtherSites() {
 	require_once('languages/Names.php');
 
 	foreach ( array_keys( $wgOtherSites ) as $key ) {
+		/* FIXME: VERY VERY BROKEN */
 		$wgLanguageNames[$key] = $wgOtherSites[$key];
 	}
 }
