@@ -40,9 +40,9 @@ class SpecialUserOptionStats extends SpecialPage {
 
 		if ( !$par ) {
 			$opts = array();
-			$name = SpecialPage::getLocalNameFor( 'UserOptionStats' );
+			$name = SpecialPage::getTitleFor( 'UserOptionStats' )->getPrefixedText();
 			foreach ( $this->getOptions() as $k ) {
-				$opts[] = "[[Special:$name/$k|$k]]";
+				$opts[] = "[[$name/$k|$k]]";
 			}
 			$wgOut->addWikiMsg( 'uos-choose', $wgLang->commaList( $opts ) );
 			return;
