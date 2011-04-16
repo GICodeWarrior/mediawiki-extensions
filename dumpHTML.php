@@ -44,8 +44,9 @@ $profiling = false;
 if ( $profiling ) {
 	define( 'MW_CMDLINE_CALLBACK', 'wfSetupDump' );
 	function wfSetupDump() {
-		global $wgProfiling, $wgProfileToDatabase, $wgProfileSampleRate;
-		$wgProfiling = true;
+		global $wgProfileToDatabase, $wgProfileSampleRate;
+		// Override disabled profiling in maintenance scripts
+		Profiler::setInstance( new Profiler() );
 		$wgProfileToDatabase = false;
 		$wgProfileSampleRate = 1;
 	}
@@ -171,7 +172,7 @@ if ( isset( $options['debug'] ) ) {
 }
 
 if ( $profiling ) {
-	echo $wgProfiler->getOutput();
+	echo Profiler::instance()->getOutput();
 }
 
 
