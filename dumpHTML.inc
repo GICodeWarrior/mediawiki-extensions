@@ -3,10 +3,11 @@
  * @file
  * @ingroup Maintenance
  */
-
-define( 'REPORTING_INTERVAL', 10 );
-
 class DumpHTML {
+
+	# How often to report something to the user
+	const REPORTING_INTERVAL = 10;
+
 	# Destination directory
 	var $dest;
 
@@ -193,11 +194,11 @@ class DumpHTML {
 
 		for ( $id = $start, $i = 0; $id <= $end; $id += $this->sliceDenominator, $i++ ) {
 			wfWaitForSlaves( 20 );
-			if ( !( $i % REPORTING_INTERVAL) ) {
+			if ( !( $i % self::REPORTING_INTERVAL) ) {
 				print "Processing ID: $id\r";
 				$this->setCheckpoint( 'article', $id );
 			}
-			if ( !($i % (REPORTING_INTERVAL*10) ) ) {
+			if ( !($i % (self::REPORTING_INTERVAL*10) ) ) {
 				print "\n";
 			}
 			$title = Title::newFromID( $id );
@@ -293,7 +294,7 @@ class DumpHTML {
 				}
 
 				wfWaitForSlaves( 10 );
-				if ( !( ++$i % REPORTING_INTERVAL ) ) {
+				if ( !( ++$i % self::REPORTING_INTERVAL ) ) {
 					print "{$row->img_name}\n";
 					if ( $row->img_name !== 'done' ) {
 						$this->setCheckpoint( 'local image', $row->img_name );
@@ -343,7 +344,7 @@ class DumpHTML {
 					if ( $file[0] == '.' ) {
 						continue;
 					}
-					if ( !(++$i % REPORTING_INTERVAL ) ) {
+					if ( !(++$i % self::REPORTING_INTERVAL ) ) {
 						print "$rel $i\r";
 					}
 
@@ -398,7 +399,7 @@ class DumpHTML {
 				}
 
 				wfWaitForSlaves( 10 );
-				if ( !(++$i % REPORTING_INTERVAL ) ) {
+				if ( !(++$i % self::REPORTING_INTERVAL ) ) {
 					print "{$row->cl_to}\n";
 					if ( $row->cl_to != 'done' ) {
 						$this->setCheckpoint( 'category', $row->cl_to );
@@ -451,7 +452,7 @@ class DumpHTML {
 			
 			while ( $row = $dbr->fetchObject( $res ) ) {
 				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-				if ( !(++$i % (REPORTING_INTERVAL*10) ) ) {
+				if ( !(++$i % (self::REPORTING_INTERVAL*10) ) ) {
 					printf( "Done %d redirects (%2.3f%%)\n", $i, $row->page_id / $end * 100 );
 					$this->setCheckpoint( 'redirect', $row->page_id );
 				}
