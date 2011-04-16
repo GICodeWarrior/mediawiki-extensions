@@ -18,13 +18,12 @@ __author__email = 'dvanliere at gmail dot com'
 __date__ = '2011-04-10'
 __version__ = '0.1'
 
-import itertools
 from collections import deque
 import sys
 import os
 from datetime import datetime
 from xml.etree.cElementTree import iterparse, dump
-from multiprocessing import JoinableQueue, Process, cpu_count, RLock, Manager
+from multiprocessing import JoinableQueue, Process, cpu_count, Lock, Manager
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -105,78 +104,78 @@ def datacompetition_parse_revision(revision, xml_namespace, bots, counts):
         return counts
 
 
-def datacompetition_count_edits(fh, rts, process_id, file_id):
-    '''
-    This function counts for every editor the total number of edits that person
-    made. It follows the same logic as the parse_xml function although it
-    skips a bunch of extraction phases that are not relevant for counting 
-    edits. This function is only to be used to create the prediction dataset 
-    for the datacompetition.
-    '''
-    bots = bot_detector.retrieve_bots(rts.storage, rts.language.code)
-    include_ns = {}
-
-    start = 'start'; end = 'end'
-    context = iterparse(fh, events=(start, end))
-    context = iter(context)
-
-    counts = {}
-    id = False
-    ns = False
-    parse = False
-    count_articles = 0
-
-    try:
-        for event, elem in context:
-            if event is end and elem.tag.endswith('siteinfo'):
-                xml_namespace = variables.determine_xml_namespace(elem)
-                namespaces = variables.create_namespace_dict(elem, xml_namespace)
-                ns = True
-                elem.clear()
-
-            elif event is end and elem.tag.endswith('title'):
-                title = variables.parse_title(elem)
-                current_namespace = variables.determine_namespace(title, namespaces, include_ns)
-                if isinstance(current_namespace, int):
-                    parse = True
-                    count_articles += 1
-                    if count_articles % 10000 == 0:
-                        print 'Worker %s parsed %s articles' % (process_id, count_articles)
-
-                elem.clear()
-
-            elif elem.tag.endswith('revision') and parse == True:
-                if event is start:
-                    clear = False
-                else:
-                    counts = datacompetition_parse_revision(elem, xml_namespace, bots, counts)
-                    clear = True
-                if clear:
-                    elem.clear()
-
-            elif event is end and elem.tag.endswith('page'):
-                elem.clear()
-                #Reset all variables for next article
-                id = False
-                parse = False
-
-    except SyntaxError, error:
-        print 'Encountered invalid XML tag. Error message: %s' % error
-        dump(elem)
-        sys.exit(-1)
-    except IOError, error:
-        print '''Archive file is possibly corrupted. Please delete this archive 
-            and retry downloading. Error message: %s''' % error
-        sys.exit(-1)
-    except Exception, error:
-        print error
-
-    filename = 'counts_kaggle_%s.csv' % file_id
-    keys = counts.keys()
-    fh = file_utils.create_txt_filehandle(rts.txt, filename, 'w', 'utf-8')
-    file_utils.write_dict_to_csv(counts, fh, keys)
-    fh.close()
-    counts = {}
+#def datacompetition_count_edits(fh, rts, process_id, file_id):
+#    '''
+#    This function counts for every editor the total number of edits that person
+#    made. It follows the same logic as the parse_xml function although it
+#    skips a bunch of extraction phases that are not relevant for counting 
+#    edits. This function is only to be used to create the prediction dataset 
+#    for the datacompetition.
+#    '''
+#    bots = bot_detector.retrieve_bots(rts.storage, rts.language.code)
+#    include_ns = {}
+#
+#    start = 'start'; end = 'end'
+#    context = iterparse(fh, events=(start, end))
+#    context = iter(context)
+#
+#    counts = {}
+#    id = False
+#    ns = False
+#    parse = False
+#    count_articles = 0
+#
+#    try:
+#        for event, elem in context:
+#            if event is end and elem.tag.endswith('siteinfo'):
+#                xml_namespace = variables.determine_xml_namespace(elem)
+#                namespaces = variables.create_namespace_dict(elem, xml_namespace)
+#                ns = True
+#                elem.clear()
+#
+#            elif event is end and elem.tag.endswith('title'):
+#                title = variables.parse_title(elem)
+#                current_namespace = variables.determine_namespace(title, namespaces, include_ns)
+#                if isinstance(current_namespace, int):
+#                    parse = True
+#                    count_articles += 1
+#                    if count_articles % 10000 == 0:
+#                        print 'Worker %s parsed %s articles' % (process_id, count_articles)
+#
+#                elem.clear()
+#
+#            elif elem.tag.endswith('revision') and parse == True:
+#                if event is start:
+#                    clear = False
+#                else:
+#                    counts = datacompetition_parse_revision(elem, xml_namespace, bots, counts)
+#                    clear = True
+#                if clear:
+#                    elem.clear()
+#
+#            elif event is end and elem.tag.endswith('page'):
+#                elem.clear()
+#                #Reset all variables for next article
+#                id = False
+#                parse = False
+#
+#    except SyntaxError, error:
+#        print 'Encountered invalid XML tag. Error message: %s' % error
+#        dump(elem)
+#        sys.exit(-1)
+#    except IOError, error:
+#        print '''Archive file is possibly corrupted. Please delete this archive 
+#            and retry downloading. Error message: %s''' % error
+#        sys.exit(-1)
+#    except Exception, error:
+#        print error
+#
+#    filename = 'counts_kaggle_%s.csv' % file_id
+#    keys = counts.keys()
+#    fh = file_utils.create_txt_filehandle(rts.txt, filename, 'w', 'utf-8')
+#    file_utils.write_dict_to_csv(counts, fh, keys)
+#    fh.close()
+#    counts = {}
 
 
 def parse_xml(fh, rts, cache, process_id, file_id):
@@ -210,7 +209,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 article['title'] = title
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
                 title_meta = variables.parse_title_meta_data(title, current_namespace)
-                if isinstance(current_namespace, int):
+                if current_namespace < 6:
                     parse = True
                     article['namespace'] = current_namespace
                     cache.count_articles += 1
@@ -257,11 +256,11 @@ def parse_xml(fh, rts, cache, process_id, file_id):
     print 'Finished parsing Wikipedia dump file.'
 
 
-def stream_raw_xml(input_queue, process_id, lock, rts):
+def stream_raw_xml(input_queue, process_id, fhd, rts):
     t0 = datetime.now()
     file_id = 0
     if not rts.kaggle:
-        cache = buffer.CSVBuffer(process_id, rts, lock)
+        cache = buffer.CSVBuffer(process_id, rts, fhd)
 
     while True:
         filename = input_queue.get()
@@ -296,21 +295,16 @@ def debug():
 
 
 def launcher(rts):
-    lock = RLock()
-    mgr = Manager()
-    open_handles = []
-    open_handles = mgr.list(open_handles)
-    clock = buffer.CustomLock(lock, open_handles)
     input_queue = JoinableQueue()
 
     files = file_utils.retrieve_file_list(rts.input_location)
 
-    if rts.kaggle:
-        processors = 4
-    elif len(files) > cpu_count():
-        processors = cpu_count() - 1
+    if len(files) > cpu_count():
+        processors = cpu_count()
     else:
         processors = len(files)
+
+    fhd = buffer.FileHandleDistributor(rts.max_filehandles, processors)
 
     for filename in files:
         filename = os.path.join(rts.input_location, filename)
@@ -322,7 +316,7 @@ def launcher(rts):
         input_queue.put(None)
 
     extracters = [Process(target=stream_raw_xml, args=[input_queue, process_id,
-                                                       clock, rts])
+                                                       fhd, rts])
                   for process_id in xrange(processors)]
     for extracter in extracters:
         extracter.start()

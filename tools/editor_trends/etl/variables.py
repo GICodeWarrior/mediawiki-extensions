@@ -72,11 +72,10 @@ def parse_title_meta_data(title, namespace):
         return title_meta
 
     title_meta['title'] = title
-    ns = namespace['namespace']
-    title_meta['ns'] = ns
+    title_meta['ns'] = namespace
     if title.startswith('List of'):
         title_meta['category'] = 'List'
-    elif ns == 4 or ns == 5:
+    elif namespace == 4 or namespace == 5:
         if title.find('Articles for deletion') > -1:
             title_meta['category'] = 'Deletion'
         elif title.find('Mediation Committee') > -1:
@@ -200,22 +199,18 @@ def determine_namespace(title, namespaces, include_ns):
     You can only determine whether an article belongs to the Main Namespace
     by ruling out that it does not belong to any other namepace
     '''
-    ns = {}
     if title != None:
         for key in include_ns:
-            namespace = namespaces.pop(key, None)
+            namespace = namespaces.get(key, None)
             if namespace and title.startswith(namespace):
-                ns['namespace'] = key
-        if ns == {}:
-            for namespace in namespaces.itervalues():
-                if namespace and title.startswith(namespace):
-                    '''article does not belong to any of the include_ns
-                    namespaces'''
-                    return False
-            ns = 0
+                return key
+        for key, namespace in namespaces.iteritems():
+            if namespace and title.startswith(namespace):
+                '''article does not belong to any of the include_ns namespaces'''
+                return key
+        return 0
     else:
-        ns = False
-    return ns
+        return 999
 
 
 def is_revision_reverted(hash_cur, hashes):
