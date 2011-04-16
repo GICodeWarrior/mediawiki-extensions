@@ -173,27 +173,7 @@ class BookManagerVariables extends BookManagerCore {
 		$aCustomVariableIds[] = 'chapternamee';
 		return true;
 	}
-	# Function to declare magicwords
-	static function LanguageGetMagic( &$magicWords, $langCode = "en" ) {
-		# PREVPAGENAME
-		$magicWords['prevpagename'] = array ( 0, 'PREVPAGENAME' );
-		# PREVPAGENAME
-		$magicWords['prevpagenamee'] = array ( 0, 'PREVPAGENAMEE' );
-		# NEXTPAGENAME
-		$magicWords['nextpagename'] = array ( 0, 'NEXTPAGENAME' );
-		# NEXTPAGENAMEE
-		$magicWords['nextpagenamee'] = array ( 0, 'NEXTPAGENAMEE' );
-		# ROOTPAGENAME
-		$magicWords['rootpagename'] = array ( 0, 'ROOTPAGENAME' , 'BOOKNAME' );
-		# ROOTPAGENAMEE
-		$magicWords['rootpagenamee'] = array ( 0, 'ROOTPAGENAMEE' , 'BOOKNAMEE' );
-		# CHAPTERNAME
-		$magicWords['chaptername'] = array ( 0, 'CHAPTERNAME' );
-		# CHAPTERNAMEE
-		$magicWords['chapternamee'] = array ( 0, 'CHAPTERNAMEE' );
 
-		return true;
-	}
 	# Values functions
 	static function prevpagename( &$parser, $text = null ) {
 		$t = self::pageText( $parser, $text, - 1 );
