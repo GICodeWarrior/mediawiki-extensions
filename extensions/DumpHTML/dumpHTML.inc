@@ -1144,12 +1144,12 @@ ENDTEXT;
 			$this->udpProfileCounter = 0;
 		} elseif ( $this->udpProfileCounter == 1 % $this->udpProfile ) {
 			wfProfileOut( '-total' );
-			$wgProfiler->getFunctionReport();
-			$wgProfiler = new DumpHTML_ProfilerStub;
+			Profiler::instance()->getFunctionReport();
+			Profiler::setInstance( new DumpHTML_ProfilerStub );
 		}
 		if ( $this->udpProfileCounter == 0 ) {
-			$wgProfiler = new ProfilerSimpleUDP;
-			$wgProfiler->setProfileID( 'dumpHTML' );
+			Profiler::setInstance( new ProfilerSimpleUDP );
+			Profiler::instance()->setProfileID( 'dumpHTML' );
 			$wgRequestTime = microtime( true );
 			$wgRUstart = getrusage();
 			wfProfileIn( '-total' );
@@ -1172,7 +1172,7 @@ ENDTEXT;
 	}
 }
 
-class DumpHTML_ProfilerStub {
+class DumpHTML_ProfilerStub extends Profiler {
 	function profileIn() {}
 	function profileOut() {}
 	function getOutput() {}
