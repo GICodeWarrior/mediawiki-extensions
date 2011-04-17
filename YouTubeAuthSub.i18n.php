@@ -67,21 +67,6 @@ $messages['ady-cyrl'] = array(
 	'youtubeauthsub_title' => 'Тхылъышъхьэ',
 );
 
-/** Angika (अंगिका)
- * @author Angpradesh
- */
-$messages['anp'] = array(
-	'youtubeauthsub' => 'यूट्यूब व्हीडियो अपलोड करॊ',
-	'youtubeauthsub-desc' => 'सदस्य सीनी कॆ [[Special:YouTubeAuthSub|व्हीडियो अपलोड]] यूट्यूब पर सोझे अनुमति',
-	'youtubeauthsub_info' => 'यूट्यूब पर वीडियो अपलोड करी कॆ पन्ना पर जोरै लेली, निम्नांकित जानकारी भरॊ :',
-	'youtubeauthsub_title' => ')शीर्षक',
-	'youtubeauthsub_description' => ')ज़ानकारी',
-	'youtubeauthsub_password' => 'यूट्यूब पासवर्ड',
-	'youtubeauthsub_keywords' => 'शोधशब्द',
-	'youtubeauthsub_category' => 'श्रेणी',
-	'youtubeauthsub_submit' => 'भेजॊ',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard
@@ -200,6 +185,21 @@ Bidde þole.',
 	'youtubeauthsub_jserror_nokeywords' => 'Bidde ƿrīt 1 oþþe mā cǣȝƿord.',
 	'youtubeauthsub_jserror_notitle' => 'Bidde ƿrīt nama for þǣre scēaƿe.',
 	'youtubeauthsub_jserror_nodesc' => 'Bidde ƿrīt mearcunge for þǣre scēaƿe.',
+);
+
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$messages['anp'] = array(
+	'youtubeauthsub' => 'यूट्यूब व्हीडियो अपलोड करॊ',
+	'youtubeauthsub-desc' => 'सदस्य सीनी कॆ [[Special:YouTubeAuthSub|व्हीडियो अपलोड]] यूट्यूब पर सोझे अनुमति',
+	'youtubeauthsub_info' => 'यूट्यूब पर वीडियो अपलोड करी कॆ पन्ना पर जोरै लेली, निम्नांकित जानकारी भरॊ :',
+	'youtubeauthsub_title' => ')शीर्षक',
+	'youtubeauthsub_description' => ')ज़ानकारी',
+	'youtubeauthsub_password' => 'यूट्यूब पासवर्ड',
+	'youtubeauthsub_keywords' => 'शोधशब्द',
+	'youtubeauthsub_category' => 'श्रेणी',
+	'youtubeauthsub_submit' => 'भेजॊ',
 );
 
 /** Arabic (العربية)
@@ -2038,7 +2038,7 @@ $messages['lb'] = array(
 	'youtubeauthsub_description' => 'Beschreiwung',
 	'youtubeauthsub_password' => 'YouTube Passwuert',
 	'youtubeauthsub_username' => 'YouTube Benotzernumm',
-	'youtubeauthsub_keywords' => 'Stechwierder',
+	'youtubeauthsub_keywords' => 'Stéchwierder',
 	'youtubeauthsub_category' => 'Kategorie',
 	'youtubeauthsub_submit' => 'Späicheren',
 	'youtubeauthsub_clickhere' => 'Klickt hei fir Iech op YouTube eranzeloggen',
