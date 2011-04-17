@@ -148,9 +148,10 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Remember the dot
+ * @author Xuacu
  */
 $messages['ast'] = array(
-	'player-goto-file' => 'archivu',
+	'player-goto-file' => 'ficheru',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
