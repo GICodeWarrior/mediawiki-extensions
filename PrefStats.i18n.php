@@ -1857,6 +1857,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Kurniasan
  */
 $messages['ms'] = array(
@@ -1882,7 +1883,7 @@ Tatarajahkan $wgPrefStatsTrackPrefs untuk menjejaki keutamaan-keutamaan.',
 	'prefstats-factor-week' => 'minggu',
 	'prefstats-factor-twoweeks' => 'dua minggu',
 	'prefstats-factor-fourweeks' => 'empat minggu',
-	'prefstats-factor-default' => 'kembali ke skala lalai',
+	'prefstats-factor-default' => 'kembali ke skala sediakala',
 	'prefstats-legend-out' => 'Berhenti',
 	'prefstats-legend-in' => 'Menyertai',
 );
