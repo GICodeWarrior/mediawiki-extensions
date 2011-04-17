@@ -39,13 +39,14 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'ratings-desc' => 'Дазваляе карыстальнікам ацэньваць розныя «ўласьцівасьці» старонкі',
-	'ratings-par-showdisabled' => 'Паказваць рэйтынг, калі карыстальнік ня можа галасаваць (толькі для чытаньня)',
-	'ratings-current-score' => 'Бягучы карыстальніцкі рэйтынг: $1 ($2 {{PLURAL:2|ацэнка|ацэнкі|ацэнак}})',
-	'ratings-no-votes-yet' => 'Ніхто яшчэ не даваў ацэнак.',
+	'ratings-desc' => 'Дазваляе ўдзельнікам ацэньваць розныя «ўласьцівасьці» старонкі',
+	'ratings-par-showdisabled' => 'Паказваць адзнакі, калі ўдзельнік ня можа галасаваць (толькі для чытаньня)',
+	'ratings-current-score' => 'Цяперашняя адзнака ўдзельнікаў: $1 ($2 {{PLURAL:2|адзнака|адзнакі|адзнак}})',
+	'ratings-no-votes-yet' => 'Ніхто яшчэ не адзначаў.',
 );
 
 /** German (Deutsch)
@@ -74,12 +75,28 @@ $messages['ia'] = array(
 	'ratings-no-votes-yet' => 'Nemo ha ancora evalutate isto.',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'ratings-desc' => 'Määd et müjjelesch, dat Metmaacher för ongerscheidlijje Eijeschaffte vun de Sigge Note jävve künne.',
+	'ratings-par-page' => 'De Sigg, woh en Note för jejovve weed.',
+	'ratings-par-tag' => 'De Eijeschaff, för wat aan dä Sigg en Note jejovve weed.',
+	'ratings-par-showdisabled' => 'Donn de Note aanzeije, wann der Metmaacher kein Note jävve kann, sönders nur lässe.',
+	'ratings-par-incsummary' => 'Donn en Zosammefaßong vun de Note bovve drövver aanjezeije
+',
+	'ratings-current-score' => 'De Metmaacher han {{PLURAL:$2|ein|$2|noch kein}} Note jejovve, zosamme jenumme kohm dobei $1 eruß.',
+	'ratings-no-votes-yet' => 'Doför hät noch Keiner Note jejovve.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'ratings-desc' => 'Erméiglecht et Benotzer fir verschidden "Eegeschaften" vu Säiten ze bewäerten',
+	'ratings-par-page' => "D'Säit op déi sech d'Bewäertung bezitt.",
 	'ratings-par-showdisabled' => 'Bewäertunge weisen wann de Benotzer net mat ofstëmme kann (Read-Only Modus)',
+	'ratings-current-score' => 'Aktuell Benotzerbewäertung: $1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',
 	'ratings-no-votes-yet' => 'Et huet nach keen dëst bewäert.',
 );
 
@@ -94,6 +111,21 @@ $messages['mk'] = array(
 	'ratings-par-incsummary' => 'Да прикажувам опис на тековните гласови над елементот за оценка?',
 	'ratings-current-score' => 'Тековна корисничка оценка: $1 ($2 {{PLURAL:$2|оценка|оценки}})',
 	'ratings-no-votes-yet' => 'Сè уште никој го нема оценето ова.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'ratings-desc' => "Maakt het voor gebruikers mogelijk verschillende eigenschappen van pagina's te waarderen",
+	'ratings-par-page' => 'De pagina waar de waardering op van toepassing is.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'ratings-no-votes-yet' => 'దీన్నింకా ఎవరూ మూల్యాంకన చెయ్యలేదు.',
 );
 
 /** Tagalog (Tagalog)

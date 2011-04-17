@@ -620,13 +620,16 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'ts-citegen-Title' => 'Generator fir Zitatiouns-Schablounen',
 	'ts-citegen-Send' => 'Generéieren',
 	'ts-citegen-Option-append-author-link' => "Wikilinken op den Auteur an d'Schabloun derbäisetzen",
 	'ts-citegen-Output-title' => 'Resultat',
 	'ts-citegen-Skin-skins' => 'Skins/Layout',
 	'ts-citegen-Template-lang' => 'Sprooch vun der Schabloun',
 	'ts-citegen-Sources-title' => 'Quellen',
+	'ts-citegen-Sources-text' => "Hei drënner ass d'Lëscht vun de benotzte Quellen.",
 	'ts-citegen-Sidebar-title' => 'Generator fir Zitatiounen',
+	'ts-citegen-Sidebar-add-Firefox' => 'Op de säitleche Panneau derbäisetzen',
 	'ts-citegen-Sidebar-add-Opera' => "Op d'Hotlist derbäisetzen",
 	'ts-citegen-Tools' => 'Geschir (Tools)',
 	'ts-citegen-Other-languages' => 'Aner Sproochen',

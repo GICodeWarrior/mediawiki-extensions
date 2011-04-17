@@ -1302,6 +1302,7 @@ $messages['zh-cn'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bbqyee
  * @author Hydra
+ * @author Kuailong
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
@@ -1315,6 +1316,7 @@ $messages['zh-hans'] = array(
 	'ajaxlogin-create' => '创建账户',
 	'al-nosuchuser' => '用户名"$1"不存在. 用户名区分大小写,请重新检查你的拼写.',
 	'al-createblocked' => '您的 IP 地址被阻止创建帐户。',
+	'al-throttled' => '您的密码尝试次数达到上限。请等待$1秒后重试。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
