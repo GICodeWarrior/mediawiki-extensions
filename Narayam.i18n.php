@@ -126,7 +126,9 @@ $messages['br'] = array(
 	'narayam-checkbox-tooltip' => 'Evit eilpennañ an hentenn enmont war enaou pe get',
 	'narayam-disable-preference' => 'Diweredekaat an embanner hentenn enmont evit an narayam',
 	'narayam-eo' => 'Esperanteg',
+	'narayam-kn' => 'Treuzlizherennadur kannada',
 	'narayam-ml' => 'Treuzlizherennadur Malayalam',
+	'narayam-or' => 'Treuzlizherennadur oriya',
 	'narayam-sa' => 'Treuzlizherennadur sanskriteg',
 	'narayam-ta' => 'Treuzlizherennadur tamoul',
 );
@@ -273,6 +275,7 @@ $messages['he'] = array(
 	'narayam-help-page' => 'Help:הקלדה',
 	'narayam-checkbox-tooltip' => 'הפעלה וכיבוי של שיטת קלט',
 	'narayam-disable-preference' => 'לבטל את שיטת הקלט של נאראיאם',
+	'narayam-eo' => 'אספרנטו',
 	'narayam-hi-inscript' => 'הינדי InScript',
 	'narayam-kn' => 'קאנדה תעתיק',
 	'narayam-kn-inscript' => 'קאנדה InScript',
