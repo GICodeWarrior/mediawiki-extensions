@@ -1115,7 +1115,7 @@ $messages['br'] = array(
 	'mwe-wgfogg_warning_bad_extension' => 'Diuzet hoc\'h eus ur restr hag en deus un astenn diembreget (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">muioc\'h a ditouroù</a>).',
 	'mwe-thumbnail-more' => 'Brasaat',
 	'mwe-filesource' => 'Mammenn :',
-	'mwe-filestatus' => 'Statud ar gwirioù aozer :',
+	'mwe-filestatus' => 'Statud a-fet gwirioù aozer :',
 	'mwe-loading-add-media-wiz' => 'O kargañ ar skoazeller ouzhpennañ restroù media',
 	'mwe-imported_from' => "$1, enporzhiet eus [$2 $3]. Gwelit [$4 pajenn ar vammenn] orin evit muioc'h a ditouroù.",
 	'mwe-import-description' => '$1, enporzhiet eus $2',
@@ -1206,7 +1206,7 @@ $messages['br'] = array(
 	'mwe-am-search-timeout' => "Ar goulenn enklask a zo bet paouezet a-raok ar fin. Ar servijer a zo marteze karget mat. Gallout a rit klask en-dro diwezhatoc'h",
 	'mwe-upload-transcoded-status' => 'Treuzkodet',
 	'mwe-upload-transcode-in-progress' => 'Treuzkodadenn hag enporzhiadenn o vont war-raok (arabat eo serriñ ar prenestr-mañ)',
-	'mwe-upload-multi' => 'Kargañ ar rest{{PLURAL:$1||où}}',
+	'mwe-upload-multi' => 'Kargañ {{PLURAL:$1|ar restr|ar restroù}}',
 	'mwe-review-upload' => 'Gwiriekaat {{PLURAL:$1|kargadenn ar restr|kargadennoù ar restroù}}',
 );
 
@@ -1588,7 +1588,7 @@ $messages['de'] = array(
 	'mwe-uploaded-status' => 'Hochgeladen',
 	'mwe-transcoded-status' => 'Umgeschlüsselt',
 	'mwe-uploaded-time-remaining' => 'Verbleibende Zeit: $1',
-	'mwe-upload-done' => 'Deine hochgeladenen Dateien <i>sollte</i> zugänglich sein.',
+	'mwe-upload-done' => 'Deine hochgeladenen Dateien sollten zugänglich sein.',
 	'mwe-add_media_wizard' => 'Assistent zum Hinzufügen von Mediendateien',
 	'mwe-media_search' => 'Mediensuche',
 	'mwe-am-box_layout' => 'Boxlayout',
@@ -4105,10 +4105,14 @@ Donn $1 un et norr_ens versöhke.',
 	'mwe-i-would-like-to' => 'Esch möösch',
 	'mwe-upload-own-file' => 'en eije Wärk noh {{GRAMMAR:Akkusativ|$1}} huh laade',
 	'mwe-upload-not-my-file' => 'enem Andere sing Wärk noh {{GRAMMAR:Akkusativ|$1}} huh laade',
+	'mwe-upload-once-done' => 'Bes esu joot un donn $1.
+Wann dat Huhlaade eröm es, $2',
 	'mwe-upload-in-new-win-link' => 'en enem neue Finster udder enem zohsäzlejje Ongerfinster huh laade
 ',
 	'mwe-upload-refresh' => 'Ding Leß met de Dateije zom Huhlaade op ene neue Shtand bränge
 ',
+	'mwe-ie-inline-upload' => ' Et \'\'inline\'\' Huhlaade es em Momang ußjeschalldt för der <i lang="en">Internet Explorer</i>.
+De kanns $1, un dann $2.',
 	'mwe-upload-in-progress' => 'Et Huhlaade es em Jang (Donn heh dat Finster nit zohmaache)',
 	'mwe-uploaded-status' => 'Huhjelaade',
 	'mwe-transcoded-status' => 'Ömjesaz',
@@ -4158,6 +4162,9 @@ Donn $1 un et norr_ens versöhke.',
 	'mwe-preview_insert_resource' => 'Vör_Aansesch övver et Ennfööje vun „$1“',
 	'mwe-resource-needs-import' => 'De Quäll $1 moß noh $2 empotteet wääde
 ',
+	'mwe-warning-upload-to-commons' => '$1 schleiht vör, dat De noh de <i lang="en">Wikimedia Commons</i> huhlääds.
+Donn bloß noh heh däm Wiki huhlaade, wann De $2 jelässe häs.
+',
 	'mwe-local-upload-policy-link' => 'de Rääjel, wi mer heh em Wiki jät huhläädt
 ',
 	'mwe-ftype-svg' => 'Ene <i lang="en">SVG</i> Dattei met Väktoore',
@@ -4175,6 +4182,8 @@ Donn $1 un et norr_ens versöhke.',
 	'mwe-am-flickr-title' => '<i lang="en">Flickr.com</i>',
 	'mwe-am-flickr-desc' => '<i lang="en">Flickr.com</i>, en Websigg för Fottos öffentlesch ze maache',
 	'mwe-am-metavid-title' => '<i lang="en">Metavid.org</i>',
+	'mwe-am-metavid-desc' => '<i lang="en">Metavid.org</i>, e jemeinsam Aschiif vum
+US House and Senate floor proceedings',
 	'mwe-upload-transcoded-status' => 'Ömjesaz',
 	'mwe-upload-transcode-in-progress' => 'Et Huhlaade un Ömsäze es ungerwähß (Donn heh dat Finster nit zohmaache)',
 	'mwe-upload-multi' => '{{PLURAL:$1|Ein Datei|$1 Dateie|Kein Datteije}} huhlaade',
@@ -4281,6 +4290,13 @@ $messages['lb'] = array(
 	'mwe-am-this_wiki-desc' => 'Déi lokal Wiki',
 	'mwe-upload-multi' => '{{PLURAL:$1|Fichier|Fichieren}} eroplueden',
 	'mwe-review-upload' => '{{PLURAL:$1|Eropgeluedene Fichier|Eropgeluede Fichieren}} nokucken',
+);
+
+/** Lezghian (Лезги)
+ * @author Namik
+ */
+$messages['lez'] = array(
+	'mwe-am-results_next' => 'къведай',
 );
 
 /** Limburgish (Limburgs)
@@ -4783,7 +4799,7 @@ $messages['nl'] = array(
 	'mwe-cc_nc_title' => 'Geen Commercieel Gebruik',
 	'mwe-cc_nd_title' => 'Geen afgeleide werken',
 	'mwe-cc_sa_title' => 'Gelijk Delen',
-	'mwe-cc_pd_title' => 'Publiek Domein',
+	'mwe-cc_pd_title' => 'Publiek domein',
 	'mwe-unknown_license' => 'Onbekende licentie',
 	'mwe-no-import-by-url' => "Deze gebruiker of wiki <b>kan geen bestanden importeren</b> van externe URL's.<p>Moet u zich wellicht nog aanmelden?</p><p>Hebt u het recht upload_by_url?<br />Heeft de wiki $1 ingeschakeld?</p>",
 	'mwe-results_from' => 'Resultaten van $1',
@@ -7411,6 +7427,7 @@ $messages['yo'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chinalace
  * @author Hydra
+ * @author Kuailong
  * @author Mark85296341
  * @author PhiLiP
  * @author Shizhao
@@ -7495,6 +7512,7 @@ $messages['zh-hans'] = array(
 	'mwe-missing_desc_see_source' => '这个资源缺少描述。
 请检查 [$1 来源]并帮助进行描述。',
 	'mwe-am-config_error' => '添加媒体文件向导配置错误：$1',
+	'mwe-your-recent-uploads' => '您的上传',
 	'mwe-your-recent-uploads-to' => '你最近上传到$1',
 	'mwe-no_recent_uploads' => '最近没有上传',
 	'mwe-not-logged-in-uploads' => '您也许没有登录，因此没有最近上传的文件可供浏览。[$1 请登录]然后[$2 重试]。',
