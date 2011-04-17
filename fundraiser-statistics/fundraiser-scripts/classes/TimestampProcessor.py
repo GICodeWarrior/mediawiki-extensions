@@ -402,3 +402,82 @@ def timestamp_convert_format(ts, format_from, format_to):
             
     return new_timestamp
  
+"""
+
+    THIS METHOD IS CURRENTLY COUPLED WITH HYPOTHESIS TEST
+    
+    This method takes a start time and endtime and interval length and produces
+    a list of timestamps corresponding to each time spaced by length 'interval'
+    between the start time and the end time inclusive
+    
+    INPUT:
+        num_samples      - number of samples per test interval
+        interval         - intervals at which samples are drawn within the range, units = minutes
+        start_time       - start timestamp 'yyyymmddhhmmss'
+        end_time         - end timestamp 'yyyymmddhhmmss'
+        format           - !! CURRENTLY UNUSED !! specifies timestamp format
+        
+    RETURN:
+        
+        times            - list of timestamps for each sample
+        time_indices     - list of indices counting from zero marking the indices for reporting test interval parameters
+
+"""
+def get_time_lists(self, start_time, end_time, interval, num_samples, format):
+
+    """ range must be divisible by interval - convert to hours """
+    range = float(interval * num_samples) / 60
+    
+    """ Compose times """
+    start_datetime = dt.datetime(int(start_time[0:4]), int(start_time[4:6]), int(start_time[6:8]), int(start_time[8:10]), int(start_time[10:12]), int(start_time[12:14]))
+    end_datetime = dt.datetime(int(end_time[0:4]), int(end_time[4:6]), int(end_time[6:8]), int(end_time[8:10]), int(end_time[10:12]), int(end_time[12:14]))
+
+    """ current timestamp and hour index """
+    curr_datetime = start_datetime
+    curr_timestamp = start_time
+    curr_hour_index = 0.0
+    
+    """ lists to store timestamps and indices """
+    times = []
+    time_indices = []
+
+    sample_count = 1
+    
+    """ build a list of timestamps and time indices for plotting increment the time """
+    while curr_datetime < end_datetime:
+        
+        """ for timestamp formatting """
+        month_str_fill = ''
+        day_str_fill = ''
+        hour_str_fill = ''
+        minute_str_fill = ''
+        if curr_datetime.month < 10:
+            month_str_fill = '0'
+        if curr_datetime.day < 10:
+            month_str_fill = '0'
+        if curr_datetime.hour < 10:
+            hour_str_fill = '0'
+        if curr_datetime.minute < 10:
+            minute_str_fill = '0'
+        
+        curr_timestamp = str(curr_datetime.year) + month_str_fill + str(curr_datetime.month) + day_str_fill + str(curr_datetime.day) + hour_str_fill+ str(curr_datetime.hour) + minute_str_fill+ str(curr_datetime.minute) + '00'
+        times.append(curr_timestamp)
+        
+        """ increment curr_hour_index if the """
+        if sample_count == num_samples: 
+            
+            time_indices.append(curr_hour_index + range / 2)
+            curr_hour_index = curr_hour_index + range
+            sample_count = 1
+        else:
+            sample_count = sample_count + 1 
+                
+            
+        """ increment the time by interval minutes """
+        td = dt.timedelta(minutes=interval)
+        curr_datetime = curr_datetime + td
+    
+    """ append the last items onto time lists """
+    times.append(end_time)
+        
+    return [times, time_indices]
