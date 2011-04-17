@@ -119,7 +119,7 @@ class IntervalReportingLoader(DataLoader):
         
         
         """ Load the SQL File & Format """
-        filename = self._sql_path_+ query_name + '.sql'
+        filename = self._sql_path_ + query_name + '.sql'
         sql_stmnt = mh.read_sql(filename)
         
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval])
@@ -206,3 +206,132 @@ class BannerLPReportingLoader(DataLoader):
     
     def run_query(self):
         return
+
+
+    
+class HypothesisTestLoader(DataLoader):
+    
+    """
+        Execute data acquisition for hypothesis tester
+        
+        INPUT:
+            query_name     -   
+            metric_name    -
+            campaign       - 
+            item_1         -   
+            item_2         -   
+            start_time     -   
+            end_time       - 
+            interval       - 
+            num_samples    -
+            
+        RETURN:
+            metrics_1        -
+            metrics_2        -
+            times_indices    -
+       
+    """
+    def run_query(self, query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples):
+        
+        """ retrieve time lists with timestamp format 1 (yyyyMMddhhmmss) """
+        ret = TP.get_time_lists(start_time, end_time, interval, num_samples, 1)
+        times = ret[0]
+        times_indices = ret[1]
+        
+        self.init_db()
+        
+        filename = self._sql_path_ + query_name + '.sql'
+        sql_stmnt = mh.read_sql(filename)
+        
+        metric_index = QD.get_metric_index(query_name, metric_name)
+        metrics_1 = []
+        metrics_2 = []
+        
+        for i in range(len(times) - 1):
+            
+            # print '\nExecuting number ' + str(i) + ' batch of of data.'
+            t1 = times[i]
+            t2 = times[i+1]
+            
+            formatted_sql_stmnt_1 = QD.format_query(query_name, sql_stmnt, [t1, t2, item_1, campaign])
+            formatted_sql_stmnt_2 = QD.format_query(query_name, sql_stmnt, [t1, t2, item_2, campaign])
+            
+            try:
+                err_msg = formatted_sql_stmnt_1
+                
+                self._cur_.execute(formatted_sql_stmnt_1)
+                results_1 = self._cur_.fetchone()  # there should only be a single row
+                
+                err_msg = formatted_sql_stmnt_2
+                
+                self._cur_.execute(formatted_sql_stmnt_2)
+                results_2 = self._cur_.fetchone()  # there should only be a single row
+            
+            except Exception as inst:
+                print type(inst)     # the exception instance
+                print inst.args      # arguments stored in .args
+                print inst           # __str__ allows args to printed directly
+                    
+                self._db_.rollback()
+                sys.exit("Database Interface Exception:\n" + err_msg)
+            
+            metrics_1.append(results_1[metric_index])
+            metrics_2.append(results_2[metric_index])
+        
+        #print metrics_1
+        #print metrics_2
+
+        self.close_db()
+        
+        # return the metric values at each time
+        return [metrics_1, metrics_2, times_indices]
+    
+    
+
+"""
+
+    CLASS :: TTestLoaderHelp
+    
+    Provides data access particular to the t-test
+    
+    METHODS:
+            init_db         -
+            close_db        -
+"""
+class TTestLoaderHelp(DataLoader):
+    
+    """
+    This method knows about faulkner.t_test.  This is a lookup table for p-values
+    given the degrees of freedom and statistic t test
+    
+    INPUT:
+        degrees_of_freedom     -   
+        t                      -
+
+    RETURN:
+        p        -
+   
+    """
+    def get_pValue(self, degrees_of_freedom, t):
+        
+        self.init_db()
+        
+        select_stmnt = 'select max(p) from t_test where degrees_of_freedom = ' + str(degrees_of_freedom) + ' and t >= ' + str(t)
+
+        try:
+            self._cur_.execute(select_stmnt)
+            results = self._cur_.fetchone()
+                
+            if results[0] != None:
+                p = float(results[0])
+            else:
+                p = .0005
+        except:
+            self._db_.rollback()
+            self._db_.close()
+            sys.exit('Could not execute: ' + select_stmnt)
+            
+        self._db_.close()
+        
+        return p
+    

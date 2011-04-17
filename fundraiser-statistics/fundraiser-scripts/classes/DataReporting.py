@@ -240,17 +240,33 @@ class DataReporting(object):
 
 """
 
-CLASS :: ^TotalAmountsReporting^
-
-This subclass handles reporting on total amounts for the fundraiser.
+    CLASS :: ^TotalAmountsReporting^
+    
+    This subclass handles reporting on total amounts for the fundraiser.
 
 """
 
 class TotalAmountsReporting(DataReporting):
     
+    """
+         <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """    
     def __init__(self):
         self.data = []
+
+    """
+         <description>
         
+        INPUT:
+                        
+        RETURN:
+        
+    """            
     def run_query(self, start_time, end_time, query_name, descriptor):
         
         self.init_db()
@@ -333,7 +349,14 @@ class TotalAmountsReporting(DataReporting):
         pylab.savefig(fname+'.png', format='png')
     
     
-    
+    """
+         <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """    
     def run_hr(self, type):
         
         
@@ -384,7 +407,14 @@ class TotalAmountsReporting(DataReporting):
         self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, fname)
         
     
-    
+    """
+         <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """    
     def run_day(self,type):
         
         # Current date & time
@@ -431,7 +461,14 @@ class TotalAmountsReporting(DataReporting):
         fname = query_name + descriptor + '_' + type
         self.gen_plot(time_range, counts, labels, title, xlabel, ylabel, ranges, subplot_index, fname)
         
+    """
+         <description>
         
+        INPUT:
+                        
+        RETURN:
+        
+    """        
     def get_query_fields(self, labels, counts, type, start_time, end_time):
         
         if type == 'BAN_EM':
@@ -467,15 +504,22 @@ class TotalAmountsReporting(DataReporting):
 
 """
 
-CLASS :: ^BannerLPReporting^
-
-This subclass handles reporting on banners and landing pages for the fundraiser.
+    CLASS :: ^BannerLPReporting^
+    
+    This subclass handles reporting on banners and landing pages for the fundraiser.
 
 """
 
 class BannerLPReporting(DataReporting):
     
+    """
+         <description>
         
+        INPUT:
+                        
+        RETURN:
+        
+    """        
     def __init__(self, *args):
         
         if len(args) == 2:
@@ -484,7 +528,14 @@ class BannerLPReporting(DataReporting):
         else:
             self.campaign = None
             self.start_time = None
+    """
+         <description>
         
+        INPUT:
+                        
+        RETURN:
+        
+    """            
     def run_query(self,start_time, end_time, campaign, query_name, metric_name):
         
         self.init_db()
@@ -572,7 +623,14 @@ class BannerLPReporting(DataReporting):
         # return [metric_lists, time_norm, table_data]
         return [metric_lists, time_norm]
         
+    """
+         <description>
         
+        INPUT:
+                        
+        RETURN:
+        
+    """        
     def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
         pylab.subplot(subplot_index)
         pylab.figure(num=None,figsize=[26,14])    
@@ -597,7 +655,14 @@ class BannerLPReporting(DataReporting):
         
     
     """
-    
+        
+         <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
+       
         type = 'LP' || 'BAN' || 'BAN-TEST' || 'LP-TEST'
         
     """
@@ -692,7 +757,15 @@ class BannerLPReporting(DataReporting):
         
         return [metrics, times]
     
+    """ !! MOVE INTO DATA LOADER!!
     
+         <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """    
     def get_latest_campaign(self):
         
         query_name = 'report_latest_campaign'
@@ -725,12 +798,15 @@ class BannerLPReporting(DataReporting):
         
         return [campaign, timestamp]
 
-    """
-    
+    """ !! SHOULD BE MOVED TO TIMEPROCESSOR !!
         Takes as input and converts it to a set of hours counting back from 0
+        <description>
         
-        time_lists         - a dictionary of timestamp lists
+        INPUT:
+            time_lists         - a dictionary of timestamp lists
         time_norm     - a dictionary of normalized times
+                        
+        RETURN:
         
     """
     def normalize_timestamps(self, time_lists):
@@ -774,6 +850,14 @@ This subclass handles reporting on raw values imported into the database.
 
 class MinerReporting(DataReporting):
     
+    """ 
+        <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """
     def run_query(self, start_time, end_time, query_name):
         
         self.init_db()
@@ -816,8 +900,15 @@ class MinerReporting(DataReporting):
         return [counts, time_norm]
     
 
-    # Create histograms for hourly counts
-    
+    """ 
+        Create histograms for hourly counts
+        <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """
     def gen_plot(self,counts, times, title, xlabel, ylabel, ranges, subplot_index, fname):
         
         pylab.subplot(subplot_index)
@@ -835,7 +926,15 @@ class MinerReporting(DataReporting):
 
         pylab.title(title)
         pylab.savefig(fname, format='png')
+    
+    """ 
+        <description>
         
+        INPUT:
+                        
+        RETURN:
+        
+    """
     def run(self, query_name):
         
         # Current date & time
@@ -883,26 +982,33 @@ class MinerReporting(DataReporting):
     
 """
 
-CLASS :: IntervalReporting
-
-Performs queries that take timestamps, query, and an interval as arguments.  Data for a single metric 
-is generated for each time interval in the time period defined by the start and end timestamps. 
-
-Types of queries supported:
-
-report_banner_metrics_minutely
-report_LP_metrics_minutely
+    CLASS :: IntervalReporting
+    
+    Performs queries that take timestamps, query, and an interval as arguments.  Data for a single metric 
+    is generated for each time interval in the time period defined by the start and end timestamps. 
+    
+    Types of queries supported:
+    
+    report_banner_metrics_minutely
+    report_LP_metrics_minutely
 
 """
 
 class IntervalReporting(DataReporting):
     
-    """
+    """ 
+        <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
     """
     def __init__(self):
         self._data_loader_ = DL.IntervalReportingLoader()
 
     """
+        <description>
     """    
     def usage(self): 
         
@@ -918,7 +1024,13 @@ class IntervalReporting(DataReporting):
         return
     
     """
-        Execute reporting query and generate plots        
+        Execute reporting query and generate plots       
+        <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
     """        
     def gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels):
         
@@ -970,7 +1082,13 @@ class IntervalReporting(DataReporting):
 
 
     """
-        Execute reporting query and generate plots        
+        Execute reporting query and generate plots       
+        <description>
+        
+        INPUT:
+                        
+        RETURN:
+         
     """        
     def run(self, start_time, end_time, interval, query_type, metric_name, campaign, labels):
         
@@ -1022,3 +1140,246 @@ class IntervalReporting(DataReporting):
         self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels)
         
 
+"""
+
+    CLASS :: ConfidenceReporting
+    
+    Reports confidence values on specified metrics
+    
+    Types of queries supported:
+    
+        report_banner_confidence
+        report_LP_confidence
+
+"""
+
+class ConfidenceReporting(DataReporting):
+    
+    _hypothesis_test_ = None
+    
+    
+    """
+    
+        Constructor for confidence reporting class
+        
+        INPUT:
+        
+            hypothesis_test    - an instance reflecting the type of test being used
+            
+        
+    """
+    def __init__(self, hypothesis_test):
+        
+        """ check to make sure this is in fact a hypothsis test """
+        self._hypothesis_test_ = hypothesis_test
+        self._data_loader_ = HypothesisTestLoader()
+    
+    """
+        Describes how to run a report !! MODIFY !!
+    """    
+    def usage(self): 
+        
+        print 'Types of queries:'
+        print '    (1) banner'
+        print '    (2) LP'
+        print ''
+        print 'e.g.'
+        print "    run('20101230160400', '20101230165400', 2, 'banner', 'imp', '20101230JA091_US')"
+        print "    run('20101230160400', '20101230165400', 2, 'LP', 'views', '20101230JA091_US')"
+        print ''
+        
+        return
+    
+    
+    """
+        <description>
+        
+        INPUT:
+                        
+        RETURN:
+             
+    """
+    def gen_plot(self,means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname):
+                
+        file_format = 'png'
+                
+        pylab.subplot(subplot_index)
+        pylab.figure(num=None,figsize=[26,14])    
+        
+        e1 = pylab.errorbar(times_indices, means_1, yerr=std_devs_1, fmt='xb-')
+        e2 = pylab.errorbar(times_indices, means_2, yerr=std_devs_2, fmt='dr-')
+        # pylab.hist(counts, times)
+        
+        """ Set the figure and font size """
+        fig_width_pt = 246.0  # Get this from LaTeX using \showthe\columnwidth
+        inches_per_pt = 1.0/72.27               # Convert pt to inch
+        golden_mean = (math.sqrt(5)-1.0)/2.0         # Aesthetic ratio
+        fig_width = fig_width_pt*inches_per_pt  # width in inches
+        fig_height = fig_width*golden_mean      # height in inches
+        fig_size =  [fig_width,fig_height]
+        
+        font_size = 20
+        
+        params = { 'axes.labelsize': font_size,
+          'text.fontsize': font_size,
+          'xtick.labelsize': font_size,
+          'ytick.labelsize': font_size,
+          'legend.pad': 0.1,     # empty space around the legend box
+          'legend.fontsize': font_size,
+          'font.size': font_size,
+          'text.usetex': False,
+          'figure.figsize': fig_size}
+        
+        pylab.rcParams.update(params)
+        
+        pylab.grid()
+        pylab.ylim(ranges[2], ranges[3])
+        pylab.xlim(ranges[0], ranges[1])
+        pylab.legend([e1[0], e2[0]], labels,loc=2)
+        
+        pylab.xlabel(xlabel)
+        pylab.ylabel(ylabel)
+        
+        pylab.title(title)
+        pylab.savefig(fname + '.' + file_format, format=file_format)
+        
+        
+    """ 
+        Print in Tabular form the means and standard deviation of each group over each 
+        interval
+        
+        INPUT:
+                        
+        RETURN: 
+        
+    """
+    def print_metrics(self, filename, metric_name, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call):
+        
+        filename += '.txt'
+        file = open(filename, 'w')
+        
+        """ Compute % increase and report """
+        av_means_1 = sum(means_1) / len(means_1)
+        av_means_2 = sum(means_2) / len(means_2)
+        percent_increase = math.fabs(av_means_1 - av_means_2) / min(av_means_1,av_means_2) * 100.0
+        
+        """ Compute the average standard deviations """
+        av_std_dev_1 = 0
+        av_std_dev_2 = 0
+        
+        for i in range(len(std_devs_1)):
+            av_std_dev_1 = av_std_dev_1 + math.pow(std_devs_1[i], 2)
+            av_std_dev_2 = av_std_dev_2 + math.pow(std_devs_2[i], 2)
+        
+        av_std_dev_1 = math.pow(av_std_dev_1, 0.5) / len(std_devs_1)
+        av_std_dev_2 = math.pow(av_std_dev_2, 0.5) / len(std_devs_1)
+        
+        """ Assign the winner """    
+        if av_means_1 > av_means_2:
+            winner = labels[0]
+        else:
+            winner = labels[1]
+            
+        win_str =  "\nThe winner " + winner + " had a %.2f%s increase."
+        win_str = win_str % (percent_increase, '%')
+        
+        print '\nCOMMAND = ' + test_call
+        file.write('\nCOMMAND = ' + test_call)
+                 
+         
+        print  '\n\n' +  metric_name 
+        print '\nitem 1  = ' + labels[0] 
+        print 'item 2  = ' + labels[1]
+        print win_str
+        print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
+        file.write('\n\n' +  metric_name)
+        file.write('\nitem 1  = ' + labels[0] + '\n')
+        file.write('\nitem 2  = ' + labels[1] + '\n')
+        file.write(win_str)
+        file.write('\n\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n\n')
+        
+        
+        """ Print out the parameters for each interval """
+        
+        for i in range(len(times_indices)):
+            line_args = str(i) + '\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
+            line_str = line_args % (means_1[i], means_2[i], std_devs_1[i], std_devs_2[i])
+            print  line_str
+            file.write(line_str)
+        
+        """ Print out the averaged parameters """
+        line_args = '%.5f\t\t' + '%.5f\t\t' + '%.5f\t\t' + '%.5f\n'
+        line_str = line_args % (av_means_1, av_means_2, av_std_dev_1, av_std_dev_2)
+        
+        print '\n\nOverall Parameters -- the confidence test was run with these parameters:\n'
+        print '\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
+        print line_str
+        
+        file.write('\n\nOverall Parameters:\n')
+        file.write('\nmean1\t\tmean2\t\tstddev1\t\tstddev2\n')
+        file.write(line_str)
+            
+            
+        file.close()
+    
+    """ 
+        Executes the test reporting
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """
+    def run(self, test_name, query_name, metric_name, campaign, items, start_time, end_time, interval, num_samples):
+        
+        """ TEMPORARY - map items and labels, this should be more generalized """
+        counter = 1
+        for key in items.keys():
+            if counter == 1:
+                item_1 = items[key]
+                label_1 = key
+            elif counter == 2:
+                item_2 = items[key]
+                label_2 = key
+            counter += 1
+                
+        """ Retrieve values from database """
+        ret = _data_loader_.query_tables(query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples)
+        metrics_1 = ret[0]
+        metrics_2 = ret[1]
+        times_indices = ret[2]
+        
+        """ run the confidence test """
+        ret = _hypothesis_test_.confidence_test(metrics_1, metrics_2, num_samples)
+        means_1 = ret[0]
+        means_2 = ret[1]
+        std_devs_1 = ret[2]
+        std_devs_2 = ret[3]
+        confidence = ret[4]
+    
+        """ plot the results """
+        xlabel = 'Hours'
+        subplot_index = 111
+        fname = './tests/' + campaign + '_conf_' + metric_name
+        
+        title = confidence + '\n\n' + test_name + ' -- ' + TP.timestamp_convert_format(start_time,1,2) + ' - ' + TP.timestamp_convert_format(end_time,1,2)
+        
+        max_mean = max(max(means_1),max(means_2))
+        max_sd = max(max(std_devs_1),max(std_devs_2))
+        max_y = float(max_mean) + float(max_sd) 
+        max_y = max_y + 0.1 * max_y
+        max_x = max(times_indices) + min(times_indices)
+        ranges = [0.0, max_x, 0, max_y]
+        
+        ylabel = metric_name
+        labels = [label_1, label_2]
+        
+        self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
+        
+        """ Print out results """ 
+        test_call = "run_test('" + test_name + "', '" + query_name + "', '" + metric_name + "', '" + campaign + "', '" + \
+            item_1 + "', '" + item_2 + "', '" + start_time + "', '" + end_time + "', " + str(interval) + ", " + str(num_samples) + ")"
+        self.print_metrics(fname, title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
+        
+        return
+        
