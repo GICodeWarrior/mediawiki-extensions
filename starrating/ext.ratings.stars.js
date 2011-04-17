@@ -15,7 +15,7 @@
 		// shown disabled for unauthorized users, simply don't bother any setup.
 		return;
 	}
-	
+
 	/**
 	 * Self executing function to setup the rating stars on the page.
 	 * This is done by finding all inputs belonging to a single rating
@@ -35,7 +35,7 @@
 				callback: function( value, link ){
 					var self = $(this);
 					submitRating( self.attr( 'page' ), self.attr( 'tag' ), value );
-				},
+				}
 			});
 		}
 		
