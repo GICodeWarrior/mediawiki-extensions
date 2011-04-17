@@ -1091,6 +1091,7 @@ Bitte versuech s speter nomol.',
 $messages['he'] = array(
 	'articlefeedback' => 'הערכת ערך',
 	'articlefeedback-desc' => 'הערכת ערך (גרסה ניסיונית)',
+	'articlefeedback-survey-question-origin' => 'מאיזה עמוד הגעתם לסקר הזה?',
 	'articlefeedback-survey-question-whyrated' => 'נא ליידע אותנו מדובר דירגת דף זה היום (יש לסמן את כל העונים לשאלה):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'ברצוני לתרום לדירוג הכללי של הדף',
 	'articlefeedback-survey-answer-whyrated-development' => 'כולי תקווה שהדירוג שלי ישפיע לטובה על פיתוח הדף',
