@@ -144,6 +144,14 @@ $messages['arc'] = array(
 	'cb_and_op' => 'ܘ',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'cb_has_files' => '$1 {{PLURAL:$1|ficheru|ficheros}}',
+	'cb_cat_files' => 'ficheros',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
