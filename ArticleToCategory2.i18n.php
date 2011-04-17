@@ -614,6 +614,7 @@ $messages['uk'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Kuailong
  * @author Steven0127
  */
 $messages['zh-hans'] = array(
@@ -622,6 +623,7 @@ $messages['zh-hans'] = array(
 	'articletocategory2-create-article-under-category-button' => '创建',
 	'articletocategory2-create-category-under-category-text' => '此类别中添加类别',
 	'articletocategory2-create-category-under-category-button' => '创建',
+	'right-ArticleToCategory2' => '将页面添加到分组',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)
