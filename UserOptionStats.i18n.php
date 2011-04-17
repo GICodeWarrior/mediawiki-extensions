@@ -505,6 +505,13 @@ $messages['mn'] = array(
 	'uos-other' => '*Бусад',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'uos-unknown' => '* Tersedia',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  */
