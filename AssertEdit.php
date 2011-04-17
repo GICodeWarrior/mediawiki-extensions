@@ -63,7 +63,7 @@ function efAssertEditHook( $editpage ) {
 		$wgOut->mRedirect = '';
 
 		$wgOut->mBodytext = '';
-		$wgOut->addWikiText( wfMsg( 'assert_edit_message', $assertName ) );
+		$wgOut->addWikiMsg( 'assert_edit_message', $assertName );
 
 		$wgOut->returnToMain( false, $editpage->mTitle );
 		return false;
