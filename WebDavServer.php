@@ -334,7 +334,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 			}
 		}
 
-		$article = MediaWiki::articleFromTitle( $title );
+		$article = MediaWiki::articleFromTitle( $title, RequestContext::getMain() );
 
 		$rawPage = new RawPage( $article );
 
@@ -395,7 +395,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 			$title = Title::newMainPage();
 		}
 
-		$article = MediaWiki::articleFromTitle( $title );
+		$article = MediaWiki::articleFromTitle( $title, RequestContext::getMain() );
 
 		# Must check if article exists to avoid 500 Internal Server Error
 
@@ -434,7 +434,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 			return;
 		}
 
-		$article = MediaWiki::articleFromTitle( $title );
+		$article = MediaWiki::articleFromTitle( $title, RequestContext::getMain() );
 
 		if ( ( $handle = $this->openRequestBody() ) === false ) {
 			return;
