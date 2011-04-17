@@ -18,7 +18,7 @@ class PasswordReset extends SpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgUser, $wgTitle;
+		global $wgRequest, $wgOut, $wgUser;
 
 		$this->setHeaders();
 
@@ -94,7 +94,7 @@ class PasswordReset extends SpecialPage {
 		return true;
 	}
 </script>" .
-			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgTitle->getLocalUrl(), 'id' => 'passwordresetform' ) ) .
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalUrl(), 'id' => 'passwordresetform' ) ) .
 			Xml::openElement( 'table', array( 'id' => 'mw-passwordreset-table' ) ) .
 			"<tr>
 				<td class='mw-label'>" . 
