@@ -37,15 +37,6 @@ $messages['qqq'] = array(
 	'abcvorbis' => '{{optional}}',
 );
 
-/** Dusun Bundu-liwan (Dusun Bundu-liwan)
- * @author FRANCIS5091
- * @author FRANELYA
- */
-$messages['dtp'] = array(
-	'abc-desc' => 'Ruhangai <code>&lt;abc&gt;</code> tag  do mongulud tongkouni ABC',
-	'abcdownload' => 'Potuhuno manganu:',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -263,6 +254,15 @@ $messages['diq'] = array(
 $messages['dsb'] = array(
 	'abc-desc' => 'Pśidawa toflicku <code>&lt;abc&gt;</code>, aby se muzika w ABC formatěrowała',
 	'abcdownload' => 'Ześěgnuś:',
+);
+
+/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+ * @author FRANCIS5091
+ * @author FRANELYA
+ */
+$messages['dtp'] = array(
+	'abc-desc' => 'Ruhangai <code>&lt;abc&gt;</code> tag  do mongulud tongkouni ABC',
+	'abcdownload' => 'Potuhuno manganu:',
 );
 
 /** Greek (Ελληνικά)
@@ -599,6 +599,13 @@ $messages['ky'] = array(
 $messages['lb'] = array(
 	'abc-desc' => "Setzt den <code>&lt;abc&gt;</code> Tag fir ''ABC music'' ze formatéieren",
 	'abcdownload' => 'Eroflueden:',
+);
+
+/** Lezghian (Лезги)
+ * @author Namik
+ */
+$messages['lez'] = array(
+	'abcdownload' => 'Цунарун',
 );
 
 /** Limburgish (Limburgs)
