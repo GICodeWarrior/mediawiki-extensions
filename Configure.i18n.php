@@ -627,9 +627,8 @@ $messages['ar'] = array(
 	'configure-section-recentchanges' => 'أحدث التغييرات',
 	'configure-section-users' => 'المستخدمون',
 	'configure-section-externalauth' => 'استيثاق خارجي',
-	'configure-section-feed' => 'تلقيم',
+	'configure-section-feed' => 'تغذية',
 	'configure-section-job' => 'أشغال',
-	'configure-section-extension' => 'الامتدادات',
 	'configure-section-search' => 'بحث',
 	'configure-section-copyright' => 'حقوق نشر',
 	'configure-section-htcp' => 'بث HTCP متعدد',
@@ -952,6 +951,13 @@ $messages['arz'] = array(
  */
 $messages['as'] = array(
 	'configure-section-search' => 'সন্ধান কৰক',
+);
+
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'configure-section-images' => 'Ficheros',
 );
 
 /** Belarusian (Беларуская)
