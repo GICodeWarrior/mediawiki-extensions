@@ -75,7 +75,7 @@ function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
 	);
 
 	$wgRequest = new FauxRequest( $args );
-	$article = MediaWiki::articleFromTitle( $wgTitle );
+	$article = MediaWiki::articleFromTitle( $wgTitle, RequestContext::getMain() );
 	$editor = new EditPage( $article );
 
 	//generate form

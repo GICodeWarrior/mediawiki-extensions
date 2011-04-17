@@ -799,9 +799,9 @@ class DumpHTML {
 			$wgOut = new OutputPage;
 			$wgOut->parserOptions( new ParserOptions );
 			$wgOut->setTitle( $title );
-			SpecialPage::executePath( $wgTitle );
+			SpecialPage::executePath( $wgTitle, RequestContext::getMain() );
 		} else {
-			$article = MediaWiki::articleFromTitle( $wgTitle );
+			$article = MediaWiki::articleFromTitle( $wgTitle, RequestContext::getMain() );
 			$rt = $article->followRedirect();
 			if ( is_object( $rt ) ) {
 				return $this->getRedirect( $rt );
