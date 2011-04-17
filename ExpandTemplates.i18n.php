@@ -162,6 +162,7 @@ $messages['as'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'expandtemplates' => 'Esparder plantíes',
@@ -178,7 +179,7 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_ok' => 'Aceutar',
 	'expand_templates_remove_comments' => 'Eliminar comentarios',
 	'expand_templates_generate_xml' => "Amosar l'árbole d'análisis sintáuticu XML",
-	'expand_templates_preview' => 'Previsualizar',
+	'expand_templates_preview' => 'Entever',
 );
 
 /** Bashkir (Башҡортса)
