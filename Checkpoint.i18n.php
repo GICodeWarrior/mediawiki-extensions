@@ -63,10 +63,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
-	'checkpoint' => "Enrollañ ha kenderc'hel da gemmañ",
+	'checkpoint' => "Enrollañ ha kenderc'hel da zegas kemmoù",
 	'checkpoint-desc' => "Reiñ a ra an tu da enrollañ ur c'hemm ha da genderc'hel da gemmañ",
 	'checkpoint-tooltip' => "Enrollit ho araokadennoù ha kendalc'hit da gemmañ ar bajenn",
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|enrollañ ur poent evezhiañ]])',
