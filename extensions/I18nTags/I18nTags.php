@@ -13,7 +13,6 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Parser i18n tags',
-	'grammar and plural in any available language',
 	'descriptionmsg' => 'i18ntags-desc',
 	'version' => '2009-01-11',
 	'author' => 'Niklas Laxström',
@@ -26,6 +25,10 @@ $wgExtensionMessagesFiles['I18nTags'] = $dir . 'I18nTags.i18n.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'efI18nTagsInit';
 
+/**
+ * @param $parser Parser
+ * @return bool
+ */
 function efI18nTagsInit( &$parser ) {
 	$class = 'I18nTags';
 	$parser->setHook( 'formatnum', array($class, 'formatNumber')  );
