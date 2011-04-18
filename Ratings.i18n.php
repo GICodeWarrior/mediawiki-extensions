@@ -29,6 +29,7 @@ The current vote of the user will be displayed initially when he already voted.'
 	'ratings-par-incsummary' => 'Show a summary of the current votes above the rating element?',
 
 	// Vote summary
+	'ratings-votesummary-desc' => 'Displays a short summary of the votes for the specified page and property pair.',
 	'ratings-current-score' => 'Current user rating: $1 ($2 {{PLURAL:$2|rating|ratings}})',
 	'ratings-no-votes-yet' => 'No one has rated this yet.',
 );
