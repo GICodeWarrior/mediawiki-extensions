@@ -57,9 +57,8 @@ class I18nTags {
 		if ( !$code ) {
 			return '';
 		}
-		$native = $native === 'native';
-		$cldr   = is_callable(array( 'LanguageNames', 'getNames' ));
-		if ( !$native && $cldr ) {
+		$cldr   = is_callable( array( 'LanguageNames', 'getNames' ));
+		if ( $native !== 'native' && $cldr ) {
 			$languages = LanguageNames::getNames( $wgLang->getCode(),
 				LanguageNames::FALLBACK_NORMAL,
 				LanguageNames::LIST_MW_AND_CLDR
