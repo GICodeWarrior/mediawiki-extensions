@@ -649,7 +649,7 @@ class OAIRepo {
 		}
 
 		$res = $this->_db->select(
-			array( 'updates', 'page', 'redirect' ),
+			array( 'u' => 'updates', 'p' => 'page', 'r' => 'redirect', 'rp' => 'page' ),
 			array(
 				'up_page,up_sequence',
 				'rp.page_namespace AS page_namespace',
