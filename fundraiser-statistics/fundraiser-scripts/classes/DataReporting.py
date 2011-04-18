@@ -996,21 +996,47 @@ class MinerReporting(DataReporting):
 
 class IntervalReporting(DataReporting):
     
-    """ 
-        <description>
+    _font_size_ = 24
+    _fig_width_pt_ = 246.0                  # Get this from LaTeX using \showthe\columnwidth
+    _inches_per_pt_ = 1.0/72.27             # Convert pt to inch
+    _use_labels= False
+    _fig_file_format_ = 'png'
+    _plot_type_ = 'line'
+    
+    """
+        Constructor for IntervalReporting
         
         INPUT:
-                        
-        RETURN:
         
+            loader_type    - string which determines the type of dataloader object
+            **kwargs       - allows plotting parameters to be tuned     !! MODIFY -- move up to base class !! 
     """
-    def __init__(self):
-        self._data_loader_ = DL.IntervalReportingLoader()
+    def __init__(self, loader_type, **kwargs):
+        if loader_type == 'standard':
+            self._data_loader_ = DL.IntervalReportingLoader()
+        elif loader_type == 'campaign':
+            self._data_loader_ = DL.CampaignIntervalReportingLoader()    
+                
+        for key in kwargs:
+            if key == 'font_size':
+                self._font_size_ =  kwargs[key]
+            elif key == 'fig_width_pt':
+                self._fig_width_pt_ =  kwargs[key]
+            elif key == 'inches_per_pt':
+                self._inches_per_pt_ =  kwargs[key]
+            elif key == 'use_labels':
+                self._use_labels =  kwargs[key]
+            elif key == 'fig_file_format':
+                self._fig_file_format_ =  kwargs[key]
+            elif key == 'plot_type':
+                self._plot_type_ =  kwargs[key]
 
     """
         <description>
     """    
     def usage(self): 
+        
+        """ !! MODIFY -- include instructions on using **kwargs """
         
         print 'Types of queries:'
         print '    (1) banner'
@@ -1034,35 +1060,34 @@ class IntervalReporting(DataReporting):
     """        
     def gen_plot(self, metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels):
         
-        file_format = 'png'
-        
         pylab.subplot(subplot_index)
         pylab.figure(num=None,figsize=[26,14])    
         
-        line_types = ['b-o','g-o','r-o','c-o','m-o','k-o','y-o','b--d','g--d','r--d','c--d','m--d','k--d','y--d','b-.s','g-.s','r-.s','c-.s','m-.s','k-.s','y-.s']
+        #line_types = ['b-o','g-o','r-o','c-o','m-o','k-o','y-o','b--d','g--d','r--d','c--d','m--d','k--d','y--d','b-.s','g-.s','r-.s','c-.s','m-.s','k-.s','y-.s']
+        line_types = ['b-o','g-x','r-s','c-d','m-o','k-o','y-o','b--d','g--d','r--d','c--d','m--d','k--d','y--d','b-.s','g-.s','r-.s','c-.s','m-.s','k-.s','y-.s']
         
         count = 0
         for key in metrics.keys():
-            pylab.step(times[key], metrics[key], line_types[count])
+            if self._plot_type_ == 'step':
+                pylab.step(times[key], metrics[key], line_types[count])
+            elif self._plot_type_ == 'line':
+                pylab.plot(times[key], metrics[key], line_types[count])
             count = count + 1
         
         """ Set the figure and font size """
-        fig_width_pt = 246.0  # Get this from LaTeX using \showthe\columnwidth
-        inches_per_pt = 1.0/72.27               # Convert pt to inch
-        golden_mean = (math.sqrt(5)-1.0)/2.0         # Aesthetic ratio
-        fig_width = fig_width_pt*inches_per_pt  # width in inches
-        fig_height = fig_width*golden_mean      # height in inches
+        
+        golden_mean = (math.sqrt(5)-1.0)/2.0                    # Aesthetic ratio
+        fig_width = self._fig_width_pt_*self._inches_per_pt_    # width in inches
+        fig_height = fig_width*golden_mean                      # height in inches
         fig_size =  [fig_width,fig_height]
 
-        font_size = 24
-
-        params = {'axes.labelsize': font_size,
-          'text.fontsize': font_size,
-          'xtick.labelsize': font_size,
-          'ytick.labelsize': font_size,
+        params = {'axes.labelsize': self._font_size_,
+          'text.fontsize': self._font_size_,
+          'xtick.labelsize': self._font_size_,
+          'ytick.labelsize': self._font_size_,
           'legend.pad': 0.1,     # empty space around the legend box
-          'legend.fontsize': font_size,
-          'font.size': font_size,
+          'legend.fontsize': self._font_size_,
+          'font.size': self._font_size_,
           'text.usetex': False,
           'figure.figsize': fig_size}
 
@@ -1071,14 +1096,17 @@ class IntervalReporting(DataReporting):
         pylab.grid()
         pylab.xlim(ranges[0], ranges[1])
         pylab.ylim(ranges[2], ranges[3])
-        #pylab.legend(metrics.keys(),loc=2)
-        pylab.legend(labels,loc=2)
-
+        
+        if self._use_labels_:
+            pylab.legend(labels,loc=2)
+        else:
+            pylab.legend(metrics.keys(),loc=2)
+        
         pylab.xlabel(xlabel)
         pylab.ylabel(ylabel)
 
         pylab.title(title)
-        pylab.savefig('./tests/' + fname + '.' + file_format, format=file_format)
+        pylab.savefig('./tests/' + fname + '.' + file_format, format=_fig_file_format_)
 
 
     """
@@ -1104,7 +1132,7 @@ class IntervalReporting(DataReporting):
             times[key] = TP.normalize_timestamps(times[key], False, 2)
             times[key], counts[key] = TP.normalize_intervals(times[key], counts[key], interval)
         
-        # Normalize times
+        """ Normalize times """
         min_time = min(times)
         ranges = [min_time, 0]
         
