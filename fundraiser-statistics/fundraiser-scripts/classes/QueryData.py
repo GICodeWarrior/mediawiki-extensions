@@ -171,6 +171,14 @@ def format_query(query_name, sql_stmnt, args):
         interval = args[3]
         
         sql_stmnt = sql_stmnt % ('%', '%', '%',  '%', interval, interval, start_time, end_time, campaign, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
+    
+    elif query_name == 'report_campaign_metrics_minutely':
+        start_time = args[0]
+        end_time = args[1]
+        campaign = args[2]
+        interval = args[3]
+        
+        sql_stmnt = sql_stmnt % (campaign, '%', '%', '%',  '%', interval, interval, start_time, end_time, campaign, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
         
     else:
         return 'no such table\n'
@@ -231,6 +239,8 @@ def get_time_index(query_name):
         return 0
     elif query_name == 'report_LP_metrics_minutely':
         return 0
+    elif query_name == 'report_campaign_metrics_minutely':
+        return 0
     else:
         return -1
 
@@ -245,6 +255,8 @@ def get_campaign_index(query_name):
         return 1
     elif query_name == 'report_latest_campaign':
         return 0
+    elif query_name == 'report_banner_metrics_minutely':
+        return 1
     else:
         return -1
 
@@ -402,6 +414,14 @@ def get_metric_index(query_name, metric_name):
             return 12
         else:
             return -1
+    elif query_name == 'report_campaign_metrics_minutely':
+        if metric_name == 'donations':
+            return 3
+        elif metric_name == 'views':
+            return 2
+        else:
+            return -1
+        
     else:
         return 'no such table'
         
