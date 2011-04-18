@@ -60,6 +60,13 @@ $messages['arz'] = array(
  # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'metakeywords-desc' => 'Permite configurar les etiquetes <code>&lt;meta "keywords"&gt;</code> and <code>&lt;meta "description"&gt;</code> per espaciu de nomes',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
