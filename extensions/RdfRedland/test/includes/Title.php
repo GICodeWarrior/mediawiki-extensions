@@ -50,11 +50,11 @@ class Title {
 	public static function newFromText( $text) {
 		if ( ! $text ) return null;
 		$text = str_replace( '_', ' ', $text);
-		return new Title( $text );
+		return Title::newFromText( $text );
 	}
 
 	public static function makeTitle( $ns, $text ) {
-		return new Title( "$ns:$text" );
+		return Title::makeTitle( $ns, $text );
 	}
 
 	public function __construct( $text ) {

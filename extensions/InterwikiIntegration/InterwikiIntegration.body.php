@@ -84,15 +84,9 @@ class IntegrationInterwikiTitle extends Title {
                         }
                         $ns = 0;
                     }
-                }
-		$t = new Title();
-		$t->mInterwiki = ucfirst ( $interwiki );
-		$t->mFragment = $fragment;
-		$t->mNamespace = $ns = intval( $ns );
-		$t->mDbkeyform = str_replace( ' ', '_', $title );
-		$t->mArticleID = ( $ns >= 0 ) ? -1 : 0;
-		$t->mUrlform = wfUrlencode( $t->mDbkeyform );
-		$t->mTextform = str_replace( '_', ' ', $title );
+				}
+		$interwiki = ucfirst( $interwiki );
+		$t = Title::makeTitle( $ns, $title, $fragment, $interwiki );
 		return $t;
-	}
+	}	
 }
