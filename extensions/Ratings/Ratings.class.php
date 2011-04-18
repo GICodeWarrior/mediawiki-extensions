@@ -131,7 +131,7 @@ final class Ratings {
 		}
 		
 		foreach ( $tags as &$tag ) {
-			$tag['avarage'] = $tag['total'] / $tag['count'];
+			$tag['avarage'] = $tag['count'] > 0 ? $tag['total'] / $tag['count'] : 0;
 		}
 		
 		return $tags;
