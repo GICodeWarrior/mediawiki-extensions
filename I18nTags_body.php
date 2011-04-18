@@ -52,14 +52,17 @@ class I18nTags {
 		return "<b>$predata$inside</b>$data";
 	}
 
-	public static function languageName( &$parser, $code = '', $native = '' ) {
+	public static function languageName( &$parser, $code = '', $outputLanguage = '' ) {
 		global $wgLang;
 		if ( !$code ) {
 			return '';
 		}
+		if ( !$outputLanguage ) {
+			$outputLanguage = $wgLang->getCode();
+		}
 		$cldr   = is_callable( array( 'LanguageNames', 'getNames' ));
-		if ( $native !== 'native' && $cldr ) {
-			$languages = LanguageNames::getNames( $wgLang->getCode(),
+		if ( $outputLanguage !== 'native' && $cldr ) {
+			$languages = LanguageNames::getNames( $outputLanguage,
 				LanguageNames::FALLBACK_NORMAL,
 				LanguageNames::LIST_MW_AND_CLDR
 			);
