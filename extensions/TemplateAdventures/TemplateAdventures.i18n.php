@@ -26,6 +26,7 @@ $messages['en'] = array (
 	'ta-citepubmed-url'      => 'http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid=$1',
 	'ta-citetranstitle-render'  => '&#91;$1&#93;',
 	'ta-citewrittenat'       => 'written at $1',
+	'ta-citeplacepublisher'  => '$1: $2',          # $1 = place, $2 = publisher
 	'ta-citeother'               => '$1',
 	'ta-citeinlanguage'      => '$1 (in $2)',      # $1 = title/link
 	'ta-citeformatrender'    => '$1 ($2)',         # $1 = title/link
