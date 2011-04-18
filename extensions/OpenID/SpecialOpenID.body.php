@@ -347,7 +347,7 @@ class SpecialOpenID extends SpecialPage {
 		return $openid_urls;
 	}
 
-	public static function getUser( $openid ) {
+	public function getUser( $openid ) {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$id = $dbr->selectField(
