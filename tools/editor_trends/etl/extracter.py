@@ -23,7 +23,7 @@ import sys
 import os
 from datetime import datetime
 from xml.etree.cElementTree import iterparse, dump
-from multiprocessing import JoinableQueue, Process, cpu_count, Lock, Manager
+from multiprocessing import JoinableQueue, Process, cpu_count
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -104,80 +104,6 @@ def datacompetition_parse_revision(revision, xml_namespace, bots, counts):
         return counts
 
 
-#def datacompetition_count_edits(fh, rts, process_id, file_id):
-#    '''
-#    This function counts for every editor the total number of edits that person
-#    made. It follows the same logic as the parse_xml function although it
-#    skips a bunch of extraction phases that are not relevant for counting 
-#    edits. This function is only to be used to create the prediction dataset 
-#    for the datacompetition.
-#    '''
-#    bots = bot_detector.retrieve_bots(rts.storage, rts.language.code)
-#    include_ns = {}
-#
-#    start = 'start'; end = 'end'
-#    context = iterparse(fh, events=(start, end))
-#    context = iter(context)
-#
-#    counts = {}
-#    id = False
-#    ns = False
-#    parse = False
-#    count_articles = 0
-#
-#    try:
-#        for event, elem in context:
-#            if event is end and elem.tag.endswith('siteinfo'):
-#                xml_namespace = variables.determine_xml_namespace(elem)
-#                namespaces = variables.create_namespace_dict(elem, xml_namespace)
-#                ns = True
-#                elem.clear()
-#
-#            elif event is end and elem.tag.endswith('title'):
-#                title = variables.parse_title(elem)
-#                current_namespace = variables.determine_namespace(title, namespaces, include_ns)
-#                if isinstance(current_namespace, int):
-#                    parse = True
-#                    count_articles += 1
-#                    if count_articles % 10000 == 0:
-#                        print 'Worker %s parsed %s articles' % (process_id, count_articles)
-#
-#                elem.clear()
-#
-#            elif elem.tag.endswith('revision') and parse == True:
-#                if event is start:
-#                    clear = False
-#                else:
-#                    counts = datacompetition_parse_revision(elem, xml_namespace, bots, counts)
-#                    clear = True
-#                if clear:
-#                    elem.clear()
-#
-#            elif event is end and elem.tag.endswith('page'):
-#                elem.clear()
-#                #Reset all variables for next article
-#                id = False
-#                parse = False
-#
-#    except SyntaxError, error:
-#        print 'Encountered invalid XML tag. Error message: %s' % error
-#        dump(elem)
-#        sys.exit(-1)
-#    except IOError, error:
-#        print '''Archive file is possibly corrupted. Please delete this archive 
-#            and retry downloading. Error message: %s''' % error
-#        sys.exit(-1)
-#    except Exception, error:
-#        print error
-#
-#    filename = 'counts_kaggle_%s.csv' % file_id
-#    keys = counts.keys()
-#    fh = file_utils.create_txt_filehandle(rts.txt, filename, 'w', 'utf-8')
-#    file_utils.write_dict_to_csv(counts, fh, keys)
-#    fh.close()
-#    counts = {}
-
-
 def parse_xml(fh, rts, cache, process_id, file_id):
     bots = bot_detector.retrieve_bots(rts.storage, rts.language.code)
     include_ns = {3: 'User Talk',
@@ -218,14 +144,17 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                     md5hashes = deque()
                 elem.clear()
 
-            elif elem.tag.endswith('revision') and parse == True:
-                if event is start:
-                    clear = False
+            elif elem.tag.endswith('revision'):
+                if parse:
+                    if event is start:
+                        clear = False
+                    else:
+                        md5hashes, size = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size)
+                        cache.count_revisions += 1
+                        clear = True
+                    if clear:
+                        elem.clear()
                 else:
-                    md5hashes, size = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size)
-                    cache.count_revisions += 1
-                    clear = True
-                if clear:
                     elem.clear()
 
             elif event is end and elem.tag.endswith('id') and id == False:
@@ -244,7 +173,6 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 id = False
                 parse = False
 
-
     except SyntaxError, error:
         print 'Encountered invalid XML tag. Error message: %s' % error
         dump(elem)
@@ -259,8 +187,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
 def stream_raw_xml(input_queue, process_id, fhd, rts):
     t0 = datetime.now()
     file_id = 0
-    if not rts.kaggle:
-        cache = buffer.CSVBuffer(process_id, rts, fhd)
+    cache = buffer.CSVBuffer(process_id, rts, fhd)
 
     while True:
         filename = input_queue.get()
@@ -272,12 +199,7 @@ def stream_raw_xml(input_queue, process_id, fhd, rts):
 
         print filename
         fh = file_utils.create_streaming_buffer(filename)
-
-        if rts.kaggle:
-            datacompetition_count_edits(fh, rts, process_id, file_id)
-        else:
-            parse_xml(fh, rts, cache, process_id, file_id)
-
+        parse_xml(fh, rts, cache, process_id, file_id)
         fh.close()
 
         t1 = datetime.now()
@@ -285,9 +207,8 @@ def stream_raw_xml(input_queue, process_id, fhd, rts):
         print 'There are %s files left in the queue' % (input_queue.qsize())
         t0 = t1
 
-    if not rts.kaggle:
-        cache.close()
-        cache.summary()
+    cache.close()
+    cache.summary()
 
 
 def debug():
@@ -300,7 +221,7 @@ def launcher(rts):
     files = file_utils.retrieve_file_list(rts.input_location)
 
     if len(files) > cpu_count():
-        processors = cpu_count()
+        processors = cpu_count() - 1
     else:
         processors = len(files)
 
