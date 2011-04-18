@@ -131,7 +131,7 @@ class TemplateAdventureBasic {
 		# first input is a bit different than the rest,
 		# so we'll treat that differently
 		$primary = trim( $this->mFrame->expand( array_shift( $args ) ) );
-		$primary = $this->handleInputItem( $primary );
+		$primary = $this->handlePrimaryItem( $primary );
 		
 		# check the rest for options
 		foreach( $args as $arg ) {
@@ -169,6 +169,17 @@ class TemplateAdventureBasic {
 		}
 		# Still here?  Then it must be an option
 		return $this->optionParse( $var, $value );
+	}
+
+	/**
+	 * This functions handles the primary item.  It is supposed to be
+	 * overwriteable
+	 *
+	 * @param $arg String Argument
+	 * @return String if understood, else return false
+	 */
+	protected function handlePrimaryItem( $arg ) {
+		return false;
 	}
 
 	/**

@@ -29,7 +29,10 @@ $messages['en'] = array (
 	'ta-citeplacepublisher'  => '$1: $2',          # $1 = place, $2 = publisher
 	'ta-citeother'               => '$1',
 	'ta-citeinlanguage'      => '$1 (in $2)',      # $1 = title/link
+	'ta-citetitletrans'      => '"$1 [$2]"',       # $1 = title/link, $2 = transtitle
 	'ta-citeformatrender'    => '$1 ($2)',         # $1 = title/link
+	'ta-newspublisherplace'  => "''$1'' ($2)",
+	'ta-newspublisher'       => "''$1''",
 	'ta-citeperiodical'      => "''$1''",
 	'ta-citeperiodicaltitle' => "''$1''",
 	'ta-series'              => '$1',
@@ -49,6 +52,7 @@ $messages['en'] = array (
 	'ta-citeretrievedlower'  => 'retrieved $1',
 	
 	# citation span messages
+	'ta-citationspan'        => '<span class="citation $2">$1</span>',
 	'ta-citeprintonlyspan'   => '<span class="printonly">$1</span>',
 	'ta-citeaccessdatespan'  => '<span class="reference-accessdate">$1</span>',
 );
