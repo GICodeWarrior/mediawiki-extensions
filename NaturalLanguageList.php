@@ -170,6 +170,10 @@ class NaturalLanguageList {
 
 		# Convert each item from an array into a string according to the format.
 		$items = array_map( array( $this, 'formatOutputItem' ), $this->mParams );
+		
+		# If there are no items, there is nothing
+		if ( count( $items ) === 0 )
+			return '';
 
 		# If there's only one item, there are no separators
 		if ( count( $items ) === 1 )

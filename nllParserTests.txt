@@ -1,4 +1,13 @@
 !! test
+No items
+!! input
+{{#list:}}
+!! result
+<p>
+</p>
+!! end
+
+!! test
 Regular use, one item
 !! input
 {{#list:|1}}
@@ -197,6 +206,15 @@ Overwritted calculated fieldsperitem input downward
 !! end
 
 !! test
+Rawlist: no items
+!! input
+{{#rawlist:}}
+!! result
+<p>
+</p>
+!! end
+
+!! test
 Basic rawlist input
 !! input
 {{#rawlist:,|1,2,3,4,5}}
@@ -256,6 +274,15 @@ Overwriting ignore with data
 {{#list: [[Foo]] | [[Bar]] | data=ignore=[[Foo]] }}
 !! result
 <p><a href="/index.php?title=Foo&amp;action=edit&amp;redlink=1" class="new" title="Foo (page does not exist)">Foo</a>, <a href="/index.php?title=Bar&amp;action=edit&amp;redlink=1" class="new" title="Bar (page does not exist)">Bar</a> and ignore=<a href="/index.php?title=Foo&amp;action=edit&amp;redlink=1" class="new" title="Foo (page does not exist)">Foo</a>
+</p>
+!! end
+
+!! test
+Rangelist: No items
+!! input
+{{#rangelist:}}
+!! result
+<p>
 </p>
 !! end
 
