@@ -378,7 +378,12 @@ class SimpleSecurity {
 	 */
 	static function updateLB( &$lb ) {
 		$lb->closeAll();
-		foreach ( $lb->mServers as $i => $server ) $lb->mServers[$i]['type'] = 'SimpleSecurity';
+		$serverCount = $lb->getServerCount(); 
+		for ( $i = 0; $i < $serverCount; $i++ ) {
+			$server = $lb->getServerInfo( $i );
+			$sever['type'] = 'SimpleSecurity';
+			$lb->setServerInfo ( $i, $server );
+		}
 	}
 
 
