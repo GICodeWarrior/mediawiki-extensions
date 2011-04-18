@@ -35,7 +35,7 @@ final class Ratings {
 	public static function getRatingSummaryMessage( Title $title, $tagName ) {
 		$tagData = self::getCurrentRatingForTag( $title, $tagName );
 		
-		if ( count( $tagData['count'] ) > 0 ) {
+		if ( $tagData['count'] > 0 ) {
 			$message = wfMsgExt(
 				'ratings-current-score',
 				'parsemag',
