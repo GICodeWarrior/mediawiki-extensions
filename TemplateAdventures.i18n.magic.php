@@ -6,8 +6,8 @@ $magicWords['en'] = array(
 	# citation magic words
 	'citation'                => array( 1, 'citation' ),
 	'ta_cc_author'            => array( 0, 'author' ),
-	'ta_cc_authorsurname'     => array( 0, 'surname' ),
-	'ta_cc_authorgiven'       => array( 0, 'given' ),
+	'ta_cc_authorsurname'     => array( 0, 'surname', 'last' ),
+	'ta_cc_authorgiven'       => array( 0, 'given', 'first' ),
 	'ta_cc_authorlink'        => array( 0, 'authorlink' ),
 	'ta_cc_coauthors'         => array( 0, 'coauthors' ),
 	'ta_cc_editor'            => array( 0, 'editor' ),
@@ -21,4 +21,7 @@ $magicWords['en'] = array(
 	'ta_cc_periodical'        => array( 0, 'periodical' ),
 	'ta_cc_transitalic'       => array( 0, 'transitalic' ),
 	'ta_cc_transtitle'        => array( 0, 'transtitle' ),
+	'ta_cc_year'              => array( 0, 'year' ),
+	'ta_cc_publisher'         => array( 0, 'publisher' ),
+	'ta_cc_place'             => array( 0, 'place' ),
 );
