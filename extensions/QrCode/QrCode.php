@@ -68,18 +68,10 @@ function newQrCode() {
 	$margin = $ecc = $size = $label = false;
 
 	foreach( $params as $pair ) {
-		$rpms = explode( '=', $pair );
-		if( $rpms[0] == 'ecc' ) {
-			$ecc = $rpms[1];
-		}
-		if( $rpms[0] == 'size' ) {
-			$size = $rpms[1];
-		}
-		if( $rpms[0] == 'boundary' ) {
-			$margin = $rpms[1];
-		}
-		if( $rpms[0] == 'label' ) {
-			$label = $rpms[1];
+		$firstEqual = strpos( $pair, '=' );
+		$tmpKey = substr( $pair, 0, $firstEqual );
+		if ( $tmpKey != 'parser' ) {	// don't let users overwrite the parser object
+			$$tmpKey = substr( $pair, $firstEqual + 1 );
 		}
 	}
 
@@ -174,7 +166,7 @@ class MWQrCode {
 		$tmpName = tempnam( $wgTmpDirectory, 'qrcode' );
 
 		QRcode::png( $this->_label, $tmpName, $this->_ecc, $this->_size, $this->_margin );
-		wfDebug( "QrCode::_generate: Generated qrcode file $tmpName with ecc ".$this->_ecc
+		wfDebug( "QrCode::_generate: Generated qrcode file $tmpName containing \"".$this->_label."\" with ecc ".$this->_ecc
 			.", ".$this->_size." and boundary ".$this->_margin.".\n" );
 
 		$jobParams = array( 'tmpName' => $tmpName, 'dstName' => $this->_dstFileName, 'comment' => $this->_uploadComment );
