@@ -1332,6 +1332,7 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'wikisync' => 'Pagsasabay ng Wiki',
 	'wikisync_direction' => 'Mangyaring piliin ang kapupuntahan ng pagpapasabayan',
 	'wikisync_local_root' => 'Katutubong ugat ng lugar ng wiki',
 	'wikisync_remote_root' => 'Malayong ugat ng lugar ng wiki',
@@ -1346,6 +1347,7 @@ $messages['tl'] = array(
 	'wikisync_sync_files' => 'Pagsabay-sabayin ang mga talaksan',
 	'wikisync_store_password' => 'Iimbak ang malayong hudyat ng wiki',
 	'wikisync_storing_password_warning' => 'Hindi ligtas ang pag-iimbak ng malayong hudyat at hindi iminumungkahi',
+	'wikisync_synchronization_button' => 'Pagsabayin',
 	'wikisync_scheduler_log' => 'Talaan ng tagapagtakda',
 	'wikisync_scheduler_setup' => 'Pagkakahanda ng tagapagtakda',
 	'wikisync_scheduler_turn_on' => 'Buhayin ang pangtakda',
