@@ -605,6 +605,7 @@ $messages['lb'] = array(
  * @author Namik
  */
 $messages['lez'] = array(
+	'abc-desc' => 'Ктунхъувун <code>&lt;abc&gt;</code> тег форматда ABC мани',
 	'abcdownload' => 'Цунарун',
 );
 
