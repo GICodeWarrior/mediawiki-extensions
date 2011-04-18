@@ -681,6 +681,51 @@ $1 танылырға һәм $2',
 	'mwe-review-upload' => '{{PLURAL:$1|файлды|файлдарҙы}} тейәүҙе ҡарап сығырға',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 de $2',
+	'mwe-upload-unknown-size' => 'Tamañu desconocíu',
+	'mwe-cancel-confim' => '¿De xuro quies encaboxar?',
+	'mwe-successfulupload' => 'Xubida correuta',
+	'mwe-uploaderror' => 'Error de xubida',
+	'mwe-uploadwarning' => 'Avisu de xubida',
+	'mwe-unknown-error' => 'Error desconocíu:',
+	'mwe-return-to-form' => 'Tornar al formulariu',
+	'mwe-file-exists-duplicate' => 'Esti ficheru ye un duplicáu del ficheru darréu:',
+	'mwe-fileexists' => 'Yá esiste un ficheru con esti nome. Comprueba <b><code>$1</code></b> si nun tas seguru de si quies camudalu.',
+	'mwe-fileexists-thumb' => 'Ficheru esistente',
+	'mwe-ignorewarning' => "Inorar l'avisu y guardar el ficheru de toles maneres",
+	'mwe-file-thumbnail-no' => 'El nome de ficheru entama con <b><code>$1</code></b>',
+	'mwe-go-to-resource' => 'Dir a la páxina de recursos',
+	'mwe-upload-misc-error' => 'Error de xubida desconocíu',
+	'mwe-wgfogg_warning_bad_extension' => 'Seleicionasti un ficheru con una estensión ensin sofitu (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">más información</a>).',
+	'mwe-thumbnail-more' => 'Agrandar',
+	'mwe-filesource' => 'Fonte:',
+	'mwe-filestatus' => 'Estáu del Copyright:',
+	'mwe-loading-add-media-wiz' => "Cargando l'asistente p'amestar multimedia",
+	'mwe-imported_from' => '$1 importáu de [$2 $3].
+Ver la [$4 páxina del recursu] orixinal pa más información.',
+	'mwe-import-description' => '$1, importáu de $2',
+	'mwe-select_file' => 'Seleicionar ficheru',
+	'mwe-select_ownwork' => 'Toi xubiendo un trabayu míu dafechu, y llicenciándolu baxo:',
+	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
+	'mwe-upload' => 'Xubir ficheru',
+	'mwe-destfilename' => 'Nome del ficheru destín:',
+	'mwe-summary' => 'Resume',
+	'mwe-date-of-work' => 'Data del trabayu',
+	'mwe-error_not_loggedin' => 'Paez que nun tas coneutáu o que nun tienes permisos de xubida.',
+	'mwe-error-not-loggedin-file' => 'Paez que nun tas coneutáu o hebo un fallu nel software.
+Pues $1 y volver a tentalo',
+	'mwe-link-login' => 'identificate',
+	'mwe-watch-this-file' => 'Vixilar esti ficheru',
+	'mwe-ignore-any-warnings' => 'Inorar tolos avisos',
+	'mwe-i-would-like-to' => 'Quixera',
+	'mwe-upload-own-file' => 'Xubir el mio propiu trabayu a $1',
+	'mwe-upload-not-my-file' => 'Xubir multimedia que nun ye un trabayu de mió a $1',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
