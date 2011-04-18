@@ -2,6 +2,8 @@
 
 class Citation extends TemplateAdventureBasic {
 
+	private $citeType = null;        # type of citation, e.g. 'news'
+	                                 # currently only 'news' supported.
 	private $dSeparators = array(    # separators between names, items, etc.
 		'section'    => ',',
 		'end'        => '.',
@@ -103,6 +105,7 @@ class Citation extends TemplateAdventureBasic {
 		$authorDisplayed = false; # whether authors or editors have been 
 		                          # displayed
 		$publisherDisplayed = false; # whether publisher have been displayed
+		$languageDisplayed = false;
 		# output
 		$this->mOutput = '';
 		# authors
@@ -175,8 +178,18 @@ class Citation extends TemplateAdventureBasic {
 		} else if ( $this->notNull ( $this->dWorkTitle['title'] ) ) {
 			# if only the title is set, assume url is the URL of the title
 			$url = $this->dWorkLink['url'];
-			$title = $this->dWorkTitle['title'];
-			$this->mOutput .= $this->makeLink ( $url, $title ) . $this->getSeparator( 'section' );
+			if ( $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
+				$title = wfMsg ( 'ta-citetitletrans', $this->dWorkTitle['title'], $this->dWorkTitle['transtitle'] );
+				if ( $this->notNull ( $this->dLanguage ) ) {
+					$this->mOutput .= wfMsg ( 'ta-citeinlanguage', $this->makeLink ( $url, $title ), $this->dLanguage ) . $this->getSeparator( 'section' );
+					$languageDisplayed = true;
+				} else {
+					$this->mOutput .= $this->makeLink ( $url, $title ) . $this->getSeparator( 'section' );
+				}
+			} else {
+				$title = $this->dWorkTitle['title'];
+				$this->mOutput .= $this->makeLink ( $url, $title ) . $this->getSeparator( 'section' );		
+			}
 			$urlDisplayed = true;
 		}
 		# place, but only if different from publication place.
@@ -187,13 +200,22 @@ class Citation extends TemplateAdventureBasic {
 			) && ( 
 				$authorDisplayed
 				|| $this->notNull ( $this->dWorkTitle['includedwork'] ) 
-			) 
+			) && ( $this->citeType != 'news' )
 		) {
-			if ( $this->notNull ( $this->dPublisher ) ) {
+			if ( $this->notNull ( $this->dPublisher )
+				&& ( $this->citeType != 'news' ) ) {
 				$this->mOutput .= wfMsg ( 'ta-citeplacepublisher', $this->dPlace,$this->dPublisher ) . $this->getSeparator ( 'section' );
 				$publisherDisplayed = true;
 			} else {
 				$this->mOutput .= wfMsg ( 'ta-citewrittenat', $this->dPlace ) . $this->getSeparator ( 'section' );
+			}
+		}
+		if ( ( $this->citeType == 'news' )
+			&& $this->notNull ( $this->dPublisher ) ) {
+			if ( $this->notNull ( $this->dPlace ) ) {
+				$this->mOutput .= wfMsg ( 'ta-newspublisherplace', $this->dPublisher, $this->dPlace ) . $this->getSeparator ( 'section' );
+			} else {
+				$this->mOutput .= wfMsg ( 'ta-newspublisher', $this->dPublisher ) . $this->getSeparator ( 'section' );
 			}
 		}
 		# editor of complication... eerrr...
@@ -250,8 +272,10 @@ class Citation extends TemplateAdventureBasic {
 			$this->mOutput .= $perArea;
 		}
 		# language
-		if ( $this->notNull ( $this->dLanguage ) ) {
+		if ( $this->notNull ( $this->dLanguage )
+			&& !$languageDisplayed ) {
 			$this->mOutput .= wfMsg ( 'ta-citeinlanguage', $this->dLanguage );
+			$languageDisplayed = true;
 		}
 		# format
 		if ( $this->notNull ( $this->dFormat ) ) {
@@ -478,8 +502,8 @@ class Citation extends TemplateAdventureBasic {
 		} elseif ( $this->mOutput[strlen($this->mOutput)-1] != $this->getSeparator ( 'end', false ) ) {
 			$this->mOutput .= $this->getSeparator ( 'end', false );
 		}
-		# if the end 'separator' is blank
-		$this->mOutput = trim($this->mOutput);
+		# if the end 'separator' is blank, so we trim
+		$this->mOutput = wfMsg ( 'ta-citationspan', trim($this->mOutput), $this->citeType );
 	}
 
 	/**
@@ -539,9 +563,13 @@ class Citation extends TemplateAdventureBasic {
 				if ( $writer[1][0] != null )
 					$tmp .= $this->getSeparator( 'name' ) . $writer[1][0];
 			} else {
-				# maybe we shan't support no surname/given name structure
-				# in the future, but we'll leave it like this for now.
-				$tmp .= $writer[1][1];
+				if ( is_array ( $writer[1] ) ) {
+					# maybe we shan't support no surname/given name structure
+					# in the future, but we'll leave it like this for now.
+					$tmp .= $writer[1][1];
+				} else {
+					$tmp .= $writer[1];
+				}
 			}
 			if ( isset ( $links[$i] ) )
 				$tmp = "[{$links[$i]} $tmp]";
@@ -558,9 +586,7 @@ class Citation extends TemplateAdventureBasic {
 	}
 
 	private function notNull ( $check ) {
-		if ( $check == null && $check == '' )
-			return false;
-		return true;
+		return !( $check == null && $check == '' );
 	}
 
 	/**
@@ -672,6 +698,12 @@ class Citation extends TemplateAdventureBasic {
 			case 'title':
 				$this->dWorkTitle['title'] = $value;
 				break;
+			case 'transtitle':
+				$this->dWorkTitle['transtitle'] = $value;
+				break;
+			case 'language':
+				$this->dLanguage = $value;
+				break;
 			case 'includedworktitle':
 				$this->dWorkTitle['includedwork'] = $value;
 				break;
@@ -680,6 +712,9 @@ class Citation extends TemplateAdventureBasic {
 				break;
 			case 'year':
 				$this->dYear = $value;
+				break;
+			case 'date':
+				$this->dDate = $value;
 				break;
 			case 'place':
 				$this->dPlace = $value;
@@ -735,8 +770,10 @@ class Citation extends TemplateAdventureBasic {
 			case 'transitalic':
 			case 'transtitle':
 			case 'year':
+			case 'date':
 			case 'place':
 			case 'publisher':
+			case 'language':
 				$this->addOtherStringValue( $name, $value );
 				break;
 			default:
@@ -744,6 +781,11 @@ class Citation extends TemplateAdventureBasic {
 				return false;
 		}
 		return true;
+	}
+	
+	protected function handlePrimaryItem( $item ) {
+		if ( in_array ( $item, array ( 'news' ) ) )
+			$this->citeType = $item;
 	}
 
 	/**
@@ -769,7 +811,8 @@ class Citation extends TemplateAdventureBasic {
 				'ta_cc_includedworktitle', 'ta_cc_periodical',
 				'ta_cc_transitalic', 'ta_cc_transtitle',
 				'ta_cc_year', 'ta_cc_publisher',
-				'ta_cc_place',
+				'ta_cc_place', 'ta_cc_transtitle',
+				'ta_cc_language', 'ta_cc_date',
 			) );
 		}
 

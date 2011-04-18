@@ -22,6 +22,9 @@ $magicWords['en'] = array(
 	'ta_cc_transitalic'       => array( 0, 'transitalic' ),
 	'ta_cc_transtitle'        => array( 0, 'transtitle' ),
 	'ta_cc_year'              => array( 0, 'year' ),
-	'ta_cc_publisher'         => array( 0, 'publisher' ),
-	'ta_cc_place'             => array( 0, 'place' ),
+	'ta_cc_publisher'         => array( 0, 'publisher', 'newspaper' ),
+	'ta_cc_place'             => array( 0, 'place', 'location' ),
+	'ta_cc_transtitle'        => array( 0, 'transtitle', 'trans_title' ),
+	'ta_cc_language'          => array( 0, 'language' ),
+	'ta_cc_date'              => array( 0, 'date' ),
 );
