@@ -140,7 +140,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		static $allowed = null;
 		if ( $allowed === null ) {
 			global $wgUser;
-			$allowed = $wgUser->isAllowed( $this->mRestriction . '-all' );
+			$allowed = $wgUser->isAllowed( $this->getRestriction() . '-all' );
 		}
 		return $allowed;
 	}
@@ -153,7 +153,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		static $allowed = null;
 		if ( $allowed === null ) {
 			global $wgUser;
-			$allowed = $wgUser->isAllowed( $this->mRestriction . '-interwiki' );
+			$allowed = $wgUser->isAllowed( $this->getRestriction() . '-interwiki' );
 		}
 		return $allowed;
 	}
