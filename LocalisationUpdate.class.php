@@ -277,8 +277,8 @@ class LocalisationUpdate {
 				$attempts++;
 			}
 			if ( !$basefilecontents ) {
-					self::myLog( 'Cannot get the contents of ' . $basefile . ' (curl)' );
-					return false;
+				self::myLog( 'Cannot get the contents of ' . $basefile . ' (curl)' );
+				return false;
 			}
 		} else {// otherwise try file_get_contents
 			if ( !( $basefilecontents = file_get_contents( $basefile ) ) ) {
@@ -322,7 +322,7 @@ class LocalisationUpdate {
 		// Check if the file has changed since our last update.
 		if ( !$alwaysGetResult ) {
 			if ( !self::checkHash( $basefile, $basehash ) ) {
-				self::myLog( "Skipping {$langcode} since the remote file hasn't changed since our last update" );
+				self::myLog( "Skipping {$langcode} since the remote file hasn't changed since our last update", $verbose );
 				return array();
 			}
 		}
@@ -346,7 +346,7 @@ class LocalisationUpdate {
 		// If this is the remote file check if the file has changed since our last update.
 		if ( preg_match( "/^http/", $comparefile ) && !$alwaysGetResult ) {
 			if ( !self::checkHash( $comparefile, $comparehash ) ) {
-				self::myLog( "Skipping {$langcode} since the remote file has not changed since our last update" );
+				self::myLog( "Skipping {$langcode} since the remote file has not changed since our last update", $verbose );
 				return array();
 			}
 		}
@@ -356,7 +356,7 @@ class LocalisationUpdate {
 
 		// If the localfile and the remote file are the same, skip them!
 		if ( $basehash == $comparehash && !$alwaysGetResult ) {
-			self::myLog( "Skipping {$langcode} since the remote file is the same as the local file" );
+			self::myLog( "Skipping {$langcode} since the remote file is the same as the local file", $verbose );
 			return array();
 		}
 
@@ -371,12 +371,12 @@ class LocalisationUpdate {
 
 		// If we want to save the differences.
 		if ( $saveResults && !empty( $changedStrings ) && is_array( $changedStrings ) ) {
-			self::myLog( "--Checking languagecode {$langcode}--" );
+			self::myLog( "--Checking languagecode {$langcode}--", $verbose );
 			// Save the differences.
 			$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $compare_messages, $base_messages, $langcode, $verbose );
-			self::myLog( "{$updates} messages updated for {$langcode}." );
+			self::myLog( "{$updates} messages updated for {$langcode}.", $verbose );
 		} elseif ( $saveResults ) {
-			self::myLog( "--{$langcode} hasn't changed--" );
+			self::myLog( "--{$langcode} hasn't changed--", $verbose );
 		}
 		
 		self::saveHash( $basefile, $basehash );
@@ -444,7 +444,7 @@ class LocalisationUpdate {
 				// Output extra logmessages when needed.
 				if ( $verbose ) {
 					$oldmsg = isset( $compare_messages[$key] ) ? "'{$compare_messages[$key]}'" : 'not set';
-					self::myLog( "Updated message {$key} from $oldmsg to '{$base_messages[$key]}'" );
+					self::myLog( "Updated message {$key} from $oldmsg to '{$base_messages[$key]}'", $verbose );
 				}
 
 				// Update the counter.
@@ -487,18 +487,18 @@ class LocalisationUpdate {
 		if ( preg_match( "/^http/", $basefile ) && !$alwaysGetResult ) {
 			// Check if the hash has changed
 			if ( !self::checkHash( $basefile, $basehash ) ) {
-				self::myLog( "Skipping {$extension} since the remote file has not changed since our last update" );
+				self::myLog( "Skipping {$extension} since the remote file has not changed since our last update", $verbose );
 				return 0;
 			}
 		}
 
 		// And get the real contents
 		$base_messages = self::parsePHP( $basefilecontents, 'base_messages' );
-		
+
 		$comparefilecontents = self::getFileContents( $comparefile );
-		
+
 		if ( $comparefilecontents === false || $comparefilecontents === '' ) {
-			return 0; // Failed	
+			return 0; // Failed
 		}
 
 		// Only get what we need.
@@ -507,21 +507,21 @@ class LocalisationUpdate {
 		// Rename the array.
 		$comparefilecontents = preg_replace( "/\\\$messages/", "\$compare_messages", $comparefilecontents );
 		$comparehash = md5( $comparefilecontents );
-		
+
 		if ( preg_match( "/^http/", $comparefile ) && !$alwaysGetResult ) {
 			// Check if the remote file has changed
 			if ( !self::checkHash( $comparefile, $comparehash ) ) {
-				self::myLog( "Skipping {$extension} since the remote file has not changed since our last update" );
+				self::myLog( "Skipping {$extension} since the remote file has not changed since our last update", $verbose );
 				return 0;
 			}
 		}
-		
+
 		// Get the real array.
 		$compare_messages = self::parsePHP( $comparefilecontents, 'compare_messages' );
 
 		// If both files are the same, they can be skipped.
 		if ( $basehash == $comparehash && !$alwaysGetResult ) {
-			self::myLog( "Skipping {$extension} since the remote file is the same as the local file" );
+			self::myLog( "Skipping {$extension} since the remote file is the same as the local file", $verbose );
 			return 0;
 		}
 
@@ -571,17 +571,17 @@ class LocalisationUpdate {
 
 			// If we want to save the changes.
 			if ( $saveResults === true && !empty( $changedStrings ) && is_array( $changedStrings ) ) {
-				self::myLog( "--Checking languagecode {$language}--" );
+				self::myLog( "--Checking languagecode {$language}--", $verbose );
 				// The save them
 				$updates = self::saveChanges( $changedStrings, $forbiddenKeys, $compare_messages[$language], $messages, $language, $verbose );
-				self::myLog( "{$updates} messages updated for {$language}." );
+				self::myLog( "{$updates} messages updated for {$language}.", $verbose );
 			} elseif($saveResults === true) {
-				self::myLog( "--{$language} hasn't changed--" );
+				self::myLog( "--{$language} hasn't changed--", $verbose );
 			}
 		} 
 
 		// And log some stuff.
-		self::myLog( "Updated " . $updates . " messages for the '{$extension}' extension" );
+		self::myLog( "Updated " . $updates . " messages for the '{$extension}' extension", $verbose );
 
 		self::saveHash( $basefile, $basehash );
 		
@@ -595,7 +595,10 @@ class LocalisationUpdate {
 	 * 
 	 * @param $log String
 	 */
-	public static function myLog( $log ) {
+	public static function myLog( $log, $verbose = true ) {
+		if ( !$verbose ) {
+			return;
+		}
 		if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
 			wfDebug( $log . "\n" );
 		} else {
