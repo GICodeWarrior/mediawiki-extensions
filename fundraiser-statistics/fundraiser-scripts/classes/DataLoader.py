@@ -73,6 +73,8 @@ class IntervalReportingLoader(DataLoader):
     def __init__(self):
          self._query_names_['banner'] = 'report_banner_metrics_minutely'
          self._query_names_['LP'] = 'report_LP_metrics_minutely'
+         self._query_names_['campaign'] = 'report_campaign_metrics_minutely'
+         self._query_names_['campaign_total'] = 'report_campaign_metrics_minutely_total'
          
     def get_sql_filename_for_query(self, query_type):
         return self._query_names_[query_type]
@@ -81,17 +83,17 @@ class IntervalReportingLoader(DataLoader):
         <DESCRIPTION>
         
         INPUT:
-                start_time        -
-                end_time          -
-                interval          -
-                query_type        -
-                metric_name       -
-                campaign          -
+                start_time        - start timestamp for reporting 
+                end_time          - end timestamp for reporting
+                interval          - minutely interval at which to report metrics
+                query_type        - query type: 'banner', 'campaign', 'LP'
+                metric_name       - the metric to report
+                campaign          - the campaign on which to select
                 
             
         RETURN: 
-                metrics        - 
-                times          -
+                metrics        - dict containing metric measure for each time index for each donation pipeline handle (e.g. banner names) 
+                times          - dict containing time index for each donation pipeline handle (e.g. banner names)
     """
     def run_query(self, start_time, end_time, interval, query_type, metric_name, campaign):
         
@@ -119,16 +121,13 @@ class IntervalReportingLoader(DataLoader):
         
         
         """ Load the SQL File & Format """
-        filename = self._sql_path_ + query_name + '.sql'
+        filename = self._sql_path_+ query_name + '.sql'
         sql_stmnt = mh.read_sql(filename)
         
         sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign, interval])
         
         """ Get Indexes into Query """
-        if query_type == 'banner':
-            key_index = QD.get_banner_index(query_name)
-        if query_type == 'LP':
-            key_index = QD.get_landing_page_index(query_name)
+        key_index = QD.get_key_index(query_name)
             
         metric_index = QD.get_metric_index(query_name, metric_name)
         time_index = QD.get_time_index(query_name)
@@ -181,7 +180,6 @@ class IntervalReportingLoader(DataLoader):
             self._db_.rollback()
             sys.exit(0)
         
-        
 
         """ Ensure that the last time in the list is the endtime less the interval """        
         for key in times.keys():
@@ -200,7 +198,51 @@ class IntervalReportingLoader(DataLoader):
             metrics[key] = metrics_new
         
         return [metrics, times]
+
+"""
+
+
+"""
+class CampaignIntervalReportingLoader(IntervalReportingLoader):
     
+    def __init__(self):
+        IntervalReportingLoader.__init__(self)
+        
+    """
+        <DESCRIPTION>
+        
+        INPUT:
+                start_time        - start timestamp for reporting 
+                end_time          - end timestamp for reporting
+                interval          - minutely interval at which to report metrics
+                query_type        - query type: 'banner', 'campaign', 'LP'
+                metric_name       - the metric to report
+                campaign          - the campaign on which to select
+                
+            
+        RETURN: 
+                metrics        - dict containing metric measure for each time index for each donation pipeline handle (e.g. banner names) 
+                times          - dict containing time index for each donation pipeline handle (e.g. banner names)
+    """
+    def run_query(self, start_time, end_time, interval, query_type, metric_name, campaign):
+        
+        query_type_1 = 'campaign'
+        query_type_2 = 'campaign_total'
+        
+        """ Execute the standard interval reporting query """
+        metrics, times = IntervalReportingLoader.run_query(self, start_time, end_time, interval, query_type_1, metric_name, campaign)
+        
+        """ Get the totals for campaign views and donations """
+        metrics_total, times_total = IntervalReportingLoader.run_query(self, start_time, end_time, interval, query_type_2, metric_name, campaign)
+        
+        """ Combine the results for the campaign totals with (banner, landing page, campaign) """
+        for key in metrics_total.keys():
+            metrics[key] = metrics_total[key]
+            times[key] = times_total[key]
+
+            
+        return [metrics, times]
+
     
 class BannerLPReportingLoader(DataLoader):
     
