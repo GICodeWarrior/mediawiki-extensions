@@ -372,8 +372,8 @@ class ConfidenceTest(object):
 			av_std_dev_1 = av_std_dev_1 + math.pow(std_devs_1[i], 2)
 			av_std_dev_2 = av_std_dev_2 + math.pow(std_devs_2[i], 2)
 		
-		av_std_dev_1 = math.pow(av_std_dev_1, 0.5) / len(std_devs_1)
-		av_std_dev_2 = math.pow(av_std_dev_2, 0.5) / len(std_devs_1)
+		av_std_dev_1 = math.pow(av_std_dev_1 / len(std_devs_1), 0.5) 
+		av_std_dev_2 = math.pow(av_std_dev_2 / len(std_devs_1), 0.5)
 		
 		""" Assign the winner """	
 		if av_means_1 > av_means_2:
@@ -394,8 +394,8 @@ class ConfidenceTest(object):
 		print win_str
 		print '\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n'
 		file.write('\n\n' +  metric_name)
-		file.write('\nitem 1  = ' + labels[0] + '\n')
-		file.write('\nitem 2  = ' + labels[1] + '\n')
+		file.write('\n\nitem 1  = ' + labels[0] + '\n')
+		file.write('item 2  = ' + labels[1] + '\n')
 		file.write(win_str)
 		file.write('\n\ninterval\tmean1\t\tmean2\t\tstddev1\t\tstddev2\n\n')
 		
@@ -550,11 +550,11 @@ class TTest(ConfidenceTest):
 		 	The difference of the means and the sum of the variances is used to compose the random variable W = X1 - X2 for each trial
 			where X{1,2} is the random variable corresponding to the group {1,2} """
 		for i in range(num_trials): 
-		
+			
 			m_tot  = m_tot + math.fabs(means_1[i] - means_2[i])
 			var_1_tot  = var_1_tot + vars_1[i]
 			var_2_tot  = var_2_tot + vars_2[i]
-			
+		
 		m = m_tot / num_trials
 		s_1 = var_1_tot / num_trials
 		s_2 = var_2_tot / num_trials
@@ -562,16 +562,15 @@ class TTest(ConfidenceTest):
 		total_samples = len(metrics_1)
 		
 		t = m / math.pow((s_1 + s_2) / total_samples, 0.5)
-		degrees_of_freedom = (math.pow(s_1 / total_samples + s_2 / total_samples, 2) / (math.pow(s_1 / total_samples, 2) + math.pow(s_2 / total_samples, 2))) * total_samples
-			
+		degrees_of_freedom = (math.pow(s_1 / total_samples + s_2 / total_samples, 2) / (math.pow(s_1 / total_samples, 2) + math.pow(s_2 / total_samples, 2))) * (total_samples - 1)
+		
 		
 		""" lookup confidence """
-		
 		# get t and df
 		degrees_of_freedom = math.ceil(degrees_of_freedom)
 		if degrees_of_freedom > 30:
 			degrees_of_freedom = 99
-			
+		
 		select_stmnt = 'select max(p) from t_test where degrees_of_freedom = ' + str(degrees_of_freedom) + ' and t >= ' + str(t)
 		
 		self._data_loader_.init_db()
@@ -592,7 +591,14 @@ class TTest(ConfidenceTest):
 		#print p 
 		self._data_loader_._db_.close()
 		
-		conf_str =  str((1 - p) * 100) + '% confident about the winner.'
+		probs = [0.400000, 0.250000, 0.100000, 0.050000, 0.025000, 0.010000, 0.005000, 0.000500]
+		prob_diffs = [math.fabs(i-p) for i in probs]
+		min_index = min((n, i) for i, n in enumerate(prob_diffs))[1]
+		
+		if min_index > 0:
+			lower_p = probs[min_index - 1]
+		
+		conf_str =  'Between ' + str((1 - lower_p) * 100) + '% and ' + str((1 - p) * 100) + '% confident about the winner.'
 		
 		return [means_1, means_2, std_devs_1, std_devs_2, conf_str]
 		
