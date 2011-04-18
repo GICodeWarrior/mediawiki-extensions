@@ -21,6 +21,8 @@ $messages['en'] = array(
 	'ratings-desc' => 'Allows users to rate different "properties" of pages',
 
 	// Rating stars
+	'ratings-starsratings-desc' => 'Displays a simple star rating control allowing the user to rate a certain property of a page.
+The current vote of the user will be displayed initially when he already voted.',
 	'ratings-par-page' => 'The page the rating applies to.',
 	'ratings-par-tag' => 'The rating tag. The tag indicates what "property" of the page gets rated.',
 	'ratings-par-showdisabled' => 'Show ratings when the user can not vote (in read-only mode).',
