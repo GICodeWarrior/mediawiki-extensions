@@ -49,6 +49,16 @@ $messages['be-tarask'] = array(
 	'right-searchlog-read' => 'прагляд журнала пошукаў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'searchlog' => 'Marilh an enklaskoù',
+	'searchlog-heading' => 'Gerioù goulennet e-pad ar prantad $1',
+	'searchlog-phrase' => 'Klask ar frazenn',
+	'right-searchlog-read' => 'Gwelet marilh an enklaskoù',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

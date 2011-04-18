@@ -400,6 +400,13 @@ $2',
 	'group-manager-member' => 'مدير',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'whitelisttablemodify' => 'Camudar',
+);
+
 /** Aymara (Aymar aru)
  * @author Erebedhel
  */

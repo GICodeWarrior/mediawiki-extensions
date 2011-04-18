@@ -119,6 +119,11 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'ratings-desc' => "Maakt het voor gebruikers mogelijk verschillende eigenschappen van pagina's te waarderen",
 	'ratings-par-page' => 'De pagina waar de waardering op van toepassing is.',
+	'ratings-par-tag' => 'Het waarderingslabel. Het label geeft aan welke "eigenschap" van de pagina wordt gewaardeerd.',
+	'ratings-par-showdisabled' => 'Waarderingen weergeven als de gebruiker niet kan waarderen (bij alleen-lezen).',
+	'ratings-par-incsummary' => 'Een samenvatting weergeven van de huidige waarderingen boven het waarderingselement?',
+	'ratings-current-score' => 'Huidige gebruikerswaardering: $1 ($2 {{PLURAL:$2|waardering|waarderingen}})',
+	'ratings-no-votes-yet' => 'Dit onderdeel is nog door niemand gewaardeerd.',
 );
 
 /** Telugu (తెలుగు)

@@ -290,6 +290,7 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'ogg-desc' => "Remanador d'archivos Ogg Theora y Vorbis, con un reproductor JavaScript",
@@ -319,6 +320,8 @@ href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descar
 	'ogg-dismiss' => 'Zarrar',
 	'ogg-download' => 'Descargar archivu',
 	'ogg-desc-link' => 'Tocante a esti archivu',
+	'ogg-oggThumb-version' => 'OggHandler requier oggThumb version $1 o mayor.',
+	'ogg-oggThumb-failed' => 'oggThumb nun pudo crear la miniatura.',
 );
 
 /** Kotava (Kotava)

@@ -194,6 +194,7 @@ $messages['br'] = array(
 	'ts-citegen-Skin-outputformat' => 'Furmad ezvont',
 	'ts-citegen-Template-lang' => 'Yezh ar patrom',
 	'ts-citegen-Sources-title' => 'Mammennoù',
+	'ts-citegen-Sidebar-add-Firefox' => "Ouzhpennañ d'ar varrenn gostez",
 	'ts-citegen-Tools' => 'Ostilhoù',
 	'ts-citegen-Other-languages' => 'Yezhoù all',
 	'ts-citegen-Save-it' => 'Reked red',

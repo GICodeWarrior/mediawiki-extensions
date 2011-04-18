@@ -23,13 +23,6 @@ $messages['qqq'] = array(
 	'addmediawizard-desc' => '{{desc}}',
 );
 
-/** Angika (अंगिका)
- * @author Angpradesh
- */
-$messages['anp'] = array(
-	'addmediawizard-desc' => 'मीडिया विजार्ड जोङॊ, कालतुरा आरू विकीमीडीया फाउंडेशन केरॊ साझेदारी मॆ विकसित.',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -37,11 +30,26 @@ $messages['af'] = array(
 	'addmediawizard-desc' => 'Wizard vir byvoeg van media, ontwikkel in samewerking met Kaltura en die Wikimedia-stigting',
 );
 
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$messages['anp'] = array(
+	'addmediawizard-desc' => 'मीडिया विजार्ड जोङॊ, कालतुरा आरू विकीमीडीया फाउंडेशन केरॊ साझेदारी मॆ विकसित.',
+);
+
 /** Arabic (العربية)
  * @author Moemin05
  */
 $messages['ar'] = array(
 	'addmediawizard-desc' => 'معالج إضافة الوسائط، طَوَّرَاه بالشراكة كالتورا و مؤسّسة ويكيميديا',
+);
+
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'addmediawizard-desc' => "Asistente p'amestar multimedia, desendolcáu n'asociación por Kaltura y la Fundación Wikimedia",
+	'addmediawizard-loading' => "Cargando l'asistente p'amestar multimedia",
 );
 
 /** Azerbaijani (Azərbaycanca)

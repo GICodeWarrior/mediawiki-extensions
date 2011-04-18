@@ -2746,7 +2746,7 @@ $messages['sr-ec'] = array(
 	'ct_success' => 'Слање датотеке је извршено!',
 	'ct_user_user' => 'Корисник',
 	'ct_user_tip' => 'Убаци линк ка корисничкој страни',
-	'ct_user_caption' => 'Кориснички линк',
+	'ct_user_caption' => 'Корисничка веза',
 	'ct_user_sample' => 'Корисничко име',
 );
 

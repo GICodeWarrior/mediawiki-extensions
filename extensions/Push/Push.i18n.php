@@ -221,6 +221,8 @@ $messages['br'] = array(
 	'push-tab-embedded-files' => 'Restr enframmet :',
 	'push-tab-files-override' => 'Bez ez eus eus ar restroù-mañ dija : $1',
 	'push-tab-template-override' => 'Bez ez eus eus ar patromoù-mañ dija : $1',
+	'special-push' => 'Pajennoù da vountañ',
+	'push-special-return' => "Bountañ muioc'h a bajennoù",
 );
 
 /** Bosnian (Bosanski)
@@ -1063,6 +1065,27 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'push-tab-text' => 'Itulak',
+	'push-button-text' => 'Itulak',
+	'push-button-pushing' => 'Itinutulak',
+	'push-button-pushing-files' => 'Itinutulak ang mga talaksan',
+	'push-button-completed' => 'Nabuo na ang pagtulak',
+	'push-button-failed' => 'Nabigo ang pagtulak',
+	'push-tab-title' => 'Itulak ang $1',
+	'push-targets' => 'Itulak ang mga pinupukol',
+	'push-add-target' => 'Idagdag ang pinupukol',
+	'push-import-revision-message' => 'Itinulak mula sa $1.',
+	'push-tab-push-to' => 'Itulak sa $1',
+	'push-remote-pages' => 'Malalayong mga pahina',
+	'push-remote-page-link' => '$1 na nasa $2',
+	'push-remote-page-link-full' => 'Tingnan ang $1 na nasa $2',
+	'push-targets-total' => 'May isang kabuuan ng $1 {{PLURAL:$1|pinupukol|mga pinupukol}}.',
+	'push-tab-no-used-templates' => '(Walang ginagamit na mga suleras sa pahinang ito.)',
+	'push-tab-inc-files' => 'Isama ang ibinaong mga talaksan',
+	'push-tab-embedded-files' => 'Ibinaong mga talaksan:',
+	'push-tab-no-embedded-files' => '(Walang nakabaong mga talaksan sa loob ng pahinang ito.)',
+	'push-tab-files-override' => 'Umiiral na ang mga talaksang ito: $1',
+	'push-tab-template-override' => 'Umiiral na ang mga suleras na ito: $1',
 	'special-push' => 'Itulak ang mga pahina',
 	'push-special-button-text' => 'Itulak ang mga pahina',
 	'push-special-target-is' => 'Pinupukol na wiki: $1',

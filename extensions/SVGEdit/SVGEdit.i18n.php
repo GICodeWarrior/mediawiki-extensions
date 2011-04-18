@@ -56,10 +56,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'svgedit-editbutton-edit' => 'Kemmañ an dresadenn',
+	'svgedit-summary-label' => "Diverradenn eus ar c'hemmoù",
 	'svgedit-summary-default' => '/* Kemmet gant svg-edit */',
 	'svgedit-editor-save-close' => 'Enrollañ ha serriñ',
 	'svgedit-editor-close' => 'Nullañ',

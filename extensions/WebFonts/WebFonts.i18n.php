@@ -56,6 +56,16 @@ $messages['de'] = array(
 	'webfonts-disable-preference' => 'Schriftarteneinbettung deaktivieren (WebSchriftarten)',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Incorporar fontes nas páxinas',
+	'webfonts-load' => 'Seleccione a fonte',
+	'webfonts-disable-preference' => 'Desactivar a incorporación de fontes (WebFonts)',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

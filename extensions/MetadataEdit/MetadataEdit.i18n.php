@@ -85,8 +85,10 @@ $messages['as'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
+	'metadataedit-desc' => 'Pon les categoríes, enllaces de llingua y plantíes permitíes nun cuadru de testu dixebráu al editar les páxines',
 	'metadata_help' => 'Metadatos:',
 );
 

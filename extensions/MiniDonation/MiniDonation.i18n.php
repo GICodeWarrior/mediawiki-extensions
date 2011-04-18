@@ -44,6 +44,14 @@ $messages['arz'] = array(
 	'donationform-submit' => 'تبرع من خلال باى بال',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'donationform-desc' => 'Amiesta una etiqueta <code>&lt;donateform&gt;</code> pa sofitar donativos per PayPal',
+	'donationform-submit' => 'Donar per PayPal',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

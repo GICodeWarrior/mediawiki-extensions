@@ -30,6 +30,13 @@ $messages['af'] = array(
 	'mwembed-desc' => 'Bied ondersteuning vir mwEmbed-modules en -uitbreidings',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'mwembed-desc' => 'Da sofitu a los módulos y estensiones mwEmbed',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
