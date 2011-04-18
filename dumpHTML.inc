@@ -1134,7 +1134,7 @@ ENDTEXT;
 	}
 
 	function profile() {
-		global $wgProfiler, $wgRequestTime, $wgRUstart;
+		global $wgRequestTime, $wgRUstart;
 
 		if ( !$this->udpProfile ) {
 			return;
