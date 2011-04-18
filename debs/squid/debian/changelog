@@ -1,3 +1,56 @@
+squid (2.7.9-7wm1) lucid-wikimedia; urgency=low
+
+  [ Ryan Lane ]
+  * Adding patch for udp multicast logging
+
+ -- Ryan Lane <rlane@wikimedia.org>  Mon, 18 Apr 2011 21:14:00 +0000
+
+squid (2.7.9-6wm1) lucid-wikimedia; urgency=low
+
+  [ Ryan Lane ]
+  * Adding config option back in for maximum_forwards
+
+ -- Ryan Lane <rlane@wikimedia.org>  Tue, 13 Apr 2011 18:52:00 +0000
+
+squid (2.7.9-5wm1) lucid-wikimedia; urgency=low
+
+  [ Ryan Lane ]
+  * Added patches to list
+
+ -- Ryan Lane <rlane@wikimedia.org>  Tue, 12 Apr 2011 23:30:00 +0000
+
+squid (2.7.9-4wm1) lucid-wikimedia; urgency=low
+
+  [ Ryan Lane ]
+  * Change hardcoded value of maximum_forwards and remove config option
+
+  [ Tim Starling ]
+  * Fix for mediawiki bug 28517
+
+ -- Ryan Lane <rlane@wikimedia.org>  Tue, 12 Apr 2011 21:27:00 +0000
+
+squid (2.7.9-3wm1) lucid-wikimedia; urgency=low
+
+  [ Ryan Lane ]
+  * Adjust maximum_forwards configuration option
+
+ -- Ryan Lane <rlane@wikimedia.org>  Tue, 12 Apr 2011 21:27:00 +0000
+
+squid (2.7.9-2wm1) lucid-wikimedia; urgency=low
+
+  [ Ryan Lane ]
+  * Patch to add maximum_forwards configuration option
+
+ -- Ryan Lane <rlane@wikimedia.org>  Tue, 12 Apr 2011 19:00:00 +0000
+
+squid (2.7.9-1wm1) lucid-wikimedia; urgency=low
+
+  [ Ryan Lane ]
+  * Upgrade to upstream version 2.7.9
+  * Patch for memory leak in malformed requests
+
+ -- Ryan Lane <rlane@wikimedia.org>  Fri, 08 Apr 2011 18:24:00 +0000
+
 squid (2.7.7-1wm1) karmic; urgency=low
 
   [ Tim Starling ]

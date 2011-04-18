@@ -1,0 +1,62 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 30-multicast-udp.dpatch by  <root@ragweed.knams.wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad squid-2.7.9~/src/cf.data.pre squid-2.7.9/src/cf.data.pre
+--- squid-2.7.9~/src/cf.data.pre	2011-04-18 22:44:02.000000000 +0000
++++ squid-2.7.9/src/cf.data.pre	2011-04-18 22:44:02.000000000 +0000
+@@ -5712,5 +5712,13 @@
+ 	Note: after changing this, Squid service must be restarted.
+ DOC_END
+ 
++NAME: udplog_multicast_ttl
++COMMENT: (seconds)
++TYPE: int
++LOC: Config.udplog_multicast_ttl
++DEFAULT: 1
++DOC_START
++	The value of IP_MULTICAST_TTL when sending udp logs with multicast UDP.
++DOC_END
+ 
+ EOF
+diff -urNad squid-2.7.9~/src/logfile_mod_udp.c squid-2.7.9/src/logfile_mod_udp.c
+--- squid-2.7.9~/src/logfile_mod_udp.c	2008-06-04 20:36:17.000000000 +0000
++++ squid-2.7.9/src/logfile_mod_udp.c	2011-04-18 22:44:45.000000000 +0000
+@@ -151,6 +151,8 @@
+     l_udp_t *ll;
+     struct sockaddr_in addr;
+     char *strAddr;
++    struct in_addr iaddr;
++    u_char ttl = (u_char)Config.udplog_multicast_ttl;
+ 
+     lf->f_close = logfile_mod_udp_close;
+     lf->f_linewrite = logfile_mod_udp_writeline;
+@@ -183,6 +185,14 @@
+ 	0,
+ 	COMM_NONBLOCKING,
+ 	"UDP log socket");
++    // Check for multicast address (first four address bits: 1110)
++    if ((ntohl(addr.sin_addr.s_addr) >> 28) == 0xe) {
++	iaddr.s_addr = INADDR_ANY; // use DEFAULT interface
++	setsockopt(ll->fd, IPPROTO_IP, IP_MULTICAST_IF, &iaddr,
++			sizeof(struct in_addr));
++	setsockopt(ll->fd, IPPROTO_IP, IP_MULTICAST_TTL, &ttl,
++			sizeof(unsigned char));
++    }
+     if (ll->fd < 0) {
+ 	if (lf->flags.fatal) {
+ 	    fatalf("Unable to open UDP socket for logging\n");
+diff -urNad squid-2.7.9~/src/structs.h squid-2.7.9/src/structs.h
+--- squid-2.7.9~/src/structs.h	2011-04-18 22:44:02.000000000 +0000
++++ squid-2.7.9/src/structs.h	2011-04-18 22:44:02.000000000 +0000
+@@ -843,6 +843,7 @@
+     int max_filedescriptors;
+     char *accept_filter;
+     int incoming_rate;
++    int udplog_multicast_ttl;
+ };
+ 
+ struct _SquidConfig2 {

@@ -6,10 +6,10 @@
 ## DP: Adds support for the X-Vary-Options response header
 
 @DPATCH@
-diff -urNad squid-2.7.5~/configure.in squid-2.7.5/configure.in
---- squid-2.7.5~/configure.in	2009-01-27 16:20:36.000000000 +0000
-+++ squid-2.7.5/configure.in	2009-01-27 16:34:13.000000000 +0000
-@@ -1533,6 +1533,16 @@
+diff -urNad squid-2.7.9~/configure.in squid-2.7.9/configure.in
+--- squid-2.7.9~/configure.in	2010-03-17 00:10:12.000000000 +0000
++++ squid-2.7.9/configure.in	2011-04-11 20:00:30.000000000 +0000
+@@ -1533,6 +1533,26 @@
    fi
  ])
  
@@ -23,12 +23,22 @@ diff -urNad squid-2.7.5~/configure.in squid-2.7.5/configure.in
 +  fi
 +])
 +
++dnl Enable vary options
++AC_ARG_ENABLE(vary_options,
++[  --enable-vary-options
++                         Enable support for the X-Vary-Options header.],
++[ if test "$enableval" = "yes" ; then
++    echo "Enabling support for vary options"
++    AC_DEFINE(VARY_OPTIONS, 1, [Enable support for the X-Vary-Options header])
++  fi
++])
++
  AC_ARG_ENABLE(follow-x-forwarded-for,
  [  --enable-follow-x-forwarded-for
  			  Enable support for following the X-Forwarded-For
-diff -urNad squid-2.7.5~/src/HttpHeader.c squid-2.7.5/src/HttpHeader.c
---- squid-2.7.5~/src/HttpHeader.c	2009-01-27 16:20:36.000000000 +0000
-+++ squid-2.7.5/src/HttpHeader.c	2009-01-27 16:34:13.000000000 +0000
+diff -urNad squid-2.7.9~/src/HttpHeader.c squid-2.7.9/src/HttpHeader.c
+--- squid-2.7.9~/src/HttpHeader.c	2008-09-25 02:33:37.000000000 +0000
++++ squid-2.7.9/src/HttpHeader.c	2011-04-11 20:00:48.000000000 +0000
 @@ -134,6 +134,9 @@
  #if X_ACCELERATOR_VARY
      {"X-Accelerator-Vary", HDR_X_ACCELERATOR_VARY, ftStr},
@@ -62,41 +72,41 @@ diff -urNad squid-2.7.5~/src/HttpHeader.c squid-2.7.5/src/HttpHeader.c
 +#if VARY_OPTIONS
 +    HttpHeaderEntry *e;
 +    if ((e = httpHeaderFindEntry(hdr, HDR_X_VARY_OPTIONS))) {
-+	stringInit(&hdrString, strBuf(e->value));
-+	return hdrString;
++       stringInit(&hdrString, strBuf(e->value));
++       return hdrString;
 +    }
 +#endif
-+    
++
 +    hdrString = httpHeaderGetList(hdr, HDR_VARY);
 +#if X_ACCELERATOR_VARY
 +    {
-+	String xavString = StringNull;
-+	xavString = httpHeaderGetList(hdr, HDR_X_ACCELERATOR_VARY);
-+	if (strBuf(xavString))
-+	    strListAdd(&hdrString, strBuf(xavString), ',');
-+	stringClean(&xavString);
++       String xavString = StringNull;
++       xavString = httpHeaderGetList(hdr, HDR_X_ACCELERATOR_VARY);
++       if (strBuf(xavString))
++           strListAdd(&hdrString, strBuf(xavString), ',');
++       stringClean(&xavString);
 +    }
 +#endif
 +    return hdrString;
 +}
 +
 +/*
-+ * Returns TRUE if at least one of the vary headers are present 
++ * Returns TRUE if at least one of the vary headers are present
 + */
 +int httpHeaderHasVary(const HttpHeader * hdr)
 +{
 +#if VARY_OPTIONS
 +    if (httpHeaderHas(hdr, HDR_X_VARY_OPTIONS)) {
-+	return TRUE;
++       return TRUE;
 +    }
 +#endif
 +#if X_ACCELERATOR_VARY
 +    if (httpHeaderHas(hdr, HDR_X_ACCELERATOR_VARY)) {
-+	return TRUE;
++       return TRUE;
 +    }
 +#endif
 +    if (httpHeaderHas(hdr, HDR_VARY)) {
-+	return TRUE;
++       return TRUE;
 +    }
 +    return FALSE;
 +}
@@ -110,9 +120,9 @@ diff -urNad squid-2.7.5~/src/HttpHeader.c squid-2.7.5/src/HttpHeader.c
  }
 +
 +
-diff -urNad squid-2.7.5~/src/HttpReply.c squid-2.7.5/src/HttpReply.c
---- squid-2.7.5~/src/HttpReply.c	2009-01-27 16:20:36.000000000 +0000
-+++ squid-2.7.5/src/HttpReply.c	2009-01-27 16:34:13.000000000 +0000
+diff -urNad squid-2.7.9~/src/HttpReply.c squid-2.7.9/src/HttpReply.c
+--- squid-2.7.9~/src/HttpReply.c	2008-01-23 15:31:51.000000000 +0000
++++ squid-2.7.9/src/HttpReply.c	2011-04-11 20:00:30.000000000 +0000
 @@ -315,8 +315,7 @@
  		return squid_curtime;
  	}
@@ -123,9 +133,9 @@ diff -urNad squid-2.7.5~/src/HttpReply.c squid-2.7.5/src/HttpReply.c
  	const time_t d = httpHeaderGetTime(&rep->header, HDR_DATE);
  	const time_t e = httpHeaderGetTime(&rep->header, HDR_EXPIRES);
  	if (d == e)
-diff -urNad squid-2.7.5~/src/client_side.c squid-2.7.5/src/client_side.c
---- squid-2.7.5~/src/client_side.c	2009-01-27 16:34:13.000000000 +0000
-+++ squid-2.7.5/src/client_side.c	2009-01-27 16:34:13.000000000 +0000
+diff -urNad squid-2.7.9~/src/client_side.c squid-2.7.9/src/client_side.c
+--- squid-2.7.9~/src/client_side.c	2011-04-11 20:00:29.000000000 +0000
++++ squid-2.7.9/src/client_side.c	2011-04-11 20:00:30.000000000 +0000
 @@ -643,10 +643,7 @@
  	    request_t *request = http->request;
  	    const char *etag = httpHeaderGetStr(&rep->header, HDR_ETAG);
@@ -138,7 +148,7 @@ diff -urNad squid-2.7.5~/src/client_side.c squid-2.7.5/src/client_side.c
  	    if (has_vary)
  		vary = httpMakeVaryMark(request, rep);
  
-@@ -5075,10 +5072,7 @@
+@@ -5067,10 +5064,7 @@
  varyEvaluateMatch(StoreEntry * entry, request_t * request)
  {
      const char *vary = request->vary_headers;
@@ -150,9 +160,9 @@ diff -urNad squid-2.7.5~/src/client_side.c squid-2.7.5/src/client_side.c
      if (!has_vary || !entry->mem_obj->vary_headers) {
  	if (vary) {
  	    /* Oops... something odd is going on here.. */
-diff -urNad squid-2.7.5~/src/defines.h squid-2.7.5/src/defines.h
---- squid-2.7.5~/src/defines.h	2009-01-27 16:34:13.000000000 +0000
-+++ squid-2.7.5/src/defines.h	2009-01-27 16:34:13.000000000 +0000
+diff -urNad squid-2.7.9~/src/defines.h squid-2.7.9/src/defines.h
+--- squid-2.7.9~/src/defines.h	2011-04-11 20:00:29.000000000 +0000
++++ squid-2.7.9/src/defines.h	2011-04-11 20:00:30.000000000 +0000
 @@ -366,4 +366,10 @@
  
  #define	LOGFILE_SEQNO(n)	( (n)->sequence_number )
@@ -164,9 +174,9 @@ diff -urNad squid-2.7.5~/src/defines.h squid-2.7.5/src/defines.h
 +#endif
 +
  #endif /* SQUID_DEFINES_H */
-diff -urNad squid-2.7.5~/src/enums.h squid-2.7.5/src/enums.h
---- squid-2.7.5~/src/enums.h	2009-01-27 16:34:13.000000000 +0000
-+++ squid-2.7.5/src/enums.h	2009-01-27 16:34:13.000000000 +0000
+diff -urNad squid-2.7.9~/src/enums.h squid-2.7.9/src/enums.h
+--- squid-2.7.9~/src/enums.h	2011-04-11 20:00:29.000000000 +0000
++++ squid-2.7.9/src/enums.h	2011-04-11 20:00:30.000000000 +0000
 @@ -259,6 +259,9 @@
  #if X_ACCELERATOR_VARY
      HDR_X_ACCELERATOR_VARY,
@@ -177,9 +187,9 @@ diff -urNad squid-2.7.5~/src/enums.h squid-2.7.5/src/enums.h
      HDR_X_ERROR_URL,		/* errormap, requested URL */
      HDR_X_ERROR_STATUS,		/* errormap, received HTTP status line */
      HDR_X_HTTP09_FIRST_LINE,	/* internal, first line of HTTP/0.9 response */
-diff -urNad squid-2.7.5~/src/http.c squid-2.7.5/src/http.c
---- squid-2.7.5~/src/http.c	2009-01-27 16:34:13.000000000 +0000
-+++ squid-2.7.5/src/http.c	2009-01-27 16:34:13.000000000 +0000
+diff -urNad squid-2.7.9~/src/http.c squid-2.7.9/src/http.c
+--- squid-2.7.9~/src/http.c	2011-04-11 20:00:29.000000000 +0000
++++ squid-2.7.9/src/http.c	2011-04-11 20:00:30.000000000 +0000
 @@ -355,20 +355,29 @@
      String vstr = StringNull;
  
@@ -321,10 +331,10 @@ diff -urNad squid-2.7.5~/src/http.c squid-2.7.5/src/http.c
  	const char *vary = NULL;
  	if (Config.onoff.cache_vary)
  	    vary = httpMakeVaryMark(httpState->orig_request, reply);
-diff -urNad squid-2.7.5~/src/protos.h squid-2.7.5/src/protos.h
---- squid-2.7.5~/src/protos.h	2009-01-27 16:34:13.000000000 +0000
-+++ squid-2.7.5/src/protos.h	2009-01-27 16:34:13.000000000 +0000
-@@ -464,6 +464,8 @@
+diff -urNad squid-2.7.9~/src/protos.h squid-2.7.9/src/protos.h
+--- squid-2.7.9~/src/protos.h	2011-04-11 20:00:29.000000000 +0000
++++ squid-2.7.9/src/protos.h	2011-04-11 20:00:30.000000000 +0000
+@@ -465,6 +465,8 @@
  extern squid_off_t httpHeaderGetSize(const HttpHeader * hdr, http_hdr_type id);
  extern time_t httpHeaderGetTime(const HttpHeader * hdr, http_hdr_type id);
  extern TimeOrTag httpHeaderGetTimeOrTag(const HttpHeader * hdr, http_hdr_type id);
@@ -333,12 +343,12 @@ diff -urNad squid-2.7.5~/src/protos.h squid-2.7.5/src/protos.h
  extern HttpHdrCc *httpHeaderGetCc(const HttpHeader * hdr);
  extern HttpHdrRange *httpHeaderGetRange(const HttpHeader * hdr);
  extern HttpHdrContRange *httpHeaderGetContRange(const HttpHeader * hdr);
-diff -urNad squid-2.7.5~/src/store.c squid-2.7.5/src/store.c
---- squid-2.7.5~/src/store.c	2009-01-27 16:34:13.000000000 +0000
-+++ squid-2.7.5/src/store.c	2009-01-27 16:34:13.000000000 +0000
-@@ -742,7 +742,12 @@
-     flags.cachable = 1;
-     state->e = storeCreateEntry(url, flags, method);
+diff -urNad squid-2.7.9~/src/store.c squid-2.7.9/src/store.c
+--- squid-2.7.9~/src/store.c	2011-04-11 20:00:29.000000000 +0000
++++ squid-2.7.9/src/store.c	2011-04-11 20:00:30.000000000 +0000
+@@ -747,7 +747,12 @@
+     if (store_url)
+ 	state->e->mem_obj->store_url = xstrdup(store_url);
      httpReplySetHeaders(state->e->mem_obj->reply, HTTP_OK, "Internal marker object", "x-squid-internal/vary", -1, -1, squid_curtime + 100000);
 +#if VARY_OPTIONS
 +    /* Can't put a string into a list header */
@@ -349,7 +359,7 @@ diff -urNad squid-2.7.5~/src/store.c squid-2.7.5/src/store.c
      storeSetPublicKey(state->e);
      if (!state->oe) {
          /* New entry, create new unique ID */
-@@ -1061,20 +1066,8 @@
+@@ -1071,20 +1076,8 @@
  	}
  	newkey = storeKeyPublicByRequest(mem->request);
  	if (mem->vary_headers && !EBIT_TEST(e->flags, KEY_EARLY_PUBLIC)) {
@@ -368,6 +378,6 @@ diff -urNad squid-2.7.5~/src/store.c squid-2.7.5/src/store.c
 -	    stringClean(&varyhdr);
 -#endif
 +	    String vary = httpHeaderGetVary(&mem->reply->header);
-             /* Create or update the vary object */
-             vary_id = storeAddVary(mem->url, mem->log_url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
-             if (vary_id.create_time)  {
+ 	    /* Create or update the vary object */
+ 	    vary_id = storeAddVary(mem->url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
+ 	    if (vary_id.create_time)  {

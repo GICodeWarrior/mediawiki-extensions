@@ -1,0 +1,45 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 27-malformed-requests-memoryleak.dpatch
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Bug 2973: memoryleak on maformed requests
+
+@DPATCH@
+
+---------------------
+PatchSet 12697 
+Date: 2010/07/13 19:43:08
+Author: hno
+Branch: SQUID_2_7
+Tag: (none) 
+Log:
+Bug 2973: memoryleak on maformed requests
+
+Members: 
+	src/client_side.c:1.754.2.29->1.754.2.30 
+
+Index: squid/src/client_side.c
+===================================================================
+RCS file: /cvsroot/squid/squid/src/client_side.c,v
+retrieving revision 1.754.2.29
+retrieving revision 1.754.2.30
+diff -u -r1.754.2.29 -r1.754.2.30
+--- squid/src/client_side.c	14 Feb 2010 00:46:25 -0000	1.754.2.29
++++ squid/src/client_side.c	13 Jul 2010 19:43:08 -0000	1.754.2.30
+@@ -1,6 +1,6 @@
+ 
+ /*
+- * $Id: client_side.c,v 1.754.2.29 2010/02/14 00:46:25 hno Exp $
++ * $Id: client_side.c,v 1.754.2.30 2010/07/13 19:43:08 hno Exp $
+  *
+  * DEBUG: section 33    Client-side Routines
+  * AUTHOR: Duane Wessels
+@@ -3063,6 +3063,7 @@
+     if (mb.size > 0) {
+ 	comm_write_mbuf(http->conn->fd, mb, clientWriteComplete, http);
+     } else {
++	memBufClean(&mb);
+ 	storeClientCopy(http->sc, http->entry,
+ 	    http->out.offset,
+ 	    http->out.offset,
+

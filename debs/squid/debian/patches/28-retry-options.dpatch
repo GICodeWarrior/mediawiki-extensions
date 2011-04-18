@@ -1,0 +1,49 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 28-retry-options.dpatch by  <root@ragweed.knams.wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad squid-2.7.9~/src/cf.data.pre squid-2.7.9/src/cf.data.pre
+--- squid-2.7.9~/src/cf.data.pre	2009-11-09 22:38:57.000000000 +0000
++++ squid-2.7.9/src/cf.data.pre	2011-04-13 18:51:30.000000000 +0000
+@@ -5516,6 +5516,15 @@
+ 	takes place if Squid fails to get a satisfying response.
+ DOC_END
+ 
++NAME: maximum_forwards
++TYPE: int
++LOC: Config.retry.maxforwards
++DEFAULT: 10
++DOC_START
++	This sets the maximum number of re-forwarding requests Squid
++	will attempt if it does not get a satisying response.
++DOC_END
++
+ NAME: retry_on_error
+ TYPE: onoff
+ LOC: Config.retry.onerror
+diff -urNad squid-2.7.9~/src/forward.c squid-2.7.9/src/forward.c
+--- squid-2.7.9~/src/forward.c	2008-07-18 00:47:48.000000000 +0000
++++ squid-2.7.9/src/forward.c	2011-04-13 18:49:26.000000000 +0000
+@@ -137,7 +137,7 @@
+ 	return 0;
+     if (fwdState->entry->mem_obj->inmem_hi > 0)
+ 	return 0;
+-    if (fwdState->n_tries > 10)
++    if (fwdState->n_tries > Config.retry.maxforwards)
+ 	return 0;
+     if (fwdState->origin_tries > 2)
+ 	return 0;
+diff -urNad squid-2.7.9~/src/structs.h squid-2.7.9/src/structs.h
+--- squid-2.7.9~/src/structs.h	2011-04-13 18:43:58.000000000 +0000
++++ squid-2.7.9/src/structs.h	2011-04-13 18:46:32.000000000 +0000
+@@ -767,6 +767,7 @@
+     struct {
+ 	int maxtries;
+ 	int onerror;
++	int maxforwards;
+     } retry;
+     struct {
+ 	squid_off_t limit;

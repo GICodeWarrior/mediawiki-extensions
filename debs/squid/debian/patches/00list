@@ -6,4 +6,8 @@
 21-nomangle-requestCC
 23-variant-invalidation
 25-coss-remove-swap-log
-26-vary_options.dpatch
+26-vary_options
+27-malformed-requests-memoryleak
+28-retry-options
+29-rfc1738_unescape
+30-multicast-udp

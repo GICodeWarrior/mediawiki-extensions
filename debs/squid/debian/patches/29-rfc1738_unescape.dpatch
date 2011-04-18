@@ -1,0 +1,27 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 29-rfc1738_unescape.dpatch by  Tim Starling <tstarling@wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix for mediawiki bug 28517
+
+@DPATCH@
+diff -urNad squid-2.7.9~/src/acl.c squid-2.7.9/src/acl.c
+--- squid-2.7.9~/src/acl.c	2008-05-04 23:23:13.000000000 +0000
++++ squid-2.7.9/src/acl.c	2011-04-13 01:29:12.000000000 +0000
+@@ -1875,14 +1875,14 @@
+ 	/* NOTREACHED */
+     case ACL_URLPATH_REGEX:
+ 	esc_buf = xstrdup(strBuf(r->urlpath));
+-	rfc1738_unescape(esc_buf);
++	/*rfc1738_unescape(esc_buf);*/
+ 	k = aclMatchRegex(ae->data, esc_buf);
+ 	safe_free(esc_buf);
+ 	return k;
+ 	/* NOTREACHED */
+     case ACL_URL_REGEX:
+ 	esc_buf = xstrdup(urlCanonical(r));
+-	rfc1738_unescape(esc_buf);
++	/*rfc1738_unescape(esc_buf);*/
+ 	k = aclMatchRegex(ae->data, esc_buf);
+ 	safe_free(esc_buf);
+ 	return k;
