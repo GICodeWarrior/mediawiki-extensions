@@ -54,7 +54,9 @@ class I18nTags {
 
 	public static function languageName( &$parser, $code = '', $native = '' ) {
 		global $wgLang;
-		if ( !$code ) return '';
+		if ( !$code ) {
+			return '';
+		}
 		$native = $native === 'native';
 		$cldr   = is_callable(array( 'LanguageNames', 'getNames' ));
 		if ( !$native && $cldr ) {
@@ -69,11 +71,10 @@ class I18nTags {
 		return isset($languages[$code]) ? $languages[$code] : $code;
 	}
 
-
 	/**
 	 * Static helper that returns either content or user interface language object.
 	 * @param $params Parameters passed to to the parser tag
-	 * @return Instance of class Language
+	 * @return Language Instance of class Language
 	 * Globals: $wgContLang.
 	 */
 	public static function languageObject( $params ) {
@@ -90,10 +91,15 @@ class I18nTags {
 			$from = $to = (int) $s;
 		}
 
-
-		if ( $from > $to ) {$UNDEFINED = $to; $to = $from; $from = $UNDEFINED;}
-		if ( $min !== false ) $from = max( $min, $from );
-		if ( $max !== false ) $to = min( $max, $to );
+		if ( $from > $to ) {
+			$UNDEFINED = $to; $to = $from; $from = $UNDEFINED;
+		}
+		if ( $min !== false ) {
+			$from = max( $min, $from );
+		}
+		if ( $max !== false ) {
+			$to = min( $max, $to );
+		}
 
 		return array( $from, $to );
 	}
