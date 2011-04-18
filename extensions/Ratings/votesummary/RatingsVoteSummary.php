@@ -112,7 +112,7 @@ final class RatingsVoteSummary extends ParserHook {
 	 * @since 0.1
 	 */
 	public function getDescription() {
-		return wfMsg( 'ratings-starsratings-desc' );
+		return wfMsg( 'ratings-votesummary-desc' );
 	}		
 	
 }
