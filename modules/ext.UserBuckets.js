@@ -7,17 +7,17 @@ if( !JSON || !JSON.stringify ){
 ( function( $ ) {
 //lazy-load
 $.getBuckets = function (force){
-	if (typeof(this.userBuckets) == 'undefined' || force ){
-		this.userBuckets = $.parseJSON( $.cookie('userbuckets') );	
+	if (typeof($.userBuckets) == 'undefined' || force ){
+		$.userBuckets = $.parseJSON( $.cookie('userbuckets') );	
 	}
-	return this.userBuckets;
+	return $.userBuckets;
 };
 
 $.setBucket = function ( bucketName, bucketValue, bucketVersion ){
 	var bucketCookies = $.getBuckets();
 	if(!bucketCookies) { bucketCookies ={};}
 	bucketCookies[ bucketName ] = [ bucketValue, bucketVersion ];
-	$.cookie('userbuckets', JSON.stringify( bucketCookies ) , { expires: 365 }); //expires in 1 year
+	$j.cookie('userbuckets', JSON.stringify( bucketCookies ) , { expires: 365 }); //expires in 1 year
 	bucketCookies = $.getBuckets(true); //force it to rerun and update
 };
 
@@ -25,7 +25,6 @@ $.setupActiveBuckets = function(){
 	var buckets = $.getBuckets();
 	for(iter in MW.activeCampaigns){
 		var campaign = MW.activeCampaigns[iter];
-		
 		// if bucket has been set, or bucket version is out of date,
 		// set up a user bucket
 		if(!buckets || !buckets[campaign.name] || buckets[campaign.name][1] < campaign.version){
@@ -53,7 +52,7 @@ $.setupActiveBuckets = function(){
 		}
 		
 		// do the actual code in the campaign based on the bucket
-		if($.getBuckets()[campaign.name][0] != "none"){
+		if($.getBuckets()[campaign.name] && $.getBuckets()[campaign.name][0] != "none"){
 			campaign[$.getBuckets()[campaign.name][0]](); //function to execute
 			if(campaign.allActive){
 				campaign.allActive();
