@@ -64,6 +64,11 @@ class Citation extends TemplateAdventureBasic {
 	    'issn'  => null,
 	);
 	private $dLibrary = null;        # library id
+	private $dBook = array(          # a book
+		'title' => null,
+		'isbn'  => null,
+		'page'  => null
+	);
 	private $dISBN = null;           # isbn number
 	private $dLay = array(           # an article of the same publication, but
 	                                 # written in more layman friendly fashion.
@@ -78,6 +83,10 @@ class Citation extends TemplateAdventureBasic {
 		'broken' => null,            # date broken
 	);
 	private $dBibcode = null;        # bibcode id
+	private $dJournal = array(       # journal and its page
+		'title'  => null,
+		'page'   => null,
+	);
 	private $dOther = null;          # other stuff
 
 	/**
@@ -112,20 +121,35 @@ class Citation extends TemplateAdventureBasic {
 		$this->mOutput = '';
 		# authors
 		if ( count( $this->dAuthors ) > 1 ) {
-			$authorArea = $this->createWriterSection ( $this->dAuthors, $this->dAuthorLinks, $this->dAuthorTruncate );
+			# remember element 0 is always set
+			$authorArea = $this->createWriterSection ( 
+				$this->dAuthors, 
+				$this->dAuthorLinks, 
+				$this->dAuthorTruncate );
 			if ( $this->notNull ( $this->dCoAuthors ) )
-				$authorArea = wfMsg ( 'ta-citecoauthors', $authorArea, $this->getSeparator( 'author' ), $this->dCoAuthors );
+				$authorArea = wfMsg ( 'ta-citecoauthors', 
+					$authorArea, 
+					$this->getSeparator( 'author' ), 
+					$this->dCoAuthors );
 			if ( $this->notNull ( $this->dDate )
 				|| $this->notNull ( $this->dYear ) ) {
-				$authorArea = wfMsg ( 'ta-citeauthordate', $authorArea, $this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
+				$authorArea = wfMsg ( 'ta-citeauthordate', 
+					$authorArea, 
+					$this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
 				if ( $this->notNull ( $this->dYearNote ) ) 
-					$authorArea = wfMsg ( 'ta-citeauthoryearnote', $authorArea, $this->dYearNote );
+					$authorArea = wfMsg ( 'ta-citeauthoryearnote', 
+						$authorArea, 
+						$this->dYearNote );
 			}
 			$this->mOutput .= $authorArea . $this->getSeparator ( 'section' );
 			$authorDisplayed = true;
 		# editors
 		} elseif ( count ( $this->dEditors ) > 1 ) {
-			$editorArea = $this->createWriterSection ( $this->dEditors, $this->dEditorLinks, $this->dEditorTruncate );
+			# remember element 0 is always set
+			$editorArea = $this->createWriterSection ( 
+				$this->dEditors, 
+				$this->dEditorLinks, 
+				$this->dEditorTruncate );
 			if ( count ( $this->dEditors ) > 2 )
 				$editorArea = wfMsg ( 'ta-citeeditorsplural', $editorArea );
 			else
@@ -133,9 +157,12 @@ class Citation extends TemplateAdventureBasic {
 			$editorArea .= $this->getSeparator ( 'section' );
 			if ( $this->notNull ( $this->dDate )
 				|| $this->notNull ( $this->dYear ) ) {
-				$editorArea = wfMsg ( 'ta-citeauthordate', $editorArea, $this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
+				$editorArea = wfMsg ( 'ta-citeauthordate', 
+					$editorArea, 
+					$this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
 				if ( $this->notNull ( $this->dYearNote ) ) 
-					$editorArea .= wfMsg ( 'ta-citeauthoryearnote', $editorArea, $this->dYearNote );
+					$editorArea .= wfMsg ( 'ta-citeauthoryearnote', 
+					$editorArea, $this->dYearNote );
 			}
 			$this->mOutput .= $editorArea . $this->getSeparator ( 'section' );
 			$authorDisplayed = true;
@@ -181,7 +208,9 @@ class Citation extends TemplateAdventureBasic {
 			# if only the title is set, assume url is the URL of the title
 			$url = $this->dWorkLink['url'];
 			if ( $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
-				$title = wfMsg ( 'ta-citetitletrans', $this->dWorkTitle['title'], $this->dWorkTitle['transtitle'] );
+				$title = wfMsg ( 'ta-citetitletrans', 
+					$this->dWorkTitle['title'], 
+					$this->dWorkTitle['transtitle'] );
 				if ( $this->notNull ( $this->dLanguage ) ) {
 					$this->mOutput .= wfMsg ( 'ta-citeinlanguage', $this->makeLink ( $url, $title ), $this->dLanguage ) . $this->getSeparator( 'section' );
 					$languageDisplayed = true;
@@ -190,9 +219,12 @@ class Citation extends TemplateAdventureBasic {
 				}
 			} else {
 				$title = $this->dWorkTitle['title'];
-				$this->mOutput .= $this->makeLink ( $url, $title ) . $this->getSeparator( 'section' );		
+				$this->mOutput .= $this->makeLink ( $url, $title ) . $this->getSeparator( 'section' );
 			}
 			$urlDisplayed = true;
+		} else if ( $this->citeType == 'book'
+			&& $this->notNull ( $this->dBook['title'] ) ) {
+			$this->mOutput .= wfMsg ( 'ta-citebooktitle', $this->dBook['title'] ) .$this->getSeparator ( 'section' );
 		}
 		# place, but only if different from publication place.
 		if ( $this->notNull( $this->dPlace ) 
@@ -202,7 +234,7 @@ class Citation extends TemplateAdventureBasic {
 			) && ( 
 				$authorDisplayed
 				|| $this->notNull ( $this->dWorkTitle['includedwork'] ) 
-			) && ( $this->citeType != 'news' )
+			) && ( !in_array ( $this->citeType, array ( 'news', 'book' ) ) )
 		) {
 			if ( $this->notNull ( $this->dPublisher )
 				&& ( $this->citeType != 'news' ) ) {
@@ -215,9 +247,31 @@ class Citation extends TemplateAdventureBasic {
 		if ( ( $this->citeType == 'news' )
 			&& $this->notNull ( $this->dPublisher ) ) {
 			if ( $this->notNull ( $this->dPlace ) ) {
-				$this->mOutput .= wfMsg ( 'ta-newspublisherplace', $this->dPublisher, $this->dPlace ) . $this->getSeparator ( 'section' );
+				$this->mOutput .= wfMsg ( 'ta-citenewspublisherplace', $this->dPublisher, $this->dPlace ) . $this->getSeparator ( 'section' );
 			} else {
-				$this->mOutput .= wfMsg ( 'ta-newspublisher', $this->dPublisher ) . $this->getSeparator ( 'section' );
+				$this->mOutput .= wfMsg ( 'ta-citenewspublisher', $this->dPublisher ) . $this->getSeparator ( 'section' );
+			}
+		}
+		if ( ( $this->citeType == 'journal' )
+			&& $this->notNull ( $this->dJournal['title'] ) ) {
+			if ( $this->notNull ( $this->dJournal['page'] ) ) {
+				$this->mOutput .= wfMsg ( 'ta-citejournalpage', 
+					$this->dJournal['title'],
+					$this->dJournal['page'] ) . $this->getSeparator ( 'section' );
+			} else {
+				$this->mOutput .= wfMsg ( 'ta-citejournal',
+					$this->dJournal['title'] ) . $this->getSeparator ( 'section' );
+			}
+		}
+		if ( ( $this->citeType == 'book' )
+			&& $this->notNull ( $this->dPublisher ) ) {
+			if ( $this->notNull ( $this->dPlace ) ) {
+				$this->mOutput .= wfMsg ( 'ta-citebookpubplace', $this->dPlace, $this->dPublisher ) . $this->getSeparator ( 'section' );
+			} else {
+				$this->mOutput .= wfMsg ( 'ta-citebookpublisher', $this->dPublisher ) . $this->getSeparator ( 'section' );
+			}
+			if ( $this->notNull ( $this->dBook['page'] ) ) {
+				$this->mOutput .= wfMsg ( 'ta-citebookpage', $this->dBook['page'] ) . $this->getSeparator ( 'section' );
 			}
 		}
 		# editor of complication... eerrr...
@@ -382,11 +436,11 @@ class Citation extends TemplateAdventureBasic {
 		if ( !$authorDisplayed ) {
 			if ( $this->notNull ( $this->dDate ) 
 				|| $this->notNull ( $this->dYear ) ) {
-				$this->mOutput .= wfMsg ( 'ta-citeauthordate', $this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
+				$tmp = wfMsg ( 'ta-citealonedate', $this->notNull ( $this->dDate ) ? $this->dDate : $this->dYear );
 				if ( $this->notNull ( $this->dYearNote ) ) {
-					$this->mOutput .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
+					$tmp = wfMsg ( 'ta-citeauthoryearnote', $tmp, $this->dYearNote );
 				}
-				$this->mOutput .= $this->getSeparator ( 'section' );
+				$this->mOutput .= $tmp . $this->getSeparator ( 'section' );
 			}
 		}
 		# publication date
@@ -424,15 +478,18 @@ class Citation extends TemplateAdventureBasic {
         #     |{{{Sep|,}}}&#32;{{{ID}}}
         #     |{{{ID}}}
         #   }}
+		# isbn
+		if ( $this->citeType == 'book'
+			&& $this->notNull ( $this->dBook['isbn'] ) ) {
+			$this->mOutput .= wfMsg ( 'ta-citebookisbn', 
+				$this->dBook['isbn'], 
+				$this->createDisplayISBN ( $this->dBook['isbn'] ) 
+			) . $this->getSeparator ( 'section' );	
+		}
 
 		# more identifiers:
 		# TODO: Do all this crap.
 		/*
-		{{
-<!--============  ISBN ============-->
-  #if: {{{ISBN|}}}
-  |{{{Sep|,}}}&#32;{{citation/identifier  |identifier=isbn |input1={{{ISBN|}}} }}
-}}{{
 <!--============  ISSN ============-->
   #if: {{{ISSN|}}}
   |{{{Sep|,}}}&#32;{{citation/identifier  |identifier=issn |input1={{{ISSN|}}} }}
@@ -481,10 +538,10 @@ class Citation extends TemplateAdventureBasic {
 				}
 			}
 			if ( $this->notNull ( $this->dAccessDate ) ) {
-				if ( $this->getSeparator ( 'section' ) == '.' )
-					$tmp = wfMsg ( 'ta-citeretrievedupper', $this->getSeparator ( 'section' ), $this->dAccessDate );
+				if ( $this->getSeparator ( 'section', false ) == '.' )
+					$tmp = wfMsg ( 'ta-citeretrievedupper', $this->dAccessDate );
 				else
-					$tmp = wfMsg ( 'ta-citeretrievedlower', $this->getSeparator ( 'section' ), $this->dAccessDate );
+					$tmp = wfMsg ( 'ta-citeretrievedlower', $this->dAccessDate );
 				$this->mOutput .= wfMsg ( 'ta-citeaccessdatespan', $tmp ); 
 			}
 		}
@@ -506,6 +563,16 @@ class Citation extends TemplateAdventureBasic {
 		}
 		# if the end 'separator' is blank, so we trim
 		$this->mOutput = wfMsg ( 'ta-citationspan', trim($this->mOutput), $this->citeType );
+	}
+	
+	/**
+	 * Create the rendered version of an ISBN number.
+	 *
+	 * @param $isbn The raw ISBN number.
+	 * @return $isbn The rendered version.
+	 */
+	private function createDisplayISBN ( $isbn ) {
+		return $isbn[0] . '-' . $isbn[1] . $isbn[2] . $isbn[3] . $isbn[4] . '-' . $isbn[5] . $isbn[6] . $isbn[7] . $isbn[8] . '-' . $isbn[9];
 	}
 
 	/**
@@ -608,7 +675,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @return Boolean
 	 */
 	private function notNull ( $check ) {
-		return !( $check == null && $check === '' );
+		return !( $check == null && trim ( $check ) === '' );
 	}
 
 	/**
@@ -788,7 +855,17 @@ class Citation extends TemplateAdventureBasic {
 				$this->dWorkLink['url'] = $value;
 				break;
 			case 'title':
-				$this->dWorkTitle['title'] = $value;
+				switch ( $this->citeType ) {
+					case 'book':
+						$this->dBook['title'] = $value;
+						break;
+					case 'journal':
+					case 'web':
+					case 'news':
+					default:
+						$this->dWorkTitle['title'] = $value;
+						break;
+				}
 				break;
 			case 'transtitle':
 				$this->dWorkTitle['transtitle'] = $value;
@@ -817,6 +894,25 @@ class Citation extends TemplateAdventureBasic {
 			case 'coauthors':
 				$this->dCoAuthors = $value;
 				break;
+			case 'accessdate':
+				$this->dAccessDate = $value;
+				break;
+			case 'journal':
+				$this->dJournal['title'] = $value;
+				break;
+			case 'page':
+				switch ( $this->citeType ) {
+					case 'journal':
+						$this->dJournal['page'] = $value;
+						break;
+					case 'book':
+						$this->dBook['page'] = $value;
+						break;
+				}
+				break;
+			case 'isbn':
+				$this->dBook['isbn'] = str_replace ( '-', '', $value );
+				break;
 		}
 	}
 
@@ -828,6 +924,8 @@ class Citation extends TemplateAdventureBasic {
 	 * @return True if option, false if not.
 	 */
 	protected function optionParse( $var, $value ) {
+		if ( !$this->notNull ( $value ) )
+			return;
 		$name = self::parseOptionName( $var );
 		switch ( $name[0] ) {
 			case 'author':
@@ -867,6 +965,10 @@ class Citation extends TemplateAdventureBasic {
 			case 'place':
 			case 'publisher':
 			case 'language':
+			case 'accessdate':
+			case 'journal':
+			case 'page':
+			case 'isbn':
 				$this->addOtherStringValue( $name, $value );
 				break;
 			default:
@@ -886,7 +988,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $item The raw item.
 	 */
 	protected function handlePrimaryItem( $item ) {
-		if ( in_array ( $item, array ( 'news' ) ) )
+		if ( in_array ( $item, array ( 'web', 'news', 'journal', 'book' ) ) )
 			$this->citeType = $item;
 	}
 
@@ -915,11 +1017,13 @@ class Citation extends TemplateAdventureBasic {
 				'ta_cc_year', 'ta_cc_publisher',
 				'ta_cc_place', 'ta_cc_transtitle',
 				'ta_cc_language', 'ta_cc_date',
+				'ta_cc_accessdate', 'ta_cc_page',
+				'ta_cc_journal', 'ta_cc_isbn',
 			) );
 		}
 
 		$num = preg_replace("@.*?([0-9]+)$@is", '\1', $value);
-		if (is_numeric( $num ))
+		if ( is_numeric( $num ) )
 			$name = preg_replace("@(.*?)[0-9]+$@is", '\1', $value);
 		else {
 			$name = $value;
