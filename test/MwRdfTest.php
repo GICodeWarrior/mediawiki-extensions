@@ -283,7 +283,7 @@ EOF;
 	public function createTestArticle( $title_text, $text,
 	$cats, $user,
 	$contribs = array() ) {
-		$title = Title::newFromText( $title_text );
+		$title = new Title( $title_text );
 		$title->setParentCategories( $cats );
 		$article = new Article( $title);
 		$article->setContent( $text );
@@ -295,7 +295,7 @@ EOF;
 	}
 
 	public function createTalkPage() {
-		$title = Title::newFromText( "Talk:Modeling test article");
+		$title = new Title( "Talk:Modeling test article");
 		$user = self::createUserWithRealName();
 		$article = new Article( $title );
 		$article->setContent( " " );
@@ -305,7 +305,7 @@ EOF;
 
 	public function createStorageTestArticle() {
 		$text = self::InPageWikitext();
-		$title = Title::newFromText( "Storage test article");
+		$title = new Title( "Storage test article");
 		$cats = array( "Category:Red", "Category:Blue" );
 		$title->setParentCategories( $cats );
 		$article = new Article( $title );
@@ -317,7 +317,7 @@ EOF;
 
 	public function createspecialpagetestarticle() {
 		$text = self::InPageWikitext();
-		$title = Title::newFromText( "Modeling test article");
+		$title = new Title( "Modeling test article");
 		$cats = array( "Category:Red", "Category:Blue" );
 		$title->setParentCategories( $cats );
 		$article = new Article( $title );
@@ -328,7 +328,7 @@ EOF;
 	}
 
 	public function createTestTitle( $text ) {
-		return Title::newFromText( $text );
+		return new Title( $text );
 	}
 
 	public function createExpectedModel( $text ) {
