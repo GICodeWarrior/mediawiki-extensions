@@ -19,6 +19,27 @@ function prefix( key ) {
 }
 
 /**
+ * Given an email sting, gets validity status (true, false, null) and updates the label CSS class
+ */
+var updateMailValidityLabel = function( mail, context ) {
+	var	isValid = mw.util.validateEmail( mail ),
+		$label = context.$ui.find( '.articleFeedback-helpimprove-email-validity' );
+
+	// We allow empty address
+	if( isValid === null ) {
+		$label.text( '' ).removeClass( 'valid invalid' );
+
+	// Valid
+	} else if ( isValid ) {
+		$label.text( mw.msg( 'email-address-validity-valid' ) ).addClass( 'valid' ).removeClass( 'invalid' );
+
+	// Not valid
+	} else {
+		$label.text( mw.msg( 'email-address-validity-invalid' ) ).addClass( 'invalid' ).removeClass( 'valid' );
+	}
+};
+
+/**
  * Article Feedback jQuery Plugin Support Code
  */
 $.articleFeedback = {
@@ -42,6 +63,14 @@ $.articleFeedback = {
 				<div><input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label></div>\
 				<div><input type="checkbox" value="hobby" /><label><html:msg key="form-panel-expertise-hobby" /></label></div>\
 				<div><input type="checkbox" value="other" /><label><html:msg key="form-panel-expertise-other" /></label></div>\
+			</div>\
+		</div>\
+		<div style="clear:both;"></div>\
+		<div class="articleFeedback-helpimprove articleFeedback-visibleWith-form" >\
+			<input type="checkbox" value="on" disabled="disabled" /><label class="articleFeedback-helpimprove-disabled"><html:msg key="form-panel-helpimprove" /></label>\
+			<div class="articleFeedback-helpimprove-options">\
+				<div><input type="text" placeholder="" class="articleFeedback-helpimprove-email" /></div>\
+				<div class="articleFeedback-helpimprove-note"></div>\
 			</div>\
 		</div>\
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><html:msg key="form-panel-submit" /></button>\
@@ -133,6 +162,14 @@ $.articleFeedback = {
 					.end()
 				.find( '.articleFeedback-expertise-disabled' )
 					.removeClass( 'articleFeedback-expertise-disabled' );
+		},
+		'enableHelpimprove': function( $helpimprove ) {
+			$helpimprove
+				.find( 'input:checkbox[value=on]' )
+					.attr( 'disabled', false )
+					.end()
+				.find( '.articleFeedback-helpimprove-disabled' )
+					.removeClass( 'articleFeedback-helpimprove-disabled' );
 		},
 		'submit': function() {
 			var context = this;
@@ -257,6 +294,29 @@ $.articleFeedback = {
 							.find( '.articleFeedback-expertise-options' )
 								.hide();
 					}
+					
+					// Help improve
+					var $helpimprove = context.$ui.find( '.articleFeedback-helpimprove' );
+					// @FIXME: Needs serverside handling to actually pass this
+					feedback.helpimprove = 'on test@example.org';
+					if ( typeof feedback.helpimprove === 'string' ) {
+						var tags = feedback.helpimprove.split( ' ', 2 );
+						if ( tags.length == 2 && tags[0] == 'on' ) {
+							$helpimprove.find( 'input:checkbox[value=on]' ).attr( 'checked', 'checked' );
+							$helpimprove.find( '.articleFeedback-helpimprove-email' ).val( tags[1] );
+							// IE7 seriously has issues, and we have to hide, then show
+							$helpimprove.find( '.articleFeedback-helpimprove-options' )
+								.hide().show();
+							$.articleFeedback.fn.enableHelpimprove( $helpimprove );
+						}
+					} else {
+						$helpimprove
+							.find( 'input:checkbox' )
+								.removeAttr( 'checked' )
+								.end()
+							.find( '.articleFeedback-helpimprove-options' )
+								.hide();
+					}
 
 					// Index rating data by rating ID
 					var ratings = {};
@@ -308,7 +368,7 @@ $.articleFeedback = {
 							$(this).find( 'input:hidden' ).val( rating.userrating );
 							if ( rating.userrating > 0 ) {
 								// If any ratings exist, make sure expertise is enabled so users can
-								// suppliment their ratings with expertise information
+								// supplement their ratings with expertise information
 								$.articleFeedback.fn.enableExpertise( $expertise );
 							}
 						} else {
@@ -435,6 +495,37 @@ $.articleFeedback = {
 						}
 					} )
 					.end()
+				.find( '.articleFeedback-helpimprove' )
+					.find( '.articleFeedback-helpimprove-note' )
+						// Can't use .text() with mw.message(, /* $1 */ link).toString(),
+						// because 'link' should not be re-escaped (which would happen if done by mw.message)
+						.html( function(){
+							var link = mw.html.element(
+								'a', {
+									href: mw.util.wikiGetlink( mw.msg('articlefeedback-form-panel-helpimprove-privacylink') )
+								}, mw.msg('articlefeedback-form-panel-helpimprove-privacy')
+							);
+							return mw.html.escape( mw.msg( 'articlefeedback-form-panel-helpimprove-note') )
+								.replace( /\$1/, link );
+						})
+						.end()
+					.find( '.articleFeedback-helpimprove-email' )
+						.attr( 'placeholder', mw.msg( 'articlefeedback-form-panel-helpimprove-email-placeholder' ) )
+						.placeholder() // back. compat. for older browsers
+
+						// Basically from mediawiki.special.preferences.js
+						.one( 'blur', function() {
+							if ( context.$ui.find( '.articleFeedback-helpimprove-email-validity' ).length === 0 ) {
+								$(this).after( '<div class="articleFeedback-helpimprove-email-validity"></div>' );
+							}
+							updateMailValidityLabel( $(this).val(), context );
+							mw.log(context);
+							$(this).keyup( function() {
+								updateMailValidityLabel( $(this).val(), context );
+							} );
+						} )
+						.end()
+					.end()
 				.localize( { 'prefix': 'articlefeedback-' } )
 				// Activate tooltips
 				.find( '[title]' )
@@ -468,6 +559,25 @@ $.articleFeedback = {
 							.attr( 'id', id )
 							.next()
 								.attr( 'for', id );
+					} )
+					.end()
+				.find( '.articleFeedback-helpimprove > input:checkbox' )
+					.each( function() {
+						var id = 'articleFeedback-expertise-' + $(this).attr( 'value' );
+						$(this)
+							.attr( 'id', id )
+							.next()
+								.attr( 'for', id );
+					})
+					.change( function() {
+						var $options = context.$ui.find( '.articleFeedback-helpimprove-options' );
+						if ( $(this).is( ':checked' ) ) {
+							$options.slideDown( 'fast' );
+						} else {
+							$options.slideUp( 'fast', function() {
+								$options.find( 'input:checkbox' ).attr( 'checked', false );
+							} );
+						}
 					} )
 					.end()
 				// Buttonify the button
@@ -568,6 +678,11 @@ $.articleFeedback = {
 							.find( '.articleFeedback-expertise' )
 								.each( function() {
 									$.articleFeedback.fn.enableExpertise( $(this) );
+								} )
+								.end()
+							.find( '.articleFeedback-helpimprove' )
+								.each( function() {
+									$.articleFeedback.fn.enableHelpimprove( $(this) );
 								} );
 						$(this)
 							.closest( '.articleFeedback-rating' )

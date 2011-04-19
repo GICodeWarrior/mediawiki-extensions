@@ -36,6 +36,11 @@ $messages['en'] = array(
 	'articlefeedback-form-panel-expertise-profession' => 'It is part of my profession',
 	'articlefeedback-form-panel-expertise-hobby' => 'It is a deep personal passion',
 	'articlefeedback-form-panel-expertise-other' => 'The source of my knowledge is not listed here',
+	'articlefeedback-form-panel-helpimprove' => "I'd like to help improve Wikipedia, send me an email",
+	'articlefeedback-form-panel-helpimprove-note' => "We'll send you a confirmation email. We won't share your address with anyone. \$1",
+	'articlefeedback-form-panel-helpimprove-email-placeholder' => 'email@example.org', // Optional
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Privacy policy',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Privacy policy',
 	'articlefeedback-form-panel-submit' => 'Submit ratings',
 	'articlefeedback-form-panel-success' => 'Saved successfully',
 	'articlefeedback-form-panel-expiry-title' => 'Your ratings have expired',
@@ -98,6 +103,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 {{Identical|Submit}}',
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
+	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
 	'articlefeedback-pitch-or' => '{{Identical|Or}}',
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
 );
