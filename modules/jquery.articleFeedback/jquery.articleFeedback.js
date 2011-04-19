@@ -73,6 +73,7 @@ $.articleFeedback = {
 				<div class="articleFeedback-helpimprove-note"></div>\
 			</div>\
 		</div>\
+		<div style="clear:both;"></div>\
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><html:msg key="form-panel-submit" /></button>\
 		<div class="articleFeedback-success articleFeedback-visibleWith-form"><span><html:msg key="form-panel-success" /></span></div>\
 		<div style="clear:both;"></div>\
