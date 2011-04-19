@@ -250,7 +250,7 @@ class ClickTrackingHooks {
 		if ( $session !== null && $event !== null ) {
 			$params = new FauxRequest( array(
 				'action' => 'clicktracking',
-				'eventid' => $event + $suffix,
+				'eventid' => $event . $suffix,
 				'token' => $session,
 				'info' => $info,
 			) );
