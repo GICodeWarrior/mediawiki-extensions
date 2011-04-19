@@ -49,6 +49,7 @@ class ArticleFeedbackHooks {
 				'jquery.ui.button',
 				'jquery.articleFeedback',
 				'jquery.cookie',
+				'jquery.clickTracking',
 			),
 		),
 		'jquery.articleFeedback' => array(
@@ -81,6 +82,7 @@ class ArticleFeedbackHooks {
 				'jquery.ui.dialog',
 				'jquery.ui.button',
 				'jquery.cookie',
+				'jquery.clickTracking',
 			),
 		),
 	);
