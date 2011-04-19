@@ -4,7 +4,7 @@ $magicWords = array();
 
 $magicWords['en'] = array(
 	# citation magic words
-	'citation'                => array( 1, 'citation' ),
+	'ta_citation'             => array( 1, 'citation' ),
 	'ta_cc_author'            => array( 0, 'author' ),
 	'ta_cc_authorsurname'     => array( 0, 'surname', 'last' ),
 	'ta_cc_authorgiven'       => array( 0, 'given', 'first' ),

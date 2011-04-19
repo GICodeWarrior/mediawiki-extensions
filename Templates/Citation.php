@@ -98,6 +98,8 @@ class Citation extends TemplateAdventureBasic {
 
 	/**
 	 * Render the data after the data have been read.
+	 *
+	 * TODO: Clean this baby up, probably be assigning some help functions.
 	 */
 	public function render() {
 		# boolean variables to keep track of output
@@ -517,6 +519,13 @@ class Citation extends TemplateAdventureBasic {
 		return wfMsg ( 'ta-citeprintonlyspan', $string );
 	}
 
+	/**
+	 * Return something if it is not null.
+	 *
+	 * @param $check Variable to check against.
+	 * @param $add String to add.
+	 * @return $add if check is not null else ''
+	 */
 	private function addNotNull ( $check, $add ) {
 		if ( $this->notNull ( $check ) )
 			return $add;
@@ -578,15 +587,28 @@ class Citation extends TemplateAdventureBasic {
 		}
 		return $area;
 	}
-
+	
+	/**
+	 * Create a wikilink.  If no $url, return the $title.
+	 *
+	 * @param $url The url
+	 * @param $title Title for the URL.
+	 * @return $title if no $url otherwise the link.
+	 */
 	private function makeLink ( $url, $title ) {
 		if ( !$url )
 			return $title;
 		return "[$url $title]";
 	}
-
+	
+	/**
+	 * Check if $check is not null, where blank ('') is considered null.
+	 *
+	 * @param $check Variable to check
+	 * @return Boolean
+	 */
 	private function notNull ( $check ) {
-		return !( $check == null && $check == '' );
+		return !( $check == null && $check === '' );
 	}
 
 	/**
@@ -623,55 +645,118 @@ class Citation extends TemplateAdventureBasic {
 		}
 		$this->dAuthors = $tmpAuthors;
 	}
-
+	
+	/**
+	 * This is the editor function section.  These functions are designed to
+	 * add editors (which are considered different from authors) to the
+	 * template, as there can be an inf amount of editors/authors.
+	 *
+	 * This adds the link for the editor.
+	 *
+	 * @param $name Editor-reference.
+	 * @param $value Link
+	 */
 	private function addEditorLink( $name, $value ) {
 		if ( $name[1] == null )
 			return;
 		$this->dEditorLinks[$name[1]] = $value;
 	}
-
+	
+	/**
+	 * Adds a new editor, but does not divide it into first and last names.
+	 *
+	 * @param $name Editor-reference.
+	 * @param $value Name
+	 */
 	private function addEditor( $name, $value ) {
 		$this->appendEditorData ( $name[1], $value );
 	}
 
+	/**
+	 * Adds surname.
+	 *
+	 * @param $name Editor-reference.
+	 * @param $value Surname
+	 */
 	private function addEditorSurname( $name, $value ) {
 		$this->appendEditorData ( $name[1], array ( null, $value ) );
 	}
 
+	/**
+	 * Adds first name.
+	 *
+	 * @param $name Editor-reference.
+	 * @param $value Given name
+	 */
 	private function addEditorGivenName ( $name, $value ) {
 		$this->appendEditorData ( $name[1], array ( $value, null ) );
 	}
-
+	
+	/**
+	 * Appends the editor to the editor array.
+	 *
+	 * @param $num Editor-reference.
+	 * @param $name Details
+	 */
 	private function appendEditorData( $num, $name ) {
 		$this->appendWriterData( $this->dEditors, $num, $name );
 	}
-
+	
+	/**
+	 * These functions are similar to the editor functions and does the same,
+	 * but for the author variables.  Their functionality could possibly be
+	 * referenced in grouped help functions, but right now they are all so
+	 * short that it seems to be an overhead of useless work.
+	 *
+	 * @param $name Author-reference
+	 * @param $value Link
+	 */
 	private function addAuthorLink( $name, $value ) {
 		if ( $name[1] == null )
 			return;
 		$this->dAuthorLinks[$name[1]] = $value;
 	}
 
+	/**
+	 * @param $name Author-reference
+	 * @param $value Full name
+	 */
 	private function addAuthor( $name, $value ) {
 		$this->appendAuthorData ( $name[1], $value );
 	}
-
+	
+	/**
+	 * @param $name Author-reference
+	 * @param $value Surname
+	 */
 	private function addAuthorSurname( $name, $value ) {
 		$this->appendAuthorData ( $name[1], array ( null, $value ) );
 	}
-
+	
+	/**
+	 * @param $name Author-reference
+	 * @param $value Given name
+	 */
 	private function addAuthorGivenName ( $name, $value ) {
 		$this->appendAuthorData ( $name[1], array ( $value, null ) );
 	}
-
-	private function addCoAuthors ( $name, $value ) {
-		$this->dCoAuthors = $value;
-	}
-
+	
+	/**
+	 * @param $num Author-reference
+	 * @param $name Details
+	 */
 	private function appendAuthorData( $num, $name ) {
 		$this->appendWriterData( $this->dAuthors, $num, $name );
 	}
-
+	
+	/**
+	 * This function appends the details (link and name) of authors or editors
+	 * to their respective arrays.
+	 *
+	 * @param $array The array.
+	 * @param $num The location in the array (0 is always set, but never used)
+	 * @param $name The name and link of the author/editor.
+	 */
 	private function appendWriterData( &$array, $num, $name ) {
 		$split = is_array( $name );
 		if ( $num == null )
@@ -689,7 +774,14 @@ class Citation extends TemplateAdventureBasic {
 			);
 		}
 	}
-
+	
+	/**
+	 * This is a generic function to add more parameters that don't need special
+	 * treatment to their correct locations.
+	 *
+	 * @param $name Name of the parameter.
+	 * @param $value The value to be inserted.
+	 */
 	private function addOtherStringValue ( $name, $value ) {
 		switch ( $name[0] ) {
 			case 'url':
@@ -722,6 +814,9 @@ class Citation extends TemplateAdventureBasic {
 			case 'publisher':
 				$this->dPublisher = $value;
 				break;
+			case 'coauthors':
+				$this->dCoAuthors = $value;
+				break;
 		}
 	}
 
@@ -747,9 +842,6 @@ class Citation extends TemplateAdventureBasic {
 			case 'authorlink':
 				$this->addAuthorLink( $name, $value );
 				break;
-			case 'coauthors':
-				$this->addCoAuthors( $name, $value );
-				break;
 			case 'editor':
 				$this->addEditor( $name, $value );
 				break;
@@ -762,6 +854,7 @@ class Citation extends TemplateAdventureBasic {
 			case 'editorlink':
 				$this->addEditorLink( $name, $value );
 				break;
+			case 'coauthors':
 			case 'url':
 			case 'title':
 			case 'pmc':
@@ -783,6 +876,15 @@ class Citation extends TemplateAdventureBasic {
 		return true;
 	}
 	
+	/**
+	 * This function handles the first item of the variable.  For {{#citation:}}
+	 * the first item defines the type of the citation; which is important the
+	 * rendering of the function.
+	 *
+	 * Right now only 'news' is an acceptable citation type.
+	 *
+	 * @param $item The raw item.
+	 */
 	protected function handlePrimaryItem( $item ) {
 		if ( in_array ( $item, array ( 'news' ) ) )
 			$this->citeType = $item;
