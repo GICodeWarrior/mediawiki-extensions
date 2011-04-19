@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'sidebardonatebox-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'sidebardonatebox-desc' => 'Amiesta un cuadru de donativos personalizáu a la barra llateral',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
