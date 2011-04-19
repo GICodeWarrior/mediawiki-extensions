@@ -7,10 +7,7 @@ class CustomUserloginTemplate extends UserloginTemplate {
 	function __construct() {
 		global $wgRequest;
 		parent::__construct();
-		if( $wgRequest->getVal( 'campaign' ) ) {
-			preg_match( '/[A-Za-z0-9]+/', $wgRequest->getVal( 'campaign' ), $matches );
-			$this->campaign = $matches[0];
-		}
+		$this->campaign = CustomUserSignupHooks::getCampaign();
 	}
 
 	function msg( $str ) {
@@ -56,10 +53,7 @@ class CustomUsercreateTemplate extends UsercreateTemplate {
 	function __construct() {
 		global $wgRequest;
 		parent::__construct();
-		if( $wgRequest->getVal( 'campaign' ) ) {
-			preg_match( '/[A-Za-z0-9]+/', $wgRequest->getVal( 'campaign' ), $matches );
-			$this->campaign = $matches[0];
-		}
+		$this->campaign = CustomUserSignupHooks::getCampaign();
 	}
 
 	function msg( $str ) {
