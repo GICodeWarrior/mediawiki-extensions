@@ -506,22 +506,20 @@ $.articleFeedback = {
 								}, mw.msg('articlefeedback-form-panel-helpimprove-privacy')
 							);
 							return mw.html.escape( mw.msg( 'articlefeedback-form-panel-helpimprove-note') )
-								.replace( /\$1/, link );
+								.replace( /\$1/, mw.message( 'parentheses', link ).toString() );
 						})
 						.end()
 					.find( '.articleFeedback-helpimprove-email' )
 						.attr( 'placeholder', mw.msg( 'articlefeedback-form-panel-helpimprove-email-placeholder' ) )
 						.placeholder() // back. compat. for older browsers
-
-						// Basically from mediawiki.special.preferences.js
 						.one( 'blur', function() {
+							var $el = $(this), val = $el.val();
 							if ( context.$ui.find( '.articleFeedback-helpimprove-email-validity' ).length === 0 ) {
-								$(this).after( '<div class="articleFeedback-helpimprove-email-validity"></div>' );
+								$el.after( '<div class="articleFeedback-helpimprove-email-validity"></div>' );
 							}
-							updateMailValidityLabel( $(this).val(), context );
-							mw.log(context);
-							$(this).keyup( function() {
-								updateMailValidityLabel( $(this).val(), context );
+							updateMailValidityLabel( val, context );
+							$el.keyup( function() {
+								updateMailValidityLabel( val, context );
 							} );
 						} )
 						.end()
