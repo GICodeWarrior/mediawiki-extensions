@@ -39,6 +39,7 @@ MW.activeCampaigns.AccountCreation =
   // "allActive" is reserved.
   // If this function exists, it will be apply to every user not in the "none" bucket
   "allActive": function(){
+	  
 	  //add click tracking to save
 	  $j("#wpSave").click(function(){ $j.trackAction('save'); });
 	  
@@ -50,6 +51,7 @@ MW.activeCampaigns.AccountCreation =
 	  
 	  //add click tracking to preview
 	  $j("#wpPreview").click(function(){ $j.trackAction('preview'); });
+	  
   }
   
 };

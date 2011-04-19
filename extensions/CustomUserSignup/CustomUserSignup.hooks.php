@@ -8,6 +8,17 @@
 
 class CustomUserSignupHooks {
 
+	public static function getCampaign(){
+		global $wgRequest;
+		$campaign = "";
+		if( $wgRequest->getVal( 'campaign' ) ) {
+			preg_match( '/[A-Za-z0-9]+/', $wgRequest->getVal( 'campaign' ), $matches );
+			$campaign = $matches[0];
+		}
+		return $campaign;
+	}
+	
+	
 	public static function userCreateForm( &$template ) {
 		global $wgRequest;
 		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
@@ -15,9 +26,9 @@ class CustomUserSignupHooks {
 		$newTemplate;
 		$linkmsg;
 		
-		if( $wgRequest->getVal( 'campaign' ) ) {
-			$campaign = $wgRequest->getVal( 'campaign' );
-			if( get_class( $template ) == 'UserloginTemplate' ) {
+		$campaign = CustomUserSignupHooks::getCampaign();
+		if( $campaign != "" ) {
+			if( $template instanceof UserloginTemplate ) {
 				$newTemplate = new CustomUserloginTemplate();
 				$linkmsg = 'nologin';
 				$template->data['action'] = "{$template->data['action']}&campaign=$campaign";
@@ -27,7 +38,7 @@ class CustomUserSignupHooks {
 						"campaign=$campaign&amp;type=signup",
 						$template->data['link']
 					);
-			} elseif( get_class( $template ) == 'UsercreateTemplate' ) {
+			} elseif( $template instanceof UsercreateTemplate ) {
 				$newTemplate = new CustomUsercreateTemplate();
 				$linkmsg = 'gotaccount';
 				$template->data['action'] = "{$template->data['action']}&campaign=$campaign";
@@ -80,9 +91,8 @@ class CustomUserSignupHooks {
 
 	public static function welcomeScreen( &$welcomeCreationMsg, &$injected_html ) {
 		global $wgRequest;
-		if( $wgRequest->getVal( 'campaign' ) ) {
-			$campaign = $wgRequest->getVal( 'campaign' );
-
+		$campaign = CustomUserSignupHooks::getCampaign();
+		if( $campaign != "" ) {
 			if( wfMessage( "customusertemplate-$campaign-welcomecreation" )->exists() ) {
 				$welcomeCreationMsg = "customusertemplate-$campaign-welcomecreation";
 			}
