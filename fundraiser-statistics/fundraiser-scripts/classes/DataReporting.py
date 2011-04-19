@@ -999,7 +999,7 @@ class IntervalReporting(DataReporting):
     _font_size_ = 24
     _fig_width_pt_ = 246.0                  # Get this from LaTeX using \showthe\columnwidth
     _inches_per_pt_ = 1.0/72.27             # Convert pt to inch
-    _use_labels= False
+    _use_labels_= False
     _fig_file_format_ = 'png'
     _plot_type_ = 'line'
     
@@ -1011,26 +1011,30 @@ class IntervalReporting(DataReporting):
             loader_type    - string which determines the type of dataloader object
             **kwargs       - allows plotting parameters to be tuned     !! MODIFY -- move up to base class !! 
     """
-    def __init__(self, loader_type, **kwargs):
-        if loader_type == 'standard':
-            self._data_loader_ = DL.IntervalReportingLoader()
-        elif loader_type == 'campaign':
-            self._data_loader_ = DL.CampaignIntervalReportingLoader()    
+    def __init__(self, **kwargs):
+        
+        self._data_loader_ = DL.IntervalReportingLoader()
                 
         for key in kwargs:
+            
             if key == 'font_size':
-                self._font_size_ =  kwargs[key]
+                self._font_size_ = kwargs[key]
             elif key == 'fig_width_pt':
-                self._fig_width_pt_ =  kwargs[key]
+                self._fig_width_pt_ = kwargs[key]
             elif key == 'inches_per_pt':
-                self._inches_per_pt_ =  kwargs[key]
+                self._inches_per_pt_ = kwargs[key]
             elif key == 'use_labels':
-                self._use_labels =  kwargs[key]
+                self._use_labels_ = kwargs[key]
             elif key == 'fig_file_format':
-                self._fig_file_format_ =  kwargs[key]
-            elif key == 'plot_type':
-                self._plot_type_ =  kwargs[key]
-
+                self._fig_file_format_ = kwargs[key]
+            elif key == 'plot_type':                
+                self._plot_type_ = kwargs[key]
+            elif key == 'data_loader':                          # Set custom data loaders
+                if kwargs[key] == 'campaign_interval':
+                    self._data_loader_ = DL.CampaignIntervalReportingLoader()
+        
+        print self._data_loader_.__str__
+         
     """
         <description>
     """    
@@ -1071,7 +1075,7 @@ class IntervalReporting(DataReporting):
             if self._plot_type_ == 'step':
                 pylab.step(times[key], metrics[key], line_types[count])
             elif self._plot_type_ == 'line':
-                pylab.plot(times[key], metrics[key], line_types[count])
+                pylab.plot(times[key][1:], metrics[key][1:], line_types[count])
             count = count + 1
         
         """ Set the figure and font size """
@@ -1106,7 +1110,7 @@ class IntervalReporting(DataReporting):
         pylab.ylabel(ylabel)
 
         pylab.title(title)
-        pylab.savefig('./tests/' + fname + '.' + file_format, format=_fig_file_format_)
+        pylab.savefig('./tests/' + fname + '.' + self._fig_file_format_, format=self._fig_file_format_)
 
 
     """
