@@ -60,7 +60,7 @@ class TemplateAdventures {
 	
 	public static function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 
-			'citation', 
+			'ta_citation', 
 			array( __CLASS__, 'citation' ), 
 			SFH_OBJECT_ARGS 
 		);
