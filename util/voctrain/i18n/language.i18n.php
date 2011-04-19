@@ -2626,6 +2626,7 @@ $messages['lfn'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
+ * @author Matasg
  */
 $messages['lt'] = array(
 	'voctrain_Hello_World' => 'LABAS WIKI!',
@@ -2636,6 +2637,7 @@ $messages['lt'] = array(
 	'voctrain_User_added' => 'Naudotojas pridėtas',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Labas, %username, sveiki atvykę į omega kalbos treniruoklį',
 	'voctrain_continue' => 'tęsti',
+	'voctrain_hello_place' => 'sveiki %place',
 	'voctrain_bye' => 'viso gero',
 	'voctrain_Set_up_your_exercise' => 'Nustatyti savo pratimus',
 	'voctrain_Number_of_questions' => 'Klausimų skaičius',
@@ -2684,7 +2686,13 @@ $messages['lt'] = array(
 	'voctrain_Vocview' => 'Žodyno žiūrovas',
 	'voctrain_Dictionary_definitions' => 'žodyno_apibrėžimai',
 	'voctrain_Translation' => 'Vertimas',
+	'voctrain_unhide_definition' => 'parodyti apibrėžimą',
+	'voctrain_unhide_words' => 'parodyti žodžius',
 	'voctrain_hiding' => 'Slėpimas',
+	'voctrain_hide_definitions_in_question_language' => 'Slėpti kalbos, kurios klausinėjama, apibrėžimus',
+	'voctrain_hide_words_in_question_language' => 'Slėpti kalbos, kurios klausinėjama, žodžius',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Reikšmes atskirkite kableliais, jei norite naudoti kelias kalbas',
+	'voctrain_other' => 'kita',
 );
 
 /** Eastern Mari (Олык Марий)
