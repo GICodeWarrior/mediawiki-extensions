@@ -57,10 +57,13 @@ $messages['be-tarask'] = array(
  */
 $messages['de'] = array(
 	'ratings-desc' => 'Ermöglicht es Benutzern einzelne Inhalte einer Seite unabhängig voneinander bewerten zu können',
+	'ratings-starsratings-desc' => 'Zeigt ein einfaches Bewertungssteuerelement (Sterne) mit dem ein Benutzer bestimmte Inhalte einer Seite bewerten kann.
+Die aktuelle Bewertung eines Benutzers wird angezeigt, sofern er bereits eine vorgenommen hat.',
 	'ratings-par-page' => 'Die Seite auf die sich die Bewertung bezieht.',
 	'ratings-par-tag' => 'Das Bewertungselement. Das Element gibt an, welcher Inhalt einer Seite bewertet wird.',
 	'ratings-par-showdisabled' => 'Zeigt die Bewertungen an, sofern der Benutzer nicht selbst bewerten kann (im schreibgeschützten Modus).',
 	'ratings-par-incsummary' => 'Soll eine Zusammenfassung der aktuellen Bewertungen über dem zu bewertenden Element angezeigt werden?',
+	'ratings-votesummary-desc' => 'Zeigt eine kurze Zusammenfassung der Bewertungen für die angegebene Seite und den dort bewerteten Bereich.',
 	'ratings-current-score' => 'Aktuelle Benutzerbewertung: $1 ($2 {{PLURAL:$2|Bewertung|Bewertungen}})',
 	'ratings-no-votes-yet' => 'Bislang wurde dies von niemanden bewertet.',
 );
@@ -70,10 +73,13 @@ $messages['de'] = array(
  */
 $messages['ia'] = array(
 	'ratings-desc' => 'Permitter al usatores de evalutar diverse "proprietates" de paginas',
+	'ratings-starsratings-desc' => 'Presenta un icone de stella con que le usator pote valutar un certe proprietate de un pagina.
+Le voto actual del usator essera monstrate initialmente si ille ha jam votate.',
 	'ratings-par-page' => 'Le pagina al qual le evalutation pertine.',
 	'ratings-par-tag' => 'Le etiquetta de evalutation. Le etiquetta specifica le "proprietate" del pagina que es evalutate.',
 	'ratings-par-showdisabled' => 'Monstrar le evalutationes si le usator non pote votar (in modo de lectura sol).',
 	'ratings-par-incsummary' => 'Monstrar un summario del votos actual supra le elemento de evalutation?',
+	'ratings-votesummary-desc' => 'Presenta un curte summario del votos pro le pagina e par de proprietates specificate.',
 	'ratings-current-score' => 'Evalutation actual del usator: $1 ($2 {{PLURAL:$2|evalutation|evalutationes}})',
 	'ratings-no-votes-yet' => 'Nemo ha ancora evalutate isto.',
 );
@@ -108,15 +114,19 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'ratings-desc' => 'Им овозможува на корисниците да оценуваат разни „својства“ на страниците',
+	'ratings-starsratings-desc' => 'Прикажува проста можност за доделување на ѕвездички за оценување на одредено својство на страницата.
+Ако корисникот веќе еднаш гласал, тогаш ќе се прикажува тековната оценка (глас).',
 	'ratings-par-page' => 'На која страница се однесува оценкава.',
 	'ratings-par-tag' => 'Ознака за оценка. Ознаката покажува кое „својство“ на страницата се оценува.',
 	'ratings-par-showdisabled' => 'Прикажувај оценки кога корисникот не може да гласа (во режим „само читање“).',
 	'ratings-par-incsummary' => 'Да прикажувам опис на тековните гласови над елементот за оценка?',
+	'ratings-votesummary-desc' => 'Прикажува краток опис на оценките (гласовите) за наведената страница и својство.',
 	'ratings-current-score' => 'Тековна корисничка оценка: $1 ($2 {{PLURAL:$2|оценка|оценки}})',
 	'ratings-no-votes-yet' => 'Сè уште никој го нема оценето ова.',
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -125,6 +135,7 @@ $messages['nl'] = array(
 	'ratings-par-tag' => 'Het waarderingslabel. Het label geeft aan welke "eigenschap" van de pagina wordt gewaardeerd.',
 	'ratings-par-showdisabled' => 'Waarderingen weergeven als de gebruiker niet kan waarderen (bij alleen-lezen).',
 	'ratings-par-incsummary' => 'Een samenvatting weergeven van de huidige waarderingen boven het waarderingselement?',
+	'ratings-votesummary-desc' => 'Geeft een korte samenvatting van de stemmen voor de opgegeven pagina en eigenschapspaar weer.',
 	'ratings-current-score' => 'Huidige gebruikerswaardering: $1 ($2 {{PLURAL:$2|waardering|waarderingen}})',
 	'ratings-no-votes-yet' => 'Dit onderdeel is nog door niemand gewaardeerd.',
 );

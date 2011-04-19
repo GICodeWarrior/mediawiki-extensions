@@ -32,14 +32,6 @@ $messages['qqq'] = array(
 	'right-webchat' => '{{doc-right|webchat}}',
 );
 
-/** کھوار (کھوار)
- * @author Rachitrali
- */
-$messages['khw'] = array(
-	'webchat' => 'کھوار چیٹنگ',
-	'webchat-desc' => 'تان ملگیریان سوم گپ شپو بچے خاص صفحہ [[Special:WebChat|کھوارا گپ شپ]]',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -74,6 +66,19 @@ $messages['ar'] = array(
 لو أنك مسجل الدخول لقبك سيتم ملؤه مسبقا.
 المستخدمون المجهولون يعطون لقبا مولدا تلقائيا، لكن يمكن تغييره.',
 	'right-webchat' => 'السماح باستخذام [[Special:WebChat|دردشة الوب]]',
+);
+
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'webchat' => 'Chat web',
+	'webchat-desc' => "Amiesta una [[Special:WebChat|páxina especial]] que s'usa pa charrar en tiempu real con otros usuarios de la wiki",
+	'webchat-header' => 'Esta páxina especial te permite collaborar en tiempu real con otros usuarios de la wiki.
+Pa coneutate val con que calques nel botón "Coneutar".
+Si tas coneutáu, yá tará rellenáu col to nomatu.
+A los usuarios anónimos se-yos da unu xeneráu automáticamente, pero pue camudar.',
+	'right-webchat' => 'Permisu pa usar el [[Special:WebChat|chat web]]',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -393,6 +398,14 @@ $messages['ja'] = array(
 	'webchat-desc' => 'ウィキの他の利用者とリアルタイムで会話するための[[Special:WebChat|特別ページ]]を加える',
 	'webchat-header' => 'この特別ページを使うと、あなたはこのウィキの他の利用者とリアルタイムで共同作業ができるようになります。接続するには接続ボタンを押すだけです。ニックネームでログインしている場合はその名前があらかじめ入力されています。匿名の利用者は自動的に名前がつけられますが、変えることもできます。',
 	'right-webchat' => '[[Special:WebChat|ウェブチャット]]を使用できる',
+);
+
+/** کھوار (کھوار)
+ * @author Rachitrali
+ */
+$messages['khw'] = array(
+	'webchat' => 'کھوار چیٹنگ',
+	'webchat-desc' => 'تان ملگیریان سوم گپ شپو بچے خاص صفحہ [[Special:WebChat|کھوارا گپ شپ]]',
 );
 
 /** Khmer (ភាសាខ្មែរ)
