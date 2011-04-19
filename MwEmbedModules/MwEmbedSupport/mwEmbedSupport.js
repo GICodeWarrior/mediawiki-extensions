@@ -64,7 +64,7 @@
 		}		
 	};
 		// Once interfaces are ready update the mwReadyFlag
-	$( mw ).bind('InterfacesReady', function(){ mw.interfacesReadyFlag  = true } );	
+	$( mw ).bind('InterfacesReady', function(){ mw.interfacesReadyFlag  = true; } );	
 	
 	// Once the DOM is ready start setting up interfaces
 	$( document ).ready(function(){
