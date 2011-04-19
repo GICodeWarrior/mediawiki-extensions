@@ -91,6 +91,26 @@ class ClickTrackingHooks {
 		return true;
 	}
 
+	
+	//adds a bucket-testing campaign to the active campaigns
+	public static function addCampaign($localBasePath, $remoteExtPath, $name ){
+		global $wgResourceModules;
+	
+		$cusResourceTemplate = array(
+		'localBasePath' => $localBasePath,
+		'remoteExtPath' => $remoteExtPath,
+		);
+		$wgResourceModules["ext.UserBuckets.$name"] = array(
+			'scripts' => "$name.js",
+			'dependencies' => 'jquery.clickTracking',
+		) + $cusResourceTemplate;
+		$wgResourceModules['ext.UserBuckets']['dependencies'] = array_merge( 
+										  ( array ) $wgResourceModules['ext.UserBuckets']['dependencies'],
+							                array("ext.UserBuckets.$name"));
+	}
+	
+	
+	
 	/**
 	 * Get event ID from name
 	 *
@@ -188,10 +208,13 @@ class ClickTrackingHooks {
 		$db_status_buckets = true;
 		$db_status = $dbw->insert( 'click_tracking', $data, __METHOD__ );
 		$dbw->commit();
+
+			
 		
 
 		if( $recordBucketInfo && $db_status ){
 			$buckets = self::unpackBucketInfo();
+			
 			if( $buckets ){
 				foreach( $buckets as $bucketName => $bucketValue ){
 						$db_current_bucket_insert = $dbw->insert( 'click_tracking_user_properties', 

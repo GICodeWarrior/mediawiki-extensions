@@ -89,13 +89,9 @@ $wgResourceModules['ext.clickTracking.special'] = array(
 ) + $ctResourceTemplate;
 $wgResourceModules['ext.UserBuckets'] = array(
 	'scripts' => 'ext.UserBuckets.js',
-	'dependencies' => array('jquery.clickTracking', 'jquery.cookie', /*'ext.UserBuckets.sampleCampaign'*/),
+	'dependencies' => array('jquery.clickTracking', 'jquery.cookie'),
 ) + $ctResourceTemplate;
 
-//uncomment sample campaign below and sampleCampaign dependency to set up a sample campaign
-/*
-$wgResourceModules['ext.UserBuckets.sampleCampaign'] = array(
-	'scripts' => 'sampleCampaign.js',
-	'dependencies' => 'jquery.clickTracking',
-) + $ctResourceTemplate;
-*/
+//uncomment for sample campaign
+//ClickTrackingHooks::addCampaign($dir. 'modules', 'ClickTracking/modules', 'sampleCampaign' );
+

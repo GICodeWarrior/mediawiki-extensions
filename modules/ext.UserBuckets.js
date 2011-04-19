@@ -1,16 +1,41 @@
 
+var JSON;
+if (!JSON) {
+    JSON = {};
 
-if( !JSON || !JSON.stringify ){
-	//include OpenSource JSON stringify from json.org
+    if(!JSON.stringify){
+    /* Very limited JSON encoder */
+	JSON.stringify = function( js_obj ) {
+		var returnstr = "{ ";
+
+		// trailing commas and json don't mix
+		var propertynum = 0;
+		for ( property in js_obj ) {
+			if ( propertynum > 0 ) {
+				returnstr += ", ";
+			}
+			returnstr += "\"" + property + "\"" + " : ";
+			if ( typeof js_obj[property] == 'object' ) {
+				returnstr += JSON.stringify( js_obj[property] );
+			} else {
+				returnstr += "\"" + js_obj[property] + "\" ";
+			}
+			propertynum++;
+		}
+
+		returnstr += " }";
+		return returnstr;
+	};
+    }
 }
 
 ( function( $ ) {
 //lazy-load
 $.getBuckets = function (force){
-	if (typeof($.userBuckets) == 'undefined' || force ){
-		$.userBuckets = $.parseJSON( $.cookie('userbuckets') );	
+	if (typeof($j.userBuckets) == 'undefined' || force ){
+		$j.userBuckets = $.parseJSON( $.cookie('userbuckets') );	
 	}
-	return $.userBuckets;
+	return $j.userBuckets;
 };
 
 $.setBucket = function ( bucketName, bucketValue, bucketVersion ){
