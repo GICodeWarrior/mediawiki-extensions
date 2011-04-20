@@ -17,10 +17,7 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-02'
 __version__ = '0.1'
 
-import sys
-import datetime
 import multiprocessing
-from Queue import Empty
 from operator import itemgetter
 from copy import deepcopy
 
@@ -31,7 +28,14 @@ from utils import messages
 from utils import data_converter
 from classes import consumers
 
+
 class EditorConsumer(consumers.BaseConsumer):
+    '''
+    A simple class takes care of fetching an editor from the queue and start
+    processing its edits. 
+    '''
+    def __init__(self):
+        super(EditorConsumer, self).__init__()
 
     def run(self):
         while True:
@@ -43,9 +47,9 @@ class EditorConsumer(consumers.BaseConsumer):
             new_editor()
 
 
-class Editor(object):
-    def __init__(self, id, db_raw, db_dataset, **kwargs):
-        self.id = id
+class Editor:
+    def __init__(self, editor_id, db_raw, db_dataset, **kwargs):
+        self.id = editor_id
         self.db_raw = db_raw
         self.db_dataset = db_dataset
         for kw in kwargs:
@@ -121,6 +125,13 @@ def cleanup_datacontainer(dc, variable_type):
 
 
 def calculate_totals(totals, counts, dc, var):
+    '''
+    So far, counting a variable for an editor happens per month per year but
+    this makes it cumbersome to determine how many edits an editor has made in 
+    a single year (you need to iterate over all the months and that can become
+    quite expensive when you have 10000s of editors. Hence, this little helper
+    function counts the total number of actions on a yearly basis. 
+    '''
     cnts = deepcopy(counts)
     totals.setdefault(var, {})
     for year in dc:
@@ -140,6 +151,9 @@ def calculate_totals(totals, counts, dc, var):
 
 
 def determine_number_edits(edits, first_year, final_year):
+    '''
+    This function counts the number of edits per namespace per month per year. 
+    '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'dict')
     for edit in edits:
@@ -152,6 +166,10 @@ def determine_number_edits(edits, first_year, final_year):
 
 
 def determine_articles_workedon(edits, first_year, final_year):
+    '''
+    This function creates a list of article_ids that an editor has worked on in 
+    a given month/year. 
+    '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'dict')
     for year in edits:
@@ -161,6 +179,7 @@ def determine_articles_workedon(edits, first_year, final_year):
             dc[year][month].setdefault(ns, set())
             dc[year][month][ns].add(edit['article'])
 
+    #convert the set to a list as mongo cannot store sets. 
     for year in dc:
         for month in dc[year]:
             for ns in dc[year][month]:
@@ -170,6 +189,10 @@ def determine_articles_workedon(edits, first_year, final_year):
 
 
 def determine_namespaces_workedon(edits, first_year, final_year):
+    '''
+    This function creates a list of namespaces that an editor has worked on in 
+    a given month/year.
+    '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'set')
     for year in edits:
@@ -184,6 +207,10 @@ def determine_namespaces_workedon(edits, first_year, final_year):
 
 
 def determine_number_reverts(edits, first_year, final_year):
+    '''
+    This function counts the number of times an edit was reverted in a given
+    month/year. 
+    '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'dict')
     for year in edits:
@@ -220,6 +247,9 @@ def determine_edit_volume(edits, first_year, final_year):
 
 
 def determine_year_range(edits):
+    '''
+    This function determines the first and final year that an editor was active.
+    '''
     years = [year for year in edits if edits[year] != []]
     first_year = int(min(years))
     final_year = int(max(years)) + 1
@@ -227,6 +257,10 @@ def determine_year_range(edits):
 
 
 def determine_last_edit_by_year(edits, first_year, final_year):
+    '''
+    This function determines the date of the last edit in a given year for a
+    given editor. 
+    '''
     dc = data_converter.create_datacontainer(first_year, final_year, 0)
     for year in edits:
         for edit in edits[year]:
@@ -259,23 +293,29 @@ def sort_edits(edits):
 
 def transform_editors_multi_launcher(rts):
     tasks = multiprocessing.JoinableQueue()
-    consumers = [EditorConsumer(tasks, None) for i in xrange(rts.number_of_processes)]
+    input_db, output_db, editors = setup_database(rts)
+    transformers = [EditorConsumer(tasks, None) for i in xrange(rts.number_of_processes)]
 
-    for id in ids:
-        tasks.put(Editor(rts.dbname, rts.editors_raw, id))
+    for editor in editors:
+        tasks.put(Editor(rts.dbname, rts.editors_raw, editor))
+
     for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
     print messages.show(tasks.qsize)
-    for w in consumers:
-        w.start()
+    for transformer in transformers:
+        transformer.start()
 
     tasks.join()
 
 
 def setup_database(rts):
-    db_raw = storage.Database(rts.storage, rts.dbname, rts.editors_raw)
-    db_dataset = storage.Database(rts.storage, rts.dbname, rts.editors_dataset)
+    '''
+    Initialize the database, including setting indexes and dropping the older
+    version of the collection.
+    '''
+    db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
+    db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
     ids = db_dataset.retrieve_distinct_keys('editor')
     db_dataset.add_index('editor')
@@ -286,14 +326,15 @@ def setup_database(rts):
 
 def transform_editors_single_launcher(rts):
     print rts.dbname, rts.editors_raw
-    input_db, output_db, ids = setup_database(rts)
-    pbar = progressbar.ProgressBar(maxval=len(ids)).start()
-    for x, id in enumerate(ids):
+    input_db, output_db, editors = setup_database(rts)
+    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
+    for x, editor in enumerate(editors):
         editor = Editor(id, input_db, output_db)
         editor()
         pbar.update(pbar.currval + 1)
 
 
 if __name__ == '__main__':
-    transform_editors_single_launcher('enwiki', 'editors')
-    #transform_editors_multi_launcher('enwiki', 'editors')
+    rts = None
+    transform_editors_single_launcher(rts)
+    #transform_editors_multi_launcher(rts)
