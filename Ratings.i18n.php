@@ -131,6 +131,8 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'ratings-desc' => "Maakt het voor gebruikers mogelijk verschillende eigenschappen van pagina's te waarderen",
+	'ratings-starsratings-desc' => 'Geeft een eenvoudig besturingselement met sterren weer waarin gebruikers een eigenschap van een pagina kunnen waarderen.
+De huidige waardering van gebruikers wordt weergegeven als er al gewaardeerd is.',
 	'ratings-par-page' => 'De pagina waar de waardering op van toepassing is.',
 	'ratings-par-tag' => 'Het waarderingslabel. Het label geeft aan welke "eigenschap" van de pagina wordt gewaardeerd.',
 	'ratings-par-showdisabled' => 'Waarderingen weergeven als de gebruiker niet kan waarderen (bij alleen-lezen).',
