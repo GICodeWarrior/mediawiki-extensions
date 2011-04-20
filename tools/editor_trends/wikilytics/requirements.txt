@@ -1,3 +1,0 @@
-djangotoolbox
-django-nonrel
-django-mongodb-engine
