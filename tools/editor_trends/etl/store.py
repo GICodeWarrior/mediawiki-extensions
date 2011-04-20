@@ -149,8 +149,7 @@ def launcher_articles(rts):
     for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
-    storers = Process(target=store_articles, args=[tasks, rts] for
-                      x in xrange(rts.number_of_processes))
+    storers = [Process(target=store_articles, args=[tasks, rts]) for x in xrange(rts.number_of_processes)]
 
     for storer in storers:
         storer.start()
