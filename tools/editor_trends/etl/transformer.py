@@ -294,7 +294,7 @@ def transform_editors_multi_launcher(rts):
     transformers = [EditorConsumer(rts, tasks) for i in xrange(rts.number_of_processes)]
 
     for editor in editors:
-        tasks.put(Editor(db_raw, db_dataset, editor))
+        tasks.put(Editor(rts, editor))
 
     for x in xrange(rts.number_of_processes):
         tasks.put(None)
