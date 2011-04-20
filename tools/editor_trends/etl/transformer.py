@@ -328,8 +328,8 @@ def transform_editors_single_launcher(rts):
     print rts.dbname, rts.editors_raw
     input_db, output_db, editors = setup_database(rts)
     pbar = progressbar.ProgressBar(maxval=len(editors)).start()
-    for x, editor in enumerate(editors):
-        editor = Editor(id, input_db, output_db)
+    for editor in editors:
+        editor = Editor(editor, input_db, output_db)
         editor()
         pbar.update(pbar.currval + 1)
 
