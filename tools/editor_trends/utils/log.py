@@ -29,7 +29,7 @@ settings = settings.Settings()
 from classes import storage
 
 def to_db(rts, jobtype, task, timer, event='start'):
-    db = storage.Database(rts.storage, rts.dbname, 'jobs')
+    db = storage.init_database(rts.storage, rts.dbname, 'jobs')
     created = datetime.datetime.now()
     hash = '%s_%s' % (rts.project, rts.hash)
 
