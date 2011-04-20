@@ -27,7 +27,7 @@ final class PushFunctions {
 			$data[$msg] = wfMsgNoTrans( $msg );
 		}
 	
-		$wgOut->addInlineScript( 'var wgPushMessages = ' . json_encode( $data ) . ';' );		
+		$wgOut->addInlineScript( 'var wgPushMessages = ' . FormatJson::encode( $data ) . ';' );		
 	}
 	
 	/**

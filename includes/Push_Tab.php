@@ -324,7 +324,7 @@ final class PushTab {
 		global $wgOut, $wgLang, $egPushIncTemplates;
 
 		$wgOut->addInlineScript(
-			'var wgPushTemplates = ' . json_encode( $templates ) . ';'
+			'var wgPushTemplates = ' . FormatJson::encode( $templates ) . ';'
 		);				
 		
 		foreach ( $templates as &$template ) {
@@ -374,9 +374,9 @@ final class PushTab {
 		}
 		
 		$wgOut->addInlineScript(
-			'var wgPushPageFiles = ' . json_encode( $pageFiles ) . ';' .
-			'var wgPushTemplateFiles = ' . json_encode( $templateFiles ) . ';' .
-			'var wgPushIndexPath = ' . json_encode( $wgScript )
+			'var wgPushPageFiles = ' . FormatJson::encode( $pageFiles ) . ';' .
+			'var wgPushTemplateFiles = ' . FormatJson::encode( $templateFiles ) . ';' .
+			'var wgPushIndexPath = ' . FormatJson::encode( $wgScript )
 		);
 
 		$wgOut->addHTML(
