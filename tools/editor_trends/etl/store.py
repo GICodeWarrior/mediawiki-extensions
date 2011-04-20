@@ -98,6 +98,7 @@ def prepare_data(line):
 
 
 def store_articles(tasks, rts):
+    db = storage.init_database(rts.storage, rts.dbname, rts.articles_raw)
     while True:
         filename = tasks.get(block=False)
         if filename == None:
