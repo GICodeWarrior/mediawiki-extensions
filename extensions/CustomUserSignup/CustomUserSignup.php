@@ -8,6 +8,7 @@
  * @version 0.1.0
  * @author Nimish Gautam
  * @link http://www.mediawiki.org/wiki/Extension:CustomUserSignup Documentation
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
