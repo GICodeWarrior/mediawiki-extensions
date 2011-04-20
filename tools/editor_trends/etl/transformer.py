@@ -34,8 +34,8 @@ class EditorConsumer(consumers.BaseConsumer):
     A simple class takes care of fetching an editor from the queue and start
     processing its edits. 
     '''
-    def __init__(self):
-        super(EditorConsumer, self).__init__()
+    def __init__(self, rts, tasks):
+        super(EditorConsumer, self).__init__(rts, tasks)
 
     def run(self):
         while True:
@@ -294,7 +294,7 @@ def sort_edits(edits):
 def transform_editors_multi_launcher(rts):
     tasks = multiprocessing.JoinableQueue()
     input_db, output_db, editors = setup_database(rts)
-    transformers = [EditorConsumer(tasks, None) for i in xrange(rts.number_of_processes)]
+    transformers = [EditorConsumer(rts, tasks) for i in xrange(rts.number_of_processes)]
 
     for editor in editors:
         tasks.put(Editor(rts.dbname, rts.editors_raw, editor))

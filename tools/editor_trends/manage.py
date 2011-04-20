@@ -24,6 +24,7 @@ import sys
 import datetime
 import ConfigParser
 from argparse import ArgumentParser, RawTextHelpFormatter
+import cProfile
 
 from classes import languages
 from classes import projects
@@ -32,7 +33,6 @@ from utils import file_utils
 from utils import ordered_dict
 from utils import log
 from utils import timer
-from classes import storage
 from etl import downloader
 from etl import extracter
 from etl import store
@@ -337,7 +337,7 @@ def transformer_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Transform', transformer_launcher)
-    transformer.transform_editors_single_launcher(rts)
+    transformer.transform_editors_multi_launcher(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Transform', transformer_launcher)
@@ -361,34 +361,6 @@ def dataset_launcher(rts, logger):
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'export', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Dataset', dataset_launcher)
-
-
-def cleanup(rts, logger):
-    '''
-    This function deletes all files of a previous Wikilytics run.
-    '''
-    directories = rts.directories[1:]
-
-    #remove directories
-    for directory in directories:
-        file_utils.delete_file(directory, '', directory=True)
-        log.to_csv(logger, rts,
-                       message='Deleting %s' % directory,
-                       verb='Deleting',
-                       function=cleanup)
-
-    #create directories
-    rts.verify_environment(directories)
-    log.to_csv(logger, rts, message='Deleting %s' % directory,
-                   verb='Creating', function=rts.verify_environment)
-
-    #remove binary files
-    filename = '%s%s' % (rts.full_project, '_editor.bin')
-    file_utils.delete_file(rts.binary_location, filename)
-    log.to_csv(logger, rts, message='Deleting %s' % filename,
-                   verb='Deleting',
-                   function=file_utils.delete_file)
-
 
 
 def all_launcher(rts, logger):
@@ -448,4 +420,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    #main()
+    cProfile.run('main()')
