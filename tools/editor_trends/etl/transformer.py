@@ -49,13 +49,15 @@ class EditorConsumer(consumers.BaseConsumer):
 
 class Editor:
     def __init__(self, rts, editor_id):
-        self.db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
-        self.db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
+        self.editor_id = editor_id
+        self.rts = rts
 
     def __str__(self):
         return '%s' % (self.editor_id)
 
     def __call__(self):
+        self.db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
+        self.db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
         cutoff = 9
         editor = self.db_raw.find_one('editor', self.editor_id)
         if editor == None:
