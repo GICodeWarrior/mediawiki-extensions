@@ -2760,6 +2760,7 @@ $messages['li'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Papuass
  */
 $messages['lv'] = array(
@@ -2773,6 +2774,8 @@ $messages['lv'] = array(
 	'fogg-noaudio-title' => 'Nav audio',
 	'fogg-title-title' => 'Nosaukums',
 	'fogg-title-help' => 'Tava klipa nosaukums',
+	'fogg-artist-title' => 'Izveidotāja vārds',
+	'fogg-artist-help' => 'Šī klipa izveidotājs',
 );
 
 /** Macedonian (Македонски)
@@ -2780,7 +2783,7 @@ $messages['lv'] = array(
  */
 $messages['mk'] = array(
 	'fogg-wont-upload-to-server' => 'Напомена: Вашата видеоподатотека ќе биде локално кодирана и нема да се подига на опслужувач.',
-	'fogg-save_local_file' => 'Сачувај Ogg',
+	'fogg-save_local_file' => 'Зачувај Ogg',
 	'fogg-help-sticky' => 'Помош (кликнете за да се прилепи)',
 	'fogg-cg-preset' => 'Зададено: <strong>$1</strong>',
 	'fogg-cg-quality' => 'Основни поставки за квалитетот и резолуцијата',

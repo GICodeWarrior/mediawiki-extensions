@@ -240,6 +240,7 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
 	'specialuserstats' => "Estadístiques d'usu",
@@ -247,8 +248,8 @@ $messages['ast'] = array(
 	'usagestatisticsfor' => "<h2>Estadístiques d'usu de [[User:$1|$1]]</h2>",
 	'usagestatisticsinterval' => 'Intervalu',
 	'usagestatisticstype' => 'Triba',
-	'usagestatisticsstart' => 'Fecha inicial',
-	'usagestatisticsend' => 'Fecha final',
+	'usagestatisticsstart' => "Data d'aniciu:",
+	'usagestatisticsend' => 'Data final:',
 	'usagestatisticssubmit' => 'Xenerar estadístiques',
 	'usagestatisticsnostart' => 'Por favor especifica una fecha inicial',
 	'usagestatisticsnoend' => 'Por favor especifica una fecha final',

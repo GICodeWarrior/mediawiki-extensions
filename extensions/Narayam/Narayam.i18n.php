@@ -191,11 +191,13 @@ $messages['de'] = array(
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',
 );
 
-/** Esperanto (Esperanto) */
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
 $messages['eo'] = array(
 	'narayam-desc' => 'Provizas agorditajn enigmetodojn por enigkampoj',
 	'narayam-toggle-ime' => 'Ŝalti enigmetodon ($1)',
-	'narayam-help-page' => 'Helpo:Tajpado',
+	'narayam-help-page' => 'Help:Tajpado',
 	'narayam-checkbox-tooltip' => 'En/elŝalti enigmetodon for specialaj literoj',
 	'narayam-disable-preference' => 'Elŝalti enigmetodon (IME) Narayam',
 	'narayam-eo' => 'Esperanto',

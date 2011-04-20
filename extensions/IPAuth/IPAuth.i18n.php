@@ -37,6 +37,13 @@ $messages['ar'] = array(
 	'ipauth-desc' => 'دخول تلقائي من عناوين آيبي معينة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'ipauth-desc' => 'Conexón automática dende direiciones IP fixes',
+);
+
 /** Belarusian (Беларуская)
  * @author Хомелка
  */

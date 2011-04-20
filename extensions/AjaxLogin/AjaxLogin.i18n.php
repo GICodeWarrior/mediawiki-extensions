@@ -651,6 +651,7 @@ Ciò vi porterà via da questa pagina di modifica e si rischia di perdere la mod
 	'ajaxLogin2' => 'Sicuro? Si potrebbero perdere le modifiche apportate a questa pagina se si lascia la pagina ora.',
 	'ajaxlogin-create' => 'Crealo ora',
 	'al-nosuchuser' => "L'utente \"\$1\" non esiste. I nomi utente sono ''case sensitive''. Controlla l'ortografia.",
+	'al-createblocked' => 'Il tuo indirizzo IP è bloccato alla creazione di account.',
 	'al-throttled' => 'Sono stati effettuati recentemente troppi tentativi di inserimento password.
 Attendi $1 {{PLURAL:$1|secondo|secondi}} prima di riprovare nuovamente.',
 );
