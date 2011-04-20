@@ -268,7 +268,13 @@ $.articleFeedback = {
 			// If something was invalid, reset the helpimprove-email part of the form.
 			// When user returns from submit, it will be clean
 			} else {
-			
+				$( '#articleFeedback-expertise-on' ).removeAttr('checked').change();
+				context.$ui
+					.find( '.articleFeedback-helpimprove-email' )
+						.val('')
+						.end()
+					.find( '.articleFeedback-helpimprove-email-validity' )
+						.remove();
 			}
 		},
 		'executePitch': function( action ) {
