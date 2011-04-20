@@ -986,13 +986,14 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'importusers' => 'Importazione utenti',
 	'importusers-desc' => '[[Special:ImportUsers|Importa utenti]] in massa da file CSV; codifica: UTF-8',
 	'importusers-uploadfile' => 'Carica un file',
-	'importusers-form-caption' => 'File di input CSV (UTF-8)',
+	'importusers-form-caption' => 'File di input CSV (UTF-8):',
 	'importusers-form-file' => 'Formato file utente (CSV):',
 	'importusers-form-replace-present' => 'Sostituire gli utenti esistenti',
 	'importusers-form-button' => 'Importa',
@@ -1005,9 +1006,9 @@ Non aggiornato.",
 Saltato.',
 	'importusers-log' => 'Registro importazione utenti',
 	'importusers-log-summary' => 'Oggetto',
-	'importusers-log-summary-all' => 'Tutti',
-	'importusers-log-summary-added' => 'Aggiunto',
-	'importusers-log-summary-updated' => 'Aggiornato',
+	'importusers-log-summary-all' => 'Tutti: $1',
+	'importusers-log-summary-added' => 'Aggiunto: $1',
+	'importusers-log-summary-updated' => 'Aggiornato: $1',
 	'importusers-login-name' => 'Nome utente',
 	'importusers-password' => 'password',
 	'importusers-email' => 'indirizzo e-mail',
