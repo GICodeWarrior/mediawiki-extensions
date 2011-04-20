@@ -13,37 +13,43 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)'])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-04-05'
 __version__ = '0.1'
 
 import sys
+import subprocess
 from abc import ABCMeta, abstractmethod
 if '..' not in sys.path:
     sys.path.append('..')
 
 from classes import settings
-from classes import exceptions
 settings = settings.Settings()
-import file_utils
 
-error = 0
+from classes import exceptions
+from utils import file_utils
+
+import_error = 0
 try:
     import pymongo
     import bson
     from bson.code import Code
     from pymongo.errors import OperationFailure
 except ImportError:
-    error += 1
+    import_error += 1
 try:
     import pycassa
 except ImportError:
-    error += 1
-if error == 2:
+    import_error += 1
+if import_error == 2:
     raise exceptions.NoDatabaseProviderInstalled()
 
 
 class AbstractDatabase:
+    '''
+    Abstract Database class that shows which functions at a minimum should be
+    provided by the actual Database classes.  
+    '''
     __metaclass__ = ABCMeta
 
     def __init__(self, dbname, collection):
@@ -67,16 +73,20 @@ class AbstractDatabase:
         '''Add index to a collection'''
 
     @abstractmethod
-    def insert(self, data):
+    def insert(self, data, qualifier):
         '''Insert observation to a collection'''
 
     @abstractmethod
-    def update(self, key, data):
+    def update(self, key, value, data):
         '''Update an observation in a collection'''
 
     @abstractmethod
-    def find(self, key, qualifier=None):
-        '''Find an observationi in a collection'''
+    def find(self, key, value, qualifier):
+        '''Find multiple observations in a collection'''
+
+    @abstractmethod
+    def find_one(self, key, value):
+        '''Find a single observation in a collection'''
 
     @abstractmethod
     def save(self, data):
@@ -87,8 +97,19 @@ class AbstractDatabase:
         '''Counts the number of observations in a collection'''
 
 class Mongo(AbstractDatabase):
+    '''
+    This class provides the functionality to talk to a MongoDB backend including
+    inserting, finding, and updating data.
+    '''
+    def __init__(self, dbname, collection):
+        super(Mongo, self).__init__(dbname, collection)
+        self.port = 27017
+
     @classmethod
     def is_registrar_for(cls, storage):
+        '''
+        Register this class for the Mongo backend
+        '''
         return storage == 'mongo'
 
     def connect(self):
@@ -172,12 +193,16 @@ class Mongo(AbstractDatabase):
         return ids
 
     def retrieve_distinct_keys_mapreduce(self, key):
+        '''
+        This is to work around a Mongo limitation, if the index is too large
+        then the distinct() function does not work. You need to do a map/reduce.
+        '''
         emit = 'function () { emit(this.%s, 1)};' % key
-        map = Code(emit)
-        reduce = Code("function()")
+        mapper = Code(emit)
+        reducer = Code("function()")
 
         ids = []
-        cursor = self.db[self.collection].map_reduce(map, reduce)
+        cursor = self.db[self.collection].map_reduce(mapper, reducer)
         for c in cursor.find():
             ids.append(c['_id'])
         return ids
@@ -196,34 +221,48 @@ class Mongo(AbstractDatabase):
                 new_data[str(key)] = value
         return new_data
 
-    def start_server(self, port, path):
-        default_port = 27017
+    def start_server(self, path):
+        '''
+        Helper function to start MongoDB daemon.
+        '''
         if settings.platform == 'Windows':
-            p = subprocess.Popen([path, '--port %s', self.port, '--dbpath',
+            subprocess.Popen([path, '--port %s', self.port, '--dbpath',
                                   'c:\data\db', '--logpath', 'c:\mongodb\logs'])
         elif settings.platform == 'Linux':
-            subprocess.Popen([path, '--port %s' % port])
+            subprocess.Popen([path, '--port %s' % self.port])
         elif settings.platform == 'OSX':
-            raise exceptions.NotImplementedError
+            raise exceptions.NotYetImplementedError
         else:
-            raise exceptions.PlatformNotSupportedError(platform)
+            raise exceptions.PlatformNotSupportedError(settings.platform)
 
 
 class Cassandra(AbstractDatabase):
-    @classmethod
-    def __init__(self):
+    '''
+    This class provides the functionality to talk to a Cassandra backend 
+    including inserting, finding, and updating data.
+    '''
+    def __init__(self, dbname, collection):
+        super(Cassandra, self).__init__(dbname, collection)
         self.port = 9160
         self.host = '127.0.0.1'
+        self.keyspace_name = '%s%s' % (self.dbname, self.collection)
 
+    @classmethod
     def is_registrar_for(cls, storage):
+        '''
+        Register this class for the Cassandra backend
+        '''
         return storage == 'cassandra'
 
     def install_schema(self, drop_first=False):
-        sm = pycassa.system_manager.SystemManager('%s:%s' % (sef.host, self.port))
+        '''
+        In contrast to Mongo, Cassnadra 
+        '''
+        sm = pycassa.system_manager.SystemManager('%s:%s' % (self.host, self.port))
         if drop_first:
-            sm.drop_keyspace(keyspace_name)
+            sm.drop_keyspace(self.keyspace_name)
 
-        sm.create_keyspace(keyspace_name, replication_factor=1)
+        sm.create_keyspace(self.keyspace_name, replication_factor=1)
 
         sm.create_column_family(self.dbname, self.collection,
                                 comparator_type=pycassa.system_manager.UTF8_TYPE,
@@ -232,10 +271,12 @@ class Cassandra(AbstractDatabase):
         sm.create_index(self.dbname, self.collection, 'article', pycassa.system_manager.UTF8_TYPE)
         sm.create_index(self.dbname, self.collection, 'username', pycassa.system_manager.UTF8_TYPE)
         sm.create_index(self.dbname, self.collection, 'user_id', pycassa.system_manager.LONG_TYPE)
+        return sm
 
     def connect(self):
         self.db = pycassa.connect(self.dbname)
         self.collection = pycassa.ColumnFamily(self.dbname, self.collection)
+        self.install_schema()
 
     def drop_collection(self):
         return
@@ -243,13 +284,13 @@ class Cassandra(AbstractDatabase):
     def add_index(self, key):
         return
 
-    def insert(self, data):
+    def insert(self, data, qualifier):
         return
 
-    def update(self, key, data):
+    def update(self, key, value, data):
         return
 
-    def find(self, key, qualifier=None):
+    def find(self, key, value, qualifier=None):
         return
 
     def save(self, data):
@@ -259,17 +300,21 @@ class Cassandra(AbstractDatabase):
         return
 
 
-def Database(storage, dbname, collection):
-  for cls in AbstractDatabase.__subclasses__():
-    if cls.is_registrar_for(storage):
-      return cls(dbname, collection)
-  raise ValueError
+def init_database(storage, dbname, collection):
+    '''
+    Calling this function will initialize the appropriate class based on 
+    the storage variable. Valid choices are currently Mongo and Cassandra
+    '''
+    for cls in AbstractDatabase.__subclasses__():
+        if cls.is_registrar_for(storage):
+            return cls(dbname, collection)
+    raise ValueError
 
 
 if __name__ == '__main__':
-    db = Database(rts.storage, 'wikilytics', 'zhwiki_editors_raw')
-    ids = db.retrieve_distinct_keys('editor', force_new=True)
+    database = init_database('mongo', 'wikilytics', 'zhwiki_editors_raw')
+    editors = database.retrieve_distinct_keys('editor', force_new=True)
     #db.insert({'foo':'bar'})
     #db.update('foo', 'bar', {})
     #db.drop_collection()
-    print db
+    print database
