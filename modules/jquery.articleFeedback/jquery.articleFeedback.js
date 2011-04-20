@@ -74,7 +74,7 @@ $.articleFeedback = {
 			</div>\
 		</div>\
 		<div style="clear:both;"></div>\
-		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled><html:msg key="form-panel-submit" /></button>\
+		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled="disabled"><html:msg key="form-panel-submit" /></button>\
 		<div class="articleFeedback-success articleFeedback-visibleWith-form"><span><html:msg key="form-panel-success" /></span></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-notices articleFeedback-visibleWith-form">\
@@ -167,7 +167,7 @@ $.articleFeedback = {
 		'enableHelpimprove': function( $helpimprove ) {
 			$helpimprove
 				.find( 'input:checkbox[value=on]' )
-					.attr( 'disabled', false )
+					.removeAttr( 'disabled' )
 					.end()
 				.find( '.articleFeedback-helpimprove-disabled' )
 					.removeClass( 'articleFeedback-helpimprove-disabled' );
@@ -176,7 +176,7 @@ $.articleFeedback = {
 			var context = this;
 			$.articleFeedback.fn.enableSubmission.call( context, false );
 			context.$ui.find( '.articleFeedback-lock' ).show();
-			// Build data from form values
+			// Build data from form values for 'action=articlefeedback'
 			var data = {};
 			for ( var key in context.options.ratings ) {
 				var id = context.options.ratings[key].id;
@@ -203,7 +203,7 @@ $.articleFeedback = {
 				'success': function( data ) {
 					var context = this;
 					if ( 'error' in data ) {
-						mw.log( 'Form submission error' );
+						mw.log( 'ArticleFeedback: Form submission error' );
 						mw.log( data.error );
 						context.$ui.find( '.articleFeedback-error' ).show();
 					} else {
@@ -217,6 +217,59 @@ $.articleFeedback = {
 					context.$ui.find( '.articleFeedback-error' ).show();
 				}
 			} );
+			// Build data from form values for 'action=emailcapture'
+			// Ignore if email was invalid
+			if ( context.$ui.find( '.articleFeedback-helpimprove-email-validity.valid' ).length
+				// Ignore if email field was empty (it's optional)
+				 && !$.isEmpty( context.$ui.find( '.articleFeedback-helpimprove-email' ).val() )
+				 // Ignore if checkbox was unchecked (ie. user can enter and then decide to uncheck,
+				 // field fades out, then we shouldn't submit)
+				 && $( '#articleFeedback-expertise-on:checked' ).length
+			) {
+				
+				var ecData = {
+					email: context.$ui.find( '.articleFeedback-helpimprove-email' ).val()
+				};
+			
+				$.ajax( {
+					'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
+					'type': 'POST',
+					'dataType': 'json',
+					'context': context,
+					'data': $.extend( ecData, {
+						'action': 'emailcapture',
+						'format': 'json'
+					} ),
+					'success': function( data ) {
+						var context = this;
+
+						if ( 'error' in data ) {
+							mw.log( 'EmailCapture: Form submission error' );
+							mw.log( data.error );
+							updateMailValidityLabel( 'triggererror' );
+
+						} else {
+							// Hide helpimprove-email for when user returns to Rate-view
+							// without reloading page
+							context.$ui.find( '.articleFeedback-helpimprove' ).hide();
+
+							// Set cookie if it was successful, so it won't be asked again
+							$.cookie(
+								prefix( 'helpimprove-email' ),
+								// Path must be set so it will be remembered
+								// for all article (not just current level)
+								// @XXX: '/' may be too wide (multi-wiki domains)
+								'hide', { 'expires': 30, 'path': '/' }
+							);
+						}
+					}
+				} );
+			
+			// If something was invalid, reset the helpimprove-email part of the form.
+			// When user returns from submit, it will be clean
+			} else {
+			
+			}
 		},
 		'executePitch': function( action ) {
 			var $pitch = $(this).closest( '.articleFeedback-pitch' );
@@ -298,26 +351,19 @@ $.articleFeedback = {
 					
 					// Help improve
 					var $helpimprove = context.$ui.find( '.articleFeedback-helpimprove' );
-					// @FIXME: Needs serverside handling to actually pass this
-					feedback.helpimprove = 'on test@example.org';
-					if ( typeof feedback.helpimprove === 'string' ) {
-						var tags = feedback.helpimprove.split( ' ', 2 );
-						if ( tags.length == 2 && tags[0] == 'on' ) {
-							$helpimprove.find( 'input:checkbox[value=on]' ).attr( 'checked', 'checked' );
-							$helpimprove.find( '.articleFeedback-helpimprove-email' ).val( tags[1] );
-							// IE7 seriously has issues, and we have to hide, then show
-							$helpimprove.find( '.articleFeedback-helpimprove-options' )
-								.hide().show();
-							$.articleFeedback.fn.enableHelpimprove( $helpimprove );
-						}
-					} else {
-						$helpimprove
-							.find( 'input:checkbox' )
-								.removeAttr( 'checked' )
-								.end()
-							.find( '.articleFeedback-helpimprove-options' )
-								.hide();
+
+					var showHelpimprove = true;
+
+					// @XXX: Insert bucket thing override here
+					// bucket thing will set it to false when needed, default is true
+
+					if ( $.cookie( prefix( 'helpimprove-email' ) ) == 'hide'
+						|| !mw.user.anonymous() ) {
+						showHelpimprove = false;
 					}
+					
+					// true: show, false: hide
+					$helpimprove.toggle( showHelpimprove );
 
 					// Index rating data by rating ID
 					var ratings = {};
@@ -514,13 +560,13 @@ $.articleFeedback = {
 						.attr( 'placeholder', mw.msg( 'articlefeedback-form-panel-helpimprove-email-placeholder' ) )
 						.placeholder() // back. compat. for older browsers
 						.one( 'blur', function() {
-							var $el = $(this), val = $el.val();
+							var $el = $(this);
 							if ( context.$ui.find( '.articleFeedback-helpimprove-email-validity' ).length === 0 ) {
 								$el.after( '<div class="articleFeedback-helpimprove-email-validity"></div>' );
 							}
-							updateMailValidityLabel( val, context );
+							updateMailValidityLabel( $el.val(), context );
 							$el.keyup( function() {
-								updateMailValidityLabel( val, context );
+								updateMailValidityLabel( $el.val(), context );
 							} );
 						} )
 						.end()
