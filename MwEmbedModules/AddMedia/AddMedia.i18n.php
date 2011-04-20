@@ -4341,7 +4341,11 @@ $messages['lb'] = array(
  * @author Namik
  */
 $messages['lez'] = array(
+	'mwe-thumbnail-more' => 'Эке хъувун',
+	'mwe-upload' => 'Парвиниз шикил',
+	'mwe-link-login' => 'Инна куьн тlар',
 	'mwe-am-results_next' => 'къведай',
+	'mwe-upload_tab' => 'Парвиниз шикил',
 );
 
 /** Limburgish (Limburgs)
