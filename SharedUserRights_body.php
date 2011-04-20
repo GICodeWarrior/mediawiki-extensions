@@ -25,7 +25,7 @@ class SharedUserRights extends SpecialPage {
 		return true;
 	}
 
-	public function userCanExecute( $user ) {
+	public function userCanExecute( User $user ) {
 		return $user->isAllowed( 'userrights-shared' );
 	}
 
