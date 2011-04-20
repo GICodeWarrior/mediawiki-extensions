@@ -186,7 +186,7 @@ final class LiveTranslateHooks {
 			Html::inlineScript(
 				'google.load("language", "1");
 				google.setOnLoadCallback(function(){google.language.getBranding("googlebranding");});' .
-				'var sourceLang = ' . json_encode( $currentLang ) . ';'
+				'var sourceLang = ' . FormatJson::encode( $currentLang ) . ';'
 			)
 		);		
 		

@@ -54,7 +54,7 @@ final class LiveTranslateFunctions {
 			$data[$msg] = wfMsgNoTrans( $msg );
 		}
 	
-		$wgOut->addInlineScript( 'var wgLTEMessages = ' . json_encode( $data ) . ';' );		
+		$wgOut->addInlineScript( 'var wgLTEMessages = ' . FormatJson::encode( $data ) . ';' );		
 	}
 	
 	/**
