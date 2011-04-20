@@ -336,7 +336,7 @@ def transformer_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Transform', transformer_launcher)
-    transformer.transform_editors_multi_launcher(rts)
+    transformer.transform_editors_single_launcher(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Transform', transformer_launcher)

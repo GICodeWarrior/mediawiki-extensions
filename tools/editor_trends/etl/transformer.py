@@ -48,16 +48,15 @@ class EditorConsumer(consumers.BaseConsumer):
 
 
 class Editor:
-    def __init__(self, rts, editor_id):
+    def __init__(self, db_raw, db_dataset, editor_id):
         self.editor_id = editor_id
-        self.rts = rts
+        self.db_raw = db_raw    #storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_raw)
+        self.db_dataset = db_dataset    #storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
 
     def __str__(self):
         return '%s' % (self.editor_id)
 
     def __call__(self):
-        self.db_raw = storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_raw)
-        self.db_dataset = storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
         cutoff = 9
         editor = self.db_raw.find_one('editor', self.editor_id)
         if editor == None:
@@ -325,10 +324,10 @@ def setup_database(rts):
 
 def transform_editors_single_launcher(rts):
     print rts.dbname, rts.editors_raw
-    input_db, output_db, editors = setup_database(rts)
+    db_raw, db_dataset, editors = setup_database(rts)
     pbar = progressbar.ProgressBar(maxval=len(editors)).start()
     for editor in editors:
-        editor = Editor(editor, input_db, output_db)
+        editor = Editor(db_raw, db_dataset, editor)
         editor()
         pbar.update(pbar.currval + 1)
 
