@@ -317,11 +317,11 @@ def setup_database(rts):
     db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
     db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
-    ids = db_dataset.retrieve_distinct_keys('editor')
+    editors = db_raw.retrieve_distinct_keys('editor')
     db_dataset.add_index('editor')
     db_dataset.add_index('new_wikipedian')
 
-    return db_raw, db_dataset, ids
+    return db_raw, db_dataset, editors
 
 
 def transform_editors_single_launcher(rts):
