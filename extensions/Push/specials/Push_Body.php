@@ -175,8 +175,8 @@ class SpecialPush extends SpecialPage {
 		);
 		
 		$wgOut->addInlineScript(
-			'var wgPushPages = ' . json_encode( $pages ) . ';' .
-			'var wgPushTargets = ' . json_encode( $targets ) . ';' .
+			'var wgPushPages = ' . FormatJson::encode( $pages ) . ';' .
+			'var wgPushTargets = ' . FormatJson::encode( $targets ) . ';' .
 			'var wgPushWorkerCount = ' . $egPushBulkWorkers . ';' .
 			'var wgPushBatchSize = ' . $egPushBatchSize . ';' .
 			'var wgPushIncFiles = ' . ( $wgRequest->getCheck( 'files' ) ? 'true' : 'false' ) . ';'
