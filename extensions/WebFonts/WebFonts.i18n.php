@@ -13,7 +13,7 @@ $messages = array();
 */
 $messages['en'] = array(
 	'webfonts'         => 'WebFonts',
-	'webfonts-desc'    => 'Embed fonts on pages',
+	'webfonts-desc'    => 'Embed fonts in pages',
 	'webfonts-load'    => 'Select font',
 	'webfonts-disable-preference' => 'Disable font embedding (WebFonts)',
 );
