@@ -198,7 +198,7 @@ final class IncludeWP extends ParserHook {
 		
 		$this->parser->getOutput()->addHeadItem(
 			Html::inlineScript(
-				'var wgIncWPWikis =' . json_encode( $egIncWPWikis ) . ';'
+				'var wgIncWPWikis =' . FormatJson::encode( $egIncWPWikis ) . ';'
 			)
 		);
 	}
@@ -218,7 +218,7 @@ final class IncludeWP extends ParserHook {
 			$data[$msg] = wfMsgNoTrans( $msg );
 		}
 
-		$this->parser->getOutput()->addHeadItem( Html::inlineScript( 'var wgIncWPMessages = ' . json_encode( $data ) . ';' ) );
+		$this->parser->getOutput()->addHeadItem( Html::inlineScript( 'var wgIncWPMessages = ' . FormatJson::encode( $data ) . ';' ) );
 	}
 	
 	/**
