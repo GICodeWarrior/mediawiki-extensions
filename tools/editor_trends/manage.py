@@ -24,7 +24,6 @@ import sys
 import datetime
 import ConfigParser
 from argparse import ArgumentParser, RawTextHelpFormatter
-import cProfile
 
 from classes import languages
 from classes import projects
@@ -420,5 +419,5 @@ def main():
 
 
 if __name__ == '__main__':
-    #main()
-    cProfile.run('main()')
+    main()
+    #cProfile.run('main()')

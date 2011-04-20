@@ -48,15 +48,12 @@ class EditorConsumer(consumers.BaseConsumer):
 
 
 class Editor:
-    def __init__(self, db_raw, db_dataset, editor_id, **kwargs):
-        self.editor_id = editor_id
-        self.db_raw = db_raw
-        self.db_dataset = db_dataset
-        for kw in kwargs:
-            setattr(self, kw, kwargs[kw])
+    def __init__(self, rts, editor_id):
+        self.db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
+        self.db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
 
     def __str__(self):
-        return '%s' % (self.id)
+        return '%s' % (self.editor_id)
 
     def __call__(self):
         cutoff = 9
