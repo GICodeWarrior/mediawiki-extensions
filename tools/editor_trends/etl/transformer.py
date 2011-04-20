@@ -39,9 +39,9 @@ class EditorConsumer(consumers.BaseConsumer):
 
     def run(self):
         while True:
-            new_editor = self.task_queue.get()
-            self.task_queue.task_done()
-            print '%s editors to go...' % messages.show(self.task_queue.qsize)
+            new_editor = self.tasks.get()
+            self.tasks.task_done()
+            print '%s editors to go...' % messages.show(self.tasks.qsize)
             if new_editor == None:
                 break
             new_editor()
