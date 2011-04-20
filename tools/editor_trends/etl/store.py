@@ -100,7 +100,11 @@ def prepare_data(line):
 def store_articles(tasks, rts):
     db = storage.init_database(rts.storage, rts.dbname, rts.articles_raw)
     while True:
-        filename = tasks.get(block=False)
+        try:
+            filename = tasks.get(block=False)
+        except Empty:
+            pass
+
         if filename == None:
             break
         print 'Processing %s...' % filename
