@@ -49,7 +49,7 @@ class EditorConsumer(consumers.BaseConsumer):
 
 class Editor:
     def __init__(self, editor_id, db_raw, db_dataset, **kwargs):
-        self.id = editor_id
+        self.editor_id = editor_id
         self.db_raw = db_raw
         self.db_dataset = db_dataset
         for kw in kwargs:
@@ -60,7 +60,7 @@ class Editor:
 
     def __call__(self):
         cutoff = 9
-        editor = self.db_raw.find_one('editor', self.id)
+        editor = self.db_raw.find_one('editor', self.editor_id)
         if editor == None:
             return
         edits = editor['edits']
@@ -94,7 +94,7 @@ class Editor:
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
 
-        data = {'editor': self.id,
+        data = {'editor': self.editor_id,
                 'username': username,
                 'new_wikipedian': new_wikipedian,
                 'cum_edit_count': cum_edit_count,
