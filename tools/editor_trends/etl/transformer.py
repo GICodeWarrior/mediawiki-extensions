@@ -48,7 +48,7 @@ class EditorConsumer(consumers.BaseConsumer):
 
 
 class Editor:
-    def __init__(self, editor_id, db_raw, db_dataset, **kwargs):
+    def __init__(self, db_raw, db_dataset, editor_id, **kwargs):
         self.editor_id = editor_id
         self.db_raw = db_raw
         self.db_dataset = db_dataset
@@ -293,11 +293,11 @@ def sort_edits(edits):
 
 def transform_editors_multi_launcher(rts):
     tasks = multiprocessing.JoinableQueue()
-    input_db, output_db, editors = setup_database(rts)
+    db_raw, db_dataset, editors = setup_database(rts)
     transformers = [EditorConsumer(rts, tasks) for i in xrange(rts.number_of_processes)]
 
     for editor in editors:
-        tasks.put(Editor(rts.dbname, rts.editors_raw, editor))
+        tasks.put(Editor(db_raw, db_dataset, editor))
 
     for x in xrange(rts.number_of_processes):
         tasks.put(None)
