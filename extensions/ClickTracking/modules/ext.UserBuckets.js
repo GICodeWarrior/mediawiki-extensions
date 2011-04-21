@@ -40,7 +40,9 @@ $.getBuckets = function (force){
 
 $.setBucket = function ( bucketName, bucketValue, bucketVersion ){
 	var bucketCookies = $.getBuckets();
+	alert("HELLOA");
 	if(!bucketCookies) { bucketCookies ={};}
+	alert("HELLOB");
 	bucketCookies[ bucketName ] = [ bucketValue, bucketVersion ];
 	$j.cookie('userbuckets', JSON.stringify( bucketCookies ) , { expires: 365 }); //expires in 1 year
 	bucketCookies = $.getBuckets(true); //force it to rerun and update
@@ -77,7 +79,7 @@ $.setupActiveBuckets = function(){
 		}
 		
 		// do the actual code in the campaign based on the bucket
-		if($.getBuckets()[campaign.name] && $.getBuckets()[campaign.name][0] != "none"){
+		if($.getBuckets() && $.getBuckets()[campaign.name] && $.getBuckets()[campaign.name][0] != "none"){
 			campaign[$.getBuckets()[campaign.name][0]](); //function to execute
 			if(campaign.allActive){
 				campaign.allActive();

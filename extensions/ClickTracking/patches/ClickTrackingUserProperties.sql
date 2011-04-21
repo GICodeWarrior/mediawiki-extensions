@@ -14,7 +14,10 @@ CREATE TABLE IF NOT EXISTS /*_*/click_tracking_user_properties (
 	property_value varbinary(255),
 
 	-- property version
-	property_version INTEGER
+	property_version INTEGER,
+	
+	UNIQUE KEY id_name_value_version (session_id, property_name, property_value, property_version)
+	
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/click_tracking_user_properties_session_idx ON /*_*/click_tracking_user_properties (session_id);
