@@ -20,9 +20,9 @@ __version__ = '0.1'
 
 def show(func):
     '''
-    @func should be an qsize() belonging to a task queue. qsize() is not supported 
-    on OSX hence this simple workaround to make sure that we can continue supporting
-    OSX.
+    @func should be an qsize() belonging to a task queue. qsize() is not 
+    supported on OSX hence this simple workaround to make sure that we can 
+    continue supporting OSX.
     '''
     try:
         return func()

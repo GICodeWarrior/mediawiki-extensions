@@ -63,18 +63,22 @@ def create_list_dumpfiles(domain, path, filename):
     them in a queue. 
     '''
     task_queue = multiprocessing.JoinableQueue()
-    ext = file_utils.determine_file_extension(filename)
+    ext = os.path.splitext(filename)[1]
     canonical_filename = file_utils.determine_canonical_name(filename)
-    for x in xrange(1, 100):
-        f = '%s%s.xml.%s' % (canonical_filename, x, ext)
+    x = 1
+    while True:
+        f = '%s%s.xml%s' % (canonical_filename, x, ext)
         res = get_headers(domain, path, f)
-        if res == None or res.status != 200:
-            if x == 1:
-                task_queue.put(filename)
+        if res == None or res.status != 200 and x == 1:
+            task_queue.put(filename)
             break
-        else:
+        elif res.status == 200:
             print 'Added chunk to download: %s' % f
             task_queue.put(f)
+        else:
+            break
+        x += 1
+
     if x == 1:
         for x in xrange(1):
             task_queue.put(None)

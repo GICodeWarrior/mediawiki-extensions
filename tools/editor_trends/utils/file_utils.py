@@ -26,17 +26,14 @@ and track error messages.
 import bz2
 import gzip
 import re
-import htmlentitydefs
 import time
 import datetime
 import cPickle
 import codecs
 import os
-import ctypes
 import sys
 import subprocess
 import shutil
-import multiprocessing
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -45,20 +42,11 @@ from classes import settings
 settings = settings.Settings()
 
 from classes import exceptions
-import messages
-import text_utils
-
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    pass
-
-
-#RE_ERROR_LOCATION = re.compile('\d+')
-#RE_NUMERIC_CHARACTER = re.compile('&#?\w+;')
 
 def read_unicode_text(fh):
+    '''
+    @fh should be a file object
+    '''
     data = []
     try:
         for line in fh:
@@ -68,24 +56,6 @@ def read_unicode_text(fh):
         print e
 
     return data
-
-
-def check_if_process_is_running(pid):
-    try:
-        if settings.OS == 'Windows':
-            PROCESS_TERMINATE = 1
-            handle = ctypes.windll.kernel32.OpenProcess(PROCESS_TERMINATE, False, pid)
-            ctypes.windll.kernel32.CloseHandle(handle)
-            if handle != 0:
-                return True
-            else:
-                return False
-        else:
-            os.kill(pid, 0)
-            return True
-    except Exception, error:
-        print error
-        return False
 
 
 def read_raw_data(fh):
@@ -113,6 +83,9 @@ def read_data_from_csv(location, filename, encoding):
 
 
 def create_directory(path):
+    '''
+    @path is the absolute path
+    '''
     try:
         os.mkdir(path)
         return True
@@ -120,17 +93,11 @@ def create_directory(path):
         return False
 
 
-def determine_file_extension(filename):
-    pos = filename.rfind('.') + 1
-    return filename[pos:]
-
-
 def determine_file_mode(extension):
     '''
-    Checks if a given extension is an ASCII extension or not. The settings file
-    provides known ASCII extensions. 
+    Checks if a given extension is an ASCII extension or not. 
     '''
-    if extension in settings.ascii_extensions:
+    if extension in ['.txt', '.csv', '.json', '.xml']:
         return 'w'
     else:
         return 'wb'
@@ -203,24 +170,25 @@ def write_dict_to_csv(data, fh, keys, write_key=True, format='long'):
 
 
 def create_txt_filehandle(location, filename, mode, encoding):
+    '''Create a filehandle for text file with utf-8 encoding'''
     filename = str(filename)
     if not filename.endswith('.csv'):
         filename = construct_filename(filename, '.csv')
     path = os.path.join(location, filename)
-    return codecs.open(path, mode, encoding=encoding)
+    return codecs.open(path, mode, encoding='utf-8')
 
 
 def create_streaming_buffer(path):
-    extension = determine_file_extension(path)
-    if extension == 'gz':
+    extension = os.path.splitext(path)[1]
+    if extension == '.gz':
         fh = gzip.GzipFile(path, 'rb')
-    elif extension == 'bz2':
+    elif extension == '.bz2':
         fh = bz2.BZ2File(path, 'rb')
-    elif extension == '7z':
+    elif extension == '.7z':
         #TODO: might be too linux specific
         fh = subprocess.Popen('7z e -bd -so %s 2>/dev/null' % path, shell=True,
                               stdout=subprocess.PIPE, bufsize=65535).stdout
-    elif extension == 'xml':
+    elif extension == '.xml':
         fh = create_txt_filehandle(path, None, 'r', 'utf-8')
     else:
         raise exceptions.CompressedFileNotSupported(extension)
@@ -240,6 +208,9 @@ def construct_filename(name, extension):
 
 
 def delete_file(location, filename, directory=False):
+    '''
+    Delete a file or a directory
+    '''
     res = True
     if not directory:
         if check_file_exists(location, filename):
@@ -259,6 +230,7 @@ def delete_file(location, filename, directory=False):
 
 
 def determine_filesize(location, filename):
+    '''Determine the file size of a local file'''
     path = os.path.join(location, filename)
     return os.path.getsize(path)
 
@@ -276,6 +248,7 @@ def set_modified_data(mod_rem, location, filename):
     #sraise exceptions.NotYetImplementedError(set_modified_data)
 
 def get_modified_date(location, filename):
+    '''determine the date the file was originally created'''
     path = os.path.join(location, filename)
     mod_date = os.stat(path).st_mtime
     mod_date = datetime.datetime.fromtimestamp(mod_date)
@@ -283,6 +256,7 @@ def get_modified_date(location, filename):
 
 
 def check_file_exists(location, filename):
+    '''check if a file exists in particular location'''
     if hasattr(filename, '__call__'):
         filename = construct_filename(filename, '.bin')
     if os.path.exists(os.path.join(location, filename)):
@@ -292,6 +266,7 @@ def check_file_exists(location, filename):
 
 
 def which(program):
+    '''determine the path where program can be found'''
     def is_exe(fpath):
         return os.path.exists(fpath) and os.access(fpath, os.X_OK)
 
@@ -308,7 +283,7 @@ def which(program):
     raise exceptions.FileNotFoundException(program)
 
 
-def store_object(object, location, filename):
+def store_object(obj, location, filename):
     '''
     Pickle object
     '''
@@ -317,7 +292,7 @@ def store_object(object, location, filename):
     if not filename.endswith('.bin'):
         filename = filename + '.bin'
     fh = create_binary_filehandle(location, filename, 'wb')
-    cPickle.dump(object, fh)
+    cPickle.dump(obj, fh)
     fh.close()
 
 
@@ -364,9 +339,7 @@ def determine_canonical_name(filename):
     Determine the name of a file by stripping away all extensions.
     '''
     while filename.find('.') > -1:
-        ext = determine_file_extension(filename)
-        ext = '.%s' % ext
-        filename = filename.replace(ext, '')
+        filename = os.path.splitext(filename)[0]
     return filename
 
 
@@ -386,15 +359,15 @@ def retrieve_file_list(location, extension=None, mask=None):
         mask = re.compile('[\w\d*]')
     all_files = os.listdir(location)
     files = []
-    for file in all_files:
-        file = file.split('.')
-        if len(file) == 1:
+    for filename in all_files:
+        filename = filename.split('.')
+        if len(filename) == 1:
             continue
         if extension:
-            if re.match(mask, file[0]) and file[-1].endswith(extension):
-                files.append('.'.join(file))
-        elif re.match(mask, file[0]):
-            files.append('.'.join(file))
+            if re.match(mask, filename[0]) and filename[-1].endswith(extension):
+                files.append('.'.join(filename))
+        elif re.match(mask, filename[0]):
+            files.append('.'.join(filename))
     return files
 
 
@@ -415,7 +388,7 @@ def split_list(datalist, maxval):
         chunks[x] = datalist[a:b]
         a = (x + 1) * parts
         if a >= len(datalist):
-           break
+            break
     return chunks
 
 
