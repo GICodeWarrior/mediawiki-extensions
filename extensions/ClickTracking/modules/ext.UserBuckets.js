@@ -40,9 +40,7 @@ $.getBuckets = function (force){
 
 $.setBucket = function ( bucketName, bucketValue, bucketVersion ){
 	var bucketCookies = $.getBuckets();
-	alert("HELLOA");
 	if(!bucketCookies) { bucketCookies ={};}
-	alert("HELLOB");
 	bucketCookies[ bucketName ] = [ bucketValue, bucketVersion ];
 	$j.cookie('userbuckets', JSON.stringify( bucketCookies ) , { expires: 365 }); //expires in 1 year
 	bucketCookies = $.getBuckets(true); //force it to rerun and update
