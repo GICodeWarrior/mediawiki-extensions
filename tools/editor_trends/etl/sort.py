@@ -55,6 +55,11 @@ class Sorter(consumers.BaseConsumer):
                 fh.close()
                 for x, d in enumerate(data):
                     d = d.strip().split('\t')
+                    #TEMP FIX:
+                    editor = d[2]
+                    d[2] = d[0]
+                    d[0] = editor
+                    #END TEMP FIX
                     data[x] = d
                 #data = [d.strip() for d in data]
                 #data = [d.split('\t') for d in data]
@@ -113,21 +118,18 @@ def merge(front, back):
     return result
 
 
-def merge_sorted_files(target, files, iteration, rts):
+def merge_sorted_files(target, files):
     '''
     Merges smaller sorted files in one big file, Only used for creating 
     data competition file.  
     '''
-    fh = file_utils.create_txt_filehandle(target,
-                                          'merged_%s.txt' % iteration,
-                                          'w',
-                                          'utf-8')
+    fh = file_utils.create_txt_filehandle(target, 'kaggle.csv', 'w', 'utf-8')
     lines = 0
     for line in heapq.merge(*[readline(filename) for filename in files]):
         file_utils.write_list_to_csv(line, fh)
         lines += 1
     fh.close()
-    print lines
+    print 'Total number of edits: %s ' % lines
     return fh.name
 
 
@@ -151,20 +153,19 @@ def launcher(rts):
     pbar = progressbar.ProgressBar(maxval=len(files)).start()
     tasks = multiprocessing.JoinableQueue()
     result = multiprocessing.JoinableQueue()
-
-    consumers = [Sorter(rts, tasks, result) for
-                 x in xrange(rts.number_of_processes)]
+    number_of_processes = 3
+    sorters = [Sorter(rts, tasks, result) for x in xrange(number_of_processes)]
 
     for filename in files:
         tasks.put(filename)
 
-    for x in xrange(rts.number_of_processes):
+    for x in xrange(number_of_processes):
         tasks.put(None)
 
-    for w in consumers:
-        w.start()
+    for sorter in sorters:
+        sorter.start()
 
-    ppills = rts.number_of_processes
+    ppills = number_of_processes
     while True:
         while ppills > 0:
             try:

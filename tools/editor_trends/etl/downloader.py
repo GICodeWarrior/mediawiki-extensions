@@ -21,6 +21,7 @@ import urllib2
 import progressbar
 import multiprocessing
 import sys
+import os
 
 from utils import file_utils
 from utils import http_utils
@@ -43,7 +44,7 @@ def download_wiki_file(task_queue, properties):
             print 'Swallowed a poison pill'
             break
         widgets = log.init_progressbar_widgets(filename)
-        extension = file_utils.determine_file_extension(filename)
+        extension = os.path.splitext(filename)[1]
         filemode = file_utils.determine_file_mode(extension)
         filesize = http_utils.determine_remote_filesize(properties.wp_dump_location,
                                                         properties.dump_relative_path,

@@ -234,11 +234,11 @@ def determine_edit_volume(edits, first_year, final_year):
             month = edit['date'].month
             ns = edit['ns']
             dc[year][month].setdefault(ns, {})
-            dc[year][month][ns].setdefault('added', 0)
-            dc[year][month][ns].setdefault('removed', 0)
             if edit['delta'] < 0:
+                dc[year][month][ns].setdefault('added', 0)
                 dc[year][month][ns]['removed'] += edit['delta']
             elif edit['delta'] > 0:
+                dc[year][month][ns].setdefault('removed', 0)
                 dc[year][month][ns]['added'] += edit['delta']
     dc = cleanup_datacontainer(dc, {})
     return dc
@@ -281,6 +281,7 @@ def determine_article_count(articles_edited, first_year, final_year):
         for month in articles_edited[year]:
             for ns in articles_edited[year][month]:
                 dc[year][month][ns] = len(articles_edited[year][month][ns])
+    dc = cleanup_datacontainer(dc, {})
     return dc
 
 

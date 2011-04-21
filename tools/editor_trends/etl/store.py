@@ -103,7 +103,7 @@ def store_articles(tasks, rts):
         try:
             filename = tasks.get(block=False)
         except Empty:
-            pass
+            continue
 
         if filename == None:
             break
@@ -168,44 +168,45 @@ def launcher(rts):
     This is the main entry point and creates a number of workers and launches
     them. 
     '''
-    launcher_articles(rts)
-#    print 'Input directory is: %s ' % rts.sorted
-#    db = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
-#    db.drop_collection()
-#    db.add_index('editor')
-#
-#    files = file_utils.retrieve_file_list(rts.sorted, 'csv')
-#    pbar = progressbar.ProgressBar(maxval=len(files)).start()
-#
-#    tasks = multiprocessing.JoinableQueue()
-#    result = multiprocessing.JoinableQueue()
-#
-#    storers = [Storer(rts, tasks, result) for
-#                 x in xrange(rts.number_of_processes)]
-#
-#    for filename in files:
-#        tasks.put(filename)
-#
-#    for x in xrange(rts.number_of_processes):
-#        tasks.put(None)
-#
-#    for storer in storers:
-#        storer.start()
-#
-#    ppills = rts.number_of_processes
-#    while True:
-#        while ppills > 0:
-#            try:
-#                res = result.get(block=False)
-#                if res == True:
-#                    pbar.update(pbar.currval + 1)
-#                else:
-#                    ppills -= 1
-#            except Empty:
-#                pass
-#        break
-#
-#    tasks.join()
+    #launcher_articles(rts)
+    print 'Input directory is: %s ' % rts.sorted
+    db = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
+    db.drop_collection()
+    db.add_index('editor')
+    db.add_index('username')
+
+    files = file_utils.retrieve_file_list(rts.sorted, 'csv')
+    pbar = progressbar.ProgressBar(maxval=len(files)).start()
+
+    tasks = multiprocessing.JoinableQueue()
+    result = multiprocessing.JoinableQueue()
+
+    storers = [Storer(rts, tasks, result) for
+                 x in xrange(rts.number_of_processes)]
+
+    for filename in files:
+        tasks.put(filename)
+
+    for x in xrange(rts.number_of_processes):
+        tasks.put(None)
+
+    for storer in storers:
+        storer.start()
+
+    ppills = rts.number_of_processes
+    while True:
+        while ppills > 0:
+            try:
+                res = result.get(block=False)
+                if res == True:
+                    pbar.update(pbar.currval + 1)
+                else:
+                    ppills -= 1
+            except Empty:
+                pass
+        break
+
+    tasks.join()
 
 
 if __name__ == '__main__':

@@ -14,7 +14,7 @@ http://www.fsf.org/licenses/gpl.html
 
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-04-10'
 __version__ = '0.1'
 
@@ -37,6 +37,9 @@ def validate_hostname(address):
 
 
 def validate_ip(address):
+    '''
+    Determine whether a username is an IP4 address. 
+    '''
     parts = address.split(".")
     if len(parts) != 4:
         return False
@@ -51,6 +54,9 @@ def validate_ip(address):
 
 
 def extract_revision_text(revision, xml_namespace):
+    '''
+    Extract the actual text from a revision. 
+    '''
     rev_text = revision.find('%s%s' % (xml_namespace, 'text'))
     if rev_text.text == None:
         rev_text.text = fix_revision_text(revision)
@@ -58,6 +64,7 @@ def extract_revision_text(revision, xml_namespace):
 
 
 def parse_title(title):
+    ''' Extract the text of a title of an article'''
     return title.text
 
 
@@ -102,6 +109,7 @@ def parse_title_meta_data(title, namespace):
 
 
 def extract_username(contributor, xml_namespace):
+    '''Extract the username of the contributor'''
     contributor = contributor.find('%s%s' % (xml_namespace, 'username'))
     if contributor != None:
         return contributor.text
@@ -149,11 +157,18 @@ def extract_contributor_id(revision, xml_namespace):
 
 
 def fix_revision_text(revision):
+    '''
+    If revision text is None then replace by empty string so other functions
+    still work
+    '''
     if revision.text == None:
         return ''
 
 
 def create_md5hash(text):
+    '''
+    Calculate md5 hash based on revision text. 
+    '''
     hash = {}
     if text != None:
         m = hashlib.md5()
@@ -166,6 +181,10 @@ def create_md5hash(text):
 
 
 def calculate_delta_article_size(size, text):
+    '''
+    Determine how many characters were added / removed compared to previous
+    version of text. 
+    '''
     if text == None:
         text = ''
     if 'prev_size' not in size:
@@ -181,6 +200,9 @@ def calculate_delta_article_size(size, text):
 
 
 def parse_contributor(revision, bots, xml_namespace):
+    '''
+    Function that takes care of all contributor related variables. 
+    '''
     username = extract_username(revision, xml_namespace)
     user_id = extract_contributor_id(revision, xml_namespace)
     bot = determine_username_is_bot(revision, bots, xml_namespace)
@@ -214,6 +236,9 @@ def determine_namespace(title, namespaces, include_ns):
 
 
 def is_revision_reverted(hash_cur, hashes):
+    '''
+    Determine whether an edit was reverted or not based on md5 hashes
+    '''
     revert = {}
     if hash_cur in hashes and hash_cur != -1:
         revert['revert'] = 1
@@ -223,6 +248,9 @@ def is_revision_reverted(hash_cur, hashes):
 
 
 def extract_revision_id(revision_id):
+    '''
+    Determine the id of a revision 
+    '''
     if revision_id != None:
         return revision_id.text
     else:
@@ -230,6 +258,9 @@ def extract_revision_id(revision_id):
 
 
 def extract_comment_text(revision_id, revision):
+    '''
+    Extract the comment associated with an edit. 
+    '''
     comment = {}
     text = revision.find('comment')
     if text != None and text.text != None:

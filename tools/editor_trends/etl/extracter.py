@@ -12,11 +12,20 @@ See the GNU General Public License for more details, at
 http://www.fsf.org/licenses/gpl.html
 '''
 
-
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-04-10'
 __version__ = '0.1'
+
+'''
+The extracter module takes care of decompressing a Wikipedia XML dumpfile, 
+parsing the XML on the fly and extracting & constructing the variables that are
+need for subsequent analysis. The extract module is initialized using an 
+instance of RunTimeSettings and the most important parameters are:
+The name of project\n
+The language of the project\n
+The location where the dump files are stored
+'''
 
 from collections import deque
 import sys
@@ -24,6 +33,7 @@ import os
 from datetime import datetime
 from xml.etree.cElementTree import iterparse, dump
 from multiprocessing import JoinableQueue, Process, cpu_count
+
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -36,8 +46,8 @@ from analyses.adhoc import bot_detector
 def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, size):
     '''
     This function has as input a single revision from a Wikipedia dump file, 
-    article information it belongs to, the xml_namespace of the Wikipedia dump
-    file, the cache object that collects parsed revisions, a list of md5hashes
+    article id it belongs to, the xml_namespace of the Wikipedia dump file, 
+    the cache object that collects parsed revisions, a list of md5hashes
     to determine whether an edit was reverted and a size dictionary to determine
     how many characters were added and removed compared to the previous revision. 
     '''
@@ -80,31 +90,11 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
     return md5hashes, size
 
 
-def datacompetition_parse_revision(revision, xml_namespace, bots, counts):
-    '''
-    This function has as input a single revision from a Wikipedia dump file, 
-    article information it belongs to, the xml_namespace of the Wikipedia dump
-    file, the cache object that collects parsed revisions, a list of md5hashes
-    to determine whether an edit was reverted and a size dictionary to determine
-    how many characters were added and removed compared to the previous revision. 
-    '''
-    if revision == None:
-    #the entire revision is empty, weird. 
-        #dump(revision)
-        return counts
-
-    contributor = revision.find('%s%s' % (xml_namespace, 'contributor'))
-    contributor = variables.parse_contributor(contributor, bots, xml_namespace)
-    if not contributor:
-        #editor is anonymous, ignore
-        return counts
-    else:
-        counts.setdefault(contributor['id'], 0)
-        counts[contributor['id']] += 1
-        return counts
-
-
 def parse_xml(fh, rts, cache, process_id, file_id):
+    '''
+    This function initializes the XML parser and calls the appropriate function
+    to extract / construct the variables from the XML stream. 
+    '''
     bots = bot_detector.retrieve_bots(rts.storage, rts.language.code)
     include_ns = {3: 'User Talk',
                   5: 'Wikipedia Talk',
@@ -125,12 +115,23 @@ def parse_xml(fh, rts, cache, process_id, file_id):
     try:
         for event, elem in context:
             if event is end and elem.tag.endswith('siteinfo'):
+                '''
+                This event happens once for every dump file and is used to
+                determine the version of the generator used to generate the XML
+                file. 
+                '''
                 xml_namespace = variables.determine_xml_namespace(elem)
                 namespaces = variables.create_namespace_dict(elem, xml_namespace)
                 ns = True
                 elem.clear()
 
             elif event is end and elem.tag.endswith('title'):
+                '''
+                This function determines the title of an article and the
+                namespace to which it belongs. Then, if the namespace is one
+                which we are interested set parse to True so that we start
+                parsing this article, else it will skip this article. 
+                '''
                 title = variables.parse_title(elem)
                 article['title'] = title
                 current_namespace = variables.determine_namespace(title, namespaces, include_ns)
@@ -145,6 +146,11 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 elem.clear()
 
             elif elem.tag.endswith('revision'):
+                '''
+                This function does the actual analysis of an individual revision,
+                calculating size difference between this and previous revision and
+                calculating md5 hash to determine whether this edit was reverted.
+                '''
                 if parse:
                     if event is start:
                         clear = False
@@ -158,6 +164,9 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                     elem.clear()
 
             elif event is end and elem.tag.endswith('id') and id == False:
+                '''
+                Determine id of article
+                '''
                 article['article_id'] = elem.text
                 if isinstance(current_namespace, int):
                     cache.articles[article['article_id']] = title_meta
@@ -165,6 +174,10 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 elem.clear()
 
             elif event is end and elem.tag.endswith('page'):
+                '''
+                We have reached end of an article, reset all variables and free
+                memory. 
+                '''
                 elem.clear()
                 #Reset all variables for next article
                 article = {}
@@ -185,6 +198,9 @@ def parse_xml(fh, rts, cache, process_id, file_id):
 
 
 def stream_raw_xml(input_queue, process_id, fhd, rts):
+    '''
+    This function fetches an XML file from the queue and launches the processor. 
+    '''
     t0 = datetime.now()
     file_id = 0
     cache = buffer.CSVBuffer(process_id, rts, fhd)
@@ -216,6 +232,10 @@ def debug():
 
 
 def launcher(rts):
+    '''
+    This function initializes the multiprocessor, and loading the queue with
+    the compressed XML files. 
+    '''
     input_queue = JoinableQueue()
 
     files = file_utils.retrieve_file_list(rts.input_location)
