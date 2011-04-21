@@ -12,36 +12,9 @@ $(document).ready( function() {
 		&& mw.util.getParamValue( 'diff' ) === null
 		&& mw.util.getParamValue( 'oldid' ) === null
 	) {
-		// If the version in the client's cookie doesn't match wgArticleFeedbackTrackingVersion,
-		// then we need to disregard the bucket they may already be in to ensure accurate
-		// redistribution when the odds are changed
-		var previousVersion = $.cookie( 'ext.articleFeedback-version' );
-		var currentVersion = Number( mw.config.get( 'wgArticleFeedbackTrackingVersion', 0 ) );
-		var tracking = null;
-		if ( previousVersion === null || Number( previousVersion ) != currentVersion ) {
-			$.cookie( 'ext.articleFeedback-version', currentVersion );
-		} else {
-			tracking = $.cookie( 'ext.articleFeedback-tracking' );
-		}
-		if ( tracking === null ) {
-			// Percentage chance of being tracked
-			var odds = Math.min( 100, Math.max( 0,
-				Number( mw.config.get( 'wgArticleFeedbackTrackingOdds', 0 ) )
-			) );
-			// 0 = not tracked, 1 = tracked
-			tracking = Number( Math.random() * 100 < odds );
-			// Let the cookie expire after 30 days, allowing rotation in which users are tracked
-			$.cookie( 'ext.articleFeedback-tracking', tracking, { 'path': '/', 'expires': 30 } );
-			// To be extra-sure that the odds are being applied properly, track whether a user is to
-			// be tracked or not - this way we can compare the number of people in each bucket to
-			// the intended percentages defined by wgArticleFeedbackTrackingOdds
-			if ( 'trackAction' in $ ) {
-				$.trackAction(
-					'ext.articleFeedback@' + currentVersion + '-tracking-' +
-						( tracking ? 'on' : 'off' )
-				);
-			}
-		}
+		var trackingBucket = mw.user.bucket(
+			'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackTracking' )
+		);
 		// Category activation
 		var articleFeedbackCategories = mw.config.get( 'wgArticleFeedbackCategories', [] );
 		var articleCategories = mw.config.get( 'wgCategories', [] );

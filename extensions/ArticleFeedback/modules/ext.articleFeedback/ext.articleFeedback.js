@@ -5,7 +5,9 @@
 ( function( $, mw ) {
 
 // Only track users who have been assigned to the tracking group
-var tracked = Number( $.cookie( 'ext.articleFeedback-tracking' ) );
+var tracked = 'track' === mw.user.bucket(
+	'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackTracking' )
+);
 
 /**
  * Prefixes a key for cookies or events, with extension and version information
@@ -14,7 +16,7 @@ var tracked = Number( $.cookie( 'ext.articleFeedback-tracking' ) );
  * @return String: Prefixed event name
  */
 function prefix( key ) {
-	var version = mw.config.get( 'wgArticleFeedbackTrackingVersion' ) || 0;
+	var version = mw.config.get( 'wgArticleFeedbackTracking' ).version || 0;
 	return 'ext.articleFeedback@' + version + '-' + key;
 }
 
