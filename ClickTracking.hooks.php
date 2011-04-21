@@ -164,8 +164,8 @@ class ClickTrackingHooks {
 		//Can be another encoding scheme, just needs to match unpackBucketInfo
 		$packedBuckets = json_encode( $buckets );
 		
-		//NOTE: $wgRequest->response setCookie sets it with a prefix
-		setCookie( 'userbuckets' , $packedBuckets , 
+		//NOTE: $wgRequest->response setCookie sets it with a prefix and httponly by default
+		setcookie( 'userbuckets' , $packedBuckets , 
 					time() + 60 * 60 * 24 * 365  ); //expire in 1 year
 	}
 	
@@ -211,7 +211,6 @@ class ClickTrackingHooks {
 
 		if( $recordBucketInfo && $db_status ){
 			$buckets = self::unpackBucketInfo();
-			$dbw->ignoreErrors( true ); // if inserting on duplicate key, it's ok
 			if( $buckets ){
 				foreach( $buckets as $bucketName => $bucketValue ){
 						$db_current_bucket_insert = $dbw->insert( 'click_tracking_user_properties', 
@@ -221,11 +220,12 @@ class ClickTrackingHooks {
 								'property_value' => (string) $bucketValue[0],
 								'property_version' => (int) $bucketValue[1]
 							),
-						 __METHOD__);
+						 __METHOD__,
+						 array( 'IGNORE' )
+						 );
 					$db_status_buckets = $db_status_buckets && $db_current_bucket_insert;
 				}
 			}//ifbuckets
-			$dbw->ignoreErrors( false );
 		}//ifrecord
 		
 		$dbw->commit();
