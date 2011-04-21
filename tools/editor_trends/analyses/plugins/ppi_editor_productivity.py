@@ -26,7 +26,6 @@ def ppi_editor_productivity(var, editor, **kwargs):
 
     edits = editor['character_count']
     username = editor['username']
-
     try:
         added = edits['2010']['11']['0']['added']
     except KeyError:

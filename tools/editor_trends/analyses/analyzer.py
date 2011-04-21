@@ -74,9 +74,9 @@ def feedback(plugin, rts):
 
 
 def write_output(ds, rts, stopwatch):
-    ds.create_filename()
+    filename = ds.create_filename()
     print 'Storing dataset: %s' % os.path.join(rts.dataset_location,
-                                               ds.filename)
+                                               filename)
     ds.write(format='csv')
     print 'Serializing dataset to %s_%s' % (rts.dbname, 'charts')
     #log.log_to_mongo(rts, 'chart', 'storing', stopwatch, event='start')
@@ -97,15 +97,15 @@ def generate_chart_data(rts, func, **kwargs):
 
     feedback(func, rts)
 
-    obs = dict()
     tasks = JoinableQueue()
     result = JoinableQueue()
 
     mgr = Manager()
     lock = mgr.RLock()
+    obs = dict()
     obs_proxy = mgr.dict(obs)
 
-    db = storage.Database(rts.storage, rts.dbname, rts.editors_dataset)
+    db = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     editors = db.retrieve_distinct_keys('editor')
     min_year, max_year = determine_project_year_range(db, 'new_wikipedian')
 
@@ -118,11 +118,12 @@ def generate_chart_data(rts, func, **kwargs):
     var = dataset.Variable('count', time_unit, lock, obs_proxy, **kwargs)
 
     try:
-        print 'Preloading data...'
+        print 'Determinging whether plugin requires preloaded data...'
         preloader = getattr(plugin, 'preload')
         data = preloader(rts)
+        print 'Finished preloading data...'
     except Exception, error:
-        print error
+        print Exception, error
         data = None
     finally:
         print 'Finished preloading data.'
@@ -131,7 +132,7 @@ def generate_chart_data(rts, func, **kwargs):
     for editor in editors:
         tasks.put(analytics.Task(plugin, editor))
 
-    consumers = [analytics.Analyzer(rts, tasks, result, var, data) for
+    analyzers = [analytics.Analyzer(rts, tasks, result, var, data) for
                  x in xrange(rts.number_of_processes)]
 
 
@@ -139,12 +140,11 @@ def generate_chart_data(rts, func, **kwargs):
         tasks.put(None)
 
     pbar = progressbar.ProgressBar(maxval=len(editors)).start()
-    for w in consumers:
-        w.start()
+    for analyzer in analyzers:
+        analyzer.start()
 
 
     ppills = rts.number_of_processes
-    vars = []
     while True:
         while ppills > 0:
             try:

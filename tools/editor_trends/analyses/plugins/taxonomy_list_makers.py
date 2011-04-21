@@ -66,7 +66,7 @@ def taxonomy_list_makers(var, editor, **kwargs):
 
 def preload(rts):
     collection = '%s%s_articles_raw' % (rts.language.code, rts.project.name)
-    db = storage.Database(rts.storage, rts.dbname, collection)
+    db = storage.init_database(rts.storage, rts.dbname, collection)
     data = {}
     cursor = db.find('category', 'List')
     for c in cursor:
