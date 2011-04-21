@@ -86,6 +86,7 @@ class ArticleFeedbackHooks {
 			),
 			'dependencies' => array(
 				'jquery.tipsy',
+				'jquery.json',
 				'jquery.localize',
 				'jquery.ui.dialog',
 				'jquery.ui.button',
