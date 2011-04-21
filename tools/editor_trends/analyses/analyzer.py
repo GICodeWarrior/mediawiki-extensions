@@ -118,12 +118,11 @@ def generate_chart_data(rts, func, **kwargs):
     var = dataset.Variable('count', time_unit, lock, obs_proxy, **kwargs)
 
     try:
-        print 'Determinging whether plugin requires preloaded data...'
+        print 'Determining whether plugin requires preloaded data...'
         preloader = getattr(plugin, 'preload')
+        print 'Preloading data...'
         data = preloader(rts)
-        print 'Finished preloading data...'
     except Exception, error:
-        print Exception, error
         data = None
     finally:
         print 'Finished preloading data.'
@@ -143,7 +142,7 @@ def generate_chart_data(rts, func, **kwargs):
     for analyzer in analyzers:
         analyzer.start()
 
-
+    editors = None
     ppills = rts.number_of_processes
     while True:
         while ppills > 0:

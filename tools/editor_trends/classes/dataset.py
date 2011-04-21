@@ -89,12 +89,19 @@ class Data:
     def __init__(self):
         pass
 
-    def __hash__(self, variables):
+    def generate_key(self, variables):
         '''
         This is a simple hash function that expects a list of variables, used
         to lookup an Observation or Variable. 
         '''
-        return '_'.join([str(variable) for variable in variables])
+        keys = []
+        for variable in variables:
+            try:
+                variable = variable.encode('utf-8')
+            except AttributeError:
+                variable = str(variable)
+            keys.append(variable)
+        return '_'.join([key for key in keys])
         #return id
         #m = hashlib.md5()
         #m.update(id)
@@ -298,7 +305,7 @@ class Variable(Data):
         values = meta.values()
         values.insert(0, end)
         values.insert(0, start)
-        id = self.__hash__(values)
+        id = self.generate_key(values)
 
         self.lock.acquire()
         try:

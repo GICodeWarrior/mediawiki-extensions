@@ -26,11 +26,10 @@ def kaggle_count_edits(var, editor, **kwargs):
     only interested in the final overall count. 
     '''
 
-    username = editor['username'].lower()
-    if username.endswith('bot'):
+    username = editor['username']
+    username_lower = username.lower()
+    if username_lower.endswith('bot'):
         return var
-    else:
-        username = editor['username']
 
     edits = editor['edit_count']
     years = edits.keys()
