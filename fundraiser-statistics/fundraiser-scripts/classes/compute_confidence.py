@@ -101,9 +101,16 @@ class ConfidenceTest(object):
 					
 				self._data_loader_._db_.rollback()
 				sys.exit("Database Interface Exception:\n" + err_msg)
-			
-			metrics_1.append(results_1[metric_index])
-			metrics_2.append(results_2[metric_index])
+		
+			""" If no results are returned in this set the sample value is 0.0 """	
+			try:
+				metrics_1.append(results_1[metric_index])
+			except TypeError:
+				metrics_1.append(0.0)
+			try:
+				metrics_2.append(results_2[metric_index])
+			except TypeError:
+				metrics_2.append(0.0)	
 		
 		#print metrics_1
 		#print metrics_2
@@ -323,17 +330,17 @@ class ConfidenceTest(object):
 		# Compute the mean and variance for each group across all trials
 		for i in range(num_trials):
 			
-			m1 = 0		# mean of group 1
-			m2 = 0		# mean of group 2
-			var1 = 0		# variance of group 1
-			var2 = 0		# variance of group 2
+			m1 = 0.0		# mean of group 1
+			m2 = 0.0		# mean of group 2
+			var1 = 0.0		# variance of group 1
+			var2 = 0.0		# variance of group 2
 				
 			for j in range(num_samples):
 				index = i  * num_samples + j
 		
 				# Compute mean for each group
-				m1 = m1 + metrics_1[index]
-				m2 = m2 + metrics_2[index]
+				m1 = m1 + float(metrics_1[index])
+				m2 = m2 + float(metrics_2[index])
 			
 			m1 = m1 / num_samples
 			m2 = m2 / num_samples
@@ -342,8 +349,8 @@ class ConfidenceTest(object):
 			for j in range(num_samples):
 				index = i + j
 				
-				var1 = var1 + math.pow((metrics_1[i] - m1), 2) 
-				var2 = var2 + math.pow((metrics_2[i] - m2), 2)
+				var1 = var1 + math.pow((float(metrics_1[i]) - m1), 2) 
+				var2 = var2 + math.pow((float(metrics_2[i]) - m2), 2)
 			
 			means_1.append(float(m1))
 			means_2.append(float(m2))

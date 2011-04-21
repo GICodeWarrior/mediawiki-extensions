@@ -30,6 +30,7 @@ import QueryData as QD
 import miner_help as mh
 import TimestampProcessor as TP
 import DataLoader as DL
+import HypothesisTest as HT
 
 matplotlib.use('Agg')
 
@@ -51,8 +52,40 @@ matplotlib.use('Agg')
 """
 class DataReporting(object):    
     
+    _font_size_ = 24
+    _fig_width_pt_ = 246.0                  # Get this from LaTeX using \showthe\columnwidth
+    _inches_per_pt_ = 1.0/72.27             # Convert pt to inch
+    _use_labels_= False
+    _fig_file_format_ = 'png'
+    _plot_type_ = 'line'
+    _item_keys_ = list()
     _data_loader_ = None
      
+
+    def __init__(self, **kwargs):
+        
+        for key in kwargs:
+            
+            if key == 'font_size':
+                self._font_size_ = kwargs[key]
+            elif key == 'fig_width_pt':
+                self._fig_width_pt_ = kwargs[key]
+            elif key == 'inches_per_pt':
+                self._inches_per_pt_ = kwargs[key]
+            elif key == 'use_labels':
+                self._use_labels_ = kwargs[key]
+            elif key == 'fig_file_format':
+                self._fig_file_format_ = kwargs[key]
+            elif key == 'plot_type':                
+                self._plot_type_ = kwargs[key]
+            elif key == 'item_keys':                
+                self._item_keys_ = kwargs[key]
+            elif key == 'data_loader':                          # Set custom data loaders
+                if kwargs[key] == 'campaign_interval':
+                    self._data_loader_ = DL.CampaignIntervalReportingLoader()
+        
+        print self._data_loader_.__str__
+        
     """
 
         Smooths a list of values
@@ -928,7 +961,7 @@ class MinerReporting(DataReporting):
         pylab.savefig(fname, format='png')
     
     """ 
-        <description>
+        Entry point and definition for execution of miner reporting
         
         INPUT:
                         
@@ -996,12 +1029,8 @@ class MinerReporting(DataReporting):
 
 class IntervalReporting(DataReporting):
     
-    _font_size_ = 24
-    _fig_width_pt_ = 246.0                  # Get this from LaTeX using \showthe\columnwidth
-    _inches_per_pt_ = 1.0/72.27             # Convert pt to inch
-    _use_labels_= False
-    _fig_file_format_ = 'png'
-    _plot_type_ = 'line'
+
+    
     
     """
         Constructor for IntervalReporting
@@ -1014,26 +1043,10 @@ class IntervalReporting(DataReporting):
     def __init__(self, **kwargs):
         
         self._data_loader_ = DL.IntervalReportingLoader()
-                
-        for key in kwargs:
-            
-            if key == 'font_size':
-                self._font_size_ = kwargs[key]
-            elif key == 'fig_width_pt':
-                self._fig_width_pt_ = kwargs[key]
-            elif key == 'inches_per_pt':
-                self._inches_per_pt_ = kwargs[key]
-            elif key == 'use_labels':
-                self._use_labels_ = kwargs[key]
-            elif key == 'fig_file_format':
-                self._fig_file_format_ = kwargs[key]
-            elif key == 'plot_type':                
-                self._plot_type_ = kwargs[key]
-            elif key == 'data_loader':                          # Set custom data loaders
-                if kwargs[key] == 'campaign_interval':
-                    self._data_loader_ = DL.CampaignIntervalReportingLoader()
+        DataReporting.__init__(self, **kwargs)
         
-        print self._data_loader_.__str__
+  
+        
          
     """
         <description>
@@ -1052,7 +1065,27 @@ class IntervalReporting(DataReporting):
         print ''
         
         return
-    
+
+    """
+        Selecting a subset of the key items in a dictionary       
+        
+        INPUT:
+            dict_lists    - dictionary to be parsed
+                        
+        RETURN:
+            new_dict_lists    - new dictionary containing only keys in self._item_keys_
+    """
+    def select_metric_keys(self, dict_lists):
+        new_dict_lists = dict()
+        
+        dict_lists_keys = dict_lists.keys()
+        
+        for key in self._item_keys_:
+            if key in dict_lists_keys:
+                new_dict_lists[key] = dict_lists[key]
+        
+        return new_dict_lists
+        
     """
         Execute reporting query and generate plots       
         <description>
@@ -1131,6 +1164,12 @@ class IntervalReporting(DataReporting):
         counts = return_val[0]
         times = return_val[1]
         
+        """ Select only the specified item keys """
+        print counts.keys()
+        if len(self._item_keys_) > 0:
+            counts = self.select_metric_keys(counts)
+            times = self.select_metric_keys(times)
+        
         """ Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
         for key in times.keys():
             times[key] = TP.normalize_timestamps(times[key], False, 2)
@@ -1142,7 +1181,7 @@ class IntervalReporting(DataReporting):
         
         xlabel = 'MINUTES'
         subplot_index = 111
-        fname = campaign + '_' + metric_name
+        fname = campaign + '_' + query_type + '_' + metric_name
         
         metric_full_name = QD.get_metric_full_name(metric_name)
         title = campaign + ':  ' + metric_full_name + ' -- ' + TP.timestamp_convert_format(start_time,1,2) + ' - ' + TP.timestamp_convert_format(end_time,1,2)
@@ -1200,24 +1239,25 @@ class ConfidenceReporting(DataReporting):
             
         
     """
-    def __init__(self, hypothesis_test):
+    def __init__(self, **kwargs):
         
-        """ check to make sure this is in fact a hypothsis test """
-        self._hypothesis_test_ = hypothesis_test
-        self._data_loader_ = HypothesisTestLoader()
-    
+        
+        for key in kwargs:
+            
+            if key == 'hyp_test':                          # Set the hypothesis test
+                if kwargs[key] == 't_test':
+                    self._hypothesis_test_ = HT.TTest()
+        
+        print self._hypothesis_test_.__str__
+        
+        self._data_loader_ = DL.HypothesisTestLoader()
+        DataReporting.__init__(self, **kwargs)
+        
     """
         Describes how to run a report !! MODIFY !!
     """    
     def usage(self): 
         
-        print 'Types of queries:'
-        print '    (1) banner'
-        print '    (2) LP'
-        print ''
-        print 'e.g.'
-        print "    run('20101230160400', '20101230165400', 2, 'banner', 'imp', '20101230JA091_US')"
-        print "    run('20101230160400', '20101230165400', 2, 'LP', 'views', '20101230JA091_US')"
         print ''
         
         return
@@ -1303,8 +1343,8 @@ class ConfidenceReporting(DataReporting):
             av_std_dev_1 = av_std_dev_1 + math.pow(std_devs_1[i], 2)
             av_std_dev_2 = av_std_dev_2 + math.pow(std_devs_2[i], 2)
         
-        av_std_dev_1 = math.pow(av_std_dev_1, 0.5) / len(std_devs_1)
-        av_std_dev_2 = math.pow(av_std_dev_2, 0.5) / len(std_devs_1)
+        av_std_dev_1 = math.pow(av_std_dev_1 / len(std_devs_1), 0.5) 
+        av_std_dev_2 = math.pow(av_std_dev_2 / len(std_devs_1), 0.5) 
         
         """ Assign the winner """    
         if av_means_1 > av_means_2:
@@ -1312,7 +1352,7 @@ class ConfidenceReporting(DataReporting):
         else:
             winner = labels[1]
             
-        win_str =  "\nThe winner " + winner + " had a %.2f%s increase."
+        win_str =  '\nThe winner "' + winner + '" had a %.2f%s increase.'
         win_str = win_str % (percent_increase, '%')
         
         print '\nCOMMAND = ' + test_call
@@ -1376,13 +1416,13 @@ class ConfidenceReporting(DataReporting):
             counter += 1
                 
         """ Retrieve values from database """
-        ret = _data_loader_.query_tables(query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples)
+        ret = self._data_loader_.run_query(query_name, metric_name, campaign, item_1, item_2, start_time, end_time, interval, num_samples)
         metrics_1 = ret[0]
         metrics_2 = ret[1]
         times_indices = ret[2]
         
         """ run the confidence test """
-        ret = _hypothesis_test_.confidence_test(metrics_1, metrics_2, num_samples)
+        ret = self._hypothesis_test_.confidence_test(metrics_1, metrics_2, num_samples)
         means_1 = ret[0]
         means_2 = ret[1]
         std_devs_1 = ret[2]
@@ -1409,7 +1449,7 @@ class ConfidenceReporting(DataReporting):
         self.gen_plot(means_1, means_2, std_devs_1, std_devs_2, times_indices, title, xlabel, ylabel, ranges, subplot_index, labels, fname)
         
         """ Print out results """ 
-        test_call = "run_test('" + test_name + "', '" + query_name + "', '" + metric_name + "', '" + campaign + "', '" + \
+        test_call = "run('" + test_name + "', '" + query_name + "', '" + metric_name + "', '" + campaign + "', '" + \
             item_1 + "', '" + item_2 + "', '" + start_time + "', '" + end_time + "', " + str(interval) + ", " + str(num_samples) + ")"
         self.print_metrics(fname, title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
         

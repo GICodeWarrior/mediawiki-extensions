@@ -423,14 +423,14 @@ def timestamp_convert_format(ts, format_from, format_to):
         time_indices     - list of indices counting from zero marking the indices for reporting test interval parameters
 
 """
-def get_time_lists(self, start_time, end_time, interval, num_samples, format):
+def get_time_lists(start_time, end_time, interval, num_samples, format):
 
     """ range must be divisible by interval - convert to hours """
     range = float(interval * num_samples) / 60
     
     """ Compose times """
-    start_datetime = dt.datetime(int(start_time[0:4]), int(start_time[4:6]), int(start_time[6:8]), int(start_time[8:10]), int(start_time[10:12]), int(start_time[12:14]))
-    end_datetime = dt.datetime(int(end_time[0:4]), int(end_time[4:6]), int(end_time[6:8]), int(end_time[8:10]), int(end_time[10:12]), int(end_time[12:14]))
+    start_datetime = datetime.datetime(int(start_time[0:4]), int(start_time[4:6]), int(start_time[6:8]), int(start_time[8:10]), int(start_time[10:12]), int(start_time[12:14]))
+    end_datetime = datetime.datetime(int(end_time[0:4]), int(end_time[4:6]), int(end_time[6:8]), int(end_time[8:10]), int(end_time[10:12]), int(end_time[12:14]))
 
     """ current timestamp and hour index """
     curr_datetime = start_datetime
@@ -474,7 +474,7 @@ def get_time_lists(self, start_time, end_time, interval, num_samples, format):
                 
             
         """ increment the time by interval minutes """
-        td = dt.timedelta(minutes=interval)
+        td = datetime.timedelta(minutes=interval)
         curr_datetime = curr_datetime + td
     
     """ append the last items onto time lists """

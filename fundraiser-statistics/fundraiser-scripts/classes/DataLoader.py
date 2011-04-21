@@ -158,18 +158,20 @@ class IntervalReportingLoader(DataLoader):
                     """ If the first element is not the start time add it 
                         this will be the case if there is no data for the first interval 
                         NOTE:   two datapoints are added at the beginning to define the first interval """
+                    times[key_name].append(start_time_obj)
+                    times[key_name].append(start_time_obj + interval_obj)
+                    
                     if start_time_obj_str != row[time_index]:
-                        times[key_name].append(start_time_obj)
+                        metrics[key_name].append(0.0)
                         metrics[key_name].append(0.0)
                         
-                        times[key_name].append(start_time_obj + interval_obj)
-                        metrics[key_name].append(0.0)
-                    else:
-                        metrics[key_name].append(row[metric_index])
                         times[key_name].append(time_obj)
-                        
-                        metrics[key_name].append(row[metric_index])
                         times[key_name].append(time_obj + interval_obj)
+                    
+                    metrics[key_name].append(row[metric_index])
+                    metrics[key_name].append(row[metric_index])
+                    
+                    final_time[key_name] = row[time_index]
             
             
         except Exception as inst:
@@ -181,7 +183,8 @@ class IntervalReportingLoader(DataLoader):
             sys.exit(0)
         
 
-        """ Ensure that the last time in the list is the endtime less the interval """        
+        """ Ensure that the last time in the list is the endtime less the interval """
+        
         for key in times.keys():
             if final_time[key] != end_time_obj_str:
                 times[key].append(end_time_obj)
@@ -317,8 +320,16 @@ class HypothesisTestLoader(DataLoader):
                 self._db_.rollback()
                 sys.exit("Database Interface Exception:\n" + err_msg)
             
-            metrics_1.append(results_1[metric_index])
-            metrics_2.append(results_2[metric_index])
+            """ If no results are returned in this set the sample value is 0.0 
+                !! MODIFY -- these results should not count as data points !! """    
+            try:
+                metrics_1.append(results_1[metric_index])
+            except TypeError:
+                metrics_1.append(0.0)
+            try:
+                metrics_2.append(results_2[metric_index])
+            except TypeError:
+                metrics_2.append(0.0)
         
         #print metrics_1
         #print metrics_2
