@@ -34,6 +34,13 @@ $messages['ar'] = array(
 	'clientside-desc' => 'يوفر دوال لتوليد كود في صيغ تابعة للعميل مثل HTML، CSS وجافاسكريبت',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'clientside-desc' => 'Ufre funciones pa xenerar códigu en formatos del llau del cliente como HTML, CSS y JavaScript',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
