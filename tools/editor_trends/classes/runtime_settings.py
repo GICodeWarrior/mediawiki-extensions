@@ -24,15 +24,12 @@ Wikipedia acronym.
 
 import os
 import sys
-import locale
 import datetime
 import time
-import re
 
 from settings import Settings
-from utils import text_utils
-from utils import ordered_dict as odict
 from analyses import inventory
+from classes import exceptions
 import languages
 import projects
 
@@ -62,7 +59,7 @@ class RunTimeSettings(Settings):
             self.input_location = self.set_input_location()
             self.output_location = self.set_output_location()
 
-            self.charts = self.determine_chart()
+            self.plugins = self.set_plugin()
             self.keywords = self.split_keywords()
             self.namespaces = self.get_namespaces()
 
@@ -112,6 +109,9 @@ class RunTimeSettings(Settings):
         return props
 
     def split_keywords(self):
+        '''
+        Parse keywords from command line (only supplied for -dataset)
+        '''
         keywords = self.get_value('keywords')
         d = {}
         if keywords != None:
@@ -129,29 +129,34 @@ class RunTimeSettings(Settings):
                     d[key] = value
         return d
 
-    def determine_chart(self):
-        charts = self.get_value('charts')
-        requested_charts = []
-        if charts != None and getattr(charts, 'func_name', None) == None:
-            charts = charts.split(',')
-            available_charts = inventory.available_analyses()
-            for chart in charts:
-                if chart not in available_charts:
-                    raise exception.UnknownChartError(chart, available_charts)
-                    sys.exit(-1)
+    def set_plugin(self):
+        '''
+        Determine whether the plugin exists.
+        '''
+        plugin = self.get_value('charts')
+        requested_plugins = []
+        if plugin != None and getattr(plugin, 'func_name', None) == None:
+            plugins = plugin.split(',')
+            available_plugins = inventory.available_analyses()
+            for plugin in plugins:
+                if plugin not in available_plugins:
+                    raise exceptions.UnknownPluginError(plugin, available_plugins)
                 else:
-                    requested_charts.append(chart)
-        elif getattr(charts, 'func_name', None) != None:
-            requested_charts.append(chart.func_name)
-        return requested_charts
+                    requested_plugins.append(plugin)
+        elif getattr(plugin, 'func_name', None) != None:
+            requested_plugins.append(plugin.func_name)
+        return requested_plugins
 
     def set_input_location(self):
+        '''
+        Determine the location where the XML dump files are stored. 
+        '''
         files = os.listdir(self.input_location)
         extensions = ['.gz', '.7z', '.bz2']
         project = '%s%s' % (self.language.code, self.project.name)
-        for file in files:
-            basename, ext = os.path.splitext(file)
-            if ext in extensions and file.startswith(project):
+        for filename in files:
+            basename, ext = os.path.splitext(filename)
+            if ext in extensions and filename.startswith(project):
                 #ABS path case: check if files are stored here
                 return self.input_location
         return os.path.join(self.base_location, self.language.code,
@@ -221,7 +226,6 @@ class RunTimeSettings(Settings):
         default = lnc.languages[lnc.default]
         if lang != default.name:
             lang = lnc.get_language(lang, code=False)
-            language = lang
             return lang
         else:
             return default
@@ -235,7 +239,6 @@ class RunTimeSettings(Settings):
         if proj != 'wiki':
             pc = projects.ProjectContainer()
             proj = pc.get_project(proj)
-            project = proj
             return proj
         else:
             return default
@@ -257,7 +260,7 @@ class RunTimeSettings(Settings):
             % self.get_value('project')
             sys.exit(-1)
         else:
-            return '%s%s' % (self.language_code, self.short_project)
+            return '%s%s' % (self.language.code, self.project.name)
 
     def secs_since_epoch(self):
         dt = datetime.datetime.now()
@@ -276,6 +279,9 @@ class RunTimeSettings(Settings):
 
 
 def init_environment(project, language_code, args):
+    '''
+    Initialize an instance of RuntimeSettings. 
+    '''
     pjc = projects.ProjectContainer()
     project = pjc.get_project(project)
     lnc = languages.LanguageContainer()

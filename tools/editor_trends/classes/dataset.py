@@ -21,15 +21,12 @@ import calendar
 import datetime
 import time
 import math
-import operator
 import sys
 import cPickle
-import hashlib
 from pymongo.son_manipulator import SONManipulator
-from multiprocessing import Manager, RLock
+from multiprocessing import RLock
 from texttable import Texttable
 from datetime import timedelta
-
 
 if '..' not in sys.path:
     sys.path.append('..')
@@ -49,8 +46,11 @@ class Transform(SONManipulator):
     To use this encoder initalize a mongo database instance and then add:
     mongo.add_son_manipulator(Transform())    
     '''
-    def transform_incoming(self, son, collection):
-        for (key, ds) in son.items():
+    def __init__(self):
+        super(Transform).__init__(self)
+
+    def transform_incoming(self, son):
+        for key, ds in son.items():
             son[key] = {}
             for x, var in enumerate(ds):
                 if isinstance(var, Variable):
@@ -86,13 +86,15 @@ class Data:
     Some generic functions that are required by the Observation, Variable, and
     Dataset classes. 
     '''
-    def __hash__(self, vars):
+    def __init__(self):
+        pass
+
+    def __hash__(self, variables):
         '''
-        This is a generic hash function that expects a list of variables, used
+        This is a simple hash function that expects a list of variables, used
         to lookup an Observation or Variable. 
         '''
-        #return hash('_'.join([str(var) for var in vars]))
-        return '_'.join([str(var) for var in vars])
+        return '_'.join([str(variable) for variable in variables])
         #return id
         #m = hashlib.md5()
         #m.update(id)
@@ -201,6 +203,8 @@ class Observation(Data):
 
     def add(self, value):
         '''
+        Increment the observation with value, or append value to the list of
+        observations. 
         '''
         if isinstance(value, list):
             if self.count == 0:
@@ -212,6 +216,7 @@ class Observation(Data):
 
 
     def get_date_range(self):
+        '''Determine the date range for the observations'''
         return '%s-%s-%s:%s-%s-%s' % (self.t0.month, self.t0.day, self.t0.year, \
                                       self.t1.month, self.t1.day, self.t1.year)
 
@@ -261,10 +266,12 @@ class Variable(Data):
             yield (key, self.obs[key])
 
     def get_data(self):
+        '''Construct a list with all data points'''
         return [o for o in self.itervalues()]
 
-    def get_observation(self, id, date, meta):
-        return self.obs.get(id, Observation(date, self.time_unit, id, meta).serialize())
+    def get_observation(self, key, date, meta):
+        '''Get a single observation based on a date key and posssibly meta data'''
+        return self.obs.get(key, Observation(date, self.time_unit, key, meta).serialize())
 
     def add(self, date, value, meta={}):
         '''
@@ -305,12 +312,16 @@ class Variable(Data):
         #print date, id, meta.values(), obs.count, len(self.obs)
 
     def number_of_obs(self):
+        '''Determine the total number of observations in a Variable'''
         n = 0
         for obs in self.obs:
             n += self.obs[obs].count
         return n
 
     def encode(self):
+        '''
+        Convert Variable to a bson object to store in Mongo
+        '''
         bson = {}
         for prop in self.props:
             bson[prop] = getattr(self, prop)
@@ -323,6 +334,7 @@ class Variable(Data):
         return bson
 
     def decode(self, values):
+        '''Decode a BSON object in a Variable'''
         for varname in values:
             for prop in values[varname]:
                 if isinstance(values[varname][prop], dict):
@@ -336,22 +348,29 @@ class Variable(Data):
                     self.props.append(prop)
 
     def get_date_range(self):
+        '''Determine the date for the first and last observation'''
         dates = [self.obs[key].date for key in self]
-        first = min(dates)
-        last = max(dates)
+        try:
+            first = min(dates)
+        except ValueError:
+            first = '.'
+        try:
+            last = max(dates)
+        except ValueError:
+            last = '.'
         return first, last
 
 
 class Dataset:
     '''
     This class acts as a container for the Variable class and has some methods
-    to output the dataset to a csv file, mongodb and display statistics. 
+    to output the dataset to a csv file, mongodb and display statistics.
     '''
 
-    def __init__(self, chart, rts, vars=None, **kwargs):
+    def __init__(self, chart, rts, variables=None, **kwargs):
         self.encoder, chart_type, charts = json_encoders.get_json_encoder(chart)
         if self.encoder == None:
-            raise exceptions.UnknownChartError(chart_type, charts)
+            raise exceptions.UnknownPluginError(chart_type, charts)
         self.chart = chart
         self.name = 'Dataset to construct %s' % self.chart
         self.project = rts.project.name
@@ -366,8 +385,8 @@ class Dataset:
         self.props = self.__dict__.keys()
 
         self.variables = []
-        if vars != None:
-            for kwargs in vars:
+        if variables != None:
+            for kwargs in variables:
                 name = kwargs.pop('name')
                 setattr(self, name, Variable(name, **kwargs))
                 self.variables.append(name)
@@ -376,8 +395,8 @@ class Dataset:
         return 'Dataset contains %s variables' % (len(self.variables))
 
     def __iter__(self):
-        for var in self.variables:
-            yield getattr(self, var)
+        for variable in self.variables:
+            yield getattr(self, variable)
 
     def details(self):
         print 'Project: %s%s' % (self.language_code, self.project)
@@ -389,20 +408,20 @@ class Dataset:
     def create_filename(self):
         '''
         This function creates a filename for the dataset by searching for shared
-        properties among the different variables in the dataset. All shared 
+        properties among the different variables in the dataset. All shared
         properties will be used in the filename to make sure that one analysis
         that's run with different parameters gets stored in separate files.
         '''
         common = {}
         props = set()
-        for var in self.variables:
+        for variable in self.variables:
             s = set()
-            var = getattr(self, var)
-            for prop in var.props:
+            variable = getattr(self, variable)
+            for prop in variable.props:
                 if prop not in ['name', 'time_unit', '_type']:
                     s.add(prop)
                     props.add(prop)
-            common[var.name] = s
+            common[variable.name] = s
 
         keys = []
         for prop in props:
@@ -412,24 +431,24 @@ class Dataset:
             if len(attrs) == len(common.values()):
                 keys.append(prop)
         keys.sort()
-        attrs = '_'.join(['%s=%s' % (k, getattr(var, k)) for k in keys])
+        attrs = '_'.join(['%s=%s' % (key, getattr(self, key)) for key in keys])
         filename = '%s%s_%s_%s.csv' % (self.language_code,
                                        self.project,
                                        self.chart,
                                        attrs)
-        self.filename = filename
+        return filename
 
 
-    def add_variable(self, vars):
+    def add_variable(self, variables):
         '''
         Call this function to add a Variable to a dataset. 
         '''
-        if not isinstance(vars, list):
-            vars = [vars]
-        for var in vars:
-            if isinstance(var, Variable):
-                self.variables.append(var.name)
-                setattr(self, var.name, var)
+        if not isinstance(variables, list):
+            variables = [variables]
+        for variable in variables:
+            if isinstance(variable, Variable):
+                self.variables.append(variable.name)
+                setattr(self, variable.name, variable)
             else:
                 raise TypeError('You can only add an instance of Variable to a dataset.')
 
@@ -437,26 +456,26 @@ class Dataset:
         '''
         This is the entry point for outputting data, either to csv or mongo.
         '''
-        self.create_filename()
         if format == 'csv':
-            self.to_csv()
+            filename = self.create_filename()
+            self.to_csv(filename)
         elif format == 'mongo':
             self.to_mongo()
 
     def to_mongo(self):
         dbname = '%s%s' % (self.language_code, self.project)
-        db = storage.Database(rts.storage, dbname, 'charts')
+        db = storage.init_database(self.rts.storage, dbname, 'charts')
         db.add_son_manipulator(Transform())
         db.remove({'hash':self.hash, 'project':self.project,
                     'language_code':self.language_code})
         db.insert({'variables': self})
 
-    def to_csv(self):
+    def to_csv(self, filename):
         data = data_converter.convert_dataset_to_lists(self, 'manage')
         headers = data_converter.add_headers(self)
         lock = RLock()
         fh = file_utils.create_txt_filehandle(settings.dataset_location,
-                                              self.filename,
+                                              filename,
                                               'w',
                                               'utf-8')
         file_utils.write_list_to_csv(headers, fh, recursive=False, newline=True)
@@ -471,67 +490,33 @@ class Dataset:
             props[prop] = getattr(self, prop)
         return props
 
-    def get_standard_deviation(self, number_list):
-        mean = self.get_mean(number_list)
-        std = 0
-        n = len(number_list)
-        for i in number_list:
-            std = std + (i - mean) ** 2
-        try:
-            return math.sqrt(std / float(n - 1))
-        except ZeroDivisionError:
-            return '.'
-
-    def get_median(self, number_list):
-        if number_list == []:
-            return '.'
-        data = sorted(number_list)
-        data = [float(x) for x in data]
-        if len(data) % 2 == 1:
-            return data[(len(data) + 1) / 2 - 1]
-        else:
-            lower = data[len(data) / 2 - 1]
-            upper = data[len(data) / 2]
-        return (lower + upper) / 2
-
-    def get_mean(self, number_list):
-        if number_list == []:
-            return '.'
-        float_nums = [float(x) for x in number_list]
-        return sum(float_nums) / len(number_list)
-
-    def get_min(self, number_list):
-        if number_list == []:
-            return '.'
-        else:
-            return min(number_list)
-
-    def get_max(self, number_list):
-        if number_list == []:
-            return '.'
-        else:
-            return max(number_list)
-
     def descriptives(self):
+        '''
+        Calculate some simple descriptive statistics to describe the Dataset.
+        '''
         for variable in self:
             data = variable.get_data()
-            variable.mean = self.get_mean(data)
-            variable.median = self.get_median(data)
-            variable.sds = self.get_standard_deviation(data)
-            variable.min = self.get_min(data)
-            variable.max = self.get_max(data)
+            variable.mean = get_mean(data)
+            variable.median = get_median(data)
+            variable.sds = get_standard_deviation(data)
+            variable.min = get_min(data)
+            variable.max = get_max(data)
             variable.num_obs = variable.number_of_obs()
             variable.num_dates = len(variable)
             variable.first_obs, variable.last_obs = variable.get_date_range()
 
     def summary(self):
+        '''
+        Summarize the contents of the Dataset by calculating some simple
+        descriptives statistics. 
+        '''
         self.descriptives()
         table = Texttable(max_width=0)
-        vars = ['Variable', 'Mean', 'Median', 'SD', 'Minimum', 'Maximum',
+        variables = ['Variable', 'Mean', 'Median', 'SD', 'Minimum', 'Maximum',
                 'Num Obs', 'Num of\nUnique Groups', 'First Obs', 'Final Obs']
-        table.add_row([var for var in vars])
-        table.set_cols_align(['r' for v in vars])
-        table.set_cols_valign(['m' for v in vars])
+        table.add_row([variable for variable in variables])
+        table.set_cols_align(['r' for variable in variables])
+        table.set_cols_valign(['m' for variable in variables])
 
         for x, variable in enumerate(self):
             table.add_row([variable.name, variable.mean, variable.median,
@@ -542,10 +527,55 @@ class Dataset:
         print self
         print self.details()
 
+def get_standard_deviation(number_list):
+    '''Given a list of numbers, calculate the standard devition of the list'''
+    mean = get_mean(number_list)
+    std = 0
+    n = len(number_list)
+    for i in number_list:
+        std = std + (i - mean) ** 2
+    try:
+        return math.sqrt(std / float(n - 1))
+    except ZeroDivisionError:
+        return '.'
+
+def get_median(number_list):
+    '''Given a list of numbers, calculate the median of the list'''
+    if number_list == []:
+        return '.'
+    data = sorted(number_list)
+    data = [float(x) for x in data]
+    if len(data) % 2 == 1:
+        return data[(len(data) + 1) / 2 - 1]
+    else:
+        lower = data[len(data) / 2 - 1]
+        upper = data[len(data) / 2]
+    return (lower + upper) / 2
+
+def get_mean(number_list):
+    '''Given a list of numbers, calculate the average of the list'''
+    if number_list == []:
+        return '.'
+    float_nums = [float(x) for x in number_list]
+    return sum(float_nums) / len(number_list)
+
+def get_min(number_list):
+    '''Given a list of numbers, return the lowest number'''
+    if number_list == []:
+        return '.'
+    else:
+        return min(number_list)
+
+def get_max(number_list):
+    '''Given a list of numbers, return the highest number'''
+    if number_list == []:
+        return '.'
+    else:
+        return max(number_list)
 
 def debug():
-    db = storage.Database(rts.storage, 'wikilytics', 'enwiki_charts')
-    mongo.add_son_manipulator(Transform())
+    db = storage.init_database('mongo', 'wikilytics', 'enwiki_charts')
+    db.add_son_manipulator(Transform())
 
     d1 = datetime.datetime.today()
     d2 = datetime.datetime(2007, 6, 7)

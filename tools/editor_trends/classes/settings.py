@@ -29,12 +29,10 @@ import sys
 import platform
 import subprocess
 
-
 from classes import exceptions
-from classes import singleton
 
 try:
-    from _winreg import *
+    from _winreg import HKEY_CURRENT_USER, KEY_READ, OpenKey, QueryValueEx
     from pywin import win32file
     '''increase the maximum number of open files on Windows to 1024'''
     win32file._setmaxstdio(1024)
@@ -91,11 +89,13 @@ class Settings:
         self.csv_location = os.path.join(self.working_directory, 'data', 'csv')
         self.dataset_location = os.path.join(self.working_directory, 'datasets')
         self.binary_location = os.path.join(self.working_directory, 'data', 'objects')
+        self.storage = 'mongo'
+        self.default_language = 'en'
+        self.default_project = 'wiki'
 
     def detect_config(self):
         if not os.path.exists(os.path.join(self.working_directory, 'wiki.cfg')):
             raise exceptions.GenericMessage('not_configured')
-            sys.exit(-1)
 
     def load_configuration(self):
         config = ConfigParser.RawConfigParser()

@@ -17,38 +17,43 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-11-05'
 __version__ = '0.1'
 
+import os
 
-class Error(Exception):
-    '''Base class for exceptions in this module.'''
-    pass
-
-class FileNotFoundException(Error):
-    def __init__(self, file, path):
-        self.file = file
+class FileNotFoundException(Exception):
+    '''Exception when a file is not found'''
+    def __init__(self, filename, path):
+        super(FileNotFoundException, self).__init__()
+        self.filename = filename
         self.path = path
 
     def __str__(self):
-        return  '''The file %s was not found. Please make sure that the file \ 
+        return  '''The file %s was not found. Please make sure that the file 
             exists and the path is correct.''' \
-            % (os.path.join(self.path, self.file))
+            % (os.path.join(self.path, self.filename))
 
-class PlatformNotSupportedError(Error):
+class PlatformNotSupportedError(Exception):
+    '''Exception when a platform is not supported'''
     def __init__(self, platform):
+        super(PlatformNotSupportedError, self).__init__()
         self.platform = platform
 
     def __str__(self):
         return 'Platform %s is not supported' % self.platform
 
-class CompressionNotSupportedError(Error):
+class CompressionNotSupportedError(Exception):
+    '''Exception to notify user that decompression is not supported.'''
     def __init__(self, extension):
+        super(CompressionNotSupportedError, self).__init__()
         self.extension = extension
 
     def __str__(self):
         return 'You have not installed a program to extract %s archives.' \
             % self.extension
 
-class CompressedFileNotSupported(Error):
+class CompressedFileNotSupported(Exception):
+    '''Exception to notify that compressed archive is not supported.'''
     def __init__(self, extension):
+        super(CompressedFileNotSupported, self).__init__()
         self.extension = extension
 
     def __str__(self):
@@ -56,30 +61,39 @@ class CompressedFileNotSupported(Error):
             % self.extension
 
 
-class OutDatedPythonVersionError(Error):
+class OutDatedPythonVersionError(Exception):
+    '''Exception to notify that the user is using an outdated Python version.'''
     def __init__(self, version):
+        super(OutDatedPythonVersionError, self).__init__()
         self.version = version
 
     def __str__(self):
         return 'Please upgrade to Python 2.6 or higher (but not Python 3.x).'
 
-class UnknownJSONEncoderError(Error):
+class UnknownJSONEncoderError(Exception):
+    '''Exception to notify that the JSON encoder requested is unknown.'''
     def __init__(self, func):
+        super(UnknownJSONEncoderError, self).__init__()
         self.func = func
 
     def __str__(self):
         return 'There is no JSON encoder called %s, please make sure that you \
             entered the right name' % self.func
 
-class NoDatabaseProviderInstalled(Error):
+class NoDatabaseProviderInstalled(Exception):
+    '''Exception to notify that the database requested is not supported.'''
     def __init__(self):
-        pass
+        super(NoDatabaseProviderInstalled, self).__init__()
+
 
     def __str__(self):
-        return 'You need either to install Mongo or Cassandra to use Wikiltyics.'
+        return '''You need either to install Mongo or Cassandra to use 
+        Wikiltyics.'''
 
-class UnknownPluginError(Error):
+class UnknownPluginError(Exception):
+    '''Exception to notify the user that the requested plugin does not exist.'''
     def __init__(self, plugin, plugins):
+        super(UnknownPluginError, self).__init__()
         self.plugin = plugin
         self.plugins = plugins
 
@@ -88,8 +102,11 @@ class UnknownPluginError(Error):
             the following plugins: %s' % (self.plugin, self.plugins)
 
 
-class NotYetImplementedError(Error):
+class NotYetImplementedError(Exception):
+    '''Exception to notify that the requested functionality has not yet been
+    implemented.'''
     def __init__(self, func):
+        super(NotYetImplementedError, self).__init__()
         self.func = func
 
     def __str__(self):
@@ -97,8 +114,11 @@ class NotYetImplementedError(Error):
         subversion or contact Diederik van Liere.''' % self.func.func_name
 
 
-class GenericMessage(Error):
+class GenericMessage(Exception):
+    '''Exception used for generic message, you need to supply the message 
+    yourself.'''
     def __init__(self, caller):
+        super(GenericMessage, self).__init__()
         self.caller = caller
 
     def __str__(self):

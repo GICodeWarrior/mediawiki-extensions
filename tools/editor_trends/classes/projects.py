@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-26'
 __version__ = '0.1'
 
@@ -22,7 +22,6 @@ if '..' not in sys.path:
     sys.path.append('..')
 
 import languages
-from utils import text_utils
 
 class Project:
     def __init__(self, name, urlname, full_name):

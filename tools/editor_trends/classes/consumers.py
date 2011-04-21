@@ -20,7 +20,10 @@ __version__ = '0.1'
 from multiprocessing import Process
 
 class BaseConsumer(Process):
-
+    '''
+    Standard consumer that is used by the different Extraction / Transformation
+    / Loading phase.
+    '''
     def __init__(self, rts, tasks, result=None):
         Process.__init__(self)
         self.rts = rts

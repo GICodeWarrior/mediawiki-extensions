@@ -13,7 +13,7 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-03-28'
 __version__ = '0.1'
 
@@ -27,6 +27,10 @@ from classes import consumers
 from classes import storage
 
 class Replicator:
+    '''
+    The purpose of this class is to make it easier to run the same plugin
+    against different projects or with different parameters. 
+    '''
     def __init__(self, plugin, time_unit, cutoff=None, cum_cutoff=None, **kwargs):
         #TODO this is an ugly hack to prevent a circular import problem
         #this needs a better fix. 
@@ -59,7 +63,7 @@ class Replicator:
         #rts = runtime_settings.init_environment('wiki', 'en', args)
         for lang in self.languages:
             self.rts = runtime_settings.init_environment(project, lang, self.args)
-            self.rts.editors_dataset = 'editors_dataset'
+            #self.rts.editors_dataset = 'editors_dataset'
 
             self.rts.dbname = '%s%s' % (lang, project)
             for cum_cutoff in self.cum_cutoff:
@@ -82,7 +86,7 @@ class Analyzer(consumers.BaseConsumer):
         Generic loop function that loops over all the editors of a Wikipedia 
         project and then calls the plugin that does the actual mapping.
         '''
-        db = storage.Database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
+        db = storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
         while True:
             try:
                 task = self.tasks.get(block=False)

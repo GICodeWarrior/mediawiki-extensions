@@ -12,18 +12,23 @@ See the GNU General Public License for more details, at
 http://www.fsf.org/licenses/gpl.html
 '''
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-__author__email = 'dvanliere at gmail dot com'
+__email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-26'
 __version__ = '0.1'
 
 'Gothic and Birmese are not yet supported, see rows 450 and 554.'
 
+import re
 import locale
 import sys
 sys.path.append('..')
 from utils import ordered_dict as odict
 
 class Language:
+    '''
+    This class is keeps track of the different properties of a language such
+    as fullname, locale name and language code. 
+    '''
     def __init__(self, name, code, default, locale=None):
         self.name = name
         self.locale = locale
@@ -39,7 +44,7 @@ class Language:
         project.valid_languages.sort()
         for language in project.valid_languages:
             try:
-                if startswith != None and language.startswith(first):
+                if startswith != None and language.startswith(startswith):
                     print '%s' % language.decode('utf-8')
                 elif startswith == None:
                     print '%s' % language.decode('utf-8')
@@ -665,11 +670,11 @@ class LanguageContainer:
         this function to extract the language codes. This list can be used for the 
         Wiki class
         '''
-        str = '''
+        language_codes = '''
         Čeština (cs) • Deutsch (de) • English (en) • Español (es) • Français (fr) • Italiano (it) • Português (pt) • Suomi (fi) • Ελληνικά (el) • Русский (ru) • 日本語 (ja)   
         '''
         reg = re.compile('\([\w\-]*\)')
-        abbr = re.findall(reg, str)
+        abbr = re.findall(reg, language_codes)
         abbr = [ab.replace('(', '').replace(')', '') for ab in abbr]
         print abbr
         print len(abbr)
