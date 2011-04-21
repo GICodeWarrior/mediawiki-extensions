@@ -2398,6 +2398,7 @@ $messages['eu'] = array(
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
+ * @author Od1n
  * @author Peter17
  * @author PieRRoMaN
  */
@@ -2506,7 +2507,7 @@ $messages['fr'] = array(
 	'mwe-am-this_wiki-title' => 'Ce wiki',
 	'mwe-am-this_wiki-desc' => 'Le wiki local',
 	'mwe-am-archive_org-desc' => 'L’Internet Archive, une bibliothèque numérique d’objets culturels',
-	'mwe-am-flickr-desc' => 'Flicr.com, un site de partage de photo en ligne',
+	'mwe-am-flickr-desc' => 'Flickr.com, un site de partage de photo en ligne',
 	'mwe-am-metavid-desc' => 'Metavid.org, une archive communautaire des séances de la chambre des représentants et du sénat des États-Unis',
 	'mwe-am-search-timeout' => "La demande de recherche ne s'est pas terminée. Le serveur peut être sous une lourde charge. Veuillez réessayer plus tard",
 	'mwe-upload-transcoded-status' => 'Transcodé',
