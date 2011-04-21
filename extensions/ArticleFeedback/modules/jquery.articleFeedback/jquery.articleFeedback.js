@@ -235,20 +235,21 @@ $.articleFeedback = {
 				 // field fades out, then we shouldn't submit)
 				 && $( '#articleFeedback-expertise-on:checked' ).length
 			) {
-				
-				var ecData = {
-					email: context.$ui.find( '.articleFeedback-helpimprove-email' ).val()
-				};
-			
 				$.ajax( {
 					'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
 					'type': 'POST',
 					'dataType': 'json',
 					'context': context,
-					'data': $.extend( ecData, {
+					'data': {
+						'email': context.$ui.find( '.articleFeedback-helpimprove-email' ).val(),
+						'info': $.toJSON( {
+							'ratingData': data,
+							'pageTitle': mw.config.get( 'wgTitle' ),
+							'pageCategories': mw.config.get( 'wgCategories' ),
+						} ),
 						'action': 'emailcapture',
 						'format': 'json'
-					} ),
+					},
 					'success': function( data ) {
 						var context = this;
 
