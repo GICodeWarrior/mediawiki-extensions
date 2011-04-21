@@ -330,6 +330,10 @@
 	clear: both;
 }
 
+.articleFeedback-helpimprove-email {
+	width: 20em;
+}
+
 .articleFeedback-helpimprove-email-validity {
 	float: left;
 	padding: 2px 0.5em;
