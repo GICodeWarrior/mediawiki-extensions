@@ -28,6 +28,7 @@
 		$.post(
 			mediaWiki.config.get( 'wgScriptPath' ) + '/api.php', {
 				'action': 'clicktracking',
+				'namespacenumber': mediaWiki.config.get( 'wgNamespaceNumber' ),
 				'eventid': id,
 				'token': $.cookie( 'clicktracking-session' )
 			}
@@ -44,6 +45,7 @@
 			mediaWiki.config.get( 'wgScriptPath' ) + '/api.php', {
 				'action': 'clicktracking',
 				'eventid': id,
+				'namespacenumber': mediaWiki.config.get( 'wgNamespaceNumber' ),
 				'token': $.cookie( 'clicktracking-session' ),
 				'additional': info
 			}
@@ -60,6 +62,7 @@
 		return mediaWiki.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
 			'action': 'clicktracking',
 			'eventid': id,
+			'namespacenumber': mediaWiki.config.get( 'wgNamespaceNumber' ),
 			'token': $.cookie( 'clicktracking-session' ),
 			'redirectto': url
 		} );

@@ -25,7 +25,8 @@ class ApiClickTracking extends ApiBase {
 		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];
 		$sessionId = $params['token'];
-
+		$namespace = $params['namespacenumber'];
+		
 		$additional = null;
 
 		if ( isset( $params['additional'] ) && strlen( $params['additional'] ) > 0 ) {
@@ -50,7 +51,7 @@ class ApiClickTracking extends ApiBase {
 		ClickTrackingHooks::trackEvent(
 			$sessionId,  // randomly generated session ID
 			$isLoggedIn, 						 // is the user logged in?
-			$wgTitle->getNamespace(), 			 // what namespace are they editing?
+			(int)$namespace, 			 // what namespace are they editing?
 			$eventId,							 // event ID passed in
 			( $isLoggedIn ? $wgUser->getEditCount() : 0 ), // total edit count or 0 if anonymous
 			$granularity1, // contributions made in granularity 1 time frame
@@ -85,7 +86,7 @@ class ApiClickTracking extends ApiBase {
 	 * @param $params params extracted from the POST
 	 */
 	protected function validateParams( $params ) {
-		$required = array( 'eventid', 'token' );
+		$required = array( 'eventid', 'token', 'namespacenumber' );
 		foreach ( $required as $arg ) {
 			if ( !isset( $params[$arg] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', $arg ) );
@@ -97,6 +98,7 @@ class ApiClickTracking extends ApiBase {
 		return array(
 			'eventid' => 'string of eventID',
 			'token'  => 'unique edit ID for this edit session',
+			'namespacenumber' => 'the namespace number being edited', 
 			'redirectto' => 'URL to redirect to (only used for links that go off the page)',
 			'additional' => 'additional info for the event, like state information'
 		);
@@ -112,12 +114,14 @@ class ApiClickTracking extends ApiBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'eventid' ),
 			array( 'missingparam', 'token' ),
+			array( 'missingparam', 'namespacenumber'),
 		) );
 	}
 
 	public function getAllowedParams() {
 		return array(
 			'eventid' => null,
+			'namespacenumber' => null,
 			'token' => null,
 			'redirectto' => null,
 			'additional' => null
