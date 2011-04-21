@@ -47,6 +47,13 @@ $messages['arz'] = array(
 	'gnuplot-desc' => 'يضيف الوسم <code><nowiki><gnuplot></nowiki></code> لاستخدام جنو بلوت',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'gnuplot-desc' => 'Amiesta la etiqueta <code><nowiki><gnuplot></nowiki></code> pa usar Gnuplot',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */

@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'cassandra-desc' => "Stoor teks van wysigings in 'n [http://cassandra.apache.org/ Apache Cassandra] databasis",
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'cassandra-desc' => 'Guardar el testu de la revisión na base de datos [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */

@@ -49,6 +49,13 @@ $messages['arz'] = array(
 	'ajaxquerypages-desc' => 'أضف بعض الأجاكس إلى صفحات الاستعلام مثل [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'ajaxquerypages-desc' => "Amestar dalgo d'AJAX a les páxines de consulta, como [[Special:Shortpages|{{int:shortpages}}]]",
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */

@@ -6195,6 +6195,7 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
+ * @author Od1n
  * @author Peter17
  * @author PieRRoMaN
  * @author Robby
@@ -6418,7 +6419,7 @@ $messages['fr'] = array(
 	'configure-setting-wgEnableSelenium' => "Autoriser l'exécution des tests selenium",
 	'configure-setting-wgSeleniumConfigFile' => 'Fichier de configuration de selenium',
 	'configure-setting-wgDBtestuser' => "Utilisateur de la base de données qui dispose seulement de l'autorisation de créer et de supprimer les bases de données de test",
-	'configure-setting-wgDBtestpassword' => 'Mot de passe pour $ wgDBtestuser',
+	'configure-setting-wgDBtestpassword' => 'Mot de passe pour $wgDBtestuser',
 	'configure-setting-wgAPICacheHelp' => "Cacher le texte d'aide de l'API",
 	'configure-setting-wgAPICacheHelpTimeout' => "Durée du cache de texte d'aide de l'API (en secondes)",
 	'configure-setting-wgAPIMaxDBRows' => "Nombre maximum de lignes à scanner lors d'une requête à la base de données depuis l'API",

@@ -1591,7 +1591,7 @@ Log untuk senarai pantau yang dimasukkan terkini boleh didapati di [[Special:Pov
 	'povwatch_unsubscribe_intro' => 'Anda sedang menyertai PovWatch. Klik butang di bawah untuk berhenti menjadi peserta.',
 	'povwatch_unsubscribe' => 'Berhenti melanggan',
 	'povwatch_subscribe_intro' => 'Anda tidak menyertai PovWatch. Klik butang di bawah untuk mendaftar sebagai peserta.',
-	'povwatch_subscribe' => 'Sertai',
+	'povwatch_subscribe' => 'Langgan',
 	'povwatch_added' => 'ditambah',
 	'right-povwatch_admin' => 'Mentadbir hak pengguna untuk menambah laman ke dalam senarai pantau pengguna lain',
 	'right-povwatch_user' => 'Menambah laman ke dalam senarai pantau pengguna lain',

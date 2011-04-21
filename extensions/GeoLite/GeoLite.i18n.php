@@ -40,6 +40,13 @@ $messages['ar'] = array(
 	'geolite' => 'جيو لايت',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'geolite-desc' => 'Redireición GeoIp llixera',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
