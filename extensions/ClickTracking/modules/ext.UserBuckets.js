@@ -52,6 +52,14 @@ $.setupActiveBuckets = function(){
 		var campaign = MW.activeCampaigns[iter];
 		// if bucket has been set, or bucket version is out of date,
 		// set up a user bucket
+		if(campaign.all){
+			campaign.all();
+		}
+		
+		if(campaign.preferences && !campaign.preferences.setBuckets){
+			continue;
+		}
+		
 		if(!buckets || !buckets[campaign.name] || buckets[campaign.name][1] < campaign.version){
 			//add up all rates
 			var bucketTotal = 0;
@@ -78,7 +86,9 @@ $.setupActiveBuckets = function(){
 		
 		// do the actual code in the campaign based on the bucket
 		if($.getBuckets() && $.getBuckets()[campaign.name] && $.getBuckets()[campaign.name][0] != "none"){
-			campaign[$.getBuckets()[campaign.name][0]](); //function to execute
+			if(typeof campaign[$.getBuckets()[campaign.name][0]] == "function"){
+				campaign[$.getBuckets()[campaign.name][0]](); //function to execute
+			}
 			if(campaign.allActive){
 				campaign.allActive();
 			}
