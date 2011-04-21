@@ -31,16 +31,26 @@ $wgArticleFeedbackCategories = array();
 // are the smallest increments used.
 $wgArticleFeedbackLotteryOdds = 0;
 
-// This version number is added to all tracking event names, so that changes in the software don't
-// corrupt the data being collected. Bump this when you want to start a new "experiment".
-$wgArticleFeedbackTrackingVersion = 0;
-
-// Not all users need to be tracked, but we do want to track some users over time - this value is
-// used when deciding to track someone or not, placing them in one of two buckets: tracked and not.
-// When $wgArticleFeedbackTrackingVersion changes, users will be re-bucketed, so you should always
-// increment $wgArticleFeedbackTrackingVersion when changing this number to ensure the new odds
-// are applied to everyone, not just people who have yet to be placed in a bucket.
-$wgArticleFeedbackTrackingOdds = 100;
+// Bucket settings for tracking users
+$wgArticleFeedbackTracking = array(
+	// Not all users need to be tracked, but we do want to track some users over time - these
+	// buckets are used when deciding to track someone or not, placing them in one of two buckets:
+	// "ignore" or "track". When $wgArticleFeedbackTrackingVersion changes, users will be
+	// re-bucketed, so you should always increment $wgArticleFeedbackTrackingVersion when changing
+	// this number to ensure the new odds are applied to everyone, not just people who have yet to
+	// be placed in a bucket.
+	'buckets' => array(
+		'ignore' => 100,
+		'track' => 0,
+	),
+	// This version number is added to all tracking event names, so that changes in the software
+	// don't corrupt the data being collected. Bump this when you want to start a new "experiment".
+	'version' => 0,
+	// Let user's be tracked for a month, and then rebucket them, allowing some churn
+	'expires' => 30,
+	// Track the event of users being bucketed - so we can be sure the odds worked out right
+	'tracked' => true
+);
 
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
