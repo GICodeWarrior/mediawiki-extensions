@@ -9,8 +9,8 @@ if ( /(iPhone|iPod|Android.*Mobile|webOS|NetFront|Opera Mini|SEMC-Browser|PlaySt
   .test( navigator.userAgent ) )
 {
   if (    (document.cookie.indexOf("irect=t") < 0)  // Don't redirect if we have the stop cookie ... only testing a subportion of the cookie. Should be REALLY unique!
-       && (!document.getElementsByClassName || document.getElementsByClassName( 'ns--1' ).length == 0)
-       && (document.location.href.indexOf( 'action=' ) == -1 || document.location.href.indexOf( 'action=view' ) != -1  )) // Don't redirect URLs that aren't simple page views 
+       && (wgNamespaceNumber >= 0)                 // Don't redirect special pages
+       && (wgAction == "view"))                    // Don't redirect URLs that aren't simple page views 
   {
     // If we've made it here, then we are going ahead with the redirect
 
@@ -18,7 +18,6 @@ if ( /(iPhone|iPod|Android.*Mobile|webOS|NetFront|Opera Mini|SEMC-Browser|PlaySt
     if (wgPageName != wgMainPageTitle.replace(/ /g, '_')) {
       wgWikimediaMobileUrl += '/' + encodeURI(wgPageName);
     }
-
     document.location = wgWikimediaMobileUrl;
   }
 }
