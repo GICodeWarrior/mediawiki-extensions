@@ -39,6 +39,7 @@ $wgHooks['BeforeWelcomeCreation'][] = 'CustomUserSignupHooks::welcomeScreen';
 
 // NOTE: This hook includes JS for the account creation project
 $wgHooks['BeforePageDisplay'][] = 'CustomUserSignupHooks::beforePageDisplay';
+$wgHooks['AddNewAccount'][] = 'CustomUserSignupHooks::addNewAccount';
 
 
 // For Account Creation Project
