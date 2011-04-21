@@ -36,6 +36,13 @@ $messages['ar'] = array(
 	'conditionalshowsection-desc' => 'إضافة وسم cshow لعرض/إخفاء شرطيا قسم من نص الويكي',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'conditionalshowsection-desc' => "Amestar la etiqueta cshow p'amosar/anubrir condicionalmente una seición de testu wiki",
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
