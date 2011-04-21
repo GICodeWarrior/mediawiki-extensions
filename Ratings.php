@@ -66,6 +66,11 @@ $wgAutoloadClasses['RatingsStars'] = dirname( __FILE__ ) . '/starrating/RatingsS
 $wgHooks['ParserFirstCallInit'][] = 'RatingsStars::staticInit';
 $wgHooks['LanguageGetMagic'][] = 'RatingsStars::staticMagic';
 
+$wgAutoloadClasses['RatingsAllRating'] = dirname( __FILE__ ) . '/allrating/RatingsAllRating.php';
+
+$wgHooks['ParserFirstCallInit'][] = 'RatingsAllRating::staticInit';
+$wgHooks['LanguageGetMagic'][] = 'RatingsAllRating::staticMagic';
+
 $wgAutoloadClasses['RatingsVoteSummary'] = dirname( __FILE__ ) . '/votesummary/RatingsVoteSummary.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'RatingsVoteSummary::staticInit';
@@ -93,6 +98,18 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 		'scripts' => array(
 			'starrating/star-rating/jquery.rating.js',
 			'starrating/ext.ratings.stars.js'
+		),
+		'dependencies' => array(),
+		'messages' => $egRatingsStarsJSMessages
+	);
+
+	$wgResourceModules['ext.ratings.allrating'] = $moduleTemplate + array(
+		'styles' => array(
+			'allrating/css/allRating.css'
+		),
+		'scripts' => array(
+			'allrating/js/jquery.allRating.js',
+			'allrating/ext.ratings.allrating.js'
 		),
 		'dependencies' => array(),
 		'messages' => $egRatingsStarsJSMessages
