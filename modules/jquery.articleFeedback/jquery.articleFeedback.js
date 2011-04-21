@@ -207,7 +207,7 @@ $.articleFeedback = {
 					'anontoken': mw.user.id(),
 					'pageid': mw.config.get( 'wgArticleId' ),
 					'revid': mw.config.get( 'wgCurRevisionId' ),
-					'bucket': context.options.bucket
+					'bucket': Number( showOptions )
 				} ),
 				'success': function( data ) {
 					var context = this;
@@ -787,7 +787,6 @@ $.articleFeedback = {
  * Can be called with an options object like...
  * 
  * 	$( ... ).articleFeedback( {
- * 		'bucket': 1, // Numeric identifier of the bucket being used, which is logged on submit
  * 		'ratings': {
  * 			'rating-name': {
  * 				'id': 1, // Numeric identifier of the rating, same as the rating_id value in the db
@@ -808,7 +807,7 @@ $.fn.articleFeedback = function() {
 		var context = $(this).data( 'articleFeedback-context' );
 		if ( !context ) {
 			// Create context
-			context = { '$ui': $(this), 'options': { 'ratings': {}, 'pitches': {}, 'bucket': 1 } };
+			context = { '$ui': $(this), 'options': { 'ratings': {}, 'pitches': {} } };
 			// Allow customization through an options argument
 			if ( typeof args[0] === 'object' ) {
 				context = $.extend( true, context, { 'options': args[0] } );
