@@ -21,36 +21,45 @@ MW.activeCampaigns.AccountCreation =
   // particularly if there are orders of magnitude differences in the
   // bucket sizes
   // "none" is reserved for control
-  "rates": {"NiceMsg1": 1, "NiceMsg2": 1 },
+  "rates": {"ACP1": 25, "ACP2": 25, "ACP3": 25, "none": 25},
   
   // individual changes, function names corresponding
   // to what is in "rates" object
   // (note: "none" function not needed or used)
   
-  "NiceMsg1": function(){
+  "ACP1": function(){
 	  //change to NiceMsg1 campaign
-	  $j("#pt-anonlogin a").attr("href", $j("#pt-anonlogin a").attr("href") + "&campaign=NiceMsg1" );
+	  $j("#pt-anonlogin a").attr("href", $j("#pt-anonlogin a").attr("href") + "&campaign=ACP1" );
   },
-  "NiceMsg2": function(){
+  "ACP2": function(){
 	  //change to NiceMsg2 campaign
-	  $j("#pt-anonlogin a").attr("href", $j("#pt-anonlogin a").attr("href") + "&campaign=NiceMsg2" );
+	  $j("#pt-anonlogin a").attr("href", $j("#pt-anonlogin a").attr("href") + "&campaign=ACP2" );
+  },
+
+  "ACP3": function(){
+	  //change to NiceMsg2 campaign
+	  $j("#pt-anonlogin a").attr("href", $j("#pt-anonlogin a").attr("href") + "&campaign=ACP3" );
   },
   
   // "allActive" is reserved.
   // If this function exists, it will be apply to every user not in the "none" bucket
   "allActive": function(){
+	  if($j.cookie('acctcreation') ){
+		  
+		  //track login attempt
+		  $j("#wpLoginAttempt").click(function(){ $j.trackAction('login-attempt'); });
+		  
+		  //track account creation
+		  $j("#wpCreateaccount").click(function(){ $j.trackAction('account-created'); });
+		  $j("#userloginlink").click(function(){ $j.trackAction('login-link'); });
+		  
+		  //add click tracking to preview
+		  $j("#wpPreview").click(function(){ $j.trackAction('preview'); });
+		  
+		  //add click tracking to save
+		  $j("#wpSave").click(function(){ $j.trackAction('save'); });
+	  }
 	  
-	  //add click tracking to save
-	  $j("#wpSave").click(function(){ $j.trackAction('save'); });
-	  
-	  //track login attempt
-	  $j("#wpLoginAttempt").click(function(){ $j.trackAction('login-attempt'); });
-	  
-	  //track account creation
-	  $j("#wpCreateaccount").click(function(){ $j.trackAction('account-created'); });
-	  
-	  //add click tracking to preview
-	  $j("#wpPreview").click(function(){ $j.trackAction('preview'); });
 	  
   }
   

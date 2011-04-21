@@ -100,8 +100,22 @@ class CustomUserSignupHooks {
 		return true;
 	}
 	
-		public static function beforePageDisplay( $out, $skin ) {
-			$out->addModules( 'ext.UserBuckets' );
-			return true;
+	public static function beforePageDisplay( $out, $skin ) {
+		$out->addModules( 'ext.UserBuckets' );
+		return true;
+	}
+
+	public static function addNewAccount( $user, $byEmail ){
+		global $wgRequest;
+		$buckets = ClickTrackingHooks::unpackBucketInfo();
+		if(isset($buckets['AccountCreation'])   && $buckets['AccountCreation'][0] != "none"){
+			
+			// *NOT HTTPONLY* In fact, that's the point of this cookie
+			
+			setcookie( 'acctcreation' , $buckets['AccountCreation'][0] , 
+					time() + 60 * 60 * 24 * 365  );
 		}
+		return true;
+	}
+
 }
