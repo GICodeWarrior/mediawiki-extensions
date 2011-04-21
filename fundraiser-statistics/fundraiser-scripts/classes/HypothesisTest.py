@@ -238,7 +238,7 @@ class TTest(HypothesisTest):
         
     """ 
     def __init__(self):
-        _data_loader_ = DL.TTestLoaderHelp()
+        self._data_loader_ = DL.TTestLoaderHelp()
     
     """ 
         <description>
@@ -289,38 +289,22 @@ class TTest(HypothesisTest):
             
         
         """ lookup confidence """
-        
         # get t and df
         degrees_of_freedom = math.ceil(degrees_of_freedom)
         if degrees_of_freedom > 30:
             degrees_of_freedom = 99
         
+        p = self._data_loader_.get_pValue(degrees_of_freedom, t)
         
-        """
-        select_stmnt = 'select max(p) from t_test where degrees_of_freedom = ' + str(degrees_of_freedom) + ' and t >= ' + str(t)
+        """ Determine confidence range """
+        probs = [0.400000, 0.250000, 0.100000, 0.050000, 0.025000, 0.010000, 0.005000, 0.000500]
+        prob_diffs = [math.fabs(i-p) for i in probs]
+        min_index = min((n, i) for i, n in enumerate(prob_diffs))[1]
         
-        self._data_loader_.init_db()
+        if min_index > 0:
+            lower_p = probs[min_index - 1]
         
-        try:
-            self._data_loader_._cur_.execute(select_stmnt)
-            results = self._data_loader_._cur_.fetchone()
-                
-            if results[0] != None:
-                p = float(results[0])
-            else:
-                p = .0005
-        except:
-            self._data_loader_._db_.rollback()
-            self._data_loader_._db_.close()
-            sys.exit('Could not execute: ' + select_stmnt)
-            
-        #print p 
-        self._data_loader_._db_.close()
-        """
-        
-        p = _data_loader_.get_pValue(degrees_of_freedom, t)
-        
-        conf_str =  str((1 - p) * 100) + '% confident about the winner.'
+        conf_str =  'Between ' + str((1 - lower_p) * 100) + '% and ' + str((1 - p) * 100) + '% confident about the winner.'
         
         return [means_1, means_2, std_devs_1, std_devs_2, conf_str]
         
