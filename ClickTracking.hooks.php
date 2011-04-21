@@ -209,12 +209,9 @@ class ClickTrackingHooks {
 		$db_status = $dbw->insert( 'click_tracking', $data, __METHOD__ );
 		$dbw->commit();
 
-			
-		
-
 		if( $recordBucketInfo && $db_status ){
 			$buckets = self::unpackBucketInfo();
-			
+			$dbw->ignoreErrors( true ); // if inserting on duplicate key, it's ok
 			if( $buckets ){
 				foreach( $buckets as $bucketName => $bucketValue ){
 						$db_current_bucket_insert = $dbw->insert( 'click_tracking_user_properties', 
@@ -228,8 +225,8 @@ class ClickTrackingHooks {
 					$db_status_buckets = $db_status_buckets && $db_current_bucket_insert;
 				}
 			}//ifbuckets
+			$dbw->ignoreErrors( false );
 		}//ifrecord
-		
 		
 		$dbw->commit();
 		return ($db_status && $db_status_buckets);
