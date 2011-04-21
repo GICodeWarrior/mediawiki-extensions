@@ -5,7 +5,7 @@
 ( function( $, mw ) {
 
 // Only track users who have been assigned to the tracking group
-var tracked = mw.user.bucket(
+var tracked = 'track' === mw.user.bucket(
 	'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackTracking' )
 );
 
