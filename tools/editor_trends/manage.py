@@ -17,6 +17,7 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
+
 import os
 import logging
 import logging.handlers
@@ -351,10 +352,10 @@ def dataset_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'export', stopwatch, event='start')
 
-    for chart in rts.charts:
-        analyzer.generate_chart_data(rts, chart, **rts.keywords)
+    for plugin in rts.plugins:
+        analyzer.generate_chart_data(rts, plugin, **rts.keywords)
         log.to_csv(logger, rts, 'Start', 'Dataset', dataset_launcher,
-                       chart=chart,
+                       plugin=plugin,
                        dbname=rts.dbname,
                        collection=rts.editors_dataset)
     stopwatch.elapsed()
