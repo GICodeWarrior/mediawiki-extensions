@@ -5,7 +5,7 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 
 === Version 0.6 ===
-2011-xx-xx
+2011-04-21
 
 * Added settings to specify per-namespace if the translation control should be shown or not.
 * Use of FormatJson::encode instead of josn_encode for compatibility with PHP5 < 5.2.
