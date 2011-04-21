@@ -1070,7 +1070,9 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'toolbase-header-title' => 'Mga Kasangkapan ng X! (BETA)',
 	'toolbase-header-bugs' => 'Mga sira',
+	'toolbase-header-sitenotice' => 'Pandaigdigang Pabatid Pampook ng Toolserver: $1',
 	'toolbase-replag' => 'Pagkaiwan ng tagapaghain sa pamamagitan ng $1',
 	'toolbase-replag-years' => 'mga taon',
 	'toolbase-replag-months' => 'mga buwan',
@@ -1089,12 +1091,25 @@ $messages['tl'] = array(
 	'toolbase-navigation-autoedits' => 'Kusang pambilang ng pamamatnugot',
 	'toolbase-userid-submit' => 'Kuhanin ang ID ng tagagamit',
 	'toolbase-userid-title' => 'Maghanap ng isang ID ng tagagamit',
+	'toolbase-userid-result' => 'Ang ID ng tagagamit para sa <b>$1</b> sa <a href="$3"><b>$3</b></a> ay <b>$2</b>.',
 	'toolbase-autoedits-title' => 'Kusang tagapagtuos ng pamamatnugot',
 	'toolbase-autoedits-submit' => 'Tuusin',
+	'toolbase-autoedits-approximate' => '<b>Tinatayang</b> bilang ng mga pamamatnugot na ginagamit ang...',
+	'toolbase-autoedits-totalauto' => 'Kabuuang bilang ng kusang mga pamamatnugot',
 	'toolbase-autoedits-totalall' => 'Kabuuang bilang ng pamamatnugot',
 	'toolbase-autoedits-pct' => 'Bahagdan ng awtomatikong mga pamamatnugot',
 	'toolbase-main-title' => 'Maligayang pagdating!',
+	'toolbase-main-content' => 'Maligayang pagdating sa mga kasangkapan ng X! Ang silid ng kasangkapan ay nasa proseso pa rin ng pagiging pagpapalit papunta sa balangkas ng <a href="$1">Symfony</a>. Ang prosesong ito ay magiging may katagalan, subalit dapat na itong gumana.
+
+Para sa isang talaan ng mga kasangkapan na pangkasalukuyang tumatakbo na ngayon sa balangkas na ito, tingnan ang ang panggilid na halang na nasa kanan.
+
+Maiuulat ang mga sira doon sa <a href="$2">Kodigo ng Google</a>.',
 	'toolbase-main-404' => 'Hindi natagpuan ang talaksan',
+	'toolbase-main-404-content' => 'Naku! Walang natagpuang pahina!
+
+Tiyaking tinipa mo ang tamang URL.
+Kung sinundan mo ang isang kawing mula sa ibang lugar, mangyaring <a href="$1">mag-ulat ng isang sira</a>.
+</ul>',
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => 'Hindi isang katanggap-tanggap na tagagamit si $1',
 	'toolbase-error-nowiki' => 'Hindi katanggap-tanggap na wiki ang $1.$2.org',
