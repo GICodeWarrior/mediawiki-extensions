@@ -330,7 +330,7 @@ $messages['eo'] = array(
 	'ea-sent' => "Paĝo [[$1]] sendita sukcese al '''$2''' {{PLURAL:$2|ricevonto|ricevontoj}} de [[User:$3|$3]].",
 	'ea-compose' => 'Skribu enhavon',
 	'ea-send' => 'Sendi!',
-	'ea-selectcss' => 'Selekti CSS-tiparŝablono',
+	'ea-selectcss' => 'Vi povas elekti CSS-tiparŝablono',
 );
 
 /** Spanish (Español)
