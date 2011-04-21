@@ -52,6 +52,17 @@ $wgArticleFeedbackTracking = array(
 	'tracked' => true
 );
 
+// Bucket settings for extra options in the UI
+$wgArticleFeedbackOptions = array(
+	'buckets' => array(
+		'show' => 100,
+		'hide' => 0,
+	),
+	'version' => 0,
+	'expires' => 30,
+	'tracked' => true
+);
+
 // Would ordinarily call this articlefeedback but survey names are 16 chars max
 $wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,

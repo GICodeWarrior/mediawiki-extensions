@@ -9,6 +9,11 @@ var tracked = 'track' === mw.user.bucket(
 	'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackTracking' )
 );
 
+// Only show extra options to users in the options group
+var showOptions = 'show' === mw.user.bucket(
+	'ext.articleFeedback-options', mw.config.get( 'wgArticleFeedbackOptions' )
+);
+
 /**
  * Prefixes a key for cookies or events, with extension and version information
  * 
@@ -58,24 +63,26 @@ $.articleFeedback = {
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-ratings"></div>\
 		<div style="clear:both;"></div>\
-		<div class="articleFeedback-expertise articleFeedback-visibleWith-form" >\
-			<input type="checkbox" value="general" disabled="disabled" /><label class="articleFeedback-expertise-disabled"><html:msg key="form-panel-expertise" /></label>\
-			<div class="articleFeedback-expertise-options">\
-				<div><input type="checkbox" value="studies" /><label><html:msg key="form-panel-expertise-studies" /></label></div>\
-				<div><input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label></div>\
-				<div><input type="checkbox" value="hobby" /><label><html:msg key="form-panel-expertise-hobby" /></label></div>\
-				<div><input type="checkbox" value="other" /><label><html:msg key="form-panel-expertise-other" /></label></div>\
+		<div class="articleFeedback-options">\
+			<div class="articleFeedback-expertise articleFeedback-visibleWith-form" >\
+				<input type="checkbox" value="general" disabled="disabled" /><label class="articleFeedback-expertise-disabled"><html:msg key="form-panel-expertise" /></label>\
+				<div class="articleFeedback-expertise-options">\
+					<div><input type="checkbox" value="studies" /><label><html:msg key="form-panel-expertise-studies" /></label></div>\
+					<div><input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label></div>\
+					<div><input type="checkbox" value="hobby" /><label><html:msg key="form-panel-expertise-hobby" /></label></div>\
+					<div><input type="checkbox" value="other" /><label><html:msg key="form-panel-expertise-other" /></label></div>\
+				</div>\
 			</div>\
-		</div>\
-		<div style="clear:both;"></div>\
-		<div class="articleFeedback-helpimprove articleFeedback-visibleWith-form" >\
-			<input type="checkbox" value="on" disabled="disabled" /><label class="articleFeedback-helpimprove-disabled"><html:msg key="form-panel-helpimprove" /></label>\
-			<div class="articleFeedback-helpimprove-options">\
-				<div><input type="text" placeholder="" class="articleFeedback-helpimprove-email" /></div>\
-				<div class="articleFeedback-helpimprove-note"></div>\
+			<div style="clear:both;"></div>\
+			<div class="articleFeedback-helpimprove articleFeedback-visibleWith-form" >\
+				<input type="checkbox" value="on" disabled="disabled" /><label class="articleFeedback-helpimprove-disabled"><html:msg key="form-panel-helpimprove" /></label>\
+				<div class="articleFeedback-helpimprove-options">\
+					<div><input type="text" placeholder="" class="articleFeedback-helpimprove-email" /></div>\
+					<div class="articleFeedback-helpimprove-note"></div>\
+				</div>\
 			</div>\
+			<div style="clear:both;"></div>\
 		</div>\
-		<div style="clear:both;"></div>\
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled="disabled"><html:msg key="form-panel-submit" /></button>\
 		<div class="articleFeedback-success articleFeedback-visibleWith-form"><span><html:msg key="form-panel-success" /></span></div>\
 		<div style="clear:both;"></div>\
@@ -764,6 +771,10 @@ $.articleFeedback = {
 						$rating.find( 'input:hidden' ).val( 0 );
 						$.articleFeedback.fn.updateRating.call( $rating );
 					} );
+			// Hide/show additional options according to group
+			if ( !showOptions ) {
+				context.$ui.find( '.articleFeedback-options' ).hide();
+			}
 			// Show initial form and report values
 			$.articleFeedback.fn.load.call( context );
 		}
