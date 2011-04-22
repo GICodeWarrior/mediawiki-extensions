@@ -388,6 +388,20 @@ Huenda ungependa kutazama:
 * [[{{MediaWiki:Mainpage}}|Ukurasa wa kwanza]]',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'special404-desc' => 'Nagbibigay ng isang kapupuntahan para sa 404 Hindi natagpuang mga kamalian',
+	'error404' => '404 Hindi natagpuan',
+	'special404-body' => 'Hindi natagpuan ang URL na hiniling mo.
+
+Ang {{fullurl:$1}} ba ang ibig mo sanang makinilyahin?
+
+Marahil ay nais mong tumingin doon sa:
+* [[{{MediaWiki:Mainpage}}|Ang pangunahing pahina]]',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ильнар
  */
