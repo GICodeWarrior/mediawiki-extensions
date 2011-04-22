@@ -120,7 +120,9 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiQueryArticleFeedback'] = $dir . 'api/ApiQueryArticleFeedback.php';
 $wgAutoloadClasses['ApiArticleFeedback'] = $dir . 'api/ApiArticleFeedback.php';
 $wgAutoloadClasses['ArticleFeedbackHooks'] = $dir . 'ArticleFeedback.hooks.php';
+$wgAutoloadClasses['SpecialArticleFeedback'] = $dir . 'SpecialArticleFeedback.php';
 $wgExtensionMessagesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.i18n.php';
+$wgExtensionAliasesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.alias.php';
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackHooks::loadExtensionSchemaUpdates';
 $wgHooks['ParserTestTables'][] = 'ArticleFeedbackHooks::parserTestTables';
@@ -130,3 +132,6 @@ $wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackHooks::resourceLoade
 // API Registration
 $wgAPIListModules['articlefeedback'] = 'ApiQueryArticleFeedback';
 $wgAPIModules['articlefeedback'] = 'ApiArticleFeedback';
+// Special Page
+$wgSpecialPages['ArticleFeedback'] = 'SpecialArticleFeedback';
+$wgSpecialPageGroups['ArticleFeedback'] = 'other';
