@@ -52,6 +52,10 @@ class ArticleFeedbackHooks {
 				'jquery.clickTracking',
 			),
 		),
+		'ext.articleFeedback.dashboard' => array(
+			'scripts' => 'ext.articleFeedback/ext.articleFeedback.dashboard.js',
+			'styles' => 'ext.articleFeedback/ext.articleFeedback.dashboard.css',
+		),
 		'jquery.articleFeedback' => array(
 			'scripts' => 'jquery.articleFeedback/jquery.articleFeedback.js',
 			'styles' => 'jquery.articleFeedback/jquery.articleFeedback.css',
