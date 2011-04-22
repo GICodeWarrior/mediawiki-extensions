@@ -84,6 +84,14 @@ $messages['ast'] = array(
 	'newschannel_submit_button' => "Crear fonte d'anuncies",
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'newschannel-desc' => 'Bir xəbər kanalını dinamik bir [[Special:NewsChannel|xüsusi səhifə]] olaraq uygulamaya qoyar',
+	'newschannel_exclude_category' => 'Bu kateqoriyanı kanarda saxla:',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
