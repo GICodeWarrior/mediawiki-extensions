@@ -1065,8 +1065,16 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'push-desc' => 'Dugtong na magaang ang timbang upang maitulak ang nilalaman sa ibang mga wiki',
+	'right-push' => 'Kapahintulutan upang magamit ang tungkulin ng pagtulak.',
+	'right-bulkpush' => 'Kapahintulutan upang gamitin ang tungkulin ng pabunton na pagtutulak (iyon ay Natatangi:Itulak).',
+	'right-pushadmin' => 'Kapahintulutan upang baguhin ang mga pinupukol ng pagtulak at mga katakdaan sa pagtulak.',
+	'push-err-captacha' => 'Hindi maitulak sa $1 dahil sa captcha.',
+	'push-err-captcha-page' => 'Hindi maitulak ang pahinang $1 papunta sa lahat ng mga pinupukol dahil sa CAPTCHA.',
+	'push-err-authentication' => 'Nabigo ang pagpapatotoo doon sa $1. $2',
 	'push-tab-text' => 'Itulak',
 	'push-button-text' => 'Itulak',
+	'push-tab-desc' => 'Ang laylay na ito ay nagpapahintulot sa iyong maitulak ang pangkasalukuyang rebisyon ng pahinang ito papunta sa isa o marami pang mga wiki.',
 	'push-button-pushing' => 'Itinutulak',
 	'push-button-pushing-files' => 'Itinutulak ang mga talaksan',
 	'push-button-completed' => 'Nabuo na ang pagtulak',
@@ -1075,18 +1083,33 @@ $messages['tl'] = array(
 	'push-targets' => 'Itulak ang mga pinupukol',
 	'push-add-target' => 'Idagdag ang pinupukol',
 	'push-import-revision-message' => 'Itinulak mula sa $1.',
+	'push-tab-no-targets' => 'Walang mga pinupukol na mapagtutulakan. Mangyaring magdagdag ng ilan sa iyong talaksan ng LocalSettings.php.',
 	'push-tab-push-to' => 'Itulak sa $1',
 	'push-remote-pages' => 'Malalayong mga pahina',
 	'push-remote-page-link' => '$1 na nasa $2',
 	'push-remote-page-link-full' => 'Tingnan ang $1 na nasa $2',
 	'push-targets-total' => 'May isang kabuuan ng $1 {{PLURAL:$1|pinupukol|mga pinupukol}}.',
+	'push-button-all' => 'Itulak lahat',
+	'push-tab-last-edit' => 'Huling pamamatnugot ni $1 sa $2 sa ganap na $3.',
+	'push-tab-not-created' => 'Hindi pa umiiral ang pahinang ito.',
+	'push-tab-push-options' => 'Mga mapagpipilian sa pagtutulak:',
+	'push-tab-inc-templates' => 'Isama ang mga suleras',
+	'push-tab-used-templates' => '(Ginagamit na {{PLURAL:$2|suleras|mga suleras}}: $1)',
 	'push-tab-no-used-templates' => '(Walang ginagamit na mga suleras sa pahinang ito.)',
 	'push-tab-inc-files' => 'Isama ang ibinaong mga talaksan',
+	'push-tab-err-fileinfo' => 'Hindi makamtan kung anong mga talaksan ang ginagamit sa pahinang ito. Wala pang mga naitutulak.',
+	'push-tab-err-filepush-unknown' => 'Nabigo ang pagtulak dahil sa hindi nalalamang dahilan.',
+	'push-tab-err-filepush' => 'Nabigo ang pagtulak sa talaksan: $1',
 	'push-tab-embedded-files' => 'Ibinaong mga talaksan:',
 	'push-tab-no-embedded-files' => '(Walang nakabaong mga talaksan sa loob ng pahinang ito.)',
 	'push-tab-files-override' => 'Umiiral na ang mga talaksang ito: $1',
 	'push-tab-template-override' => 'Umiiral na ang mga suleras na ito: $1',
+	'push-tab-err-uploaddisabled' => 'Hindi pinagagana ang mga pagkakargang papaitaas. Tiyaking nakatakda ang $wgEnableUploads at $wgAllowCopyUploads sa totoo sa loob ng LocalSettings.php ng pinupukol na wiki.',
 	'special-push' => 'Itulak ang mga pahina',
+	'push-special-description' => 'Nagbibigay-daan ang pahinang ito upang maitulak ang nilalaman ng isa o marami pang mga pahina papunta sa isa o marami pang mga wiki ng MediaWiki.
+
+Upang makapagtulak ng mga pahina, ipasok ang mga pamagat sa loob ng kahon ng tekstong nasa ibaba, isang pamagat bawat guhit at sapulin ang itulak lahat. Maaaring maging matagal ito bago mabuo.',
+	'push-special-pushing-desc' => 'Itinutulak ang $2 {{PLURAL:$2|pahina|mga pahina}} papunta sa $1...',
 	'push-special-button-text' => 'Itulak ang mga pahina',
 	'push-special-target-is' => 'Pinupukol na wiki: $1',
 	'push-special-select-targets' => 'Pinupukol na mga wiki:',
@@ -1104,6 +1127,9 @@ $messages['tl'] = array(
 	'push-special-return' => 'Magtulak ng marami pang mga pahina',
 	'push-api-err-nocurl' => 'Hindi naitalaga ang cURL.
 Itakda ang $egPushDirectFileUploads upang maging mali sa pangmadlang mga wiki, o italaga ang cURL para sa pribadong mga wiki',
+	'push-api-err-nofilesupport' => 'Ang katutubong MediaWiki ay walang pagtangkilik para sa pagpapaskil ng mga talaksan.
+Sa pangmadlang mga wiki, itakda ang $egPushDirectFileUploads sa mali.
+Sa pribadong mga wiki, ilapat ang pantapal na nakakawing mula sa dokumentasyon ng Itulak o isapanahon mismo ang MediaWiki.',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
