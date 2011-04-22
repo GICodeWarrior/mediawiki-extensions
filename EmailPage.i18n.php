@@ -129,13 +129,14 @@ $messages['arz'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author Proger
  */
 $messages['az'] = array(
 	'e-mailpage' => 'E-poçt səhifəsi',
 	'ea-from' => 'Kimdən:',
 	'ea-to' => 'Kimə:',
-	'ea-cc' => 'Kopya',
+	'ea-cc' => 'Surəti',
 	'ea-send' => 'Göndər',
 	'ea-subject' => 'Başlıq:',
 	'ea-message' => 'Məktub:',
