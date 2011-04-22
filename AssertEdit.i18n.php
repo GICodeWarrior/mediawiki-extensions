@@ -67,6 +67,13 @@ $messages['ast'] = array(
 	'assert_edit_message' => "Falló l'afirmación especificada ($1).",
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vugar 1981
+ */
+$messages['az'] = array(
+	'assert_edit_title' => 'Yanlış',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
