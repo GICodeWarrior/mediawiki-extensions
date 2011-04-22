@@ -199,6 +199,13 @@ $messages['arz'] = array(
 	'right-patroller' => 'مراجعة الصفحات',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vugar 1981
+ */
+$messages['az'] = array(
+	'group-patroller' => 'Patrullar',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

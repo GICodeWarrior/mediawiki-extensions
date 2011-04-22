@@ -166,6 +166,7 @@ $messages['bs'] = array(
  * @author Brion
  * @author Kghbln
  * @author McDutchie
+ * @author Metalhead64
  */
 $messages['de'] = array(
 	'narayam-desc' => 'Ermöglicht benutzerdefinierte Eingabemethoden für Eingabefelder',
@@ -187,6 +188,7 @@ $messages['de'] = array(
 	'narayam-si-wijesekara' => 'Singhalesisch (Wijesekara)',
 	'narayam-ta99' => 'Tamil (Tamil 99)',
 	'narayam-ta' => 'Tamil (Transliteration)',
+	'narayam-te-inscript' => 'Telugu InScript',
 	'narayam-bn-avro' => 'Bengalisch (Avro)',
 	'narayam-bn-inscript' => 'Bengalisch (InScript)',
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',
@@ -206,12 +208,28 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Coyau
+ * @author IAlex
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'narayam-desc' => "Permet d'ajouter des méthodes de saisie personnalisés pour les champs de saisie",
 	'narayam-toggle-ime' => 'Pour basculer la méthode de saisie ($1)',
-	'narayam-help-page' => 'Aide: Saisie au clavier',
+	'narayam-help-page' => 'Help:Saisie au clavier',
+	'narayam-disable-preference' => "Désactiver la méthode d'entrée (IME) Narayam",
+	'narayam-eo' => 'Espéranto',
+	'narayam-hi-inscript' => 'InScript hindi',
+	'narayam-kn' => 'Translittération kannada',
+	'narayam-kn-inscript' => 'InScript kannada',
+	'narayam-ml' => 'Translittération malayâlam',
+	'narayam-ml-inscript' => 'InScript malayâlam',
+	'narayam-or' => 'Translittération oriya',
+	'narayam-or-inscript' => 'InScript oriya',
+	'narayam-sa' => 'Translittération sanskrit',
+	'narayam-sa-inscript' => 'InScript sanskrit',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Translittération tamoule',
+	'narayam-te-inscript' => 'InScript télougou',
+	'narayam-bn-inscript' => 'InScript bengali',
 );
 
 /** Galician (Galego)
@@ -348,6 +366,7 @@ $messages['ia'] = array(
 	'narayam-si-wijesekara' => 'Cingalese (Wijesekara)',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Translitteration in tamil',
+	'narayam-te-inscript' => 'Telugu (InScript)',
 	'narayam-bn-avro' => 'Bengalese (Avro)',
 	'narayam-bn-inscript' => 'Bengalese (InScript)',
 	'narayam-bn-nkb' => 'Bengalese (NKB)',
@@ -404,6 +423,7 @@ $messages['ksh'] = array(
 	'narayam-si-wijesekara' => 'Singhaleesesch Wijesekara',
 	'narayam-ta99' => 'Tamilesch <i lang="en">Tamil99</i>',
 	'narayam-ta' => 'Tamilesch met Äsazboochshtaave',
+	'narayam-te-inscript' => 'Teluuju <i lang="en">InScript</i>',
 	'narayam-bn-avro' => 'Bänjaalesch Avro',
 	'narayam-bn-inscript' => 'Bänjaalesch <i lang="en">InScript</i>',
 	'narayam-bn-nkb' => 'Bänjaalesch NKB',
@@ -445,6 +465,7 @@ $messages['mk'] = array(
 	'narayam-si-wijesekara' => 'синхалски - Виџесекара',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Транслитерација на тамилски',
+	'narayam-te-inscript' => 'Телугу - InScript',
 	'narayam-bn-avro' => 'Бенгалски - Avro',
 	'narayam-bn-inscript' => 'Бенгалски - InScript',
 	'narayam-bn-nkb' => 'Бенгалски - NKB',
@@ -504,6 +525,7 @@ $messages['nl'] = array(
 	'narayam-si-wijesekara' => 'Singalees Wijesekara',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Transliteratie in Tamil',
+	'narayam-te-inscript' => 'Telugu InScript',
 	'narayam-bn-avro' => 'Bengaals Avro',
 	'narayam-bn-inscript' => 'Bengaals InScript',
 	'narayam-bn-nkb' => 'Bengaals NKB',
@@ -591,6 +613,7 @@ $messages['ru'] = array(
 	'narayam-si-wijesekara' => 'Сингальский Виджесекера',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Тамильская транслитерация',
+	'narayam-te-inscript' => 'Телугу инскрипт',
 	'narayam-bn-avro' => 'Бенгальский Avro',
 	'narayam-bn-inscript' => 'Бенгальский инскрипт',
 	'narayam-bn-nkb' => 'Бенгальский NKB',
@@ -752,6 +775,7 @@ $messages['zh-hans'] = array(
 	'narayam-help-page' => 'Help:打字',
 	'narayam-checkbox-tooltip' => '要打开和关闭切换输入的法',
 	'narayam-disable-preference' => '禁用 Narayam 输入法编辑器 (IME)',
+	'narayam-eo' => '世界语',
 	'narayam-hi-inscript' => '印地语 InScript',
 	'narayam-kn' => '卡纳达语音译',
 	'narayam-kn-inscript' => '卡纳达语 InScript',
@@ -765,6 +789,7 @@ $messages['zh-hans'] = array(
 	'narayam-si-wijesekara' => '僧伽罗语维杰塞克拉',
 	'narayam-ta99' => '泰米尔99',
 	'narayam-ta' => '泰米尔音译',
+	'narayam-te-inscript' => '泰卢固文 InScript',
 	'narayam-bn-avro' => '孟加拉文阿夫罗',
 	'narayam-bn-inscript' => '孟加拉文 InScript',
 	'narayam-bn-nkb' => '孟加拉文 NKB',

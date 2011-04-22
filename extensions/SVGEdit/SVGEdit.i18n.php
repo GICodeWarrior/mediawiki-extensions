@@ -476,6 +476,21 @@ $messages['te'] = array(
 	'svgedit-editor-close' => 'రద్దు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'svgedit-editbutton-edit' => 'Baguhin ang iginuhit',
+	'svgedit-summary-label' => 'Baguhin ang buod',
+	'svgedit-summary-default' => '/* Binago sa svg-mamatnugot */',
+	'svgedit-editor-save-close' => 'Sagipin at isara',
+	'svgedit-editor-close' => 'Huwag ituloy',
+	'svgedit-desc' => 'Pamamatnugot na nasa loob ng pantingin-tingin ng mga iginuhit ng SVG sa pamamagitan ng [http://code.google.com/p/svg-edit/ SVG-Pamamatnugot]',
+	'svgedit-edit-tab' => 'Baguhin ang iginuhit',
+	'svgedit-edit-tab-tooltip' => 'Maaari mong baguhin ang pagguhit ng SVG sa loob ng pantingin-tingin mo',
+	'svgedit-toolbar-insert' => 'Pagguhit ng SVG',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

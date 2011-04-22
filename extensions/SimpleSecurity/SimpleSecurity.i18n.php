@@ -1143,6 +1143,7 @@ $messages['tl'] = array(
 	'security-type-category' => 'kaurian',
 	'security-type-namespace' => 'espasyo ng pangalan',
 	'security-restricttogroup' => 'Puntahan ang nilalaman na nakalaan lamang para sa mga kasapi ng "$1"',
+	'restriction-read' => 'Basahin',
 );
 
 /** Turkish (Türkçe)

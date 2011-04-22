@@ -89,6 +89,13 @@ $messages['arz'] = array(
 	'discussionthreading-threadnewsectionhint' => 'بدء مجموعة رسائل جديدة',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'discussionthreading-threadnewsectionhint' => 'Yeni bir başlıq başla',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

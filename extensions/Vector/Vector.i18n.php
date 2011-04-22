@@ -809,6 +809,7 @@ Jika Anda telah masuk log, Anda dapat mematikan peringatan ini lewat "Penyunting
 	'vector-editwarning-preference' => 'Ingatkan saya bila meninggalkan halaman penyuntingan sebelum menyimpan perubahan',
 	'vector-simplesearch-search' => 'Cari',
 	'vector-simplesearch-containing' => 'isian ...',
+	'vector-noexperiments-preference' => 'Kecualikan saya dari percobaan fitur',
 );
 
 /** Igbo (Igbo)

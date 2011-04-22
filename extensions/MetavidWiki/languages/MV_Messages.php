@@ -5086,7 +5086,7 @@ Mohon laporkan ini ke [[{{MediaWiki:Grouppage-sysop}}|administrator situs]].',
 	'mv_path_type_url_anx' => 'URL media lengkap',
 	'mv_path_type_wiki_title' => 'judul media wiki',
 	'mv_path_type_url_file' => 'URL media lengkap dengan menggunakan pencarian lokal',
-	'mv_path_type_mp4_stream' => 'Peladen stream MP4',
+	'mv_path_type_mp4_stream' => 'Server stream MP4',
 	'mv_path_type_label' => 'jenis path',
 	'mv_base_offset_label' => 'basis offset',
 	'mv_duration_label' => 'Durasi',
@@ -10287,6 +10287,7 @@ $messages['tk'] = array(
  */
 $messages['tl'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Paghahanap ng Patnugot ng Metadata ng Bidyo at Midya]',
+	'mvadmin' => 'Mga tungkulin ng tagapangasiwwa para sa MetavidWiki',
 	'metavid' => "Pahina ng ''Metavid''",
 	'mv_missing_stream' => 'Nawawalang daloy: $1',
 	'specialpages-group-mv_group' => 'Natatanging mga pahina ng MetaVidWiki',
