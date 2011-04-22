@@ -64,7 +64,7 @@ class TaggedImages extends SpecialPage {
 			$imageNames[] = $omg;
 		}
 
-		$imageNamesString = implode( ',' $imageNames ); // @todo CHECKME
+		$imageNamesString = implode( ',', $imageNames ); // @todo CHECKME
 		$res = $dbr->select(
 			'image',
 			array( 'img_name', 'img_timestamp' ),
