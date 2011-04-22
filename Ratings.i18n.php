@@ -89,11 +89,12 @@ Le voto actual del usator essera monstrate initialmente si ille ha jam votate.',
  */
 $messages['ksh'] = array(
 	'ratings-desc' => 'Määd et müjjelesch, dat Metmaacher för ongerscheidlijje Eijeschaffte vun de Sigge Note jävve künne.',
+	'ratings-starsratings-desc' => 'Zeisch Note eijfach met Shtäänsche aan un määd_et müjjelesch, dat ene Metmaacher för beshtemmpte Eijescahfte vun an Sigg Note verdeile kann. Wann hä ald ein verdeilt hät, kritt ene Mtmaacher aam Aanfang singe aktoälle Note_Shtand för di Sigg aanjezeisch.',
 	'ratings-par-page' => 'De Sigg, woh en Note för jejovve weed.',
 	'ratings-par-tag' => 'De Eijeschaff, för wat aan dä Sigg en Note jejovve weed.',
 	'ratings-par-showdisabled' => 'Donn de Note aanzeije, wann der Metmaacher kein Note jävve kann, sönders nur lässe.',
-	'ratings-par-incsummary' => 'Donn en Zosammefaßong vun de Note bovve drövver aanjezeije
-',
+	'ratings-par-incsummary' => 'Donn en Zosammefaßong vun de Note bovve övver däm Käßje zom Note verdeile aanzeije.',
+	'ratings-votesummary-desc' => 'Zeisch en koote Zosammefassong vun de Note för de aanjejovve Sigg un de zwai Eijeschafte.',
 	'ratings-current-score' => 'De Metmaacher han {{PLURAL:$2|ein|$2|noch kein}} Note jejovve, zosamme jenumme kohm dobei $1 eruß.',
 	'ratings-no-votes-yet' => 'Doför hät noch Keiner Note jejovve.',
 );
