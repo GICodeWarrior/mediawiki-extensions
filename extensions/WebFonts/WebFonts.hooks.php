@@ -11,6 +11,7 @@ class WebFontsHooks {
 
 	/* Functions */
 	public static function addConfig( &$vars ) {
+		global $wgWebFontsEnabled;
 		global $wgUser;
 		if ( $wgUser->getOption( 'webfontsDisable' ) ) {
 			// User disabled WebFonts
