@@ -111,14 +111,14 @@ final class RatingsAllRating extends ParserHook {
 				array(
 					'value' => $i,
 				),
-                null
+                $i
 			);
 		}
 
         $output = Html::rawElement(
 			'select',
 			array(
-                'id' => "allrating_$ratingStarNr",
+				'name' => "allrating_$ratingStarNr",
                 'class' => 'allrating',
                 'page' => $parameters['page']->getFullText(),
                 'tag' => $parameters['tag'],
