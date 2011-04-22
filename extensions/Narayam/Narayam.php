@@ -80,6 +80,9 @@ $wgNarayamSchemes = array(
 		'ta' => 'ext.narayam.rules.ta',
 		'ta99' => 'ext.narayam.rules.ta99',
 	),
+	'te' => array(
+		'te-inscript' => 'ext.narayam.rules.te-inscript',
+	),
 );
 
 /* Setup */
@@ -212,5 +215,10 @@ $wgResourceModules['ext.narayam.rules.ta99'] = $narayamTpl + array(
 $wgResourceModules['ext.narayam.rules.ta'] = $narayamTpl + array(
 	'scripts' => 'ext.narayam.rules.ta.js',
 	'messages' => array( 'narayam-ta' ),
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.te-inscript'] = $narayamTpl + array(
+	'scripts' => 'ext.narayam.rules.te-inscript.js',
+	'messages' => array( 'narayam-te-inscript' ),
 	'dependencies' => 'ext.narayam.core',
 );
