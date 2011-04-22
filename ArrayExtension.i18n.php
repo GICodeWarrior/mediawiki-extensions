@@ -182,3 +182,10 @@ $messages['vep'] = array(
 	'arrayext-desc' => 'Varata da lugeda nimitadud massivad',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'arrayext-desc' => '存储和计算指定的数组',
+);
+
