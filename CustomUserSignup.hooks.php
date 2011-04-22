@@ -20,7 +20,7 @@ class CustomUserSignupHooks {
 	
 	
 	public static function userCreateForm( &$template ) {
-		global $wgRequest;
+		global $wgRequest, $wgCustomUserSignupVersion, $wgCustomUserSignupSetBuckets;
 		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
 		
 		$newTemplate;
@@ -28,6 +28,7 @@ class CustomUserSignupHooks {
 		
 		$campaign = CustomUserSignupHooks::getCampaign();
 		if( $campaign != "" ) {
+			
 			if( $template instanceof UserloginTemplate ) {
 				$newTemplate = new CustomUserloginTemplate();
 				$linkmsg = 'nologin';
@@ -50,6 +51,15 @@ class CustomUserSignupHooks {
 					);
 			} else {
 				return true;
+			}
+			
+			//set bucket if not set already
+			if( $wgCustomUserSignupSetBuckets && $wgRequest->getCookie('UserName') == NULL ){  //do not put users who already have a username in a bucket
+				$buckets = ClickTrackingHooks::unpackBucketInfo();
+				if( !isset($buckets["AccountCreation"])  || $buckets["AccountCreation"][1]  < $wgCustomUserSignupVersion ){
+					$buckets["AccountCreation"] = array($campaign, $wgCustomUserSignupVersion);
+					ClickTrackingHooks::packBucketInfo($buckets);
+				}
 			}
 			
 			// replace "gotaccount" and "nologin" links

@@ -42,6 +42,8 @@ $wgHooks['BeforePageDisplay'][] = 'CustomUserSignupHooks::beforePageDisplay';
 $wgHooks['AddNewAccount'][] = 'CustomUserSignupHooks::addNewAccount';
 
 
+$wgCustomUserSignupVersion = 1;
+$wgCustomUserSignupSetBuckets = true;
 // For Account Creation Project
 ClickTrackingHooks::addCampaign($dir. 'modules', 'CustomUserSignup/modules', 'AccountCreationUserBucket' );
 
