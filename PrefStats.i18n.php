@@ -216,6 +216,17 @@ $messages['arz'] = array(
 	'prefstats-legend-in' => 'مشترك',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vugar 1981
+ */
+$messages['az'] = array(
+	'prefstats-factor-sixhours' => 'Altı saat',
+	'prefstats-factor-day' => 'gün',
+	'prefstats-factor-week' => 'həftə',
+	'prefstats-factor-twoweeks' => 'İki həftə',
+	'prefstats-factor-fourweeks' => 'Dörd həftə',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
