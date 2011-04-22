@@ -1528,8 +1528,8 @@ Kérlek várj türelemmel.',
  */
 $messages['ia'] = array(
 	'youtubeauthsub' => 'Incargar video YouTube',
-	'youtubeauthsub-desc' => 'Permitte al usatores de [[Special:YouTubeAuthSub|cargar videos]] directemente in YouTube',
-	'youtubeauthsub_info' => 'Pro cargar un video in YouTube pro includer lo in un pagina, completa le sequente informationes:',
+	'youtubeauthsub-desc' => 'Permitte al usatores de [[Special:YouTubeAuthSub|incargar videos]] directemente in YouTube',
+	'youtubeauthsub_info' => 'Pro incargar un video in YouTube a includer in un pagina, completa le sequente informationes:',
 	'youtubeauthsub_title' => 'Titulo',
 	'youtubeauthsub_description' => 'Description',
 	'youtubeauthsub_password' => 'Contrasigno de YouTube',
@@ -1546,7 +1546,7 @@ YouTube pote requirer alcun tempore pro processar tu video, dunque illo pote non
 
 Pro includer tu video in un pagina in le wiki, insere le sequente codice in un pagina:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'Pro cargar un video, tu debera primo aperir un session in YouTube.',
+	'youtubeauthsub_authsubinstructions' => 'Pro incargar un video, essera necessari primo aperir un session in YouTube.',
 	'youtubeauthsub_uploadhere' => 'Carga tu video ab hic:',
 	'youtubeauthsub_uploadbutton' => 'Incargar',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
