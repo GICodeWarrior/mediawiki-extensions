@@ -43,8 +43,10 @@ class SpecialArticleFeedback extends SpecialPage {
 		return array(
 			array(
 				'title' => 'Main Page',
-				'ratings' => array( 4, 3, 2, 1 ),
-				'all' => 2.5
+				// List of ratings as the currently stand
+				'values' => array( 4, 3, 2, 1 ),
+				// Current average (considering historic averages of each rating)
+				'average' => 1.925
 			)
 		);
 	}
@@ -62,8 +64,8 @@ class SpecialArticleFeedback extends SpecialPage {
 		return array(
 			array(
 				'title' => 'Main Page',
-				'ratings' => array( 4, 3, 2, 1 ),
-				'average' => 2.5
+				// List of differences for each rating in the past 7 days
+				'differnces' => array( 1, -2, 0, 0 ),
 			)
 		);
 	}
@@ -81,8 +83,8 @@ class SpecialArticleFeedback extends SpecialPage {
 		return array(
 			array(
 				'title' => 'Main Page',
-				'ratings' => array( 4, 3, 2, 1 ),
-				'average' => 2.5
+				// List of rating IDs that qualify as recent lows
+				'lows' => array( 0, 3 ),
 			)
 		);
 	}
