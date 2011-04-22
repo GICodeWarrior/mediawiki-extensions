@@ -72,8 +72,10 @@ class ApiArticleFeedback extends ApiBase {
 
 			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $rating, $thisRating, $params['bucket'] );
 		}
-		
+
 		$this->insertProperties( $revisionId, $wgUser, $token, $params );
+
+		wfRunHooks( 'ArticleFeedbackChangeRating', array( $params ) );
 
 		$r = array( 'result' => 'Success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
