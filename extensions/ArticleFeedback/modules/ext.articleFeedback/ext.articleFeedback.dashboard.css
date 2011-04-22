@@ -1,0 +1,8 @@
+.articleFeedback-table {
+	border: solid 1px #cccccc;
+}
+
+.articleFeedback-table th {
+	text-align: left;
+	border-bottom: solid 1px #eeeeee;
+}

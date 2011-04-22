@@ -17,18 +17,106 @@ class SpecialArticleFeedback extends SpecialPage {
 	public function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest;
 
+		$wgOut->addModules( 'ext.articleFeedback.dashboard' );
 		$this->setHeaders();
-
-		$dailyHighsAndLows = $this->getDailyHighsAndLows();
-		$weeklyMostChanged = $this->getWeeklyMostChanged();
-		$recentLows = $this->getRecentLows();
-
-		// TODO: Use lists to generate tables
-
-		$wgOut->addHtml( '<div class="articleFeedback-dashboard"><h2>Hello dashboard!</h2></div>' );
+		$this->renderDailyHighsAndLows();
+		$this->renderWeeklyMostChanged();
+		$this->renderRecentLows();
 	}
 
 	/* Protected Methods */
+
+	/**
+	 * Returns an HTML table containing data from a given two dimensional array.
+	 * 
+	 * @param $headings Array: List of rows, each a list of columns (values will be escaped)
+	 * @param $rows Array: List of rows, each a list of columns (values will not be escaped)
+	 * @param $attribs Array: List of HTML attributes to apply to the table
+	 * @return String: HTML table code
+	 */
+	protected function renderTable( array $headings, array $rows, $id = null ) {
+		global $wgOut;
+
+		$table = Html::openElement( 'table', array(
+			'class' => 'articleFeedback-table sortable', 'id' => $id
+		) );
+		// Head
+		$table .= Html::openElement( 'thead' );
+		$table .= Html::openElement( 'tr' );
+		foreach ( $headings as $heading ) {
+			$table .= Html::element( 'th', array(), $heading );
+		}
+		$table .= Html::closeElement( 'tr' );
+		$table .= Html::closeElement( 'thead' );
+		// Body
+		$table .= Html::openElement( 'tbody' );
+		foreach ( $rows as $row ) {
+			$table .= Html::openElement( 'tr' );
+			foreach ( $row as $column ) {
+				$table .= Html::openElement( 'td' );
+				$table .= $column;
+				$table .= Html::closeElement( 'td' );
+			}
+			$table .= Html::closeElement( 'tr' );
+		}
+		$table .= Html::closeElement( 'tbody' );
+		$table .= Html::closeElement( 'table' );
+		$wgOut->addHtml( $table );
+	}
+
+	/**
+	 * Renders daily highs and lows
+	 * 
+	 * @return String: HTML table of daily highs and lows
+	 */
+	protected function renderDailyHighsAndLows() {
+		global $wgOut;
+
+		$data = $this->getDailyHighsAndLows();
+
+		$wgOut->addHtml( Html::element( 'h2', array(), 'Daily Highs and Lows' ) );
+		$this->renderTable(
+			array( 'Article Title', 'Ratings', 'Average' ),
+			array( /* rendered data */ ),
+			'articleFeedback-table-highsandlows'
+		);
+	}
+
+	/**
+	 * Renders weekly most changed
+	 * 
+	 * @return String: HTML table of weekly most changed
+	 */
+	protected function renderWeeklyMostChanged() {
+		global $wgOut;
+
+		$data = $this->getWeeklyMostChanged();
+
+		$wgOut->addHtml( Html::element( 'h2', array(), 'Weekly Most Changed' ) );
+		$this->renderTable(
+			array( 'Article Title', 'Category', 'Difference' ),
+			array( /* rendered data */ ),
+			'articleFeedback-table-weeklymostchanged'
+		);
+	}
+
+	/**
+	 * Renders recent lows
+	 * 
+	 * @return String: HTML table of recent lows
+	 */
+	protected function renderRecentLows() {
+		global $wgOut;
+
+		$data = $this->getRecentLows();
+
+		$wgOut->addHtml( Html::element( 'h2', array(), 'Recent Lows' ) );
+		$this->renderTable(
+			array( 'Article Title', 'Category', 'Rating' ),
+			array( /* rendered data */ ),
+			'articleFeedback-table-recentlows'
+		);
+	}
 
 	/**
 	 * Gets a list of articles which were rated exceptionally high or low.
