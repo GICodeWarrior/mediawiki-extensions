@@ -215,6 +215,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author McDutchie
  * @author Pertile
  */
 $messages['es'] = array(
@@ -229,7 +230,7 @@ $messages['es'] = array(
 	'pf-admin-link-approve' => 'Aprobar página',
 	'pf-header-documentation' => 'Documentación',
 	'pf-header-in_packages' => 'Paquetes',
-	'pf-header-edit' => 'Editar vínculo',
+	'pf-header-edit' => 'Vínculo de edición',
 	'pf-header-type' => 'Tipo de página',
 	'pf-header-page_title' => 'Título',
 	'pf-header-approve' => 'Aprobar',
@@ -290,6 +291,7 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
+ * @author McDutchie
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -304,7 +306,7 @@ $messages['gl'] = array(
 	'pf-admin-link-approve' => 'Aprobar a páxina',
 	'pf-header-documentation' => 'Documentación',
 	'pf-header-in_packages' => 'Paquetes',
-	'pf-header-edit' => 'Editar a ligazón',
+	'pf-header-edit' => 'Ligazón de edición',
 	'pf-header-type' => 'Tipo de páxina',
 	'pf-header-page_title' => 'Título',
 	'pf-header-approve' => 'Aprobar',
@@ -409,7 +411,7 @@ $messages['ia'] = array(
 	'pf-admin-link-approve' => 'Approbar pagina',
 	'pf-header-documentation' => 'Documentation',
 	'pf-header-in_packages' => 'Pacchettos',
-	'pf-header-edit' => 'Ligamine de mod.',
+	'pf-header-edit' => 'Ligamine de modification',
 	'pf-header-type' => 'Typo de pagina',
 	'pf-header-page_title' => 'Titulo',
 	'pf-header-approve' => 'Approbar',
@@ -690,6 +692,7 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
  * @author Luckas Blade
+ * @author McDutchie
  */
 $messages['pt-br'] = array(
 	'packageforce' => 'PackageForce',
@@ -703,13 +706,14 @@ $messages['pt-br'] = array(
 	'pf-admin-link-approve' => 'Aprovar página',
 	'pf-header-documentation' => 'Documentação',
 	'pf-header-in_packages' => 'Pacotes',
-	'pf-header-edit' => 'Editar link',
+	'pf-header-edit' => 'Link de edição',
 	'pf-header-type' => 'Tipo de página',
 	'pf-header-page_title' => 'Título',
 	'pf-header-approve' => 'Aprovar',
 );
 
 /** Romanian (Română)
+ * @author McDutchie
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -718,7 +722,7 @@ $messages['ro'] = array(
 	'pf-admin-link-approve' => 'Aprobă pagina',
 	'pf-header-documentation' => 'Documentaţie',
 	'pf-header-in_packages' => 'Pachete',
-	'pf-header-edit' => 'Editează legătura',
+	'pf-header-edit' => 'Legătură de editare',
 	'pf-header-type' => 'Tipul de pagină',
 	'pf-header-page_title' => 'Titlu',
 	'pf-header-approve' => 'Aprobă',
@@ -779,6 +783,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Dafer45
+ * @author McDutchie
  */
 $messages['sv'] = array(
 	'pf-admin-link-view-documentation' => 'Se dokumentation knuten till sidan.',
@@ -786,7 +791,7 @@ $messages['sv'] = array(
 	'pf-admin-link-approve' => 'Godkänn sida',
 	'pf-header-documentation' => 'Dokumentation',
 	'pf-header-in_packages' => 'Paket',
-	'pf-header-edit' => 'Redigera länk',
+	'pf-header-edit' => 'Redigeringslänk',
 	'pf-header-type' => 'Typ av sida',
 	'pf-header-page_title' => 'Titel',
 	'pf-header-approve' => 'Godkänn',
