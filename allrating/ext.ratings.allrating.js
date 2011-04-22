@@ -7,7 +7,7 @@
  */
 
 (function($) { $( document ).ready( function() {
-
+        
 	var canRate = true; // TODO
 	
 	if ( !canRate && !window.wgRatingsShowDisabled ) {
@@ -21,16 +21,15 @@
 	 */	
 	(function setupRatingElements() {
 		$.each($(".allrating"), function(i,v) {
-			var self = $(this);
+			var self = $(this); 
 			
 			self.allRating({
 				onClickEvent: function(input) {
-					// TODO
+					alert(input.val());
 				},
 				showHover: false
-			});
+			});			
 		});
 	})();
-	
 	
 } ); })(jQuery);
