@@ -672,6 +672,13 @@ Varda ëdcò le [[Special:MostRevisors|'''pàgine con pì revisor''']] e le [[Sp
 	'cooperationstatistics-legendmore' => 'o pì autor.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|مخ|مخونه}}',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya
