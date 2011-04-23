@@ -411,11 +411,13 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'importfreeimages' => 'Too vabasid pilte',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_next' => 'Järgmised $1',
+	'importfreeimages_size_thumbnail' => 'Pisipilt',
 );
 
 /** Basque (Euskara)
