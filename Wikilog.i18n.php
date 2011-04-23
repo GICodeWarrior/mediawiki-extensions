@@ -620,6 +620,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'wikilog-desc' => 'يضيف خصائص تدوين، منشئا تهجين ويكي-مدونة',
@@ -661,8 +662,8 @@ $messages['ar'] = array(
 	'wikilog-view-summary' => 'ملخص',
 	'wikilog-draft-title-mark' => '(مسودة)',
 	'wikilog-anonymous-mark' => '(مجهول)',
-	'wikilog-pager-newest' => 'أجدد',
-	'wikilog-pager-oldest' => 'أقدم',
+	'wikilog-pager-newest' => 'الأحدث',
+	'wikilog-pager-oldest' => 'الأقدم',
 	'wikilog-pager-prev' => 'سابق',
 	'wikilog-pager-next' => 'تالي',
 	'wikilog-pager-first' => 'أول',
@@ -732,7 +733,7 @@ $messages['ar'] = array(
 	'wikilog-show-all' => 'كل التعليقات',
 	'wikilog-show-published' => 'منشور',
 	'wikilog-show-drafts' => 'مسودات',
-	'wikilog-submit' => 'تنفيذ',
+	'wikilog-submit' => 'أرسل',
 	'wikilog-preview' => 'معاينة',
 	'wikilog-edit-lc' => 'عدل',
 	'wikilog-reply-lc' => 'رد',
@@ -4588,7 +4589,7 @@ $messages['mk'] = array(
 	'wikilog-new-item-go' => 'Создај',
 	'wikilog-item-name' => 'Назив на статијата:',
 	'wikilog-published' => 'Објавено',
-	'wikilog-updated' => 'Обновено',
+	'wikilog-updated' => 'Подновено',
 	'wikilog-draft' => 'Нацрт',
 	'wikilog-authors' => 'Автори',
 	'wikilog-wikilog' => 'Викидневник',
@@ -6601,8 +6602,8 @@ $messages['sr-ec'] = array(
 	'wikilog-invalid-param' => 'Неисправан параметар: $1.',
 	'wikilog-invalid-author' => 'Непостојећи аутор: $1.',
 	'wikilog-invalid-date' => 'Неисправан датум: $1.',
-	'wikilog-invalid-tag' => 'Неисправан таг: $1.',
-	'wikilog-invalid-file' => 'Неисправан фајл: $1.',
+	'wikilog-invalid-tag' => 'Неисправна ознака: $1.',
+	'wikilog-invalid-file' => 'Неисправна датотека: $1.',
 	'wikilog-file-not-found' => 'Непостојећи фајл: $1.',
 	'wikilog-not-an-image' => 'Овај фајл није слика: $1',
 	'wikilog-comment-is-empty' => 'Послати коментар је празан.',
