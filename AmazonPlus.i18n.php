@@ -1307,6 +1307,7 @@ $messages['ps'] = array(
 	'amazonplus-amazon' => 'د آمېزون بيه',
 	'amazonplus-new' => 'نوی',
 	'amazonplus-cp-none' => 'هېڅ',
+	'amazonplus-more' => 'نور',
 );
 
 /** Portuguese (Português)
