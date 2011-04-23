@@ -292,3 +292,15 @@ $messages['ru'] = array(
 	'right-SPMsetup' => 'изменять основные настройки управления семантическими проектами',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'spm_wbs_link' => 'Pagluluwas ng XML ng Proyekto ng MS',
+	'spm_printername_wbs' => 'Pagluluwas ng Proyekto ng MS',
+	'spm-name' => 'Pamamahala ng Proyektong Semantiko',
+	'semanticprojectmanagement-desc' => 'Mga Anyo ng Pamamahala ng Proyekto para sa nasa guhit na mga pagtatanong ng Semantikong MediaWiki',
+	'semanticprojectmanagement' => 'Mga katakdaan ng Pamamahala ng Proyektong Semantiko',
+	'right-SPMsetup' => 'Baguhin ang payak na mga katakdaan ng pamamahala ng proyektong semantiko',
+);
+
