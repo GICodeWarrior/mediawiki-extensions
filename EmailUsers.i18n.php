@@ -295,6 +295,13 @@ $messages['nl'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd. U mag maximaal {{PLURAL:$1|$1 ontvanger|$1 ontvangers}} selecteren.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'emailusers' => 'کارنانو ته برېښليک لېږل',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya
