@@ -2,12 +2,12 @@
  * Script for Article Feedback Extension
  */
 
-$(document).ready( function() {
+jQuery(document).ready( function( $ ) {
 	if (
 		// Main namespace articles
-		mw.config.get( 'wgNamespaceNumber', false ) === 0
+		mw.config.get( 'wgNamespaceNumber' ) === 0
 		// View pages
-		&& mw.config.get( 'wgAction', false ) === 'view'
+		&& mw.config.get( 'wgAction' ) === 'view'
 		// Current revision
 		&& mw.util.getParamValue( 'diff' ) === null
 		&& mw.util.getParamValue( 'oldid' ) === null

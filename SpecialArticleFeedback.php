@@ -153,7 +153,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			array(
 				'title' => 'Main Page',
 				// List of differences for each rating in the past 7 days
-				'differnces' => array( 1, -2, 0, 0 ),
+				'differences' => array( 1, -2, 0, 0 ),
 			)
 		);
 	}

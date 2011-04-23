@@ -293,16 +293,14 @@
 	margin-top: 0.75em;
 }
 
-.articleFeedback-expertise input,
-.articleFeedback-helpimprove input {
+.articleFeedback-expertise input {
 	float: left;
 	margin-bottom: 0.5em;
 	clear: both;
 	cursor: pointer;
 }
 
-.articleFeedback-expertise label,
-.articleFeedback-helpimprove label {
+.articleFeedback-expertise label {
 	margin-left: 0.25em;
 	margin-bottom: 0.5em;
 	float: left;
@@ -310,8 +308,7 @@
 	cursor: pointer;
 }
 
-.articleFeedback-expertise-options,
-.articleFeedback-helpimprove-options {
+.articleFeedback-expertise-options {
 	clear: both;
 	display: none;
 }
@@ -320,35 +317,24 @@
 	margin-left: 2em;
 }
 
-.articleFeedback-helpimprove-options input {
-	margin-left: 2em;
+.articleFeedback-expertise-options .articleFeedback-helpimprove-email {
+	clear: none;
+	float: none;
+	width: 20em;
+	margin-left: 0.25em;
 }
 
 .articleFeedback-helpimprove-note {
-	margin-left: 2em;
 	font-size: 0.8em;
 	clear: both;
 }
 
-.articleFeedback-helpimprove-email {
-	width: 20em;
-}
-
-.articleFeedback-helpimprove-email-validity {
-	float: left;
-	padding: 2px 0.5em;
-}
-
-.articleFeedback-helpimprove-email-validity.valid {
-	border: 1px solid #80FF80;
+.articleFeedback-helpimprove-email.valid {
 	background-color: #C0FFC0;
-	color: black;
 }
 
-.articleFeedback-helpimprove-email-validity.invalid {
-	border: 1px solid #FF8080;
+.articleFeedback-helpimprove-email.invalid {
 	background-color: #FFC0C0;
-	color: black;
 }
 
 .articleFeedback-success {

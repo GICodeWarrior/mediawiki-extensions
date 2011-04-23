@@ -85,8 +85,6 @@ class ArticleFeedbackHooks {
 				'articlefeedback-report-empty',
 				'articlefeedback-report-ratings',
 				'parentheses',
-				'email-address-validity-valid',
-				'email-address-validity-invalid',
 			),
 			'dependencies' => array(
 				'jquery.tipsy',
