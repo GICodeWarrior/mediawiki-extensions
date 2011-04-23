@@ -29,6 +29,13 @@ $messages['qqq'] = array(
 	'bookmanager-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'printversion' => 'نسخة الطباعة',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -293,5 +300,15 @@ $messages['tl'] = array(
 	'printversion-desc' => 'Gumagawa ng isang [[Special:PrintVersion|bersyong naililimbag]] ng isang aklat',
 	'printversion-no-book' => 'Pakipasok ang pangalan ng isang aklat upang makuha ang bersyong maililimbag.',
 	'printversion-inexistent-book' => 'Hindi natagpuan ang aklat.  Pakipasok ang pangalan ng umiiral na aklat upang makuha ang bersyong maililimbag nito.',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
+$messages['zh-hans'] = array(
+	'bookmanager-desc' => '书的工具',
+	'printversion' => '打印版本',
+	'printversion-no-book' => '请输入一本书以获取其打印版本的名称。',
+	'printversion-inexistent-book' => '找不到的书。请输入现有的书，以获取其打印版本的名称。',
 );
 
