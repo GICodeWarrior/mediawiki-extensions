@@ -256,12 +256,13 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'rightfunctions-desc' => 'Fungsi parser berdasarkan hak pengguna',
 	'rightfunctions-casc' => '(dari sumber beruntun)',
 	'rightfunctions-local' => '(dari halaman lokal)',
-	'rightfunctions-ns' => '(dari perlindungan ruang nama)',
+	'rightfunctions-ns' => '(dari pelindungan ruang nama)',
 );
 
 /** Italian (Italiano)
