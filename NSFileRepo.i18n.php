@@ -146,7 +146,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'nsfilerepo-desc' => 'Provide functiones a base de spatios de nomines pro files cargate',
+	'nsfilerepo-desc' => 'Provide functiones a base de spatio de nomines pro files incargate',
 );
 
 /** Indonesian (Bahasa Indonesia)
