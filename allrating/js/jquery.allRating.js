@@ -71,6 +71,21 @@
 
     /**Main Code**/
     $.fn.allRating = function(options) {
+		// Handle API methods
+		if(typeof arguments[0]=='string'){
+			// Perform API methods on individual elements
+			if(this.length>1){
+				var args = arguments;
+				return this.each(function(){
+					$.fn.rating.apply($(this), args);
+				});
+			};
+			// Invoke API method handler
+			$.fn.allRating[arguments[0]].apply(this, $.makeArray(arguments).slice(1) || []);
+			// Quick exit...
+			return this;
+		};    	
+    	
         var config = $.extend({}, $.rating.defaults, options);
 
         this.each( function() {
@@ -106,6 +121,7 @@
     $.fn.allRating.fetchInput = function(item, config, index ) {
 
         var input = {};
+        this.config = config;
 
         //fetch input details
         input.item          = $(item);
@@ -184,6 +200,7 @@
     }
 
     $.fn.allRating.addActiveStars = function(input, config, original) {
+    	
         if(original) {
            $('#' + input.ratingId + ' .'+config.segmentContainerClass).find('a[rel="' + input.selectedValue + '"]').addClass('original');
         }
@@ -193,7 +210,15 @@
             $(this).removeClass(config.segmentClassNonActiveClass).addClass(config.segmentActiveClass);
         });
     };
-
+    
+    $.extend($.fn.allRating, {
+    	setValue: function( value ) {
+            var inputId = $(this).attr('id');
+            var config = $.extend({}, $.rating.defaults, this.options);
+            //var input = $.fn.allRating.updateInput('#'+inputId, value, config);
+        }
+    });
+    
     $.fn.allRating.initEvents = function(input, config) {
         $.fn.allRating.initClickEvents(input, config);
         $.fn.allRating.initHoverEvents(input, config);
@@ -231,6 +256,7 @@
     $.fn.allRating.updateInput = function(inputId, newValue, config){
         switch(config.input) {
             case 'select' :
+            	alert(inputId);
                 $(inputId).val(newValue);
                 return $(inputId); //return the original input 
                 break;
@@ -245,7 +271,6 @@
                 break;
         }
     };
-
 
     $.fn.allRating.findTextFromValue = function(input, value, config) {
         switch(config.input) {
