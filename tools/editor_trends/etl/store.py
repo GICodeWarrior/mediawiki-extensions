@@ -137,10 +137,7 @@ def launcher_articles(rts):
     '''
     db = storage.init_database(rts.storage, rts.dbname, rts.articles_raw)
     db.drop_collection()
-    db.add_index('id')
-    db.add_index('title')
-    db.add_index('ns')
-    db.add_index('category')
+
 
     files = file_utils.retrieve_file_list(rts.txt, extension='csv',
                                           mask='articles')
@@ -162,6 +159,12 @@ def launcher_articles(rts):
 
     tasks.join()
 
+    print 'Creating indexes...'
+    db.add_index('id')
+    db.add_index('title')
+    db.add_index('ns')
+    db.add_index('category')
+
 
 def launcher(rts):
     '''
@@ -172,8 +175,6 @@ def launcher(rts):
     print 'Input directory is: %s ' % rts.sorted
     db = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
     db.drop_collection()
-    db.add_index('editor')
-    db.add_index('username')
 
     files = file_utils.retrieve_file_list(rts.sorted, 'csv')
     pbar = progressbar.ProgressBar(maxval=len(files)).start()
@@ -207,6 +208,9 @@ def launcher(rts):
         break
 
     tasks.join()
+    print 'Creating indexes...'
+    db.add_index('editor')
+    db.add_index('username')
 
 
 if __name__ == '__main__':
