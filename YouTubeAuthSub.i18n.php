@@ -216,7 +216,7 @@ $messages['ar'] = array(
 	'youtubeauthsub_username' => 'اسم مستخدم يوتيوب',
 	'youtubeauthsub_keywords' => 'كلمات مفتاحية',
 	'youtubeauthsub_category' => 'تصنيف',
-	'youtubeauthsub_submit' => 'نفّذ',
+	'youtubeauthsub_submit' => 'أرسل',
 	'youtubeauthsub_clickhere' => 'أنقر هنا لتسجيل الدخول لليوتيوب',
 	'youtubeauthsub_tokenerror' => 'خطأ توليد توكين السماح، حاول التحديث.',
 	'youtubeauthsub_success' => "تهانينا!
@@ -228,7 +228,7 @@ $messages['ar'] = array(
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'لرفع فيديو، سيتعين عليك تسجيل الدخول أولا إلى يوتيوب.',
 	'youtubeauthsub_uploadhere' => 'رفع مقاطع الفيديو الخاصة بك من هنا:',
-	'youtubeauthsub_uploadbutton' => 'رفع',
+	'youtubeauthsub_uploadbutton' => 'ارفع',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 عرض هذا الفيديو]',
@@ -1540,9 +1540,9 @@ $messages['ia'] = array(
 	'youtubeauthsub_clickhere' => 'Clicca hic pro aperir un session in YouTube',
 	'youtubeauthsub_tokenerror' => 'Error durante le generation del indicio de autorisation; prova refrescar le pagina.',
 	'youtubeauthsub_success' => "Felicitationes!
-Tu video ha essite cargate.
+Tu video ha essite incargate.
 <a href='http://www.youtube.com/watch?v=$1'>Vider tu video</a>.
-YouTube pote requirer alcun tempore pro processar tu video, dunque illo pote non esser ancora preste.
+YouTube pote requirer un certe tempore pro processar tu video, dunque illo pote non ancora esser preste.
 
 Pro includer tu video in un pagina in le wiki, insere le sequente codice in un pagina:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -1553,8 +1553,8 @@ Pro includer tu video in un pagina in le wiki, insere le sequente codice in un p
 
 [http://www.youtube.com/watch?v=$1 Vider iste video]',
 	'youtubeauthsub_summary' => 'Cargamento de video YouTube',
-	'youtubeauthsub_uploading' => 'Tu video es in curso de esser cargate.
-Sia patiente.',
+	'youtubeauthsub_uploading' => 'Tu video es in curso de incargamento.
+Per favor sia patiente.',
 	'youtubeauthsub_viewpage' => 'Alternativemente, tu pote [[$1|vider tu video]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Per favor entra 1 o plus parolas-clave.',
 	'youtubeauthsub_jserror_notitle' => 'Per favor entra un titulo pro le video.',
