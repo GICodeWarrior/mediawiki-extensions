@@ -122,7 +122,7 @@ $messages['ar'] = array(
 	'recordadmin-recordtype' => 'نوع التسجيل',
 	'recordadmin-newsearch' => 'بحث $1 جديد',
 	'recordadmin-newrecord' => 'أختار نوع سجل أخر',
-	'recordadmin-submit' => 'نفذ',
+	'recordadmin-submit' => 'أرسل',
 	'recordadmin-create' => 'ابحث عن أو أنشئ سجلات "$1"',
 	'recordadmin-alreadyexist' => '! للأسف، "$1" موجود فعلا',
 	'recordadmin-createsuccess' => '$1 أنشئت',
@@ -130,7 +130,7 @@ $messages['ar'] = array(
 	'recordadmin-badtitle' => '! عنوان سئ',
 	'recordadmin-recordid' => 'رقم السجل/الاسم:',
 	'recordadmin-invert' => 'أعكس الأختيار',
-	'recordadmin-buttonsearch' => 'بحث',
+	'recordadmin-buttonsearch' => 'ابحث',
 	'recordadmin-buttoncreate' => 'أنشئ',
 	'recordadmin-buttonreset' => 'إعادة ضبط',
 	'recordadmin-searchresult' => 'نتائج البحث',
@@ -1159,7 +1159,7 @@ $messages['id'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Tidak ada "$1"',
-	'recordadmin-edit-info' => 'Halaman ini berisi templat yang memiliki formulir sendiri yang dapat Anda isi dari himpunan tab ini',
+	'recordadmin-edit-info' => 'Halaman ini berisi templat yang memiliki formulir sendiri yang dapat Anda isi dari set tab ini.<br />Sebagai alternatif, <a href="$1">gunakan fungsi penyuntingan normal MediaWiki tanpa formulir templat</a>.',
 	'recordadmin-properties' => 'Properti',
 );
 
