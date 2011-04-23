@@ -359,10 +359,10 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'userimages-desc' => 'Crea gallerias de imagines cargate per usatores con <code><nowiki><userimage /></nowiki></code>',
-	'userimages-caption' => 'Imagines cargate per $1',
+	'userimages-desc' => 'Crea galerias de imagines incargate per usatores con <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'Imagines incargate per $1',
 	'userimages-noname' => 'Nomine de usator invalide o mancante.',
-	'userimages-noimages' => '$1 non ha cargate alcun imagine.',
+	'userimages-noimages' => '$1 non ha incargate imagines.',
 );
 
 /** Indonesian (Bahasa Indonesia)
