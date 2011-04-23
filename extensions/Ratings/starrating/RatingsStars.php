@@ -163,6 +163,8 @@ final class RatingsStars extends ParserHook {
 				'jQuery'
 			);
 			
+			Ratings::loadJs( $this->parser );
+			
 			$this->parser->getOutput()->addHeadItem(
 				Html::linkedScript( $egRatingsScriptPath . '/starrating/star-rating/jquery.rating.js' )
 				. Html::linkedStyle( $egRatingsScriptPath . '/starrating/star-rating/jquery.rating.css' ),

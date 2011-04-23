@@ -17,19 +17,50 @@
 	}
 
 	/**
+	 * Loop over all rating elements for the page and set their value when available.
+	 * 
+	 * @param {string} page
+	 * @param {Array} tagValues
+	 */	
+	function initRatingElementsForPage( page, tagValues ) {
+		$.each($(".allrating"), function(i,v) {
+			var self = $(this);
+			
+			if ( typeof self.attr( 'page' ) != 'undefined' && self.attr( 'page' ) == page ) {
+				if ( typeof tagValues[self.attr( 'tag' )] != 'undefined' ) {
+					self.allRating( 'setValue', tagValues[self.attr( 'tag' )] );
+				}
+			}
+		});		
+	}		
+	
+	/**
 	 * Self executing function to setup the allrating rating elements on the page.
 	 */	
 	(function setupRatingElements() {
+		var ratings = {};
+		
 		$.each($(".allrating"), function(i,v) {
 			var self = $(this); 
 			
 			self.allRating({
 				onClickEvent: function(input) {
-					alert(input.val());
+					window.ratings.submitRating( self.attr( 'page' ), self.attr( 'tag' ), input.val() );
 				},
 				showHover: false
-			});			
+			});	
+			
+			if ( !ratings[self.attr( 'page' )] ) {
+				ratings[self.attr( 'page' )] = [];
+			}
+			
+			ratings[self.attr( 'page' )].push( self.attr( 'tag' ) );				
 		});
+		
+		for ( i in ratings ) {
+			window.ratings.getRatingsForPage( i, $.unique( ratings[i] ), initRatingElementsForPage );
+		}
+		
 	})();
 	
 } ); })(jQuery);

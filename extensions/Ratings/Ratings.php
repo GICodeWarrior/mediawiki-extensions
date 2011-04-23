@@ -91,6 +91,13 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 		'remoteBasePath' => $egRatingsScriptPath
 	);
 	
+	$wgResourceModules['ext.ratings.common'] = $moduleTemplate + array(
+		'scripts' => array(
+			'js/ext.ratings.common.js'
+		),
+		'messages' => $egRatingsStarsJSMessages
+	);	
+	
 	$wgResourceModules['ext.ratings.stars'] = $moduleTemplate + array(
 		'styles' => array(
 			'starrating/star-rating/jquery.rating.css'
@@ -99,8 +106,7 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 			'starrating/star-rating/jquery.rating.js',
 			'starrating/ext.ratings.stars.js'
 		),
-		'dependencies' => array(),
-		'messages' => $egRatingsStarsJSMessages
+		'dependencies' => array( 'ext.ratings.common' ),
 	);
 
 	$wgResourceModules['ext.ratings.allrating'] = $moduleTemplate + array(
@@ -111,8 +117,7 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 			'allrating/js/jquery.allRating.js',
 			'allrating/ext.ratings.allrating.js'
 		),
-		'dependencies' => array(),
-		'messages' => $egRatingsStarsJSMessages
+		'dependencies' => array( 'ext.ratings.common' ),
 	);
 }
 
