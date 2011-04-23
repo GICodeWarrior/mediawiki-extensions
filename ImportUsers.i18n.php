@@ -942,13 +942,14 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
 	'importusers' => 'Impor pengguna',
 	'importusers-desc' => '[[Special:ImportUsers|Impor pengguna]] secara massal dari berkas CSV; enkode: UTF-8',
 	'importusers-uploadfile' => 'Muatkan berkas',
-	'importusers-form-caption' => 'Input berkas CSV (UTF-8)',
+	'importusers-form-caption' => 'Berkas CSV masukan (UTF-8):',
 	'importusers-form-file' => 'Format berkas pengguna (CSV):',
 	'importusers-form-replace-present' => 'Timpa pengguna yang sudah ada',
 	'importusers-form-button' => 'Impor',
@@ -961,9 +962,9 @@ Tidak diperbarui.",
 Dilompati.',
 	'importusers-log' => 'Impor log pengguna',
 	'importusers-log-summary' => 'Ringkasan',
-	'importusers-log-summary-all' => 'Semua',
-	'importusers-log-summary-added' => 'Telah ditambahkan',
-	'importusers-log-summary-updated' => 'Dimutakhirkan',
+	'importusers-log-summary-all' => 'Semua: $1',
+	'importusers-log-summary-added' => 'Ditambahkan: $1',
+	'importusers-log-summary-updated' => 'Diperbarui: $1',
 	'importusers-login-name' => 'Nama masuk log',
 	'importusers-password' => 'kata sandi',
 	'importusers-email' => 'surel',
