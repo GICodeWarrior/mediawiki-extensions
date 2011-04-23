@@ -779,7 +779,7 @@ $messages['id'] = array(
 	'wikisync_log_uploaded_by' => 'Diunggah oleh [[Special:WikiSync|WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Tindakan API tidak dikenal',
 	'wikisync_api_result_exception' => 'Terjadi kesalahan dalam pemanggilan API lokal',
-	'wikisync_api_result_noaccess' => 'Hanya anggota kelompok berikut dapat melakukan tindakan ini: $1',
+	'wikisync_api_result_noaccess' => 'Hanya anggota dari {{PLURAL:$2|kelompok|kelompok-kelompok}} berikut yang dapat melakukan tindakan ini: $1',
 	'wikisync_api_result_invalid_parameter' => 'Nilai parameter tidak sah',
 	'wikisync_api_result_http' => 'Kesalahan HTTP sewaktu mengambil data dari API luar',
 	'wikisync_api_result_Unsupported' => 'Versi MediaWiki tidak didukung (lebih lama dari 1.15)',
@@ -1172,6 +1172,13 @@ rozpoczynając od wersji $3?',
 	'wikisync_js_sync_end_rtl' => 'Zakończenie synchronizacji ze zdalnej do lokalnej wiki $1',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikisync_remote_login_button' => 'ننوتل',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -1351,7 +1358,11 @@ $messages['tl'] = array(
 	'wikisync_scheduler_log' => 'Talaan ng tagapagtakda',
 	'wikisync_scheduler_setup' => 'Pagkakahanda ng tagapagtakda',
 	'wikisync_scheduler_turn_on' => 'Buhayin ang pangtakda',
+	'wikisync_scheduler_switch_direction' => 'Kusang pagpalitin ang patutunguhan ng pagsasabayan',
+	'wikisync_scheduler_time_interval' => 'Oras na nasa mga minuto sa pagitan ng kusang mga pagsasabayan',
 	'wikisync_apply_button' => 'Ilapat',
+	'wikisync_log_imported_by' => 'Inangkat ng [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Ikinargang papaitaas ng [[Special:WikiSync|WikiSync]]',
 	'wikisync_api_result_unknown_action' => 'Hindi nalalamang galaw ng API',
 	'wikisync_api_result_exception' => 'Naganap ang hindi pagsasali sa loob ng katutubong pagtawag ng API',
 	'wikisync_api_result_noaccess' => 'Tanging mga kasapi lamang ng sumusunod na {{PLURAL:$2|pangkat|mga pangkat}} ang makapagsasagawa ng galaw na ito: $1',
@@ -1364,8 +1375,38 @@ $messages['tl'] = array(
 	'wikisync_api_result_EmptyPass' => 'Hindi mo itinakda ang parametrong lgpassword o iniwan mo itong walang laman',
 	'wikisync_api_result_WrongPass' => 'Hindi tama ang ibinigay mong hudyat',
 	'wikisync_api_result_WrongPluginPass' => 'Hindi tama ang ibinigay mong hudyat',
+	'wikisync_api_result_CreateBlocked' => 'Ang wiki ay sumubok na kusang lumikha ng isang bagong akawnt para sa iyo, ngunit ang iyong tirahan ng IP ay hinadlangan mula sa paglikha ng akawnt',
+	'wikisync_api_result_Throttled' => 'Masyadong marami ang naging paglagda mo sa loob ng maikling panahon.',
 	'wikisync_api_result_Blocked' => 'Hinahadlangan ang tagagamit',
+	'wikisync_api_result_mustbeposted' => 'Ang modyul ng paglagda ay nangangailangan ng hiling ng PASKIL',
+	'wikisync_api_result_NeedToken' => 'Maaaring hindi ka nagbigay ng kahalip ng paglagda o ng otap ng ID ng laang panahon. Humiling ulit na ibinigay ang kahalip at otap sa loob ng tugong ito',
+	'wikisync_api_result_no_import_rights' => 'Ang tagagamit na ito ay hindi pinapayagang umangkat ng mga talaksang tambakan ng XML',
+	'wikisync_api_result_Success' => 'Matagumpay na nakalagdang papaloob sa malayong sityo ng wiki',
+	'wikisync_js_last_op_error' => 'Ang huling pagsasagawa ay nagbalik ng isang kamalian.
+
+Kodigo: $1
+
+Mensahe: $2
+
+Pindutin anag [Sige] upang muling subukan ang huling pagsasagawa',
+	'wikisync_js_synchronization_confirmation' => 'Nakatitiyak ka bang nais mong pagsabayin
+
+mula sa $1
+
+papunta sa $2
+
+nagsisimula mula sa rebisyong $3?',
+	'wikisync_js_synchronization_success' => 'Matagumpay na nabuo ang pagsasabay',
+	'wikisync_js_already_synchronized' => 'Tila sumasabay na ang mga wiki pinagkukunan at pinatutunguhan',
+	'wikisync_js_sync_to_itself' => 'Hindi mo maisasabay ang sarili sa kanyang sarili',
+	'wikisync_js_diff_search' => 'Naghahanap ng kaibahan sa mga rebisyon ng kapupuntahan',
 	'wikisync_js_revision' => 'Rebisyong $1',
+	'wikisync_js_invalid_scheduler_time' => 'Ang oras ng tagapagtakda ay dapat na isang positibong bilang na buumbilang',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|minuto|mga minuto}} pa ang natitira',
+	'wikisync_js_sync_start_ltr' => 'Sinisimulan ang pagsasabayan mula sa katutubong wiki papunta sa malayong wiki sa $1',
+	'wikisync_js_sync_start_rtl' => 'Sinisimulan ang pagsasabayan mula sa malayong wiki papunta sa katutubong wiki sa $1',
+	'wikisync_js_sync_end_ltr' => 'Natapos na ang pagsasabayan mula sa katutubong wiki papunta sa malayong wiki sa $1',
+	'wikisync_js_sync_end_rtl' => 'Natapos na ang pagsasabayan mula sa malayong wiki papunta sa katutubong wiki sa $1',
 );
 
 /** Ukrainian (Українська)
