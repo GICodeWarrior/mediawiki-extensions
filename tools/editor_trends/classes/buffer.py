@@ -80,7 +80,7 @@ class CSVBuffer:
         self.n = 0
         self.filehandles = [file_utils.create_txt_filehandle(self.rts.txt,
         file_id, 'a', 'utf-8') for file_id in xrange(self.rts.max_filehandles)]
-        self.keys = ['revision_id', 'article_id', 'id', 'username', 'namespace',
+        self.keys = ['id', 'article_id', 'revision_id', 'username', 'namespace',
                      'title', 'timestamp', 'hash', 'revert', 'bot', 'cur_size',
                      'delta']
         self.fh_articles = file_utils.create_txt_filehandle(self.rts.txt,

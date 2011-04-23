@@ -54,6 +54,7 @@ class EditorCache:
     def add(self, key, value):
         if value == 'NEXT':
             self.n += 1
+            print self.editors
             edits = self.drop_years_no_obs(self.editors[key]['edits'])
             self.insert(key, edits, self.editors[key]['username'])
             del self.editors[key]
@@ -72,19 +73,7 @@ class EditorCache:
 
     def insert(self, editor, values, username):
         data = {'editor': editor, 'edits': values, 'username': username}
-        self.db.insert(data)
-#        '''
-#        Adding the safe=True statement slows down the insert process but this 
-#        assures that all data will be written. 
-#        '''
-#        try:
-#            self.collection.insert({'editor': editor, 'edits': values, 'username': username}, safe=True)
-#        except bson.errors.InvalidDocument:
-#            print 'BSON document too large, unable to store %s' % (username)
-#        except OperationFailure, error:
-#            print error
-#            print 'It seems that you are running out of disk space.'
-#            sys.exit(-1)
+        self.db.insert(data, safe=False)
 
     def store(self):
         file_utils.store_object(self, settings.binary_location, self.__repr__())

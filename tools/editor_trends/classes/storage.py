@@ -120,14 +120,14 @@ class Mongo(AbstractDatabase):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'
         return self.db[self.collection].save(data)
 
-    def insert(self, data, qualifiers=None):
+    def insert(self, data, qualifiers=None, safe=False):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'
         data = self.stringify_keys(data)
         try:
             if qualifiers:
-                self.db[self.collection].insert(data, qualifiers, safe=True)
+                self.db[self.collection].insert(data, qualifiers, safe=safe)
             else:
-                self.db[self.collection].insert(data, safe=True)
+                self.db[self.collection].insert(data, safe=safe)
         except bson.errors.InvalidDocument, error:
             print error
             print 'BSON document too large, unable to store %s' % \
