@@ -36,6 +36,13 @@ $messages['af'] = array(
 	'prefs-category' => 'Kategorie',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'categorymultisort-go' => 'اذهب',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */

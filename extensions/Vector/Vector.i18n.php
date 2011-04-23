@@ -507,6 +507,7 @@ Se vi ensalutas, vi povas malŝalti ĉi tiun averton en la sekcio "Grandeco de r
 	'vector-editwarning-preference' => 'Avertu min kiam mi forlasas redaktan paĝon kun nekonservitaj ŝanĝoj',
 	'vector-simplesearch-search' => 'Serĉi',
 	'vector-simplesearch-containing' => 'enhavas...',
+	'vector-noexperiments-preference' => 'Ekskluzivu min de estontecaj testoj',
 );
 
 /** Spanish (Español)
@@ -539,6 +540,7 @@ Kui oled sisse loginud, saad selle hoiatuse eelistuste alaosas "Toimetamine" kee
 	'vector-editwarning-preference' => 'Hoiata mind, kui lahkun redigeerimisleheküljelt muudatusi salvestamata',
 	'vector-simplesearch-search' => 'Otsi',
 	'vector-simplesearch-containing' => 'sisalduv...',
+	'vector-noexperiments-preference' => 'Jäta mind funktsioonide katsetamisest kõrvale',
 );
 
 /** Basque (Euskara)

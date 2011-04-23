@@ -1356,6 +1356,7 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'fogg-preset-custom' => 'Kohandatud sätted',
+	'fogg-audioQuality-title' => 'Heliheadus',
 	'fogg-videoCodec-title' => 'Videokoodek',
 	'fogg-audioCodec-title' => 'Helikoodek',
 	'fogg-width-title' => 'Video laius',
@@ -1377,6 +1378,8 @@ Lisateave <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28im
 	'fogg-artist-help' => 'Selle klipi autor',
 	'fogg-date-title' => 'Kuupäev',
 	'fogg-location-title' => 'Asukoht',
+	'fogg-organization-title' => 'Organisatsioon',
+	'fogg-organization-help' => 'Organisatsiooni nimi (stuudio)',
 	'fogg-copyright-title' => 'Autoriõigus',
 	'fogg-copyright-help' => 'Klipi autoriõigus',
 	'fogg-license-title' => 'Litsents',
@@ -3470,12 +3473,16 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'fogg-title-title' => 'سرليک',
+	'fogg-artist-title' => 'د جوړونکي نوم',
 	'fogg-date-title' => 'نېټه',
 	'fogg-location-title' => 'ځای',
+	'fogg-license-title' => 'منښتليک',
 	'fogg-contact-title' => 'اړيکه',
+	'fogg-contact-help' => 'د اړيکې تړنه',
 	'fogg-select_file' => 'دوتنه ټاکل',
 	'fogg-select_new_file' => 'يوه نوې دوتنه ټاکل',
 	'fogg-select_url' => 'يو آر اېل ټاکل',
+	'fogg-hidepreview' => 'مخليدنه پټول',
 );
 
 /** Portuguese (Português)

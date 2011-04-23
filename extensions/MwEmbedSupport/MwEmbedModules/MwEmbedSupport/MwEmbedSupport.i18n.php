@@ -264,6 +264,14 @@ $messages['es'] = array(
 	'mwe-test-plural' => 'Realicé {{PLURAL:$1|$1 prueba|$1 pruebas}}',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'mwe-ok' => 'Sobib',
+	'mwe-cancel' => 'Loobu',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

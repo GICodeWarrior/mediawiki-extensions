@@ -5055,7 +5055,7 @@ Xin hãy đọc qua toàn bộ tài liệu, và nếu bạn muốn chỉ rõ s�
 	'sign-country' => 'Quốc gia:',
 	'sign-phone' => 'Số điện thoại:',
 	'sign-bday' => 'Tuổi:',
-	'sign-email' => 'Địa chỉ email:',
+	'sign-email' => 'Địa chỉ thư điện tử:',
 	'sign-indicates-req' => '<small><i><span style="color:red">*</span> chỉ các ô bắt buộc.</i></small>',
 	'sign-hide-note' => '<small><i><span style="color:red">**</span> Chú ý: Thông tin không liệt kê sẽ hiển thị cho người quản trị.</i></small>',
 	'sign-list-anonymous' => 'Liệt kê ẩn danh',

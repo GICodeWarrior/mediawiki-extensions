@@ -821,6 +821,7 @@ It l\'has-to un coment an sta pàgina-sì? Giontlo sì o <span class="plainlinks
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'commentbox-savebutton' => 'تبصره خوندي کول',
 	'commentbox-name' => 'نوم:',
 	'commentbox-log' => 'نوې انګېرنې',
 	'commentbox-first-comment-heading' => '== انګېرنې ==',

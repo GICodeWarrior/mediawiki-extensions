@@ -328,6 +328,7 @@ $messages['ar'] = array(
 	'fundraiserstats-tab-averages' => 'المتوسطات (USD)',
 	'fundraiserstats-tab-maximums' => 'القيم القصوى (USD)',
 	'fundraiserstats-tab-ytd' => 'العام حتى الآن (USD)',
+	'fundraiserstats-time-zone' => 'المنطقة الزمنية:',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -3401,7 +3402,7 @@ $messages['mk'] = array(
 	'contribstats-value-over' => 'Над $1',
 	'contributiontrackingstatistics' => 'Статистики за следењето на придонеси',
 	'contribstats-day-totals' => 'Вкупно за денот',
-	'contribstats-week' => 'Седмица',
+	'contribstats-week' => 'Недела',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Вкупно за оваа седмица|Седмични вкупни износи за изминатите $1 недели, заклучно со последната}}',
 	'contribstats-payment-type' => 'Тип на плаќање',
 	'contribstats-banner' => 'Плакат',
@@ -4136,6 +4137,7 @@ $messages['ps'] = array(
 	'contribstats-contributions' => 'ونډې',
 	'contribstats-total' => 'ټولټال (امريکايي ډالر)',
 	'contribstats-week' => 'اونۍ',
+	'contribstats-banner' => 'ليكتوغ',
 	'contribstats-donations' => 'بسپنې',
 	'contribstats-template' => 'کينډۍ',
 	'contribstats-donatepage' => 'د بسپنې مخ',
@@ -4145,6 +4147,7 @@ $messages['ps'] = array(
 	'fundraiserstats-contributions' => 'ونډې',
 	'fundraiserstats-total' => 'ټولټال (امريکايي ډالر)',
 	'fundraiserstats-tab-totals' => 'غونډ ټولټال (امريکايي ډالر)',
+	'fundraiserstats-time-zone' => 'د وخت سيمه:',
 );
 
 /** Portuguese (Português)

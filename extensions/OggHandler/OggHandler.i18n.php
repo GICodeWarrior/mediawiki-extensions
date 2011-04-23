@@ -228,7 +228,7 @@ $messages['ar'] = array(
 	'ogg-player-selected' => '(مختار)',
 	'ogg-use-player' => 'استخدم البرنامج:',
 	'ogg-more' => 'المزيد...',
-	'ogg-dismiss' => 'إغلاق',
+	'ogg-dismiss' => 'أغلق',
 	'ogg-download' => 'نزّل الملف',
 	'ogg-desc-link' => 'عن هذا الملف',
 );
@@ -330,6 +330,18 @@ href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descar
 $messages['avk'] = array(
 	'ogg-download' => 'Iyeltakkalvajara',
 	'ogg-desc-link' => 'Icde bat iyeltak',
+);
+
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'ogg-play' => 'Başla',
+	'ogg-pause' => 'Fasilə',
+	'ogg-stop' => 'Dur',
+	'ogg-play-video' => 'Videonu başla',
+	'ogg-play-sound' => 'Səsi başla',
+	'ogg-dismiss' => 'Bağla',
 );
 
 /** Bashkir (Башҡортса)

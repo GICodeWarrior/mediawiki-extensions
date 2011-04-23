@@ -93,12 +93,13 @@ $messages['ang'] = array(
 /** Arabic (العربية)
  * @author Loya
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'edituser-desc' => 'يسمح للمستخدمين ذوي الصلاحية بتعديل تفضيلات المستخدمين الآخرين',
 	'edituser' => 'تعديل مستخدم',
 	'edituser-username' => 'اسم المستخدم:',
-	'edituser-dosearch' => 'بحث',
+	'edituser-dosearch' => 'ابحث',
 	'edituser-nouser' => 'المستخدم المحدد غير موجود',
 	'edituser-exempt' => 'المستخدم المحدد لا يمكن تعديله',
 	'right-edituser' => 'تعديل تفضيلات المستخدمين الآخرين',
@@ -404,6 +405,7 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'edituser-username' => 'Kasutajanimi:',
 	'edituser-dosearch' => 'otsi',
+	'edituser-nouser' => 'Kasutajat "$1" pole olemas.',
 );
 
 /** Basque (Euskara)

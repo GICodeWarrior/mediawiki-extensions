@@ -39,6 +39,14 @@ $messages['af'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Skep',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'articletocategory2-create-article-under-category-button' => 'أنشئ',
+	'articletocategory2-create-category-under-category-button' => 'أنشئ',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
@@ -478,6 +486,14 @@ $messages['pms'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Crea',
 	'right-ArticleToCategory2' => 'Gionta pàgina a la categorìa',
 	'right-ArticleToCategory2AddCat' => 'Gionta categorìa a la categorìa',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'articletocategory2-create-article-under-category-button' => 'جوړول',
+	'articletocategory2-create-category-under-category-button' => 'جوړول',
 );
 
 /** Portuguese (Português)

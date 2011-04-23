@@ -188,3 +188,10 @@ $messages['ru'] = array(
 	'snmpquery-desc' => 'Добавляет функции SNMPget и SNMPwalk и позволяет отображать результаты в вики',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'snmpquery-desc' => 'Idagdag ang mga tungkuling SNMPget at SNMPwalk at payagan ang pagpapakita ng mga kinalabasan sa loob ng wiki',
+);
+

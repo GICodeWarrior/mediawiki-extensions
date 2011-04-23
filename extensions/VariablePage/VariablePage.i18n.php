@@ -32,6 +32,13 @@ $messages['af'] = array(
 	'variablepage-navlink_text' => 'Skenk',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'variablepage-navlink_text' => 'تبرّع',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -346,6 +353,13 @@ $messages['pms'] = array(
 	'variablepage' => 'PàginaVariàbil',
 	'variablepage-navlink_text' => 'Doné',
 	'variablepage-desc' => 'Ridiression legera vers na pàgina variàbil',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'variablepage-navlink_text' => 'بسپنه ورکول',
 );
 
 /** Portuguese (Português)

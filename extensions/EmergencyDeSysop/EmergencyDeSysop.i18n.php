@@ -61,6 +61,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  * @author Ouda
  */
 $messages['ar'] = array(
@@ -69,7 +70,7 @@ $messages['ar'] = array(
 	'emergencydesysop-title' => 'إزالة صلاحيات الإدارة من المستخدم الحالي ومدير نظام آخر معا',
 	'emergencydesysop-otheradmin' => 'مدير النظام الآخر لإزالته من المجموعة',
 	'emergencydesysop-reason' => 'سبب الحذف',
-	'emergencydesysop-submit' => 'تنفيذ',
+	'emergencydesysop-submit' => 'أرسل',
 	'emergencydesysop-incomplete' => 'كل حقول الاستمارة مطلوبة، من فضلك حاول مرة ثانية.',
 	'emergencydesysop-notasysop' => 'المستخدم المستهدف ليس في مجموعة الإداريين',
 	'emergencydesysop-nogroups' => 'لا يوجد',

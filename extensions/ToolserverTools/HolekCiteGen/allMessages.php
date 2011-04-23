@@ -314,6 +314,42 @@ $messages['fa'] = array(
 	'ts-citegen-base-disabled' => 'خطا: پایگاه داده %s در دسترس نیست',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'ts-citegen-Title' => 'Viitemallinegeneraattori',
+	'ts-citegen-Send' => 'Luo',
+	'ts-citegen-Input-title' => 'Syöte',
+	'ts-citegen-Input-text' => 'Tämä on viitemallinegeneraattori. Sen avulla voit nopeasti täyttää viitemallineita useissa eri Wikipedian kieliversioissa. Täytä tiedot (%s) alla oleviin kenttiin ja ohjelma yrittää täyttää mallineet. Muista, että sillä ei ole väliä, mihin kenttiin laitat mitkäkin tiedot. Ohjelma yrittää verrata oikeaa mallinetta annettuun tietoon.',
+	'ts-citegen-Option-append-author-link' => 'Liitä tekijän wikilinkit mallineeseen',
+	'ts-citegen-Option-append-newlines' => 'Lisää rivinvaihto jokaisen arvon jälkeen',
+	'ts-citegen-Option-add-references' => 'Lisää <ref>-tägit viitemallineiden ympärille',
+	'ts-citegen-Option-add-list' => 'Luo wikiluettelo viitemallineista',
+	'ts-citegen-Output-title' => 'Tulos',
+	'ts-citegen-Output-select-disclaimer' => 'Mallineen kielen valinta ei takaa, että tietty malline on saatavilla kielelläsi. Luettelot ovat saatavilla vain tietyille kielille, esimerkiksi ranskan kieli saattaa olla näkyvillä, vaikka vain {{Cite book}} olisi tuettuna.',
+	'ts-citegen-Wrong-input' => '%s ei kelpaa.',
+	'ts-citegen-Parsers' => 'Jäsentimet',
+	'ts-citegen-Skins' => 'Tuloste',
+	'ts-citegen-Skin-skins' => 'Ulkoasut',
+	'ts-citegen-Skin-outputformat' => 'Ulostulon muoto',
+	'ts-citegen-Template-lang' => 'Mallineen kieli',
+	'ts-citegen-Sources-title' => 'Lähteet',
+	'ts-citegen-Sources-text' => 'Alla on lista käytetyistä lähteistä.',
+	'ts-citegen-Sidebar-title' => 'Viitteen luonti',
+	'ts-citegen-Sidebar-add-Firefox' => 'Lisää sivupalkkiin',
+	'ts-citegen-Sidebar-add-Opera' => 'Lisää Hotlistille',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Lisää Page Holderiin',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Kun sivu on latautunut, avaa Page Holder, napsauta ”Lisää” ja sitten tallenna se suosikiksi napsauttamalla  Page Holder Favorites -painiketta.',
+	'ts-citegen-Tools' => 'Työkalut',
+	'ts-citegen-Other-languages' => 'Muut kielet',
+	'ts-citegen-Save-it' => 'Nykyinen kysely',
+	'ts-citegen-Errors-title' => 'Virheet',
+	'ts-citegen-Unavailable-SQL' => 'Virhe: Toolserver-palvelimen tietokanta ei ole saatavissa. MySQL palautti: %s',
+	'ts-citegen-base-disabled' => 'Virhe: Tietokanta %s ei ole saatavilla',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
@@ -780,6 +816,15 @@ $messages['pl'] = array(
 	'ts-citegen-Errors-title' => 'Błędy',
 	'ts-citegen-Unavailable-SQL' => 'Błąd – dostęp do bazy danych serwera narzędziowego jest niemożliwy. MySQL zwróciło %s',
 	'ts-citegen-base-disabled' => 'Błąd – baza danych %s jest niedostępna',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'ts-citegen-Template-lang' => 'د کينډۍ ژبه',
+	'ts-citegen-Tools' => 'اوزارونه',
+	'ts-citegen-Other-languages' => 'نورې ژبې',
 );
 
 /** Portuguese (Português)

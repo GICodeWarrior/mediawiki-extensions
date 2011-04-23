@@ -203,18 +203,6 @@ $wgGoogleMapsMessages['niu'] = array(
 	'gm-search' => 'Kumi',
 );
 
-/** Angika (अंगिका)
- * @author Angpradesh
- */
-$wgGoogleMapsMessages['anp'] = array(
-	'gm-desc' => 'विकी फीड मार्कर सॆं आसानी सॆं नक्शा बनाबॊ.',
-	'gm-incompatible-browser' => 'इ जग्घॊ पर नक्शा देखै  लेली , आपने कॆ सुयोग्य वेब ब्राउज़र के इस्तेमाल करना आवश्यक छै.',
-	'gm-incompatible-browser-link' => 'सुयोग्य ब्राउज़र के सूची देखै लेली यहां क्लिक करॊ.',
-	'gm-no-editor' => 'दुर्भाग्य, तोरॊ ब्राउझर नक्शा बनाबै वाला फीचर्स कॆ सपोर्ट नै करै छै. <a href="http://www.microsoft.com/ie">इंटरनेट एक्स्प्लोरर</a> (विंडोज) या <a href="http://www.mozilla.org/products/firefox">फायरफॉक्स</a> (विंडोज, मैक, या लिनक्स) केरॊ नवीनतम संस्करण उपयोग करॊ.',
-	'gm-balloon-title' => 'शीर्षक:',
-	'gm-balloon-link-article' => 'इ पन्ना कॆ कड़ी बनाबॊ (वैकल्पिक):',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -331,6 +319,18 @@ $wgGoogleMapsMessages['an'] = array(
 	'gm-save-path' => 'Alzar',
 );
 
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$wgGoogleMapsMessages['anp'] = array(
+	'gm-desc' => 'विकी फीड मार्कर सॆं आसानी सॆं नक्शा बनाबॊ.',
+	'gm-incompatible-browser' => 'इ जग्घॊ पर नक्शा देखै  लेली , आपने कॆ सुयोग्य वेब ब्राउज़र के इस्तेमाल करना आवश्यक छै.',
+	'gm-incompatible-browser-link' => 'सुयोग्य ब्राउज़र के सूची देखै लेली यहां क्लिक करॊ.',
+	'gm-no-editor' => 'दुर्भाग्य, तोरॊ ब्राउझर नक्शा बनाबै वाला फीचर्स कॆ सपोर्ट नै करै छै. <a href="http://www.microsoft.com/ie">इंटरनेट एक्स्प्लोरर</a> (विंडोज) या <a href="http://www.mozilla.org/products/firefox">फायरफॉक्स</a> (विंडोज, मैक, या लिनक्स) केरॊ नवीनतम संस्करण उपयोग करॊ.',
+	'gm-balloon-title' => 'शीर्षक:',
+	'gm-balloon-link-article' => 'इ पन्ना कॆ कड़ी बनाबॊ (वैकल्पिक):',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -380,7 +380,7 @@ $wgGoogleMapsMessages['ar'] = array(
 	'gm-search-preface' => 'اضغط على الخريطة لإضافة نقطة، أو انتقل إلى مدينة، بلد، عنوان أو عمل:',
 	'gm-geocode-preface' => 'اضغط على الخريطة لإضافة نقطة، أو القفز إلى مدينة، دولة، أو عنوان:',
 	'gm-no-search-preface' => 'اضغط على الخريطة لإضافة نقطة.',
-	'gm-search' => 'بحث',
+	'gm-search' => 'ابحث',
 	'gm-clear-search' => 'امسح نتائج البحث',
 	'gm-meters' => 'أمتار',
 	'gm-miles' => 'أميال',
@@ -3838,7 +3838,7 @@ $wgGoogleMapsMessages['ms'] = array(
 	'gm-fill-color' => 'Warna isi',
 	'gm-line-color' => 'Warna garis',
 	'gm-opacity' => 'Kelegapan',
-	'gm-line-width' => 'Panjang',
+	'gm-line-width' => 'Lebar',
 	'gm-make-map' => 'buat peta',
 	'gm-hide-map' => 'sorokkan peta',
 	'gm-back' => 'kembali',

@@ -1083,6 +1083,7 @@ $messages['pnt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'errorhandler-errors' => 'تېروتنې:',
 	'errorhandler-error-warning' => 'ګواښنه',
 	'errorhandler-error-user-warning' => 'د کارن ګواښنه',
 );

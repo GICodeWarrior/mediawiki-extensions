@@ -2058,7 +2058,7 @@ Ngoài ra, nội dung của trang được hiển thị tại trang ký tên s�
 Xin hãy cực kỳ chắc chắn rằng tài liệu đã đạt tới mức ổn định để có thể ký tên, và xin hãy chắc chắn rằng bạn chỉ định tất cả các vùng một cách chính xác như mong muốn, ''trước khi đăng mẫu này lên''.",
 	'createsigndoc-pagename' => 'Trang:',
 	'createsigndoc-allowedgroup' => 'Nhóm được phép:',
-	'createsigndoc-email' => 'Địa chỉ email:',
+	'createsigndoc-email' => 'Địa chỉ thư điện tử:',
 	'createsigndoc-address' => 'Địa chỉ nhà:',
 	'createsigndoc-extaddress' => 'Thành phố, Bang, Quốc gia:',
 	'createsigndoc-phone' => 'Số điện thoại:',

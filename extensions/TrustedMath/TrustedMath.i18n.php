@@ -208,6 +208,17 @@ $messages['ru'] = array(
 	'trustedmath-not-found' => 'Страницы [[:$1]] не существует',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'trustedmath-desc' => 'Nagpapahintulot sa pagbabaon ng mga ekuwasyon ng LaTeX sa ibabaw ng mga pahina, kahalintulad ng sa nakahunos na tapaghain ng matematika, subalit walang pagsalalay sa Ocaml',
+	'trustedmath-permission-error' => 'Hindi pinagagana sa wiking ito ang hindi pinagkakatiwalaang matematika',
+	'trustedmath-path-error' => 'Kamalian sa paglikha ng direktoryo ng matematika',
+	'trustedmath-convert-error' => 'Kamalian sa paglikha ng larawan ng matematika. Ang "$1" ay nagbalik ng <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Hindi umiiral ang pahinang [[:$1]]',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

@@ -308,6 +308,13 @@ $messages['pms'] = array(
 	'right-editalluserpages' => 'Modifiché le pàgine utent',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'right-editalluserpages' => 'کارن مخونه سمول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

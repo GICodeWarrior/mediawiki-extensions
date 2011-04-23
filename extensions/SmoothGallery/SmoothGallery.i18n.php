@@ -450,7 +450,7 @@ Légyszíves készíts hibajelentést.',
  */
 $messages['ia'] = array(
 	'smoothgallery' => 'SmoothGallery',
-	'smoothgallery-desc' => 'Permitte al usatores crear galerias con imagines que ha essite cargate.
+	'smoothgallery-desc' => 'Permitte al usatores crear galerias con imagines que ha essite incargate.
 Permitte le major parte del optiones de SmoothGallery',
 	'smoothgallery-title' => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',

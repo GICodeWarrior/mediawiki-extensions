@@ -174,6 +174,13 @@ $messages['ru'] = array(
 	'proxyconnect-desc' => 'Реализует функциональность серверной части Proxy Connect',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'proxyconnect-desc' => 'Nagpapatupad ng tungkulin na nasa gilid ng tagapaghain ng Proxy Connect',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

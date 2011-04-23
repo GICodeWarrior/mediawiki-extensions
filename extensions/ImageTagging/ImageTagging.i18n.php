@@ -632,6 +632,8 @@ Por favor, espere hasta que se complete la acción que se está ejecutando.',
  * @author Pikne
  */
 $messages['et'] = array(
+	'imagetagging-article' => 'Lehekülg:',
+	'imagetagging-tagcancel-button' => 'Loobu',
 	'tag-logpagename' => 'Märgistamislogi',
 	'tag-logpagetext' => 'Sellel leheküljel on kõigi pildimärgiste lisamiste ja eemaldamiste logi.',
 );

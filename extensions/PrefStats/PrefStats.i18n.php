@@ -217,9 +217,11 @@ $messages['arz'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author Vugar 1981
  */
 $messages['az'] = array(
+	'prefstats-factor-hour' => 'saat',
 	'prefstats-factor-sixhours' => 'Altı saat',
 	'prefstats-factor-day' => 'gün',
 	'prefstats-factor-week' => 'həftə',

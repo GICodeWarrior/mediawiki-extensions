@@ -220,11 +220,16 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
+ * @author Olli
  */
 $messages['fi'] = array(
+	'ts-kml-on-ol-options' => 'Asetukset',
 	'ts-kml-on-ol-languages' => 'Kielet',
+	'ts-kml-on-ol-thumbnails' => 'Pienoiskuvat',
 	'ts-kml-on-ol-help' => 'Ohje',
 	'ts-kml-on-ol-all' => 'Kaikki',
+	'ts-kml-on-ol-map-by' => 'Kartan teki',
 );
 
 /** French (Français)
@@ -480,6 +485,15 @@ $messages['pms'] = array(
 	'ts-kml-on-ol-help' => 'Agiut',
 	'ts-kml-on-ol-all' => 'Tùit',
 	'ts-kml-on-ol-map-by' => 'Carta creà da',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'ts-kml-on-ol-options' => 'خوښنې',
+	'ts-kml-on-ol-languages' => 'ژبې',
+	'ts-kml-on-ol-all' => 'ټول',
 );
 
 /** Portuguese (Português)

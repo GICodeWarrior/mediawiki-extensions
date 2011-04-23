@@ -424,14 +424,54 @@ $messages['el'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
+ * @author Olli
  */
 $messages['fi'] = array(
+	'toolbase-header-title' => 'X!:n työkalut (BETA)',
+	'toolbase-header-bugs' => 'Ohjelmavirheet',
+	'toolbase-header-sitenotice' => 'Toolserver-palvelimen yleishuomautus: $1',
+	'toolbase-replag' => 'Palvelimen viive on $1',
+	'toolbase-replag-years' => 'vuotta',
+	'toolbase-replag-months' => 'kuukautta',
+	'toolbase-replag-weeks' => 'viikkoa',
+	'toolbase-replag-days' => 'päivää',
+	'toolbase-replag-hours' => 'tuntia',
+	'toolbase-replag-minutes' => 'minuuttia',
+	'toolbase-replag-seconds' => 'sekuntia',
 	'toolbase-footer-exectime' => 'Suoritettu $1 sekunnissa',
 	'toolbase-footer-source' => 'Näytä lähdekoodi',
+	'toolbase-footer-language' => 'Vaihda kieltä',
 	'toolbase-footer-translate' => 'Käännä',
+	'toolbase-navigation' => 'Valikko',
+	'toolbase-navigation-homepage' => 'Kotisivu',
+	'toolbase-navigation-user_id' => 'Etsi käyttäjän ID',
+	'toolbase-navigation-autoedits' => 'Automaattinen muokkauslaskuri',
+	'toolbase-userid-submit' => 'Hae käyttäjän ID',
+	'toolbase-userid-title' => 'Etsi käyttäjän ID',
+	'toolbase-userid-result' => 'Käyttäjän <b>$1</b> ID kohteessa <a href="$3"><b>$3</b></a> on <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Automaattinen muokkauslaskuri',
+	'toolbase-autoedits-submit' => 'Laske',
+	'toolbase-autoedits-approximate' => '<b>Arvioi</b> muokkausten määrää käyttäen...',
+	'toolbase-autoedits-totalauto' => 'Automatisoitujen muokkausten kokonaismäärä',
+	'toolbase-autoedits-totalall' => 'Muokkauksia yhteensä',
+	'toolbase-autoedits-pct' => 'Automatisoitujen muokkausten osuus',
 	'toolbase-main-title' => 'Tervetuloa!',
+	'toolbase-main-content' => 'Tervetuloa X!:n työkaluihin! Tätä työkalukokoelmaa ollaan edelleen muuttamassa <a href="$1">Symfony</a>-ympäristöön. Tämä prosessi kestää jonkin aikaa, mutta sen pitäisi toimia nyt.
+
+Oikealla olevassa sivupalkissa on luettelo tällä hetkellä toimivasta työkaluista-
+
+Voit ilmoittaa ohjelmavirheistä <a href="$2">Google Code</a> -sivustolle.',
 	'toolbase-main-404' => 'Tiedostoa ei löydy',
+	'toolbase-main-404-content' => 'Hups! Sivua ei löytynyt!
+
+Tarkista, että kirjoitit osoitteen oikein.
+Jos napsautit linkkiä, <a href="$1">ilmoitathan virheestä</a>.
+</ul>',
 	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 ei ole kelpaava käyttäjä',
+	'toolbase-error-nowiki' => '$1.$2.org ei ole kelpaava wiki',
+	'toolbase-error-toomanyedits' => 'Käyttäjällä $1 on $2 muokkausta. Tämä työkalu hallitsee enintään $3 muokkausta.',
 );
 
 /** French (Français)
@@ -951,6 +991,25 @@ Jeśli dotarłeś tu klikając jakiś link <a href="$1">zgłoś błąd</a>.
 	'toolbase-form-wiki' => 'Wiki',
 	'toolbase-error-nouser' => '„$1” nie jest poprawną nazwą użytkownika',
 	'toolbase-error-nowiki' => '$1.$2.org nie jest poprawnym adresem wiki',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'toolbase-replag-years' => 'کالونه',
+	'toolbase-replag-months' => 'مياشتې',
+	'toolbase-replag-weeks' => 'اونۍ',
+	'toolbase-replag-days' => 'ورځې',
+	'toolbase-replag-hours' => 'ساعتونه',
+	'toolbase-replag-minutes' => 'دقيقې',
+	'toolbase-replag-seconds' => 'ثانيې',
+	'toolbase-footer-language' => 'ژبه بدلول',
+	'toolbase-footer-translate' => 'ژباړل',
+	'toolbase-navigation-homepage' => 'وېبپاڼه',
+	'toolbase-autoedits-submit' => 'شمېرل',
+	'toolbase-main-title' => 'ښه راغلاست!',
+	'toolbase-form-wiki' => 'ويکي',
 );
 
 /** Portuguese (Português)

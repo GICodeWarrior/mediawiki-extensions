@@ -1801,6 +1801,7 @@ Se sto eror-sì a continua a ess-ie, a peul esse che ël database a sia rompù."
 $messages['ps'] = array(
 	'changeauthor-pagenameform-go' => 'ورځه',
 	'changeauthor-comment' => 'تبصره:',
+	'changeauthor-changeauthors-single' => 'ليکوال بدلول',
 	'changeauthor-nosuchtitle' => 'داسې هېڅ کوم مخ نشته چې نوم يې "$1" وي.',
 	'changeauthor-success' => 'ستاسو غوښتنه په برياليتوب سره پلي شوه.',
 );

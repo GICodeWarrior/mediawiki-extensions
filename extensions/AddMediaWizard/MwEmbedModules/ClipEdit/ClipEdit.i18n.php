@@ -1251,10 +1251,16 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'mwe-clipedit-sc_audio' => 'د غږ مهارېدنه',
 	'mwe-clipedit-sc_duration' => 'موده',
+	'mwe-clipedit-template_properties' => 'د کينډۍ ځانتياوې',
+	'mwe-clipedit-edit_properties' => 'د سمون ځانتياوې',
+	'mwe-clipedit-other_properties' => 'نورې ځانتياوې',
 	'mwe-clipedit-start_time' => 'د پيل وخت',
 	'mwe-clipedit-end_time' => 'د پای وخت',
+	'mwe-clipedit-edit-tools' => 'د سمون اوزار',
 	'mwe-clipedit-duration' => 'موده:',
+	'mwe-clipedit-layout' => 'ليدنمخ',
 );
 
 /** Portuguese (Português)

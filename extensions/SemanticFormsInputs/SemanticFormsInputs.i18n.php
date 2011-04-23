@@ -48,6 +48,13 @@ $messages['af'] = array(
 	'semanticformsinputs-today' => 'Vandag',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'semanticformsinputs-next' => 'التالي',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */

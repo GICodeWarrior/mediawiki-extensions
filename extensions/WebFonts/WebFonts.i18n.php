@@ -127,6 +127,13 @@ $messages['nl'] = array(
 	'webfonts-disable-preference' => 'Lettertypen insluiten (WebFonts) uitschakelen',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'webfonts-load' => 'ليکبڼه ټاکل',
+);
+
 /** Russian (Русский)
  * @author Lockal
  */

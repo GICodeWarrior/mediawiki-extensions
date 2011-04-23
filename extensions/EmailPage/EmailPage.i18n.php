@@ -100,7 +100,9 @@ $messages['ar'] = array(
 	'ea-sent' => "الصفحة [[$1]] تم إرسالها بنجاح إلى '''$2''' {{PLURAL:$2|متلق|متلق}} بواسطة [[User:$3|$3]].",
 	'ea-compose' => 'كتابة المحتوى',
 	'ea-show' => 'عرض المتلقين',
-	'ea-send' => 'إرسال!',
+	'ea-from' => 'من:',
+	'ea-to' => 'إلى:',
+	'ea-send' => 'أرسل',
 	'ea-subject' => 'أدخل سطر عنوان للبريد الإلكتروني',
 	'ea-message' => 'إرسال المحتوى برسالة اختيارية (نص ويكي)',
 	'ea-selectcss' => 'اختر شريحة CSS',
@@ -926,6 +928,15 @@ $messages['pl'] = array(
 	'ea-data' => 'Dane',
 	'ea-selectrecord' => 'Szablony te mogą zostać wykorzystywane do wypełnienia pól w treści wiadomości',
 	'ea-allusers' => 'Wszyscy użytkownicy',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'e-mailpage' => 'د برېښليک مخ',
+	'ea-send' => 'لېږل',
+	'ea-allusers' => 'ټول کارنان',
 );
 
 /** Portuguese (Português)

@@ -169,6 +169,15 @@ $messages['an'] = array(
 	'storyboard-language' => 'Idioma',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'storyboard-unpublish' => 'ألغِ النشر',
+	'storyboard-publish' => 'انشر',
+	'storyboard-hide' => 'أخفِ',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */

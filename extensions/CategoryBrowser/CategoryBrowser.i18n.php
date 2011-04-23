@@ -132,6 +132,15 @@ $messages['af'] = array(
 	'cb_edit_remove_hint' => 'Verwyder, indien moontlik',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'cb_previous_items_link' => 'السابق',
+	'cb_next_items_link' => 'التالي',
+	'cb_apply_button' => 'طبّق',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
