@@ -104,6 +104,14 @@ Beskikbare modusse is: "plain", "normal" en "wiki".',
 	'processcomment' => 'Verwerk kommentaar op artikel',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'article-comments-url-string' => 'المسار:',
+	'article-comments-submit-button' => 'أرسل',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
@@ -1310,6 +1318,20 @@ Cole disponìbij a son "plain", "normal" e "wiki".',
 	'article-comments-comment-missing-date-parameter' => 'Data dël coment mancanta',
 	'article-comments-no-spam' => "Almanch un dij camp spedì a l'é stàit marcà com ëd rumenta.",
 	'processcomment' => "Trata ël coment ëd l'artìcol",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'article-comments-title-string' => 'سرليک',
+	'article-comments-name-string' => 'نوم',
+	'article-comments-name-field' => 'نوم (اړين مالومات):',
+	'article-comments-url-field' => 'وېبځی:',
+	'article-comments-comment-string' => 'تبصره',
+	'article-comments-comment-field' => 'تبصره:',
+	'article-comments-submit-button' => 'سپارل',
+	'article-comments-leave-comment-link' => 'تبصره پرېښودل ...',
 );
 
 /** Portuguese (Português)
