@@ -38,6 +38,13 @@ $messages['qqq'] = array(
 Do not alter the link target URL: <code lang="en">http://code.google.com/p/svg-edit/</code>',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'svgedit-editor-close' => 'ألغِ',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
