@@ -114,6 +114,15 @@ $messages['an'] = array(
 	'refhelper-create' => 'Creyar',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'refhelper-create' => 'أنشئ',
+	'refhelper-search' => 'ابحث',
+	'refhelper-toolbox_link_create' => 'أنشئ مرجعًا',
+);
+
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
  */
