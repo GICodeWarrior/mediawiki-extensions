@@ -1135,7 +1135,7 @@ Dodoför weed och ene Ungerschreffte-Mapp för die Sigg aanjelaat.
 Jiff dä Tittel fun dä Sigg aan, woh De et dijjitaale Ungerschriive zohlohße wells. Dozoh, de Metjleeder fun wat för ene Metmaacherjrupp ungerschriive dörrve sulle. Dann, wat för en Felder för de Metmaachere bejm Ungerschriive zom Ußfölle ze sin sin sulle, un wat dofun ußjeföllt wääde kann, un wat moß. Dann, wi alt Eine beim Ungerschriive winnischßdens sin moß. Wann De doh nix aanjiß, dann eß jedes Allder rääsch. Zoletz jiff ene koote Tex en, met Äklieronge dren övver dat Dokkemänt, un för de Metmaachere, wat se donn sulle, un wie.
 
 '''För der Momang ham_mer kein Müjjeleshkeit, aan de Ungerschreffte jet ze änndere, wann se ens do sinn''', oohne ne tirekte Zohjang op de Dahtebangk.
-Ußerdämm, dä Täx zom Ungerschriive, dä och met dä Ongerschreffte zosamme jezeish weedt, is immer dä Täx fun jätz, jans ejaal, wat donoh noch för Änderunge aan dä Sigg jemaat wäde odder woodte. Dröm beß jannz secher, dat dat Dokkemänt en dä Sigg en enem shtabiile Zohshtand, un werklesch parraat för et Ungeschriive eß.
+Ußerdämm, dä Täx zom Ungerschriive, dä och met dä Ongerschreffte zosamme jezeish weedt, es immer dä Täx fun jätz, jans ejaal, wat donoh noch för Änderunge aan dä Sigg jemaat wäde odder woodte. Dröm beß jannz secher, dat dat Dokkemänt en dä Sigg en enem shtabiile Zohshtand, un verhafesch parraat för et Ungeschriive eß.
 Beß och sescher, dat De all die Felder jenou esu aanjejovve häs, wi se sin sulle, ih dat De dat Fommulaa hee affschecks.",
 	'createsigndoc-pagename' => 'Sigg:',
 	'createsigndoc-allowedgroup' => 'Zojelohße Jroppe:',
