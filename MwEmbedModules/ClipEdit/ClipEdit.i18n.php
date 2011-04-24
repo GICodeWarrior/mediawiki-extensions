@@ -168,9 +168,12 @@ $messages['be-tarask'] = array(
 	'mwe-clipedit-layout_left' => 'Разьмяшчэньне выявы зьлева',
 );
 
-/** Bulgarian (Български) */
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
 	'mwe-clipedit-sc_duration' => 'Продължителност',
+	'mwe-clipedit-duration' => 'Продължителност:',
 );
 
 /** Breton (Brezhoneg)
@@ -520,15 +523,38 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Mjbmr
  */
 $messages['fa'] = array(
+	'mwe-clipedit-crop' => 'چیدن تصویر',
+	'mwe-clipedit-apply_crop' => 'اعمال چیدن به تصویر',
+	'mwe-clipedit-reset_crop' => 'بازنشاندن مجدد چیدن',
+	'mwe-clipedit-insert_image_page' => 'درج در صفحه',
+	'mwe-clipedit-insert_into_sequence' => 'درج در دنباله',
+	'mwe-clipedit-preview_insert' => 'درج پیش‌نمایش',
+	'mwe-clipedit-cancel_image_insert' => 'لغو درج',
+	'mwe-clipedit-sc_attributes' => 'ویرایش جزئیات قطعه',
+	'mwe-clipedit-sc_inoutpoints' => 'قراردادن نقطه‌های به‌داخل-به‌خارج',
+	'mwe-clipedit-sc_overlays' => 'پوشش‌ها',
+	'mwe-clipedit-sc_audio' => 'تنظیم صدا',
+	'mwe-clipedit-sc_duration' => 'مدت زمان',
+	'mwe-clipedit-template_properties' => 'ویژگی‌های الگو',
+	'mwe-clipedit-custom_title' => 'عنوان سفارشی',
+	'mwe-clipedit-edit_properties' => 'ویرایش ویژگی‌ها',
+	'mwe-clipedit-other_properties' => 'سایر ویژگی‌ها',
+	'mwe-clipedit-resource_page' => 'صفحهٔ منبع:',
+	'mwe-clipedit-set_in_out_points' => 'قراردادن نقاط به‌داخل-به‌خارج',
 	'mwe-clipedit-start_time' => 'زمان شروع',
 	'mwe-clipedit-end_time' => 'زمان پایان',
+	'mwe-clipedit-preview_inout' => 'پیش‌نمایش نقاط به‌داخل-به‌خارج',
 	'mwe-clipedit-edit-tools' => 'ابزار‌های ویرایش',
 	'mwe-clipedit-inline-description' => 'عنوان',
 	'mwe-clipedit-edit-video-tools' => 'ابزار‌های ویرایش ویدیو:',
 	'mwe-clipedit-duration' => 'مدت زمان :',
+	'mwe-clipedit-layout' => 'چیدمان',
+	'mwe-clipedit-layout_right' => 'چیدمان تصویر سمت راست',
+	'mwe-clipedit-layout_left' => 'چیدمان تصویر سمت چپ',
 );
 
 /** Finnish (Suomi) */
@@ -1068,6 +1094,40 @@ $messages['ml'] = array(
 	'mwe-clipedit-inline-description' => 'അടിക്കുറിപ്പ്',
 	'mwe-clipedit-edit-video-tools' => 'ചലച്ചിത്രത്തിൽ മാറ്റം വരുത്താനുള്ള ഉപകരണങ്ങൾ:',
 	'mwe-clipedit-duration' => 'ദൈർഘ്യം:',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'mwe-clipedit-crop' => 'Pangkas imej',
+	'mwe-clipedit-apply_crop' => 'Gunakan pangkas pada imej',
+	'mwe-clipedit-reset_crop' => 'Set semula pangkas',
+	'mwe-clipedit-insert_image_page' => 'Sisipkan ke dalam laman',
+	'mwe-clipedit-insert_into_sequence' => 'Sisipkan ke dalam jujukan',
+	'mwe-clipedit-preview_insert' => 'Pralihat sisipan',
+	'mwe-clipedit-cancel_image_insert' => 'Batalkan penyisipan',
+	'mwe-clipedit-sc_attributes' => 'Sunting butiran klip',
+	'mwe-clipedit-sc_inoutpoints' => 'Tetapkan titik masuk keluar',
+	'mwe-clipedit-sc_overlays' => 'Tindihan',
+	'mwe-clipedit-sc_audio' => 'Kawalan audio',
+	'mwe-clipedit-sc_duration' => 'Tempoh',
+	'mwe-clipedit-template_properties' => 'Sifat templat',
+	'mwe-clipedit-custom_title' => 'Tajuk tersuai',
+	'mwe-clipedit-edit_properties' => 'Sifat suntingan',
+	'mwe-clipedit-other_properties' => 'Sifat lain',
+	'mwe-clipedit-resource_page' => 'Laman sumber:',
+	'mwe-clipedit-set_in_out_points' => 'Tetapkan titik masuk keluar',
+	'mwe-clipedit-start_time' => 'Waktu mula',
+	'mwe-clipedit-end_time' => 'Waktu tamat',
+	'mwe-clipedit-preview_inout' => 'Pralihat titik masuk-keluar',
+	'mwe-clipedit-edit-tools' => 'Peralatan menyunting',
+	'mwe-clipedit-inline-description' => 'Kapsyen',
+	'mwe-clipedit-edit-video-tools' => 'Peralatan menyunting video:',
+	'mwe-clipedit-duration' => 'Tempoh:',
+	'mwe-clipedit-layout' => 'Tataletak',
+	'mwe-clipedit-layout_right' => 'Tataletak imej sebelah kanan',
+	'mwe-clipedit-layout_left' => 'Tataletak imej sebelah kiri',
 );
 
 /** Nepali (नेपाली)
@@ -1617,7 +1677,9 @@ $messages['ta'] = array(
 	'mwe-clipedit-layout_left' => 'இடதுபுறத்தில் உள்ள படத்தின் வடிவமைப்பு',
 );
 
-/** Telugu (తెలుగు) */
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
 $messages['te'] = array(
 	'mwe-clipedit-sc_duration' => 'నిడివి',
 	'mwe-clipedit-template_properties' => 'మూస లక్షణాలు',
@@ -1625,6 +1687,7 @@ $messages['te'] = array(
 	'mwe-clipedit-other_properties' => 'ఇతర లక్షణాలు',
 	'mwe-clipedit-start_time' => 'ప్రారంభ సమయం',
 	'mwe-clipedit-end_time' => 'ముగింపు సమయం',
+	'mwe-clipedit-inline-description' => 'వ్యాఖ్య',
 	'mwe-clipedit-duration' => 'నిడివి:',
 );
 
