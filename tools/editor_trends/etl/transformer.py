@@ -307,6 +307,9 @@ def transform_editors_multi_launcher(rts):
 
     tasks.join()
 
+    db_dataset.add_index('editor')
+    db_dataset.add_index('new_wikipedian')
+
 
 def setup_database(rts):
     '''
@@ -317,8 +320,8 @@ def setup_database(rts):
     db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
     editors = db_raw.retrieve_distinct_keys('editor')
-    db_dataset.add_index('editor')
-    db_dataset.add_index('new_wikipedian')
+    #db_dataset.add_index('editor')
+    #db_dataset.add_index('new_wikipedian')
 
     return db_raw, db_dataset, editors
 

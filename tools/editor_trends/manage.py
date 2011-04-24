@@ -318,7 +318,7 @@ def store_launcher(rts, logger):
     The data is ready to be stored once the sorted function has completed. This
     function starts storing data in MongoDB.
     '''
-    print 'Start storing data in MongoDB'
+    print 'Start storing data in %s' % rts.storage
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'store', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Store', store_launcher)
@@ -337,7 +337,7 @@ def transformer_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Transform', transformer_launcher)
-    transformer.transform_editors_single_launcher(rts)
+    transformer.transform_editors_multi_launcher(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Transform', transformer_launcher)
@@ -381,7 +381,7 @@ def all_launcher(rts, logger):
 
     for function, callname in functions.iteritems():
         if callname not in rts.ignore:
-            print 'Starting %s' % function.func_name
+            print 'Launching %s' % function.func_name
             res = function(rts, logger)
             if res == False:
                 sys.exit(False)
