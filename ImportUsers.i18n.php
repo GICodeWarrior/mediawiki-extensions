@@ -1315,6 +1315,13 @@ $messages['mr'] = array(
 	'importusers-realname' => 'खरे नाव',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'importusers-uploadfile' => 'Muat naik fail',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
