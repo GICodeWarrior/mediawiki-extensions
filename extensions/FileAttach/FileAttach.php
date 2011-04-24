@@ -9,7 +9,7 @@
  * 
  */
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
-define( 'FILEATTCH_VERSION', '1.0.1, 2010-04-16' );
+define( 'FILEATTCH_VERSION', '1.0.2, 2010-04-24' );
 
 $wgAttachmentHeading = 'Attachments';
 
@@ -44,6 +44,9 @@ class FileAttach {
 	 */
 	function onBeforePageDisplay( &$out, &$skin ) {
 		global $wgParser, $wgAttachmentHeading;
+
+		# Bail if page inappropriate for attachments
+		if( !is_object( $wgParser ) || !is_object( $wgParser->mOutput )|| !isset( $wgParser->mOutput->mSections ) ) return true;
 
 		# If the last section in the article is level 2 and "Attachments" then convert to file icons
 		$sections = $wgParser->mOutput->mSections;
