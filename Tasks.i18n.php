@@ -2509,6 +2509,14 @@ $messages['mn'] = array(
 	'tasks_search_form_title' => 'Хайлт',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'tasks_previous' => 'Sebelumnya',
+	'tasks_next' => 'Berikutnya',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
