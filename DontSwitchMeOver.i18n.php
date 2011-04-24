@@ -106,10 +106,12 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Peter Alberti
  * @author Sarrus
  */
 $messages['da'] = array(
-	'dontswitchmeover-pref' => 'Lad ikke projektets udseendet blive ændret, når standardudseendet ændres',
+	'dontswitchmeover-desc' => 'Brugerindstilling, der lader brugere angive, hvorvidt de ønsker at beholde deres udseende-indstilling, når standardudseendet ændres.',
+	'dontswitchmeover-pref' => 'Lad ikke projektets udseende blive ændret, når standardudseendet ændres',
 );
 
 /** German (Deutsch)
