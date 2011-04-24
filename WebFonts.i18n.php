@@ -46,6 +46,16 @@ $messages['bs'] = array(
 	'webfonts-disable-preference' => 'Onemogući ugradnju fontova (WebFonts)',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Integrer skrifttyper i siderne',
+	'webfonts-load' => 'Vælg skrifttype',
+	'webfonts-disable-preference' => 'Deaktiver integrering af skrifttyper (WebFonts)',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
