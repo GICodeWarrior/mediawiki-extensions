@@ -1215,6 +1215,13 @@ $messages['mr'] = array(
 	'bookinfo-provider' => 'विदा दाता: $1',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'bookinfo-result-title' => 'Tajuk:',
+);
+
 /** Burmese (မြန်မာဘာသာ)
  * @author Erikoo
  */
