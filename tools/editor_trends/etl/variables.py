@@ -235,6 +235,25 @@ def determine_namespace(title, namespaces, include_ns):
         return 999
 
 
+def store_revert_information(hash, revision_id, contributor, reverts):
+    hash = hash['hash']
+    reverts.setdefault(hash, {})
+    reverts[hash]['revision_id'] = revision_id
+    reverts[hash]['contributor'] = contributor
+    return reverts
+
+
+def determine_past_revert(hash, revert, reverts):
+    past_revert = {}
+    hash = hash['hash']
+    if revert['revert'] == 1:
+        past_revert['reverted_revision_id'] = reverts[hash]['revision_id']
+        past_revert['reverted_contributor'] = reverst[hash]['contributor']
+    else:
+        past_revert['reverted_revision_id'] = -1
+        past_revert['reverted_contributor'] = -1
+    return past_revert
+
 def is_revision_reverted(hash_cur, hashes):
     '''
     Determine whether an edit was reverted or not based on md5 hashes

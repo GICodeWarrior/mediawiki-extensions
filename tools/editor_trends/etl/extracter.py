@@ -43,7 +43,7 @@ from utils import file_utils
 from classes import buffer
 from analyses.adhoc import bot_detector
 
-def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, size):
+def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, size, reverts):
     '''
     This function has as input a single revision from a Wikipedia dump file, 
     article id it belongs to, the xml_namespace of the Wikipedia dump file, 
@@ -54,19 +54,19 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
     if revision == None:
     #the entire revision is empty, weird. 
         #dump(revision)
-        return md5hashes, size
+        return md5hashes, size, reverts
 
     contributor = revision.find('%s%s' % (xml_namespace, 'contributor'))
     contributor = variables.parse_contributor(contributor, bots, xml_namespace)
     if not contributor:
         #editor is anonymous, ignore
-        return md5hashes, size
+        return md5hashes, size, reverts
 
     revision_id = revision.find('%s%s' % (xml_namespace, 'id'))
     revision_id = variables.extract_revision_id(revision_id)
     if revision_id == None:
         #revision_id is missing, which is weird
-        return md5hashes, size
+        return md5hashes, size, reverts
 
     article['revision_id'] = revision_id
     text = variables.extract_revision_text(revision, xml_namespace)
@@ -80,14 +80,17 @@ def parse_revision(revision, article, xml_namespace, cache, bots, md5hashes, siz
 
     hash = variables.create_md5hash(text)
     revert = variables.is_revision_reverted(hash['hash'], md5hashes)
+    reverts = variables.store_revert_information(hash, revision_id, contributor, reverts)
+    past_revert = variables.determine_past_revert(hash, revert, reverts)
     md5hashes.append(hash['hash'])
     size = variables.calculate_delta_article_size(size, text)
 
     article.update(hash)
     article.update(size)
     article.update(revert)
+    article.update(past_revert)
     cache.add(article)
-    return md5hashes, size
+    return md5hashes, size, reverts
 
 
 def parse_xml(fh, rts, cache, process_id, file_id):
@@ -108,6 +111,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
 
     article = {}
     size = {}
+    reverts = {}
     id = False
     ns = False
     parse = False
@@ -155,7 +159,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                     if event is start:
                         clear = False
                     else:
-                        md5hashes, size = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size)
+                        md5hashes, size, reverts = parse_revision(elem, article, xml_namespace, cache, bots, md5hashes, size, reverts)
                         cache.count_revisions += 1
                         clear = True
                     if clear:
@@ -182,6 +186,7 @@ def parse_xml(fh, rts, cache, process_id, file_id):
                 #Reset all variables for next article
                 article = {}
                 size = {}
+                reverts = {}
                 md5hashes = deque()
                 id = False
                 parse = False
