@@ -112,12 +112,30 @@ $messages['de'] = array(
 	'printversion-inexistent-book' => 'Das Buch wurde nicht gefunden. Bitte den Namen eines vorhandenen Buchs angeben, für das eine Druckversion erstellt werden soll.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'printversion' => 'Versio por printilo',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
 $messages['eu'] = array(
 	'printversion' => 'Inprimatzeko bertsioa',
 	'printversion-desc' => 'Liburu baten [[Special:PrintVersion|inprimatzeko bertsioa]] sortzen du',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'bookmanager-desc' => 'ابزارهایی برای کتاب‌ها',
+	'printversion' => 'نسخه قابل چاپ',
+	'printversion-desc' => 'ساخت یک [[Special:PrintVersion|نسخهٔ قابل چاپ]] از یک کتاب',
+	'printversion-no-book' => 'لطفاً نام کتابی که می‌خواهید به صورت قابل چاپ بگیرید را وارد کنید.',
+	'printversion-inexistent-book' => 'کتاب یافت نشد. لطفاً نام یک کتاب که موجود باشد را وارد کنید تا نسخهٔ قابل چاپ آن را بگیرید.',
 );
 
 /** French (Français)
