@@ -893,7 +893,7 @@ $messages['ksh'] = array(
 	'editmessages-desc' => 'Määt et müjjelesch, <code lang="en">Messages*.php</code> Dateie en jrußer Zahl [[Special:EditMessages|övver et Web ze beärbeide]].',
 	'editmessages' => 'Nohreschte fum System beärbeide.',
 	'editmsg-target' => 'De Ziel-Nohreesch:',
-	'editmsg-search' => 'Sööke',
+	'editmsg-search' => 'Söhke',
 	'editmsg-show-list' => 'De Enhallde fun de Nohreesch met däm Name „$1“',
 	'editmsg-get-patch' => 'Maach ene „Flecke“ (<i lang="en">patch</i>)',
 	'editmsg-new-search' => 'Neu Söhke',
