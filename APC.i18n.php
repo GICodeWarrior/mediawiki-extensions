@@ -2051,6 +2051,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author BlueDevil
+ * @author Ebraminio
  * @author Mjbmr
  * @author Vahid
  */
@@ -2064,11 +2065,16 @@ $messages['fa'] = array(
 	'viewapc-memory-free' => 'آزاد: $1 ($2)',
 	'viewapc-memory-used' => 'استفاده شده: $1 ($2)',
 	'viewapc-memoryfragmentation' => 'جزئیات حافظه استفاده شده و پراکندگی',
+	'viewapc-display-attribute' => 'ویژگی',
 	'viewapc-display-value' => 'ارزش',
 	'viewapc-display-filename' => 'نام پرونده',
+	'viewapc-display-device' => 'دستگاه',
 	'viewapc-display-info' => 'نام',
 	'viewapc-display-ttl' => 'زمان انقضاء',
+	'viewapc-display-inode' => 'Inode',
 	'viewapc-display-type' => 'نوع',
+	'viewapc-display-type-file' => 'پروندهٔ ذخیره شده',
+	'viewapc-display-type-user' => 'داده‌های ذخیره شدهٔ برنامه',
 	'viewapc-display-deletion_time' => 'حذف شده',
 	'viewapc-display-no-delete' => 'حذف نشده',
 	'viewapc-display-mem_size' => 'اندازه',
