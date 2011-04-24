@@ -554,6 +554,13 @@ $messages['ml'] = array(
 	'pf-header-type' => 'താളിന്റെ തരം',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'pf-header-page_title' => 'Tajuk',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
