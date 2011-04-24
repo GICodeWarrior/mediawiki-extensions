@@ -319,7 +319,8 @@ def setup_database(rts):
     db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
     db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
-    editors = db_raw.retrieve_distinct_keys('editor')
+    editors = []
+    #editors = db_raw.retrieve_distinct_keys('editor')
     #db_dataset.add_index('editor')
     #db_dataset.add_index('new_wikipedian')
 
@@ -329,8 +330,9 @@ def setup_database(rts):
 def transform_editors_single_launcher(rts):
     print rts.dbname, rts.editors_raw
     db_raw, db_dataset, editors = setup_database(rts)
-    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
-    for editor in editors:
+    n = db_raw.count()
+    pbar = progressbar.ProgressBar(maxval=n).start()
+    for editor in db_raw.find():
         editor = Editor(db_raw, db_dataset, editor)
         editor()
         pbar.update(pbar.currval + 1)
