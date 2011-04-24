@@ -1592,6 +1592,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  * @author Zamwan
  */
@@ -1603,6 +1604,7 @@ $messages['ms'] = array(
 	'usagestatisticssubmit' => 'Jana statistik',
 	'usagestatisticsnostart' => 'Sila tentukan tarikh mula',
 	'usagestatisticsnoend' => 'Sila tentukan tarikh tamat',
+	'usagestatisticsbadstartend' => '<b>Tarikh <i>mula</i> dan/atau <i>tamat</i> tidak elok!</b>',
 	'usagestatisticsintervalday' => 'Hari',
 	'usagestatisticsintervalweek' => 'Minggu',
 	'usagestatisticsintervalmonth' => 'Bulan',
