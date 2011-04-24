@@ -18,7 +18,13 @@ class SIOInternalObject {
 	}
 
 	public function addPropertyAndValue( $propName, $value ) {
-		$property = SMWPropertyValue::makeUserProperty( $propName );
+		// SMW 1.6+
+		if ( class_exists( 'SMWDIProperty' ) ) {
+			$property = new SMWDIProperty( $propName );
+		} else {
+			$property = SMWPropertyValue::makeUserProperty( $propName );
+		}
+
 		$dataValue = SMWDataValueFactory::newPropertyObjectValue( $property, $value );
 		if ( $dataValue->isValid() ) {
 			$this->mPropertyValuePairs[] = array( $property, $dataValue );
