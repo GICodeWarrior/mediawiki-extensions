@@ -724,6 +724,31 @@ $messages['es'] = array(
 	'right-badimages' => 'Actualizar la lista de malas imágenes',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'badimages' => 'Halbade piltide loend',
+	'badimages-add-btn' => 'Lisa',
+	'badimages-added' => '$1 lisati loendisse.',
+	'badimages-name' => 'Nimi:',
+	'badimages-not-added' => 'Seda pilti ei saa lisada.',
+	'badimages-not-removed' => 'Seda pilti ei saa eemaldada.',
+	'badimages-reason' => 'Põhjus:',
+	'badimages-remove' => '(eemalda)',
+	'badimages-remove-btn' => 'Eemalda',
+	'badimages-remove-confirm' => 'Palun kinnita, et soovid faili $1 loendist eemaldada:',
+	'badimages-removed' => '$1 eemaldati loendist.',
+	'badimages-subheading' => 'Praegused üksused',
+	'badimages-unprivileged' => '(Sul pole loendi muutmiseks vajalikke õigusi.)',
+	'badimages-log-name' => 'Halbade piltide loend',
+	'badimages-log-header' => 'See on [[{{MediaWiki:Badimages-page}}|halbade piltide loendis]] tehtud muudatuste logi.',
+	'badimages-log-add' => 'lisas pildi [[$1]] halbade piltide loendisse',
+	'badimages-log-remove' => 'eemaldas pildi [[$1]] halbade piltide loendist',
+	'badimages-page' => '{{ns:help}}:Halbade piltide loend',
+	'right-badimages' => 'Uuendada halbade piltide loendit',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
