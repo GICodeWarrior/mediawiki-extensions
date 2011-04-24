@@ -343,6 +343,8 @@ Vi povas perdi viajn ŝanĝojn en ĉi tiu paĝo se vi forlasas ĉi tiun paĝon n
 	'al-nosuchuser' => 'Estas neniu uzanto kun la nomo "$1".
 Uzantaj nomoj estas usklecodistingaj.
 Kontrolas vian literumon.',
+	'al-createblocked' => 'Via IP-adreso estas forbarita de konto-kreadon.',
+	'al-throttled' => 'Vi faris tro da lastatempaj pasvortaj trovoj. Bonvolu atenti $1 {{PLURAL:$1|sekundon|sekundojn}} ĝis posta reprovo.',
 );
 
 /** Spanish (Español)
