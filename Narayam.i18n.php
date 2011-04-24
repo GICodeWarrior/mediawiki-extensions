@@ -670,6 +670,7 @@ $messages['sl'] = array(
 	'narayam-si-wijesekara' => 'Singalska Wijesekara',
 	'narayam-ta99' => 'Tamil 99',
 	'narayam-ta' => 'Prečrkovanje tamilščine',
+	'narayam-te-inscript' => 'InScript za teluščino',
 	'narayam-bn-avro' => 'Bengalski Avro',
 	'narayam-bn-inscript' => 'InScript za bengalščino',
 	'narayam-bn-nkb' => 'Bengalski NKB',
