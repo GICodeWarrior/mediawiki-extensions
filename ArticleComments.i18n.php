@@ -199,6 +199,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'article-comments-name-string' => 'Име',
+	'article-comments-name-field' => 'Име (задължително):',
 	'article-comments-url-field' => 'Уеб сайт:',
 	'article-comments-url-string' => 'Адрес',
 	'article-comments-comment-string' => 'Коментар',
@@ -476,6 +477,8 @@ $messages['eo'] = array(
 	'article-comments-failure-reasons' => 'Bedaŭrinde via komentado malsukcesis pro la {{PLURAL:$1|jena kialo|jenaj kialoj}}:',
 	'article-comments-no-comments' => 'Pardonu, la paĝo [[$1]] nuntempe ne akceptas komentojn.',
 	'article-comments-commenter-said' => '$1 diris ...',
+	'article-comments-submission-success' => 'Vi sukcese sendis komenton por "[[$1]]"',
+	'article-comments-submission-view-all' => 'Vi povas vidi [[$1|ĉiujn komentojn en tiu paĝo]]',
 	'article-comments-comment-missing-name-parameter' => 'Nomo mankas',
 	'article-comments-comment-missing-date-parameter' => 'Mankas dato de komento',
 	'article-comments-no-spam' => 'Almenaŭ unu el la senditaj kampoj estis markita kiel spamaĵo.',
@@ -536,6 +539,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Mjbmr
  */
 $messages['fa'] = array(
@@ -543,7 +547,10 @@ $messages['fa'] = array(
 	'article-comments-name-string' => 'نام',
 	'article-comments-url-field' => 'وب‌گاه :',
 	'article-comments-url-string' => 'نشانی اینترنتی',
+	'article-comments-comment-string' => 'توضیح',
+	'article-comments-comment-field' => 'توضیح:',
 	'article-comments-submit-button' => 'ارسال',
+	'article-comments-leave-comment-link' => 'ارسال نظر ...',
 );
 
 /** Finnish (Suomi)
@@ -1156,6 +1163,13 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'article-comments-submit-button' => 'Явуулах',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'article-comments-title-string' => 'tajuk',
 );
 
 /** Dutch (Nederlands)
