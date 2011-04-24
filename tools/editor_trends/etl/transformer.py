@@ -235,10 +235,10 @@ def determine_edit_volume(edits, first_year, final_year):
             ns = edit['ns']
             dc[year][month].setdefault(ns, {})
             if edit['delta'] < 0:
-                dc[year][month][ns].setdefault('added', 0)
+                dc[year][month][ns].setdefault('removed', 0)
                 dc[year][month][ns]['removed'] += edit['delta']
             elif edit['delta'] > 0:
-                dc[year][month][ns].setdefault('removed', 0)
+                dc[year][month][ns].setdefault('added', 0)
                 dc[year][month][ns]['added'] += edit['delta']
     dc = cleanup_datacontainer(dc, {})
     return dc
