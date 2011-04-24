@@ -335,6 +335,7 @@ $messages['bg'] = array(
 	'articlefeedback-survey-title' => 'Моля, отговорете на няколко въпроса',
 	'articlefeedback-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
 	'articlefeedback-report-switch-label' => 'Показване на резултатите',
+	'articlefeedback-pitch-join-login' => 'Влизане',
 );
 
 /** Breton (Brezhoneg)
@@ -761,13 +762,19 @@ $messages['eo'] = array(
 	'articlefeedback-form-switch-label' => 'Taksu ĉi tiun paĝon',
 	'articlefeedback-form-panel-title' => 'Taksi ĉi tiun paĝon',
 	'articlefeedback-form-panel-instructions' => 'Bonvolu pasigi momenton por taksi ĉi tiun paĝon.',
+	'articlefeedback-form-panel-clear' => 'Forigi ĉi tiun taksadon',
+	'articlefeedback-form-panel-expertise' => 'Mi estas fake sperta pri ĉi tiu temo (nedeviga)',
 	'articlefeedback-form-panel-expertise-studies' => 'Mi havas ĉi-teman diplomon de kolegio aŭ universitato',
+	'articlefeedback-report-empty' => 'Sen takso',
 	'articlefeedback-report-ratings' => '$1 taksoj',
 	'articlefeedback-field-trustworthy-label' => 'Fidinda',
 	'articlefeedback-field-trustworthy-tip' => 'Ĉu vi opinias ke ĉi tiu paĝo havas sufiĉajn citaĵojn kaj tiuj citaĵoj venas de fidindaj fontoj?',
+	'articlefeedback-field-complete-label' => 'Kompleta',
 	'articlefeedback-field-objective-tip' => 'Ĉu vi opinias ke ĉi tiu paĝo montras justan reprezentadon de ĉiuj perspektivoj pri la afero?',
+	'articlefeedback-field-wellwritten-label' => 'Bone verkita',
 	'articlefeedback-pitch-or' => 'aŭ',
 	'articlefeedback-pitch-join-login' => 'Ensaluti',
+	'articlefeedback-pitch-edit-accept' => 'Redakti ĉi tiun paĝon',
 );
 
 /** Spanish (Español)
@@ -853,6 +860,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  * @author Mjbmr
  * @author ZxxZxxZ
@@ -875,6 +883,8 @@ $messages['fa'] = array(
 	'articlefeedback-survey-thanks' => 'از این که نظرسنجی را تکمیل کردید متشکریم.',
 	'articlefeedback-report-switch-label' => 'مشاهدهٔ آرای صفحه',
 	'articlefeedback-field-complete-label' => 'کامل بودن',
+	'articlefeedback-pitch-or' => 'یا',
+	'articlefeedback-pitch-thanks' => 'با تشکر! رتبه‌بندی‌های شما، ذخیره شده‌است.',
 );
 
 /** Finnish (Suomi)
@@ -2862,8 +2872,12 @@ $messages['te'] = array(
 	'articlefeedback-survey-submit' => 'దాఖలుచెయ్యి',
 	'articlefeedback-survey-title' => 'దయచేసి కొన్ని ప్రశ్నలకి సమాధానమివ్వండి',
 	'articlefeedback-survey-thanks' => 'ఈ సర్వేని పూరించినందుకు కృతజ్ఞతలు.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'గోప్యతా విధానం',
 	'articlefeedback-report-panel-title' => 'పుట మూల్యాంకన',
 	'articlefeedback-report-ratings' => '$1 మూల్యాంకనలు',
+	'articlefeedback-pitch-or' => 'లేదా',
+	'articlefeedback-pitch-join-login' => 'ప్రవేశించండి',
+	'articlefeedback-pitch-edit-accept' => 'ఈ పుటని మార్చండి',
 );
 
 /** Turkmen (Türkmençe)
