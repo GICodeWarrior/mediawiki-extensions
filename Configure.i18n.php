@@ -7318,6 +7318,13 @@ $messages['mr'] = array(
 	'viewconfig' => 'विकि कॉन्फिगरेशन पहा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'configure-section-copyright' => 'Hak cipta',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
@@ -10702,6 +10709,7 @@ $messages['te'] = array(
 	'configure-section-category' => 'వర్గాలు',
 	'configure-section-cache' => 'కోశం',
 	'configure-section-groups' => 'గుంపులు',
+	'configure-section-block' => 'నిరోధాలు',
 	'configure-section-cookie' => 'కుకీలు',
 	'configure-section-upload' => 'ఎక్కించు',
 	'configure-section-images' => 'బొమ్మలు',
@@ -10709,7 +10717,6 @@ $messages['te'] = array(
 	'configure-section-recentchanges' => 'ఇటీవలి మార్పులు',
 	'configure-section-users' => 'వాడుకరులు',
 	'configure-section-feed' => 'ఫీడు',
-	'configure-section-extension' => 'పొడగింతలు',
 	'configure-section-search' => 'అన్వేషణ',
 	'configure-section-copyright' => 'కాపీహక్కులు',
 	'configure-section-mw-extensions' => 'మీడియావికీ పొడగింతలు',
@@ -10721,6 +10728,7 @@ $messages['te'] = array(
 	'configure-view-default' => 'అప్రమేయ అమరికలు',
 	'configure-view-not-allowed' => 'ఈ అమరికని చూడడానికి మీకు అనుమతి లేదు',
 	'right-configure-all' => 'అన్ని వికీ అమరికలనూ స్వరూపించగలగడం',
+	'configure-throttle-action-edit' => 'మార్చు',
 	'configure-throttle-action-rollback' => 'రద్దుచేయి',
 	'configure-throttle-group-anon' => 'అందరు అజ్ఞాత వాడుకరులు',
 	'configure-throttle-count' => 'అనుమతించే చర్యలు:',
