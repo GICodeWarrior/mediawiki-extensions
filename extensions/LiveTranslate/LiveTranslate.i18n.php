@@ -584,6 +584,13 @@ $messages['mk'] = array(
 	'livetranslate-importtms-param-miscmatch' => 'Бројот на местата и бројот на типовите не се совпаѓаат',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'livetranslate-special-location' => 'Lokasi',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin

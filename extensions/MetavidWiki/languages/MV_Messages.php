@@ -6756,9 +6756,11 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
+	'mv_upload_file' => 'Muat naik fail',
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
 	'mv_search_date_range' => 'Julat tarikh',
 	'mv_date_range' => 'julat tarikh',

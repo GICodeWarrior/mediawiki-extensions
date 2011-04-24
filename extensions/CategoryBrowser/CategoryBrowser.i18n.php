@@ -557,9 +557,11 @@ Por favor, cambia o actualiza el navegador, de ser posible.',
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Mjbmr
  */
 $messages['fa'] = array(
+	'cb_show_no_parents_only' => 'فقط نمایش رده‌هایی که دارای والد نیستند',
 	'cb_previous_items_link' => 'قبلی',
 	'cb_next_items_link' => 'بعدی',
 	'cb_cat_subcats' => 'زیررده‌ها',
@@ -1213,6 +1215,14 @@ $messages['ml'] = array(
 $messages['mn'] = array(
 	'cb_has_pages' => '$1 {{PLURAL:$1|хуудас}}',
 	'cb_all_op' => 'Бүгдийг',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'cb_previous_items_link' => 'Sebelumnya',
+	'cb_next_items_link' => 'Berikutnya',
 );
 
 /** Nahuatl (Nāhuatl)

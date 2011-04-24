@@ -356,6 +356,14 @@ $messages['ml'] = array(
 	'semanticformsinputs-today' => 'ഇന്ന്',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'semanticformsinputs-prev' => 'Sebelumnya',
+	'semanticformsinputs-next' => 'Berikutnya',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

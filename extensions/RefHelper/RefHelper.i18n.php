@@ -976,6 +976,13 @@ $messages['mk'] = array(
 Можете да го [[Special:RefHelper|додадете наводот рачно]] или [[Special:RefSearch|да пребарате навод]] и да го додадете.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'refhelper-title' => 'Tajuk:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

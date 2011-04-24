@@ -789,6 +789,14 @@ $messages['or'] = array(
 	'abcdownload' => 'ଡାଉନଲୋଡ:',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'abc-desc' => 'Скæны сæрмагонд тег <code>&lt;abc&gt;</code> ABC музыкæ формат кæнынæн',
+	'abcdownload' => 'Æрбавгæн:',
+);
+
 /** Papiamento (Papiamentu)
  * @author Sdm1985
  */

@@ -450,6 +450,13 @@ $messages['mr'] = array(
 	'multiboilerplate-submit' => 'लोड',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'multiboilerplate-submit' => 'Muatkan',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

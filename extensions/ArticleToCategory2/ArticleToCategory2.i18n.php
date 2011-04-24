@@ -182,6 +182,8 @@ $messages['eo'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Krei',
 	'articletocategory2-create-category-under-category-text' => 'Aldoni kategorion al ĉi tiu kategorio',
 	'articletocategory2-create-category-under-category-button' => 'Krei',
+	'right-ArticleToCategory2' => 'Aldoni paĝon al kategorio',
+	'right-ArticleToCategory2AddCat' => 'Aldoni kategorion al kategorio',
 );
 
 /** Spanish (Español)

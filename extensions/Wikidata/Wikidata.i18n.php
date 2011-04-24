@@ -8943,10 +8943,18 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
+	'ow_transaction_summary' => 'Ringkasan',
 	'ow_dm_OK' => 'OK',
+	'ow_Source' => 'Sumber',
+	'ow_Link' => 'Pautan',
+	'ow_LinkAttributeValues' => 'Pautan',
+	'ow_class_attr_type_link' => 'Pautan',
+	'ow_suggest_previous' => 'Sebelumnya',
+	'ow_suggest_next' => 'Berikutnya',
 );
 
 /** Maltese (Malti)

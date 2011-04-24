@@ -160,9 +160,11 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Airon90
+ * @author Yekrats
  */
 $messages['eo'] = array(
 	'addmediawizard-desc' => 'Aldonu asistanton por aldoni plurmedion, evoluigita en partnereco de Kaltura kaj Fondaĵo Vikimedio',
+	'addmediawizard-loading' => 'Ŝarĝante asistilon por aldoni mediojn',
 );
 
 /** Spanish (Español)
@@ -414,10 +416,12 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author CoolCityCat
  */
 $messages['ms'] = array(
 	'addmediawizard-desc' => 'Penambah media ajaib, dibangunkan dengan kerjasama Kaltura dan Yayasan Wikimedia',
+	'addmediawizard-loading' => 'Penambah media ajaib sedang dimuatkan',
 );
 
 /** Erzya (Эрзянь)

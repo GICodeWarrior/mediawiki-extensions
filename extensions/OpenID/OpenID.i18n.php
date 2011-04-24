@@ -3343,7 +3343,7 @@ Dir kéint Iech ouni OpenID net aloggen.',
 	'openid-provider-label-google' => 'Loggt Iech mat Ärem Goggle-Benotzerkont an',
 	'openid-provider-label-yahoo' => 'Loggt Iech mat Ärem Yahoo-Benotzerkont an',
 	'openid-provider-label-aol' => 'Gitt Ären AOL Numm un',
-	'openid-provider-label-other-username' => 'Gitt Äre(n) $1 Benotzernumm  un',
+	'openid-provider-label-other-username' => 'Gitt Äre(n) $1 Benotzernumm un',
 );
 
 /** Limburgish (Limburgs)

@@ -711,6 +711,13 @@ $messages['mk'] = array(
 	'ts-citegen-base-disabled' => 'Грешка: Базата на %s е недостапна.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'ts-citegen-Sources-title' => 'Sumber',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

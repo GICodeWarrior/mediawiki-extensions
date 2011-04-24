@@ -67,6 +67,13 @@ $messages['ca'] = array(
 	'navigationpopups-desc' => "Carrega el codi de les finestres emergents de navegació d'en Lupin al MediaWiki",
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'navigationpopups-desc' => 'Indlæser Lupins navigationspopupskript i MediaWiki',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

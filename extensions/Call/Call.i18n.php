@@ -364,6 +364,13 @@ $messages['eu'] = array(
 	'call-save-success' => 'Ondorengo testua gorde egin da <big>[[$1]]</big> orrialdera.',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'call' => 'تماس',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

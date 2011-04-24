@@ -1749,6 +1749,13 @@ id-бројот може да содржи само букви, бројки и 
 	'qp_error_unique' => 'Прашањето од типот unique() има определено повеќе предлози од можни одговори: одговарањето на прашањето е неизводливо',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'qp_source_link' => 'Sumber',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Purodha

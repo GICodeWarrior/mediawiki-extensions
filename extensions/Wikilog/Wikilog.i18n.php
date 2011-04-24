@@ -4750,6 +4750,7 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Yosri
  */
 $messages['ms'] = array(
@@ -4764,6 +4765,11 @@ $messages['ms'] = array(
 	'wikilog-log-cmt-rejdel' => 'Ulasan wikilog oleh [[Special:Contributions/$1|$1]] ditolak',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Tindakan Wikilog',
+	'wikilog-title' => 'Tajuk',
+	'wikilog-view-summary' => 'Ringkasan',
+	'wikilog-pager-prev' => 'sebelumnya',
+	'wikilog-pager-next' => 'berikutnya',
+	'wikilog-form-date' => 'Tarikh:',
 );
 
 /** Nedersaksisch (Nedersaksisch)

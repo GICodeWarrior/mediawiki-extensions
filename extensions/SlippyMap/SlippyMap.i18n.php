@@ -284,6 +284,27 @@ $messages['cs'] = array(
 	'slippymap_clicktoactivate' => 'Mapu aktivujete kliknutím',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'slippymap_desc' => 'Tilføjer et <tt>&lt;slippymap&gt;</tt>-tag, som gør det muligt at indlejre statiske og dynamiske kort. Understøtter flere korttjenester inklusive [http://openstreetmap.org OpenStreetMap] og NASA Worldwind.',
+	'slippymap_error' => '$1-fejl: $2',
+	'slippymap_errors' => '$1-fejl:',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => '<tt>$1</tt> er ikke en gyldig værdi for <tt>layer</tt>-attributten, gyldige lag er $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => '<tt>$1</tt> er ikke en gyldig værdi for <tt>marker</tt>-attributten, gyldige markører er $2.',
+	'slippymap_error_unknown_attribute' => '<tt>$1</tt> er ikke en kendt attribut.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => '<tt>$1</tt> er ikke en gyldig breddegrad. Breddegrader skal være mellem -90 og 90 grader.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => '<tt>$1</tt> er ikke en gyldig længdegrad. Længdegrader skal være mellem -180 og 180 grader.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => '<tt>$1</tt> er ikke et gyldigt zoomniveau. Zoomniveauer skal være mellem $2 og $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => '<tt>$1</tt> er ikke en gyldig værdi for <tt>width</tt>-attributten. Bredder skal være mellem $2 og $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => '<tt>$1</tt> er ikke en gyldig værdi for <tt>height</tt>-attributten. Højder skal være mellem $2 og $3.',
+	'slippymap_code' => 'Wikikode for denne kortvisning:',
+	'slippymap_button_code' => 'Hent wikikode',
+	'slippymap_resetview' => 'Nulstil visning',
+	'slippymap_clicktoactivate' => 'Klik for at aktivere kortet',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Pill
