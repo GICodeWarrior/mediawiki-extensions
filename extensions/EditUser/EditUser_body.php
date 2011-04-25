@@ -46,7 +46,6 @@ class EditUser extends SpecialPage {
 			return;
 		}
 
-		$wgOut->addModules( 'mediawiki.legacy.prefs' );
 		$wgOut->addModules( 'mediawiki.special.preferences' );
 
 		//$this->loadGlobals( $this->target );
