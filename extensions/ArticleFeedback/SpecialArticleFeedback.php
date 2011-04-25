@@ -162,7 +162,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * Gets a list of articles which have recently recieved exceptionally low ratings.
 	 * 
 	 * - Based on any rating category
-	 * - Gets 50 most improved and 50 most worsened
+	 * - Gets up to 100 most recently poorly rated articles
 	 * - Only consider articles which were rated lower than 3 for 7 out of the last 10 ratings
 	 * 
 	 * This data should be updated whenever article ratings are changed, ideally through a hook
