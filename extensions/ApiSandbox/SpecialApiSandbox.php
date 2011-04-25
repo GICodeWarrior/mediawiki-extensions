@@ -23,7 +23,6 @@ class SpecialApiSandbox extends SpecialPage {
 		}
 		
 		$this->setHeaders();
-		$out->setPageTitle( wfMessage( 'apisb-title' )->parse() );
 		$out->addModules( 'ext.apiSandbox' );
 
 		$out->addHTML( '<noscript>' . wfMessage( 'apisb-no-js' )->escaped() . '</noscript>

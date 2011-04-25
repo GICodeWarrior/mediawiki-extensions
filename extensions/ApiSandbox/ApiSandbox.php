@@ -21,12 +21,11 @@ $wgExtensionAliasesFiles['ApiSandbox']  = $dir . 'ApiSandbox.alias.php';
 $wgAutoloadClasses['SpecialApiSandbox'] = $dir . 'SpecialApiSandbox.php';
 
 $wgSpecialPages['ApiSandbox'] = 'SpecialApiSandbox';
-$wgSpecialPageGroups['Gadgets'] = 'wiki';
+$wgSpecialPageGroups['ApiSandbox'] = 'wiki';
 
 $wgResourceModules['ext.apiSandbox'] = array(
 	'scripts' => 'ext.apiSandbox.js',
 	'styles' => 'ext.apiSandbox.css',
-	'dependencies' => array( 'jquery.json' ),
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'ApiSandbox',
 	'messages' => array( 'apisb-loading', 'apisb-load-error', 'apisb-select-value' ),
