@@ -130,6 +130,13 @@ $messages['nl'] = array(
 	'folktagcloud-desc' => "Voegt een eigenschap voor Semantic MediaWiki toe voor het labelen van pagina's met gebruikersgedefinieerde labels voor weergave in een woordwolk",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'folktagcloud-desc' => 'Legger til en Semantic MediaWiki-egenskap for merking av sider med brukerdefinerte etiketter og en tolkemerkelapp for å vise dem i en merkelappsky',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
