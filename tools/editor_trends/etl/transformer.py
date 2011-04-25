@@ -34,17 +34,20 @@ class EditorConsumer(consumers.BaseConsumer):
     A simple class takes care of fetching an editor from the queue and start
     processing its edits. 
     '''
-    def __init__(self, rts, tasks):
+    def __init__(self, rts, tasks, db_raw, db_dataset):
         super(EditorConsumer, self).__init__(rts, tasks)
+        self.db_raw = db_raw
+        self.db_dataset = db_dataset
 
     def run(self):
         while True:
-            new_editor = self.tasks.get()
+            editor = self.tasks.get()
             self.tasks.task_done()
             print '%s editors to go...' % messages.show(self.tasks.qsize)
-            if new_editor == None:
+            if editor == None:
                 break
-            new_editor()
+            editor = Editor(self.db_raw, self.db_dataset, editor)
+            editor()
 
 
 class Editor:
@@ -52,12 +55,12 @@ class Editor:
         self.editor_id = editor_id
         self.db_raw = db_raw    #storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_raw)
         self.db_dataset = db_dataset    #storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
+        self.cutoff = 9
 
     def __str__(self):
         return '%s' % (self.editor_id)
 
     def __call__(self):
-        cutoff = 9
         editor = self.db_raw.find_one('editor', self.editor_id)
         if editor == None:
             return
@@ -74,7 +77,7 @@ class Editor:
         character_count = determine_edit_volume(edits, first_year, final_year)
         revert_count = determine_number_reverts(edits, first_year, final_year)
 
-        edits = sort_edits(edits)
+
         edit_count = determine_number_edits(edits, first_year, final_year)
 
         totals = {}
@@ -84,18 +87,21 @@ class Editor:
         totals = calculate_totals(totals, counts, article_count, 'article_count')
         totals = calculate_totals(totals, counts, edit_count, 'edit_count')
 
-        if len(edits) > cutoff:
-            new_wikipedian = edits[cutoff]['date']
+        if len(edits) > self.cutoff:
+            new_wikipedian = edits[self.cutoff]['date']
         else:
             new_wikipedian = False
-        cum_edit_count = len(edits)
+        cum_edit_count_main_ns, cum_edit_count_other_ns = calculate_cum_edits(edits)
+
+        edits = sort_edits(edits)
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
 
         data = {'editor': self.editor_id,
                 'username': username,
                 'new_wikipedian': new_wikipedian,
-                'cum_edit_count': cum_edit_count,
+                'cum_edit_count_main_ns': cum_edit_count_main_ns,
+                'cum_edit_count_other_ns': cum_edit_count_other_ns,
                 'final_edit': final_edit,
                 'first_edit': first_edit,
                 'last_edit_by_year': last_edit_by_year,
@@ -108,6 +114,7 @@ class Editor:
                 'totals': totals,
                 }
         self.db_dataset.insert(data)
+
 
 def cleanup_datacontainer(dc, variable_type):
     '''
@@ -154,14 +161,26 @@ def determine_number_edits(edits, first_year, final_year):
     '''
     dc = data_converter.create_datacontainer(first_year, final_year)
     dc = data_converter.add_months_to_datacontainer(dc, 'dict')
-    for edit in edits:
-        ns = edit['ns']
-        year, month = str(edit['date'].year), edit['date'].month
-        dc[year][month].setdefault(ns, 0)
-        dc[year][month][ns] += 1
+    for year in edits:
+        for edit in edits[year]:
+            ns = edit['ns']
+            month = edit['date'].month
+            dc[year][month].setdefault(ns, 0)
+            dc[year][month][ns] += 1
     dc = cleanup_datacontainer(dc, {})
     return dc
 
+def calculate_cum_edits(edits):
+    cum_edit_count_main_ns = 0
+    cum_edit_count_other_ns = 0
+    for year in edits:
+        for edit in edits[year]:
+            if edit['ns'] == 0:
+                cum_edit_count_main_ns += 1
+            else:
+                cum_edit_count_other_ns += 1
+
+    return cum_edit_count_main_ns, cum_edit_count_other_ns
 
 def determine_articles_workedon(edits, first_year, final_year):
     '''
@@ -264,9 +283,9 @@ def determine_last_edit_by_year(edits, first_year, final_year):
         for edit in edits[year]:
             date = str(edit['date'].year)
             if dc[date] == 0:
-                dc[date] = edit
-            elif dc[date] < edit:
-                dc[date] = edit
+                dc[date] = edit['date']
+            elif dc[date] < edit['date']:
+                dc[date] = edit['date']
     return dc
 
 
@@ -290,27 +309,6 @@ def sort_edits(edits):
     return sorted(edits, key=itemgetter('date'))
 
 
-def transform_editors_multi_launcher(rts):
-    tasks = multiprocessing.JoinableQueue()
-    db_raw, db_dataset, editors = setup_database(rts)
-    transformers = [EditorConsumer(rts, tasks) for i in xrange(rts.number_of_processes)]
-
-    for editor in editors:
-        tasks.put(Editor(rts, editor))
-
-    for x in xrange(rts.number_of_processes):
-        tasks.put(None)
-
-    print messages.show(tasks.qsize)
-    for transformer in transformers:
-        transformer.start()
-
-    tasks.join()
-
-    db_dataset.add_index('editor')
-    db_dataset.add_index('new_wikipedian')
-
-
 def setup_database(rts):
     '''
     Initialize the database, including setting indexes and dropping the older
@@ -319,12 +317,25 @@ def setup_database(rts):
     db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
     db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
-    editors = []
-    #editors = db_raw.retrieve_distinct_keys('editor')
-    #db_dataset.add_index('editor')
-    #db_dataset.add_index('new_wikipedian')
-
+    editors = db_raw.retrieve_editors()
     return db_raw, db_dataset, editors
+
+
+def transform_editors_multi_launcher(rts):
+    db_raw, db_dataset, editors = setup_database(rts)
+    transformers = [EditorConsumer(rts, editors, db_raw, db_dataset) for i in xrange(rts.number_of_processes)]
+
+
+    for x in xrange(rts.number_of_processes):
+        editors.put(None)
+
+    for transformer in transformers:
+        transformer.start()
+
+    editors.join()
+
+    db_dataset.add_index('editor')
+    db_dataset.add_index('new_wikipedian')
 
 
 def transform_editors_single_launcher(rts):
@@ -332,9 +343,18 @@ def transform_editors_single_launcher(rts):
     db_raw, db_dataset, editors = setup_database(rts)
     n = db_raw.count()
     pbar = progressbar.ProgressBar(maxval=n).start()
-    for editor in db_raw.find():
+
+    for x in xrange(rts.number_of_processes):
+        editors.put(None)
+
+    while True:
+        editor = editors.get()
+        editors.task_done()
+        if editor == None:
+            break
         editor = Editor(db_raw, db_dataset, editor)
         editor()
+
         pbar.update(pbar.currval + 1)
 
     db_dataset.add_index('editor')

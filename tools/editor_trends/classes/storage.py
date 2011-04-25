@@ -23,10 +23,11 @@ from abc import ABCMeta, abstractmethod
 if '..' not in sys.path:
     sys.path.append('..')
 
-from classes import settings
+import settings
 settings = settings.Settings()
 
-from classes import exceptions
+import exceptions
+import queue
 from utils import file_utils
 
 import_error = 0
@@ -81,7 +82,7 @@ class AbstractDatabase:
         '''Update an observation in a collection'''
 
     @abstractmethod
-    def find(self, key, value, qualifier):
+    def find(self, key, qualifier):
         '''Find multiple observations in a collection'''
 
     @abstractmethod
@@ -146,7 +147,7 @@ class Mongo(AbstractDatabase):
         assert isinstance(data, dict), 'You need to feed me dictionaries.'
         self.db[self.collection].update({key: value}, data, upsert=True)
 
-    def find(self, key=None, value=1, qualifier=None):
+    def find(self, key=None, qualifier=None):
         if qualifier == 'min':
             return self.db[self.collection].find({
                 key : {'$ne' : False}}).sort(key, pymongo.ASCENDING).limit(1)[0]
@@ -154,7 +155,7 @@ class Mongo(AbstractDatabase):
             return self.db[self.collection].find({
                 key : {'$ne' : False}}).sort(key, pymongo.DESCENDING).limit(1)[0]
         elif key != None:
-            return self.db[self.collection].find({key: value})
+            return self.db[self.collection].find({}, fields=[key])
         else:
             return self.db[self.collection].find()
 
@@ -170,6 +171,13 @@ class Mongo(AbstractDatabase):
 
     def count(self):
         return self.db[self.collection].count()
+
+    def retrieve_editors(self):
+        q = queue.JoinableRetryQueue()
+        cursor = self.find('editor')
+        for editor in cursor:
+            q.put(editor['editor'])
+        return q
 
     def retrieve_distinct_keys(self, key, force_new=False):
         '''
@@ -290,7 +298,7 @@ class Cassandra(AbstractDatabase):
     def update(self, key, value, data):
         return
 
-    def find(self, key, value, qualifier=None):
+    def find(self, key, qualifier=None):
         return
 
     def save(self, data):

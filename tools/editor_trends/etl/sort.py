@@ -56,9 +56,9 @@ class Sorter(consumers.BaseConsumer):
                 for x, d in enumerate(data):
                     d = d.strip().split('\t')
                     #TEMP FIX:
-                    editor = d[2]
-                    d[2] = d[0]
-                    d[0] = editor
+                    #editor = d[2]
+                    #d[2] = d[0]
+                    #d[0] = editor
                     #END TEMP FIX
                     data[x] = d
                 #data = [d.strip() for d in data]
