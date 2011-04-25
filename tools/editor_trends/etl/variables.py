@@ -248,7 +248,7 @@ def determine_past_revert(hash, revert, reverts):
     hash = hash['hash']
     if revert['revert'] == 1:
         past_revert['reverted_revision_id'] = reverts[hash]['revision_id']
-        past_revert['reverted_contributor'] = reverst[hash]['contributor']
+        past_revert['reverted_contributor'] = reverts[hash]['contributor']['id']
     else:
         past_revert['reverted_revision_id'] = -1
         past_revert['reverted_contributor'] = -1

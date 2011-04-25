@@ -337,6 +337,9 @@ def transform_editors_single_launcher(rts):
         editor()
         pbar.update(pbar.currval + 1)
 
+    db_dataset.add_index('editor')
+    db_dataset.add_index('new_wikipedian')
+
 
 if __name__ == '__main__':
     rts = None
