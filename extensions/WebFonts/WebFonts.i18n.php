@@ -137,6 +137,26 @@ $messages['nl'] = array(
 	'webfonts-disable-preference' => 'Lettertypen insluiten (WebFonts) uitschakelen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Bygg inn fonter i sider',
+	'webfonts-load' => 'Velg font',
+	'webfonts-disable-preference' => 'Deaktiver innbygging av fonter (WebFonts)',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Anseriss sorziss an pagine',
+	'webfonts-load' => 'Selession-a sorziss',
+	'webfonts-disable-preference' => 'Disabìlita anseriment sorziss (WebFonts)',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

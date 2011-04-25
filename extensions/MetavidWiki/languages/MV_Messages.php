@@ -631,7 +631,7 @@ $messages['ar'] = array(
 	'mv_metavid_live' => 'ضبط ستريم حي',
 	'mv_upload_file' => 'رفع ملف',
 	'mv_external_file' => 'ملف خارجي',
-	'mv_tool_search' => 'بحث',
+	'mv_tool_search' => 'ابحث',
 	'mv_tool_search_title' => 'ابحث في هذا الستريم',
 	'mv_search_transcripts_for' => 'ابحث في الفيديوهات عن $1 (أخفِ هذا الصندوق)',
 	'mv_tool_navigate' => 'إبحار',
@@ -7829,7 +7829,7 @@ Aqueste tipe de presentacion es pel tèxte qu'es parlat amb lo flux vidèo. De l
  * @author Psubhashish
  */
 $messages['or'] = array(
-	'mv_tool_search' => 'ଖୋଜିବା',
+	'mv_tool_search' => 'ଖୋଜିବେ',
 	'mv_history' => 'ଇତିହାସ',
 );
 

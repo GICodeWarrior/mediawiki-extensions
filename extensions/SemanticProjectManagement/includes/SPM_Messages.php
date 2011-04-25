@@ -240,7 +240,7 @@ $messages['no'] = array(
 	'spm_printername_wbs' => 'MS Project-eksport',
 	'spm-name' => 'Semantic Project Management',
 	'semanticprojectmanagement-desc' => 'Project Management Formats for Semantic MediaWiki «inline»-spørringer',
-	'semanticprojectmanagement' => 'Semantic Project Management',
+	'semanticprojectmanagement' => 'Semantic Project Management-innstillinger',
 	'right-SPMsetup' => 'Rediger grunnleggende semantic project management innstillinger',
 );
 

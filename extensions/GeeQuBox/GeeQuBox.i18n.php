@@ -122,6 +122,13 @@ $messages['nl'] = array(
 	'geequbox-desc' => 'Voegt lightboxeffecten toe met behulp van de jQuery lightboxplug-in',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'geequbox-desc' => 'Genererer lysbokseffekter ved hjelp av utvidelsen jQuery lightbox',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

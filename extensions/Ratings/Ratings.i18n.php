@@ -47,7 +47,13 @@ $messages['qqq'] = array(
  */
 $messages['be-tarask'] = array(
 	'ratings-desc' => 'Дазваляе ўдзельнікам ацэньваць розныя «ўласьцівасьці» старонкі',
+	'ratings-starsratings-desc' => 'Паказвае простае кіраваньне адзнакамі з дапамогай зорак, які дазваляе ўдзельнікам адзначаць некаторыя ўласьцівасьці старонкі.
+Цяперашняя адзнака будзе паказаная адразу, калі ўдзельнік прагаласуе.',
+	'ratings-par-page' => 'Старонка, якая адзначаецца.',
+	'ratings-par-tag' => 'Тэг адзнакі. Ён паказвае, што «ўласьцівасьць» старонкі была адзначаная.',
 	'ratings-par-showdisabled' => 'Паказваць адзнакі, калі ўдзельнік ня можа галасаваць (толькі для чытаньня)',
+	'ratings-par-incsummary' => 'Паказваць справаздачу цяперашніх галасоў над элемэнтам адзначэньня?',
+	'ratings-votesummary-desc' => 'Паказвае справаздачу цяперашніх галасоў для пазначанай старонкі і ўласьцівасьці.',
 	'ratings-current-score' => 'Цяперашняя адзнака ўдзельнікаў: $1 ($2 {{PLURAL:2|адзнака|адзнакі|адзнак}})',
 	'ratings-no-votes-yet' => 'Ніхто яшчэ не адзначаў.',
 );
@@ -141,6 +147,22 @@ De huidige waardering van gebruikers wordt weergegeven als er al gewaardeerd is.
 	'ratings-votesummary-desc' => 'Geeft een korte samenvatting van de stemmen voor de opgegeven pagina en eigenschapspaar weer.',
 	'ratings-current-score' => 'Huidige gebruikerswaardering: $1 ($2 {{PLURAL:$2|waardering|waarderingen}})',
 	'ratings-no-votes-yet' => 'Dit onderdeel is nog door niemand gewaardeerd.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'ratings-desc' => 'A përmëtt a j\'utent ëd valuté "propietà" diferente dle pagine',
+	'ratings-starsratings-desc' => "A mosta un control ëd valutassion sempi dë stèile an përmëttend a l'utent ëd valuté na serta propietà ëd na pagina.
+Ël vot corent ëd l'utent a sarà visualisà inissialment quand ch'a l'ha già votà.",
+	'ratings-par-page' => "La pagina ch'a l'é valutà.",
+	'ratings-par-tag' => 'La tichëtta ëd valutassion. La tichëtta a indica che "propietà" dla pagina a l\'é valutà.',
+	'ratings-par-showdisabled' => "Mosta valutassion quand l'utent a peul pa voté (mach an letura).",
+	'ratings-par-incsummary' => "Mosté un somari dij vot corent sota l'element an valutassion?",
+	'ratings-votesummary-desc' => 'A mosta un curt somari dij vot për la pagina specificà e le cobie ëd propietà.',
+	'ratings-current-score' => "Valutassion corenta dl'utent: $1 ($2 {{PLURAL:$2|valutassion|valutassion}})",
+	'ratings-no-votes-yet' => "Pa gnun a l'ha anco' valutà son-sì.",
 );
 
 /** Telugu (తెలుగు)

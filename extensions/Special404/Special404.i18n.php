@@ -306,7 +306,7 @@ Misschien wilt u de [[{{MediaWiki:Mainpage}}|hoofdpagina]] bekijken.',
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'special404-desc' => 'Tilbyr en 404 spesialdestinasjonsside for 404 Ikke funnet-feil',
+	'special404-desc' => 'Gir et mål for 404 Not found-feil',
 	'error404' => '404 Ikke funnet',
 	'special404-body' => 'URLen du søkte ble ikke funnet.
 
@@ -386,6 +386,13 @@ Ulikusudia kuandika {{fullurl:$1}}?
 
 Huenda ungependa kutazama:
 * [[{{MediaWiki:Mainpage}}|Ukurasa wa kwanza]]',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'error404' => '404 దొరకలేదు',
 );
 
 /** Tagalog (Tagalog)

@@ -229,7 +229,7 @@ $messages['ar'] = array(
 	'ct_user_user' => 'مستخدم',
 	'ct_user_tip' => 'إدراج وصلة لصفحة مستخدم',
 	'ct_user_caption' => 'وصلة المستخدم',
-	'ct_user_sample' => 'أسم المستخدم',
+	'ct_user_sample' => 'اسم المستخدم',
 );
 
 /** Aramaic (ܐܪܡܝܐ)

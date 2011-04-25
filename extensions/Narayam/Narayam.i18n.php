@@ -112,6 +112,7 @@ $messages['be-tarask'] = array(
 	'narayam-si-wijesekara' => 'Сынгальскі Віджэсэкера',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Тамільская трансьлітарацыя',
+	'narayam-te-inscript' => 'Інскрыпт Telugu',
 	'narayam-bn-avro' => 'Bengali Avro',
 	'narayam-bn-inscript' => 'Bengali InScript',
 	'narayam-bn-nkb' => 'Бэнгальская NKB',
@@ -127,11 +128,21 @@ $messages['br'] = array(
 	'narayam-checkbox-tooltip' => 'Evit eilpennañ an hentenn enmont war enaou pe get',
 	'narayam-disable-preference' => 'Diweredekaat an embanner hentenn enmont evit an narayam',
 	'narayam-eo' => 'Esperanteg',
+	'narayam-hi-inscript' => 'InScript hindi',
 	'narayam-kn' => 'Treuzlizherennadur kannada',
+	'narayam-kn-inscript' => 'InScript kannada',
 	'narayam-ml' => 'Treuzlizherennadur Malayalam',
+	'narayam-ml-inscript' => 'InScript malayalam',
 	'narayam-or' => 'Treuzlizherennadur oriya',
+	'narayam-or-inscript' => 'InScript oriya',
 	'narayam-sa' => 'Treuzlizherennadur sanskriteg',
+	'narayam-sa-inscript' => 'InScript sanskriteg',
+	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Treuzlizherennadur tamoul',
+	'narayam-te-inscript' => 'InScript telougou',
+	'narayam-bn-avro' => 'Avro bengaleg',
+	'narayam-bn-inscript' => 'InScript bengaleg',
+	'narayam-bn-nkb' => 'NKB bengaleg',
 );
 
 /** Bosnian (Bosanski)
@@ -215,6 +226,7 @@ $messages['fr'] = array(
 	'narayam-desc' => "Permet d'ajouter des méthodes de saisie personnalisés pour les champs de saisie",
 	'narayam-toggle-ime' => 'Pour basculer la méthode de saisie ($1)',
 	'narayam-help-page' => 'Help:Saisie au clavier',
+	'narayam-checkbox-tooltip' => "Pour activer et désactiver la méthode d'entrée",
 	'narayam-disable-preference' => "Désactiver la méthode d'entrée (IME) Narayam",
 	'narayam-eo' => 'Espéranto',
 	'narayam-hi-inscript' => 'InScript hindi',
@@ -226,10 +238,14 @@ $messages['fr'] = array(
 	'narayam-or-inscript' => 'InScript oriya',
 	'narayam-sa' => 'Translittération sanskrit',
 	'narayam-sa-inscript' => 'InScript sanskrit',
+	'narayam-si-singlish' => 'Singlish cinghalais',
+	'narayam-si-wijesekara' => 'Wijesekara cinghalais',
 	'narayam-ta99' => 'Tamil99',
 	'narayam-ta' => 'Translittération tamoule',
 	'narayam-te-inscript' => 'InScript télougou',
+	'narayam-bn-avro' => 'Avro bengali',
 	'narayam-bn-inscript' => 'InScript bengali',
+	'narayam-bn-nkb' => 'NKB bengali',
 );
 
 /** Galician (Galego)
@@ -709,6 +725,8 @@ $messages['te'] = array(
 	'narayam-sa-inscript' => 'సంస్కృతం ఇన్‌స్క్రిప్ట్',
 	'narayam-ta99' => 'తమిళం99',
 	'narayam-ta' => 'తమిళం లిప్యంతరీకరణ',
+	'narayam-te-inscript' => 'తెలుగు ఇన్‍స్క్రిప్ట్',
+	'narayam-bn-avro' => 'బెంగాలీ అవ్రో',
 	'narayam-bn-inscript' => 'బెంగాలీ ఇన్‌స్క్రిప్ట్',
 	'narayam-bn-nkb' => 'బెంగాలీ NKB',
 );

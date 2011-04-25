@@ -774,6 +774,8 @@ $messages['te'] = array(
 	'livetranslate-translate-to' => 'ఈ పుటని అనువదించండి',
 	'livetranslate-button-translate' => 'అనువదించు',
 	'livetranslate-button-translating' => 'అనువదిస్తున్నాం...',
+	'livetranslate-special-type' => 'రకం',
+	'livetranslate-special-location' => 'ప్రాంతం',
 );
 
 /** Tagalog (Tagalog)

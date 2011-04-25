@@ -1121,6 +1121,8 @@ $messages['te'] = array(
 	'toolbase-replag-hours' => 'గంటలు',
 	'toolbase-replag-minutes' => 'నిమిషాలు',
 	'toolbase-replag-seconds' => 'క్షణాలు',
+	'toolbase-footer-language' => 'భాషని ఎంచుకోండి',
+	'toolbase-footer-translate' => 'అనువదించండి',
 	'toolbase-main-title' => 'స్వాగతం!',
 	'toolbase-form-wiki' => 'వికీ',
 );

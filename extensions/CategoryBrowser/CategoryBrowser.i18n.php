@@ -1294,6 +1294,20 @@ Gebruik een andere browser of werkt deze bij, als mogelijk.',
 	'cb_edit_paste_right_hint' => 'Als mogelijk de operator op de volgende positie invoegen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'cb_previous_items_link' => 'Førre',
+	'cb_next_items_link' => 'Neste',
+	'cb_next_items_stats' => ' (frå $1)',
+	'cb_cat_subcats' => 'underkategoriar',
+	'cb_cat_pages' => 'sider',
+	'cb_cat_files' => 'filer',
+	'cb_all_op' => 'Alle',
+	'cb_and_op' => 'og',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

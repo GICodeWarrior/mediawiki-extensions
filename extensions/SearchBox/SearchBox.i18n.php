@@ -66,10 +66,11 @@ $messages['ang'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'searchbox-desc' => 'يسمح بتضمين استمارات البحث',
-	'searchbox-search' => 'بحث',
+	'searchbox-search' => 'ابحث',
 	'searchbox-go' => 'اذهب',
 	'searchbox-namespaces' => 'النطاقات:',
 );

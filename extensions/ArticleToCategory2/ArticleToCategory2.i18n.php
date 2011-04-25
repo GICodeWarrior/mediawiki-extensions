@@ -463,6 +463,8 @@ $messages['no'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Opprett',
 	'articletocategory2-create-category-under-category-text' => 'Legg en kategori til denne kategorien',
 	'articletocategory2-create-category-under-category-button' => 'Opprett',
+	'right-ArticleToCategory2' => 'Legg side til kategorien',
+	'right-ArticleToCategory2AddCat' => 'Legg kategori til kategorien',
 );
 
 /** Polish (Polski)

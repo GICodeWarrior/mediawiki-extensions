@@ -6277,7 +6277,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-select-wiki-view-desc' => 'Donn e Wiki ußsöke, dämm singe Enshtellunge ier Versione De sinn wells.',
 	'configure-select-wiki-view-all' => 'All Wikis',
 	'configure-select-wiki-view-specific' => 'Dat beschtemmpte Wiki:',
-	'configure-select-wiki-submit' => 'Ußsöke!',
+	'configure-select-wiki-submit' => 'Ußsöhke!',
 	'configure-setting-not-available' => 'Di Enstellung ham_mer nit en dä Version vum MediaWiki',
 	'configure-transwiki-not-in-range' => 'Dat jewönschte Wiki es „$1“, avver {{PLURAL:$3
 |zojelohße es bloß $2, allsu woh dat nix

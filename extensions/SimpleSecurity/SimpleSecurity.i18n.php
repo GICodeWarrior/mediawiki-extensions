@@ -819,6 +819,7 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'security' => 'Tryggingslogg',
@@ -834,6 +835,7 @@ $messages['nn'] = array(
 	'security-unchain' => 'Endra handlingar individuelt',
 	'security-type-category' => 'kategori',
 	'security-type-namespace' => 'namnerom',
+	'restriction-read' => 'Les',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -857,6 +859,7 @@ $messages['no'] = array(
 	'security-type-category' => 'kategori',
 	'security-type-namespace' => 'navnerom',
 	'security-restricttogroup' => 'Tilgang til innholdet er begrenset til medlemmer av «$1»',
+	'restriction-read' => 'Les',
 );
 
 /** Occitan (Occitan)

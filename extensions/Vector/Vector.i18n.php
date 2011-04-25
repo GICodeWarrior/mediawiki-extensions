@@ -1215,6 +1215,7 @@ Denne advarselen kan slås av under Redigering i instillingene dine.',
 	'vector-editwarning-preference' => 'Si ifra dersom jeg forlater en side jeg har gjort redigeringer på men ikke har lagret siden.',
 	'vector-simplesearch-search' => 'Søk',
 	'vector-simplesearch-containing' => 'inneholder …',
+	'vector-noexperiments-preference' => 'Eksluder meg fra funksjonseksperimenter',
 );
 
 /** Occitan (Occitan)

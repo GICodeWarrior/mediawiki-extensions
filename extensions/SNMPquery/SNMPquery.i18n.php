@@ -149,7 +149,7 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'snmpquery-desc' => 'Legg til funksjonene SNMPget og SNMPwalk og returner dataene inn i wikien',
+	'snmpquery-desc' => 'Legg til funksjonene SNMPget og SNMPwalk og tillat visning av resultatene i wikien',
 );
 
 /** Polish (Polski)

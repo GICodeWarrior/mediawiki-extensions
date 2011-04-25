@@ -133,6 +133,13 @@ $messages['nl'] = array(
 	'arrayext-desc' => 'Benoemde verzamelingen opslaan en berekenen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'arrayext-desc' => 'Lagre og beregne navngitte tabeller',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
