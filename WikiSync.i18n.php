@@ -1333,6 +1333,8 @@ $messages['ru'] = array(
  */
 $messages['te'] = array(
 	'wikisync_remote_login_button' => 'ప్రవేశించండి',
+	'wikisync_apply_button' => 'ఆపాదించు',
+	'wikisync_js_scheduler_countdown' => '$1 {{PLURAL:$1|నిమిషం|నిమిషాలు}} ఉంది',
 );
 
 /** Tagalog (Tagalog)
