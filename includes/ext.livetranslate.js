@@ -69,7 +69,7 @@
 			'action': 'query',
 			'format': 'json',
 			'list': 'livetranslate',
-			'ltlanguage': currentLang,
+			'ltlanguage': currentLang
 		};
 		
 		if ( offset > 0 ) {
