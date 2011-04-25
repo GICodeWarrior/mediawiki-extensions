@@ -103,7 +103,7 @@ $messages['ar'] = array(
 	'ea-from' => 'من:',
 	'ea-to' => 'إلى:',
 	'ea-send' => 'أرسل',
-	'ea-subject' => 'أدخل سطر عنوان للبريد الإلكتروني',
+	'ea-subject' => 'الموضوع:',
 	'ea-message' => 'إرسال المحتوى برسالة اختيارية (نص ويكي)',
 	'ea-selectcss' => 'اختر شريحة CSS',
 );
@@ -1089,6 +1089,10 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'ea-denied' => 'అనుమతిని నిరాకరించాం',
 	'ea-send' => 'పంపించు!',
+	'ea-subject' => 'విషయం:',
+	'ea-message' => 'సందేశం:',
+	'ea-style' => 'శైలి:',
+	'ea-allusers' => 'వాడుకరులందరికీ',
 );
 
 /** Tagalog (Tagalog)
