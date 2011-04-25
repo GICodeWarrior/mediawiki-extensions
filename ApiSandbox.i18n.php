@@ -4,7 +4,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'apisb-desc'              => 'Allows to debug [http://www.mediawiki.org/wiki/API MediaWiki API] calls from browser',
-	'apisb-title'             => 'API sandbox',
+	'apisandbox'             => 'API sandbox',
 	'apisb-no-js'             => "'''Error''': this feature requires JavaScript.",
 	'apisb-intro'             => 'Blah blah intro, dude!',
 	'apisb-api-disabled'      => 'API is disabled on this site.',
