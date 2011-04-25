@@ -889,6 +889,8 @@ Du kan miste alle endringene du gjorde på denne siden om du forlater denne side
 	'al-nosuchuser' => 'Det finnes ingen bruker med navnet "$1".
 Brukernavnet skiller mellom store og små bokstaver.
 Kontroller stavingen.',
+	'al-createblocked' => 'Din IP-adresse er blokkert fra kontooppretting.',
+	'al-throttled' => 'Du har hatt for mange passordforsøk. Vent $1 {{PLURAL:$1|sekund|sekunder}} før du prøver igjen.',
 );
 
 /** Occitan (Occitan)
