@@ -1,4 +1,3 @@
-
 //checks
 if(typeof(MW) == "undefined"){ MW={};}
 if(!MW.activeCampaigns){ MW.activeCampaigns ={}; }
@@ -31,16 +30,32 @@ MW.activeCampaigns.AccountCreation =
   
   "ACP1": function(){
 	  //change to NiceMsg1 campaign
-	  $j("#pt-anonlogin a").attr("href", $j("#pt-anonlogin a").attr("href") + "&campaign=ACP1" );
+	  $j("#pt-anonlogin a").each(function(){
+		  $j(this).attr("href", $j(this).attr("href") + "&campaign=ACP1" ); 
+	  });
+	  $j("#pt-login a").each(function(){
+		  $j(this).attr("href", $j(this).attr("href") + "&campaign=ACP1" ); 
+	  });
+	  
   },
   "ACP2": function(){
 	  //change to NiceMsg2 campaign
-	  $j("#pt-anonlogin a").attr("href", $j("#pt-anonlogin a").attr("href") + "&campaign=ACP2" );
+	  $j("#pt-anonlogin a").each(function(){
+		  $j(this).attr("href", $j(this).attr("href") + "&campaign=ACP2" ); 
+	  });
+	  $j("#pt-login a").each(function(){
+		  $j(this).attr("href", $j(this).attr("href") + "&campaign=ACP2" ); 
+	  });
   },
 
   "ACP3": function(){
 	  //change to NiceMsg2 campaign
-	  $j("#pt-anonlogin a").attr("href", $j("#pt-anonlogin a").attr("href") + "&campaign=ACP3" );
+	  $j("#pt-anonlogin a").each(function(){
+		  $j(this).attr("href", $j(this).attr("href") + "&campaign=ACP3" ); 
+	  });
+	  $j("#pt-login a").each(function(){
+		  $j(this).attr("href", $j(this).attr("href") + "&campaign=ACP3" ); 
+	  });
   },
   
   // "allActive" is reserved.
