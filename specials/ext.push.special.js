@@ -114,7 +114,7 @@
 				'action': 'query',
 				'prop': 'images',
 				'format': 'json',
-				'titles': pageName, 
+				'titles': pageName
 			},
 			function( data ) {
 				if ( data.query ) {

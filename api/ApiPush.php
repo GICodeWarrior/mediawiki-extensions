@@ -16,7 +16,7 @@ class ApiPush extends ApiBase {
 	
 	/**
 	 * Associative array containing CookieJar objects (values) to be passed in
-	 * order to autenticate to the targets (keys).
+	 * order to authenticate to the targets (keys).
 	 * 
 	 * @since 0.4
 	 * 
