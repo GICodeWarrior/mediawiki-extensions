@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Statis class with utility methods for the Live Translate extension.
+ * Static class with utility methods for the Live Translate extension.
  *
  * @since 0.1
  *
@@ -290,7 +290,7 @@ final class LiveTranslateFunctions {
 	}	
 	
 	/**
-	 * Returns the provided text starting with a letter in toggeled case.
+	 * Returns the provided text starting with a letter in toggled case.
 	 * If there is no difference between lowercase and upercase for the first
 	 * character, false is returned.
 	 * 

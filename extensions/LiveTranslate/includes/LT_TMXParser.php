@@ -69,7 +69,7 @@ class LTTMXParser extends LTTMParser {
 	protected $insideSegment;
 	
 	/**
-	 * Boolean to keep track of if the XML parser is inside a node that should be ingored.
+	 * Boolean to keep track of if the XML parser is inside a node that should be ignored.
 	 * 
 	 * @since 0.4
 	 * 

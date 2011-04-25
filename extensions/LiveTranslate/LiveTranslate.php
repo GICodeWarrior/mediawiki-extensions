@@ -16,7 +16,7 @@
  */
 
 /**
- * This documenation group collects source code files belonging to Live Translate.
+ * This documentation group collects source code files belonging to Live Translate.
  *
  * @defgroup LiveTranslate Live Translate
  */
@@ -25,7 +25,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'LiveTranslate_VERSION', '0.6' );
+define( 'LiveTranslate_VERSION', '0.7 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,

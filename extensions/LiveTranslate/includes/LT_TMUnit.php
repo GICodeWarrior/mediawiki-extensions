@@ -14,7 +14,7 @@
 class LTTMUnit {
 	
 	/**
-	 * List of language varinats of the translation memory unit.
+	 * List of language variants of the translation memory unit.
 	 * 
 	 * language code => array( primary translation [, synonym [, ect]] )
 	 * 
@@ -36,7 +36,7 @@ class LTTMUnit {
 	}
 	
 	/**
-	 * Returns the list of language varinats of the translation memory unit.
+	 * Returns the list of language variants of the translation memory unit.
 	 * 
 	 * @since 0.4
 	 * 
