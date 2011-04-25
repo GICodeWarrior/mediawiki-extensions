@@ -68,7 +68,7 @@ $messages['aln'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'lastuserlogin_userid' => 'الاسم المستخدم',
+	'lastuserlogin_userid' => 'اسم المستخدم',
 	'lastuserlogin_username' => 'الاسم الحقيقي',
 	'lastuserlogin_useremail' => 'بريد المستخدم الإلكتروني',
 );
