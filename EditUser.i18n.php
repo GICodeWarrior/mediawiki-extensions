@@ -93,6 +93,7 @@ $messages['ang'] = array(
 /** Arabic (العربية)
  * @author Loya
  * @author Meno25
+ * @author Mutarjem horr
  * @author OsamaK
  */
 $messages['ar'] = array(
@@ -100,8 +101,8 @@ $messages['ar'] = array(
 	'edituser' => 'تعديل مستخدم',
 	'edituser-username' => 'اسم المستخدم:',
 	'edituser-dosearch' => 'ابحث',
-	'edituser-nouser' => 'المستخدم المحدد غير موجود',
-	'edituser-exempt' => 'المستخدم المحدد لا يمكن تعديله',
+	'edituser-nouser' => 'المستخدم "$1" غير موجود.',
+	'edituser-exempt' => 'لا يمكن تحرير أي شيئ للمستخدم "$1" .',
 	'right-edituser' => 'تعديل تفضيلات المستخدمين الآخرين',
 	'right-edituser-exempt' => 'لا يمكن تعديل تفضيلاتهم بواسطة الآخرين',
 );
@@ -242,6 +243,7 @@ $messages['bug'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Jordi Roqué
  * @author SMP
  * @author Solde
@@ -249,7 +251,7 @@ $messages['bug'] = array(
 $messages['ca'] = array(
 	'edituser-desc' => 'Permet editar les preferències dels altres usuaris als usuaris privilegiats',
 	'edituser' => "Edita l'usuari",
-	'edituser-username' => 'Nom',
+	'edituser-username' => "Nom d'usuari:",
 	'edituser-dosearch' => 'Cerca',
 	'edituser-nouser' => "L'usuari especificat no existeix",
 	'edituser-exempt' => "L'usuari especificat no es pot editar",
