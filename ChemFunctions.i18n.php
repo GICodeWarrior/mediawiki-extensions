@@ -257,8 +257,19 @@ $messages['cs'] = array(
  * @author Peter Alberti
  */
 $messages['da'] = array(
+	'chemicalsources' => 'Kemi-relaterede kilder',
+	'chemicalsource-desc' => 'Tilføjer tagget <nowiki><chemform></nowiki> for kemiske formler',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Specialside]] for kemi-relaterede kilder',
+	'chemFunctions_ListPage' => 'Kemi-relaterede kilder',
+	'chemFunctions_DataList' => 'Nedenfor er en liste af links til sider, som kan give information om den kemiske forbindelse, du søger.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula hos NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS på Oxford University (UK) (ikke søgbar)</a><br />',
 	'chemFunctions_CAS' => 'CAS-nummer',
+	'chemFunctions_ATCCode' => 'ATC-kode',
+	'chemFunctions_ECNumber' => 'EC-nummer',
+	'chemFunctions_Formula' => 'Formel',
 	'chemFunctions_Name' => 'IUPAC Navn',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Fejl i inddata!',
 );
 
 /** German (Deutsch)
