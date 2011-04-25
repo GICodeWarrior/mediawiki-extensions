@@ -444,6 +444,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'addmediawizard-desc' => 'Legg til mediaveiviser, utviklet i samarbeid mellom Kaltura og Wikimedia Foundation',
+	'addmediawizard-loading' => 'Laster legg til mediaveiviser',
 );
 
 /** Occitan (Occitan)
