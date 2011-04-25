@@ -111,7 +111,7 @@ class SpecialPush extends SpecialPage {
 	}
 	
 	/**
-	 * Outputs the HTML to indicate a push is occuring and
+	 * Outputs the HTML to indicate a push is occurring and
 	 * the JavaScript to needed by the push.
 	 * 
 	 * @since 0.2

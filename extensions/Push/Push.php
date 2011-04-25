@@ -16,7 +16,7 @@
  */
 
 /**
- * This documenation group collects source code files belonging to Push.
+ * This documentation group collects source code files belonging to Push.
  *
  * @defgroup Push Push
  */

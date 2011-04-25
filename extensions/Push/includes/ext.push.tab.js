@@ -145,7 +145,7 @@
 					.concat( window.wgPushTemplates )
 					.concat( window.wgPushPageFiles )
 					.concat( window.wgPushTemplateFiles )
-					.join( '|' ),
+					.join( '|' )
 			},
 			function( data ) {
 				if ( data.query ) {

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Statis class with methods to create and handle the push tab.
+ * Static class with methods to create and handle the push tab.
  *
  * @since 0.1
  *
