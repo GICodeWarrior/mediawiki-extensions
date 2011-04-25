@@ -308,6 +308,8 @@ $messages['eo'] = array(
 	'contrib-tracking-submitting' => 'Sendante al mona traktejo...',
 	'contrib-tracking-continue' => 'Se vi ne aŭtomate estus alidirektita, klaku la butonon por fini vian donacon ĉe PayPal.',
 	'contrib-tracking-button' => 'Daŭrigi',
+	'contrib-tracking-item-name-onetime' => 'Unuopa donaco',
+	'contrib-tracking-item-name-recurring' => 'Ĉiumonata donaco',
 );
 
 /** Spanish (Español)
