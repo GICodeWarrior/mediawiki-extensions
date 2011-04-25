@@ -301,7 +301,7 @@
 }
 
 .articleFeedback-expertise label {
-	margin-left: 0.25em;
+	margin-left: 0.5em;
 	margin-bottom: 0.5em;
 	float: left;
 	line-height: 1.4em;
@@ -314,17 +314,24 @@
 }
 
 .articleFeedback-expertise-options input {
-	margin-left: 2em;
+	display: block;
+	clear: both;
+	margin: 0.5em 0 0.5em 2em;
+}
+
+.articleFeedback-expertise-options label {
+	line-height: 1.6em;
 }
 
 .articleFeedback-expertise-options .articleFeedback-helpimprove-email {
-	clear: none;
-	float: none;
 	width: 20em;
-	margin-left: 0.25em;
+	margin-left: 4em;
+	margin-top: 0.25em;
+	cursor: text;
 }
 
 .articleFeedback-helpimprove-note {
+	margin-left: 4em;
 	font-size: 0.8em;
 	clear: both;
 }

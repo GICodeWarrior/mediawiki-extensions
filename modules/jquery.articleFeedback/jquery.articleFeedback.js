@@ -71,9 +71,12 @@ $.articleFeedback = {
 					<div><input type="checkbox" value="profession" /><label><html:msg key="form-panel-expertise-profession" /></label></div>\
 					<div><input type="checkbox" value="hobby" /><label><html:msg key="form-panel-expertise-hobby" /></label></div>\
 					<div><input type="checkbox" value="other" /><label><html:msg key="form-panel-expertise-other" /></label></div>\
-					<div class="articleFeedback-helpimprove"><input type="checkbox" value="helpimprove-email" /><label><html:msg key="form-panel-helpimprove" /><input type="text" placeholder="" class="articleFeedback-helpimprove-email" />\
+					<div class="articleFeedback-helpimprove">\
+						<input type="checkbox" value="helpimprove-email" />\
+						<label><html:msg key="form-panel-helpimprove" /></label>\
+						<input type="text" placeholder="" class="articleFeedback-helpimprove-email" />\
 						<div class="articleFeedback-helpimprove-note"></div>\
-					</label></div>\
+					</div>\
 				</div>\
 			</div>\
 			<div style="clear:both;"></div>\
@@ -611,6 +614,14 @@ $.articleFeedback = {
 							.next()
 								.attr( 'for', id );
 					})
+					.end()
+				.find( '.articleFeedback-helpimprove-email' )
+					.bind( 'mousedown click', function( e ) {
+						$(this)
+							.closest( '.articleFeedback-helpimprove' )
+								.find( 'input:checkbox' )
+									.attr( 'checked', true );
+					} )
 					.end()
 				// Buttonify the button
 				.find( '.articleFeedback-submit' )
