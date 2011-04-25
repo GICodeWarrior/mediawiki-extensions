@@ -175,8 +175,10 @@ class Mongo(AbstractDatabase):
     def retrieve_editors(self):
         q = queue.JoinableRetryQueue()
         cursor = self.find('editor')
+        print 'Loading editors...'
         for editor in cursor:
             q.put(editor['editor'])
+        print 'Finished loading editors...'
         return q
 
     def retrieve_distinct_keys(self, key, force_new=False):
