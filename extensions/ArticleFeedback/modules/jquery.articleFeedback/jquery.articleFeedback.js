@@ -640,6 +640,10 @@ $.articleFeedback = {
 								$.trackAction( prefix( 'pitch-' + key + '-show' ) );
 							}
 						} else {
+							// Track that a pitch was not presented
+							if ( tracked && typeof $.trackAction == 'function' ) {
+								$.trackAction( prefix( 'pitch-bypass' ) );
+							}
 							// Give user some feedback that a save occured
 							context.$ui.find( '.articleFeedback-success span' ).fadeIn( 'fast' );
 							context.successTimeout = setTimeout( function() {
