@@ -1391,6 +1391,9 @@ $messages['eo'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimumoj (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaro ĝis nun (usonaj dolaroj)',
 	'fundraiserstats-instructions' => 'Por vidi statistikojn por iu tago, ŝvebu la kursoron super la tiutaga breto. Ĉiu jaro reprezentas propran koloron en la diagramo.',
+	'fundraiserstats-show-years' => 'Montri la jenajn jarojn:',
+	'fundraiserstats-time-zone' => 'Horzono:',
+	'fundraiserstats-utc' => '(de UTC)',
 );
 
 /** Spanish (Español)
@@ -3864,6 +3867,7 @@ $messages['no'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
 	'fundraiserstats-tab-ytd' => 'Året til idag (USD)',
 	'fundraiserstats-instructions' => 'For å se statistikk for en dag, hold musepekeren over linjen for den dagen. Hvert år har en egen farge i diagrammet.',
+	'fundraiserstats-customize' => 'Tilpass',
 	'fundraiserstats-show-years' => 'Vis de følgende årene:',
 	'fundraiserstats-time-zone' => 'Tidssone:',
 	'fundraiserstats-utc' => '(fra UTC)',
