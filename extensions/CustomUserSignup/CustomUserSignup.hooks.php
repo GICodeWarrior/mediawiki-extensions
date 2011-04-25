@@ -124,6 +124,19 @@ class CustomUserSignupHooks {
 			
 			setcookie( 'acctcreation' , $buckets['AccountCreation'][0] , 
 					time() + 60 * 60 * 24 * 365  );
+					
+			$session = $wgRequest->getCookie( 'clicktrackingsession', "" );
+			if ( $session !== null ) {
+				$params = new FauxRequest( array(
+					'action' => 'clicktracking',
+					'eventid' => 'account-created',
+					'token' => $session,
+					'info' => 'account-activity',
+				) );
+				$api = new ApiMain( $params, true );
+				$api->execute();
+			}
+				
 		}
 		return true;
 	}
