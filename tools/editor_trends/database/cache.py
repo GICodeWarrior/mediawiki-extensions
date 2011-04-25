@@ -54,7 +54,6 @@ class EditorCache:
     def add(self, key, value):
         if value == 'NEXT':
             self.n += 1
-            print self.editors
             edits = self.drop_years_no_obs(self.editors[key]['edits'])
             self.insert(key, edits, self.editors[key]['username'])
             del self.editors[key]
