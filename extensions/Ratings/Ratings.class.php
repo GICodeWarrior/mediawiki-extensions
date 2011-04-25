@@ -176,7 +176,7 @@ final class Ratings {
 		return $tags;
 	}
 	
-	protected static function loadJs( Parser $parser ) {
+	public static function loadJs( Parser $parser ) {
 		static $loadedJs = false;
 		
 		if ( $loadedJs ) {
