@@ -295,6 +295,19 @@ $messages['nl'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd. U mag maximaal {{PLURAL:$1|$1 ontvanger|$1 ontvangers}} selecteren.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'emailusers-desc' => "Përmëtte a j'utent ëd mandé corej a pi ricevent",
+	'right-sendbatchemail' => 'Manda corel a pi ricevent al midem temp',
+	'emailusers' => 'Utent ëd corel',
+	'emailusers-target-reverse' => "Manda a tùit j'utent an gavand coj selessionà",
+	'emailusers-norecipient' => "A-i é pa gnun ch'it peuss-ie mandeje ëd corel.",
+	'emailusers-norecipientselected' => "Pa gnun ricevent a l'é selessionà.",
+	'emailusers-toomanyrecipientsselected' => 'Tròp ricevent a son selessionà ({{PLURAL:$1|màssim $1|màssim $1}}).',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
