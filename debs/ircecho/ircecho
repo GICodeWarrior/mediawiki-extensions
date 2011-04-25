@@ -8,14 +8,11 @@
 
 import sys
 import pyinotify
-from optparse import OptionParser
-
-sys.path.append('/usr/ircecho/lib')
-
-from ircbot import SingleServerIRCBot
-from irclib import nm_to_n
-
+import ircbot
+import irclib
 import threading
+
+from optparse import OptionParser
 
 class EchoReader(threading.Thread):
 	def __init__(self, bot, chans, infile=''):
@@ -51,10 +48,10 @@ class EchoReader(threading.Thread):
 				except Exception:
 					pass
 
-class EchoBot(SingleServerIRCBot):
+class EchoBot(ircbot.SingleServerIRCBot):
 	def __init__(self, chans, nickname, server):
 		print "*** Connecting to IRC server %s..." % server
-		SingleServerIRCBot.__init__(self, [(server, 6667)], nickname, "IRC echo bot")
+		ircbot.SingleServerIRCBot.__init__(self, [(server, 6667)], nickname, "IRC echo bot")
 		self.chans = chans
 
 	def on_nicknameinuse(self, c, e):

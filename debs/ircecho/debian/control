@@ -6,6 +6,6 @@ Build-Depends: debhelper (>= 4)
 Standards-Version: 1.0
 
 Package: ircecho
-Depends: python-pyinotify
+Depends: python-pyinotify, python-irclib
 Architecture: all
 Description: IRC bot for echoing from stdin to IRC.
