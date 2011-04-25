@@ -46,15 +46,14 @@ MW.activeCampaigns.AccountCreation =
   // "allActive" is reserved.
   // If this function exists, it will be apply to every user not in the "none" bucket
   "allActive": function(){
-	  if($j.cookie('acctcreation') ){
+		   
+		  //track account creation attempts
+		  $j("#wpCreateaccount").click(function(){ $j.trackAction('submit-signup-data'); });
 		  
-		  //track login attempt
-		  $j("#wpLoginAttempt").click(function(){ $j.trackAction('login-attempt'); });
+		  //this is the "don't have an account? CREATE ONE" link
+		  $j("#userloginlink").click(function(){ $j.trackAction('visit-signup'); });
 		  
-		  //track account creation
-		  $j("#wpCreateaccount").click(function(){ $j.trackAction('account-created'); });
-		  $j("#userloginlink").click(function(){ $j.trackAction('login-link'); });
-		  
+	if($j.cookie('acctcreation') ){
 		  //add click tracking to preview
 		  $j("#wpPreview").click(function(){ $j.trackAction('preview'); });
 		  
