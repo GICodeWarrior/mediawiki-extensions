@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: mwclient
+Version: 0.6.5
+Summary: MediaWiki API client
+Home-page: http://sourceforge.net/projects/mwclient/
+Author: Baishampayan Ghose
+Author-email: b.ghose@gmail.com
+License: MIT License
+Description: UNKNOWN
+Keywords: wikipedia,mediawiki
+Platform: UNKNOWN

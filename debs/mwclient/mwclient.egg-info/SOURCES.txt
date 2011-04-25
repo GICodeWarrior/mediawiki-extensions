@@ -1,0 +1,17 @@
+README.txt
+setup.cfg
+setup.py
+mwclient/__init__.py
+mwclient/client.py
+mwclient/compatibility.py
+mwclient/errors.py
+mwclient/ex.py
+mwclient/http.py
+mwclient/listing.py
+mwclient/page.py
+mwclient/page_nowriteapi.py
+mwclient/upload.py
+mwclient.egg-info/PKG-INFO
+mwclient.egg-info/SOURCES.txt
+mwclient.egg-info/dependency_links.txt
+mwclient.egg-info/top_level.txt

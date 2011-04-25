@@ -1,0 +1,5 @@
+mwclient (0.6.5-1) lucid-wikimedia; urgency=low
+
+  * Initial package
+
+ -- Ryan Lane <rlane@wikimedia.org>  Mon, 25 Apr 2011 22:57:00 +0000
