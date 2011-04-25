@@ -603,6 +603,14 @@ $messages['oc'] = array(
 	'assert_edit_message' => "L'insercion indicada ($1) a pas capitat.",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'assert_edit_title' => 'ସଜାଣି ହୋଇପାରିଲା ନାହିଁ',
+	'assertedit-desc' => 'ବଟମାନଙ୍କ ତିଆରି ବଦଳ ସଜାଣି ମିଶାଏ',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
