@@ -1,0 +1,20 @@
+table.api-sandbox-options {
+	width: 100%;
+}
+
+td.api-sandbox-label {
+	text-align: right;
+	width: 12em;
+	vertical-align: top;
+	font-family: monospace;
+}
+
+td.api-sandbox-value {
+	width: 18em;
+	vertical-align: top;
+	overflow: auto;
+}
+
+.api-sandbox-input {
+	width: 17em;
+}
