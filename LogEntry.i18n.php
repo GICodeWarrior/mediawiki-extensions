@@ -562,6 +562,13 @@ $messages['sv'] = array(
 	'logentry-invalidtoken' => 'Ogiltig typ',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'logentry-invalidpage' => 'చెల్లని పుట',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
