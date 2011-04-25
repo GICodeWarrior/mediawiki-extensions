@@ -116,6 +116,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'bookmanager-desc' => 'Iloj por libroj',
 	'printversion' => 'Versio por printilo',
 );
 
@@ -243,6 +244,10 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'bookmanager-desc' => 'Verktøy for bøker',
+	'printversion' => 'Utskriftsversjon',
+	'printversion-desc' => 'Genererer en [[Special:PrintVersion|utskriftsversjon]] av en bok',
+	'printversion-no-book' => 'Skriv inn navnet på en bok for å få dens utskriftsversjon.',
+	'printversion-inexistent-book' => 'Bok ikke funnet. Skriv inn navnet på en eksisterende bok for å få dens utskriftsversjon.',
 );
 
 /** Piedmontese (Piemontèis)
