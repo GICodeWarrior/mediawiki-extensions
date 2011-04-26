@@ -176,6 +176,36 @@ $messages['bg'] = array(
 	'mwe-clipedit-duration' => 'Продължителност:',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'mwe-clipedit-insert_image_page' => 'পাতায় যোগ করুন',
+	'mwe-clipedit-insert_into_sequence' => 'ধারাবাহিক সিকোয়েন্সে যোগ করুন',
+	'mwe-clipedit-preview_insert' => 'প্রাকদর্শন যোগ',
+	'mwe-clipedit-cancel_image_insert' => 'বাতিল যোগ',
+	'mwe-clipedit-sc_attributes' => 'ক্লিপের বিস্তারিত সম্পাদনা',
+	'mwe-clipedit-sc_inoutpoints' => 'ইন-আউট পয়েন্ট নির্ধারণ',
+	'mwe-clipedit-sc_audio' => 'অডিও নিয়ন্ত্রণ',
+	'mwe-clipedit-sc_duration' => 'সময়সীমা',
+	'mwe-clipedit-template_properties' => 'টেমপ্লেটের বিষয়বস্তু',
+	'mwe-clipedit-custom_title' => 'স্বনির্ধারিত শিরোনাম',
+	'mwe-clipedit-edit_properties' => 'সম্পাদনার বিষয়বস্তু',
+	'mwe-clipedit-other_properties' => 'অন্যান্য বিষয়বস্তু',
+	'mwe-clipedit-resource_page' => 'উৎস পাতা:',
+	'mwe-clipedit-set_in_out_points' => 'ইন-আউট পয়েন্ট নির্ধারণ',
+	'mwe-clipedit-start_time' => 'শুরুর সময়',
+	'mwe-clipedit-end_time' => 'শেষের সময়',
+	'mwe-clipedit-preview_inout' => 'ইন-আউট পয়েন্টের প্রাকদর্শন',
+	'mwe-clipedit-edit-tools' => 'সম্পাদনা সরঞ্জাম',
+	'mwe-clipedit-inline-description' => 'ক্যাপশন',
+	'mwe-clipedit-edit-video-tools' => 'ভিডিও সরঞ্জাম সম্পাদনা:',
+	'mwe-clipedit-duration' => 'সময়সীমা:',
+	'mwe-clipedit-layout' => 'কাঠামো:',
+	'mwe-clipedit-layout_right' => 'ডান পার্শ্বের ছবির কাঠামো',
+	'mwe-clipedit-layout_left' => 'বাম পার্শ্বের ছবির কাঠামো',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -1414,6 +1444,27 @@ $messages['ro'] = array(
 	'mwe-clipedit-inline-description' => 'Descriere',
 	'mwe-clipedit-edit-video-tools' => 'Editare instrumente video:',
 	'mwe-clipedit-duration' => 'Durată:',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mwe-clipedit-crop' => "Tagghie l'immaggine",
+	'mwe-clipedit-apply_crop' => "Appliche 'u tagghie a l'immaggine",
+	'mwe-clipedit-reset_crop' => 'Azzere retagghie',
+	'mwe-clipedit-insert_image_page' => "Sckaffe jndr'à pàgene",
+	'mwe-clipedit-insert_into_sequence' => "Sckaffe jndr'à sequenze",
+	'mwe-clipedit-preview_insert' => 'Andeprime de inzerimende',
+	'mwe-clipedit-cancel_image_insert' => "Annulle l'inzerimende",
+	'mwe-clipedit-sc_audio' => "Condroll de l'audio",
+	'mwe-clipedit-sc_duration' => 'Durate',
+	'mwe-clipedit-template_properties' => "Probbietà d'u template",
+	'mwe-clipedit-custom_title' => 'Titele personalizzate',
+	'mwe-clipedit-edit-tools' => 'Struminde de le cangiaminde',
+	'mwe-clipedit-inline-description' => "'Ndestazione",
+	'mwe-clipedit-duration' => 'Durate:',
+	'mwe-clipedit-layout' => 'Disposizione',
 );
 
 /** Russian (Русский)

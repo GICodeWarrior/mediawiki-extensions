@@ -506,6 +506,7 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'addmediawizard-desc' => 'Aggiunge le wizard de le media, sviluppate inzieme a Katura e Uicchimedia Foundation',
+	'addmediawizard-loading' => 'Wizard de carecamende pe aggiungere media',
 );
 
 /** Russian (Русский)
