@@ -262,7 +262,7 @@ class ClickTrackingHooks {
 	}
 	
 	protected static function trackRequest( $suffix ) {
-		global $wgRequest;
+		global $wgRequest, $wgTitle;
 		
 		$session = $wgRequest->getVal( 'clicktrackingsession' );
 		$event = $wgRequest->getVal( 'clicktrackingevent' );
@@ -273,6 +273,7 @@ class ClickTrackingHooks {
 				'eventid' => $event . $suffix,
 				'token' => $session,
 				'info' => $info,
+				'namespacenumber' => $wgTitle->getNamespace(),
 			) );
 			$api = new ApiMain( $params, true );
 			$api->execute();
