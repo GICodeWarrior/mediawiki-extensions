@@ -973,7 +973,7 @@ $messages['fr'] = array(
 	'readerfeedback-level-4' => 'Excellent',
 	'readerfeedback-submit' => 'Soumettre',
 	'readerfeedback-main' => 'Seules les pages de contenu peuvent être évaluées.',
-	'readerfeedback-success' => "'''Merci d’avoir relu cette page !''' ([$2 voir les résultats]) ([$3 des questions ou des commentaires ?])",
+	'readerfeedback-success' => "'''Merci d’avoir évalué cette page !''' ([$2 voir les résultats]) ([$3 des questions ou des commentaires ?])",
 	'readerfeedback-voted' => "'''Il semble que vous ayez déjà évalué cette page''' ([$2 voir les résultats]) ([$3 des questions ou des commentaires ?])",
 	'readerfeedback-error' => "'''Une erreur est survenue lors de l’évaluation de cette page''' ([$2 voir les résultats]) ([$3 remarques ou questions ?]).",
 	'readerfeedback-submitting' => 'Soumission…',
@@ -985,7 +985,7 @@ $messages['fr'] = array(
 	'readerfeedback-tier-poor' => 'Mauvaise',
 	'tooltip-ca-ratinghist' => 'Évaluations de cette page par les lecteurs',
 	'specialpages-group-feedback' => 'Opinion du lecteur',
-	'readerfeedback-tt-review' => 'Soumettre la révision',
+	'readerfeedback-tt-review' => "Soumettre l'évaluation",
 );
 
 /** Franco-Provençal (Arpetan)
