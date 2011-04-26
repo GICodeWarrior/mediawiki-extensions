@@ -55,16 +55,16 @@ class Storer(consumers.BaseConsumer):
             fh = file_utils.create_txt_filehandle(self.rts.sorted, filename,
                                                   'r', 'utf-8')
             for line in file_utils.read_raw_data(fh):
-                if len(line) == 12:
-                    editor = line[2]
-                    #print 'Parsing %s' % contributor
-                    if prev_editor != editor and prev_editor != -1:
-                        editor_cache.add(prev_editor, 'NEXT')
+                #if len(line) == 12:
+                editor = line[0]
+                #print 'Parsing %s' % editor
+                if prev_editor != editor and prev_editor != -1:
+                    editor_cache.add(prev_editor, 'NEXT')
 
-                    data = prepare_data(line)
-                    #print editor, data['username']
-                    editor_cache.add(editor, data)
-                    prev_editor = editor
+                data = prepare_data(line)
+                print editor, data['username']
+                editor_cache.add(editor, data)
+                prev_editor = editor
             fh.close()
             self.result.put(True)
 
@@ -159,7 +159,7 @@ def launcher_articles(rts):
 
     tasks.join()
 
-    print 'Creating indexes...'
+    print '\nCreating indexes...'
     db.add_index('id')
     db.add_index('title')
     db.add_index('ns')
@@ -208,7 +208,7 @@ def launcher(rts):
         break
 
     tasks.join()
-    print 'Creating indexes...'
+    print '\nCreating indexes...'
     db.add_index('editor')
     db.add_index('username')
 
