@@ -1842,6 +1842,7 @@ $messages['ckb'] = array(
 
 /** Czech (Česky)
  * @author Danny B.
+ * @author Jkjk
  * @author Kuvaly
  * @author Matěj Grabovský
  * @author Mormegil
@@ -1939,6 +1940,7 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-section-proxy' => 'Proxy',
 	'configure-section-cookie' => 'Cookies',
 	'configure-section-performance' => 'Výkon',
+	'configure-section-test' => 'Testy',
 	'configure-section-upload' => 'Nahrávání',
 	'configure-section-sharedupload' => 'Sdílené nahrávání',
 	'configure-section-mime' => 'MIME typy',
@@ -1951,7 +1953,6 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-section-externalauth' => 'Externí autentizace',
 	'configure-section-feed' => 'Kanál zpráv',
 	'configure-section-job' => 'Úlohy',
-	'configure-section-extension' => 'Rozšíření',
 	'configure-section-search' => 'Hledání',
 	'configure-section-copyright' => 'Autorská práva',
 	'configure-section-htcp' => 'HTCP multicast',
@@ -8195,10 +8196,22 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Odisha1
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'configure-desc-ns' => 'ନେମସ୍ପେସ',
+	'configure-desc-val' => 'ମୂଲ୍ୟ',
+	'configure-form-reason' => 'କାରଣ:',
+	'configure-js-remove' => 'ଲିଭେଇବେ',
+	'configure-old-changes' => 'ବଦଳାଇବା',
+	'configure-section-pages' => 'ପୃଷ୍ଠା',
+	'configure-section-email' => 'ଇ-ମେଲ',
+	'configure-section-namespaces' => 'ନେମସ୍ପେସ',
+	'configure-section-category' => 'ଶ୍ରେଣୀସବୁ',
 	'configure-section-search' => 'ଖୋଜିବା',
+	'configure-view' => 'ଦେଖା',
+	'configure-throttle-action-edit' => 'ବଦଳାଇବେ',
 );
 
 /** Ossetic (Иронау)
