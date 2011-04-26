@@ -268,6 +268,41 @@ $messages['bg'] = array(
 	'cb_edit_remove_hint' => 'Изтриване, ако е възможно',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'categorybrowser' => 'বিষয়শ্রেণী পরিদর্শক',
+	'cb_requires_javascript' => 'এই বিষয়শ্রেণী পরিদর্শক এক্সটেনশনটি ব্রাউজারে সক্রিয় করতে জাভাস্ক্রিপ্ট প্রয়োজন।',
+	'cb_show_no_parents_only' => 'শুধুমাত্র সেই বিষয়শ্রেণীগুলোই প্রদর্শন করো যার কোনো মাতৃ-বিষয়শ্রেণী নেই',
+	'cb_cat_name_filter' => 'নাম অনুসারে বিষয়শ্রেণী খুঁজুন:',
+	'cb_cat_name_filter_clear' => 'বিষয়শ্রেণী নামের ফিল্টার পরিস্কার করতে বাটন প্রেস করুন',
+	'cb_cat_name_filter_ci' => 'কেস সেনসিটিভ',
+	'cb_copy_line_hint' => 'নির্ধারিত এক্সপ্রেশনে অপারেটসমূহ কপি ও পেস্ট করতে [+] ও [>+] বাটন ব্যবহার করুন',
+	'cb_has_subcategories' => '$1টি {{PLURAL:$1|উপবিষয়শ্রেণী|উপবিষয়শ্রেণীসমূহ}}',
+	'cb_has_pages' => '$1টি {{PLURAL:$1|পাতা|পাতা}}',
+	'cb_has_files' => '$1টি {{PLURAL:$1|ফাইল|ফাইল}}',
+	'cb_has_parentcategories' => 'মাতৃ বিষয়শ্রেণী (যদি থাকে)',
+	'cb_previous_items_link' => 'পূর্ববর্তী',
+	'cb_next_items_link' => 'পরবর্তী',
+	'cb_next_items_stats' => ' ($1 থেকে)',
+	'cb_cat_subcats' => 'উপবিষয়শ্রেণী',
+	'cb_cat_pages' => 'পাতা',
+	'cb_cat_files' => 'ফাইল',
+	'cb_apply_button' => 'অাবেদন',
+	'cb_all_op' => 'সকল',
+	'cb_or_op' => 'অথবা',
+	'cb_and_op' => 'এবং',
+	'cb_edit_left_hint' => 'সম্ভব হলে, বামে সরান',
+	'cb_edit_right_hint' => 'সম্ভব হলে, ডানে সরান',
+	'cb_edit_remove_hint' => 'সম্ভব হলে, অপসারণ করুন',
+	'cb_edit_copy_hint' => 'অপারেট ক্লিপবোর্ডে কপি করুন',
+	'cb_edit_append_hint' => 'সর্বশেষ অবস্থানে অপারেটর যোগ করুন',
+	'cb_edit_clear_hint' => 'বর্তমান এক্সপ্রেশন পরিস্কার করুন (সবকিছু নির্বাচন)',
+	'cb_edit_paste_hint' => 'সম্ভব হলে, অপারেটর বর্তমান অবস্থানে পেস্ট করুন',
+	'cb_edit_paste_right_hint' => 'সম্ভব হলে, অপারেটর সামনের অবস্থানে পেস্ট করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal
@@ -400,6 +435,13 @@ $messages['ce'] = array(
  * @author Jkjk
  */
 $messages['cs'] = array(
+	'categorybrowser' => 'Prohližeč kategorií',
+	'categorybrowser-desc' => ' [[Special:CategoryBrowser|Speciální strana]] pro odfiltrování kategorií s největším počtem položek a jejich prohlížení přes rozhraní AJAX.',
+	'cb_requires_javascript' => 'Rozšíření prohlížeč kategorií vyžaduje, aby byl JavaScrpt v prohlížeči povolen.',
+	'cb_show_no_parents_only' => 'Zobrazí kategorie, které nejsou v žádné nadřazené kategorii',
+	'cb_cat_name_filter' => 'Hledat kategorii podle jejího názvu:',
+	'cb_cat_name_filter_clear' => 'Stiskněte k vymazání filtru názvu kategorií',
+	'cb_cat_name_filter_ci' => 'Citlivost na velká písmena',
 	'cb_has_files' => '$1 {{PLURAL:$1|soubor|soubory|souborů}}',
 	'cb_has_parentcategories' => 'rodičovské kategorie (pokud existují)',
 	'cb_previous_items_link' => 'Předchozí',
@@ -1549,6 +1591,20 @@ $messages['ro'] = array(
 	'cb_edit_left_hint' => 'Mută la stânga, dacă e posibil',
 	'cb_edit_right_hint' => 'Mută la dreapta, dacă e posibil',
 	'cb_edit_remove_hint' => 'Şterge, dacă e posibil',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'cb_previous_items_link' => 'Precedende',
+	'cb_next_items_link' => 'Prossime',
+	'cb_cat_pages' => 'pàggene',
+	'cb_cat_files' => 'file',
+	'cb_apply_button' => 'Appleche',
+	'cb_all_op' => 'Tutte',
+	'cb_or_op' => 'o',
+	'cb_and_op' => 'e',
 );
 
 /** Russian (Русский)
