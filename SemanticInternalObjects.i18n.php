@@ -305,3 +305,10 @@ $messages['vi'] = array(
 	'semanticinternalobjects-desc' => 'Thiết kế các đối tượng nội bộ trong Semantic MediaWiki',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'semanticinternalobjects-desc' => '在语义MediaWiki中设置内部对象',
+);
+
