@@ -16,9 +16,12 @@ __date__ = "April 8th, 2010"
 
 
 import sys
+sys.path.append('../')
+
 import MySQLdb
 import math
 import datetime
+import re        # regular expression matching
 
 import miner_help as mh
 import QueryData as QD
@@ -55,26 +58,127 @@ class DataLoader(object):
         self._db_.close()
     
     """
-        <DESCRIPTION>
+        Make a new key-entry based on the search key and action.  Take all keys containing the search_key
+        and compose a new key with action.
+        
+        NOTE: this method will fail if 
+        
+        INPUT:
+                data_dict        -
+                search_strings   - list of substrings 
+                action           - one of {'+', '-', '*', '/'}, specifies the operation to compose the new key list
+                 
+        RETURN: 
+                new_data_dict    - 
+    """
+    def compose_key(self, data_dict, search_strings, new_key, action):
+        
+        new_data_dict = dict()
+        new_list = list()
+        
+        for key in data_dict.keys():
+            for str in search_strings:
+                
+                if re.search(str, key):
+                    if len(new_list) == 0:
+                        new_list = data_dict[key]
+                    else:
+                        if action == '+': 
+                            
+                            """ catch any errors """
+                            try:
+                                for i in range(len(new_list)):
+                                    new_list[i] = new_list[i] + data_dict[key][i]
+                            except IndexError as e:
+                                print >> sys.stderr, e.msg
+                                break;
+                
+                new_data_dict[key] = data_dict[key]
+            
+        new_data_dict[new_key] = new_list
+        
+        return new_data_dict
+    
+    """
+        Only include keys from data_dict that are not matched on strings in search_strings.
+        
+        INPUT:
+                data_dict        -
+                search_strings   - list of substrings 
+                action           - one of {'+', '-', '*', '/'}, specifies the operation to compose the new key list
+                 
+        RETURN: 
+                new_data_dict    - 
+                        -          
+    """
+    def include_keys(self, data_dict, search_strings):
+        
+        new_data_dict = dict()
+        
+        for key in data_dict.keys():
+            for str in search_strings:
+                """ is the key a super-string of any of the strings in search_strings  """
+                if re.search(str, key):
+                    new_data_dict[key] = data_dict[key]
+            
+        return new_data_dict
+    
+    """
+        Remove all keys from data_dict that are not matched on strings in search_strings.
+        
+         INPUT:
+                data_dict        -
+                search_strings   - list of substrings 
+                action           - one of {'+', '-', '*', '/'}, specifies the operation to compose the new key list
+                 
+        RETURN: 
+                new_data_dict    - 
+                        -          
+    """
+    def exclude_keys(self, data_dict, search_strings):
+        
+        new_data_dict = dict()
+        regExp = ''
+        
+        for str in search_strings:
+                regExp = regExp + '(' + str + ')|'
+                
+        regExp = regExp[:-1]
+ 
+        for key in data_dict.keys():
+            if not(re.search(regExp, key)):
+                new_data_dict[key] = data_dict[key]
+                    
+        return new_data_dict
+
+    
+    """
+        Return a specific query name given a query type
         
         INPUT:
                 query_type        -
                 
-            
         RETURN: 
-                        - 
+                 query_name       - 
                 
     """
     def get_sql_filename_for_query(self, query_type):
-        return ''
+        
+        try:
+            query_name = self.get_sql_filename_for_query(query_type)
+        except KeyError:
+            print >> sys.stderr, 'Could not find a query for type: ' + query_type  
+            sys.exit(2)
+            
+        return query_name
         
 class IntervalReportingLoader(DataLoader):
      
     def __init__(self):
-         self._query_names_['banner'] = 'report_banner_metrics_minutely'
-         self._query_names_['LP'] = 'report_LP_metrics_minutely'
-         self._query_names_['campaign'] = 'report_campaign_metrics_minutely'
-         self._query_names_['campaign_total'] = 'report_campaign_metrics_minutely_total'
+        self._query_names_['banner'] = 'report_banner_metrics_minutely'
+        self._query_names_['LP'] = 'report_LP_metrics_minutely'
+        self._query_names_['campaign'] = 'report_campaign_metrics_minutely'
+        self._query_names_['campaign_total'] = 'report_campaign_metrics_minutely_total'
          
     def get_sql_filename_for_query(self, query_type):
         return self._query_names_[query_type]
@@ -99,15 +203,10 @@ class IntervalReportingLoader(DataLoader):
         
         self.init_db()
         
-        try:
-            query_name = self.get_sql_filename_for_query(query_type)
-        except KeyError:
-            print 'Could not find a query for type: ' + query_type  
-            sys.exit(2)
+        query_name = self.get_sql_filename_for_query(query_type)
         
         metrics = mh.AutoVivification()
         times = mh.AutoVivification()
-        times_norm = mh.AutoVivification()
         
         """ Compose datetime objects to represent the first and last intervals """
         start_time_obj = TP.timestamp_to_obj(start_time, 1)
@@ -134,7 +233,7 @@ class IntervalReportingLoader(DataLoader):
         
         """ Compose the data for each separate donor pipeline artifact """
         try:
-            err_msg = sql_stmnt
+            # err_msg = sql_stmnt
             self._cur_.execute(sql_stmnt)
             
             results = self._cur_.fetchall()
