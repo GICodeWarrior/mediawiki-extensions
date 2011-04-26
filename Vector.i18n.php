@@ -767,6 +767,7 @@ Ha be vagy jelentkezve letilthatod ezt a figyelmeztetést a beállításaid „S
 	'vector-editwarning-preference' => 'Figyelmeztessen, ha szerkesztéskor a módosítások mentése nélkül akarom elhagyni a lapot',
 	'vector-simplesearch-search' => 'Keresés',
 	'vector-simplesearch-containing' => 'tartalmazza…',
+	'vector-noexperiments-preference' => 'Nem akarok kísérleti funkciókat használni',
 );
 
 /** Armenian (Հայերեն)
@@ -1367,6 +1368,7 @@ Ce tu è trasute, tu puè disabbilità st\'avvertimende jndr\'à sezione "Cangia
 	'vector-editwarning-preference' => "Avvisave quanne jie lasse 'na pàgene cangiate senze ca agghie sarvate le cangiaminde",
 	'vector-simplesearch-search' => 'Cirche',
 	'vector-simplesearch-containing' => 'tène...',
+	'vector-noexperiments-preference' => 'Escludeme da le funziune sperimendale',
 );
 
 /** Russian (Русский)
@@ -1796,6 +1798,7 @@ $messages['zh-hans'] = array(
  * @author Gaoxuewei
  * @author Liangent
  * @author Mark85296341
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'vector' => 'Vector 使用者介面改進',
@@ -1807,5 +1810,6 @@ $messages['zh-hant'] = array(
 	'vector-editwarning-preference' => '當我在更改未儲存時離開頁面時警告我',
 	'vector-simplesearch-search' => '搜尋',
 	'vector-simplesearch-containing' => '包含...',
+	'vector-noexperiments-preference' => '我不參與功能實險',
 );
 
