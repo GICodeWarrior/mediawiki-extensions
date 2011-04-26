@@ -55,14 +55,15 @@ class Storer(consumers.BaseConsumer):
             fh = file_utils.create_txt_filehandle(self.rts.sorted, filename,
                                                   'r', 'utf-8')
             for line in file_utils.read_raw_data(fh):
-                #if len(line) == 12:
+                if len(line) == 1:
+                    continue
                 editor = line[0]
                 #print 'Parsing %s' % editor
                 if prev_editor != editor and prev_editor != -1:
                     editor_cache.add(prev_editor, 'NEXT')
 
                 data = prepare_data(line)
-                print editor, data['username']
+                #print editor, data['username']
                 editor_cache.add(editor, data)
                 prev_editor = editor
             fh.close()
@@ -74,26 +75,30 @@ def prepare_data(line):
     Prepare a single line to store in the database, this entails converting
     to proper variable and taking care of the encoding.
     '''
-    article_id = int(line[1])
-    username = line[3].encode('utf-8')
-    ns = int(line[4])
-    date = text_utils.convert_timestamp_to_datetime_utc(line[6])
-    md5 = line[7]
-    revert = int(line[8])
-    bot = int(line[9])
-    cur_size = int(line[10])
-    delta = int(line[11])
+    try:
+        article_id = int(line[1])
+        username = line[3].encode('utf-8')
+        ns = int(line[4])
+        date = text_utils.convert_timestamp_to_datetime_utc(line[6])
+        md5 = line[7]
+        revert = int(line[8])
+        bot = int(line[9])
+        cur_size = int(line[10])
+        delta = int(line[11])
 
-    data = {'date': date,
-            'article': article_id,
-            'username': username,
-            'ns': ns,
-            'hash': md5,
-            'revert':revert,
-            'cur_size':cur_size,
-            'delta':delta,
-            'bot':bot
-    }
+        data = {'date': date,
+                'article': article_id,
+                'username': username,
+                'ns': ns,
+                'hash': md5,
+                'revert':revert,
+                'cur_size':cur_size,
+                'delta':delta,
+                'bot':bot
+        }
+    except:
+        print line, len(line)
+        return {}
     return data
 
 
