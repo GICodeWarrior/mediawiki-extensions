@@ -68,6 +68,17 @@ $messages['bg'] = array(
 	'printversion-desc' => 'Създава [[Special:PrintVersion|версия за печат]] на книга',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'bookmanager-desc' => 'বইয়ের জন্য সরঞ্জাম',
+	'printversion' => 'ছাপার যোগ্য সংস্করণ',
+	'printversion-desc' => 'একটি বইয়ের [[Special:PrintVersion|ছাপার যোগ্য সংস্করণ]] তৈরি করুন',
+	'printversion-no-book' => 'ছাপার যোগ্য সংষ্করণ পেতে অনুগ্রহপূর্বক বইটির নাম প্রবেশ করান।',
+	'printversion-inexistent-book' => 'বইটি খুঁজে পাওয়া যায়নি। ছাপার যোগ্য সংস্করণ পেতে অনুগ্রহপূর্বক ইতিমধ্যেই থাকা একটি বইয়ের নাম প্রবেশ করান।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -98,6 +109,17 @@ $messages['ca'] = array(
 	'printversion-desc' => "Genera una [[Special:PrintVersion|versió per imprimir]] d'un llibre",
 	'printversion-no-book' => "Introduïu el nom d'un llibre per a obtenir la seva versió impresa.",
 	'printversion-inexistent-book' => "No s'ha trobat el llibre. Introduïu el nom d'un llibre existent, per a obtenir-ne la versió per imprimir.",
+);
+
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'bookmanager-desc' => 'Nástroje pro knihy',
+	'printversion' => 'Verze pro tisk',
+	'printversion-desc' => 'Vytvoří [[Special:PrintVersion|tiskovou verzi]] knihy',
+	'printversion-no-book' => 'Pro vytvoření tiskové verze knihy zadejte prosím název knihy.',
+	'printversion-inexistent-book' => 'Kniha nenalezena. Zadejte prosím jméno existující knihy, pokud chcete její tiskovou verzi.',
 );
 
 /** German (Deutsch)
