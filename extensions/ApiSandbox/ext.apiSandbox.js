@@ -128,28 +128,25 @@ $( document ).ready( function() {
 	}
 
 	function select( values, attributes, selected ) {
-		var s = '<select class="api-sandbox-input"';
+		attributes['class'] = 'api-sandbox-input';
 		if ( isset( attributes.multiple ) ) {
-			s += ' size="' + values.length + '"';
+			attributes['size'] = values.length.toString();
 		}
-		for ( var a in attributes ) {
-			s += ' ' + a + '="' + attributes[a] + '"';
-		}
-		s += '>';
+		var s = '';
 		if ( typeof selected != 'array' ) {
 			if ( selected ) {
-				s += '\n<option value="" selected="selected">' + mw.msg( 'apisb-select-value' ) + '</option>';
+				s += mw.html.element( 'option', { value: '', selected: 'selected' }, mw.msg( 'apisb-select-value' ) );
 			}
 			selected = [];
 		}
 		for ( var i = 0; i < values.length; i++ ) {
-			s += '\n<option value="' + values[i] + '"';
+			var attrs = { value: values[i] };
 			if ( $.inArray( values[i], selected ) >= 0 ) {
-				s += ' selected="selected"';
+				attrs.selected = 'selected';
 			}
-			s += '>' + values[i] + '</option>';
+			s += '\n' + mw.html.element( 'option', attrs, values[i] );
 		}
-		s += '\n</select>';
+		s = mw.html.element( 'select', attributes, new mw.html.Raw( s ) );
 		return s;
 	}
 	
