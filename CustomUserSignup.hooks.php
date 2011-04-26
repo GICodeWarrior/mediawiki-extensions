@@ -116,7 +116,7 @@ class CustomUserSignupHooks {
 	}
 
 	public static function addNewAccount( $user, $byEmail ){
-		global $wgRequest;
+		global $wgRequest, $wgTitle;
 		$buckets = ClickTrackingHooks::unpackBucketInfo();
 		if(isset($buckets['AccountCreation'])   && $buckets['AccountCreation'][0] != "none"){
 			
@@ -132,6 +132,7 @@ class CustomUserSignupHooks {
 					'eventid' => 'account-created',
 					'token' => $session,
 					'info' => 'account-activity',
+					'namespacenumber' => $wgTitle->getNamespace(),
 				) );
 				$api = new ApiMain( $params, true );
 				$api->execute();
