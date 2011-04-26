@@ -165,12 +165,11 @@ class DataLoader(object):
     def get_sql_filename_for_query(self, query_type):
         
         try:
-            query_name = self.get_sql_filename_for_query(query_type)
+            return self._query_names_[query_type]
         except KeyError:
             print >> sys.stderr, 'Could not find a query for type: ' + query_type  
             sys.exit(2)
             
-        return query_name
         
 class IntervalReportingLoader(DataLoader):
      
