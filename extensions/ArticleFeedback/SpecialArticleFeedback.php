@@ -53,9 +53,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		foreach ( $rows as $row ) {
 			$table .= Html::openElement( 'tr' );
 			foreach ( $row as $column ) {
-				$table .= Html::openElement( 'td' );
-				$table .= $column;
-				$table .= Html::closeElement( 'td' );
+				$table .= Html::rawElement( 'td', array(), $column );
 			}
 			$table .= Html::closeElement( 'tr' );
 		}
