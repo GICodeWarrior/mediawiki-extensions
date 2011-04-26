@@ -12,6 +12,25 @@ $( document ).ready( function() {
 	var further = $( '#api-sandbox-further-inputs' );
 	var actionCache = [];
 	var propCache = [];
+	var namespaces = [];
+
+	// load namespaces
+	$.getJSON( mw.config.get( 'wgScriptPath' ) + '/api' + mw.config.get( 'wgScriptExtension' ),
+		{ format: 'json', action: 'query', meta: 'siteinfo', siprop: 'namespaces' },
+		function( data ) {
+			if ( isset( data.query ) && isset( data.query.namespaces ) ) {
+				for ( var id in data.query.namespaces ) {
+					var ns = data.query.namespaces[id]['*'];
+					if ( ns == '' ) {
+						ns = mw.msg( 'apisb-ns-main' );
+					}
+					namespaces.push( { key: id, value: ns } );
+				}
+			} else {
+				showLoadError( further, 'apisb-namespaces-error' );
+			}
+		}
+	);
 
 	function isset( x ) {
 		return typeof x != 'undefined';
@@ -21,8 +40,8 @@ $( document ).ready( function() {
 		element.html( mw.msg( 'apisb-loading' ) ); // @todo:
 	}
 
-	function showLoadError( element ) {
-		element.html( '<span style="error">' + mw.msg( 'apisb-load-error' ) + '</span>' );
+	function showLoadError( element, message ) {
+		element.html( mw.html.element( 'span', { 'class': 'error' }, mw.msg( message ) ) );
 	}
 
 	function parseParamInfo( data ) {
@@ -31,7 +50,7 @@ $( document ).ready( function() {
 			|| ( !isset( data.paraminfo.modules ) && !isset( data.paraminfo.querymodules ) )
 			)
 		{
-			showLoadError( further );
+			showLoadError( further, 'apisb-load-error' );
 			return;
 		}
 		if ( isset( data.paraminfo.modules ) ) {
@@ -41,7 +60,6 @@ $( document ).ready( function() {
 			propCache[data.paraminfo.querymodules[0].name] = data.paraminfo.querymodules[0];
 			createInputs( propCache[data.paraminfo.querymodules[0].name] );
 		}
-		
 	}
 
 	function getQueryInfo( action, prop ) {
@@ -107,15 +125,18 @@ $( document ).ready( function() {
 		switch ( param.type ) {
 			case 'limit':
 				value = 10;
+			case 'user':
+			case 'timestamp':
 			case 'integer':
 			case 'string':
-			case 'user':
 				s = '<input class="api-sandbox-input" id="param-' + name + '" value="' + value + '"/>';
 				break;
 			case 'bool':
 			case 'boolean':
 				s = '<input id="param-' + name + '" type="checkbox"/>';
 				break;
+			case 'namespace':
+				param.type = namespaces;
 			default:
 				if ( typeof param.type == 'object' ) {
 					var id = 'param-' + name;
@@ -144,11 +165,13 @@ $( document ).ready( function() {
 			selected = [];
 		}
 		for ( var i = 0; i < values.length; i++ ) {
-			var attrs = { value: values[i] };
-			if ( $.inArray( values[i], selected ) >= 0 ) {
+			var value = typeof values[i] == 'object' ? values[i].key : values[i];
+			var face = typeof values[i] == 'object' ? values[i].value : values[i];
+			var attrs = { 'value': value };
+			if ( $.inArray( value, selected ) >= 0 ) {
 				attrs.selected = 'selected';
 			}
-			s += '\n' + mw.html.element( 'option', attrs, values[i] );
+			s += '\n' + mw.html.element( 'option', attrs, face );
 		}
 		s = mw.html.element( 'select', attributes, new mw.html.Raw( s ) );
 		return s;

@@ -28,5 +28,10 @@ $wgResourceModules['ext.apiSandbox'] = array(
 	'styles' => 'ext.apiSandbox.css',
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'ApiSandbox',
-	'messages' => array( 'apisb-loading', 'apisb-load-error', 'apisb-select-value' ),
+	'messages' => array(
+		'apisb-loading',
+		'apisb-load-error',
+		'apisb-select-value',
+		'apisb-namespaces-error',
+		'apisb-ns-main' ),
 );
