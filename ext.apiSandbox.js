@@ -76,22 +76,26 @@ $( document ).ready( function() {
 		}
 	}
 
+	function smartEscape( s ) {
+		s = mw.html.escape( s );
+		if ( s.indexOf( '\n ' ) >= 0 ) {
+			s = s.replace( /^(.*?)((?:\n\s+\*?[^\n]*)+)(.*?)$/m, '$1<ul>$2</ul>$3' );
+			s = s.replace( /\n\s+\*?([^\n]*)/g, '\n<li>$1</li>' );
+		}
+		s = s.replace( /\n(?!<)/, '\n<br/>' );
+		return s;
+	}
+
 	function createInputs( info ) {
-		help.text( info.description );
+		help.html( smartEscape( info.description ) );
 		var s = '<table class="api-sandbox-options">\n<tbody>';
 		for ( var i = 0; i < info.parameters.length; i++ ) {
 			var param = info.parameters[i];
 			var name = info.prefix + param.name;
-			var desc = mw.html.escape( param.description );
-			if ( desc.indexOf( '\n ' ) >= 0 ) {
-				desc = desc.replace( /^(.*?)((?:\n\s+[^\n]*)+)(.*?)$/m, '$1<ul>$2</ul>$3' );
-				desc = desc.replace( /\n\s+([^\n]*)/g, '\n<li>$1</li>' );
-			}
-			desc = desc.replace( /\n(?!<)/, '\n<br/>' );
 
 			s += '<tr><td class="api-sandbox-label"><label for="param-' + name + '">' + name + '=</label></td>'
 				+ '<td class="api-sandbox-value">' + input( param, name )
-				+ '</td><td>' + desc + '</td></tr>';
+				+ '</td><td>' + smartEscape( param.description ) + '</td></tr>';
 		}
 		s += '\n</tbody>\n</table>\n';
 		further.html( s );
