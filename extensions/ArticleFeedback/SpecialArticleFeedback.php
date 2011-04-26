@@ -34,12 +34,14 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @param $attribs Array: List of HTML attributes to apply to the table
 	 * @return String: HTML table code
 	 */
-	protected function renderTable( array $headings, array $rows, $id = null ) {
+	protected function renderTable( $caption, array $headings, array $rows, $id = null ) {
 		global $wgOut;
 
 		$table = Html::openElement( 'table', array(
 			'class' => 'articleFeedback-table sortable', 'id' => $id
 		) );
+		// Caption
+		$table .= Html::element( 'caption', array(), $caption );
 		// Head
 		$table .= Html::openElement( 'thead' );
 		$table .= Html::openElement( 'tr' );
@@ -52,8 +54,10 @@ class SpecialArticleFeedback extends SpecialPage {
 		$table .= Html::openElement( 'tbody' );
 		foreach ( $rows as $row ) {
 			$table .= Html::openElement( 'tr' );
-			foreach ( $row as $column ) {
-				$table .= Html::rawElement( 'td', array(), $column );
+			foreach ( $row as $class => $column ) {
+				$attr = is_string( $class )
+					? array( 'class' => 'articleFeedback-table-column-' . $class ) : array();
+				$table .= Html::rawElement( 'td', $attr, $column );
 			}
 			$table .= Html::closeElement( 'tr' );
 		}
@@ -68,14 +72,26 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return String: HTML table of daily highs and lows
 	 */
 	protected function renderDailyHighsAndLows() {
-		global $wgOut;
+		global $wgOut, $wgArticleFeedbackRatings;
 
-		$data = $this->getDailyHighsAndLows();
-
-		$wgOut->addHtml( Html::element( 'h2', array(), 'Daily Highs and Lows' ) );
+		$rows = array();
+		foreach ( $this->getDailyHighsAndLows() as $page ) {
+			$row = array();
+			$row['page'] = $page['page'];
+			foreach ( $page['ratings'] as $id => $value ) {
+				$row['rating-' . $id] = $value;
+			}
+			$row['average'] = $page['average'];
+			$rows[] = $row;
+		}
 		$this->renderTable(
-			array( 'Article Title', 'Ratings', 'Average' ),
-			array( /* rendered data */ ),
+			wfMsg( 'articleFeedback-table-caption-dailyhighsandlows' ),
+			array_merge(
+				array( wfMsg( 'articleFeedback-table-heading-page' ) ),
+				self::getCategories(),
+				array( wfMsg( 'articleFeedback-table-heading-average' ) )
+			),
+			$rows,
 			'articleFeedback-table-highsandlows'
 		);
 	}
@@ -88,12 +104,22 @@ class SpecialArticleFeedback extends SpecialPage {
 	protected function renderWeeklyMostChanged() {
 		global $wgOut;
 
-		$data = $this->getWeeklyMostChanged();
-
-		$wgOut->addHtml( Html::element( 'h2', array(), 'Weekly Most Changed' ) );
+		$rows = array();
+		foreach ( $this->getWeeklyMostChanged() as $page ) {
+			$row = array();
+			$row['page'] = $page['page'];
+			foreach ( $page['changes'] as $id => $value ) {
+				$row['rating-' . $id] = $value;
+			}
+			$rows[] = $row;
+		}
 		$this->renderTable(
-			array( 'Article Title', 'Category', 'Difference' ),
-			array( /* rendered data */ ),
+			wfMsg( 'articleFeedback-table-caption-weeklymostchanged' ),
+			array_merge(
+				array( wfMsg( 'articleFeedback-table-heading-page' ) ),
+				self::getCategories()
+			),
+			$rows,
 			'articleFeedback-table-weeklymostchanged'
 		);
 	}
@@ -104,14 +130,30 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return String: HTML table of recent lows
 	 */
 	protected function renderRecentLows() {
-		global $wgOut;
+		global $wgOut, $wgArticleFeedbackRatings;
 
-		$data = $this->getRecentLows();
-
-		$wgOut->addHtml( Html::element( 'h2', array(), 'Recent Lows' ) );
+		$rows = array();
+		foreach ( $this->getRecentLows() as $page ) {
+			$row = array();
+			$row['page'] = $page['page'];
+			foreach ( $wgArticleFeedbackRatings as $category ) {
+				$row[] = in_array( $category, $page['categories'] )
+					? Html::element(
+						'span', array( 'class' => 'articleFeedback-table-cell-bad' ), 0
+					)
+					: Html::element(
+						'span', array( 'class' => 'articleFeedback-table-cell-good' ), 1
+					);
+			}
+			$rows[] = $row;
+		}
 		$this->renderTable(
-			array( 'Article Title', 'Category', 'Rating' ),
-			array( /* rendered data */ ),
+			wfMsg( 'articleFeedback-table-caption-recentlows' ),
+			array_merge(
+				array( wfMsg( 'articleFeedback-table-heading-page' ) ),
+				self::getCategories()
+			),
+			$rows,
 			'articleFeedback-table-recentlows'
 		);
 	}
@@ -128,11 +170,16 @@ class SpecialArticleFeedback extends SpecialPage {
 	protected function getDailyHighsAndLows() {
 		return array(
 			array(
-				'title' => 'Main Page',
+				'page' => 'Main Page',
 				// List of ratings as the currently stand
-				'values' => array( 4, 3, 2, 1 ),
+				'ratings' => array( 1 => 4, 2 => 3, 3 => 2, 4 => 1 ),
 				// Current average (considering historic averages of each rating)
-				'average' => 1.925
+				'average' => 2.5
+			),
+			array(
+				'page' => 'Test Article',
+				'ratings' => array( 1 => 1, 2 => 2, 3 => 3, 4 => 4 ),
+				'average' => 2.5
 			)
 		);
 	}
@@ -149,9 +196,13 @@ class SpecialArticleFeedback extends SpecialPage {
 	protected function getWeeklyMostChanged() {
 		return array(
 			array(
-				'title' => 'Main Page',
+				'page' => 'Main Page',
 				// List of differences for each rating in the past 7 days
-				'differences' => array( 1, -2, 0, 0 ),
+				'changes' => array( 1 => 1, 2 => -2, 3 => 0, 4 => 0 ),
+			),
+			array(
+				'page' => 'Test Article',
+				'changes' => array( 1 => 0, 2 => 0, 3 => 1, 4 => 2 ),
 			)
 		);
 	}
@@ -168,10 +219,38 @@ class SpecialArticleFeedback extends SpecialPage {
 	protected function getRecentLows() {
 		return array(
 			array(
-				'title' => 'Main Page',
+				'page' => 'Main Page',
 				// List of rating IDs that qualify as recent lows
-				'lows' => array( 0, 3 ),
+				'categories' => array( 1, 4 ),
+			),
+			array(
+				'page' => 'Test Article',
+				'categories' => array( 1, 3 ),
 			)
 		);
+	}
+
+	/* Protected Static Members */
+
+	protected static $categories;
+
+	/* Protected Static Methods */
+
+	protected function getCategories() {
+		global $wgArticleFeedbackRatings;
+
+		if ( !isset( self::$categories ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				'article_feedback_ratings',
+				array( 'aar_id', 'aar_rating' ),
+				array( 'aar_id' => $wgArticleFeedbackRatings )
+			);
+			self::$categories = array();
+			foreach ( $res as $row ) {
+				self::$categories[$row->aar_id] = wfMsg( $row->aar_rating );
+			}
+		}
+		return self::$categories;
 	}
 }

@@ -1,8 +1,44 @@
 .articleFeedback-table {
 	border: solid 1px #cccccc;
+	margin-bottom: 2em;
+}
+
+.articleFeedback-table caption {
+	text-align: left;
+	font-size: 1.6em;
+	margin-bottom: 0.5em;
 }
 
 .articleFeedback-table th {
 	text-align: left;
-	border-bottom: solid 1px #eeeeee;
+}
+
+.articleFeedback-table td {
+	border-top: solid 1px #eeeeee;
+}
+
+.articleFeedback-table td.articleFeedback-table-column-page,
+.articleFeedback-table td.articleFeedback-table-column-category {
+	text-align: left;
+}
+
+.articleFeedback-table td.articleFeedback-table-column-rating-1,
+.articleFeedback-table td.articleFeedback-table-column-rating-2,
+.articleFeedback-table td.articleFeedback-table-column-rating-3,
+.articleFeedback-table td.articleFeedback-table-column-rating-4,
+.articleFeedback-table td.articleFeedback-table-column-rating,
+.articleFeedback-table td.articleFeedback-table-column-average {
+	text-align: right;
+}
+
+.articleFeedback-table-cell-bad {
+	display: block;
+	background-color: #ffaa99;
+	color: #ffaa99;
+}
+
+.articleFeedback-table-cell-good {
+	display: block;
+	background-color: #99ff99;
+	color: #99ff99;
 }

@@ -10,7 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'articlefeedback' => 'Article feedback',
 	'articlefeedback-desc' => 'Article feedback',
-	/* Survey Messages */
+	/* ArticleFeedback survey */
 	'articlefeedback-survey-question-origin' => 'What page were you on when you started this survey?',
 	'articlefeedback-survey-question-whyrated' => 'Please let us know why you rated this page today (check all that apply):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'I wanted to contribute to the overall rating of the page',
@@ -25,7 +25,7 @@ $messages['en'] = array(
 	'articlefeedback-survey-submit' => 'Submit',
 	'articlefeedback-survey-title' => 'Please answer a few questions',
 	'articlefeedback-survey-thanks' => 'Thanks for filling out the survey.',
-	/* Beta Messages */
+	/* ext.articleFeedback and jquery.articleFeedback */
 	'articlefeedback-error' => 'An error has occured. Please try again later.',
 	'articlefeedback-form-switch-label' => 'Rate this page',
 	'articlefeedback-form-panel-title' => 'Rate this page',
@@ -74,6 +74,12 @@ $messages['en'] = array(
 	'articlefeedback-survey-message-success' => 'Thanks for filling out the survey.',
 	'articlefeedback-survey-message-error' => 'An error has occurred.
 Please try again later.',
+	/* Special:ArticleFeedback */
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
+	'articleFeedback-table-caption-weeklymostchanged' => 'This week\'s most changed',
+	'articleFeedback-table-caption-recentlows' => 'Recent lows',
+	'articleFeedback-table-heading-page' => 'Page',
+	'articleFeedback-table-heading-average' => 'Average',
 );
 
 /** Message documentation (Message documentation)

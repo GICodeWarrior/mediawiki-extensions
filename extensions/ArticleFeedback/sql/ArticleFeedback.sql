@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS /*_*/article_feedback_ratings (
 
 -- Default article feedback ratings for the pilot
 INSERT INTO /*_*/article_feedback_ratings (aar_rating) VALUES
-('articlefeedback-rating-trustworthy'), ('articlefeedback-rating-objective'),
-('articlefeedback-rating-complete'), ('articlefeedback-rating-wellwritten');
+('articlefeedback-field-trustworthy-label'), ('articlefeedback-field-objective-label'),
+('articlefeedback-field-complete-label'), ('articlefeedback-field-wellwritten-label');
 
 -- Store article feedbacks (user rating per revision)
 CREATE TABLE IF NOT EXISTS /*_*/article_feedback (
