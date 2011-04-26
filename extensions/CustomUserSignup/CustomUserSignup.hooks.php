@@ -125,7 +125,7 @@ class CustomUserSignupHooks {
 			setcookie( 'acctcreation' , $buckets['AccountCreation'][0] , 
 					time() + 60 * 60 * 24 * 365  );
 					
-			$session = $wgRequest->getCookie( 'clicktrackingsession', "" );
+			$session = $wgRequest->getCookie( 'clicktracking-session', "" );
 			if ( $session !== null ) {
 				$params = new FauxRequest( array(
 					'action' => 'clicktracking',
