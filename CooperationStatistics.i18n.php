@@ -163,9 +163,15 @@ $messages['ca'] = array(
 $messages['cs'] = array(
 	'cooperationstatistics' => 'Statistika spolupráce',
 	'cooperationstatistics-desc' => 'Zobrazit [[Special:CooperationStatistics|statistiku spolupráce v hlavním jmenném prostoru]].',
+	'cooperationstatistics-text' => "Zobrazí statistky spolupráce v hlavním jmenném prostoru.
+Od [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] do [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] spoluautorů.<br />
+Zobrazí také [[Special:MostRevisors|'''stránky s nejvíce spoluautory''']] a [[Special:MostRevisions|stránky s největším počtem revizí]].",
 	'cooperationstatistics-tablearticle' => 'Počet stránek',
 	'cooperationstatistics-tablevalue' => 'Počet editorů',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|stránka|stránky|stránek}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|má|mají}} $1 {{PLURAL:$1|spoluautora|spoluautorů}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|má|mají}} $1 {{PLURAL:$1|spoluautora|nebo méně spoluautorů}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|má|mají}} $1 nebo více spoluautorů',
 	'cooperationstatistics-legendmore' => 'nebo více editorů.',
 );
 
