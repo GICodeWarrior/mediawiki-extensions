@@ -389,6 +389,35 @@ $messages['ia'] = array(
 	'narayam-bn-nkb' => 'Bengalese (NKB)',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'narayam-desc' => 'Memungkinkan penambahan metode masukan ubah suaian untuk bidang isian',
+	'narayam-toggle-ime' => 'Untuk mengganti IM ($1)',
+	'narayam-help-page' => 'Help:Pengetikan',
+	'narayam-checkbox-tooltip' => 'Untuk mengaktifkan/mematikan metode masukan',
+	'narayam-disable-preference' => 'Nonaktifkan Editor Metode Masukan (IME) Narayam',
+	'narayam-eo' => 'Esperanto',
+	'narayam-hi-inscript' => 'InScript Hindi',
+	'narayam-kn' => 'Transliterasi Kannada',
+	'narayam-kn-inscript' => 'InScript Kannada',
+	'narayam-ml' => 'Transliterasi Malayalam',
+	'narayam-ml-inscript' => 'InScript Malayalam',
+	'narayam-or' => 'Transliterasi Oriya',
+	'narayam-or-inscript' => 'InScript Oriya',
+	'narayam-sa' => 'Transliterasi Sanskerta',
+	'narayam-sa-inscript' => 'InScript Sanskerta',
+	'narayam-si-singlish' => 'Singlish Sinhala',
+	'narayam-si-wijesekara' => 'Wijesekara Sinhala',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Transliterasi Tamil',
+	'narayam-te-inscript' => 'InScript Telugu',
+	'narayam-bn-avro' => 'Avro Bengali',
+	'narayam-bn-inscript' => 'InScript Bengali',
+	'narayam-bn-nkb' => 'NKB Bengali',
+);
+
 /** Japanese (日本語)
  * @author Whym
  */
@@ -575,6 +604,35 @@ $messages['pl'] = array(
 	'narayam-bn-avro' => 'Bengalski avro',
 	'narayam-bn-inscript' => 'Bengalski InScript',
 	'narayam-bn-nkb' => 'Bengalski NKB',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'narayam-desc' => "A përmëtt ëd gionté métod përsonalisà d'input për ij camp d'input",
+	'narayam-toggle-ime' => 'Për passé IM ($1)',
+	'narayam-help-page' => 'Help:Digitand',
+	'narayam-checkbox-tooltip' => "Për passé métod d'input anvisch e dëstiss",
+	'narayam-disable-preference' => 'Disabìlita Narayam Input Method Editor (IME)',
+	'narayam-eo' => 'Esperant',
+	'narayam-hi-inscript' => 'InScript Hindi',
+	'narayam-kn' => 'Trasliterassion Kannada',
+	'narayam-kn-inscript' => 'InScript Kannada',
+	'narayam-ml' => 'Trasliterassion Malayalam',
+	'narayam-ml-inscript' => 'InScript Malayalam',
+	'narayam-or' => 'Trasliterassion Oriya',
+	'narayam-or-inscript' => 'InScript Oriya',
+	'narayam-sa' => 'Trasliterassion Sànscrit',
+	'narayam-sa-inscript' => 'InScript Sànscrit',
+	'narayam-si-singlish' => 'Singlish Sinhala',
+	'narayam-si-wijesekara' => 'Wijesekara Sinhala',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Trasliterassion Tamil',
+	'narayam-te-inscript' => 'InScript Telugu',
+	'narayam-bn-avro' => 'Avro Bengali',
+	'narayam-bn-inscript' => 'InScript Bengali',
+	'narayam-bn-nkb' => 'NKB Bengali',
 );
 
 /** Portuguese (Português)
