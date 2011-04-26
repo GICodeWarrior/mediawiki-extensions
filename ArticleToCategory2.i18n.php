@@ -104,6 +104,18 @@ $messages['bg'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Създаване',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'articletocategory2-create-article-under-category-text' => 'এই বিষয়শ্রেণীতে একটি পাতা যোগ করুন',
+	'articletocategory2-create-article-under-category-button' => 'তৈরি করুন',
+	'articletocategory2-create-category-under-category-text' => 'এই বিষয়শ্রেণীতে একটি বিষয়শ্রেণী যোগ করুন',
+	'articletocategory2-create-category-under-category-button' => 'তৈরি করুন',
+	'right-ArticleToCategory2' => 'বিষয়শ্রেণীতে পাতা যোগ করুন',
+	'right-ArticleToCategory2AddCat' => 'বিষয়শ্রেণীতে বিষয়শ্রেণী যোগ করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal
@@ -143,10 +155,16 @@ $messages['ca'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Crear',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Jkjk
+ */
 $messages['cs'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Přidat stránku do této kategorie',
 	'articletocategory2-create-article-under-category-button' => 'Vytvořit',
+	'articletocategory2-create-category-under-category-text' => 'Přidat kategorii do této kategorie',
 	'articletocategory2-create-category-under-category-button' => 'Vytvořit',
+	'right-ArticleToCategory2' => 'Přidat stránku do kategorie',
+	'right-ArticleToCategory2AddCat' => 'Přidat kategorii do kategorie',
 );
 
 /** German (Deutsch)
