@@ -26,9 +26,9 @@
 	 */
 	$.trackAction = function( id ) {
 		$.post(
-			mediaWiki.config.get( 'wgScriptPath' ) + '/api.php', {
+			mw.config.get( 'wgScriptPath' ) + '/api.php', {
 				'action': 'clicktracking',
-				'namespacenumber': mediaWiki.config.get( 'wgNamespaceNumber' ),
+				'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
 				'eventid': id,
 				'token': $.cookie( 'clicktracking-session' )
 			}
@@ -42,10 +42,10 @@
 	 */
 	$.trackActionWithInfo = function( id, info ) {
 		$.post(
-			mediaWiki.config.get( 'wgScriptPath' ) + '/api.php', {
+			mw.config.get( 'wgScriptPath' ) + '/api.php', {
 				'action': 'clicktracking',
 				'eventid': id,
-				'namespacenumber': mediaWiki.config.get( 'wgNamespaceNumber' ),
+				'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
 				'token': $.cookie( 'clicktracking-session' ),
 				'additional': info
 			}
@@ -59,12 +59,13 @@
 	 * @param {string} id Event identifier
 	 */
 	$.trackActionURL = function( url, id ) {
-		return mediaWiki.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
+		return mw.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
 			'action': 'clicktracking',
 			'eventid': id,
-			'namespacenumber': mediaWiki.config.get( 'wgNamespaceNumber' ),
+			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
 			'token': $.cookie( 'clicktracking-session' ),
 			'redirectto': url
 		} );
 	}
+
 } )( jQuery );
