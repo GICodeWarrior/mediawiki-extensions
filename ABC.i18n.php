@@ -691,6 +691,13 @@ $messages['mn'] = array(
 	'abcdownload' => 'Өөртөө хуулах:',
 );
 
+/** Marathi (मराठी)
+ * @author Htt
+ */
+$messages['mr'] = array(
+	'abcdownload' => 'उतरवा:',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Zamwan
  */
