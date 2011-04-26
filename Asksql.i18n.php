@@ -193,6 +193,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Wikitanvir
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -206,6 +207,7 @@ $messages['bn'] = array(
 	'querybtn' => 'কোয়েরি জমা দিন',
 	'selectonly' => 'শুধু-পঠনযোগ্য কোয়েরিগুলিই কেবল অনুমোদিত।',
 	'querysuccessful' => 'কোয়েরি সফল',
+	'right-asksql' => 'এসকিউএল কোয়েরি তৈরি করুন',
 );
 
 /** Breton (Brezhoneg)
