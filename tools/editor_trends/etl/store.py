@@ -55,7 +55,7 @@ class Storer(consumers.BaseConsumer):
             fh = file_utils.create_txt_filehandle(self.rts.sorted, filename,
                                                   'r', 'utf-8')
             for line in file_utils.read_raw_data(fh):
-                if len(line) == 1:
+                if len(line) == 1 or len(line) == 4:
                     continue
                 editor = line[0]
                 #print 'Parsing %s' % editor
