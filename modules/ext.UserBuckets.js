@@ -86,7 +86,7 @@ $.setupActiveBuckets = function(){
 		
 		// do the actual code in the campaign based on the bucket
 		if($.getBuckets() && $.getBuckets()[campaign.name] && $.getBuckets()[campaign.name][0] != "none"){
-			if(typeof campaign[$.getBuckets()[campaign.name][0]] == "function"){
+			if(typeof(campaign[$.getBuckets()[campaign.name][0]]) == "function"){
 				campaign[$.getBuckets()[campaign.name][0]](); //function to execute
 			}
 			if(campaign.allActive){
@@ -100,7 +100,7 @@ $.setupActiveBuckets = function(){
 
 //no need to do any of this if there are no active campaigns
 if( (typeof(MW) != "undefined") && MW.activeCampaigns){
-	$( document ).ready( jQuery.setupActiveBuckets );
+	$j( document ).ready( jQuery.setupActiveBuckets );
 }
 
 
