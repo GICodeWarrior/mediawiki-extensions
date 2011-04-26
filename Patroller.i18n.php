@@ -200,10 +200,12 @@ $messages['arz'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author Vugar 1981
  */
 $messages['az'] = array(
 	'group-patroller' => 'Patrullar',
+	'group-patroller-member' => 'patrul',
 );
 
 /** Bashkir (Башҡортса)
