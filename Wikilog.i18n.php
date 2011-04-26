@@ -7468,6 +7468,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
+ * @author Liangent
  * @author Mark85296341
  * @author Yfdyh000
  */
@@ -7524,7 +7525,7 @@ $messages['zh-hans'] = array(
 	'wikilog-comment-feed-title1' => '由 $2 发表的评论（第#$1 条）',
 	'wikilog-comment-feed-title2' => '由$2 发表的对$3 的评论（第#$1 条）',
 	'wikilog-comment-feed-description' => '阅读此订阅中最新的文章',
-	'wikilog-title-comments' => '$1 上的评论',
+	'wikilog-title-comments' => '$1上的评论',
 	'wikilog-error-msg' => 'Wikilog错误： $1',
 	'wikilog-error-title' => 'Wikilog错误',
 	'wikilog-invalid-param' => '无效的参数：$1。',
