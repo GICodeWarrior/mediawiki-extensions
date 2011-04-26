@@ -61,6 +61,13 @@ $messages['bjn'] = array(
 	'cassandra-desc' => 'Simpan naskah ralatan di basisdata [http://cassandra.apache.org/ Cassandra Apache]',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'cassandra-desc' => 'সংস্করণের লেখাগুলো [http://cassandra.apache.org/ অ্যাপাসি ক্যাসান্দ্রায়ের] ডেটাবেজে সংরক্ষণ করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

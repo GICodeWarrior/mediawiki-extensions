@@ -1471,9 +1471,11 @@ $messages['oc'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Odisha1
  */
 $messages['or'] = array(
 	'importusers-log-summary' => 'ସାରକଥା',
+	'importusers-email' => 'ଇ-ମେଲ',
 );
 
 /** Ossetic (Иронау)

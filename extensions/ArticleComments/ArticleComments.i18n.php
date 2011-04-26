@@ -207,6 +207,42 @@ $messages['bg'] = array(
 	'article-comments-submit-button' => 'Изпращане',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'article-comments-desc' => 'বিষয়বস্তু পাতায় মন্তব্য অংশ সক্রিয় করো',
+	'article-comments-title-string' => 'শিরোনাম',
+	'article-comments-name-string' => 'নাম',
+	'article-comments-name-field' => 'নাম (বাধ্যতামূলক)',
+	'article-comments-url-field' => 'ওয়েবসাইট:',
+	'article-comments-url-string' => 'ইউআরএল',
+	'article-comments-comment-string' => 'মন্তব্য',
+	'article-comments-comment-field' => 'মন্তব্য:',
+	'article-comments-submit-button' => 'জমা দাও',
+	'article-comments-leave-comment-link' => 'মন্তব্য করুন ...',
+	'article-comments-invalid-field' => '$1 প্রদানকৃত <nowiki>[$2]</nowiki> গ্রহণযোগ্য নয়।',
+	'article-comments-required-field' => '"$1" অংশটি প্রদান করা বাধ্যতামূলক।',
+	'article-comments-submission-failed' => 'মন্তব্য জমাদান ব্যর্থ হয়েছে',
+	'article-comments-failure-reasons' => 'দুঃখিত, আপনার মন্তব্য যোগ ব্যর্থ হয়েছে নিম্নোক্ত {{PLURAL:$1|কারণে|কারণে}}:',
+	'article-comments-no-comments' => 'দুঃখিত, "[[$1]]" পাতাটি বর্তমানে কোনো মন্তব্য গ্রহণ করছে না।',
+	'article-comments-talk-page-starter' => '<noinclude>"[[$1]]" পাতায় মন্তব্য
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 বলেছেন ...',
+	'article-comments-summary' => 'মন্তব্যটি $1 দ্বারা, আর্টিকলকমেন্ট এক্সটেনশনের মাধ্যমে প্রদান করা হয়েছে',
+	'article-comments-submission-succeeded' => 'মন্তব্য জমাদান সফল',
+	'article-comments-submission-success' => 'আপনি "[[$1]]" পাতার জন্য সফলতার সাথে একটি মন্তব্য প্রদান করেছেন',
+	'article-comments-submission-view-all' => 'আপনি [[$1|ঐ পাতায় থাকা সকল মন্তব্য]] দেখতে পারেন',
+	'article-comments-user-is-blocked' => 'আপনার ব্যবহারকারী অ্যাকাউন্টে বর্তমানে "[[$1]]" পাতাটি সম্পাদনায় বাধা রয়েছে।',
+	'article-comments-comment-bad-mode' => 'কমেন্টে জন্য অগ্রহণযোগ্য মোড প্রদান করা হয়েছে।
+প্রযোজ্য মোডগুলোর মধ্যে রয়েছে "সরল", "সাধারণ" ও "উইকি"।',
+	'article-comments-comment-missing-name-parameter' => 'হারানো নাম',
+	'article-comments-comment-missing-date-parameter' => 'হারানো মন্তব্যের তারিখ',
+	'article-comments-no-spam' => 'কমপক্ষে জমা প্রদান করা একটি অংশ স্প্যাম হিসেবে পরিগণিত হয়েছে।',
+	'processcomment' => 'পাতার মন্তব্য প্রক্রিয়াকরণ করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal
@@ -1259,6 +1295,15 @@ Tilgjengelige moduser er «plain», «normal» og «wiki».',
 	'article-comments-comment-missing-date-parameter' => 'Mangler kommentardato',
 	'article-comments-no-spam' => 'Minst ett av feltene ble merket som spam.',
 	'processcomment' => 'Prosesser artikkelkommentar',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'article-comments-name-string' => 'ନାମ',
+	'article-comments-comment-string' => 'ମତାମତ',
+	'article-comments-comment-field' => 'ମତାମତ:',
 );
 
 /** Polish (Polski)

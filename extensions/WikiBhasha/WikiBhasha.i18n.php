@@ -265,3 +265,10 @@ $messages['zh-hans'] = array(
 	'wikibhasha-desc' => '应用程序创建多语言内容，利用英语维基百科的内容',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'wikibhasha-desc' => '利用英文維基百科，創建多語言內容的工具',
+);
+

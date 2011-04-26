@@ -483,6 +483,14 @@ $messages['no'] = array(
 	'prefs-category' => 'Kategori',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'categorymultisort-go' => 'ଯିବା',
+	'prefs-category' => 'ବିଭାଗ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */

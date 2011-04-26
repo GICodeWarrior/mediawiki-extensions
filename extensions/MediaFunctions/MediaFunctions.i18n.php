@@ -334,6 +334,15 @@ $messages['lb'] = array(
 	'mediafunctions-not-exist' => '"$1" gëtt et net',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'mediafunctions-desc' => 'Parsētāja funkcijas, lai iegūtu informāciju par multivides failu',
+	'mediafunctions-invalid-title' => '"$1" nav derīgs nosaukums',
+	'mediafunctions-not-exist' => '"$1" nepastāv',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

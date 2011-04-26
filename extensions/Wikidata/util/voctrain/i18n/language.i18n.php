@@ -492,11 +492,27 @@ $messages['arz'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author Sortilegus
  */
 $messages['az'] = array(
 	'voctrain_Hello_World' => 'SALAM VİKİ!',
+	'voctrain_continue' => 'davam et',
+	'voctrain_bye' => 'sağol',
+	'voctrain_Number_of_questions' => 'Sualların nömrəsi',
+	'voctrain_Languages' => 'Dillər',
+	'voctrain_Questions' => 'Suallar',
+	'voctrain_Answers' => 'Cavablar',
 	'voctrain_Word' => 'Söz',
+	'voctrain_Question' => 'Sual',
+	'voctrain_Answer' => 'Cavab',
+	'voctrain_one_of' => 'biri',
+	'voctrain_Answer_s_' => 'Cavab(lar)',
+	'voctrain_User_name' => 'İstifadəçi adı',
+	'voctrain_Password' => 'Parol',
+	'voctrain_Login' => 'Loqin',
+	'voctrain_Language' => 'Dil',
+	'voctrain_hiding' => 'Gizlət',
 	'voctrain_other' => 'digər',
 );
 
@@ -1850,6 +1866,76 @@ $messages['he'] = array(
 	'voctrain_other' => 'אחר',
 );
 
+/** Croatian (Hrvatski)
+ * @author Ex13
+ */
+$messages['hr'] = array(
+	'voctrain_Hello_World' => 'POZDRAV WIKI!',
+	'voctrain_Permission_Denied' => 'Pristup odbijen.',
+	'voctrain_try_again_' => 'pokušaj ponovno?',
+	'voctrain_Action_unknown' => 'Nepoznata radnja',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ne znam što učiniti s '%action'.",
+	'voctrain_User_added' => 'Suradnik dodan',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Zdravo, %username, dobro došli u omega jezični trener',
+	'voctrain_continue' => 'nastavi',
+	'voctrain_hello_place' => 'pozdrav %place',
+	'voctrain_bye' => 'zbogom',
+	'voctrain_Set_up_your_exercise' => 'Postavite Vašu vježbu',
+	'voctrain_Number_of_questions' => 'Broj pitanja',
+	'voctrain_Languages' => 'Jezici',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Molimo odredite jezike koje želite testirati',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(npr., eng za engleski, deu za njemački).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'Ovisno o Vašem probnom setu, neke će kombinacije raditi bolje od drugih.',
+	'voctrain_Questions' => 'Pitanja',
+	'voctrain_Answers' => 'Odgovori',
+	'voctrain_start_exercise' => 'započni vježbu',
+	'voctrain_collection' => 'zbirka',
+	'voctrain_ISO_639_3_format' => 'ISO-639-3 format',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Ostalo je %questions_remaining pitanja, od ukupno %questions_total.',
+	'voctrain_Definition' => 'Definicija',
+	'voctrain_Dictionary_definition_to_help_you' => 'Definicija iz rječnika za Vašu pomoć',
+	'voctrain_Word' => 'Riječ',
+	'voctrain_Please_type_your_answer_here' => 'Molimo unesite ovdje Vaš odgovor',
+	'voctrain_submit_answer' => 'pošalji odgovor',
+	'voctrain_peek' => 'zaviri',
+	'voctrain_skip' => 'preskoči',
+	'voctrain_I_know_it_do_not_ask_again' => 'Znam/ne pitaj ponovno',
+	'voctrain_abort_exercise' => 'prekini vežbu',
+	'voctrain_list_answers' => 'ispiši odgovore',
+	'voctrain_Question' => 'Pitanje',
+	'voctrain_The_word_to_translate' => 'Riječ za prevesti',
+	'voctrain_Answer' => 'Odgovor',
+	'voctrain_one_of' => 'jedan od',
+	'voctrain_list_of_questions_and_answers' => 'popis pitanja i odgovora',
+	'voctrain_Answer_s_' => 'Odgovor(i)',
+	'voctrain_logout' => 'odjava',
+	'voctrain_Powered_by' => 'Pokreće',
+	'voctrain_Exercise_complete' => 'Vježba završena',
+	'voctrain_Exercise_terminated' => 'Vježba okončana',
+	'voctrain_Start_a_new_exercise' => 'Započni novu vježbu',
+	'voctrain_User_name' => 'Suradničko ime',
+	'voctrain_Password' => 'Lozinka',
+	'voctrain_Login' => 'Prijava',
+	'voctrain_Create_new_user' => 'Stvori novog suradnika',
+	'voctrain_Switch_language' => 'Promijeni jezik',
+	'voctrain_Language' => 'Jezik',
+	'voctrain_Log_in' => 'Prijava',
+	'voctrain_Omegawiki_vocabulary_trainer' => 'Omegawiki rječnički trener',
+	'voctrain_Definitions' => 'Definicije',
+	'voctrain_Could_not_create_new_user' => 'Ne može se stvoriti novi suradnik',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Unesite suradničko ime i opcionalnu lozinku, (ili pokušajte s drugim suradničkim imenom)',
+	'voctrain_Vocview' => 'Preglednik rječnika',
+	'voctrain_Dictionary_definitions' => 'definicije_rječnika',
+	'voctrain_Translation' => 'Prijevod',
+	'voctrain_unhide_definition' => 'otkrij definiciju',
+	'voctrain_unhide_words' => 'otkrij riječi',
+	'voctrain_hiding' => 'Sakrivam',
+	'voctrain_hide_definitions_in_question_language' => 'Sakrij definicije u upitnom jeziku',
+	'voctrain_hide_words_in_question_language' => 'Sakrij riječi u upitnom jeziku',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Odvojite vrijednosti zarezima za uporabu više jezika.',
+	'voctrain_other' => 'drugo',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -2379,6 +2465,13 @@ $messages['kn'] = array(
 	'voctrain_Language' => 'ಭಾಷೆ',
 	'voctrain_Log_in' => 'ಲಾಗ್ ಇನ್',
 	'voctrain_other' => 'ಇತರ',
+);
+
+/** Korean (한국어)
+ * @author Wrightbus
+ */
+$messages['ko'] = array(
+	'voctrain_Log_in' => '로그인',
 );
 
 /** Krio (Krio)
@@ -4564,6 +4657,21 @@ $messages['zh-hans'] = array(
 	'voctrain_hide_definitions_in_question_language' => '隐藏中的语言问题的定义',
 	'voctrain_hide_words_in_question_language' => '隐藏文字的语言',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => '用逗号，使用多种语言的不同值。',
+	'voctrain_other' => '其他',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'voctrain_Questions' => '問題',
+	'voctrain_Answers' => '答案',
+	'voctrain_Question' => '問題',
+	'voctrain_logout' => '登出',
+	'voctrain_Password' => '密碼',
+	'voctrain_Login' => '登入',
+	'voctrain_Log_in' => '登入',
+	'voctrain_Translation' => '翻譯',
 	'voctrain_other' => '其他',
 );
 

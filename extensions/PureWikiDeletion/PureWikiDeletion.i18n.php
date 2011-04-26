@@ -35,12 +35,15 @@ See $2 for a record of recent blankings.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Amire80
  * @author EugeneZelenko
  * @author Purodha
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'purewikideletion-desc' => '{{desc}}',
+	'purewikideletion-pref-watchblank' => 'This message is supposed to be similar to {{msg-mw|Tog-watchcreations}}.',
+	'purewikideletion-pref-watchunblank' => 'This message is supposed to be similar to {{msg-mw|Tog-watchcreations}}.',
 	'purewikideletion-blanked' => 'Parameters:
 * $1 - a user name
 * $2 - date and time (duplicated in $5 and $6)
@@ -365,6 +368,36 @@ Du chasch [{{fullurl:{{FULLPAGENAMEE}}|action=history}} d Versionsgschicht bscha
 Lueg au s $2 fir e Lischt vu dr letschte Läärige.',
 	'purewikideletion-population-done' => 'Tabälle „blanked_page“ mit gläärte Syten aagleit',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Tabälle aalege mit gläärte Syte]]',
+);
+
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'purewikideletion' => 'מחיקת ויקי טהורה',
+	'randomexcludeblank' => 'דף אקראי (למעט ריקים)',
+	'populateblankedpagestable' => 'לאכלס את טבלת הדפים הריקים',
+	'purewikideletion-desc' => 'בין היתר, הפיכת קישורים לדפים ריקים לאדומים',
+	'purewikideletion-pref-watchblank' => 'מעקב אחרי דפים שרוקנתי',
+	'purewikideletion-pref-watchunblank' => 'מעקב אחרי דפים שביטלתי את ריקונם',
+	'purewikideletion-blanked' => "גרסה קודמת של הדף הזה רוקנה על־ידי [[User:$1|$1]] ([[User talk:$1|שיחה]]) ([[Special:Contributions/$1|תרומות]]) בתאריך $5 בשעה $6.
+
+הסיבה שניתנה לריקון היא ''<nowiki>$3</nowiki>''.
+
+אפשר לצפות ב[[{{fullurl:{{FULLPAGENAMEE}}|action=history}}] גרסאות הקודמות של הדף], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} לערוך את הגרסה האחרונה] או להקליד דף חדש בתיבת העריכה להלן.",
+	'blank-log' => 'ריק',
+	'blank-log-name' => 'יומן ריקונים',
+	'blank-log-header' => 'להלן רשימת דפים שרוקנו ושמולאו מחדש',
+	'blank-log-entry-blank' => 'רוקן את $1',
+	'blank-log-entry-unblank' => 'ביטל את הריקון של $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|יומן ריקונים]]',
+	'purewikideletion-blanknologin' => 'לא נכנסתם לחשבון',
+	'purewikideletion-blanknologintext' => 'צריך להיות משתמש רשום ו[[Special:UserLogin|להיכנס לחשבון]] כדי לרוקן דף.',
+	'purewikideletion-unblanknologintext' => 'צריך להיות משתמש רשום ו[[Special:UserLogin|להיכנס לחשבון]] כדי לבטל ריקון של דף.',
+	'purewikideletion-blankedtext' => "[[$1]] רוקן.
+ר' $2 לרישום של ריקונים אחרונים.",
+	'purewikideletion-population-done' => 'אכלוס טבלת הדפים המרוקנים (blanked_page) הושלם.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|לאכלס]] את טבלת הדפים המרוקנים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -500,6 +500,29 @@ Go Syte transferiere sin d Titel vun ene im Yygabefäld unten aazgee (ei Titel p
 	'push-special-return' => 'Meh Syte transferiere',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'right-pushadmin' => 'לאשר לשנות יעדי דחיפה ותצורת דחיפה.',
+	'push-err-captcha-page' => 'דחיפה דף לכל היעדים לא התאפשרה בגלל CAPTCHA.',
+	'push-tab-text' => 'דחיפה',
+	'push-button-text' => 'דחיפה',
+	'push-targets' => 'יעדי דחיפה',
+	'push-add-target' => 'הוספת יעד',
+	'push-tab-no-targets' => 'אין יעדים לדחיפה. אנא הוסיפו כמה יעדים לקובץ LocalSettings.php שלכם.',
+	'push-targets-total' => 'יש {{PLURAL:$1|יעד אחד|$1 יעדים}} בסך הכול.',
+	'push-tab-err-uploaddisabled' => 'העלאות אינן מופעלות. יש לוודא כי ערך המשתנים ‎$wgEnableUploads ו־‎$wgEnableUploads הוא true בוויקי היעד.',
+	'push-special-button-text' => 'לדחוף דפים',
+	'push-special-target-is' => 'אתר הוויקי המיועד: $1',
+	'push-special-select-targets' => 'אתרי הוויקי המיועדים:',
+	'push-special-push-done' => 'הדחיפה הושלמה',
+	'push-special-err-token-failed' => 'לא הצלחתי לקבל אסימון עריכה באתר הוויקי המיועד.',
+	'push-special-err-push-failed' => 'אתר הוויקי המיועד סירב לקבל את הדף הנדחף.',
+	'push-special-inc-files' => 'לכלול קבצים מוטבעים',
+	'push-special-return' => 'לדחוף יותר דפים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -1256,8 +1256,13 @@ Nếu bạn theo một liên kết từ trang khác, xin vui lòng <a href="$1">
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
+	'toolbase-header-title' => 'X!的工具（测试版）',
+	'toolbase-header-bugs' => '臭虫',
+	'toolbase-header-sitenotice' => '全域Toolserver站点通告：$1',
+	'toolbase-replag' => '服务器延迟$1',
 	'toolbase-replag-years' => '年',
 	'toolbase-replag-months' => '月',
 	'toolbase-replag-weeks' => '周',
@@ -1265,7 +1270,19 @@ $messages['zh-hans'] = array(
 	'toolbase-replag-hours' => '小时',
 	'toolbase-replag-minutes' => '分钟',
 	'toolbase-replag-seconds' => '秒',
+	'toolbase-footer-exectime' => '在$1秒内执行完成',
+	'toolbase-footer-source' => '查看源码',
+	'toolbase-footer-language' => '选择语言',
+	'toolbase-footer-translate' => '翻译',
+	'toolbase-navigation' => '导航',
 	'toolbase-navigation-homepage' => '首页',
+	'toolbase-navigation-user_id' => '查找用户ID',
+	'toolbase-navigation-autoedits' => '自动编辑计数器',
+	'toolbase-userid-submit' => '获取用户ID',
+	'toolbase-userid-title' => '查找用户ID',
+	'toolbase-userid-result' => '<a href="$3"><b>$3</b></a>上的用户<b>$1</b>ID为<b>$2</b>。',
+	'toolbase-autoedits-title' => '自动编辑计算器',
+	'toolbase-autoedits-submit' => '计算',
 	'toolbase-main-title' => '欢迎！',
 	'toolbase-form-wiki' => '维基',
 );

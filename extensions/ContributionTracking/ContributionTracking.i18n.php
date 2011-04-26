@@ -1030,7 +1030,10 @@ $messages['sk'] = array(
 	'contrib-tracking-error-text' => 'Zaslaný neplatný obsah formulára',
 	'contrib-tracking-submitting' => 'Odosiela sa na spracovanie platieb...',
 	'contrib-tracking-continue' => 'Ak nebudete automaticky presmerovaný, kliknite na tlačidlo, čím dokončíte váš príspevok prostredníctvom PayPal.',
+	'contrib-tracking-redirect' => 'Budete automaticky presmerovaný na PayPal, kde môžete dokončiť váš dar.',
 	'contrib-tracking-button' => 'Pokračovať',
+	'contrib-tracking-item-name-onetime' => 'Jednorazový dar',
+	'contrib-tracking-item-name-recurring' => 'Opakovaný mesačný dar',
 );
 
 /** Slovenian (Slovenščina)

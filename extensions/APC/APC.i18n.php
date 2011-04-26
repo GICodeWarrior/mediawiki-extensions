@@ -907,6 +907,93 @@ $messages['bg'] = array(
 По-нова версия ($2) е налична на адрес http://pecl.php.net/package/APC/$2',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'apc' => 'এপিসি তথ্যাদি',
+	'apc-desc' => 'মিডিয়াউইকির সাহায্যে [[Special:APC|Vএপিসি ক্যাশে দেখাও এবং ব্যবস্থাপনা করো]]',
+	'right-apc' => '[[Special:APC|এপিসি]]-তে থাকা সকল সুবিধা ব্যবহার করো',
+	'viewapc-apc-not-available' => 'ক্যাশের কোনো তথ্যাদি লভ্য নয়।
+সম্ভবত এপিসি চালু নয়।',
+	'viewapc-clear-confirm' => 'আপনি কি ক্যাশে পরিস্কার করতে চান?',
+	'viewapc-clear-user-cache' => 'ব্যবহারকারী ক্যাশে পরিস্কার',
+	'viewapc-clear-code-cache' => 'অপকোড ক্যাশে পরিস্কার',
+	'viewapc-mode-stats' => 'হোস্টের স্ক্রিনশট দেখাও',
+	'viewapc-mode-system-cache' => 'সিস্টেম ক্যাশের সংযোজন',
+	'viewapc-mode-system-cache-dir' => 'ডিরেক্টরি প্রতি সংযোজন',
+	'viewapc-mode-user-cache' => 'ব্যবহারকারী ক্যাশের সংযোজন',
+	'viewapc-mode-version-check' => 'ভার্সন পরীক্ষা করুন',
+	'viewapc-info-general' => 'সাধারণ তথ্যাদি',
+	'viewapc-apc-version' => 'এপিসি ভার্সন',
+	'viewapc-php-version' => 'পিএইচপি ভার্সন',
+	'viewapc-shared-memory' => 'শেয়ারকৃত মেমরি',
+	'viewapc-start-time' => 'শুরুর সময়',
+	'viewapc-uptime' => 'সর্বোচ্চ সময়',
+	'viewapc-upload-support' => 'ফাইল আপলোড সাহায্য',
+	'viewapc-filecache-info' => 'ফাইলের ক্যাশে তথ্যাদি',
+	'viewapc-usercache-info' => 'ব্যবহারকারী ক্যাশের তথ্যাদি',
+	'viewapc-cached-files' => 'ক্যাশেকৃত ফাইলসমূহ',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ফাইল|ফাইল}} ($2)',
+	'viewapc-hits' => 'হিট',
+	'viewapc-misses' => 'অপব্যবহার',
+	'viewapc-requests' => 'অনুরোধের হার',
+	'viewapc-hitrate' => 'হিটের হার',
+	'viewapc-missrate' => 'ব্যর্থ হওয়ার হার',
+	'viewapc-insertrate' => 'প্রবেশ করানোর হার',
+	'viewapc-cachefull' => 'ক্যাশের সম্পূর্ণ সংখ্যা',
+	'viewapc-rps' => 'প্রতি সেকেন্ড $1টি অনুরোধ',
+	'viewapc-info-runtime' => 'চলার তথ্যাদি',
+	'viewapc-memory-usage' => 'মেমরি ব্যবহার',
+	'viewapc-cache-efficiency' => 'হিট ও ব্যর্থ',
+	'viewapc-memory-free' => 'মুক্ত: $1 ($2)',
+	'viewapc-memory-used' => 'ব্যবহৃত: $1 ($2)',
+	'viewapc-memory-hits' => 'হিট: $1 ($2)',
+	'viewapc-memory-miss' => 'ব্যর্থ: $1 ($2)',
+	'viewapc-display-value' => 'মান',
+	'viewapc-display-filename' => 'ফাইলের নাম',
+	'viewapc-display-device' => 'ডিভাইস',
+	'viewapc-display-info' => 'নাম',
+	'viewapc-display-ttl' => 'মেয়াদ উত্তীর্ণের সময়',
+	'viewapc-display-inode' => 'সংযোগস্থল',
+	'viewapc-display-type' => 'ধরন',
+	'viewapc-display-type-file' => 'ক্যাশেকৃত ফাইল',
+	'viewapc-display-type-user' => 'ক্যাশেকৃত অ্যাপ্লিকেশন ডেটা',
+	'viewapc-display-num_hits' => 'হিট',
+	'viewapc-display-mtime' => 'পরিবর্তিত',
+	'viewapc-display-creation_time' => 'তৈরি হয়েছে',
+	'viewapc-display-deletion_time' => 'অপসারিত',
+	'viewapc-display-no-delete' => 'অপসারিত নয়',
+	'viewapc-display-access_time' => 'প্রবেশকৃত',
+	'viewapc-display-ref_count' => 'তথ্যসূত্রের সংখ্যা',
+	'viewapc-display-mem_size' => 'আকার',
+	'viewapc-display-stored-value' => 'সংরক্ষিত মান',
+	'viewapc-display-too-big' => "''বিষয়বস্তু প্রদর্শনের জন্য অনেক বড়।''",
+	'viewapc-ls-options-legend' => 'অপশন',
+	'viewapc-ls-submit' => 'চলো‌‍‍!',
+	'viewapc-ls-header-name' => 'নাম',
+	'viewapc-ls-header-hits' => 'হিট',
+	'viewapc-ls-header-size' => 'আকার',
+	'viewapc-ls-header-accessed' => 'সর্বশেষ প্রবেশ',
+	'viewapc-ls-header-modified' => 'সর্বশেষ পরিবর্তন',
+	'viewapc-ls-header-created' => 'তৈরি হয়েছে',
+	'viewapc-ls-header-deleted' => 'অপসারিত',
+	'viewapc-ls-header-timeout' => 'সময় শেষ',
+	'viewapc-ls-delete' => '[এখনই অপসারণ]',
+	'viewapc-ls-scope-active' => 'সক্রিয়',
+	'viewapc-ls-scope-deleted' => 'অপসারিত',
+	'viewapc-ls-scope-both' => 'উভয়ই',
+	'viewapc-ls-sort-hits' => 'হিট',
+	'viewapc-ls-sort-size' => 'আকার',
+	'viewapc-ls-sort-name' => 'নাম',
+	'viewapc-ls-sort-accessed' => 'সর্বশেষ প্রবেশ',
+	'viewapc-ls-sort-modified' => 'সর্বশেষ পরিবর্তন',
+	'viewapc-ls-sort-created' => 'তৈরি হয়েছে',
+	'viewapc-ls-sort-deleted' => 'অপসারিত',
+	'viewapc-ls-sort-timeout' => 'সময় শেষ',
+	'viewapc-ls-limit-none' => 'সমস্ত',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -3901,7 +3988,7 @@ Der APC es wall nit am Loufe.',
 	'viewapc-delete-ok' => 'Dä Enndrach <nowiki>$1</nowiki> fun <i lang="en">cache</i> es fottjeschmeße.',
 	'viewapc-delete-failed' => 'Kunnt dä Enndrach <nowiki>$1</nowiki> fum <i lang="en">cache</i> nit fottschmieße.',
 	'viewapc-version-info' => 'Version fum <i lang="en">cache</i>',
-	'viewapc-version-changelog' => 'Log fun de Änderunge',
+	'viewapc-version-changelog' => 'Et Logbooch vun de Änderunge',
 	'viewapc-version-failed' => 'Kunnt dem <i lang="en">cache</i> sing Version nit eruß fenge.',
 	'viewapc-version-ok' => 'Do häß de neuste Version vum <i lang="en">cache</i> am Loufe ($1)',
 	'viewapc-version-old' => 'Ühr hat en ahle Version fum APC aam Loufe ($1).
@@ -4980,6 +5067,13 @@ Una version novèla $2 es disponibla a http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Escondedor de l'aplicacion suprimit.'''''",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'viewapc-ls-sort-name' => 'ନାମ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
@@ -5570,6 +5664,12 @@ O versiune mai nouă $2 este disponibilă la http://pecl.php.net/package/APC/$2'
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'apc' => "'Mbormaziune APC",
+	'viewapc-info-general' => "'Mbormaziune generale",
+	'viewapc-apc-version' => 'versione APC',
+	'viewapc-php-version' => 'versione PHP',
+	'viewapc-shared-memory' => 'Memorie condivise',
+	'viewapc-cached-files' => "File jndr'à cache",
 	'viewapc-memory-free' => 'Libbere: $1 ($2)',
 	'viewapc-memory-used' => 'Ausate: $1 ($2)',
 	'viewapc-display-attribute' => 'Attribbute',
@@ -5586,8 +5686,11 @@ $messages['roa-tara'] = array(
 	'viewapc-ls-header-modified' => 'Urteme cangiamende',
 	'viewapc-ls-header-created' => 'Ccrejete',
 	'viewapc-ls-header-deleted' => 'Scangellete',
+	'viewapc-ls-scope-active' => 'Attive',
 	'viewapc-ls-sort-size' => 'Dimenzione',
 	'viewapc-ls-sort-name' => 'Nome',
+	'viewapc-ls-sort-created' => 'Ccrejate',
+	'viewapc-ls-sort-deleted' => 'Scangellate',
 	'viewapc-ls-limit-none' => 'Tutte',
 );
 

@@ -324,6 +324,15 @@ $messages['ru'] = array(
 	'pdfbook-desc' => 'Создаёт книгу из страниц категории, преобразует её в PDF',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'pdfbook-action' => 'Vytlačiť do PDF',
+	'pdfbook-log' => 'Stránka $1 bola exportovaná ako kniha vo formáte PDF',
+	'pdfbook-desc' => 'Zostavá knihu z stránok v kategórii a exportuje ju vo formáte PDF',
+);
+
 /** Swahili (Kiswahili)
  * @author Lloffiwr
  */

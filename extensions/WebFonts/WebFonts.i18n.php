@@ -66,6 +66,16 @@ $messages['de'] = array(
 	'webfonts-disable-preference' => 'Schriftarteneinbettung deaktivieren (WebSchriftarten)',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'webfonts' => 'Polices web',
+	'webfonts-desc' => 'Incorpore les polices dans les pages',
+	'webfonts-load' => 'Sélectionnez une police',
+	'webfonts-disable-preference' => "Désactiver l'incorporation des polices (Polices web)",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

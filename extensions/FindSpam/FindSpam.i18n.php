@@ -608,6 +608,18 @@ $messages['lt'] = array(
 	'findspam-ip' => 'IP adresas:',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'findspam' => 'Atrast mēstuli',
+	'findspam-desc' => 'Pievieno [[Special:FindSpam|īpašu lapu]], kas ļauj atrast nesen pievienotās mēstules',
+	'findspam-ip' => 'IP adrese:',
+	'findspam-ok' => 'Labi',
+	'findspam-notextfound' => 'Nav atrasts devums',
+	'right-findspam' => 'Meklēt nesen pievienotās mēstules',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

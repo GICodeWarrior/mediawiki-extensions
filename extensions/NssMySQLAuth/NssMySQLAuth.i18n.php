@@ -802,6 +802,13 @@ $messages['oc'] = array(
 	'nss-db-error' => "Error pendent la lectura de la banca de donadas d'autentificacion",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'am-email' => 'ଇ-ମେଲ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */

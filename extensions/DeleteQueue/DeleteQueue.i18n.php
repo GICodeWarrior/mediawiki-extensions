@@ -5039,10 +5039,15 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Jose77
+ * @author Odisha1
  * @author Psubhashish
  */
 $messages['or'] = array(
 	'deletequeue-list-search' => 'ଖୋଜିବା',
+	'deletequeue-list-header-expiry' => 'ଅଚଳ ହେବ',
+	'deletequeue-case-page' => 'ଫରଦ:',
+	'deletequeue-case-reason' => 'କାରଣ:',
+	'deletequeue-case-expiry' => 'ଅଚଳ ହେବ:',
 );
 
 /** Ossetic (Иронау)

@@ -1919,6 +1919,8 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'wah-desc' => '把視頻轉碼的工作分配予使用Firefogg的用戶端',
+	'wah-user-desc' => 'Wiki@Home 可使參與者提供剩餘的CPU運算能力，協助執行資源密集的作業',
 	'wah-short-audio' => '$1 聲音檔案，$2',
 	'wah-short-video' => '$1 視訊檔案，$2',
 	'wah-short-general' => '$1 媒體檔案，$2',
@@ -1927,10 +1929,26 @@ $messages['zh-hant'] = array(
 	'wah-long-general' => '（媒體檔案，長度 $2，$3）',
 	'wah-long-error' => '（ffmpeg 不能讀取這個檔案：$1）',
 	'wah-transcode-working' => '該影片正在處理中，請稍後再試',
+	'wah-transcode-helpout' => '您可以透過到訪 [[Special:WikiAtHome|Wiki@Home]] 協助本視頻的轉碼。',
 	'wah-transcode-fail' => '這個檔案轉碼失敗',
 	'wah-javascript-off' => '你必須啟用 JavaScript 以參與 Wiki@Home',
 	'wah-loading' => '正在載入 Wiki@Home 介面...',
+	'wah-menu-jobs' => '工作',
+	'wah-menu-stats' => '統計',
 	'wah-menu-pref' => '偏好設定',
+	'wah-lookingforjob' => '正在尋找工作...',
+	'wah-start-on-visit' => '在每次訪問本網站時啟動 Wiki@Home。',
+	'wah-jobs-while-away' => '只於本人離開瀏覽器後20分鐘方開始執行工作。',
+	'wah-nojobfound' => '未有新工作，將於 $1 後再試。',
+	'wah-notoken-login' => '您已登入了嗎？如果沒有，請先登入。',
+	'wah-apioff' => 'Wiki@Home API 似乎處於關機狀態，請聯絡該 wiki 的管理員。',
+	'wah-downloading' => '已完成下載檔案 <i>$1%</i>',
+	'wah-encoding' => '已完成檔案 <i>$1%</i> 的編碼',
+	'wah-encoding-fail' => '編碼失敗，請重新載入本頁或稍後再試。',
+	'wah-uploading' => '已完成上傳檔案 <i>$1%</i>',
 	'wah-uploadfail' => '上傳失敗',
+	'wah-doneuploading' => '上載完成，謝謝您的貢獻。',
+	'wah-needs-firefogg' => '您必須安裝 <a href="http://firefogg.org">Firefogg</a> 方能參與 Wiki@Home。',
+	'wah-api-error' => 'API 出現錯誤，請稍後再試。',
 );
 

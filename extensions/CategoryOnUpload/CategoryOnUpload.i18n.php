@@ -150,8 +150,11 @@ $messages['ckb'] = array(
 	'categoryonupload-label' => 'پۆل:',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Jkjk
+ */
 $messages['cs'] = array(
+	'categoryonupload-desc' => 'Při nahrávání souboru upozorní uživatele, aby vybral příslušnou kategorii',
 	'categoryonupload-label' => 'Kategorie:',
 );
 

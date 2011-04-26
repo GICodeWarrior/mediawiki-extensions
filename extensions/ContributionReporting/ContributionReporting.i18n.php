@@ -1252,6 +1252,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Glavkos
  * @author K sal 15
  * @author Omnipaedista
  * @author ZaDiak
@@ -1302,21 +1303,26 @@ $messages['el'] = array(
 	'contribstats-conversion' => 'Ρυθμός μετατροπής (%)',
 	'contribstats-template' => 'Πρότυπο',
 	'contribstats-nodata' => 'Δεν παρασχέθηκαν δεδομένα',
+	'contribstats-landingpage' => 'Καταληκτική σελίδα',
 	'contribstats-donatepage' => 'Σελίδα δωρεών',
 	'contribstats-average' => 'Μέσος όρος',
 	'contribstats-paypal-donations' => 'Δωρεές PayPal',
 	'contribstats-credit-card' => 'Πιστωτική κάρτα',
+	'contribstats-unaudited' => 'Αυτά τα σύνολα είναι ανέλεγκτα',
 	'fundraiserstatistics' => 'Στατιστικά εράνου',
 	'fundraiserstats-date' => 'Ημερομηνία',
 	'fundraiserstats-day' => 'Ημέρα $1 από $2',
 	'fundraiserstats-contributions' => 'Εισφορές',
 	'fundraiserstats-total' => 'Σύνολο (USD)',
 	'fundraiserstats-avg' => 'Μέσος όρος (USD)',
+	'fundraiserstats-ytd' => 'Αθροιστικό σύνολο (USD)',
 	'fundraiserstats-max' => 'Μέγιστο (USD)',
 	'fundraiserstats-tab-totals' => 'Συνολικά (USD)',
 	'fundraiserstats-tab-contributions' => 'Αριθμός συνεισφορών',
 	'fundraiserstats-tab-averages' => 'Μέσοι όροι (USD)',
 	'fundraiserstats-tab-maximums' => 'Μέγιστα (USD)',
+	'fundraiserstats-tab-ytd' => 'Έτος-προς-ημερομηνία (USD)',
+	'fundraiserstats-customize' => 'Προσαρμογή',
 );
 
 /** Esperanto (Esperanto)
@@ -4122,7 +4128,7 @@ $messages['pms'] = array(
 	'fundraiserstats-tab-ytd' => 'Ann an cors (USD)',
 	'fundraiserstats-instructions' => "Për vëdde le statìstiche për minca di, ch'a buta ël cursor an sla bara për col di. Minca ann a l'é d'un color diferent an sël gràfich.",
 	'fundraiserstats-customize' => 'Përsonalisa',
-	'fundraiserstats-show-years' => "Mosta j'agn ch'a ven-o:",
+	'fundraiserstats-show-years' => "Mostré j'agn sì-dapress:",
 	'fundraiserstats-time-zone' => 'Fus orari:',
 	'fundraiserstats-utc' => '(da UTC)',
 );
@@ -4443,6 +4449,7 @@ $messages['roa-tara'] = array(
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Massime (USD)',
 	'fundraiserstats-tab-ytd' => 'Anne-a-date (USD)',
+	'fundraiserstats-customize' => 'Personalizze',
 	'fundraiserstats-utc' => '(da UTC)',
 );
 
@@ -4746,6 +4753,11 @@ $messages['sk'] = array(
 	'fundraiserstats-tab-averages' => 'Priemer (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'fundraiserstats-tab-ytd' => 'Rok do dátumu (USD)',
+	'fundraiserstats-instructions' => 'Ak chcete zobraziť štatistiky pre ľubovoľný deň, podržte kurzor nad stĺpcom pre daný deň. Každý rok je v grafe zobrazený inou farbou.',
+	'fundraiserstats-customize' => 'Prispôsobiť',
+	'fundraiserstats-show-years' => 'Zobraziť nasledujúce roky:',
+	'fundraiserstats-time-zone' => 'Časové pásmo:',
+	'fundraiserstats-utc' => '(z UTC)',
 );
 
 /** Slovenian (Slovenščina)

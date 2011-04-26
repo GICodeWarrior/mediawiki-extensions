@@ -60,14 +60,6 @@ $messages['qqq'] = array(
 	'ct-and' => '{{Identical|And}}',
 );
 
-/** کھوار (کھوار)
- * @author Rachitrali
- */
-$messages['khw'] = array(
-	'ct-beginner' => 'شروع کوراک',
-	'ct-and' => 'وا',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Naudefj
@@ -303,6 +295,7 @@ $messages['bjn'] = array(
  */
 $messages['bn'] = array(
 	'clicktracking' => 'ইউজাবিলিটি ইনিশিয়েটিভ ক্লিক ট্র্যাকিং',
+	'clicktracking-desc' => 'ট্র্যাকিং কার্যগুলোর জন্য ট্র্যাকিংয়ে ক্লিক করুন, যেগুলো পাতাকে রিফ্রেশ করা থেকে বিরত রাখে',
 	'ct-title' => 'সমষ্টিগত ব্যবহারকারীর ক্লিক',
 	'ct-event-name' => 'ইভেন্টের নাম',
 	'ct-expert-header' => '"দক্ষ" ক্লিক',
@@ -1265,6 +1258,14 @@ $messages['ka'] = array(
 	'ct-update-table' => 'ცხრილის განახლება',
 );
 
+/** کھوار (کھوار)
+ * @author Rachitrali
+ */
+$messages['khw'] = array(
+	'ct-beginner' => 'شروع کوراک',
+	'ct-and' => 'وا',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
@@ -1447,9 +1448,12 @@ $messages['li'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Papuass
  */
 $messages['lv'] = array(
+	'ct-anon-users' => 'Anonīmie lietotāji',
+	'ct-user-contribs' => 'Kopējais lietotāja devums',
 	'ct-and' => 'un',
 );
 

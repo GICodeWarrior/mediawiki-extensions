@@ -126,11 +126,17 @@ Pariksa hijaan Pian.',
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'ajaxLogin2' => 'আপনি কি নিশ্চিত?
 আপনি যদি এই পাতাটি ছেড়ে যান তাহলে এ পাতায় আপনার করা পরিবর্তনগুলো হারিয়ে যেতে পারে।',
 	'ajaxlogin-create' => 'অ্যাকাউন্ট তৈরি',
+	'al-nosuchuser' => '"$1" নামে কোনো ব্যবহারকারী নেই।
+ব্যবহারকারী নামসমূহ কেস সেনসিটিভ।
+আপনার বানান পরীক্ষা করুন।',
+	'al-createblocked' => 'আপনার আইপি ঠিকানা থেকে ব্যবহারকারী অ্যাকাউন্ট তৈরিতে বাধা রয়েছে।',
+	'al-throttled' => 'আপনি সাম্প্রতিককালে অনেক বার পাসওয়ার্ড প্রবেশের চেষ্টা করেছে। পুনরায় চেষ্টার পূর্বে অনুগ্রহপূর্বক $1 {{PLURAL:$1|সেকেন্ড|সেকেন্ড}} অপেক্ষা করুন।',
 );
 
 /** Breton (Brezhoneg)
@@ -1016,6 +1022,8 @@ Tu puè perdere le cangiaminde tue de sta pàgene ce tu lasse sta pàgene mò.',
 	'al-nosuchuser' => 'Non ge stè \'n\'utende ca se chiame "$1".
 Le nome utinde sonde sensibbele a le maiuscole e minuscole.
 Condrolle c\'è scritte.',
+	'al-createblocked' => "L'indirizze IP tune ha state bloccate da 'a ccrejazione de le cunde utinde.",
+	'al-throttled' => "Tu è pruvate troppe vote a mettere 'a passuord. Pe piacere aspitte $1 {{PLURAL:$1|seconde|seconde}} apprime de pruvà arrete.",
 );
 
 /** Russian (Русский)

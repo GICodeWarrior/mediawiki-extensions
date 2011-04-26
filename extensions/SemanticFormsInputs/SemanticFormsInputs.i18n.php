@@ -505,8 +505,12 @@ $messages['uk'] = array(
 	'semanticformsinputs-next' => 'Наступна',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
 $messages['zh-hans'] = array(
+	'semanticformsinputs-desc' => '用于[http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]的附加输入项类型',
+	'semanticformsinputs-wrongformat' => '格式错误。',
 	'semanticformsinputs-close' => '关闭',
 	'semanticformsinputs-prev' => '向前',
 	'semanticformsinputs-next' => '下一个',

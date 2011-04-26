@@ -113,6 +113,13 @@ $messages['bg'] = array(
 	'categoryintersection-results' => 'Търсенето върна $1 {{PLURAL:$1|резултат|резултата}}.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'categoryintersection' => 'বিষয়শ্রেণী ছেঁদ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

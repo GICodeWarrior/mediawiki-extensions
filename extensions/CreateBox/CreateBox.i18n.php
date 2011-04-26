@@ -162,7 +162,7 @@ $messages['co'] = array(
 $messages['cs'] = array(
 	'createbox-desc' => 'Speciální vkládací pole pro vytváření stránek',
 	'createbox-create' => 'Vytvořit',
-	'createbox-exists' => "Omlouváme se, \"'''{{FULLPAGENAME}}'''\" již existuje.
+	'createbox-exists' => "Omlouváme se, ale \"'''{{FULLPAGENAME}}'''\" již existuje.
 
 Nemůžete vytvořit tuto stránku, ale můžete jí [{{fullurl:{{FULLPAGENAME}}|action=edit}} editovat], [{{fullurl:{{FULLPAGENAME}}}} zobrazit], nebo vytvořit jinou stránku pomocí následujícího pole.
 

@@ -365,6 +365,7 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -388,6 +389,7 @@ $messages['bn'] = array(
 	'badimages-log-add' => '[[$1]]-কে অচল ছবির তালিকায় যোগ করা হয়েছে',
 	'badimages-log-remove' => '[[$1]]-কে অচল ছবির তালিকা থেকে সরিয়ে ফেলা হয়েছে',
 	'badimages-page' => '{{ns:help}}:অচল ছবির তালিকা',
+	'right-badimages' => 'অপ্রযোজ্য চিত্র তালিকা হালনাগাদ করুন',
 );
 
 /** Breton (Brezhoneg)

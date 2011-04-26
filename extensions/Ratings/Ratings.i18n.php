@@ -74,6 +74,22 @@ Die aktuelle Bewertung eines Benutzers wird angezeigt, sofern er bereits eine vo
 	'ratings-no-votes-yet' => 'Bislang wurde dies von niemanden bewertet.',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'ratings-desc' => 'Permet aux utilisateurs de classer différentes « propriétés » des pages',
+	'ratings-starsratings-desc' => "Affiche un simple contrôle de classement en étoile permettant à l'utilisateur de classer une certaine propriété d'une page.
+Le vote actuel de l'utilisateur s'affichera initialement lorsqu'il a déjà voté.",
+	'ratings-par-page' => "La page sur laquelle le classement s'applique.",
+	'ratings-par-tag' => 'La balise de classement. Cette balise indique quelle « propriété » de la page sera classée.',
+	'ratings-par-showdisabled' => "Afficher les classements lorsque l'utilisateur ne peut pas voter (en mode lecture seule).",
+	'ratings-par-incsummary' => "Afficher un résumé des classements actuels au-dessus de l'élément à classer ?",
+	'ratings-votesummary-desc' => 'Affiche un bref résumé des classements pour la page et de la paire de propriétés spécifiées.',
+	'ratings-current-score' => 'Classement actuel des utilisateurs : $1 ($2 {{PLURAL:$2|classement|classements}})',
+	'ratings-no-votes-yet' => "Personne n'a encore classé ceci.",
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
