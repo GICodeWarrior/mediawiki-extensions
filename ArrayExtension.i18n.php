@@ -161,6 +161,13 @@ $messages['pt'] = array(
 	'arrayext-desc' => 'Armazenar e calcular matrizes designadas',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'arrayext-desc' => 'Stipe e calcole le array nomenate',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
