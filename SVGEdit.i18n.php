@@ -380,8 +380,8 @@ $messages['pms'] = array(
 	'svgedit-editor-save-close' => 'Salva e sara',
 	'svgedit-editor-close' => 'Scancela',
 	'svgedit-desc' => 'Modìfica ant ël navigador dij disegn SVG con [http://code.google.com/p/svg-edit/ SVG-Edit]',
-	'svgedit-edit-tab' => 'Modìfica disegn',
-	'svgedit-edit-tab-tooltip' => 'It peule modifiché sto disegn SVG an tò browser',
+	'svgedit-edit-tab' => 'Modìfica ël dissegn',
+	'svgedit-edit-tab-tooltip' => 'A peul modifiché cost disegn SVG an sò navigador',
 	'svgedit-toolbar-insert' => 'Disegné SVG',
 );
 
