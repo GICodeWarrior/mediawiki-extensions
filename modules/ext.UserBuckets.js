@@ -19,7 +19,7 @@ $.setBucket = function ( bucketName, bucketValue, bucketVersion ){
 
 $.setupActiveBuckets = function(){
 	var buckets = $.getBuckets();
-	for ( iter in mw.activeCampaigns ) {
+	for ( var iter in mw.activeCampaigns ) {
 		var campaign = mw.activeCampaigns[iter];
 		// if bucket has been set, or bucket version is out of date,
 		// set up a user bucket
