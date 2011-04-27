@@ -80,6 +80,29 @@ Please try again later.',
 	'articleFeedback-table-caption-recentlows' => 'Recent lows',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Average',
+	/* EmailCapture */
+	'articlefeedback-emailcapture-response-body' => 'Hello!
+
+Thank you for for expressing interest in helping to improve {{SITENAME}}.
+
+Please take a moment to confirm your email by clicking on the link below: 
+
+$1
+
+You may also visit:
+
+$2
+
+And enter the following confirmation code:
+
+$3
+
+We’ll be in touch shortly with how you can help improve {{SITENAME}}.
+
+If you didn’t initiate this request, please ignore this email and we won’t send you anything else.
+
+Best wishes, and thank you,
+The {{SITENAME}} team',
 );
 
 /** Message documentation (Message documentation)

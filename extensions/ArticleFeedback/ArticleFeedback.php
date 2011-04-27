@@ -98,6 +98,9 @@ $wgPrefSwitchSurveys['articlerating'] = array(
 );
 $wgValidSurveys[] = 'articlerating';
 
+// Replace default emailcapture message
+$wgEmailCaptureAutoResponse['body-msg'] = 'articlefeedback-emailcapture-response-body';
+
 /* Setup */
 
 $wgExtensionCredits['other'][] = array(
