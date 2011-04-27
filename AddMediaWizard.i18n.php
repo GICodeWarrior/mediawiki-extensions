@@ -278,9 +278,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'addmediawizard-desc' => 'Tambahkan media wizard, dikembangkan atas kerjasama Kaltura dan Wikimedia Foundation',
+	'addmediawizard-loading' => 'Memuat pemandu penambah media',
 );
 
 /** Igbo (Igbo)

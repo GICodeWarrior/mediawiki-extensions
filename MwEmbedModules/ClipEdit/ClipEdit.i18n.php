@@ -435,6 +435,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Glavkos
  * @author Kiriakos
  */
 $messages['el'] = array(
@@ -458,7 +459,12 @@ $messages['el'] = array(
 	'mwe-clipedit-start_time' => 'Χρόνος εκκίνησης',
 	'mwe-clipedit-end_time' => 'Χρόνος λήξης',
 	'mwe-clipedit-preview_inout' => 'Προεπισκόπηση των σημείων εισόδου-εξόδου',
+	'mwe-clipedit-edit-tools' => 'Επεξεργασία εργαλείων',
+	'mwe-clipedit-inline-description' => 'Λεζάντα',
+	'mwe-clipedit-edit-video-tools' => 'Εργαλεία επεξεργασίας βίντεο:',
 	'mwe-clipedit-duration' => 'Διάρκεια:',
+	'mwe-clipedit-layout' => 'Διάταξη',
+	'mwe-clipedit-layout_left' => 'Αριστερή πλευρά διάταξης εικόνας',
 );
 
 /** Esperanto (Esperanto)
