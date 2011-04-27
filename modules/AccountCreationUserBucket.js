@@ -1,9 +1,8 @@
 //checks
-if(typeof(MW) == "undefined"){ MW={};}
-if(!MW.activeCampaigns){ MW.activeCampaigns ={}; }
+if(!mw.activeCampaigns){ mw.activeCampaigns ={}; }
 
 //define new active campaign
-MW.activeCampaigns.AccountCreation =
+mw.activeCampaigns.AccountCreation =
 
 { 
   //Treatment name
@@ -79,7 +78,7 @@ MW.activeCampaigns.AccountCreation =
 	  
   "all": function(){
 			//add up all rates
-			var campaign = MW.activeCampaigns.AccountCreation;
+			var campaign = mw.activeCampaigns.AccountCreation;
 		  	if( $j.cookie('userbuckets') && 
 		  			$j.parseJSON( $j.cookie('userbuckets') )["AccountCreation"]){
 		  		var buckets = $j.parseJSON( $j.cookie('userbuckets') );
