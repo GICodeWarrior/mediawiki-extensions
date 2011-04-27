@@ -33,8 +33,10 @@ class SpecialArticleFeedback extends SpecialPage {
 	/**
 	 * Returns an HTML table containing data from a given two dimensional array.
 	 * 
-	 * @param $headings Array: List of rows, each a list of columns (values will be escaped)
-	 * @param $rows Array: List of rows, each a list of columns (values will not be escaped)
+	 * @param $headings Array: List of rows, each a list of column data (values will be escaped)
+	 * @param $rows Array: List of rows, each a list of either calss/column data pairs (values will
+	 * be escaped), or arrays containing attr, text and html fields, used to set attributes, text or
+	 * HTML content of the cell
 	 * @param $attribs Array: List of HTML attributes to apply to the table
 	 * @return String: HTML table code
 	 */
@@ -61,7 +63,20 @@ class SpecialArticleFeedback extends SpecialPage {
 			foreach ( $row as $class => $column ) {
 				$attr = is_string( $class )
 					? array( 'class' => 'articleFeedback-table-column-' . $class ) : array();
-				$table .= Html::rawElement( 'td', $attr, $column );
+				if ( is_array( $column ) ) {
+					if ( isset( $column['attr'] ) ) {
+						$attr = array_merge( $attr, $column['attr'] );
+					}
+					if ( isset( $column['text'] ) ) {
+						$table .= Html::element( 'td', $attr, $column['text'] );
+					} else if ( isset( $column['html'] ) ) {
+						$table .= Html::rawElement( 'td', $attr, $column['html'] );
+					} else {
+						$table .= Html::element( 'td', $attr );
+					}
+				} else {
+					$table .= Html::rawElement( 'td', $attr, $column );
+				}
 			}
 			$table .= Html::closeElement( 'tr' );
 		}
@@ -141,13 +156,18 @@ class SpecialArticleFeedback extends SpecialPage {
 			$row = array();
 			$row['page'] = $page['page'];
 			foreach ( $wgArticleFeedbackRatings as $category ) {
-				$row[] = in_array( $category, $page['categories'] )
-					? Html::element(
-						'span', array( 'class' => 'articleFeedback-table-cell-bad' ), 0
-					)
-					: Html::element(
-						'span', array( 'class' => 'articleFeedback-table-cell-good' ), 1
-					);
+				$row[] = array(
+					'attr' => in_array( $category, $page['categories'] )
+						? array(
+							'class' => 'articleFeedback-table-cell-bad',
+							'data-sort-value' => 0
+						)
+						: array(
+							'class' => 'articleFeedback-table-cell-good',
+							'data-sort-value' => 1
+						),
+					'html' => '&nbsp;'
+				);
 			}
 			$rows[] = $row;
 		}
@@ -228,8 +248,20 @@ class SpecialArticleFeedback extends SpecialPage {
 				'categories' => array( 1, 4 ),
 			),
 			array(
-				'page' => 'Test Article',
+				'page' => 'Test Article 1',
 				'categories' => array( 1, 3 ),
+			),
+			array(
+				'page' => 'Test Article 2',
+				'categories' => array( 2, 3 ),
+			),
+			array(
+				'page' => 'Test Article 3',
+				'categories' => array( 3, 4 ),
+			),
+			array(
+				'page' => 'Test Article 4',
+				'categories' => array( 1, 2 ),
 			)
 		);
 	}

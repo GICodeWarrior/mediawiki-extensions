@@ -32,13 +32,9 @@
 }
 
 .articleFeedback-table-cell-bad {
-	display: block;
 	background-color: #ffcc99;
-	color: #ffcc99;
 }
 
 .articleFeedback-table-cell-good {
-	display: block;
 	background-color: #99ff99;
-	color: #99ff99;
 }
