@@ -170,6 +170,15 @@ $messages['ee'] = array(
 	'categorymultisort-go' => 'Yi',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Προεπιλογή',
+	'categorymultisort-go' => 'Μετάβαση',
+	'prefs-category' => 'Κατηγορία',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
