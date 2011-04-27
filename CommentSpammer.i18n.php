@@ -76,6 +76,13 @@ $messages['bg'] = array(
 	'commentspammer-log-msg' => 'редакция от [[Special:Contributions/$1|$1]] в [[:$2]].',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'cspammer-log-page' => 'মন্তব্য স্প্যামার লগ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
