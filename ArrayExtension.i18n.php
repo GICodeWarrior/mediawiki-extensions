@@ -105,6 +105,13 @@ $messages['ia'] = array(
 	'arrayext-desc' => 'Immagazinar e computar arrays nominate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'arrayext-desc' => 'Menyimpan dan menghitung larik bernama',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -173,6 +180,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'arrayext-desc' => 'Хранение и вычисление именованных массивов',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'arrayext-desc' => 'Shrani in izračuna imenovana polja',
 );
 
 /** Swedish (Svenska)
