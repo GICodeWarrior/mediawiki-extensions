@@ -17,8 +17,6 @@ class ProfileMonitor extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgRequest, $wgExtensionAssetsPath;
 
-		
-
 		$this->setHeaders();
 
 		$process = $wgRequest->getText( 'process' );
