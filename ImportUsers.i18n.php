@@ -1966,7 +1966,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'importusers-log-summary-all' => 'Hotu',
+	'importusers-log-summary-all' => 'Hotu: $1',
 	'importusers-email' => 'korreiu eletróniku',
 );
 
