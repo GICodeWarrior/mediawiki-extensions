@@ -4377,6 +4377,10 @@ $messages['ro'] = array(
 	'fundraiserstats-tab-averages' => 'Medii (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximuri (USD)',
 	'fundraiserstats-tab-ytd' => 'An-la-dată (USD)',
+	'fundraiserstats-customize' => 'Personalizare',
+	'fundraiserstats-show-years' => 'Arată următorii ani:',
+	'fundraiserstats-time-zone' => 'Fus orar:',
+	'fundraiserstats-utc' => '(de la UTC)',
 );
 
 /** Tarandíne (Tarandíne)
