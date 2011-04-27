@@ -10,7 +10,7 @@ $specialPageAliases = array();
 
 /** English (English) */
 $specialPageAliases['en'] = array(
-	'PrefSwitch' => array( 'UsabilityInitiativePrefSwitch' ),
+	'PrefSwitch' => array( 'PrefSwitch' ),
 );
 
 /** Arabic (العربية) */
