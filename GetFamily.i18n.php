@@ -405,6 +405,16 @@ $messages['sk'] = array(
 	'right-getfamily' => 'Vytvoriť súbor rodiny pre pywikipediabot',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'getfamily-desc' => 'Ustvari družinsko datoteko za pywikipediabot',
+	'getfamily' => 'Dobi družino pywikipediabot',
+	'getfamily-interwikierror' => 'Napaka: napačna nastavitev interwiki; obrnite se na svojega lokalnega upravljavca.',
+	'right-getfamily' => 'Ustvarjanje družinske datoteke za pywikipediabot',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */
@@ -445,7 +455,7 @@ $messages['uk'] = array(
 $messages['vi'] = array(
 	'getfamily-desc' => 'Tạo tập tin gia đình cho pywikipediabot',
 	'getfamily' => 'Lấy gia đình pywikipediabot',
-	'getfamily-interwikierror' => 'Lỗi: Cấu hình liên wiki sai; hãy liên lạc quản lý viên địa phương.',
+	'getfamily-interwikierror' => 'Lỗi: Cấu hình liên wiki sai; hãy liên lạc bảo quản viên địa phương.',
 	'right-getfamily' => 'Tạo tập tin gia đình cho pywikipediabot',
 );
 
