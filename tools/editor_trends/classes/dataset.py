@@ -27,7 +27,7 @@ from pymongo.son_manipulator import SONManipulator
 from multiprocessing import RLock
 from texttable import Texttable
 from datetime import timedelta
-
+import cProfile
 if '..' not in sys.path:
     sys.path.append('..')
 
@@ -277,8 +277,8 @@ class Variable(Data):
         return [o for o in self.itervalues()]
 
     def get_observation(self, key, date, meta):
-        '''Get a single observation based on a date key and posssibly meta data'''
-        return self.obs.get(key, Observation(date, self.time_unit, key, meta).serialize())
+        '''Get a single observation based on a date key and possibly meta data'''
+        return self.obs.get(key, Observation(date, self.time_unit, key, meta))
 
     def add(self, date, value, meta={}):
         '''
@@ -295,12 +295,12 @@ class Variable(Data):
         For example, if you add {'experience': 3} as the meta dict when calling
         add then you will create an extra grouping called experience and all
         future observations who fall in the same date range and the same 
-        exerience level, in this case 3, will be grouped by that particular 
+        experience level, in this case 3, will be grouped by that particular 
         observation. You can use as many extra groupings as you want but 
         usually one extra grouping should be enough. 
         '''
         assert isinstance(meta, dict), '''The meta variable should be a dict 
-            (either empty or with variables to group by.'''
+            (either empty) or with variables to group by.'''
         start, end = self.set_date_range(date)
         values = meta.values()
         values.insert(0, end)
@@ -310,9 +310,9 @@ class Variable(Data):
         self.lock.acquire()
         try:
             obs = self.get_observation(id, date, meta)
-            obs = cPickle.loads(obs)
+            #obs = cPickle.loads(obs)
             obs.add(value)
-            obs = obs.serialize()
+            #obs = obs.serialize()
             self.obs[id] = obs
         finally:
             self.lock.release()
@@ -580,9 +580,10 @@ def get_max(number_list):
     else:
         return max(number_list)
 
+
 def debug():
     db = storage.init_database('mongo', 'wikilytics', 'enwiki_charts')
-    db.add_son_manipulator(Transform())
+    #db.add_son_manipulator(Transform())
 
     d1 = datetime.datetime.today()
     d2 = datetime.datetime(2007, 6, 7)
@@ -600,7 +601,7 @@ def debug():
 #    ds.encode()
     #name, time_unit, lock, **kwargs
     lock = RLock()
-    v = Variable('test', 'year', lock)
+    v = Variable('test', 'year', lock, {})
     v.add(d1, 10, {'exp': 3, 'test': 10})
     v.add(d1, 135, {'exp': 3, 'test': 10})
     v.add(d2, 1, {'exp': 4, 'test': 10})
@@ -611,6 +612,7 @@ def debug():
     v.add(d2 , 1, {'exp': 8, 'test': 13})
     v.add(d2 , 1, {'exp': 9, 'test': 12})
 
+    #mem = get_refcounts()
 
 #    v.add(d2 + timedelta(days=400), 1, {'exp': 4, 'test': 10})
 #    v.add(d2 + timedelta(days=900), 1, {'exp': 3, 'test': 8})
@@ -619,8 +621,8 @@ def debug():
 #    v.add(d2 + timedelta(days=2000), 1, {'exp': 8, 'test': 13})
 #    v.add(d2 + timedelta(days=2400), 1, {'exp': 9, 'test': 12})
 
-    print len(v), v.number_of_obs()
+#    print len(v), v.number_of_obs()
 
  #   mongo.test.insert({'variables': ds})
 if __name__ == '__main__':
-    debug()
+    cProfile.run('debug()')

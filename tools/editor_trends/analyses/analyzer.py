@@ -14,13 +14,14 @@ http://www.fsf.org/licenses/gpl.html
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
 __email__ = 'dvanliere at gmail dot com'
-__date__ = '2010-12-10'
+_date__ = '2010-12-10'
 __version__ = '0.1'
 
 from multiprocessing import JoinableQueue, Manager, RLock, Process
 from multiprocessing.managers import BaseManager
 from Queue import Empty
 
+import types
 import sys
 import cPickle
 import os
@@ -54,7 +55,8 @@ def reconstruct_observations(var):
     keys = var.obs.keys()
     d = {}
     for key in keys:
-        d[key] = cPickle.loads(var.obs[key])
+        d[key] = var.obs[key]
+        #d[key] = cPickle.loads(var.obs[key])
     var.obs = d
     return var
 
@@ -107,6 +109,7 @@ def generate_chart_data(rts, func, **kwargs):
 
     db = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     editors = db.retrieve_distinct_keys('editor')
+    editors = editors[:500]
     min_year, max_year = determine_project_year_range(db, 'new_wikipedian')
 
     fmt = kwargs.pop('format', 'long')
@@ -159,7 +162,7 @@ def generate_chart_data(rts, func, **kwargs):
 
     tasks.join()
 
-    reconstruct_observations(var)
+    var = reconstruct_observations(var)
     ds = dataset.Dataset(plugin.func_name, rts, format=fmt, **kwargs)
     ds.add_variable(var)
 
@@ -167,6 +170,27 @@ def generate_chart_data(rts, func, **kwargs):
     write_output(ds, rts, stopwatch)
 
     ds.summary()
+
+    for n, c in get_refcounts()[:100]:
+        print '%10d %s' % (n, c.__name__)
+
+
+def get_refcounts():
+    d = {}
+    sys.modules
+    # collect all classes
+    for m in sys.modules.values():
+        for sym in dir(m):
+            o = getattr (m, sym)
+            if type(o) is types.ClassType:
+                d[o] = sys.getrefcount (o)
+    # sort by refcount
+    pairs = map (lambda x: (x[1], x[0]), d.items())
+    pairs.sort()
+    pairs.reverse()
+    return pairs
+
+
 
 
 def determine_project_year_range(db, var):
