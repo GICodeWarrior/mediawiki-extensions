@@ -139,8 +139,6 @@ $wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackHooks::resourceLoade
 $wgAPIListModules['articlefeedback'] = 'ApiQueryArticleFeedback';
 $wgAPIModules['articlefeedback'] = 'ApiArticleFeedback';
 
-if ( $wgArticleFeedbackDashboard ) {
-	// Special Page
-	$wgSpecialPages['ArticleFeedback'] = 'SpecialArticleFeedback';
-	$wgSpecialPageGroups['ArticleFeedback'] = 'other';
-}
+// Special Page
+$wgSpecialPages['ArticleFeedback'] = 'SpecialArticleFeedback';
+$wgSpecialPageGroups['ArticleFeedback'] = 'other';
