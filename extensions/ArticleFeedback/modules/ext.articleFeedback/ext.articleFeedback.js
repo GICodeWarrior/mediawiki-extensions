@@ -42,7 +42,7 @@ function mutePitch( pitch, duration ) {
 function trackClick( id ) {
 	// Track the click so we can figure out how useful this is
 	if ( tracked && $.isFunction( $.trackActionWithInfo ) ) {
-		$.trackActionWithInfo( prefix( id ), mw.config.get( 'wgTitle' ) )
+		$.trackActionWithInfo( prefix( id ), mw.config.get( 'wgTitle' ) );
 	}
 }
 
@@ -82,7 +82,7 @@ var survey = new ( function() {
 		// Try to select existing dialog
 		$dialog = $( '#articleFeedback-dialog' );
 		// Fall-back on creating one
-		if ( $dialog.size() == 0 ) {
+		if ( $dialog.length === 0 ) {
 			// Create initially in loading state
 			$dialog = $( '<div id="articleFeedback-dialog" class="loading" />' )
 				.dialog( {
@@ -104,7 +104,7 @@ var survey = new ( function() {
 				.load( formSource, function() {
 					$form = $dialog.find( 'form' );
 					// Bypass normal form processing
-					$form.submit( function() { return that.submit() } );
+					$form.submit( function() { return that.submit(); } );
 					// Dirty hack - we want a fully styled button, and we can't get that from an
 					// input[type=submit] control, so we just swap it out
 					var $input = $form.find( 'input[type=submit]' );
@@ -190,7 +190,7 @@ var survey = new ( function() {
 			.addClass( 'articleFeedback-survey-message-' + message )
 			.text( mw.msg( 'articlefeedback-survey-message-' + message ) )
 			.appendTo( $dialog );
-		$dialog.dialog( 'option', 'height', $message.height() + 100 )
+		$dialog.dialog( 'option', 'height', $message.height() + 100 );
 	};
 } )();
 
@@ -311,10 +311,10 @@ var config = {
 };
 
 /* Load at the bottom of the article */
-$( '<div id="mw-articlefeedback"></div>' );.articleFeedback( config ).insertBefore( '#catlinks' );
+$( '<div id="mw-articlefeedback"></div>' ).articleFeedback( config ).insertBefore( '#catlinks' );
 
 /* Add link so users can navigate to the feedback tool from the toolbox */
-var $tbAft = $( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>')
+var $tbAft = $( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>' )
 	.find( 'a' )
 		.text( mw.msg( 'articlefeedback-form-switch-label' ) )
 		.click( function() {
