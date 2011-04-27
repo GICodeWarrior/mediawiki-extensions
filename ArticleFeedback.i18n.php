@@ -83,9 +83,9 @@ Please try again later.',
 	/* EmailCapture */
 	'articlefeedback-emailcapture-response-body' => 'Hello!
 
-Thank you for for expressing interest in helping to improve {{SITENAME}}.
+Thank you for expressing interest in helping to improve {{SITENAME}}.
 
-Please take a moment to confirm your email by clicking on the link below: 
+Please take a moment to confirm your e-mail by clicking on the link below: 
 
 $1
 
@@ -97,9 +97,9 @@ And enter the following confirmation code:
 
 $3
 
-We’ll be in touch shortly with how you can help improve {{SITENAME}}.
+We will be in touch shortly with how you can help improve {{SITENAME}}.
 
-If you didn’t initiate this request, please ignore this email and we won’t send you anything else.
+If you did not initiate this request, please ignore this e-mail and we will not send you anything else.
 
 Best wishes, and thank you,
 The {{SITENAME}} team',
