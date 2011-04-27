@@ -1060,6 +1060,20 @@ $messages['nds'] = array(
 	'countedits-nocontribs' => 'Kene Bidrääg op dit Wiki.',
 );
 
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam Rhk
+ */
+$messages['ne'] = array(
+	'countedits' => 'सम्पादन गन्ने',
+	'countedits-username' => 'प्रयोगकर्ता-नाम',
+	'countedits-ok' => 'हुन्छ',
+	'countedits-nosuchuser' => '$1 नामको प्रयोगकर्ता छैन।',
+	'countedits-resultheader' => '$1का नतिजाहरु',
+	'countedits-resulttext' => '$1 ले $2 {{PLURAL:$2|सम्पादन|सम्पादन}} गरे',
+	'countedits-mostactive' => 'अति सक्रिय योगदाताहरु',
+	'countedits-nocontribs' => 'यस विकिमा कोई योगदाता छैन।',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
