@@ -1327,6 +1327,11 @@ $messages['roa-tara'] = array(
 	'imstatus_details_saa' => "Pe cchiù dettaglie sus a le stile e l'aziune, vide $1.",
 	'imstatus_your_name' => "'u $1 nome tue",
 	'imstatus_aim_presence' => "$1 fece vedè 'u state cu 'nu collegamende ca fece partè AIM pe te manna 'nu IM (messagge istandanee), sembre ca l'utende l'ha installete.",
+	'imstatus_gtalk_code' => "'u codece de google talk tune",
+	'imstatus_gtalk_get_code' => "'u codece de google talk tune: pigghiale sus a $1.",
+	'imstatus_gtalk_height' => "altezze d'a sckatele, in pixel.",
+	'imstatus_gtalk_width' => "larghezze d'a sckatele, in pixel.",
+	'imstatus_icq_id' => "l'ID de ICQ tune",
 );
 
 /** Russian (Русский)
