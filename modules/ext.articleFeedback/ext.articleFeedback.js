@@ -310,10 +310,10 @@ var config = {
 	}
 };
 
-/* Load at the bottom of the article 
-$( '<div id="mw-articlefeedback"></div>' );.articleFeedback( config ).insertBefore( '#catlinks' );*/
+/* Load at the bottom of the article */
+$( '<div id="mw-articlefeedback"></div>' );.articleFeedback( config ).insertBefore( '#catlinks' );
 
-/* Add link so users can navigate to the feedback tool from the toolbox
+/* Add link so users can navigate to the feedback tool from the toolbox */
 var $tbAft = $( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></li>')
 	.find( 'a' )
 		.text( mw.msg( 'articlefeedback-form-switch-label' ) )
@@ -334,8 +334,9 @@ var $tbAft = $( '<li id="t-articlefeedback"><a href="#mw-articlefeedback"></a></
 					clearInterval( interval );
 				}
 			}, 200 );
+			return true;
 		} )
 		.end();
 $( '#p-tb' ).find( 'ul' ).append( $tbAft );
- */
+
 } )( jQuery );
