@@ -2,7 +2,7 @@
  * Script for Article Feedback Extension
  */
 
-jQuery(document).ready( function( $ ) {
+jQuery( function( $ ) {
 	if (
 		// Main namespace articles
 		mw.config.get( 'wgNamespaceNumber' ) === 0
