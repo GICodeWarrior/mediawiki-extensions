@@ -235,7 +235,7 @@ $.articleFeedback = {
 						'info': $.toJSON( {
 							'ratingData': data,
 							'pageTitle': mw.config.get( 'wgTitle' ),
-							'pageCategories': mw.config.get( 'wgCategories' ),
+							'pageCategories': mw.config.get( 'wgCategories' )
 						} ),
 						'action': 'emailcapture',
 						'format': 'json'
