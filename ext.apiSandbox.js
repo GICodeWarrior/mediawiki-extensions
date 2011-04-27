@@ -10,6 +10,7 @@ $( document ).ready( function() {
 	var propRow = $( '#api-sandbox-prop-row' );
 	var help = $( '#api-sandbox-help' );
 	var further = $( '#api-sandbox-further-inputs' );
+	var submit = $( '#api-sandbox-submit' );
 	var actionCache = [];
 	var propCache = [];
 	var namespaces = [];
@@ -63,11 +64,13 @@ $( document ).ready( function() {
 			propCache[data.paraminfo.querymodules[0].name] = data.paraminfo.querymodules[0];
 			createInputs( propCache[data.paraminfo.querymodules[0].name] );
 		}
+		submit.removeAttr( 'disabled' );
 	}
 
 	function getQueryInfo( action, prop ) {
 		var isQuery = action == 'query';
 		if ( action == '-' || ( isQuery && prop == '-' ) ) {
+			submit.attr( 'disabled', 'disabled' );
 			return;
 		}
 		var cached;
@@ -87,12 +90,14 @@ $( document ).ready( function() {
 			} else {
 				data.modules = action;
 			}
+			submit.attr( 'disabled', 'disabled' );
 			$.getJSON(
 				mw.config.get( 'wgScriptPath' ) + '/api' + mw.config.get( 'wgScriptExtension' ),
 				data,
 				parseParamInfo
 			);
 		} else {
+			submit.removeAttr( 'disabled' );
 			createInputs( cached );
 		}
 	}

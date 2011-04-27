@@ -17,4 +17,5 @@ $messages['en'] = array(
 	'apisb-load-error'        => 'Error loading API description',
 	'apisb-namespaces-error'  => 'Error loading namespaces',
 	'apisb-ns-main'           => '(Main)',
+	'apisb-submit'            => 'Make request',
 );
