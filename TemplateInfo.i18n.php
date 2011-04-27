@@ -311,6 +311,14 @@ $messages['ru'] = array(
 	'templateinfo-header' => 'XML-определение этого шаблона:',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'templateinfo-desc' => 'Podpira predloge, ki opredelujejo svojo zgradbo podatkov preko označevanja XML',
+	'templateinfo-header' => 'Opredelitev XML predloge je:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */
