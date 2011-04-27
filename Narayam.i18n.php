@@ -529,6 +529,7 @@ $messages['ml'] = array(
 	'narayam-help-page' => 'Help:എഴുത്ത്',
 	'narayam-checkbox-tooltip' => 'ഇൻപുട്ട് മെത്തേഡ് നിയന്ത്രിക്കാൻ ഇതുപയോഗിക്കുക',
 	'narayam-disable-preference' => 'നാരായം ഇൻപുട്ട് മെഥേഡ് തിരുത്തലുപകരണം (IME) പ്രവർത്തനരഹിതമാക്കുക',
+	'narayam-eo' => 'എസ്പെരാന്റോ',
 	'narayam-hi-inscript' => 'ഹിന്ദി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-kn' => 'കന്നഡ ലിപ്യന്തരണം',
 	'narayam-kn-inscript' => 'കന്നട ഇൻസ്ക്രിപ്റ്റ്',
@@ -542,6 +543,7 @@ $messages['ml'] = array(
 	'narayam-si-wijesekara' => 'സിംഹള വിജെശേഖര',
 	'narayam-ta99' => 'തമിഴ്99',
 	'narayam-ta' => 'തമിഴ് ലിപ്യന്തരണം',
+	'narayam-te-inscript' => 'തെലുഗു ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-bn-avro' => 'ബംഗാളി അവ്രൊ',
 	'narayam-bn-inscript' => 'ബംഗാളി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-bn-nkb' => 'ബംഗാളി നാഷണൽ കീബോർഡ്',
@@ -665,6 +667,31 @@ $messages['pt'] = array(
 	'narayam-bn-nkb' => 'NKB para bengali',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'narayam-help-page' => 'Help:Digitanne',
+	'narayam-eo' => 'Esperanto',
+	'narayam-hi-inscript' => 'Hindi InScript',
+	'narayam-kn' => 'Translitterazzione Kannada',
+	'narayam-kn-inscript' => 'Kannada InScript',
+	'narayam-ml' => 'Translitterazzione Malayalam',
+	'narayam-ml-inscript' => 'Malayalam InScript',
+	'narayam-or' => 'Translitterazzione Oriya',
+	'narayam-or-inscript' => 'Oriya InScript',
+	'narayam-sa' => 'Translitterazzione Sanscrite',
+	'narayam-sa-inscript' => 'Sanscrite InScript',
+	'narayam-si-singlish' => 'Sinhala Singlish',
+	'narayam-si-wijesekara' => 'Sinhala Wijesekara',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Translitterazzione Tamil',
+	'narayam-te-inscript' => 'Telugu InScript',
+	'narayam-bn-avro' => 'Bengali Avro',
+	'narayam-bn-inscript' => 'Bengali InScript',
+	'narayam-bn-nkb' => 'Bengali NKB',
+);
+
 /** Russian (Русский)
  * @author MaxSem
  * @author McDutchie
@@ -719,6 +746,35 @@ $messages['sah'] = array(
 	'narayam-bn-avro' => 'Бэнгээл Авро',
 	'narayam-bn-inscript' => 'Бэнгээл инскрипт',
 	'narayam-bn-nkb' => 'Бэнгээл NKB',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'narayam-desc' => 'Umožňuje pridať vlastné vstupné metódy vstupných polí',
+	'narayam-toggle-ime' => 'Ak chcete prepnúť VM ($1)',
+	'narayam-help-page' => 'Pomocník:Písanie',
+	'narayam-checkbox-tooltip' => 'Ak chcete vypnúť alebo zapnúť vstupnú metódu',
+	'narayam-disable-preference' => 'Vypnúť Editor vstupných metód (IME) Narayam',
+	'narayam-eo' => 'Esperanto',
+	'narayam-hi-inscript' => 'Hindčina, InScript',
+	'narayam-kn' => 'Kannadčina, transliterácia',
+	'narayam-kn-inscript' => 'Kannadčina, InScript',
+	'narayam-ml' => 'Malajlámčina, transliterácia',
+	'narayam-ml-inscript' => 'Malajlámčina, InScript',
+	'narayam-or' => 'Uríjčina, transliterácia',
+	'narayam-or-inscript' => 'Uríjčina, InScript',
+	'narayam-sa' => 'Sanskrit, transliterácia',
+	'narayam-sa-inscript' => 'Sanskrit, InScript',
+	'narayam-si-singlish' => 'Sinhalčina, Singlish',
+	'narayam-si-wijesekara' => 'Sinhalčina, Wijesekara',
+	'narayam-ta99' => 'Tamil99',
+	'narayam-ta' => 'Tamilčina, transliterácia',
+	'narayam-te-inscript' => 'Telugčina, InScript',
+	'narayam-bn-avro' => 'Bengálčina, Avro',
+	'narayam-bn-inscript' => 'Bengálčina, InScript',
+	'narayam-bn-nkb' => 'Bengálčina, NKB',
 );
 
 /** Slovenian (Slovenščina)
