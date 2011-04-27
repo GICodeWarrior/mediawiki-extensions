@@ -17,9 +17,10 @@ $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['FileAttach'] = "$dir/FileAttach.i18n.php";
 $wgExtensionFunctions[] = 'wfSetupFileAttach';
 $wgExtensionCredits['other'][] = array(
+	'path'        => __FILE__,
 	'name'        => 'FileAttach',
 	'author'      => '[http://www.mediawiki.org/wiki/User:Milan Milan Holzapfel]',
-	'description' => 'Allows files to be uploaded to the current article',
+	'descriptionmsg' => 'fileattach-desc',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:FileAttach',
 	'version'     => FILEATTCH_VERSION
 );
