@@ -23,3 +23,13 @@ $emailTo = 'example@example';
 $bccTo = 'example2@example';
 $ccTo = false;
 $emailFrom = 'example2@example';
+
+# The day of the month on which to send a new invoice
+# If this is false, the invoice will be sent every time the script is run
+# If this is set to a number, the script can be run daily, and a new invoice
+# will be sent only after the specified day of the month is passed. This allows
+# the script to be run from a normal crontab without duplicates being sent.
+$sendDayOfMonth = false;
+
+# The directory in which the last invoice number sent is recorded
+$dataDirectory = false;

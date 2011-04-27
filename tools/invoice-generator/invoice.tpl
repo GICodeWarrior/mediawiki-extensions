@@ -49,7 +49,7 @@ $sum += $item['amount'];
 <td></td>
 <td colspan="3" align="right"><b>Invoice Total</b></td>
 <td></td>
-<td align="right"><?= $sum ?> <?= $currency ?></td>
+<td align="right"><?= sprintf( "%.2f", $sum ) ?> <?= $currency ?></td>
 
 </tr>
 </table>

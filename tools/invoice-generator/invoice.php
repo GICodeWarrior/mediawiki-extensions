@@ -37,12 +37,8 @@ class Invoice {
 		return date( $this->conf->dateFormat, $time );
 	}
 
-	function generateInvoice( $num = false ) {
+	function generateInvoice( $num ) {
 		$epochStart = strtotime( $this->conf->epochStart );
-		if ( $num === false ) {
-			// Calculate number of months since invoiceStart
-			$num = $this->timeInMonths( time() ) - $this->timeInMonths( $epochStart ) + 1;
-		}
 		$periodStart = $this->addMonths( $epochStart, $num - 1 );
 		$periodEnd = strtotime( "-1 day", $this->addMonths( $periodStart, 1 ) );
 		$replacements = array(
@@ -82,7 +78,56 @@ class Invoice {
 		return $result;
 	}
 
+	function getCurrentInvoiceNumber() {
+		// Calculate number of months since epochStart
+		$epochStart = strtotime( $this->conf->epochStart );
+		return $this->timeInMonths( time() ) - $this->timeInMonths( $epochStart ) + 1;
+	}
+
+	function getLastSentInvoiceNumber() {
+		if ( !file_exists( $this->conf->dataDirectory . '/last-sent' ) ) {
+			return false;
+		}
+		$last = file_get_contents( $this->conf->dataDirectory . '/last-sent' );
+		if ( $last && trim( $last ) ) {
+			return intval( trim( $last ) );
+		} else {
+			return false;
+		}
+	}
+
+	function setLastSentInvoiceNumber( $num ) {
+		if ( empty( $this->conf->dataDirectory ) ) {
+			return;
+		}
+		if ( !file_exists( $this->conf->dataDirectory ) ) {
+			mkdir( $this->conf->dataDirectory );
+		}
+		file_put_contents( $this->conf->dataDirectory . '/last-sent', "$num\n" );
+	}
+
 	function mailInvoice( $num = false ) {
+		$dedupe = false;
+		if ( $num === false ) {
+			$num = $this->getCurrentInvoiceNumber();
+			if ( !empty( $this->conf->sendDayOfMonth ) && !empty( $this->conf->dataDirectory ) ) {
+				$dedupe = true;
+			}
+		}
+
+		if ( $dedupe ) {
+			$last = $this->getLastSentInvoiceNumber();
+			if ( $last == $num ) {
+				$this->debugLog( "No invoice sent: same month as before\n" );
+				return;
+			}
+			$dayOfMonth = idate( 'd' );
+			if ( $dayOfMonth < $this->conf->sendDayOfMonth ) {
+				$this->debugLog( "No invoice sent: not the specified day yet\n" );
+				return;
+			}
+		}
+
 		$invoice = $this->generateInvoice( $num );
 
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -95,7 +140,16 @@ class Invoice {
 			$headers .= "Cc: {$this->conf->ccTo}\r\n";
 		}
 
-		mail( $this->conf->emailTo, $invoice['subject'], $invoice['text'], $headers );
+		$success = mail( $this->conf->emailTo, $invoice['subject'], $invoice['text'], $headers );
+
+		if ( $dedupe && $success ) {
+			echo "Invoice sent to {$this->conf->emailTo}\n";
+			$this->setLastSentInvoiceNumber( $num );
+		}
+	}
+
+	function debugLog( $str ) {
+		#echo $str;
 	}
 }
 
