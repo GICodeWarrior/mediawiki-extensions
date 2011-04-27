@@ -470,6 +470,7 @@ Móžne su "plain", "normal" a "wiki".',
  * @author Glavkos
  */
 $messages['el'] = array(
+	'article-comments-desc' => 'Επιτρέπει ενότητες σχολίων σε σελίδες περιεχομένου',
 	'article-comments-title-string' => 'Τίτλος',
 	'article-comments-name-string' => 'Όνομα',
 	'article-comments-name-field' => 'Όνομα (απαιτείται):',
@@ -479,8 +480,8 @@ $messages['el'] = array(
 	'article-comments-comment-field' => 'Σχόλιο:',
 	'article-comments-submit-button' => 'Υποβολή',
 	'article-comments-leave-comment-link' => 'Αφήστε ένα σχόλιο ...',
-	'article-comments-invalid-field' => 'Η $ 1 υπό τον όρο <nowiki> [$ 2] </nowiki> είναι άκυρη.',
-	'article-comments-required-field' => 'το πεδίο "$ 1" είναι απαραίτητo.',
+	'article-comments-invalid-field' => 'Η $1 υπό τον όρο <nowiki> [ $2 ] </nowiki> είναι άκυρη.',
+	'article-comments-required-field' => '" $1 "πεδίο είναι υποχρεωτικό.',
 	'article-comments-submission-failed' => 'H υποβολή Σχόλιου  απέτυχε',
 	'article-comments-no-comments' => 'Δυστυχώς η σελίδα "[[$1]]" δεν δέχεται σχόλια αυτή την ώρα',
 	'article-comments-commenter-said' => '$1 είπε...',
@@ -1079,14 +1080,40 @@ Méiglech sinn "plain", "normal" a "wiki".',
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Papuass
  */
 $messages['lv'] = array(
+	'article-comments-desc' => 'Iespējo komentāru sadaļas satura lapās',
+	'article-comments-title-string' => 'nosaukums',
+	'article-comments-name-string' => 'Vārds',
+	'article-comments-name-field' => 'Vārds (jānorāda obligāti):',
+	'article-comments-url-field' => 'Tīmekļa vietne:',
 	'article-comments-url-string' => 'URL',
 	'article-comments-comment-string' => 'Komentārs',
 	'article-comments-comment-field' => 'Komentārs:',
 	'article-comments-submit-button' => 'Iesniegt',
 	'article-comments-leave-comment-link' => 'Atstāt komentāru ...',
+	'article-comments-invalid-field' => '$1 ievadītais <nowiki>[$2]</nowiki> nav derīgs.',
+	'article-comments-required-field' => '"$1" lauks ir jāaizpilda obligāti.',
+	'article-comments-submission-failed' => 'Komentāra iesniegšana neizdevās',
+	'article-comments-failure-reasons' => 'Atvainojiet, Jūsu komentāra iesniegšana neizdevās {{PLURAL:$1|šāda iemesla|šādu iemeslu}} dēļ:',
+	'article-comments-no-comments' => 'Atvainojiet, šobrīd lapa "[[$1]]" nepieņem komentārus.',
+	'article-comments-talk-page-starter' => '<noinclude>Komentāri par "[[$1]]"
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 teica ...',
+	'article-comments-summary' => '$1 iesniegtie komentāri, izmantojot ArticleComments paplašinājumu',
+	'article-comments-submission-succeeded' => 'Komentāru iesniegšana izdevās',
+	'article-comments-submission-success' => 'Jūs esat veiksmīgi iesniedzis komentāru lapai "[[$1]]"',
+	'article-comments-submission-view-all' => 'Jūs varat apskatīt [[$1|visus komentārus šajā lapā]]',
+	'article-comments-user-is-blocked' => 'Jūsu lietotāja konts šobrīd ir bloķēts "[[$1]] " rediģēšanai.',
+	'article-comments-comment-bad-mode' => 'Komentāram piešķirts nederīgs režīms.
+Pieejamie režīmi ir "plain", "normal" un "wiki".',
+	'article-comments-comment-missing-name-parameter' => 'Trūkst vārda',
+	'article-comments-comment-missing-date-parameter' => 'Trūkst komentāra datuma',
+	'article-comments-no-spam' => 'Vismaz viens no iesniegtajiem laukiem ir atzīmēts kā mēstule.',
+	'processcomment' => 'Apstrādes lapas komentārs',
 );
 
 /** Malagasy (Malagasy)
@@ -1633,6 +1660,7 @@ Na voljo so »plain«, »normal« in »wiki«.',
 
 /** Swedish (Svenska)
  * @author Cohan
+ * @author Lokal Profil
  * @author Tobulos1
  */
 $messages['sv'] = array(
@@ -1648,7 +1676,7 @@ $messages['sv'] = array(
 	'article-comments-leave-comment-link' => 'Lämna en kommentar ...',
 	'article-comments-required-field' => '$1-fältet är obligatoriskt.',
 	'article-comments-submission-failed' => 'Kommentarinlämning misslyckades',
-	'article-comments-failure-reasons' => 'Tyvärr misslyckades inskickandet av din kommentar av följande skäl:',
+	'article-comments-failure-reasons' => 'Tyvärr misslyckades inskickandet av din kommentar av följande {{PLURAL:$1|skäl|skäl}}:',
 	'article-comments-no-comments' => 'Tyvärr, sidan "[[$1]]" tillåter inte kommentarer just nu.',
 	'article-comments-talk-page-starter' => '<noinclude>Kommentarer till [[$1]]
 <comments />
@@ -1656,6 +1684,7 @@ $messages['sv'] = array(
 	'article-comments-commenter-said' => '$1 sa ...',
 	'article-comments-summary' => 'Kommentar från $1 - via ArticleComments-tillägg',
 	'article-comments-submission-succeeded' => 'Kommentarinlämning lyckades',
+	'article-comments-user-is-blocked' => 'Ditt användarkonto är för närvarande blockerat  från att redigera "[[$1]] ".',
 	'article-comments-comment-missing-name-parameter' => 'Namn saknas',
 	'article-comments-comment-missing-date-parameter' => 'Datum för kommentar saknas',
 	'article-comments-no-spam' => 'Minst ett av de inlämnade fälten var flaggat som spam.',
