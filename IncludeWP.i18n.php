@@ -218,6 +218,24 @@ $messages['ia'] = array(
 	'includewp-include-par-height' => 'Le altitude maxime (in pixels) del div in le qual le contento es cargate. Defini como 0 pro non haber un limite.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'includewp-desc' => 'IncludeWP adalah ekstensi ringan untuk menyertakan isi Wikipedia',
+	'includewp-loading-page' => 'Memuat halaman...',
+	'includewp-show-full-page' => 'Menampilkan halaman penuh',
+	'includewp-show-fragment' => 'Menampilkan paragraf pertama saja',
+	'includewp-loading-failed' => 'Gagal memuat halaman.',
+	'includewp-licence-notice' => 'Konten di atas berasal dari halaman $1 <a href="$2">$3</a> yang dilisensikan di bawah <a href="$4">$5</a>.
+Tersedia <a href="$6">daftar lengkap penulis</a>.',
+	'includewp-parserhook-desc' => 'Kait parser yang memungkinkan tampilan konten suatu halaman Wikipedia.',
+	'includewp-include-par-page' => 'Nama halaman (eksternal) yang ingin Anda tampilkan.',
+	'includewp-include-par-wiki' => 'Nama wiki ingin Anda tarik kontennya. Perlu merupakan salah satu dari wiki yang diizinkan, yang secara bawaan hanya Wikipedia.',
+	'includewp-include-par-paragraphs' => 'Jumlah paragraf yang ingin Anda tampilkan saat awal.',
+	'includewp-include-par-height' => 'Tinggi maksimum div HTML tempat konten yang dimuat (dalam piksel). Setel sebagai 0 untuk tanpa batas.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
