@@ -85,7 +85,7 @@ $wgResourceModules['ext.clickTracking'] = array(
 $wgResourceModules['ext.clickTracking.special'] = array(
 	'scripts' => 'ext.clickTracking.special.js',
 	'styles' => 'ext.clickTracking.special.css',
-	'dependencies' => array( 'jquery.json.js', 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
+	'dependencies' => array( 'jquery.json', 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
 ) + $ctResourceTemplate;
 $wgResourceModules['ext.UserBuckets'] = array(
 	'scripts' => 'ext.UserBuckets.js',
