@@ -124,6 +124,15 @@ $messages['gsw'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Ein oder mehreri Poschtleitzahle hän nit chenne geokodiert wäre oder sin us dr Charte uusgloo wore',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'ukgeocoding_name' => 'קידוד גאוגרפי למפות עבור הממלכה המאוחדת',
+	'ukgeocoding_desc' => 'הרחבה ל־Maps עם פונקציית מפענח display_uk_point מיושמת במפות של גוגל',
+	'ukgeocoding_couldNotGeocode' => 'לא ניתן היה לקודד מיקוד אחד או יותר והם הושמטו מהמפה.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
