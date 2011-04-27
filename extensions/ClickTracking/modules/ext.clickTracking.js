@@ -12,4 +12,4 @@ jQuery( function( $ ) {
 			$el.attr( 'href', $.trackActionURL( href, id ) );
 		}
 	} );
-} )();
+} );
