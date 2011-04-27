@@ -585,6 +585,14 @@ $messages['nah'] = array(
 	'createbox-create' => 'Ticchīhuāz',
 );
 
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam Rhk
+ */
+$messages['ne'] = array(
+	'createbox-desc' => 'पृष्ठ सृजनाको निम्ति विशेष इनपुट बाकस',
+	'createbox-create' => 'सृजना गर्ने',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
