@@ -153,6 +153,8 @@ $messages['ca'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Crear',
 	'articletocategory2-create-category-under-category-text' => 'Afegir una categoria en aquesta categoria',
 	'articletocategory2-create-category-under-category-button' => 'Crear',
+	'right-ArticleToCategory2' => 'Afegeix la pàgina a la categoria',
+	'right-ArticleToCategory2AddCat' => 'Afegir una categoria a una categoria',
 );
 
 /** Czech (Česky)
@@ -189,6 +191,18 @@ $messages['dsb'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Napóraś',
 	'articletocategory2-create-category-under-category-text' => 'Kategoriju toś tej kategoriji pśidaś',
 	'articletocategory2-create-category-under-category-button' => 'Napóraś',
+);
+
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Προσθήκη μιας σελίδας σε αυτήν την κατηγορία',
+	'articletocategory2-create-article-under-category-button' => 'Δημιουργία',
+	'articletocategory2-create-category-under-category-text' => 'Προσθέσετε μια κατηγορίας σε αυτή την κατηγορία',
+	'articletocategory2-create-category-under-category-button' => 'Δημιουργία',
+	'right-ArticleToCategory2' => 'Προσθήκη σελίδας σε κατηγορία',
+	'right-ArticleToCategory2AddCat' => 'Προσθέστε κατηγορία σε κατηγορία',
 );
 
 /** Esperanto (Esperanto)
@@ -337,6 +351,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Farras
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'articletocategory2-desc' => 'Meletakkan kotak masukan di setiap halaman kategori yang memungkinkan pembuatan halaman baru secara langsung ke kategori itu',
@@ -344,6 +359,8 @@ $messages['id'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Buat',
 	'articletocategory2-create-category-under-category-text' => 'Tambahkan kategori ke kategori ini',
 	'articletocategory2-create-category-under-category-button' => 'Buat',
+	'right-ArticleToCategory2' => 'Tambahkan halaman ke dalam kategori',
+	'right-ArticleToCategory2AddCat' => 'Tambahkan kategori ke dalam kategori',
 );
 
 /** Italian (Italiano)
@@ -582,13 +599,16 @@ $messages['sr-ec'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Направи',
 );
 
-/** Swedish (Svenska) */
+/** Swedish (Svenska)
+ * @author Lokal Profil
+ */
 $messages['sv'] = array(
 	'articletocategory2-desc' => 'Lägger ett inmatningsfält på varje kategorisida, så att du kan skapa en artikel direkt i denna kategori',
 	'articletocategory2-create-article-under-category-text' => 'Lägg till artikel till denna kategori',
 	'articletocategory2-create-article-under-category-button' => 'Skapa',
 	'articletocategory2-create-category-under-category-text' => 'Lägg till kategori till denna kategori',
 	'articletocategory2-create-category-under-category-button' => 'Skapa',
+	'right-ArticleToCategory2' => 'Lägg till sidan i kategorin',
 );
 
 /** Tamil (தமிழ்)
