@@ -652,7 +652,7 @@ $messages['vi'] = array(
 	'prefs-sendmailtowiki' => 'Gửi nội dung qua thư điện tử',
 	'sendmailtowiki-inpin' => 'PIN:',
 	'sendmailtowiki-err-pinlength' => 'Số PIN phải có đúng 5 chữ số.',
-	'sendmailtowiki-err-wrongprefix' => 'Tiền tố tài khoản wiki sai; hãy liên lạc với quản lý viên.',
+	'sendmailtowiki-err-wrongprefix' => 'Tiền tố tài khoản wiki sai; hãy liên lạc với bảo quản viên.',
 	'sendmailtowiki-err-invalidaccount' => 'Tài khoản nhận không hợp lệ. Hãy kiểm tra địa chỉ nhận thư điện tử.',
 	'sendmailtowiki-err-invalidsender' => 'Tài khoản gửi không hợp lệ. Hãy kiểm tra địa chỉ gửi thư điện tử.',
 );
