@@ -1076,6 +1076,56 @@ $messages['ru'] = array(
 	'toolbase-main-404' => 'Файл не найден',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'toolbase-header-title' => 'Orodja X! (BETA)',
+	'toolbase-header-bugs' => 'Hrošči',
+	'toolbase-header-sitenotice' => 'Globalno obvestilo strani Toolserver: $1',
+	'toolbase-replag' => 'Strežnik zaostaja za $1',
+	'toolbase-replag-years' => 'let',
+	'toolbase-replag-months' => 'mesecev',
+	'toolbase-replag-weeks' => 'tednov',
+	'toolbase-replag-days' => 'dni',
+	'toolbase-replag-hours' => 'ur',
+	'toolbase-replag-minutes' => 'minut',
+	'toolbase-replag-seconds' => 'sekund',
+	'toolbase-footer-exectime' => 'Izvedeno v $1 sekundah',
+	'toolbase-footer-source' => 'Ogled izvorne kode',
+	'toolbase-footer-language' => 'Spremeni jezik',
+	'toolbase-footer-translate' => 'Prevedi',
+	'toolbase-navigation' => 'Navigacija',
+	'toolbase-navigation-homepage' => 'Domača stran',
+	'toolbase-navigation-user_id' => 'Najdi ID uporabnika',
+	'toolbase-navigation-autoedits' => 'Števec samodejnih urejanj',
+	'toolbase-userid-submit' => 'Dobi ID uporabnika',
+	'toolbase-userid-title' => 'Najdi ID uporabnika',
+	'toolbase-userid-result' => 'ID uporabnika za <b>$1</b> na <a href="$3"><b>$3</b></a> je <b>$2</b>.',
+	'toolbase-autoedits-title' => 'Računalo samodejnih urejanj',
+	'toolbase-autoedits-submit' => 'Izračunaj',
+	'toolbase-autoedits-approximate' => '<b>Oceni</b> število urejanj z uporabo ...',
+	'toolbase-autoedits-totalauto' => 'Skupno število avtomatiziranih urejanj',
+	'toolbase-autoedits-totalall' => 'Skupno število urejanj',
+	'toolbase-autoedits-pct' => 'Odstotek avtomatiziranih urejanj',
+	'toolbase-main-title' => 'Dobrodošli!',
+	'toolbase-main-content' => 'Dobrodošli v orodjih X! Zbirka orodij je še vedno v postopku pretvorbe v ogrodje <a href="$1">Symfony</a>. Postopek bo trajal še nekaj časa, vendar bi zdaj orodja morala delovati.
+
+Za seznam orodij, ki trenutno tečejo na tem ogrodju, si oglejte stransko vrstico na desni strani.
+
+Poročila o hroščih lahko vložite v <a href="$2">Google Code</a>.',
+	'toolbase-main-404' => 'Datoteke ni mogoče najti',
+	'toolbase-main-404-content' => 'Ups! Najdena ni bila nobena stran!
+
+Prepričajte se, da ste pravilno vnesli URL.
+Če ste od nekod sledili povezavi, prosimo, <a href="$1">vložite poročilo o hrošču</a>.
+</ul>',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 ni veljaven uporabnik',
+	'toolbase-error-nowiki' => '$1.$2.org ni veljaven wiki',
+	'toolbase-error-toomanyedits' => '$1 ima $2 urejanj. To orodje ima zgornjo mejo $3 urejanj.',
+);
+
 /** Swedish (Svenska)
  * @author WikiPhoenix
  */
