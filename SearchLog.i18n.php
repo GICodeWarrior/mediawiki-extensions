@@ -172,6 +172,22 @@ $messages['ia'] = array(
 	'right-searchlog-read' => 'Vider le registro de recercas',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'searchlog' => 'Log Pencarian',
+	'searchlog-desc' => 'Mencatat penggunaan kotak pencarian dan memungkinkan pelaporan kata kunci total selama periode waktu yang diberikan',
+	'searchlog-cantopen' => 'Tidak dapat membuka berkas log <tt>$1</tt>',
+	'searchlog-heading' => 'Kata kunci pencarian yang digunakan selama periode $1',
+	'searchlog-unicode' => 'Tampilkan Unicode mentah',
+	'searchlog-timeperiod' => 'Pilih jangka waktu:',
+	'searchlog-entire' => 'Seluruh log',
+	'searchlog-phrase' => 'Frasa pencarian',
+	'searchlog-occurences' => 'Jumlah temuan selama periode',
+	'right-searchlog-read' => 'Lihat log pencarian',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */
@@ -238,6 +254,22 @@ $messages['nl'] = array(
 	'searchlog-phrase' => 'Zoekterm',
 	'searchlog-occurences' => 'Het aantal gebeurtenissen in een bepaalde periode',
 	'right-searchlog-read' => 'Het zoeklogboek weergeven',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'searchlog' => 'Sërché Registr',
+	'searchlog-desc' => "A registra l'usagi dla box d'arserca e a përmëtt ëd conté ij totaj dle paròle ciav an mente d'un dàit antërval ëd temp",
+	'searchlog-cantopen' => 'A peul pa deurbe ël file ëd registr <tt>$1</tt>',
+	'searchlog-heading' => "Sërca paròle ciav dovrà ant l'antërval $1",
+	'searchlog-unicode' => 'Mosta riga Unicode',
+	'searchlog-timeperiod' => 'Selession-a antërval ëd temp:',
+	'searchlog-entire' => 'Registr anter',
+	'searchlog-phrase' => 'Sërca fras',
+	'searchlog-occurences' => "Nùmer d'ocorense an mente ëd l'antërval",
+	'right-searchlog-read' => "Varda ël registr d'arserca",
 );
 
 /** Portuguese (Português)
