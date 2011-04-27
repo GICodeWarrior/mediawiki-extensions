@@ -54,6 +54,14 @@ class SpecialApiSandbox extends SpecialPage {
 </table>
 <div id="api-sandbox-further-inputs"></div>
 ';
+		$s .= Html::element( 'input',
+			array(
+				'type' => 'button',
+				'id' => 'api-sandbox-submit',
+				'value' => wfMessage( 'apisb-submit' )->text(),
+				'disabled' => 'disabled',
+			) 
+		);
 		return $s;
 	}
 
