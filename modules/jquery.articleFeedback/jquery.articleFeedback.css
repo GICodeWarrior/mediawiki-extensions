@@ -316,11 +316,11 @@
 .articleFeedback-expertise-options input {
 	display: block;
 	clear: both;
-	margin: 0.5em 0 0.5em 2em;
+	margin-left: 2em;
 }
 
 .articleFeedback-expertise-options label {
-	line-height: 1.6em;
+ 	line-height: 1.6em;
 }
 
 .articleFeedback-expertise-options .articleFeedback-helpimprove-email {
