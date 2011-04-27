@@ -15,6 +15,9 @@ require_once( dirname( dirname( __FILE__ ) ) . '/SimpleSurvey/SimpleSurvey.php' 
 
 /* Configuration */
 
+// Enable/disable dashboard page
+$wgArticleFeedbackDashboard = false;
+
 // Number of revisions to keep a rating alive for
 $wgArticleFeedbackRatingLifetime = 30;
 
@@ -135,6 +138,9 @@ $wgHooks['ResourceLoaderGetConfigVars'][] = 'ArticleFeedbackHooks::resourceLoade
 // API Registration
 $wgAPIListModules['articlefeedback'] = 'ApiQueryArticleFeedback';
 $wgAPIModules['articlefeedback'] = 'ApiArticleFeedback';
-// Special Page
-$wgSpecialPages['ArticleFeedback'] = 'SpecialArticleFeedback';
-$wgSpecialPageGroups['ArticleFeedback'] = 'other';
+
+if ( $wgArticleFeedbackDashboard ) {
+	// Special Page
+	$wgSpecialPages['ArticleFeedback'] = 'SpecialArticleFeedback';
+	$wgSpecialPageGroups['ArticleFeedback'] = 'other';
+}
