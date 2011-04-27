@@ -20,41 +20,49 @@ __version__ = '0.1'
 import multiprocessing
 from operator import itemgetter
 from copy import deepcopy
+from Queue import Empty
 
 import progressbar
 from classes import storage
 from utils import file_utils
-from utils import messages
 from utils import data_converter
 from classes import consumers
+from classes import queue
 
+
+class EditorDatabase(object):
+    def __init__(self, rts, tasks, result):
+        self.db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
+        self.db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
 
 class EditorConsumer(consumers.BaseConsumer):
     '''
     A simple class takes care of fetching an editor from the queue and start
     processing its edits. 
     '''
-    def __init__(self, rts, tasks, db_raw, db_dataset):
-        super(EditorConsumer, self).__init__(rts, tasks)
-        self.db_raw = db_raw
-        self.db_dataset = db_dataset
+    def __init__(self, rts, tasks, result):
+        super(EditorConsumer, self).__init__(rts, tasks, result)
+        self.db_raw = storage.init_database(rts.storage, rts.dbname, rts.editors_raw)
+        self.db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
+        self.rts = rts
 
     def run(self):
         while True:
-            editor = self.tasks.get()
+            editor_id = self.tasks.get()
             self.tasks.task_done()
-            print '%s editors to go...' % messages.show(self.tasks.qsize)
-            if editor == None:
+            if editor_id == None:
                 break
-            editor = Editor(self.db_raw, self.db_dataset, editor)
+            editor = Editor(self.rts, editor_id, self.db_raw, self.db_dataset)
             editor()
+            self.result.put(True)
 
 
 class Editor:
-    def __init__(self, db_raw, db_dataset, editor_id):
+    def __init__(self, rts, editor_id, db_raw, db_dataset):
         self.editor_id = editor_id
-        self.db_raw = db_raw    #storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_raw)
-        self.db_dataset = db_dataset    #storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
+        self.db_raw = db_raw
+        self.db_dataset = db_dataset
+        self.rts = rts
         self.cutoff = 9
 
     def __str__(self):
@@ -87,13 +95,14 @@ class Editor:
         totals = calculate_totals(totals, counts, article_count, 'article_count')
         totals = calculate_totals(totals, counts, edit_count, 'edit_count')
 
+        cum_edit_count_main_ns, cum_edit_count_other_ns = calculate_cum_edits(edits)
+
+        edits = sort_edits(edits)
         if len(edits) > self.cutoff:
             new_wikipedian = edits[self.cutoff]['date']
         else:
             new_wikipedian = False
-        cum_edit_count_main_ns, cum_edit_count_other_ns = calculate_cum_edits(edits)
 
-        edits = sort_edits(edits)
         first_edit = edits[0]['date']
         final_edit = edits[-1]['date']
 
@@ -309,6 +318,14 @@ def sort_edits(edits):
     return sorted(edits, key=itemgetter('date'))
 
 
+def add_indexes(rts):
+    db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
+    print '\nCreating indexes...'
+    db_dataset.add_index('editor')
+    db_dataset.add_index('new_wikipedian')
+    print 'Finished creating indexes...'
+
+
 def setup_database(rts):
     '''
     Initialize the database, including setting indexes and dropping the older
@@ -318,12 +335,16 @@ def setup_database(rts):
     db_dataset = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     db_dataset.drop_collection()
     editors = db_raw.retrieve_editors()
-    return db_raw, db_dataset, editors
+    return editors
 
 
 def transform_editors_multi_launcher(rts):
-    db_raw, db_dataset, editors = setup_database(rts)
-    transformers = [EditorConsumer(rts, editors, db_raw, db_dataset) for i in xrange(rts.number_of_processes)]
+    editors = setup_database(rts)
+    n = editors.size()
+    result = queue.JoinableRetryQueue()
+    pbar = progressbar.ProgressBar(maxval=n).start()
+    transformers = [EditorConsumer(rts, editors, result) \
+                    for i in xrange(rts.number_of_processes)]
 
 
     for x in xrange(rts.number_of_processes):
@@ -332,16 +353,24 @@ def transform_editors_multi_launcher(rts):
     for transformer in transformers:
         transformer.start()
 
-    editors.join()
+    while n > 0:
+        try:
+            res = result.get(block=False)
+            if res == True:
+                pbar.update(pbar.currval + 1)
+                n -= 1
+        except Empty:
+            pass
 
-    db_dataset.add_index('editor')
-    db_dataset.add_index('new_wikipedian')
+    editors.join()
+    add_indexes(rts)
+
 
 
 def transform_editors_single_launcher(rts):
     print rts.dbname, rts.editors_raw
-    db_raw, db_dataset, editors = setup_database(rts)
-    n = db_raw.count()
+    editors = setup_database(rts)
+    n = editors.size()
     pbar = progressbar.ProgressBar(maxval=n).start()
 
     for x in xrange(rts.number_of_processes):
@@ -352,13 +381,12 @@ def transform_editors_single_launcher(rts):
         editors.task_done()
         if editor == None:
             break
-        editor = Editor(db_raw, db_dataset, editor)
+        editor = Editor(rts, editor)
         editor()
 
         pbar.update(pbar.currval + 1)
 
-    db_dataset.add_index('editor')
-    db_dataset.add_index('new_wikipedian')
+    add_indexes(rts)
 
 
 if __name__ == '__main__':

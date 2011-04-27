@@ -75,30 +75,26 @@ def prepare_data(line):
     Prepare a single line to store in the database, this entails converting
     to proper variable and taking care of the encoding.
     '''
-    try:
-        article_id = int(line[1])
-        username = line[3].encode('utf-8')
-        ns = int(line[4])
-        date = text_utils.convert_timestamp_to_datetime_utc(line[6])
-        md5 = line[7]
-        revert = int(line[8])
-        bot = int(line[9])
-        cur_size = int(line[10])
-        delta = int(line[11])
+    article_id = int(line[1])
+    username = line[3].encode('utf-8')
+    ns = int(line[4])
+    date = text_utils.convert_timestamp_to_datetime_utc(line[6])
+    md5 = line[7]
+    revert = int(line[8])
+    bot = int(line[9])
+    cur_size = int(line[10])
+    delta = int(line[11])
 
-        data = {'date': date,
-                'article': article_id,
-                'username': username,
-                'ns': ns,
-                'hash': md5,
-                'revert':revert,
-                'cur_size':cur_size,
-                'delta':delta,
-                'bot':bot
-        }
-    except:
-        print line, len(line)
-        return {}
+    data = {'date': date,
+            'article': article_id,
+            'username': username,
+            'ns': ns,
+            'hash': md5,
+            'revert':revert,
+            'cur_size':cur_size,
+            'delta':delta,
+            'bot':bot
+    }
     return data
 
 
@@ -200,17 +196,15 @@ def launcher(rts):
         storer.start()
 
     ppills = rts.number_of_processes
-    while True:
-        while ppills > 0:
-            try:
-                res = result.get(block=False)
-                if res == True:
-                    pbar.update(pbar.currval + 1)
-                else:
-                    ppills -= 1
-            except Empty:
-                pass
-        break
+    while ppills > 0:
+        try:
+            res = result.get(block=False)
+            if res == True:
+                pbar.update(pbar.currval + 1)
+            else:
+                ppills -= 1
+        except Empty:
+            pass
 
     tasks.join()
     print '\nCreating indexes...'

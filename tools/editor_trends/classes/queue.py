@@ -37,7 +37,7 @@ class RetryQueue(Queue):
     def get(self, block=True, timeout=None):
         return retry_on_eintr(Queue.get, self, block, timeout)
 
-    def qsize(self):
+    def size(self):
         try:
             return self.qsize()
         except:
@@ -50,9 +50,10 @@ class JoinableRetryQueue(JoinableQueue):
     def get(self, block=True, timeout=None):
         return retry_on_eintr(Queue.get, self, block, timeout)
 
-    def qsize(self):
+    def size(self):
         try:
             return self.qsize()
-        except:
+        except Exception, error:
+            print error
             #OSX does not support the qsize function so we return unknown
             return 'unknown'

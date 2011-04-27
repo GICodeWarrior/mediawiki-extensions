@@ -17,7 +17,7 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2010-10-21'
 __version__ = '0.1'
 
-
+import cProfile
 import os
 import logging
 import logging.handlers
@@ -337,7 +337,7 @@ def transformer_launcher(rts, logger):
     stopwatch = timer.Timer()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='start')
     log.to_csv(logger, rts, 'Start', 'Transform', transformer_launcher)
-    transformer.transform_editors_single_launcher(rts)
+    transformer.transform_editors_multi_launcher(rts)
     stopwatch.elapsed()
     log.to_db(rts, 'dataset', 'transform', stopwatch, event='finish')
     log.to_csv(logger, rts, 'Finish', 'Transform', transformer_launcher)
@@ -353,6 +353,7 @@ def dataset_launcher(rts, logger):
     log.to_db(rts, 'dataset', 'export', stopwatch, event='start')
 
     for plugin in rts.plugins:
+        #cProfile.runctx('analyzer.generate_chart_data(rts, plugin, **rts.keywords)', globals(), locals(), filename="analyzer.cprof")
         analyzer.generate_chart_data(rts, plugin, **rts.keywords)
         log.to_csv(logger, rts, 'Start', 'Dataset', dataset_launcher,
                        plugin=plugin,

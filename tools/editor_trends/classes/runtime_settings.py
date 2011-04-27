@@ -135,7 +135,7 @@ class RunTimeSettings(Settings):
         '''
         plugin = self.get_value('charts')
         requested_plugins = []
-        if plugin != None and getattr(plugin, 'func_name', None) == None:
+        if plugin != None and isinstance(plugin, type('module')) == False:
             plugins = plugin.split(',')
             available_plugins = inventory.available_analyses()
             for plugin in plugins:
@@ -143,8 +143,8 @@ class RunTimeSettings(Settings):
                     raise exceptions.UnknownPluginError(plugin, available_plugins)
                 else:
                     requested_plugins.append(plugin)
-        elif getattr(plugin, 'func_name', None) != None:
-            requested_plugins.append(plugin.func_name)
+        elif isinstance(plugin, type('module')) != None:
+            requested_plugins.append(plugin)
         return requested_plugins
 
     def set_input_location(self):

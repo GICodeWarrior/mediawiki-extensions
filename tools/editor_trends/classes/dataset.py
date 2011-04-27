@@ -445,7 +445,6 @@ class Dataset:
                                        attrs)
         return filename
 
-
     def add_variable(self, variables):
         '''
         Call this function to add a Variable to a dataset. 
@@ -535,7 +534,7 @@ class Dataset:
         print self.details()
 
 def get_standard_deviation(number_list):
-    '''Given a list of numbers, calculate the standard devition of the list'''
+    '''Given a list of numbers, calculate the standard deviation of the list'''
     mean = get_mean(number_list)
     std = 0
     n = len(number_list)

@@ -212,7 +212,8 @@ class Mongo(AbstractDatabase):
         reducer = Code("function()")
 
         ids = []
-        cursor = self.db[self.collection].map_reduce(mapper, reducer)
+        collection = '%s_%s' % (self.dbname, 'mapreduce_editors')
+        cursor = self.db[self.collection].map_reduce(mapper, reducer, collection)
         for c in cursor.find():
             ids.append(c['_id'])
         return ids
