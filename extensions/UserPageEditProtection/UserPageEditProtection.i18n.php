@@ -361,6 +361,14 @@ $messages['si'] = array(
 	'right-editalluserpages' => 'පරිශීලක පිටු සංස්කරණය කිරීම',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'userpageeditprotection-desc' => 'Omeji urejanja na uporabniških straneh na uporabnike in dovoljene urejevalce',
+	'right-editalluserpages' => 'Urejanje uporabniških strani',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

@@ -95,6 +95,13 @@ $messages['ia'] = array(
 	'folktagcloud-desc' => 'Adde un proprietate de Semantic MediaWiki pro categorisar paginas con etiquettas definite per le usatores, e un function pro presentar istes in un etiquettario (nube de etiquettas).',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'folktagcloud-desc' => 'Menambahkan suatu properti Semantic MediaWiki untuk menandai halaman dengan label pengguna dan tag parser untuk menampilkan mereka dalam awan tag',
+);
+
 /** Japanese (日本語)
  * @author Whym
  */

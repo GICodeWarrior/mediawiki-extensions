@@ -1711,6 +1711,7 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Glavkos
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -1719,6 +1720,7 @@ $messages['el'] = array(
 	'viewapc-clear-confirm' => 'Θέλετε να εκκαθαρίσετε τη λανθάνουσα μνήμη;',
 	'viewapc-clear-user-cache' => 'Εκκαθάριση λανθάνουσας μνήμης χρήστη',
 	'viewapc-mode-stats' => 'Εμφάνιση στατιστικών φιλοξενίας',
+	'viewapc-mode-system-cache' => 'Καταχωρήσεις στην cache του συστήματος',
 	'viewapc-mode-user-cache' => 'Καταχωρήσεις λανθάνουσας μνήμης χρήστη',
 	'viewapc-mode-version-check' => 'Έλεγχος έκδοσης',
 	'viewapc-info-general' => 'Γενικές πληροφορίες',
@@ -1744,6 +1746,8 @@ $messages['el'] = array(
 	'viewapc-rps' => '$1 αιτήσεις ανά δευτερόλεπτο',
 	'viewapc-info-runtime' => 'Πληροφορίες χρόνου δουλειάς',
 	'viewapc-info-memory' => 'Διαγράμματα κατάστασης φιλοξενίας',
+	'viewapc-memory-usage-detailed' => 'Η χρήση της μνήμης<br />
+(οι πολλές φέ δείχνουν τμήματα)',
 	'viewapc-memory-usage' => 'Χρήση μνήμης',
 	'viewapc-cache-efficiency' => 'Χτυπήματα και αστοχίες',
 	'viewapc-memory-free' => 'Ελεύθερο: $1 ($2)',

@@ -352,6 +352,14 @@ $messages['sk'] = array(
 	'wikiarticlefeeds_combined_description' => 'Toto je kombinovaný kanál, ktorý obsahuje položky z niekoľkých zdrojov kanálov.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikiarticlefeeds-desc' => 'Ustvari vire, ustvarjene iz strani MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'To je združen vir, ki vsebuje elemente iz več virov.',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

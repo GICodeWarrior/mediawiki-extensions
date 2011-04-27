@@ -109,6 +109,21 @@ $messages['bg'] = array(
 	'commentbox-error-empty-comment' => 'Не са позволени празни коментари!',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'commentbox-desc' => 'নির্দিষ্ট পাতায় একটি মন্তব্য বাক্স যোগ করুন',
+	'commentbox-savebutton' => 'মন্তব্য সংরক্ষণ',
+	'commentbox-name' => 'নাম:',
+	'commentbox-log' => 'নতুন মন্তব্যসমূহ',
+	'commentbox-first-comment-heading' => '== মন্তব্যসমূহ ==',
+	'commentbox-errorpage-title' => 'মন্তব্য তৈরির সময় ত্রুটি দেখা দিয়েছে',
+	'commentbox-error-page-nonexistent' => 'এই পাতাটি নেই!',
+	'commentbox-error-namespace' => 'এই নামস্থানে কোনো মন্তব্য গ্রহণযোগ্য নয়!',
+	'commentbox-error-empty-comment' => 'খালি মন্তব্য গ্রহণযোগ্য নয়!',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D

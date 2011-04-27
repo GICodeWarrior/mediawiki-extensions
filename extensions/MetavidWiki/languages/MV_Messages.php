@@ -5057,6 +5057,7 @@ Saltar verso le vista del fluxo: $2',
  */
 $messages['id'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Penyunting Metadata Video & Pencari Media]',
+	'mvadmin' => 'Fungsi admin untuk MetavidWiki',
 	'metavid' => 'Halaman MetaVid',
 	'mv_missing_stream' => 'Stream terhilang: $1',
 	'specialpages-group-mv_group' => 'Halaman istimewa MetaVidWiki',

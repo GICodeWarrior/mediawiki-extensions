@@ -1417,7 +1417,7 @@ Ako otkačite ovu kutiju ostavićete članak kao radnu verziju.',
 	'wikilog-not-an-image' => 'Datoteka nije slika: $1.',
 	'wikilog-out-of-context' => 'Upozorenje: Oznake Wikizapisnika se koriste van konteksta.
 One bi trebale da se koriste samo u člankcima u imenskom prostoru Wikizapisnik.',
-	'wikilog-too-many-authors' => 'Upozorenj: Previše autora je navedeno u ovom postu wikizapisnika.',
+	'wikilog-too-many-authors' => 'Upozorenje: Previše autora je navedeno u ovom postu wikizapisnika.',
 	'wikilog-too-many-tags' => 'Upozorenje: Previše oznaka je prikazano u ovom postu wikizapisnika.',
 	'wikilog-comment-is-empty' => 'Poslani komentar je prazan.',
 	'wikilog-comment-too-long' => 'Poslani komentar je previše dug.',

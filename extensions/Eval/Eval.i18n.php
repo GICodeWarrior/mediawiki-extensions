@@ -604,6 +604,18 @@ $messages['sk'] = array(
 	'eval_code' => 'Kód',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Doda [[Special:Eval|vmesnik]] za funkcijo <code>eval()</code>',
+	'eval_submit' => 'Ovrednoti',
+	'eval_escape' => 'Ubeži izhod',
+	'eval_out' => 'Izhod',
+	'eval_code' => 'Koda',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  */

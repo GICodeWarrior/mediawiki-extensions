@@ -1174,17 +1174,37 @@ $messages['he'] = array(
 	'qp_not_participated_link' => 'לא השתתף',
 	'qp_order_by_username' => 'מיון לפי שם משתמש',
 	'qp_order_by_polls_count' => 'מיון לפי מספר הסקרים',
+	'qp_results_line_qupl' => 'הדף "$1" סקר "$2": $3',
+	'qp_results_line_qpl' => 'הדף "$1" סקר "$2": $3‏, $4‏, $5‏, $6',
 	'qp_header_line_qpul' => '$1 [ דף "$2" סקר "$3" ]',
 	'qp_export_to_xls' => 'ייצוא הסטטיסטיקה לקובץ מסוג XLS',
 	'qp_voices_to_xls' => 'ייצוא קולות לתסדיר XLS',
 	'qp_users_answered_questions' => '{{PLURAL:$1|משתמש אחד ענה|$1 משתמשים ענו}} על השאלות',
 	'qp_func_no_such_poll' => 'אין כזה סקר ($1)',
 	'qp_func_missing_question_id' => "יש לציין מס' שאלה קיים (החל מ־1) עבור הסקר $1",
+	'qp_func_invalid_question_id' => 'מזהה שאלה לא תקין=$2 (לא מספר) בסקר $1',
+	'qp_func_missing_proposal_id' => 'נא להגדיר מזהה תשובה אפשירת קיים (מתחיל 0) לסקר $1, שאלה $2',
+	'qp_func_invalid_proposal_id' => 'מזהה תשובה מוצעת לא תקין=$3 (לא מספר) בסקר $1, שאלה $2',
+	'qp_error_no_such_poll' => 'אין סקר כזה ($1).
+נא לוודא שהסקר מוכרז ושמור, ולוודא שנעשה שימוש בתו המפריד # בכתובת',
+	'qp_error_in_question_header' => 'כותרת שאלה לא תקינה: $1',
 	'qp_error_id_in_stats_mode' => "לא ניתן להצהיר על מס' עבור הסקר במצב סטטיסטי",
+	'qp_error_dependance_in_stats_mode' => 'לא ניתן להכריז על שרשרת תלות של הסקר במצב סטטיסטיקה',
 	'qp_error_no_stats' => 'אין נתונים סטטיסטיים זמינים כיוון שאף אחד עוד לא הצביע בסקר הזה, עדיין (כתובת=$1)',
 	'qp_error_address_in_decl_mode' => 'לא ניתן לאחזר את כתובת הסקר במצב הצהרה',
+	'qp_error_question_not_implemented' => 'שאלות מהסוג הזה אינן מיושמות: $1',
 	'qp_error_invalid_question_type' => 'סוג השאלה שגוי: $1',
 	'qp_error_type_in_stats_mode' => 'סוג השאלה לא ניתן להגדרה במצב תצוגה סטטיסטית: $1',
+	'qp_error_no_poll_id' => 'לא מוגדר מאפיין id לתג סקר.',
+	'qp_error_invalid_poll_id' => 'מזהה סקר לא תקין (id=$1).
+מזהה הסקר יכול להכיל רק אותיות, ספרות ותו רווח',
+	'qp_error_already_used_poll_id' => 'כבר נעשה שימוש במזהה הסקר בדף הזה (id=$1).',
+	'qp_error_invalid_dependance_value' => 'לשרשרת התלות של הסקר (id=$1) יש ערך בלתי תקין של מאפיין dependance‏ (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'הסקר (id=$1) תלוי בסקר אחר (id=$3) מהדף [[$2]], אבל הכותרת [[$2]] לא נמצאה.
+הסירו את מאפיין התלות או שחזרו את [[$2]]',
+	'qp_error_missed_dependance_poll' => 'הסקר (id=$1) תלוי בסקר אחר (id=$3) בדף $2, אבל הסקר ההוא אינו קיים או שהוא עדיין לא נשמר.
+הסירו את מאפיין התלות או צרו סקר עם id=$3 בדף $2 ושִמרו אותו.
+כדי לשמור סקר, שלחו אותו בלי לענות על השאלות.',
 	'qp_error_vote_dependance_poll' => 'יש להצביע עבור הסקר $1 תחילה.',
 	'qp_error_too_many_spans' => 'הוגדרו קבוצות קטגוריות רבות מדי עבור המספר הכולל של קטגוריות משנה',
 	'qp_error_unanswered_span' => 'קטגוריית משנה ללא מענה',
@@ -1194,6 +1214,7 @@ $messages['he'] = array(
 	'qp_error_too_few_categories' => 'יש להגדיר לפחות שתי קטגוריות',
 	'qp_error_too_few_spans' => 'כל קבוצת קטגוריות חייבת להכיל לפחות שתי תת־קטגוריות',
 	'qp_error_no_answer' => 'הצעה שלא נענתה',
+	'qp_error_unique' => 'לשאלה מסוג unique()‎ יש יותר הצעות ממספר התשובות האפשריות מוגדרות: אי־אפשר להשלים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

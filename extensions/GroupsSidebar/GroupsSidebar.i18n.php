@@ -257,6 +257,13 @@ $messages['ru'] = array(
 	'groupssidebar-desc' => 'Это расширение позволяет администраторам сайта включать элементы боковой панели для определённых групп участников',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'groupssidebar-desc' => 'Ta razširitev omogoča administratorjem strani v stransko vrstico vključevati elemente za posebne skupine uporabnikov',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић

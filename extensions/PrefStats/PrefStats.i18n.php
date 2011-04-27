@@ -1972,6 +1972,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Romaine
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -1983,10 +1984,10 @@ Klik op een voorkeur om de statistieken te bekijken.',
 	'prefstats-noprefs' => 'Er worden geen voorkeuren bijgehouden.
 Stel $wgPrefStatsTrackPrefs in om voorkeuren bij te houden.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|gebruiker heeft|gebruikers hebben}} deze voorkeur ingesteld sinds de voorkeurstatistieken zijn geactiveerd.
-** $2 {{PLURAL:$2|gebruiker heeft|gebruikers hebben}} deze nog insteld
+** $2 {{PLURAL:$2|gebruiker heeft|gebruikers hebben}} deze nog ingesteld
 ** $3 {{PLURAL:$3|gebruiker heeft|gebruikers hebben}} deze weer uitgeschakeld',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|gebruiker heeft|gebruikers hebben}} deze voorkeur ingesteld sinds de voorkeurstatistieken zijn geactiveerd.
-** $2 {{PLURAL:$2|gebruiker heeft|gebruikers hebben}} deze nog insteld.
+** $2 {{PLURAL:$2|gebruiker heeft|gebruikers hebben}} deze nog ingesteld.
 ** $3 {{PLURAL:$3|gebruiker heeft|gebruikers hebben}} deze weer uitgeschakeld.
 * In totaal {{PLURAL:$4|heeft $4 gebruiker|hebben $4 gebruikers}} deze voorkeur ingesteld.',
 	'prefstats-xaxis' => 'Duur (uren)',

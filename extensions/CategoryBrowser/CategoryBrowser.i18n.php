@@ -524,6 +524,26 @@ $messages['dsb'] = array(
 	'cb_edit_remove_hint' => 'Wulašowaś, jolic móžno',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'cb_previous_items_link' => 'Προηγούμενο',
+	'cb_next_items_link' => 'Επόμενο',
+	'cb_next_items_stats' => '(από $1 )',
+	'cb_cat_subcats' => 'υποκατηγορίες',
+	'cb_cat_pages' => 'σελίδες',
+	'cb_cat_files' => 'αρχεία',
+	'cb_apply_button' => 'Εφαρμογή',
+	'cb_all_op' => 'Ὀλα',
+	'cb_or_op' => 'ή',
+	'cb_and_op' => 'και',
+	'cb_edit_left_hint' => 'Μετακινήστε προς τα αριστερά, αν είναι δυνατόν',
+	'cb_edit_right_hint' => 'Μετακίνηση δεξιά, αν είναι δυνατόν',
+	'cb_edit_remove_hint' => 'Διαγραφή, αν είναι δυνατόν',
+	'cb_edit_clear_hint' => 'Διαγραφή τρέχουσας έκφρασης (επιλέξτε όλα)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

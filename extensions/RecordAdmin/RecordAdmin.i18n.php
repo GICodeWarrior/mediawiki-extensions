@@ -713,6 +713,7 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Grondin
  * @author IAlex
+ * @author Od1n
  * @author Peter17
  * @author PieRRoMaN
  * @author Sherbrooke
@@ -734,7 +735,7 @@ $messages['fr'] = array(
 	'recordadmin-alreadyexist' => 'Désolé, « $1 » existe déjà !',
 	'recordadmin-createsuccess' => '$1 creé avec succès',
 	'recordadmin-createerror' => 'Une erreur est intervenue lors de la tentative de création de $1 !',
-	'recordadmin-badtitle' => 'Mauvais titre!',
+	'recordadmin-badtitle' => 'Mauvais titre !',
 	'recordadmin-recordid' => 'ID/Nom de l’enregistrement :',
 	'recordadmin-invert' => 'Inverser la sélection',
 	'recordadmin-buttonsearch' => 'Rechercher',

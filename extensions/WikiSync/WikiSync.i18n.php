@@ -777,6 +777,7 @@ $messages['id'] = array(
 	'wikisync_apply_button' => 'Terapkan',
 	'wikisync_log_imported_by' => 'Diimpor oleh [[Special:WikiSync|WikiSync]]',
 	'wikisync_log_uploaded_by' => 'Diunggah oleh [[Special:WikiSync|WikiSync]]',
+	'wikisync_unsupported_user' => 'Hanya pengguna bot khusus $1 yang dapat melakukan sinkronisasi wiki. Silakan login sebagai $1 . Jangan ganti nama $1 pada saat sinkronisasi, atau revisi kosong informatif tidak akan dilewati dengan benar (lihat [http://www.mediawiki.org/wiki/Extension:WikiSync] untuk informasi lebih lanjut).',
 	'wikisync_api_result_unknown_action' => 'Tindakan API tidak dikenal',
 	'wikisync_api_result_exception' => 'Terjadi kesalahan dalam pemanggilan API lokal',
 	'wikisync_api_result_noaccess' => 'Hanya anggota dari {{PLURAL:$2|kelompok|kelompok-kelompok}} berikut yang dapat melakukan tindakan ini: $1',

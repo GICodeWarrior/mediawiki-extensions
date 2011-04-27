@@ -214,11 +214,13 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Dada
+ * @author Glavkos
  * @author Omnipaedista
  */
 $messages['el'] = array(
 	'categoryintersection' => 'Διατομή κατηγοριών',
 	'categoryintersection-doit' => 'Λίστα σελίδων σε όλες αυτές τις κατηγορίες',
+	'categoryintersection-mincategories' => 'Πρέπει να συμπεριλάβετε τουλάχιστον δύο κατηγορίες.',
 	'categoryintersection-results' => 'Η αναζήτηση έδωσε $1 {{PLURAL: $1|αποτέλεσμα|αποτελέσματα}}.',
 );
 

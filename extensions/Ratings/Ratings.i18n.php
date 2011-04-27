@@ -90,6 +90,22 @@ Le vote actuel de l'utilisateur s'affichera initialement lorsqu'il a déjà vot�
 	'ratings-no-votes-yet' => "Personne n'a encore classé ceci.",
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'ratings-desc' => 'אפשרות לדרג "מאפיינים" שונים של דפים',
+	'ratings-starsratings-desc' => 'הצגה של רכיב פשוט שמאפשר למשתמש לדרג בכוכבים מאפיין מסוים בדף.
+ההצבעה הנוכחית של המשתמש תוצג בתחילה אחרי שהוא יצביע.',
+	'ratings-par-page' => 'הדף שאליו מתייחס הדירוג.',
+	'ratings-par-tag' => 'תג הדירוג. התג מציין איזה "מאפיין" של הדף מדורג.',
+	'ratings-par-showdisabled' => 'להציג דירוגים כאשר המשתמש לא יכול להצביע (מצב קריאה בלבד).',
+	'ratings-par-incsummary' => 'להציג סיכום של ההצבעות הנוכחיות מעל רכיב הדירוג?',
+	'ratings-votesummary-desc' => 'הצגת סיכום קצר של הצבעות לדף המוגדר וזוגות של מאפיינים.',
+	'ratings-current-score' => 'דירוג משתמשים נוכחי: $1‏ ({{PLURAL:$2|דירוג אחד|$2 דירוגים}})',
+	'ratings-no-votes-yet' => 'איש לא דירג את זה עדיין.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -104,6 +120,22 @@ Le voto actual del usator essera monstrate initialmente si ille ha jam votate.',
 	'ratings-votesummary-desc' => 'Presenta un curte summario del votos pro le pagina e par de proprietates specificate.',
 	'ratings-current-score' => 'Evalutation actual del usator: $1 ($2 {{PLURAL:$2|evalutation|evalutationes}})',
 	'ratings-no-votes-yet' => 'Nemo ha ancora evalutate isto.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'ratings-desc' => 'Memungkinkan pengguna untuk memberi nilai terhadap berbagai "properti" halaman',
+	'ratings-starsratings-desc' => 'Menampilkan alat pemeringkat bintang sederhana yang memungkinkan pengguna untuk menilai properti tertentu dari sebuah halaman.
+Suara pengguna saat ini akan ditampilkan ketika ia sudah memilih.',
+	'ratings-par-page' => 'Halaman yang diberi peringkat.',
+	'ratings-par-tag' => 'Tag peringkat. Tag tersebut menunjukkan "properti" halaman apa yang diberi peringkat.',
+	'ratings-par-showdisabled' => 'Tunjukkan peringkat ketika pengguna tidak dapat memberi suara (pada mode baca-saja).',
+	'ratings-par-incsummary' => 'Tunjukkan ringkasan pilihan saat ini di atas elemen peringkat?',
+	'ratings-votesummary-desc' => 'Menampilkan ringkasan pendek pilihan untuk pasangan halaman dan properti tertentu.',
+	'ratings-current-score' => 'Peringkat pengguna sekarang: $1 ($2 {{PLURAL:$2|peringkat|peringkat}})',
+	'ratings-no-votes-yet' => 'Belum ada yang memberi peringkat.',
 );
 
 /** Colognian (Ripoarisch)

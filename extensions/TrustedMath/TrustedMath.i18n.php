@@ -128,9 +128,14 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
  * @author Kenrick95
  */
 $messages['id'] = array(
+	'trustedmath-desc' => 'Memungkinkan penyertaan persamaan LaTeX pada halaman, mirip dengan penggambar matematika bawaan, tetapi tanpa memerlukan Ocaml',
+	'trustedmath-permission-error' => 'Matematika tidak tepercaya dinonaktifkan pada wiki ini',
+	'trustedmath-path-error' => 'Galat saat membuat direktori matematika',
+	'trustedmath-convert-error' => 'Galat saat membuat gambar matematika. "$1" menghasilkan <tt><nowiki>$2</nowiki></tt>.',
 	'trustedmath-not-found' => 'Halaman [[:$1]] tidak eksis',
 );
 
@@ -182,8 +187,8 @@ $messages['nl'] = array(
 $messages['pms'] = array(
 	'trustedmath-desc' => "A përmët ëd buté dj'equassion LaTeX an sle pàgine, a la midema manera dël visualisator math antern, ma sensa la dipendense d'Ocaml",
 	'trustedmath-permission-error' => "Math pa sigur a l'é disabilità su sta wiki",
-	'trustedmath-path-error' => 'Eror an crean la directory math',
-	'trustedmath-convert-error' => 'Eror an crean la figura math. "$1" a l\'ha artornà <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-path-error' => 'Eror durant la creassion dël dossié math',
+	'trustedmath-convert-error' => 'Eror durant la creassion ëd la figura ëd matemàtica. "$1" a l\'ha fàit rësponde <tt><nowiki>$2</nowiki></tt>.',
 	'trustedmath-not-found' => 'La pàgina [[:$1]] a esist pa',
 );
 
@@ -207,6 +212,17 @@ $messages['ru'] = array(
 	'trustedmath-path-error' => 'Ошибка при создании директории math',
 	'trustedmath-convert-error' => 'Ошибка создания изображения math. «$1» вернул <tt><nowiki>$2</nowiki></tt>.',
 	'trustedmath-not-found' => 'Страницы [[:$1]] не существует',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'trustedmath-desc' => 'Omogoča vdelovanje izrazov LaTeX na strani, podobno kot vgrajen upodabljalnik math, vendar brez odvisnosti od Ocaml',
+	'trustedmath-permission-error' => 'Math brez zaupanja je onemogočen na tem wikiju',
+	'trustedmath-path-error' => 'Napaka pri ustvarjanju mape math',
+	'trustedmath-convert-error' => 'Napaka pri ustvarjanju slike math. »$1« je vrnil <tt><nowiki>$2</nowiki></tt>.',
+	'trustedmath-not-found' => 'Stran [[:$1]] ne obstaja',
 );
 
 /** Tagalog (Tagalog)

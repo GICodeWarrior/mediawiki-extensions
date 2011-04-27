@@ -232,6 +232,13 @@ $messages['si'] = array(
 	'xmlrc-desc' => 'XML ආකාරයට පිළියෙල කෙරුණු වෙනස්කම් ගැන නිවේදන, UDP, Jabber හෝ නෙයම් ක්‍රමයක් ඔස්සේ  යවන්න',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'xmlrc-desc' => 'Pošilja obvestila o spremembah kot XML, preko UDP, Jabberja ali drugih sredstev',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */

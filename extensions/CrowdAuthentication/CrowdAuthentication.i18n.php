@@ -342,6 +342,13 @@ $messages['sk'] = array(
 	'crowdauthentication-desc' => 'Zásuvný modul na overenie služby Atlassian Crowd',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'crowdauthentication-desc' => 'Vtičnik za overitev Atlassian Crowd',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

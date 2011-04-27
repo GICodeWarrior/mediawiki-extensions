@@ -1217,6 +1217,20 @@ $messages['sk'] = array(
 	'right-edituser-exempt' => 'Jeho nastavenia nemôžu upravovať iní používatelia',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'edituser-desc' => 'Omogoča upravičenim uporabnikom urejati nastavitve drugih uporabnikov',
+	'edituser' => 'Uredi uporabnika',
+	'edituser-username' => 'Uporabniško ime:',
+	'edituser-dosearch' => 'Iskanje',
+	'edituser-nouser' => 'Uporabnik »$1« ne obstaja.',
+	'edituser-exempt' => 'Uporabnika »$1« ni mogoče urejati.',
+	'right-edituser' => 'Urejanje nastavitev drugih uporabnikov',
+	'right-edituser-exempt' => 'Drugi ne morejo urediti to uporabniško nastavitev',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

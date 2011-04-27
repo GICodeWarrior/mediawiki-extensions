@@ -341,6 +341,7 @@ $messages['az'] = array(
 	'ogg-stop' => 'Dur',
 	'ogg-play-video' => 'Videonu başla',
 	'ogg-play-sound' => 'Səsi başla',
+	'ogg-more' => 'Çox…',
 	'ogg-dismiss' => 'Bağla',
 );
 
@@ -721,6 +722,7 @@ Os gwelwch yn dda, a wnewch chi <a href="http://www.mediawiki.org/wiki/Extension
 /** Danish (Dansk)
  * @author Byrial
  * @author Jon Harald Søby
+ * @author Peter Alberti
  */
 $messages['da'] = array(
 	'ogg-desc' => 'Understøtter Ogg Theora- og Vorbis-filer med en JavaScript-afspiller.',
@@ -752,6 +754,8 @@ QuickTime kan ikke afspille Ogg-file uden denne komponent.
 	'ogg-dismiss' => 'Luk',
 	'ogg-download' => 'Download fil',
 	'ogg-desc-link' => 'Om denne fil',
+	'ogg-oggThumb-version' => 'OggHandler kræver oggThumb version $1 eller nyere.',
+	'ogg-oggThumb-failed' => 'oggThumb kunne ikke oprette et miniaturebillede.',
 );
 
 /** German (Deutsch)

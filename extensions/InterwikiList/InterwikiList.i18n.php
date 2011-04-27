@@ -673,6 +673,18 @@ $messages['sk'] = array(
 	'interwikilist-prefix' => 'Interwiki predpona:',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'interwikilist' => 'Seznam interwikijev',
+	'interwikilist-desc' => 'Doda [[Special:Interwikilist|posebno stran]] za ogled povezav interwiki, ki so na voljo',
+	'interwikilist-linkname' => 'Povezava interwiki',
+	'interwikilist-target' => 'Ciljni URL',
+	'interwikilist-filter' => 'Filtrirajte seznam',
+	'interwikilist-prefix' => 'Predpora interwiki:',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић

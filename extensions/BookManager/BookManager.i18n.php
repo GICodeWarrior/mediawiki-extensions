@@ -103,8 +103,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Solde
  */
 $messages['ca'] = array(
+	'bookmanager-desc' => 'Eines per als llibres',
 	'printversion' => 'Versió per imprimir',
 	'printversion-desc' => "Genera una [[Special:PrintVersion|versió per imprimir]] d'un llibre",
 	'printversion-no-book' => "Introduïu el nom d'un llibre per a obtenir la seva versió impresa.",
@@ -132,6 +134,15 @@ $messages['de'] = array(
 	'printversion-desc' => 'Ergänzt eine Spezialseite zum [[Special:PrintVersion|Erstellen einer Druckversion]] eines Buchs',
 	'printversion-no-book' => 'Bitte den Namen des Buchs angeben, für das eine Druckversion erstellt werden soll.',
 	'printversion-inexistent-book' => 'Das Buch wurde nicht gefunden. Bitte den Namen eines vorhandenen Buchs angeben, für das eine Druckversion erstellt werden soll.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'bookmanager-desc' => 'Εργαλεία για βιβλία',
+	'printversion' => 'Εκτυπώσιμη έκδοση',
+	'printversion-no-book' => 'Παρακαλώ εισάγετε το όνομα ενός βιβλίου για να πάρετε την έντυπη έκδοση του.',
 );
 
 /** Esperanto (Esperanto)
@@ -215,6 +226,17 @@ $messages['ia'] = array(
 	'printversion-desc' => 'Genera un [[Special:PrintVersion|version pro impression]] de un libro',
 	'printversion-no-book' => 'Per favor entra le nomine de un libro pro obtener su version pro impression.',
 	'printversion-inexistent-book' => 'Libro non trovate. Per favor entra le nomine de un libro existente pro obtener su version pro impression.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'bookmanager-desc' => 'Peralatan untuk buku',
+	'printversion' => 'Versi cetak',
+	'printversion-desc' => 'Menghasilkan [[Special:PrintVersion|versi cetak]] suatu buku',
+	'printversion-no-book' => 'Silakan masukkan nama buku untuk mendapatkan versi cetaknya.',
+	'printversion-inexistent-book' => 'Buku tidak ditemukan. Silakan masukkan nama buku yang ada untuk mendapatkan versi cetaknya.',
 );
 
 /** Colognian (Ripoarisch)
@@ -326,6 +348,13 @@ $messages['sr-ec'] = array(
 	'printversion-desc' => 'Ствара [[Special:PrintVersion|издање за штампу]] књиге',
 	'printversion-no-book' => 'Унесите назив књиге да бисте добили њено издање за штампу.',
 	'printversion-inexistent-book' => 'Књига није пронађена. Унесите назив постојеће књиге да бисте добили њено издање за штампу.',
+);
+
+/** Swedish (Svenska)
+ * @author Lokal Profil
+ */
+$messages['sv'] = array(
+	'bookmanager-desc' => 'Verktyg för böcker',
 );
 
 /** Telugu (తెలుగు)

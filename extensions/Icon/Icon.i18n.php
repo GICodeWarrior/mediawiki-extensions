@@ -593,6 +593,15 @@ $messages['sk'] = array(
 	'icon-desc' => 'Umožnuje použiť obrázky ako ikony a ikony odkazov',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'icon-badimage' => 'Slaba slika',
+	'icon-badwidth' => 'Slaba širina',
+	'icon-desc' => 'Omogoča vam uporabo slik kot ikone in povezave ikon',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

@@ -307,6 +307,7 @@ $messages['eo'] = array(
 	'contrib-tracking-error-text' => 'Malvalida enigo',
 	'contrib-tracking-submitting' => 'Sendante al mona traktejo...',
 	'contrib-tracking-continue' => 'Se vi ne aŭtomate estus alidirektita, klaku la butonon por fini vian donacon ĉe PayPal.',
+	'contrib-tracking-redirect' => 'Vi estos aŭtomatike alidirektita al PayPal por kompletigi vian donacon.',
 	'contrib-tracking-button' => 'Daŭrigi',
 	'contrib-tracking-item-name-onetime' => 'Unuopa donaco',
 	'contrib-tracking-item-name-recurring' => 'Ĉiumonata donaco',
@@ -954,6 +955,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'contributiontracking' => 'Urmărirea contribuțiilor',
 	'contrib-tracking-error' => 'Eroare',
 	'contrib-tracking-error-text' => 'Trimiterea formularului este invalidă',
 	'contrib-tracking-submitting' => 'Trimitere la procesorul de plată...',

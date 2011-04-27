@@ -370,6 +370,15 @@ $messages['sk'] = array(
 	'htmlets-desc' => 'Umožňuje vkladať kúsky HTML kódu zo súborov pomocou značky <code>&lt;htmlet&gt;</code>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'htmlets-desc' => 'Omogoča vam vključitev izrezkov HTML iz datotek z uporabno oznake <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Datoteke HTML $1 ni mogoče najti',
+	'htmlets-loadfailed' => 'Nalaganje datoteke HTML $1 je spodletelo',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */

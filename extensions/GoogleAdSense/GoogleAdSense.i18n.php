@@ -25,20 +25,6 @@ $messages['qqq'] = array(
 	'googleadsense-desc' => '{{desc}}',
 );
 
-/** Angika (अंगिका)
- * @author Angpradesh
- */
-$messages['anp'] = array(
-	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense] कॆ साइड बार मॆ जोङॊ',
-);
-
-/** Dusun Bundu-liwan (Dusun Bundu-liwan)
- * @author FRANCIS5091
- */
-$messages['dtp'] = array(
-	'googleadsense-desc' => 'Poruhango [http://www.google.com/adsense Guugol RungangPurimon] hilo id barsisi',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -51,6 +37,13 @@ $messages['af'] = array(
  */
 $messages['aln'] = array(
 	'googleadsense-desc' => 'Shton [http://www.google.com/adsense Google AdSense] të sidebar',
+);
+
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$messages['anp'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense] कॆ साइड बार मॆ जोङॊ',
 );
 
 /** Arabic (العربية)
@@ -136,6 +129,13 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'googleadsense-desc' => 'Pśidawa [http://www.google.com/adsense Google AdSense] k nabocnej smuze',
+);
+
+/** Dusun Bundu-liwan (Dusun Bundu-liwan)
+ * @author FRANCIS5091
+ */
+$messages['dtp'] = array(
+	'googleadsense-desc' => 'Poruhango [http://www.google.com/adsense Guugol RungangPurimon] hilo id barsisi',
 );
 
 /** Greek (Ελληνικά)
@@ -432,6 +432,13 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'googleadsense-desc' => 'Pridá do postranného panela [http://www.google.com/adsense Google AdSense]',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'googleadsense-desc' => 'Doda [http://www.google.com/adsense Google AdSense] v stransko vrstico',
 );
 
 /** Albanian (Shqip)

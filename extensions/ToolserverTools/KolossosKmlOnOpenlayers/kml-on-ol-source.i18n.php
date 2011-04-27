@@ -532,6 +532,18 @@ $messages['ru'] = array(
 	'ts-kml-on-ol-map-by' => 'Карта от',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ts-kml-on-ol-options' => 'Možnosti',
+	'ts-kml-on-ol-languages' => 'Jeziki',
+	'ts-kml-on-ol-thumbnails' => 'Sličice',
+	'ts-kml-on-ol-help' => 'Pomoč',
+	'ts-kml-on-ol-all' => 'Vse',
+	'ts-kml-on-ol-map-by' => 'Zemljevid od',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */

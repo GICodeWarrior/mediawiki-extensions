@@ -101,6 +101,13 @@ $messages['ia'] = array(
 	'geequbox-desc' => 'Superimpone imagines con effecto de cassa luminose usante le plug-in Lightbox pro jQuery',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'geequbox-desc' => 'Menghasilkan efek lightbox (kotak cahaya) dengan menggunakan plugin lightbox jQuery',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -155,6 +162,13 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'geequbox-desc' => 'Создает эффекты lightbox с помощью jQuery плагина Lightbox',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'geequbox-desc' => 'Ustvari učinke lightbox z uporabo vtičnika lightbox jQuery',
 );
 
 /** Tagalog (Tagalog)

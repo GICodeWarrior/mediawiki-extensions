@@ -129,10 +129,16 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
+	'communityvoice' => 'সম্প্রদায়ের মতামত',
+	'communityvoice-desc' => 'সম্প্রদায়ের অংশগ্রহণের সরঞ্জাম',
+	'communityvoice-ratings' => 'রেটিং',
 	'communityvoice-ratings-scale-status-sending' => 'পাঠাচ্ছে...',
+	'communityvoice-ratings-scale-status-error' => 'প্রদানে ত্রুটি!',
 	'communityvoice-ratings-scale-status-thanks' => 'ভোট দেওয়ার জন্য ধন্যবাদ!',
+	'communityvoice-ratings-scale-stats' => '$1 / ৫ ($2 {{PLURAL:$2|ভোট|ভোট}} গ্রহণ করা হয়েছে)',
 );
 
 /** Breton (Brezhoneg)

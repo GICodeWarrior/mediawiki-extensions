@@ -501,6 +501,18 @@ $messages['sk'] = array(
 	'transliterator-error-rulesize' => 'Pravidlo <code>$1</code> má viac než $3 {{PLURAL:$3|znak|znaky|znakov}} naľavo v [[MediaWiki:$2]]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'transliterator-desc' => 'Nudi nastavljivo funkcijo razčlenjevalnika za prečrkovanje',
+	'transliterator-error-ambiguous' => 'Dvoumno pravilo <code>$1</code> v [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Neveljavna skladnja <code>$1</code> v [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Več kot $1 {{PLURAL:$1|pravilo|pravili|pravila|pravil}} v [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Pravilo <code>$1</code> ima na levi več kot $3 {{PLURAL:$3|znak|znaka|znake|znakov}} v [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] mora biti dolg vsaj $1 {{PLURAL:$1|znak|znaka|znake|znakov}}.',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */

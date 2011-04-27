@@ -268,6 +268,7 @@ $messages['id'] = array(
 	'svgedit-desc' => 'Penyuntingan gambar SVG via peramban dengan [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Sunting gambar',
 	'svgedit-edit-tab-tooltip' => 'Anda dapat menyunting gambar SVG ini di penjelajah web Anda',
+	'svgedit-toolbar-insert' => 'Gambar SVG',
 );
 
 /** Japanese (日本語)

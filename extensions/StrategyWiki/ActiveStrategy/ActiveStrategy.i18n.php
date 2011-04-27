@@ -447,10 +447,12 @@ $messages['ro'] = array(
 );
 
 /** Tarandíne (Tarandíne)
+ * @author Joetaras
  * @author Reder
  */
 $messages['roa-tara'] = array(
 	'activestrategy' => 'Strateggie attive',
+	'nedits' => '$1 {{PLURAL:$1|cangiamende|cangiaminde}}',
 );
 
 /** Russian (Русский)

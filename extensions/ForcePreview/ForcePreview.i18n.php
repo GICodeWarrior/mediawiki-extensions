@@ -517,6 +517,15 @@ $messages['sk'] = array(
 	'right-forcepreviewexempt' => 'Je možné uložiť bez použitia Zobraziť náhľad',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'forcepreview' => 'Shrani stran (najprej uporabi predogled)',
+	'forcepreview-desc' => 'Vsili predogled za neprivilegirane uporabnike',
+	'right-forcepreviewexempt' => 'Lahko shranjuje brez uporabe Prikaži predogled',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Jonny84
  * @author Schläsinger

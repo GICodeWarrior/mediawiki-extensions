@@ -1760,6 +1760,7 @@ Et kykenisi kirjautumaan ilman OpenID-tunnusta.',
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Od1n
  * @author Peter17
  * @author Zetud
  */
@@ -1791,7 +1792,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidoptional' => 'Facultatif',
 	'openidrequired' => 'Exigé',
 	'openidnickname' => 'Surnom',
-	'openidfullname' => 'Nom en entier',
+	'openidfullname' => 'Nom complet',
 	'openidemail' => 'Adresse électronique',
 	'openidlanguage' => 'Langue',
 	'openidtimezone' => 'Zone horaire',
@@ -4892,6 +4893,7 @@ Bez OpenID by ste sa nemohli prihlásiť.',
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'openid-desc' => 'Prijavite se v wiki z [http://openid.net/ OpenID] in prijavite se v druge spletne strani s podporo OpenID z uporabniškim računom wiki',
 	'openidlogin' => 'Prijavite se z OpenID',
 	'openidserver' => 'Strežnik OpenID',
 	'openidxrds' => 'Datoteka Yadis',
@@ -5834,7 +5836,7 @@ $messages['vi'] = array(
 	'openiderrortext' => 'Có lỗi khi thẩm tra địa chỉ OpenID.',
 	'openidconfigerror' => 'Lỗi thiết lập OpenID',
 	'openidconfigerrortext' => 'Cấu hình nơi lưu trữ OpenID cho wiki này không hợp lệ.
-Xin hãy liên lạc với [[Special:ListUsers/sysop|quản lý viên]].',
+Xin hãy liên lạc với [[Special:ListUsers/sysop|bảo quản viên]].',
 	'openidpermission' => 'Lỗi quyền OpenID',
 	'openidpermissiontext' => 'Địa chỉ OpenID của bạn không được phép đăng nhập vào dịch vụ này.',
 	'openidcancel' => 'Đã hủy bỏ thẩm tra',

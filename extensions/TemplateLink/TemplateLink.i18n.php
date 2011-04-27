@@ -535,6 +535,16 @@ $messages['sk'] = array(
 	'templatelink_newtitle' => '$1 (transkludovaná)',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'templatelink' => 'Povezava predloge',
+	'templatelink_desc' => 'Ta razširitev lahko prikaže predlogo kot novo stran',
+	'templatelink_empty' => 'Navesti morate parameter.',
+	'templatelink_newtitle' => '$1 (vključeno)',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */

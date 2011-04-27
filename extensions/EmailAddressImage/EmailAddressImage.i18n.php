@@ -424,6 +424,13 @@ $messages['sk'] = array(
 	'emailaddressimage-desc' => 'Pridáva značku <code>&lt;email&gt;</code> na zobrazenie emailu vo forme obrázka',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'emailaddressimage-desc' => 'Doda <code>&lt;email&gt;</code> za prikaz e-poštnega naslova kot slike',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Piotron
  */

@@ -619,6 +619,7 @@ Verifica le orthographia.',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'ajaxlogin-desc' => 'Kotak dinamis yang memungkinkan pengguna untuk log masuk dan mengingatkan kata sandi',
@@ -630,6 +631,8 @@ Anda dapat kehilangan perubahan yang telah Anda buat di halaman ini jika Anda me
 	'al-nosuchuser' => 'Tidak ada pengguna dengan nama "$1".
 Nama pengguna bersifat sensitif terhadap kapitalisasi.
 Periksa ejaan anda.',
+	'al-createblocked' => 'Alamat IP Anda diblokir dari pembuatan akun.',
+	'al-throttled' => 'Anda terlalu banyak mencoba sandi baru-baru ini. Harap tunggu $1 {{PLURAL:$1|detik|detik}} sebelum mencoba lagi.',
 );
 
 /** Igbo (Igbo)
@@ -847,6 +850,8 @@ $messages['ne'] = array(
 	'al-nosuchuser' => '"$1" भएको प्रयोगकर्ता छैन।
 नाम वर्ण सम्वेदनशील हुन्छ।
 तपाईंको नामको हिज्जे हेर्नुहोस्।',
+	'al-createblocked' => 'तपाईंको आई पी ठेगाना खाता खोल्नबाट प्रतिबन्धित छ।',
+	'al-throttled' => 'अहिलेसम्म तपाईंले धेरै पासवर्ड हालेर कोशिश गर्नुभयो, कृपया र्को प्रयास गर्न अघि $1 {{PLURAL:$1|सेकेण्ड|सेकेण्ड}} पर्खनुहोस्।',
 );
 
 /** Dutch (Nederlands)
@@ -1143,6 +1148,7 @@ Mangga pariksa éjahanana.',
 
 /** Swedish (Svenska)
  * @author Grillmannen
+ * @author Lokal Profil
  * @author Najami
  * @author Per
  */
@@ -1156,6 +1162,7 @@ Du kan förlora din redigering om du lämnar den här sidan nu.',
 	'al-nosuchuser' => 'Det finns ingen användare men namnet "$1".
 Användarnamn skiljer på versaler och gemener.
 Kontrollera din stavning.',
+	'al-createblocked' => 'Din IP-adress är blockerad från att skapa konton.',
 );
 
 /** Tamil (தமிழ்)

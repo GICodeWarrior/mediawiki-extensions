@@ -108,6 +108,7 @@ The {{SITENAME}} team',
 /** Message documentation (Message documentation)
  * @author Brandon Harris
  * @author EugeneZelenko
+ * @author Krinkle
  * @author Minh Nguyen
  * @author Purodha
  * @author Raymond
@@ -134,7 +135,9 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
-	'articlefeedback-form-panel-helpimprove-privacylink' => 'Do not translate "Project:"',
+	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Do not translate "Project:"
+{{Identical|Privacypage}}',
 	'articlefeedback-pitch-or' => '{{Identical|Or}}',
 	'articlefeedback-pitch-join-body' => 'Based on {{msg-mw|Articlefeedback-pitch-join-message}}.',
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
@@ -611,6 +614,8 @@ $messages['ca'] = array(
 	'articlefeedback-pitch-survey-accept' => "Comença l'enquesta",
 	'articlefeedback-pitch-join-accept' => 'Crea un compte',
 	'articlefeedback-pitch-edit-accept' => 'Comença a editar',
+	'articleFeedback-table-heading-page' => 'Pàgina',
+	'articleFeedback-table-heading-average' => 'Mitjana',
 );
 
 /** Chechen (Нохчийн)
@@ -756,6 +761,33 @@ $messages['de'] = array(
 	'articlefeedback-survey-message-success' => 'Vielen Dank für die Teilnahme an der Umfrage.',
 	'articlefeedback-survey-message-error' => 'Ein Fehler ist aufgetreten.
 Bitte später erneut versuchen.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Heutige Hochs und Tiefs',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Diese Woche am meisten geändert',
+	'articleFeedback-table-caption-recentlows' => 'Aktuelle Tiefs',
+	'articleFeedback-table-heading-page' => 'Seite',
+	'articleFeedback-table-heading-average' => 'Durchschnitt',
+	'articlefeedback-emailcapture-response-body' => 'Hallo!
+
+Vielen Dank für deine Interesse an der Verbesserung von {{SITENAME}}.
+
+Bitte nimm dir einen Moment Zeit, deine E-Mail zu bestätigen, indem du auf diesen Link klickst:
+
+$1
+
+Du kannst auch besuchen:
+
+$2
+
+Und gib den folgenden Bestätigungscode ein:
+
+$3
+
+Wir melden uns in Kürze, wie du dazu beitragen kannst, {{SITENAME}} zu verbessern.
+
+Falls du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail und wir senden dir nichts mehr.
+
+Viele Grüße, und Danke,
+Das {{SITENAME}}-Team',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -851,6 +883,9 @@ $messages['el'] = array(
 	'articlefeedback-form-panel-expiry-message' => 'Παρακαλούμε να επανεκτιμήσετε αυτή τη σελίδα και να υποβάλετε νέες βαθμολογίες.',
 	'articlefeedback-report-switch-label' => 'Δείτε τις βαθμολογήσεις της σελίδας',
 	'articlefeedback-report-panel-title' => 'Βαθμολογήσεις σελίδας',
+	'articlefeedback-pitch-or' => 'ή',
+	'articlefeedback-pitch-thanks' => 'Ευχαριστώ! Οι βαθμολογίες σας έχουν αποθηκευτεί.',
+	'articlefeedback-pitch-survey-message' => 'Αφιερώστε λίγο χρόνο για να συμπληρώσετε μια μικρή έρευνα.',
 	'articlefeedback-pitch-survey-accept' => 'Αρχίστε  έρευνα',
 	'articlefeedback-pitch-join-message' => 'Μήπως θέλετε να δημιουργήσετε ένα λογαριασμό;',
 	'articlefeedback-pitch-join-body' => 'Ένας λογαριασμός θα σας βοηθήσει να παρακολουθείτε τις αλλαγές σας, να πάρετε μέρος σε συζητήσεις, και να είστε μέρος της κοινότητας.',
@@ -861,6 +896,9 @@ $messages['el'] = array(
 	'articlefeedback-survey-message-success' => 'Ευχαριστώ για τη συμπλήρωση της έρευνας.',
 	'articlefeedback-survey-message-error' => 'Παρουσιάστηκε ένα σφάλμα.
 Προσπαθήστε ξανά αργότερα.',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Τα πιο αλλαγμένα αυτής της εβδομάδας',
+	'articleFeedback-table-heading-page' => 'Σελίδα',
+	'articleFeedback-table-heading-average' => 'Μέσος όρος',
 );
 
 /** Esperanto (Esperanto)
@@ -928,11 +966,17 @@ $messages['eo'] = array(
 	'articlefeedback-survey-message-success' => 'Dankon pro plenumante la enketon.',
 	'articlefeedback-survey-message-error' => 'Eraro okazis. 
 Bonvolu reprovi baldaŭ.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'La altoj kaj malaltoj hodiaŭ',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Plej ŝanĝitaj ĉi-semajne',
+	'articleFeedback-table-caption-recentlows' => 'Lastatempaj malaltoj',
+	'articleFeedback-table-heading-page' => 'Paĝo',
+	'articleFeedback-table-heading-average' => 'Averaĝo',
 );
 
 /** Spanish (Español)
  * @author Dferg
  * @author Locos epraix
+ * @author Od1n
  * @author Sanbec
  * @author Translationista
  */
@@ -973,6 +1017,7 @@ $messages['es'] = array(
 	'articlefeedback-field-complete-label' => 'Completa',
 	'articlefeedback-field-complete-tip' => '¿Crees que esta página cubre las áreas esenciales del tópico que deberían estar cubiertas?',
 	'articlefeedback-field-objective-label' => 'Objetivo',
+	'articlefeedback-pitch-or' => 'o',
 );
 
 /** Estonian (Eesti)
@@ -1131,6 +1176,11 @@ $messages['fr'] = array(
 	'articlefeedback-survey-message-success' => 'Merci d’avoir rempli le questionnaire.',
 	'articlefeedback-survey-message-error' => 'Une erreur est survenue.
 Veuillez ré-essayer plus tard.',
+	'articleFeedback-table-caption-dailyhighsandlows' => "Les hauts et bas d'aujourd'hui",
+	'articleFeedback-table-caption-weeklymostchanged' => 'Les plus modifiés cette semaine',
+	'articleFeedback-table-caption-recentlows' => 'Dernières bas',
+	'articleFeedback-table-heading-page' => 'Page',
+	'articleFeedback-table-heading-average' => 'Moyenne',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1342,6 +1392,33 @@ $messages['he'] = array(
 	'articlefeedback-survey-message-success' => 'תודה על מילוי הסקר.',
 	'articlefeedback-survey-message-error' => 'אירעה שגיאה. 
 נא לנסות שוב מאוחר יותר.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'התוצאות הגבוהות והנמוכות היום',
+	'articleFeedback-table-caption-weeklymostchanged' => 'מה השתנה השבוע יותר מכול',
+	'articleFeedback-table-caption-recentlows' => 'תוצאות נמוכות לאחרונה',
+	'articleFeedback-table-heading-page' => 'דף',
+	'articleFeedback-table-heading-average' => 'ממוצע',
+	'articlefeedback-emailcapture-response-body' => 'שלום!
+
+תודה שהבעתם עניין בסיוע לשיפור אתר {{SITENAME}}.
+
+אנא הקדישו רגע לאשר את הדואר האלקטרוני שלכם על־ידי לחיצה על הקישור להלן:
+
+$1
+
+אפשר גם לבקר בקישור הבא:
+
+$2
+
+ולהזין את קוד האישור הבא:
+
+$3
+
+נהיה בקשר לאחר זמן קצר ונספר לכם על דרכים לסייע לשפר את אתר {{SITENAME}}.
+
+אם לא יזמת את הבקשה הזאת, נא להתעלם מהמכתב הזה ולא נשלח לך שום דבר אחר.
+
+כל טוב, ותודה
+צוות {{SITENAME}}',
 );
 
 /** Croatian (Hrvatski)
@@ -1629,6 +1706,33 @@ $messages['id'] = array(
 	'articlefeedback-survey-message-success' => 'Terima kasih telah mengisi survei ini.',
 	'articlefeedback-survey-message-error' => 'Kesalahan terjadi.
 Silakan coba lagi.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Kenaikan dan penurunan hari ini',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Paling berubah minggu ini',
+	'articleFeedback-table-caption-recentlows' => 'Penurunan terbaru',
+	'articleFeedback-table-heading-page' => 'Halaman',
+	'articleFeedback-table-heading-average' => 'Rata-rata',
+	'articlefeedback-emailcapture-response-body' => 'Halo!
+
+Terima kasih atas minat Anda untuk membantu meningkatkan {{SITENAME}}.
+
+Harap luangkan waktu untuk mengonfirmasi surel Anda dengan mengklik pranala di bawah ini:
+
+$1
+
+Anda juga dapat mengunjungi:
+
+$2
+
+Dan masukkan kode konfirmasi berikut:
+
+$3
+
+Dalam waktu dekat, kami akan menghubungi Anda dan menerangkan bagaimana cara membantu peningkatan {{SITENAME}}.
+
+Jika Anda tidak mengajukan permintaan ini, harap mengabaikan surel ini dan kami akan tidak mengirimkan apa pun.
+
+Salam, dan terima kasih,
+Tim {{SITENAME}}',
 );
 
 /** Italian (Italiano)
@@ -1995,16 +2099,76 @@ $messages['li'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Papuass
  */
 $messages['lv'] = array(
+	'articlefeedback' => 'Atsauksme par rakstu',
+	'articlefeedback-desc' => 'Atsauksme par rakstu',
+	'articlefeedback-survey-question-origin' => 'Kādas lapas Jūs apmeklējāt pirms sākāt šo aptauju?',
+	'articlefeedback-survey-question-whyrated' => 'Lūdzu pasakiet, kādēļ Jūs šodien novērtējāt šo lapu (atzīmējiet visas atbilstošās atbildes):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Es vēlējos dot ieguldījumu kopējā lapas vērtējumā',
+	'articlefeedback-survey-answer-whyrated-development' => 'Es cerēju, ka mans vērtējums pozitīvu ietekmēs lapas tālāku pilnveidošanu',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Es vēlējos dot ieguldījumu {{SITENAME}}',
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Man patīk dalīties ar viedokli',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Es šodien neiesniedzu vērtējumu, bet vēlējos dot atsauksmi',
 	'articlefeedback-survey-answer-whyrated-other' => 'Cits',
+	'articlefeedback-survey-question-useful' => 'Vai Jūs uzskatāt, ka iesniegtie vērtējumi ir lietderīgi un skaidri?',
 	'articlefeedback-survey-question-useful-iffalse' => 'Kāpēc?',
 	'articlefeedback-survey-question-comments' => 'Vai tev ir kādi papildus komentāri?',
 	'articlefeedback-survey-submit' => 'Iesniegt',
 	'articlefeedback-survey-title' => 'Lūdzu, atbildi uz dažiem jautājumiem',
 	'articlefeedback-survey-thanks' => 'Paldies par piedalīšanos aptaujā.',
+	'articlefeedback-error' => 'Radusies kļūda. Lūdzu, mēģiniet vēlāk vēlreiz.',
+	'articlefeedback-form-switch-label' => 'Novērtējiet šo lapu',
+	'articlefeedback-form-panel-title' => 'Novērtējiet šo lapu',
+	'articlefeedback-form-panel-instructions' => 'Lūdzu, veltiet laiku lapas novērtēšanai.',
+	'articlefeedback-form-panel-clear' => 'Noņemt šo vērtējumu',
+	'articlefeedback-form-panel-expertise' => 'Es esmu ļoti zinošs par šo tēmu (atzīmēt pēc izvēles)',
+	'articlefeedback-form-panel-expertise-studies' => 'Man ir attiecīgās jomas augstākās izglītības grāds',
+	'articlefeedback-form-panel-expertise-profession' => 'Tā ir daļa no mana amata',
+	'articlefeedback-form-panel-expertise-hobby' => 'Tā ir dziļa personiska aizraušanās',
+	'articlefeedback-form-panel-expertise-other' => 'Manu zināšanu ieguves veids nav šajā sarakstā',
+	'articlefeedback-form-panel-helpimprove' => 'Es vēlētos palīdzēt uzlabot Vikipēdiju, sūtiet man e-pastu (atzīmēt pēc izvēles)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Mēs Jums nosūtīsim apstiprinājuma e-pastu. Mēs citām personām nedarīsim zināmu Jūsu adresi. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Privātuma politika',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Privātuma politika',
+	'articlefeedback-form-panel-submit' => 'Iesniegt vērtējumus',
+	'articlefeedback-form-panel-success' => 'Veiksmīgi saglabāts',
+	'articlefeedback-form-panel-expiry-title' => 'Jūsu vērtējuma derīguma termiņš ir beidzies',
+	'articlefeedback-form-panel-expiry-message' => 'Lūdzu, pārskatiet šo lapu un iesniedziet jaunus vērtējumus.',
+	'articlefeedback-report-switch-label' => 'Skatīt lapas vērtējumus',
+	'articlefeedback-report-panel-title' => 'Lapas vērtējumi',
+	'articlefeedback-report-panel-description' => 'Pašreizējais vidējais vērtējums.',
+	'articlefeedback-report-empty' => 'Nav vērtējumu',
+	'articlefeedback-report-ratings' => '$1 vērtējumi',
+	'articlefeedback-field-trustworthy-label' => 'Uzticamība',
+	'articlefeedback-field-trustworthy-tip' => 'Vai Jums šķiet, ka lapai ir diezgan daudz citātu un ka šie citāti nāk no uzticamiem avotiem?',
+	'articlefeedback-field-complete-label' => 'Pabeigtība',
+	'articlefeedback-field-complete-tip' => 'Vai Jums šķiet, ka šī lapa apskata visas nepieciešamās temata jomas, ko būtu nepieciešams pieminēt?',
+	'articlefeedback-field-objective-label' => 'Objektivitāte',
+	'articlefeedback-field-objective-tip' => 'Vai Jums šķiet, ka šī lapa parāda pareizu satura attēlojumu no visiem šī jautājuma skatījumiem?',
+	'articlefeedback-field-wellwritten-label' => 'Informācijas izklāsts',
+	'articlefeedback-field-wellwritten-tip' => 'Vai Jums šķiet, ka šī lapa ir labi strukturēta un informatīva?',
+	'articlefeedback-pitch-reject' => 'Varbūt vēlāk',
+	'articlefeedback-pitch-or' => 'vai',
+	'articlefeedback-pitch-thanks' => 'Paldies! Jūsu vērtējumi ir saglabāti.',
+	'articlefeedback-pitch-survey-message' => 'Lūdzu, veltiet laiku, lai aizpildītu īsu aptauju.',
+	'articlefeedback-pitch-survey-accept' => 'Sākt aptauju',
+	'articlefeedback-pitch-join-message' => 'Vai vēlaties izveidot kontu?',
+	'articlefeedback-pitch-join-body' => 'Konts palīdzēs Jums pārskatīt savus labojumus, sekmīgāk piedalīties diskusijās un iekļauties kopienā.',
+	'articlefeedback-pitch-join-accept' => 'Izveidot kontu',
+	'articlefeedback-pitch-join-login' => 'Pieteikties',
+	'articlefeedback-pitch-edit-message' => 'Vai Jūs zināt, ka varat rediģēt šo lapu?',
+	'articlefeedback-pitch-edit-accept' => 'Izmainīt šo lapu',
+	'articlefeedback-survey-message-success' => 'Paldies, ka aizpildījās aptauju!',
+	'articlefeedback-survey-message-error' => 'Radusies kļūda.
+Lūdzu, mēģiniet vēlāk vēlreiz.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Šodienas kāpumi un kritumi',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Šajā nedēļā visvairāk mainītie',
+	'articleFeedback-table-caption-recentlows' => 'Pēdējie kritumi',
+	'articleFeedback-table-heading-page' => 'Lapa',
+	'articleFeedback-table-heading-average' => 'Vidēji',
 );
 
 /** Macedonian (Македонски)
@@ -2073,6 +2237,11 @@ $messages['mk'] = array(
 	'articlefeedback-survey-message-success' => 'Ви благодариме што ја пополнивте анкетата.',
 	'articlefeedback-survey-message-error' => 'Се појави грешка.
 Обидете се подоцна.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Издигања и падови за денес',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Најизменети за неделава',
+	'articleFeedback-table-caption-recentlows' => 'Скорешни падови',
+	'articleFeedback-table-heading-page' => 'Страница',
+	'articleFeedback-table-heading-average' => 'Просечно',
 );
 
 /** Malayalam (മലയാളം)
@@ -2099,11 +2268,13 @@ $messages['ml'] = array(
 	'articlefeedback-form-panel-title' => 'ഈ താളിനു നിലവാരമിടുക',
 	'articlefeedback-form-panel-instructions' => 'താഴെ ഈ താളിന്റെ മൂല്യനിർണ്ണയം നടത്താൻ ഒരു നിമിഷം ചിലവാക്കുക.',
 	'articlefeedback-form-panel-clear' => 'ഈ നിലവാരമിടൽ നീക്കം ചെയ്യുക',
-	'articlefeedback-form-panel-expertise' => 'എനിക്ക് ഈ വിഷയത്തിൽ വളരെ അറിവുണ്ട്',
+	'articlefeedback-form-panel-expertise' => 'എനിക്ക് ഈ വിഷയത്തിൽ വളരെ അറിവുണ്ട് (ഐച്ഛികം)',
 	'articlefeedback-form-panel-expertise-studies' => 'എനിക്ക് ബന്ധപ്പെട്ട വിഷയത്തിൽ കലാലയ/യൂണിവേഴ്സിറ്റി ബിരുദമുണ്ട്',
 	'articlefeedback-form-panel-expertise-profession' => 'ഇതെന്റെ ജോലിയുടെ ഭാഗമാണ്',
 	'articlefeedback-form-panel-expertise-hobby' => 'ഇതെനിക്ക് അഗാധ താത്പര്യമുള്ളവയിൽ പെടുന്നു',
 	'articlefeedback-form-panel-expertise-other' => 'എന്റെ അറിവിന്റെ ഉറവിടം ഇവിടെ നൽകിയിട്ടില്ല',
+	'articlefeedback-form-panel-helpimprove' => 'വിക്കിപീഡിയ മെച്ചപ്പെടുത്താൻ ഞാനാഗ്രഹിക്കുന്നു, ഇമെയിൽ അയച്ചു തരിക (ഐച്ഛികം)',
+	'articlefeedback-form-panel-helpimprove-note' => 'ഞങ്ങൾ താങ്കൾക്ക് ഒരു സ്ഥിരീകരണ ഇമെയിൽ അയയ്ക്കുന്നതാണ്. താങ്കളുടെ വിലാസം ആരുമായും പങ്കുവെയ്ക്കുന്നതല്ല. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'സ്വകാര്യതാനയം',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:സ്വകാര്യതാനയം',
 	'articlefeedback-form-panel-submit' => 'നിലവാരമിടലുകൾ സമർപ്പിക്കുക',
@@ -2137,6 +2308,10 @@ $messages['ml'] = array(
 	'articlefeedback-survey-message-success' => 'സർവേ പൂരിപ്പിച്ചതിനു നന്ദി',
 	'articlefeedback-survey-message-error' => 'എന്തോ പിഴവുണ്ടായിരിക്കുന്നു.
 ദയവായി വീണ്ടും ശ്രമിക്കുക.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'ഇന്നത്തെ കയറ്റിറക്കങ്ങൾ',
+	'articleFeedback-table-caption-weeklymostchanged' => 'ഈ ആഴ്ചയിൽ ഏറ്റവുമധികം മാറിയത്',
+	'articleFeedback-table-heading-page' => 'താൾ',
+	'articleFeedback-table-heading-average' => 'ശരാശരി',
 );
 
 /** Mongolian (Монгол)
@@ -2264,6 +2439,11 @@ Uw beoordeling is opgeslagen.',
 	'articlefeedback-survey-message-success' => 'Bedankt voor het beantwoorden van de vragen.',
 	'articlefeedback-survey-message-error' => 'Er is een fout opgetreden.
 Probeer het later opnieuw.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Hoogte- en dieptepunten van vandaag',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Deze week de meeste wijzigingen',
+	'articleFeedback-table-caption-recentlows' => 'Recente dieptepunten',
+	'articleFeedback-table-heading-page' => 'Pagina',
+	'articleFeedback-table-heading-average' => 'Gemiddelde',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2483,6 +2663,11 @@ $messages['pms'] = array(
 	'articlefeedback-survey-message-success' => "Mersì d'avèj compilà ël questionari.",
 	'articlefeedback-survey-message-error' => "A l'é capitaje n'eror. 
 Për piasì preuva torna pi tard.",
+	'articleFeedback-table-caption-dailyhighsandlows' => "Aut e bass d'ancheuj",
+	'articleFeedback-table-caption-weeklymostchanged' => 'Ij magior cangiament dë sta sman-a',
+	'articleFeedback-table-caption-recentlows' => 'Bass recent',
+	'articleFeedback-table-heading-page' => 'Pàgina',
+	'articleFeedback-table-heading-average' => 'Media',
 );
 
 /** Pashto (پښتو)
@@ -2654,6 +2839,8 @@ $messages['ro'] = array(
 	'articlefeedback-form-panel-expertise-profession' => 'Este parte din profesia mea',
 	'articlefeedback-form-panel-expertise-hobby' => 'Este o pasiune personală puternică',
 	'articlefeedback-form-panel-expertise-other' => 'Nivelul cunoștințelor mele nu se află în această listă',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Politica de confidențialitate',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politica de confidențialitate',
 	'articlefeedback-form-panel-submit' => 'Trimite evaluările',
 	'articlefeedback-form-panel-success' => 'Salvat cu succes',
 	'articlefeedback-form-panel-expiry-title' => 'Evaluările dumneavoastră au expirat',
@@ -2685,6 +2872,8 @@ $messages['ro'] = array(
 	'articlefeedback-survey-message-success' => 'Vă mulțumim că ați completat chestionarul.',
 	'articlefeedback-survey-message-error' => 'A apărut o eroare.
 Vă rugăm să reîncercați mai târziu.',
+	'articleFeedback-table-heading-page' => 'Pagina',
+	'articleFeedback-table-heading-average' => 'Medie',
 );
 
 /** Tarandíne (Tarandíne)
@@ -2705,12 +2894,16 @@ $messages['roa-tara'] = array(
 	'articlefeedback-survey-thanks' => "Grazzie pè avè combilate 'u sondagge.",
 	'articlefeedback-form-switch-label' => 'Valute sta pàgene',
 	'articlefeedback-form-panel-title' => 'Valute sta pàgene',
+	'articlefeedback-form-panel-instructions' => "Pe piacere pigghiate 'nu mumende pe valutà sta pàgene.",
 	'articlefeedback-form-panel-clear' => 'Live stu pundegge',
 	'articlefeedback-form-panel-expertise-profession' => "Jè parte d'a professiona meje",
+	'articlefeedback-form-panel-expertise-hobby' => "Queste jè 'na passiona profonda meje",
 	'articlefeedback-form-panel-submit' => 'Conferme le pundegge',
 	'articlefeedback-form-panel-success' => 'Reggistrate cu successe',
+	'articlefeedback-form-panel-expiry-title' => 'Le pundegge tune onne scadute',
 	'articlefeedback-report-switch-label' => "Vide 'u pundegge d'a pàgene",
 	'articlefeedback-report-panel-title' => "Pundegge d'a pàgene",
+	'articlefeedback-report-panel-description' => 'Pundegge medie corrende.',
 	'articlefeedback-report-empty' => 'Nisciune pundegge',
 	'articlefeedback-report-ratings' => '$1 pundegge',
 	'articlefeedback-field-trustworthy-label' => 'Avveramende affidabbele',
@@ -2720,6 +2913,7 @@ $messages['roa-tara'] = array(
 	'articlefeedback-pitch-reject' => 'Forse cchiù tarde',
 	'articlefeedback-pitch-or' => 'o',
 	'articlefeedback-pitch-survey-accept' => "Accuminze 'u sondagge",
+	'articlefeedback-pitch-join-accept' => "Ccreje 'nu cunde utende",
 	'articlefeedback-pitch-join-login' => 'Tràse',
 	'articlefeedback-pitch-edit-accept' => 'Cange sta pàgene',
 	'articlefeedback-survey-message-error' => "'N'errore s'a verificate.
@@ -2795,6 +2989,11 @@ $messages['ru'] = array(
 	'articlefeedback-survey-message-success' => 'Спасибо за участие в опросе.',
 	'articlefeedback-survey-message-error' => 'Произошла ошибка. 
 Пожалуйста, повторите попытку позже.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Сегодняшние взлёты и падения',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Наиболее изменившиеся на этой неделе',
+	'articleFeedback-table-caption-recentlows' => 'Недавние падения',
+	'articleFeedback-table-heading-page' => 'Страница',
+	'articleFeedback-table-heading-average' => 'Среднее',
 );
 
 /** Rusyn (Русиньскый)
@@ -2962,6 +3161,11 @@ $messages['sk'] = array(
 	'articlefeedback-survey-message-success' => 'Ďakujeme za vyplnenie dotazníka.',
 	'articlefeedback-survey-message-error' => 'Vyskytla sa chyba.
 Prosím, skúste to neskôr.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Dnešné maximá a minimá',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Tento týždeň sa najviac menil',
+	'articleFeedback-table-caption-recentlows' => 'Nedávne minimá',
+	'articleFeedback-table-heading-page' => 'Stránka',
+	'articleFeedback-table-heading-average' => 'Priemer',
 );
 
 /** Slovenian (Slovenščina)
@@ -3029,6 +3233,11 @@ $messages['sl'] = array(
 	'articlefeedback-survey-message-success' => 'Zahvaljujemo se vam za izpolnitev vprašalnika.',
 	'articlefeedback-survey-message-error' => 'Prišlo je do napake.
 Prosimo, poskusite znova pozneje.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Današnji vzponi in padci',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Ta teden najbolj spremenjeno',
+	'articleFeedback-table-caption-recentlows' => 'Nedavni padci',
+	'articleFeedback-table-heading-page' => 'Stran',
+	'articleFeedback-table-heading-average' => 'Povprečje',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
@@ -3067,6 +3276,7 @@ $messages['sr-ec'] = array(
 /** Swedish (Svenska)
  * @author Ainali
  * @author Fluff
+ * @author Lokal Profil
  * @author Tobulos1
  */
 $messages['sv'] = array(
@@ -3090,10 +3300,14 @@ $messages['sv'] = array(
 	'articlefeedback-form-panel-title' => 'Din feedback',
 	'articlefeedback-form-panel-instructions' => 'Vänligen betygsätt denna sida.',
 	'articlefeedback-form-panel-clear' => 'Ta bort detta betyg',
-	'articlefeedback-form-panel-expertise-studies' => 'Jag har studerat i högskola/universitet',
+	'articlefeedback-form-panel-expertise-studies' => 'Jag har en relevant högskole-/universitetsexamen',
 	'articlefeedback-form-panel-expertise-profession' => 'Det är en del av mitt yrke',
 	'articlefeedback-form-panel-expertise-hobby' => 'Det är relaterat till mina hobbyer eller intressen',
 	'articlefeedback-form-panel-expertise-other' => 'Källan till min kunskap inte är listade här',
+	'articlefeedback-form-panel-helpimprove' => 'Jag skulle vilja bidra till att förbättra Wikipedia, skicka mig ett e-post (frivilligt)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Vi skickar en bekräftelse via e-post. Vi delar inte ut din adress till någon annan. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Integritetspolicy',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Integritetspolicy',
 	'articlefeedback-form-panel-submit' => 'Skicka in feedback',
 	'articlefeedback-report-switch-label' => 'Visa resultat',
 	'articlefeedback-report-panel-title' => 'Resultat av feedback',
@@ -3111,9 +3325,11 @@ $messages['sv'] = array(
 	'articlefeedback-pitch-reject' => 'Kanske senare',
 	'articlefeedback-pitch-or' => 'eller',
 	'articlefeedback-pitch-survey-accept' => 'Starta undersökning',
+	'articlefeedback-pitch-join-message' => 'Ville du skapa ett konto?',
 	'articlefeedback-pitch-join-accept' => 'Skapa ett konto',
 	'articlefeedback-pitch-join-login' => 'Logga in',
-	'articlefeedback-pitch-edit-accept' => 'Börja redigera',
+	'articlefeedback-pitch-edit-message' => 'Visste du att du kan redigera denna sida?',
+	'articlefeedback-pitch-edit-accept' => 'Redigera denna sida',
 	'articlefeedback-survey-message-success' => 'Tack för att du fyllde i undersökningen.',
 	'articlefeedback-survey-message-error' => 'Ett fel har uppstått. 
 Försök igen senare.',
@@ -3472,6 +3688,11 @@ $messages['zh-hans'] = array(
 	'articlefeedback-survey-message-success' => '谢谢您回答问卷。',
 	'articlefeedback-survey-message-error' => '出现错误。
 请稍后再试。',
+	'articleFeedback-table-caption-dailyhighsandlows' => '今天的新鲜事',
+	'articleFeedback-table-caption-weeklymostchanged' => '本周最多更改',
+	'articleFeedback-table-caption-recentlows' => '近期低点',
+	'articleFeedback-table-heading-page' => '页面',
+	'articleFeedback-table-heading-average' => '平均',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -106,6 +106,16 @@ $messages['ia'] = array(
 	'webfonts-disable-preference' => 'Disactivar le incorporation de typos de litteras (WebFonts)',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Menyertakan fon (huruf) dalam halaman',
+	'webfonts-load' => 'Pilih fon',
+	'webfonts-disable-preference' => 'Nonaktifkan penyertaan fon (WebFonts)',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
