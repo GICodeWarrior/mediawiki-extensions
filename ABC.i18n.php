@@ -706,6 +706,13 @@ $messages['ms'] = array(
 	'abcdownload' => 'Muat turun:',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Erikoo
+ */
+$messages['my'] = array(
+	'abcdownload' => 'ဒေါင်းလုဒ်',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
