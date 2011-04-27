@@ -1,54 +1,25 @@
-// FIXME: Use jquery.json.js instead
-var JSON;
-if (!JSON) {
-    JSON = {};
-
-    if(!JSON.stringify){
-    /* Very limited JSON encoder */
-	JSON.stringify = function( js_obj ) {
-		var returnstr = "{ ";
-
-		// trailing commas and json don't mix
-		var propertynum = 0;
-		for ( property in js_obj ) {
-			if ( propertynum > 0 ) {
-				returnstr += ", ";
-			}
-			returnstr += "\"" + property + "\"" + " : ";
-			if ( typeof js_obj[property] == 'object' ) {
-				returnstr += JSON.stringify( js_obj[property] );
-			} else {
-				returnstr += "\"" + js_obj[property] + "\" ";
-			}
-			propertynum++;
-		}
-
-		returnstr += " }";
-		return returnstr;
-	};
-    }
-}
-
 ( function( $ ) {
 //lazy-load
 $.getBuckets = function (force){
-	if (typeof($j.userBuckets) == 'undefined' || force ){
-		$j.userBuckets = $.parseJSON( $.cookie('userbuckets') );	
+	if ( typeof $.userBuckets  == 'undefined' || force ){
+		$.userBuckets = $.parseJSON( $.cookie('userbuckets') );	
 	}
-	return $j.userBuckets;
+	return $.userBuckets;
 };
 
 $.setBucket = function ( bucketName, bucketValue, bucketVersion ){
 	var bucketCookies = $.getBuckets();
-	if(!bucketCookies) { bucketCookies ={};}
+	if ( !bucketCookies ) {
+		bucketCookies = {};
+	}
 	bucketCookies[ bucketName ] = [ bucketValue, bucketVersion ];
-	$j.cookie('userbuckets', JSON.stringify( bucketCookies ) , { expires: 365 }); //expires in 1 year
-	bucketCookies = $.getBuckets(true); //force it to rerun and update
+	$.cookie('userbuckets', $.toJSON( bucketCookies ) , { expires: 365 }); //expires in 1 year
+	bucketCookies = $.getBuckets(true); // Force rerun and update
 };
 
 $.setupActiveBuckets = function(){
 	var buckets = $.getBuckets();
-	for(iter in mw.activeCampaigns){
+	for ( iter in mw.activeCampaigns ) {
 		var campaign = mw.activeCampaigns[iter];
 		// if bucket has been set, or bucket version is out of date,
 		// set up a user bucket
@@ -89,7 +60,7 @@ $.setupActiveBuckets = function(){
 			if(typeof(campaign[$.getBuckets()[campaign.name][0]]) == "function"){
 				campaign[$.getBuckets()[campaign.name][0]](); //function to execute
 			}
-			if(campaign.allActive){
+			if ( campaign.allActive ) {
 				campaign.allActive();
 			}
 		}
@@ -98,9 +69,9 @@ $.setupActiveBuckets = function(){
 	
 };
 
-//no need to do any of this if there are no active campaigns
-if( (typeof(MW) != "undefined") && MW.activeCampaigns){
-	$j( document ).ready( jQuery.setupActiveBuckets );
+// No need to do any of this if there are no active campaigns
+if ( mw.activeCampaigns && mw.activeCampaigns.length ) {
+	$( $.setupActiveBuckets );
 }
 
 
