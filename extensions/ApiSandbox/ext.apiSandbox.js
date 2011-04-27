@@ -20,6 +20,9 @@ $( document ).ready( function() {
 		function( data ) {
 			if ( isset( data.query ) && isset( data.query.namespaces ) ) {
 				for ( var id in data.query.namespaces ) {
+					if ( id < 0 ) {
+						continue;
+					}
 					var ns = data.query.namespaces[id]['*'];
 					if ( ns == '' ) {
 						ns = mw.msg( 'apisb-ns-main' );
