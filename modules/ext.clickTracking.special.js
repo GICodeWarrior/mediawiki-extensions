@@ -3,40 +3,18 @@
  */
 
 ( function( $ ) {
-	/* Very limited JSON encoder */
-	$.json_encode = function( js_obj ) {
-		var returnstr = "{ ";
-
-		// trailing commas and json don't mix
-		var propertynum = 0;
-		for ( property in js_obj ) {
-			if ( propertynum > 0 ) {
-				returnstr += ", ";
-			}
-			returnstr += "\"" + property + "\"" + " : ";
-			if ( typeof js_obj[property] == 'object' ) {
-				returnstr += $.json_encode( js_obj[property] );
-			} else {
-				returnstr += "\"" + js_obj[property] + "\" ";
-			}
-			propertynum++;
-		}
-
-		returnstr += " }";
-		return returnstr;
-	};
 
 	$.getUserDefsFromDialog = function() {
-		var currUserDefs = new Array();
+		var currUserDefs = [];
 		if ( $( '#anon_users_checkbox' ).is( ':checked' ) ) {
-			currUserDefs['anonymous'] = 1;
+			currUserDefs.anonymous = 1;
 		} else {
-			currUserDefs['anonymous'] = 0;
+			currUserDefs.anonymous = 0;
 		}
 
 		var getCheckBoxData = function( contribName ) {
 			if ( $( '#' + contribName + '_checkbox' ).is( ':checked' ) ) {
-				currUserDefs[contribName] = new Array();
+				currUserDefs[contribName] = [];
 			} else {
 				return;
 			}
@@ -47,25 +25,25 @@
 				if ( $( '#' + contribName + '_' + i + '_checkbox' ).is( ':checked' ) ) {
 					$( '#' + contribName + '_' + i + '_ltgt' ).children().each( function() {
 						if ( $( this ).is( ':selected' ) ) {
-							var currentCond = new Array();
+							var currentCond = [];
 							switch ( $( this ).attr( "value" ) ) {
 								case 'lt':
-									currentCond['operation'] = '<';
+									currentCond.operation = '<';
 									break;
 								case 'lteq':
-									currentCond['operation'] = '<=';
+									currentCond.operation = '<=';
 									break;
 								case 'gt':
-									currentCond['operation'] = '>';
+									currentCond.operation = '>';
 									break;
 								case 'gteq':
-									currentCond['operation'] = '>=';
+									currentCond.operation = '>=';
 									break;
 								default:
-									currentCond['operation'] = '<';
+									currentCond.operation = '<';
 									break;
 							}
-							currentCond['value'] = $( '#' + contribName + '_' + i + '_text' ).val();
+							currentCond.value = $( '#' + contribName + '_' + i + '_text' ).val();
 							currUserDefs[contribName].push( currentCond );
 						}
 					} );
@@ -128,7 +106,7 @@
 				cOpt1.addClass( 'number_select_ltgt_opt' );
 				cOpt1.attr( 'value', 'lt' );
 				cOpt1.text( '<' );
-				if ( condition['operation'] == '<' ) {
+				if ( condition.operation == '<' ) {
 					cOpt1.attr( 'selected', true );
 				}
 
@@ -136,7 +114,7 @@
 				cOpt2.addClass( 'number_select_ltgt_opt' );
 				cOpt2.attr( 'value', 'gt' );
 				cOpt2.text( '>' );
-				if ( condition['operation'] == '>' ) {
+				if ( condition.operation == '>' ) {
 					cOpt2.attr( 'selected', true );
 				}
 
@@ -144,7 +122,7 @@
 				cOpt3.addClass( 'number_select_ltgt_opt' );
 				cOpt3.attr( 'value', 'lteq' );
 				cOpt3.text( '<=' );
-				if ( condition['operation'] == '<=' ) {
+				if ( condition.operation == '<=' ) {
 					cOpt3.attr( 'selected', true );
 				}
 
@@ -152,7 +130,7 @@
 				cOpt4.addClass( 'number_select_ltgt_opt' );
 				cOpt4.attr( 'value', 'gteq' );
 				cOpt4.text( '>=' );
-				if ( condition['operation'] == '>=' ) {
+				if ( condition.operation == '>=' ) {
 					cOpt4.attr( 'selected', true );
 				}
 
@@ -164,7 +142,7 @@
 
 				cTextInput = $( '<input></input>' ).attr( 'id', contribName + '_' + counter + '_text' );
 				cTextInput.addClass( 'number_select_text' );
-				cTextInput.attr( 'value', condition['value'] );
+				cTextInput.attr( 'value', condition.value );
 				conditionDiv.append( cTextInput );
 
 				return conditionDiv;
@@ -188,9 +166,9 @@
 				var totalConds = initDiv.data( 'totalConditions' );
 				totalConds++;
 				initDiv.data( 'totalConditions', totalConds );
-				var tmpCond = new Array();
-				tmpCond['operation'] = ' ';
-				tmpCond['value'] = ' ';
+				var tmpCond = [];
+				tmpCond.operation = ' ';
+				tmpCond.value = ' ';
 
 				buildConditionDiv( tmpCond, totalConds ).insertBefore( $( this ) );
 				initDiv.data( 'totalConditions', totalConds, false );
@@ -201,7 +179,7 @@
 
 		// check anonymous
 		var anon = false;
-		if ( parseInt( userDef['anonymous'] ) == 1 ) {
+		if ( parseInt( userDef.anonymous ) == 1 ) {
 			anon = true;
 		}
 		$( '#anon_users_checkbox' ).attr( 'checked', anon );
@@ -212,7 +190,7 @@
 		var setup_set_contribs = function( contribName ) {
 			var current_contribs = userDef[contribName];
 			if ( current_contribs == undefined ) {
-				current_contribs = new Array();
+				current_contribs = [];
 			}
 			$( '#contrib_opts_container' ).append( setContribs( current_contribs, contribName ) );
 		};
@@ -250,15 +228,15 @@
 				return retval;
 			};
 
-			max1 = getMax( data['datapoints']['expert'] );
-			max2 = getMax( data['datapoints']['intermediate'] );
-			max3 = getMax( data['datapoints']['basic'] );
+			max1 = getMax( data.datapoints.expert );
+			max2 = getMax( data.datapoints.intermediate );
+			max3 = getMax( data.datapoints.basic );
 			max = Math.max( max3, Math.max( max1, max2 ) );
 			chartURL = 'http://chart.apis.google.com/chart?' + 'chs=400x400&' + 'cht=lc&'
 			        + 'chco=FF0000,0000FF,00FF00&' + 'chtt=' + event_name + ' from ' + $( '#start_date' ).val()
 			        + ' to ' + $( '#end_date' ).val() + '&' + 'chdl=' + 'Expert|Intermediate|Beginner' + '&'
-			        + 'chxt=x,y&' + 'chd=t:' + data['datapoints']['expert'].join( ',' ) + '|'
-			        + data['datapoints']['intermediate'].join( ',' ) + '|' + data['datapoints']['basic'].join( ',' )
+			        + 'chxt=x,y&' + 'chd=t:' + data.datapoints.expert.join( ',' ) + '|'
+			        + data.datapoints.intermediate.join( ',' ) + '|' + data.datapoints.basic.join( ',' )
 			        + '&' + 'chds=0,' + max + ',0,' + max + ',0,' + max;
 			$( '#chart_img' ).attr( 'src', chartURL );
 		};
@@ -281,7 +259,7 @@
 		    'increment' : $( '#chart_increment' ).val(),
 		    'startdate' : start_date,
 		    'enddate' : end_date,
-		    'userdefs' : $.json_encode( wgClickTrackUserDefs )
+		    'userdefs' : $.toJSON( wgClickTrackUserDefs )
 		}, processChartJSON, 'json' );
 	};
 
@@ -341,21 +319,27 @@
 			var bval = rval;
 			rgbString = 'rgb(' + parseInt( rval ) + ',' + parseInt( gval ) + ',' + parseInt( bval ) + ')';
 			$( this ).data( 'rgb', rgbString );
-			$( this ).css( 'color', rgbString );
-			$( this ).css( 'background-color', rgbString );
+			$( this ).css( {
+				'color': rgbString,
+				'background-color': rgbString
+			} );
 		} );
 
 		// I wanted to do this with classes, but the element's style rule wins over class rule
 		// and each element has its own alternative color
 		$( '.event_data' ).mouseover( function() {
-			$( this ).css( 'color', '#000000' );
-			$( this ).css( 'background-color', '#FFFFFF' );
+			$( this ).css( {
+				'color': '#000000',
+				'background-color': '#FFFFFF'
+			} );
 		} );
 
 		$( '.event_data' ).mouseout( function() {
 			rgbString = $( this ).data( 'rgb' );
-			$( this ).css( 'color', rgbString );
-			$( this ).css( 'background-color', rgbString );
+			$( this ).css( {
+				'color': rgbString,
+				'background-color': rgbString
+			} );
 		} );
 
 	}; // colorize
@@ -363,22 +347,21 @@
 	$.updateTable = function() {
 		var processTableJSON = function( data, status ) {
 			// clear
-			$( '.table_data_row' ).each( function() {
-				$( this ).remove();
-			} );
+			$( '.table_data_row' ).remove();
 
 			var row_count = 0;
-			for ( var row_iter in data['tablevals']['vals'] ) {
-				var row = data['tablevals']['vals'][row_iter]; // really, JS?
+			for ( var row_iter in data.tablevals.vals ) {
+				var row = data.tablevals.vals[row_iter]; // really, JS?
 				row_count++;
 
 				var outputRow = $( '<tr></tr>' );
 				outputRow.addClass( 'table_data_row' );
 
 				var cell = $( '<td></td>' ).attr( 'id', 'event_name_' + row_count );
-				cell.addClass( 'event_name' );
-				cell.attr( 'value', row['event_id'] );
-				cell.text( row['event_name'] );
+				cell
+					.addClass( 'event_name' )
+					.attr( 'value', row.event_id )
+					.text( row.event_name );
 				outputRow.append( cell );
 
 				var createClassCell = function( userclass ) {
@@ -419,7 +402,7 @@
 		    'increment' : $( '#chart_increment' ).val(),
 		    'startdate' : start_date,
 		    'enddate' : end_date,
-		    'userdefs' : $.json_encode( wgClickTrackUserDefs ),
+		    'userdefs' : $.toJSON( wgClickTrackUserDefs ),
 		    'tabledata' : 1
 		}, processTableJSON, 'json' );
 
@@ -496,11 +479,12 @@
 
 		// Change user/intermediate/expert dialogs
 		var loadHeaderInfo = function( headerName ) {
-			$( '#' + headerName + '_header' ).css( 'cursor', 'pointer' );
-			$( '#' + headerName + '_header' ).click( function() {
-				$.renderUserDefDialogWith( wgClickTrackUserDefs[headerName], headerName );
-				$( '#user_def_dialog' ).dialog( 'open' );
-			} );
+			$( '#' + headerName + '_header' )
+				.css( 'cursor', 'pointer' )
+				.click( function() {
+					$.renderUserDefDialogWith( wgClickTrackUserDefs[headerName], headerName );
+					$( '#user_def_dialog' ).dialog( 'open' );
+				} );
 		}; // headername
 
 		loadHeaderInfo( 'basic' );
@@ -509,21 +493,22 @@
 	};
 
 	$.changeDataLinks = function() {
-		$( '.event_name' ).each( function() {
-			$( this ).css( 'cursor', 'pointer' );
-
-			$( this ).click( function() {
+		$( '.event_name' )
+			.css( 'cursor', 'pointer' )
+			.click( function() {
 				$( '#chart_img' ).data( 'eventid', $( this ).attr( 'value' ) );
 				$( '#chart_img' ).data( 'event_name', $( this ).text() );
 				$.updateChart();
 			} ); // click
-		} ); // each
 	}; // addlink
 
-	return $( this );
-} )( jQuery );
+	// @FIXME: Where is this supposed to return to -- Krinkle 2011-04-27
+	// - commented out for now.
+	//return $( this );
 
 // colorize the table on document.ready
-$( document ).ready( $.colorizeTable );
-$( document ).ready( $.changeDataLinks );
-$( document ).ready( $.setUIControls );
+$( $.colorizeTable );
+$( $.changeDataLinks );
+$( $.setUIControls );
+
+} )( jQuery );
