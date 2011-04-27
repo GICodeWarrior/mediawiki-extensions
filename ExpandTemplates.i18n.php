@@ -403,6 +403,7 @@ $messages['cs'] = array(
 /** Danish (Dansk)
  * @author Byrial
  * @author Jon Harald Søby
+ * @author Peter Alberti
  */
 $messages['da'] = array(
 	'expandtemplates' => 'Udfold skabeloner',
@@ -417,6 +418,7 @@ Den gør det ved at kalde det relevante analysetrin i MediaWiki-softwaren.',
 	'expand_templates_xml_output' => 'XML-kode',
 	'expand_templates_ok' => 'Udfold',
 	'expand_templates_remove_comments' => 'Fjern kommentarer',
+	'expand_templates_remove_nowiki' => 'Undertryk <nowiki>-tags i resultatet',
 	'expand_templates_generate_xml' => 'Vis analysetræ som XML',
 	'expand_templates_preview' => 'Forhåndsvisning',
 );
