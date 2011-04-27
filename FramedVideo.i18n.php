@@ -865,6 +865,13 @@ $messages['sk'] = array(
 	'framedvideo-desc' => 'Umožňuje vkladanie videa z rozličných webstránok pomocou značky <code>&lt;video&gt;</code>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'framedvideo_helppage' => 'Help:Video',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
