@@ -694,7 +694,7 @@ $messages['ur'] = array(
  */
 $messages['vi'] = array(
 	'massblank' => 'Tẩy trống hàng loạt',
-	'massblank-desc' => 'Cho phép quản lý viên [[Special:MassBlank|tẩy trống trang hàng loạt]]',
+	'massblank-desc' => 'Cho phép bảo quản viên [[Special:MassBlank|tẩy trống trang hàng loạt]]',
 	'massblank-nopages' => 'Không có trang mới do [[Special:Contributions/$1|$1]] tạo ra trong thay đổi gần đây.',
 	'massblank-list' => 'Các trang sau do [[Special:Contributions/$1|$1]] tạo ra gần đây; hãy ghi lý do và nhấn nút để tẩy trống tất cả những trang này.',
 	'massblank-defaultreason' => 'Tẩy trống hàng loại các trang do $1 tạo ra',
