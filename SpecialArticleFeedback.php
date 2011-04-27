@@ -15,13 +15,17 @@ class SpecialArticleFeedback extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgUser, $wgOut, $wgRequest;
+		global $wgUser, $wgOut, $wgRequest, $wgArticleFeedbackDashboard;
 
 		$wgOut->addModules( 'ext.articleFeedback.dashboard' );
 		$this->setHeaders();
-		$this->renderDailyHighsAndLows();
-		$this->renderWeeklyMostChanged();
-		$this->renderRecentLows();
+		if ( $wgArticleFeedbackDashboard ) {
+			$this->renderDailyHighsAndLows();
+			$this->renderWeeklyMostChanged();
+			$this->renderRecentLows();
+		} else {
+			$wgOut->addWikiText( 'This page has been disabled.' );
+		}
 	}
 
 	/* Protected Methods */
