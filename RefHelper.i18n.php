@@ -882,7 +882,37 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'refhelper-desc' => 'Helf beim Aanlääje vun Sigge met Quelle un Henwies op Bööscher.',
+	'refhelper' => 'Quälle- un Verwieß_Hölp',
+	'refsearch' => 'Verwiese söhke',
+	'refhelper-desc' => 'Helf beim Aanlääje vun Sigge met Quelle un Verwiese op Bööscher.',
+	'refhelper-refsearch' => 'Verwiese söhke',
+	'refhelper-refcreate_legend' => 'Donn ene neue Verwieß aanlääje',
+	'refhelper-refsearch_legend' => 'Donn en <i lang="en">PubMed</i> noh Verwiese söhke',
+	'refhelper-refcreate_another' => 'Donn norr_ene Verwieß aanlääje',
+	'refhelper-refcreate_autocomment' => 'Di Sigg wood automattesch aanjelaat.',
+	'refhelper-refcreate_success' => 'En Sigg „[[$1]]“ johv et noch nit un se es jäz aanjelaat.',
+	'refhelper-refcreate_failure' => 'Di Sigg „[[$1]]“ jidd_et ald.',
+	'refhelper-label_workspace' => 'Plaz för Täx afzelääje un för et Eröm_Kopeere',
+	'refhelper-label_authorforename' => 'Däm Schriiver $1 singe Vörname:',
+	'refhelper-label_authorsurname' => 'Der Nohname:',
+	'refhelper-title' => 'Der Tittel:',
+	'refhelper-journal' => 'De Zeitschreff:',
+	'refhelper-volume' => 'Dä Band:',
+	'refhelper-pages' => 'De Aanzahl Sigge:',
+	'refhelper-year' => 'Et Johr:',
+	'refhelper-refname' => 'Dä Name för dä Verwieß',
+	'refhelper-category' => 'Saachjropp $1:',
+	'refhelper-create' => 'Aanlääje',
+	'refhelper-search' => 'Söhke',
+	'refhelper-toolbox_link_create' => 'Verwieß aanlääje',
+	'refhelper-toolbox_link_search' => 'Ene Verwieß beim Söhke aanlääje',
+	'refhelper-newarticle_nocitation' => 'Em Momang jidd_et kei Quäll un kei Zitaat met dämm Name',
+	'refhelper-newarticle_suggestions' => 'Wann e zopaß Zitaat onge ze fenge es, kanns De di Sigg met däm Verwieß aanlääje. Kleck doför op „{{int:refhelper-create}}“
+
+
+<h2>Vörschlääsh</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Et wohr leider nit müjjelesh, Verwiese vörzeschlonn.
+Do kanns [[Special:RefHelper|sellver ene Verwieß schrieve]] udder [[Special:RefSearch|noh dämm Zitaat för et Zohfööje söhke lohße]].',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
