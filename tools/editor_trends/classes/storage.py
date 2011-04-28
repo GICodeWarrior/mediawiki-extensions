@@ -186,13 +186,16 @@ class Mongo(AbstractDatabase):
         TODO: figure out how big the index is and then take appropriate action, 
         index < 4mb just do a distinct query, index > 4mb do a map reduce.
         '''
+        print 'Check if distinct keys have previously been saved...'
         if force_new == False and \
             file_utils.check_file_exists(settings.binary_location, '%s_%s_%s.bin'
                                          % (self.dbname, self.collection, key)):
+            print 'Loading distinct keys from previous session...'
             ids = file_utils.load_object(settings.binary_location, '%s_%s_%s.bin'
                                          % (self.dbname, self.collection, key))
         else:
             #TODO this is a bit arbitrary, should check if index > 4Mb.
+            print 'Determining distinct keys...'
             if self.db[self.collection].count() < 200000:
                 ids = self.db[self.collection].distinct(key)
             else:

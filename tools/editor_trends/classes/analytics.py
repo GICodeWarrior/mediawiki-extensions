@@ -18,13 +18,17 @@ __date__ = '2011-03-28'
 __version__ = '0.1'
 
 import sys
+import gc
 from Queue import Empty
+from multiprocessing import Process
 
 if '..' not in sys.path:
     sys.path.append('..')
 
 from classes import consumers
 from classes import storage
+from classes import exceptions
+from analyses import inventory
 
 class Replicator:
     '''
@@ -76,10 +80,11 @@ class Replicator:
 
 
 class Analyzer(consumers.BaseConsumer):
-    def __init__(self, rts, tasks, result, var, data):
+    def __init__(self, rts, tasks, result, var, data, plugin_module, plugin_name):
         super(Analyzer, self).__init__(rts, tasks, result)
         self.var = var
         self.data = data
+        self.plugin = getattr(plugin_module, plugin_name)
 
     def run(self):
         '''
@@ -87,21 +92,15 @@ class Analyzer(consumers.BaseConsumer):
         project and then calls the plugin that does the actual mapping.
         '''
         db = storage.init_database(self.rts.storage, self.rts.dbname, self.rts.editors_dataset)
+        x = 0
         while True:
             try:
-                task = self.tasks.get(block=False)
-                self.tasks.task_done()
-                if task == None:
+                editor_id = self.tasks.get(block=False)
+                if editor_id == None:
                     self.result.put(self.var)
                     break
-                editor = db.find_one('editor', task.editor)
-
-                task.plugin(self.var, editor, dbname=self.rts.dbname, data=self.data)
+                editor = db.find_one('editor', editor_id)
+                self.plugin(self.var, editor, dbname=self.rts.dbname, data=self.data)
                 self.result.put(True)
             except Empty:
                 pass
-
-class Task:
-    def __init__(self, plugin, editor):
-        self.plugin = plugin
-        self.editor = editor

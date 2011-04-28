@@ -17,6 +17,8 @@ __email__ = 'dvanliere at gmail dot com'
 __date__ = '2011-01-14'
 __version__ = '0.1'
 
+import gc
+import random
 import calendar
 import datetime
 import time
@@ -171,7 +173,7 @@ class Observation(Data):
     def __init__(self, date, time_unit, id, meta):
         assert isinstance(date, datetime.datetime), '''Date variable should be 
             a datetime.datetime instance.'''
-        self.date = date
+        #self.date = date
         self.data = 0
         self.time_unit = time_unit
         self.t1, self.t0 = self.set_date_range(date)
@@ -278,7 +280,11 @@ class Variable(Data):
 
     def get_observation(self, key, date, meta):
         '''Get a single observation based on a date key and possibly meta data'''
-        return self.obs.get(key, Observation(date, self.time_unit, key, meta))
+        if key in self.obs:
+            return self.obs.get(key)
+        else:
+            obs = Observation(date, self.time_unit, key, meta)
+            return obs
 
     def add(self, date, value, meta={}):
         '''
@@ -509,7 +515,7 @@ class Dataset:
             variable.max = get_max(data)
             variable.num_obs = variable.number_of_obs()
             variable.num_dates = len(variable)
-            variable.first_obs, variable.last_obs = variable.get_date_range()
+            #variable.first_obs, variable.last_obs = variable.get_date_range()
 
     def summary(self):
         '''
@@ -532,6 +538,7 @@ class Dataset:
         print table.draw()
         print self
         print self.details()
+
 
 def get_standard_deviation(number_list):
     '''Given a list of numbers, calculate the standard deviation of the list'''
@@ -584,8 +591,20 @@ def debug():
     db = storage.init_database('mongo', 'wikilytics', 'enwiki_charts')
     #db.add_son_manipulator(Transform())
 
-    d1 = datetime.datetime.today()
-    d2 = datetime.datetime(2007, 6, 7)
+    lock = RLock()
+    v = Variable('test', 'year', lock, {})
+
+    for x in xrange(100000):
+        year = random.randrange(2005, 2010)
+        month = random.randrange(1, 12)
+        day = random.randrange(1, 28)
+        d = datetime.datetime(year, month, day)
+        x = random.randrange(1, 10000)
+        v.add(d, x, {'username': 'diederik'})
+    gc.collect()
+
+#    d1 = datetime.datetime.today()
+#    d2 = datetime.datetime(2007, 6, 7)
 #    ds = Dataset('histogram', rts, [{'name': 'count', 'time_unit': 'year'},
 #                                   #{'name': 'testest', 'time_unit': 'year'}
 #                                   ])
@@ -599,18 +618,16 @@ def debug():
 #
 #    ds.encode()
     #name, time_unit, lock, **kwargs
-    lock = RLock()
-    v = Variable('test', 'year', lock, {})
-    v.add(d1, 10, {'exp': 3, 'test': 10})
-    v.add(d1, 135, {'exp': 3, 'test': 10})
-    v.add(d2, 1, {'exp': 4, 'test': 10})
-    v.add(d2, 1, {'exp': 4, 'test': 10})
-    v.add(d2 , 1, {'exp': 3, 'test': 8})
-    v.add(d2 , 1, {'exp': 2, 'test': 10})
-    v.add(d2 , 1, {'exp': 4, 'test': 11})
-    v.add(d2 , 1, {'exp': 8, 'test': 13})
-    v.add(d2 , 1, {'exp': 9, 'test': 12})
 
+
+#        v.add(d, 135, {'exp': 3, 'test': 10})
+#        v.add(d, 1, {'exp': 4, 'test': 10})
+#        v.add(d, 1, {'exp': 4, 'test': 10})
+#        v.add(d , 1, {'exp': 3, 'test': 8})
+#        v.add(d , 1, {'exp': 2, 'test': 10})
+#        v.add(d , 1, {'exp': 4, 'test': 11})
+#        v.add(d , 1, {'exp': 8, 'test': 13})
+#        v.add(d , 1, {'exp': 9, 'test': 12})
     #mem = get_refcounts()
 
 #    v.add(d2 + timedelta(days=400), 1, {'exp': 4, 'test': 10})
@@ -624,4 +641,5 @@ def debug():
 
  #   mongo.test.insert({'variables': ds})
 if __name__ == '__main__':
-    cProfile.run('debug()')
+    #cProfile.run('debug()')
+    debug()

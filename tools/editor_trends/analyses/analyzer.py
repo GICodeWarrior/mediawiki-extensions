@@ -17,13 +17,14 @@ __email__ = 'dvanliere at gmail dot com'
 _date__ = '2010-12-10'
 __version__ = '0.1'
 
-from multiprocessing import JoinableQueue, Manager, RLock, Process
+from multiprocessing import JoinableQueue, Queue, Manager, RLock, Process
 from multiprocessing.managers import BaseManager
 from Queue import Empty
 
 import types
 import sys
 import cPickle
+import gc
 import os
 import progressbar
 import datetime
@@ -61,14 +62,6 @@ def reconstruct_observations(var):
     return var
 
 
-def retrieve_plugin(func):
-    functions = inventory.available_analyses()
-    try:
-        return functions[func]
-    except KeyError:
-        return False
-
-
 def feedback(plugin, rts):
     print 'Exporting data for chart: %s' % plugin
     print 'Project: %s' % rts.dbname
@@ -86,16 +79,26 @@ def write_output(ds, rts, stopwatch):
     #log.log_to_mongo(rts, 'chart', 'storing', stopwatch, event='finish')
 
 
+def retrieve_plugin(func):
+    functions = inventory.available_analyses()
+    try:
+        return functions[func]
+    except KeyError:
+        return False
+
+
 def generate_chart_data(rts, func, **kwargs):
     '''
     This is the entry function to be called to generate data for creating 
     charts.
     '''
+
     stopwatch = timer.Timer()
     plugin = retrieve_plugin(func)
-    available_plugins = inventory.available_analyses()
+
     if not plugin:
-        raise exceptions.UnknownPluginError(plugin, available_plugins)
+        raise exceptions.UnknownPluginError(plugin, self.available_plugins)
+        plugin = getattr(plugin, func)
 
     feedback(func, rts)
 
@@ -109,7 +112,7 @@ def generate_chart_data(rts, func, **kwargs):
 
     db = storage.init_database(rts.storage, rts.dbname, rts.editors_dataset)
     editors = db.retrieve_distinct_keys('editor')
-    editors = editors[:500]
+    #editors = editors[:500]
     min_year, max_year = determine_project_year_range(db, 'new_wikipedian')
 
     fmt = kwargs.pop('format', 'long')
@@ -130,35 +133,37 @@ def generate_chart_data(rts, func, **kwargs):
     finally:
         print 'Finished preloading data.'
 
-    plugin = getattr(plugin, func)
-    for editor in editors:
-        tasks.put(analytics.Task(plugin, editor))
 
-    analyzers = [analytics.Analyzer(rts, tasks, result, var, data) for
+    for editor_id in editors:
+        #tasks.put({'plugin':func, 'editor_id':editor_id})
+        tasks.put(editor_id)
+    n = len(editors)
+    del editors
+
+    analyzers = [analytics.Analyzer(rts, tasks, result, var, data, plugin, func) for
                  x in xrange(rts.number_of_processes)]
 
 
     for x in xrange(rts.number_of_processes):
         tasks.put(None)
 
-    pbar = progressbar.ProgressBar(maxval=len(editors)).start()
+    pbar = progressbar.ProgressBar(maxval=n).start()
     for analyzer in analyzers:
         analyzer.start()
 
-    editors = None
+
     ppills = rts.number_of_processes
-    while True:
-        while ppills > 0:
-            try:
-                res = result.get(block=True)
-                if res == True:
-                    pbar.update(pbar.currval + 1)
-                else:
-                    ppills -= 1
-                    var = res
-            except Empty:
-                pass
-        break
+    while ppills > 0:
+        try:
+            res = result.get()
+            if res == True:
+                pbar.update(pbar.currval + 1)
+            else:
+                ppills -= 1
+                var = res
+                print 'ppills: %s' % ppills
+        except Empty:
+            pass
 
     tasks.join()
 
