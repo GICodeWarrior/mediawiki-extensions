@@ -256,6 +256,13 @@ $messages['arz'] = array(
 	'crosswikiunblock-local' => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'crosswikiblock-reason' => 'Səbəb:',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
