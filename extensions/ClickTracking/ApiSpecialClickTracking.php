@@ -34,7 +34,6 @@ class ApiSpecialClickTracking extends ApiBase {
 			$this->getResult()->addValue( array( 'tablevals' ), 'vals', $tableData );
 		} else {
 			// Chart data
-			$click_data = array();
 			try {
 				$click_data = SpecialClickTracking::getChartData( $eventId, $startDate, $endDate, $increment, $userDefString );
 				$this->getResult()->addValue( array( 'datapoints' ), 'expert', $click_data['expert'] );
@@ -49,16 +48,9 @@ class ApiSpecialClickTracking extends ApiBase {
 	/**
 	 * Required parameter check
 	 *
-	 * @param $params params extracted from the POST
+	 * @param $params array params extracted from the POST
 	 */
 	protected function validateParams( $params ) {
-		$required = array( 'eventid', 'startdate', 'enddate', 'increment', 'userdefs' );
-		foreach ( $required as $arg ) {
-			if ( !isset( $params[$arg] ) ) {
-				$this->dieUsageMsg( array( 'missingparam', $arg ) );
-			}
-		}
-
 		// Check if event id parses to an int greater than zero
 		if ( (int) $params['eventid'] < 0 ) {
 			$this->dieUsage( 'Invalid event ID', 'badeventid' );
@@ -73,7 +65,7 @@ class ApiSpecialClickTracking extends ApiBase {
 		}
 
 		// Check if increment is a positive integer
-		if ( (int) $params['increment'] <= 0 ) {
+		if ( $params['increment'] <= 0 ) {
 			$this->dieUsage( 'Invalid increment', 'badincrement' );
 		}
 
@@ -101,11 +93,6 @@ class ApiSpecialClickTracking extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'eventid' ),
-			array( 'missingparam', 'startdate' ),
-			array( 'missingparam', 'enddate' ),
-			array( 'missingparam', 'increment' ),
-			array( 'missingparam', 'userdefs' ),
 			array( 'code' => 'badeventid', 'info' => 'Invalid event ID' ),
 			array( 'code' => 'badstartdate', 'info' => 'startdate not in YYYYMMDD format: <<\'startdate\'>>' ),
 			array( 'code' => 'badenddate', 'info' => 'enddate not in YYYYMMDD format: <<\'enddate\'>>' ),
@@ -118,21 +105,26 @@ class ApiSpecialClickTracking extends ApiBase {
 		return array(
 			'eventid' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_MIN => 1
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_REQUIRED => true,
 			),
 			'startdate' => array(
-				ApiBase::PARAM_TYPE => 'integer'
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_REQUIRED => true,
 			),
 			'enddate' => array(
-				ApiBase::PARAM_TYPE => 'integer'
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_REQUIRED => true,
 			),
 			'increment' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_MIN => 1,
-				ApiBase::PARAM_MAX => 365 // 1 year
+				ApiBase::PARAM_MAX => 365, // 1 year
+				ApiBase::PARAM_REQUIRED => true,
 			),
 			'userdefs' => array(
-				ApiBase::PARAM_TYPE => 'string'
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
 			),
 			'tabledata' => array(
 				ApiBase::PARAM_TYPE => 'integer'

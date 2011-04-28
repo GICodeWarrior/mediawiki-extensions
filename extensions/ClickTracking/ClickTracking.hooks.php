@@ -91,7 +91,6 @@ class ClickTrackingHooks {
 		return true;
 	}
 
-	
 	//adds a bucket-testing campaign to the active campaigns
 	public static function addCampaign($localBasePath, $remoteExtPath, $name ){
 		global $wgResourceModules;
@@ -108,9 +107,7 @@ class ClickTrackingHooks {
 										  ( array ) $wgResourceModules['ext.UserBuckets']['dependencies'],
 							                array("ext.UserBuckets.$name"));
 	}
-	
-	
-	
+
 	/**
 	 * Get event ID from name
 	 *
@@ -140,9 +137,6 @@ class ClickTrackingHooks {
 		return $id_num === false ? 0 : $id_num;
 	}
 
-	
-	
-	
 	/**
 	 * Returns bucket information
 	 * @return Array array of buckets, or null
@@ -230,8 +224,6 @@ class ClickTrackingHooks {
 		
 		$dbw->commit();
 		return ($db_status && $db_status_buckets);
-		
-		
 	}
 	
 	public static function editPageShowEditFormFields( $editPage, $output ) {

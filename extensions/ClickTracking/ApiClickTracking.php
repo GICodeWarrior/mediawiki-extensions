@@ -18,11 +18,10 @@ class ApiClickTracking extends ApiBase {
 	 * @see includes/api/ApiBase#execute()
 	 */
 	public function execute() {
-		global $wgUser, $wgTitle, $wgClickTrackContribGranularity1, $wgClickTrackContribGranularity2,
+		global $wgUser, $wgClickTrackContribGranularity1, $wgClickTrackContribGranularity2,
 			$wgClickTrackContribGranularity3;
 
 		$params = $this->extractRequestParams();
-		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];
 		$sessionId = $params['token'];
 		$namespace = $params['namespacenumber'];
@@ -81,19 +80,6 @@ class ApiClickTracking extends ApiBase {
 		}
 	}
 
-	/**
-	 * Required parameter check
-	 * @param $params params extracted from the POST
-	 */
-	protected function validateParams( $params ) {
-		$required = array( 'eventid', 'token', 'namespacenumber' );
-		foreach ( $required as $arg ) {
-			if ( !isset( $params[$arg] ) ) {
-				$this->dieUsageMsg( array( 'missingparam', $arg ) );
-			}
-		}
-	}
-
 	public function getParamDescription() {
 		return array(
 			'eventid' => 'string of eventID',
@@ -110,19 +96,20 @@ class ApiClickTracking extends ApiBase {
 		);
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'eventid' ),
-			array( 'missingparam', 'token' ),
-			array( 'missingparam', 'namespacenumber'),
-		) );
-	}
-
 	public function getAllowedParams() {
 		return array(
-			'eventid' => null,
-			'namespacenumber' => null,
-			'token' => null,
+			'eventid' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
+			'namespacenumber' => array(
+				ApiBase::PARAM_TYPE => 'namespace',
+				ApiBase::PARAM_REQUIRED => true,
+			),
+			'token' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
 			'redirectto' => null,
 			'additional' => null
 		);
