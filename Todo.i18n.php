@@ -1342,6 +1342,13 @@ $messages['mr'] = array(
 	'todo-form-submit' => 'पृच्छा पाठवा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'todo-form-details' => 'Butiran:',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
