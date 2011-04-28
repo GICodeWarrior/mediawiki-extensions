@@ -133,6 +133,16 @@ $messages['arz'] = array(
 	'importfreeimages_next' => '$1 التالي',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'importfreeimages_owner' => 'Müəllif',
+	'importfreeimages_size_small' => 'Kiçik',
+	'importfreeimages_size_large' => 'Geniş',
+	'importfreeimages_size_original' => 'Orijinal',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
