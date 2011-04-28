@@ -146,6 +146,14 @@ $messages['as'] = array(
 	'editmsg-search' => 'সন্ধান কৰক',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'editmsg-search' => 'Axtar',
+	'editmsg-new-search' => 'Yeni axtarış',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
