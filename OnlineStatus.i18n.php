@@ -773,6 +773,14 @@ $messages['lt'] = array(
 	'onlinestatus-toggle-online' => 'Prisijungęs',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'onlinestatus-toggle-offline' => 'Bezsaiste',
+	'onlinestatus-toggle-online' => 'Tiešsaiste',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
