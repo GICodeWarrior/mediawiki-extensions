@@ -344,7 +344,7 @@
 				
 				if ( untranslatedsentences.length == 0 ) {
 					// If the current chunk was smaller then the max size, node translation is complete, so update text.
-					textAreaElement.innerHTML = chunks.join(); // This is a hack to decode quotes.
+					textAreaElement.innerHTML = chunks.join( '' ); // This is a hack to decode quotes.
 					element.replaceData( 0, element.length, textAreaElement.value );
 					handleTranslationCompletion( targetLang );
 				}
