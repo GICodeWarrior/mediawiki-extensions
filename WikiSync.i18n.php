@@ -910,6 +910,7 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'wikisync-desc' => 'Brängk en [[Special:WikiSync|{{int:specialpage}}]] in et Wiki eren, öm de {{lcfirst:{{int:recentchanges}}}} vum eije Wiki un vun enem andere Wiki zosamme ze bränge.',
+	'wikisync_remote_login_button' => 'Enlogge',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1171,6 +1172,83 @@ rozpoczynając od wersji $3?',
 	'wikisync_js_sync_start_rtl' => 'Uruchamianie synchronizacji ze zdalnej do lokalnej wiki $1',
 	'wikisync_js_sync_end_ltr' => 'Zakończenie synchronizacji z lokalnej do zdalnej wiki $1',
 	'wikisync_js_sync_end_rtl' => 'Zakończenie synchronizacji ze zdalnej do lokalnej wiki $1',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'wikisync' => 'Sincronisassion ëd wiki',
+	'wikisync-desc' => 'A dà na [[Special:WikiSync|pagina special]] për sincronisé i cambe recent ëd doe wiki, un-a local e un-a lontan-a',
+	'wikisync_direction' => 'Për piasì sern la diression ëd la sincronisassion',
+	'wikisync_local_root' => 'Radis dël sit ëd la wiki local',
+	'wikisync_remote_root' => 'Radis dël sit ëd la wiki lontan-a',
+	'wikisync_remote_log' => "Registr ëd j'operassion lontan-e",
+	'wikisync_clear_log' => 'Scansela registr',
+	'wikisync_login_to_remote_wiki' => 'Intra an la wiki lontan-a',
+	'wikisync_remote_wiki_root' => 'Radis ëd la wiki lontan-a',
+	'wikisync_remote_wiki_example' => 'Përcors a api.php, për esempi: http://www.mediawiki.org/w',
+	'wikisync_remote_wiki_user' => 'Nòm utent ëd la wiki lontan-a',
+	'wikisync_remote_wiki_pass' => 'Ciav ëd la wiki lontan-a',
+	'wikisync_remote_login_button' => 'Intra',
+	'wikisync_sync_files' => 'Sincronisa archivi',
+	'wikisync_store_password' => 'Memorisa ciav ëd la wiki lontan-a',
+	'wikisync_storing_password_warning' => "Memorisé ciav lontan-e a l'é pa sigur e a l'é pa racomandà",
+	'wikisync_synchronization_button' => 'Sincronisa',
+	'wikisync_scheduler_log' => 'Registr ëd lë scheduler',
+	'wikisync_scheduler_setup' => 'Ampostassion ëd lë scheduler',
+	'wikisync_scheduler_turn_on' => 'Tira su lë scheduler',
+	'wikisync_scheduler_switch_direction' => 'Cangia automaticament la diression ëd la sincronisassion',
+	'wikisync_scheduler_time_interval' => 'Temp an minute tra sincronisassion automàtiche',
+	'wikisync_apply_button' => 'Fà',
+	'wikisync_log_imported_by' => 'Amportà da [[Special:WikiSync|WikiSync]]',
+	'wikisync_log_uploaded_by' => 'Carià da [[Special:WikiSync|WikiSync]]',
+	'wikisync_unsupported_user' => 'Mach un trigomiro special $1 a peul fé le sincronisassion ëd wiki. Për piasì intra com $1. Cangia pa ël nòm ëd $1 tra le sincronisassion, dësnò le revision ëd gnun-e anformassion a saran pa sautà da bin (varda [http://www.mediawiki.org/wiki/Extension:WikiSync] për savèjne ëd pi).',
+	'wikisync_api_result_unknown_action' => "Assion d'API pa conossùa",
+	'wikisync_api_result_exception' => "Ecession capità ant na ciamada d'API local",
+	'wikisync_api_result_noaccess' => "Mach mémber ëd {{PLURAL:$2|la partìa|le partìe}} ch'a ven-o a peul fé st'assion-sì: $1",
+	'wikisync_api_result_invalid_parameter' => 'Valor dël paràmetr pa bon',
+	'wikisync_api_result_http' => "Eror HTTP an mente as ciamavo dat da n'API lontan-a",
+	'wikisync_api_result_Unsupported' => "Toa vërsion ëd MediaWiki a l'é pa apogià (men ëd 1.15)",
+	'wikisync_api_result_NoName' => "It l'has pa ampostà ëd paràmetr lgname",
+	'wikisync_api_result_Illegal' => "It l'has dàit un nòm utent pa legal",
+	'wikisync_api_result_NotExists' => "Ël nòm utent ch'it l'has dàit a esiste pa",
+	'wikisync_api_result_EmptyPass' => "It l'has pa ampostà ël paràmetr lgpassword o it l'has lassalo veuid",
+	'wikisync_api_result_WrongPass' => "La ciav ch'it l'has dàit a l'é pa giusta",
+	'wikisync_api_result_WrongPluginPass' => "La ciav ch'it l'has dàit a l'é pa giusta",
+	'wikisync_api_result_CreateBlocked' => "La wiki a l'ha provà a creé automaticament un cont neuv për ti, ma toa adrëssa IP a l'é stàita blocà da creé cont",
+	'wikisync_api_result_Throttled' => 'It ses intrà tròpe vire an pòch temp.',
+	'wikisync_api_result_Blocked' => "L'utent a l'é blocà",
+	'wikisync_api_result_mustbeposted' => "Ël mòdul d'intrada a ciama n'arcesta POST",
+	'wikisync_api_result_NeedToken' => "O it l'ha pa dàit ël sìmbol ëd login o ël cookie ëd sessionid. Ciama torna con ël sìmbol e ël cookie dàit an sta arspòsta",
+	'wikisync_api_result_no_import_rights' => "St'utent a peul pa amporté archivi ëd dump XML",
+	'wikisync_api_result_Success' => 'Intrà da bin ant ël sit ëd la wiki lontan-a',
+	'wikisync_js_last_op_error' => "L'ùltima operassion a l'ha artornà n'eror.
+
+Còdes: $1
+
+Mëssagi: $2
+
+Sgnaca [OK] për torna prové l'ùltima operassion",
+	'wikisync_js_synchronization_confirmation' => 'Ses-to sigur ëd vorèj sincronisé
+
+da $1
+
+a $2
+
+an partend da la revision $3?',
+	'wikisync_js_synchronization_success' => "La sincronisassion a l'é stàita completà da bin",
+	'wikisync_js_already_synchronized' => 'Le wiki ëd sorziss e destinassion a smijo esse già stàit sincronisà',
+	'wikisync_js_sync_to_itself' => 'It peule pa sincronisé la wiki midema',
+	'wikisync_js_diff_search' => 'Vardé le diferense ant le revision ëd destinassion',
+	'wikisync_js_revision' => 'Revision $1',
+	'wikisync_js_file_size_mismatch' => 'La dimension ëd l\'archivi temporani "$1" ($2 {{PLURAL:$2|byte|byte}}) a cobia pa la dimension ciamà ($3 {{PLURAL:$3|byte|byte}}). Sigurte che l\'archivi "$4" a sia pa stàit coatà ant ël depòsit ëd la wiki sorziss.',
+	'wikisync_js_invalid_scheduler_time' => 'Ël temp dë schedulassion a deuv esse un nùmer positiv anter',
+	'wikisync_js_scheduler_countdown' => 'A-i resto $1 {{PLURAL:$1|minuta|minute}}',
+	'wikisync_js_sync_start_ltr' => 'Ancaminé la sincronisassion da la wiki local a la wiki lontan-a a $1',
+	'wikisync_js_sync_start_rtl' => 'Ancaminé la sincronisassion da la wiki lontan-a a la wiki local a $1',
+	'wikisync_js_sync_end_ltr' => 'Finì la sincronisassion da la wiki local a la wiki lontan-a a $1',
+	'wikisync_js_sync_end_rtl' => 'Finì la sincronisassion da la wiki lontan-a a la wiki local a $1',
 );
 
 /** Pashto (پښتو)
