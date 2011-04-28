@@ -142,6 +142,8 @@ $messages['az'] = array(
 	'ea-send' => 'Göndər',
 	'ea-subject' => 'Başlıq:',
 	'ea-message' => 'Məktub:',
+	'ea-style' => 'Stil:',
+	'ea-data' => 'Tarix',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -801,6 +803,16 @@ $messages['my'] = array(
 	'ea-allusers' => 'အသုံးပြုသူအားလုံး',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'ea-send' => 'Кучомс',
+	'ea-subject' => 'Мезде:',
+	'ea-message' => 'Пачтямнэсь:',
+	'ea-style' => 'Стилезэ:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1060,6 +1072,7 @@ $messages['su'] = array(
  * @author Fader
  * @author Jon Harald Søby
  * @author M.M.S.
+ * @author Tobulos1
  */
 $messages['sv'] = array(
 	'e-mailpage' => 'E-posta sida',
@@ -1076,10 +1089,16 @@ $messages['sv'] = array(
 	'ea-show' => 'Visa mottagare',
 	'ea-from' => 'Från:',
 	'ea-to' => 'Till:',
+	'ea-to-info' => 'E-postadresser kan separeras med en eller flera semikolon, kommatecken, asterisk eller nyradstecken',
+	'ea-cc' => 'CC:',
 	'ea-send' => 'Skicka!',
 	'ea-subject' => 'Ange ett ämne för e-brevet',
 	'ea-message' => 'Fyll innehållet med ett valfritt meddelande (wikitext)',
+	'ea-style' => 'Stil:',
 	'ea-selectcss' => 'Ange en CSS-stilmall',
+	'ea-data' => 'Data',
+	'ea-selectrecord' => 'Dessa mallar kan användas för att fylla i fält i meddelandets innehåll',
+	'ea-allusers' => 'Alla användare',
 );
 
 /** Telugu (తెలుగు)
