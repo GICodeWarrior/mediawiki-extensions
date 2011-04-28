@@ -89,6 +89,13 @@ $messages['af'] = array(
 	'livetranslate-special-local' => 'Lokaal',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'livetranslate-special-local' => 'Lokal',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -669,6 +676,22 @@ $messages['pms'] = array(
 	'livetranslate-dictionary-empty' => 'A-i é pa anco\' gnun-e paròle ant ël dissionari. Sgnaca ël boton "modìfica" për giuntene quaidun-e.',
 	'livetranslate-dictionary-count' => 'A-i {{PLURAL:$1|é $1 paròla|son $1 paròle}} an $2 {{PLURAL:$2|lenga|lenghe}}. Sgnaca ël boton "modìfica" për giontene ëd pi.',
 	'livetranslate-dictionary-unallowed-langs' => "{{PLURAL:$2|Costa lenga a l'é|Coste lenghe a son}} al moment pa ampostà com obietiv përmëttù ed tradussion: $1. Ch'a modìfica le lenghe përmëttùe ant soa configurassion ëd wiki, o ch'a-j gava dal dissionari.",
+	'livetranslate-dictionary-goto-edit' => 'Modìfica le memòrie ëd viragi.',
+	'special-livetranslate' => 'Viragi dal viv',
+	'livetranslate-tmtype-ltf' => 'Formà ëd Live Translate',
+	'livetranslate-tmtype-tmx' => 'Translation Memory eXchange',
+	'livetranslate-tmtype-gcsv' => 'CSV ëd Google',
+	'livetranslate-special-no-tms-yet' => "A-i é pa anco' memòrie ëd viragi.",
+	'livetranslate-special-button' => 'Salva e modìfica',
+	'livetranslate-special-type' => 'Sòrt',
+	'livetranslate-special-location' => 'Locassion',
+	'livetranslate-special-remove' => 'Gava',
+	'livetranslate-special-local' => 'Local',
+	'livetranslate-special-add-tm' => 'Gionta na memòria ëd viragi neuva',
+	'livetranslate-special-current-tms' => 'Memòrie ëd viragi esistente',
+	'livetranslate-special-tms-update' => 'Modìfica memòrie ëd viragi',
+	'livetranslate-special-update' => 'Modìfica memòrie ëd viragi',
+	'livetranslate-importtms-param-miscmatch' => 'Dëscordansa tra total dle locassion e sòrt',
 );
 
 /** Portuguese (Português)
