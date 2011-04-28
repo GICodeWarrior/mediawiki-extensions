@@ -244,6 +244,13 @@ $messages['avk'] = array(
 	'badimages-page' => '{{ns:help}}:Ewaveemaj',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'badimages-name' => 'Ad:',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

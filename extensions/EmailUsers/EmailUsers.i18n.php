@@ -343,6 +343,19 @@ $messages['ru'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Выбрано слишком много получателей ({{PLURAL:$1|максимум — $1|максимум — $1}}).',
 );
 
+/** Swedish (Svenska)
+ * @author Tobulos1
+ */
+$messages['sv'] = array(
+	'emailusers-desc' => 'Tillåter användare att skicka e-post till flera mottagare',
+	'right-sendbatchemail' => 'Skicka e-post till flera mottagare samtidigt',
+	'emailusers' => 'E-post användare',
+	'emailusers-target-reverse' => 'Skicka till alla användare utom för markerade',
+	'emailusers-norecipient' => 'Det finns ingen du kan skicka e-post till.',
+	'emailusers-norecipientselected' => 'Ingen mottagare har valts.',
+	'emailusers-toomanyrecipientsselected' => 'För många mottagare är markerade ({{PLURAL:$1|maximum $1|maximum $1}}).',
+);
+
 /** Swahili (Kiswahili)
  * @author Lloffiwr
  */

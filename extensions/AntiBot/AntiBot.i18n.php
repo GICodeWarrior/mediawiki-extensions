@@ -22,14 +22,6 @@ $messages['qqq'] = array(
 	'antibot-desc' => 'Description of the [[mw:Extension:AntiBot|AntiBot]] MediaWiki extension (to be displayed at [[Special:Version]])',
 );
 
-/** Angika (अंगिका)
- * @author Angpradesh
- */
-$messages['anp'] = array(
-	'antibot-desc' => 'सामान्य फ्रेमवर्क स्पैमबौट जाँचै आरू ट्रीगर पेलोड करै लेली
-Simple framework for spambot checks and trigger payloads',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -42,6 +34,14 @@ $messages['af'] = array(
  */
 $messages['aln'] = array(
 	'antibot-desc' => 'kuadrin e thjeshtë për kontrolle Spambot dhe payloads shkaktojnë',
+);
+
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$messages['anp'] = array(
+	'antibot-desc' => 'सामान्य फ्रेमवर्क स्पैमबौट जाँचै आरू ट्रीगर पेलोड करै लेली
+Simple framework for spambot checks and trigger payloads',
 );
 
 /** Arabic (العربية)
@@ -599,6 +599,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'antibot-desc' => 'స్పాంబోట్లను కనుక్కోడానికి మరియు పేలోడ్లను వదలడానికి సరళమైన ఫ్రేమువర్క్',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'antibot-desc' => 'Infraestrutura simples ba kontrola "spambots"',
 );
 
 /** Thai (ไทย)

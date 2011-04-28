@@ -99,6 +99,14 @@ $messages['ast'] = array(
 	'findspam-notextfound' => "Nun s'atoparon contribuciones",
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'findspam-ip' => 'IP ünvanı:',
+	'findspam-ok' => 'OK',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

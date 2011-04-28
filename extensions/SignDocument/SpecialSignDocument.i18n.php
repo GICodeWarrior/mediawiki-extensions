@@ -3099,13 +3099,14 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
 	'signdocument' => 'डक्यूमेंट वर सही करा',
 	'sign-nodocselected' => 'तुम्ही सही करू इच्छित असलेले डक्यूमेंट निवडा.',
-	'sign-selectdoc' => 'डक्यूमेंट:',
+	'sign-selectdoc' => 'दस्तऐवज:',
 	'sign-docheader' => 'खाली दाखविलेल्या डॉक्यूमेंट "[[$1]]" वर सही करण्यासाठी हा अर्ज वापरा.
 कृपया संपूर्ण डॉक्यूमेंट वाचा, व जर तुम्ही त्यामधील मजकूराशी सहमत असाल, तर कृपया योग्य ते रकाने भरून सही करा.',
 	'sign-error-nosuchdoc' => 'मागितलेले डक्यूमेंट ($1) अस्तित्वात नाही',

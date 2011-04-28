@@ -93,6 +93,8 @@ $messages['arz'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'discussionthreading-replysection' => 'yenidən',
+	'discussionthreading-threadnewsection' => 'yeni',
 	'discussionthreading-threadnewsectionhint' => 'Yeni bir başlıq başla',
 );
 

@@ -185,6 +185,17 @@ $messages['arz'] = array(
 	'amazonplus-less' => 'أقل',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'amazonplus-german' => 'Alman',
+	'amazonplus-french' => 'Fransız',
+	'amazonplus-japanese' => 'Yapon',
+	'amazonplus-new' => 'yeni',
+	'amazonplus-cp-none' => 'Heç biri',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -467,6 +478,7 @@ $messages['eo'] = array(
 	'amazonplus-japanese' => 'Japana',
 	'amazonplus-amazon' => 'prezo de amazon',
 	'amazonplus-new' => 'nova',
+	'amazonplus-none' => 'Neniu ekzemplero de ĉi tiu aĵo estas nune aĉetebla',
 	'amazonplus-cp-none' => 'Nenia',
 	'amazonplus-more' => 'pli',
 	'amazonplus-less' => 'malpli',
@@ -1144,6 +1156,7 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'amazonplus-used' => 'аволь од',
 	'amazonplus-german' => 'немецень',
 	'amazonplus-french' => 'кранцузонь',
 	'amazonplus-japanese' => 'япононь',

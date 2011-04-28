@@ -577,6 +577,13 @@ $messages['ta'] = array(
 	'addmediawizard-desc' => "விக்கிமீடியாவின் அமைப்பும் 'கால்த்தூராவும்' இணைந்து உருவாக்கிய ஊடக-வழிகாட்டியை சேர்த்துக்கொள்ளவும்",
 );
 
+/** Telugu (తెలుగు)
+ * @author Chaduvari
+ */
+$messages['te'] = array(
+	'addmediawizard-loading' => 'మీడియాను చేర్చే విజార్డును లోడు చేస్తున్నాం',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

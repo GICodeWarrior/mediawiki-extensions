@@ -859,6 +859,34 @@ $messages['lb'] = array(
 	'tog-riched_toggle_remember_state' => 'De leschten Ëmschaltzoustand verhalen',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'textrichditor' => 'Formatējuma redaktors',
+	'prefs-fckeditor' => 'Formatējuma redaktors',
+	'tog-riched_disable' => 'Atspējot formatējuma redaktoru',
+	'tog-riched_disable_ns_main' => 'Atspējot formatējuma redaktoru galvenajā vārdtelpā',
+	'tog-riched_disable_ns_talk' => 'Atspējot formatējuma redaktoru "{{ns:talk}}"  vārdtelpā',
+	'tog-riched_disable_ns_user' => 'Atspējot formatējuma redaktoru "{{ns:user}}" vārdtelpā',
+	'tog-riched_disable_ns_user_talk' => 'Atspējot formatējuma redaktoru "{{ns:user_talk}}" vārdtelpā',
+	'tog-riched_disable_ns_project' => 'Atspējot formatējuma redaktoru "{{ns:project}}" vārdtelpā',
+	'tog-riched_disable_ns_project_talk' => 'Atspējot formatējuma redaktoru "{{ns:project_talk}}" vārdtelpā',
+	'tog-riched_disable_ns_image' => 'Atspējot formatējuma redaktoru "{{ns:file}}" vārdtelpā',
+	'tog-riched_disable_ns_image_talk' => 'Atspējot formatējuma redaktoru "{{ns:file_talk}}" vārdtelpā',
+	'tog-riched_disable_ns_mediawiki' => 'Atspējot formatējuma redaktoru "{{ns:mediawiki}}" vārdtelpā',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Atspējot formatējuma redaktoru "{{ns:mediawiki_talk}}" vārdtelpā',
+	'tog-riched_disable_ns_template' => 'Atspējot formatējuma redaktoru "{{ns:template}}" vārdtelpā',
+	'tog-riched_disable_ns_template_talk' => 'Atspējot formatējuma redaktoru "{{ns:template_talk}}" vārdtelpā',
+	'tog-riched_disable_ns_help' => 'Atspējot formatējuma redaktoru "{{ns:help}}" vārdtelpā',
+	'tog-riched_disable_ns_help_talk' => 'Atspējot formatējuma redaktoru "{{ns:help_talk}}" vārdtelpā',
+	'tog-riched_disable_ns_category' => 'Atspējot formatējuma redaktoru "{{ns:category}}" vārdtelpā',
+	'tog-riched_disable_ns_category_talk' => 'Atspējot formatējuma redaktoru "{{ns:category_talk}}" vārdtelpā',
+	'rich_editor_new_window' => 'Atvērt formatējuma redaktoru jaunā logā',
+	'tog-riched_start_disabled' => 'Sākt ar atspējotu formatējuma redaktoru',
+	'tog-riched_use_popup' => 'Atvērt formatējuma redaktoru uzlecošā logā',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -84,6 +84,14 @@ $messages['arz'] = array(
 	'communityvoice-ratings-error-no-title' => 'صفة العنوان مفقودة فى وسم التقييم.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Göndərilir...',
+	'communityvoice-ratings-scale-status-error' => 'Göndərilmə xətası!',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

@@ -142,6 +142,14 @@ $messages['avk'] = array(
 	'countedits-mostactive' => 'Tel lowebesikeem',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'countedits-username' => 'İstifadəçi adı:',
+	'countedits-ok' => 'OK',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

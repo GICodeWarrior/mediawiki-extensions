@@ -194,6 +194,14 @@ $messages['arz'] = array(
 	'right-import_users' => 'استيراد المستخدمين بشكل كمى',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'importusers-form-button' => 'İdxal',
+	'importusers-log-summary' => 'Xülasə',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -1320,6 +1328,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'importusers-uploadfile' => 'Muat naik fail',
+	'importusers-form-button' => 'Import',
 );
 
 /** Maltese (Malti)

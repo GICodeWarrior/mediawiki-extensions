@@ -513,10 +513,24 @@ $wgGoogleMapsMessages['arz'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author PrinceValiant
  */
 $wgGoogleMapsMessages['az'] = array(
+	'gm-balloon-title' => 'Başlıq:',
+	'gm-searching' => 'axtarılır...',
+	'gm-map' => 'Xəritə',
+	'gm-are-you-sure' => 'Əminsinizmi?',
+	'gm-width' => 'Genişlik',
+	'gm-height' => 'Hündürlük',
+	'gm-small' => 'Kiçik',
+	'gm-yes' => 'Bəli',
+	'gm-no' => 'Xeyr',
+	'gm-search' => 'Axtar',
 	'gm-kml-loading' => 'yüklənir…',
+	'gm-earth' => 'Earth',
+	'gm-moon' => 'Ay',
+	'gm-mars' => 'Mars',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)

@@ -1449,6 +1449,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Embanner meta-roadennoù video & Klask Media]',
+	'mvadmin' => 'Kargoù merour evit MetavidWiki',
 	'metavid' => 'Pajenn MetaVid',
 	'mv_missing_stream' => 'Lanv a vank : $1',
 	'specialpages-group-mv_group' => 'Pajennoù dibar MetaVidWiki',
@@ -1626,6 +1627,7 @@ Evit testennoù komzet eo an doare-mañ da zreistvouezhiañ',
 	'mv_sequence_add_search' => 'Ouzhpennañ dre klask',
 	'mv_sequence_add_search_desc' => 'Ouzhpennañ klipoù dre klask mediaoù',
 	'mv_seq_add_end' => 'Ouzhpennañ e dibenn ar sekañs',
+	'mv_sequence_edit_text' => 'Cheñch evit an Aozer testennoù',
 	'mv_sequence_edit_visual_editor' => 'Cheñch davet an Embanner Hewel',
 	'mv_other_options' => 'Dibarzhioù all',
 	'mv_contextmenu_opt' => 'Gweredekaat al lañserioù kendestenn',

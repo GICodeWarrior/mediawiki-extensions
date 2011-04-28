@@ -168,6 +168,15 @@ $messages['avk'] = array(
 	'bookinfo-provider' => 'Origdafusik : $1',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'bookinfo-result-title' => 'Başlıq:',
+	'bookinfo-result-author' => 'Müəllif',
+	'bookinfo-result-year' => 'İl:',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

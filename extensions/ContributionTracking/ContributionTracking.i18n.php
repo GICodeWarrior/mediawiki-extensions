@@ -97,6 +97,13 @@ $messages['arz'] = array(
 	'contrib-tracking-button' => 'استمر',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'contrib-tracking-error' => 'Xəta',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -782,6 +789,13 @@ $messages['ms'] = array(
 	'contrib-tracking-submitting' => 'Borang sedang diserahkan kepada pemproses pembayaran...',
 	'contrib-tracking-continue' => 'Sekiranya anda tidak dialihkan secara automatik, klik di sini untuk menyempurnakan derma anda di PayPal.',
 	'contrib-tracking-button' => 'Terus',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'contrib-tracking-button' => 'Поладомс',
 );
 
 /** Nahuatl (Nāhuatl)

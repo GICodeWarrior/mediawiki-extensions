@@ -1007,6 +1007,25 @@ $messages['ast'] = array(
 	'configure-section-images' => 'Ficheros',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'configure-desc-group' => 'Qrup',
+	'configure-edit-core' => 'MediyaViki',
+	'configure-form-reason' => 'Səbəb:',
+	'configure-js-remove' => 'Sil',
+	'configure-section-email' => 'E-məktub',
+	'configure-section-css-js' => 'CSS və JavaScript',
+	'configure-section-category' => 'Kateqoriyalar',
+	'configure-section-groups' => 'Qruplar',
+	'configure-section-test' => 'Testlər',
+	'configure-section-images' => 'Fayllar',
+	'configure-section-antivirus' => 'Antivirus',
+	'configure-throttle-action-edit' => 'Redaktə',
+	'configure-condition-operator-and' => 'Və',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -7033,19 +7052,45 @@ $messages['lv'] = array(
 	'configure-no-diff' => 'Starp izvēlētajām versijām nav izmaiņu.',
 	'configure-old-changes' => 'izmaiņas',
 	'configure-section-timezone' => 'Laika josla',
+	'configure-section-skin' => 'Apdares',
+	'configure-section-vector' => 'Vector apdare',
+	'configure-section-category' => 'Kategorijas',
+	'configure-section-cache' => 'Kešatmiņa',
+	'configure-section-pcache' => 'Parsētāja kešatmiņa',
+	'configure-section-messagecache' => 'Ziņojumu kešatmiņa',
+	'configure-section-access' => 'Piekļuve',
+	'configure-section-groups' => 'Grupas',
+	'configure-section-cookie' => 'Sīkdatnes',
+	'configure-section-performance' => 'Veiktspēja',
+	'configure-section-test' => 'Testi',
+	'configure-section-upload' => 'Augšupielāde',
+	'configure-section-sharedupload' => 'Koplietojamā augšupielāde',
+	'configure-section-mime' => 'MIME tipi',
+	'configure-section-images' => 'Datnes',
+	'configure-section-antivirus' => 'Antivīruss',
+	'configure-section-parser' => 'Parsētājs',
 	'configure-section-specialpages' => 'Īpašās lapas',
 	'configure-section-recentchanges' => 'Pēdējās izmaiņas',
 	'configure-section-users' => 'Lietotāji',
 	'configure-section-externalauth' => 'Ārējā autentificēšana',
 	'configure-section-feed' => 'Barotne',
 	'configure-section-job' => 'Darbi',
-	'configure-section-extension' => 'Paplašinājumi',
 	'configure-section-search' => 'Meklēt',
 	'configure-section-copyright' => 'Autortiesības',
+	'configure-section-htcp' => 'HTCP multiraide',
 	'configure-section-misc' => 'Dažādi',
 	'configure-section-filter' => 'Filtrēšana',
 	'configure-section-mw-extensions' => 'MediaWiki paplašinājumi',
 	'configure-section-external-tools' => 'Ārējie rīki',
+	'configure-section-filesystem' => 'Datņu sistēmas un čaulas mijiedarbība',
+	'configure-section-thumbnail' => 'Attēla sīktēlu veidošana',
+	'configure-section-output' => 'Izvade',
+	'configure-select-wiki' => 'Viki atlase',
+	'configure-select-wiki-desc' => 'Atlasiet viki, kuru vēlaties konfigurēt.',
+	'configure-select-wiki-view-desc' => 'Atlasiet viki, kurai vēlaties redzēt konfigurācijas versiju.',
+	'configure-select-wiki-view-all' => 'Visas viki',
+	'configure-select-wiki-view-specific' => 'Īpaša viki:',
+	'configure-select-wiki-submit' => 'Izvēlieties',
 	'configure-view' => 'Skatīt',
 	'configure-view-all-versions' => 'Versiju pilnais saraksts',
 	'configure-view-default' => 'Noklusētie iestatījumi',
@@ -7528,6 +7573,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'configure-ext-settings' => 'Tetapan',
 	'configure-section-copyright' => 'Hak cipta',
 );
 

@@ -1151,6 +1151,7 @@ Mangga pariksa éjahanana.',
  * @author Lokal Profil
  * @author Najami
  * @author Per
+ * @author Tobulos1
  */
 $messages['sv'] = array(
 	'ajaxlogin-desc' => 'En dynamisk box som låter användare logga in och komma ihåg lösenord',
@@ -1163,13 +1164,20 @@ Du kan förlora din redigering om du lämnar den här sidan nu.',
 Användarnamn skiljer på versaler och gemener.
 Kontrollera din stavning.',
 	'al-createblocked' => 'Din IP-adress är blockerad från att skapa konton.',
+	'al-throttled' => 'Du har haft för många lösenordsförsök nyligen. Vänta $1 {{PLURAL:$1|sekund|sekunder}} innan du försöker igen.',
 );
 
 /** Tamil (தமிழ்)
+ * @author Karthi.dr
  * @author TRYPPN
  */
 $messages['ta'] = array(
 	'ajaxlogin-create' => 'கணக்கு ஒன்றை உருவாக்கவும்',
+	'al-nosuchuser' => '"$1" என்ற பெயரில் எந்த ஒரு பயனரும் இல்லை.
+பயனர் பெயர்கள் பெரிய மற்றும் சிறிய  ஆங்கில எழுத்துகளால் மாறலாம்.
+உங்களது  உள்ளீட்டைச் சரிபார்க்கவும்.',
+	'al-createblocked' => 'உங்கள்  IPமுகவரியில் இருந்து கணக்கு உருவாக்குவது தடுக்கப்பட்டுள்ளது.',
+	'al-throttled' => 'நீங்கள் அதிகமுறை கடவுச்சொல்லை மாற்ற முயற்சித்துள்ளீர்கள். தயவு செய்து $1 {{PLURAL:$1நொடி| நொடிகள்}} காத்திருந்து மீண்டும் முயற்சிக்கவும்.',
 );
 
 /** Telugu (తెలుగు)

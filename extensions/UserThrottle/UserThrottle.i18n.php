@@ -304,12 +304,13 @@ $messages['mr'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Romaine
  * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'userthrottle-desc' => 'Aanmaken gebruikers beperken',
-	'acct_creation_global_hard_throttle_hit' => "Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele seconden om een overvoed aan registraties te verminderen. Gelieve even te wachten en klik dan op 'herladen' in uw browser om u opnieuw proberen te registreren.",
+	'acct_creation_global_hard_throttle_hit' => "Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele seconden om een overvloed aan registraties te verminderen. Gelieve even te wachten en klik dan op 'herladen' in uw browser om u opnieuw proberen te registreren.",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

@@ -162,11 +162,13 @@ $messages['ast'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author Sortilegus
  */
 $messages['az'] = array(
 	'cb_previous_items_link' => 'Əvvəlki',
 	'cb_next_items_link' => 'Sonrakı',
+	'cb_cat_files' => 'fayllar',
 	'cb_or_op' => 'və ya',
 	'cb_and_op' => 'və',
 );
@@ -1287,6 +1289,19 @@ $messages['ms'] = array(
 	'cb_next_items_link' => 'Berikutnya',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'cb_previous_items_link' => 'Удалов',
+	'cb_next_items_link' => 'Седе тов',
+	'cb_all_op' => 'Весе',
+	'cb_and_op' => 'ды',
+	'cb_edit_left_hint' => 'Керш пелев шаштови, шаштык',
+	'cb_edit_right_hint' => 'Вить пелев шаштови, шаштык',
+	'cb_edit_remove_hint' => 'Нардави, нардык',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Teòtlalili
  */
@@ -1706,6 +1721,45 @@ $messages['shi'] = array(
 	'cb_edit_paste_right_hint' => 'Zdi, iɣ as tufit, ɣ ugmmaḍ d ittfrn',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'categorybrowser' => 'Prehliadač kategórií',
+	'categorybrowser-desc' => 'Poskytuje [[Special:CategoryBrowser|špeciánu stránku]] na filtrovanie najpoužívanejších kategórií a navigáciu medzi nimi pomocou rozhrania AJAX',
+	'cb_requires_javascript' => 'Rozšírenie prehliadač kategórií vyžaduje, aby bol v prehliadači povolený JavaScript.',
+	'cb_ie6_warning' => 'Editor podmienok nefunguje v Internet Explorer 6.0 alebo starších verziách.
+Prehliadanie už definovaných podmienok by však malo pracovať normálne.
+Prosím, aktualizujte svoj prehliadač alebo použite iný, ak je to možné.',
+	'cb_show_no_parents_only' => 'Zobraziť iba kategórie, ktoré nemajú nadradené kategórie',
+	'cb_cat_name_filter' => 'Hľadať kategóriu podľa názvu:',
+	'cb_cat_name_filter_clear' => 'Stlačením tlačidla zrušíte filter názov kategórie',
+	'cb_cat_name_filter_ci' => 'Nerozlišovať veľkosť písmen',
+	'cb_copy_line_hint' => 'Pomocou tlačidiel [+] a [>+] môžete kopírovať a vkladať operátory do vybraného výrazu',
+	'cb_has_subcategories' => '{{PLURAL:$1|podkategória|podkategórie|podkategórií}}:',
+	'cb_has_pages' => '$1 {{PLURAL:$1|stránka|stránky|stránok}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|súbor|súbory|súborov}}',
+	'cb_has_parentcategories' => 'nadradené kategórie (ak existujú)',
+	'cb_previous_items_link' => 'Predošlá',
+	'cb_next_items_link' => 'Ďalšia',
+	'cb_next_items_stats' => ' (od $1)',
+	'cb_cat_subcats' => 'podkategórie',
+	'cb_cat_pages' => 'stránky',
+	'cb_cat_files' => 'súbory',
+	'cb_apply_button' => 'Použiť',
+	'cb_all_op' => 'Všetky',
+	'cb_or_op' => 'alebo',
+	'cb_and_op' => 'a',
+	'cb_edit_left_hint' => 'Posunúť doľava, ak je to možné',
+	'cb_edit_right_hint' => 'Posunúť doprava, ak je to možné',
+	'cb_edit_remove_hint' => 'Odstrániť, ak je to možné',
+	'cb_edit_copy_hint' => 'Kopírovať operátor do schránky',
+	'cb_edit_append_hint' => 'Vložte operátor na poslednú pozíciu',
+	'cb_edit_clear_hint' => 'Vymazať aktuálny výraz (vybrať všetko)',
+	'cb_edit_paste_hint' => 'Vložiť operátor na aktuálnu pozíciu, ak je to možné',
+	'cb_edit_paste_right_hint' => 'Vložiť operátor na aktuálnu ďalšiu, ak je to možné',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
@@ -1750,6 +1804,8 @@ Prosimo, spremenite ali posodobite svoj brskalnik, če je le mogoče.',
  * @author Tobulos1
  */
 $messages['sv'] = array(
+	'cb_cat_name_filter_ci' => 'Okänslig för versaler',
+	'cb_copy_line_hint' => 'Använd [+] och [>+] knapparna för att kopiera och klistra in aktörerna i det valda uttrycket',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|underkategori|underkategorier}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|sida|sidor}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|fil|filer}}',

@@ -184,6 +184,13 @@ $messages['arz'] = array(
 	'ct-update-table' => 'حدّث الجدول',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'ct-and' => 'və',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -1632,6 +1639,13 @@ $messages['mt'] = array(
 	'ct-user-span' => 'Kontribuzzjonijiet tal-utent fix-xefaq temporanju adottat',
 	'ct-and' => 'u',
 	'ct-update-table' => 'Aġġorna t-tabella',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'ct-anon-users' => 'Лемтеме сёрмадыця',
 );
 
 /** Nahuatl (Nāhuatl)

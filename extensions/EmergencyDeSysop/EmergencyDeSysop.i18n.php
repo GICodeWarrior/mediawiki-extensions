@@ -111,6 +111,14 @@ $messages['arz'] = array(
 	'right-emergencydesysop' => 'القدرة على عزل مستخدم آخر، بشكل متبادل',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'emergencydesysop-submit' => 'Yolla',
+	'emergencydesysop-nogroups' => 'Heç biri',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -671,6 +679,13 @@ $messages['mn'] = array(
 	'emergencydesysop-submit' => 'Явуулах',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'emergencydesysop-nogroups' => 'Tiada',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -833,7 +848,7 @@ $messages['pt'] = array(
 	'emergencydesysop-done' => 'Operação completa; foram removidos os privilégios de administardor a si e a [[$1]].',
 	'emergencydesysop-invalidtarget' => 'O utilizador alvo não existe.',
 	'emergencydesysop-blocked' => 'Não pode aceder a esta página enquanto estiver bloqueado',
-	'emergencydesysop-noright' => 'Não possui permissões suficientes para aceder a esta página',
+	'emergencydesysop-noright' => 'Não tem permissões suficientes para aceder a esta página',
 	'right-emergencydesysop' => 'Remover privilégios de administrador a outro utilizador, com efeito mútuo',
 );
 

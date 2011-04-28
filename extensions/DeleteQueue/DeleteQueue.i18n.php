@@ -649,6 +649,17 @@ $messages['ast'] = array(
 	'deletequeue-delnom-otherreason' => 'Otru motivu',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'deletequeue-delnom-otherreason' => 'Digər səbəb',
+	'deletequeue-vote-reason' => 'Şərhlər:',
+	'deletequeue-vote-submit' => 'Yolla',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-case-page' => 'Səhifə:',
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */
@@ -4397,12 +4408,15 @@ $messages['myv'] = array(
 	'deletequeue-review-reason' => 'Арсемат-мельть:',
 	'deletequeue-review-newreason' => 'Од тувталось:',
 	'deletequeue-review-newextra' => 'Поладкс информациясь:',
+	'deletequeue-vote-reason' => 'Арсемат-мельть:',
 	'deletequeue-list-queue' => 'Чиполань пулось:',
+	'deletequeue-list-status' => 'Статусозо:',
 	'deletequeue-list-search' => 'Вешнэмс',
 	'deletequeue-list-header-page' => 'Лопа',
 	'deletequeue-list-header-queue' => 'Чиполань пуло',
 	'deletequeue-list-header-expiry' => 'Таштомома шказо',
 	'deletequeue-list-header-discusspage' => 'Кортнема лопа',
+	'deletequeue-case-reason' => 'Тувталось:',
 );
 
 /** Nahuatl (Nāhuatl)

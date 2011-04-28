@@ -886,6 +886,13 @@ $messages['mk'] = array(
 	'errorhandler-trace-line-internal' => '[внатрешна функција]: $1',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'errorhandler-errors' => 'Манявоматне:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

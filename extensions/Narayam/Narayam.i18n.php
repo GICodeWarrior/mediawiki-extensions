@@ -826,8 +826,10 @@ $messages['sr-ec'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author రహ్మానుద్దీన్
  */
 $messages['te'] = array(
+	'narayam-help-page' => 'సహాయం : టైపింగు',
 	'narayam-hi-inscript' => 'హిందీ ఇన్‌స్క్రిప్ట్',
 	'narayam-kn' => 'కన్నడ లిప్యంతరీకరణ',
 	'narayam-kn-inscript' => 'కన్నడ ఇన్‌స్క్రిప్ట్',

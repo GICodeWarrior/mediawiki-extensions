@@ -182,6 +182,14 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_preview' => 'Entever',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'expand_templates_output' => 'Nəticə',
+	'expand_templates_ok' => 'OK',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

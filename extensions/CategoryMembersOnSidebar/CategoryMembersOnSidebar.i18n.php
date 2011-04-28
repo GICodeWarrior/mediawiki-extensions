@@ -225,6 +225,13 @@ $messages['ru'] = array(
 	'categorymembersonsidebar-desc' => 'Добавляет членов категории на боковую панель',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'categorymembersonsidebar-desc' => 'Pridá členov kategórie do bočného panelu',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */

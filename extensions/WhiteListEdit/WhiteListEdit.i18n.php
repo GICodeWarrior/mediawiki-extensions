@@ -2421,6 +2421,13 @@ $2',
 	'whitelistnummatches' => ' - $1 जुळण्या',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'whitelisttablemodifynone' => 'Tiada',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

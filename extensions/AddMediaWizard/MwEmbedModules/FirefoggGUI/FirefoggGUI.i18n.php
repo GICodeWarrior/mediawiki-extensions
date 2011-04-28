@@ -276,6 +276,16 @@ $messages['arc'] = array(
 	'fogg-hidepreview' => 'ܛܫܝ ܚܝܪܐ ܩܕܡܝܐ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'fogg-title-title' => 'Başlıq',
+	'fogg-date-title' => 'Tarix',
+	'fogg-organization-title' => 'Təşkilat',
+	'fogg-license-title' => 'Lisenziya',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -2780,6 +2790,8 @@ $messages['ksh'] = array(
 	'fogg-license-help' => 'De Lizänz, onger dä dä Ußschnett schteiht — am leevste ham_mer en <i lang="en">URL</i> vun <i lang="en">Creative Commons</i>.',
 	'fogg-contact-title' => 'Kumtak',
 	'fogg-contact-help' => 'Kumtak Lengk',
+	'fogg-missing-webm-support' => 'Bes esu jood un donn ene [$1 zopaß Brauser för <i lang="en">WebM</i>] nämme, öm aanzeloore, wat bei <i lang="en">WebM</i> Viddejos eruß kütt.',
+	'fogg-gui-title' => 'Maach e Viddejo för et Web',
 	'fogg-transcoding' => 'Dä Viddejo weedt jraadt noh em <i lang="en">Ogg</i>-Fommaat ömjewandelt',
 	'fogg-select_file' => 'Dattei ußwähle',
 	'fogg-select_new_file' => 'Neu Dattei ußwähle',

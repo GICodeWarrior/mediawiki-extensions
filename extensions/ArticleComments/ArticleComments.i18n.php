@@ -121,6 +121,18 @@ $messages['arc'] = array(
 	'article-comments-submit-button' => 'ܫܕܪ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'article-comments-name-string' => 'Ad',
+	'article-comments-url-field' => 'Vebsayt:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Şərh',
+	'article-comments-comment-field' => 'Şərh:',
+	'article-comments-submit-button' => 'Yolla',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -1233,6 +1245,13 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'article-comments-title-string' => 'tajuk',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'article-comments-title-string' => 'коняксозо',
 );
 
 /** Dutch (Nederlands)

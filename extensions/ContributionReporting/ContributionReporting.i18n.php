@@ -398,6 +398,17 @@ $messages['arz'] = array(
 	'fundraiserstats-tab-maximums' => 'الحدود القصوى (بالدولار الامريكاني)',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'contrib-hist-name' => 'Ad',
+	'contribstats-day' => 'Gün',
+	'contribstats-month' => 'Ay',
+	'contribstats-week' => 'Həftə',
+	'fundraiserstats-date' => 'Tarix',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  * @author Haqmar
@@ -707,7 +718,7 @@ $messages['br'] = array(
 	'contribstats-nodata' => "N'eo bet roet roadenn ebet",
 	'contribstats-landingpage' => 'Pajenn degouezhout',
 	'contribstats-donatepage' => 'Pajenn ober un donezon',
-	'contribstats-average' => 'Keitad',
+	'contribstats-average' => 'Keidenn',
 	'contribstats-imperfect-data' => "N'eo ket peurvat an titouroù-mañ rak start eo heuliañ ar donezerien hep ober gant an heuliañ an dalc'h.",
 	'contribstats-paypal-donations' => 'Donezonoù PayPal',
 	'contribstats-credit-card' => 'Kartenn-gred',
@@ -1397,6 +1408,7 @@ $messages['eo'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimumoj (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaro ĝis nun (usonaj dolaroj)',
 	'fundraiserstats-instructions' => 'Por vidi statistikojn por iu tago, ŝvebu la kursoron super la tiutaga breto. Ĉiu jaro reprezentas propran koloron en la diagramo.',
+	'fundraiserstats-customize' => 'Adapti',
 	'fundraiserstats-show-years' => 'Montri la jenajn jarojn:',
 	'fundraiserstats-time-zone' => 'Horzono:',
 	'fundraiserstats-utc' => '(de UTC)',
@@ -3589,7 +3601,9 @@ $messages['ms'] = array(
  */
 $messages['myv'] = array(
 	'contrib-hist-name' => 'Лемезэ',
+	'contrib-hist-date' => 'Шка ды чи-ков',
 	'contrib-hist-amount' => 'Зяро',
+	'contrib-hist-anonymous' => 'Лемтеме',
 	'contribstats-day' => 'Чи',
 	'contribstats-month' => 'Ков',
 	'contribstats-currency' => 'Валюта',
@@ -3598,6 +3612,7 @@ $messages['myv'] = array(
 	'contribstats-week' => 'Тарго',
 	'contribstats-template' => 'Лопа парцун',
 	'fundraiserstats-date' => 'Ковчизэ',
+	'fundraiserstats-total' => 'Весемезэ (USD)-со',
 );
 
 /** Nahuatl (Nāhuatl)

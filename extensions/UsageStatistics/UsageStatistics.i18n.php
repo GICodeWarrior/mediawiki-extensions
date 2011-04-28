@@ -1969,6 +1969,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'specialuserstats' => 'Statistici de utilizare',
@@ -1976,8 +1977,8 @@ $messages['ro'] = array(
 	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticsnamespace' => 'Spațiu de nume:',
 	'usagestatisticstype' => 'Tip',
-	'usagestatisticsstart' => 'Dată început',
-	'usagestatisticsend' => 'Dată sfârșit',
+	'usagestatisticsstart' => 'Data de începere:',
+	'usagestatisticsend' => 'Data de încheiere:',
 	'usagestatisticssubmit' => 'Generează statistici',
 	'usagestatisticsintervalday' => 'Zi',
 	'usagestatisticsintervalweek' => 'Săptămână',

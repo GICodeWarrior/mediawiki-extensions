@@ -141,6 +141,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-pitch-or' => '{{Identical|Or}}',
 	'articlefeedback-pitch-join-body' => 'Based on {{msg-mw|Articlefeedback-pitch-join-message}}.',
 	'articlefeedback-pitch-join-login' => '{{Identical|Log in}}',
+	'articleFeedback-table-heading-page' => '{{Identical|Page}}',
+	'articleFeedback-table-heading-average' => '{{Identical|Average}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -219,6 +221,13 @@ $messages['arc'] = array(
 	'articlefeedback-survey-answer-whyrated-other' => 'ܐܚܪܢܐ',
 	'articlefeedback-survey-question-useful-iffalse' => 'ܠܡܢܐ?',
 	'articlefeedback-survey-submit' => 'ܫܕܪ',
+);
+
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'articleFeedback-table-heading-page' => 'Səhifə',
 );
 
 /** Bashkir (Башҡортса)
@@ -349,6 +358,33 @@ $messages['be-tarask'] = array(
 	'articlefeedback-survey-message-success' => 'Дзякуй за адказы на гэтае апытаньне.',
 	'articlefeedback-survey-message-error' => 'Узьнікла памылка.
 Калі ласка, паспрабуйце потым.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Сёньняшнія ўзьлёты і падзеньні',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Найбольш зьмененыя на гэтым тыдні',
+	'articleFeedback-table-caption-recentlows' => 'Апошнія падзеньні',
+	'articleFeedback-table-heading-page' => 'Старонка',
+	'articleFeedback-table-heading-average' => 'Сярэдняе',
+	'articlefeedback-emailcapture-response-body' => 'Вітаем!
+
+Дзякуй, за дапамогу ў паляпшэньні {{GRAMMAR:родны|{{SITENAME}}}}.
+
+Калі ласка, знайдзіце час каб пацьвердзіць Ваш адрас электроннай пошты. Перайдзіце па спасылцы пададзенай ніжэй: 
+
+$1
+
+Таксама, Вы можаце наведаць:
+
+$2
+
+І увесьці наступны код пацьверджаньня:
+
+$3
+
+Хутка мы перададзім Вам інфармацыю, як Вы можаце дапамагчы ў паляпшэньні {{GRAMMAR:родны|{{SITENAME}}}}.
+
+Калі Вы не дасылалі гэты запыт, калі ласка, праігнаруйце гэты ліст, і мы больш не будзем Вас турбаваць.
+
+З найлепшымі пажаданьнямі, і дзякуй Вам,
+Каманда {{GRAMMAR:родны|{{SITENAME}}}}',
 );
 
 /** Bulgarian (Български)
@@ -505,6 +541,11 @@ $messages['br'] = array(
 	'articlefeedback-survey-message-success' => 'Trugarez da vezañ leuniet ar goulennaoueg.',
 	'articlefeedback-survey-message-error' => "Ur fazi zo bet.
 Klaskit en-dro diwezhatoc'h.",
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Lusk ha dilusk an devezh',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Ar re gemmet ar muiañ er sizhun-mañ',
+	'articleFeedback-table-caption-recentlows' => 'Dilusk nevesañ',
+	'articleFeedback-table-heading-page' => 'Pajenn',
+	'articleFeedback-table-heading-average' => 'Keidenn',
 );
 
 /** Bosnian (Bosanski)
@@ -768,25 +809,25 @@ Bitte später erneut versuchen.',
 	'articleFeedback-table-heading-average' => 'Durchschnitt',
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
 
-Vielen Dank für deine Interesse an der Verbesserung von {{SITENAME}}.
+Vielen Dank für dein Interesse an der Verbesserung von {{SITENAME}}.
 
-Bitte nimm dir einen Moment Zeit, deine E-Mail zu bestätigen, indem du auf diesen Link klickst:
+Bitte nimm dir einen Moment Zeit, deine E-Mail-Adresse zu bestätigen, indem du auf den folgenden Link klickst:
 
 $1
 
-Du kannst auch besuchen:
+Du kannst auch die folgende Seite besuchen:
 
 $2
 
-Und gib den folgenden Bestätigungscode ein:
+Gib dort den nachfolgenden Bestätigungscode ein:
 
 $3
 
-Wir melden uns in Kürze, wie du dazu beitragen kannst, {{SITENAME}} zu verbessern.
+Wir melden uns in Kürze dazu, wie du helfen kannst, {{SITENAME}} zu verbessern.
 
-Falls du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail und wir senden dir nichts mehr.
+Sofern du diese Anfrage nicht ausgelöst hast, ignoriere einfach diese E-Mail. Wir werden dir dann nichts mehr zusenden.
 
-Viele Grüße, und Danke,
+Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
 );
 
@@ -1040,6 +1081,7 @@ $messages['et'] = array(
 	'articlefeedback-survey-submit' => 'Saada',
 	'articlefeedback-survey-title' => 'Palun vasta mõnele küsimusele.',
 	'articlefeedback-survey-thanks' => 'Aitäh küsitlusele vastamast!',
+	'articlefeedback-pitch-or' => 'või',
 );
 
 /** Basque (Euskara)
@@ -1181,6 +1223,29 @@ Veuillez ré-essayer plus tard.',
 	'articleFeedback-table-caption-recentlows' => 'Dernières bas',
 	'articleFeedback-table-heading-page' => 'Page',
 	'articleFeedback-table-heading-average' => 'Moyenne',
+	'articlefeedback-emailcapture-response-body' => "Bonjour !
+
+Merci de votre à aider à améliorer {{SITENAME}}.
+
+Veuillez prendre un moment pour confirmer votre courriel en cliquant sur le lien ci-dessous :
+
+$1
+
+Vous pouvez aussi visiter :
+
+$2
+
+Et entrer le code ce confirmation suivant :
+
+$3
+
+Nous serons en contact prochainement pour connaître la façon dont vous pouvez aider à améliorer {{SITENAME}}.
+
+Si vous n'avez pas initié cette demande, veuillez ignorer ce courriel et nous ne vous enverrons rien d’autre chose.
+
+Meilleurs vœux, et merci,
+
+L’équipe de {{SITENAME}}",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1637,6 +1702,33 @@ $messages['ia'] = array(
 	'articlefeedback-survey-message-success' => 'Gratias pro haber respondite al inquesta.',
 	'articlefeedback-survey-message-error' => 'Un error ha occurrite.
 Per favor reproba plus tarde.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Altos e bassos de hodie',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Le plus modificate iste septimana',
+	'articleFeedback-table-caption-recentlows' => 'Bassos recente',
+	'articleFeedback-table-heading-page' => 'Pagina',
+	'articleFeedback-table-heading-average' => 'Medie',
+	'articlefeedback-emailcapture-response-body' => 'Salute!
+
+Gratias pro tu interesse in adjutar a meliorar {{SITENAME}}.
+
+Per favor prende un momento pro confirmar tu adresse de e-mail. Clicca super le ligamine sequente:
+
+$1
+
+Alternativemente, visita:
+
+$2
+
+...e entra le sequente codice de confirmation:
+
+$3
+
+Nos va tosto contactar te pro explicar como tu pote adjutar a meliorar {{SITENAME}}.
+
+Si tu non ha initiate iste requesta, per favor ignora iste e-mail e nos non te inviara altere cosa.
+
+Optime salutes, e multe gratias,
+Le equipa de {{SITENAME}}',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2014,6 +2106,9 @@ $1',
 	'articlefeedback-survey-message-success' => 'Merci för et Ußfölle!',
 	'articlefeedback-survey-message-error' => 'Ene Fähler es dozwesche jukumme.
 Versöhg et shpääder norr_enß.',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Diß Woch et miehtß jeändert',
+	'articleFeedback-table-heading-page' => 'Sigg',
+	'articleFeedback-table-heading-average' => 'Dorschnett',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
@@ -2242,6 +2337,28 @@ $messages['mk'] = array(
 	'articleFeedback-table-caption-recentlows' => 'Скорешни падови',
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Просечно',
+	'articlefeedback-emailcapture-response-body' => 'Здраво!
+
+Ви благодариме што изразивте интерес да помогнете во развојот на {{SITENAME}}.
+
+Потврдете ја вашата е-пошта на следнава врска: 
+
+$1
+
+Можете да ја посетите и страницата:
+
+$2
+
+Внесете го следниов потврден кон:
+
+$3
+
+Набргу ќе ви пишеме како можете да помогнете во подобрувањето на {{SITENAME}}.
+
+Ако го немате побарано ова, занемарате ја поракава, и ние повеќе нема да ви испратиме ништо.
+
+Ви благодариме и сè најдобро,
+Екипата на {{SITENAME}}',
 );
 
 /** Malayalam (മലയാളം)
@@ -2250,6 +2367,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'articlefeedback' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയം',
 	'articlefeedback-desc' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയം (പ്രാരംഭ പതിപ്പ്)',
+	'articlefeedback-survey-question-origin' => 'താങ്കൾ ഈ സർവേ ഉപയോഗിക്കാൻ തുടങ്ങിയപ്പോൾ ഏത് താളിലായിരുന്നു?',
 	'articlefeedback-survey-question-whyrated' => 'ഈ താളിന് താങ്കൾ ഇന്ന് നിലവാരമിട്ടതെന്തുകൊണ്ടാണെന്ന് ദയവായി പറയാമോ (ബാധകമാകുന്ന എല്ലാം തിരഞ്ഞെടുക്കുക):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'താളിന്റെ ആകെ നിലവാരം നിർണ്ണയിക്കാൻ ഞാനാഗ്രഹിക്കുന്നു',
 	'articlefeedback-survey-answer-whyrated-development' => 'ഞാനിട്ട നിലവാരം താളിന്റെ വികസനത്തിൽ ക്രിയാത്മകമായ ഫലങ്ങൾ സൃഷ്ടിക്കുമെന്ന് കരുതുന്നു',
@@ -2310,8 +2428,31 @@ $messages['ml'] = array(
 ദയവായി വീണ്ടും ശ്രമിക്കുക.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'ഇന്നത്തെ കയറ്റിറക്കങ്ങൾ',
 	'articleFeedback-table-caption-weeklymostchanged' => 'ഈ ആഴ്ചയിൽ ഏറ്റവുമധികം മാറിയത്',
+	'articleFeedback-table-caption-recentlows' => 'സമീപകാല ഇറക്കങ്ങൾ',
 	'articleFeedback-table-heading-page' => 'താൾ',
 	'articleFeedback-table-heading-average' => 'ശരാശരി',
+	'articlefeedback-emailcapture-response-body' => 'നമസ്കാരം!
+
+{{SITENAME}} മെച്ചപ്പെടുത്താനുള്ള സഹായം ചെയ്യാൻ സന്നദ്ധത പ്രകടിപ്പിച്ചതിന് ആത്മാർത്ഥമായ നന്ദി.
+
+താഴെ നൽകിയിരിക്കുന്ന കണ്ണിയിൽ ഞെക്കി താങ്കളുടെ ഇമെയിൽ ദയവായി സ്ഥിരീകരിക്കുക: 
+
+$1
+
+താങ്കൾക്ക് ഇതും സന്ദർശിക്കാവുന്നതാണ്:
+
+$2
+
+എന്നിട്ട് താഴെ കൊടുത്തിരിക്കുന്ന സ്ഥിരീകരണ കോഡ് നൽകുക:
+
+$3
+
+{{SITENAME}} സംരംഭം മെച്ചപ്പെടുത്താൻ താങ്കൾക്ക് എങ്ങനെ സഹായിക്കാനാകും എന്ന് തീരുമാനിക്കാൻ ഞങ്ങൾ താങ്കളുമായി ഉടനെ ബന്ധപ്പെടുന്നതായിരിക്കും.
+
+താങ്കളുടെ ഇച്ഛ പ്രകാരം അല്ല ഈ അഭ്യർത്ഥനയെങ്കിൽ, ഈ ഇമെയിൽ അവഗണിക്കുക, ഞങ്ങൾ താങ്കൾക്ക് പിന്നീടൊന്നും അയച്ച് ബുദ്ധിമുട്ടിയ്ക്കില്ല.
+
+ആശംസകൾ, നന്ദി,
+{{SITENAME}} സ്നേഹിതർ',
 );
 
 /** Mongolian (Монгол)
@@ -2328,16 +2469,22 @@ $messages['mn'] = array(
 $messages['ms'] = array(
 	'articlefeedback' => 'Pentaksiran rencana',
 	'articlefeedback-desc' => 'Pentaksiran rencana (versi percubaan)',
-	'articlefeedback-survey-answer-whyrated-other' => 'Лия',
+	'articlefeedback-survey-answer-whyrated-other' => 'Lain',
 	'articlefeedback-survey-question-useful-iffalse' => 'Мезекс?',
 	'articlefeedback-survey-submit' => 'Serahkan',
 );
 
-/** Erzya (Эрзянь) */
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
 $messages['myv'] = array(
 	'articlefeedback-survey-answer-whyrated-other' => 'Лия',
 	'articlefeedback-survey-question-useful-iffalse' => 'Мезекс?',
 	'articlefeedback-survey-submit' => 'Максомс',
+	'articlefeedback-field-wellwritten-label' => 'Парсте сёрмадозь',
+	'articlefeedback-pitch-or' => 'эли',
+	'articlefeedback-pitch-edit-accept' => 'Витнемс-петнемс те лопанть',
+	'articleFeedback-table-heading-page' => 'Лопазо',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -2444,6 +2591,31 @@ Probeer het later opnieuw.',
 	'articleFeedback-table-caption-recentlows' => 'Recente dieptepunten',
 	'articleFeedback-table-heading-page' => 'Pagina',
 	'articleFeedback-table-heading-average' => 'Gemiddelde',
+	'articlefeedback-emailcapture-response-body' => 'Hallo!
+
+Dank u wel voor uw interesse in het verbeteren van {{SITENAME}}.
+
+Bevestig alstublieft uw e-mailadres door op de volgende verwijziging te klikken:
+
+$1
+
+U kunt ook gaan naar:
+
+$2
+
+En daar de volgende bevestigingscode invoeren:
+
+$3
+
+We nemen binnenkort contact met u op over hoe u kunt helpen {{SITENAME}} te verbeteren.
+
+Als u niet hebt gevraagd om dit bericht, negeer deze e-mail dan en dan krijgt u geen e-mail meer van ons.
+
+Dank u!
+
+Met vriendelijke groet,
+
+Het team van {{SITENAME}}',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2595,6 +2767,11 @@ $messages['pl'] = array(
 	'articlefeedback-survey-message-success' => 'Dziękujemy za wypełnienie ankiety.',
 	'articlefeedback-survey-message-error' => 'Wystąpił błąd.
 Proszę spróbować ponownie później.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Najwyższe i najniższe w dniu dzisiejszym',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Najczęściej zmieniane w tym tygodniu',
+	'articleFeedback-table-caption-recentlows' => 'Najniższe ostatnio',
+	'articleFeedback-table-heading-page' => 'Strona',
+	'articleFeedback-table-heading-average' => 'Średnio',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2668,6 +2845,28 @@ Për piasì preuva torna pi tard.",
 	'articleFeedback-table-caption-recentlows' => 'Bass recent',
 	'articleFeedback-table-heading-page' => 'Pàgina',
 	'articleFeedback-table-heading-average' => 'Media',
+	'articlefeedback-emailcapture-response-body' => "Cerea!
+
+Mersì për avèj signalà anteressi a giuté a mejoré {{SITENAME}}.
+
+Për piasì treuva un moment për confirmé tò corel an sgnacand an sël colegament sota:
+
+$1
+
+It peule ëdcò visité:
+
+$2
+
+E anserì ël còdes ëd confirma sì sota:
+
+$3
+
+I saroma an contat për un pòch su com it peule giuté a mejoré {{SITENAME}}.
+
+S'it l'has pa ancaminà ti sta arcesta, për piasì ignora sto corel e noi it manderoma pi gnente d'àutr.
+
+Tante bele ròbe, e mersì,
+L'echip ëd {{SITENAME}}",
 );
 
 /** Pashto (پښتو)
@@ -2994,6 +3193,28 @@ $messages['ru'] = array(
 	'articleFeedback-table-caption-recentlows' => 'Недавние падения',
 	'articleFeedback-table-heading-page' => 'Страница',
 	'articleFeedback-table-heading-average' => 'Среднее',
+	'articlefeedback-emailcapture-response-body' => 'Здравствуйте!
+
+Спасибо за интерес к улучшению проекта {{SITENAME}}.
+
+Пожалуйста, потратьте несколько секунд, чтобы подтвердить адрес электронной почты, нажав на ссылку ниже:
+
+$1
+
+Вы можете также посетить:
+
+$2
+
+И ввести следующий код подтверждения:
+
+$3
+
+Вскоре мы сообщим вам, как можно помочь в улучшении проекта {{SITENAME}}.
+
+Если вы не отправляли подобного запроса, пожалуйста, проигнорируйте это сообщение, и мы больше не будем вас тревожить.
+
+С наилучшими пожеланиями и благодарностью
+Команда проекта {{SITENAME}}',
 );
 
 /** Rusyn (Русиньскый)
@@ -3238,6 +3459,28 @@ Prosimo, poskusite znova pozneje.',
 	'articleFeedback-table-caption-recentlows' => 'Nedavni padci',
 	'articleFeedback-table-heading-page' => 'Stran',
 	'articleFeedback-table-heading-average' => 'Povprečje',
+	'articlefeedback-emailcapture-response-body' => 'Pozdravljeni!
+
+Zahvaljujemo se vam za izkazano zanimanje za pomoč pri izboljševanju {{GRAMMAR:rodilnik|{{SITENAME}}}}.
+
+Prosimo, vzemite si trenutek in potrdite vaš e-poštni naslov s klikom na spodnjo povezavo:
+
+$1
+
+Obiščete lahko tudi:
+
+$2
+
+in vnesete spodnjo potrditveno kodo:
+
+$3
+
+Kmalu vam bomo sporočili, kako lahko pomagate izboljšati {{GRAMMAR:tožilnik|{{SITENAME}}}}.
+
+Če tega niste zahtevali, prosimo, prezrite to e-pošto in ničesar več vam ne bomo poslali.
+
+Hvala in najlepše želje,
+ekipa {{GRAMMAR:rodilnik|{{SITENAME}}}}',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
@@ -3309,6 +3552,8 @@ $messages['sv'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Integritetspolicy',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Integritetspolicy',
 	'articlefeedback-form-panel-submit' => 'Skicka in feedback',
+	'articlefeedback-form-panel-success' => 'Sparat',
+	'articlefeedback-form-panel-expiry-message' => 'Vänligen omvärdera denna sida och skicka nya omdömen.',
 	'articlefeedback-report-switch-label' => 'Visa resultat',
 	'articlefeedback-report-panel-title' => 'Resultat av feedback',
 	'articlefeedback-report-panel-description' => 'Nuvarande genomsnittliga betyg.',
@@ -3324,8 +3569,11 @@ $messages['sv'] = array(
 	'articlefeedback-field-wellwritten-tip' => 'Tycker du att den här sidan är väl organiserad och välskriven?',
 	'articlefeedback-pitch-reject' => 'Kanske senare',
 	'articlefeedback-pitch-or' => 'eller',
+	'articlefeedback-pitch-thanks' => 'Tack! Ditt betyg har sparats.',
+	'articlefeedback-pitch-survey-message' => 'Vänligen ta en stund att fylla i en kort enkät.',
 	'articlefeedback-pitch-survey-accept' => 'Starta undersökning',
 	'articlefeedback-pitch-join-message' => 'Ville du skapa ett konto?',
+	'articlefeedback-pitch-join-body' => 'Ett konto kommer att hjälpa dig att spåra ändringar, engagera dig i diskussioner, och vara en del av samhället.',
 	'articlefeedback-pitch-join-accept' => 'Skapa ett konto',
 	'articlefeedback-pitch-join-login' => 'Logga in',
 	'articlefeedback-pitch-edit-message' => 'Visste du att du kan redigera denna sida?',
@@ -3333,6 +3581,9 @@ $messages['sv'] = array(
 	'articlefeedback-survey-message-success' => 'Tack för att du fyllde i undersökningen.',
 	'articlefeedback-survey-message-error' => 'Ett fel har uppstått. 
 Försök igen senare.',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Veckans mest ändrade',
+	'articleFeedback-table-heading-page' => 'Sida',
+	'articleFeedback-table-heading-average' => 'Genomsnittlig',
 );
 
 /** Tamil (தமிழ்)
@@ -3458,6 +3709,33 @@ $messages['tl'] = array(
 	'articlefeedback-survey-message-success' => 'Salamat sa pagpuno ng tugon.',
 	'articlefeedback-survey-message-error' => 'Naganap ang isang kamalian.
 Paki subukan uli mamaya.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Mga matataas at mga mabababa sa araw na ito',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Pinaka nabago sa linggong ito',
+	'articleFeedback-table-caption-recentlows' => 'Kamakailang mga mabababa',
+	'articleFeedback-table-heading-page' => 'Pahina',
+	'articleFeedback-table-heading-average' => 'Karaniwan',
+	'articlefeedback-emailcapture-response-body' => 'Kumusta!
+
+Salamat sa pagpapahayag mo ng pagnanais na makatulong sa pagpapainam ng {{SITENAME}}.
+
+Mangyaring kumuha ng isang sandli upang tiyakin ang iyong e-liham sa pamamagitan ng pagpindot sa kawing na nasa ibaba: 
+
+$1
+
+Maaari mo ring dalawin ang:
+
+$2
+
+At ipasok ang sumusunod na kodigo ng pagtitiyak:
+
+$3
+
+Makikipag-ugnayan kami sa loob ng ilang mga sandali sa kung paano ka makakatulong sa pagpapainam ng {{SITENAME}}.
+
+Kung hindi ikaw ang nagpasimula ng kahilingang ito, mangyaring huwag pansinin ang e-liham na ito at hindi na kami magpapadala ng iba pa.
+
+Pinakamainam na mga mithiin para sa iyo at nagpapasalamat,
+Ang pangkat ng {{SITENAME}}',
 );
 
 /** Turkish (Türkçe)
@@ -3594,6 +3872,33 @@ $messages['vi'] = array(
 	'articlefeedback-survey-message-success' => 'Cám ơn bạn đã điền khảo sát.',
 	'articlefeedback-survey-message-error' => 'Đã gặp lỗi.
 Xin hãy thử lại sau.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Các điểm cao và thấp nhất hôm nay',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Các điểm thay đổi nhiều nhất vào tuần này',
+	'articleFeedback-table-caption-recentlows' => 'Các điểm thấp gần đây',
+	'articleFeedback-table-heading-page' => 'Trang',
+	'articleFeedback-table-heading-average' => 'Trung bình',
+	'articlefeedback-emailcapture-response-body' => 'Xin chào!
+
+Cám ơn bạn đã bày tỏ quan tâm về việc giúp cải tiến {{SITENAME}}.
+
+Xin vui lòng dành một chút thời gian để xác nhận địa chỉ thư điện tử của bạn dùng liên kết dưới đây:
+
+$1
+
+Bạn cũng có thể ghé vào:
+
+$2
+
+và nhập mã xác nhận sau:
+
+$3
+
+Chúng tôi sẽ sớm liên lạc với bạn với thông tin về giúp cải tiến {{SITENAME}}.
+
+Nếu bạn không phải là người yêu cầu thông tin này, xin vui lòng kệ thông điệp này và chúng tôi sẽ không gửi cho bạn bất cứ gì nữa.
+
+Thân mến và cám ơn,
+Nhóm {{SITENAME}}',
 );
 
 /** Yoruba (Yorùbá)

@@ -959,6 +959,15 @@ $messages['mr'] = array(
 	'player-goto-file' => 'संचिका',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'player-title' => 'Pemain',
+	'player-playertitle' => 'Pemain: $1',
+	'player-goto-player' => 'pemain',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
