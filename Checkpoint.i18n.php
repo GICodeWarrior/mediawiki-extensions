@@ -433,6 +433,16 @@ $messages['ru'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|сохранение контрольной точки]])',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'checkpoint' => 'Uložiť a pokračovať v úpravách',
+	'checkpoint-desc' => 'Umožňuje uložiť úpravy a pokračovať v úpravách',
+	'checkpoint-tooltip' => 'Uložiť aktuálny stav a pokračovať v úpravách stránky',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Uloženie kontrolného bodu]])',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Charmed94
  * @author Жељко Тодоровић
