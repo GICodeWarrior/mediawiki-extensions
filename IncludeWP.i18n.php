@@ -306,6 +306,24 @@ $messages['nl'] = array(
 	'includewp-include-par-height' => 'De maximale hooghte (in pixels) voor de "div" waarin de inhoud wordt gelaten. Stel dit in op 0 voor geen limiet.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'includewp-desc' => "IncudeWP a l'é n'estension lingera për anclude contnù ëd Wikipedia",
+	'includewp-loading-page' => 'Carié pagina...',
+	'includewp-show-full-page' => 'Mosta pagina antera',
+	'includewp-show-fragment' => 'Mosta mach ël prim paràgraf',
+	'includewp-loading-failed' => 'Falì a carié la pagina.',
+	'includewp-licence-notice' => 'Ël contnù sota a riva da la pagina $1 <a href="$2">$3</a> licensià sota la <a href="$4">$5</a>.
+A-i é na <a href="$6">lista completa dj\'autor</a> disponibla.',
+	'includewp-parserhook-desc' => "Gancio dël parser ch'a përmëtt ëd visualisé contnù ëd na pagina ëd Wikipedia.",
+	'includewp-include-par-page' => "Ël nòm ëd la pagina (lontan-a) ch'it veule visualisé.",
+	'includewp-include-par-wiki' => 'Ël nòm ëd la wiki da andoa it veule pijé contnù. A deuv esse un-a dle wiki pëmëttùe, për defualt mach Wikipedia.',
+	'includewp-include-par-paragraphs' => "Ël nùmer ëd paràgraf ch'it veule mosté inissialment.",
+	'includewp-include-par-height' => "L'autëssa màssima an pixel dël div HTML anté ël contnù a l'é carià. Ampòstlo a 0 për gnun lìmit.",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
