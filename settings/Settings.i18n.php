@@ -2614,6 +2614,15 @@ $messages['arz'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'منفذ لملف UDP',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'configure-setting-wgExtraLanguageNames-value' => 'Ad',
+	'configure-setting-wgSpecialPageGroups-key' => 'Qrup',
+	'configure-setting-wgDebugLogGroups-value' => 'Fayl',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -11898,8 +11907,8 @@ $messages['ksh'] = array(
 	'configure-setting-wgDBAvgStatusPoll' => 'De dorschnettlesche Dooer zwesche <code lang="en">SHOW STATUS</code> Aanfroore aan der Daatebangk_ßööver unger Övverlaß',
 	'configure-setting-wgDBerrorLog' => 'Dä Datei ier Name för de Fähler vun de Datebangk dren met_ze_schriive',
 	'configure-setting-wgDBname' => 'Dä Name vun de Datebangk',
-	'configure-setting-wgDBpassword' => 'Dat Passwoot för dä Zohjang zor Datebangk övver dä Name <i lang="en">$wgDBuser</i>',
-	'configure-setting-wgDBadminpassword' => 'Dat Paßwoot för dä <code lang="en">$wgDBadminuser</code>',
+	'configure-setting-wgDBpassword' => 'Dat Paßwoot för dä Zohjang zor Datebangk övver dä Name <code lang="en">$wgDBuser</code>',
+	'configure-setting-wgDBadminpassword' => 'Dat Paßwoot för dä Zohjang zor Datebangk övver dä Name <code lang="en">$wgDBadminuser</code>',
 	'configure-setting-wgDBport' => 'Däm Datebangk-ẞööver singe Poot',
 	'configure-setting-wgDBserver' => 'Däm ẞööver för de Datebangk singe <i lang="en">host name</i> udder sing <i lang="en">IP</i>-Addräß',
 	'configure-setting-wgDBtype' => 'De Zoot Datebangk',
@@ -11913,7 +11922,9 @@ $messages['ksh'] = array(
 	'configure-setting-wgAllowImageMoving' => 'Et Datei-Ömbenenne zohlohße',
 	'configure-setting-wgCustomConvertCommand' => 'En ander Projramm för de Beldscher jruuß un klein ze rääschne',
 	'configure-setting-wgGenerateThumbnailOnParse' => 'Klein Breefmarkebelldscher en Opdrac jevve, wann en Sigg, woh se drenn sin, en der Paaser kütt',
+	'configure-setting-wgShowArchiveThumbnails' => 'Donn Minibeldsche för älder Belder en dä Sigge övver de Belder aanzeije',
 	'configure-setting-wgIgnoreImageErrors' => 'Kein Fählermeldunge för Bellder aanzeije',
+	'configure-setting-wgIllegalFileChars' => 'Nit zohjelohße Zeijshe en de Naame vun Datteije',
 	'configure-setting-wgImageLimits' => 'De Jrenze för der Ömfang vun de Belder op dä Sigge övver de Bellder',
 	'configure-setting-wgMaxAnimatedGifArea' => 'De jrüüzte müjjelesche Fläsh för annimeete <code lang="en">GIF</code>-Belldscher',
 	'configure-setting-wgMaxImageArea' => 'De jrüüzte müjjelesche Fläsh (en Pixelle) för Belldscher',
@@ -11998,6 +12009,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgAllowCopyUploads' => 'Dateie vun <i lang="en">URLs</i> huhzelaade zohlohße',
 	'configure-setting-wgCheckFileExtensions' => 'De Datei_Namens_Endunge övverprööfe',
 	'configure-setting-wgEnableUploads' => 'Dateie Huhlaade zohlohße',
+	'configure-setting-wgUploadMaintenance' => 'Donn et Fottschmiiße un Widderholle vun Dateije för en Zick afschallde',
 	'configure-setting-wgFileBlacklist' => 'De verbodde Datei_Namens_Endunge',
 	'configure-setting-wgFileExtensions' => 'De förjetrocke Engkde för Dateije ier Name',
 	'configure-setting-wgFileStore' => 'Woh de fottjeschmeßße Dateie hen jedonn wäde sulle',
@@ -12057,6 +12069,8 @@ $messages['ksh'] = array(
 	'configure-setting-wgPasswordReminderResendTime' => 'De Zick, en Shtunde, di winnischßdens zwesche zweij <i lang="en">e-mails</i> wäje em Passwoot lijje moß',
 	'configure-setting-wgSMTP' => 'Dä <i lang="en">smtp</i>-ẞööver',
 	'configure-setting-wgUserEmailUseReplyTo' => 'Donn <code>Reply-To:</code> nämme, un nit <code>From:</code>',
+	'configure-setting-wgUserEmailConfirmationTokenExpiry' => 'De Zick en Sekunde bes ene Kood för de Beschtäätejong en de verscheck <i lang="en">e-mails</i> afflöuf',
+	'configure-setting-wgAPIRequestLog' => 'De Dattei för et Logbooch met de Aanfroore em <i lang="en">API</i>',
 	'configure-setting-wgDebugComments' => 'Donn Aandeijle vun de Lögbööscher als <i lang="en">HTML</i>-Kommentaa en de Sigge ongerbränge',
 	'configure-setting-wgDebugDumpSql' => 'Donn <i lang="en">SQL</i>-Froore met ußjävve beim Fähler-Söke',
 	'configure-setting-wgDebugLogFile' => 'De Log-Datei för et Fähler-Söke',
@@ -12066,6 +12080,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgDebugRawPage' => 'Oproofe vun <i lang="en">CSS</i>-Dateije un JavaSkrepp-Dateije nit en et Logbooch schriive',
 	'configure-setting-wgDebugLogPrefix' => 'Vörsatz för de Reije em Logbooch vum Fähler söke',
 	'configure-setting-wgDebugRedirects' => 'Ömleidunge aanzeije un nit ömleijde',
+	'configure-setting-wgDebugPrintHttpHeaders' => 'Donn dem <i lang="en">HTTP</i> sing Koppreihe för jeede Aanfrooch en de Enfammazjuhne för et Fähler söhke',
 	'configure-setting-wgDevelopmentWarnings' => 'Loß et PHP ennfommatiive Mäldunge ußjävve för et ein udder ander woh ene Fähler müjjelesch sin künnt, un för ovverhollte Funxjohne',
 	'configure-setting-wgShowExceptionDetails' => 'Donn däm janze Schtapelschpeischer singe Enhallt ußjävve, wan en Ußnahm opjetrodde es',
 	'configure-setting-wgShowDebug' => 'Donn Date för et Fählersöhke ongerhallef vum Houp_Enhallts_Berett ußjävve',
@@ -12074,6 +12089,11 @@ $messages['ksh'] = array(
 	'configure-setting-wgJobRunRate' => 'Aanzahl Jobs, di pro Sigge_Oproof afjeärbeit wääde',
 	'configure-setting-wgJobClasses' => 'De <i lang="en">php</i>-Klasse för de Jobs ze beärbejde',
 	'configure-setting-wgUpdateRowsPerJob' => 'De Aanzahl Reije zem Ändere pro Job',
+	'configure-setting-wgEnableSelenium' => 'Pröfunge un Versöhke övver <code lang="en">selenium</code> zohlohße',
+	'configure-setting-wgSeleniumConfigFile' => 'De Dattei met dem <code lang="en">selenium</code> singe Enshtällonge',
+	'configure-setting-wgDBtestuser' => 'Dä Name för der Zohjang op de Daatebangk, wo mer ävver bloß Daatebangk för et Prööve un Ußprobeere aanlääje un fottschmiiße darf.',
+	'configure-setting-wgDBtestpassword' => 'Et Password för dä Zohjang zor Datebangk övver dä Name <code lang="en">$wgDBtestuser</code>',
+	'configure-setting-wgAPICacheHelp' => 'Donn der Täx vun der Hölp vum <i lang="en">API</i> zwescheshpeishere',
 	'configure-setting-wgAPIMaxDBRows' => 'De hüühßte Aanzahl Reije, di per <i lang="en">API</i>-Datebangk-Aanfrooch besöhk wähde künne',
 	'configure-setting-wgAPIMaxResultSize' => 'De jrüüßte müjjelesche Aanzahl <i lang="en">Bytes</i>, di et <i lang="en">API</i> aflivvere kann',
 	'configure-setting-wgAPIMaxUncachedDiffs' => 'De jrüütßte Aanzahl Ongerscheide, di nit us em <i lang="en">cache</i> kumme, un di met einem Rötsch pä <i lang="en">API</i> affjehollt wähde dörve',
@@ -12109,6 +12129,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgUseSquid' => '<i lang="en">Squid</i> enschallde',
 	'configure-setting-wgAllowSlowParserFunctions' => 'Donn de „lahme“ Paaser_Funxjuhne ennschallde',
 	'configure-setting-wgDisableInternalSearch' => 'De em Wiki enjboute Projrammdeijle för et Söke affschallde',
+	'configure-setting-wgExtensionAssetsPath' => 'Dä <i lang="en">URL</i> vum Verzeishnes met de Zohsazprojramme',
 	'configure-setting-wgExternalStores' => 'Enshtellunge för Shpeijshere ußerhallef',
 	'configure-setting-wgSpecialPageCacheUpdates' => 'De zohsäzlejje Funkßjuhne, di met <code lang="en">updateSpecialPages.php</code> ußjeföhrt wäde sulle',
 	'configure-setting-wgSpecialPages' => 'Eije zohsäzlijje Söndersigge',
@@ -12303,6 +12324,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgUseTeX' => 'Donn <code lang="en">TeX</code> aanschallde',
 	'configure-setting-wgXMLMimeTypes' => '<i lang="en">XML</i> <i lang="en">MIME</i> Zoote, di mer erußfenge kann',
 	'configure-setting-wgXMLMimeTypes-key' => 'Dä <i lang="en">MIME</i>-Tüp',
+	'configure-setting-wgHtml5' => 'Donn ene <code lang="en">doctype</code> för <i lang="en">HTML5</i> ußjävve',
 	'configure-setting-wgDocType' => 'De Zoot vum Dokkemänt, di et Wiki als <code lang="en">DOCTYPE</code> övvermeddele deiht',
 	'configure-setting-wgDTD' => 'De <i lang="en">DTD</i> em <i lang="en">DOCTYPE</i> för de ußjejovve Sigge',
 	'configure-setting-wgMimeType' => 'Dä Wiki-Sigge iere <i lang="en">MIME</i>-Tüp',
@@ -12332,6 +12354,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgMimeTypeBlacklist' => 'Nit zohjelohße <i lang="en">MIME</i>-Tüpe',
 	'configure-setting-wgCacheSharedUploads' => 'Donn de jemeinsame Meta-Daate em <i lang="en">memcached</i> faßhallde',
 	'configure-setting-wgForeignFileRepos' => 'De Biblioteeke met Dateie, di ußerhallef lijje',
+	'configure-setting-wgUseInstantCommons' => 'Donn de <i lang="en">Wikimedia Commons</i> als en Biblijoteek för Datteije nöze',
 	'configure-setting-wgFetchCommonsDescriptions' => 'Donn de Sigge met Enfomazjuhne övver jemeinsam jebruchte Dateije holle',
 	'configure-setting-wgHashedSharedUploadDirectory' => 'Donn dat jemeinsame Verzeijschnes för de huhjelaade Dateije met enem <i lang="en">hash</i> ojaniseere',
 	'configure-setting-wgRepositoryBaseUrl' => 'Dä Aanfang fun däm <i lang="en">URL</i> för et jemeinsame Verzeijschnes',
@@ -12347,9 +12370,11 @@ $messages['ksh'] = array(
 	'configure-setting-wgDiff' => 'Dä Pahdt för dat Projram <code lang="en">diff</code> vun <i lang="en">GNU</i>',
 	'configure-setting-wgDiff3' => 'Dä Pahdt för dat Projram <code lang="en">diff3</code> vun <i lang="en">GNU</i>',
 	'configure-setting-wgFavicon' => 'Dä <i lang="en">URL</i> för dat <code lang="en">favicon</code> vun dä ßait',
+	'configure-setting-wgFooterIcons' => 'Minibeldscher en der Sigger ierem Fooß',
 	'configure-setting-wgLogo' => 'Dä <i lang="en">URL</i> för dat Loogo vun dä ßait',
 	'configure-setting-wgMathDirectory' => 'Dä Pahdt för dat Verzeijschneß, woh dem <code lang="en">LaTex-Math</code> sing Bellder dren sen',
 	'configure-setting-wgMathPath' => 'Dä Aanfang vum <i lang="en">URL</i> för dat Verzeijschneß, woh dem <code lang="en">LaTex-Math</code> sing Bellder dren sen',
+	'configure-setting-wgLoadScript' => 'Dä <i lang="en">URL</i> vun dä Dattei <code lang="en">load.php</code>',
 	'configure-setting-wgRedirectScript' => 'Dä <i lang="en">URL</i> vum <code lang="en">redirect.php</code>, öm met ahle Versione zosamme ze paße',
 	'configure-setting-wgPhpCli' => 'Dä Name fun dä ußföhrba Datei met dämm <i lang="en">php cli client</i> Projramm dren, dä mer fun de Kommando-Reih uß oprööf, öm esu en Projramme ußzeföhre. Dä heiß fö jewöönlesch <code lang="en">php</code> odder <code lang="en">php5</code>.',
 	'configure-setting-wgProto' => 'Dä Vösaz för dä ẞööver met verschlößelte Verbendunge',
@@ -12360,6 +12385,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgServerName' => 'Däm ẞööver singe Name, der_oohne ene Vörsaz för et Protokoll',
 	'configure-setting-wgStyleDirectory' => 'Dä Pahdt em ẞööver singem Süßteem fun de Dateie, för et Verzeijschneß met de Ovverfläsche vum Wiki iere Daate',
 	'configure-setting-wgStylePath' => 'Dä <i lang="en">URL</i> för et Verzeijschneß met de Ovverfläsche vum Wiki iere Daate',
+	'configure-setting-wgLocalStylePath' => 'Et sellve wi <code lang="en">$wgStylePath</code>, sullt ävver nit op en Domain ußerhallef zeije',
 	'configure-setting-wgStyleSheetPath' => 'Dä <i lang="en">URL</i> för et Verzeijschneß met de <i lang="en">cascading style sheets</i>',
 	'configure-setting-wgTmpDirectory' => 'Dä <i lang="en">URL</i> för et Verzeijschneß för jät zweschorsch ens afzelääje',
 	'configure-setting-wgUploadBaseUrl' => 'Dä Aanfang vun däm <i lang="en">URL</i> för et Verzeijschneß met de huhjelaade Dateije, wann et jemeinsam jenozte Verzeijneß nit jebruch weedt',
@@ -12385,6 +12411,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgRC2UDPPort' => 'De Pooz (<code lang="en">port</code>) för de Metdeijlunge övver <i lang="en">UDP</i> övver de {{lcfirst:{{int:recentchanges}}}}',
 	'configure-setting-wgRC2UDPPrefix' => 'Dä Vörsaz för Reije, di en de Metdeijlunge övver <i lang="en">UDP</i> övver de {{lcfirst:{{int:recentchanges}}}} verscheck wääde',
 	'configure-setting-wgBlockAllowsUTEdit' => 'Jeshperte Metmaacher künne op ier eije Klaafsigg schriive',
+	'configure-setting-wgBlockDisablesLogin' => 'Et Enlogge för jeshperrte Metmaacher es verbodde',
 	'configure-setting-wgSysopEmailBans' => 'De Wiki_Kööbeße künne Metmaacher de Sigg „[[Special:EmailUser|{{#special:EmailUser}}]]“ verbeede',
 	'configure-setting-wgSysopRangeBans' => 'De Wiki_Kööbeße künne Berette vun <code lang="en">IP-</code>Adräße sperre',
 	'configure-setting-wgSysopUserBans' => 'De Wiki_Kööbeße künne enjelogg Metmaachere sperre',
@@ -12774,6 +12801,10 @@ $messages['li'] = array(
 	'configure-setting-wgThumbLimits' => 'Toegesjtange aafmetinge veur thumbnails',
 	'configure-setting-wgUseImageResize' => 'Dynamisch aanpasse van plaetjesgruutde aan de serverkant insjakele',
 	'configure-setting-wgTrustedMediaFormats' => "Mediatypes en MIME-types die es 'veilig' waere besjoewd",
+	'configure-setting-wgImgAuthDetails' => 'Details weergaeve woeveur toegank neet mäögelik waor in img_auth.php',
+	'configure-setting-wgImgAuthPublicTest' => "Kónterlere of plaetjes publiek toegankelik zeen en 'n foutmelding weergaeve in img_auth.php es dit 't geval is",
+	'configure-setting-wgTiffThumbnailType' => 'Besjtandsextensie en MIME-type om TIFF-plaetjes nao te transformere',
+	'configure-setting-wgMainCacheType' => "Type van 't hoofcachingsysteem",
 );
 
 /** Latgalian (Latgaļu)
@@ -20787,6 +20818,7 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Ravichandra
  * @author Veeven
  */
@@ -20795,7 +20827,7 @@ $messages['te'] = array(
 	'configure-setting-wgActionPaths-key' => 'చర్య',
 	'configure-setting-wgActionPaths-value' => 'URL మూస',
 	'configure-setting-wgDBpassword' => '$wgDBuser యొక్క సంకేతపదం',
-	'configure-setting-wgDBuser' => 'డేటాబేస్ లోకి ప్రవేశించడానికి సభ్యనామం',
+	'configure-setting-wgDBuser' => 'డేటాబేస్ లోకి ప్రవేశించడానికి వాడుకరిపేరు',
 	'configure-setting-wgAllowImageMoving' => 'ఫైలు పేరు తిరిగి మార్చడానికి అవకాశమివ్వు',
 	'configure-setting-wgIgnoreImageErrors' => 'బొమ్మలకు ఎర్రర్ సందేశాలను చూపించవద్దు',
 	'configure-setting-wgImageLimits' => 'వర్ణనా పేజీల్లో బొమ్మ పరిమాణానికి పరిమితులు',
@@ -20814,18 +20846,14 @@ $messages['te'] = array(
 	'configure-setting-wgLocalFileRepo' => 'ప్రాంతీయ ఫైళ్ళ భాండాగారం',
 	'configure-setting-wgVersion' => 'మీడియావికీ సంచిక',
 	'configure-setting-wgAllowSpecialInclusion' => 'ప్రత్యేక పేజీలను చేర్చేందుకు అనుమతించు',
-	'configure-setting-wgLogHeaders' => 'చిట్టాల వివరణలు',
-	'configure-setting-wgLogNames' => 'చిట్టాల పేర్లు',
 	'configure-setting-wgLogRestrictions-key' => 'చిట్టా రకం',
 	'configure-setting-wgLogRestrictions-value' => 'చదవడానికి అనుమతి అవసరం',
-	'configure-setting-wgLogTypes' => 'చిట్టా రకాలు',
 	'configure-setting-wgSpecialPageGroups' => 'ప్రత్యేక పేజీల గుంపులు',
 	'configure-setting-wgSpecialPageGroups-key' => 'సమూహం',
 	'configure-setting-wgAutopromote-value' => 'షరతులు',
 	'configure-setting-wgDisabledActions' => 'పేజీపై నిషేధించబడిన కార్యాలు',
 	'configure-setting-wgDebugLogGroups-value' => 'ఫైలు',
 	'configure-setting-wgUseSquid' => 'స్క్విడ్ ను చేతనం చేయి',
-	'configure-setting-wgHooks' => 'కొక్కేలు',
 	'configure-setting-wgGroupPermissions' => 'గుంపు హక్కుల అప్పగింత',
 	'configure-setting-wgGroupPermissions-value' => 'ఆపాదించబడిన హక్కులు',
 	'configure-setting-wgRevokePermissions-value' => 'ఉపసంహరించుకున్న హక్కులు',
