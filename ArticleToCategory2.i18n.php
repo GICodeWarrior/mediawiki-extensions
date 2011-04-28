@@ -464,6 +464,7 @@ $messages['ml'] = array(
 $messages['myv'] = array(
 	'articletocategory2-create-article-under-category-text' => 'Поладт лопа те кужонтень',
 	'articletocategory2-create-article-under-category-button' => 'Тейть-шкак',
+	'articletocategory2-create-category-under-category-button' => 'Шкамс',
 );
 
 /** Dutch (Nederlands)
@@ -601,6 +602,7 @@ $messages['sr-ec'] = array(
 
 /** Swedish (Svenska)
  * @author Lokal Profil
+ * @author Tobulos1
  */
 $messages['sv'] = array(
 	'articletocategory2-desc' => 'Lägger ett inmatningsfält på varje kategorisida, så att du kan skapa en artikel direkt i denna kategori',
@@ -609,6 +611,7 @@ $messages['sv'] = array(
 	'articletocategory2-create-category-under-category-text' => 'Lägg till kategori till denna kategori',
 	'articletocategory2-create-category-under-category-button' => 'Skapa',
 	'right-ArticleToCategory2' => 'Lägg till sidan i kategorin',
+	'right-ArticleToCategory2AddCat' => 'Lägg kategori till kategori',
 );
 
 /** Tamil (தமிழ்)
