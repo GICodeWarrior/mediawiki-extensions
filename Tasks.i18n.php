@@ -2513,6 +2513,7 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'tasks_noone' => 'tiada',
 	'tasks_previous' => 'Sebelumnya',
 	'tasks_next' => 'Berikutnya',
 );
