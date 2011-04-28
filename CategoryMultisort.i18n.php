@@ -51,6 +51,13 @@ $messages['arc'] = array(
 	'prefs-category' => 'ܣܕܪܐ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'prefs-category' => 'Kateqoriya',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -612,6 +619,18 @@ $messages['rue'] = array(
  */
 $messages['scn'] = array(
 	'categorymultisort-go' => "Va'",
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'categorymultisort-desc' => 'Umožnení zobrazenie kategórií s rôznymi triediacimi kľúčmi',
+	'categorymultisort-defaultsortkey-name' => 'Predvolené',
+	'categorymultisort-sortkey' => 'Triediaci kľúč:',
+	'categorymultisort-go' => 'Vykonať',
+	'categorymultisort-default-sortkey' => 'Predvolený triediaci kľúč:',
+	'prefs-category' => 'Kategória',
 );
 
 /** Slovenian (Slovenščina)
