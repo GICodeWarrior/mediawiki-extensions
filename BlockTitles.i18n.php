@@ -230,6 +230,13 @@ $messages['es'] = array(
 	'block_title_error' => 'No se puede guardar esta página porque su título no está permitido.',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'block_title_error_page_title' => 'Blokeeritud pealkiri',
+);
+
 /** Basque (Euskara)
  * @author Pi
  * @author Theklan
