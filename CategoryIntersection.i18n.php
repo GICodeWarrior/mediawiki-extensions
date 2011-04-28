@@ -728,6 +728,7 @@ $messages['sk'] = array(
 	'categoryintersection-desc' => 'Udržiava tabuľku s haš hodnotami [[Special:CategoryIntersection|prienikov kategórií]] v rámci stránky',
 	'categoryintersection-doit' => 'Zoznam stránok vo všetkých týchto kategóriách',
 	'categoryintersection-maxcategories' => 'Maximálny povolený počet kategórií, ktoré majú prienik je $1.',
+	'categoryintersection-mincategories' => 'Musíte použiť aspoň dve kategórie.',
 	'categoryintersection-results' => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
 );
 
