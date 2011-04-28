@@ -165,6 +165,13 @@ $messages['arz'] = array(
 الحد الحالى هو $3.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'duplicator-source' => 'Mənbə:',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
