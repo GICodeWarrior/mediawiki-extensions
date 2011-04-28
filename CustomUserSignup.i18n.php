@@ -16,11 +16,25 @@ $messages['en'] = array(
 	'customusersignup-desc' => 'Allows for customizable messages during the account creation process',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'customusersignup-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
 	'customusersignup-desc' => 'Дазваляе нестандартныя паведамленьні падчас працэсу стварэньня рахунку',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'customusersignup-desc' => 'Aotren a ra lakaat kemennadennoù a bep seurt pa vez krouet kontoù',
 );
 
 /** German (Deutsch)
@@ -58,6 +72,13 @@ $messages['id'] = array(
 	'customusersignup-desc' => 'Menyediakan pesan terkustomisasi saat proses pembuatan akun',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'customusersignup-desc' => 'Määt ennstellbaa Antwoote un Nohreeschte müjjelesch derwiel enem neue Metmaacher singe Zohjang zom Wiki aanjelaat weed.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -65,11 +86,25 @@ $messages['mk'] = array(
 	'customusersignup-desc' => 'Дава можност за приказ ан прилагодливи пораки во текот на создавањето на сметки',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'customusersignup-desc' => 'അംഗത്വ സൃഷ്ടി പ്രക്രിയക്കിടയിൽ ക്രമീകരിക്കാവുന്ന സന്ദേശങ്ങൾ അനുവദിക്കുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'customusersignup-desc' => 'Maakt het mogelijk aangepaste berichten weer te geven tijdens het aanmaken van gebruikers',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'customusersignup-desc' => 'Pozwala na dostosowanie wiadomości w trakcie tworzenia konta',
 );
 
 /** Piedmontese (Piemontèis)
