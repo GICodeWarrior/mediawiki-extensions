@@ -151,6 +151,9 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'bookmanager-desc' => 'Iloj por libroj',
 	'printversion' => 'Versio por printilo',
+	'printversion-desc' => 'Generas [[Special:PrintVersion|printilan version]] de libro',
+	'printversion-no-book' => 'Bonvolu enigi la nomon de libro por akiri ties printilan version.',
+	'printversion-inexistent-book' => 'Libro ne troviĝis. Bonvolu enigi la nomon de ekzistanta libro por akiri ties printilan version.',
 );
 
 /** Basque (Euskara)
@@ -352,9 +355,13 @@ $messages['sr-ec'] = array(
 
 /** Swedish (Svenska)
  * @author Lokal Profil
+ * @author Tobulos1
  */
 $messages['sv'] = array(
 	'bookmanager-desc' => 'Verktyg för böcker',
+	'printversion' => 'Utskriftsversion',
+	'printversion-no-book' => 'Ange namnet på en bok för att få den i utskriftsversion.',
+	'printversion-inexistent-book' => 'Boken hittades inte. Fyll i namnet på en befintlig bok för att få den i utskriftsversion.',
 );
 
 /** Telugu (తెలుగు)
