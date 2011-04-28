@@ -83,10 +83,12 @@ $messages['arc'] = array(
 );
 
 /** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
  * @author Sortilegus
  */
 $messages['az'] = array(
 	'lastuserlogin_userid' => 'İstifadəçi adı',
+	'lastuserlogin_username' => 'Həqiqi adınız:',
 	'lastuserlogin_daysago' => 'Gün əvvəl',
 );
 
