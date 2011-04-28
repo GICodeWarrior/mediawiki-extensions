@@ -74,6 +74,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Holek
+ * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
@@ -93,7 +94,7 @@ $messages['qqq'] = array(
 	'ts-citegen-Skins' => '{{Identical|Output}}',
 	'ts-citegen-Skin-skins' => 'Skins',
 	'ts-citegen-Skin-outputformat' => 'Output format',
-	'ts-citegen-Template-lang' => 'Template language',
+	'ts-citegen-Template-lang' => 'Template language is a natural language.',
 	'ts-citegen-Sources-title' => 'Sources section title
 {{Identical|Source}}',
 	'ts-citegen-Sources-text' => 'An explanation test for sources section',
