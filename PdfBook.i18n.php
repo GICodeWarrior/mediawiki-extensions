@@ -251,6 +251,15 @@ $messages['lb'] = array(
 	'pdfbook-desc' => 'Setzt e Buch aus Säiten an eng Kategorie an exportéiert se als PDF-Buch',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'pdfbook-action' => 'Drukāt PDF',
+	'pdfbook-log' => '$1 pārstrādāja šo kā grāmatu PDF failā',
+	'pdfbook-desc' => 'Izveido grāmatu no kategorijā esošajām lapām un pārstrādā to PDF formātā',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -342,11 +351,20 @@ $messages['sw'] = array(
 	'pdfbook-desc' => 'Inaunda kurasa za jamii fulani katika kitabu, na kukipeleka nje kwa mtindo wa PDF',
 );
 
+/** Telugu (తెలుగు)
+ * @author రహ్మానుద్దీన్
+ */
+$messages['te'] = array(
+	'pdfbook-action' => 'PDF గా ప్రచురించు',
+	'pdfbook-log' => '$1 PDF పుస్తకంగా ఎగుమతి చేయబడింది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
 $messages['tl'] = array(
 	'pdfbook-action' => 'Ilimbag bilang PDF',
 	'pdfbook-log' => 'Iniluwas ang $1 bilang isang aklat na PDF',
+	'pdfbook-desc' => 'Bumubuo ng isang aklat mula sa mga pahinang nasa loob ng isang kategorya at nagluluwas bilang isang aklat na PDF',
 );
 
