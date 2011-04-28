@@ -99,6 +99,14 @@ $messages['arz'] = array(
 	'inspectcache-list' => 'عرض',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'inspectcache-delete' => 'Sil',
+	'inspectcache-list' => 'Siyahı',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
