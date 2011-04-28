@@ -1166,6 +1166,16 @@ $messages['ms'] = array(
 	'mwe-clipedit-layout_left' => 'Tataletak imej sebelah kiri',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'mwe-clipedit-sc_duration' => 'Кувалмозо',
+	'mwe-clipedit-start_time' => 'Ушодома шказо',
+	'mwe-clipedit-end_time' => 'Прядома шказо',
+	'mwe-clipedit-edit-tools' => 'Витнемань-петнемань кедьйонкст',
+);
+
 /** Nepali (नेपाली)
  * @author Bhawani Gautam Rhk
  */
@@ -1735,9 +1745,12 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
+	'mwe-clipedit-crop' => 'బొమ్మకు క్రాప్ చెయ్యి',
+	'mwe-clipedit-insert_image_page' => 'పేజీలో ఇముడ్చు',
 	'mwe-clipedit-sc_duration' => 'నిడివి',
 	'mwe-clipedit-template_properties' => 'మూస లక్షణాలు',
 	'mwe-clipedit-edit_properties' => 'లక్షణాలని మార్చు',
