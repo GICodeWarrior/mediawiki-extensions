@@ -2871,18 +2871,25 @@ $messages['mk'] = array(
  * @author Htt
  */
 $messages['mr'] = array(
+	'voctrain_continue' => 'चालू ठेवा',
+	'voctrain_bye' => 'धन्यवाद!',
+	'voctrain_Languages' => 'भाषा',
 	'voctrain_Questions' => 'प्रश्न',
 	'voctrain_Answers' => 'उत्तरे',
 	'voctrain_collection' => 'संग्रह',
 	'voctrain_Word' => 'शब्द',
 	'voctrain_Question' => 'प्रश्न',
+	'voctrain_Answer' => 'उत्तर',
 	'voctrain_Answer_s_' => 'उत्तर',
 	'voctrain_logout' => 'बाहेर पडा',
 	'voctrain_User_name' => 'सदस्य नाव',
+	'voctrain_Password' => 'परवलीचा शब्द',
 	'voctrain_Login' => 'प्रवेश',
 	'voctrain_Create_new_user' => 'नवीन सदस्यखाते उघडा',
 	'voctrain_Switch_language' => 'भाषा बदला',
 	'voctrain_Language' => 'भाषा',
+	'voctrain_Log_in' => 'प्रवेश',
+	'voctrain_Translation' => 'भाषांतर',
 	'voctrain_other' => 'इतर',
 );
 
@@ -2982,16 +2989,22 @@ $messages['my'] = array(
 	'voctrain_Please_type_your_answer_here' => 'သင်၏အဖြေ အားဤနေရာတွင်ရိုက်ပါ',
 	'voctrain_submit_answer' => 'အဖြေ အားတင်တွင်းရန်',
 	'voctrain_skip' => 'ကျော်ရန်',
+	'voctrain_I_know_it_do_not_ask_again' => 'ကျွန်ုပ်သိသည်/ထပ်မမေးရန်',
 	'voctrain_Question' => 'မေးခွန်း',
+	'voctrain_The_word_to_translate' => 'ဘာသာပြန်ရန်စကားလုံး',
 	'voctrain_Answer' => 'အဖြေ',
+	'voctrain_list_of_questions_and_answers' => 'မေးခွန်းနှင့်အဖြေ စာရင်း',
 	'voctrain_Answer_s_' => 'အဖြေ(များ)',
 	'voctrain_logout' => 'Log out ထွက်ရန်',
+	'voctrain_Powered_by' => 'Powered by',
 	'voctrain_User_name' => 'အသုံးပြုသူအမည် :',
 	'voctrain_Password' => 'စကားဝှက်',
 	'voctrain_Login' => 'Log in ဝင်ရန်',
 	'voctrain_Create_new_user' => 'အသုံးပြုသူအသစ် ဖန်တီးရန်',
+	'voctrain_Switch_language' => 'အခြားဘာသာသို့ပြောင်းရန်',
 	'voctrain_Language' => 'ဘာသာ',
 	'voctrain_Log_in' => 'Log in ဝင်ရန်',
+	'voctrain_Definitions' => 'အဓိပ္ပယ်ဖွင့်ဆိုချက်',
 	'voctrain_other' => 'အခြား',
 );
 

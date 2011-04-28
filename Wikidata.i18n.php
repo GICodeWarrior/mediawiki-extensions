@@ -8947,6 +8947,7 @@ $messages['mr'] = array(
  * @author Aurora
  */
 $messages['ms'] = array(
+	'datasearch_language' => 'Bahasa:',
 	'ow_transaction_summary' => 'Ringkasan',
 	'ow_dm_OK' => 'OK',
 	'ow_Source' => 'Sumber',
