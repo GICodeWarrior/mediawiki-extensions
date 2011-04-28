@@ -74,6 +74,13 @@ $messages['arc'] = array(
 	'commentbox-name' => 'ܫܡܐ:',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'commentbox-first-comment-heading' => '== Şərhlər ==',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
