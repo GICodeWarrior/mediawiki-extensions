@@ -626,6 +626,16 @@ $messages['arz'] = array(
 	'viewapc-usercache-cleared' => "'''''تم إفراغ كاش التطبيق.'''''",
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'viewapc-ls-header-name' => 'Ad',
+	'viewapc-ls-header-size' => 'Həcm',
+	'viewapc-ls-scope-active' => 'Aktiv',
+	'viewapc-ls-sort-name' => 'Ad',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -4558,15 +4568,19 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'viewapc-display-value' => 'Питнезэ',
 	'viewapc-display-info' => 'Лемезэ',
 	'viewapc-display-creation_time' => 'Шказь-теезь',
 	'viewapc-display-deletion_time' => 'Нардазь',
+	'viewapc-display-no-delete' => 'Апак нарда',
 	'viewapc-display-mem_size' => 'Покшолмазо',
 	'viewapc-ls-submit' => 'Адя!',
 	'viewapc-ls-header-name' => 'Лемезэ',
 	'viewapc-ls-header-size' => 'Покшолмазо',
+	'viewapc-ls-header-modified' => 'Меельцеде лиякстомтозь',
 	'viewapc-ls-header-created' => 'Шказь-теезь',
 	'viewapc-ls-header-deleted' => 'Нардазь',
+	'viewapc-ls-delete' => '[Нейке нардамс]',
 	'viewapc-ls-scope-deleted' => 'Нардазь',
 	'viewapc-ls-scope-both' => 'Кавтонест',
 	'viewapc-ls-sort-size' => 'Покшолмазо',
