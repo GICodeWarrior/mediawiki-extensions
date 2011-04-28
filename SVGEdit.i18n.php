@@ -414,6 +414,7 @@ $messages['pt-br'] = array(
 	'svgedit-desc' => 'Edição de desenhos SVG no próprio navegador, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Editar desenho',
 	'svgedit-edit-tab-tooltip' => 'Você pode editar este desenho SVG no seu navegador',
+	'svgedit-toolbar-insert' => 'Desenho SVG',
 );
 
 /** Russian (Русский)
