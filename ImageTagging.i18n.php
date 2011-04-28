@@ -237,6 +237,24 @@ $messages['arz'] = array(
 	'tag-logpagetext' => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ * @author Vugar 1981
+ */
+$messages['az'] = array(
+	'imagetagging-article' => 'Səhifə:',
+	'imagetagging-imghistory' => 'Tarix',
+	'imagetagging-images' => 'şəkillər',
+	'imagetagging-done-button' => 'Etiketləmə başa çatdı',
+	'imagetagging-tag-button' => 'Etiketlə',
+	'imagetagging-tagcancel-button' => 'Ləğv et',
+	'imagetagging-tagging-instructions' => 'Etiketləmək üçün şəkilin üzərinə klikləyin.',
+	'imagetagging-addingtag' => 'Etiketləmə əlavə edilir...',
+	'imagetagging-removingtag' => 'Etiketləmə ləğv edildi...',
+	'imagetagging-addtagsuccess' => 'Etiketləmə əlavə edildi.',
+	'imagetagging-removetagsuccess' => 'Etiketləmə ləğv edildi.',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -1700,7 +1718,7 @@ $messages['pt'] = array(
 	'imagetagging-addimagetag' => 'Etiquetar esta imagem',
 	'imagetagging-article' => 'Página:',
 	'imagetagging-articletotag' => 'Página a etiquetar',
-	'imagetagging-canteditothermessage' => 'Não pode editar esta página, porque não possui permissões para isso, ou porque a página está bloqueada por outros motivos.',
+	'imagetagging-canteditothermessage' => 'Não pode editar esta página, porque não tem permissões para fazê-lo, ou porque a página está bloqueada por outros motivos.',
 	'imagetagging-imghistory' => 'Histórico',
 	'imagetagging-images' => 'imagens',
 	'imagetagging-inthisimage' => 'Nesta imagem: $1',
