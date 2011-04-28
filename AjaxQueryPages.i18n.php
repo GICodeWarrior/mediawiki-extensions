@@ -644,6 +644,13 @@ $messages['te'] = array(
 	'ajaxquerypages-desc' => '[[Special:Shortpages|{{int:shortpages}}]] లాంటి క్వెరీ పేజీలకి కొంచెం అజాక్సుని చేరుస్తుంది',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'ajaxquerypages-desc' => 'Tau funsaun AJAX iha pájina espesiál, por ezemplu [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
