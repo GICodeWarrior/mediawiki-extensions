@@ -2172,11 +2172,16 @@ $messages['lt'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Papuass
  * @author Xil
  */
 $messages['lv'] = array(
+	'ogg-play' => 'Atskaņot',
 	'ogg-pause' => 'Pauze',
+	'ogg-stop' => 'Apstādināt',
+	'ogg-play-video' => 'Atskaņot videoklipu',
+	'ogg-play-sound' => 'Atskaņot skaņu',
 	'ogg-player-selected' => '(izvēlēts)',
 	'ogg-dismiss' => 'Aizvērt',
 	'ogg-download' => 'Lejupielādēt failu',
