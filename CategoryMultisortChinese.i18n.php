@@ -589,6 +589,25 @@ $messages['ru'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'по радикалам: традиционный',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'categorymultisortchinese-desc' => 'Umožní zobrazenie kategórií s rôznymi triediacimi kľúčmi špecifickými pre čínske skripty',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarínčina: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarínčina: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarínčina: Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarínčina: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarínčina: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantónčina: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Ťahy štetcom',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Ťahy štetcom: Zjednodušená',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Ťahy štetcom: Tradičná',
+	'categorymultisort-sortkey-name-radical' => 'Radikály',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikály: Zjednodušená',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikály: Tradičná',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
