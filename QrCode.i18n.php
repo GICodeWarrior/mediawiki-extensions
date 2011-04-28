@@ -212,6 +212,13 @@ $messages['ru'] = array(
 	'qrcode-desc' => 'Создаёт изображения с QR-кодами и добавляет их на страницы вики',
 );
 
+/** Telugu (తెలుగు)
+ * @author రహ్మానుద్దీన్
+ */
+$messages['te'] = array(
+	'qrcode-desc' => 'QR Code బొమ్మలను నిర్మించి, ఒక వికీ పుటకు కలుపుతుంది',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */
