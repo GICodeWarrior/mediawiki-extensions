@@ -116,6 +116,7 @@ $wgExtensionCredits['other'][] = array(
 		'Brandon Harris',
 		'Adam Miller',
 		'Nimish Gautam',
+		'Arthur Richards',
 	),
 	'version' => '0.2.0',
 	'descriptionmsg' => 'articlefeedback-desc',
