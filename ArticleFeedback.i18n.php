@@ -227,6 +227,7 @@ $messages['arc'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'articlefeedback-survey-submit' => 'Yolla',
 	'articleFeedback-table-heading-page' => 'Səhifə',
 );
 
@@ -404,6 +405,7 @@ $messages['bg'] = array(
 	'articlefeedback-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
 	'articlefeedback-report-switch-label' => 'Показване на резултатите',
 	'articlefeedback-pitch-join-login' => 'Влизане',
+	'articlefeedback-pitch-edit-accept' => 'Редактиране на тази страница',
 );
 
 /** Bengali (বাংলা)
@@ -546,6 +548,28 @@ Klaskit en-dro diwezhatoc'h.",
 	'articleFeedback-table-caption-recentlows' => 'Dilusk nevesañ',
 	'articleFeedback-table-heading-page' => 'Pajenn',
 	'articleFeedback-table-heading-average' => 'Keidenn',
+	'articlefeedback-emailcapture-response-body' => "Demat deoc'h !
+
+Trugarez deoc'h da vezañ diskouezet bezañ dedennet d'hor skoazellañ evit gwellaat {{SITENAME}}.
+
+Kemerit ur pennadig amzer evit kadarnaat ho chomlec'h postel en ur glikañ war al liamm a-is : 
+
+$1
+
+Gallout a rit ivez mont da welet :
+
+$2
+
+Ha merkañ ar c'hod kadarnaat da-heul :
+
+$3
+
+A-barzh pell ez aimp e darempred ganeoc'h evit ho skoazellañ da wellaat {{SITENAME}}.
+
+Ma n'eo ket deuet ar goulenn ganeoc'h, na rit ket van ouzh ar postel-mañ, ne vo ket kaset mann ebet all deoc'h.
+
+A wir galon ganeoc'h ha trugarez deoc'h,
+Skipailh {{SITENAME}}",
 );
 
 /** Bosnian (Bosanski)
@@ -1012,6 +1036,28 @@ Bonvolu reprovi baldaŭ.',
 	'articleFeedback-table-caption-recentlows' => 'Lastatempaj malaltoj',
 	'articleFeedback-table-heading-page' => 'Paĝo',
 	'articleFeedback-table-heading-average' => 'Averaĝo',
+	'articlefeedback-emailcapture-response-body' => 'Saluton!
+
+Dankon por esprimante intereson por helpi plibonigi je {{SITENAME}}.
+
+Bonvolu konfirmi vian retpoŝtadreson klakante la jenan ligilon:
+
+$1
+
+Vi povas ankaŭ viziti:
+
+$2
+
+Kaj enigi la jenan konfirmkodon:
+
+$3
+
+Ni mesaĝos vin baldaŭ pri kiel vi povas plibonigi je {{SITENAME}}.
+
+Se vi ne eksendis ĉi tiun peton, bonvolu ignori ĉi tiu retpoŝto, kaj ni ne sendos al vi ion ajn.
+
+Koran dankon,
+La teamo {{SITENAME}}',
 );
 
 /** Spanish (Español)
@@ -1254,9 +1300,47 @@ L’équipe de {{SITENAME}}",
 $messages['frp'] = array(
 	'articlefeedback' => 'Èstimacion d’articllo',
 	'articlefeedback-desc' => 'Èstimacion d’articllo (vèrsion pilote)',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'J’âmo partagiér mon avis',
 	'articlefeedback-survey-answer-whyrated-other' => 'Ôtra',
 	'articlefeedback-survey-question-useful-iffalse' => 'Porquè ?',
+	'articlefeedback-survey-question-comments' => 'Avéd-vos d’ôtros comentèros ?',
 	'articlefeedback-survey-submit' => 'Sometre',
+	'articlefeedback-survey-title' => 'Volyéd rèpondre a quârques quèstions',
+	'articlefeedback-survey-thanks' => 'Grant-marci d’avêr rempli lo quèstionèro.',
+	'articlefeedback-error' => 'Una èrror est arrevâ. Volyéd tornar èprovar ples târd.',
+	'articlefeedback-form-switch-label' => 'Èstimar cela pâge',
+	'articlefeedback-form-panel-title' => 'Èstimar cela pâge',
+	'articlefeedback-form-panel-instructions' => 'Volyéd prendre un moment por èstimar cela pâge.',
+	'articlefeedback-form-panel-clear' => 'Enlevar cela èstimacion',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Politica de confidencialitât',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politica de confidencialitât',
+	'articlefeedback-form-panel-submit' => 'Mandar les èstimacions',
+	'articlefeedback-form-panel-success' => 'Encartâ avouéc reusséta',
+	'articlefeedback-form-panel-expiry-title' => 'Voutres èstimacions ont èxpirâs',
+	'articlefeedback-report-switch-label' => 'Vêre les èstimacions de la pâge',
+	'articlefeedback-report-panel-title' => 'Èstimacions de la pâge',
+	'articlefeedback-report-panel-description' => 'Èstimacions moyenes d’ora.',
+	'articlefeedback-report-empty' => 'Gins d’èstimacion',
+	'articlefeedback-report-ratings' => 'Èstimacions $1',
+	'articlefeedback-field-trustworthy-label' => 'Digno de confiance',
+	'articlefeedback-field-complete-label' => 'Complèt',
+	'articlefeedback-field-objective-label' => 'Emparciâl',
+	'articlefeedback-field-wellwritten-label' => 'Bien ècrit',
+	'articlefeedback-pitch-reject' => 'Pôt-étre ples târd',
+	'articlefeedback-pitch-or' => 'ou ben',
+	'articlefeedback-pitch-thanks' => 'Grant-marci ! Voutra èstimacion at étâ encartâ.',
+	'articlefeedback-pitch-survey-accept' => 'Emmodar l’enquéta',
+	'articlefeedback-pitch-join-accept' => 'Fâre un compto',
+	'articlefeedback-pitch-join-login' => 'Sè branchiér',
+	'articlefeedback-pitch-edit-accept' => 'Changiér ceta pâge',
+	'articlefeedback-survey-message-success' => 'Grant-marci d’avêr rempli lo quèstionèro.',
+	'articlefeedback-survey-message-error' => 'Una èrror est arrevâ.
+Volyéd tornar èprovar ples târd.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Los hôts et bâs d’houé',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Los ples changiês de cela semana',
+	'articleFeedback-table-caption-recentlows' => 'Dèrriérs bâs',
+	'articleFeedback-table-heading-page' => 'Pâge',
+	'articleFeedback-table-heading-average' => 'Moyena',
 );
 
 /** Friulian (Furlan)
@@ -1291,11 +1375,15 @@ $messages['gl'] = array(
 	'articlefeedback-form-panel-title' => 'Avaliar esta páxina',
 	'articlefeedback-form-panel-instructions' => 'Por favor, tome uns intres para avaliar esta páxina.',
 	'articlefeedback-form-panel-clear' => 'Eliminar a avaliación',
-	'articlefeedback-form-panel-expertise' => 'Teño moi bo coñecemento sobre o tema',
+	'articlefeedback-form-panel-expertise' => 'Estou moi ben informado sobre este tema (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Teño un grao escolar ou universitario pertinente',
 	'articlefeedback-form-panel-expertise-profession' => 'É parte da miña profesión',
 	'articlefeedback-form-panel-expertise-hobby' => 'É unha das miñas afeccións persoais',
 	'articlefeedback-form-panel-expertise-other' => 'A fonte do meu coñecemento non está nesta lista',
+	'articlefeedback-form-panel-helpimprove' => 'Gustaríame axudar a mellorar a Wikipedia; enviádeme un correo electrónico (opcional)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Enviarémoslle un correo electrónico de confirmación. Non compartiremos o seu enderezo con ninguén. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de protección de datos',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Política de protección de datos',
 	'articlefeedback-form-panel-submit' => 'Enviar a avaliación',
 	'articlefeedback-form-panel-success' => 'Gardado correctamente',
 	'articlefeedback-form-panel-expiry-title' => 'As súas avaliacións caducaron',
@@ -1327,6 +1415,33 @@ $messages['gl'] = array(
 	'articlefeedback-survey-message-success' => 'Grazas por encher a enquisa.',
 	'articlefeedback-survey-message-error' => 'Houbo un erro.
 Inténteo de novo máis tarde.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Os altos e baixos de hoxe',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Os máis modificados esta semana',
+	'articleFeedback-table-caption-recentlows' => 'Últimos baixos',
+	'articleFeedback-table-heading-page' => 'Páxina',
+	'articleFeedback-table-heading-average' => 'Media',
+	'articlefeedback-emailcapture-response-body' => 'Ola!
+
+Grazas por expresar interese en axudar a mellorar {{SITENAME}}.
+
+Tome un momento para confirmar o seu correo electrónico premendo na ligazón que hai a continuación: 
+
+$1
+
+Tamén pode visitar:
+
+$2
+
+E inserir o seguinte código de confirmación:
+
+$3
+
+Poñerémonos en contacto con vostede para informarlle sobre como axudar a mellorar {{SITENAME}}.
+
+Se vostede non fixo esta petición, ignore esta mensaxe e non lle enviaremos máis nada.
+
+Os mellores desexos e grazas,
+O equipo de {{SITENAME}}',
 );
 
 /** Swiss German (Alemannisch)
@@ -1393,6 +1508,7 @@ Bitte versuech s speter nomol.',
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Nahum
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -1483,6 +1599,7 @@ $3
 אם לא יזמת את הבקשה הזאת, נא להתעלם מהמכתב הזה ולא נשלח לך שום דבר אחר.
 
 כל טוב, ותודה
+
 צוות {{SITENAME}}',
 );
 
@@ -2191,6 +2308,24 @@ $messages['li'] = array(
 	'articlefeedback-desc' => 'Paginabeoordeiling (tesversie)',
 	'articlefeedback-survey-answer-whyrated-other' => 'Anges',
 	'articlefeedback-survey-question-useful-iffalse' => 'Wróm?',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Perkunas
+ */
+$messages['lt'] = array(
+	'articlefeedback-form-switch-label' => 'Įvertinti šį puslapį',
+	'articlefeedback-form-panel-title' => 'Įvertinti šį puslapį',
+	'articlefeedback-form-panel-clear' => 'Pašalinti šį įvertinimą',
+	'articlefeedback-report-empty' => 'Nėra vertinimų',
+	'articlefeedback-report-ratings' => '$1 vertinimas',
+	'articlefeedback-pitch-join-message' => 'Ar norėjote sukurti paskyrą?',
+	'articlefeedback-pitch-join-accept' => 'Sukurti paskyrą',
+	'articlefeedback-pitch-join-login' => 'Prisijungti',
+	'articlefeedback-pitch-edit-message' => 'Ar žinote, kad galite redaguoti šį puslapį?',
+	'articlefeedback-pitch-edit-accept' => 'Redaguoti šį puslapį',
+	'articlefeedback-survey-message-error' => 'Įvyko klaida.
+Pabandykite vėliau.',
 );
 
 /** Latvian (Latviešu)
