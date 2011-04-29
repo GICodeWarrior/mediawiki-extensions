@@ -61,6 +61,13 @@ $messages['arc'] = array(
 	'massblank-blankcomment' => 'ܥܠܬܐ:',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'massblank-blankcomment' => 'Səbəb:',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -85,6 +92,13 @@ $messages['be-tarask'] = array(
 	'massblank-submit-blank' => 'Ачысьціць выбраныя',
 	'massblank-blankcomment' => 'Прычына:',
 	'right-massblank' => 'масавая ачыстка старонак',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'massblank-blankcomment' => 'Причина:',
 );
 
 /** Breton (Brezhoneg)
