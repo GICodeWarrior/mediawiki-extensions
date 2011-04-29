@@ -51,6 +51,13 @@ $messages['fr'] = array(
 	'customusersignup-desc' => 'Permet des messages variés au cours du processus de création de compte',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'customusersignup-desc' => 'Permite mensaxes personalizables durante o proceso de creación de contas',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */
@@ -112,6 +119,13 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'customusersignup-desc' => 'A përmëtt ëd përsonalisé ij mëssagi an mente dël process ëd creassion dël cont',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'customusersignup-desc' => 'Permite apresentar mensagens personalizadas durante o processo de criação de conta',
 );
 
 /** Tarandíne (Tarandíne)
