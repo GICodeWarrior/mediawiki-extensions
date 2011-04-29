@@ -220,6 +220,7 @@ $messages['ang'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  * @author ترجمان05
  */
 $messages['ar'] = array(
@@ -270,7 +271,7 @@ $1',
 	'sign-viewfield-phone' => 'هاتف',
 	'sign-viewfield-email' => 'بريد إلكتروني',
 	'sign-viewfield-age' => 'عمر',
-	'sign-viewfield-options' => 'اختيارات',
+	'sign-viewfield-options' => 'خيارات',
 	'sign-viewsigs-intro' => 'معروض بالأسفل التوقيعات المسجلة ل<span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen' => 'التوقيع مفعل حاليا لهذه الوثيقة.',
 	'sign-sigadmin-close' => 'عطل التوقيع',

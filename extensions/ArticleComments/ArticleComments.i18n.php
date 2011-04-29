@@ -679,6 +679,39 @@ Les modes disponibles sont «plain», « normal » et « wiki ».',
 	'processcomment' => 'Traitement du commentaire sur l’article',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'article-comments-desc' => 'Active les sèccions de comentèros sur les pâges de contegnu.',
+	'article-comments-title-string' => 'titro',
+	'article-comments-name-string' => 'Nom',
+	'article-comments-name-field' => 'Nom (oblegatouèro) :',
+	'article-comments-url-field' => 'Seto vouèbe :',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Comentèro',
+	'article-comments-comment-field' => 'Comentèro :',
+	'article-comments-submit-button' => 'Sometre',
+	'article-comments-leave-comment-link' => 'Apondre un comentèro ...',
+	'article-comments-invalid-field' => 'Lo $1 balyê <nowiki>[$2]</nowiki> est envalido.',
+	'article-comments-required-field' => 'Lo champ « $1 » est oblegatouèro.',
+	'article-comments-submission-failed' => 'L’èxpèdicion du comentèro at pas reussia',
+	'article-comments-talk-page-starter' => '<noinclude>Comentèros sur « [[$1]] »
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 at dét ...',
+	'article-comments-submission-succeeded' => 'L’èxpèdicion du comentèro at reussia',
+	'article-comments-submission-success' => 'Vos éd mandâ avouéc reusséta un comentèro sur « [[$1]] »',
+	'article-comments-submission-view-all' => 'Vos pouede vêre tôs los comentèros sur cela pâge [[$1|ique]]',
+	'article-comments-user-is-blocked' => 'Ora, voutron compto utilisator est blocâ en ècritura sur « [[$1]] ».',
+	'article-comments-comment-bad-mode' => 'La fôrma balyê por lo comentèro est envalida.
+Les fôrmes disponibles sont « plain », « normal » et « wiki ».',
+	'article-comments-comment-missing-name-parameter' => 'Nom manquent',
+	'article-comments-comment-missing-date-parameter' => 'Dâta du comentèro manquenta',
+	'article-comments-no-spam' => 'U muens yon des champs somês at étâ marcâ coment spame.',
+	'processcomment' => 'Trètament du comentèro sur la pâge',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

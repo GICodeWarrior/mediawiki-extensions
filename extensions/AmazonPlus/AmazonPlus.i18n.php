@@ -187,13 +187,21 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
 	'amazonplus-german' => 'Alman',
 	'amazonplus-french' => 'Fransız',
 	'amazonplus-japanese' => 'Yapon',
 	'amazonplus-new' => 'yeni',
+	'amazonplus-status' => '($1)',
+	'amazonplus-currency' => '$3$1 $2$4',
 	'amazonplus-cp-none' => 'Heç biri',
+	'amazonplus-cp-usd' => 'USD',
+	'amazonplus-cp-cad' => 'CAD',
+	'amazonplus-cp-gbp' => 'GBP',
+	'amazonplus-cp-eur' => 'EUR',
+	'amazonplus-cp-jpy' => 'JPY',
 );
 
 /** Bashkir (Башҡортса)

@@ -261,6 +261,7 @@ $messages['arz'] = array(
  */
 $messages['az'] = array(
 	'crosswikiblock-reason' => 'Səbəb:',
+	'crosswikiunblock-reason' => 'Səbəb:',
 );
 
 /** Belarusian (Беларуская)

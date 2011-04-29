@@ -219,6 +219,7 @@ $messages['br'] = array(
 	'toolbase-replag-hours' => 'eurvezhioù',
 	'toolbase-replag-minutes' => 'munutennoù',
 	'toolbase-replag-seconds' => 'eilennoù',
+	'toolbase-footer-exectime' => 'Kaset da benn e $1 eilenn',
 	'toolbase-footer-source' => 'Sellet ouzh tarzh an destenn',
 	'toolbase-footer-language' => 'Cheñch yezh',
 	'toolbase-footer-translate' => 'Treiñ',

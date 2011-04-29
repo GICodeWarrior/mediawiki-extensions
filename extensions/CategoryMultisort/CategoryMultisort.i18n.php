@@ -501,10 +501,11 @@ $messages['no'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
 	'categorymultisort-go' => 'ଯିବା',
-	'prefs-category' => 'ବିଭାଗ',
+	'prefs-category' => 'ଶ୍ରେଣୀ:',
 );
 
 /** Deitsch (Deitsch)

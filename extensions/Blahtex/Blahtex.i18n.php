@@ -1035,6 +1035,9 @@ Nur unu estas permesita.',
 	'math_MismatchedBeginAndEnd' => 'Komandoj "$1" kaj "$2" ne kongruas',
 	'math_MisplacedLimits' => 'La komando "$1" nur povas aperi post matematika operacio.
 Konsideru uzante "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'Mankanta aŭ malvalida nova komandnomo post "\\newcommand".
+Nepre estu precize unu komando definita;
+ĝi nepre komencu per deklivstreketo "\\" kaj enhavu nur literajn signojn.',
 	'math_MissingDelimiter' => 'Mankas disigilo post "$1"',
 	'math_MissingOpenBraceAfter' => 'Mankas malferma krampo "{" post "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Mankas malferma krampo "{" ĉe fino de enigo',

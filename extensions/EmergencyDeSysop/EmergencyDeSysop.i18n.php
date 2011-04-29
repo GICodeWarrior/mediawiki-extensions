@@ -140,6 +140,13 @@ $messages['be-tarask'] = array(
 	'right-emergencydesysop' => 'магчымасьць пазбаўленьня правоў адміністратара іншых удзельнікаў, коштам уласных правоў',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'emergencydesysop-reason' => 'Причина за отстраняването',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

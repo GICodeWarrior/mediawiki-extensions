@@ -187,6 +187,15 @@ $messages['fr'] = array(
 	'printversion-inexistent-book' => 'Livre introuvable. Veuillez entrer le nom d’un livre existant pour obtenir sa version imprimée.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'bookmanager-desc' => 'Outils por los lévros.',
+	'printversion' => 'Vèrsion emprimâbla',
+	'printversion-desc' => 'Fât una [[Special:PrintVersion|vèrsion emprimâbla]] d’un lévro.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

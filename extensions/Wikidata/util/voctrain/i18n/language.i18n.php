@@ -2237,6 +2237,28 @@ $messages['ig'] = array(
 	'voctrain_Log_in' => 'Banyé',
 );
 
+/** Ingush (ГІалгІай Ğalğaj)
+ * @author Sapral Mikail
+ */
+$messages['inh'] = array(
+	'voctrain_try_again_' => 'Кха цхьацца хьажа',
+	'voctrain_Languages' => 'Метташ',
+	'voctrain_Questions' => 'Хаттараш',
+	'voctrain_Answers' => 'Жопдалараш',
+	'voctrain_Word' => 'Дош',
+	'voctrain_Question' => 'Хаттар',
+	'voctrain_Answer' => 'Жопдалар',
+	'voctrain_Answer_s_' => 'Жопдалар(аш)',
+	'voctrain_logout' => 'аравала/яла',
+	'voctrain_User_name' => 'Дакъалаьцархочунна цIи',
+	'voctrain_Password' => 'КъайладоагIа',
+	'voctrain_Login' => 'Чувала/яла',
+	'voctrain_Switch_language' => 'Мотт хьахьаржа',
+	'voctrain_Language' => 'Мотт',
+	'voctrain_Log_in' => 'Чувала/яла',
+	'voctrain_hiding' => 'Къайладаккхар',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

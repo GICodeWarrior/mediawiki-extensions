@@ -365,6 +365,9 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'asksql' => 'SQL-serĉomendo',
 	'asksql-desc' => 'Faru SQL-serĉomendoj per [[Special:Asksql|speciala paĝo]]',
+	'asksqltext' => "Uzu la jenan formularon por rekte mendi el la datumbazo.
+Uzi unuopajn citilojn ('tiel') por apartigi signoĉenojn.
+Ĉi tiu povas ofte aldoni ŝarĝegon al la servilo, do bonvolu uzi ĉi tiun funkcion ŝpareme.",
 	'sqlislogged' => 'Bonvolu noti ke ĉiuj serĉomendoj estas listigitaj en la protokolo.',
 	'sqlquery' => 'Entajpu SQL-serĉomendon',
 	'querybtn' => 'Sendu SQL-serĉomendon',

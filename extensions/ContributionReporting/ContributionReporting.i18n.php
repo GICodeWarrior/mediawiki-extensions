@@ -406,6 +406,7 @@ $messages['az'] = array(
 	'contribstats-day' => 'Gün',
 	'contribstats-month' => 'Ay',
 	'contribstats-week' => 'Həftə',
+	'contribstats-template' => 'Şablon',
 	'fundraiserstats-date' => 'Tarix',
 );
 

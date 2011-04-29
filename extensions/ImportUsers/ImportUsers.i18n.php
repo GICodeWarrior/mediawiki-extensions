@@ -200,6 +200,8 @@ $messages['arz'] = array(
 $messages['az'] = array(
 	'importusers-form-button' => 'İdxal',
 	'importusers-log-summary' => 'Xülasə',
+	'importusers-email' => 'e-məktub',
+	'importusers-realname' => 'həqiqi adınız',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)

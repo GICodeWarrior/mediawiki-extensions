@@ -93,6 +93,8 @@ $messages['af'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'livetranslate-button-translate' => 'Tərcümə et',
+	'livetranslate-special-type' => 'Tipi',
 	'livetranslate-special-local' => 'Lokal',
 );
 
@@ -135,6 +137,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'livetranslate-button-translate' => 'Превеждане',
 	'livetranslate-button-translating' => 'Превеждане...',
+	'livetranslate-special-remove' => 'Премахване',
 );
 
 /** Breton (Brezhoneg)

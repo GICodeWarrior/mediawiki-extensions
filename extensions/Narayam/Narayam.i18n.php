@@ -271,6 +271,7 @@ $messages['gl'] = array(
 	'narayam-si-wijesekara' => 'Wijesekara para cingalés',
 	'narayam-ta99' => 'Tamil99 para támil',
 	'narayam-ta' => 'Transliteración para támil',
+	'narayam-te-inscript' => 'InScript para telugú',
 	'narayam-bn-avro' => 'Avro para bengalí',
 	'narayam-bn-inscript' => 'InScript para bengalí',
 	'narayam-bn-nkb' => 'NKB para bengalí',
