@@ -215,6 +215,7 @@ $messages['br'] = array(
 	'push-remote-pages' => 'Pajennoù a-bell',
 	'push-remote-page-link' => '$1 war $2',
 	'push-remote-page-link-full' => 'Gwelet $1 war $2',
+	'push-button-all' => 'Bountañ pep tra',
 	'push-tab-not-created' => "N'eus ket eus ar bajenn-se c'hoazh.",
 	'push-tab-inc-templates' => 'Lakaat ar patromoù e-barzh ivez',
 	'push-tab-used-templates' => '({{PLURAL:$2|patrom|patromoù}}implijet : $1)',
