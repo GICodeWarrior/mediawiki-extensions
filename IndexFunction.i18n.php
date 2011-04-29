@@ -124,6 +124,14 @@ $messages['arc'] = array(
 	'index-submit' => 'ܫܕܪ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'index-search' => 'Axtar:',
+	'index-submit' => 'Yolla',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
