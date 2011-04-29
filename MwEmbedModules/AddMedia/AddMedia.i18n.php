@@ -1151,6 +1151,7 @@ $messages['bg'] = array(
 	'mwe-destfilename' => 'Целево име на файл:',
 	'mwe-summary' => 'Резюме',
 	'mwe-watch-this-file' => 'Наблюдаване на този файл',
+	'mwe-ignore-any-warnings' => 'Пренебрегване на всякакви предупреждения',
 	'mwe-upload-in-new-win-link' => 'качване в нов прозорец или раздел',
 	'mwe-uploaded-time-remaining' => 'Оставащо време: $1',
 	'mwe-upload_tab' => 'Качване на файл',
@@ -2753,6 +2754,7 @@ $messages['frp'] = array(
 	'mwe-unknown_license' => 'Licence encognua',
 	'mwe-results_from' => 'Rèsultats dês $1',
 	'mwe-am-config_error' => 'Èrror de configuracion de l’assistent d’aponsa de fichiérs multimèdia : $1',
+	'mwe-your-recent-uploads' => 'Voutros tèlèchargements',
 	'mwe-your-recent-uploads-to' => 'Voutros novéls tèlèchargements dessus $1',
 	'mwe-no_recent_uploads' => 'Gins de novél tèlèchargement',
 	'mwe-upload-a-file' => 'Tèlèchargiér un novél fichiér',
@@ -4553,6 +4555,33 @@ $messages['lv'] = array(
 	'mwe-ftype-unk' => 'Nezināms faila formāts',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Perkunas
+ */
+$messages['lt'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 iš $2',
+	'mwe-upload-unknown-size' => 'Nežinomas dydis',
+	'mwe-cancel-confim' => 'Ar tikrai norite atšaukti?',
+	'mwe-successfulupload' => 'Sėkmingai įkelta',
+	'mwe-uploaderror' => 'Įkėlimo klaida',
+	'mwe-uploadwarning' => 'Įkėlimo įspėjimas',
+	'mwe-unknown-error' => 'Nežinoma klaida:',
+	'mwe-return-to-form' => 'Grįžti į formą',
+	'mwe-ignorewarning' => 'Nepaisyti įspėjimo ir įrašyti failą, bet kokiu atveju',
+	'mwe-file-thumbnail-no' => 'Failo vardas prasideda <code><b>$1</b></code>',
+	'mwe-upload-misc-error' => 'Nežinoma įkėlimo klaida',
+	'mwe-thumbnail-more' => 'Padidinti',
+	'mwe-select_ownwork' => 'Aš keliu grynai mano darbą ir licencijuoju jį:',
+	'mwe-watch-this-file' => 'Stebėti šį failą',
+	'mwe-am-results_next' => 'kitas',
+	'mwe-am-results_prev' => 'ankstesnis',
+	'mwe-upload_tab' => 'Įkelti failą',
+	'mwe-am-layout' => 'Išdėstymas:',
+	'mwe-ftype-unk' => 'Nežinomas failo formatas',
+	'mwe-am-this_wiki-title' => 'Šis wiki',
+	'mwe-am-this_wiki-desc' => 'Vietinis wiki',
+);
+
 /** Latvian (Latviešu)
  * @author GreenZeb
  * @author Papuass
@@ -4579,7 +4608,7 @@ $messages['lv'] = array(
 	'mwe-am-results_prev' => 'iepriekšējais',
 	'mwe-upload_tab' => 'Augšupielādēt failu',
 	'mwe-unknown_license' => 'Nezināma licence',
-	'mwe-your-recent-uploads' => 'Tavas augšupielādes',
+	'mwe-your-recent-uploads' => 'Jūsu augšupielādes',
 	'mwe-upload-a-file' => 'Augšupielādēt jaunu failu',
 	'mwe-watch_this_page' => 'Uzraudzīt šo lapu',
 	'mwe-return-search-results' => 'Atgriezties pie meklēšanas rezultātiem',

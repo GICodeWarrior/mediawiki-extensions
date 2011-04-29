@@ -99,6 +99,19 @@ $messages['arc'] = array(
 	'mwe-clipedit-edit-tools' => 'ܡܐܢ̈ܐ ܕܫܘܚܠܦܐ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Vago
+ */
+$messages['az'] = array(
+	'mwe-clipedit-crop' => 'Şəklin kəsilməsi',
+	'mwe-clipedit-insert_image_page' => 'Səhifəyə əlavə et',
+	'mwe-clipedit-cancel_image_insert' => 'Əlavəni dayandır',
+	'mwe-clipedit-edit_properties' => 'Xüsusiyyətləri dəyişdir',
+	'mwe-clipedit-other_properties' => 'Digər xüsusiyyətlər',
+	'mwe-clipedit-start_time' => 'Başlanğıc vaxt',
+	'mwe-clipedit-end_time' => 'Bitmə vaxtı',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
@@ -478,6 +491,8 @@ $messages['eo'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Enigi en sekvencon',
 	'mwe-clipedit-preview_insert' => 'Antaŭvidi enmeton',
 	'mwe-clipedit-cancel_image_insert' => 'Nuligi enmeton',
+	'mwe-clipedit-sc_attributes' => 'Redakti detalojn de videoparto',
+	'mwe-clipedit-sc_inoutpoints' => 'Agordi enajn kaj eksterajn punktojn',
 	'mwe-clipedit-sc_overlays' => 'Surmetoj',
 	'mwe-clipedit-sc_audio' => 'Aŭdia kontrolilo',
 	'mwe-clipedit-sc_duration' => 'Daŭro',
@@ -492,7 +507,7 @@ $messages['eo'] = array(
 	'mwe-clipedit-preview_inout' => 'Antaŭvidi enajn kaj eksterajn punktojn',
 	'mwe-clipedit-edit-tools' => 'Redaktiloj',
 	'mwe-clipedit-inline-description' => 'Subteksto',
-	'mwe-clipedit-edit-video-tools' => 'Video-redaktiloj',
+	'mwe-clipedit-edit-video-tools' => 'Iloj por redakti videojn:',
 	'mwe-clipedit-duration' => 'Daŭro:',
 	'mwe-clipedit-layout' => 'Aspekto',
 	'mwe-clipedit-layout_right' => 'Bilda aspekto dekstren',
