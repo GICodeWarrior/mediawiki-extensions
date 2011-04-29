@@ -37,6 +37,14 @@ $messages['qqq'] = array(
 	'bookinfo-result-year' => '{{Identical|Year}}',
 );
 
+/** ꢱꣃꢬꢵꢯ꣄ꢡ꣄ꢬꢵ (ꢱꣃꢬꢵꢯ꣄ꢡ꣄ꢬꢵ)
+ * @author MooRePrabu
+ */
+$messages['saz'] = array(
+	'bookinfo-result-author' => 'ꢭꢶꢒ꣄ꢒꢸꢥꢵꢬ꣄',
+	'bookinfo-result-year' => 'ꢏꢬ꣄ꢱꢸ',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
