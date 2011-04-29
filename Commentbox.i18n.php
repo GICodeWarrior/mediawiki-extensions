@@ -78,6 +78,7 @@ $messages['arc'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'commentbox-name' => 'Ad:',
 	'commentbox-first-comment-heading' => '== Şərhlər ==',
 );
 
