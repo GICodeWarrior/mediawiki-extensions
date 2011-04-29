@@ -138,6 +138,7 @@ $messages['arz'] = array(
  */
 $messages['az'] = array(
 	'importfreeimages_owner' => 'Müəllif',
+	'importfreeimages_next' => 'Növbəti $1',
 	'importfreeimages_size_small' => 'Kiçik',
 	'importfreeimages_size_large' => 'Geniş',
 	'importfreeimages_size_original' => 'Orijinal',
