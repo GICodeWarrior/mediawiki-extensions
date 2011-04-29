@@ -33,7 +33,10 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'webfonts' => 'Fontoù Kenrouedad',
+	'webfonts-desc' => "Ensoc'hañ a ra ar fontoù er pajennoù",
 	'webfonts-load' => 'Diuzañ ar font',
+	'webfonts-disable-preference' => "Diweredekaat an ensoc'hañ fontoù (Fontoù Kenrouedad)",
 );
 
 /** Bosnian (Bosanski)
