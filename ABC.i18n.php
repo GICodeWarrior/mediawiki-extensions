@@ -112,6 +112,19 @@ $messages['ast'] = array(
 	'abcdownload' => 'Descargar:',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ * @author Vago
+ */
+$messages['az'] = array(
+	'abcdownload' => 'Yüklə:',
+	'abcabc' => 'ABC',
+	'abcpdf' => 'PDF',
+	'abcps' => 'PostScript',
+	'abcmidi' => 'MIDI',
+	'abcvorbis' => 'Ogg Vorbis',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  * @author Comp1089
@@ -1076,11 +1089,13 @@ $messages['tr'] = array(
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
  * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
 	'abc-desc' => 'ABC музыкасын төзәтүе өчен <code>&lt;abc&gt;</code> тэгын куша',
 	'abcdownload' => 'Йөкләргә:',
+	'abcabc' => 'ABC',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)
