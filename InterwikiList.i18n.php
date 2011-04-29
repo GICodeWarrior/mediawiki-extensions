@@ -223,6 +223,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'interwikilist' => 'Intervikia listo',
+	'interwikilist-desc' => 'Aldonas [[Special:Interwikilist|specialan paĝon]] por rigardi atingeblajn intervikiajn ligilojn',
 	'interwikilist-linkname' => 'Intervikia ligilo',
 	'interwikilist-target' => 'Cela URL-o',
 	'interwikilist-filter' => 'Filtrila listo',
