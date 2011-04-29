@@ -334,6 +334,8 @@ $messages['avk'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
+ * @author Vugar 1981
  */
 $messages['az'] = array(
 	'ogg-play' => 'Başla',
@@ -341,8 +343,19 @@ $messages['az'] = array(
 	'ogg-stop' => 'Dur',
 	'ogg-play-video' => 'Videonu başla',
 	'ogg-play-sound' => 'Səsi başla',
+	'ogg-player-cortado' => 'Cortado (Java)',
+	'ogg-player-vlc-mozilla' => 'VLC',
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',
+	'ogg-player-quicktime-mozilla' => 'QuickTime',
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',
+	'ogg-player-totem' => 'Totem',
+	'ogg-player-kmplayer' => 'KMPlayer',
+	'ogg-player-kaffeine' => 'Kaffeine',
+	'ogg-player-mplayerplug-in' => 'mplayerplug-in',
+	'ogg-player-selected' => '(seçildi)',
 	'ogg-more' => 'Çox…',
 	'ogg-dismiss' => 'Bağla',
+	'ogg-download' => 'Fayl yüklə',
 );
 
 /** Bashkir (Башҡортса)
@@ -2577,6 +2590,13 @@ $messages['oc'] = array(
 	'ogg-dismiss' => 'Tampar',
 	'ogg-download' => 'Telecargar lo fichièr',
 	'ogg-desc-link' => "A prepaus d'aqueste fichièr",
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'ogg-dismiss' => 'ବନ୍ଦ କରନ୍ତୁ',
 );
 
 /** Ossetic (Иронау)
