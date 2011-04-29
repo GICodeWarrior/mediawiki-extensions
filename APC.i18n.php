@@ -630,9 +630,12 @@ $messages['arz'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'viewapc-display-info' => 'Ad',
+	'viewapc-display-type' => 'Tipi',
 	'viewapc-ls-header-name' => 'Ad',
 	'viewapc-ls-header-size' => 'Həcm',
 	'viewapc-ls-scope-active' => 'Aktiv',
+	'viewapc-ls-sort-size' => 'Həcm',
 	'viewapc-ls-sort-name' => 'Ad',
 );
 
@@ -4196,12 +4199,26 @@ APC liek neet gesjtart te zeen.',
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Perkunas
  * @author Tomasdd
  */
 $messages['lt'] = array(
 	'viewapc-mode-version-check' => 'Tikrinti versiją',
+	'viewapc-info-general' => 'Bendra informacija',
 	'viewapc-apc-version' => 'APC versija',
 	'viewapc-php-version' => 'PHP versija',
+	'viewapc-memory-usage' => 'Atminties naudojimas',
+	'viewapc-display-attribute' => 'Atributas',
+	'viewapc-display-value' => 'Reikšmė',
+	'viewapc-display-filename' => 'Failo pavadinimas',
+	'viewapc-display-device' => 'Įrenginys',
+	'viewapc-display-info' => 'Pavadinimas',
+	'viewapc-display-ttl' => 'Galiojimo laikas',
+	'viewapc-display-type' => 'Tipas',
+	'viewapc-display-mtime' => 'Pakeista',
+	'viewapc-display-creation_time' => 'Sukurta',
+	'viewapc-display-deletion_time' => 'Ištrinta',
+	'viewapc-display-mem_size' => 'Dydis',
 );
 
 /** Latgalian (Latgaļu)
@@ -5683,6 +5700,7 @@ O versiune mai nouă $2 este disponibilă la http://pecl.php.net/package/APC/$2'
  */
 $messages['roa-tara'] = array(
 	'apc' => "'Mbormaziune APC",
+	'right-apc' => "AUse tutte le funziune jndr'à [[Special:APC|APC]]",
 	'viewapc-info-general' => "'Mbormaziune generale",
 	'viewapc-apc-version' => 'versione APC',
 	'viewapc-php-version' => 'versione PHP',
