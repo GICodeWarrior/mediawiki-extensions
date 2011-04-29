@@ -39,6 +39,17 @@ $messages['be-tarask'] = array(
 	'fileattach-editcomment' => 'Файл [[File:$1|$1]] далучаны',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'fileattach-desc' => 'Aotren a ra enporzhiañ restroù war ar bajenn red',
+	'fileattach-attachments' => 'Stagadennoù ar restr',
+	'fileattach-attachfile' => 'Stagañ ar restr',
+	'fileattach-uploadheading' => 'Stagañ ar restr da $1',
+	'fileattach-editcomment' => 'Restr [[File:$1|$1]] stag',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -57,6 +68,17 @@ $messages['fr'] = array(
 	'fileattach-attachfile' => 'Joindre un fichier',
 	'fileattach-uploadheading' => 'Joindre un fichier à $1',
 	'fileattach-editcomment' => 'Fichier [[Fichier:$1|$1]] joint',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'fileattach-desc' => 'Permite cargar ficheiros na páxina actual',
+	'fileattach-attachments' => 'Arquivos adxuntos',
+	'fileattach-attachfile' => 'Anexar un ficheiro',
+	'fileattach-uploadheading' => 'Anexar un ficheiro en $1',
+	'fileattach-editcomment' => 'Anexouse o ficheiro "[[File:$1|$1]]"',
 );
 
 /** Hebrew (עברית)
@@ -79,6 +101,17 @@ $messages['ia'] = array(
 	'fileattach-attachfile' => 'Annexar file',
 	'fileattach-uploadheading' => 'Annexar file a $1',
 	'fileattach-editcomment' => 'Le file [[File:$1|$1]] ha essite annexate',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'fileattach-desc' => 'Memungkinkan pengunggahan langsung berkas ke suatu halaman',
+	'fileattach-attachments' => 'Lampiran berkas',
+	'fileattach-attachfile' => 'Lampirkan berkas',
+	'fileattach-uploadheading' => 'Melampirkan berkas ke $1',
+	'fileattach-editcomment' => 'Berkas [[File:$1|$1]] dilampirkan',
 );
 
 /** Colognian (Ripoarisch)
