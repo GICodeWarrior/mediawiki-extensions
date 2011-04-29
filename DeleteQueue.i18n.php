@@ -658,6 +658,7 @@ $messages['az'] = array(
 	'deletequeue-vote-submit' => 'Yolla',
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-case-page' => 'Səhifə:',
+	'deletequeue-case-reason' => 'Səbəb:',
 );
 
 /** Bavarian (Boarisch)
