@@ -63,6 +63,13 @@ $messages['arz'] = array(
 	'eval_code' => 'كود',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'eval_code' => 'Kod',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -82,6 +89,14 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'eval-desc' => 'Добавя [[Special:Eval|интерфейс]] за функцията <code>eval()</code>',
 	'eval_code' => 'Код',
+);
+
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'eval_out' => 'আউটপুট',
+	'eval_code' => 'কোড',
 );
 
 /** Breton (Brezhoneg)
@@ -659,9 +674,11 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
+	'eval-desc' => '<code>eval()</code> ఫంక్షన్ కు [[Special:Eval|ఓ ఇంటరుఫేసును]]  చేరుస్తుంది',
 	'eval_code' => 'కోడు',
 );
 
