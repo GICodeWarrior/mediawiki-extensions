@@ -106,10 +106,14 @@ $messages['az'] = array(
 	'mwe-clipedit-crop' => 'Şəklin kəsilməsi',
 	'mwe-clipedit-insert_image_page' => 'Səhifəyə əlavə et',
 	'mwe-clipedit-cancel_image_insert' => 'Əlavəni dayandır',
+	'mwe-clipedit-sc_audio' => 'Audionəzarət',
 	'mwe-clipedit-edit_properties' => 'Xüsusiyyətləri dəyişdir',
 	'mwe-clipedit-other_properties' => 'Digər xüsusiyyətlər',
 	'mwe-clipedit-start_time' => 'Başlanğıc vaxt',
 	'mwe-clipedit-end_time' => 'Bitmə vaxtı',
+	'mwe-clipedit-edit-tools' => 'Alətlərin redaktəsi',
+	'mwe-clipedit-inline-description' => 'Başlıq',
+	'mwe-clipedit-layout' => 'Maket',
 );
 
 /** Bashkir (Башҡортса)
@@ -705,7 +709,7 @@ $messages['gl'] = array(
 	'mwe-clipedit-cancel_image_insert' => 'Cancelar a inserción',
 	'mwe-clipedit-sc_attributes' => 'Edición dos detalles do clip',
 	'mwe-clipedit-sc_inoutpoints' => 'Establecer os puntos de entrada-saída',
-	'mwe-clipedit-sc_overlays' => 'Sobreposicións',
+	'mwe-clipedit-sc_overlays' => 'Superposicións',
 	'mwe-clipedit-sc_audio' => 'Control de son',
 	'mwe-clipedit-sc_duration' => 'Duración',
 	'mwe-clipedit-template_properties' => 'Propiedades do modelo',
@@ -1087,6 +1091,24 @@ $messages['lb'] = array(
 	'mwe-clipedit-layout' => 'Layout',
 	'mwe-clipedit-layout_right' => 'Layout vum Bild op der rietser Säit',
 	'mwe-clipedit-layout_left' => 'Layout vum Bild op der lénker Säit',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'mwe-clipedit-crop' => 'Apkarpyti paveiklėlį',
+	'mwe-clipedit-apply_crop' => 'Taikyti apkarpyma paveikslėliui',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'mwe-clipedit-crop' => 'Apgriezt attēlu',
+	'mwe-clipedit-apply_crop' => 'Izgriezt izvēlēto apgabalu',
+	'mwe-clipedit-reset_crop' => 'Atiestatīt izgriežamo apgabalu',
+	'mwe-clipedit-insert_image_page' => 'Ievietot lapā',
 );
 
 /** Macedonian (Македонски)

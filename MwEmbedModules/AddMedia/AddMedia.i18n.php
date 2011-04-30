@@ -728,6 +728,7 @@ Pues $1 y volver a tentalo',
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  * @author Vugar 1981
  */
 $messages['az'] = array(
@@ -738,21 +739,37 @@ $messages['az'] = array(
 	'mwe-uploaderror' => 'Yükləmə xətası',
 	'mwe-uploadwarning' => 'Yükləmə xəbərdarlığı',
 	'mwe-unknown-error' => 'Naməlum xəta:',
+	'mwe-return-to-form' => 'Formaya qayıtmaq',
+	'mwe-fileexists-thumb' => 'Mövcud fayl',
+	'mwe-thumbnail-more' => 'Böyüt',
 	'mwe-filesource' => 'Mənbə:',
 	'mwe-filestatus' => 'Müəllif statusu:',
+	'mwe-import-description' => '$1, $2 tərəfindən daxil edilmişdir',
 	'mwe-select_file' => 'Faylı seç',
 	'mwe-upload' => 'Fayl yüklə',
 	'mwe-summary' => 'Xülasə',
+	'mwe-date-of-work' => 'İşin tarixi',
 	'mwe-link-login' => 'loqin',
 	'mwe-watch-this-file' => 'Bu faylı izlə',
 	'mwe-ignore-any-warnings' => 'Bütün xəbərdarlıqlara məhəl qoymamaq',
+	'mwe-i-would-like-to' => 'İstərdim ki,',
+	'mwe-upload-own-file' => 'Mənim şəxsi işimi $1 yüklə',
 	'mwe-uploaded-status' => 'Yüklənmiş',
+	'mwe-transcoded-status' => 'Kodu dəyişdirilib',
+	'mwe-uploaded-time-remaining' => 'Qalan vaxt: $1',
+	'mwe-am-results_desc' => '$1–$2 nəticələri',
 	'mwe-am-results_next' => 'sonrakı',
 	'mwe-am-results_prev' => 'əvvəlki',
+	'mwe-upload_tab' => 'Fayl yüklə',
 	'mwe-link' => 'keçid',
 	'mwe-cc_nc_title' => 'Qeyri-kommersiya',
 	'mwe-cc_sa_title' => 'Bənzər paylaşma',
 	'mwe-cc_pd_title' => 'İctimai istifadə',
+	'mwe-your-recent-uploads' => 'Sizin yükləmələriniz',
+	'mwe-your-recent-uploads-to' => '$1 üzrə bir az əvvəlki yükləmələriniz',
+	'mwe-upload-a-file' => 'Yeni fayl yüklə',
+	'mwe-watch_this_page' => 'Bu səhifəni izlə',
+	'mwe-am-this_wiki-title' => 'Bu viki',
 );
 
 /** Bashkir (Башҡортса)
@@ -2208,10 +2225,14 @@ Vidu originalan [$4 fontpaĝon] por plia informo.',
 	'mwe-import-description' => '$1, importita de $2',
 	'mwe-select_file' => 'Elekti dosieron',
 	'mwe-select_ownwork' => 'Mi alŝutas tute propran verkon, kaj permesas uzon sub:',
+	'mwe-license_cc-by-sa' => 'Permesilo Creative Commons Samkondiĉe (3.0)',
 	'mwe-upload' => 'Alŝuti dosieron',
 	'mwe-destfilename' => 'Cela dosieronomo:',
 	'mwe-summary' => 'Resumo',
 	'mwe-date-of-work' => 'Dato de la verko',
+	'mwe-error_not_loggedin' => 'Verŝajne vi ne estas ensalutita aŭ ne havas alŝutadajn rajtojn.',
+	'mwe-error-not-loggedin-file' => 'Verŝajne vi ne estas ensalutita aŭ okazis eraro en la programaro.
+Vi povas $1 kaj reprovi',
 	'mwe-link-login' => 'ensaluti',
 	'mwe-watch-this-file' => 'Atentu ĉi tiun dosieron',
 	'mwe-ignore-any-warnings' => 'Ignori la avertojn',
@@ -2222,9 +2243,15 @@ Vidu originalan [$4 fontpaĝon] por plia informo.',
 Post vi estas finita vian alŝutado, $2',
 	'mwe-upload-in-new-win-link' => 'alŝuti en la nova fenestro aŭ etikedo',
 	'mwe-upload-refresh' => 'refreŝigi vian alŝuto-liston.',
+	'mwe-ie-inline-upload' => 'Enlinia alŝutado estas nune malŝaltita por Interreta Esplorilo.
+Vi povas $1, poste $2',
+	'mwe-upload-in-progress' => 'Alŝuto okazas (ne fermu ĉi tiun fenestron)',
 	'mwe-uploaded-status' => 'Alŝutita',
 	'mwe-transcoded-status' => 'Transkodita',
 	'mwe-uploaded-time-remaining' => 'Tempo restas: $1',
+	'mwe-upload-done' => 'Via alŝuto <i>probable estas</i> atingebla.',
+	'mwe-add_media_wizard' => 'Asistilo por aldoni dosierojn',
+	'mwe-media_search' => 'Serĉi dosierojn',
 	'mwe-am-box_layout' => 'Skatola aspekto',
 	'mwe-am-list_layout' => 'Lista aspekto',
 	'mwe-am-results_desc' => 'Rezultoj $1 al $2',
@@ -2250,16 +2277,27 @@ Post vi estas finita vian alŝutado, $2',
 	'mwe-results_from' => 'Rezultoj de $1',
 	'mwe-missing_desc_see_source' => 'Resumo mankas al ĉi tiu rimedo.
 Bonvolu kontroli la [$1 fonto] kaj helpu priskribi ĝin.',
+	'mwe-am-config_error' => 'Agordo-eraro okazis en asistilo por aldoni dosierojn: $1',
+	'mwe-your-recent-uploads' => 'Viaj alŝutoj',
 	'mwe-your-recent-uploads-to' => 'Viaj lastatempaj alŝutoj al $1',
 	'mwe-no_recent_uploads' => 'Neniuj lastatempaj alŝutoj',
+	'mwe-not-logged-in-uploads' => 'Vi verŝajne ne estas ensalutita, do lastatempaj alŝutoj ne estas montreblaj. [$1 Bonvolu ensaluti] kaj [$2 reprovi].',
 	'mwe-ie-eye-permision' => 'Se uzante Interreta Esplorilo kaj estas ensalutita, vi eble bezonos reagordi viajn privatecajn agordojn',
 	'mwe-upload-a-file' => 'Alŝuti novan dosieron',
 	'mwe-upload-a-file-to' => 'Alŝuti novan dosieron al $1',
+	'mwe-resource_page_desc' => 'Priskribo en fonto-paĝo:',
+	'mwe-edit_resource_desc' => 'Redakti la vikitekston de fonto-priskribo:',
 	'mwe-local_resource_title' => 'Titolo de loka fonto:',
 	'mwe-watch_this_page' => 'Atenti tiun ĉi paĝon',
 	'mwe-do_import_resource' => 'Importi fonton',
+	'mwe-update_preview' => 'Ĝisdatigi antaŭvidon de fonto-paĝo',
+	'mwe-return-search-results' => 'Reveni al serĉrezultoj',
+	'mwe-importing_asset' => 'Importa rimedo',
+	'mwe-preview_insert_resource' => 'Antaŭvidi enmeton de rimedo: $1',
 	'mwe-do-more-modification' => 'Modifi plu',
 	'mwe-checking-resource' => 'Kontrolante rimedon',
+	'mwe-resource-needs-import' => 'Rimedo $1 devas esti importita al $2',
+	'mwe-warning-upload-to-commons' => '$1 rekomendas ke vi alŝutas al Wikimedia-Komunejo, nur alŝutu post vi legis $2',
 	'mwe-local-upload-policy-link' => 'kondiĉoj por alŝutado',
 	'mwe-ftype-svg' => 'SVG vektora dosiero',
 	'mwe-ftype-jpg' => 'JPEG bilda dosiero',
@@ -2269,8 +2307,15 @@ Bonvolu kontroli la [$1 fonto] kaj helpu priskribi ĝin.',
 	'mwe-ftype-unk' => 'Nekonata dosierformato',
 	'mwe-am-commons' => 'Wikimedia Komunejo, arĥivo de libere licencita edukada mediaĵaro (bildoj, sonaĵoj, kaj videoj)',
 	'mwe-am-kaltura-title' => 'Serĉo Kaltura (ĉiuj fontoj)',
+	'mwe-am-kaltura' => 'Kunmetita serĉo Kaltura por libere permesitaj dosieroj trans multaj serĉ-proviziloj',
 	'mwe-am-this_wiki-title' => 'Ĉi tiu vikio',
 	'mwe-am-this_wiki-desc' => 'La loka vikio',
+	'mwe-am-archive_org-desc' => 'La "Internet Archive" (Interreta Arkivo), cifereca biblioteko de kulturaĵoj',
+	'mwe-am-flickr-desc' => 'Flickr.com, retejo por komunaj fotoj',
+	'mwe-am-metavid-desc' => 'Metavid.org, komunuma arkivo de usona parlamento',
+	'mwe-am-search-timeout' => 'La serĉo-mendo ne kompletiĝis.
+Eble la servilo estas peze ŝarĝita.
+Retrovu poste.',
 	'mwe-upload-transcoded-status' => 'Transkodita',
 	'mwe-upload-transcode-in-progress' => 'Transkodigado kaj alŝutado okazantaj (ne fermu ĉi tiun fenestron)',
 	'mwe-upload-multi' => 'Alŝuti {{PLURAL:$1|dosieron|dosierojn}}',
@@ -4556,6 +4601,7 @@ $messages['lv'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Perkunas
  */
 $messages['lt'] = array(
@@ -4567,19 +4613,41 @@ $messages['lt'] = array(
 	'mwe-uploadwarning' => 'Įkėlimo įspėjimas',
 	'mwe-unknown-error' => 'Nežinoma klaida:',
 	'mwe-return-to-form' => 'Grįžti į formą',
+	'mwe-file-exists-duplicate' => 'Šis failas yra dublikatas šio failo:',
+	'mwe-fileexists' => 'Failas tokiu pavadinimu jau egzistuoja. Prašome patikrinti <code><b>$1</b></code> jei nesate tikras, ar jūs norite jį pakeisti.',
+	'mwe-fileexists-thumb' => 'Esamas failas',
 	'mwe-ignorewarning' => 'Nepaisyti įspėjimo ir įrašyti failą, bet kokiu atveju',
 	'mwe-file-thumbnail-no' => 'Failo vardas prasideda <code><b>$1</b></code>',
 	'mwe-upload-misc-error' => 'Nežinoma įkėlimo klaida',
 	'mwe-thumbnail-more' => 'Padidinti',
+	'mwe-filesource' => 'Šaltinis:',
+	'mwe-filestatus' => 'Autorystės teisės:',
+	'mwe-imported_from' => '$1importuotas iš [$2 $3].
+Peržiūrėti originalą [$4 išteklių puslapio] dėl informacijos.',
+	'mwe-import-description' => '$1, importuotas iš $2',
+	'mwe-select_file' => 'Pasirinkite failą',
 	'mwe-select_ownwork' => 'Aš keliu grynai mano darbą ir licencijuoju jį:',
+	'mwe-upload' => 'Įkelti failą',
+	'mwe-date-of-work' => 'Darbo dienos',
 	'mwe-watch-this-file' => 'Stebėti šį failą',
+	'mwe-upload-in-progress' => 'Įkelimas viksta (Neuždarykite šio puslapio)',
+	'mwe-uploaded-status' => 'Įkelta',
 	'mwe-am-results_next' => 'kitas',
 	'mwe-am-results_prev' => 'ankstesnis',
 	'mwe-upload_tab' => 'Įkelti failą',
 	'mwe-am-layout' => 'Išdėstymas:',
+	'mwe-am-do_insert' => 'Įterpti',
+	'mwe-results_from' => 'Rezultatai iš $1',
+	'mwe-watch_this_page' => 'Stebėti šį puslapį',
+	'mwe-return-search-results' => 'Grįžti į paieškos rezultatus',
+	'mwe-ftype-jpg' => 'JPEG paveiksliuko failas',
+	'mwe-ftype-png' => 'PNG paveiksliuko failas',
+	'mwe-ftype-oga' => 'Ogg garso failas',
+	'mwe-ftype-ogg' => 'Ogg vaizdo failas',
 	'mwe-ftype-unk' => 'Nežinomas failo formatas',
 	'mwe-am-this_wiki-title' => 'Šis wiki',
 	'mwe-am-this_wiki-desc' => 'Vietinis wiki',
+	'mwe-am-flickr-desc' => 'Flickr.com, internetinė nuotraukų dalijimosi svetainėje',
 );
 
 /** Latvian (Latviešu)
@@ -7007,6 +7075,13 @@ $messages['te'] = array(
 	'mwe-am-this_wiki-desc' => 'స్థానిక వికీ',
 	'mwe-upload-multi' => '{{PLURAL:$1|ఫైలు|ఫైళ్ళు}} ఎక్కించు',
 	'mwe-review-upload' => 'ఫైలు {{PLURAL:$1|ఎక్కింపును|ఎక్కింపులను}} సమీక్షించు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'mwe-summary' => 'Rezumu',
 );
 
 /** Thai (ไทย)
