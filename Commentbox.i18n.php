@@ -1079,6 +1079,13 @@ $messages['te'] = array(
 	'commentbox-error-empty-comment' => 'ఖాళీ వ్యాఖ్యలని అనుమతించము!',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'commentbox-name' => 'Naran:',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
