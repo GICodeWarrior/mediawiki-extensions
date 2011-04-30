@@ -1112,6 +1112,13 @@ $messages['te'] = array(
 	'security-type-namespace' => 'పేరుబరి',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'security-type-category' => 'kategoria',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */
