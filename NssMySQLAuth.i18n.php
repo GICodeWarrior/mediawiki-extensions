@@ -1074,6 +1074,14 @@ $messages['te'] = array(
 	'nss-welcome-mail-subject' => 'ఖాతా సృష్టింపు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'am-username' => "naran uza-na'in",
+	'am-active' => 'ativu',
+);
+
 /** Turkmen (Türkmençe)
  * @author Hanberke
  */
