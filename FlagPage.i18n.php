@@ -63,6 +63,19 @@ $messages['be-tarask'] = array(
 	'flagpage-tab' => 'Пазначыць',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'flagpage-nopageselectedtitle' => 'কোনো পাতা নির্বাচন করা হয়নি',
+	'flagpage-nopageselected' => 'আপনি কোনো পাতা নির্বাচন করেন নি',
+	'flagpage-emptylisttitle' => 'কোনো টেমপ্লেট কনফিগার করা হয়নি',
+	'flagpage-preview' => 'নির্বাচিত টেমপ্লেটের প্রাকদর্শন:',
+	'flagpage-confirmsave' => 'অনুগ্রহপূর্বক আপনার পরিবর্তনসমূহ নিশ্চিত করুন।',
+	'flagpage-submitbutton' => 'এই টেমপ্লেটসহ পাতা সংরক্ষন করুন',
+	'flagpage-tab' => 'পতাকা',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
