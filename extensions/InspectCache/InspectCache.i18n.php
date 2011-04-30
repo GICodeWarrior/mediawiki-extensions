@@ -132,10 +132,18 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Wikitanvir
  * @author Zaheen
  */
 $messages['bn'] = array(
+	'inspectcache' => 'ক্যাশে পরীক্ষা',
+	'inspectcache-general' => 'সাধারণ ক্যাশে',
+	'inspectcache-parser' => 'পার্সার ক্যাশে',
+	'inspectcache-message' => 'বার্তা ক্যাশে',
 	'inspectcache-delete' => 'মুছে ফেলা হোক',
+	'inspectcache-deleted' => 'অপসারিত ক্যাশে',
+	'inspectcache-list' => 'তালিকা',
+	'right-inspectcache' => 'ক্যাশে সংযোজনসমূহ প্রদর্শন ও অপসারণ করো',
 );
 
 /** Breton (Brezhoneg)

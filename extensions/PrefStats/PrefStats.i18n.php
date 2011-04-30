@@ -2703,6 +2703,7 @@ Bonyeza kitu ili kuangalia takwimu zake.',
 
 /** Tamil (தமிழ்)
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'prefstats' => 'விருப்பங்களின் புள்ளிவிவரங்கள்',
@@ -2711,7 +2712,7 @@ $messages['ta'] = array(
 	'prefstats-factor-hour' => 'மணி',
 	'prefstats-factor-sixhours' => 'ஆறு மணி நேரம்',
 	'prefstats-factor-day' => 'நாள்',
-	'prefstats-factor-week' => 'வாரம்',
+	'prefstats-factor-week' => 'கிழமை (வாரம்)',
 	'prefstats-factor-twoweeks' => 'இரண்டு வாரங்கள்',
 	'prefstats-factor-fourweeks' => 'நான்கு வாரங்கள்',
 	'prefstats-legend-out' => 'விருப்பத்துடன் வெளியேறு',

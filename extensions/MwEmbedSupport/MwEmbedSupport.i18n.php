@@ -55,7 +55,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'mwembed-desc' => 'Pourvezañ a ra ur skor evit  modulennoù hag astennoù mwEmbed',
+	'mwembed-desc' => 'Pourvezañ a ra ur skor evit modulennoù hag astennoù mwEmbed',
 );
 
 /** Bosnian (Bosanski)

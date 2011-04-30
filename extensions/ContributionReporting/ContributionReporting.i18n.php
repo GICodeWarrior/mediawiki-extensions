@@ -635,11 +635,21 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
+	'contributionreporting-desc' => 'উইকিমিডিয়া তহবিল গঠনের ওপর সরাসরি প্রতিবেদন',
+	'contributiontotal' => 'সর্বমোট অনুদান',
+	'contributionhistory' => 'অনুদানের ইতিহাস',
+	'contrib-hist-header' => 'বিশ্বের বিভিন্ন স্থান হতে দাতাদের মন্তব্যসমূহ',
 	'contrib-hist-name' => 'নাম',
 	'contrib-hist-date' => 'সময় ও তারিখ',
 	'contrib-hist-amount' => 'পরিমাণ',
+	'contrib-hist-next' => 'পূর্বের অনুদানসমূহ',
+	'contrib-hist-previous' => 'নতুন অনুদানসমূহ',
+	'contrib-hist-anonymous' => 'বেনামী',
+	'contributionstatistics' => 'অনুদানের ইতিহাস',
+	'contribstats-desc' => 'উইকিমিডিয়া ফাউন্ডেশনকে প্রদানকৃত অনুদানের পরিসংখ্যান প্রদর্শন করো',
 	'contribstats-day' => 'দিন',
 	'contribstats-month' => 'মাস',
 	'contribstats-currency' => 'মুদ্রা',
@@ -650,19 +660,43 @@ $messages['bn'] = array(
 	'contribstats-max' => 'সর্বোচ্চ (USD)',
 	'contribstats-percentage-ytd' => 'শতকরা (YTD)',
 	'contribstats-total-ytd' => 'মোট (YTD)',
+	'contribstats-value-exactly' => 'ঠিক $1',
+	'contribstats-value-under' => '$1-এ নিচে',
+	'contribstats-value-from' => '$1 থেকে - $2',
+	'contribstats-value-over' => '$1-এর ওপর',
+	'contributiontrackingstatistics' => 'অনুদান অনুসরণের পরিসংখ্যান',
+	'contribstats-day-totals' => 'দিনের সর্বমোট',
+	'contribstats-week' => 'সপ্তাহ',
+	'contribstats-payment-type' => 'পরিশোধের ধরন',
 	'contribstats-banner' => 'ব্যানার',
+	'contribstats-payment-type-hits' => 'পরিশোধের ধরনের হিট',
 	'contribstats-clicks' => 'ক্লিক',
 	'contribstats-donations' => 'দান',
+	'contribstats-conversion' => 'বিনিময় হার (%)',
 	'contribstats-template' => 'টেম্পলেট',
+	'contribstats-nodata' => 'কোনো উপাত্ত প্রদান করা হয়নি',
+	'contribstats-landingpage' => 'ল্যান্ডিং পাতাসমূহ',
+	'contribstats-donatepage' => 'দানের পাতা',
 	'contribstats-average' => 'গড়',
+	'contribstats-paypal-donations' => 'পেপ্যাল অনুদান',
+	'contribstats-credit-card' => 'ক্রেডিট কার্ড',
+	'contribstats-fraud-note' => 'কিছু মৌলিক অনুদান রয়েছে।',
+	'fundraiserstatistics' => 'তহবিলগঠন পরিসংখ্যান',
 	'fundraiserstats-date' => 'তারিখ',
+	'fundraiserstats-day' => 'দিন $2-এর $1',
 	'fundraiserstats-contributions' => 'অবদান',
 	'fundraiserstats-total' => 'মোট (USD)',
 	'fundraiserstats-avg' => 'গড় (USD)',
+	'fundraiserstats-ytd' => 'গড়ে সর্বমোট (মার্কিন ডলার)',
 	'fundraiserstats-max' => 'সর্বোচ্চ (USD)',
 	'fundraiserstats-tab-totals' => 'মোট(USD)',
+	'fundraiserstats-tab-contributions' => 'অনুদানের সংখ্যা',
 	'fundraiserstats-tab-averages' => 'গড় (USD)',
 	'fundraiserstats-tab-maximums' => 'সর্বোচ্চ (USD)',
+	'fundraiserstats-customize' => 'স্বনির্ধারণ',
+	'fundraiserstats-show-years' => 'নিচের বছরগুলো দেখাও:',
+	'fundraiserstats-time-zone' => 'সময়স্থান:',
+	'fundraiserstats-utc' => '(ইউটিসি থেকে)',
 );
 
 /** Breton (Brezhoneg)
@@ -1943,7 +1977,7 @@ $messages['frp'] = array(
 	'contribstats-day-totals' => 'Soma du jorn',
 	'contribstats-week' => 'Semana',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Soma por ceta semana|Somes de la semana sur les $1 semanes passâs encllues}}',
-	'contribstats-payment-type' => 'Fôrma de payement',
+	'contribstats-payment-type' => 'Tipo de payement',
 	'contribstats-banner' => 'Baniére',
 	'contribstats-payment-type-hits' => 'Nombro per fôrma de payement',
 	'contribstats-clicks' => 'Clics',
@@ -1972,6 +2006,10 @@ $messages['frp'] = array(
 	'fundraiserstats-tab-averages' => 'Moyenes (dolars US)',
 	'fundraiserstats-tab-maximums' => 'Més (dolars US)',
 	'fundraiserstats-tab-ytd' => 'An en cors (dolars US)',
+	'fundraiserstats-customize' => 'Pèrsonalisar',
+	'fundraiserstats-show-years' => 'Fâre vêre cetos ans :',
+	'fundraiserstats-time-zone' => 'Fus horèro :',
+	'fundraiserstats-utc' => '(dês UTC)',
 );
 
 /** Friulian (Furlan)
@@ -5119,6 +5157,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'contrib-hist-name' => 'Naran',
 	'contrib-hist-date' => 'Loron ho tempu',
 	'fundraiserstats-date' => 'Tempu',
 );

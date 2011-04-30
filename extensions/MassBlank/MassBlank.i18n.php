@@ -101,6 +101,16 @@ $messages['bg'] = array(
 	'massblank-blankcomment' => 'Причина:',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'massblank-submit-user' => 'চলো',
+	'massblank-submit-blank' => 'খালি অংশ নির্বাচন করা হয়েছে',
+	'massblank-blankcomment' => 'কারণ:',
+	'right-massblank' => 'পাতা গণহারে খালি করা',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

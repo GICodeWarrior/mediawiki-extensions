@@ -58,6 +58,16 @@ $messages['be-tarask'] = array(
 	'ratings-no-votes-yet' => 'Ніхто яшчэ не адзначаў.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'ratings-desc' => 'Talvezout a ra d\'an implijerien da briziañ "perzhioù" disheñvel eus ar pajennoù',
+	'ratings-par-page' => 'Ar bajenn emeur o priziañ.',
+	'ratings-current-score' => 'Priziadenn an implijer a-vremañ : $1 ($2 {{PLURAL:$2|briziadenn|priziadenn}})',
+	'ratings-no-votes-yet' => "N'eo ket bet priziet gant den evit c'hoazh.",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

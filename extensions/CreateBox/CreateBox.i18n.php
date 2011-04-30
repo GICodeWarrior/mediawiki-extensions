@@ -118,6 +118,14 @@ $messages['bg'] = array(
 	'createbox-create' => 'Създаване',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'createbox-desc' => 'পাতা তৈরির জন্য বিশেষ ইনপুট বক্স',
+	'createbox-create' => 'তৈরি করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -304,6 +312,13 @@ $messages['fr'] = array(
 Vous ne pouvez pas créer cette page, mais vous pouvez [{{fullurl:{{FULLPAGENAME}}|action=edit}} la modifier], [{{fullurl:{{FULLPAGENAME}}}} la lire] ou choisir de créer une page différente à l’aide de la boîte ci-dessous.
 
 <createbox>break=no</createbox>",
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'createbox-create' => 'Fâre',
 );
 
 /** Galician (Galego)

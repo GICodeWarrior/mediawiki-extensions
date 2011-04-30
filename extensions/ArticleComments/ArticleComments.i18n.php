@@ -1765,6 +1765,13 @@ $messages['te'] = array(
 	'article-comments-submission-view-all' => '[[$1|ఆ పుటపై అన్ని వ్యాఖ్యలని]] మీరు చూడవచ్చు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'article-comments-name-string' => 'Naran',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

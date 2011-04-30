@@ -111,6 +111,16 @@ $messages['bg'] = array(
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|страница|страници}}',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'cooperationstatistics-tablearticle' => 'পাতার সংখ্যা',
+	'cooperationstatistics-tablevalue' => 'সম্পাদকের সংখ্যা',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|পাতা|পাতাগুলো}}',
+	'cooperationstatistics-legendmore' => 'অথবা আরও সম্পাদক।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -308,6 +318,20 @@ Voyez aussi les [[Special:MostRevisors|'''pages avec le plus de relecteurs''']] 
 	'cooperationstatistics-nblessusers' => 'ont $1 éditeurs ou moins',
 	'cooperationstatistics-nbmoreusers' => 'ont $1 éditeurs ou moins',
 	'cooperationstatistics-legendmore' => "ou plus d'éditeurs.",
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'cooperationstatistics' => 'Statistiques de coopèracion',
+	'cooperationstatistics-tablearticle' => 'Nombro de pâges',
+	'cooperationstatistics-tablevalue' => 'Nombro de contributors',
+	'cooperationstatistics-articles' => '$1 pâge{{PLURAL:$1||s}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|a|on}}t $1 contributor{{PLURAL:$1||s}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|a|on}}t $1 contributor{{PLURAL:$1||s ou ben muens}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|a|on}}t $1 ou ben més de contributors',
+	'cooperationstatistics-legendmore' => 'ou ben més de contributors.',
 );
 
 /** Galician (Galego)
@@ -844,6 +868,13 @@ $messages['te'] = array(
 	'cooperationstatistics' => 'సహకార గణాంకాలు',
 	'cooperationstatistics-tablearticle' => 'పేజీల సంఖ్య',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|పుట|పుటలు}}',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'cooperationstatistics-articles' => '{{PLURAL:$1|pájina ida|pájina $1}}',
 );
 
 /** Tagalog (Tagalog)

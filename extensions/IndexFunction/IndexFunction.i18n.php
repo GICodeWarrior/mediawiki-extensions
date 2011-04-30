@@ -167,6 +167,20 @@ $messages['bg'] = array(
 	'index-search' => 'Търсене:',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'indexfunc-badtitle' => 'অপ্রযোজ্য শিরোনাম: "$1"',
+	'index' => 'নির্ঘণ্ট অনুসন্ধান',
+	'index-legend' => 'নির্ঘণ্টে অনুসন্ধান করুন',
+	'index-search' => 'অনুসন্ধান:',
+	'index-submit' => 'জমা দাও',
+	'index-disambig-start' => "'''$1''' অনেক পাতায় নির্দেশিত হতে পারে:",
+	'index-hide-detail' => 'পাতার তালিকা লুকাও',
+	'index-no-results' => 'অনুসন্ধানটি কোনো ফলাফল ছাড়াই শেষ হয়েছে',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -1284,6 +1298,14 @@ $messages['te'] = array(
 	'index-submit' => 'దాఖలుచెయ్యి',
 	'index-hide-detail' => 'పుటల యొక్క జాబితాని దాచు',
 	'index-no-results' => 'ఈ అన్వేషణకి ఫలితాలేమీ లేవు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'index-search' => 'Buka',
+	'index-hide-detail' => 'Subar lista pájina sira-nian',
 );
 
 /** Turkmen (Türkmençe)

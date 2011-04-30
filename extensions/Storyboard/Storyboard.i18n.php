@@ -2481,6 +2481,14 @@ $messages['te'] = array(
 	'storyboard-storydeletionconfirm' => 'మీరు నిజంగానే ఈ కథనాన్ని తొలగించాలనుకుంటున్నారా?',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'storyboard-language' => 'Lian',
+	'storyboard-deletestory' => 'Hasai',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

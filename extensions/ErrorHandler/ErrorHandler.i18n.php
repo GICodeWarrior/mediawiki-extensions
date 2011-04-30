@@ -144,6 +144,16 @@ $messages['arz'] = array(
 	'errorhandler-trace-line-internal' => '[وظيفة داخلية]: $1',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'errorhandler-errors' => 'Xətalar:',
+	'errorhandler-error-warning' => 'Xəbərdarlıq',
+	'errorhandler-error-notice' => 'Qeyd',
+	'errorhandler-error-user-error' => 'İstifadəçi xətası',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -189,6 +199,27 @@ $messages['bg'] = array(
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> в <b>$3</b> (ред <b>$4</b>)',
 	'errorhandler-trace-line' => '$1 (ред $2): $3',
 	'errorhandler-trace-line-internal' => '[вътрешна функция]: $1',
+);
+
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'errorhandler-errors' => 'ত্রুটিসমূহ:',
+	'errorhandler-error-fatal' => 'ফ্যাটাল ত্রুটি',
+	'errorhandler-error-warning' => 'সতর্কীকরণ:',
+	'errorhandler-error-parse' => 'পার্সার ত্রুটি',
+	'errorhandler-error-notice' => 'নোটিশ',
+	'errorhandler-error-deprecated' => 'বাতিল হয়েছে',
+	'errorhandler-error-core-error' => 'কোড ত্রুটি',
+	'errorhandler-error-core-warning' => 'কোড সতর্কীকরণ',
+	'errorhandler-error-compile-error' => 'কম্পাইল ত্রুটি',
+	'errorhandler-error-compile-warning' => 'কম্পাইল সতর্কীকরণ',
+	'errorhandler-error-user-error' => 'ব্যবহারকারী ত্রুটি',
+	'errorhandler-error-user-warning' => 'ব্যবহারকারী সতর্কীকরণ',
+	'errorhandler-error-user-notice' => 'ব্যবহারকারী নোটিশ',
+	'errorhandler-error-user-deprecated' => 'ব্যবহারকারী বাতিল হয়েছে',
+	'errorhandler-error-strict' => 'কঠোর মান',
 );
 
 /** Breton (Brezhoneg)
@@ -497,9 +528,17 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'errorhandler-desc' => 'Administrator d’èrrors por MediaWiki',
 	'errorhandler-errors' => 'Èrrors :',
+	'errorhandler-error-fatal' => 'Èrror fatala',
+	'errorhandler-error-warning' => 'Avèrtissement',
+	'errorhandler-error-deprecated' => 'Dèpassâ',
+	'errorhandler-error-core-error' => 'Èrror du gremél',
+	'errorhandler-error-core-warning' => 'Avèrtissement du gremél',
+	'errorhandler-error-compile-error' => 'Èrror de compilacion',
 );
 
 /** Galician (Galego)
@@ -1343,18 +1382,26 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
 	'errorhandler-errors' => 'పొరపాట్లు:',
+	'errorhandler-error-fatal' => 'ఫాటల్ లోపం',
 	'errorhandler-error-warning' => 'హెచ్చరిక',
 	'errorhandler-error-notice' => 'గమనిక',
+	'errorhandler-error-core-error' => 'కోర్ లోపం',
+	'errorhandler-error-core-warning' => 'కోర్ హెచ్చరిక',
+	'errorhandler-error-compile-error' => 'కంపైలు లోపం',
+	'errorhandler-error-compile-warning' => 'కంపైలు హెచ్చరిక',
 	'errorhandler-error-user-error' => 'వాడుకరి పొరపాటు',
 	'errorhandler-error-user-warning' => 'వాడుకరి హెచ్చరిక',
 	'errorhandler-error-user-notice' => 'వాడుకరి గమనిక',
+	'errorhandler-error-strict' => 'ఖచ్చితమైన ప్రమాణాలు',
 	'errorhandler-msg-text' => '$1 : $2 $3 లో ($4వ పంక్తి)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> <b>$3</b>లో (<b>$4</b>వ పంక్తి)',
 	'errorhandler-trace-line' => '$1 (లైను $2): $3',
+	'errorhandler-trace-line-internal' => '[internal function]: $1',
 );
 
 /** Tagalog (Tagalog)

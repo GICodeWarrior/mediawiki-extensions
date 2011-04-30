@@ -143,6 +143,32 @@ $messages['bg'] = array(
 	'tog-riched_toggle_remember_state' => 'Запомняне на текущото състояние',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'textrichditor' => 'রিচ এডিটর',
+	'prefs-fckeditor' => 'রিচ এডিটর',
+	'tog-riched_disable' => 'রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_main' => 'প্রধান নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_talk' => '"{{ns:talk}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_user' => '"{{ns:user}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_user_talk' => '"{{ns:user_talk}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_project' => '"{{ns:project}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_project_talk' => '"{{ns:project_talk}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_image' => '"{{ns:file}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_image_talk' => '"{{ns:file_talk}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_mediawiki' => '"{{ns:mediawiki}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_mediawiki_talk' => '"{{ns:mediawiki_talk}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_template' => '"{{ns:template}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_template_talk' => '"{{ns:template_talk}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_help' => '"{{ns:help}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_help_talk' => '"{{ns:help_talk}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_category' => '"{{ns:category}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'tog-riched_disable_ns_category_talk' => '"{{ns:category_talk}}" নামস্থানে রিচ এডিটর নিষ্ক্রিয় করো',
+	'rich_editor_new_window' => 'রিচ এডিটর নতুন পাতায় চালু করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -1265,12 +1291,19 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
 	'textrichditor' => 'సిరి కూర్పరి',
 	'prefs-fckeditor' => 'సిరి కూర్పరి',
 	'tog-riched_disable' => 'సిరి కూర్పరిని అచేతనం చేయండి',
+	'tog-riched_disable_ns_help_talk' => '"{{ns:help_talk}}" పేరుబరిలో రిచ్ ఎడిటరును అచేతనం చెయ్యి',
+	'tog-riched_disable_ns_category' => '"{{ns:category}}" పేరుబరిలో రిచ్ ఎడిటరును అచేతనం చెయ్యి',
+	'tog-riched_disable_ns_category_talk' => '"{{ns:category_talk}}" పేరుబరిలో రిచ్ ఎడిటరును అచేతనం చెయ్యి',
+	'rich_editor_new_window' => 'రిచ్ ఎడిటరును కొత్త విండోలో తెరువు',
+	'tog-riched_use_popup' => 'రిచ్ ఎడిటరును పాపప్ లో తెరువు',
+	'tog-riched_toggle_remember_state' => 'గత టాగుల్ స్థితిని గుర్తు పెట్టుకో',
 );
 
 /** Tagalog (Tagalog)

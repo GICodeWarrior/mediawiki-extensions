@@ -2917,11 +2917,12 @@ $messages['szl'] = array(
 /** Tamil (தமிழ்)
  * @author Mahir78
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'ct_bold_sample' => 'தடித்த எழுத்து',
 	'ct_bold_tip_ins' => 'தடித்த எழுத்தை உள்ளிடு',
-	'ct_bold_tip_wrap' => 'இந்த வார்த்தையை தடிமனாக்கு',
+	'ct_bold_tip_wrap' => 'இந்தச் சொல்லை தடிமனாக்கு',
 	'ct_bold_caption' => 'தடிமன்',
 	'ct_italic_sample' => 'சாய்வெழுத்து',
 	'ct_italic_tip_ins' => 'சாய்வெழுத்தை உள்ளிடு',
@@ -2990,6 +2991,14 @@ $messages['te'] = array(
 	'ct_user_tip' => 'వాడుకరి పేజీకి ఒక లింకుని చేర్చండి',
 	'ct_user_caption' => 'వాడుకరి లింకు',
 	'ct_user_sample' => 'వాడుకరిపేరు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'ct_submit' => 'OK!',
+	'ct_user_sample' => "Naran uza-na'in",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

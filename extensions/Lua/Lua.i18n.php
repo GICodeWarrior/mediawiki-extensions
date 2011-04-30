@@ -117,6 +117,16 @@ $messages['bg'] = array(
 	'lua_error_internal' => 'Вътрешна грешка',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'lua_error' => 'লাইন $1-এ ত্রুটি',
+	'lua_extension_notfound' => 'লুয়া এক্সটেনশন কনফিগার করা হয়নি',
+	'lua_interp_notfound' => 'লুয়া ইন্টারপ্রেটার খুঁজে পাওয়া যায়নি',
+	'lua_error_internal' => 'অভ্যন্তরীণ ত্রুটি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

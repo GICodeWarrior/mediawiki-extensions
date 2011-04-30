@@ -1555,6 +1555,7 @@ Lägg till några med verktygen i menyn.',
 /** Tamil (தமிழ்)
  * @author Mahir78
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'gep-desc' => 'பயனர் விரும்பும் வகையில் இந்த தொகுக்கும் பக்கம் சேர்க்கப்பட்டிருக்கிறது',
@@ -1572,7 +1573,7 @@ $messages['ta'] = array(
 	'gep-addsection' => 'பிரிவு ஒன்றை சேர்க்கவும்',
 	'gep-addsectionbutton' => 'சேர்',
 	'gep-classicmode' => 'செம்மைநிலை',
-	'gep-genericmode' => 'பரம்பரையாகவந்த நிலை',
+	'gep-genericmode' => 'பொதுமுறையான நிலை',
 	'gep-nosectioninstructions' => 'இப்பக்கத்தில் பகுதிகள் ஏதுமில்லை.
 
 கிடைநீள பட்டியலில் உள்ள கருவிகள் மூலம் பகுதிகள் சிலவற்றை உருவாக்கவும்.',

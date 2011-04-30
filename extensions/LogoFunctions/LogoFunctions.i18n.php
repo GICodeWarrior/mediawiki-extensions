@@ -38,6 +38,14 @@ $messages['be-tarask'] = array(
 	'logofunctions-filenotexist' => 'Памылка: [[File:$1]] не існуе',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'logofunctions-desc' => 'উইকির লোগো সম্মন্ধীয় পার্সার ফাংশন যোগ',
+	'logofunctions-filenotexist' => 'ত্রুটি: [[File:$1]] নামে কোনো ফাইল নেই',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal

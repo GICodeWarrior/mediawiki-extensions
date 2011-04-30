@@ -648,6 +648,13 @@ $messages['te'] = array(
 	'authors_anonymous' => 'అజ్ఞాత',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'authors_authors' => 'Autór sira',
+);
+
 /** Thai (ไทย)
  * @author Ans
  */

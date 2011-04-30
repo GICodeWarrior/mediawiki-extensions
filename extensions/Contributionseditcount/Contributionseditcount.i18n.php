@@ -232,6 +232,13 @@ $messages['fr'] = array(
 	'contributionseditcount-desc' => 'Affiche un compteur de modifications sur la [[Special:Contributions|page des contributions de l’utilisateur]]',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'contributionseditcount' => 'Ceti utilisator at fêt $1 changement{{PLURAL:$1||s}}.',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

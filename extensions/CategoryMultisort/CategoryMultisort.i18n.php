@@ -97,6 +97,17 @@ $messages['bg'] = array(
 	'prefs-category' => 'Категория',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'categorymultisort-defaultsortkey-name' => 'পূর্বনির্ধারিত',
+	'categorymultisort-sortkey' => 'সর্টকি:',
+	'categorymultisort-go' => 'চলো',
+	'categorymultisort-default-sortkey' => 'পূর্বনির্ধারিত সর্টকি:',
+	'prefs-category' => 'বিষয়শ্রেণী',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal
@@ -694,6 +705,14 @@ $messages['te'] = array(
 	'categorymultisort-defaultsortkey-name' => 'అప్రమేయం',
 	'categorymultisort-go' => 'వెళ్ళు',
 	'prefs-category' => 'వర్గం',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'categorymultisort-go' => 'OK',
+	'prefs-category' => 'Kategoria',
 );
 
 /** Tagalog (Tagalog)

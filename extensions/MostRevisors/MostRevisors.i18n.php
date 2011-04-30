@@ -881,6 +881,13 @@ $messages['te'] = array(
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|కూర్పరి|కూర్పరులు}}',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'mostrevisors-submit' => 'OK',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

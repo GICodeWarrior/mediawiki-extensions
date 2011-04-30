@@ -50,6 +50,13 @@ $messages['ca'] = array(
 	'categorymembersonsidebar-desc' => 'Afegeix membres de la categoria a la barra lateral',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'categorymembersonsidebar-desc' => 'Přidá členy kategorie na boční panel',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

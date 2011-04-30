@@ -278,8 +278,14 @@ $messages['arc'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
+ * @author Vago
  */
 $messages['az'] = array(
+	'fogg-preset-custom' => 'İstifadəçi nizamlamaları',
+	'fogg-starttime-title' => 'Başlanğıc saniyə',
+	'fogg-endtime-title' => 'Bu saniyədə bitir',
+	'fogg-audioQuality-title' => 'Audio keyfiyyəti',
+	'fogg-width-title' => 'Videonun eni',
 	'fogg-title-title' => 'Başlıq',
 	'fogg-date-title' => 'Tarix',
 	'fogg-organization-title' => 'Təşkilat',
@@ -1307,7 +1313,9 @@ $messages['eo'] = array(
 	'fogg-audioQuality-title' => 'Kvalito de aŭdio',
 	'fogg-audioQuality-help' => 'Por agordi la <i>sonan kvaliton</i> de ĉifrita sondosiero (ne uzata se vi agordas bitrapido en progresaj kontroloj suben).',
 	'fogg-videoCodec-title' => 'Videokodeko',
+	'fogg-videoCodec-help' => 'Elektu videokodeko. Pli pri la <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Theora\\">kodeko Theora<\\/a>. Pli pri la <a target=\\"_new\\" href=\\"http:\\/\\/en.wikipedia.org\\/wiki\\/Webm\\">kodeko VP8<\\/a>',
 	'fogg-audioCodec-title' => 'Sonkodeko',
+	'fogg-audioCodec-help' => 'Por agordi la sono-kodeko. Nune nur Vorbis estas subtenita. Pli pri la <a target="_new" href="http://en.wikipedia.org/wiki/Vorbis">kodeko Vorbis</a>',
 	'fogg-width-title' => 'Larĝo de video',
 	'fogg-width-help' => 'Konformiĝi al specifa larĝo.',
 	'fogg-height-title' => 'Alto de video',
@@ -4574,6 +4582,7 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  * @author ఆదిహిందు
  */
@@ -4591,6 +4600,25 @@ $messages['te'] = array(
 	'fogg-license-title' => 'లైసెన్సు',
 	'fogg-contact-title' => 'సంప్రదింపులు',
 	'fogg-contact-help' => 'సంప్రదించు లంకె',
+	'fogg-select_new_file' => 'కొత్త ఫైలును ఎంచుకోండి',
+	'fogg-select_url' => 'URL ను ఎంచుకోండి',
+	'fogg-check_for_firefogg' => 'Firefogg కోసం చూస్తున్నాం...',
+	'fogg-installed' => 'Firefogg ను స్థాపించాం..',
+	'fogg-not-installed' => 'Firefogg స్థాపించి లేదు, లేదా చేతనమై లేదు.',
+	'fogg-for_improved_uploads' => 'మెరుగైన ఎక్కింపుల కోసం:',
+	'fogg-please-install' => '$1. మరింత $2',
+	'fogg-please-install-install-linktext' => 'Firefogg ను స్థాపించు',
+	'fogg-please-install-about-linktext' => 'Firefogg గురించి',
+	'fogg-use_latest_firefox' => 'ముందు $1 ను స్థాపించండి.
+<i>తరువాత తిరిగి ఈ పేజీకి వచ్చి <b>Firefogg</b> పొడిగింతను స్థాపించండి.</i>',
+	'fogg-latest-firefox' => 'ఇట్టీవలి Firefox',
+	'fogg-passthrough_mode' => 'మీరు ఎంచుకున్నది ogg ఫైలైనా అయ్యుండాలి లేదా అది వీడియో ఫైలు కాకపోయి ఉండాలి.',
+	'fogg-encoding-done' => 'ఎన్కోడింగు పూర్తయింది',
+	'fogg-badtoken' => 'ఈ టోకెన్ సరైనది కాదు',
+	'fogg-preview' => 'వీడియో మునుజూపు',
+	'fogg-hidepreview' => 'మునుజూపును దాచు',
+	'fogg-warning-firebug' => '<b>Firebug</b> వలన <i>Firefogg</i> తో ఘర్షణలు ఎదురు కావచ్చు.
+ఈ పేజీకి <b>Firebug</b> ను అచేతనం చెయ్యండి.',
 );
 
 /** Thai (ไทย)

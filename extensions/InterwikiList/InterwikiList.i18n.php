@@ -120,6 +120,16 @@ $messages['bg'] = array(
 	'interwikilist-target' => 'Целеви адрес',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'interwikilist' => 'আন্তঃউইকির তালিকা',
+	'interwikilist-target' => 'লক্ষ্য ইউআরএল',
+	'interwikilist-filter' => 'ফিল্টার তালিকা',
+	'interwikilist-prefix' => 'আন্তঃউইকি উপসর্গ:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

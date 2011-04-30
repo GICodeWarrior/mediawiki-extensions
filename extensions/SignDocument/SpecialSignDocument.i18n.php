@@ -1631,7 +1631,7 @@ $messages['frp'] = array(
 	'sign-viewfield-zip' => 'Code postâl',
 	'sign-viewfield-ip' => 'Adrèce IP',
 	'sign-viewfield-agent' => 'Agent utilisator',
-	'sign-viewfield-phone' => 'Tèlèfono',
+	'sign-viewfield-phone' => 'Numerô de tèlèfono',
 	'sign-viewfield-email' => 'Adrèce èlèctronica',
 	'sign-viewfield-age' => 'Âjo',
 	'sign-viewfield-options' => 'Chouèx',
@@ -2925,6 +2925,33 @@ Liest dat ganzt Dokument duerch a wann Dir dozou Är Ënnerstëtzung gi wëllt d
  */
 $messages['lt'] = array(
 	'sign-realname' => 'Vardas:',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'sign-realname' => 'Vārds:',
+	'sign-address' => 'Ielas adrese:',
+	'sign-city' => 'Pilsēta:',
+	'sign-state' => 'Štats:',
+	'sign-zip' => 'Pasta indekss:',
+	'sign-country' => 'Valsts:',
+	'sign-phone' => 'Tālruņa numurs:',
+	'sign-bday' => 'Vecums:',
+	'sign-email' => 'E-pasta adrese:',
+	'sign-viewfield-realname' => 'Vārds',
+	'sign-viewfield-address' => 'Adrese',
+	'sign-viewfield-city' => 'Pilsēta',
+	'sign-viewfield-state' => 'Štats',
+	'sign-viewfield-country' => 'Valsts',
+	'sign-viewfield-zip' => 'Pasta indekss',
+	'sign-viewfield-ip' => 'IP adrese',
+	'sign-viewfield-agent' => 'Lietotāja aģents',
+	'sign-viewfield-phone' => 'Tālrunis',
+	'sign-viewfield-email' => 'E-pasts',
+	'sign-viewfield-age' => 'Vecums',
+	'sign-viewfield-options' => 'Iespējas',
 );
 
 /** Eastern Mari (Олык Марий)

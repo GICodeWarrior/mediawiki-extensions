@@ -735,6 +735,13 @@ $messages['oc'] = array(
 	'latexdoc-desc' => 'Document LaTex.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'latexdoc_get_pdf' => 'PDF ତିଆରି',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Yarl

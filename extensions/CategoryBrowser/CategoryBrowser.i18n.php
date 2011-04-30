@@ -1863,6 +1863,15 @@ $messages['te'] = array(
 	'cb_edit_remove_hint' => 'వీలైతే, తొలగించు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'cb_has_pages' => '{{PLURAL:$1|pájina ida|pájina $1}}',
+	'cb_cat_pages' => 'pájina sira',
+	'cb_all_op' => 'Hotu',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

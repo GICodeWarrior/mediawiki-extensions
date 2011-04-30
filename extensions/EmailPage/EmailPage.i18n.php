@@ -200,9 +200,24 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Ehsanulhb
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
+	'e-mailpage' => 'পাতা ই-মেইল',
+	'ea-heading' => 'পাতা "[[$1]]"-কে ই-মেইল করো',
+	'ea-group-info' => 'সেই সাথে আপনি এই পাতাটি একটু দলের সদস্যদের কাছে পাঠাতে পারেন',
+	'ea-norecipients' => 'কোনো সঠিক ই-মেইল ঠিকানা খুঁজে পাওয়া যায়নি!',
+	'ea-denied' => 'অনুমতি প্রত্যাখ্যাত হয়েছে।',
+	'ea-from' => 'প্রেরক:',
+	'ea-to' => 'প্রাপক:',
+	'ea-cc' => 'সিসি:',
+	'ea-send' => 'প্রেরণ',
+	'ea-subject' => 'বিষয়:',
+	'ea-message' => 'বার্তা:',
+	'ea-style' => 'স্টাইল:',
+	'ea-selectcss' => 'আপনি একটি স্টাইলশিট নির্বাচন করতে পারেন',
 	'ea-data' => 'তথ্য',
+	'ea-allusers' => 'সকল ব্যবহারকারী',
 );
 
 /** Breton (Brezhoneg)
@@ -384,6 +399,31 @@ $messages['fr'] = array(
 	'ea-data' => 'Données',
 	'ea-selectrecord' => 'Ces modèles peuvent être utilisés pour remplir les champs dans le contenu du message',
 	'ea-allusers' => 'Tous les utilisateurs',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'e-mailpage' => 'Mandar la pâge per mèssageria èlèctronica',
+	'ea-heading' => 'Èxpèdicion de la pâge « [[$1]] » per mèssageria èlèctronica',
+	'ea-pagesend' => 'Pâge « $1 » mandâ dês $2',
+	'ea-norecipients' => 'Niona adrèce èlèctronica at étâ trovâ !',
+	'ea-listrecipients' => 'Lista de $1 dèstinatèro{{PLURAL:$1||s}}',
+	'ea-error' => "'''Èrror pendent l’èxpèdicion de [[$1]] :''' ''$2''",
+	'ea-denied' => 'Pèrmission refusâ',
+	'ea-compose' => 'Composar lo contegnu',
+	'ea-show' => 'Vêre la lista de dèstinatèros',
+	'ea-from' => 'Èxpèdior :',
+	'ea-to' => 'Dèstinatèro :',
+	'ea-cc' => 'Copia :',
+	'ea-send' => 'Mandar',
+	'ea-subject' => 'Sujèt :',
+	'ea-message' => 'Mèssâjo :',
+	'ea-style' => 'Stilo :',
+	'ea-selectcss' => 'Vos pouede chouèsir una fôlye de stilo',
+	'ea-data' => 'Balyês',
+	'ea-allusers' => 'Tôs los utilisators',
 );
 
 /** Galician (Galego)
@@ -1102,15 +1142,30 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  * @author వైజాసత్య
  */
 $messages['te'] = array(
+	'e-mailpage' => 'పేజీని ఈమెయిలు చెయ్యి',
+	'ea-desc' => '[http://phpmailer.sourceforge.net phpmailer] ను వాడి రెండరైన HTML పేజీని ఒక ఈమెయిలు అడ్రసుకు గానీ, అడ్రసుల జాబితాకు గానీ పంపించు',
+	'ea-heading' => '"[[$1]]" పేజీని ఈమెయిలు చేస్తున్నాం',
+	'ea-group-info' => 'ఇంకా, ఈ పేజీని ఏదైనా గుంపు సభ్యులకు పంపించవచ్చు',
+	'ea-pagesend' => '$2 నుండి వచ్చిన పేజీ "$1"',
+	'ea-nopage' => 'ఏ పేజీని పంపించాలో ఇవ్వలేదు. సైడుపట్టీలో గానీ, పేజీ చర్యల్లో గానీ ఉన్న ఈమెయిలు లింకును వాడండి.',
+	'ea-norecipients' => 'సరైన ఈమెయిలు అడ్రసు కనబడలేదు!',
 	'ea-denied' => 'అనుమతిని నిరాకరించాం',
+	'ea-sent' => "[[User:$3|$3]], పేజీ [[$1]] ని '''$2''' {{PLURAL:$2|గ్రాహకునికి|గ్రాహకులకు}} జయప్రదంగా పంపించారు.",
+	'ea-show' => 'గ్రాహకుల జాబితా చూపించు',
+	'ea-from' => 'నుండి:',
+	'ea-to' => 'కు:',
+	'ea-to-info' => 'ఈమెయిలు అడ్రసులను సెమికోలను, కామా, చుక్క లేదా న్యూలైను కారెక్టర్ల ద్వారా విడదీయవచ్చు',
+	'ea-cc' => 'సిసి:',
 	'ea-send' => 'పంపించు!',
 	'ea-subject' => 'విషయం:',
 	'ea-message' => 'సందేశం:',
 	'ea-style' => 'శైలి:',
+	'ea-data' => 'డేటా',
 	'ea-allusers' => 'వాడుకరులందరికీ',
 );
 

@@ -39,6 +39,13 @@ $messages['be-tarask'] = array(
 	'fileattach-editcomment' => 'Файл [[File:$1|$1]] далучаны',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'fileattach-attachfile' => 'ফাইল যোগ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -61,10 +68,21 @@ $messages['de'] = array(
 	'fileattach-editcomment' => 'Datei [[File:$1|$1]] wurde angehängt',
 );
 
+/** Greek (Ελληνικά)
+ * @author Glavkos
+ */
+$messages['el'] = array(
+	'fileattach-attachfile' => 'Επισύναψη αρχείου',
+	'fileattach-uploadheading' => 'Επισύναψη αρχείου στο $1',
+);
+
 /** French (Français)
  * @author Crochet.david
+ * @author Wyz
  */
 $messages['fr'] = array(
+	'fileattach-desc' => "Permettre l'import de fichiers pour la page courante",
+	'fileattach-attachments' => 'Fichier(s) attaché(s) :',
 	'fileattach-attachfile' => 'Joindre un fichier',
 	'fileattach-uploadheading' => 'Joindre un fichier à $1',
 	'fileattach-editcomment' => 'Fichier [[Fichier:$1|$1]] joint',
@@ -195,11 +213,15 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
 	'fileattach-desc' => 'ప్రస్తుత పుటకి దస్త్రాలను ఎక్కించే వీలుకల్పిస్తుంది',
 	'fileattach-attachments' => 'దస్త్రపు జోడింపులు',
+	'fileattach-attachfile' => 'ఫైలును జోడించు',
+	'fileattach-uploadheading' => 'ఫైలును $1 కి జోడించు',
+	'fileattach-editcomment' => 'ఫైలు [[File:$1|$1]] ను జోడించాం',
 );
 
 /** Tagalog (Tagalog)

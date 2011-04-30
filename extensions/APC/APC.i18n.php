@@ -1823,11 +1823,14 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'apc' => 'APC-informo',
+	'apc-desc' => '[[Special:APC|Vidi kaj administri kaŝmemoro APC]] per MediaWiki',
+	'right-apc' => 'Uzi ĉiujn funkciojn de [[Special:APC|APC]]',
 	'viewapc-apc-not-available' => 'Neniu informo pri kaŝmemoro estas havebla.
 APC verŝajne ne funkcias.',
 	'viewapc-clear-confirm' => 'Ĉu vi volas forviŝi la kaŝmemoron?',
 	'viewapc-clear-user-cache' => 'Forviŝi kaŝmemoron de uzantoj',
 	'viewapc-clear-code-cache' => 'Forviŝi kaŝmemoron de operacia kodo',
+	'viewapc-mode-stats' => 'Vidi la statistiko de retejo',
 	'viewapc-mode-version-check' => 'Kontroli version',
 	'viewapc-info-general' => 'Ĝenerala informo',
 	'viewapc-apc-version' => 'APC-versio',
@@ -1838,6 +1841,8 @@ APC verŝajne ne funkcias.',
 	'viewapc-start-time' => 'Tempo de starto',
 	'viewapc-uptime' => 'Tempdaŭro de operacio',
 	'viewapc-upload-support' => 'Subteno de dosiera alŝuto',
+	'viewapc-filecache-info' => 'Informo pri dosiera kaŝmemoro',
+	'viewapc-usercache-info' => 'Informo pri uzanto-kaŝmemoro',
 	'viewapc-cached-files' => 'Memorkaŝitaj dosieroj',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|dosiero|dosieroj}} ($2)',
 	'viewapc-hits' => 'Trafoj',
@@ -1873,9 +1878,12 @@ APC verŝajne ne funkcias.',
 	'viewapc-display-deletion_time' => 'Forigita',
 	'viewapc-display-no-delete' => 'Ne forigita',
 	'viewapc-display-access_time' => 'Atingita',
+	'viewapc-display-ref_count' => 'Nombrado de referencoj',
 	'viewapc-display-mem_size' => 'Pezo',
+	'viewapc-display-stored-value' => 'Konservita valoro',
 	'viewapc-display-too-big' => "''Enhavo estas tro granda por montri.''",
 	'viewapc-ls-options-legend' => 'Opcioj',
+	'viewapc-ls-options' => 'Amplekso: $1 Ordigo: $2$3$4 Serĉo: $5 $6',
 	'viewapc-ls-submit' => 'Ek!',
 	'viewapc-ls-header-name' => 'Nomo',
 	'viewapc-ls-header-hits' => 'Trafoj',
@@ -1898,12 +1906,16 @@ APC verŝajne ne funkcias.',
 	'viewapc-ls-sort-deleted' => 'Forigita',
 	'viewapc-ls-sort-timeout' => 'Tempolimo',
 	'viewapc-ls-limit-none' => 'Ĉiu',
+	'viewapc-ls-more' => "''Estas $1 {{PLURAL:$1|plia aĵo|pliaj aĵoj}}''",
 	'viewapc-ls-nodata' => "''Nenia dateno trafas''",
 	'viewapc-delete-ok' => 'Ero de kaŝmemoro <nowiki>$1</nowiki> estas forigita.',
 	'viewapc-delete-failed' => 'Malsukcesis forigi kaŝmemoreron <nowiki>$1</nowiki>.',
 	'viewapc-version-info' => 'Versia informo',
 	'viewapc-version-changelog' => 'Protokolo de ŝanĝoj',
+	'viewapc-version-failed' => 'Maleblas akiri versio-informon.',
 	'viewapc-version-ok' => 'Vi operacias la plej lastan version de APC ($1)',
+	'viewapc-version-old' => 'Vi funkciigas malnovan version de APC ($1).
+Pli novan versio $2 estas havebla ĉe http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''Dosiera kaŝejo forviŝita.'''''",
 	'viewapc-usercache-cleared' => "'''''Kaŝmemoro de programaro estis forviŝita.'''''",
 );
@@ -4229,10 +4241,15 @@ $messages['ltg'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Papuass
  * @author Xil
  */
 $messages['lv'] = array(
+	'viewapc-filecache-info' => 'Datnes kešatmiņas informācija',
+	'viewapc-usercache-info' => 'Lietotāja kešatmiņas informācija',
+	'viewapc-cached-files' => 'Datnes kešatmiņā',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|datne|datnes}} ($2)',
 	'viewapc-hits' => 'Trāpījumi',
 	'viewapc-misses' => 'Kļūdas',
 	'viewapc-rps' => '$1 pieprasījumi sekundē',
@@ -4242,6 +4259,12 @@ $messages['lv'] = array(
 	'viewapc-display-device' => 'Ierīce',
 	'viewapc-display-info' => 'Nosaukums',
 	'viewapc-ls-submit' => 'Aiziet!',
+	'viewapc-ls-sort-name' => 'Vārds',
+	'viewapc-ls-sort-accessed' => 'Pēdējoreiz skatīts',
+	'viewapc-ls-sort-modified' => 'Pēdējoreiz mainīts',
+	'viewapc-ls-sort-created' => 'Izveidots',
+	'viewapc-ls-sort-deleted' => 'Dzēsts',
+	'viewapc-ls-sort-timeout' => 'Taimauts',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -6629,55 +6652,99 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Ravichandra
  * @author Veeven
  * @author ఆదిహిందు
  */
 $messages['te'] = array(
 	'apc' => 'APC సమాచారం',
+	'apc-desc' => 'MediaWiki తో [[Special:APC|APC cache చూసి నిర్వహించండి]]',
+	'right-apc' => '[[Special:APC|APC]] లోని అన్ని అంశాలను వాడండి',
+	'viewapc-apc-not-available' => 'కాషె సమాచారమేమీ లేదు.
+APC నడుస్తున్నట్టు లేదు.',
+	'viewapc-clear-confirm' => 'కాషె ను ఖాళీ చేస్తారా?',
+	'viewapc-clear-user-cache' => 'వాడుకరి కాషెను ఖాళీ చెయ్యి',
+	'viewapc-clear-code-cache' => 'opcode కాషె ను ఖాళీ చెయ్యండి',
+	'viewapc-mode-stats' => 'హోస్టు గణాంకాలను చూపించు',
+	'viewapc-mode-system-cache' => 'సిస్టము కాషె ఎంట్రీలు',
+	'viewapc-mode-user-cache' => 'వాడుకరి కాషె ఎంట్రీలు',
 	'viewapc-mode-version-check' => 'వర్షన్ సరిచూసుకోండి',
 	'viewapc-info-general' => 'సాధారణ సమాచారం',
+	'viewapc-php-version' => 'PHP వెర్షను',
+	'viewapc-shared-memory' => 'షేర్డ్ మెమరీ',
 	'viewapc-start-time' => 'ప్రారంభ సమయం',
+	'viewapc-upload-support' => 'ఫైలు ఎక్కింపు మద్దతు',
+	'viewapc-usercache-info' => 'వాడుకరి కాషె సమాచారం',
+	'viewapc-cached-files' => 'కాషెలోని ఫైళ్ళు',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ఫైలు|ఫైళ్ళు}} ($2)',
 	'viewapc-hits' => 'సందర్శనలు',
 	'viewapc-rps' => 'క్షణానికి $1 అభ్యర్థనలు',
+	'viewapc-info-runtime' => 'రన్ టైము సమాచారం',
+	'viewapc-memory-usage' => 'మెమరీ వాడకం',
+	'viewapc-cache-efficiency' => 'హిట్లూ మిస్సులూ',
 	'viewapc-memory-free' => 'ఖాళీ: $1 ($2)',
 	'viewapc-memory-used' => 'వాడినది: $1 ($2)',
+	'viewapc-memory-hits' => 'హిట్లు: $1 ($2)',
+	'viewapc-memory-miss' => 'మిస్సులు: $1 ($2)',
+	'viewapc-memoryfragmentation' => 'సవివర మెమరీ వాడకం, ఫ్రాగ్మెంటేషను',
+	'viewapc-fragmentation-info' => 'ఫ్రాగ్మెంటేషను: $1 ( $4 లోని  $3 లో $2 {{PLURAL:$4|ఫ్రాగ్మెంటు|ఫ్రాగ్మెంట్లు}})',
+	'viewapc-fragmentation-none' => 'ఫ్రగ్మెంటేషను: ఫ్రాగ్మెంటేషను లేదు',
 	'viewapc-display-value' => 'విలువ',
 	'viewapc-display-filename' => 'ఫైలుపేరు',
 	'viewapc-display-device' => 'పరికరం',
 	'viewapc-display-info' => 'పేరు',
+	'viewapc-display-ttl' => 'కాలం చెల్లే సమయం',
 	'viewapc-display-type' => 'రకం',
+	'viewapc-display-num_hits' => 'హిట్లు',
 	'viewapc-display-mtime' => 'మార్చబడినది',
 	'viewapc-display-creation_time' => 'సృష్టించబడినది',
 	'viewapc-display-deletion_time' => 'తొలగించబడినది',
 	'viewapc-display-no-delete' => 'తొలగించబడలేదు',
 	'viewapc-display-mem_size' => 'పరిమాణం',
+	'viewapc-display-too-big' => "''కంటెంటు మరీ పెద్దగా ఉంది, చూపించలేం.''",
 	'viewapc-ls-options-legend' => 'ఎంపికలు',
+	'viewapc-ls-options' => 'స్కోపు: $1 పేర్పు: $2$3$4 వెతుకులాట: $5 $6',
 	'viewapc-ls-submit' => 'వెళ్ళు!',
 	'viewapc-ls-header-name' => 'పేరు',
+	'viewapc-ls-header-hits' => 'హిట్లు',
 	'viewapc-ls-header-size' => 'పరిమాణం',
+	'viewapc-ls-header-accessed' => 'చివరిసారి చూసినది',
+	'viewapc-ls-header-modified' => 'చివరిసారి మార్చినది',
 	'viewapc-ls-header-created' => 'సృష్టించబడినది',
 	'viewapc-ls-header-deleted' => 'తొలగించబడినది',
 	'viewapc-ls-header-timeout' => 'సమయం పూర్తయింది',
 	'viewapc-ls-delete' => '[ఇప్పుడే తొలగించు]',
 	'viewapc-ls-scope-deleted' => 'తొలగించబడినది',
 	'viewapc-ls-scope-both' => 'రెండూ',
+	'viewapc-ls-sort-hits' => 'హిట్లు',
 	'viewapc-ls-sort-size' => 'పరిమాణం',
 	'viewapc-ls-sort-name' => 'పేరు',
+	'viewapc-ls-sort-accessed' => 'చివరిసారి చూసినది',
+	'viewapc-ls-sort-modified' => 'చివరిసారి మార్చినది',
 	'viewapc-ls-sort-created' => 'సృష్టించబడినది',
 	'viewapc-ls-sort-deleted' => 'తొలగించారు',
 	'viewapc-ls-sort-timeout' => 'కాలాతీతమైనది',
 	'viewapc-ls-limit-none' => 'అన్నీ',
+	'viewapc-ls-more' => "''ఇంకా $1 {{PLURAL:$1|ఎంట్రీ ఉంది|ఎంట్రీలున్నాయి}}''",
 	'viewapc-ls-nodata' => "''పోలిన భోగట్టా ఏమీ లేదు''",
+	'viewapc-delete-ok' => 'కాషె ఎంట్రీ <nowiki>$1</nowiki> ని తొలగించాం.',
+	'viewapc-delete-failed' => 'కాషె ఎంట్రీ <nowiki>$1</nowiki> ని తొలగించలేకపోయాం.',
 	'viewapc-version-info' => 'సంచిక సమాచారం',
 	'viewapc-version-changelog' => 'మార్పుల చరితం',
+	'viewapc-version-failed' => 'వెర్షను సమాచారాన్ని తీసుకురాలేకపోయాం.',
+	'viewapc-version-ok' => 'మీరు APC ($1) ఇట్టీవలి వెర్షన్ను నడుపుతున్నారు',
+	'viewapc-version-old' => 'మీరు APC పాత వెర్షన్ను ($1) నడుపుతున్నారు.
+కొత్త వెర్షను $2, http://pecl.php.net/package/APC/$2 వద్ద అందుబాటులో ఉంది',
+	'viewapc-filecache-cleared' => "'''''ఫైలు కాషెని ఖాళీ చేసాం.'''''",
+	'viewapc-usercache-cleared' => "'''''అప్లికేషను కాషెను ఖాళీ చేసాం.'''''",
 );
 
 /** Tetum (Tetun)
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'viewapc-ls-scope-active' => 'Ativu',
 	'viewapc-ls-limit-none' => 'Hotu',
 );
 

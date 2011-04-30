@@ -2632,6 +2632,8 @@ $messages['tet'] = array(
 	'badimages-add-btn' => 'Tau tan',
 	'badimages-name' => 'Naran:',
 	'badimages-reason' => 'Motivu:',
+	'badimages-remove' => '(hasai)',
+	'badimages-remove-btn' => 'Hasai',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

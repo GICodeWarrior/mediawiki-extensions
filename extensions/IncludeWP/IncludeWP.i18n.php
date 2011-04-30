@@ -79,6 +79,16 @@ $messages['be-tarask'] = array(
 	'includewp-include-par-height' => 'Максымальная вышыня (у піксэлях) разьдзела, у які загружаецца зьмест. Пастаўце 0, каб яна была неабмежаваная.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'includewp-loading-page' => 'পাতা লোড করা হচ্ছে...',
+	'includewp-show-full-page' => 'সম্পূর্ণ পাতা দেখাও',
+	'includewp-show-fragment' => 'শুধুমাত্র প্রথম অনুচ্ছেদটি দেখাও',
+	'includewp-loading-failed' => 'পাতা লোড করতে ব্যর্থ হয়েছে',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

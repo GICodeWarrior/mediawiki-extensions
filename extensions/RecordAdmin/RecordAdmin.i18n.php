@@ -2172,6 +2172,14 @@ $messages['te'] = array(
 	'recordadmin-properties' => 'లక్షణాలు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'recordadmin-buttonsearch' => 'Buka',
+	'recordadmin-editlink' => 'edita',
+);
+
 /** Thai (ไทย)
  * @author Mopza
  * @author Octahedron80

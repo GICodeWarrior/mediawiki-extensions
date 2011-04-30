@@ -212,6 +212,8 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'toolbase-header-title' => 'Ostilh X! (BETA)',
 	'toolbase-header-bugs' => 'Drein',
+	'toolbase-header-sitenotice' => "Kemenn lec'hienn a-berzh ar servijer ostilhoù hollek : $1",
+	'toolbase-replag' => 'Servijer gant dale gant $1',
 	'toolbase-replag-years' => 'bloavezhioù',
 	'toolbase-replag-months' => 'mizioù',
 	'toolbase-replag-weeks' => 'sizhunvezhioù',
@@ -226,8 +228,12 @@ $messages['br'] = array(
 	'toolbase-navigation' => 'Merdeiñ',
 	'toolbase-navigation-homepage' => 'Pajenn degemer',
 	'toolbase-navigation-user_id' => 'Kavout ID an implijer',
+	'toolbase-navigation-autoedits' => 'Konter kemmoù emgefre',
 	'toolbase-userid-title' => 'Kavout ID un implijer',
 	'toolbase-autoedits-submit' => 'Jediñ',
+	'toolbase-autoedits-totalauto' => ' Niver hollek a gemmoù emgefre',
+	'toolbase-autoedits-totalall' => 'Niver hollek a gemmoù',
+	'toolbase-autoedits-pct' => 'Dregantad a gemmoù emgefre',
 	'toolbase-main-title' => 'Degemer mat !',
 	'toolbase-main-404' => "N'eo ket bet kavet ar restr",
 	'toolbase-main-404-content' => "Opala ! N'eus bet kavet pajenn ebet !
@@ -678,6 +684,36 @@ Jeli wotkaz je će wot něhdźe sem wjedł, <a href="$1">zdźěl prošu programo
 	'toolbase-error-nouser' => '$1 płaćiwy wužiwar njeje.',
 	'toolbase-error-nowiki' => '$1.$2.org płaćiwy wiki njeje',
 	'toolbase-error-toomanyedits' => '$1 ma $2 změnow. Tutón nastroj ma maksimalnje $3 změnow.',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'toolbase-header-title' => "X!'s Tools (béta)",
+	'toolbase-header-bugs' => 'Hibák',
+	'toolbase-replag-years' => 'év',
+	'toolbase-replag-months' => 'hónap',
+	'toolbase-replag-weeks' => 'hét',
+	'toolbase-replag-days' => 'nap',
+	'toolbase-replag-hours' => 'óra',
+	'toolbase-replag-minutes' => 'perc',
+	'toolbase-replag-seconds' => 'másodperc',
+	'toolbase-footer-exectime' => 'Végrehajtva $1 másodperc alatt',
+	'toolbase-footer-source' => 'Forrás megtekintése',
+	'toolbase-footer-language' => 'Nyelv módosítása',
+	'toolbase-footer-translate' => 'Fordítás',
+	'toolbase-navigation' => 'Navigáció',
+	'toolbase-navigation-homepage' => 'Honlap',
+	'toolbase-navigation-user_id' => 'Felhasználó azonosítójának megkeresése',
+	'toolbase-navigation-autoedits' => 'Automatikus szerkesztésszámláló',
+	'toolbase-main-404' => 'Fájl nem található',
+	'toolbase-main-404-content' => 'Hoppá! A lap nem található!
+
+Ellenőrizd, hogy helyesen írtad-e be az URL-címet.
+Ha valahonnan egy linket követtél, <a href="$1">jelentsd a hibát</a>!
+</ul>',
+	'toolbase-form-wiki' => 'Wiki',
 );
 
 /** Interlingua (Interlingua)

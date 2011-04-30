@@ -66,6 +66,13 @@ $messages['bg'] = array(
 	'ipauth-desc' => 'Автоматично влизане от фиксирани IP адреси',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'ipauth-desc' => 'নির্ধারিত আইপি ঠিকানা থেকে স্বয়ংক্রিয়ভাবে প্রবেশ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D

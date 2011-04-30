@@ -88,6 +88,13 @@ $messages['be-tarask'] = array(
 	'linkopenid-prefstext-v2url' => 'URL-адрас сэрвэра OpenID вэрсіі 2:',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'linkopenid-prefstext-openid' => 'আপনার ওপেনআইডি:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

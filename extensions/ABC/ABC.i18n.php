@@ -117,6 +117,7 @@ $messages['ast'] = array(
  * @author Vago
  */
 $messages['az'] = array(
+	'abc-desc' => 'ABC musiqisini formatlaşdırmaq üçün <code>&lt;abc&gt;</code> teqini əlavə edir',
 	'abcdownload' => 'Yüklə:',
 	'abcabc' => 'ABC',
 	'abcpdf' => 'PDF',

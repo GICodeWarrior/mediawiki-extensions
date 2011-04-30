@@ -235,6 +235,23 @@ $messages['bg'] = array(
 	'duplicator-toomanyrevisions' => 'Страницата [[$1]] има твърде много ($2) редакции и не може да бъде копирана. Най-много могат да са $3 редакции.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'duplicator' => 'একটি পাতার প্রতিলিপি',
+	'duplicator-toolbox' => 'এই পাতার প্রতিলিপি',
+	'duplicator-options' => 'অপশনসমূহ',
+	'duplicator-source' => 'উৎস:',
+	'duplicator-dest' => 'লক্ষ্য:',
+	'duplicator-dotalk' => 'প্রতিলিপিকৃত আলোচনা পাতা (যদি প্রযোজ্য হয়)',
+	'duplicator-submit' => 'প্রতিলিপি',
+	'duplicator-summary' => '[[$1]] থেকে অনুলিপিকৃত',
+	'duplicator-success-talkcopied' => 'এই আলাপ পাতাটিও অনুলেপনকৃত হয়েছিলো।',
+	'duplicator-success-talknotcopied' => 'এই আলাপ পাতাটি অনুলেপন করা যাবে না।',
+	'right-duplicate' => 'প্রতিলিপিকৃত পাতাসমূহ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -322,11 +339,32 @@ $messages['ca'] = array(
 	'right-duplicate' => 'Duplicar pàgines',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Jkjk
+ */
 $messages['cs'] = array(
+	'duplicator' => 'Duplikovat stránku',
+	'duplicator-desc' => 'Vytvořit [[Special:Duplicate|kopie stránek]] s plnou historií úprav',
+	'duplicator-toolbox' => 'Duplikovat tuto stránku',
+	'duplicator-header' => 'Tato stránka umožňuje vytvořit kompletní kopii stránky, včetně celé historie. 
+To je užitečné např. při větvení projektů.',
 	'duplicator-options' => 'Nastavení',
 	'duplicator-source' => 'Zdroj:',
 	'duplicator-dest' => 'Cíl:',
+	'duplicator-dotalk' => 'Duplikovat i diskusní stránku (pokud existuje)',
+	'duplicator-submit' => 'Duplikovat',
+	'duplicator-summary' => 'Zkopírováno z [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] bylo zkopírováno do [[ $2 ]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revize byla zkopírována|revize byly zkopírovány|revizí bylo zkopírováno}}.',
+	'duplicator-success-talkcopied' => 'Diskusní stránka byla také zkopírována.',
+	'duplicator-success-talknotcopied' => 'Nebylo možné zkopírovat diskuzní stránku',
+	'duplicator-failed' => 'Tuto stránku nebylo možné zkopírovat.
+Došlo k neznámé chybě.',
+	'duplicator-source-invalid' => 'Zadejte platný titulek zdroje.',
+	'duplicator-source-notexist' => '[[$1]] neexistuje. Zadejte název stránky, která existuje.',
+	'duplicator-toomanyrevisions' => '[[$1]] má příliš mnoho revizí ($2) a tedy ji nelze zkopírovat.
+Současný limit je $3.',
+	'right-duplicate' => 'Duplikovat stránky',
 );
 
 /** Danish (Dansk)
@@ -584,6 +622,23 @@ $messages['fr'] = array(
 	'duplicator-dest-exists' => '[[$1]] existe déjà. Veuillez donner le nom d’une page qui n’existe pas encore.',
 	'duplicator-toomanyrevisions' => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
 	'right-duplicate' => 'dupliquer des pages',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'duplicator' => 'Duplicar una pâge',
+	'duplicator-toolbox' => 'Duplicar ceta pâge',
+	'duplicator-options' => 'Chouèx',
+	'duplicator-source' => 'Sôrsa :',
+	'duplicator-dest' => 'Dèstinacion :',
+	'duplicator-dotalk' => 'Duplicar la pâge de discussion (s’ègziste)',
+	'duplicator-submit' => 'Duplicar',
+	'duplicator-summary' => 'Copiyê dês [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] at étâ copiyê vers [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|vèrsion at étâ copiyê|vèrsions ont étâ copiyês}}.',
+	'right-duplicate' => 'Duplicar des pâges',
 );
 
 /** Western Frisian (Frysk)

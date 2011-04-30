@@ -125,6 +125,17 @@ $messages['bg'] = array(
 	'right-userrights-global' => 'Управление на глобалните потребителски права',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'globaluserrights' => 'গ্লোবাল ব্যবহারকারী অধিকার ব্যবস্থাপনা',
+	'gur-rightslog-name' => 'গ্লোবাল অধিকার লগ',
+	'gur-rightslog-header' => 'এটি গ্লোবাল অধিকার পরিবর্তনের লগ।',
+	'gur-rightslog-entry' => '$1 এর জন্য $2 থেকে $3 তে গ্লোবাল গ্রুপ সদস্যপদ পরিবর্তন করা হয়েছে',
+	'right-userrights-global' => 'গ্লোবাল অধিকার ব্যবস্থাপনা',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

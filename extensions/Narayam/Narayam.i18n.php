@@ -361,6 +361,13 @@ $messages['hsb'] = array(
 	'narayam-bn-nkb' => 'Bengali NKB',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'narayam-eo' => 'Eszperantó',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -445,6 +452,35 @@ $messages['ja'] = array(
 	'narayam-bn-avro' => 'ベンガル語Avro',
 	'narayam-bn-inscript' => 'ベンガル語InScript',
 	'narayam-bn-nkb' => 'ベンガル語NKB',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author វ័ណថារិទ្ធ
+ */
+$messages['km'] = array(
+	'narayam-desc' => 'អនុញ្ញាតឲ្យបន្ថែមវិធីវាយបញ្ចូលពិសេសសម្រាប់ការវាយបញ្ចូលអក្សរ',
+	'narayam-toggle-ime' => 'ដើម្បីប្ដូរ IM ($1)',
+	'narayam-help-page' => 'Help:ការវាយអក្សរ (Typing)',
+	'narayam-checkbox-tooltip' => 'ដើម្បីបិទឬបើកវិធីវាយបញ្ចូលអក្សរ',
+	'narayam-disable-preference' => 'Disable Narayam Input Method Editor (IME)',
+	'narayam-eo' => 'ភាសា Esperanto',
+	'narayam-hi-inscript' => 'ក្ដារវាយពុម្ពអក្សរ Hindi InScript',
+	'narayam-kn' => 'Kannada Transliteration',
+	'narayam-kn-inscript' => 'ក្ដារវាយពុម្ពអក្សរ Kannada InScript',
+	'narayam-ml' => 'Malayalam Transliteration',
+	'narayam-ml-inscript' => 'ក្ដារវាយពុម្ពអក្សរ Malayalam InScript',
+	'narayam-or' => 'Oriya Transliteration',
+	'narayam-or-inscript' => 'ក្ដារវាយពុម្ពអក្សរ Oriya InScript',
+	'narayam-sa' => 'Sanskrit Transliteration',
+	'narayam-sa-inscript' => 'ក្ដារវាយពុម្ពអក្សរ Sanskrit InScript',
+	'narayam-si-singlish' => 'ក្ដារវាយពុម្ពអក្សរ Sinhala Singlish',
+	'narayam-si-wijesekara' => 'ក្ដារវាយពុម្ពអក្សរ Sinhala Wijesekara',
+	'narayam-ta99' => 'ក្ដារវាយពុម្ពអក្សរ Tamil99',
+	'narayam-ta' => 'Tamil Transliteration',
+	'narayam-te-inscript' => 'ក្ដារវាយពុម្ពអក្សរ Telugu InScript',
+	'narayam-bn-avro' => 'ក្ដារវាយពុម្ពអក្សរ Bengali Avro',
+	'narayam-bn-inscript' => 'ក្ដារវាយពុម្ពអក្សរ Bengali InScript',
+	'narayam-bn-nkb' => 'ក្ដារវាយពុម្ពអក្សរ Bengali NKB',
 );
 
 /** Colognian (Ripoarisch)
@@ -580,6 +616,14 @@ $messages['nl'] = array(
 	'narayam-bn-nkb' => 'Bengaals NKB',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'narayam-or' => 'Odia Transliteration',
+	'narayam-or-inscript' => 'Odia InScript',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -666,6 +710,13 @@ $messages['pt'] = array(
 	'narayam-bn-avro' => 'Avro para bengali',
 	'narayam-bn-inscript' => 'InScript para bengali',
 	'narayam-bn-nkb' => 'NKB para bengali',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'narayam-eo' => 'Esperanto',
 );
 
 /** Tarandíne (Tarandíne)

@@ -140,6 +140,28 @@ $messages['bg'] = array(
 	'livetranslate-special-remove' => 'Премахване',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'livetranslate-button-translate' => 'অনুবাদ',
+	'livetranslate-button-translating' => 'অনুবাদ করা হচ্ছে...',
+	'livetranslate-button-revert' => 'মূলটি দেখাও',
+	'special-livetranslate' => 'সরাসরি অনুবাদ',
+	'livetranslate-tmtype-ltf' => 'সরাসরি অনুবাদের ফরম্যাট',
+	'livetranslate-tmtype-gcsv' => 'গুগল সিএসভি',
+	'livetranslate-special-no-tms-yet' => 'এখনও কোনো অনুবাদ মেমোরি নেই।',
+	'livetranslate-special-button' => 'সংরক্ষণ ও হালনাগাদ',
+	'livetranslate-special-type' => 'ধরন',
+	'livetranslate-special-location' => 'অবস্থান',
+	'livetranslate-special-remove' => 'অপসারণ',
+	'livetranslate-special-local' => 'স্থানীয়',
+	'livetranslate-special-add-tm' => 'নতুন অনুবাদ মেমোরি যোগ করো',
+	'livetranslate-special-current-tms' => 'ইতিমধ্যেই থাকা অনুবাদ মেমোরিসমূহ',
+	'livetranslate-special-tms-update' => 'অনুবাদ মেমোরিসমূহ হালনাগাদ করুন',
+	'livetranslate-special-update' => 'অনুবাদ মেমোরিসমূহ হালনাগাদ করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -802,6 +824,13 @@ $messages['te'] = array(
 	'livetranslate-button-translating' => 'అనువదిస్తున్నాం...',
 	'livetranslate-special-type' => 'రకం',
 	'livetranslate-special-location' => 'ప్రాంతం',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'livetranslate-special-remove' => 'Hasai',
 );
 
 /** Tagalog (Tagalog)

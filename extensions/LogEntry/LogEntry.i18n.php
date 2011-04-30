@@ -91,6 +91,15 @@ $messages['bg'] = array(
 	'logentry-invalidpage' => 'Невалидна страница',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'logentry' => 'লগএন্ট্রি',
+	'logentry-invalidpage' => 'ত্রুটিপূর্ণ পাতা',
+	'logentry-invalidtoken' => 'অবৈধ টোকেন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

@@ -284,6 +284,7 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -300,6 +301,7 @@ $messages['bn'] = array(
 	'expand_templates_xml_output' => 'XML আউটপুট',
 	'expand_templates_ok' => 'ঠিক আছে',
 	'expand_templates_remove_comments' => 'মন্তব্য মুছে ফেলো',
+	'expand_templates_remove_nowiki' => 'ফলাফলে <nowiki> ট্যাগগুলো বাতিল করো',
 	'expand_templates_generate_xml' => 'XML পার্স বৃক্ষ দেখাও',
 	'expand_templates_preview' => 'প্রাকদর্শন',
 );

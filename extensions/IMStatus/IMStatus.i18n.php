@@ -196,6 +196,25 @@ $messages['bg'] = array(
 	'imstatus_or' => 'или',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'imstatus_syntax' => 'সিনট্যাক্স',
+	'imstatus_default' => 'পূর্বনির্ধারিত',
+	'imstatus_example' => 'উদাহরণ',
+	'imstatus_possible_val' => 'সম্ভব্য মান',
+	'imstatus_max' => 'সর্বোচ্চ',
+	'imstatus_min' => 'নূন্যতম',
+	'imstatus_or' => 'অথবা',
+	'imstatus_your_name' => 'আপনার $1 নাম',
+	'imstatus_gtalk_code' => 'আপনার গুগল টক কোড',
+	'imstatus_gtalk_get_code' => 'আপনার গুগল টক কো: $1-এ এটি পাবেন।',
+	'imstatus_gtalk_height' => 'বক্সের উচ্চতা (পিক্সেলে)।',
+	'imstatus_gtalk_width' => 'বক্সের প্রস্থ (পিক্সেলে)।',
+	'imstatus_icq_id' => 'আপনার আইসিকিউ আইডি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -1513,6 +1532,13 @@ $messages['te'] = array(
 	'imstatus_gtalk_height' => 'పెట్టె యొక్క ఎత్తు, పిక్సెళ్ళలో.',
 	'imstatus_gtalk_width' => 'పెట్టె యొక్క వెడల్పు, పిక్సెళ్ళలో.',
 	'imstatus_icq_style' => '0 నుండి 26 లోపు ఒక సంఖ్య (అవును, 27 శైలులు అందుబాటులో ఉన్నాయి).',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'imstatus_example' => 'Ezemplu',
 );
 
 /** Tagalog (Tagalog)

@@ -3367,6 +3367,14 @@ $messages['lt'] = array(
 	'openidchoosepassword' => 'Slaptažodis:',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'openidchooseusername' => 'Lietotājvārds:',
+	'openidchoosepassword' => 'Parole:',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -5365,6 +5373,7 @@ $messages['tet'] = array(
 	'openidfullname' => 'Naran kompletu',
 	'openidemail' => 'Diresaun korreiu eletróniku',
 	'openidlanguage' => 'Lian',
+	'openidchooseusername' => "Naran uza-na'in:",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
