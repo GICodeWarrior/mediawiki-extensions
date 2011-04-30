@@ -1455,6 +1455,7 @@ $messages['bn'] = array(
 	'configure-section-specialpages' => 'বিশেষ পাতা',
 	'configure-section-recentchanges' => 'সাম্প্রতিক পরিবর্তনসমূহ',
 	'configure-section-users' => 'ব্যবহারকারী',
+	'configure-section-externalauth' => 'বহিঃস্থ নিশ্চিতকরণ',
 	'configure-section-feed' => 'ফিড',
 	'configure-section-job' => 'কাজ',
 	'configure-section-search' => 'অনুসন্ধান',
@@ -8471,6 +8472,7 @@ $messages['or'] = array(
 	'configure-section-category' => 'ଶ୍ରେଣୀସବୁ',
 	'configure-section-search' => 'ଖୋଜିବା',
 	'configure-view' => 'ଦେଖା',
+	'configure-view-all-versions' => 'ସଙ୍କଳନଗୁଡ଼ିକର ପୁରା ତାଲିକା',
 	'configure-throttle-action-edit' => 'ବଦଳାଇବେ',
 );
 
@@ -10945,11 +10947,13 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Kiranmayee
  * @author Veeven
  * @author వైజాసత్య
  */
 $messages['te'] = array(
+	'configure' => 'వికీని కాన్ఫిగరు చెయ్యి',
 	'configure-desc-group' => 'గుంపు',
 	'configure-desc-ns' => 'పేరుబరి',
 	'configure-desc-val' => 'విలువ',
@@ -11001,17 +11005,58 @@ $messages['te'] = array(
 	'configure-view' => 'చూడండి',
 	'configure-view-default' => 'అప్రమేయ అమరికలు',
 	'configure-view-not-allowed' => 'ఈ అమరికని చూడడానికి మీకు అనుమతి లేదు',
+	'configure-viewconfig-line' => '$1 $2 వాడుకరి: $3 $5: $4',
+	'extensions' => 'పొడిగింతలను కాన్ఫిగరు చెయ్యి',
+	'right-configure' => 'వికీని కాన్ఫిగరు చెయ్యి',
 	'right-configure-all' => 'అన్ని వికీ అమరికలనూ స్వరూపించగలగడం',
+	'right-configure-interwiki' => 'బయటి వికీ సెట్టింగులను మార్చు',
+	'right-extensions' => 'పొడిగింతలను కాన్ఫిగరు చెయ్యి',
+	'right-extensions-all' => 'పొడిగింతల ఉన్నత కాన్ఫిగరేషను',
+	'right-extensions-interwiki' => 'బయటి వికీ పొడిగింతలను కాన్ఫిగరు చెయ్యి',
+	'right-viewconfig' => 'వికీ కాన్ఫిగరేషను చూపించు',
+	'right-viewconfig-interwiki' => 'బయటి వికీ కాన్ఫిగరేషను చూపించు',
+	'viewconfig' => 'వికీ కాన్ఫిగరేషను చూపించు',
 	'configure-throttle-action-edit' => 'మార్చు',
+	'configure-throttle-action-move' => 'తరలించు',
 	'configure-throttle-action-rollback' => 'రద్దుచేయి',
+	'configure-throttle-action-mailpassword' => 'సంకేతపదం రిమైండరును పంపించు',
+	'configure-throttle-action-emailuser' => 'మెయిలు పంపు',
 	'configure-throttle-group-anon' => 'అందరు అజ్ఞాత వాడుకరులు',
+	'configure-throttle-group-user' => 'ప్రతీ వాడుకరి ఖాతాకు',
+	'configure-throttle-group-newbie' => 'ప్రతీ కొత్త వాడుకరి ఖాతాకు',
+	'configure-throttle-group-ip' => 'ప్రతి ఐపీ అడ్రసుకు',
 	'configure-throttle-count' => 'అనుమతించే చర్యలు:',
+	'configure-throttle-period' => 'రీసెట్ వ్యవధి (సెకండ్లు):',
+	'configure-throttle-summary' => '$2 సెకండ్లలో $1 చర్యలు',
 	'configure-throttle-group' => 'రకం',
 	'configure-throttle-limit' => 'పరిమితి',
 	'configure-throttle-none' => 'పరిమితి లేదు',
+	'configure-condition-operator' => 'ఆపరేటరు:',
 	'configure-condition-operator-or' => 'లేదా',
 	'configure-condition-operator-and' => 'మరియు',
+	'configure-condition-operator-xor' => 'Xor',
+	'configure-condition-operator-not' => 'Not',
+	'configure-condition-name' => 'షరతు',
+	'configure-condition-requirement' => 'ఆవశ్యకం',
+	'configure-condition-name-1' => 'కనీస మార్పుల సంఖ్య',
+	'configure-condition-name-2' => 'కనీస వయసు',
+	'configure-condition-name-3' => 'ఈమెయిలు ధృవీకరించబడింది',
+	'configure-condition-name-4' => 'గుంపులుగా',
 	'configure-condition-name-5' => 'వాడుకరి యొక్క ఐపీ చిరునామా',
+	'configure-condition-description-1' => 'మార్పుచేర్పుల కనీస సంఖ్య $1',
+	'configure-condition-description-2' => 'ఖాతా కనీస వయసు $1 {{PLURAL:$1|సెకండు|సెకండ్లు}}',
+	'configure-condition-description-3' => 'ఈమెయిలు ధృవీకరించబడింది',
+	'configure-condition-description-4' => '$1 గుంపులన్నిటిలోనూ',
+	'configure-condition-description-5' => 'వాడుకరి ఐపీ అడ్రసు $1',
+	'configure-condition-description-6' => 'వాడుకరి ఐపీఅడ్రసు ఉన్న శ్రేణి $1',
+	'configure-condition-description-7' => 'ఖాతా కనీస వయసు మొదటి మార్పు తరువాత $1 {{PLURAL:$1|సెకండు|సెకండ్లు}}',
+	'configure-boolop-description-and' => 'అన్ని కండిషన్లూ వాస్తవమై ఉండాలి',
+	'configure-boolop-description-or' => 'కనీసం ఒక్క కండిషనైనా వాస్తవమై ఉండాలి',
+	'configure-boolop-description-xor' => 'సరిగ్గా ఒక్క కండిషను వాస్తవమై ఉండాలి',
+	'configure-boolop-description-not' => 'ఏ కండిషనూ వాస్తవమై ఉండకూడదు',
+	'configure-farmer-settings' => '[[Special:Configure|ఈ వికీని కాన్ఫిగరు చెయ్యి]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|ఈ వికీ పొడిగింతలను కాన్ఫిగరు చెయ్యి]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|ఈ వికీలో అందుబాటులో ఉన్న పొడిగింతల జాబితా]].',
 );
 
 /** Tetum (Tetun)
@@ -11019,8 +11064,12 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'configure-js-remove' => 'Halakon',
+	'configure-old-changes' => 'mudansa',
+	'configure-section-pages' => 'Pájina sira',
 	'configure-section-email' => 'Korreiu eletróniku',
 	'configure-section-category' => 'Kategoria sira',
+	'configure-section-search' => 'Buka',
+	'configure-throttle-action-edit' => 'Edita',
 );
 
 /** Thai (ไทย)
