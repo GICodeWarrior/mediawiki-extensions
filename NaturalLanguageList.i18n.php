@@ -368,6 +368,14 @@ $messages['sv'] = array(
 	'nll-lastseparator' => '&#32;och&#32;',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'nll-desc' => 'இயல் மொழிகளில் உள்ள பட்டியல்களை எளிதாக வடிவமைத்தல்',
+	'nll-lastseparator' => '&#32; உம் &#32; உம்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
