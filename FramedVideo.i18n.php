@@ -131,6 +131,15 @@ $messages['bg'] = array(
 	'framedvideo_error' => 'Възникна грешка!',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'framedvideo_errors' => 'একাধিক ত্রুটি দেখা দিয়েছে!',
+	'framedvideo_error' => 'একটি ত্রুটি দেখা দিয়েছে!',
+	'framedvideo_helppage' => 'Help:ভিডিও',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
