@@ -76,6 +76,14 @@ $messages['bg'] = array(
 	'mediafunctions-not-exist' => '"$1" не съществува',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'mediafunctions-invalid-title' => '"$1" গ্রহণযোগ্য শিরোনাম নয়',
+	'mediafunctions-not-exist' => '"$1" পাতাটির অস্তিত্ব নেই',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
