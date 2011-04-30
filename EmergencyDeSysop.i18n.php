@@ -147,6 +147,22 @@ $messages['bg'] = array(
 	'emergencydesysop-reason' => 'Причина за отстраняването',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'emergencydesysop' => 'জরুরী প্রশাসকত্ব বাতিল',
+	'emergencydesysop-reason' => 'বাদ দেওয়ার কারণ',
+	'emergencydesysop-submit' => 'জমা দাও',
+	'emergencydesysop-incomplete' => 'সকল অংশ পূরণ করতে হবে, অনুগ্রহ করে আবার চেষ্টা করুন।',
+	'emergencydesysop-notasysop' => 'লক্ষ্য ব্যবহারকারী প্রশাসক দলে নেই।',
+	'emergencydesysop-nogroups' => 'কিছু নয়',
+	'emergencydesysop-done' => 'অ্যাকশন সম্পূর্ণ, আপনি ও [[$1]] উভয়ের প্রশাসকত্বই বাতিল করা হয়েছে।',
+	'emergencydesysop-invalidtarget' => 'লক্ষ্য ব্যবহারকারী নেই।',
+	'emergencydesysop-blocked' => 'বাধাদানকৃত অবস্থায় আপনি এই পাতায় প্রবেশ করতে পারবেন না',
+	'emergencydesysop-noright' => 'এই পাতায় প্রবেশ করার মত যথেষ্ট অনুমতি আপনার নেই',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -375,6 +391,14 @@ $messages['fr'] = array(
 	'emergencydesysop-blocked' => 'Vous ne pouvez pas accéder à cette page tant que vous êtes bloqué{{GENDER:||e|(e)}}',
 	'emergencydesysop-noright' => 'Vous n’avez pas les permissions suffisantes pour accéder à cette page',
 	'right-emergencydesysop' => 'Possible de désysoper mutuellement un autre utilisateur.',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'emergencydesysop-submit' => 'Sometre',
+	'emergencydesysop-nogroups' => 'Niona',
 );
 
 /** Galician (Galego)
@@ -1004,15 +1028,23 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Kiranmayee
  * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
 	'emergencydesysop' => 'అత్యవసరంగా నిర్వాహకత్వం తొలగింపు',
+	'emergencydesysop-desc' => 'ఓ నిర్వాహకుడు, మరో నిర్వాహకుని నిర్వాహకత్వం నుండి తీసెయ్యడం కోసం, తన స్వీయ అనుమతులను త్యాగం చేసే వీలు కల్పిస్తుంది',
+	'emergencydesysop-title' => 'ప్రస్తుత వాడుకరికి, మరో నిర్వాహకునికీ ఉన్న నిర్వాహకత్వ అనుమతులను తీసివెయ్యి',
 	'emergencydesysop-reason' => 'తొలగింపునకు కారణం',
 	'emergencydesysop-submit' => 'దాఖలుచెయ్యి',
+	'emergencydesysop-incomplete' => 'ఈ ఫారం లోని ఫీల్డులన్నీ ఆశ్యకం, మళ్ళీ ప్రయత్నించండి.',
+	'emergencydesysop-notasysop' => 'లక్ష్యించిన వాడుకరి నిర్వాహక గుంపులో లేరు.',
 	'emergencydesysop-nogroups' => 'ఏదీకాదు',
+	'emergencydesysop-done' => 'చర్య పూర్తైంది. మీరు, [[$1]] గారు -ఇద్దరూ నిర్వాహకత్వాన్ని కోల్పోయారు.',
+	'emergencydesysop-invalidtarget' => 'లక్ష్యించిన వాడుకరి ఉనికిలో లెరు.',
+	'emergencydesysop-blocked' => 'నిరోధించబడి ఉండగా మీరు ఈ పేజీని చూడజాలరు.',
 	'emergencydesysop-noright' => 'ఈ పుటను చూడ్డానికి మీకు అనుమతులు లేవు',
 	'right-emergencydesysop' => 'ఒకరి నిర్వాహకత్వం మరొకరు రద్దు చేయవచ్చు',
 );
