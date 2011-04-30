@@ -89,6 +89,14 @@ $messages['bg'] = array(
 	'icon-desc' => 'Позволява да се използват картинките като икони и като иконни препратки',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'icon-badimage' => 'বাজে ছবি',
+	'icon-badwidth' => 'বাজে প্রস্থ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
