@@ -535,6 +535,16 @@ $messages['lt'] = array(
 	'right-whatismyip' => 'Žiūrėti [[Special:WhatIsMyIP|savo IP adresą]]',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'whatismyip' => 'Kāda ir mana IP adrese?',
+	'whatismyip-desc' => 'Rāda pašreizējā lietotāja [[Special:WhatIsMyIP|IP adresi]]',
+	'whatismyip-out' => 'Jūsu IP adrese:',
+	'right-whatismyip' => 'Apskatīt [[Special:WhatIsMyIP|savu IP adresi]]',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */
