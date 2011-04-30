@@ -6882,6 +6882,7 @@ Avmarkera denna box för att lämna artiklar som utkast.',
 
 /** Tamil (தமிழ்)
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'wikilog-new-item-go' => 'உருவாக்கவும்',
@@ -6910,9 +6911,9 @@ $messages['ta'] = array(
 	'wikilog-submit' => 'சமர்ப்பி',
 	'wikilog-preview' => 'முன்தோற்றம்',
 	'wikilog-edit-lc' => 'தொகு',
-	'wikilog-reply-lc' => 'பதில் அளி',
+	'wikilog-reply-lc' => 'மறுமொழி அளி',
 	'wikilog-delete-lc' => 'நீக்குக',
-	'wikilog-approve-lc' => 'அனுமதிக்கவும்',
+	'wikilog-approve-lc' => 'ஒப்புதல் அளி',
 	'wikilog-reject-lc' => 'ஒதுக்கித் தள்ளு',
 	'wikilog-page-lc' => 'பக்கம்',
 	'wikilog-history-lc' => 'வரலாறு',
@@ -6999,6 +7000,21 @@ $messages['te'] = array(
 	'wikilog-reject-lc' => 'తిరస్కరించు',
 	'wikilog-page-lc' => 'పేజీ',
 	'wikilog-history-lc' => 'చరిత్ర',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'wikilog-authors' => 'Autór sira',
+	'wikilog-view-archives' => 'Arkivu sira',
+	'wikilog-view-summary' => 'Rezumu',
+	'wikilog-form-category' => 'Kategoria:',
+	'wikilog-form-name' => 'Naran:',
+	'wikilog-form-author' => 'Autór:',
+	'wikilog-edit-lc' => 'edita',
+	'wikilog-page-lc' => 'pájina',
+	'wikilog-history-lc' => 'istória',
 );
 
 /** Turkmen (Türkmençe)
