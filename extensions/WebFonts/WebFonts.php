@@ -2,7 +2,7 @@
 /**
  * Dynamic Font Embedding  MediaWiki extension
  *
- * To install it put this file in the extensions directory 
+ * To install it put this file in the extensions directory
  * To activate the extension, include it from your LocalSettings.php
  * with: require("$IP/extensions/WebFonts.php");
  *

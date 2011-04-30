@@ -51,7 +51,7 @@ class WebFontsHooks {
 			$wgWebFonts['languages'][$userlangCode] : array();
 		return $userlangSchemes + $contlangSchemes;
 	}
-	
+
 	public static function addPreference( $user, &$preferences ) {
 		// A checkbox in preferences to disable WebFonts
 		$preferences['webfontsDisable'] = array(
