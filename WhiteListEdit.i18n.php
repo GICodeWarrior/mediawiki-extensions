@@ -3648,6 +3648,7 @@ $messages['tet'] = array(
 	'mywhitelistpages' => "Ha'u-nia pájina sira",
 	'whitelisttablemodifyall' => 'Hotu',
 	'whitelisttableedit' => 'Edita',
+	'whitelisttableremove' => 'Hasai',
 	'whitelistnever' => 'nunka',
 );
 
