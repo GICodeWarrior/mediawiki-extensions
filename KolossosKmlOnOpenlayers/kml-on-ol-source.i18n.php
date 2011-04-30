@@ -293,6 +293,17 @@ $messages['hsb'] = array(
 	'ts-kml-on-ol-map-by' => 'Karta wot',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'ts-kml-on-ol-options' => 'Beállítások',
+	'ts-kml-on-ol-languages' => 'Nyelvek',
+	'ts-kml-on-ol-thumbnails' => 'Bélyegképek',
+	'ts-kml-on-ol-help' => 'Segítség',
+	'ts-kml-on-ol-all' => 'Összes',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -566,6 +577,14 @@ $messages['te'] = array(
 	'ts-kml-on-ol-help' => 'సహాయం',
 	'ts-kml-on-ol-all' => 'అన్నీ',
 	'ts-kml-on-ol-map-by' => 'పటపు సౌజన్యం',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'ts-kml-on-ol-languages' => 'Lian sira',
+	'ts-kml-on-ol-all' => 'Hotu',
 );
 
 /** Tagalog (Tagalog)

@@ -518,6 +518,16 @@ $messages['hsb'] = array(
 	'ts-citegen-base-disabled' => 'Zmylk: Datowa banka %s njesteji k dispoziciji.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'ts-citegen-Tools' => 'Eszközök',
+	'ts-citegen-Other-languages' => 'További nyelvek',
+	'ts-citegen-Save-it' => 'Jelenlegi lekérdezés',
+	'ts-citegen-Errors-title' => 'Hibák',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
