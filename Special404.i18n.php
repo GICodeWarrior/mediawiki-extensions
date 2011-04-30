@@ -193,8 +193,10 @@ Snano chceš sej slědowacu stronu wobhladać:
 
 /** Hungarian (Magyar)
  * @author BáthoryPéter
+ * @author Dani
  */
 $messages['hu'] = array(
+	'error404' => '404 Nem található',
 	'special404-body' => 'A kért URL nem található. 
 
 Biztos ezt akartad beírni: {{fullurl:$1}}?
