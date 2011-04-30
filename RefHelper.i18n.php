@@ -970,6 +970,19 @@ $messages['ltg'] = array(
 	'refhelper-pages' => 'Puslopys:',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'refhelper-label_authorforename' => 'Autora $1 vārds:',
+	'refhelper-label_authorsurname' => 'Uzvārds:',
+	'refhelper-title' => 'Nosaukums:',
+	'refhelper-journal' => 'Žurnāls:',
+	'refhelper-volume' => 'Sējums:',
+	'refhelper-pages' => 'Lapas:',
+	'refhelper-year' => 'Gads:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -1407,6 +1420,15 @@ $messages['te'] = array(
 	'refhelper-category' => 'వర్గం $1:',
 	'refhelper-create' => 'సృష్టించు',
 	'refhelper-search' => 'వెతుకు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'refhelper-pages' => 'Pájina sira:',
+	'refhelper-category' => 'Kategoria $1:',
+	'refhelper-search' => 'Buka',
 );
 
 /** Tagalog (Tagalog)
