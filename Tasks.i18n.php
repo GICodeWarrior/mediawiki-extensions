@@ -121,6 +121,13 @@ Don't change '|' character.",
 	'tasks_status_closed' => '{{Identical|Closed}}',
 );
 
+/** ꢱꣃꢬꢵꢯ꣄ꢡ꣄ꢬꢵ (ꢱꣃꢬꢵꢯ꣄ꢡ꣄ꢬꢵ)
+ * @author MooRePrabu
+ */
+$messages['saz'] = array(
+	'tasks_more_like_it' => 'ꢂꢖ꣄ꢔꢸꢥ꣄',
+);
+
 /** Abkhazian (Аҧсуа)
  * @author Temuri rajavi
  */
@@ -3814,6 +3821,14 @@ $messages['te'] = array(
 	'tasks_logpage' => 'పనుల చిట్టా',
 	'tasks_logpagetext' => 'ఇది పనులకు జరిగిన మార్పుల చిట్టా',
 	'tasks_logentry' => '"[[$1]]" కొరకు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'tasks_table_header_page' => 'Pájina',
+	'tasks_search_form_title' => 'Buka',
 );
 
 /** Thai (ไทย)
