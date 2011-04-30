@@ -282,6 +282,14 @@ Pouvez-vous vérifier {{PLURAL:$2|cette page connexe|ces pages connexes}} ? $1',
 	'tog-edit-similar' => 'Activer les suggestions des pages similaires',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'editsimilar-thankyou' => 'Grant-marci por voutra contribucion, $1 !',
+	'editsimilar-link-disable' => 'dèfenir les prèferences',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -672,12 +680,19 @@ Kolla {{PLURAL:$2|denna relaterade sida|dessa relaterade sidor}}: $1.',
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Kiranmayee
  * @author Veeven
  */
 $messages['te'] = array(
 	'editsimilar-desc' => 'ఒక పేజీని భద్రపరిచిన తర్వాత అలాంటి పేజీలని దిద్దుబాటు చేయడానికి వాడుకరులను ప్రోత్సహిస్తుంది',
+	'editsimilar-thanks' => 'మీ తోడ్పాటుకు నెనరులు.
+{{PLURAL:$2|ఈ సంబంధిత పేజీని|ఈ సంబంధిత పేజీలను}} చూడండి: $1.',
+	'editsimilar-thanks-notsimilar' => 'మ్కీ తోడ్పాటుకు నెనరులు.
+{{PLURAL:$2|ఈ పేజీ|ఈ పేజీల}}లో కూడా మీ తోడ్పాటు అవసరం ఉండొచ్చు: $1.',
+	'editsimilar-thankyou' => '$1 గారూ, మీ తోడ్పాటుకు నెనరులు!',
 	'editsimilar-link-disable' => 'అభిరుచులను పేర్కొను',
+	'tog-edit-similar' => 'ఇలాంటి పేజీల సూచనలను చేతనం చెయ్యి',
 );
 
 /** Tagalog (Tagalog)
