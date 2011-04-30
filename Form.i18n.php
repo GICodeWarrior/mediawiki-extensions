@@ -142,6 +142,13 @@ $messages['arz'] = array(
 	'formsaveerrortext' => "حدث خطأ غير معروف أثناء حفظ الاستمارة '$1'.",
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'formsave' => 'Qeyd et',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
