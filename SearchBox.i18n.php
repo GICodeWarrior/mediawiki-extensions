@@ -873,6 +873,14 @@ $messages['te'] = array(
 	'searchbox-namespaces' => 'పేరుబరులు:',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'searchbox-search' => 'Buka',
+	'searchbox-go' => 'Bá',
+);
+
 /** Thai (ไทย)
  * @author Mopza
  * @author Octahedron80
