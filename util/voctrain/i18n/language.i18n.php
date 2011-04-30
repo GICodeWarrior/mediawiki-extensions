@@ -4428,8 +4428,11 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'voctrain_Languages' => 'Lian sira',
 	'voctrain_logout' => 'husik',
+	'voctrain_User_name' => "Naran uza-na'in",
 	'voctrain_Language' => 'Lian',
+	'voctrain_Translation' => 'Tradusaun',
 );
 
 /** Tagalog (Tagalog)

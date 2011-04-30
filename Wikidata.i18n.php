@@ -13500,12 +13500,21 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'langman_langname' => 'Naran lian nian:',
+	'langman_addlang' => 'Tau lian',
+	'datasearch_language' => 'Lian:',
+	'ow_exporttsv_languages' => 'Lian:',
 	'ow_history' => 'Istória',
+	'ow_transaction_user' => "Naran uza-na'in:",
+	'ow_transaction_remove' => 'Hasai',
+	'ow_transaction_summary' => 'Rezumu',
 	'ow_dm_OK' => 'OK',
 	'ow_Language' => 'Lian',
+	'ow_Remove' => 'Hasai',
 	'ow_Text' => 'Testu',
 	'ow_TranslatedTextAttributeValue' => 'Testu',
 	'ow_LinkAttributeValues' => 'Ligasaun',
+	'copy' => 'Wikidata: Kopia',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
