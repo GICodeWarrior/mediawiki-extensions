@@ -2199,6 +2199,7 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  * @author వైజాసత్య
  */
@@ -2211,13 +2212,23 @@ $messages['te'] = array(
 	'changeauthor-pagenameform-go' => 'వెళ్ళు',
 	'changeauthor-comment' => 'వ్యాఖ్య:',
 	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|రచయితని|రచయితలను}} మార్చు',
+	'changeauthor-explanation-multi' => 'ఈ ఫారము ద్వారా కూర్పు కర్తలను మార్చవచ్చు.
+కింది జాబితాలోని వాడుకరిపేర్లను మార్చి, ఓ వ్యాఖ్య రాసి (ఐచ్ఛికం), "కర్త(ల)ను మార్చు" బొత్తాన్ని నొక్కండి.',
 	'changeauthor-changeauthors-single' => 'రచయితను మార్చు',
+	'changeauthor-explanation-single' => 'ఈ ఫారము ద్వారా ఏదైనా కూర్పు యొక్క కర్తను మార్చవచ్చు.
+కింది జాబితాలోని వాడుకరిపేరును మార్చి, ఓ వ్యాఖ్య రాసి (ఐచ్ఛికం), "కర్తను మార్చు" బొత్తాన్ని నొక్కండి.',
 	'changeauthor-invalid-username' => '"$1" అనేది తప్పుడు వాడుకరి పేరు.',
 	'changeauthor-nosuchuser' => '"$1" అనే పేరుతో సభ్యులెవరూ లేరు.',
 	'changeauthor-revview' => '$2 యొక్క #$1వ కూర్పు',
 	'changeauthor-nosuchtitle' => '"$1" అనే పేరుతో పేజీ లేదు.',
+	'changeauthor-weirderror' => 'చాలా చిత్రమైన లోపం దొర్లింది.
+మీ అభ్యర్ధనను మళ్ళీ ప్రయత్నించండి.
+ఈ లోపం మళ్ళీ మళ్ళీ ఎదురైతే, దానర్థం డేటాబేసు కుప్పకూలినట్లే.',
+	'changeauthor-invalidform' => 'కస్టము ఫారం కాకుండా  [[Special:ChangeAuthor|ప్రత్యేక పేజీ]] అందించే ఫారము వాడండి.',
 	'changeauthor-success' => 'మీ అభ్యర్థనని విజయవంతంగా పూర్తిచేసాం.',
+	'changeauthor-logentry' => '$1 యొక్క $2 కి కర్తను $3 నుండి $4 కు మార్చాం',
 	'changeauthor-logpagename' => 'రచయిత మార్పుల చిట్టా',
+	'right-changeauthor' => 'కూర్పు యొక్క కర్తను మార్చు',
 );
 
 /** Tetum (Tetun)
