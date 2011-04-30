@@ -156,6 +156,14 @@ $messages['hsb'] = array(
 	'right-searchlog-read' => 'Pytanski protokol sej wobhladać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'searchlog' => 'Keresési napló',
+	'right-searchlog-read' => 'keresési napló megtekintése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
