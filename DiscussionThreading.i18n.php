@@ -118,6 +118,17 @@ $messages['bg'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Започване на нова нишка',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'discussionthreading-desc' => 'আলাপ পাতায় আলোচনা শিরোনাম যোগ',
+	'discussionthreading-replysection' => 'উত্তর',
+	'discussionthreading-replysectionhint' => 'এই সংযোজনের প্রেক্ষিতে উত্তর',
+	'discussionthreading-threadnewsection' => 'নতুন',
+	'discussionthreading-threadnewsectionhint' => 'নতুন একটি আলোচনা শুরু করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -287,9 +298,13 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'discussionthreading-replysection' => 'rèpondre',
+	'discussionthreading-replysectionhint' => 'Rèpondre a ceti mèssâjo',
 	'discussionthreading-threadnewsection' => 'novél',
+	'discussionthreading-threadnewsectionhint' => 'Comenciér un fil de discussion novél',
 );
 
 /** Irish (Gaeilge)
