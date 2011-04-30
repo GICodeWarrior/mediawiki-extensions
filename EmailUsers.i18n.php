@@ -52,6 +52,16 @@ $messages['be-tarask'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Выбрана зашмат атрымальнікаў ({{PLURAL:$1|максымальна|максымальна}: $1}).',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'emailusers' => 'ব্যবহারকারীদের ই-মেইল করুন',
+	'emailusers-target-reverse' => 'নির্বাচিত ব্যতীত সকল ব্যবহারকারীকে ই-মেইল পাঠান',
+	'emailusers-norecipient' => 'এমন কেউ নেই যাকে আপনি ই-মেইল পাঠাতে পারেন।',
+	'emailusers-norecipientselected' => 'কোনো প্রাপক নির্বাচিত করা হয়নি।',
+);
+
 /** Tibetan (བོད་ཡིག)
  * @author Freeyak
  */
@@ -142,6 +152,13 @@ $messages['fr'] = array(
 	'emailusers-norecipient' => "Il n'y a personne à qui vous pouvez envoyer un courriel.",
 	'emailusers-norecipientselected' => "Aucun destinataire n'est sélectionné.",
 	'emailusers-toomanyrecipientsselected' => 'Trop de récipiendaires sont choisis (maximum $1{{PLURAL:$1||}}).',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'emailusers' => 'Mandar un mèssâjo ux utilisators',
 );
 
 /** Galician (Galego)
@@ -361,6 +378,32 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'emailusers' => 'Kutuma barua pepe kwa watumiaji wengi',
+);
+
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'emailusers-desc' => 'பல பெறுநர்களுக்கு மின்னஞ்சல்கள் செலுத்த பயனர்களுக்கு செய்யுரிமை',
+	'right-sendbatchemail' => 'பல பெறுநர்களுக்கு ஒரே நேரத்தில் மின்னஞ்சல்களைச் செலுத்து',
+	'emailusers' => 'மின்னஞ்சல் பயனர்கள்',
+	'emailusers-target-reverse' => 'பொறுக்கியெடுத்த சிலரைத் தவிர மற்ற எல்லா பயனர்களுக்கும் அனுப்பு',
+	'emailusers-norecipient' => 'நீங்கள் மின்னஞ்சல் செய்ய யாரொருவரும் இல்லை',
+	'emailusers-norecipientselected' => 'பெறுநர் எதுவும் தேர்ந்தெடுக்கப்படவில்லை.',
+	'emailusers-toomanyrecipientsselected' => 'மிகக்கூடுதலான பெறுநர்கள் தேர்வுசெய்யப்பட்டுள்ளது ({{PLURAL:$1|maximum $1|maximum $1}}).',
+);
+
+/** Telugu (తెలుగు)
+ * @author Chaduvari
+ */
+$messages['te'] = array(
+	'emailusers-desc' => 'వాడుకరులు అనేకమంది గ్రాహకులకు ఈమెయిలు పంపే వీలు కలిగిస్తున్నారు',
+	'right-sendbatchemail' => 'ఒకేసారి అనేకమంది గ్రాహకులకు ఈమెయిలు పంపించు',
+	'emailusers' => 'వాడుకరులకు ఈమెయిలు పంపించు',
+	'emailusers-target-reverse' => 'ఎంచుకున్నవారికి తప్ప మిగిలినవారికి పంపించు',
+	'emailusers-norecipient' => 'మీరు ఈమెయిలు పంపించడానికి ఎవరు లేరు.',
+	'emailusers-norecipientselected' => 'గ్రాహకులెవర్నీ ఎంచుకోలేదు.',
+	'emailusers-toomanyrecipientsselected' => 'మరీ ఎక్కువమంది గ్రాహకులను ఎంచుకున్నారు ({{PLURAL:$1|గరిష్ఠంగా $1|గరిష్ఠంగా $1}})',
 );
 
 /** Tagalog (Tagalog)
