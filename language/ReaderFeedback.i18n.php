@@ -2504,6 +2504,7 @@ $messages['sw'] = array(
 /** Tamil (தமிழ்)
  * @author Mahir78
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'readerfeedback-desc' => 'பக்கங்களை சரிபார்த்தலுக்கு அனுமதிப்பதன் மூலமே வாசகர்கள் தங்களின் கருத்துக்களை தகுதிவாரியாக மதிப்பீடு செய்து தர முடியும்',
@@ -2514,12 +2515,12 @@ $messages['ta'] = array(
 	'readerfeedback-npov' => 'நடுநிலையானது',
 	'readerfeedback-presentation' => 'முன்வைத்தல்',
 	'readerfeedback-overall' => 'ஒட்டுமொத்தமாக',
-	'readerfeedback-level-none' => '(நிச்சயமற்ற)',
+	'readerfeedback-level-none' => '(உறுதியற்றது)',
 	'readerfeedback-level-0' => 'தரமற்றது',
-	'readerfeedback-level-1' => 'மோசம்',
-	'readerfeedback-level-2' => 'பரவாயில்லை',
-	'readerfeedback-level-3' => 'நன்றாகவுள்ளது',
-	'readerfeedback-level-4' => 'பிரமாதம்',
+	'readerfeedback-level-1' => 'கீழ்மதிப்பு',
+	'readerfeedback-level-2' => 'நடுமதிப்பு',
+	'readerfeedback-level-3' => 'உயர்மதிப்பு',
+	'readerfeedback-level-4' => 'மிக உயர்மதிப்பு',
 	'readerfeedback-submit' => 'சமர்ப்பி',
 	'readerfeedback-main' => 'உள்ளடக்கம் உள்ள பக்கங்களை மட்டுமே மதிப்பீடு சொய்ய முடியும்',
 	'readerfeedback-success' => "'''இந்தப் பக்கத்தை மீளாய்வு செயதமைக்கு நன்றி!''' ([$2 முடிவுகளை காண்க]) ([$3 பின்னூட்டங்கள் அல்லது கேள்விகள்?]).",
@@ -2529,8 +2530,8 @@ $messages['ta'] = array(
 	'readerfeedback-finished' => 'நன்றி!',
 	'readerfeedback-tagfilter' => 'குறிச்சொல்:',
 	'readerfeedback-tierfilter' => 'படிநிலை:',
-	'readerfeedback-tier-high' => 'நன்றாகவுள்ளது',
-	'readerfeedback-tier-medium' => 'மிதமான',
+	'readerfeedback-tier-high' => 'உயர்மதிப்பு',
+	'readerfeedback-tier-medium' => 'நடுத்தரமான',
 	'readerfeedback-tier-poor' => 'தரமற்ற',
 	'tooltip-ca-ratinghist' => 'இந்தப் பக்கத்திற்கான பயனர் படிநிலைகள்',
 	'specialpages-group-feedback' => 'பார்வையாளர்கள் கருத்துகள்',
