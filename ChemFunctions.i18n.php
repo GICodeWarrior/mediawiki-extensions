@@ -1278,12 +1278,22 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Karthi.dr
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'chemicalsources' => 'வேதியியல் மூலங்கள்',
+	'chemicalsource-desc' => 'வேதிப்பொருள் வாய்பாட்டுக்கு <nowiki><chemform></nowiki> என்னும் குறிச்சொல் சேர்த்தல்',
+	'chemicalsources-desc' => 'வேதிப்பொருள் கிடைக்குமிடங்களுக்கு [[Special:ChemicalSources|சிறப்புப் பக்கம்]]',
 	'chemFunctions_ListPage' => 'வேதியியல் மூலங்கள்',
+	'chemFunctions_DataList' => 'கீழே உள்ள பட்டியலில் நீங்கள் காணவிரும்பும் வேதிப்பொருள்களைப் பற்றிய குறிப்புகள் தரும் இடங்களுக்கான தொடுப்புகள் உள்ளன..<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">ஆக்ஃசுபோர்டு பல்கலைக்கழத்தில் உள்ள MSDS  (தேடுவசதி இல்லை )</a><br />',
+	'chemFunctions_CAS' => 'சி.ஏ.எசு. எண்',
+	'chemFunctions_ATCCode' => 'ஏ.டி.சி.குறியீடு',
+	'chemFunctions_ECNumber' => 'இ.சி.எண்',
 	'chemFunctions_Formula' => 'வாய்பாடு',
 	'chemFunctions_Name' => 'IUPAC பெயர்',
+	'chemFunctions_ChemFormInputError' => 'Chemform:உள்ளிடுதலில் பிழை!',
 );
 
 /** Telugu (తెలుగు)
