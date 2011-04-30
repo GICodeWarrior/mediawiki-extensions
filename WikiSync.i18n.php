@@ -671,6 +671,14 @@ započinajo z wersiju $3 synchronizować?',
 	'wikisync_js_sync_end_rtl' => 'Synchronizacija ze zdaleneho wikija do lokalneho wikija $1 dokónčena',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'wikisync_clear_log' => 'Napló törlése',
+	'wikisync_apply_button' => 'Alkalmazás',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
