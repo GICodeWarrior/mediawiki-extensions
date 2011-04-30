@@ -200,6 +200,7 @@ $messages['arz'] = array(
 $messages['az'] = array(
 	'importusers-form-button' => 'İdxal',
 	'importusers-log-summary' => 'Xülasə',
+	'importusers-password' => 'parol',
 	'importusers-email' => 'e-məktub',
 	'importusers-realname' => 'həqiqi adınız',
 );
@@ -250,6 +251,24 @@ $messages['bg'] = array(
 	'importusers-password' => 'парола',
 	'importusers-email' => 'е-поща',
 	'importusers-realname' => 'истинско име',
+);
+
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'importusers' => 'ব্যবহারকারী আমাদানী',
+	'importusers-uploadfile' => 'ফাইল আপলোড',
+	'importusers-form-button' => 'আমদানি',
+	'importusers-log' => 'ব্যবহারকারী লগ আমদানি',
+	'importusers-log-summary' => 'সারাংশ',
+	'importusers-log-summary-all' => 'সকল: $1',
+	'importusers-log-summary-added' => 'যোগকৃত: $1',
+	'importusers-log-summary-updated' => 'হালনাগাদকৃত: $1',
+	'importusers-login-name' => 'লগইনের নাম',
+	'importusers-password' => 'শব্দচাবি',
+	'importusers-email' => 'ই-মেইল',
+	'importusers-realname' => 'প্রকৃত নাম',
 );
 
 /** Breton (Brezhoneg)
@@ -1977,6 +1996,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'importusers-log-summary' => 'Rezumu',
 	'importusers-log-summary-all' => 'Hotu: $1',
 	'importusers-email' => 'korreiu eletróniku',
 );
