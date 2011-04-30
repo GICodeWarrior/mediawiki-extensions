@@ -482,12 +482,14 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
 	'checkpoint' => 'భద్రపరచి దిద్దుబాటుని కొనసాగించు',
 	'checkpoint-desc' => 'మార్పులని భద్రపరిచి దిద్దుబాటుని కొనసాగించడానికి వీలుకల్పిస్తుంది',
 	'checkpoint-tooltip' => 'మీ మార్పులని భద్రపరిచి పుటని దిద్దడం కొనసాగించండి',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|చెక్ పాయింటు సేవ్]])',
 );
 
 /** Tagalog (Tagalog)
