@@ -316,6 +316,29 @@ $messages['bg'] = array(
 	'imagetagging-taggedimages-displaying' => 'Показване на $1 - $2 от $3 снимки на „$4“',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'taggedimages' => 'ট্যাগকৃত চিত্রসমূহ',
+	'imagetagging-addimagetag' => 'এই ছবিটি ট্যাগ করো',
+	'imagetagging-article' => 'পাতা:',
+	'imagetagging-articletotag' => 'পাতায় ট্যাগ করো',
+	'imagetagging-imghistory' => 'ইতিহাস',
+	'imagetagging-images' => 'চিত্রসমূহ',
+	'imagetagging-inthisimage' => 'এই ছবিতে: $1',
+	'imagetagging-removetag' => 'ট্যাগ অপসারণ:',
+	'imagetagging-done-button' => 'ট্যাগিং সম্পূর্ণ',
+	'imagetagging-tag-button' => 'ট্যাগ',
+	'imagetagging-tagcancel-button' => 'বাতিল',
+	'imagetagging-addingtag' => 'ট্যাগ যোগ..',
+	'imagetagging-removingtag' => 'ট্যাগ অপসারণ..',
+	'imagetagging-addtagsuccess' => 'ট্যাগ যোগ করা হয়েছে।',
+	'imagetagging-removetagsuccess' => 'ট্যাগ অপসারণ করা হয়েছে।',
+	'imagetagging-taggedimages-title' => '"$1"-এর ছবি',
+	'tag-logpagename' => 'ট্যাগিং লগ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -2090,7 +2113,29 @@ Var god vänta tills den föregående handlingen är färdig.',
 	'tag-logpagetext' => 'Det här är en logg över alla tillägg och borttagningar av bildmärkningar.',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'taggedimages' => 'குறிச்சொல் இணைத்த படங்கள்',
+	'imagetagging-desc' => 'ஒரு பயனரை உள்பதியப்பட்ட ஒரு படத்திலுள்ள பகுதிகளைத் தேர்ந்தெடுக்க இது அனுமதித்து அப்பகுதியுடன் ஒரு பக்கத்தை தொடர்புபடுத்துகின்றது',
+	'imagetagging-addimagetag' => 'இப்படத்துக்குக் குறிச்சொல் இணை',
+	'imagetagging-article' => 'பக்கம்:',
+	'imagetagging-articletotag' => 'குறிச்சொல் இணைக்கவேண்டிய பக்கம்',
+	'imagetagging-canteditothermessage' => 'இப்பக்கத்தை நீங்கள் தொகுக்க முடியாது, ஏனெனில் ஒன்று உங்களுக்கு அப்படிச் செய்ய உரிமைகள் இல்லாமல் இருகக்லாம் அல்லது இப்பக்கம் வேறு காரணங்களுக்காகப் பூட்டப்பட்டு இருக்கலாம்.',
+	'imagetagging-imghistory' => 'வரலாறு',
+	'imagetagging-images' => 'படங்கள்',
+	'imagetagging-inthisimage' => 'இப் பக்கத்தில்: $1',
+	'imagetagging-logentry' => '$2 ஆல் பக்கம் [[$1]] இன் குறிச்சொல் நீக்கப்பட்டது',
+	'imagetagging-log-tagged' => '$4 ஆல் பக்கம் [[$3]] உக்கு படம் [[$1|$2]] இணைக்கப்பெற்றது',
+	'imagetagging-new' => '<sup><span style="color:red">புதிது!</span></sup>',
+	'imagetagging-removetag' => 'குறிச்சொல்லை நீக்கு',
+	'imagetagging-tag-button' => 'குறிச்சொல்',
+	'imagetagging-tagcancel-button' => 'செய்யாமல் விடுக',
+);
+
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
@@ -2100,15 +2145,31 @@ $messages['te'] = array(
 	'imagetagging-images' => 'బొమ్మలు',
 	'imagetagging-inthisimage' => 'ఈ బొమ్మలో: $1',
 	'imagetagging-new' => '<sup><span style="color:red">కొత్తది!</span></sup>',
+	'imagetagging-removetag' => 'ట్యాగు తీసివెయ్యి',
+	'imagetagging-done-button' => 'ట్యాగు పెట్టడం అయింది',
+	'imagetagging-tag-button' => 'ట్యాగు',
 	'imagetagging-tagcancel-button' => 'రద్దుచేయి',
+	'imagetagging-tagging-instructions' => 'బొమ్మలోని వ్యక్తులు లేదా వస్తువులకు ట్యాగు పెట్టేందుకు వాటి మీద నొక్కండి.',
+	'imagetagging-addingtag' => 'ట్యాగును చేరుస్తున్నాం..',
+	'imagetagging-removingtag' => 'ట్యాగును తీసేస్తున్నాం..',
+	'imagetagging-addtagsuccess' => 'ట్యాగును చేర్చాం.',
+	'imagetagging-removetagsuccess' => 'ట్యాగును తీసేసాం.',
+	'imagetagging-canteditneedloginmessage' => 'మీ రీ పేజీని ఎడిట్ చెయ్యలేరు.
+బొమ్మలకు ట్యాగు తగిలించాలంటే మీరు లాగిన్ కావాల్సి ఉండటం దానికి కారణం కావచ్చు
+ఇప్పుడు లాగినవుతారా?',
+	'imagetagging-oneactionatatimemessage' => 'ఏకకాలంలో ఒక ట్యాగింగు వ్యాపకం మాత్రమే చేసే వీలుంది.
+ప్రస్తుతం జరుగుతున్న వ్యాపకాన్ని పుర్తయేదాకా ఆగండి.',
+	'imagetagging-oneuniquetagmessage' => 'ఈ పేజీలో ఇదే పేరుతో ఈసరికే ఒక ట్యాగు ఉంది.',
 	'imagetagging-imagetag-seemoreimages' => '"$1" యొక్క మరిన్ని చిత్రాలను చూడండి ($2)',
 	'imagetagging-taggedimages-title' => '"$1" యొక్క చిత్రాలు',
+	'tag-logpagename' => 'ట్యాగుల లాగ్',
 );
 
 /** Tetum (Tetun)
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'imagetagging-article' => 'Pájina:',
 	'imagetagging-imghistory' => 'Istória',
 	'imagetagging-tagcancel-button' => 'Para',
 );
