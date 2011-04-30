@@ -26,10 +26,13 @@
 			if ( 'eot' in config ) {
 				styleString += "\tsrc: url('"+config.eot+"');\n";
 			}
-			styleString += "\tsrc: local('☺'),";
+			styleString += "\tsrc: local('"+ font +"'),";
 			
 			if ( 'woff' in config ) {
 				styleString += "\t\turl('"+config.woff+"') format('woff'),";
+			}
+			if ( 'svg' in config ) {
+				styleString += "\t\turl('"+config.svg+"#"+font+"') format('svg'),";
 			}
 			if ( 'ttf' in config ) {
 				styleString += "\t\turl('"+config.ttf+"') format('truetype');\n";
@@ -45,8 +48,11 @@
 					"font-size":   $("body").css('font-size')
 				}
 			}
-			// Do we want to restrict font to only text marked in given language?
+			
 			$("body").css('font-family',  font +", Helvetica, Arial, sans-serif");
+			$("input").css('font-family',  font +", Helvetica, Arial, sans-serif");
+			$("select").css('font-family',  font +", Helvetica, Arial, sans-serif");
+			
 			if ( 'size' in config ) {
 				$("body").css('font-size', config.size);
 			}
@@ -121,7 +127,7 @@
 
 				$select.append($fontItem);
 			}
-			$fontlink = $( '<input >' )
+			$fontlink = $( '<input />' )
 					.attr("type","radio")
 					.attr("name","font")
 					.attr("value","webfont-none")
@@ -158,7 +164,7 @@
 			
 			//see if there is a font in cookie
 			cookie_font = $.cookie('webfonts-font');
-			console.log( "Font from cookie:", cookie_font);
+			//console.log( "Font from cookie:", cookie_font);
 			if(cookie_font == null){
 				$.webfonts.set( config[0]);
 				//mark it as checked
