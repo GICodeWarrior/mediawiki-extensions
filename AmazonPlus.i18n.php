@@ -1636,13 +1636,14 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'amazonplus-nores' => 'தவறு:  எந்தவிதமான முடிவுகளும் காணப்படவில்லை !',
 	'amazonplus-used' => 'பயன்படுத்தப்பட்டது',
-	'amazonplus-german' => 'ஜெர்மன்',
-	'amazonplus-french' => 'பிரெஞ்சு',
-	'amazonplus-japanese' => 'ஜப்பானீஸ்',
+	'amazonplus-german' => 'இடாய்ச்சுமொழி (செருமன்)',
+	'amazonplus-french' => 'பிரான்சியம்',
+	'amazonplus-japanese' => 'நிப்பானியம் (சப்பான் மொழி)',
 	'amazonplus-new' => 'புதிய',
 	'amazonplus-cp-none' => 'ஏதுமில்லை',
 	'amazonplus-more' => 'மேலும்',
