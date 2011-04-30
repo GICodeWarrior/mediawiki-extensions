@@ -191,10 +191,19 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Wikitanvir
  * @author Zaheen
  */
 $messages['bn'] = array(
+	'editmessages' => 'বার্তা সম্পাদনা',
+	'editmsg-target' => 'লক্ষ্য বার্তা:',
 	'editmsg-search' => 'অনুসন্ধান',
+	'editmsg-show-list' => 'বার্তা নাম "$1"-এর জন্য মান প্রদর্শন',
+	'editmsg-get-patch' => 'প্যাচ তৈরি',
+	'editmsg-new-search' => 'নতুন অনুসন্ধান',
+	'editmsg-apply-patch' => 'প্যাচ প্রয়োগ',
+	'editmsg-no-patch' => '"প্যাচ" কমান্ড এক্সিকিউট করতে অপারগ',
+	'editmsg-patch-success' => 'সফলভাবে প্যাচকৃত হয়েছে।',
 );
 
 /** Breton (Brezhoneg)
@@ -489,9 +498,16 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'editmessages' => 'Changiér los mèssâjos',
+	'editmsg-target' => 'Mèssâjo ciba :',
 	'editmsg-search' => 'Rechèrchiér',
+	'editmsg-show-list' => 'Visualisacion de les valors por lo nom du mèssâjo « $1 »',
+	'editmsg-get-patch' => 'Fâre un patch',
+	'editmsg-new-search' => 'Rechèrche novèla',
+	'editmsg-apply-patch' => 'Aplicar lo patch',
 );
 
 /** Western Frisian (Frysk)
@@ -1510,12 +1526,14 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
 	'editmsg-target' => 'లక్ష్యిత సందేశం:',
 	'editmsg-search' => 'అన్వేషణ',
 	'editmsg-new-search' => 'కొత్త అన్వేషణ',
+	'editmsg-warning-mismatch' => 'ఒరిజినల్ టెక్స్టుకు కింది {{PLURAL:$2|భాష|భాషల}}లో ఉంటుందనుకున్న విలువ లేదు: $1',
 );
 
 /** Tetum (Tetun)
