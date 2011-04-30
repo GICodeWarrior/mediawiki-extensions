@@ -616,6 +616,13 @@ $messages['te'] = array(
 	'signaturelogentry' => '$1 అనే పత్రంపై సంతకం చేసారు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'signaturelogentry' => 'asina dokumentu $1',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

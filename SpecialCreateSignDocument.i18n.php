@@ -1256,6 +1256,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1265,7 +1266,7 @@ $messages['ml'] = array(
 	'createsigndoc-address' => 'വീടിന്റെ വിലാസം:',
 	'createsigndoc-extaddress' => 'നഗരം. സംസ്ഥാനം, രാജ്യം:',
 	'createsigndoc-phone' => 'ഫോൺ നമ്പർ:',
-	'createsigndoc-bday' => 'ജനനതീയ്യതി:',
+	'createsigndoc-bday' => 'ജനന തീയതി:',
 	'createsigndoc-minage' => 'കുറഞ്ഞ പ്രായം:',
 	'createsigndoc-introtext' => 'പ്രാരംഭം:',
 	'createsigndoc-hidden' => 'മറഞ്ഞിരിക്കുന്നത്',
