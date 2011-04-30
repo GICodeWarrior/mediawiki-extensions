@@ -145,6 +145,17 @@ $messages['bg'] = array(
 	'right-findspam' => 'Търсене за наскоро добавен спам',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'findspam' => 'স্প্যাম অনুসন্ধান',
+	'findspam-ip' => 'আইপি ঠিকানা:',
+	'findspam-ok' => 'ঠিক আছে',
+	'findspam-notextfound' => 'কোনো কনফিগারেশন খুঁজে পাওয়া যায়নি',
+	'right-findspam' => 'সাম্প্রতিককালে যোগকৃত স্প্যামগুলোর জন্য অনুসন্ধান করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
