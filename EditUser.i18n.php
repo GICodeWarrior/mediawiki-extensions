@@ -195,9 +195,12 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Wikitanvir
  * @author Zaheen
  */
 $messages['bn'] = array(
+	'edituser' => 'ব্যবহারকারী সম্পাদনা',
+	'edituser-username' => 'ব্যবহারকারীর নাম:',
 	'edituser-dosearch' => 'অনুসন্ধান',
 );
 
@@ -468,6 +471,18 @@ $messages['fr'] = array(
 	'edituser-exempt' => "L'utilisateur « $1 » ne peut pas être modifié.",
 	'right-edituser' => 'Modifie les préférences des autres utilisateurs',
 	'right-edituser-exempt' => 'Les préférences de cet utilisateur ne sont pas modifiables par les autres',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'edituser' => 'Changiér l’utilisator',
+	'edituser-username' => 'Nom d’utilisator :',
+	'edituser-dosearch' => 'Rechèrchiér',
+	'edituser-nouser' => 'L’utilisator « $1 » ègziste pas.',
+	'edituser-exempt' => 'L’utilisator « $1 » pôt pas étre changiê.',
+	'right-edituser' => 'Changiér les prèferences ux ôtros utilisators',
 );
 
 /** Western Frisian (Frysk)
@@ -1326,14 +1341,16 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
+	'edituser-desc' => 'అనుమతులు ఉన్న వాడుకరులను ఇతర వాడుకరుల అభిరుచులను మార్చడానికి వీలు కలిగిస్తుంది',
 	'edituser' => 'వాడుకరిని మార్చండి',
 	'edituser-username' => 'వాడుకరిపేరు:',
 	'edituser-dosearch' => 'వెతుకు',
-	'edituser-nouser' => 'ఆ వాడుకరి లేనేలేరు.',
-	'edituser-exempt' => 'ఆ వాడుకరిని మార్చలేరు',
+	'edituser-nouser' => 'వాడుకరి $1 లేనేలేరు.',
+	'edituser-exempt' => 'వాడుకరి $1 లో మార్పులు చెయ్యలేరు.',
 	'right-edituser' => 'ఇతర వాడుకరుల అభిరుచులని మార్చగలగడం',
 	'right-edituser-exempt' => 'ఇతరులు ఈ వాడుకరి యొక్క అభిరుచులను మార్చలేకుండటం',
 );
