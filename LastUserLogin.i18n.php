@@ -116,6 +116,17 @@ $messages['bg'] = array(
 	'lastuserlogin_lastlogin' => 'Последно влизане',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'lastuserlogin_userid' => 'ব্যবহারকারী নাম',
+	'lastuserlogin_username' => 'প্রকৃত নাম:',
+	'lastuserlogin_useremail' => 'ব্যবহারকারীর ই-মেইল',
+	'lastuserlogin_lastlogin' => 'সর্বশেষ লগইন',
+	'lastuserlogin_daysago' => 'দিন আগে',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
