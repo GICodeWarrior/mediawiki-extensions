@@ -52,6 +52,13 @@ $messages['be-tarask'] = array(
 	'delaydef-error-redef' => 'Памылка: спроба перавызначэньня $1.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'delaydef-error-no-name' => 'ত্রুটি: কোনো নাম প্যারামিটার নির্বাচন করা হয়নি।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
