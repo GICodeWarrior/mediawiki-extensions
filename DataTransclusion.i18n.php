@@ -672,6 +672,14 @@ Första eller "template"-argument krävs.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> existerar inte.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Chaduvari
+ */
+$messages['te'] = array(
+	'datatransclusion-unknown-source' => 'చెడ్డ డేటా సోర్సు ఇచ్చారు.
+"$1" తెలీదు.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
