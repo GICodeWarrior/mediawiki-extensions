@@ -200,6 +200,21 @@ $messages['bg'] = array(
 	'importfreeimages_next' => 'Следващи $1',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'importfreeimages_owner' => 'প্রণেতা:',
+	'importfreeimages_importthis' => 'এটি আমদানি করো',
+	'importfreeimages_next' => 'পরবর্তী $1',
+	'importfreeimages_size_square' => 'আয়তাকৃতি',
+	'importfreeimages_size_thumbnail' => 'থাম্বনেইল',
+	'importfreeimages_size_small' => 'ছোট',
+	'importfreeimages_size_medium' => 'মধ্যম',
+	'importfreeimages_size_large' => 'বড়',
+	'importfreeimages_size_original' => 'মূল',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -1334,12 +1349,13 @@ $messages['sw'] = array(
 
 /** Tamil (தமிழ்)
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'importfreeimages_owner' => 'ஆசிரியர்',
 	'importfreeimages_next' => 'அடுத்த $1',
 	'importfreeimages_size_square' => 'சதுரம்',
-	'importfreeimages_size_thumbnail' => 'படத்தின் கட்டைவிரல் அளவு தோற்றம்',
+	'importfreeimages_size_thumbnail' => 'நகம் அளவு சிறுபடம்',
 	'importfreeimages_size_small' => 'சிறிய',
 	'importfreeimages_size_medium' => 'நடுத்தரம்',
 	'importfreeimages_size_large' => 'பெரிய',
