@@ -240,6 +240,19 @@ $messages['hsb'] = array(
 	'svgedit-toolbar-insert' => 'SVG-rysowanje',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'svgedit-editbutton-edit' => 'Rajz szerkesztése',
+	'svgedit-summary-label' => 'Szerkesztési összefoglaló',
+	'svgedit-editor-save-close' => 'Mentés és bezárás',
+	'svgedit-editor-close' => 'Mégse',
+	'svgedit-edit-tab' => 'Rajz szerkesztése',
+	'svgedit-edit-tab-tooltip' => 'Ezt az SVG-rajzot a böngésződ használatával szerkesztheted',
+	'svgedit-toolbar-insert' => 'SVG rajz',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
