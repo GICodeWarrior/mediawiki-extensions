@@ -207,6 +207,20 @@ $messages['bg'] = array(
 	'countedits-nocontribs' => 'Няма приноси към това уики.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'countedits' => 'সম্পাদনা গণনা করো',
+	'countedits-username' => 'ব্যবহারকারীর নাম:',
+	'countedits-ok' => 'ঠিক আছে',
+	'countedits-nosuchuser' => '$1 নামে কোনো ব্যবহারকারী নেই।',
+	'countedits-resultheader' => '$1-এর জন্য ফলাফল',
+	'countedits-resulttext' => '$1 $2টি {{PLURAL:$2|সম্পাদনা|সম্পাদনা}} করেছেন',
+	'countedits-mostactive' => 'সবচেয়ে বেশি সক্রিয় অবদানকারীসমূহ',
+	'countedits-nocontribs' => 'এই উইকিতে কোনো সম্পাদনা করা হয়নি।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -472,6 +486,20 @@ $messages['fr'] = array(
 	'countedits-resulttext' => '$1 a fait $2 modification{{PLURAL:$2||s}}',
 	'countedits-mostactive' => 'Contributeurs les plus actifs',
 	'countedits-nocontribs' => 'Aucune contribution sur ce wiki.',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'countedits' => 'Comptor de changements',
+	'countedits-username' => 'Nom d’utilisator :',
+	'countedits-ok' => 'Accèptar',
+	'countedits-nosuchuser' => 'Nion utilisator corrèspond a $1.',
+	'countedits-resultheader' => 'Rèsultats por $1',
+	'countedits-resulttext' => '$1 at fêt $2 changement{{PLURAL:$2||s}}',
+	'countedits-mostactive' => 'Contributors los ples actifs',
+	'countedits-nocontribs' => 'Gins de contribucion sur ceti vouiqui.',
 );
 
 /** Western Frisian (Frysk)
