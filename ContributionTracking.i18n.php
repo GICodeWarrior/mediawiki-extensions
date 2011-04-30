@@ -160,10 +160,14 @@ $messages['bg'] = array(
  * @author Wikitanvir
  */
 $messages['bn'] = array(
+	'contributiontracking' => 'অনুদান অনুসরণ',
 	'contrib-tracking-error' => 'ত্রুটি',
+	'contrib-tracking-error-text' => 'অগ্রহণযোগ্য ফর্ম জমা',
 	'contrib-tracking-submitting' => 'পেমেন্ট প্রসেসরের কাছে প্রদান করা হচ্ছে...',
 	'contrib-tracking-continue' => 'আপনাকে যদি স্বয়ংক্রিয়ভাবে পুনর্নির্দেশিত করা না হয়, তবে পেপ্যাল-এ আপনার অনুদান সম্পন্ন করতে নিচের বাটনে ক্লিক করুন।',
+	'contrib-tracking-redirect' => 'অনুদান সম্পূর্ণ করতে আপনাকে স্বয়ংক্রিয়ভাবে পেপ্যালে পুনর্নির্দেশ করা হবে।',
 	'contrib-tracking-button' => 'অগ্রসর হোন',
+	'contrib-tracking-item-name-onetime' => 'একক-সময় অনুদান',
 );
 
 /** Breton (Brezhoneg)
@@ -414,6 +418,7 @@ $messages['frp'] = array(
 	'contrib-tracking-submitting' => 'Èxpèdicion u sistèmo de trètament des payements...',
 	'contrib-tracking-continue' => 'Se vos éte pas redirigiê ôtomaticament, clicâd cél boton por complètar voutron don avouéc PayPal.',
 	'contrib-tracking-button' => 'Continuar',
+	'contrib-tracking-item-name-onetime' => 'Don solèt',
 );
 
 /** Friulian (Furlan)
