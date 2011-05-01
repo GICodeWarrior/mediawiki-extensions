@@ -25,6 +25,7 @@
 @synthesize viewController;
 @synthesize navController;
 @synthesize licenses;
+@synthesize window;
 
 @synthesize locationManager, lastLocation;
 
