@@ -45,6 +45,14 @@ $messages['be-tarask'] = array(
 	'pdfbook-desc' => 'Стварае кнігу са старонак у катэгорыі і экспартуе яе ў фармат PDF',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'pdfbook-action' => 'পিডিএফ হিসেবে ছাপা',
+	'pdfbook-log' => '$1 পিডিএফ বই হিসেবে তৈরিকৃত',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
