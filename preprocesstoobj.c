@@ -356,12 +356,12 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 
 					if ( parentNode ) {
 						if ( parentNode->commentEnd != -1 && parentNode->commentEnd == wsStart - 1 ) {
-							// Comments abutting, no change in visual end
-							parentNode->commentEnd = wsEnd;
+							
 						} else {
 							parentNode->visualEnd = wsStart - 1;
-							parentNode->commentEnd = endPos;
 						}
+						// Else comments abutting, no change in visual end
+						parentNode->commentEnd = endPos;
 					}
 					i = endPos + 1;
 					addNodeWithText(comment_node, text, startPos, endPos - startPos + 1);
