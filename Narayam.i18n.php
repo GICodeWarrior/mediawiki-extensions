@@ -118,6 +118,32 @@ $messages['be-tarask'] = array(
 	'narayam-bn-nkb' => 'Бэнгальская NKB',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'narayam-help-page' => 'Help:টাইপিং',
+	'narayam-eo' => 'এসপারেন্টো',
+	'narayam-hi-inscript' => 'হিন্দি ইন্সক্রিপ্ট',
+	'narayam-kn' => 'কন্নড় প্রতিবর্ণীকরণ',
+	'narayam-kn-inscript' => 'কন্নড় ইন্সক্রিপ্ট',
+	'narayam-ml' => 'মালায়লম প্রতিবর্ণীকরণ',
+	'narayam-ml-inscript' => 'মালয়লাম ইন্সক্রিপ্ট',
+	'narayam-or' => 'ওড়িয়া প্রতিবর্ণীকরণ',
+	'narayam-or-inscript' => 'ওড়িয়া ইন্সক্রিপ্ট',
+	'narayam-sa' => 'সংস্কৃত প্রতিবর্ণীকরণ',
+	'narayam-sa-inscript' => 'সংস্কৃত ইন্সক্রিপ্ট',
+	'narayam-si-singlish' => 'সিনহালা সিংলিশ',
+	'narayam-si-wijesekara' => 'সিনহালা উইজেসেকারা',
+	'narayam-ta99' => 'তামিল৯৯',
+	'narayam-ta' => 'তামিল প্রতিবর্ণীকরণ',
+	'narayam-te-inscript' => 'তেলেগু ইন্সক্রিপ্ট',
+	'narayam-bn-avro' => 'বাংলা অভ্র',
+	'narayam-bn-inscript' => 'বাংলা ইন্সক্রিপ্ট',
+	'narayam-bn-nkb' => 'বাংলা এনকেবি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
