@@ -858,6 +858,13 @@ $messages['te'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'createbox-create' => 'Kria',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
