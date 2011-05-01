@@ -106,9 +106,11 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'pageby-contributors' => 'অবদানকারী:',
+	'pageby-anon' => '<i>বেনামী</i>',
 );
 
 /** Breton (Brezhoneg)
