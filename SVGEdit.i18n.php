@@ -411,7 +411,7 @@ $messages['pt'] = array(
 	'svgedit-editor-close' => 'Cancelar',
 	'svgedit-desc' => 'Edição de desenhos SVG no próprio browser, com o [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Editar desenho',
-	'svgedit-edit-tab-tooltip' => 'Você pode editar este desenho SVG no seu navegador',
+	'svgedit-edit-tab-tooltip' => 'Pode editar este desenho SVG no seu browser',
 	'svgedit-toolbar-insert' => 'Desenho SVG',
 );
 
