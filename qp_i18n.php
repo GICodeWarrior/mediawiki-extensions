@@ -505,6 +505,19 @@ $messages['be-tarask'] = array(
 	'qp_error_unique' => 'Пытаньне тыпу unique() мае больш адказаў чым гэта магчыма: немагчыма скончыць',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'qp_vote_button' => 'ভোট',
+	'qp_vote_again_button' => 'আপনার ভোট পরিবর্তন করুন',
+	'qp_polls_list' => 'সকল নির্বাচন তালিকাভুক্ত করো',
+	'qp_source_link' => 'উৎস',
+	'qp_stats_link' => 'পরিসংখ্যান',
+	'qp_users_link' => 'ব্যবহারকারীগণ',
+	'qp_voice_link' => 'ব্যবহারকারীর কণ্ঠ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
