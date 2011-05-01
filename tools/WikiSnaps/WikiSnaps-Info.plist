@@ -28,5 +28,9 @@
 	<string>MainWindow</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>still-camera</string>
+	</array>
 </dict>
 </plist>
