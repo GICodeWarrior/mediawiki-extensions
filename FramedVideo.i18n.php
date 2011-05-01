@@ -763,6 +763,13 @@ $messages['pms'] = array(
 	'framedvideo-desc' => 'A përmëtt video embedded da vàire sit web an dovrand ël tag <code>&lt;video&gt;</code>.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'framedvideo_helppage' => 'Help:ويډيو',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya
