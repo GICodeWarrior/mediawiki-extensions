@@ -1564,6 +1564,7 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
@@ -1573,8 +1574,8 @@ $messages['mr'] = array(
 	'usagestatisticsfor' => '<h2>[[User:$1|$1]] ची वापर सांख्यिकी</h2>',
 	'usagestatisticsinterval' => 'मध्यंतर',
 	'usagestatisticstype' => 'प्रकार',
-	'usagestatisticsstart' => 'सुरुवातीचा दिनांक',
-	'usagestatisticsend' => 'शेवटची तारीख',
+	'usagestatisticsstart' => 'सुरूवात दिनांक:',
+	'usagestatisticsend' => 'अंतिम दिनांक:',
 	'usagestatisticssubmit' => 'सांख्यिकी तयार करा',
 	'usagestatisticsnostart' => 'कृपया सुरुवातीची तारीख द्या',
 	'usagestatisticsnoend' => 'कृपया शेवटची तारीख द्या',
