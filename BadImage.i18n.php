@@ -2493,6 +2493,7 @@ $messages['stq'] = array(
 	'badimages-log-add' => 'föigede [[$1]] an ju Lieste fon nit wonskede Bielden tou',
 	'badimages-log-remove' => '[[$1]] uut ju Lieste fon nit wonskede Bielden wächhoald',
 	'badimages-page' => '{{ns:help}}:Lieste fon nit wonskede Bielden',
+	'right-badimages' => 'Lieste fon nit wonskede Bielden aktualisierje',
 );
 
 /** Sundanese (Basa Sunda)
