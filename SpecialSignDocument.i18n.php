@@ -626,6 +626,60 @@ $messages['bg'] = array(
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] подписа [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'sign-realname' => 'নাম:',
+	'sign-address' => 'রাস্তার ঠিকানা:',
+	'sign-city' => 'শহর:',
+	'sign-state' => 'প্রদেশ:',
+	'sign-zip' => 'পোস্টাল কোড:',
+	'sign-country' => 'দেশ:',
+	'sign-phone' => 'ফোন নম্বর:',
+	'sign-bday' => 'বয়স:',
+	'sign-email' => 'ইমেইল ঠিকানা:',
+	'sign-list-anonymous' => 'বেনামী হিসেবে তালিকাভুক্ত করো',
+	'sign-list-hideaddress' => 'ঠিকানা তালিকাভুক্ত কোরো না',
+	'sign-list-hideextaddress' => 'শহর, প্রদেশ, পোস্টাল কোড, বা দেশ তালিকাভুক্ত কোরো না',
+	'sign-list-hidephone' => 'ফোন নম্বর তালিকাভুক্ত কোরো না',
+	'sign-list-hidebday' => 'বয়স তালিকাভুক্ত কোরো না',
+	'sign-list-hideemail' => 'ই-মেইল তালিকাভুক্ত কোরো না',
+	'sign-viewfield-entryid' => 'প্রবেশের আইডি',
+	'sign-viewfield-timestamp' => 'সময়বার্তা',
+	'sign-viewfield-realname' => 'নাম',
+	'sign-viewfield-address' => 'ঠিকানা',
+	'sign-viewfield-city' => 'শহর',
+	'sign-viewfield-state' => 'প্রদেশ',
+	'sign-viewfield-country' => 'দেশ',
+	'sign-viewfield-zip' => 'পোস্টাল কোড',
+	'sign-viewfield-ip' => 'আইপি ঠিকানা',
+	'sign-viewfield-agent' => 'ব্যবহারকারী এজেন্ট',
+	'sign-viewfield-phone' => 'ফোন',
+	'sign-viewfield-email' => 'ই-মেইল',
+	'sign-viewfield-age' => 'বয়স',
+	'sign-viewfield-options' => 'অপশন',
+	'sign-sigadmin-close' => 'স্বাক্ষর নিষ্ক্রিয় করো',
+	'sign-sigadmin-open' => 'স্বাক্ষর সক্রিয় করো',
+	'sign-signatures' => 'স্বাক্ষর',
+	'sign-sigadmin-closesuccess' => 'স্বাক্ষর সফলভাবে নিষ্ক্রিয় করা হয়েছে।',
+	'sign-sigadmin-opensuccess' => 'স্বাক্ষর সফলভাবে সক্রিয় করা হয়েছে।',
+	'sign-viewsignatures' => 'স্বাক্ষর দেখাও',
+	'sign-closed' => 'বাতিল',
+	'sig-anonymous' => "''বেনামী''",
+	'sig-private' => "''ব্যক্তিগত''",
+	'sign-sigdetails' => 'স্বাক্ষরের বিস্তারিত',
+	'sign-viewfield-reviewedby' => 'পর্যবেক্ষক',
+	'sign-viewfield-reviewcomment' => 'মন্তব্য',
+	'sign-detail-uniquequery-run' => 'কোয়েরি চালু করো',
+	'sign-review-comment' => 'মন্তব্য',
+	'sign-submitreview' => 'পর্যালোচনা জমা দিন',
+	'sign-uniquequery-similarname' => 'সাদৃশ্যপূর্ণ নাম',
+	'sign-uniquequery-similaraddress' => 'সাদৃশ্যপূর্ণ ঠিকানা',
+	'sign-uniquequery-similarphone' => 'সাদৃশ্যপূর্ণ ফোন নম্বর',
+	'sign-uniquequery-similaremail' => 'সাদৃশ্যপূর্ণ ই-মেইল',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

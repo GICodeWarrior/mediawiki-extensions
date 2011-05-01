@@ -277,6 +277,25 @@ $messages['bg'] = array(
 	'createsigndoc-error-pagenoexist' => 'Грешка: Страницата [[$1]] не съществува.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'createsigndoc-pagename' => 'পাতা:',
+	'createsigndoc-allowedgroup' => 'অনুমতিপ্রাপ্ত দল:',
+	'createsigndoc-email' => 'ইমেইল ঠিকানা:',
+	'createsigndoc-address' => 'বাসার ঠিকানা:',
+	'createsigndoc-extaddress' => 'শহর, প্রদেশ, দেশ:',
+	'createsigndoc-phone' => 'ফোন নম্বর:',
+	'createsigndoc-bday' => 'জন্ম তারিখ:',
+	'createsigndoc-minage' => 'নূন্যতম বয়স:',
+	'createsigndoc-introtext' => 'সূচনা:',
+	'createsigndoc-hidden' => 'লুকায়িত',
+	'createsigndoc-optional' => 'ঐচ্ছিক',
+	'createsigndoc-create' => 'তৈরি করুন',
+	'createsigndoc-error-generic' => 'ত্রুটি: $1',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
