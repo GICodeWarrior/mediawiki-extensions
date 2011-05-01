@@ -143,6 +143,15 @@ $messages['ksh'] = array(
 	'fileattach-editcomment' => 'De Dattei [[File:$1|$1]] es aanjehange woode.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'fileattach-attachfile' => 'Fichier drunhänken',
+	'fileattach-uploadheading' => 'Fichier un $1 drunhänken',
+	'fileattach-editcomment' => 'Fichier [[File:$1|$1]] dru gehaang',
+);
+
 /** Latvian (Latviešu)
  * @author GreenZeb
  */
@@ -201,6 +210,13 @@ $messages['pms'] = array(
 	'fileattach-attachfile' => 'Alega archivi',
 	'fileattach-uploadheading' => 'Alega archivi a $1',
 	'fileattach-editcomment' => 'Archivi [[File:$1|$1]] alegà',
+);
+
+/** Russian (Русский)
+ * @author Sasha Blashenkov
+ */
+$messages['ru'] = array(
+	'fileattach-desc' => 'Позволяет работать с файлами для загрузки на текущую страницу',
 );
 
 /** Swedish (Svenska)
