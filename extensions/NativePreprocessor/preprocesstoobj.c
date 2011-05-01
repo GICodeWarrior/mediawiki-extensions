@@ -15,7 +15,7 @@
 static int strpos(const char* haystack, int haystack_len, const char* needle, int needle_len, int offset) {
 	int i;
 	
-	for ( i = offset; i < haystack_len - needle_len; i++ ) {
+	for ( i = offset; i <= haystack_len - needle_len; i++ ) {
 		if ( !memcmp( haystack + i, needle, needle_len ) ) {
 			return i;
 		} 
@@ -316,7 +316,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 
 					int wsStart;
 					for (wsStart = i - 1; wsStart > 0; wsStart--) {
-						if ( text[wsStart] != ' ') { /* It can't go over wikitext_len because the php string has a \0 terminator, too */
+						if ( text[wsStart] != ' ' ) { /* It can't go over wikitext_len because the php string has a \0 terminator, too */
 							wsStart++;
 							break;
 						}
@@ -515,7 +515,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 				// Comment found at line end
 				// Search for equals signs before the comment
 				for (searchStart = parentNode->visualEnd; searchStart > 0; --searchStart) {
-					if (text[i] != ' ' && text[i] != '\t')
+					if (text[searchStart] != ' ' && text[searchStart] != '\t')
 						break;
 				}
 			}
