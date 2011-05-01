@@ -1843,13 +1843,24 @@ $messages['ta'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
 	'categorybrowser' => 'వర్గ విహారిణి',
+	'categorybrowser-desc' => 'ఎక్కువ పేజీలున్న వర్గాలను వడపోసి, AJAX ఇంటరుఫేసు ద్వారా వాటిని శోధించగలిగే [[Special:CategoryBrowser|ప్రత్యేక పేజీ]]ని చూపిస్తుంది',
+	'cb_requires_javascript' => 'వర్గశోధిని పొడిగింత పనిచెయ్యాలంటే బ్రౌజరులో JavaScript చేతనమై ఉండాలి.',
+	'cb_ie6_warning' => 'కండిషను ఎడిటరు Internet Explorer 6.0, మరియు దాని పూర్వపు వెర్షన్లలో పని చెయ్యదు.
+అయితే, పూర్వ నిశ్చిత కండిషన్ల శోధన మామూలుగానే పనిచేస్తాయి.
+వీలైతే, మీ బ్రౌజరును మార్చడంగానీ, ఉన్నతీకరించడంగానీ చెయ్యండి.',
+	'cb_show_no_parents_only' => 'మాతృవర్గాలు లేని వర్గాలను మాత్రమే చూపించు',
+	'cb_cat_name_filter' => 'ఈ పేరుతో ఉన్న వర్గాల కోసం వెతుకు:',
+	'cb_cat_name_filter_clear' => 'వర్గం పేరు వడపోతకాన్ని క్లియరు చేసేందుకు నొక్కండి',
+	'cb_cat_name_filter_ci' => 'కేస్ ఇన్సెన్సిటివ్',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|ఉపవర్గం|ఉపవర్గాలు}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|పుట|పుటలు}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|దస్త్రం|దస్త్రాలు}}',
+	'cb_has_parentcategories' => 'మాతృవర్గాలు (ఉంటే)',
 	'cb_previous_items_link' => 'గత',
 	'cb_next_items_link' => 'తదుపరి',
 	'cb_next_items_stats' => ' ($1 నుండి)',
@@ -1860,7 +1871,10 @@ $messages['te'] = array(
 	'cb_all_op' => 'అన్నీ',
 	'cb_or_op' => 'లేదా',
 	'cb_and_op' => 'మరియు',
+	'cb_edit_left_hint' => 'వీలైతే, ఎడమవైపుకు జరుపు',
+	'cb_edit_right_hint' => 'వీలైతే, కుడివైపుకు జరుపు',
 	'cb_edit_remove_hint' => 'వీలైతే, తొలగించు',
+	'cb_edit_copy_hint' => 'ఆపరేటరును క్లిప్పుబోర్డుకు కాపీ చెయ్యి',
 );
 
 /** Tetum (Tetun)

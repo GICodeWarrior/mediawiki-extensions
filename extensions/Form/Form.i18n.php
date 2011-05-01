@@ -1253,6 +1253,7 @@ Për piasì, {{PLURAL:$2|ch'a lo|ch'a-j}} compila.",
 $messages['ps'] = array(
 	'formtitlepattern' => 'نوی $1 ورګډول',
 	'formsave' => 'خوندي کول',
+	'formarticleexists' => 'پدې نوم مخ شته',
 );
 
 /** Portuguese (Português)

@@ -111,6 +111,17 @@ $messages['bg'] = array(
 	'mostrevisors-submit' => 'Отваряне',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'mostrevisors-submit' => 'চলো',
+	'mostrevisors-showredir' => 'পুনর্নির্দেশিত পাতাগুলো দেখাও',
+	'mostrevisors-hideredir' => 'পুনর্নির্দেশিত পাতাগুলো লুকাও',
+	'mostrevisors-users' => '- $1 জন {{PLURAL:$1|সম্পাদক|সম্পাদকসমূহ}}',
+	'mostrevisors-viewcontributors' => 'মূল অবদানকারীকে দেখাও',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

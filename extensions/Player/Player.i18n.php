@@ -185,6 +185,23 @@ $messages['bg'] = array(
 	'player-goto-file' => 'файл',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'player' => 'প্লেয়ার',
+	'player-title' => 'প্লেয়ার',
+	'player-playertitle' => 'প্লেয়ার: $1',
+	'player-file' => 'ফাইলের নাম',
+	'player-play' => 'চালানো হোক',
+	'player-not-allowed' => 'অগ্রহণযোগ্য ফরম্যাট',
+	'player-not-found' => 'ফাইল পাওয়া যায়নি',
+	'player-invalid-title' => 'ত্রুটিপূর্ণ শিরোনাম',
+	'player-goto-player' => 'প্লেয়ার',
+	'player-goto-page' => 'পাতা',
+	'player-goto-file' => 'ফাইল',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

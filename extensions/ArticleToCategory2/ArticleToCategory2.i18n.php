@@ -637,6 +637,14 @@ $messages['te'] = array(
 	'articletocategory2-create-category-under-category-button' => 'సృష్టించు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Kria',
+	'articletocategory2-create-category-under-category-button' => 'Kria',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

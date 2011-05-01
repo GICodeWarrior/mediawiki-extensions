@@ -113,6 +113,15 @@ $messages['bg'] = array(
 	'piwik-browsers' => 'Браузъри',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'piwik-lastvisits' => 'সর্বশেষ পরিদর্শন',
+	'piwik-countries' => 'দেশ',
+	'piwik-browsers' => 'ব্রাউজার',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

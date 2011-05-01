@@ -49,6 +49,14 @@ $messages['be-tarask'] = array(
 	'right-searchlog-read' => 'прагляд журнала пошукаў',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'searchlog' => 'অনুসন্ধান লগ',
+	'searchlog-entire' => 'সম্পূর্ণ লগ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

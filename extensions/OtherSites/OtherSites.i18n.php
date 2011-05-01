@@ -70,6 +70,13 @@ $messages['bg'] = array(
 	'othersites' => 'Други сайтове',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'othersites' => 'অন্যান্য সাইটসমূহ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

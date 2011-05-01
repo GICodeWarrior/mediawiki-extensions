@@ -164,6 +164,19 @@ $messages['bg'] = array(
 	'onlinestatus-toggle-online' => 'На линия',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'onlinestatus-subtitle-online' => 'এই ব্যবহারকারী বর্তমানে অনলাইনে আছেন',
+	'onlinestatus-tab' => 'অবস্থা',
+	'onlinestatus-toggles-desc' => 'আপনার অবস্থান:',
+	'onlinestatus-toggle-offline' => 'অফলাইন',
+	'onlinestatus-toggle-online' => 'অনলাইন',
+	'onlinestatus-pref-onlineonlogin' => 'প্রবেশের পর আমার অবস্থা অনলাইনে পরিবর্তন করো',
+	'onlinestatus-pref-offlineonlogout' => 'প্রস্থানের পর আমার অবস্থা অফলাইনে পরিবর্তন করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

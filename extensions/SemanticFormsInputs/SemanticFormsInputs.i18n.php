@@ -87,6 +87,17 @@ $messages['bg'] = array(
 	'semanticformsinputs-today' => 'Днес',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'semanticformsinputs-wrongformat' => 'ভুল বিন্যাস',
+	'semanticformsinputs-close' => 'বাতিল',
+	'semanticformsinputs-prev' => 'পূর্ববর্তী',
+	'semanticformsinputs-next' => 'পরবর্তী',
+	'semanticformsinputs-today' => 'আজ',
+);
+
 /** Breton (Brezhoneg)
  * @author Gwendal
  * @author Y-M D

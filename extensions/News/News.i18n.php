@@ -427,10 +427,11 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'newsextension-desc' => 'Hiển thị các thay đổi gần đây đã tinh chỉnh trên các trang của một wiki hoặc bằng feed RSS hoặc Atom',
+	'newsextension-desc' => 'Hiển thị các thay đổi gần đây đã tinh chỉnh trên các trang của một wiki hoặc bằng nguồn tin RSS hoặc Atom',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)

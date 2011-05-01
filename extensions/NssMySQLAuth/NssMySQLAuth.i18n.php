@@ -150,6 +150,24 @@ $messages['bg'] = array(
 	'nss-welcome-mail' => 'Беше ви създадена сметка с потребителско име $1 и парола $2.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'accountmanager' => 'অ্যাকাউন্ট ব্যবস্থাপক',
+	'am-username' => 'ব্যবহারকারী নাম',
+	'am-email' => 'ই-মেইল',
+	'am-active' => 'সক্রিয়',
+	'am-updated' => 'আপনার পরিবর্তনসমূহ সফলভাবে সংরক্ষিত হয়েছে',
+	'nss-rights' => 'অধিকারসমূহ',
+	'nss-save-changes' => 'পরিবর্তন সংরক্ষণ',
+	'nss-create-account-header' => 'নতুন অ্যাকাউন্ট তৈরি করুন',
+	'nss-create-account' => 'অ্যাকাউন্ট তৈরি করুন',
+	'nss-no-mail' => 'ই-মেইল পাঠিও না',
+	'nss-welcome-mail' => '$1 ব্যবহারকারী নাম ও $2 পাসওয়ার্ডসহ একটি অ্যাকাউন্ট আপনার জন্য তৈরি করা হয়েছে।',
+	'nss-welcome-mail-subject' => 'অ্যকাউন্ট তৈরিকরণ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -864,6 +882,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'am-username' => 'کارن-نوم',
 	'am-email' => 'برېښليک',
+	'nss-rights' => 'رښتې',
 	'nss-save-changes' => 'بدلونونه خوندي کول',
 	'nss-create-account-header' => 'نوی ګڼون جوړول',
 	'nss-create-account' => 'ګڼون جوړول',

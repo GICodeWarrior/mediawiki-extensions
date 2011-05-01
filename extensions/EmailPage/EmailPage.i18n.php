@@ -988,6 +988,7 @@ $messages['pl'] = array(
 $messages['ps'] = array(
 	'e-mailpage' => 'د برېښليک مخ',
 	'ea-send' => 'لېږل',
+	'ea-message' => 'پيغام:',
 	'ea-allusers' => 'ټول کارنان',
 );
 

@@ -178,9 +178,13 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
+	'slippymap_errors' => '$1 ত্রুটিসমূহ:',
 	'slippymap_code' => 'এই ম্যাপ দেখানোর জন্য উইকিকোড:',
+	'slippymap_button_code' => 'উইকিকোড আনো',
+	'slippymap_clicktoactivate' => 'মানচিত্র চালু করতে ক্লিক করুন',
 );
 
 /** Breton (Brezhoneg)

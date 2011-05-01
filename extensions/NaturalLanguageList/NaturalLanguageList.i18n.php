@@ -48,6 +48,13 @@ $messages['be-tarask'] = array(
 	'nll-lastseparator' => '&#32;і&#32;',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'nll-lastseparator' => '&#32;এবং&#32;',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

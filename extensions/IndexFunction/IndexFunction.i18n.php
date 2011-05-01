@@ -1082,8 +1082,12 @@ Sgnaca la frecia për mosté tute le pàgine indicisà sota col tìtol-lì.",
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'indexfunc-badtitle' => 'ناسم سرليک: "$1"',
+	'index' => 'د ليکلړ پلټنه',
+	'index-legend' => 'ليکلړ پلټل',
 	'index-search' => 'پلټنه:',
 	'index-submit' => 'سپارل',
+	'index-hide-detail' => 'د مخونو لړليک پټول',
 );
 
 /** Portuguese (Português)

@@ -125,6 +125,17 @@ $messages['bg'] = array(
 	'newschannel_submit_button' => 'Създаване на емисия',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'newschannel' => 'খবরের চ্যানেল',
+	'newschannel_format' => 'বিন্যাস:',
+	'newschannel_limit' => 'সীমা:',
+	'newschannel_include_category' => 'অতিরিক্ত বিষয়শ্রেণী:',
+	'newschannel_submit_button' => 'ফিড তৈরি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -777,7 +788,7 @@ $messages['vi'] = array(
 	'newschannel_limit' => 'Hạn chế:',
 	'newschannel_include_category' => 'Thể loại khác:',
 	'newschannel_exclude_category' => 'Trừ thể loại:',
-	'newschannel_submit_button' => 'Tạo feed',
+	'newschannel_submit_button' => 'Tạo nguồn tin',
 );
 
 /** Volapük (Volapük)

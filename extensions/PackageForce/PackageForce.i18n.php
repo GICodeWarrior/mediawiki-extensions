@@ -96,6 +96,23 @@ $messages['be-tarask'] = array(
 	'pf-header-approve' => 'Зацьвердзіць',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'packageforce' => 'প্যাকেজফোর্স',
+	'packageforceadmin' => 'প্যাকেজফোর্সঅ্যাডমিন',
+	'pf-admin-menu-default' => 'পূর্বনির্ধারিত',
+	'pf-admin-link-editlink-page' => 'পাতা সম্পাদনা',
+	'pf-admin-link-approve' => 'অনুমোদিত পাতাসমূহ',
+	'pf-header-documentation' => 'ডকুমেন্টেশন',
+	'pf-header-in_packages' => 'প্যাকেজসমূহ',
+	'pf-header-edit' => 'সংযোগ সম্পাদনা',
+	'pf-header-type' => 'পাতার ধরন',
+	'pf-header-page_title' => 'শিরোনাম',
+	'pf-header-approve' => 'অনুমোদিত',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

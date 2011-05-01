@@ -1253,9 +1253,11 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'countedits' => 'د سمونونو شمېر',
 	'countedits-username' => 'کارن-نوم:',
 	'countedits-ok' => 'ښه',
 	'countedits-resultheader' => 'د $1 پايلې',
+	'countedits-mostactive' => 'تر ټولو فعاله ونډوالان',
 	'countedits-nocontribs' => 'په همدې ويکي کې هېڅ ونډې نه دي ترسره شوي.',
 );
 

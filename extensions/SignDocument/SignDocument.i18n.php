@@ -82,6 +82,13 @@ $messages['bg'] = array(
 	'signaturelogentry' => 'подписа документа $1',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'signaturelogpage' => 'স্বাক্ষর লগ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

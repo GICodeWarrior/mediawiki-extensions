@@ -33,6 +33,15 @@ $messages['be-tarask'] = array(
 	'researchtools-page-prefs' => 'Статыстыка наладаў',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'researchtools' => 'গবেষণা সরঞ্জাম',
+	'researchtools-page-dashboard' => 'ড্যাশবোর্ড',
+	'researchtools-page-prefs' => 'পছন্দ পরিসংখ্যান',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

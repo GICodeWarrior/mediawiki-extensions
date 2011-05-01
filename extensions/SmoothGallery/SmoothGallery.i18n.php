@@ -135,6 +135,15 @@ $messages['bg'] = array(
 	'smoothgallery-javascript-disabled' => 'За правилно показване на галерията е необходим Javascript.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'smoothgallery' => 'স্মুথগ্যালারি',
+	'smoothgallery-smoothgallerytitle' => 'স্মুথগ্যালারি: $1',
+	'smoothgallery-gallery-not-found' => 'অনুরোধকৃত গ্যালারিটি নেই।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

@@ -2274,7 +2274,15 @@ $messages['ps'] = array(
 	'crosswikiblock-expiry' => 'د پای نېټه:',
 	'crosswikiblock-reason' => 'سبب:',
 	'crosswikiblock-submit' => 'په دې کارن بنديز لګول',
+	'crosswikiblock-nocreate' => 'د ګڼون جوړولو مخنيول',
+	'crosswikiunblock' => 'په نورو ويکي ګانو کې له کارن نه بنديز ليرې کول',
 	'crosswikiunblock-reason' => 'سبب:',
+	'crosswikiunblock-submit' => 'له دې کارن بنديز ليري کول',
+	'crosswikiblock-nousername' => 'کارن-نوم مو نه دی ورکړی',
+	'crosswikiblock-nouser' => 'د "$3" کارن و نه موندل شو.',
+	'crosswikiblock-noreason' => 'هېڅ سبب نه دی ځانګړی شوی.',
+	'crosswikiblock-alreadyblocked' => 'د $3 پر کارن د پخوا نه بنديز لګېدلی.',
+	'crosswikiblock-noblock' => 'په دې کارن بنديز نه دی لګېدلی.',
 );
 
 /** Portuguese (Português)

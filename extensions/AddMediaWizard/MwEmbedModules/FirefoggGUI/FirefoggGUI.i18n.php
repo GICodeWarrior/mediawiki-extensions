@@ -2460,7 +2460,7 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'fogg-wont-upload-to-server' => 'Catatan: Berkas video Anda akan dikodekan secara lokal dan tidak diunggah ke server manapun.',
+	'fogg-wont-upload-to-server' => 'Catatan: Berkas video Anda akan dikodekan secara lokal dan tidak diunggah ke server mana pun.',
 	'fogg-save_local_file' => 'Simpan Ogg',
 	'fogg-help-sticky' => 'Bantuan (klik untuk tetap ditampilkan)',
 	'fogg-cg-preset' => 'Setelan awal: <strong>$1</strong>',
@@ -2905,6 +2905,14 @@ Schalt w.e.g. <b>Firebug</b> fir dës Säit aus.',
  */
 $messages['li'] = array(
 	'fogg-title-title' => 'Naam',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Eitvys200
+ */
+$messages['lt'] = array(
+	'fogg-videoQuality-title' => 'Vaizdo kokybė',
+	'fogg-copyright-title' => 'Autorinės teisės',
 );
 
 /** Latvian (Latviešu)
@@ -4897,8 +4905,8 @@ $messages['uk'] = array(
 	'fogg-cg-advVideo' => 'Розширені налаштування перекодування відео',
 	'fogg-cg-advAudio' => 'Розширені налаштування перекодування аудіо',
 	'fogg-preset-custom' => 'Налаштування користувача',
-	'fogg-webvideo-desc' => 'Ogg веб-відео Theora, Vorbis (600 кбіт\\/с і максимальна ширина 400 пікселів)',
-	'fogg-savebandwidth-desc' => 'Ogg для низькошвидкісних каналів Theora, Vorbis (164 кбіт\\/с і максимальна ширина 200 пікселів)',
+	'fogg-webvideo-desc' => 'Ogg веб-відео Theora, Vorbis (600 кбіт/с і максимальна ширина 400 пікселів)',
+	'fogg-savebandwidth-desc' => 'Ogg для низькошвидкісних каналів Theora, Vorbis (164 кбіт/с і максимальна ширина 200 пікселів)',
 	'fogg-highquality-desc' => 'Ogg високої якості Theora, Vorbis (максимальна ширина 1080 пікселів)',
 	'fogg-webvideo-webm-desc' => 'WebM веб-відео VP8 (600 кбіт\\/с і максимальна ширина 480 пікселів)',
 	'fogg-highquality-webm-desc' => 'WebM високої якості VP8 (максимальна ширина 1080 пікселів)',

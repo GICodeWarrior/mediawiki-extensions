@@ -127,10 +127,12 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'searchbox-search' => 'অনুসন্ধান',
 	'searchbox-go' => 'যাও',
+	'searchbox-namespaces' => 'নামস্থান',
 );
 
 /** Breton (Brezhoneg)

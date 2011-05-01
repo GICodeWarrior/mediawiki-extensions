@@ -688,9 +688,44 @@ OpenID позволява влизането в много различни са
 
 /** Bengali (বাংলা)
  * @author Ehsanulhb
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
+	'openidlogin' => 'ওপেনআইডি-এর সাহায্য লগইন',
+	'openidserver' => 'ওপেনআইডি সার্ভার',
+	'openidxrds' => 'ইয়াদিস ফাইল',
+	'openiderror' => 'নিশ্চিতকরণ ত্রুটি',
+	'openidconfigerror' => 'ওপেন আইডি কনফিগারেশন ত্রুটি',
+	'openidpermission' => 'ওপেনআইডি অনুমতি ত্রুটি',
+	'openidcancel' => 'নিশ্চিতকরণ বাতিল করা হয়েছে',
+	'openidcanceltext' => 'ওপেনআইডি ইউআরএল-এর নিশ্চিতকরণ বাতিল করা হয়েছে।',
+	'openidfailure' => 'নিশ্চিতকরণ ব্যর্থ হয়েছে',
+	'openidsuccess' => 'নিশ্চিতকরণ সফল',
+	'openidsuccesstext' => 'ওপেনআইডি ইউআরএল-এর নিশ্চিতকরণ সফল।',
+	'openidusernameprefix' => 'ওপেনআইডিইউজার',
+	'openidoptional' => 'ঐচ্ছিক',
+	'openidrequired' => 'বাধ্যতামূলক',
+	'openidnickname' => 'ডাক সাম',
+	'openidfullname' => 'পূর্ণ নাম',
+	'openidemail' => 'ই-মেইল ঠিকানা',
+	'openidlanguage' => 'ভাষা',
+	'openidtimezone' => 'সময় স্থান',
+	'openidchooselegend' => 'ব্যবহারকারী নামের পছন্দ',
+	'openidchoosenick' => 'আপনার ডাকনাম ($1)',
+	'openidchoosefull' => 'আপনার পূর্ণ নাম ($1)',
+	'openidchooseusername' => 'ব্যবহারকারীর নাম:',
+	'openidchoosepassword' => 'শব্দচাবি:',
+	'openidconvertsuccess' => 'সফলভাবে ওপেনআইডিতে রূপান্তর করা হয়েছে',
 	'openiddelete-button' => 'নিশ্চিত করুন',
+	'openid-urls-action' => 'অ্যাকশন',
+	'openid-urls-delete' => 'অপসারণ',
+	'openid-add-url' => 'একটি নতুন ওপেনআইডি যোগ করুন',
+	'openidsigninorcreateaccount' => 'আপনার গুগল অ্যাকাউন্ট ব্যবহার করে প্রবেশ করুন',
+	'openid-provider-label-openid' => 'আপনার ওপেনআইডি ইউআরএল প্রবেশ করান',
+	'openid-provider-label-google' => 'আপনার গুগল অ্যাকাউন্ট ব্যবহার করে প্রবেশ করুন',
+	'openid-provider-label-yahoo' => 'আপনার ইয়াহু অ্যাকাউন্ট ব্যবহার করে প্রবেশ করুন',
+	'openid-provider-label-aol' => 'আপনার এওএল স্ক্রিননাম প্রবেশ করান',
+	'openid-provider-label-other-username' => 'আপনার $1 ব্যবহাকারী নাম প্রবেশ করান',
 );
 
 /** Breton (Brezhoneg)

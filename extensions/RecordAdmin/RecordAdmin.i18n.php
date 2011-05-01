@@ -281,11 +281,33 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'recordadmin-select' => 'নির্বাচন',
+	'recordadmin-recordtype' => 'রেকর্ডের ধরন',
+	'recordadmin-newsearch' => 'নতুন  $1 অনুসন্ধান',
+	'recordadmin-newrecord' => 'অন্য একটি রেকর্ডের ধরন নির্বাচন করুন',
 	'recordadmin-submit' => 'জমা দিন',
 	'recordadmin-badtitle' => 'মন্দ শিরোনাম!',
+	'recordadmin-recordid' => 'রেকর্ড আইড/নাম:',
+	'recordadmin-buttonsearch' => 'অনুসন্ধান',
+	'recordadmin-buttoncreate' => 'তৈরি করুন',
+	'recordadmin-buttonreset' => 'আদি অবস্থায় ফেরত',
+	'recordadmin-searchresult' => 'অনুসন্ধানের ফলাফল',
+	'recordadmin-nomatch' => 'রেকর্ডের সাথে কোনো সাদৃশ্য খুঁজে পাওয়া যায়নি!',
+	'recordadmin-buttonsave' => 'সংরক্ষণ',
+	'recordadmin-createlink' => 'নতুন একটি তৈরি করুন',
+	'recordadmin-viewlink' => 'দেখাও',
+	'recordadmin-editlink' => 'সম্পাদনা',
+	'recordadmin-created' => 'তৈরি হয়েছে',
+	'recordadmin-modified' => 'পরিবর্তিত হয়েছে',
+	'recordadmin-actions' => 'সম্পাদনা',
+	'recordadmin-needscontent' => 'বিষয়বস্তু যোগ...',
+	'right-recordadmin' => 'রেকর্ড পাতা খুঁজুন ও সম্পাদনা করুন',
+	'recordadmin-export-csv' => 'সিএসভি',
+	'recordadmin-export-pdf' => 'পিডিএফ',
+	'recordadmin-notset' => '"$1" নং',
 );
 
 /** Breton (Brezhoneg)

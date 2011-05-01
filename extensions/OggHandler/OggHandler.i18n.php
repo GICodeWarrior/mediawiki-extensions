@@ -3607,13 +3607,14 @@ $messages['tt-cyrl'] = array(
  * @author Arturyatsko
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'ogg-desc' => 'Оброблювач файлів Ogg Theora і Vorbis з використанням JavaScript-програвача',
 	'ogg-short-audio' => 'Звуковий файл Ogg $1, $2',
 	'ogg-short-video' => 'Відео-файл Ogg $1, $2',
 	'ogg-short-general' => 'Файл Ogg $1, $2',
-	'ogg-long-audio' => '(звуковий файл Ogg $1, довжина $2, $3)',
+	'ogg-long-audio' => 'звуковий файл Ogg $1, довжина $2, $3',
 	'ogg-long-video' => '(відео-файл Ogg $1, довжина $2, $4×$5 пікселів, $3)',
 	'ogg-long-multiplexed' => '(мультиплексний аудіо/відео-файл ogg, $1, довжина $2, $4×$5 пікселів, $3 усього)',
 	'ogg-long-general' => '(медіа-файл Ogg, довжина $2, $3)',

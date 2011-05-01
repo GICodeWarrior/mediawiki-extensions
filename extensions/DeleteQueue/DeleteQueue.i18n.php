@@ -5219,7 +5219,7 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 $messages['or'] = array(
 	'deletequeue-list-search' => 'ଖୋଜିବା',
 	'deletequeue-list-header-expiry' => 'ଅଚଳ ହେବ',
-	'deletequeue-case-page' => 'ଫରଦ:',
+	'deletequeue-case-page' => 'ପୃଷ୍ଠା:',
 	'deletequeue-case-reason' => 'କାରଣ:',
 	'deletequeue-case-expiry' => 'ଅଚଳ ହେବ:',
 );
@@ -5559,7 +5559,10 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
  */
 $messages['ps'] = array(
 	'deletequeue-action-queued' => 'ړنګېدنه',
+	'deletequeue-action' => 'د ړنګولو وړانديز کول',
+	'deletequeue-action-title' => 'د "$1" د ړنګولو وړانديز کول',
 	'deletequeue-delnom-otherreason' => 'بل سبب',
+	'deletequeue-delnom-extra' => 'نور مالومات:',
 	'deletequeue-queue-speedy' => 'چټکه ړنګېدنه',
 	'deletequeue-queue-deletediscuss' => 'د ړنګولو خبرې اترې',
 	'deletequeue-review-delete' => 'دا مخ ړنګول.',
@@ -5572,6 +5575,7 @@ $messages['ps'] = array(
 	'deletequeue-list-status' => 'دريځ:',
 	'deletequeue-list-search' => 'پلټل',
 	'deletequeue-list-anyqueue' => '(هر يو)',
+	'deletequeue-list-votes' => 'د رايو لړليک',
 	'deletequeue-list-header-page' => 'مخ',
 	'deletequeue-list-header-expiry' => 'د پای نېټه',
 	'deletequeue-list-header-discusspage' => 'د خبرو اترو مخ',

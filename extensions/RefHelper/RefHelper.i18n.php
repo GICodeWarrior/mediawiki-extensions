@@ -177,6 +177,30 @@ $messages['be-tarask'] = array(
 Вы можаце [[Special:RefHelper|дадаць зноску ўручную]] альбо [[Special:RefSearch|пашукаць спасылкі для даданьня]].',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'refhelper' => 'তথ্যসূত্র সহায়িকা',
+	'refsearch' => 'তথ্যসূত্র অনুসন্ধান',
+	'refhelper-refsearch' => 'তথ্যসূত্র অনুসন্ধান',
+	'refhelper-refcreate_legend' => 'নতুন তথ্যসূত্র তৈরি করুন',
+	'refhelper-label_authorforename' => 'লেখক $1-এর প্রথম নাম:',
+	'refhelper-label_authorsurname' => 'শেষ নাম:',
+	'refhelper-title' => 'শিরোনাম:',
+	'refhelper-journal' => 'গবেষণাপত্র:',
+	'refhelper-volume' => 'খণ্ড:',
+	'refhelper-pages' => 'পৃষ্ঠা:',
+	'refhelper-year' => 'বছর:',
+	'refhelper-refname' => 'তথ্যসূত্রের নাম:',
+	'refhelper-category' => 'বিষয়শ্রেণী $1:',
+	'refhelper-create' => 'তৈরি করুন',
+	'refhelper-search' => 'অনুসন্ধান',
+	'refhelper-toolbox_link_create' => 'নতুন তথ্যসূত্র তৈরি করুন',
+	'refhelper-toolbox_link_search' => 'অনুসন্ধান থেকে নতুন তথ্যসূত্র তৈরি করুন',
+	'refhelper-newarticle_nocitation' => 'বর্তমানে এই নামে কোনো তথ্যসূত্র নেই।',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
