@@ -90,6 +90,15 @@ $messages['bg'] = array(
 	'multiboilerplate-submit' => 'Зареждане',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'multiboilerplate-legend' => 'বয়লারপ্লেট নির্বাচন',
+	'multiboilerplate-submit' => 'লোড',
+	'boilerplates' => 'সহজলভ্য বয়লারপ্লেটসমূহ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
