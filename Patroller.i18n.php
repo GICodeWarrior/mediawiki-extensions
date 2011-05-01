@@ -313,14 +313,19 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'patrol' => 'সম্পাদনা যাচাই',
 	'patrol-endorse' => 'সত্যায়িত',
+	'patrol-revert' => 'বাতিল',
 	'patrol-revert-reason' => 'কারণ:',
+	'patrol-skip' => 'উপেক্ষা করো',
+	'patrol-reverting' => 'বাতিল করা হচ্ছে: $1',
 	'patrol-skipped-ok' => 'সম্পাদনা উপেক্ষা করুন।',
 	'group-patroller' => 'পর্যবেক্ষক',
 	'group-patroller-member' => 'পর্যবেক্ষক',
+	'right-patroller' => 'পাতা পরীক্ষণ',
 );
 
 /** Breton (Brezhoneg)
