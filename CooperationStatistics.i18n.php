@@ -706,6 +706,8 @@ Varda ëdcò le [[Special:MostRevisors|'''pàgine con pì revisor''']] e le [[Sp
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'cooperationstatistics-tablearticle' => 'د پاڼو شمېر',
+	'cooperationstatistics-tablevalue' => 'د سمونګرانو شمېر',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|مخ|مخونه}}',
 );
 
