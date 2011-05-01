@@ -253,9 +253,13 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'povwatch_title' => 'শিরোনাম:',
+	'povwatch_comment' => 'লগ মন্তব্য:',
+	'povwatch_no_log' => 'কোনো লগ সংযোজন নেই।',
+	'povwatch_no_subscribers' => 'কোনো লগ সাবস্ক্রাইবার নেই।',
 );
 
 /** Breton (Brezhoneg)
