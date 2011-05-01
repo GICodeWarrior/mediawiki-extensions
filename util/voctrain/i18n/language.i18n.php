@@ -2721,6 +2721,14 @@ $messages['lb'] = array(
 	'voctrain_other' => 'aner Zuel',
 );
 
+/** Lezghian (Лезги)
+ * @author Namik
+ */
+$messages['lez'] = array(
+	'voctrain_Hello_World' => 'САЛАМ ВИКИ!',
+	'voctrain_Languages' => 'Чlалар',
+);
+
 /** Lingua Franca Nova (Lingua Franca Nova)
  * @author Malafaya
  */
