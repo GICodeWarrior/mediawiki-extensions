@@ -584,6 +584,15 @@ Esempi:
 	'flagpage-tab' => 'Marca',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'flagpage' => 'په يوه مخ رپی درول',
+	'flagpage-nopageselectedtitle' => 'کوم مخ نه دی ټاکل شوی',
+	'flagpage-tab' => 'رپی',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
