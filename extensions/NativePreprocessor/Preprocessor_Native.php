@@ -89,7 +89,8 @@ class Preprocessor_Native implements Preprocessor {
 				$lineStart = $flags ? " lineStart=\"1\"" : "";
 				return "<template$lineStart>$result</template>";
 			case 'p':
-				return "<tplarg>$result</tplarg>";
+				$lineStart = $flags ? " lineStart=\"1\"" : "";
+				return "<tplarg$lineStart>$result</tplarg>";
 			case 'T':
 				return "<title>$result</title>";
 			case '|':

@@ -724,6 +724,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 				} else {
 					/* Prepend a literal node with the skipped braces */
 					int skippedBraces = 1 /* = parentNode->count */;
+					parentNode->flags = 0; /* We are prepending literals, so this can no longer be a lineStart */
 					closeNode( parentNode->type );
 					
 					struct node tmpnode;
