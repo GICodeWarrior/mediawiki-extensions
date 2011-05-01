@@ -183,6 +183,18 @@ $messages['bg'] = array(
 	'security-type-namespace' => 'именно пространство',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'security' => 'নিরাপত্তা লগ',
+	'security-logpage' => 'নিরাপত্তা লগ',
+	'security-info-toggle' => 'নিরাপত্তা সীমাবদ্ধতা',
+	'security-type-category' => 'বিষয়শ্রেণী',
+	'security-type-namespace' => 'নামস্থান',
+	'restriction-read' => 'পড়ুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
