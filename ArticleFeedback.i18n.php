@@ -2831,6 +2831,8 @@ $messages['no'] = array(
 	'articlefeedback-survey-message-success' => 'Takk for at du fylte ut undersøkelsen.',
 	'articlefeedback-survey-message-error' => 'En feil har oppstått.
 Prøv igjen senere.',
+	'articleFeedback-table-heading-page' => 'Side',
+	'articleFeedback-table-heading-average' => 'Gjennomsnitt',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
