@@ -116,6 +116,16 @@ $messages['bg'] = array(
 	'mwe-loading' => 'Зареждане ...',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'mwe-loading' => 'লোডিং ...',
+	'mwe-apiproxy-setup' => 'এপিআই প্রক্সি সেট করা হচ্ছে',
+	'mwe-ok' => 'ঠিক আছে',
+	'mwe-cancel' => 'বাতিল',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
