@@ -131,6 +131,20 @@ $messages['bg'] = array(
 	'showprocesslist-info' => 'Информация',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'showprocesslist' => 'প্রক্রিয়া তালিকা দেখাও',
+	'showprocesslist-user' => 'ব্যবহারকারী',
+	'showprocesslist-host' => 'হোস্ট',
+	'showprocesslist-db' => 'ডেটাবেজ',
+	'showprocesslist-command' => 'কমান্ড',
+	'showprocesslist-time' => 'সময়',
+	'showprocesslist-state' => 'অবস্থা',
+	'showprocesslist-info' => 'তথ্যাদি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
