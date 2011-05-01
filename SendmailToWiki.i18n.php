@@ -78,6 +78,13 @@ $messages['be-tarask'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Каб пазьбегнуць супярэчнасьцяў, прымаюцца выключна тэкставыя паведамленьні.',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'sendmailtowiki-inpin' => 'পিন:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
