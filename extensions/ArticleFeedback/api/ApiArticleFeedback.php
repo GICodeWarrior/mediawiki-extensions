@@ -397,7 +397,7 @@ class ApiArticleFeedback extends ApiBase {
 
 	public function getDescription() {
 		return array(
-			'Submit article feedbacks'
+			'Submit article feedback'
 		);
 	}
 
