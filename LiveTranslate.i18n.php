@@ -719,6 +719,16 @@ $messages['pms'] = array(
 	'livetranslate-importtms-param-miscmatch' => 'Dëscordansa tra total dle locassion e sòrt',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'livetranslate-button-translate' => 'ژباړل',
+	'livetranslate-button-translating' => 'د ژباړې په حال کې...',
+	'livetranslate-special-location' => 'ځای',
+	'livetranslate-special-local' => 'سيمه ايز',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
