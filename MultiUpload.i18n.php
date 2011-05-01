@@ -200,6 +200,16 @@ $messages['bg'] = array(
 	'multiupload-blank' => 'Не е избран файл',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'multiupload-fileuploaded' => 'ফাইল আপলোড করা হয়েছে।',
+	'multiupload-toolbox' => 'একাধিক ফাইল আপলোড করো',
+	'multiupload-no-files' => 'অনুগ্রহপূর্বক আপলোডের জন্য কমপক্ষে একটি ফাইল নির্বাচন করুন',
+	'multiupload-blank' => 'কোনো ফাইল নির্বাচন করা হয়নি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
