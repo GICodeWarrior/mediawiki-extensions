@@ -106,6 +106,13 @@ $messages['be-tarask'] = array(
 	'plotters-errors' => '{{PLURAL:$1|Памылка плотара|Памылкі плотара}}:',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'plotters-uses' => 'ব্যবহারকারীগণ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
