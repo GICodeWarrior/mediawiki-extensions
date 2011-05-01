@@ -334,6 +334,13 @@ A-i é na <a href="$6">lista completa dj\'autor</a> disponibla.',
 	'includewp-include-par-height' => "L'autëssa màssima an pixel dël div HTML anté ël contnù a l'é carià. Ampòstlo a 0 për gnun lìmit.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'includewp-show-full-page' => 'ټول مخ ښکاره کول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
