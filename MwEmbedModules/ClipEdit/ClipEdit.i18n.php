@@ -1099,6 +1099,8 @@ $messages['lb'] = array(
 $messages['lt'] = array(
 	'mwe-clipedit-crop' => 'Apkarpyti paveiklėlį',
 	'mwe-clipedit-apply_crop' => 'Taikyti apkarpyma paveikslėliui',
+	'mwe-clipedit-layout_right' => 'Vaizdas dešinėje',
+	'mwe-clipedit-layout_left' => 'Vaizdas kairėje',
 );
 
 /** Latvian (Latviešu)
