@@ -24,7 +24,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.2.2';
+	const VERSION = '0.2.3';
 
 	private $doc;
 
@@ -61,11 +61,11 @@ class ExtPatchOutputMobile {
 	);
 
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
-		ob_start( array( &$this, 'parse' ) );
+		ob_start( array( $this, 'parse' ) );
 		return true;
 	}
 
-	private function _show_hide_callback( $matches ) {
+	private function showHideCallback( $matches ) {
 		static $headings = 0;
 		$show = 'Show';
 		$hide =	'Hide';
@@ -95,7 +95,7 @@ class ExtPatchOutputMobile {
 		// So, using old style for now.
 		$s = preg_replace_callback(
 			'/<h2(.*)<span class="mw-headline" [^>]*>(.+)<\/span>\w*<\/h2>/',
-			array( &$this, '_show_hide_callback' ),
+			array( $this, 'showHideCallback' ),
 			$s
 		);
 
@@ -115,13 +115,13 @@ class ExtPatchOutputMobile {
 		return $this->DOMParse( $s );
 	}
 
-	private function _parse_items_to_remove() {
+	private function parseItemsToRemove() {
 		$item_to_remove_records = array();
 
 		foreach ( $this->items_to_remove as $item_to_remove ) {
 			$type = '';
 			$raw_name = '';
-			CSS_detection::detect_id_css_or_tag( $item_to_remove, $type, $raw_name );
+			CssDetection::detectIdCssOrTag( $item_to_remove, $type, $raw_name );
 			$item_to_remove_records[$type][] = $raw_name;
 		}
 
@@ -135,7 +135,7 @@ class ExtPatchOutputMobile {
 		$this->doc->preserveWhiteSpace = false;
 		$this->doc->strictErrorChecking = false;
 
-		$item_to_remove_records = $this->_parse_items_to_remove();
+		$item_to_remove_records = $this->parseItemsToRemove();
 
 		// Tags
 
@@ -229,9 +229,9 @@ class ExtPatchOutputMobile {
 	}
 }
 
-class CSS_detection {
+class CssDetection {
 
-	public static function detect_id_css_or_tag( $snippet, &$type, &$raw_name ) {
+	public static function detectIdCssOrTag( $snippet, &$type, &$raw_name ) {
 		$output = '';
 
 		if ( strpos( $snippet, '.' ) === 0 ) {
