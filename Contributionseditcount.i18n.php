@@ -41,6 +41,14 @@ $messages['arz'] = array(
 	'contributionseditcount-desc' => 'يعرض عدد المساهمات فى [[Special:Contributions|صفحة مساهمات المستخدم]]',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'contributionseditcount' => 'Esti usuariu fizo {{PLURAL:$1|una edición|$1 ediciones}}.',
+	'contributionseditcount-desc' => "Amuesa un contador d'ediciones na [[Special:Contributions|páxina de contribuciones del usuariu]]",
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
