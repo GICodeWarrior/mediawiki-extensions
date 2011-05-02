@@ -9,12 +9,30 @@ td.api-sandbox-label {
 	font-family: monospace;
 }
 
+td.api-sandbox-result-label {
+	width: 12em;
+}
+
 td.api-sandbox-value {
 	width: 18em;
 	vertical-align: top;
 	overflow: auto;
 }
 
-.api-sandbox-input {
+table.api-sandbox-result-container {
+	width: 100%;
+}
+
+#api-sandbox-input {
 	width: 17em;
+}
+
+#api-sandbox-url, #api-sandbox-post {
+	width: 100%;
+}
+
+#api-sandbox-output {
+	width: 100%;
+	height: 15em;
+	overflow: scroll;
 }

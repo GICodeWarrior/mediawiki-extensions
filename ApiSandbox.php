@@ -33,5 +33,7 @@ $wgResourceModules['ext.apiSandbox'] = array(
 		'apisb-load-error',
 		'apisb-select-value',
 		'apisb-namespaces-error',
-		'apisb-ns-main' ),
+		'apisb-ns-main',
+		'parentheses',
+	),
 );
