@@ -1,12 +1,12 @@
 <?php
 
-# Needs to be called within MediaWiki; not standalone
+// Needs to be called within MediaWiki; not standalone
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This is an extension to the MediaWiki package and cannot be run standalone.\n" );
 	die( -1 );
 }
 
-# Define the extension; allows us make sure the extension is used correctly
+// Define the extension; allows us make sure the extension is used correctly
 define( 'PATCHOUTPUTMOBILE', 'PatchOutputMobile' );
 
 // Extension credits that will show up on Special:Version
@@ -24,7 +24,7 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.2.1';
+	const VERSION = '0.2.2';
 
 	private $doc;
 
@@ -112,14 +112,10 @@ class ExtPatchOutputMobile {
 	}
 
 	public function parse( $s ) {
-		// foreach( self::$mTable as $from => $to ) {
-		//		$s =& str_replace( $from, $to, $s );
-		// }
-
 		return $this->DOMParse( $s );
 	}
 
-	private function parse_items_to_remove() {
+	private function _parse_items_to_remove() {
 		$item_to_remove_records = array();
 
 		foreach ( $this->items_to_remove as $item_to_remove ) {
@@ -139,7 +135,7 @@ class ExtPatchOutputMobile {
 		$this->doc->preserveWhiteSpace = false;
 		$this->doc->strictErrorChecking = false;
 
-		$item_to_remove_records = $this->parse_items_to_remove();
+		$item_to_remove_records = $this->_parse_items_to_remove();
 
 		// Tags
 
@@ -198,6 +194,22 @@ class ExtPatchOutputMobile {
 			foreach( $elements as $element ) {
 				$removed_element = $element->parentNode->removeChild( $element );
 			}
+		}
+		
+		// Handle red links with action equal to edit
+		$redlinks = $xpath->query( '//a[@class="new"]' );
+		foreach( $redlinks as $redlink ) {
+			//PHP Bug #36795 — Inappropriate "unterminated entity reference"
+			$spannode = $this->doc->createElement( "span", str_replace( "&", "&amp;", $redlink->nodeValue ) );
+
+			if ( $redlink->hasAttributes() ) {
+				$attributes = $redlink->attributes;
+				foreach ( $attributes as $i => $attribute ) {
+					$spannode->setAttribute( $attribute->name, $attribute->value );
+				}
+			}
+
+			$redlink->parentNode->replaceChild( $spannode, $redlink );
 		}
 
 		$content = $this->doc->getElementById( 'content' );
