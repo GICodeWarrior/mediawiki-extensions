@@ -16,24 +16,32 @@ __date__ = "April 8th, 2010"
 
 
 import sys
-sys.path.append('../')
+# sys.path.append('../')
 
 import MySQLdb
 import math
 import datetime
 import re        # regular expression matching
 
-import miner_help as mh
-import QueryData as QD
-import TimestampProcessor as TP
+import Fundraiser_Tools.miner_help as mh
+import Fundraiser_Tools.classes.QueryData as QD
+import Fundraiser_Tools.classes.TimestampProcessor as TP
         
 """
 
-    CLASS :: DataLoader
+    BASE CLASS :: DataLoader
+    
+    This is the base class for data handling functionality of metrics.
     
     METHODS:
-            init_db         -
-            close_db        -
+            init_db         
+            close_db     
+            compose_key
+            include_keys
+            exclude_keys
+            get_sql_filename_for_query
+            
+               
 """
 class DataLoader(object):
 
@@ -179,9 +187,6 @@ class IntervalReportingLoader(DataLoader):
         self._query_names_['campaign'] = 'report_campaign_metrics_minutely'
         self._query_names_['campaign_total'] = 'report_campaign_metrics_minutely_total'
          
-    def get_sql_filename_for_query(self, query_type):
-        return self._query_names_[query_type]
-         
     """
         <DESCRIPTION>
         
@@ -300,6 +305,7 @@ class IntervalReportingLoader(DataLoader):
         
         return [metrics, times]
 
+
 """
 
 
@@ -344,7 +350,18 @@ class CampaignIntervalReportingLoader(IntervalReportingLoader):
             
         return [metrics, times]
 
+
+"""
+
+    CLASS :: BannerLPReportingLoader
     
+    This dataloader handles reporting on banners and landing pages.
+    
+    METHODS:
+            run_query
+            
+               
+"""
 class BannerLPReportingLoader(DataLoader):
     
     def run_query(self):
@@ -437,7 +454,93 @@ class HypothesisTestLoader(DataLoader):
         # return the metric values at each time
         return [metrics_1, metrics_2, times_indices]
     
+
+"""
+
+    CLASS :: CampaignReportingLoader
     
+    This dataloader handles reporting on utm_campaigns.
+    
+    METHODS:
+            run_query
+            
+               
+"""
+class CampaignReportingLoader(DataLoader):
+    
+    def __init__(self):
+        self._query_names_['totals'] = 'report_campaign_totals'
+        self._query_names_['times'] = 'report_campaign_times'
+        
+    """
+        !! MODIFY -- use python reflection !! ... maybe
+        
+        This method is retrieving campaign names 
+       
+        delegates the procesing to different methods
+        
+    """
+    def run_query(self, query_type, params):
+        
+        self.init_db()
+        
+        if query_type == 'totals':
+            data = self.query_totals(query_type, params)
+        
+        self.close_db()
+        
+        return data
+    
+    """
+    
+        Handle queries from  "report_campaign_totals"
+        
+    """
+    def query_totals(self, query_type, params):
+        
+        """ Resolve parameters """
+        metric_name = params['metric_name']
+        start_time = params['start_time']
+        end_time = params['end_time']
+        
+        query_name = self.get_sql_filename_for_query(query_type)
+        
+        """ Load the SQL File & Format """
+        filename = self._sql_path_+ query_name + '.sql'
+        sql_stmnt = mh.read_sql(filename)        
+        sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time])
+        
+        """ Get Indexes into Query """
+        key_index = QD.get_key_index(query_name)    
+        metric_index = QD.get_metric_index(query_name, metric_name)
+        
+        data = mh.AutoVivification()
+        
+        """ Compose the data for each separate donor pipeline artifact """
+        try:
+            
+            self._cur_.execute(sql_stmnt)
+            
+            results = self._cur_.fetchall()
+            
+            for row in results:
+                
+                key_name = row[key_index]
+                data[key_name] = float(row[metric_index])
+                    
+         
+        except Exception as inst:
+            print type(inst)     # the exception instance
+            print inst.args      # arguments stored in .args
+            print inst           # __str__ allows args to printed directly
+            
+            self._db_.rollback()
+            sys.exit(0)
+
+
+        return data
+
+
 
 """
 
