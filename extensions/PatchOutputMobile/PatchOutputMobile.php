@@ -17,12 +17,6 @@ $wgExtensionCredits['other'][] = array(
   'description' => 'patch html output for mobile'
 );
  
-// default settings
-ExtPatchOutputMobile::$mTable = array(
-  'accessed' => 'like viewed and stuff',
-  'information' => 'more stuff about it',
-  'Main Page' => 'First Page Dude');
- 
 $wgExtPatchOutputMobile = new ExtPatchOutputMobile();
  
 $wgHooks['OutputPageBeforeHTML'][] = array(&$wgExtPatchOutputMobile, 
@@ -30,8 +24,6 @@ $wgHooks['OutputPageBeforeHTML'][] = array(&$wgExtPatchOutputMobile,
  
 class ExtPatchOutputMobile {
 	const VERSION = '0.2';
- 
-	public static $mTable;
 
 	private $doc;
 
@@ -70,28 +62,31 @@ class ExtPatchOutputMobile {
 		return true;
 	}
 	
+	private function _show_hide_callback($matches) {
+		static $headings = 0;
+		$show = "Show";
+      	$hide =  "Hide";
+      	$back_to_top = "Jump Back A Section";
+		++$headings;
+		// Back to top link
+        $base = "<div class='section_anchors' id='anchor_" . intval($headings - 1) . "'><a href='#section_" . intval($headings - 1) . "' class='back_to_top'>&uarr; {$back_to_top}</a></div>";
+        // generate the HTML we are going to inject
+        $buttons = "<button class='section_heading show' section_id='{$headings}'>{$show}</button><button class='section_heading hide' section_id='{$headings}'>{$hide}</button>";
+        $base .= "<h2 class='section_heading' id='section_{$headings}'{$matches[1]}{$buttons} <span>{$matches[2]}</span></h2><div class='content_block' id='content_{$headings}'>";
+
+		if ($headings > 1) {
+			// Close it up here
+			$base = "</div>" . $base;
+		}
+	
+		$GLOBALS['headings'] = $headings;
+
+		return $base;		
+	}
+	
 	public function javascriptize($s) {
-		$s = preg_replace_callback('/<h2(.*)<span class="mw-headline" [^>]*>(.+)<\/span>\w*<\/h2>/', function ($matches) {
-					static $headings = 0;
-					$show = "Show";
-			      	$hide =  "Hide";
-			      	$back_to_top = "Jump Back A Section";
-					++$headings;
-					// Back to top link
-		            $base = "<div class='section_anchors' id='anchor_" . intval($headings - 1) . "'><a href='#section_" . intval($headings - 1) . "' class='back_to_top'>&uarr; {$back_to_top}</a></div>";
-		            // generate the HTML we are going to inject
-			        $buttons = "<button class='section_heading show' section_id='{$headings}'>{$show}</button><button class='section_heading hide' section_id='{$headings}'>{$hide}</button>";
-			        $base .= "<h2 class='section_heading' id='section_{$headings}'{$matches[1]}{$buttons} <span>{$matches[2]}</span></h2><div class='content_block' id='content_{$headings}'>";
-
-					if ($headings > 1) {
-					// Close it up here
-					$base = "</div>" . $base;
-					}
-					
-					$GLOBALS['headings'] = $headings;
-
-					return $base;
-		        }, $s);
+		//Closures are a PHP 5.3 feature. MediaWiki currently requires PHP 5.2.3 or higher. So, using old style for now.
+		$s = preg_replace_callback( '/<h2(.*)<span class="mw-headline" [^>]*>(.+)<\/span>\w*<\/h2>/', array(&$this, '_show_hide_callback'), $s );
 		
 		// if we had any, make sure to close the whole thing!
 		if (isset($GLOBALS['headings']) && $GLOBALS['headings'] > 0) {
