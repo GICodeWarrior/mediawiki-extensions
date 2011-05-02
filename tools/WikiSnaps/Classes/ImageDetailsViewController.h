@@ -16,12 +16,14 @@
                                                             UITextViewDelegate,
                                                             UIAlertViewDelegate> {
 	IBOutlet UITextField *titleField;
-	IBOutlet UITextView *descriptionText;
+	IBOutlet UITextView  *descriptionText;
+        IBOutlet UILabel     *descriptionLabel;
 	CommonsUpload *upload;
 }
 
 @property (nonatomic, retain) UITextField *titleField;
 @property (nonatomic, retain) UITextView *descriptionText;
+@property (nonatomic, retain) UILabel *descriptionLabel;
 @property (nonatomic, retain) CommonsUpload *upload;
 
 - (IBAction)textFieldDidEnd:(id)sender;

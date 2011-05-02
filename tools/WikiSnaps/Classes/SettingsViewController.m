@@ -40,6 +40,9 @@
     passwordLabel.text = NSLocalizedString( @"Password", @"Label of the password textfield" );
     licenseLabel.text = NSLocalizedString( @"LicenseLabel", @"Label of the license textfield" );
     gpsLabel.text = NSLocalizedString( @"Add GPS coordinates", @"Label of the gps coordinates settings switch" );
+    username.placeholder = NSLocalizedString( @"Username", nil);
+    password.placeholder = NSLocalizedString( @"Password", nil);
+    save.titleLabel.text = NSLocalizedString( @"Save", @"Label of save button" );
     
     PhotoPickerAppDelegate *appDelegate =
             (PhotoPickerAppDelegate *) [UIApplication sharedApplication].delegate;

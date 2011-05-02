@@ -15,6 +15,7 @@
 
 @synthesize titleField;
 @synthesize descriptionText;
+@synthesize descriptionLabel;
 @synthesize upload;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -32,7 +33,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = NSLocalizedString( @"Image details", "Title of the Image Details view" );
+    self.title = NSLocalizedString( @"Image details", @"Title of the Image Details view" );
+    self.titleField.placeholder = NSLocalizedString( @"File title", @"Placeholder text for the title field in imagedetails window" );
+    self.descriptionLabel.text = NSLocalizedString( @"Description", @"Label for the Description field of the upload" );
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString( @"Upload", @"Title for upload buton on image details view" )
                     style: UIBarButtonItemStyleDone
                     target: self

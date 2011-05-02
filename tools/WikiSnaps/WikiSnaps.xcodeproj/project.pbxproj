@@ -22,9 +22,10 @@
 		494C82C812ECBEB6000931F2 /* ImageUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C82C612ECBEB6000931F2 /* ImageUploadViewController.m */; };
 		494C82C912ECBEB6000931F2 /* ImageUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494C82C712ECBEB6000931F2 /* ImageUploadViewController.xib */; };
 		494C834E12ECEAB3000931F2 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 494C834D12ECEAB3000931F2 /* XMLReader.m */; };
-		4971EC87133E77FD0043DD67 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4971EC86133E77FD0043DD67 /* Licenses.plist */; };
 		4971ED31133E9DD90043DD67 /* LicensePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4971ED2F133E9DD90043DD67 /* LicensePickerViewController.m */; };
 		4971ED32133E9DD90043DD67 /* LicensePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4971ED30133E9DD90043DD67 /* LicensePickerViewController.xib */; };
+		49A4F126136DE7170067DAE7 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49A4F125136DE7170067DAE7 /* Licenses.plist */; };
+		49A4F12B136DE9B50067DAE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49A4F129136DE9B50067DAE7 /* Localizable.strings */; };
 		49E03406133F6C1300BFE247 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E03405133F6C1300BFE247 /* CoreLocation.framework */; };
 		49E0340A133F72A100BFE247 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E03409133F72A100BFE247 /* AssetsLibrary.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		49E03463133F814D00BFE247 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E03462133F814D00BFE247 /* ImageIO.framework */; };
@@ -48,7 +49,6 @@
 		A1FECB2D12E10DCA007CF08C /* ImageDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FECB2B12E10DCA007CF08C /* ImageDetailsViewController.xib */; };
 		A1FECB3E12E1105B007CF08C /* CommonsUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FECB3D12E1105B007CF08C /* CommonsUpload.m */; };
 		F130561C10CEDA5C00271CD6 /* home-background.png in Resources */ = {isa = PBXBuildFile; fileRef = F130561B10CEDA5C00271CD6 /* home-background.png */; };
-		F130561F10CEDBAC00271CD6 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = F130561E10CEDBAC00271CD6 /* Configuration.m */; };
 		F13056EF10CEEB3100271CD6 /* cancel-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F13056ED10CEEB3100271CD6 /* cancel-button-pressed.png */; };
 		F13056F010CEEB3100271CD6 /* cancel-button.png in Resources */ = {isa = PBXBuildFile; fileRef = F13056EE10CEEB3100271CD6 /* cancel-button.png */; };
 		F1A2673110C9C04A0044762E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A2672F10C9C04A0044762E /* icon.png */; };
@@ -79,10 +79,12 @@
 		494C82C712ECBEB6000931F2 /* ImageUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageUploadViewController.xib; sourceTree = "<group>"; };
 		494C834C12ECEAB3000931F2 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = XMLtoDict/XMLReader.h; sourceTree = "<group>"; };
 		494C834D12ECEAB3000931F2 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = XMLtoDict/XMLReader.m; sourceTree = "<group>"; };
-		4971EC86133E77FD0043DD67 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
+		4971EC86133E77FD0043DD67 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = English; path = English.lproj/Licenses.plist; sourceTree = "<group>"; };
 		4971ED2E133E9DD90043DD67 /* LicensePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicensePickerViewController.h; sourceTree = "<group>"; };
 		4971ED2F133E9DD90043DD67 /* LicensePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicensePickerViewController.m; sourceTree = "<group>"; };
 		4971ED30133E9DD90043DD67 /* LicensePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LicensePickerViewController.xib; path = Classes/LicensePickerViewController.xib; sourceTree = "<group>"; };
+		49A4F12A136DE9B50067DAE7 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		49A4F169136F46DD0067DAE7 /* Dutch */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Dutch; path = Dutch.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49E03405133F6C1300BFE247 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		49E03409133F72A100BFE247 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		49E03462133F814D00BFE247 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -124,7 +126,6 @@
 		A1FECB3D12E1105B007CF08C /* CommonsUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonsUpload.m; sourceTree = "<group>"; };
 		F130561B10CEDA5C00271CD6 /* home-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-background.png"; sourceTree = "<group>"; };
 		F130561D10CEDBAC00271CD6 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
-		F130561E10CEDBAC00271CD6 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		F13056ED10CEEB3100271CD6 /* cancel-button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-button-pressed.png"; sourceTree = "<group>"; };
 		F13056EE10CEEB3100271CD6 /* cancel-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-button.png"; sourceTree = "<group>"; };
 		F1A2672F10C9C04A0044762E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -164,7 +165,6 @@
 				A1338B7112E0EFFF00662B28 /* ASI */,
 				494C833E12ECE900000931F2 /* XMLtoDict */,
 				F130561D10CEDBAC00271CD6 /* Configuration.h */,
-				F130561E10CEDBAC00271CD6 /* Configuration.m */,
 				F1A2691010C9D8EE0044762E /* NSData+PhotoPicker.h */,
 				F1A2691110C9D8EE0044762E /* NSData+PhotoPicker.m */,
 				F1A269AF10C9EA8A0044762E /* UIImage+PhotoPicker.h */,
@@ -221,10 +221,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				49A4F129136DE9B50067DAE7 /* Localizable.strings */,
 				494C82FA12ECDE94000931F2 /* Images */,
 				494C82FB12ECDEA6000931F2 /* Xibs */,
 				8D1107310486CEB800E47090 /* WikiSnaps-Info.plist */,
-				4971EC86133E77FD0043DD67 /* Licenses.plist */,
+				49A4F125136DE7170067DAE7 /* Licenses.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -357,6 +358,7 @@
 				Japanese,
 				French,
 				German,
+				Dutch,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -384,8 +386,9 @@
 				494C81E212E8DBAD000931F2 /* Default.png in Resources */,
 				494C821312E8E385000931F2 /* SourcePickerViewController.xib in Resources */,
 				494C82C912ECBEB6000931F2 /* ImageUploadViewController.xib in Resources */,
-				4971EC87133E77FD0043DD67 /* Licenses.plist in Resources */,
+				49A4F126136DE7170067DAE7 /* Licenses.plist in Resources */,
 				4971ED32133E9DD90043DD67 /* LicensePickerViewController.xib in Resources */,
+				49A4F12B136DE9B50067DAE7 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +403,6 @@
 				1D3623260D0F684500981E51 /* PhotoPickerAppDelegate.m in Sources */,
 				F1A2691210C9D8EE0044762E /* NSData+PhotoPicker.m in Sources */,
 				F1A269B110C9EA8A0044762E /* UIImage+PhotoPicker.m in Sources */,
-				F130561F10CEDBAC00271CD6 /* Configuration.m in Sources */,
 				A127DA4012E0DF9700149FC9 /* SettingsViewController.m in Sources */,
 				A1338B8612E0F01700662B28 /* ASIAuthenticationDialog.m in Sources */,
 				A1338B8712E0F01700662B28 /* ASIDataCompressor.m in Sources */,
@@ -422,6 +424,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		49A4F125136DE7170067DAE7 /* Licenses.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4971EC86133E77FD0043DD67 /* English */,
+			);
+			name = Licenses.plist;
+			sourceTree = "<group>";
+		};
+		49A4F129136DE9B50067DAE7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49A4F12A136DE9B50067DAE7 /* English */,
+				49A4F169136F46DD0067DAE7 /* Dutch */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
