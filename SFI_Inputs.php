@@ -1274,22 +1274,17 @@ JAVASCRIPT;
 		$html .= "<span class='SFI_menuselect' id='span_{$sfgFieldNum}_tree'>";
 
 
-		// if ( array_key_exists( 'delimiter', $other_args ) ) $delimiter = $other_args[ 'delimiter' ];
-		// else $delimiter = ' ';
-
 		// parse menu structure
 
-		$options = ParserOptions::newFromUser( $wgUser );
-
-		$oldStripState = $wgParser->mStripState;
-		$wgParser->mStripState = new StripState();
+		$parser = new Parser();
 
 		// FIXME: SF does not parse options correctly. Users have to replace | by {{!}}
 		$structure = str_replace( '{{!}}', '|', $other_args["structure"] );
+		$options = ParserOptions::newFromUser( $wgUser );
 
-		$structure = $wgParser->parse( $structure, $wgTitle, $options )->getText();
+		$structure = $parser->parse( $structure, $wgTitle, $options )->getText();
 
-		$wgParser->mStripState = $oldStripState;
+//		$wgParser->mStripState = $oldStripState;
 
 
 		$html .= str_replace( '<li', '<li class=\'ui-state-default\'', $structure );
