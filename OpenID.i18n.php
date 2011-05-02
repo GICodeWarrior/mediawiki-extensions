@@ -3565,6 +3565,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
@@ -3621,18 +3622,18 @@ $messages['mr'] = array(
 	'openidautosubmit' => 'या पानावरील अर्ज जर तुम्ही जावास्क्रीप्ट वापरत असाल तर आपोआप पाठविला जाईल. जर तसे झाले नाही, तर "Continue" (पुढे) कळीवर टिचकी मारा.',
 	'openidclientonlytext' => 'या विकिवरील खाती तुम्ही इतर संकेतस्थळांवर ओपनID म्हणून वापरू शकत नाही.',
 	'openidloginlabel' => 'ओपनID URL',
-	'openidlogininstructions' => "{{SITENAME}} [http://openid.net/ ओपनID] वापरून विविध संकेतस्थळांवर प्रवेश करण्याची अनुमती देते.
-ओपनID वापरुन तुम्ही एकाच परवलीच्या शब्दाने विविध संकेतस्थळांवर प्रवेश करू शकता.
-(अधिक माहिती साठी [http://en.wikipedia.org/wiki/OpenID विकिपीडिया वरील ओपनID लेख] पहा.)
+	'openidlogininstructions' => "{{SITENAME}} [http://openid.net/ ओपनआयडी] वापरून विविध संकेतस्थळांवर प्रवेश करण्याची अनुमती देते.
+ओपनआयडी वापरुन तुम्ही एकाच परवलीच्या शब्दाने विविध संकेतस्थळांवर प्रवेश करू शकता.
+(अधिक माहिती साठी [http://en.wikipedia.org/wiki/OpenID विकिपीडिया वरील ओपनआयडीवरील लेख] पहा.)
 
 जर {{SITENAME}} वर अगोदरच तुमचे खाते असेल, तुम्ही नेहमीप्रमाणे तुमचे सदस्यनाव व परवलीचा शब्द वापरून [[Special:UserLogin|प्रवेश करा]].
-भविष्यात ओपनID वापरण्यासाठी, तुम्ही प्रवेश केल्यानंतर [[Special:OpenIDConvert|तुमचे खाते ओपनID मध्ये बदला]].
+भविष्यात ओपनआयडी वापरण्यासाठी, तुम्ही प्रवेश केल्यानंतर [[Special:OpenIDConvert|तुमचे खाते ओपनआयडी मध्ये बदला]].
 
-अनेक [http://wiki.openid.net/Public_OpenID_providers Public ओपनID वितरक] आहेत, व तुम्ही अगोदरच ओपनID चे खाते उघडले असण्याची शक्यता आहे.
+अनेक [http://wiki.openid.net/Public_OpenID_providers Public ओपनआयडी वितरक] आहेत, व तुम्ही अगोदरच ओपनआयडी चे खाते उघडले असण्याची शक्यता आहे.
 
-; इतर विकि : जर तुमच्याकडे ओपनID वापरणार्‍या विकिवर खाते असेल, जसे की [http://wikitravel.org/ विकिट्रॅव्हल], [http://www.wikihow.com/ विकिहाऊ], [http://vinismo.com/ विनिस्मो], [http://aboutus.org/ अबाउट‍अस] किंवा [http://kei.ki/ कैकी], तुम्ही {{SITENAME}} वर तुमच्या त्या विकिवरील सदस्य पानाची '''पूर्ण URL''' वरील पृष्ठपेटीमध्ये देऊन प्रवेश करू शकता. उदाहरणार्थ, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
-; [http://openid.yahoo.com/ याहू!] : जर तुमच्याकडे याहू! चे खाते असेल, तर तुम्ही वरील पृष्ठपेटीमध्ये याहू! ने दिलेल्या ओपनID चा वापर करून प्रवेश करू शकता. याहू! ओपनID URL ची रुपरेषा ''<nowiki>https://me.yahoo.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे.
-; [http://dev.aol.com/aol-and-63-million-openids एओएल] : जर तुमच्याकडे [http://www.aol.com/ एओएल]चे खाते असेल, जसे की [http://www.aim.com/ एम] खाते, तुम्ही {{SITENAME}} वर वरील पृष्ठपेटीमध्ये एओएल ने दिलेल्या ओपनID चा वापर करून प्रवेश करू शकता. एओएल ओपनID URL ची रुपरेषा ''<nowiki>http://openid.aol.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे. तुमच्या सदस्यनावात अंतर (space) चालणार नाही.
+; इतर विकि : जर तुमच्याकडे ओपनआयडी वापरणार्‍या विकिवर खाते असेल, जसे की [http://wikitravel.org/ विकिट्रॅव्हल], [http://www.wikihow.com/ विकिहाऊ], [http://vinismo.com/ विनिस्मो], [http://aboutus.org/ अबाउट‍अस] किंवा [http://kei.ki/ कैकी], तुम्ही {{SITENAME}} वर तुमच्या त्या विकिवरील सदस्य पानाची '''पूर्ण URL''' वरील पृष्ठपेटीमध्ये देऊन प्रवेश करू शकता. उदाहरणार्थ, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ याहू!] : जर तुमच्याकडे याहू! चे खाते असेल, तर तुम्ही वरील पृष्ठपेटीमध्ये याहू! ने दिलेल्या ओपनआयडीचा वापर करून प्रवेश करू शकता. याहू! ओपनआयडी URL ची रुपरेषा ''<nowiki>https://me.yahoo.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे.
+; [http://dev.aol.com/aol-and-63-million-openids एओएल] : जर तुमच्याकडे [http://www.aol.com/ एओएल]चे खाते असेल, जसे की [http://www.aim.com/ एम] खाते, तुम्ही {{SITENAME}} वर वरील पृष्ठपेटीमध्ये एओएल ने दिलेल्या ओपनआयडीचा वापर करून प्रवेश करू शकता. एओएल ओपनआयडी URL ची रुपरेषा ''<nowiki>http://openid.aol.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे. तुमच्या सदस्यनावात अंतर (space) चालणार नाही.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html ब्लॉगर], [http://faq.wordpress.com/2007/03/06/what-is-openid/ वर्डप्रेस.कॉम], [http://www.livejournal.com/openid/about.bml लाईव्ह जर्नल], [http://bradfitz.vox.com/library/post/openid-for-vox.html वॉक्स] : जर यापैकी कुठेही तुमचा ब्लॉग असेल, तर वरील पृष्ठपेटीमध्ये तुमच्या ब्लॉगची URL भरा. उदाहरणार्थ, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', किंवा ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 	'openiddelete-button' => 'खात्री करा',
 	'openid-pref-hide' => 'जर तुम्ही ओपनID वापरून प्रवेश केला, तर तुमच्या सदस्यपानावरील तुमचा ओपनID लपवा.',
@@ -5945,7 +5946,7 @@ Bạn sẽ không đăng nhập được dùng OpenID này.',
 	'openiddelete-sucess' => 'Đã dời OpenID thành công khỏi tài khoản của bạn.',
 	'openiddelete-error' => 'Đã gặp lỗi khi dời OpenID khỏi tài khoản của bạn.',
 	'openid-prefstext' => 'Tùy chỉnh [http://openid.net/ OpenID]',
-	'openid-pref-hide' => 'Ẩn OpenID của bạn khỏi trang thành viên, nếu bạn đăng nhập bằng ID Mở.',
+	'openid-pref-hide' => 'Ẩn địa chỉ OpenID của bạn khỏi trang cá nhân, nếu bạn đăng nhập bằng OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Cập nhật thông tin sau từ persona OpenID mỗi khi tôi đăng nhập:',
 	'openid-urls-desc' => 'Các OpenID được gắn vào tài khoản của bạn:',
 	'openid-urls-action' => 'Tác vụ',
