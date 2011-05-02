@@ -18,15 +18,20 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PatchOutputMobile',
 );
 
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['PatchOutputMobile'] = $dir . 'PatchOutputMobile.i18n.php';
+
 $wgExtPatchOutputMobile = new ExtPatchOutputMobile();
 
 $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.2.3';
+	const VERSION = '0.2.4';
 
 	private $doc;
+	
+	public static $messages = array();
 
 	public $items_to_remove = array(
 		'#contentSub',        # redirection notice
@@ -61,15 +66,21 @@ class ExtPatchOutputMobile {
 	);
 
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
+		// Need to stash the results of the "wfMsg" call before the Output Buffering handler
+		// because at this point the database connection is shut down, etc.
+		ExtPatchOutputMobile::$messages['patch_output_mobile_show'] = wfMsg('patch_output_mobile_show');
+		ExtPatchOutputMobile::$messages['patch_output_mobile_hide'] = wfMsg('patch_output_mobile_hide');
+		ExtPatchOutputMobile::$messages['patch_output_mobile_back_to_top'] = wfMsg('patch_output_mobile_back_to_top');
+		
 		ob_start( array( $this, 'parse' ) );
 		return true;
 	}
 
 	private function showHideCallback( $matches ) {
 		static $headings = 0;
-		$show = 'Show';
-		$hide =	'Hide';
-		$back_to_top = 'Jump Back A Section';
+		$show = ExtPatchOutputMobile::$messages['patch_output_mobile_show'];
+		$hide =	ExtPatchOutputMobile::$messages['patch_output_mobile_hide'];
+		$back_to_top = ExtPatchOutputMobile::$messages['patch_output_mobile_back_to_top'];
 		++$headings;
 		// Back to top link
 		$base = "<div class='section_anchors' id='anchor_" . intval( $headings - 1 ) .
@@ -137,6 +148,12 @@ class ExtPatchOutputMobile {
 
 		$item_to_remove_records = $this->parseItemsToRemove();
 
+		$title_node = $this->doc->getElementsByTagName( 'title' );
+
+		if ( $title_node->length > 0 ) {
+			$title = $title_node->item( 0 )->nodeValue;
+		}
+
 		// Tags
 
 		// You can't remove DOMNodes from a DOMNodeList as you're iterating
@@ -144,11 +161,6 @@ class ExtPatchOutputMobile {
 		// iterator on the foreach out of wack and results will be quite
 		// strange. Though, making a queue of items to remove seems to work.
 		// For example:
-		$title_node = $this->doc->getElementsByTagName( 'title' );
-
-		if ( $title_node->length > 0 ) {
-			$title = $title_node->item( 0 )->nodeValue;
-		}
 
 		$domElemsToRemove = array();
 		foreach ( $item_to_remove_records['TAG'] as $tag_to_remove ) {
