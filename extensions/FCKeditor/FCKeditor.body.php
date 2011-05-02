@@ -349,19 +349,6 @@ class FCKeditor_MediaWiki {
 
 		$printsheet = htmlspecialchars( "$wgStylePath/common/wikiprintable.css?$wgStyleVersion" );
 
-		// CSS trick,  we need to get user CSS stylesheets somehow... it must be done in a different way!
-		$skin = $wgUser->getSkin();
-		$skin->loggedin = $wgUser->isLoggedIn();
-		//$skin->mTitle =& $wgTitle; // FIXME: Am I still needed?
-		$skin->initPage( $wgOut );
-		$skin->userpage = $wgUser->getUserPage()->getPrefixedText();
-		$skin->setupUserCss( $wgOut );
-
-		if( !empty( $skin->usercss ) && preg_match_all( '/@import "([^"]+)";/', $skin->usercss, $matches ) ) {
-			$userStyles = $matches[1];
-		}
-		// End of CSS trick
-
 		$script = <<<HEREDOC
 <script type="text/javascript" src="$wgScriptPath/$wgFCKEditorDir/fckeditor.js"></script>
 <script type="text/javascript">
@@ -373,11 +360,6 @@ var sEditorAreaCSS = '$printsheet,/mediawiki/skins/monobook/main.css?{$wgStyleVe
 <!--[if IE 7]><script type="text/javascript">sEditorAreaCSS += ',/mediawiki/skins/monobook/IE70Fixes.css?{$wgStyleVersion}'; </script><![endif]-->
 <!--[if lt IE 7]><script type="text/javascript">sEditorAreaCSS += ',/mediawiki/skins/monobook/IEFixes.css?{$wgStyleVersion}'; </script><![endif]-->
 HEREDOC;
-
-		$script .= '<script type="text/javascript"> ';
-		if( !empty( $userStyles ) ) {
-			$script .= 'sEditorAreaCSS += ",' . implode( ',', $userStyles ) . '";';
-		}
 
 		# Show references only if Cite extension has been installed
 		$showRef = false;
@@ -394,6 +376,7 @@ HEREDOC;
 
 		
 		$script .= '
+<script type="text/javascript">
 var showFCKEditor = ' . $this->showFCKEditor . ';
 var popup = false; // pointer to popup document
 var firstLoad = true;
