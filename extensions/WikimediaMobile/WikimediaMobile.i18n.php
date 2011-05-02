@@ -291,7 +291,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'wikimediamobile-desc' => 'ويکيمېډيا د ويکيمېډيا د موبايل پروژې د چارو چې په http://github.com/hcatlin/wikimedia-mobile باندې کوربه دی ملاتړ کوي',
+	'wikimediamobile-desc' => 'ويکيرسنۍ د ويکيرسنۍ د موبايل پروژې د چارو چې په http://github.com/hcatlin/wikimedia-mobile باندې کوربه دی ملاتړ کوي',
 );
 
 /** Portuguese (Português)

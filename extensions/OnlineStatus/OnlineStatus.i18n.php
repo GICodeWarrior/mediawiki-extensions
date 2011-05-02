@@ -1267,6 +1267,7 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -1278,8 +1279,8 @@ $messages['vi'] = array(
 	'onlinestatus-subtitle-online' => 'Thành viên này hiện đang trực tuyến',
 	'onlinestatus-tab' => 'Trạng thái',
 	'onlinestatus-toggles-desc' => 'Trạng thái của bạn:',
-	'onlinestatus-toggles-explain' => 'Lựa chọn này cho phép bạn tùy chọn để người khác thấy bạn trực tuyến hay không khi xem trang thành viên của bạn.',
-	'onlinestatus-toggles-show' => 'Hiển thị trạng thái trực tuyến trên trang thành viên của tôi',
+	'onlinestatus-toggles-explain' => 'Lựa chọn này cho phép bạn tùy chọn để người khác thấy bạn trực tuyến hay không khi xem trang cá nhân của bạn.',
+	'onlinestatus-toggles-show' => 'Hiển thị trạng thái trực tuyến trên trang cá nhân của tôi',
 	'onlinestatus-toggle-offline' => 'Ngoại tuyến',
 	'onlinestatus-toggle-online' => 'Trực tuyến',
 	'onlinestatus-pref-onlineonlogin' => 'Thay đổi trạng thái của tôi sang đang trực tuyến khi tôi đăng nhập',

@@ -341,6 +341,7 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Jkjk
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'duplicator' => 'Duplikovat stránku',
@@ -364,7 +365,7 @@ Došlo k neznámé chybě.',
 	'duplicator-source-notexist' => '[[$1]] neexistuje. Zadejte název stránky, která existuje.',
 	'duplicator-toomanyrevisions' => '[[$1]] má příliš mnoho revizí ($2) a tedy ji nelze zkopírovat.
 Současný limit je $3.',
-	'right-duplicate' => 'Duplikovat stránky',
+	'right-duplicate' => 'Duplikování stránek',
 );
 
 /** Danish (Dansk)

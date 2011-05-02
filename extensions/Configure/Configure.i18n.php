@@ -1012,10 +1012,13 @@ $messages['ast'] = array(
  */
 $messages['az'] = array(
 	'configure-desc-group' => 'Qrup',
+	'configure-desc-key' => 'Açar',
 	'configure-edit-core' => 'MediyaViki',
 	'configure-form-reason' => 'Səbəb:',
 	'configure-js-remove' => 'Sil',
+	'configure-section-pages' => 'Səhifələr',
 	'configure-section-email' => 'E-məktub',
+	'configure-section-timezone' => 'Vaxt zonası',
 	'configure-section-css-js' => 'CSS və JavaScript',
 	'configure-section-category' => 'Kateqoriyalar',
 	'configure-section-groups' => 'Qruplar',
@@ -1023,8 +1026,13 @@ $messages['az'] = array(
 	'configure-section-images' => 'Fayllar',
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-users' => 'İstifadəçilər',
+	'configure-select-wiki-view-all' => 'Bütün vikilər',
 	'configure-throttle-action-edit' => 'Redaktə',
+	'configure-throttle-group' => 'Tipi',
+	'configure-throttle-limit' => 'Limit',
+	'configure-condition-operator' => 'Operator:',
 	'configure-condition-operator-and' => 'Və',
+	'configure-condition-name-5' => 'İstifadəçilərin IP ünvanları',
 );
 
 /** Belarusian (Беларуская)

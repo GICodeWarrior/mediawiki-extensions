@@ -4306,13 +4306,16 @@ $messages['lb'] = array(
 	'deletequeue-vote-success-endorse' => 'Dir hutt dem läsche vun dëser Säit zougestëmmt.',
 	'deletequeue-showvotes-restrict-endorse' => 'Nëmmem Zoustëmmunge weisen',
 	'deletequeue-showvotes-showingonly-endorse' => "Nëmmen d'Zoustëmmunge gi gewisen",
+	'deletequeue' => 'Läsch-Queue',
 	'deletequeue-list-text' => 'Op dëser Säit stinn all déi Säiten déi am Läschsystem dra sinn.',
 	'deletequeue-list-search-legend' => 'Säite sichen:',
+	'deletequeue-list-queue' => 'Queue:',
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Sichen',
 	'deletequeue-list-anyqueue' => '(iergendeng)',
 	'deletequeue-list-votes' => 'Lëscht vun de Stëmmen',
 	'deletequeue-list-header-page' => 'Säit',
+	'deletequeue-list-header-queue' => 'Queue',
 	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
 	'deletequeue-list-header-reason' => "Grond fir d'Läschen",
 	'deletequeue-case-details' => 'Basisinformatiounen',
@@ -4543,10 +4546,12 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
 	'deletequeue-delnom-otherreason' => 'Sebab lain',
+	'deletequeue-list-header-reason' => 'Sebab penghapusan',
 	'deletequeue-case-reason' => 'Sebab:',
 );
 

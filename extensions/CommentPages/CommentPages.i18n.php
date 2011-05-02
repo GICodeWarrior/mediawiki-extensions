@@ -51,6 +51,7 @@ $messages['arz'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
+	'commentpages-desc' => 'Páxines de comentarios del espaciu de nomes principal',
 	'nstab-comments' => 'Comentariu',
 );
 

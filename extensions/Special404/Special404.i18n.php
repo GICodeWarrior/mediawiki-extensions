@@ -431,3 +431,17 @@ $messages['uk'] = array(
 	'error404' => '404 Не знайдено',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'special404-desc' => 'Cung cấp trang xử lý các lỗi 404 Không tìm thấy',
+	'error404' => '404 Không tìm thấy',
+	'special404-body' => 'Không tìm thấy địa chỉ URL mà bạn yêu cầu.
+
+Có phải bạn muốn xem “{{fullurl:$1}}”?
+
+Xem thêm:
+* [[{{MediaWiki:Mainpage}}|Trang đầu]]',
+);
+

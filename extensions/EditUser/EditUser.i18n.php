@@ -923,6 +923,7 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $messages['mr'] = array(
@@ -930,7 +931,7 @@ $messages['mr'] = array(
 	'edituser' => 'सदस्य संपादित करा',
 	'edituser-username' => 'नाव',
 	'edituser-dosearch' => 'शोधा',
-	'edituser-nouser' => 'दिलेला सदस्य अस्तित्वात नाही',
+	'edituser-nouser' => 'सदस्य "$1" अस्तित्वात नाही.',
 	'edituser-exempt' => 'दिलेला सदस्य संपादित करू शकत नाही',
 );
 

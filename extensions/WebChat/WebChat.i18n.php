@@ -500,6 +500,19 @@ $messages['mr'] = array(
 	'right-webchat' => '[[Special:WebChat|संस्थळ गप्पा]] वापरण्यास संमती दिली.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'webchat' => 'Sembang web',
+	'webchat-desc' => 'Membubuh [[Special:WebChat|laman khas]] yang digunakan untuk bersembang secara langsung dengan pengguna wiki yang lain.',
+	'webchat-header' => 'Laman khas ini membolehkan anda bekerjasama secara langsung dengan pengguna-pengguna lain di wiki ini.
+Untuk memasuki ruang sembang, tekan sahaja butang "Connect".
+Jika anda log masuk, nama samaran anda akan sedia diisikan.
+Pengguna tanpa nama diberi nama samaran janaan automatik yang boleh ditukar.',
+	'right-webchat' => 'Dibenarkan menggunakan [[Special:WebChat|sembang web]]',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

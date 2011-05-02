@@ -421,6 +421,14 @@ $messages['uk'] = array(
 	'right-editalluserpages' => 'Редагувати сторінки користувачів.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'userpageeditprotection-desc' => 'Hạn chế sửa đổi các trang cá nhân của các thành viên và những người dùng được cho phép',
+	'right-editalluserpages' => 'Sửa đổi trang thành viên',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'userpageeditprotection-desc' => '限制用户及获授权者编辑用户页',

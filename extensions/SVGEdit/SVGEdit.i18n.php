@@ -525,6 +525,21 @@ $messages['uk'] = array(
 	'svgedit-desc' => 'Редагування у браузері SVG-малюнків за допомогою [http://code.google.com/p/svg-edit/ SVG-Edit]',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'svgedit-editbutton-edit' => 'Sửa đổi bản vẽ',
+	'svgedit-summary-label' => 'Tóm lược sửa đổi',
+	'svgedit-summary-default' => '/* Được sửa đổi trong svg-edit */',
+	'svgedit-editor-save-close' => 'Lưu và đóng',
+	'svgedit-editor-close' => 'Hủy bỏ',
+	'svgedit-desc' => 'Sửa đổi các bản vẽ SVG trong trình duyệt dùng [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Sửa đổi bản vẽ',
+	'svgedit-edit-tab-tooltip' => 'Bạn có thể sửa đổi bản vẽ SVG này trong trình duyệt của bạn',
+	'svgedit-toolbar-insert' => 'Bản vẽ SVG',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

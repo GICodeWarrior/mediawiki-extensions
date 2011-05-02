@@ -265,6 +265,13 @@ $messages['uk'] = array(
 	'wikibhasha-desc' => 'Додаток для створення багатомовного змісту використовуючи зміст англійської Вікіпедії',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'wikibhasha-desc' => 'Ứng dụng để biên tập nội dung đa ngôn ngữ dựa trên nội dung của Wikipedia tiếng Anh',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */

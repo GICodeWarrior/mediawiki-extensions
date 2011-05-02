@@ -630,13 +630,19 @@ $messages['arz'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'viewapc-apc-version' => 'APC versiyası',
+	'viewapc-php-version' => 'PHP versiyası',
+	'viewapc-start-time' => 'Başlanğıc vaxt',
+	'viewapc-memory-free' => 'Azad: $1 ($2)',
 	'viewapc-display-info' => 'Ad',
 	'viewapc-display-type' => 'Tipi',
+	'viewapc-display-mem_size' => 'Həcm',
 	'viewapc-ls-header-name' => 'Ad',
 	'viewapc-ls-header-size' => 'Həcm',
 	'viewapc-ls-scope-active' => 'Aktiv',
 	'viewapc-ls-sort-size' => 'Həcm',
 	'viewapc-ls-sort-name' => 'Ad',
+	'viewapc-ls-limit-none' => 'Hamısı',
 );
 
 /** Bashkir (Башҡортса)
@@ -4060,6 +4066,7 @@ $messages['lb'] = array(
 	'viewapc-start-time' => 'Ufankszäit',
 	'viewapc-uptime' => 'Betribszäit (Uptime)',
 	'viewapc-upload-support' => "Ënnerstëtzung fir d'Eropluede vu Fichieren",
+	'viewapc-filecache-info' => 'Informatioune vum Fichier-Cache',
 	'viewapc-usercache-info' => 'Informatioune vum Benotzer-Cache',
 	'viewapc-cached-files' => 'Tëschegespäichert Fichieren',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|Fichier|Fichieren}} ($2)',
@@ -4126,6 +4133,7 @@ $messages['lb'] = array(
 	'viewapc-version-old' => 'Dir benotzt eng al Versioun vun APC ($1).
 Eng méi nei Versioun $2 ass op http://pecl.php.net/package/APC/$2 disponibel.',
 	'viewapc-filecache-cleared' => "'''''Cache vun de Fichieren eidel gemaach.'''''",
+	'viewapc-usercache-cleared' => "'''''Tëschespäicher (Cache) vum Programm eidel gemaach.'''''",
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)

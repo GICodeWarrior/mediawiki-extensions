@@ -372,7 +372,7 @@ $messages['csb'] = array(
  */
 $messages['cu'] = array(
 	'vector-collapsiblenav-more' => 'дроу́ꙃи ѩꙁꙑци́',
-	'vector-simplesearch-search' => 'иска́ниѥ',
+	'vector-simplesearch-search' => 'исканиѥ',
 	'vector-simplesearch-containing' => 'сѥ дрьжащи···',
 );
 

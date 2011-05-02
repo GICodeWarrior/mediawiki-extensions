@@ -65,6 +65,14 @@ $messages['arz'] = array(
 	'categoryonupload-label' => 'التصنيف:',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'categoryonupload-desc' => 'Pidi al usuariu que seleicione una categoría al xubir un ficheru',
+	'categoryonupload-label' => 'Categoría:',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */

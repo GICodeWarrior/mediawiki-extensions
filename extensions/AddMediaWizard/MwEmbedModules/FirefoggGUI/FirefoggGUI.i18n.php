@@ -290,6 +290,8 @@ $messages['az'] = array(
 	'fogg-date-title' => 'Tarix',
 	'fogg-organization-title' => 'Təşkilat',
 	'fogg-license-title' => 'Lisenziya',
+	'fogg-contact-title' => 'Əlaqə',
+	'fogg-contact-help' => 'Əlaqə keçidi',
 );
 
 /** Bashkir (Башҡортса)
@@ -4908,7 +4910,7 @@ $messages['uk'] = array(
 	'fogg-webvideo-desc' => 'Ogg веб-відео Theora, Vorbis (600 кбіт/с і максимальна ширина 400 пікселів)',
 	'fogg-savebandwidth-desc' => 'Ogg для низькошвидкісних каналів Theora, Vorbis (164 кбіт/с і максимальна ширина 200 пікселів)',
 	'fogg-highquality-desc' => 'Ogg високої якості Theora, Vorbis (максимальна ширина 1080 пікселів)',
-	'fogg-webvideo-webm-desc' => 'WebM веб-відео VP8 (600 кбіт\\/с і максимальна ширина 480 пікселів)',
+	'fogg-webvideo-webm-desc' => 'WebM веб-відео VP8 (600 кбіт/с і максимальна ширина 480 пікселів)',
 	'fogg-highquality-webm-desc' => 'WebM високої якості VP8 (максимальна ширина 1080 пікселів)',
 	'fogg-videoQuality-title' => 'Якість відео',
 	'fogg-videoQuality-help' => 'Використовується для встановлення <i>візуальної якості</i> закодованого відео (не використовується, якщо ви встановите бітрейт в розширених налаштуваннях нижче).',

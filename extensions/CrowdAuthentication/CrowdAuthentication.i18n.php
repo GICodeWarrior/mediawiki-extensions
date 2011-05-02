@@ -45,6 +45,13 @@ $messages['arz'] = array(
 	'crowdauthentication-desc' => 'إضافة تأكيد لحشد الأتلاسيان',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'crowdauthentication-desc' => "Complementu d'autenticación pa Atlassian Crowd",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

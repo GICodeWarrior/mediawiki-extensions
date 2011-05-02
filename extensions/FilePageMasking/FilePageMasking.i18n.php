@@ -33,6 +33,13 @@ $messages['ar'] = array(
 	'filepagemasking-desc' => 'يعيد كتابة ".xxx" إلى "_xxx" في وصلات صفحات وصف الملفات',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'filepagemasking-desc' => 'Tresforma ".xxx" en "_xxx" nos enllaces de la páxina a la descripción del ficheru',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */

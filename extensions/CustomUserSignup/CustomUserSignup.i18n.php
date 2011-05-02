@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'customusersignup-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'customusersignup-desc' => 'Permite personalizar los mensaxes nel procesu de creación de cuentes',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
@@ -84,6 +91,13 @@ $messages['id'] = array(
  */
 $messages['ksh'] = array(
 	'customusersignup-desc' => 'Määt ennstellbaa Antwoote un Nohreeschte müjjelesch derwiel enem neue Metmaacher singe Zohjang zom Wiki aanjelaat weed.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'customusersignup-desc' => 'Erméiglecht ugepasste Benotzermessagen während dem Opmaache vun engem Benotzerkont ze benotzen',
 );
 
 /** Macedonian (Македонски)
