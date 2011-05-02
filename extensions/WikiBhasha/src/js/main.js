@@ -354,7 +354,7 @@ wikiBhasha.loadJQuery = function (callback) {
                 callback();
             };
         }
-        script.src = baseUrl + "js/jsLib/jquery-1.3.2.min.js";
+        script.src = baseUrl + "js/jsLib/jquery-1.4.4.min.js";
         document.body.appendChild(script);
     }
 };
