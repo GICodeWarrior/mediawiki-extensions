@@ -94,7 +94,9 @@ $messages['af'] = array(
  */
 $messages['az'] = array(
 	'livetranslate-button-translate' => 'Tərcümə et',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
 	'livetranslate-special-type' => 'Tipi',
+	'livetranslate-special-remove' => 'Çıxar',
 	'livetranslate-special-local' => 'Lokal',
 );
 
@@ -669,6 +671,17 @@ $messages['no'] = array(
 	'livetranslate-dictionary-empty' => 'Det er ingen ord i ordlisten ennå. Klikk på «rediger»-fanen for å legge til noen.',
 	'livetranslate-dictionary-count' => 'Det er {{PLURAL:$1|ett ord|$1 ord}} i $2 {{PLURAL:$2|språk|språk}}. Klikk på «rediger»-fanen for å legge til flere.',
 	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Dette språket|Disse språkene}} er for øyeblikket ikke satt som tillatte oversettelsesmål: $1. Endre tillatte språk i din wikis konfigurasjon eller fjern disse fra ordlisten.',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-button' => 'Lagre og oppdater',
+	'livetranslate-special-type' => 'Type',
+	'livetranslate-special-location' => 'Plassering',
+	'livetranslate-special-remove' => 'Fjern',
+	'livetranslate-special-local' => 'Lokal',
+	'livetranslate-special-add-tm' => 'Legg til et nytt oversettelsesminne',
+	'livetranslate-special-current-tms' => 'Eksisterende oversettelsesminner',
+	'livetranslate-special-tms-update' => 'Oppdater oversettelsesminner',
+	'livetranslate-special-update' => 'Oppdater oversettelsesminner',
+	'livetranslate-importtms-param-miscmatch' => 'Avvik mellom antall plasseringer og typer',
 );
 
 /** Polish (Polski)
