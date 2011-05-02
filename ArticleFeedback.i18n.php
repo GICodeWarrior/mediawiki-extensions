@@ -227,6 +227,7 @@ $messages['arc'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'articlefeedback-survey-question-useful-iffalse' => 'Niyə?',
 	'articlefeedback-survey-submit' => 'Yolla',
 	'articleFeedback-table-heading-page' => 'Səhifə',
 );
@@ -723,7 +724,7 @@ $messages['cs'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Je to můj velký koníček',
 	'articlefeedback-form-panel-expertise-other' => 'Původ mých znalostí zde není uveden',
 	'articlefeedback-form-panel-helpimprove' => 'Rád bych pomohl vylepšit Wikipedii, pošlete mi e-mail (nepovinné)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Pošlete vám zašleme potvrzovací e-mail. Vaší e-mailovou adresu nikomu neposkytneme. $1',
+	'articlefeedback-form-panel-helpimprove-note' => 'Pošleme vám potvrzovací e-mail. Vaši e-mailovou adresu nikomu neposkytneme. $1',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Zásady ochrany osobních údajů',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Ochrana osobních údajů',
 	'articlefeedback-form-panel-submit' => 'Odeslat hodnocení',
@@ -1954,6 +1955,7 @@ Tim {{SITENAME}}',
 $messages['it'] = array(
 	'articlefeedback' => 'Valutazione pagina',
 	'articlefeedback-desc' => 'Valutazione pagina (versione pilota)',
+	'articlefeedback-survey-question-origin' => 'In quale pagina eravate quando avete iniziato questa indagine?',
 	'articlefeedback-survey-question-whyrated' => 'Esprimi il motivo per cui oggi hai valutato questa pagina (puoi selezionare più opzioni):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Ho voluto contribuire alla valutazione complessiva della pagina',
 	'articlefeedback-survey-answer-whyrated-development' => 'Spero che il mio giudizio influenzi positivamente lo sviluppo della pagina',
@@ -1978,6 +1980,11 @@ Riprova più tardi.',
 	'articlefeedback-form-panel-expertise-profession' => 'È parte della mia professione',
 	'articlefeedback-form-panel-expertise-hobby' => 'È una profonda passione personale',
 	'articlefeedback-form-panel-expertise-other' => 'La fonte della mia conoscenza non è elencata qui',
+	'articlefeedback-form-panel-helpimprove' => 'Vorrei contribuire a migliorare Wikipedia, inviatemi una e-mail (facoltativo)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Ti invieremo una e-mail di conferma. Non condivideremo il tuo indirizzo con nessuno. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Informazioni sulla privacy',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Informazioni sulla privacy',
+	'articlefeedback-form-panel-submit' => 'Invia voti',
 	'articlefeedback-form-panel-success' => 'Salvato con successo',
 	'articlefeedback-form-panel-expiry-title' => 'Le tue valutazioni sono obsolete',
 	'articlefeedback-form-panel-expiry-message' => 'Valuta nuovamente questa pagina ed inviaci i tuoi giudizi.',
@@ -1985,12 +1992,12 @@ Riprova più tardi.',
 	'articlefeedback-report-panel-title' => 'Giudizio pagina',
 	'articlefeedback-report-panel-description' => 'Valutazione media attuale.',
 	'articlefeedback-report-empty' => 'Nessuna valutazione',
-	'articlefeedback-report-ratings' => '$1 {{PLURAL:$1|valutazione|valutazioni}}',
+	'articlefeedback-report-ratings' => '$1 voti',
 	'articlefeedback-field-trustworthy-label' => 'Affidabile',
 	'articlefeedback-field-trustworthy-tip' => 'Ritieni che questa pagina abbia citazioni sufficienti e che queste citazioni provengano da fonti attendibili?',
 	'articlefeedback-field-complete-label' => 'Completa',
 	'articlefeedback-field-complete-tip' => 'Ritieni che questa pagina copra le aree tematiche essenziali che dovrebbe?',
-	'articlefeedback-field-objective-label' => 'Obiettivo',
+	'articlefeedback-field-objective-label' => 'Obiettiva',
 	'articlefeedback-field-objective-tip' => 'Ritieni che questa pagina mostri una rappresentazione equa di tutti i punti di vista sul tema?',
 	'articlefeedback-field-wellwritten-label' => 'Ben scritta',
 	'articlefeedback-field-wellwritten-tip' => 'Ritieni che questa pagina sia ben organizzata e ben scritta?',
@@ -2008,6 +2015,8 @@ Riprova più tardi.',
 	'articlefeedback-survey-message-success' => 'Grazie per aver compilato il questionario.',
 	'articlefeedback-survey-message-error' => 'Si è verificato un errore. 
 Riprova più tardi.',
+	'articleFeedback-table-heading-page' => 'Pagina',
+	'articleFeedback-table-heading-average' => 'Media',
 );
 
 /** Japanese (日本語)
@@ -2270,6 +2279,10 @@ $messages['lb'] = array(
 	'articlefeedback-form-panel-expertise-profession' => 'Et ass en Deel vu mengem Beruff',
 	'articlefeedback-form-panel-expertise-hobby' => 'Ech si passionéiert vun deem Sujet',
 	'articlefeedback-form-panel-expertise-other' => "D'Quell vu mengem Wëssen ass hei net opgezielt",
+	'articlefeedback-form-panel-helpimprove' => 'Ech wëll hëllefe fir {{SITENAME}} ze verbesseren, schéckt mir eng E-Mail (fakultativ)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Mir schécken Iech eng Confirmatiouns-E-Mail. Mir ginn Är E-Mailadress u kee weider. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Dateschutz',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Dateschutz',
 	'articlefeedback-form-panel-submit' => 'Bewäertunge schécken',
 	'articlefeedback-form-panel-success' => 'Gespäichert',
 	'articlefeedback-form-panel-expiry-title' => 'Är Bewäertung ass ofgelaf',
@@ -2301,6 +2314,9 @@ $messages['lb'] = array(
 	'articlefeedback-survey-message-success' => "Merci datt Dir d'Ëmfro ausgefëllt hutt.",
 	'articlefeedback-survey-message-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Déi gréisst Ännerungen an dëser Woch',
+	'articleFeedback-table-heading-page' => 'Säit',
+	'articleFeedback-table-heading-average' => 'Duerchschnëtt',
 );
 
 /** Limburgish (Limburgs)
