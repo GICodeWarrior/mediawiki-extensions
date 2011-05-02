@@ -31,8 +31,9 @@
 	text-align: right;
 }
 
+.articleFeedback-table-cell-score-0,
 .articleFeedback-table-cell-score-1 {
-	background-color: #ffcc00;
+	background-color: #ffcccc;
 }
 
 
@@ -42,7 +43,7 @@
 }
 
 .articleFeedback-table-cell-score-3 {
-	background-color: #99cc99;
+	background-color: #ffff99;
 }
 
 .articleFeedback-table-cell-score-4,
@@ -50,5 +51,5 @@
 	background-color: #99ff99;
 }
 .articleFeedback-table-cell-score-5 {
-	background-color: #00ff00;
+	background-color: #55ff55;
 }
