@@ -96,7 +96,8 @@ class SpecialArticleFeedback extends SpecialPage {
 		$rows = array();
 		foreach ( $this->getDailyHighsAndLows() as $page ) {
 			$row = array();
-			$row['page'] = $page['page'];
+			$pageTitle = Title::newFromText( $page['page'] );
+			$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
 			foreach ( $page['ratings'] as $id => $value ) {
 				$row['rating-' . $id] = $value;
 			}
@@ -126,7 +127,8 @@ class SpecialArticleFeedback extends SpecialPage {
 		$rows = array();
 		foreach ( $this->getWeeklyMostChanged() as $page ) {
 			$row = array();
-			$row['page'] = $page['page'];
+			$pageTitle = Title::newFromText( $page['page'] );
+			$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
 			foreach ( $page['changes'] as $id => $value ) {
 				$row['rating-' . $id] = $value;
 			}
@@ -154,7 +156,8 @@ class SpecialArticleFeedback extends SpecialPage {
 		$rows = array();
 		foreach ( $this->getRecentLows() as $page ) {
 			$row = array();
-			$row['page'] = $page['page'];
+			$pageTitle = Title::newFromText( $page['page'] );
+			$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
 			foreach ( $wgArticleFeedbackRatings as $category ) {
 				$row[] = array(
 					'attr' => in_array( $category, $page['categories'] )
@@ -196,13 +199,23 @@ class SpecialArticleFeedback extends SpecialPage {
 			array(
 				'page' => 'Main Page',
 				// List of ratings as the currently stand
-				'ratings' => array( 1 => 4, 2 => 3, 3 => 2, 4 => 1 ),
+				'ratings' => array(
+					1 => 4,
+					2 => 3,
+					3 => 2,
+					4 => 1,
+				),
 				// Current average (considering historic averages of each rating)
 				'average' => 2.5
 			),
 			array(
 				'page' => 'Test Article',
-				'ratings' => array( 1 => 1, 2 => 2, 3 => 3, 4 => 4 ),
+				'ratings' => array(
+					1 => 1,
+					2 => 2,
+					3 => 3,
+					4 => 4,
+				),
 				'average' => 2.5
 			)
 		);
@@ -222,11 +235,21 @@ class SpecialArticleFeedback extends SpecialPage {
 			array(
 				'page' => 'Main Page',
 				// List of differences for each rating in the past 7 days
-				'changes' => array( 1 => 1, 2 => -2, 3 => 0, 4 => 0 ),
+				'changes' => array(
+					1 => 1,
+					2 => 2,
+					3 => 0,
+					4 => 0,
+				),
 			),
 			array(
 				'page' => 'Test Article',
-				'changes' => array( 1 => 0, 2 => 0, 3 => 1, 4 => 2 ),
+				'changes' => array(
+					1 => 0,
+					2 => 0,
+					3 => 1,
+					4 => 2,
+				),
 			)
 		);
 	}
