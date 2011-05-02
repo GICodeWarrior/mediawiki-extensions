@@ -2,8 +2,8 @@
 
 # Needs to be called within MediaWiki; not standalone
 if ( !defined('MEDIAWIKI') ) {
-        echo("This is an extension to the MediaWiki package and cannot be run standalone.\n" );
-        die(-1);
+		echo("This is an extension to the MediaWiki package and cannot be run standalone.\n" );
+		die(-1);
 }
 
 # Define the extension; allows us make sure the extension is used correctly
@@ -20,40 +20,40 @@ $wgExtensionCredits['other'][] = array(
 $wgExtPatchOutputMobile = new ExtPatchOutputMobile();
  
 $wgHooks['OutputPageBeforeHTML'][] = array(&$wgExtPatchOutputMobile, 
-                                            'onOutputPageBeforeHTML');
+											'onOutputPageBeforeHTML');
  
 class ExtPatchOutputMobile {
 	const VERSION = '0.2';
 
 	private $doc;
 
-	public $items_to_remove = array("#contentSub",        #redirection notice
-				                    "div.messagebox",     #cleanup data
-				                    "#siteNotice",        #site notice
-				                    "#siteSub",           #"From Wikipedia..." 
-				                    "#jump-to-nav",       #jump-to-nav
-				                    "div.editsection",    #edit blocks
-				                    "div.infobox",        # Infoboxes in the article
-				                    "table.toc",          #table of contents 
-				                    "#catlinks",          #category links
-				                    "div.stub",           #stub warnings
-				                    "table.metadata",     #ugly metadata
-				                    "form",
-				                    "div.sister-project",
-				                    "script",
-				                    "div.magnify",        #stupid magnify thing
-				                    ".editsection",
-				                    "span.t",
-				                    'sup[style*="help"]',
-				                    ".portal",
-				                    "#protected-icon",
-				                    ".printfooter",
-				                    ".boilerplate",
-				                    "#id-articulo-destacado",
-				                    "#coordinates",
-				                    "#top",
-				                    ".hiddenStructure",
-				                    ".noprint",
+	public $items_to_remove = array("#contentSub",		  #redirection notice
+									"div.messagebox",	  #cleanup data
+									"#siteNotice",		  #site notice
+									"#siteSub",			  #"From Wikipedia..." 
+									"#jump-to-nav",		  #jump-to-nav
+									"div.editsection",	  #edit blocks
+									"div.infobox",		  # Infoboxes in the article
+									"table.toc",		  #table of contents 
+									"#catlinks",		  #category links
+									"div.stub",			  #stub warnings
+									"table.metadata",	  #ugly metadata
+									"form",
+									"div.sister-project",
+									"script",
+									"div.magnify",		  #stupid magnify thing
+									".editsection",
+									"span.t",
+									'sup[style*="help"]',
+									".portal",
+									"#protected-icon",
+									".printfooter",
+									".boilerplate",
+									"#id-articulo-destacado",
+									"#coordinates",
+									"#top",
+									".hiddenStructure",
+									".noprint",
 									".medialist",
 									".mw-search-createlink");
  
@@ -65,14 +65,14 @@ class ExtPatchOutputMobile {
 	private function _show_hide_callback($matches) {
 		static $headings = 0;
 		$show = "Show";
-      	$hide =  "Hide";
-      	$back_to_top = "Jump Back A Section";
+		$hide =	 "Hide";
+		$back_to_top = "Jump Back A Section";
 		++$headings;
 		// Back to top link
-        $base = "<div class='section_anchors' id='anchor_" . intval($headings - 1) . "'><a href='#section_" . intval($headings - 1) . "' class='back_to_top'>&uarr; {$back_to_top}</a></div>";
-        // generate the HTML we are going to inject
-        $buttons = "<button class='section_heading show' section_id='{$headings}'>{$show}</button><button class='section_heading hide' section_id='{$headings}'>{$hide}</button>";
-        $base .= "<h2 class='section_heading' id='section_{$headings}'{$matches[1]}{$buttons} <span>{$matches[2]}</span></h2><div class='content_block' id='content_{$headings}'>";
+		$base = "<div class='section_anchors' id='anchor_" . intval($headings - 1) . "'><a href='#section_" . intval($headings - 1) . "' class='back_to_top'>&uarr; {$back_to_top}</a></div>";
+		// generate the HTML we are going to inject
+		$buttons = "<button class='section_heading show' section_id='{$headings}'>{$show}</button><button class='section_heading hide' section_id='{$headings}'>{$hide}</button>";
+		$base .= "<h2 class='section_heading' id='section_{$headings}'{$matches[1]}{$buttons} <span>{$matches[2]}</span></h2><div class='content_block' id='content_{$headings}'>";
 
 		if ($headings > 1) {
 			// Close it up here
@@ -98,7 +98,7 @@ class ExtPatchOutputMobile {
 	
 	public function parse($s) {
 		// foreach(self::$mTable as $from => $to) {
-		// 	    	$s =& str_replace( $from, $to, $s );
+		//			$s =& str_replace( $from, $to, $s );
 		// }
 		
 		return $this->DOMParse($s);
