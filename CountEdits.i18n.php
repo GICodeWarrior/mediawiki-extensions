@@ -1056,9 +1056,11 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aurora
  */
 $messages['ms'] = array(
+	'countedits-username' => 'Nama pengguna:',
 	'countedits-ok' => 'OK',
 );
 
