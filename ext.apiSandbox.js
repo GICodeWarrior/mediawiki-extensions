@@ -1,25 +1,28 @@
-$( document ).ready( function() {
-	var content = $( '#api-sandbox-content' );
-	if ( !content.length ) {
+jQuery( function( $ ) {
+	var $content = $( '#api-sandbox-content' );
+	if ( !$content.length ) {
 		return;
 	}
-	content.show();	
+	$content.show();	
 
-	var action = $( '#api-sandbox-action' );
-	var prop = $( '#api-sandbox-prop' );
-	var propRow = $( '#api-sandbox-prop-row' );
-	var help = $( '#api-sandbox-help' );
-	var further = $( '#api-sandbox-further-inputs' );
-	var submit = $( '#api-sandbox-submit' );
-	var requestUrl = $( '#api-sandbox-url' );
-	var requestPost = $( '#api-sandbox-post' );
-	var output = $( '#api-sandbox-output' );
-	var postRow = $( '#api-sandbox-post-row' );
-	var actionCache = [];
-	var propCache = [];
-	var namespaces = [];
-	var currentInfo = {};
-	var apiPhp = mw.config.get( 'wgServer' ) + mw.config.get( 'wgScriptPath' ) + '/api' + mw.config.get( 'wgScriptExtension' );
+	// page elements
+	var $action = $( '#api-sandbox-action' ),
+	    $prop = $( '#api-sandbox-prop' ),
+	    $propRow = $( '#api-sandbox-prop-row' ),
+	    $help = $( '#api-sandbox-help' ),
+	    $further = $( '#api-sandbox-further-inputs' ),
+	    $submit = $( '#api-sandbox-submit' ),
+	    $requestUrl = $( '#api-sandbox-url' ),
+	    $requestPost = $( '#api-sandbox-post' ),
+	    $output = $( '#api-sandbox-output' ),
+	    $postRow = $( '#api-sandbox-post-row' );
+
+	// cached stuff
+	var actionCache = [],
+	    propCache = [],
+	    namespaces = [],
+	    currentInfo = {},
+	    apiPhp = mw.config.get( 'wgServer' ) + mw.config.get( 'wgScriptPath' ) + '/api' + mw.config.get( 'wgScriptExtension' );
 
 	// load namespaces
 	$.getJSON( apiPhp,
@@ -37,18 +40,18 @@ $( document ).ready( function() {
 					namespaces.push( { key: id, value: ns } );
 				}
 			} else {
-				showLoadError( further, 'apisb-namespaces-error' );
+				showLoadError( $further, 'apisb-namespaces-error' );
 			}
 		}
 	);
 
-	action.change( updateBasics );
-	prop.change( updateBasics );
+	$action.change( updateBasics );
+	$prop.change( updateBasics );
 
-	submit.click( function() {
-		var url = apiPhp + '?action=' + action.val();
-		if ( action.val() == 'query' ) {
-			url += '&prop=' + prop.val();
+	$submit.click( function() {
+		var url = apiPhp + '?action=' + $action.val();
+		if ( $action.val() == 'query' ) {
+			url += '&prop=' + $prop.val();
 		}
 		url += '&format=json'; // @todo:
 		var params = '';
@@ -66,14 +69,14 @@ $( document ).ready( function() {
 				params += '&' + name + '=' + encodeURIComponent( value );
 			}
 		}
-		showLoading( output );
+		showLoading( $output );
 		if ( isset( currentInfo.mustbeposted ) ) {
-			requestUrl.val( url );
-			requestPost.val( params );
-			postRow.show();
+			$requestUrl.val( url );
+			$requestPost.val( params );
+			$postRow.show();
 		} else {
-			requestUrl.val( url + params );
-			postRow.hide();
+			$requestUrl.val( url + params );
+			$postRow.hide();
 		}
 		url = url.replace( /(&format=[^&]+)/, '$1fm' );
 		var data = {
@@ -83,10 +86,10 @@ $( document ).ready( function() {
 			type: isset( currentInfo.mustbeposted ) ? 'POST' : 'GET',
 			success: function( data ) {
 				data = data.match( /<pre>[\s\S]*<\/pre>/ )[0];
-				output.html( data );
+				$output.html( data );
 			},
 			error: function( jqXHR, textStatus, errorThrown ) {
-				showLoadError( output, 'apisb-request-error' );
+				showLoadError( $output, 'apisb-request-error' );
 			}
 		};
 		$.ajax( data );
@@ -111,12 +114,12 @@ $( document ).ready( function() {
 	}
 
 	function parseParamInfo( data ) {
-		further.text( '' );
+		$further.text( '' );
 		if ( !isset( data.paraminfo ) 
 			|| ( !isset( data.paraminfo.modules ) && !isset( data.paraminfo.querymodules ) )
 			)
 		{
-			showLoadError( further, 'apisb-load-error' );
+			showLoadError( $further, 'apisb-load-error' );
 			return;
 		}
 		if ( isset( data.paraminfo.modules ) ) {
@@ -126,13 +129,13 @@ $( document ).ready( function() {
 			propCache[data.paraminfo.querymodules[0].name] = data.paraminfo.querymodules[0];
 			createInputs( propCache[data.paraminfo.querymodules[0].name] );
 		}
-		submit.removeAttr( 'disabled' );
+		$submit.removeAttr( 'disabled' );
 	}
 
 	function getQueryInfo( action, prop ) {
 		var isQuery = action == 'query';
 		if ( action == '-' || ( isQuery && prop == '-' ) ) {
-			submit.attr( 'disabled', 'disabled' );
+			$submit.attr( 'disabled', 'disabled' );
 			return;
 		}
 		var cached;
@@ -142,7 +145,7 @@ $( document ).ready( function() {
 			cached = actionCache[action];
 		}
 		if ( typeof cached != 'object' ) { // stupid FF adds watch() everywhere
-			showLoading( further );
+			showLoading( $further );
 			var data = {
 				format: 'json',
 				action: 'paraminfo'
@@ -152,14 +155,14 @@ $( document ).ready( function() {
 			} else {
 				data.modules = action;
 			}
-			submit.attr( 'disabled', 'disabled' );
+			$submit.attr( 'disabled', 'disabled' );
 			$.getJSON(
 				mw.config.get( 'wgScriptPath' ) + '/api' + mw.config.get( 'wgScriptExtension' ),
 				data,
 				parseParamInfo
 			);
 		} else {
-			submit.removeAttr( 'disabled' );
+			$submit.removeAttr( 'disabled' );
 			createInputs( cached );
 		}
 	}
@@ -176,23 +179,23 @@ $( document ).ready( function() {
 
 	function createInputs( info ) {
 		currentInfo = info;
-		help.html( smartEscape( info.description ) );
+		$help.html( smartEscape( info.description ) );
 		var s = '<table class="api-sandbox-options">\n<tbody>';
 		for ( var i = 0; i < info.parameters.length; i++ ) {
-			var param = info.parameters[i];
-			var name = info.prefix + param.name;
+			var param = info.parameters[i],
+			    name = info.prefix + param.name;
 
 			s += '<tr><td class="api-sandbox-label"><label for="param-' + name + '">' + name + '=</label></td>'
 				+ '<td class="api-sandbox-value">' + input( param, name )
 				+ '</td><td>' + smartEscape( param.description ) + '</td></tr>';
 		}
 		s += '\n</tbody>\n</table>\n';
-		further.html( s );
+		$further.html( s );
 	}
 
 	function input( param, name ) {
-		var s;
-		var value = '';
+		var s,
+		    value = '';
 		switch ( param.type ) {
 			case 'limit':
 				value = 10;
@@ -210,8 +213,8 @@ $( document ).ready( function() {
 				param.type = namespaces;
 			default:
 				if ( typeof param.type == 'object' ) {
-					var id = 'param-' + name;
-					var attributes = { 'id': id };
+					var id = 'param-' + name,
+					    attributes = { 'id': id };
 					if ( isset( param.multi ) ) {
 						attributes.multiple = 'multiple';
 						s = select( param.type, attributes, false );
@@ -238,9 +241,9 @@ $( document ).ready( function() {
 			selected = [];
 		}
 		for ( var i = 0; i < values.length; i++ ) {
-			var value = typeof values[i] == 'object' ? values[i].key : values[i];
-			var face = typeof values[i] == 'object' ? values[i].value : values[i];
-			var attrs = { 'value': value };
+			var value = typeof values[i] == 'object' ? values[i].key : values[i],
+			    face = typeof values[i] == 'object' ? values[i].value : values[i],
+			    attrs = { 'value': value };
 			if ( $.inArray( value, selected ) >= 0 ) {
 				attrs.selected = 'selected';
 			}
@@ -251,16 +254,16 @@ $( document ).ready( function() {
 	}
 	
 	function updateBasics() {
-		var a = action.val();
-		var p = prop.val();
-		var isQuery = a == 'query';
+		var a = $action.val(),
+		    p = $prop.val(),
+		    isQuery = a == 'query';
 		if ( isQuery ) {
-			propRow.show();
+			$propRow.show();
 		} else {
-			propRow.hide();
+			$propRow.hide();
 		}
-		further.text( '' );
-		help.text( '' );
+		$further.text( '' );
+		$help.text( '' );
 		getQueryInfo( a, p );
 	}
 
