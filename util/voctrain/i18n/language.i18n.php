@@ -2726,7 +2726,13 @@ $messages['lb'] = array(
  */
 $messages['lez'] = array(
 	'voctrain_Hello_World' => 'САЛАМ ВИКИ!',
+	'voctrain_Number_of_questions' => 'Суалрин кьадар',
 	'voctrain_Languages' => 'Чlалар',
+	'voctrain_Questions' => 'Суал',
+	'voctrain_Answers' => 'Жаваб',
+	'voctrain_Login' => 'Гьахьун',
+	'voctrain_Language' => 'Чlал',
+	'voctrain_other' => 'масабур',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
