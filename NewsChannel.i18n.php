@@ -89,6 +89,8 @@ $messages['ast'] = array(
  */
 $messages['az'] = array(
 	'newschannel-desc' => 'Bir xəbər kanalını dinamik bir [[Special:NewsChannel|xüsusi səhifə]] olaraq uygulamaya qoyar',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Limit:',
 	'newschannel_exclude_category' => 'Bu kateqoriyanı kanarda saxla:',
 );
 
