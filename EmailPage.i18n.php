@@ -144,6 +144,7 @@ $messages['az'] = array(
 	'ea-message' => 'Məktub:',
 	'ea-style' => 'Stil:',
 	'ea-data' => 'Tarix',
+	'ea-allusers' => 'Bütün istifadəçilər',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
