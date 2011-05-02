@@ -31,10 +31,24 @@
 	text-align: right;
 }
 
+.articleFeedback-table-cell-score-1 {
+	background-color: #ffcc00;
+}
+
+
+.articleFeedback-table-cell-score-2,
 .articleFeedback-table-cell-bad {
 	background-color: #ffcc99;
 }
 
+.articleFeedback-table-cell-score-3 {
+	background-color: #99cc99;
+}
+
+.articleFeedback-table-cell-score-4,
 .articleFeedback-table-cell-good {
 	background-color: #99ff99;
+}
+.articleFeedback-table-cell-score-5 {
+	background-color: #00ff00;
 }

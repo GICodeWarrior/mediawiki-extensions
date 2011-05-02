@@ -7,11 +7,12 @@ jQuery( function( $ ) {
 		// Main namespace articles
 		mw.config.get( 'wgNamespaceNumber' ) === 0
 		// Existing pages
-		&& mw.config.get( 'wgArticleId', 0 ) > 0
+		&& mw.config.get( 'wgArticleId' ) > 0
 		// View pages
-		&& ( mw.config.get( 'wgAction' ) == 'view' || mw.config.get( 'wgAction' ) == 'view' )
+		&& ( mw.config.get( 'wgAction' ) == 'view' || mw.config.get( 'wgAction' ) == 'purge' )
 		// Current revision
-		&& ( mw.util.getParamValue( 'diff' ) == null && mw.util.getParamValue( 'oldid' ) == null )
+		&& mw.util.getParamValue( 'diff' ) == null
+		&& mw.util.getParamValue( 'oldid' ) == null
 	) {
 		var trackingBucket = mw.user.bucket(
 			'ext.articleFeedback-tracking', mw.config.get( 'wgArticleFeedbackTracking' )
