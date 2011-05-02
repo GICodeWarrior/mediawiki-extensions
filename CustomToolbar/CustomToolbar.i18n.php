@@ -3305,7 +3305,7 @@ $messages['vi'] = array(
 	'ct_success' => 'Tập tin tải lên thành công!',
 	'ct_popupblocked' => 'Cửa sổ nhảy để tải lên bị ngăn không cho mở. Vui lòng kiểm tra trình chặn cửa sổ nhảy lên.',
 	'ct_user_user' => 'Người dùng',
-	'ct_user_tip' => 'Chèn một liên kết vào trang thành viên',
+	'ct_user_tip' => 'Chèn một liên kết vào trang cá nhân',
 	'ct_user_caption' => 'Liên kết người dùng',
 	'ct_user_sample' => 'Tên người dùng',
 );
