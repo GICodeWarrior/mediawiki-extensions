@@ -11,12 +11,18 @@ $( document ).ready( function() {
 	var help = $( '#api-sandbox-help' );
 	var further = $( '#api-sandbox-further-inputs' );
 	var submit = $( '#api-sandbox-submit' );
+	var requestUrl = $( '#api-sandbox-url' );
+	var requestPost = $( '#api-sandbox-post' );
+	var output = $( '#api-sandbox-output' );
+	var postRow = $( '#api-sandbox-post-row' );
 	var actionCache = [];
 	var propCache = [];
 	var namespaces = [];
+	var currentInfo = {};
+	var apiPhp = mw.config.get( 'wgServer' ) + mw.config.get( 'wgScriptPath' ) + '/api' + mw.config.get( 'wgScriptExtension' );
 
 	// load namespaces
-	$.getJSON( mw.config.get( 'wgScriptPath' ) + '/api' + mw.config.get( 'wgScriptExtension' ),
+	$.getJSON( apiPhp,
 		{ format: 'json', action: 'query', meta: 'siteinfo', siprop: 'namespaces' },
 		function( data ) {
 			if ( isset( data.query ) && isset( data.query.namespaces ) ) {
@@ -36,6 +42,59 @@ $( document ).ready( function() {
 		}
 	);
 
+	action.change( updateBasics );
+	prop.change( updateBasics );
+
+	submit.click( function() {
+		var url = apiPhp + '?action=' + action.val();
+		if ( action.val() == 'query' ) {
+			url += '&prop=' + prop.val();
+		}
+		url += '&format=json'; // @todo:
+		var params = '';
+		for ( var i = 0; i < currentInfo.parameters.length; i++ ) {
+			var param = currentInfo.parameters[i];
+			var name = currentInfo.prefix + param.name;
+			var value = $( '#param-' + name ).val();
+			if ( param.value == ''
+				&& ( param.type != 'boolean' && param.type != 'bool' )
+				&& !isset( param.required ) )
+			{
+				value = null;
+			}
+			if ( typeof value != 'undefined' ) {
+				params += '&' + name + '=' + encodeURIComponent( value );
+			}
+		}
+		showLoading( output );
+		if ( isset( currentInfo.mustbeposted ) ) {
+			requestUrl.val( url );
+			requestPost.val( params );
+			postRow.show();
+		} else {
+			requestUrl.val( url + params );
+			postRow.hide();
+		}
+		url = url.replace( /(&format=[^&]+)/, '$1fm' );
+		var data = {
+			url: url,
+			data: params,
+			dataType: 'text',
+			type: isset( currentInfo.mustbeposted ) ? 'POST' : 'GET',
+			success: function( data ) {
+				data = data.match( /<pre>[\s\S]*<\/pre>/ )[0];
+				output.html( data );
+			},
+			error: function( jqXHR, textStatus, errorThrown ) {
+				output.text( 'FAIL' );
+			}
+		};
+		$.ajax( data );
+	});
+
+	/**
+	 * Shamelessly borrowed from PHP
+	 */
 	function isset( x ) {
 		return typeof x != 'undefined';
 	}
@@ -83,7 +142,7 @@ $( document ).ready( function() {
 			showLoading( further );
 			var data = {
 				format: 'json',
-				action: 'paraminfo',
+				action: 'paraminfo'
 			};
 			if (isQuery ) {
 				data.querymodules = prop;
@@ -113,6 +172,7 @@ $( document ).ready( function() {
 	}
 
 	function createInputs( info ) {
+		currentInfo = info;
 		help.html( smartEscape( info.description ) );
 		var s = '<table class="api-sandbox-options">\n<tbody>';
 		for ( var i = 0; i < info.parameters.length; i++ ) {
@@ -128,7 +188,7 @@ $( document ).ready( function() {
 	}
 
 	function input( param, name ) {
-		var s = param.type;
+		var s;
 		var value = '';
 		switch ( param.type ) {
 			case 'limit':
@@ -155,7 +215,9 @@ $( document ).ready( function() {
 					} else {
 						s = select( param.type, attributes, true );
 					}
-				}
+				} else {
+                    s = mw.html.element( 'code', [], mw.msg( 'parentheses', param.type ) );
+                }
 		}
 		return s;
 	}
@@ -198,9 +260,5 @@ $( document ).ready( function() {
 		help.text( '' );
 		getQueryInfo( a, p );
 	}
-
-	action.change( updateBasics );
-	prop.change( updateBasics );
-	
 
 });
