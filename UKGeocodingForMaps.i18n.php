@@ -315,7 +315,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'ukgeocoding_name' => 'Mã hóa Địa lý Bản đồ Anh',
-	'ukgeocoding_desc' => 'Mở rộng các bản đồ với hàm cú pháp display_uk_point hoạt động do Google Maps',
+	'ukgeocoding_desc' => 'Mở rộng các bản đồ với hàm cú pháp display_uk_point hoạt động do Google Bản đồ',
 	'ukgeocoding_couldNotGeocode' => 'Một số mã bưu chính bị bỏ qua vì không thể được mã hóa địa lý.',
 );
 
