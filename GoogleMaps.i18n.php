@@ -3764,6 +3764,7 @@ $wgGoogleMapsMessages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  */
 $wgGoogleMapsMessages['mr'] = array(
@@ -3803,7 +3804,7 @@ $wgGoogleMapsMessages['mr'] = array(
 	'gm-medium' => 'मध्यम',
 	'gm-small' => 'छोटा',
 	'gm-no-zoom-control' => 'काहीही नाही',
-	'gm-yes' => 'हो',
+	'gm-yes' => 'होय',
 	'gm-no' => 'नाही',
 	'gm-search-preface' => 'बिंदू देण्यासाठी नकाशावर टिचकी मारा, किंवा शहर, देश, पत्ता किंवा व्यवसाय शोधा:',
 	'gm-geocode-preface' => 'बिंदू देण्यासाठी नकाशावर टिचकी मारा, किंवा शहर, देश किंवा पत्ता शोधा:',
@@ -3906,7 +3907,7 @@ $wgGoogleMapsMessages['ms'] = array(
 	'gm-back' => 'kembali',
 	'gm-kml-include' => 'KML/GeoRSS luar:',
 	'gm-kml-include-link' => 'tambah ke dalam peta',
-	'gm-kml-loading' => 'muat turun…',
+	'gm-kml-loading' => 'sedang dimuatkan…',
 	'gm-kml-export' => 'Eksport peta ini kepada KML',
 	'gm-earth' => 'Bumi',
 	'gm-moon' => 'Bulan',
