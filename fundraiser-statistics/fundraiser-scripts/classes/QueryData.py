@@ -28,7 +28,7 @@ __author__ = "Ryan Faulkner"
 __revision__ = "$Rev$"
 __date__ = "November 28th, 2010"
 
-import TimestampProcessor as TP
+import Fundraiser_Tools.classes.TimestampProcessor as TP
 import datetime
 
 def format_query(query_name, sql_stmnt, args):
@@ -187,6 +187,12 @@ def format_query(query_name, sql_stmnt, args):
         interval = args[3]
         
         sql_stmnt = sql_stmnt % (campaign, '%', '%', '%',  '%', interval, interval, start_time, end_time, campaign, '%', '%',  '%',  '%', interval, interval, start_time, end_time, campaign)
+    
+    elif query_name == 'report_campaign_totals':
+        start_time = args[0]
+        end_time = args[1]
+        
+        sql_stmnt = sql_stmnt % (start_time, end_time)
         
     else:
         return 'no such table\n'
@@ -214,6 +220,8 @@ def get_key_index(query_name):
         return 1
     elif query_name == 'report_campaign_metrics_minutely_total':
         return 1
+    elif query_name == 'report_campaign_totals':
+        return 0
 
 
 def get_count_index(query_name):
@@ -436,6 +444,11 @@ def get_metric_index(query_name, metric_name):
             return 3
         elif metric_name == 'views':
             return 2
+        else:
+            return -1
+    elif query_name == 'report_campaign_totals':
+        if metric_name == 'donations':
+            return 1
         else:
             return -1
         
