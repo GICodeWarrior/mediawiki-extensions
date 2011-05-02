@@ -769,7 +769,12 @@ $messages['az'] = array(
 	'mwe-your-recent-uploads-to' => '$1 üzrə bir az əvvəlki yükləmələriniz',
 	'mwe-upload-a-file' => 'Yeni fayl yüklə',
 	'mwe-watch_this_page' => 'Bu səhifəni izlə',
+	'mwe-ftype-jpg' => 'JPEG şəkil faylı',
+	'mwe-ftype-png' => 'PNG şəkil faylı',
+	'mwe-ftype-oga' => 'Ogg audio faylı',
+	'mwe-ftype-ogg' => 'Ogg video faylı',
 	'mwe-am-this_wiki-title' => 'Bu viki',
+	'mwe-am-this_wiki-desc' => 'Lokal viki',
 );
 
 /** Bashkir (Башҡортса)
@@ -4497,6 +4502,8 @@ $messages['lb'] = array(
 	'mwe-summary' => 'Resumé',
 	'mwe-date-of-work' => 'Datum vum Wierk',
 	'mwe-error_not_loggedin' => 'Et gesäit aus wéi wann dir net ageloggt wiert oder Dir hutt keng Rechter fir eppes eropzelueden.',
+	'mwe-error-not-loggedin-file' => 'Et schéngt wéi wann Dir net ageloggt wiert oder et gouf e Feeler an der Software.
+Dir kënnt Iech $1 an nach eng kéier probéieren',
 	'mwe-link-login' => 'Aloggen',
 	'mwe-watch-this-file' => 'Dëse Fichier iwwerwwaachen',
 	'mwe-ignore-any-warnings' => 'All Warnungen ignoréieren',
