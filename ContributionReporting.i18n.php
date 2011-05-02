@@ -1004,9 +1004,10 @@ $messages['cs'] = array(
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author Omnipaedista
+ * @author ОйЛ
  */
 $messages['cu'] = array(
-	'fundraiserstats-contributions' => 'добродѣꙗ́ниꙗ',
+	'fundraiserstats-contributions' => 'добродѣꙗниꙗ',
 );
 
 /** Danish (Dansk)
