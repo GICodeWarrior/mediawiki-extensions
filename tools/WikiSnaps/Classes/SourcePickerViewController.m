@@ -151,7 +151,7 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
     
     // Add a settings button etc
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] 
-        initWithTitle: NSLocalizedString( @"Settings", @"A button to go to the settings view" )
+        initWithTitle: NSLocalizedString( @"SettingsButton", @"A button to go to the settings view" )
         style: UIBarButtonItemStylePlain
         target:self
         action: @selector(settingsPressed:)];
@@ -172,6 +172,12 @@ static int kSourcePickerViewControllerSourceIndexPhotoLibrary = 1;
         cameraAvailable =
             [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     #endif
+    
+    if( ((PhotoPickerAppDelegate *)[UIApplication sharedApplication].delegate).justInstalled ) {
+        SettingsViewController *settingsController = [[SettingsViewController alloc] init];
+        [self.navigationController pushViewController:settingsController animated:NO];
+        [settingsController release];
+    }
 }
 
 

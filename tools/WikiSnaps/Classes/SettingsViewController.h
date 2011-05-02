@@ -15,24 +15,28 @@
                                                         UITextFieldDelegate,
                                                         LicensePickerDelegate>{
 
-	IBOutlet UILabel *usernameLabel;
-	IBOutlet UILabel *passwordLabel;
-	IBOutlet UILabel *licenseLabel;
+        IBOutlet UILabel *usernameLabel;
+        IBOutlet UILabel *passwordLabel;
+        IBOutlet UILabel *licenseLabel;
+        IBOutlet UILabel *gpsLabel;
 
-	IBOutlet UITextField *username;
-	IBOutlet UITextField *password;
-	IBOutlet UITextField *license;
-	IBOutlet UIButton    *save;
+        IBOutlet UITextField *username;
+        IBOutlet UITextField *password;
+        IBOutlet UITextField *license;
+        IBOutlet UIButton    *save;
+        IBOutlet UISwitch    *gpsSwitch;
         int                  selectedLicense;
 }
 
 @property (retain, nonatomic) UILabel *usernameLabel;
 @property (retain, nonatomic) UILabel *passwordLabel;
 @property (retain, nonatomic) UILabel *licenseLabel;
+@property (retain, nonatomic) UILabel *gpsLabel;
 
 @property (retain, nonatomic) UITextField *username;
 @property (retain, nonatomic) UITextField *password;
 @property (retain, nonatomic) UITextField *license;
+@property (retain, nonatomic) UISwitch *gpsSwitch;
 @property (retain, nonatomic) UIButton *save;
 
 @property (retain, nonatomic) NSArray       *licenses;

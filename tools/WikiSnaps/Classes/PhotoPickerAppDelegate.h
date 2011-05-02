@@ -45,8 +45,11 @@
 
 @property (nonatomic, retain) NSArray  *licenses;
 
-@property (nonatomic, assign) CLLocationManager *locationManager;
 @property (nonatomic, retain) CLLocation *lastLocation;
+
+- (void)startLocationUpdates;
+- (void)stopLocationUpdates;
+
 
 @end
 

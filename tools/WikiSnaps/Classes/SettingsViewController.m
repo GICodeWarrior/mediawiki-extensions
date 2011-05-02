@@ -14,8 +14,8 @@
 
 @implementation SettingsViewController
 
-@synthesize usernameLabel, passwordLabel, licenseLabel;
-@synthesize username,password,license;
+@synthesize usernameLabel, passwordLabel, licenseLabel, gpsLabel;
+@synthesize username,password,license,gpsSwitch;
 @synthesize save;
 @synthesize licenses;
 @synthesize selectedLicense;
@@ -35,10 +35,11 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = NSLocalizedString( @"Settings", @"Title of the settings view" );
+    self.title = NSLocalizedString( @"SettingsTitle", @"Title of the settings view" );
     usernameLabel.text = NSLocalizedString( @"Username", @"Label of the username textfield" );
-    usernameLabel.text = NSLocalizedString( @"Password", @"Label of the password textfield" );
-    usernameLabel.text = NSLocalizedString( @"License", @"Label of the license textfield" );
+    passwordLabel.text = NSLocalizedString( @"Password", @"Label of the password textfield" );
+    licenseLabel.text = NSLocalizedString( @"LicenseLabel", @"Label of the license textfield" );
+    gpsLabel.text = NSLocalizedString( @"Add GPS coordinates", @"Label of the gps coordinates settings switch" );
     
     PhotoPickerAppDelegate *appDelegate =
             (PhotoPickerAppDelegate *) [UIApplication sharedApplication].delegate;
@@ -111,6 +112,7 @@
 
 - (void)loadData {
     self.username.text = [[NSUserDefaults standardUserDefaults] valueForKey: COMMONS_USERNAME_KEY];
+    self.gpsSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey: GEOTAGGING_KEY];
 
     NSString *licenseDefault = [[NSUserDefaults standardUserDefaults] stringForKey: COMMONS_LICENSE_KEY];
     NSEnumerator *enumerator = [self.licenses objectEnumerator];
@@ -146,7 +148,9 @@
 
     /* Save the data */
     [[NSUserDefaults standardUserDefaults] setObject:self.username.text forKey:COMMONS_USERNAME_KEY];
-
+    [[NSUserDefaults standardUserDefaults] setBool:gpsSwitch.on forKey:GEOTAGGING_KEY];
+    [(PhotoPickerAppDelegate *) [UIApplication sharedApplication].delegate startLocationUpdates];
+    
     NSDictionary *aLicense = [self.licenses objectAtIndex:self.selectedLicense];
     [[NSUserDefaults standardUserDefaults] setObject:[aLicense objectForKey:@"short"] forKey:COMMONS_LICENSE_KEY];
 

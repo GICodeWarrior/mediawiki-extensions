@@ -28,7 +28,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    navItem.title = NSLocalizedString( @"License", @"Title for the license picker" );
+    navItem.title = NSLocalizedString( @"License Title", @"Title for the license picker" );
     dismissButton.title = NSLocalizedString( @"Select", "Title for the select button in license picker" );
     dismissButton.target = self;
     dismissButton.action = @selector( dismissLicensePicker: );

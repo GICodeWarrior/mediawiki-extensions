@@ -11,9 +11,9 @@
 
 
 @interface PhotoPickerAppDelegate ()
+    @property (nonatomic, assign) CLLocationManager *locationManager;
+
     - (void)checkIfJustInstalled;
-    - (void)startLocationUpdates;
-    - (void)stopLocationUpdates;
 @end
 
 
@@ -79,8 +79,7 @@
     // Create the location manager if this object does not
     // already have one.
     if( [CLLocationManager locationServicesEnabled] &&
-        //[[NSUserDefaults standardUserDefaults] boolForKey: GEOTAGGING_KEY] )
-        TRUE )
+        [[NSUserDefaults standardUserDefaults] boolForKey: GEOTAGGING_KEY] )
     {
         if (nil == self.locationManager)
             self.locationManager = [[CLLocationManager alloc] init];
@@ -144,6 +143,8 @@
         [defaults setBool:YES forKey:@"installed"];
         [defaults setBool:NO forKey:GEOTAGGING_KEY];
     }
+    
+    
 }
 
 
