@@ -111,7 +111,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                 });
 
                 //restrict user from selecting text from UI elements as IE doesn't have any predefined HTML attribute to do the same.
-                $("#wbSPDraggableHandle, #wbTranslationTable, #wbWrapperScratchPad, #wbScratchPadWindow, #scratchPadTable, .scratchContentLayoutRow, .scratchTopButtonLayout, .wbScratchPadSection, .scratchContentLayout, .scratchTopLayout, .wbWindowToolbarCenter, .wbHeader, .wbLeftWindowCollapsed, .wbRightWindowCollapsed, .wbLogoContainer, .wbTopButtonsDiv, .workflowNavigationBtns, .wbWindowContentLeft, .wbWindowContentRight").each(function() {
+                $("#wbSPDraggableHandle, #wbWrapperScratchPad, #wbScratchPadWindow, #scratchPadTable, .scratchContentLayoutRow, .scratchTopButtonLayout, .wbScratchPadSection, .scratchContentLayout, .scratchTopLayout, .wbWindowToolbarCenter, .wbHeader, .wbLeftWindowCollapsed, .wbRightWindowCollapsed, .wbLogoContainer, .wbTopButtonsDiv, .workflowNavigationBtns, .wbWindowContentLeft, .wbWindowContentRight").each(function() {
                     this.onselectstart = function() { return false; };
                 });
             }

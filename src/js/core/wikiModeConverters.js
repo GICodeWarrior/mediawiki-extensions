@@ -546,9 +546,9 @@ wikiBhasha.contentManagement.hybridConverter = function () {
         linkTextElem.setAttribute("onclick", "return false;");
         linkTextElem.appendChild(document.createTextNode(text));
 
-        if (link) {
-            wbUtil.setDataAttribute(domNode, link);
-        }
+        wbUtil.setDataAttribute(domNode, link || text);
+        domNode.setAttribute("_wbSrcWord", text);
+        domNode.setAttribute("isProcessed", 0);
         domNode.appendChild(linkTextElem);
         return domNode;
     };

@@ -136,7 +136,6 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
 
         //array of microsoft translator supported languages. [language name, language code, display text]
         mtlLanguages: [ ['Arabic', 'ar', 'العربية'],
-                        ['Bangala', 'bn', 'বাংলা'],
                         ['Bulgarian', 'bg', 'български'],
                         ['Czech', 'cs', 'čeština'],
                         ['Danish', 'da', 'Dansk'],
@@ -239,6 +238,9 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
         
         //holds number of times the currently loaded target article been edited through wikiBhasha 
         wbEditRevisionCount: null,
+
+        noWikiAPIcall:null,
+        noWikiAPIcallback:null,
 
 // Below lines are automatically generated code. DO NOT CHANGE MANUALLY.
 //Don not delete below comment as it needed by the HTML Engine to insert HTML code from HTML files.
