@@ -100,6 +100,15 @@
 
 - (void)uploadFailed:(NSString *)error {
     NSLog(@"%@", error);
+    
+    UIAlertView *alert =
+    [[UIAlertView alloc] initWithTitle: NSLocalizedString( @"Upload failed", @"Title for upload failed alert" )
+                                                        message: error
+                                                        delegate: self
+                                     cancelButtonTitle: NSLocalizedString( @"OK", @"" )
+                                     otherButtonTitles: nil];
+    [alert show];
+    [alert release];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
