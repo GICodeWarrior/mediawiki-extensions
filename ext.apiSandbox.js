@@ -103,7 +103,7 @@ $( document ).ready( function() {
 		element.html(
 			mw.html.element( 'img', 
 				{ src: mw.config.get( 'stylepath' ) + '/common/images/spinner.gif', alt: '' } )
-			+ mw.msg( 'apisb-loading' ) );
+			+ mw.html.escape( mw.msg( 'apisb-loading' ) ) );
 	}
 
 	function showLoadError( element, message ) {
