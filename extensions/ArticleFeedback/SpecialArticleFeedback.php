@@ -101,7 +101,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			foreach ( $page['ratings'] as $id => $value ) {
 				$row['rating-' . $id] = $value;
 			}
-			$row['average'] = $page['average'];
+			$row['average articleFeedback-table-cell-score-' . round( $page['average'] )] = $page['average'];
 			$rows[] = $row;
 		}
 		$this->renderTable(
