@@ -730,6 +730,13 @@ $messages['mn'] = array(
 	'am-username' => 'хэрэглэгчийн нэр',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'am-username' => 'nama pengguna',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
