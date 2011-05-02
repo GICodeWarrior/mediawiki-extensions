@@ -86,7 +86,7 @@ $( document ).ready( function() {
 				output.html( data );
 			},
 			error: function( jqXHR, textStatus, errorThrown ) {
-				output.text( 'FAIL' );
+				showLoadError( output, 'apisb-request-error' );
 			}
 		};
 		$.ajax( data );
@@ -100,7 +100,10 @@ $( document ).ready( function() {
 	}
 
 	function showLoading( element ) {
-		element.html( mw.msg( 'apisb-loading' ) ); // @todo:
+		element.html(
+			mw.html.element( 'img', 
+				{ src: mw.config.get( 'stylepath' ) + '/common/images/spinner.gif', alt: '' } )
+			+ mw.msg( 'apisb-loading' ) );
 	}
 
 	function showLoadError( element, message ) {

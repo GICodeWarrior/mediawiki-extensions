@@ -17,6 +17,7 @@ $messages['en'] = array(
 	'apisb-select-value'      => 'Select value',
 	'apisb-loading'           => 'Loading...',
 	'apisb-load-error'        => 'Error loading API description',
+	'apisb-request-error'     => 'Error performing API request',
 	'apisb-namespaces-error'  => 'Error loading namespaces',
 	'apisb-ns-main'           => '(Main)',
 	'apisb-submit'            => 'Make request',
