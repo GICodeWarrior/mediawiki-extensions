@@ -178,6 +178,7 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_xml_output' => 'Salida XML',
 	'expand_templates_ok' => 'Aceutar',
 	'expand_templates_remove_comments' => 'Eliminar comentarios',
+	'expand_templates_remove_nowiki' => 'Quitar les etiquetes <nowiki> nos resultaos',
 	'expand_templates_generate_xml' => "Amosar l'árbole d'análisis sintáuticu XML",
 	'expand_templates_preview' => 'Entever',
 );
