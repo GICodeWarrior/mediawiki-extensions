@@ -84,7 +84,7 @@ class DataReporting(object):
                 if kwargs[key] == 'campaign_interval':
                     self._data_loader_ = DL.CampaignIntervalReportingLoader()
         
-        print self._data_loader_.__str__
+        # print self._data_loader_.__str__
         
     """
 
@@ -1157,7 +1157,7 @@ class IntervalReporting(DataReporting):
     """        
     def run(self, start_time, end_time, interval, query_type, metric_name, campaign, labels):
         
-        print '\nGenerating ' + query_type +', start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
+        # print '\nGenerating ' + query_type +', start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
         
         """ Execute the query that generates interval reporting data """
         return_val = self._data_loader_.run_query(start_time, end_time, interval, query_type, metric_name, campaign)
@@ -1165,7 +1165,6 @@ class IntervalReporting(DataReporting):
         times = return_val[1]
         
         """ Select only the specified item keys """
-        print counts.keys()
         if len(self._item_keys_) > 0:
             counts = self.select_metric_keys(counts)
             times = self.select_metric_keys(times)
@@ -1248,7 +1247,7 @@ class ConfidenceReporting(DataReporting):
                 if kwargs[key] == 't_test':
                     self._hypothesis_test_ = HT.TTest()
         
-        print self._hypothesis_test_.__str__
+        # print self._hypothesis_test_.__str__
         
         self._data_loader_ = DL.HypothesisTestLoader()
         DataReporting.__init__(self, **kwargs)
@@ -1454,4 +1453,66 @@ class ConfidenceReporting(DataReporting):
         self.print_metrics(fname, title, means_1, means_2, std_devs_1, std_devs_2, times_indices, labels, test_call)
         
         return
+
+
+
+
+class CampaignReporting(DataReporting):      
+    
+    """
+
+        Constructor for confidence reporting class
         
+        INPUT:
+    
+        
+        
+        
+    """
+    def __init__(self, **kwargs):
+        
+        self._data_loader_ = DL.CampaignReportingLoader()
+        DataReporting.__init__(self, **kwargs)
+        
+        
+        
+        
+        
+    """
+        Describes how to run a report !! MODIFY !!
+    """    
+    def usage(self): 
+        
+        print ''
+        
+        return
+    
+    """ 
+        Print in Tabular form the means and standard deviation of each group over each 
+        interval
+        
+        INPUT:
+                        
+        RETURN: 
+        
+    """
+    def print_metrics(self):
+        
+        return
+    
+    
+    """ 
+        Executes the test reporting
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """
+    def run(self, query_type, params):  
+        
+        data = self._data_loader_.run_query(start_time, end_time, interval, query_type, metric_name, campaign)
+        
+        return 
+        
+    
