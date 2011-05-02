@@ -1120,6 +1120,14 @@ $messages['as'] = array(
 	'mv_tool_search' => 'সন্ধান কৰক',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'mv_search_categories' => 'Kateqoriyalar',
+	'mv_search_and' => 'və',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -6881,6 +6889,7 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
  * @author Aurora
  */
 $messages['ms'] = array(
+	'mv_remove_reason' => 'Sebab penghapusan:',
 	'mv_upload_file' => 'Muat naik fail',
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
 	'mv_search_date_range' => 'Julat tarikh',
