@@ -27,6 +27,13 @@ $messages['ar'] = array(
 	'autoincrement-desc' => 'خطاف متغير يضيف المتغير الزائد تلقائيا <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'autoincrement-desc' => "Enllaz a variable qu'amiesta la variable d'incrementu automáticu <nowiki>{{AUTOINCREMENT}}</nowiki>",
+);
+
 /** Bashkir (Башҡортса)
  * @author Comp1089
  */
