@@ -126,6 +126,13 @@ $messages['arz'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'غير حالتى إلى غير موجود عند تسجيل الخروج',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'onlinestatus-tab' => 'Status',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
