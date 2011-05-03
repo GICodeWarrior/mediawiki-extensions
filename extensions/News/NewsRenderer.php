@@ -671,7 +671,7 @@ class NewsRenderer {
 		$uniq_prefix = "\x07NR-UNIQ";
 
 		$matches = array();
-		$text = $parser->extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+		$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
 
 		foreach( $matches as $marker => $data ) {
 			list( $element, $content, $params, $tag ) = $data;
