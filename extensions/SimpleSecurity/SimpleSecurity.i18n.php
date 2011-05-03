@@ -121,6 +121,13 @@ $messages['arc'] = array(
 	'security-type-namespace' => 'ܚܩܠܐ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'security-type-category' => 'kateqoriya',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

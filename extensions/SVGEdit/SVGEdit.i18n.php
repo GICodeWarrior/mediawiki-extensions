@@ -45,6 +45,13 @@ $messages['ar'] = array(
 	'svgedit-editor-close' => 'ألغِ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'svgedit-editor-close' => 'Ləğv et',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

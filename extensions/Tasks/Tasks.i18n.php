@@ -341,6 +341,16 @@ $messages['arz'] = array(
 	'tasks-pref-showtaskcomments' => 'ضمن صفحة تعليقات المهمة.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'tasks_form_comment' => 'Şərh',
+	'tasks_delete' => 'Sil',
+	'tasks_table_header_page' => 'Səhifə',
+	'tasks_search_status' => 'Status',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

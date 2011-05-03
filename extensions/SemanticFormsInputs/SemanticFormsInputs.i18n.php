@@ -65,6 +65,13 @@ $messages['arc'] = array(
 	'semanticformsinputs-today' => 'ܝܘܡܢܐ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'semanticformsinputs-today' => 'Bu gün',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

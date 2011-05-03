@@ -494,13 +494,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author AVRS
  * @author Maximillion Pegasus
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'vector' => 'Plibonigado de grafika interfaco por Vector',
 	'vector-desc' => 'Plibonigas la elementojn de la uzula interfaco de la Vector-etoso.',
-	'vector-collapsiblenav-preference' => 'Ŝalti kaŝebladon de aĵoj en la dekstra navigmenuon kun etoso Vector',
+	'vector-collapsiblenav-preference' => 'Ŝalti kaŝebladon de aĵoj en la dekstra navigmenuo kun etoso Vector',
 	'vector-collapsiblenav-more' => 'Pli lingvoj',
 	'vector-editwarning-warning' => 'Forlasante ĉi tiun paĝon kaŭzos al vi perdi iun ajn ŝanĝojn kiujn vi faris.
 Se vi ensalutas, vi povas malŝalti ĉi tiun averton en la sekcio "Grandeco de redakta tekstujo" de viaj preferoj.',
@@ -626,6 +627,16 @@ Se vos éte branchiê, vos pouede enlevar ceti avèrtissement dens la sèccion �
 	'vector-editwarning-preference' => 'M’avèrtir quand quito una pâge de changement sen sôvar los changements',
 	'vector-simplesearch-search' => 'Rechèrchiér',
 	'vector-simplesearch-containing' => 'que contint...',
+);
+
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'vector-collapsiblenav-more' => 'Altris lenghis',
+	'vector-editwarning-preference' => 'Visimi cuant che o stoi par lassâ une pagjine dulà che a son cambiaments no salvâts',
+	'vector-simplesearch-search' => 'Ricercje',
+	'vector-simplesearch-containing' => 'che al à dentri...',
 );
 
 /** Traditional Gan script (‪贛語(繁體)‬)

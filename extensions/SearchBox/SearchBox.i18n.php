@@ -310,6 +310,15 @@ $messages['frp'] = array(
 	'searchbox-namespaces' => 'Èspâços de noms :',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'searchbox-search' => 'Ricercje',
+	'searchbox-go' => 'Va',
+	'searchbox-namespaces' => 'Spazis dai nons:',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */

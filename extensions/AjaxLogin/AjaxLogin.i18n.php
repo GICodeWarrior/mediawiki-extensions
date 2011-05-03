@@ -935,6 +935,7 @@ Sprawdź czy poprawnie napisałeś.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -948,7 +949,7 @@ It peule perdi toe modìfiche a sta pàgina-sì s'it lasse sta pàgina-sì or.",
 Ij nòm utent a fan cas a minùscol/maiùscol.
 Contròla tò scrit.',
 	'al-createblocked' => "Toa adrëssa IP a l'é blocà për creé ëd cont.",
-	'al-throttled' => "It l'has avù tròpi tentativ recent ëd ciav. Për piasì speta $1 {{PLURAL:$1|second|second}} prima ëd torna prové.",
+	'al-throttled' => "A l'ha fàit tròpi tentativ recent ëd buté soa ciav. Për piasì, ch'a speta $1 {{PLURAL:$1|second|second}} prima ëd prové torna.",
 );
 
 /** Pashto (پښتو)

@@ -133,6 +133,15 @@ $messages['arc'] = array(
 	'refhelper-search' => 'ܒܨܝ',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'refhelper-pages' => 'Səhifələr:',
+	'refhelper-year' => 'İl:',
+	'refhelper-category' => 'Kateqoriya $1:',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */

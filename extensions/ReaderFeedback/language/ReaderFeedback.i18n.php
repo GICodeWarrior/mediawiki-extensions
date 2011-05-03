@@ -224,6 +224,13 @@ $messages['ast'] = array(
 	'readerfeedback-finished' => '¡Gracies!',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'readerfeedback-submit' => 'Yolla',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */

@@ -107,6 +107,13 @@ $messages['arz'] = array(
 	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'profiling-ok' => 'OK',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

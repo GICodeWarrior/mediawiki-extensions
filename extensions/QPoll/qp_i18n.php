@@ -429,6 +429,13 @@ $messages['arz'] = array(
 	'qp_error_unique' => 'السؤال من نوع unique() لديه اقتراحات أكثر من الأجوبه المحتمله المعرفة: مستحيل الإكمال',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'qp_users_link' => 'İstifadəçilər',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */

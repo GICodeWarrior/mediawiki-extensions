@@ -132,6 +132,13 @@ $messages['arz'] = array(
 	'slippymap_resetview' => 'إعادة ضبط الرؤية',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'slippymap_error' => '$1 xəta: $2',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

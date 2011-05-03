@@ -2047,11 +2047,14 @@ $messages['ja'] = array(
 	'articlefeedback-form-panel-title' => 'このページを評価',
 	'articlefeedback-form-panel-instructions' => 'このページの評価を算出していますので、少しお待ちください。',
 	'articlefeedback-form-panel-clear' => 'この評価を除去する',
-	'articlefeedback-form-panel-expertise' => 'この話題について、高度な知識を持っている',
+	'articlefeedback-form-panel-expertise' => 'この話題について、高度な知識を持っている（自由選択）',
 	'articlefeedback-form-panel-expertise-studies' => '関連する大学の学位を持っている',
 	'articlefeedback-form-panel-expertise-profession' => '自分の職業の一部である',
 	'articlefeedback-form-panel-expertise-hobby' => '個人的に深い情熱を注いでいる',
 	'articlefeedback-form-panel-expertise-other' => '自分の知識源はこの中にない',
+	'articlefeedback-form-panel-helpimprove' => 'ウィキペディアを改善するための電子メールを受信する（自由選択）',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'プライバシー・ポリシー',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:プライバシー・ポリシー',
 	'articlefeedback-form-panel-submit' => '評価を送信',
 	'articlefeedback-form-panel-success' => '保存に成功',
 	'articlefeedback-form-panel-expiry-title' => 'あなたの評価の有効期限が切れました',
@@ -2083,6 +2086,9 @@ $messages['ja'] = array(
 	'articlefeedback-survey-message-success' => 'アンケートに記入していただきありがとうございます。',
 	'articlefeedback-survey-message-error' => 'エラーが発生しました。
 後でもう一度試してください。',
+	'articleFeedback-table-caption-dailyhighsandlows' => '今日の最高値と最低値',
+	'articleFeedback-table-heading-page' => 'ページ',
+	'articleFeedback-table-heading-average' => '平均',
 );
 
 /** Georgian (ქართული)
@@ -2784,6 +2790,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
+ * @author Sjurhamre
  */
 $messages['no'] = array(
 	'articlefeedback' => 'Artikkelvurdering',
@@ -2847,8 +2854,33 @@ $messages['no'] = array(
 	'articlefeedback-survey-message-success' => 'Takk for at du fylte ut undersøkelsen.',
 	'articlefeedback-survey-message-error' => 'En feil har oppstått.
 Prøv igjen senere.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Dagens oppturer og nedturer',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Mest endret denne uken',
+	'articleFeedback-table-caption-recentlows' => 'Ukens nedturer',
 	'articleFeedback-table-heading-page' => 'Side',
 	'articleFeedback-table-heading-average' => 'Gjennomsnitt',
+	'articlefeedback-emailcapture-response-body' => 'Hei!
+
+Takk for din interesse i å hjelpe oss med å forbedre {{SITENAME}}. Vennligst bekreft e-posten din ved å klikke på lenken under:
+
+$1
+
+Du kan også besøke:
+
+$2
+
+Og angi følgende bekreftelseskode:
+
+$3
+
+Vi tar snart kontakt for å forklare hvordan du kan forbedre {{SITENAME}}.
+
+Om du ikke har bedt om denne e-posten, vennligst ignorer den. Den blir i så fall den siste du får fra oss.
+
+
+Takk skal du ha og lykke til!
+
+Hilsen {{SITENAME}}-teamet',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -3991,9 +4023,13 @@ $messages['uk'] = array(
 	'articlefeedback-survey-title' => 'Будь ласка, дайте відповідь на кілька питань',
 	'articlefeedback-survey-thanks' => 'Дякуємо за заповнення опитування.',
 	'articlefeedback-error' => 'Сталася помилка. Будь ласка, повторіть спробу пізніше.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Політика конфіденційності',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Політика конфіденційності',
 	'articlefeedback-report-switch-label' => 'Показати оцінки сторінки',
 	'articlefeedback-pitch-or' => 'або',
 	'articlefeedback-pitch-join-accept' => 'Створити обліковий запис',
+	'articlefeedback-pitch-edit-accept' => 'Редагувати цю сторінку',
+	'articleFeedback-table-heading-page' => 'Сторінка',
 );
 
 /** Vèneto (Vèneto)

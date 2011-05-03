@@ -154,6 +154,14 @@ $messages['ast'] = array(
 	'player-goto-file' => 'ficheru',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'player-goto-page' => 'Səhifə',
+	'player-goto-file' => 'fayl',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
