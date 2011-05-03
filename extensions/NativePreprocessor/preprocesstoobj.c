@@ -589,22 +589,18 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 		} else if ( found == closeBrace || found == closeBracket ) {
 			// lets check if there are enough characters for closing brace
 			
-			if ( parentNode->type == name_node ) {
-				/* Go to close it */
-				fakePipeFound = true;
-				continue;
-			}
 			assert( ( parentNode->type == found - 2 ) || 
 				( parentNode->parent && 
-				( ( parentNode->parent->type == found - 2 ) || ( parentNode->type == value_node && 
+				( ( parentNode->parent->type == found - 2 ) || 
+				( ( parentNode->type == value_node || parentNode->type == name_node ) &&
 					parentNode->parent->parent && ( parentNode->parent->parent->type == found - 2 ) ) ) ) );
 			
 			int maxCount;
 			if ( found == closeBracket ) {
 				maxCount = parentNode->count;
 			} else {
-				if ( parentNode->type == value_node ) {
-					/* template\part\value */
+				if ( parentNode->type == value_node || parentNode->type == name_node ) {
+					/* template\part\value or template\part\name */
 					maxCount = parentNode->parent->parent->count;
 					assert( parentNode->parent->parent->type == brace_node );
 				} else {
@@ -637,7 +633,7 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 					 matchingCount = count;
 				 }
 			}
-
+			
 			if ( matchingCount <= 0 ) {
 				// No matching element found in callback array
 				// Output a literal closing brace and continue
@@ -646,6 +642,13 @@ char* preprocessToObj( const char* text, int text_len, int flags, HashTable* par
 				i += count;
 				continue;
 			}
+			
+			if ( parentNode->type == name_node ) {
+				/* Go to close it */
+				fakePipeFound = true;
+				continue;
+			}
+			
 			if ( parentNode->type == value_node ) {
 				printf("%c in parent %c. Closing\n", found, parentNode->type);
 				closeNode( parentNode->type );
