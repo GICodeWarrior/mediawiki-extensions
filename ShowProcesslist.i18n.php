@@ -103,6 +103,13 @@ $messages['arz'] = array(
 	'showprocesslist-info' => 'معلومات',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'showprocesslist-user' => 'İstifadəçi',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
