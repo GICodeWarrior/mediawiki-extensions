@@ -1556,6 +1556,7 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Mahitgar
  * @author V.narsikar
  * @author अभय नातू
@@ -1579,7 +1580,7 @@ $messages['mr'] = array(
 	'ct-date-range' => 'तारीख सीमा',
 	'ct-editing' => 'सध्या संपादत आहे:',
 	'ct-anon-users' => 'अनामिक उपयोगकर्ता',
-	'ct-user-contribs' => 'सदस्याची एकुण संपादने',
+	'ct-user-contribs' => 'सदस्याची एकूण संपादने',
 	'ct-user-span' => 'कालावधीतील सदस्याची संपादने',
 	'ct-and' => 'आणि',
 	'ct-update-table' => 'सारणी (टेबल) अद्ययावत करा',
