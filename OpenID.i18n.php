@@ -505,6 +505,16 @@ $messages['ast'] = array(
 	'openidlanguage' => 'Llingua',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'openidchooseusername' => 'İstifadəçi adı:',
+	'openidchoosepassword' => 'Parol:',
+	'openiddelete-button' => 'Təsdiq et',
+	'openid-urls-delete' => 'Sil',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
