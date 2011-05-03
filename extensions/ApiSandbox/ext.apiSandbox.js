@@ -6,7 +6,8 @@ jQuery( function( $ ) {
 	$content.show();	
 
 	// page elements
-	var $action = $( '#api-sandbox-action' ),
+	var $format = $( '#api-sandbox-format' ),
+	    $action = $( '#api-sandbox-action' ),
 	    $prop = $( '#api-sandbox-prop' ),
 	    $propRow = $( '#api-sandbox-prop-row' ),
 	    $help = $( '#api-sandbox-help' ),
@@ -54,7 +55,7 @@ jQuery( function( $ ) {
 		if ( $action.val() == 'query' ) {
 			url += '&prop=' + $prop.val();
 		}
-		url += '&format=json'; // @todo:
+		url += '&format=' + $format.val();
 		var params = '';
 		for ( var i = 0; i < info.parameters.length; i++ ) {
 			var param = info.parameters[i],
@@ -91,7 +92,13 @@ jQuery( function( $ ) {
 			dataType: 'text',
 			type: isset( info.mustbeposted ) ? 'POST' : 'GET',
 			success: function( data ) {
-				data = data.match( /<pre>[\s\S]*<\/pre>/ )[0];
+				var match = data.match( /<pre>[\s\S]*<\/pre>/ );
+				if ( $.isArray( match ) ) {
+					data = match[0];
+				} else {
+					// some actions don't honor user-specified format
+					data = '<pre>' + mw.html.escape( data ) + '</pre>';
+				}
 				$output.html( data );
 			},
 			error: function( jqXHR, textStatus, errorThrown ) {

@@ -54,10 +54,17 @@ class SpecialApiSandbox extends SpecialPage {
 
 		$apiMain = new ApiMain( new FauxRequest( array() ), $wgEnableWriteAPI );
 		$apiQuery = new ApiQuery( $apiMain, 'query' );
+		$formats = array_flip( array_filter( array_keys( $apiMain->getFormats() ),
+			'SpecialApiSandbox::filterFormats' ) );
 
 		$s = '<table class="api-sandbox-options">
 <tbody>
-<tr><td class="api-sandbox-label"><label for="api-sandbox-action">action=</label></td><td class="api-sandbox-value">' 
+';
+		$s .= '<tr><td class="api-sandbox-label"><label for="api-sandbox-format">format=</label></td><td class="api-sandbox-value">' 
+		. $this->getSelect( 'format', $formats, 'json' )
+		. '</td><td></td></tr>
+';
+		$s .= '<tr><td class="api-sandbox-label"><label for="api-sandbox-action">action=</label></td><td class="api-sandbox-value">' 
 		. $this->getSelect( 'action',  $apiMain->getModules() )
 		. '</td><td id="api-sandbox-help" rowspan="2"></td></tr>
 ';
@@ -79,7 +86,7 @@ class SpecialApiSandbox extends SpecialPage {
 		return $s;
 	}
 
-	private function getSelect( $name, $items ) {
+	private function getSelect( $name, $items, $default = false ) {
 		$items = array_keys( $items );
 		sort( $items );
 		$s = Html::openElement( 'select', array(
@@ -87,12 +94,18 @@ class SpecialApiSandbox extends SpecialPage {
 			'name' => $name,
 			'id' => "api-sandbox-$name" )
 		);
-		$s .= "\n\t" . Html::element( 'option', 
-			array( 'value' => '-', 'selected' => 'selected' ),
-			wfMessage( "apisb-select-$name" )->text()
-		);
+		if ( $default === false ) {
+			$s .= "\n\t" . Html::element( 'option', 
+				array( 'value' => '-', 'selected' => 'selected' ),
+				wfMessage( "apisb-select-$name" )->text()
+			);
+		}
 		foreach ( $items as $item ) {
-			$s .= "\n\t" . Html::element( 'option', array( 'value' => $item ), $item );
+			$attributes = array( 'value' => $item );
+			if ( $item === $default ) {
+				$attributes['selected'] = 'selected';
+			}
+			$s .= "\n\t" . Html::element( 'option', $attributes, $item );
 		}
 		$s .= "\n" . Html::closeElement( 'select' ) . "\n";
 		return $s;
@@ -102,5 +115,13 @@ class SpecialApiSandbox extends SpecialPage {
 	return "\n" . Html::openElement( 'fieldset', array( 'id' => "api-sandbox-$name" ) )
 		. "\n\t" . Html::rawElement( 'legend', array(), wfMessage( "apisb-$name" )->parse() )
 		. "\n";
+	}
+
+	/**
+	 * Callback that returns false if its argument (format name) ends with 'fm'
+	 * @return boolean
+	 */
+	private static function filterFormats( $value ) {
+		return !preg_match( '/fm$/', $value );
 	}
 }
