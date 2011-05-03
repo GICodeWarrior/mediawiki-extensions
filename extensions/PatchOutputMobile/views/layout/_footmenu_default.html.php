@@ -1,12 +1,12 @@
 <?php
 
-$footer_html = <<<EOD
+$footerHtml = <<<EOD
     <div id='footer'> 
       <div class='nav' id='footmenu'> 
         <div class='mwm-notice'> 
           <a href="http://en.wikipedia.org/w/mobileRedirect.php?to=">View this page on regular Wikipedia</a> 
             <div id="perm"> 
-              <a href="/disable/???">Permanently disable mobile site</a> 
+              <a href="/disable/?">Permanently disable mobile site</a> 
             </div> 
         </div> 
       </div> 

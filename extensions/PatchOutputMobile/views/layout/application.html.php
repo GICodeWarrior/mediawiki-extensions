@@ -1,5 +1,5 @@
 <?php
-$application_html = <<<EOT
+$applicationHtml = <<<EOT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'> 
   <head> 
@@ -22,12 +22,12 @@ $application_html = <<<EOT
     <script type="text/javascript" language="javascript" SRC="http://en.m.wikipedia.org/javascripts/application.js"></script> 
   </head>
   <body>
-	{$search_webkit_html}
+	{$searchWebkitHtml}
 	<div class='show' id='content_wrapper'>
-	{$donate_html}
-	{$content_html}
+	{$donateHtml}
+	{$contentHtml}
 	</div>
-	{$footer_html}
+	{$footerHtml}
   </body>
 </html>
 EOT;

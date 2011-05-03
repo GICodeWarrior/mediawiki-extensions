@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PatchOutputMobile',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname(__FILE__) . DIRECTORY_SEPARATOR;
 $wgExtensionMessagesFiles['PatchOutputMobile'] = $dir . 'PatchOutputMobile.i18n.php';
 
 $wgExtPatchOutputMobile = new ExtPatchOutputMobile();
@@ -27,28 +27,28 @@ $wgHooks['OutputPageBeforeHTML'][] = array( &$wgExtPatchOutputMobile,
 											'onOutputPageBeforeHTML' );
 
 class ExtPatchOutputMobile {
-	const VERSION = '0.2.4';
+	const VERSION = '0.2.6';
 
 	private $doc;
 	
 	public static $messages = array();
 
-	public $items_to_remove = array(
-		'#contentSub',        # redirection notice
-		'div.messagebox',     # cleanup data
-		'#siteNotice',        # site notice
-		'#siteSub',           # "From Wikipedia..."
-		'#jump-to-nav',       # jump-to-nav
-		'div.editsection',    # edit blocks
-		'div.infobox',        # Infoboxes in the article
-		'table.toc',          # table of contents
-		'#catlinks',          # category links
-		'div.stub',           # stub warnings
-		'table.metadata',     # ugly metadata
+	public $itemsToRemove = array(
+		'#contentSub',		  # redirection notice
+		'div.messagebox',	  # cleanup data
+		'#siteNotice',		  # site notice
+		'#siteSub',			  # "From Wikipedia..."
+		'#jump-to-nav',		  # jump-to-nav
+		'div.editsection',	  # edit blocks
+		'div.infobox',		  # Infoboxes in the article
+		'table.toc',		  # table of contents
+		'#catlinks',		  # category links
+		'div.stub',			  # stub warnings
+		'table.metadata',	  # ugly metadata
 		'form',
 		'div.sister-project',
 		'script',
-		'div.magnify',        # stupid magnify thing
+		'div.magnify',		  # stupid magnify thing
 		'.editsection',
 		'span.t',
 		'sup[style*="help"]',
@@ -68,9 +68,9 @@ class ExtPatchOutputMobile {
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
 		// Need to stash the results of the "wfMsg" call before the Output Buffering handler
 		// because at this point the database connection is shut down, etc.
-		ExtPatchOutputMobile::$messages['patch_output_mobile_show'] = wfMsg('patch_output_mobile_show');
-		ExtPatchOutputMobile::$messages['patch_output_mobile_hide'] = wfMsg('patch_output_mobile_hide');
-		ExtPatchOutputMobile::$messages['patch_output_mobile_back_to_top'] = wfMsg('patch_output_mobile_back_to_top');
+		ExtPatchOutputMobile::$messages['patch-output-mobile-show'] = wfMsg( 'patch-output-mobile-show' );
+		ExtPatchOutputMobile::$messages['patch-output-mobile-hide'] = wfMsg( 'patch-output-mobile-hide' );
+		ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'] = wfMsg( 'patch-output-mobile-back-to-top' );
 		
 		ob_start( array( $this, 'parse' ) );
 		return true;
@@ -78,14 +78,14 @@ class ExtPatchOutputMobile {
 
 	private function showHideCallback( $matches ) {
 		static $headings = 0;
-		$show = ExtPatchOutputMobile::$messages['patch_output_mobile_show'];
-		$hide =	ExtPatchOutputMobile::$messages['patch_output_mobile_hide'];
-		$back_to_top = ExtPatchOutputMobile::$messages['patch_output_mobile_back_to_top'];
+		$show = ExtPatchOutputMobile::$messages['patch-output-mobile-show'];
+		$hide = ExtPatchOutputMobile::$messages['patch-output-mobile-hide'];
+		$backToTop = ExtPatchOutputMobile::$messages['patch-output-mobile-back-to-top'];
 		++$headings;
 		// Back to top link
 		$base = "<div class='section_anchors' id='anchor_" . intval( $headings - 1 ) .
 			"'><a href='#section_" . intval( $headings - 1 ) .
-			"' class='back_to_top'>&uarr; {$back_to_top}</a></div>";
+			"' class='back_to_top'>&uarr; {$backToTop}</a></div>";
 		// generate the HTML we are going to inject
 		$buttons = "<button class='section_heading show' section_id='{$headings}'>{$show}</button><button class='section_heading hide' section_id='{$headings}'>{$hide}</button>";
 		$base .= "<h2 class='section_heading' id='section_{$headings}'{$matches[1]}{$buttons} <span>{$matches[2]}</span></h2><div class='content_block' id='content_{$headings}'>";
@@ -127,16 +127,16 @@ class ExtPatchOutputMobile {
 	}
 
 	private function parseItemsToRemove() {
-		$item_to_remove_records = array();
+		$itemToRemoveRecords = array();
 
-		foreach ( $this->items_to_remove as $item_to_remove ) {
+		foreach ( $this->itemsToRemove as $itemToRemove ) {
 			$type = '';
-			$raw_name = '';
-			CssDetection::detectIdCssOrTag( $item_to_remove, $type, $raw_name );
-			$item_to_remove_records[$type][] = $raw_name;
+			$rawName = '';
+			CssDetection::detectIdCssOrTag( $itemToRemove, $type, $rawName );
+			$itemToRemoveRecords[$type][] = $rawName;
 		}
 
-		return $item_to_remove_records;
+		return $itemToRemoveRecords;
 	}
 
 	public function DOMParse( $html ) {
@@ -146,12 +146,12 @@ class ExtPatchOutputMobile {
 		$this->doc->preserveWhiteSpace = false;
 		$this->doc->strictErrorChecking = false;
 
-		$item_to_remove_records = $this->parseItemsToRemove();
+		$itemToRemoveRecords = $this->parseItemsToRemove();
 
-		$title_node = $this->doc->getElementsByTagName( 'title' );
+		$titleNode = $this->doc->getElementsByTagName( 'title' );
 
-		if ( $title_node->length > 0 ) {
-			$title = $title_node->item( 0 )->nodeValue;
+		if ( $titleNode->length > 0 ) {
+			$title = $titleNode->item( 0 )->nodeValue;
 		}
 
 		// Tags
@@ -163,12 +163,12 @@ class ExtPatchOutputMobile {
 		// For example:
 
 		$domElemsToRemove = array();
-		foreach ( $item_to_remove_records['TAG'] as $tag_to_remove ) {
-			$tag_to_remove_nodes = $this->doc->getElementsByTagName( $tag_to_remove );
+		foreach ( $itemToRemoveRecords['TAG'] as $tagToRemove ) {
+			$tagToRemoveNodes = $this->doc->getElementsByTagName( $tagToRemove );
 
-			foreach( $tag_to_remove_nodes as $tag_to_remove_node ) {
-				if ( $tag_to_remove_node ) {
-					$domElemsToRemove[] = $tag_to_remove_node;
+			foreach( $tagToRemoveNodes as $tagToRemoveNode ) {
+				if ( $tagToRemoveNode ) {
+					$domElemsToRemove[] = $tagToRemoveNode;
 				}
 			}
 		}
@@ -178,55 +178,55 @@ class ExtPatchOutputMobile {
 		}
 
 		// Elements with named IDs
-		foreach ( $item_to_remove_records['ID'] as $item_to_remove ) {
-			$item_to_remove_node = $this->doc->getElementById( $item_to_remove );
-			if ( $item_to_remove_node ) {
-				$removed_item_to_remove = $item_to_remove_node->parentNode->removeChild( $item_to_remove_node );
+		foreach ( $itemToRemoveRecords['ID'] as $itemToRemove ) {
+			$itemToRemoveNode = $this->doc->getElementById( $itemToRemove );
+			if ( $itemToRemoveNode ) {
+				$removedItemToRemove = $itemToRemoveNode->parentNode->removeChild( $itemToRemoveNode );
 			}
 		}
 
 		// CSS Classes
 		$xpath = new DOMXpath( $this->doc );
-		foreach ( $item_to_remove_records['CLASS'] as $class_to_remove ) {
-			$elements = $xpath->query( '//*[@class="' . $class_to_remove . '"]' );
+		foreach ( $itemToRemoveRecords['CLASS'] as $classToRemove ) {
+			$elements = $xpath->query( '//*[@class="' . $classToRemove . '"]' );
 
 			foreach( $elements as $element ) {
-				$removed_element = $element->parentNode->removeChild( $element );
+				$removedElement = $element->parentNode->removeChild( $element );
 			}
 		}
 
 		// Tags with CSS Classes
-		foreach ( $item_to_remove_records['TAG_CLASS'] as $class_to_remove ) {
-			$parts = explode( '.', $class_to_remove );
+		foreach ( $itemToRemoveRecords['TAG_CLASS'] as $classToRemove ) {
+			$parts = explode( '.', $classToRemove );
 
 			$elements = $xpath->query(
 				'//' . $parts[0] . '[@class="' . $parts[1] . '"]'
 			);
 
 			foreach( $elements as $element ) {
-				$removed_element = $element->parentNode->removeChild( $element );
+				$removedElement = $element->parentNode->removeChild( $element );
 			}
 		}
 		
 		// Handle red links with action equal to edit
-		$redlinks = $xpath->query( '//a[@class="new"]' );
-		foreach( $redlinks as $redlink ) {
+		$redLinks = $xpath->query( '//a[@class="new"]' );
+		foreach( $redLinks as $redLink ) {
 			//PHP Bug #36795 — Inappropriate "unterminated entity reference"
-			$spannode = $this->doc->createElement( "span", str_replace( "&", "&amp;", $redlink->nodeValue ) );
+			$spanNode = $this->doc->createElement( "span", str_replace( "&", "&amp;", $redLink->nodeValue ) );
 
-			if ( $redlink->hasAttributes() ) {
-				$attributes = $redlink->attributes;
+			if ( $redLink->hasAttributes() ) {
+				$attributes = $redLink->attributes;
 				foreach ( $attributes as $i => $attribute ) {
-					$spannode->setAttribute( $attribute->name, $attribute->value );
+					$spanNode->setAttribute( $attribute->name, $attribute->value );
 				}
 			}
 
-			$redlink->parentNode->replaceChild( $spannode, $redlink );
+			$redLink->parentNode->replaceChild( $spanNode, $redLink );
 		}
 
 		$content = $this->doc->getElementById( 'content' );
 
-		$content_html = $this->doc->saveXML( $content, LIBXML_NOEMPTYTAG );
+		$contentHtml = $this->doc->saveXML( $content, LIBXML_NOEMPTYTAG );
 
 		if ( empty( $title ) ) {
 			$title = 'Wikipedia';
@@ -237,32 +237,32 @@ class ExtPatchOutputMobile {
 		require( 'views/layout/_footmenu_default.html.php' );
 		require( 'views/layout/application.html.php' );
 
-		return ( strlen( $content_html ) > 4000 ) ? $this->javascriptize( $application_html ) : $application_html; //$content_html;
+		return ( strlen( $contentHtml ) > 4000 ) ? $this->javascriptize( $applicationHtml ) : $applicationHtml;
 	}
 }
 
 class CssDetection {
 
-	public static function detectIdCssOrTag( $snippet, &$type, &$raw_name ) {
+	public static function detectIdCssOrTag( $snippet, &$type, &$rawName ) {
 		$output = '';
 
 		if ( strpos( $snippet, '.' ) === 0 ) {
 			$output = 'Class found: ';
 			$type = 'CLASS';
-			$raw_name = substr( $snippet, 1 );
+			$rawName = substr( $snippet, 1 );
 		}
 
 		if ( strpos( $snippet, '#' ) === 0 ) {
 			$output = 'ID found: ';
 			$type = 'ID';
-			$raw_name = substr( $snippet, 1 );
+			$rawName = substr( $snippet, 1 );
 		}
 
 		if ( strpos( $snippet, '.' ) !== 0 &&
 			strpos( $snippet, '.' ) !== false ) {
 			$output = 'Tag with Class found: ';
 			$type = 'TAG_CLASS';
-			$raw_name = $snippet;
+			$rawName = $snippet;
 		}
 
 		if ( strpos( $snippet, '.' ) === false &&
@@ -271,13 +271,13 @@ class CssDetection {
 			strpos( $snippet, ']' ) === false ) {
 			$output = 'Tag found: ';
 			$type = 'TAG';
-			$raw_name = $snippet;
+			$rawName = $snippet;
 		}
 
 		if ( empty( $output ) ) {
 			$output = 'Unknown HTML snippet found: ';
 			$type = 'UNKNOWN';
-			$raw_name = $snippet;
+			$rawName = $snippet;
 		}
 
 		return $output;
