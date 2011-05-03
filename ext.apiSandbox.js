@@ -49,28 +49,34 @@ jQuery( function( $ ) {
 	$prop.change( updateBasics );
 
 	$submit.click( function() {
-		var url = apiPhp + '?action=' + $action.val();
+		var url = apiPhp + '?action=' + $action.val(),
+		    info = currentInfo; // in case it changes later
 		if ( $action.val() == 'query' ) {
 			url += '&prop=' + $prop.val();
 		}
 		url += '&format=json'; // @todo:
 		var params = '';
-		for ( var i = 0; i < currentInfo.parameters.length; i++ ) {
-			var param = currentInfo.parameters[i];
-			var name = currentInfo.prefix + param.name;
-			var value = $( '#param-' + name ).val();
-			if ( param.value == ''
-				&& ( param.type != 'boolean' && param.type != 'bool' )
-				&& !isset( param.required ) )
-			{
-				value = null;
-			}
-			if ( typeof value != 'undefined' ) {
+		for ( var i = 0; i < info.parameters.length; i++ ) {
+			var param = info.parameters[i],
+			    name = info.prefix + param.name,
+			    $node = $( '#param-' + name );
+			if ( param.type == 'boolean' ) {
+				if ( $node.attr( 'checked' ) ) {
+					params += '&' + name;
+				}
+			} else {
+				var value = $node.val();
+				if ( !isset( value ) || value == '' ) {
+					continue;
+				}
+				if ( $.isArray( value ) ) {
+					value = value.join( '|' );
+				}
 				params += '&' + name + '=' + encodeURIComponent( value );
 			}
 		}
 		showLoading( $output );
-		if ( isset( currentInfo.mustbeposted ) ) {
+		if ( isset( info.mustbeposted ) ) {
 			$requestUrl.val( url );
 			$requestPost.val( params );
 			$postRow.show();
@@ -83,7 +89,7 @@ jQuery( function( $ ) {
 			url: url,
 			data: params,
 			dataType: 'text',
-			type: isset( currentInfo.mustbeposted ) ? 'POST' : 'GET',
+			type: isset( info.mustbeposted ) ? 'POST' : 'GET',
 			success: function( data ) {
 				data = data.match( /<pre>[\s\S]*<\/pre>/ )[0];
 				$output.html( data );
@@ -206,6 +212,7 @@ jQuery( function( $ ) {
 				s = '<input class="api-sandbox-input" id="param-' + name + '" value="' + value + '"/>';
 				break;
 			case 'bool':
+				param.type = 'boolean'; // normalisation for later use
 			case 'boolean':
 				s = '<input id="param-' + name + '" type="checkbox"/>';
 				break;
