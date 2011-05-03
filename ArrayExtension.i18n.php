@@ -155,10 +155,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'arrayext-desc' => "Memorisa e càlcola j'array nominà",
+	'arrayext-desc' => 'Memorisé e calcolé le tàule nominà',
 );
 
 /** Portuguese (Português)
