@@ -61,7 +61,7 @@ jQuery( function( $ ) {
 			    name = info.prefix + param.name,
 			    $node = $( '#param-' + name );
 			if ( param.type == 'boolean' ) {
-				if ( $node.attr( 'checked' ) ) {
+				if ( $node.is( ':checked' ) ) {
 					params += '&' + name;
 				}
 			} else {
