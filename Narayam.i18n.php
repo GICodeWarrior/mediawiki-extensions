@@ -642,6 +642,13 @@ $messages['nl'] = array(
 	'narayam-bn-nkb' => 'Bengaals NKB',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Sjurhamre
+ */
+$messages['no'] = array(
+	'narayam-desc' => 'Gjør det mulgi å lage egendefinerte inndatametorer for inndatafelt',
+);
+
 /** Oriya (ଓଡ଼ିଆ)
  * @author Psubhashish
  */
