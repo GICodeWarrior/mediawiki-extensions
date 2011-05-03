@@ -439,6 +439,17 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'sign-viewfield-ip' => 'IP ünvanı',
+	'sign-viewfield-email' => 'E-poçt',
+	'sign-signatures' => 'İmza',
+	'sign-viewfield-reviewcomment' => 'Şərh',
+	'sign-review-comment' => 'Şərh',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

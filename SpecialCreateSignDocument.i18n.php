@@ -212,6 +212,17 @@ $messages['arz'] = array(
 هذا لا يمكن عمله مرة ثانية.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'createsigndoc-pagename' => 'Səhifə:',
+	'createsigndoc-email' => 'E-poçt ünvanı:',
+	'createsigndoc-address' => 'Ev ünvanı:',
+	'createsigndoc-bday' => 'Doğum tarixi:',
+	'createsigndoc-error-generic' => 'Xəta: $1',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
