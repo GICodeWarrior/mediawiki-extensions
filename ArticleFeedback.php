@@ -28,6 +28,10 @@ $wgArticleFeedbackRatings = array( 1, 2, 3, 4 );
 // Extension is "disabled" if this field is an empty array (as per default configuration)
 $wgArticleFeedbackCategories = array();
 
+// Only load the module / enable the tool in these namespaces
+// Default to $wgContentNamespaces (defaults to array( NS_MAIN ) ).
+$wgArticleFeedbackNamespaces = $wgContentNamespaces;
+
 // Articles not categorized as on of the values in $wgArticleFeedbackCategories can still have the
 // tool psudo-randomly activated by applying the following odds to a lottery based on $wgArticleId.
 // The value can be a floating point number (percentage) in range of 0 - 100. Tenths of a percent

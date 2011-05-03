@@ -5,7 +5,7 @@
 jQuery( function( $ ) {
 	if (
 		// Main namespace articles
-		mw.config.get( 'wgNamespaceNumber' ) === 0
+		$.inArray( mw.config.get( 'wgNamespaceNumber' ), mw.config.get( 'wgArticleFeedbackNamespaces', [] ) ) > -1
 		// Existing pages
 		&& mw.config.get( 'wgArticleId' ) > 0
 		// View pages
