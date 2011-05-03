@@ -218,11 +218,13 @@ class ArticleFeedbackHooks {
 		global $wgArticleFeedbackCategories,
 			$wgArticleFeedbackLotteryOdds,
 			$wgArticleFeedbackTracking,
-			$wgArticleFeedbackOptions;
+			$wgArticleFeedbackOptions,
+			$wgArticleFeedbackNamespaces;
 		$vars['wgArticleFeedbackCategories'] = $wgArticleFeedbackCategories;
 		$vars['wgArticleFeedbackLotteryOdds'] = $wgArticleFeedbackLotteryOdds;
 		$vars['wgArticleFeedbackTracking'] = $wgArticleFeedbackTracking;
 		$vars['wgArticleFeedbackOptions'] = $wgArticleFeedbackOptions;
+		$vars['wgArticleFeedbackNamespaces'] = $wgArticleFeedbackNamespaces;
 		return true;
 	}
 }
