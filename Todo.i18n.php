@@ -196,6 +196,14 @@ $4',
 	'todo-form-submit' => 'تنفيذ الاستعلام',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'todo-new-queue' => 'yeni',
+	'todo-list-cancel' => 'Ləğv et',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
