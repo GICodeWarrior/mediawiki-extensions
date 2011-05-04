@@ -2445,7 +2445,7 @@ $messages['nl'] = array(
 	'math_IllegalDelimiter' => 'Ongeldig scheidingsteken na "$1"',
 	'math_IllegalFinalBackslash' => 'Ongeldige backslach "\\" aan het einde van de invoer',
 	'math_IllegalNestedFontEncodings' => "Commando's voor de codering van lettertypen kunnen niet genest worden",
-	'math_IllegalRedefinition' => 'Het commando "$1" werd reeds gedefinieerd; u kunt het niet herdefiniëren',
+	'math_IllegalRedefinition' => 'Het commando "$1" is al gedefinieerd; u kunt het niet herdefiniëren',
 	'math_InvalidColour' => 'De kleur "$1" is ongeldig',
 	'math_InvalidUtf8Input' => 'De invoertekst was geen geldig UTF-8',
 	'math_LatexFontNotSpecified' => 'Er werd geen LaTeX lettertype opgegeven voor "$1"',
@@ -2479,6 +2479,14 @@ $messages['nl'] = array(
 	'math_UnrecognisedCommand' => 'Commando "$1" niet herkend',
 	'math_WrongFontEncoding' => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2"',
 	'math_WrongFontEncodingWithHint' => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2". Probeer het commando "$3{…}" te gebruiken.',
+);
+
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'math_IllegalCommandInTextModeWithHint' => 'Het commando "$1" is ongeldig in tekstmodus. Wellicht wilde je "$2" gebruiken?',
+	'math_IllegalRedefinition' => 'Het commando "$1" is al gedefinieerd; je kunt het niet herdefiniëren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
