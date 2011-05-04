@@ -341,9 +341,11 @@ class SpecialArticleFeedback extends SpecialPage {
 	/* Protected Static Methods */
 
 	protected function formatNumber( $number ) {
-		global $wgLang;
-		
-		return $wgLang->formatNum( round( $number, 2 ) );
+		//global $wgLang;
+		//return $wgLang->formatNum( round( $number, 2 ) );
+
+		// This may not be locale aware, but it's what we actually want (2 decimals and leading 0s)
+		return number_format( $number, 2 );
 	}
 
 	protected function getCategories() {
