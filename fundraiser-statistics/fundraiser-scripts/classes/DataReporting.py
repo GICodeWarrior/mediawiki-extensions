@@ -17,7 +17,7 @@ __date__ = "December 16th, 2010"
 
 
 import sys
-sys.path.append('../')
+# sys.path.append('../')
 
 import matplotlib
 import datetime
@@ -26,11 +26,11 @@ import pylab
 import HTML
 import math
 
-import QueryData as QD
-import miner_help as mh
-import TimestampProcessor as TP
-import DataLoader as DL
-import HypothesisTest as HT
+import Fundraiser_Tools.classes.QueryData as QD
+import Fundraiser_Tools.miner_help as mh
+import Fundraiser_Tools.classes.TimestampProcessor as TP
+import Fundraiser_Tools.classes.DataLoader as DL
+import Fundraiser_Tools.classes.HypothesisTest as HT
 
 matplotlib.use('Agg')
 
@@ -51,6 +51,10 @@ matplotlib.use('Agg')
 
 """
 class DataReporting(object):    
+    
+    """ CLASS MEMBERS: Store the results of a query"""
+    _counts_ = None
+    _times_ = None
     
     _font_size_ = 24
     _fig_width_pt_ = 246.0                  # Get this from LaTeX using \showthe\columnwidth
@@ -545,6 +549,7 @@ class TotalAmountsReporting(DataReporting):
 
 class BannerLPReporting(DataReporting):
     
+    
     """
          <description>
         
@@ -553,109 +558,19 @@ class BannerLPReporting(DataReporting):
         RETURN:
         
     """        
-    def __init__(self, *args):
-        
-        if len(args) == 2:
-            self.campaign = args[0]
-            self.start_time = args[1]
-        else:
-            self.campaign = None
-            self.start_time = None
-    """
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """            
-    def run_query(self,start_time, end_time, campaign, query_name, metric_name):
-        
-        self.init_db()
-
-        metric_lists = mh.AutoVivification()
-        time_lists = mh.AutoVivification()
-        # table_data = []        # store the results in a table for reporting
-        
-        # Load the SQL File & Format
-        filename = self._sql_path_ + query_name + '.sql'
-        sql_stmnt = mh.read_sql(filename)
-        
-        query_name  = 'report_bannerLP_metrics'  # rename query to work with query store
-        sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign])
-        
-        key_index = QD.get_banner_index(query_name)
-        time_index = QD.get_time_index(query_name)
-        metric_index = QD.get_metric_index(query_name, metric_name)
-        
-        # Composes the data for each banner
-        try:
-            err_msg = sql_stmnt
-            self.cur.execute(sql_stmnt)
+    def __init__(self, **kwargs):
             
-            results = self.cur.fetchall()
-            
-            # Compile Table Data
-            # cpRow = self.listify(row)
-            # table_data.append(cpRow)
-            
-            for row in results:
-
-                key_name = row[key_index]
+        self._data_loader_ = DL.BannerLPReportingLoader()
+        DataReporting.__init__(self, **kwargs)
+   
+#        for key in kwargs:
+#            
+#            if key == 'font_size':
+#                self._font_size_ = kwargs[key]
+#            elif key == 'fig_width_pt':
+#                self._fig_width_pt_ = kwargs[key]
                 
-                try:
-                    metric_lists[key_name].append(row[metric_index])
-                    time_lists[key_name].append(row[time_index])
-                except:
-                    metric_lists[key_name] = list()
-                    time_lists[key_name] = list()
-
-                    metric_lists[key_name].append(row[metric_index])
-                    time_lists[key_name].append(row[time_index])
-
-        except:
-            self.db.rollback()
-            sys.exit("Database Interface Exception:\n" + err_msg)
-        
-        """ Convert Times to Integers """
-        # Find the earliest date
-        max_i = 0
-        
-        for key in time_lists.keys():
-            for date_str in time_lists[key]:
-                day_int = int(date_str[8:10])
-                hr_int = int(date_str[11:13])
-                date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
-                if date_int > max_i:
-                    max_i = date_int
-                    max_day = day_int
-                    max_hr = hr_int 
-        
-        
-        # Normalize dates
-        time_norm = mh.AutoVivification()
-        for key in time_lists.keys():
-            for date_str in time_lists[key]:
-                day = int(date_str[8:10])
-                hr = int(date_str[11:13])
-                # date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
-                elem = (day - max_day) * 24 + (hr - max_hr)
-                try: 
-                    time_norm[key].append(elem)
-                except:
-                    time_norm[key] = list()
-                    time_norm[key].append(elem)
-                    
-        # smooth out the values
-        #window_length = 20
-        #for banner in metric_lists.keys():
-        #    metric_lists[banner] = smooth(metric_lists[banner], window_length)
-
-        self.close_db()
-        
-        # return [metric_lists, time_norm, table_data]
-        return [metric_lists, time_norm]
-        
+                
     """
          <description>
         
@@ -699,24 +614,11 @@ class BannerLPReporting(DataReporting):
         type = 'LP' || 'BAN' || 'BAN-TEST' || 'LP-TEST'
         
     """
-    def run(self, type, metric_name):
+    def run(self, test_type, start_time, end_time, metric_name):
+                
+        # print '\nGenerating ' + test_type +' for ' + str(hours_back) + ' hours back. The start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
         
-        # Current date & time
-        now = datetime.datetime.now()
-        #UTC = 8
-        #delta = datetime.timedelta(hours=UTC)
-        #now = now + delta
-        
-        """ ESTABLISH THE START TIME TO PULL ANALYTICS - TS format=1, TS resolution=1 """
-        hours_back = 24
-        times = self.gen_date_strings(now, hours_back,1,1)
-        
-        start_time = times[0]
-        end_time = times[1]
-        
-        print '\nGenerating ' + type +' for ' + str(hours_back) + ' hours back. The start and end times are: ' + start_time + ' - ' + end_time +' ... \n'
-        
-        if type == 'LP':
+        if test_type == 'LP':
             query_name = 'report_LP_metrics'
             
             # Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
@@ -727,7 +629,7 @@ class BannerLPReporting(DataReporting):
                 
             title = metric_name + ': ' + start_time + ' -- ' + end_time 
             fname = query_name + '_' + metric_name + '.png'            
-        elif type == 'BAN':
+        elif test_type == 'BAN':
             query_name = 'report_banner_metrics'
             
             # Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
@@ -738,8 +640,8 @@ class BannerLPReporting(DataReporting):
                 
             title = metric_name + ': ' + start_time + ' -- ' + end_time 
             fname = query_name + '_' + metric_name + '.png'
-        elif type == 'BAN-TEST':
-            r = self.get_latest_campaign()
+        elif test_type == 'BAN-TEST':
+            r = _data_loader_.get_latest_campaign()
             query_name = 'report_banner_metrics'
             
             # Set the campaign type - either a regular expression corresponding to a particular campaign or specific campaign
@@ -752,7 +654,7 @@ class BannerLPReporting(DataReporting):
                 
             title = metric_name + ': ' + start_time + ' -- ' + end_time + ', CAMPAIGN =' + campaign 
             fname = query_name + '_' + metric_name + '_latest' + '.png'
-        elif type == 'LP-TEST':
+        elif test_type == 'LP-TEST':
             r = self.get_latest_campaign()
             query_name = 'report_LP_metrics'
             
@@ -769,9 +671,14 @@ class BannerLPReporting(DataReporting):
         else:
             sys.exit("Invalid type name - must be 'LP' or 'BAN'.")    
         
-        return_val = self.run_query(start_time, end_time, campaign, query_name, metric_name)
-        metrics = return_val[0]
-        times = return_val[1]
+        return_val = _data_loader_.run_query(start_time, end_time, campaign, query_name, metric_name)
+        self._counts_ = return_val[0]
+        self._times_ = return_val[1]
+        
+        """ Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
+        for key in self._times_.keys():
+            self._times_[key] = TP.normalize_timestamps(self._times_[key], False, 2)
+            self._times_[key], self._counts_[key] = TP.normalize_intervals(self._times_[key], self._counts_[key], interval)
         
         # title = metric_name + ': ' + start_time + ' -- ' + end_time
         xlabel = 'Time - Hours'
@@ -786,92 +693,13 @@ class BannerLPReporting(DataReporting):
         
         ranges = [min_time, 0]
         
-        self.gen_plot(metrics, times, title, xlabel, ylabel, ranges, subplot_index, fname)
+        self.gen_plot(self._counts_, self._times_, title, xlabel, ylabel, ranges, subplot_index, fname)
         
         return [metrics, times]
     
-    """ !! MOVE INTO DATA LOADER!!
-    
-         <description>
-        
-        INPUT:
-                        
-        RETURN:
-        
-    """    
-    def get_latest_campaign(self):
-        
-        query_name = 'report_latest_campaign'
-        self.init_db()
-        
-        """ Look at campaigns over the past 24 hours - TS format=1, TS resolution=1 """
-        now = datetime.datetime.now()
-        hours_back = 72
-        times = self.gen_date_strings(now, hours_back,1,1)
-        
-        sql_stmnt = mh.read_sql('./sql/report_latest_campaign.sql')
-        sql_stmnt = QD.format_query(query_name, sql_stmnt, [times[0]])
-        
-        campaign_index = QD.get_campaign_index(query_name)
-        time_index = QD.get_time_index(query_name)
-        
-        try:
-            err_msg = sql_stmnt
-            self.cur.execute(sql_stmnt)
-            
-            row = self.cur.fetchone()
-        except:
-            self.db.rollback()
-            sys.exit("Database Interface Exception:\n" + err_msg)
-            
-        campaign = row[campaign_index]
-        timestamp = row[time_index] 
-            
-        self.close_db()
-        
-        return [campaign, timestamp]
 
-    """ !! SHOULD BE MOVED TO TIMEPROCESSOR !!
-        Takes as input and converts it to a set of hours counting back from 0
-        <description>
-        
-        INPUT:
-            time_lists         - a dictionary of timestamp lists
-        time_norm     - a dictionary of normalized times
-                        
-        RETURN:
-        
-    """
-    def normalize_timestamps(self, time_lists):
-        # Find the earliest date
-        max_i = 0
-        
-        for key in time_lists.keys():
-            for date_str in time_lists[key]:
-                day_int = int(date_str[8:10])
-                hr_int = int(date_str[11:13])
-                date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
-                if date_int > max_i:
-                    max_i = date_int
-                    max_day = day_int
-                    max_hr = hr_int 
-        
-        
-        # Normalize dates
-        time_norm = mh.AutoVivification()
-        for key in time_lists.keys():
-            for date_str in time_lists[key]:
-                day = int(date_str[8:10])
-                hr = int(date_str[11:13])
-                # date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
-                elem = (day - max_day) * 24 + (hr - max_hr)
-                try: 
-                    time_norm[key].append(elem)
-                except:
-                    time_norm[key] = list()
-                    time_norm[key].append(elem)
-        
-        return time_norm
+
+
 
 """
 
@@ -1161,21 +989,22 @@ class IntervalReporting(DataReporting):
         
         """ Execute the query that generates interval reporting data """
         return_val = self._data_loader_.run_query(start_time, end_time, interval, query_type, metric_name, campaign)
-        counts = return_val[0]
-        times = return_val[1]
+        self._counts_ = return_val[0]
+        self._times_ = return_val[1]
         
         """ Select only the specified item keys """
         if len(self._item_keys_) > 0:
-            counts = self.select_metric_keys(counts)
-            times = self.select_metric_keys(times)
+            self._counts_ = self.select_metric_keys(self._counts_)
+            self._times_ = self.select_metric_keys(self._times_)
         
         """ Convert Times to Integers that indicate relative times AND normalize the intervals in case any are missing """
-        for key in times.keys():
-            times[key] = TP.normalize_timestamps(times[key], False, 2)
-            times[key], counts[key] = TP.normalize_intervals(times[key], counts[key], interval)
+        for key in self._times_.keys():
+            self._times_[key] = TP.normalize_timestamps(self._times_[key], False, 2)
+            self._times_[key], self._counts_[key] = TP.normalize_intervals(self._times_[key], self._counts_[key], interval)
         
         """ Normalize times """
-        min_time = min(times)
+        
+        min_time = min(self._times_)
         ranges = [min_time, 0]
         
         xlabel = 'MINUTES'
@@ -1186,17 +1015,17 @@ class IntervalReporting(DataReporting):
         title = campaign + ':  ' + metric_full_name + ' -- ' + TP.timestamp_convert_format(start_time,1,2) + ' - ' + TP.timestamp_convert_format(end_time,1,2)
         ylabel = metric_full_name
         
-        """ Determine List maximums """
+        """ Determine List maximums -- Pre-processing for plotting """
         times_max = 0
         metrics_max = 0
         
-        for key in counts.keys():
-            list_max = max(counts[key])
+        for key in self._counts_.keys():
+            list_max = max(self._counts_[key])
             if list_max > metrics_max:
                 metrics_max = list_max 
         
-        for key in times.keys():
-            list_max = max(times[key])
+        for key in self._times_.keys():
+            list_max = max(self._times_[key])
             if list_max > times_max:
                 times_max = list_max
         
@@ -1207,7 +1036,7 @@ class IntervalReporting(DataReporting):
         ranges.append(metrics_max * 1.1)
         
         """ Generate plots given data """
-        self.gen_plot(counts, times, title, xlabel, ylabel, ranges, subplot_index, fname, labels)
+        self.gen_plot(self._counts_, self._times_, title, xlabel, ylabel, ranges, subplot_index, fname, labels)
         
 
 """
@@ -1222,7 +1051,6 @@ class IntervalReporting(DataReporting):
         report_LP_confidence
 
 """
-
 class ConfidenceReporting(DataReporting):
     
     _hypothesis_test_ = None
