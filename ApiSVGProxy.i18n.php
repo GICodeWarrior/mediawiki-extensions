@@ -206,6 +206,13 @@ $messages['ig'] = array(
 	'apisvgproxy-desc' => 'Ihe íshí nke akwukwo orunotu shı (o nweriki di ebe ntakiri) akwukwo orunotu nke ebe ihe di ga ébé di nsó',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'apisvgproxy-desc' => 'File SVG di proxy da un repository di file (forse remoto) al dominio locale',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
