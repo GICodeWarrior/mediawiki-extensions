@@ -871,6 +871,18 @@ Controleer de schrijfwijze.',
 	'al-throttled' => 'U hebt teveel niet-geslaagde aanmeldpogingen uitgevoerd in een korte tijd. Wacht $1 {{PLURAL:$1|seconde|seconden}} voordat u het opnieuw probeert.',
 );
 
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'ajaxLogin1' => 'Voer een nieuw wachtwoord in om het aanmelden te voltooien.
+Door deze handeling wordt je weggeleid van deze pagina, en verlies je mogelijk je huidige bewerkingen.',
+	'ajaxLogin2' => 'Wil je doorgaan?
+Je verliest mogelijk je huidige bewerkingen als je deze pagina nu verlaat.',
+	'al-createblocked' => 'Vanaf je IP-adres mogen geen gebruikers aangemaakt worden.',
+	'al-throttled' => 'Je hebt teveel niet-geslaagde aanmeldpogingen uitgevoerd in een korte tijd. Wacht $1 {{PLURAL:$1|seconde|seconden}} voordat je het opnieuw probeert.',
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
