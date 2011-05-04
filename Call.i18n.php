@@ -874,6 +874,26 @@ Bij problemen kunt u gebruik maken van <b>{{#special:call}}/DebuG</b>",
 	'call-save-failed' => 'De volgende tekst is NIET opgeslagen in pagina <big>[[$1]]</big> omdat die pagina al bestaat.',
 );
 
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'call-text' => "De uitbreiding Aanroepen (Call) verwacht een wikipagina en optioneel parameters voor die pagina.
+
+Voorbeeld 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Voorbeeld 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+Voorbeeld 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
+Voorbeeld 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt>
+
+De <i>uitbreiding Aanroepen</i> roept de opgegeven pagina aan en geeft de parameters door.<br />
+Je krijgt de inhoud van de aangeroepen pagina te zien en de naam, maar deze is van het 'type' speciale pagina, dat wil zeggen dat de pagina niet bewerkt kan worden.<br />
+De inhoud die je te zien krijgt kan verschillen, afhankelijk van de parameters die u hebt meegegeven.
+
+De <i>uitbreiding Aanroepen</i> kan behulpzaam zijn bij het bouwen van interactieve applicaties met MediaWiki.
+De <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> is daar een voorbeeld van.<br />
+Bij problemen kan gebruik maken van <b>{{#special:call}}/DebuG</b>",
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
  */
