@@ -22,34 +22,30 @@
 	text-align: left;
 }
 
-.articleFeedback-table td.articleFeedback-table-column-rating-1,
-.articleFeedback-table td.articleFeedback-table-column-rating-2,
-.articleFeedback-table td.articleFeedback-table-column-rating-3,
-.articleFeedback-table td.articleFeedback-table-column-rating-4,
 .articleFeedback-table td.articleFeedback-table-column-rating,
 .articleFeedback-table td.articleFeedback-table-column-average {
 	text-align: right;
 }
 
-.articleFeedback-table-cell-score-0,
-.articleFeedback-table-cell-score-1 {
+.articleFeedback-table-column-score-0,
+.articleFeedback-table-column-score-1 {
 	background-color: #ffcccc;
 }
 
 
-.articleFeedback-table-cell-score-2,
-.articleFeedback-table-cell-bad {
+.articleFeedback-table-column-score-2,
+.articleFeedback-table-column-bad {
 	background-color: #ffcc99;
 }
 
-.articleFeedback-table-cell-score-3 {
+.articleFeedback-table-column-score-3 {
 	background-color: #ffff99;
 }
 
-.articleFeedback-table-cell-score-4,
-.articleFeedback-table-cell-good {
+.articleFeedback-table-column-score-4,
+.articleFeedback-table-column-good {
 	background-color: #99ff99;
 }
-.articleFeedback-table-cell-score-5 {
+.articleFeedback-table-column-score-5 {
 	background-color: #55ff55;
 }

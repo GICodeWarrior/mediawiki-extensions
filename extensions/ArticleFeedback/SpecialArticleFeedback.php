@@ -62,12 +62,11 @@ class SpecialArticleFeedback extends SpecialPage {
 		$table .= Html::openElement( 'tbody' );
 		foreach ( $rows as $row ) {
 			$table .= Html::openElement( 'tr' );
-			foreach ( $row as $class => $column ) {
-				$attr = is_string( $class )
-					? array( 'class' => 'articleFeedback-table-column-' . $class ) : array();
+			foreach ( $row as $column ) {
+				$attr = array();
 				if ( is_array( $column ) ) {
-					if ( isset( $column['attr'] ) ) {
-						$attr = array_merge( $attr, $column['attr'] );
+					if ( isset( $column['attr'] ) && is_array( $column['attr'] ) ) {
+						$attr = $column['attr'];
 					}
 					if ( isset( $column['text'] ) ) {
 						$table .= Html::element( 'td', $attr, $column['text'] );
@@ -103,9 +102,20 @@ class SpecialArticleFeedback extends SpecialPage {
 				$pageTitle = Title::newFromId( $page['page'] );
 				$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
 				foreach ( $page['ratings'] as $id => $value ) {
-					$row['rating-' . $id] = $value;
+					$row[] = array(
+						'text' => round( $value, 2 ),
+						'attr' => array(
+							'class' => 'articleFeedback-table-column-rating'
+						)
+					);
 				}
-				$row['average articleFeedback-table-cell-score-' . round( $page['average'] )] = $page['average'];
+				$row[] = array(
+					'text' => round( $page['average'], 2 ),
+					'attr' => array(
+						'class' => 'articleFeedback-table-column-average ' .
+							'articleFeedback-table-column-score-' . round( $page['average'] )
+					)
+				);
 				$rows[] = $row;
 			}
 		}
@@ -135,7 +145,12 @@ class SpecialArticleFeedback extends SpecialPage {
 			$pageTitle = Title::newFromText( $page['page'] );
 			$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
 			foreach ( $page['changes'] as $id => $value ) {
-				$row['rating-' . $id] = $value;
+				$row[] = array(
+					'text' => round( $value, 2 ),
+					'attr' => array(
+						'class' => 'articleFeedback-table-column-changes'
+					)
+				);
 			}
 			$rows[] = $row;
 		}
@@ -167,11 +182,11 @@ class SpecialArticleFeedback extends SpecialPage {
 				$row[] = array(
 					'attr' => in_array( $category, $page['categories'] )
 						? array(
-							'class' => 'articleFeedback-table-cell-bad',
+							'class' => 'articleFeedback-table-column-bad',
 							'data-sort-value' => 0
 						)
 						: array(
-							'class' => 'articleFeedback-table-cell-good',
+							'class' => 'articleFeedback-table-column-good',
 							'data-sort-value' => 1
 						),
 					'html' => '&nbsp;'
