@@ -270,8 +270,7 @@ class TaggedImages extends SpecialPage {
 			'';
 
 			$s .= ( $i%4 == 0 ) ? '<tr>' : '';
-            $thumb = $img->transform(array( 'width' => 120, 'height' => 120 ) , 0 );
-
+			$thumb = $img->transform(array( 'width' => 120, 'height' => 120 ) , 0 );
 			$vpad = floor( ( 150 - $thumb->height ) /2 ) - 2;
 			$s .= '<td><div class="gallerybox">' . '<div class="thumb" style="padding: ' . $vpad . 'px 0;">';
 

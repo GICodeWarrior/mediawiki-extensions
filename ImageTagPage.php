@@ -95,8 +95,7 @@ class ImageTagPage extends ImagePage {
 						# because of rounding.
 					}
 
-                    $thumbnail = $this->getFile()->transform(array( 'width' => $width ) , 0 );
-
+					$thumbnail = $this->getFile()->transform(array( 'width' => $width ) , 0 );
 					if ( $thumbnail == null ) {
 						$url = $this->getFile()->getViewURL();
 					} else {
