@@ -8,8 +8,8 @@ jQuery( function( $ ) {
 	// page elements
 	var $format = $( '#api-sandbox-format' ),
 	    $action = $( '#api-sandbox-action' ),
-	    $prop = $( '#api-sandbox-prop' ),
-	    $propRow = $( '#api-sandbox-prop-row' ),
+	    $query = $( '#api-sandbox-query' ),
+	    $queryRow = $( '#api-sandbox-query-row' ),
 	    $help = $( '#api-sandbox-help' ),
 	    $further = $( '#api-sandbox-further-inputs' ),
 	    $submit = $( '#api-sandbox-submit' ),
@@ -47,13 +47,13 @@ jQuery( function( $ ) {
 	);
 
 	$action.change( updateBasics );
-	$prop.change( updateBasics );
+	$query.change( updateBasics );
 
 	$submit.click( function() {
 		var url = apiPhp + '?action=' + $action.val(),
 		    info = currentInfo; // in case it changes later
 		if ( $action.val() == 'query' ) {
-			url += '&prop=' + $prop.val();
+			url += '&' + $query.val();
 		}
 		url += '&format=' + $format.val();
 		var params = '';
@@ -145,15 +145,16 @@ jQuery( function( $ ) {
 		$submit.removeAttr( 'disabled' );
 	}
 
-	function getQueryInfo( action, prop ) {
+	function getQueryInfo( action, query ) {
 		var isQuery = action == 'query';
-		if ( action == '-' || ( isQuery && prop == '-' ) ) {
+		if ( action == '-' || ( isQuery && query == '-' ) ) {
 			$submit.attr( 'disabled', 'disabled' );
 			return;
 		}
+		query = query.replace( /^.*=/, '' );
 		var cached;
 		if ( isQuery ) {
-			cached = propCache[prop];
+			cached = propCache[query];
 		} else {
 			cached = actionCache[action];
 		}
@@ -164,7 +165,7 @@ jQuery( function( $ ) {
 				action: 'paraminfo'
 			};
 			if (isQuery ) {
-				data.querymodules = prop;
+				data.querymodules = query;
 			} else {
 				data.modules = action;
 			}
@@ -269,16 +270,16 @@ jQuery( function( $ ) {
 	
 	function updateBasics() {
 		var a = $action.val(),
-		    p = $prop.val(),
+		    q = $query.val(),
 		    isQuery = a == 'query';
 		if ( isQuery ) {
-			$propRow.show();
+			$queryRow.show();
 		} else {
-			$propRow.hide();
+			$queryRow.hide();
 		}
 		$further.text( '' );
 		$help.text( '' );
-		getQueryInfo( a, p );
+		getQueryInfo( a, q );
 	}
 
 });

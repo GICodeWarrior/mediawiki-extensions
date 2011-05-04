@@ -1,7 +1,7 @@
 <?php
 
 class SpecialApiSandbox extends SpecialPage {
-
+	private $apiQuery;
 	/**
 	 * Constructor
 	 */
@@ -53,24 +53,32 @@ class SpecialApiSandbox extends SpecialPage {
 		global $wgEnableWriteAPI;
 
 		$apiMain = new ApiMain( new FauxRequest( array() ), $wgEnableWriteAPI );
-		$apiQuery = new ApiQuery( $apiMain, 'query' );
-		$formats = array_flip( array_filter( array_keys( $apiMain->getFormats() ),
-			'SpecialApiSandbox::filterFormats' ) );
+		$this->apiQuery = new ApiQuery( $apiMain, 'query' );
+		$formats = array_filter( array_keys( $apiMain->getFormats() ),
+			'SpecialApiSandbox::filterFormats' );
+		sort( $formats );
+		$modules = array_keys( $apiMain->getModules() );
+		sort( $modules );
+		$queryModules = array_merge(
+			$this->getQueryModules( 'prop' ),
+			$this->getQueryModules( 'list' ),
+			$this->getQueryModules( 'meta' )
+		);
 
 		$s = '<table class="api-sandbox-options">
 <tbody>
 ';
 		$s .= '<tr><td class="api-sandbox-label"><label for="api-sandbox-format">format=</label></td><td class="api-sandbox-value">' 
-		. $this->getSelect( 'format', $formats, 'json' )
-		. '</td><td></td></tr>
+			. self::getSelect( 'format', $formats, 'json' )
+			. '</td><td></td></tr>
 ';
 		$s .= '<tr><td class="api-sandbox-label"><label for="api-sandbox-action">action=</label></td><td class="api-sandbox-value">' 
-		. $this->getSelect( 'action',  $apiMain->getModules() )
-		. '</td><td id="api-sandbox-help" rowspan="2"></td></tr>
+			. self::getSelect( 'action', $modules )
+			. '</td><td id="api-sandbox-help" rowspan="2"></td></tr>
 ';
-		$s .= '<tr id="api-sandbox-prop-row" style="display: none"><td class="api-sandbox-label">'
-			. '<label for="api-sandbox-prop">prop=</label></td><td class="api-sandbox-value">'
-			. $this->getSelect( 'prop', $apiQuery->getModules() )
+		$s .= '<tr id="api-sandbox-query-row" style="display: none"><td class="api-sandbox-label">'
+			. '</td><td class="api-sandbox-value">'
+			. self::getSelect( 'query', $queryModules )
 			. '</td></tr>
 </table>
 <div id="api-sandbox-further-inputs"></div>
@@ -86,35 +94,65 @@ class SpecialApiSandbox extends SpecialPage {
 		return $s;
 	}
 
-	private function getSelect( $name, $items, $default = false ) {
-		$items = array_keys( $items );
-		sort( $items );
+	private function getQueryModules( $type ) {
+		$res = array();
+		$params = $this->apiQuery->getAllowedParams();
+		foreach ( $params[$type][ApiBase::PARAM_TYPE] as $module ) {
+			$res[] = array(
+				'value' => "$type=$module",
+				'text' => /* &nbsp; */ "\xc2\xa0\xc2\xa0\xc2\xa0$type=$module",
+			);
+		}
+		sort( $res );
+		array_unshift( $res, 
+			array(
+				'value' => '-',
+				'text' => wfMessage( "apisb-query-$type" )->parse(),
+				'attributes' => array( 'disabled' => 'disabled' )
+			)
+		);
+
+		return $res;
+	}
+
+	private static function getSelect( $name, $items, $default = false ) {
 		$s = Html::openElement( 'select', array(
 			'class' => 'api-sandbox-input',
 			'name' => $name,
 			'id' => "api-sandbox-$name" )
 		);
 		if ( $default === false ) {
-			$s .= "\n\t" . Html::element( 'option', 
-				array( 'value' => '-', 'selected' => 'selected' ),
-				wfMessage( "apisb-select-$name" )->text()
+			$s .= "\n\t" . self::option( '-', wfMessage( "apisb-select-$name" )->text(),
+				array( 'selected' => 'selected' )
 			);
 		}
 		foreach ( $items as $item ) {
-			$attributes = array( 'value' => $item );
-			if ( $item === $default ) {
+			$attributes = array();
+			if ( is_array( $item ) ) {
+				$value = $item['value'];
+				$text = $item['text'];
+				$attributes = isset( $item['attributes'] ) ? $item['attributes'] : array();
+			} else {
+				$value = $text = $item;
+			}
+			if ( $value === $default ) {
 				$attributes['selected'] = 'selected';
 			}
-			$s .= "\n\t" . Html::element( 'option', $attributes, $item );
+			$s .= "\n\t" . self::option( $value, $text, $attributes );
 		}
 		$s .= "\n" . Html::closeElement( 'select' ) . "\n";
 		return $s;
 	}
 
+	private static function option( $value, $text, $attributes = array() ) {
+		$attributes['value'] = $value;
+		return Html::element( 'option', $attributes, $text );
+	}
+
 	private function openFieldset( $name ) {
-	return "\n" . Html::openElement( 'fieldset', array( 'id' => "api-sandbox-$name" ) )
-		. "\n\t" . Html::rawElement( 'legend', array(), wfMessage( "apisb-$name" )->parse() )
-		. "\n";
+		return "\n" . Html::openElement( 'fieldset', array( 'id' => "api-sandbox-$name" ) )
+			. "\n\t" . Html::rawElement( 'legend', array(), wfMessage( "apisb-$name" )->parse() )
+			. "\n";
 	}
 
 	/**

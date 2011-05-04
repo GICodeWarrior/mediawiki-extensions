@@ -13,7 +13,7 @@ $messages['en'] = array(
 	'apisb-request-url'       => 'Request URL:',
 	'apisb-request-post'      => 'POST data:',
 	'apisb-select-action'     => 'Select action',
-	'apisb-select-prop'       => 'Select property',
+	'apisb-select-query'      => 'What to query?',
 	'apisb-select-value'      => 'Select value',
 	'apisb-loading'           => 'Loading...',
 	'apisb-load-error'        => 'Error loading API description',
@@ -21,4 +21,7 @@ $messages['en'] = array(
 	'apisb-namespaces-error'  => 'Error loading namespaces',
 	'apisb-ns-main'           => '(Main)',
 	'apisb-submit'            => 'Make request',
+	'apisb-query-prop'        => 'Properties',
+	'apisb-query-list'        => 'Lists',
+	'apisb-query-meta'        => 'Meta information',
 );
