@@ -26,6 +26,7 @@ import re        # regular expression matching
 import Fundraiser_Tools.miner_help as mh
 import Fundraiser_Tools.classes.QueryData as QD
 import Fundraiser_Tools.classes.TimestampProcessor as TP
+import Fundraiser_Tools.classes.Helper as Hlp
         
 """
 
@@ -177,8 +178,11 @@ class DataLoader(object):
         except KeyError:
             print >> sys.stderr, 'Could not find a query for type: ' + query_type  
             sys.exit(2)
-            
+
+
         
+        
+    
 class IntervalReportingLoader(DataLoader):
      
     def __init__(self):
@@ -364,10 +368,139 @@ class CampaignIntervalReportingLoader(IntervalReportingLoader):
 """
 class BannerLPReportingLoader(DataLoader):
     
-    def run_query(self):
-        return
+    def __init__(self):
+        self._query_names_['LP'] = 'report_LP_metrics'
+        self._query_names_['BAN'] = 'report_banner_metrics'
+        self._query_names_['BAN-TEST'] = 'report_banner_metrics'
+        self._query_names_['LP-TEST'] = 'report_LP_metrics'
+        
+    """
+         <description>
+        
+        INPUT:
+                        
+        RETURN:
+        
+    """ 
+    def run_query(self,start_time, end_time, campaign, query_name, metric_name):
+        
+        self.init_db()
+    
+        metric_lists = mh.AutoVivification()
+        time_lists = mh.AutoVivification()
+        # table_data = []        # store the results in a table for reporting
+        
+        # Load the SQL File & Format
+        filename = self._sql_path_ + query_name + '.sql'
+        sql_stmnt = mh.read_sql(filename)
+        
+        sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, campaign])
+        
+        key_index = QD.get_key_index(query_name)
+        time_index = QD.get_time_index(query_name)
+        metric_index = QD.get_metric_index(query_name, metric_name)
+        
+        """ Composes the data for each banner or LP """
+        try:
+            err_msg = sql_stmnt
+            self.cur.execute(sql_stmnt)
+            
+            results = self.cur.fetchall()
+            
+            for row in results:
+    
+                key_name = row[key_index]
+                
+                try:
+                    metric_lists[key_name].append(row[metric_index])
+                    time_lists[key_name].append(row[time_index])
+                except:
+                    metric_lists[key_name] = list()
+                    time_lists[key_name] = list()
+    
+                    metric_lists[key_name].append(row[metric_index])
+                    time_lists[key_name].append(row[time_index])
+    
+        except:
+            self.db.rollback()
+            sys.exit("Database Interface Exception:\n" + err_msg)
+        
+        """ Convert Times to Integers """
+        max_i = 0
+        
+        for key in time_lists.keys():
+            for date_str in time_lists[key]:
+                day_int = int(date_str[8:10])
+                hr_int = int(date_str[11:13])
+                date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
+                if date_int > max_i:
+                    max_i = date_int
+                    max_day = day_int
+                    max_hr = hr_int 
+        
+        
+        # Normalize dates
+        time_norm = mh.AutoVivification()
+        for key in time_lists.keys():
+            for date_str in time_lists[key]:
+                day = int(date_str[8:10])
+                hr = int(date_str[11:13])
+                # date_int = int(date_str[0:4]+date_str[5:7]+date_str[8:10]+date_str[11:13])
+                elem = (day - max_day) * 24 + (hr - max_hr)
+                try: 
+                    time_norm[key].append(elem)
+                except:
+                    time_norm[key] = list()
+                    time_norm[key].append(elem)
 
+    
+        self.close_db()
+        
+        return [metric_lists, time_norm]
 
+    
+    """ !! MOVE INTO DATA LOADER!!
+
+     <description>
+    
+    INPUT:
+                    
+    RETURN:
+    
+    """    
+    def get_latest_campaign(self):
+        
+        query_name = 'report_latest_campaign'
+        self.init_db()
+        
+        """ Look at campaigns over the past 24 hours - TS format=1, TS resolution=1 """
+        now = datetime.datetime.now()
+        hours_back = 72
+        times = self.gen_date_strings(now, hours_back,1,1)
+        
+        sql_stmnt = mh.read_sql('./sql/report_latest_campaign.sql')
+        sql_stmnt = QD.format_query(query_name, sql_stmnt, [times[0]])
+        
+        campaign_index = QD.get_campaign_index(query_name)
+        time_index = QD.get_time_index(query_name)
+        
+        try:
+            err_msg = sql_stmnt
+            self.cur.execute(sql_stmnt)
+            
+            row = self.cur.fetchone()
+        except:
+            self.db.rollback()
+            sys.exit("Database Interface Exception:\n" + err_msg)
+            
+        campaign = row[campaign_index]
+        timestamp = row[time_index] 
+            
+        self.close_db()
+        
+        return [campaign, timestamp]
+    
+    
     
 class HypothesisTestLoader(DataLoader):
     
@@ -471,6 +604,8 @@ class CampaignReportingLoader(DataLoader):
     def __init__(self):
         self._query_names_['totals'] = 'report_campaign_totals'
         self._query_names_['times'] = 'report_campaign_times'
+        self._query_names_['banners'] = 'report_campaign_banners'
+        self._query_names_['lps'] = 'report_campaign_lps'
         
     """
         !! MODIFY -- use python reflection !! ... maybe
@@ -484,9 +619,13 @@ class CampaignReportingLoader(DataLoader):
         
         self.init_db()
         
+        data = None
+        
         if query_type == 'totals':
             data = self.query_totals(query_type, params)
-        
+        elif query_type == 'banners' or query_type == 'lps':
+            data = self.query_artifacts(query_type, params)
+            
         self.close_db()
         
         return data
@@ -494,6 +633,8 @@ class CampaignReportingLoader(DataLoader):
     """
     
         Handle queries from  "report_campaign_totals"
+        
+        Gets metric totals for campaigns
         
     """
     def query_totals(self, query_type, params):
@@ -529,6 +670,54 @@ class CampaignReportingLoader(DataLoader):
                 data[key_name] = float(row[metric_index])
                     
          
+        except Exception as inst:
+            print type(inst)     # the exception instance
+            print inst.args      # arguments stored in .args
+            print inst           # __str__ allows args to printed directly
+            
+            self._db_.rollback()
+            sys.exit(0)
+
+
+        return data
+    
+    """
+    
+        Handle queries from "report_campaign_banners" and "report_campaign_lps" 
+        
+        Gets a list of banners and landing pages running on the campaign in a time frame
+        
+    """
+    def query_artifacts(self, query_type, params):
+        
+        """ Resolve parameters """
+        utm_campaign = params['utm_campaign']
+        start_time = params['start_time']
+        end_time = params['end_time']
+        
+        query_name = self.get_sql_filename_for_query(query_type)
+        
+        """ Load the SQL File & Format """
+        filename = self._sql_path_+ query_name + '.sql'
+        sql_stmnt = mh.read_sql(filename)        
+        sql_stmnt = QD.format_query(query_name, sql_stmnt, [start_time, end_time, utm_campaign])
+        
+        """ Get Indexes into Query """
+        key_index = QD.get_key_index(query_name)    
+        
+        data = list()
+        
+        """ Compose the data for each separate donor pipeline artifact """
+        try:
+            
+            self._cur_.execute(sql_stmnt)
+            
+            results = self._cur_.fetchall()
+            
+            for row in results:
+                data.append(row[key_index])
+                # key_name = row[key_index]
+                
         except Exception as inst:
             print type(inst)     # the exception instance
             print inst.args      # arguments stored in .args
@@ -588,4 +777,87 @@ class TTestLoaderHelp(DataLoader):
         self._db_.close()
         
         return p
+
+"""
+
+    CLASS :: TableLoader
+    
+    Provides data access particular to the t-test
+    
+    METHODS:
+            init_db         -
+            close_db        -
+"""
+class TableLoader(DataLoader):
+    
+    def insert_row(self):
+        return
+    
+    def delete_row(self):
+        return
+    
+    def update_row(self):
+        return
+    
+"""
+
+    CLASS :: TestTableLoader
+    
+    storage3.pmtpa.wmnet.faulkner.test:
+    
+    +---------------+---------------+------+-----+---------------------+-----------------------------+
+    | Field         | Type          | Null | Key | Default             | Extra                       |
+    +---------------+---------------+------+-----+---------------------+-----------------------------+
+    | utm_campaign  | varchar(128)  | NO   | PRI | NULL                |                             | 
+    | start_time    | timestamp     | NO   |     | CURRENT_TIMESTAMP   | on update CURRENT_TIMESTAMP | 
+    | end_time      | timestamp     | NO   |     | 0000-00-00 00:00:00 |                             | 
+    | winner        | varchar(128)  | YES  |     | NULL                |                             | 
+    | is_conclusive | binary(1)     | YES  |     | NULL                |                             | 
+    | html_report   | varchar(2000) | YES  |     | NULL                |                             | 
+    +---------------+---------------+------+-----+---------------------+-----------------------------+
+
+    METHODS:
+            
+"""
+class TestTableLoader(TableLoader):
+    
+    def insert_row(self, **kwargs):
+        
+        insert_stmnt = 'insert into test values '
+        
+        winner = 'NULL'
+        is_conclusive = 'NULL'
+        html_report = 'NULL'
+        
+        
+        for key in kwargs:
+            if key == 'utm_campaign':           
+                utm_campaign = Hlp.stringify(kwargs[key])
+            elif key == 'start_time':
+                start_time = Hlp.stringify(kwargs[key])
+            elif key == 'end_time':
+                end_time = Hlp.stringify(kwargs[key])
+            elif key == 'winner':
+                winner = kwargs[key]
+            elif key == 'is_conclusive':
+                is_conclusive = kwargs[key]
+            elif key == 'html_report':                
+                html_report = kwargs[key]
+                
+        insert_stmnt = insert_stmnt + '(' + utm_campaign + ',' + start_time + ',' + end_time + ',' + winner + ',' + is_conclusive + ',' + html_report + ')'
+        
+        try:
+            self._cur_.execute(insert_stmnt)
+        except:
+            self._db_.rollback()
+            self._db_.close()
+            sys.exit('Could not execute: ' + insert_stmnt)
+            
+        return
+    
+    def delete_row(self):
+        return
+    
+    def update_row(self):
+        return
     
