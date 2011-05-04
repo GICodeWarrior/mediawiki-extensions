@@ -256,7 +256,7 @@ class ApiPushImages extends ApiBase {
 		);
 		
 		if ( $egPushDirectFileUploads ) {
-			$requestData['file'] = '@' . $imagePage->getFile()->getFullPath();
+			$requestData['file'] = '@' . $imagePage->getFile()->getPath();
 		}
 		else {
 			$requestData['url'] = $imagePage->getDisplayedFile()->getFullUrl();
