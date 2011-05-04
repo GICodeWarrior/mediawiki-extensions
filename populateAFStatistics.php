@@ -55,6 +55,7 @@ class PopulateAFStatistics extends Maintenance {
 	}
 	
 	public function execute() {
+		global $wgMemc;
 		$this->dbr = wfGetDB( DB_SLAVE );
 		$this->dbw = wfGetDB( DB_MASTER );
 		
@@ -153,6 +154,31 @@ class PopulateAFStatistics extends Maintenance {
 			$this->output( "Inserted " . $rowsInserted . " rows\n" );
 		}
 		$this->output( "Done.\n" );
+		
+		// check to see whether we should bother caching
+		if ( is_a( $wgMemc, 'EmptyBagOStuff' )) {
+			$this->output( "Object caching not available.\n" );
+			$this->output( "Done.\n" );
+			return;
+		}
+		
+		// loading data into caching
+		$this->output( "Caching latest highs/lows.\n" );
+		$key = wfMemcKey( 'article_feedback_stats_highs_lows' );
+		$wgMemc->delete( $key );
+		$result = $this->dbr->select(
+			'article_feedback_stats_highs_lows',
+			array(
+				'afshl_page_id',
+				'afshl_avg_overall',
+				'afshl_avg_ratings'
+			),
+			'afshl_ts = ' . $cur_ts,
+			__METHOD__,
+			array()
+		);
+		$wgMemc->set( $key, $result, 86400 );
+		$this->output( "Done\n" );
 	}
 	
 	
