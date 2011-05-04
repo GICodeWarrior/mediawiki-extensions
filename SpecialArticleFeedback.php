@@ -92,7 +92,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return String: HTML table of daily highs and lows
 	 */
 	protected function renderDailyHighsAndLows() {
-		global $wgOut, $wgArticleFeedbackRatings;
+		global $wgOut, $wgUser;
 
 		$rows = array();
 		$pages = $this->getDailyHighsAndLows();
@@ -100,7 +100,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			foreach ( $pages as $page ) {
 				$row = array();
 				$pageTitle = Title::newFromId( $page['page'] );
-				$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
+				$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
 				foreach ( $page['ratings'] as $id => $value ) {
 					$row[] = array(
 						'text' => round( $value, 2 ),
@@ -138,13 +138,13 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return String: HTML table of weekly most changed
 	 */
 	protected function renderWeeklyMostChanged() {
-		global $wgOut;
+		global $wgOut, $wgUser;
 
 		$rows = array();
 		foreach ( $this->getWeeklyMostChanged() as $page ) {
 			$row = array();
 			$pageTitle = Title::newFromText( $page['page'] );
-			$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
+			$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
 			foreach ( $page['changes'] as $id => $value ) {
 				$row[] = array(
 					'text' => round( $value, 2 ),
