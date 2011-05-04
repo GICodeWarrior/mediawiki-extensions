@@ -17,7 +17,7 @@ class PopulateAFStatistics extends Maintenance {
 	 * The period (in seconds) before now for which to gather stats
 	 * @var int
 	 */
-	public $polling_period = 86400;
+	public $polling_period = 1000000;//86400;
 	
 	/**
 	 * The formatted timestamp from which to determine stats
@@ -62,6 +62,7 @@ class PopulateAFStatistics extends Maintenance {
 		$ratings = array();
 		
 		// fetch the ratings since the lower bound timestamp
+		$this->output( 'Fetching page ratings between now and ' . date('Y-m-d H:i:s', strtotime( $this->getLowerBoundTimestamp())) . "...\n");
 		$res = $this->dbr->select(
 			'article_feedback', 
 			array( 
@@ -73,14 +74,17 @@ class PopulateAFStatistics extends Maintenance {
 			__METHOD__,
 			array() // better to do with limits and offsets?
 		);
-
+		
 		// assign the rating data to our data structure
 		foreach ( $res as $row ) {
 			$ratings[ $row->aa_page_id ][ $row->aa_rating_id ][] = $row->aa_rating_value; 
 		}
+		$this->output( "Done\n" );
 
 		// determine the average ratings for a given page
+		$this->output( "Determining average ratings for articles ...\n" );
 		$highs_and_lows = array();
+		$averages = array();
 		foreach ( $ratings as $page_id => $data ) {
 			foreach( $data as $rating_id => $rating ) {
 				$rating_sum = array_sum( $rating );
@@ -90,13 +94,31 @@ class PopulateAFStatistics extends Maintenance {
 			$overall_rating_sum = array_sum( $highs_and_lows[ $page_id ][ 'avg_ratings' ] );
 			$overall_rating_average = $overall_rating_sum / count( $highs_and_lows[ $page_id ][ 'avg_ratings' ] );
 			$highs_and_lows[ $page_id ][ 'average' ] = $overall_rating_average;
+			
+			// store overall average rating seperately so we can easily sort
+			$averages[ $page_id ] = $overall_rating_average;
 		}
+		$this->output( "Done.\n" );
+
+		// determine highest 50 and lowest 50
+		$this->output( "Determining 50 highest and 50 lowest rated articles...\n" );
+		asort( $averages );
+		// take lowest 50 and highest 50
+		$highest_and_lowest_page_ids = array_slice( $averages, 0, 50, true );
+		if ( count( $averages ) > 50 ) {
+			$highest_and_lowest_page_ids = array_merge( $highest_and_lowest_page_ids, array_slice( $averages, -50, 50, true ));
+		}
+		$this->output( "Done\n" );
 		
 		// prepare data for insert into db
 		$this->output( "Preparing data for db insertion ...\n");
 		$cur_ts = $this->dbw->timestamp();
 		$rows = array();
 		foreach( $highs_and_lows as $page_id => $data ) {
+			// make sure this is one of the highest/lowest average ratings
+			if ( !in_array( $page_id, array_keys( $highest_and_lowest_page_ids ))) {
+				continue;
+			}
 			$rows[] = array(
 				'afshl_page_id' => $page_id,
 				'afshl_avg_overall' => $data[ 'average' ],
@@ -105,7 +127,7 @@ class PopulateAFStatistics extends Maintenance {
 			);
 		}
 		$this->output( "Done.\n" );
-		
+
 		// insert data to db
 		$this->output( "Writing data to article_feedback_stats_highs_lows ...\n" );
 		$rowsInserted = 0;
