@@ -96,15 +96,18 @@ class SpecialArticleFeedback extends SpecialPage {
 		global $wgOut, $wgArticleFeedbackRatings;
 
 		$rows = array();
-		foreach ( $this->getDailyHighsAndLows() as $page ) {
-			$row = array();
-			$pageTitle = Title::newFromId( $page['page'] );
-			$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
-			foreach ( $page['ratings'] as $id => $value ) {
-				$row['rating-' . $id] = $value;
+		$pages = $this->getDailyHighsAndLows();
+		if ( $pages ) {
+			foreach ( $pages as $page ) {
+				$row = array();
+				$pageTitle = Title::newFromId( $page['page'] );
+				$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
+				foreach ( $page['ratings'] as $id => $value ) {
+					$row['rating-' . $id] = $value;
+				}
+				$row['average articleFeedback-table-cell-score-' . round( $page['average'] )] = $page['average'];
+				$rows[] = $row;
 			}
-			$row['average articleFeedback-table-cell-score-' . round( $page['average'] )] = $page['average'];
-			$rows[] = $row;
 		}
 		$this->renderTable(
 			wfMsg( 'articleFeedback-table-caption-dailyhighsandlows' ),
@@ -216,7 +219,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			);
 			
 			// if we have no results, just return
-			if ( !$row->afshl_ts ) {
+			if ( !$row || !$row->afshl_ts ) {
 				return;
 			}
 			
