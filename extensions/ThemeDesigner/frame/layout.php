@@ -2,8 +2,8 @@
 	<ul>
 		<li><span><?php echo htmlspecialchars(wfMsg('themedesigner')); ?></span></li>
 		<li><a href="<?php echo Title::newMainPage()->escapeLocalURL(); ?>"><?php echo htmlspecialchars(wfMsg('mainpage-description')); ?></a></li>
-		<li><a href="<?php echo SpecialPage::getTitleFor('RecentChanges')->escapeLocalURL(); ?>"><?php echo htmlspecialchars(wfMsg('recentchanges')); ?></a></li>
-		<li><a href="<?php echo SpecialPage::getTitleFor('SpecialPages')->escapeLocalURL(); ?>"><?php echo htmlspecialchars(wfMsg('specialpages')); ?></a></li>
+		<li><a href="<?php echo SpecialPage::getTitleFor('Recentchanges')->escapeLocalURL(); ?>"><?php echo htmlspecialchars(wfMsg('recentchanges')); ?></a></li>
+		<li><a href="<?php echo SpecialPage::getTitleFor('Specialpages')->escapeLocalURL(); ?>"><?php echo htmlspecialchars(wfMsg('specialpages')); ?></a></li>
 	</ul>
 </nav>
 <div id=designer-interface>
