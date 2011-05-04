@@ -3217,7 +3217,7 @@ $messages['nah'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'fogg-wont-upload-to-server' => 'Opmerking: Uw videobestand worddt lokaal gecodeerd en wordt niet geüpload naar een server',
+	'fogg-wont-upload-to-server' => 'Opmerking: Uw videobestand wordt lokaal gecodeerd en wordt niet geüpload naar een server',
 	'fogg-save_local_file' => 'Ogg opslaan',
 	'fogg-help-sticky' => 'Help (klik om te laten staan)',
 	'fogg-cg-preset' => 'Instellingen: <strong>$1</strong>',
@@ -3305,6 +3305,16 @@ $messages['nl'] = array(
 	'fogg-preview' => 'Voorvertoning bekijken',
 	'fogg-hidepreview' => 'Voorvertoning verbergen',
 	'fogg-warning-firebug' => '<b>Firebug</b> kan conflicteren met <i>Firefogg</i>. Schakel <b>Firebug</b> uit voor deze pagina.',
+);
+
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'fogg-wont-upload-to-server' => 'Opmerking: je videobestand wordt lokaal gecodeerd en wordt niet geüpload naar een server',
+	'fogg-videoQuality-help' => 'Gebruikt om de <i>visuele kwaliteit</i> van de te coderen video in te stellen. Deze instelling wordt niet gebruikt als je hieronder bij de geavanceerde instellingen de bitsnelheid instelt.',
+	'fogg-audioQuality-help' => 'Gebruikt om de <i>geluidskwaliteit</i> van de te coderen audio in te stellen. Deze instelling wordt niet gebruikt als je hieronder bij de geavanceerde instellingen de bitsnelheid instelt.',
+	'fogg-title-help' => 'Een naam voor je clip',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

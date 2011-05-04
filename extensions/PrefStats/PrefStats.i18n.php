@@ -561,8 +561,8 @@ $messages['cu'] = array(
 	'prefstats-factor-sixhours' => 'шєсть часъ',
 	'prefstats-factor-day' => 'дьнь',
 	'prefstats-factor-week' => 'сєдми́ца',
-	'prefstats-factor-twoweeks' => 'двѣ сєдми́ци',
-	'prefstats-factor-fourweeks' => 'чєтꙑрє сєдми́цѧ',
+	'prefstats-factor-twoweeks' => 'двѣ сєдмици',
+	'prefstats-factor-fourweeks' => 'чєтꙑрє сєдмицѧ',
 );
 
 /** Welsh (Cymraeg)

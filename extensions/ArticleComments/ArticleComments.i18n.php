@@ -1323,6 +1323,16 @@ Beschikbaar zijn "plain", "normal" en "wiki".',
 	'processcomment' => 'Opmerking verwerken',
 );
 
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'article-comments-failure-reasons' => 'Het opslaan van je opmerking is mislukt om de volgende {{PLURAL:$1|reden|redenen}}:',
+	'article-comments-submission-success' => 'Je hebt een opmerking bij "[[$1]]" opgeslagen',
+	'article-comments-submission-view-all' => 'Je kunt [[$1|alle opmerkingen bij die pagina]] bekijken',
+	'article-comments-user-is-blocked' => 'Je gebruiker kan op dit moment "[[$1]]" niet bewerken.',
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Nghtwlkr
  */
@@ -1714,6 +1724,7 @@ Na voljo so »plain«, »normal« in »wiki«.',
  * @author Cohan
  * @author Lokal Profil
  * @author Tobulos1
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'article-comments-desc' => 'Aktiverar kommentaravsnitt på innehållssidor',
@@ -1736,6 +1747,7 @@ $messages['sv'] = array(
 	'article-comments-commenter-said' => '$1 sa ...',
 	'article-comments-summary' => 'Kommentar från $1 - via ArticleComments-tillägg',
 	'article-comments-submission-succeeded' => 'Kommentarinlämning lyckades',
+	'article-comments-submission-view-all' => 'Du kan visa [[$1|alla kommentarer på sidan]]',
 	'article-comments-user-is-blocked' => 'Ditt användarkonto är för närvarande blockerat  från att redigera "[[$1]] ".',
 	'article-comments-comment-missing-name-parameter' => 'Namn saknas',
 	'article-comments-comment-missing-date-parameter' => 'Datum för kommentar saknas',

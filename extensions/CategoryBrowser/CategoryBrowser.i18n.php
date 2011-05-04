@@ -1371,6 +1371,15 @@ Gebruik een andere browser of werkt deze bij, als mogelijk.',
 	'cb_edit_paste_right_hint' => 'Als mogelijk de operator op de volgende positie invoegen',
 );
 
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'cb_ie6_warning' => 'De tekstverwerker voor condities werkt niet in Internet Explorer 6.0 of eerdere versies.
+Vooraf gedefinieerde voorwaarden doorbladeren hoort normaal te werken.
+Gebruik een andere browser of werkt deze bij, als mogelijk.',
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Nghtwlkr
  */
@@ -1802,8 +1811,11 @@ Prosimo, spremenite ali posodobite svoj brskalnik, če je le mogoče.',
 /** Swedish (Svenska)
  * @author Ainali
  * @author Tobulos1
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
+	'categorybrowser' => 'Kategoriläsare',
+	'cb_cat_name_filter' => 'Sök efter kategori med namn:',
 	'cb_cat_name_filter_ci' => 'Okänslig för versaler',
 	'cb_copy_line_hint' => 'Använd [+] och [>+] knapparna för att kopiera och klistra in aktörerna i det valda uttrycket',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|underkategori|underkategorier}}',

@@ -32,3 +32,12 @@ $messages['en'] = array(
 	'apisb-query-list'        => 'Lists',
 	'apisb-query-meta'        => 'Meta information',
 );
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'apisb-desc' => 'Ermöglicht das Beseitigen von Fehlern bei Aufrufen der [http://www.mediawiki.org/wiki/API MediaWiki-API] mit dem Browser',
+	'apisandbox' => 'API-Spielwiese',
+);
+

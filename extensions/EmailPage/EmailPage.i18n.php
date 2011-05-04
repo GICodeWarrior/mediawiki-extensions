@@ -1115,6 +1115,7 @@ $messages['su'] = array(
  * @author Jon Harald Søby
  * @author M.M.S.
  * @author Tobulos1
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'e-mailpage' => 'E-posta sida',
@@ -1134,8 +1135,8 @@ $messages['sv'] = array(
 	'ea-to-info' => 'E-postadresser kan separeras med en eller flera semikolon, kommatecken, asterisk eller nyradstecken',
 	'ea-cc' => 'CC:',
 	'ea-send' => 'Skicka!',
-	'ea-subject' => 'Ange ett ämne för e-brevet',
-	'ea-message' => 'Fyll innehållet med ett valfritt meddelande (wikitext)',
+	'ea-subject' => 'Ämne:',
+	'ea-message' => 'Meddelande:',
 	'ea-style' => 'Stil:',
 	'ea-selectcss' => 'Ange en CSS-stilmall',
 	'ea-data' => 'Data',

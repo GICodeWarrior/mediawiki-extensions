@@ -564,6 +564,13 @@ $messages['nl'] = array(
 	'categoryintersection-results' => 'De zoekopdracht heeft $1 {{PLURAL:$1|resultaat|resultaten}} opgeleverd.',
 );
 
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'categoryintersection-mincategories' => 'Je moet tenminste twee categorieën opnemen.',
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
  */

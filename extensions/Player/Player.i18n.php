@@ -965,13 +965,14 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Htt
  * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'player' => 'प्लेयर',
+	'player' => 'खेळाडू',
 	'player-desc' => 'सर्वसाधारण ब्राउझर प्लगीन वापरून संलग्न विविधमाध्यमे (मल्टीमीडिया), तसेच एक [[Special:Player|विशेष पान]]',
-	'player-title' => 'प्लेयर',
+	'player-title' => 'खेळाडू',
 	'player-playertitle' => 'प्लेयर: $1',
 	'player-file' => 'संचिका नाव',
 	'player-play' => 'चालू करा',
@@ -979,7 +980,7 @@ $messages['mr'] = array(
 	'player-not-found' => 'संचिका सापडली नाही',
 	'player-invalid-title' => 'चुकीचे शीर्षक',
 	'player-clicktoplay' => '$1 चालू करा',
-	'player-goto-player' => 'प्लेयर',
+	'player-goto-player' => 'खेळाडू',
 	'player-goto-page' => 'पान',
 	'player-goto-file' => 'संचिका',
 );

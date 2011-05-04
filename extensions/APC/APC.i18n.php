@@ -4804,6 +4804,16 @@ De nieuwere versie $2 is beschikbaar op http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Applicatiecache opgeschoond.'''''",
 );
 
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'viewapc-clear-confirm' => 'Wil je de cache leegmaken?',
+	'viewapc-version-ok' => 'Je werkt met de meest recente versie van APC ($1)',
+	'viewapc-version-old' => 'Je werkt met een oudere versie van APC ($1).
+De nieuwere versie $2 is beschikbaar op http://pecl.php.net/package/APC/$2',
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
  */
