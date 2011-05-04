@@ -172,13 +172,13 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return String: HTML table of recent lows
 	 */
 	protected function renderRecentLows() {
-		global $wgOut, $wgArticleFeedbackRatings;
+		global $wgOut, $wgUser, $wgArticleFeedbackRatings;
 
 		$rows = array();
 		foreach ( $this->getRecentLows() as $page ) {
 			$row = array();
 			$pageTitle = Title::newFromText( $page['page'] );
-			$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
+			$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
 			foreach ( $wgArticleFeedbackRatings as $category ) {
 				$row[] = array(
 					'attr' => in_array( $category, $page['categories'] )
