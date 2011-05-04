@@ -105,7 +105,8 @@ class SpecialArticleFeedback extends SpecialPage {
 					$row[] = array(
 						'text' => round( $value, 2 ),
 						'attr' => array(
-							'class' => 'articleFeedback-table-column-rating'
+							'class' => 'articleFeedback-table-column-rating ' .
+								'articleFeedback-table-column-score-' . round( $value )
 						)
 					);
 				}
