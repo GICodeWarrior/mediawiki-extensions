@@ -1,6 +1,10 @@
 <?php
 
 class SpecialApiSandbox extends SpecialPage {
+
+	/**
+	 * @var ApiQuery
+	 */
 	private $apiQuery;
 	/**
 	 * Constructor
@@ -49,6 +53,9 @@ class SpecialApiSandbox extends SpecialPage {
 		$out->addHTML( "\n</div>" ); # <div id="api-sandbox-content">
 	}
 
+	/**
+	 * @return string
+	 */
 	private function getInputs() {
 		global $wgEnableWriteAPI;
 
@@ -94,6 +101,10 @@ class SpecialApiSandbox extends SpecialPage {
 		return $s;
 	}
 
+	/**
+	 * @param $type string
+	 * @return array
+	 */
 	private function getQueryModules( $type ) {
 		$res = array();
 		$params = $this->apiQuery->getAllowedParams();
@@ -115,6 +126,12 @@ class SpecialApiSandbox extends SpecialPage {
 		return $res;
 	}
 
+	/**
+	 * @param $name string
+	 * @param $items array
+	 * @param $default bool
+	 * @return string
+	 */
 	private static function getSelect( $name, $items, $default = false ) {
 		$s = Html::openElement( 'select', array(
 			'class' => 'api-sandbox-input',
@@ -144,11 +161,21 @@ class SpecialApiSandbox extends SpecialPage {
 		return $s;
 	}
 
+	/**
+	 * @param $value string
+	 * @param $text string
+	 * @param $attributes array
+	 * @return string
+	 */
 	private static function option( $value, $text, $attributes = array() ) {
 		$attributes['value'] = $value;
 		return Html::element( 'option', $attributes, $text );
 	}
 
+	/**
+	 * @param $name string
+	 * @return string
+	 */
 	private function openFieldset( $name ) {
 		return "\n" . Html::openElement( 'fieldset', array( 'id' => "api-sandbox-$name" ) )
 			. "\n\t" . Html::rawElement( 'legend', array(), wfMessage( "apisb-$name" )->parse() )
@@ -157,6 +184,8 @@ class SpecialApiSandbox extends SpecialPage {
 
 	/**
 	 * Callback that returns false if its argument (format name) ends with 'fm'
+	 *
+	 * @param $value string
 	 * @return boolean
 	 */
 	private static function filterFormats( $value ) {
