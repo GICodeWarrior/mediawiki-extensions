@@ -360,7 +360,7 @@ class ApiArticleFeedback extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_MIN => 1
+				ApiBase::PARAM_MIN => 0
 			),
 			'expertise' => array(
 				ApiBase::PARAM_TYPE => 'string',
