@@ -2,9 +2,10 @@
 
 class Citation extends TemplateAdventureBasic {
 
-	private $citeType = null;        # type of citation, e.g. 'news'
+	protected $citeStyle = null;     # citation style
+	protected $citeType = null;        # type of citation, e.g. 'news'
 	                                 # currently only 'news' supported.
-	private $dSeparators = array(    # separators between names, items, etc.
+	protected $dSeparators = array(    # separators between names, items, etc.
 		'section'    => ',',
 		'end'        => '.',
 		'author'     => '&#059;',
@@ -12,22 +13,22 @@ class Citation extends TemplateAdventureBasic {
 		'authorlast' => '&#32;&amp;',
 		'beforepublication' => ':',
 	);
-	private $dAuthorTruncate = 8;    # the amount of authors it should display,
+	protected $dAuthorTruncate = 8;    # the amount of authors it should display,
 	                                 # if truncated, 'et al' will be used instead.
-	private $dAuthors = array(null);     # array of authors
-	private $dAuthorLinks = array(null); # array of authorlinks (tied to authors).
-	private $dCoAuthors = null;          # coauthors is as far as I understand it
+	protected $dAuthors = array(null);     # array of authors
+	protected $dAuthorLinks = array(null); # array of authorlinks (tied to authors).
+	protected $dCoAuthors = null;          # coauthors is as far as I understand it
 	                                     # just a string, but prove me wrong!
-	private $dEditors = array(null);     # array of editors
-	private $dEditorLinks = array(null); # array of editorlinks (tied to editors).
+	protected $dEditors = array(null);     # array of editors
+	protected $dEditorLinks = array(null); # array of editorlinks (tied to editors).
 	                                     # they all contain 'junk' to avoid the
 	                                     # usage of [0].
-	private $dAuthorBlock = null;    # authorblock of em length
-	private $dDate = null;           # the date set
-	private $dAccessDate = null;     # date accessed
-	private $dYear = null;           # year of authorship or publication
-	private $dYearNote = null;       # note to accompany the year
-	private $dWorkTitle = array(     # data related to the title
+	protected $dAuthorBlock = null;    # authorblock of em length
+	protected $dDate = null;           # the date set
+	protected $dAccessDate = null;     # date accessed
+	protected $dYear = null;           # year of authorship or publication
+	protected $dYearNote = null;       # note to accompany the year
+	protected $dWorkTitle = array(     # data related to the title
 		'title'        => null,
 		'transtitle'   => null,      # translated title (if original title is
 		                             # in a foreign language).
@@ -36,60 +37,60 @@ class Citation extends TemplateAdventureBasic {
 		'type'         => null,      # the title type
 		'note'         => null,
 	);
-	private $dWorkLink = array(      # data related to the link
+	protected $dWorkLink = array(      # data related to the link
 		'url'          => null,
 		'originalurl'  => null,
 		'includedwork' => null,
 	);
-	private $dAt = null;             # wherein the source
-	private $dArchived = array(      # information about its archiving if archived
+	protected $dAt = null;             # wherein the source
+	protected $dArchived = array(      # information about its archiving if archived
 		'url'          => null,
 		'date'         => null,
 	);
-	private $dPubMed = array(
+	protected $dPubMed = array(
 		'pmc'          => null,      # PMC link
 		'pmid'         => null,      # PMID
 	);
-	private $dSeries = null;         # whether it is part of a series
-	private $dQuote = null;          # quote
-	private $dPublisher = null;      # publisher
-	private $dPublication = array(   # publication
+	protected $dSeries = null;         # whether it is part of a series
+	protected $dQuote = null;          # quote
+	protected $dPublisher = null;      # publisher
+	protected $dPublication = array(   # publication
 		'data'         => null,
 		'place'        => null,
 	);
-	private $dPlace = null;          # place of writing
-	private $dPeriodical = array(    # name of periodical, journal or magazine.
+	protected $dPlace = null;          # place of writing
+	protected $dPeriodical = array(    # name of periodical, journal or magazine.
 	    'name'  => null,             # ensures it will be rendered as such
 	    'issue' => null,
 	    'issn'  => null,
 	);
-	private $dLibrary = null;        # library id
-	private $dBook = array(          # a book
+	protected $dLibrary = null;        # library id
+	protected $dBook = array(          # a book
 		'title' => null,
 		'isbn'  => null,
 		'page'  => null
 	);
-	private $dLayman = array(        # an article of the same publication, but
+	protected $dLayman = array(        # an article of the same publication, but
 	                                 # written in more layman friendly fashion.
 		'data'    => null,
 		'summary' => null
 	);
-	private $dLanguage = null;       # language of the publication
-	private $dId = null;             # misc id
-	private $dEdition = null;        # edition
-	private $dDoi = array(           # digital object identifier
+	protected $dLanguage = null;       # language of the publication
+	protected $dId = null;             # misc id
+	protected $dEdition = null;        # edition
+	protected $dDoi = array(           # digital object identifier
 		'id'     => null,
 		'broken' => null,            # date broken
 	);
-	private $dBibcode = null;        # bibcode id
-	private $dJournal = array(       # journal and its page
+	protected $dBibcode = null;        # bibcode id
+	protected $dJournal = array(       # journal and its page
 		'title'  => null,
 		'page'   => null,
 	);
-	private $dOther = null;          # other stuff
+	protected $dOther = null;          # other stuff
 	
-	private $mSections = array();    # sections of the citation.
-	private $mTags = array();        # all tags
+	protected $mSections = array();    # sections of the citation.
+	protected $mTags = array();        # all tags
 
 	/**
 	 * Our construct function.
@@ -115,7 +116,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $separator [default: true] Whether it shall have a separator at
 	 *                                   the end.
 	 */
-	private function addSection ( $content, $tags = array (), $separator = true ) {
+	protected function addSection ( $content, $tags = array (), $separator = true ) {
 		$this->mSections[] = array (
 			$content,
 			$tags,
@@ -136,7 +137,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $parent [optional] The tag's parent.
 	 * @return Boolean True if found, false if not.
 	 */
-	private function isTagInSections ( $tag, $parent = null ) {
+	protected function isTagInSections ( $tag, $parent = null ) {
 		if ( $this->notNull ( $parent ) ) {
 			foreach ( $this->mSection as $section ) {
 				if ( in_array ( $tag, $section[1] )
@@ -620,6 +621,13 @@ class Citation extends TemplateAdventureBasic {
 		# COinS?  waaaaat
 		# TODO
 		
+		$this->finishRender();
+	}
+	
+	/**
+	 * Combines the sections to output.
+	 */
+	protected function finishRender () {		
 		$this->mOutput = '';
 		
 		$len = count ( $this->mSections );
@@ -635,6 +643,7 @@ class Citation extends TemplateAdventureBasic {
 		
 		# if the end 'separator' is blank, so we trim
 		$this->mOutput = wfMsg ( 'ta-citationspan', trim($this->mOutput), $this->citeType );
+	
 	}
 	
 	/**
@@ -643,7 +652,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $isbn The raw ISBN number.
 	 * @return $isbn The rendered version.
 	 */
-	private function createDisplayISBN ( $isbn ) {
+	protected function createDisplayISBN ( $isbn ) {
 		return $isbn[0] . '-' . $isbn[1] . $isbn[2] . $isbn[3] . $isbn[4] . '-' . $isbn[5] . $isbn[6] . $isbn[7] . $isbn[8] . '-' . $isbn[9];
 	}
 
@@ -654,7 +663,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $string
 	 * @return $string
 	 */
-	private function printOnly ( $string ) {
+	protected function printOnly ( $string ) {
 		return wfMsg ( 'ta-citeprintonlyspan', $string );
 	}
 
@@ -665,7 +674,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $add String to add.
 	 * @return $add if check is not null else ''
 	 */
-	private function addNotNull ( $check, $add ) {
+	protected function addNotNull ( $check, $add ) {
 		if ( $this->notNull ( $check ) )
 			return $add;
 		return '';
@@ -677,7 +686,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $value The string to be cleaned.
 	 * @return The cleaned string.
 	 */
-	private function clean ( $value ) {
+	protected function clean ( $value ) {
 		return str_replace ( "'", '&#39;', $value );
 	}
 
@@ -689,7 +698,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $truncate When to truncate the amount of data.
 	 * @return The created area.
 	 */
-	private function createWriterSection ( $writers, $links, $truncate ) {
+	protected function createWriterSection ( $writers, $links, $truncate ) {
 		$area = '';
 		$n = 1;
 		foreach ( $writers as $i => $writer ) {
@@ -734,7 +743,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $title Title for the URL.
 	 * @return $title if no $url otherwise the link.
 	 */
-	private function makeLink ( $url, $title ) {
+	protected function makeLink ( $url, $title ) {
 		if ( !$url )
 			return $title;
 		return "[$url $title]";
@@ -746,7 +755,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $check Variable to check
 	 * @return Boolean
 	 */
-	private function notNull ( $check ) {
+	protected function notNull ( $check ) {
 		return !( $check == null && trim ( $check ) === '' );
 	}
 
@@ -758,7 +767,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $addSpace Whether to add a space at the end; default true
 	 * @return $separator Blank if none found.
 	 */
-	private function getSeparator ( $name, $addSpace=true ) {
+	protected function getSeparator ( $name, $addSpace=true ) {
 		if ( !isset($this->dSeparators[$name]) )
 			return '';
 		$sep = $this->dSeparators[$name];
@@ -772,7 +781,7 @@ class Citation extends TemplateAdventureBasic {
 	 * run.  Basically to disregard data and such that has been found to be
 	 * outside the allowed logic of this 'template'.
 	 */
-	private function parseData() {
+	protected function parseData() {
 		# check $dAuthors for only 'given' names.
 		$tmpAuthors = array(null);
 		foreach( $this->dAuthors as $i => $author ) {
@@ -795,7 +804,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Editor-reference.
 	 * @param $value Link
 	 */
-	private function addEditorLink( $name, $value ) {
+	protected function addEditorLink( $name, $value ) {
 		if ( $name[1] == null )
 			return;
 		$this->dEditorLinks[$name[1]] = $value;
@@ -807,7 +816,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Editor-reference.
 	 * @param $value Name
 	 */
-	private function addEditor( $name, $value ) {
+	protected function addEditor( $name, $value ) {
 		$this->appendEditorData ( $name[1], $value );
 	}
 
@@ -817,7 +826,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Editor-reference.
 	 * @param $value Surname
 	 */
-	private function addEditorSurname( $name, $value ) {
+	protected function addEditorSurname( $name, $value ) {
 		$this->appendEditorData ( $name[1], array ( null, $value ) );
 	}
 
@@ -827,7 +836,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Editor-reference.
 	 * @param $value Given name
 	 */
-	private function addEditorGivenName ( $name, $value ) {
+	protected function addEditorGivenName ( $name, $value ) {
 		$this->appendEditorData ( $name[1], array ( $value, null ) );
 	}
 	
@@ -837,7 +846,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $num Editor-reference.
 	 * @param $name Details
 	 */
-	private function appendEditorData( $num, $name ) {
+	protected function appendEditorData( $num, $name ) {
 		$this->appendWriterData( $this->dEditors, $num, $name );
 	}
 	
@@ -850,7 +859,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Author-reference
 	 * @param $value Link
 	 */
-	private function addAuthorLink( $name, $value ) {
+	protected function addAuthorLink( $name, $value ) {
 		if ( $name[1] == null )
 			return;
 		$this->dAuthorLinks[$name[1]] = $value;
@@ -860,7 +869,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Author-reference
 	 * @param $value Full name
 	 */
-	private function addAuthor( $name, $value ) {
+	protected function addAuthor( $name, $value ) {
 		$this->appendAuthorData ( $name[1], $value );
 	}
 	
@@ -868,7 +877,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Author-reference
 	 * @param $value Surname
 	 */
-	private function addAuthorSurname( $name, $value ) {
+	protected function addAuthorSurname( $name, $value ) {
 		$this->appendAuthorData ( $name[1], array ( null, $value ) );
 	}
 	
@@ -876,7 +885,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Author-reference
 	 * @param $value Given name
 	 */
-	private function addAuthorGivenName ( $name, $value ) {
+	protected function addAuthorGivenName ( $name, $value ) {
 		$this->appendAuthorData ( $name[1], array ( $value, null ) );
 	}
 	
@@ -884,7 +893,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $num Author-reference
 	 * @param $name Details
 	 */
-	private function appendAuthorData( $num, $name ) {
+	protected function appendAuthorData( $num, $name ) {
 		$this->appendWriterData( $this->dAuthors, $num, $name );
 	}
 	
@@ -896,7 +905,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $num The location in the array (0 is always set, but never used)
 	 * @param $name The name and link of the author/editor.
 	 */
-	private function appendWriterData( &$array, $num, $name ) {
+	protected function appendWriterData( &$array, $num, $name ) {
 		$split = is_array( $name );
 		if ( $num == null )
 			# if no number, assume it is the first.
@@ -921,7 +930,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @param $name Name of the parameter.
 	 * @param $value The value to be inserted.
 	 */
-	private function addOtherStringValue ( $name, $value ) {
+	protected function addOtherStringValue ( $name, $value ) {
 		switch ( $name[0] ) {
 			case 'url':
 				$this->dWorkLink['url'] = $value;
@@ -1054,8 +1063,6 @@ class Citation extends TemplateAdventureBasic {
 	 * This function handles the first item of the variable.  For {{#citation:}}
 	 * the first item defines the type of the citation; which is important the
 	 * rendering of the function.
-	 *
-	 * Right now only 'news' is an acceptable citation type.
 	 *
 	 * @param $item The raw item.
 	 */

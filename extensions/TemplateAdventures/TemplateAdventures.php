@@ -42,7 +42,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author'      => array( 'Svip' ),
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:TemplateAdventures',
 	'descriptionmsg' => 'ta-desc',
-	'version'     => '0.2'
+	'version'     => '0.3'
 );
 
 
@@ -50,7 +50,10 @@ $dir = dirname(__FILE__);
 $wgExtensionMessagesFiles['TemplateAdventures'] = "$dir/TemplateAdventures.i18n.php";
 $wgExtensionMessagesFiles['TemplateAdventuresMagic'] = "$dir/TemplateAdventures.i18n.magic.php";
 
+# Citation classes.
 $wgAutoloadClasses['Citation'] = $dir . '/Templates/Citation.php';
+$wgAutoloadClasses['CitationStyleWiki'] = $dir . '/Templates/CitationStyleWiki.php';
+$wgAutoloadClasses['CitationStyleChicago'] = $dir . '/Templates/CitationStyleChicago.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'TemplateAdventures::onParserFirstCallInit';
 
@@ -78,10 +81,55 @@ class TemplateAdventures {
 	public static function citation( $parser, $frame, $args ) {
 		if ( count( $args ) == 0 )
 			return '';
-		$obj = new Citation( $parser, $frame, $args );
+		$style = self::getCitationStyle ( $frame, $args );
+		switch ( strtolower( $style ) ) {
+			case 'chicago':
+				$obj = new CitationStyleChicago( $parser, $frame, $args );
+				break;
+			case 'wiki':
+				# In the future, default: will depend on a global variable.
+			default:
+				$obj = new CitationStyleWiki( $parser, $frame, $args );
+				break;
+		}
 		$obj->render();
 
 		return $obj->output();
+	}
+	
+	/**
+	 * Find the style for a citation.  However, this usage means that arguments
+	 * will in worse case scenarios always be run twice, which on heavy pages
+	 * might decrease speed significantly.
+	 *
+	 * It might be possible to find a way to parse the data while finding the
+	 * style, then transferring the found data to the new Style classes.  But
+	 * for now, this will do.
+	 *
+	 * @param $frame The frame.
+	 * @param $args The arguments.
+	 * @return The style; if none found, it returns null.
+	 */
+	private static function getCitationStyle ( $frame, $args ) {
+		foreach ( $args as $arg ) {
+			if ( $arg instanceof PPNode_DOM ) {
+				$bits = $arg->splitArg();
+				$index = $bits['index'];
+				if ( $index === '' ) { # Found
+					$var = trim( $frame->expand( $bits['name'] ) );
+					if ( strtolower( $var ) == 'style' )
+						return trim( $frame->expand( $bits['value'] ) );
+				}
+			} else {
+				$parts = array_map( 'trim', explode( '=', $arg, 2 ) );
+				if ( count( $parts ) == 2 ) { # Found "="
+					$var = $parts[0];
+					if ( strtolower( $var ) == 'style' )
+						return $parts[1];
+				}
+			}
+		}
+		return null;
 	}
 }
 
