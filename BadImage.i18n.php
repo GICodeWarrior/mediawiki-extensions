@@ -1895,6 +1895,14 @@ $messages['nl'] = array(
 	'right-badimages' => 'Verwijderlijst bestanden bijwerken',
 );
 
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'badimages-remove-confirm' => 'Bevestig dat je $1 uit de lijst wilt verwijderen:',
+	'badimages-unprivileged' => '(Je hebt niet de juiste rol om de lijst te kunnen wijzigen)',
+);
+
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
