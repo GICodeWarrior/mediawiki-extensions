@@ -293,10 +293,12 @@ $messages['ig'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author HalphaZ
  */
 $messages['it'] = array(
 	'addmediawizard-desc' => 'Aggiunta guidata di media, sviluppato in partnership da Kaltura e Wikimedia Foundation',
+	'addmediawizard-loading' => "Caricamento della giuda per l'aggiunta di media",
 );
 
 /** Japanese (日本語)

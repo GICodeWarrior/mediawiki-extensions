@@ -2759,7 +2759,7 @@ $messages['frp'] = array(
 	'mwe-thumbnail-more' => 'Agrantir',
 	'mwe-filesource' => 'Sôrsa :',
 	'mwe-filestatus' => 'Statut des drêts d’ôtor :',
-	'mwe-loading-add-media-wiz' => 'Chargement de l’assistent d’aponsa de fichiérs multimèdia',
+	'mwe-loading-add-media-wiz' => 'Chargement de l’assistent d’aponsa de mèdia',
 	'mwe-import-description' => '$1, importâs dês $2',
 	'mwe-select_file' => 'Chouèsésséd un fichiér',
 	'mwe-license_cc-by-sa' => 'Creative Commons partâjo a l’identico (3.0)',
@@ -2772,7 +2772,7 @@ $messages['frp'] = array(
 	'mwe-ignore-any-warnings' => 'Ignorar tôs los avèrtissements',
 	'mwe-i-would-like-to' => 'J’amerê',
 	'mwe-upload-own-file' => 'Tèlèchargiér ma prôpra ôvra dessus $1',
-	'mwe-upload-not-my-file' => 'Tèlèchargiér un fichiér multimèdia qu’est pas ma prôpra ôvra dessus $1',
+	'mwe-upload-not-my-file' => 'Tèlèchargiér un mèdia qu’est pas ma prôpra ôvra dessus $1',
 	'mwe-upload-once-done' => 'Volyéd $1. Setout que vos aréd chavonâ voutron tèlèchargement, $2',
 	'mwe-upload-in-new-win-link' => 'tèlèchargiér dens una fenétra novèla ou ben una ongllèta',
 	'mwe-upload-refresh' => 'rafrèchir voutra lista de tèlèchargement',
@@ -2781,8 +2781,8 @@ $messages['frp'] = array(
 	'mwe-transcoded-status' => 'Transcodâ',
 	'mwe-uploaded-time-remaining' => 'Temps que réste : $1',
 	'mwe-upload-done' => 'Voutron tèlèchargement <i>devrêt étre</i> accèssiblo.',
-	'mwe-add_media_wizard' => 'Assistent d’aponsa de fichiérs multimèdia',
-	'mwe-media_search' => 'Rechèrche de fichiérs multimèdia',
+	'mwe-add_media_wizard' => 'Assistent d’aponsa de mèdia',
+	'mwe-media_search' => 'Rechèrche de mèdia',
 	'mwe-am-box_layout' => 'Misa en pâge du cajon',
 	'mwe-am-list_layout' => 'Misa en pâge de la lista',
 	'mwe-am-results_desc' => 'Rèsultats $1 a $2',
@@ -2803,7 +2803,7 @@ $messages['frp'] = array(
 	'mwe-cc_pd_title' => 'Domêno publico',
 	'mwe-unknown_license' => 'Licence encognua',
 	'mwe-results_from' => 'Rèsultats dês $1',
-	'mwe-am-config_error' => 'Èrror de configuracion de l’assistent d’aponsa de fichiérs multimèdia : $1',
+	'mwe-am-config_error' => 'Èrror de configuracion de l’assistent d’aponsa de mèdia : $1',
 	'mwe-your-recent-uploads' => 'Voutros tèlèchargements',
 	'mwe-your-recent-uploads-to' => 'Voutros novéls tèlèchargements dessus $1',
 	'mwe-no_recent_uploads' => 'Gins de novél tèlèchargement',
@@ -5145,7 +5145,7 @@ $messages['nl'] = array(
 	'mwe-destfilename' => 'Nieuwe naam:',
 	'mwe-summary' => 'Beschrijving',
 	'mwe-date-of-work' => 'Datum voor het werk',
-	'mwe-error_not_loggedin' => 'u bent niet aangemeld of hebt geen uploadrechten.',
+	'mwe-error_not_loggedin' => 'U bent niet aangemeld of hebt geen uploadrechten.',
 	'mwe-error-not-loggedin-file' => 'U bent niet aangemeld of er is een fout opgetreden in de software. U kunt $1 en het opnieuw proberen',
 	'mwe-link-login' => 'aanmelden',
 	'mwe-watch-this-file' => 'Dit bestand volgen',
@@ -5227,6 +5227,30 @@ $messages['nl'] = array(
 	'mwe-upload-transcode-in-progress' => 'Bezig met het converteren en uploaden. Sluit dit venster niet',
 	'mwe-upload-multi' => '{{PLURAL:$1|Bestand|Bestanden}} uploaden',
 	'mwe-review-upload' => '{{PLURAL:$1|Bestandsupload|Bestandsuploads}} controleren',
+);
+
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'mwe-cancel-confim' => 'Weet je zeker dat je wilt annuleren?',
+	'mwe-fileexists' => 'Er bestaat al een bestand met deze naam. Controleer <b><tt>$1</tt></b> als je niet zeker weet of je het huidige bestand wilt overschrijven.',
+	'mwe-wgfogg_warning_bad_extension' => 'Je hebt een bestand met een extensie die niet wordt ondersteund geselecteerd (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">meer informatie</a>).',
+	'mwe-error_not_loggedin' => 'Je bent niet aangemeld of hebt geen uploadrechten.',
+	'mwe-error-not-loggedin-file' => 'Je bent niet aangemeld of er is een fout opgetreden in de software. Je kunt $1 en het opnieuw proberen',
+	'mwe-upload-once-done' => 'Alsjeblieft $1. Als je upload is afgerond, $2',
+	'mwe-upload-refresh' => 'ververs je uploadlijst',
+	'mwe-ie-inline-upload' => 'Inline uploaden is uitgeschakeld voor Internet Explorer. Je kunt $1 en daarna $2',
+	'mwe-upload-done' => 'Je upload <i>is toegankelijk</i>.',
+	'mwe-no-import-by-url' => "Deze gebruiker of wiki <b>kan geen bestanden importeren</b> van externe URL's.<p>Moet je je wellicht nog aanmelden?</p><p>Hebt je het recht upload_by_url?<br />Heeft de wiki $1 ingeschakeld?</p>",
+	'mwe-your-recent-uploads' => 'Je uploads',
+	'mwe-your-recent-uploads-to' => 'Je recente uploads naar $1',
+	'mwe-not-logged-in-uploads' => 'Je bent mogelijk niet aangemeld en dus kunnen er geen recente uploads worden weergegeven. [$1 Meld je aan] en [$2 probeer het opnieuw].',
+	'mwe-ie-eye-permision' => 'Als je Internet Explorer gebruikt en bent aangemeld, dien je wellicht je privacyinstellingen aan te passen',
+	'mwe-warning-upload-to-commons' => '$1 raadt je aan te uploaden naar Wikimedia Commons. Upload alleen lokaal als je $2 hebt gelezen',
+	'mwe-am-search-timeout' => 'De zoekopdracht is niet voltooid.
+De server is wellicht niet bereikbaar wegens zware belasting.
+Je kunt het later nogmaals te proberen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
