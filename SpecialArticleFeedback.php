@@ -103,7 +103,7 @@ class SpecialArticleFeedback extends SpecialPage {
 				$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
 				foreach ( $page['ratings'] as $id => $value ) {
 					$row[] = array(
-						'text' => round( $value, 2 ),
+						'text' => $this->formatNumber( $value ),
 						'attr' => array(
 							'class' => 'articleFeedback-table-column-rating ' .
 								'articleFeedback-table-column-score-' . round( $value )
@@ -111,7 +111,7 @@ class SpecialArticleFeedback extends SpecialPage {
 					);
 				}
 				$row[] = array(
-					'text' => round( $page['average'], 2 ),
+					'text' => $this->formatNumber( $page['average'] ),
 					'attr' => array(
 						'class' => 'articleFeedback-table-column-average ' .
 							'articleFeedback-table-column-score-' . round( $page['average'] )
@@ -147,7 +147,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			$row['page'] = $wgUser->getSkin()->link( $pageTitle, $pageTitle->getPrefixedText() );
 			foreach ( $page['changes'] as $id => $value ) {
 				$row[] = array(
-					'text' => round( $value, 2 ),
+					'text' => $this->formatNumber( $value ),
 					'attr' => array(
 						'class' => 'articleFeedback-table-column-changes'
 					)
@@ -339,6 +339,12 @@ class SpecialArticleFeedback extends SpecialPage {
 	protected static $categories;
 
 	/* Protected Static Methods */
+
+	protected function formatNumber( $number ) {
+		global $wgLang;
+		
+		return $wgLang->formatNum( round( $number, 2 ) );
+	}
 
 	protected function getCategories() {
 		global $wgArticleFeedbackRatings;
