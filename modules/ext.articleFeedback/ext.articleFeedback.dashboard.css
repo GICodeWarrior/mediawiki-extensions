@@ -10,10 +10,14 @@
 }
 
 .articleFeedback-table th {
+	padding-left: 0.75em;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
 	text-align: left;
 }
 
 .articleFeedback-table td {
+	padding: 0.25em 0.75em;
 	border-top: solid 1px #eeeeee;
 }
 
