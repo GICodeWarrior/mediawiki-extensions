@@ -87,6 +87,7 @@ class ArticleFeedbackHooks {
 				'parentheses',
 			),
 			'dependencies' => array(
+				'jquery.appear',
 				'jquery.tipsy',
 				'jquery.json',
 				'jquery.localize',

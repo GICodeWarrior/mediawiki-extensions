@@ -758,8 +758,10 @@ $.articleFeedback = {
 			if ( !showOptions ) {
 				context.$ui.find( '.articleFeedback-options' ).hide();
 			}
-			// Show initial form and report values
-			$.articleFeedback.fn.load.call( context );
+			// Show initial form and report values when the tool is visible
+			context.$ui.appear( function() {
+				$.articleFeedback.fn.load.call( context );
+			} );
 		}
 	}
 };
