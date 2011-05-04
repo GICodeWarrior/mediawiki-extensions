@@ -197,6 +197,16 @@ $messages['ps'] = array(
 	'webfonts-load' => 'ليکبڼه ټاکل',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'webfonts' => 'TiposDeLetraIncorporados',
+	'webfonts-desc' => 'Tipos de letra incorporados nas páginas',
+	'webfonts-load' => 'Seleccione o tipo',
+	'webfonts-disable-preference' => 'Desactivar a incorporação de tipos (TiposDeLetraIncorporados)',
+);
+
 /** Russian (Русский)
  * @author Lockal
  */
