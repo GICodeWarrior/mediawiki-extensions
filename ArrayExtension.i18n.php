@@ -112,6 +112,13 @@ $messages['id'] = array(
 	'arrayext-desc' => 'Menyimpan dan menghitung larik bernama',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'arrayext-desc' => 'Memorizza e calcola matrici di nomi',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
