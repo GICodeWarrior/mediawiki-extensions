@@ -3343,6 +3343,7 @@ $messages['lmo'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -3370,6 +3371,7 @@ $messages['lt'] = array(
 	'contribstats-currency' => 'Valiuta',
 	'contribstats-amount' => 'Suma (USD)',
 	'contribstats-contributions' => 'Aukojimai',
+	'contribstats-value-exactly' => 'Lygiai $1',
 );
 
 /** Latgalian (Latgaļu)
