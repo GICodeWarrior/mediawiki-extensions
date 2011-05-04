@@ -640,7 +640,9 @@ $.articleFeedback = {
 						}
 						if ( pitches.length ) {
 							// Select randomly using equal distribution of available pitches
-							var key = pitches[Math.round( Math.random() * ( pitches.length - 1 ) )];
+							var randomIndex = Math.round( Math.random() * Number.MAX_VALUE )
+								% pitches.length;
+							var key = pitches[randomIndex];
 							context.$ui.find( '.articleFeedback-pitches' )
 								.css( 'width', context.$ui.width() )
 								.find( '.articleFeedback-pitch[rel="' + key + '"]' )
