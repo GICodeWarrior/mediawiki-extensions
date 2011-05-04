@@ -21,8 +21,10 @@ class SpecialArticleFeedback extends SpecialPage {
 		$this->setHeaders();
 		if ( $wgArticleFeedbackDashboard ) {
 			$this->renderDailyHighsAndLows();
+			/*
+			This functionality does not exist yet.
 			$this->renderWeeklyMostChanged();
-			$this->renderRecentLows();
+			$this->renderRecentLows();*/
 		} else {
 			$wgOut->addWikiText( 'This page has been disabled.' );
 		}
@@ -195,6 +197,7 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * This data should be updated daily, ideally though a scheduled batch job
 	 */
 	protected function getDailyHighsAndLows() {
+		
 		return array(
 			array(
 				'page' => 'Main Page',
