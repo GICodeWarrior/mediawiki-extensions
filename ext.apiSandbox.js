@@ -67,7 +67,7 @@ jQuery( function( $ ) {
 				}
 			} else {
 				var value = $node.val();
-				if ( !isset( value ) || value == '' ) {
+				if ( !isset( value ) || value == '' || value == null ) {
 					continue;
 				}
 				if ( $.isArray( value ) ) {

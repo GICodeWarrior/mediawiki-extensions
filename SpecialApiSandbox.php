@@ -106,7 +106,7 @@ class SpecialApiSandbox extends SpecialPage {
 		sort( $res );
 		array_unshift( $res, 
 			array(
-				'value' => '-',
+				'value' => "-$type-",
 				'text' => wfMessage( "apisb-query-$type" )->parse(),
 				'attributes' => array( 'disabled' => 'disabled' )
 			)
