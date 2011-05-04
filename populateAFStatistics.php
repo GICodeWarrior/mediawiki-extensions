@@ -17,7 +17,7 @@ class PopulateAFStatistics extends Maintenance {
 	 * The period (in seconds) before now for which to gather stats
 	 * @var int
 	 */
-	public $polling_period = 1000000;//86400;
+	public $polling_period = 86400;
 	
 	/**
 	 * The formatted timestamp from which to determine stats
@@ -86,11 +86,21 @@ class PopulateAFStatistics extends Maintenance {
 		$highs_and_lows = array();
 		$averages = array();
 		foreach ( $ratings as $page_id => $data ) {
+			$rating_count = 0;
 			foreach( $data as $rating_id => $rating ) {
+				$rating_count += count( $rating );
 				$rating_sum = array_sum( $rating );
 				$rating_avg = $rating_sum / count( $rating );
 				$highs_and_lows[ $page_id ][ 'avg_ratings' ][ $rating_id ] = $rating_avg;
 			}
+			
+			// make sure that we have at least 10 ratings for this page
+			if ( $rating_count < 10 ) {
+				// if not, remove it from our data store
+				unset( $highs_and_lows[ $page_id ] );
+				continue;
+			}
+			
 			$overall_rating_sum = array_sum( $highs_and_lows[ $page_id ][ 'avg_ratings' ] );
 			$overall_rating_average = $overall_rating_sum / count( $highs_and_lows[ $page_id ][ 'avg_ratings' ] );
 			$highs_and_lows[ $page_id ][ 'average' ] = $overall_rating_average;
