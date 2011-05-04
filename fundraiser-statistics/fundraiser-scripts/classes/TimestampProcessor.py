@@ -3,9 +3,6 @@
 
 This module effectively functions as a Singleton class.
 
-TimestampProcesser module is used to provide definitions for dealing with date and time
-objects.  This is primarily used to handle 
-
 TimestampProcesser facilitates the processing of timestamps used in the CiviCRM and "faulkner" mySQL 
 databases.  This includes mapping among timestamp formats and converting those formats to indexed
 lists and dictionaries.
@@ -38,15 +35,15 @@ METHODS:
 
 __author__ = "Ryan Faulkner"
 __revision__ = "$Rev$"
-__date__ = "April 8th, 2010"
+__date__ = "April 8th, 2011"
 
 
 import sys
-sys.path.append('../')
+# sys.path.append('../')
 
 import datetime
 import math
-import miner_help as mh
+import Fundraiser_Tools.miner_help as mh
 
     
 """
@@ -481,3 +478,4 @@ def get_time_lists(start_time, end_time, interval, num_samples, format):
     times.append(end_time)
         
     return [times, time_indices]
+
