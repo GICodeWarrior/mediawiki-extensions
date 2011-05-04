@@ -374,6 +374,7 @@ $messages['no'] = array(
 	'svgedit-editor-save-close' => 'Lagre og lukk',
 	'svgedit-editor-close' => 'Avbryt',
 	'svgedit-desc' => 'Nettleserredigering av SVG-tegninger med [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-toolbar-insert' => 'SVG-tegning',
 );
 
 /** Polish (Polski)
