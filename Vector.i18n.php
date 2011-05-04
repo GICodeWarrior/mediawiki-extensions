@@ -371,7 +371,7 @@ $messages['csb'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
-	'vector-collapsiblenav-more' => 'дроу́ꙃи ѩꙁꙑци́',
+	'vector-collapsiblenav-more' => 'дроуꙃи ѩꙁꙑци',
 	'vector-simplesearch-search' => 'исканиѥ',
 	'vector-simplesearch-containing' => 'сѥ дрьжащи···',
 );
