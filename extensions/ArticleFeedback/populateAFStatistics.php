@@ -23,7 +23,7 @@ class PopulateAFStatistics extends Maintenance {
 	 * The formatted timestamp from which to determine stats
 	 * @var int
 	 */
-	protected $timestamp;
+	protected $lowerBoundTimestamp;
 	
 	/**
 	 * DB slave
@@ -58,42 +58,49 @@ class PopulateAFStatistics extends Maintenance {
 		$this->dbr = wfGetDB( DB_SLAVE );
 		$this->dbw = wfGetDB( DB_MASTER );
 		
-		// the data structure to store high/low stats information
-		$highs_and_lows = array();
+		// the data structure to store ratings for a given page
+		$ratings = array();
 		
-		// fetch the highs
-		$this->output( "Fetching highest rated articles from the last " . $this->polling_period . " seconds.\n" );
-		$highs = $this->getHighs();
-		foreach ( $highs as $high ) {
-			$highs_and_lows[ $high->aa_page_id ][ 'average' ] = $high->avg_rating; 	
-		}
-		$this->output( "Done.\n" );
-		
-		// fetch the lows
-		$this->output( "Fetching lowest rated articles from the last " . $this->polling_period . " seconds.\n" );
-		$lows = $this->getLows();
-		foreach ( $lows as $low ) {
-			$highs_and_lows[ $low->aa_page_id ][ 'average' ] = $low->avg_rating;
-		}
-		$this->output( "Done.\n" );
+		// fetch the ratings since the lower bound timestamp
+		$res = $this->dbr->select(
+			'article_feedback', 
+			array( 
+				'aa_page_id', 
+				'aa_rating_value',
+				'aa_rating_id'
+			), 
+			'aa_timestamp >= ' . $this->getLowerBoundTimestamp(),
+			__METHOD__,
+			array() // better to do with limits and offsets?
+		);
 
-		// fetch the ratings
-		$this->output( "Fetching ratings for highest and lowest rated articles.\n" );
-		$ratings = $this->getAverageRatings( array_keys( $highs_and_lows ));
-		foreach( $ratings as $page_ratings ) {
-			$highs_and_lows[ $page_ratings->aa_page_id ][ 'avg_ratings' ][ $page_ratings->aa_rating_id ] = $page_ratings->avg_rating; 
+		// assign the rating data to our data structure
+		foreach ( $res as $row ) {
+			$ratings[ $row->aa_page_id ][ $row->aa_rating_id ][] = $row->aa_rating_value; 
 		}
-		$this->output( "Done.\n" );
+
+		// determine the average ratings for a given page
+		$highs_and_lows = array();
+		foreach ( $ratings as $page_id => $data ) {
+			foreach( $data as $rating_id => $rating ) {
+				$rating_sum = array_sum( $rating );
+				$rating_avg = $rating_sum / count( $rating );
+				$highs_and_lows[ $page_id ][ 'avg_ratings' ][ $rating_id ] = $rating_avg;
+			}
+			$overall_rating_sum = array_sum( $highs_and_lows[ $page_id ][ 'avg_ratings' ] );
+			$overall_rating_average = $overall_rating_sum / count( $highs_and_lows[ $page_id ][ 'avg_ratings' ] );
+			$highs_and_lows[ $page_id ][ 'average' ] = $overall_rating_average;
+		}
 		
 		// prepare data for insert into db
 		$this->output( "Preparing data for db insertion ...\n");
-		$cur_ts = $this->formatTimestamp( time() );
+		$cur_ts = $this->dbw->timestamp();
 		$rows = array();
 		foreach( $highs_and_lows as $page_id => $data ) {
 			$rows[] = array(
 				'afshl_page_id' => $page_id,
 				'afshl_avg_overall' => $data[ 'average' ],
-				'afshl_avg_ratings' => json_encode( $data[ 'avg_ratings' ] ),
+				'afshl_avg_ratings' => FormatJson::encode( $data[ 'avg_ratings' ] ),
 				'afshl_ts' => $cur_ts,
 			);
 		}
@@ -104,9 +111,8 @@ class PopulateAFStatistics extends Maintenance {
 		$rowsInserted = 0;
 		while( $rows ) {
 			$batch = array_splice( $rows, 0, $this->insert_batch_size );
-			$this->dbw->replace( 
+			$this->dbw->insert( 
 				'article_feedback_stats_highs_lows',
-				array( array( 'afshl_page_id', 'afshl_avg_overall', 'afshl_avg_ratings', 'afshl_ts' )),
 				$batch,
 				__METHOD__
 			);
@@ -117,119 +123,32 @@ class PopulateAFStatistics extends Maintenance {
 		$this->output( "Done.\n" );
 	}
 	
-	/**
-	 * Get the 50 page ids and average ratings for the lowest average ratings 
-	 * newer than $this->timestamp
-	 * @return object
-	 */
-	public function getLows() {
-		$res = $this->dbr->select(
-			'article_feedback', 
-			array( 
-				'aa_page_id', 
-				'avg(aa_rating_value) as avg_rating'
-			), 
-			'aa_timestamp > ' . $this->getTimestamp(),
-			__METHOD__,
-			array( 
-				'GROUP BY' => 'aa_page_id',
-				'ORDER BY' => 'avg_rating DESC',
-				'LIMIT' => '50',
-			)
-		);
-		return $res;
-	}
-	
-	/**
-	 * Get the 50 page ids and average ratings for the highest average ratings 
-	 * newer than $this->timestamp
-	 * @return object
-	 */
-	public function getHighs() {
-		$res = $this->dbr->select(
-			'article_feedback', 
-			array( 
-				'aa_page_id', 
-				'avg(aa_rating_value) as avg_rating'
-			), 
-			'aa_timestamp > ' . $this->getTimestamp(),
-			__METHOD__,
-			array( 
-				'GROUP BY' => 'aa_page_id',
-				'ORDER BY' => 'avg_rating ASC',
-				'LIMIT' => '50',
-			)
-		);
-		return $res;
-	}
-	
-	/**
-	 * Get average ratings for specified page id(s)
-	 * 
-	 * @param mixed $page_id Can be a singular numeric page id or array of numeric page ids
-	 * @throws InvalidArgumentException
-	 * @return object
-	 */
-	public function getAverageRatings( $page_id ) {
-		if ( is_array( $page_id )) {
-			$page_id = implode( ",", $page_id );
-		} elseif( !is_numeric( $page_id )) {
-			throw new InvalidArgumentException( '$page_id must be numeric or an array of numeric ids.' );
-		}
-		
-		$res = $this->dbr->select(
-			'article_feedback',
-			array(
-				'aa_page_id',
-				'aa_rating_id',
-				'avg(aa_rating_value) as avg_rating'
-			),
-			'aa_timestamp > ' . $this->getTimestamp() . ' && aa_page_id IN (' . $page_id . ')',
-			__METHOD__,
-			array( 'GROUP BY' => 'aa_page_id, aa_rating_id' )
-		);
-		
-		return $res;
-	}
-	
 	
 	/**
 	 * Set $this->timestamp
 	 * @param int $ts
 	 */
-	public function setTimestamp( $ts ) {
+	public function setLowerBoundTimestamp( $ts ) {
 		if ( !is_numeric( $ts )) {
 			throw new InvalidArgumentException( 'Timestamp must be numeric.' );
 		}
-		$this->timestamp = $ts;
+		$this->lowerBoundTimestamp = $ts;
 	}
 	
 
 	/**
-	 * Get $this->timestamp
+	 * Get $this->lowerBoundTimestamp
 	 * 
 	 * If it hasn't been set yet, set it based on the defined polling period.
 	 * 
 	 * @return int
 	 */
-	public function getTimestamp() {
-		if ( !$this->timestamp ) {
-			$timestamp = $this->formatTimestamp( strtotime( $this->polling_period . ' seconds ago' ));
-			$this->setTimestamp( $timestamp );
+	public function getLowerBoundTimestamp() {
+		if ( !$this->lowerBoundTimestamp ) {
+			$timestamp = $this->dbw->timestamp( strtotime( $this->polling_period . ' seconds ago' ));
+			$this->setLowerBoundTimestamp( $timestamp );
 		}
-		return $this->timestamp;
-	}
-	
-	/**
-	 * Format a unix timestamp to be compatible with what we store in the db
-	 * @param int $unix_time
-	 * @return string
-	 */
-	public function formatTimestamp( $unix_time ) {
-		if ( !is_numeric( $unix_time )) {
-			throw new InvalidArgumentException( 'Timestamp must be numeric.' );
-		}
-		return date( 'Ymdhis', $unix_time );
+		return $this->lowerBoundTimestamp;
 	}
 }
 
