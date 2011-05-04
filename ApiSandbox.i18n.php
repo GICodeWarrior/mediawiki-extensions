@@ -1,10 +1,16 @@
 <?php
+/**
+ * Internationalization file for the API sandbox extension.
+ *
+ * @file
+ * @ingroup Extensions
+*/
 
 $messages = array();
 
 $messages['en'] = array(
 	'apisb-desc'              => 'Allows to debug [http://www.mediawiki.org/wiki/API MediaWiki API] calls from browser',
-	'apisandbox'             => 'API sandbox',
+	'apisandbox'              => 'API sandbox',
 	'apisb-no-js'             => "'''Error''': this feature requires JavaScript.",
 	'apisb-intro'             => "Use this page to experiment with '''MediaWiki API'''.
 	Refer to [http://www.mediawiki.org/wiki/API the API documentation] for further details of API usage.",
