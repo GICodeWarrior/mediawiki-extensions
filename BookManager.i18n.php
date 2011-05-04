@@ -365,10 +365,12 @@ $messages['sr-ec'] = array(
 /** Swedish (Svenska)
  * @author Lokal Profil
  * @author Tobulos1
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'bookmanager-desc' => 'Verktyg för böcker',
 	'printversion' => 'Utskriftsversion',
+	'printversion-desc' => 'Skapar en [[Special:PrintVersion|utskriftsversion]] av en bok',
 	'printversion-no-book' => 'Ange namnet på en bok för att få den i utskriftsversion.',
 	'printversion-inexistent-book' => 'Boken hittades inte. Fyll i namnet på en befintlig bok för att få den i utskriftsversion.',
 );
