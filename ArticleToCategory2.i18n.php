@@ -374,6 +374,8 @@ $messages['it'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Crea',
 	'articletocategory2-create-category-under-category-text' => 'Aggiungi una categoria a questa categoria',
 	'articletocategory2-create-category-under-category-button' => 'Crea',
+	'right-ArticleToCategory2' => 'Aggiungi pagine alla categoria',
+	'right-ArticleToCategory2AddCat' => 'Aggiungi categorie alla categoria',
 );
 
 /** Japanese (日本語)
