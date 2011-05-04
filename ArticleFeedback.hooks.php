@@ -178,6 +178,13 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/AddStatsHighsLowsTable.sql',
 				true
 			) );
+			$updater->addExtensionUpdate( array(
+				'addIndex',
+				'article_feedback',
+				'article_feedback_timestamp',
+				$dir . '/sql/AddArticleFeedbackTimestampIndex.sql',
+				true
+			) );
 		}
 		return true;
 	}
