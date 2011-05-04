@@ -172,6 +172,12 @@ class ArticleFeedbackHooks {
 				$dir . '/sql/AddRevisionsTable.sql',
 				true
 			) );
+			$updater->addExtensionUpdate( array(
+				'addTable',
+				'article_feedback_stats_highs_lows',
+				$dir . '/sql/AddStatsHighsLowsTable.sql',
+				true
+			) );
 		}
 		return true;
 	}
