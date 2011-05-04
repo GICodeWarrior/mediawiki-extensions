@@ -193,7 +193,21 @@ def format_query(query_name, sql_stmnt, args):
         end_time = args[1]
         
         sql_stmnt = sql_stmnt % (start_time, end_time)
+    
+    elif query_name == 'report_campaign_banners':
+        start_time = args[0]
+        end_time = args[1]
+        utm_campaign = args[2]
         
+        sql_stmnt = sql_stmnt % (start_time, end_time, utm_campaign)
+        
+    elif query_name == 'report_campaign_lps':
+        start_time = args[0]
+        end_time = args[1]
+        utm_campaign = args[2]
+        
+        sql_stmnt = sql_stmnt % (start_time, end_time, utm_campaign)
+            
     else:
         return 'no such table\n'
 
@@ -222,7 +236,10 @@ def get_key_index(query_name):
         return 1
     elif query_name == 'report_campaign_totals':
         return 0
-
+    elif query_name == 'report_campaign_banners':
+        return 0
+    elif query_name == 'report_campaign_lps':
+        return 0
 
 def get_count_index(query_name):
     if query_name == 'report_lp_views_by_hour':
