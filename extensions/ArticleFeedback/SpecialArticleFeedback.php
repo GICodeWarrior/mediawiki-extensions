@@ -220,7 +220,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		// check if we've got results in the cache
 		$key = wfMemcKey( 'article_feedback_stats_highs_lows' );
 		$cache = $wgMemc->get( $key );
-		if ( $cache ) {
+		if ( $cache instanceof ResultsWrapper ) {
 			$result = $cache;
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
