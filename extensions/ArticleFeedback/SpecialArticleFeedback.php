@@ -98,7 +98,7 @@ class SpecialArticleFeedback extends SpecialPage {
 		$rows = array();
 		foreach ( $this->getDailyHighsAndLows() as $page ) {
 			$row = array();
-			$pageTitle = Title::newFromText( $page['page'] );
+			$pageTitle = Title::newFromId( $page['page'] );
 			$row['page'] = Linker::link( $pageTitle, $pageTitle->getPrefixedText() );
 			foreach ( $page['ratings'] as $id => $value ) {
 				$row['rating-' . $id] = $value;
@@ -197,31 +197,54 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * This data should be updated daily, ideally though a scheduled batch job
 	 */
 	protected function getDailyHighsAndLows() {
+		global $wgMemc;
 		
-		return array(
-			array(
-				'page' => 'Main Page',
-				// List of ratings as the currently stand
-				'ratings' => array(
-					1 => 4,
-					2 => 3,
-					3 => 2,
-					4 => 1,
+		// check if we've got results in the cache
+		$key = wfMemcKey( 'article_feedback_stats_highs_lows' );
+		$cache = $wgMemc->get( $key );
+		if ( $cache != false && $cache = -1 ) {
+			$result = $cache;
+		} else {
+			$dbr = wfGetDB( DB_SLAVE );
+			// first find the freshest timestamp
+			$row = $dbr->selectRow(
+				'article_feedback_stats_highs_lows',
+				array( 'afshl_ts' ),
+				"",
+				__METHOD__,
+				array( "ORDER BY" => "afshl_ts DESC", "LIMIT" => 1 )
+			);
+			
+			// if we have no results, just return
+			if ( !$row->afshl_ts ) {
+				return;
+			}
+			
+			// select ratings with that ts
+			$result = $dbr->select(
+				'article_feedback_stats_highs_lows',
+				array(
+					'afshl_page_id',
+					'afshl_avg_overall',
+					'afshl_avg_ratings'
 				),
-				// Current average (considering historic averages of each rating)
-				'average' => 2.5
-			),
-			array(
-				'page' => 'Test Article',
-				'ratings' => array(
-					1 => 1,
-					2 => 2,
-					3 => 3,
-					4 => 4,
-				),
-				'average' => 2.5
-			)
-		);
+				'afshl_ts = ' . $row->afshl_ts,
+				__METHOD__,
+				array( "ORDER BY" => "afshl_avg_overall" )	
+			);
+			$wgMemc->set( $key, $result, 86400 );
+		}
+		
+		$highs_lows = array();
+		foreach ( $result as $row ) {
+			$highs_lows[] = array(
+				'page' => $row->afshl_page_id,
+				'ratings' => FormatJson::decode( $row->afshl_avg_ratings ),
+				'average' => $row->afshl_avg_overall		
+			);
+		}
+		
+		return $highs_lows;
 	}
 
 	/**
