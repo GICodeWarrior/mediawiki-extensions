@@ -57,8 +57,9 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		if ( $params['userrating'] ) {
 			// User ratings
 			$userRatings = $this->getUserRatings( $params );
+
+			// If valid ratings already exist..
 			if ( isset( $ratings[$params['pageid']]['ratings'] ) ) {
-				// Valid ratings already exist
 				foreach ( $ratings[$params['pageid']]['ratings'] as $i => $rating ) {
 					if ( isset( $userRatings[$rating['ratingid']] ) ) {
 						// Rating value
@@ -70,11 +71,14 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 						}
 					}
 				}
+
+			// Else, no valid ratings exist..
 			} else {
-				// No valid ratings exist
+
 				if ( count( $userRatings ) ) {
 					$ratings[$params['pageid']]['status'] = 'expired';
 				}
+
 				foreach ( $userRatings as $ratingId => $userRating ) {
 					// Revision
 					if ( !isset( $ratings[$params['pageid']]['revid'] ) ) {
@@ -96,6 +100,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 					);
 				}
 			}
+
 			// Expertise
 			if ( isset( $ratings[$params['pageid']]['revid'] ) ) {
 				$expertise = $this->getExpertise( $params, $ratings[$params['pageid']]['revid'] );
