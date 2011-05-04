@@ -2515,7 +2515,7 @@ $3
 
 Набргу ќе ви пишеме како можете да помогнете во подобрувањето на {{SITENAME}}.
 
-Ако го немате побарано ова, занемарате ја поракава, и ние повеќе нема да ви испратиме ништо.
+Ако го немате побарано ова, занемарате ја поракава, и ние повеќе ништо нема да ви испраќаме.
 
 Ви благодариме и сè најдобро,
 Екипата на {{SITENAME}}',
@@ -2774,6 +2774,52 @@ Als u niet hebt gevraagd om dit bericht, negeer deze e-mail dan en dan krijgt u 
 Dank u!
 
 Met vriendelijke groet,
+
+Het team van {{SITENAME}}',
+);
+
+/** ‪Nederlands (informeel)‬ (‪Nederlands (informeel)‬)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'articlefeedback-survey-question-origin' => 'Op welke pagina was je toen je aan deze vragenlijst bent begonnen?',
+	'articlefeedback-survey-question-whyrated' => 'Laat ons weten waarom je deze pagina vandaag hebt beoordeeld (kies alle redenen die van toepassing zijn):',
+	'articlefeedback-survey-question-useful' => 'Vind je dat de beoordelingen bruikbaar en duidelijk zijn?',
+	'articlefeedback-survey-question-comments' => 'Hebt je nog opmerkingen?',
+	'articlefeedback-form-panel-helpimprove-note' => 'We sturen je een bevestigingse-mail. We delen je adres verder met niemand. $1',
+	'articlefeedback-form-panel-expiry-title' => 'Je beoordelingen zijn verlopen',
+	'articlefeedback-field-trustworthy-tip' => 'Vind je dat deze pagina voldoende bronvermeldingen heeft en dat de bronvermeldingen betrouwbaar zijn?',
+	'articlefeedback-field-complete-tip' => 'Vind je dat deze pagina de essentie van dit onderwerp bestrijkt?',
+	'articlefeedback-field-objective-tip' => 'Vind je dat deze pagina een eerlijke weergave is van alle invalshoeken voor dit onderwerp?',
+	'articlefeedback-field-wellwritten-tip' => 'Vind je dat deze pagina een correcte opbouw heeft een goed is geschreven?',
+	'articlefeedback-pitch-thanks' => 'Bedankt!
+Je beoordeling is opgeslagen.',
+	'articlefeedback-pitch-join-message' => 'Wil je een gebruiker aanmaken?',
+	'articlefeedback-pitch-join-body' => 'Als je een gebruiker hebt, kan je je bewerkingen beter volgen, meedoen aan overleg en een vollediger onderdeel zijn van de gemeenschap.',
+	'articlefeedback-pitch-edit-message' => 'Wist je dat je deze pagina kunt bewerken?',
+	'articlefeedback-emailcapture-response-body' => 'Hallo!
+
+Dank je wel voor je interesse in het verbeteren van {{SITENAME}}.
+
+Bevestig alsjeblieft je e-mailadres door op de volgende verwijziging te klikken:
+
+$1
+
+Je kunt ook gaan naar:
+
+$2
+
+En daar de volgende bevestigingscode invoeren:
+
+$3
+
+We nemen binnenkort contact met je op over hoe u kunt helpen {{SITENAME}} te verbeteren.
+
+Als je niet hebt gevraagd om dit bericht, negeer deze e-mail dan en dan krijg je geen e-mail meer van ons.
+
+Dank je!
+
+Groetjes,
 
 Het team van {{SITENAME}}',
 );
@@ -3238,6 +3284,28 @@ Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
 	'articleFeedback-table-heading-average' => 'Média',
+	'articlefeedback-emailcapture-response-body' => 'Olá,
+
+Obrigado por expressar interesse em ajudar a melhorar a {{SITENAME}}.
+
+Confirme o seu endereço de e-mail, clicando o link abaixo, por favor:
+
+$1
+
+Você também pode visitar:
+
+$2
+
+E, então, introduzir o seguinte código de confirmação:
+
+$3
+
+Em breve você irá receber informações sobre como você poderá ajudar a melhorar a {{SITENAME}}.
+
+Se você não iniciou este pedido, ignore esta mensagem e não voltará a ser contactado.
+
+Cumprimentos,
+A equipe da {{SITENAME}}',
 );
 
 /** Romanian (Română)
@@ -3756,10 +3824,12 @@ $messages['sr-ec'] = array(
  * @author Fluff
  * @author Lokal Profil
  * @author Tobulos1
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'articlefeedback' => 'Artikelbedömning',
 	'articlefeedback-desc' => 'Artikelbedömning (pilotversion)',
+	'articlefeedback-survey-question-origin' => 'Vilken sida var du på när du startade denna undersökning?',
 	'articlefeedback-survey-question-whyrated' => 'Låt oss gärna veta varför du bedömt denna sida i dag (markera alla som gäller):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Jag ville bidra till den övergripande bedömningen av sidan',
 	'articlefeedback-survey-answer-whyrated-development' => 'Jag hoppas att min bedömning skulle påverka utvecklingen av sidan positivt',
@@ -3774,10 +3844,11 @@ $messages['sv'] = array(
 	'articlefeedback-survey-title' => 'Svara på några få frågor',
 	'articlefeedback-survey-thanks' => 'Tack för att du fyllde i enkäten.',
 	'articlefeedback-error' => 'Ett fel har uppstått. Försök igen senare.',
-	'articlefeedback-form-switch-label' => 'Ge feedback',
-	'articlefeedback-form-panel-title' => 'Din feedback',
+	'articlefeedback-form-switch-label' => 'Betygsätt sidan',
+	'articlefeedback-form-panel-title' => 'Betygsätt sidan',
 	'articlefeedback-form-panel-instructions' => 'Vänligen betygsätt denna sida.',
 	'articlefeedback-form-panel-clear' => 'Ta bort detta betyg',
+	'articlefeedback-form-panel-expertise' => 'Jag är mycket kunniga om detta ämne (frivilligt)',
 	'articlefeedback-form-panel-expertise-studies' => 'Jag har en relevant högskole-/universitetsexamen',
 	'articlefeedback-form-panel-expertise-profession' => 'Det är en del av mitt yrke',
 	'articlefeedback-form-panel-expertise-hobby' => 'Det är relaterat till mina hobbyer eller intressen',
@@ -3788,9 +3859,10 @@ $messages['sv'] = array(
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Integritetspolicy',
 	'articlefeedback-form-panel-submit' => 'Skicka in feedback',
 	'articlefeedback-form-panel-success' => 'Sparat',
+	'articlefeedback-form-panel-expiry-title' => 'Dina betyg har gått ut',
 	'articlefeedback-form-panel-expiry-message' => 'Vänligen omvärdera denna sida och skicka nya omdömen.',
-	'articlefeedback-report-switch-label' => 'Visa resultat',
-	'articlefeedback-report-panel-title' => 'Resultat av feedback',
+	'articlefeedback-report-switch-label' => 'Visa sidbetyg',
+	'articlefeedback-report-panel-title' => 'Sidbetyg',
 	'articlefeedback-report-panel-description' => 'Nuvarande genomsnittliga betyg.',
 	'articlefeedback-report-empty' => 'Inga betyg',
 	'articlefeedback-report-ratings' => '$1 betyg',
@@ -3816,7 +3888,9 @@ $messages['sv'] = array(
 	'articlefeedback-survey-message-success' => 'Tack för att du fyllde i undersökningen.',
 	'articlefeedback-survey-message-error' => 'Ett fel har uppstått. 
 Försök igen senare.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Dagens toppar och dalar',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Veckans mest ändrade',
+	'articleFeedback-table-caption-recentlows' => 'Senaste dalar',
 	'articleFeedback-table-heading-page' => 'Sida',
 	'articleFeedback-table-heading-average' => 'Genomsnittlig',
 );
