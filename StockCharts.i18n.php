@@ -192,6 +192,15 @@ $messages['id'] = array(
 Gunakan: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'stockcharts-desc' => 'Aggiunge il tag <nowiki><stockchart ticker="AAPL"/></nowiki> per i grafici finanziari interattivi',
+	'stockcharts-missingticker' => 'Per incorporare un grafico azionario, è necessario specificare almeno un ticker.
+Usa: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
