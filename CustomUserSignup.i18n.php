@@ -86,6 +86,13 @@ $messages['id'] = array(
 	'customusersignup-desc' => 'Menyediakan pesan terkustomisasi saat proses pembuatan akun',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'customusersignup-desc' => "Permette i messaggi personalizzati durante il processo di creazione dell'account",
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
