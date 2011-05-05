@@ -102,6 +102,13 @@ $messages['id'] = array(
 	'folktagcloud-desc' => 'Menambahkan suatu properti Semantic MediaWiki untuk menandai halaman dengan label pengguna dan tag parser untuk menampilkan mereka dalam awan tag',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'folktagcloud-desc' => "Aggiunge una proprietà a Semantic MediaWiki per il tag delle pagine con delle etichette definite dall'utente e un tag parser per la loro visualizzazione in una tag cloud",
+);
+
 /** Japanese (日本語)
  * @author Whym
  */
