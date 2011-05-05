@@ -251,6 +251,14 @@ $messages['id'] = array(
 	'printversion-inexistent-book' => 'Buku tidak ditemukan. Silakan masukkan nama buku yang ada untuk mendapatkan versi cetaknya.',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'bookmanager-desc' => 'Strumenti per i libri',
+	'printversion-desc' => 'Genera una [[Special:PrintVersion|versione stampata]] di un libro',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
