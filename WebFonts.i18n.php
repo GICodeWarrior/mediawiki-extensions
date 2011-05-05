@@ -119,6 +119,16 @@ $messages['id'] = array(
 	'webfonts-disable-preference' => 'Nonaktifkan penyertaan fon (WebFonts)',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Incorpora caratteri nelle pagine',
+	'webfonts-load' => 'Seleziona il tipo di carattere',
+	'webfonts-disable-preference' => "Disattiva l'incorporazione dei caratteri (WebFont)",
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */
