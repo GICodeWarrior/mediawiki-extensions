@@ -173,6 +173,10 @@ $.articleFeedback = {
 		},
 		'submit': function() {
 			var context = this;
+			// For anon users, keep a cookie around so we know they've rated before
+			if ( mw.user.anonymous() ) {
+				$.cookie( prefix( 'rated' ), 'true', { 'expires': 365, 'path': '/' } );
+			}
 			$.articleFeedback.fn.enableSubmission.call( context, false );
 			context.$ui.find( '.articleFeedback-lock' ).show();
 			// Build data from form values for 'action=articlefeedback'
@@ -306,19 +310,20 @@ $.articleFeedback = {
 		},
 		'load': function() {
 			var context = this;
+			var userrating = !mw.user.anonymous() || $.cookie( prefix( 'rated' ) ) === 'true';
 			$.ajax( {
 				'url': mw.config.get( 'wgScriptPath' ) + '/api.php',
 				'type': 'GET',
 				'dataType': 'json',
 				'context': context,
-				'cache': false,
+				'cache': userrating,
 				'data': {
 					'action': 'query',
 					'format': 'json',
 					'list': 'articlefeedback',
 					'afpageid': mw.config.get( 'wgArticleId' ),
-					'afanontoken': mw.user.id(),
-					'afuserrating': 1
+					'afanontoken': userrating ? mw.user.id() : '',
+					'afuserrating': Number( userrating )
 				},
 				'success': function( data ) {
 					var context = this;
@@ -508,7 +513,9 @@ $.articleFeedback = {
 										// Remember that the users rejected this, set a cookie to not
 										// show this for 3 days
 										$.cookie(
-											prefix( 'pitch-' + key ), 'hide', { 'expires': 3 }
+											prefix( 'pitch-' + key ),
+											'hide',
+											{ 'expires': 3, 'path': '/' }
 										);
 										// Track that a pitch was dismissed
 										if ( tracked && typeof $.trackAction == 'function' ) {
