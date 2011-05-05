@@ -866,6 +866,7 @@ Se sei loggato, puoi disattivare questo avviso nella sezione "Casella di modific
 	'vector-editwarning-preference' => 'Avvisa quando lascio una pagina di modifica con modifiche non salvate',
 	'vector-simplesearch-search' => 'Ricerca',
 	'vector-simplesearch-containing' => 'contenente...',
+	'vector-noexperiments-preference' => 'Escludimi dalle funzionalità sperimentali',
 );
 
 /** Japanese (日本語)
