@@ -163,6 +163,13 @@ $messages['id'] = array(
 	'mwembed-desc' => 'Menyediakan dukungan untuk modul dan ekstensi mwEmbed',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'mwembed-desc' => 'Fornisce supporto per i moduli e le estensioni mwEmbed',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
