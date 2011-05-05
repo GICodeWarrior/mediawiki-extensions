@@ -232,6 +232,13 @@ $messages['cs'] = array(
 	'abcdownload' => 'Stáhnout:',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'abcdownload' => 'поѩтиѥ',
+);
+
 /** Welsh (Cymraeg)
  * @author Xxglennxx
  */
