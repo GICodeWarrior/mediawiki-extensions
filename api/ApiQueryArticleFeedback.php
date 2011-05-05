@@ -142,9 +142,8 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 
 	protected function getAnonToken( $params ) {
 		global $wgUser;
-		
 		$token = '';
-		if ( $wgUser->isAnon() ) {
+		if ( $wgUser->isAnon() && $params['userrating'] ) {
 			if ( !isset( $params['anontoken'] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
 			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
@@ -249,7 +248,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI => false,
 				ApiBase::PARAM_TYPE => 'integer',
 			),
-			'userrating' => false,
+			'userrating' => 0,
 			'anontoken' => null,
 		);
 	}
@@ -280,7 +279,7 @@ class ApiQueryArticleFeedback extends ApiQueryBase {
 		return array(
 			'api.php?action=query&list=articlefeedback',
 			'api.php?action=query&list=articlefeedback&afpageid=1',
-			'api.php?action=query&list=articlefeedback&afpageid=1&afuserrating',
+			'api.php?action=query&list=articlefeedback&afpageid=1&afuserrating=1',
 		);
 	}
 

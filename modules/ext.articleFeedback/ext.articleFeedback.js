@@ -36,7 +36,7 @@ function isPitchVisible( pitch ) {
  * @param durration Integer: Number of days to mute the pitch for
  */
 function mutePitch( pitch, duration ) {
-	$.cookie( prefix( 'pitches-' + pitch ), 'hide', { 'expires': duration } );
+	$.cookie( prefix( 'pitches-' + pitch ), 'hide', { 'expires': duration, 'path': '/' } );
 }
 
 function trackClick( id ) {
