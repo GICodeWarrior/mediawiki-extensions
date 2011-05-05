@@ -164,6 +164,13 @@ $messages['id'] = array(
 	'wikibhasha-desc' => 'Aplikasi untuk membuat konten multibahasa dengan memanfaatkan isi Wikipedia bahasa Inggris',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'wikibhasha-desc' => 'Applicazione per creare contenuti multilingua sfruttando il contenuto della Wikipedia in inglese',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
