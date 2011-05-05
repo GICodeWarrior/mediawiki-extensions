@@ -198,6 +198,13 @@ $messages['ig'] = array(
 	'templateinfo-header' => 'Úchè XML maka mkpurụ ihü nka bu:',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'templateinfo-header' => 'La definizione XML per questo template è:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

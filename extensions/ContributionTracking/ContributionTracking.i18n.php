@@ -587,6 +587,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  */
@@ -597,7 +598,9 @@ $messages['it'] = array(
 	'contrib-tracking-error-text' => "Errore nell'invio del modulo",
 	'contrib-tracking-submitting' => 'Invio al gestore del pagamento...',
 	'contrib-tracking-continue' => 'Se il collegamento non avviene automaticamente, fare clic sul pulsante per completare la donazione con PayPal.',
+	'contrib-tracking-redirect' => 'Verrai reindirizzato automaticamente su PayPal per completare la donazione.',
 	'contrib-tracking-button' => 'Continua',
+	'contrib-tracking-item-name-recurring' => 'Donazione ricorrente mensile',
 );
 
 /** Japanese (日本語)

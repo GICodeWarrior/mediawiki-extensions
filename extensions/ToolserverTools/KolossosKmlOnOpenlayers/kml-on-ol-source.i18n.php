@@ -336,6 +336,8 @@ $messages['it'] = array(
 	'ts-kml-on-ol-languages' => 'Lingue',
 	'ts-kml-on-ol-thumbnails' => 'Miniature',
 	'ts-kml-on-ol-help' => 'Aiuto',
+	'ts-kml-on-ol-all' => 'Tutti',
+	'ts-kml-on-ol-map-by' => 'Mappa di',
 );
 
 /** Japanese (日本語)

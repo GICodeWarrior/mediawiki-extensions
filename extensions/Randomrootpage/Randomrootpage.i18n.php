@@ -211,6 +211,14 @@ $messages['id'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Halaman istimewa]] untuk mengunduh halaman dasar secara sembarang',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'randomrootpage' => 'Pagina principale casuale',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Pagina speciale]] per far visualizzare una pagina principale casuale',
+);
+
 /** Japanese (日本語)
  * @author Fievarsty
  */

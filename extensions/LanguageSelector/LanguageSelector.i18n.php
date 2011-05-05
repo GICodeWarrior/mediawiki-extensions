@@ -185,6 +185,13 @@ $messages['bs'] = array(
 	'languageselector-setlang' => 'postavi',
 );
 
+/** Буряад (Буряад)
+ * @author ОйЛ
+ */
+$messages['bxr'] = array(
+	'languageselector' => 'Хэлэн',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP

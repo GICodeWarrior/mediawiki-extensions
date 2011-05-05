@@ -320,7 +320,7 @@ Astenn a ra ivez an arc'hwelioù parser evel
 Ober a ra kement-mañ dre c'hervel ar bazenn a zegouezh digant parser MediaWiki e-unan.",
 	'expand_templates_title' => 'Titl ar gendestenn, evit {{PAGENAME}} h.a. :',
 	'expand_templates_input' => 'Merkañ ho testenn amañ :',
-	'expand_templates_output' => "Disoc'h :",
+	'expand_templates_output' => "Disoc'h",
 	'expand_templates_xml_output' => 'Ezvont XML',
 	'expand_templates_ok' => 'Mat eo',
 	'expand_templates_remove_comments' => 'Lemel an notennoù kuit',

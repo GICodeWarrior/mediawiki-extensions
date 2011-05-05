@@ -128,6 +128,13 @@ $messages['id'] = array(
 	'qrcode-desc' => 'Membuat dan menambahkan gambar QR Code ke halaman wiki',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'qrcode-desc' => "Genera e aggiunge l'immagine per il codice QR ad una pagina wiki",
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

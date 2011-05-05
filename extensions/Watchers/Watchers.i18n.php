@@ -585,6 +585,7 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author McDutchie
  * @author Pietrodn
@@ -594,10 +595,12 @@ $messages['it'] = array(
 	'watchers-desc' => 'Mostra [[Special:Watchers|quanti utenti hanno una pagina negli osservati speciali]]',
 	'watchers_link_title' => 'Chi osserva questa pagina?',
 	'watchers_error_article' => '<b>Errore:</b> la pagina richiesta non esiste.',
+	'watchers-error-invalid-page' => "'''Errore:''' \"\$1\" è un titolo di pagina non valido.",
 	'watchers_header' => '{{PLURAL:$2|Utente che osserva|Utenti che osservano}} la pagina "[[:$1]]"',
 	'watchers_noone_watches' => 'La pagina non è osservata da alcun utente.',
 	'watchers_x_or_more' => 'La pagina [[:$2]] è osservata da almeno $1 {{PLURAL:$1|utente|utenti}}.',
 	'watchers_less_than_x' => 'La pagina è osservata da meno di $1 {{PLURAL:$1|utente|utenti}}.',
+	'right-watchers-list' => '[[Special:Watchers|Elenca gli utenti che hanno una specifica pagina fra gli osservati speciali]]',
 );
 
 /** Japanese (日本語)

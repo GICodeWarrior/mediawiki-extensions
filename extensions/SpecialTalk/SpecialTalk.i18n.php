@@ -110,6 +110,13 @@ $messages['id'] = array(
 	'specialtalk-desc' => 'Tambahkan tab pembicaraan ke [[Special:SpecialPages|halaman istimewa]]',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'specialtalk-desc' => 'Aggiunge il tab "Discussioni" alle [[Special:SpecialPages|pagine speciali]]',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
