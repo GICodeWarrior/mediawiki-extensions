@@ -2603,6 +2603,7 @@ $messages['uk'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'qp_vote_button' => 'שטימען',
 	'qp_source_link' => 'מקור',
 );
 
