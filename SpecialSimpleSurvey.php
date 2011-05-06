@@ -138,8 +138,8 @@ class SpecialSimpleSurvey extends SpecialPage {
 				'id' => "simple-survey-{$mode}"
 			)
 		);
-		$html .= Xml::hidden( 'survey', $mode );
-		$html .= Xml::hidden( 'token', $this->tokenToCheck );
+		$html .= Html::Hidden( 'survey', $mode );
+		$html .= Html::Hidden( 'token', $this->tokenToCheck );
 		// Render a survey
 		$html .= SimpleSurvey::render(
 			$mode,
