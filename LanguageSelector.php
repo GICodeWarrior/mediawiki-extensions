@@ -369,7 +369,7 @@ function wfLanguageSelectorHTML( Title $title, $style = null, $class = null, $se
 		'action' => $wgScript,
 		'style' => 'display:inline;'
 	) );
-	$html .= Xml::hidden( 'title', $title->getPrefixedDBKey() );
+	$html .= Html::Hidden( 'title', $title->getPrefixedDBKey() );
 	$html .= Xml::openElement('select', array(
 		'name' => 'setlang',
 		'id' => 'languageselector-select-' . $id,
