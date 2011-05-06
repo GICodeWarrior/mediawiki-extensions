@@ -79,7 +79,10 @@ $messages['br'] = array(
 	'svgedit-summary-default' => '/* Kemmet gant svg-edit */',
 	'svgedit-editor-save-close' => 'Enrollañ ha serriñ',
 	'svgedit-editor-close' => 'Nullañ',
+	'svgedit-desc' => 'Kemmañ an tresadennoù zo diouzh ar furmad SVG en ho merdeer en ur ober gant [http://code.google.com/p/svg-edit/ SVG-Edit]',
 	'svgedit-edit-tab' => 'Kemmañ an dresadenn',
+	'svgedit-edit-tab-tooltip' => 'Gallout a rit kemmañ an dresadenn SVG-mañ en ho merdeer',
+	'svgedit-toolbar-insert' => 'Tresadenn SVG',
 );
 
 /** Bosnian (Bosanski)
