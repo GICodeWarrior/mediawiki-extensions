@@ -548,9 +548,11 @@ $messages['br'] = array(
 	'articlefeedback-survey-message-success' => 'Trugarez da vezañ leuniet ar goulennaoueg.',
 	'articlefeedback-survey-message-error' => "Ur fazi zo bet.
 Klaskit en-dro diwezhatoc'h.",
-	'articleFeedback-table-caption-dailyhighsandlows' => 'Lusk ha dilusk an devezh',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Berzh ha droukverzh an devezh',
+	'articleFeedback-table-caption-dailyhighs' => 'Berzh an devezh',
+	'articleFeedback-table-caption-dailylows' => 'Droukverzh an devezh',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Ar re gemmet ar muiañ er sizhun-mañ',
-	'articleFeedback-table-caption-recentlows' => 'Dilusk nevesañ',
+	'articleFeedback-table-caption-recentlows' => 'Droukverzh nevesañ',
 	'articleFeedback-table-heading-page' => 'Pajenn',
 	'articleFeedback-table-heading-average' => 'Keidenn',
 	'articlefeedback-emailcapture-response-body' => "Demat deoc'h !
@@ -835,6 +837,8 @@ $messages['de'] = array(
 	'articlefeedback-survey-message-error' => 'Ein Fehler ist aufgetreten.
 Bitte später erneut versuchen.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Heutige Hochs und Tiefs',
+	'articleFeedback-table-caption-dailyhighs' => 'Heutige Hochs',
+	'articleFeedback-table-caption-dailylows' => 'Heutige Tiefs',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Diese Woche am meisten geändert',
 	'articleFeedback-table-caption-recentlows' => 'Aktuelle Tiefs',
 	'articleFeedback-table-heading-page' => 'Seite',
@@ -1070,7 +1074,9 @@ La teamo {{SITENAME}}',
 
 /** Spanish (Español)
  * @author Dferg
+ * @author Fitoschido
  * @author Locos epraix
+ * @author Mashandy
  * @author Od1n
  * @author Sanbec
  * @author Translationista
@@ -1078,6 +1084,7 @@ La teamo {{SITENAME}}',
 $messages['es'] = array(
 	'articlefeedback' => 'Evaluación del artículo',
 	'articlefeedback-desc' => 'Evaluación del artículo (versión de pruebas)',
+	'articlefeedback-survey-question-origin' => '¿En qué página estabas cuando iniciaste esta encuesta?',
 	'articlefeedback-survey-question-whyrated' => 'Por favor, dinos por qué has valorado esta página hoy (marca todas las opciones que correspondan):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Quería contribuir a la calificación global de la página',
 	'articlefeedback-survey-answer-whyrated-development' => 'Espero que mi calificación afecte positivamante el desarrollo de la página',
@@ -1096,12 +1103,19 @@ $messages['es'] = array(
 	'articlefeedback-form-panel-title' => 'Evalúa esta página',
 	'articlefeedback-form-panel-instructions' => 'Por favor tómate un tiempo para evaluar esta página.',
 	'articlefeedback-form-panel-clear' => 'Eliminar la evaluación',
-	'articlefeedback-form-panel-expertise' => 'Tengo conocimientos previos sobre este tema',
-	'articlefeedback-form-panel-expertise-studies' => 'Lo he estudiado en la universidad',
+	'articlefeedback-form-panel-expertise' => 'Estoy muy bien informado sobre este tema (opcional)',
+	'articlefeedback-form-panel-expertise-studies' => 'Tengo un grado universitario relevante',
 	'articlefeedback-form-panel-expertise-profession' => 'Es parte de mi profesión',
-	'articlefeedback-form-panel-expertise-hobby' => 'Está relacionado con mis aficiones o intereses',
+	'articlefeedback-form-panel-expertise-hobby' => 'Es una pasión personal',
 	'articlefeedback-form-panel-expertise-other' => 'La fuente de mi conocimiento no está en esta lista',
-	'articlefeedback-form-panel-submit' => 'Enviar comentarios',
+	'articlefeedback-form-panel-helpimprove' => 'Me gustaría ayudar a mejorar Wikipedia, enviarme un correo electrónico (opcional)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Te enviaremos un correo electrónico de confirmación. No compartiremos tu dirección con nadie. $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de privacidad',
+	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Política de protección de datos',
+	'articlefeedback-form-panel-submit' => 'Enviar calificaciones',
+	'articlefeedback-form-panel-success' => 'Guardado correctamente',
+	'articlefeedback-form-panel-expiry-title' => 'Tus calificaciones han caducado',
+	'articlefeedback-form-panel-expiry-message' => 'Por favor, reevalúa esta página y presenta nuevas calificaciones.',
 	'articlefeedback-report-switch-label' => 'Ver las calificaciones de la página',
 	'articlefeedback-report-panel-title' => 'Evaluaciones de la página',
 	'articlefeedback-report-panel-description' => 'Promedio actual de calificaciones.',
@@ -1112,7 +1126,27 @@ $messages['es'] = array(
 	'articlefeedback-field-complete-label' => 'Completa',
 	'articlefeedback-field-complete-tip' => '¿Crees que esta página cubre las áreas esenciales del tópico que deberían estar cubiertas?',
 	'articlefeedback-field-objective-label' => 'Objetivo',
+	'articlefeedback-field-objective-tip' => '¿Crees que esta página muestra una representación justa de todas las perspectivas sobre el tema?',
+	'articlefeedback-field-wellwritten-label' => 'Bien escrito',
+	'articlefeedback-field-wellwritten-tip' => '¿Crees que esta página está bien organizada y escrita correctamente?',
+	'articlefeedback-pitch-reject' => 'Quizá más tarde',
 	'articlefeedback-pitch-or' => 'o',
+	'articlefeedback-pitch-thanks' => '¡Gracias! Se han guardado tus valoraciones.',
+	'articlefeedback-pitch-survey-message' => 'Tómate un momento para completar una breve encuesta.',
+	'articlefeedback-pitch-survey-accept' => 'Iniciar encuesta',
+	'articlefeedback-pitch-join-message' => '¿Quieres crear una cuenta nueva?',
+	'articlefeedback-pitch-join-body' => 'Una cuenta te ayudará a realizar un seguimiento de tus cambios y te permitirá participar en debates y ser parte de la comunidad.',
+	'articlefeedback-pitch-join-accept' => 'Crear una cuenta',
+	'articlefeedback-pitch-join-login' => 'Iniciar sesión',
+	'articlefeedback-pitch-edit-message' => '¿Sabías que puedes editar esta página?',
+	'articlefeedback-pitch-edit-accept' => 'Editar esta página',
+	'articlefeedback-survey-message-success' => 'Gracias por completar la encuesta.',
+	'articlefeedback-survey-message-error' => 'Ha ocurrido un error.
+Por favor inténtalo de nuevo más tarde.',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Altibajos de hoy',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Lo más modificado de la semana',
+	'articleFeedback-table-heading-page' => 'Página',
+	'articleFeedback-table-heading-average' => 'Promedio',
 );
 
 /** Estonian (Eesti)
@@ -1424,6 +1458,8 @@ $messages['gl'] = array(
 	'articlefeedback-survey-message-error' => 'Houbo un erro.
 Inténteo de novo máis tarde.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Os altos e baixos de hoxe',
+	'articleFeedback-table-caption-dailyhighs' => 'Os altos de hoxe',
+	'articleFeedback-table-caption-dailylows' => 'Os baixos de hoxe',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Os máis modificados esta semana',
 	'articleFeedback-table-caption-recentlows' => 'Últimos baixos',
 	'articleFeedback-table-heading-page' => 'Páxina',
@@ -1828,6 +1864,8 @@ $messages['ia'] = array(
 	'articlefeedback-survey-message-error' => 'Un error ha occurrite.
 Per favor reproba plus tarde.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Altos e bassos de hodie',
+	'articleFeedback-table-caption-dailyhighs' => 'Le altos de hodie',
+	'articleFeedback-table-caption-dailylows' => 'Le bassos de hodie',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Le plus modificate iste septimana',
 	'articleFeedback-table-caption-recentlows' => 'Bassos recente',
 	'articleFeedback-table-heading-page' => 'Pagina',
@@ -1924,6 +1962,8 @@ $messages['id'] = array(
 	'articlefeedback-survey-message-error' => 'Kesalahan terjadi.
 Silakan coba lagi.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Kenaikan dan penurunan hari ini',
+	'articleFeedback-table-caption-dailyhighs' => 'Tertinggi hari ini',
+	'articleFeedback-table-caption-dailylows' => 'Terendah hari ini',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Paling berubah minggu ini',
 	'articleFeedback-table-caption-recentlows' => 'Penurunan terbaru',
 	'articleFeedback-table-heading-page' => 'Halaman',
@@ -2497,6 +2537,8 @@ $messages['mk'] = array(
 	'articlefeedback-survey-message-error' => 'Се појави грешка.
 Обидете се подоцна.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Издигања и падови за денес',
+	'articleFeedback-table-caption-dailyhighs' => 'Денешни издигања',
+	'articleFeedback-table-caption-dailylows' => 'Денешни падови',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Најизменети за неделава',
 	'articleFeedback-table-caption-recentlows' => 'Скорешни падови',
 	'articleFeedback-table-heading-page' => 'Страница',
@@ -2591,6 +2633,8 @@ $messages['ml'] = array(
 	'articlefeedback-survey-message-error' => 'എന്തോ പിഴവുണ്ടായിരിക്കുന്നു.
 ദയവായി വീണ്ടും ശ്രമിക്കുക.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'ഇന്നത്തെ കയറ്റിറക്കങ്ങൾ',
+	'articleFeedback-table-caption-dailyhighs' => 'ഇന്നത്തെ ഉയർച്ചകൾ',
+	'articleFeedback-table-caption-dailylows' => 'ഇന്നത്തെ താഴ്ചകൾ',
 	'articleFeedback-table-caption-weeklymostchanged' => 'ഈ ആഴ്ചയിൽ ഏറ്റവുമധികം മാറിയത്',
 	'articleFeedback-table-caption-recentlows' => 'സമീപകാല ഇറക്കങ്ങൾ',
 	'articleFeedback-table-heading-page' => 'താൾ',
@@ -2751,6 +2795,8 @@ Uw beoordeling is opgeslagen.',
 	'articlefeedback-survey-message-error' => 'Er is een fout opgetreden.
 Probeer het later opnieuw.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Hoogte- en dieptepunten van vandaag',
+	'articleFeedback-table-caption-dailyhighs' => 'Hoogste dagwaarden',
+	'articleFeedback-table-caption-dailylows' => 'Laagste dagwaarden',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Deze week de meeste wijzigingen',
 	'articleFeedback-table-caption-recentlows' => 'Recente dieptepunten',
 	'articleFeedback-table-heading-page' => 'Pagina',
@@ -3188,6 +3234,8 @@ $messages['pt'] = array(
 	'articlefeedback-survey-message-error' => 'Ocorreu um erro. 
 Tente novamente mais tarde, por favor.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Os melhores e piores de hoje',
+	'articleFeedback-table-caption-dailyhighs' => 'Os melhores de hoje',
+	'articleFeedback-table-caption-dailylows' => 'Os piores de hoje',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Os mais alterados da semana',
 	'articleFeedback-table-caption-recentlows' => 'Os piores mais recentes',
 	'articleFeedback-table-heading-page' => 'Página',
@@ -3496,6 +3544,8 @@ $messages['ru'] = array(
 	'articlefeedback-survey-message-error' => 'Произошла ошибка. 
 Пожалуйста, повторите попытку позже.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Сегодняшние взлёты и падения',
+	'articleFeedback-table-caption-dailyhighs' => 'Сегодняшние взлёты',
+	'articleFeedback-table-caption-dailylows' => 'Сегодняшние падения',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Наиболее изменившиеся на этой неделе',
 	'articleFeedback-table-caption-recentlows' => 'Недавние падения',
 	'articleFeedback-table-heading-page' => 'Страница',
@@ -3731,6 +3781,7 @@ $messages['sl'] = array(
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Politika zasebnosti',
 	'articlefeedback-form-panel-helpimprove-privacylink' => 'Project:Politika zasebnosti',
 	'articlefeedback-form-panel-submit' => 'Pošlji ocene',
+	'articlefeedback-form-panel-pending' => 'Vaše ocene niso bile poslane',
 	'articlefeedback-form-panel-success' => 'Uspešno shranjeno',
 	'articlefeedback-form-panel-expiry-title' => 'Vaše ocene so potekle',
 	'articlefeedback-form-panel-expiry-message' => 'Prosimo, ponovno ocenite to stran in pošljite nove ocene.',
@@ -3762,6 +3813,8 @@ $messages['sl'] = array(
 	'articlefeedback-survey-message-error' => 'Prišlo je do napake.
 Prosimo, poskusite znova pozneje.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Današnji vzponi in padci',
+	'articleFeedback-table-caption-dailyhighs' => 'Današnji vzponi',
+	'articleFeedback-table-caption-dailylows' => 'Današnji padci',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Ta teden najbolj spremenjeno',
 	'articleFeedback-table-caption-recentlows' => 'Nedavni padci',
 	'articleFeedback-table-heading-page' => 'Stran',
@@ -4197,6 +4250,8 @@ $messages['vi'] = array(
 	'articlefeedback-survey-message-error' => 'Đã gặp lỗi.
 Xin hãy thử lại sau.',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Các điểm cao và thấp nhất hôm nay',
+	'articleFeedback-table-caption-dailyhighs' => 'Các điểm cao nhất hôm nay',
+	'articleFeedback-table-caption-dailylows' => 'Các điểm thấp nhất hôm nay',
 	'articleFeedback-table-caption-weeklymostchanged' => 'Các điểm thay đổi nhiều nhất vào tuần này',
 	'articleFeedback-table-caption-recentlows' => 'Các điểm thấp gần đây',
 	'articleFeedback-table-heading-page' => 'Trang',
