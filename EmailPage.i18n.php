@@ -356,8 +356,12 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Dferg
+ * @author Fitoschido
  */
 $messages['es'] = array(
+	'e-mailpage' => 'Página de correo electrónico',
+	'ea-group-info' => 'Además puedes enviar la página a los miembros de un grupo',
+	'ea-pagesend' => 'Página «$1» enviada desde $2',
 	'ea-denied' => 'Acceso denegado',
 );
 
