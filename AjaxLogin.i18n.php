@@ -763,6 +763,7 @@ Kiek nans naoë sjriefwies.',
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -775,6 +776,8 @@ Jūs prarasite pakeitimus, atliktus šiame puslapyje, jei jį dabar paliksite.',
 	'al-nosuchuser' => 'Nėra tokio naudotojo "$1". 
 Naudotojų vardai gali turėti didžiąsias ir mažąsias raidės. 
 Pasitikrinkite rašybą.',
+	'al-createblocked' => 'Jūsų IP adresas yra užblokuotas nuo sąskaitų kūrimų.',
+	'al-throttled' => 'Jums per daug kartu bandėte įvest slaptažodį. Palaukite $1 {{PLURAL:$1|sekundę|sekundes}} prieš mėgindami dar kartą.',
 );
 
 /** Malagasy (Malagasy)
