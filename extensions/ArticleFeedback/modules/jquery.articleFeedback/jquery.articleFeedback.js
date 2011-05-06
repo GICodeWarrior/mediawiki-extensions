@@ -83,6 +83,7 @@ $.articleFeedback = {
 		</div>\
 		<button class="articleFeedback-submit articleFeedback-visibleWith-form" type="submit" disabled="disabled"><html:msg key="form-panel-submit" /></button>\
 		<div class="articleFeedback-success articleFeedback-visibleWith-form"><span><html:msg key="form-panel-success" /></span></div>\
+		<div class="articleFeedback-pending articleFeedback-visibleWith-form"><span><html:msg key="form-panel-pending" /></span></div>\
 		<div style="clear:both;"></div>\
 		<div class="articleFeedback-notices articleFeedback-visibleWith-form">\
 			<div class="articleFeedback-expiry">\
@@ -133,14 +134,28 @@ $.articleFeedback = {
 		'enableSubmission': function( state ) {
 			var context = this;
 			if ( state ) {
-				// Reset and remove success message
+				// Reset success timeout
 				clearTimeout( context.successTimeout );
-				context.$ui.find( '.articleFeedback-success span' ).fadeOut( 'fast' );
-				// Enable
-				context.$ui.find( '.articleFeedback-submit' ).button( { 'disabled': false } );
+				context.$ui
+					// Enable
+					.find( '.articleFeedback-submit' )
+						.button( { 'disabled': false } )
+						.end()
+					// Hide success
+					.find( '.articleFeedback-success span' )
+						.hide()
+						.end()
+					// Show pending
+					.find( '.articleFeedback-pending span' )
+						.fadeIn( 'fast' );
 			} else {
 				// Disable
-				context.$ui.find( '.articleFeedback-submit' ).button( { 'disabled': true } );
+				context.$ui
+					.find( '.articleFeedback-submit' )
+						.button( { 'disabled': true } )
+						.end()
+					.find( '.articleFeedback-pending span' )
+						.hide();
 			}
 		},
 		'updateRating': function() {
@@ -647,7 +662,7 @@ $.articleFeedback = {
 						}
 						if ( pitches.length ) {
 							// Select randomly using equal distribution of available pitches
-							var key = pitches[Math.floor( Math.random() * list.length )];
+							var key = pitches[Math.floor( Math.random() * pitches.length )];
 							context.$ui.find( '.articleFeedback-pitches' )
 								.css( 'width', context.$ui.width() )
 								.find( '.articleFeedback-pitch[rel="' + key + '"]' )

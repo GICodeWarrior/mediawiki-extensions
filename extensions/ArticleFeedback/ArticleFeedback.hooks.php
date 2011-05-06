@@ -77,6 +77,7 @@ class ArticleFeedbackHooks {
 				'articlefeedback-form-panel-helpimprove-privacylink',
 				'articlefeedback-form-panel-submit',
 				'articlefeedback-form-panel-success',
+				'articlefeedback-form-panel-pending',
 				'articlefeedback-form-panel-expiry-title',
 				'articlefeedback-form-panel-expiry-message',
 				'articlefeedback-report-switch-label',
