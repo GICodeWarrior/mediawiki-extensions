@@ -2095,6 +2095,13 @@ $messages['vo'] = array(
 	'vote-invalid-choice' => 'Mutol välön bali välas gebidik.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'right-vote' => 'שטימען',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */
