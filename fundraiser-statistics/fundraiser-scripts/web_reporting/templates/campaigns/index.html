@@ -1,0 +1,16 @@
+
+<html>
+<head><title>Big Ass Reportin'</title></head>
+<body>
+
+<h1>Choose a Campaign:</h1><br>
+<u><h3>Campaign, Donations (>50) </h1></u><br>
+{% if campaigns %}
+    <ul>
+    {% for c in campaigns %}
+        <li>{{ c.2 }} , {{ c.3 }}, <a href="/campaigns/{{ c.0 }}">{{ c.0 }}</a> , {{ c.1 }}</li><br>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No campaigns are available.</p>
+{% endif %}
