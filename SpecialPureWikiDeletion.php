@@ -9,7 +9,7 @@
  * @license GNU General Public Licence 2.0 or later
  * @modified by Tisane
  */
-class RandomExcludeBlank extends SpecialPage {
+class RandomExcludeBlank extends RandomPage {
 	private $namespaces;  // namespaces to select pages from
 	function __construct( $name = 'RandomExcludeBlank' ){
 		global $wgContentNamespaces;
@@ -17,17 +17,7 @@ class RandomExcludeBlank extends SpecialPage {
 		$this->namespaces = $wgContentNamespaces;
 
 		parent::__construct( $name );
-		$this->setGroup('RandomExcludeBlank'
-			,'redirects');
-	}
-
-	public function getNamespaces() {
-		return $this->namespaces;
-	}
-
-	public function setNamespace ( $ns ) {
-		if( !$ns || $ns < NS_MAIN ) $ns = NS_MAIN;
-		$this->namespaces = array( $ns );
+		SpecialPageFactory::setGroup( 'RandomExcludeBlank','redirects' );
 	}
 
 	// select redirects instead of normal pages?
@@ -39,8 +29,9 @@ class RandomExcludeBlank extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgContLang;
 
-		if ($par)
+		if ($par) {
 			$this->setNamespace( $wgContLang->getNsIndex( $par ) );
+		}
 
 		$isBlank=true;
 		$dbr = wfGetDB( DB_SLAVE );
@@ -48,7 +39,7 @@ class RandomExcludeBlank extends SpecialPage {
 			$title = $this->getRandomTitle();
 			$result=$dbr->selectRow('blanked_page','blank_page_id'
 				,array("blank_page_id" => $title->getArticleID()));
-			if (!$result && !$title->isRedirect()){
+			if ( !$result && !$title->isRedirect() ) {
 				$isBlank=false;
 			}
 		}
@@ -61,58 +52,6 @@ class RandomExcludeBlank extends SpecialPage {
 
 		$query = $this->isRedirect() ? 'redirect=no' : '';
 		$wgOut->redirect( $title->getFullUrl( $query ) );
-	}
-
-
-	/**
-	 * Choose a random title.
-	 * @return Title object (or null if nothing to choose from)
-	 */
-	public function getRandomTitle() {
-		
-		$randstr = wfRandom();
-		$row = $this->selectRandomPageFromDB( $randstr );
-
-		/* If we picked a value that was higher than any in
-		 * the DB, wrap around and select the page with the
-		 * lowest value instead!  One might think this would
-		 * skew the distribution, but in fact it won't cause
-		 * any more bias than what the page_random scheme
-		 * causes anyway.  Trust me, I'm a mathematician. :)
-		 */
-		if( !$row )
-			$row = $this->selectRandomPageFromDB( "0" );
-
-		if( $row )
-			return Title::makeTitleSafe( $row->page_namespace, $row->page_title );
-		else
-			return null;
-	}
-
-	private function selectRandomPageFromDB( $randstr ) {
-		global $wgExtraRandompageSQL;
-		$fname = 'RandomPage::selectRandomPageFromDB';
-
-		$dbr = wfGetDB( DB_SLAVE );
-
-		$use_index = $dbr->useIndexClause( 'page_random' );
-		$page = $dbr->tableName( 'page' );
-
-		$ns = implode( ",", $this->namespaces );
-		$redirect = $this->isRedirect() ? 1 : 0;
-
-		$extra = $wgExtraRandompageSQL ? "AND ($wgExtraRandompageSQL)" : "";
-		$sql = "SELECT page_title, page_namespace
-			FROM $page $use_index
-			WHERE page_namespace IN ( $ns )
-			AND page_is_redirect = $redirect
-			AND page_random >= $randstr
-			$extra
-			ORDER BY page_random";
-
-		$sql = $dbr->limitResult( $sql, 1, 0 );
-		$res = $dbr->query( $sql, $fname );
-		return $dbr->fetchObject( $res );
 	}
 }
 
