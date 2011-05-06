@@ -277,7 +277,8 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * 
 	 * Divides the number of ratings in half to determine the range of
 	 * articles to consider 'highest'.  In the event of an odd number
-	 * of articles, round up, giving preference to the 'highs' so
+	 * of articles, (determined by checking for modulus of # of ratings / 2),
+	 * round up, giving preference to the 'highs' so
 	 * everyone feels warm and fuzzy about having more 'highs', as 
 	 * it were...
 	 * 
@@ -285,20 +286,32 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * @return array Containing the... highest rated article data
 	 */
 	protected function getDailyHighs( $highs_lows ) {
-		$num_ratings = round( count( $highs_lows ) / 2 );
-		return array_slice( $highs_lows, -$num_ratings, $num_ratings );
+		$num_ratings = count( $highs_lows );
+		if ( $num_ratings % 2 ) {
+			$num_highs = round( $num_ratings / 2 );
+		} else {
+			$num_highs = $num_ratings / 2;
+		}
+		return array_slice( $highs_lows, -$num_highs, $num_highs );
 	}
 	
 	/**
 	 * Determine the 'lowest' rated articles
-	 * 
-	 * @see $this->getDailyHighs()
+	 *
+	 * @see getDailyHighs() However, if we are dealing with an odd number of
+	 * 	ratings, round up and then subtract 1 since we are giving preference
+	 * 	to the 'highs' when dealing with an odd number of ratings.
 	 * @param array Pre-orderd from lowest to highest
 	 * @return array Containing the... lowest rated article data
 	 */
 	protected function getDailyLows( $highs_lows ) {
-		$num_ratings = round( count( $highs_lows ) / 2, 0, PHP_ROUND_HALF_DOWN);
-		return array_slice( $highs_lows, 0, $num_ratings );
+		$num_ratings = count( $highs_lows );
+		if ( $num_ratings % 2 ) {
+			$num_lows = round( $num_ratings / 2 ) - 1;
+		} else {
+			$num_lows = $num_ratings / 2;
+		}
+		return array_slice( $highs_lows, 0, $num_lows );
 	}
 	
 	/**
