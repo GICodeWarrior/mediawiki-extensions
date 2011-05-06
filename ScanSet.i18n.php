@@ -884,9 +884,9 @@ $messages['lt'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'scanset-desc' => 'Преглед на слики од скенирани страници од CD/DVD збирките на Андреас Грос (Andreas Grosz)',
-	'scanset_no_name' => 'Error: Мора да назначите збирка скенирани страници, на пр. &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Error: Грешка, неважечка или неприсутна збирка на скенирани страници.',
+	'scanset-desc' => 'Преглед на слики од отсликани страници од CD/DVD збирките на Андреас Грос (Andreas Grosz)',
+	'scanset_no_name' => 'Грешка: Мора да наведете збирка отсликани страници, на пр. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Грешка: Неважечка или неприсутна збирка отсликани страници.',
 	'scanset_unrecognised_index_format' => 'Error: Непознат формат на индексот',
 	'scanset_opendir_error' => 'Error: Грешка, не можам да го отворам директориумот $1',
 	'scanset_no_files' => 'Error: Нема податотеки во назначениот директориум.',
