@@ -451,7 +451,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				return;
 			}
 
-			$user = self::getUser( $openid );
+			$user = self::getUserFromUrl( $openid );
 
 			if ( $user instanceof User ) {
 				$this->updateUser( $user, $sreg, $ax ); # update from server

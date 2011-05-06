@@ -75,7 +75,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		}
 
 		# Is this ID already taken?
-		$other = $this->getUser( $openid_url );
+		$other = self::getUserFromUrl( $openid_url );
 
 		if ( isset( $other ) ) {
 			if ( $other->getId() == $wgUser->getID() ) {
@@ -160,7 +160,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		global $wgUser, $wgOut, $wgRequest, $wgOpenIDOnly;
 
 		$openid = $wgRequest->getVal( 'url' );
-		$user = self::getUser( $openid );
+		$user = self::getUserFromUrl( $openid );
 
 		if ( $user->getId() == 0 || $user->getId() != $wgUser->getId() ) {
 			$wgOut->showErrorPage( 'openiderror', 'openidconvertothertext' );
@@ -239,7 +239,7 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 			# We check again for dupes; this may be normalized or
 			# reformatted by the server.
 
-			$other = $this->getUser( $openid_url );
+			$other = self::getUserFromUrl( $openid_url );
 
 			if ( isset( $other ) ) {
 				if ( $other->getId() == $wgUser->getID() ) {
