@@ -5,7 +5,7 @@
  * More info can be found at http://www.mediawiki.org/wiki/Extension:LiveTranslate#Configuration
  *
  *                          NOTICE:
- * Changing one of these settings can be done by copieng or cutting it,
+ * Changing one of these settings can be done by copying or cutting it,
  * and placing it in LocalSettings.php, AFTER the inclusion of Live Translate.
  *
  * @file LiveTranslate_Settings.php

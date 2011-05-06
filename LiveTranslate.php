@@ -10,8 +10,7 @@
  * @file LiveTranslate.php
  * @ingroup LiveTranslate
  *
- * @licence GNU GPL v3
- *
+ * @licence GNU GPL v3+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
@@ -110,3 +109,5 @@ define( 'TMT_GCSV', 2 );
 $egLiveTranslateMagicWords = array();
 
 require_once 'LiveTranslate_Settings.php';
+
+$wgAvailableRights[] = 'managetms';

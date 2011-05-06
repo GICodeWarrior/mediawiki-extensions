@@ -16,6 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'livetranslate-desc' => 'Enables live translation of page content using the Google Translate service',
+    'right-managetms' => 'Required to modify the list of translation memories via Special:SpecialLiveTranslate.',
 
 	// Translation interface
 	'livetranslate-translate-to' => 'Translate this page to',
