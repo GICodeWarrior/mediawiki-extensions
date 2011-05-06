@@ -188,9 +188,6 @@ class SpecialGetFamily extends SpecialPage {
 				}
 				$out .=  "        }\n        \n";
 			}
-			$version = array();
-			preg_match( '/[0-9]*\.[0-9]*/', $wgVersion, $version );
-			$version = $version[0];
 
 			$out .= "
 		def hostname(self, code):
@@ -211,7 +208,7 @@ class SpecialGetFamily extends SpecialPage {
 			return '%s?title=%s:Userlogin&action=submitlogin' % (self.path(code), self.special_namespace_url(code))
 
 		def version(self, code):
-			return '" . $version . "' # The MediaWiki version used. Not very important in most cases.
+			return '" . $wgVersion . "' # The MediaWiki version used. Not very important in most cases.
 	";
 			} else {
 				$out .= wfMsg( 'getfamily-interwikierror' );
