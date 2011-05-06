@@ -53,11 +53,8 @@ function enableMetavid() {
 	return true;
 }
 function mvSetupExtension() {
-	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore,
-	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $markerList, $wgVersion,
-	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSMVDrewrite,
-	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers, $wgJSAutoloadClasses,
-	$wgAPIModules;
+	global $mvgIP, $wgHooks, $wgExtensionCredits, $wgParser,
+	$wgAjaxExportList, $wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers;
 
 
 	//add the ALL page header

@@ -64,7 +64,7 @@ $wgHooks['ImgAuthBeforeStream'][] = 'NSFileRepoImgAuthCheck';
  * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
 */
 function NSFileRepoSetup() {
-	global $wgLocalFileRepo, $wgVersion;	
+	global $wgLocalFileRepo;
 	$wgLocalFileRepo['class'] = "NSLocalRepo";
 	RepoGroup::destroySingleton();
 }
