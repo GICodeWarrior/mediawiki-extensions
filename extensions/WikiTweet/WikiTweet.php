@@ -9,8 +9,8 @@
  * with optional parameters being includes as "|param=value".
  *
  * @addtogroup Extensions
- * @author Thomas FAURÉ <faure.thomas@gmail.com> @whiblog
- * @copyright © 2010 Thomas FAURÉ
+ * @author Thomas FAURÃ‰ <faure.thomas@gmail.com> @whiblog
+ * @copyright Â© 2010 Thomas FAURÃ‰
  * @licence GNU General Public Licence 3.0
  */
 
@@ -31,11 +31,12 @@ if ( !$wgUseAjax ) {
 $wgExtensionFunctions[] = 'wikiTweeter';
 $wgHooks['LanguageGetMagic'][]	= 'wikiTweeterMagic';
 $wgExtensionCredits['parserhook'][] = array(
-    'name'        => 'WikiTweet',
-    'author'      => 'Thomas Faur&eacute;',
-    'description' => 'Create a twitter-like feed into MediaWiki',
-    'url'         => 'http://blog.whibe.com/',
-    'version'     => '0.5.0'
+	'path'        => __FILE__,
+	'name'        => 'WikiTweet',
+	'author'      => 'Thomas FaurÃ©',
+	'descriptionmsg' => 'wikitweet-desc',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:WikiTweet',
+	'version'     => '0.5.1'
 );
 
 $dir = dirname(__FILE__) . '/';
