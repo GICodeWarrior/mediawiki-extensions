@@ -147,7 +147,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 	 * @private
 	 */
 	function strip( $text, $state, $stripcomments = false, $dontstrip = array() ) {
-		global $wgContLang, $wgUseTeX, $wgScriptPath, $wgVersion, $wgHooks, $wgExtensionFunctions;
+		global $wgContLang, $wgUseTeX, $wgScriptPath, $wgHooks, $wgExtensionFunctions;
 
 		wfProfileIn( __METHOD__ );
 		$render = ( $this->mOutputType == OT_HTML );
