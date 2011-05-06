@@ -75,7 +75,7 @@ class ApiArticleFeedback extends ApiBase {
 
 		$this->insertProperties( $revisionId, $wgUser, $token, $params );
 
-		$squidUpdate = new SquidUpdate( array( wfAppendQuery( 'api.php', array(
+		$squidUpdate = new SquidUpdate( array( wfAppendQuery( wfScript( 'api' ), array(
 			'action' => 'query',
 			'format' => 'json',
 			'list' => 'articlefeedback',
