@@ -844,8 +844,8 @@ ENDTEXT;
 
 	/** Returns image paths used in an XHTML document */
 	function findImages( $text ) {
-		global $wgOutputEncoding, $wgDumpImages;
-		$parser = xml_parser_create( $wgOutputEncoding );
+		global $wgDumpImages;
+		$parser = xml_parser_create( 'UTF-8' );
 		xml_set_element_handler( $parser, 'wfDumpStartTagHandler', 'wfDumpEndTagHandler' );
 
 		$wgDumpImages = array();

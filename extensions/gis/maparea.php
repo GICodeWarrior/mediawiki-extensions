@@ -56,9 +56,8 @@ class maparea {
 
 			$wgOut->addWikiText( $this->make_output() );
 		} else {
-			global $wgInputEncoding;
 			$ContentType = 'text/x-wiki';
-			header( "Content-type: ".$ContentType.'; charset='.$wgInputEncoding);
+			header( "Content-type: ".$ContentType.'; charset=UTF-8');
 
 			echo( $this->make_output() );
 

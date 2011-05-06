@@ -55,14 +55,13 @@ foreach ( $msgs as $msg ) {
 	if ( ( $user_info->user_email != '' ) && getUserNMOption( $user_info->user_options ) ) {
 		$name = ( ( $user_info->user_real_name == '' ) ? $user_info->user_name:$user_info->user_real_name );
 
-		global $wgOutputEncoding;
 		UserMailer::send(
 			new MailAddress( $user_info->user_email, $name ),
 			new MailAddress( $wgEmergencyContact, 'Admin' ),
 			wfMsg( 'smw_nm_hint_mail_title', $msg['title'], $wgSitename ),
 			wfMsg( 'smw_nm_hint_mail_body_html', $name, $msg['notify'] ),
 			new MailAddress( $wgEmergencyContact, 'Admin' ),
-			'text/html; charset=' . $wgOutputEncoding
+			'text/html; charset=UTF-8'
 		);
 	}
 }

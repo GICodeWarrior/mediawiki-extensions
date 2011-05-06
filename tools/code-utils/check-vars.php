@@ -241,7 +241,7 @@ class CheckVars {
 		// Predefine constant that might not be defined by this file source code
 		$this->mConstants = array( 'PARSEKIT_SIMPLE', 'UNORM_NFC', # Extensions
 			/* Defined in Title.php and GlobalFunctions.php */
-			'GAID_FOR_UPDATE', 'TC_MYSQL', 'TS_UNIX', 'TS_MW', 'TS_DB', 'TS_RFC2822',
+			'TC_MYSQL', 'TS_UNIX', 'TS_MW', 'TS_DB', 'TS_RFC2822',
 			'TS_ISO_8601', 'TS_EXIF', 'TS_ORACLE', 'TS_POSTGRES', 'TS_DB2',
 			'TS_ISO_8601_BASIC',
 			/* PHP extensions */
