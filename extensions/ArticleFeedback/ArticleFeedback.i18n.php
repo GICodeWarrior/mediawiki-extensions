@@ -9,7 +9,7 @@ $messages = array();
  * @author Arthur Richards
  */
 $messages['en'] = array(
-	'articlefeedback' => 'Article feedbak dashboard',
+	'articlefeedback' => 'Article feedback dashboard',
 	'articlefeedback-desc' => 'Article feedback',
 	/* ArticleFeedback survey */
 	'articlefeedback-survey-question-origin' => 'What page were you on when you started this survey?',
