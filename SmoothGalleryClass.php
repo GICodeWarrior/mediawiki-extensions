@@ -178,8 +178,6 @@ class SmoothGallery {
 	}
 
 	function renderPlainGallery ( $galleryArray ) {
-		global $wgVersion;
-
 		if ( !isset( $galleryArray["images"] ) ) {
 			return '';
 		}
