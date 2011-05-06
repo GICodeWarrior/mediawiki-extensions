@@ -5652,6 +5652,7 @@ $messages['eo'] = array(
  * @author Imre
  * @author Kobazulo
  * @author Locos epraix
+ * @author Mashandy
  * @author McDutchie
  * @author Od1n
  * @author Pertile
@@ -5838,6 +5839,7 @@ $messages['es'] = array(
 	'configure-setting-wgPasswordReminderResendTime' => 'Tiempo mínimo, en horas, el cual debe transcurrir entre recordadores de contraseña',
 	'configure-setting-wgSMTP' => 'servidor SMTP',
 	'configure-setting-wgUserEmailUseReplyTo' => 'Usar Responder a en lugar de De',
+	'configure-setting-wgUserEmailConfirmationTokenExpiry' => 'Tiempo en segundos hasta que un código de confirmación enviado por e-mail expire',
 	'configure-setting-wgAPIRequestLog' => 'Archivo de registro para las solicitudes de API',
 	'configure-setting-wgDebugComments' => 'Incluir porciones de la salida del registro en el comentario de la página HTML',
 	'configure-setting-wgDebugDumpSql' => 'Volcado de las consultas SQL para depurar la salida',
