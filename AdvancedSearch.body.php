@@ -331,8 +331,8 @@ ENDOFLINE;
 		);
 		$retval = wfMsgExt( 'advancedsearch-toptext', array( 'parse' ) );
 		$retval .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
-		$retval .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDbKey() );
-		$retval .= Xml::hidden( 'do', 'search' );
+		$retval .= Html::Hidden( 'title', $this->getTitle()->getPrefixedDbKey() );
+		$retval .= Html::Hidden( 'do', 'search' );
 
 		// The big table everything is in
 		$retval .= Xml::openElement( 'table' );
