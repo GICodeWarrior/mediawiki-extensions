@@ -250,7 +250,7 @@ class SpecialArticleFeedback extends SpecialPage {
 			
 			// if we have no results, just return
 			if ( !$row || !$row->afshl_ts ) {
-				return;
+				return array();
 			}
 			
 			// select ratings with that ts
