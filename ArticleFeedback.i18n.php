@@ -6,9 +6,10 @@ $messages = array();
  * @author Sam Reed
  * @author Brandon Harris
  * @author Trevor Parscal
+ * @author Arthur Richards
  */
 $messages['en'] = array(
-	'articlefeedback' => 'Article feedback',
+	'articlefeedback' => 'Article feedbadk dashboard',
 	'articlefeedback-desc' => 'Article feedback',
 	/* ArticleFeedback survey */
 	'articlefeedback-survey-question-origin' => 'What page were you on when you started this survey?',
@@ -76,8 +77,8 @@ $messages['en'] = array(
 Please try again later.',
 	/* Special:ArticleFeedback */
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
-	'articleFeedback-table-caption-dailyhighs' => 'Today\'s highs',
-	'articleFeedback-table-caption-dailylows' => 'Today\'s lows',
+	'articleFeedback-table-caption-dailyhighs' => 'Articles with highest ratings: $1',
+	'articleFeedback-table-caption-dailylows' => 'Articles with lowest ratings: $1',
 	'articleFeedback-table-caption-weeklymostchanged' => 'This week\'s most changed',
 	'articleFeedback-table-caption-recentlows' => 'Recent lows',
 	'articleFeedback-table-heading-page' => 'Page',
