@@ -30,10 +30,10 @@ class SpecialArticleFeedback extends SpecialPage {
 			$lows = $this->getDailyLows( $highs_lows );
 			
 			//render daily highs table
-			$this->renderDailyHighsAndLows( $highs, wfMsg( 'articleFeedback-table-caption-dailyhighs' ));
+			$this->renderDailyHighsAndLows( $highs, wfMsg( 'articleFeedback-table-caption-dailyhighs', date( 'Y-m-d' )));
 			
 			//render daily lows table
-			$this->renderDailyHighsAndLows( $lows, wfMsg( 'articleFeedback-table-caption-dailylows' ));
+			$this->renderDailyHighsAndLows( $lows, wfMsg( 'articleFeedback-table-caption-dailylows', date( 'Y-m-d' )));
 
 			/*
 			This functionality does not exist yet.
@@ -300,7 +300,9 @@ class SpecialArticleFeedback extends SpecialPage {
 	 *
 	 * @see getDailyHighs() However, if we are dealing with an odd number of
 	 * 	ratings, round up and then subtract 1 since we are giving preference
-	 * 	to the 'highs' when dealing with an odd number of ratings.
+	 * 	to the 'highs' when dealing with an odd number of ratings.  We do this
+	 * 	rather than rely on PHP's rounding 'modes' for compaitibility with 
+	 *  PHP < 5.3
 	 * @param array Pre-orderd from lowest to highest
 	 * @return array Containing the... lowest rated article data
 	 */
