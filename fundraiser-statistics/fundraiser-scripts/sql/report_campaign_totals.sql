@@ -3,13 +3,17 @@
 
 select 
 
-utm_campaign,
-sum(not isnull(contribution_tracking.contribution_id)) as donations
+faulkner.test.test_name,
+drupal.contribution_tracking.utm_campaign,
+sum(not isnull(contribution_tracking.contribution_id)) as donations,
+min(receive_date) as earliest_timestamp
 
-from drupal.contribution_tracking left join civicrm.civicrm_contribution ON (drupal.contribution_tracking.contribution_id = civicrm.civicrm_contribution.id)
+from 
+drupal.contribution_tracking left join civicrm.civicrm_contribution ON (drupal.contribution_tracking.contribution_id = civicrm.civicrm_contribution.id)
+left join faulkner.test on faulkner.test.utm_campaign = drupal.contribution_tracking.utm_campaign
 
 where receive_date >=  %s and receive_date < %s  
 
-group by 1
-order by 2 desc;
+group by 2
+order by 3 desc;
 
