@@ -30,7 +30,7 @@ class FCKeditorSkin {
 
 		if( $found ) {
 			// trick to get real URL for image:
-			$originalLink = strip_tags( Linker::makeImageLinkObj( $nt, $label, $alt, $align, $params, $framed, $thumb, $manual_thumb, $valign ), '<img>' );
+			$originalLink = strip_tags( Linker::makeImageLink2( $nt, $label, $alt, $align, $params, $framed, $thumb, $manual_thumb, $valign ), '<img>' );
 			$srcPart = substr( $originalLink, strpos( $originalLink, "src=" ) + 5 );
 			$url = strtok( $srcPart, '"' );
 		}
