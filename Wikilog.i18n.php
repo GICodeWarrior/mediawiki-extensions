@@ -3887,6 +3887,7 @@ $messages['ig'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Civvì
  */
 $messages['it'] = array(
@@ -3944,6 +3945,7 @@ Allo scopo di pubblicare articoli e abilitare le altre caratteristiche wikilog d
 	'wikilog-summary-categories' => 'Archiviato in $2',
 	'wikilog-summary-more' => '[[$3|→ continua a leggere...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussioni]])',
+	'wikilog-edit-hint' => "Modifica l'articolo wikilog: $1",
 	'wikilog-edit-fieldset-legend' => 'Wikilog opzioni:',
 	'wikilog-edit-signpub' => 'Firma e pubblica questo articolo',
 	'wikilog-edit-signpub-tooltip' => "Firma e pubblica questo articolo nel wikilog quando viene salvato.
@@ -3965,6 +3967,7 @@ Deseleziona questa casella per salvare l'articolo come bozza.",
 	'wikilog-comment-reject' => 'Rifiuta questo commento (azione immediata)',
 	'wikilog-newtalk-text' => '<!-- pagina vuota creata da Wikilog -->',
 	'wikilog-newtalk-summary' => 'creato automaticamente da Wikilog',
+	'wikilog-feed-ns-title' => '$1 articoli wikilog',
 	'wikilog-feed-description' => 'Leggi i commenti più recenti in questo feed.',
 	'wikilog-comment-feed-title1' => 'Commento di $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Commento di $2 a $3 (#$1)',
