@@ -100,9 +100,9 @@ class FlagPage extends SpecialPage {
 		$s = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalURL(), 'id' => 'mw-flagpage-form' ) ) .
 		Xml::openElement( 'p' ) .
 		Xml::tags( 'label', null, wfMsg( 'flagpage-confirmsave' ) ) .
-		Xml::hidden( 'page', $page ) .
-		Xml::hidden( 'template', $template ) .
-		Xml::hidden( 'token', $token ) .
+		Html::Hidden( 'page', $page ) .
+		Html::Hidden( 'template', $template ) .
+		Html::Hidden( 'token', $token ) .
 		Xml::submitButton( wfMsg( 'flagpage-submitbutton' ) ) ."\n" .
 		Xml::closeElement( 'p' ) . "\n" .
 		Xml::closeElement( 'form' ) . "\n";
