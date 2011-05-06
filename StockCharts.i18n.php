@@ -232,7 +232,7 @@ Benotzt: &lt;stockchart ticker="AAPL"/&gt;',
  */
 $messages['mk'] = array(
 	'stockcharts-desc' => 'Додава ознака <nowiki><stockchart ticker="AAPL"/></nowiki> за интерактивен графикон за берзански акции',
-	'stockcharts-missingticker' => 'За да вметнете графикон за берзански акции, треба барем да назначите тикер.
+	'stockcharts-missingticker' => 'За да вметнете графикон за берзански акции, треба барем да наведете тикер.
 Користете: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
