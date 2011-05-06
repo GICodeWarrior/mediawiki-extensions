@@ -84,7 +84,7 @@ class LDAPSupportLib:
 		f = open(conffile)
 		for line in f:
 			if line.split()[0] == attr:
-				return line.split()[1]
+				return line.split(None, 1)[1].strip()
 				break
 
 	def connect(self):
