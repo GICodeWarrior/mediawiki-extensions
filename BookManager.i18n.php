@@ -156,6 +156,17 @@ $messages['eo'] = array(
 	'printversion-inexistent-book' => 'Libro ne troviĝis. Bonvolu enigi la nomon de ekzistanta libro por akiri ties printilan version.',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'bookmanager-desc' => 'Herramientas para libros',
+	'printversion' => 'Versión para imprimir',
+	'printversion-desc' => 'Genera una [[Special:PrintVersion|versión para imprimir]] de un libro',
+	'printversion-no-book' => 'Introduce el nombre de un libro para obtener su versión impresa.',
+	'printversion-inexistent-book' => 'Libro no encontrado. Introduce el nombre de un libro existente para obtener su versión impresa.',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
