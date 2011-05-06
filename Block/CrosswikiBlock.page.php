@@ -239,7 +239,7 @@ class SpecialCrosswikiBlock extends SpecialPage {
 		</tr>" );
 
 		$token = $wgUser->editToken();
-		$wgOut->addHTML( Xml::hidden( 'wpEditToken', $token ) );
+		$wgOut->addHTML( Html::Hidden( 'wpEditToken', $token ) );
 
 		$wgOut->addHTML( '		</table>
 	</form>' );
@@ -370,7 +370,7 @@ class SpecialCrosswikiUnblock extends SpecialPage {
 		</tr>" );
 
 		$token = $wgUser->editToken();
-		$wgOut->addHTML( Xml::hidden( 'wpEditToken', $token ) );
+		$wgOut->addHTML( Html::Hidden( 'wpEditToken', $token ) );
 
 		$wgOut->addHTML( '</table></form>' );
 	}
