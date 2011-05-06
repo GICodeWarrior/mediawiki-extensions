@@ -600,6 +600,7 @@ $messages['it'] = array(
 	'watchers_noone_watches' => 'La pagina non è osservata da alcun utente.',
 	'watchers_x_or_more' => 'La pagina [[:$2]] è osservata da almeno $1 {{PLURAL:$1|utente|utenti}}.',
 	'watchers_less_than_x' => 'La pagina è osservata da meno di $1 {{PLURAL:$1|utente|utenti}}.',
+	'watchers-num' => '$1 {{PLURAL:$1|utente ha|utenti hanno}} la pagina [[:$2]] fra i {{PLURAL:$1|suoi|loro}} osservati speciali.',
 	'right-watchers-list' => '[[Special:Watchers|Elenca gli utenti che hanno una specifica pagina fra gli osservati speciali]]',
 );
 
