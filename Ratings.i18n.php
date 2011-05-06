@@ -19,6 +19,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'ratings-desc' => 'Allows users to rate different "properties" of pages',
+    'right-rate' => 'Required to be able to rate.',
 
 	// Rating stars
 	'ratings-starsratings-desc' => 'Displays a simple star rating control allowing the user to rate a certain property of a page.

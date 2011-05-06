@@ -122,3 +122,5 @@ if ( defined( 'MW_SUPPORTS_RESOURCE_MODULES' ) ) {
 }
 
 require_once 'Ratings.settings.php';
+
+$wgAvailableRights[] = 'rate';
