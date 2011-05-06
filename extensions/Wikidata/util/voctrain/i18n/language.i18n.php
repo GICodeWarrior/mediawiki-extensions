@@ -4181,6 +4181,31 @@ $messages['sl'] = array(
 	'voctrain_other' => 'drugo',
 );
 
+/** Albanian (Shqip)
+ * @author Marinari
+ */
+$messages['sq'] = array(
+	'voctrain_Hello_World' => 'PËRSHËNDETJE WIKI !',
+	'voctrain_Permission_Denied' => 'Lejekalimi i Ndaluar',
+	'voctrain_try_again_' => 'provo përsëri ?',
+	'voctrain_Action_unknown' => 'Veprim i panjohur',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Unë nuk e di se çfarë duhet të bëjë me '%action'.",
+	'voctrain_User_added' => 'Shfrytëzuesi u shtua',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Përshëndetje, %username, mirësevini në omega trajner gjuhësh',
+	'voctrain_continue' => 'Vazhdo',
+	'voctrain_hello_place' => 'Përshëndetje atje %place',
+	'voctrain_bye' => 'lamtumirë',
+	'voctrain_Set_up_your_exercise' => 'Rregullo ushtrim tuaj',
+	'voctrain_Number_of_questions' => 'Numri i pyetjeve',
+	'voctrain_Languages' => 'Gjuhët',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Ju lutem specifikoni gjuhët që ju doni të testoheni',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(P.sh., eng për anglisht, deu për gjermanisht).',
+	'voctrain_Questions' => 'Pyetjet',
+	'voctrain_Answers' => 'Përgjigjet',
+	'voctrain_start_exercise' => 'fillo ushtrimin',
+	'voctrain_ISO_639_3_format' => 'formati ISO-639-3',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Rancher
  */

@@ -361,7 +361,7 @@ Dëst erlaabt et datt Dir Är Benotzersäit och als OpenID benotze kënnt.',
  */
 $messages['mk'] = array(
 	'linkopenid-desc' => 'Овозможи корисниците да ја сврзат својата сметка со надворешен OpenID',
-	'linkopenid-prefstext-pre' => 'Доколку имате OpenID од надворешен услужител, можете да го назначите овде.
+	'linkopenid-prefstext-pre' => 'Доколку имате OpenID од надворешен услужител, можете да го наведете овде.
 Ова ви овозможува да ја користите и вашата корисничка страница како OpenID.',
 	'linkopenid-prefstext-openid' => 'Вашиот OpenID:',
 	'linkopenid-prefstext-v1url' => 'URL-адресата на опслужувачот за OpenID Верзија 1.1:',

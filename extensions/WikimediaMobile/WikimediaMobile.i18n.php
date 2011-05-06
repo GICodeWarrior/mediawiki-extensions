@@ -28,6 +28,13 @@ $messages['af'] = array(
 	'wikimediamobile-desc' => 'Ondersteunende funksies in MediaWiki vir die projek Wikipedia-mobiel by http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'wikimediamobile-desc' => 'MediaWiki tien encontu pa les funciones del proyeutu Wikimedia-mobile agospiáu en http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Wizardist
  */

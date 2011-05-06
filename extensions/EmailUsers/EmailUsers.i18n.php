@@ -243,6 +243,9 @@ $messages['id'] = array(
  * @author Beta16
  */
 $messages['it'] = array(
+	'emailusers-desc' => 'Permettere agli utenti di inviare e-mail a più destinatari',
+	'right-sendbatchemail' => 'Invia e-mail a più destinatari contemporaneamente',
+	'emailusers-target-reverse' => 'Invia a tutti gli utenti ad eccezione di quelli selezionati',
 	'emailusers-norecipient' => 'Non è presente nessuno a cui è possibile inviare messaggi di posta elettronica.',
 	'emailusers-norecipientselected' => 'Nessun destinatario selezionato.',
 	'emailusers-toomanyrecipientsselected' => 'Sono stati selezionati troppi destinatari, ({{PLURAL:$1|massimo $1|massimo $1}}).',

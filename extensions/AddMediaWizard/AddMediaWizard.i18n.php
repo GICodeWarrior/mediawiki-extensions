@@ -168,10 +168,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Fitoschido
  * @author Locos epraix
  */
 $messages['es'] = array(
 	'addmediawizard-desc' => 'Asistente para agregar multimedia, desarrollado en colaboración por Kaltura y la Fundación Wikimedia',
+	'addmediawizard-loading' => 'Cargando el asistente para añadir elementos multimedia',
 );
 
 /** Basque (Euskara)
@@ -298,7 +300,7 @@ $messages['ig'] = array(
  */
 $messages['it'] = array(
 	'addmediawizard-desc' => 'Aggiunta guidata di media, sviluppato in partnership da Kaltura e Wikimedia Foundation',
-	'addmediawizard-loading' => "Caricamento della giuda per l'aggiunta di media",
+	'addmediawizard-loading' => "Caricamento della guida per l'aggiunta di media",
 );
 
 /** Japanese (日本語)
@@ -377,10 +379,12 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Eitvys200
  * @author Matasg
  */
 $messages['lt'] = array(
 	'addmediawizard-desc' => 'Medijos pridėjimo vedlys, sukurtas bendradarbiaujant su Kaltura bei Wikimedia Foundation.',
+	'addmediawizard-loading' => 'Kraunamas žiniasklaidos vedlys',
 );
 
 /** Latvian (Latviešu)

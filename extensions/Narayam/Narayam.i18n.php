@@ -199,6 +199,14 @@ $messages['bs'] = array(
 	'narayam-bn-nkb' => 'Bengalski NKB',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'narayam-desc' => 'Umožňuje přidávat ke vstupním polím vlastní metody vstupu',
+	'narayam-disable-preference' => 'Vypnout editor (IME) Narayam',
+);
+
 /** German (Deutsch)
  * @author Brion
  * @author Kghbln

@@ -1099,6 +1099,9 @@ $messages['lb'] = array(
 $messages['lt'] = array(
 	'mwe-clipedit-crop' => 'Apkarpyti paveiklėlį',
 	'mwe-clipedit-apply_crop' => 'Taikyti apkarpyma paveikslėliui',
+	'mwe-clipedit-start_time' => 'Pradžios laikas',
+	'mwe-clipedit-end_time' => 'Pabaigos laikas',
+	'mwe-clipedit-edit-tools' => 'Redagavimo įrankiai',
 	'mwe-clipedit-layout_right' => 'Vaizdas dešinėje',
 	'mwe-clipedit-layout_left' => 'Vaizdas kairėje',
 );

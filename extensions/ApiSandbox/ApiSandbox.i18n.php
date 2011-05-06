@@ -39,6 +39,9 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'apisb-parameters' => '{{Identical|Parameter}}',
 	'apisb-result' => '{{Identical|Result}}',
+	'apisb-loading' => '{{Identical|Loading}}',
+	'apisb-query-prop' => '{{Identical|Property}}',
+	'apisb-query-list' => '{{Identical|List}}',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -57,6 +60,16 @@ $messages['be-tarask'] = array(
 	'apisb-request-url' => 'URL-адрас запыту:',
 	'apisb-request-post' => 'POST-зьвесткі:',
 	'apisb-select-action' => 'Выбраць дзеяньне',
+	'apisb-select-query' => 'Што запытаць?',
+	'apisb-select-value' => 'Выбраць значэньне',
+	'apisb-loading' => 'Загрузка…',
+	'apisb-load-error' => 'Немагчыма загрузіць апісаньне API',
+	'apisb-request-error' => 'Немагчыма апрацаваць запыт API',
+	'apisb-namespaces-error' => 'Немагчыма загрузіць прасторы назваў',
+	'apisb-ns-main' => '(Асноўная)',
+	'apisb-submit' => 'Зрабіць запыт',
+	'apisb-query-prop' => 'Уласьцівасьці',
+	'apisb-query-list' => 'Сьпісы',
 );
 
 /** Breton (Brezhoneg)
@@ -66,16 +79,22 @@ $messages['br'] = array(
 	'apisb-desc' => 'Aotren dizreinañ galvadennoù [http://www.mediawiki.org/wiki/API API MediaWikiI] eus ar merdeer',
 	'apisandbox' => 'Poull-traezh API',
 	'apisb-no-js' => "'''Fazi''' : Rekis eo JavaScript evit an arc'hwel-mañ.",
+	'apisb-intro' => "Grit gant ar bajenn-mañ evit amprouiñ '''MediaWiki API'''.
+Kit da deuler ur sell war [http://www.mediawiki.org/wiki/API teulioù API] evit gouzout hiroc'h penaos embreger API.",
 	'apisb-api-disabled' => "Diweredekaet eo API war al lec'hienn-mañ.",
 	'apisb-parameters' => 'Arventennoù',
 	'apisb-result' => "Disoc'h",
 	'apisb-request-url' => 'Goulenn URL :',
+	'apisb-request-post' => 'roadennoù POST :',
 	'apisb-select-action' => 'Dibab un ober',
 	'apisb-select-query' => 'Petra glask ?',
 	'apisb-select-value' => 'Dibab an talvoud',
 	'apisb-loading' => 'O kargañ...',
 	'apisb-load-error' => 'Fazi en ur gargañ deskrivadur an API',
+	'apisb-request-error' => 'Ur fazi zo bet o klask seveniñ ar goulenn API',
+	'apisb-namespaces-error' => 'Fazi en ur gargañ an esaouennoù anv',
 	'apisb-ns-main' => '(Pennañ)',
+	'apisb-submit' => 'Sevel ar goulenn',
 	'apisb-query-prop' => 'Perzhioù',
 	'apisb-query-list' => 'Rolloù',
 	'apisb-query-meta' => 'Titouroù Meta',
@@ -109,6 +128,80 @@ Die [http://www.mediawiki.org/wiki/API Dokumentation zur API] enthält weitere H
 	'apisb-query-meta' => 'Metainformationen',
 );
 
+/** Spanish (Español)
+ * @author Fitoschido
+ */
+$messages['es'] = array(
+	'apisb-desc' => 'Permite depurar llamadas a la [http://www.mediawiki.org/wiki/API API de MediaWiki] desde el navegador',
+	'apisb-no-js' => "'''Error ''': esta característica requiere JavaScript.",
+	'apisb-api-disabled' => 'La API está desactivada en este sitio.',
+	'apisb-parameters' => 'Parámetros',
+	'apisb-result' => 'Resultado',
+	'apisb-request-url' => 'URL solicitante:',
+	'apisb-request-post' => 'Datos POST:',
+	'apisb-select-action' => 'Selecciona acción',
+	'apisb-select-query' => '¿Qué consultar?',
+	'apisb-select-value' => 'Seleccionar valor',
+	'apisb-loading' => 'Cargando...',
+	'apisb-load-error' => 'Error al cargar la descripción de la API',
+	'apisb-request-error' => 'Error al realizar la solicitud de API',
+	'apisb-namespaces-error' => 'Error al cargar los espacios de nombres',
+	'apisb-ns-main' => '(Principal)',
+	'apisb-submit' => 'Realizar solicitud',
+	'apisb-query-prop' => 'Propiedades',
+	'apisb-query-list' => 'Listas',
+);
+
+/** French (Français)
+ * @author Crochet.david
+ */
+$messages['fr'] = array(
+	'apisb-desc' => 'Permet de déboguer les appels de l’[http://www.mediawiki.org/wiki/API API de MediaWiki] à partir du navigateur',
+	'apisandbox' => 'Bac à sable API',
+	'apisb-no-js' => "''' Erreur ''': cette fonctionnalité nécessite JavaScript.",
+	'apisb-intro' => "Utilisez cette page pour expérimenter '''MediaWiki API'''.
+Reportez-vous sur [http://www.mediawiki.org/wiki/API la documentation de l’API] pour plus de détails sur l’utilisation de l’API.",
+	'apisb-api-disabled' => 'API est désactivé sur ce site.',
+	'apisb-parameters' => 'Paramètres',
+	'apisb-result' => 'Résultat',
+	'apisb-request-url' => 'Requête URL :',
+	'apisb-request-post' => 'données POST :',
+	'apisb-select-action' => 'Sélectionner une action',
+	'apisb-select-query' => 'Que faut-il interroger ?',
+	'apisb-select-value' => 'Sélectionnez la valeur',
+	'apisb-loading' => 'Chargement …',
+	'apisb-load-error' => 'Erreur lors du chargement de description de l’API',
+	'apisb-namespaces-error' => 'Erreur lors du chargement des espaces de noms',
+	'apisb-ns-main' => '(Principal)',
+	'apisb-submit' => 'Faire la demande',
+	'apisb-query-prop' => 'Propriétés',
+	'apisb-query-list' => 'Listes',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'apisandbox' => 'Zona de probas API',
+	'apisb-no-js' => "'''Error''': esta característica necesita JavaScript.",
+	'apisb-api-disabled' => 'API está desactivado neste sitio.',
+	'apisb-parameters' => 'Parámetros',
+	'apisb-result' => 'Resultado',
+	'apisb-request-url' => 'URL da solicitude:',
+	'apisb-request-post' => 'Datos POST:',
+	'apisb-select-action' => 'Seleccionar unha acción',
+	'apisb-select-query' => 'Que quere consultar?',
+	'apisb-select-value' => 'Seleccione o valor',
+	'apisb-loading' => 'Cargando...',
+	'apisb-load-error' => 'Erro ao cargar a descrición API',
+	'apisb-request-error' => 'Erro ao executar a solicitude API',
+	'apisb-namespaces-error' => 'Erro ao cargar o espazo de nomes',
+	'apisb-ns-main' => '(Principal)',
+	'apisb-submit' => 'Facer a solicitude',
+	'apisb-query-prop' => 'Propiedades',
+	'apisb-query-list' => 'Listas',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -135,6 +228,34 @@ Consulta [http://www.mediawiki.org/wiki/API le documentation del API] pro ulteri
 	'apisb-query-prop' => 'Proprietates',
 	'apisb-query-list' => 'Listas',
 	'apisb-query-meta' => 'Metainformationes',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author IvanLanin
+ */
+$messages['id'] = array(
+	'apisb-desc' => 'Menyediakan fasilitas debug untuk pemanggilan [http://www.mediawiki.org/wiki/API API MediaWiki] dari peramban',
+	'apisandbox' => 'Bak pasir API',
+	'apisb-no-js' => "'''Galat''': fitur ini memerlukan JavaScript.",
+	'apisb-intro' => "Gunakan halaman ini untuk bereksperimen dengan '''MediaWiki API'''.
+Lihat [http://www.mediawiki.org/wiki/API dokumentasi API] untuk perincian lanjut penggunaan API.",
+	'apisb-api-disabled' => 'API dinonaktifkan pada situs ini.',
+	'apisb-parameters' => 'Parameter',
+	'apisb-result' => 'Hasil',
+	'apisb-request-url' => 'URL Permintaan:',
+	'apisb-request-post' => 'Data POST:',
+	'apisb-select-action' => 'Pilih tindakan',
+	'apisb-select-query' => 'Pilih permintaan',
+	'apisb-select-value' => 'Pilih nilai',
+	'apisb-loading' => 'Memuat...',
+	'apisb-load-error' => 'Galat sewaktu memuat deskripsi API',
+	'apisb-request-error' => 'Galat sewaktu melakukan permintaan API',
+	'apisb-namespaces-error' => 'Galat sewaktu memuat ruang nama',
+	'apisb-ns-main' => '(Utama)',
+	'apisb-submit' => 'Kirim permintaan',
+	'apisb-query-prop' => 'Properti',
+	'apisb-query-list' => 'Daftar',
+	'apisb-query-meta' => 'Informasi meta',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -195,7 +316,7 @@ Zie de [http://www.mediawiki.org/wiki/API API-documentatie] voor verdere details
 	'apisb-result' => 'Resultaat',
 	'apisb-request-url' => 'Verzoek-URL:',
 	'apisb-request-post' => 'POST-gegevens:',
-	'apisb-select-action' => 'Actie selecteren',
+	'apisb-select-action' => 'Handeling selecteren',
 	'apisb-select-query' => 'Wat is uw vraag?',
 	'apisb-select-value' => 'Selecteer waarde',
 	'apisb-loading' => 'Bezig met laden…',
