@@ -290,7 +290,7 @@ class LqtView {
 	function perpetuate( $name, $as = 'hidden' ) {
 		$value = $this->request->getVal( $name, '' );
 		if ( $as == 'hidden' ) {
-			return Xml::hidden( $name, $value );
+			return Html::Hidden( $name, $value );
 		}
 	}
 
@@ -379,7 +379,7 @@ class LqtView {
 		$e->editFormTextBeforeContent .=
 			$this->perpetuate( 'lqt_method', 'hidden' ) .
 			$this->perpetuate( 'lqt_operand', 'hidden' ) .
-			Xml::hidden( 'lqt_nonce', wfGenerateToken() );
+			Html::Hidden( 'lqt_nonce', wfGenerateToken() );
 
 		$e->mShowSummaryField = false;
 
@@ -488,8 +488,8 @@ class LqtView {
 		$e->editFormTextBeforeContent .=
 			$this->perpetuate( 'lqt_method', 'hidden' ) .
 			$this->perpetuate( 'lqt_operand', 'hidden' ) .
-			Xml::hidden( 'lqt_nonce', wfGenerateToken() ) .
-			Xml::hidden( 'offset', $offset );
+			Html::Hidden( 'lqt_nonce', wfGenerateToken() ) .
+			Html::Hidden( 'offset', $offset );
 
 		list( $signatureEditor, $signatureHTML ) = $this->getSignatureEditor( $this->user );
 
@@ -594,8 +594,8 @@ class LqtView {
 		$e->editFormTextBeforeContent .=
 			$this->perpetuate( 'lqt_method', 'hidden' ) .
 			$this->perpetuate( 'lqt_operand', 'hidden' ) .
-			Xml::hidden( 'lqt_nonce', wfGenerateToken() ) .
-			Xml::hidden( 'offset', $offset );
+			Html::Hidden( 'lqt_nonce', wfGenerateToken() ) .
+			Html::Hidden( 'offset', $offset );
 
 		list( $signatureEditor, $signatureHTML ) = $this->getSignatureEditor( $thread );
 
@@ -675,8 +675,8 @@ class LqtView {
 		$e->editFormTextBeforeContent .=
 			$this->perpetuate( 'lqt_method', 'hidden' ) .
 			$this->perpetuate( 'lqt_operand', 'hidden' ) .
-			Xml::hidden( 'lqt_nonce', wfGenerateToken() ) .
-			Xml::hidden( 'offset', $offset );
+			Html::Hidden( 'lqt_nonce', wfGenerateToken() ) .
+			Html::Hidden( 'offset', $offset );
 
 		$e->edit();
 
@@ -1527,7 +1527,7 @@ class LqtView {
 
 			if ($show) {
 				$html = Xml::tags( 'span', array( 'class' => 'mw-headline' ), $html );
-				$html .= Xml::hidden( 'raw-header', $thread->subject() );
+				$html .= Html::Hidden( 'raw-header', $thread->subject() );
 				$html = Xml::tags( 'h' . $this->headerLevel,
 						array( 'class' => 'lqt_header', 'id' => $id ),
 						$html ) . $commands_html;
@@ -1678,7 +1678,7 @@ class LqtView {
 
 		$link = $sk->link( $linkTitle, $linkText,
 				array( 'class' => 'lqt-show-more-posts' ) );
-		$link .= Xml::hidden( 'lqt-thread-start-at', $i,
+		$link .= Html::Hidden( 'lqt-thread-start-at', $i,
 				array( 'class' => 'lqt-thread-start-at' ) );
 
 		return $link;
@@ -1898,7 +1898,7 @@ class LqtView {
 		// Metadata stuck in the top of the lqt_thread div.
 		// Modified time for topmost threads...
 		if ( $thread->isTopmostThread() ) {
-			$html .= Xml::hidden(
+			$html .= Html::Hidden(
 				'lqt-thread-modified-' . $thread->id(),
 				wfTimestamp( TS_MW, $thread->modified() ),
 				array(
@@ -1906,7 +1906,7 @@ class LqtView {
 					'class' => 'lqt-thread-modified'
 				)
 			);
-			$html .= Xml::hidden(
+			$html .= Html::Hidden(
 				'lqt-thread-sortkey',
 				$thread->sortkey(),
 				array( 'id' => 'lqt-thread-sortkey-' . $thread->id() )
@@ -1918,7 +1918,7 @@ class LqtView {
 		}
 
 		// Add the thread's title
-		$html .= Xml::hidden(
+		$html .= Html::Hidden(
 			'lqt-thread-title-' . $thread->id(),
 			$thread->title()->getPrefixedText(),
 			array(
@@ -2060,7 +2060,7 @@ class LqtView {
 
 		$link = $sk->link( $t->summary()->getTitle(), $link_text,
 				array( 'class' => 'lqt-summary-link' ) );
-		$link .= Xml::hidden( 'summary-title', $t->summary()->getTitle()->getPrefixedText() );
+		$link .= Html::Hidden( 'summary-title', $t->summary()->getTitle()->getPrefixedText() );
 		$edit_link = self::permalink( $t, $edit_text, 'summarize', $t->id() );
 		$links = "[$link]\n[$edit_link]";
 		$html .= Xml::tags(

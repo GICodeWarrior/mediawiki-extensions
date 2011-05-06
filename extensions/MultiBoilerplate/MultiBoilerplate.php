@@ -121,8 +121,8 @@ function efMultiBoilerplate( $form ) {
 					Xml::closeElement( 'select' ) .
 				Xml::closeElement( 'label' ) .
 				' ' .
-				Xml::hidden( 'action', 'edit' ) .
-				Xml::hidden( 'title', $wgRequest->getText( 'title' ) ) .
+				Html::Hidden( 'action', 'edit' ) .
+				Html::Hidden( 'title', $wgRequest->getText( 'title' ) ) .
 				Xml::submitButton( wfMsg( 'multiboilerplate-submit' ) ) .
 			Xml::closeElement( 'fieldset' ) .
 		Xml::closeElement( 'form' );

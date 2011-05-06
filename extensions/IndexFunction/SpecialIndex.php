@@ -169,7 +169,7 @@ class SpecialIndex extends SpecialPage {
 		$form = Xml::openElement( 'fieldset', array( 'style'=>'line-height:200%' ) ) . 
 		Xml::element( 'legend', array(), wfMsgHtml( 'index-legend' ) ) . 
 		Xml::openElement( 'form', array( 'method'=>'GET', 'action'=>$wgScript ) ) .
-		 Xml::hidden( 'title', $this->getTitle()->getPrefixedDbKey() ) .
+		 Html::Hidden( 'title', $this->getTitle()->getPrefixedDbKey() ) .
 
 		Xml::label( wfMsg( 'index-search' ), 'mw-index-searchtext' ) .
 		Xml::input( 'searchtext', 100, $search, array( 'id' => 'mw-index-searchtext' ) ) . 

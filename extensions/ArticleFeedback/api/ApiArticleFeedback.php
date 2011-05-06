@@ -8,7 +8,6 @@ class ApiArticleFeedback extends ApiBase {
 		global $wgUser, $wgArticleFeedbackRatings;
 		$params = $this->extractRequestParams();
 
-		$token = array();
 		if ( $wgUser->isAnon() ) {
 			if ( !isset( $params['anontoken'] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
@@ -400,7 +399,7 @@ class ApiArticleFeedback extends ApiBase {
 			'expertise' => 'What kinds of expertise does the user claim to have',
 		);
 		foreach( $wgArticleFeedbackRatings as $rating ) {
-		        $ret["r{$rating}"] = "Rating {$rating}";
+			$ret["r{$rating}"] = "Rating {$rating}";
 		}
 		return $ret;
 	}

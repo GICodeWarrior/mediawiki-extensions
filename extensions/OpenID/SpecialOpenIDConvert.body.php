@@ -192,8 +192,8 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 		$wgOut->addHtml(
 			Xml::openElement( 'form', array( 'action' => $this->getTitle( 'Delete' )->getLocalUrl(), 'method' => 'post' ) ) .
 			Xml::submitButton( wfMsg( 'openiddelete-button' ) ) . "\n" .
-			Xml::hidden( 'url', $openid ) . "\n" .
-			Xml::hidden( 'wpEditToken', $wgUser->editToken( $openid ) ) . "\n" .
+			Html::Hidden( 'url', $openid ) . "\n" .
+			Html::Hidden( 'wpEditToken', $wgUser->editToken( $openid ) ) . "\n" .
 			Xml::closeElement( 'form' )
 		);
 	}
