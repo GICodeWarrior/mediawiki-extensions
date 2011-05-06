@@ -20,7 +20,21 @@ class SpecialArticleFeedback extends SpecialPage {
 		$wgOut->addModules( 'ext.articleFeedback.dashboard' );
 		$this->setHeaders();
 		if ( $wgArticleFeedbackDashboard ) {
-			$this->renderDailyHighsAndLows();
+			// fetch the highest and lowest rated articles
+			$highs_lows = $this->getDailyHighsAndLows();
+			
+			// determine the highest rated articles
+			$highs = $this->getDailyHighs( $highs_lows );
+			
+			// .. and the lowest rated articles
+			$lows = $this->getDailyLows( $highs_lows );
+			
+			//render daily highs table
+			$this->renderDailyHighsAndLows( $highs, wfMsg( 'articleFeedback-table-caption-dailyhighs' ));
+			
+			//render daily lows table
+			$this->renderDailyHighsAndLows( $lows, wfMsg( 'articleFeedback-table-caption-dailylows' ));
+
 			/*
 			This functionality does not exist yet.
 			$this->renderWeeklyMostChanged();
@@ -91,11 +105,10 @@ class SpecialArticleFeedback extends SpecialPage {
 	 * 
 	 * @return String: HTML table of daily highs and lows
 	 */
-	protected function renderDailyHighsAndLows() {
+	protected function renderDailyHighsAndLows( $pages, $caption ) {
 		global $wgOut, $wgUser;
 
 		$rows = array();
-		$pages = $this->getDailyHighsAndLows();
 		if ( $pages ) {
 			foreach ( $pages as $page ) {
 				$row = array();
@@ -120,8 +133,9 @@ class SpecialArticleFeedback extends SpecialPage {
 				$rows[] = $row;
 			}
 		}
+		
 		$this->renderTable(
-			wfMsg( 'articleFeedback-table-caption-dailyhighsandlows' ),
+			$caption,
 			array_merge(
 				array( wfMsg( 'articleFeedback-table-heading-page' ) ),
 				self::getCategories(),
@@ -258,6 +272,35 @@ class SpecialArticleFeedback extends SpecialPage {
 		return $highs_lows;
 	}
 
+	/**
+	 * Determine the 'highest' rated articles
+	 * 
+	 * Divides the number of ratings in half to determine the range of
+	 * articles to consider 'highest'.  In the event of an odd number
+	 * of articles, round up, giving preference to the 'highs' so
+	 * everyone feels warm and fuzzy about having more 'highs', as 
+	 * it were...
+	 * 
+	 * @param array Pre-orderd from lowest to highest
+	 * @return array Containing the... highest rated article data
+	 */
+	protected function getDailyHighs( $highs_lows ) {
+		$num_ratings = round( count( $highs_lows ) / 2 );
+		return array_slice( $highs_lows, -$num_ratings, $num_ratings );
+	}
+	
+	/**
+	 * Determine the 'lowest' rated articles
+	 * 
+	 * @see $this->getDailyHighs()
+	 * @param array Pre-orderd from lowest to highest
+	 * @return array Containing the... lowest rated article data
+	 */
+	protected function getDailyLows( $highs_lows ) {
+		$num_ratings = round( count( $highs_lows ) / 2, 0, PHP_ROUND_HALF_DOWN);
+		return array_slice( $highs_lows, 0, $num_ratings );
+	}
+	
 	/**
 	 * Build data store of highs/lows for use when rendering table
 	 * @param object Database result

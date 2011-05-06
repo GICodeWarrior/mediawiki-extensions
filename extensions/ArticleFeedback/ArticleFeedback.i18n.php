@@ -76,6 +76,8 @@ $messages['en'] = array(
 Please try again later.',
 	/* Special:ArticleFeedback */
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Today\'s highs and lows',
+	'articleFeedback-table-caption-dailyhighs' => 'Today\'s highs',
+	'articleFeedback-table-caption-dailylows' => 'Today\'s lows',
 	'articleFeedback-table-caption-weeklymostchanged' => 'This week\'s most changed',
 	'articleFeedback-table-caption-recentlows' => 'Recent lows',
 	'articleFeedback-table-heading-page' => 'Page',
