@@ -47,7 +47,7 @@ class BadImageManipulator extends SpecialPage {
 	function showAdd( &$output, &$user ) {
 		$self = SpecialPage::getTitleFor( 'Badimages' );
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-		$form .= Xml::hidden( 'action', 'add' ) . Xml::hidden( 'wpToken', $user->editToken() );
+		$form .= Html::Hidden( 'action', 'add' ) . Html::Hidden( 'wpToken', $user->editToken() );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'badimages-name' ) . '</td>';
 		$form .= '<td>' . Xml::input( 'wpImage' ) . '</td></tr>';
 		$form .= '<tr><td align="right">' . wfMsgHtml( 'badimages-reason' ) . '</td>';
@@ -83,7 +83,7 @@ class BadImageManipulator extends SpecialPage {
 		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
 		$output->addHTML( '<p>' . wfMsgHtml( 'badimages-remove-confirm', $link ) . '</p>' );
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-		$form .= Xml::hidden( 'action', 'remove' ) . Xml::hidden( 'wpToken', $user->editToken() ) . Xml::hidden( 'wpImage', $name );
+		$form .= Html::Hidden( 'action', 'remove' ) . Html::Hidden( 'wpToken', $user->editToken() ) . Html::Hidden( 'wpImage', $name );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'badimages-name' ) . '</td>';
 		$form .= '<td>' . Xml::input( 'wpImage2', false, $name, array( 'readonly' => 'readonly' ) ) . '</td></tr>';
 		$form .= '<tr><td align="right">' . wfMsgHtml( 'badimages-reason' ) . '</td>';
