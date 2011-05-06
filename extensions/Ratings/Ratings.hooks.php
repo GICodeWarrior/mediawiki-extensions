@@ -28,7 +28,7 @@ final class RatingsHooks {
 		if ( $wgDBtype == 'mysql' ) {
 			// Set up the current schema.
 			if ( $updater === null ) {
-				global $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
+				global $wgExtNewTables, $wgExtNewIndexes;
 				
 				$wgExtNewTables[] = array(
 					'votes',
