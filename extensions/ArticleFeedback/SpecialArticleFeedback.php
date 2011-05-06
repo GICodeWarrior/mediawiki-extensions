@@ -221,8 +221,8 @@ class SpecialArticleFeedback extends SpecialPage {
 		// check if we've got results in the cache
 		$key = wfMemcKey( 'article_feedback_stats_highs_lows' );
 		$cache = $wgMemc->get( $key );
-		if ( $cache instanceof ResultsWrapper ) {
-			$result = $cache;
+		if ( is_array( $cache )) {
+			$highs_lows = $cache;
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
 			// first find the freshest timestamp
@@ -247,13 +247,23 @@ class SpecialArticleFeedback extends SpecialPage {
 					'afshl_avg_overall',
 					'afshl_avg_ratings'
 				),
-				'afshl_ts = ' . $row->afshl_ts,
+				array( 'afshl_ts = ' . $row->afshl_ts),
 				__METHOD__,
 				array( "ORDER BY" => "afshl_avg_overall" )	
 			);
-			$wgMemc->set( $key, $result, 86400 );
+			$highs_lows = $this->buildHighsAndLows( $result );
+			$wgMemc->set( $key, $highs_lows, 86400 );
 		}
 		
+		return $highs_lows;
+	}
+
+	/**
+	 * Build data store of highs/lows for use when rendering table
+	 * @param object Database result
+	 * @return array
+	 */
+	public function buildHighsAndLows( $result ) {
 		$highs_lows = array();
 		foreach ( $result as $row ) {
 			$highs_lows[] = array(
@@ -262,10 +272,9 @@ class SpecialArticleFeedback extends SpecialPage {
 				'average' => $row->afshl_avg_overall		
 			);
 		}
-		
 		return $highs_lows;
 	}
-
+	
 	/**
 	 * Gets a list of articles which have quickly changing ratings.
 	 * 

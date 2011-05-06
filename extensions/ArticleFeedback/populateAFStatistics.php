@@ -71,7 +71,7 @@ class PopulateAFStatistics extends Maintenance {
 				'aa_rating_value',
 				'aa_rating_id'
 			), 
-			'aa_timestamp >= ' . $this->getLowerBoundTimestamp(),
+			array( 'aa_timestamp >= ' . $this->getLowerBoundTimestamp() ),
 			__METHOD__,
 			array() // better to do with limits and offsets?
 		);
@@ -117,7 +117,7 @@ class PopulateAFStatistics extends Maintenance {
 		// take lowest 50 and highest 50
 		$highest_and_lowest_page_ids = array_slice( $averages, 0, 50, true );
 		if ( count( $averages ) > 50 ) {
-			$highest_and_lowest_page_ids = array_merge( $highest_and_lowest_page_ids, array_slice( $averages, -50, 50, true ));
+			$highest_and_lowest_page_ids += array_slice( $averages, -50, 50, true );
 		}
 		$this->output( "Done\n" );
 		
@@ -127,7 +127,7 @@ class PopulateAFStatistics extends Maintenance {
 		$rows = array();
 		foreach( $highs_and_lows as $page_id => $data ) {
 			// make sure this is one of the highest/lowest average ratings
-			if ( !in_array( $page_id, array_keys( $highest_and_lowest_page_ids ))) {
+			if ( !isset( $highest_and_lowest_page_ids[ $page_id ] )) {
 				continue;
 			}
 			$rows[] = array(
@@ -155,17 +155,9 @@ class PopulateAFStatistics extends Maintenance {
 		}
 		$this->output( "Done.\n" );
 		
-		// check to see whether we should bother caching
-		if ( is_a( $wgMemc, 'EmptyBagOStuff' )) {
-			$this->output( "Object caching not available.\n" );
-			$this->output( "Done.\n" );
-			return;
-		}
-		
 		// loading data into caching
-		$this->output( "Caching latest highs/lows.\n" );
+		$this->output( "Caching latest highs/lows (if cache present).\n" );
 		$key = wfMemcKey( 'article_feedback_stats_highs_lows' );
-		$wgMemc->delete( $key );
 		$result = $this->dbr->select(
 			'article_feedback_stats_highs_lows',
 			array(
@@ -177,7 +169,11 @@ class PopulateAFStatistics extends Maintenance {
 			__METHOD__,
 			array()
 		);
-		$wgMemc->set( $key, $result, 86400 );
+		// grab the article feedback special page so we can reuse the data structure building code
+		$sp = SpecialPageFactory::getPage( 'ArticleFeedback' );
+		$highs_lows = $sp->buildHighsAndLows( $result );
+		// stash the data structure in the cache
+		$wgMemc->set( $key, $highs_lows, 86400 );
 		$this->output( "Done\n" );
 	}
 	
